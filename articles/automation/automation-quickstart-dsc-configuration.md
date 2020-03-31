@@ -8,13 +8,13 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 ms.openlocfilehash: 6c3ff10f37233294b75eceddd62c0a33f8864484
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75421643"
 ---
-# <a name="configure-a-virtual-machine-with-desired-state-configuration"></a>Virtuális gép konfigurálása a kívánt állapot-konfigurációval
+# <a name="configure-a-virtual-machine-with-desired-state-configuration"></a>Virtuális gép konfigurálása a kívánt állapotkonfigurációval
 
 A Desired State Configuration (DSC) engedélyezésével kezelheti és monitorozhatja a Windows- és Linux-kiszolgálók konfigurációit. A kívánt konfigurációtól eltérő konfigurációk azonosíthatók vagy automatikusan kijavíthatók. Ez a rövid útmutató végigvezeti a Linux rendszerű virtuális gépek előkészítésén és a LAMP-vermek DSC-vel való üzembe helyezésén.
 
@@ -22,7 +22,7 @@ A Desired State Configuration (DSC) engedélyezésével kezelheti és monitorozh
 
 A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/).
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot.](https://azure.microsoft.com/free/)
 * Egy Azure Automation-fiókra. Azure Automation futtató fiók létrehozásával kapcsolatos információkért tekintse meg az [Azure-beli futtató fiókkal](automation-sec-configure-azure-runas-account.md) kapcsolatos részt.
 * Red Hat Enterprise Linux, CentOS vagy Oracle Linux rendszert futtató Azure Resource Manager-alapú virtuális gép (nem klasszikus). A virtuális gépek létrehozásával kapcsolatos útmutatásért tekintse meg [az első Linux virtuális gép Azure Portallal való létrehozását](../virtual-machines/linux/quick-create-portal.md) bemutató cikket.
 
@@ -39,7 +39,7 @@ Különböző módszerekkel készíthetők elő a gépek és engedélyezhető a 
 3. Keresse meg azt a virtuális gépet, amelyhez engedélyezni szeretné a DSC-t. A keresőmező és a szűrési lehetőségek használatával kereshet meg egy adott virtuális gépet.
 4. Kattintson a virtuális gépre, majd válassza a **Csatlakozás** elemet.
 5. Válassza ki a virtuális géphez megfelelő DSC-beállításokat. Ha már előkészített egy konfigurációt, megadhatja azt a *Csomópont-konfiguráció neveként*. Beállíthatja a [konfigurációs módot](https://docs.microsoft.com/powershell/scripting/dsc/managing-nodes/metaConfig) a gép konfigurációs viselkedésének vezérléséhez.
-6. Kattintson az **OK** gombra
+6. Kattintson **az OK gombra**
 
 ![Azure-beli virtuális gép előkészítése a DSC-hez](./media/automation-quickstart-dsc-configuration/dsc-onboard-azure-vm.png)
 
@@ -98,9 +98,9 @@ configuration LAMPServer {
 A konfiguráció importálása:
 
 1. Az Automation-fiók bal oldali panelén válassza az **Állapotkonfiguráció (DSC)** elemet, majd kattintson a **Konfigurációk** lapra.
-2. Kattintson a **+ Hozzáadás** lehetőségre
+2. Kattintson **a + Hozzáadás gombra**
 3. Válassza ki az előző lépésben mentett *konfigurációs fájlt*
-4. Kattintson az **OK** gombra
+4. Kattintson **az OK gombra**
 
 ## <a name="compile-a-configuration"></a>Konfiguráció fordítása
 
@@ -108,7 +108,7 @@ A DSC-konfigurációkat csomópont-konfigurációvá (MOF-dokumentummá) kell fo
 
 Konfiguráció fordítása:
 
-1. Az Automation-fiók bal oldali panelén válassza az **Állapotkonfiguráció (DSC)** elemet, majd kattintson a **Konfigurációk** lapra.
+1. Az Automation-fiók bal oldali ablaktáblájában válassza az **Állapotkonfiguráció (DSC)** lehetőséget, majd kattintson a **Konfigurációk** fülre.
 1. Válassza ki az előző lépésben importált „LAMPServer” konfigurációt
 1. A menüelemekért kattintson a **Fordítás** elemre, majd az **Igen** gombra
 1. A Konfiguráció nézet sorában megjelenik egy új *Fordítási feladat*. Amikor a feladat sikeresen elkészül, továbbléphet a következő lépésre. Hiba esetén a részletekért a fordítási feladatra kattinthat.
@@ -120,7 +120,7 @@ A lefordított *Csomópont-konfigurációk* DSC-csomópontokhoz rendelhetők. A 
 1. Az Automation-fiók bal oldali panelén válassza az **Állapotkonfiguráció (DSC) elemet, majd kattintson a **Csomópontok** lapra.
 1. Válassza ki azt a csomópontot, amelyhez konfigurációt szeretne rendelni
 1. Kattintson a **Csomópont-konfiguráció hozzárendelése** elemre
-1. Válassza a *Csomópont-konfiguráció* - **LAMPServer.localhost** elemet a hozzárendeléshez, és kattintson az **OK** gombra
+1. Válassza ki a *Csomópont konfigurációs* - **LAMPServer.localhost** - hozzárendeléséhez, és kattintson **az OK** gombra
 1. A lefordított konfiguráció ezzel a csomóponthoz rendelhető, és a csomópont *Függőben* állapotra vált. A következő szokásos ellenőrzésnél a csomópont lekéri a konfigurációt, alkalmazza, és visszaküldi az állapotot. A csomópont beállításaitól függően akár 30 percet is igénybe vehet, hogy a csomópont lekérje a konfigurációt. Az azonnali ellenőrzés kényszerítéséhez futtassa a következő parancsot helyileg a Linux rendszerű virtuális gépen: `sudo /opt/microsoft/dsc/Scripts/PerformRequiredConfigurationChecks.py`
 
 ![Csomópont-konfiguráció hozzárendelése](./media/automation-quickstart-dsc-configuration/dsc-assign-node-configuration.png)
@@ -131,7 +131,7 @@ Az összes felügyelt csomópont állapota megtalálható az Automation-fiók **
 
 ![DSC-csomópont állapota](./media/automation-quickstart-dsc-configuration/dsc-node-status.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban előkészített egy Linux rendszerű virtuális gépet a DSC-hez, létrehozta egy LAMP-verem konfigurációját, és üzembe helyezte azt a virtuális gépen. Az Automation DSC folyamatos üzembe helyezéshez való használatáról folytassa a következő cikkel:
 
@@ -140,5 +140,5 @@ Ebben a rövid útmutatóban előkészített egy Linux rendszerű virtuális gé
 
 * A PowerShell Desired State Configurationről további információkért lásd: [A PowerShell célállapot-konfiguráló áttekintése](https://docs.microsoft.com/powershell/scripting/dsc/overview/overview).
 * Az Automation DSC PowerShellről való kezeléséről további információkért lásd: [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.automation/)
-* Ha szeretné megtudni, hogyan továbbíthatja a DSC-jelentéseket a jelentések és a riasztások Azure Monitor naplófájljaiba, tekintse meg a [DSC-jelentéskészítés továbbítása Azure monitor naplókhoz](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics) 
+* Ha meg szeretné tudni, hogyan továbbíthat DSC-jelentéseket az Azure Monitor naplóiba jelentéskészítésés riasztáskészítés közben, olvassa el [a DSC-jelentések továbbítása az Azure Monitor-naplókba](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics) 
 

@@ -1,6 +1,6 @@
 ---
-title: Adatfolyam-diagramok
-description: A adatáramlási diagramok használata
+title: Adatfolyam-grafikonok
+description: Az adat-előállító adatfolyam-diagramok hogyan működik
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
@@ -8,42 +8,42 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/04/2019
 ms.openlocfilehash: da180bfb1aec29fa15b070fd73ba84d708ada927
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74928308"
 ---
 # <a name="mapping-data-flow-graphs"></a>Adatfolyam-diagramok leképezése
 
-A leképezési adatfolyamatok tervezési felülete egy "építési" felület, amelyben felülről lefelé, balról jobbra hozhat létre adatfolyamokat. Az egyes átalakításokhoz egy pluszjel (+) szimbólum van csatolva. Koncentráljon az üzleti logikára ahelyett, hogy a csomópontokat a szabad formátumú DAG-környezet szélein keresztül csatlakoztatja.
+A leképezési adatfolyamok tervezési felülete egy "építési" felület, ahol az adatfolyamokat felülről lefelé, balról jobbra építheti. Minden átalakításhoz egy plusz (+) szimbólummal ellátott eszköztár van csatolva. Koncentráljon az üzleti logikára ahelyett, hogy a csomópontokat éleken keresztül csatlakoztatna egy szabad formájú DAG környezetben.
 
-Az alábbi beépített mechanizmusokkal felügyelheti az adatfolyam gráfját.
+Az alábbiakban beépített mechanizmusok az adatfolyam-diagram kezelésére.
 
 ## <a name="move-nodes"></a>Csomópontok áthelyezése
 
-![Összesített átalakítási beállítások](media/data-flow/agghead.png "összesítő fejléc")
+![Összesítő átalakítási beállítások](media/data-flow/agghead.png "aggregátor fejléce")
 
-A fogd és vidd típusú paradigma nélkül az átalakítási csomópontok áthelyezésének módja a bejövő adatfolyam módosítása. Ehelyett a "bejövő adatfolyam" módosításával áthelyezi az átalakításokat.
+A húzási paradigma nélkül az átalakítási csomópont "mozgatásának" módja a bejövő adatfolyam módosítása. Ehelyett a "bejövő adatfolyam" módosításával mozgatja az átalakításokat.
 
-## <a name="streams-of-data-inside-of-data-flow"></a>Adatfolyamban tárolt adatstreamek
+## <a name="streams-of-data-inside-of-data-flow"></a>Adatfolyamok az adatfolyamon belül
 
-Azure Data Factory adatfolyamban a streamek az adatáramlást jelölik. Az átalakítási beállítások ablaktáblán egy "bejövő adatfolyam" mező jelenik meg. Ez azt mutatja be, hogy mely bejövő adatfolyam táplálja az átalakítást. Az átalakítási csomópont fizikai helyét a diagramon módosíthatja úgy, hogy a bejövő adatfolyam nevére kattint, és kiválasztja egy másik adatfolyamot. A jelenlegi átalakítás az adott adatfolyamon végzett összes további átalakítással együtt az új helyre kerül.
+Az Azure Data Factory Data Flow-ban az adatfolyamok az adatfolyamot jelölik. Az átalakítási beállítások ablaktáblán megjelenik egy "Bejövő adatfolyam" mező. Ez jelzi, hogy melyik bejövő adatfolyam táplálja az átalakítást. Az átalakító csomópont fizikai helyét a grafikonon úgy módosíthatja, hogy a Bejövő adatfolyam nevére kattint, és kijelöl egy másik adatfolyamot. Az aktuális átalakítás az adatfolyam on-val együtt az új helyre kerül.
 
-Ha az átalakítást egy vagy több átalakítással helyezi át, a folyamat során az új hely egy új ág használatával lesz csatlakoztatva.
+Ha egy átalakítást egy vagy több átalakítással helyez át utána, akkor az adatfolyam új helye egy új ágon keresztül lesz összekapcsolva.
 
-Ha a kiválasztott csomópont után nem végez további átalakítást, akkor csak az adott átalakítás fog áttérni az új helyre.
+Ha a kijelölt csomópont után nincsenek további átalakítások, akkor csak az átalakítás kerül az új helyre.
 
-## <a name="hide-graph-and-show-graph"></a>Gráf elrejtése és grafikon megjelenítése
+## <a name="hide-graph-and-show-graph"></a>Diagram és diagram megjelenítése
 
-Az alsó konfigurációs ablaktábla jobb felső sarkában egy gomb látható, ahol az átalakítási konfigurációkon végzett munka során kiterjesztheti az alsó panelt teljes képernyős megjelenítésre. Ez lehetővé teszi, hogy az "előző" és a "Next" gombokkal navigáljon a gráf konfigurációjában. A diagram nézetre való visszalépéshez kattintson a lefelé gombra, és térjen vissza a felosztott képernyőhöz.
+Az alsó konfigurációs ablaktábla jobb szélén található egy gomb, ahol az alsó ablaktáblát teljes képernyőre bonthatja, amikor átalakítási konfigurációkon dolgozik. Ez lehetővé teszi, hogy az "előző" és a "következő" gombokat használja a grafikon konfigurációiban való navigáláshoz. Ha vissza szeretne térni a grafikonnézethez, kattintson a lefelé gombra, és térjen vissza az osztott képernyőre.
 
-## <a name="search-graph"></a>Keresési gráf
+## <a name="search-graph"></a>Keresési grafikon
 
-A diagramon a tervezési felületen található Keresés gombra kattintva keresheti meg a diagramot.
+A diagramon a tervezőfelületen lévő keresés gombbal kereshet.
 
-![Search](media/data-flow/search001.png "Keresési gráf")
+![Keresés](media/data-flow/search001.png "Keresési grafikon")
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Miután befejezte az adatfolyam kialakítását, kapcsolja be a hibakeresés gombot a hibakeresési módban, vagy közvetlenül az adatfolyam- [tervezőben](concepts-data-flow-debug-mode.md) vagy a [folyamat hibakeresésében](control-flow-execute-data-flow-activity.md).
+Az adatfolyam-tervezés befejezése után kapcsolja be a hibakeresési gombot, és tesztelje hibakeresési módban, akár közvetlenül az [adatfolyam-tervezőben,](concepts-data-flow-debug-mode.md) akár a [folyamathiba-keresésben.](control-flow-execute-data-flow-activity.md)

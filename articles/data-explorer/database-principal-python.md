@@ -1,6 +1,6 @@
 ---
-title: Adatbázis-rendszerbiztonsági tag hozzáadása az Azure Adatkezelőhoz a Python használatával
-description: Ebből a cikkből megtudhatja, hogyan adhat hozzá adatbázis-rendszerbiztonsági tag Azure-Adatkezelő a Python használatával.
+title: Adatbázis-egyszerű staféták hozzáadása az Azure Data Explorerhez a Python használatával
+description: Ebben a cikkben megtudhatja, hogyan adhat hozzá adatbázis-tagokat az Azure Data Explorer python használatával.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,20 +8,20 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: 8b9c4f4d5427b326c273558db0bff808068b192a
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76965007"
 ---
-# <a name="add-database-principals-for-azure-data-explorer-by-using-python"></a>Adatbázis-rendszerbiztonsági tag hozzáadása az Azure Adatkezelőhoz a Python használatával
+# <a name="add-database-principals-for-azure-data-explorer-by-using-python"></a>Adatbázis-egyszerű staféták hozzáadása az Azure Data Explorerhez a Python használatával
 
 > [!div class="op_single_selector"]
-> * [C#](database-principal-csharp.md)
+> * [C #](database-principal-csharp.md)
 > * [Python](database-principal-python.md)
 > * [Azure Resource Manager-sablon](database-principal-resource-manager.md)
 
-Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Ebben a cikkben a Python használatával ad hozzá adatbázis-rendszerbiztonsági tagokat az Azure Adatkezelőhoz.
+Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Ebben a cikkben az Azure Data Explorer adatbázis-biztonsági tagok hozzáadása python használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,7 +30,7 @@ Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési
 
 ## <a name="install-python-package"></a>Python-csomag telepítése
 
-Az Azure Adatkezelő (Kusto) Python-csomagjának telepítéséhez nyisson meg egy parancssort, amely a Python elérési útját is tartalmazni fogja. Futtassa ezt a parancsot:
+A Python-csomag azure Data Explorer (Kusto) telepítéséhez nyisson meg egy parancssort, amely a Python az útjába. Futtassa ezt a parancsot:
 
 ```
 pip install azure-common
@@ -39,9 +39,9 @@ pip install azure-mgmt-kusto
 
 [!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
 
-## <a name="add-a-database-principal"></a>Adatbázis-tag hozzáadása
+## <a name="add-a-database-principal"></a>Egyszerű adatbázis hozzáadása
 
-Az alábbi példa bemutatja, hogyan adhat hozzá programozott módon egy adatbázis-rendszerbiztonsági tag.
+A következő példa bemutatja, hogyan adhat hozzá egy egyszerű adatbázist programozott módon.
 
 ```Python
 from azure.mgmt.kusto import KustoManagementClient
@@ -81,19 +81,19 @@ poller = kusto_management_client.database_principal_assignments.create_or_update
 
 |**Beállítás** | **Ajánlott érték** | **Mező leírása**|
 |---|---|---|
-| tenant_id | *XXXXXXXX-XXXXX-XXXX-XXXX-XXXXXXXXX* | A bérlő azonosítója. Más néven címtár-azonosító.|
-| subscription_id | *XXXXXXXX-XXXXX-XXXX-XXXX-XXXXXXXXX* | Az erőforrás-létrehozáshoz használt előfizetés-azonosító.|
-| client_id | *XXXXXXXX-XXXXX-XXXX-XXXX-XXXXXXXXX* | Annak az alkalmazásnak az ügyfél-azonosítója, amely hozzáférhet a bérlő erőforrásaihoz.|
-| client_secret | *XXXXXXXXXXXXXX* | Az alkalmazás ügyfél-titka, amely hozzáférhet a bérlő erőforrásaihoz. |
+| tenant_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | A bérlőazonosítója. Más néven könyvtárazonosító.|
+| subscription_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Az erőforrás-létrehozáshoz használt előfizetés-azonosító.|
+| client_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Az alkalmazás ügyfélazonosítója, amely hozzáférhet a bérlő erőforrásaihoz.|
+| client_secret | *xxxxxxxxxxxxxx* | Az alkalmazás ügyféltka-tka, amely hozzáférhet a bérlő erőforrásaihoz. |
 | resource_group_name | *testrg* | A fürtöt tartalmazó erőforráscsoport neve.|
 | cluster_name | *mykustocluster* | A fürt neve.|
-| database_name | *mykustodatabase* | Az adatbázis neve.|
-| principal_assignment_name | *databasePrincipalAssignment1* | Az adatbázis-résztvevő erőforrás neve.|
-| principal_id | *XXXXXXXX-XXXXX-XXXX-XXXX-XXXXXXXXX* | A résztvevő azonosítója, amely lehet felhasználói e-mail-cím, alkalmazás-azonosító vagy biztonsági csoport neve.|
-| szerepkör | *Felügyeleti* | Az adatbázis-tag szerepe, amely "Admin'", "betöltés", "monitor", "user", "UnrestrictedViewers", "Viewer" lehet.|
-| tenant_id_for_principal | *XXXXXXXX-XXXXX-XXXX-XXXX-XXXXXXXXX* | A rendszerbiztonsági tag bérlői azonosítója.|
-| principal_type | *Alkalmazás* | A rendszerbiztonsági tag típusa, amely lehet "user", "app" vagy "Group"|
+| database_name | *mykustoadatbázis* | Az adatbázis neve.|
+| principal_assignment_name | *databasePrincipalAssignment1* | Az elsődleges adatbázis-erőforrás neve.|
+| principal_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | A fő azonosító, amely lehet felhasználói e-mail, alkalmazásazonosító vagy biztonsági csoport neve.|
+| Szerepet | *Felügyelet* | Az adatbázis fő kiszolgálójának szerepköre, amely lehet "Admin", "Ingestor", "Monitor", "Felhasználó", "UnrestrictedViewers", "Viewer".|
+| tenant_id_for_principal | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | A főnév bérlői azonosítója.|
+| principal_type | *Alkalmazás* | A megbízó típusa, amely lehet "Felhasználó", "Alkalmazás" vagy "Csoport"|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Adatbevitel az Azure Adatkezelő Python Library használatával](python-ingest-data.md)
+* [Adatok betöltése az Azure Data Explorer Python-tár használatával](python-ingest-data.md)

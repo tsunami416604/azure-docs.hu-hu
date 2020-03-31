@@ -1,6 +1,6 @@
 ---
-title: B2B csoportmunka-felhasználó hozzáadása szerepkörhöz – Azure Active Directory
-description: Vendég felhasználó hozzáadása egy szerepkörhöz Azure Active Directory
+title: B2B együttműködési felhasználó hozzáadása szerepkörhöz – Azure Active Directory
+description: Vendégfelhasználó hozzáadása szerepkörhöz az Azure Active Directoryban
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -13,27 +13,27 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 703e68994a9d156ccf3e74a5df4a2f4ee2f062cd
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74268555"
 ---
-# <a name="grant-permissions-to-users-from-partner-organizations-in-your-azure-active-directory-tenant"></a>Engedélyek megadása a Azure Active Directory-bérlőben lévő partnerszervezetek felhasználói számára
+# <a name="grant-permissions-to-users-from-partner-organizations-in-your-azure-active-directory-tenant"></a>Engedélyek megadása az Azure Active Directory-bérlőpartner-szervezetek felhasználóinak
 
-Azure Active Directory (Azure AD) VÁLLALATKÖZI együttműködéssel rendelkező felhasználók vendégként lesznek hozzáadva a címtárhoz, és a címtárban lévő vendég engedélyek alapértelmezés szerint korlátozottak. Előfordulhat, hogy a vállalatának szüksége van néhány vendégre, hogy magasabb szintű jogosultsági szerepköröket töltsön ki a szervezetében. A magasabb jogosultsági szintű szerepkörök meghatározásának támogatásához a vendég felhasználói hozzáadhatók a kívánt szerepkörökhöz a szervezet igényeinek megfelelően.
+Az Azure Active Directory (Azure AD) B2B együttműködési felhasználók vendégfelhasználóként kerülnek hozzáadásra a címtárhoz, és a címtárban lévő vendégengedélyek alapértelmezés szerint korlátozottak. Előfordulhat, hogy a vállalkozásnak szüksége van néhány vendégfelhasználóra a szervezet magasabb jogosultsági szerepkörei betöltéséhez. A magasabb jogosultságú szerepkörök meghatározásának támogatása érdekében a vendégfelhasználók a szervezet igényeinek megfelelően bármilyen szerepkörhöz hozzáadhatók.
 
 ## <a name="default-role"></a>Alapértelmezett szerepkör
 
-![Az alapértelmezett címtári szerepkört ábrázoló képernyőfelvétel](./media/add-guest-to-role/default-role.png)
+![Az alapértelmezett könyvtárszerepkört bemutató képernyőkép](./media/add-guest-to-role/default-role.png)
 
 ## <a name="global-administrator-role"></a>Globális rendszergazdai szerepkör
 
-![A globális rendszergazdai szerepkört ábrázoló képernyőfelvétel](./media/add-guest-to-role/global-admin-role.png)
+![A globális rendszergazdai szerepkört bemutató képernyőkép](./media/add-guest-to-role/global-admin-role.png)
 
 ## <a name="limited-administrator-role"></a>Korlátozott rendszergazdai szerepkör
 
-![A korlátozott rendszergazdai szerepkört ábrázoló képernyőfelvétel](./media/add-guest-to-role/limited-admin-role.png)
+![A korlátozott rendszergazdai szerepkört bemutató képernyőkép](./media/add-guest-to-role/limited-admin-role.png)
 
 ## <a name="next-steps"></a>További lépések
 

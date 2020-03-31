@@ -1,5 +1,5 @@
 ---
-title: A vendég operációs rendszer tűzfala szolgáltatás letiltása az Azure-beli virtuális gépen | Microsoft Docs
+title: A vendég operációsrendszer-tűzfal letiltása az Azure VM-ben | Microsoft dokumentumok
 description: ''
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 292b53fac6c970fb961e8ad4ce7774c080e52422
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: dbb9b0f865c7ec5d9d29e2310ae41abbec287bd6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718871"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79464962"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>A vendég operációs rendszer tűzfalának letiltása az Azure-beli virtuális gépen
 
-Ez a cikk olyan helyzetekben nyújt olyan helyzeteket, amikor azt gyanítja, hogy a vendég operációs rendszer tűzfala részleges vagy teljes forgalmat végez a virtuális gépen (VM). Ez akkor fordulhat elő, ha a rendszer szándékosan módosította az RDP-kapcsolatokat okozó tűzfalat.
+Ez a cikk olyan helyzetekre vonatkozó hivatkozásokat tartalmaz, amelyekben azt gyanítja, hogy a vendég operációs rendszer tűzfala részleges vagy teljes forgalmat szűr egy virtuális gépre (VM). Ez akkor fordulhat elő, ha a tűzfalon szándékosan olyan módosítások történtek, amelyek miatt az RDP-kapcsolatok meghibásodtak.
 
 ## <a name="solution"></a>Megoldás
 
-A cikkben ismertetett folyamat célja, hogy megkerülő megoldásként lehessen használni, hogy a valós probléma kijavítására koncentráljon, amely a tűzfalszabályok helyes beállítását mutatja be. A Microsoft ajánlott eljárása, hogy a Windows tűzfal összetevője engedélyezve legyen. A tűzfalszabályok konfigurálásának módja a szükséges virtuális géphez való hozzáférés szintjétől függ.
+A cikkben ismertetett folyamat kerülő megoldásként szolgál, így a valódi probléma megoldására összpontosíthat, így hogyan állíthatja be helyesen a tűzfalszabályokat. A Microsoft ajánlott eljárása, ha a Windows tűzfal összetevő engedélyezve van. A tűzfalszabályok konfigurálásának módja a virtuális géphez való hozzáférés szükséges szintjétől függ.
 
 ### <a name="online-solutions"></a>Online megoldások 
 
-Ha a virtuális gép online állapotban van, és ugyanazon a virtuális hálózaton található másik virtuális gépen is elérhető, akkor a másik virtuális gép használatával is elvégezheti ezeket a megoldásokat.
+Ha a virtuális gép online állapotban van, és ugyanazon a virtuális hálózaton egy másik virtuális gépen érhető el, ezeket a megoldásokat a másik virtuális gép használatával teheti meg.
 
-#### <a name="mitigation-1-custom-script-extension-or-run-command-feature"></a>1\. enyhítés: egyéni parancsfájl-kiterjesztés vagy futtatási parancs funkció
+#### <a name="mitigation-1-custom-script-extension-or-run-command-feature"></a>1. kockázatcsökkentés: Egyéni parancsfájl-bővítmény vagy parancs futtatása szolgáltatás
 
-Ha rendelkezik működő Azure-ügynökkel, használhatja az [Egyéni szkriptek bővítményét](../extensions/custom-script-windows.md) vagy a [futtatási parancsok](../windows/run-command.md) szolgáltatást (csak Resource Manager-alapú virtuális gépeken) a következő parancsfájlok távoli futtatásához.
+Ha egy működő Azure-ügynök, használhatja [az egyéni parancsfájl-bővítmény](../extensions/custom-script-windows.md) vagy a [Parancsok futtatása](../windows/run-command.md) szolgáltatás (Erőforrás-kezelő virtuális gépek csak) távolról futtathatja a következő parancsfájlokat.
 
 > [!Note]
 > * Ha a tűzfal helyileg van beállítva, futtassa a következő parancsfájlt:
@@ -45,18 +45,18 @@ Ha rendelkezik működő Azure-ügynökkel, használhatja az [Egyéni szkriptek 
 >   Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\Standardprofile' -name "EnableFirewall" -Value 0 
 >   Restart-Service -Name mpssvc
 >   ```
-> * Ha a tűzfal egy Active Directory házirenden keresztül van beállítva, a következő parancsfájlt használhatja az ideiglenes hozzáféréshez. 
+> * Ha a tűzfal Active Directory-házirenden keresztül van beállítva, a következő parancsfájl futtatásával ideiglenes en keresztül. 
 >   ```
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile' -name "EnableFirewall" -Value 0
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile' -name "EnableFirewall" -Value 0
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile' name "EnableFirewall" -Value 0
 >   Restart-Service -Name mpssvc
 >   ```
->   A házirend újbóli alkalmazása után azonban a távoli munkamenetből kell kiindulnia. A probléma állandó kijavítása a számítógépen alkalmazott szabályzat módosítása.
+>   Azonban, amint a házirend újra alkalmazza, akkor ki kell rúgni a távoli munkamenet. A probléma végleges javítása a számítógépen alkalmazott házirend módosítása.
 
-#### <a name="mitigation-2-remote-powershell"></a>2\. enyhítés: távoli PowerShell
+#### <a name="mitigation-2-remote-powershell"></a>2. kockázatcsökkentés: Távoli PowerShell
 
-1.  Kapcsolódjon egy olyan virtuális GÉPHEZ, amely az RDP-kapcsolat használatával nem elérhető virtuális géppel azonos virtuális hálózaton található.
+1.  Csatlakozzon egy virtuális géphez, amely ugyanazon a virtuális hálózaton található, mint a virtuális gép, amely nem érhető el RDP-kapcsolat használatával.
 
 2.  Nyisson meg egy PowerShell-konzolablakot.
 
@@ -70,13 +70,13 @@ Ha rendelkezik működő Azure-ügynökkel, használhatja az [Egyéni szkriptek 
     ```
 
 > [!Note]
-> Ha a tűzfal egy Csoportházirend objektumon keresztül van beállítva, előfordulhat, hogy ez a metódus nem működik, mert a parancs csak a helyi beállításjegyzékbeli bejegyzéseket módosítja. Ha egy házirend van érvényben, akkor felülbírálja ezt a változást. 
+> Ha a tűzfal csoportházirend-objektumon keresztül van beállítva, előfordulhat, hogy ez a módszer nem működik, mert ez a parancs csak a helyi rendszerleíró bejegyzéseket módosítja. Ha egy házirend érvényben van, felülírja ezt a módosítást. 
 
-#### <a name="mitigation-3-pstools-commands"></a>3\. enyhítés: PSTools parancsok
+#### <a name="mitigation-3-pstools-commands"></a>3. kockázatcsökkentés: A PSTools parancsai
 
-1.  A hibaelhárítási virtuális gépen töltse le a [PsTools](https://docs.microsoft.com/sysinternals/downloads/pstools).
+1.  A hibaelhárítási virtuális gép, töltse le [pstools](https://docs.microsoft.com/sysinternals/downloads/pstools).
 
-2.  Nyisson meg egy CMD-példányt, majd a DIP használatával férhet hozzá a virtuális géphez.
+2.  Nyisson meg egy CMD-példányt, majd a DIP-en keresztül érje el a virtuális gép.
 
 3.  Futtassa az alábbi parancsot:
 
@@ -86,13 +86,13 @@ Ha rendelkezik működő Azure-ügynökkel, használhatja az [Egyéni szkriptek 
     psservice restart mpssvc
     ```
 
-#### <a name="mitigation-4-remote-registry"></a>4\. mérséklés: távoli beállításjegyzék 
+#### <a name="mitigation-4-remote-registry"></a>4. kockázatcsökkentés: Távoli beállításjegyzék 
 
 A [Távoli beállításjegyzék](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)használatához kövesse az alábbi lépéseket.
 
-1.  A hibaelhárítási virtuális gépen indítsa el a Beállításszerkesztőt, majd nyissa meg a **fájl** > **Kapcsolódás hálózati beállításjegyzéket**.
+1.  A hibaelhárítási virtuális gépen indítsa el a rendszerleíró adatbázis szerkesztőjét, majd nyissa meg a File Connect Network Registry > **(Fájlcsatlakoztatási hálózat beállításjegyzékét).** **File**
 
-2.  Nyissa meg a *célszámítógép*\SYSTEM ágat, és határozza meg a következő értékeket:
+2.  Nyissa meg a *TARGET MACHINE*\SYSTEM ágat, és adja meg a következő értékeket:
 
     ```
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\DomainProfile\EnableFirewall           -->        0 
@@ -100,41 +100,41 @@ A [Távoli beállításjegyzék](https://support.microsoft.com/help/314837/how-t
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\EnableFirewall         -->        0
     ```
 
-3.  Indítsa újra a szolgáltatást. Mivel a távoli beállításjegyzék használatával nem tudja végrehajtani a szolgáltatást, a szolgáltatás eltávolítása konzolt kell használnia.
+3.  Indítsa újra a szolgáltatást. Mivel ezt nem tudja megtenni a távoli beállításjegyzék használatával, a Távoli szolgáltatáskonzolt kell használnia.
 
-4.  Nyissa meg a **Services. msc**egy példányát.
+4.  Nyissa meg a **Services.msc egy példányát.**
 
-5.  Kattintson a **szolgáltatások (helyi)** elemre.
+5.  Kattintson **a Szolgáltatások (Helyi) elemre.**
 
-6.  Válassza **a Kapcsolódás másik számítógéphez**lehetőséget.
+6.  Válassza **a Csatlakozás másik számítógépre**lehetőséget.
 
-7.  Adja meg a probléma virtuális gép **magánhálózati IP-címét (dip)** .
+7.  Adja meg a probléma virtuális gépének **privát IP-címét (DIP).**
 
-8.  Indítsa újra a helyi tűzfal házirendjét.
+8.  Indítsa újra a helyi tűzfalházirendet.
 
-9.  Próbálja meg újra a virtuális gépet a helyi számítógépről RDP-kapcsolaton keresztül.
+9.  Próbáljon meg újra csatlakozni a virtuális géphez a helyi számítógépről.
 
 ### <a name="offline-solutions"></a>Offline megoldások 
 
-Ha olyan helyzet áll fenn, amelyben a virtuális gépet bármilyen módon nem érheti el, az egyéni szkriptek bővítménye sikertelen lesz, és a rendszerlemezen keresztüli közvetlen munkavégzéssel OFFLINE módban kell működnie. Ehhez kövesse az alábbi lépéseket:
+Ha olyan helyzetben van, amelyben nem tudja elérni a virtuális gép semmilyen módszerrel, egyéni parancsfájl-bővítmény sikertelen lesz, és meg kell dolgozni offline módban dolgozik közvetlenül a rendszerlemezen keresztül. Ehhez kövesse az alábbi lépéseket:
 
-1.  [Csatlakoztassa a rendszerlemezt egy helyreállítási virtuális géphez](troubleshoot-recovery-disks-portal-windows.md).
+1.  [Csatlakoztassa a rendszerlemezt egy helyreállítási virtuális géphez.](troubleshoot-recovery-disks-portal-windows.md)
 
-2.  Indítsa el a helyreállítási virtuális Gépet egy távoli asztali kapcsolatot.
+2.  Távoli asztali kapcsolat indítása a helyreállítási virtuális géppel.
 
-3.  Győződjön meg arról, hogy a lemez online állapotban van megjelölve a Lemezkezelés konzolon. Jegyezze fel a csatlakoztatott rendszerlemezhez rendelt meghajtóbetűjelet.
+3.  Győződjön meg arról, hogy a lemez online ként van megjelölve a Lemezkezelés konzolon. Jegyezze fel a csatlakoztatott rendszerlemezhez rendelt meghajtóbetűjelet.
 
-4.  A módosítások elvégzése előtt hozzon létre egy másolatot a \Windows\System32\Config mappából abban az esetben, ha a módosítások visszaállítására van szükség.
+4.  Mielőtt bármilyen módosítást eszközölt volna, hozzon létre egy másolatot a \windows\system32\config mappáról, ha a módosítások visszaállítása szükséges.
 
-5.  A hibaelhárítási virtuális gépen indítsa el a Beállításszerkesztőt (Regedit. exe). 
+5.  A hibaelhárítási virtuális gépen indítsa el a rendszerleíró adatbázis szerkesztőjét (regedit.exe). 
 
-6.  Ebben a hibaelhárítási eljárásban a struktúrákat BROKENSYSTEM és BROKENSOFTWARE-ként csatlakoztatjuk.
+6.  Ehhez a hibaelhárítási eljáráshoz a kaptárakat BROKENSYSTEM és BROKENSOFTWARE néven szereljük fel.
 
-7.  Jelölje ki a HKEY_LOCAL_MACHINE kulcsot, majd válassza a fájl > betöltési struktúra lehetőséget a menüből.
+7.  Jelölje ki a HKEY_LOCAL_MACHINE kulcsot, majd válassza a menü Fájl > Hive betöltése parancsát.
 
 8.  Keresse meg a \windows\system32\config\SYSTEM fájlt a csatolt rendszerlemezen.
 
-9.  Nyisson meg egy rendszergazda jogú PowerShell-példányt, majd futtassa a következő parancsokat:
+9.  Nyisson meg egy emelt szintű PowerShell-példányt, majd futtassa a következő parancsokat:
 
     ```cmd
     # Load the hives - If your attached disk is not F, replace the letter assignment here
@@ -160,6 +160,6 @@ Ha olyan helyzet áll fenn, amelyben a virtuális gépet bármilyen módon nem �
     reg unload HKLM\BROKENSOFTWARE
     ```
 
-10. [Válassza le a rendszerlemezt, és hozza létre újra a virtuális gépet](troubleshoot-recovery-disks-portal-windows.md).
+10. [Válassza le a rendszerlemezt, és hozza létre újra a virtuális gép](troubleshoot-recovery-disks-portal-windows.md).
 
-11. Ellenőrizze, hogy a probléma megoldódott.
+11. Ellenőrizze, hogy megoldódott-e a probléma.

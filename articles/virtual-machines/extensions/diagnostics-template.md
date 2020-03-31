@@ -1,6 +1,6 @@
 ---
-title: Figyelési & diagnosztika hozzáadása egy Azure-beli virtuális géphez
-description: Hozzon létre egy új Windowsos virtuális gépet az Azure Diagnostics bővítmény használatával Azure Resource Manager sablonnal.
+title: Figyelési & diagnosztika hozzáadása azure-beli virtuális géphez
+description: Azure Resource Manager-sablon használatával hozzon létre egy új Windows virtuális gépet az Azure diagnosztikai bővítményével.
 services: virtual-machines-windows
 documentationcenter: ''
 author: sbtron
@@ -16,19 +16,19 @@ ms.date: 05/31/2017
 ms.author: saurabh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2490c3de60e0deac6a1a4ddc5abc95cb46e240b2
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74073842"
 ---
-# <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Figyelés és diagnosztika használata Windows rendszerű virtuális gépekkel és Azure Resource Manager-sablonokkal
-A Azure Diagnostics bővítmény a Windows-alapú Azure-beli virtuális gépek monitorozási és diagnosztikai funkcióit biztosítja. Ezeket a képességeket a virtuális gépen engedélyezheti, ha a bővítményt a Azure Resource Manager sablon részeként is engedélyezi. A virtuálisgép-sablonok részét képező bővítményekkel kapcsolatos további információkért lásd: [Azure Resource Manager sablonok létrehozása VM-bővítményekkel](../windows/template-description.md#extensions) . Ez a cikk azt ismerteti, hogyan adhatja hozzá a Azure Diagnostics bővítményt egy Windows rendszerű virtuálisgép-sablonhoz.  
+# <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Figyelés és diagnosztika használata Windows virtuális gép- és Azure Resource Manager-sablonokkal
+Az Azure Diagnostics Extension a figyelési és diagnosztikai képességek egy Windows-alapú Azure virtuális gép. Ezeket a képességeket a virtuális gépen engedélyezheti, ha a bővítményt az Azure Resource Manager-sablon részeként tartalmazza. [Az Azure Resource Manager-sablonok virtuálisgép-bővítményekkel](../windows/template-description.md#extensions) való szerkesztése című témakörben további információt talál a rról, hogy a virtuálisgép-sablon részeként további információkat tartalmaz-e a bővítmények használatával kapcsolatban. Ez a cikk ismerteti, hogyan adhat hozzá az Azure Diagnostics bővítményt egy Windows virtuálisgép-sablonhoz.  
 
-## <a name="add-the-azure-diagnostics-extension-to-the-vm-resource-definition"></a>Adja hozzá a Azure Diagnostics bővítményt a virtuális gép erőforrás-definícióhoz
-Ha engedélyezni szeretné a diagnosztikai bővítményt egy Windows rendszerű virtuális gépen, hozzá kell adnia a bővítményt virtuálisgép-erőforrásként a Resource Manager-sablonban.
+## <a name="add-the-azure-diagnostics-extension-to-the-vm-resource-definition"></a>Az Azure Diagnostics bővítmény hozzáadása a virtuális gép erőforrás-definíciójához
+A diagnosztikai bővítmény windowsos virtuális gépen való engedélyezéséhez a bővítményt virtuális géperőforrásként kell hozzáadnia az Erőforrás-kezelő sablonban.
 
-Egy egyszerű Resource Manager-alapú virtuális gép esetében adja hozzá a bővítmény konfigurációját a virtuális gép *erőforrás* -tömbhöz: 
+Egyszerű erőforrás-kezelő alapú virtuális gép esetén *resources* adja hozzá a bővítmény konfigurációját a virtuális gép erőforrástömbjéhez: 
 
 ```json
 "resources": [
@@ -62,29 +62,29 @@ Egy egyszerű Resource Manager-alapú virtuális gép esetében adja hozzá a b�
 ]
 ```
 
-Egy másik gyakori szabály, hogy hozzáadja a bővítmény konfigurációját a sablon gyökérszintű erőforrások csomópontján ahelyett, hogy a virtuális gép erőforrásai csomópont alatt kellene meghatároznia. Ezzel a módszerrel explicit módon meg kell adnia a kiterjesztés és a virtuális gép közötti hierarchikus kapcsolatot a *név* és a *típus* értékével. Például: 
+Egy másik gyakori konvenció a bővítmény konfigurációjának hozzáadása a sablon gyökérerőforrás-csomópontján, ahelyett, hogy a virtuális gép erőforrás-csomópontja alatt definiálná. Ezzel a megközelítéssel explicit módon meg kell adnia egy hierarchikus kapcsolatot a bővítmény és a virtuális gép között a *név* és a *típus* értékekkel. Példa: 
 
 ```json
 "name": "[concat(variables('vmName'),'Microsoft.Insights.VMDiagnosticsSettings')]",
 "type": "Microsoft.Compute/virtualMachines/extensions",
 ```
 
-A bővítmény mindig a virtuális géphez van társítva, közvetlenül a virtuális gép erőforrás-csomópontja alatt definiálhatja, vagy megadhatja azt az alapszinten, és a hierarchikus elnevezési konvenció használatával társíthatja azt a virtuális géphez.
+A bővítmény mindig a virtuális géphez van társítva, közvetlenül definiálhatja azt a virtuális gép erőforráscsomópontja alatt, vagy az alapszinten definiálhatja, és a hierarchikus elnevezési konvenció t használhatja a virtuális géphez társítására.
 
-Virtual Machine Scale Sets a bővítmények konfigurációját a *VirtualMachineProfile* *extensionProfile* tulajdonsága határozza meg.
+A Virtual Machine Scale Sets esetében a bővítmények konfigurációja a VirtualMachineProfile *extensionProfile* tulajdonságában van *megadva.*
 
-A *Publisher* tulajdonság a **Microsoft. Azure. Diagnostics** és a *Type* tulajdonság értékeként a **IaaSDiagnostics** egyedi módon azonosítja a Azure Diagnostics-bővítményt.
+A **Microsoft.Azure.Diagnostics** értékkel rendelkező *publisher* tulajdonság és az **IaaSDiagnostics** értékkel rendelkező *típustulajdonság* egyedileg azonosítja az Azure Diagnostics bővítményt.
 
-A *Name (név* ) tulajdonság értéke használható az erőforráscsoport kiterjesztésére. Kifejezetten a **Microsoft. ininsights. VMDiagnosticsSettings** lehetővé teszi, hogy könnyen azonosítható legyen a Azure Portal annak biztosítására, hogy a figyelési diagramok helyesen jelenjenek meg a Azure Portalban.
+A *name* tulajdonság értéke az erőforráscsoportban lévő bővítményre való hivatkozáshoz használható. Ha kifejezetten a **Microsoft.Insights.VMDiagnosticsSettings** beállítással határozza meg, az Azure Portal könnyen azonosíthatja, biztosítva, hogy a figyelési diagramok megfelelően jelenjenek meg az Azure Portalon.
 
-A *typeHandlerVersion* meghatározza a használni kívánt bővítmény verzióját. A *autoUpgradeMinorVersion* alverziójának **true** értékre állításával biztosíthatja, hogy a bővítmény legújabb, másodlagos verziója elérhető legyen. Erősen ajánlott mindig a *autoUpgradeMinorVersion* beállítani, hogy mindig **igaz** legyen, hogy mindig a legújabb elérhető diagnosztikai bővítményt használja az új funkciókkal és hibajavításokkal. 
+A *typeHandlerVersion* a használni kívánt bővítmény verzióját adja meg. Ha *az autoUpgradeMinorVersion* alverziót **true** értékre állítja, akkor a bővítmény legújabb alverzióját kapja meg. Erősen ajánlott, hogy mindig állítsa *autoUpgradeMinorVersion,* hogy mindig **igaz,** hogy mindig kap, hogy használja a legújabb elérhető diagnosztikai kiterjesztés az összes új funkciók és hibajavítások. 
 
-A *Settings (beállítások* ) elem a bővítmény konfigurációs tulajdonságait tartalmazza, amely beállítható és olvasható a bővítményből (más néven nyilvános konfiguráció). A *xmlcfg* tulajdonság a diagnosztikai naplók, a teljesítményszámlálók stb. XML-alapú konfigurációját tartalmazza, amelyeket a diagnosztika ügynöke gyűjt. Az XML-sémával kapcsolatos további információkért tekintse meg a [diagnosztika konfigurációs sémáját](https://msdn.microsoft.com/library/azure/dn782207.aspx) . Az általános gyakorlat az, hogy a tényleges XML-konfigurációt változóként tárolja a Azure Resource Manager sablonban, majd összefűzi és base64 kódolja őket a *xmlcfg*értékének beállításához. Tekintse meg a [diagnosztikai konfigurációs változók](#diagnostics-configuration-variables) című szakaszt, és Ismerje meg, hogyan tárolhatja az XML-változókat. A *storageAccount* tulajdonság annak a Storage-fióknak a nevét adja meg, amelybe a diagnosztikai adatait át szeretné adni. 
+A *beállításelem* a bővítmény konfigurációs tulajdonságait tartalmazza, amelyek beállíthatók és visszaolvashatók a bővítményből (más néven nyilvános konfiguráció). Az *xmlcfg* tulajdonság xml alapú konfigurációt tartalmaz a diagnosztikai naplókhoz, teljesítményszámlálókhoz stb., amelyeket a diagnosztikai ügynök gyűjt. Az XML-sémáról további információt a [Diagnosztikai konfigurációs séma](https://msdn.microsoft.com/library/azure/dn782207.aspx) című témakörben talál. Általános gyakorlat, hogy a tényleges xml-konfigurációt változóként tárolja az Azure Resource Manager sablonban, majd összefűzi és base64 kódolja őket az *xmlcfg*értékének beállításához. Tekintse meg a [diagnosztikai konfigurációs változók című szakaszt,](#diagnostics-configuration-variables) amelyből megtudhatja, hogyan tárolhatja az xml-t a változókban. A *storageAccount* tulajdonság annak a tárfióknak a nevét adja meg, amelyre a diagnosztikai adatokat továbbítja. 
 
-A *protectedsettingsfromkeyvault* (más néven privát konfiguráció) tulajdonságai megadhatók, de a beállítás után nem olvasható vissza. A *protectedsettingsfromkeyvault* csak írható természete lehetővé teszi a titkos kulcsok, például a diagnosztikai adatok írására szolgáló Storage-fiók kulcsának tárolására.    
+A *protectedSettings* (más néven privát konfiguráció) tulajdonságai beállíthatók, de a beállítás után nem olvashatók vissza. A *protectedSettings* csak írási jellege miatt hasznos lehet a titkos kulcsok, például a diagnosztikai adatok at megírása a tárfiók kulcsának tárolásához.    
 
-## <a name="specifying-diagnostics-storage-account-as-parameters"></a>Diagnosztikai Storage-fiók megadása paraméterekként
-A fenti diagnosztikai kiterjesztésű JSON-kódrészlet feltételezi, hogy a *existingdiagnosticsStorageAccountName* és a *existingdiagnosticsStorageResourceGroup* két paraméterrel határozza meg a diagnosztikai adatok tárolására szolgáló diagnosztikai tárolási fiókot. A diagnosztikai Storage-fiók paraméterként való megadása lehetővé teszi a diagnosztikai tárolási fiók különböző környezetekben történő módosítását, például érdemes lehet egy másik diagnosztikai Storage-fiókot használni a teszteléshez, és egy másikat a éles üzembe helyezés.  
+## <a name="specifying-diagnostics-storage-account-as-parameters"></a>Diagnosztikai tárfiók paraméterként történő megadása
+A fenti json-kódrészlet diagnosztikai bővítmény két paramétert feltételez *a existingdiagnosticsStorageAccountName* és *a existingdiagnosticsStorageResourceGroup* paraméterrel a diagnosztikai adatokat tároló diagnosztikai tárfiók meghatározásához. A diagnosztikai tárfiók paraméterként való megadása megkönnyíti a diagnosztikai tárfiók különböző környezetekben történő módosítását, például egy másik diagnosztikai tárfiókot szeretne használni a teszteléshez, és egy másikat a éles környezetben.  
 
 ```json
 "existingdiagnosticsStorageAccountName": {
@@ -101,23 +101,23 @@ A fenti diagnosztikai kiterjesztésű JSON-kódrészlet feltételezi, hogy a *ex
 }
 ```
 
-Az ajánlott eljárás egy diagnosztikai tárolási fiók megadása egy másik erőforráscsoporthoz, mint a virtuális gép erőforráscsoport. Az erőforráscsoportok saját élettartammal rendelkező központi telepítési egységnek tekinthetők, a virtuális gépek üzembe helyezhetők és újra üzembe helyezhetők új konfigurációk frissítéseiként, de előfordulhat, hogy továbbra is ugyanazon a Storage-fiókban szeretné tárolni a diagnosztikai adatait Ezek a virtuális gépek központi telepítései. A Storage-fiók egy másik erőforrásban való használata lehetővé teszi, hogy a Storage-fiók fogadja a különböző virtuálisgép-példányok adatait, így egyszerűen elháríthatja a különböző verziókon keresztüli problémákat.
+Ajánlott egy diagnosztikai tárfiókot megadni egy másik erőforráscsoportban, mint a virtuális gép erőforráscsoportja. Egy erőforráscsoport saját élettartamú központi egységnek tekinthető, a virtuális gépek üzembe helyezhetők és újratelepíthetők, mivel új konfigurációk frissítései vannak hozzá, de előfordulhat, hogy továbbra is szeretné tárolni a diagnosztikai adatokat ugyanabban a tárfiókban a virtuális gép központi telepítéseit. A tárfiók egy másik erőforrásban lehetővé teszi, hogy a tárfiók adatokat fogadjon a különböző virtuálisgép-központi telepítések megkönnyíti a problémák elhárítása a különböző verziókban.
 
 > [!NOTE]
-> Ha Windows virtuálisgép-sablont hoz létre a Visual studióból, előfordulhat, hogy az alapértelmezett Storage-fiók úgy van beállítva, hogy ugyanazt a Storage-fiókot használja, ahol a virtuális gép VHD-jét feltöltötte. Ezzel egyszerűbbé válik a virtuális gép kezdeti beállítása. A sablon újraszámítása egy másik Storage-fiók használatára, amely paraméterként adható át. 
+> Ha a Visual Studio-ból hoz létre egy Windows virtuálisgép-sablont, előfordulhat, hogy az alapértelmezett tárfiók ugyanazt a tárfiókot használja, ahol a virtuális gép virtuális merevlemeze fel töltődik. Ez a virtuális gép kezdeti beállításának egyszerűsítése. A sablon újratényezőzése egy másik tárfiók használatával, amely paraméterként átadható. 
 > 
 > 
 
 ## <a name="diagnostics-configuration-variables"></a>Diagnosztikai konfigurációs változók
-Az előző diagnosztikai bővítmény JSON-kódrészlete egy *accountid* változót határoz meg, amely leegyszerűsíti a Storage-fiók kulcsainak lekérését a diagnosztikai tárolóhoz:   
+Az előző diagnosztikai bővítmény json kódrészlet *accountid* definiálja a fiókváltozót, hogy egyszerűsítse a tárfiók kulcsának beszerzése a diagnosztikai tárolóhoz:   
 
 ```json
 "accountid": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/',parameters('existingdiagnosticsStorageResourceGroup'), '/providers/','Microsoft.Storage/storageAccounts/', parameters('existingdiagnosticsStorageAccountName'))]"
 ```
 
-A diagnosztikai bővítmény *xmlcfg* tulajdonsága több, egymással összefűzött változó használatával van definiálva. A változók értékei XML-ben vannak, ezért a JSON-változók beállításakor helyesen kell elmenekülniük.
+A diagnosztikai bővítmény *xmlcfg* tulajdonsága több, összefűzve lévő változó val van definiálva. Ezeknek a változóknak az értékei xml formátumban vannak, ezért a jsonváltozók beállításakor megfelelően meg kell szabadulniuk.
 
-Az alábbi példa azt a diagnosztikai konfigurációs XML-t ismerteti, amely a szabványos rendszerszintű teljesítményszámlálókat gyűjti össze a Windows-eseménynaplókkal és a diagnosztikai infrastruktúra naplóival együtt. A rendszer megmenekült, és megfelelően formázott, így a konfiguráció közvetlenül beilleszthető a sablon változók szakaszába. Tekintse meg a [diagnosztikai konfigurációs sémát](https://msdn.microsoft.com/library/azure/dn782207.aspx) a konfigurációs XML részletesebben olvasható példájának megjelenítéséhez.
+A következő példa a diagnosztikai konfigurációs xml, amely összegyűjti a szabványos rendszerszintű teljesítményszámlálók mellett néhány Windows eseménynaplók és diagnosztikai infrastruktúra naplók. A rendszer elkerülte és megfelelően formázta, így a konfiguráció közvetlenül beilleszthető a sablon változók szakaszába. Tekintse meg a [diagnosztikai konfigurációs séma](https://msdn.microsoft.com/library/azure/dn782207.aspx) egy emberileg olvasható példa a konfigurációs xml.
 
 ```json
 "wadlogs": "<WadCfg> <DiagnosticMonitorConfiguration overallQuotaInMB=\"4096\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration\"> <DiagnosticInfrastructureLogs scheduledTransferLogLevelFilter=\"Error\"/> <WindowsEventLog scheduledTransferPeriod=\"PT1M\" > <DataSource name=\"Application!*[System[(Level = 1 or Level = 2)]]\" /> <DataSource name=\"Security!*[System[(Level = 1 or Level = 2)]]\" /> <DataSource name=\"System!*[System[(Level = 1 or Level = 2)]]\" /></WindowsEventLog>",
@@ -128,14 +128,14 @@ Az alábbi példa azt a diagnosztikai konfigurációs XML-t ismerteti, amely a s
 "wadcfgxend": "\"><MetricAggregation scheduledTransferPeriod=\"PT1H\"/><MetricAggregation scheduledTransferPeriod=\"PT1M\"/></Metrics></DiagnosticMonitorConfiguration></WadCfg>"
 ```
 
-A fenti konfigurációban található mérőszámok definíciójának XML-csomópontja egy fontos konfigurációs elem, amely azt határozza meg, hogy az XML-ben a *PerformanceCounter* -csomópontban korábban definiált teljesítményszámlálók hogyan legyenek összesítve és tárolva. 
+A metrikák meghatározása xml csomópont a fenti konfiguráció fontos konfigurációs elem, mivel meghatározza, hogy a *Teljesítményszámláló* csomópont xml-ben korábban definiált teljesítményszámlálók hogyan legyenek összesítve és tárolva. 
 
 > [!IMPORTANT]
-> Ezek a metrikák a figyelési diagramokat és riasztásokat irányítják a Azure Portal.  A *resourceID* és **MetricAggregation** **metrikák** CSOMÓPONTJÁNAK szerepelnie kell a virtuális gép diagnosztikai konfigurációjában, ha látni szeretné a virtuális gép figyelési adatait a Azure Portalban. 
+> Ezek a metrikák hajtanak a figyelési diagramok és riasztások az Azure Portalon.  A **metrikák** csomópont az *erőforrás-azonosítóval* és **a Metrikaggregáció** szerepelnie kell a virtuális gép diagnosztikai konfigurációjában, ha szeretné látni a virtuális gép figyelési adatait az Azure Portalon. 
 > 
 > 
 
-Az alábbi példa az XML-t mutatja be a metrikák meghatározásához: 
+A következő példa a metrikadefiníciók xmljét mutatja be: 
 
 ```xml
 <Metrics resourceId="/subscriptions/subscription().subscriptionId/resourceGroups/resourceGroup().name/providers/Microsoft.Compute/virtualMachines/vmName">
@@ -144,39 +144,39 @@ Az alábbi példa az XML-t mutatja be a metrikák meghatározásához:
 </Metrics>
 ```
 
-A *resourceID* attribútum egyedi módon azonosítja a virtuális gépet az előfizetésében. Ügyeljen arra, hogy az előfizetés () és a resourceGroup () függvényt használja, hogy a sablon automatikusan frissítse ezeket az értékeket azon előfizetés és erőforráscsoport alapján, amelyre telepíteni kívánja.
+A *resourceID* attribútum egyedileg azonosítja a virtuális gépet az előfizetésben. Győződjön meg arról, hogy használja az subscription() és a resourceGroup() függvényeket, hogy a sablon automatikusan frissíti ezeket az értékeket az előfizetés és az erőforráscsoport alapján, amelybe telepíti.
 
-Ha több Virtual Machines hoz létre egy hurokban, a *resourceID* értéket egy copyIndex () függvénnyel kell feltöltenie az egyes virtuális gépek megfelelő megkülönböztetéséhez. A *xmlCfg* érték a következőképpen módosítható:  
+Ha egy hurokban több virtuális gépet hoz létre, a *resourceID* értékét egy copyIndex() függvénnyel kell feltöltenünk az egyes virtuális gépek helyes megkülönböztetéséhez. Az *xmlCfg* érték frissíthető, hogy ezt az alábbiak szerint támogassa:  
 
 ```json
 "xmlCfg": "[base64(concat(variables('wadcfgxstart'), variables('wadmetricsresourceid'), concat(parameters('vmNamePrefix'), copyindex()), variables('wadcfgxend')))]", 
 ```
 
-A *PT1M* és a *PT1H* MetricAggregation értéke egy percen belül összesíti az összesítést, illetve egy órán át összesítést.
+A *PT1M* és *PT1H* MetricAggregation értéke egy percalatt, illetve egy óra alatt összesítést jelent.
 
-## <a name="wadmetrics-tables-in-storage"></a>WADMetrics-táblák a tárolóban
-A fenti metrikai konfiguráció a diagnosztikai Storage-fiókban lévő táblákat a következő elnevezési konvenciókkal hozza létre:
+## <a name="wadmetrics-tables-in-storage"></a>WADMetrics táblák a tárolóban
+A metrikák fenti konfigurációja táblákat hoz létre a diagnosztikai tárfiókban a következő elnevezési konvenciókkal:
 
-* **WADMetrics**: standard előtag az összes WADMetrics-táblához
-* **PT1H** vagy **PT1M**: azt jelzi, hogy a tábla 1 órán vagy 1 percen belül összesített adatokat tartalmaz
-* **P10D**: azt jelzi, hogy a tábla 10 napig tartalmaz-e az adatok gyűjtésének megkezdése után.
-* **V2S**: karakterlánc-állandó
-* **ééééhhnn**: az a dátum, amikor a tábla elkezdte az adatok gyűjtését
+* **WADMetrics**: Standard előtag az összes WADMetrics táblához
+* **PT1H** vagy **PT1M**: Azt jelzi, hogy a táblázat 1 óra vagy 1 perc alatt tartalmaz összesített adatokat
+* **P10D**: Azt jelenti, hogy a táblázat 10 napig tartalmaz adatokat, amikor a tábla elkezdte az adatgyűjtést
+* **V2S**: Karakterlánc állandó
+* **yyyymmdd**: Az a dátum, amikor a táblázat megkezdte az adatgyűjtést
 
-Példa: a *WADMetricsPT1HP10DV2S20151108* olyan mérőszámokat tartalmaz, amelyek összesített száma egy óra alatt 10 nap, 11 – november – 2015    
+Példa: *WADMetricsPT1HP10DV2S20151108* mérőszámokat tartalmaz egy órán keresztül 10 napig, 2015.    
 
-Minden WADMetrics-tábla a következő oszlopokat tartalmazza:
+Minden WADMetrics tábla a következő oszlopokat tartalmazza:
 
-* **PartitionKey**: a partíciós kulcs a *resourceID* érték alapján épül fel a virtuálisgép-erőforrás egyedi azonosítására. Például:`002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>`  
-* **RowKey**: a következő formátumot követi `<Descending time tick>:<Performance Counter Name>`. A csökkenő időtartamú Tick-számítás a maximális idő, amely az összesítési időszak kezdetének időpontját jelöli. Ha például a mintavételi időszak 10 – Nov-2015 és 00:00Hrs UTC, akkor a számítás a következő lesz: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)`. A rendelkezésre álló memória bájtjainak teljesítményszámláló mezőjének értéke a következőhöz hasonlóan fog kinézni: `2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
-* **CounterName**: a teljesítményszámláló neve. Ez megegyezik az XML-konfigurációban definiált *counterSpecifier* .
-* **Maximum**: a teljesítményszámláló maximális értéke az összesítési időszakban.
-* **Minimum**: a teljesítményszámláló minimális értéke az összesítési időszakban.
-* **Összesen**: az összesítési időszakban jelentett teljesítményszámláló összes értékének összege.
-* **Darabszám**: a teljesítményszámláló számára jelentett értékek teljes száma.
-* **Average (átlag**): a teljesítményszámláló átlagos (teljes/darabszám) értéke az összesítési időszakban.
+* **PartitionKey**: A partíciókulcs az *erőforrásazonosító* értéke alapján épül fel a virtuális gép erőforrás egyedi azonosítására. Például:`002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>`  
+* **RowKey**: A `<Descending time tick>:<Performance Counter Name>`formátumot követi. A csökkenő időosztás számítása az a max időkullancs, mínusz az összesítési időszak kezdetének időpontja. Ha például a mintaidőszak 2015. `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)` A rendelkezésre álló bájtok teljesítményszámlálója esetében a sorkulcs így fog kinézni:`2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
+* **CounterName**: A teljesítményszámláló neve. Ez megegyezik az xml config-ban definiált *counterSpecifier-lel.*
+* **Maximum**: A teljesítményszámláló maximális értéke az összesítési időszakban.
+* **Minimum**: A teljesítményszámláló minimális értéke az összesítési időszakban.
+* **Összesen**: Az összesítési időszakban jelentett teljesítményszámláló összes értékének összege.
+* **Darabszám**: A teljesítményszámlálóhoz jelentett értékek teljes száma.
+* **Átlag**: A teljesítményszámláló átlagos (összesítése/darabszáma) értéke az összesítési időszakban.
 
-## <a name="next-steps"></a>További lépések
-* A diagnosztikai bővítménnyel rendelkező Windows rendszerű virtuális gépek teljes mintája: [201-VM-monitoring-Diagnostics-Extension](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-monitoring-diagnostics-extension)   
-* A Azure Resource Manager sablon üzembe helyezése [Azure PowerShell](../windows/ps-template.md) vagy [Azure parancssor](../linux/create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) használatával
-* További információ a [Azure Resource Manager sablonok létrehozásáról](../../resource-group-authoring-templates.md)
+## <a name="next-steps"></a>Következő lépések
+* A diagnosztikai bővítményt lebővítő Windows virtuális gépek teljes mintasablonját lásd: [201-vm-monitoring-diagnostics-extension](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-monitoring-diagnostics-extension)   
+* Az Azure Resource Manager-sablon üzembe helyezése az [Azure PowerShell](../windows/ps-template.md) vagy az [Azure parancssora](../linux/create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) használatával
+* További információ az [Azure Resource Manager-sablonok szerzőiről](../../resource-group-authoring-templates.md)

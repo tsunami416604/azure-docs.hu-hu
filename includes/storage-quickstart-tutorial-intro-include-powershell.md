@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 1f8f8d314a8bb37a08b3696f597b395a8a4beb8e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67179343"
 ---
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
@@ -26,18 +26,18 @@ Get-AzLocation | select Location
 $location = "eastus"
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Hozzon létre egy Azure-erőforráscsoportot [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
+Hozzon létre egy Azure-erőforráscsoportot a [New-AzResourceGroup segítségével.](/powershell/module/az.resources/new-azresourcegroup) Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
 ```powershell
 $resourceGroup = "myResourceGroup"
 New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
-## <a name="create-a-storage-account"></a>Tárfiók létrehozása
+## <a name="create-a-storage-account"></a>Create a storage account
 
-Hozzon létre egy szabványos, általános célú tárfiókot LRS-replikációval használatával [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount). Következő lépésként kérje le a tárfiókkörnyezetet, amely meghatározza a használni kívánt tárfiókot. Ha a tárfiókokkal való munka során erre a környezetre hivatkozik, nem kell minden alkalommal megadnia a hitelesítő adatokat. A következő példa használatával egy *mystorageaccount* nevű tárfiókot hozhat létre helyileg redundáns tárolással (LRS) és (alapértelmezés szerint bekapcsolt) blobtitkosítással.
+Hozzon létre egy szabványos, általános célú tárfiókot LRS replikációval a [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount)használatával. Következő lépésként kérje le a tárfiókkörnyezetet, amely meghatározza a használni kívánt tárfiókot. Ha a tárfiókokkal való munka során erre a környezetre hivatkozik, nem kell minden alkalommal megadnia a hitelesítő adatokat. A következő példa használatával egy *mystorageaccount* nevű tárfiókot hozhat létre helyileg redundáns tárolással (LRS) és (alapértelmezés szerint bekapcsolt) blobtitkosítással.
 
 ```powershell
 $storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroup `

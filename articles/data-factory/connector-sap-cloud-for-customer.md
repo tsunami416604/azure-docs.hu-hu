@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása az SAP-felhőbe vagy az ügyfél számára
-description: Megtudhatja, hogyan másolhat adatok az SAP-felhőből az ügyfelek által támogatott fogadó adattárakba (vagy) a támogatott forrás-adattárakból az SAP-felhőbe az ügyfelek számára a Data Factory használatával.
+title: Adatok másolása az SAP Cloud szolgáltatásból/-be az ügyfél számára
+description: Megtudhatja, hogyan másolhat adatokat az SAP Cloud for Customer szolgáltatásból a támogatott fogadó adattárakba (vagy) a támogatott forrásadat-tárolókból az SAP Cloud for Customer szolgáltatásba a Data Factory használatával.
 services: data-factory
 documentationcenter: ''
 ms.author: jingwang
@@ -13,52 +13,52 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2019
 ms.openlocfilehash: 0b0352632491dbfc46ed4819653c6cb902eee4ce
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74923719"
 ---
-# <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Adatok másolása az SAP Cloud for Customer (C4C) szolgáltatásból Azure Data Factory használatával
+# <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Adatok másolása az SAP Cloud for Customer (C4C) szolgáltatásból az Azure Data Factory használatával
 
-Ez a cikk azt ismerteti, hogyan használható a másolási tevékenység a Azure Data Factoryban az adatok az SAP-felhőbe való másolásához az ügyfél számára (C4C). A másolási [tevékenység áttekintő](copy-activity-overview.md) cikkében található, amely a másolási tevékenység általános áttekintését jeleníti meg.
+Ez a cikk bemutatja, hogyan használhatja a másolási tevékenység az Azure Data Factory adatok másolása/az SAP Cloud for Customer (C4C). A [másolási tevékenység áttekintése](copy-activity-overview.md) cikkre épül, amely a másolási tevékenység általános áttekintését mutatja be.
 
 >[!TIP]
->Az ADF SAP-adatintegrációs forgatókönyvre vonatkozó általános támogatásának megismeréséhez tekintse meg az [SAP-Adatintegráció Azure Data Factory tanulmány használatával](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) részletes bevezetést, comparsion és útmutatást.
+>Ha meg szeretné tudni, hogy az ADF általános támogatást nyújt az SAP-adatintegrációs forgatókönyvhöz, tekintse meg az [SAP-adatok integrálását az Azure Data Factory használatával című tanulmányban,](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) részletes bevezetéssel, összevetéssel és útmutatással.
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
-Az ügyfél-összekötőhöz tartozó SAP-felhő a következő tevékenységeknél támogatott:
+Ez az SAP Cloud for Customer-összekötő a következő tevékenységek esetén támogatott:
 
-- [Másolási tevékenység](copy-activity-overview.md) [támogatott forrás/fogadó mátrixtal](copy-activity-overview.md)
+- [Tevékenység másolása](copy-activity-overview.md) [támogatott forrás/fogadó mátrixcal](copy-activity-overview.md)
 - [Keresési tevékenység](control-flow-lookup-activity.md)
 
-Az SAP-felhőből származó adatok az ügyfélnek bármilyen támogatott fogadó adattárba másolhatók, vagy bármely támogatott forrás-adattárból másolhatók adatok az SAP Cloud for Customer szolgáltatásba. A másolási tevékenység által a forrásként/mosogatóként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
+Az SAP Cloud for Customer szolgáltatásból adatokat másolhat bármely támogatott fogadóadattárba, vagy adatokat másolhat bármely támogatott forrásadattárból az SAP Cloud for Customer szolgáltatásba. A másolási tevékenység által forrásként/fogadóként támogatott adattárak listáját a [Támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblában található.
 
-Ez az összekötő lehetővé teszi, hogy Azure Data Factory az adatok másolását az SAP-felhőbe, az SAP Cloud for Sales, az SAP Cloud for Service és az SAP Cloud for Service szolgáltatással, valamint a közösségi szerepvállalási megoldásokhoz.
+Pontosabban ez az összekötő lehetővé teszi az Azure Data Factory számára, hogy adatokat másoljon/az SAP Cloud for Customer,beleértve az SAP Cloud for Sales, az SAP Cloud for Service és az SAP Cloud for Social Engagement megoldásokat.
 
-## <a name="getting-started"></a>Bevezetés
+## <a name="getting-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-A következő szakaszokban részletesen ismertetjük azokat a tulajdonságokat, amelyeket az SAP Cloud for Customer Connector szolgáltatáshoz tartozó entitások definiálásához használtak Data Factory.
+A következő szakaszok az SAP Cloud for Customer-összekötőre jellemző Data Factory-entitások definiálásához használt tulajdonságok részleteit ismertetik.
 
-## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
+## <a name="linked-service-properties"></a>Csatolt szolgáltatás tulajdonságai
 
-Az SAP Cloud for Customer társított szolgáltatáshoz a következő tulajdonságok támogatottak:
+Az SAP Cloud for Customer linked szolgáltatás a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **SapCloudForCustomer**. | Igen |
-| url | Az SAP-C4C OData szolgáltatásának URL-címe. | Igen |
-| felhasználónév | Adja meg az SAP-C4C való kapcsolódáshoz használandó felhasználónevet. | Igen |
-| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
-| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. | Nem, forrás, igen, fogadó |
+| type | A típustulajdonságot **sapCloudForCustomer**tulajdonságra kell állítani. | Igen |
+| url | Az SAP C4C OData szolgáltatás URL-címe. | Igen |
+| felhasználónév | Adja meg az SAP C4C-hez csatlakozni kívánt felhasználónevet. | Igen |
+| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. Jelölje meg ezt a mezőt SecureStringként a Data Factory biztonságos tárolásához, vagy [hivatkozzon az Azure Key Vaultban tárolt titkos fájlokra.](store-credentials-in-key-vault.md) | Igen |
+| connectVia | Az adattárhoz való csatlakozáshoz használandó [integrációs futásidő.](concepts-integration-runtime.md) Ha nincs megadva, az alapértelmezett Azure-integrációs runtime-ot használja. | Nem a forráshoz, Igen a mosogatóhoz |
 
 >[!IMPORTANT]
->Az SAP felhőbe való adatmásoláshoz az ügyfél számára explicit módon [hozzon létre egy Azure IR](create-azure-integration-runtime.md#create-azure-ir) az SAP-felhő közelében az ügyfél számára, és társítsa a társított szolgáltatáshoz a következő példában látható módon:
+>Az SAP Cloud for Customer szolgáltatásba történő másoláshoz hozzon létre kifejezetten [egy Azure-kapcsolati csatolót](create-azure-integration-runtime.md#create-azure-ir) az SAP Cloud for Customer közelében lévő hellyel, és társítsa a csatolt szolgáltatáshoz a következő példaként:
 
-**Példa**
+**Példa:**
 
 ```json
 {
@@ -83,16 +83,16 @@ Az SAP Cloud for Customer társított szolgáltatáshoz a következő tulajdons�
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
-Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. Ez a szakasz az SAP Cloud for Customer adatkészlet által támogatott tulajdonságok listáját tartalmazza.
+Az adatkészletek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját az [adatkészletekről](concepts-datasets-linked-services.md) szóló cikkben olvashatja. Ez a szakasz az SAP Cloud által az ügyféladatkészlethez támogatott tulajdonságok listáját tartalmazza.
 
-Ha az SAP-felhőből szeretne adatokat másolni az ügyfél számára, állítsa az adatkészlet Type (típus) tulajdonságát **SapCloudForCustomerResource**értékre. A következő tulajdonságok támogatottak:
+Ha adatokat szeretne másolni az SAP Cloud for Customer szolgáltatásból, állítsa az adatkészlet típustulajdonságát az **SapCloudForCustomerResource beállításra.** A következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **SapCloudForCustomerResource** |Igen |
-| elérési út | Az SAP C4C OData entitás elérési útjának megadása. |Igen |
+| type | Az adatkészlet típustulajdonságát a következőre kell állítani: **SapCloudForCustomerResource** |Igen |
+| path | Adja meg az SAP C4C OData entitás elérési útját. |Igen |
 
-**Példa**
+**Példa:**
 
 ```json
 {
@@ -113,20 +113,20 @@ Ha az SAP-felhőből szeretne adatokat másolni az ügyfél számára, állítsa
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 
-A tevékenységek definiálásához elérhető csoportok és tulajdonságok teljes listáját a [folyamatok](concepts-pipelines-activities.md) című cikkben találja. Ez a szakasz az SAP Cloud által az ügyfél forrásaként támogatott tulajdonságok listáját tartalmazza.
+A tevékenységek definiálására rendelkezésre álló szakaszok és tulajdonságok teljes listáját a [Folyamatok](concepts-pipelines-activities.md) című cikkben olvashat. Ez a szakasz az SAP Cloud for Customer forrás által támogatott tulajdonságok listáját tartalmazza.
 
-### <a name="sap-c4c-as-source"></a>SAP-C4C forrásként
+### <a name="sap-c4c-as-source"></a>SAP C4C forrásként
 
-Az SAP felhőből az ügyfélnek történő adatmásoláshoz állítsa a forrás típusát a másolás tevékenység **SapCloudForCustomerSource**. A másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
+Ha adatokat szeretne másolni az SAP Cloud for Customer szolgáltatásból, állítsa be a forrástípust a másolási tevékenységben az **SapCloudForCustomerSource mezőre.** A másolási tevékenység **forrásszakaszában** a következő tulajdonságok támogatottak:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **SapCloudForCustomerSource**  | Igen |
-| lekérdezés | Az adatolvasáshoz válassza az egyéni OData-lekérdezést. | Nem |
+| type | A típustulajdonságot a következőre kell állítani: **SapCloudForCustomerSource**  | Igen |
+| lekérdezés | Adja meg az adatok olvasásához az egyéni OData lekérdezést. | Nem |
 
-Példa lekérdezésre egy adott napra vonatkozó adat lekéréséhez: `"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
+Mintalekérdezés egy adott nap adatainak bekéséhez:`"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
 
-**Példa**
+**Példa:**
 
 ```json
 "activities":[
@@ -158,17 +158,17 @@ Példa lekérdezésre egy adott napra vonatkozó adat lekéréséhez: `"query": 
 ]
 ```
 
-### <a name="sap-c4c-as-sink"></a>SAP-C4C fogadóként
+### <a name="sap-c4c-as-sink"></a>SAP C4C mosogatóként
 
-Ha az ügyfél számára szeretne Adatmásolást készíteni az SAP-felhőbe, a másolási tevékenységben állítsa be a fogadó típusát a **SapCloudForCustomerSink**értékre. A másolási tevékenység fogadója szakasz a következő tulajdonságokat támogatja:
+Ha adatokat szeretne másolni az SAP Cloud for Customer szolgáltatásba, állítsa be a fogadó típusát a másolási tevékenységben az **SapCloudForCustomerSink**beállításra. A másolási tevékenység **fogadója** a következő tulajdonságokat támogatja:
 
-| Tulajdonság | Leírás | Szükséges |
+| Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| type | A Type tulajdonságot a következőre kell beállítani: **SapCloudForCustomerSink**  | Igen |
-| writeBehavior | A művelet írási viselkedése. Lehet "Insert", "Update". | Nem. Alapértelmezett "Beszúrás". |
-| writeBatchSize | Az írási művelet kötegének mérete. A legjobb teljesítmény eléréséhez használt köteg mérete eltérő lehet a különböző táblák vagy kiszolgálók esetében. | Nem. Alapértelmezett 10. |
+| type | A típustulajdonságot a következőre kell állítani: **SapCloudForCustomerSink**  | Igen |
+| writeBehavior (írási viselkedés) | A művelet írási viselkedése. Lehet "Beszúrás", "Frissítés". | Nem. Alapértelmezett "Beszúrás". |
+| writeBatchSize | Az írási művelet kötegmérete. A kötegméretet, hogy a legjobb teljesítményt eltérő lehet a különböző tábla vagy kiszolgáló. | Nem. Alapértelmezett 10. |
 
-**Példa**
+**Példa:**
 
 ```json
 "activities":[
@@ -207,32 +207,32 @@ Ha az ügyfél számára szeretne Adatmásolást készíteni az SAP-felhőbe, a 
 ]
 ```
 
-## <a name="data-type-mapping-for-sap-cloud-for-customer"></a>Adattípusok leképezése az SAP Cloud ügyfél számára
+## <a name="data-type-mapping-for-sap-cloud-for-customer"></a>Adattípus-leképezés az SAP Cloud számára az ügyfél számára
 
-Az SAP-felhőből az ügyfélnek történő adatmásoláskor a következő leképezések használhatók az SAP Cloud for Customer adattípusokhoz az ideiglenes adattípusok Azure Data Factoryához. A másolási tevékenység a forrás sémájának és adattípusának a fogadóba való leképezésével kapcsolatos tudnivalókat lásd: [séma-és adattípus-leképezések](copy-activity-schema-and-type-mapping.md) .
+Amikor adatokat másol az SAP Cloud for Customer szolgáltatásból, a következő leképezéseket használja a rendszer az SAP Cloud for Customer data types-ből az Azure Data Factory köztes adattípusaiba. A [Séma- és adattípus-hozzárendelések](copy-activity-schema-and-type-mapping.md) című témakörből megtudhatja, hogy a másolási tevékenység hogyan képezi le a forrássémát és az adattípust a fogadóhoz.
 
-| Az SAP C4C OData adattípusa | Az adatgyár átmeneti adattípusa |
+| SAP C4C adattípus | Adatgyár köztes adattípusa |
 |:--- |:--- |
-| EDM. Binary | Bájt [] |
+| Edm.Bináris | Bájt[] |
 | Edm.Boolean | Logikai |
-| EDM. byte | Bájt [] |
-| EDM. DateTime | Dátum és idő |
-| EDM. decimális | Decimális |
+| Edm.Bájt | Bájt[] |
+| Edm.DateTime | DateTime |
+| Edm.Decim | Decimal |
 | Edm.Double | Double |
-| EDM. Single | Önálló |
-| EDM. GUID | GUID |
-| EDM. Int16 | Int16 |
+| Edm.Egyetlen | Egyirányú |
+| Edm.Guid | Guid |
+| Edm.Int16 | Int16 |
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
-| EDM. sbyte érték | Int16 |
+| Edm.SByte | Int16 |
 | Edm.String | Sztring |
-| EDM. Time | időtartam |
-| Edm.DateTimeOffset | DateTimeOffset |
+| Edm.Idő | időtartam |
+| Edm.DateTimeOffset | DateTimeOffset (Dátumidő-eltolás) |
 
 
-## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
+## <a name="lookup-activity-properties"></a>A keresgaszíntevékenység tulajdonságai
 
-A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
+A tulajdonságokrészleteinek megismeréséhez ellenőrizze a [Kereskövetési tevékenységet.](control-flow-lookup-activity.md)
 
-## <a name="next-steps"></a>Következő lépések
-A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).
+## <a name="next-steps"></a>További lépések
+A forrásként támogatott és fogadóként az Azure Data Factory másolási tevékenysége által támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats)című témakörben tetszhet.

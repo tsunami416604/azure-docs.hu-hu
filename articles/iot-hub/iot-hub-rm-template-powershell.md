@@ -1,6 +1,6 @@
 ---
-title: Azure-IoT Hub létrehozása sablon használatával (PowerShell) | Microsoft Docs
-description: Egy Azure Resource Manager-sablon használata az Azure PowerShell IoT Hub létrehozásához.
+title: Hozzon létre egy Azure IoT Hub sablon (PowerShell) | Microsoft dokumentumok
+description: Azure Resource Manager-sablon használata az Azure PowerShell használatával ioT Hub létrehozásához.
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -9,31 +9,31 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.openlocfilehash: a1f878361a96c5584f43b31135d79ff799f66efa
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75976626"
 ---
-# <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>IoT hub létrehozása Azure Resource Manager sablon használatával (PowerShell)
+# <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>IoT-központ létrehozása az Azure Resource Manager-sablonnal (PowerShell)
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-Megtudhatja, hogyan hozhat létre egy IoT Hub és egy fogyasztói csoportot egy Azure Resource Manager sablon használatával. A Resource Manager-sablonok JSON-fájlok, melyek az adott megoldáshoz telepítendő erőforrásokat határozzák meg. További információ a Resource Manager-sablonok fejlesztéséről: [Azure Resource Manager dokumentáció](https://docs.microsoft.com/azure/azure-resource-manager/).
+Megtudhatja, hogyan hozhat létre egy IoT Hub- és egy fogyasztói csoportot egy Azure Resource Manager-sablon használatával. A Resource Manager-sablonok JSON-fájlok, melyek az adott megoldáshoz telepítendő erőforrásokat határozzák meg. Az Erőforrás-kezelő sablonjainak fejlesztéséről az [Azure Resource Manager dokumentációjában](https://docs.microsoft.com/azure/azure-resource-manager/)olvashat bővebben.
 
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
-Az ebben a rövid útmutatóban használt Resource Manager-sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-iothub-with-consumergroup-create/)származik. A sablon egy másolata:
+A rövid útmutatóban használt Resource Manager-sablon az [Azure gyorsindítási sablonjaiból származik.](https://azure.microsoft.com/resources/templates/101-iothub-with-consumergroup-create/) Itt van egy példányát a sablon:
 
 [!code-json[iothub-creation](~/quickstart-templates/101-iothub-with-consumergroup-create/azuredeploy.json)]
 
-A sablon létrehoz egy Azure IOT hubot három végponttal (eventhub, felhőből eszközre és üzenetküldéssel) és egy fogyasztói csoporttal. További sablon-példákat az [Azure Gyorsindítás sablonjai](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Devices&pageNumber=1&sort=Popular)című témakörben talál. Az IOT hub-sablon sémája [itt](https://docs.microsoft.com/azure/templates/microsoft.devices/iothub-allversions)található.
+A sablon létrehoz egy Azure Iot hub három végpont (eventhub, felhő-eszköz és üzenetküldés), és egy fogyasztói csoport. További sablonmintákért tekintse meg [az Azure gyorsindítási sablonjait.](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Devices&pageNumber=1&sort=Popular) Az Iot Hub sablonséma [itt](https://docs.microsoft.com/azure/templates/microsoft.devices/iothub-allversions)található.
 
-A sablonok üzembe helyezésének számos módja van.  Ebben az oktatóanyagban Azure PowerShell használ.
+A sablonok üzembe helyezésének számos módja van.  Az Azure PowerShell ebben az oktatóanyagban.
 
-A PowerShell-szkript futtatásához válassza a **kipróbálás** lehetőséget az Azure Cloud Shell megnyitásához. A szkript beillesztéséhez kattintson a jobb gombbal a rendszerhéjra, majd válassza a Beillesztés parancsot:
+A PowerShell-parancsfájl futtatásához válassza **a Próbálja ki** az Azure Cloud rendszerhéj megnyitásához. A parancsfájl beillesztéséhez kattintson a jobb gombbal a rendszerhéjra, és válassza a Beillesztés parancsot:
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -47,24 +47,24 @@ New-AzResourceGroupDeployment `
     -iotHubName $iotHubName
 ```
 
-Ahogy a PowerShell-szkriptből is látható, a használt sablon az Azure Gyorsindítás sablonjaiból származik. A saját használatához először fel kell töltenie a sablonfájlt a Cloud shellbe, majd a `-TemplateFile` kapcsoló használatával kell megadnia a fájlnevet.  Példaként tekintse meg [a sablon üzembe helyezése](../azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell#deploy-the-template)című témakört.
+Ahogy a PowerShell-parancsfájlból is láthatja, a használt sablon az Azure gyorsindítási sablonjaiból származik. A saját használatához először fel kell töltenie a sablonfájlt a `-TemplateFile` felhőbeli rendszerhéjba, majd a kapcsolóval meg kell adnia a fájl nevét.  Például a Sablon telepítése című [témakörben olvashat.](../azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell#deploy-the-template)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most, hogy Azure Resource Manager sablonnal telepített egy IoT hub-t, érdemes megvizsgálnia az alábbiakat:
+Most már üzembe helyezett egy IoT-központot egy Azure Resource Manager-sablon használatával, további lehetőségeket is megvizsgálhat:
 
-* További információ a [IoT hub erőforrás-szolgáltató REST API][lnk-rest-api]képességeiről.
-* A Azure Resource Manager képességeinek megismeréséhez olvassa el [Azure Resource Manager áttekintést][lnk-azure-rm-overview] .
-* A sablonokban használandó JSON-szintaxis és-tulajdonságok megtekintéséhez lásd: [Microsoft. Devices erőforrástípusok](/azure/templates/microsoft.devices/iothub-allversions).
+* Az [IoT Hub-erőforrás-szolgáltató REST API][lnk-rest-api]képességeiről olvashat.
+* Olvassa el [az Azure Resource Manager áttekintését,][lnk-azure-rm-overview] ha többet szeretne megtudni az Azure Resource Manager képességeiről.
+* A JSON szintaxisát és a sablonokban használandó tulajdonságokat a [Microsoft.Devices erőforrástípusok](/azure/templates/microsoft.devices/iothub-allversions)című témakörben olvashat.
 
-Ha többet szeretne megtudni a IoT Hub fejlesztéséről, tekintse meg a következő cikkeket:
+Ha többet szeretne tudni az IoT Hub fejlesztéseiről, olvassa el az alábbi cikkeket:
 
-* [A C SDK bemutatása][lnk-c-sdk]
+* [Bevezetés a C SDK-ba][lnk-c-sdk]
 * [Azure IoT SDK-k][lnk-sdks]
 
-A IoT Hub képességeinek további megismeréséhez lásd:
+Az IoT Hub képességeinek további megismeréséhez lásd:
 
-* [AI üzembe helyezése az Edge-eszközökön Azure IoT Edge][lnk-iotedge]
+* [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással][lnk-iotedge]
 
 <!-- Links -->
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/

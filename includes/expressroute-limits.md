@@ -8,41 +8,41 @@ ms.topic: include
 ms.date: 07/25/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 1fc63dc53d61a8b2e26f97cc09a359b3f2c7665c
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: d1402bcc0c46003429e1809e8d09e9662218cd82
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75901861"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334784"
 ---
-| Erőforrás | Alapértelmezett/maximális korlát |
+| Erőforrás | Korlát |
 | --- | --- |
-| ExpressRoute áramkörök/előfizetés |10 |
-| ExpressRoute áramkörök régiónként/előfizetéssel, Azure Resource Manager |10 |
-| Az Azure Private-partnereknek a ExpressRoute standard használatával hirdetett útvonalak maximális száma |4,000 |
-| Az Azure Private peering szolgáltatásban hirdetett útvonalak maximális száma az ExpressRoute Premium bővítménnyel |10,000 |
-| Az Azure-beli privát társak által a VNet ExpressRoute-kapcsolatok esetében hirdetett útvonalak maximális száma |200 |
-| A Microsoft-partnerek számára a ExpressRoute standard használatával hirdetett útvonalak maximális száma |200 |
-| A Microsoft-partnerek számára a ExpressRoute Premium bővítménysel hirdetett útvonalak maximális száma |200 |
-| Ugyanahhoz a virtuális hálózathoz ugyanahhoz a társi helyhez kapcsolódó ExpressRoute-áramkörök maximális száma |4 |
-| Ugyanahhoz a virtuális hálózathoz kapcsolódó ExpressRoute-áramkörök maximális száma különböző egymásra vonatkozó helyen |4 |
-| A ExpressRoute áramkörben engedélyezett virtuális hálózati kapcsolatok száma |Tekintse meg a [virtuális hálózatok száma ExpressRoute áramköri](#vnetpercircuit) táblában.  |
+| ExpressRoute-áramkörök előfizetésenként |10 |
+| ExpressRoute-áramkörök régiónként és előfizetésenként, az Azure Resource Manager rel |10 |
+| Az ExpressRoute Standard szolgáltatással az Azure privát társviszony-létesítési útvonalai nak maximális száma |4,000 |
+| Az ExpressRoute Premium bővítménysel az Azure privát társviszony-létesítési útvonalai maximális száma |10,000 |
+| Az Azure-beli privát társviszony-létesítésből meghirdetett útvonalak maximális száma az ExpressRoute-kapcsolat virtuális hálózati címterületéről |200 |
+| A Microsoft ExpressRoute Standard szolgáltatással történő társviszony-létesítésre meghirdetett útvonalak maximális száma |200 |
+| A Microsoft-társviszony-létesítésre az ExpressRoute Premium bővítménysel meghirdetett útvonalak maximális száma |200 |
+| Ugyanazon a virtuális hálózathoz ugyanahhoz a társviszony-létesítési helyen lévő ExpressRoute-áramkörök maximális száma |4 |
+| Az azonos virtuális hálózathoz különböző társviszony-létesítési helyeken lévő ExpressRoute-áramkörök maximális száma |4 |
+| Engedélyezett virtuális hálózati kapcsolatok száma ExpressRoute-kapcsolatonként |Tekintse meg a [virtuális hálózatok száma ExpressRoute-áramköri táblánként.](#vnetpercircuit)  |
 
-#### <a name="vnetpercircuit"></a>Virtuális hálózatok száma ExpressRoute áramkörben
-| **Áramkör mérete** | **A standard szintű virtuális hálózati kapcsolatok száma** | **A prémium szintű bővítménysel rendelkező virtuális hálózati kapcsolatok száma** |
+#### <a name="number-of-virtual-networks-per-expressroute-circuit"></a><a name="vnetpercircuit"></a>Virtuális hálózatok száma ExpressRoute-kapcsolatonként
+| **Áramkör mérete** | **A standard hoz való virtuális hálózati kapcsolatok száma** | **Virtuális hálózati kapcsolatok száma prémium bővítőhe-val** |
 | --- | --- | --- |
-| 50 Mb/s |10 |20 |
-| 100 Mb/s |10 |25 |
-| 200 Mb/s |10 |25 |
-| 500 Mb/s |10 |40 |
-| 1 Gb/s |10 |50 |
+| 50 Mbps |10 |20 |
+| 100 Mbps |10 |25 |
+| 200 Mbps |10 |25 |
+| 500 Mbps |10 |40 |
+| 1 Gbps |10 |50 |
 | 2 Gbps |10 |60 |
 | 5 Gbps |10 |75 |
-| 10 Gb/s |10 |100 |
-| 40 GB/s * |10 |100 |
-| 100 GB/s * |10 |100 |
+| 10 Gbps |10 |100 |
+| 40 Gbps* |10 |100 |
+| 100 Gbps* |10 |100 |
 
-**100 GB/s ExpressRoute csak közvetlen*
+**Csak 100 Gb/s sebességű ExpressRoute közvetlen*
 
 > [!NOTE]
-> Global Reach kapcsolatok száma a ExpressRoute áramkör virtuális hálózati kapcsolatainak korlátja. A 10 GB/s-os prémium szintű áramkör például 5 Global Reach kapcsolatot és 95 kapcsolatot tesz lehetővé a ExpressRoute-átjárók vagy a 95-es Global Reach-kapcsolatok, valamint az ExpressRoute-átjárók és a 100-as kapcsolatok korlátja között. az áramkörhöz.
+> A globális elérési kapcsolatok az ExpressRoute-kapcsolatonkénti virtuális hálózati kapcsolatok korláthoz számítanak. Egy 10 Gb/s-os prémium verziópéldául 5 globális elérési kapcsolatot és 95 kapcsolatot engedélyezne az ExpressRoute átjárókhoz vagy 95 globális elérési kapcsolathoz, valamint 5 kapcsolatot az ExpressRoute-átjárókhoz vagy bármely más kombinációhoz a 100-as határig. az áramkörhöz.

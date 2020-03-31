@@ -1,6 +1,6 @@
 ---
-title: Adatok tömeges másolása egy adatbázisból az Azure Adatkezelőba a Azure Data Factory sablon használatával
-description: Ebből a cikkből megtudhatja, hogyan használhat egy Azure Data Factory sablont egy adatbázisból az Azure-ba való tömeges másoláshoz Adatkezelő
+title: Másolás tömegesen egy adatbázisból az Azure Data Explorerbe az Azure Data Factory sablon használatával
+description: Ebben a cikkben megtudhatja, hogy egy Azure Data Factory sablon használatával másolhat tömegesen egy adatbázisból az Azure Data Explorer
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,39 +9,39 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/08/2019
 ms.openlocfilehash: 884f4e956b37c2def6c25d0acdf20f15eddf7767
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76293555"
 ---
-# <a name="copy-in-bulk-from-a-database-to-azure-data-explorer-by-using-the-azure-data-factory-template"></a>Adatok tömeges másolása egy adatbázisból az Azure Adatkezelőba a Azure Data Factory sablon használatával 
+# <a name="copy-in-bulk-from-a-database-to-azure-data-explorer-by-using-the-azure-data-factory-template"></a>Másolás tömegesen egy adatbázisból az Azure Data Explorerbe az Azure Data Factory sablon használatával 
 
-Az Azure Adatkezelő egy gyors, teljes körűen felügyelt, adatelemzési szolgáltatás. Valós idejű elemzést biztosít nagy mennyiségű, több forrásból, például alkalmazásokból, webhelyekről és IoT származó adatokból. 
+Az Azure Data Explorer egy gyors, teljes körűen felügyelt adatelemzési szolgáltatás. Valós idejű elemzést kínál nagy mennyiségű adatról, amelyek számos forrásból, például alkalmazásokból, webhelyekről és IoT-eszközökből származnak. 
 
-Ha az Oracle Server-, Netezza-, Teradata-vagy SQL Server-adatbázisból szeretne adatokat másolni az Azure Adatkezelőba, nagy mennyiségű adatmennyiséget kell betölteni több táblából. Az adatok általában az egyes táblákban particionálva vannak, így egyetlen táblából párhuzamosan több szálat tartalmazó sorok is betölthetők. Ez a cikk az ezekben a forgatókönyvekben használandó sablont ismerteti.
+Ha adatokat szeretne másolni egy adatbázisból az Oracle Server, a Netezza, a Teradata vagy az SQL Server szolgáltatásból az Azure Data Explorerbe, hatalmas mennyiségű adatot kell betöltenie több táblából. Az adatokat általában minden táblában particionálni kell, hogy egyetlen táblából párhuzamosan több szálat tartalmazó sorokat tölthessen be. Ez a cikk az ilyen esetekben használható sablont ismerteti.
 
-[Azure Data Factory sablonok](/azure/data-factory/solution-templates-introduction) előre definiált Data Factory folyamatok. Ezek a sablonok segíthetnek a Data Factory gyors megkezdésében, és a fejlesztési idő csökkentésében az adatintegrációs projektekben. 
+[Az Azure Data Factory-sablonok](/azure/data-factory/solution-templates-introduction) előre definiált Data Factory-folyamatok. Ezek a sablonok segítségével gyorsan elkezdheti a Data Factory programot, és csökkentheti az adatintegrációs projektek fejlesztési idejét. 
 
-A *tömeges másolást az adatbázisból az Azure adatkezelő* sablonba a *keresési* és a *foreach* tevékenységek segítségével hozhatja létre. A gyorsabb adatmásoláshoz a sablonnal több folyamat is létrehozható egy adatbázis vagy egy tábla alapján. 
+Hozzon létre a *tömeges másolás adatbázisból az Azure Data Explorer* sablon segítségével *Lookup* és *ForEach* tevékenységek használatával. A gyorsabb adatmásolás érdekében a sablon segítségével adatbázisonként vagy táblánként több folyamatot hozhat létre. 
 
 > [!IMPORTANT]
-> Ügyeljen arra, hogy a másolni kívánt adatmennyiséghez megfelelő eszközt használja.
-> * A *tömeges másolás az adatbázisból az azure adatkezelő* sablonba nagy mennyiségű adatok másolásához az adatbázisokból, például az SQL Serverből és a Google BigQuery az Azure Adatkezelőba. 
-> * A [*Data Factory adatok másolása eszköz*](data-factory-load-data.md) használatával néhány táblázatot kis vagy közepes mennyiségű adatból másolhat az Azure Adatkezelőba. 
+> Ügyeljen arra, hogy a másolni kívánt adatmennyiségnek megfelelő eszközt használja.
+> * Az *adatbázisból* az Azure Data Explorer sablonba nagy mennyiségű adatot másolhat adatbázisokból, például az SQL-kiszolgálóról és a Google BigQueryből az Azure Data Explorerbe. 
+> * A [*Data Factory Copy Data eszközzel*](data-factory-load-data.md) néhány kis vagy közepes mennyiségű adatot feldolgozó táblát másolhat az Azure Data Explorerbe. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-* [Azure adatkezelő-fürt és-adatbázis](create-cluster-database-portal.md).
-* [Hozzon létre egy adatelőállítót](data-factory-load-data.md#create-a-data-factory).
-* Adatbázis adatforrása.
+* [Egy Azure Data Explorer-fürt és -adatbázis.](create-cluster-database-portal.md)
+* [Hozzon létre egy adat-előállító](data-factory-load-data.md#create-a-data-factory).
+* Az adatbázis ban lévő adatforrás.
 
 ## <a name="create-controltabledataset"></a>ControlTableDataset létrehozása
 
-A *ControlTableDataset* azt jelzi, hogy milyen adatok lesznek átmásolva a forrásról a folyamat célhelyére. A sorok száma az adatmásoláshoz szükséges folyamatok teljes számát jelzi. A ControlTableDataset a forrásadatbázis részeként kell meghatároznia.
+*A ControlTableDataset* azt jelzi, hogy milyen adatok lesznek másolva a forrásból a folyamatban lévő célhoz. A sorok száma az adatok másolásához szükséges folyamatok teljes számát jelzi. A ControlTableDataset-et a forrásadatbázis részeként kell definiálni.
 
-A következő kódban látható egy példa a SQL Server forrástábla formátumára:
+Az SQL Server forrástábla formátumának egy példája a következő kódban látható:
     
 ```sql   
 CREATE TABLE control_table (
@@ -51,69 +51,69 @@ ADXTableName varchar(255)
 );
 ```
 
-A kód elemeit a következő táblázat ismerteti:
+A kódelemeket a következő táblázat ismerteti:
 
 |Tulajdonság  |Leírás  | Példa
 |---------|---------| ---------|
 |PartitionId   |  A másolási sorrend | 1  |  
-|SourceQuery   |  Az a lekérdezés, amely azt jelzi, hogy mely adatcsatornák lesznek átmásolva a folyamat futási ideje alatt | <br>`select * from table where lastmodifiedtime  LastModifytime >= ''2015-01-01 00:00:00''>` </br>    
-|ADXTableName  |  A céltábla neve | MyAdxTable       |  
+|Forráslekérdezés   |  A lekérdezés, amely azt jelzi, hogy mely adatokat másolja a rendszer a folyamat futásideje alatt | <br>`select * from table where lastmodifiedtime  LastModifytime >= ''2015-01-01 00:00:00''>` </br>    
+|ADXTableName  |  A céltábla neve | MyAdxTábla       |  
 
-Ha a ControlTableDataset formátuma eltérő, hozzon létre egy hasonló ControlTableDataset a formátumhoz.
+Ha a ControlTableDataset más formátumban, hozzon létre egy hasonló ControlTableDataset az Ön formátumban.
 
-## <a name="use-the-bulk-copy-from-database-to-azure-data-explorer-template"></a>Az adatbázisból származó tömeges másolás használata az Azure Adatkezelő sablonba
+## <a name="use-the-bulk-copy-from-database-to-azure-data-explorer-template"></a>A tömeges másolás az adatbázisból az Azure Data Explorer sablonba
 
-1. Az **első lépések** ablaktáblán válassza a **folyamat létrehozása sablonból** lehetőséget a **sablon-gyűjtemény** panel megnyitásához.
+1. Az **Első lépések** ablaktáblán válassza a **Folyamat létrehozása sablonból lehetőséget** a **Sablongyűjtemény ablaktábla** megnyitásához.
 
-    ![Az "első lépések" panel Azure Data Factory](media/data-factory-template/adf-get-started.png)
+    ![Az Azure Data Factory "Let's get get started" ablaktábla](media/data-factory-template/adf-get-started.png)
 
-1. Válassza ki az **adatbázisból az Azure adatkezelő sablonba való tömeges másolást** .
+1. Válassza ki a **tömeges másolás adatbázisból az Azure Data Explorer** sablont.
  
-    !["Tömeges másolás az adatbázisból az Azure Adatkezelőba" sablon](media/data-factory-template/pipeline-from-template.png)
+    ![A "Tömeges másolás az adatbázisból az Azure Data Explorerbe" sablon](media/data-factory-template/pipeline-from-template.png)
 
-1.  A **tömeges másolás az adatbázisból az Azure** -ba adatkezelő ablaktáblán a **felhasználói bevitelek**területen adja meg az adatkészleteket a következő módon: 
+1.  A **Tömeges másolás az adatbázisból** az Azure Data Explorer ablaktáblán a **Felhasználói bemenetek**csoportban adja meg az adatkészleteket az alábbi módon: 
 
-    a. A **ControlTableDataset** legördülő listában válassza ki a társított szolgáltatást a vezérlő táblába, amely azt jelzi, hogy milyen adatok kerülnek a forrásból a célhelyre, és hogy hol kerül a célhelyre. 
+    a. A **ControlTableDataset** legördülő listában válassza ki a vezérlőtáblához csatolt szolgáltatást, amely jelzi, hogy milyen adatokat másol a rendszer a forrásból a célhelyre, és hová kerül a célhelyre. 
 
-    b. A **SourceDataset** legördülő listában válassza ki a társított szolgáltatást a forrás-adatbázishoz. 
+    b. A **SourceDataset** legördülő listában jelölje ki a forrásadatbázishoz csatolt szolgáltatást. 
 
-    c. A **AzureDataExplorerTable** legördülő listában válassza ki az Azure adatkezelő táblázatot. Ha az adatkészlet nem létezik, [hozza létre az Azure adatkezelő társított szolgáltatást](data-factory-load-data.md#create-the-azure-data-explorer-linked-service) az adatkészlet hozzáadásához.
+    c. Az **AzureDataExplorerTable** legördülő listában válassza ki az Azure Data Explorer-táblát. Ha az adatkészlet nem létezik, [hozza létre az Azure Data Explorer csatolt szolgáltatás](data-factory-load-data.md#create-the-azure-data-explorer-linked-service) az adatkészlet hozzáadásához.
 
-    d. Kattintson a **Sablon használata** lehetőségre.
+    d. Válassza **a Sablon használata lehetőséget.**
 
-    ![A "tömeges másolás az adatbázisból az Azure Adatkezelőba" panel](media/data-factory-template/configure-bulk-copy-adx-template.png)
+    ![A "Tömeges másolás az adatbázisból az Azure Data Explorerbe" ablaktábla](media/data-factory-template/configure-bulk-copy-adx-template.png)
 
-1. A sablon folyamatának eléréséhez válasszon ki egy, a tevékenységen kívüli területen a vásznon. Válassza a **Parameters (paraméterek** ) fület a tábla paramétereinek megadásához, beleértve a **nevet** (vezérlő tábla neve) és az **alapértelmezett értéket** (oszlopnevek).
+1. A sablonfolyamat eléréséhez jelöljön ki egy területet a vásznon a tevékenységeken kívül. A **Tábla** paramétereinek megadásához kattintson a Paraméterek fülre, beleértve a **Név** (vezérlőtábla neve) és **az Alapértelmezett értéket** (oszlopnevek).
 
     ![Folyamat paraméterei](media/data-factory-template/pipeline-parameters.png)
 
-1.  A **Keresés**területen válassza a **GetPartitionList** lehetőséget az alapértelmezett beállítások megtekintéséhez. A lekérdezés automatikusan létrejön.
-1.  Válassza ki a parancs tevékenységét, **ForEachPartition**, válassza a **Beállítások** lapot, majd tegye a következőket:
+1.  A **Keres csoportban**válassza a **GetPartitionList** lehetőséget az alapértelmezett beállítások megtekintéséhez. A lekérdezés automatikusan létrejön.
+1.  Válassza a Parancstevékenység **(ForEachPartition**) lehetőséget, válassza a **Beállítások** lapot, majd tegye a következőket:
 
-    a. A **kötegek száma** mezőbe írjon be egy 1 és 50 közötti számot. Ez a beállítás határozza meg a párhuzamosan futó folyamatok számát, amíg el nem éri a *ControlTableDataset* -sorok számát. 
+    a. A **Kötegszám** mezőbe írjon be egy 1 és 50 között lévő számot. Ez a beállítás határozza meg a párhuzamosan futó folyamatok számát a *ControlTableDataset* sorok számának eléréséig. 
 
-    b. Ha biztosítani szeretné, hogy a folyamat kötegei párhuzamosan *fussanak, ne* jelölje be a **szekvenciális** jelölőnégyzetet.
+    b. Annak érdekében, hogy a folyamatkötegek párhuzamosan fussanak, *ne* jelölje be a **Szekvenciális jelölőnégyzetet.**
 
-    ![ForEachPartition-beállítások](media/data-factory-template/foreach-partition-settings.png)
+    ![ForEachPartition beállítások](media/data-factory-template/foreach-partition-settings.png)
 
     > [!TIP]
-    > Az ajánlott eljárás az, hogy egyszerre több folyamatot futtasson, így az adatai gyorsabban másolhatók. A hatékonyság növelése érdekében particionálja a forrás táblában lévő adatok mennyiségét, és a dátum és a tábla szerint egy partíciót foglaljon le folyamaton belül.
+    > Az ajánlott eljárás az, hogy számos folyamatot párhuzamosan futtat, hogy az adatok gyorsabban másolhatók legyenek. A hatékonyság növelése érdekében particionálja az adatokat a forrástáblában, és lefoglalja egy partíciót folyamatonként, dátum és tábla szerint.
 
-1. Jelölje be az **összes érvényesítése** jelölőnégyzetet a Azure Data Factory folyamat ellenőrzéséhez, majd tekintse meg az eredményt a **folyamat ellenőrzése kimenet** ablaktáblán.
+1. Válassza **az Összes ellenőrzése** az Azure Data Factory-folyamat érvényesítéséhez, majd tekintse meg az eredményt a **folyamatérvényesítési kimenet** ablaktáblában.
 
-    ![Sablon-folyamatok ellenőrzése](media/data-factory-template/validate-template-pipelines.png)
+    ![Sablonfolyamatok ellenőrzése](media/data-factory-template/validate-template-pipelines.png)
 
-1. Ha szükséges, válassza a **hibakeresés**lehetőséget, majd válassza az **trigger hozzáadása** lehetőséget a folyamat futtatásához.
+1. Ha szükséges, válassza **a Hibakeresés**lehetőséget, majd a folyamat futtatásához válassza az **Eseményindító hozzáadása lehetőséget.**
 
-    ![A "hibakeresés" és a "folyamat futtatása" gomb](media/data-factory-template/trigger-run-of-pipeline.png)    
+    ![A "Debug" és a "Run pipeline" gombok](media/data-factory-template/trigger-run-of-pipeline.png)    
 
-Mostantól a sablon használatával hatékonyan másolhat nagy mennyiségű adatmennyiséget az adatbázisaiból és a tábláiból.
+A sablon segítségével most már hatékonyan másolhat nagy mennyiségű adatot az adatbázisokból és táblákból.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Megtudhatja, hogyan [másolhat az Azure Adatkezelőba Azure Data Factory használatával](data-factory-load-data.md).
-* Ismerkedjen meg a Azure Data Factory [Azure adatkezelő-összekötővel](/azure/data-factory/connector-azure-data-explorer) .
-* Ismerje meg az Azure Adatkezelő Adatlekérdezési [lekérdezéseit](/azure/data-explorer/web-query-data) .
+* Megtudhatja, [hogyan másolhat adatokat az Azure Data Explorerbe az Azure Data Factory használatával.](data-factory-load-data.md)
+* Ismerje meg az [Azure Data Explorer összekötő](/azure/data-factory/connector-azure-data-explorer) az Azure Data Factory.
+* Ismerje meg az [Azure Data Explorer adatlekérdezési lekérdezések.](/azure/data-explorer/web-query-data)
 
 
 

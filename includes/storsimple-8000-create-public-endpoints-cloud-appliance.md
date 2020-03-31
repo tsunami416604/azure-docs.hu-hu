@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 1cf5bbdad555c50c418851904f36a578522843b2
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67179181"
 ---
 #### <a name="to-create-public-endpoints-on-the-cloud-appliance"></a>Nyilvános végpontok létrehozása a felhőalapú készüléken
@@ -31,7 +31,7 @@ ms.locfileid: "67179181"
 
         A Bejövő biztonsági szabály felvétele panelen:
 
-        1. Az a **neve**, írja be a végponthoz a következő nevet: WinRMHttps.
+        1. A **Név**mezőbe írja be a végpont következő nevét: WinRMHttps.
         
         2. A **Prioritás** értékhez válasszon egy 1000-nél (amely az alapértelmezett szabálynak van fenntartva) kisebb számot. Minél magasabb az érték, annál alacsonyabb a prioritás.
 

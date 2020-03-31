@@ -1,6 +1,6 @@
 ---
-title: Erőforrás-korlátok – felügyelt példány
-description: Ez a cikk áttekintést nyújt a felügyelt példányok Azure SQL Database erőforrásának korlátairól.
+title: Erőforráskorlátok - felügyelt példány
+description: Ez a cikk áttekintést nyújt az Azure SQL Database erőforrás-korlátok felügyelt példányok.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -11,41 +11,41 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 02/25/2020
-ms.openlocfilehash: 12d457d8d5e57dc4db16d9a191c7795a5f013574
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: b2871ec87e4d7f337c26b3ff3de83c1c3c88aea2
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79268794"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365387"
 ---
-# <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>A felügyelt példányok erőforrás-korlátainak áttekintése Azure SQL Database
+# <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Áttekintő Az Azure SQL Database felügyelt példányerőforrás-korlátai
 
-Ez a cikk áttekintést nyújt a Azure SQL Database felügyelt példányának technikai jellemzőiről és erőforrás-korlátairól, valamint arról, hogy miként kérhető a határértékek növelésére.
+Ez a cikk áttekintést nyújt az Azure SQL Database felügyelt példányának műszaki jellemzőiről és erőforráskorlátairól, és tájékoztatást nyújt arról, hogyan kérhet növekedést ezekre a korlátokra.
 
 > [!NOTE]
-> A támogatott funkciók és a T-SQL utasítások közötti különbségekért lásd a [funkciók](sql-database-features.md) és a [t-SQL-utasítások támogatását](sql-database-managed-instance-transact-sql-information.md). Az önálló adatbázis és a felügyelt példány szolgáltatási szintjei közötti általános különbségekért lásd a [szolgáltatási réteg összehasonlítását](sql-database-service-tiers-general-purpose-business-critical.md#service-tier-comparison).
+> A támogatott szolgáltatások és a T-SQL utasítások közötti különbségeket [lásd: Szolgáltatáskülönbségek](sql-database-features.md) és [T-SQL utasítástámogatás.](sql-database-managed-instance-transact-sql-information.md) Az egyetlen adatbázisban és a felügyelt példányban lévő szolgáltatásszintek közötti általános különbségekről a [Szolgáltatási szint összehasonlítása](sql-database-service-tiers-general-purpose-business-critical.md#service-tier-comparison)című témakörben van.
 
-## <a name="hardware-generation-characteristics"></a>Hardver generálási jellemzői
+## <a name="hardware-generation-characteristics"></a>A hardver generálási jellemzői
 
-A felügyelt példány olyan tulajdonságokkal és erőforrás-korlátozásokkal rendelkezik, amelyek az alapul szolgáló infrastruktúrától és architektúrától függenek. Azure SQL Database felügyelt példány két hardveres generációra telepíthető: Gen4 és Gen5. A hardveres generációk különböző jellemzőkkel rendelkeznek, az alábbi táblázatban leírtak szerint:
+A felügyelt példány olyan jellemzőkkel és erőforráskorlátokkal rendelkezik, amelyek az alapul szolgáló infrastruktúrától és architektúrától függenek. Az Azure SQL Database által felügyelt példány két hardvergenerációra telepíthető: a Gen4 és a Gen5. A hardvergenerációk eltérő jellemzőkkel rendelkeznek, az alábbi táblázatban leírtak szerint:
 
-|   | **Gen4** | **Gen5** |
+|   | **Gen4 (1988)** | **Gen5 (1998)** |
 | --- | --- | --- |
-| Hardver | Intel E5-2673 v3 (Haswell) 2,4-GHz processzorok, csatlakoztatott SSD virtuális mag = 1 PP (fizikai mag) | Intel E5-2673 v4 (Broadwell) 2,3-GHz és Intel SP-8160 (Skylake) processzorok, gyors NVMe SSD, virtuális mag = 1 LP (Hyper-thread) |
+| Hardver | Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzorok, csatlakoztatott SSD virtuális mag = 1 PP (fizikai mag) | Intel E5-2673 v4 (Broadwell) 2,3 GHz-es és Intel SP-8160 (Skylake) processzorok, gyors NVMe SSD, vCore=1 LP (hiperszálas) |
 | Virtuális magok száma | 8, 16, 24 virtuális mag | 4, 8, 16, 24, 32, 40, 64, 80 virtuális mag |
-| Maximális memória (memória/mag arány) | 7 GB/virtuális mag<br/>További virtuális mag hozzáadásával további memóriát érhet el. | 5,1 GB/virtuális mag<br/>További virtuális mag hozzáadásával további memóriát érhet el. |
-| Memóriában tárolt OLTP memória maximális száma | Példány korlátja: 1 – 1,5 GB/virtuális mag| Példány korlátja: 0,8 – 1,65 GB/virtuális mag |
-| Példányok maximálisan fenntartott tárterülete |  Általános célú: 8 TB<br/>Üzletileg kritikus: 1 TB | Általános célú: 8 TB<br/> Üzletileg kritikus 1 TB, 2 TB vagy 4 TB a magok számától függően |
+| Maximális memória (memória/mag arány) | 7 GB virtuális magonként<br/>Adjon hozzá további virtuális magokat, hogy több memóriát kapjon. | 5,1 GB virtuális magonként<br/>Adjon hozzá további virtuális magokat, hogy több memóriát kapjon. |
+| Max memórián belüli OLTP memória | Példánykorlát: 1-1,5 GB virtuális magonként| Példánykorlát: 0,8 – 1,65 GB virtuális magonként |
+| Példány lefoglalt maximális tárolása |  Általános cél: 8 TB<br/>Üzleti kritikus: 1 TB | Általános cél: 8 TB<br/> Üzleti kritikus 1 TB, 2 TB vagy 4 TB a magok számától függően |
 
 > [!IMPORTANT]
-> - A Gen4 hardverek fokozatos kiépítése folyamatban van, és az új központi telepítések esetében már nem érhető el. Minden új felügyelt példányt telepíteni kell a Gen5 hardveren.
-> - Érdemes [áthelyezni a felügyelt példányokat az Gen 5](sql-database-service-tiers-vcore.md) hardverre a virtuális mag és a tárterület méretezhetőségének, a gyorsított hálózatkezelésnek, a legjobb IO-teljesítménynek és a minimális késésnek a megtapasztalása érdekében.
+> - A Gen4 hardver fokozatosan megszűnik, és már nem érhető el az új telepítésekhez. Minden új felügyelt példányt gen5 hardveren kell telepíteni.
+> - Fontolja meg [a felügyelt példányok Gen 5 hardverre való áthelyezését](sql-database-service-tiers-vcore.md) a virtuális mag és a tárolási méretezhetőség szélesebb körének, a gyorsított hálózatkezelésnek, a legjobb I/O-teljesítménynek és a minimális késésnek a megtapasztalása érdekében.
 
-### <a name="in-memory-oltp-available-space"></a>Memóriában tárolt OLTP szabad területe 
+### <a name="in-memory-oltp-available-space"></a>Memórián belüli OLTP szabad hely 
 
-[Üzletileg kritikus](sql-database-service-tier-business-critical.md) szolgáltatási szinten a memóriában lévő OLTP-terület mennyisége a virtuális mag és a hardveres generáció számától függ. A következő táblázatban a memóriában tárolt OLTP-objektumok számára felhasználható memória korlátai láthatók.
+A memórián belüli OLTP-terület mennyisége az [üzleti legkritikusabb](sql-database-service-tier-business-critical.md) szolgáltatási szinten a virtuális magok és a hardvergenerálás számától függ. Az alábbi táblázatban a memórián belüli OLTP objektumokhoz használható memóriakorlátok szerepelnek.
 
-| Memóriában tárolt OLTP terület  | **Gen5** | **Gen4** |
+| Memórián belüli OLTP-tér  | **Gen5 (1998)** | **Gen4 (1988)** |
 | --- | --- | --- |
 | 4 virtuális mag  | 3,14 GB | |   
 | 8 virtuális mag  | 6,28 GB | 8 GB |
@@ -56,102 +56,102 @@ A felügyelt példány olyan tulajdonságokkal és erőforrás-korlátozásokkal
 | 64 virtuális mag | 99,9 GB    | |
 | 80 virtuális mag | 131,68 GB| |
 
-## <a name="service-tier-characteristics"></a>Szolgáltatási szintek jellemzői
+## <a name="service-tier-characteristics"></a>Szolgáltatási szint jellemzői
 
-A felügyelt példány két szolgáltatási szintet tartalmaz: [általános célú](sql-database-service-tier-general-purpose.md) és [üzletileg kritikus](sql-database-service-tier-business-critical.md). Ezek a szintek [különböző képességeket](sql-database-service-tiers-general-purpose-business-critical.md)biztosítanak, az alábbi táblázatban leírtak szerint.
+A felügyelt példány két szolgáltatási szinttel rendelkezik: [Általános cél](sql-database-service-tier-general-purpose.md) és [Üzleti szempontból kritikus.](sql-database-service-tier-business-critical.md) Ezek a szintek [különböző képességeket biztosítanak](sql-database-service-tiers-general-purpose-business-critical.md)az alábbi táblázatban leírtak szerint.
 
 > [!Important]
-> A üzletileg kritikus Service-réteg további beépített példányt (másodlagos replikát) tartalmaz, amelyek csak olvasható számítási feladatokhoz használhatók. Ha elkülönítheti az írási és olvasási lekérdezéseket és a csak olvasható/analitikus/jelentéskészítési lekérdezéseket, akkor a rendszer kétszer virtuális mag és memóriát is biztosít ugyanarra az árakra. Előfordulhat, hogy a másodlagos replika néhány másodpercen belül elmarad az elsődleges példány mögött, ezért olyan jelentéskészítési/elemzési számítási feladatok kiszervezésére lett kialakítva, amelyek nem igényelnek pontos aktuális állapotot. Az alábbi táblázatban a **csak olvasható lekérdezések** a másodlagos replikán végrehajtott lekérdezések.
+> Az üzleti legkritikusabb szolgáltatásszint további beépített példányt (másodlagos replika) biztosít, amely csak olvasható számítási feladatokhoz használható. Ha külön írási és írási lekérdezések és csak olvasható/analitikus/jelentési lekérdezések, kétszer virtuális magok és a memória ugyanazon az áron. Másodlagos replika előfordulhat, hogy néhány másodperccel lemarad az elsődleges példány, ezért úgy tervezték, hogy tehermentesíti a jelentéskészítési/analitikus számítási feladatok, amelyek nem igényelnek pontos aktuális adatállapot. Az alábbi táblázatban az **írásvédett lekérdezések** a másodlagos replika n végrehajtott lekérdezések.
 
-| **Funkció** | **általános célú** | **üzletileg kritikus** |
+| **Szolgáltatás** | **Általános cél** | **Üzleti kritikus** |
 | --- | --- | --- |
-| Virtuális mag száma\* | Gen4:8, 16, 24<br/>Gen5:4, 8, 16, 24, 32, 40, 64, 80 | Gen4:8, 16, 24 <br/> Gen5:4, 8, 16, 24, 32, 40, 64, 80 <br/>\*azonos számú virtuális mag dedikált a csak olvasási lekérdezésekhez. |
-| Maximális memória | Gen4:56 GB – 168 GB (7GB/virtuális mag)<br/>Gen5:20,4 GB – 408 GB (5.1 GB/virtuális mag)<br/>További virtuális mag hozzáadásával további memóriát érhet el. | Gen4:56 GB – 168 GB (7GB/virtuális mag)<br/>Gen5:20,4 GB-408 GB (5.1 GB/virtuális mag) olvasási és írási lekérdezésekhez<br/>+ további 20,4 GB – 408 GB (5.1 GB/virtuális mag) a csak olvasható lekérdezésekhez.<br/>További virtuális mag hozzáadásával további memóriát érhet el. |
-| Példány maximális tárolási mérete (fenntartott) | -2 TB 4 virtuális mag (csak Gen5)<br/>– 8 TB más méretekben | Gen4:1 TB <br/> Gen5 <br/>-1 TB 4, 8, 16 virtuális mag<br/>-2 TB 24 virtuális mag<br/>-4 TB 32, 40, 64, 80 virtuális mag |
-| Adatbázisok maximális mérete | Az aktuálisan elérhető példány mérete (legfeljebb 2 TB-8 TB a virtuális mag számától függően). | Akár jelenleg elérhető példány mérete (max. 1 TB-4 TB a virtuális mag számától függően). |
-| Maximális tempDB-méret | Legfeljebb 24 GB/virtuális mag (96-1 920 GB) és jelenleg elérhető példányok tárolási mérete.<br/>További virtuális mag hozzáadásával további TempDB lemezterületet érhet el.<br/> A naplófájl mérete legfeljebb 120 GB lehet.| Az aktuálisan elérhető példányok tárolási mérete. |
-| Adatbázisok maximális száma egy példányon | 100, kivéve, ha elérte a példány tárolási méretének korlátját. | 100, kivéve, ha elérte a példány tárolási méretének korlátját. |
-| Adatbázisfájlok maximális száma egy példányban | Akár 280-ig, kivéve, ha elérte a példány tárolási méretét vagy az [Azure Premium lemez tárterületének lefoglalási](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files) korlátját. | 32 767 fájl/adatbázis, kivéve, ha elérte a példány tárolási méretének korlátját. |
-| Az adatfájlok maximális mérete | A jelenleg elérhető példányok tárolási mérete (max. 2 TB-8 TB) és az [Azure Premium Disk Storage kiosztási területe](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files)korlátozódik. | A jelenleg elérhető példányok tárolási méretére korlátozódik (legfeljebb 1 TB-4 TB). |
-| Naplófájl maximális mérete | Legfeljebb 2 TB és jelenleg elérhető példány tárolási mérete. | Legfeljebb 2 TB és jelenleg elérhető példány tárolási mérete. |
-| Adat/napló IOPS (hozzávetőleges) | Akár 30-40 K IOPS *, 500-7500/fájl<br/>\*[a fájlméret növelésével további IOPS érhet el](#file-io-characteristics-in-general-purpose-tier)| 10 k-200 K (2500 IOPS/virtuális mag)<br/>További virtuális mag hozzáadásával jobb i/o-teljesítményt érhet el. |
-| Napló írási átviteli korlátja (/példány) | 3 MB/s/virtuális mag<br/>Max. 22 MB/s | 4 MB/s/virtuális mag<br/>Maximális 48 MB/s |
-| Adatátviteli sebesség (hozzávetőleges) | 100 – 250 MB/s/fájl<br/>\*[a fájlméret növelése a jobb IO-teljesítmény érdekében](#file-io-characteristics-in-general-purpose-tier) | Nem korlátozott. |
-| Tárolási IO-késés (hozzávetőleges) | 5-10 MS | 1-2 MS |
-| Memóriabeli OLTP beállítása | Nem támogatott | Elérhető, [a méret a virtuális mag számától függ](#in-memory-oltp-available-space) . |
-| Munkamenetek maximális száma | 30000 | 30000 |
-| [Írásvédett replikák](sql-database-read-scale-out.md) | 0 | 1 (az ár tartalmazza) |
+| Virtuális magok száma\* | Gen4: 8, 16, 24<br/>Gen5: 4, 8, 16, 24, 32, 40, 64, 80 | Gen4: 8, 16, 24 <br/> Gen5: 4, 8, 16, 24, 32, 40, 64, 80 <br/>\*Azonos számú virtuális mag van elkülönében írásvédett lekérdezésekhez. |
+| Maximális memória | Gen4: 56 GB - 168 GB (7 GB/virtuális mag)<br/>Gen5: 20,4 GB - 408 GB (5,1 GB/virtuális mag)<br/>Adjon hozzá további virtuális magokat, hogy több memóriát kapjon. | Gen4: 56 GB - 168 GB (7 GB/virtuális mag)<br/>Gen5: 20,4 GB – 408 GB (5,1 GB/virtuális mag) írási és írási lekérdezésekhez<br/>+ további 20,4 GB - 408 GB (5.1GB/vCore) írásvédett lekérdezésekhez.<br/>Adjon hozzá további virtuális magokat, hogy több memóriát kapjon. |
+| Példány maximális tárolási mérete (fenntartva) | - 2 TB 4 virtuális maghoz (csak Gen5 esetén)<br/>- 8 TB más méretekben | Gen4: 1 TB <br/> Gen5: <br/>- 1 TB 4, 8, 16 virtuális mag<br/>- 2 TB 24 virtuális mag<br/>- 4 TB 32, 40, 64, 80 virtuális mag |
+| Adatbázisok maximális mérete | A virtuális magok számától függően legfeljebb 2 TB – 8 TB a jelenleg rendelkezésre álló példányméretig). | A virtuális magok számától függően legfeljebb 1 TB – 4 TB a jelenleg rendelkezésre álló példányméretig). |
+| Maximális hőmérsékletméret | Legfeljebb 24 GB/virtuális mag (96 – 1920 GB) és jelenleg rendelkezésre álló példánytárhely mérete.<br/>Adjon hozzá további virtuális magokat, hogy több TempDB tárhelyet kapjon.<br/> A naplófájl mérete 120 GB-ra korlátozódik.| Akár a jelenleg rendelkezésre álló példány tárolási mérete. |
+| Adatbázisok maximális száma példányonként | 100, kivéve, ha a példány tárolási méretkorlátelérte. | 100, kivéve, ha a példány tárolási méretkorlátelérte. |
+| Adatbázisfájlok maximális száma példányonként | Legfeljebb 280, kivéve, ha a példány tárolási mérete vagy az [Azure Premium Disk tárhelyfoglalási területkorlát](sql-database-release-notes.md#exceeding-storage-space-with-small-database-files) ot elérte. | Adatbázisonként 32 767 fájl, kivéve, ha elérte a példány tárolási méretkorlátját. |
+| Az adatfájl maximális mérete | A jelenleg rendelkezésre álló példánytárterületre (max. 2 TB – 8 TB) és [az Azure Premium Disk tárhelyfoglalási területére korlátozódik.](sql-database-release-notes.md#exceeding-storage-space-with-small-database-files) | A jelenleg rendelkezésre álló példánytároló méretére korlátozva (legfeljebb 1 TB – 4 TB). |
+| Naplófájl maximális mérete | Legfeljebb 2 TB és jelenleg rendelkezésre álló példány tárolási mérete. | Legfeljebb 2 TB és jelenleg rendelkezésre álló példány tárolási mérete. |
+| Adatok/naplóIOPS (hozzávetőleges) | Akár 30–40 K IOPS példányonként*, 500–7500 fájlonként<br/>\*[A fájlméret növelése az IOPS további iops-jának növeléséhez](#file-io-characteristics-in-general-purpose-tier)| 10 K - 200 K (2500 IOPS/vCore)<br/>Adjon hozzá további virtuális magokat a jobb I/O-teljesítmény érdekében. |
+| Írási átviteli korlát naplózása (példányonként) | 3 MB/s virtuális magonként<br/>Legfeljebb 22 MB/s | 4 MB/s virtuális magonként<br/>Max 48 MB/s |
+| Adatátviteli átmenő (hozzávetőleges) | 100 – 250 MB/s fájlonként<br/>\*[A fájlméret növelése a jobb i/o teljesítmény érdekében](#file-io-characteristics-in-general-purpose-tier) | Nem korlátozott. |
+| Tárolási IO késés (hozzávetőleges) | 5-10 ms | 1-2 ms |
+| Memórián belüli OLTP | Nem támogatott | Elérhető, [a méret a virtuális mag számától függ](#in-memory-oltp-available-space) |
+| Maximális munkamenetek | 30000 | 30000 |
+| [Írásvédett kópiák](sql-database-read-scale-out.md) | 0 | 1 (az ár tartalmazza) |
 
 > [!NOTE]
-> - A **jelenleg elérhető példányok tárolási mérete** a fenntartott példányok méretének és a felhasznált tárolóhelynek a különbsége.
-> - A felhasználói és a rendszeradatbázisokban lévő adatfájlok és a naplófájlok mérete is szerepel a tárolók maximális méretével összehasonlítva. A <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys. master_files</a> rendszernézet használatával határozza meg az adatbázisok teljes felhasznált területét. A hibanapló nem marad meg, és nem szerepel a méretben. A tárolók mérete nem tartalmazza a biztonsági mentéseket.
-> - Az átviteli sebesség és a IOPS általános célú szinten a felügyelt példányok által kifejezetten nem korlátozott [fájlméretet](#file-io-characteristics-in-general-purpose-tier) is függ.
-> - Az automatikus feladatátvételi csoportok használatával egy másik Azure-régióban is létrehozhat egy olvasható replikát.
-> - A példányok maximális IOPS a fájlok elrendezésével és a számítási feladatok eloszlásával függ. Tegyük fel például, hogy ha 7 x TB-os fájlt hoz létre, amely Max 5K IOPS-t és 7 kis fájlt (128 GB-nál kisebb) a 500 38500 IOPS Vegye figyelembe, hogy az automatikus biztonsági mentések esetében bizonyos mennyiségű IOPS is használatban van.
+> - **A jelenleg rendelkezésre álló példány tárolómérete** a fenntartott példány mérete és a használt tárhely közötti különbség.
+> - Mind az adatok, mind a naplófájlok mérete a felhasználói és a rendszeradatbázisokban szerepel a példány tárolási méretében, amely összehasonlítja a maximális tárolási méretkorlátot. A <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> rendszernézetben határozhatja meg az adatbázisok által felhasznált teljes területet. A hibanaplók nem maradnak meg, és nem szerepelnek a méretben. A biztonsági mentések nem szerepelnek a tárhely méretében.
+> - Átviteli és IOPS általános célú rétegben is függ a [fájl mérete,](#file-io-characteristics-in-general-purpose-tier) amely nem kifejezetten korlátozza a felügyelt példány.
+> - Létrehozhat egy másik olvasható replika a különböző Azure-régióban automatikus feladatátvételi csoportok használatával.
+> - A maximális példányIOPS a fájlelrendezéstől és a munkaterhelés elosztásától függ. Például, ha 7 x 1TB-os fájlokat hoz létre max 5K IOPS mindegyikés 7 kis fájlok (kisebb, mint 128 GB) 500 IOPS minden, akkor kap 38500 IOPS példányonként (7x5000+7x500), ha a munkaterhelés használhatja az összes fájlt. Vegye figyelembe, hogy bizonyos mennyiségű IOPS is használják az automatikus biztonsági mentések.
 
 > [!NOTE]
-> A [felügyelt példányok készletében található erőforrás-korlátokkal](sql-database-instance-pools.md#instance-pools-resource-limitations)kapcsolatos további információkat ebben a cikkben talál.
+> A [felügyelt példánykészletekerőforrás-korlátairól](sql-database-instance-pools.md#instance-pools-resource-limitations)ebben a cikkben talál további információt.
 
-### <a name="file-io-characteristics-in-general-purpose-tier"></a>A fájl i/o-jellemzői általános célú szinten
+### <a name="file-io-characteristics-in-general-purpose-tier"></a>Fájl I/O-jellemzők az általános célú rétegben
 
-Általános célú szolgáltatási szinten minden adatbázisfájl dedikált IOPS és adatátviteli sebességet kap, amely a fájlmérettől függ. A nagyobb fájlok egyre több IOPS és átviteli sebességgel rendelkeznek. Az adatbázisfájlok IO-jellemzői az alábbi táblázatban láthatók:
+Általános célú szolgáltatási szint minden adatbázisfájl kap dedikált IOPS és átviteli, amely a fájl méretétől függ. A nagyobb fájlok egyre több IOPS-t és átviteli műveletet kapnak. Az adatbázisfájlok IO-jellemzői az alábbi táblázatban láthatók:
 
-| Fájlméret | > = 0 és < = 128 GiB | > 128 és < = 256 GiB | > 256 és < = 512 GiB | > 0,5 és < = 1 TiB    | > 1 és < = 2 TiB    | > 2 és < = 4 TiB | > 4 és < = 8 TiB |
+| Fájlméret | >=0 és <=128 GiB | >128 és <=256 GiB | >256 és <= 512 GiB | >0,5 és <=1 TiB    | >1 és <=2 TiB    | >2 és <=4 TiB | 4. >és <=8 TiB |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
-| IOPS       | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12 500   |
-| Átviteli sebesség fájlonként | 100 MiB/s | 125 MiB/s | 150 MiB/s | 200 MiB/s | 250 MiB/s | 250 MiB/s | 480 MiB/s | 
+| IOPS fájlonként       | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12 500   |
+| Átviteli-átviteli rendszer fájlonként | 100 MiB/s | 125 MiB/s | 150 MiB/s | 200 MiB/s | 250 MiB/s | 250 MiB/s | 480 MiB/s | 
 
-Ha bizonyos adatbázisfájlok esetében magas IO-késleltetést észlel, vagy ha azt látja, hogy a IOPS/átviteli sebesség eléri a korlátot, [a fájlméret növelésével](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Increase-data-file-size-to-improve-HammerDB-workload-performance/ba-p/823337)növelheti a teljesítményt.
+Ha azt észleli, magas I/O-késés néhány adatbázis-fájl, vagy azt látja, hogy Az IOPS/átviteli teljesítmény eléri a korlátot, javíthatja a teljesítményt [a fájl méretének növelésével.](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Increase-data-file-size-to-improve-HammerDB-workload-performance/ba-p/823337)
 
-Léteznek olyan példány-szintű korlátok is, mint a maximális írási sebesség (22 MB/s), ezért előfordulhat, hogy a naplófájlt a rendszer nem tudja elérni a naplófájlban, mert a példány átviteli sebessége elérte a határértéket.
+Vannak is példányszintű korlátok, például a maximális napló írási átviteli sebesség 22 MB/s, így előfordulhat, hogy nem tudja elérni a fájlt a naplófájlban, mert eléri a példány átviteli korlátját.
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
-Felügyelt példányok csak a [támogatott régiókban](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)hozhatók létre. Ha a felügyelt példányt olyan régióban szeretné létrehozni, amely jelenleg nem támogatott, akkor [a Azure Portalon keresztül küldhet támogatási kérést](quota-increase-request.md).
+A felügyelt példányok csak [támogatott régiókban hozhatók](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)létre. Ha egy olyan régióban szeretne felügyelt példányt létrehozni, amely jelenleg nem támogatott, [küldjön egy támogatási kérelmet az Azure Portalon keresztül.](quota-increase-request.md)
 
 ## <a name="supported-subscription-types"></a>Támogatott előfizetési típusok
 
-A felügyelt példány jelenleg csak a következő típusú előfizetések esetében támogatja a telepítést:
+A felügyelt példány jelenleg csak a következő típusú előfizetéseken támogatja a telepítést:
 
 - [Nagyvállalati Szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)
-- [Utólagos elszámolás](https://azure.microsoft.com/offers/ms-azr-0003p/)
-- [Felhőalapú szolgáltató (CSP)](https://docs.microsoft.com/partner-center/csp-documents-and-learning-resources)
+- [Felosztó-ki-kiosztó](https://azure.microsoft.com/offers/ms-azr-0003p/)
+- [Felhőszolgáltató (CSP)](https://docs.microsoft.com/partner-center/csp-documents-and-learning-resources)
 - [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)
 - [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/)
-- [Előfizetések havi Azure-Kredittel a Visual Studio-előfizetőknek](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)
+- [Havi Azure-egyenleggel rendelkező előfizetések visual studio-előfizetők számára](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/)
 
-## <a name="regional-resource-limitations"></a>Regionális erőforrásokra vonatkozó korlátozások
+## <a name="regional-resource-limitations"></a>Regionális erőforrás-korlátozások
 
-A támogatott előfizetési típusok régiónként korlátozott számú erőforrást tartalmazhatnak. A felügyelt példányok Azure-régiónként két alapértelmezett korláttal rendelkeznek (ez az igény szerint növelhető, ha egy speciális [támogatási kérést hoz létre a Azure Portal az](quota-increase-request.md) előfizetés típusától függően:
+A támogatott előfizetési típusok régiónként korlátozott számú erőforrást tartalmazhatnak. A felügyelt példány két alapértelmezett korláttal rendelkezik Az Azure-régiónként (amely igény szerint növelhető egy speciális támogatási kérelem létrehozásával [az Azure Portalon az](quota-increase-request.md) előfizetés típusától függően:
 
-- **Alhálózat korlátja**: azon alhálózatok maximális száma, amelyekben a felügyelt példányok egyetlen régióban vannak üzembe helyezve.
-- **virtuális mag-egység korlátja**: az egyetlen régió összes példányán üzembe helyezhető virtuális mag egységek maximális száma. Az egyik GP-virtuális mag egy virtuális mag egységet használ, és az egyik BC-virtuális mag 4 virtuális mag-egységet vesz igénybe. A példányok teljes száma nincs korlátozva, amíg az virtuális mag-egység korlátján belül van.
+- **Alhálózati korlát**: Azoknak az alhálózatoknak a maximális száma, ahol a felügyelt példányok egyetlen régióban vannak telepítve.
+- **virtuálismag-egységkorhatár:** Az egy régió összes példányában telepíthető virtuálismag-egységek maximális száma. Egy GP virtuális mag egy virtuális magegységet használ, egy BC virtuális mag pedig 4 virtuálismag-egységet. A példányok teljes száma nem korlátozott, amíg a virtuális mag egységkorláton belül van.
 
 > [!Note]
-> Ezek a korlátok alapértelmezett beállítások, és nem technikai korlátozások. Ha az aktuális régióban több felügyelt példányra van szüksége, a korlátokat igény szerint növelheti a [Azure Portal](quota-increase-request.md) . Alternatív megoldásként új felügyelt példányokat is létrehozhat egy másik Azure-régióban támogatási kérések küldése nélkül.
+> Ezek a korlátok alapértelmezett beállítások, nem pedig technikai korlátozások. A korlátok igény szerint növelhetők egy speciális támogatási kérelem létrehozásával [az Azure Portalon,](quota-increase-request.md) ha több felügyelt példányra van szüksége az aktuális régióban. Alternatív megoldásként új felügyelt példányokat hozhat létre egy másik Azure-régióban támogatási kérelmek küldése nélkül.
 
-A következő táblázat a támogatott előfizetési típusok **alapértelmezett regionális korlátait** mutatja be (az alapértelmezett határértékek az alább ismertetett támogatási kérelem használatával bővíthetők):
+Az alábbi táblázat a támogatott előfizetéstípusok **alapértelmezett területi korlátait** mutatja be (az alapértelmezett korlátok az alábbiakban ismertetett támogatási kérelemmel bővíthetők):
 
-|Előfizetés típusa| Felügyelt példányok alhálózatai maximális száma | Virtuális mag egységek maximális száma * |
+|Előfizetés típusa| Felügyelt példány alhálózatainak maximális száma | Virtuálismag-egységek maximális száma* |
 | :---| :--- | :--- |
-|Utólagos elszámolás|3|320|
-|CSP |8 (15 egyes régiókban * *)|960 (1440 egyes régiókban * *)|
-|Utólagos elszámolású fejlesztési/tesztelési funkciók|3|320|
+|Felosztó-ki-kiosztó|3|320|
+|CSP |8 (egyes régiókban 15**)|960 (egyes régiókban 1440*)|
+|Felosztó-kidolgozás–fejlesztés/tesztelés|3|320|
 |Enterprise Dev/Test|3|320|
-|EA|8 (15 egyes régiókban * *)|960 (1440 egyes régiókban * *)|
+|Ea|8 (egyes régiókban 15**)|960 (egyes régiókban 1440*)|
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional és MSDN platformok|2|32|
 
-\* az üzembe helyezések megtervezése során vegye figyelembe, hogy üzletileg kritikus (BC) szolgáltatási szintet négy (4) alkalommal kell virtuális mag, mint a általános célú (GP) szolgáltatási szintet. Például: 1 GP virtuális mag = 1 virtuális mag egység és 1 BC virtuális mag = 4 virtuális mag egység. Ha egyszerűsíteni szeretné a használati elemzést az alapértelmezett korlátokkal, foglalja össze a virtuális mag egységeket azon régió összes alhálózatán, amelyben a felügyelt példányok telepítve vannak, és hasonlítsa össze az eredményeket az előfizetési típushoz tartozó példány-egység korlátaival. A **virtuális mag-egységek maximális száma** a régió minden előfizetésére érvényes. Az egyes alhálózatokon nincs korlát, kivéve, hogy a több alhálózaton üzembe helyezett összes virtuális mag összegének kisebbnek vagy egyenlőnek kell lennie a **virtuális mag egységek maximális számával**.
+\*A központi telepítések tervezésekor vegye figyelembe, hogy az üzleti legkritikusabb (BC) szolgáltatási szint négy (4) szor nagyobb virtuálismag-kapacitást igényel, mint az általános célú (GP) szolgáltatási szint. Például: 1 GP virtuálismag = 1 virtuálismag-egység és 1 BC virtuálismag = 4 virtuálismag egység. A felhasználás elemzésének az alapértelmezett korlátokkal szembeni egyszerűsítése érdekében összegezze a virtuálismag-egységeket a régió összes alhálózatában, ahol a felügyelt példányok vannak telepítve, és hasonlítsa össze az eredményeket az előfizetéstípus példányegység-korlátaival. **A virtuálismag-egységek** maximális száma egy régió minden egyes előfizetésére vonatkozik. Az egyes alhálózatokra nem vonatkozik korlátozás, azzal a különbséggel, hogy a több alhálózaton üzembe helyezett összes virtuális mag összegének alacsonyabbnak vagy egyenlőnek kell lennie a **virtuálismag-egységek maximális számával.**
 
-\*\* nagyobb alhálózat-és virtuális mag-korlátok érhetők el a következő régiókban: Kelet-Ausztrália, USA keleti régiója, USA 2. keleti régiója, Észak-Európa, USA déli középső régiója, Délkelet-Ázsia, Egyesült Királyság déli régiója, Nyugat-Európa, USA 2. nyugati régiója.
+\*\*A nagyobb alhálózati és virtuálismag-korlátok a következő régiókban érhetők el: Ausztrália kelet-, USA keleti régiója, USA keleti régiója 2, Észak-Európa, USA déli középső régiója, Délkelet-Ázsia, Egyesült Királyság dél, Nyugat-Európa, USA nyugati régiója 2.
 
-## <a name="request-a-quota-increase-for-sql-managed-instance"></a>Kvóta növelésének kérése az SQL felügyelt példányához
+## <a name="request-a-quota-increase-for-sql-managed-instance"></a>Kvótanövelés kérése az SQL által felügyelt példányhoz
 
-Ha az aktuális régiókban több felügyelt példányra van szüksége, küldjön egy támogatási kérést a kvóta kiterjesztéséhez a Azure Portal használatával. További információ: [a kérelmek kvótájának növekedése Azure SQL Database](quota-increase-request.md).
+Ha további felügyelt példányokra van szüksége a jelenlegi régiókban, küldjön egy támogatási kérelmet a kvóta kiterjesztéséhez az Azure Portalon keresztül. További információ: [Request kvóta emelése az Azure SQL Database.](quota-increase-request.md)
 
 ## <a name="next-steps"></a>További lépések
 
-- A felügyelt példányokkal kapcsolatos további információkért lásd: [Mi az a felügyelt példány?](sql-database-managed-instance.md).
-- A díjszabással kapcsolatos információkért lásd: [SQL Database felügyelt példány díjszabása](https://azure.microsoft.com/pricing/details/sql-database/managed/).
-- Az első felügyelt példány létrehozásával kapcsolatos információkért tekintse meg [a gyors üzembe helyezési útmutatót](sql-database-managed-instance-get-started.md).
+- A felügyelt példányról a [Mi a felügyelt példány című témakörben](sql-database-managed-instance.md)talál további információt.
+- A díjszabásról az [SQL Database által felügyelt példányok díjszabása](https://azure.microsoft.com/pricing/details/sql-database/managed/)című témakörben talál.
+- Az első felügyelt példány létrehozásáról a rövid útmutató ismerteti [a rövid útmutatót.](sql-database-managed-instance-get-started.md)

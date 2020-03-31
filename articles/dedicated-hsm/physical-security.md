@@ -1,6 +1,6 @@
 ---
-title: HSM fizikai biztonság – Azure dedikált HSM-be |} A Microsoft Docs
-description: Fizikai biztonság Azure dedikált HSM eszközök adatközpontokban kapcsolatos információk
+title: HSM fizikai biztonság - Azure dedikált HSM | Microsoft dokumentumok
+description: Információk az Azure dedikált HSM-eszközeinek adatközpontokban való fizikai biztonságáról
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -13,50 +13,50 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: mbaldwin
 ms.openlocfilehash: ede1af4625d06af4e280eda86d09ae1db3dfdfd1
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70881023"
 ---
-# <a name="azure-dedicated-hsm-physical-security"></a>Az Azure dedikált HSM fizikai biztonság
+# <a name="azure-dedicated-hsm-physical-security"></a>Az Azure dedikált HSM fizikai biztonsága
 
-Az Azure, a dedikált HSM segít a speciális biztonsági kulcs tárolási igényeinek megfelelően. Célszerű a felügyelt következő szigorú biztonsági eljárások az ügyfelek igényeinek teljes életciklusa során.
+Az Azure dedikált HSM segítségével teljesítheti a kulcstárolás speciális biztonsági követelményeit. A teljes életciklusa során szigorú biztonsági eljárásokat alkalmaznak, hogy megfeleljenek az ügyfelek igényeinek.
 
-## <a name="security-through-procurement"></a>Beszerzés biztonság
+## <a name="security-through-procurement"></a>Biztonság beszerzés útján
 
-A Microsoft egy biztonságos beszerzési folyamatot követi. Azt a felügyeleti lánc kezelése, és ellenőrizze, hogy az adott eszköz rendezett, és tartalmazza a szükséges az eszközre érkező adatközpontjainak. Az eszközök vannak illetéktelen-esemény műanyag készít biztonsági másolatot. Egy biztonságos tárolás területén mindaddig, amíg az adatok katalógus adatközpont üzembe tárolódnak.  Az a hardveres biztonsági modulokhoz tartalmazó állványok nagy üzleti impact(HBI) minősülnek. Az eszköz zárolva van, és videó felügyelet alatt álló mindig előtér, majd vissza.
+A Microsoft biztonságos beszerzési folyamatot követ. Mi kezeljük a felügyeleti láncot, és biztosítjuk, hogy az adott eszköz megrendelt és szállított eszköz az az eszköz, amely az adatközpontjainkba érkezik. Az eszközök szabotázs-esemény műanyag háton. Ezek biztonságos tárolóhelyen tárolódnak, amíg meg nem rendelik őket az adatközpont adattárában.  A HSM-eszközöket tartalmazó állványok nagy üzleti hatásnak (HBI) minősülnek. Az eszközök mindig le vannak zárva és videó megfigyelés alatt állnak elöl és hátul.
 
-## <a name="security-through-deployment"></a>Üzembe helyezés biztonság
+## <a name="security-through-deployment"></a>Biztonság telepítéssel
 
-HSM-EK állványokon és kapcsolódó hálózati összetevők telepítése. Miután telepítette, akkor konfigurálni kell, mielőtt azok elérhetővé válnak az Azure dedikált HSM szolgáltatás részeként. Ez a konfiguráció tevékenység Microsoft-alkalmazottak számára, amely egy háttér-ellenőrzésen estek át végzi. "Csak az időben" (JIT) felügyeleti hozzáférés szükséges használták, és csak a megfelelő alkalmazottak való hozzáférés korlátozására szolgál. Az eljárások és rendszerek is győződjön meg arról, hogy a rendszer naplózza a hardveres biztonsági modulokhoz kapcsolatos összes tevékenységet.
+A HSM-ek a kapcsolódó hálózati összetevőkkel együtt az állványokba vannak telepítve. A telepítés után konfigurálni kell őket, mielőtt elérhetővé válnak az Azure dedikált HSM-szolgáltatás részeként. Ezt a konfigurációs tevékenységet a háttérellenőrzésen átesett Microsoft-alkalmazottak végzik. A Just In Time (JIT) adminisztrációja csak a megfelelő alkalmazottak hozzáférésének korlátozására szolgál, és csak a hozzáférés szükséges idejére. Az alkalmazott eljárások és rendszerek azt is biztosítják, hogy a HSM-eszközökkel kapcsolatos minden tevékenység et naplózza.
 
-## <a name="security-in-operations"></a>A biztonsági műveletek
+## <a name="security-in-operations"></a>A műveletek biztonsága
 
-Hardveres biztonsági modulokat a hardveres berendezések (a tényleges HSM folyamatban van a berendezés belül PCI-kártya) így lehetséges, hogy összetevő szolgáltatói hibák fordulhatnak elő. Lehetséges problémák közé tartozik, de nem korlátozódnak ventilátor és power ellátási hibák. Ilyen típusú események lesz szükség, vagy hibajavítási tevékenységek cserélhető összetevők helyett.
+A HSM-ek hardveres készülékek (a tényleges HSM pci kártya a készüléken belül), így lehetséges, hogy alkatrészszintű problémák merülhetnek fel. A lehetséges problémák közé tartozik, de nem kizárólagosan a ventilátor és a tápegység meghibásodása. Az ilyen típusú esemény karbantartást vagy törési/javítási tevékenységeket igényel a cserélhető összetevők cseréjéhez.
 
-### <a name="component-replacement"></a>Összetevő cseréje
+### <a name="component-replacement"></a>Komponens cseréje
 
-Eszköz kiépítése után ügyfél felügyelete alatt, a ritkáról gyakori elérésű-cserélhető tápegység pedig csak összetevőt, amelyet szeretne cserélni. Ez az összetevő a biztonsági határon kívül esik, és a egy illetéktelen esemény nem okoz. Hibajegyalapú rendszert egy Microsoft-mérnök eléréséhez a HBI a tor-hátsó hitelesítésére szolgál. A jegy feldolgozásakor a rendszer egy átmeneti fizikai kulcs jelenik meg. Ezt a kulcsot a visszafejtés hozzáférést biztosít az eszközt, és lehetővé teszi, hogy az érintett összetevő felcserélni. Minden más access (azaz meghamisítása esemény okozó) kell végrehajtania, amikor az eszköz fel nem osztott így minimalizálja a biztonság és elérhetőség kockázati ügyfél számára.  
+Az eszköz üzembe helyezése és az ügyfélfelügyelet alatt történő kiépítése után a rendszer csak azokat az összetevőket cseréli ki, amelyeket lecserélne. Ez az összetevő kívül esik a biztonsági határon, és nem okoz illetéktelen beavatkozási eseményt. A jegyrendszer arra szolgál, hogy a Microsoft mérnökei hozzáférjenek a HBI rack hátuljához. A jegy feldolgozásakor egy ideiglenes fizikai kulcs kerül kiadásra. Ez a kulcs hozzáférést biztosít a mérnöknek az eszközhöz, és lehetővé teszi számukra az érintett alkatrész cseréjét. Minden más hozzáférés (azaz a szabotázseseményt okozó) akkor történik, ha egy eszköz nincs lefoglalva az ügyfél számára, így minimalizálva a biztonsági és rendelkezésre állási kockázatot.  
 
-### <a name="device-replacement"></a>Eszköz cseréje
+### <a name="device-replacement"></a>Eszközcsere
 
-Összes eszköz meghibásodik egy hasonló összetevőhiba során használt folyamat után következik. Ha egy ügyfél nem tudja az eszközt zeroize, vagy az eszközt egy ismeretlen állapotban van, az adatokat tartalmazó eszközök lesznek távolítva, és egy a-állvány megsemmisítését bin helyezi el. A bin elhelyezett eszközök ellenőrzött és biztonságos módon meg kell semmisíteni. Állvány ellátott eszközöket a HBI-adatok nem lesznek ne módosítsa a Microsoft-adatközpontba.
+Teljes eszközhiba esetén az összetevő meghibásodása során használthoz hasonló folyamat következik. Ha az ügyfél nem tudja nullázni az eszközt, vagy az eszköz ismeretlen állapotban van, az adatcsapágy-eszközök törlődnek, és egy rack-megsemmisítési tárolóba kerülnek. A kukába helyezett eszközök ellenőrzött és biztonságos módon semmisülnek meg. A HBI-állványról származó adathordozó eszközök nem hagyják el a Microsoft adatközpontját.
 
-### <a name="other-rack-access-activities"></a>Más Rack hozzáférési tevékenység
+### <a name="other-rack-access-activities"></a>Egyéb rack-hozzáférési tevékenységek
 
-Ha egy Microsoft-mérnök kell elérnie az állványra szerelt hardveres biztonsági modulokhoz (például hálózati eszköz-karbantartás) által használt, Standard szintű biztonsági eljárásokkal férnek hozzá a HBI biztonságos rack lesz használható. Minden hozzáférés lesz a videó megfigyelés alatt. A rendszer érvényesíti a hardveres biztonsági modulokhoz történő [3-es szintű FIPS 140-2](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf) így a hardveres biztonsági modulokhoz jogosulatlan elérését, az ügyfél fogja jelezni, és adatokat fog kell zeroized.
+Ha egy Microsoft-mérnöknek hozzá kell férnie a HSM-eszközök által használt állványhoz (például a hálózati eszközök karbantartásához), a rendszer szabványos biztonsági eljárásokat alkalmaz a HBI biztonságos állványhoz való hozzáféréshez. Minden belépés videó megfigyelés alatt lesz. A HSM-eszközök [FIPS 140-2 Level 3-ra](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf) vannak érvényesítve, így a HSM-eszközökhöz való jogosulatlan hozzáférés az ügyfélnek lesz jelezve, és az adatok nullázva lesznek.
 
-## <a name="logical-level-security-considerations"></a>Logikai biztonsági szempontok
+## <a name="logical-level-security-considerations"></a>Logikai szintű biztonsági szempontok
 
-HSM-EK lesznek kiépítve, az ügyfél által létrehozott virtuális hálózatban. Ez az ügyfél titkos IUP címtér.  Ez a konfiguráció értékes logikai hálózati szintű különítve, és biztosítja a hozzáférés csak az ügyfél által. Ez azt jelenti, hogy az összes logikai biztonsági vezérlők az ügyfél felelőssége.
+HSM-ek vannak kiépítve egy virtuális hálózat az ügyfél által létrehozott. Ez az ügyfél privát IUP-címtere.  Ez a konfiguráció értékes logikai hálózati szintelkülönítést biztosít, és csak az ügyfél számára biztosítja a hozzáférést. Ez azt jelenti, hogy minden logikai szintű biztonsági ellenőrzés az ügyfél felelőssége.
 
 ## <a name="next-steps"></a>További lépések
 
-Javasoljuk, hogy a szolgáltatást, például a magas rendelkezésre állás és a biztonság és a támogatási lehetőségek az összes alapfogalmak például megértsük eszközkiépítési, az alkalmazás-tervezés vagy a központi telepítés előtt.
+Javasoljuk, hogy a szolgáltatás minden kulcsfontosságú fogalma, például a magas rendelkezésre állás és a biztonság és a támogathatóság, jól érthető az eszköz kiépítése, az alkalmazás tervezése vagy üzembe helyezése előtt.
 
 * [Magas rendelkezésre állás](high-availability.md)
 * [Hálózat](networking.md)
 * [Támogatási lehetőségek](supportability.md)
-* [Monitorozás](monitoring.md)
-* [Üzembe helyezési architektúrája](deployment-architecture.md)
+* [Megfigyelő](monitoring.md)
+* [Telepítési architektúra](deployment-architecture.md)

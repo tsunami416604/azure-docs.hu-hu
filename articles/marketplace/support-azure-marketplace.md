@@ -1,53 +1,53 @@
 ---
-title: Az Azure Marketplace és a AppSource támogatása | Azure
-description: Az Azure Marketplace és a AppSource támogatási információi és hivatkozásai
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: MaggiePucciEvans
-manager: evansma
+title: Az Azure Piactér és az AppSource támogatása | Azure
+description: Támogatási információk és hivatkozások az Azure Piactérhez és az AppSource-hoz
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
-ms.date: 3/11/2020
-ms.author: evansma
-ms.openlocfilehash: 80911ce7858308302b1736328b6c7954c0e05a86
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.topic: conceptual
+ms.date: 3/19/2020
+ms.author: dsindona
+ms.openlocfilehash: 6cb08e11910bc0afdd4b2f454582612395cbd50f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79095531"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80284925"
 ---
-# <a name="support-for-the-marketplace"></a>A piactér támogatása  
-Az alábbi lista a piactér támogatási lehetőségeit sorolja fel.  
+# <a name="support-for-the-marketplace"></a>A Piactér támogatása  
+Az alábbiakban a Piactér támogatási lehetőségeinek listája látható.  
 
-Emellett a [C + AI közösségi fórum Marketplace-csatornáján](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222)is választ kaphat kérdéseire.  
+Ezen kívül, akkor kap sok kérdésre választ a [Marketplace csatorna C + AI Közösségi Fórum](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222).  
 
 ## <a name="onboarding"></a>Előkészítés
 
-Nyisson meg egy jegyet a Microsoft [Marketplace kiadó támogatásával](https://aka.ms/marketplacepublishersupport) a bevezetéssel és az első lépésekkel kapcsolatos problémákhoz.
+Nyisson meg egy jegyet a Microsoft [piactér kiadói támogatásával](https://aka.ms/marketplacepublishersupport) a bevezetéssel és az első lépésekről.
 
-## <a name="partner-center-or-cloud-partner-portal"></a>Partner központ vagy Cloud Partner Portal  
+## <a name="partner-center-or-cloud-partner-portal"></a>Partnerközpont vagy felhőpartneri portál  
 
 | Támogatási csatorna | Leírás | Rendelkezésre állás |  
 |:--- |:--- |:--- |  
-| Segítségért látogasson el az incidens létrehozása lapra, amely a [piactér-támogatásban](https://aka.ms/marketplacepublishersupport) található.</li> </ul> | A partner központ vagy a Cloud Partner Portal támogatása. | A támogatás 24x5 van megadva. |  
+| Segítségért látogasson el a [Piactér-támogatás](https://aka.ms/marketplacepublishersupport) ban található Incidens létrehozása lapra.</li> </ul> | Partnerközpont vagy felhőpartneri portál támogatása. | A támogatás a hét en 24x5. |  
 
-## <a name="technical"></a>Technikai  
+## <a name="technical"></a>Műszaki  
 
 | Támogatási csatorna | Leírás |  
 |:--- |:--- |  
-| MSDN-fórumok: a piactér a következő címen található: [Social.msdn.microsoft.com/forums/Azure/Home?Forum=DataMarket](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | Microsoft Developer Network fórum. |  
-| Stack Overflow: a [StackOverflow.com/questions/Tagged/Azure](https://stackoverflow.com/questions/tagged/azure) címen található Azure | Az Azure Marketplace-hez kapcsolódó összes megoldáshoz Stack Overflow-környezet, amely megoldásokat tesz elérhetővé.<ul> <li>Stack Overflow: a [StackOverflow.com/questions/Tagged/Azure-Marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace) címen található Azure Marketplace</li> <li>Stack Overflow: a Azure Resource Manager a következő helyen található: [StackOverflow.com/questions/Tagged/Azure-Resource-Manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li> <li>Stack Overflow: Virtual Machines a [StackOverflow.com/questions/Tagged/Azure-Virtual-Machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine) címen található Azure-on</li> <li>Stack Overflow: tárolók az Azure-ban a [StackOverflow.com/search?q=Azure+Container](https://stackoverflow.com/search?q=azure+container) címen</li> </ul> |
+| MSDN fórumok: A piactér [social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | Microsoft Developer Network fórum. |  
+| Stack túlcsordulás: Az Azure [stackoverflow.com/questions/tagged/azure](https://stackoverflow.com/questions/tagged/azure) | Verem túlcsordulás ikörnyezet megoldások at kap megoldásokat, és kérdéseket feltenni minden kapcsolódó Azure Marketplace.Stack Overflow environment to get solutions and ask questions about everything related to Azure Marketplace.<ul> <li>Stack túlcsordulás: Az Azure Piactér [stackoverflow.com/questions/tagged/azure-marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li> <li>Veremtúlcsordulás: Az Azure Resource Manager [stackoverflow.com/questions/tagged/azure-resource-manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li> <li>Stack túlcsordulás: Virtuális gépek az Azure-ban található [stackoverflow.com/questions/tagged/azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li> <li>Stack túlcsordulás: Az Azure-beli tárolók [stackoverflow.com/search?q=azure+container](https://stackoverflow.com/search?q=azure+container)</li> </ul> |
 
-## <a name="marketing-resources"></a>Marketing-erőforrások  
+## <a name="marketing-resources"></a>Marketing források  
 
 | Támogatási csatorna | Leírás | Rendelkezésre állás |  
 |:--- |:--- |:--- |  
-| E-mail: [cosell@microsoft.com](mailto:cosell@microsoft.com) | A közös értékesítési programhoz kapcsolódó bevezetési folyamatok és kérdések támogatása. | A csendes-óceáni időzóna alapján. |  
-| E-mail: [gtm@microsoft.com](mailto:gtm@microsoft.com) | Támogatás a GTM előnyeinek és programjának kérdéseire. | A munkaidő a csendes-óceáni időzónában található. |  
-| E-mail: [cebrand@microsoft.com](mailto:cebrand@microsoft.com) | Válaszok az Azure-emblémákkal és-arculattal kapcsolatos használati kérdésekre. |  |  
+| E-mail:[cosell@microsoft.com](mailto:cosell@microsoft.com) | A Co-Sell programmal kapcsolatos bevezetési folyamatok és kérdések támogatása. | A csendes-óceáni időzónában. |  
+| E-mail:[gtm@microsoft.com](mailto:gtm@microsoft.com) | A GTM előnyeinek és a programokkal kapcsolatos kérdéseknek a támogatása. | A munkaidő a csendes-óceáni időzónában van. |  
+| E-mail:[cebrand@microsoft.com](mailto:cebrand@microsoft.com) | Válaszok az Azure-emblémák és márkajelzések használatával kapcsolatos kérdésekre. |  |  
 
 
-## <a name="next-steps"></a>Következő lépések
-Látogasson el az [Azure Marketplace és a AppSource kiadói útmutató](./marketplace-publishers-guide.md) oldalára.  
- 
+## <a name="next-steps"></a>További lépések
+
+* Keresse fel az Azure Piactér és az [AppSource Publisher Guide lapot.](https://docs.microsoft.com/azure/marketplace/)
+* További információ [a Kereskedelmi piactér program támogatásáról a Partnerközpontban.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)
+
 ---

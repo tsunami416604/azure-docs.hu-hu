@@ -1,53 +1,53 @@
 ---
-title: Rajzolási eszközök modulja | Microsoft Azure térképek
-description: Ebből a cikkből megtudhatja, hogyan állíthatja be a rajzolási beállításokat a Microsoft Azure Maps web SDK használatával
-author: farah-alyasari
-ms.author: v-faalya
+title: Rajzeszközök modul | Microsoft Azure Maps
+description: Ebből a cikkből megtudhatja, hogyan állíthatja be a rajzolási beállítások adatait a Microsoft Azure Maps Web SDK használatával
+author: philmea
+ms.author: philmea
 ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: f3634149b744b9a03f0ed89aafbc20932701bdbc
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 711609f9382e2153cbc738d544933796dbbe2e99
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208182"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334316"
 ---
 # <a name="use-the-drawing-tools-module"></a>A Rajzeszközök modul használata
 
-A Azure Maps web SDK egy *Rajzeszközök modult*biztosít. Ez a modul megkönnyíti a Térkép alakzatainak rajzolását és szerkesztését egy beviteli eszköz, például egy egér vagy egy érintőképernyő használatával. Ennek a modulnak a fő osztálya a [rajzolási kezelő](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-). A projektmenedzser biztosítja a Térkép alakzatainak rajzolásához és szerkesztéséhez szükséges összes képességet. Közvetlenül is használható, és integrálva van egy egyéni eszköztár felhasználói felülettel. Használhatja a beépített [rajzolási eszköztár](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest) osztályt is. 
+Az Azure Maps Web SDK *egy rajzeszköz-modult*biztosít. Ez a modul megkönnyíti az alakzatok rajzolását és szerkesztését a térképen egy beviteli eszközzel, például egérrel vagy érintőképernyővel. Ennek a modulnak az alaposztálya a [rajzkezelő](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-). A rajzkezelő biztosítja az alakzatok rajzolásához és szerkesztéséhez szükséges összes lehetőséget a térképen. Közvetlenül használható, és integrálva van egy egyéni eszköztár felhasználói felületével. Használhatja a beépített [rajzeszköztár-osztályt](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest) is. 
 
-## <a name="loading-the-drawing-tools-module-in-a-webpage"></a>A rajzolási eszközök modul betöltése egy weblapon
+## <a name="loading-the-drawing-tools-module-in-a-webpage"></a>A rajzeszközök modul betöltése egy weblapon
 
-1. Hozzon létre egy új HTML-fájlt, és [a szokásos módon implementálja a térképet](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control).
-2. Töltse be a Azure Maps rajzolási eszközök modulját. Kétféleképpen is betöltheti:
-    - Használja az Azure Maps Services modul globálisan üzemeltetett, Azure Content Delivery Network verzióját. Adja hozzá a JavaScript és a CSS stíluslap hivatkozását a fájl `<head>` elemében:
+1. Hozzon létre egy új HTML-fájlt, és [valósítsa meg a térképet a szokásos módon](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control).
+2. Töltse be az Azure Maps rajzeszközök modul. Kétféleképpen töltheti be:
+    - Használja az Azure Maps-szolgáltatások modul globálisan üzemeltetett, Azure Content Delivery Network verzióját. Hivatkozás hozzáadása a JavaScript és CSS `<head>` stíluslaphoz a fájl elemében:
 
         ```html
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/drawing/0.1/atlas-drawing.min.css" type="text/css" />
-        <script src="https://atlas.microsoft.com/sdk/javascript/drawing/0.1/atlas-drawing.min.js"></script>
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/drawing/0/atlas-drawing.min.css" type="text/css" />
+        <script src="https://atlas.microsoft.com/sdk/javascript/drawing/0/atlas-drawing.min.js"></script>
         ```
 
-    - Vagy a Azure Maps web SDK forráskódját helyileg is betöltheti az [Azure-Maps-Draw-Tools](https://www.npmjs.com/package/azure-maps-drawing-tools) NPM csomag használatával, majd üzemeltetheti azt az alkalmazással. Ez a csomag írógéppel kapcsolatos definíciókat is tartalmaz. Használja ezt a parancsot:
+    - Vagy betöltheti a rajzeszközök modult az Azure Maps Web SDK forráskód helyileg az [azure-maps-drawing-tools](https://www.npmjs.com/package/azure-maps-drawing-tools) npm csomag használatával, majd az alkalmazással üzemeltetheti azt. Ez a csomag TypeScript-definíciókat is tartalmaz. Használja ezt a parancsot:
     
-        > **NPM telepítése az Azure-Maps-Draw-Tools**
+        > **npm telepítés azure-maps-rajz-eszközök**
     
-        Ezután adjon hozzá egy hivatkozást a JavaScript és a CSS stíluslaphoz a fájl `<head>` elemében:
+        Ezután adjon hozzá egy hivatkozást a JavaScript `<head>` és CSS stíluslap az elem a fájl:
 
          ```html
         <link rel="stylesheet" href="node_modules/azure-maps-drawing-tools/dist/atlas-drawing.min.css" type="text/css" />
         <script src="node_modules/azure-maps-drawing-tools/dist/atlas-drawing.min.js"></script>
          ```
 
-## <a name="use-the-drawing-manager-directly"></a>A rajzolási kezelő közvetlen használata
+## <a name="use-the-drawing-manager-directly"></a>A rajzkezelő közvetlen használata
 
-Miután betöltötte a rajzolási eszközök modult az alkalmazásba, engedélyezheti a rajzolási és szerkesztési funkciókat a [rajzolási kezelő](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-)használatával. Megadhatja, hogy a rendszer hogyan hozza létre a rajzolási beállításokat, vagy az `drawingManager.setOptions()` függvényt használja.
+Miután a rajzeszközök modulbe betöltődik az alkalmazásba, a [rajzkezelővel](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#setoptions-drawingmanageroptions-)engedélyezheti a rajzolási és szerkesztési lehetőségeket. Megadhatja a rajzkezelő beállításait a példányelkészítés közben, `drawingManager.setOptions()` vagy használhatja a függvényt.
 
-### <a name="set-the-drawing-mode"></a>Rajzolási mód beállítása
+### <a name="set-the-drawing-mode"></a>A rajzolási mód beállítása
 
-A következő kód létrehoz egy példányt a rajzolás-kezelőben, és beállítja a rajzolási **mód** beállítást. 
+A következő kód létrehozza a rajzkezelő egy példányát, és beállítja a **rajzolási mód** beállítást. 
 
 ```Javascript
 //Create an instance of the drawing manager and set drawing mode.
@@ -56,24 +56,24 @@ drawingManager = new atlas.drawing.DrawingManager(map,{
 });
 ```
 
-Az alábbi kód egy teljes körű futtatási példát mutat be, amely bemutatja, hogyan állítható be a rajzolási mód a rajzoló kezelőben. Kattintson a térképre a sokszög rajzolásának megkezdéséhez.
+Az alábbi kód egy teljes futó példa arra, hogyan kell beállítani a rajzkezelő rajzmódját. Kattintson a térképre a sokszög rajzolásának megkezdéséhez.
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Sokszög rajzolása" src="//codepen.io/azuremaps/embed/YzKVKRa/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Tekintse meg a tollat a <a href='https://codepen.io/azuremaps/pen/YzKVKRa/'>sokszög rajzolásával</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
+Tekintse meg a Toll <a href='https://codepen.io/azuremaps/pen/YzKVKRa/'>rajzolja meg a sokszöget</a> az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 
-### <a name="set-the-interaction-type"></a>A beavatkozás típusának beállítása
+### <a name="set-the-interaction-type"></a>Kapcsolatitevékenység típusának beállítása
 
-A rajzolási kezelő három különböző módszert támogat a térképekkel való interakciók rajzolásához.
+A rajzkezelő három különböző módot támogat a térképpel való interakcióra az alakzatok rajzolása érdekében.
 
-* `click` – a koordinátákat az egér vagy érintés gombra kattintva adja hozzá a rendszer.
-* `freehand ` – a koordinátákat akkor adja hozzá a rendszer, ha az egér vagy a érintés a térképen van húzva. 
-* `hybrid` – a koordinátákat akkor adja hozzá a rendszer, ha az egér vagy a érintés kattint.
+* `click`- Koordináták kerülnek, ha az egér vagy érintés kattintott.
+* `freehand `- Koordináták kerülnek, ha az egér vagy érintés húzta a térképen. 
+* `hybrid`- Koordináták kerülnek, ha az egér vagy érintés kattintott, vagy húzta.
 
-A következő kód lehetővé teszi a sokszög rajzolási módját, és beállítja a rajzolási interakció típusát, amelyet a projektmenedzsernek be kell tartania `freehand`. 
+A következő kód lehetővé teszi a sokszögrajzolás módot, és beállítja a rajzkezelő által betartandó `freehand`rajzi művelet típusát. 
 
 ```Javascript
 //Create an instance of the drawing manager and set drawing mode.
@@ -83,40 +83,40 @@ drawingManager = new atlas.drawing.DrawingManager(map,{
 });
 ```
 
- Ez a mintakód a sokszög rajzolásának funkcióit valósítja meg a térképen. Csak tartsa lenyomva a bal egérgombot, és húzza a körülötte lévőket szabadon.
+ Ez a kódminta a sokszög rajzolásának funkcióját valósítja meg a térképen. Csak tartsa lenyomva a bal egérgombot, és húzza körbe, szabadon.
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Szabad oldali rajzolás" src="//codepen.io/azuremaps/embed/ZEzKoaj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-A <a href='https://codepen.io'>CodePen</a>-on Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával megtekintheti a tollat a <a href='https://codepen.io/azuremaps/pen/ZEzKoaj/'>szabad lapokon</a> .
+<iframe height="500" style="width: 100%;" scrolling="no" title="Szabadkézi rajzolás" src="//codepen.io/azuremaps/embed/ZEzKoaj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Tekintse meg az Azure Maps <a href='https://codepen.io/azuremaps/pen/ZEzKoaj/'>szabadkézi tollrajzát</a> (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen webhelyen.</a>
 </iframe>
 
 
-### <a name="customizing-drawing-options"></a>Rajzolási beállítások testreszabása
+### <a name="customizing-drawing-options"></a>Rajzbeállítások testreszabása
 
-Az előző példák azt mutatták be, hogyan lehet testre szabni a rajzolási beállításokat a rajzobjektum példányának összeállítása során. A `drawingManager.setOptions()` függvény használatával is megadhatja a rajzolási beállításokat. Az alábbi eszköz segítségével kipróbálhatja a rajzolási beállítások testreszabását a setOptions függvénnyel.
+Az előző példák bemutatták, hogyan szabhatja testre a rajzbeállításokat a Rajzkezelő példányaközben. A Rajzkezelő beállításait a `drawingManager.setOptions()` funkció val is megadhatja. Az alábbiakban egy eszköz, hogy teszteljék testreszabása az összes lehetőséget a rajz kezelő segítségével setOptions funkciót.
 
 <br/>
 
-<iframe height="685" title="A rajzolási kezelő testreszabása" src="//codepen.io/azuremaps/embed/LYPyrxR/?height=600&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'>Tekintse meg <a href='https://codepen.io/azuremaps/pen/LYPyrxR/'>a tollat</a> a <a href='https://codepen.io'>CodePen</a>Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>).
+<iframe height="685" title="Rajzkezelő testreszabása" src="//codepen.io/azuremaps/embed/LYPyrxR/?height=600&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'>Tekintse meg a Toll <a href='https://codepen.io/azuremaps/pen/LYPyrxR/'>alakzatadatokbe beszerezni</a> az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) segítségével a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Megtudhatja, hogyan használhatja a rajzolási eszközök modul további funkcióit:
+További információ a rajzeszközök modul további funkcióinak használatáról:
 
 > [!div class="nextstepaction"]
 > [Rajzolási eszköztár hozzáadása](map-add-drawing-toolbar.md)
 
 > [!div class="nextstepaction"]
-> [Alakzatadatok beolvasása](map-get-shape-data.md)
+> [Formázott adatok lekérése](map-get-shape-data.md)
 
 > [!div class="nextstepaction"]
-> [Reagálás a rajzolási eseményekre](drawing-tools-events.md)
+> [Rajzolási eseményekre való reakció](drawing-tools-events.md)
 
 > [!div class="nextstepaction"]
-> [Interakció típusa és billentyűparancsok](drawing-tools-interactions-keyboard-shortcuts.md)
+> [Az interakciók típusai és billentyűparancsok](drawing-tools-interactions-keyboard-shortcuts.md)
 
 További információ a cikkben használt osztályokról és módszerekről:
 
@@ -124,7 +124,7 @@ További információ a cikkben használt osztályokról és módszerekről:
 > [Térkép](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [Rajzolási kezelő](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest)
+> [Rajzkezelő](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest)
 
 > [!div class="nextstepaction"]
-> [Rajzolási eszköztár](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)
+> [Rajzolás eszköztár](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)
