@@ -7,7 +7,7 @@
     - name: Bing Search API-k összehasonlítása
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: REST API – rövid útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: REST API
@@ -28,7 +28,7 @@
       items:
         - name: Bing Entity Search-ügyfélkódtárak
           href: ./quickstarts/client-libraries.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Egyoldalas webalkalmazás készítése
       href: tutorial-bing-entities-search-single-page-app.md

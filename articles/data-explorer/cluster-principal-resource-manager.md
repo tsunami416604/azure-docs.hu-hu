@@ -1,6 +1,6 @@
 ---
-title: Fürthöz tartozó rendszerbiztonsági tag hozzáadása az Azure Adatkezelőhez Azure Resource Manager sablon használatával
-description: Ebből a cikkből megtudhatja, hogyan adhat hozzá fürtöket az Azure Adatkezelőhoz Azure Resource Manager sablon használatával.
+title: Fürtegyszerű staki fürtök hozzáadása az Azure Data Explorerhez egy Azure Resource Manager-sablon használatával
+description: Ebben a cikkben megtudhatja, hogyan adhat hozzá fürtrendszeri tagokat az Azure Data Explorer hez egy Azure Resource Manager-sablon használatával.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,29 +8,29 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: 22423568ab0b3b55d8d9566df4829eb6070b5f8c
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76965046"
 ---
-# <a name="add-cluster-principals-for-azure-data-explorer-by-using-an-azure-resource-manager-template"></a>Fürthöz tartozó rendszerbiztonsági tag hozzáadása az Azure Adatkezelőhez Azure Resource Manager sablon használatával
+# <a name="add-cluster-principals-for-azure-data-explorer-by-using-an-azure-resource-manager-template"></a>Fürtegyszerű staki fürtök hozzáadása az Azure Data Explorerhez egy Azure Resource Manager-sablon használatával
 
 > [!div class="op_single_selector"]
-> * [C#](cluster-principal-csharp.md)
+> * [C #](cluster-principal-csharp.md)
 > * [Python](cluster-principal-python.md)
 > * [Azure Resource Manager-sablon](cluster-principal-resource-manager.md)
 
-Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Ebben a cikkben egy Azure Resource Manager sablon használatával adja hozzá az Azure-Adatkezelőhoz tartozó rendszerbiztonsági tagokat.
+Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Ebben a cikkben az Azure Data Explorer fürtrendszeri tagok at egy Azure Resource Manager-sablon használatával adja hozzá.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-* [Hozzon létre egy fürtöt](create-cluster-database-portal.md).
+* [Fürt létrehozása](create-cluster-database-portal.md).
 
-## <a name="azure-resource-manager-template-for-adding-a-cluster-principal"></a>Azure Resource Manager sablon hozzáadása a fürthöz
+## <a name="azure-resource-manager-template-for-adding-a-cluster-principal"></a>Azure Resource Manager-sablon egyszerű fürthozzáadása
 
-Az alábbi példa egy Azure Resource Manager sablont mutat be a fürthöz való hozzáadáshoz.  A [sablont a Azure Portal szerkesztheti és telepítheti](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) az űrlap használatával.
+A következő példa egy Azure Resource Manager-sablont mutat be egy fürtegyszerű hozzáadása.  A [sablon t szerkesztheti és üzembe helyezheti az Azure Portalon](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) az űrlap használatával.
 
 ```json
 {
@@ -95,6 +95,6 @@ Az alábbi példa egy Azure Resource Manager sablont mutat be a fürthöz való 
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Adatbázis-rendszerbiztonsági tag hozzáadása](database-principal-resource-manager.md)
+* [Adatbázis-biztonsági tagok hozzáadása](database-principal-resource-manager.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Policy biztonsági szabályzatok létrehozása és szerkesztése a REST API használatával
-description: Ismerkedjen meg Azure Policy házirend-kezelés REST API használatával.
+title: Az Azure-szabályzatbiztonsági házirendek létrehozása és szerkesztése a REST API használatával
+description: Ismerje meg az Azure Policy policy management egy REST API-n keresztül.
 services: security-center
 author: memildin
 manager: rkarlin
@@ -9,37 +9,37 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: c218b5dc8ca3bfa0358a9b6a0d4867696762a8d4
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77430941"
 ---
-# <a name="configure-a-security-policy-in-azure-policy-using-the-rest-api"></a>Biztonsági házirend konfigurálása Azure Policy a REST API használatával
+# <a name="configure-a-security-policy-in-azure-policy-using-the-rest-api"></a>Biztonsági házirend konfigurálása az Azure-szabályzatban a REST API használatával
 
-A Azure Policyrel való natív integráció részeként Azure Security Center lehetővé teszi, hogy kihasználhassa a szabályzat-hozzárendelések létrehozásához szükséges Azure Policy REST API előnyeit. A következő utasítások végigvezetik a szabályzat-hozzárendelések létrehozásán, valamint a meglévő hozzárendelések testreszabásán. 
+Az Azure Security Center az Azure Security Centerrel való natív integráció részeként lehetővé teszi, hogy kihasználja az Azure Policy REST API-ját a házirend-hozzárendelések létrehozásához. A következő utasítások végigvezetik a házirend-hozzárendelések létrehozásán, valamint a meglévő hozzárendelések testreszabásán. 
 
-Fontos fogalmak a Azure Policyban: 
+Fontos fogalmak az Azure-szabályzatban: 
 
 - A **házirend-definíció** egy szabály 
 
-- A **kezdeményezés** szabályzat-definíciók (szabályok) gyűjteménye. 
+- A **kezdeményezés** a szakpolitikai definíciók (szabályok) gyűjteménye 
 
-- A **hozzárendelés** egy adott hatókörre irányuló kezdeményezés vagy házirend alkalmazása (felügyeleti csoport, előfizetés stb.) 
+- A **hozzárendelés** egy kezdeményezés vagy szabályzat alkalmazása egy adott hatókörhöz (felügyeleti csoport, előfizetés stb.) 
 
-Security Center rendelkezik egy beépített kezdeményezéssel, amely tartalmazza az összes biztonsági házirendjét. Az Security Center az Azure-erőforrásokra vonatkozó házirendjeinek értékeléséhez létre kell hoznia egy hozzárendelést a felügyeleti csoporton, vagy az előfizetést, amelyet fel szeretne mérni.
+A Security Center beépített kezdeményezéssel rendelkezik, amely tartalmazza az összes biztonsági házirendjét. A Security Center szabályzatainak az Azure-erőforrásokon való értékeléséhez hozzon létre egy hozzárendelést a felügyeleti csoportban vagy a felmérni kívánt előfizetésben.
 
-A beépített kezdeményezés alapértelmezés szerint a Security Center összes házirendjét engedélyezte. Dönthet úgy, hogy letilt bizonyos házirendeket a beépített kezdeményezésből. Ha például a **webalkalmazási tűzfal**kivételével a Security Center összes házirendjét szeretné alkalmazni, módosítsa a házirend Effect paraméterének értékét **Letiltva**értékre. 
+A beépített kezdeményezés alapértelmezés szerint a Security Center összes házirendjével rendelkezik. Dönthet úgy, hogy letilt bizonyos házirendeket a beépített kezdeményezésből. Ha például a **webalkalmazás tűzfalán**kívül a Security Center összes házirendjének alkalmazásához a házirend hatásparaméterének értékét **letiltva**értékre szeretné módosítani. 
 
 ## <a name="api-examples"></a>API-példák
 
-Az alábbi példákban cserélje le ezeket a változókat:
+A következő példákban cserélje le ezeket a változókat:
 
-- **{scope}** adja meg annak a felügyeleti csoportnak vagy előfizetésnek a nevét, amelyre alkalmazni kívánja a szabályzatot.
-- **{policyAssignmentName}** adja meg a [megfelelő szabályzat-hozzárendelés nevét](#policy-names).
-- **{Name}** adja meg a nevét, vagy annak a rendszergazdának a nevét, aki jóváhagyta a szabályzatot.
+- **{scope}** adja meg annak a felügyeleti csoportnak vagy előfizetésnek a nevét, amelyre a házirendet alkalmazza.
+- **{policyAssignmentName}** írja be [a megfelelő házirend-hozzárendelés nevét.](#policy-names)
+- **{name}** írja be a nevét vagy a házirend-módosítást jóváhagyó rendszergazda nevét.
 
-Ebből a példából megtudhatja, hogyan rendelheti hozzá a beépített Security Center kezdeményezést egy előfizetéshez vagy egy felügyeleti csoporthoz.
+Ez a példa bemutatja, hogyan rendelheti hozzá a beépített Security Center kezdeményezést egy előfizetési vagy felügyeleti csoporthoz.
  
  ```
     PUT  
@@ -68,13 +68,13 @@ Ebből a példából megtudhatja, hogyan rendelheti hozzá a beépített Securit
     } 
  ```
 
-Ebből a példából megtudhatja, hogyan rendelheti hozzá a beépített Security Center kezdeményezést egy előfizetéshez, a következő szabályzatok letiltásával: 
+Ez a példa bemutatja, hogyan rendelheti hozzá a beépített Security Center kezdeményezést egy előfizetéshez, ha a következő házirendek le vannak tiltva: 
 
 - Rendszerfrissítések ("systemUpdatesMonitoringEffect") 
 
 - Biztonsági konfigurációk ("systemConfigurationsMonitoringEffect") 
 
-- Endpoint Protection ("endpointProtectionMonitoringEffect") 
+- Végpontvédelem ("endpointProtectionMonitoringEffect") 
 
  ```
     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
@@ -109,34 +109,34 @@ Ebből a példából megtudhatja, hogyan rendelheti hozzá a beépített Securit
     
     } 
  ```
-Ebből a példából megtudhatja, hogyan távolíthat el egy hozzárendelést:
+Ez a példa bemutatja, hogyan távolíthatja el a hozzárendeléseket:
  ```
     DELETE   
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
  ```
 
-## Házirend-nevek leírása<a name="policy-names"></a>
+## <a name="policy-names-reference"></a>Házirendnevek hivatkozása<a name="policy-names"></a>
 
-|Házirend neve Security Center|A szabályzat neve Azure Policyban jelenik meg |Házirend-effektus paraméterének neve|
+|Házirend neve a Biztonsági központban|Az Azure-szabályzatban megjelenő házirend neve |Házirend-effektus paraméterének neve|
 |----|----|----|
-|SQL-titkosítás |Titkosítatlan SQL-adatbázis figyelése Azure Security Center |sqlEncryptionMonitoringEffect| 
-|SQL Auditing (SQL-naplózás) |Nem naplózott SQL-adatbázis figyelése Azure Security Center |sqlAuditingMonitoringEffect|
-|System updates (Rendszerfrissítések) |Hiányzó rendszerfrissítések figyelése Azure Security Center |systemUpdatesMonitoringEffect|
-|Storage-titkosítás |Hiányzó blob-titkosítás naplózása a Storage-fiókoknál |storageEncryptionMonitoringEffect|
-|JIT hálózati hozzáférés |A lehetséges hálózati igény szerinti (JIT) hozzáférés figyelése Azure Security Center |jitNetworkAccessMonitoringEffect |
-|Adaptív alkalmazásvezérlők |A lehetséges alkalmazások engedélyezési listájának figyelése Azure Security Center |adaptiveApplicationControlsMonitoringEffect|
-|Network security groups (Hálózati biztonsági csoportok) |A megengedhető hálózati hozzáférés figyelése Azure Security Center |networkSecurityGroupsMonitoringEffect| 
-|Biztonsági konfigurációk |Operációs rendszer biztonsági réseinak figyelése Azure Security Center |systemConfigurationsMonitoringEffect| 
-|Endpoint protection (Végpontok védelme) |Hiányzó Endpoint Protection figyelése Azure Security Center |endpointProtectionMonitoringEffect |
-|Disk encryption (Lemeztitkosítás) |Titkosítatlan virtuálisgép-lemezek figyelése Azure Security Center |diskEncryptionMonitoringEffect|
-|Sebezhetőségi felmérés |VIRTUÁLIS gépek biztonsági Réseinak figyelése Azure Security Center |vulnerabilityAssessmentMonitoringEffect|
-|Web application firewall (Webalkalmazási tűzfal) |Nem védett webalkalmazás figyelése Azure Security Center |webApplicationFirewallMonitoringEffect |
-|Next generation firewall (Új generációs tűzfal) |Nem védett hálózati végpontok figyelése Azure Security Center| |
+|SQL-titkosítás |Titkosítatlan SQL-adatbázis figyelése az Azure Security Centerben |sqlEncryptionMonitoringEffect| 
+|SQL Auditing (SQL-naplózás) |Nem auditált SQL-adatbázis figyelése az Azure Security Centerben |sqlAuditingMonitoringEffect|
+|System updates (Rendszerfrissítések) |Hiányzó rendszerfrissítések figyelése az Azure Security Centerben |systemUpdatesMonitoringEffect|
+|Storage-titkosítás |Naplózni kell a tűrfiókok hiányzó blobtitkosítását |storageEncryptionMonitoringEffect|
+|JIT hálózati hozzáférés |A lehetséges hálózati hozzáférés figyelése az Azure Security Centerben |jitNetworkAccessMonitoringEffect |
+|Adaptív alkalmazásvezérlők |Lehetséges alkalmazásengedélyezési lista figyelése az Azure Security Centerben |adaptiveApplicationControlsMonitoringEffect|
+|Network security groups (Hálózati biztonsági csoportok) |Megengedő hálózati hozzáférés figyelése az Azure Security Centerben |networkSecurityGroupsMonitoringEffect| 
+|Biztonsági konfigurációk |Operációs rendszer biztonsági réseinek figyelése az Azure Security Centerben |systemConfigurationsMonitoringEffect| 
+|Endpoint protection (Végpontok védelme) |Hiányzó végpontvédelem figyelése az Azure Security Centerben |endpointProtectionMonitoringEffect |
+|Disk encryption (Lemeztitkosítás) |Titkosítatlan virtuálisgép-lemezek figyelése az Azure Security Centerben |diskEncryptionMonitoringEffect|
+|Sebezhetőségi felmérés |Virtuálisgép-biztonsági rések figyelése az Azure Security Centerben |biztonsági résAssessmentAssessmentMonitoringEffect|
+|Web application firewall (Webalkalmazási tűzfal) |Nem védett webalkalmazás figyelése az Azure Security Centerben |webApplicationFirewallMonitoringEffect |
+|Next generation firewall (Új generációs tűzfal) |Nem védett hálózati végpontok figyelése az Azure Security Centerben| |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Más kapcsolódó anyagok esetében tekintse meg a következő cikkeket: 
+Egyéb kapcsolódó anyagokról lásd a következő cikkeket: 
 
 - [Egyéni biztonsági házirendek](custom-security-policies.md)
-- [Biztonsági házirend áttekintése](tutorial-security-policy.md)
+- [Biztonsági házirend – áttekintés](tutorial-security-policy.md)

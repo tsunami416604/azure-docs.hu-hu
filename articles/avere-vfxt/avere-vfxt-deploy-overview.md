@@ -1,64 +1,64 @@
 ---
-title: Az üzembe helyezés áttekintése – avere vFXT for Azure
-description: Az Azure-hoz készült avere-vFXT üzembe helyezésének áttekintése
+title: A telepítés áttekintése – Avere vFXT for Azure
+description: Az Avere vFXT azure-hoz történő üzembe helyezésének áttekintése
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: 78140fea74272dff6056bebfbd44ed9d55b0e1db
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76153683"
 ---
 <!-- filename is linked to in the marketplace template, make sure it gets a redirect if we rename it -->
 
-# <a name="avere-vfxt-for-azure---deployment-overview"></a>Avere vFXT az Azure-ban – üzembe helyezés áttekintése
+# <a name="avere-vfxt-for-azure---deployment-overview"></a>Avere vFXT for Azure – telepítés áttekintése
 
-Ez a cikk áttekintést nyújt azokról a lépésekről, amelyekkel a avere-vFXT Azure-fürthöz való beszerzése folyamatban van.
+Ez a cikk áttekintést nyújt az Avere vFXT Azure-fürthöz való be- és működéséhez szükséges lépésekről.
 
-A vFXT-fürt Azure piactéren való létrehozása előtt és után több feladat szükséges. A Kezdés és a Befejezés közötti folyamat egyértelművé teszi a szükséges erőfeszítés hatókörét.
+A vFXT-fürt létrehozása előtt és után számos feladatra van szükség az Azure Piactérről. Miután egyértelmű értelemben a start-to-finish folyamat segít hatálya szükséges erőfeszítést.
 
 ## <a name="deployment-steps"></a>A központi telepítés lépései
 
-[A System megtervezése](avere-vfxt-deploy-plan.md)után megkezdheti a avere vFXT-fürt létrehozását.
+A [rendszer megtervezése](avere-vfxt-deploy-plan.md)után elkezdheti létrehozni az Avere vFXT-fürtöt.
 
-Az Azure Marketplace-en Azure Resource Manager-sablon gyűjti a szükséges információkat, és automatikusan telepíti a teljes fürtöt.
+Az Azure Resource Manager-sablon az Azure Marketplace-en összegyűjti a szükséges információkat, és automatikusan telepíti a teljes fürtöt.
 
-Ha a vFXT-fürt működik, a használat előtt még néhány konfigurációs lépést is végre kell hajtania. Ha létrehozott egy új blob Storage-tárolót, az adatait át kell helyeznie. Ha NAS-tárolót használ, a fürt létrehozása után fel kell vennie azt. Csatlakoznia kell az ügyfelekhez a fürthöz.
+A vFXT-fürt működése után még mindig van néhány konfigurációs lépés, amelyet meg kell tennie a használata előtt. Ha létrehozott egy új Blob storage tárolót, érdemes áthelyezni az adatokat. Ha NAS tárolórendszert használ, a fürt létrehozása után hozzá kell adnia. Az ügyfeleket a fürthöz kell csatlakoztatnia.
 
-Az alábbiakban áttekintheti az összes lépést.
+Íme egy áttekintés az összes lépésről.
 
 1. Előfeltételek konfigurálása
 
-   A virtuális gép létrehozása előtt létre kell hoznia egy új előfizetést a avere vFXT projekthez, meg kell adnia az előfizetés tulajdonjogát, ellenőriznie kell a kvótákat, és szükség esetén meg kell adnia a növelést, és el kell fogadnia az avere vFXT szoftver használatára Részletes utasításokért olvassa el [a felkészülés a avere vFXT létrehozásához](avere-vfxt-prereqs.md) című témakört.
+   Virtuális gép létrehozása előtt létre kell hoznia egy új előfizetést az Avere vFXT projekthez, konfigurálnia kell az előfizetés tulajdonjogát, ellenőriznie kell a kvótákat, és szükség esetén növelnie kell magát, és el kell fogadnia az Avere vFXT szoftver használatára vonatkozó feltételeket. Olvassa [el A Felkészülés az Avere vFXT létrehozásához](avere-vfxt-prereqs.md) részletes utasításokért.
 
-1. A avere vFXT-fürt létrehozása
+1. Az Avere vFXT-fürt létrehozása
 
-   Az Azure Marketplace használatával hozza létre az Azure-fürthöz készült avere-vFXT. A sablon gyűjti a szükséges információkat, és parancsfájlokat hajt végre a végső termék létrehozásához.
+   Az Azure Marketplace használatával hozza létre az Avere vFXT azure-fürthöz. A sablon összegyűjti a szükséges információkat, és parancsfájlokat hajt végre a végtermék létrehozásához.
 
-   A fürt létrehozása az alábbi lépéseket foglalja magában, amelyeket a piactér sablonja végez:
+   A fürt létrehozása a következő lépéseket foglalja magában, amelyeket a piactérsablon végez:
 
-   * Szükség esetén hozzon létre új hálózati infrastruktúrát és erőforráscsoportot
-   * Fürt létrehozása
+   * Szükség esetén új hálózati infrastruktúra- és erőforráscsoportok létrehozása
+   * Fürtvezérlő létrehozása
 
-     A tartományvezérlő egy egyszerű virtuális gép, amely ugyanabban a virtuális hálózatban található, mint a avere vFXT-fürt, és rendelkezik a fürt létrehozásához és kezeléséhez szükséges egyéni szoftverekkel. A vezérlő létrehozza a vFXT-csomópontokat, és megalkotja a fürtöt, és egy parancssori felületet is biztosít a fürt felügyeletéhez az élettartama során.
+     A fürtvezérlő egy egyszerű virtuális gép, amely ugyanabban a virtuális hálózatban található, mint az Avere vFXT-fürt, és rendelkezik a fürt létrehozásához és kezeléséhez szükséges egyéni szoftverrel. A vezérlő létrehozza a vFXT-csomópontokat, és alkotja a fürtöt, és egy parancssori felületet is biztosít a fürt élettartama alatt történő kezeléséhez.
 
-     Ha az üzembe helyezés során új virtuális hálózatot vagy alhálózatot hoz létre, a vezérlő nyilvános IP-címmel fog rendelkezni. Ez azt jelenti, hogy a vezérlő Jump hostként szolgál, amely a virtuális hálózaton kívülről csatlakozik a fürthöz.
+     Ha a központi telepítés során új virtuális hálózatot vagy alhálózatot hoz létre, a vezérlő nyilvános IP-címmel fog rendelkezni. Ez azt jelenti, hogy a vezérlő ugróállomásként szolgálhat a fürthöz a virtuális hálózaton kívülről való csatlakozáshoz.
 
-   * A fürtcsomópont virtuális gépek létrehozása
+   * A fürtcsomópont virtuális gépeinek létrehozása
 
    * A fürt létrehozása az egyes csomópontokból
 
-   * Szükség esetén létrehozhat egy új BLOB-tárolót, és konfigurálhatja háttérbeli tárolóként a fürt számára.
+   * Szükség esetén hozzon létre egy új Blob-tárolót, és konfigurálja a fürt háttértárolójaként
 
-   A fürt létrehozásáról részletes leírást talál a [vFXT-fürt üzembe helyezése](avere-vfxt-deploy.md)című témakörben.
+   A fürt létrehozását részletesen a [vFXT-fürt telepítése](avere-vfxt-deploy.md)ismerteti.
 
 1. A fürt konfigurálása
 
-   Kapcsolódjon a avere vFXT konfigurációs felületéhez (avere Vezérlőpult) a fürt beállításainak testreszabásához. Ha hardveres tárhelyet vagy további blob-tárolókat használ, vegye igénybe a támogatás figyelését, és adja hozzá a tárolási rendszerét.
+   Csatlakozzon az Avere vFXT konfigurációs felületéhez (Avere Vezérlőpult) a fürt beállításainak testreszabásához. Engedélyezheti a támogatás figyelését, és adja hozzá a tárolórendszert, ha hardveres tárolót vagy további Blob-tárolókat használ.
 
    * [Hozzáférés a vFXT-fürthöz](avere-vfxt-cluster-gui.md)
    * [Támogatás engedélyezése](avere-vfxt-enable-support.md)
@@ -66,14 +66,14 @@ Az alábbiakban áttekintheti az összes lépést.
 
 1. Ügyfelek csatlakoztatása
 
-   A [avere vFXT-fürt csatlakoztatása](avere-vfxt-mount-clients.md) című témakör útmutatását követve megismerheti a terheléselosztást, valamint azt, hogy az ügyfélszámítógépek hogyan csatlakoztassa a fürtöt.
+   Kövesse az [Avere vFXT-fürt csatlakoztatása](avere-vfxt-mount-clients.md) című útmutatót a terheléselosztásról és afürt csatlakoztatásának módjáról.
 
-1. Adatbevitel (ha szükséges)
+1. Adatok hozzáadása (ha szükséges)
 
-   Mivel a avere vFXT egy skálázható többügyféles gyorsítótár, a legjobb módszer az, hogy az új háttérbeli tárolóba helyezi át az adatátvitelt, és több ügyfelet tartalmazó, többszálas fájlmásolás-stratégiát is biztosít.
+   Mivel az Avere vFXT egy skálázható többügyféles gyorsítótár, az adatok új háttértárolóba való áthelyezésének legjobb módja egy többügyféles, többszálas fájlmásolási stratégia.
 
-   Ha egy új blob-tárolóba vagy más háttérbeli tárolási rendszerbe kell helyeznie a munkakészletet, kövesse az [adatáthelyezés a vFXT-fürtbe](avere-vfxt-data-ingest.md)című témakör utasításait.
+   Ha a munkahalmaz-adatokat át kell helyeznie egy új Blob-tárolóba vagy más háttértárolórendszerbe, kövesse az [Adatok áthelyezése a vFXT-fürtbe](avere-vfxt-data-ingest.md)című útmutatóutasításait.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Folytassa a [felkészülést a avere-vFXT létrehozásához](avere-vfxt-prereqs.md) az előfeltételként szükséges feladatok elvégzéséhez.
+Folytassa [az Avere vFXT létrehozásának előkészítését](avere-vfxt-prereqs.md) az előfeltételként szolgáló feladatok elvégzéséhez.

@@ -1,6 +1,6 @@
 ---
 title: XML átalakítása formátumok között
-description: Olyan átalakításokat vagy térképeket hozhat létre, amelyek az XML formátumot Azure Logic Apps formátumai között Enterprise Integration Pack
+description: Az Azure Logic Apps enterprise integrációs csomaggal rendelkező, formátumai között XML-t konvertáló átalakítások vagy leképezések létrehozása
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -9,82 +9,82 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/08/2016
 ms.openlocfilehash: 500769a39ba7658b35c1abb80101f6234170c941
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74792390"
 ---
-# <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Hozzon létre olyan térképeket, amelyek átalakítja az XML-t a Azure Logic Apps formátumai között Enterprise Integration Pack
+# <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Az Azure Logic Apps formátumai között formázó dns-t átalakító leképezések létrehozása az Enterprise Integration Pack csomaggal
 
-A vállalati integrációs átalakító összekötő az adatok formátumát egy másik formátumba konvertálja. Előfordulhat például, hogy van egy bejövő üzenete, amely az aktuális dátumot tartalmazza a YearMonthDay formátumban. Az átalakítással újraformázhatja a dátumot MonthDayYear formátumban.
+A vállalati integrációs transzformátor összekötő az adatokat egyik formátumból a másikba konvertálja. Előfordulhat például, hogy egy bejövő üzenet tartalmazza az aktuális dátumot a YearMonthDay formátumban. Átalakítással újraformázhatja a MonthDayYear formátumban lévő dátumot.
 
-## <a name="what-does-a-transform-do"></a>Mit tesz az átalakítás?
-A térképként is ismert átalakítás egy forrás XML-sémából (a bemenetből) és egy célként megadott XML-sémából (a kimenetből) áll. A különböző beépített függvények segítségével kezelheti vagy szabályozhatja az adatok kezelését, beleértve a karakterlánc-manipulációkat, a feltételes hozzárendeléseket, a aritmetikai kifejezéseket, a dátum-és időformázó szerkezeteket, valamint a hurkokat is.
+## <a name="what-does-a-transform-do"></a>Mit csinál egy átalakítás?
+Az átalakítás, amely et leképezésnek is neveznek, egy forrás XML-sémából (a bemenetből) és egy cél XML-sémából (a kimenetből) áll. Különböző beépített függvények segítségével kezelheti vagy szabályozhatja az adatokat, beleértve a karakterlánc-műveleteket, a feltételes hozzárendeléseket, a számtani kifejezéseket, a dátum időforitálási időt, sőt a konstruktorokat is.
 
-## <a name="how-to-create-a-transform"></a>Átalakítás létrehozása
-A Visual Studio [Vállalati integráció SDK](https://aka.ms/vsmapsandschemas)használatával létrehozhat egy átalakítást/leképezést. Ha befejezte az átalakítás létrehozását és tesztelését, töltse fel az átalakítást az integrációs fiókjába. 
+## <a name="how-to-create-a-transform"></a>Hogyan hozzunk létre egy átalakulás?
+Átalakítást/térképet a Visual Studio [Enterprise Integration SDK](https://aka.ms/vsmapsandschemas)segítségével hozhat létre. Ha befejezte az átalakítás létrehozását és tesztelését, feltölti az átalakítást az integrációs fiókjába. 
 
-## <a name="how-to-use-a-transform"></a>Átalakítás használata
-Miután feltöltötte az átalakítást/leképezést az integrációs fiókjába, felhasználhatja egy logikai alkalmazás létrehozásához. A logikai alkalmazás a logikai alkalmazás indításakor futtatja az átalakításokat (és van olyan bemeneti tartalom, amelyet át kell alakítani).
+## <a name="how-to-use-a-transform"></a>Hogyan kell használni egy átalakítás
+Miután feltöltötte az átalakítás/térkép az integrációs fiókba, használhatja egy logikai alkalmazás létrehozásához. A logikai alkalmazás futtatja az átalakításokat, amikor a logikai alkalmazás aktiválódik (és van bemeneti tartalom, amelyet át kell alakítani).
 
-A **következő lépésekkel végezheti el a transzformáció használatát**:
+**Itt vannak a lépéseket, hogy használja a transform:**
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-* Integrációs fiók létrehozása és leképezés hozzáadása  
+* Integrációs fiók létrehozása és térkép hozzáadása  
 
-Most, hogy elvégezte az előfeltételeket, ideje létrehozni a logikai alkalmazást:  
+Most, hogy gondoskodott az előfeltételekről, itt az ideje, hogy létrehozza a logikai alkalmazást:  
 
-1. Hozzon létre egy logikai alkalmazást, és [csatolja azt a térképet tartalmazó integrációs fiókhoz](../logic-apps/logic-apps-enterprise-integration-accounts.md "Integrációs fiók összekapcsolása logikai alkalmazással") .
-2. **Kérelem** -trigger hozzáadása a logikai alkalmazáshoz  
+1. Hozzon létre egy logikai alkalmazást, és csatolja a térképet tartalmazó [integrációs fiókhoz.](../logic-apps/logic-apps-enterprise-integration-accounts.md "Ismerje meg, hogyan lehet integrációs fiókot összekapcsolni egy logikai alkalmazással")
+2. **Kérelem-eseményindító** hozzáadása a logikai alkalmazáshoz  
    ![](./media/logic-apps-enterprise-integration-transforms/transform-1.png)    
-3. Az **átalakítási XML-** művelet hozzáadásához először válassza a **művelet hozzáadása**   
+3. Az **XML átalakítása** művelet hozzáadása a **Művelet hozzáadása** lehetőség kiválasztásával   
    ![](./media/logic-apps-enterprise-integration-transforms/transform-2.png)   
-4. A keresőmezőbe írja be a Word *átalakítás* kifejezést a használni kívánt összes művelet szűréséhez  
+4. Írja be az *átalakítás* szót a keresőmezőbe, hogy az összes műveletet a használni kívánt műveletre szűrje.  
    ![](./media/logic-apps-enterprise-integration-transforms/transform-3.png)  
-5. **XML-átalakítási** művelet kiválasztása   
-6. Adja hozzá az átalakított XML- **tartalmat** . A HTTP-kérelemben a **tartalomként**kapott XML-adatokat is használhatja. Ebben a példában válassza ki a logikai alkalmazást indító HTTP-kérelem törzsét.
+5. Az **XML átalakítása** művelet kijelölése   
+6. Adja hozzá az átalakított **XML-tartalmat.** A HTTP-kérelemben kapott XML-adatokat **tartalomként használhatja.** Ebben a példában válassza ki a logic alkalmazást aktiváló HTTP-kérelem törzsét.
 
    > [!NOTE]
-   > Győződjön meg arról, hogy az **átalakítás XML** -fájljának tartalma XML. Ha a tartalom nem XML vagy Base64 kódolású, akkor meg kell adnia egy kifejezést, amely feldolgozza a tartalmat. Használhat például [függvényeket](logic-apps-workflow-definition-language.md#functions), például a ```@base64ToBinary```t a tartalom dekódolásához, vagy ```@xml``` a tartalom XML-ként történő feldolgozásához.
+   > Győződjön meg arról, hogy az **XML átalakítása** xml tartalma XML. Ha a tartalom nem XML-ben vagy base64-kódolású, meg kell adnia egy kifejezést, amely feldolgozza a tartalmat. Használhat például [függvényeket,](logic-apps-workflow-definition-language.md#functions) ```@base64ToBinary``` például a ```@xml``` tartalom dekódolásához vagy a tartalom XML-ként történő feldolgozásához.
  
 
-7. Válassza ki az átalakítás végrehajtásához használni kívánt **Térkép** nevét. A térképnek már az integrációs fiókjában kell lennie. Egy korábbi lépésben már megadta a logikai alkalmazás hozzáférését a térképet tartalmazó integrációs fiókhoz.      
+7. Válassza ki az átalakítás végrehajtásához használni kívánt **térkép** nevét. A térképnek már az integrációs fiókban kell lennie. Egy korábbi lépésben már megadta a logic app hozzáférést az integrációs fiók, amely tartalmazza a térképet.      
    ![](./media/logic-apps-enterprise-integration-transforms/transform-4.png) 
-8. Munkahelyi mentés  
+8. A munka mentése  
     ![](./media/logic-apps-enterprise-integration-transforms/transform-5.png) 
 
-Ezen a ponton elkészült a Térkép beállítása. Egy valós alkalmazásban érdemes lehet egy LOB-alkalmazásban (például SalesForce) tárolni az átalakított adatfájlokat. Az átalakítás kimenetét egyszerűen elküldheti Salesforce. 
+Ezen a ponton befejezte a térkép beállítását. Egy valós alkalmazásokban előfordulhat, hogy az átalakított adatokat egy üzletági alkalmazásban, például a SalesForce-ban szeretné tárolni. Az átalakítás kimenetét egyszerűen elküldheti a Salesforce-nak. 
 
-Mostantól a HTTP-végpontra irányuló kéréssel tesztelheti az átalakítást.  
+Most már tesztelheti az átalakítást a HTTP-végpontra vonatkozó kéréssel.  
 
 
 ## <a name="features-and-use-cases"></a>Funkciók és használati esetek
-* A térképen létrehozott átalakítás egyszerűen elvégezhető, például egy név és egy dokumentum másolása egy másikba. Emellett összetettebb átalakításokat is létrehozhat a beépített leképezési műveletek használatával.  
-* Több térképes művelet vagy függvény azonnal elérhető, beleértve a karakterláncokat, a dátum-és időfüggvényeket stb.  
-* A sémák között közvetlen Adatmásolást is végezhet. Az SDK-ban található Mapper esetében ez olyan egyszerű, mintha egy olyan vonalat rajzoljon, amely összekapcsolja a forrás sémájának elemeit a célként megadott sémában lévő társaikkal.  
-* Térkép létrehozásakor megtekintheti a Térkép grafikus ábrázolását, amely megjeleníti a létrehozott kapcsolatokat és hivatkozásokat.
-* Egy minta XML-üzenet hozzáadásához használja a test Map funkciót. Egy egyszerű kattintással tesztelheti a létrehozott térképet, és megtekintheti a generált kimenetet.  
+* A térképen létrehozott átalakítás egyszerű lehet, például egy név és cím másolása egyik dokumentumból a másikba. Összetettebb átalakításokat is létrehozhat a beépített térképműveletek használatával.  
+* Több térképművelet vagy függvény is könnyen elérhető, beleértve a karakterláncokat, a dátumidő-függvényeket és így tovább.  
+* Közvetlen adatmásolást tehet a sémák között. Az SDK-ban szereplő leképezőben ez olyan egyszerű, mint egy olyan vonal megrajzolása, amely összeköti a forrásséma elemeit a célsémában lévő megfelelőkkel.  
+* Térkép létrehozásakor megtekintheti a térkép grafikus ábrázolását, amely az összes létrehozott kapcsolatot és hivatkozást megjeleníti.
+* A Tesztleképezés szolgáltatással XML-mintaüzenetet adhat hozzá. Egy egyszerű kattintással tesztelheti a létrehozott térképet, és megtekintheti a generált kimenetet.  
 * Meglévő térképek feltöltése  
-* Az XML-formátum támogatását tartalmazza.
+* Támogatja az XML-formátumot.
 
 ## <a name="advanced-features"></a>Speciális funkciók
 
-### <a name="reference-assembly-or-custom-code-from-maps"></a>Hivatkozás vagy egyéni kód a mapsből 
-Az átalakítási művelet a leképezéseket és az átalakításokat is támogatja a külső szerelvényre való hivatkozással. Ez a funkció lehetővé teszi, hogy közvetlenül az XSLT-térképekről hívja meg az egyéni .NET-kódot. Itt láthatók a szerelvények Maps-ben való használatának előfeltételei.
+### <a name="reference-assembly-or-custom-code-from-maps"></a>Referenciaszerelvény vagy egyéni kód térképekből 
+Az átalakítási művelet külső összeállítással is támogatja a térképeket vagy az átalakításokat. Ez a funkció lehetővé teszi, hogy az egyéni .NET-kód hívásokat közvetlenül az XSLT-leképezésekről. Az alábbiakban a térképekszerelvény használatának előfeltételei tanaksznak.
 
-* A térképre hivatkozott térképet és szerelvényt az [integrációs fiókba kell feltölteni](./logic-apps-enterprise-integration-maps.md). 
+* A térképről hivatkozott térképet és szerelvényt fel kell tölteni az [integrációs fiókba.](./logic-apps-enterprise-integration-maps.md) 
 
   > [!NOTE]
-  > A leképezést és a szerelvényt egy adott sorrendben kell feltölteni. A szerelvényre hivatkozó Térkép feltöltése előtt fel kell töltenie a szerelvényt.
+  > A térképet és a szerelvényt meghatározott sorrendben kell feltölteni. A szerelvényt fel kell töltenie, mielőtt feltöltené a szerelvényre hivatkozó térképet.
 
-* A térképnek ezeket az attribútumokat és egy CDATA szakaszt is tartalmaznia kell, amely tartalmazza a szerelvény kódjának hívását:
+* A térképnek rendelkeznie kell ezekkel az attribútumokkal és egy CDATA szakaszsal, amely tartalmazza a szerelvénykód hívását:
 
-    * a **név** az egyéni szerelvény neve.
-    * a **névtér** a szerelvényben található névtér, amely tartalmazza az egyéni kódot.
+    * **a név** az egyéni kódösszeállítás neve.
+    * **A névtér** az a névtér a szerelvényben, amely tartalmazza az egyéni kódot.
 
-  Ez a példa egy olyan Térképet mutat be, amely egy "XslUtilitiesLib" nevű szerelvényre hivatkozik, és a szerelvényből hívja meg a `circumreference` metódust.
+  Ebben a példában egy "XslUtilitiesLib" nevű kódösszeállításra hivatkozó térkép látható, és a metódust a `circumreference` szerelvényből hívja meg.
 
   ```xml
   <?xml version="1.0" encoding="UTF-8"?>
@@ -110,8 +110,8 @@ Az átalakítási művelet a leképezéseket és az átalakításokat is támoga
   ```
 
 
-### <a name="byte-order-mark"></a>Byte Order Mark
-Alapértelmezés szerint az átalakítás válasza a byte Order Mark (BOM) karakterrel kezdődik. Ezt a funkciót csak a Code View Editor használata során érheti el. A funkció letiltásához a `transformOptions` tulajdonsághoz `disableByteOrderMark` kell megadni:
+### <a name="byte-order-mark"></a>Bájtrendelés-jel
+Alapértelmezés szerint az átalakítás válasza a Bájtrendelés-jellel (AJ) kezdődik. Ezt a funkciót csak a Kódnézet szerkesztőben végzett munka közben érheti el. A funkció letiltásához `disableByteOrderMark` adja `transformOptions` meg a tulajdonsághoz:
 
 ```json
 "Transform_XML": {
@@ -133,7 +133,7 @@ Alapértelmezés szerint az átalakítás válasza a byte Order Mark (BOM) karak
 
 
 
-## <a name="learn-more"></a>További információ
-* [További információ a Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Tudnivalók a Enterprise Integration Pack")  
-* [További információ a mapsről](../logic-apps/logic-apps-enterprise-integration-maps.md "További tudnivalók a vállalati integrációs térképekről")  
+## <a name="learn-more"></a>Részletek
+* [További információ az Enterprise Integration Pack csomagról](../logic-apps/logic-apps-enterprise-integration-overview.md "További információ a vállalati integrációs csomagról")  
+* [További információ a térképekről](../logic-apps/logic-apps-enterprise-integration-maps.md "További információ a vállalati integrációs térképekről")  
 

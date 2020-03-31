@@ -4,15 +4,15 @@ description: Teljesítmény figyelése és problémák diagnosztizálása a Node
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: 320ec62e642155002e42c59d4656f51673249eb1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
-ms.translationtype: MT
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670015"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>A Node.js szolgáltatások és appok figyelése az Application Insights segítségével
 
-Az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) az üzembe helyezést követően figyeli a háttérbeli szolgáltatásokat és összetevőket, hogy segítsen felderíteni és gyorsan diagnosztizálni a teljesítményt és egyéb problémákat. Az Application Insights használható bármilyen Node.js-szolgáltatáshoz, amely futhat az adatközpontban, egy Azure-beli virtuális gépen vagy webalkalmazáson, vagy akár egy nyilvános felhőn is.
+[Az Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) a háttérszolgáltatások és -összetevők üzembe helyezése után figyeli a háttérszolgáltatásokat és az összetevőket, hogy segítsen a teljesítmény és egyéb problémák gyors felismerésében. Az Application Insights használható bármilyen Node.js-szolgáltatáshoz, amely futhat az adatközpontban, egy Azure-beli virtuális gépen vagy webalkalmazáson, vagy akár egy nyilvános felhőn is.
 
 A megfigyelési adatok fogadásához, tárolásához és vizsgálatához építse be az SDK-t a programkódba, majd állítson be egy megfelelő Application Insights-erőforrást az Azure-ban. Az SDK ennek az erőforrásnak küldi az adatokat további elemzés és vizsgálat céljából.
 
@@ -20,27 +20,27 @@ A Node.js SDK automatikusan képes figyelni a bejövő és kimenő HTTP-kérése
 
 A TelemetryClient API használatával manuálisan beállíthatók és monitorozhatók az alkalmazás és a rendszer további részletei. A TelemetryClient API-t a jelen cikk egy későbbi részében részletesebben ismertetjük.
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 Egy alkalmazás vagy szolgáltatás monitorozásának beállításához a következő feladatokat kell elvégezni.
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik Azure-előfizetéssel, vagy [szerezzen be egy újat ingyenesen][azure-free-offer]. Ha a szervezet már rendelkezik Azure-előfizetéssel, akkor a rendszergazda az [alábbi utasításokat][add-aad-user] követve felveheti Önnek.
+Mielőtt hozzákezd, győződjön meg róla, hogy rendelkezik Azure-előfizetéssel, vagy [igényeljen ingyenesen egy újat][azure-free-offer]. Ha szervezete már rendelkezik Azure-előfizetéssel, egy rendszergazda [az alábbi utasítások követésével][add-aad-user] Önt is hozzá tudja adni az előfizetéshez.
 
 [azure-free-offer]: https://azure.microsoft.com/free/
 [add-aad-user]: https://docs.microsoft.com/azure/active-directory/active-directory-users-create-azure-portal
 
 
-### <a name="resource"></a> Application Insights-erőforrás beállítása
+### <a name="set-up-an-application-insights-resource"></a><a name="resource"></a> Application Insights-erőforrás beállítása
 
 
-1. Jelentkezzen be az [Azure Portal][portal].
-2. Válassza az **Erőforrás létrehozása** > **Fejlesztői eszközök** > **Application Insights** elemet. Az erőforrás tartalmaz egy végpontot a telemetriai adatok fogadására, valamint az érkező adatok, a mentett jelentések és irányítópultok, a szabály- és riasztási konfigurációk és továbbiak tárolására.
+1. Jelentkezzen be az [Azure Portalra.][portal]
+2. Válassza az > **Erőforrás-fejlesztői eszközök** >  **létrehozása****Alkalmazáselemzési**lehetőséget. Az erőforrás tartalmaz egy végpontot a telemetriai adatok fogadására, valamint az érkező adatok, a mentett jelentések és irányítópultok, a szabály- és riasztási konfigurációk és továbbiak tárolására.
 
 3. Az erőforrás-létrehozási oldalon az **Alkalmazás típusa** mezőben válassza a **Node.js-alkalmazás** elemet. Az alkalmazástípus határozza meg, hogy milyen alapértelmezett irányítópultokat és jelentéseket hoz létre a rendszer. (Bármely Application Insights-erőforrás képes bármilyen nyelvből és platformból adatot gyűjteni.)
 
-### <a name="sdk"></a> A Node.js SDK beállítása
+### <a name="set-up-the-nodejs-sdk"></a><a name="sdk"></a> A Node.js SDK beállítása
 
 Építse be az SDK-t az alkalmazásba, hogy az adatokat tudjon gyűjteni. 
 
@@ -70,11 +70,11 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik Azure-előfizeté
 
    Az SDK-t telemetria küldése nélkül is kipróbálhatja az `appInsights.defaultClient.config.disableAppInsights = true` beállításával.
 
-### <a name="monitor"></a> Figyelje alkalmazását
+### <a name="monitor-your-app"></a><a name="monitor"></a>Az alkalmazás figyelése
 
 Az SDK automatikusan gyűjti a telemetriaadatokat a Node.js-futtatókörnyezetről és néhány gyakori külső modulról. Az alkalmazás használatával gyűjtsön össze néhányat ezekből az adatokból.
 
-Ezután a [Azure Portal][portal] lépjen a korábban létrehozott Application Insights-erőforráshoz. Az **Áttekintő idővonalon** tekintse meg az első néhány adatpontot. Részletesebb adatokért válasszon a diagramok különböző összetevői közül.
+Ezután az [Azure Portalon][portal] lépjen a korábban létrehozott Application Insights-erőforráshoz. Az **Áttekintő idővonalon** tekintse meg az első néhány adatpontot. Részletesebb adatokért válasszon a diagramok különböző összetevői közül.
 
 Az alkalmazáshoz felderített topológia megtekintéséhez kattintson az **Alkalmazás-hozzárendelés** gombra. Részletesebb adatokért válasszon a diagram különböző összetevői közül.
 
@@ -191,10 +191,10 @@ server.on("listening", () => {
 });
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A telemetria figyelése a portálon](../../azure-monitor/app/overview-dashboard.md)
-* [Analytics-lekérdezések írása a telemetriai adatokhoz](../../azure-monitor/log-query/get-started-portal.md)
+* [Analytics-lekérdezések írása a telemetrián](../../azure-monitor/log-query/get-started-portal.md)
 
 <!--references-->
 

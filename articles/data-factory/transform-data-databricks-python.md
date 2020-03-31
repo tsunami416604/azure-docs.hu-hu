@@ -1,6 +1,6 @@
 ---
-title: Az adatátalakítás a Databricks Pythonral
-description: Megtudhatja, hogyan dolgozhat fel és alakíthat át egy Databricks Python használatával.
+title: Adatok átalakítása a Databricks Pythonnal
+description: Ismerje meg, hogyan dolgozhatja fel vagy alakíthatja át az adatokat egy Databricks Python futtatásával.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,15 +12,15 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: anandsub
 ms.openlocfilehash: be2e389a0f103983a566a3f74d201e5589d84586
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74926724"
 ---
-# <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Az adatátalakítást egy Python-tevékenység futtatásával Azure Databricks
+# <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Adatok átalakítása Python-tevékenység futtatásával az Azure Databricks-ben
 
-A [Data Factory folyamat](concepts-pipelines-activities.md) Azure Databricks Python-tevékenysége egy Python-fájlt futtat a Azure Databricks-fürtben. Ez a cikk az Adatátalakítási [tevékenységekre](transform-data.md) cikkre épül, amely általános áttekintést nyújt az adatátalakításról és a támogatott átalakítási tevékenységekről. A Azure Databricks felügyelt platform a Apache Spark futtatásához.
+Az Azure Databricks Python-tevékenység egy [Data Factory-folyamat](concepts-pipelines-activities.md) egy Python-fájlt futtat az Azure Databricks-fürtben. Ez a cikk az [adatátalakítási tevékenységek](transform-data.md) cikkre épül, amely általános áttekintést nyújt az adatok átalakításáról és a támogatott átalakítási tevékenységekről.Az Azure Databricks egy felügyelt platform az Apache Spark futtatásához.
 
 Az alábbi videóban a funkció bemutatását és ismertetését tekintheti meg tizenegy percben:
 
@@ -28,7 +28,7 @@ Az alábbi videóban a funkció bemutatását és ismertetését tekintheti meg 
 
 ## <a name="databricks-python-activity-definition"></a>Databricks Python-tevékenység definíciója
 
-Itt látható a Databricks Python-tevékenység JSON-definíciója:
+Itt van a minta JSON meghatározása Databricks Python tevékenység:
 
 ```json
 {
@@ -59,21 +59,21 @@ Itt látható a Databricks Python-tevékenység JSON-definíciója:
 
 ## <a name="databricks-python-activity-properties"></a>Databricks Python-tevékenység tulajdonságai
 
-A következő táblázat a JSON-definícióban használt JSON-tulajdonságokat ismerteti:
+Az alábbi táblázat a JSON-definícióban használt JSON-tulajdonságokat ismerteti:
 
-|Tulajdonság|Leírás|Szükséges|
+|Tulajdonság|Leírás|Kötelező|
 |---|---|---|
-|név|A folyamatban szereplő tevékenység neve.|Igen|
-|leírás|A tevékenység működését leíró szöveg|Nem|
-|type|A Databricks Python-tevékenység esetén a tevékenység típusa DatabricksSparkPython.|Igen|
-|linkedServiceName|Annak a Databricks társított szolgáltatásnak a neve, amelyen a Python-tevékenység fut. A társított szolgáltatásról a következő témakörben talál további információt: [számítási társított szolgáltatások](compute-linked-services.md) cikk.|Igen|
-|pythonFile|A végrehajtandó Python-fájl URI-ja. Csak DBFS elérési utak támogatottak.|Igen|
-|paraméterek|A Python-fájlnak átadandó parancssori paraméterek. Ez a karakterláncok tömbje.|Nem|
-|könyvtárak|Azoknak a táraknak a listája, amelyek a feladatot végrehajtó fürtön lesznek telepítve. < Sztring, objektum > tömbje lehet.|Nem|
+|név|A folyamatban lévő tevékenység neve.|Igen|
+|leírás|A tevékenység tevékenységét leíró szöveg.|Nem|
+|type|Databricks Python-tevékenység esetén a tevékenység típusa DatabricksSparkPython.|Igen|
+|linkedServiceName|A Databricks csatolt szolgáltatás neve, amelyen a Python-tevékenység fut. A csatolt szolgáltatásról a [Csatolt szolgáltatások számítási cikkében](compute-linked-services.md) olvashat.|Igen|
+|pythonFile fájl|A végrehajtandó Python-fájl URI-ja. Csak a DBFS-elérési utak támogatottak.|Igen|
+|paraméterek|A Python-fájlnak átadott parancssori paraméterek. Ez egy sor húr.|Nem|
+|Könyvtárak|A feladatot végrehajtó fürtre telepítendő tárak listája. Ez lehet <karakterlánc, objektum>|Nem|
 
-## <a name="supported-libraries-for-databricks-activities"></a>Támogatott kódtárak a databricks-tevékenységekhez
+## <a name="supported-libraries-for-databricks-activities"></a>Támogatott kódtárak adatbricktevékenységekhez
 
-A fenti Databricks-tevékenység definíciójában a következő típustár-típusokat adhatja meg: *jar*, *Egg*, *Maven*, *PyPI*, *Cran*.
+A fenti Databricks tevékenységdefinícióban a következő könyvtártípusokat adhatja meg: *jar*, *tojás,* *maven*, *pypi*, *cran.*
 
 ```json
 {
@@ -107,18 +107,18 @@ A fenti Databricks-tevékenység definíciójában a következő típustár-típ
 
 ```
 
-További részletekért tekintse meg a [Databricks dokumentációját](https://docs.azuredatabricks.net/api/latest/libraries.html#managedlibrarieslibrary) .
+További részletekért tekintse [databricks dokumentáció](https://docs.azuredatabricks.net/api/latest/libraries.html#managedlibrarieslibrary) könyvtártípusok.
 
-## <a name="how-to-upload-a-library-in-databricks"></a>Könyvtár feltöltése a Databricks-ben
+## <a name="how-to-upload-a-library-in-databricks"></a>Könyvtár feltöltése databricks-ben
 
-#### <a name="using-databricks-workspace-uihttpsdocsazuredatabricksnetuser-guidelibrarieshtmlcreate-a-library"></a>[Databricks-munkaterület felhasználói felületének használata](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library)
+#### <a name="using-databricks-workspace-ui"></a>[A Databricks munkaterület felhasználói felületének használata](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library)
 
-A felhasználói felület használatával hozzáadott könyvtár dbfs elérési útjának beszerzéséhez használhatja a [DATABRICKS CLI-t (telepítés)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
+A felhasználói felület használatával hozzáadott könyvtár dbfs elérési útjának beszerzéséhez használhatja a [Databricks CLI (telepítés) parancsot.](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli) 
 
-A jar-kódtárak általában a dbfs:/FileStore/tégelyek alatt tárolódnak, miközben a felhasználói felületet használják. A CLI: *databricks FS ls dbfs:/FileStore/tégelyek* segítségével listázhatja az összeset 
+A Jar-kódtárak általában a dbfs:/FileStore/jars alatt tárolódnak a felhasználói felület használata közben. Felsorolhatja az egész CLI: *databricks fs ls dbfs:/FileStore/jars* 
 
 
 
-#### <a name="copy-library-using-databricks-clihttpsdocsazuredatabricksnetuser-guidedev-toolsdatabricks-clihtmlcopy-a-file-to-dbfs"></a>[Könyvtár másolása a Databricks CLI használatával](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#copy-a-file-to-dbfs)
+#### <a name="copy-library-using-databricks-cli"></a>[Tár másolása a Databricks CLI használatával](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#copy-a-file-to-dbfs)
 
-Például: *databricks FS CP sparkpi-Assembly-0,1. jar dbfs:/FileStore/tégelyek*
+Példa: *databricks fs cp SparkPi-assembly-0.1.jar dbfs:/FileStore/jars*

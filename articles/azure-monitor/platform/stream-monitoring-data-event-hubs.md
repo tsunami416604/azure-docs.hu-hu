@@ -1,6 +1,6 @@
 ---
-title: Azure monitoring-adatstreamek továbbítása az Event hub szolgáltatásba
-description: Ismerje meg, hogyan továbbíthatja az Azure monitoring-adatait egy Event hub-ba az ADATPARTNER SIEM vagy Analytics eszközbe való beszerzéséhez.
+title: Az Azure figyelési adatainak streamelése az eseményközpontba
+description: Ismerje meg, hogyan streamelheti az Azure figyelési adatait egy eseményközpontba, hogy az adatokat egy partner SIEM vagy elemzési eszközbe tudja bejuttatni.
 author: bwren
 services: azure-monitor
 ms.topic: conceptual
@@ -8,60 +8,60 @@ ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
 ms.openlocfilehash: 08177165439ff7d3205e31757e5d1e28759a9836
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79274189"
 ---
-# <a name="stream-azure-monitoring-data-to-an-event-hub"></a>Azure monitoring-adatstreamek továbbítása az Event hub szolgáltatásba
-A Azure Monitor teljes körű figyelési megoldást kínál az Azure-ban, más felhőben és a helyszínen található alkalmazások és szolgáltatások számára. Az adatok elemzéséhez és a különböző figyelési helyzetekben való kihasználásához Azure Monitor használata mellett előfordulhat, hogy a környezetében más figyelési eszközökre is el kell küldenie. A legtöbb esetben az [Azure Event Hubs](/azure/event-hubs/)-t használja a leghatékonyabb módszer a megfigyelési és a külső eszközökre való továbbításra. Ez a cikk rövid leírást tartalmaz arról, hogy miként továbbíthatja a különböző forrásokból származó figyelési adatok egy Event hubhoz való továbbítását, és részletes útmutatásra mutató hivatkozásokat talál.
+# <a name="stream-azure-monitoring-data-to-an-event-hub"></a>Azure monitorozási adatok streamelése egy eseményközpontba
+Az Azure Monitor teljes körű figyelési megoldást kínál az Azure-beli alkalmazások és szolgáltatások számára, más felhőkben és a helyszínen. Amellett, hogy az Azure Monitor használatával elemzi az adatokat, és kihasználja azokat a különböző figyelési forgatókönyvek, előfordulhat, hogy el kell küldenie a környezetmás figyelési eszközök. A legtöbb esetben a figyelési adatok külső eszközökre történő streamelésének leghatékonyabb módja az [Azure Event Hubs](/azure/event-hubs/)használata. Ez a cikk rövid leírást ad arról, hogyan streamelheti a figyelési adatokat a különböző forrásokból egy eseményközpontba, és részletes útmutatásra mutató hivatkozásokat.
 
 
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs-névtér létrehozása
 
-Az adatforrások folyamatos átvitelének konfigurálása előtt [létre kell hoznia egy Event Hubs névteret és az Event hub](../../event-hubs/event-hubs-create.md)-t. Ez a névtér és az Event hub az összes megfigyelési adattal kapcsolatos cél. Az Event Hubs névtér olyan esemény-hubok logikai csoportosítása, amelyek ugyanazt a hozzáférési házirendet használják, hasonlóan ahhoz, hogy a Storage-fiókhoz egyedi Blobok tartoznak. Vegye figyelembe a következő adatokat az Event hubok névterével és a figyelési adatok továbbításához használt esemény hubokkal kapcsolatban:
+Mielőtt bármilyen adatforráshoz konfigurálna streamelést, létre kell [hoznia egy Event Hubs névteret és eseményközpontot.](../../event-hubs/event-hubs-create.md) Ez a névtér és az eseményközpont az összes figyelési adat célja. Az Event Hubs-névtér az azonos hozzáférési szabályzattal rendelkező eseményközpontok logikai csoportosítása, hasonlóan ahhoz, hogy egy tárfiók egyedi blobokkal rendelkezik az adott tárfiókon belül. Vegye figyelembe az alábbi részleteket az eseményközpontok névteréről és az eseményközpontokról, amelyeket a figyelési adatok streameléséhez használ:
 
-* Az átviteli egységek száma lehetővé teszi az adatforgalom léptékének növelését az Event hubok esetében. Általában csak egy átviteli egységre van szükség. Ha vertikális felskálázásra van szükség a naplók használatának növekedésével, manuálisan növelheti a névtér átviteli egységének számát, vagy engedélyezheti az automatikus inflációt.
-* A partíciók száma lehetővé teszi, hogy integrálással a felhasználást számos fogyasztó között. Egy partíció legfeljebb 20MBps vagy körülbelül 20 000 üzenetet tud támogatni másodpercenként. Az adatok felhasználását igénybe vehető eszköztől függően előfordulhat, hogy nem támogatja több partíció használatát. Négy partíciót érdemes elindítani, ha nem biztos abban, hogy nem biztos benne, hogy hány partíciót kell beállítania.
-* Az üzenetek megőrzését az Event hub-ban legalább 7 napig be kell állítani. Ha a felhasználó eszköz több mint egy napja leáll, ezzel biztosíthatja, hogy az eszköz képes legyen a 7 napnál régebbi események kikapcsolására.
-* Az Event hub alapértelmezett fogyasztói csoportját kell használnia. Nem kell más fogyasztói csoportokat létrehoznia, vagy külön fogyasztói csoportot használnia, ha azt tervezi, hogy két különböző eszköz ugyanazt az adatközpontot használja fel ugyanazokból az adatokból.
-* Az Azure-beli tevékenység naplójában válasszon ki egy Event Hubs névteret, és Azure Monitor a névtéren belül létrehoz egy, az elemzések – _naplók – műveleti naplók_nevű Event hubot. Más típusú naplók esetében választhat egy meglévő Event hub-t, vagy létrehozhat egy Azure Monitor Event hub-t is.
-* A 5671-es és 5672-as kimenő portot általában a számítógépen kell megnyitni, vagy az VNET az adatok felhasználását kell megnyitnia.
+* Az átviteli egységek száma lehetővé teszi az eseményközpontok átviteli skálájának növelését. Általában csak egy átviteli egységre van szükség. Ha a naplóhasználat növekedésével növekvő léptéket kell felskáláznia, manuálisan növelheti a névtér átviteli egységeinek számát, vagy engedélyezheti az automatikus felfújást.
+* A partíciók száma lehetővé teszi, hogy párhuzamosítsa a felhasználás t sok fogyasztó között. Egyetlen partíció legfeljebb 20 Mb/s vagy másodpercenként körülbelül 20 000 üzenetet támogathat. Az adatokat használó eszköztől függően előfordulhat, hogy több partícióról is támogatja a fogyasztást. Négy partíció ésszerű kezdeni, ha nem biztos abban, ha nem biztos a partíciók számát.
+* Az eseményközpontban legalább 7 napra állítja be az üzenetmegőrzést. Ha a fogyasztó eszköz lemegy több mint egy nap, ez biztosítja, hogy az eszköz is vegye fel, ahol abbahagyta az események legfeljebb 7 napos.
+* Az eseményközpont alapértelmezett fogyasztói csoportját kell használnia. Nincs szükség más fogyasztói csoportok létrehozására vagy egy külön fogyasztói csoport használatára, kivéve, ha azt tervezi, hogy két különböző eszköz ugyanazokat az adatokat használja fel ugyanabból az eseményközpontból.
+* Az Azure-tevékenységnaplóhoz válasszon egy Event Hubs-névteret, és az Azure Monitor létrehoz egy eseményközpontot a névtérben, amelynek neve _insights-logs-operational-logs._ Más naplótípusok esetén választhat egy meglévő eseményközpontot, vagy beállíthatja, hogy az Azure Monitor naplókategóriánként hozzon létre egy eseményközpontot.
+* Az 5671-es és 5672-es kimenő portot általában a számítógépen vagy az eseményközpontból adatokat fogyasztó virtuális hálózaton kell megnyitni.
 
-## <a name="monitoring-data-available"></a>Figyelési adathozzáférés
-A [Azure monitor figyelési adatforrásai](data-sources.md) az Azure-alkalmazásokhoz tartozó különböző adatszinteket, valamint az egyes szolgáltatásokhoz rendelkezésre álló megfigyelési adattípusokat ismertetik. Az alábbi táblázat felsorolja ezeket a szinteket, valamint annak leírását, hogy az egyes események hogyan továbbíthatók az Event hub-ba. További részletekért kövesse a megadott hivatkozásokat.
+## <a name="monitoring-data-available"></a>Rendelkezésre álló figyelési adatok
+[Az Azure Monitor figyelési adatok forrásai](data-sources.md) ismertetik az Azure-alkalmazások különböző adatrétegeit és az egyes verziókhoz rendelkezésre álló figyelési adatok típusait. Az alábbi táblázat ismerteti az egyes szinteket, és ismerteti, hogyan továbbíthatók ezek az adatok egy eseményközpontba. Kövesse a további részleteket mutató hivatkozásokat.
 
-| Réteg | Adatok | Módszer |
+| Szint | Adatok | Módszer |
 |:---|:---|:---|
-| [Azure-bérlő](data-sources.md#azure-tenant) | Naplók Azure Active Directory | Adja meg a bérlői diagnosztikai beállítást a HRE-bérlőn. További részletekért lásd az [oktatóanyag: Stream Azure Active Directory naplók az Azure Event hub-](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) ba című témakört. |
-| [Azure-előfizetés](data-sources.md#azure-subscription) | Azure-tevékenységnapló | Hozzon létre egy log-profilt a műveletnapló eseményeinek Event Hubsba való exportálásához.  A részletekért lásd: [stream Azure platform-naplók az azure Event Hubs](resource-logs-stream-event-hubs.md) . |
-| [Azure-erőforrások](data-sources.md#azure-resources) | Platform metrikái<br> Erőforrásnaplók |A rendszer mindkét típusú adattípust egy erőforrás-diagnosztikai beállítás használatával küldi el az Event hub-nak. További részletekért tekintse meg az [Azure-erőforrás-naplók streamben való továbbítását](resource-logs-stream-event-hubs.md) ismertető témakört. |
-| [Operációs rendszer (vendég)](data-sources.md#operating-system-guest) | Azure virtuális gépek | Telepítse a [Azure Diagnostics bővítményt](diagnostics-extension-overview.md) az Azure-beli Windows-és Linux-alapú virtuális gépeken. A Windows rendszerű virtuális gépekkel kapcsolatos részletekért tekintse meg [a gyakori Event Hubs elérésű útvonalon található Streaming Azure Diagnostics adatokat](diagnostics-extension-stream-event-hubs.md) , és a Linux rendszerű virtuális gépekkel kapcsolatos részletekért [használja a linuxos diagnosztikai bővítményt](../../virtual-machines/extensions/diagnostics-linux.md#protected-settings) . |
-| [Alkalmazás kódja](data-sources.md#application-code) | Application Insights | A Application Insights nem biztosít közvetlen metódust az adattovábbításhoz az Event hubokba. Beállíthatja a Application Insights-információk [folyamatos exportálását](../../azure-monitor/app/export-telemetry.md) egy Storage-fiókba, majd egy logikai alkalmazás használatával elküldheti az adatátvitelt az Event hubhoz a [logikai alkalmazás manuális továbbítása](#manual-streaming-with-logic-app)című témakörben leírtak szerint. |
+| [Azure-bérlő](data-sources.md#azure-tenant) | Az Azure Active Directory naplózási naplói | Konfigurálja a bérlői diagnosztikai beállítást az AAD-bérlőn. [Tekintse meg az oktatóanyagot: Az Azure Active Directory-naplók streamelése egy Azure-eseményközpontba](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) a részletekért. |
+| [Azure-előfizetés](data-sources.md#azure-subscription) | Azure-tevékenységnapló | Hozzon létre egy naplóprofilt a Tevékenységnapló-események eseményközpontokba való exportálásához.  A részleteket az [Azure-platform naplóiból](resource-logs-stream-event-hubs.md) az Azure Event Hubs-ba tekintse meg. |
+| [Azure-erőforrások](data-sources.md#azure-resources) | Platform-mutatók<br> Erőforrásnaplók |Mindkét típusú adat egy erőforrás-diagnosztikai beállítás használatával kerül elküldésre egy eseményközpontba. A részleteket [lásd: Stream Azure-erőforrás-naplók egy eseményközpontba.](resource-logs-stream-event-hubs.md) |
+| [Operációs rendszer (vendég)](data-sources.md#operating-system-guest) | Azure virtuális gépek | Telepítse az [Azure Diagnosztikai bővítményt](diagnostics-extension-overview.md) Windows és Linux alapú virtuális gépekre az Azure-ban. Lásd: [Streamelési Azure diagnosztikai adatok a forró elérési úton az Event Hubs használatával](diagnostics-extension-stream-event-hubs.md) a Windows virtuális gépek és [a Linux diagnosztikai bővítmény segítségével a metrikák és naplók a](../../virtual-machines/extensions/diagnostics-linux.md#protected-settings) linuxos virtuális gépek részleteinek figyelése. |
+| [Alkalmazás kódja](data-sources.md#application-code) | Application Insights | Az Application Insights nem biztosít közvetlen módszert az adatok eseményközpontokba való streamelésére. Beállíthatja az Application Insights-adatok [folyamatos exportálását](../../azure-monitor/app/export-telemetry.md) egy tárfiókba, majd egy logikai alkalmazás segítségével elküldheti az adatokat egy eseményközpontba a [Logic App manuális streamelése](#manual-streaming-with-logic-app)című szakaszban leírtak szerint. |
 
-## <a name="manual-streaming-with-logic-app"></a>Manuális átvitel a logikai alkalmazással
-Ha olyan adatokra van szüksége, amelyek közvetlenül nem továbbíthatók az Event hubhoz, írhat az Azure Storage-ba, majd egy olyan idővezérelt logikai alkalmazást használhat, amely lekéri a [blob Storage-ból származó adatait](../../connectors/connectors-create-api-azureblobstorage.md#add-action) , és [üzenetet küld az Event hub](../../connectors/connectors-create-api-azure-event-hubs.md#add-action)-nak. 
+## <a name="manual-streaming-with-logic-app"></a>Manuális streamelés a Logic App alkalmazással
+Olyan adatok esetében, amelyeket nem tud közvetlenül streamelni egy eseményközpontba, írhat az Azure storage-ba, majd használhat egy időaktiválású logikai alkalmazást, amely lekéri az adatokat a [blobstorage-ból,](../../connectors/connectors-create-api-azureblobstorage.md#add-action) és [leküldi azt üzenetként az eseményközpontba.](../../connectors/connectors-create-api-azure-event-hubs.md#add-action) 
 
 
-## <a name="partner-tools-with-azure-monitor-integration"></a>Partneri eszközök Azure Monitor integrációval
+## <a name="partner-tools-with-azure-monitor-integration"></a>Partnereszközök az Azure Monitor integrációjával
 
-A monitorozási adatait Azure Monitor segítségével átirányíthatja egy Event hubhoz, így könnyen integrálható a külső SIEM-és monitorozási eszközökkel. Azure Monitor integrációs eszközök például a következők:
+A figyelési adatok egy eseményközpontba való átirányítása az Azure Monitor segítségével könnyedén integrálható külső SIEM-eszközökkel és figyelési eszközökkel. Példák az Azure Monitor-integrációval rendelkező eszközökre:
 
 | Eszköz | Az Azure-ban üzemeltetve | Leírás |
 |:---|:---| :---|
-|  IBM QRadar | Nem | A Microsoft Azure DSM és Microsoft Azure Event hub protokoll letölthető [az IBM támogatási webhelyéről](https://www.ibm.com/support). Az Azure-nal való integrációról a [QRADAR DSM-konfigurációjában](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)olvashat bővebben. |
-| Splunk | Nem | [A Splunk Azure monitor-bővítménye](https://splunkbase.splunk.com/app/3534/) egy nyílt forráskódú projekt, amely elérhető a Splunkbase-ben. A dokumentáció a következő címen érhető el: [Azure monitor Addon for splunk](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk).<br><br> Ha nem telepíthet bővítményt a splunk-példányban, például ha proxyt használ, vagy ha a splunk-felhőben fut, ezeket az eseményeket a [splunk Azure Function](https://github.com/Microsoft/AzureFunctionforSplunkVS)használatával továbbíthatja a splunk http-esemény gyűjtője számára, amelyet az Event hub új üzenetei is aktiválnak. |
-| SumoLogic | Nem | Az SumoLogic adatok az Event hub-ból való felhasználásának beállítására vonatkozó utasítások [Az Azure-beli audit-alkalmazás eseménynaplójában érhetők el az Event hub-ból](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub). |
-| ArcSight | Nem | A ArcSight Azure Event hub intelligens összekötő a [ArcSight intelligens összekötő gyűjteményének](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)részeként érhető el. |
-| Syslog-kiszolgáló | Nem | Ha Azure Monitor-adatforrást közvetlenül egy syslog-kiszolgálóra szeretné továbbítani, használhat egy [Azure-függvényen alapuló megoldást](https://github.com/miguelangelopereira/azuremonitor2syslog/).
-| LogRhythm | Nem| [Itt](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)találhat útmutatást a naplók LogRhythm való összegyűjtéséhez. 
-|Logz.io | Igen | További információ: [Ismerkedés az Azure-on futó Java-alkalmazások Logz.IO használatával a figyelés és a naplózás](https://docs.microsoft.com/azure/java/java-get-started-with-logzio) használatába
+|  IBM QRadar | Nem | A Microsoft Azure DSM és a Microsoft Azure Event Hub Protocol letölthető [az IBM támogatási webhelyéről.](https://www.ibm.com/support) Az Azure-ral való integrációról a [QRadar DSM konfigurációban](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)olvashat bővebben. |
+| Splunk | Nem | [Az Azure Monitor splunk bővítménye](https://splunkbase.splunk.com/app/3534/) egy nyílt forráskódú projekt, amely a Splunkbase-ben érhető el. A dokumentáció az [Azure Monitor Addon For Splunk](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk)webhelyen érhető el.<br><br> Ha nem tud telepíteni egy bővítményt a Splunk-példányban, ha például proxyt használ, vagy a Splunk Cloud-on fut, továbbíthatja ezeket az eseményeket a Splunk HTTP Event Collector szolgáltatással az [Azure Function For Splunk](https://github.com/Microsoft/AzureFunctionforSplunkVS)használatával, amelyet az eseményközpontban lévő új üzenetek váltanak ki. |
+| SumoLogic | Nem | A SumoLogic eseményközpontból származó adatok felhasználására vonatkozó beállítására vonatkozó utasítások [az Azure Audit App naplóinak gyűjtése az Event Hubról](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub)című részében érhetők el. |
+| ArcSight | Nem | Az ArcSight Azure Event Hub intelligens összekötő [az ArcSight intelligens összekötő gyűjtemény](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)részeként érhető el. |
+| Syslog-kiszolgáló | Nem | Ha az Azure Monitor adatait közvetlenül egy syslog-kiszolgálóra szeretné streamelni, használhatja [az Azure-függvényen alapuló megoldást.](https://github.com/miguelangelopereira/azuremonitor2syslog/)
+| LogRhythm között | Nem| A LogRhythm beállítására vonatkozó utasítások a naplók eseményközpontból történő gyűjtésére [itt](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)találhatók. 
+|Logz.io | Igen | További információ: [A figyelés és a naplózás az Azure-ban futó Java-alkalmazások Logz.io használatával című témakörben talál.](https://docs.microsoft.com/azure/java/java-get-started-with-logzio)
 
 
-## <a name="next-steps"></a>További lépések
-* [A tevékenység naplójának archiválása egy Storage-fiókba](../../azure-monitor/platform/archive-activity-log.md)
-* [Olvassa el az Azure-tevékenység naplójának áttekintését](../../azure-monitor/platform/platform-logs-overview.md)
-* [Riasztás beállítása egy tevékenység naplójának eseménye alapján](../../azure-monitor/platform/alerts-log-webhook.md)
+## <a name="next-steps"></a>Következő lépések
+* [A tevékenységnapló archiválása tárfiókba](../../azure-monitor/platform/archive-activity-log.md)
+* [Az Azure-tevékenységnapló áttekintésének elolvasása](../../azure-monitor/platform/platform-logs-overview.md)
+* [Riasztás beállítása tevékenységnapló-esemény alapján](../../azure-monitor/platform/alerts-log-webhook.md)
 
 
