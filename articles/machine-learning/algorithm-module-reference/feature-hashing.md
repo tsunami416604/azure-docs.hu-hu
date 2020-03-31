@@ -1,7 +1,7 @@
 ---
-title: Szolgáltatás-kivonatolási modul referenciája
+title: Szolgáltatáskivonatoló modul hivatkozása
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan használhatja a Azure Machine Learning szabadkézi a szöveges adatokat.
+description: Ismerje meg, hogyan használhatja a szolgáltatáskivonat-kivonatoló modult az Azure Machine Learningben szöveges adatok felvázolása.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,126 +9,126 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 6ba53793e57be67e2954af870dfa4248fca465ec
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 7178417a5c20afe5b1ed02bc526ec174704962df
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77912205"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456250"
 ---
-# <a name="feature-hashing-module-reference"></a>Szolgáltatás-kivonatolási modul referenciája
+# <a name="feature-hashing-module-reference"></a>Szolgáltatáskivonatoló modul hivatkozása
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) részét képező modult ismerteti.
+Ez a cikk az Azure Machine Learning designerben található modult ismerteti (előzetes verzió).
 
-A szolgáltatás-kivonatolási modul használatával az angol nyelvű adatfolyamokat egész számokból álló funkciókba alakíthatja át. Ezt követően átadhatja ezt a kivonatoló funkciót egy gépi tanulási algoritmusba egy szöveges elemzési modell betanításához.
+A Feature Hashing modul segítségével az angol szövegfolyamot egész számjellemzőkhalmazává alakíthatja. Ezután adja át ezt a kivonatolt szolgáltatáskészletet egy gépi tanulási algoritmusnak egy szövegelemzési modell betanításához.
 
-Az ebben a modulban megadott funkció-kivonatolási funkció a nimbusml-keretrendszeren alapul. További információ: [NgramHash osztály](https://docs.microsoft.com/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest).
+A modulban biztosított szolgáltatáskivonatolási funkció a nimbusml keretrendszeren alapul. További információ: [NgramHash class](https://docs.microsoft.com/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest).
 
-## <a name="what-is-feature-hashing"></a>Mi a funkció-kivonatolás?
+## <a name="what-is-feature-hashing"></a>Mi az a funkciókivonatolás?
 
-A szolgáltatások kivonatolása úgy működik, hogy az egyedi tokeneket egész számokra konvertálja. A művelet a bemenetként megadott pontos karakterláncokon működik, és nem végez nyelvi elemzést vagy előfeldolgozást. 
+A funkciókivonatolás az egyedi tokenek egész számokká alakításával működik. A pontos karakterláncok, amelyek bemenetként megadott, és nem végez semmilyen nyelvi elemzés vagy előfeldolgozás. 
 
-Tegyük fel például, hogy a fentiekhez hasonló egyszerű mondatokat, majd egy hangulati pontszámot követ. Tegyük fel, hogy ezt a szöveget szeretné használni a modell létrehozásához.
+Például, hogy egy sor egyszerű mondatokat, mint ezek, majd egy hangulat pontszám. Tegyük fel, hogy ezt a szöveget szeretné használni egy modell létrehozásához.
 
 |Felhasználói szöveg|Hangulat|
 |--------------|---------------|
 |Imádtam ezt a könyvet|3|
-|Utáltam ezt a könyvet|1|
-|Ez a könyv nagyszerű volt|3|
+|Utáltam ezt a könyvet.|1|
+|Ez a könyv nagyszerű volt.|3|
 |Szeretem a könyveket|2|
 
-Belsőleg a funkció-kivonatolási modul egy n-grammos szótárt hoz létre. Az adatkészlet bigrams listája például a következőhöz hasonló lesz:
+Belsőleg a Feature Hashing modul létrehoz egy n-gramm szótárt. Például az adatkészlet bigram-ok listája a következőhez hasonló lehet:
 
-|Kifejezés (bigrams)|Frequency|
+|Kifejezés (bigram)|Frequency|
 |------------|---------------|
 |Ez a könyv|3|
 |Szerettem|1|
-|Utáltam|1|
+|Gyűlöltem.|1|
 |Szeretem|1|
 
-Az n-gramm méretének szabályozására az **n-gramm** tulajdonság használható. Ha a bigrams lehetőséget választja, a rendszer a unigrams is kiszámítja. A szótár a következőhöz hasonló egyetlen kifejezést is tartalmaz:
+Az n-grammok méretét az **N-gramm** tulajdonság használatával szabályozhatja. Ha a bigrams-et választja, az unigramok is kiszámításra kerülnek. A szótár is tartalmazna egyetlen kifejezések, mint például:
 
-|Kifejezés (unigrams)|Frequency|
+|Kifejezés (unigramm)|Frequency|
 |------------|---------------|
-|könyv|3|
+|Könyv|3|
 |I|3|
 |könyvek|1|
-|lett|1|
+|Volt|1|
 
-A szótár felépítése után a funkció-kivonatolási modul a szótári kifejezést kivonatoló értékre konvertálja. Ezután kiszámítja, hogy az egyes esetekben használták-e a szolgáltatást. A modul minden egyes sornyi szöveges adatokat tartalmaz, és az egyes kivonatoló funkciók egy oszlopát adja vissza.
+A szótár elkészülte után a Szolgáltatáskivonat-kivonatmodul a szótárkifejezéseket kivonatértékekké alakítja. Ezután kiszámítja, hogy minden esetben használtak-e egy funkciót. A modul minden egyes szövegadatsorhoz egy oszlopkészletet ad ki, minden kivonatolt jellemzőhez egy oszlopot.
 
-Például a kivonatolás után a funkció oszlopai a következőhöz hasonló módon jelenhetnek meg:
+Kivonatolás után például a jellemzőoszlopok a következővel jelenhetnek meg:
 
-|Minősítés|Kivonatolási funkció 1|Kivonatolási funkció 2|3\. kivonatolási funkció|
+|Minősítés|Kivonatolási funkció 1|Kivonatolási funkció 2|Kivonatolási funkció 3|
 |-----|-----|-----|-----|
 |4|1|1|0|
 |5|0|0|0|
 
-* Ha az oszlopban szereplő érték 0, akkor a sor nem tartalmazta a kivonatoló funkciót.
-* Ha az érték 1, akkor a sor tartalmazta a funkciót.
+* Ha az oszlop értéke 0, a sor nem tartalmazta a kivonatolt funkciót.
+* Ha az érték 1, a sor tartalmazta a funkciót.
 
-A szolgáltatás-kivonatolás lehetővé teszi, hogy a változó hosszúságú szöveges dokumentumokat a dimenzióját csökkentése érdekében numerikus funkciós vektorként jelenítse meg. Ha a Text (szöveg) oszlopot a betanításhoz próbálta használni, a rendszer egy kategorikus funkció oszlopként kezeli, amely számos különböző értéket tartalmaz.
+A szolgáltatáskivonatolás lehetővé teszi, hogy a változó hosszúságú szöveges dokumentumokat azonos hosszúságú numerikus jellemzővektorokként ábrázolja a méretcsökkentés érdekében. Ha a szövegoszlopot a betanításhoz próbálta használni, akkor a program egy több különböző értékkel rendelkező kategorikus jellemzőoszlopként kezeli.
 
-A numerikus kimenetek a gyakori gépi tanulási módszerek használatát is teszik elérhetővé, beleértve a besorolást, a fürtözést és az információk lekérését. Mivel a keresési műveletek a karakterlánc-összehasonlítás helyett egész kivonatokat használhatnak, a funkciók súlyozásának beszerzése is sokkal gyorsabb.
+Numerikus kimenetek is lehetővé teszik a közös gépi tanulási módszerek, beleértve a besorolás, fürtözés és információlekérések használatát is. Mivel a kitekintési műveletek karakterlánc-összehasonlítások helyett egész kihágásokat is használhatnak, a jellemzősúlyok lehívása is sokkal gyorsabb.
 
-## <a name="configure-the-feature-hashing-module"></a>A szolgáltatás kivonatolási moduljának konfigurálása
+## <a name="configure-the-feature-hashing-module"></a>A Szolgáltatáskivonat-modul konfigurálása
 
-1.  Adja hozzá a szolgáltatás-kivonatolási modult a folyamathoz a tervezőben.
+1.  Adja hozzá a szolgáltatáskivonatoló modult a tervező folyamatához.
 
-1. Az elemezni kívánt szöveget tartalmazó adatkészlet csatlakoztatása.
+1. Kapcsolja össze az elemezni kívánt szöveget tartalmazó adatkészletet.
 
     > [!TIP]
-    > Mivel a funkció-kivonatolás nem hajt végre olyan lexikális műveleteket, mint például a kivonás vagy a csonkítás, a szolgáltatások kivonatolása előtt időnként a szöveg előfeldolgozásával jobb eredményeket érhet el. 
+    > Mivel a szolgáltatáskivonatolás nem hajt végre lexikális műveleteket, például a származtatást vagy a csonkolást, néha jobb eredményeket érhet el a szöveg előfeldolgozásával a szolgáltatáskivonatolás alkalmazása előtt. 
 
-1. Állítsa be a **cél oszlopokat** a kivonatoló funkciókra átalakítani kívánt szöveges oszlopokra. Ne feledje, hogy:
+1. Állítsa a **Céloszlopokat** azon szövegoszlopokra, amelyeket kivonatolt szolgáltatásokká szeretne alakítani. Ne feledje, hogy:
 
-    * Az oszlopoknak karakterlánc adattípusúnak kell lenniük.
+    * Az oszlopoknak karakterlánc-adattípusnak kell lenniük.
     
-    * Több szöveges oszlop kiválasztásával jelentős hatással lehet a funkciók dimenzióját. Egy 10 bites kivonat oszlopainak száma például 1 024, és egyetlen oszlopból 2 048 két oszlopra.
+    * Több szövegoszlop kiválasztása jelentős hatással lehet a funkciók méretére. Egy 10 bites kivonat oszlopainak száma például 1024-ről 2048-ra emelkedik két oszlop esetén.
 
-1. **Kivonatoló bitsize** használata a kivonatoló tábla létrehozásakor használandó bitek számának megadásához.
+1. **A kivonatoló bitméret** segítségével megadhatja a kivonattábla létrehozásakor használandó bitek számát.
     
-    Az alapértelmezett bit mérete 10. Számos probléma esetén ez az érték megfelelő. Előfordulhat, hogy a betanítási szövegben az n-gramm szókincs méretétől függően több helyre van szükség az ütközések elkerüléséhez.
+    Az alapértelmezett bitméret 10. Sok probléma esetén ez az érték megfelelő. Az ütközések elkerüléséhez több helyre lehet szükség, a betanítási szövegben található n-gramm szókincs méretétől függően.
     
-1. **N-gramm**esetén adjon meg egy számot, amely meghatározza a képzési szótárhoz hozzáadandó N-g maximális hosszát. Az n-Gram az *n* betűs sorozat, amely egyedi egységként van kezelve.
+1. **N-gramm**esetén adjon meg egy számot, amely meghatározza az n-gramm maximális hosszát, amelyet hozzá szeretne adni az edzésszótárhoz. Az n-gramm az *n* szavak sorozata, amelyet egyedi egységként kezelnek.
 
-    Ha például a 3, a unigrams, a bigrams és a Trigrams értéket adja meg, a rendszer létrehozza a következőt:.
+    Ha például 3-at ad meg, akkor egygrammos, bigram és trigramok jönnek létre.
 
-1. A folyamat futtatása.
+1. Küldje el a folyamatot.
 
 ## <a name="results"></a>Results (Eredmények)
 
-A feldolgozás befejezése után a modul egy átalakított adatkészletet ad eredményül, amelyben az eredeti szöveges oszlop több oszlopra lett konvertálva. Minden oszlop a szöveg egyik funkcióját jelöli. Attól függően, hogy milyen jelentős a szótár, az eredményül kapott adatkészlet nagyméretű lehet:
+A feldolgozás befejezése után a modul egy átalakított adatkészletet ad ki, amelyben az eredeti szövegoszlopot több oszlopra konvertálta. Minden oszlop egy jellemzőt jelöl a szövegben. Aszótár jelentősségétől függően az eredményül kapott adatkészlet nagy lehet:
 
-|Oszlop neve 1|2-es típusú oszlop|
+|Oszlop neve 1|2. oszloptípus|
 |-------------------|-------------------|
-|USERTEXT|Eredeti adatoszlop|
-|HANGULATELEMZÉS|Eredeti adatoszlop|
-|USERTEXT-kivonatolási funkció 1|Kivonatoló funkció oszlopa|
-|USERTEXT – kivonatoló funkció 2|Kivonatoló funkció oszlopa|
-|USERTEXT-kivonatolási funkció n|Kivonatoló funkció oszlopa|
-|USERTEXT-kivonatolási funkció 1024|Kivonatoló funkció oszlopa|
+|FELHASZNÁLÓI SZÖVEG|Eredeti adatoszlop|
+|Hangulat|Eredeti adatoszlop|
+|USERTEXT - Kivonatolási funkció 1|Kivonatolt szolgáltatásoszlop|
+|USERTEXT - Kivonatolási funkció 2|Kivonatolt szolgáltatásoszlop|
+|USERTEXT - Kivonatolási funkció n|Kivonatolt szolgáltatásoszlop|
+|USERTEXT - Kivonatoló funkció 1024|Kivonatolt szolgáltatásoszlop|
 
-Az átalakított adatkészlet létrehozása után használhatja a betanítási modell modul bemenetként.
+Az átalakított adatkészlet létrehozása után használhatja azt a Betanítási modell modul bemeneteként.
  
 ## <a name="best-practices"></a>Ajánlott eljárások
 
-Az alábbi ajánlott eljárások segítséget nyújtanak a funkció-kivonatolási modul leghatékonyabban történő kihasználása érdekében:
+Az alábbi gyakorlati tanácsok segítségével a legtöbbet hozhatja ki a funkciókivonat-kivonatoló modulból:
 
-* A bemeneti szöveg előfeldolgozásához vegyen fel egy előfeldolgozó szöveges modult, mielőtt a szolgáltatás-kivonatolást használja. 
+* Adjon hozzá egy Előprocess Text modult a szolgáltatáskivonat használata előtt a bemeneti szöveg előfeldolgozásához. 
 
-* Adja hozzá a Select Columns modult, miután a funkció-kivonatolási modul eltávolítja a szöveges oszlopokat a kimeneti adatkészletből. A kivonatolási funkciók létrehozása után nincs szükség a szöveges oszlopokra.
+* Adjon hozzá egy Oszlopok kijelölése modult a Szolgáltatáskivonat-kivonatmodul után, hogy eltávolítsa a szövegoszlopokat a kimeneti adatkészletből. A kivonatolási szolgáltatások létrehozása után nincs szükség a szövegoszlopokra.
     
-* Ezeket a szöveg-előfeldolgozási beállításokat érdemes használni az eredmények egyszerűsítése és a pontosság javítása érdekében:
+* Fontolja meg a szöveg előfeldolgozási beállításainak használatát az eredmények egyszerűsítése és a pontosság javítása érdekében:
 
-    * Sortörés
-    * A Word eltávolításának leállítása
-    * Kis-és nagybetűk normalizálása
-    * Írásjelek és speciális karakterek eltávolítása
-    * Eredő  
+    * Szótörés
+    * A szavak eltávolításának leállítása
+    * Eset normalizálása
+    * Az írásjelek és a speciális karakterek eltávolítása
+    * Eredet  
 
-Az egyes megoldásokban alkalmazandó előfeldolgozási módszerek optimális készlete a tartománytól, a szókincstől és az üzleti igényektől függ. a folyamat adataival megtekintheti, hogy mely szöveg-feldolgozási módszerek a leghatékonyabbak.
+A bármely megoldásban alkalmazható előfeldolgozási módszerek optimális készlete a tartománytól, a szókincstől és az üzleti szükséglettől függ. folyamataz adatokkal, hogy melyik szövegfeldolgozási módszerek a leghatékonyabbak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
             
-Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) 
+Tekintse meg az Azure Machine Learning [számára elérhető modulok készletét](module-reference.md) 

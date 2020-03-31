@@ -1,6 +1,6 @@
 ---
-title: Biztonsági műveletek integrálása és kezelése & Microsoft Graph biztonsággal
-description: Javítsa az alkalmazás veszélyforrások elleni védelmét, észlelését és válaszát Microsoft Graph biztonsági & Azure Logic Apps
+title: A Microsoft Graph Security & biztonsági műveletek integrálása és kezelése
+description: Javítsa az alkalmazás fenyegetésvédelmi, észlelési és válaszát a Microsoft Graph Security & Az Azure Logic Apps segítségével
 services: logic-apps
 ms.suite: integration
 author: preetikr
@@ -10,157 +10,157 @@ ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
 ms.openlocfilehash: b4f51b192d1a7c0ee14a769321793753e8217dea
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77598833"
 ---
-# <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>A biztonsági műveletek Microsoft Graph biztonsági & való integrálásával növelheti a veszélyforrások elleni védelmet Azure Logic Apps
+# <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>A fenyegetések elleni védelem javítása a biztonsági műveletek nek a Microsoft Graph Security & az Azure Logic Apps alkalmazásokkal való integrálásával
 
-A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a [Microsoft Graph biztonsági](https://docs.microsoft.com/graph/security-concept-overview) összekötővel javíthatja az alkalmazás által észlelt, védett és a fenyegetésekre való reagálást a Microsoft biztonsági termékeinek, szolgáltatásainak és partnereinek integrálására szolgáló automatizált munkafolyamatok létrehozásával. Létrehozhat például olyan [Azure Security Center](../security-center/security-center-playbooks.md) forgatókönyveket, amelyek Microsoft Graph biztonsági entitások, például riasztások figyelésére és kezelésére szolgálnak. Íme néhány forgatókönyv, amelyet a Microsoft Graph biztonsági összekötő támogat:
+Az [Azure Logic Apps](../logic-apps/logic-apps-overview.md) és a Microsoft Graph [Security](https://docs.microsoft.com/graph/security-concept-overview) összekötő segítségével a Microsoft biztonsági termékeinek, szolgáltatásainak és partnereinek integrálására automatizált munkafolyamatok létrehozásával javíthatja a fenyegetések észlelésének, védelmének és az azokra való reagálásnak a módját. Létrehozhat például [az Azure Security Center forgatókönyveit,](../security-center/security-center-playbooks.md) amelyek figyelik és kezelik a Microsoft Graph biztonsági entitásokat, például a riasztásokat. Íme néhány forgatókönyv, amelyet a Microsoft Graph Security összekötő támogat:
 
-* Riasztások lekérése lekérdezés vagy riasztási azonosító alapján. Lekérhet például egy olyan listát, amely nagy súlyosságú riasztásokat tartalmaz.
+* Riasztások at kaphat lekérdezések vagy riasztásazonosító alapján. Például lehívhat egy listát, amely tartalmazza a magas súlyosságú riasztások.
 
-* Riasztások frissítése. Például frissítheti a riasztási hozzárendeléseket, megjegyzéseket fűzhet a riasztásokhoz, vagy címkézheti a riasztásokat.
+* Értesítések frissítése. Frissítheti például a riasztási hozzárendeléseket, megjegyzéseket fűzhet a riasztásokhoz, vagy megcímkézheti a riasztásokat.
 
-* A riasztási [előfizetések (webhookok)](https://docs.microsoft.com/graph/api/resources/webhooks)létrehozásával figyelheti a riasztások létrehozását vagy módosítását.
+* Riasztási [előfizetések (webhookok)](https://docs.microsoft.com/graph/api/resources/webhooks)létrehozásával figyelheti, hogy mikor jönnek létre vagy módosítanak riasztásokat.
 
-* A riasztási előfizetések kezelése. Lekérheti például az aktív előfizetéseket, kiterjesztheti az előfizetés lejárati idejét, vagy törölhet előfizetéseket.
+* A riasztási előfizetések kezelése. Például beszerezheti az aktív előfizetéseket, meghosszabbíthatja egy előfizetés lejárati idejét, vagy törölheti az előfizetéseket.
 
-A logikai alkalmazás munkafolyamata olyan műveleteket is használhat, amelyek válaszokat kapnak a Microsoft Graph biztonsági összekötőtől, és ezt a kimenetet a munkafolyamat más műveletei számára is elérhetővé teszik. A munkafolyamatban más műveletek is megadhatók a Microsoft Graph biztonsági összekötő műveleteiből származó kimenet használatával. Ha például magas súlyosságú riasztásokat kap a Microsoft Graph biztonsági összekötőn keresztül, az Outlook Connector használatával e-mailben elküldheti ezeket a riasztásokat egy e-mail-üzenetben. 
+A logikai alkalmazás munkafolyamata olyan műveleteket használhat, amelyek válaszokat kapnak a Microsoft Graph Security összekötőről, és elérhetővé teszik a kimenetet a munkafolyamat más műveletei számára. A munkafolyamatban más műveletek is használhatják a Microsoft Graph Security összekötő műveleteinek kimenetét. Ha például a Microsoft Graph Security összekötőn keresztül kap magas súlyosságú riasztásokat, ezeket a riasztásokat az Outlook-összekötő használatával e-mailben küldheti el. 
 
-A Microsoft Graph biztonsággal kapcsolatos további tudnivalókért tekintse meg a [Microsoft Graph biztonsági API áttekintése](https://aka.ms/graphsecuritydocs)című témakört. Ha most ismerkedik a Logic apps szolgáltatással, tekintse át a következőt: [Mi az Azure Logic apps?](../logic-apps/logic-apps-overview.md). Ha Microsoft Flow vagy PowerApps keres, tekintse meg a [Mi az a flow?](https://flow.microsoft.com/) vagy a [Mi a PowerApps?](https://powerapps.microsoft.com/) című témakört.
+A Microsoft Graph Security szolgáltatásról a [Microsoft Graph Security API áttekintése című témakörben olvashat bővebben.](https://aka.ms/graphsecuritydocs) Ha most kezdi meg a logikai alkalmazásokat, tekintse át [a Mi az Azure Logic Apps?](../logic-apps/logic-apps-overview.md). Ha microsoft flow-t vagy PowerApps-et keres, olvassa el [a Mi a Flow?](https://flow.microsoft.com/) vagy [a Mi a PowerApps?](https://powerapps.microsoft.com/)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/). 
 
-* A Microsoft Graph biztonsági összekötő használatához *explicit módon* meg kell adnia Azure Active Directory (ad) bérlői rendszergazdai beleegyezését, amely a [Microsoft Graph biztonsági hitelesítési követelményeinek](https://aka.ms/graphsecurityauth)részét képezi. Ehhez a megkötéshez a Microsoft Graph biztonsági összekötő alkalmazás-azonosítója és neve szükséges, amelyet a [Azure Portal](https://portal.azure.com)is talál:
+* A Microsoft Graph Security-összekötő használatához *explicit* Azure Active Directorybeli bérlői rendszergazdai hozzájárulás szükséges, amely a [Microsoft Graph Security hitelesítési követelményei](https://aka.ms/graphsecurityauth) közé is tartozik. A hozzájáruláshoz a Microsoft Graph Security összekötő alkalmazásazonosítója és neve szükséges, amelyet az [Azure Portalon](https://portal.azure.com)is megtalál:
 
   | Tulajdonság | Érték |
   |----------|-------|
-  | **Alkalmazás neve** | `MicrosoftGraphSecurityConnector` |
-  | **Alkalmazás azonosítója** | `c4829704-0edc-4c3d-a347-7c4a67586f3c` |
+  | **Alkalmazásnév** | `MicrosoftGraphSecurityConnector` |
+  | **Alkalmazásazonosító** | `c4829704-0edc-4c3d-a347-7c4a67586f3c` |
   |||
 
-  Az összekötő engedélyezéséhez az Azure AD-bérlő rendszergazdája a következő lépéseket hajthatja végre:
+  Az összekötő hozzájárulásának megadásához az Azure AD-bérlőrendszergazdája az alábbi lépéseket hajthatja végre:
 
-  * [Adja meg a bérlői rendszergazdai jóváhagyást az Azure ad-alkalmazásokhoz](../active-directory/develop/v2-permissions-and-consent.md).
+  * [Adjon bérlői rendszergazdai jóváhagyást az Azure AD-alkalmazásokhoz](../active-directory/develop/v2-permissions-and-consent.md).
 
-  * A logikai alkalmazás első futtatásakor az alkalmazás beleegyezett az Azure AD-bérlő rendszergazdájától az [alkalmazás-beleegyező felhasználói](../active-directory/develop/application-consent-experience.md)felületen keresztül.
+  * A logikai alkalmazás első futtatásakor az alkalmazás az [alkalmazás-jóváhagyási felületen](../active-directory/develop/application-consent-experience.md) kérhet jóváhagyást az Azure AD bérlői rendszergazdájától.
    
-* Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Alapvető ismeretek [a logikai alkalmazások létrehozásához](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Az a logikai alkalmazás, amelyhez el szeretné érni Microsoft Graph biztonsági entitásait, például a riasztásokat. Microsoft Graph biztonsági trigger használatához üres logikai alkalmazásra van szükség. Microsoft Graph biztonsági művelet használatához olyan logikai alkalmazásra van szükség, amely az adott forgatókönyvhöz tartozó megfelelő triggerrel kezdődik.
+* A logikai alkalmazás, ahol szeretné elérni a Microsoft Graph biztonsági entitások, például a riasztások. A Microsoft Graph Biztonsági eseményindító használatához üres logikai alkalmazásra van szükség. A Microsoft Graph biztonsági művelet használatához olyan logikai alkalmazásra van szükség, amely a forgatókönyvnek megfelelő eseményindítóval kezdődik.
 
-## <a name="connect-to-microsoft-graph-security"></a>Kapcsolódás Microsoft Graph biztonsághoz 
+## <a name="connect-to-microsoft-graph-security"></a>Csatlakozás a Microsoft Graph biztonságához 
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/), és nyissa meg a logikai alkalmazást a Logic app Designerben, ha már nincs megnyitva.
+1. Jelentkezzen be az [Azure Portalon,](https://portal.azure.com/)és nyissa meg a logikai alkalmazást a Logic App Designerben, ha még nem nyitott.
 
-1. Az üres logikai alkalmazások esetében adja hozzá a triggert és minden egyéb műveletet, amelyet a Microsoft Graph biztonsági művelet hozzáadása előtt szeretne használni.
-
-   – vagy –
-
-   Meglévő Logic apps esetén az utolsó lépésben, amelyhez Microsoft Graph biztonsági műveletet szeretne hozzáadni, válassza az **új lépés**lehetőséget.
+1. Üres logikai alkalmazások esetén adja hozzá az eseményindítót és a kívánt műveleteket a Microsoft Graph biztonsági művelet hozzáadása előtt.
 
    – vagy –
 
-   A lépések közötti művelet hozzáadásához vigye a mutatót a lépések közötti nyíl fölé. Válassza ki a megjelenő pluszjelet (+), majd válassza a **művelet hozzáadása**lehetőséget.
+   Meglévő logikai alkalmazások esetén az utolsó lépésben, amikor hozzá szeretne adni egy Microsoft Graph biztonsági műveletet, válassza az **Új lépés lehetőséget.**
 
-1. A keresőmezőbe írja be a "Microsoft Graph Security" kifejezést a szűrőként. A műveletek listából válassza ki a kívánt műveletet.
+   – vagy –
 
-1. Jelentkezzen be Microsoft Graph biztonsági hitelesítő adataival.
+   Ha lépéseket szeretne hozzáadni a lépések közé, vigye az egérmutatót a lépések közötti nyíl fölé. Jelölje ki a megjelenő pluszjelet (+), és válassza **a Művelet hozzáadása**lehetőséget.
 
-1. Adja meg a kiválasztott művelethez szükséges adatokat, és folytassa a logikai alkalmazás munkafolyamatának összeállítását.
+1. A keresőmezőbe írja be szűrőként a "Microsoft Graph security" kifejezést. A műveletek listájában jelölje ki a kívánt műveletet.
+
+1. Jelentkezzen be a Microsoft Graph biztonsági hitelesítő adataival.
+
+1. Adja meg a kiválasztott művelethez szükséges részleteket, és folytassa a logikai alkalmazás munkafolyamatának kiépítését.
 
 ## <a name="add-triggers"></a>Eseményindítók hozzáadása
 
-Azure Logic Apps minden logikai alkalmazásnak egy [eseményindítóval](../logic-apps/logic-apps-overview.md#logic-app-concepts)kell kezdődnie, amely akkor következik be, amikor egy adott esemény történik, vagy ha egy adott feltétel teljesül. A Logic Apps motor az eseményindító minden egyes indításakor létrehoz egy logikai alkalmazás-példányt, és elindítja az alkalmazás munkafolyamatának futtatását.
+Az Azure Logic Apps minden logikai alkalmazás kell kezdeni egy [eseményindító,](../logic-apps/logic-apps-overview.md#logic-app-concepts)amely egy adott esemény bekövetkezésekor, vagy ha egy adott feltétel teljesül. Minden alkalommal, amikor az eseményindító aktiválódik, a Logic Apps motor létrehoz egy logikai alkalmazáspéldányt, és megkezdi az alkalmazás munkafolyamatának futtatását.
 
 > [!NOTE] 
-> Az eseményindító indításakor az eseményindító feldolgozza az összes új riasztást. Ha nem érkezik riasztás, a rendszer kihagyja a trigger futtatását. A következő eseményindító-lekérdezés az eseményindító tulajdonságaiban megadott ismétlődési időköz alapján történik.
+> Amikor egy eseményindító aktiválódik, az eseményindító feldolgozza az összes új riasztást. Ha nem érkezik riasztás, az eseményindító futtatása kimarad. A következő eseményindító-lekérdezés az eseményindító tulajdonságaiban megadott ismétlődési időköz alapján történik.
 
-Ebből a példából megtudhatja, hogyan indíthat el egy logikai alkalmazás-munkafolyamatot, amikor új riasztásokat küld az alkalmazásnak.
+Ez a példa bemutatja, hogyan indíthat el egy logikai alkalmazás munkafolyamatát, amikor új riasztásokat küld az alkalmazásnak.
 
-1.  A Azure Portal vagy a Visual Studióban hozzon létre egy üres logikai alkalmazást, amely megnyitja a Logic app designert. Ez a példa a Azure Portal használja.
+1.  Az Azure Portalon vagy a Visual Studio hozzon létre egy üres logikai alkalmazást, amely megnyitja a Logic App Designer. Ez a példa az Azure Portalt használja.
 
-1.  A tervezőben a keresőmezőbe írja be a "Microsoft Graph Security" kifejezést a szűrőként. Az eseményindítók listából válassza ki ezt az eseményindítót: **minden új riasztásnál**
+1.  A tervező keresőmezőjében írja be szűrőként a "Microsoft Graph security" kifejezést. Az eseményindítók listájából válassza ezt az **eseményindítót: Minden új riasztáson**
 
-1.  A triggerben adja meg a figyelni kívánt riasztásokkal kapcsolatos információkat. További tulajdonságok megjelenítéséhez nyissa meg az **új paraméter hozzáadása** listát, és válasszon egy paramétert a tulajdonság hozzáadásához az triggerhez.
+1.  Az eseményindítóban adja meg a figyelni kívánt riasztásokadatait. További tulajdonságok esetén nyissa meg az **Új paraméter hozzáadása** listát, és jelöljön ki egy paramétert, amely hozzáadja a tulajdonságot az eseményindítóhoz.
 
-   | Tulajdonság | Tulajdonság (JSON) | Kötelező | Típus | Leírás |
+   | Tulajdonság | Ingatlan (JSON) | Kötelező | Típus | Leírás |
    |----------|-----------------|----------|------|-------------|
-   | **Intervallum** | `interval` | Igen | Egész szám | Pozitív egész szám, amely leírja, hogy a munkafolyamat milyen gyakran fut a gyakoriság alapján. Itt láthatók a minimális és a maximális intervallumok: <p><p>-Hónap: 1-16 hónap <br>-Nap: 1-500 nap <br>-Óra: 1 – 12000 óra <br>Perc: 1 – 72000 perc <br>-Másodperc: 1 – 9999999 másodperc <p>Ha például az intervallum 6, és a gyakoriság értéke "Month", akkor az ismétlődés 6 havonta történik. |
-   | **Gyakoriság** | `frequency` | Igen | Sztring | Az ismétlődés időegysége: **másodperc**, **perc**, **óra**, **nap**, **hét**vagy **hónap** |
-   | **Időzóna** | `timeZone` | Nem | Sztring | Csak akkor érvényes, ha megad egy kezdési időpontot, mert ez az trigger nem fogad el [UTC-eltolást](https://en.wikipedia.org/wiki/UTC_offset). Válassza ki az alkalmazni kívánt időzónát. |
-   | **Kezdési idő** | `startTime` | Nem | Sztring | Adja meg a kezdő dátumot és időpontot a következő formátumban: <p><p>ÉÉÉÉ-hh-NNTóó: PP: mm, ha időzónát választ <p>– vagy – <p>ÉÉÉÉ-hh-NNTóó: PP: ssZ, ha nem jelöl ki időzónát <p>Ha például a 2017-es szeptember 18-án, 2:00 PM-nél szeretné, adja meg a "2017-09-18T14:00:00" parancsot, és válasszon ki egy időzónát, például a csendes-óceáni téli időpontot. Vagy a "2017-09-18T14:00:00Z" érték megadásával időzóna nélkül. <p>**Megjegyzés:** Ez a kezdési időpont legfeljebb 49 évvel későbbi, és az [ISO 8601 dátum-idő specifikációt](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) kell követnie [UTC dátum és idő formátumban](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), de [UTC-eltolás](https://en.wikipedia.org/wiki/UTC_offset)nélkül. Ha nem ad meg időzónát, a végén fel kell vennie a "Z" betűt szóközök nélkül. Ez a "Z" a megfelelő [tengeri időpontra](https://en.wikipedia.org/wiki/Nautical_time)hivatkozik. <p>Az egyszerű ütemtervek esetében a kezdési időpont az első előfordulás, míg a komplex ütemtervek esetében az trigger nem a kezdési időpontnál hamarabb következik be. [*Milyen módon használhatom a kezdő dátumot és időt?* ](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
+   | **Intervallum** | `interval` | Igen | Egész szám | Pozitív egész szám, amely leírja, hogy a munkafolyamat milyen gyakran fut a gyakoriság alapján. A minimális és maximális intervallumok a következők: <p><p>- Hónap: 1-16 hónap <br>- Nap: 1-500 nap <br>- Óra: 1-12.000 óra <br>- Perc: 1-72.000 perc <br>- Második: 1-9,999,999 másodperc <p>Ha például az intervallum 6, és a gyakoriság "Hónap", akkor az ismétlődés 6 havonta történik. |
+   | **Frekvencia** | `frequency` | Igen | Sztring | Az ismétlődés időegysége: **Második,** **Perc,** **Óra,** **Nap,** **Hét**vagy **Hónap** |
+   | **Időzóna** | `timeZone` | Nem | Sztring | Csak akkor érvényes, ha megad egy kezdési időpontot, mert ez az eseményindító nem fogadja el [az UTC eltolást.](https://en.wikipedia.org/wiki/UTC_offset) Jelölje ki az alkalmazni kívánt időzónát. |
+   | **Kezdési idő** | `startTime` | Nem | Sztring | Adja meg a kezdési dátumot és az időt ebben a formátumban: <p><p>YÉÉÉ-HH-DDThh:mm:ss, ha időzónát választ <p>– vagy – <p>YÉÉÉ-HH-DDThh:mm:ssZ, ha nem választ ki időzónát <p>Ha például 2017. Vagy adja meg a "2017-09-18T14:00:00Z" értéket időzóna nélkül. <p>**Megjegyzés:** Ennek a kezdési időpontnak a jövőben legfeljebb 49 éve van, és [utc dátumidő-formátumban](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)kell követnie az [ISO 8601 dátumidő-meghatározási](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) szintet , de [UTC-eltolás](https://en.wikipedia.org/wiki/UTC_offset)nélkül . Ha nem jelöl ki időzónát, a végén szóközök nélkül kell hozzáadnia a "Z" betűt. Ez a "Z" az egyenértékű [hajózási időre](https://en.wikipedia.org/wiki/Nautical_time)vonatkozik . <p>Egyszerű ütemezések esetén a kezdési időpont az első előfordulás, míg az összetett ütemezések esetén az eseményindító nem aktiválódik hamarabb, mint a kezdési időpont. [*Hogyan használhatom a kezdő dátumot és az időt?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
    ||||||
 
-1.  Ha elkészült, a tervező eszköztárán válassza a **Mentés**lehetőséget.
+1.  Ha elkészült, a tervező eszköztárán válassza a **Mentés gombot.**
 
-1.  Most folytassa a logikai alkalmazáshoz egy vagy több művelet hozzáadását azokkal a feladatokkal, amelyeket el szeretne végezni az trigger eredményeivel.
+1.  Most folytassa egy vagy több művelet hozzáadásával a logikai alkalmazáshoz az eseményindító eredményekkel végrehajtani kívánt feladatokhoz.
 
 ## <a name="add-actions"></a>Műveletek hozzáadása
 
-Az alábbiakban részletesebb információkat talál a Microsoft Graph biztonsági összekötővel elérhető különböző műveletek használatáról.
+Az alábbiakban részletesebb részleteket olvashat a Microsoft Graph Security összekötővel elérhető különböző műveletek használatáról.
 
 ### <a name="manage-alerts"></a>Riasztások kezelése
 
-A legutóbbi eredmények szűréséhez, rendezéséhez vagy beszerzéséhez *csak* a [Microsoft Graph által támogatott ODATA-lekérdezési paramétereket](https://docs.microsoft.com/graph/query-parameters)adja meg. *Ne adja meg* a teljes alap URL-címet vagy a http-műveletet, például `https://graph.microsoft.com/v1.0/security/alerts`, vagy a `GET` vagy `PATCH` műveletet. Íme egy konkrét példa, amely a **riasztások beolvasása** művelet paramétereit jeleníti meg, ha nagy súlyosságú riasztásokkal rendelkező listát szeretne:
+A legfrissebb eredmények szűréséhez, rendezéséhez vagy lefelvételéhez *csak* a [Microsoft Graph által támogatott ODATA lekérdezési paramétereket](https://docs.microsoft.com/graph/query-parameters)adja meg. *Ne adja meg* a teljes alap URL-címet `https://graph.microsoft.com/v1.0/security/alerts`vagy a `GET` `PATCH` HTTP-műveletet, például a , vagy a műveletet. Íme egy konkrét példa, amely a **Riasztások beszedése** művelet paramétereit mutatja be, ha magas súlyosságú riasztásokat tartalmazó listát szeretne:
 
 `Filter alerts value as Severity eq 'high'`
 
-Az összekötővel használható lekérdezésekkel kapcsolatos további információkért tekintse meg a [Microsoft Graph biztonsági riasztások dokumentációját](https://docs.microsoft.com/graph/api/alert-list). Az összekötővel folytatott továbbfejlesztett funkciók létrehozásával kapcsolatban további információt olvashat az összekötő által támogatott [séma-tulajdonságok riasztásokról](https://docs.microsoft.com/graph/api/resources/alert) .
+Az összekötővel használható lekérdezésekről a [Microsoft Graph Security riasztások hivatkozási dokumentációjában](https://docs.microsoft.com/graph/api/alert-list)olvashat bővebben. Az összekötőt bővített élmények létrehozásához további információ a [séma tulajdonságai,](https://docs.microsoft.com/graph/api/resources/alert) amelyek az összekötő támogatja.
 
 | Műveletek | Leírás |
 |--------|-------------|
-| **Riasztások beolvasása** | Egy vagy több [riasztási tulajdonság](https://docs.microsoft.com/graph/api/resources/alert)alapján szűrt riasztások beolvasása, például `Provider eq 'Azure Security Center' or 'Palo Alto Networks'`. | 
-| **Riasztás beolvasása azonosító alapján** | Egy adott riasztást kap a riasztás azonosítója alapján. | 
-| **Riasztás frissítése** | Egy adott riasztás frissítése a riasztás azonosítója alapján. A kérelemben szereplő kötelező és szerkeszthető tulajdonságok megadásához tekintse meg a [riasztások szerkeszthető tulajdonságait](https://docs.microsoft.com/graph/api/alert-update). Ha például riasztást szeretne hozzárendelni egy biztonsági elemzőhöz, hogy el lehessen végezni a vizsgálatot, frissítheti a riasztáshoz **rendelt** tulajdonságot. |
+| **Értesítések beszerezni** | Riasztások szűrése egy vagy több [riasztási tulajdonság](https://docs.microsoft.com/graph/api/resources/alert) `Provider eq 'Azure Security Center' or 'Palo Alto Networks'`alapján, például . | 
+| **Riasztás beszerezni azonosítóval** | A riasztásazonosító alapján adott riasztás t. | 
+| **Riasztás frissítése** | Adott riasztás frissítése a riasztásazonosító alapján. Ha biztosszeretne átadni a szükséges és szerkeszthető tulajdonságokat a kérelemben, tekintse meg a [riasztások szerkeszthető tulajdonságait.](https://docs.microsoft.com/graph/api/alert-update) Ha például egy biztonsági elemzőhöz szeretne riasztást rendelni, hogy azok megvizsgálhassák, frissítheti a riasztás **tulajdonsághoz rendelt** riasztását. |
 |||
 
-### <a name="manage-alert-subscriptions"></a>Riasztás-előfizetések kezelése
+### <a name="manage-alert-subscriptions"></a>Riasztási előfizetések kezelése
 
-Microsoft Graph támogatja az [*előfizetéseket*](https://docs.microsoft.com/graph/api/resources/subscription)vagy [*webhookokat*](https://docs.microsoft.com/graph/api/resources/webhooks). Az előfizetések lekéréséhez, frissítéséhez vagy törléséhez adja meg a [Microsoft Graph által támogatott ODATA-lekérdezési paramétereket](https://docs.microsoft.com/graph/query-parameters) a Microsoft Graph entitás-létrehozáshoz, és adja meg a `security/alerts`, amelyet a ODATA-lekérdezés követ. *Ne adja* meg az alap URL-címet, például `https://graph.microsoft.com/v1.0`. Ehelyett használja az ebben a példában szereplő formátumot:
+A Microsoft Graph támogatja az [*előfizetéseket*](https://docs.microsoft.com/graph/api/resources/subscription)és [*a webhookokat*](https://docs.microsoft.com/graph/api/resources/webhooks). Az előfizetések beszerezéséhez, frissítéséhez vagy törléséhez adja meg a Microsoft Graph `security/alerts` által támogatott [ODATA lekérdezési paramétereket](https://docs.microsoft.com/graph/query-parameters) a Microsoft Graph entitásszerkezetnek, és adja meg az okat az ODATA-lekérdezésnek. *Ne adja meg* például az `https://graph.microsoft.com/v1.0`alap URL-címet. Ehelyett használja a példában szereplő formátumot:
 
 `security/alerts?$filter=status eq 'New'`
 
 | Műveletek | Leírás |
 |--------|-------------|
-| **Előfizetések létrehozása** | [Hozzon létre egy előfizetést](https://docs.microsoft.com/graph/api/subscription-post-subscriptions) , amely értesítést küld a változásokról. Ezt az előfizetést szűrheti a kívánt riasztási típusokra. Létrehozhat például egy olyan előfizetést, amely értesíti a nagy súlyosságú riasztásokról. |
-| **Aktív előfizetések beolvasása** | [Lejárt előfizetések beolvasása](https://docs.microsoft.com/graph/api/subscription-list). | 
-| **Előfizetés frissítése** | [Előfizetés frissítése](https://docs.microsoft.com/graph/api/subscription-update) az előfizetés-azonosító megadásával. Az előfizetés kiterjesztéséhez például frissítheti az előfizetés `expirationDateTime` tulajdonságát. | 
-| **Előfizetés törlése** | [Előfizetés törlése](https://docs.microsoft.com/graph/api/subscription-delete) az előfizetés-azonosító megadásával. | 
+| **Előfizetések létrehozása** | [Hozzon létre egy előfizetést,](https://docs.microsoft.com/graph/api/subscription-post-subscriptions) amely értesíti Önt a változásokról. Ezt az előfizetést a kívánt riasztástípusokra szűrheti. Létrehozhat például egy előfizetést, amely értesíti a súlyos riasztásokról. |
+| **Aktív előfizetések beszereznie** | [Le nem járt előfizetések beszereznie.](https://docs.microsoft.com/graph/api/subscription-list) | 
+| **Előfizetés frissítése** | [Előfizetés frissítése](https://docs.microsoft.com/graph/api/subscription-update) az előfizetésazonosító megadásával. Például az előfizetés meghosszabbításához frissítheti az `expirationDateTime` előfizetés tulajdonságát. | 
+| **Előfizetés törlése** | [Előfizetés törlése](https://docs.microsoft.com/graph/api/subscription-delete) az előfizetésazonosító megadásával. | 
 ||| 
 
-### <a name="manage-threat-intelligence-indicators"></a>Fenyegetési intelligencia-mutatók kezelése
+### <a name="manage-threat-intelligence-indicators"></a>Fenyegetésintelligencia-mutatók kezelése
 
-A legutóbbi eredmények szűréséhez, rendezéséhez vagy beszerzéséhez *csak* a [Microsoft Graph által támogatott ODATA-lekérdezési paramétereket](https://docs.microsoft.com/graph/query-parameters)adja meg. *Ne adja meg* a teljes alap URL-címet vagy a http-műveletet, például `https://graph.microsoft.com/beta/security/tiIndicators`, vagy a `GET` vagy `PATCH` műveletet. Az alábbi példa egy olyan példát mutat be, amely a **tiIndicators beolvasása** művelet paramétereit jeleníti meg, ha olyan listát szeretne, amely rendelkezik a `DDoS` fenyegetés típusával:
+A legfrissebb eredmények szűréséhez, rendezéséhez vagy lefelvételéhez *csak* a [Microsoft Graph által támogatott ODATA lekérdezési paramétereket](https://docs.microsoft.com/graph/query-parameters)adja meg. *Ne adja meg* a teljes alap URL-címet `https://graph.microsoft.com/beta/security/tiIndicators`vagy a `GET` `PATCH` HTTP-műveletet, például a , vagy a műveletet. Íme egy konkrét példa, amely a **TiIndicators leget művelet** paramétereit `DDoS` mutatja be, ha olyan listát szeretne, amely rendelkezik a fenyegetés típusával:
 
 `Filter threat intelligence indicator value as threatType eq 'DDoS'`
 
-Az ezzel az összekötővel használható lekérdezésekkel kapcsolatos további információkért tekintse meg [a "választható lekérdezési paraméterek" című részt a Microsoft Graph biztonsági fenyegetésekkel kapcsolatos intelligencia mutatójának dokumentációjában](https://docs.microsoft.com/graph/api/tiindicators-list?view=graph-rest-beta&tabs=http). Az összekötővel folytatott továbbfejlesztett funkciók létrehozásával kapcsolatban további információt a [séma tulajdonságai által támogatott veszélyforrások felderítésére szolgáló kijelzőn](https://docs.microsoft.com/graph/api/resources/tiindicator?view=graph-rest-beta) olvashat.
+Az összekötővel használható lekérdezésekről a [Microsoft Graph Security fenyegetésfelderítési jelzőjének referenciadokumentációjában található "Választható lekérdezési paraméterek" című témakörben olvashat bővebben.](https://docs.microsoft.com/graph/api/tiindicators-list?view=graph-rest-beta&tabs=http) Az összekötőt bővített élmények létrehozásához további információ a [séma tulajdonságainak az](https://docs.microsoft.com/graph/api/resources/tiindicator?view=graph-rest-beta) összekötő által támogatott fenyegetésfelderítési jelzőről.
 
 | Műveletek | Leírás |
 |--------|-------------|
-| **Veszélyforrások elleni intelligencia indikátorok beolvasása** | Egy vagy több [tiIndicator-tulajdonság](https://docs.microsoft.com/graph/api/resources/tiindicator?view=graph-rest-beta)alapján szűrt tiIndicators lekérése, például `threatType eq 'MaliciousUrl' or 'DDoS'` |
-| **Veszélyforrások elleni intelligencia-jelző beolvasása azonosító alapján** | Egy adott tiIndicator beszerzése a tiIndicator-azonosító alapján. | 
-| **Fenyegetési intelligencia kijelző létrehozása** | Hozzon létre egy új tiIndicator a tiIndicators gyűjteménybe való közzétételsel. A kérelemben szereplő szükséges tulajdonságok megadásához tekintse át a [tiIndicator létrehozásához szükséges tulajdonságokat](https://docs.microsoft.com/graph/api/tiindicators-post?view=graph-rest-beta&tabs=http). |
-| **Több veszélyforrást érintő intelligencia-kijelző küldése** | Hozzon létre több új tiIndicators egy tiIndicators-gyűjtemény elküldésével. A kérelemben szereplő szükséges tulajdonságok megadásához tekintse át a [több tiIndicators elküldéséhez szükséges tulajdonságokat](https://docs.microsoft.com/graph/api/tiindicator-submittiindicators?view=graph-rest-beta&tabs=http). |
-| **Veszélyforrások elleni intelligencia-kijelző frissítése** | Egy adott tiIndicator frissítése a tiIndicator azonosítója alapján. A kérelemben szereplő kötelező és szerkeszthető tulajdonságok megadásához tekintse meg a [tiIndicator szerkeszthető tulajdonságait](https://docs.microsoft.com/graph/api/tiindicator-update?view=graph-rest-beta&tabs=http). Ha például frissíteni szeretné az alkalmazandó műveletet, ha a kijelző a targetProduct biztonsági eszközön belül szerepel, akkor frissítheti a tiIndicator **művelet** tulajdonságát. |
-| **Több veszélyforrást érintő intelligencia-kijelző frissítése** | Több tiIndicators frissítése. A kérelemben szereplő szükséges tulajdonságok megadásához tekintse át a [több tiIndicators frissítéséhez szükséges tulajdonságokat](https://docs.microsoft.com/graph/api/tiindicator-updatetiindicators?view=graph-rest-beta&tabs=http). |
-| **Veszélyforrások intelligencia-mutatójának törlése azonosító alapján** | Egy adott tiIndicator törlése a tiIndicator azonosítója alapján. |
-| **Több veszélyforrást érintő intelligencia-mutató törlése azonosító alapján** | Több tiIndicators törlése az azonosítóik alapján. A kérelemben szereplő szükséges tulajdonságok megadásához tekintse meg a [szükséges tulajdonságokat a több TiIndicators azonosító alapján történő törléséhez](https://docs.microsoft.com/graph/api/tiindicator-deletetiindicators?view=graph-rest-beta&tabs=http). |
-| **Több veszélyforrást érintő intelligencia-kijelző törlése külső azonosítók alapján** | Több tiIndicators törlése a külső azonosítók alapján. A kérelemben szereplő szükséges tulajdonságok megadásához tekintse meg a [szükséges tulajdonságokat a külső azonosítók által használt több tiIndicators törléséhez](https://docs.microsoft.com/graph/api/tiindicator-deletetiindicatorsbyexternalid?view=graph-rest-beta&tabs=http). |
+| **Fenyegetésintelligencia-jelzők beszereznie** | TiIndicator szűrése egy vagy több [tiIndicator tulajdonság](https://docs.microsoft.com/graph/api/resources/tiindicator?view=graph-rest-beta)alapján, például`threatType eq 'MaliciousUrl' or 'DDoS'` |
+| **Fenyegetésfelderítés-jelző beszerezni azonosítóval** | Kap egy adott tiIndicator alapján tiIndicator ID. | 
+| **Fenyegetésfelderítési mutató létrehozása** | Hozzon létre egy új tiIndicator feladással a tiIndicators gyűjtemény. Annak érdekében, hogy a kérelemben megtekintse a szükséges tulajdonságokat, olvassa el a [tiIndicator létrehozásához szükséges tulajdonságokat.](https://docs.microsoft.com/graph/api/tiindicators-post?view=graph-rest-beta&tabs=http) |
+| **Több fenyegetésintelligencia-mutató beküldése** | Hozzon létre több új tiIndicators közzétételével tiIndicators gyűjtemény. Annak érdekében, hogy a kérelemben a szükséges tulajdonságokat adja át, olvassa el a [több tiIndicators elküldéséhez szükséges tulajdonságokat.](https://docs.microsoft.com/graph/api/tiindicator-submittiindicators?view=graph-rest-beta&tabs=http) |
+| **A fenyegetésfelderítés jelzőjének frissítése** | Egy adott tiIndicator frissítése a tiIndicator ID alapján. Ha biztosan át szeretne adni a kérelemben szükséges és szerkeszthető tulajdonságokat, tekintse meg a [tiIndicator szerkeszthető tulajdonságait.](https://docs.microsoft.com/graph/api/tiindicator-update?view=graph-rest-beta&tabs=http) Ha például frissíteni szeretné a műveletet, hogy a mutató a targetProduct biztonsági eszközből egyezjön, frissítheti a tiIndicator **művelettulajdonságát.** |
+| **Több fenyegetésintelligencia-mutató frissítése** | Több tiInitor frissítés. Annak érdekében, hogy a kérelemben a szükséges tulajdonságokat adja át, olvassa el a [több tiIndicators frissítéséhez szükséges tulajdonságokat.](https://docs.microsoft.com/graph/api/tiindicator-updatetiindicators?view=graph-rest-beta&tabs=http) |
+| **Fenyegetésfelderítési jelző törlése azonosító szerint** | Egy adott tiIndicator törlése a tiIndicator ID alapján. |
+| **Több fenyegetésfelderítési mutató törlése azonosítók alapján** | Több tiIndicators törlése az azonosítójuk alapján. Annak érdekében, hogy a kérelemben megadott tulajdonságokat adja át, tekintse meg a [több tiIndicators azonosítók általi törléséhez szükséges tulajdonságokat.](https://docs.microsoft.com/graph/api/tiindicator-deletetiindicators?view=graph-rest-beta&tabs=http) |
+| **Több fenyegetésintelligencia-jelző törlése külső azonosítók szerint** | Több tiIndicators törlése a külső azonosítók alapján. Annak érdekében, hogy a kérelemben megadott tulajdonságokat adja át, tekintse meg a [szükséges tulajdonságokat több tiIndicators külső azonosítók alapján történő törléséhez.](https://docs.microsoft.com/graph/api/tiindicator-deletetiindicatorsbyexternalid?view=graph-rest-beta&tabs=http) |
 |||
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az összekötő [hivatkozási oldalát](https://aka.ms/graphsecurityconnectorreference).
+Az összekötő OpenAPI (korábbi Swagger) leírása által leírt eseményindítók, műveletek és korlátok technikai részleteiért tekintse át az összekötő [referenciaoldalát.](https://aka.ms/graphsecurityconnectorreference)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése
+További információ a [Logic Apps-összekötőkről](../connectors/apis-list.md)

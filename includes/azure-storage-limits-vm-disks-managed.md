@@ -8,25 +8,25 @@ ms.topic: include
 ms.date: 12/12/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f7c73d7d07bdfaa4fbbd7eeca4f00895c5add354
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 2766ea87544f2a21fb654f687eb62dee3c0714ab
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548208"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334669"
 ---
-**Felügyelt lemezek standard HDD**  
+**Szabványos HDD-kezelt lemezek**  
 [!INCLUDE [disk-storage-standard-hdd-sizes](disk-storage-standard-hdd-sizes.md)]
 
-**Felügyelt lemezek standard SSD**  
+**Szabványos SSD-kezelt lemezek**  
 [!INCLUDE [disk-storage-standard-ssd-sizes](disk-storage-standard-ssd-sizes.md)]
 
-**Prémium SSD felügyelt lemezek: lemezterület-korlátok**  
+**Prémium szintű SSD-vel kezelt lemezek: Lemezenkénti korlátok**  
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
-**Prémium SSD felügyelt lemezek: virtuális gépekre vonatkozó korlátok**
+**Prémium szintű SSD-felügyelt lemezek: Virtuálisgép-korlátonként**
 
-| Erőforrás | Alapértelmezett korlát |
+| Erőforrás | Korlát |
 | --- | --- |
-| IOPS maximális száma virtuális gépenként |80 000 IOPS GS5 virtuális géppel |
-| Maximális átviteli sebesség virtuális gépenként |2 000 MB/s GS5 virtuális géppel |
+| Maximális IOPS virtuális gépenként |80 000 IOPS GS5 virtuális géptel |
+| Maximális átviteli teljesítmény virtuális gépenként |2000 MB/s GS5 virtuális géptel |

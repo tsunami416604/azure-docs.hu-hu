@@ -13,12 +13,12 @@ metadata:
   ms.date: 02/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: e3d9f63d2f365d5f91f205dc57b1d28e42711403
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 015631efc0077bdaab9a335b4a38fbf4f927e22d
+  ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "80129824"
+  ms.lasthandoff: 03/26/2020
+  ms.locfileid: "80286013"
 highlightedContent:
   items:
   - title: Azure fejlesztői útmutató az első lépésekhez
@@ -32,7 +32,7 @@ highlightedContent:
     url: https://docs.microsoft.com/azure/cloud-adoption-framework/
   - title: Fejlessze a készségeit a Microsoft Learnnel
     itemType: learn
-    url: https://docs.microsoft.com/learn/browse/?products=azure&resource_type=learning%20path
+    url: https://docs.microsoft.com/learn/browse/?products=azure&resource_type=learning+path
 productDirectory:
   title: Tekintse át az Azure-termékeket
   items:
@@ -455,7 +455,7 @@ productDirectory:
     azureCategories:
     - compute
     url: batch/index.yml
-  - title: Felhőszolgáltatások
+  - title: Cloud Services
     summary: Magas rendelkezésre állású, a végtelenségig méretezhető felhőalkalmazások és API-k létrehozása
     imageSrc: https://static.docs.com/ui/media/product/azure/cloud-services.svg
     azureCategories:
@@ -527,7 +527,7 @@ productDirectory:
     - compute
     - windows-virtual-desktop
     url: virtual-desktop/index.yml
-  - title: Windows Virtual Machines
+  - title: Windows rendszerű virtuális gépek
     summary: Windows-alapú virtuális gépek kiépítése percek alatt
     imageSrc: https://static.docs.com/ui/media/product/azure/virtual-machine.svg
     azureCategories:
@@ -867,7 +867,7 @@ productDirectory:
     - iot
     - security
     url: asc-for-iot/index.yml
-  - title: Automatizálás
+  - title: Automation
     summary: Egyszerűbb felhőfelügyelet a folyamatok automatizálásával
     imageSrc: https://static.docs.com/ui/media/product/azure/automation.svg
     azureCategories:
@@ -1179,7 +1179,7 @@ productDirectory:
     azureCategories:
     - storage
     url: storage/blobs/index.yml
-  - title: Lemezes tárolás
+  - title: Disk Storage
     summary: Állandó, biztonságos, virtuális gépeket támogató lemezbeállítások
     imageSrc: https://static.docs.com/ui/media/product/azure/disk-storage.svg
     azureCategories:
@@ -1203,7 +1203,7 @@ productDirectory:
     azureCategories:
     - storage
     url: storage/queues/index.yml
-  - title: Tárterület
+  - title: Storage
     summary: Adatok, alkalmazások és számítási feladatok tárolása biztonságos, nagymértékben skálázható felhőalapú tárban
     imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
     azureCategories:

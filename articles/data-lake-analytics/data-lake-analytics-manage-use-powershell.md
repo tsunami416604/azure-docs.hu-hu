@@ -1,6 +1,6 @@
 ---
 title: Az Azure Data Lake Analytics kezelése az Azure PowerShell-lel
-description: Ez a cikk ismerteti a Data Lake Analytics-fiókok, adatforrások, felhasználók & feladatok kezelése az Azure PowerShell használatával.
+description: Ez a cikk bemutatja, hogyan használhatja az Azure PowerShellt a Data Lake Analytics-fiókok, adatforrások, felhasználók & feladatok kezelésére.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: matt1883
@@ -10,28 +10,28 @@ ms.assetid: ad14d53c-fed4-478d-ab4b-6d2e14ff2097
 ms.topic: conceptual
 ms.date: 06/29/2018
 ms.openlocfilehash: 4273828c9c2bdb75fcbc1de45da55c5a03dd615f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66156430"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Az Azure Data Lake Analytics kezelése az Azure PowerShell-lel
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-Ez a cikk ismerteti az Azure Data Lake Analytics-fiókok, adatforrások, felhasználók és feladatok kezelése az Azure PowerShell használatával.
+Ez a cikk ismerteti, hogyan kezelheti az Azure Data Lake Analytics-fiókok, adatforrások, felhasználók és feladatok az Azure PowerShell használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-A PowerShell használata a Data Lake Analytics, gyűjtse össze a következő információt: 
+A PowerShell és a Data Lake Analytics használatához gyűjtse össze a következő adatokat: 
 
-* **Előfizetés-azonosító**: A Data Lake Analytics-fiókot tartalmazó Azure-előfizetés azonosítója.
-* **Erőforráscsoport**: Az Azure-erőforráscsoportot, amely tartalmazza a Data Lake Analytics-fiók neve.
-* **A Data Lake Analytics-fiók neve**: A Data Lake Analytics-fiók neve.
-* **Alapértelmezett Data Lake Store-fiók neve**: Minden Data Lake Analytics-fiókhoz tartozik egy alapértelmezett Data Lake Store-fiók.
-* **Hely**: A hely, a Data Lake Analytics-fiók, például az "USA keleti RÉGIÓJA 2" vagy egyéb helyeken támogatott.
+* **Előfizetés-azonosító:** A Data Lake Analytics-fiókot tartalmazó Azure-előfizetés azonosítója.
+* **Erőforráscsoport:** A Data Lake Analytics-fiókot tartalmazó Azure-erőforráscsoport neve.
+* **Data Lake Analytics-fiók neve**: A Data Lake Analytics-fiók neve.
+* **Alapértelmezett Data Lake Store-fióknév:** Minden Data Lake Analytics-fiók alapértelmezett Data Lake Store-fiókkal rendelkezik.
+* **Hely:** A Data Lake Analytics-fiók helye, például "USA keleti része 2" vagy más támogatott helyek.
 
 A jelen oktatóanyagban szereplő PowerShell-kódrészletek ezeket a változókat használják adattárolásra
 
@@ -45,9 +45,9 @@ $location = "<Location>"
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-### <a name="log-in-using-interactive-user-authentication"></a>Jelentkezzen be, interaktív felhasználói hitelesítéssel
+### <a name="log-in-using-interactive-user-authentication"></a>Bejelentkezés interaktív felhasználói hitelesítéssel
 
-Jelentkezzen be egy előfizetés-azonosító vagy az előfizetés neve
+Bejelentkezés előfizetés-azonosítóval vagy előfizetés neve szerint
 
 ```powershell
 # Using subscription id
@@ -57,9 +57,9 @@ Connect-AzAccount -SubscriptionId $subId
 Connect-AzAccount -SubscriptionName $subname 
 ```
 
-## <a name="saving-authentication-context"></a>Hitelesítési környezetet mentése
+## <a name="saving-authentication-context"></a>Hitelesítési környezet mentése
 
-A `Connect-AzAccount` parancsmag minden esetben kéri a hitelesítő adatokat. Elkerülheti az alábbi parancsmagokkal erre kéri:
+A `Connect-AzAccount` parancsmag mindig kéri a hitelesítő adatokat. A következő parancsmagok használatával elkerülheti a kérések et:
 
 ```powershell
 # Save login session information
@@ -69,7 +69,7 @@ Save-AzAccounts -Path D:\profile.json
 Select-AzAccounts -Path D:\profile.json 
 ```
 
-### <a name="log-in-using-a-service-principal-identity-spi"></a>Jelentkezzen be a szolgáltatás egyszerű identitás (ÜTI)
+### <a name="log-in-using-a-service-principal-identity-spi"></a>Bejelentkezés egyszerű szolgáltatásidentitással (SPI)
 
 ```powershell
 $tenantid = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"  
@@ -84,7 +84,7 @@ Login-AzAccount -ServicePrincipal -TenantId $tenantid -Credential $pscredential 
 ## <a name="manage-accounts"></a>Fiókok kezelése
 
 
-### <a name="list-accounts"></a>Fiókok listázása
+### <a name="list-accounts"></a>Fiókok listája
 
 ```powershell
 # List Data Lake Analytics accounts within the current subscription.
@@ -96,7 +96,7 @@ Get-AdlAnalyticsAccount -ResourceGroupName $rg
 
 ### <a name="create-an-account"></a>Fiók létrehozása
 
-A naplók tárolásához minden Data Lake Analytics-fiók esetében szükség van egy alapértelmezett Data Lake Store-fiókra. Újból egy meglévő fiókot, vagy hozzon létre egy fiókot. 
+A naplók tárolásához minden Data Lake Analytics-fiók esetében szükség van egy alapértelmezett Data Lake Store-fiókra. Felhasználhat egy meglévő fiókot, vagy létrehozhat egy fiókot. 
 
 ```powershell
 # Create a data lake store if needed, or you can re-use an existing one
@@ -104,42 +104,42 @@ New-AdlStore -ResourceGroupName $rg -Name $adls -Location $location
 New-AdlAnalyticsAccount -ResourceGroupName $rg -Name $adla -Location $location -DefaultDataLake $adls
 ```
 
-### <a name="get-account-information"></a>Fiók adatainak beolvasása
+### <a name="get-account-information"></a>Fiókadatok beszereznie
 
-Egy fiók részleteinek beolvasása.
+A fiók részleteinek megismerése.
 
 ```powershell
 Get-AdlAnalyticsAccount -Name $adla
 ```
 
-### <a name="check-if-an-account-exists"></a>Ellenőrizze, hogy létezik-e fiók
+### <a name="check-if-an-account-exists"></a>Annak ellenőrzése, hogy létezik-e fiók
 
 ```powershell
 Test-AdlAnalyticsAccount -Name $adla
 ```
 
 ## <a name="manage-data-sources"></a>Adatforrások kezelése
-Az Azure Data Lake Analytics jelenleg a következő adatforrások használatát támogatja:
+Az Azure Data Lake Analytics jelenleg a következő adatforrásokat támogatja:
 
 * [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
 * [Azure Storage](../storage/common/storage-introduction.md)
 
-Minden Data Lake Analytics-fiók tartozik egy alapértelmezett Data Lake Store-fiók. Az alapértelmezett Data Lake Store-fiók feladat metaadatok és a feladat a vizsgálati naplók tárolására szolgál. 
+Minden Data Lake Analytics-fiók rendelkezik egy alapértelmezett Data Lake Store-fiókkal. Az alapértelmezett Data Lake Store-fiók a feladat metaadatainak és a feladatnaplózási naplók nak a tárolására szolgál. 
 
-### <a name="find-the-default-data-lake-store-account"></a>Keresse meg az alapértelmezett Data Lake Store-fiók
+### <a name="find-the-default-data-lake-store-account"></a>Az alapértelmezett Data Lake Store-fiók megkeresése
 
 ```powershell
 $adla_acct = Get-AdlAnalyticsAccount -Name $adla
 $dataLakeStoreName = $adla_acct.DefaultDataLakeAccount
 ```
 
-Az alapértelmezett Data Lake Store-fiók találhatja meg a tanúsítványlista adatforrások által a `IsDefault` tulajdonság:
+Az alapértelmezett Data Lake Store-fiókot az adatforrások listájának tulajdonság `IsDefault` szerinti szűrésével keresheti meg:
 
 ```powershell
 Get-AdlAnalyticsDataSource -Account $adla  | ? { $_.IsDefault } 
 ```
 
-### <a name="add-a-data-source"></a>Adatforrás hozzáadása
+### <a name="add-a-data-source"></a>Adatforrások felvétele
 
 ```powershell
 
@@ -153,7 +153,7 @@ $AzureDataLakeStoreName = "<AzureDataLakeStoreAccountName"
 Add-AdlAnalyticsDataSource -Account $adla -DataLakeStore $AzureDataLakeStoreName 
 ```
 
-### <a name="list-data-sources"></a>Adatforrások listája
+### <a name="list-data-sources"></a>Adatforrások listázása
 
 ```powershell
 # List all the data sources
@@ -168,7 +168,7 @@ Get-AdlAnalyticsDataSource -Account $adla | where -Property Type -EQ "Blob"
 
 ## <a name="submit-u-sql-jobs"></a>U-SQL-feladatok küldése
 
-### <a name="submit-a-string-as-a-u-sql-job"></a>Küldje el egy karakterláncot egy U-SQL-feladat
+### <a name="submit-a-string-as-a-u-sql-job"></a>Karakterlánc küldése U-SQL feladatként
 
 ```powershell
 $script = @"
@@ -189,7 +189,7 @@ $script | Out-File $scriptpath
 Submit-AdlJob -AccountName $adla -Script $script -Name "Demo"
 ```
 
-### <a name="submit-a-file-as-a-u-sql-job"></a>Küldje el egy fájlt egy U-SQL-feladat
+### <a name="submit-a-file-as-a-u-sql-job"></a>Fájl küldése U-SQL feladatként
 
 ```powershell
 $scriptpath = "d:\test.usql"
@@ -197,7 +197,7 @@ $script | Out-File $scriptpath
 Submit-AdlJob -AccountName $adla –ScriptPath $scriptpath -Name "Demo"
 ```
 
-### <a name="list-jobs"></a>Feladatok listája
+### <a name="list-jobs"></a>Feladatok listázása
 
 A kimenet tartalmazza az aktuálisan futó és a nemrégiben befejezett feladatokat is.
 
@@ -205,17 +205,17 @@ A kimenet tartalmazza az aktuálisan futó és a nemrégiben befejezett feladato
 Get-AdlJob -Account $adla
 ```
 
-### <a name="list-the-top-n-jobs"></a>A felső N-feladatok listázása
+### <a name="list-the-top-n-jobs"></a>A legjobb N-állások listázása
 
-A feladatok alapján vannak rendezve, akkor alapértelmezés szerint küldési ideje. Ezért a legutóbb elküldött feladatok elsőként jelennek meg. Alapértelmezés szerint az ADLA fiók megjegyzi a feladatok 180 napig, de a Get-AdlJob parancsmagot alapértelmezés szerint csak az első 500 adja vissza. Használja az - listázhatja egy adott feladatok száma a felső paraméter.
+Alapértelmezés szerint a feladatok listája a küldési idő szerint van rendezve. Így először a legutóbb beküldött feladatok jelennek meg. Alapértelmezés szerint az ADLA-fiók 180 napig emlékszik a feladatokra, de a Get-AdlJob parancsmag alapértelmezés szerint csak az első 500-at adja vissza. A -Top paraméter használatával adott számú feladatot soroljon fel.
 
 ```powershell
 $jobs = Get-AdlJob -Account $adla -Top 10
 ```
 
-### <a name="list-jobs-by-job-state"></a>Feladatállapotra listázhatók a feladatok
+### <a name="list-jobs-by-job-state"></a>Feladatok listázása feladatállapot szerint
 
-Használatával a `-State` paraméter. Kombinálhatja ezeket az értékeket:
+A `-State` paraméter használata. A következő értékek bármelyikét kombinálhatja:
 
 * `Accepted`
 * `Compiling`
@@ -238,12 +238,12 @@ Get-AdlJob -Account $adla -State Ended
 Get-AdlJob -Account $adla -State Accepted,Compiling,New,Paused,Scheduling,Start
 ```
 
-### <a name="list-jobs-by-job-result"></a>Feladat eredménye listázhatók a feladatok
+### <a name="list-jobs-by-job-result"></a>Feladatok listázása feladat eredménye szerint
 
-Használja a `-Result` észleli, hogy befejeződött a feladat sikeresen befejeződött-e a paraméter. Ezekkel az értékekkel rendelkezik:
+A `-Result` paraméter segítségével észlelheti, hogy a befejezett feladatok sikeresen befejeződtek-e. Ez eket az értékeket:
 
-* Megszakítva
-* Meghiúsult
+* Lemondva
+* Sikertelen
 * None
 * Sikeres
 
@@ -255,17 +255,17 @@ Get-AdlJob -Account $adla -State Ended -Result Succeeded
 Get-AdlJob -Account $adla -State Ended -Result Failed
 ```
 
-### <a name="list-jobs-by-job-submitter"></a>A feladat küldője listázhatók a feladatok
+### <a name="list-jobs-by-job-submitter"></a>Feladatok listázása feladatbeküldő szerint
 
-A `-Submitter` paraméter segítségével azonosíthatja, aki a feladat elküldve.
+A `-Submitter` paraméter segítségével azonosíthatja, hogy ki küldte el a feladatot.
 
 ```powershell
 Get-AdlJob -Account $adla -Submitter "joe@contoso.com"
 ```
 
-### <a name="list-jobs-by-submission-time"></a>Lista feladatok küldésének ideje
+### <a name="list-jobs-by-submission-time"></a>Feladatok listázása beküldési idő szerint
 
-A `-SubmittedAfter` hasznos egy időtartományt a szűrés.
+Az `-SubmittedAfter` akkor hasznos, ha egy időtartományra szeretne szűrni.
 
 
 ```powershell
@@ -278,7 +278,7 @@ $d = [DateTime]::Now.AddDays(-7)
 Get-AdlJob -Account $adla -SubmittedAfter $d
 ```
 
-### <a name="get-job-status"></a>Feladat állapotának beolvasása
+### <a name="get-job-status"></a>Állásállapotának beszereznie
 
 Kérje le egy adott feladat állapotát.
 
@@ -287,15 +287,15 @@ Get-AdlJob -AccountName $adla -JobId $job.JobId
 ```
 
 
-### <a name="cancel-a-job"></a>Feladatok megszakítása
+### <a name="cancel-a-job"></a>Feladat visszavonása
 
 ```powershell
 Stop-AdlJob -Account $adla -JobID $jobID
 ```
 
-### <a name="wait-for-a-job-to-finish"></a>Várjon, amíg a feladat befejeződik
+### <a name="wait-for-a-job-to-finish"></a>Várjon, amíg a munka befejeződik
 
-Ismétlődő helyett `Get-AdlAnalyticsJob` feladat befejeződéséig, használhatja a `Wait-AdlJob` parancsmagot, hogy a feladat befejezéséhez.
+Ahelyett, `Get-AdlAnalyticsJob` hogy ismételje, amíg a feladat `Wait-AdlJob` befejeződik, használhatja a parancsmag, hogy várjon a feladat befejezéséhez.
 
 ```powershell
 Wait-AdlJob -Account $adla -JobId $job.JobId
@@ -303,18 +303,18 @@ Wait-AdlJob -Account $adla -JobId $job.JobId
 
 ## <a name="analyzing-job-history"></a>Feladatelőzmények elemzése
 
-Azure PowerShell-lel, amelyek futtatták a Data Lake analytics-feladatok előzményeinek elemzésére egy hatékony módszer. Használat és költségek betekintést használhatja azt. További megnézzük a [mintatárból Projektelemzés előzmények](https://github.com/Azure-Samples/data-lake-analytics-powershell-job-history-analysis)  
+Az Azure PowerShell használatával a Data Lake-elemzésben futó feladatok előzményeinek elemzéséhez hatékony technika. Segítségével betekintést nyerhet a használatba és a költségekbe. Ha többet szeretne megtudni, ha megnézi a [Munkatörténeti elemzés mintatár-tártát](https://github.com/Azure-Samples/data-lake-analytics-powershell-job-history-analysis)  
 
-## <a name="list-job-pipelines-and-recurrences"></a>Lista feladat folyamatok és ismétlődések
+## <a name="list-job-pipelines-and-recurrences"></a>Feladatfolyamatok és ismétlődések listázása
 
-Használja a `Get-AdlJobPipeline` parancsmag folyamat olvassa el a korábban elküldött feladatok.
+A `Get-AdlJobPipeline` parancsmag segítségével tekintse meg a korábban elküldött feladatok a folyamat adatait.
 
 ```powershell
 $pipelines = Get-AdlJobPipeline -Account $adla
 $pipeline = Get-AdlJobPipeline -Account $adla -PipelineId "<pipeline ID>"
 ```
 
-Használja a `Get-AdlJobRecurrence` parancsmag használatával tekintse meg az ismétlődési adatait a korábban elküldött feladatok.
+A `Get-AdlJobRecurrence` parancsmag segítségével megtekintheti a korábban elküldött feladatok ismétlődési adatait.
 
 ```powershell
 $recurrences = Get-AdlJobRecurrence -Account $adla
@@ -323,19 +323,19 @@ $recurrence = Get-AdlJobRecurrence -Account $adla -RecurrenceId "<recurrence ID>
 ```
 
 
-## <a name="manage-compute-policies"></a>Compute-szabályzatok kezelése
+## <a name="manage-compute-policies"></a>Számítási házirendek kezelése
 
-### <a name="list-existing-compute-policies"></a>A meglévő számítási szabályzatok listája
+### <a name="list-existing-compute-policies"></a>Meglévő számítási házirendek listázása
 
-A `Get-AdlAnalyticsComputePolicy` parancsmag kapcsolatos információ a Data Lake Analytics-fiók számítási házirendek kérdezi le.
+A `Get-AdlAnalyticsComputePolicy` parancsmag a Data Lake Analytics-fiók számítási szabályzatairól szerez be információkat.
 
 ```powershell
 $policies = Get-AdlAnalyticsComputePolicy -Account $adla
 ```
 
-### <a name="create-a-compute-policy"></a>Számítási szabályzat létrehozása
+### <a name="create-a-compute-policy"></a>Számítási házirend létrehozása
 
-A `New-AdlAnalyticsComputePolicy` parancsmag egy új Data Lake Analytics-fiók számítási szabályzatot hoz létre. Ebben a példában a maximális au-k érhető el a megadott felhasználó 50-re, és a minimális feladat prioritása a 250 állítja be.
+A `New-AdlAnalyticsComputePolicy` parancsmag új számítási szabályzatot hoz létre egy Data Lake Analytics-fiókhoz. Ez a példa a megadott felhasználó számára elérhető maximális Atus-t 50-re, a minimális feladatprioritást pedig 250-re állítja.
 
 ```powershell
 $userObjectId = (Get-AzAdUser -SearchString "garymcdaniel@contoso.com").Id
@@ -350,7 +350,7 @@ New-AdlAnalyticsComputePolicy -Account $adla -Name "GaryMcDaniel" -ObjectId $obj
 Test-AdlStoreItem -Account $adls -Path "/data.csv"
 ```
 
-### <a name="uploading-and-downloading"></a>Fel- és letöltése
+### <a name="uploading-and-downloading"></a>Feltöltés és letöltés
 
 Töltsön fel egy fájlt.
 
@@ -370,20 +370,20 @@ Töltse le a fájlt.
 Export-AdlStoreItem -AccountName $adls -Path "/data.csv" -Destination "c:\data.csv"
 ```
 
-Töltse le az egész mappáról rekurzív módon.
+Töltse le a teljes mappát rekurzívmódon.
 
 ```powershell
 Export-AdlStoreItem -AccountName $adls -Path "/" -Destination "c:\myData\" -Recurse
 ```
 
 > [!NOTE]
-> Ha a feltöltés és a letöltés folyamata megszakad, megpróbálhatja a folyamat folytatásához újra a parancsmagot a ``-Resume`` jelzőt.
+> Ha a feltöltési vagy letöltési folyamat megszakad, megpróbálhatja folytatni a ``-Resume`` folyamatot a parancsmag ismételt futtatásával a jelzővel.
 
-## <a name="manage-the-u-sql-catalog"></a>A U-SQL-katalógus kezelése
+## <a name="manage-the-u-sql-catalog"></a>Az U-SQL katalógus kezelése
 
-A U-SQL-katalógus adatait és a kód felépítését, így azok megoszthatók U-SQL-parancsfájlok szolgál. A katalógus lehetővé teszi, hogy a lehető legjobb teljesítmény szolgálja, az Azure Data Lake adatokkal. További információk: [Use U-SQL catalog](data-lake-analytics-use-u-sql-catalog.md) (U-SQL-katalógus használata).
+Az U-SQL katalógus az adatok és a kód strukturálására szolgál, így azokat U-SQL parancsfájlok is megoszthatják. A katalógus lehetővé teszi a lehető legnagyobb teljesítményt az Azure Data Lake-ben lévő adatokkal. További információk: [Use U-SQL catalog](data-lake-analytics-use-u-sql-catalog.md) (U-SQL-katalógus használata).
 
-### <a name="list-items-in-the-u-sql-catalog"></a>Listaelemek az U-SQL-katalógusban
+### <a name="list-items-in-the-u-sql-catalog"></a>Elemek listázása az U-SQL katalógusban
 
 ```powershell
 # List U-SQL databases
@@ -396,7 +396,7 @@ Get-AdlCatalogItem -Account $adla -ItemType Table -Path "database"
 Get-AdlCatalogItem -Account $adla -ItemType Table -Path "database.schema"
 ```
 
-### <a name="list-all-the-assemblies-the-u-sql-catalog"></a>A szerelvények a U-SQL-katalógus listázása
+### <a name="list-all-the-assemblies-the-u-sql-catalog"></a>Az U-SQL katalógus összes szerelvényének listázása
 
 ```powershell
 $dbs = Get-AdlCatalogItem -Account $adla -ItemType Database
@@ -413,7 +413,7 @@ foreach ($db in $dbs)
 }
 ```
 
-### <a name="get-details-about-a-catalog-item"></a>Részletes információkat a Katalóguselem
+### <a name="get-details-about-a-catalog-item"></a>Katalóguselem részleteinek beszereznie
 
 ```powershell
 # Get details of a table
@@ -423,9 +423,9 @@ Get-AdlCatalogItem  -Account $adla -ItemType Table -Path "master.dbo.mytable"
 Test-AdlCatalogItem  -Account $adla -ItemType Database -Path "master"
 ```
 
-### <a name="store-credentials-in-the-catalog"></a>Store hitelesítő adatai a katalógusban
+### <a name="store-credentials-in-the-catalog"></a>Hitelesítő adatok tárolása a katalógusban
 
-Egy U-SQL-adatbázison belül hozzon létre egy Azure-ban futtatott adatbázis-hitelesítő objektumot. U-SQL hitelesítő adatok jelenleg csak az ilyen típusú Katalóguselem PowerShell-lel hozhatja létre.
+Egy U-SQL-adatbázison belül hozzon létre egy hitelesítő adatokat az Azure-ban üzemeltetett adatbázishoz. Jelenleg az U-SQL hitelesítő adatok az egyetlen típusú katalóguselem, amely a PowerShellen keresztül hozható létre.
 
 ```powershell
 $dbName = "master"
@@ -441,13 +441,13 @@ New-AdlCatalogCredential -AccountName $adla `
 
 ## <a name="manage-firewall-rules"></a>Tűzfalszabályok kezelése
 
-### <a name="list-firewall-rules"></a>Tűzfal-szabályok listája
+### <a name="list-firewall-rules"></a>Tűzfalszabályok listázása
 
 ```powershell
 Get-AdlAnalyticsFirewallRule -Account $adla
 ```
 
-### <a name="add-a-firewall-rule"></a>Vegyen fel egy tűzfalszabályt
+### <a name="add-a-firewall-rule"></a>Tűzfalszabály hozzáadása
 
 ```powershell
 $ruleName = "Allow access from on-prem server"
@@ -457,19 +457,19 @@ $endIpAddress = "<end IP address>"
 Add-AdlAnalyticsFirewallRule -Account $adla -Name $ruleName -StartIpAddress $startIpAddress -EndIpAddress $endIpAddress
 ```
 
-### <a name="modify-a-firewall-rule"></a>Egy tűzfalszabály módosítása
+### <a name="modify-a-firewall-rule"></a>Tűzfalszabály módosítása
 
 ```powershell
 Set-AdlAnalyticsFirewallRule -Account $adla -Name $ruleName -StartIpAddress $startIpAddress -EndIpAddress $endIpAddress
 ```
 
-### <a name="remove-a-firewall-rule"></a>A tűzfalszabályok eltávolítása
+### <a name="remove-a-firewall-rule"></a>Tűzfalszabály eltávolítása
 
 ```powershell
 Remove-AdlAnalyticsFirewallRule -Account $adla -Name $ruleName
 ```
 
-### <a name="allow-azure-ip-addresses"></a>Az Azure IP-címek engedélyezése
+### <a name="allow-azure-ip-addresses"></a>Azure IP-címek engedélyezése
 
 ```powershell
 Set-AdlAnalyticsAccount -Name $adla -AllowAzureIpState Enabled
@@ -481,15 +481,15 @@ Set-AdlAnalyticsAccount -Name $adla -FirewallState Disabled
 ```
 
 
-## <a name="working-with-azure"></a>Az Azure-ral működő
+## <a name="working-with-azure"></a>Az Azure-ral való együttműködés
 
-### <a name="get-error-details"></a>Hiba részleteinek beolvasása
+### <a name="get-error-details"></a>Hibarészletek beszerezni
 
 ```powershell
 Resolve-AzError -Last
 ```
 
-### <a name="verify-if-you-are-running-as-an-administrator-on-your-windows-machine"></a>Győződjön meg arról, ha futtatásakor rendszergazdaként a Windows-gépen
+### <a name="verify-if-you-are-running-as-an-administrator-on-your-windows-machine"></a>Annak ellenőrzése, hogy rendszergazdaként fut-e Windows-számítógépen
 
 ```powershell
 function Test-Administrator  
@@ -500,9 +500,9 @@ function Test-Administrator
 }
 ```
 
-### <a name="find-a-tenantid"></a>Keresse meg a bérlő azonosítója
+### <a name="find-a-tenantid"></a>TenantID keresése
 
-Forrás-előfizetés neve:
+Előfizetés nevéből:
 
 ```powershell
 function Get-TenantIdFromSubscriptionName( [string] $subname )
@@ -514,7 +514,7 @@ function Get-TenantIdFromSubscriptionName( [string] $subname )
 Get-TenantIdFromSubscriptionName "ADLTrainingMS"
 ```
 
-Az egy előfizetés azonosítója:
+Előfizetés-azonosítóból:
 
 ```powershell
 function Get-TenantIdFromSubscriptionId( [string] $subid )
@@ -527,7 +527,7 @@ $subid = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 Get-TenantIdFromSubscriptionId $subid
 ```
 
-Például a "contoso.com" tartomány-címről
+Tartománycímről, például "contoso.com"
 
 ```powershell
 function Get-TenantIdFromDomain( $domain )
@@ -540,7 +540,7 @@ $domain = "contoso.com"
 Get-TenantIdFromDomain $domain
 ```
 
-### <a name="list-all-your-subscriptions-and-tenant-ids"></a>Összes előfizetés listázása és a bérlőazonosítók
+### <a name="list-all-your-subscriptions-and-tenant-ids"></a>Az összes előfizetés és bérlőazonosító felsorolása
 
 ```powershell
 $subs = Get-AzSubscription
@@ -551,11 +551,11 @@ foreach ($sub in $subs)
 }
 ```
 
-## <a name="create-a-data-lake-analytics-account-using-a-template"></a>Egy sablon használatával a Data Lake Analytics-fiók létrehozása
+## <a name="create-a-data-lake-analytics-account-using-a-template"></a>Data Lake Analytics-fiók létrehozása sablon használatával
 
-Egy Azure erőforráscsoport-sablon a következő minta használatával is használhatja: [Egy sablon használatával a Data Lake Analytics-fiók létrehozása](https://github.com/Azure-Samples/data-lake-analytics-create-account-with-arm-template)
+Azure Resource Group sablont is használhat a következő minta használatával: [Data Lake Analytics-fiók létrehozása sablon használatával](https://github.com/Azure-Samples/data-lake-analytics-create-account-with-arm-template)
 
 ## <a name="next-steps"></a>További lépések
 * [A Microsoft Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
-* A Data Lake Analytics használatának első lépései a [az Azure portal](data-lake-analytics-get-started-portal.md) | [Azure PowerShell-lel](data-lake-analytics-get-started-powershell.md) | [Azure CLI-vel](data-lake-analytics-get-started-cli.md)
-* Az Azure Data Lake Analytics használata kezelheti [az Azure portal](data-lake-analytics-manage-use-portal.md) | [Azure PowerShell-lel](data-lake-analytics-manage-use-powershell.md) | [parancssori felület](data-lake-analytics-manage-use-cli.md) 
+* Ismerkedés a Data Lake Analytics szolgáltatással az[Azure PowerShell](data-lake-analytics-get-started-powershell.md) | Azure CLI Azure[CLI Azure-portál](data-lake-analytics-get-started-cli.md) [Azure portal](data-lake-analytics-get-started-portal.md) | használatával
+* Az Azure Data Lake Analytics kezelése az[Azure PowerShell](data-lake-analytics-manage-use-powershell.md) | [CLI](data-lake-analytics-manage-use-cli.md) [Azure](data-lake-analytics-manage-use-portal.md) | Portal használatával 

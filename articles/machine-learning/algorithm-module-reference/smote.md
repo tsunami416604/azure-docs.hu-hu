@@ -1,7 +1,7 @@
 ---
 title: SMOTE
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan használhatja a ARCUL ütötte modult a Azure Machine Learningban az adathalmazok alacsony előfordulású példáinak számának növelésével a túlmintavételezés használatával.
+description: Ismerje meg, hogyan használhatja a SMOTE-modult az Azure Machine Learningben az adatkészletalacsony előfordulási gyakoriságú példáiszámának növeléséhez túlmintavételezéssel.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,95 +9,95 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: 4b6944f7703500a2c3859e8e3111eceefbd5ff10
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: ed6d9e86143c3a5d6c97c4bd92a07c258bbd1bbc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311410"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477459"
 ---
 # <a name="smote"></a>SMOTE
 
-Ez a cikk azt ismerteti, hogyan használható a ARCUL ütötte modul a Azure Machine Learning Designerben a gépi tanuláshoz használt adatkészletben lévő, az általa képviselt esetek számának növelésére. A ARCUL ütötte jobb módszer a ritka esetek számának növelésére, mint a meglévő esetek egyszerű duplikálása.  
+Ez a cikk ismerteti, hogyan használhatja a SMOTE-modul t az Azure Machine Learning designerben (előzetes verzió) az alulreprezentált esetek számának növeléséhez egy gépi tanuláshoz használt adatkészletben. A SMOTE jobb módja a ritka esetek számának növelésének, mint a meglévő esetek egyszerű megkettőzése.  
 
-A ARCUL ütötte modult egy *kiegyensúlyozatlan*adatkészlet számára kapcsolja össze. Számos oka lehet annak, hogy egy adatkészlet kiegyensúlyozatlan. Előfordulhat például, hogy a megcélzott kategória ritkán fordul elő a populációban, vagy az adatok összegyűjtése nehéz lehet. Az elemezni kívánt *osztályt* általában a arcul ütötte használatával lehet használni. 
+Az SMOTE modult kiegyensúlyozatlan adatkészlethez *csatlakoztatja.* Számos oka lehet annak, hogy egy adatkészlet kiegyensúlyozatlan. Előfordulhat például, hogy a megcélzott kategória ritka a populációban, vagy az adatok gyűjtése nehéz lehet. Általában akkor használja a SMOTE-t, ha az elemezni kívánt *osztály* alulreprezentált. 
   
-A modul az eredeti mintákat tartalmazó adatkészletet ad vissza. A megadott százalékértéktől függően számos szintetikus kisebbségi mintát is ad vissza.  
+A modul az eredeti mintákat tartalmazó adatkészletet ad vissza. A megadott százalékos értéktől függően számos szintetikus kisebbségi mintát is visszaad.  
   
-## <a name="more-about-smote"></a>További információ a ARCUL ütötte
+## <a name="more-about-smote"></a>SMOTE – További információk
 
-A szintetikus kisebbségi túlmintavételezési módszer (ARCUL ütötte) egy statisztikai módszer, amellyel az adatkészletben lévő esetek száma kiegyensúlyozott módon növelhető. A modul úgy működik, hogy új példányokat hoz létre a meglévő, bemenetként megadott kisebbségi esetekből. A ARCUL ütötte ezen implementációja *nem* módosítja a többségi esetek számát.
+A szintetikus kisebbségi túlmintavételezési technika (SMOTE) egy statisztikai technika az adatkészletben lévő esetek számának kiegyensúlyozott növelésére. A modul úgy működik, hogy új példányokat hoz létre a meglévő kisebbségi esetekből, amelyeket bemenetként szállít. Az SMOTE e végrehajtása *nem* változtatja meg a többségi esetek számát.
 
-Az új példányok nem csak a meglévő kisebbségi esetek másolatai. Ehelyett az algoritmus mintákat vesz az egyes célcsoportok és a hozzájuk *tartozó szomszédok számára.* Az algoritmus ezután olyan új példákat hoz létre, amelyek a cél eset funkcióit kombinálják a szomszédai szolgáltatásaival. Ez a megközelítés növeli az egyes osztályok által elérhető funkciókat, és általánosabban teszi a mintákat.
+Az új esetek nem csupa kisebbségi esetek másolatai. Ehelyett az algoritmus mintát vesz a *jellemzőtér* minden célosztály és a legközelebbi szomszédok. Az algoritmus ezután új példákat hoz létre, amelyek egyesítik a céleset jellemzőit a szomszédok jellemzőivel. Ez a megközelítés növeli az egyes osztályok számára elérhető funkciókat, és általánosabbá teszi a mintákat.
   
-A ARCUL ütötte a teljes adatkészletet bemenetként veszi fel, de csak a kisebbségi esetek százalékos arányát növeli. Tegyük fel például, hogy van egy kiegyensúlyozatlan adatkészlet, ahol az esetek mindössze 1 százaléka az a célként megadott érték (a kisebbségi osztály), az esetek 99 százalékában pedig a B érték szerepel. Ha a kisebbségi esetek százalékos arányát az előző százalékban kétszer szeretné megnövelni, a modul tulajdonságainál a **200** értéket kell megadnia **arcul ütötte százalékban** .  
+A SMOTE a teljes adatkészletet bemenetként veszi fel, de csak a kisebbségi esetek százalékos arányát növeli. Tegyük fel például, hogy van egy kiegyensúlyozatlan adatkészlet, ahol az esetek mindössze 1 százaléka rendelkezik Az A célértékkel (a kisebbségi osztály), és az esetek 99 százaléka B értékkel rendelkezik. Ha a kisebbségi esetek százalékos arányát az előző százalék kétszeresére szeretné növelni, a modul tulajdonságaiközött **200-at** kell megadnia az **SMOTE-százalékhoz.**  
   
 ## <a name="examples"></a>Példák  
 
-Azt javasoljuk, hogy a ARCUL ütötte-t kis adatkészlettel próbálja meg használni a működésének megtekintéséhez. Az alábbi példa a Azure Machine Learning Designerben elérhető véradási adatkészletet használja.
+Azt javasoljuk, hogy próbálja meg a SMOTE egy kis adatkészlettel, hogy hogyan működik. A következő példa az Azure Machine Learning tervezőjében elérhető véradási adatkészletet használja.
   
-Ha hozzáadja az adatkészletet egy folyamathoz, és kiválasztja az adatkészlet kimenetének **megjelenítését** , láthatja, hogy az adatkészletben szereplő 748-es sorok vagy esetek közül a 570-esetek (76 százalék) 0, a 178-as (24 százalék) pedig 1. osztály. Bár ez az eredmény nem okoz rettenetesen kiegyensúlyozatlan, az 1. osztály a vért adományozó személyeket jelöli, így ezek a sorok tartalmazzák a modellezni kívánt *szolgáltatás területét* .
+Ha hozzáadja az adatkészletet egy folyamathoz, és az adatkészlet kimenetén a Visualize lehetőséget **választja,** láthatja, hogy az adatkészlet 748 sora vagy esete közül 570 eset (76 százalék) a Class 0, és 178 eset (24 százalék) az 1- es osztályhoz tartoz. Bár ez az eredmény nem rettenetesen kiegyensúlyozatlan, class 1 képviseli az emberek, akik vért adományozott, így ezek a sorok tartalmazzák a *jellemző helyet,* hogy szeretné modell.
  
-Az esetek számának növeléséhez a következő módon állíthatja be a **arcul ütötte százalékos**értékét a 100 többszörösével:
+Az esetek számának növeléséhez az **SMOTE százalék**értékét a 100 többszöröseinek használatával állíthatja be az alábbiak szerint:
 
-||0\. osztály|1\. osztály|összesen|  
+||0. osztály|1. osztály|összesen|  
 |-|-------------|-------------|-----------|  
-|Eredeti adatkészlet<br /><br /> (a **arcul ütötte-értékkel** egyenértékű = **0**)|570<br /><br /> 76%|178<br /><br /> 24|748|  
-|**Arcul ütötte százalék** = **100**|570<br /><br /> 62%|356<br /><br /> 38%|926|  
-|**Arcul ütötte százalék** = **200**|570<br /><br /> 52%|534<br /><br /> 48%|1 104|  
-|**Arcul ütötte százalék** = **300**|570<br /><br /> 44%|712<br /><br /> 56%|1 282|  
+|Eredeti adatkészlet<br /><br /> (egyenértékű az **SMOTE százalékkal** = **0)**|570<br /><br /> 76%|178<br /><br /> 24%|748|  
+|**SMOTE százalék** = **100**|570<br /><br /> 62%|356<br /><br /> 38%|926|  
+|**SMOTE százalék** = **200**|570<br /><br /> 52%|534<br /><br /> 48%|1,104|  
+|**SMOTE százalék** = **300**|570<br /><br /> 44%|712<br /><br /> 56%|1,282|  
   
 > [!WARNING]
-> Az esetek számának növelése a ARCUL ütötte használatával nem garantált, hogy pontosabb modelleket hozzon létre. Próbálja ki a csővezetékeket különböző százalékokkal, különböző szolgáltatásokkal, valamint a legközelebbi szomszédok különböző számával, hogy megtekintse, hogyan befolyásolja a modell az esetek hozzáadását.  
+> Az esetek számának növelése a SMOTE használatával nem garantált, hogy pontosabb modelleket készítsen. Próbálja meg a különböző százalékokkal, különböző funkciókészletekkel és a legközelebbi szomszédok különböző számaival rendelkező csővezetékeket, hogy lássa, hogyan befolyásolja az esetek hozzáadása a modellt.  
   
-## <a name="how-to-configure-smote"></a>A ARCUL ütötte konfigurálása
+## <a name="how-to-configure-smote"></a>Az SMOTE konfigurálása
   
-1.  Adja hozzá a ARCUL ütötte modult a folyamathoz. A modult az **Adatátalakítási modulok**területen találja a **manipuláció** kategóriában.
+1.  Adja hozzá az SMOTE modult a folyamathoz. A modul az **Adatátalakítási modulok csoportban**található, a **Manipuláció** kategóriában.
 
-2. A fokozni kívánt adatkészlet csatlakoztatása. Ha meg szeretné adni az új esetek létrehozásához szükséges területet, vagy csak bizonyos oszlopokat használ, vagy ha nem szeretne kihagyni néhányat, használja az [Oszlopok kiválasztása az adatkészlet](select-columns-in-dataset.md) modulban lehetőséget. Ezután el tudja különíteni a használni kívánt oszlopokat a ARCUL ütötte használata előtt.
+2. Csatlakoztassa a kiemelni kívánt adatkészletet. Ha meg szeretné adni az új esetek létrehozásának jellemzőterét, akár csak bizonyos oszlopok használatával, akár néhány kizárásával, használja az Oszlopok kijelölése az [Adatkészlet modulban.](select-columns-in-dataset.md) Ezután elkülönítheti a használni kívánt oszlopokat az SMOTE használata előtt.
   
-    Ellenkező esetben a ARCUL ütötte-on keresztül létrehozott új esetek az *összes* bemenetként megadott oszlopon alapulnak. A szolgáltatás oszlopainak legalább egy oszlopa numerikus.
+    Ellenkező esetben az új esetek létrehozása a SMOTE-n keresztül a bemenetként megadott *összes* oszlopon alapul. A jellemzőoszlopok legalább egy oszlopa numerikus.
   
-3.  Győződjön meg arról, hogy a címkét vagy a cél osztályt tartalmazó oszlop van kiválasztva. A ARCUL ütötte csak bináris címkéket fogad el.
+3.  Győződjön meg arról, hogy a címkét vagy célosztályt tartalmazó oszlop ki van jelölve. A SMOTE csak bináris címkéket fogad el.
   
-4.  A ARCUL ütötte modul automatikusan azonosítja a kisebbségi osztályt a Label (címke) oszlopban, majd beolvassa a kisebbségi osztály összes példáját. Az összes oszlopnak nem lehet NaN-értéke.
+4.  Az SMOTE modul automatikusan azonosítja a kisebbségi osztályt a címkeoszlopban, majd megkapja a kisebbségi osztály összes példáját. Nem lehet minden oszlopban NaN érték.
   
-5.  A **arcul ütötte százalékos értéke** beállításban adjon meg egy egész számot, amely a kimeneti adatkészletben a kisebbségi esetek céljának százalékos arányát jelzi. Példa:  
+5.  A **SMOTE százalékos beállításban** adjon meg egy egész számot, amely a kisebbségi esetek célszázalékát jelzi a kimeneti adatkészletben. Példa:  
   
-    - Adja meg a **0**értéket. A ARCUL ütötte modul pontosan ugyanazt az adatkészletet adja vissza, amelyet bemenetként adott meg. Nem hoz létre új kisebbségi eseteket. Ebben az adatkészletben az osztály aránya nem módosult.  
+    - A **0**értéket adja meg. Az SMOTE modul pontosan ugyanazt az adatkészletet adja vissza, amelyet bemenetként megadott. Nem ad hozzá új kisebbségi ügyeket. Ebben az adatkészletben az osztályarány nem változott.  
   
-    - Adja meg a **100**értéket. A ARCUL ütötte modul új, kismértékű eseteket hoz létre. Az eredeti adatkészletben lévő azonos számú kisebbségi esetet adja hozzá. Mivel a ARCUL ütötte nem növekszik a többségi esetek száma, az egyes osztályokba tartozó esetek aránya megváltozott.  
+    - Adja meg **a 100**. A SMOTE modul új kisebbségi eseteket hoz létre. Ugyanannyi kisebbségi esetet ad hozzá, mint az eredeti adatkészletben. Mivel a SMOTE nem növeli a többségi esetek számát, az egyes csoportok eseteinek aránya megváltozott.  
   
-    - Adja meg a **200**értéket. A modul megduplázza a kisebbségi esetek százalékos arányát az eredeti adatkészlethez képest. Ez azt eredményezi, hogy az előzőekben leírtak szerint kétszer annyi kisebbségi ügyet *tartalmaz* . Az adatkészlet mérete inkább úgy növekszik, hogy a többségi esetek száma ugyanaz marad. A kisebbségi esetek száma megnő, amíg meg nem felel a kívánt százalékos értéknek.  
+    - Adja meg **200**. A modul megduplázza a kisebbségi esetek százalékos arányát az eredeti adatkészlethez képest. Ez *nem* eredményez kétszer annyi kisebbségi esetet, mint korábban. Ehelyett az adatkészlet mérete növekszik oly módon, hogy a többségi esetek száma ugyanaz marad. A kisebbségi esetek száma addig növekszik, amíg meg nem egyezik a kívánt százalékos értékkel.  
   
     > [!NOTE]
-    > A ARCUL ütötte százalékban csak a 100 többszörösét használja.
+    > Az SMOTE-százalékhoz csak a 100 többszörösét használja.
 
-6.  A **legközelebbi szomszédok** lehetőség használatával határozza meg, hogy a arcul ütötte algoritmus milyen méretben használja az új esetek kiépítésekor. A legközelebbi szomszéd egy olyan adathalmaz, amely hasonlít a cél esetére. A két eset közötti távolságot a rendszer az összes funkció súlyozott vektorának kombinálásával méri.  
+6.  A **Legközelebbi szomszédok száma** beállítással meghatározhatja az SMOTE algoritmus által az új esetek létrehozásához használt jellemzőterület méretét. A legközelebbi szomszéd egy olyan adatsor (eset), amely hasonlít a célesethez. Bármely két eset közötti távolságot az összes jellemző súlyozott vektorainak kombinálásával mérik.  
   
-    + A legközelebbi szomszédok számának növelésével több esetben is kap funkciókat.
-    + A legközelebbi szomszédok számának alacsony értékre állításával olyan szolgáltatásokat használhat, amelyek az eredeti mintában jobban hasonlítanak.  
+    + A legközelebbi szomszédok számának növelésével több esetből kapsz funkciókat.
+    + Ha alacsonyan tartja a legközelebbi szomszédok számát, olyan funkciókat használ, amelyek jobban hasonlítanak az eredeti mintában szereplő funkciókra.  
   
-7. Adjon meg egy értéket a **véletlenszerű mag** mezőben, ha ugyanazt az eredményt szeretné biztosítani ugyanazon folyamat ugyanazon adatcsatornán keresztül futtatva. Ellenkező esetben a modul egy véletlenszerű magot generál a Processzor órajelének értéke alapján a folyamat telepítésekor. A véletlenszerű magok generálása némileg eltérő eredményeket eredményezhet a futtatások során.
+7. Adjon meg egy értéket a **Véletlen mag** mezőben, ha ugyanazokat az eredményeket szeretné biztosítani ugyanazon folyamat futtatásain, ugyanazzal az adattal. Ellenkező esetben a modul egy véletlenszerű magot hoz létre a processzor óraértékei alapján, amikor a folyamat telepítve van. A generációs egy véletlenszerű mag okozhat kissé eltérő eredményeket fut.
 
-8. A folyamat futtatása.  
+8. Küldje el a folyamatot.  
   
-   A modul kimenete egy adatkészlet, amely tartalmazza az eredeti sorokat, valamint több, a kisebbségi esetekkel felvett sort.  
+   A modul kimenete egy adatkészlet, amely tartalmazza az eredeti sorokat, valamint számos hozzáadott sort kisebbségi esetekkel.  
 
 ## <a name="technical-notes"></a>Technikai megjegyzések
 
-+ Ha a **arcul ütötte** modult használó modellt tesz közzé, távolítsa el a **arcul ütötte** a prediktív folyamatból, mielőtt webszolgáltatásként tenné közzé. Ennek az az oka, hogy a ARCUL ütötte célja a modell fejlesztése a képzés során, nem pedig pontozással. Hibaüzenet jelenhet meg, ha egy közzétett prediktív folyamat tartalmazza a ARCUL ütötte modult.
++ Amikor egy **smote-modult** használó modellt tesz közzé, távolítsa el a **SMOTE-t** a prediktív folyamatból, mielőtt webes szolgáltatásként közzétenné. Ennek az az oka, hogy a SMOTE célja, hogy javítsa a modell a képzés során, nem a pontozás. Előfordulhat, hogy hibaüzenet jelenik meg, ha egy közzétett prediktív folyamat tartalmazza a SMOTE modult.
 
-+ A ARCUL ütötte alkalmazása előtt gyakran jobb eredményeket érhet el, ha törli a hiányzó értékeket vagy más átalakításokat alkalmaz az adatok javítására. 
++ Gyakran jobb eredményeket érhet el, ha törli a hiányzó értékeket, vagy más átalakításokat alkalmaz az adatok javítására a SMOTE alkalmazása előtt. 
 
-+ Egyes kutatók megvizsgálták, hogy a ARCUL ütötte hatékony-e a nagy dimenziós vagy ritka adatokat, például a szöveges besorolásban vagy a genomikai adatkészletekben használt adatokat. Ez a tanulmány jól összefoglalja a ARCUL ütötte alkalmazásának hatásait és elméleti érvényességét: [Blagus és LUSA: arcul ütötte a nagy dimenziós osztály által kiegyensúlyozatlan adatmennyiségek esetében](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-14-106).
++ Egyes kutatók megvizsgálták, hogy a SMOTE hatékony-e a nagydimenziós vagy ritka adatokon, például a szövegosztályozásban vagy a genomikai adatkészletekben használt adatokon. Ez a dokumentum jó összefoglalót ad a SMOTE alkalmazásának hatásairól és elméleti érvényességéről ilyen esetekben: [Blagus és Lusa: SMOTE a nagy dimenziójú osztálykiegyensúlyozatlan adatok esetében](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-14-106).
 
-+ Ha a ARCUL ütötte nem érvényes az adatkészletben, az esetlegesen megfontolandó egyéb megközelítések a következők:
-  + A kisebbségi esetek túlmintavételezését vagy a többségi esetek mintavételezését végző metódusok.
-  + Olyan Ensemble-technikák, amelyek a tanulót közvetlenül a fürtözés, a csomagok és az adaptív növelés használatával segítik elő.
++ Ha az SMOTE nem hatékony az adatkészletben, más, esetleg figyelembe vennie érdemes megközelítések a következők:
+  + A kisebbségi esetek túlmintavételezésének vagy a többségi esetek alulmintavételezésének módszerei.
+  + Együttes technikák, amelyek segítik a tanulót közvetlenül segítségével klaszterek, zsákolás, vagy adaptív fellendítése.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
+Tekintse meg az Azure Machine Learning [számára elérhető modulok készletét.](module-reference.md) 
 

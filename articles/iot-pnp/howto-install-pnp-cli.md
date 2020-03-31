@@ -1,108 +1,105 @@
 ---
-title: Használja az Azure IoT-bővítményt az Azure CLI-hez a IoT Plug and Play Preview-eszközökkel való kommunikációhoz | Microsoft Docs
-description: Telepítse az Azure IoT-bővítményt az Azure CLI-hez, és használja az IoT hub-hoz csatlakoztatott IoT Plug and Play eszközök használatához.
+title: Az Azure CLI Azure IoT-bővítményének használata az IoT Plug and Play előzetes eszközökkel való együttműködéshez | Microsoft dokumentumok
+description: Telepítse az Azure CLI Azure IoT-bővítményét, és használja azt az IoT Plug and Play-eszközökio-központhoz csatlakoztatott eszközökkel való együttműködéshez.
 author: ChrisGMsft
 ms.author: chrisgre
 ms.date: 12/26/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 8dead08017f15a7429655b4bf17b6e8c8e481114
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: b5907c0fb127947e90352e68b2726a22f5afea0d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251012"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80234690"
 ---
-# <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Az Azure IoT bővítmény telepítése és használata az Azure CLI-hez
+# <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Az Azure IoT-bővítmény telepítése és használata az Azure CLI-hez
 
-[Az Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) egy nyílt forráskódú, többplatformos parancssori eszköz az Azure-erőforrások, például a IoT hub kezelésére. Az Azure CLI Windows, Linux és MacOS rendszeren érhető el. Az Azure CLI-t a [Azure Cloud Shell](https://shell.azure.com)is előre telepíti. Az Azure CLI-vel a bővítmények telepítése nélkül kezelheti az Azure IoT Hub erőforrásait, az eszközök kiépítési szolgáltatásának példányait és a társított hubokat.
+[Az Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) egy nyílt forráskódú, platformfüggetlen parancssori eszköz az Azure-erőforrások, például az IoT Hub kezelésére. Az Azure CLI Windows, Linux és MacOS rendszeren érhető el. Az Azure CLI előre telepítve van az [Azure Cloud Shellben](https://shell.azure.com)is. Az Azure CLI lehetővé teszi az Azure IoT Hub-erőforrások, eszközkiépítési szolgáltatás példányai és a kapcsolódó hubok kezelését bővítmények telepítése nélkül.
 
-Az Azure CLI-hez készült Azure IoT-bővítmény parancssori eszköz a IoT Plug and Play előnézeti eszközökhöz való interakcióhoz és teszteléshez. A bővítmény a következőre használható:
+Az Azure CLI Azure IoT-bővítménye parancssori eszköz az IoT Plug and Play előzetes eszközökkel való interakcióhoz és teszteléshez. A bővítmény ta-
 
-- Kapcsolódjon egy eszközhöz.
-- Az eszköz által küldött telemetria megtekintése.
-- Az eszköz tulajdonságainak használata.
-- Hívja meg az eszköz parancsait.
+- Csatlakozzon egy eszközhöz.
+- Tekintse meg az eszköz által küldött telemetriai adatokat.
+- Az eszköz tulajdonságok használata.
+- Eszközparancsok hívása.
 
-Ez a cikk bemutatja, hogyan végezheti el a következőket:
+Ez a cikk a következőkhöz nyújt útmutatást:
 
-- Az Azure IoT bővítmény telepítése és konfigurálása az Azure CLI-hez.
-- Használja a bővítményt az eszközök használatához és teszteléséhez.
-- A bővítmény használatával kezelheti az illesztőfelületeket a modell adattárában.
+- Telepítse és konfigurálja az Azure IoT-bővítményt az Azure CLI-hez.
+- A bővítmény segítségével kommunikálhat az eszközökkel, és tesztelheti azeszközöket.
+- A bővítmény segítségével kezelheti a modelltárházban lévő felületeket.
 
-## <a name="install-azure-iot-extension-for-the-azure-cli"></a>Az Azure IoT bővítmény telepítése az Azure CLI-hez
+## <a name="install-azure-iot-extension-for-the-azure-cli"></a>Telepítse az Azure IoT-bővítményt az Azure CLI-hez
 
-### <a name="step-1---install-the-azure-cli"></a>1\. lépés – az Azure CLI telepítése
+### <a name="step-1---install-the-azure-cli"></a>1. lépés - Az Azure CLI telepítése
 
-Kövesse a [telepítési utasításokat](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) , és állítsa be az Azure CLI-t a környezetében. Az alábbi parancsok használatához az Azure CLI-verziójának 2.0.73 vagy újabb verziójúnak kell lennie. A verziószámot az `az -–version` paranccsal ellenőrizheti.
+Kövesse a [telepítési utasításokat](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) az Azure CLI beállításához a környezetben. Az alábbi parancsok használatához az Azure CLI-verziónak 2.0.73-as vagy újabb verziónak kell lennie. A verziószámot az `az -–version` paranccsal ellenőrizheti.
 
-### <a name="step-2---install-iot-extension"></a>2\. lépés – a IoT-bővítmény telepítése
+### <a name="step-2---install-iot-extension"></a>2. lépés - IoT-bővítmény telepítése
 
 [Az IoT-bővítmény fontos (readme) fájlja](https://github.com/Azure/azure-iot-cli-extension) több módszert is ismertet a bővítmény telepítésére. A legegyszerűbb módszer az `az extension add --name azure-iot` futtatása. A telepítés után az `az extension list` paranccsal ellenőrizheti az aktuálisan telepített bővítményeket, az `az extension show --name azure-iot` paranccsal pedig megtekintheti az IoT-bővítmény adatait. A bővítményt az `az extension remove --name azure-iot` paranccsal távolíthatja el.
 
-## <a name="use-azure-iot-extension-for-the-azure-cli"></a>Az Azure IoT bővítmény használata az Azure CLI-hez
+## <a name="use-azure-iot-extension-for-the-azure-cli"></a>Azure IoT-bővítmény használata az Azure CLI-hez
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-Ha be szeretné jelentkezni az Azure-előfizetésbe, futtassa a következő parancsot:
+Az Azure-előfizetésbe való bejelentkezéshez futtassa a következő parancsot:
 
-```cmd/sh
+```azurecli
 az login
 ```
 
 > [!NOTE]
-> Ha az Azure Cloud shellt használja, automatikusan bejelentkezik, és nem kell futtatnia az előző parancsot.
+> Ha az Azure felhőbeli rendszerhéjat használja, automatikusan bejelentkezik, és nem kell futtatnia az előző parancsot.
 
-Az Azure CLI-hez készült Azure IoT-bővítmény használatához a következők szükségesek:
+Az Azure IoT-bővítmény azure CLI-hez való használatához a következőkre van szüksége:
 
-- Egy Azure IoT hub. Az Azure-előfizetéshez többféleképpen is hozzáadhat egy IoT hubot, például [létrehozhat egy IoT hubot az Azure CLI használatával](../iot-hub/iot-hub-create-using-cli.md). Az Azure IoT-bővítmény parancsainak futtatásához szüksége lesz az IoT hub kapcsolódási karakterláncára. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+- Egy Azure IoT-központ. Az Azure CLI használatával számos módon adhat hozzá egy IoT-központot az Azure-előfizetéshez, például [létrehozhat egy IoT-központot.](../iot-hub/iot-hub-create-using-cli.md) Az Azure IoT-bővítmény parancsok futtatásához az IoT hub kapcsolati karakterláncára van szükség. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
-    > [!NOTE]
-    > A nyilvános előzetes verzióban a IoT Plug and Play funkciói csak az **USA középső**régiójában, Észak- **Európában**és Kelet- **japán** régióban létrehozott IoT-hubokon érhetők el.
+- Az IoT hubon regisztrált eszköz. A következő Azure CLI-paranccsal regisztrálhat egy eszközt, `{YourDeviceID}` és mindenképpen lecserélheti a helyőrzőket az `{YourIoTHubName}` értékekre:
 
-- Az IoT hub-ban regisztrált eszköz. Az alábbi Azure CLI-paranccsal regisztrálhat egy eszközt, és a `{YourIoTHubName}` és `{YourDeviceID}` helyőrzőket cserélje le az értékekre:
-
-    ```cmd/sh
+    ```azurecli
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {YourDeviceID}
     ```
 
-- Egyes parancsokhoz szükség van a vállalati modell adattárának a kapcsolatok karakterláncára. A vállalati modell tárháza akkor jön létre, amikor először [bekerül az Azure Certified for IoT portálra](howto-onboard-portal.md). Előfordulhat, hogy egy harmadik fél megoszthatja a modell-adattár kapcsolati sztringjét, hogy hozzáférést biztosítson a kezelőfelületekhez és a modellekhez.
+- Egyes parancsokhoz a vállalati modelltárház kapcsolati karakterláncára van szükség. A vállalat modelltárháza akkor jön létre, amikor először [az Azure Certified for IoT portalra kerül.](howto-onboard-portal.md) Előfordulhat, hogy egy harmadik fél megosztja Önnel a modelltár-kapcsolati karakterláncát, hogy hozzáférést biztosítson a felületeikhez és modelljeikhez.
 
 ### <a name="interact-with-a-device"></a>Eszköz használata
 
-A bővítmény használatával megtekintheti és kezelheti a IoT Plug and Play az IoT hub-hoz csatlakoztatott eszközöket. A bővítmény a IoT Plug and Play eszközt jelképező digitális ikertel működik.
+A bővítmény segítségével megtekintheti és kezelheti az IoT Plug and Play-eszközök, amelyek egy IoT hubhoz csatlakozik. A bővítmény együttműködik az IoT Plug and Play eszközt képviselő digitális ikertestvérrel.
 
-#### <a name="list-devices-and-interfaces"></a>Eszközök és felületek listázása
+#### <a name="list-devices-and-interfaces"></a>Eszközök és összeköttetések listázása
 
-IoT Hub összes eszközének listázása:
+Az IoT Hub összes eszköze listázása:
 
-```cmd/sh
+```azurecli
 az iot hub device-identity list --hub-name {YourIoTHubName}
 ```
 
-IoT Plug and Play-eszköz által regisztrált összes felület listázása:
+Az IoT Plug and Play eszköz által regisztrált összes felület listázása:
 
-```cmd/sh
+```azurecli
 az iot dt list-interfaces --hub-name {YourIoTHubName} --device-id {YourDeviceID}
 ```
 
 #### <a name="properties"></a>Tulajdonságok
 
-Az eszközön található felület összes tulajdonságának és tulajdonságának listázása:
+Az eszköz összes tulajdonságának és tulajdonságértékének listázása:
 
-```cmd/sh
+```azurecli
 az iot dt list-properties --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --source private --repo-login "{YourCompanyModelRepoConnectionString}"
 ```
 
-Egy írható-olvasható tulajdonság értékének beállítása:
+Állítsa be az írási és olvasási tulajdonság értékét:
 
-```cmd/sh
+```azurecli
 az iot dt update-property --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface-payload {JSONPayload or FilePath}
 ```
 
-Egy példa arra, hogy az eszköz és a **contoso** között a **Name (név** ) **tulajdonság az** alábbihoz hasonlóan néz ki:
+Egy példa hasznos adatfájl, amely az eszköz **érzékelőfelületén** a **Contoso-ra** állítja be a **névtulajdonságot,** a következőképpen néz ki:
 
 ```json
 {
@@ -120,114 +117,114 @@ Egy példa arra, hogy az eszköz és a **contoso** között a **Name (név** ) *
 
 #### <a name="commands"></a>Parancsok
 
-Az eszközön található felület összes parancsának listázása:
+Az eszköz összes összeköttetésének összes parancsának listázása:
 
-```cmd/sh
+```azurecli
 az iot dt list-commands --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --source private --repo-login {YourCompanyModelRepoConnectionString}
 ```
 
-A `--repo-login` paraméter nélkül ez a parancs a nyilvános modell tárházát használja.
+A `--repo-login` paraméter nélkül ez a parancs a nyilvános modelltárházat használja.
 
 Parancs meghívása:
 
-```cmd/sh
+```azurecli
 az iot dt invoke-command --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --cn {CommandName} --command-payload {CommandPayload or FilePath}
 ```
 
-#### <a name="digital-twin-events"></a>Digitális kettős események
+#### <a name="digital-twin-events"></a>Digitális ikeresemények
 
-Az összes IoT figyelése egy adott eszközről és felületről Plug and Play digitális Twin-eseményekről az **$default** Event hub fogyasztói csoportba:
+Az összes IoT Plug and Play digitális ikeresemény figyelése egy adott eszközről és felületről a **$Default** eseményközpont fogyasztói csoportjába:
 
-```cmd/sh
+```azurecli
 az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID}
 ```
 
-Az összes IoT figyelése egy adott eszközről és egy adott felhasználói csoportba tartozó csatolón keresztüli digitális két esemény Plug and Play:
+Az összes IoT Plug and Play digitális ikeresemény figyelése egy adott eszközről és felületről egy adott fogyasztói csoportban:
 
-```cmd/sh
+```azurecli
 az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --consumer-group {YourConsumerGroup}
 ```
 
-### <a name="manage-interfaces-in-a-model-repository"></a>Felületek kezelése a modell adattárában
+### <a name="manage-interfaces-in-a-model-repository"></a>Illesztőfelületek kezelése modelltárházban
 
-Az alábbi parancsok a nyilvános IoT Plug and Play Model repositoryt használják. A vállalati modell tárházának használatához adja hozzá a `--login` argumentumot a Model adattár-kapcsolódási karakterlánccal.
+A következő parancsok a nyilvános IoT Plug and Play modelltárházat használják. Vállalati modelltárház használatához adja `--login` hozzá az argumentumot a modelltár kapcsolati karakterláncával.
 
-A nyilvános IoT Plug and Play Model adattárában található felületek listázása:
+A nyilvános IoT Plug and Play modelltárban lévő felületek listázása:
 
-```cmd/sh
+```azurecli
 az iot pnp interface list
 ```
 
-Interfész megjelenítése a nyilvános IoT Plug and Play Model adattár:
+Egy felület megjelenítése a nyilvános IoT Plug and Play modelltárházban:
 
-```cmd/sh
+```azurecli
 az iot pnp interface show --interface {YourInterfaceId}
 ```
 
-Hozzon létre egy felületet a IoT Plug and Play vállalati modell adattárában:
+Hozzon létre egy felületet az IoT Plug and Play vállalati modelltárban:
 
-```cmd/sh
+```azurecli
 az iot pnp interface create --definition {JSONPayload or FilePath} --login {YourCompanyModelRepoConnectionString}
 ```
 
-Közvetlenül nem hozhat létre felületet a nyilvános modell adattárában.
+Közvetlenül nem hozhat létre felületet a nyilvános modelltárházban.
 
-Felület frissítése a IoT Plug and Play vállalati modell adattárában:
+Az IoT Plug and Play vállalati modelltártárban egy felület frissítése:
 
-```cmd/sh
+```azurecli
 az iot pnp interface update --definition {JSONPayload or FilePath} --login {YourCompanyModelRepoConnectionString}
 ```
 
-A nyilvános modell adattárában nem lehet közvetlenül frissíteni a felületet.
+A nyilvános modelltárházban lévő felület közvetlenfrissítése nem frissíthető.
 
-Hozzon nyilvánosságra egy felületet a IoT Plug and Play vállalati modell adattárból a nyilvános modell adattárba. Ezzel a művelettel a felületet nem változtathatják meg:
+Az IoT Plug and Play vállalati modelltárból egy felületet közzétehet a nyilvános modelltárházban. Ez a művelet a kapcsolatot nem módosíthatóvá teszi:
 
-```cmd/sh
+```azurecli
 az iot pnp interface publish --interface {YourInterfaceID} --login {YourCompanyModelRepoConnectionString}
 ```
 
-Csak a Microsoft-partnerek tehetnek közzé felületet a nyilvános modell adattárában.
+Csak a Microsoft-partnerek tehetnek közzé felületeket a nyilvános modelltárházban.
 
-### <a name="manage-device-capability-models-in-a-model-repository"></a>Eszköz-képesség modellek kezelése a modell-tárházban
+### <a name="manage-device-capability-models-in-a-model-repository"></a>Eszközképesség-modellek kezelése modelltárházban
 
-Az alábbi parancsok a nyilvános IoT Plug and Play Model repositoryt használják. A vállalati modell tárházának használatához adja hozzá a `--login` argumentumot a Model adattár-kapcsolódási karakterlánccal.
+A következő parancsok a nyilvános IoT Plug and Play modelltárházat használják. Vállalati modelltárház használatához adja `--login` hozzá az argumentumot a modelltár kapcsolati karakterláncával.
 
-Eszköz-képesség modellek listázása a IoT Plug and Play nyilvános modell tárházban:
+Az eszközképességi modellek listázása az IoT Plug and Play nyilvános modelltárházban:
 
-```cmd/sh
+```azurecli
 az iot pnp capability-model list
 ```
 
-Eszköz képesség modell megjelenítése a IoT Plug and Play nyilvános modell tárházban:
+Eszközképesség-modell megjelenítése az IoT Plug and Play nyilvános modelltárházban:
 
-```cmd/sh
+```azurecli
 az iot pnp capability-model show --model {YourModelID}
 ```
 
-Eszköz-képesség modell létrehozása egy IoT Plug and Play vállalati modell adattárában:
+Hozzon létre egy eszközképességi modellt egy IoT Plug and Play vállalati modelltárházban:
 
-```cmd/sh
+```azurecli
 az iot pnp capability-model create --definition {JSONPayload or FilePath} --login {YourCompanyModelRepoConnectionString}
 ```
 
-Nem hozhat létre közvetlenül modellt a nyilvános modell adattárában.
+Közvetlenül nem hozhat létre modellt a nyilvános modelltárházban.
 
-Eszköz-képesség modell frissítése a IoT Plug and Play vállalati modell tárházban:
+Eszközképesség-modell frissítése az IoT Plug and Play vállalati modelltárban:
 
-```cmd/sh
+```azurecli
 az iot pnp capability-model update --definition {JSONPayload or FilePath} --login {YourCompanyModelRepoConnectionString}
 ```
 
-A modell nem frissíthető közvetlenül a nyilvános modell adattárában.
+A nyilvános modelltárházban nem frissíthet közvetlenül egy modellt.
 
-Tegye közzé az eszköz képességeinek modelljét a IoT Plug and Play vállalati modell adattárból a nyilvános modell adattárba. Ez a művelet a modell megváltoztathatatlan működését teszi lehetővé:
+Az IoT Plug and Play vállalati modelltárból közzétehet egy eszközképességi modellt a nyilvános modelltárházban. Ez a művelet a modellt megváltoztathatatlanvá teszi:
 
-```cmd/sh
+```azurecli
 az iot pnp capability-model publish --model {YourModelID} --login {YourCompanyModelRepoConnectionString}
 ```
 
-Csak Microsoft-partnerek tehetnek közzé modelleket a nyilvános modell adattárában.
+Csak a Microsoft-partnerek tehetnek közzé modelleket a nyilvános modelltárházban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a útmutatóban megtanulta, hogyan telepítheti és használhatja az Azure CLI-hez készült Azure IoT-bővítményt az Plug and Play-eszközökkel való kommunikációhoz. Egy javasolt következő lépés a [modellek kezelésének](./howto-manage-models.md)megismerése.
+Ebben az útmutató cikkben megtanulta, hogyan telepítheti és használhatja az Azure IOT-bővítményt az Azure CLI-hez a Plug and Play-eszközökkel való együttműködéshez. A javasolt következő lépés a [modellek kezelése](./howto-manage-models.md).

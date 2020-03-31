@@ -5,22 +5,22 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: a53d2b259bc4ece12c4ccb1cf47409cd2f0af86f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67179804"
 ---
-**Objective-C**:
+**C célkitűzés**:
 
-1. A **QSAppDelegate.m**, importálja az iOS SDK és **QSTodoService.h**:
+1. A **QSAppDelegate.m fájlban**importálja az iOS SDK és **a QSTodoService.h fájlt:**
 
     ```objc
     #import <MicrosoftAzureMobile/MicrosoftAzureMobile.h>
     #import "QSTodoService.h"
     ```
 
-2. A `didFinishLaunchingWithOptions` a **QSAppDelegate.m**, a következő közvetlenül előtt vonalak beszúrása `return YES;`:
+2. A `didFinishLaunchingWithOptions` **QSAppDelegate.m**fájlba közvetlenül `return YES;`a következő sorok beszúrása előtt illessse be a következő sorokat:
 
     ```objc
     UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
@@ -28,7 +28,7 @@ ms.locfileid: "67179804"
     [[UIApplication sharedApplication] registerForRemoteNotifications];
     ```
 
-3. A **QSAppDelegate.m**, adja hozzá a következő kezelő metódusokat. Az alkalmazás most már frissül, és támogatja a leküldéses értesítéseket. 
+3. A **QSAppDelegate.m**területen adja hozzá a következő kezelőmetódusokat. Az alkalmazás most frissül, hogy támogassa a leküldéses értesítéseket. 
 
     ```objc
     // Registration with APNs is successful
@@ -97,9 +97,9 @@ ms.locfileid: "67179804"
     }
     ```
 
-**SWIFT**:
+**Gyors**:
 
-1. Fájl hozzáadása **ClientManager.swift** a következő tartalommal. Cserélje le *AppUrl %* az Azure Mobile Apps-háttéralkalmazás URL-címével.
+1. Add fájl **ClientManager.swift** a következő tartalommal. Cserélje le *a%AppUrl%* elemet az Azure Mobile App háttér-háttérszolgáltatásának URL-címére.
 
     ```swift
     class ClientManager {
@@ -107,13 +107,13 @@ ms.locfileid: "67179804"
     }
     ```
 
-2. A **ToDoTableViewController.swift**, cserélje le a `let client` inicializáló sor egy `MSClient` az ezt a sort:
+2. A **ToDoTableViewController.swift**, `let client` cserélje ki a `MSClient` sort, amely inicializálja egy ezzel a sokkal:
 
     ```swift
     let client = ClientManager.sharedClient
     ```
 
-3. A **AppDelegate.swift**, cserélje le a törzse `func application` módon:
+3. Az **AppDelegate.swift**területen cserélje `func application` ki a következő szövegtörzset:
 
     ```swift
     func application(application: UIApplication,
@@ -126,7 +126,7 @@ ms.locfileid: "67179804"
     }
     ```
 
-4. A **AppDelegate.swift**, adja hozzá a következő kezelő metódusokat. Az alkalmazás most már frissül, és támogatja a leküldéses értesítéseket.
+4. Az **AppDelegate.swift**alkalmazásban adja hozzá a következő kezelőmódszereket. Az alkalmazás most frissül, hogy támogassa a leküldéses értesítéseket.
 
     ```swift
     func application(application: UIApplication,

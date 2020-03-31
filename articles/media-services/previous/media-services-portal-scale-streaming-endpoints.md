@@ -1,6 +1,6 @@
 ---
-title: Az Azure Portallal streamvégpontok méretezési |} A Microsoft Docs
-description: Ez az oktatóanyag végigvezeti a lépéseken, az Azure Portallal streamvégpontok méretezését.
+title: Streamelési végpontok méretezése az Azure Portalon | Microsoft dokumentumok
+description: Ez az oktatóanyag végigvezeti a streamelési végpontok az Azure Portalon való méretezésének lépéseit.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 23eb51428dcf4961febfb592bf957bb8beeeda57
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61463114"
 ---
 # <a name="scale-streaming-endpoints-with-the-azure-portal"></a>A streamvégpont méretezése az Azure Portal használatával
@@ -29,24 +29,24 @@ ms.locfileid: "61463114"
 > 
 > 
 
-A **prémium** szintű streamvégpontok a speciális feladatokhoz ideálisak, mert dedikált és méretezhető sávszélesség-kapacitást nyújtanak. A **prémium** streamvégponttal rendelkező ügyfelek alapértelmezés szerint kapnak egy adategységet (SU-t). A streamvégpont adategységek hozzáadásával méretezhető. Mindegyik adategység további sávszélesség-kapacitást nyújt az alkalmazásnak. Végponttípusok és a CDN-konfiguráció streameléssel kapcsolatos további információkért lásd: a [folyamatos átviteli végponton áttekintése](media-services-streaming-endpoints-overview.md) témakör.
+A **prémium** szintű streamvégpontok a speciális feladatokhoz ideálisak, mert dedikált és méretezhető sávszélesség-kapacitást nyújtanak. A **prémium** streamvégponttal rendelkező ügyfelek alapértelmezés szerint kapnak egy adategységet (SU-t). A streamvégpont adategységek hozzáadásával méretezhető. Mindegyik adategység további sávszélesség-kapacitást nyújt az alkalmazásnak. A végponttípusok streameléséről és a CDN-konfigurációról a [Streamelési végpont áttekintése témakörben olvashat bővebben.](media-services-streaming-endpoints-overview.md)
  
-Ez a témakör bemutatja a streamvégpont méretezése.
+Ez a témakör bemutatja, hogyan skálázható egy streamelési végpont.
 
-Az árképzésre vonatkozó további információkért lásd: [Media Services Pricing Details](https://go.microsoft.com/fwlink/?LinkId=275107) (A Media Services árképzésére vonatkozó információk).
+Az árképzésrészleteiről a [Media Services díjszabási részletei című témakörben talál](https://go.microsoft.com/fwlink/?LinkId=275107)további információt.
 
-## <a name="scale-streaming-endpoints"></a>Az adatfolyam végpontjainak méretezése
+## <a name="scale-streaming-endpoints"></a>Streamelési végpontok méretezése
 
 A streamelési egységek számának módosításához tegye a következőket:
 
 1. Az [Azure-portálon](https://portal.azure.com/) válassza ki Azure Media Services-fiókját.
-2. Az a **beállítások** ablakban válassza **Streamvégpontok**.
-3. Kattintson a skálázni kívánt streamvégpontra. 
+2. A **Beállítások** ablakban válassza a **Streamelési végpontok**lehetőséget.
+3. Kattintson a méretezéshez kívánt streamelési végpontra. 
 
     > [!NOTE] 
-    > Csak méretezheti **prémium** streamvégpontok.
+    > Csak prémium **szintű** streamelési végpontok skálázható.
 
-4. Mozgassa a csúszkát a streamelési egységek számának megadásához.
+4. A csúszka mozgatása a streamelési egységek számának megadásához.
 
     ![Streamvégpont](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints3.png)
 

@@ -1,7 +1,7 @@
 ---
-title: Media Services v3 entitások szűrése, rendezése és lapozása
+title: Media Services-entitások szűrése, rendezése és lapozása
 titleSuffix: Azure Media Services
-description: Ismerje meg Azure Media Services entitások szűrését, rendezését és lapozását.
+description: Ismerje meg az Azure Media Services v3-as entitásainak szűrését, rendelését és lapozását.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,81 +13,81 @@ ms.topic: article
 ms.date: 01/21/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: c5ae9839b7bbb86e28c9f8adab0aa0ec5e885087
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: bc5c983bc98c3b62df977c6765978cd45cd3c93b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311699"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79500028"
 ---
-# <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Media Services entitások szűrése, rendezése és lapozása
+# <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Media Services-entitások szűrése, rendezése és lapozása
 
-Ez a témakör a OData-lekérdezési lehetőségeket és a tördelési támogatást ismerteti Azure Media Services v3 entitások listázásakor.
+Ez a témakör az Azure Media Services v3-as entitások listázásakor elérhető OData-lekérdezési beállításokat és tördelési támogatást ismerteti.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
-* A `Datetime` típusú entitások tulajdonságai mindig UTC formátumban vannak.
-* A lekérdezési karakterláncban található üres területnek URL-kódolással kell rendelkeznie, mielőtt elküld egy kérést.
+* A `Datetime` típushoz tartozó entitások tulajdonságai mindig UTC formátumban vannak.
+* A lekérdezési karakterlánc ban lévő szóközt a kérelem elküldése előtt URL-kódolással kell elküldeni.
 
 ## <a name="comparison-operators"></a>Összehasonlító operátorok
 
-A következő operátorok segítségével hasonlíthatja össze a mezőket egy állandó értékkel:
+A következő operátorok segítségével hasonlíthatja össze a mezőt egy állandó értékkel:
 
-Esélyegyenlőségi operátorok:
+Esélyegyenlőségi szereplők:
 
-- `eq`: annak tesztelése, hogy egy mező *egyenlő-* e egy konstans értékkel.
-- `ne`: ellenőrzi, hogy egy mező *nem egyenlő-* e állandó értékkel.
+- `eq`: Ellenőrizze, hogy egy mező *egyenlő-e* állandó értékkel.
+- `ne`: Ellenőrizze, hogy egy mező *nem egyenlő-e* állandó értékkel.
 
-Tartomány operátorai:
+Tartomány operátorok:
 
-- `gt`: azt teszteli, hogy egy mező nagyobb-e, *mint* egy konstans érték.
-- `lt`: azt teszteli, hogy egy mező kisebb-e, *mint* egy konstans érték.
-- `ge`: azt teszteli, hogy egy mező *nagyobb-e vagy egyenlő-* e egy konstans értékkel.
-- `le`: ellenőrzi, hogy egy mező értéke *kisebb vagy egyenlő-e, mint* egy konstans érték.
+- `gt`: Ellenőrizze, hogy egy mező nagyobb-e állandó *értéknél.*
+- `lt`: Ellenőrizze, hogy egy mező kisebb-e állandó *értéknél.*
+- `ge`: Ellenőrizze, hogy egy mező nagyobb vagy egyenlő-e állandó *értékkel.*
+- `le`: Ellenőrizze, hogy egy mező *kisebb vagy egyenlő-e állandó értékkel.*
 
-## <a name="filter"></a>Szűrő
+## <a name="filter"></a>Szűrés
 
-A `$filter` használatával adja meg a OData szűrő paramétert, hogy csak azokat az objektumokat keresse meg, amelyekre kíváncsi.
+Az `$filter` OData-szűrő paraméter megadására csak az Önt érdeklő objektumokat keresheti meg.
 
-A következő REST-példák szűrői egy eszköz `alternateId` értékére:
+A következő REST példa `alternateId` egy eszköz értékét szűri ki:
 
 ```
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$filter=properties/alternateId%20eq%20'unique identifier'
 ```
 
-A következő C# példa az eszköz létrehozási dátumát szűri:
+A következő C# példa szűri az eszköz létrehozásának dátumát:
 
 ```csharp
 var odataQuery = new ODataQuery<Asset>("properties/created lt 2018-05-11T17:39:08.387Z");
 var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGroup, CustomerAccountName, odataQuery);
 ```
 
-## <a name="order-by"></a>Rendezési sorrend
+## <a name="order-by"></a>Rendelés
 
-A visszaadott objektumok a megadott paraméterrel való rendezéséhez használja a `$orderby`. Példa:  
+A `$orderby` visszaadott objektumokat a megadott paraméter szerint rendezheti. Példa:  
 
 ```
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01$orderby=properties/created%20gt%202018-05-11T17:39:08.387Z
 ```
 
-Ha növekvő vagy csökkenő sorrendbe szeretné rendezni az eredményeket, fűzze hozzá `asc` vagy `desc` a mező nevéhez, szóközzel elválasztva. Például: `$orderby properties/created desc`.
+Ha az eredményeket növekvő vagy csökkenő sorrendbe `asc` `desc` szeretné rendezni, fűzz hozzá vagy a mezőnévhez, szóközvel elválasztva. Például: `$orderby properties/created desc`.
 
 ## <a name="skip-token"></a>Token kihagyása
 
-Ha egy lekérdezés válasza sok elemet tartalmaz, a szolgáltatás egy `$skiptoken` (`@odata.nextLink`) értéket ad vissza, amelyet az eredmények következő oldalának beolvasásához használ. A teljes eredményhalmaz használatával használhatja a lapot.
+Ha egy lekérdezési válasz sok elemet `$skiptoken` `@odata.nextLink`tartalmaz, a szolgáltatás egy ( ) értéket ad vissza, amelyet az eredmények következő oldalának lejáratához használ. Használja a teljes eredményhalmaz oldallapját.
 
-A Media Services V3 esetében nem konfigurálható az oldalméret. Az oldalméret az entitás típusától függően változik. Olvassa el a részleteket követő egyes szakaszokat.
+A Media Services 3-as v3-as ében nem konfigurálható az oldalméret. Az oldalméret az entitás típusától függően változik. A részletekért olvassa el az alábbi szakaszokat.
 
-Ha entitásokat hoznak létre vagy törölnek a gyűjteményen belüli lapozás során, a módosítások a visszaadott eredményekben jelennek meg (ha ezek a módosítások a gyűjtemény nem letöltött részét képezik).
+Ha az entitások a gyűjteményen keresztül történő lapozás közben jönnek létre vagy törlődnek, a módosítások megjelennek a visszaadott eredményekben (ha ezek a módosítások a gyűjtemény azon része, amelyet még nem töltöttek le).
 
 > [!TIP]
-> Mindig `nextLink` kell használnia a gyűjtemény számbavételéhez, és nem függ egy adott oldalméret méretétől.
+> Mindig `nextLink` a gyűjtemény számbavételére használja, és ne függjen egy adott oldalmérettől.
 >
-> A `nextLink` érték csak akkor jelenik meg, ha az entitások több oldala is van.
+> Az `nextLink` érték csak akkor jelenik meg, ha egynél több entitásoldal van.
 
-Vegye figyelembe a következő példát, ahol a `$skiptoken` használatban van. Ügyeljen rá, hogy a *amstestaccount* cserélje le a fiók nevére, és állítsa be az *API-Version* értéket a legújabb verzióra.
+Vegye figyelembe a `$skiptoken` következő példát a használt helyszínre. Győződjön meg róla, hogy lecserélte *az amstestaccount-ot* a fiók nevére, és állítsa be az *api-verzió* értékét a legújabb verzióra.
 
-Ha a következőhöz hasonló eszközök listáját kéri:
+Ha az ehhez hasonló eszközöket kér:
 
 ```
 GET  https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01 HTTP/1.1
@@ -95,7 +95,7 @@ x-ms-client-request-id: dd57fe5d-f3be-4724-8553-4ceb1dbe5aab
 Content-Type: application/json; charset=utf-8
 ```
 
-Ehhez hasonló választ fog kapni:
+Kapsz vissza a választ hasonló ez:
 
 ```
 HTTP/1.1 200 OK
@@ -117,13 +117,13 @@ HTTP/1.1 200 OK
 }
 ```
 
-Ezután a következő lapot kell kérnie a Get kérelem elküldésével:
+Ezután a következő oldalt a következő bekéréses kérelem elküldésével kérheti:
 
 ```
 https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$skiptoken=Asset+517
 ```
 
-Az alábbi C# példa bemutatja, hogyan lehet enumerálni a fiókban lévő összes streaming-lokátoron.
+A következő C# példa bemutatja, hogyan kell számba venni a fiók összes streamelési lokátorán keresztül.
 
 ```csharp
 var firstPage = await MediaServicesArmClient.StreamingLocators.ListAsync(CustomerResourceGroup, CustomerAccountName);
@@ -135,57 +135,57 @@ while (currentPage.NextPageLink != null)
 }
 ```
 
-## <a name="using-logical-operators-to-combine-query-options"></a>A logikai operátorok használata a lekérdezési beállítások egyesítéséhez
+## <a name="using-logical-operators-to-combine-query-options"></a>Logikai operátorok használata lekérdezési beállítások kombinálása
 
-Media Services v3 támogatja a **vagy** a és **a és a** logikai operátorokat. 
+A Media Services v3 támogatja a **OR** **és az AND** logikai operátorokat. 
 
-A következő REST-példa ellenőrzi a feladatok állapotát:
+A következő REST-példa ellenőrzi a feladat állapotát:
 
 ```
 https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qbtest/providers/Microsoft.Media/mediaServices/qbtest/transforms/VideoAnalyzerTransform/jobs?$filter=properties/state%20eq%20Microsoft.Media.JobState'Scheduled'%20or%20properties/state%20eq%20Microsoft.Media.JobState'Processing'&api-version=2018-07-01
 ```
 
-A következőhöz C# hasonló lekérdezést kell létrehoznia: 
+Ugyanazt a lekérdezést a C# ciklusban a következőkhez hasonlóan hozhatja létre: 
 
 ```csharp
 var odataQuery = new ODataQuery<Job>("properties/state eq Microsoft.Media.JobState'Scheduled' or properties/state eq Microsoft.Media.JobState'Processing'");
 client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransformName, odataQuery);
 ```
 
-## <a name="filtering-and-ordering-options-of-entities"></a>Entitások szűrése és rendezési lehetőségei
+## <a name="filtering-and-ordering-options-of-entities"></a>Entitások szűrési és rendezési lehetőségei
 
-A következő táblázat bemutatja, hogyan alkalmazhatja a szűrési és a rendezési beállításokat különböző entitásokra:
+Az alábbi táblázat bemutatja, hogyan alkalmazhatja a szűrési és rendezési beállításokat a különböző entitásokra:
 
-|Entitás neve|Tulajdonság neve|Szűrő|Rendelés|
+|Entitás neve|Tulajdonság neve|Szűrés|Rendelés|
 |---|---|---|---|
-|[Adategységek](https://docs.microsoft.com/rest/api/media/assets/)|név|`eq`, `gt`, `lt`, `ge`, `le`|`asc` és `desc`|
-||Properties. alternateId |`eq`||
-||Properties. assetId |`eq`||
-||tulajdonságok. létrehozva| `eq`, `gt`, `lt`| `asc` és `desc`|
-|[Tartalmi kulcs házirendjei](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|név|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
-||tulajdonságok. létrehozva    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
-||tulajdonságok. Leírás    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`||
-||Properties. lastModified|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
-||Properties. policyId|`eq`, `ne`||
+|[Objektumok](https://docs.microsoft.com/rest/api/media/assets/)|név|`eq`, `gt`, `lt`, `ge`, `le`|`asc` és `desc`|
+||properties.alternateId |`eq`||
+||properties.assetId |`eq`||
+||properties.created| `eq`, `gt`, `lt`| `asc` és `desc`|
+|[Tartalomkulcs-házirendek](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|név|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
+||properties.created    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
+||properties.description    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`||
+||properties.lastMódosítva|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
+||properties.policyId|`eq`, `ne`||
 |[Feladatok](https://docs.microsoft.com/rest/api/media/jobs)| név  | `eq`            | `asc` és `desc`|
-||tulajdonságok. állapot        | `eq`, `ne`        |                         |
-||tulajdonságok. létrehozva      | `gt`, `ge`, `lt`, `le`| `asc` és `desc`|
-||Properties. lastModified | `gt`, `ge`, `lt`, `le` | `asc` és `desc`| 
-|[Folyamatos átviteli lokátorok](https://docs.microsoft.com/rest/api/media/streaminglocators)|név|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
-||tulajdonságok. létrehozva    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
-||tulajdonságok. végső Befejezés    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
-|[Folyamatos átviteli házirendek](https://docs.microsoft.com/rest/api/media/streamingpolicies)|név|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
-||tulajdonságok. létrehozva    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
-|[Átalakítja](https://docs.microsoft.com/rest/api/media/transforms)| név | `eq`            | `asc` és `desc`|
-|| tulajdonságok. létrehozva      | `gt`, `ge`, `lt`, `le`| `asc` és `desc`|
-|| Properties. lastModified | `gt`, `ge`, `lt`, `le`| `asc` és `desc`|
+||tulajdonságok.állapot        | `eq`, `ne`        |                         |
+||properties.created      | `gt`, `ge`, `lt`, `le`| `asc` és `desc`|
+||properties.lastMódosítva | `gt`, `ge`, `lt`, `le` | `asc` és `desc`| 
+|[Streamelési lokátorok](https://docs.microsoft.com/rest/api/media/streaminglocators)|név|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
+||properties.created    |`eq`, `ne`, `ge`, `le`,  `gt`, `lt`|`asc` és `desc`|
+||properties.endTime    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
+|[Streamelési házirendek](https://docs.microsoft.com/rest/api/media/streamingpolicies)|név|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
+||properties.created    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` és `desc`|
+|[Átalakítások](https://docs.microsoft.com/rest/api/media/transforms)| név | `eq`            | `asc` és `desc`|
+|| properties.created      | `gt`, `ge`, `lt`, `le`| `asc` és `desc`|
+|| properties.lastMódosítva | `gt`, `ge`, `lt`, `le`| `asc` és `desc`|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Eszközök listázása](https://docs.microsoft.com/rest/api/media/assets/list)
-* [A tartalmi kulcs házirendjeinek listázása](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list)
+* [Tartalomkulcs-házirendek listázása](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list)
 * [Feladatok listázása](https://docs.microsoft.com/rest/api/media/jobs/list)
-* [Folyamatos átviteli szabályzatok listázása](https://docs.microsoft.com/rest/api/media/streamingpolicies/list)
-* [Streaming-lokátorok listázása](https://docs.microsoft.com/rest/api/media/streaminglocators/list)
+* [Streamelési házirendek listázása](https://docs.microsoft.com/rest/api/media/streamingpolicies/list)
+* [Streamelési lokátorok listázása](https://docs.microsoft.com/rest/api/media/streaminglocators/list)
 * [Fájl streamelése](stream-files-dotnet-quickstart.md)
 * [Kvóták és korlátozások](limits-quotas-constraints.md)

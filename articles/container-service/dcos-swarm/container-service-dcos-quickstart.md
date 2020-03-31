@@ -1,5 +1,5 @@
 ---
-title: ELAVULT Azure Container Service rövid útmutató – DC/OS fürt üzembe helyezése
+title: (ELAVULT) Az Azure Container Service rövid útmutatója – DC/OS-fürt telepítése
 description: Azure Container Service gyors útmutató – DC/OS fürt üzembe helyezése
 author: iainfoulds
 ms.service: container-service
@@ -8,21 +8,21 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 6274e24bae2e2a6eade0122fe244652eb29cacf9
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78399229"
 ---
-# <a name="deprecated-deploy-a-dcos-cluster"></a>ELAVULT DC/OS-fürt üzembe helyezése
+# <a name="deprecated-deploy-a-dcos-cluster"></a>(ELAVULT) DC/OS-fürt telepítése
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-A DC/OS elosztott platformot nyújt a modern és tárolóalapú alkalmazások futtatásához. Az Azure Container Service használatával egyszerűen és gyorsan építhető ki üzemkész DC/OS fürt. Ez a rövid útmutató részletesen ismerteti a DC/OS-fürt üzembe helyezéséhez és az alapvető számítási feladatok futtatásához szükséges alapszintű lépéseket.
+A DC/OS elosztott platformot nyújt a modern és tárolóalapú alkalmazások futtatásához. Az Azure Container Service használatával egyszerűen és gyorsan építhető ki üzemkész DC/OS fürt. Ez a rövid útmutató részletezi a DC/OS fürt központi telepítéséhez és az alapvető számítási feladatok futtatásához szükséges alapvető lépéseket.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
-Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli). 
+Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha frissíteni szeretne, tekintse meg [az Azure CLI telepítését ismertető]( /cli/azure/install-azure-cli) szakaszt. 
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba 
 
@@ -163,9 +163,9 @@ Ha már nincs rá szükség, az [az group delete](/cli/azure/group#az-group-dele
 az group delete --name myResourceGroup --no-wait
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban üzembe helyezett egy DC/OS fürtöt, és futtatott egy egyszerű Docker-tárolót a fürtön. Az Azure Container Service-ről további információt az ACS oktatóanyagokban talál.
+Ebben a rövid útmutatóban üzembe helyezett egy DC/OS-fürtöt, és egy egyszerű Docker-tárolót futtatott a fürtön. Az Azure Container Service-ről további információt az ACS oktatóanyagokban talál.
 
 > [!div class="nextstepaction"]
 > [ACS DC/OS fürt kezelése](container-service-dcos-manage-tutorial.md)

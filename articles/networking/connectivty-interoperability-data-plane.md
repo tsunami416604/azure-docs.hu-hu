@@ -1,6 +1,6 @@
 ---
-title: 'Együttműködés az Azure háttérbeli kapcsolati szolgáltatásaiban: adatsíkok elemzése | Microsoft Docs'
-description: Ez a cikk a ExpressRoute, a helyek közötti VPN-kapcsolat és az Azure-beli virtuális hálózatok közötti együttműködés elemzésére használható, a teszt beállításának adatsíkon történő elemzését tartalmazza.
+title: 'Interoperabilitás az Azure háttérkapcsolati szolgáltatásaiban: Adatsík-elemzés | Microsoft dokumentumok'
+description: Ez a cikk az ExpressRoute, a helyek közötti VPN és az Azure-beli virtuális hálózati társviszony-létesítés közötti együttműködés elemzéséhez használható tesztbeállítás adatsík-elemzését tartalmazza.
 documentationcenter: na
 services: networking
 author: rambk
@@ -11,23 +11,23 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 815976c672272270e465610e17fef3aea79387f6
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77526637"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-data-plane-analysis"></a>Együttműködés az Azure háttérbeli kapcsolati szolgáltatásaiban: adatsíkok elemzése
+# <a name="interoperability-in-azure-back-end-connectivity-features-data-plane-analysis"></a>Együttműködés az Azure háttérkapcsolati szolgáltatásaiban: Adatsík-elemzés
 
-Ez a cikk a [teszt telepítésének][Setup]adatsíkon végzett elemzését ismerteti. Emellett áttekintheti a [tesztelési beállítások konfigurációját][Configuration] és a tesztelési célú telepítés [vezérlési sík elemzését][Control-Analysis] is.
+Ez a cikk a [tesztbeállítás][Setup]adatsík-elemzését ismerteti. Áttekintheti a [teszt beállítási konfigurációját][Configuration] és a tesztbeállítás [vezérlősík-elemzését][Control-Analysis] is.
 
-Az adatsík-elemzés megvizsgálja az egyik helyi hálózatról (LAN vagy virtuális hálózatról) áthaladó csomagok útvonalát a topológián belül. A két helyi hálózat közötti adatelérési út nem szükségszerűen szimmetrikus. Ezért ebben a cikkben a továbbítási útvonalat egy helyi hálózatról egy másik, a fordított útvonaltól eltérő hálózatra elemezzük.
+Az adatsík-elemzés az egyik helyi hálózatról (LAN-ról vagy virtuális hálózatról) egy topológián belül áthaladó csomagok által megtett útvonalat vizsgálja. A két helyi hálózat közötti adatelérési út nem feltétlenül szimmetrikus. Ezért ebben a cikkben elemezzük a továbbítási útvonalat a helyi hálózatról egy másik hálózatra, amely elkülönül a fordított útvonaltól.
 
-## <a name="data-path-from-the-hub-vnet"></a>A hub VNet származó adatok útvonala
+## <a name="data-path-from-the-hub-vnet"></a>Adatelérési út a központi virtuális hálózatról
 
-### <a name="path-to-the-spoke-vnet"></a>A küllő VNet elérési útja
+### <a name="path-to-the-spoke-vnet"></a>A küllővirtuális hálózat elérési útja
 
-A virtuális hálózat (VNet) társítása a hálózati híd működését emulálja a két virtuális hálózatok között. Itt látható a VNet-ből egy virtuális gépre irányuló traceroute kimenet a küllő VNet:
+Virtuális hálózati (VNet) társviszony-létesítés emulálja a hálózati híd funkcióa két virtuális hálózatok, amelyek társviszony-létesített. Traceroute kimenet egy központi virtuális hálózat egy virtuális gép a küllő virtuális hálózat itt látható:
 
     C:\Users\rb>tracert 10.11.30.4
 
@@ -37,14 +37,14 @@ A virtuális hálózat (VNet) társítása a hálózati híd működését emul�
 
     Trace complete.
 
-Az alábbi ábra a hub VNet grafikus kapcsolatok nézetét és a küllős VNet mutatja be az Azure Network Watcher szempontjából:
+Az alábbi ábra a központi virtuális hálózat és a küllővirtuális hálózat grafikus kapcsolatnézetét mutatja be az Azure Network Watcher szemszögéből:
 
 
 ![1][1]
 
-### <a name="path-to-the-branch-vnet"></a>Az ág VNet elérési útja
+### <a name="path-to-the-branch-vnet"></a>Az ág virtuális hálózatának elérési útja
 
-Itt jelennek meg a traceroute kimenete egy hub-VNet az ág VNet lévő virtuális gépre:
+Traceroute kimenet egy központi virtuális hálózat egy virtuális gép az ág virtuális hálózat itt látható:
 
     C:\Users\rb>tracert 10.11.30.68
 
@@ -56,19 +56,19 @@ Itt jelennek meg a traceroute kimenete egy hub-VNet az ág VNet lévő virtuáli
 
     Trace complete.
 
-Ebben a traceroute-ben az első ugrás az Azure-beli VPN-átjáró VPN Gateway a hub-VNet. A második Ugrás a fiókiroda VNet VPN-átjárója. A fiókiroda VNet VPN-átjárójának IP-címe nincs meghirdetve a hub VNet. A harmadik ugrás az ág VNet található virtuális gép.
+Ebben a traceroute-ban az első ugrás a VPN-átjáró az Azure VPN-átjáró a központi virtuális hálózat. A második ugrás a virtuális hálózat ág VPN-átjárója. Az ág virtuális hálózatának VPN-átjárójának IP-címe nem lesz meghirdetve a központi virtuális hálózatban. A harmadik ugrás a virtuális gép az ág virtuális hálózat.
 
-Az alábbi ábra a hub-VNet grafikus kapcsolatok nézetét és a Network Watcher perspektívájában lévő ág VNet mutatja be:
+Az alábbi ábra a központi virtuális hálózat és az ágvirtuális hálózat grafikus kapcsolatnézetét mutatja be a Hálózati figyelő szemszögéből:
 
 ![2][2]
 
-Ugyanezen a kapcsolatban az alábbi ábrán a rács nézet látható Network Watcherban:
+Ugyanebben a kapcsolatban az alábbi ábra a Hálózati figyelő rácsnézetét mutatja:
 
 ![3][3]
 
-### <a name="path-to-on-premises-location-1"></a>A helyszíni hely elérési útja 1
+### <a name="path-to-on-premises-location-1"></a>A helyszíni helyszín 1-
 
-Itt látható a traceroute kimenet egy hub-VNet egy virtuális gépre a helyszíni helyen 1.
+Traceroute kimenet egy központi virtuális hálózat egy virtuális gép a helyszíni helyen 1 itt látható:
 
     C:\Users\rb>tracert 10.2.30.10
 
@@ -81,12 +81,12 @@ Itt látható a traceroute kimenet egy hub-VNet egy virtuális gépre a helyszí
 
     Trace complete.
 
-Ebben a traceroute-ben az első ugrás az Azure ExpressRoute Gateway Tunnel végpontja egy Microsoft Enterprise Edge-útválasztóra (MSEE). A második és a harmadik ugrás az ügyfél peremhálózati (CE) útválasztója és a helyszíni hely 1 hálózati IP-címe. Ezeket az IP-címeket a rendszer nem hirdeti meg a hub VNet. A negyedik Ugrás a virtuális gép a helyszíni helyen 1.
+Ebben a traceroute,az első ugrás az Azure ExpressRoute átjáró-csatorna végpont egy Microsoft Enterprise Edge router (MSEE). A második és a harmadik ugrás az ügyfél peremhálózati útválasztója és a helyszíni hely 1 LAN IP-cím. Ezek az IP-címek nem hirdetett a központi virtuális hálózatban. A negyedik ugrás a virtuális gép a helyszíni helyen 1.
 
 
-### <a name="path-to-on-premises-location-2"></a>A helyszíni hely elérési útja 2
+### <a name="path-to-on-premises-location-2"></a>A helyszíni hely 2.
 
-Itt látható a (z)-ben a helyszíni VNet-ből egy virtuális gépre irányuló traceroute kimenet a következő helyen:
+Traceroute kimenet egy központi virtuális hálózat egy virtuális gép a helyszíni 2.
 
     C:\Users\rb>tracert 10.1.31.10
 
@@ -99,11 +99,11 @@ Itt látható a (z)-ben a helyszíni VNet-ből egy virtuális gépre irányuló 
 
     Trace complete.
 
-Ebben a traceroute-ben az első Ugrás a ExpressRoute átjáró alagút végpontja egy MSEE. A második és a harmadik Ugrás a CE-útválasztó és a helyszíni 2. hely helyi hálózati IP-címei. Ezeket az IP-címeket a rendszer nem hirdeti meg a hub VNet. A negyedik Ugrás a helyszíni 2. helyen található virtuális gép.
+Ebben a traceroute az első ugrás az ExpressRoute átjáró-alagút végpont egy MSEE. A második és a harmadik ugrás a CE router és a helyszíni Location 2 LANPs. Ezek az IP-címek nem hirdetett a központi virtuális hálózatban. A negyedik ugrás a virtuális gép a helyszíni 2.
 
-### <a name="path-to-the-remote-vnet"></a>A távoli VNet elérési útja
+### <a name="path-to-the-remote-vnet"></a>A távoli virtuális hálózat elérési útja
 
-Itt jelennek meg a traceroute kimenete egy központi VNet a távoli VNet lévő virtuális gépre:
+Traceroute kimenet egy központi virtuális hálózat egy virtuális gép a távoli virtuális hálózat itt látható:
 
     C:\Users\rb>tracert 10.17.30.4
 
@@ -115,15 +115,15 @@ Itt jelennek meg a traceroute kimenete egy központi VNet a távoli VNet lévő 
 
     Trace complete.
 
-Ebben a traceroute-ben az első Ugrás a ExpressRoute átjáró alagút végpontja egy MSEE. A második Ugrás a távoli VNet átjárójának IP-címe. A második ugrás IP-tartománya nincs meghirdetve a hub VNet. A harmadik Ugrás a virtuális gép a távoli VNet.
+Ebben a traceroute az első ugrás az ExpressRoute átjáró-alagút végpont egy MSEE. A második ugrás a távoli virtuális hálózat átjáró IP-címe. A második ugrás IP-tartománya nem hirdetett a hub virtuális hálózat. A harmadik ugrás a távoli virtuális hálózat virtuális gép.
 
-## <a name="data-path-from-the-spoke-vnet"></a>A küllő VNet származó adatok elérési útja
+## <a name="data-path-from-the-spoke-vnet"></a>A küllővirtuális hálózat adatelérési útja
 
-A küllős VNet megosztja a hub-VNet hálózati nézetét. A küllős VNet a VNet-közvetítésen keresztül a hub VNet távoli átjárójának kapcsolatát használja úgy, mintha közvetlenül a küllős VNet csatlakozik.
+A küllős virtuális hálózat megosztja a központi virtuális hálózat hálózati nézetét. A virtuális hálózat társviszony-létesítés, a küllővirtuális hálózat a központi virtuális hálózat távoli átjáró kapcsolatát használja, mintha közvetlenül csatlakozik a küllővirtuális hálózathoz.
 
-### <a name="path-to-the-hub-vnet"></a>A hub VNet elérési útja
+### <a name="path-to-the-hub-vnet"></a>A központi virtuális hálózat elérési útja
 
-Itt látható a küllős VNet és a hub VNet lévő virtuális géphez a traceroute kimenete:
+Traceroute kimenet a küllővirtuális hálózat egy virtuális gép a hub virtuális hálózat itt látható:
 
     C:\Users\rb>tracert 10.10.30.4
 
@@ -133,9 +133,9 @@ Itt látható a küllős VNet és a hub VNet lévő virtuális géphez a tracero
 
     Trace complete.
 
-### <a name="path-to-the-branch-vnet"></a>Az ág VNet elérési útja
+### <a name="path-to-the-branch-vnet"></a>Az ág virtuális hálózatának elérési útja
 
-Itt látható a küllős VNet a VNet-ben lévő virtuális géphez a traceroute kimenete.
+Traceroute kimenet a küllővirtuális hálózat egy virtuális gép az ág virtuális hálózat itt látható:
 
     C:\Users\rb>tracert 10.11.30.68
 
@@ -147,11 +147,11 @@ Itt látható a küllős VNet a VNet-ben lévő virtuális géphez a traceroute 
 
     Trace complete.
 
-Ebben a traceroute-ben az első Ugrás a hub VNet VPN-átjárója. A második Ugrás a fiókiroda VNet VPN-átjárója. Az ág VNet VPN-átjárójának IP-címe nincs meghirdetve a hub/küllő VNet belül. A harmadik ugrás az ág VNet található virtuális gép.
+Ebben a traceroute-ban az első ugrás a központi virtuális hálózat VPN-átjárója. A második ugrás a virtuális hálózat ág VPN-átjárója. Az ág virtuális hálózatának VPN-átjárójának IP-címe nem hirdetett a hub/küllővirtuális virtuális hálózaton belül. A harmadik ugrás a virtuális gép az ág virtuális hálózat.
 
-### <a name="path-to-on-premises-location-1"></a>A helyszíni hely elérési útja 1
+### <a name="path-to-on-premises-location-1"></a>A helyszíni helyszín 1-
 
-Itt látható a küllős VNet és a helyszíni helyen található virtuális géphez a traceroute kimenete:
+Traceroute kimenet a küllővirtuális hálózat egy virtuális gép a helyszíni helyen 1 itt látható:
 
     C:\Users\rb>tracert 10.2.30.10
 
@@ -164,11 +164,11 @@ Itt látható a küllős VNet és a helyszíni helyen található virtuális gé
 
     Trace complete.
 
-Ebben a traceroute-ben az első Ugrás a hub VNet ExpressRoute Gateway alagút-végpontja egy MSEE. A második és a harmadik Ugrás a CE-útválasztó és a helyszíni hely 1 hálózati IP-címe. Ezeket az IP-címeket a rendszer nem hirdeti meg a hub/küllő VNet. A negyedik Ugrás a virtuális gép a helyszíni helyen 1.
+Ebben a traceroute,az első ugrás a hub VNet ExpressRoute átjáró-alagút végpont egy MSEE. A második és a harmadik ugrás a CE router és a helyszíni Hely 1 LANPs. Ezek az IP-címek nem hirdetett a hub/küllő virtuális hálózat. A negyedik ugrás a virtuális gép a helyszíni helyen 1.
 
-### <a name="path-to-on-premises-location-2"></a>A helyszíni hely elérési útja 2
+### <a name="path-to-on-premises-location-2"></a>A helyszíni hely 2.
 
-Itt látható a küllős VNet és a helyszíni 2. helyen található virtuális géphez a traceroute kimenete:
+Traceroute kimenet a küllővirtuális hálózat egy virtuális gép a helyszíni 2.
 
 
     C:\Users\rb>tracert 10.1.31.10
@@ -182,11 +182,11 @@ Itt látható a küllős VNet és a helyszíni 2. helyen található virtuális 
 
     Trace complete.
 
-Ebben a traceroute-ben az első Ugrás a hub VNet ExpressRoute Gateway alagút-végpontja egy MSEE. A második és a harmadik Ugrás a CE-útválasztó és a helyszíni 2. hely helyi hálózati IP-címei. Ezeket az IP-címeket a rendszer nem hirdeti meg a hub/küllő virtuális hálózatok. A negyedik Ugrás a helyszíni 2. helyen található virtuális gép.
+Ebben a traceroute,az első ugrás a hub VNet ExpressRoute átjáró-alagút végpont egy MSEE. A második és a harmadik ugrás a CE router és a helyszíni Location 2 LANPs. Ezek az IP-címek nem hirdetett a hub/küllő virtuális hálózatok. A negyedik ugrás a virtuális gép a helyszíni 2.
 
-### <a name="path-to-the-remote-vnet"></a>A távoli VNet elérési útja
+### <a name="path-to-the-remote-vnet"></a>A távoli virtuális hálózat elérési útja
 
-Itt látható a küllős VNet és a távoli VNet lévő virtuális géphez a traceroute kimenete:
+Traceroute kimenet a küllő virtuális hálózat egy virtuális gép a távoli virtuális hálózat itt látható:
 
     C:\Users\rb>tracert 10.17.30.4
 
@@ -198,13 +198,13 @@ Itt látható a küllős VNet és a távoli VNet lévő virtuális géphez a tra
 
     Trace complete.
 
-Ebben a traceroute-ben az első Ugrás a hub VNet ExpressRoute Gateway alagút-végpontja egy MSEE. A második Ugrás a távoli VNet átjárójának IP-címe. A második ugrás IP-tartománya nincs meghirdetve a hub/küllő VNet. A harmadik Ugrás a virtuális gép a távoli VNet.
+Ebben a traceroute,az első ugrás a hub VNet ExpressRoute átjáró-alagút végpont egy MSEE. A második ugrás a távoli virtuális hálózat átjáró IP-címe. A második ugrás IP-tartománya nem hirdetett a hub/küllő virtuális hálózat. A harmadik ugrás a távoli virtuális hálózat virtuális gép.
 
-## <a name="data-path-from-the-branch-vnet"></a>A ág VNet származó adatok elérési útja
+## <a name="data-path-from-the-branch-vnet"></a>Az ág virtuális hálózatának adatelérési útja
 
-### <a name="path-to-the-hub-vnet"></a>A hub VNet elérési útja
+### <a name="path-to-the-hub-vnet"></a>A központi virtuális hálózat elérési útja
 
-Itt jelennek meg az ág VNet és a hub VNet lévő virtuális gépekre vonatkozó traceroute kimenetek:
+Traceroute kimenet az ág virtuális hálózat egy virtuális gép a központi virtuális hálózat itt látható:
 
     C:\Windows\system32>tracert 10.10.30.4
 
@@ -216,11 +216,11 @@ Itt jelennek meg az ág VNet és a hub VNet lévő virtuális gépekre vonatkoz�
 
     Trace complete.
 
-Ebben a traceroute-ben az első Ugrás a ág VNet VPN-átjárója. A második Ugrás a hub VNet VPN-átjárója. A hub VNet VPN-átjárójának IP-címe nincs meghirdetve a távoli VNet. A harmadik Ugrás a hub VNet található virtuális gép.
+Ebben a traceroute az első ugrás a VPN-átjáró az ág virtuális hálózat. A második ugrás a központi virtuális hálózat VPN-átjárója. A központi virtuális hálózat VPN-átjárójának IP-címe nincs meghirdetve a távoli virtuális hálózatban. A harmadik ugrás a virtuális gép a központi virtuális hálózat.
 
-### <a name="path-to-the-spoke-vnet"></a>A küllő VNet elérési útja
+### <a name="path-to-the-spoke-vnet"></a>A küllővirtuális hálózat elérési útja
 
-A rendszer az ág VNet származó traceroute kimenetét a küllős VNet lévő virtuális gépre mutatja:
+Traceroute kimenet az ág virtuális hálózat egy virtuális gép a küllő virtuális hálózat itt látható:
 
     C:\Users\rb>tracert 10.11.30.4
 
@@ -232,11 +232,11 @@ A rendszer az ág VNet származó traceroute kimenetét a küllős VNet lévő v
 
     Trace complete.
 
-Ebben a traceroute-ben az első Ugrás a ág VNet VPN-átjárója. A második Ugrás a hub VNet VPN-átjárója. A hub VNet VPN-átjárójának IP-címe nincs meghirdetve a távoli VNet. A harmadik Ugrás a küllős VNet található virtuális gép.
+Ebben a traceroute az első ugrás a VPN-átjáró az ág virtuális hálózat. A második ugrás a központi virtuális hálózat VPN-átjárója. A központi virtuális hálózat VPN-átjárójának IP-címe nincs meghirdetve a távoli virtuális hálózatban. A harmadik ugrás a küllővirtuális hálózat virtuális gép.
 
-### <a name="path-to-on-premises-location-1"></a>A helyszíni hely elérési útja 1
+### <a name="path-to-on-premises-location-1"></a>A helyszíni helyszín 1-
 
-Itt látható az ág VNet és a helyszíni helyen található virtuális gépre irányuló traceroute kimenete:
+Traceroute kimenet az ág virtuális hálózat egy virtuális gép a helyszíni helyen 1 itt látható:
 
     C:\Users\rb>tracert 10.2.30.10
 
@@ -250,11 +250,11 @@ Itt látható az ág VNet és a helyszíni helyen található virtuális gépre 
 
     Trace complete.
 
-Ebben a traceroute-ben az első Ugrás a ág VNet VPN-átjárója. A második Ugrás a hub VNet VPN-átjárója. A hub VNet VPN-átjárójának IP-címe nincs meghirdetve a távoli VNet. A harmadik Ugrás a VPN-alagút megszakítási pontja az elsődleges CE-útválasztón. A negyedik Ugrás a helyszíni hely 1. belső IP-címe. Ez a helyi hálózati IP-cím nincs meghirdetve a CE-útválasztón kívül. Az ötödik Ugrás a cél virtuális gép a helyszíni helyen 1.
+Ebben a traceroute az első ugrás a VPN-átjáró az ág virtuális hálózat. A második ugrás a központi virtuális hálózat VPN-átjárója. A központi virtuális hálózat VPN-átjárójának IP-címe nincs meghirdetve a távoli virtuális hálózatban. A harmadik ugrás az elsődleges CE-útválasztó VPN-alagút-végpontja. A negyedik ugrás a helyszíni 1. Ezt a LAN IP-címet a CE-útválasztón kívül nem hirdetik. Az ötödik ugrás a cél virtuális gép a helyszíni helyen 1.
 
-### <a name="path-to-on-premises-location-2-and-the-remote-vnet"></a>A helyszíni hely 2 és a távoli VNet elérési útja
+### <a name="path-to-on-premises-location-2-and-the-remote-vnet"></a>A helyszíni 2.
 
-Ahogy a vezérlési sík elemzésében is beszéltünk, a VNet ág nem rendelkezik a helyszíni 2. vagy a hálózati konfiguráción belüli távoli VNet. A következő pingelési eredmények megerősítése: 
+Ahogy azt a vezérlősík elemzésében tárgyaltuk, az ág virtuális hálózata nem rendelkezik láthatósággal sem a helyszíni 2. A következő pingeredmények megerősítik: 
 
     C:\Users\rb>ping 10.1.31.10
 
@@ -278,11 +278,11 @@ Ahogy a vezérlési sík elemzésében is beszéltünk, a VNet ág nem rendelkez
     Ping statistics for 10.17.30.4:
         Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
 
-## <a name="data-path-from-on-premises-location-1"></a>A helyszíni helyről származó adatok elérési útja 1
+## <a name="data-path-from-on-premises-location-1"></a>A helyszíni 1.
 
-### <a name="path-to-the-hub-vnet"></a>A hub VNet elérési útja
+### <a name="path-to-the-hub-vnet"></a>A központi virtuális hálózat elérési útja
 
-Itt látható a helyszíni hely 1 és a központi VNet lévő virtuális gép számára a traceroute kimenete:
+Traceroute kimenet a helyszíni hely 1 egy virtuális gép a központi virtuális hálózat itt látható:
 
     C:\Users\rb>tracert 10.10.30.4
 
@@ -296,15 +296,15 @@ Itt látható a helyszíni hely 1 és a központi VNet lévő virtuális gép sz
 
     Trace complete.
 
-Ebben a traceroute-ben az első két Ugrás a helyszíni hálózat részét képezi. A harmadik ugrás az elsődleges MSEE felület, amely a CE-útválasztóra néz. A negyedik Ugrás a hub-VNet ExpressRoute-átjárója. A hub VNet ExpressRoute-átjárójának IP-tartománya nem jelenik meg a helyszíni hálózatban. Az ötödik Ugrás a cél virtuális gép.
+Ebben a nyomkövetési útvonalon az első két ugrás a helyszíni hálózat része. A harmadik ugrás az elsődleges MSEE interfész, amely a CE router felé néz. A negyedik ugrás a hub virtuális hálózat ExpressRoute-átjárója. A központi virtuális hálózat ExpressRoute-átjárójának IP-tartománya nincs meghirdetve a helyszíni hálózaton. Az ötödik ugrás a cél virtuális gép.
 
-Network Watcher csak Azure-központú nézetet biztosít. Helyszíni szempontból az Azure Network Performance Monitort használjuk. A Network Performance Monitor olyan ügynököket biztosít, amelyeket az Azure-on kívüli hálózatokon is telepíthet az adatelérési utak elemzése céljából.
+A Network Watcher csak Azure-központú nézetet biztosít. A helyszíni perspektíva, az Azure Network Performance Monitor. A Network Performance Monitor olyan ügynököket biztosít, amelyeket az Azure-on kívüli hálózatok kiszolgálóira telepíthet az adatútvonal-elemzéshez.
 
-Az alábbi ábra a helyszíni hely 1 virtuális géphez való kapcsolódásának topológiai nézetét mutatja a hub VNet a ExpressRoute keresztül:
+Az alábbi ábra a helyszíni 1.
 
 ![4][4]
 
-Ahogy korábban már említettük, a teszt telepítője egy helyek közötti VPN-t használ a ExpressRoute a helyszíni hely 1 és a hub VNet közötti kapcsolatokhoz. A biztonsági mentési adatelérési út teszteléséhez hozzon összefüggésbe egy ExpressRoute a helyszíni hely 1 elsődleges CE útválasztója és a megfelelő MSEE között. Ha ExpressRoute-kapcsolati hibát szeretne kiváltani, állítsa le a MSEE a CE-felületet:
+Ahogy azt korábban már tárgyaltuk, a teszttelepítő egy helyek közötti VPN-t használ az ExpressRoute biztonsági másolataként a helyszíni 1. A biztonsági mentési adatok elérési útjának teszteléséhez váltson ki egy ExpressRoute-kapcsolathibát a helyszíni 1. Az ExpressRoute-kapcsolat meghibásodásának kiváltásához állítsa le az MSEE felé mutató CE-felületet:
 
     C:\Users\rb>tracert 10.10.30.4
 
@@ -316,15 +316,15 @@ Ahogy korábban már említettük, a teszt telepítője egy helyek közötti VPN
 
     Trace complete.
 
-Az alábbi ábra a helyszíni hely 1 virtuálisgép-kapcsolatának topológiai nézetét mutatja a központi VNet a virtuális géphez a helyek közötti VPN-kapcsolaton keresztül, amikor a ExpressRoute kapcsolat leáll:
+Az alábbi ábra a helyszíni 1.
 
 ![5][5]
 
-### <a name="path-to-the-spoke-vnet"></a>A küllő VNet elérési útja
+### <a name="path-to-the-spoke-vnet"></a>A küllővirtuális hálózat elérési útja
 
-Itt látható a helyszíni hely 1 és egy virtuális gép között a traceroute kimenet a küllős VNet:
+Traceroute kimenet a helyszíni hely 1 egy virtuális gép a küllő virtuális hálózat itt látható:
 
-Térjünk vissza a ExpressRoute elsődleges kapcsolata, hogy az adatelérési út elemzése a küllős VNet felé:
+Hozzuk vissza az ExpressRoute elsődleges kapcsolatot, hogy az adatelérési út elemzése felé küllővirtuális hálózat:
 
     C:\Users\rb>tracert 10.11.30.4
 
@@ -338,11 +338,11 @@ Térjünk vissza a ExpressRoute elsődleges kapcsolata, hogy az adatelérési ú
 
     Trace complete.
 
-Hozza létre az elsődleges ExpressRoute 1 kapcsolattal az adatútvonal-elemzés hátralévő részében.
+Az elsődleges ExpressRoute 1-kapcsolat beállítása az adatelérési út további részéhez.
 
-### <a name="path-to-the-branch-vnet"></a>Az ág VNet elérési útja
+### <a name="path-to-the-branch-vnet"></a>Az ág virtuális hálózatának elérési útja
 
-Itt látható a helyszíni hely 1 és egy virtuális gép között a traceroute kimenete az alábbi VNet:
+Traceroute kimenet a helyszíni hely 1 egy virtuális gép az ág virtuális hálózat itt látható:
 
     C:\Users\rb>tracert 10.11.30.68
 
@@ -354,9 +354,9 @@ Itt látható a helyszíni hely 1 és egy virtuális gép között a traceroute 
 
     Trace complete.
 
-### <a name="path-to-on-premises-location-2"></a>A helyszíni hely elérési útja 2
+### <a name="path-to-on-premises-location-2"></a>A helyszíni hely 2.
 
-Ahogy beszélünk a [vezérlési sík elemzésében][Control-Analysis], a helyszíni 1. helynek nincs láthatósága a helyszíni 2. helyen a hálózati konfigurációban. A következő pingelési eredmények megerősítése: 
+Ahogy azt a [vezérlősík elemzésében][Control-Analysis]tárgyaljuk, az 1. A következő pingeredmények megerősítik: 
 
     C:\Users\rb>ping 10.1.31.10
     
@@ -369,9 +369,9 @@ Ahogy beszélünk a [vezérlési sík elemzésében][Control-Analysis], a helysz
     Ping statistics for 10.1.31.10:
         Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
 
-### <a name="path-to-the-remote-vnet"></a>A távoli VNet elérési útja
+### <a name="path-to-the-remote-vnet"></a>A távoli virtuális hálózat elérési útja
 
-Itt látható a helyszíni hely 1 és a távoli VNet lévő virtuális gép között a traceroute kimenete:
+Traceroute kimenet a helyszíni hely 1 egy virtuális gép a távoli virtuális hálózat itt látható:
 
     C:\Users\rb>tracert 10.17.30.4
 
@@ -385,11 +385,11 @@ Itt látható a helyszíni hely 1 és a távoli VNet lévő virtuális gép köz
 
     Trace complete.
 
-## <a name="data-path-from-on-premises-location-2"></a>Adatútvonal a helyszíni helyről 2
+## <a name="data-path-from-on-premises-location-2"></a>A helyszíni 2.
 
-### <a name="path-to-the-hub-vnet"></a>A hub VNet elérési útja
+### <a name="path-to-the-hub-vnet"></a>A központi virtuális hálózat elérési útja
 
-Itt látható a (z) helyszíni 2. hely és a hub VNet lévő virtuális gép között a traceroute kimenete:
+Traceroute kimenet a helyszíni hely 2 egy virtuális gép a központi virtuális hálózat itt látható:
 
     C:\Windows\system32>tracert 10.10.30.4
 
@@ -403,9 +403,9 @@ Itt látható a (z) helyszíni 2. hely és a hub VNet lévő virtuális gép kö
 
     Trace complete.
 
-### <a name="path-to-the-spoke-vnet"></a>A küllő VNet elérési útja
+### <a name="path-to-the-spoke-vnet"></a>A küllővirtuális hálózat elérési útja
 
-A következő helyen található traceroute-kimenet a helyi helyről a 2. a küllős VNet lévő virtuális gépre mutat:
+Traceroute kimenet a helyszíni hely 2 egy virtuális gép a küllő virtuális hálózat itt látható:
 
     C:\Windows\system32>tracert 10.11.30.4
 
@@ -418,15 +418,15 @@ A következő helyen található traceroute-kimenet a helyi helyről a 2. a kül
 
     Trace complete.
 
-### <a name="path-to-the-branch-vnet-on-premises-location-1-and-the-remote-vnet"></a>Az ág VNet, a helyszíni hely 1 és a távoli VNet elérési útja
+### <a name="path-to-the-branch-vnet-on-premises-location-1-and-the-remote-vnet"></a>Az ág virtuális hálózatának elérési útja, a helyszíni 1.
 
-Ahogy beszélünk a [vezérlési sík elemzésében][Control-Analysis], a helyszíni 1. helynek nincs láthatósága az ág VNet, a helyszíni helyre 1 vagy a hálózati konfiguráción belüli távoli VNet. 
+Ahogy azt a [vezérlősík elemzés,][Control-Analysis]a helyszíni hely 1 nincs láthatóaz ág virtuális hálózat, a helyszíni hely 1, vagy a távoli virtuális hálózat a hálózati konfiguráció. 
 
-## <a name="data-path-from-the-remote-vnet"></a>A távoli VNet származó adatok elérési útja
+## <a name="data-path-from-the-remote-vnet"></a>Adatelérési út a távoli virtuális hálózatról
 
-### <a name="path-to-the-hub-vnet"></a>A hub VNet elérési útja
+### <a name="path-to-the-hub-vnet"></a>A központi virtuális hálózat elérési útja
 
-Itt látható a távoli VNet származó traceroute kimenet a hub VNet lévő virtuális gépre:
+Traceroute kimenet a távoli virtuális hálózat egy virtuális gép a központi virtuális hálózat itt látható:
 
     C:\Users\rb>tracert 10.10.30.4
 
@@ -438,9 +438,9 @@ Itt látható a távoli VNet származó traceroute kimenet a hub VNet lévő vir
 
     Trace complete.
 
-### <a name="path-to-the-spoke-vnet"></a>A küllő VNet elérési útja
+### <a name="path-to-the-spoke-vnet"></a>A küllővirtuális hálózat elérési útja
 
-Itt látható a távoli VNet származó traceroute kimenet a küllő VNet lévő virtuális gépre:
+Traceroute kimenet a távoli virtuális hálózat egy virtuális gép a küllő virtuális hálózat itt látható:
 
     C:\Users\rb>tracert 10.11.30.4
 
@@ -452,13 +452,13 @@ Itt látható a távoli VNet származó traceroute kimenet a küllő VNet lévő
 
     Trace complete.
 
-### <a name="path-to-the-branch-vnet-and-on-premises-location-2"></a>A fiókirodai VNet és a helyszíni hely elérési útja 2
+### <a name="path-to-the-branch-vnet-and-on-premises-location-2"></a>Az ág virtuális hálózatának és a helyszíni 2-es helynek az elérési útja
 
-Ahogy a [vezérlési sík elemzésében][Control-Analysis]tárgyalunk, a távoli VNet nem látja el az ág VNet vagy a helyszíni 2. helyet a hálózati konfigurációban. 
+Ahogy azt a [vezérlősík elemzés,][Control-Analysis]a távoli virtuális hálózat nem rendelkezik láthatósággal, hogy az ág virtuális hálózat vagy a helyszíni hely 2 a hálózati konfiguráción ként. 
 
-### <a name="path-to-on-premises-location-1"></a>A helyszíni hely elérési útja 1
+### <a name="path-to-on-premises-location-1"></a>A helyszíni helyszín 1-
 
-Itt látható a távoli VNet származó traceroute kimenet a helyszíni helyen 1 virtuális gépre:
+Traceroute kimenet a távoli virtuális hálózat egy virtuális gép a helyszíni helyen 1 itt látható:
 
     C:\Users\rb>tracert 10.2.30.10
 
@@ -474,47 +474,47 @@ Itt látható a távoli VNet származó traceroute kimenet a helyszíni helyen 1
 
 ## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>ExpressRoute és helyek közötti VPN-kapcsolat párhuzamosan
 
-###  <a name="site-to-site-vpn-over-expressroute"></a>Helyek közötti VPN a ExpressRoute-en keresztül
+###  <a name="site-to-site-vpn-over-expressroute"></a>Helyek közötti VPN az ExpressRoute-on keresztül
 
-A helyek közötti VPN-t konfigurálhatja úgy, hogy a Microsoft ExpressRoute a saját helyszíni hálózata és az Azure-virtuális hálózatok közötti személyes információcserére használja. Ezzel a konfigurációval az adatok titkosságot, hitelességet és integritást cserélhetnek. Az adatcsere is a visszajátszás elleni védelem. Ha további információt szeretne arról, hogyan konfigurálhat helyek közötti IPsec VPN-t bújtatási módban a Microsoft ExpressRoute használatával, tekintse meg a [helyek közötti VPN-t a ExpressRoute Microsoft-partneri kapcsolaton keresztül][S2S-Over-ExR]. 
+A helyek közötti VPN konfigurálható az ExpressRoute Microsoft társviszony-létesítésével a helyszíni hálózat és az Azure virtuális hálózatok közötti személyes adatcseréhez. Ezzel a konfigurációval bizalmasan, hitelesen és sértetlenül cserélhet adatokat. Az adatcsere is anti-visszajátszás. A helyek közötti IPsec VPN bújtatási módban az ExpressRoute Microsoft társviszony-létesítésével történő konfigurálásáról további információt a Helyek közötti [VPN expressroute-i Microsoft-társviszony-létesítés című][S2S-Over-ExR]témakörben talál. 
 
-A helyek közötti VPN Microsoft-társítást használó konfigurálásának elsődleges korlátozása az átviteli sebesség. Az IPsec-alagút átviteli sebességét a VPN Gateway kapacitása korlátozza. A VPN-átjáró átviteli sebessége kisebb, mint a ExpressRoute átviteli sebessége. Ebben az esetben az IPsec-alagúton keresztül, a biztonságos forgalomhoz és a privát és a többi forgalomhoz való használat révén optimalizálhatja a ExpressRoute sávszélesség-kihasználtságot.
+A Microsoft társviszony-létesítést használó helyek közötti VPN konfigurálásának elsődleges korlátozása az átviteli érték. Az IPsec-alagúton keresztüli átviteli kapacitást a VPN-átjáró kapacitása korlátozza. A VPN-átjáró átviteli-ventilátor a ExpressRoute átviteli. Ebben a forgatókönyvben az IPsec-alagút használata a rendkívül biztonságos forgalom és a privát társviszony-létesítés használata az összes többi forgalom segít optimalizálni az ExpressRoute sávszélesség-kihasználtsága.
 
-### <a name="site-to-site-vpn-as-a-secure-failover-path-for-expressroute"></a>Helyek közötti VPN biztonságos feladatátvételi útvonalként a ExpressRoute
+### <a name="site-to-site-vpn-as-a-secure-failover-path-for-expressroute"></a>Helyek közötti VPN az ExpressRoute biztonságos feladatátvételi útvonalaként
 
-A ExpressRoute redundáns áramköri párokként szolgál a magas rendelkezésre állás biztosításához. Különböző Azure-régiókban is konfigurálhatja a Geo-redundáns ExpressRoute-kapcsolatot. Továbbá, ahogyan azt a tesztelési beállítás is mutatja, egy Azure-régión belül egy helyek közötti VPN használatával létrehozhat egy feladatátvételi útvonalat a ExpressRoute-kapcsolathoz. Ha ugyanazokat az előtagokat hirdeti meg mindkét ExpressRoute és egy helyek közötti VPN-en, az Azure rangsorolja a ExpressRoute-t. Ha el szeretné kerülni a ExpressRoute és a két hálózat közötti pont-pont típusú VPN közötti aszimmetrikus útválasztást, a helyszíni hálózati konfigurációnak a ExpressRoute-kapcsolat használatával is be kell állnia, mielőtt a helyek közötti VPN-kapcsolatot használja.
+ExpressRoute szolgál redundáns áramkör pár magas rendelkezésre állás biztosítása érdekében. Georedundáns ExpressRoute-kapcsolatot konfigurálhat különböző Azure-régiókban. Amint azt a tesztbeállítás is mutatja, egy Azure-régión belül, a helyek közötti VPN segítségével hozzon létre egy feladatátvételi útvonalat az ExpressRoute-kapcsolathoz. Ha ugyanazokat az előtagokat az ExpressRoute és a helyek közötti VPN-en keresztül is meghirdeti, az Azure prioritásként kezeli az ExpressRoute-ot. Az ExpressRoute és a helyek közötti VPN közötti aszimmetrikus útválasztás elkerülése érdekében a helyszíni hálózati konfigurációnak az ExpressRoute-kapcsolat használatával is viszonoznia kell, mielőtt a helyek közötti VPN-kapcsolatot használná.
 
-A ExpressRoute és helyek közötti VPN-hez való egyidejű kapcsolatok konfigurálásával kapcsolatos további információkért lásd: [ExpressRoute és helyek közötti együttélés][ExR-S2S-CoEx].
+Az ExpressRoute és a helyek közötti VPN-kapcsolatok együtt létező kapcsolatainak konfigurálásáról az ExpressRoute és a helyek közötti [együttélés][ExR-S2S-CoEx]című témakörben talál további információt.
 
-## <a name="extend-back-end-connectivity-to-spoke-vnets-and-branch-locations"></a>Háttérbeli kapcsolat kiterjesztése küllős virtuális hálózatok és fiókirodák számára
+## <a name="extend-back-end-connectivity-to-spoke-vnets-and-branch-locations"></a>Háttérkapcsolat kiterjesztése a küllővirtuális hálózatokra és az elágazási helyekre
 
-### <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>Küllős VNet-kapcsolat a VNet-társítás használatával
+### <a name="spoke-vnet-connectivity-by-using-vnet-peering"></a>Küllős virtuális kapcsolat virtuális hálózattal a virtuális hálózatok társviszony-létesítésével
 
-A hub és a küllős VNet architektúra széles körben használatos. A hub egy VNet az Azure-ban, amely központi kapcsolódási pontként szolgál a küllős virtuális hálózatok és a helyszíni hálózat között. A küllők a virtuális hálózatok, és a munkaterhelések elkülönítésére használhatók. A forgalom a helyszíni adatközpont és a hub között egy ExpressRoute vagy VPN-kapcsolaton keresztül áramlik. További információ az architektúráról: [sugaras hálózati topológia implementálása az Azure-ban][Hub-n-Spoke].
+Hub és küllős virtuális hálózat architektúra széles körben használják. A hub egy virtuális hálózat az Azure-ban, amely a küllővirtuális hálózatok és a helyszíni hálózat közötti kapcsolat központi pontjaként működik. A küllők olyan virtuális hálózatok, amelyek a hubkal egyenrangúak, és amelyek segítségével elkülönítheti a számítási feladatokat. A helyszíni adatközpont és a hub közötti forgalom expresszroute- vagy VPN-kapcsolaton keresztül áramlik. Az architektúráról további információt a [Küllős hálózati topológia megvalósítása az Azure-ban című témakörben talál.][Hub-n-Spoke]
 
-Egy adott régión belüli VNet-társítás esetén a küllő virtuális hálózatok az VNet-átjárókat (VPN-és ExpressRoute-átjárók) is használhatják a távoli hálózatokkal való kommunikációhoz.
+A virtuális hálózatok egy régión belüli társviszony-létesítés, küllővirtuális hálózatok segítségével hub virtuális hálózatok (VPN és ExpressRoute átjárók) a távoli hálózatokkal való kommunikációhoz.
 
-### <a name="branch-vnet-connectivity-by-using-site-to-site-vpn"></a>Ág VNet-kapcsolat a helyek közötti VPN használatával
+### <a name="branch-vnet-connectivity-by-using-site-to-site-vpn"></a>Branch VNet-kapcsolat helyek közötti VPN-kapcsolat használatával
 
-Előfordulhat, hogy a fiókirodák virtuális hálózatok, amelyek különböző régiókban vannak, és a helyszíni hálózatok egy hub-VNet keresztül kommunikálnak egymással. A konfiguráció natív Azure-megoldása a helyek közötti VPN-kapcsolat VPN használatával. Egy másik lehetőség, hogy hálózati virtuális berendezést (NVA) használ az útválasztáshoz a központban.
+Előfordulhat, hogy a különböző régiókban található és a helyszíni hálózatokban lévő fiókvirtuális hálózatokat egy hub virtuális hálózaton keresztül szeretné kommunikálni egymással. A konfiguráció natív Azure-megoldása a helyek közötti VPN-kapcsolat VPN használatával. Egy másik lehetőség egy hálózati virtuális berendezés (NVA) használata a hubban történő útválasztáshoz.
 
-További információ: [Mi a VPN Gateway?][VPN] és [telepítsen egy magasan elérhető NVA][Deploy-NVA].
+További információ: [Mi a VPN-átjáró?][VPN] [Deploy a highly available NVA][Deploy-NVA]
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse meg a [ExpressRoute kapcsolatos gyakori kérdéseket][ExR-FAQ] :
--   Megtudhatja, hogy hány ExpressRoute-áramkört tud csatlakozni egy ExpressRoute-átjáróhoz.
--   Megtudhatja, hány ExpressRoute-átjárót tud csatlakozni egy ExpressRoute-áramkörhöz.
--   A ExpressRoute egyéb méretezési korlátainak megismerése.
+Lásd az [ExpressRoute gyIK-et:][ExR-FAQ]
+-   Ismerje meg, hogy hány ExpressRoute-kapcsolatcsoport csatlakozhat egy ExpressRoute-átjáróhoz.
+-   Ismerje meg, hogy hány ExpressRoute-átjárócsatlakozhat egy ExpressRoute-kapcsolathoz.
+-   További információ az ExpressRoute egyéb méretezési korlátairól.
 
 
 <!--Image References-->
-[1]: ./media/backend-interoperability/HubVM-SpkVM.jpg "Network Watcher hub-VNet kapcsolatának megtekintése küllős VNet"
-[2]: ./media/backend-interoperability/HubVM-BranchVM.jpg "Network Watcher hub-VNet és ág-VNet közötti kapcsolat megtekintése"
-[3]: ./media/backend-interoperability/HubVM-BranchVM-Grid.jpg "A hub-VNet és egy ág VNet közötti kapcsolat hálózati nézetének Network Watcher"
-[4]: ./media/backend-interoperability/Loc1-HubVM.jpg "Network Performance Monitor az 1. helyen található virtuális gép és a hub VNet közötti kapcsolat nézetét az 1. ExpressRoute keresztül"
-[5]: ./media/backend-interoperability/Loc1-HubVM-S2S.jpg "Network Performance Monitor az 1. helyen található virtuális gép és a hub VNet közötti kapcsolat nézetét a helyek közötti VPN-en keresztül"
+[1]: ./media/backend-interoperability/HubVM-SpkVM.jpg "A hálózati figyelő nézete a hub virtuális hálózatáról a küllővirtuális hálózattal való kapcsolatról"
+[2]: ./media/backend-interoperability/HubVM-BranchVM.jpg "A hálózati figyelő nézete a hub virtuális hálózatáról egy fiókvirtuális hálózatra"
+[3]: ./media/backend-interoperability/HubVM-BranchVM-Grid.jpg "A hálózati figyelő rácsnézete a hub virtuális hálózatáról egy fiókvirtuális hálózatra való kapcsolatról"
+[4]: ./media/backend-interoperability/Loc1-HubVM.jpg "Az 1.virtuális gép helye és a hub virtuális hálózata közötti kapcsolat hálózati teljesítményfigyelő nézete az ExpressRoute 1-en keresztül"
+[5]: ./media/backend-interoperability/Loc1-HubVM-S2S.jpg "Az 1. hely virtuális gépéről a hub virtuális hálózatára irányuló kapcsolat hálózati teljesítményfigyelő nézete egy helyek közötti VPN-en keresztül"
 
 <!--Link References-->
 [Setup]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-preface

@@ -1,7 +1,7 @@
 ---
-title: Folyamatos átviteli végpontok (forrás)
+title: Végpontok streamelése (origin)
 titleSuffix: Azure Media Services
-description: Ismerje meg az adatfolyam-végpontokat (forrás), a dinamikus csomagolást és a streaming szolgáltatást, amely közvetlenül az ügyfél vagy egy Content Delivery Network (CDN) számára biztosít tartalmat.
+description: Ismerje meg a Streamelési végpontokat (Origin), egy dinamikus csomagolási és streamelési szolgáltatást, amely közvetlenül egy ügyféllejátszó alkalmazásnak vagy egy tartalomkézbesítési hálózatnak (CDN) szolgáltat tartalmat.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,154 +12,160 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: c71643adf3b34954ea5ce020351559abbfc60fab
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.openlocfilehash: 1a2a370ac92ea3edf925d97af6f5e721c79d0d2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79298937"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79529696"
 ---
-# <a name="streaming-endpoints-origin-in-azure-media-services"></a>Streaming-végpontok (forrás) Azure Media Services
+# <a name="streaming-endpoints-origin-in-azure-media-services"></a>Végpontok (Origin) streamelése az Azure Media Servicesszolgáltatásban
 
-Microsoft Azure Media Services a [folyamatos átviteli végpontok](https://docs.microsoft.com/rest/api/media/streamingendpoints) egy dinamikus (igény szerinti) csomagolást és forrást jelentenek, amely az élő és az igény szerinti tartalmat közvetlenül egy ügyfél-alkalmazáshoz irányítja, amely a közös Streaming Media protokollok (HLS vagy Dash) egyikét használja. Emellett az adatfolyam- **végpont** dinamikus (igény szerinti) titkosítást biztosít az iparági vezető DRMs számára.
+A Microsoft Azure Media Services szolgáltatásban a [streamelési végpont](https://docs.microsoft.com/rest/api/media/streamingendpoints) egy dinamikus (just-in-time) csomagolási és származási szolgáltatást jelent, amely az élő és az igény szerinti tartalmat közvetlenül az ügyféllejátszó alkalmazásnak juttatja el a közös streamelési médiaprotokollok (HLS vagy DASH) egyikével. Emellett a **streamelési végpont** dinamikus (just-in-time) titkosítást biztosít az iparágvezető DRM-ek számára. 
 
-Media Services fiók létrehozásakor a rendszer egy **alapértelmezett** folyamatos átviteli végpontot hoz létre egy leállított állapotban. Az **alapértelmezett** folyamatos átviteli végpont nem törölhető. A fiók alatt több folyamatos átviteli végpont is létrehozható (lásd a [kvótákat és a korlátozásokat](limits-quotas-constraints.md)).
+Amikor létrehoz egy Media Services-fiókot, **egy alapértelmezett** streamelési végpont jön létre az Ön számára leállított állapotban. Az **alapértelmezett** streamelési végpont nem törölhető. További streamelési végpontok hozhatók létre a fiók alatt [(lásd: Kvóták és korlátozások).](limits-quotas-constraints.md)
 
 > [!NOTE]
-> A streaming-videók elindításához el kell indítania azt a **folyamatos átviteli végpontot** , amelyről továbbítani szeretné a videót.
+> A videók streamelésének elindításához el kell indítania azt a **streamelési végpontot,** amelyből a videót streamelni szeretné.
 >
-> Csak akkor számítunk fel díjat, ha a folyamatos átviteli végpont futó állapotban van.
+> Csak akkor kell fizetnie, ha a streamelési végpont futó állapotban van.
+
+Győződjön meg róla, hogy a [dinamikus csomagolás](dynamic-packaging-overview.md) témakörét is áttekinti. 
 
 ## <a name="naming-convention"></a>Elnevezési konvenció
 
-A folyamatos átviteli URL-cím állomásneve a következő: `{servicename}-{accountname}-{regionname}.streaming.media.azure.net`, ahol `servicename` = a folyamatos átviteli végpont neve vagy az élő esemény neve.
+A streamelési URL-cím `{servicename}-{accountname}-{regionname}.streaming.media.azure.net`állomásnév-formátuma: , ahol `servicename` = a streamelési végpont vagy az élő esemény neve.
 
-Az alapértelmezett folyamatos átviteli végpont használatakor `servicename` kimarad, így az URL-cím: `{accountname}-{regionname}.streaming.azure.net`.
+Az alapértelmezett streamelési `servicename` végpont használatakor a `{accountname}-{regionname}.streaming.azure.net`program kihagyja az URL-címet: .
 
 ### <a name="limitations"></a>Korlátozások
 
-* Az adatfolyam-végpont neve legfeljebb 24 karakterből állhat.
-* A névnek ezt a [regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) -mintát kell követnie: `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`.
+* A streamelési végpont neve maximális értéke 24 karakter.
+* A névnek ezt a `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`regex mintát kell [követnie:](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) .
 
 ## <a name="types"></a>Típusok
 
-Kétféle **adatfolyam-végpont** létezik: **standard** (előzetes verzió) és **prémium**. A típust a streaming-végpont számára lefoglalt méretezési egységek (`scaleUnits`) száma határozza meg.
+Két **streamelési végponttípus** létezik: **Normál** (előzetes verzió) és **Prémium**. A típust a streamelési`scaleUnits`végponthoz lefoglalni kívánt méretezési egységek ( ) száma határozza meg.
 
 A táblázat a típusokat írja le:
 
 |Típus|Skálázási egységek|Leírás|
 |--------|--------|--------|  
-|**Standard**|0|Az alapértelmezett folyamatos átviteli végpont egy **standard** típus – a `scaleUnits`módosításával módosíthatja a prémium típust.|
-|**Prémium**|>0|**Prémium** szintű A streaming-végpontok speciális számítási feladatokhoz és dedikált és skálázható sávszélesség-kapacitás biztosításához alkalmasak. A **prémium** típusra a `scaleUnits` (folyamatos átviteli egységek) beállításával léphet be. `scaleUnits` dedikált kimenő kapacitást biztosít, amely 200 Mbps-os növekményekben vásárolható meg. A **prémium** típus használata esetén minden engedélyezett egység további sávszélesség-kapacitást biztosít az alkalmazás számára. |
+|**Standard**|0|Az alapértelmezett streamelési végpont **egy standard** típusú – a beállításával prémium típusúra `scaleUnits`módosítható.|
+|**Prémium**|>0|**Prémium** A streamelési végpontok speciális számítási feladatokhoz és dedikált és méretezhető sávszélesség-kapacitást biztosítanak. **Prémium** típusúra lép (streamelési `scaleUnits` egységek) módosításával. `scaleUnits`200 Mbps-os lépésekben megvásárolható dedikált kimenő kapacitást biztosít. A **Prémium** típus használataesetén minden engedélyezett egység további sávszélesség-kapacitást biztosít az alkalmazás számára. |
 
 > [!NOTE]
-> Azon ügyfelek számára, akik nagy internetes célközönségeknek szánt tartalmat szeretnének kézbesíteni, javasoljuk, hogy engedélyezze a CDN használatát a streaming végponton.
+> Azoknak az ügyfeleknek, akik nagy internetes közönségnek szeretnének tartalmat biztosítani, javasoljuk, hogy engedélyezze a CDN-t a streamelési végponton.
 
-SLA-információ: [díjszabás és SLA](https://azure.microsoft.com/pricing/details/media-services/).
+Az SLA-val kapcsolatos információkat lásd: [Árképzés és SLA.](https://azure.microsoft.com/pricing/details/media-services/)
 
 ## <a name="comparing-streaming-types"></a>Adatfolyam-típusok összehasonlítása
 
 Szolgáltatás|Standard|Prémium
 ---|---|---
-Teljesítmény |Akár 600 Mbps, és a CDN használata esetén sokkal nagyobb hatékonyságot biztosít.|200 MB/s átviteli egység (SU). Sokkal nagyobb hatékonyságot biztosíthat a CDN használatakor.
-Tartalomkézbesítési hálózat (CDN)|Azure CDN, harmadik féltől származó CDN vagy nincs CDN.|Azure CDN, harmadik féltől származó CDN vagy nincs CDN.
-A számlázás arányosan történik| Naponta|Naponta
+Teljesítmény |Akár 600 Mbps, és sokkal nagyobb hatékony átviteli sebesség, ha a CDN-t használja.|200 Mbps streamelési egységenként (SU). CdN-használat esetén sokkal nagyobb hatékony átviteli hatállyal rendelkezhet.
+Tartalomkézbesítési hálózat (CDN)|Azure CDN, külső CDN vagy nincs CDN.|Azure CDN, külső CDN vagy nincs CDN.
+A számlázás arányosan történik| Napi|Napi
 Dinamikus titkosítás|Igen|Igen
 Dinamikus csomagolás|Igen|Igen
-Beosztás|Automatikus méretezés a célként megadott átviteli sebességgel.|További SUs
-IP-szűrés/G20/egyéni gazdagép <sup>1</sup>|Igen|Igen
+Méretezés|Az automatikus skálázás a megcélzott átviteli ig.|További SUs
+IP-szűrés/G20/Egyéni állomás <sup>1</sup>|Igen|Igen
 Progresszív letöltés|Igen|Igen
-Ajánlott használat |A folyamatos átviteli forgatókönyvek túlnyomó többségét ajánljuk.|Professzionális használat.
+Ajánlott használat |A streamelési forgatókönyvek túlnyomó többségéhez ajánlott.|Professzionális használat.
 
-<sup>1</sup> csak akkor használható közvetlenül a folyamatos átviteli végponton, ha a CDN nincs engedélyezve a végponton.<br/>
+<sup>1</sup> Csak közvetlenül a streamelési végponton használható, ha a CDN nincs engedélyezve a végponton.<br/>
 
-## <a name="streaming-endpoint-properties"></a>Adatfolyam-végpont tulajdonságai
+## <a name="streaming-endpoint-properties"></a>Végpont-tulajdonságok streamelése
 
-Ez a szakasz részletesen ismerteti a folyamatos átviteli végpontok tulajdonságait. Az új adatfolyam-végpontok és az összes tulajdonság leírásának ismertetését példákat a [streaming Endpoint (adatfolyam-végpont](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)) című témakörben talál.
+Ez a szakasz a streamelési végpont tulajdonságainak részleteit tartalmazza. Példák egy új streamelési végpont és az összes tulajdonság leírásának létrehozásáról, lásd: [Végpont streamelése.](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)
 
-- `accessControl`: a következő biztonsági beállítások konfigurálására használható a folyamatos átviteli végponthoz: Akamai aláírási fejléc-hitelesítési kulcsok és IP-címek, amelyek számára engedélyezett a végponthoz való kapcsolódás. Ez a tulajdonság csak akkor állítható be, ha a `cdnEnabled` hamis értékre van állítva.
+- `accessControl`: A következő biztonsági beállítások konfigurálására szolgál ehhez a streamelési végponthoz: Akamai aláírásfejléc-hitelesítési kulcsok és IP-címek, amelyek csatlakozhatnak ehhez a végponthoz. Ez a tulajdonság csak `cdnEnabled` akkor állítható be, ha hamis.
 
-- `cdnEnabled`: azt jelzi, hogy engedélyezve van-e a streaming-végpont Azure CDN integrációja (alapértelmezés szerint le van tiltva). Ha a `cdnEnabled` igaz értékre állítja, a következő konfigurációk le vannak tiltva: `customHostNames` és `accessControl`.
+- `cdnEnabled`: Azt jelzi, hogy az Azure CDN-integráció ehhez a streamelési végponthoz engedélyezve van(alapértelmezés szerint letiltva). Ha `cdnEnabled` értéke igaz, a következő konfigurációk `customHostNames` `accessControl`lesz tiltva: és .
 
-    Nem minden adatközpont támogatja a Azure CDN integrációt. Az alábbi lépéseket követve ellenőrizheti, hogy az adatközpont rendelkezik-e a Azure CDN integrációs szolgáltatással:
+    Nem minden adatközpont támogatja az Azure CDN-integrációt. Annak ellenőrzéséhez, hogy az adatközpont rendelkezik-e az Azure CDN-integrációval, tegye a következő lépéseket:
 
-  - Próbálja meg a `cdnEnabled` igaz értékre állítani.
-  - Annak ellenőrzéséhez, hogy egy `HTTP Error Code 412` (PreconditionFailed) visszaadott eredménye "a streaming Endpoint CdnEnabled tulajdonság nem állítható be igaz értékre, mert a CDN-képesség nem érhető el az aktuális régióban."
+  - Próbálja meg `cdnEnabled` a beállítás az igaz.
+  - Ellenőrizze a visszaadott `HTTP Error Code 412` eredményt egy "A végpont CdnEnabled tulajdonság streamelése cdnEnabled tulajdonsággal" üzenettel rendelkező visszaadott eredmény, mert a CDN-képesség nem érhető el az aktuális régióban."
 
-    Ha ezt a hibaüzenetet kapja, az adatközpont nem támogatja azt. Próbálkozzon egy másik adatközpontgal.
+    Ha ez a hibaüzenet jelenik meg, az adatközpont nem támogatja azt. Próbálkozzon egy másik adatközponttal.
 
-- `cdnProfile`: Ha a `cdnEnabled` értéke TRUE (igaz), `cdnProfile` értékeket is megadhat. `cdnProfile` annak a CDN-profilnak a neve, amelyben a CDN-végpontot létrehozza a rendszer. Megadhat egy meglévő cdnProfile, vagy használhat egy újat. Ha az érték NULL, és a `cdnEnabled` értéke igaz, a rendszer az alapértelmezett "AzureMediaStreamingPlatformCdnProfile" értéket használja. Ha a megadott `cdnProfile` már létezik, a rendszer létrehoz egy végpontot. Ha a profil nem létezik, a rendszer automatikusan létrehoz egy új profilt.
-- `cdnProvider`: Ha a CDN engedélyezve van, `cdnProvider` értékeket is megadhat. `cdnProvider` szabályozza, hogy melyik szolgáltatót fogja használni. Jelenleg három érték támogatott: "StandardVerizon", "PremiumVerizon" és "StandardAkamai". Ha nincs megadva érték, és a `cdnEnabled` értéke igaz, a rendszer a "StandardVerizon" értéket használja (ez az alapértelmezett érték).
-- `crossSiteAccessPolicies`: a különböző ügyfelekhez tartozó helyek közötti hozzáférési házirendek megadására használatos. További információkért lásd: tartományok [közötti házirend fájljának specifikációja](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html) és [egy szolgáltatás elérhetővé tétele a tartomány határain belül](https://msdn.microsoft.com/library/cc197955\(v=vs.95\).aspx). A beállítások csak Smooth Streamingra vonatkoznak.
-- `customHostNames`: egy adatfolyam-végpont konfigurálására szolgál az egyéni állomásnévre irányuló forgalom fogadásához. Ez a tulajdonság a standard és a prémium szintű streaming végpontok esetében érvényes, és akkor állítható be, ha `cdnEnabled`: false.
+- `cdnProfile`: `cdnEnabled` Ha igaz értékre van `cdnProfile` állítva, értékeket is átadhat. `cdnProfile`annak a CDN-profilnak a neve, amelyen a CDN végpont létrejön. Megadhat egy meglévő cdnProfile-t, vagy használhat egy újat. Ha az érték `cdnEnabled` NULL és igaz, a rendszer az alapértelmezett "AzureMediaStreamingPlatformCdnProfile" értéket használja. Ha a `cdnProfile` megadott már létezik, egy végpont jön létre alatta. Ha a profil nem létezik, automatikusan létrejön egy új profil.
+- `cdnProvider`: Ha a CDN engedélyezve `cdnProvider` van, értékeket is átadhat. `cdnProvider`szabályozza, hogy melyik szolgáltatót fogja használni. Jelenleg három érték támogatott: "StandardVerizon", "PremiumVerizon" és "StandardAkamai". Ha nincs megadva `cdnEnabled` érték, és igaz, a "StandardVerizon" használatos (ez az alapértelmezett érték).
+- `crossSiteAccessPolicies`: A különböző ügyfelek helyközi hozzáférési házirendjeinek megadására szolgál. További információt a [Tartományok közötti házirendfájl-specifikáció](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html) és [A szolgáltatás tartományok közötti határok közötti elérhetővé tétele című témakörben](https://msdn.microsoft.com/library/cc197955\(v=vs.95\).aspx)talál. A beállítások csak a sima streamelésre vonatkoznak.
+- `customHostNames`: A streamelési végpont konfigurálására szolgál az egyéni állomásnévre irányított forgalom fogadására. Ez a tulajdonság a standard és a prémium `cdnEnabled`szintű streamelési végpontokra érvényes, és a következő ben állítható be: false.
 
-    Media Servicesnak meg kell erősítenie a tartománynév tulajdonjogát. Media Services ellenőrzi a tartománynevek tulajdonjogát úgy, hogy `CName` rekordot tartalmaz, amely tartalmazza a Media Services fiók AZONOSÍTÓját a használatban lévő tartományhoz hozzáadandó összetevőként. Ha például az "sports.contoso.com" nevet szeretné használni az adatfolyam-végpont egyéni állomásneveként, úgy kell beállítani `<accountId>.contoso.com` egy rekordját, hogy az a Media Services ellenőrző állomásnév egyikére mutasson. Az ellenőrző állomásnév verifydns áll.\<Mediaservices-DNS-Zone >.
+    A tartománynév tulajdonjogát a Media Servicesnek meg kell erősítenie. A Media Services ellenőrzi a tartománynév `CName` tulajdonjogát azáltal, hogy a használt tartományhoz összetevőként a Media Services-fiók azonosítóját tartalmazó rekordot kell hozzáadni. Például ahhoz, hogy a "sports.contoso.com" a streamelési végpont egyéni `<accountId>.contoso.com` állomásneveként legyen használva, a rekordot úgy kell konfigurálni, hogy a Media Services-hitelesítési állomásnevek egyikére mutasson. Az ellenőrző állomásnév a verifydns-ből áll. \<mediaservices-dns-zone>.
 
-    A következő, a különböző Azure-régiókra vonatkozó ellenőrzési rekordban használandó DNS-zónák a következők:
+    A következőkben a várt DNS-zónákat kell használni a különböző Azure-régiók ellenőrzési rekordjában.
   
   - Észak-Amerika, Európa, Szingapúr, Hongkong KKT, Japán:
 
     - `media.azure.net`
     - `verifydns.media.azure.net`
 
-  - Kína
+  - Kína:
 
     - `mediaservices.chinacloudapi.cn`
     - `verifydns.mediaservices.chinacloudapi.cn`
 
-    Például egy `CName` rekord, amely a "945a4c4e-28ea-45cd-8ccb-a519f6b700ad.contoso.com" kifejezést a "verifydns.media.azure.net" értékre képezi, igazolja, hogy a Media Services azonosító 945a4c4e-28ea-45cd-8ccb-a519f6b700ad rendelkezik a contoso.com tartomány tulajdonjogával, így a contoso.com alatti bármely név az adott fiókhoz tartozó streaming-végpont egyéni állomásneveként használható. A Media Service ID értékének megkereséséhez nyissa meg a [Azure Portal](https://portal.azure.com/) , és válassza ki a Media Service-fiókját. A **fiók azonosítója** megjelenik az oldal jobb felső sarkában.
+    A "945a4c4e-28ea-45cd-8ccb-a519f6b700ad.contoso.com" és "verifydns.media.azure.net" típusú `CName` rekord például azt bizonyítja, hogy a Media Services 945a4c4e-28ea-45cd-8ccb-a519f6b700ad azonosítója a contoso.com tartomány tulajdonosa, így lehetővé teszi, hogy a contoso.com alatt lévő bármely név egyéni állomásnévként használható legyen a fiók alatt lévő streamelési végponthoz. A Media Service-azonosító értékének megkereséséhez nyissa meg az [Azure Portalon,](https://portal.azure.com/) és válassza ki a Media Service-fiókot. A **fiókazonosító** a lap jobb felső részén jelenik meg.
 
-    Ha a `CName` rekord megfelelő ellenőrzése nélkül próbál meg egyéni állomásnevet beállítani, a DNS-válasz meghiúsul, majd egy ideig gyorsítótárazva lesz. Ha megfelelő rekord van érvényben, eltarthat egy ideig, amíg újra nem érvényesítette a gyorsítótárazott választ. Az egyéni tartomány DNS-szolgáltatójától függően néhány perctől akár egy óráig is eltarthat, hogy újraérvényesítse a rekordot.
+    Ha a `CName` rekord megfelelő ellenőrzése nélkül próbál egyéni állomásnevet beállítani, a DNS-válasz sikertelen lesz, majd egy ideig gyorsítótárba kerül. Ha a megfelelő rekord a helyén van, eltarthat egy ideig, amíg a gyorsítótárazott válasz újraérvényesítésre kerül. Az egyéni tartomány DNS-szolgáltatójától függően a rekord újraérvényesítése néhány perctől egy óráig tart.
 
-    Amellett, hogy a `CName`, amely a `verifydns.<mediaservices-dns-zone>``<accountId>.<parent domain>`ra mutat, létre kell hoznia egy másik `CName`, amely az egyéni állomásnevet (például `sports.contoso.com`) leképezi az Media Services streaming-végpont állomásneve (például `amstest-usea.streaming.media.azure.net`).
+    A hozzá `CName` rendelésre `<accountId>.<parent domain>` `verifydns.<mediaservices-dns-zone>`leképezett lehetőségen kívül létre kell hoznia egy másikat, `CName` amely az egyéni állomásnevet (például `sports.contoso.com`) a Media Services streaming végpontjának állomásnevére (például `amstest-usea.streaming.media.azure.net`) rendeli hozzá.
 
     > [!NOTE]
-    > Az ugyanabban az adatközpontban található adatfolyam-végpontok nem oszthatják meg ugyanazt az egyéni állomásnevet.
+    > Az ugyanabban az adatközpontban található streamelési végpontok nem oszthatók meg ugyanazt az egyéni állomásnevet.
 
-    A Media Services jelenleg nem támogatja az SSL-t az egyéni tartományokkal.
+    Jelenleg a Media Services nem támogatja az SSL egyéni tartományok.
 
-- `maxCacheAge` – felülbírálja a streaming végpont által beállított alapértelmezett Max-Age HTTP-gyorsítótár-vezérlő fejlécet az adathordozó-töredékeken és az igény szerinti jegyzékeken. Az érték másodpercben van megadva.
+- `maxCacheAge`- Felülbírálja az alapértelmezett max-age HTTP cache vezérlő fejléc által beállított streamelési végpont a médiatöredékek és az igény szerinti jegyzékek. Az érték másodpercben van beállítva.
 - `resourceState` -
 
-    - Leállítva: egy adatfolyam-végpont kezdeti állapota a létrehozás után
-    - Indítás: váltás a futó állapotra
-    - Futtatás: képes a tartalom továbbítására az ügyfeleknek
-    - Skálázás: a méretezési egységek növelése vagy csökkentése folyamatban van
-    - Leállítás: a leállított állapotba való váltás folyamatban van
-    - Törlés: törlése folyamatban van
+    - Leállítva: a streamelési végpont kezdeti állapota a létrehozás után
+    - Indítás: átvált a futó állapotba
+    - Futás: képes tartalmat streamelni az ügyfeleknek
+    - Méretezés: a méretezési egységek növekednek vagy csökkennek
+    - Megállás: a leállított állapotba vált
+    - Törlés: törlés alatt áll
 
-- `scaleUnits`: olyan dedikált kimenő kapacitást biztosít, amelyet 200 Mbps-os növekményekben lehet megvásárolni. Ha **prémium** típusúra szeretne lépni, módosítsa `scaleUnits`.
+- `scaleUnits`: 200 Mbps-os lépésekben megvásárolható dedikált kimenő kapacitásbiztosítása. Ha **prémium** típusúra szeretne áthelyezni, állítsa be a beállítást. `scaleUnits`
 
-## <a name="why-use-multiple-streaming-endpoints"></a>Miért érdemes több folyamatos átviteli végpontot használni?
+## <a name="why-use-multiple-streaming-endpoints"></a>Miért érdemes több streamelési végpontot használni?
 
-Egyetlen Streaming végpont is képes az élő és igény szerinti videók továbbítására, és a legtöbb ügyfél csak egy folyamatos átviteli végpontot használ. Ez a szakasz példákat tartalmaz arra, hogy miért van szükség több folyamatos átviteli végpont használatára.
+Egyetlen streamelési végpont élő és igény szerinti videókat is streamelhet, és a legtöbb ügyfél csak egy streamelési végpontot használ. Ez a szakasz néhány példát ad arra, hogy miért lehet több streamelési végpontot használnia.
 
-* Minden fenntartott egység 200 Mbps sávszélességet tesz lehetővé. Ha több mint 2 000 Mbps (2 GB/s) sávszélességre van szüksége, a második adatfolyam-végpontot és a terheléselosztást használva további sávszélességet biztosíthat.
+* Minden lefoglalt egység 200 Mbps sávszélességet tesz lehetővé. Ha több mint 2000 Mb/s (2 Gb/s) sávszélességre van szüksége, a második streamelési végpont és a terheléselosztás segítségével további sávszélességet adhat.
 
-    A CDN azonban a legjobb módszer a tartalmak továbbítására, de ha olyan tartalmat hoz létre, amelyet a CDN több mint 2 GB-nál nagyobb mértékben húz, akkor további folyamatos átviteli végpontokat (Origins) adhat hozzá. Ebben az esetben olyan tartalmi URL-címeket kell kiadnia, amelyek kiegyensúlyozottak a két folyamatos átviteli végpont között. Ez a megközelítés nagyobb gyorsítótárazást tesz lehetővé, mint az egyes forrásokra irányuló kérések véletlenszerűen történő küldése (például egy Traffic Manageren keresztül). 
+    Azonban a CDN a legjobb módja annak, hogy a streamelési tartalom horizontális felskálázása, de ha olyan sok tartalmat szállít, hogy a CDN több mint 2 Gbps-ot húz, akkor további streamelési végpontokat (eredeteket) adhat hozzá. Ebben az esetben a két streamelési végpontközött kiegyensúlyozott tartalomURL-eket kell kiosztania. Ez a megközelítés jobb gyorsítótárazást biztosít, mint véletlenszerűen küldeni a kérelmeket az egyes eredeti eredetnek (például egy forgalomkezelőn keresztül). 
     
     > [!TIP]
-    > Általában, ha a CDN több mint 2 GB-ot húz, akkor előfordulhat, hogy valami helytelenül van konfigurálva (például nem származik a forrás elleni védelem).
+    > Általában, ha a CDN húzza több mint 2 Gbps, akkor valami lehet, hogy rosszul van konfigurálva (például nincs eredeti árnyékolás).
     
-* Különböző CDN-szolgáltatók terheléselosztása. Például beállíthatja az alapértelmezett folyamatos átviteli végpontot a Verizon CDN használatára, és létrehoz egy másodikat a Akamai használatához. Ezután vegyen fel némi terheléselosztást a kettő között a többszörös CDN-egyensúly eléréséhez. 
+* Terheléselosztás különböző CDN-szolgáltatók. Beállíthatja például az alapértelmezett streamelési végpontot a Verizon CDN használatára, és létrehozhat egy másodikat az Akamai használatához. Ezután adjon hozzá némi terheléselosztást a kettő között a több CDN kiegyensúlyozás eléréséhez. 
 
-    Az ügyfél azonban gyakran végez terheléselosztást több CDN-szolgáltató között egyetlen forrás használatával.
-* Vegyes tartalom folyamatos átvitele: igény szerint élő és videó. 
+    Az ügyfelek azonban gyakran egyetlen eredet használatával több CDN-szolgáltató között végeznek terheléselosztást.
+* Vegyes tartalom streamelése: Élő és igény szerinti videó. 
 
-    Az élő és igény szerinti tartalmakhoz való hozzáférési minták nagyon különbözőek. Az élő tartalom általában sok igényt kap ugyanarra a tartalomra. Az igény szerinti videó (például hosszú farok archiválási tartalma) esetében a tartalom használata alacsony. Így a gyorsítótárazás nagyon jól működik az élő tartalomon, de nem a hosszú farok tartalmán is.
+    Az élő és az igény szerinti tartalom hozzáférési mintái nagyon eltérőek. Az élő tartalom általában kap egy csomó kereslet az azonos tartalom egyszerre. A videó on-demand tartalom (hosszú farok archív tartalom például) alacsony használat ugyanazon a tartalomon. Így a gyorsítótárazás nagyon jól működik az élő tartalom, de nem olyan jól a hosszú farok tartalmat.
 
-    Vegyünk egy olyan forgatókönyvet, amelyben az ügyfelek elsősorban élő tartalmakat nézik, de csak alkalmanként figyelik az igény szerinti tartalmakat, és ugyanabból a streaming-végpontból lesznek kézbesítve. Az igény szerinti tartalom alacsony használata olyan gyorsítótár-területet foglal magában, amely jobb lesz az élő tartalomhoz. Ebben a forgatókönyvben azt javasoljuk, hogy az élő tartalmat egy streaming végpontból és egy másik adatfolyam-végpontból származó hosszú farok tartalma alapján szolgálja ki. Ez növeli az élő esemény tartalmának teljesítményét.
+    Fontolja meg egy olyan forgatókönyv, amelyben az ügyfelek elsősorban élő tartalmat néznek, de csak alkalmanként nézik az igény szerinti tartalmat, és ugyanabból a streamelési végpontból szolgálják ki. Az igény szerinti tartalom alacsony használata olyan gyorsítótárterületet foglalna el, amelyet jobban lehetne menteni az élő tartalom számára. Ebben a forgatókönyvben azt javasoljuk, hogy az élő tartalom egy streamelési végpont és a hosszú farok tartalom egy másik streamelési végpont. Ez javítja az élő esemény tartalmának teljesítményét.
     
 ## <a name="scaling-streaming-with-cdn"></a>Streamelés méretezése CDN-nel
 
 Lásd az alábbi cikkeket:
 
-- [A CDN áttekintése](../../cdn/cdn-overview.md)
-- [Streaming skálázás a CDN-vel](scale-streaming-cdn.md)
+- [CDN – áttekintés](../../cdn/cdn-overview.md)
+- [Streamelés méretezése CDN-nel](scale-streaming-cdn.md)
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Kérdések feltevése, visszajelzés küldése, frissítések beszerzése
+## <a name="ask-questions-and--get-updates"></a>Kérdések et tehet fel, és frissítéseket kaphat
 
-Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
+Tekintse meg az [Azure Media Services közösségi](media-services-community.md) cikket, ahol különböző módokon tehet fel kérdéseket, küldhet visszajelzést, és kaphat frissítéseket a Media Services szolgáltatásról.
+
+## <a name="see-also"></a>Lásd még
+
+[Dinamikus csomagolás](dynamic-packaging-overview.md)
 
 ## <a name="next-steps"></a>További lépések
 

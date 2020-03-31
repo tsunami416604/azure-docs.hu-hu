@@ -1,6 +1,6 @@
 ---
-title: A HBase .NET SDK használata – Azure HDInsight
-description: A HBase .NET SDK használatával táblákat hozhat létre és törölhet, valamint az adatolvasást és-írást.
+title: A HBase .NET SDK – Azure HDInsight használata
+description: A HBase .NET SDK segítségével táblákat hozhat létre és törölhet, valamint adatokat olvashat és írhat.
 author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
@@ -9,42 +9,42 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
 ms.openlocfilehash: eba7d7ad009b2ef0442a916983489489eb5cceb8
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74806660"
 ---
-# <a name="use-the-net-sdk-for-apache-hbase"></a>Az Apache HBase készült .NET SDK használata
+# <a name="use-the-net-sdk-for-apache-hbase"></a>A .NET SDK használata apache HBase-hez
 
-Az [Apache HBase](apache-hbase-overview.md) két elsődleges lehetőséget biztosít az adatokkal való munkához: [Apache Hive lekérdezéseket, és meghívja a HBase REST API-](apache-hbase-tutorial-get-started-linux.md)ját. A `curl` parancs vagy egy hasonló segédprogram használatával közvetlenül is dolgozhat a REST API.
+[Az Apache HBase](apache-hbase-overview.md) két elsődleges lehetőséget kínál az adatokkal való együttműködésre: [az Apache Hive-lekérdezéseket, valamint a HBase RESTful API-ját.](apache-hbase-tutorial-get-started-linux.md) A parancs vagy egy hasonló `curl` segédprogram segítségével közvetlenül dolgozhat a REST API-val.
 
-A C# (z) és a .NET-alkalmazások esetében a [Microsoft HBase Rest ügyféloldali kódtára](https://www.nuget.org/packages/Microsoft.HBase.Client/) biztosítja a HBase REST API.
+C# és .NET alkalmazások esetén a [Microsoft HBase REST client library for .NET](https://www.nuget.org/packages/Microsoft.HBase.Client/) ügyfélkönyvtára a HBase REST API tetején biztosít ügyfélkönyvtárat.
 
 ## <a name="install-the-sdk"></a>Az SDK telepítése
 
-A HBase .NET SDK NuGet-csomagként érhető el, amely a Visual Studio **NuGet Package Manager konzolról** telepíthető a következő paranccsal:
+A HBase .NET SDK nuget csomagként érhető el, amely a Visual Studio **NuGet Package Manager konzolról** telepíthető a következő paranccsal:
 
     Install-Package Microsoft.HBase.Client
 
-## <a name="instantiate-a-new-hbaseclient-object"></a>Új HBaseClient objektum példányának létrehozása
+## <a name="instantiate-a-new-hbaseclient-object"></a>Új HBaseClient objektum létrehozása
 
-Ha az SDK-t szeretné használni, egy új `HBaseClient` objektumot hoz létre, amely `ClusterCredentials` a fürtből `Uri`ből áll, és a Hadoop felhasználónevét és jelszavát adja meg.
+Az SDK használatához példányosítson `HBaseClient` meg egy `ClusterCredentials` új `Uri` objektumot, amely a fürtből és a Hadoop felhasználónevéből és jelszavából áll.
 
 ```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net"), "USERNAME", "PASSWORD");
 client = new HBaseClient(credentials);
 ```
 
-Cserélje le a CLUSTERNAME-t a HDInsight HBase, valamint a Felhasználónév és a jelszó helyére a fürt létrehozásához megadott Apache Hadoop hitelesítő adatokat. Az alapértelmezett Hadoop-Felhasználónév a **rendszergazda**.
+Cserélje le a CLUSTERNAME-t a HDInsight HBase fürtnevére, a USERNAME és PASSWORD-t a fürt létrehozásakor megadott Apache Hadoop hitelesítő adatokra. Az alapértelmezett Hadoop felhasználónév **admin**.
 
 ## <a name="create-a-new-table"></a>Új tábla létrehozása
 
-A HBase táblákban tárolja az adattárakat. A tábla egy *Rowkey*, egy elsődleges kulcsból és egy vagy több *oszlopból*álló csoportból áll. Az egyes táblákban lévő összes adathalmazt vízszintesen osztják el egy Rowkey-tartományból *régiókba*. Minden régió rendelkezik kezdési és befejezési kulccsal. Egy tábla egy vagy több régióval rendelkezhet. Ahogy a tábla adatai növekednek, a HBase a nagyméretű régiókat kisebb régiókra osztja fel. A régiók tárolása a *régió-kiszolgálókon*történik, ahol az egyik régió-kiszolgáló több régiót is tárolhat.
+A HBase táblákban tárolja az adatokat. A táblázat egy *Sorkulcsból*, az elsődleges kulcsból és egy vagy több oszlopcsalád-csoportból áll. *column families* Az egyes táblázatokban lévő adatokat egy Rowkey tartomány vízszintesen osztja el *régiók*között. Minden régió rendelkezik egy kezdő és záró kulccsal. Egy tábla egy vagy több területből is rendelkezhet. A táblázatban lévő adatok növekedésével a HBase a nagy régiókat kisebb régiókra osztja. A régiók *régiókiszolgálókban*tárolódnak, ahol egy régiókiszolgáló több régiót is tárolhat.
 
-Az adattárolást fizikailag a *HFiles*tárolja. Egyetlen HFile egy tábla, egy régió és egy oszlop családja számára tartalmaz adattípust. A HFile lévő sorok tárolása a Rowkey szerint történik. Minden HFile rendelkezik egy *B + Tree* indextel a sorok gyors lekéréséhez.
+Az adatok fizikailag tárolják *HFiles*. Egyetlen HFile egy tábla, egy régió és egy oszlopcsalád adatait tartalmazza. A HFile sorai rowkey-n vannak rendezve. Minden HFile rendelkezik egy *B + fa* index gyors lekérés a sorok.
 
-Új tábla létrehozásához meg kell adnia a `TableSchema` és az oszlopokat. A következő kód ellenőrzi, hogy a (z) "RestSDKTable" tábla már létezik-e – ha nem, a tábla jön létre.
+Új tábla létrehozásához adjon `TableSchema` meg a és oszlopokat. A következő kód ellenőrzi, hogy a "RestSDKTable" tábla létezik-e már - ha nem, akkor létrejön a tábla.
 
 ```csharp
 if (!client.ListTablesAsync().Result.name.Contains("RestSDKTable"))
@@ -58,11 +58,11 @@ if (!client.ListTablesAsync().Result.name.Contains("RestSDKTable"))
 }
 ```
 
-Ez az új tábla kétoszlopos családokkal (T1 és T2) rendelkezik. Mivel az oszlopos családokat a különböző HFiles külön tárolják, érdemes külön oszlop-családot választani a gyakran lekérdezett adattípusokhoz. A következő [adatbeszúrási](#insert-data) példában az oszlopokat a rendszer hozzáadja a T1 oszlop családhoz.
+Ez az új táblázat kétoszlopos családok, t1 és t2. Mivel az oszlopcsaládokat külön tárolják a különböző HFiles-fájlokban, érdemes külön oszlopcsaláddal rendelkezni a gyakran lekérdezett adatokhoz. A következő [Adatok beszúrása](#insert-data) példában oszlopok kerülnek a t1 oszlopcsaládba.
 
 ## <a name="delete-a-table"></a>Tábla törlése
 
-Tábla törlése:
+Táblázat törlése:
 
 ```csharp
 await client.DeleteTableAsync("RestSDKTable");
@@ -70,7 +70,7 @@ await client.DeleteTableAsync("RestSDKTable");
 
 ## <a name="insert-data"></a>Adat beszúrása
 
-Az adat beszúrásához egyedi sort kell megadnia a sor azonosítójaként. Az összes adattal `byte[]` tömb tárolja. A következő kód meghatározza és hozzáadja a `title`, `director`és `release_date` oszlopot a T1 oszlop családhoz, mivel ezek az oszlopok a leggyakrabban elérhetők. A `description` és `tagline` oszlopok hozzáadódnak a T2 oszlop családhoz. Szükség szerint particionálhatja az adatait oszlopos családokba.
+Adatok beszúrásához egyedi sorkulcsot kell megadni a sorazonosítóként. Az összes adat tömbben `byte[]` van tárolva. A következő kód határozza `title`meg `director`és `release_date` adja hozzá a , és oszlopokat a t1 oszlopcsaládhoz, mivel ezek az oszlopok a leggyakrabban használt. A `description` `tagline` és az oszlopok hozzáadódnak a t2 oszlopcsaládhoz. Az adatokat szükség szerint oszlopcsaládokra particionálhatja.
 
 ```csharp
 var key = "fifth_element";
@@ -112,13 +112,13 @@ set.rows.Add(row);
 await client.StoreCellsAsync("RestSDKTable", set);
 ```
 
-A HBase a [Felhőbeli BigTable](https://cloud.google.com/bigtable/)valósítja meg, így az adatformátum a következő képhez hasonlóan néz ki:
+A HBase megvalósítja a [Cloud BigTable](https://cloud.google.com/bigtable/)programot, így az adatformátum a következő képre hasonlít:
 
-![Apache HBase-mintaadatok kimenete](./media/apache-hbase-rest-sdk/hdinsight-table-roles.png)
+![Apache HBase mintaadat-kimenet](./media/apache-hbase-rest-sdk/hdinsight-table-roles.png)
 
 ## <a name="select-data"></a>Adatok kiválasztása
 
-Ha egy HBase-táblából szeretne beolvasni egy adatforrást, adja át a tábla nevét és a sor kulcsát a `GetCellsAsync` metódusnak a `CellSet`visszaadásához.
+Ha hbase táblából szeretne adatokat olvasni, adja `GetCellsAsync` át a `CellSet`tábla nevét és a sorkulcsot a metódusnak a visszatéréséhez.
 
 ```csharp
 var key = "fifth_element";
@@ -132,7 +132,7 @@ Console.WriteLine(Encoding.UTF8.GetString(cells.rows[0].values
 // With the previous insert, it should yield: "The Fifth Element"
 ```
 
-Ebben az esetben a kód csak az első egyező sort adja vissza, mivel egy egyedi kulcsnak csak egy sora lehet. A visszaadott érték `string` formátumba módosul a `byte[]` tömbben. Az értéket más típusokra is konvertálhatja, például a film kiadási dátumának egészére:
+Ebben az esetben a kód csak az első egyező sort adja vissza, mivel egy egyedi kulcsnak csak egy sornak kell lennie. A visszaadott érték `string` formátumra `byte[]` változik a tömbből. Az értéket más típusokra is konvertálhatja, például egész számra a film megjelenési dátumához:
 
 ```csharp
 var releaseDateField = cells.rows[0].values
@@ -147,9 +147,9 @@ Console.WriteLine(releaseDate);
 // Should return 1997
 ```
 
-## <a name="scan-over-rows"></a>Sorok ellenőrzése
+## <a name="scan-over-rows"></a>Beszkavalaa a sorok között
 
-A HBase `scan` használ egy vagy több sor lekéréséhez. Ez a példa több sort kér le 10 kötegben, és lekéri azokat az értékeket, amelyek kulcsai 25 és 35 között vannak. Az összes sor beolvasása után törölje a lapolvasót az erőforrások törléséhez.
+A HBase egy vagy több sor beolvasására használja. `scan` Ez a példa több sort kér 10-es kötegekben, és lekéri azokat az adatokat, amelyek kulcsértéke i25 és 35 között van. Az összes sor beolvasása után törölje a lapolvasót az erőforrások törléséhez.
 
 ```csharp
 var tableName = "mytablename";
@@ -185,7 +185,7 @@ finally
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Az Apache HBase-példa a HDInsight-ben – első lépések](apache-hbase-tutorial-get-started-linux.md)
-* Hozzon létre egy teljes körű alkalmazást az [Apache HBase valós idejű Twitter-hangulatának elemzésével](../hdinsight-hbase-analyze-twitter-sentiment.md)
+* [Bevezetés a HDInsight egy Apache HBase-példájába](apache-hbase-tutorial-get-started-linux.md)
+* Hozzon létre egy végponttól végpontig rendelkező alkalmazást [a valós idejű Twitter-hangulat elemzése](../hdinsight-hbase-analyze-twitter-sentiment.md) segítségével az Apache HBase segítségével

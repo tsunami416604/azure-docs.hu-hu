@@ -1,80 +1,97 @@
 ---
-title: Hálózatkezelés konfigurálása az Azure dev Spaces szolgáltatáshoz különböző hálózati topológiákban
+title: Hálózatkezelés konfigurálása az Azure dev spaces-hez különböző hálózati topológiákban
 services: azure-dev-spaces
-ms.date: 01/10/2020
+ms.date: 03/17/2020
 ms.topic: conceptual
-description: Ismerteti az Azure dev Spaces Azure Kubernetes Servicesben való futtatásának hálózati követelményeit
-keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, CNI, kubenet, SDN, hálózat
-ms.openlocfilehash: 9e32e3b65451dceefaeeaf7faed7c8337797e0b8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+description: Az Azure Kubernetes-szolgáltatásokban az Azure Dev Spaces futtatásához vonatkozó hálózati követelmények ismertetése
+keywords: Azure dev spaces, fejlesztői terek, Docker, Kubernetes, Azure, AKS, Azure Kubernetes szolgáltatás, tárolók, CNI, kubenet, SDN, hálózat
+ms.openlocfilehash: 82d046aa36fe9caf6337aa7f58ca0db525062283
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79265349"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240573"
 ---
-# <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>Hálózatkezelés konfigurálása az Azure dev Spaces szolgáltatáshoz különböző hálózati topológiákban
+# <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>Hálózatkezelés konfigurálása az Azure dev spaces-hez különböző hálózati topológiákban
 
-Az Azure dev Spaces az alapértelmezett hálózati konfigurációval rendelkező Azure Kubernetes Service (ak) fürtökön fut. Ha módosítani szeretné az AK-fürt hálózati konfigurációját, például a fürt tűzfal mögötti üzembe helyezését, hálózati biztonsági csoportok használatával vagy hálózati házirendek használatával, további szempontokat kell figyelembe vennie az Azure dev Spaces futtatásához.
+Az Azure Dev Spaces az Azure Kubernetes-szolgáltatás (AKS) fürtjein fut az alapértelmezett hálózati konfigurációval. Ha módosítani szeretné az AKS-fürt hálózati konfigurációját, például a fürt tűzfal mögé helyezését, hálózati biztonsági csoportok használatát vagy hálózati házirendek használatát, további szempontokat kell figyelembe vennie az Azure Dev Spaces futtatásához.
 
-![Virtuális hálózati konfiguráció](media/configure-networking/virtual-network-clusters.svg)
+![Virtuális hálózat konfigurációja](media/configure-networking/virtual-network-clusters.svg)
 
 ## <a name="virtual-network-or-subnet-configurations"></a>Virtuális hálózat vagy alhálózati konfigurációk
 
-Az AK-fürt eltérő virtuális hálózattal vagy alhálózat-konfigurációval rendelkezhet, hogy korlátozza a bejövő vagy kimenő forgalmat az AK-fürt számára. Előfordulhat például, hogy a fürt tűzfal mögött található, például a Azure Firewall, vagy hálózati biztonsági csoportokat vagy egyéni szerepköröket használ a hálózati forgalom korlátozásához.
+Előfordulhat, hogy az AKS-fürt más virtuális hálózati vagy alhálózati konfigurációval rendelkezik az AKS-fürt be- vagy kimenő forgalomának korlátozására. Előfordulhat például, hogy a fürt tűzfal mögött van, például az Azure Tűzfal mögött, vagy használhat hálózati biztonsági csoportokat vagy egyéni szerepköröket a hálózati forgalom korlátozására.
 
-Az Azure dev Spaces szolgáltatásban a *bejövő és a kimenő* hálózati forgalomra, valamint a *csak* forgalomra vonatkozó követelmények vonatkoznak. Ha az Azure dev Spaces szolgáltatást egy AK-fürtön használja, és olyan virtuális hálózatot vagy alhálózati konfigurációt használ, amely korlátozza az AK-fürt forgalmát, csak a következő bejövő adatokat és a bejövő forgalomra vonatkozó követelményeket kell követnie ahhoz, hogy az Azure dev Spaces megfelelően működik.
+Az Azure dev spaces bizonyos követelményekkel rendelkezik a *be- és kimenő forgalom,* valamint *a csak a be- ésátállítási* forgalom. Ha az Azure Dev Spaces szolgáltatást olyan virtuális hálózati vagy alhálózati konfigurációval rendelkező AKS-fürtön használja, amely korlátozza az AKS-fürt forgalmát, csak a következő bejövő forgalomra kell, és be kell lépnie és ki kell lépnie a forgalmi követelményekhez ahhoz, hogy az Azure Dev Spaces Működéséhez.
 
-### <a name="ingress-and-egress-network-traffic-requirements"></a>Bejövő és kimenő hálózati forgalomra vonatkozó követelmények
+### <a name="ingress-and-egress-network-traffic-requirements"></a>Be- és ki- és ki- és ki- és ki- és ki- és kilépési hálózati forgalmi követelmények
 
-Az Azure dev Spaces szolgáltatásnak a következő teljes tartománynevek felé irányuló bejövő és kimenő forgalomra van szüksége:
+Az Azure dev spaces-nek be- és kimenő forgalomra van szüksége a következő teljes tartományn-műveletekhez:
 
-| TELJES TARTOMÁNYNÉV                       | Port       | Használat      |
+| FQDN                       | Port       | Használat      |
 |----------------------------|------------|----------|
-| cloudflare.docker.com      | HTTPS: 443 | Docker-rendszerképek lekérése az Azure dev Spaces szolgáltatásban |
-| gcr.io                     | HTTPS: 443 | Helm-lemezképek lekérése az Azure dev Spaces szolgáltatásban |
-| storage.googleapis.com     | HTTPS: 443 | Helm-lemezképek lekérése az Azure dev Spaces szolgáltatásban |
-| azds-*. azds. IO             | HTTPS: 443 | Kommunikáció az Azure dev Spaces háttér-szolgáltatásaival az Azure dev Spaces vezérlőhöz. A pontos teljes tartománynevet a *dataplaneFqdn* -ben találja `USERPROFILE\.azds\settings.json` |
+| cloudflare.docker.com      | HTTPS: 443 | Docker-lemezképek lekérése az Azure Dev Spaces-hez |
+| gcr.io                     | HTTPS: 443 | Helm-lemezképek lekérése az Azure Dev Spaces-hez |
+| storage.googleapis.com     | HTTPS: 443 | Helm-lemezképek lekérése az Azure Dev Spaces-hez |
+| azds-*.azds.io             | HTTPS: 443 | Az Azure Dev Spaces háttérszolgáltatásokkal való kommunikáció az Azure Dev Spaces vezérlőhöz. A pontos Teljes tartományjelző n megtalálható az *Fqdn adatsíkban* a`USERPROFILE\.azds\settings.json` |
 
-Frissítse a tűzfalat vagy a biztonsági konfigurációt, hogy engedélyezze a fenti teljes tartománynevek és azok közötti hálózati forgalmat. Ha például tűzfalat használ a hálózat biztonságossá tételéhez, a fenti FQDN-ket hozzá kell adni a tűzfal alkalmazási szabályához, hogy engedélyezzék az ezen tartományokra irányuló és onnan érkező forgalmat.
+Frissítse a tűzfalat vagy a biztonsági konfigurációt, hogy a fenti teljes tartományhálózatokba irányuló és onnan érkező hálózati forgalmat engedélyezze. Ha például tűzfalat használ a hálózat védelmére, a fenti teljes tartományneveket hozzá kell adni a tűzfal alkalmazásszabályához, hogy lehetővé tegye a forgalmat ezekre a tartományokra.
 
-### <a name="ingress-only-network-traffic-requirements"></a>Csak a hálózati forgalomra vonatkozó követelmények beáramlása
+### <a name="ingress-only-network-traffic-requirements"></a>Csak a hálózati forgalomra vonatkozó követelmények be- és be- és visszahálózaton
 
-Az Azure dev Spaces lehetővé teszi a Kubernetes, valamint a szolgáltatásokhoz való nyilvános hozzáférést a saját FQDN használatával. Mindkét funkció működéséhez frissítse a tűzfalat vagy a hálózati konfigurációt, hogy lehetővé tegye a nyilvános behatolást a fürtön lévő Azure dev Spaces bemenő vezérlő külső IP-címére. Azt is megteheti, hogy létrehoz egy [belső][aks-internal-lb] terheléselosztó szolgáltatást, és felvesz egy NAT-szabályt a tűzfalon a TŰZFAL nyilvános IP-címének lefordításához a belső terheléselosztó IP-címére. A [traefik][traefik-ingress] és az [NGINX][nginx-ingress] használatával is létrehozhat egy egyéni bejövő vezérlőt.
+Az Azure Dev Spaces a Kubernetes névtérszintű útválasztást, valamint a saját teljes qdn-t használó szolgáltatásokhoz való nyilvános hozzáférést biztosít. Mindkét funkció működéséhez frissítse a tűzfalat vagy a hálózati konfigurációt, hogy a fürt azure dev spaces-vezérlőkülső IP-címére nyilvános be- és be- és be- és be- és be- és be- és be- és be- és hálózat- és hálózat- és hálózat- és hálózat- és hálózat- cím. Másik lehetőségként létrehozhat egy [belső terheléselosztót,][aks-internal-lb] és hozzáadhat egy NAT-szabályt a tűzfalhoz, hogy lefordítsa a tűzfal nyilvános IP-címét a belső terheléselosztó IP-címére. A [traefik][traefik-ingress] vagy [az NGINX][nginx-ingress] segítségével egyéni bejövő adatbeviteli vezérlőt is létrehozhat.
 
-## <a name="aks-cluster-network-requirements"></a>AK-fürt hálózati követelményei
+## <a name="aks-cluster-network-requirements"></a>AKS-fürt hálózati követelményei
 
-Az AK lehetővé teszi, hogy [hálózati házirendekkel][aks-network-policies] vezérelje a bejövő és kimenő adatforgalmat a fürtben lévő hüvelyek között, valamint a kimenő forgalmat egy Pod-ból. Az Azure dev Spaces szolgáltatásban a *bejövő és a kimenő* hálózati forgalomra, valamint a *csak* forgalomra vonatkozó követelmények vonatkoznak. Ha az Azure dev Spaces-t egy AK-os hálózati házirendekkel rendelkező AK-fürtön használja, akkor az Azure dev Spaces megfelelő működéséhez az alábbi bejövő adatokat és a kimenő forgalomra vonatkozó követelményeket is be kell tartania.
+Az AKS lehetővé teszi, hogy [a hálózati házirendek][aks-network-policies] segítségével szabályozhatja a fürtpodok közötti és kimenő forgalom, valamint a podról érkező kimenő forgalom. Az Azure dev spaces bizonyos követelményekkel rendelkezik a *be- és kimenő forgalom,* valamint *a csak a be- ésátállítási* forgalom. Ha az Azure Dev Spaces egy AKS-fürt aKS-hálózati szabályzatok, a következő bejövő forgalom csak és a bejövő és kimenő forgalmi követelmények az Azure Dev Spaces megfelelő működéséhez.
 
-### <a name="ingress-and-egress-network-traffic-requirements"></a>Bejövő és kimenő hálózati forgalomra vonatkozó követelmények
+### <a name="ingress-and-egress-network-traffic-requirements"></a>Be- és ki- és ki- és ki- és ki- és ki- és kilépési hálózati forgalmi követelmények
 
-Az Azure dev Spaces lehetővé teszi, hogy a hibakereséshez közvetlenül kommunikáljon a fürt fejlesztői területein található Pod-mel. Ennek a funkciónak a működéséhez adjon hozzá egy hálózati házirendet, amely lehetővé teszi a bejövő és kimenő kommunikációt az Azure dev Spaces infrastruktúrájának IP-címeire, amelyek [régiónként eltérőek][dev-spaces-ip-auth-range-regions].
+Az Azure Dev Spaces lehetővé teszi, hogy közvetlenül kommunikáljon egy pod a fürt önfejlesztési területen a hibakeresés. Ahhoz, hogy ez a szolgáltatás működjön, adjon hozzá egy hálózati házirendet, amely lehetővé teszi a be- és kilépési kommunikációt az Azure Dev Spaces-infrastruktúra IP-címeivel, amelyek [régiónként változnak.][dev-spaces-ip-auth-range-regions]
 
-### <a name="ingress-only-network-traffic-requirements"></a>Csak a hálózati forgalomra vonatkozó követelmények beáramlása
+### <a name="ingress-only-network-traffic-requirements"></a>Csak a hálózati forgalomra vonatkozó követelmények be- és be- és visszahálózaton
 
-Az Azure dev Spaces lehetővé teszi a hüvelyek közötti útválasztást a névterek között. Például az Azure dev Spaces szolgáltatásban engedélyezett névterek szülő/gyermek kapcsolattal rendelkezhetnek, ami lehetővé teszi a hálózati forgalom átirányítását a hüvelyek között a szülő és a gyermek névterek között. Ahhoz, hogy ez a funkció működjön, adjon hozzá egy hálózati házirendet, amely lehetővé teszi a hálózati forgalom irányítása alatt álló névterek, például a szülő/gyermek névterek közötti adatforgalmat. Továbbá, ha a beléptetési vezérlő a *azds* -névtérbe van telepítve, akkor a bejövő adatkezelőnek kommunikálnia kell az Azure fejlesztői területtel rendelkező, másik névtérben található hüvelyekkel. Ahhoz, hogy a bejövő vezérlő megfelelően működjön, a hálózati forgalmat engedélyezni kell a *azds* névtérből arra a névtérre, ahol a műszeres hüvely fut.
+Az Azure Dev Spaces biztosítja a podok közötti névterek közötti útválasztást. Például az Azure Dev Spaces engedélyezve lévő névterek szülő-gyermek kapcsolattal rendelkezhetnek, amely lehetővé teszi a hálózati forgalom továbbítását a szülő- és gyermeknévterek között. Az Azure Dev Spaces is elérhetővé teszi a szolgáltatás végpontok saját teljes qdn használatával. A szolgáltatások kiexposálásának különböző módjainak és a névtérszintű útválasztás hatásainak konfigurálásához [lásd: A különböző végpontbeállítások használata.][endpoint-options]
 
 ## <a name="using-azure-cni"></a>Az Azure CNI használata
 
-Alapértelmezés szerint az AK-fürtök úgy vannak konfigurálva, hogy a [kubenet][aks-kubenet] használják a hálózatkezeléshez, ami az Azure dev Spaces szolgáltatással működik. Azt is megteheti, hogy az AK-fürtöt az [Azure Container Network Interface (CNI)][aks-cni]használatára konfigurálja. Ha az Azure dev Spaces-t az AK-fürtön lévő Azure CNI szeretné használni, engedélyezze a virtuális hálózat és az alhálózati címtartomány akár 10 magánhálózati IP-címet az Azure dev Spaces által üzembe helyezett hüvelyek számára. A magánhálózati IP-címek engedélyezésével kapcsolatos további részletek az [AK Azure CNI dokumentációjában][aks-cni-ip-planning]találhatók.
+Alapértelmezés szerint az AKS-fürtök [kubenet][aks-kubenet] használatára vannak konfigurálva a hálózatkezeléshez, amely együttműködik az Azure Dev Spaces használatával. Az AKS-fürt az [Azure Container Networking Interface (CNI) használatára][aks-cni]is konfigurálható. Az Azure Dev Spaces és az Azure CNI használatához az AKS-fürtön legfeljebb 10 privát IP-címhelyet engedélyezhet az Azure Dev Spaces által üzembe helyezett podok számára. A privát IP-címek engedélyezésével kapcsolatos további részletek az [AKS Azure CNI dokumentációjában][aks-cni-ip-planning]találhatók.
 
-## <a name="using-api-server-authorized-ip-ranges"></a>Az API-kiszolgáló által jóváhagyott IP-címtartományok használata
+## <a name="using-api-server-authorized-ip-ranges"></a>AZ API-kiszolgáló engedélyezett IP-tartományai használata
 
-Az AK-fürtök lehetővé teszik olyan további biztonsági beállítások konfigurálását, amelyek korlátozzák, hogy az IP-címek hogyan kezelhetik a fürtöket, például egyéni virtuális hálózatok használatával vagy [az API-kiszolgálóhoz engedélyezett IP-címtartományok használatával történő hozzáférés biztosításával][aks-ip-auth-ranges]. Ha a fürt [létrehozása][aks-ip-auth-range-create] során további biztonságot kíván használni az Azure dev Spaces szolgáltatásban, akkor a [régión alapuló további tartományokat][dev-spaces-ip-auth-range-regions]is engedélyeznie kell. Egy meglévő fürtöt is [frissíthet][aks-ip-auth-range-update] , hogy engedélyezze ezeket a további tartományokat. Emellett engedélyeznie kell az AK-fürthöz csatlakozó fejlesztői gépek IP-címét, hogy hibakeresést végezzenek az API-kiszolgálóhoz való kapcsolódáshoz.
+Az AKS-fürtök lehetővé teszik további biztonság konfigurálását, amely korlátozza, hogy mely IP-cím kommunikálhat a fürtökkel, például egyéni virtuális hálózatok használatával, vagy [az API-kiszolgálóhoz való hozzáférés biztonságossá tétele engedélyezett IP-tartományok használatával.][aks-ip-auth-ranges] Az Azure Dev Spaces használatához a további biztonság fürt [létrehozása][aks-ip-auth-range-create] során további tartományokat kell [engedélyeznie a régió alapján.][dev-spaces-ip-auth-range-regions] Egy meglévő fürt [is frissíthető,][aks-ip-auth-range-update] hogy ezek a további tartományok is engedélyezhetők. Emellett engedélyeznie kell az AKS-fürthöz csatlakozó fejlesztőgépek IP-címét az API-kiszolgálóhoz való csatlakozáshoz.
 
-## <a name="using-aks-private-clusters"></a>AK-beli privát fürtök használata
+## <a name="using-aks-private-clusters"></a>Az AKS privát fürtjei
 
-Ebben az esetben az Azure fejlesztői tárhelyek nem támogatottak az AK-beli [privát fürtökön][aks-private-clusters].
+Jelenleg az Azure dev spaces nem támogatott [AKS-alapú privát fürtök.][aks-private-clusters]
 
-## <a name="client-requirements"></a>Ügyfélre vonatkozó követelmények
+## <a name="using-different-endpoint-options"></a>Különböző végpontbeállítások használata
 
-Az Azure dev Spaces ügyféloldali eszközöket használ, például az Azure dev Spaces CLI-bővítményt, a Visual Studio Code-bővítményt és a Visual Studio-bővítményt, hogy a hibakereséshez kommunikáljon az AK-fürttel. Az Azure dev Spaces ügyféloldali eszközeinek használatához engedélyezze a fejlesztési gépekről érkező forgalmat a *azds-\*. azds.IO* tartományba. A teljes tartománynevet a `USERPROFILE\.azds\settings.json` *dataplaneFqdn* című részben tekintheti meg. Ha az [API-kiszolgáló által engedélyezett IP-tartományokat][auth-range-section]használja, engedélyeznie kell az AK-fürthöz csatlakozó fejlesztői gépek IP-címét is, hogy hibakeresést VÉGEZZEN az API-kiszolgálóhoz való kapcsolódáshoz.
+Az Azure Dev Spaces rendelkezik azzal a lehetőséggel, hogy az AKS-en futó szolgáltatások végpontjait elérhetővé tegye. Ha engedélyezi az Azure Dev Spaces-t a fürtön, a következő lehetőségek közül választhat a fürt végponttípusának konfigurálásához:
 
-## <a name="next-steps"></a>Következő lépések
+* A *nyilvános* végpont, amely az alapértelmezett, nyilvános IP-címmel rendelkező be- és be- és áttérési vezérlőt telepít. A nyilvános IP-cím regisztrálva van a fürt DNS-én, így nyilvános hozzáférést biztosít a szolgáltatásokhoz egy URL-cím használatával. Ezt az URL-címet a segítségével `azds list-uris`tekintheti meg.
+* A *privát* végpont egy privát IP-címmel rendelkező be- és be- és áttérési vezérlőt telepít. Magánhálózati IP-cím esetén a fürt terheléselosztója csak a fürt virtuális hálózatán belül érhető el. A terheléselosztó privát IP-címe regisztrálva van a fürt DNS-én, így a fürt virtuális hálózatán belüli szolgáltatások URL-cím használatával érhetők el. Ezt az URL-címet a segítségével `azds list-uris`tekintheti meg.
+* Ha *nincs* beállítást állít be a végpontbeállításhoz, a rendszer nem telepíti a be- és éi vezérlőt. A be- ésnagykezelési vezérlő telepítése nélkül az [Azure Dev Spaces útválasztási képességei][dev-spaces-routing] nem fognak működni. Opcionálisan megvalósíthatja saját bejövő kapcsolatvezérlő-megoldását [a traefik][traefik-ingress] vagy [az NGINX][nginx-ingress]használatával, amely lehetővé teszi az útválasztási képességek újbóli működését.
 
-Ismerje meg, hogy az Azure dev Spaces hogyan segíti az összetettebb alkalmazások fejlesztését több tárolóban, és hogyan egyszerűsítheti az együttműködésen alapuló fejlesztést, ha a kód különböző verzióival vagy ágaival dolgozik a különböző helyeken.
+A végpont beállításkonfigurálásához használja *az -e* vagy *--végpontot* az Azure Dev Spaces fürtön való engedélyezésekor. Példa:
+
+> [!NOTE]
+> A végpont beállítás megköveteli, hogy az Azure CLI 2.2.0-s vagy újabb verzióját használja. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
+
+```azurecli
+az aks use-dev-spaces -g MyResourceGroup -n MyAKS -e private
+```
+
+## <a name="client-requirements"></a>Ügyfélkövetelmények
+
+Az Azure Dev Spaces ügyféloldali eszközök, például az Azure Dev Spaces CLI-bővítmény, a Visual Studio-kód bővítmény és a Visual Studio-bővítmény segítségével kommunikál az AKS-fürtdel a hibakereséshez. Az Azure Dev Spaces ügyféloldali eszközhasználatának használatához engedélyezze a fejlesztői gépekről az *\*azds- .azds.io* tartományba irányuló forgalmat. Lásd *dataplaneFqdn* in `USERPROFILE\.azds\settings.json` a pontos Teljes tartomány. Ha [AZ API-kiszolgáló által engedélyezett IP-tartományokat][auth-range-section]használ, akkor engedélyeznie kell az AKS-fürthöz csatlakozó fejlesztőgépek IP-címét is az API-kiszolgálóhoz való csatlakozáshoz.
+
+## <a name="next-steps"></a>További lépések
+
+Ismerje meg, hogy az Azure Dev Spaces hogyan segít összetettebb alkalmazások fejlesztésében több tárolóközött, és hogyan egyszerűsítheti az együttműködésen alapuló fejlesztést a kód különböző verzióival vagy ágaival való együttműködéssel különböző helyeken.
 
 > [!div class="nextstepaction"]
-> [Csoportmunka az Azure fejlesztői Spaces szolgáltatásban][team-quickstart]
+> [Csapatfejlesztés az Azure Dev Spaces-ben][team-quickstart]
 
 [aks-cni]: ../aks/configure-azure-cni.md
 [aks-cni-ip-planning]: ../aks/configure-azure-cni.md#plan-ip-addressing-for-your-cluster
@@ -86,7 +103,10 @@ Ismerje meg, hogy az Azure dev Spaces hogyan segíti az összetettebb alkalmazá
 [aks-network-policies]: ../aks/use-network-policies.md
 [aks-private-clusters]: ../aks/private-clusters.md
 [auth-range-section]: #using-api-server-authorized-ip-ranges
+[azure-cli-install]: /cli/azure/install-azure-cli
 [dev-spaces-ip-auth-range-regions]: https://github.com/Azure/dev-spaces/tree/master/public-ips
+[dev-spaces-routing]: how-dev-spaces-works-routing.md
+[endpoint-options]: #using-different-endpoint-options
 [traefik-ingress]: how-to/ingress-https-traefik.md
 [nginx-ingress]: how-to/ingress-https-nginx.md
 [team-quickstart]: quickstart-team-development.md

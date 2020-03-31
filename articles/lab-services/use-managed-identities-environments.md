@@ -1,6 +1,6 @@
 ---
-title: Környezetek létrehozása az Azure által felügyelt identitásokkal a DevTest Labs szolgáltatásban | Microsoft Docs
-description: Megtudhatja, hogyan használhatja a felügyelt identitásokat az Azure-ban környezetek üzembe helyezéséhez egy Azure DevTest Labsban található laborban.
+title: Azure felügyelt identitások használatával környezeteket hozhat létre a DevTest Labs-ben | Microsoft dokumentumok
+description: Megtudhatja, hogy miként használhatja a felügyelt identitásokat az Azure-ban a környezetek üzembe helyezéséhez az Azure DevTest Labs tesztkörnyezetében.
 services: devtest-lab,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,49 +12,49 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.author: spelluru
 ms.openlocfilehash: a4ba4206c01e492f2ae980c5806de1e72c7051c3
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73931157"
 ---
-# <a name="use-azure-managed-identities-to-deploy-environments-in-a-lab"></a>Környezetek üzembe helyezése az Azure által felügyelt identitások használatával tesztkörnyezetben 
-A tesztkörnyezet tulajdonosaként felügyelt identitást használhat a környezetek tesztkörnyezetben való üzembe helyezéséhez. Ez a funkció olyan esetekben hasznos, amikor a környezet olyan Azure-erőforrásokra hivatkozik, mint a kulcstartók, a megosztott képtárak és a környezet erőforráscsoporthoz tartozó hálózatok. Lehetővé teszi olyan homokozó környezetek létrehozását, amelyek nem korlátozódnak az adott környezet erőforráscsoporthoz.
+# <a name="use-azure-managed-identities-to-deploy-environments-in-a-lab"></a>Az Azure által felügyelt identitások használatával környezeteket helyezhet üzembe egy tesztkörnyezetben 
+Labortulajdonosként egy felügyelt identitás használatával telepítheti a környezeteket egy tesztkörnyezetben. Ez a funkció olyan esetekben hasznos, ahol a környezet tartalmaz, vagy az Azure-erőforrásokra, például a kulcstartók, a megosztott képgalériák és a környezet erőforráscsoportján kívüli hálózatokra mutató hivatkozásokat tartalmaz. Lehetővé teszi olyan sandbox-környezetek létrehozását, amelyek nem korlátozódnak az adott környezet erőforráscsoportjára.
 
 > [!NOTE]
-> Jelenleg egyetlen felhasználó által hozzárendelt identitás támogatott egy laborban. 
+> Jelenleg egy felhasználó által hozzárendelt identitás laboronként támogatott. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-- [Szerepkörök létrehozása, listázása, törlése vagy hozzárendelése egy felhasználóhoz rendelt felügyelt identitáshoz a Azure Portal használatával](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). 
+- [Szerepkör létrehozása, listázása, törlése vagy hozzárendelése egy felhasználó által hozzárendelt felügyelt identitáshoz az Azure Portalhasználatával.](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) 
 
 ## <a name="use-azure-portal"></a>Az Azure Portal használata
-Ebben a szakaszban a tesztkörnyezet tulajdonosaként a Azure Portal használatával adhat hozzá felhasználót felügyelt identitást a laborhoz. 
+Ebben a szakaszban, mint a labor tulajdonosa, az Azure Portal használatával adja hozzá a felhasználó által felügyelt identitást a laborban. 
 
-1. A labor lapon válassza a **konfiguráció és szabályzatok**lehetőséget. 
-1. Válassza az **identitás** lehetőséget a **Beállítások** szakaszban.
-1. Felhasználóhoz rendelt identitás hozzáadásához válassza a **Hozzáadás** lehetőséget az eszköztáron. 
-1. Válasszon ki egy **identitást** egy előre feltöltött legördülő listából.
-1. Kattintson az **OK** gombra.
+1. A tesztkörnyezet lapon válassza a **Konfiguráció és házirendek**lehetőséget. 
+1. Válassza **az Identitás** lehetőséget a **Beállítások** szakaszban.
+1. Felhasználó hozrendelt identitásának hozzáadásához kattintson a **Hozzáadás** gombra az eszköztáron. 
+1. Válasszon **identitást** egy előre kitöltött legördülő listából.
+1. Válassza **az OK gombot.**
 
     ![Felhasználó által felügyelt identitás hozzáadása](./media/use-managed-identities-environments/add-user-managed-identity.png)
-2. A felhasználó által felügyelt identitás megjelenik a listában. 
+2. A hozzáadott felhasználó által felügyelt identitás látható a listában. 
 
     ![Felhasználó által felügyelt identitás a listában](./media/use-managed-identities-environments/identity-in-list.png)
 
-A mentés után a labor ezt az identitást fogja használni az összes tesztkörnyezet környezetének telepítésekor. Az identitás erőforrását az Azure-ban is elérheti, ha kijelöli az identitást a listából. 
+Mentés után a labor fogja használni ezt az identitást, miközben az összes tesztkörnyezetben. Az identitás-erőforrás azure-ban is hozzáférhet az identitás kiválasztásával a listából. 
 
-A labor tulajdonosának semmilyen különleges teendőt nem kell tennie a környezet üzembe helyezésekor, ha a laborhoz hozzáadott identitás rendelkezik a környezethez hozzáférő külső erőforrásokhoz szükséges engedélyekkel. 
+A labor tulajdonosának nem kell semmi különlegeset tennie egy környezet üzembe helyezése közben, amíg a laborhoz hozzáadott identitás rendelkezik a környezet által a környezet eléréséhez szükséges külső erőforrásokhoz szükséges hozzáféréssel. 
 
-Ha módosítani szeretné a laborhoz rendelt felhasználó által felügyelt identitást, először távolítsa el a laborhoz csatolt identitást, majd adjon hozzá egy másikat a laborhoz. A laborhoz csatolt identitás eltávolításához válassza a **... lehetőséget. (három pont)** , majd kattintson az **Eltávolítás**gombra. 
+A tesztkörnyezethez rendelt felhasználó által felügyelt identitás módosításához először távolítsa el a laborhoz csatolt identitást, majd adjon hozzá egy másikat a laborhoz. A laborhoz csatolt identitás eltávolításához válassza **a ... (három ponttal) gombra,** majd kattintson **az Eltávolítás gombra.** 
 
 ![Felhasználó által felügyelt identitás a listában](./media/use-managed-identities-environments/replace-identity.png)  
 
-## <a name="use-api"></a>API használata
+## <a name="use-api"></a>AZ API használata
 
-1. Az identitás létrehozása után jegyezze fel az identitás erőforrás-AZONOSÍTÓját. A következő mintához hasonlóan kell kinéznie: 
+1. Az identitás létrehozása után jegyezze fel az identitás erőforrás-azonosítóját. A következő mintának kell kinéznie: 
 
     `/subscriptions/0000000000-0000-0000-0000-00000000000000/resourceGroups/<RESOURCE GROUP NAME> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/<NAME of USER IDENTITY>`.
-1. A PUT HTTPS-metódussal új `ServiceRunner`-erőforrást adhat hozzá a laborhoz az alábbi példához hasonló módon. A Service Runner-erőforrás egy proxy erőforrás a felügyelt identitások kezeléséhez és vezérléséhez a DevTest Labs szolgáltatásban. A szolgáltatás futó neve lehet bármilyen érvényes név, de javasoljuk, hogy használja a felügyelt identitás erőforrásának nevét. 
+1. A következő példához hasonló `ServiceRunner` új erőforrás hozzáadásához hajtson végre egy PUT Https metódust. A Service Runner erőforrás egy proxyerőforrás a felügyelt identitások kezeléséhez és kezeléséhez a DevTest Labs.Service runner resource is a proxy resource to manage and control managed managed managed and control managed managed managed s A szolgáltatás futó neve lehet bármilyen érvényes nevet, de azt javasoljuk, hogy használja a felügyelt identitás-erőforrás nevét. 
  
     ```json
     PUT https://management.azure.com/subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.Devtestlab/labs/{yourlabname}/serviceRunners/{serviceRunnerName}
@@ -93,4 +93,4 @@ Ha módosítani szeretné a laborhoz rendelt felhasználó által felügyelt ide
     }
     ```
  
-Miután hozzáadta a felhasználóhoz rendelt identitást a laborhoz, a Azure DevTest Labs szolgáltatás Azure Resource Manager környezetek telepítésekor fogja használni. Ha például szüksége van a Resource Manager-sablonra egy külső megosztott képkatalógus rendszerképének eléréséhez, győződjön meg arról, hogy a laborhoz hozzáadott identitásnak minimálisan szükséges engedélyei vannak a megosztott Képtár erőforrásához. 
+Miután a felhasználó által hozzárendelt identitás tanod a laborba, az Azure DevTest Labs szolgáltatás fogja használni az Azure Resource Manager-környezetek üzembe helyezésekor. Ha például szüksége van az Erőforrás-kezelő sablonra egy külső megosztott képtár képének eléréséhez, győződjön meg arról, hogy a laborba hozzáadott identitás rendelkezik a megosztott képtár erőforrás minimálisan szükséges engedélyekkel. 
