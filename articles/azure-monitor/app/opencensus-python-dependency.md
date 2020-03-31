@@ -1,26 +1,26 @@
 ---
-title: Függőségi nyomon követés az Azure Application Insights a OpenCensus Pythonban | Microsoft Docs
-description: A Python-alkalmazások függőségi hívásait a OpenCensus Python használatával figyelheti.
+title: Függőségkövetés az Azure Application Insights ban az OpenCensus Python nal | Microsoft dokumentumok
+description: Figyelheti a Python-alkalmazások függőségi hívásait az OpenCensus Python on keresztül.
 ms.topic: conceptual
 author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.openlocfilehash: e400669fd96518adead74a81fc332767c5f9b23b
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77669930"
 ---
-# <a name="track-dependencies-with-opencensus-python"></a>Függőségek követése a OpenCensus Pythonban
+# <a name="track-dependencies-with-opencensus-python"></a>Függőségek nyomon követése az OpenCensus Pythonnal
 
-A függőség egy külső összetevő, amelyet az alkalmazás meghív. A függőségi adatok gyűjtése a OpenCensus Python és annak különböző integrációi használatával történik. Ezt követően a rendszer a Azure Monitor `dependencies` telemetria Application Insights küldi el az adatait.
+A függőség egy külső összetevő, amelyet az alkalmazás hív meg. A függőségi adatok gyűjtése az OpenCensus Python és a különböző integrációk használatával történik. Az adatokat ezután telemetriaként `dependencies` az Application Insights az Azure Monitor alatt elküldi.
 
-Először is a Python-alkalmazást a legújabb [OpenCensus PYTHON SDK](../../azure-monitor/app/opencensus-python.md)-val alakíthatja ki.
+Először a Python-alkalmazást a legújabb [OpenCensus Python SDK-val](../../azure-monitor/app/opencensus-python.md)instrumental.
 
 ## <a name="in-process-dependencies"></a>Folyamaton belüli függőségek
 
-A OpenCensus Python SDK for Azure Monitor lehetővé teszi a "folyamaton belüli" függőségi telemetria küldését (az alkalmazáson belül előforduló információkat és logikát). A folyamaton belüli függőségek a `type` mezővel `INPROC` az elemzésekben.
+OpenCensus Python SDK az Azure Monitor lehetővé teszi, hogy küldjön "folyamaton belüli" függőség telemetriai adatok (az alkalmazáson belül előforduló információk és logika). A folyamaton belüli függőségek `INPROC` az elemzéshez ugyanúgy rendelkeznek a `type` mezővel.
 
 ```python
 from opencensus.ext.azure.trace_exporter import AzureExporter
@@ -33,11 +33,11 @@ with tracer.span(name='foo'): # <-- A dependency telemetry item will be sent for
     print('Hello, World!')
 ```
 
-## <a name="dependencies-with-requests-integration"></a>"Kérelmek" integrációs függőségek
+## <a name="dependencies-with-requests-integration"></a>Függőségek "kérések" integrációval
 
-A kimenő kérelmek nyomon követése a OpenCensus `requests`-integrációval.
+Kövesse nyomon a kimenő kérelmeket az OpenCensus `requests` integrációval.
 
-Töltse le és telepítse a `opencensus-ext-requests`t a [PyPI](https://pypi.org/project/opencensus-ext-requests/) -ből, és adja hozzá a nyomkövetési integrációhoz. A Python- [kérelmek](https://pypi.org/project/requests/) könyvtárának használatával küldött kérelmeket a rendszer nyomon fogja követni.
+Töltse le `opencensus-ext-requests` és telepítse a [PyPI-ből,](https://pypi.org/project/opencensus-ext-requests/) és adja hozzá a nyomkövetési integrációkhoz. A [Python-kérelmek](https://pypi.org/project/requests/) könyvtárával küldött kérelmeket a rendszer nyomon követi.
 
 ```python
 import requests
@@ -54,11 +54,11 @@ with tracer.span(name='parent'):
     response = requests.get(url='https://www.wikipedia.org/wiki/Rabbit') # <-- this request will be tracked
 ```
 
-## <a name="dependencies-with-httplib-integration"></a>Függőségek a "httplib" integrációval
+## <a name="dependencies-with-httplib-integration"></a>Függőségek "httplib" integrációval
 
-A kimenő kérelmek nyomon követése a OpenCensus `httplib`-integrációval.
+Kövesse nyomon a kimenő `httplib` kérelmeket OpenCensus integrációval.
 
-Töltse le és telepítse a `opencensus-ext-httplib`t a [PyPI](https://pypi.org/project/opencensus-ext-httplib/) -ből, és adja hozzá a nyomkövetési integrációhoz. A [http. Client](https://docs.python.org/3.7/library/http.client.html) Python3 vagy [httplib](https://docs.python.org/2/library/httplib.html) for Python2 szolgáltatással küldött kérelmeket a rendszer nyomon fogja követni.
+Töltse le `opencensus-ext-httplib` és telepítse a [PyPI-ből,](https://pypi.org/project/opencensus-ext-httplib/) és adja hozzá a nyomkövetési integrációkhoz. A [http.client](https://docs.python.org/3.7/library/http.client.html) for Python3 vagy [a httplib](https://docs.python.org/2/library/httplib.html) for Python2 használatával küldött kérelmeket a rendszer nyomon követi.
 
 ```python
 import http.client as httplib
@@ -80,11 +80,11 @@ response = conn.getresponse()
 conn.close()
 ```
 
-## <a name="dependencies-with-django-integration"></a>Függőségek a "Django" integrációval
+## <a name="dependencies-with-django-integration"></a>Függőségek a "django" integrációval
 
-A kimenő Django-kérelmek nyomon követése a OpenCensus `django`-integrációval.
+Kövesse nyomon a kimenő Django-kérelmeket az OpenCensus `django` integrációval.
 
-Töltse le és telepítse a `opencensus-ext-django` alkalmazást a [PyPI](https://pypi.org/project/opencensus-ext-django/) -ből, és adja hozzá a következő sort a `MIDDLEWARE` szakaszhoz a Django `settings.py` fájljában.
+Töltse le `opencensus-ext-django` és telepítse a [PyPI-ből,](https://pypi.org/project/opencensus-ext-django/) és adja hozzá a következő sort a `MIDDLEWARE` Django `settings.py` fájl szakaszához.
 
 ```python
 MIDDLEWARE = [
@@ -93,7 +93,7 @@ MIDDLEWARE = [
 ]
 ```
 
-További beállítások is megadhatók, a [testreszabások](https://github.com/census-instrumentation/opencensus-python#customization) a teljes referenciához olvashatók.
+További konfigurációk is rendelkezésre állnak, olvassa el a [testreszabásokat](https://github.com/census-instrumentation/opencensus-python#customization) a teljes referencia érdekében.
 
 ```python
 OPENCENSUS = {
@@ -106,11 +106,11 @@ OPENCENSUS = {
 }
 ```
 
-## <a name="dependencies-with-mysql-integration"></a>Függőségek a "MySQL" integrációval
+## <a name="dependencies-with-mysql-integration"></a>Függőségek a "mysql" integrációval
 
-A MYSQL-függőségek nyomon követése a OpenCensus `mysql`-integrációval. Ez az integráció támogatja a [MySQL-Connector](https://pypi.org/project/mysql-connector-python/) függvénytárat.
+Kövesse nyomon MYSQL-függőségeit `mysql` az OpenCensus integrációval. Ez az integráció támogatja a [mysql-összekötő](https://pypi.org/project/mysql-connector-python/) könyvtárat.
 
-Töltse le és telepítse a `opencensus-ext-mysql`t a [PyPI](https://pypi.org/project/opencensus-ext-mysql/) -ből, és adja hozzá a következő sorokat a kódhoz.
+Töltse le `opencensus-ext-mysql` és telepítse a [PyPI-ből,](https://pypi.org/project/opencensus-ext-mysql/) és adja hozzá a következő sorokat a kódhoz.
 
 ```python
 from opencensus.trace import config_integration
@@ -120,9 +120,9 @@ config_integration.trace_integrations(['mysql'])
 
 ## <a name="dependencies-with-pymysql-integration"></a>Függőségek a "pymysql" integrációval
 
-Kövesse nyomon a PyMySQL függőségeit a OpenCensus `pymysql` integrációval.
+Kövesse nyomon a PyMySQL-függőségeket az OpenCensus `pymysql` integrációval.
 
-Töltse le és telepítse a `opencensus-ext-pymysql`t a [PyPI](https://pypi.org/project/opencensus-ext-pymysql/) -ből, és adja hozzá a következő sorokat a kódhoz.
+Töltse le `opencensus-ext-pymysql` és telepítse a [PyPI-ből,](https://pypi.org/project/opencensus-ext-pymysql/) és adja hozzá a következő sorokat a kódhoz.
 
 ```python
 from opencensus.trace import config_integration
@@ -130,11 +130,11 @@ from opencensus.trace import config_integration
 config_integration.trace_integrations(['pymysql'])
 ```
 
-## <a name="dependencies-with-postgresql-integration"></a>Függőségek a "PostgreSQL" integrációval
+## <a name="dependencies-with-postgresql-integration"></a>Függőségek a "postgresql" integrációval
 
-A PostgreSQL függőségeinek nyomon követése a OpenCensus `postgresql`-integrációval. Ez az integráció támogatja a [psycopg2](https://pypi.org/project/psycopg2/) könyvtárat.
+Kövesse nyomon a PostgreSQL függőségeit az OpenCensus `postgresql` integrációval. Ez az integráció támogatja a [psycopg2](https://pypi.org/project/psycopg2/) könyvtárat.
 
-Töltse le és telepítse a `opencensus-ext-postgresql`t a [PyPI](https://pypi.org/project/opencensus-ext-postgresql/) -ből, és adja hozzá a következő sorokat a kódhoz.
+Töltse le `opencensus-ext-postgresql` és telepítse a [PyPI-ből,](https://pypi.org/project/opencensus-ext-postgresql/) és adja hozzá a következő sorokat a kódhoz.
 
 ```python
 from opencensus.trace import config_integration
@@ -144,9 +144,9 @@ config_integration.trace_integrations(['postgresql'])
 
 ## <a name="dependencies-with-pymongo-integration"></a>Függőségek a "pymongo" integrációval
 
-Kövesse nyomon a MongoDB függőségeit a OpenCensus `pymongo` integrációval. Ez az integráció támogatja a [pymongo](https://pypi.org/project/pymongo/) könyvtárat.
+Kövesse nyomon a MongoDB függőségeit az OpenCensus `pymongo` integrációval. Ez az integráció támogatja a [pymongo](https://pypi.org/project/pymongo/) könyvtárat.
 
-Töltse le és telepítse a `opencensus-ext-pymongo`t a [PyPI](https://pypi.org/project/opencensus-ext-pymongo/) -ből, és adja hozzá a következő sorokat a kódhoz.
+Töltse le `opencensus-ext-pymongo` és telepítse a [PyPI-ből,](https://pypi.org/project/opencensus-ext-pymongo/) és adja hozzá a következő sorokat a kódhoz.
 
 ```python
 from opencensus.trace import config_integration
@@ -154,9 +154,9 @@ from opencensus.trace import config_integration
 config_integration.trace_integrations(['pymongo'])
 ```
 
-### <a name="dependencies-with-sqlalchemy-integration"></a>Függőségek a "SQLAlchemy" integrációval
+### <a name="dependencies-with-sqlalchemy-integration"></a>Függőségek "sqlalchemy" integrációval
 
-A függőségek követése a SQLAlchemy használatával a OpenCensus `sqlalchemy` integrációja segítségével. Ez az integráció nyomon követi a [SQLAlchemy](https://pypi.org/project/SQLAlchemy/) -csomag használatát, függetlenül az alapul szolgáló adatbázistól.
+Kövesse nyomon függőségeit az SQLAlchemy használatával az OpenCensus `sqlalchemy` integráció használatával. Ez az integráció nyomon követi az [sqlalchemy](https://pypi.org/project/SQLAlchemy/) csomag használatát, függetlenül az alapul szolgáló adatbázistól.
 
 ```python
 from opencensus.trace import config_integration
@@ -164,10 +164,10 @@ from opencensus.trace import config_integration
 config_integration.trace_integrations(['sqlalchemy'])
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Alkalmazástérkép](../../azure-monitor/app/app-map.md)
 * [Rendelkezésre állás](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Search](../../azure-monitor/app/diagnostic-search.md)
-* [Log (Analytics) lekérdezés](../../azure-monitor/log-query/log-query-overview.md)
-* [Tranzakció-diagnosztika](../../azure-monitor/app/transaction-diagnostics.md)
+* [Keresés](../../azure-monitor/app/diagnostic-search.md)
+* [Napló (Analytics) lekérdezés](../../azure-monitor/log-query/log-query-overview.md)
+* [Tranzakció diagnosztikája](../../azure-monitor/app/transaction-diagnostics.md)

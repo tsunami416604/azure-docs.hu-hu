@@ -1,187 +1,187 @@
 ---
-title: Az Azure cache geo-replikációjának beállítása a Redis-hez | Microsoft Docs
-description: Ismerje meg, hogyan replikálhatja az Azure cache-t a Redis-példányok földrajzi régiók közötti replikálásához.
+title: Az Azure Cache for Redis georeplikációjának beállítása | Microsoft dokumentumok
+description: Ismerje meg, hogyan replikálhatja az Azure-gyorsítótárat a Redis-példányok földrajzi régiók között.
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
 ms.openlocfilehash: ce50c665fa79c361f638fda4ec373d5215c407f8
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74129431"
 ---
-# <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Az Azure cache geo-replikációjának beállítása a Redis
+# <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>A georeplikáció beállítása az Azure Cache for Redis számára
 
-A Geo-replikáció lehetővé teszi két prémium szintű Azure cache összekapcsolását a Redis-példányokhoz. Az egyik gyorsítótár elsődleges csatolt gyorsítótárként van kiválasztva, a másik pedig másodlagos csatolt gyorsítótárként. A másodlagos csatolt gyorsítótár írásvédett lesz, és az elsődleges gyorsítótárba írt információk replikálódnak a másodlagos csatolt gyorsítótárba. Ez a funkció a gyorsítótár Azure-régiók közötti replikálására használható. Ez a cikk útmutatást nyújt a Geo-replikáció konfigurálásához a prémium szintű Azure cache-hez a Redis-példányok esetében.
+A georeplikáció két prémium szintű Azure-gyorsítótár redis-példányok összekapcsolására szolgáló mechanizmust biztosít. Az egyik gyorsítótár az elsődleges csatolt gyorsítótár, a másik pedig másodlagos csatolt gyorsítótár. A másodlagos csatolt gyorsítótár írásvédetté válik, és az elsődleges gyorsítótárba írt adatok replikálódnak a másodlagos csatolt gyorsítótárba. Ez a funkció a gyorsítótár Replikálására használható az Azure-régiók között. Ez a cikk egy útmutatót a georeplikáció konfigurálása a prémium szintű Azure-gyorsítótár Redis-példányok.
 
-## <a name="geo-replication-prerequisites"></a>Földrajzi replikálás előfeltételei
+## <a name="geo-replication-prerequisites"></a>Georeplikáció előfeltételei
 
-Két gyorsítótár közötti földrajzi replikálás konfigurálásához a következő előfeltételek teljesülése szükséges:
+A két gyorsítótár közötti georeplikáció konfigurálásához a következő előfeltételeket kell teljesíteni:
 
 - Mindkét gyorsítótár [prémium szintű](cache-premium-tier-intro.md) gyorsítótár.
-- Mindkét gyorsítótár ugyanahhoz az Azure-előfizetéshez tartozik.
-- A másodlagos csatolt gyorsítótár a gyorsítótár mérete vagy a gyorsítótár nagyobb mérete, mint az elsődleges csatolt gyorsítótár.
-- Mindkét gyorsítótár létre van hozva, és futó állapotban van.
+- Mindkét gyorsítótár ugyanabban az Azure-előfizetésben van.
+- A másodlagos csatolt gyorsítótár vagy azonos gyorsítótárméretű, vagy nagyobb a gyorsítótár mérete, mint az elsődleges csatolt gyorsítótár.
+- Mindkét gyorsítótár jön létre, és egy futó állapotban.
 
-Bizonyos funkciók nem támogatottak a Geo-replikációval:
+Egyes funkciókat a georeplikáció nem támogat:
 
-- Az adatmegőrzés nem támogatott a Geo-replikációval.
-- A fürtözés akkor támogatott, ha mindkét gyorsítótárban engedélyezve van a fürtözés, és azonos számú szegmens van.
-- Az azonos VNET lévő gyorsítótárak támogatottak.
-- A különböző virtuális hálózatok található gyorsítótárak a kikötésekkel együtt támogatottak. Lásd: használhatom a [geo-replikációt a saját gyorsítótárával egy VNET?](#can-i-use-geo-replication-with-my-caches-in-a-vnet) további információért.
+- A helypersistncia nem támogatott a georeplikáció.
+- A fürtözés akkor támogatott, ha mindkét gyorsítótár fürtözése engedélyezve van, és azonos számú szegmensek.
+- Az azonos virtuális hálózatgyorsítótárai támogatottak.
+- A különböző Virtuális és tiszta- és nagygépek gyorsítótárait kikötések támogatják. További információ: [Használhatja a georeplikációt a gyorsítótáraimmal a virtuális hálózatban?](#can-i-use-geo-replication-with-my-caches-in-a-vnet)
 
-A földrajzi replikálás konfigurálása után a következő korlátozások vonatkoznak a csatolt gyorsítótár-párokra:
+A georeplikáció konfigurálása után a következő korlátozások vonatkoznak a csatolt gyorsítótárpárra:
 
-- A másodlagos csatolt gyorsítótár írásvédett; elolvashatja, de nem írhat adatokra. 
-- A rendszer eltávolítja a hivatkozás hozzáadása előtt a másodlagos csatolt gyorsítótárban található összes olyan adattal. Ha a Geo-replikáció később el lett távolítva, a replikált adatforgalom a másodlagos csatolt gyorsítótárban marad.
-- A gyorsítótárak összekapcsolása közben nem [méretezheti](cache-how-to-scale.md) a gyorsítótárat.
-- A szegmensek [száma nem módosítható](cache-how-to-premium-clustering.md) , ha a gyorsítótárban engedélyezve van a fürtözés.
-- Az adatmegőrzés nem engedélyezhető mindkét gyorsítótárban.
-- A gyorsítótárból is [exportálhat](cache-how-to-import-export-data.md#export) .
-- A másodlagos csatolt gyorsítótárba nem [importálható](cache-how-to-import-export-data.md#import) .
-- A csatolt gyorsítótár vagy az azokat tartalmazó erőforráscsoport nem törölhető, amíg le nem kapcsolja a gyorsítótárak csatolását. További információ: [Miért volt sikertelen a művelet, amikor megpróbáltam törölni a csatolt gyorsítótárat?](#why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache)
-- Ha a gyorsítótárak különböző régiókban találhatók, a hálózati kimenő költségek a régiók között áthelyezett adatforgalomra vonatkoznak. További információ: [Mennyibe kerül az adatok replikálása az Azure-régiók között?](#how-much-does-it-cost-to-replicate-my-data-across-azure-regions)
-- Az elsődleges és a másodlagos csatolt gyorsítótár között nem történik automatikus feladatátvétel. Az ügyfélalkalmazások feladatátvételének módjával kapcsolatos további információkért lásd: [Hogyan történik a feladatátvétel a másodlagos csatolt gyorsítótárba?](#how-does-failing-over-to-the-secondary-linked-cache-work)
+- A másodlagos csatolt gyorsítótár írásvédett; olvashat róla, de nem írhat rá adatokat. 
+- A másodlagos csatolt gyorsítótárban a hivatkozás hozzáadása előtt lévő adatok törlődnek. Ha azonban a georeplikációt később eltávolítja, a replikált adatok a másodlagos csatolt gyorsítótárban maradnak.
+- Egyik gyorsítótár [scale](cache-how-to-scale.md) at sem skálázhatja, amíg a gyorsítótárak össze vannak kapcsolva.
+- A [szegmensek száma](cache-how-to-premium-clustering.md) nem módosítható, ha a gyorsítótár fürtözése engedélyezve van.
+- Egyik gyorsítótárban sem engedélyezhető az adatmegőrzés.
+- Mindkét gyorsítótárból [exportálható.](cache-how-to-import-export-data.md#export)
+- Nem [importálható](cache-how-to-import-export-data.md#import) a másodlagos csatolt gyorsítótárba.
+- A gyorsítótárak leválasztásáig nem törölheti sem a csatolt gyorsítótárat, sem az azokat tartalmazó erőforráscsoportot. További információ: [Miért nem sikerült a művelet, amikor megpróbáltam törölni a csatolt gyorsítótárat?](#why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache)
+- Ha a gyorsítótárak különböző régiókban találhatók, a hálózati kimenő forgalom költségei a régiók között áthelyezett adatokra vonatkoznak. További információ: [Mennyibe kerül az adataim replikálása az Azure-régiókközött?](#how-much-does-it-cost-to-replicate-my-data-across-azure-regions)
+- Az elsődleges és a másodlagos csatolt gyorsítótár között nem történik automatikus feladatátvétel. Az ügyfélalkalmazások feladatátvételével kapcsolatos további információkért és a [Másodlagos csatolt gyorsítótár feladatátvételi munkáról](#how-does-failing-over-to-the-secondary-linked-cache-work) című témakörben talál további információt?
 
-## <a name="add-a-geo-replication-link"></a>Földrajzi replikálási hivatkozás hozzáadása
+## <a name="add-a-geo-replication-link"></a>Georeplikációs hivatkozás hozzáadása
 
-1. Ha két gyorsítótárat szeretne összekapcsolni a Geo-replikációhoz, akkor kattintson a **geo-replikáció** elemre azon gyorsítótár erőforrás menüjében, amelyet elsődlegesen csatolt gyorsítótárként kíván használni. Ezután a **geo-replikáció** panelen kattintson a **gyorsítótár replikálási hivatkozás hozzáadása** elemre.
+1. Ha két gyorsítótárat szeretne összekapcsolni a földrajzi replikációhoz, kattintson az első számú, elsődleges csatolt gyorsítótár Erőforrás **menüjében** lévő Georeplikáció parancsra. Ezután kattintson **a Gyorsítótár-replikáció hozzáadása hivatkozása** a **georeplikációs** panelen.
 
     ![Hivatkozás hozzáadása](./media/cache-how-to-geo-replication/cache-geo-location-menu.png)
 
-2. Kattintson a kívánt másodlagos gyorsítótár nevére a **kompatibilis gyorsítótárak** listából. Ha a másodlagos gyorsítótár nem jelenik meg a listában, ellenőrizze, hogy teljesülnek-e a másodlagos gyorsítótár [földrajzi replikálásának előfeltételei](#geo-replication-prerequisites) . A gyorsítótárak régiónként történő szűréséhez kattintson a térképen a régióra, hogy csak a **kompatibilis gyorsítótárak** listájában megjelenjenek a gyorsítótárak.
+2. Kattintson a kívánt másodlagos gyorsítótár nevére a **Kompatibilis gyorsítótárak** listában. Ha a másodlagos gyorsítótár nem jelenik meg a listában, ellenőrizze, hogy a [georeplikációs előfeltételei](#geo-replication-prerequisites) a másodlagos gyorsítótár teljesülnek. A gyorsítótárak régió szerinti szűréséhez kattintson a térképen lévő területre, ha csak a Kompatibilis gyorsítótárak listában lévő **gyorsítótárakat** szeretné megjeleníteni.
 
-    ![Geo-replikációval kompatibilis gyorsítótárak](./media/cache-how-to-geo-replication/cache-geo-location-select-link.png)
+    ![Georeplikációval kompatibilis gyorsítótárak](./media/cache-how-to-geo-replication/cache-geo-location-select-link.png)
     
-    A helyi menüből is elindíthatja a csatolási folyamatot, vagy megtekintheti a másodlagos gyorsítótár részleteit.
+    A csatolási folyamatot a helyi menü segítségével is elindíthatja, vagy megtekintheti a másodlagos gyorsítótár részleteit.
 
-    ![Geo-replikálás helyi menüje](./media/cache-how-to-geo-replication/cache-geo-location-select-link-context-menu.png)
+    ![Georeplikáció helyi menüje](./media/cache-how-to-geo-replication/cache-geo-location-select-link-context-menu.png)
 
-3. Kattintson a **hivatkozás** gombra a két gyorsítótár együttes összekapcsolásához és a replikálási folyamat megkezdéséhez.
+3. Kattintson a **Hivatkozás** gombra a két gyorsítótár összekapcsolására és a replikációs folyamat megkezdésére.
 
-    ![Csatolási gyorsítótárak](./media/cache-how-to-geo-replication/cache-geo-location-confirm-link.png)
+    ![Hivatkozás-gyorsítótárak](./media/cache-how-to-geo-replication/cache-geo-location-confirm-link.png)
 
-4. A replikációs folyamat előrehaladását a **geo-replikáció** panelen tekintheti meg.
+4. A replikációs folyamat előrehaladását a **georeplikációs** panelen tekintheti meg.
 
-    ![Csatolás állapota](./media/cache-how-to-geo-replication/cache-geo-location-linking.png)
+    ![Csatolási állapot](./media/cache-how-to-geo-replication/cache-geo-location-linking.png)
 
-    A csatolási állapotot az **Áttekintés** panelen is megtekintheti az elsődleges és másodlagos gyorsítótárak esetében is.
+    A csatolási állapot az **áttekintő** panelen is megtekintheti az elsődleges és a másodlagos gyorsítótárakat.
 
     ![Gyorsítótár állapota](./media/cache-how-to-geo-replication/cache-geo-location-link-status.png)
 
-    A replikálási folyamat befejeződése után a **hivatkozás állapota** **sikeresre**változik.
+    A replikációs folyamat befejezése után a **Kapcsolat állapota** Sikeres állapotra **változik.**
 
     ![Gyorsítótár állapota](./media/cache-how-to-geo-replication/cache-geo-location-link-successful.png)
 
-    Az elsődleges csatolt gyorsítótár továbbra is használható a csatolási folyamat során. A másodlagos csatolt gyorsítótár nem érhető el, amíg a csatolási folyamat be nem fejeződik.
+    Az elsődleges csatolt gyorsítótár továbbra is használható a csatolási folyamat során. A másodlagos csatolt gyorsítótár nem érhető el, amíg a csatolási folyamat befejeződik.
 
-## <a name="remove-a-geo-replication-link"></a>Geo-replikálási hivatkozás eltávolítása
+## <a name="remove-a-geo-replication-link"></a>Georeplikációs hivatkozás eltávolítása
 
-1. A két gyorsítótár közötti kapcsolat eltávolításához és a földrajzi replikálás leállításához kattintson a **gyorsítótárak leválasztása** lehetőségre a **geo-replikáció** panelen.
+1. A két gyorsítótár közötti kapcsolat eltávolításához és a georeplikáció leállításához kattintson a **gyorsítótárak leválasztása** a **georeplikációs** panelről elemre.
     
     ![Gyorsítótárak leválasztása](./media/cache-how-to-geo-replication/cache-geo-location-unlink.png)
 
-    Ha a leválasztási folyamat befejeződik, a másodlagos gyorsítótár az olvasások és írások esetében is elérhető.
+    Amikor a leválasztási folyamat befejeződik, a másodlagos gyorsítótár olvasási és írási célokra is elérhető.
 
 >[!NOTE]
->A Geo-replikációs hivatkozás eltávolításakor az elsődleges csatolt gyorsítótárból származó replikált adatok a másodlagos gyorsítótárban maradnak.
+>A georeplikációs kapcsolat eltávolításakor az elsődleges csatolt gyorsítótárreplikált adatai a másodlagos gyorsítótárban maradnak.
 >
 >
 
-## <a name="geo-replication-faq"></a>Geo-replikálás – gyakori kérdések
+## <a name="geo-replication-faq"></a>Georeplikáció – gyakori kérdések
 
-- [Használhatom a Geo-replikációt standard vagy alapszintű gyorsítótárral?](#can-i-use-geo-replication-with-a-standard-or-basic-tier-cache)
-- [Használható a gyorsítótár a csatolási vagy leválasztási folyamat során?](#is-my-cache-available-for-use-during-the-linking-or-unlinking-process)
-- [Összekapcsolhatok kettőnél több gyorsítótárat is?](#can-i-link-more-than-two-caches-together)
-- [Kapcsolhatok két gyorsítótárat különböző Azure-előfizetésből?](#can-i-link-two-caches-from-different-azure-subscriptions)
-- [Kapcsolhatok két gyorsítótárat különböző méretekkel?](#can-i-link-two-caches-with-different-sizes)
-- [Használhatom a Geo-replikációt a fürtözés engedélyezésével?](#can-i-use-geo-replication-with-clustering-enabled)
-- [Használhatom a Geo-replikációt a VNET a gyorsítótárral?](#can-i-use-geo-replication-with-my-caches-in-a-vnet)
-- [Mi a Redis földrajzi replikálásának replikációs ütemterve?](#what-is-the-replication-schedule-for-redis-geo-replication)
-- [Mennyi ideig tart a Geo-replikálási replikáció?](#how-long-does-geo-replication-replication-take)
-- [Garantált a replikálás helyreállítási pontja?](#is-the-replication-recovery-point-guaranteed)
-- [Használhatom a PowerShellt vagy az Azure CLI-t a Geo-replikáció kezeléséhez?](#can-i-use-powershell-or-azure-cli-to-manage-geo-replication)
-- [Mennyibe kerül az adatmennyiség az Azure-régiók között?](#how-much-does-it-cost-to-replicate-my-data-across-azure-regions)
-- [Miért sikertelen a művelet, amikor megpróbáltam törölni a csatolt gyorsítótárat?](#why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache)
-- [Milyen régiót használhatok a másodlagos csatolt gyorsítótárhoz?](#what-region-should-i-use-for-my-secondary-linked-cache)
-- [Hogyan működik a feladatátvétel a másodlagos csatolt gyorsítótárral?](#how-does-failing-over-to-the-secondary-linked-cache-work)
+- [Használhatom a georeplikációt standard vagy alapszintű gyorsítótárral?](#can-i-use-geo-replication-with-a-standard-or-basic-tier-cache)
+- [A gyorsítótár használható a csatolási vagy lekapcsolási folyamat során?](#is-my-cache-available-for-use-during-the-linking-or-unlinking-process)
+- [Kettőnél több gyorsítótárat is összekapcsolhatok?](#can-i-link-more-than-two-caches-together)
+- [Összekapcsolhatok két gyorsítótárat különböző Azure-előfizetésekből?](#can-i-link-two-caches-from-different-azure-subscriptions)
+- [Összekapcsolhatok két különböző méretű gyorsítótárat?](#can-i-link-two-caches-with-different-sizes)
+- [Használhatom a georeplikációt fürtözés engedélyezésével?](#can-i-use-geo-replication-with-clustering-enabled)
+- [Használhatom a georeplikációt a gyorsítótáraimmal egy virtuális hálózatban?](#can-i-use-geo-replication-with-my-caches-in-a-vnet)
+- [Mi a Redis georeplikációreplikációjának replikációs ütemezése?](#what-is-the-replication-schedule-for-redis-geo-replication)
+- [Mennyi ideig tart a georeplikáció replikációja?](#how-long-does-geo-replication-replication-take)
+- [Garantált a replikációs helyreállítási pont?](#is-the-replication-recovery-point-guaranteed)
+- [Használhatom a PowerShellt vagy az Azure CLI-t a georeplikáció kezeléséhez?](#can-i-use-powershell-or-azure-cli-to-manage-geo-replication)
+- [Mennyibe kerül az adataim replikálása az Azure-régiókközött?](#how-much-does-it-cost-to-replicate-my-data-across-azure-regions)
+- [Miért nem sikerült a művelet, amikor megpróbáltam törölni a csatolt gyorsítótárat?](#why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache)
+- [Melyik régiót használjam a másodlagos csatolt gyorsítótárhoz?](#what-region-should-i-use-for-my-secondary-linked-cache)
+- [Hogyan működik a másodlagos csatolt gyorsítótár rakoncáta?](#how-does-failing-over-to-the-secondary-linked-cache-work)
 
-### <a name="can-i-use-geo-replication-with-a-standard-or-basic-tier-cache"></a>Használhatom a Geo-replikációt standard vagy alapszintű gyorsítótárral?
+### <a name="can-i-use-geo-replication-with-a-standard-or-basic-tier-cache"></a>Használhatom a georeplikációt standard vagy alapszintű gyorsítótárral?
 
-Nem, a Geo-replikáció csak a prémium szintű gyorsítótárak esetében érhető el.
+Nem, a georeplikáció csak a prémium szintű gyorsítótárak hoz érhető el.
 
-### <a name="is-my-cache-available-for-use-during-the-linking-or-unlinking-process"></a>Használható a gyorsítótár a csatolási vagy leválasztási folyamat során?
+### <a name="is-my-cache-available-for-use-during-the-linking-or-unlinking-process"></a>A gyorsítótár használható a csatolási vagy lekapcsolási folyamat során?
 
-- A csatoláskor az elsődleges csatolt gyorsítótár továbbra is elérhető marad, amíg a kapcsolódási folyamat befejeződik.
-- A csatolás esetén a másodlagos csatolt gyorsítótár nem érhető el, amíg a csatolási folyamat be nem fejeződik.
-- A leválasztáskor mindkét gyorsítótár elérhető marad, amíg a leválasztási folyamat befejeződik.
+- Csatoláskor az elsődleges csatolt gyorsítótár elérhető marad, amíg a csatolási folyamat befejeződik.
+- Csatoláskor a másodlagos csatolt gyorsítótár nem érhető el, amíg a csatolási folyamat be nem fejeződik.
+- A csatolás leválasztásakor mindkét gyorsítótár elérhető marad, amíg a leválasztási folyamat befejeződik.
 
-### <a name="can-i-link-more-than-two-caches-together"></a>Összekapcsolhatok kettőnél több gyorsítótárat is?
+### <a name="can-i-link-more-than-two-caches-together"></a>Kettőnél több gyorsítótárat is összekapcsolhatok?
 
-Nem, egyszerre csak két gyorsítótárat lehet összekapcsolni.
+Nem, csak két gyorsítótárat kapcsolhat össze.
 
-### <a name="can-i-link-two-caches-from-different-azure-subscriptions"></a>Kapcsolhatok két gyorsítótárat különböző Azure-előfizetésből?
+### <a name="can-i-link-two-caches-from-different-azure-subscriptions"></a>Összekapcsolhatok két gyorsítótárat különböző Azure-előfizetésekből?
 
 Nem, mindkét gyorsítótárnak ugyanabban az Azure-előfizetésben kell lennie.
 
-### <a name="can-i-link-two-caches-with-different-sizes"></a>Kapcsolhatok két gyorsítótárat különböző méretekkel?
+### <a name="can-i-link-two-caches-with-different-sizes"></a>Összekapcsolhatok két különböző méretű gyorsítótárat?
 
-Igen, amíg a másodlagos csatolt gyorsítótár nagyobb, mint az elsődleges csatolt gyorsítótár.
+Igen, mindaddig, amíg a másodlagos csatolt gyorsítótár nagyobb, mint az elsődleges csatolt gyorsítótár.
 
-### <a name="can-i-use-geo-replication-with-clustering-enabled"></a>Használhatom a Geo-replikációt a fürtözés engedélyezésével?
+### <a name="can-i-use-geo-replication-with-clustering-enabled"></a>Használhatom a georeplikációt fürtözés engedélyezésével?
 
-Igen, feltéve, hogy mindkét gyorsítótár azonos számú szegmenssel rendelkezik.
+Igen, mindaddig, amíg mindkét gyorsítótárak azonos számú szilánkok.
 
-### <a name="can-i-use-geo-replication-with-my-caches-in-a-vnet"></a>Használhatom a Geo-replikációt a VNET a gyorsítótárral?
+### <a name="can-i-use-geo-replication-with-my-caches-in-a-vnet"></a>Használhatom a georeplikációt a gyorsítótáraimmal egy virtuális hálózatban?
 
-Igen, a virtuális hálózatok-gyorsítótárak földrajzi replikálását a rendszer a kikötésekkel támogatja:
+Igen, a Virtuálisés-gyorsítótárak georeplikációját a következő kikötésekkel támasztja alá:
 
-- Az azonos VNET lévő gyorsítótárak közötti földrajzi replikálás támogatott.
-- A különböző virtuális hálózatok található gyorsítótárak közötti földrajzi replikálás is támogatott.
-  - Ha a virtuális hálózatok ugyanabban a régióban vannak, csatlakoztathatja őket a VNET- [társ](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) vagy egy [VPN Gateway VNET-VNET kapcsolat](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways#V2V)használatával.
-  - Ha a virtuális hálózatok különböző régiókban vannak, a VNET-társítást használó geo-replikáció nem támogatott a belső terheléselosztó alapszintű korlátozásai miatt. A VNET-társítási korlátozásokkal kapcsolatos további információkért lásd: [Virtual Network-peering-követelmények és megkötések](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints). Az ajánlott megoldás egy VPN Gateway VNET-VNET-kapcsolatok használata.
+- Az azonos virtuális hálózat gyorsítótárai közötti georeplikáció támogatott.
+- A különböző virtuális értékek gyorsítótárai közötti georeplikáció is támogatott.
+  - Ha a VNET-k ugyanabban a régióban vannak, virtuális [hálózat-társviszony-létesítés](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) vagy [VPN-átjáró virtuálishálózat-vnet-kapcsolat](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways#V2V)használatával csatlakoztathatja őket.
+  - Ha a VNET-ek különböző régiókban vannak, a virtuális hálózat-társviszony-létesítést használó georeplikáció nem támogatott, mert az alapszintű belső terheléselosztók megszorítása van. A virtuális hálózati társviszony-létesítési korlátozásokról a [Virtuális hálózat - társviszony-létesítés – követelmények és korlátozások](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints)című témakörben talál további információt. Az ajánlott megoldás a VPN-átjáró vnet-vnet-kapcsolat használata.
 
-[Ezzel az Azure-sablonnal](https://azure.microsoft.com/resources/templates/201-redis-vnet-geo-replication/)gyorsan üzembe helyezhet két földrajzi replikált gyorsítótárat egy VPN Gateway VNET – VNET kapcsolattal összekapcsolt VNET.
+[Ezzel az Azure-sablonnal](https://azure.microsoft.com/resources/templates/201-redis-vnet-geo-replication/)gyorsan üzembe helyezhet két georeplikált gyorsítótárat egy VPN-átjáró vnet-vnet-kapcsolattal csatlakoztatott virtuális hálózatba.
 
-### <a name="what-is-the-replication-schedule-for-redis-geo-replication"></a>Mi a Redis földrajzi replikálásának replikációs ütemterve?
+### <a name="what-is-the-replication-schedule-for-redis-geo-replication"></a>Mi a Redis georeplikációreplikációjának replikációs ütemezése?
 
-A replikáció folyamatos és aszinkron, és nem egy adott időpontban történik. A rendszer azonnal és aszinkron módon replikálja az elsődlegesen végzett összes írást a másodlagosra.
+A replikáció folyamatos és aszinkron, és nem történik meg egy adott ütemezés szerint. Az elsődleges en végzett összes írás azonnal és aszinkron módon replikálódik a másodlagos.
 
-### <a name="how-long-does-geo-replication-replication-take"></a>Mennyi ideig tart a Geo-replikálási replikáció?
+### <a name="how-long-does-geo-replication-replication-take"></a>Mennyi ideig tart a georeplikáció replikációja?
 
-A replikáció növekményes, aszinkron és folyamatos, és a megtett idő nem sokban különbözik a régiók közötti késéstől. Bizonyos körülmények között előfordulhat, hogy a másodlagos gyorsítótárnak az elsődlegesből származó adatok teljes szinkronizálására van szükség. Ebben az esetben a replikálási idő függ a következő tényezők számától: az elsődleges gyorsítótár terhelése, a rendelkezésre álló hálózati sávszélesség és a régiók közötti késés. A teljes 53 GB-os geo-replikált párok esetében a replikálási idő 5 – 10 percet is igénybe vehet.
+A replikáció növekményes, aszinkron és folyamatos, és a szükséges idő nem sokban különbözik a régiók közötti késéstől. Bizonyos körülmények között előfordulhat, hogy a másodlagos gyorsítótárra van szükség az elsődleges adatok teljes szinkronizálásához. A replikációs idő ebben az esetben számos tényezőtől függ, például: az elsődleges gyorsítótár terhelése, a rendelkezésre álló hálózati sávszélesség és a régiók közötti késés. Egy teljes 53 GB-os georeplikált pár replikációs idejét találtuk 5 és 10 perc között.
 
-### <a name="is-the-replication-recovery-point-guaranteed"></a>Garantált a replikálás helyreállítási pontja?
+### <a name="is-the-replication-recovery-point-guaranteed"></a>Garantált a replikációs helyreállítási pont?
 
-Földrajzilag replikált módban lévő gyorsítótárak esetében a megőrzés le van tiltva. Ha egy földrajzilag replikált pár nincs összekapcsolva, például egy ügyfél által kezdeményezett feladatátvételsel, a másodlagos csatolt gyorsítótár az adott időpontig megőrzi a szinkronizált adataikat. Ilyen helyzetekben nincs garantált helyreállítási pont.
+Georeplikált módban lévő gyorsítótárak esetén az adatmegőrzés le van tiltva. Ha egy georeplikált pár nincs csatolva, például egy ügyfél által kezdeményezett feladatátvétel, a másodlagos csatolt gyorsítótár megtartja a szinkronizált adatokat addig az időpontig. Ilyen helyzetekben nem garantálható a helyreállítási pont.
 
-Helyreállítási pont beszerzéséhez [exportálja](cache-how-to-import-export-data.md#export) a gyorsítótárból. Később [importálhatja](cache-how-to-import-export-data.md#import) az elsődleges csatolt gyorsítótárba.
+A helyreállítási pont beszerzéséhez [exportáljon](cache-how-to-import-export-data.md#export) bármelyik gyorsítótárból. Később [importálhatja](cache-how-to-import-export-data.md#import) az elsődleges csatolt gyorsítótárba.
 
-### <a name="can-i-use-powershell-or-azure-cli-to-manage-geo-replication"></a>Használhatom a PowerShellt vagy az Azure CLI-t a Geo-replikáció kezeléséhez?
+### <a name="can-i-use-powershell-or-azure-cli-to-manage-geo-replication"></a>Használhatom a PowerShellt vagy az Azure CLI-t a georeplikáció kezeléséhez?
 
-Igen, a Geo-replikáció a Azure Portal, a PowerShell vagy az Azure CLI használatával kezelhető. További információ: [PowerShell-dokumentumok](https://docs.microsoft.com/powershell/module/az.rediscache/?view=azps-1.4.0#redis_cache) vagy [Azure CLI-dokumentumok](https://docs.microsoft.com/cli/azure/redis/server-link?view=azure-cli-latest).
+Igen, a georeplikáció kezelhető az Azure Portalon, a PowerShellen vagy az Azure CLI-n keresztül. További információt a [PowerShell-dokumentumok](https://docs.microsoft.com/powershell/module/az.rediscache/?view=azps-1.4.0#redis_cache) ban vagy az [Azure CLI-dokumentumokban](https://docs.microsoft.com/cli/azure/redis/server-link?view=azure-cli-latest)talál.
 
-### <a name="how-much-does-it-cost-to-replicate-my-data-across-azure-regions"></a>Mennyibe kerül az adatmennyiség az Azure-régiók között?
+### <a name="how-much-does-it-cost-to-replicate-my-data-across-azure-regions"></a>Mennyibe kerül az adataim replikálása az Azure-régiókközött?
 
-A Geo-replikáció használatakor az elsődleges csatolt gyorsítótárból származó adatok replikálódnak a másodlagos csatolt gyorsítótárba. Ha a két csatolt gyorsítótár ugyanahhoz a régióhoz tartozik, az adatátvitel díjmentes. Ha a két csatolt gyorsítótár különböző régiókban található, az adatátviteli díj a hálózat kimenő adatforgalmi díja a régión áthaladó adatforgalomért. További információ: a [sávszélesség díjszabása](https://azure.microsoft.com/pricing/details/bandwidth/).
+Georeplikáció használataesetén az elsődleges csatolt gyorsítótárból származó adatok replikálódnak a másodlagos csatolt gyorsítótárba. Nincs díj az adatátvitelért, ha a két csatolt gyorsítótár ugyanabban a régióban van. Ha a két csatolt gyorsítótár különböző régiókban található, az adatátviteli díj a két régión átkelő adatok hálózati kimenő forgalom költsége. További információt a [Sávszélesség-díjszabás részletei című témakörben talál.](https://azure.microsoft.com/pricing/details/bandwidth/)
 
-### <a name="why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache"></a>Miért sikertelen a művelet, amikor megpróbáltam törölni a csatolt gyorsítótárat?
+### <a name="why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache"></a>Miért nem sikerült a művelet, amikor megpróbáltam törölni a csatolt gyorsítótárat?
 
-A Geo-replikált gyorsítótárak és az erőforráscsoportok nem törölhetők, amíg hozzá nem távolítja a Geo-replikálási hivatkozást. Ha a csatolt gyorsítótárak egyikét vagy mindkettőt tartalmazó erőforráscsoportot is megpróbálja törölni, a rendszer törli az erőforráscsoport többi erőforrását, de az erőforráscsoport a `deleting` állapotban marad, és az erőforráscsoport összes csatolt gyorsítótára a `running` állapotban marad. Az erőforráscsoport és a csatolt gyorsítótárak teljes törléséhez szüntesse meg a gyorsítótárak leválasztását a [geo-replikációs hivatkozás eltávolítása](#remove-a-geo-replication-link)című témakörben leírtak szerint.
+A földrajzireplikált gyorsítótárak és azok erőforráscsoportjai nem törölhetők a csatolás közben, amíg el nem távolítja a georeplikációs kapcsolatot. Ha megpróbálja törölni az egyik vagy mindkét csatolt gyorsítótárat tartalmazó erőforráscsoportot, az erőforráscsoport többi erőforrása törlődik, de az erőforráscsoport állapotban `deleting` `running` marad, és az erőforráscsoport bármely csatolt gyorsítótára állapotban marad. Az erőforráscsoport és a benne lévő csatolt gyorsítótárak teljes törléséhez szüntesse meg a gyorsítótárak csatolásának leválasztását a [Georeplikációs kapcsolat eltávolítása című](#remove-a-geo-replication-link)részben leírtak szerint.
 
-### <a name="what-region-should-i-use-for-my-secondary-linked-cache"></a>Milyen régiót használhatok a másodlagos csatolt gyorsítótárhoz?
+### <a name="what-region-should-i-use-for-my-secondary-linked-cache"></a>Melyik régiót használjam a másodlagos csatolt gyorsítótárhoz?
 
-Általánosságban azt javasoljuk, hogy a gyorsítótára ugyanabban az Azure-régióban legyen, mint az ahhoz az alkalmazáshoz, amely hozzáfér. A különálló elsődleges és tartalék régióval rendelkező alkalmazások esetében ajánlott, hogy az elsődleges és másodlagos gyorsítótárak ugyanabban a régióban vannak. A párosított régiókkal kapcsolatos további információkért lásd: [ajánlott eljárások – Azure párosított régiók](../best-practices-availability-paired-regions.md).
+Általában azt javasoljuk, hogy a gyorsítótár ugyanabban az Azure-régióban létezzen, mint az azt elérő alkalmazás. A külön elsődleges és tartalék régiókkal rendelkező alkalmazások esetében ajánlott az elsődleges és másodlagos gyorsítótárak léteznek ugyanabban a régiókban. A párosított régiókról további információt az [Ajánlott eljárások – Azure párosított régiók című témakörben talál.](../best-practices-availability-paired-regions.md)
 
-### <a name="how-does-failing-over-to-the-secondary-linked-cache-work"></a>Hogyan működik a feladatátvétel a másodlagos csatolt gyorsítótárral?
+### <a name="how-does-failing-over-to-the-secondary-linked-cache-work"></a>Hogyan működik a másodlagos csatolt gyorsítótár rakoncáta?
 
-Az Azure-régiók közötti automatikus feladatátvétel nem támogatott a földrajzilag replikált gyorsítótárak esetében. A vész-helyreállítási forgatókönyvek esetén az ügyfeleknek a teljes alkalmazás veremét koordinált módon kell meghozniuk a biztonsági mentési régióban. Az egyes alkalmazás-összetevők kiválasztásával eldöntheti, hogy mikor kell a saját biztonsági másolatokra váltani, negatív hatással lehet a teljesítményre. A Redis egyik fő előnye, hogy ez egy nagyon alacsony késésű tároló. Ha az ügyfél fő alkalmazása a gyorsítótártól eltérő régióban található, akkor a hozzáadott időponthoz képest érezhető hatással lehet a teljesítményre. Emiatt az átmeneti rendelkezésre állási problémák miatt nem történik meg automatikusan a feladatátvétel.
+Az Azure-régiók közötti automatikus feladatátvétel nem támogatott a georeplikált gyorsítótárak esetében. Vész-helyreállítási forgatókönyv esetén az ügyfelek nek a teljes alkalmazásverem összehangolt módon kell a biztonsági mentési régióban. Ha az egyes alkalmazás-összetevők eldöntik, hogy mikor váltsanak a biztonsági mentésekre, az negatívan befolyásolhatja a teljesítményt. A Redis egyik legfontosabb előnye, hogy ez egy nagyon alacsony késésű üzlet. Ha az ügyfél fő alkalmazása a gyorsítótártól eltérő régióban van, a hozzáadott oda-vissza idő észrevehető hatással lenne a teljesítményre. Emiatt elkerüljük, hogy az átmeneti rendelkezésre állási problémák miatt automatikusan felboruljon.
 
-Az ügyfél által kezdeményezett feladatátvétel elindításához először a gyorsítótárak leválasztása szükséges. Ezután módosítsa a Redis-ügyfelet a (korábban csatolt) másodlagos gyorsítótár kapcsolati végpontjának használatára. Ha a két gyorsítótár le van csatolva, a másodlagos gyorsítótár egy normál olvasási írási gyorsítótárba kerül, és közvetlenül a Redis-ügyfelektől fogadja a kéréseket.
+Az ügyfél által kezdeményezett feladatátvétel elindításához először kapcsolja le a gyorsítótárak összekapcsolására. Ezután módosítsa a Redis-ügyfelet a (korábban csatolt) másodlagos gyorsítótár kapcsolatvégpontjának használatára. Ha a két gyorsítótár nincs csatolva, a másodlagos gyorsítótár ismét rendszeres írási-olvasási gyorsítótárvá válik, és közvetlenül a Redis-ügyfelektől fogadja a kérelmeket.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az [Redis prémium szintű Azure cache](cache-premium-tier-intro.md)-ről.
+További információ az [Azure Cache for Redis Premium tier- ről.](cache-premium-tier-intro.md)

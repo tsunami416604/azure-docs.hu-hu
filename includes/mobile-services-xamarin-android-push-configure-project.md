@@ -5,20 +5,20 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: 69dc0e1c14bc88cdbf0aa48700f95058ba759cc0
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67179625"
 ---
-1. A megoldás nézetben (vagy **Megoldáskezelőben** a Visual Studióban), kattintson a jobb gombbal a **összetevők** mappát, kattintson a **további összetevők beszerzése...** , keresse meg a **Google Cloud Messaging Client** összetevőt, és adja hozzá a projekthez.
-2. Nyissa meg a ToDoActivity.cs projekt fájlt, és adja hozzá a következő using utasítást az osztályhoz:
+1. A Megoldás nézetben (vagy a Visual Studio **Megoldáskezelőjében** kattintson a jobb gombbal az **Összetevők** mappára, kattintson a **További összetevők beszerezése... parancsra,** keresse meg a **Google Cloud Messaging Ügyfél** összetevőt, és adja hozzá a projekthez.
+2. Nyissa meg a ToDoActivity.cs projektfájlt, és adja hozzá a következő utasítást az osztályhoz:
 
     ```csharp
     using Gcm.Client;
     ```
 
-3. Az a **ToDoActivity** osztályhoz, adja hozzá a következő új kódot: 
+3. A **ToDoActivity** osztályban adja hozzá a következő új kódot: 
 
     ```csharp
     // Create a new instance field for this activity.
@@ -42,8 +42,8 @@ ms.locfileid: "67179625"
     }
     ```
 
-    Ez lehetővé teszi, hogy a folyamat leküldéses kezelő szolgáltatás a mobilügyfél-példány eléréséhez.
-4. Adja hozzá a következő kódot a **OnCreate** metódust, miután a **MobileServiceClient** jön létre:
+    Ez lehetővé teszi a mobil ügyfélpéldány elérését a leküldéses kezelő szolgáltatásfolyamatból.
+4. A **MobileServiceClient** létrehozása után adja hozzá a következő kódot az **OnCreate** metódushoz:
 
     ```csharp
     // Set the current instance of TodoActivity.
@@ -57,4 +57,4 @@ ms.locfileid: "67179625"
     GcmClient.Register(this, ToDoBroadcastReceiver.senderIDs);
     ```
 
-A **ToDoActivity** van készítve az leküldéses értesítések hozzáadása.
+A **ToDoActivity** most már készen áll a leküldéses értesítések hozzáadására.

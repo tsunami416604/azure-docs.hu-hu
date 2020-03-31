@@ -1,6 +1,6 @@
 ---
-title: Ügyféloldali titkosítás .NET-tel a Microsoft Azure Storagehoz | Microsoft Docs
-description: Az Azure Storage .NET-hez készült ügyféloldali kódtára támogatja az ügyféloldali titkosítást és az Azure Key Vault-integrációt az Azure Storage-alkalmazások maximális biztonsága tekintetében.
+title: Ügyféloldali titkosítás a .NET for Microsoft Azure Storage szolgáltatással | Microsoft dokumentumok
+description: Az Azure Storage-ügyfélkódtár a .NET támogatja az ügyféloldali titkosítást és az Azure Key Vaultdal való integrációt az Azure Storage-alkalmazások maximális biztonsága érdekében.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,150 +10,150 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 6cf19292c3675382789ca25af7f9b7f69e9066fe
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79255417"
 ---
-# <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Ügyféloldali titkosítás és Azure Key Vault a Microsoft Azure Storage
+# <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Ügyféloldali titkosítás és Azure Key Vault a Microsoft Azure Storage-hoz
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
 ## <a name="overview"></a>Áttekintés
-Az [Azure Storage .net-hez készült ügyféloldali kódtára](/dotnet/api/overview/azure/storage?view=azure-dotnet) támogatja az ügyfeleken belüli adattitkosítást az Azure Storage-ba való feltöltés előtt, és az adattitkosítást az ügyfélre való letöltéskor. A függvénytár támogatja a Storage-fiókok kulcsának felügyeletéhez [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) integrációt is.
+Az [Azure Storage-ügyfélkódtár a .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet) támogatja az adatok titkosítását az ügyfélalkalmazásokon belül, mielőtt feltöltené az Azure Storage-ba, és visszafejteni az adatokat, miközben letölti az ügyfélre. A könyvtár is támogatja az [azure key vault](https://azure.microsoft.com/services/key-vault/) a tárfiók kulcskezelésével való integrációt.
 
-A Blobok ügyféloldali titkosítással és Azure Key Vault használatával történő titkosításának folyamatán alapuló lépésenkénti oktatóanyagért lásd: [Blobok titkosítása és visszafejtése Microsoft Azure Storage a Azure Key Vault használatával](../blobs/storage-encrypt-decrypt-blobs-key-vault.md).
+A blobok ügyféloldali titkosítással és az Azure Key Vaulthasználatával történő titkosításfolyamatát bemutató részletes oktatóanyagról a [Blobok titkosítása és visszafejtése az Azure Key Vault használatával](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)című témakörben található.
 
-A Java-alapú ügyféloldali titkosítással kapcsolatban lásd: [ügyféloldali titkosítás a javával Microsoft Azure Storage](storage-client-side-encryption-java.md).
+A Java ügyféloldali titkosításáról az [Ügyféloldali titkosítás java-val a Microsoft Azure Storage számára .](storage-client-side-encryption-java.md)
 
-## <a name="encryption-and-decryption-via-the-envelope-technique"></a>Titkosítás és visszafejtés a boríték-technikán keresztül
-A titkosítási és visszafejtési folyamatok követik a burkológörbe technikáját.
+## <a name="encryption-and-decryption-via-the-envelope-technique"></a>Titkosítás és visszafejtés a borítéktechnikával
+A titkosítás és a visszafejtés folyamatai a borítéktechnikát követik.
 
-### <a name="encryption-via-the-envelope-technique"></a>Titkosítás a boríték-technikán keresztül
-A titkosítás a burkológörbe technikán keresztül a következő módon működik:
+### <a name="encryption-via-the-envelope-technique"></a>Titkosítás a borítéktechnikán keresztül
+A borítéktechnikán keresztüli titkosítás a következőképpen működik:
 
-1. Az Azure Storage ügyféloldali kódtára létrehoz egy Content encryption Key (CEK) kulcsot, amely egy egyszer használatos szimmetrikus kulcs.
-2. A felhasználói adatai titkosítva vannak a CEK használatával.
-3. Ezután a CEK (titkosított) a kulcs titkosítási kulcs (KEK) használatával burkolta. A KEK-et egy kulcs-azonosító azonosítja, és lehet egy aszimmetrikus kulcspár vagy egy szimmetrikus kulcs, és kezelhető helyileg, vagy az Azure Key Vaultban tárolható.
+1. Az Azure storage-ügyfélkódtár létrehoz egy tartalomtitkosítási kulcsot (CEK), amely egy egyszeri használatú szimmetrikus kulcs.
+2. A felhasználói adatok titkosítása ezzel a CEK-vel történik.
+3. A CEK ezután a kulcstitkosítási kulcs (KEK) használatával burkolódulatba (titkosít). A KEK egy kulcsazonosító val azonosítható, és lehet egy aszimmetrikus kulcspár vagy egy szimmetrikus kulcs, és helyileg kezelhető vagy az Azure Key Vaults tárolja.
    
-    Maga a Storage ügyféloldali kódtár soha nem fér hozzá a KEK-hez. A könyvtár meghívja a Key Vault által biztosított kulcs-körbefuttatási algoritmust. A felhasználók dönthetnek úgy, hogy egyéni szolgáltatókat használnak a kulcsok becsomagolásához/kicsomagolásához, ha szükséges.
+    Maga a tárolóügyfél-könyvtár soha nem fér hozzá a KEK-hez. A könyvtár meghívja a Key Vault által biztosított kulcsburkoló algoritmust. A felhasználók egyéni szolgáltatókat használhatnak a kulcstördeléshez/kicsomagoláshoz, ha szükséges.
 
-4. Ezt követően a rendszer feltölti a titkosított fájlokat az Azure Storage szolgáltatásba. A burkolt kulcsot, valamint néhány további titkosítási metaadatot metaadatokként (blobon) vagy a titkosított adatokkal (Üzenetsor-üzenetek és tábla entitások) interpolált módon tárolja a rendszer.
+4. A titkosított adatok at majd feltölti az Azure Storage szolgáltatásba. A burkolt kulcs néhány további titkosítási metaadattal együtt vagy metaadatként (blobon) vagy interpolálva van a titkosított adatokkal (várólistaüzenetek és táblaentitások).
 
-### <a name="decryption-via-the-envelope-technique"></a>Visszafejtés a boríték-technikán keresztül
-A burkológörbe technikán keresztüli visszafejtés a következő módon működik:
+### <a name="decryption-via-the-envelope-technique"></a>Visszafejtés a borítéktechnikával
+A borítékon keresztüli visszafejtés a következő módon működik:
 
-1. Az ügyféloldali kódtár feltételezi, hogy a felhasználó helyileg vagy az Azure Key Vaultban kezeli a kulcs titkosítási kulcsát (KEK). A felhasználónak nem kell tudnia a titkosításhoz használt konkrét kulcsot. Ehelyett egy olyan kulcs-feloldót lehet beállítani és használni, amely a kulcsok különböző kulcs-azonosítóit oldja fel.
-2. Az ügyféloldali kódtár letölti a titkosított adatok mellett a szolgáltatásban tárolt összes titkosítási anyagot is.
-3. Ezután a burkolt tartalom titkosítási kulcsát (CEK) a rendszer kicsomagolja (visszafejtve) a kulcs titkosítási kulcs (KEK) használatával. Ebben az esetben az ügyféloldali kódtár nem fér hozzá a KEK-hez. Egyszerűen meghívja az egyéni vagy Key Vault szolgáltató kicsomagolási algoritmusát.
-4. A titkosító kulcs (CEK) használatával visszafejti a titkosított felhasználói adatokat.
+1. Az ügyfélkódtár feltételezi, hogy a felhasználó kezeli a kulcs titkosítási kulcs (KEK) helyileg vagy az Azure Key Vaults. A felhasználónak nem kell ismernie a titkosításhoz használt kulcsot. Ehelyett beállítható és használható egy kulcsfeloldó, amely különböző kulcsazonosítókat old meg a kulcsokhoz.
+2. Az ügyfélkódtár letölti a titkosított adatokat a szolgáltatásban tárolt titkosítási anyagokkal együtt.
+3. A burkolt tartalomtitkosítási kulcs (CEK) ezután kicsomagolja (visszafejti) a kulcstitkosítási kulcs (KEK) használatával. Itt is az ügyféltár nem fér hozzá a KEK.Here again, the client library does not access to KEK. Egyszerűen meghívja az egyéni vagy key vault-szolgáltató kicsomagolási algoritmusát.
+4. A tartalomtitkosítási kulcs (CEK) ezután a titkosított felhasználói adatok visszafejtésére szolgál.
 
 ## <a name="encryption-mechanism"></a>Titkosítási mechanizmus
-A Storage ügyféloldali kódtára [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) -t használ a felhasználói adattartalom titkosításához. Pontosabban, AES-sel rendelkező [titkosítási blokkoló (CBC)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) mód. Az egyes szolgáltatások némileg eltérően működnek, ezért ezeket itt fogjuk megbeszélni.
+A tárolóügyfél-tár [az AES-t](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) használja a felhasználói adatok titkosításához. Pontosabban, [Cipher Block Chaining (CBC)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) mód AES. Minden szolgáltatás működik kissé másképp, így meg beszéljük mindegyiket itt.
 
 ### <a name="blobs"></a>Blobok
-Az ügyféloldali kódtár jelenleg csak a teljes Blobok titkosítását támogatja. A titkosítás akkor támogatott, ha a felhasználók a **UploadFrom** metódusokat vagy a **OpenWrite** metódust használják. A letöltések esetében a teljes és a tartományra vonatkozó letöltések is támogatottak.
+Az ügyfélkódtár jelenleg csak a teljes blobok titkosítását támogatja. Pontosabban a titkosítás akkor támogatott, ha a felhasználók az **UploadFrom** metódust vagy az **OpenWrite** metódust használják. A letöltések esetében a teljes és a tartományletöltés is támogatott.
 
-A titkosítás során az ügyfél-függvénytár 16 bájtos véletlenszerű inicializálási vektort (IV) állít elő, amely egy 32 bájtos véletlenszerű tartalom-titkosítási kulccsal (CEK), valamint a Blobok adatainak ezen információk használatával történő titkosítását is elvégezheti. A burkolt CEK és néhány további titkosítási metaadat ezután blob-metaadatokként tárolódik a szolgáltatás titkosított blobja mellett.
+A titkosítás során az ügyfélkódtár létrehoz egy véletlenszerű inicializálási vektort (IV) 16 bájtból, valamint egy 32 bájtos véletlenszerű tartalomtitkosítási kulcsot (CEK), és ezzel az információval borítéktitkosítást hajt végre a blobadatokon. A burkolt CEK és néhány további titkosítási metaadatok ezután blob metaadatokként tárolják a szolgáltatás titkosított blobjával együtt.
 
 > [!WARNING]
-> Ha a blobhoz saját metaadatokat szerkeszt vagy tölt fel, gondoskodnia kell arról, hogy a metaadatok megmaradjanak. Ha a metaadatok nélkül tölt fel új metaadatokat, a burkolt CEK, IV és egyéb metaadatok elvesznek, és a blob tartalma soha nem lesz lekérdezhető.
+> Ha saját metaadatait szerkeszti vagy tölti fel a blobhoz, gondoskodnia kell ametaadatok megőrzéséről. Ha új metaadatokat tölt fel a metaadatok nélkül, a burkolt CEK, IV és egyéb metaadatok elvesznek, és a blobtartalom soha többé nem lesz visszakereshető.
 > 
 > 
 
-A titkosított Blobok letöltése magában foglalja a teljes blob tartalmának lekérését a **DownloadTo**/**BlobReadStream** kényelmi módszereinek használatával. A burkolt CEK nincs becsomagolva és együtt használva a IV (ebben az esetben a blob-metaadatokban tárolt), hogy visszaállítsa a visszafejtett adatokat a felhasználók számára.
+A titkosított blob letöltése magában foglalja a teljes blob tartalmának lekérésével a **DownloadTo**/**BlobReadStream** kényelmi módszerek használatával. A burkolt CEK kicsomagolva van, és a IV-el együtt (ebben az esetben blob metaadatként tárolva) együtt a visszafejtett adatok visszaküldése a felhasználóknak.
 
-Egy tetszőleges tartomány (**DownloadRange** metódus) a titkosított blobban való letöltése magában foglalja a felhasználók által megadott tartomány beállítását, hogy egy kis mennyiségű további adat kapjon segítséget, amely a kért tartomány sikeres visszafejtéséhez használható.
+Tetszőleges tartomány **(DownloadRange** módszerek) letöltése a titkosított blobban magában foglalja a felhasználók által biztosított tartomány módosítását annak érdekében, hogy kis mennyiségű további adatot kapjon, amelyek felhasználhatók a kért tartomány sikeres visszafejtéséhez.
 
-Az összes blob-típus (Blobok, blobok és hozzáfűző Blobok) titkosítása/visszafejtése a séma használatával lehetséges.
+Minden blobtípus (blokkblobok, lapblobok és hozzáfűző blobok) lehet titkosítani/visszafejteni ezzel a sémával.
 
 ### <a name="queues"></a>Üzenetsorok
-Mivel a üzenetsor-üzenetek bármilyen formátumúak lehetnek, az ügyféloldali kódtár egyéni formátumot határoz meg, amely tartalmazza az inicializálási vektort (IV) és a titkosított tartalom titkosítási kulcsát (CEK) az üzenet szövegeként.
+Mivel a várólistaüzenetek bármilyen formátumúak lehetnek, az ügyféltár olyan egyéni formátumot határoz meg, amely tartalmazza az inicializálási vektort (IV) és a titkosított tartalomtitkosítási kulcsot (CEK) az üzenet szövegében.
 
-A titkosítás során az ügyféloldali kódtár a 16 bájtos véletlenszerű CEK, valamint a 32 bájtos véletlenszerű adatmennyiséget, valamint az üzenetsor-üzenet szövegének boríték-titkosítását használja ezen információk alapján. A burkolt CEK és néhány további titkosítási metaadat hozzá lesz adva a titkosított üzenetsor-üzenethez. Ezt a módosított üzenetet (alább látható) a szolgáltatás tárolja.
+A titkosítás során az ügyfélkönyvtár egy véletlenszerű IV 16 bájtot hoz létre egy 32 bájtból álló véletlenszerű CEK-val együtt, és ezzel az információval borítéktitkosítást hajt végre a várólistaüzenet szövegében. A burkolt CEK és néhány további titkosítási metaadat ezután hozzáadódik a titkosított várólista-üzenethez. Ez a módosított üzenet (lásd alább) a szolgáltatás tárolja.
 
     <MessageText>{"EncryptedMessageContents":"6kOu8Rq1C3+M1QO4alKLmWthWXSmHV3mEfxBAgP9QGTU++MKn2uPq3t2UjF1DO6w","EncryptionData":{…}}</MessageText>
 
-A visszafejtés során a rendszer kinyeri a beburkolt kulcsot az üzenetsor-üzenetből, és csomagolja ki. A rendszer kinyeri a IV-t az üzenetsor-üzenetből is, és a nem burkolt kulccsal együtt használja az üzenetsor-üzenet adatainak visszafejtéséhez. Vegye figyelembe, hogy a titkosítási metaadatok kis méretűek (500 bájtnál), így amíg a várólista-üzenet 64 kb-korlátja megesik, a hatásnak kezelhető kell lennie.
+A visszafejtés során a csomagolt kulcs kileszvonva a várólistaüzenetből, és kicsomagolva lesz. A IV is kinyeri a várólista-üzenet, és együtt használják a csomagolatlan kulcsot visszafejteni a várólista-üzenet adatait. Vegye figyelembe, hogy a titkosítási metaadatok kicsik (500 bájt alatt), így bár beleszámít a 64 KB-os korlátba egy üzenetsor-üzenetesetében, a hatásnak kezelhetőnek kell lennie.
 
 ### <a name="tables"></a>Táblák
-Az ügyféloldali kódtár támogatja a INSERT és a Replace műveletekhez tartozó entitás-tulajdonságok titkosítását.
+Az ügyfélkódtár támogatja a beszúrási és csereműveletek entitástulajdonságainak titkosítását.
 
 > [!NOTE]
-> Egyesítési jelenleg nem támogatott. A tulajdonságok egy részének előfordulhat, hogy korábban használatával titkosított egy másik kulcsot, mert csak az új tulajdonságok egyesítése, és a metaadatok frissítése adatok elvesztését eredményezi. Az egyesítés vagy igényel, a már meglévő entitás olvasni a szolgáltatás további szolgáltatás-hívások, illetve tulajdonságonként egy új kulcsot használ, mindkettő nem alkalmasak a teljesítmény javítása érdekében.
+> Az egyesítés jelenleg nem támogatott. Mivel előfordulhat, hogy a tulajdonságok egy részhalmaza korábban egy másik kulccsal lett titkosítva, az új tulajdonságok egyesítése és a metaadatok frissítése adatvesztést eredményez. Az egyesítéshez vagy további szolgáltatáshívásokat kell kezdeményezni a már meglévő entitás szolgáltatásból való olvasásához, vagy egy új kulcsot használ tulajdononként, amelyek teljesítménybeli okokból nem alkalmasak.
 > 
 > 
 
-A tábla adattitkosítása a következőképpen működik:  
+A táblaadat-titkosítás a következőképpen működik:  
 
-1. A felhasználók a titkosítani kívánt tulajdonságokat határozzák meg.
-2. Az ügyféloldali kódtár létrehoz egy véletlenszerű inicializálási vektort (IV) 16 bájttal, valamint egy véletlenszerű Content encryption Key (CEK) 32 bájtot minden entitáshoz, és a borítékok titkosítását is végrehajtja az egyes tulajdonságokon, hogy az új IV/tulajdonságot származtatva titkosítsa. A titkosított tulajdonság bináris adatként van tárolva.
-3. A burkolt CEK és néhány további titkosítási metaadatot a rendszer két további fenntartott tulajdonságként tárolja. Az első fenntartott tulajdonság (_ClientEncryptionMetadata1) egy karakterlánc-tulajdonság, amely a IV, a verzió és a becsomagolt kulcs adatait tartalmazza. A második fenntartott tulajdonság (_ClientEncryptionMetadata2) egy bináris tulajdonság, amely a titkosított tulajdonságokkal kapcsolatos információkat tartalmazza. A második tulajdonság (_ClientEncryptionMetadata2) adatai titkosítva vannak.
-4. A titkosításhoz szükséges további fenntartott tulajdonságok miatt a felhasználók mostantól csak 250 egyéni tulajdonságokkal rendelkezhetnek 252 helyett. Az entitás teljes méretének 1 MB-nál kisebbnek kell lennie.
+1. A felhasználók határozzák meg a titkosítandó tulajdonságokat.
+2. Az ügyfélkönyvtár 16 bájtos véletlenszerű inicializálási vektort (IV) hoz létre, valamint egy 32 bájtos, véletlenszerű tartalomtitkosítási kulcsot (CEK) minden entitáshoz, és borítéktitkosítást hajt végre az egyes tulajdonságokon, amelyeket tulajdonságonként új IV-vel kell titkosítani. A titkosított tulajdonság bináris adatként van tárolva.
+3. A burkolt CEK és néhány további titkosítási metaadat két további fenntartott tulajdonságként tárolódik. Az első fenntartott tulajdonság (_ClientEncryptionMetadata1) egy karakterlánc-tulajdonság, amely a IV. A második fenntartott tulajdonság (_ClientEncryptionMetadata2) egy bináris tulajdonság, amely a titkosított tulajdonságokadatait tartalmazza. A második tulajdonságban (_ClientEncryptionMetadata2) lévő információ maga is titkosított.
+4. A titkosításhoz szükséges további fenntartott tulajdonságok miatt a felhasználók mostantól csak 250 egyéni tulajdonsággal rendelkezhetnek 252 helyett. Az entitás teljes méretének 1 MB-nál kisebbnek kell lennie.
 
-Vegye figyelembe, hogy csak a karakterlánc-tulajdonságok titkosíthatók. Ha más típusú tulajdonságokat kíván titkosítani, azokat karakterlánccá kell konvertálni. A titkosított karakterláncokat tárolja a szolgáltatás bináris tulajdonságokként, és azok alakítja vissza karakterláncok a visszafejtés után.
+Ne feledje, hogy csak karakterlánc-tulajdonságok titkosíthatók. Ha más típusú tulajdonságokat titkosítani szeretne, azokat karakterláncokká kell konvertálni. A titkosított karakterláncok bináris tulajdonságokként tárolódnak a szolgáltatásban, és a visszafejtés után karakterláncokká alakulnak vissza.
 
-Felhasználók táblákat, a titkosítási szabályzat mellett titkosítását a tulajdonságokat kell megadnia. Ezt megteheti megadásával vagy (POCO entitások, amelyek TableEntity származtatva) [EncryptProperty] attribútum vagy egy titkosítási feloldási lehetőségek. Egy titkosítási feloldó egy meghatalmazott, amelyek egy partíciókulcsot, egy sorkulcsot és egy tulajdonságnév vesz igénybe, és logikai érték beolvasása, amely azt jelzi, hogy tulajdonság titkosítani kell. Titkosítás során az ügyféloldali kódtár használatával ezek az információk döntse el, hogy tulajdonság titkosítani kell az átviteli írása közben. A delegált körül hogyan tulajdonságok vannak titkosítva logikai lehetőségét is biztosít. (Ha például X, akkor titkosítsa az A tulajdonságot, máskülönben az A és B tulajdonságokat titkosítja.) Vegye figyelembe, hogy az entitások olvasása vagy lekérdezése során nem szükséges megadnia ezeket az információkat.
+Táblák esetén a titkosítási házirendmellett a felhasználóknak meg kell adniuk a titkosítandó tulajdonságokat. Ez történhet egy [EncryptProperty] attribútum megadásával (a TableEntity-ból származó POCO-entitásokhoz), vagy egy titkosítás-feloldó megadásával a kérelembeállításokban. A titkosítási feloldó olyan delegált, amely partíciókulcsot, sorkulcsot és tulajdonságnevet ad vissza, és logikai értéket ad vissza, amely jelzi, hogy a tulajdonságot titkosítani kell-e. A titkosítás során az ügyféltár ezt az információt használja annak eldöntéséhez, hogy egy tulajdonságot titkosítson-e a vezetékbe írás közben. A delegált is lehetővé teszi a logika körül, hogyan tulajdonságok titkosítását. (Ha például X, akkor titkosítsa az A tulajdonságot; egyébként titkosítsa az A és B tulajdonságokat.) Vegye figyelembe, hogy ezeket az adatokat nem szükséges megadni entitások olvasása vagy lekérdezése közben.
 
-### <a name="batch-operations"></a>Batch-műveletek
-A Batch-műveletekben ugyanezt a KEK-et fogja használni a Batch-művelet összes sorában, mert az ügyféloldali kódtár csak egy Options objektumot (és így egy házirendet/KEK-t) engedélyez a Batch-műveletekben. Az ügyféloldali kódtár azonban belsőleg létrehozza az új véletlenszerű IV és véletlenszerű CEK a kötegben. A felhasználók úgy is dönthetnek, hogy a kötegben lévő összes művelethez különböző tulajdonságokat titkosítanak. ehhez a viselkedést a titkosítási feloldóban kell meghatározni.
+### <a name="batch-operations"></a>Kötegelt műveletek
+Kötegelt műveletekben ugyanazt a KEK-et fogja használni a kötegművelet összes sorában, mert az ügyfélkódtár kötegelt műveletenként csak egy beállításobjektumot (és így egy házirendet/KEK-et) engedélyez. Az ügyfélkönyvtár azonban belsőleg létrehoz egy új véletlenszerű IV-et és véletlenszerű CEK-t soronként a kötegben. A felhasználók dönthetnek úgy is, hogy a köteg minden műveletéhez különböző tulajdonságokat titkosítanak, ha ezt a viselkedést a titkosítási feloldóban definiálják.
 
 ### <a name="queries"></a>Lekérdezések
 > [!NOTE]
-> Mivel az entitások titkosítva vannak, nem futtathat olyan lekérdezéseket, amelyek egy titkosított tulajdonságra szűrnek.  Ha megpróbálják, az eredmények helytelenek lesznek, mivel a szolgáltatás nem titkosított adattal próbálta összehasonlítani a titkosított adatmennyiséget.
+> Mivel az entitások titkosítva vannak, nem futtathat olyan lekérdezéseket, amelyek titkosított tulajdonságra szűrnek.  Ha megpróbálja, az eredmények helytelenek lesznek, mert a szolgáltatás a titkosított adatokat titkosítatlan adatokkal próbálja összehasonlítani.
 > 
 > 
-> A lekérdezési műveletek végrehajtásához meg kell adnia egy kulcs-feloldót, amely képes az eredményhalmaz összes kulcsának feloldására. Ha a lekérdezési eredményben szereplő entitás nem oldható fel szolgáltatóhoz, akkor az ügyféloldali kódtár hibát jelez. A kiszolgálóoldali kivetítéseket végrehajtó lekérdezések esetében az ügyféloldali kódtár alapértelmezés szerint a kijelölt oszlopokhoz adja hozzá a speciális titkosítási metaadatok tulajdonságait (_ClientEncryptionMetadata1 és _ClientEncryptionMetadata2).
+> Lekérdezési műveletek végrehajtásához meg kell adnia egy kulcsfeloldót, amely képes feloldani az eredményhalmaz összes kulcsát. Ha a lekérdezés eredményében szereplő entitás nem oldható fel szolgáltatóval, az ügyféltár hibát fog eljelenni. A kiszolgálóoldali vetületeket végző lekérdezések esetén az ügyféltár alapértelmezés szerint hozzáadja a speciális titkosítási metaadat-tulajdonságokat (_ClientEncryptionMetadata1 és _ClientEncryptionMetadata2) a kijelölt oszlopokhoz.
 
 ## <a name="azure-key-vault"></a>Azure Key Vault
-Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsok és titkos kulcsok védelmében. A Azure Key Vault használatával a felhasználók titkosítják a kulcsokat és a titkos kulcsokat (például a hitelesítési kulcsokat, a Storage-fiók kulcsait, az adattitkosítási kulcsokat). PFX-fájlok és jelszavak) a hardveres biztonsági modulok (HSM-EK) által védett kulcsok használatával. További információ: [Mi az Azure Key Vault?](../../key-vault/key-vault-overview.md)
+Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsok és titkos kulcsok védelmében. Az Azure Key Vault használatával a felhasználók titkosíthatják a kulcsokat és a titkos kulcsokat (például a hitelesítési kulcsokat, a tárfiók kulcsait, az adattitkosítási kulcsokat, a . PFX fájlok és jelszavak) hardveres biztonsági modulokkal (HSM) védett kulcsokkal. További információ: [Mi az Azure Key Vault?](../../key-vault/key-vault-overview.md).
 
-A Storage ügyféloldali kódtára a Key Vault Core könyvtárat használja, hogy az Azure-ban közös keretrendszert biztosítson a kulcsok kezeléséhez. A felhasználók a Key Vault Extensions Library használatának további előnyeit is igénybe vehetik. A bővítmények könyvtára hasznos funkciókat biztosít az egyszerű és zökkenőmentes szimmetrikus/RSA helyi és Felhőbeli kulcsos szolgáltatók, valamint az Összesítés és a gyorsítótárazás terén.
+A tárolóügyfél-tár a Key Vault magkönyvtárát használja a kulcsok kezeléséhez az Azure-ban egy közös keretrendszer biztosítása érdekében. A felhasználók a Key Vault-bővítmények könyvtárának további előnyeit is élvezhetik. A bővítmények könyvtára hasznos funkciókat biztosít az egyszerű és zökkenőmentes szimmetrikus/RSA helyi és felhőkulcs-szolgáltatók, valamint az összesítés és a gyorsítótárazás területén.
 
 ### <a name="interface-and-dependencies"></a>Felület és függőségek
-Három Key Vault csomag létezik:
+Három Key Vault-csomag létezik:
 
-* A Microsoft. Azure. kulcstartó. Core tartalmazza a Rendszerállapotkulcsot és a IKeyResolver. Ez egy kis csomag, amely nem rendelkezik függőségekkel. A Storage ügyféloldali kódtára a .NET-hez definiálja függőségként.
-* A Microsoft. Azure. kulcstartó tartalmazza a Key Vault REST-ügyfelet.
-* Microsoft. Azure. kulcstartó. a bővítmények tartalmazzák a titkosítási algoritmusok, valamint az RSAKey és a SymmetricKey implementációit tartalmazó kiterjesztési kódokat. Ez az alapszintű és a kulcstartó névtertől függ, és funkciókat biztosít az összesített feloldó definiálásához (ha a felhasználók több Key providert kívánnak használni) és a gyorsítótárazási kulcs feloldóját. Bár a Storage ügyféloldali kódtár nem függ közvetlenül ettől a csomagtól, ha a felhasználók Azure Key Vault szeretnék tárolni a kulcsaikat, vagy hogy a Key Vault-bővítményeket használják a helyi és a felhőalapú titkosítási szolgáltatók felhasználásához, erre a csomagra lesz szükségük.
+* A Microsoft.Azure.KeyVault.Core tartalmazza az IKey és az IKeyResolver. Ez egy kis csomag, amely nem függ. A .NET tárolóügyfél-tárfüggőségként határozza meg.
+* A Microsoft.Azure.KeyVault tartalmazza a Key Vault REST-ügyfelet.
+* A Microsoft.Azure.KeyVault.Extensions olyan bővítménykódot tartalmaz, amely kriptográfiai algoritmusok implementációit, valamint egy RSAKey-t és egy SymmetricKey-t tartalmaz. Ez a Core és a KeyVault névterektől függ, és lehetővé teszi az összesített feloldó (ha a felhasználók több kulcsszolgáltatót szeretnének használni) és egy gyorsítótárazási kulcsfeloldó meghatározásához. Bár a tárolóügyfél-kódtár nem függ közvetlenül ettől a csomagtól, ha a felhasználók az Azure Key Vault használatával szeretnék tárolni a kulcsokat, vagy a Key Vault-bővítményeket a helyi és felhőalapú kriptográfiai szolgáltatók felhasználására használni, szükségük lesz erre a csomagra.
 
-A Key Vault a nagy értékű főkulcsok számára készült, és az egyes Key Vault sávszélesség-szabályozási korlátját szem előtt tartva tervezték. Ha Key Vault használatával ügyféloldali titkosítást végez, az előnyben részesített modell a titokként tárolt szimmetrikus főkulcsok használata Key Vault és helyi gyorsítótárban. A felhasználóknak a következőket kell tenniük:
+A Key Vault nagy értékű főkulcsokhoz készült, és a key vaultonkénti szabályozási korlátok at ezt szem előtt tartva tervezték. Ügyféloldali titkosítás key vault, az előnyben részesített modell használata szimmetrikus főkulcsok titkos kulcsként a Key Vault és a helyi gyorsítótárazott. A felhasználóknak a következőket kell tenniük:
 
-1. Hozzon létre egy titkos kulcsot, és töltse fel Key Vaultba.
-2. A titkos kulcs alapazonosítójának használatával oldja fel a titkosítás jelenlegi verzióját, és gyorsítótárazza ezeket az információkat helyileg. CachingKeyResolver használata a gyorsítótárazáshoz; a felhasználók nem várhatóan saját gyorsítótárazási logikát implementálnak.
+1. Hozzon létre egy titkos kapcsolat nélküli kapcsolat nélküli, és töltse fel a Key Vault.
+2. A titkos kulcs alapazonosítójának paraméterként való használata a titkos kulcs titkosítási verziójának feloldásához és az adatok helyi gyorsítótárazásához. Gyorsítótárazáshoz használja a CachingKeyResolver-t; felhasználóktól nem várható el, hogy saját gyorsítótárazási logikát valósítsanak meg.
 3. Használja a gyorsítótárazási feloldót bemenetként a titkosítási házirend létrehozásakor.
 
-Key Vault használattal kapcsolatos további információkért tekintse meg a [titkosítási kód mintáit](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples).
+A Key Vault használatával kapcsolatos további információk a [titkosítási kódmintákban](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples)találhatók.
 
 ## <a name="best-practices"></a>Ajánlott eljárások
-A titkosítási támogatás csak a .NET-hez készült Storage ügyféloldali kódtáraban érhető el. Windows Phone-telefon és Windows-futtatókörnyezet jelenleg nem támogatja a titkosítást.
+A titkosítástámogatása csak a .NET tárolóügyfél-tárában érhető el. A Windows Phone és a Windows Runtime jelenleg nem támogatja a titkosítást.
 
 > [!IMPORTANT]
 > Az ügyféloldali titkosítás használatakor vegye figyelembe ezeket a fontos pontokat:
 > 
-> * Titkosított blobba való olvasáskor vagy az azokból való íráskor használja az egész blob feltöltési parancsokat és a tartomány/teljes blob letöltési parancsot. Kerülje a titkosított blobba való írást olyan protokollok használatával, mint a Put blokk, a letiltási lista, a lapok írása, az oldalak törlése vagy a hozzáfűzési blokk; Ellenkező esetben előfordulhat, hogy a titkosított blob sérült, és nem olvasható.
-> * A táblákhoz hasonló korlátozás létezik. Ügyeljen arra, hogy ne frissítse a titkosított tulajdonságokat a titkosítási metaadatok frissítése nélkül.
-> * Ha a titkosított blobon beállítja a metaadatokat, felülírhatja a titkosítással kapcsolatos metaadatokat a visszafejtéshez, mivel a metaadatok beállítása nem adalékanyag. Ez a pillanatképek esetében is igaz. Kerülje a metaadatok megadását egy titkosított blob pillanatképének létrehozása közben. Ha be kell állítani a metaadatokat, először hívja meg a **FetchAttributes** metódust, hogy lekérje a jelenlegi titkosítási metaadatokat, és elkerülje a párhuzamos írásokat a metaadatok beállításakor.
-> * Engedélyezze a **RequireEncryption** tulajdonságot az alapértelmezett kérési beállításokban azon felhasználók számára, akik csak titkosított adattal működnek. További információért lásd alább.
+> * Titkosított blobból olvasáskor vagy íráskor használja a teljes blob-feltöltési parancsokat és a tartomány/teljes blob letöltési parancsokat. Ne írjon titkosított blobba olyan protokollműveletek kel, mint a Put Block, put block list, Write Pages, Clear Pages vagy Append Block; ellenkező esetben megsérülhet a titkosított blob, és olvashatatlan.
+> * Táblák esetén hasonló megkötés létezik. Ügyeljen arra, hogy a titkosítási metaadatok frissítése nélkül ne frissítse a titkosított tulajdonságokat.
+> * Ha metaadatokat állít be a titkosított blobon, felülírhatja a visszafejtéshez szükséges titkosítással kapcsolatos metaadatokat, mivel a metaadatok beállítása nem additív. Ez a pillanatképekre is igaz; ne adja meg a metaadatokat, miközben egy titkosított blob pillanatképét hozza létre. Ha be kell állítani a metaadatokat, először hívja meg a **FetchAttributes** metódust az aktuális titkosítási metaadatok lekéréséhez, és kerülje az egyidejű írásokat a metaadatok beállítása közben.
+> * Engedélyezze a **RequireEncryption** tulajdonságot az alapértelmezett kérelembeállításokban azon felhasználók számára, akik csak titkosított adatokkal dolgozhatnak. Lásd alább további információkért.
 > 
 > 
 
-## <a name="client-api--interface"></a>Ügyfél API/Interface
-Egy EncryptionPolicy objektum létrehozásakor a felhasználók csak a kulcsot (Rendszerállapotkulcsot-t), csak a feloldót (IKeyResolver) vagy mindkettőt tudják biztosítani. A Rendszerállapotkulcsot az alapszintű kulcs típusa, amelyet a rendszer a kulcs azonosítójának használatával azonosít, és amely a burkoló/kicsomagolási logikát biztosítja. A IKeyResolver egy kulcs feloldására szolgál a visszafejtési folyamat során. Definiál egy ResolveKey metódust, amely egy Rendszerállapotkulcsot ad vissza. Ez lehetővé teszi a felhasználók számára, hogy több helyen felügyelt kulcsok közül választhatnak.
+## <a name="client-api--interface"></a>Ügyfél API / felület
+EncryptionPolicy objektum létrehozása közben a felhasználók csak egy kulcsot (implementálásI IKey), csak egy feloldót (implementálásI IKeyResolver), vagy mindkettőt biztosíthatnak. Az IKey az alapvető kulcstípus, amelyet egy kulcsazonosító segítségével azonosítanak, és amely biztosítja a körbefuttatás/kicsomagolás logikáját. Az IKeyResolver egy kulcs feloldására szolgál a visszafejtési folyamat során. Ez határozza meg a ResolveKey metódust, amely egy kulcsazonosítót ad vissza egy IKey-t. Ez lehetővé teszi a felhasználók számára, hogy több helyen kezelt kulcsok közül válasszanak.
 
-* A titkosításhoz mindig a kulcsot használja a rendszer, és a kulcs hiánya hibát eredményez.
+* A titkosításhoz mindig a kulcs használatos, és a kulcs hiánya hibát eredményez.
 * Visszafejtéshez:
-  * Ha meg van adva a kulcs, a kulcs feloldója meghívásra kerül. Ha a feloldó meg van adva, de nem rendelkezik leképezéssel a kulcs-azonosítóhoz, a rendszer hibát jelez.
-  * Ha a feloldó nincs megadva, de a kulcs meg van adva, akkor a rendszer akkor használja a kulcsot, ha annak azonosítója megegyezik a szükséges kulcs-azonosítóval. Ha az azonosító nem egyezik, a rendszer hibát jelez.
+  * A kulcsfeloldó meghívása, ha meg van adva a kulcs leése. Ha a feloldó meg van adva, de nem rendelkezik a kulcsazonosító leképezésével, a rendszer hibát jelez.
+  * Ha a feloldó nincs megadva, de kulcs van megadva, a kulcs akkor használatos, ha annak azonosítója megegyezik a szükséges kulcsazonosítóval. Ha az azonosító nem egyezik, a rendszer hibát jelez.
 
-A cikkben szereplő példák azt mutatják be, hogyan állíthatja be a titkosítási házirendet, és hogyan dolgozhat a titkosított adatbázisokkal, de nem mutatja be a Azure Key Vault használatát. A GitHubon található [titkosítási minták](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples) részletesebben szemléltetik a Blobok, a várólisták és a táblák, valamint a Key Vault integrációját.
+A jelen cikkben található kódpéldák bemutatják a titkosítási szabályzat beállítását és a titkosított adatokkal való munkát, de nem bizonyítják az Azure Key Vault használatával való munkát. A [GitHubon](https://github.com/Azure/azure-storage-net/tree/master/Samples/GettingStarted/EncryptionSamples) lévő titkosítási minták egy részletesebb, végpontok közötti forgatókönyvet mutatnak be a blobok, várólisták és táblák, valamint a Key Vault-integráció számára.
 
 ### <a name="requireencryption-mode"></a>RequireEncryption mód
-A felhasználók opcionálisan engedélyezhetik a művelet módját, ahol a feltöltéseket és a letöltéseket titkosítani kell. Ebben a módban az adatok titkosítási házirend nélkül tölthetők fel, vagy a szolgáltatásban nem titkosított adatok letöltése sikertelen lesz az ügyfélen. A kérési beállítások objektum **RequireEncryption** tulajdonsága ezt a viselkedést vezérli. Ha az alkalmazás az Azure Storage-ban tárolt összes objektumot titkosítani fogja, akkor a **RequireEncryption** tulajdonságot a szolgáltatás ügyféloldali objektumához tartozó alapértelmezett kérési beállításoknál állíthatja be. Állítsa be például a **CloudBlobClient. DefaultRequestOptions. RequireEncryption** értéket az **igaz** értékre, hogy titkosítást igényel az adott ügyfélalkalmazás által végrehajtott összes blob-művelethez.
+A felhasználók tetszés szerint engedélyezhetik a működési módot, ahol az összes feltöltést és letöltést titkosítani kell. Ebben a módban a titkosítási házirend nélküli adatok feltöltésére vagy a szolgáltatáson nem titkosított adatok letöltésére tett kísérletek sikertelenek lesznek az ügyfélen. A kérelembeállítások objektum **RequireEncryption** tulajdonsága szabályozza ezt a viselkedést. Ha az alkalmazás titkosítja az Azure Storage-ban tárolt összes objektumot, majd beállíthatja a **RequireEncryption** tulajdonságot a szolgáltatásügyfél-objektum alapértelmezett kérési beállításaiban. Például állítsa **CloudBlobClient.DefaultRequestOptions.RequireEncryption** **true** értékre, hogy az ügyfélobjektumon keresztül végrehajtott összes blobművelet titkosítását követelje meg.
 
 
-### <a name="blob-service-encryption"></a>Titkosítás Blob service
-Hozzon létre egy **BlobEncryptionPolicy** objektumot, és állítsa be a kérési beállítások között (API-ban vagy ügyféloldali szinten a **DefaultRequestOptions**használatával). Minden mást az ügyféloldali kódtár fog kezelni belsőleg.
+### <a name="blob-service-encryption"></a>Blob szolgáltatás titkosítása
+Hozzon létre egy **BlobEncryptionPolicy** objektumot, és állítsa be a kérelembeállításokban (API-nként vagy ügyfélszinten a **DefaultRequestOptions**használatával). Minden mást az ügyfélkönyvtár belsőleg kezel.
 
 ```csharp
 // Create the IKey used for encryption.
@@ -173,8 +173,8 @@ Hozzon létre egy **BlobEncryptionPolicy** objektumot, és állítsa be a kéré
  blob.DownloadToStream(outputStream, null, options, null);
 ```
 
-### <a name="queue-service-encryption"></a>Titkosítás Queue szolgáltatás
-Hozzon létre egy **QueueEncryptionPolicy** objektumot, és állítsa be a kérési beállítások között (API-ban vagy ügyféloldali szinten a **DefaultRequestOptions**használatával). Minden mást az ügyféloldali kódtár fog kezelni belsőleg.
+### <a name="queue-service-encryption"></a>Várólista-szolgáltatás titkosítása
+Hozzon létre egy **QueueEncryptionPolicy** objektumot, és állítsa be a kérelembeállításokban (API-nként vagy ügyfélszinten a **DefaultRequestOptions**használatával). Minden mást az ügyfélkönyvtár belsőleg kezel.
 
 ```csharp
 // Create the IKey used for encryption.
@@ -191,8 +191,8 @@ Hozzon létre egy **QueueEncryptionPolicy** objektumot, és állítsa be a kér�
  CloudQueueMessage retrMessage = queue.GetMessage(null, options, null);
 ```
 
-### <a name="table-service-encryption"></a>Titkosítás Table service
-A titkosítási szabályzat létrehozása és a kérési beállítások megadása mellett meg kell adnia egy **EncryptionResolver** a **TableRequestOptions**-ben, vagy az entitáson a [EncryptProperty] attribútumot kell beállítania.
+### <a name="table-service-encryption"></a>Táblaszolgáltatás titkosítása
+A titkosítási házirend létrehozása és kérésre történő beállítása mellett meg kell adnia egy **EncryptionResolver-t** a **TableRequestOptions**alkalmazásban, vagy be kell állítania az entitáson az [EncryptProperty] attribútumot.
 
 #### <a name="using-the-resolver"></a>A feloldó használata
 
@@ -231,7 +231,7 @@ A titkosítási szabályzat létrehozása és a kérési beállítások megadás
 ```
 
 #### <a name="using-attributes"></a>Attribútumok használata
-Ahogy fent említettük, ha az entitás TableEntity valósít meg, akkor a tulajdonságok a [EncryptProperty] attribútummal is megadhatók a **EncryptionResolver**megadása helyett.
+Mint már említettük, ha az entitás megvalósítja TableEntity, majd a tulajdonságokat lehet díszített a [EncryptProperty] attribútum helyett adja meg a **EncryptionResolver**.
 
 ```csharp
 [EncryptProperty]
@@ -239,10 +239,10 @@ Ahogy fent említettük, ha az entitás TableEntity valósít meg, akkor a tulaj
 ```
 
 ## <a name="encryption-and-performance"></a>Titkosítás és teljesítmény
-Vegye figyelembe, hogy a tárolási adatokat a rendszer további teljesítménybeli terhelést eredményez. A tartalmi kulcsot és a IV-t elő kell állítani, a tartalmat titkosítani kell, és további metaadatokat kell formázni és feltölteni. Ez a terhelés a titkosított adatmennyiségtől függően eltérő lesz. Javasoljuk, hogy az ügyfelek mindig tesztelje az alkalmazásaikat a fejlesztés során.
+Vegye figyelembe, hogy a tárolási adatok titkosítása további teljesítménytöbbletet eredményez. Létre kell hozni a tartalomkulcsot és a IV-et, magát a tartalmat titkosítani kell, és további metaadatokat kell formázni és feltölteni. Ez a többletterhelés a titkosított adatok mennyiségétől függ. Azt javasoljuk, hogy az ügyfelek mindig teszteljék az alkalmazások teljesítményét a fejlesztés során.
 
-## <a name="next-steps"></a>Következő lépések
-* [Oktatóanyag: Blobok titkosítása és visszafejtése Microsoft Azure Storage használatával Azure Key Vault](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
-* Töltse le az [Azure Storage ügyféloldali kódtárat a .net NuGet-csomaghoz](https://www.nuget.org/packages/WindowsAzure.Storage)
-* A Azure Key Vault NuGet [Core](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/), [Client](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/)és [Extensions](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/) csomagok letöltése  
-* A [Azure Key Vault dokumentációjának](../../key-vault/key-vault-overview.md) felkeresése
+## <a name="next-steps"></a>További lépések
+* [Oktatóanyag: Blobok titkosítása és visszafejtése a Microsoft Azure Storage-ban az Azure Key Vault használatával](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
+* Az [Azure Storage-ügyfélkönyvtár letöltése a .NET NuGet csomaghoz](https://www.nuget.org/packages/WindowsAzure.Storage)
+* Az Azure Key Vault NuGet [Core](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/), [Ügyfél](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/)és Bővítmények csomagok [letöltése](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/)  
+* Látogasson el az [Azure Key Vault dokumentációjára](../../key-vault/key-vault-overview.md)

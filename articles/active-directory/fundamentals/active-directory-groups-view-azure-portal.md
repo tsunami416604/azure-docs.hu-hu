@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – csoportok megtekintése & tagoknak – Azure AD
-description: Útmutatás a szervezeti csoportok és a hozzájuk rendelt tagok megkereséséhez és megtekintéséhez.
+title: Gyorsútmutató – Csoportok & tagok megtekintése - Azure AD
+description: Útmutató a szervezet csoportjainak és a hozzájuk rendelt tagoknak a kereséséhez és megtekintéséhez.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -14,10 +14,10 @@ ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d52c90db5414c39c4e916bbab19c43739d9ea904
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75423014"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
@@ -27,7 +27,7 @@ Megtekintheti a vállalat meglévő csoportjait és csoporttagjait az Azure Port
 
 Ebben a rövid útmutatóban megtekinti a vállalat összes meglévő csoportját és az azokhoz rendelt tagokat.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt. 
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 A kezdéshez a következőket kell tennie:
@@ -53,7 +53,7 @@ Hozzon létre egy _MDM policy – West_ nevű új csoportot. Csoportok létrehoz
 3. Kattintson a **Létrehozás** gombra.
 
 ## <a name="create-a-new-user"></a>Új felhasználó létrehozása
-Hozzon létre egy _Alain Charon_ nevű új felhasználót. A felhasználóknak már létezniük kell, hogy hozzáadhatóak legyenek csoporttagként. Az "egyéni tartománynevek" lapon először tekintse meg a hitelesített tartománynevet, amelyben a felhasználókat létre szeretné hozni. Felhasználók létrehozásával kapcsolatos további információkért tekintse meg a [felhasználók hozzáadását és törlését](add-users-azure-active-directory.md) ismertető cikket.
+Hozzon létre egy _Alain Charon_ nevű új felhasználót. A felhasználóknak már létezniük kell, hogy hozzáadhatóak legyenek csoporttagként. Először az "Egyéni tartománynevek" lapon kaphatja meg azt az ellenőrzött tartománynevet, amelyben felhasználókat hozhat létre. Felhasználók létrehozásával kapcsolatos további információkért tekintse meg a [felhasználók hozzáadását és törlését](add-users-azure-active-directory.md) ismertető cikket.
 
 1. Válassza az **Azure Active Directory**, a **Felhasználók**, majd az **Új felhasználó** lehetőséget.
 
@@ -61,14 +61,14 @@ Hozzon létre egy _Alain Charon_ nevű új felhasználót. A felhasználóknak m
 
     - **Név:** írja be a következőt: _Alain Charon_.
 
-    - **Felhasználónév:** Írja be az *alain\@contoso.com*.
+    - **Felhasználónév:** Írja be *az alain\@contoso.com*.
 
 3. Másolja a **Jelszó** mezőben szereplő, automatikusan előállított jelszót, majd válassza a **Létrehozás** lehetőséget.
 
 ## <a name="add-a-group-member"></a>Csoporttag hozzáadása
 Most, hogy már rendelkezik egy csoporttal és egy felhasználóval, hozzáadhatja _Alain Charont_ az _MDM policy – West_ csoport tagjaként. Csoporttagok hozzáadásával kapcsolatos további információkért lásd: [Csoporttagok hozzáadása vagy eltávolítása](active-directory-groups-members-azure-portal.md).
 
-1. Válassza az **Azure Active Directory** > **Csoportok** elemet.
+1. Válassza az **Azure Active Directory-csoportok** > **lehetőséget.**
 
 2. A **Csoportok – Minden csoport** lapon keresse meg és válassza ki az **MDM policy – West** csoportot.
 
@@ -81,7 +81,7 @@ Most, hogy már rendelkezik egy csoporttal és egy felhasználóval, hozzáadhat
 ## <a name="view-all-groups"></a>Az összes csoport megtekintése
 A vállalat összes csoportját megtekintheti az Azure Portal **Csoportok – Minden csoport** lapján.
 
-- Válassza az Azure **Active Directory** > **Csoportok** elemet.
+- Válassza az Azure **Active Directory-csoportok** > **lehetőséget.**
 
     A **Csoportok – Minden csoport** lap megjelenik, és mutatja az összes aktív csoportot.
 
@@ -127,7 +127,7 @@ Ezt a csoportot több útmutatóban is használjuk, amelyek a dokumentáció **�
     >[!Important]
     >Ez nem törli Alain Charon felhasználót, csak a tagságát a törölt csoportban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A következő cikk azt ismerteti, hogyan társíthat egy előfizetést az Azure AD-címtárhoz.
 
 > [!div class="nextstepaction"]

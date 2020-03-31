@@ -9,45 +9,45 @@ ms.date: 10/10/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: b453a04a170764a037eed7415eaf71e5a4d37526
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76844588"
 ---
-## <a name="deploy-event-grid-iot-edge-module"></a>Event Grid IoT Edge modul üzembe helyezése
+## <a name="deploy-event-grid-iot-edge-module"></a>Event Grid IoT Edge modul telepítése
 
-A modulokat többféleképpen is telepítheti egy IoT Edge eszközre, és mindegyik a IoT Edge Azure Event Grid. Ez a cikk azokat a lépéseket ismerteti, amelyekkel telepítheti a Event Gridt a Azure Portal IoT Edge.
+A modulok at ioT Edge-eszközökre többféleképpen is üzembe helyezheti, és mindegyik az Azure Event Grid ben működik az IoT Edge-en. Ez a cikk ismerteti az Event Grid az Azure Portalon az IoT Edge üzembe helyezésének lépéseit.
 
 >[!NOTE]
-> Ebben az oktatóanyagban a Event Grid-modult az adatmegőrzés nélkül fogja telepíteni. Ez azt jelenti, hogy a jelen oktatóanyagban létrehozott összes témakört és előfizetést a modul újbóli üzembe helyezésekor törli a rendszer. Az adatmegőrzés beállításával kapcsolatos további információkért tekintse meg a következő cikkeket: állapot megtartása [Linuxon](../articles/event-grid/edge/persist-state-linux.md) vagy [az állapot megőrzése a Windowsban](../articles/event-grid/edge/persist-state-windows.md). Éles számítási feladatokhoz javasoljuk, hogy az Event Grid modult az adatmegőrzéssel telepítse.
+> Ebben az oktatóanyagban az Event Grid modult adatmegőrzés nélkül telepíti. Ez azt jelenti, hogy az ebben az oktatóanyagban létrehozott témakörök és előfizetések törlődnek a modul újratelepítésekor. Az adatmegőrzés beállításáról a következő cikkekben talál további információt: [Állapot megőrzése Linux alatt](../articles/event-grid/edge/persist-state-linux.md) vagy [Perzisztencia állapot a Windows rendszerben.](../articles/event-grid/edge/persist-state-windows.md) Éles számítási feladatok esetén azt javasoljuk, hogy az Event Grid modult adatmegőrzéssel telepítse.
 
 >[!IMPORTANT]
-> Ebben az oktatóanyagban Event Grid modult kell telepíteni az ügyfél-hitelesítéssel, és engedélyezni kell a HTTP-előfizetőket. Éles számítási feladatokhoz javasoljuk, hogy csak HTTPS-kérelmeket és-előfizetőket engedélyezzen engedélyezett ügyfél-hitelesítéssel. A Event Grid modul biztonságos konfigurálásával kapcsolatos további információkért lásd: [Biztonság és hitelesítés](../articles/event-grid/edge/security-authentication.md).
+> Ebben az oktatóanyagban az Event Grid modul az ügyfélhitelesítés kikapcsolt verziójával lesz telepítve, és engedélyezi a HTTP-előfizetők számára. Éles számítási feladatok esetén azt javasoljuk, hogy csak HTTPS-kérelmeket és az ügyfelek hitelesítése engedélyezve van előfizetők engedélyezése. Az Event Grid modul biztonságos konfigurálásáról a [Biztonság és hitelesítés](../articles/event-grid/edge/security-authentication.md)című témakörben talál további információt.
  
-### <a name="select-your-iot-edge-device"></a>IoT Edge eszköz kiválasztása
+### <a name="select-your-iot-edge-device"></a>Válassza ki az IoT Edge-eszközt
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
-1. Navigáljon a IoT Hub.
-1. Válassza a **IoT Edge** lehetőséget az **automatikus eszközkezelés** szakasz menüjében. 
-1. Kattintson a céleszköz AZONOSÍTÓjának az eszközök listájáról
-1. Válassza a **Modulok beállítása** lehetőséget. Tartsa meg a lapot. A következő szakaszban ismertetett lépésekkel folytathatja a lépéseket.
+1. Bejelentkezés az [Azure Portalra](https://portal.azure.com)
+1. Keresse meg az IoT Hubot.
+1. Válassza az **IoT Edge elemet** az **Automatikus eszközkezelés** szakasz menüjéből. 
+1. Kattintson a céleszköz azonosítójára az eszközök listájából
+1. Válassza **a Modulok beállítása**lehetőséget. Tartsa nyitva az oldalt. A következő szakaszban ismertetett lépésekkel folytatja.
 
-### <a name="configure-a-deployment-manifest"></a>Központi telepítési jegyzék konfigurálása
+### <a name="configure-a-deployment-manifest"></a>Központi telepítési jegyzékfájl konfigurálása
 
-Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely modulokat kell telepíteni, hogyan zajlik az adatforgalom a modulok és a modul kívánt tulajdonságai között. A Azure Portal tartalmaz egy varázslót, amely végigvezeti az üzembe helyezési jegyzék létrehozásán, a JSON-dokumentum manuális létrehozása helyett.  Három lépésből áll: **modulok hozzáadása**, **útvonalak megadása**és az **üzembe helyezés áttekintése**.
+A központi telepítési jegyzékfájl egy JSON-dokumentum, amely leírja, hogy mely modulokat kell telepíteni, hogyan adatfolyamok a modulok között, és a modul twins kívánt tulajdonságait. Az Azure Portalon van egy varázsló, amely végigvezeti a központi telepítési jegyzékfájl létrehozásán, ahelyett, hogy a JSON-dokumentum manuálislétrehozása.  Három lépésből áll: **Modulok hozzáadása**, **Útvonalak megadása**és A **telepítés áttekintése**.
 
 ### <a name="add-modules"></a>Modulok hozzáadása
 
-1. A **telepítési modulok** szakaszban válassza a **Hozzáadás** lehetőséget.
-1. A legördülő listában válassza ki a modulok típusait **IoT Edge modult**
-1. Adja meg a tároló nevét, képét, tároló-létrehozási beállításait:
+1. A **Központi telepítési modulok csoportban** válassza **a Hozzáadás**
+1. A legördülő listában szereplő modulok típusai közül válassza az **IoT Edge Module**
+1. Adja meg a tároló nevét, lemezképét és tárolójának létrehozási beállításait:
 
 [!INCLUDE [event-grid-edge-module-version-update](event-grid-edge-module-version-update.md)]
 
    * **Név**: eventgridmodule
-   * **Rendszerkép URI-ja**: `mcr.microsoft.com/azure-event-grid/iotedge:latest`
-   * **Tároló-létrehozási beállítások**:
+   * **Kép URI**-`mcr.microsoft.com/azure-event-grid/iotedge:latest`
+   * **Tároló létrehozási beállításai:**
 
     ```json
         {
@@ -67,26 +67,26 @@ Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely mod
         }
     ```
 
- 1. Kattintson a **Mentés** gombra.
- 1. Az útvonalak szakasz folytatásához kattintson a **tovább** gombra.
+ 1. Kattintson a **Mentés gombra**
+ 1. Kattintson a **Tovább** gombra az útvonalak szakasz folytatásához
 
     > [!NOTE]
-    > Ha Azure-beli virtuális gépet használ peremhálózati eszközként, vegyen fel egy bejövő portszabály, hogy engedélyezze a bejövő forgalmat a 4438-es porton. A szabály hozzáadásával kapcsolatos útmutatásért lásd: [portok megnyitása virtuális géphez](../articles/virtual-machines/windows/nsg-quickstart-portal.md).
+    > Ha egy Azure virtuális gép peremhálózati eszközként, adjon hozzá egy bejövő port szabály, amely lehetővé teszi a bejövő forgalmat a 4438-as porton. A szabály hozzáadásáról a [Portok megnyitása virtuális géphez](../articles/virtual-machines/windows/nsg-quickstart-portal.md)című témakörben talál útmutatást.
 
 
-### <a name="setup-routes"></a>Telepítési útvonalak
+### <a name="setup-routes"></a>Útvonalak beállítása
 
- Tartsa meg az alapértelmezett útvonalakat, és kattintson a **tovább** gombra a felülvizsgálati szakasz folytatásához.
+ Az alapértelmezett útvonalak megtartása, majd a Tovább gombra a véleményezési szakasz folytatásához válassza a **Tovább** gombot.
 
-### <a name="review-deployment"></a>Központi telepítés áttekintése
+### <a name="review-deployment"></a>Telepítés áttekintése
 
-1. A felülvizsgálati szakasz megjeleníti a JSON üzembe helyezési jegyzéket, amelyet az előző két szakaszban megadott beállítások alapján hoztak létre. Győződjön meg arról, hogy a listában a két modul látható: **$edgeAgent** és **$edgeHub**. Ez a két modul hozza létre a IoT Edge futtatókörnyezetet, és minden központi telepítés esetében kötelező alapértelmezett érték.
-1. Tekintse át az üzembe helyezési adatokat, majd válassza a **Küldés**lehetőséget.
+1. A véleményezési szakasz a JSON központi telepítési jegyzéket jeleníti meg, amely az előző két szakaszban megadott beállítások alapján jött létre. Ellenőrizze, hogy a listában két modul **látható-e: $edgeAgent** és **$edgeHub**. Ez a két modul alkotja az IoT Edge futásidejű, és minden üzembe helyezéskor szükséges alapértelmezett.
+1. Tekintse át a központi telepítési adatokat, majd válassza a **Küldés lehetőséget.**
 
-### <a name="verify-your-deployment"></a>Az üzemelő példány ellenőrzése
+### <a name="verify-your-deployment"></a>A telepítés ellenőrzése
 
-1. Miután elküldte az üzembe helyezést, térjen vissza az IoT hub IoT Edge lapjára.
-1. Válassza ki azt a **IoT Edge eszközt** , amelyet a központi telepítéshez céloz, hogy megnyissa a részleteit.
-1. Az eszköz részletei között ellenőrizze, hogy a Event Grid modul szerepel-e a **telepítésben** , és az **eszköz által jelentett**módon van-e megjelölve.
+1. Miután elküldte a központi telepítést, visszatér az IoT-központ IoT Peremhálózati lapjára.
+1. Válassza ki az **IoT Edge-eszközt,** amelyet a központi telepítéssel célzott meg a részletek megnyitásához.
+1. Az eszköz részleteiben ellenőrizze, hogy az Event Grid modul a **központi telepítésben megadott** és az eszköz által jelentett ként is szerepel-e. **Reported by device**
 
-Néhány percet is igénybe vehet, amíg a modul elindult az eszközön, majd visszaküldhető a IoT Hubra. Frissítse az oldalt, és tekintse meg a frissített állapotot.
+Eltarthat néhány percig, amíg a modul elindul az eszközön, és majd jelenteni kell az IoT Hubnak. Frissítse a lapot a frissített állapot megtekintéséhez.

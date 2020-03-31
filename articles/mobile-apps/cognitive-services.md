@@ -1,62 +1,62 @@
 ---
-title: Mesterséges intelligencia használata az Azure-Cognitive Servicesokkal kapcsolatos üzleti problémák megoldásához
-description: Ismerje meg, hogyan hozhat létre a mesterséges intelligenciával működő intelligens Mobile Applications szolgáltatást.
-author: elamalani
+title: Mesterséges intelligencia használata az üzleti problémák megoldására az Azure Cognitive Services segítségével
+description: Ismerje meg a mesterséges intelligenciával működő intelligens mobilalkalmazások létrehozásához használható szolgáltatást.
+author: codemillmatt
 ms.assetid: 34a8a070-0123-4faf-8588-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: ad4babc68f39851beeb3a5c46d295a3342c63026
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: a3955379248c284066ec57d67e61654ac664bfa5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453206"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240944"
 ---
-# <a name="cognitive-services-helps-to-solve-business-problems-by-using-ai"></a>Cognitive Services segít az üzleti problémák megoldásában az AI használatával
-Az [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) hatékony szolgáltatásokat biztosít az alkalmazások intelligens algoritmusokkal való beléptetéséhez, így megtekintheti, meghallgathatja, megértette és értelmezheti a felhasználót a mesterséges intelligencia (AI) segítségével. A mobil alkalmazásaihoz a felhasználók számára intelligens, bevonási és környezetfüggő környezetek is alkalmazhatók. A fejlesztők az API-k, SDK-k és szolgáltatások használatával hozzáadhatják a mesterséges intelligenciát, és segítenek az intelligens alkalmazások kialakításában anélkül, hogy közvetlen AI-vagy adatelemzési ismereteket kellene kialakítaniuk.
+# <a name="cognitive-services-helps-to-solve-business-problems-by-using-ai"></a>A Cognitive Services segít az üzleti problémák megoldásában a mi használatával
+[Az Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) hatékony szolgáltatásokat nyújt az alkalmazások intelligens algoritmusokkal való átjárja, hogy láthassa, hallhassa, beszélhesse, megérthesse és értelmezhesse a felhasználói igényeket, hogy a mesterséges intelligenciával (AI) átalakítsa vállalkozását. A mobilalkalmazásokat intelligenssé, vonzóvá és kontextusként relevánssá teheti a felhasználók számára. A fejlesztők az API-k, az SDK-k és a szolgáltatások segítségével adják hozzá a a i-t az ajánlataikhoz, és közvetlen AI- vagy adatelemzési ismeretek keltegetése nélkül hozhatnak létre intelligens alkalmazásokat.
 
-## <a name="cognitive-services-capabilities"></a>Cognitive Services képességek
-- **Vision**
-    - Képek címkézése, miniatűrök
+## <a name="cognitive-services-capabilities"></a>Cognitive Services-képességek
+- **Vizuális elemek**
+    - Kép címkézése, miniatűrök
     - OCR (kézírás-felismerés)
     - Arcfelismerés
-    - Érzelem észlelése
-    - Videó-felismerések
-    - Képek és videók moderálása
-    - Testreszabott rendszerképek felismerése
+    - Érzelemfelismerés
+    - Videóelemzés
+    - Kép- és videómoderálás
+    - Testre szabott képfelismerés
 
-- **Beszédfelismerés**
-    - Beszéd szövege (beszéd átírása)
-    - Testreszabott beszéd átírása (összetett szavak, zajos környezet)
+- **Beszéd**
+    - Beszéd-szöveg (beszédátírás)
+    - Testreszabott beszédátírás (összetett szavak, zajos környezet)
     - Szövegfelolvasás
     - Hangszóró azonosítója és hitelesítése
-    - Valós idejű szövegfordítások
+    - Valós idejű beszédfordítás
 
 - **Nyelv**
-    - Környezetfüggő nyelvi megértés, testreszabott szándék elemzése
-    - Érzelmek elemzése, a kulcs kifejezésének észlelése
-    - Szöveges fordítás akár 60 nyelvre
+    - Környezetfüggő nyelvi ismeretek, személyre szabott szándékelemzés
+    - Hangulatelemzés, kulcskifejezések észlelése
+    - Szövegfordítás 60 nyelven
     - Szövegmoderálás
     - Helyesírás-ellenőrzés
 
-- **Döntési** 
-    - Tartalom moderátora
-    - Személyre szabott tartalmak kézbesítése
-    - Anomália detektor
+- **Döntés** 
+    - Tartalommoderátor
+    - Személyre szabott tartalomkézbesítés
+    - Anomáliadetektor
 
 - **Keresés**
     - Automatikus keresési javaslatok 
-    - Entitások adatainak kiegészítése
-    - Átfogó Hírek, képek, videók, webes és helyi üzleti entitások keresése
-    - Testre szabott és testreszabott keresési funkciók
+    - Entitásadatok bővítése
+    - Átfogó hírek, képek, videók, web és helyi üzleti entitás keresése
+    - Személyre szabott és személyre szabott keresési élmény
 
-- Cognitive Services tárolók támogatása
+- A Cognitive Services tárolóinak támogatása
 
- ## <a name="references"></a>Tudástár
-   - [Azure Portal](https://portal.azure.com) 
+ ## <a name="references"></a>Referencia
+   - [Azure-portál](https://portal.azure.com) 
    - [Cognitive Services – dokumentáció](/azure/cognitive-services/welcome)
    - [Rövid útmutatók](/azure/cognitive-services/cognitive-services-apis-create-account)
-   - [Tárolók támogatása](/azure/cognitive-services/cognitive-services-container-support)
+   - [Tárolótámogatás](/azure/cognitive-services/cognitive-services-container-support)
    - [Rövid útmutatók](/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows)

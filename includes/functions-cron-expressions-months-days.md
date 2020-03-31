@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 06/27/2019
 ms.author: danlep
 ms.openlocfilehash: 8444a2a99977f0e8f6324423ea676c7763481a53
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67508289"
 ---
-Adja meg a hónap és nap számértékeket, nevek vagy rövidítések neveket is használhatja:
+Hónapok vagy napok megadásához numerikus értékeket, neveket vagy nevek rövidítéseit használhatja:
 
-* Napi numerikus értékek 0 és 6 ahol 0 a vasárnap karakterlánccal kezdődik.
-* Nevek angolul jelennek meg. Például: `Monday`, `January`.
-* Nevek és nagybetűk nincsenek megkülönböztetve.
-* Nevek rövidíthető. Három betű alapvetően ajánlott kifejezés rövidítését jelöli.  Például: `Mon`, `Jan`. 
+* Napok esetén a numerikus értékek 0 és 6 között vannak, ahol a 0 vasárnapdal kezdődik.
+* A nevek angolul vannak. Például: `Monday`, `January`.
+* A nevek nem különböznek a kis- és nagybetűktől.
+* A nevek rövidíthetők. A három betű az ajánlott rövidítés hossza.  Például: `Mon`, `Jan`. 

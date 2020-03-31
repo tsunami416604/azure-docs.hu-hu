@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/20/2018
 ms.author: glenga
 ms.openlocfilehash: 82d122ed236dc72ced7ebafe2301ef5f1143897f
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76963655"
 ---
-A teljesítmény maximalizálása érdekében használjon külön Storage-fiókot minden egyes Function alkalmazáshoz. Ez különösen akkor fontos, ha Durable Functions vagy Event hub által aktivált függvények vannak, amelyek nagy mennyiségű tárolási tranzakciót eredményeznek. Ha az alkalmazás logikája az Azure Storage-t használja közvetlenül (a Storage SDK használatával) vagy a tárolási kötések valamelyikével, használjon dedikált Storage-fiókot. Ha például egy Event hub által aktivált függvény a blob Storage-ba ír néhány adatát, akkor két Storage-fiókot kell használnia,&mdash;egyet a Function alkalmazáshoz, és egy másikat a függvény által tárolt Blobok számára.
+A teljesítmény maximalizálása érdekében minden függvényalkalmazáshoz külön tárfiókot használjon. Ez különösen akkor fontos, ha a Tartós függvények vagy az Event Hub aktivált függvények, amelyek egyaránt nagy mennyiségű tárolási tranzakciók generál. Amikor az alkalmazáslogika kommunikál az Azure Storage-szal, akár közvetlenül (a storage SDK használatával), vagy a storage-kötések egyikén keresztül, egy dedikált tárfiókot kell használnia. Például ha egy Event Hub-aktivált függvény írása néhány adatot blob&mdash;storage, két tárfiókok egyik a függvényalkalmazás és egy másik a függvény által tárolt blobok.

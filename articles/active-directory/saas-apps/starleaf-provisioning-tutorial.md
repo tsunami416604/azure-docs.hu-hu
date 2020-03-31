@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: a StarLeaf konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a StarLeaf.
+title: 'Oktatóanyag: A StarLeaf konfigurálása az Azure Active Directoryval való automatikus felhasználói kiépítéshez | Microsoft dokumentumok'
+description: Ismerje meg, hogyan állíthatja be az Azure Active Directoryt úgy, hogy automatikusan kiépítse és kiállítsa a felhasználói fiókokat a StarLeaf szolgáltatásba.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,145 +16,145 @@ ms.topic: article
 ms.date: 07/19/2019
 ms.author: zhchia
 ms.openlocfilehash: 520373fc6a05bcaada973273e3553f9da623c669
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77064291"
 ---
-# <a name="tutorial-configure-starleaf-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés StarLeaf konfigurálása
+# <a name="tutorial-configure-starleaf-for-automatic-user-provisioning"></a>Oktatóanyag: A StarLeaf konfigurálása automatikus felhasználói kiépítéshez
 
-Az oktatóanyag célja annak bemutatása, hogy milyen lépéseket kell végrehajtani a StarLeaf és a Azure Active Directory (Azure AD) szolgáltatásban az Azure AD konfigurálásához, hogy a felhasználók és/vagy csoportok automatikusan kiépítsék és kiépítsék a StarLeaf.
+Ez az oktatóanyag célja, hogy bemutassa a StarLeaf és az Azure Active Directoryban (Azure AD) végrehajtandó lépéseket, hogy az Azure AD automatikusan kiépítse és dekontizáljon felhasználókat és/vagy csoportokat a StarLeafbe.
 
 > [!NOTE]
->  Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
+>  Ez az oktatóanyag az Azure AD felhasználói létesítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésével, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekről az Automatikus felhasználói kiépítés és a [SaaS-alkalmazások üzembe helyezésének automatizálása az Azure Active Directoryval.](../app-provisioning/user-provisioning.md)
 >
-> Ez az összekötő jelenleg előzetes verzióban érhető el. Az előzetes verziójú funkciók általános Microsoft Azure használati feltételeivel kapcsolatos további információkért tekintse meg a [Microsoft Azure-előnézetek kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ez az összekötő jelenleg előzetes verzióban van. Az előzetes verziójú funkciók általános Microsoft Azure-használati feltételeiről a [Kiegészítő használati feltételek a Microsoft Azure előzetes verzióihoz](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)című témakörben talál.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
 * Egy Azure AD-bérlő.
-* [Egy StarLeaf-bérlő](https://www.starleaf.com/solutions/).
-* Rendszergazdai jogosultságokkal rendelkező felhasználói fiók a StarLeaf-ben.
+* [Egy StarLeaf bérlő.](https://www.starleaf.com/solutions/)
+* A StarLeaf rendszergazdai engedélyekkel rendelkező felhasználói fiókja.
 
-## <a name="assign-users-to-starleaf"></a>Felhasználók StarLeaf rendelése
-Azure Active Directory a hozzárendelések nevű koncepció használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. Az automatikus felhasználó-kiépítés kontextusában csak az Azure AD-alkalmazáshoz hozzárendelt felhasználók és/vagy csoportok lesznek szinkronizálva.
+## <a name="assign-users-to-starleaf"></a>Felhasználók hozzárendelése a StarLeafhez
+Az Azure Active Directory egy hozzárendelések nevű koncepciót használ annak meghatározására, hogy mely felhasználók nak kell hozzáférést kapniuk a kiválasztott alkalmazásokhoz. Az automatikus felhasználói kiépítés környezetében csak az Azure AD-ben egy alkalmazáshoz rendelt felhasználók és/vagy csoportok vannak szinkronizálva.
 
-A felhasználók automatikus üzembe helyezésének konfigurálása és engedélyezése előtt el kell döntenie, hogy mely felhasználókra és csoportokra van szükség az Azure AD-ben a StarLeaf eléréséhez. Ezt követően az [utasításokat](../manage-apps/assign-user-or-group-access-portal.md)követve hozzárendelheti a felhasználókat és a csoportokat a StarLeaf.
+Az automatikus felhasználói üzembe építés konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD mely felhasználóinak és csoportjainak kell hozzáférniük a StarLeafhez. Ezután a felhasználókat és csoportokat hozzárendelheti a StarLeafhez [az alábbi utasítások szerint.](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-starleaf"></a>Fontos Tippek a felhasználók StarLeaf való hozzárendeléséhez
+## <a name="important-tips-for-assigning-users-to-starleaf"></a>Fontos tippek a felhasználók StarLeafhez való hozzárendeléséhez
 
-* Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve a StarLeaf-hoz az automatikus felhasználó-kiépítési konfiguráció teszteléséhez. További felhasználók és csoportok később is hozzárendelhetők.
+* Javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve a StarLeafhez az automatikus felhasználói kiépítési konfiguráció teszteléséhez. Később további felhasználók és csoportok is hozzárendelhetők.
 
-* Amikor StarLeaf rendel hozzá egy felhasználóhoz, a hozzárendelés párbeszédpanelen ki kell választania bármely érvényes alkalmazásspecifikus szerepkört (ha elérhető). Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól.
+* Amikor egy felhasználót hozzárendelsz a StarLeafhez, a hozzárendelési párbeszédpanelen ki kell választanod egy érvényes alkalmazásspecifikus szerepkört (ha van ilyen). Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítésből.
 
-## <a name="set-up-starleaf-for-provisioning"></a>StarLeaf beállítása a kiépítés számára
+## <a name="set-up-starleaf-for-provisioning"></a>A StarLeaf beállítása kiépítésre
 
-Mielőtt konfigurálja a StarLeaf-t az Azure AD-vel való automatikus felhasználói üzembe helyezéshez, konfigurálnia kell a SCIM-létesítést a StarLeaf-ben:
+Mielőtt konfigurálja a StarLeafet az Azure AD-vel való automatikus felhasználói kiépítésre, konfigurálnia kell az SCIM-kiépítést a StarLeafben:
 
-1. Jelentkezzen be a [StarLeaf felügyeleti konzolra](https://portal.starleaf.com/#page=login). Navigáljon az **integrációk** > az **integráció hozzáadása**lehetőségre.
+1. Jelentkezzen be a [StarLeaf Admin konzoljára.](https://portal.starleaf.com/#page=login) Keresse meg az **Integrációk integrációt.** > **Add integration**
 
-    ![StarLeaf-SCIM hozzáadása](media/starleaf-provisioning-tutorial/image00.png)
+    ![StarLeaf hozzáadása SCIM](media/starleaf-provisioning-tutorial/image00.png)
 
-2. Válassza ki a Microsoft Azure Active Directory kívánt **típust** . Adjon meg egy megfelelő nevet a **névben**. Kattintson az **Apply** (Alkalmaz) gombra.
+2. Válassza ki a Microsoft Azure Active Directoryként szeretné beírni a **típust.** Adjon meg egy megfelelő nevet a **Név mezőbe.** Kattintson az **Alkalmaz** gombra.
 
-    ![StarLeaf-SCIM hozzáadása](media/starleaf-provisioning-tutorial/image01.png)
+    ![StarLeaf hozzáadása SCIM](media/starleaf-provisioning-tutorial/image01.png)
 
-3.  Ekkor megjelenik a **scim alap URL-címe** és a **hozzáférési jogkivonat** értéke. Ezek az értékek a **bérlői URL-cím** és a **titkos jogkivonat** mezőiben lesznek megadva a StarLeaf alkalmazás kiépítés lapján a Azure Portal. 
+3.  Ekkor megjelennek az **SCIM alap URL-címe** és **az Access token** értékei. Ezeket az értékeket a **bérlői URL-cím** és a **titkos jogkivonat** mezők ben a StarLeaf-alkalmazás kiépítése az Azure Portalon. 
 
-    ![StarLeaf-létrehozási jogkivonat](media/starleaf-provisioning-tutorial/image02.png)
+    ![StarLeaf token létrehozása](media/starleaf-provisioning-tutorial/image02.png)
 
-## <a name="add-starleaf-from-the-gallery"></a>StarLeaf hozzáadása a gyűjteményből
+## <a name="add-starleaf-from-the-gallery"></a>StarLeaf hozzáadása a galériából
 
-Az Azure AD-vel való automatikus StarLeaf konfigurálásához hozzá kell adnia a StarLeaf az Azure AD Application Gallery-ből a felügyelt SaaS-alkalmazások listájához.
+A StarLeaf konfigurálása az Azure AD automatikus felhasználói kiépítéséhez, hozzá kell adnia a StarLeaf-et az Azure AD-alkalmazásgyűjteményből a felügyelt SaaS-alkalmazások listájához.
 
-**Ha StarLeaf szeretne hozzáadni az Azure AD-alkalmazás-katalógusból, hajtsa végre a következő lépéseket:**
+**Ha hozzá szeretné adni a StarLeaf-et az Azure AD alkalmazásgyűjteményből, hajtsa végre a következő lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen válassza az **Azure Active Directory**lehetőséget.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![Az Azure Active Directory gombja](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+2. Nyissa meg a **Vállalati alkalmazások**lehetőséget, és válassza a **Minden alkalmazás**lehetőséget.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson a panel tetején található **új alkalmazás** gombra.
+3. Új alkalmazás hozzáadásához kattintson az **ablaktábla** tetején található Új alkalmazás gombra.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![Az Új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **StarLeaf**kifejezést, majd az eredmények panelen kattintson a **StarLeaf** elemre.
-    ![StarLeaf az eredmények listájában](common/search-new-app.png)
+4. A keresőmezőbe írja be a **StarLeaf**, válassza **a StarLeaf** az eredménypanelen.
+    ![StarLeaf az eredménylistában](common/search-new-app.png)
 
-## <a name="configure-automatic-user-provisioning-to-starleaf"></a>Automatikus felhasználó-kiépítés beállítása a StarLeaf
+## <a name="configure-automatic-user-provisioning-to-starleaf"></a>Automatikus felhasználói kiépítés konfigurálása a StarLeaf szolgáltatásba
 
-Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy StarLeaf alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le.
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltson le a StarLeafben az Azure AD-ben lévő felhasználói és/vagy csoport-hozzárendelések alapján.
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) Válassza **a Vállalati alkalmazások**lehetőséget, majd a Minden **alkalmazás**lehetőséget.
 
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **StarLeaf**lehetőséget.
+2. Az alkalmazások listájában válassza a **StarLeaf**lehetőséget.
 
-    ![Az StarLeaf hivatkozás az alkalmazások listájában](common/all-applications.png)
+    ![A StarLeaf hivatkozás az Alkalmazások listában](common/all-applications.png)
 
-3. Válassza ki a **kiépítés** lapot.
+3. Válassza a **Kiépítés** lapot.
 
     ![Kiépítés lap](common/provisioning.png)
 
-4. Állítsa a **kiépítési módot** **automatikus**értékre.
+4. Állítsa a **létesítési módot** **Automatikus**ra.
 
     ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. A rendszergazdai hitelesítő adatok szakaszban adja meg a **scim alap URL-címét** és a **hozzáférési jogkivonat** azon értékeit, amelyeket a **bérlői URL-cím** és a **titkos jogkivonat** korábban lekért. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a StarLeaf. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a StarLeaf-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A Rendszergazdai hitelesítő adatok szakaszban adja meg az **SCIM alap URL-címét** és **a hozzáférési jogkivonat** értékeit, amelyeket korábban a **bérlői URL-cím,** illetve a **titkos jogkivonat** korábbi részeként kért be. Kattintson **a Kapcsolat tesztelése** gombra, hogy az Azure AD csatlakozni tudhessen a StarLeafhez. Ha a kapcsolat nem sikerül, győződj meg róla, hogy StarLeaf-fiókod rendelkezik admin engedéllyel, majd próbáld újra.
 
-    ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Bérlői URL + jogkivonat](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be az **e-mail-értesítés küldése hiba** esetén jelölőnégyzetet.
+6. Az **Értesítési e-mail mezőbe** írja be annak a személynek vagy csoportnak az e-mail címét, akinek meg kell kapnia a létesítési hibaértesítéseket, és ellenőrizze az **E-mail értesítés küldése hiba esetén jelölőnégyzetet.**
 
-    ![Értesítő E-mail](common/provisioning-notification-email.png)
+    ![Értesítési e-mail](common/provisioning-notification-email.png)
 
-7. Kattintson a **Save** (Mentés) gombra.
+7. Kattintson a **Mentés** gombra.
 
-8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a StarLeaf**lehetőséget.
+8. A **Leképezések** csoportban válassza **az Azure Active Directory-felhasználók szinkronizálása a StarLeaf szolgáltatással**lehetőséget.
 
-    ![StarLeaf-létrehozási jogkivonat](media/starleaf-provisioning-tutorial/usermapping.png)
+    ![StarLeaf token létrehozása](media/starleaf-provisioning-tutorial/usermapping.png)
 
-9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban található StarLeaf. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a StarLeaf felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+9. Tekintse át az Azure AD és a StarLeaf között szinkronizált felhasználói attribútumokat az **Attribútumleképezés** szakaszban. Az **Egyező** tulajdonságokként kiválasztott attribútumok a StarLeaf felhasználói fiókjainak egyeztetésére szolgálnak a frissítési műveletekhez. A **módosítások** véglegesítéséhez kattintson a Mentés gombra.
 
-    ![StarLeaf-létrehozási jogkivonat](media/starleaf-provisioning-tutorial/userattribute.png)
-
-
-10. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+    ![StarLeaf token létrehozása](media/starleaf-provisioning-tutorial/userattribute.png)
 
 
-11. Az Azure AD-kiépítési szolgáltatás StarLeaf való engedélyezéséhez módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
+10. A hatókörszűrők konfigurálásához olvassa el a [Hatókörszűrő oktatóanyagában](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)található alábbi utasításokat.
 
-    ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
 
-12. Adja meg a StarLeaf kiépíteni kívánt felhasználókat és/vagy csoportokat a **Settings (beállítások** ) szakasz **hatókörében** a kívánt értékek kiválasztásával.
+11. Az Azure AD-kiépítési szolgáltatás engedélyezéséhez a StarLeaf, módosítsa a **kiépítési állapot** **be van kapcsolva** a **Beállítások** szakaszban.
+
+    ![Kiépítési állapot bevan kapcsolva](common/provisioning-toggle-on.png)
+
+12. Határozza meg azokat a felhasználókat és/vagy csoportokat, amelyeket ki szeretne építeni a StarLeaf-be, ha kiválasztja a kívánt értékeket a **Hatókör** területen a **Beállítások** szakaszban.
 
     ![Kiépítési hatókör](common/provisioning-scope.png)
 
-13. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
+13. Ha készen áll a kiépítésre, kattintson a **Mentés gombra.**
 
     ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
 
-Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a StarLeaf-on végrehajtott összes műveletet ismertetik.
+Ez a művelet elindítja a Beállítások szakasz **hatókörében** definiált összes felhasználó és/vagy csoport kezdeti **szinkronizálását.** A kezdeti szinkronizálás végrehajtása hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként fordulnak elő, amíg az Azure AD-kiépítési szolgáltatás fut. A Szinkronizálás **részletei** szakasz segítségével figyelheti az előrehaladást, és kövesse a kiépítési tevékenység jelentésre mutató hivatkozásokat, amely ismerteti az Azure AD-kiépítési szolgáltatás által a StarLeafen végrehajtott összes műveletet.
 
-Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md) helyezésével kapcsolatban.
+Az Azure AD-kiépítési naplók olvasásáról a [Felhasználói fiókok automatikus kiépítésének jelentéskészítése című témakörben](../app-provisioning/check-status-user-account-provisioning.md) olvashat bővebben.
 
-## <a name="connector-limitations"></a>Összekötő korlátozásai
+## <a name="connector-limitations"></a>Összekötő korlátai
 
-* A StarLeaf jelenleg nem támogatja a csoportok üzembe helyezését. 
-* A StarLeaf használatához az **e-mailek** és a **felhasználónevek** értékének azonosnak kell lennie.
+* A StarLeaf jelenleg nem támogatja a csoportkiépítést. 
+* A StarLeaf használatához az **e-mail** és **a userName** értékek azonos forrásértékkel rendelkeznek.
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiókok kiépítésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* Megtudhatja, hogyan [tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md).
+* További információ a [naplók áttekintéséről és a kiépítési tevékenységről szóló jelentések becsatornázásáról.](../app-provisioning/check-status-user-account-provisioning.md)

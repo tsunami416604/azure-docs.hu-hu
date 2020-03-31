@@ -1,7 +1,7 @@
 ---
-title: Egyéni v2-szabályok konfigurálása a PowerShell használatával
+title: A v2-es egyéni szabályok konfigurálása a PowerShell használatával
 titleSuffix: Azure Web Application Firewall
-description: Megtudhatja, hogyan konfigurálhat WAF v2 egyéni szabályokat a Azure PowerShell használatával. A tűzfalon áthaladó minden egyes kérelem esetében kiértékelheti a saját szabályait.
+description: Ismerje meg, hogyan konfigurálhatja a WAF v2 egyéni szabályokat az Azure PowerShell használatával. Létrehozhat saját szabályokat minden olyan kérelemhez, amely áthalad a tűzfalon.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -9,32 +9,32 @@ ms.topic: article
 ms.date: 11/16/2019
 ms.author: victorh
 ms.openlocfilehash: 4c50c4ce344a51a70f6849beb7c5d9d18a2b401d
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77471635"
 ---
-# <a name="configure-web-application-firewall-v2-on-application-gateway-with-a-custom-rule-using-azure-powershell"></a>Webalkalmazási tűzfal v2 konfigurálása Application Gateway egyéni szabállyal Azure PowerShell használatával
+# <a name="configure-web-application-firewall-v2-on-application-gateway-with-a-custom-rule-using-azure-powershell"></a>Webalkalmazás-tűzfal 2-es megoldáskonfigurálása az Application Gateway alkalmazásátjárón egyéni szabállyal az Azure PowerShell használatával
 
 <!--- If you make any changes to the PowerShell in this article, also make the change in the corresponding Sample file: azure-docs-powershell-samples/application-gateway/waf-rules/waf-custom-rules.ps1 --->
 
-Az egyéni szabályok lehetővé teszik saját szabályok kiértékelését a webalkalmazási tűzfalon (WAF) v2-en keresztül áthaladó kérelmek esetében. Ezek a szabályok magasabb prioritással rendelkeznek, mint a felügyelt szabálykészlet többi szabálya. Az egyéni szabályok egy művelettel rendelkeznek (az engedélyezéshez vagy a blokkoláshoz), egy egyeztetési feltételt és egy operátort, amely lehetővé teszi a teljes testreszabást.
+Az egyéni szabályok lehetővé teszik, hogy saját szabályokat hozzon létre a webalkalmazás-tűzfal (WAF) 2. Ezek a szabályok magasabb prioritással rendelkeznek, mint a kezelt szabálykészletek többi szabálya. Az egyéni szabályok rendelkeznek egy művelettel (engedélyezni vagy blokkolni), egy egyezési feltételt és egy operátort a teljes testreszabás engedélyezéséhez.
 
-Ez a cikk létrehoz egy Application Gateway WAF v2-et, amely egyéni szabályt használ. Az egyéni szabály blokkolja a forgalmat, ha a kérelem fejléce felhasználói ügynök *evilbot*tartalmaz.
+Ez a cikk létrehoz egy Application Gateway WAF v2, amely egy egyéni szabályt használ. Az egyéni szabály blokkolja a forgalmat, ha a kérelem fejléce user-agent *evilbot-ot*tartalmaz.
 
-További példák az egyéni szabályokra: [Egyéni webalkalmazási tűzfalszabályok létrehozása és használata](create-custom-waf-rules.md)
+További egyéni szabálypéldák megtekintéséhez olvassa el az [Egyéni webalkalmazás tűzfalszabályainak létrehozása és használata című témakört.](create-custom-waf-rules.md)
 
-Ha azt szeretné, hogy az ebben a cikkben szereplő Azure PowerShell egy olyan folyamatos parancsfájlban fusson, amelyet másolhat, beilleszthet és futtathat, tekintse meg az [Azure Application Gateway PowerShell-minták](powershell-samples.md)című témakört.
+Ha ebben a cikkben szeretné futtatni az Azure PowerShellt egyetlen folyamatos parancsfájlban, amelyet másolhat, beilleszthet és futtathat, olvassa el az [Azure Application Gateway PowerShell-minták című témakört.](powershell-samples.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="azure-powershell-module"></a>Azure PowerShell-modul
 
-Ha a Azure PowerShell helyi telepítését és használatát választja, akkor ehhez a parancsfájlhoz a Azure PowerShell modul 2.1.0 vagy újabb verziójára van szükség.
+Ha úgy dönt, hogy helyileg telepíti és használja az Azure PowerShellt, ehhez a parancsfájlhoz az Azure PowerShell-modul 2.1.0-s vagy újabb verziója szükséges.
 
 1. A verzió megkereséséhez futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket.
-2. Az Azure-beli kapcsolatok létrehozásához futtassa `Connect-AzAccount`.
+2. Ha kapcsolatot szeretne létrehozni `Connect-AzAccount`az Azure-ral, futtassa a futtassa a futtassa a futtassa a futtassa a
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -50,7 +50,7 @@ $location = "East US"
 $appgwName = "WAFCustomRules"
 ```
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 ```azurepowershell
 $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
@@ -74,7 +74,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name "AppGwIP" `
   -location $location -AllocationMethod Static -Sku Standard
 ```
 
-### <a name="create-pool-and-frontend-port"></a>Készlet és frontend-port létrehozása
+### <a name="create-pool-and-frontend-port"></a>Készlet- és előtér-port létrehozása
 
 ```azurepowershell
 $gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name "appgwSubnet" -VirtualNetwork $vnet
@@ -89,7 +89,7 @@ $pool = New-AzApplicationGatewayBackendAddressPool -Name "pool1" `
 $fp01 = New-AzApplicationGatewayFrontendPort -Name "port1" -Port 80
 ```
 
-### <a name="create-a-listener-http-setting-rule-and-autoscale"></a>Figyelő, http-beállítás, szabály és az autoskálázás létrehozása
+### <a name="create-a-listener-http-setting-rule-and-autoscale"></a>Figyelő, http-beállítás, szabály és automatikus méretezés létrehozása
 
 ```azurepowershell
 $listener01 = New-AzApplicationGatewayHttpListener -Name "listener1" -Protocol Http `
@@ -106,7 +106,7 @@ $autoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 3
 $sku = New-AzApplicationGatewaySku -Name WAF_v2 -Tier WAF_v2
 ```
 
-### <a name="create-two-custom-rules-and-apply-it-to-waf-policy"></a>Hozzon létre két egyéni szabályt, és alkalmazza azt a WAF szabályzatra
+### <a name="create-two-custom-rules-and-apply-it-to-waf-policy"></a>Hozzon létre két egyéni szabályt, és alkalmazza azt a WAF-házirendre
 
 ```azurepowershell
 # Create WAF config
@@ -125,7 +125,7 @@ $rule2 = New-AzApplicationGatewayFirewallCustomRule -Name allowUS -Priority 14 -
 $wafPolicy = New-AzApplicationGatewayFirewallPolicy -Name wafpolicyNew -ResourceGroup $rgname -Location $location -CustomRule $rule,$rule2
 ```
 
-### <a name="create-the-application-gateway"></a>A Application Gateway létrehozása
+### <a name="create-the-application-gateway"></a>Az alkalmazásátjáró létrehozása
 
 ```azurepowershell
 $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname `
@@ -138,6 +138,6 @@ $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname `
   -FirewallPolicy $wafPolicy
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[További információ a webalkalmazási tűzfalról Application Gateway](ag-overview.md)
+[További információ a webalkalmazás-tűzfalról az alkalmazásátjárón](ag-overview.md)

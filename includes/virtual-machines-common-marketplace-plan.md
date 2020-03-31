@@ -9,21 +9,21 @@ ms.date: 10/09/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 8e0e549f88caf4a541642bab77faf54b5e536b29
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71174958"
 ---
-## <a name="deploy-an-image-with-marketplace-terms"></a>Rendszerkép üzembe helyezése Piactéri feltételekkel
+## <a name="deploy-an-image-with-marketplace-terms"></a>Lemezkép üzembe helyezése piactéri kifejezésekkel
 
-Az Azure Marketplace-en néhány virtuálisgép-rendszerkép további licenccel és vásárlási feltételekkel rendelkezik, amelyeket el kell fogadnia, mielőtt programozott módon telepítené őket.  
+Az Azure Piactéren egyes virtuálisgép-lemezképek további licenc- és vásárlási feltételekkel rendelkeznek, amelyeket el kell fogadnia, mielőtt programozott módon üzembe helyezheti őket.  
 
-Egy virtuális gép lemezképből való üzembe helyezéséhez mindkét esetben el kell fogadnia a lemezkép feltételeit, és engedélyeznie kell a programozott telepítést. Ezt csak egyszer kell megtennie egy előfizetésnél. Ezt követően minden alkalommal, amikor programozottan telepít egy virtuális gépet a lemezképből, meg kell adnia a *vásárlási terv* paramétereit is.
+Egy virtuális gép üzembe helyezéséhez egy ilyen rendszerkép, akkor el kell fogadnia a lemezkép feltételeit, és lehetővé teszi a programozott központi telepítés. Ezt előfizetésenként csak egyszer kell megtennie. Ezt követően minden alkalommal, amikor egy virtuális gép telepítése programozott módon a rendszerképről is meg kell adnia *a vásárlási terv* paramétereit.
 
-Az alábbi fejezetek a következőket szemléltetik:
+A következő szakaszok bemutatják, hogyan:
 
-* Annak megállapítása, hogy a Piactéri rendszerképnek van-e további licencfeltételek 
-* A használati feltételek elfogadása programozott módon
-* Beszerzési terv paramétereinek megadása a virtuális gépek programozott üzembe helyezése esetén
+* Annak megállapítása, hogy egy Marketplace-lemezkép rendelkezik-e további licencfeltételekkel 
+* A feltételek programozott elfogadása
+* Beszerzési terv paramétereinek megadása virtuális gép programozott telepítésekor
 

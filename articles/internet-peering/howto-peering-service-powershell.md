@@ -1,7 +1,7 @@
 ---
-title: A peering Service engedélyezése közvetlenül a PowerShell használatával
+title: Társviszony-létesítésengedélyezése közvetlen társviszony-létesítésen a PowerShell használatával
 titleSuffix: Azure
-description: A peering Service engedélyezése közvetlenül a PowerShell használatával
+description: Társviszony-létesítésengedélyezése közvetlen társviszony-létesítésen a PowerShell használatával
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,51 +9,51 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: ac843fa5440f7ba085d33cd897bcd4a1722f77ac
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774184"
 ---
-# <a name="enable-peering-service-on-a-direct-peering-using-powershell"></a>A peering Service engedélyezése közvetlenül a PowerShell használatával
+# <a name="enable-peering-service-on-a-direct-peering-using-powershell"></a>Társviszony-létesítésengedélyezése közvetlen társviszony-létesítésen a PowerShell használatával
 
-Ez a cikk azt ismerteti, hogyan engedélyezhető a társ-kezelő szolgáltatás közvetlen kiosztásban PowerShell-parancsmagok és a Resource Manager-alapú [üzemi](overview-peering-service.md) modell használatával.
+Ez a cikk bemutatja, hogyan engedélyezheti [a társviszony-létesítési szolgáltatást](overview-peering-service.md) egy közvetlen társviszony-létesítésen a PowerShell-parancsmagok és az Erőforrás-kezelő telepítési modell használatával.
 
-Ha szeretné, ezt az útmutatót a [portálon](howto-peering-service-portal.md)végezheti el.
+Ha szeretné, ezt az útmutatót a portál segítségével is [elvégezheti.](howto-peering-service-portal.md)
 
-## <a name="before-you-begin"></a>Előzetes teendők
-* A konfigurálás megkezdése előtt tekintse át az [előfeltételeket](prerequisites.md) .
-* Válasszon közvetlen társítást az előfizetésben, amelyen engedélyezni szeretné a társ-szolgáltatási szolgáltatást. Ha nem rendelkezik ilyennel, alakítsa át az örökölt közvetlen társítást, vagy hozzon létre egy új közvetlen társítást.
-    * Örökölt közvetlen társítás átalakításához kövesse az [örökölt közvetlen társítás átalakítása Azure-erőforrásra a PowerShell használatával](howto-legacy-direct-powershell.md)című témakör utasításait.
-    * Új közvetlen társítás létrehozásához kövesse a [közvetlen társítás létrehozása vagy módosítása a PowerShell használatával](howto-direct-powershell.md)című témakör utasításait.
+## <a name="before-you-begin"></a>Előkészületek
+* A konfiguráció megkezdése előtt tekintse át [az előfeltételeket.](prerequisites.md)
+* Válasszon egy közvetlen társviszony-létesítést az előfizetésében, amelyen engedélyezni szeretné a társviszony-létesítési szolgáltatást. Ha nem rendelkezik ilyen, konvertáljon egy örökölt közvetlen társviszony-létesítést, vagy hozzon létre egy új közvetlen társviszony-létesítést.
+    * Örökölt közvetlen társviszony-létesítés konvertálásához kövesse az [örökölt közvetlen társviszony-létesítés átalakítása Azure-erőforrásba](howto-legacy-direct-powershell.md)a PowerShell használatával című útmutató utasításait.
+    * Új közvetlen társviszony-létesítés létrehozásához kövesse a [PowerShell használatával közvetlen társviszony-létesítés létrehozása vagy módosítása](howto-direct-powershell.md)című részben található utasításokat.
 
-### <a name="working-with-azure-powershell"></a>A Azure PowerShell használata
+### <a name="working-with-azure-powershell"></a>Az Azure PowerShell együttműködése
 [!INCLUDE [CloudShell](./includes/cloudshell-powershell-about.md)]
 
-## <a name="enable-peering-service-on-a-direct-peering"></a>Egyenrangú szolgáltatás engedélyezése közvetlen társításon
+## <a name="enable-peering-service-on-a-direct-peering"></a>A Peering Service engedélyezése közvetlen társviszony-létesítés esetében
 
-### <a name= get></a>Közvetlen társak megtekintése
+### <a name="view-direct-peering"></a><a name= get></a>Közvetlen társviszony-létesítés megtekintése
 [!INCLUDE [peering-direct-get](./includes/direct-powershell-get.md)]
 
-### <a name= get></a>A közvetlen társítás engedélyezése a partneri szolgáltatás számára
+### <a name="enable-the-direct-peering-for-peering-service"></a><a name= get></a>Társviszony-létesítés engedélyezése társviszony-létesítéshez
 
-Miután lekéri a közvetlen társítást az előző lépésben, engedélyezze a társítási szolgáltatáshoz.
+Miután az előző lépésben közvetlen társviszony-létesítést kapott, engedélyezze azt társviszony-létesítési szolgáltatáshoz.
 [!INCLUDE [peering-direct-modify](./includes/peering-service-direct-powershell.md)]
 
-## <a name="modify-a-direct-peering-connection"></a>Közvetlen társas kapcsolatok módosítása
+## <a name="modify-a-direct-peering-connection"></a>Közvetlen társviszony-létesítési kapcsolat módosítása
 
-Ha módosítania kell a kapcsolódási beállításokat, tekintse át a közvetlen társítás [létrehozása vagy módosítása a PowerShell használatával](howto-direct-powershell.md) című témakör **közvetlen társítás módosítása** című szakaszát.
+Ha módosítania kell a kapcsolatbeállításokat, olvassa el a **Közvetlen társviszony-létesítés módosítása szakaszt** [a Közvetlen társviszony-létesítés létrehozása vagy módosítása a PowerShell használatával című szakaszban.](howto-direct-powershell.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Exchange-társ létrehozása vagy módosítása a PowerShell-lel](howto-exchange-powershell.md)
-* [Örökölt Exchange-társ átalakítása Azure-erőforrásra a PowerShell használatával](howto-legacy-exchange-powershell.md)
+* [Exchange-társviszony-létesítés létrehozása vagy módosítása a PowerShell használatával](howto-exchange-powershell.md)
+* [Örökölt Exchange-társviszony-létesítés átalakítása Azure-erőforrássá a PowerShell használatával](howto-legacy-exchange-powershell.md)
 
 ## <a name="additional-resources"></a>További források
-Az összes paraméter részletes leírását a következő parancs futtatásával érheti el:
+Az összes paraméter részletes leírását a következő parancs futtatásával kaphatja meg:
 
 ```powershell
 Get-Help Get-AzPeering -detailed
 ```
 
-A gyakori kérdésekért lásd: a [peering Service gyakori](service-faqs.md)kérdései.
+A gyakori kérdésekről a [Társviszony-létesítési szolgáltatás gyIK -ja](service-faqs.md)látható.

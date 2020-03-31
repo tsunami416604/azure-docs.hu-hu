@@ -1,5 +1,5 @@
 ---
-title: Event hub létrehozása az engedélyezve rögzítéssel – Azure Event Hubs | Microsoft Docs
+title: Eseményközpont létrehozása engedélyezve lévő rögzítéssel - Azure Event Hubs | Microsoft dokumentumok
 description: Azure Event Hubs-névtér létrehozása egy eseményközponttal és a Rögzítés funkció engedélyezése az Azure Resource Manager sablonjának használatával
 services: event-hubs
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 02/12/2020
 ms.author: shvija
-ms.openlocfilehash: 51b69e8b7f6c980fd851cdf3e60ecfe0ade29e71
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 0b20c73ed0590f3afc19db43b4b55dd3ff6bde8e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187346"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79453870"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Névtér létrehozása egy eseményközponttal és a Rögzítés funkció engedélyezése sablon használatával
 
@@ -27,17 +27,17 @@ Ez a cikk ismerteti egy olyan Azure Resource Manager-sablon használatát, amely
 
 Ez a cikk azt is bemutatja, hogyan adhatja meg, hogy a rendszer az Azure Storage-blobokban vagy egy Azure Data Lake Store-ban rögzítse az eseményeket, az Ön által kiválasztott célhely alapján.
 
-További információ a sablonok létrehozásáról: [Azure Resource Manager-sablonok][Authoring Azure Resource Manager templates]készítése. A sablonban használandó JSON-szintaxis és-tulajdonságok megtekintéséhez lásd: [Microsoft. EventHub-erőforrástípusok](/azure/templates/microsoft.eventhub/allversions).
+A sablonok létrehozásáról további információkat az [Authoring Azure Resource Manager templates][Authoring Azure Resource Manager templates] (Azure Resource Manager-sablonok készítése) című témakörben talál. A JSON szintaxisát és a sablonokban használható tulajdonságokat a [Microsoft.EventHub erőforrástípusai](/azure/templates/microsoft.eventhub/allversions)című témakörben olvashatja el.
 
-További információ az Azure-erőforrások elnevezési konvencióinak mintáit és gyakorlatáról: az [Azure-erőforrások elnevezési konvenciói][Azure Resources naming conventions].
+További információk az Azure-erőforrások elnevezési szabályainak mintáiról és gyakorlati megoldásairól: [Az Azure-erőforrások elnevezési szabályai][Azure Resources naming conventions].
 
 Az összes sablon eléréséhez kattintson az alábbi GitHub-hivatkozásokra:
 
-- [Event hub és a rögzítés engedélyezése a Storage-sablonba][Event Hub and enable Capture to Storage template] 
-- [Event hub és a rögzítés engedélyezése Azure Data Lake Store sablonhoz][Event Hub and enable Capture to Azure Data Lake Store template]
+- [Eseményközpont és a Rögzítés tárolóban sablon engedélyezése][Event Hub and enable Capture to Storage template] 
+- [Eseményközpont és a Rögzítés Azure Data Lake Store-ban sablon engedélyezése][Event Hub and enable Capture to Azure Data Lake Store template]
 
 > [!NOTE]
-> A legújabb sablonok kereséséhez látogasson el az [Azure Gyorsindítás sablonok][Azure Quickstart Templates] galériába, és keressen rá Event Hubs.
+> A legújabb sablonokért keresse fel az [Azure-gyorssablonok][Azure Quickstart Templates] gyűjteményt, és keressen az Event Hubs kifejezésre.
 > 
 > 
 
@@ -235,7 +235,7 @@ A blobtároló, amelyben rögzíti az eseményadatokat.
 }
 ```
 
-A következő paraméterek használata esetén válassza az 1. generációs Azure Data Lake Store a cél lehetőséget. Az engedélyeket arra a Data Lake Store-útvonalra kell beállítania, ahol az eseményeket rögzíteni kívánja. Az engedélyek megadásával kapcsolatban lásd: [adatgyűjtés az 1. generációs Azure Data Lake Storage](event-hubs-capture-enable-through-portal.md#capture-data-to-azure-data-lake-storage-gen-1).
+Használja az alábbi paramétereket, ha az Azure Data Lake Store Gen 1-et választja úti célként. Az engedélyeket arra a Data Lake Store-útvonalra kell beállítania, ahol az eseményeket rögzíteni kívánja. Engedélyek beállításához olvassa el [az Adatok rögzítése az Azure Data Lake Storage Gen 1 alkalmazásba című témakört.](event-hubs-capture-enable-through-portal.md#capture-data-to-azure-data-lake-storage-gen-1)
 
 ### <a name="subscriptionid"></a>subscriptionId
 
@@ -387,7 +387,7 @@ Létrehoz egy **EventHub** típusú névteret egy eseményközponttal, valamint 
 ```
 
 > [!NOTE]
-> Engedélyezheti vagy letilthatja az üres fájlok kibocsátását, ha a rögzítési időszak során nem történik esemény a **skipEmptyArchives** tulajdonság használatával. 
+> A **skipEmptyArchives** tulajdonság gal engedélyezheti vagy letilthatja az üres fájlok kiírását, ha a Rögzítés ablakban nem történik esemény. 
 
 ## <a name="commands-to-run-deployment"></a>Az üzembe helyezést futtató parancsok
 
@@ -414,26 +414,22 @@ New-AzResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -Templa
 Az Azure Blob Storage mint célhely:
 
 ```azurecli
-azure config mode arm
-
-azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture/azuredeploy.json][]
+az group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture/azuredeploy.json][]
 ```
 
 Az Azure Data Lake Store mint célhely:
 
 ```azurecli
-azure config mode arm
-
-azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture-for-adls/azuredeploy.json][]
+az group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture-for-adls/azuredeploy.json][]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Event Hubs Rögzítés funkcióját az [Azure Portal](https://portal.azure.com) segítségével is konfigurálhatja. További információért tekintse meg az [Enable Event Hubs Capture using the Azure portal](event-hubs-capture-enable-through-portal.md) (Az Event Hubs Rögzítés funkciójának engedélyezése az Azure Portalon) című témakört.
 
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 
-* [Event Hubs – áttekintés](event-hubs-what-is-event-hubs.md)
+* [Eseményközpontok – áttekintés](event-hubs-what-is-event-hubs.md)
 * [Eseményközpont létrehozása](event-hubs-create.md)
 * [Event Hubs – gyakori kérdések](event-hubs-faq.md)
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB .NET-keretrendszer, Core-alkalmazás létrehozása a Gremlin API használatával
+title: Azure Cosmos DB .NET Framework, Core alkalmazás létrehozása a Gremlin API használatával
 description: Egy .NET-keretrendszer/Core-kódmintát mutat be, amellyel csatlakozhat egy Cosmos DB-adatbázishoz, és lekérdezéseket hajthat végre.
 author: luisbosquez
 ms.service: cosmos-db
@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.date: 02/21/2020
 ms.author: lbosq
 ms.openlocfilehash: f700b06e6ade0d72178777b67cb734f3120b36dc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240190"
 ---
-# <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Gyors útmutató: .NET-keretrendszer vagy Core-alkalmazás létrehozása a Azure Cosmos DB Gremlin API-fiók használatával
+# <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Rövid útmutató: .NET-keretrendszer vagy core alkalmazás létrehozása az Azure Cosmos DB Gremlin API-fiókkal
 
 > [!div class="op_single_selector"]
 > * [Gremlin-konzol](create-graph-gremlin-console.md)
@@ -23,16 +23,16 @@ ms.locfileid: "79240190"
 > * [Java](create-graph-java.md)
 > * [Node.js](create-graph-nodejs.md)
 > * [Python](create-graph-python.md)
-> * [PHP](create-graph-php.md)
+> * [Php](create-graph-php.md)
 >  
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
+Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum-, kulcs/érték és gráf típusú adatbázisokat, melyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket. 
 
-Ez a rövid útmutató bemutatja, hogyan hozhat létre Azure Cosmos DB [GREMLIN API](graph-introduction.md) -fiókot, adatbázist és gráfot (tárolót) a Azure Portal használatával. Ezután a nyílt forráskódú [Gremlin Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet)-illesztőprogram segítségével létrehozhat és futtathat egy konzolalkalmazást.  
+Ez a rövid útmutató bemutatja, hogyan hozhat létre egy Azure Cosmos DB [Gremlin API-fiókot,](graph-introduction.md) adatbázist és grafikont (tárolót) az Azure Portalon. Ezután a nyílt forráskódú [Gremlin Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet)-illesztőprogram segítségével létrehozhat és futtathat egy konzolalkalmazást.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha még nincs telepítve a Visual Studio 2019, letöltheti és használhatja az **ingyenes** [Visual Studio 2019 Community Edition verziót](https://www.visualstudio.com/downloads/). Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
+Ha még nincs telepítve a Visual Studio 2019, letöltheti és használhatja az **ingyenes** [Visual Studio 2019 Community Edition alkalmazást.](https://www.visualstudio.com/downloads/) Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -46,9 +46,9 @@ Ha még nincs telepítve a Visual Studio 2019, letöltheti és használhatja az 
 
 ## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
 
-Most pedig klónozunk egy Gremlin API-alkalmazást a GitHubról, beállítjuk a kapcsolati sztringet, majd futtatni fogjuk az alkalmazást. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
+Most pedig klónozunk egy Gremlin API-alkalmazást a GitHubról, beállítjuk a kapcsolati sztringet, majd futtatni fogjuk az alkalmazást. Látni fogja, mennyire egyszerű programozott módon dolgozni az adatokkal. 
 
-1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű új mappát, majd zárja be a parancssort.
+1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű mappát, majd zárja be a parancssort.
 
     ```bash
     md "C:\git-samples"
@@ -60,7 +60,7 @@ Most pedig klónozunk egy Gremlin API-alkalmazást a GitHubról, beállítjuk a 
     cd "C:\git-samples"
     ```
 
-3. Az alábbi parancs futtatásával klónozhatja a mintatárházat. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén.
+3. Futtassa a következő parancsot a mintatárház klónozásához. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén.
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-gremlindotnet-getting-started.git
@@ -83,19 +83,19 @@ Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az 
 
 Az alábbi kódrészletek mind a Program.cs fájlból származnak.
 
-* Állítsa be a kapcsolatok paramétereit a fent létrehozott fiók alapján: 
+* Állítsa be a kapcsolat paramétereit a fent létrehozott fiók alapján: 
 
    :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="configureConnectivity":::
 
-* A végrehajtandó Gremlin parancsok a következő szótárban szerepelnek:
+* A végrehajtandó Gremlin parancsok egy szótárban vannak felsorolva:
 
    :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="defineQueries":::
 
-* Hozzon létre egy új `GremlinServer` és `GremlinClient` a kapcsolatok objektumait a fent megadott paraméterek használatával:
+* Hozzon `GremlinServer` létre `GremlinClient` egy új és kapcsolatobjektumokat a fent megadott paraméterekkel:
 
    :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="defineClientandServerObjects":::
 
-* Hajtsa végre az egyes Gremlin-lekérdezéseket az `GremlinClient` objektum használatával egy aszinkron feladattal. A Gremlin-lekérdezéseket az előző lépésben meghatározott szótárból olvashatja, majd végrehajthatja azokat. Később lekérdezheti az eredményt, és beolvashatja a szótárként formázott értékeket a Newtonsoft. JSON csomag `JsonSerializer` osztályának használatával:
+* Minden Gremlin-lekérdezést `GremlinClient` aszinkron feladattal rendelkező objektum használatával hajtson végre. A Gremlin-lekérdezéseket az előző lépésben definiált szótárból olvashatja el, és végrehajthatja őket. Később kap az eredményt, és olvassa el az értékeket, `JsonSerializer` amelyek formázott szótár, az osztály Newtonsoft.Json csomag:
 
    :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="executeQueries":::
 
@@ -105,30 +105,30 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
 1. Az [Azure Portalon](https://portal.azure.com/) keresse meg a gráfadatbázis-fiókot. Az **Áttekintés** lapon két végpontot lát: 
  
-   **.Net SDK URI** – ez az érték akkor használatos, amikor a Microsoft. Azure. graphs könyvtár használatával csatlakozik a Graph-fiókhoz. 
+   **.NET SDK URI** – Ez az érték akkor használatos, amikor a Microsoft.Azure.Graphs függvénytár használatával csatlakozik a gráffiókhoz. 
 
    **Gremlin-végpont** – Ezt az értéket akkor használja, ha Gremlin.Net-kódtárral kapcsolódik a gráffiókhoz.
 
     ![A végpont másolása](./media/create-graph-dotnet/endpoint.png)
 
-   A minta futtatásához másolja a **Gremlin-végpont** értékét, törölje a végén található portszámot, amely az URI lesz `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com`. A végpont értékének a következőképpen kell kinéznie: `testgraphacct.gremlin.cosmosdb.azure.com`
+   A minta futtatásához másolja a **Gremlin végpont** értékét, törölje a portszámot `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com`a végén, azaz az URI lesz . A végpontértéknek így kell kinéznie`testgraphacct.gremlin.cosmosdb.azure.com`
 
-1. Ezután navigáljon a **kulcsok** lapra, és másolja az **elsődleges kulcs** értékét a Azure Portalból. 
+1. Ezután keresse meg a **Kulcsok** lapot, és másolja a **PRIMER KULCS** értékét az Azure Portalról. 
 
-1. Miután átmásolta a fiókja URI-JÁT és elsődleges KULCSát, mentse azokat egy új környezeti változóba az alkalmazást futtató helyi gépen. A környezeti változó beállításához nyisson meg egy parancssorablakot, és futtassa a következő parancsot. Ügyeljen arra, hogy a < Your_Azure_Cosmos_account_URI > és < Your_Azure_Cosmos_account_PRIMARY_KEY > értékeket cserélje le.
+1. Miután átmásolta a fiók URI-ját és elsődleges kulcsát, mentse őket egy új környezeti változóba az alkalmazást futtató helyi számítógépen. A környezeti változó beállításához nyisson meg egy parancssorablakot, és futtassa a következő parancsot. Győződjön meg arról, hogy <Your_Azure_Cosmos_account_URI> és Your_Azure_Cosmos_account_PRIMARY_KEY> értékeket <Your_Azure_Cosmos_account_PRIMARY_KEY cseréli le.
 
    ```console
    setx EndpointUrl "https://<your cosmos db account name>.gremlin.cosmosdb.azure.com"
    setx PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
    ```
 
-1. Nyissa meg a *program.cs* fájlt, és frissítse az "adatbázis és a" tároló "változókat az adatbázissal és a tárolóval (amely egyben a gráf neve is) a fent létrehozott nevekkel.
+1. Nyissa meg a *Program.cs* fájlt, és frissítse az "adatbázis és a "tároló" változókat a fent létrehozott adatbázis- és tárolónévvel (amely egyben a grafikon neve is).
 
     `private static string database = "your-database-name";` `private static string container = "your-container-or-graph-name";`
 
 1. Mentse a Program.cs fájlt. 
 
-Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
+Ezzel frissítette az alkalmazást az összes olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
 
 ## <a name="run-the-console-app"></a>A konzolalkalmazás futtatása
 
@@ -148,7 +148,7 @@ Ezután visszaléphet az Adatkezelőbe az Azure Portalon, ahol tallózhatja és 
 
     ![A gráf megtekintése az Azure Portal Adatkezelőjében](./media/create-graph-dotnet/graph-explorer.png)
 
-## <a name="review-slas-in-the-azure-portal"></a>Az SLA-k áttekintése az Azure Portalon
+## <a name="review-slas-in-the-azure-portal"></a>Tekintse át az SLA-kat az Azure Portalon
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
@@ -156,9 +156,9 @@ Ezután visszaléphet az Adatkezelőbe az Azure Portalon, ahol tallózhatja és 
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, hogyan lehet az Adatkezelő segítségével gráfot készíteni, és hogyan lehet futtatni az alkalmazást. Most már készen áll arra, hogy a Gremlin használatával összetettebb lekérdezéseket hozzon létre és hatékony gráfbejárási logikákat implementáljon. 
+Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, hogyan lehet az Adatkezelő segítségével gráfot készíteni, és hogyan lehet futtatni az alkalmazást. Az útmutató információira támaszkodva összetett lekérdezéseket hozhat létre és hatékony gráfbejárási logikákat helyezhet üzembe a Gremlin használatával. 
 
 > [!div class="nextstepaction"]
 > [Lekérdezés a Gremlin használatával](tutorial-query-graph.md)

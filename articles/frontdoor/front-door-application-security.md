@@ -1,6 +1,6 @@
 ---
-title: Az Azure bejárati ajtajának Service - alkalmazás réteg biztonsági |} A Microsoft Docs
-description: Ez a cikk segít megérteni, hogyan Azure bejárati ajtajának szolgáltatás lehetővé teszi a háttérkomponensei védelmében
+title: Azure Bejárati ajtó - Alkalmazásréteg biztonsága | Microsoft dokumentumok
+description: Ez a cikk segít megérteni, hogy az Azure Front Door hogyan teszi lehetővé az alkalmazás háttérrendszerek védelmét és védelmét
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,45 +11,45 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: c7b99548e2fe1ad0c1cab39953e28a97e7ebff4b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e458926930c1b95d48886559551878fc6c9d0673
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60193917"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471795"
 ---
-# <a name="application-layer-security-with-front-door"></a>A bejárati ajtajának alkalmazásbiztonsági réteg
-Azure bejárati ajtajának Service lehetővé teszi a webes alkalmazás védelmi funkció révén a webes alkalmazások és a hálózati támadások és SQL-injektálás vagy az idegen hely parancsfájl-kezelési (XSS) gyakori webes biztonsági rések támadások ellen. Engedélyezett http (s) az előtér-kiszolgálókon, bejárati ajtajának application layer biztonsági globálisan elosztott és mindig, leállításával rosszindulatú támadások, az Azure hálózati peremhálózati, milyen távolságra származó a háttérrendszerekre. A fokozott biztonság és a teljesítmény optimalizálása bejárati ajtajának gyors biztosít, és biztonságos webes élmény a végfelhasználók számára.
+# <a name="application-layer-security-with-front-door"></a>Alkalmazási réteg biztonsága a bejárati ajtóval
+Az Azure Front Door webalkalmazás-védelmi képességgel védi a webes alkalmazásokat a hálózati támadások tól és a gyakori webes biztonsági rések kihasználásától, például az SQL Injection vagy a Cross Site Scripting (XSS) ellen. A http(ek) előtér-kiszolgálókhoz engedélyezett Front Door alkalmazásréteg-biztonsága globálisan elosztott és mindig bekapcsolt, az Azure hálózati peremhálózatának szélén, a háttérrendszerektől távol történő rosszindulatú támadások leállítása. A nagyobb biztonság és teljesítményoptimalizálás nak köszönhetően a Front Door gyors és biztonságos webes élményt nyújt a végfelhasználóknak.
 
 ## <a name="application-protection"></a>Alkalmazásvédelem
-Alkalmazásvédelem bejárati ajtajának edge környezeteket világszerte, alkalmazások, megfelelően van konfigurálva, és automatikusan letiltja a nem – HTTP (s) forgalmat a webes alkalmazások elérése. A több-bérlős elosztott architektúra lehetővé teszi, hogy nagy mennyiségű globális védelmi teljesítmény feláldozása nélkül. Http (s) számítási feladatok esetén bejárati ajtajának webszolgáltatás alkalmazás védelmet biztosít egy gazdag szabálymotorral egyéni szabályok, előre konfigurált szabálykészletben gyakori támadások ellen, és részletes naplózás minden kérelemhez, amely megfelel egy szabályt. Többek között rugalmas műveletek lehetővé teszik, letiltása, vagy a napló csak használata támogatott.
+A Front Door alkalmazásvédelme a világ minden peremhálózati környezetében konfigurálva van, az alkalmazásokkal összhangban, és automatikusan blokkolja a nem http(ek) forgalmát a webes alkalmazások elérésében. Több-bérlős elosztott architektúránk a teljesítmény feláldozása nélkül teszi lehetővé a globális védelmet. Http(ek) számítási feladatok esetén a Bejárati ajtó webalkalmazás-védelmi szolgáltatása gazdag szabálymotort biztosít az egyéni szabályokhoz, előre konfigurált szabálykészletet a gyakori támadások ellen, és részletes naplózást biztosít minden olyan kérelemhez, amely megfelel egy szabálynak. A rugalmas műveletek, beleértve az engedélyezést, a tiltást vagy a naplót, támogatottak.
 
 ## <a name="custom-access-control-rules"></a>Egyéni hozzáférés-vezérlési szabályok
-- **IP engedélyezése és letiltása listában:** A webalkalmazások ügyfél IP-címek listája alapján való hozzáférés szabályozásához egyéni szabályok konfigurálásával. IP v4 és IP v6 egyaránt támogatottak
-- **Földrajzi alapú hozzáférés-vezérlés:** Előfordulhat, hogy konfigurálja a webes alkalmazások országkód: az ügyfél IP-cím alapján való hozzáférés szabályozásához egyéni szabályok
-- **HTTP-paraméterek szűrése:** Előfordulhat, hogy konfigurálja a megfelelő http (s) kérelem paramétereit, beleértve a fejlécek, az URL-cím és a lekérdezési karakterláncok alapuló egyéni hozzáférési szabályok
+- **IP-engedélyezési lista és tiltólista:** Egyéni szabályokat állíthat be úgy, hogy az ügyfél IP-címeinek listája alapján szabályozzák a webalkalmazásokhoz való hozzáférést. Mind az IP v4, mind az IP v6 támogatott
+- **Földrajzi alapú hozzáférés-vezérlés:** Egyéni szabályokat állíthat be a webalkalmazásokhoz való hozzáférés szabályozására az országkód alapján, amelyből az ügyfél IP
+- **HTTP-paraméterek szűrése:** Egyéni hozzáférési szabályokat konfigurálhat a http(ek) kérési paraméterek alapján, beleértve a fejléceket, az URL-címeket és a lekérdezési karakterláncokat
 
-## <a name="azure-managed-rules"></a>Azure által felügyelt szabályok
-- Alapértelmezés szerint engedélyezve van a közös felső OWASP biztonsági rések elleni egy előre konfigurált szabálykészletet. Előzetes verzióban a szabálykészletet sqli és xss kérések ellenőrzése magában foglalja. További szabályok fog bővülni. Dönthet úgy, hogy kezdje a napló egyetlen művelet, előre konfigurált szabályai munkahelyi érvényesítéséhez, az alkalmazások az elvárt módon 
+## <a name="azure-managed-rules"></a>Az Azure által felügyelt szabályok
+- A gyakori oWASP-biztonsági rések elleni előre konfigurált szabálykészlet alapértelmezés szerint engedélyezve van. Az előzetes verzióban a szabályok tartalmazzák az sqli és xss kérelmek ellenőrzését. További szabályok kerülnek hozzáadásra. Dönthet úgy, hogy csak a naplóművelettel kezdi az előre konfigurált szabályok működésének ellenőrzéséhez az alkalmazások esetében elvárt módon. 
 
-## <a name="rate-limiting"></a>Arány korlátozása
-- A sebesség-vezérlési szabály, hogy minden ügyfél IP-rendellenes nagy forgalmat.  Előfordulhat, hogy lát egy küszöbértéket egy egy perces időszakra ügyfél IP-cím által engedélyezett webes kérelmek száma.
+## <a name="rate-limiting"></a>Sebességkorlátozás
+- A díjszabályozási szabály az, hogy korlátozza a rendellenes nagy forgalmat bármely ügyfél IP-cím.  Az ügyfél IP-címe által egy perces időtartam alatt engedélyezett webes kérelmek számát küszöbértéket állíthat be.
 
-## <a name="centralized-protection-policy"></a>Központosított alkalmazásvédelmi szabályzat
-- Előfordulhat, hogy több védelmi szabályok megadása, és hozzáadhatja őket egy szabályzatot a prioritásuk szerinti sorrendben történik. Egyéni szabályok a magasabb prioritású, mint a kivételek engedélyezése a felügyelt szabálykészletben rendelkezik. Egyetlen szabályzatban a webes alkalmazás társítva.  Webes alkalmazás azonos védelmi szabályzat replikálódik minden helyen lévő összes peremhálózati kiszolgálókról, győződjön meg, hogy következetes biztonsági házirend, minden régióban
+## <a name="centralized-protection-policy"></a>Központosított védelmi házirend
+- Több védelmi szabályt is definiálhat, és prioritási sorrendben hozzáadhatja őket egy házirendhez. Az egyéni szabályok prioritása magasabb, mint a felügyelt szabálykészlet a kivételek engedélyezéséhez. Egyetlen szabályzat van társítva a webalkalmazáshoz.  Ugyanaz a webalkalmazás-védelmi házirend replikálódik az összes peremhálózati kiszolgálóra minden helyen, biztosítva a konzisztens biztonsági házirendet minden régióban
 
 ## <a name="configuration"></a>Konfiguráció
-- Az előzetes verzióban használatával REST API-k, PowerShell vagy parancssori felület bejárati ajtajának alkalmazás védelmi szabályok és a szabályzatok létrehozása és telepítése. Mielőtt az általános támogatni fogja az portál elérésére. 
+- Az előzetes verzió során rest API-kat, PowerShellt vagy CLI-t használhat a Bejárati ajtó alkalmazásvédelmi szabályainak és szabályzatainak létrehozásához és üzembe helyezéséhez. A portálhozzáférés támogatott lesz, mielőtt a szolgáltatás általánosan elérhetővé válik. 
 
 
 ## <a name="monitoring"></a>Figyelés
-Bejárati ajtajának lehetővé teszi a webes alkalmazások, amelyek integrálhatók az Azure monitorral nyomon követheti a riasztásokat, és könnyedén figyelheti a trendeket, valós idejű metrikák használatával támadások elleni figyelése.
+A Bejárati ajtó lehetővé teszi a webes alkalmazások támadások elleni figyelését az Azure Monitorba integrált valós idejű mérőszámokkal a riasztások nyomon követésére és a trendek egyszerű figyelésére.
 
 ## <a name="pricing"></a>Díjszabás
-Az előzetes verzióban bejárati ajtajának application layer biztonsági díjmentes.
+A Front Door alkalmazásréteg-biztonsága ingyenes az előzetes verzió ban.
 
 
 ## <a name="next-steps"></a>További lépések
 
-- [Frontdoor létrehozására](quickstart-create-front-door.md) vonatkozó információk.
+- Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.

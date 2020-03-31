@@ -1,6 +1,6 @@
 ---
-title: Különbözeti másolás egy adatbázisból egy vezérlőelem-táblázat használatával
-description: Megtudhatja, hogyan használhat megoldási sablont az új vagy frissített sorok növekményes másolásához csak Azure Data Factory-alapú adatbázisból.
+title: Különbözeti másolás adatbázisból vezérlőtábla használatával
+description: Megtudhatja, hogyan használhat megoldássablont új vagy frissített sorok csak az Azure Data Factory adatbázisból történő növekményes másolására.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -13,44 +13,44 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/24/2018
 ms.openlocfilehash: 3c077e2c04cae94d2e1a2a84ccd7d09c7a0829b4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75439749"
 ---
-# <a name="delta-copy-from-a-database-with-a-control-table"></a>Különbözeti másolat egy adatbázisból egy vezérlő táblával
+# <a name="delta-copy-from-a-database-with-a-control-table"></a>Különbözeti másolás vezérlőtáblával rendelkező adatbázisból
 
-Ez a cikk egy olyan sablont ismertet, amely egy adatbázis-táblázat új vagy frissített sorainak az Azure-ba való növekményes betöltését mutatja be egy olyan külső vezérlőelem-táblázat használatával, amely a nagy vízjel értéket tárolja.
+Ez a cikk egy sablont, amely elérhető növekményesen betölteni az új vagy frissített sorokat egy adatbázistábla az Azure-ba egy külső vezérlőtábla, amely tárolja a magas vízjel érték.
 
-Ehhez a sablonhoz az szükséges, hogy a forrásadatbázis sémája időbélyeg-oszlopot vagy növekményes kulcsot tartalmazzon az új vagy frissített sorok azonosításához.
+Ez a sablon megköveteli, hogy a forrásadatbázis sémája tartalmazzon egy időbélyeg oszlopot vagy növekménykulcsot az új vagy frissített sorok azonosításához.
 
 >[!NOTE]
-> Ha a forrásadatbázis timestamp oszlopa új vagy frissített sorok azonosítására szolgál, de nem szeretne létrehozni egy külső vezérlőt a különbözeti másoláshoz, használja a [Azure Data Factory adatok másolása eszközt](copy-data-tool.md) a folyamat lekéréséhez. Az eszköz egy trigger-ütemezett időpontot használ változóként az új sorok olvasásához a forrás-adatbázisból.
+> Ha rendelkezik egy időbélyeg oszlop a forrás adatbázisban az új vagy frissített sorok azonosítására, de nem szeretné, hogy hozzon létre egy külső vezérlőtáblát használni a különbözeti másolás, ehelyett használhatja az [Azure Data Factory Copy Data eszköz](copy-data-tool.md) egy folyamat lekérni. Ez az eszköz egy eseményindító ütemezett időt használ változóként az új sorok beolvasásához a forrásadatbázisból.
 
-## <a name="about-this-solution-template"></a>Tudnivalók a megoldási sablonról
+## <a name="about-this-solution-template"></a>A megoldássablon – kapcsolat
 
-Ez a sablon először a régi küszöbértéket kérdezi le, és összehasonlítja az aktuális vízjel értékével. Ezt követően a rendszer csak a forrásadatbázis változásait másolja át a két vízjel értékének összehasonlítása alapján. Végül az új, magas küszöbértékű értékeket egy külső vezérlőelem-táblára tárolja a következő alkalommal betöltött különbözeti betöltéshez.
+Ez a sablon először beolvassa a régi vízjel értékét, és összehasonlítja az aktuális vízjel értékével. Ezt követően csak a változásokat másolja át a forrásadatbázisból a két vízjel értékének összehasonlítása alapján. Végül az új magas vízjel értéket egy külső vezérlőtáblához tárolja a különbözeti adatok következő betöltéséhez.
 
 A sablon négy tevékenységet tartalmaz:
-- A **Keresés** lekéri a régi, magas küszöbértékű értéket, amely egy külső vezérlő táblában van tárolva.
-- Egy másik **keresési** tevékenység lekéri a jelenlegi, magas küszöbértékű értéket a forrás-adatbázisból.
-- A másolás csak a forrásadatbázis változásait **másolja** a célhelyre. A forrásadatbázis módosításainak azonosítására szolgáló lekérdezés hasonló a "SELECT * FROM Data_Source_Table, ahol TIMESTAMP_Column >" utolsó nagy vízjel "és TIMESTAMP_Column < =" aktuális, magas vízjel "".
-- A **SqlServerStoredProcedure** a jelenlegi magas küszöbértékű értéket egy külső vezérlőelem-táblázatba írja a következő alkalommal, a különbözeti másoláshoz.
+- **A keresés** beolvassa a régi magas vízjel értéket, amely egy külső vezérlőtáblában van tárolva.
+- Egy másik **keresési** tevékenység lekéri az aktuális magas vízjel értéket a forrásadatbázisból.
+- **A** másolás csak a forrásadatbázisból a céltárolóba történő módosításokat másolja. A forrásadatbázis változásait azonosító lekérdezés hasonló a "SELECT * FROM DATA_SOURCE_TABLE WHERE TIMESTAMP_Column > "utolsó magas vízjel" és TIMESTAMP_Column <= "aktuális magas vízjel".The query that identifies the changes in the source database is similar to 'SELECT * FROM Data_Source_Table WHERE TIMESTAMP_Column > "last high-watermark" and TIMESTAMP_Column <= "current high-watermark".The query that identifies the changes in the source database is similar to 'SELECT * FROM DATA_SOURCE_TABLE WHERE TIMESTAMP_Column > "last high-watermark" and TIMESTAMP_Column <= "current high-watermark".The query that identifies the changes in the source database is
+- **Az SqlServerStoredProcedure** az aktuális magas vízjel értéket írja egy külső vezérlőtáblába a különbözeti másoláshoz legközelebb.
 
-A sablon a következő paramétereket definiálja:
-- *Data_Source_Table_Name* a forrás-adatbázis azon táblája, amelyről be szeretné tölteni az adatait.
-- *Data_Source_WaterMarkColumn* a forrás tábla azon oszlopának neve, amely az új vagy frissített sorok azonosítására szolgál. Az oszlop típusa általában *datetime*, *int*vagy hasonló.
-- A *Data_Destination_Container* az a hely, ahol az Adatmásolás a célhelyre történik.
-- A *Data_Destination_Directory* a könyvtár elérési útja annak a helynek a gyökerében, ahová az adat a célhelyre másolódik.
-- A *Data_Destination_Table_Name* az a hely, ahol az Adatmásolás a célhelyre történik (ez akkor alkalmazható, ha az "Azure szinapszis Analytics (korábbi NEVÉN SQL DW)" lehetőséget választotta az adat célhelyként.
-- *Data_Destination_Folder_Path* az a hely, ahová a rendszer átmásolja az adatait a célhelyre (ha a "fájlrendszer" vagy a "Azure Data Lake Storage Gen1" lehetőség van kiválasztva adat célhelyként).
-- A *Control_Table_Table_Name* a külső vezérlő tábla, amely a nagy vízjel értékét tárolja.
-- *Control_Table_Column_Name* a külső vezérlő tábla azon oszlopa, amely a nagy vízjel értékét tárolja.
+A sablon a következő paramétereket határozza meg:
+- *Data_Source_Table_Name* az a tábla a forrásadatbázisban, amelyből adatokat szeretne betölteni.
+- *Data_Source_WaterMarkColumn* a forrástábla új vagy frissített sorainak azonosítására használt oszlop neve. Ennek az oszlopnak a típusa általában *datetime*, *INT*vagy hasonló.
+- *Data_Destination_Container* annak a helynek a gyökérelérési útja, ahová az adatokat a céltárolóba másolja a rendszer.
+- *Data_Destination_Directory* a könyvtár elérési útja annak a helynek a gyökere alatt, ahová az adatokat a céltárolóba másolják.
+- *Data_Destination_Table_Name* az a hely, ahová az adatok másolása a céltárolóba történik (akkor alkalmazható, ha az "Azure Synapse Analytics (korábban SQL DW)" adatcélként van kiválasztva).
+- *Data_Destination_Folder_Path* az a hely, ahová az adatokmásolása a céltárolóba történik (akkor alkalmazható, ha a "Fájlrendszer" vagy az "Azure Data Lake Storage Gen1" adatcélként van kiválasztva).
+- *Control_Table_Table_Name* a külső vezérlőtábla, amely a magas vízjel értéket tárolja.
+- *Control_Table_Column_Name* a külső vezérlőtábla azon oszlopa, amely a magas vízjel értéket tárolja.
 
-## <a name="how-to-use-this-solution-template"></a>A megoldás sablonjának használata
+## <a name="how-to-use-this-solution-template"></a>A megoldássablon használata
 
-1. Ismerkedjen meg a betöltendő forrás táblával, és adja meg az új vagy frissített sorok azonosításához használható nagy vízjel oszlopot. Az oszlop típusa *datetime*, *int*vagy hasonló lehet. Az oszlop értéke nő, ahogy az új sorok hozzáadása megtörténik. A következő példában szereplő forrástábla (data_source_table) alapján a *LastModifytime* oszlopot a nagy vízjel oszlopként használhatja.
+1. Fedezze fel a betölteni kívánt forrástáblát, és határozza meg az új vagy frissített sorok azonosítására használható magas vízjeloszlopot. Ennek az oszlopnak a típusa lehet *datetime,* *INT*vagy hasonló. Az oszlop értéke az új sorok hozzáadásával növekszik. A következő mintaforrás-táblából (data_source_table) a *LastModifytime* oszlopot használhatjuk magas vízjeloszlopként.
 
     ```sql
             PersonID    Name    LastModifytime
@@ -65,7 +65,7 @@ A sablon a következő paramétereket definiálja:
             9   iiiiiiiii   2017-09-09 09:01:00.000
     ```
     
-2. Hozzon létre egy vezérlőelem-táblázatot SQL Server vagy Azure SQL Database a különbözeti betöltéshez szükséges magas vízjel értékének tárolására. A következő példában a vezérlő tábla neve *watermarktable*. Ebben a táblázatban a *WatermarkValue* az az oszlop, amely a nagy vízjel értékét tárolja, a típusa pedig *datetime*.
+2. Hozzon létre egy vezérlőtáblát az SQL Server vagy az Azure SQL Database rendszerben a különbözeti adatok betöltésének magas vízjelértékének tárolásához. A következő példában a vezérlőtábla neve *vízjelként jelenik meg.* Ebben a táblában a *Vízjelérték* az az oszlop, amely a magas vízjel értéket tárolja, és típusa *datetime*.
 
     ```sql
             create table watermarktable
@@ -76,7 +76,7 @@ A sablon a következő paramétereket definiálja:
             VALUES ('1/1/2010 12:00:00 AM')
     ```
     
-3. Hozzon létre egy tárolt eljárást ugyanabban a SQL Server-vagy Azure SQL Database-példányban, amelyet a vezérlő tábla létrehozásához használt. A tárolt eljárással az új, magas vízjel érték a külső vezérlő táblára írható a következő alkalommal betöltött különbözeti betöltéshez.
+3. Hozzon létre egy tárolt eljárást ugyanabban az SQL Server vagy Azure SQL Database-példányban, amelyet a vezérlőtábla létrehozásához használt. A tárolt eljárás segítségével írhatja az új magas vízjel értéket a külső vezérlőtáblába a különbözeti adatok következő betöltéséhez.
 
     ```sql
             CREATE PROCEDURE update_watermark @LastModifiedtime datetime
@@ -90,41 +90,41 @@ A sablon a következő paramétereket definiálja:
             END
     ```
     
-4. Lépjen a **különbözeti másolás adatbázis-sablonból elemre** . Hozzon létre egy **új** kapcsolódást ahhoz a forrás-adatbázishoz, amelyről az adatok másolását el szeretné készíteni.
+4. Nyissa meg a **Különbözet idomát az Adatbázis sablonból.** **Hozzon** létre egy új kapcsolatot azzal a forrásadatbázissal, amelyből adatokat szeretne másolni.
 
-    ![Új kapcsolódás létrehozása a forrástábla számára](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable4.png)
+    ![Új kapcsolat létrehozása a forrástáblával](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable4.png)
 
-5. Hozzon létre egy **új** kapcsolódást ahhoz a célhely-adattárhoz, amelyhez az Adatmásolást el szeretné másolni.
+5. **Hozzon** létre egy új kapcsolatot a céladattárhoz, amelybe az adatokat másolni szeretné.
 
-    ![Új kapcsolódás létrehozása a céltábla](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable5.png)
+    ![Új kapcsolat létrehozása a céltáblához](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable5.png)
 
-6. Hozzon létre egy **új** kapcsolódást a külső vezérlő táblával és a 2. és 3. lépésben létrehozott tárolt eljárással.
+6. **Új** kapcsolat létrehozása a külső vezérlőtáblához és a 2.
 
-    ![Új kapcsolódás létrehozása a Control Table adattárhoz](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable6.png)
+    ![Új kapcsolat létrehozása a vezérlőtábla adattárával](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable6.png)
 
-7. Kattintson a **Sablon használata** lehetőségre.
+7. Válassza **a Sablon használata lehetőséget.**
     
-8. A rendelkezésre álló folyamat az alábbi példában látható módon jelenik meg:
+8. A rendelkezésre álló folyamat a következő példában látható módon jelenik meg:
   
     ![A folyamat áttekintése](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
 
-9. Válassza a **tárolt eljárás**lehetőséget. A **tárolt eljárás neve**mezőben válassza a **[dbo] lehetőséget. [ update_watermark]** . Válassza az **importálási paraméter**lehetőséget, majd válassza a **dinamikus tartalom hozzáadása**lehetőséget.  
+9. Válassza **a Tárolt eljárás lehetőséget.** A **Tárolt eljárás neve mezőbe**válassza a **[dbo].[ update_watermark]** című. Válassza **a Paraméter importálása**lehetőséget, majd a **Dinamikus tartalom hozzáadása**lehetőséget.  
 
-    ![Tárolt eljárási tevékenység beállítása](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png)  
+    ![A tárolt eljárási tevékenység beállítása](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png)  
 
-10. Írja be a **(z) {Activity ("LookupCurrentWaterMark"). output. firstRow. NewWatermarkValue} nevű\@** tartalmat, majd válassza a **Befejezés**lehetőséget.  
+10. Írja be ** \@a(z) {activity('LookupCurrentWaterMark').output.firstRow.NewWatermarkValue} (Befejezés)** tartalmat, majd válassza **a Befejezés gombot.**  
 
-    ![A tárolt eljárás paramétereinek megírása](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)       
+    ![A tárolt eljárás paramétereinek tartalmának beírása](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)       
      
-11. Válassza a **hibakeresés**lehetőséget, adja meg a **paramétereket**, majd kattintson a **Befejezés gombra**.
+11. Válassza **a Hibakeresés**lehetőséget, írja be a **Paraméterek**, majd a **Befejezés**lehetőséget.
 
-    ![Válassza a * * hibakeresés * * lehetőséget](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png)
+    ![**Debug**](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png)
 
 12. Az alábbi példához hasonló eredmények jelennek meg:
 
     ![Az eredmény áttekintése](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable12.png)
 
-13. A forrástábla új sorokat is létrehozhat. Az új sorok létrehozásához az alábbi minta SQL nyelve szükséges:
+13. Új sorokat hozhat létre a forrástáblában. Itt van minta SQL nyelv új sorok létrehozásához:
 
     ```sql
             INSERT INTO data_source_table
@@ -134,15 +134,15 @@ A sablon a következő paramétereket definiálja:
             VALUES (11, 'newdata','9/11/2017 9:01:00 AM')
     ```
 
-14. A folyamat ismételt futtatásához válassza a **hibakeresés**lehetőséget, adja meg a **paramétereket**, majd kattintson a **Befejezés gombra**.
+14. A folyamat ismételt futtatásához válassza a **Hibakeresés**lehetőséget, írja be a **Paraméterek**, majd kattintson a **Befejezés gombra.**
 
-    Látni fogja, hogy csak az új sorok lettek átmásolva a célhelyre.
+    Látni fogja, hogy csak új sorokat másolt a célhelyre.
 
-15. Választható Ha az Azure szinapszis Analytics (korábbi nevén SQL DW) lehetőséget választja az adat célhelyként, akkor az Azure Blob Storage-hoz való kapcsolódást is meg kell adnia az átmeneti tároláshoz, amelyet a SQL Data Warehouse-alapok igényelnek. A sablon létrehozza a tároló elérési útját. A folyamat futtatása után győződjön meg arról, hogy a tároló létre lett-e hozva a blob Storage-ban.
+15. (Nem kötelező:) Ha az Azure Synapse Analytics (korábban SQL DW) adatcélként való kiválasztását választja, az SQL Data Warehouse Polybase által megkövetelt Azure Blob storage-tárolóhoz is létre kell adnia egy kapcsolatot. A sablon létrehoz egy tároló elérési útját. A folyamat futtatása után ellenőrizze, hogy a tároló létrejött-e a Blob storage-ban.
     
-    ![A bázisterület konfigurálása](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable15.png)
+    ![A polibázis konfigurálása](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable15.png)
     
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Tömeges másolás adatbázisból egy Azure Data Factory tartalmazó vezérlőelem-táblázat használatával](solution-template-bulk-copy-with-control-table.md)
-- [Több tárolóból származó fájlok másolása Azure Data Factory](solution-template-copy-files-multiple-containers.md)
+- [Tömeges másolás egy adatbázisból egy vezérlőtábla használatával az Azure Data Factory-val](solution-template-bulk-copy-with-control-table.md)
+- [Fájlok másolása több tárolóból az Azure Data Factory segítségével](solution-template-copy-files-multiple-containers.md)

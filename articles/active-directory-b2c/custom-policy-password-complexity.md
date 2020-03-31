@@ -1,7 +1,7 @@
 ---
-title: Jelszó bonyolultságának konfigurálása egyéni szabályzatok használatával
+title: A jelszó összetettségének konfigurálása egyéni házirendekkel
 titleSuffix: Azure AD B2C
-description: A jelszó-összetettségi követelmények konfigurálása Azure Active Directory B2C egyéni házirendjének használatával.
+description: A jelszó összetettségi követelményeinek konfigurálása egyéni szabályzattal az Azure Active Directory B2C-ben.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,30 +12,30 @@ ms.date: 03/10/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: b16790e288f6569f08ce14e5a7c751bbd8083faf
-ms.sourcegitcommit: d322d0a9d9479dbd473eae239c43707ac2c77a77
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79138434"
 ---
-# <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>A jelszó bonyolultságának konfigurálása egyéni szabályzatok használatával Azure Active Directory B2C
+# <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>A jelszó összetettségének konfigurálása egyéni házirendekkel az Azure Active Directory B2C-ben
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) esetében beállíthatja a felhasználók által a fiók létrehozásakor biztosított jelszavak összetettségi követelményeit. Alapértelmezés szerint a Azure AD B2C **erős** jelszavakat használ. Ez a cikk bemutatja, hogyan konfigurálhatja a jelszó-bonyolultságot az [Egyéni házirendekben](custom-policy-overview.md). A [felhasználói folyamatokban](user-flow-password-complexity.md)is konfigurálhatja a jelszó bonyolultságát.
+Az Azure Active Directory B2C (Azure AD B2C) konfigurálhatja a felhasználó által a fiók létrehozásakor megadott jelszavak összetettségi követelményeit. Alapértelmezés szerint az Azure AD B2C **erős** jelszavakat használ. Ez a cikk bemutatja, hogyan konfigurálhatja a jelszó összetettségét az [egyéni házirendekben.](custom-policy-overview.md) Lehetőség van a jelszó összetettségének konfigurálására is a [felhasználói folyamatokban.](user-flow-password-complexity.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Hajtsa végre az [Ismerkedés az egyéni szabályzatokkal](custom-policy-get-started.md)című témakör lépéseit. A bejelentkezéshez és a helyi fiókokkal való bejelentkezéshez egyéni szabályzatot kell használnia.
+Hajtsa végre az Egyéni házirendek – Első lépések című [lépéseit.](custom-policy-get-started.md) Rendelkeznie kell egy működő egyéni szabályzat a regisztrációhoz és a helyi fiókkal való bejelentkezéshez.
 
 
-## <a name="add-the-elements"></a>Elemek hozzáadása
+## <a name="add-the-elements"></a>Az elemek hozzáadása
 
-A jelszó bonyolultságának konfigurálásához bírálja felül a `newPassword` és `reenterPassword` [jogcím-típusokat](claimsschema.md) a [predikátumok érvényességére](predicates.md#predicatevalidations)mutató hivatkozással. A PredicateValidations elem olyan predikátumok halmazát csoportosítja, amelyekkel egy felhasználói bemeneti ellenőrzés alkotható, amely alkalmazható a jogcím típusára. Nyissa meg a szabályzat Extensions (bővítmények) fájlját. Például <em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em>.
+A jelszó összetettségének konfigurálásához `newPassword` felülbírálja a és `reenterPassword` a [jogcímtípusokat](claimsschema.md) [a predikátum-érvényesítésre](predicates.md#predicatevalidations)való hivatkozással. A PredicateValidations elem predikátumok készletét csoportosítja, hogy felhasználói bevitel-érvényesítést hozzon létre, amely alkalmazható egy jogcímtípusra. Nyissa meg a házirend bővítményfájlját. <em> `SocialAndLocalAccounts/` </em>Például.
 
 1. Keresse meg a [BuildingBlocks](buildingblocks.md) elemet. Ha az elem nem létezik, adja hozzá.
 1. Keresse meg a [ClaimsSchema](claimsschema.md) elemet. Ha az elem nem létezik, adja hozzá.
-1. Adja hozzá a `newPassword` és `reenterPassword` jogcímeket a **ClaimsSchema** elemhez.
+1. Adja `newPassword` hozzá `reenterPassword` a és a jogcímeket a **ClaimsSchema** elemhez.
 
     ```XML
     <ClaimType Id="newPassword">
@@ -46,7 +46,7 @@ A jelszó bonyolultságának konfigurálásához bírálja felül a `newPassword
     </ClaimType>
     ```
 
-1. A [predikátumok](predicates.md) alapszintű ellenőrzést határoznak meg a jogcím típusának ellenőrzéséhez, és igaz vagy hamis értéket ad vissza. Az érvényesítés egy megadott metódus-elem és a metódushoz tartozó paraméterek készletének használatával történik. Adja hozzá a következő predikátumokat a **BuildingBlocks** elemhez közvetlenül a `</ClaimsSchema>` elem bezárása után:
+1. [Predikátumok](predicates.md) határozza meg az alapvető érvényesítési érték ének ellenőrzésére a jogcímtípus, és igaz vagy hamis értéket ad vissza. Az ellenőrzés egy megadott metóduselem és a metódusra vonatkozó paraméterek használatával történik. Adja hozzá a következő predikátumokat a **BuildingBlocks** `</ClaimsSchema>` elemhez, közvetlenül az elem bezárása után:
 
     ```XML
     <Predicates>
@@ -84,7 +84,7 @@ A jelszó bonyolultságának konfigurálásához bírálja felül a `newPassword
     </Predicates>
     ```
 
-1. Adja hozzá a következő predikátum-érvényesítéseket a **BuildingBlocks** elemhez közvetlenül a `</Predicates>` elem bezárása után:
+1. Adja hozzá a következő predikátum-érvényesítéseket a **BuildingBlocks** elemhez, közvetlenül az `</Predicates>` elem bezárása után:
 
     ```XML
     <PredicateValidations>
@@ -109,7 +109,7 @@ A jelszó bonyolultságának konfigurálásához bírálja felül a `newPassword
     </PredicateValidations>
     ```
 
-1. A következő műszaki profilok [Active Directory műszaki profilok](active-directory-technical-profile.md), amelyek az Azure Active Directoryba való adatolvasást és-írást írják le. Bírálja felül ezeket a technikai profilokat a kiterjesztési fájlban. Az erős jelszóházirend letiltásához használja a `PersistedClaims`. Keresse meg a **ClaimsProviders** elemet.  Adja hozzá a következő jogcím-szolgáltatókat az alábbiak szerint:
+1. A következő technikai profilok [az Active Directory technikai profiljai,](active-directory-technical-profile.md)amelyek adatokat olvasnak és írnak az Azure Active Directoryba. Felülbírálja ezeket a technikai profilokat a bővítményfájlban. Ezzel `PersistedClaims` letilthatja az erős jelszóházirendet. Keresse meg a **ClaimsProviders** elemet.  Adja hozzá a következő jogcímszolgáltatókat az alábbiak szerint:
 
     ```XML
     <ClaimsProvider>
@@ -129,28 +129,28 @@ A jelszó bonyolultságának konfigurálásához bírálja felül a `newPassword
     </ClaimsProvider>
     ```
 
-1. Mentse a házirend-fájlt.
+1. Mentse a házirendfájlt.
 
 ## <a name="test-your-policy"></a>A szabályzat tesztelése
 
 ### <a name="upload-the-files"></a>A fájlok feltöltése
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
-2. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
-3. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
-4. Válassza az **identitási élmény keretrendszert**.
-5. Az egyéni házirendek lapon kattintson a **házirend feltöltése**elemre.
-6. Ha létezik, válassza a **házirend felülírása**lehetőséget, majd keresse meg és válassza ki a *TrustFrameworkExtensions. XML* fájlt.
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+2. Győződjön meg arról, hogy az Azure AD B2C-bérlőt tartalmazó könyvtárat használja, ha a felső **menüben** a Directory + előfizetésszűrőt választja, és kiválasztja a bérlőt tartalmazó könyvtárat.
+3. Válassza az **Összes szolgáltatás** lehetőséget az Azure Portal bal felső sarkában, majd keresse meg és válassza az **Azure AD B2C parancsot.**
+4. Válassza **az Identitáskezelési keretrendszert**.
+5. Az Egyéni házirendek lapon kattintson a **Feltöltési szabályzat gombra.**
+6. Válassza **a Házirend felülírása lehetőséget, ha létezik,** majd keresse meg és jelölje ki a *TrustFrameworkExtensions.xml* fájlt.
 7. Kattintson a **Feltöltés** gombra.
 
 ### <a name="run-the-policy"></a>A házirend futtatása
 
-1. Nyissa meg a regisztrálási vagy bejelentkezési szabályzatot. Például *B2C_1A_signup_signin*.
-2. **Alkalmazás**esetén válassza ki a korábban regisztrált alkalmazást. A token megjelenítéséhez a **Válasz URL-címének** `https://jwt.ms`nak kell megjelennie.
+1. Nyissa meg a regisztrációs vagy bejelentkezési szabályzatot. Például *B2C_1A_signup_signin*.
+2. Az **Alkalmazás területen**válassza ki a korábban regisztrált alkalmazást. A token megtekintéséhez a Válasz `https://jwt.ms` **URL-címének** meg kell jelennie.
 3. Kattintson a **Futtatás most** parancsra.
-4. Válassza a **regisztráció most**lehetőséget, adjon meg egy e-mail-címet, és adjon meg egy új jelszót. Útmutatást a jelszóra vonatkozó korlátozásokban talál. Fejezze be a felhasználói adatok beírását, majd kattintson a **Létrehozás**gombra. Ekkor meg kell jelennie a visszaadott token tartalmának.
+4. Válassza **a Regisztráció most**lehetőséget, adjon meg egy e-mail címet, és adjon meg egy új jelszót. Útmutató jelenik meg a jelszó korlátozásokat. Fejezze be a felhasználói adatok megadását, majd kattintson a **Létrehozás gombra.** Látnia kell a visszaadott jogkivonat tartalmát.
 
 ## <a name="next-steps"></a>További lépések
 
-- Megtudhatja, hogyan [konfigurálhatja a jelszó módosítását egyéni házirendek használatával Azure Active Directory B2Cban](custom-policy-password-change.md).
-- További információ a [predikátumok](predicates.md) és a [PredicateValidations](predicates.md#predicatevalidations) elemeiről a IEF-hivatkozásban.
+- Megtudhatja, hogy [miként konfigurálhatja a jelszómódosítást az Azure Active Directory B2C egyéni szabályzatai használatával.](custom-policy-password-change.md)
+- További információ a [predikátumok](predicates.md) és [predicatevalidations](predicates.md#predicatevalidations) elemek az IEF referencia.

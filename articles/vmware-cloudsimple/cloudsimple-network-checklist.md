@@ -1,6 +1,6 @@
 ---
-title: Azure VMware Solutions (AVS) – hálózati ellenőrzőlista
-description: Ellenőrzőlista az Azure VMware-megoldás hálózati CIDR AVS-vel való lefoglalásához
+title: Azure VMware-megoldás a CloudSimple-től – Hálózati ellenőrzőlista
+description: Ellenőrzőlista a hálózati CIDR hozzárendeléséhez a CloudSimple Által az Azure VMware-megoldáson
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 09/25/2019
@@ -8,58 +8,58 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5cbb0fc0514c17fe34f8e57806e6620cfa8b3f68
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: bfb170036293dc9f519259dc92737f30380aa84a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025010"
 ---
-# <a name="networking-prerequisites-for-azure-vmware-solution-by-avs"></a>Az Azure VMware-megoldás hálózatkezelési előfeltételei az AVS használatával
+# <a name="networking-prerequisites-for-azure-vmware-solution-by-cloudsimple"></a>Az Azure VMware-megoldás hálózati előfeltételei a CloudSimple által
 
-Az Azure VMware Solutions (AVS) olyan VMware Private Cloud Environment-környezetet kínál, amely elérhető a helyszíni környezetek, a nagyvállalati eszközök és az Azure-erőforrások felhasználói és alkalmazásai számára. A kapcsolat olyan hálózati szolgáltatásokon keresztül történik, mint a VPN-EK és az Azure ExpressRoute-kapcsolatok. Néhány hálózati szolgáltatáshoz meg kell adnia a szolgáltatások engedélyezéséhez szükséges hálózati címtartományt. 
+Az Azure VMware Solution by CloudSimple olyan VMware privát felhőkörnyezetet kínál, amely a helyszíni környezetekből, nagyvállalati felügyelt eszközökről és Azure-erőforrásokból származó felhasználók és alkalmazások számára érhető el. A kapcsolat hálózati szolgáltatásokon, például VPN-eken és Azure ExpressRoute-kapcsolatokon keresztül érhető el. A hálózati szolgáltatások némelyike megköveteli, hogy hálózati címtartományokat adjon meg a szolgáltatások engedélyezéséhez. 
 
-A cikkben szereplő táblázatok a címtartományok és a megadott címeket használó kapcsolódó szolgáltatások leírását ismertetik. Néhány cím megadása kötelező, és néhány a telepíteni kívánt szolgáltatástól függ. Ezek a Címterület nem fedik át egymást a helyszíni alhálózatok, az Azure Virtual Network alhálózatok vagy a tervezett AVS munkaterhelés-alhálózatok között.
+Ebben a cikkben található táblázatok a megadott címeket használó címtartományok és megfelelő szolgáltatások készletét ismertetik. Egyes címek kötelezőek, és néhány a telepíteni kívánt szolgáltatásoktól függ. Ezek a címterek nem fedhetik át a helyszíni alhálózatok, az Azure virtuális hálózat alhálózatait vagy a tervezett CloudSimple számítási feladatok alhálózatait.
 
-## <a name="network-address-ranges-required-for-creating-an-avs-private-cloud"></a>Az AVS Private Cloud létrehozásához szükséges hálózati címtartományok
+## <a name="network-address-ranges-required-for-creating-a-private-cloud"></a>A magánfelhő létrehozásához szükséges hálózati címtartományok
 
-Az AVS szolgáltatás és az AVS Private Cloud létrehozása során be kell tartania a megadott hálózati osztály nélküli tartományok közötti útválasztási (CIDR) tartományokat a következők szerint.
+A CloudSimple szolgáltatás és a magánfelhő létrehozása során meg kell felelnie a megadott hálózati osztály nélküli tartományok közötti útválasztási (CIDR) tartományok közötti útválasztás (CIDR) tartományok, az alábbiak szerint.
 
-| Név/használat a következőhöz:     | Leírás                                                                                                                            | Címtartomány            |
+| Név/használt     | Leírás                                                                                                                            | Címtartomány            |
 |-------------------|----------------------------------------------------------------------------------------------------------------------------------------|--------------------------|
-| Átjáró CIDR      | Az Edge-szolgáltatásokhoz (VPN-átjárók) szükséges. Ez a CIDR az AVS szolgáltatás létrehozásakor szükséges, és az RFC 1918 területről kell származnia. | /28                      |
-| vSphere/vSAN CIDR | A VMware felügyeleti hálózatokhoz szükséges. Ezt a CIDR meg kell adni az AVS Private Cloud létrehozásakor.                                    | /24 vagy/23 vagy/22 vagy/21 |
+| Átjáró CIDR      | Peremhálózati szolgáltatásokhoz (VPN-átjárókhoz) szükséges.  Ez a CIDR a CloudSimple szolgáltatás létrehozása során szükséges, és az RFC 1918 területről kell származnia. | /28                      |
+| vSphere/vSAN CIDR | VMware felügyeleti hálózatokesetén szükséges. Ezt a CIDR-t meg kell adni a magánfelhő létrehozása során.                                    | /24 vagy /23 vagy /22 vagy /21 |
 
-## <a name="network-address-range-required-for-azure-network-connection-to-an-on-premises-network"></a>Egy helyszíni hálózathoz való Azure-beli hálózati kapcsolódáshoz szükséges hálózati címtartomány
+## <a name="network-address-range-required-for-azure-network-connection-to-an-on-premises-network"></a>Az Azure hálózati kapcsolatához helyszíni hálózathoz szükséges hálózati címtartomány
 
-[A helyszíni hálózatról az AVS Private Cloud Network ExpressRoute](on-premises-connection.md) -kapcsolaton keresztüli csatlakoztatása Global REACH kapcsolatot létesít. A kapcsolat Border Gateway Protocol (BGP) protokollt használ a helyszíni hálózat, az AVS Private Cloud Network és az Azure-hálózatok közötti útvonalak cseréjéhez.
+A helyszíni [hálózatról a magánfelhő-hálózathoz az ExpressRoute-on keresztül](on-premises-connection.md) történő csatlakozás globális elérési kapcsolatot hoz létre.  A kapcsolat a Border Gateway Protocol (BGP) protokollt használja a helyszíni hálózat, a magánfelhő-hálózat és az Azure-hálózatok közötti útvonalak cseréjére.
 
-| Név/használat a következőhöz:             | Leírás                                                                                                                                                                             | Címtartomány |
+| Név/használt             | Leírás                                                                                                                                                                             | Címtartomány |
 |---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
-| ExpressRoute peering CIDR | A helyszíni kapcsolat ExpressRoute-Global Reach használata esetén szükséges. Ezt a CIDR akkor kell megadni, ha egy Global Reach kapcsolódási kérelem egy támogatási jegyen keresztül történik. | /29           |
+| ExpressRoute-társviszony-létesítési CIDR | Az ExpressRoute globális elérési használata a helyszíni kapcsolathoz szükséges. Ezt a CIDR-t akkor kell megadni, ha a globális elérés-kapcsolat kérése támogatási jegyen keresztül történik. | /29           |
 
-## <a name="network-address-range-required-for-using-a-site-to-site-vpn-connection-to-an-on-premises-network"></a>A helyek közötti VPN-kapcsolat helyszíni hálózathoz való használatának szükséges hálózati címtartomány
+## <a name="network-address-range-required-for-using-a-site-to-site-vpn-connection-to-an-on-premises-network"></a>A helyszíni hálózattal létesített helyek közötti VPN-kapcsolat hoz szükséges hálózati címtartomány
 
-A helyek közötti VPN-kapcsolattal a helyszíni [hálózatról az AVS Private Cloud Network szolgáltatáshoz](vpn-gateway.md) a következő IP-címek, helyszíni hálózatok és azonosítók szükségesek. 
+A helyszíni [hálózatról a magánfelhő-hálózathoz való csatlakozáshoz a helyek közötti VPN-kapcsolathoz](vpn-gateway.md) a következő IP-címekre, helyszíni hálózatra és azonosítókra van szükség. 
 
-| Címek/címtartomány | Leírás                                                                                                                                                                                                                                                           |
+| Cím/cím tartomány | Leírás                                                                                                                                                                                                                                                           |
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Társ IP-címe               | Helyszíni VPN-átjáró nyilvános IP-címe. Helyek közötti VPN-kapcsolat létesítéséhez szükséges egy helyszíni adatközpont és az AVS szolgáltatási régiója között. Ez az IP-cím szükséges a helyek közötti VPN-átjáró létrehozásakor.                                         |
-| Társ-azonosító       | A helyszíni VPN-átjáró társ-azonosítója. Ez általában ugyanaz, mint a **társ IP-címe**.  Ha a helyszíni VPN-átjárón egyedi azonosító van megadva, az azonosítót meg kell adni.  A társ-azonosító megadása kötelező a helyek közötti VPN-átjáró létrehozásakor.   |
-| Helyszíni hálózatok   | A régióban elérhető AVS-hálózatokat igénylő helyszíni előtagok.  Minden olyan előtagok belefoglalása egy helyszíni hálózatból, amely hozzáfér az AVS-hálózathoz, beleértve az ügyfél hálózatát, ahonnan a felhasználók hozzáférnek a hálózathoz.                                         |
+| Társ IP-címe               | Helyszíni VPN-átjáró nyilvános IP-címe. A helyszíni adatközpont és a CloudSimple szolgáltatás régió közötti helyek közötti VPN-kapcsolat létrehozásához szükséges. Erre az IP-címre a helyek közötti VPN-átjáró létrehozása során van szükség.                                         |
+| Társazonosító       | A helyszíni VPN-átjáró társazonosítója. Ez általában ugyanaz, mint a **peer IP**.  Ha a helyszíni VPN-átjárón egyedi azonosító van megadva, meg kell adni az azonosítót.  A helyek közötti VPN-átjáró létrehozása során társazonosító szükséges.   |
+| Helyszíni hálózatok   | Helyszíni előtagok, amelyek hozzáférést igényelnek a régióban lévő CloudSimple-hálózatokhoz.  Tartalmazza a helyszíni hálózat összes olyan előtagjait, amelyek hozzáférnek a CloudSimple hálózathoz, beleértve azt az ügyfélhálózatot is, ahonnan a felhasználók hozzáférhetnek a hálózathoz.                                         |
 
-## <a name="network-address-range-required-for-using-point-to-site-vpn-connections"></a>A pont – hely VPN-kapcsolatok használatához szükséges hálózati címtartomány
+## <a name="network-address-range-required-for-using-point-to-site-vpn-connections"></a>A pont-hely VPN-kapcsolatok kezeléséhez szükséges hálózati címtartomány
 
-A pont – hely típusú VPN-kapcsolat lehetővé teszi, hogy egy ügyfélgépről hozzáférjen az AVS-hálózathoz. [Pont – hely típusú VPN beállításához](vpn-gateway.md)a következő hálózati címtartományt kell megadnia.
+A pont-hely VPN-kapcsolat lehetővé teszi a hozzáférést a CloudSimple hálózat egy ügyfélgépről.  [A pont-hely VPN beállításához](vpn-gateway.md)a következő hálózati címtartományt kell megadnia.
 
-| Címek/címtartomány | Leírás                                                                                                                                                                                                                                                                                                  |
+| Cím/cím tartomány | Leírás                                                                                                                                                                                                                                                                                                  |
 |-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Ügyfél-alhálózat         | A DHCP-címeket az ügyfél alhálózata teszi elérhetővé, ha pont – hely típusú VPN-kapcsolaton keresztül csatlakozik. Erre az alhálózatra akkor van szükség, amikor pont – hely típusú VPN-átjárót hoz létre egy AVS-portálon. A hálózat két alhálózatra oszlik, egyet az UDP-kapcsolathoz, a másikat pedig a TCP-kapcsolatokhoz. |
+| Ügyfél alhálózata         | A DHCP-címeket az ügyfélalhálózat biztosítja, ha pont-hely VPN-nel csatlakozik. Erre az alhálózatra akkor van szükség, amikor egy cloudsimple portálon pont-hely VPN-átjárót hoz létre.  A hálózat két alhálózatra oszlik; egyet az UDP-kapcsolathoz, a másikat a TCP-kapcsolatokhoz. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Helyszíni tűzfal beállítása az AVS saját felhőhöz való hozzáféréshez](on-premises-firewall-configuration.md)
-* [Rövid útmutató – AVS-szolgáltatás létrehozása](quickstart-create-cloudsimple-service.md)
-* [Rövid útmutató – az AVS Private Cloud konfigurálása](quickstart-create-private-cloud.md)
+* [Helyszíni tűzfal beállítása a magánfelhő eléréséhez](on-premises-firewall-configuration.md)
+* [Rövid útmutató – CloudSimple szolgáltatás létrehozása](quickstart-create-cloudsimple-service.md)
+* [Rövid útmutató – Magánfelhő konfigurálása](quickstart-create-private-cloud.md)
 * További információ az [Azure hálózati kapcsolatairól](cloudsimple-azure-network-connection.md)
-* További információ a [VPN-átjárókkal](cloudsimple-vpn-gateways.md) kapcsolatban
+* További információ a [VPN-átjárókról](cloudsimple-vpn-gateways.md)

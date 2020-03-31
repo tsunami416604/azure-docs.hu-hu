@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD átmenő hitelesítés: verziók kiadásának előzményei | Microsoft Docs'
-description: Ez a cikk az Azure AD átmenő hitelesítési ügynök összes kiadását felsorolja
+title: 'Azure AD áthaladási hitelesítés: Verziókiadási előzmények | Microsoft dokumentumok'
+description: Ez a cikk az Azure AD átmenő hitelesítési ügynök összes kiadását sorolja fel
 services: active-directory
 author: billmath
 manager: daveba
@@ -13,69 +13,69 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9c5d0efe8e662544dc69356c6b17dd7eca6f3a50
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74786452"
 ---
-# <a name="azure-ad-pass-through-authentication-agent-version-release-history"></a>Azure AD átmenő hitelesítési ügynök: verzió kiadási előzményei 
+# <a name="azure-ad-pass-through-authentication-agent-version-release-history"></a>Azure AD áthaladási hitelesítési ügynök: Verziókiadási előzmények 
  
-Az átmenő hitelesítést engedélyező, a helyszínen telepített ügynökök rendszeresen frissülnek, és új képességeket biztosítanak. Ez a cikk felsorolja az új funkciók bevezetésekor hozzáadott verziókat és szolgáltatásokat. Az áteresztő hitelesítési ügynökök automatikusan frissülnek, amikor megjelent egy új verzió. 
+A helyszíni, átmenő hitelesítést engedélyező ügynökök rendszeresen frissülnek, hogy új képességeket biztosítsanak. Ez a cikk felsorolja azokat a verziókat és szolgáltatásokat, amelyek az új funkciók bevezetésekor kerülnek hozzáadásra. Az átadó hitelesítési ügynökök automatikusan frissülnek, amikor egy új verzió t ad ki. 
 
-A kapcsolódó témakörök a következők: 
+Itt vannak kapcsolódó témák: 
 
-- [Felhasználói bejelentkezés az Azure AD átmenő hitelesítéssel](how-to-connect-pta.md) 
+- [Felhasználói bejelentkezés az Azure AD áthaladási hitelesítésével](how-to-connect-pta.md) 
 - [Az Azure AD átmenő hitelesítési ügynök telepítése](how-to-connect-pta-quick-start.md) 
 
 
 
 ## <a name="1510070"></a>1.5.1007.0 
 ### <a name="release-status"></a>Kiadás állapota 
-1/22/2019: kiadva a letöltéshez  
-### <a name="new-features-and-improvements"></a>Új funkciók és Újdonságok 
-- Service Bus megbízható csatornák támogatása a kimenő kapcsolatok újabb csatlakozási rétegének hozzáadásához 
-- A TLS 1,2 betartatása az ügynök regisztrálása során 
+1/22/2019: Letölthető  
+### <a name="new-features-and-improvements"></a>Új funkciók és fejlesztések 
+- A Service Bus megbízható csatornáinak támogatása a kimenő kapcsolatok egy másik hálózati rugalmasságának hozzáadásához 
+- A TLS 1.2 kényszerítése az ügynök regisztrálása során 
 
 ## <a name="156430"></a>1.5.643.0 
 ### <a name="release-status"></a>Kiadás állapota 
-4/10/2018: kiadva a letöltéshez  
-### <a name="new-features-and-improvements"></a>Új funkciók és Újdonságok 
-- Webes szoftvercsatorna-kapcsolat támogatása 
-- A TLS 1,2 beállítása az ügynök alapértelmezett protokollja 
+4/10/2018: Letölthető  
+### <a name="new-features-and-improvements"></a>Új funkciók és fejlesztések 
+- Webszoftver-kapcsolat támogatása 
+- A TLS 1.2 beállítása az ügynök alapértelmezett protokolljaként 
  
 ## <a name="154050"></a>1.5.405.0 
 ### <a name="release-status"></a>Kiadás állapota 
-1/31/2018: kiadva a letöltéshez  
+1/31/2018: Letölthető  
 ### <a name="fixed-issues"></a>Hibák kijavítva: 
 
-- Kijavítva egy olyan hibát, amely valamilyen memóriavesztés okozta az ügynököt. 
-- Frissült a Azure Service Bus verziója, amely tartalmazza az összekötő időtúllépési hibáinak elhárítását. 
+- Javítva egy hiba, amely memóriavesztést okozott az ügynökben. 
+- Frissítette az Azure Service Bus verzióját, amely tartalmazza az összekötő időmegfordítási problémáinak hibajavítását. 
  
 ## <a name="154050"></a>1.5.405.0 
 ### <a name="release-status"></a>Kiadás állapota 
-11/26/2017: kiadva a letöltéshez  
-### <a name="new-features-and-improvements"></a>Új funkciók és Újdonságok 
-- WebSocket-alapú kapcsolatok támogatása az ügynök és az Azure AD szolgáltatások között a kapcsolat rugalmasságának növelése érdekében 
+11/26/2017: Letölthető  
+### <a name="new-features-and-improvements"></a>Új funkciók és fejlesztések 
+- Az ügynök és az Azure AD-szolgáltatások közötti websocket alapú kapcsolatok támogatása a kapcsolat rugalmasságának javítása érdekében 
 
 ## <a name="154020"></a>1.5.402.0 
 ### <a name="release-status"></a>Kiadás állapota 
-11/25/2017: kiadva a letöltéshez  
+11/25/2017: Letölthető  
 ### <a name="fixed-issues"></a>Hibák kijavítva: 
-- Az alapértelmezett proxy-forgatókönyvek DNS-gyorsítótárával kapcsolatos kijavított hibák 
+- Javítottuk a DNS-gyorsítótárral kapcsolatos hibákat az alapértelmezett proxyesetekhez 
  
 ## <a name="153890"></a>1.5.389.0 
 ### <a name="release-status"></a>Kiadás állapota 
-10/17/2017: kiadva a letöltéshez  
-### <a name="new-features-and-improvements"></a>Új funkciók és Újdonságok 
-- DNS-gyorsítótárbeli funkció hozzáadva a kimenő kapcsolatokhoz a DNS-hibák rugalmasságának hozzáadásához 
+10/17/2017: Letölthető  
+### <a name="new-features-and-improvements"></a>Új funkciók és fejlesztések 
+- Hozzáadott DNS-gyorsítótár funkció a kimenő kapcsolatokhoz, hogy a DNS-hibák kal konzisztanciát adjon hozzá 
  
 ## <a name="152610"></a>1.5.261.0 
 ### <a name="release-status"></a>Kiadás állapota 
-08/31/2017: kiadva a letöltéshez  
-### <a name="new-features-and-improvements"></a>Új funkciók és Újdonságok 
-- Az Azure AD átmenő hitelesítési ügynök GA-verziója 
+08/31/2017: Letölthető  
+### <a name="new-features-and-improvements"></a>Új funkciók és fejlesztések 
+- Az Azure AD áthaladási hitelesítési ügynök GA-verziója 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Felhasználói bejelentkezés az Azure Active Directory átmenő hitelesítésével](how-to-connect-pta.md)

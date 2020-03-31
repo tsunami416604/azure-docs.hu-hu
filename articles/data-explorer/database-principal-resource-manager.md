@@ -1,6 +1,6 @@
 ---
-title: Adatbázis-tag hozzáadása az Azure Adatkezelőhez Azure Resource Manager sablon használatával
-description: Ebből a cikkből megtudhatja, hogyan adhat hozzá adatbázis-rendszerbiztonsági tag Azure-Adatkezelő egy Azure Resource Manager sablon használatával.
+title: Egyszerű adatbázis hozzáadása az Azure Data Explorerhez egy Azure Resource Manager-sablon használatával
+description: Ebben a cikkben megtudhatja, hogyan adhat hozzá adatbázis-tagokat az Azure Data Explorer egy Azure Resource Manager-sablon használatával.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,29 +8,29 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: 80fcf4b6c5d64dde7bd1c5475fb6a3dbafd7f907
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76965111"
 ---
-# <a name="add-database-principals-for-azure-data-explorer-by-using-an-azure-resource-manager-template"></a>Adatbázis-rendszerbiztonsági tag hozzáadása az Azure Adatkezelőhez Azure Resource Manager sablon használatával
+# <a name="add-database-principals-for-azure-data-explorer-by-using-an-azure-resource-manager-template"></a>Az Azure Data Explorer adatbázis-egyszerű felhasználójainak hozzáadása egy Azure Resource Manager-sablon használatával
 
 > [!div class="op_single_selector"]
-> * [C#](database-principal-csharp.md)
+> * [C #](database-principal-csharp.md)
 > * [Python](database-principal-python.md)
 > * [Azure Resource Manager-sablon](database-principal-resource-manager.md)
 
-Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Ebben a cikkben egy Azure Resource Manager sablon használatával adja hozzá az Azure Adatkezelő adatbázis-rendszerbiztonsági feladataihoz.
+Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Ebben a cikkben az Azure Data Explorer adatbázis-biztonsági tagok hozzáadása egy Azure Resource Manager-sablon használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 * [Fürt és adatbázis](create-cluster-database-portal.md) létrehozása
 
-## <a name="azure-resource-manager-template-for-adding-a-database-principal"></a>Adatbázis-rendszerbiztonsági tag hozzáadásához Azure Resource Manager sablon
+## <a name="azure-resource-manager-template-for-adding-a-database-principal"></a>Azure Resource Manager-sablon egyszerű adatbázis hozzáadásához
 
-Az alábbi példa egy Azure Resource Manager sablont mutat be az adatbázis-rendszerbiztonsági tag hozzáadásához.  A [sablont a Azure Portal szerkesztheti és telepítheti](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) az űrlap használatával.
+A következő példa egy Azure Resource Manager-sablont mutat be egy egyszerű adatbázis hozzáadásához.  A [sablon t szerkesztheti és üzembe helyezheti az Azure Portalon](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) az űrlap használatával.
 
 ```json
 {
@@ -102,6 +102,6 @@ Az alábbi példa egy Azure Resource Manager sablont mutat be az adatbázis-rend
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Adatok beolvasása az Event hub-ből az Azure-ba Adatkezelő](ingest-data-event-hub.md)
+* [Adatok betöltése az Event Hubról az Azure Data Explorerbe](ingest-data-event-hub.md)

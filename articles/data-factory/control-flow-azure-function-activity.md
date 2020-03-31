@@ -1,6 +1,6 @@
 ---
-title: Az Azure Function tevékenység Azure Data Factory
-description: Ismerje meg, hogyan futtathat Azure-függvényeket az Azure functions szolgáltatásban egy Data Factory-folyamatban
+title: Azure-függvénytevékenység az Azure Data Factoryban
+description: Ismerje meg, hogyan használhatja az Azure-függvény tevékenységet egy Azure-függvény adatfeldolgozó folyamatban való futtatásához
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,63 +12,63 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.openlocfilehash: ffb610634399594788afcb9b600ba00c6803dfdd
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77207025"
 ---
-# <a name="azure-function-activity-in-azure-data-factory"></a>Az Azure Function tevékenység Azure Data Factory
+# <a name="azure-function-activity-in-azure-data-factory"></a>Azure-függvénytevékenység az Azure Data Factoryban
 
-Az Azure Function tevékenység lehetővé teszi [Azure functions](../azure-functions/functions-overview.md) futtatását egy Data Factory-folyamatban. Azure-függvény futtatásához létre kell hoznia egy társított szolgáltatási kapcsolatát és egy olyan tevékenységet, amely meghatározza a végrehajtandó Azure-függvényt.
+Az Azure-függvény tevékenység lehetővé teszi az [Azure Functions](../azure-functions/functions-overview.md) futtatását egy Data Factory-folyamatban. Az Azure-függvény futtatásához létre kell hoznia egy összekapcsolt szolgáltatáskapcsolatot, és egy tevékenységet, amely meghatározza az Azure-függvényt, amelyet végrehajtani kíván.
 
-A szolgáltatás nyolc perces bevezetéséhez és bemutatásához tekintse meg a következő videót:
+A funkció nyolcperces bemutatásához és bemutatásához tekintse meg az alábbi videót:
 
 > [!VIDEO https://channel9.msdn.com/shows/azure-friday/Run-Azure-Functions-from-Azure-Data-Factory-pipelines/player]
 
-## <a name="azure-function-linked-service"></a>Azure Function társított szolgáltatás
+## <a name="azure-function-linked-service"></a>Azure-függvényhez csatolt szolgáltatás
 
-Az Azure-függvény visszatérési típusának érvényes `JObject`nak kell lennie. (Ne feledje, hogy [](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) a JArray *nem* `JObject`.) A `JObject`tól eltérő visszatérési típusok sikertelenek, és a felhasználói hibákra *adott tartalom nem érvényes JObject*.
+Az Azure függvény visszatérési típusának `JObject`érvényesnek kell lennie. (Ne feledje, hogy a `JObject` [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) *nem* .) A sikertelenektől `JObject` eltérő visszatérési típus nem felel meg, és a felhasználói hiba *választartalma nem érvényes JObject*objektum.
 
 | **Tulajdonság** | **Leírás** | **Szükséges** |
 | --- | --- | --- |
-| type   | A Type tulajdonságot a következőre kell beállítani: **AzureFunction** | igen |
-| function alkalmazás URL-címe | Az Azure-függvényalkalmazás URL-címe. A formátum `https://<accountname>.azurewebsites.net`. Ez az URL-cím az **URL-** cím szakaszban található, amikor a függvényalkalmazás megtekinti a Azure Portal  | igen |
-| függvény kulcsa | Az Azure-függvény elérési kulcsa. Kattintson a **Manage (kezelés** ) szakaszra a megfelelő függvényhez, és másolja a **függvény** vagy a **gazda kulcsot**. További információ: [Azure FUNCTIONS http-eseményindítók és-kötések](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) | igen |
+| type   | A típustulajdonságot a következőre kell állítani: **AzureFunction** | igen |
+| függvény alkalmazás url-címe | Az Azure Függvényalkalmazás URL-címe. A `https://<accountname>.azurewebsites.net`formátum a . Ez az URL-cím az **URL-cím** alatt található érték, amikor a Függvényalkalmazást az Azure Portalon tekinti meg.  | igen |
+| funkcióbillentyű | Hozzáférési kulcs az Azure-függvényhez. Kattintson a megfelelő funkció **Manage** szakaszára, és másolja a **Függvénykulcsot** vagy a **Gazdakulcsot**. További információ: [Az Azure Functions HTTP-eseményindítók és kötések](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) | igen |
 |   |   |   |
 
-## <a name="azure-function-activity"></a>Azure Function tevékenység
+## <a name="azure-function-activity"></a>Azure-függvény tevékenysége
 
 | **Tulajdonság**  | **Leírás** | **Megengedett értékek** | **Szükséges** |
 | --- | --- | --- | --- |
-| név  | A folyamatban szereplő tevékenység neve  | Sztring | igen |
-| type  | A tevékenység típusa "AzureFunctionActivity". | Sztring | igen |
-| társított szolgáltatás | Az Azure Function társított szolgáltatás a megfelelő Azure-függvényalkalmazás  | Társított szolgáltatás leírása | igen |
-| Függvény neve  | Azon függvény neve az Azure függvényalkalmazásban, amelyre ez a tevékenység hív | Sztring | igen |
-| method  | A függvény hívásának REST API metódusa | Támogatott karakterlánc-típusok: "GET", "POST", "PUT"   | igen |
-| header  | A kérelembe küldendő fejlécek. Például a nyelv és a típus megadásához a következőre: "headers": {"Accept-Language": "en-us", "Content-Type": "Application/JSON"} | Karakterlánc (vagy resultType karakterláncot tartalmazó kifejezés) | Nem |
-| törzse  | a függvény API-metódusának kérésével együtt elküldett törzs  | Sztring (vagy kifejezés resultType) vagy objektummal.   | PUT/POST metódusokhoz szükséges |
+| név  | A folyamatban lévő tevékenység neve  | Sztring | igen |
+| type  | A tevékenység típusa "AzureFunctionActivity" | Sztring | igen |
+| összekapcsolt szolgáltatás | Az Azure-függvényhez kapcsolódó szolgáltatás a megfelelő Azure Függvényalkalmazáshoz  | Csatolt szolgáltatás hivatkozása | igen |
+| függvény neve  | A tevékenység által meghívott Azure Függvényalkalmazás függvényének neve | Sztring | igen |
+| method  | REST API-metódus a függvényhíváshoz | Karakterlánc támogatott típusai: "GET", "POST", "PUT"   | igen |
+| header  | A kérésnek küldött fejlécek. Például a nyelv és a beírás beállítása egy kérelemre: "headers": { "Accept-Language": "en-us", "Content-Type": "application/json" } | Karakterlánc (vagy kifejezés resultKarakterlánctal) | Nem |
+| body (Törzs)  | a függvény api metódusához küldött kéréssel együtt küldött  | Karakterlánc (vagy kifejezés resultType karakterláncot) vagy objektumot.   | Put/POST metódusok esetén szükséges |
 |   |   |   | |
 
-Tekintse meg a kérelem hasznos adatainak sémáját a [kérelem hasznos adatainak sémája](control-flow-web-activity.md#request-payload-schema) szakaszban.
+Tekintse meg a kérelem hasznos adatának sémáját a [Hasznos séma](control-flow-web-activity.md#request-payload-schema) kérése szakaszban.
 
 ## <a name="routing-and-queries"></a>Útválasztás és lekérdezések
 
-Az Azure Function tevékenység támogatja az **útválasztást**. Ha például az Azure-függvény végpontja `https://functionAPP.azurewebsites.net/api/<functionName>/<value>?code=<secret>`, akkor az Azure Function tevékenységben használni kívánt `functionName` `<functionName>/<value>`. Ezt a függvényt parametrizálja a kívánt `functionName` futtatásához.
+Az Azure-függvénytevékenység támogatja az **útválasztást.** Ha például az Azure-függvény `https://functionAPP.azurewebsites.net/api/<functionName>/<value>?code=<secret>`rendelkezik `functionName` a végponttal, akkor `<functionName>/<value>`az Azure-függvénytevékenységben való használat a. Ezt a függvényt paraméterezheti `functionName` a kívánt futásidőben való megadásához.
 
-Az Azure Function tevékenység is támogatja a **lekérdezéseket**. A lekérdezésnek a `functionName`részeként kell szerepelnie. Ha például a függvény neve `HttpTriggerCSharp`, és a felvenni kívánt lekérdezés `name=hello`, akkor a `functionName` az Azure Function tevékenységben `HttpTriggerCSharp?name=hello`ként hozható létre. Ez a függvény konfigurálható úgy, hogy az érték a futásidőben is meghatározható legyen.
+Az Azure-függvénytevékenység a **lekérdezéseket**is támogatja. A lekérdezést a részét a `functionName`részét kell tartalmaznia. Ha például a függvény `HttpTriggerCSharp` neve, és a lekérdezés, amelyet fel szeretne venni, a `name=hello`, majd létrehozhatja az `functionName` Azure-függvénytevékenységben. `HttpTriggerCSharp?name=hello` Ez a függvény paraméterezhető, így az érték futásidőben határozható meg.
 
-## <a name="timeout-and-long-running-functions"></a>Időtúllépés és hosszan futó függvények
+## <a name="timeout-and-long-running-functions"></a>Idő- és hosszú futási függvények
 
-A beállításokban konfigurált `functionTimeout`-beállítástól függetlenül Azure Functions időtúllépés a 230 másodperc után. További információkért tekintse meg [ezt a cikket](../azure-functions/functions-versions.md#timeout). A viselkedés megkerüléséhez hajtson végre egy aszinkron mintát, vagy használja a Durable Functions. A Durable Functions előnye, hogy saját állapot-követési mechanizmust biztosítanak, így nem kell saját megvalósítást végrehajtania.
+Az Azure Functions 230 másodperc `functionTimeout` után időzít, függetlenül a beállításokban beállított beállítástól. További információt [ebben a cikkben](../azure-functions/functions-versions.md#timeout)talál. A probléma kerülő megoldásához kövesse az aszinkron mintát, vagy használja a Tartós függvények funkciót. A tartós funkciók előnye, hogy saját állapotkövetési mechanizmust kínálnak, így nem kell végrehajtania a sajátját.
 
-További információ a Durable Functionsről [ebben a cikkben](../azure-functions/durable/durable-functions-overview.md). Beállíthat egy Azure functions-tevékenységet a tartós függvény meghívásához, amely egy másik URI-val (például [a példával](../azure-functions/durable/durable-functions-http-features.md#http-api-url-discovery)) kapcsolatos választ ad vissza. Mivel `statusQueryGetUri` a 202 HTTP-állapotot adja vissza, miközben a függvény fut, a függvény állapotát egy webes tevékenység használatával kérdezheti le. Egyszerűen állítson be egy webes tevékenységet a `url` mezővel, amely `@activity('<AzureFunctionActivityName>').output.statusQueryGetUri`ra van beállítva. Ha a tartós funkció befejeződik, a függvény kimenete a webes tevékenység kimenete lesz.
+A tartós funkciókról ebben a cikkben olvashat [bővebben.](../azure-functions/durable/durable-functions-overview.md) Beállíthat egy Azure-függvénytevékenységet a tartós függvény hívására, amely egy másik URI-val válaszol, például [ebben a példában.](../azure-functions/durable/durable-functions-http-features.md#http-api-url-discovery) Mivel `statusQueryGetUri` a függvény futása közben a HTTP 202-es állapotot adja vissza, a függvény állapotát webes tevékenység használatával lelehet hívni. Egyszerűen állítson be egy `url` webes `@activity('<AzureFunctionActivityName>').output.statusQueryGetUri`tevékenységet úgy, hogy a mező je: . A tartós függvény befejezésekor a függvény kimenete a webes tevékenység kimenete lesz.
 
 
 ## <a name="sample"></a>Sample
 
-Megtalálhatja az Azure-függvényt használó Data Factory mintáját, amellyel kinyerheti a Tar [-fájl tartalmát](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction).
+Itt talál egy adatgyárból mintát, amely egy Azure-függvényt használ a kátrányos fájl tartalmának [kinyeréséhez.](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ a Data Factory kapcsolódó tevékenységekről [Azure Data Factory folyamatokban és tevékenységekben](concepts-pipelines-activities.md).
+További információ a folyamatok adatfeldolgozói tevékenységeiről [és az Azure Data Factory tevékenységeiről.](concepts-pipelines-activities.md)

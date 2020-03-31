@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect szinkronizálás: A függvények ismertetése | Microsoft Docs'
-description: A deklaratív kiépítési kifejezések hivatkozása Azure AD Connect-szinkronizálásban.
+title: 'Azure AD Connect szinkronizálás: Függvények – hivatkozás | Microsoft dokumentumok'
+description: Deklaratív létesítési kifejezések hivatkozásaz Azure AD Connect-szinkronizálásban.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,461 +17,461 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5c3102480e316c634930c356ae02f769767b7d08
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69900047"
 ---
-# <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect szinkronizálás: Functions – referencia
-Azure AD Connect a függvények egy attribútumérték manipulálására szolgálnak a szinkronizálás során.  
+# <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect szinkronizálás: Függvények – referencia
+Az Azure AD Connect ben függvények egy attribútumérték szinkronizálás a szinkronizálás során.  
 A függvények szintaxisa a következő formátumban van kifejezve:  
 `<output type> FunctionName(<input type> <position name>, ..)`
 
-Ha egy függvény túlterhelt, és több szintaxist is elfogad, az összes érvényes szintaxis megjelenik.  
-A függvények erősen beírhatók, és ellenőrzik, hogy az átadott típus megegyezik-e a dokumentált típussal.  
+Ha egy függvény túl terhelt, és több szintaxist fogad el, az összes érvényes szintaxis megjelenik.  
+A függvények erősen bevannak gépelve, és ellenőrzik, hogy a megadott típus megegyezik-e a dokumentált típussal.  
 Ha a típus nem egyezik, a rendszer hibát jelez.
 
-A típusokat a következő szintaxissal fejezzük ki:
+A típusok a következő szintaxissal vannak kifejezve:
 
 * **bin** – bináris
-* **bool** – Boolean
-* **DT** – UTC dátum/idő
-* **Enum** – ismert konstansok enumerálása
-* **exp** – kifejezés, amely várhatóan logikai értékre lesz kiértékelve
-* **mvbin** – többértékű bináris
-* **mvstr** – többértékű sztring
-* **mvref** – többértékű hivatkozás
-* **NUM** – numerikus
-* **ref** – hivatkozás
-* **Str** – string
-* **var** – a (szinte) bármely más típusú változata
-* **Void** – nem ad vissza értéket
+* **bool** – logikai
+* **dt** – UTC dátum/idő
+* **enum** – ismert állandók felsorolása
+* **exp** – Kifejezés, amely várhatóan logikai értékre értékel
+* **mvbin** – Többértékű bináris
+* **mvstr** – Többértékű karakterlánc
+* **mvref** – Többértékű hivatkozás
+* **numeric** – numerikus
+* **ref** – Hivatkozás
+* **str** – Karakterlánc
+* **var** – Bármely más típusú (majdnem) változat
+* **void** – nem ad vissza értéket
 
-A **mvbin**, **mvstr**és **mvref** típusú függvények csak többértékű attribútumokon működhetnek. A **bin**, az **Str**és a **ref** függvények az egyértékű és a többértékű attribútumok esetében is működnek.
+A **mvbin**, mvstr és **mvref** típusú függvények csak többértékű attribútumokon működnek. **mvstr** A **raktárhely**, **str**és **ref** függvények mind az egyértékű, mind a többértékű attribútumokon működnek.
 
 ## <a name="functions-reference"></a>Functions – referencia
 
-| Függvények listája |  |  |  |  |
+| A függvények listája |  |  |  |  |
 | --- | --- | --- | --- | --- |
 | **Tanúsítvány** | | | | |
-| [CertExtensionOids](#certextensionoids) |[CertFormat](#certformat) |[CertFriendlyName](#certfriendlyname) |[CertHashString](#certhashstring) | |
-| [CertIssuer](#certissuer) |[CertIssuerDN](#certissuerdn) |[CertIssuerOid](#certissueroid) |[CertKeyAlgorithm](#certkeyalgorithm) | |
-| [CertKeyAlgorithmParams](#certkeyalgorithmparams) |[CertNameInfo](#certnameinfo) |[CertNotAfter](#certnotafter) |[CertNotBefore](#certnotbefore) | |
-| [CertPublicKeyOid](#certpublickeyoid) |[CertPublicKeyParametersOid](#certpublickeyparametersoid) |[CertSerialNumber](#certserialnumber) |[CertSignatureAlgorithmOid](#certsignaturealgorithmoid) | |
+| [CertExtensionOidok](#certextensionoids) |[Tanúsítványformátum](#certformat) |[CertFriendlyName (CertFriendlyName)](#certfriendlyname) |[CertHashString](#certhashstring) | |
+| [CertIssuer](#certissuer) |[CertIssuerDN](#certissuerdn) |[CertIssuerOid](#certissueroid) |[CertKeyAlgorithm (CertKeyAlgorithm)](#certkeyalgorithm) | |
+| [CertKeyAlgorithmParams](#certkeyalgorithmparams) |[CertNameInfo](#certnameinfo) |[CertNotAfter után](#certnotafter) |[CertNotElőtte](#certnotbefore) | |
+| [CertPublicKeyOid (CertPublicKeyOid)](#certpublickeyoid) |[CertPublicKeyParametersOid](#certpublickeyparametersoid) |[CertSerialNumber](#certserialnumber) |[CertSignatureAlgorithmOid](#certsignaturealgorithmoid) | |
 | [CertSubject](#certsubject) |[CertSubjectNameDN](#certsubjectnamedn) |[CertSubjectNameOid](#certsubjectnameoid) |[CertThumbprint](#certthumbprint) | |
-[CertVersion](#certversion) |[IsCert](#iscert) | | | |
-| **Konverziós** | | | | |
-| [CBool](#cbool) |[CDate](#cdate) |[CGuid](#cguid) |[ConvertFromBase64](#convertfrombase64) | |
-| [ConvertToBase64](#converttobase64) |[ConvertFromUTF8Hex](#convertfromutf8hex) |[ConvertToUTF8Hex](#converttoutf8hex) |[CNum](#cnum) | |
-| [CRef](#cref) |[CStr](#cstr) |[StringFromGuid](#stringfromguid) |[StringFromSid](#stringfromsid) | |
+[CertVersion (CertVersion)](#certversion) |[IsCert között](#iscert) | | | |
+| **Átalakítás** | | | | |
+| [Kbool](#cbool) |[CDátum](#cdate) |[CGuid között](#cguid) |[ConvertFromBase64](#convertfrombase64) | |
+| [KonvertálásBase64](#converttobase64) |[ConvertFromUTF8Hex](#convertfromutf8hex) |[ConvertToUTF8Hex](#converttoutf8hex) |[CÉv](#cnum) | |
+| [CRef](#cref) |[CStr](#cstr) |[StringFromGuid](#stringfromguid) |[Karakterláncszisid](#stringfromsid) | |
 | **Dátum és idő** | | | | |
-| [DateAdd](#dateadd) |[DateFromNum](#datefromnum) |[FormatDateTime](#formatdatetime) |[Most](#now) | |
-| [NumFromDate](#numfromdate) | | | | |
-| **Directory** | | | | |
-| [DNComponent](#dncomponent) |[DNComponentRev](#dncomponentrev) |[EscapeDNComponent](#escapedncomponent) | | |
-| **Értékelési** | | | | |
-| [IsBitSet](#isbitset) |[IsDate](#isdate) |[IsEmpty](#isempty) |[IsGuid](#isguid) | |
-| [IsNull](#isnull) |[IsNullOrEmpty](#isnullorempty) |[IsNumeric](#isnumeric) |[IsPresent](#ispresent) | |
-| [IsString](#isstring) | | | | |
+| [Dátum hozzáadása](#dateadd) |[DateFromNum (Dátumfromnum)](#datefromnum) |[FormatDateTime](#formatdatetime) |[Nwo](#now) | |
+| [NumFromDate (Dátum kezdőszáma)](#numfromdate) | | | | |
+| **Címtár** | | | | |
+| [DNösszetevő](#dncomponent) |[DNComponentRev](#dncomponentrev) |[EscapeDNComponent (EscapeDNComponent)](#escapedncomponent) | | |
+| **Értékelés** | | | | |
+| [IsBitSet](#isbitset) |[IsDate (Dátum)](#isdate) |[Üres](#isempty) |[IsGuid között](#isguid) | |
+| [IsNull](#isnull) |[IsNullOrEmpty](#isnullorempty) |[IsNumeric](#isnumeric) |[IsPresent (Jelen van)](#ispresent) | |
+| [Karakterlánc](#isstring) | | | | |
 | **Matematikai** | | | | |
-| [BitAnd](#bitand) |[BitOr](#bitor) |[RandomNum](#randomnum) | | |
+| [Bitand (bitand)](#bitand) |[Bitor](#bitor) |[Véletlen](#randomnum) | | |
 | **Többértékű** | | | | |
-| [Tartalmaz](#contains) |[Száma](#count) |[Elem](#item) |[ItemOrNull](#itemornull) | |
-| [Csatlakozás](#join) |[RemoveDuplicates](#removeduplicates) |[Felosztása](#split) | | |
-| **Program folyamata** | | | | |
-| [Hiba](#error) |[IIF](#iif) |[Select](#select) |[Switch](#switch) | |
+| [Tartalmaz](#contains) |[Darabszám](#count) |[Elem](#item) |[ItemOrNull](#itemornull) | |
+| [Csatlakozás](#join) |[Másolateltávolítása](#removeduplicates) |[Split](#split) | | |
+| **Programfolyamat** | | | | |
+| [Hiba](#error) |[Iif](#iif) |[Kiválasztás](#select) |[Kapcsoló](#switch) | |
 | [Ahol](#where) |[A](#with) | | | |
-| **Text** | | | | |
-| [GUID](#guid) |[InStr](#instr) |[InStrRev](#instrrev) |[LCase](#lcase) | |
-| [Balra](#left) |[Len](#len) |[LTrim](#ltrim) |[Közepes](#mid) | |
-| [PadLeft](#padleft) |[PadRight](#padright) |[PCase](#pcase) |[Csere](#replace) | |
-| [ReplaceChars](#replacechars) |[Jobb gombbal](#right) |[RTrim](#rtrim) |[Trim](#trim) | |
-| [UCase](#ucase) |[A Word](#word) | | | |
+| **Szöveg** | | | | |
+| [Guid](#guid) |[Instr](#instr) |[Instrrev között](#instrrev) |[LCase](#lcase) | |
+| [Bal](#left) |[Len között](#len) |[LTrim között](#ltrim) |[Közepén](#mid) | |
+| [PadBalra](#padleft) |[PadJobbra](#padright) |[PCase](#pcase) |[Helyettesít](#replace) | |
+| [Helyettesítő karakter](#replacechars) |[Jobb](#right) |[RTrim között](#rtrim) |[Berendezés](#trim) | |
+| [Ucase](#ucase) |[Word](#word) | | | |
 
 ---
-### <a name="bitand"></a>BitAnd
+### <a name="bitand"></a>Bitand (bitand)
 **Leírás:**  
-A BitAnd függvény a megadott biteket egy értékre állítja be.
+A BitAnd függvény megadott biteket állít be egy értékre.
 
-**Szintaxis**  
+**Szintaxis:**  
 `num BitAnd(num value1, num value2)`
 
-* érték1, érték2: numerikus értékek, amelyeket össze kell AND'ed
+* érték1, érték2: numerikus értékek, amelyeket együtt kell
 
-**Megjegyzéseket tartalmazó**  
-Ez a függvény mindkét paramétert a bináris ábrázolásra konvertálja, és egy kis mennyiséget állít be a következőre:
+**Megjegyzések:**  
+Ez a függvény mindkét paramétert bináris reprezentációvá alakítja, és egy kicsit a következőkre állítja be:
 
-* 0 – Ha a *érték1* -ben és a *érték2* -ben található megfelelő bitek közül egyet vagy mindkettőt 0
-* 1 – Ha a megfelelő bitek mindegyike 1.
+* 0 - ha az egyik vagy mindkét megfelelő bit *érték1* és *érték2* 0
+* 1 - ha mindkét megfelelő bit 1.
 
-Más szóval a 0 értéket adja vissza minden esetben, kivéve, ha mindkét paraméternek megfelelő bitek értéke 1.
+Más szóval minden esetben 0 értéket ad vissza, kivéve, ha mindkét paraméter megfelelő bitje 1.
 
 **Példa:**  
 `BitAnd(&HF, &HF7)`  
-A 7 értéket adja vissza, mert a hexadecimális "F" és "F7" kifejezés kiértékelése erre az értékre történik.
+7-et ad eredményül, mert hexadecimális "F" és "F7" kiértékelt értéket erre az értékre.
 
 ---
-### <a name="bitor"></a>BitOr
+### <a name="bitor"></a>Bitor
 **Leírás:**  
-A BitOr függvény a megadott biteket egy értékre állítja be.
+A BitOr függvény megadott biteket állít be egy értékre.
 
-**Szintaxis**  
+**Szintaxis:**  
 `num BitOr(num value1, num value2)`
 
-* érték1, érték2: numerikus értékek, amelyeket össze kell OR'ed
+* érték1, érték2: numerikus értékek, amelyeket együtt kell vagy
 
-**Megjegyzéseket tartalmazó**  
-Ez a függvény mindkét paramétert a bináris ábrázolásra konvertálja, és egy kis értéket állít be, ha a maszkban és a jelölőben lévő megfelelő bitek közül egy vagy mindkettő 1, illetve 0, ha a megfelelő bitek közül mindkettő 0. Ez azt jelenti, hogy minden esetben 1 értéket ad vissza, kivéve, ha mindkét paraméter megfelelő bitje 0.
+**Megjegyzések:**  
+Ez a függvény mindkét paramétert bináris reprezentációvá alakítja, és egy bitet 1-re állít be, ha a maszkban és a jelzőben az egyik vagy mindkét bit 1, és 0-ra, ha mindkét megfelelő bit 0. Más szóval minden esetben 1 értéket ad vissza, kivéve, ha mindkét paraméter megfelelő bitje 0.
 
 ---
-### <a name="cbool"></a>CBool
+### <a name="cbool"></a>Kbool
 **Leírás:**  
 A CBool függvény egy logikai értéket ad vissza a kiértékelt kifejezés alapján.
 
-**Szintaxis**  
+**Szintaxis:**  
 `bool CBool(exp Expression)`
 
-**Megjegyzéseket tartalmazó**  
-Ha a kifejezés kiértékelése nem nulla értékű, akkor a CBool igaz értéket ad vissza, máskülönben hamis értéket ad vissza.
+**Megjegyzések:**  
+Ha a kifejezés nem nulla értéket ad eredményül, akkor a CBool függvény igaz értéket ad vissza, máskülönben hamis értéket ad vissza.
 
 **Példa:**  
 `CBool([attrib1] = [attrib2])`  
 
-Igaz értéket ad vissza, ha mindkét attribútum ugyanazzal az értékkel rendelkezik.
+Igaz értéket ad vissza, ha mindkét attribútum értéke megegyezik.
 
 ---
-### <a name="cdate"></a>CDate
+### <a name="cdate"></a>CDátum
 **Leírás:**  
-A CDate függvény egy UTC DateTime értéket ad vissza egy karakterláncból. A DateTime nem egy natív attribútum-típus a szinkronizálásban, de egyes függvények használják.
+A CDate függvény egy KARAKTERLÁNCBÓL származó UTC DateTime értéket ad vissza. A DateTime nem natív attribútumtípus a Szinkronizálás ban, de egyes függvények használják.
 
-**Szintaxis**  
+**Szintaxis:**  
 `dt CDate(str value)`
 
-* Érték Dátummal, idővel és opcionális időzónával rendelkező sztring
+* Érték: Dátummal, idővel és opcionálisan időzónával rendelkező karakterlánc
 
-**Megjegyzéseket tartalmazó**  
+**Megjegyzések:**  
 A visszaadott karakterlánc mindig UTC-ben van.
 
 **Példa:**  
 `CDate([employeeStartTime])`  
-Egy DateTime értéket ad vissza az alkalmazott kezdési időpontja alapján
+DateTime értéket ad eredményül az alkalmazott kezdési időpontja alapján.
 
 `CDate("2013-01-10 4:00 PM -8")`  
-Egy "2013-01-11 12:00 AM" értéket jelölő DateTime értéket ad vissza.
+A "2013-01-11 12:00 AM" értéket képviselő DateTime értéket adja eredményül.
 
 
 ---
-### <a name="certextensionoids"></a>CertExtensionOids
+### <a name="certextensionoids"></a>CertExtensionOidok
 **Leírás:**  
-Egy tanúsítványfájl kritikus bővítményeinek OID-értékeit adja vissza.
+Egy tanúsítványobjektum összes kritikus bővítményének Oid értékeit adja eredményül.
 
-**Szintaxis**  
+**Szintaxis:**  
 `mvstr CertExtensionOids(binary certificateRawData)`  
-*   certificateRawData: X. 509 tanúsítvány byte Array ábrázolása. A bájtos tömb lehet bináris (DER) kódolású vagy Base64 kódolású X. 509 típusú.
+*   certificateRawData: X.509-es tanúsítvány bájttömb-ábrázolása. A bájttömb lehet bináris (DER) kódolású vagy Base64 kódolású X.509-es adat.
 
 ---
-### <a name="certformat"></a>CertFormat
+### <a name="certformat"></a>Tanúsítványformátum
 **Leírás:**  
-Az X. 509v3 tanúsítvány formátumának nevét adja vissza.
+Az X.509v3 tanúsítvány formátumának nevét adja eredményül.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str CertFormat(binary certificateRawData)`  
-*   certificateRawData: X. 509 tanúsítvány byte Array ábrázolása. A bájtos tömb lehet bináris (DER) kódolású vagy Base64 kódolású X. 509 típusú.
+*   certificateRawData: X.509-es tanúsítvány bájttömb-ábrázolása. A bájttömb lehet bináris (DER) kódolású vagy Base64 kódolású X.509-es adat.
 
 ---
-### <a name="certfriendlyname"></a>CertFriendlyName
+### <a name="certfriendlyname"></a>CertFriendlyName (CertFriendlyName)
 **Leírás:**  
 Egy tanúsítvány társított aliasát adja vissza.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str CertFriendlyName(binary certificateRawData)`  
-*   certificateRawData: X. 509 tanúsítvány byte Array ábrázolása. A bájtos tömb lehet bináris (DER) kódolású vagy Base64 kódolású X. 509 típusú.
+*   certificateRawData: X.509-es tanúsítvány bájttömb-ábrázolása. A bájttömb lehet bináris (DER) kódolású vagy Base64 kódolású X.509-es adat.
 
 ---
 ### <a name="certhashstring"></a>CertHashString
 **Leírás:**  
-Az X. 509v3 tanúsítvány SHA1-kivonatának értékét adja vissza hexadecimális karakterláncként.
+Az X.509v3 tanúsítvány SHA1 kivonatértékét adja eredményül hexadecimális karakterláncként.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str CertHashString(binary certificateRawData)`  
-*   certificateRawData: X. 509 tanúsítvány byte Array ábrázolása. A bájtos tömb lehet bináris (DER) kódolású vagy Base64 kódolású X. 509 típusú.
+*   certificateRawData: X.509-es tanúsítvány bájttömb-ábrázolása. A bájttömb lehet bináris (DER) kódolású vagy Base64 kódolású X.509-es adat.
 
 ---
 ### <a name="certissuer"></a>CertIssuer
 **Leírás:**  
-Az X. 509v3 tanúsítványt kiállító hitelesítésszolgáltató nevét adja vissza.
+Az X.509v3 tanúsítványt kiállító hitelesítésszolgáltató nevét adja eredményül.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str CertIssuer(binary certificateRawData)`  
-*   certificateRawData: X. 509 tanúsítvány byte Array ábrázolása. A bájtos tömb lehet bináris (DER) kódolású vagy Base64 kódolású X. 509 típusú.
+*   certificateRawData: X.509-es tanúsítvány bájttömb-ábrázolása. A bájttömb lehet bináris (DER) kódolású vagy Base64 kódolású X.509-es adat.
 
 ---
 ### <a name="certissuerdn"></a>CertIssuerDN
 **Leírás:**  
-A tanúsítvány kiállítójának megkülönböztető nevét adja vissza.
+A tanúsítvány kibocsátójának megkülönböztető nevét adja eredményül.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str CertIssuerDN(binary certificateRawData)`  
-*   certificateRawData: X. 509 tanúsítvány byte Array ábrázolása. A bájtos tömb lehet bináris (DER) kódolású vagy Base64 kódolású X. 509 típusú.
+*   certificateRawData: X.509-es tanúsítvány bájttömb-ábrázolása. A bájttömb lehet bináris (DER) kódolású vagy Base64 kódolású X.509-es adat.
 
 ---
 ### <a name="certissueroid"></a>CertIssuerOid
 **Leírás:**  
-A tanúsítvány kiállítójának objektumazonosítót adja vissza.
+A tanúsítvány kibocsátójának Oidját adja eredményül.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str CertIssuerOid(binary certificateRawData)`  
-*   certificateRawData: X. 509 tanúsítvány byte Array ábrázolása. A bájtos tömb lehet bináris (DER) kódolású vagy Base64 kódolású X. 509 típusú.
+*   certificateRawData: X.509-es tanúsítvány bájttömb-ábrázolása. A bájttömb lehet bináris (DER) kódolású vagy Base64 kódolású X.509-es adat.
 
 ---
-### <a name="certkeyalgorithm"></a>CertKeyAlgorithm
+### <a name="certkeyalgorithm"></a>CertKeyAlgorithm (CertKeyAlgorithm)
 **Leírás:**  
-Az X. 509v3 tanúsítvány kulcs-algoritmusának adatait adja vissza karakterláncként.
+Az X.509v3 tanúsítvány kulcsalgoritmus-adatait adja eredményül karakterláncként.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str CertKeyAlgorithm(binary certificateRawData)`  
-*   certificateRawData: X. 509 tanúsítvány byte Array ábrázolása. A bájtos tömb lehet bináris (DER) kódolású vagy Base64 kódolású X. 509 típusú.
+*   certificateRawData: X.509-es tanúsítvány bájttömb-ábrázolása. A bájttömb lehet bináris (DER) kódolású vagy Base64 kódolású X.509-es adat.
 
 ---
 ### <a name="certkeyalgorithmparams"></a>CertKeyAlgorithmParams
 **Leírás:**  
-Az X. 509v3 tanúsítvány kulcs-algoritmusának paramétereit adja vissza hexadecimális karakterláncként.
+Az X.509v3 tanúsítvány hexadecimális karakterláncként való kulcsalgoritmus-paramétereit adja eredményül.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str CertKeyAlgorithm(binary certificateRawData)`  
-*   certificateRawData: X. 509 tanúsítvány byte Array ábrázolása. A bájtos tömb lehet bináris (DER) kódolású vagy Base64 kódolású X. 509 típusú.
+*   certificateRawData: X.509-es tanúsítvány bájttömb-ábrázolása. A bájttömb lehet bináris (DER) kódolású vagy Base64 kódolású X.509-es adat.
 
 ---
 ### <a name="certnameinfo"></a>CertNameInfo
 **Leírás:**  
-Egy tanúsítvány tulajdonosi és kiállítói nevét adja vissza.
+A tulajdonos és a kiállító nevét adja vissza egy tanúsítványból.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str CertNameInfo(binary certificateRawData, str x509NameType, bool includesIssuerName)`  
-*   certificateRawData: X. 509 tanúsítvány byte Array ábrázolása. A bájtos tömb lehet bináris (DER) kódolású vagy Base64 kódolású X. 509 típusú.
+*   certificateRawData: X.509-es tanúsítvány bájttömb-ábrázolása. A bájttömb lehet bináris (DER) kódolású vagy Base64 kódolású X.509-es adat.
 *   X509NameType: A tárgy X509NameType értéke.
-*   includesIssuerName: true (igaz) – a kiállító nevének belefoglalása; Ellenkező esetben hamis.
+*   includesIssuerName: true a kibocsátó nevének feltüntetéséhez; ellenkező esetben hamis.
 
 ---
-### <a name="certnotafter"></a>CertNotAfter
+### <a name="certnotafter"></a>CertNotAfter után
 **Leírás:**  
-Azt a helyi időpontot adja vissza, amely után a tanúsítvány már nem érvényes.
+Azt a helyi dátumot adja eredményül, amely után a tanúsítvány már nem érvényes.
 
-**Szintaxis**  
+**Szintaxis:**  
 `dt CertNotAfter(binary certificateRawData)`  
-*   certificateRawData: X. 509 tanúsítvány byte Array ábrázolása. A bájtos tömb lehet bináris (DER) kódolású vagy Base64 kódolású X. 509 típusú.
+*   certificateRawData: X.509-es tanúsítvány bájttömb-ábrázolása. A bájttömb lehet bináris (DER) kódolású vagy Base64 kódolású X.509-es adat.
 
 ---
-### <a name="certnotbefore"></a>CertNotBefore
+### <a name="certnotbefore"></a>CertNotElőtte
 **Leírás:**  
-A helyi idő szerinti dátumot adja vissza, amikor a tanúsítvány érvényes lesz.
+Helyi idő szerint adja eredményül azt a dátumot, amikor a tanúsítvány érvényessé válik.
 
-**Szintaxis**  
+**Szintaxis:**  
 `dt CertNotBefore(binary certificateRawData)`  
-*   certificateRawData: X. 509 tanúsítvány byte Array ábrázolása. A bájtos tömb lehet bináris (DER) kódolású vagy Base64 kódolású X. 509 típusú.
+*   certificateRawData: X.509-es tanúsítvány bájttömb-ábrázolása. A bájttömb lehet bináris (DER) kódolású vagy Base64 kódolású X.509-es adat.
 
 ---
-### <a name="certpublickeyoid"></a>CertPublicKeyOid
+### <a name="certpublickeyoid"></a>CertPublicKeyOid (CertPublicKeyOid)
 **Leírás:**  
-Az X. 509v3 tanúsítvány nyilvános kulcsának OID-azonosítóját adja vissza.
+Az X.509v3 tanúsítvány nyilvános kulcsának Oidját adja vissza.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str CertKeyAlgorithm(binary certificateRawData)`  
-*   certificateRawData: X. 509 tanúsítvány byte Array ábrázolása. A bájtos tömb lehet bináris (DER) kódolású vagy Base64 kódolású X. 509 típusú.
+*   certificateRawData: X.509-es tanúsítvány bájttömb-ábrázolása. A bájttömb lehet bináris (DER) kódolású vagy Base64 kódolású X.509-es adat.
 
 ---
 ### <a name="certpublickeyparametersoid"></a>CertPublicKeyParametersOid
 **Leírás:**  
-Az X. 509v3 tanúsítványhoz tartozó nyilvános kulcsú paraméterek OID azonosítóját adja vissza.
+Az X.509v3 tanúsítvány nyilvános kulcsparamétereinek Oidértékét adja vissza.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str CertPublicKeyParametersOid(binary certificateRawData)`  
-*   certificateRawData: X. 509 tanúsítvány byte Array ábrázolása. A bájtos tömb lehet bináris (DER) kódolású vagy Base64 kódolású X. 509 típusú.
+*   certificateRawData: X.509-es tanúsítvány bájttömb-ábrázolása. A bájttömb lehet bináris (DER) kódolású vagy Base64 kódolású X.509-es adat.
 
 ---
 ### <a name="certserialnumber"></a>CertSerialNumber
 **Leírás:**  
-Az X. 509v3 tanúsítvány sorozatszámát adja vissza.
+Az X.509v3 tanúsítvány sorozatszámát adja eredményül.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str CertSerialNumber(binary certificateRawData)`  
-*   certificateRawData: X. 509 tanúsítvány byte Array ábrázolása. A bájtos tömb lehet bináris (DER) kódolású vagy Base64 kódolású X. 509 típusú.
+*   certificateRawData: X.509-es tanúsítvány bájttömb-ábrázolása. A bájttömb lehet bináris (DER) kódolású vagy Base64 kódolású X.509-es adat.
 
 ---
 ### <a name="certsignaturealgorithmoid"></a>CertSignatureAlgorithmOid
 **Leírás:**  
-A tanúsítvány aláírásának létrehozásához használt algoritmus OID-azonosítóját adja vissza.
+A tanúsítvány aláírásának létrehozásához használt algoritmus Oidját adja eredményül.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str CertSignatureAlgorithmOid(binary certificateRawData)`  
-*   certificateRawData: X. 509 tanúsítvány byte Array ábrázolása. A bájtos tömb lehet bináris (DER) kódolású vagy Base64 kódolású X. 509 típusú.
+*   certificateRawData: X.509-es tanúsítvány bájttömb-ábrázolása. A bájttömb lehet bináris (DER) kódolású vagy Base64 kódolású X.509-es adat.
 
 ---
 ### <a name="certsubject"></a>CertSubject
 **Leírás:**  
-Lekéri a tulajdonos megkülönböztető nevét egy tanúsítványból.
+A tulajdonos megkülönböztető nevét beszerzi egy tanúsítványból.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str CertSubject(binary certificateRawData)`  
-*   certificateRawData: X. 509 tanúsítvány byte Array ábrázolása. A bájtos tömb lehet bináris (DER) kódolású vagy Base64 kódolású X. 509 típusú.
+*   certificateRawData: X.509-es tanúsítvány bájttömb-ábrázolása. A bájttömb lehet bináris (DER) kódolású vagy Base64 kódolású X.509-es adat.
 
 ---
 ### <a name="certsubjectnamedn"></a>CertSubjectNameDN
 **Leírás:**  
 A tulajdonos megkülönböztető nevét adja vissza egy tanúsítványból.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str CertSubjectNameDN(binary certificateRawData)`  
-*   certificateRawData: X. 509 tanúsítvány byte Array ábrázolása. A bájtos tömb lehet bináris (DER) kódolású vagy Base64 kódolású X. 509 típusú.
+*   certificateRawData: X.509-es tanúsítvány bájttömb-ábrázolása. A bájttömb lehet bináris (DER) kódolású vagy Base64 kódolású X.509-es adat.
 
 ---
 ### <a name="certsubjectnameoid"></a>CertSubjectNameOid
 **Leírás:**  
-A tulajdonos nevének OID-azonosítóját adja vissza egy tanúsítványból.
+A tulajdonos nevének Oidját adja vissza egy tanúsítványból.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str CertSubjectNameOid(binary certificateRawData)`  
-*   certificateRawData: X. 509 tanúsítvány byte Array ábrázolása. A bájtos tömb lehet bináris (DER) kódolású vagy Base64 kódolású X. 509 típusú.
+*   certificateRawData: X.509-es tanúsítvány bájttömb-ábrázolása. A bájttömb lehet bináris (DER) kódolású vagy Base64 kódolású X.509-es adat.
 
 ---
 ### <a name="certthumbprint"></a>CertThumbprint
 **Leírás:**  
 Egy tanúsítvány ujjlenyomatát adja vissza.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str CertThumbprint(binary certificateRawData)`  
-*   certificateRawData: X. 509 tanúsítvány byte Array ábrázolása. A bájtos tömb lehet bináris (DER) kódolású vagy Base64 kódolású X. 509 típusú.
+*   certificateRawData: X.509-es tanúsítvány bájttömb-ábrázolása. A bájttömb lehet bináris (DER) kódolású vagy Base64 kódolású X.509-es adat.
 
 ---
-### <a name="certversion"></a>CertVersion
+### <a name="certversion"></a>CertVersion (CertVersion)
 **Leírás:**  
-Egy tanúsítvány X. 509 formátumú verzióját adja vissza.
+A tanúsítvány X.509 formátumú verzióját adja eredményül.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str CertThumbprint(binary certificateRawData)`  
-*   certificateRawData: X. 509 tanúsítvány byte Array ábrázolása. A bájtos tömb lehet bináris (DER) kódolású vagy Base64 kódolású X. 509 típusú.
+*   certificateRawData: X.509-es tanúsítvány bájttömb-ábrázolása. A bájttömb lehet bináris (DER) kódolású vagy Base64 kódolású X.509-es adat.
 
 ---
-### <a name="cguid"></a>CGuid
+### <a name="cguid"></a>CGuid között
 **Leírás:**  
-A CGuid függvény egy GUID karakterlánc-ábrázolását átalakítja bináris ábrázolásra.
+A CGuid függvény a GUID karakterlánc-ábrázolását bináris ábrázolásává alakítja.
 
-**Szintaxis**  
+**Szintaxis:**  
 `bin CGuid(str GUID)`
 
-* Az ebben a mintában formázott karakterlánc: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX vagy {XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX}
+* A String formázott ez a minta: xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx vagy {xxxxxxxx-xxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxxxx
 
 ---
-### <a name="contains"></a>tartalmaz
+### <a name="contains"></a>Contains
 **Leírás:**  
-A tartalmaz függvény megkeres egy karakterláncot egy többértékű attribútumon belül
+A Tartalmazza függvény karakterláncot talál egy többértékű attribútumban
 
-**Szintaxis**  
-`num Contains (mvstring attribute, str search)`– kis-és nagybetűk megkülönböztetése  
+**Szintaxis:**  
+`num Contains (mvstring attribute, str search)`- kis- és nagybetűk megkülönböztetése  
 `num Contains (mvstring attribute, str search, enum Casetype)`  
-`num Contains (mvref attribute, str search)`– kis-és nagybetűk megkülönböztetése
+`num Contains (mvref attribute, str search)`- kis- és nagybetűk megkülönböztetése
 
-* attribútum: a keresendő többértékű attribútum.
-* Keresés: az attribútumban keresendő karakterlánc.
-* Casetype: CaseInsensitive vagy CaseSensitive.
+* attribútum: a kereséshez többértékű attribútum.
+* keresés: string megtalálni az attribútumot.
+* Kis- és nagybetű: Kis- és nagybetűNem legkülönfélék vagy Kis- és nagybetűk megkülönböztetése.
 
-A többértékű attribútum azon indexét adja vissza, amelyben a sztring található. a 0 értéket adja vissza, ha a sztring nem található.
+Indexet ad vissza abban a többértékű attribútumban, ahol a karakterlánc található. A 0 értéket adja vissza, ha a karakterlánc nem található.
 
-**Megjegyzéseket tartalmazó**  
-A Többértékű karakterlánc-attribútumok esetében a keresés alsztringeket keres az értékekben.  
-A hivatkozási attribútumok esetében a keresett karakterláncnak pontosan egyeznie kell az egyezőnek tekintendő értékkel.
+**Megjegyzések:**  
+A többértékű karakterlánc-attribútumok esetében a keresés az értékekben lévő részkarakterláncokat keresi meg.  
+Referenciaattribútumok esetén a keresett karakterláncnak pontosan meg kell egyeznie az egyezésnek minősülő értékkel.
 
 **Példa:**  
 `IIF(Contains([proxyAddresses],"SMTP:")>0,[proxyAddresses],Error("No primary SMTP address found."))`  
-Ha a proxyAddresses attribútum elsődleges e-mail-címmel rendelkezik (amelyet a nagybetűs "SMTP:" kifejezés jelöl), akkor adja vissza a proxyAddress attribútumot, máskülönben hibát ad vissza.
+Ha a proxyAddresses attribútum elsődleges e-mail címmel rendelkezik (amelyet nagybetűs "SMTP:" jelez), akkor adja vissza a proxyAddress attribútumot, máskülönben hibát ad vissza.
 
 ---
 ### <a name="convertfrombase64"></a>ConvertFromBase64
 **Leírás:**  
-A ConvertFromBase64 függvény a megadott Base64 kódolású értéket egy normál karakterlánccá alakítja át.
+A ConvertFromBase64 függvény a megadott base64 kódolású értéket normál karakterláncsá alakítja.
 
-**Szintaxis**  
-`str ConvertFromBase64(str source)`-Unicode kódolást feltételez  
+**Szintaxis:**  
+`str ConvertFromBase64(str source)`- feltételezi, Unicode kódolás  
 `str ConvertFromBase64(str source, enum Encoding)`
 
-* forrás Base64 kódolású karakterlánc  
-* Kódolási Unicode, ASCII, UTF8
+* forrás: Base64 kódolású karakterlánc  
+* Kódolás: Unicode, ASCII, UTF8
 
 **Példa**  
 `ConvertFromBase64("SABlAGwAbABvACAAdwBvAHIAbABkACEA")`  
 `ConvertFromBase64("SGVsbG8gd29ybGQh", UTF8)`
 
-Mindkét példa "*Helló világ!* " értéket ad vissza.
+Mindkét példa vissza "*Hello world!*"
 
 ---
 ### <a name="convertfromutf8hex"></a>ConvertFromUTF8Hex
 **Leírás:**  
-A ConvertFromUTF8Hex függvény a megadott UTF8 hexadecimális kódolású értéket karakterlánccá alakítja át.
+A ConvertFromUTF8Hex függvény a megadott UTF8 Hex kódolású értéket karakterlánccá alakítja.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str ConvertFromUTF8Hex(str source)`
 
-* forrás UTF8 2 bájtos kódolású Sting
+* forrás: UTF8 2 bájtos kódolt csípés
 
-**Megjegyzéseket tartalmazó**  
-A függvény és a ConvertFromBase64 ([], UTF8) közötti különbség abban az esetben, ha az eredmény a DN attribútumhoz tartozó felhasználóbarát.  
-Ezt a formátumot a Azure Active Directory használja DN-ként.
+**Megjegyzések:**  
+A függvény és a ConvertFromBase64([],UTF8) közötti különbség, mivel az eredmény a DN attribútum számára megfelelő.  
+Ezt a formátumot az Azure Active Directory dn-ként használja.
 
 **Példa:**  
 `ConvertFromUTF8Hex("48656C6C6F20776F726C6421")`  
-A "*Helló világ!* " értéket adja vissza.
+Visszatér:*"Hello world!*"
 
 ---
-### <a name="converttobase64"></a>ConvertToBase64
+### <a name="converttobase64"></a>KonvertálásBase64
 **Leírás:**  
-A ConvertToBase64 függvény egy karakterláncot Unicode Base64 karakterlánccá alakít át.  
-Egész számokból álló tömb értékét konvertálja az egyenértékű karakterlánc-ábrázolásra, amely Base-64 számjegyekkel van kódolva.
+A ConvertToBase64 függvény egy karakterláncot Unicode base64 karakterláncgá alakít át.  
+Egy egész tömb értékét a 64-es alapjegyekkel kódolt karakterlánc-ábrázolási értékké alakítja.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str ConvertToBase64(str source)`
 
 **Példa:**  
 `ConvertToBase64("Hello world!")`  
-Returns "SABlAGwAbABvACAAdwBvAHIAbABkACEA"
+Eredmény: "SABlAGwAbABvACAAdwBvAHIAbABkACEA"
 
 ---
 ### <a name="converttoutf8hex"></a>ConvertToUTF8Hex
 **Leírás:**  
-A ConvertToUTF8Hex függvény egy karakterláncot UTF8 hexadecimális kódolású értékre alakít át.
+A ConvertToUTF8Hex függvény egy karakterláncot UTF8 Hex kódolású értékké alakít át.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str ConvertToUTF8Hex(str source)`
 
-**Megjegyzéseket tartalmazó**  
-A függvény kimeneti formátumát a Azure Active Directory használja DN-attribútum formátumként.
+**Megjegyzések:**  
+A függvény kimeneti formátumát az Azure Active Directory dn attribútumformátumként használja.
 
 **Példa:**  
 `ConvertToUTF8Hex("Hello world!")`  
-48656C6C6F20776F726C6421 visszaadása
+Eredménye 48656C6C6F20776F726C6421
 
 ---
-### <a name="count"></a>Count
+### <a name="count"></a>Darabszám
 **Leírás:**  
-A Count függvény egy többértékű attribútum elemeinek számát adja vissza.
+A Count függvény egy többértékű attribútum elemeinek számát adja eredményül.
 
-**Szintaxis**  
+**Szintaxis:**  
 `num Count(mvstr attribute)`
 
 ---
-### <a name="cnum"></a>CNum
+### <a name="cnum"></a>CÉv
 **Leírás:**  
 A CNum függvény egy karakterláncot vesz fel, és numerikus adattípust ad vissza.
 
-**Szintaxis**  
+**Szintaxis:**  
 `num CNum(str value)`
 
 ---
 ### <a name="cref"></a>CRef
 **Leírás:**  
-Sztring átalakítása hivatkozási attribútumra
+Karakterlánc átalakítása hivatkozási attribútummá
 
-**Szintaxis**  
+**Szintaxis:**  
 `ref CRef(str value)`
 
 **Példa:**  
@@ -480,331 +480,331 @@ Sztring átalakítása hivatkozási attribútumra
 ---
 ### <a name="cstr"></a>CStr
 **Leírás:**  
-A CStr függvény karakterlánc típusú adattípusra konvertál.
+A CStr függvény karakterlánc-adattípussá alakul át.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str CStr(num value)`  
 `str CStr(ref value)`  
 `str CStr(bool value)`  
 
-* érték Számérték, hivatkozási attribútum vagy logikai érték lehet.
+* érték: Lehet numerikus érték, hivatkozási attribútum vagy logikai érték.
 
 **Példa:**  
 `CStr([dn])`  
-Visszatérhet a "CN = Joe, DC = contoso, DC = com" értékre.
+Visszaadhatja a "cn=Joe,dc=contoso,dc=com"
 
 ---
 ### <a name="dateadd"></a>DateAdd
 **Leírás:**  
-Egy olyan dátumot ad vissza, amely egy megadott időintervallum hozzáadására szolgáló dátumot tartalmaz.
+Egy dátumot tartalmazó dátumot ad eredményül, amelyhez egy megadott időintervallum hozzá lett adva.
 
-**Szintaxis**  
+**Szintaxis:**  
 `dt DateAdd(str interval, num value, dt date)`
 
-* időköz A hozzáadni kívánt időintervallumot megadó karakterlánc-kifejezés. A karakterláncnak a következő értékek egyikével kell rendelkeznie:
-  * éééé év
-  * q negyedév
-  * m hónap
-  * év napja
-  * d nap
-  * w hétköznap
-  * WW hét
-  * h óra
-  * n perc
-  * s másodperc
-* érték A hozzáadni kívánt egységek száma. Ez lehet pozitív (a jövőbeli dátumok beolvasása) vagy negatív (a múltbeli dátumok beszerzéséhez).
-* dátum Az a dátum, amely az intervallum hozzáadásának dátumát adja meg.
+* időköz: Karakterlánc-kifejezés, amely a hozzáadni kívánt időintervallum. A karakterláncnak az alábbi értékek egyikével kell rendelkeznie:
+  * yyyy év
+  * q Negyedév
+  * m Hónap
+  * y Az év napja
+  * d Nap
+  * w Hétköznap
+  * ww Hét
+  * h Óra
+  * n Perc
+  * s második
+* érték: A hozzáadni kívánt egységek száma. Ez lehet pozitív (hogy dátumokat a jövőben) vagy negatív (hogy dátumokat a múltban).
+* dátum: DateTime, amely az intervallum hozzáadásának dátumát jelöli.
 
 **Példa:**  
 `DateAdd("m", 3, CDate("2001-01-01"))`  
-3 hónapot ad vissza, és egy "2001-04-01" értéket jelölő DateTime értéket ad vissza.
+3 hónapot ad hozzá, és a "2001-04-01" értéket képviselő DateTime értéket ad vissza.
 
 ---
-### <a name="datefromnum"></a>DateFromNum
+### <a name="datefromnum"></a>DateFromNum (Dátumfromnum)
 **Leírás:**  
-A DateFromNum függvény egy értéket AD meg az AD dátumformátum dátum és idő típusára.
+A DateFromNum függvény az AD dátumformátumában lévő értéket DateTime típussá alakítja.
 
-**Szintaxis**  
+**Szintaxis:**  
 `dt DateFromNum(num value)`
 
 **Példa:**  
 `DateFromNum([lastLogonTimestamp])`  
 `DateFromNum(129699324000000000)`  
-A 2012-01-01 23:00:00-et jelölő DateTime értéket ad vissza.
+2012-01-01 23:00:00 dátumidőt ad eredményül.
 
 ---
-### <a name="dncomponent"></a>DNComponent
+### <a name="dncomponent"></a>DNösszetevő
 **Leírás:**  
-A DNComponent függvény a megadott DN-összetevő értékét adja vissza balról.
+A DNComponent függvény egy megadott, balról haladó DN-összetevő értékét adja eredményül.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str DNComponent(ref dn, num ComponentNumber)`
 
-* DN: az értelmezni kívánt hivatkozási attribútum
-* ComponentNumber: A visszaadni kívánt DN összetevő
+* dn: a értelmezhető referenciaattribútum
+* ComponentNumber: A DN visszaadandó összetevője
 
 **Példa:**  
 `DNComponent(CRef([dn]),1)`  
-Ha a DN a következő: "CN = Joe, ou =...", visszaadja a következőt: Joe
+Ha a dn "cn=Joe,ou=...", akkor Joe-t ad vissza.
 
 ---
 ### <a name="dncomponentrev"></a>DNComponentRev
 **Leírás:**  
-A DNComponentRev függvény egy megadott DN-összetevő értékét adja vissza, amely jobbról (a végéről) fog származni.
+A DNComponentRev függvény egy megadott DN-összetevő értékét adja vissza jobbról (a végből).
 
-**Szintaxis**  
+**Szintaxis:**  
 `str DNComponentRev(ref dn, num ComponentNumber)`  
 `str DNComponentRev(ref dn, num ComponentNumber, enum Options)`
 
-* DN: az értelmezni kívánt hivatkozási attribútum
-* ComponentNumber – a DN által visszaadott összetevő
-* Beállítások DC – az összes összetevő figyelmen kívül hagyása a "DC =" értékkel
+* dn: a értelmezhető referenciaattribútum
+* ComponentNumber - A dn-ben visszaadandó összetevő
+* Beállítások: DC – A "dc=" minden összetevő figyelmen kívül hagyása
 
 **Példa:**  
-Ha a DN a "CN = Joe, OU = Atlanta, OU = GA, OU = US, DC = contoso, DC = com", akkor  
+Ha a dn "cn=Joe,ou=Atlanta,ou=GA,ou=US, dc=contoso,dc=com" akkor  
 `DNComponentRev(CRef([dn]),3)`  
 `DNComponentRev(CRef([dn]),1,"DC")`  
-Mindkettő visszatér hozzánk.
+Mindkettő visszatér MINKET.
 
 ---
 ### <a name="error"></a>Hiba
 **Leírás:**  
-A Error függvény egyéni hiba visszaküldésére szolgál.
+A Hiba funkció egyéni hiba visszaadására szolgál.
 
-**Szintaxis**  
+**Szintaxis:**  
 `void Error(str ErrorMessage)`
 
 **Példa:**  
 `IIF(IsPresent([accountName]),[accountName],Error("AccountName is required"))`  
-Ha a accountName attribútum nem található, hibát jelez az objektumon.
+Ha a accountName attribútum nem található, jelenítsen meg egy hibát az objektumon.
 
 ---
-### <a name="escapedncomponent"></a>EscapeDNComponent
+### <a name="escapedncomponent"></a>EscapeDNComponent (EscapeDNComponent)
 **Leírás:**  
-A EscapeDNComponent függvény a DN egyik összetevőjét veszi át, és megmenekül, hogy az LDAP-ban is megjelenjen.
+Az EscapeDNComponent függvény a DN egy összetevőjét veszi fel, és elkerüli azt, hogy az LDAP-ban is képviselhető legyen.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str EscapeDNComponent(str value)`
 
 **Példa:**  
 `EscapeDNComponent("cn=" & [displayName]) & "," & %ForestLDAP%)`  
-Gondoskodik arról, hogy az objektum az LDAP-címtárban is létrehozható legyen, még akkor is, ha a displayName attribútum olyan karaktereket tartalmaz, amelyeket az LDAP-ban el kell menekülni.
+Gondoskodik arról, hogy az objektum ldap-könyvtárban is létrehozható legyen, még akkor is, ha a displayName attribútum olyan karaktereket tartalmaz, amelyeket az LDAP-ban meg kell kerülni.
 
 ---
-### <a name="formatdatetime"></a>formatDateTime
+### <a name="formatdatetime"></a>FormatDateTime
 **Leírás:**  
-A FormatDateTime függvény egy dátum és idő formázása megadott formátumú karakterláncra
+A FormatDateTime függvény a DateTime formátumú karakterláncra való formázására szolgál.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str FormatDateTime(dt value, str format)`
 
-* Value: egy dátum és idő formátumú érték
-* Format (formátum): a konvertálandó formátumot jelképező karakterlánc.
+* érték: egy érték datetime formátumban
+* formátum: a konvertálni kívánt formátumot jelölő karakterlánc.
 
-**Megjegyzéseket tartalmazó**  
-A formátum lehetséges értékei itt találhatók: [A Format függvény egyéni dátum-és](https://docs.microsoft.com/dax/custom-date-and-time-formats-for-the-format-function)időformátumai.
+**Megjegyzések:**  
+A formátum lehetséges értékei itt találhatók: [A FORMAT függvény egyéni dátum- és időformátumai](https://docs.microsoft.com/dax/custom-date-and-time-formats-for-the-format-function).
 
 **Példa:**  
 
 `FormatDateTime(CDate("12/25/2007"),"yyyy-mm-dd")`  
-Eredmények: "2007-12-25".
+Eredmények a "2007-12-25".
 
 `FormatDateTime(DateFromNum([pwdLastSet]),"yyyyMMddHHmmss.0Z")`  
-A "20140905081453.0 Z" kifejezéssel járhat
+"20140905081453.0Z"
 
 ---
 ### <a name="guid"></a>Guid
 **Leírás:**  
-A függvény GUID-azonosítója új véletlenszerű GUID azonosítót hoz létre
+A Guid függvény új véletlenszerű GUID-t hoz létre
 
-**Szintaxis**  
+**Szintaxis:**  
 `str Guid()`
 
 ---
-### <a name="iif"></a>IIF
+### <a name="iif"></a>Iif
 **Leírás:**  
-Az IIF függvény a lehetséges értékek egy halmazát adja vissza egy megadott feltétel alapján.
+Az IIF függvény egy megadott feltételen alapuló lehetséges értékek egyikét adja vissza.
 
-**Szintaxis**  
+**Szintaxis:**  
 `var IIF(exp condition, var valueIfTrue, var valueIfFalse)`
 
-* feltétel: bármely olyan érték vagy kifejezés, amelynek kiértékelése igaz vagy hamis lehet.
-* valueIfTrue: Ha a feltétel igaz értéket ad vissza, a visszaadott érték.
-* valueIfFalse: Ha a feltétel hamis értéket ad vissza, a visszaadott érték.
+* feltétel: bármely érték vagy kifejezés, amely igaz vagy hamis értékű.
+* valueIfTrue: Ha a feltétel értéke igaz, a visszaadott érték.
+* valueIfFalse: Ha a feltétel értéke hamis, a visszaadott érték.
 
 **Példa:**  
 `IIF([employeeType]="Intern","t-" & [alias],[alias])`  
- Ha a felhasználó egy gyakornok, a a "t-" értékkel rendelkező felhasználó aliasát adja vissza, a másik pedig a felhasználó aliasát adja vissza.
+ Ha a felhasználó gyakornok, akkor egy olyan felhasználó aliasát adja vissza, akinek a elején "t-" van hozzáadva, máshol pedig a felhasználó aliasát adja vissza.
 
 ---
-### <a name="instr"></a>InStr
+### <a name="instr"></a>Instr
 **Leírás:**  
-A beosztási függvény megkeresi egy karakterláncban szereplő alsztring első előfordulását.
+Az InStr függvény megkeresi egy karakterlánc részkarakterláncának első előfordulását
 
-**Szintaxis**  
+**Szintaxis:**  
 
 `num InStr(str stringcheck, str stringmatch)`  
 `num InStr(str stringcheck, str stringmatch, num start)`  
 `num InStr(str stringcheck, str stringmatch, num start , enum compare)`
 
-* karakterlánc: keresendő karakterlánc
-* keresettkarakterlánc: a rendszer megtalálni kívánt karakterláncot
-* Kezdés: a pozíció megkeresése az alsztring megtalálásához
+* stringcheck: keresendő karakterlánc
+* stringmatch: karakterlánc található
+* start: kezdő pozíció a karakterlánc részhalmazának megkereséséhez
 * összehasonlítás: vbTextCompare vagy vbBinaryCompare
 
-**Megjegyzéseket tartalmazó**  
-Azt a pozíciót adja vissza, ahol az alkarakterlánc található vagy 0, ha nem található.
+**Megjegyzések:**  
+Azt a pozíciót adja eredményül, ahol a karakterláncrész található, vagy a 0 értéket, ha nem.
 
 **Példa:**  
 `InStr("The quick brown fox","quick")`  
-Evalues – 5
+Eértékek értéke 5-re
 
 `InStr("repEated","e",3,vbBinaryCompare)`  
-Értékelés 7-re
+Kiértékeljük a 7
 
 ---
-### <a name="instrrev"></a>InStrRev
+### <a name="instrrev"></a>Instrrev között
 **Leírás:**  
-A InStrRev függvény megkeresi egy karakterlánc utolsó előfordulását egy sztringben.
+Az InStrRev függvény megkeresi egy karakterlánc részkarakterláncának utolsó előfordulását
 
-**Szintaxis**  
+**Szintaxis:**  
 `num InstrRev(str stringcheck, str stringmatch)`  
 `num InstrRev(str stringcheck, str stringmatch, num start)`  
 `num InstrRev(str stringcheck, str stringmatch, num start, enum compare)`
 
-* karakterlánc: keresendő karakterlánc
-* keresettkarakterlánc: a rendszer megtalálni kívánt karakterláncot
-* Kezdés: a pozíció megkeresése az alsztring megtalálásához
+* stringcheck: keresendő karakterlánc
+* stringmatch: karakterlánc található
+* start: kezdő pozíció a karakterlánc részhalmazának megkereséséhez
 * összehasonlítás: vbTextCompare vagy vbBinaryCompare
 
-**Megjegyzéseket tartalmazó**  
-Azt a pozíciót adja vissza, ahol az alkarakterlánc található vagy 0, ha nem található.
+**Megjegyzések:**  
+Azt a pozíciót adja eredményül, ahol a karakterláncrész található, vagy a 0 értéket, ha nem.
 
 **Példa:**  
 `InStrRev("abbcdbbbef","bb")`  
-7 értéket ad vissza.
+7-et ad vissza
 
 ---
 ### <a name="isbitset"></a>IsBitSet
 **Leírás:**  
-A függvény IsBitSet teszteket végez, ha egy bit be van állítva.
+Az IsBitSet tesztek funkció, ha egy bit be van állítva, vagy nem
 
-**Szintaxis**  
+**Szintaxis:**  
 `bool IsBitSet(num value, num flag)`
 
-* Value (érték): a kiértékelt numerikus érték. jelző: egy numerikus érték, amelynek a kiértékelése megtörtént.
+* érték: kiértékelendő numerikus érték.jelző: olyan numerikus érték, amely a kiértékelendő bitet
 
 **Példa:**  
 `IsBitSet(&HF,4)`  
-Igaz értéket ad vissza, mert a "4" érték be van állítva az "F" hexadecimális értékben.
+Igaz értéket ad vissza, mert a "4" bit az "F" hexadecimális értékben van beállítva.
 
 ---
-### <a name="isdate"></a>IsDate
+### <a name="isdate"></a>IsDate (Dátum)
 **Leírás:**  
-Ha a kifejezés DateTime típusúként is kiértékelhető, akkor a IsDate függvény Igaz értéket ad vissza.
+Ha a kifejezés datetime típusként értékelhető, akkor az IsDate függvény értéke Igaz lesz.
 
-**Szintaxis**  
+**Szintaxis:**  
 `bool IsDate(var Expression)`
 
-**Megjegyzéseket tartalmazó**  
-Annak megállapítására szolgál, hogy a CDate () sikeres lehet-e.
+**Megjegyzések:**  
+Annak meghatározására szolgál, hogy a CDate() sikeres lehet-e.
 
 ---
-### <a name="iscert"></a>IsCert
+### <a name="iscert"></a>IsCert között
 **Leírás:**  
-Igaz értéket ad vissza, ha a nyers adatok a .NET X509certificate2) tanúsítvány objektumba szerializálható.
+Igaz értéket ad vissza, ha a nyers adatok szerializálhatók a .NET X509Certificate2 tanúsítványobjektumba.
 
-**Szintaxis**  
+**Szintaxis:**  
 `bool CertThumbprint(binary certificateRawData)`  
-*   certificateRawData: X. 509 tanúsítvány byte Array ábrázolása. A bájtos tömb lehet bináris (DER) kódolású vagy Base64 kódolású X. 509 típusú.
+*   certificateRawData: X.509-es tanúsítvány bájttömb-ábrázolása. A bájttömb lehet bináris (DER) kódolású vagy Base64 kódolású X.509-es adat.
 ---
 ### <a name="isempty"></a>IsEmpty
 **Leírás:**  
-Ha az attribútum szerepel a CS-ban vagy az MV-ban, de egy üres karakterláncot ad vissza, akkor a IsEmpty függvény Igaz értéket ad vissza.
+Ha az attribútum jelen van a CS vagy MV, de értékeli egy üres karakterláncot, majd az IsEmpty függvény kiértékelt igaz.
 
-**Szintaxis**  
+**Szintaxis:**  
 `bool IsEmpty(var Expression)`
 
 ---
-### <a name="isguid"></a>IsGuid
+### <a name="isguid"></a>IsGuid között
 **Leírás:**  
-Ha a karakterlánc konvertálható GUID-ra, akkor a IsGuid függvény értéke TRUE (igaz).
+Ha a karakterlánc guid azonosítóvá alakítható, akkor az IsGuid függvény igaz értékre értékelve.
 
-**Szintaxis**  
+**Szintaxis:**  
 `bool IsGuid(str GUID)`
 
-**Megjegyzéseket tartalmazó**  
-A GUID a következő minták egyikét követő karakterláncként van definiálva: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX vagy {XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX}
+**Megjegyzések:**  
+A GUID definíciója: karakterlánc, amely az alábbi minták valamelyikét követi: xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxxx vagy {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
 
-Annak megállapítására szolgál, hogy a CGuid () sikeres lehet-e.
+Annak meghatározására szolgál, hogy a CGuid() sikeres lehet-e.
 
 **Példa:**  
 `IIF(IsGuid([strAttribute]),CGuid([strAttribute]),NULL)`  
-Ha a StrAttribute GUID formátumú, a bináris ábrázolást ad vissza, ellenkező esetben null értéket ad vissza.
+Ha a StrAttribute guid formátumú, adja vissza a bináris ábrázolás, ellenkező esetben vissza a Null.
 
 ---
 ### <a name="isnull"></a>IsNull
 **Leírás:**  
-Ha a kifejezés értéke null, akkor a IsNull függvény Igaz értéket ad vissza.
+Ha a kifejezés eredménye Null, akkor az IsNull függvény igaz értéket ad vissza.
 
-**Szintaxis**  
+**Szintaxis:**  
 `bool IsNull(var Expression)`
 
-**Megjegyzéseket tartalmazó**  
-Attribútum esetén a null értéket az attribútum hiánya fejezi ki.
+**Megjegyzések:**  
+Egy attribútum esetében a Null értéket az attribútum hiánya fejezi ki.
 
 **Példa:**  
 `IsNull([displayName])`  
-Igaz értéket ad vissza, ha az attribútum nem szerepel a CS vagy az MV-ban.
+Igaz értéket ad vissza, ha az attribútum nem szerepel a CS vagy az MV értékben.
 
 ---
 ### <a name="isnullorempty"></a>IsNullOrEmpty
 **Leírás:**  
-Ha a kifejezés null értékű vagy üres karakterlánc, akkor a IsNullOrEmpty függvény Igaz értéket ad vissza.
+Ha a kifejezés null vagy üres karakterlánc, akkor az IsNullOrEmpty függvény igaz értéket ad vissza.
 
-**Szintaxis**  
+**Szintaxis:**  
 `bool IsNullOrEmpty(var Expression)`
 
-**Megjegyzéseket tartalmazó**  
-Egy attribútum esetében ez igaz értékre értékeli, ha az attribútum hiányzik vagy létezik, de egy üres karakterlánc.  
+**Megjegyzések:**  
+Egy attribútum esetében ez igaz értéket ad ki, ha az attribútum hiányzik, vagy jelen van, de üres karakterlánc.  
 A függvény inverzének neve IsPresent.
 
 **Példa:**  
 `IsNullOrEmpty([displayName])`  
-Igaz értéket ad vissza, ha az attribútum nincs jelen, vagy üres karakterlánc a CS vagy az MV.
+Igaz értéket ad vissza, ha az attribútum nincs jelen, vagy üres karakterlánc a CS-ben vagy az MV-ben.
 
 ---
 ### <a name="isnumeric"></a>IsNumeric
 **Leírás:**  
-A IsNumeric függvény egy logikai értéket ad vissza, amely azt jelzi, hogy egy kifejezés kiértékelhető-e szám típusúként.
+Az IsNumeric függvény logikai értéket ad vissza, amely azt jelzi, hogy egy kifejezés számtípusként értékelhető-e.
 
-**Szintaxis**  
+**Szintaxis:**  
 `bool IsNumeric(var Expression)`
 
-**Megjegyzéseket tartalmazó**  
-Annak megállapítására szolgál, hogy a CNum () sikeres lehet-e a kifejezés értelmezéséhez.
+**Megjegyzések:**  
+Annak meghatározására szolgál, hogy a CNum() sikeres lehet-e a kifejezés elemzéséhez.
 
 ---
-### <a name="isstring"></a>IsString
+### <a name="isstring"></a>Karakterlánc
 **Leírás:**  
-Ha a kifejezés kiértékelhető karakterlánc típusúra, akkor a IsString függvény Igaz értéket ad vissza.
+Ha a kifejezés karakterlánctípusra értékelhető, akkor az IsString függvény értéke Igaz lesz.
 
-**Szintaxis**  
+**Szintaxis:**  
 `bool IsString(var expression)`
 
-**Megjegyzéseket tartalmazó**  
-Annak megállapítására szolgál, hogy a CStr () sikeres lehet-e a kifejezés értelmezéséhez.
+**Megjegyzések:**  
+Annak meghatározására szolgál, hogy a CStr() sikeres lehet-e a kifejezés elemzéséhez.
 
 ---
-### <a name="ispresent"></a>IsPresent
+### <a name="ispresent"></a>IsPresent (Jelen van)
 **Leírás:**  
-Ha a kifejezés olyan karakterláncot ad vissza, amely nem null értékű, és nem üres, akkor a IsPresent függvény Igaz értéket ad vissza.
+Ha a kifejezés nem Null karakterláncot ad eredményül, akkor az IsPresent függvény igaz értéket ad vissza.
 
-**Szintaxis**  
+**Szintaxis:**  
 `bool IsPresent(var expression)`
 
-**Megjegyzéseket tartalmazó**  
-A függvény inverzének neve IsNullOrEmpty.
+**Megjegyzések:**  
+A függvény inverzneve IsNullOrEmpty.
 
 **Példa:**  
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
@@ -812,213 +812,213 @@ A függvény inverzének neve IsNullOrEmpty.
 ---
 ### <a name="item"></a>Elem
 **Leírás:**  
-Az Item függvény egy elemet ad vissza egy többértékű karakterlánc/attribútumból.
+A Cikk függvény egy elemet ad vissza egy többértékű karakterláncból/attribútumból.
 
-**Szintaxis**  
+**Szintaxis:**  
 `var Item(mvstr attribute, num index)`
 
 * attribútum: többértékű attribútum
-* index: index a Többértékű karakterlánc egyik elemébe.
+* index: index a többértékű karakterlánc egy eleméhez.
 
-**Megjegyzéseket tartalmazó**  
-Az Item függvény a tartalmaz függvénnyel együtt használható, mivel az utóbbi függvény az indexet a többértékű attribútum egy elemébe adja vissza.
+**Megjegyzések:**  
+A Cikk függvény a Tartalmazza függvénnyel együtt hasznos, mivel az utóbbi függvény visszaadja az indexet a többértékű attribútum egy elemének.
 
-Hibát jelez, ha az index tartományon kívül esik.
+Hibát okoz, ha az index kívül esik a határokon.
 
 **Példa:**  
 `Mid(Item([proxyAddresses],Contains([proxyAddresses], "SMTP:")),6)`  
-Az elsődleges e-mail-címet adja vissza.
+Az elsődleges e-mail címet adja vissza.
 
 ---
 ### <a name="itemornull"></a>ItemOrNull
 **Leírás:**  
-A ItemOrNull függvény egy elemet ad vissza egy többértékű karakterlánc/attribútumból.
+Az ItemOrNull függvény egy elemet ad vissza egy többértékű karakterláncból/attribútumból.
 
-**Szintaxis**  
+**Szintaxis:**  
 `var ItemOrNull(mvstr attribute, num index)`
 
 * attribútum: többértékű attribútum
-* index: index a Többértékű karakterlánc egyik elemébe.
+* index: index a többértékű karakterlánc egy eleméhez.
 
-**Megjegyzéseket tartalmazó**  
-A ItemOrNull függvény a tartalmaz függvénnyel együtt használható, mivel az utóbbi függvény az indexet a többértékű attribútum egy elemébe adja vissza.
+**Megjegyzések:**  
+Az ItemOrNull függvény a Tartalmazza függvénnyel együtt hasznos, mivel az utóbbi függvény visszaadja az indexet a többértékű attribútum egy elemének.
 
-Ha az index tartományon kívül esik, a függvény Null értéket ad vissza.
+Ha az index kívül esik a határokon, akkor null értéket ad vissza.
 
 ---
 ### <a name="join"></a>Csatlakozás
 **Leírás:**  
-Az illesztési függvény többértékű karakterláncot használ, és egy egyértékű karakterláncot ad vissza, amely az egyes elemek között beszúrt megadott elválasztó karakter.
+Az Illesztés függvény egy többértékű karakterláncot vesz fel, és egy egyértékű karakterláncot ad vissza, amelynek minden elem közé megadott elválasztó van beszúrva.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str Join(mvstr attribute)`  
 `str Join(mvstr attribute, str Delimiter)`
 
-* attribútum A egyesíteni kívánt karakterláncokat tartalmazó többértékű attribútum.
-* elválasztó Bármely karakterlánc, amely a visszaadott karakterláncban található alsztringek elkülönítésére szolgál. Ha nincs megadva, a rendszer a szóköz karaktert ("") használja. Ha a határolójel nulla hosszúságú karakterlánc ("") vagy semmi sem, a lista minden eleme elválasztó karakterrel van összefűzve.
+* attribútum: Az egyesítendő karakterláncokat tartalmazó többértékű attribútum.
+* határoló: Bármely karakterlánc, amely a visszaadott karakterlánc részkarakterláncait választja el. Ha nincs megadva, a program a szóközkaraktert (" ") használja. Ha a Határoló érték nulla hosszúságú karakterlánc ("") vagy Semmi, a lista összes eleme elvan ágyazva, határolók nélkül.
 
 **Megjegyzések**  
-A JOIN és a Split függvények között paritás van. Az illesztési függvény karakterláncok tömbjét veszi fel, és egy elválasztó sztringet használva összekapcsolja őket egyetlen sztring visszaadásához. A felosztott függvény egy karakterláncot fogad el, és elválasztja azt a határolón, hogy sztringek tömbjét állítsa vissza. Azonban a fő különbség az, hogy az illesztés bármely elválasztó karakterlánccal összefűzheti a karakterláncokat, a felosztás csak egyetlen karakterből álló határolójel használatával lehet különálló sztringeket használni.
+Az Illesztés és a Felosztás függvény ek között paritás van. A Join függvény karakterláncok tömbjét veszi fel, és egy határoló karakterlánc használatával csatlakozik hozzájuk, hogy egyetlen karakterláncot ad vissza. A Split függvény egy karakterláncot vesz fel, és elválasztja azt a határolójelnél, hogy karakterlánctömböt ad vissza. Azonban a legfontosabb különbség az, hogy a Join bármely határoló karakterláncgal összefűzheti a karakterláncokat, a Split csak egyetlen karakterhatárolóval tudja elválasztani a karakterláncokat.
 
 **Példa:**  
 `Join([proxyAddresses],",")`  
-Visszatérési érték:SMTP:john.doe@contoso.com"smtp:jd@contoso.com,"
+Visszatérhet: "SMTP:john.doe@contoso.comsmtp:jd@contoso.com, "
 
 ---
 ### <a name="lcase"></a>LCase
 **Leírás:**  
-A LCase függvény egy karakterlánc összes karakterét kisbetűvé alakítja.
+Az LCase függvény a karakterlánc összes karakterét kisbetűssé alakítja.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str LCase(str value)`
 
 **Példa:**  
 `LCase("TeSt")`  
-A "test" értéket adja vissza.
+A "teszt" értéket adja eredményül.
 
 ---
-### <a name="left"></a>Balra
+### <a name="left"></a>Bal
 **Leírás:**  
-A Left függvény egy karakterlánctól balra megadott számú karaktert ad vissza.
+A Bal függvény megadott számú karaktert ad vissza a karakterlánc bal oldalán.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str Left(str string, num NumChars)`
 
-* string: az a karakterlánc, amelyből karaktereket kell visszaadni
-* NumChars: a sztring elejétől (balra) visszaadott karakterek számát azonosító szám.
+* karakterlánc: az a karakterlánc, amelyből a karaktereket ad vissza
+* NumChars: a karakterlánc elejétől (balra) visszaadandó karakterek számát azonosító szám
 
-**Megjegyzéseket tartalmazó**  
-A karakterlánc első numChars karaktert tartalmazó karakterlánc:
+**Megjegyzések:**  
+Karakterlánc első numChars karakterét tartalmazó karakterlánc:
 
-* Ha a numChars = 0, üres karakterláncot ad vissza.
-* Ha a numChars < 0 értéket, adja vissza a bemeneti karakterláncot.
+* Ha numChars = 0, üres karakterláncot ad vissza.
+* Ha a numChars < 0, adja vissza a bemeneti karakterláncot.
 * Ha a karakterlánc null értékű, üres karakterláncot ad vissza.
 
-Ha a sztring kevesebb karaktert tartalmaz a numChars megadott számnál, akkor a rendszer a karakterlánctal megegyező karakterláncot (azaz az 1. paraméterben szereplő összes karaktert tartalmazza) adja vissza.
+Ha a karakterlánc kevesebb karaktert tartalmaz, mint a numChars paraméterben megadott szám, akkor a karakterlánccal (azaz az 1. paraméter összes karakterét tartalmazó) karakterláncot ad vissza.
 
 **Példa:**  
 `Left("John Doe", 3)`  
-A "Joh" értéket adja vissza.
+Visszaadja a "Joh".
 
 ---
 ### <a name="len"></a>Len
 **Leírás:**  
-A len függvény egy karakterláncban szereplő karakterek számát adja vissza.
+A Len függvény egy karakterláncban lévő karakterek számát adja vissza.
 
-**Szintaxis**  
+**Szintaxis:**  
 `num Len(str value)`
 
 **Példa:**  
 `Len("John Doe")`  
-8 értéket ad vissza
+8-at ad vissza
 
 ---
-### <a name="ltrim"></a>LTrim
+### <a name="ltrim"></a>LTrim között
 **Leírás:**  
-A LTrim függvény eltávolítja a kezdő szóközöket egy karakterláncból.
+Az LTrim függvény eltávolítja a kezdő fehér szóközöket a karakterláncból.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str LTrim(str value)`
 
 **Példa:**  
 `LTrim(" Test ")`  
-A "teszt" értéket adja vissza.
+"Teszt" értéket ad eredményül.
 
 ---
-### <a name="mid"></a>Mid
+### <a name="mid"></a>Közepes
 **Leírás:**  
-A Mid függvény megadott számú karaktert ad vissza egy karakterlánc megadott pozíciójában.
+A Középső függvény megadott számú karaktert ad vissza egy karakterlánc megadott pozíciójából.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str Mid(str string, num start, num NumChars)`
 
-* string: az a karakterlánc, amelyből karaktereket kell visszaadni
-* indítás: a karakterláncban szereplő kezdő pozíciót azonosító szám, amely a karakterek visszaküldését eredményezi
-* NumChars: a karakterláncban a pozícióból visszaadni kívánt karakterek számának azonosítása.
+* karakterlánc: az a karakterlánc, amelyből a karaktereket ad vissza
+* start: egy szám, amely azonosítja a kezdő pozíciót a karakterláncban, hogy visszaadja a karaktereket
+* NumChars: a karakterláncban elfoglalt helyről visszaadandó karakterek számát azonosító szám
 
-**Megjegyzéseket tartalmazó**  
-A pozíciótól kezdődő numChars-karakterek visszaadása karakterláncban.  
-A numChars karaktert tartalmazó karakterlánc a pozíció kezdete karakterláncban:
+**Megjegyzések:**  
+A pozícióból induló numChars karaktereket adja vissza a karakterláncban kezdődően.  
+NumChars karaktereket tartalmazó karakterlánc a pozícióból karakterláncban kezdődik:
 
-* Ha a numChars = 0, üres karakterláncot ad vissza.
-* Ha a numChars < 0 értéket, adja vissza a bemeneti karakterláncot.
-* Ha a Start > a karakterlánc hosszát, adja vissza a bemeneti karakterláncot.
-* Ha a Start < = 0, adja vissza a bemeneti karakterláncot.
+* Ha numChars = 0, üres karakterláncot ad vissza.
+* Ha a numChars < 0, adja vissza a bemeneti karakterláncot.
+* Ha a kezdő > a karakterlánc hosszát, adja vissza a bemeneti karakterláncot.
+* Ha <= 0 indítása, adja vissza a bemeneti karakterláncot.
 * Ha a karakterlánc null értékű, üres karakterláncot ad vissza.
 
-Ha a karakterláncból nem maradnak numChar karakterek a pozícióból, a rendszer annyi karaktert ad vissza, amennyit csak lehet.
+Ha a pozíció kezdőhelyétől nem maradnak numChar karakterek a karakterláncban, a lehető legtöbb karaktert adja vissza a rendszer.
 
 **Példa:**  
 `Mid("John Doe", 3, 5)`  
-A "HN do" értéket adja vissza.
+Eredménye: "hn Do".
 
 `Mid("John Doe", 6, 999)`  
-A "DOE" értéket adja vissza.
+"Doe" értéket ad eredményül.
 
 ---
-### <a name="now"></a>Most
+### <a name="now"></a>Now
 **Leírás:**  
-A Now függvény egy DateTime értéket ad vissza, amely megadja az aktuális dátumot és időpontot a számítógép rendszerdátumának és időpontjának megfelelően.
+A Most függvény egy DateTime értéket ad vissza, amely a számítógép rendszerdátumának és időpontjának megfelelően megadja az aktuális dátumot és időpontot.
 
-**Szintaxis**  
+**Szintaxis:**  
 `dt Now()`
 
 ---
-### <a name="numfromdate"></a>NumFromDate
+### <a name="numfromdate"></a>NumFromDate (Dátum kezdőszáma)
 **Leírás:**  
-A NumFromDate függvény egy dátumot AD vissza az Active Directory dátumformátumban.
+A NumFromDate függvény az AD dátumformátumában adja vissza a dátumot.
 
-**Szintaxis**  
+**Szintaxis:**  
 `num NumFromDate(dt value)`
 
 **Példa:**  
 `NumFromDate(CDate("2012-01-01 23:00:00"))`  
-129699324000000000 értéket ad vissza
+Eredménye 129699324000000000000000000
 
 ---
-### <a name="padleft"></a>PadLeft
+### <a name="padleft"></a>PadBalra
 **Leírás:**  
-A PadLeft függvény bal oldali kitöltési karakterrel a megadott hosszúságú karakterláncot adja.
+A PadLeft függvény egy megadott hosszúságú karakterláncot balra párnáz egy megadott kitöltési karakter használatával.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str PadLeft(str string, num length, str padCharacter)`
 
-* string: a pad karakterlánca.
-* hossza Egy egész szám, amely a kívánt hosszúságú karakterláncot jelöli.
-* padCharacter: A pad karakterként használandó egyetlen karakterből álló sztring
+* string: a pad karakterlánc.
+* hossz: Egész szám, amely a karakterlánc kívánt hosszát jelöli.
+* padCharacter: A pad karakterként használandó egyetlen karakterből álló karakterlánc
 
-**Megjegyzéseket tartalmazó**
+**Megjegyzések:**
 
-* Ha a karakterlánc hossza kisebb a hosszúságnál, akkor a rendszer ismételten hozzáfűzi a padCharacter a karakterlánc elejéhez (balra), amíg a hossza nem egyenlő hosszúságú.
-* A PadCharacter lehet szóköz karakter, de nem lehet null értékű.
-* Ha a karakterlánc hossza egyenlő vagy nagyobb, mint a hossz, a karakterláncot a rendszer változatlanul adja vissza.
-* Ha a karakterlánc hossza nagyobb vagy egyenlő, akkor a rendszer a karakterlánctal megegyező karakterláncot adja vissza.
-* Ha a karakterlánc hossza kisebb a hosszúságnál, a rendszer a kívánt hosszúságú karakterláncot adja vissza, amely egy padCharacter rendelkező Sztringet tartalmaz.
+* Ha a karakterlánc hossza kisebb, mint a hossza, akkor a padCharacter a karakterlánc elejéhez (balra) többször hozzáfűzi, amíg a hossza meg nem egyezik.
+* A PadCharacter szóközkarakter lehet, de nem lehet null érték.
+* Ha a karakterlánc hossza egyenlő vagy annál nagyobb, a karakterlánc változatlanul lesz visszaadva.
+* Ha a karakterlánc hossza hosszabb vagy egyenlő, akkor a karakterlánccal azonos karakterláncot ad vissza.
+* Ha a karakterlánc hossza rövidebb, akkor a rendszer egy új, a kívánt hosszúságú karakterláncot ad vissza, amely egy padKarakterkarakterrel bélelt karakterláncot tartalmaz.
 * Ha a karakterlánc null értékű, a függvény üres karakterláncot ad vissza.
 
 **Példa:**  
 `PadLeft("User", 10, "0")`  
-A "000000User" értéket adja vissza.
+Eredménye: "000000User".
 
 ---
-### <a name="padright"></a>PadRight
+### <a name="padright"></a>PadJobbra
 **Leírás:**  
-A PadRight függvény jobb gombbal egy karakterláncot adott hosszúságú, egy megadott kitöltési karakter használatával.
+A PadRight függvény jobb oldali függvénye egy megadott hosszúságú karakterláncot egy megadott kitöltési karakter használatával.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str PadRight(str string, num length, str padCharacter)`
 
-* string: a pad karakterlánca.
-* hossza Egy egész szám, amely a kívánt hosszúságú karakterláncot jelöli.
-* padCharacter: A pad karakterként használandó egyetlen karakterből álló sztring
+* string: a pad karakterlánc.
+* hossz: Egész szám, amely a karakterlánc kívánt hosszát jelöli.
+* padCharacter: A pad karakterként használandó egyetlen karakterből álló karakterlánc
 
-**Megjegyzéseket tartalmazó**
+**Megjegyzések:**
 
-* Ha a karakterlánc hossza kisebb a hosszúságnál, akkor a rendszer ismételten hozzáfűzi a padCharacter a karakterlánc végéhez (jobbra), amíg a hossza nem egyenlő hosszúságú.
-* a padCharacter lehet szóköz karakter, de nem lehet null értékű.
-* Ha a karakterlánc hossza egyenlő vagy nagyobb, mint a hossz, a karakterláncot a rendszer változatlanul adja vissza.
-* Ha a karakterlánc hossza nagyobb vagy egyenlő, akkor a rendszer a karakterlánctal megegyező karakterláncot adja vissza.
-* Ha a karakterlánc hossza kisebb a hosszúságnál, a rendszer a kívánt hosszúságú karakterláncot adja vissza, amely egy padCharacter rendelkező Sztringet tartalmaz.
+* Ha a karakterlánc hossza kisebb, mint a hossza, akkor a padCharacter a karakterlánc végéhez (jobbra) többször hozzáfűzi, amíg a hossza meg nem egyezik.
+* A padCharacter szóközkarakter lehet, de nem lehet null érték.
+* Ha a karakterlánc hossza egyenlő vagy annál nagyobb, a karakterlánc változatlanul lesz visszaadva.
+* Ha a karakterlánc hossza hosszabb vagy egyenlő, akkor a karakterlánccal azonos karakterláncot ad vissza.
+* Ha a karakterlánc hossza rövidebb, akkor a rendszer egy új, a kívánt hosszúságú karakterláncot ad vissza, amely egy padKarakterkarakterrel bélelt karakterláncot tartalmaz.
 * Ha a karakterlánc null értékű, a függvény üres karakterláncot ad vissza.
 
 **Példa:**  
@@ -1028,173 +1028,173 @@ A "User000000" értéket adja vissza.
 ---
 ### <a name="pcase"></a>PCase
 **Leírás:**  
-A PCase függvény minden szóközzel tagolt szó első karakterét átalakítja a karakterláncból a nagybetűvé, és az összes többi karakter is kisbetűvé vált.
+A PCase függvény a karakterláncban lévő szóközök első karakterét nagybetűssé alakítja, a többi karaktert pedig kisbetűssé alakítja.
 
-**Szintaxis**  
+**Szintaxis:**  
 `String PCase(string)`
 
-**Megjegyzéseket tartalmazó**
+**Megjegyzések:**
 
-* Ez a függvény jelenleg nem biztosít megfelelő burkolatot egy teljesen nagybetűvel, például egy betűszóval rendelkező szó átalakításához.
+* Ez a funkció jelenleg nem biztosít megfelelő burkolatot egy teljesen nagybetűs szó, például egy betűszó konvertálásához.
 
 **Példa:**  
 `PCase("TEsT")`  
-A "test" értéket adja vissza.
+A "Teszt" értéket adja eredményül.
 
 `PCase(LCase("TEST"))`  
-A "teszt" értéket adja vissza.
+"Teszt" értéket ad eredményül.
 
 ---
-### <a name="randomnum"></a>RandomNum
+### <a name="randomnum"></a>Véletlen
 **Leírás:**  
-A RandomNum függvény egy véletlenszerű számot ad vissza egy megadott intervallum között.
+A RandomNum függvény egy megadott intervallum közötti véletlen számot ad eredményül.
 
-**Szintaxis**  
+**Szintaxis:**  
 `num RandomNum(num start, num end)`
 
-* indítás: a generált véletlenszerű érték alsó határértékét azonosító szám
-* End: a generált véletlenszerű érték felső korlátját azonosító szám
+* start: egy szám, amely azonosítja a véletlenszerű érték alsó határát, hogy
+* végén: egy szám, amely azonosítja a véletlenszerű érték felső határát, hogy
 
 **Példa:**  
 `Random(100,999)`  
-734 értéket adhat vissza.
+Visszajöhet 734-re.
 
 ---
-### <a name="removeduplicates"></a>RemoveDuplicates
+### <a name="removeduplicates"></a>Másolateltávolítása
 **Leírás:**  
-A RemoveDuplicates függvény többértékű karakterláncot használ, és minden érték egyedi.
+A RemoveDuplicates függvény egy többértékű karakterláncot vesz fel, és győződjön meg arról, hogy minden érték egyedi.
 
-**Szintaxis**  
+**Szintaxis:**  
 `mvstr RemoveDuplicates(mvstr attribute)`
 
 **Példa:**  
 `RemoveDuplicates([proxyAddresses])`  
-Egy megtisztított proxyAddress attribútumot ad vissza, amelyben az összes duplikált érték el lett távolítva.
+Egy fertőtlenített proxyAddress attribútumot ad vissza, amelyben az összes ismétlődő értéket eltávolították.
 
 ---
 ### <a name="replace"></a>Csere
 **Leírás:**  
-A Replace függvény egy sztring összes előfordulását lecseréli egy másik karakterláncra.
+A Csere függvény egy karakterlánc összes előfordulását egy másik karakterláncra cseréli.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str Replace(str string, str OldValue, str NewValue)`
 
-* karakterlánc Egy karakterlánc, amely értékeket cserél a alkalmazásban.
-* OldValue: A keresendő és lecserélni kívánt karakterlánc.
-* NewValue A helyére felváltott karakterlánc.
+* karakterlánc: Értékeket lecserélő karakterlánc.
+* OldValue: A kereséséshelyettesítő karakterlánc.
+* NewValue: Az a karakterlánc, amelynek a karakterláncát le kell cserélni.
 
-**Megjegyzéseket tartalmazó**  
+**Megjegyzések:**  
 A függvény a következő speciális monikereket ismeri fel:
 
-* \n – új sor
-* \r – kocsivissza
-* \t – lap
+* \n – Új sor
+* \r – Fuvarkocsi-visszaadás
+* \t – Lap
 
 **Példa:**  
 `Replace([address],"\r\n",", ")`  
-Lecseréli a CRLF vesszővel és szóközzel, és "egy Microsoft Way, Redmond, WA, USA"-t eredményezhet
+A CRLF helyére vesszőt és helyet helyez el, és ez a "One Microsoft Way, Redmond, WA, USA" kifejezéshez vezethet.
 
 ---
-### <a name="replacechars"></a>ReplaceChars
+### <a name="replacechars"></a>Helyettesítő karakter
 **Leírás:**  
-A ReplaceChars függvény lecseréli a ReplacePattern karakterláncban található összes karakter előfordulását.
+A ReplaceChars függvény a ReplacePattern karakterláncban található karakterek összes előfordulását felülírja.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str ReplaceChars(str string, str ReplacePattern)`
 
-* karakterlánc Karakterlánc, amely a karaktereit váltja fel.
-* ReplacePattern: olyan karakterlánc, amely a lecserélni kívánt karaktereket tartalmazó szótárat tartalmaz.
+* karakterlánc: Karaktereket lecserélő karakterlánc.
+* ReplacePattern: szótárt tartalmazó karakterlánc, amelynek karaktereit le kell cserélni.
 
-A formátum a következő: {source1}: {target1}, {source2}: {TARGET2}, {sourceN}, {targetN}, ahol a forrás az a karakter, amely a helyére írja a karakterláncot.
+A formátum {source1}:{target1},{source2}:{target2},{sourceN},{targetN} ahol a forrás az a karakter, amelyet meg kell találni, és meg kell céloznia azt a karakterláncot, amelyet cserélni kell.
 
-**Megjegyzéseket tartalmazó**
+**Megjegyzések:**
 
-* A függvény a definiált források minden előfordulását végrehajtja, és azokat a célokkal helyettesíti.
-* A forrásnak pontosan egy (Unicode) karakternek kell lennie.
-* A forrás nem lehet üres vagy hosszabb egy karakternél (elemzési hiba).
-* A cél több karakterből állhat, például √: OE, β: SS.
-* A cél üres is lehet, ami azt jelzi, hogy a karaktert el kell távolítani.
-* A forrás megkülönbözteti a kis-és nagybetűket, és pontosan egyeznie kell.
-* A (z), (vessző) és a: (kettőspont) foglalt karakter, ezért ez a függvény nem cserélhető le.
-* A rendszer figyelmen kívül hagyja a szóközöket és más fehér karaktereket a ReplacePattern karakterláncban.
+* A függvény a definiált források minden előfordulását, és lecseréli őket a célokat.
+* A forrásnak pontosan egy (unicode) karakternek kell lennie.
+* A forrás nem lehet üres vagy egy karakternél hosszabb (elemzési hiba).
+* A cél több karaktert is tartalmazhat, például ö:oe, β:ss.
+* A cél üres lehet, jelezve, hogy a karaktert el kell távolítani.
+* A forrás nak a kis- és nagybetűket kell figyelembe vennie, és pontosegyezésnek kell lennie.
+* A , (vessző) és : (kettőspont) fenntartott karakterek, és ezzel a függvénnyel nem cserélhetők le.
+* A ReplacePattern karakterlánc szóközeit és egyéb fehér karaktereit a rendszer figyelmen kívül hagyja.
 
 **Példa:**  
 `%ReplaceString% = ’:,Å:A,Ä:A,Ö:O,å:a,ä:a,ö,o`
 
 `ReplaceChars("Räksmörgås",%ReplaceString%)`  
-Raksmorgas visszaadása
+Visszaadja a Raksmorgas értékét
 
 `ReplaceChars("O’Neil",%ReplaceString%)`  
-A "ONeil" értéket adja vissza, az egyetlen kullancsot a rendszer eltávolítja.
+Az "ONeil" értéket adja vissza, az egyes kullancsot el kell távolítani.
 
 ---
-### <a name="right"></a>Jobb oldali
+### <a name="right"></a>Jobb
 **Leírás:**  
-A RIGHT függvény egy karakterlánc jobb oldali (záró) karakterét adja vissza megadott számú karakterből.
+A Jobb oldali függvény egy karakterlánc jobb oldaláról (végén) megadott számú karaktert ad eredményül.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str Right(str string, num NumChars)`
 
-* string: az a karakterlánc, amelyből karaktereket kell visszaadni
-* NumChars: a karakterlánc végétől (jobbra) visszaadni kívánt karakterek számának azonosítása.
+* karakterlánc: az a karakterlánc, amelyből a karaktereket ad vissza
+* NumChars: a karakterlánc végéről (jobbra) visszaadandó karakterek számát azonosító szám
 
-**Megjegyzéseket tartalmazó**  
-A NumChars karaktereket a rendszer a karakterlánc utolsó helyén adja vissza.
+**Megjegyzések:**  
+A NumChars karakterek et a karakterlánc utolsó pozíciójából adja vissza a rendszer.
 
-A karakterlánc utolsó numChars karaktert tartalmazó karakterlánc:
+Karakterlánc utolsó numChars karakterét tartalmazó karakterlánc:
 
-* Ha a numChars = 0, üres karakterláncot ad vissza.
-* Ha a numChars < 0 értéket, adja vissza a bemeneti karakterláncot.
+* Ha numChars = 0, üres karakterláncot ad vissza.
+* Ha a numChars < 0, adja vissza a bemeneti karakterláncot.
 * Ha a karakterlánc null értékű, üres karakterláncot ad vissza.
 
-Ha a karakterlánc a NumChars megadott számnál kevesebb karaktert tartalmaz, a rendszer a karakterlánctal megegyező karakterláncot adja vissza.
+Ha a karakterlánc kevesebb karaktert tartalmaz, mint a NumChars-ban megadott szám, akkor a karakterlánccal azonos karakterláncot ad vissza.
 
 **Példa:**  
 `Right("John Doe", 3)`  
-A "DOE" értéket adja vissza.
+Eredménye "Doe".
 
 ---
-### <a name="rtrim"></a>RTrim
+### <a name="rtrim"></a>RTrim között
 **Leírás:**  
-A RTrim függvény eltávolítja a szóközöket a sztringből.
+Az RTrim függvény eltávolítja a záró fehér szóközöket a karakterláncból.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str RTrim(str value)`
 
 **Példa:**  
 `RTrim(" Test ")`  
-A "test" értéket adja vissza.
+Eredmény: "Teszt".
 
 ---
-### <a name="select"></a>Kiválasztás
+### <a name="select"></a>Válassza ezt:
 **Leírás:**  
-Egy többértékű attribútum (vagy egy kifejezés kimenete) összes értékének feldolgozása a megadott függvény alapján.
+Az összes érték feldolgozása egy többértékű attribútumban (vagy egy kifejezés kimenetében) a megadott függvény alapján.
 
-**Szintaxis**  
+**Szintaxis:**  
 `mvattr Select(variable item, mvattr attribute, func function)`  
 `mvattr Select(variable item, exp expression, func function)`
 
-* elem Egy elemet jelöl a többértékű attribútumban.
+* elem: A többértékű attribútum egy elemét jelöli
 * attribútum: a többértékű attribútum
-* kifejezés: értékek gyűjteményét visszaadó kifejezés
-* feltétel: bármely olyan függvény, amely képes feldolgozni az attribútum egy tételét
+* kifejezés: értékgyűjteményt visszaadó kifejezés
+* feltétel: minden olyan funkció, amely képes feldolgozni egy elemet az attribútumban
 
 **Példák:**  
 `Select($item,[otherPhone],Replace($item,"-",""))`  
-A többszörös értékű attribútum otherPhone összes értékének visszaadása a kötőjelek (-) után.
+Adja vissza az összes értéket a többértékű attribútum otherPhone után kötőjelek (-) eltávolították.
 
 ---
-### <a name="split"></a>Megosztott
+### <a name="split"></a>Felosztás
 **Leírás:**  
-A Split függvény egy karakterláncot választ el egy elválasztóval, és többértékű karakterláncot tesz lehetővé.
+A Split függvény egy határolóval elválasztott karakterláncot vesz fel, és többértékű karakterláncot tesz leendővé.
 
-**Szintaxis**  
+**Szintaxis:**  
 `mvstr Split(str value, str delimiter)`  
 `mvstr Split(str value, str delimiter, num limit)`
 
-* érték: a karakterlánc, amely elválasztó karakterből áll.
-* elválasztó: a határolójelként használandó egyetlen karakter.
-* korlát: a visszaadható értékek maximális száma.
+* érték: a elválasztó karakterrel rendelkező karakterlánc.
+* határoló: egyetlen karakter, amelyet határolójelként kell használni.
+* limit: a visszaadható értékek maximális száma.
 
 **Példa:**  
 `Split("SMTP:john.doe@contoso.com,smtp:jd@contoso.com",",")`  
@@ -1203,139 +1203,139 @@ Egy többértékű karakterláncot ad vissza, amelynek 2 eleme hasznos a proxyAd
 ---
 ### <a name="stringfromguid"></a>StringFromGuid
 **Leírás:**  
-A StringFromGuid függvény bináris GUID-azonosítót használ, és átalakítja karakterlánccá
+A StringFromGuid függvény bináris GUID azonosítót vesz fel, és karakterláncgá alakítja
 
-**Szintaxis**  
+**Szintaxis:**  
 `str StringFromGuid(bin GUID)`
 
 ---
-### <a name="stringfromsid"></a>StringFromSid
+### <a name="stringfromsid"></a>Karakterláncszisid
 **Leírás:**  
-A StringFromSid függvény egy olyan byte tömböt alakít át, amely biztonsági azonosítót tartalmaz egy karakterláncra.
+A StringFromSid függvény egy biztonsági azonosítót tartalmazó bájttömböt konvertál karakterláncsá.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str StringFromSid(bin ObjectSID)`  
 
 ---
 ### <a name="switch"></a>Kapcsoló
 **Leírás:**  
-A Switch függvény egyetlen érték visszaadására szolgál a kiértékelt feltételek alapján.
+A Switch függvény egyetlen értéket ad vissza a kiértékelt feltételek alapján.
 
-**Szintaxis**  
+**Szintaxis:**  
 `var Switch(exp expr1, var value1[, exp expr2, var value … [, exp expr, var valueN]])`
 
-* kifejezés A kiértékelni kívánt Variant kifejezés.
-* érték A visszaadott érték, ha a megfelelő kifejezés igaz.
+* kifejezés: A kiértékelni kívánt variant kifejezés.
+* érték: Visszaadandó érték, ha a megfelelő kifejezés Igaz.
 
-**Megjegyzéseket tartalmazó**  
-A Switch függvény argumentumok listája kifejezésből és értékből álló párokat tartalmaz. A kifejezések kiértékelése balról jobbra történik, és az első kifejezéshez társított érték igaz értéket ad vissza. Ha a részek nem megfelelően vannak párosítva, futásidejű hiba történik.
+**Megjegyzések:**  
+A Kapcsoló függvény argumentumlistája kifejezések és értékek párjaiból áll. A kifejezések kiértékelése balról jobbra történik, és az első kiértékelendő kifejezéshez tartozó értéket a d. Ha az alkatrészek nincsenek megfelelően párosítva, futásidejű hiba lép fel.
 
-Ha például a Kif1 értéke igaz, a Switch visszaadja a érték1 értéket. Ha a kifejezés-1 hamis, de a kifejezés-2 értéke igaz, a switch a-2 értéket adja vissza, és így tovább.
+Ha például a Kif1 értéke Igaz, akkor a Switch függvény az értéket1 adja vissza. Ha az expr-1 értéke Hamis, de az expr-2 értéke Igaz, akkor a Switch értéke 2, és így tovább.
 
-A kapcsoló a következőket adja vissza:
+A Kapcsoló a Semmi értéket adja vissza, ha:
 
-* A kifejezések egyike sem igaz.
-* Az első True kifejezésnek van egy NULL értékű megfelelő értéke.
+* Egyik kifejezés sem igaz.
+* Az első Igaz kifejezés megfelelő értéke Null.
 
-A kapcsoló kiértékeli az összes kifejezést, annak ellenére, hogy csak az egyiket adja vissza. Emiatt érdemes figyelni a nemkívánatos mellékhatásokat. Ha például egy kifejezés kiértékelése nullával történő osztást eredményez, hiba történik.
+A Switch kiértékeli az összes kifejezést, még akkor is, ha csak az egyiket adja vissza. Emiatt meg kell nézni a nemkívánatos mellékhatásokat. Ha például bármely kifejezés kiértékelése nulla hibával történő osztást eredményez, hiba történik.
 
-Az érték lehet a Error függvény is, amely egyéni karakterláncot ad vissza.
+Az érték lehet az Error függvény is, amely egyéni karakterláncot ad vissza.
 
 **Példa:**  
 `Switch([city] = "London", "English", [city] = "Rome", "Italian", [city] = "Paris", "French", True, Error("Unknown city"))`  
-Az egyes főbb városokban beszélt nyelvet adja vissza, ellenkező esetben hibát ad vissza.
+Egyes nagyobb városokban beszélt nyelvet ad eredményül, ellenkező esetben hibát ad vissza.
 
 ---
-### <a name="trim"></a>Levágás
+### <a name="trim"></a>Trim
 **Leírás:**  
-A Trim függvény eltávolítja a kezdő és záró szóközöket egy karakterláncból.
+A Vágás funkció eltávolítja a kezdő és záró fehér szóközöket a karakterláncból.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str Trim(str value)`  
 
 **Példa:**  
 `Trim(" Test ")`  
-A "test" értéket adja vissza.
+A "Teszt" értéket adja eredményül.
 
 `Trim([proxyAddresses])`  
-Eltávolítja a kezdő és záró szóközöket a proxyAddress attribútum minden értékéhez.
+Eltávolítja a proxyAddress attribútum egyes értékeinek kezdő és záró szóközeit.
 
 ---
-### <a name="ucase"></a>UCase
+### <a name="ucase"></a>Ucase
 **Leírás:**  
-A UCase függvény a sztring összes karakterét nagybetűvé alakítja.
+A UCase függvény a karakterlánc összes karakterét nagybetűssé alakítja.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str UCase(str string)`
 
 **Példa:**  
 `UCase("TeSt")`  
-A "TEST" értéket adja vissza.
+Eredményül "TESZT".
 
 ---
-### <a name="where"></a>Ahol (a(z)
+### <a name="where"></a>Ahol
 
 **Leírás:**  
-Egy többértékű attribútum (vagy egy kifejezés kimenete) értékének egy részhalmazát adja vissza adott feltétel alapján.
+Értékek egy részét adja vissza egy többértékű attribútumból (vagy egy kifejezés kimenetéből) egy adott feltétel alapján.
 
-**Szintaxis**  
+**Szintaxis:**  
 `mvattr Where(variable item, mvattr attribute, exp condition)`  
 `mvattr Where(variable item, exp expression, exp condition)`  
-* elem Egy elemet jelöl a többértékű attribútumban.
+* elem: A többértékű attribútum egy elemét jelöli
 * attribútum: a többértékű attribútum
-* feltétel: bármely kifejezés, amelynek kiértékelése igaz vagy hamis lehet
-* kifejezés: értékek gyűjteményét visszaadó kifejezés
+* feltétel: bármely kifejezés, amely igaz vagy hamis
+* kifejezés: értékgyűjteményt visszaadó kifejezés
 
 **Példa:**  
 `Where($item,[userCertificate],CertNotAfter($item)>Now())`  
-A nem elévült többértékű attribútum userCertificate visszaadása.
+Adja vissza a tanúsítvány értékeit a többértékű attribútum userCertificate, amelyek nem jártak le.
 
 ---
-### <a name="with"></a>A következővel:
+### <a name="with"></a>With
 **Leírás:**  
-A with függvény lehetővé teszi egy összetett kifejezés egyszerűsítését egy változó használatával, amely egy vagy több időpontot jelenít meg a komplex kifejezésben.
+A With függvény lehetővé teszi az összetett kifejezések egyszerűsítését egy változó használatával egy olyan alkifejezés ábrázolására, amely egy vagy több alkalommal jelenik meg az összetett kifejezésben.
 
-**Szintaxis**
+**Szintaxis:**
 `With(var variable, exp subExpression, exp complexExpression)`  
-* változó Az alkifejezést jelöli.
-* alkifejezés: a változó által jelölt alkifejezés.
+* változó: Az alkifejezést jelöli.
+* alkifejezés: változóval ábrázolt alkifejezés.
 * complexExpression: Összetett kifejezés.
 
 **Példa:**  
 `With($unExpiredCerts,Where($item,[userCertificate],CertNotAfter($item)>Now()),IIF(Count($unExpiredCerts)>0,$unExpiredCerts,NULL))`  
-Funkcionálisan egyenértékű a következővel:  
+Funkcionálisan egyenértékű a következőkkal:  
 `IIF (Count(Where($item,[userCertificate],CertNotAfter($item)>Now()))>0, Where($item,[userCertificate],CertNotAfter($item)>Now()),NULL)`  
-Amely csak a nem lejárt tanúsítvány-értékeket adja vissza a userCertificate attribútumban.
+Amely csak a userCertificate attribútumban le nem járt tanúsítványértékeket ad vissza.
 
 
 ---
 ### <a name="word"></a>Word
 **Leírás:**  
-A Word függvény egy karakterláncon belül található szót ad vissza, amely a használni kívánt határolójeleket és a visszaadni kívánt szó paramétereit írja le.
+A Word függvény egy karakterláncban lévő szót ad vissza a használandó határolókat és a visszaadandó szószámot leíró paraméterek alapján.
 
-**Szintaxis**  
+**Szintaxis:**  
 `str Word(str string, num WordNumber, str delimiters)`
 
-* string: az a karakterlánc, amelyből a szót vissza kell adni.
-* WordNumber: az a szám, amelyből a szót vissza kell adni.
-* határolójelek: a szavak azonosítására szolgáló elválasztó karakter (eke) t jelölő sztring
+* karakterlánc: az a karakterlánc, amelyből egy szót vissza kell adni.
+* WordNumber: egy szám, amely meghatározza, hogy melyik szószámot kell visszaadni.
+* határolók: a határolójel(ek)et jelölő karakterlánc, amelyet a szavak azonosítására kell használni
 
-**Megjegyzéseket tartalmazó**  
-A rendszer az elválasztó karakterek egyikével elválasztott karakterláncban szereplő összes karakterláncot szavakként azonosítja:
+**Megjegyzések:**  
+A határolójelek ben lévő karakterek egyikével elválasztott karakterlánc-karakterláncokat a következő szavakként azonosítják:
 
 * Ha a szám < 1, üres karakterláncot ad vissza.
-* Ha a sztring null, üres karakterláncot ad vissza.
+* Ha a karakterlánc null értékű, üres karakterláncot ad vissza.
 
-Ha a karakterlánc kevesebb, mint szám szót tartalmaz, vagy a sztring nem tartalmaz határolójelekkel azonosított szavakat, akkor a rendszer üres karakterláncot ad vissza.
+Ha a karakterlánc kevesebb, mint számszavakat tartalmaz, vagy a karakterlánc nem tartalmaz határolószavakat, a program üres karakterláncot ad vissza.
 
 **Példa:**  
 `Word("The quick brown fox",3," ")`  
-A "barna" értéket adja vissza.
+"Barna" értéket ad eredményül.
 
 `Word("This,string!has&many separators",3,",!&#")`  
-Visszatérési érték: "has"
+Visszatérne "van"
 
 ## <a name="additional-resources"></a>További források
-* [A deklaratív kiépítési kifejezések ismertetése](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)
-* [Azure AD Connect szinkronizálás: Szinkronizálási beállítások testreszabása](how-to-connect-sync-whatis.md)
+* [A deklaratív üzembe helyezési kifejezések ismertetése](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)
+* [Azure AD Connect Sync: Szinkronizálási beállítások testreszabása](how-to-connect-sync-whatis.md)
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)

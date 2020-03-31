@@ -1,38 +1,38 @@
 ---
-title: Apache Spark-feladatok futtatása az Azure Kubernetes szolgáltatással (ak)
-description: Apache Spark feladatok futtatása az Azure Kubernetes Service (ak) használatával
+title: Apache Spark-feladat futtatása az Azure Kubernetes szolgáltatással (AKS)
+description: Apache Spark-feladat futtatásához használja az Azure Kubernetes-szolgáltatást (AKS)
 author: lenadroid
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 7465f8eb4357fcb6faa1d0fee0173837b6cb019b
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 4b3248cb9ab61a158f70b5a2d6ae9dd846501816
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77593649"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473625"
 ---
-# <a name="running-apache-spark-jobs-on-aks"></a>Apache Spark feladatok futtatása az AK-on
+# <a name="running-apache-spark-jobs-on-aks"></a>Apache Spark-feladatok futtatása Az AKS-en
 
-A [Apache Spark][apache-spark] egy gyors motor a nagy léptékű adatfeldolgozáshoz. A [Spark 2.3.0-kiadástól][spark-latest-release]kezdve a Apache Spark támogatja a Kubernetes-fürtökkel való natív integrációt. Az Azure Kubernetes Service (ak) az Azure-ban futó felügyelt Kubernetes-környezet. Ez a dokumentum részletesen ismerteti Apache Spark feladatok Azure Kubernetes Service-(ak-) fürtön történő előkészítését és futtatását.
+[Az Apache Spark][apache-spark] gyors motor a nagyléptékű adatfeldolgozáshoz. A [Spark 2.3.0 kiadása][spark-latest-release]szerint az Apache Spark támogatja a Kubernetes-fürtökkel való natív integrációt. Az Azure Kubernetes-szolgáltatás (AKS) egy felügyelt Kubernetes-környezet, amely az Azure-ban fut. Ez a dokumentum részletezi az Apache Spark-feladatok előkészítését és futtatását egy Azure Kubernetes-szolgáltatás (AKS) fürtön.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikkben szereplő lépések végrehajtásához a következőkre lesz szüksége.
+A cikkben szereplő lépések végrehajtásához a következőkre van szükség.
 
-* A Kubernetes és a [Apache Spark][spark-quickstart]alapszintű ismerete.
-* [Docker hub][docker-hub] -fiók vagy egy [Azure Container Registry][acr-create].
+* A Kubernetes és az [Apache Spark][spark-quickstart]alapvető megértése.
+* [Docker Hub-fiók][docker-hub] vagy egy [Azure Container Registry.][acr-create]
 * Az Azure CLI [telepítve van][azure-cli] a fejlesztői rendszeren.
-* A [JDK 8][java-install] telepítve van a rendszeren.
-* A SBT ([Scala Build eszköz][sbt-install]) telepítve van a rendszeren.
-* A rendszerre telepített git parancssori eszközök.
+* [JDK 8][java-install] telepítve van a rendszerre.
+* SBT ([Scala Build Tool][sbt-install]) telepítve van a rendszerre.
+* Git parancssori eszközök telepítve a rendszerre.
 
 ## <a name="create-an-aks-cluster"></a>AKS-fürt létrehozása
 
-A Spark nagyméretű adatfeldolgozásra szolgál, és megköveteli, hogy a Kubernetes-csomópontok megfeleljenek a Spark-erőforrások követelményeinek. Javasoljuk, hogy az Azure Kubernetes-szolgáltatás (ak) csomópontjaihoz `Standard_D3_v2` minimális méretet adja meg.
+A Spark nagyméretű adatfeldolgozáshoz használatos, és megköveteli, hogy a Kubernetes-csomópontok méretezése megfeleljen a Spark-erőforrások követelményeinek. Azt javasoljuk, hogy `Standard_D3_v2` az Azure Kubernetes-szolgáltatás (AKS) csomópontjainak minimális mérete.
 
-Ha olyan AK-fürtre van szüksége, amely megfelel ennek a minimális javaslatnak, futtassa a következő parancsokat.
+Ha olyan AKS-fürtre van szüksége, amely megfelel ennek a minimális javaslatnak, futtassa a következő parancsokat.
 
 Hozzon létre egy erőforráscsoportot a fürthöz.
 
@@ -40,56 +40,56 @@ Hozzon létre egy erőforráscsoportot a fürthöz.
 az group create --name mySparkCluster --location eastus
 ```
 
-Hozzon létre egy egyszerű szolgáltatásnevet a fürthöz. A létrehozást követően szüksége lesz a következő parancs egyszerű appId és jelszavára.
+Hozzon létre egy egyszerű szolgáltatás a fürthöz. Létrehozása után a szolgáltatás egyszerű alkalmazásazonosítóés jelszó a következő parancs.
 
 ```azurecli
 az ad sp create-for-rbac --name SparkSP
 ```
 
-Hozza létre az AK-fürtöt `Standard_D3_v2`méretű csomópontokkal, valamint a appId és a jelszó értékeit a szolgáltatás-elsődleges és az ügyfél-titkos paraméterekként.
+Hozza létre az AKS-fürtet méretű `Standard_D3_v2`csomópontokkal, valamint az alkalmazásazonosító és a jelszó egyszerű és ügyféltitkos paraméterekként átadott értékeivel.
 
 ```azurecli
 az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-size Standard_D3_v2 --generate-ssh-keys --service-principal <APPID> --client-secret <PASSWORD>
 ```
 
-Kapcsolódjon az AK-fürthöz.
+Csatlakozzon az AKS-fürthöz.
 
 ```azurecli
 az aks get-credentials --resource-group mySparkCluster --name mySparkCluster
 ```
 
-Ha Azure Container Registryt (ACR) használ a tárolók lemezképének tárolására, konfigurálja az AK és az ACR közötti hitelesítést. Tekintse meg ezeket a lépéseket az [ACR hitelesítési dokumentációjában][acr-aks] .
+Ha az Azure Container Registry (ACR) tárolórendszerképek tárolására, konfigurálja a hitelesítést az AKS és az ACR között. Ezekről a lépésekről az [ACR-hitelesítési dokumentációban][acr-aks] olvashat.
 
 ## <a name="build-the-spark-source"></a>A Spark-forrás létrehozása
 
-Mielőtt a Spark-feladatokat egy AK-fürtön futtatja, létre kell hoznia a Spark forráskódját, és be kell csomagolnia egy tároló-rendszerképbe. A Spark-forrás olyan parancsfájlokat tartalmaz, amelyek a folyamat végrehajtásához használhatók.
+Spark-feladatok futtatása előtt egy AKS-fürtön, létre kell készítenie a Spark forráskódját, és csomagolja be egy tárolórendszerképbe. A Spark-forrás parancsfájlokat tartalmaz, amelyek a folyamat végrehajtásához használható.
 
-A Spark Project-tárház klónozása a fejlesztői rendszeren.
+Klónozza a Spark projekttárházat a fejlesztési rendszerbe.
 
 ```bash
 git clone -b branch-2.4 https://github.com/apache/spark
 ```
 
-Váltson át a klónozott tárház könyvtárára, és mentse a Spark forrásának elérési útját egy változóra.
+Módosítsa a klónozott tárház könyvtárába, és mentse a Spark-forrás elérési útját egy változóba.
 
 ```bash
 cd spark
 sparkdir=$(pwd)
 ```
 
-Ha több JDK-verzió is van telepítve, állítsa be `JAVA_HOME` az aktuális munkamenet 8-as verziójának használatára.
+Ha több JDK-verzió van `JAVA_HOME` telepítve, állítsa be a 8-as verziót az aktuális munkamenethez.
 
 ```bash
 export JAVA_HOME=`/usr/libexec/java_home -d 64 -v "1.8*"`
 ```
 
-Futtassa a következő parancsot a Spark forráskódjának Kubernetes-támogatással történő létrehozásához.
+Futtassa a következő parancsot a Spark forráskód kubernetes támogatással való létrehozásához.
 
 ```bash
 ./build/mvn -Pkubernetes -DskipTests clean package
 ```
 
-A következő parancsok létrehozzák a Spark-tároló rendszerképét, és leküldik azt egy tároló-rendszerkép beállításjegyzékbe. Cserélje le a `registry.example.com`t a tároló-beállításjegyzék nevére, és `v1` a használni kívánt címkével. Ha a Docker hub-t használja, ez az érték a beállításjegyzék neve. Azure Container Registry (ACR) használata esetén ez az érték az ACR bejelentkezési kiszolgáló neve.
+A következő parancsok létre hozzák a Spark-tároló lemezképét, és lelökik egy tárolórendszerkép-beállításjegyzékbe. Cserélje `registry.example.com` le a tároló beállításjegyzékének nevét és `v1` a használni kívánt címkét. Docker Hub használata esetén ez az érték a rendszerleíró adatbázis neve. Ha az Azure Container Registry (ACR) használatával, ez az érték az ACR bejelentkezési kiszolgáló neve.
 
 ```bash
 REGISTRY_NAME=registry.example.com
@@ -100,17 +100,17 @@ REGISTRY_TAG=v1
 ./bin/docker-image-tool.sh -r $REGISTRY_NAME -t $REGISTRY_TAG build
 ```
 
-Küldje le a tároló rendszerképét a tároló rendszerképének beállításjegyzékbe.
+Nyomja le a tárolólemezképet a tárolórendszerkép-beállításjegyzékbe.
 
 ```bash
 ./bin/docker-image-tool.sh -r $REGISTRY_NAME -t $REGISTRY_TAG push
 ```
 
-## <a name="prepare-a-spark-job"></a>Spark-feladatok előkészítése
+## <a name="prepare-a-spark-job"></a>Spark-feladat előkészítése
 
-Következő lépésként készítse elő a Spark-feladatot. A Spark-feladatok tárolásához jar-fájl szükséges, és a `spark-submit` parancs futtatásakor van szükség. A jar nyilvános URL-címen vagy egy tároló-rendszerképben előre becsomagolva is elérhetővé tehető. Ebben a példában egy minta jar jön létre a PI érték kiszámításához. Ezt a jar-t ezután feltölti az Azure Storage-ba. Ha van egy meglévő jar, a helyettesítő
+Ezután készítsen elő egy Spark-feladatot. A jar fájl tárolására használt Spark feladat, `spark-submit` és szükség van a parancs futtatásakor. Az edény nyilvános URL-en keresztül vagy egy tárolórendszerképben előre csomagolt elérhetővé tehető. Ebben a példában egy mintaedény jön létre a Pi értékének kiszámításához. Ezt a jart ezután feltölti az Azure storage.This jar is then uploaded to Azure storage. Ha van egy meglévő jar, nyugodtan helyettesítheti
 
-Hozzon létre egy könyvtárat, amelyben létre szeretné hozni a projektet egy Spark-feladatokhoz.
+Hozzon létre egy könyvtárat, ahol létre szeretné hozni a projektet egy Spark-feladathoz.
 
 ```bash
 mkdir myprojects
@@ -123,26 +123,26 @@ Hozzon létre egy új Scala-projektet egy sablonból.
 sbt new sbt/scala-seed.g8
 ```
 
-Ha a rendszer kéri, adja meg `SparkPi` a projekt nevét.
+Amikor a rendszer `SparkPi` kéri, írja be a projekt nevét.
 
 ```bash
 name [Scala Seed Project]: SparkPi
 ```
 
-Navigáljon az újonnan létrehozott projekt könyvtárba.
+Nyissa meg az újonnan létrehozott projektkönyvtárat.
 
 ```bash
 cd sparkpi
 ```
 
-Futtassa az alábbi parancsokat egy SBT beépülő modul hozzáadásához, amely lehetővé teszi a projekt jar-fájlként való csomagolását.
+Futtassa a következő parancsokat egy SBT plugin hozzáadásához, amely lehetővé teszi a projekt jar fájlként való csomagolását.
 
 ```bash
 touch project/assembly.sbt
 echo 'addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.10")' >> project/assembly.sbt
 ```
 
-Futtassa ezeket a parancsokat a mintakód az újonnan létrehozott projektbe való másolásához, és adja hozzá az összes szükséges függőséget.
+Ezeket a parancsokat úgy futtathatja, hogy a mintakódot az újonnan létrehozott projektbe másolja, és adja hozzá az összes szükséges függőséget.
 
 ```bash
 EXAMPLESDIR="src/main/scala/org/apache/spark/examples"
@@ -158,13 +158,13 @@ sed -ie 's/scalaVersion.*/scalaVersion := "2.11.11"/' build.sbt
 sed -ie 's/name.*/name := "SparkPi",/' build.sbt
 ```
 
-A projekt Jarba való becsomagolásához futtassa a következő parancsot.
+Ha a projektet üvegbe szeretné csomagolni, futtassa a következő parancsot.
 
 ```bash
 sbt assembly
 ```
 
-A sikeres csomagolás után az alábbihoz hasonló kimenetnek kell megjelennie.
+A sikeres csomagolás után a következőhöz hasonló kimenetet kell látnia.
 
 ```bash
 [info] Packaging /Users/me/myprojects/sparkpi/target/scala-2.11/SparkPi-assembly-0.1.0-SNAPSHOT.jar ...
@@ -172,9 +172,9 @@ A sikeres csomagolás után az alábbihoz hasonló kimenetnek kell megjelennie.
 [success] Total time: 10 s, completed Mar 6, 2018 11:07:54 AM
 ```
 
-## <a name="copy-job-to-storage"></a>Másolási feladatok tárolóba
+## <a name="copy-job-to-storage"></a>Feladat másolása a tárolóba
 
-Hozzon létre egy Azure Storage-fiókot és-tárolót a jar-fájl tárolásához.
+Hozzon létre egy Azure-tárfiókot és tárolót a jar fájl tárolásához.
 
 ```azurecli
 RESOURCE_GROUP=sparkdemo
@@ -184,9 +184,9 @@ az storage account create --resource-group $RESOURCE_GROUP --name $STORAGE_ACCT 
 export AZURE_STORAGE_CONNECTION_STRING=`az storage account show-connection-string --resource-group $RESOURCE_GROUP --name $STORAGE_ACCT -o tsv`
 ```
 
-Töltse fel a jar-fájlt az Azure Storage-fiókba az alábbi parancsokkal.
+Töltse fel a jar fájlt az Azure storage-fiókba a következő parancsokkal.
 
-```bash
+```azurecli
 CONTAINER_NAME=jars
 BLOB_NAME=SparkPi-assembly-0.1.0-SNAPSHOT.jar
 FILE_TO_UPLOAD=target/scala-2.11/SparkPi-assembly-0.1.0-SNAPSHOT.jar
@@ -201,30 +201,30 @@ az storage blob upload --container-name $CONTAINER_NAME --file $FILE_TO_UPLOAD -
 jarUrl=$(az storage blob url --container-name $CONTAINER_NAME --name $BLOB_NAME | tr -d '"')
 ```
 
-A `jarUrl` változó már tartalmazza a jar-fájl nyilvánosan elérhető elérési útját.
+A `jarUrl` változó mostantól a jar fájl nyilvánosan elérhető elérési útját tartalmazza.
 
-## <a name="submit-a-spark-job"></a>Spark-feladatok elküldése
+## <a name="submit-a-spark-job"></a>Spark-feladat beküldése
 
-Indítsa el a Kube-proxyt egy külön parancssorban a következő kóddal.
+Indítsa el a kube-proxyt egy külön parancssorban a következő kóddal.
 
 ```bash
 kubectl proxy
 ```
 
-Váltson vissza a Spark-tárház gyökerére.
+Keresse vissza a Spark-tárház gyökerét.
 
 ```bash
 cd $sparkdir
 ```
 
-Hozzon létre olyan szolgáltatásfiókot, amely megfelelő engedélyekkel rendelkezik a feladatok futtatásához.
+Hozzon létre egy szolgáltatásfiókot, amely rendelkezik a feladat futtatásához szükséges engedélyekkel.
 
 ```bash
 kubectl create serviceaccount spark
 kubectl create clusterrolebinding spark-role --clusterrole=edit --serviceaccount=default:spark --namespace=default
 ```
 
-Küldje el a feladatot `spark-submit`használatával.
+Küldje el `spark-submit`a feladatot a használatával.
 
 ```bash
 ./bin/spark-submit \
@@ -238,11 +238,13 @@ Küldje el a feladatot `spark-submit`használatával.
   $jarUrl
 ```
 
-Ez a művelet elindítja a Spark-feladatot, amely a feladatok állapotát a rendszerhéj-munkamenetbe továbbítja. A feladatok futtatása közben a Spark Driver Pod és a végrehajtó hüvelyek a kubectl Get hüvelyes paranccsal láthatók. Nyisson meg egy második terminál-munkamenetet a parancsok futtatásához.
+Ez a művelet elindítja a Spark-feladatot, amely streameli a feladat állapotát a rendszerhéj-munkamenetbe. A feladat futása közben láthatja a Spark-illesztőprogram-pod és a végrehajtó podok a kubectl get pods parancsot. A parancsok futtatásához nyisson meg egy második terminálmunkamenetet.
 
 ```console
-$ kubectl get pods
+kubectl get pods
+```
 
+```output
 NAME                                               READY     STATUS     RESTARTS   AGE
 spark-pi-2232778d0f663768ab27edc35cb73040-driver   1/1       Running    0          16s
 spark-pi-2232778d0f663768ab27edc35cb73040-exec-1   0/1       Init:0/1   0          4s
@@ -250,19 +252,19 @@ spark-pi-2232778d0f663768ab27edc35cb73040-exec-2   0/1       Init:0/1   0       
 spark-pi-2232778d0f663768ab27edc35cb73040-exec-3   0/1       Init:0/1   0          4s
 ```
 
-A feladatok futtatása közben a Spark felhasználói felületét is elérheti. A második terminál-munkamenetben használja a `kubectl port-forward` parancsot a Spark felhasználói felülethez való hozzáférés biztosítása érdekében.
+Afeladat futása közben is elérheti a Spark felhasználói felületét. A második terminál-munkamenetben `kubectl port-forward` használja a parancsot, amely hozzáférést biztosít a Spark felhasználói felületéhez.
 
 ```bash
 kubectl port-forward spark-pi-2232778d0f663768ab27edc35cb73040-driver 4040:4040
 ```
 
-A Spark felhasználói felületének eléréséhez nyissa meg a `127.0.0.1:4040` a böngészőben.
+A Spark felhasználói felületének `127.0.0.1:4040` eléréséhez nyissa meg a címet egy böngészőben.
 
-![Spark felhasználói felület](media/aks-spark-job/spark-ui.png)
+![Spark felhasználói felülete](media/aks-spark-job/spark-ui.png)
 
-## <a name="get-job-results-and-logs"></a>A feladatok eredményeinek és naplóinak beolvasása
+## <a name="get-job-results-and-logs"></a>Álláseredmények és naplók beszerezni
 
-A feladatoknak a befejezése után az illesztőprogram-Pod "befejezett" állapotban lesz. Szerezze be a pod nevét a következő paranccsal.
+A feladat befejezése után az illesztőprogram-pod "Befejezett" állapotban lesz. A pod nevének bekésezése a következő paranccsal.
 
 ```bash
 kubectl get pods --show-all
@@ -270,30 +272,30 @@ kubectl get pods --show-all
 
 Kimenet:
 
-```bash
+```output
 NAME                                               READY     STATUS      RESTARTS   AGE
 spark-pi-2232778d0f663768ab27edc35cb73040-driver   0/1       Completed   0          1m
 ```
 
-A `kubectl logs` parancs használatával lekérheti a naplókat a Spark Driver Pod-ból. Cserélje le a pod nevet az illesztőprogram-Pod nevére.
+Használja `kubectl logs` a parancsot a spark driver pod naplók beszerezhető. Cserélje le a pod nevét az illesztőprogram-pod nevére.
 
 ```bash
 kubectl logs spark-pi-2232778d0f663768ab27edc35cb73040-driver
 ```
 
-Ezen naplókon belül megtekintheti a Spark-feladatok eredményét, amely a PI értéke.
+Ezeken a naplókon belül láthatja a Spark-feladat eredményét, amely a Pi értéke.
 
-```bash
+```output
 Pi is roughly 3.152155760778804
 ```
 
-## <a name="package-jar-with-container-image"></a>Jar csomag tároló képpel
+## <a name="package-jar-with-container-image"></a>Csomag jar konténer kép
 
-A fenti példában a Spark jar-fájl fel lett töltve az Azure Storage-ba. Egy másik lehetőség, hogy a jar-fájlt egyéni kialakítású Docker-rendszerképekbe csomagolja.
+A fenti példában a Spark jar fájl feltöltve lett az Azure storage-ba. Egy másik lehetőség a jar fájl egyéni alapú Docker-lemezképekbe való csomagolása.
 
-Ehhez keresse meg a `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/` könyvtárban található Spark-rendszerkép `dockerfile`. Adja hozzá a Spark-feladatokhoz `jar` `ADD` utasítást a `WORKDIR` és `ENTRYPOINT` deklarációk között.
+Ehhez keresse meg `dockerfile` a `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/` címtárban található Spark-lemezképet. `ADD` Add am utasítást `jar` a `WORKDIR` Spark-feladat valahol a logárdák `ENTRYPOINT` között.
 
-Frissítse a jar elérési utat a `SparkPi-assembly-0.1.0-SNAPSHOT.jar` fájljának helyére a fejlesztői rendszeren. Használhatja a saját egyéni jar-fájlját is.
+Frissítse a jar elérési útját `SparkPi-assembly-0.1.0-SNAPSHOT.jar` a fájl helyére a fejlesztési rendszeren. Saját egyéni jar fájlt is használhat.
 
 ```bash
 WORKDIR /opt/spark/work-dir
@@ -303,14 +305,14 @@ ADD /path/to/SparkPi-assembly-0.1.0-SNAPSHOT.jar SparkPi-assembly-0.1.0-SNAPSHOT
 ENTRYPOINT [ "/opt/entrypoint.sh" ]
 ```
 
-Felépítheti és leküldheti a képet a mellékelt Spark-parancsfájlokkal.
+A rendszerképet a mellékelt Spark-parancsfájlokkal hozhatlétre létre és kell lelökni.
 
 ```bash
 ./bin/docker-image-tool.sh -r <your container repository name> -t <tag> build
 ./bin/docker-image-tool.sh -r <your container repository name> -t <tag> push
 ```
 
-A feladatok futtatásakor a távoli jar URL-cím helyett a `local://` séma használható a Docker-rendszerképben található jar-fájl elérési útjával.
+A feladat futtatásakor, ahelyett, hogy egy `local://` távoli jar URL-t, a séma használható a jar fájl elérési útját a Docker-lemezkép.
 
 ```bash
 ./bin/spark-submit \
@@ -325,14 +327,14 @@ A feladatok futtatásakor a távoli jar URL-cím helyett a `local://` séma hasz
 ```
 
 > [!WARNING]
-> A Spark [dokumentációjában][spark-docs]: "a Kubernetes Scheduler jelenleg kísérleti jellegű. A későbbi verziókban a konfiguráció, a tároló-lemezképek és a entrypoints viselkedési változásai lehetnek.
+> A Spark [dokumentáció:][spark-docs]"A Kubernetes ütemező jelenleg kísérleti. A későbbi verziókban viselkedésbeli változások lehetnek a konfiguráció, a tárolórendszerképek és a belépési pontok körül".
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További részletekért tekintse meg a Spark dokumentációját.
 
 > [!div class="nextstepaction"]
-> [A Spark dokumentációja][spark-docs]
+> [Spark dokumentáció][spark-docs]
 
 <!-- LINKS - external -->
 [apache-spark]: https://spark.apache.org/

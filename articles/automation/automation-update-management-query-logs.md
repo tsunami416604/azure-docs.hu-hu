@@ -1,179 +1,179 @@
 ---
-title: Azure Update Management-naplók lekérdezése
-description: Ez a cikk azt ismerteti, hogyan lehet lekérdezni Update Management naplóit a Log Analytics munkaterületen.
+title: Az Azure Update Management naplóinak lekérdezése
+description: Ez a cikk azt ismerteti, hogyan lehet lekérdezni a loganalytics-munkaterület frissítési felügyelet naplóit.
 services: automation
 ms.subservice: update-management
 ms.date: 03/11/2020
 ms.topic: conceptual
 ms.openlocfilehash: f31168d47f31d8e740c95cb3d9e449f473cc78dc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79216851"
 ---
-# <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>Azure Monitor naplók Update Management frissítési rekordjainak lekérdezése
+# <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>Frissítési rekordok lekérdezése az Azure Figyelőnaplóiban az Update Management szolgáltatáshoz
 
-A Update Management-megoldásban megadott részletek mellett a Log Analytics munkaterületen tárolt naplókra is rákereshet. A megoldás lap bal oldali ablaktábláján válassza a **naplók**lehetőséget. Megnyílik a **napló keresése** oldal.
+Az Update Management megoldásban megadott részleteken kívül a Log Analytics-munkaterületen tárolt naplókon is kereshet. A megoldás lap bal oldali ablaktáblájában válassza a **Naplók**lehetőséget. Megnyílik **a Naplókeresés** lap.
 
-Azt is megtudhatja, hogyan szabhatja testre a lekérdezéseket, és hogyan használhatja őket különböző ügyfelekről, és többet is megtalálhat: [log Analytics Search API dokumentációja](https://dev.loganalytics.io/).
+Azt is megtudhatja, hogyan szabhatja testre a lekérdezéseket, vagy használhatja őket a különböző ügyfelekés több felkeresi: [Log Analytics search API dokumentáció](https://dev.loganalytics.io/).
 
 ## <a name="update-records"></a>Update típusú rekordok
 
-A Update Management által összegyűjtött rekordok Windows és Linux rendszerű virtuális gépek esetén, valamint a naplók keresési eredményei között megjelenő adattípusok. A következő szakaszok ezeket a rekordokat ismertetik.
+A Windows és Linux rendszerű virtuális gépek frissítéskezelése által gyűjtött rekordok, valamint a naplókeresési eredményekben megjelenő adattípusok. A következő szakaszok ismertetik ezeket a rekordokat.
 
 ### <a name="required-updates"></a>Szükséges frissítések
 
-Létrejön egy `RequiredUpdate` típusú rekord, amely a gép által igényelt frissítéseket jelképezi. Ezeket a rekordokat az alábbi táblázatban az jellemzőkkel rendelkeznek:
+Olyan típusú rekord `RequiredUpdate` jön létre, amely a számítógép által igényelt frissítéseket jelöli. Ezek a rekordok a következő táblázatban található tulajdonságokkal rendelkeznek:
 
 | Tulajdonság | Leírás | 
 |----------|-------------|
-| Computer | A jelentéskészítő gép teljes tartományneve. |
-| KBID | A Windows Update szolgáltatáshoz tartozó Tudásbázis-cikk azonosítója. |
-| ManagementGroupName | A Operations Manager felügyeleti csoport vagy Log Analytics munkaterület neve. | 
-| Product | Azok a termékek, amelyekhez a frissítés alkalmazható. | 
-| PublishDate | Az a dátum, amikor a frissítés készen áll a letöltésre és telepítésre Windows Update. |
+| Computer | A jelentéskészítő gép teljesen minősített tartományneve. |
+| KBID | Tudásbáziscikk-azonosító a Windows-frissítéshez. |
+| ManagementGroupName | Az Operations Manager felügyeleti csoport vagy a Log Analytics-munkaterület neve. | 
+| Product | Azok a termékek, amelyekre a frissítés vonatkozik. | 
+| PublishDate | A frissítés letöltésének és telepítésének dátuma a Windows Update szolgáltatásból. |
 | Kiszolgáló | | 
-| SourceHealthServiceId | A Log Analytics Windows-ügynök AZONOSÍTÓját jelképező egyedi azonosító. |
+| SourceHealthServiceId azonosító | A Log Analytics Windows-ügynökazonosítóját jelölő egyedi azonosító |
 | SourceSystem | *OperationsManager* | 
-| TenantId | Azure Active Directory szervezetének példányát jelképező egyedi azonosító. | 
+| TenantId | Az Azure Active Directory szervezetpéldányát jelölő egyedi azonosító. | 
 | TimeGenerated | A rekord létrehozásának dátuma és időpontja. | 
-| Típus | *Update* | 
-| UpdateClassification | Az alkalmazható frissítések típusát jelöli. Windows esetén:<br> *Kritikus frissítések*<br> *Biztonsági frissítések*<br> *Kumulatív frissítések*<br> *Szolgáltatáscsomag*<br> *Szervizcsomagok*<br> *Definíciós frissítések*<br> *Eszközök*<br> *Frissítések*. Linux esetén:<br> *Kritikus és biztonsági frissítések*<br> *Egyéb* |
+| Típus | *Frissítés* | 
+| UpdateClassification (UpdateClassification) | Az alkalmazható frissítések típusát jelzi. Windows esetén:<br> *Kritikus frissítések*<br> *Biztonsági frissítések*<br> *Kumulatív frissítések*<br> *Funkciócsomagok*<br> *Szervizcsomagok*<br> *Definíciófrissítések*<br> *Eszközök*<br> *Frissítések*. Linux esetén:<br> *Kritikus vagy biztonsági frissítések*<br> *Egyéb* |
 | UpdateSeverity | A biztonsági rés súlyossági besorolása. Az értékek a következők:<br> *Kritikus*<br> *Fontos*<br> *Mérsékelt*<br> *Alacsony* |
-| UpdateTitle | A frissítés címe.|
+| UpdateTitle cím | A frissítés címe.|
 
 ### <a name="update"></a>Frissítés
 
-Létrejön egy `Update` típusú rekord, amely az elérhető frissítéseket és a gép telepítési állapotát jelöli. Ezeket a rekordokat az alábbi táblázatban az jellemzőkkel rendelkeznek:
+Létrejön egy olyan `Update` bejegyzés, amely nek megfelelő enkre a rendelkezésre álló frissítéseket és a gép telepítési állapotát jelöli. Ezek a rekordok a következő táblázatban található tulajdonságokkal rendelkeznek:
 
 | Tulajdonság | Leírás | 
 |----------|-------------|
-| ApprovalSource | Csak a Windows operációs rendszerre vonatkozik. Az érték *Microsoft Update*. |
-| Approved | *Igaz* vagy *hamis* |
+| ApprovalSource (Jóváhagyási forrás) | Csak a Windows operációs rendszerre vonatkozik. Az érték a *Microsoft Update*. |
+| Approved | *Igaz* vagy *Hamis* |
 | Osztályozás | *Frissítések* |
-| Computer | A jelentéskészítő gép teljes tartományneve. |
-| ComputerEnvironment | *Azure* vagy *nem Azure*. |
-| MSRCBulletinID | Biztonsági közlemény AZONOSÍTÓjának száma | 
+| Computer | A jelentéskészítő gép teljesen minősített tartományneve. |
+| ComputerEnvironment (Számítógépkörnyezet) | *Azure* *vagy nem Azure*. |
+| MSRCBulletinID | A biztonsági közlemény azonosítószáma | 
 | MSRCSeverity | A biztonsági rés súlyossági besorolása. Az értékek a következők:<br> *Kritikus*<br> *Fontos*<br> *Mérsékelt*<br> *Alacsony* |  
-| KBID | A Windows Update szolgáltatáshoz tartozó Tudásbázis-cikk azonosítója. |
-| ManagementGroupName | A Operations Manager felügyeleti csoport vagy Log Analytics munkaterület neve. |
-| UpdateID | A szoftverfrissítés egyedi azonosítója. |
-| RevisionNumber | Egy frissítés adott változatának verziószáma. |
-| Optional | *Igaz* vagy *hamis* | 
-| RebootBehavior | A frissítés telepítése/eltávolítása után történő újraindítási viselkedés. |
-| _ResourceId | Annak az erőforrásnak az egyedi azonosítója, amelyhez a rekord társítva van. |
-| Típus | *Update* |
-| VMUUID | A virtuális gép egyedi azonosítója. |
-| MG | A felügyeleti csoport vagy Log Analytics munkaterület egyedi azonosítója. | 
-| TenantId | Azure Active Directory szervezetének példányát jelképező egyedi azonosító. | 
+| KBID | Tudásbáziscikk-azonosító a Windows-frissítéshez. |
+| ManagementGroupName | Az Operations Manager felügyeleti csoport vagy a Log Analytics-munkaterület neve. |
+| UpdateID | A szoftverfrissítés egyedi azonosítója |
+| RevisionNumber | A frissítés adott változatának verziószáma. |
+| Optional | *Igaz* vagy *Hamis* | 
+| RebootBehavior | A frissítés telepítése/eltávolítása utáni újraindítási viselkedés. |
+| _ResourceId | Annak az erőforrásnak az egyedi azonosítója, amelyhez a bejegyzés társítva van. |
+| Típus | *Frissítés* |
+| VMUUID | A virtuális gép egyedi azonosítója |
+| MG | A felügyeleti csoport vagy a Log Analytics-munkaterület egyedi azonosítója | 
+| TenantId | Az Azure Active Directory szervezetpéldányát jelölő egyedi azonosító. | 
 | SourceSystem | *OperationsManager* | 
 | TimeGenerated | A rekord létrehozásának dátuma és időpontja. | 
-| SourceComputerId | A forrásoldali számítógépet jelképező egyedi azonosító. | 
+| SourceComputerId | A forrásszámítógépet jelölő egyedi azonosító | 
 | Cím | A frissítés címe. |
-| PublishedDate (UTC) | Az a dátum, amikor a frissítés készen áll a letöltésre és telepítésre Windows Update.  |
+| Közzétett dátum (UTC) | A frissítés letöltésének és telepítésének dátuma a Windows Update szolgáltatásból.  |
 | UpdateState | A frissítés aktuális állapota. | 
-| Product | Azok a termékek, amelyekhez a frissítés alkalmazható. |
+| Product | Azok a termékek, amelyekre a frissítés vonatkozik. |
 | SubscriptionId | Az Azure-előfizetés egyedi azonosítója. | 
-| ResourceGroup | Azon erőforráscsoport neve, amelyben az erőforrás tagja. | 
+| ResourceGroup | Annak az erőforráscsoportnak a neve, amelynek az erőforrás tagja. | 
 | ResourceProvider | Megadja az erőforrás-szolgáltatót. | 
 | Erőforrás | Az erőforrás neve. | 
 | ResourceType | Az erőforrástípus neve. | 
 
 ### <a name="update-agent"></a>Ügynök frissítése
 
-Létrejön egy `UpdateAgent` típusú rekord, amely a számítógépen lévő frissítési ügynök részleteit tartalmazza. Ezeket a rekordokat az alábbi táblázatban az jellemzőkkel rendelkeznek:
+Létrejön egy rekord, amelynek típusa `UpdateAgent` létrejön, és amely a frissítési ügynök adatait tartalmazza a számítógépen. Ezek a rekordok a következő táblázatban található tulajdonságokkal rendelkeznek:
 
 | Tulajdonság | Leírás | 
 |----------|-------------|
 | AgeofOldestMissingRequiredUpdate | | 
-| AutomaticUpdateEnabled | | 
-| Computer | A jelentéskészítő gép teljes tartományneve. |
-| DaySinceLastUpdateBucket | | 
-| ManagementGroupName | A Operations Manager felügyeleti csoport vagy Log Analytics munkaterület neve. |
+| Automatikusfrissítés engedélyezve | | 
+| Computer | A jelentéskészítő gép teljesen minősített tartományneve. |
+| DaySinceLastUpdateBucket között | | 
+| ManagementGroupName | Az Operations Manager felügyeleti csoport vagy a Log Analytics-munkaterület neve. |
 | OSVersion | Az operációs rendszer verziója. |
 | Kiszolgáló | |
-| SourceHealthServiceId | A Log Analytics Windows-ügynök AZONOSÍTÓját jelképező egyedi azonosító. |
+| SourceHealthServiceId azonosító | A Log Analytics Windows-ügynökazonosítóját jelölő egyedi azonosító |
 | SourceSystem | *OperationsManager* | 
-| TenantId | Azure Active Directory szervezetének példányát jelképező egyedi azonosító. |
+| TenantId | Az Azure Active Directory szervezetpéldányát jelölő egyedi azonosító. |
 | TimeGenerated | A rekord létrehozásának dátuma és időpontja. |
-| Típus | *Update* | 
+| Típus | *Frissítés* | 
 | WindowsUpdateAgentVersion | A Windows Update ügynök verziója. |
-| WSUSServer | Hibák megjelenítése, ha a Windows Update ügynöknek problémája van a hibaelhárításhoz. |
+| WSUSServer | Hibák megjelenítése, ha a Windows Update ügynöknek problémája van a hibaelhárításban. |
 
 ### <a name="update-deployment-status"></a>Központi telepítés állapotának frissítése 
 
-Létrejön egy `UpdateRunProgress` típusú rekord, amely frissíti a számítógép által ütemezett központi telepítés állapotát. Ezeket a rekordokat az alábbi táblázatban az jellemzőkkel rendelkeznek:
+Létrejön egy rekord, amely nek `UpdateRunProgress` típusa van, amely biztosítja az ütemezett központi telepítés gépenkénti központi telepítési állapotát. Ezek a rekordok a következő táblázatban található tulajdonságokkal rendelkeznek:
 
 | Tulajdonság | Leírás | 
 |----------|-------------|
-| Computer | A jelentéskészítő gép teljes tartományneve. |
-| ComputerEnvironment | *Azure* vagy *nem Azure*. | 
-| CorrelationId | A frissítéshez tartozó runbook-feladatok egyedi azonosítója. |
-| EndTime | Az az idő, amikor a szinkronizálási folyamat befejeződött. | 
-| ErrorResult | Windows Update hibakód jön létre, ha egy frissítés telepítése sikertelen. | 
-| InstallationStatus | Egy frissítés lehetséges telepítési állapota az ügyfélszámítógépen, *folyamatban*, *sikeres*, *részben meghiúsult*. |
-| KBID | A Windows Update szolgáltatáshoz tartozó Tudásbázis-cikk azonosítója. | 
-| ManagementGroupName | A Operations Manager felügyeleti csoport vagy Log Analytics munkaterület neve. |
-| OSType | Megadja az operációs rendszer, a *Windows* vagy a *Linux*típusát. | 
-| Product | Azok a termékek, amelyekhez a frissítés alkalmazható. |
+| Computer | A jelentéskészítő gép teljesen minősített tartományneve. |
+| ComputerEnvironment (Számítógépkörnyezet) | *Azure* *vagy nem Azure*. | 
+| CorrelationId | A frissítés runrunjának egyedi azonosítója. |
+| EndTime | A szinkronizálási folyamat lesiszélének időpontja. | 
+| Hibaeredmény | A frissítés telepítésének sikertelenétől generált Windows Update-hibakód. | 
+| InstallationStatus (Telepítési állapot) | Az ügyfélszámítógépen lévő frissítés lehetséges telepítési állapotai, *Folyamatban*, *Sikeres*, *Részben sikertelen*. |
+| KBID | Tudásbáziscikk-azonosító a Windows-frissítéshez. | 
+| ManagementGroupName | Az Operations Manager felügyeleti csoport vagy a Log Analytics-munkaterület neve. |
+| OSType | A *Windows* *vagy*Linux operációs rendszer típusát adja meg. | 
+| Product | Azok a termékek, amelyekre a frissítés vonatkozik. |
 | Erőforrás | Az erőforrás neve. | 
-| ResourceId | Annak az erőforrásnak az egyedi azonosítója, amelyhez a rekord társítva van. |
+| ResourceId | Annak az erőforrásnak az egyedi azonosítója, amelyhez a bejegyzés társítva van. |
 | ResourceProvider | Megadja az erőforrás-szolgáltatót. | 
 | ResourceType | Az erőforrástípus neve. | 
-| SourceComputerId | A forrásoldali számítógépet jelképező egyedi azonosító. | 
+| SourceComputerId | A forrásszámítógépet jelölő egyedi azonosító | 
 | SourceSystem | *OperationsManager* |
-| StartTime | A frissítés ütemezett telepítésének időpontját. |
+| StartTime | A frissítés telepítésének ütemezése. |
 | SubscriptionId | Az Azure-előfizetés egyedi azonosítója. | 
-| SucceededOnRetry | Azt mutatja, hogy a frissítés végrehajtása sikertelen volt-e az első kísérlet során, és az aktuális művelet újrapróbálkozási kísérlet. |
+| SucceededOnRetry | Megmutatja, hogy a frissítés végrehajtása az első kísérletkor mikor sikerült, és az aktuális művelet újrapróbálkozási kísérlet. |
 | TimeGenerated | A rekord létrehozásának dátuma és időpontja. |
 | Cím | A frissítés címe. |
 | Típus | *UpdateRunProgress* |
-| UpdateId | A szoftverfrissítés egyedi azonosítója. |
-| VMUUID | A virtuális gép egyedi azonosítója. |
-| _ResourceId | Annak az erőforrásnak az egyedi azonosítója, amelyhez a rekord társítva van. |
+| UpdateId azonosító | A szoftverfrissítés egyedi azonosítója |
+| VMUUID | A virtuális gép egyedi azonosítója |
+| _ResourceId | Annak az erőforrásnak az egyedi azonosítója, amelyhez a bejegyzés társítva van. |
 
-### <a name="update-summary"></a>Frissítés összegzése 
+### <a name="update-summary"></a>Összegzés frissítése 
 
-Létrejön egy `UpdateSummary` típusú rekord, amely a számítógép által készített frissítési összegzést biztosít. Ezeket a rekordokat az alábbi táblázatban az jellemzőkkel rendelkeznek:
+A rendszer olyan `UpdateSummary` típusú rekordot hoz létre, amely gépenként biztosítja a frissítés összegzését. Ezek a rekordok a következő táblázatban található tulajdonságokkal rendelkeznek:
 
 | Tulajdonság | Leírás | 
 |----------|-------------|
-| Computer | A jelentéskészítő gép teljes tartományneve. |
-| ComputerEnvironment | *Azure* vagy *nem Azure*. | 
-| CriticalUpdatesMissing | A hiányzó kritikus frissítések száma. | 
-| ManagementGroupName | A Operations Manager felügyeleti csoport vagy Log Analytics munkaterület neve. |
-| NETRuntimeVersion | A .NET-keretrendszer telepített verziója a Windows rendszerű számítógépen. |
-| OldestMissingSecurityUpdateBucket | Az értékek a következők:<br> *Legutóbbiak*<br> *30 nappal ezelőtt*<br> *60 nappal ezelőtt*<br> *Régebbi* | 
-| OldestMissingSecurityUpdateInDays | Azon napok száma, amelyekben a legrégebbi frissítés nem lett telepítve. |
+| Computer | A jelentéskészítő gép teljesen minősített tartományneve. |
+| ComputerEnvironment (Számítógépkörnyezet) | *Azure* *vagy nem Azure*. | 
+| CriticalUpdatesMissing | A hiányzó kritikus frissítések száma, amelyek érvényesek. | 
+| ManagementGroupName | Az Operations Manager felügyeleti csoport vagy a Log Analytics-munkaterület neve. |
+| NETRuntimeVersion | A Windows rendszerű számítógépen telepített . |
+| OldestMissingSecurityUpdateBucket | Az értékek a következők:<br> *Legutóbbi elemek*<br> *30 nappal ezelőtt*<br> *60 nappal ezelőtt*<br> *Régebbi* | 
+| OldestMissingSecurityUpdateInDays | A legrégibb, nem telepített frissítéshez szükséges napok száma összesen. |
 | OsVersion | Az operációs rendszer verziója. |
 | OtherUpdatesMissing | Hiányzó észlelt frissítések száma. |
 | Erőforrás |  Az erőforrás neve. | 
-| ResourceGroup | Azon erőforráscsoport neve, amelyben az erőforrás tagja. |
-| ResourceId | Annak az erőforrásnak az egyedi azonosítója, amelyhez a rekord társítva van. |
+| ResourceGroup | Annak az erőforráscsoportnak a neve, amelynek az erőforrás tagja. |
+| ResourceId | Annak az erőforrásnak az egyedi azonosítója, amelyhez a bejegyzés társítva van. |
 | ResourceProvider | Megadja az erőforrás-szolgáltatót. |
 | ResourceType | Az erőforrástípus neve. |
-| RestartPending | *Igaz* vagy *hamis*. |
+| Újraindításfüggő | *Igaz* vagy *Hamis*. |
 | SecurityUpdatesMissing | A hiányzó biztonsági frissítések száma.| 
-| SourceComputerId | A virtuális gép egyedi azonosítója. |
+| SourceComputerId | A virtuális gép egyedi azonosítója |
 | SourceSystem | *OpsManager* | 
 | SubscriptionId | Az Azure-előfizetés egyedi azonosítója. |
 | TimeGenerated | A rekord létrehozásának dátuma és időpontja. |
-| TotalUpdatesMissing | A hiányzó frissítések teljes száma. | 
-| Típus | *UpdateSummary típusú* |
-| VMUUID | A virtuális gép egyedi azonosítója. |
+| TotalUpdatesMissing | A hiányzó frissítések teljes száma alkalmazható. | 
+| Típus | *UpdateSummary* |
+| VMUUID | A virtuális gép egyedi azonosítója |
 | WindowsUpdateAgentVersion | A Windows Update ügynök verziója. |
-| WindowsUpdateSetting | Megjeleníti a Windows Update ügynök állapotát. Lehetséges értékek:<br> *Ütemezett telepítés*<br> *Értesítés a telepítés előtt*<br> A nem kifogástalan állapotú WUA-ügynök által visszaadott hiba. | 
-| WSUSServer | Hibák megjelenítése, ha a Windows Update ügynöknek problémája van a hibaelhárításhoz. |
-| _ResourceId | Annak az erőforrásnak az egyedi azonosítója, amelyhez a rekord társítva van. |
+| WindowsUpdateSetting | A Windows Update ügynök állapotát jeleníti meg. Lehetséges értékek:<br> *Ütemezett telepítés*<br> *Értesítés a telepítés előtt*<br> A nem sérült WUA-ügynök hibát adott vissza. | 
+| WSUSServer | Hibák megjelenítése, ha a Windows Update ügynöknek problémája van a hibaelhárításban. |
+| _ResourceId | Annak az erőforrásnak az egyedi azonosítója, amelyhez a bejegyzés társítva van. |
 
 ## <a name="sample-queries"></a>Mintalekérdezések
 
-A következő szakaszokban példákat talál a Update Management gyűjtött frissítési rekordokra.
+A következő szakaszok mintanapló-lekérdezéseket biztosítanak a frissítéskezeléshez gyűjtött frissítési rekordokhoz.
 
-### <a name="confirm-that-non-azure-machines-are-onboarded"></a>Győződjön meg arról, hogy a nem Azure-beli gépek vannak bekészítve
+### <a name="confirm-that-non-azure-machines-are-onboarded"></a>Annak ellenőrzése, hogy a nem Azure-alapú gépek be vannak-e táblára
 
-Annak ellenőrzéséhez, hogy a közvetlenül csatlakoztatott gépek Azure Monitor-naplókkal kommunikálnak-e, futtassa a következő naplók egyikét.
+Annak ellenőrzéséhez, hogy a közvetlenül csatlakoztatott gépek kommunikálnak-e az Azure Monitor naplóival, futtassa az alábbi naplókeresések egyikét.
 
 #### <a name="linux"></a>Linux
 
@@ -189,26 +189,26 @@ Heartbeat
 | where OSType == "Windows" | summarize arg_max(TimeGenerated, *) by SourceComputerId | top 500000 by Computer asc | render table
 ```
 
-Windows rendszerű számítógépen a következő információkat tekintheti meg az ügynök kapcsolatának ellenőrzéséhez Azure Monitor naplók használatával:
+Windows rendszerű számítógépen a következő adatokat tekintheti meg az ügynökkapcsolat Azure Monitor-naplókkal való ellenőrzéséhez:
 
-1. A vezérlőpulton nyissa meg a **Microsoft monitoring Agent ügynököt**. Az **Azure log Analytics** lapon az ügynök a következő üzenetet jeleníti meg: **a Microsoft monitoring Agent sikeresen csatlakozott a log Analyticshoz**.
-2. Nyissa meg a Windows eseménynaplót. Nyissa meg az **Application and Services Logs\Operations Manager alkalmazást** , és keressen rá a 3000-es azonosítójú eseményre és a 5002-es azonosítójú eseményre **.** Ezek az események azt jelzik, hogy a számítógép regisztrálva van a Log Analytics munkaterületen, és fogadja a konfigurációt.
+1. A Vezérlőpulton nyissa meg a **Microsoft Monitoring Agent programot.** Az **Azure Log Analytics** lapon az ügynök a következő üzenetet jeleníti meg: **A Microsoft Monitoring Agent sikeresen csatlakozott a Log Analytics hez.**
+2. Nyissa meg a Windows eseménynaplóját. Nyissa meg **az Alkalmazás- és szolgáltatásnaplók\Operations Manager mappát,** és keresse meg a 3000-es és 5002-es eseményazonosítójú eseményt a **forrásszolgáltatás-összekötőből.** Ezek az események jelzik, hogy a számítógép regisztrálva van a Log Analytics-munkaterületen, és konfigurációt kap.
 
-Ha az ügynök nem tud kommunikálni Azure Monitor naplókkal, és az ügynök úgy van konfigurálva, hogy tűzfalon vagy proxykiszolgálón keresztül kommunikáljon az internettel, ellenőrizze, hogy a tűzfal vagy a proxykiszolgáló megfelelően van-e konfigurálva. A tűzfal vagy a proxykiszolgáló megfelelő konfigurálásának ellenőrzéséhez tekintse meg a [hálózati konfiguráció Windows-ügynökhöz](../azure-monitor/platform/agent-windows.md) vagy [a Linux-ügynök hálózati konfigurációja](../log-analytics/log-analytics-agent-linux.md)című témakört.
+Ha az ügynök nem tud kommunikálni az Azure Monitor naplóival, és az ügynök tűzfalon vagy proxykiszolgálón keresztül kommunikál az internettel, ellenőrizze, hogy a tűzfal vagy a proxykiszolgáló megfelelően van-e konfigurálva. A tűzfal vagy a proxykiszolgáló megfelelő konfigurálásáról a [Hálózati konfiguráció a Windows ügynökhöz](../azure-monitor/platform/agent-windows.md) vagy a [Linux-ügynök hálózati konfigurációja](../log-analytics/log-analytics-agent-linux.md)című témakörből olvashat.
 
 > [!NOTE]
-> Ha a linuxos rendszerek proxy vagy Log Analytics átjáróval való kommunikációra vannak konfigurálva, és a megoldás előkészítését végzi, frissítse a *proxy. conf* engedélyeit, hogy a omiuser csoport olvasási engedélyt adjon a fájlhoz a következő parancsok használatával:
+> Ha a Linux-rendszerek proxyval vagy Log Analytics átjáróval való kommunikációra vannak konfigurálva, és ön vezeti be ezt a megoldást, frissítse a *proxy.conf* engedélyeket, hogy az omiuser csoport olvasási engedélyt adjon a fájlhoz a következő parancsok használatával:
 >
 > `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf`
 > `sudo chmod 644 /etc/opt/microsoft/omsagent/proxy.conf`
 
-Az újonnan hozzáadott Linux-ügynökök a felmérés végrehajtása után **frissülő** állapotot mutatnak. A folyamat akár hat órát is igénybe vehet.
+Az újonnan hozzáadott Linux-ügynökök egy értékelés elvégzése után **frissített** állapotot mutatnak. A folyamat akár hat órát is igénybe vehet.
 
-Annak ellenőrzéséhez, hogy egy Operations Manager felügyeleti csoport kommunikál-e Azure Monitor naplókkal, tekintse meg az [Operations Manager integráció ellenőrzése Azure monitor naplókkal](../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-azure-monitor)című témakört.
+Annak ellenőrzéséhez, hogy egy Operations Manager-felügyeleti csoport kommunikál-e az Azure Monitor naplóival, olvassa el [az Operations Manager-integráció ellenőrzése az Azure Monitor-naplókkal.](../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-azure-monitor)
 
-### <a name="single-azure-vm-assessment-queries-windows"></a>Egyetlen Azure-beli VM-értékelő lekérdezés (Windows)
+### <a name="single-azure-vm-assessment-queries-windows"></a>Egyetlen Azure virtuálisgép-felmérési lekérdezések (Windows)
 
-Cserélje le a VMUUID értéket a lekérdezni kívánt virtuális gép virtuális géphez tartozó GUID azonosítóra. A következő lekérdezésnek a Azure Monitor naplókban való futtatásával megkeresheti a VMUUID: `Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
+Cserélje le a VMUUID értékét a lekérdező virtuális gép virtuálisgép-GUID azonosítójára. Az Azure Monitor-naplókban a következő lekérdezés futtatásával használandó VMUUID-t találja:`Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
 
 #### <a name="missing-updates-summary"></a>Hiányzó frissítések összegzése
 
@@ -235,9 +235,9 @@ Update
 | project-away ClassificationWeight, InformationId, InformationUrl
 ```
 
-### <a name="single-azure-vm-assessment-queries-linux"></a>Egyetlen Azure-beli VM-értékelő lekérdezés (Linux)
+### <a name="single-azure-vm-assessment-queries-linux"></a>Egyetlen Azure virtuálisgép-felmérési lekérdezések (Linux)
 
-Egyes Linux-disztribúciók esetében a [endianness](https://en.wikipedia.org/wiki/Endianness) nem egyezik a Azure Resource Manager és a Azure monitor naplókban tárolt VMUUID értékkel. A következő lekérdezés mindkét endianness egyezést keres. Cserélje le a VMUUID értékeket a GUID big-endian és little-endian formátumára, hogy megfelelően visszaadja az eredményeket. A következő lekérdezésnek a Azure Monitor naplókban való futtatásával megkeresheti a VMUUID: `Update | where Computer == "<machine name>"
+Egyes Linux-disztribúciók esetében az Azure Resource Managertől származó VMUUID-értékkel való [endianness](https://en.wikipedia.org/wiki/Endianness) eltérés van, és az Azure Monitor-naplókban tárolt adatok. A következő lekérdezés ellenőrzi az egyezést az endianness.The following query checks for a match on either endianness. Cserélje le a VMUUID értékeket a GUID big-endian és little-endian formátumára az eredmények megfelelő visszaadásához. Az Azure Monitor-naplókban a következő lekérdezés futtatásával használandó VMUUID-t találja:`Update | where Computer == "<machine name>"
 | summarize by Computer, VMUUID`
 
 #### <a name="missing-updates-summary"></a>Hiányzó frissítések összegzése
@@ -266,7 +266,7 @@ Update
 
 ```
 
-### <a name="multi-vm-assessment-queries"></a>Több virtuális gépre kiterjedő értékelési lekérdezések
+### <a name="multi-vm-assessment-queries"></a>Többvirtuális gépre vonatkozó értékelési lekérdezések
 
 #### <a name="computers-summary"></a>Számítógépek összegzése
 
@@ -409,7 +409,7 @@ Update
 | project-away ClassificationWeight, InformationId, InformationUrl
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* A részletes frissítési információk megtekintéséhez használja a naplóbeli kereséseket [Azure monitor naplókban](../log-analytics/log-analytics-log-searches.md) .
-* [Riasztások létrehozása](automation-tutorial-update-management.md#configure-alerts) a központi telepítés állapotának frissítéséhez.
+* A részletes frissítési adatok megtekintéséhez használja a naplókereséseket az [Azure Monitor naplóiban.](../log-analytics/log-analytics-log-searches.md)
+* [Riasztások létrehozása](automation-tutorial-update-management.md#configure-alerts) a frissítés telepítési állapotához.

@@ -1,6 +1,6 @@
 ---
-title: A Microsoft Azure StorSimple Virtual Array biztonsági mentési oktatóanyag |} A Microsoft Docs
-description: Ismerteti, hogyan készíthet biztonsági másolatot a StorSimple Virtual Array megosztások és köteteket.
+title: Microsoft Azure StorSimple virtual array biztonsági mentési oktatóanyag | Microsoft dokumentumok
+description: A StorSimple virtual array megosztások és kötetek biztonsági kapcsolatának ismertetése.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -16,103 +16,103 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a61dcca1f78b6ba444a2deefcf6b8bb4fd5c5087
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60581299"
 ---
-# <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>Biztonsági mentést megosztások vagy kötetek a StorSimple Virtual Array
+# <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>Megosztások vagy kötetek biztonsági másolatot kell kapnia a StorSimple virtuális tömbön
 
 ## <a name="overview"></a>Áttekintés
 
-A StorSimple Virtual Array hibrid felhőalapú tárolási a helyszíni virtuális eszköz egy fájlkiszolgáló vagy iSCSI-kiszolgáló konfigurálható. A virtuális tömb lehetővé teszi a felhasználóknak ütemezett és manuális biztonsági mentéseket a megosztások vagy kötetek az eszközön. Konfigurált egy fájlkiszolgálót, ha lehetővé teszi az elemszintű helyreállítás. Ez az oktatóanyag leírja, hogyan hozhat létre ütemezett és manuális biztonsági mentéseket, és visszaállítani egy törölt fájl a virtuális tömb az elemszintű helyreállítás végrehajtásához.
+A StorSimple virtuális tömb egy helyszíni hibrid felhőbeli tárolóeszköz, amely fájlkiszolgálóként vagy iSCSI-kiszolgálóként konfigurálható. A virtuális tömb lehetővé teszi a felhasználó számára, hogy ütemezett és manuális biztonsági mentéseket hozzon létre az eszközön lévő összes megosztásról vagy kötetről. Ha fájlkiszolgálóként van konfigurálva, elemszintű helyreállítást is lehetővé tesz. Ez az oktatóanyag bemutatja, hogyan hozhat létre ütemezett és manuális biztonsági másolatokat, és hogyan hajthatja végre az elemszintű helyreállítást a virtuális tömb törölt fájljának visszaállításához.
 
-Ebben az oktatóanyagban a StorSimple Virtual Arrayt csak vonatkozik. Információk a 8000-es sorozat, [8000-es sorozatú eszköz biztonsági másolatának létrehozása](storsimple-manage-backup-policies-u2.md)
+Ez az oktatóanyag csak a StorSimple virtuális tömbökre vonatkozik. A 8000-es sorozattal kapcsolatos információkért látogasson el a [8000-es sorozatú eszköz biztonsági másolatának létrehozása című](storsimple-manage-backup-policies-u2.md)
 
-## <a name="back-up-shares-and-volumes"></a>Megosztások és kötetek biztonsági mentése
+## <a name="back-up-shares-and-volumes"></a>Részvények és mennyiségek biztonsági és biztonsági tartaléka
 
-Biztonsági másolatok időponthoz védelmet biztosíthat, javítja a helyreállíthatóságot és -megosztásokat és -kötetek visszaállítása idejét minimalizálása érdekében. A StorSimple eszközén kétféle módon lehet biztonsági másolatot készíteni egy fájlmegosztás vagy kötet: **Ütemezett** vagy **manuális**. A módszer a következő szakaszokban a következő cikkben.
+A biztonsági mentések biztosítják az időponthoz elegendő időt, javítják a helyreállíthatóságot, és minimálisra csökkentik a megosztások és kötetek visszaállítási idejét. A StorSimple-eszközön kétféleképpen lehet biztonsági másolatot és kötetről biztonsági **másolatot** kapni: Ütemezett vagy **Kézi**. A módszerek mindegyikét a következő szakaszok ismertetik.
 
-## <a name="change-the-backup-start-time"></a>Módosítsa a biztonsági mentés kezdő időpontja
+## <a name="change-the-backup-start-time"></a>A biztonsági mentés kezdési idejének módosítása
 
 > [!NOTE]
-> Ebben a kiadásban ütemezett biztonsági mentések hoznak létre egy alapértelmezett szabályzatot, amely egy megadott időpontban naponta fut, és készít biztonsági másolatot a megosztások vagy kötetek az eszközön. Nem alkalmas jelenleg az egyéni házirendeket az ütemezett biztonsági mentések létrehozásához.
+> Ebben a kiadásban az ütemezett biztonsági mentések egy alapértelmezett házirend által jönnek létre, amely naponta fut egy megadott időpontban, és biztonsági másolatot készít az eszközön lévő összes megosztásról vagy kötetről. Jelenleg nem lehet egyéni házirendeket létrehozni az ütemezett biztonsági mentések hez.
 
 
-A StorSimple Virtual Array rendelkezik, amely a megadott időszak (22:30) indul, és biztonsági másolatot készít a megosztások vagy kötetek az eszközön naponta egyszer alapértelmezett biztonsági mentési szabályzat. Módosíthatja az idő, amikor a biztonsági mentés elindul, de a gyakoriságát és a megőrzési ideje (amely a biztonsági másolatok megőrzése ennyi) nem módosítható. Során ezeket a biztonsági másolatokat készíteni a teljes virtuális eszközt. Ez sikerült potenciálisan hatással az eszköz teljesítményére, és hatással az eszközön telepített munkaterhelésekhez. Ezért azt javasoljuk, hogy úgy ütemezze ezeket a biztonsági másolatokat csúcsidőn.
+A StorSimple virtuális tömb rendelkezik egy alapértelmezett biztonsági mentési szabályzattal, amely egy adott napszakban (22:30) kezdődik, és naponta egyszer biztonsági másolatot készít az eszközön lévő összes megosztásról vagy kötetről. Módosíthatja a biztonsági mentés kezdetének idejét, de a gyakoriság és a megőrzési adatszolgáltatás (amely megadja a megőrzendő biztonsági mentések számát) nem módosítható. A biztonsági mentések során a teljes virtuális eszközről biztonsági másolat készül. Ez potenciálisan hatással lehet az eszköz teljesítményére, és hatással lehet az eszközön üzembe helyezett számítási feladatokra. Ezért azt javasoljuk, hogy ezeket a biztonsági mentéseket csúcsidőn kívüli időszakokra ütemezze.
 
- Ha módosítani szeretné az alapértelmezett biztonsági mentés kezdő időpontja, hajtsa végre a következő lépéseket a [az Azure portal](https://portal.azure.com/).
+ Az alapértelmezett biztonsági mentési kezdési időpont módosításához hajtsa végre a következő lépéseket az [Azure Portalon.](https://portal.azure.com/)
 
-#### <a name="to-change-the-start-time-for-the-default-backup-policy"></a>A kezdési időpont az alapértelmezett biztonsági mentési házirend módosítása
+#### <a name="to-change-the-start-time-for-the-default-backup-policy"></a>Az alapértelmezett biztonsági mentési házirend kezdési idejének módosítása
 
-1. Lépjen a **eszközök**. A StorSimple-Eszközkezelő szolgáltatásban regisztrált eszközök jelennek meg. 
+1. Nyissa meg az **Eszközök**lehetőséget. Megjelenik a StorSimple Eszközkezelő szolgáltatásban regisztrált eszközök listája. 
    
-    ![Keresse meg az eszközök](./media/storsimple-virtual-array-backup/changebuschedule1.png)
+    ![navigálás az eszközökre](./media/storsimple-virtual-array-backup/changebuschedule1.png)
 
-2. Válassza ki, majd kattintson az eszköz. A **beállítások** panelen jelennek meg. Lépjen a **kezelés > biztonsági mentési házirendek**.
+2. Válassza ki és kattintson az eszközre. Megjelenik a **Beállítások** panel. Nyissa meg **a > biztonsági mentési házirendek kezelése lehetőséget.**
    
-    ![Válassza ki az eszközt](./media/storsimple-virtual-array-backup/changebuschedule2.png)
+    ![válassza ki a készüléket](./media/storsimple-virtual-array-backup/changebuschedule2.png)
 
-3. Az a **biztonsági mentési házirendek** panelen, az alapértelmezett kezdési ideje 22:30. Az új kezdési időt a napi ütemezés az eszköz időzónájában is megadhat.
+3. A **Biztonsági mentési házirendek** panelen az alapértelmezett kezdési időpont 22:30. Megadhatja a napi ütemezés új kezdési idejét az eszköz időzónájában.
    
-    ![Keresse meg a biztonsági mentési házirendek](./media/storsimple-virtual-array-backup/changebuschedule5.png)
+    ![navigálás a biztonsági mentési házirendekhez](./media/storsimple-virtual-array-backup/changebuschedule5.png)
 
-4. Kattintson a **Save** (Mentés) gombra.
+4. Kattintson a **Mentés** gombra.
 
-### <a name="take-a-manual-backup"></a>Manuális biztonsági mentés készítése
+### <a name="take-a-manual-backup"></a>Kézi biztonsági mentés készítése
 
-Ütemezett biztonsági mentések mellett akkor is manuális biztonsági mentést (igény szerinti) eszköz adatok bármikor.
+Az ütemezett biztonsági mentések mellett bármikor készíthet manuális (igény szerinti) biztonsági másolatot az eszközadatokról.
 
 #### <a name="to-create-a-manual-backup"></a>Manuális biztonsági mentés létrehozása
 
-1. Lépjen a **eszközök**. Válassza ki az eszközt, és kattintson a jobb gombbal **...**  a kijelölt sor jobb szélén. A helyi menüből válassza ki a **biztonsági mentés**.
+1. Nyissa meg az **Eszközök**lehetőséget. Válassza ki a készüléket, és kattintson a jobb gombbal **...** a jobb szélen a kiválasztott sorban. A helyi menüben válassza a **Biztonsági mentés végrehajtása parancsot.**
    
-    ![Keresse meg a biztonsági mentés](./media/storsimple-virtual-array-backup/takebackup1m.png)
+    ![navigálással készítsen biztonsági mentést](./media/storsimple-virtual-array-backup/takebackup1m.png)
 
-2. Az a **biztonsági mentés** panelen kattintson a **biztonsági mentés**. Ez lesz biztonsági mentés, a fájlkiszolgáló minden megosztás vagy az iSCSI-kiszolgáló minden kötetéről. 
+2. A **Biztonsági mentés készítése** panelen kattintson a **Biztonsági mentés folytatása gombra.** Ezzel biztonsági másolatot készít a fájlkiszolgáló összes megosztásátvagy az iSCSI-kiszolgáló összes kötetét. 
    
     ![biztonsági mentés indítása](./media/storsimple-virtual-array-backup/takebackup2m.png)
    
-    Egy igény szerinti biztonsági mentés elindul, és láthatja, hogy a biztonsági mentési feladat elindult.
+    Egy igény szerinti biztonsági mentés elindul, és láthatja, hogy egy biztonsági mentési feladat elindult.
    
     ![biztonsági mentés indítása](./media/storsimple-virtual-array-backup/takebackup3m.png) 
    
-    A feladat sikeres befejezése után, újból értesítést. Ezután elindítja a biztonsági mentési folyamat.
+    A feladat sikeres befejezése után ismét értesítést kap. Ekkor elindul a biztonsági mentési folyamat.
    
-    ![biztonsági mentési feladat létrehozása](./media/storsimple-virtual-array-backup/takebackup4m.png)
+    ![biztonsági mentési feladat létrehozva](./media/storsimple-virtual-array-backup/takebackup4m.png)
 
-3. A biztonsági másolatokat az előrehaladását úgy követheti nyomon, és tekintse meg a feladat részleteit, kattintson az értesítésre. Ezzel továbblép **feladat részletei**.
+3. A biztonsági mentések előrehaladásának nyomon követéséhez és a feladat részleteinek megnézetéhez kattintson az értesítésre. Ez **elviszi a Munka részleteit**.
    
-     ![biztonsági mentési feladat részleteit](./media/storsimple-virtual-array-backup/takebackup5m.png)
+     ![biztonsági mentési feladat részletei](./media/storsimple-virtual-array-backup/takebackup5m.png)
 
-4. A biztonsági mentés befejezése után lépjen **felügyeleti > biztonságimásolat-katalógus**. Az eszközén látni fogja az összes megosztások (vagy kötet) felhőbeli pillanatképet.
+4. A biztonsági mentés befejezése után nyissa meg **a Felügyeleti > biztonsági másolat katalógust.** Az eszközön található összes megosztás (vagy kötet) felhőbeli pillanatképe jelenik meg.
    
-    ![Befejeződött a biztonsági mentés](./media/storsimple-virtual-array-backup/takebackup19m.png) 
+    ![Befejeződött biztonsági mentés](./media/storsimple-virtual-array-backup/takebackup19m.png) 
 
-## <a name="view-existing-backups"></a>Meglévő biztonsági másolatok megtekintéséhez
-A meglévő biztonsági másolatok megtekintéséhez hajtsa végre az alábbi lépéseket az Azure Portalon.
+## <a name="view-existing-backups"></a>Meglévő biztonsági mentések megtekintése
+A meglévő biztonsági mentések megtekintéséhez hajtsa végre a következő lépéseket az Azure Portalon.
 
-#### <a name="to-view-existing-backups"></a>A meglévő biztonsági másolatok megtekintéséhez
+#### <a name="to-view-existing-backups"></a>Meglévő biztonsági mentések megtekintése
 
-1. Lépjen a **eszközök** panelen. Válassza ki, majd kattintson az eszköz. Az a **beállítások** panelen lépjen a **felügyeleti > biztonságimásolat-katalógus**.
+1. Nyissa meg az **Eszközök** panelt. Válassza ki és kattintson az eszközre. A **Beállítások** panelen nyissa meg **a Felügyeleti > biztonsági másolat katalógusát.**
    
-    ![Keresse meg a biztonságimásolat-katalógus](./media/storsimple-virtual-array-backup/viewbackups1.png)
-2. Adja meg a szűréshez használandó a következő feltételeknek:
+    ![Navigálás a biztonsági másolat katalógusára](./media/storsimple-virtual-array-backup/viewbackups1.png)
+2. Adja meg a szűréshez használandó alábbi feltételeket:
    
-   - **Időtartomány** – lehet **elmúlt 1 óra**, **elmúlt 24 óra**, **elmúlt 7 nap**, **az elmúlt 30 napban**, **elmúlt év** , és **egyéni dátum**.
+   - **Időtartomány** – lehet **elmúlt 1 óra**, Elmúlt **24 óra**, Elmúlt 7 **nap**, **Elmúlt 30 nap**, Előző **év**és **Egyéni dátum**.
     
-   - **Eszközök** – válassza ki a listából a fájlkiszolgálók vagy iSCSI-kiszolgálót regisztrálta a StorSimple-Eszközkezelő szolgáltatásban.
+   - **Eszközök** – válasszon a StorSimple Eszközkezelő szolgáltatásban regisztrált fájlkiszolgálók vagy iSCSI-kiszolgálók listájából.
    
-   - **Kezdeményezett** – automatikusan lehet **ütemezett** (a biztonsági mentési szabályzat) vagy **manuálisan** kezdeményező (,).
+   - **Kezdeményezett** – lehet automatikusan **ütemezett** (egy biztonsági házirend) vagy **manuálisan** kezdeményezett (az Ön által).
    
      ![Biztonsági mentések szűrése](./media/storsimple-virtual-array-backup/viewbackups2.png)
 
-3. Kattintson az **Alkalmaz** gombra. A biztonsági mentések a szűrt lista jelenik meg a **biztonságimásolat-katalógus** panelen. Megjegyzés csak 100 biztonsági mentési elemek egy adott időben megjeleníthetők.
+3. Kattintson az **Alkalmaz** gombra. A biztonsági mentések szűrt listája megjelenik a **Biztonsági másolat katalógus** panelen. Megjegyzés: egy adott időpontban csak 100 biztonsági mentési elem jeleníthető meg.
    
-    ![Frissített biztonságimásolat-katalógus](./media/storsimple-virtual-array-backup/viewbackups3.png)
+    ![Frissített biztonsági másolat katalógusa](./media/storsimple-virtual-array-backup/viewbackups3.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Tudjon meg többet [felügyelete a StorSimple Virtual Array](storsimple-ova-web-ui-admin.md).
+További információ [a StorSimple virtuális tömb felügyeletéről.](storsimple-ova-web-ui-admin.md)
 

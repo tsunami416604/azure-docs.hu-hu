@@ -1,6 +1,6 @@
 ---
-title: Az Azure VMware Solutions (AVS) privát felhő csökkentése
-description: Útmutató az AVS Private-felhők összezsugorodása érdekében.
+title: Az Azure VMware-megoldás zsugorítása a CloudSimple private cloud szolgáltatásával
+description: A CloudSimple private cloud zsugorításának ismertetése.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 07/01/2019
@@ -8,60 +8,59 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0ea764081cd0b4d5c6d44cd7364d1e9a89a3cec3
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 602dca105e91c55c591388a833a36e71f951da8b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77014266"
 ---
-# <a name="shrink-an-avs-private-cloud"></a>AVS privát felhő zsugorítása
+# <a name="shrink-a-cloudsimple-private-cloud"></a>CloudSimple magánfelhő zsugorítása
 
-Az AVS rugalmasságot biztosít az AVS-alapú privát felhő dinamikus csökkentése érdekében. Az AVS Private Cloud egy vagy több vSphere-fürtből áll. Minden fürthöz 3 – 16 csomópont tartozhat. Egy AVS-beli privát felhő zsugorításakor eltávolít egy csomópontot a meglévő fürtből, vagy törölhet egy teljes fürtöt. 
+A CloudSimple rugalmasságot biztosít a privát felhő dinamikus zsugorításához.  A magánfelhő egy vagy több vSphere-fürtből áll. Minden fürt rendelkezhet 3–16 csomópontos csomópontokkal. A magánfelhő zsugorításakor eltávolít egy csomópontot a meglévő fürtből, vagy egy teljes fürtet töröl. 
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
-Az AVS Private-felhő csökkentése előtt a következő feltételeknek kell teljesülniük. A felügyeleti fürt (az első fürt) az AVS Private Cloud létrehozásakor jön létre. Nem törölhető.
+A magánfelhő zsugorításához a következő feltételeknek kell teljesülniük.  A magánfelhő létrehozásakor létrehozott felügyeleti fürt (első fürt) nem törölhető.
 
-* A vSphere-fürtnek három csomóponttal kell rendelkeznie. Csak három csomóponttal rendelkező fürt nem lehet összezsugorodni.
-* A felhasznált tárterület teljes mérete nem haladhatja meg a fürt zsugorodása utáni teljes kapacitást.
-* Ellenőrizze, hogy az elosztott erőforrás-ütemező (DRS) szabályai meggátolják-e a virtuális gépek vMotion. Ha szabályok vannak jelen, tiltsa le vagy törölje a szabályokat. A DRS-szabályok közé tartozik a virtuális gép az affinitási szabályok üzemeltetéséhez.
-
+* Egy vSphere-fürtnek három csomódból kell rendelkeznie.  A három csomót csak fürt nem zsugorítható.
+* A teljes felhasznált tárterület nem haladhatja meg a fürt zsugorítása utáni teljes kapacitást.
+* Ellenőrizze, hogy bármely elosztott erőforrás-ütemező (DRS) szabályok megakadályozzák vMotion egy virtuális gép.  Ha szabályok vannak jelen, tiltsa le vagy törölje a szabályokat.  A DRS-szabályok tartalmazzák a virtuális gépet az affinitási szabályok üzemeltetéséhez.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
+Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Portalon a .
 
-## <a name="shrinking-an-avs-private-cloud"></a>Az AVS Private Cloud csökkentése
+## <a name="shrink-a-private-cloud"></a>Magánfelhő zsugorítása
 
-1. [Hozzáférés az AVS-portálhoz](access-cloudsimple-portal.md).
+1. [A CloudSimple portál elérése.](access-cloudsimple-portal.md)
 
-2. Nyissa meg az **erőforrások** lapot.
+2. Nyissa meg az **Erőforrások** lapot.
 
-3. Kattintson a zsugorodni kívánt AVS Private-felhőre
+3. Kattintson a zsugorítani kívánt magánfelhőre
 
-4. Az összefoglalás lapon kattintson a **zsugorodás**elemre.
+4. Az összegzés lapon kattintson a **Zsugorítás gombra.**
 
-    ![Az AVS Private Cloud zsugorítása](media/shrink-private-cloud.png)
+    ![Magánfelhő zsugorítása](media/shrink-private-cloud.png)
 
-5. Válassza ki a lekicsinyíteni vagy törölni kívánt fürtöt. 
+5. Jelölje ki a zsugorítani vagy törölni kívánt fürtöt. 
 
-    ![Az AVS Private Cloud zsugorítása – fürt kiválasztása](media/shrink-private-cloud-select-cluster.png)
+    ![Magánfelhő zsugorítása – fürt kiválasztása](media/shrink-private-cloud-select-cluster.png)
 
-6. Válassza az **egyetlen csomópont eltávolítása** vagy **a teljes fürt törlése**lehetőséget. 
+6. Válassza **az Egy csomópont eltávolítása** vagy a Teljes fürt törlése **lehetőséget.** 
 
 7. A fürt kapacitásának ellenőrzése
 
-8. Kattintson a **Submit (elküldés** ) elemre az AVS Private Cloud kicsinyítéséhez.
+8. Kattintson a **Küldés** gombra a magánfelhő zsugorításához.
 
-Az AVS Private Cloud lekicsinyítése megkezdődik. Nyomon követheti a feladatok előrehaladását. A zsugorodó folyamat néhány órát is igénybe vehet az adattól függően, amelyet újra kell szinkronizálni a vSAN-on.
+A magánfelhő zsugorítása elindul.  Figyelemmel kísérheti a tevékenységek előrehaladását.  A zsugorítási folyamat az adatoktól függően néhány órát is igénybe vehet, amelyet újra kell szinkronizálni a vSAN-on.
 
 > [!NOTE]
-> 1. Ha az adatközpontban az utolsó vagy az egyetlen fürt törlésével csökkenti a privát felhőt, az adatközpont nem lesz törölve.
-> 2. Ha bármely DRS-szabály megsértése történik, a rendszer nem távolítja el a csomópontot a fürtből, és a feladat leírása azt mutatja, hogy a csomópontok eltávolítása megsérti a fürt DRS-szabályait.    
+> 1. Ha egy magánfelhő zsugorítása az adatközpont utolsó vagy egyetlen fürtjének törlésével, az adatközpont nem törlődik.
+> 2. Ha a DRS-szabályok megsértése történik, csomópont nem lesz eltávolítva a fürtből, és a feladat leírása azt mutatja, hogy egy csomópont eltávolítása megsérti a DRS-szabályokat a fürtön.    
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [VMware virtuális gépek használata az Azure-ban](quickstart-create-vmware-virtual-machine.md)
-* További információ az [AVS Private felhőkről](cloudsimple-private-cloud.md)
+* [VMware rendszerű virtuális gépek felhasználása az Azure-ban](quickstart-create-vmware-virtual-machine.md)
+* További információ a [privát felhőkről](cloudsimple-private-cloud.md)
