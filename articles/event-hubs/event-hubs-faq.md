@@ -1,6 +1,6 @@
 ---
-title: Gyakori kérdések – Azure Event Hubs |} A Microsoft Docs
-description: Ez a cikk az Azure Event Hubs és a válaszok a gyakori kérdések (GYIK) listája.
+title: Gyakori kérdések – Azure Event Hubs | Microsoft dokumentumok
+description: Ez a cikk az Azure Event Hubs gyakori kérdések (GYIK) listáját és azok válaszait tartalmazza.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -10,252 +10,252 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/02/2019
 ms.author: shvija
-ms.openlocfilehash: 3b46c574ea47622ec97e70c0d2f2cdc3aa54ec0d
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: d2d74a90d6712089cff681381e11b1caec9d469d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79264959"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80283667"
 ---
-# <a name="event-hubs-frequently-asked-questions"></a>Az Event Hubs – gyakori kérdések
+# <a name="event-hubs-frequently-asked-questions"></a>Az Event Hubs gyakran tesz fel kérdéseket
 
 ## <a name="general"></a>Általános kérdések
 
-### <a name="what-is-an-event-hubs-namespace"></a>Mi az Event Hubs-névtér?
-A névtér egy hatókörkezelési tároló az Event Hub és Kafka-témakörökhöz a. Egyedi [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)-t biztosít. Egy névtér szolgál egy alkalmazástárolót, amelynek több Event Hub és Kafka-témaköröket is tartalmazhat. 
+### <a name="what-is-an-event-hubs-namespace"></a>Mi az Event Hubs névtér?
+A névtér az Event Hub/Kafka-témakörök hatókör-tárolója. Ez ad egy egyedülálló [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name). A névtér alkalmazástárolóként szolgál, amely több Event Hub/Kafka-témakört is tárolhat. 
 
-### <a name="when-do-i-create-a-new-namespace-vs-use-an-existing-namespace"></a>Mikor hozzon létre egy új névteret, vagy használjon egy meglévő névteret?
-A kapacitás kiosztása ([átviteli egység (TUs)](#throughput-units)) a névtér szintjén kerül kiszámlázásra. A névtér egy régióhoz is társítva van.
+### <a name="when-do-i-create-a-new-namespace-vs-use-an-existing-namespace"></a>Mikor hozhatok létre új névteret, és mikor használhatok meglévő névteret?
+A kapacitásallokációkat[( átviteli egységeket (ÁTVITELI EGYSÉGEK)](#throughput-units)a névtér szintjén számlázunk. Egy névtér is társítva van egy régióhoz.
 
-A következő esetekben érdemes lehet új névteret létrehozni a meglévő használata helyett: 
+Előfordulhat, hogy új névteret szeretne létrehozni ahelyett, hogy az alábbi esetek egyikében egy meglévőt használna: 
 
-- Szüksége lesz egy új régióhoz társított Event hub-ra.
-- Egy másik előfizetéshez társított Event hub szükséges.
-- Az Event hub-nak külön kapacitás-kiosztással kell rendelkeznie (azaz a hozzáadott Event hub-hoz tartozó névtér kapacitásának nagyobbnak kell lennie a 40-as számú TU-küszöbértéknél, és nem kívánja a dedikált fürthöz jutni)  
+- Egy új régióhoz társított Eseményközpontra van szükség.
+- Egy másik előfizetéshez társított Event Hubra van szükség.
+- Külön kapacitásallokációval rendelkező Eseményközpontra van szükség (azaz a hozzáadott eseményközponttal rendelkező névtér kapacitásigénye meghaladja a 40 TU-küszöbértéket, és nem szeretne a dedikált fürtre menni)  
 
-### <a name="what-is-the-difference-between-event-hubs-basic-and-standard-tiers"></a>Mi a különbség az alapszintű Event Hubs és a Standard szint között?
+### <a name="what-is-the-difference-between-event-hubs-basic-and-standard-tiers"></a>Mi a különbség az Event Hubs Basic és a Standard szintek között?
 
-Az Azure Event Hubs Standard szintű csomagban érhető el az alapszintű csomag biztosít. A Standard jelennek meg a következő funkciókat:
+Az Azure Event Hubs standard szintű szolgáltatása az alapszintű szinten elérhető funkciókon túl is biztosít funkciókat. A Standard a következő funkciókat tartalmazza:
 
-* Esemény hosszabb megőrzés
-* További felügyelt kapcsolatok a kerettúllépési díjat számítunk fel több, mint a-szám
-* Több, mint egyetlen [fogyasztói csoport](event-hubs-features.md#consumer-groups)
-* [Rögzítése](event-hubs-capture-overview.md)
-* [Kafka-integráció](event-hubs-for-kafka-ecosystem-overview.md)
+* Hosszabb eseménymegőrzés
+* További közvetített kapcsolatok, a túlterhelési díj több, mint a szám tartalmazza
+* Több, mint egy [fogyasztói csoport](event-hubs-features.md#consumer-groups)
+* [Elfog](event-hubs-capture-overview.md)
+* [Kafka integráció](event-hubs-for-kafka-ecosystem-overview.md)
 
-A díjszabással kapcsolatos további információkért, beleértve a dedikált Event Hubs is, tekintse meg a [Event Hubs díjszabási részleteit](https://azure.microsoft.com/pricing/details/event-hubs/).
+A tarifacsomagokról, köztük a dedikált eseményközpontokról az [Event Hubs díjszabási részleteiben](https://azure.microsoft.com/pricing/details/event-hubs/)talál további információt.
 
 ### <a name="where-is-azure-event-hubs-available"></a>Hol érhető el az Azure Event Hubs?
 
-Azure Event hubs szolgáltatás az összes támogatott Azure-régióban érhető el. A listában keresse fel az [Azure-régiók](https://azure.microsoft.com/regions/) lapot.  
+Az Azure Event Hubs minden támogatott Azure-régióban elérhető. Egy listát, látogasson el az [Azure-régiók](https://azure.microsoft.com/regions/) oldalon.  
 
-### <a name="can-i-use-a-single-amqp-connection-to-send-and-receive-from-multiple-event-hubs"></a>Használhatom-e egyetlen AMQP-kapcsolaton küldése és fogadása az event hubs-eseményközpontokból több?
+### <a name="can-i-use-a-single-amqp-connection-to-send-and-receive-from-multiple-event-hubs"></a>Használhatok egyetlen AMQP-kapcsolatot több eseményközpontból történő küldéshez és fogadáshoz?
 
-Igen, mindaddig, amíg az event hubs a ugyanazon névterében van.
+Igen, mindaddig, amíg az összes eseményközpontok ugyanabban a névtérben.
 
-### <a name="what-is-the-maximum-retention-period-for-events"></a>Mi az a maximális adatmegőrzési időtartam eseményeket?
+### <a name="what-is-the-maximum-retention-period-for-events"></a>Mi az események maximális megőrzési ideje?
 
-Event Hubs Standard csomag jelenleg támogatja a maximális adatmegőrzési időtartam hét nap. Az Event hubok nem végleges adattárként szolgálnak. A 24 óránál hosszabb megőrzési időtartamok olyan forgatókönyvekhez készültek, amelyekben az esemény-adatfolyamok ugyanabba a rendszerbe való visszajátszására alkalmasak. például egy új gépi tanulási modell betanításához vagy ellenőrzéséhez a meglévő adattípusokon. Ha az üzenetek megőrzése hét nap elteltével is szükséges, a [Event Hubs rögzítésének](event-hubs-capture-overview.md) engedélyezése az Event hub-on az Event hub adatait az Ön által választott Storage-fiókba vagy Azure Data Lake-szolgáltatási fiókba kéri le. Rögzítés engedélyezése kötelezettséggel jár a megvásárolt átviteli egységek alapján.
+Event Hubs Standard szint jelenleg támogatja a maximális megőrzési időszak hét nap. Az eseményközpontok nem állandó adattárként szolgálnak. A 24 óránál hosszabb megőrzési időszakok olyan forgatókönyvekhez szolgálnak, amelyekben célszerű egy eseményfolyamot ugyanabba a rendszerbe visszajátszani; például egy új gépi tanulási modell betanítása vagy ellenőrzése a meglévő adatokon. Ha hét napon túl üzenetmegőrzésre van szüksége, az [Event Hubs Capture](event-hubs-capture-overview.md) engedélyezése az eseményközpontban lekéri az adatokat az eseményközpontból a Storage-fiókba vagy az Ön által választott Azure Data Lake Service-fiókba. A rögzítés engedélyezése a megvásárolt átviteli egységek alapján díjat számít fel.
 
-A rögzített adatok megőrzési időtartamát beállíthatja a Storage-fiókban. Az Azure Storage **életciklus-kezelési** funkciója az általános célú v2-és blob Storage-fiókok gazdag, szabályon alapuló szabályzatát kínálja. A szabályzat segítségével átválthatja az adatait a megfelelő hozzáférési rétegekbe, vagy lejárhat az adatéletciklus végén. További információ: [Az Azure Blob Storage életciklusának kezelése](../storage/blobs/storage-lifecycle-management-concepts.md). 
+Beállíthatja a tárfiókban rögzített adatok megőrzési időszakát. Az Azure Storage **életciklus-kezelési** szolgáltatása gazdag, szabályalapú szabályzatot kínál általános célú v2- és blobstorage-fiókokhoz. A szabályzat segítségével átválthatja az adatokat a megfelelő hozzáférési szintekre, vagy lejár az adatok életciklusának végén. További információ: [Az Azure Blob tárolási életciklusának kezelése.](../storage/blobs/storage-lifecycle-management-concepts.md) 
 
-### <a name="how-do-i-monitor-my-event-hubs"></a>Hogyan követhetem figyelemmel az Event Hubs?
-Event Hubs teljes mérőszámokat bocsát ki, amelyek a [Azure monitor](../azure-monitor/overview.md)erőforrásainak állapotát biztosítják. Emellett segítségével felmérheti az általános állapotát, az Event Hubs szolgáltatás nem csak a névterek szintjén, hanem az entitások szintjén. Ismerje meg, hogy az [Azure Event Hubs](event-hubs-metrics-azure-monitor.md)milyen monitorozási lehetőségeket kínál.
+### <a name="how-do-i-monitor-my-event-hubs"></a>Hogyan figyelhetem az Eseményközpontokat?
+Az Event Hubs kimerítő metrikákat bocsát ki, amelyek biztosítják az erőforrások állapotát az [Azure Monitor](../azure-monitor/overview.md)számára. Azt is lehetővé teszik, hogy az Event Hubs szolgáltatás általános állapotát nem csak a névtér szintjén, hanem az entitás szintjén is felmérheti. Megtudhatja, hogy milyen figyelést kínál az [Azure Event Hubs.](event-hubs-metrics-azure-monitor.md)
 
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Milyen portokat kell megnyitni a tűzfalon? 
-Az üzenetek küldéséhez és fogadásához a következő protokollokat használhatja Azure Service Bus:
+Az alábbi protokollok segítségével küldhet és fogadhat üzeneteket az Azure Service Bus segítségével:
 
 - Advanced Message Queueing Protocol (AMQP)
 - HTTP
 - Apache Kafka
 
-Az alábbi táblázat tartalmazza azokat a kimenő portokat, amelyeket meg kell nyitni a protokollok Azure Event Hubs-vel való kommunikációhoz való használatához. 
+Tekintse meg az alábbi táblázatot a kimenő portok meg kell nyitnia, hogy használja ezeket a protokollokat az Azure Event Hubs kommunikálni. 
 
-| Protokoll | Portok | Részletek | 
+| Protocol (Protokoll) | Portok | Részletek | 
 | -------- | ----- | ------- | 
-| AMQP | 5671 és 5672 | Lásd: [AMQP protokoll – útmutató](../service-bus-messaging/service-bus-amqp-protocol-guide.md) | 
+| AMQP | 5671 és 5672 | Lásd: [AMQP protokollútmutató](../service-bus-messaging/service-bus-amqp-protocol-guide.md) | 
 | HTTP, HTTPS | 80, 443 |  |
-| Kafka | 9093 | Lásd: [Event Hubs használata a Kafka-alkalmazásokból](event-hubs-for-kafka-ecosystem-overview.md)
+| Kafka | 9093 | Lásd: [Eseményközpontok használata a Kafka-alkalmazásokból](event-hubs-for-kafka-ecosystem-overview.md)
 
 ### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>Milyen IP-címekre van szükségem az engedélyezési listához?
-Az alábbi lépéseket követve megkeresheti a megfelelő IP-címeket a kapcsolatokhoz tartozó fehér listához:
+A kapcsolatokhoz megfelelő IP-címek és fehér listák megkereséséhez kövesse az alábbi lépéseket:
 
-1. Futtassa a következő parancsot egy parancssorból: 
+1. Futtassa a következő parancsot a parancssorból: 
 
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. Jegyezze fel a `Non-authoritative answer`ban visszaadott IP-címet. Ha egy másik fürtre állítja vissza a névteret, csak akkor változna meg a változás.
+2. Jegyezze fel a `Non-authoritative answer`visszaadott IP-címet a ban. Csak akkor változik meg, ha visszaállítja a névteret egy másik fürtre.
 
-Ha a zóna redundanciát használja a névtérhez, néhány további lépést is végre kell hajtania: 
+Ha a zónaredundanciát használja a névtérhez, néhány további lépést kell tennie: 
 
-1. Először futtassa az nslookupt a névtéren.
+1. Először futtassa az nslookup-ot a névtéren.
 
     ```
     nslookup <yournamespace>.servicebus.windows.net
     ```
-2. Jegyezze fel a nevet a **nem mérvadó válasz** szakaszban, amely az alábbi formátumok egyike: 
+2. Jegyezze fel a nevet a **nem mérvadó válasz** szakaszban, amely az alábbi formátumok egyikében található: 
 
     ```
     <name>-s1.servicebus.windows.net
     <name>-s2.servicebus.windows.net
     <name>-s3.servicebus.windows.net
     ```
-3. Futtassa az nslookupt mindegyikhez az S1, az S2 és az S3 utótaggal a három rendelkezésre állási zónában futó mindhárom példány IP-címeinek lekéréséhez. 
+3. Futtassa az nslookup-ot az s1, s2 és s3 utótagokkal rendelkező mindegyikhez, hogy lekérhesd mindhárom példány IP-címét, amely három rendelkezésre állási zónában fut, 
 
-## <a name="apache-kafka-integration"></a>Az Apache Kafka-integráció
+## <a name="apache-kafka-integration"></a>Apache Kafka integráció
 
-### <a name="how-do-i-integrate-my-existing-kafka-application-with-event-hubs"></a>Hogyan integrálhatja meglévő Kafka az alkalmazásom az Event Hubs?
-Az Event Hubs biztosít egy Kafka-végpontot, amely a meglévő Apache Kafka-alapú alkalmazások által használható. Egy konfigurációmódosítás Ez minden, a PaaS Kafka tapasztalatra van szükség. Biztosít a saját Kafka-fürt futtatása helyett használhatók. Az Event Hubs az Apache Kafka 1.0-s és újabb ügyfél verzióit támogatja, és együttműködik a meglévő Kafka alkalmazásokat, eszközöket és keretrendszereket. További információ: [Event Hubs for Kafka](https://github.com/Azure/azure-event-hubs-for-kafka)-tárház.
+### <a name="how-do-i-integrate-my-existing-kafka-application-with-event-hubs"></a>Hogyan integrálhatom a meglévő Kafka-alkalmazásomat az Event Hubs-szal?
+Az Event Hubs egy Kafka-végpontot biztosít, amelyet a meglévő Apache Kafka alapú alkalmazások használhatnak. A PaaS Kafka-élményhez csak konfigurációs módosításra van szükség. Alternatívát kínál a saját Kafka-fürt futtatásához. Az Event Hubs támogatja az Apache Kafka 1.0-s és újabb ügyfélverziókat, és együttműködik a meglévő Kafka alkalmazásokkal, eszközökkel és keretrendszerekkel. További információ: [Event Hubs for Kafka repo.](https://github.com/Azure/azure-event-hubs-for-kafka)
 
-### <a name="what-configuration-changes-need-to-be-done-for-my-existing-application-to-talk-to-event-hubs"></a>Milyen konfigurációs módosításokat kell megtenni a meglévő alkalmazás kommunikáljon az Event Hubs?
-Szeretne csatlakozni egy Kafka-kompatibilis Event Hub, a Kafka ügyfél configs frissítéséhez szüksége. Event Hubs névtér létrehozásával és a [kapcsolatok karakterláncának](event-hubs-get-connection-string.md)beszerzésével végezhető el. Az Event Hubs teljes Tartománynevét és a portot átirányítása 9093 bootstrap.servers módosítása Frissítse a SASL. jaas. config fájlt, hogy a Kafka-ügyfelet a Kafka-kompatibilis Event Hubs végpontra irányítsa (amely az Ön által beszerzett kapcsolódási karakterlánc), a megfelelő hitelesítéssel, ahogy az alábbi ábrán látható:
+### <a name="what-configuration-changes-need-to-be-done-for-my-existing-application-to-talk-to-event-hubs"></a>Milyen konfigurációs módosításokat kell végrehajtani a meglévő alkalmazás beszélni Event Hubs?
+Egy eseményközponthoz való csatlakozáshoz frissítenie kell a Kafka ügyfél konfigurációját. Ez úgy történik, hogy létrehoz egy Event Hubs névteret, és beszerzi a [kapcsolati karakterláncot.](event-hubs-get-connection-string.md) Módosítsa a bootstrap.servers-t úgy, hogy az Event Hubs fqdn-t és a portot 9093-ra mutassa. Frissítse a sasl.jaas.config-ot, hogy a Kafka ügyfelet az Event Hubs végpontjára irányítsa (amely a kapott kapcsolati karakterlánc), az alábbi megfelelő hitelesítéssel:
 
-bootstrap.Servers={Your. EVENTHUBS. FQDN}: 9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule szükséges felhasználónév = "$ConnectionString" jelszó = "{YOUR. EVENTHUBS. A KAPCSOLAT. KARAKTERLÁNC} ";
+bootstrap.servers={YOUR. RENDEZVÉNY. FQDN}:9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule szükséges username="$ConnectionString" password="{YOUR. RENDEZVÉNY. Kapcsolat. KARAKTERLÁNC}";
 
 Példa:
 
-bootstrap.Servers=dummynamespace.servicebus.Windows.NET:9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule szükséges felhasználónév = "$ ConnectionString"password="Endpoint=sb://dummynamespace.servicebus.windows.net/; SharedAccessKeyName DummyAccessKeyName; = SharedAccessKey = 5dOntTRytoC24opYThisAsit3is2B + OGY1US/fuL3ly = ";
+bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.plain.PlainLoginModule szükséges felhasználónév="$ConnectionString" jelszó="Endpoint=sb://dummynamespace.servicebus.windows.net/; SharedAccessKeyName=DummyAccessKeyName; SharedAccessKey=5dOntTRytoC24opYThisAsit3is2B+OGY1US/fuL3ly=";
 
-Megjegyzés: Ha a SASL. jaas. config fájl nem támogatott konfiguráció a keretrendszerben, keresse meg azokat a konfigurációkat, amelyek segítségével beállítja a SASL felhasználónevét és jelszavát, és használja ezeket. Állítsa be a username $ConnectionString és a jelszót az Event Hubs kapcsolati karakterlánc.
+Megjegyzés: Ha a sasl.jaas.config nem támogatott konfiguráció a keretrendszerben, keresse meg a SASL felhasználónév és jelszó beállításához használt konfigurációkat, és használja azokat. Állítsa be a felhasználónevet $ConnectionString és a jelszót az Event Hubs kapcsolati karakterláncához.
 
-### <a name="what-is-the-messageevent-size-for-kafka-enabled-event-hubs"></a>Mi az Event hubs Kafka-kompatibilis üzenet/esemény méretét?
-A Kafka-kompatibilis Event Hubs számára engedélyezett maximális üzenet mérete 1 MB.
+### <a name="what-is-the-messageevent-size-for-event-hubs"></a>Mekkora az Eseményközpontok üzenet-/eseménymérete?
+Az Eseményközpontok számára engedélyezett üzenetméret 1 MB.
 
 ## <a name="throughput-units"></a>Átviteli egységek
 
-### <a name="what-are-event-hubs-throughput-units"></a>Mik azok az Event Hubs átviteli egység?
-Az Event Hubs átviteli adatok mennyisége megabájt vagy 1 KB-os események száma (a több ezer) határozza meg, hogy bejövő és kimenő forgalom az Event Hubs segítségével. Az átviteli sebesség mérése, az átviteli egységek (átviteli egységek). Átviteli egységek beszerzési, az Event Hubs szolgáltatás használata előtt. Explicit módon kiválaszthatja Event Hubs átviteli egységek kell portálon vagy az Event Hubs Resource Manager-sablonok használatával. 
+### <a name="what-are-event-hubs-throughput-units"></a>Mik azok az Event Hubs átviteli egységek?
+Az Eseményközpontokban az átviteli forgalom határozza megabájtban lévő adatok mennyiségét, illetve az 1 KB-os események számát (ezerben), amelyek be- és kifelé haladnak az Eseményközpontokon keresztül. Ezt az átviteli értéket átviteli egységekben (Átviteli egységek) mérik. Vásárlás iszt.hu mielőtt az Event Hubs szolgáltatás használatát. Az Event Hubs IN-ek explicit módon kiválaszthatók portál- vagy Eseményközpontok erőforrás-kezelősablonjainak használatával. 
 
 
-### <a name="do-throughput-units-apply-to-all-event-hubs-in-a-namespace"></a>A kapacitásegységek egy névtér összes event hubs vonatkoznak?
-Igen, az Event Hubs-névtér összes event hubs átviteli egységek (átviteli egységek) vonatkoznak. Az azt jelenti, hogy a névterek szintjén átviteli egységek megvásárlása és a névtéren az event hubs között. Minden egyes átviteli egység a névtér feljogosítja a a következő funkciókat:
+### <a name="do-throughput-units-apply-to-all-event-hubs-in-a-namespace"></a>Az átviteli egységek a névtér összes eseményközpontjára vonatkoznak?
+Igen, az átviteli egységek (Átviteli egységek) az Event Hubs névtér összes eseményközpontjára vonatkoznak. Ez azt jelenti, hogy a névtér szintjén vásárol többes készletet, és az adott névtér alatt meg vannak osztva az eseményközpontok között. Minden TU a következő képességekre jogosítja fel a névteret:
 
-- Akár 1 MB / s belépő események (egy eseményközpontba küldött események), de nem több mint 1000 beáramlási események, műveletek vagy vezérlőelem API-hívások / másodperc.
-- Akár 2 MB / s kapacitás a kilépő események (egy adott eseményközpontból beolvasott események), de legfeljebb csak 4096 kapacitás a kilépő események.
-- Akár 84 GB-nyi eseménytár (az alapértelmezett 24 órányi adatmegőrzéshez elegendő).
+- Legfeljebb 1 MB/s a beérkező események (eseményközpontba küldött események), de legfeljebb 1000 be- ésres események, felügyeleti műveletek vagy api-hívások vezérlése API-hívások másodpercenként.
+- Legfeljebb 2 MB/s kimenő események (eseményközpontból felhasznált események), de legfeljebb 4096 kimenő események.
+- Akár 84 GB eseménytároló (elég az alapértelmezett 24 órás megőrzési időszakra).
 
-### <a name="how-are-throughput-units-billed"></a>Hogyan történik a átviteli egységek számlázása?
-Átviteli egységek (átviteli egységek) számlázása óránként történik. A számlázás az egységek maximális száma az adott órában kiválasztott alapul. 
+### <a name="how-are-throughput-units-billed"></a>Hogyan történik a számlázás az átviteli egységek számlázása?
+Az átviteli egységek (Átviteli egységek) számlázása óránként történik. A számlázás az adott órában kiválasztott egységek maximális számán alapul. 
 
-### <a name="how-can-i-optimize-the-usage-on-my-throughput-units"></a>Hogyan optimalizálhatom a használati a saját átviteli egység?
-Akár alacsony átviteli egység (TU) is elindítható, és bekapcsolhatja az [automatikus](event-hubs-auto-inflate.md)kikapcsolást. Az automatikus feltöltési funkció lehetővé teszi a forgalom/hasznos növeli az átviteli egységek növekszik. Átviteli egységek számát is beállíthat egy felső korlátot.
+### <a name="how-can-i-optimize-the-usage-on-my-throughput-units"></a>Hogyan optimalizálhatom az átviteli egységek használatát?
+Akár egy átviteli egységet (TU) is indíthat, és bekapcsolhatja az [automatikus felfújást.](event-hubs-auto-inflate.md) Az automatikus felfújás funkció lehetővé teszi, hogy növekszik a toszka, mint a forgalom / hasznos teher növekszik. A felső készlet számát is beállíthatja.
 
-### <a name="how-does-auto-inflate-feature-of-event-hubs-work"></a>Hogyan működik az automatikus feltöltési funkció az Event hubs?
-Az automatikus feltöltési funkció lehetővé teszi horizontális particionálás az átviteli egységek (átviteli egységek). Az azt jelenti, hogy alacsony átviteli egységek vásárlásával elindításához, és az automatikus feltöltési skálázását követve rugalmasan méretezhető az átviteli egységek fel, a bejövő forgalom növeli. Biztosít egy szolgáltatás költséghatékony lehetőséget és szabályozhatja az átviteli egységek száma kezeléséhez. Ez **a funkció egy** vertikálisan felhasználható funkció, és a frissítéssel teljes mértékben szabályozható az TUs-szám skálázása. 
+### <a name="how-does-auto-inflate-feature-of-event-hubs-work"></a>Hogyan működik az Event Hubs automatikus felfújási funkciója?
+Az automatikus felfújás funkció lehetővé teszi az átviteli egységek (Átviteli egységek) skálázását. Ez azt jelenti, hogy elkezdheti az alacsony tus megvásárlásával, és automatikusan felfújja a tosz-t, ahogy a be- ésalágyulás növekszik. Ez ad ön egy költséghatékony lehetőség, és teljes mértékben ellenőrzése a kezelt számos kezelt. Ez a funkció csak **egy skálázási funkció,** és teljes mértékben szabályozhatja a készletkészlet számának leskálázását frissítésével. 
 
-Előfordulhat, hogy szeretné elindítani az alacsony átviteli egységek (átviteli egységek), például 2 átviteli egységek. Ha meg előre jelezni, hogy a forgalom 15 átviteli egységek, előfordulhat, hogy növekedjen turn-on az automatikus feltöltésről a névtér-funkció, és állítsa be a maximális korlátját, 15 átviteli egységek. Akkor is most már az átviteli egységek Automatikus növelés pedig a forgalomhoz igazítható.
+Előfordulhat, hogy alacsony átviteli egységek (Átviteli egységek), például 2 átviteli egységek. Ha azt jósolja, hogy a forgalom 15 teljes munkaidős egyedre nőhet, kapcsolja be az automatikus felfújási funkciót a névtérben, és állítsa a maximális korlátot 15 teljes értékre. Mostantól a forgalom növekedésével automatikusan növelheti a vezérigazgatóit.
 
-### <a name="is-there-a-cost-associated-when-i-turn-on-the-auto-inflate-feature"></a>Díjköteles kapcsolódó, ha be van kapcsolva az automatikus feltöltési funkció?
-Ehhez a szolgáltatáshoz **nem tartozik díj** . 
+### <a name="is-there-a-cost-associated-when-i-turn-on-the-auto-inflate-feature"></a>Költség jár az automatikus felfújás funkció bekapcsolásakor?
+Ehhez a funkcióhoz **nincs költség** társítva. 
 
-### <a name="how-are-throughput-limits-enforced"></a>Hogyan tartatja be átviteli korlátai?
-Ha a belépő kapacitás vagy a belépő üzenetek gyakorisága összességében egy névtér összes event hubs meghaladja az összesített átviteli egység a kedvezmények, feladók szabályozott, és hibajelzésekben, hogy a belépési kapacitáskvóta túllépését.
+### <a name="how-are-throughput-limits-enforced"></a>Hogyan történik az átviteli korlátok kényszerítése?
+Ha a teljes bejövő átviteli sebesség vagy a teljes bejövő események aránya a névtér összes eseményközpontjaiban meghaladja az összesített átviteli egység kibocsátási egységeket, a küldők szabályozása és a bejövő kvóta túllépésének jelző hibaüzenetei jelennek meg.
 
-Ha a kilépő kapacitás vagy a kilépő üzenetek gyakorisága egy névtér összes event hubs között meghaladja az összesített átviteli egység a kedvezmények, fogadók szabályozott, és hibajelzésekben, hogy a kilépési kapacitáskvóta túllépését. Bejövő és kimenő kvóták külön-külön érvényben vannak, így nincsenek sem tudja lassítani eseményfeldolgozás, és egyetlen külső eseményfogyasztó megakadályozhatja az eseményeket egy eseményközpontba küldött.
+Ha a teljes kimenő forgalom vagy a névtér összes eseményhubjának teljes kimenő kimenő sebessége meghaladja az összesített átviteli egységkibocsátási egységekszámát, a rendszer szabályozza a fogadókat, és hibaüzeneteket kap, amelyek azt jelzik, hogy a kimenő forgalom kvótáját túllépték. A be- és kilépési kvóták külön vannak kényszerítve, így egyetlen feladó sem lassíthatja az eseményfelhasználást, és a fogadó sem akadályozhatja meg, hogy eseményeket küldjenek egy eseményközpontba.
 
-### <a name="is-there-a-limit-on-the-number-of-throughput-units-tus-that-can-be-reservedselected"></a>Átviteli egységek (átviteli egységek), amely lehet fenntartott vagy kiválasztott száma korlátozva van?
-Egy több-bérlős kínáló, az átviteli egységek növelhető akár 40 átviteli egységek (legfeljebb 20 átviteli egységek kiválasztása a portálon, és létre egy támogatási jegyet, azt emelni ugyanazt a névteret a 40 átviteli egységek). Az 40-as túllépés Event Hubs a **dedikált Event Hubs-fürtök**nevű erőforrás/kapacitás alapú modellt kínálja. Dedikált fürtök értékesítik kapacitásegységek (CUs).
+### <a name="is-there-a-limit-on-the-number-of-throughput-units-tus-that-can-be-reservedselected"></a>Korlátozva van a lefoglalható/kiválasztható átviteli egységek száma?
+Egy több-bérlős ajánlat, átviteli egységek nőhet akár 40 átviteli egységek (legfeljebb 20 átviteli egységek a portálon, és egy támogatási jegyet, hogy emelje fel 40 átviteli egységek ugyanazon a névtérben). A 40 int-en túl az Event Hubs az Erőforrás-/kapacitásalapú modellt, az **Event Hubs Dedikált fürtöket**kínálja. A dedikált fürtök kapacitásegységekben (CUs) kerülnek értékesítésre.
 
 ## <a name="dedicated-clusters"></a>Dedikált fürtök
 
-### <a name="what-are-event-hubs-dedicated-clusters"></a>Mik azok az Event Hubs dedikált fürtök?
-Event Hubs dedikált fürtök egybérlős központi telepítések legszigorúbb követelményeknek rendelkező ügyfelek számára kínálnak. Ezt az ajánlatot egy kapacitás-alapú fürtöt, amely nincs kötve a kapacitásegységek által épít fel. Ez azt jelenti, hogy a fürtöt használhatja a fürt CPU-és memóriahasználat által diktált adatok betöltésére és továbbítására. További információ: dedikált Event Hubs- [fürtök](event-hubs-dedicated-overview.md).
+### <a name="what-are-event-hubs-dedicated-clusters"></a>Mik azok a dedikált Event Hubs-fürtök?
+Az Event Hubs dedikált fürtjei egybérlős telepítéseket kínálnak a legigényesebb követelményekkel rendelkező ügyfelek számára. Ez az ajánlat olyan kapacitásalapú fürtöt hoz létre, amelyet nem kötnek átviteli egységek. Ez azt jelenti, hogy a fürt segítségével betöltése és streamelése az adatokat a processzor és a memória használata a fürt. További információ: [Event Hubs Dedicated clusters](event-hubs-dedicated-overview.md).
 
-### <a name="how-much-does-a-single-capacity-unit-let-me-achieve"></a>IP-címek fenntartási nem egy egyetlen kapacitásegységet én választom eléréséhez?
-Egy dedikált fürt esetében a betöltés és az adatfolyam mennyisége a különböző tényezőktől, például a termelőktől, a fogyasztóktól, a betöltés és a feldolgozástól, valamint sok más tényezőtől függ. 
+### <a name="how-much-does-a-single-capacity-unit-let-me-achieve"></a>Mire elegendő egyetlen kapacitásegység?
+Egy dedikált fürt, mennyit lehet betöltése és stream különböző tényezőktől függ, mint például a gyártók, a fogyasztók, a sebesség, amellyel a betöltés és feldolgozás, és még sok más. 
 
-Következő táblázatban a teljesítményteszt eredménye, hogy mi érhető el a tesztelés során:
+Az alábbi táblázat a tesztelés során elért teljesítményeredményeket mutatja be:
 
-| Hasznos adat alakzat | Fogadók | Bejövő sávszélesség| Bejövő üzenetek | Kimenő adatforgalmat | Kimenő üzenetek | Teljes átviteli egységek | Átviteli egységek / Kapacitásegység |
+| Hasznos teher alakja | Vevők | Be- és be- és visszasiklósávszélesség| Be- és be- és visszaküldött üzenetek | Kimenő sávszélesség | Kimenő üzenetek | Teljes Tosz | Tous per CU |
 | ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
-| 100x1KB váró | 2 | 400 MB/mp | 400k üzenetek/mp | 800 MB/mp | 800k üzenetek/mp | 400 átviteli egységek | 100 átviteli egységek | 
-| 10x10KB váró | 2 | 666 MB/mp | 66.6 üzenet/mp | 1,33 GB/mp | 133k üzenetek/mp | 666 átviteli egységek | 166 átviteli egységek |
-| 6x32KB váró | 1 | 1.05 GB/mp | 34k üzenetek/mp | 1.05 GB/mp | 34k üzenetek/mp | 1000 átviteli egységek | 250 átviteli egységek |
+| 100x1 KB-os kötegek | 2 | 400 MB/mp | 400 ezer üzenet/mp | 800 MB/mp | 800 ezer üzenet/mp | 400 tosz | 100 tosz | 
+| 10x10 KB-os kötegek | 2 | 666 MB/mp | 66,6 ezer üzenet/mp | 1,33 GB/mp | 133 ezer üzenet/mp | 666 Tosz | 166 Tosz |
+| 6x32 KB-os kötegek | 1 | 1,05 GB/mp | 34 ezer üzenet / mp | 1,05 GB/mp | 34 ezer üzenet/mp | 1000 tosz | 250 Tosz |
 
-A vizsgálat során, a következő feltételek lett megadva:
+A vizsgálat során a következő kritériumokat alkalmazták:
 
-- A dedikált Event Hubs fürt négy kapacitásegységek (CUs) lett megadva. 
-- Az event hubs streamfeldolgozási használt 200 partíciók rendelkezett. 
-- Volt betöltött adatokat fogad az összes partíció két fogadó alkalmazás kapott.
+- Egy dedikált Event Hubs-fürt öt kapacitásegységgel (CUs) használatos. 
+- A betöltéshez használt eseményközpont 200 partícióval volt. 
+- A betöltött adatokat két fogadóalkalmazás fogadta az összes partícióról.
 
-Az eredmények támpontot, mi érhető el a dedikált Event Hubs-fürtökkel. Emellett egy tárterületét fürtöt tartalmaz az Event Hubs rögzítés funkciója engedélyezve van a irányuló mikrokötegelt és hosszú távú adatmegőrzési-forgatókönyvekhez.
+Az eredmények képet adnak arról, hogy mit lehet elérni egy dedikált Event Hubs-fürttel. Emellett a felszentelési fürt jön az Event Hubs Capture engedélyezve van a mikro-köteg és a hosszú távú megőrzési forgatókönyvek.
 
-### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>Hogyan hozhatok létre egy Event Hubs dedikált fürtöt?
-Egy Event Hubs dedikált fürtöt úgy hozhat létre, hogy egy [kvótával bővíti a támogatási kérést](https://portal.azure.com/#create/Microsoft.Support) , vagy kapcsolatba lép a [Event Hubs csapatával](mailto:askeventhubs@microsoft.com). Általában körülbelül két hetet lekéréséhez szükséges a fürt üzembe helyezését és gyorsítási értéknek, átadná Ön használhatja. Ez a folyamat ideiglenes, amíg a teljes Önkiszolgálás elérhetővé válik a Azure Portal vagy Azure Resource Manager sablonjain keresztül, amelyek körülbelül két órát tartanak a fürt üzembe helyezéséhez.
+### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>Hogyan hozhatok létre egy dedikált eseményközpontokat?
+Hozzon létre egy eseményközpontok dedikált fürt küld el egy [kvóta növelése támogatási kérelmet,](https://portal.azure.com/#create/Microsoft.Support) vagy kapcsolatba lép az [Event Hubs csapat.](mailto:askeventhubs@microsoft.com) Általában körülbelül két hetet vesz igénybe, hogy a fürt telepítve, és átadta az Ön által használt. Ez a folyamat ideiglenes, amíg egy teljes önkiszolgálás érhető el az Azure Portalon vagy az Azure Resource Manager-sablonokon keresztül, amelyek körülbelül két órát vesz igénybe a fürt üzembe helyezéséhez.
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
-### <a name="how-many-partitions-do-i-need"></a>Hogyan sok partíció van szükségem?
-A partíciók száma az eseményközpont létrehozásakor határozható meg, és 2 és 32 közé eshet. A partíciók száma nem módosítható, ezért érdemes megfontolni a hosszú távú méretezést a partíciók számának beállításakor. A partíció egy adatrendezési mechanizmus, és a felhasználó alkalmazásokban szükséges alárendeltségi párhuzamossághoz köthető. Az egyes eseményközpontokban található partíciók számának kiválasztása közvetlenül kapcsolódik az egyidejű olvasók várt számához. További információ a partíciókon: [partíciók](event-hubs-features.md#partitions).
+### <a name="how-many-partitions-do-i-need"></a>Hány partícióra van szükségem?
+A partíciók száma az eseményközpont létrehozásakor határozható meg, és 2 és 32 közé eshet. A partíciók száma nem módosítható, ezért érdemes a partíciók számának beállításakor a hosszú távú skálázást. A partíció egy adatrendezési mechanizmus, és a felhasználó alkalmazásokban szükséges alárendeltségi párhuzamossághoz köthető. Az egyes eseményközpontokban található partíciók számának kiválasztása közvetlenül kapcsolódik az egyidejű olvasók várt számához. A partíciókról további információt a Partíciók című [témakörben talál.](event-hubs-features.md#partitions)
 
-A létrehozás időpontjában érdemes lehet beállítani a lehető legmagasabb értéket, amely a 32. Ne feledje, hogy több partíció használata esetén a rendszer több partícióba küldi az eseményeket anélkül, hogy megtartja a sorrendet, kivéve, ha a küldőket úgy konfigurálja, hogy csak egyetlen, a 32-es partíción kívülről küldje el a fennmaradó 31 partíciót. Az előző esetben az összes 32-partíción el kell olvasnia az eseményeket. Az utóbbi esetben az Event Processor Host-on kívül az extra konfigurációtól eltekintve nincs nyilvánvaló további díj.
+Előfordulhat, hogy a létrehozás időpontjában a lehető legmagasabb értéket, azaz 32 értéket szeretné beállítani. Ne feledje, hogy egynél több partícióval eredményez több partícióra küldött eseményeket anélkül, hogy megtartaná a sorrendet, kivéve, ha úgy konfigurálja a küldőket, hogy csak a 32-ből csak egy partícióra küldjenek, így a fennmaradó 31 partíció felesleges. Az előbbi esetben mind a 32 partíción végig kell olvasnia az eseményeket. Az utóbbi esetben nincs nyilvánvaló többletköltség, eltekintve az eseményprocesszor-állomáson az extra konfigurációtól.
 
-Az Event Hubs egy fogyasztói csoportot egy egyetlen partícióolvasónak nyilván lehetővé teszi. A legtöbb használati esetek négy partíciót, az alapértelmezett beállítás is elegendő. Ha az esemény feldolgozását szeretné méretezni, érdemes lehet további partíciókat hozzáadnia. Nincs konkrét átviteli korlát a partíción, azonban a névtérben lévő összesített átviteli sebességet az átviteli egységek száma korlátozza. Növeli az átviteli egységek száma a névtérben, előfordulhat, hogy szeretne további partíciókat, hogy az egyidejű olvasók saját maximális átviteli sebesség eléréséhez.
+Az Event Hubs úgy van kialakítva, hogy fogyasztói csoportonként egyetlen partícióolvasót engedélyezze. A legtöbb esetben a négy partíció alapértelmezett beállítása elegendő. Ha az esemény feldolgozása méretezése, érdemes megfontolni további partíciók hozzáadása. Nincs adott átviteli korlát egy partíción, azonban az összesített átviteli a névtérben korlátozza az átviteli egységek száma. A névtérben lévő átviteli egységek számának növelésével további partíciókat szeretne, amelyek lehetővé teszik az egyidejű olvasók számára a saját maximális átviteli teljesítmény elérését.
 
-Előfordulhat azonban, ha a modell, amelyben az alkalmazás rendelkezik egy adott partíció való kapcsolatot, a partíciók számának növelésével nem minden javát. További információ: [rendelkezésre állás és konzisztencia](event-hubs-availability-and-consistency.md).
+Azonban ha van egy modell, amelyben az alkalmazás affinitása egy adott partícióhoz, a partíciók számának növelése nem lehet semmilyen hasznot az Ön számára. További információt a [rendelkezésre állás és a konzisztencia című témakörben talál.](event-hubs-availability-and-consistency.md)
 
 ## <a name="pricing"></a>Díjszabás
 
-### <a name="where-can-i-find-more-pricing-information"></a>Hol találhatok további díjszabási információk?
+### <a name="where-can-i-find-more-pricing-information"></a>Hol találhatok további árképzési információkat?
 
-A Event Hubs díjszabásával kapcsolatos részletes információkért tekintse meg a [Event Hubs díjszabását](https://azure.microsoft.com/pricing/details/event-hubs/).
+Az Event Hubs díjszabásáról az [Event Hubs díjszabási részleteiben talál](https://azure.microsoft.com/pricing/details/event-hubs/)teljes körű tájékoztatást.
 
-### <a name="is-there-a-charge-for-retaining-event-hubs-events-for-more-than-24-hours"></a>Van valamilyen díja az Event Hubs-események megőrzése 24 óránál tovább áll?
+### <a name="is-there-a-charge-for-retaining-event-hubs-events-for-more-than-24-hours"></a>Az Event Hubs-események 24 óránál tovább történő megtartásáért díjat számítunk fel?
 
-Az Event Hubs Standard csomag lehetővé teszi, hogy üzenetmegőrzés legfeljebb hét napja 24 óránál hosszabb ideig. Ha a tárolt események teljes száma meghaladja a tároló (kapacitásegységenként 84 GB) a kiválasztott kapacitásegységek száma, a mérete, amely meghaladja a díja a közzétett Azure Blob storage sebességét. A keretet az egyes kapacitásegységek 24 órányi megőrzéshez költségeit tartalmazza (az alapértelmezett beállítás) még akkor is, ha a Kapacitásegység a legnagyobb bejövő keretet.
+Az Event Hubs standard szint lehetővé teszi, hogy az üzenetek megőrzési időszaka 24 óránál hosszabb, legfeljebb hét napig. Ha a tárolt események teljes száma meghaladja a kiválasztott átviteli egységek (84 GB/átviteli egység) tárolási keretét, a keretet meghaladó méretet a közzétett Azure Blob-tárolási díjban számítjuk fel. Az egyes átviteli egységek tárolási kerete fedezi a 24 órás megőrzési időszakok (alapértelmezett) tárolási költségeit, még akkor is, ha az átviteli egységet a maximális bejövő kibocsátási egységig használják.
 
-### <a name="how-is-the-event-hubs-storage-size-calculated-and-charged"></a>Hogyan az Event Hubs tárméret kiszámítása és díját?
+### <a name="how-is-the-event-hubs-storage-size-calculated-and-charged"></a>Hogyan történik az Event Hubs tárolási mérete, és hogyan számítják fel?
 
-Minden tárolt események, belső, adminisztratív kapcsolódóan tárakon lemezt beleértve minden event hubs, amelyek összméretén egész nap folyamatosan mérjük. A nap végén megállapítjuk az aznap foglalt tárméret maximumát. A napi tárkeretet az adott napra választott kapacitásegységek számából állapítjuk meg – ha egy adott nap folyamán többször több különböző értéket jelöltek ki, akkor a legkisebbet vesszük figyelembe. Egy kapacitásegység tárkerete 84 GB. Ha a teljes méret meghaladja a napi kiszámított tárterületet, a felesleges tárterületet az Azure Blob Storage díjszabása (a **helyileg redundáns tárolási** arány) alapján számlázjuk.
+Az összes tárolt esemény teljes méretét, beleértve az eseményfejlécek vagy a lemeztároló struktúrák belső terhelését az összes eseményközpontban, a nap folyamán mérik. A nap végén kiszámítja a maximális tárolási méretet. A napitárolási keret kiszámítása a nap folyamán kiválasztott átviteli egységek minimális száma alapján történik (minden átviteli egység 84 GB-os engedményt biztosít). Ha a teljes méret meghaladja a számított napi tárolási keretet, a felesleges tárhely számlázása az Azure Blob tárolási díjai alapján történik **(helyileg redundáns tárolási** díjmellett).
 
-### <a name="how-are-event-hubs-ingress-events-calculated"></a>Hogyan számítják a belépő események Event Hubs?
+### <a name="how-are-event-hubs-ingress-events-calculated"></a>Hogyan történik az Event Hubs inress események kiszámítása?
 
-Az eseményközpontba érkező minden egyes esemény egy üzenetnek számít. A *bejövő események* olyan adategységként vannak definiálva, amely kisebb vagy egyenlő, mint 64 kb. Bármely esemény, amely legfeljebb 64 KB méretű tekinthető egy esemény számlázható. Ha az esemény 64 KB-nál nagyobb, számlázható események száma értendő az esemény mérete a 64 KB hányszorosa. Például az event hubs küldött 8 KB-os esemény egy eseménynek történik, de egy 96 KB-os üzenetet az event hubs két üzenetként történik.
+Az eseményközpontba küldött minden esemény számlázható üzenetnek számít. A *be- éselődési esemény* olyan adategységként van definiálva, amely legfeljebb 64 KB. Minden olyan esemény, amely legfeljebb 64 KB méretű, egy számlázható eseménynek minősül. Ha az esemény nagyobb, mint 64 KB, a számlázható események száma az esemény mérete alapján, a 64 KB többszörösei szerint történik. Például egy 8 KB-os esemény, amelyet az eseményközpontnak küldenek, egy eseményként kerül számlázásra, de az eseményközpontba küldött 96 KB-os üzenet számlázása két eseményként történik.
 
-Ezek az eseményközpontok felé, valamint a felügyeleti műveletek és a vezérlő hívásokat, például az ellenőrzőpontok nem számítanak belépő üzenetnek események, de beleszámítanak a kapacitáskeretbe legfeljebb események.
+Az eseményközpontból felhasznált események, valamint a felügyeleti műveletek és a vezérlőhívások, például az ellenőrzőpontok, nem számítanak számlázható be- ésbevétel-eseményeknek, hanem az átviteli egységkeretig gyűlnek össze.
 
-### <a name="do-brokered-connection-charges-apply-to-event-hubs"></a>Az Event Hubs vonatkoznak felügyelt kapcsolati díjat?
+### <a name="do-brokered-connection-charges-apply-to-event-hubs"></a>A felügyelt kapcsolati díjak az Event Hubs-ra vonatkoznak?
 
-Kapcsolat a díjak vonatkoznak, csak ha az AMQP protokollt használja. Az események HTTP-n keresztül történő küldése – a küldő rendszerek és eszközök számától függetlenül – díjmentes. Ha azt tervezi, hogy AMQP használ (például a hatékonyabb esemény-adatfolyam eléréséhez vagy a kétirányú kommunikáció engedélyezéséhez a IoT-parancsok és-vezérlési forgatókönyvek esetében), tekintse meg [Event Hubs a díjszabási információkkal](https://azure.microsoft.com/pricing/details/event-hubs/) foglalkozó oldalt, amelyből megtudhatja, hogy hány kapcsolat szerepel az egyes szolgáltatási rétegekben.
+A csatlakozási díjak csak akkor érvényesek, ha az AMQP protokollt használja. A HTTP-n keresztüli események küldéséért nem számítunk fel csatlakozási díjat, függetlenül a küldő rendszerek vagy eszközök számától. Ha az AMQP használatát tervezi (például hatékonyabb eseménystreamelésvagy kétirányú kommunikáció engedélyezése az IoT parancs- és vezérlőforgatókönyvekben), tekintse meg az [Event Hubs díjszabási információkat](https://azure.microsoft.com/pricing/details/event-hubs/) tartalmazó lapon, hogy az egyes szolgáltatási szintekhány kapcsolat szerepelnek-e.
 
-### <a name="how-is-event-hubs-capture-billed"></a>Hogyan számítjuk az Event Hubs Rögzítés díját?
+### <a name="how-is-event-hubs-capture-billed"></a>Hogyan történik az Eseményközpontok rögzítése?
 
-Rögzítés engedélyezve van, ha a névtérben található bármely eseményközpont rögzítési lehetősége engedélyezve van. Az Event Hubs Capture számlázása óránként megvásárolt kapacitásegységenként. A kapacitásegységek számának növelése vagy csökkenése, az Event Hubs rögzítés árváltozásaként mutatkozik meg, egész órára kerekítve tartalmazza. További információ a Event Hubs rögzítésének számlázásáról: [Event Hubs díjszabási információk](https://azure.microsoft.com/pricing/details/event-hubs/).
+A rögzítés akkor engedélyezett, ha a névtér bármely eseményközpontjában engedélyezve van a Rögzítés beállítás. Az Event Hubs Capture számlázása megvásárolt átviteli egységenként óránként történik. Az átviteli egység számának növelésével vagy csökkentésével az Event Hubs Capture számlázási tükrözi ezeket a változásokat a teljes órás lépésekben. Az Event Hubs Capture számlázásról az [Event Hubs díjszabási információi című témakörben talál](https://azure.microsoft.com/pricing/details/event-hubs/)további információt.
 
-### <a name="do-i-get-billed-for-the-storage-account-i-select-for-event-hubs-capture"></a>Fizetnem kell a a az Event Hubs rögzítéshez választott tárfiókot?
+### <a name="do-i-get-billed-for-the-storage-account-i-select-for-event-hubs-capture"></a>Kiszámláznak az Event Hubs-rögzítéshez kiválasztott tárfiókért?
 
-Rögzítés, adja meg, ha engedélyezve van az eseményközpontban tárfiókot használ. A storage-fiókot, mert ehhez a konfigurációhoz módosítások számítjuk fel az Azure-előfizetéshez.
+A Rögzítés egy eseményközpontban engedélyezett tárfiókot használ. Mivel ez a tárfiók, a konfiguráció módosításait az Azure-előfizetés számlázása.
 
 ## <a name="quotas"></a>Kvóták
 
-### <a name="are-there-any-quotas-associated-with-event-hubs"></a>Milyen kvóták társított Event Hubs?
+### <a name="are-there-any-quotas-associated-with-event-hubs"></a>Vannak-e kvóták társítva Event Hubs?
 
-Az összes Event Hubs kvóta listáját itt tekintheti meg: [kvóták](event-hubs-quotas.md).
+Az összes Event Hubs-kvóta listáját a [kvóták](event-hubs-quotas.md)ban láthatja.
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
-### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Miért nem lehet névteret létrehozni egy másik előfizetésből való törlés után? 
-Ha töröl egy névteret egy előfizetésből, várjon 4 órát, mielőtt újra létrehozza azt ugyanazzal a névvel egy másik előfizetésben. Ellenkező esetben a következő hibaüzenet jelenhet meg: `Namespace already exists`. 
+### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Miért nem tudok névteret létrehozni, miután egy másik előfizetésből letettem? 
+Ha töröl egy névteret egy előfizetésből, várjon 4 órát, mielőtt újra létrehozza azt ugyanazzal a névvel egy másik előfizetésben. Ellenkező esetben a következő hibaüzenet `Namespace already exists`jelenhet meg: . 
 
-### <a name="what-are-some-of-the-exceptions-generated-by-event-hubs-and-their-suggested-actions"></a>Mik az Event Hubs és a javasolt lépések által előállított kivételeket?
+### <a name="what-are-some-of-the-exceptions-generated-by-event-hubs-and-their-suggested-actions"></a>Melyek az Event Hubs által létrehozott kivételek és a javasolt műveletek?
 
-A lehetséges Event Hubs kivételek listáját lásd: [kivételek áttekintése](event-hubs-messaging-exceptions.md).
+A lehetséges Eseményközpontok alóli kivételek listáját a [Kivételek áttekintése című témakörben](event-hubs-messaging-exceptions.md)találja.
 
 ### <a name="diagnostic-logs"></a>Diagnosztikai naplók
 
-Event Hubs a [diagnosztikai naplók](event-hubs-diagnostic-logs.md) két típusát támogatja – a rögzítési hibák naplóit és az operatív naplókat – mindkettő a JSON-ban szerepel, és a Azure Portaln keresztül kapcsolható be.
+Az Event Hubs kétféle [diagnosztikai naplót](event-hubs-diagnostic-logs.md) támogat – hibanaplók és működési naplók rögzítése – mindkettő a jsonban jelenik meg, és az Azure Portalon keresztül kapcsolható be.
 
-### <a name="support-and-sla"></a>Támogatás és szolgáltatásszintek
+### <a name="support-and-sla"></a>Támogatás és SLA
 
-A Event Hubs technikai támogatása a [közösségi fórumokon](https://social.msdn.microsoft.com/forums/azure/home?forum=servbus)érhető el. A számlázás és az előfizetések kezelésének támogatása díjmentesen igénybe vehető.
+Az Event Hubs technikai támogatása a [közösségi fórumokon](https://social.msdn.microsoft.com/forums/azure/home?forum=servbus)érhető el. A számlázási és előfizetés-kezelési támogatás díjmentesen biztosított.
 
-Ha többet szeretne megtudni az SLA-ról, tekintse meg a [szolgáltatói szerződéseket](https://azure.microsoft.com/support/legal/sla/) ismertető oldalt.
+Ha többet szeretne megtudni az SLA-ról, tekintse meg a [Szolgáltatásiszint-szerződések](https://azure.microsoft.com/support/legal/sla/) oldalt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 
-* [Event Hubs – áttekintés](event-hubs-what-is-event-hubs.md)
+* [Eseményközpontok – áttekintés](event-hubs-what-is-event-hubs.md)
 * [Event Hub létrehozása](event-hubs-create.md)
-* [Event Hubs automatikus kiemelés](event-hubs-auto-inflate.md)
+* [Eseményközpontok automatikus felfújása](event-hubs-auto-inflate.md)

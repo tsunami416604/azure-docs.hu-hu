@@ -1,66 +1,65 @@
 ---
-title: Virtuális gépek (VM) lemezképeit áthelyezjük a felügyelt lemezes tárolóba az Azure Marketplace-en
-description: Az új Piactéri funkciók és képességek gyorsabb, megbízhatóbb tárolásának és támogatásának biztosításához a piactéren futó virtuális gépek lemezképeit a felügyelt lemezes tárhelyre helyezi át.
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+title: Virtuálisgép-lemezképeket helyezünk át felügyelt lemezes tárhelyre az Azure Piactéren
+description: A gyorsabb, megbízhatóbb tárolás és az új piactéri funkciók és -képességek támogatása érdekében a piactéri virtuálisgép-lemezképeket a felügyelt lemezes tárolásba mozgatjuk.
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 683b35661a41325cfd5baa877acdb0e37529bb94
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 17b418ab82cc88b4368efe247b06c0c8bbb27453
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198734"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285112"
 ---
-# <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>Virtuális gépek (VM) lemezképeit áthelyezjük az Azure Marketplace-en a felügyelt lemezes tárolásra
+# <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>Virtuálisgép-(VM) lemezképeket helyezünk át az Azure Piactérről a felügyelt lemezes tárolásra
 
-Az új Piactéri funkciók és képességek gyorsabb, megbízhatóbb tárolásának és támogatásának biztosításához a piactéren futó virtuális gépek lemezképeit a felügyelt lemezes tárhelyre helyezi át.
+A gyorsabb, megbízhatóbb tárolás és az új piactéri funkciók és -képességek támogatása érdekében a piactéri virtuálisgép-lemezképeket a felügyelt lemezes tárolásba mozgatjuk.
 
-2020. január 2-án kezdődően a virtuálisgép-lemezképeket áthelyezjük a felügyelt lemezes tárolásba fázisokban. Az első fázisban a rendszerképeket csak új telepítések és a virtuális gépek az előző 90 napban való futtatása után fogjuk áthelyezni. A lemezképek áthelyezését megelőzően egy e-mailt küldünk, amely lehetővé teszi, hogy a közzétevő tudja, hogy mely képek lesznek áthelyezve.
+2020. január 2-tól kezdődően a virtuálisgép-lemezképeket fázisokban áthelyezzük a felügyelt lemezes tárolásba. Az első fázisban csak az okat az előző 90 napban új központi telepítéseket vagy virtuális gépeket futtató lemezképeket helyezünk át. Mielőtt áthelyeznénk a képeket, e-mailt küldünk, amelyben tudatjuk a kiadóval, hogy mely képek kerülnek áthelyezésre, és mikor kerülnek áthelyezésre.
 
-A közzétevőknek vagy a fogyasztóknak semmilyen műveletet nem kell elvégezniük, és a felhasználók nem lesznek érintettek. A Piactéri ajánlatok elérhetők maradnak, és az ügyfelek továbbra is telepíthetik a felügyelt virtuális gépeket ezekről a rendszerképekről, az áthelyezés során és azt követően.
+A megjelenítőknek és a fogyasztóknak nem kell semmilyen műveletet végrehajtaniuk, és a felhasználókat ez nem érinti. A piactéri ajánlatok továbbra is elérhető, és az ügyfelek továbbra is képes telepíteni felügyelt virtuális gépek ezekből a lemezképekből, az áthelyezés során és után.
 
-Ha bármilyen kérdése van, vegye [fel velünk a kapcsolatot](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff).
+Ha bármilyen kérdése van, kérjük, [lépjen kapcsolatba velünk](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff).
 
 ## <a name="faqs"></a>Gyakori kérdések
 
-### <a name="would-the-users-of-my-vm-images-experience-an-outage"></a>A VM-lemezképek felhasználói áramszünetet tapasztalnak?
+### <a name="would-the-users-of-my-vm-images-experience-an-outage"></a>A virtuális gép-lemezképeim felhasználói kimaradást tapasztalnak?
 
-A virtuálisgép-lemezképek felhasználói nem fognak kiesést tapasztalni. 
+A virtuális gép rendszerképek felhasználói nem tapasztal kimaradást. 
 
-Az első fázisban csak olyan virtuálisgép-lemezképeket helyezünk át, amelyek nem rendelkeznek futó virtuális gépekkel. Mivel ezeknek a lemezképeknek nincsenek felhasználói, nem lesz hatása. A következő fázisok esetében nem lesz hatással a felhasználókra.
+Az első fázisban csak azokat a virtuális gépi lemezképeket, amelyek nem rendelkeznek futó virtuális gépek. Mivel ezeka képek nem léteznek felhasználók, nem lesz semmilyen hatása. A következő fázisokban is, nem lesz hatással a felhasználók számára.
 
 ### <a name="how-long-does-it-take-for-the-process-to-complete"></a>Mennyi ideig tart a folyamat befejezése?
 
-Az áttelepítés elvégzése akár 24 óráig is eltarthat.
+Az áttelepítés akár 24 órát is igénybe vehet.
 
-### <a name="do-i-need-to-take-any-action"></a>Bármilyen műveletet végre kell hajtani?
+### <a name="do-i-need-to-take-any-action"></a>Kell-e valamit tennem?
 
-Nem. A közzétevőknek vagy a fogyasztóknak semmilyen műveletet nem kell elvégezniük.
+Nem. A megjelenítőknek vagy a fogyasztóknak nem kell semmilyen műveletet végrehajtaniuk.
 
-### <a name="do-i-have-to-update-my-system-to-call-the-cloud-portal-apis-in-a-different-way-after-they-are-moved-to-managed-disk-storage"></a>Kell-e frissíteni a rendszerem a Cloud Portal API-k más módon történő meghívásához, miután áthelyezték őket a felügyelt lemezes tárolóba?
+### <a name="do-i-have-to-update-my-system-to-call-the-cloud-portal-apis-in-a-different-way-after-they-are-moved-to-managed-disk-storage"></a>Frissítenem kell a rendszert, hogy a Felügyelt lemez tárolóba való áthelyezésük után más módon hívjam meg a Felhőportál API-jait?
 
 Nem. A meglévő API-hívások továbbra is működni fognak.
 
-### <a name="would-all-my-vm-images-be-moved-to-managed-disk-at-the-same-time"></a>A virtuálisgép-lemezképek egy időben lettek áthelyezve a felügyelt lemezre?
+### <a name="would-all-my-vm-images-be-moved-to-managed-disk-at-the-same-time"></a>Az összes virtuálisgép-lemezképáthelyezése egyszerre a felügyelt lemezre történik?
 
-Az összes virtuálisgép-lemezképet ugyanarra a napra helyezzük át. A rendszer értesítést küld, amint áthelyezték őket.
+Az összes virtuálisgép-lemezképet ugyanazon a napon mozgatjuk. Értesítjük, amint elszállították őket.
 
-### <a name="can-i-request-to-schedule-the-move-of-my-vm-images-to-a-later-time"></a>Kérhetem a VM-lemezképek áthelyezését egy későbbi időpontra?
+### <a name="can-i-request-to-schedule-the-move-of-my-vm-images-to-a-later-time"></a>Kérhetem, hogy ütemezze a virtuális gép képeit egy későbbi időpontra?
 
-Javasoljuk, hogy a rendszerképeket az ütemezett dátumon helyezze át. Ha azonban probléma merül fel, lépjen kapcsolatba velünk, hogy átütemezze az áthelyezést.
+Javasoljuk, hogy a képeket az ütemezett időpontra mozgassa. Azonban, ha aggályai vannak, kérjük, forduljon hozzánk, hogy átütemezze a költözést.
 
-### <a name="can-i-publish-updates-to-my-vm-images-during-the-move"></a>Közzétehetem a virtuálisgép-lemezképek frissítéseit az áthelyezés során?
+### <a name="can-i-publish-updates-to-my-vm-images-during-the-move"></a>Közzétehetek frissítéseket a virtuálisgép-lemezképekhez az áthelyezés során?
 
-A virtuálisgép-lemezképek frissítései nem hozhatók létre az áthelyezés során.
+A virtuális gép rendszerképeit nem lehet az áthelyezés során.
 
-### <a name="will-the-publishing-process-change-after-my-vm-image-is-moved-to-managed-disk"></a>A közzétételi folyamat megváltozik a virtuális gép lemezképének felügyelt lemezre való áthelyezése után?
+### <a name="will-the-publishing-process-change-after-my-vm-image-is-moved-to-managed-disk"></a>A közzétételi folyamat megváltozik, miután a virtuális géplemez-lemezt áthelyezték a Felügyelt lemezre?
 
-Nem, a közzétételi folyamat változatlan marad. 
+Nem, a közzétételi folyamat ugyanaz marad. 
 
-### <a name="can-the-publisher-move-their-offers-to-managed-disk"></a>A közzétevő áthelyezheti az ajánlatait a felügyelt lemezre?
+### <a name="can-the-publisher-move-their-offers-to-managed-disk"></a>Áthelyezheti a közzétevő az ajánlatait a Felügyelt lemezre?
 
-Nem, a közzétevők nem helyezhetik át az ajánlatokat a felügyelt lemezre. Meg kell várniuk, és a rendszer automatikusan áthelyezi a lemezképeket. A módosítások elvégzése előtt értesítést küldünk a közzétevőnek.
+Nem, a közzétevők nem helyezhetik át ajánlataikat a Felügyelt lemezre. Várniuk kell, és a képeik automatikusan átkerülnek. Mielőtt bármilyen módosítást eszközhöz érnénk, értesítéseket küldünk a közzétevőnek.

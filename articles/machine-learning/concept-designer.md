@@ -1,7 +1,7 @@
 ---
-title: ML modellek készítése tervezővel
+title: Ml-modellek készítése tervezővel
 titleSuffix: Azure Machine Learning
-description: Ismerje meg a Azure Machine Learning tervezőjét alkotó feltételeket, fogalmakat és munkafolyamatokat.
+description: Ismerje meg az Azure Machine Learning tervezőjét alkotó kifejezéseket, fogalmakat és munkafolyamatokat.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,130 +10,130 @@ ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
 ms.openlocfilehash: 78a6e7fa8d030185f537136a3a2124d8bc59d808
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79037629"
 ---
-# <a name="what-is-azure-machine-learning-designer-preview"></a>Mi az a Azure Machine Learning Designer (előzetes verzió)? 
+# <a name="what-is-azure-machine-learning-designer-preview"></a>Mi az az Azure Machine Learning Designer (előzetes verzió)? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-A Azure Machine Learning Designer lehetővé teszi, hogy vizuálisan összekapcsolja az [adatkészleteket](#datasets) és a [modulokat](#module) egy interaktív vásznon a gépi tanulási modellek létrehozásához. A tervező megismeréséhez tekintse meg a következő [oktatóanyagot: az autó árának előrejelzése a tervezővel](tutorial-designer-automobile-price-train-score.md)
+Az Azure Machine Learning tervezője lehetővé teszi, hogy vizuálisan csatlakoztassa [az adatkészleteket](#datasets) és [modulokat](#module) egy interaktív vásznon gépi tanulási modellek létrehozásához. Ha meg szeretné tudni, hogyan kezdheti el a tervezőt, olvassa el az [Oktatóanyag: Autóár előrejelzése a tervezővel című témakört.](tutorial-designer-automobile-price-train-score.md)
 
-![Azure Machine Learning Designer – példa](./media/concept-designer/designer-drag-and-drop.gif)
+![Példa az Azure Machine Learning tervezőjének](./media/concept-designer/designer-drag-and-drop.gif)
 
-A tervező a Azure Machine Learning [munkaterületet](concept-workspace.md) használja a megosztott erőforrások rendszerezéséhez, például:
+A tervező az Azure Machine [Learning-munkaterületet](concept-workspace.md) használja a megosztott erőforrások rendszerezéséhez, például:
 
 + [Folyamatok](#pipeline)
-+ [Adatkészletek](#datasets)
++ [Adathalmazok](#datasets)
 + [Számítási erőforrások](#compute)
 + [Regisztrált modellek](concept-azure-machine-learning-architecture.md#models)
 + [Közzétett folyamatok](#publish)
 + [Valós idejű végpontok](#deploy)
 
-## <a name="model-training-and-deployment"></a>Modellek betanítása és üzembe helyezése
+## <a name="model-training-and-deployment"></a>Modellképzés és üzembe helyezés
 
-A tervező a gépi tanulási modellek készítésére, tesztelésére és üzembe helyezésére szolgáló vizualizációs vásznat biztosít. A tervezővel a következőket teheti:
+A tervező egy vizuális vásznat biztosít a gépi tanulási modellek létrehozásához, teszteléséhez és üzembe helyezéséhez. A tervező vel a következőket teheti:
 
-+ Az [adatkészletek](#datasets) és [modulok](#module) húzása a vászonra.
-+ Kapcsolja össze a modulokat egy [folyamat Piszkozat](#pipeline-draft)létrehozásához.
-+ A Azure Machine Learning munkaterületen lévő számítási erőforrásokkal elküldheti a [folyamat futtatását](#pipeline-run) .
-+ Alakítsa át a **betanítási folyamatokat** a **folyamatok következtetésére**.
-+ A folyamatokat egy REST- **folyamatbeli végponton** [teheti közzé](#publish) , hogy az új folyamat különböző paraméterekkel és adatkészletekkel legyen elküldve.
-    + Közzétételi **folyamat** közzététele egy folyamat újrafelhasználásához a paraméterek és adatkészletek módosítása során.
-    + Egy korábban betanított modell használatával közzétehet egy **Batch-következtetési** folyamatot, amellyel előrejelzéseket készíthet az új adatairól.
-+ Valós idejű következtetéseket [helyezhet üzembe](#deploy) **egy valós** idejű végponton, hogy valós időben előrejelzéseket készítsen az új adatelemzésekről.
++ Drag-and-drop [adatkészletek](#datasets) és [modulok](#module) a vászonra.
++ A modulok összekapcsolásával hozzon létre egy [folyamattervezetet.](#pipeline-draft)
++ Küldjön be egy [folyamatfuttatást](#pipeline-run) az Azure Machine Learning-munkaterületen lévő számítási erőforrások használatával.
++ A **betanítási folyamatok átalakítása** **következtetési folyamatokká.**
++ [Tegye közzé](#publish) a folyamatokat egy **REST-folyamat végpontján,** hogy új folyamatfuttatásokat küldjön különböző paraméterekkel és adatkészletekkel.
+    + Közzétételegy **betanítási folyamat** újra egy folyamat betanítása több modell paraméterek és adatkészletek módosítása közben.
+    + Közzétehet egy **kötegkövetkeztetési folyamatot,** hogy egy korábban betanított modell használatával előrejelzéseket készítsen az új adatokról.
++ [Valós](#deploy) **idejű következtetési folyamat** üzembe helyezése egy valós idejű végpontra, hogy valós idejű előrejelzéseket készítsen az új adatokról.
 
-![Munkafolyamati diagram képzésekhez, kötegelt következtetésekhez és valós idejű következtetésekhez a Designerben](./media/concept-designer/designer-workflow-diagram.png)
+![Munkafolyamat-diagram a betanításhoz, a kötegkövetkeztetésekhez és a valós idejű következtetésekhez a tervezőben](./media/concept-designer/designer-workflow-diagram.png)
 
 ## <a name="pipeline"></a>Folyamat
 
-A [folyamatok](concept-azure-machine-learning-architecture.md#ml-pipelines) olyan adatkészleteket és analitikai modulokból állnak, amelyek együtt csatlakoznak egymáshoz. A folyamatok számos felhasználási lehetőséggel rendelkeznek: létrehozhat egy olyan folyamatot, amely egyetlen modellt vagy egy több modellt is betanít. Létrehozhat egy olyan folyamatot, amely valós időben vagy kötegben készít előrejelzéseket, vagy olyan folyamatot hoz létre, amely csak az adattisztítást végzi el. A folyamatok lehetővé teszik a munkafolyamatok újrafelhasználását és a projektek rendszerezését.
+A [folyamat](concept-azure-machine-learning-architecture.md#ml-pipelines) adatkészletekből és analitikus modulokból áll, amelyeket összeköt. A csővezetékek számos felhasználási célra szolgálnak: létrehozhat egy olyan csővezetéket, amely egyetlen modellt képez be, vagy amely több modellt képez be. Létrehozhat egy folyamatot, amely valós időben vagy kötegelt előrejelzéseket készít, vagy olyan folyamatot hozhat létre, amely csak az adatokat tisztítja. A folyamatok lehetővé teszik a munka újrafelhasználását és a projektek rendszerezését.
 
-### <a name="pipeline-draft"></a>Folyamat piszkozata
+### <a name="pipeline-draft"></a>Csővezeték-tervezet
 
-Amikor szerkeszt egy folyamatot a tervezőben, a **rendszer folyamatként**menti az előrehaladást. A folyamat piszkozatait bármikor szerkesztheti a modulok hozzáadásával vagy eltávolításával, a számítási célok konfigurálásával, a paraméterek létrehozásával és így tovább.
+Amikor szerkeszt egy folyamatot a tervezőben, a rendszer a **folyamatvázlatot menti.** A folyamatvázlatokat bármikor szerkesztheti modulok hozzáadásával vagy eltávolításával, számítási célok konfigurálásával, paraméterek létrehozásával és így tovább.
 
-Egy érvényes folyamat a következő jellemzőkkel rendelkezik:
+Egy érvényes csővezeték a következő jellemzőkkel rendelkezik:
 
-* Az adatkészletek csak modulokhoz csatlakozhatnak.
-* A modulok csak adatkészletekhez vagy más modulokhoz csatlakozhatnak.
-* A modulok összes bemeneti portjának csatlakoznia kell az adatfolyamhoz.
+* Az adatkészletek csak modulokhoz tudnak csatlakozni.
+* A modulok csak adatkészletekhez vagy más modulokhoz tudnak csatlakozni.
+* A modulok minden bemeneti portjának rendelkeznie kell valamilyen kapcsolattal az adatfolyammal.
 * Az egyes modulokhoz szükséges összes paramétert be kell állítani.
 
-Amikor készen áll a folyamat piszkozatának futtatására, elküld egy folyamat futtatását.
+Ha készen áll a folyamatvázlat futtatására, beküld egy folyamatfuttatást.
 
 ### <a name="pipeline-run"></a>Folyamat futtatása
 
-Minden alkalommal, amikor futtat egy folyamatot, a folyamat és annak eredményei a munkaterületen a **folyamat futtatásakor**tárolódnak. Visszatérhet bármelyik folyamat futtatásához, és megvizsgálhatja a hibaelhárítási és naplózási célokat. Egy folyamat futásának **klónozásával** létrehozhat egy új folyamat-piszkozatot a szerkesztéshez.
+Minden alkalommal, amikor egy folyamatot futtat, a folyamat konfigurációja és annak eredményei a munkaterületen **egy folyamatfuttatásként**tárolódnak. Visszatérhet bármelyik folyamatfuttatáshoz, hogy hibaelhárítási vagy naplózási célokra megvizsgálhassa. **Klónozza** a folyamatfuttatást egy új folyamatpiszkozat létrehozásához, amelyet szerkesztheti.
 
-A folyamat-futtatások [kísérletekbe](concept-azure-machine-learning-architecture.md#experiments) vannak csoportosítva a futtatási előzmények rendszerezéséhez. Megadhatja a kísérletet minden egyes folyamat futtatásához. 
+A folyamatfuttatások [kísérletekbe](concept-azure-machine-learning-architecture.md#experiments) vannak csoportosítva a futtatási előzmények rendszerezéséhez. Beállíthatja a kísérletet minden folyamat futtatása. 
 
-## <a name="datasets"></a>Adatkészletek
+## <a name="datasets"></a>Adathalmazok
 
-A Machine learning-adatkészlet megkönnyíti az adataihoz való hozzáférést és azokkal való munkavégzést. A Designerben számos minta adatkészletet tartalmaz a kísérletezéshez. A szükségesnél több adatkészletet is [regisztrálhat](how-to-create-register-datasets.md) .
+A gépi tanulási adatkészlet megkönnyíti az adatok elérését és az okkal való munkát. A tervező számos mintaadatkészletet tartalmaz, amelyekkel kísérletezhet. Szükség szerint további adatkészleteket [regisztrálhat.](how-to-create-register-datasets.md)
 
 ## <a name="module"></a>Modul
 
-A modulok az adatokon végezhető algoritmusok. A Designer számos modult tartalmaz, amelyek az adatok beáramlása funkciótól kezdve betanítási, pontozási és érvényesítési folyamatokat biztosítanak.
+A modulok az adatokon végezhető algoritmusok. A tervező számos modullal rendelkezik, az adatbe- és betanítási funkcióktól a betanítási, pontozási és érvényesítési folyamatokig.
 
-A modul rendelkezhet a belső algoritmusok konfigurálásához használható paraméterek készletével. Amikor kiválaszt egy modult a vásznon, a modul paramétereinek a vászontól jobbra látható Tulajdonságok ablaktáblán jelennek meg. A modell hangolásához módosíthatja a paramétereket a panelen. A tervezőben beállíthatja az egyes modulok számítási erőforrásait. 
+A modul rendelkezhet a belső algoritmusok konfigurálásához használható paraméterek készletével. Amikor kiválaszt egy modult a vásznon, a modul paraméterei megjelennek a Tulajdonságok panelen a vászontól jobbra. A modell hangolásához módosíthatja a paramétereket a panelen. Beállíthatja az egyes modulok számítási erőforrásait a tervezőben. 
 
 ![Modul tulajdonságai](./media/concept-designer/properties.png)
 
-Ha segítségre van az elérhető gépi tanulási algoritmusok könyvtára között, tekintse meg a következő témakört: [algoritmus & modul ismertetése – áttekintés](algorithm-module-reference/module-reference.md)
+A rendelkezésre álló gépi tanulási algoritmusok könyvtárában való navigáláshoz [lásd: Algoritmus & modulhivatkozás áttekintése](algorithm-module-reference/module-reference.md)
 
-## <a name="compute"></a>Számítási erőforrások
+## <a name="compute-resources"></a><a name="compute"></a>Számítási erőforrások
 
-A munkaterületen lévő számítási erőforrások használatával futtathatja a folyamatot, és üzemeltetheti a telepített modelleket valós idejű végpontok vagy folyamat-végpontok (a Batch-következtetések esetében). A támogatott számítási célnak a következők:
+A munkaterületi számítási erőforrások használatával futtathatja a folyamatot, és valós idejű végpontként vagy folyamatvégpontként üzemeltetheti az üzembe helyezett modelleket (kötegelt következtetésesetén). A támogatott számítási célok a következők:
 
 | Számítási cél | Képzés | Környezet |
 | ---- |:----:|:----:|
-| Az Azure Machine Learning compute | ✓ | |
+| Azure Machine Learning-számítás | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
-A számítási célok a [Azure Machine learning munkaterülethez](concept-workspace.md)vannak csatolva. A számítási célokat a [Azure Machine learning Studio (klasszikus)](https://ml.azure.com)munkaterületen kezelheti.
+A számítási célok az [Azure Machine Learning-munkaterülethez](concept-workspace.md)vannak csatolva. A számítási célokat a munkaterületen kezelheti az [Azure Machine Learning Studio (klasszikus) környezetben.](https://ml.azure.com)
 
 ## <a name="deploy"></a>Üzembe helyezés
 
-A valós idejű következtetések elvégzéséhez a folyamatot **valós idejű végpontként**kell üzembe helyezni. A valós idejű végpont egy külső alkalmazás és a pontozási modell közötti felületet hoz létre. A valós idejű végpontra irányuló hívás valós időben adja vissza az előrejelzési eredményeket az alkalmazásnak. A valós idejű végpontok hívásához át kell adni a végpont üzembe helyezésekor létrehozott API-kulcsot. A végpont egy REST-alapú, népszerű architektúra a webes programozási projektekhez.
+Valós idejű következtetés végrehajtásához egy folyamatot kell **üzembe**helyeznie valós idejű végpontként. A valós idejű végpont egy külső alkalmazás és a pontozási modell közötti felületet hoz létre. A valós idejű végpontra irányuló hívás valós időben adja vissza az előrejelzési eredményeket az alkalmazásnak. Egy valós idejű végpont hívásához adja át az API-kulcsot, amely a végpont üzembe helyezésekor jött létre. A végpont a REST-en alapul, amely egy népszerű architektúra választás a webes programozási projektekhez.
 
-A valós idejű végpontokat egy Azure Kubernetes Service-fürtre kell telepíteni.
+Valós idejű végpontok kell telepíteni egy Azure Kubernetes service-fürt.
 
-A modell üzembe helyezésével kapcsolatos további információkért lásd [: oktatóanyag: Machine learning-modell üzembe helyezése a Designer](tutorial-designer-automobile-price-deploy.md)használatával.
+A modell üzembe helyezéséről az [Oktatóanyag: Gépi tanulási modell üzembe helyezése a tervezővel](tutorial-designer-automobile-price-deploy.md)című témakörben olvashat.
 
 ## <a name="publish"></a>Közzététel
 
-A folyamat egy folyamat **végpontján**is közzétehető. A valós idejű végponthoz hasonlóan a folyamat végpontja lehetővé teszi, hogy az új folyamat külső alkalmazásokból is fusson REST-hívásokat használva. Azonban a folyamat végpontján keresztül nem lehet valós időben elküldeni vagy fogadni az adataikat.
+Folyamatot is közzétehet egy **folyamatvégponton.** A valós idejű végponthoz hasonlóan a folyamatvégpont lehetővé teszi, hogy új folyamatfuttatásokat küldjön külső alkalmazásokból REST-hívások használatával. Azonban nem küldhet és fogadhat adatokat valós időben egy folyamatvégpont használatával.
 
-A közzétett folyamatok rugalmasak, felhasználhatók modellek betanítására és újraképzésére, [kötegelt következtetések elvégzésére](how-to-run-batch-predictions-designer.md), új adatok feldolgozására és sok más lehetőségre. Több folyamatot is közzétehet egyetlen folyamat-végponton, és megadhatja, hogy melyik folyamat melyik verzióját szeretné futtatni.
+A közzétett folyamatok rugalmasak, modellek betanítására vagy újratanítására, [kötegelt következtetések végrehajtására,](how-to-run-batch-predictions-designer.md)új adatok feldolgozására és még sok más ra használhatók. Több folyamatot is közzétehet egyetlen folyamatvégponton, és megadhatja, hogy melyik folyamatverziót kell futtatni.
 
-A közzétett folyamat az egyes modulokhoz tartozó folyamat piszkozatában definiált számítási erőforrásokon fut.
+A közzétett folyamat fut a számítási erőforrások at határozza meg a folyamat tervezetét az egyes modulok.
 
-A tervező létrehoz egy [PublishedPipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py) -objektumot, mint az SDK-t.
+A tervező ugyanazt a [Közzétett pipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py) objektumot hozza létre, mint az SDK.
 
 
-## <a name="moving-from-the-visual-interface-to-the-designer"></a>Áthelyezés a vizualizáció kezelőfelületéről a tervezőbe
+## <a name="moving-from-the-visual-interface-to-the-designer"></a>Áttérés a vizuális felületről a tervezőre
 
-A Visual Interface (előzetes verzió) frissítve lett, és mostantól Azure Machine Learning Designer (előzetes verzió). A tervező olyan folyamat-alapú háttérrendszer használatára lett újratervezve, amely teljesen integrálódik a Azure Machine Learning többi szolgáltatásával. 
+A vizuális felület (előzetes verzió) frissült, és most az Azure Machine Learning tervezője (előzetes verzió). A tervező újralett tervezve, hogy egy folyamatalapú háttérszolgáltatást használjon, amely teljes mértékben integrálható az Azure Machine Learning többi funkciójával. 
 
-A frissítések eredményeképpen a vizuális felület egyes fogalmai és kifejezései módosultak vagy átnevezve lettek. A legfontosabb koncepcionális változásokért tekintse meg az alábbi táblázatot. 
+A frissítések eredményeképpen a vizuális felület egyes fogalmait és feltételeit megváltoztatták vagy átnevezték. A legfontosabb fogalmi változásokat lásd az alábbi táblázatban. 
 
-| Koncepció a Designerben | Korábban a vizuális felületen |
+| Koncepció a tervezőben | Korábban a vizuális felületen |
 | ---- |:----:|
-| Folyamat piszkozata | Experiment |
+| Csővezeték-tervezet | Experiment |
 | Valós idejű végpont | Webszolgáltatás |
 
-### <a name="migrating-to-the-designer"></a>Migrálás a tervezőbe
+### <a name="migrating-to-the-designer"></a>Áttelepítés a tervezőre
 
-A meglévő vizuális felületi kísérleteket és webszolgáltatásokat átalakíthatja folyamatokra és valós idejű végpontokra a tervezőben. A Visual Interface-eszközök áttelepíthetők a következő lépésekkel:
+A meglévő vizuális felületi kísérleteket és webszolgáltatásokat folyamatokká és valós idejű végpontokká alakíthatja a tervezőben. A következő lépésekkel telepítheti át a vizuális felület eszközeit:
 
 [!INCLUDE [migrate from the visual interface](../../includes/aml-vi-designer-migration.md)]
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* A prediktív elemzés és a gépi tanulás alapjai a [bemutatóban: az autó árának előrejelzése a tervezővel](tutorial-designer-automobile-price-train-score.md)
-* Megtudhatja, hogyan módosíthatja a meglévő [tervezői mintákat](samples-designer.md) az igényeinek megfelelően.
+* Ismerje meg a prediktív elemzés és a gépi tanulás alapjait [az Oktatóanyaggal: Az autó árának előrejelzése a tervezővel](tutorial-designer-automobile-price-train-score.md)
+* Ismerje meg, hogyan módosíthatja a meglévő [tervezőmintákat,](samples-designer.md) hogy azok az ön igényeihez igazodjanak.
 

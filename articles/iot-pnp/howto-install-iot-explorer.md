@@ -1,35 +1,35 @@
 ---
-title: Az Azure IoT Explorer telepítése és használata | Microsoft Docs
-description: Telepítse az Azure IoT Explorer eszközt, és használja a IoT Plug and Play előnézeti eszközökhöz csatlakoztatott IoT-hubhoz való interakcióhoz.
+title: Az Azure IoT Explorer telepítése és használata | Microsoft dokumentumok
+description: Telepítse az Azure IoT-kezelő eszközt, és használja az IoT Plug and Play preview-eszközök IoT hubhoz csatlakoztatott eszközekkel való interakcióhoz.
 author: miagdp
 ms.author: miag
 ms.date: 12/27/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: fd180404ca18b5ea84c745a543ae7e87bf16c27d
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 963421fa1ef06599448c9a4197f0d7a6ad2e142d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529626"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80159183"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Az Azure IoT Explorer telepítése és használata
 
-Az Azure IoT Explorer egy grafikus eszköz a IoT Plug and Play előnézeti eszközökhöz való interakcióhoz és teszteléséhez. Miután telepítette az eszközt a helyi gépre, használhatja azt egy eszközhöz való kapcsolódáshoz. Az eszköz segítségével megtekintheti az eszköz által küldött telemetria, az eszköz tulajdonságait és a hívási parancsokat.
+Az Azure IoT Explorer egy grafikus eszköz az IoT Plug and Play előzetes eszközökkel való interakcióhoz és teszteléshez. Miután telepítette az eszközt a helyi számítógépre, csatlakoztathatja azt egy eszközhöz. Az eszköz segítségével megtekintheti az eszköz által küldött telemetriai adatokat, dolgozhat az eszköz tulajdonságaival és a hívási parancsokkal.
 
 Ez a cikk a következőkhöz nyújt útmutatást:
 
-- Telepítse és konfigurálja az Azure IoT Explorer eszközt.
-- Használja az eszközt az eszközök használatához és teszteléséhez.
+- Telepítse és konfigurálja az Azure IoT explorer eszközt.
+- Az eszközzel kommunikálhat az eszközökkel, és tesztelheti azeszközöket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure IoT Explorer eszköz használatához a következőkre lesz szüksége:
+Az Azure IoT Explorer eszköz használatához a következőkre van szükség:
 
-- Egy Azure IoT hub. Az Azure-előfizetéshez többféleképpen is hozzáadhat egy IoT hubot, például [egy IoT hub létrehozását az Azure CLI használatával](../iot-hub/iot-hub-create-using-cli.md). Az Azure IoT Explorer eszköz futtatásához szüksége lesz az IoT hub kapcsolódási karakterláncára. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
-- Az IoT hub-ban regisztrált eszköz. Egy eszköz regisztrálásához használja az alábbi Azure CLI-parancsot. Ügyeljen arra, hogy a `{YourIoTHubName}` és `{YourDeviceID}` helyőrzőket cserélje le az értékekre:
+- Egy Azure IoT-központ. Számos módja van egy IoT-központ hozzáadása az Azure-előfizetéshez, például [egy IoT hub létrehozása az Azure CLI használatával.](../iot-hub/iot-hub-create-using-cli.md) Az Azure IoT Explorer eszköz futtatásához az IoT hub kapcsolati karakterláncra van szükség. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+- Az IoT hubon regisztrált eszköz. Az alábbi Azure CLI-paranccsal regisztrálhat egy eszközt. Ügyeljen arra, `{YourIoTHubName}` hogy `{YourDeviceID}` a helyőrzőket és helyőrzőket az értékeivel cserélje le:
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {YourDeviceID}
@@ -37,91 +37,91 @@ Az Azure IoT Explorer eszköz használatához a következőkre lesz szüksége:
 
 ## <a name="install-azure-iot-explorer"></a>Az Azure IoT Explorer telepítése
 
-Nyissa meg az [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer/releases) kiadásait, és bontsa ki a legújabb kiadáshoz tartozó eszközök listáját. Töltse le és telepítse az alkalmazás legújabb verzióját.
+Nyissa meg az [Azure IoT Explorer kiadásait,](https://github.com/Azure/azure-iot-explorer/releases) és bővítse ki az eszközök listáját a legutóbbi kiadáshoz. Töltse le és telepítse az alkalmazás legújabb verzióját.
 
 ## <a name="use-azure-iot-explorer"></a>Az Azure IoT Explorer használata
 
-Egy eszközhöz csatlakozhat a saját eszközéhez, vagy használhatja a mintául szolgáló szimulált eszközök egyikét is. Kövesse [ezeket az utasításokat](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview/iothub_client/samples) a szimulált eszköz mintájának futtatásához.
+Egy eszköz höz csatlakoztathatja saját eszközét, vagy használhatja az egyik szimulált eszközünket. A szimulált eszközminta futtatásához kövesse az [alábbi utasításokat.](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview/iothub_client/samples)
 
-### <a name="connect-to-your-hub"></a>Kapcsolódás a hubhoz
+### <a name="connect-to-your-hub"></a>Csatlakozás a hubhoz
 
-Az Azure IoT Explorer első futtatásakor a rendszer a IoT hub csatlakozási karakterláncát kéri. A kapcsolati karakterlánc hozzáadása **után válassza a kapcsolat lehetőséget**. Az eszköz beállításai segítségével másik IoT-hubhoz válthat a kapcsolódási karakterlánc frissítésével.
+Az Azure IoT-kezelő első futtatásakor a rendszer kéri az IoT hub kapcsolati karakterláncát. A kapcsolati karakterlánc hozzáadása után válassza a **Csatlakozás lehetőséget.** Az eszköz beállításaival átválthat egy másik IoT-központra a kapcsolati karakterlánc frissítésével.
 
-Egy IoT Plug and Play eszköz modell-definícióját a rendszer a nyilvános tárházban, a vállalati tárházban vagy a csatlakoztatott eszközön tárolja. Alapértelmezés szerint az eszköz a nyilvános modell adattárában és a csatlakoztatott eszközön keresi a modell definícióját. Hozzáadhat és eltávolíthat forrásokat, vagy konfigurálhatja a források prioritását a **beállításokban**:
+Az IoT Plug and Play-eszközök modelldefiníciója a nyilvános tárházban, a vállalati tárházban vagy a csatlakoztatott eszközben tárolódik. Alapértelmezés szerint az eszköz megkeresi a modelldefiníciót a nyilvános modelltárházban és a csatlakoztatott eszközben. Hozzáadhat és eltávolíthat forrásokat, vagy beállíthatja a források prioritását a **Beállítások ban:**
 
 Forrás hozzáadása:
 
-1. Válassza a **Beállítások lehetőséget**.
-1. Válassza az **új** lehetőséget, és válassza ki a forrást.
-1. Ha hozzáadja a vállalati modell tárházát, adja meg a kapcsolatok karakterláncát.
+1. Nyissa meg a **Beállítások lapot.**
+1. Válassza az **Új** lehetőséget, és válassza ki a forrást.
+1. Ha a vállalati modell tárház, adja meg a kapcsolati karakterláncot.
 
 Forrás eltávolítása:
 
-1. Válassza a **Beállítások lehetőséget**.
+1. Nyissa meg a **Beállítások lapot.**
 1. Keresse meg az eltávolítani kívánt forrást.
-1. Válassza az **X** lehetőséget az eltávolításához. A nyilvános modell tárháza nem távolítható el, mert az általános illesztőfelület-definíciók ebből a tárházból származnak.
+1. Az eltávolításhoz válassza az **X** lehetőséget. A nyilvános modelltárház nem távolítható el, mert a közös felületdefiníciók ebből a tárházból származnak.
 
-A forrás prioritásának módosítása:
+A forrásprioritások módosítása:
 
-A modell definíciós forrásainak egyikét áthúzással áthelyezheti egy másik rangsorba a listában. Ha ütközés lép fel, a magasabb prioritású definíciós források felülbírálják az alacsonyabb rangsorú forrásokat.
+A modelldefiníciós források egyikét a lista egy másik rangsorolásába húzhatja. Ütközés esetén a magasabb rangsorú definíciós források felülbírálják az alacsonyabb rangsorú forrásokat.
 
 ### <a name="view-devices"></a>Eszközök megtekintése
 
-Miután az eszköz csatlakozik az IoT hubhoz, megjeleníti az **eszközök** listája oldalt, amely felsorolja az IoT hub-ban regisztrált eszköz identitásait. A lista bármely bejegyzését kibontva további információkat tekinthet meg.
+Miután az eszköz csatlakozik az IoT hubhoz, megjeleníti az **Eszközök** listalapot, amely felsorolja az IoT hubregisztrált eszközidentitásokat. A lista bármely bejegyzését kibonthatja, hogy további információkat lásson.
 
-Az **eszközök** listája lapon a következőket teheti:
+Az **Eszközök** listalapon a következőket teheti:
 
-- A **Hozzáadás** gombra kattintva regisztrálhat egy új eszközt a hubhoz. Ezután adja meg az eszköz AZONOSÍTÓját. Az alapértelmezett beállítások használatával automatikusan generálhat hitelesítési kulcsokat, és engedélyezheti a kapcsolódást a hubhoz.
-- Válasszon ki egy eszközt, majd válassza a **Törlés** lehetőséget az eszköz identitásának törléséhez. A művelet elvégzése előtt tekintse át az eszköz részleteit, és győződjön meg róla, hogy a megfelelő eszköz identitását törli.
-- Lekérdezés `capabilityID` és `interfaceID`alapján. Adja hozzá a `capabilityID` vagy `interfaceID` paraméterként az eszközök lekérdezéséhez.
+- Válassza a **Hozzáadás** lehetőséget, ha új eszközt regisztrál a hubbal. Ezután adja meg az eszköz azonosítóját. Az alapértelmezett beállításokkal automatikusan létrehozhathitelesítési kulcsokat, és engedélyezheti a kapcsolatot a központtal.
+- Jelöljön ki egy eszközt, majd a **Törlés gombra** az eszközidentitás törléséhez. Tekintse át az eszköz adatait a művelet befejezése előtt, és győződjön meg arról, hogy a megfelelő eszközidentitást teszi le.
+- Lekérdezés `capabilityID` és `interfaceID`a szerint. Adja hozzá `capabilityID` `interfaceID` vagy paraméterként az eszközök lekérdezéséhez.
 
 ## <a name="interact-with-a-device"></a>Eszköz használata
 
-Az **eszközök** listája lapon válasszon ki egy értéket az **eszköz azonosítója** oszlopban a regisztrált eszköz részletes oldalának megtekintéséhez. Minden eszközhöz két rész található: az **eszköz** és a **digitális Twin**.
+Az **Eszközök** listalapon jelöljön ki egy értéket az **Eszközazonosító** oszlopban a regisztrált eszköz részletlapjának megtekintéséhez. Minden eszközhöz két rész re van szükség: **Device** and **Digital Twin**.
 
 ### <a name="device"></a>Eszköz
 
-Ebben a szakaszban az **eszköz identitása**, az **eszköz Twin**, a **telemetria**, a **Direct metódus** és a **felhőből az eszközre küldött üzenetek** lapok találhatók.
+Ez a szakasz tartalmazza az **Eszközidentitás**, **Device Twin**, **Telemetriai,** **Közvetlen módszer** és **a felhőből az eszközre üzenet** fülek.
 
-- Az Eszközállapot **lapon** megtekintheti és frissítheti az [eszköz identitásának](../iot-hub/iot-hub-devguide-identity-registry.md) adatait.
-- A Device Twin **(eszközök Twin) lapon érheti** el az [eszköz két](../iot-hub/iot-hub-devguide-device-twins.md) adatát.
-- Ha egy eszköz csatlakoztatva van, és aktívan küld adatokat, megtekintheti a [telemetria](../iot-hub/iot-hub-devguide-messages-read-builtin.md) a **telemetria** lapon.
-- A **közvetlen** metódus lapon hívhat [közvetlen metódust](../iot-hub/iot-hub-devguide-direct-methods.md) az eszközön.
-- A felhőből az [eszközre irányuló](../iot-hub/iot-hub-devguide-messages-c2d.md) **üzeneteket a felhőből az eszközre küldött üzenetek** lapon küldheti el.
+- Megtekintheti és frissítheti az [eszköz identitásadatait](../iot-hub/iot-hub-devguide-identity-registry.md) az **Eszköz identitása** lapon.
+- Az eszköz [ikeradatait](../iot-hub/iot-hub-devguide-device-twins.md) az **Eszköz ikerlapján** érheti el.
+- Ha egy eszköz csatlakoztatva van, és aktívan adatokat küld, megtekintheti a [telemetriai adatokat](../iot-hub/iot-hub-devguide-messages-read-builtin.md) a **Telemetriai** adatok lapon.
+- A **Közvetlen metódus** lapon [közvetlen metódust](../iot-hub/iot-hub-devguide-direct-methods.md) hívhat meg az eszközön.
+- A felhőből az [eszközre irányuló üzeneteket](../iot-hub/iot-hub-devguide-messages-c2d.md) a felhőből az **eszközre irányuló üzenetek** lapon küldheti el.
 
-### <a name="digital-twin"></a>Digitális Twin
+### <a name="digital-twin"></a>Digitális iker
 
-Az eszköz az eszköz digitális dupla példányára is használható. Egy IoT Plug and Play eszköz esetében az eszköz képességeinek modelljéhez társított összes interfész megjelenik az eszköz ezen szakaszában. Válasszon egy felületet a megfelelő [IoT Plug and Play primitívek](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL)kibontásához.
+Az eszköz segítségével megtekintheti az eszköz digitális ikerpéldányát. IoT Plug and Play eszköz esetén az eszköz képességmodelljéhez társított összes felület az eszköz ezen szakaszában jelenik meg. Válasszon ki egy felületet a megfelelő [IoT Plug and Play primitívek kibővítéséhez.](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL)
 
-### <a name="interface"></a>Interfész
+### <a name="interface"></a>Felület
 
-A **csatoló** lapon megtekintheti az illesztőfelület JSON-definícióját.
+A **Felület** lapon megtekintheti a kapcsolat JSON-definícióját.
 
 #### <a name="properties"></a>Tulajdonságok
 
-A **nem írható tulajdonságok** lapon megtekintheti az illesztőfelületben definiált írásvédett tulajdonságokat. A csatolóban definiált írható tulajdonságokat az **írható tulajdonságok** lapon frissítheti:
+A **nem írható tulajdonságok** lapon egy kapcsolatban definiált írásvédett tulajdonságok at tekintheti meg. Az **írható tulajdonságok** lapon frissítheti az illesztőfelületen definiált írható tulajdonságokat:
 
-1. Nyissa meg az **írható tulajdonságok** lapot.
+1. Nyissa meg az **Írható tulajdonságok** lapot.
 1. Kattintson a frissíteni kívánt tulajdonságra.
 1. Adja meg a tulajdonság új értékét.
-1. Tekintse át az eszközre küldendő hasznos adatokat.
-1. Küldje el a változást.
+1. Az eszközre küldendő hasznos adat előnézetének megtekintése.
+1. Küldje el a módosítást.
 
-A módosítás elküldése után nyomon követheti a frissítési állapotot: **szinkronizálás**, **sikeres**vagy **hiba**. A szinkronizálás befejezésekor megjelenik a tulajdonság új értéke a **jelentett tulajdonság** oszlopban. Ha a szinkronizálás befejeződése előtt más lapokra navigál, az eszköz továbbra is értesíti, ha a frissítés befejeződött. Az értesítési előzmények megjelenítéséhez az eszköz értesítési központját is használhatja.
+A módosítás elküldése után nyomon követheti a frissítés állapotát: **szinkronizálás,** **sikeres**vagy **hiba**. Amikor a szinkronizálás befejeződött, a tulajdonság új értéke a **Jelentett tulajdonság** oszlopban jelenik meg. Ha a szinkronizálás befejezése előtt más oldalakra navigál, az eszköz a frissítés befejezésekor is értesíti. Az eszköz értesítési központját is használhatja az értesítési előzmények megtekintéséhez.
 
 #### <a name="commands"></a>Parancsok
 
-Ha parancsot szeretne küldeni egy eszközre, lépjen a **parancsok** oldalra:
+Ha parancsot szeretne küldeni egy eszközre, lépjen a **Parancsok** lapra:
 
-1. A parancsok listájában bontsa ki az elindítani kívánt parancsot.
-1. Adja meg a parancshoz szükséges értékeket.
-1. Tekintse át az eszközre küldendő hasznos adatokat.
+1. A parancsok listájában bontsa ki az aktiválni kívánt parancsot.
+1. Adja meg a parancs szükséges értékeit.
+1. Az eszközre küldendő hasznos adat előnézetének megtekintése.
 1. Küldje el a parancsot.
 
 #### <a name="telemetry"></a>Telemetria
 
-A kiválasztott felület telemetria megtekintéséhez lépjen a **telemetria** lapra.
+A kijelölt felület telemetriai adatainak megtekintéséhez lépjen a **Telemetriai** lapra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a útmutatóban megtanulta, hogyan telepítheti és használhatja az Azure IoT Explorer alkalmazást a IoT Plug and Play eszközeivel való interakcióhoz. A következő lépés azt ismerteti, hogyan [telepítheti és használhatja az Azure CLI-bővítményt](./howto-install-pnp-cli.md).
+Ebben az útmutató cikkben megtanulta, hogyan telepítheti és használhatja az Azure IoT Explorert az IoT Plug and Play-eszközök kel való interakcióhoz. A javasolt következő lépés az [Azure CLI-bővítmény telepítésének és használatának megismerése.](./howto-install-pnp-cli.md)

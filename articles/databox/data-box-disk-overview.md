@@ -1,6 +1,6 @@
 ---
 title: A Microsoft Azure Data Box Disk áttekintése | Microsoft Docs
-description: Ismerteti az Azure Data Box Disk nevű felhőalapú megoldást, amellyel nagy mennyiségű adat vihető át az Azure-ba
+description: Az Azure Data Box Disk felhő alapú megoldást mutatja be, amellyel nagy mennyiségű adat helyezhető át az Azure-ba
 services: databox
 author: alkohli
 ms.service: databox
@@ -10,13 +10,13 @@ ms.date: 06/18/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
 ms.openlocfilehash: 067d818b7d23fc0b83cb1d4255bfbb8659149412
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240729"
 ---
-# <a name="what-is-azure-data-box-disk"></a>Mi az az Azure Data Box Disk?
+# <a name="what-is-azure-data-box-disk"></a>Mi az az Azure Data Box Disk-lemez?
 
 A Microsoft Azure Data Box Disk megoldással gyorsan, költséghatékonyan és megbízhatóan küldhet több terabájtnyi helyszíni adatot az Azure-ba. A biztonságos adatátvitel gyorsaságáról 1-5 SSD-lemez küldésével gondoskodunk. Ezeket a 8 TB-os titkosított lemezeket egy regionális szállító szolgáltatóval küldjük el az Ön adatközpontjába. 
 
@@ -84,20 +84,20 @@ További információt az [Azure Data Box biztonsága és adatvédelme](data-box
 | Adatinterfész                                          | USB   |
 | Biztonság                                                | Előre titkosítva BitLocker és biztonságos frissítés használatával <br> Hozzáférési kulcs által védett lemezek <br> Mindig titkosított adatok  |
 | Adatátviteli sebesség                                      | maximum 430 MBps a fájlmérettől függően      |
-|Kezelés                                               | Azure Portal |
+|Kezelés                                               | Azure portál |
 
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 
-A régió rendelkezésre állásával kapcsolatos információkért tekintse meg a [régiók által elérhető Azure-termékeket](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Data Box Disk a Azure Government felhőben is üzembe helyezhető. További információ: [Mi az Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)
+A régió elérhetőségéről az [Azure-termékek régiónként elérhető.](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all) A Data Box Disk az Azure Government Cloud ban is telepíthető. További információ: [Mi az Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)
 
 
 ## <a name="pricing"></a>Díjszabás
 
-A díjszabással kapcsolatos információkért lépjen a [díjszabás oldalra](https://azure.microsoft.com/pricing/details/databox/disk/).
+Az árképzésről az [Árképzés oldalon](https://azure.microsoft.com/pricing/details/databox/disk/)talál információt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- A [Data Box Disk követelményeinek](data-box-disk-system-requirements.md) áttekintése.
+- A [Data Box Disk rendszerkövetelményeinek](data-box-disk-system-requirements.md) áttekintése.
 - A [Data Box Disk korlátainak](data-box-disk-limits.md) megismerése.
 - Az [Azure Data Box Disk](data-box-disk-quickstart-portal.md) gyors üzembe helyezése az Azure Portalon.

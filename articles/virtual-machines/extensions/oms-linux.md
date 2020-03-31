@@ -1,6 +1,6 @@
 ---
-title: Log Analytics virtuálisgép-bővítmény linuxhoz
-description: A Linux rendszerű virtuális gép, virtuálisgép-bővítmények használatával a Log Analytics-ügynök telepítése.
+title: Log Analytics virtuális gépi bővítmény Linuxhoz
+description: Telepítse a Log Analytics-ügynököt Linux-rendszerű virtuális gépen egy virtuálisgép-bővítmény használatával.
 services: virtual-machines-linux
 documentationcenter: ''
 author: axayjo
@@ -15,20 +15,20 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
 ms.openlocfilehash: 9ddac229fc38a91a8b97b24dc2807080b2295758
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79250555"
 ---
-# <a name="log-analytics-virtual-machine-extension-for-linux"></a>Log Analytics virtuálisgép-bővítmény linuxhoz
+# <a name="log-analytics-virtual-machine-extension-for-linux"></a>Log Analytics virtuális gépi bővítmény Linuxhoz
 
 ## <a name="overview"></a>Áttekintés
 
-Azure Monitor naplók a Felhőbeli és a helyszíni eszközökön végzett figyelési, riasztási és riasztási lehetőségeket biztosítanak. A Linux rendszerhez készült Log Analytics virtuálisgép-bővítményt a Microsoft közzétette és támogatja. A bővítmény a Log Analytics-ügynököket telepíti az Azure-beli virtuális gépeken, és regisztrálja a virtuális gépek egy meglévő Log Analytics-munkaterületet. Ez a dokumentum részletesen, a támogatott platformok, konfigurációk és a Log Analytics virtuálisgép-bővítmény linuxhoz üzembe helyezési lehetőségeit.
+Az Azure Monitor Logs figyelési, riasztási és riasztási javítási képességeket biztosít a felhőbeli és helyszíni eszközökön. A Log Analytics virtuálisgép-bővítmény titulálta és támogatja a Microsoft. A bővítmény telepíti a Log Analytics-ügynököt az Azure virtuális gépeken, és virtuális gépeket foglal be egy meglévő Log Analytics-munkaterületre. Ez a dokumentum részletezi a támogatott platformok, konfigurációk és üzembe helyezési lehetőségek a Log Analytics virtuálisgép-bővítmény Linux.
 
 >[!NOTE]
->Az Azure Monitor folyamatos Váltás a Microsoft Operations Management Suite (OMS) részeként az OMS ügynök a Windows vagy Linux rendszerű fog példányaként a Log Analytics-ügynököket Windows és a Log Analytics-ügynök Linux rendszeren.
+>A Microsoft Operations Management Suite (OMS) szolgáltatásról az Azure Monitorra való folyamatos áttérés részeként a Windows vagy Linux OMS-ügynök a Windows és a Log Analytics Linux loganalytics-ügynökeként lesz hivatkozva.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -36,43 +36,43 @@ Azure Monitor naplók a Felhőbeli és a helyszíni eszközökön végzett figye
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-A támogatott Linux-disztribúciókkal kapcsolatos részletekért tekintse meg a [log Analytics ügynök áttekintését](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) ismertető cikket.
+A támogatott Linux-disztribúciók ról a [Log Analytics-ügynök áttekintéséről](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) szóló cikkben olvashat.
 
-### <a name="agent-and-vm-extension-version"></a>Az ügynök és a Virtuálisgép-bővítmény verziója
-Az alábbi táblázat tartalmazza a Log Analytics Virtuálisgép-bővítmény és a Log Analytics ügynök csomag minden kiadott verziójáról. A Log Analytics csomag verziója kibocsátási megjegyzései mutató hivatkozás megtalálható. Kibocsátási megjegyzések a hibajavítások és a egy adott ügynök kiadásban elérhető új szolgáltatások közé tartozik.  
+### <a name="agent-and-vm-extension-version"></a>Ügynök és vm-bővítmény verziója
+Az alábbi táblázat a Log Analytics virtuálisgép-bővítmény és a Log Analytics-ügynökcsomag verziójának leképezését tartalmazza az egyes kiadásokhoz. A Log Analytics-ügynökcsomag verziójának kiadási megjegyzésekre mutató hivatkozása is megtalálható. A kibocsátási megjegyzések tartalmazzák a hibajavítások részleteit és az adott ügynökkiadáshoz elérhető új funkciókat.  
 
-| Log Analytics Linux VM-bővítmény verziója | Log Analytics-ügynököket csomag verziója | 
+| Log Analytics Linux VM bővítmény verziója | A Log Analytics Ügynök csomag verziója | 
 |--------------------------------|--------------------------|
-| 1.12.25 | [1.12.15 – 0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.12.15-0) |
-| 1.11.15 | [1.11.0 – 9](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.11.0-9) |
-| 1.10.0 | [1.10.0 – 1](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.10.0-1) |
-| 1.9.1 | [1.9.0 – 0](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.9.0-0) |
-| 1.8.11 | [1.8.1 – 256](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.8.1.256)| 
-| 1.8.0-as | [1.8.0 – 256](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/1.8.0-256)| 
-| 1.7.9 | [1.6.1 – 3](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.6.1.3)| 
-| 1.6.42.0 | [1.6.0 – 42](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.6.0-42)| 
-| 1.4.60.2 | [1.4.4 – 210](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.4-210)| 
-| 1.4.59.1 | [1.4.3 – 174](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.3-174)|
-| 1.4.58.7 | [14.2 – 125](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.2-125)|
-| 1.4.56.5 | [1.4.2 – 124](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.2-124)|
-| 1.4.55.4 | [1.4.1 – 123](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.1-123)|
-| 1.4.45.3 | [1.4.1 – 45](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.1-45)|
-| 1.4.45.2 | [1.4.0 – 45](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.0-45)|
-| 1.3.127.5 | [1.3.5 – 127](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent-201705-v1.3.5-127)| 
-| 1.3.127.7 | [1.3.5 – 127](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent-201705-v1.3.5-127)|
-| 1.3.18.7 | [1.3.4 – 15](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent-201704-v1.3.4-15)|  
+| 1.12.25 | [1.12.15-0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.12.15-0) |
+| 1.11.15 | [1.11.0-9](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.11.0-9) |
+| 1.10.0 | [1.10.0-1](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.10.0-1) |
+| 1.9.1 | [1.9.0-0](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.9.0-0) |
+| 1.8.11 | [1.8.1-256](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.8.1.256)| 
+| 1.8.0 | [1.8.0-256](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/1.8.0-256)| 
+| 1.7.9 | [1.6.1-3](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.6.1.3)| 
+| 1.6.42.0 | [1.6.0-42](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.6.0-42)| 
+| 1.4.60.2 | [1.4.4-210](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.4-210)| 
+| 1.4.59.1 | [1.4.3-174](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.3-174)|
+| 1.4.58.7 | [14.2-125](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.2-125)|
+| 1.4.56.5 | [1.4.2-124](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.2-124)|
+| 1.4.55.4 | [1.4.1-123](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.1-123)|
+| 1.4.45.3 | [1.4.1-45](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.1-45)|
+| 1.4.45.2 | [1.4.0-45](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.0-45)|
+| 1.3.127.5 | [1.3.5-127](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent-201705-v1.3.5-127)| 
+| 1.3.127.7 | [1.3.5-127](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent-201705-v1.3.5-127)|
+| 1.3.18.7 | [1.3.4-15](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent-201704-v1.3.4-15)|  
 
 ### <a name="azure-security-center"></a>Azure Security Center
 
-Az Azure Security Center automatikusan látja el a Log Analytics-ügynököket, és csatlakoztatja az Azure-előfizetésében az ASC által létrehozott alapértelmezett Log Analytics-munkaterületet. Ha az Azure Security Center használ, ne futtassa a jelen dokumentumban leírt lépések segítségével. Ezzel felülírja a konfigurált munkaterületével, és megszakítja a kapcsolatot az Azure Security Centerrel.
+Az Azure Security Center automatikusan leköti a Log Analytics-ügynököt, és csatlakoztatja azt az ASC által az Azure-előfizetésben létrehozott alapértelmezett Log Analytics-munkaterülethez. Ha az Azure Security Centert használja, ne futtassa a jelen dokumentum lépéseit. Ezzel felülírja a konfigurált munkaterületet, és megszakítja a kapcsolatot az Azure Security Centerrel.
 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 
-A Log Analytics-ügynököket-bővítmény linuxhoz megköveteli, hogy a céloldali virtuális gép csatlakozik az internethez. 
+A Log Analytics Ügynök linuxos bővítmény megköveteli, hogy a cél virtuális gép csatlakozik az internethez. 
 
 ## <a name="extension-schema"></a>Bővítményséma
 
-A következő JSON a Log Analytics-ügynök bővítmény sémáját jeleníti meg. A kiterjesztéshez a munkaterület-azonosító és a munkaterület kulcsa szükséges a cél Log Analytics munkaterületről; Ezek az értékek a Azure Portal [log Analytics munkaterületén találhatók](../../azure-monitor/learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key) . A munkaterület kulcsát kényes adatként kell kezelni, mert azt egy védett beállítás konfigurációjának kell tárolni. Az Azure VM-bővítmény védett beállítás adatok titkosítva, és csak az átjárót tartalmazó a cél virtuális gépen. Vegye figyelembe, hogy a **munkaterület azonosítója** és a **workspaceKey** a kis-és nagybetűk megkülönböztetése.
+A következő JSON a Log Analytics-ügynök bővítmény sémáját jeleníti meg. A bővítmény hez a munkaterület-azonosító és a munkaterületkulcs szükséges a célnapló-elemzési munkaterületről; ezek az értékek az Azure Portalon található [Log Analytics-munkaterületen találhatók.](../../azure-monitor/learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key) Mivel a munkaterületi kulcsot bizalmas adatként kell kezelni, védett beállítási konfigurációban kell tárolni. Az Azure VM-bővítmény védett beállítási adatai titkosítva vannak, és csak a cél virtuális gépen fejtik vissza. Vegye figyelembe, hogy **a workspaceId** és **a workspaceKey** a kis- és nagybetűket is figyelembe veszi.
 
 ```json
 {
@@ -99,27 +99,27 @@ A következő JSON a Log Analytics-ügynök bővítmény sémáját jeleníti me
 ```
 
 >[!NOTE]
->A fenti séma azt feltételezi, hogy ez a sablon gyökér szintű kerülnek. Ha a sablonban elhelyezi a virtuális gép erőforrásában, a `type` és az `name` tulajdonságokat módosítani kell, a [lejjebb](#template-deployment)leírtak szerint.
+>A fenti séma feltételezi, hogy a sablon gyökérszintjén lesz elhelyezve. Ha a sablonban a virtuálisgép-erőforrásba `type` `name` helyezi, a és a tulajdonságokat módosítani kell, a hogy a lentlejjebb leírt módon [levan írva.](#template-deployment)
 
-### <a name="property-values"></a>Tulajdonságok értékei
+### <a name="property-values"></a>Tulajdonság értékek
 
-| Name (Név) | Érték és példa |
+| Név | Érték / Példa |
 | ---- | ---- |
 | apiVersion | 2018-06-01 |
-| publisher | Microsoft.EnterpriseCloud.Monitoring |
+| közzétevő | Microsoft.EnterpriseCloud.Monitoring |
 | type | OmsAgentForLinux |
 | typeHandlerVersion | 1.7 |
-| munkaterület azonosítója (például:) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
-| workspaceKey (például:) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
+| munkaterület-azonosító (pl. | 6f680a37-00c6-41c7-a93f-1437e3462574 |
+| workspaceKey (pl. | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
 
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
-Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. A sablonok ideálisak egy vagy több olyan virtuális gép üzembe helyezéséhez, amely az üzembe helyezés utáni konfigurációt igényli, például Azure Monitor naplók bevezetését. A Log Analytics Agent virtuálisgép-bővítményt tartalmazó példa Resource Manager-sablon az [Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm)rövid útmutatójában található. 
+Az Azure Virtuálisgép-bővítmények az Azure Resource Manager-sablonokkal telepíthetők. A sablonok ideálisak egy vagy több olyan virtuális gép üzembe helyezéséhez, amelyek üzembe helyezés utáni konfigurációt igényelnek, például az Azure Monitor naplókba való bevezetést. A Log Analytics Ügynök virtuálisgép-bővítményt tartalmazó mintaerőforrás-kezelősablon az [Azure gyorsútmutató-galériában](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm)található. 
 
-Virtuálisgép-bővítmények JSON konfigurációjának a virtuális gép típusú erőforrást belülre, vagy elhelyezve, a legfelső szintű vagy a legfelső szintű Resource Managerből származó JSON-sablon. A JSON konfigurációs elhelyezését hatással van az erőforrás nevét, és írja be az értékét. További információ: [a gyermek erőforrások nevének és típusának beállítása](../../azure-resource-manager/templates/child-resource-name-type.md). 
+A virtuálisgép-bővítmény JSON-konfigurációja beágyazható a virtuálisgép-erőforrásba, vagy elhelyezhető egy Erőforrás-kezelő JSON-sablon gyökér- vagy legfelső szintjén. A JSON-konfiguráció elhelyezése hatással van az erőforrás nevének és típusának értékére. További információt a [Név és a gyermekerőforrások típusának beállítása](../../azure-resource-manager/templates/child-resource-name-type.md)című témakörben talál. 
 
-Az alábbi példa azt feltételezi, hogy a Virtuálisgép-bővítményt a virtuális gép típusú erőforrást van beágyazva. A bővítmény erőforrásának beágyazásakor a rendszer a JSON-t a virtuális gép `"resources": []` objektumára helyezi.
+A következő példa feltételezi, hogy a virtuális gép bővítmény e-kiszolgáló a virtuális gép erőforrás. A bővítmény erőforrás beágyazásakor a `"resources": []` JSON a virtuális gép objektumába kerül.
 
 ```json
 {
@@ -144,7 +144,7 @@ Az alábbi példa azt feltételezi, hogy a Virtuálisgép-bővítményt a virtu�
 }
 ```
 
-Helyezi el a JSON-bővítmény a sablonban gyökérmappájában, amikor az erőforrás neve a szülő virtuális gép egy hivatkozást tartalmaz, és a típus a beágyazott konfigurációját tükrözi.  
+Amikor a JSON bővítményt helyezi a sablon gyökeréhez, az erőforrás neve tartalmaz egy hivatkozást a szülő virtuális gépre, és a típus a beágyazott konfigurációt tükrözi.  
 
 ```json
 {
@@ -169,9 +169,9 @@ Helyezi el a JSON-bővítmény a sablonban gyökérmappájában, amikor az erőf
 }
 ```
 
-## <a name="azure-cli-deployment"></a>Az Azure CLI-telepítés
+## <a name="azure-cli-deployment"></a>Az Azure CLI üzembe helyezése
 
-Az Azure CLI segítségével a Log Analytics ügynök Virtuálisgép-bővítmény egy meglévő virtuális gépek üzembe helyezéséhez. Cserélje le az alábbi *myWorkspaceKey* értéket a munkaterület kulcsával és a *myWorkspaceId* értékkel a munkaterület-azonosítójával. Ezek az értékek a Azure Portal *Speciális beállítások*területén található log Analytics munkaterületén találhatók. 
+Az Azure CLI használható a Log Analytics Ügynök virtuálisgép-bővítmény üzembe helyezéséhez egy meglévő virtuális gépre. Cserélje le az alábbi *myWorkspaceKey* értéket a munkaterületi kulcsra és a *myWorkspaceId* értéket a munkaterület-azonosítóra. Ezek az értékek az Azure PortalOn található Log Analytics-munkaterületen találhatók a *Speciális beállítások csoportban.* 
 
 ```azurecli
 az vm extension set \
@@ -187,33 +187,33 @@ az vm extension set \
 
 ### <a name="troubleshoot"></a>Hibaelhárítás
 
-Bővítmény központi telepítések állapotát lehet adatokat beolvasni az Azure Portalról, és az Azure parancssori felület használatával. Adott Virtuálisgép-bővítmények központi telepítési állapotának megtekintéséhez futtassa a következő parancsot az Azure CLI használatával.
+A bővítmény-üzembe helyezések állapotára vonatkozó adatok az Azure Portalról és az Azure CLI használatával is lekérdezhetők. Egy adott virtuális gép bővítményeinek telepítési állapotának megtekintéséhez futtassa a következő parancsot az Azure CLI használatával.
 
 ```azurecli
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-Bővítmény végrehajtás kimenetének a rendszer naplózza a következő fájlt:
+A bővítmény-végrehajtási kimenet a következő fájlba kerül:
 
 ```
 /opt/microsoft/omsagent/bin/stdout
 ```
 
-### <a name="error-codes-and-their-meanings"></a>Hibakódok és azok jelentését
+### <a name="error-codes-and-their-meanings"></a>Hibakódok és jelentésük
 
-| Hibakód | Jelentés | A művelet lehetséges |
+| Hibakód | Jelentés | Lehetséges művelet |
 | :---: | --- | --- |
-| 9 | Túl korán nevű engedélyezése | [Frissítse az Azure Linux-ügynököt](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) a legújabb elérhető verzióra. |
-| 10 | Virtuális gép már csatlakoztatva van egy Log Analytics-munkaterület | A virtuális gép csatlakozik a bővítmény sémában megadott munkaterület, stopOnMultipleConnections "false" értékűre a nyilvános beállításait, vagy távolítsa el ezt a tulajdonságot. Ez a virtuális gép egyes munkaterületekre vonatkozó való csatlakozás után díjat számítjuk fel. |
-| 11 | A bővítmény megadott Érvénytelen konfiguráció | Kövesse az előző példákból való üzembe helyezéshez szükséges összes tulajdonság értéket állítsa be. |
-| 17 | Log Analytics-csomag telepítési hiba | 
+| 9 | Korai meghívni engedélyezése | [Frissítse az Azure Linux-ügynök](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) a legújabb elérhető verzióra. |
+| 10 | A virtuális gép már csatlakozik egy Log Analytics-munkaterülethez | Ha a virtuális gép a bővítménysémában megadott munkaterülethez szeretne csatlakozni, állítsa a stopOnMultipleConnections beállítást hamis helyre a nyilvános beállításokban, vagy távolítsa el ezt a tulajdonságot. Ez a virtuális gép minden olyan munkaterületért egyszer kerül számlázásra, amelyhez kapcsolódik. |
+| 11 | Érvénytelen konfiguráció, amelyet a bővítmény nek adtak | Kövesse az előző példákat a telepítéshez szükséges összes tulajdonságérték beállításához. |
+| 17 | A Log Analytics csomag telepítési hibája | 
 | 19 | OMI csomag telepítési hiba | 
-| 20 | Az SCX-csomag telepítési hiba |
-| 51 | Ezt a bővítményt a virtuális gép operációs rendszer nem támogatott | |
-| 55 | Nem lehet csatlakozni a Azure Monitor szolgáltatáshoz, vagy hiányzik a szükséges csomagok, vagy a dpkg Package Manager zárolva van| Ellenőrizze, hogy a rendszer rendelkezik Internet-hozzáféréssel, vagy az, hogy érvényes HTTP proxy lett megadva. Ezenkívül ellenőrizze a munkaterület azonosítójának helyességét, és a curl és tar segédprogram telepítve van. |
+| 20 | Az SCX csomag telepítési hibája |
+| 51 | Ez a bővítmény nem támogatott a virtuális gép operációs rendszerében | |
+| 55 | Nem lehet csatlakozni az Azure Monitor szolgáltatáshoz, vagy a hiányzó csomagok vagy a dpkg csomagkezelő zárolva van| Ellenőrizze, hogy a rendszer rendelkezik-e internet-hozzáféréssel, vagy hogy van-e érvényes HTTP-proxy. Ellenőrizze továbbá a munkaterület-azonosító helyességét, és ellenőrizze, hogy telepítve vannak-e a kaszkadár- és kátrányos segédprogramok. |
 
-További hibaelhárítási tudnivalókat a [log Analytics-Agent-Linux hibaelhárítási útmutatójában](../../azure-monitor/platform/vmext-troubleshoot.md)talál.
+További hibaelhárítási információk a [Log Analytics-Agent-for-Linux hibaelhárítási útmutatóban](../../azure-monitor/platform/vmext-troubleshoot.md)találhatók.
 
 ### <a name="support"></a>Támogatás
 
-Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a támogatás kérése lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).
+Ha további segítségre van szüksége a cikk bármely pontján, felveheti a kapcsolatot az Azure szakértőivel az [MSDN Azure és a Stack Overflow fórumokon.](https://azure.microsoft.com/support/forums/) Másik lehetőségként benyújthat egy Azure-támogatási incidenst. Nyissa meg az [Azure támogatási webhelyét,](https://azure.microsoft.com/support/options/) és válassza a Támogatás beszerezni lehetőséget. Az Azure-támogatás használatáról a [Microsoft Azure támogatási gyIK](https://azure.microsoft.com/support/faq/)című területén olvashat.

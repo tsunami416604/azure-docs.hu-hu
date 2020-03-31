@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Hub X. 509 HITELESÍTÉSSZOLGÁLTATÓI biztonság áttekintése | Microsoft Docs
-description: Áttekintés – eszközök hitelesítése az IoT Hub X. 509 hitelesítésszolgáltatók használatával.
+title: Az Azure IoT Hub X.509 hitelesítésbiztosítási rendszer biztonságának áttekintése | Microsoft dokumentumok
+description: Áttekintés – az Eszközök hitelesítése az IoT Hubba az X.509 tanúsítványszolgáltatók használatával.
 author: eustacea
 manager: arjmands
 ms.service: iot-hub
@@ -9,79 +9,79 @@ ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
 ms.openlocfilehash: 3d02d3573902964a8549fa0eeb1f4f1471de1752
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79284511"
 ---
-# <a name="device-authentication-using-x509-ca-certificates"></a>Eszköz hitelesítése X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok használatával
+# <a name="device-authentication-using-x509-ca-certificates"></a>Eszköz hitelesítése X.509-es hitelesítésszolgáltatói tanúsítványokkal
 
-Ez a cikk azt ismerteti, hogyan használható az X. 509 hitelesítésszolgáltatók (CA) tanúsítványai a IoT Hub csatlakozó eszközök hitelesítéséhez.  Ebben a cikkben a következőket fogja elsajátítani:
+Ez a cikk azt ismerteti, hogy miként használhatja az X.509-es hitelesítésszolgáltatói tanúsítványokat az IoT Hubot összekötő eszközök hitelesítéséhez.  Ebben a cikkben megtudhatja:
 
-* X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány beszerzése
-* Az X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány regisztrálása IoT Hub
-* Eszközök aláírása X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok használatával
-* Az X. 509 HITELESÍTÉSSZOLGÁLTATÓval aláírt eszközök hitelesítése
+* X.509 hitelesítésszolgáltatói tanúsítvány beszerezése
+* Az X.509 hitelesítésszolgáltatói tanúsítvány regisztrálása az IoT Hubba
+* Eszközök aláírása X.509 hitelesítésszolgáltatói tanúsítványokkal
+* Az X.509 hitelesítési megállapodással aláírt eszközök hitelesítésének a módját
 
 ## <a name="overview"></a>Áttekintés
 
-Az X. 509 HITELESÍTÉSSZOLGÁLTATÓI szolgáltatás lehetővé teszi, hogy az eszköz hitelesítése IoT Hub hitelesítésszolgáltató (CA) használatával történjen. Nagy mértékben leegyszerűsíti a kezdeti eszközök regisztrálási folyamatát, és az eszközök gyártása során biztosítja a lánc logisztikáját. [Ebben a forgatókönyvben további információt talál az X. 509 hitelesítésszolgáltatói tanúsítványok használata](iot-hub-x509ca-concept.md) az eszközök hitelesítéséhez című cikkből.  Javasoljuk, hogy a továbblépés előtt olvassa el ezt a forgatókönyvet, mielőtt elmagyarázza, miért van a következő lépések.
+Az X.509 hitelesítésszolgáltató szolgáltatás lehetővé teszi az eszközök hitelesítését az IoT Hub on a hitelesítésszolgáltató (CA). Ez nagyban leegyszerűsíti a kezdeti eszköz regisztrációs folyamat, és az ellátási lánc logisztika során eszközgyártás. [Az X.509 hitelesítésszolgáltatói tanúsítványok](iot-hub-x509ca-concept.md) eszközhitelesítéshez való használatának értékéről ebben a forgatókönyvben olvashat bővebben.  Javasoljuk, hogy olvassa el ezt a forgatókönyvet, mielőtt folytatná, mivel elmagyarázza, hogy miért léteznek a következő lépések.
 
-## <a name="prerequisite"></a>Előfeltételek
+## <a name="prerequisite"></a>Előfeltétel
 
-Az X. 509 HITELESÍTÉSSZOLGÁLTATÓI szolgáltatás használatához IoT Hub fiókra van szükség.  [Megtudhatja, hogyan hozhat létre IoT hub-példányt](quickstart-send-telemetry-dotnet.md) , ha még nem rendelkezik ilyennel.
+Az X.509 hitelesítésszolgáltatás használatához IoT Hub-fiókszükséges.  [Megtudhatja, hogyan hozhat létre egy IoT Hub-példányt,](quickstart-send-telemetry-dotnet.md) ha még nem rendelkezik ilyen.
 
-## <a name="how-to-get-an-x509-ca-certificate"></a>X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány beszerzése
+## <a name="how-to-get-an-x509-ca-certificate"></a>X.509 hitelesítésszolgáltatói tanúsítvány beszerezése
 
-Az X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány az egyes eszközök tanúsítványainak láncának tetején található.  Vásárolhat vagy létrehozhat egyet attól függően, hogy hogyan kívánja használni.
+Az X.509 hitelesítésszolgáltatói tanúsítvány az egyes eszközök tanúsítványláncának tetején található.  Attól függően, hogy hogyan kívánja használni, vásárolhat vagy létrehozhat egyet.
 
-Éles környezetben ajánlott egy X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány vásárlása egy nyilvános legfelső szintű hitelesítésszolgáltatótól. A CA tanúsítvány megvásárlása a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓnak a megbízható harmadik féltől származó előnye, amely az eszközök legitimitásának igazolására szolgál. Vegye figyelembe ezt a lehetőséget, ha azt szeretné, hogy az eszközök egy olyan nyitott IoT-hálózat részévé legyenek, amelyben a harmadik féltől származó termékekkel vagy szolgáltatásokkal való interakció várható.
+Éles környezetben azt javasoljuk, hogy vásároljon egy X.509 hitelesítésszolgáltatói tanúsítványt egy nyilvános legfelső szintű hitelesítésszolgáltatótól. A hitelesítésszolgáltatói tanúsítvány megvásárlásának előnye, hogy a legfelső szintű hitelesítésszolgáltató megbízható harmadik félként működik, hogy kezeskedjen az eszközök legitimitásáért. Vegye figyelembe ezt a lehetőséget, ha azt szeretné, hogy az eszközök egy nyílt IoT-hálózat részei legyenek, ahol várhatóan harmadik fél termékeivel vagy szolgáltatásaival lépnek kapcsolatba.
 
-Létrehozhat egy önaláírt X. 509 HITELESÍTÉSSZOLGÁLTATÓT is a kísérletezéshez vagy a zárt IoT-hálózatokban való használathoz.
+Létrehozhat egy önaláírt X.509 hitelesítéscsoportot is kísérletezésre vagy zárt IoT-hálózatokban való használatra.
 
-Az X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány beszerzésének módjától függetlenül győződjön meg róla, hogy a titkos kulcs és a védelem mindig meg van nyitva.  Erre azért van szükség, hogy az X. 509 HITELESÍTÉSSZOLGÁLTATÓI hitelesítés megbízhatóságának kiépítése megbízható legyen.
+Függetlenül attól, hogy hogyan szerzi be az X.509 hitelesítésszolgáltatói tanúsítványt, mindig tartsa meg a megfelelő titkos kulcs titkos kulcsát.  Ez az X.509 hitelesítésszolgáltató hitelesítési megbízhatóságának kiépítéséhez szükséges.
 
-Ismerje meg, hogyan [hozhat létre önaláírt hitelesítésszolgáltatói tanúsítványt](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md), amelyet a funkció leírásában használhat a kísérletezéshez.
+Ismerje meg, hogyan [hozhat létre önaláírt hitelesítésszolgáltatói tanúsítványt,](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)amelyet a szolgáltatás leírásában kísérletezésre használhat.
 
-## <a name="sign-devices-into-the-certificate-chain-of-trust"></a>Eszközök aláírása a megbízhatósági tanúsítványláncbe
+## <a name="sign-devices-into-the-certificate-chain-of-trust"></a>Eszközök bejelentkezése a megbízhatósági tanúsítványláncba
 
-Az X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány tulajdonosa kriptográfiai módon aláírhat egy köztes HITELESÍTÉSSZOLGÁLTATÓT, amely egy másik közbenső HITELESÍTÉSSZOLGÁLTATÓT is aláírhat, és így tovább, egészen addig, amíg az utolsó közbenső HITELESÍTÉSSZOLGÁLTATÓ leállítja ezt a folyamatot egy eszköz aláírásával. Az eredmény egy megbízható tanúsítványláncként ismert tanúsítványok lépcsőzetes lánca. A valós életben ez a megbízhatóság delegálása az eszközök aláírása felé. Ez a delegálás azért fontos, mert titkosítási szempontból változó felügyeleti láncot hoz létre, és elkerüli az aláíró kulcsok megosztását.
+Az X.509 hitelesítésszolgáltatói tanúsítvány tulajdonosa kriptográfiailag aláírhat egy köztes hitelesítésszolgáltatót, amely viszont aláírhat egy másik köztes hitelesítésszolgáltatót, és így tovább, amíg az utolsó köztes hitelesítésszolgáltató egy eszköz aláírásával le nem állítja ezt a folyamatot. Az eredmény egy kaszkádolt tanúsítványlánc, amelyet tanúsítványmegbízhatósági láncnak neveznek. A való életben ez játszik ki, mint a bizalom delegálása felé aláíró eszközök. Ez a delegálás azért fontos, mert kriptográfiailag változó felügyeleti láncot hoz létre, és elkerüli az aláíró kulcsok megosztását.
 
 ![img-generic-cert-chain-of-trust](./media/generic-cert-chain-of-trust.png)
 
-Az eszköz tanúsítványának (más néven levél tanúsítványának) a *tulajdonos nevét* kell beállítani a IoT-eszköz Azure-IoT hub való regisztrálása során használt **eszköz-azonosítóhoz** . Ez a beállítás a hitelesítéshez szükséges.
+Az eszköztanúsítványnak (más néven levéltanúsítványnak) rendelkeznie kell a *tulajdonos nevével* az IoT-eszköz Azure IoT Hubban történő regisztrálásakor használt **eszközazonosítóra.** Ez a beállítás szükséges a hitelesítéshez.
 
-Itt megtudhatja, hogyan [hozhat létre egy tanúsítványláncot](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) az eszközök aláírása során.
+Itt megtudhatja, hogyan [hozhat létre tanúsítványláncot](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) az eszközök aláírásakor végzett ekként.
 
-## <a name="how-to-register-the-x509-ca-certificate-to-iot-hub"></a>Az X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány regisztrálása IoT Hub
+## <a name="how-to-register-the-x509-ca-certificate-to-iot-hub"></a>Az X.509 hitelesítésszolgáltatói tanúsítvány regisztrálása az IoT Hubba
 
-Regisztrálja X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványát, hogy IoT Hub, hol fogja használni az eszközöket a regisztráció és a csatlakozás során.  Az X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány regisztrálása kétlépéses folyamat, amely magában foglalja a tanúsítványfájl feltöltését és a birtoklás igazolását.
+Regisztrálja x.509 hitelesítésszolgáltatói tanúsítványát az IoT Hubba, ahol a regisztráció és a kapcsolat során az eszközök hitelesítésére szolgál.  Az X.509 hitelesítésszolgáltatói tanúsítvány regisztrálása két lépésből áll, amely magában foglalja a tanúsítványfájlok feltöltését és a birtoklás igazolását.
 
-A feltöltési folyamat magában foglalja a tanúsítványt tartalmazó fájl feltöltését.  Ez a fájl soha nem tartalmazhat titkos kulcsot.
+A feltöltési folyamat magában foglalja a tanúsítványt tartalmazó fájl feltöltését.  Ez a fájl soha nem tartalmazhat személyes kulcsokat.
 
-A birtoklási lépés igazolása az Ön és a IoT Hub közötti titkosítási kihívás és reagálási folyamat.  Mivel a digitális tanúsítvány tartalma nyilvános, ezért a lehallgatásra fogékony, IoT Hub szeretné megállapítani, hogy valóban a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány tulajdonosa.  Ezt olyan véletlenszerű kihívás létrehozásával kell elvégezni, amelyet a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány megfelelő titkos kulcsával kell aláírnia.  Ha titokban tartotta a titkos kulcsot, és a korábban javasolt módon védett, akkor csak a lépés elvégzéséhez lesz az ismerete. A titkos kulcsok titkossága ennek a módszernek a megbízhatósági forrása.  A probléma aláírása után végezze el ezt a lépést az eredményeket tartalmazó fájl feltöltésével.
+A birtoklási lépés igazolása egy kriptográfiai kihívást és válaszadási folyamatot foglal magában Ön és az IoT Hub között.  Tekintettel arra, hogy a digitális tanúsítvány tartalma nyilvános, és ezért ki van téve a lehallgatásnak, az IoT Hub szeretné megtudni, hogy valóban Ön a hitelesítésszolgáltatói tanúsítvány a tulajdonában van.  Ezt úgy kell megtennie, hogy véletlenszerű kihívást hoz létre, amelyet alá kell írnia a hitelesítésszolgáltatói tanúsítvány megfelelő személyes kulcsával.  Ha ön tartott a közlegény kulcs titok és megvéd mint korábbi tanácsos, akkor egyetlen ön akarat rendelkezik a tudás -hoz kiegészít ez lép. A személyes kulcsok titkossága a megbízható forrás ebben a módszerben.  A kihívás aláírása után hajtsa végre ezt a lépést az eredményeket tartalmazó fájl feltöltésével.
 
-További információ a [hitelesítésszolgáltatói tanúsítvány regisztrálásáról](iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub)
+Itt megtudhatja, hogyan [regisztrálhatja hitelesítésszolgáltatói tanúsítványát](iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub)
 
-## <a name="how-to-create-a-device-on-iot-hub"></a>Eszköz létrehozása IoT Hubon
+## <a name="how-to-create-a-device-on-iot-hub"></a>Eszköz létrehozása az IoT Hubon
 
-Az eszköz megszemélyesítésének meggátolása érdekében IoT Hub megköveteli, hogy tájékoztassa a várható eszközöket.  Ehhez hozzon létre egy eszköz bejegyzést a IoT Hub eszközének beállításjegyzékében.  Ez a folyamat IoT Hub [eszköz kiépítési szolgáltatásának](https://azure.microsoft.com/blog/azure-iot-hub-device-provisioning-service-preview-automates-device-connection-configuration/)használatakor automatizálható. 
+Az eszköz megszemélyesítése kiiszatásának kipróbálása érdekében az IoT Hub megköveteli, hogy tudassa vele, milyen eszközökre számíthat.  Ehhez hozzon létre egy eszközbejegyzést az IoT Hub eszközbeállítás-nyilvántartásában.  Ez a folyamat automatikus, ha az IoT [Hub-eszközkiépítési szolgáltatás használata.](https://azure.microsoft.com/blog/azure-iot-hub-device-provisioning-service-preview-automates-device-connection-configuration/) 
 
-Itt megtudhatja, hogyan [hozhat létre manuálisan egy eszközt a IoT Hubban](iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub).
+Itt megtudhatja, hogyan [hozhat létre manuálisan egy eszközt az IoT Hubban.](iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub)
 
-X. 509 eszköz létrehozása az IoT hub számára
+X.509-es eszköz létrehozása az IoT hubhoz
 
-## <a name="authenticating-devices-signed-with-x509-ca-certificates"></a>X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványokkal aláírt eszközök hitelesítése
+## <a name="authenticating-devices-signed-with-x509-ca-certificates"></a>X.509 hitelesítésszolgáltatói tanúsítvánnyal aláírt eszközök hitelesítése
 
-Az X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány regisztrálása és az eszközök megbízhatósági láncba való bejelentkezve az eszköz akkor is az eszköz hitelesítése, amikor az eszköz csatlakozik, még az első alkalommal is.  Ha egy X. 509 HITELESÍTÉSSZOLGÁLTATÓ által aláírt eszköz csatlakozik, az ellenőrzi a tanúsítvány láncát az ellenőrzéshez. A lánc az összes köztes HITELESÍTÉSSZOLGÁLTATÓ és eszköz tanúsítványát tartalmazza.  Ezekkel az információkkal a IoT Hub kétlépéses folyamattal hitelesíti az eszközt.  IoT Hub kriptográfiailag ellenőrzi a tanúsítványlánc belső konzisztencia-ellenőrzését, majd kibocsátja az eszközre vonatkozó igazoló kihívást.  IoT Hub deklarálja az eszköz eredetiségét az eszköz sikeres, igazolásra adott válaszára.  Ez a nyilatkozat azt feltételezi, hogy az eszköz titkos kulcsa védett, és csak az eszköz tud válaszolni erre a kihívásra.  A titkos kulcsok védelme érdekében javasoljuk, hogy használjon biztonságos zsetonokat, például hardveres biztonságos modulokat (HSM) az eszközökön.
+Az X.509 hitelesítésszolgáltatói tanúsítvány regisztrálásával és a megbízhatósági láncba bejelentkezett eszközökkel az eszköz hitelesítése marad, amikor az eszköz csatlakozik, még az első alkalommal is.  Amikor egy X.509 hitelesítésszolgáltató által aláírt eszköz csatlakozik, feltölti a tanúsítványláncát ellenőrzésre. A lánc tartalmazza az összes köztes hitelesítésszolgáltatói és eszköztanúsítványt.  Ezekkel az adatokkal az IoT Hub két lépésben hitelesíti az eszközt.  Az IoT Hub kriptográfiailag ellenőrzi a tanúsítványláncot a belső konzisztencia érdekében, majd kiállítási a birtoklásigazolási kihívást jelent az eszköz számára.  Az IoT Hub hitelesnek nyilvánítja az eszközt az eszközről érkező sikeres birtoklásigazolási válaszon.  Ez a deklaráció feltételezi, hogy az eszköz személyes kulcsa védett, és csak az eszköz tud sikeresen válaszolni erre a kihívásra.  Javasoljuk, hogy a személyes kulcsok védelme érdekében használjon biztonságos chipeket, például hardveres biztonsági modulokat (HSM) az eszközökön.
 
-Egy sikeres eszköz-kapcsolódás IoT Hub befejezi a hitelesítési folyamatot, és a megfelelő beállításra is utal.
+Az IoT Hubhoz való sikeres eszközkapcsolat befejezi a hitelesítési folyamatot, és egymegfelelő beállítást is jelez.
 
-Itt megtudhatja, hogyan [végezheti el az eszköz kapcsolódási lépését](iot-hub-security-x509-get-started.md#authenticate-your-x509-device-with-the-x509-certificates).
+Itt megtudhatja, hogyan [végezheti el ezt az eszközkapcsolati lépést.](iot-hub-security-x509-get-started.md#authenticate-your-x509-device-with-the-x509-certificates)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg [az X. 509 hitelesítésszolgáltatói hitelesítés értékét](iot-hub-x509ca-concept.md) a IoT-ben.
+Ismerje meg [az X.509 hitelesítésszolgáltató-hitelesítés iot-hitelesítés értékét.](iot-hub-x509ca-concept.md)
 
-Ismerkedjen meg IoT Hub [Device kiépítési szolgáltatással](https://docs.microsoft.com/azure/iot-dps/).
+Ismerkedés az IoT [Hub-eszközkiépítési szolgáltatással.](https://docs.microsoft.com/azure/iot-dps/)

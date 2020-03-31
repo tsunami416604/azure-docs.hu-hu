@@ -1,159 +1,165 @@
 ---
-title: Tudnivalók a helyi alkalmazások vész-helyreállításáról Azure Site Recovery
+title: A helyszíni alkalmazások vész-helyreállítási szolgáltatása az Azure Site Recovery szolgáltatással
 description: Azokat a számítási feladatokat ismerteti, amelyeket meg lehet védeni a vészhelyreállítás Azure Site Recovery szolgáltatással történő használatával.
-author: rayne-wiselman
-ms.service: site-recovery
-services: site-recovery
 ms.topic: conceptual
-ms.date: 10/10/2019
-ms.author: raynew
-ms.openlocfilehash: ad989a28e150635637a477d07803107a9fefff63
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.date: 03/18/2020
+ms.openlocfilehash: 2b901425a0020c0ccc7b834ee36d965910028018
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255557"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062844"
 ---
-# <a name="about-disaster-recovery-for-on-premises-apps"></a>Tudnivalók a helyszíni alkalmazások vész-helyreállításáról
+# <a name="about-disaster-recovery-for-on-premises-apps"></a>Információk a helyszíni alkalmazások vészhelyreállításáról
 
-Ez a cikk azokat a helyszíni munkaterheléseket és alkalmazásokat ismerteti, amelyeket a [Azure site Recovery](site-recovery-overview.md) szolgáltatással szembeni vész-helyreállítási védelemmel lehet ellátni.
-
-
+Ez a cikk ismerteti a helyszíni számítási feladatok és alkalmazások, amelyek et az [Azure Site Recovery](site-recovery-overview.md) szolgáltatással megvédheti a vészhelyreállításhoz.
 
 ## <a name="overview"></a>Áttekintés
 
-A szervezeteknek szükségük van egy üzletmenet-folytonossági és vészhelyreállítási (BCDR) stratégiára, amely meghatározza, hogy hogyan tudnak a számítási feladatok és az adatok biztonságban és üzemben maradni a tervezett és nem tervezett leállások során, illetve hogy miként lehet a lehető leggyorsabban visszaállni a normál működésre.
+A szervezeteknek üzletmenet-folytonossági és vész-helyreállítási (BCDR) stratégiára van szükségük a számítási feladatok és adatok biztonságos és elérhető vétlen helyének megőrzéséhez a tervezett és nem tervezett állásidő alatt. És, vissza a rendszeres munkakörülmények között.
 
-Az Azure Site Recovery segít a BCDR-stratégia kidolgozásában. A Site Recovery használatával alkalmazásbarát replikációt végezhet a felhőbe vagy egy másodlagos helyre. Függetlenül attól, hogy alkalmazásai Windows- vagy Linux-alapúak, illetve hogy fizikai, VMware- vagy Hyper-V-kiszolgálón futnak, a Site Recovery koordinálja a replikációt, elvégzi a vészhelyreállítás tesztelését, valamint feladatátvételt és -visszavételt hajt végre.
+Az Azure Site Recovery segít a BCDR-stratégia kidolgozásában. A Site Recovery használatával alkalmazásbarát replikációt végezhet a felhőbe vagy egy másodlagos helyre. A Site Recovery segítségével kezelheti a replikációt, végrehajthatja a vész-helyreállítási tesztelést, valamint futtathatja a feladatátvételeket és a feladat-visszavételeket. Az alkalmazások futtathatók Windows vagy Linux alapú számítógépeken, fizikai kiszolgálókon, VMware-en vagy Hyper-V-n.
 
-A Site Recovery számos Microsoft-alkalmazással (például SharePoint, Exchange, Dynamics, SQL Server és Active Directory) együttműködik. A Microsoft továbbá szorosan együttműködik az olyan vezető szállítókkal, mint az Oracle, a SAP vagy a Red Hat. A replikációs megoldásokat alkalmazásonként szabhatja testre.
+A Site Recovery integrálható a Microsoft alkalmazásaival, például a SharePointtal, az Exchange-szel, a Dynamics-szal, az SQL Serverrel és az Active Directoryval. A Microsoft szorosan együttműködik a vezető gyártókkal, például az Oracle-lel, az SAP-val és a Red Hat-tal. A replikációs megoldásokat alkalmazásonként szabhatja testre.
 
 ## <a name="why-use-site-recovery-for-application-replication"></a>Miért előnyös a Site Recovery használata az alkalmazásreplikációhoz?
 
 A Site Recovery az alábbi módokon járul hozzá az alkalmazásszintű védelemhez és helyreállításhoz:
 
-* Alkalmazásfüggetlen, így egy támogatott gépen futó bármilyen számítási feladatok replikációját biztosítja.
-* Közel szinkron replikációt biztosít, amelynek esetében a helyreállítási időkorlát mindössze 30 másodperc is lehet, így megfelel a legtöbb kritikus fontosságú üzleti alkalmazás igényeinek.
-* Alkalmazáskonzisztens pillanatképeket rögzít egy- vagy többszintű alkalmazásokról.
-* Integráció SQL Server AlwaysOn, és együttműködés más alkalmazás-szintű replikációs technológiákkal, beleértve az AD-replikációt, az SQL-AlwaysOn, az Exchange Database rendelkezésre állási csoportjait (Dag).
-* Külső szkripteket és manuális műveleteket is tartalmazó, rugalmas helyreállítási tervekkel rendelkezik, amelyekkel egész alkalmazáscsoportokat állíthat helyre egyetlen kattintással.
-* A Site Recovery és az Azure fejlett hálózatkezelési funkciói leegyszerűsítik az alkalmazáshálózati követelményeket, ideértve az IP-címek lefoglalását, a terheléselosztók konfigurálását, valamint az Azure Traffic Manager integrációját, ami alacsony helyreállítási időre vonatkozó célkitűzéssel rendelkező hálózatváltást garantál.
-* A szolgáltatás gazdag, éles használatra kész és alkalmazásspecifikus parancsprogramokat tartalmazó automatizációs kódtárat tartalmaz, amely letölthető, és beépíthető a helyreállítási tervekbe.
+- Alkalmazásfüggetlen, és replikációt biztosít a támogatott gépen futó munkaterhelések számára.
+- Közel szinkron replikáció, a helyreállítási pont céljai (RPO) akár 30 másodpercig is megfelelni ük a legkritikusabb üzleti alkalmazások igényeinek.
+- Alkalmazáskonzisztens pillanatképeket rögzít egy- vagy többszintű alkalmazásokról.
+- Integráció az SQL Server AlwaysOn kiszolgálóval, valamint partnerség más alkalmazásszintű replikációs technológiákkal. Például az Active Directory replikáció, az SQL AlwaysOn és az Exchange adatbázis rendelkezésre állási csoportjai (DAGs).
+- Rugalmas helyreállítási tervek, amelyek lehetővé teszik egy teljes alkalmazásverem egyetlen kattintással történő helyreállítását, valamint külső parancsfájlok és manuális műveletek belefoglalását a tervbe.
+- Speciális hálózatkezelés a Site Recovery és az Azure területén az alkalmazáshálózati követelmények egyszerűsítése érdekében. A hálózatkezelés, például az IP-címek lefoglalása, a terheléselosztás konfigurálása és az Azure Traffic Managerrel való integráció alacsony helyreállítási idejű célkitűzések (RTO) hálózati átkapcsolásesetén.
+- A szolgáltatás gazdag, éles használatra kész és alkalmazásspecifikus parancsprogramokat tartalmazó automatizációs kódtárat tartalmaz, amely letölthető, és beépíthető a helyreállítási tervekbe.
 
 ## <a name="workload-summary"></a>A számítási feladatok összefoglalása
-A Site Recovery a támogatott gépeken futó bármilyen alkalmazást képes replikálni. Ezen kívül a termék csapatával együttműködve további tesztelést végzünk a táblázatban megadott alkalmazásokhoz.
 
-| **Számítási feladat** |**Virtuális gépek replikálása az Azure-ba** |**Hyper-V virtuális gépek replikálása másodlagos helyre** | **Hyper-V virtuális gépek replikálása az Azure-ba** | **VMware virtuális gépek replikálása másodlagos helyre** | **VMware virtuális gépek replikálása az Azure-ba** |
+A Site Recovery a támogatott gépeken futó bármilyen alkalmazást képes replikálni. Az alábbi táblázatban megadott alkalmazások további tesztelését követően a termékcsoportokkal együttműködve.
+
+| **Munkateher** |**Virtuális gépek replikálása az Azure-ba** |**Hyper-V virtuális gépek replikálása másodlagos helyre** | **Hyper-V virtuális gépek replikálása az Azure-ba** | **VMware virtuális gépek replikálása másodlagos helyre** | **VMware virtuális gépek replikálása az Azure-ba** |
 | --- | --- | --- | --- | --- |---|
-| Active Directory, DNS |I |I |I |I |I|
-| Webalkalmazások (IIS, SQL) |I |I |I |I |I|
-| System Center Operations Manager |I |I |I |I |I|
-| SharePoint |I |I |I |I |I|
-| SAP<br/><br/>Replikálás SAP-helyről az Azure-ba nem fürtözött rendszer esetén |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján)|
-| Exchange (nem DAG) |I |I |I |I |I|
-| Távoli asztal/VDI |I |I |I |I |I|
-| Linux (operációs rendszer és alkalmazások) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján) |I (a Microsoft által végzett tesztek alapján)|
-| Dynamics AX |I |I |I |I |I|
-| Windows fájlkiszolgáló |I |I |I |I |I|
-| Citrix XenApp és XenDesktop |I|– |I |– |I |
+| Active Directory, DNS |Igen |Igen |Igen |Igen |Igen|
+| Webalkalmazások (IIS, SQL) |Igen |Igen |Igen |Igen |Igen|
+| System Center Operations Manager |Igen |Igen |Igen |Igen |Igen|
+| SharePoint |Igen |Igen |Igen |Igen |Igen|
+| SAP<br/><br/>Replikálás SAP-helyről az Azure-ba nem fürtözött rendszer esetén |Igen (a Microsoft tesztelte) |Igen (a Microsoft tesztelte) |Igen (a Microsoft tesztelte) |Igen (a Microsoft tesztelte) |Igen (a Microsoft tesztelte)|
+| Exchange (nem DAG) |Igen |Igen |Igen |Igen |Igen|
+| Távoli asztal/VDI |Igen |Igen |Igen |Igen |Igen|
+| Linux (operációs rendszer és alkalmazások) |Igen (a Microsoft tesztelte) |Igen (a Microsoft tesztelte) |Igen (a Microsoft tesztelte) |Igen (a Microsoft tesztelte) |Igen (a Microsoft tesztelte)|
+| Dynamics AX |Igen |Igen |Igen |Igen |Igen|
+| Windows fájlkiszolgáló |Igen |Igen |Igen |Igen |Igen|
+| Citrix XenApp és XenDesktop |Igen|N/A |Igen |N/A |Igen |
 
 ## <a name="replicate-active-directory-and-dns"></a>Active Directory és DNS replikálása
-A legtöbb vállalati alkalmazás számára elengedhetetlen az Active Directory- és DNS-infrastruktúra használata. A vészhelyreállítás során a számítási feladatok és az alkalmazások helyreállítása előtt ezeket az infrastruktúra-összetevőket meg kell védenie és helyre kell állítania.
 
-A Site Recovery segítséglével teljesen automatizált vészhelyreállítási tervet hozhat létre az Active Directoryhoz és a DNS-hez. Ha például egy elsődleges helyről szeretné egy másodlagos helyre átadni a SharePointot és az SAP-t, akkor beállíthat egy olyan helyreállítási tervet, amely először az Active Directoryt adja át, majd beállíthat egy másik, alkalmazásspecifikus helyreállítási tervet is, amely az Active Directoryra támaszkodó egyéb alkalmazásokat adja át.
+A legtöbb vállalati alkalmazás számára elengedhetetlen az Active Directory- és DNS-infrastruktúra használata. A vész-helyreállítási során meg kell védenie és helyre kell állítania ezeket az infrastruktúra-összetevőket, mielőtt helyreállítaná a számítási feladatokat és az alkalmazásokat.
 
-[Itt részletesebben tájékozódhat](site-recovery-active-directory.md) az Active Directory és a DNS védelméről.
+A Site Recovery segítséglével teljesen automatizált vészhelyreállítási tervet hozhat létre az Active Directoryhoz és a DNS-hez. Ha például egy elsődleges helyről egy másodlagos helyre szeretné átkerülni a SharePointot és az SAP-t, beállíthat egy helyreállítási tervet, amely először az Active Directory taséját veszi át. Ezután egy további alkalmazásspecifikus helyreállítási tervvel nem felel meg az Active Directoryt használó többi alkalmazás.
+
+[További információ](site-recovery-active-directory.md) az Active Directory és a DNS vészutáni helyreállításáról.
 
 ## <a name="protect-sql-server"></a>Az SQL Server védelme
-Az SQL Server adatszolgáltatási alapot nyújt az üzleti alkalmazások helyi adatközpontban működő adatszolgáltatásai számára.  A Site Recovery és az SQL Server HA/DR technológiák együtt is használhatók az SQL Servert használó többszintű vállalati alkalmazások védelmére. A Site Recovery a következőket biztosítja:
 
-* Egyszerű és költséghatékony vészhelyreállítási megoldás az SQL Serverhez. Az SQL Server önálló kiszolgálói és fürtjei több verziójának és kiadásának replikálása az Azure-ba vagy egy másodlagos helyre.  
-* Integrálható SQL AlwaysOn rendelkezésre állási csoportokkal, az Azure Site Recovery helyreállítási tervek feladatátvételének és feladat-visszavételének kezeléséhez.
-* Végpontok közötti helyreállítási tervek az alkalmazás összes rétege számára, ideértve az SQL Server-adatbázisokat is.
-* Magas terhelésekhez méretezhető SQL Server Site Recovery-vel az Azure nagyobb méretű IaaS virtuális gépekkel történő teljesítménynöveléssel.
-* Az SQL Server vészhelyreállítási funkcióinak egyszerű tesztelése. Feladatátvételi tesztek segítségével elemezheti az adatokat és megfelelőségi ellenőrzést futtathat az éles környezet befolyásolása nélkül.
+Az SQL Server adatszolgáltatások alapja számos üzleti alkalmazás egy helyszíni adatközpontban. A Site Recovery az SQL Server HA/DR technológiáival használható az SQL Servert használó többrétegű vállalati alkalmazások védelmére.
 
-[Itt részletesebben tájékozódhat](site-recovery-sql.md) az SQL Server védelméről.
+A Site Recovery a következőket biztosítja:
+
+- Egyszerű és költséghatékony vészhelyreállítási megoldás az SQL Serverhez. Az SQL Server önálló kiszolgálói és fürtjei több verziójának és kiadásának replikálása az Azure-ba vagy egy másodlagos helyre.
+- Integrálható SQL AlwaysOn rendelkezésre állási csoportokkal, az Azure Site Recovery helyreállítási tervek feladatátvételének és feladat-visszavételének kezeléséhez.
+- Végpontok közötti helyreállítási tervek az alkalmazás összes rétege számára, ideértve az SQL Server-adatbázisokat is.
+- Az SQL Server méretezése a site recovery-vel a csúcsterhelésekhez, az Azure-ban nagyobb IaaS virtuálisgép-méretekre _való felszakítással._
+- Az SQL Server vészhelyreállítási funkcióinak egyszerű tesztelése. Feladatátvételi tesztek segítségével elemezheti az adatokat és megfelelőségi ellenőrzést futtathat az éles környezet befolyásolása nélkül.
+
+[További információ](site-recovery-sql.md) az SQL-kiszolgáló vészutáni helyreállításáról.
 
 ## <a name="protect-sharepoint"></a>A SharePoint védelme
+
 Az Azure Site Recovery szolgáltatással az alábbi módokon biztosíthatja a SharePoint-környezetek védelmét:
 
-* Használata esetén nem szükséges költséges készenléti kiszolgálófarmot kiépítenie a vészhelyreállításhoz. A Site Recovery segítségével a farm egésze (a webes, az alkalmazás- és az adatbázisréteg) replikálható az Azure-ba vagy egy másodlagos helyre.
-* Leegyszerűsíti az alkalmazások üzembe helyezését és felügyeletét. A rendszer automatikusan replikálja az elsődleges helyekre telepített frissítéseket, így azok a farm feladatátvételét és helyreállítását követően azonnal elérhetőek lesznek a másodlagos helyen. Csökkenti a felügyelet összetettségét, valamint a készenléti farm naprakészen tartásával kapcsolatos költségeket.
-* Leegyszerűsíti a SharePoint-alkalmazások fejlesztését és tesztelését, mivel segítségével az éleshez hasonló, igény szerinti replikakörnyezet hozható létre a teszteléshez és a hibakereséshez.
-* Megkönnyíti a felhőre való átállást, mivel a SharePoint üzemelő példányok a Site Recovery segítségével is áttelepíthetők az Azure-ba.
+- Használata esetén nem szükséges költséges készenléti kiszolgálófarmot kiépítenie a vészhelyreállításhoz. A Site Recovery segítségével replikálhatja a teljes farmot (web-, alkalmazás- és adatbázisszinteket) az Azure-ba vagy egy másodlagos helyre.
+- Leegyszerűsíti az alkalmazások üzembe helyezését és felügyeletét. Az elsődleges helyre telepített frissítések et a rendszer automatikusan replikálja. A frissítések egy másodlagos helyen lévő farm feladatátvétele és helyreállítása után érhetők el. Csökkenti a felügyeleti összetettséget és a készenléti gazdaság naprakészen tartásával kapcsolatos költségeket.
+- Leegyszerűsíti a SharePoint-alkalmazások fejlesztését és tesztelését, mivel segítségével az éleshez hasonló, igény szerinti replikakörnyezet hozható létre a teszteléshez és a hibakereséshez.
+- Megkönnyíti a felhőre való átállást, mivel a SharePoint üzemelő példányok a Site Recovery segítségével is áttelepíthetők az Azure-ba.
 
-[Itt részletesebben olvashat](site-recovery-sharepoint.md) a SharePoint védelméről.
+[További információ](site-recovery-sharepoint.md) a SharePoint vészutáni helyreállításáról.
 
 ## <a name="protect-dynamics-ax"></a>A Dynamics AX védelme
+
 Az Azure Site Recovery szolgáltatással az alábbi módokon biztosíthatja a Dynamics AX ERP-megoldás védelmét:
 
-* Replikálja a teljes Dynamics AX-környezetet (webes és AOS-szintek, adatbázis szintek, SharePoint) az Azure-ba, vagy egy másodlagos helyre.
-* Leegyszerűsíti a Dynamics AX üzemelő példányok felhőbe (Azure-ba) való áttelepítését.
-* Leegyszerűsíti a Dynamics AX-alkalmazások fejlesztését és tesztelését, mivel segítségével az éleshez hasonló, igény szerinti másolat hozható létre a teszteléshez és a hibakereséshez.
+- A teljes Dynamics AX-környezet (webes és AOS-szintek, adatbázisszintek, SharePoint) azure-ba vagy másodlagos helyre való replikációjának kezelése.
+- Leegyszerűsíti a Dynamics AX üzemelő példányok felhőbe (Azure-ba) való áttelepítését.
+- Leegyszerűsíti a Dynamics AX-alkalmazások fejlesztését és tesztelését, mivel segítségével az éleshez hasonló, igény szerinti másolat hozható létre a teszteléshez és a hibakereséshez.
 
-[Itt részletesebben tájékozódhat](site-recovery-dynamicsax.md) a Dynamic AX védelméről.
+[További információ](site-recovery-dynamicsax.md) a dinamikus AX vészutáni helyreállításáról.
 
-## <a name="protect-rds"></a>A távoli asztali szolgáltatások védelme
-A távoli asztali szolgáltatások (RDS) lehetővé teszik a virtuális asztali infrastruktúra (VDI), illetve a munkamenet-alapú asztal és alkalmazások használatát, így a felhasználók bárhonnan dolgozhatnak. Az Azure Site Recovery segítségével:
+## <a name="protect-remote-desktop-services"></a>Távoli asztali szolgáltatások védelme
 
-* Felügyelt vagy nem felügyelt, készletbe vont virtuális asztalait másodlagos helyre, távoli alkalmazásait és munkameneteit pedig másodlagos helyre vagy az Azure-ba replikálhatja.
+A Távoli asztali szolgáltatások (RDS) lehetővé teszi a virtuális asztali infrastruktúrát (VDI), a munkamenet-alapú asztalokat és az alkalmazásokat, amelyek lehetővé teszik a felhasználók számára, hogy bárhol dolgozzanak.
 
-* A következőket replikálhatja:
+Az Azure Site Recovery segítségével replikálhatja a következő szolgáltatásokat:
 
-| **RDS** |**Virtuális gépek replikálása az Azure-ba** | **Hyper-V virtuális gépek replikálása másodlagos helyre** | **Hyper-V virtuális gépek replikálása az Azure-ba** | **VMware virtuális gépek replikálása másodlagos helyre** | **VMware virtuális gépek replikálása az Azure-ba** | **Fizikai kiszolgálók replikálása másodlagos helyre** | **Fizikai kiszolgálók replikálása az Azure-ba** |
+- Felügyelt vagy nem felügyelt készletes virtuális asztalok replikálása egy másodlagos helyre.
+- Távoli alkalmazások és munkamenetek replikálása egy másodlagos helyre vagy az Azure-ba.
+
+Az alábbi táblázat a replikációs beállításokat mutatja be:
+
+| **Távoli asztali szolgáltatások** |**Virtuális gépek replikálása az Azure-ba** | **Hyper-V virtuális gépek replikálása másodlagos helyre** | **Hyper-V virtuális gépek replikálása az Azure-ba** | **VMware virtuális gépek replikálása másodlagos helyre** | **VMware virtuális gépek replikálása az Azure-ba** | **Fizikai kiszolgálók replikálása egy másodlagos helyre** | **Fizikai kiszolgálók replikálása az Azure-ba** |
 |---| --- | --- | --- | --- | --- | --- | --- |
-| **Készletezett virtuális asztal (nem kezelt)** |Nem|Igen |Nem |Igen |Nem |Igen |Nem |
-| **Készletezett virtuális asztal (kezelt, UPD nélküli)** |Nem|Igen |Nem |Igen |Nem |Igen |Nem |
+| **Készletbe vont virtuális asztalok (nem felügyelt)** |Nem|Igen |Nem |Igen |Nem |Igen |Nem |
+| **Készletbe vont virtuális asztalok (felügyelt, UPD nélkül)** |Nem|Igen |Nem |Igen |Nem |Igen |Nem |
 | **Távoli alkalmazások és asztali munkamenetek (UPD nélkül)** |Igen|Igen |Igen |Igen |Igen |Igen |Igen |
 
-[Vészhelyreállítás beállítása a távoli asztali szolgáltatásokhoz (RDS) az Azure Site Recovery használatával](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-disaster-recovery-with-azure).
-
-[Itt részletes tájékoztatást olvashat](https://gallery.technet.microsoft.com/Remote-Desktop-DR-Solution-bdf6ddcb) az RDS védelméről.
+[További információ](/windows-server/remote/remote-desktop-services/rds-disaster-recovery-with-azure) az RDS vészutáni helyreállításáról.
 
 ## <a name="protect-exchange"></a>Az Exchange védelme
+
 A Site Recovery szolgáltatással az alábbi módokon biztosíthatja az Exchange-környezetek védelmét:
 
-* A kisméretű Exchange-környezetek, például az önálló kiszolgálók esetén a Site Recovery képes az Azure-ba vagy egy másodlagos helyre történő replikálásra és feladatátvitelre.
-* Nagyobb méretű környezetek esetén a Site Recovery integrálható az Exchange DAG-kkal.
-* Vállalati környezetben az Exchange-vészhelyreállításhoz az Exchange DAG-k használatát javasoljuk.  A Site Recovery helyreállítási tervekbe a DAG-k is bevehetők a helyek közötti DAG feladatátvitelhez.
+- A kisméretű Exchange-környezetek, például az önálló kiszolgálók esetén a Site Recovery képes az Azure-ba vagy egy másodlagos helyre történő replikálásra és feladatátvitelre.
+- Nagyobb méretű környezetek esetén a Site Recovery integrálható az Exchange DAG-kkal.
+- Vállalati környezetben az Exchange-vészhelyreállításhoz az Exchange DAG-k használatát javasoljuk.  A Site Recovery helyreállítási tervekbe a DAG-k is bevehetők a helyek közötti DAG feladatátvitelhez.
 
-[További információk](https://gallery.technet.microsoft.com/Exchange-DR-Solution-using-11a7dcb6) az Exchange védelméről.
+Ha többet szeretne megtudni az Exchange vész-helyreállítási lehetőségéről, olvassa el az [Exchange DAG-ek](/Exchange/high-availability/database-availability-groups/database-availability-groups) és [az Exchange vész-helyreállítási .](/Exchange/high-availability/disaster-recovery/disaster-recovery)
 
 ## <a name="protect-sap"></a>Az SAP védelme
+
 A Site Recovery szolgáltatással az alábbi módokon biztosíthatja az SAP védelmét:
 
-* Lehetővé teszi a helyszínen futó SAP NetWeaver és nem NetWeaver éles alkalmazások védelmét az összetevők az Azure-ba való replikálásával.
-* Lehetővé teszi az Azure-t futtató SAP NetWeaver és nem NetWeaver éles alkalmazások védelmét az összetevők egy másik Azure-adatközpontba való replikálásával.
-* Megkönnyíti a felhőre való áttelepítést, mivel az SAP üzemelő példányok a Site Recovery segítségével is áttelepíthetők az Azure-ba.
-* Leegyszerűsíti az SAP projektek frissítését, tesztelését és prototípuskészítését, mivel a segítségével egy igény szerinti éles klón hozható létre az SAP alkalmazások teszteléséhez.
+- Lehetővé teszi a helyszínen futó SAP NetWeaver és nem NetWeaver éles alkalmazások védelmét az összetevők az Azure-ba való replikálásával.
+- Lehetővé teszi az Azure-t futtató SAP NetWeaver és nem NetWeaver éles alkalmazások védelmét az összetevők egy másik Azure-adatközpontba való replikálásával.
+- Megkönnyíti a felhőre való áttelepítést, mivel az SAP üzemelő példányok a Site Recovery segítségével is áttelepíthetők az Azure-ba.
+- Leegyszerűsíti az SAP projektek frissítését, tesztelését és prototípuskészítését, mivel a segítségével egy igény szerinti éles klón hozható létre az SAP alkalmazások teszteléséhez.
 
-[Itt részletesen tájékozódhat](site-recovery-sap.md) az SAP védelméről.
+[További információ](site-recovery-sap.md) az SAP vész-helyreállítási.
 
-## <a name="protect-iis"></a>Az IIS védelme
-A Site Recovery szolgáltatással az alábbi módokon biztosíthatja az üzemelő IIS-példány védelmét:
+## <a name="protect-internet-information-services"></a>Internetes információs szolgáltatások védelme
 
-Az Azure Site Recovery úgy gondoskodik a vészhelyreállításról, hogy a környezet kritikus összetevőit replikálja egy offline távoli helyre, vagy egy, a Microsoft Azure-hoz hasonló nyilvános felhőbe. Mivel a rendszer a webkiszolgálóval és az adatbázissal együtt replikálja a virtuális gépeket a helyreállítási helyen, nincs szükség a konfigurációs fájlok vagy tanúsítványok külön biztonsági mentésére. A feladatátvétel után módosult környezeti változóktól függő alkalmazásleképezések és -kötések a vészhelyreállítás tervekbe integrált szkriptekkel frissíthetők. A virtuális gépek csak feladatátvétel esetén kerülnek a helyreállítási helyre. Az Azure Site Recovery a végpontok közötti feladatátvétel összehangolását is elősegíti az alábbi képességek biztosításával:
+A Site Recovery segítségével megvédheti az Internet Information Services (IIS) telepítését az alábbiak szerint:
 
--   A virtuális gépek leállításának és indításának sorrendbe állítása a különböző szinteken.
--   Szkriptek hozzáadása az alkalmazásfüggőségek és -kötések frissítésének biztosításához a virtuális gépek elindítása után. A szkriptek a DNS-kiszolgáló frissítésére is használhatók, hogy a helyreállítási helyre mutasson.
--   IP-címek lefoglalása a virtuális gépekhez a feladatátvétel előtt az elsődleges és a helyreállítási hálózat leképezésével, és olyan szkriptek használata, amelyeket feladatátvétel után nem kell frissíteni.
--   Egykattintásos feladatátvétel lehetővé tétele a webkiszolgálók több webalkalmazása számára. Ezzel áttekinthetővé tehetők a vészhelyzet esetén végrehajtandó műveletek.
--   Lehetőség a helyreállítási tervek tesztelésére egy DR-részletezések számára elkülönített környezetben.
+Az Azure Site Recovery úgy gondoskodik a vészhelyreállításról, hogy a környezet kritikus összetevőit replikálja egy offline távoli helyre, vagy egy, a Microsoft Azure-hoz hasonló nyilvános felhőbe. Mivel a webkiszolgálóval és az adatbázissal rendelkező virtuális gépek replikálódnak a helyreállítási helyre, nincs szükség külön biztonsági másolatra a konfigurációs fájlok vagy tanúsítványok számára. A feladatátvétel után módosult környezeti változóktól függő alkalmazásleképezések és -kötések a vészhelyreállítás tervekbe integrált szkriptekkel frissíthetők. A virtuális gépek csak feladatátvétel során kerülnek előadakövetkező helyre a helyreállítási helyen. Az Azure Site Recovery a következő képességekkel is segít a teljes körű feladatátvétel koordinálásában:
 
-[Itt részletesen tájékozódhat](https://aka.ms/asr-iis) az IIS webfarm védelméről.
+- A virtuális gépek leállításának és indításának sorrendbe állítása a különböző szinteken.
+- Parancsfájlok hozzáadása az alkalmazásfüggőségek és kötések frissítésekének engedélyezéséhez a virtuális gépeken az indításután. A szkriptek a DNS-kiszolgáló frissítésére is használhatók, hogy a helyreállítási helyre mutasson.
+- IP-címeket rendeljen le a virtuális gépekhez a feladatátvétel előtt az elsődleges és helyreállítási hálózatok leképezésével, és használjon olyan parancsfájlokat, amelyeket nem kell frissíteni a feladatátvétel után.
+- Több webalkalmazás egykattintásos feladatátvételi lehetősége, amely kiküszöböli a katasztrófa során a zavart.
+- Lehetőség a helyreállítási tervek tesztelésére egy DR-részletezések számára elkülönített környezetben.
+
+[További információ](site-recovery-iis.md) az IIS vész-helyreállítási helyzetéről.
 
 ## <a name="protect-citrix-xenapp-and-xendesktop"></a>A Citrix XenApp és a XenDesktop védelme
+
 A Site Recovery szolgáltatással az alábbi módokon biztosíthatja az üzemelő Citrix XenApp- és XenDesktop-példány védelmét:
 
-* Az üzemelő Citrix XenApp- és XenDesktop-példányok védelmének engedélyezése a különféle környezeti szintek (például AD DNS-kiszolgáló, SQL-adatbáziskiszolgáló, Citrix kézbesítési vezérlő, StoreFront-kiszolgáló, XenApp Master (VDA), Citrix XenApp licenckiszolgáló) az Azure-ba való replikálásával történik.
-* Megkönnyíti a felhőre való áttelepítést, mivel az üzemelő Citrix XenApp- és XenDesktop-példányok a Site Recovery segítségével is áttelepíthetők az Azure-ba.
-* Leegyszerűsíti a Citrix XenApp-/XenDesktop-fejlesztést és -tesztelést, mivel segítségével az éleshez hasonló, igény szerinti másolat hozható létre az alkalmazások teszteléséhez és a hibakereséséhez.
-* Ez a megoldás kizárólag a Windows Server operációs rendszer virtuális asztali környezeteire alkalmazható, az ügyfelek virtuális asztali környezetei esetében nem, mivel azok licencelése az Azure-ban még nem támogatott.
-[Itt részletesen tájékozódhat](https://azure.microsoft.com/pricing/licensing-faq/) az ügyfél/kiszolgáló asztali környezeteinek Azure-ban történő licenceléséről.
+- Engedélyezze a Citrix XenApp és a XenDesktop központi telepítésének védelmét. Replikálja a különböző telepítési rétegeket az Azure-ba: Active Directory, DNS-kiszolgáló, SQL adatbázis-kiszolgáló, Citrix kézbesítési vezérlő, StoreFront-kiszolgáló, XenApp Master (VDA), Citrix XenApp licenckiszolgáló.
+- Megkönnyíti a felhőre való áttelepítést, mivel az üzemelő Citrix XenApp- és XenDesktop-példányok a Site Recovery segítségével is áttelepíthetők az Azure-ba.
+- Leegyszerűsíti a Citrix XenApp-/XenDesktop-fejlesztést és -tesztelést, mivel segítségével az éleshez hasonló, igény szerinti másolat hozható létre az alkalmazások teszteléséhez és a hibakereséséhez.
+- Ez a megoldás csak a Windows Server virtuális asztalokra vonatkozik, az ügyfélvirtuális asztalokra nem. Az ügyfél virtuális asztalai még nem támogatottak az Azure-ban. [Itt részletesen tájékozódhat](https://azure.microsoft.com/pricing/licensing-faq/) az ügyfél/kiszolgáló asztali környezeteinek Azure-ban történő licenceléséről.
 
-[Itt részletesen tájékozódhat](site-recovery-citrix-xenapp-and-xendesktop.md) az üzemelő Citrix XenApp- és XenDesktop-példányok védelméről. Másik lehetőségként megtekintheti [a Citrix tanulmányát](https://aka.ms/citrix-xenapp-xendesktop-with-asr), amely ugyanezt részletezi.
+[További információ](site-recovery-citrix-xenapp-and-xendesktop.md) a Citrix XenApp és a XenDesktop telepítések vészutáni helyreállításáról. Vagy hivatkozhat a [Citrix tanulmányra](https://aka.ms/citrix-xenapp-xendesktop-with-asr).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Első lépések:](azure-to-azure-quickstart.md) Azure-beli virtuális gép replikálása.
+[További információ](azure-to-azure-quickstart.md) az Azure-beli virtuális gépek vész-helyreállítási.

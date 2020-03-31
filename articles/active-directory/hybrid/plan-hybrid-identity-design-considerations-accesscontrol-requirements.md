@@ -1,6 +1,6 @@
 ---
-title: Hibrid identitás tervezési hozzáférés-vezérlési követelményeinek Azure |} A Microsoft Docs
-description: Identitás és a hibrid környezetben felhasználók erőforrásokhoz való hozzáférés feltételeit azonosítása ismerteti.
+title: Hibrid identitástervezési hozzáférés-vezérlési követelmények Az Azure | Microsoft dokumentumok
+description: Kiterjed az identitás pillérei, és meghatározza a hozzáférési követelményeket az erőforrások a felhasználók számára a hibrid környezetben.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,69 +18,69 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 84b786a1701892823554a83fa2015ac88d6eff4d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60295143"
 ---
 # <a name="determine-access-control-requirements-for-your-hybrid-identity-solution"></a>A hibrid identitáskezelési megoldás hozzáférés-vezérlési követelményeinek meghatározása
-Amikor a szervezetek saját hibrid identitáskezelési megoldás tervez, ezt a lehetőséget is használhatják tekintse át az erőforrásokat, hogy tervezi, hogy a felhasználók számára elérhetővé tenni a hozzáférési követelmények. Az adatelérési közötti összes négy területei legyenek elérhetők az identitás, amelyek:
+Amikor egy szervezet a hibrid identitáskezelési megoldását tervezi, ezt a lehetőséget is használhatja az on-t a felhasználók számára elérhetővé tenni kívánt erőforrások hozzáférési követelményeinek áttekintésére. Az adatokhoz való hozzáférés az identitás mind a négy pillérét átlépi, amelyek a következők:
 
 * Adminisztráció
 * Hitelesítés
 * Engedélyezés
 * Naplózás
 
-Ez a rész azzal foglalkozik, hitelesítés és engedélyezés az adminisztrációs, további részletekért és a naplózás a hibrid identitás-életciklus részét képezik. Olvasási [határozza meg a hibrid identitáskezelési feladatokat](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md) információ ezekről a funkciókról további információt.
+Az alábbi szakaszok további részleteket, felügyeletet és naplózást a hitelesítésés engedélyezés a hibrid identitás életciklusának részét képezik. Olvassa [el A hibrid identitáskezelési feladatok meghatározása](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md) című, ezekről a képességekről szóló további információkért olvassa el a hibrid identitáskezelési feladatok meghatározása című részcímű információt.
 
 > [!NOTE]
-> Olvasási [a négy területei legyenek elérhetők az identitás - Identitáskezelés az életkor hibrid informatikai](https://social.technet.microsoft.com/wiki/contents/articles/15530.the-four-pillars-of-identity-identity-management-in-the-age-of-hybrid-it.aspx) ezeket alappillérét mindegyike további információt.
+> Olvassa el [az identitás négy pillére – Identitáskezelés a hibrid it korában](https://social.technet.microsoft.com/wiki/contents/articles/15530.the-four-pillars-of-identity-identity-management-in-the-age-of-hybrid-it.aspx) című információt az egyes pillérekről.
 > 
 > 
 
 ## <a name="authentication-and-authorization"></a>Hitelesítés és engedélyezés
-Hitelesítés és engedélyezés különböző forgatókönyv, ezeket a forgatókönyveket fog rendelkezni a konkrét követelmények, meg kell felelnie a hibrid identitáskezelési megoldás, amelyet a vállalat szeretne fogad el. Vállalatközi (B2B) kommunikáció forgatókönyveket is hozzáadhat egy további kihívást informatikai rendszergazdák számára, mivel győződjön meg arról, hogy a szervezet által használt hitelesítési és engedélyezési módszer kommunikál az üzleti partnerekkel kell. A tervezési folyamat a hitelesítési és engedélyezési követelményeinek győződjön meg arról, hogy az alábbi kérdések és válaszok:
+A hitelesítéshez és az engedélyezéshez különböző forgatókönyvek léteznek, ezek a forgatókönyvek olyan speciális követelményekkel rendelkeznek, amelyeket a vállalat által alkalmazni kívánt hibrid identitáskezelési megoldásnak kell teljesítenie. A Vállalkozás–üzleti (B2B) kommunikációt érintő forgatókönyvek további kihívást jelentenek az informatikai rendszergazdák számára, mivel biztosítaniuk kell, hogy a szervezet által használt hitelesítési és engedélyezési módszer kommunikáljon az üzleti partnerekkel. A hitelesítési és engedélyezési követelmények tervezési folyamata során győződjön meg arról, hogy a következő kérdésekre válaszol:
 
-* Lesznek a szervezet felhasználóinak hitelesítése és engedélyezése csak az identitáskezelési rendszerekkel található?
-  * Vannak-e azokat a csomagokat a B2B-forgatókönyvekhez?
-  * Ha igen, már tudja, mely protokollok (SAML, OAuth, Kerberost vagy tanúsítványokat) való csatlakozáshoz mindkét vállalat használható?
-* A hibrid identitáskezelési megoldás, amely a támogatási fogad el kívánja ezeket a protokollokat támogatja?
+* A szervezet csak az identitáskezelő rendszerében található felhasználókat hitelesíti és engedélyezi?
+  * Vannak-e tervek a B2B forgatókönyvekhez?
+  * Ha igen, tudja már, hogy mely protokollokat (SAML, OAuth, Kerberos vagy Tanúsítványok) fogja használni a két vállalkozás összekapcsolására?
+* Támogatja-e a hibrid identitáskezelési megoldás, amelyet el fog fogadni, és támogatja ezeket a protokollokat?
 
-Egy másik fontos figyelembe venni, hogy a felhasználók és a partnerek által használandó hitelesítési tárház kerülnek, és a felügyeleti modell használható. Vegye figyelembe a következő két fő beállítások:
+Egy másik fontos szempont, hogy fontolja meg, ahol a hitelesítési tárház, amely a felhasználók és partnerek fogják használni, és a felügyeleti modell t kell használni. Vegye figyelembe a következő két alapvető lehetőséget:
 
-* Központosított: Ebben a modellben a felhasználói hitelesítő adatok, szabályzatok és felügyeleti lehet központosított helyszíni vagy a felhőben.
-* Hibrid: Ebben a modellben a felhasználói hitelesítő adatok, szabályzatok és felügyeleti lesz helyszínen központosított és a egy replikált a felhőben.
+* Központosított: ebben a modellben a felhasználó hitelesítő adatait, szabályzatait és felügyeletét központosíthatja a helyszínen vagy a felhőben.
+* Hibrid: ebben a modellben a felhasználó hitelesítő adatait, szabályzatait és felügyeletét a helyszíni központosított és a felhőben replikált lesz.
 
-A szervezet fogad el, melyik modellben az üzleti igényeknek megfelelően változhatnak, szeretné, hol helyezkednek el az identitáskezelési rendszerekkel és a felügyeleti üzemmódban használja a következő kérdések megválaszolásával:
+Az, hogy a szervezet milyen modellt fog alkalmazni, az üzleti követelményektől függően változik, a következő kérdésekre szeretne válaszolni, hogy azonosítsa, hol fog az identitáskezelő rendszer, és hogy milyen felügyeleti módot kell használni:
 
-* Rendelkezik a szervezete jelenleg egy identitáskezelést a helyszínen?
-  * Ha igen, akkor tervezi legyen?
-  * Vannak, hogy a szervezet kell követnie, hogy azt határozza meg az identitáskezelési rendszerekkel ket kell szabályozás vagy megfelelőségi kapcsolatos követelmények?
-* Használja a vállalata az egyszeri bejelentkezés található alkalmazásokhoz a helyszínen vagy a felhőben?
-  * Ha igen, az egy hibrid identitás modell bevezetését érinti ez a folyamat?
+* A szervezet jelenleg rendelkezik egy identitáskezelés a helyszínen?
+  * Ha igen, tervezik megtartani?
+  * Vannak-e olyan szabályozási vagy megfelelőségi követelmények, amelyeket a szervezetnek követnie kell, és amely meghatározza, hogy az identitáskezelő rendszer hol tartózkodjon?
+* A szervezet egyszeri bejelentkezést használ a helyszíni vagy a felhőben található alkalmazásokhoz?
+  * Ha igen, a hibrid identitásmodell elfogadása befolyásolja ezt a folyamatot?
 
 ## <a name="access-control"></a>Hozzáférés-vezérlés
-Hitelesítési és engedélyezési alapvető elemeit, amelyek felhasználó érvényesítési vállalati adatokhoz való hozzáférés engedélyezése, amelyek is fontos, hogy ezek a felhasználók és rendszergazdák hozzáférési szintjét rendelkeznek majd ezzel az erőforrások hozzáférési szintje hogy azok kezel. A hibrid identitáskezelési megoldás részletes hozzáférés-erőforrások, a delegálás és a szerepköralapú hozzáférés-vezérlést biztosít képesnek kell lennie. Győződjön meg arról, hogy a következő kérdést megválaszolták vonatkozó hozzáférés-vezérlés:
+Bár a hitelesítés és az engedélyezés alapvető elemei a vállalati adatokhoz való hozzáféréslehetővé tétele érdekében a felhasználó ellenőrzése révén, fontos annak szabályozása is, hogy ezek a felhasználók milyen szintű hozzáféréssel rendelkeznek, és hogy a rendszergazdák milyen szintű hozzáféréssel rendelkeznek az erőforrásokhoz. amelyeket kezelni fognak. A hibrid identitáskezelési megoldásnak képesnek kell lennie az erőforrásokhoz, a delegáláshoz és a szerepkör-alap hozzáférés-vezérléshez való részletes hozzáférés biztosításához. Győződjön meg arról, hogy a következő kérdésre választ kap a hozzáférés-vezérléssel kapcsolatban:
 
-* Emelt szintű jogosultságokkal a identitáskezelő rendszerbe kezeléséhez egynél több felhasználó rendelkezik a vállalata?
-  * Ha igen, minden felhasználónak nem kell ugyanazt a hozzáférési szintet?
-* Lenne szüksége van a vállalatának adott erőforrások kezelése a felhasználók hozzáférésének delegálása?
-  * Ha igen, milyen gyakran ez történik?
-* A vállalat kell integrálhatja a helyszíni és a felhő között a hozzáférés-vezérlési funkciókkal erőforrások?
-* A vállalati erőforrások bizonyos feltételek alapján való hozzáférés korlátozására kellene?
-* A vállalat kellene bármilyen alkalmazás, amely az egyéni vezérlő erőforrásokat kell elérnie néhány?
-  * Ha igen, ezeknek az alkalmazásoknak helyét (helyszíni vagy felhőbeli)?
-  * Ha igen, hol vannak a célerőforrások található (helyszíni vagy felhőbeli)?
+* A vállalat egynél több, emelt szintű jogosultsággal rendelkező felhasználóval rendelkezik az identitásrendszer kezeléséhez?
+  * Ha igen, minden felhasználónak ugyanazt a hozzáférési szintet kell biztosítania?
+* A vállalatnak hozzá kell adnia a felhasználókhoz való hozzáférést bizonyos erőforrások kezeléséhez?
+  * Ha igen, milyen gyakran történik ez?
+* A vállalatnak integrálnia kell a hozzáférés-vezérlési képességeket a helyszíni és a felhőbeli erőforrások között?
+* Szükség van-e a vállalatának az erőforrásokhoz való hozzáférés korlátozására bizonyos feltételek szerint?
+* Van-e a vállalatának olyan alkalmazása, amelyegyéni vezérlési hozzáférést igényel bizonyos erőforrásokhoz?
+  * Ha igen, hol találhatók ezek az alkalmazások (a helyszínen vagy a felhőben)?
+  * Ha igen, hol találhatók ezek a célerőforrások (a helyszínen vagy a felhőben)?
 
 > [!NOTE]
-> Ügyeljen arra, hogy minden válaszról feljegyzéseket, és megismerheti a válaszok indokait. [Data Protection stratégia kidolgozása](plan-hybrid-identity-design-considerations-data-protection-strategy.md) halad keresztül a rendelkezésre álló lehetőségek előnyeit és hátrányait az egyes lehetőségek.  Ezen kérdések megválaszolásával kiválaszthatja melyik lehetőség felel az üzleti igényeinek megfelelő.
+> Minden válaszról készítsen feljegyzéseket, és ismerje meg a válaszok indokait. [Az Adatvédelmi stratégia meghatározása](plan-hybrid-identity-design-considerations-data-protection-strategy.md) az egyes lehetőségek rendelkezésre álló lehetőségeit és előnyeit/hátrányait veszi át.  Ezeknek a kérdéseknek a megválaszolásával kiválaszthatja, hogy melyik lehetőség felel meg leginkább üzleti igényeinek.
 > 
 > 
 
 ## <a name="next-steps"></a>További lépések
-[Incidensválasz-követelmények meghatározása](plan-hybrid-identity-design-considerations-incident-response-requirements.md)
+[Az incidensmegoldáshoz kapcsolódó követelmények meghatározása](plan-hybrid-identity-design-considerations-incident-response-requirements.md)
 
 ## <a name="see-also"></a>Lásd még:
-[Kialakítási szempontok áttekintése](plan-hybrid-identity-design-considerations-overview.md)
+[Tervezési szempontok – áttekintés](plan-hybrid-identity-design-considerations-overview.md)
 
