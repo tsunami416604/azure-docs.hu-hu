@@ -1,58 +1,58 @@
 ---
-title: Function app-beállítások konfigurálása az Azure-ban
-description: Ismerje meg, hogyan konfigurálhatja az Azure Function app beállításait.
+title: Függvényalkalmazás-beállítások konfigurálása az Azure-ban
+description: További információ az Azure-függvényalkalmazás-beállítások konfigurálásáról.
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 662a04dbcc39f3fa95b0098eb8fe556b18b3495b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79276945"
 ---
-# <a name="manage-your-function-app"></a>A Function alkalmazás kezelése 
+# <a name="manage-your-function-app"></a>A függvényalkalmazás kezelése 
 
-Azure Functions a functions-alkalmazás biztosítja az egyes függvények végrehajtási környezetét. A Function app Behavior az adott Function app által üzemeltetett összes függvényre vonatkozik. A Function alkalmazás összes függvényének azonos [nyelvnek](supported-languages.md)kell lennie. 
+Az Azure Functions egy függvényalkalmazás biztosítja az egyes függvények végrehajtási környezetét. A függvényalkalmazás viselkedése egy adott függvényalkalmazás által üzemeltetett összes funkcióra vonatkozik. A függvényalkalmazás minden függvényének azonos [nyelvűnek](supported-languages.md)kell lennie. 
 
-A functions alkalmazásban az egyes függvények együtt vannak telepítve, és a méretezésük együtt történik. Az azonos Function alkalmazásban található összes függvény egy példányban, a Function alkalmazás méretezése szerint. 
+A függvényalkalmazások egyes függvényei együtt vannak telepítve, és együtt vannak méretezve. Az azonos függvényalkalmazás összes függvénye példányonként osztja meg az erőforrásokat, ahogy a függvényalkalmazás méretezi. 
 
-A rendszer a kapcsolatok karakterláncait, környezeti változóit és egyéb beállításait külön definiálja az egyes functions-alkalmazásokhoz. A Function Apps-alkalmazások között megosztható összes adatnak külsőleg kell lennie a megőrzött tárolóban.
+A kapcsolati karakterláncok, a környezeti változók és az egyéb alkalmazásbeállítások külön vannak definiálva az egyes függvényalkalmazásokhoz. A függvényalkalmazások között megosztandó adatokat külsőleg kell tárolni egy megőrzött tárolóban.
 
-Ez a cikk bemutatja, hogyan konfigurálhatja és kezelheti a függvények alkalmazásait. 
+Ez a cikk a függvényalkalmazások konfigurálását és kezelését ismerteti. 
 
 > [!TIP]  
-> Az [Azure CLI]használatával számos konfigurációs beállítás is kezelhető. 
+> Számos konfigurációs lehetőség is kezelhető az [Azure CLI]használatával. 
 
-## <a name="get-started-in-the-azure-portal"></a>Ismerkedés a Azure Portal
+## <a name="get-started-in-the-azure-portal"></a>Első lépések az Azure Portalon
 
-A kezdéshez nyissa meg a [Azure Portalra] , és jelentkezzen be az Azure-fiókjába. A portál tetején a keresősávba írja be a függvényalkalmazás nevét, majd válassza ki a listáról. A Function alkalmazás kiválasztása után a következő oldal jelenik meg:
+Először nyissa meg az [Azure Portalon,] és jelentkezzen be az Azure-fiókjába. A portál tetején a keresősávba írja be a függvényalkalmazás nevét, majd válassza ki a listáról. A függvényalkalmazás kiválasztása után a következő oldal jelenik meg:
 
-![A Function app áttekintése a Azure Portal](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
+![A függvényalkalmazás áttekintése az Azure Portalon](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
 
-A függvény alkalmazásának áttekintés oldaláról, különösen az **[Alkalmazásbeállítások](#settings)** és a **[platform funkcióinak](#platform-features)** kezeléséhez minden szükséges információt megtalálhat.
+A funkcióalkalmazás kezeléséhez szükséges mindent az áttekintő oldalon, különösen az **[Alkalmazás beállításai](#settings)** és a **[Platform funkciói](#platform-features)** között navigálhat.
 
-## <a name="settings"></a>Alkalmazásbeállítások
+## <a name="application-settings"></a><a name="settings"></a>Alkalmazásbeállítások
 
-Az **Alkalmazásbeállítások** lapon megtarthatja a Function alkalmazás által használt beállításokat. Ezeket a beállításokat a rendszer titkosított formában tárolja, és a portál értékeinek megjelenítéséhez ki kell választania az **értékek megjelenítése** elemet. Az Alkalmazásbeállítások az Azure CLI használatával is elérhetők.
+Az **Alkalmazásbeállítások** lap a függvényalkalmazás által használt beállításokat tartja fenn. Ezek a beállítások titkosítottan tárolódnak, és az **értékek megjelenítése** lehetőséget kell választania az értékek megtekintéséhez a portálon. Az Azure CLI használatával is elérheti az alkalmazásbeállításokat.
 
 ### <a name="portal"></a>Portál
 
-Egy beállítás a portálon való hozzáadásához válassza az **új Alkalmazásbeállítás** lehetőséget, és adja hozzá az új kulcs-érték párokat.
+Ha hozzá szeretne adni egy beállítást a portálon, válassza az **Új alkalmazás beállítást,** és adja hozzá az új kulcs-érték párt.
 
-![A Azure Portalban található Function app-beállítások.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
+![Függvényalkalmazás-beállítások az Azure Portalon.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Az [`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-list) parancs a meglévő Alkalmazásbeállítások visszaadását adja vissza, ahogy az alábbi példában is látható:
+A [`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-list) parancs visszaadja a meglévő alkalmazásbeállításokat, ahogy az a következő példában is:
 
 ```azurecli-interactive
 az functionapp config appsettings list --name <FUNCTION_APP_NAME> \
 --resource-group <RESOURCE_GROUP_NAME>
 ```
 
-Az [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) parancs egy Alkalmazásbeállítás hozzáadására vagy frissítésére szolgál. Az alábbi példa egy `CUSTOM_FUNCTION_APP_SETTING` nevű kulccsal és egy `12345`értékkel hoz létre egy beállítást:
+A [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) parancs hozzáad vagy frissít egy alkalmazásbeállítást. A következő példa létrehoz egy `CUSTOM_FUNCTION_APP_SETTING` kulcsot, amelynek neve és `12345`értéke:
 
 
 ```azurecli-interactive
@@ -65,68 +65,68 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 
 [!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
 
-Amikor helyileg fejleszt egy Function-alkalmazást, a local. Settings. JSON projektfájl ezen értékeinek helyi másolatait kell fenntartania. További információ: [helyi beállítások fájl](functions-run-local.md#local-settings-file).
+Ha helyileg fejleszt függvényalkalmazást, a local.settings.json projektfájlban karban kell tartania ezeknek az értékeknek a helyi példányait. További információ: [Helyi beállításfájl](functions-run-local.md#local-settings-file).
 
-## <a name="platform-features"></a>Platform-funkciók
+## <a name="platform-features"></a>A platform jellemzői
 
-![Function app platform szolgáltatásai lap.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-features-tab.png)
+![A Függvényalkalmazás platformfunkciói lapon.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-features-tab.png)
 
-A Function apps a Azure App Service platformon fut, és karbantartja őket. Így a Function apps az Azure alapvető webes üzemeltetési platformjának legtöbb funkcióját elérheti. A **platform szolgáltatásai** lapon érheti el a app Service platform számos funkcióját, amelyet a Function apps alkalmazásban használhat. 
+A függvényalkalmazások az Azure App Service platformon futnak, és karbantartják azokat. Mint ilyen, a függvényalkalmazások hozzáférhetnek az Azure alapvető webhosting platformjának legtöbb funkciójához. A **Platform funkciók** lapon érheti el az App Service platform számos funkcióját, amelyeket a függvényalkalmazásokban használhat. 
 
 > [!NOTE]
-> Nem minden App Service funkció érhető el, ha egy Function alkalmazás fut a használati üzemeltetési csomagon.
+> Nem minden App Service-funkció érhető el, ha egy függvényalkalmazás a fogyasztási üzemeltetési csomagon fut.
 
-A cikk további részében a következő, a függvények számára hasznos App Service Azure Portal-funkciókra összpontosít:
+A cikk további részében az Azure Portal alábbi, függvényfunkciókat hasznos App Service-funkciókra összpontosít:
 
-+ [App Service szerkesztő](#editor)
-+ [Konzol](#console)
-+ [Speciális eszközök (kudu)](#kudu)
-+ [Üzembe helyezési beállítások](#deployment)
++ [App Service-szerkesztő](#editor)
++ [Console](#console)
++ [Speciális eszközök (Kudu)](#kudu)
++ [Telepítési lehetőségek](#deployment)
 + [CORS](#cors)
 + [Hitelesítés](#auth)
 
-További információ a App Service beállítások használatáról: [Azure app Service beállításainak konfigurálása](../app-service/configure-common.md).
+Az App Service-beállítások kezeléséről az [Azure App Service beállításainak konfigurálása](../app-service/configure-common.md)című témakörben olvashat bővebben.
 
-### <a name="editor"></a>App Service Editor
+### <a name="app-service-editor"></a><a name="editor"></a>Alkalmazásszolgáltatás-szerkesztő
 
-![A App Service szerkesztő](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-editor.png)
+![Az App Service szerkesztője](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-editor.png)
 
-A App Service szerkesztő egy olyan speciális portál szerkesztő, amely a JSON konfigurációs fájlok és a fájlok fájljainak módosítására használható. Ha ezt a lehetőséget választja, egy külön böngésző fület indít egy alapszintű szerkesztővel. Ez lehetővé teszi a git-tárház, a futtatási és hibakeresési kód integrálását, valamint a Function app beállításainak módosítását. Ez a szerkesztő fejlett fejlesztési környezetet biztosít a függvények összevetéséhez a beépített függvény-szerkesztővel szemben.  
+Az App Service-szerkesztő egy speciális portálon belüli szerkesztő, amely a JSON konfigurációs fájlok és kódfájlok egyaránt módosításához használható. Ha ezt a lehetőséget választja, egy külön böngészőlap indul el egy alapszerkesztővel. Ez lehetővé teszi a Git-tárházzal való integrációt, a kód futtatását és hibakeresési kódját, valamint a függvényalkalmazás beállításainak módosítását. Ez a szerkesztő továbbfejlesztett fejlesztői környezetet biztosít a funkciókhoz a beépített függvényszerkesztőhöz képest.  
 
-Javasoljuk, hogy vegye fontolóra a függvények fejlesztését a helyi számítógépen. Amikor helyben fejleszti és közzéteszi az Azure-ban, a projektfájlok csak olvashatók a portálon. További információ: [code and test Azure functions helyileg](functions-develop-local.md).
+Javasoljuk, hogy fontolja meg a helyi számítógépen a funkciók fejlesztését. Ha helyileg fejleszt és tesz közzé az Azure-ban, a projektfájlok csak olvashatók a portálon. További információ: [Az Azure Functions helyi kódolása és tesztelése.](functions-develop-local.md)
 
-### <a name="console"></a>Konzol
+### <a name="console"></a><a name="console"></a>Console
 
-![Function app Console](./media/functions-how-to-use-azure-function-app-settings/configure-function-console.png)
+![Funkcióalkalmazás-konzol](./media/functions-how-to-use-azure-function-app-settings/configure-function-console.png)
 
-A portálon található konzol ideális fejlesztői eszköz, ha a parancssorból szeretné használni a Function alkalmazást. Gyakori parancsok például a címtár és a fájlok létrehozása és a Navigálás, valamint a Batch-fájlok és-parancsfájlok futtatása. 
+A portálon belüli konzol ideális fejlesztői eszköz, ha a parancssorból szeretné használni a függvényalkalmazást. A gyakori parancsok közé tartozik a könyvtár- és fájllétrehozás és -navigáció, valamint a kötegfájlok és parancsfájlok végrehajtása. 
 
-Helyi fejlesztés esetén javasolt a [Azure functions Core Tools](functions-run-local.md) és az [Azure CLI]használata.
+Helyi fejlesztés esetén javasoljuk az [Azure Functions Core Tools](functions-run-local.md) és az Azure [CLI]használatát.
 
-### <a name="kudu"></a>Speciális eszközök (kudu)
+### <a name="advanced-tools-kudu"></a><a name="kudu"></a>Speciális eszközök (Kudu)
 
 ![Kudu konfigurálása](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-kudu.png)
 
-A App Service speciális eszközei (más néven kudu) hozzáférést biztosítanak a Function alkalmazás speciális felügyeleti funkcióihoz. A kudu a rendszerinformációk, az Alkalmazásbeállítások, a környezeti változók, a helybővítmények, a HTTP-fejlécek és a kiszolgálói változók kezelése. A **kudu** a Function alkalmazás SCM-végpontjának tallózásával is elindíthatja, például `https://<myfunctionapp>.scm.azurewebsites.net/` 
+Az App Service speciális eszközei (más néven Kudu) hozzáférést biztosítanak a függvényalkalmazás speciális felügyeleti funkcióihoz. A Kudu-ból kezelheti a rendszerinformációkat, az alkalmazásbeállításokat, a környezeti változókat, a helybővítményeket, a HTTP-fejléceket és a kiszolgálóváltozókat. A **Kudu** indításakor a függvényalkalmazás SCM végpontjára is böngészhet, például`https://<myfunctionapp>.scm.azurewebsites.net/` 
 
 
-### <a name="deployment"></a>Központi telepítési központ
+### <a name="deployment-center"></a><a name="deployment"></a>Üzembe helyezési központ
 
-Ha verziókövetés-megoldást használ a függvények kódjának fejlesztésére és karbantartására, a központi telepítési központ lehetővé teszi a forrás-vezérlőelemből való felépítést és üzembe helyezést. A projekt létrehozása és üzembe helyezése az Azure-ban történik, amikor frissítéseket végez. További információ: [Azure functions telepítési technológiák](functions-deployment-technologies.md).
+Ha forrásvezérlő megoldást használ a függvénykód fejlesztéséhez és karbantartásához, a Deployment Center lehetővé teszi a forrásvezérlésből történő létrehozást és üzembe helyezést. A projekt a frissítések elkészítésekor épül fel és települ az Azure-ban. További információ: [Telepítési technológiák az Azure Functionsben.](functions-deployment-technologies.md)
 
-### <a name="cors"></a>Több eredetű erőforrás-megosztás
+### <a name="cross-origin-resource-sharing"></a><a name="cors"></a>Eltérő eredetű erőforrások megosztása
 
-A rosszindulatú programkódok végrehajtásának megakadályozása érdekében a modern böngészők letiltják a webalkalmazásokból érkező kéréseket egy különálló tartományban futó erőforrásoknak. A [több eredetű erőforrás-megosztás (CORS)](https://developer.mozilla.org/docs/Web/HTTP/CORS) lehetővé teszi, hogy egy `Access-Control-Allow-Origin` fejléc állapítsa meg, hogy mely eredetűek hívhatnak végpontokat a Function alkalmazásban.
+Az ügyfél rosszindulatú kódfuttatásának megakadályozása érdekében a modern böngészők blokkolják a webalkalmazásoktól a külön tartományban futó erőforrásokra irányuló kérelmeket. [A több forrásból származó erőforrás-megosztás (CORS)](https://developer.mozilla.org/docs/Web/HTTP/CORS) lehetővé teszi, hogy egy `Access-Control-Allow-Origin` fejléc deklarálja, hogy mely eredetek hívhatnak végpontokat a függvényalkalmazásban.
 
 #### <a name="portal"></a>Portál
 
-Amikor beállítja a Function app számára **engedélyezett Origins** -listát, a rendszer automatikusan hozzáadja a `Access-Control-Allow-Origin` fejlécet a függvény alkalmazásban lévő http-végpontok összes válaszához. 
+Amikor konfigurálja az **Engedélyezett eredetlistát** a `Access-Control-Allow-Origin` függvényalkalmazáshoz, a fejléc automatikusan hozzáadódik a függvényalkalmazás HTTP-végpontjaiból érkező összes válaszhoz. 
 
-![Function alkalmazás CORS-listájának konfigurálása](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-cors.png)
+![A függvényalkalmazás CORS-listájának konfigurálása](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-cors.png)
 
-Ha a helyettesítő karaktert (`*`) használja, az összes többi tartományt figyelmen kívül hagyja a rendszer. 
+A helyettesítő karakter`*`( ) használatakor a rendszer figyelmen kívül hagyja az összes többi tartományt. 
 
-A [`az functionapp cors add`](/cli/azure/functionapp/cors#az-functionapp-cors-add) parancs használatával adjon hozzá egy tartományt az engedélyezett Origins listához. A következő példa hozzáadja a contoso.com tartományt:
+A [`az functionapp cors add`](/cli/azure/functionapp/cors#az-functionapp-cors-add) paranccsal tartományt vehet fel az engedélyezett eredetlistára. A következő példa hozzáadja a contoso.com tartományt:
 
 ```azurecli-interactive
 az functionapp cors add --name <FUNCTION_APP_NAME> \
@@ -134,19 +134,19 @@ az functionapp cors add --name <FUNCTION_APP_NAME> \
 --allowed-origins https://contoso.com
 ```
 
-Az [`az functionapp cors show`](/cli/azure/functionapp/cors#az-functionapp-cors-show) parancs használatával listázhatja az aktuálisan engedélyezett eredeteket.
+A [`az functionapp cors show`](/cli/azure/functionapp/cors#az-functionapp-cors-show) paranccsal felsorolhatja az aktuálisan engedélyezett eredeteket.
 
-### <a name="auth"></a>Hitelesítés
+### <a name="authentication"></a><a name="auth"></a>Hitelesítés
 
-![Egy Function alkalmazás hitelesítésének konfigurálása](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-authentication.png)
+![Hitelesítés konfigurálása függvényalkalmazáshoz](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-authentication.png)
 
-Ha a függvények HTTP-triggert használnak, megkövetelheti, hogy először hitelesíteni lehessen a hívásokat. App Service támogatja a Azure Active Directory hitelesítését és a közösségi szolgáltatókkal való bejelentkezést, például a Facebookot, a Microsoftot és a Twittert. Az egyes hitelesítő szolgáltatók konfigurálásával kapcsolatos részletekért tekintse meg a [Azure app Service Authentication áttekintése](../app-service/overview-authentication-authorization.md)című témakört. 
+Ha a függvények HTTP-eseményindítót használnak, először a hívások hitelesítését kérheti. Az App Service támogatja az Azure Active Directory hitelesítését és a közösségi szolgáltatókkal, például a Facebookkal, a Microsofttal és a Twitterrel való bejelentkezést. Az adott hitelesítésszolgáltatók konfigurálásáról az [Azure App Service-hitelesítés áttekintése című témakörben olvashat részletesen.](../app-service/overview-authentication-authorization.md) 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-+ [Azure App Service beállítások konfigurálása](../app-service/configure-common.md)
++ [Az Azure App Service beállításainak konfigurálása](../app-service/configure-common.md)
 + [Azure Functions – folyamatos üzembe helyezés](functions-continuous-deployment.md)
 
 [Azure CLI]: /cli/azure/
-[Azure Portalra]: https://portal.azure.com
+[Azure-portál]: https://portal.azure.com

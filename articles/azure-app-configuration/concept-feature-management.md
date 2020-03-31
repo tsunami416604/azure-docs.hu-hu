@@ -1,48 +1,48 @@
 ---
-title: A szolgáltatások kezelésének megismerése az Azure app Configuration használatával
-description: Funkciók be-és kikapcsolása az Azure app Configuration használatával
+title: A szolgáltatáskezelés ismertetése az Azure App Konfigurációja szolgáltatással
+description: A funkciók be- és kikapcsolása az Azure App Configuration használatával
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: 8227810c154078fc8424b2cadd373394d07e9730
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77523730"
 ---
-# <a name="feature-management-overview"></a>A szolgáltatások kezelése – áttekintés
+# <a name="feature-management-overview"></a>Szolgáltatáskezelés – áttekintés
 
-Az új alkalmazás-szolgáltatás szállítása hagyományosan az alkalmazás teljes újratelepítését igényli. Egy szolgáltatás teszteléséhez gyakran több központi telepítésre van szükség az alkalmazáshoz.  Az egyes központi telepítések megváltoztathatják a funkciót, vagy a szolgáltatást különböző ügyfeleknek teheti elérhetővé tesztelés céljából.  
+Hagyományosan egy új alkalmazásfunkció szállítása az alkalmazás teljes átcsoportosítását igényli. Egy szolgáltatás tesztelése gyakran igényel több központi telepítések az alkalmazás.  Minden egyes központi telepítés módosíthatja a funkciót, vagy elérhetővé teheti a szolgáltatást különböző ügyfelek számára tesztelésre.  
 
-A szolgáltatás-felügyelet egy modern szoftverfejlesztői gyakorlat, amely elválasztja a funkció kiadását a kód központi telepítéséről, és lehetővé teszi az igény szerinti szolgáltatás rendelkezésre állásának gyors módosítását. Ez a funkció *jelzői* (más néven *funkció-váltás*, *funkció-kapcsolók*stb.) elnevezésű technikát használja a szolgáltatások életciklusának dinamikus felügyeletéhez.
+A szolgáltatáskezelés egy modern szoftverfejlesztési gyakorlat, amely leválasztja a szolgáltatáskiadást a kód telepítéséről, és lehetővé teszi a gyors módosításokat a funkciók igény szerinti elérhetőségéhez. Ez használ egy technika úgynevezett *funkció jelzők* (más néven *szolgáltatás váltások*, *szolgáltatás kapcsolók*, és így tovább), hogy dinamikusan felügyelje a szolgáltatás életciklusát.
 
-A szolgáltatások kezelése segít a fejlesztőknek a következő problémák megoldásában:
+A szolgáltatáskezelés segítségével a fejlesztők a következő problémákat oldhatják meg:
 
-* A **kód elágazásának kezelése**: a funkció-jelzők használatával a jelenleg fejlesztés alatt álló új alkalmazás-funkciókat is becsomagolhatja. Az ilyen funkciók alapértelmezés szerint rejtettek. Biztonságosan szállíthatja a szolgáltatást, annak ellenére, hogy befejezetlen állapotban van, és az éles környezetben marad. Ha ezt a módszert használja, a *sötét üzembe helyezési*folyamattal minden egyes fejlesztési ciklus végén felszabadíthatja az összes kódot. Többé nem kell megtartania a kód ágakat több fejlesztési ciklusban, mert egy adott szolgáltatáshoz több ciklus szükséges.
-* **Tesztelés éles**környezetben: a szolgáltatás-jelzők használatával korai hozzáférést biztosíthat az éles környezetben futó új funkciókhoz. Korlátozhatja például a csapattagok vagy a belső bétaverziós tesztelők elérését. Ezek a felhasználók a teljes hűségű üzemi élményt a tesztelési környezet szimulált vagy részleges felhasználói felülete helyett fogják tapasztalni.
-* **Beléptetés: a**funkciók jelzői segítségével fokozatosan, a végfelhasználók számára új funkciókat érhet el. Először is megcélozhatja a felhasználói populáció kis hányadát, és az idő múlásával fokozatosan növelheti a százalékos arányt.
-* **Instant kill kapcsoló**: a funkciók jelzői egy belső biztonsági hálót biztosítanak az új funkciók felszabadításához. A kódok újbóli üzembe helyezése nélkül is be-és kikapcsolhatja az alkalmazás funkcióit. Ha szükséges, az alkalmazás újraépítése és újbóli üzembe helyezése nélkül is gyorsan letilthatja a szolgáltatást.
-* **Szelektív aktiválás**: a szolgáltatás-jelzők használatával szegmentálhatja a felhasználókat, és meghatározott szolgáltatásokat biztosíthat az egyes csoportoknak. Lehet, hogy egy szolgáltatás csak bizonyos webböngészőn működik. Meghatározhatja a szolgáltatás jelölőjét, így csak a böngésző felhasználói láthatják és használhatják a szolgáltatást. Ezzel a módszerrel később egyszerűen kiterjesztheti a támogatott böngészőket a kód módosítása nélkül.
+* **Kódág-kezelés:** A szolgáltatásjelzők segítségével becsomagolja a jelenleg fejlesztés alatt álló új alkalmazásfunkciókat. Az ilyen funkciók alapértelmezés szerint "rejtettek". Biztonságosan elszállíthatja a funkciót, még akkor is, ha befejezetlen, és a termelés ben alvó marad. Ezzel a megközelítéssel, az úgynevezett *sötét központi telepítéssel,* minden egyes fejlesztési ciklus végén felszabadíthatja az összes kódot. A továbbiakban nem kell kódágakat fenntartani több fejlesztési ciklusban, mert egy adott funkció egynél több ciklust igényel.
+* **Tesztelés éles környezetben:** A funkciójelzők segítségével korai hozzáférést biztosíthat az éles környezetúj funkcióihoz. Korlátozhatja például a csapattagok vagy a belső bétatesztelők hozzáférését. Ezek a felhasználók a teljes hűségű éles környezetben fogják tapasztalni a szimulált vagy részleges élmény helyett egy tesztkörnyezetben.
+* **Repülés:** A szolgáltatásjelzők segítségével fokozatosan új funkciókat biztosíthat a végfelhasználók számára. Először a felhasználói populáció egy kis százalékát célozhatja meg, és ezt a százalékot fokozatosan növelheti az idő múlásával.
+* **Azonnali kikapcsolókapcsoló:** A funkciójelzők az új funkciók felszabadítására szolgáló biztonsági hálót biztosítanak. Az alkalmazásfunkciókat kód újratelepítése nélkül is be- és kikapcsolhatja. Szükség esetén gyorsan letilthatja a szolgáltatást az alkalmazás újraépítése és újratelepítése nélkül.
+* **Szelektív aktiválás:** A szolgáltatásjelzők segítségével szegmentálhatja a felhasználókat, és adott funkciókat juttathat el az egyes csoportokhoz. Előfordulhat, hogy olyan funkcióval rendelkezik, amely csak egy bizonyos webböngészőben működik. Megadhat egy jellemzőjelzőt, hogy csak az adott böngésző felhasználói láthassák és használhassák a funkciót. Ezzel a megközelítéssel később könnyedén kibonthatja a támogatott böngészőlistát anélkül, hogy bármilyen kódmódosítást kellene végrehajtania.
 
 ## <a name="basic-concepts"></a>Alapfogalmak
 
-A szolgáltatások felügyeletével kapcsolatos további feltételek:
+Íme néhány új kifejezés a szolgáltatáskezeléssel kapcsolatban:
 
-* **Szolgáltatás jelzője**: a szolgáltatás jelölője a *be* -vagy *kikapcsolt*bináris állapotú változó. A szolgáltatás jelzője egy kapcsolódó kódrészletet is tartalmaz. A funkció jelző állapota elindítja, hogy a kód blokkolva van-e.
-* A Feature **Manager**: a Feature Manager egy alkalmazáscsomag, amely az alkalmazás összes szolgáltatás jelzőjének életciklusát kezeli. A Feature Manager további funkciókat is biztosít, többek között a gyorsítótárazási funkciók jelzőit és az állapotuk frissítését.
-* **Szűrő**: a szűrő egy olyan szabály, amely egy szolgáltatás jelzője állapotát értékeli. A lehetséges szűrők közé tartoznak a felhasználói csoportok, az eszközök és a böngészők típusai, a földrajzi helyszínek és az időablakok.
+* **Funkciójelző**: A jellemzőjelző olyan változó, amelynek bináris állapota *be-* vagy *kivan kapcsolva*. A szolgáltatásjelzőhöz tartozik egy kódblokk is. A szolgáltatásjelző állapota elindítja, hogy a kódblokk fut-e.
+* **Szolgáltatáskezelő**: A szolgáltatáskezelő olyan alkalmazáscsomag, amely az alkalmazás összes szolgáltatásjelzőjének életciklusát kezeli. A szolgáltatáskezelő további funkciókat is biztosít, beleértve a szolgáltatásjelzők gyorsítótárazását és állapotuk frissítését.
+* **Szűrő**: A szűrő a jellemzőjelző állapotának kiértékelésére szolgáló szabály. A lehetséges szűrők közé tartoznak a felhasználói csoportok, az eszköz- vagy böngészőtípusok, a földrajzi helyek és az időablakok.
 
-A szolgáltatások felügyeletének hatékony megvalósítása legalább két, a koncerten dolgozó összetevőből áll:
+A funkciókezelés hatékony megvalósítása legalább két, összehangoltan működő összetevőből áll:
 
-* Egy alkalmazás, amely a funkciók jelzőit használja.
-* Egy különálló adattár, amely a szolgáltatás jelölőit és aktuális állapotait tárolja.
+* Szolgáltatásjelzőket használó alkalmazás.
+* Egy külön tárház, amely tárolja a szolgáltatás jelzők és a jelenlegi állapotok.
 
-## <a name="using-feature-flags-in-your-code"></a>Szolgáltatás-jelzők használata a kódban
+## <a name="using-feature-flags-in-your-code"></a>Jellemzőjelzők használata a kódban
 
-A szolgáltatás-jelzők alkalmazásban való megvalósításának alapvető mintája egyszerű. A szolgáltatás jelölője a kódban szereplő feltételes utasítást vezérlő logikai állapot változó:
+Az alkalmazás funkciójelzőinek megvalósításához szükséges alapvető minta egyszerű. A szolgáltatásjelző egy logikai állapotváltozó, amely a kódban lévő feltételes utasítást vezéreli:
 
 ```csharp
 if (featureFlag) {
@@ -50,19 +50,19 @@ if (featureFlag) {
 }
 ```
 
-Megadhatja a statikus `featureFlag` értékét.
+Beállíthatja `featureFlag` a statikus értéket.
 
 ```csharp
 bool featureFlag = true;
 ```
 
-Bizonyos szabályok alapján kiértékelheti a jelző állapotát:
+A zászló állapotát bizonyos szabályok alapján értékelheti:
 
 ```csharp
 bool featureFlag = isBetaUser();
 ```
 
-Kiterjesztheti a feltételes beállítást az alkalmazás viselkedésének megadásához bármelyik állapot esetén:
+A feltételes tanonc bármelyik állapotalkalmazás-viselkedés beállítására kiterjesztheti:
 
 ```csharp
 if (featureFlag) {
@@ -72,15 +72,15 @@ if (featureFlag) {
 }
 ```
 
-## <a name="feature-flag-repository"></a>Szolgáltatások jelző tárháza
+## <a name="feature-flag-repository"></a>Szolgáltatásjelző tárháza
 
-Ahhoz, hogy hatékonyan használhassa a szolgáltatás jelzőit, meg kell Externalize az alkalmazásban használt összes szolgáltatás jelölőjét. Ez lehetővé teszi, hogy az alkalmazás módosítása és újbóli üzembe helyezése nélkül módosítsa a szolgáltatás jelölőjét.
+A szolgáltatásjelzők hatékony használatához ki kell külsőítenie az alkalmazásban használt összes szolgáltatásjelzőt. Ez lehetővé teszi a szolgáltatásjelző-állapotok módosítását az alkalmazás módosítása és újratelepítése nélkül.
 
-Az Azure app Configuration egy központi tárházat biztosít a funkciók jelzői számára. A használatával különböző típusú szolgáltatás-jelzőket adhat meg, és gyorsan és magabiztosan kezelheti az állapotukat. Ezután az alkalmazás konfigurációs kódtárai különböző programozási nyelvi keretrendszerekhez használhatók, így egyszerűen hozzáférhetnek ezekhez a szolgáltatásokhoz.
+Az Azure App Configuration egy központi tárházat biztosít a szolgáltatásjelzők számára. Segítségével különböző típusú szolgáltatásjelzőket definiálhat, és gyorsan és magabiztosan kezelheti állapotukat. Ezután használhatja az alkalmazáskonfigurációs kódtárakat a különböző programozási nyelvi keretrendszerekhez, hogy könnyen elérhesse ezeket a szolgáltatásjelzőket az alkalmazásból.
 
-A [ASP.net Core alkalmazásban látható funkció-jelzők](./use-feature-flags-dotnet-core.md) azt mutatják be, hogyan használhatók a .net Core alkalmazás-konfiguráló szolgáltató és a szolgáltatás-felügyeleti kódtárak a ASP.net-webalkalmazáshoz tartozó szolgáltatási jelzők megvalósításához.
+[A szolgáltatásjelzők használata ASP.NET Core alkalmazásban](./use-feature-flags-dotnet-core.md) bemutatja, hogyan használja együtt a .NET Core alkalmazáskonfigurációs szolgáltató tárakat a ASP.NET webalkalmazás szolgáltatásjelzőinek megvalósításához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Szolgáltatás-jelzők hozzáadása egy ASP.NET Core webalkalmazáshoz](./quickstart-feature-flag-aspnet-core.md)  
+> [Szolgáltatásjelzők hozzáadása ASP.NET Core webalkalmazáshoz](./quickstart-feature-flag-aspnet-core.md)  

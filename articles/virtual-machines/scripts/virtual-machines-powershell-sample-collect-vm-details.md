@@ -1,6 +1,6 @@
 ---
-title: Az előfizetésben lévő összes virtuális gép adatainak összegyűjtése a PowerShell-lel
-description: Az előfizetésben lévő összes virtuális gép adatainak összegyűjtése a PowerShell-lel
+title: Az előfizetésben lévő összes virtuális gép részleteinek összegyűjtése a PowerShell segítségével
+description: Az előfizetésben lévő összes virtuális gép részleteinek összegyűjtése a PowerShell segítségével
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: v-miegge
@@ -16,23 +16,23 @@ ms.date: 07/01/2019
 ms.author: v-miegge
 ms.custom: mvc
 ms.openlocfilehash: 237081380445f2b2e4168ee3afe9a3ed7544fc89
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74900203"
 ---
-# <a name="collect-details-about-all-vms-in-a-subscription-with-powershell"></a>Az előfizetésben lévő összes virtuális gép adatainak összegyűjtése a PowerShell-lel
+# <a name="collect-details-about-all-vms-in-a-subscription-with-powershell"></a>Az előfizetésben lévő összes virtuális gép részleteinek összegyűjtése a PowerShell segítségével
 
-Ez a szkript létrehoz egy CSV-t, amely tartalmazza a virtuális gép nevét, az erőforráscsoport nevét, a régiót, a Virtual Networkt, az alhálózatot, a magánhálózati IP-címet, az operációsrendszer-típust és a virtuális gépek nyilvános IP-címét a megadott
+Ez a parancsfájl létrehoz egy csv, amely tartalmazza a virtuális gép nevét, erőforráscsoport neve, régió, virtuális hálózat, alhálózat, privát IP-cím, operációs rendszer típusa és nyilvános IP-címe a virtuális gépek a megadott előfizetésben.
 
-Ha nem rendelkezik Azure- [előfizetéssel](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing), a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free) .
+Ha nem rendelkezik [Azure-előfizetéssel](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing), első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free).
 
 ## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
 
-A Cloud Shell megnyitásához csak kattintson a kódblokk jobb felső sarkában található **Kipróbálás** elemre. A Cloud Shellt egy külön böngészőlapon is elindíthatja a [https://shell.azure.com/powershell](https://shell.azure.com/powershell) cím megnyitásával. A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
+A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shellt egy külön böngészőlapon [https://shell.azure.com/powershell](https://shell.azure.com/powershell)is elindíthatja a segítségével. A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -70,16 +70,16 @@ $report | Export-CSV "$home/$reportName"
 ```
 
 ## <a name="script-explanation"></a>Szkript ismertetése
-Ez a szkript a következő parancsokat használja az előfizetésben található virtuális gépek adatainak CSV-exportálásának létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+Ez a parancsfájl a következő parancsokat használja a virtuális gépek részleteinek egy előfizetésben való létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 |Parancs|Megjegyzések|
 |-|-|
-|[Select-AzSubscription](https://docs.microsoft.com/powershell/module/Az.Accounts/Set-AzContext)|Beállítja a bérlőt, az előfizetést és a környezetet az aktuális munkamenetben használni kívánt parancsmagokhoz.|
-|[Get-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Get-AzVM)|A virtuális gép tulajdonságainak beolvasása.|
-|[Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzPublicIpAddress)|Egy nyilvános IP-címet kap.|
-|[Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzNetworkInterface)|Hálózati adapter beolvasása.|
+|[Select-AzSubscription](https://docs.microsoft.com/powershell/module/Az.Accounts/Set-AzContext)|Beállítja a bérlő, előfizetés és a környezet parancsmagok használata az aktuális munkamenetben.|
+|[Get-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Get-AzVM)|Virtuális gép tulajdonságainak beolvasása.|
+|[Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzPublicIpAddress)|Nyilvános IP-címet kap.|
+|[Get-AzNetwork illesztő](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzNetworkInterface)|Beszerzi a hálózati interfészt.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](https://docs.microsoft.com/powershell/azure/overview).
 

@@ -1,70 +1,70 @@
 ---
-title: A dátum-és időértékek használata Azure Monitor log-lekérdezésekben | Microsoft Docs
-description: Ismerteti, hogyan használhatók a dátum-és időadatok Azure Monitor naplók lekérdezésében.
+title: A dátumidő-értékek használata az Azure Monitor naplólekérdezéseiben| Microsoft dokumentumok
+description: Bemutatja, hogyan dolgozhat a dátum- és időadatokkal az Azure Monitor naplólekérdezéseiben.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: ea7c98a1b5b4059c5fea0cf1e8ea2ff5ef08d9d1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77655378"
 ---
-# <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>A dátum-és időértékek használata Azure Monitor log-lekérdezésekben
+# <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>A dátumidő-értékek használata az Azure Monitor naplólekérdezéseiben
 
 > [!NOTE]
-> A lecke elvégzése előtt fejezze be [az Analytics-portál és a](get-started-portal.md) [lekérdezések első](get-started-queries.md) lépéseit.
+> A lecke befejezése előtt el kell [kezdenie az Első lépések szolgáltatást az Analytics-portállal,](get-started-portal.md) és [el kell kezdenie a lekérdezéseket.](get-started-queries.md)
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Ez a cikk azt ismerteti, hogyan használhatók a dátum-és időadatok Azure Monitor napló lekérdezésekben.
+Ez a cikk ismerteti, hogyan dolgozhat a dátum- és időadatokkal az Azure Monitor naplólekérdezéseiben.
 
 
-## <a name="date-time-basics"></a>Időpontok alapjai
-A Kusto lekérdezési nyelvnek két fő adattípusa van, amelyek dátum és idő értékkel vannak társítva: datetime és TimeSpan. Az összes dátum UTC szerint van megadva. Míg több datetime formátum is támogatott, a ISO8601 formátuma javasolt. 
+## <a name="date-time-basics"></a>A dátum időpontjának alapjai
+A Kusto lekérdezési nyelv két fő adattípussal rendelkezik a dátumokhoz és időpontokhoz társítva: datetime és timespan. Minden dátum UTC-ben van kifejezve. Bár több datetime formátum támogatott, az ISO8601 formátum ajánlott. 
 
-A időtávok tizedes törtként van megadva, majd egy időegység után:
+Az időtávokat decimálisan fejezik ki, amelyet egy időegység követ:
 
-|rövid függvényneve   | időegység    |
+|Gyorsírás   | időegység    |
 |:---|:---|
-|d           | nap          |
-|h           | óra         |
-|m           | percenként       |
-|s           | második       |
-|ms          | ezredmásodperces  |
-|mikromásodperces | mikromásodperces  |
-|osztásjel        | NS   |
+|n           | nap          |
+|ó           | hour         |
+|m           | minute       |
+|s           | second       |
+|Ms          | ezredmásodperc  |
+|mikroszekundum | mikroszekundum  |
+|Ketyeg        | nanoszekundum   |
 
-A dátum-és időértékeket a `todatetime` operátor használatával lehet létrehozni. Ha például át szeretné tekinteni az adott időintervallumban küldött virtuális gépek szívverését, az `between` operátorral adhatja meg az időtartományt.
+A dátumidők et úgy lehet `todatetime` létrehozni, hogy az operátort használó karakterláncot ad. Például egy adott időkereten belül küldött virtuális gép szívverések áttekintéséhez használja az `between` operátort egy időtartomány megadásához.
 
 ```Kusto
 Heartbeat
 | where TimeGenerated between(datetime("2018-06-30 22:46:42") .. datetime("2018-07-01 00:57:27"))
 ```
 
-Egy másik gyakori forgatókönyv a DateTime és a jelen érték összevetése. Ha például az utolsó két percben szeretné látni az összes szívverést, használhatja a `now` operátort egy két percet jelölő TimeSpan:
+Egy másik gyakori forgatókönyv a datetime összehasonlítása a jelenvel. Ha például az elmúlt két perc összes szívverését `now` szeretné látni, használhatja az operátort egy két perces idővel együtt:
 
 ```Kusto
 Heartbeat
 | where TimeGenerated > now() - 2m
 ```
 
-Ehhez a függvényhez egy parancsikon is elérhető:
+Ehhez a funkcióhoz egy parancsikon is elérhető:
 ```Kusto
 Heartbeat
 | where TimeGenerated > now(-2m)
 ```
 
-A legrövidebb és legkönnyebben olvasható módszer azonban a `ago` operátort használja:
+A legrövidebb és legolvashatóbb módszer `ago` azonban az operátort használja:
 ```Kusto
 Heartbeat
 | where TimeGenerated > ago(2m)
 ```
 
-Tegyük fel, hogy a kezdő és a záró időpont ismerete helyett a kezdési időt és az időtartamot ismeri. A lekérdezést a következőképpen írhatja át:
+Tegyük fel, hogy a kezdési és befejezési időpont ismerete helyett ismeri a kezdési időpontot és az időtartamot. A lekérdezést a következőképpen írhatja át:
 
 ```Kusto
 let startDatetime = todatetime("2018-06-30 20:12:42.9");
@@ -75,7 +75,7 @@ Heartbeat
 ```
 
 ## <a name="converting-time-units"></a>Időegységek konvertálása
-Előfordulhat, hogy az alapértelmezett értéktől eltérő időegységben szeretné kifejezni a DateTime vagy a TimeSpan értéket. Például, ha az elmúlt 30 percben megtekinti a hibák eseményeit, és egy számított oszlopra van szüksége, amely azt mutatja, hogy az esemény mennyi ideig történt:
+Előfordulhat, hogy az alapértelmezetttől eltérő időegységben szeretné kifejezni a dátumidőt vagy az időtartományt. Ha például az elmúlt 30 perc hibaeseményeit tekinti át, és szüksége van egy számított oszlopra, amely megmutatja, hogy milyen régen történt az esemény:
 
 ```Kusto
 Event
@@ -84,7 +84,7 @@ Event
 | extend timeAgo = now() - TimeGenerated 
 ```
 
-A `timeAgo` oszlop a következő értékeket tartalmazza: "00:09:31.5118992", ami azt jelenti, hogy hh: PP: mm. fffffff formátumban vannak formázva. Ha ezeket az értékeket a kezdési időpont óta a percek `numver`ra szeretné formázni, az értéket az "1 perc" értékkel kell elosztani:
+Az `timeAgo` oszlop a következő értékeket tartalmazza: "00:09:31.5118992", ami azt jelenti, hogy hh:mm:ss.fffffff. Ha ezeket az értékeket `numver` a kezdési időpont óta eltelt percekre szeretné formázni, ossza el ezt az értéket "1 perccel":
 
 ```Kusto
 Event
@@ -95,10 +95,10 @@ Event
 ```
 
 
-## <a name="aggregations-and-bucketing-by-time-intervals"></a>Összesítések és gyűjtők időszakonként
-Egy másik gyakori forgatókönyv, hogy egy adott időszakra vonatkozó statisztikai adatokat kell megszereznie egy adott időtartamon belül. Ebben a forgatókönyvben egy `bin` operátor is használható egy összefoglaló záradék részeként.
+## <a name="aggregations-and-bucketing-by-time-intervals"></a>Összesítések és időintervallumok szerinti korösz
+Egy másik gyakori forgatókönyv az, hogy egy adott időszakban egy adott időszakban statisztikákat kell szerezni egy adott időalatt. Ebben a forgatókönyvben az `bin` operátor összegző záradék részeként használható.
 
-A következő lekérdezéssel lekérdezheti az elmúlt fél órában 5 percenként bekövetkezett események számát:
+A következő lekérdezés segítségével lekérdezi az elmúlt fél órában 5 percenként történt események számát:
 
 ```Kusto
 Event
@@ -106,9 +106,9 @@ Event
 | summarize events_count=count() by bin(TimeGenerated, 5m) 
 ```
 
-Ez a lekérdezés a következő táblázatot állítja elő:  
+Ez a lekérdezés a következő táblát hozza létre:  
 
-|TimeGenerated (UTC)|events_count|
+|Időgenerált(UTC)|events_count|
 |--|--|
 |2018-08-01T09:30:00.000|54|
 |2018-08-01T09:35:00.000|41|
@@ -117,7 +117,7 @@ Ez a lekérdezés a következő táblázatot állítja elő:
 |2018-08-01T09:50:00.000|41|
 |2018-08-01T09:55:00.000|16|
 
-A gyűjtők létrehozásának másik módja a függvények használata, például `startofday`:
+Az eredmények gyűjtőinek létrehozásának másik módja `startofday`a függvények használata, mint például:
 
 ```Kusto
 Event
@@ -125,19 +125,19 @@ Event
 | summarize events_count=count() by startofday(TimeGenerated) 
 ```
 
-Ez a lekérdezés a következő eredményeket eredményezi:
+Ez a lekérdezés a következő eredményeket hozza:
 
 |időbélyeg|count_|
 |--|--|
-|2018-07-28T00:00:00.000|7 136|
-|2018-07-29T00:00:00.000|12 315|
-|2018-07-30T00:00:00.000|16 847|
-|2018-07-31T00:00:00.000|12 616|
-|2018-08-01T00:00:00.000|5 416|
+|2018-07-28T00:00:00.000|7,136|
+|2018-07-29T00:00:00.000|12,315|
+|2018-07-30T00:00:00.000|16,847|
+|2018-07-31T00:00:00.000|12,616|
+|2018-08-01T00:00:00.000|5,416|
 
 
 ## <a name="time-zones"></a>Időzónák
-Mivel az összes datetime érték UTC szerint van kifejezve, gyakran hasznos az értékek helyi időzónába való konvertálása. Ez a számítás például az UTC és a PST-időpontok átalakítására használható:
+Mivel az összes datetime érték UTC-ben van kifejezve, gyakran hasznos ezeket az értékeket a helyi időzónába konvertálni. Ezzel a számítással például az UTC-t PST-időkké alakíthatja át:
 
 ```Kusto
 Event
@@ -148,19 +148,19 @@ Event
 
 | Kategória | Függvény |
 |:---|:---|
-| Adattípusok konvertálása | [ToDateTime](/azure/kusto/query/todatetimefunction)  [ToTimeSpan](/azure/kusto/query/totimespanfunction)  |
-| Kerekített érték a raktárhely méretéhez | [bin](/azure/kusto/query/binfunction) |
-| Megadott dátum vagy idő beolvasása | [ezelőtt](/azure/kusto/query/agofunction) [most](/azure/kusto/query/nowfunction)   |
-| Az érték egy részének beolvasása | [datetime_part](/azure/kusto/query/datetime-partfunction) [getmonth](/azure/kusto/query/getmonthfunction) [monthofyear](/azure/kusto/query/monthofyearfunction) [getyear](/azure/kusto/query/getyearfunction) [dayofmonth](/azure/kusto/query/dayofmonthfunction) [DayOfWeek](/azure/kusto/query/dayofweekfunction) [DAYOFYEAR](/azure/kusto/query/dayofyearfunction) [weekofyear](/azure/kusto/query/weekofyearfunction) |
-| Relatív dátum értékének beolvasása  | [endofday](/azure/kusto/query/endofdayfunction) [endofweek](/azure/kusto/query/endofweekfunction) [ENDOFMONTH](/azure/kusto/query/endofmonthfunction) [ENDOFYEAR](/azure/kusto/query/endofyearfunction) [startofday](/azure/kusto/query/startofdayfunction) [startofweek](/azure/kusto/query/startofweekfunction) [STARTOFMONTH](/azure/kusto/query/startofmonthfunction) [STARTOFYEAR](/azure/kusto/query/startofyearfunction) |
+| Adattípusok konvertálása | [todatetime](/azure/kusto/query/todatetimefunction)  [totimespan](/azure/kusto/query/totimespanfunction)  |
+| Kerekített érték raktárhely méretre | [Bin](/azure/kusto/query/binfunction) |
+| Adott dátum vagy idő betöltése | [ezelőtt](/azure/kusto/query/agofunction) [most](/azure/kusto/query/nowfunction)   |
+| Az érték egy része | [datetime_part](/azure/kusto/query/datetime-partfunction) [getmonth](/azure/kusto/query/getmonthfunction) [month ofyear](/azure/kusto/query/monthofyearfunction) [getyear](/azure/kusto/query/getyearfunction) [dayofmonth](/azure/kusto/query/dayofmonthfunction) [dayofweek](/azure/kusto/query/dayofweekfunction) [dayofweek ofyear](/azure/kusto/query/dayofyearfunction) [weekofyear](/azure/kusto/query/weekofyearfunction) |
+| Relatív dátumérték bekésezése  | [endofday](/azure/kusto/query/endofdayfunction) endofweek endofmonth endofyear startofday [startofweek startofmonth](/azure/kusto/query/startofmonthfunction) [startofyear endofweek](/azure/kusto/query/startofyearfunction) [endofmonth](/azure/kusto/query/endofmonthfunction) [endofmonth endofyear](/azure/kusto/query/endofyearfunction) [startofday](/azure/kusto/query/startofdayfunction) [startofmonth](/azure/kusto/query/startofweekfunction) [endofweek](/azure/kusto/query/endofweekfunction) |
 
-## <a name="next-steps"></a>Következő lépések
-Tekintse meg a [Kusto lekérdezési nyelv](/azure/kusto/query/) használatát ismertető további leckéket a Azure monitor naplózási adataival:
+## <a name="next-steps"></a>További lépések
+Tekintse meg a [Kusto lekérdezési nyelv](/azure/kusto/query/) ének használatát az Azure Monitor naplóadataival:
 
-- [Karakterlánc-műveletek](string-operations.md)
-- [Összesítési függvények](aggregations.md)
-- [Speciális összesítések](advanced-aggregations.md)
-- [JSON-és adatstruktúrák](json-data-structures.md)
-- [Speciális lekérdezés írása](advanced-query-writing.md)
-- [Csatlakozik](joins.md)
+- [Sztringműveletek](string-operations.md)
+- [Aggregátumfüggvények](aggregations.md)
+- [Speciális aggregátumok](advanced-aggregations.md)
+- [JSON és adatstruktúrák](json-data-structures.md)
+- [Továbbfejlesztett lekérdezésírás](advanced-query-writing.md)
+- [Illesztések](joins.md)
 - [Diagramok](charts.md)
