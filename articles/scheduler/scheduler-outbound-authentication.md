@@ -9,64 +9,64 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/15/2016
 ms.openlocfilehash: bcd14e618323aec1c7ce47fcebb25099fa96be81
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78898513"
 ---
-# <a name="outbound-authentication-for-azure-scheduler"></a>Kimenő hitelesítés az Azure Schedulerben
+# <a name="outbound-authentication-for-azure-scheduler"></a>Kimenő hitelesítés az Azure Scheduler számára
 
 > [!IMPORTANT]
-> [Azure Logic apps](../logic-apps/logic-apps-overview.md) az Azure Scheduler cseréje [folyamatban](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)van. Ha továbbra is szeretne dolgozni a Feladatütemezőben beállított feladatokkal, akkor a lehető leghamarabb [telepítse át Azure Logic apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) . 
+> [Az Azure Logic Apps](../logic-apps/logic-apps-overview.md) felváltja az Azure Scheduler programot, [amelyet megszüntetnek.](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date) Ha továbbra is szeretne dolgozni az Ütemezőben beállított feladatokkal, a lehető leghamarabb [telepítse át az Azure Logic Apps-alkalmazásokba.](../scheduler/migrate-from-scheduler-to-logic-apps.md) 
 >
-> Az ütemező már nem érhető el a Azure Portalban, de a [REST API](/rest/api/scheduler) és az [Azure Scheduler PowerShell-parancsmagjai](scheduler-powershell-reference.md) jelenleg is elérhetők maradnak, így a feladatok és a feladatok gyűjteményei kezelhetők.
+> Az Ütemező már nem érhető el az Azure Portalon, de a [REST API](/rest/api/scheduler) és az [Azure Scheduler PowerShell-parancsmagok](scheduler-powershell-reference.md) jelenleg elérhetők maradnak, így kezelheti a feladatokat és a feladatgyűjteményeket.
 
-Előfordulhat, hogy az Azure Scheduler-feladatoknak olyan szolgáltatásokat kell meghívniuk, amelyek hitelesítést igényelnek, például más Azure-szolgáltatásokat, Salesforce.com, Facebookot és biztonságos egyéni webhelyeket. A hívott szolgáltatás eldöntheti, hogy az ütemező feladata hozzáférhet-e a kért erőforrásokhoz. 
+Előfordulhat, hogy az Azure Scheduler-feladatoknak meg kell hívniuk a hitelesítést igénylő szolgáltatásokat, például más Azure-szolgáltatásokat, Salesforce.com, facebookos és biztonságos egyéni webhelyeket. A hívott szolgáltatás meghatározhatja, hogy az Ütemező feladat hozzáférhet-e a kért erőforrásokhoz. 
 
-A Scheduler a következő hitelesítési modelleket támogatja: 
+Az Ütemező a következő hitelesítési modelleket támogatja: 
 
-* *Ügyféltanúsítvány* -alapú hitelesítés SSL-/TLS-Ügyféltanúsítványok használatakor
-* *Alapszintű* hitelesítés
-* *Active Directory OAuth* -hitelesítés
+* *Ügyféltanúsítvány-hitelesítés* SSL/TLS-ügyféltanúsítványok használata esetén
+* *Alapfokú* hitelesítés
+* *Active Directory OAuth-hitelesítés*
 
 ## <a name="add-or-remove-authentication"></a>Hitelesítés hozzáadása vagy eltávolítása
 
-* Ha egy ütemező feladatokhoz szeretne hitelesítést felvenni, a feladatok létrehozásakor vagy frissítésekor adja hozzá a `authentication` JavaScript Object Notation (JSON) gyermek elemet a `request` elemhez. 
+* Ha hitelesítést szeretne hozzáadni egy ütemezőfeladathoz, a `authentication` feladat létrehozásakor vagy frissítésekor adja hozzá `request` a JavaScript objektumjelölés (JSON) gyermekelemet az elemhez. 
 
-  A válaszok soha nem adnak vissza a Scheduler szolgáltatásnak átadott titkos kulcsot a `authentication` objektum PUT, PATCH vagy POST kérelem útján. 
-  A válaszok NULL értékűre állítanak titkos adatokat, vagy a hitelesített entitást képviselő nyilvános jogkivonatot is használhatnak. 
+  A válaszok soha nem adnak vissza olyan titkos kulcsokat, amelyeket `authentication` az objektumput, PATCH vagy POST kérésen keresztül adnak át az Ütemező szolgáltatásnak. 
+  A válaszok a titkos adatokat null értékre állították be, vagy a hitelesített entitást jelölő nyilvános jogkivonatot használhatnak. 
 
-* Ha el szeretné távolítani a hitelesítést egy ütemező feladatokból, explicit módon futtasson egy PUT vagy PATCH kérelmet a feladatokon, és állítsa a `authentication` objektumot NULL értékre. A válasz nem tartalmaz hitelesítési tulajdonságokat.
+* Ha el szeretné távolítani a hitelesítést egy ütemezőfeladatból, kifejezetten `authentication` futtasson put vagy PATCH kérelmet a feladaton, és állítsa az objektumot null értékre. A válasz nem tartalmaz hitelesítési tulajdonságokat.
 
 ## <a name="client-certificate"></a>Ügyféltanúsítvány
 
-### <a name="request-body---client-certificate"></a>Kérelem törzse – ügyféltanúsítvány
+### <a name="request-body---client-certificate"></a>Kérelem törzse - Ügyféltanúsítvány
 
-Ha a `ClientCertificate` modell használatával ad hozzá hitelesítést, adja meg ezeket a további elemeket a kérelem törzsében.  
+Hitelesítés hozzáadásakor `ClientCertificate` a modell használatával, adja meg ezeket a további elemeket a kérelem törzsében.  
 
 | Elem | Kötelező | Leírás |
 |---------|----------|-------------|
-| **hitelesítés** (szülő elem) | SSL-ügyféltanúsítvány használatára szolgáló hitelesítési objektum |
-| **type** | Igen | A hitelesítési típus. Az SSL-Ügyféltanúsítványok esetében az érték `ClientCertificate`. |
-| **pfx** | Igen | A PFX-fájl Base64 kódolású tartalma |
-| **jelszó** | Igen | A PFX-fájl eléréséhez használt jelszó |
+| **hitelesítés** (szülőelem) | SSL-ügyféltanúsítvány használatára szolgáló hitelesítési objektum |
+| **Típus** | Igen | A hitelesítés típusa. SSL-ügyféltanúsítványok esetén az `ClientCertificate`érték . |
+| **Pfx** | Igen | A PFX-fájl base64 kódolású tartalma |
+| **alaphelyzetbe állítása** | Igen | A PFX-fájl elérésének jelszava |
 ||| 
 
-### <a name="response-body---client-certificate"></a>Válasz törzse – ügyféltanúsítvány 
+### <a name="response-body---client-certificate"></a>Választörzs - Ügyféltanúsítvány 
 
-Ha a rendszer hitelesítési adatokkal küldi el a kérelmet, a válasz tartalmazza ezeket a hitelesítési elemeket.
+Amikor egy kérelmet hitelesítési adatokkal küld, a válasz ezeket a hitelesítési elemeket tartalmazza.
 
 | Elem | Leírás | 
 |---------|-------------| 
-| **hitelesítés** (szülő elem) | SSL-ügyféltanúsítvány használatára szolgáló hitelesítési objektum |
-| **type** | A hitelesítési típus. Az SSL-Ügyféltanúsítványok esetében az érték `ClientCertificate`. |
-| **certificateThumbprint** |A Tanúsítvány ujjlenyomata |
-| **certificateSubjectName** |A tanúsítvány tulajdonosának megkülönböztető neve |
+| **hitelesítés** (szülőelem) | SSL-ügyféltanúsítvány használatára szolgáló hitelesítési objektum |
+| **Típus** | A hitelesítés típusa. SSL-ügyféltanúsítványok esetén az `ClientCertificate`érték . |
+| **certificateThumbprint** |A tanúsítvány ujjlenyomata |
+| **certificateSubjectName (tanúsítványSubjectName)** |A tanúsítvány tulajdonosának megkülönböztető neve |
 | **certificateExpiration** | A tanúsítvány lejárati dátuma |
 ||| 
 
-### <a name="sample-rest-request---client-certificate"></a>Példa REST-kérelemre – ügyféltanúsítvány
+### <a name="sample-rest-request---client-certificate"></a>MINTA REST-kérelem – Ügyféltanúsítvány
 
 ```json
 PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobcollections/southeastasiajc/jobs/httpjob?api-version=2016-01-01 HTTP/1.1
@@ -103,7 +103,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-### <a name="sample-rest-response---client-certificate"></a>Példa REST-válaszra – ügyféltanúsítvány
+### <a name="sample-rest-response---client-certificate"></a>MINTA REST-válasz – Ügyféltanúsítvány
 
 ```json
 HTTP/1.1 200 OKCache-Control: no-cache
@@ -159,32 +159,32 @@ Date: Wed, 16 Mar 2016 19:04:23 GMT
 }
 ```
 
-## <a name="basic"></a>Alapszintű
+## <a name="basic"></a>Basic
 
-### <a name="request-body---basic"></a>Kérelem törzse – alapszintű
+### <a name="request-body---basic"></a>Kérelem törzse - Alapszintű
 
-Ha a `Basic` modell használatával ad hozzá hitelesítést, adja meg ezeket a további elemeket a kérelem törzsében.
+Hitelesítés hozzáadásakor `Basic` a modell használatával, adja meg ezeket a további elemeket a kérelem törzsében.
 
 | Elem | Kötelező | Leírás |
 |---------|----------|-------------|
-| **hitelesítés** (szülő elem) | Az alapszintű hitelesítés használatára szolgáló hitelesítési objektum | 
-| **type** | Igen | A hitelesítési típus. Alapszintű hitelesítés esetén az érték `Basic`. | 
-| **username** | Igen | A hitelesíteni kívánt Felhasználónév | 
-| **jelszó** | Igen | A hitelesíteni kívánt jelszó |
+| **hitelesítés** (szülőelem) | Az alapfokú hitelesítést használó hitelesítési objektum | 
+| **Típus** | Igen | A hitelesítés típusa. Az egyszerű hitelesítésnél `Basic`az érték . | 
+| **Felhasználónév** | Igen | A hitelesítésre keresztelendő felhasználónév | 
+| **alaphelyzetbe állítása** | Igen | A hitelesítéshez szükséges jelszó |
 |||| 
 
-### <a name="response-body---basic"></a>Válasz törzse – alapszintű
+### <a name="response-body---basic"></a>Válasz törzs - Alap
 
-Ha a rendszer hitelesítési adatokkal küldi el a kérelmet, a válasz tartalmazza ezeket a hitelesítési elemeket.
+Amikor egy kérelmet hitelesítési adatokkal küld, a válasz ezeket a hitelesítési elemeket tartalmazza.
 
 | Elem | Leírás | 
 |---------|-------------|
-| **hitelesítés** (szülő elem) | Az alapszintű hitelesítés használatára szolgáló hitelesítési objektum |
-| **type** | A hitelesítési típus. Alapszintű hitelesítés esetén az érték `Basic`. |
-| **username** | A hitelesített Felhasználónév |
+| **hitelesítés** (szülőelem) | Az alapfokú hitelesítést használó hitelesítési objektum |
+| **Típus** | A hitelesítés típusa. Az alapfokú hitelesítésnél `Basic`az érték . |
+| **Felhasználónév** | A hitelesített felhasználónév |
 ||| 
 
-### <a name="sample-rest-request---basic"></a>Példa REST-kérelemre – alapszintű
+### <a name="sample-rest-request---basic"></a>REST-mintakérelem – Alapszintű
 
 ```json
 PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobcollections/southeastasiajc/jobs/httpjob?api-version=2016-01-01 HTTP/1.1
@@ -222,7 +222,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-### <a name="sample-rest-response---basic"></a>Minta REST-válasz – alapszintű
+### <a name="sample-rest-response---basic"></a>MINTA REST válasz - Alapszintű
 
 ```json
 HTTP/1.1 200 OK
@@ -279,34 +279,34 @@ Date: Wed, 16 Mar 2016 19:05:06 GMT
 
 ## <a name="active-directory-oauth"></a>Active Directory OAuth
 
-### <a name="request-body---active-directory-oauth"></a>Kérelem törzse – Active Directory OAuth 
+### <a name="request-body---active-directory-oauth"></a>Kérelem törzse - Active Directory OAuth 
 
-Ha a `ActiveDirectoryOAuth` modell használatával ad hozzá hitelesítést, adja meg ezeket a további elemeket a kérelem törzsében.
+Hitelesítés hozzáadásakor `ActiveDirectoryOAuth` a modell használatával, adja meg ezeket a további elemeket a kérelem törzsében.
 
 | Elem | Kötelező | Leírás |
 |---------|----------|-------------|
-| **hitelesítés** (szülő elem) | Igen | A ActiveDirectoryOAuth-hitelesítés használatára szolgáló hitelesítési objektum |
-| **type** | Igen | A hitelesítési típus. ActiveDirectoryOAuth-hitelesítés esetén az érték `ActiveDirectoryOAuth`. |
-| **Bérlő** | Igen | Az Azure AD-bérlő bérlői azonosítója. Az Azure AD-bérlő bérlői azonosítójának megkereséséhez futtassa `Get-AzureAccount` a Azure PowerShellban. |
-| **célközönség** | Igen | Ez az érték `https://management.core.windows.net/`re van állítva. | 
-| **clientId** | Igen | Az Azure AD-alkalmazás ügyfél-azonosítója | 
-| **titkos** | Igen | A jogkivonatot kérő ügyfél titka | 
+| **hitelesítés** (szülőelem) | Igen | Az ActiveDirectoryOAuth-hitelesítést használó hitelesítési objektum |
+| **Típus** | Igen | A hitelesítés típusa. ActiveDirectoryOAuth hitelesítés esetén az `ActiveDirectoryOAuth`érték . |
+| **Bérlő** | Igen | Az Azure AD-bérlő bérlői azonosítója. Az Azure AD-bérlő bérlői azonosítójának megkereséséhez futtassa `Get-AzureAccount` az Azure PowerShellben. |
+| **Közönség** | Igen | Ez az érték `https://management.core.windows.net/`a érték . | 
+| **ügyfélazonosító** | Igen | Az Azure AD-alkalmazás ügyfélazonosítója | 
+| **titkos kód** | Igen | A jogkivonatot kérő ügyfél titkos kulcsa | 
 |||| 
 
-### <a name="response-body---active-directory-oauth"></a>Válasz törzse – Active Directory OAuth
+### <a name="response-body---active-directory-oauth"></a>Választörzs - Active Directory OAuth
 
-Ha a rendszer hitelesítési adatokkal küldi el a kérelmet, a válasz tartalmazza ezeket a hitelesítési elemeket.
+Amikor egy kérelmet hitelesítési adatokkal küld, a válasz ezeket a hitelesítési elemeket tartalmazza.
 
 | Elem | Leírás |
 |---------|-------------|
-| **hitelesítés** (szülő elem) | A ActiveDirectoryOAuth-hitelesítés használatára szolgáló hitelesítési objektum |
-| **type** | A hitelesítési típus. ActiveDirectoryOAuth-hitelesítés esetén az érték `ActiveDirectoryOAuth`. | 
-| **Bérlő** | Az Azure AD-bérlő bérlői azonosítója |
-| **célközönség** | Ez az érték `https://management.core.windows.net/`re van állítva. |
-| **clientId** | Az Azure AD-alkalmazás ügyfél-azonosítója |
+| **hitelesítés** (szülőelem) | Az ActiveDirectoryOAuth-hitelesítést használó hitelesítési objektum |
+| **Típus** | A hitelesítés típusa. ActiveDirectoryOAuth hitelesítés esetén az `ActiveDirectoryOAuth`érték . | 
+| **Bérlő** | Az Azure AD-bérlő bérlőazonosítója |
+| **Közönség** | Ez az érték `https://management.core.windows.net/`a érték . |
+| **ügyfélazonosító** | Az Azure AD-alkalmazás ügyfélazonosítója |
 ||| 
 
-### <a name="sample-rest-request---active-directory-oauth"></a>Példa REST-kérelemre – Active Directory OAuth
+### <a name="sample-rest-request---active-directory-oauth"></a>REST-mintakérelem – Active Directory OAuth
 
 ```json
 PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobcollections/southeastasiajc/jobs/httpjob?api-version=2016-01-01 HTTP/1.1
@@ -346,7 +346,7 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-### <a name="sample-rest-response---active-directory-oauth"></a>Példa REST-válaszra – Active Directory OAuth
+### <a name="sample-rest-response---active-directory-oauth"></a>REST-mintaválasz – Active Directory OAuth
 
 ```json
 HTTP/1.1 200 OK
@@ -406,7 +406,7 @@ Date: Wed, 16 Mar 2016 19:10:02 GMT
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure Scheduler alapfogalmai, terminológiája és entitáshierarchiája](scheduler-concepts-terms.md)
+* [Az Azure Scheduler alapfogalmai, entitáshierarchiája és terminológiája](scheduler-concepts-terms.md)
 * [Azure Scheduler – korlátozások, alapértékek és hibakódok](scheduler-limits-defaults-errors.md)
 * [Az Azure Scheduler REST API-jának leírása](/rest/api/scheduler)
 * [Az Azure Scheduler PowerShell-parancsmagjainak leírása](scheduler-powershell-reference.md)

@@ -1,6 +1,6 @@
 ---
-title: Microsoft Graph API-k használata a kiépítés konfigurálásához – Azure Active Directory | Microsoft Docs
-description: Be kell állítania egy alkalmazás több példányának kiépítés beállítását? Megtudhatja, hogyan takaríthat meg időt a Microsoft Graph API-k használatával az automatikus kiépítés konfigurációjának automatizálásához.
+title: A kiépítés konfigurálásához használja a Microsoft Graph API-kat - Azure Active Directory | Microsoft dokumentumok
+description: Be kell állítania egy alkalmazás több példányának kiépítését? Megtudhatja, hogy miként takaríthat meg időt a Microsoft Graph API-k használatával az automatikus kiépítés konfigurációjának automatizálásához.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,44 +16,44 @@ ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50b59bceb07facd944d7159eeb416c7e9e91557c
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: c72217a565071f9531281af1862ba3681e353a4d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522730"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481466"
 ---
-# <a name="configure-provisioning-using-microsoft-graph-apis"></a>Kiépítés konfigurálása Microsoft Graph API-k használatával
+# <a name="configure-provisioning-using-microsoft-graph-apis"></a>Kiépítés konfigurálása a Microsoft Graph API-k használatával
 
-A Azure Portal egy kényelmes módszer az egyes alkalmazások kiépített konfigurálására egyszerre. Ha azonban több – vagy akár több száz – is létrehoz egy alkalmazást, egyszerűbb lehet az alkalmazások létrehozásának és konfigurálásának automatizálása a Microsoft Graph API-kkal. Ez a cikk azt ismerteti, hogyan automatizálható a kiépítési konfiguráció az API-kon keresztül. Ezt a módszert gyakran használják olyan alkalmazások esetében, mint a [Amazon Web Services](../saas-apps/amazon-web-service-tutorial.md#configure-azure-ad-sso).
+Az Azure Portalon egy kényelmes módja annak, hogy konfigurálja az egyes alkalmazások kiépítése egyes ével. Ha azonban egy alkalmazás több– vagy akár több száz – példányát hozza létre, könnyebben automatizálhatja az alkalmazások létrehozását és konfigurálását a Microsoft Graph API-kkal. Ez a cikk ismerteti, hogyan automatizálhatja a kiépítési konfiguráció API-kon keresztül. Ez a módszer gyakran használják az alkalmazások, mint az [Amazon Web Services](../saas-apps/amazon-web-service-tutorial.md#configure-azure-ad-sso).
 
-**A kiépítési konfiguráció automatizálásához Microsoft Graph API-k használatával kapcsolatos lépések áttekintése**
+**A Microsoft Graph API-k üzembe lépéseinek áttekintése a kiépítési konfiguráció automatizálásához**
 
 
 |Lépés  |Részletek  |
 |---------|---------|
-|[1. lépés. A Gallery-alkalmazás létrehozása](#step-1-create-the-gallery-application)     |Bejelentkezés az API-ügyfélbe <br> A katalógus alkalmazás sablonjának beolvasása <br> A Gallery-alkalmazás létrehozása         |
-|[2. lépés. Kiépítési feladatok létrehozása sablon alapján](#step-2-create-the-provisioning-job-based-on-the-template)     |A létesítési összekötő sablonjának beolvasása <br> A kiépítési feladatok létrehozása         |
-|[3. lépés. Hozzáférés engedélyezése](#step-3-authorize-access)     |Az alkalmazáshoz való kapcsolódás tesztelése <br> A hitelesítő adatok mentése         |
-|[4. lépés. Kiépítési feladatok elindítása](#step-4-start-the-provisioning-job)     |A feladat indítása         |
-|[5. lépés. A kiépítés figyelése](#step-5-monitor-provisioning)     |A kiépítési feladatok állapotának megtekintése <br> A kiépítési naplók beolvasása         |
+|[1. lépés. A katalógusalkalmazás létrehozása](#step-1-create-the-gallery-application)     |Bejelentkezés az API-ügyfélbe <br> A katalógus alkalmazássablonjának lekérése <br> A katalógusalkalmazás létrehozása         |
+|[2. lépés. Kiépítési feladat létrehozása sablon alapján](#step-2-create-the-provisioning-job-based-on-the-template)     |A kiépítési összekötő sablonjának beolvasása <br> A létesítési feladat létrehozása         |
+|[3. lépés. Hozzáférés engedélyezése](#step-3-authorize-access)     |Az alkalmazáshoz való csatlakozás tesztelése <br> A hitelesítő adatok mentése         |
+|[4. lépés. Kiépítési feladat indítása](#step-4-start-the-provisioning-job)     |A feladat indítása         |
+|[5. lépés. Kiépítés figyelése](#step-5-monitor-provisioning)     |A létesítési feladat állapotának ellenőrzése <br> A létesítési naplók beolvasása         |
 
 > [!NOTE]
-> Az ebben a cikkben látható válasz-objektumok az olvashatóság érdekében lerövidítve lehetnek. A rendszer az összes tulajdonságot visszaadja egy tényleges hívásból.
+> A cikkben látható válaszobjektumok olvashatóság érdekében lerövidíthetők. Az összes tulajdonság egy tényleges hívásból lesz visszaadva.
 
-## <a name="step-1-create-the-gallery-application"></a>1\. lépés: a gyűjtemény alkalmazás létrehozása
+## <a name="step-1-create-the-gallery-application"></a>1. lépés: A galéria alkalmazás létrehozása
 
-### <a name="sign-in-to-microsoft-graph-explorer-recommended-postman-or-any-other-api-client-you-use"></a>Jelentkezzen be Microsoft Graph Explorer (ajánlott), Poster vagy bármely más API-ügyfél használatával
+### <a name="sign-in-to-microsoft-graph-explorer-recommended-postman-or-any-other-api-client-you-use"></a>Bejelentkezés a Microsoft Graph Explorerbe (ajánlott), a Postman be vagy bármely más, használt API-ügyfélbe
 
-1. [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) elindítása
-1. Válassza a "Bejelentkezés Microsofttal" gombot, és jelentkezzen be az Azure AD globális rendszergazdai vagy alkalmazás-rendszergazdai hitelesítő adataival.
+1. A [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) indítása
+1. Válassza a "Bejelentkezés a Microsofttal" gombot, és jelentkezzen be az Azure AD globális rendszergazdájával vagy az alkalmazásrendszergazdai hitelesítő adatokkal.
 
-    ![Gráf bejelentkezés](./media/application-provisioning-configure-api/wd_export_02.png)
+    ![Graph bejelentkezés](./media/application-provisioning-configure-api/wd_export_02.png)
 
-1. A sikeres bejelentkezés után a bal oldali ablaktáblán megjelenik a felhasználói fiók adatai.
+1. Sikeres bejelentkezés után a felhasználói fiók részletei a bal oldali ablaktáblában jelennek meg.
 
-### <a name="retrieve-the-gallery-application-template-identifier"></a>A katalógus alkalmazás sablon-azonosítójának beolvasása
-Az Azure AD-alkalmazás-katalógusban található alkalmazások mindegyike rendelkezik egy [alkalmazás-sablonnal](https://docs.microsoft.com/graph/api/applicationtemplate-list?view=graph-rest-beta&tabs=http) , amely leírja az alkalmazás metaadatait. Ennek a sablonnak a használatával létrehozhatja az alkalmazás és az egyszerű szolgáltatásnév egy példányát a bérlőben a felügyelethez.
+### <a name="retrieve-the-gallery-application-template-identifier"></a>A katalógus alkalmazássablon-azonosítójának beolvasása
+Az Azure AD-alkalmazásgyűjteményben lévő alkalmazások mindegyike rendelkezik egy [alkalmazássablonnal,](https://docs.microsoft.com/graph/api/applicationtemplate-list?view=graph-rest-beta&tabs=http) amely leírja az adott alkalmazás metaadatait. Ezzel a sablonnal létrehozhatja az alkalmazás és a szolgáltatásnév egy példányát a bérlőben a felügyelethez.
 
 #### <a name="request"></a>*Kérés*
 
@@ -103,9 +103,9 @@ Content-type: application/json
 }
 ```
 
-### <a name="create-the-gallery-application"></a>A Gallery-alkalmazás létrehozása
+### <a name="create-the-gallery-application"></a>A katalógusalkalmazás létrehozása
 
-Az utolsó lépésben az alkalmazáshoz lekért sablon-azonosítót használva létrehozhatja az alkalmazás és az egyszerű szolgáltatás [egy példányát](https://docs.microsoft.com/graph/api/applicationtemplate-instantiate?view=graph-rest-beta&tabs=http) a bérlőben.
+Használja az alkalmazáshoz az utolsó lépésben beolvasott sablonazonosítót az alkalmazás és a szolgáltatásnév [példányának létrehozásához](https://docs.microsoft.com/graph/api/applicationtemplate-instantiate?view=graph-rest-beta&tabs=http) a bérlőben.
 
 #### <a name="request"></a>*Kérés*
 
@@ -170,11 +170,11 @@ Content-type: application/json
 }
 ```
 
-## <a name="step-2-create-the-provisioning-job-based-on-the-template"></a>2\. lépés: a kiépítési feladatok létrehozása a sablon alapján
+## <a name="step-2-create-the-provisioning-job-based-on-the-template"></a>2. lépés: A kiépítési feladat létrehozása a sablon alapján
 
-### <a name="retrieve-the-template-for-the-provisioning-connector"></a>A létesítési összekötő sablonjának beolvasása
+### <a name="retrieve-the-template-for-the-provisioning-connector"></a>A kiépítési összekötő sablonjának beolvasása
 
-A katalógusban a kiépítés számára engedélyezett alkalmazások rendelkeznek sablonokkal a konfiguráció egyszerűsítéséhez. A [kiépítési konfiguráció sablonjának beolvasásához](https://docs.microsoft.com/graph/api/synchronization-synchronizationtemplate-list?view=graph-rest-beta&tabs=http)használja az alábbi kérelmet.
+A katalógusban lévő, a kiépítéshez engedélyezett alkalmazások sablonokat a konfiguráció egyszerűsítésére. Az alábbi kérelem segítségével [olvassa be a sablont a létesítési konfigurációhoz.](https://docs.microsoft.com/graph/api/synchronization-synchronizationtemplate-list?view=graph-rest-beta&tabs=http) Vegye figyelembe, hogy meg kell adnia az azonosítót. Az azonosító az előző erőforrásra hivatkozik, amely ebben az esetben a ServicePrincipal. 
 
 #### <a name="request"></a>*Kérés*
 
@@ -211,8 +211,8 @@ HTTP/1.1 200 OK
 }
 ```
 
-### <a name="create-the-provisioning-job"></a>A kiépítési feladatok létrehozása
-A kiépítés engedélyezéséhez először [létre kell hoznia egy feladatot](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-post?view=graph-rest-beta&tabs=http). Az alábbi kérelem használatával hozzon létre egy létesítési feladatot. A feladatokhoz használni kívánt sablon megadásakor használja az előző lépés templateId.
+### <a name="create-the-provisioning-job"></a>A létesítési feladat létrehozása
+A kiépítés engedélyezéséhez először létre kell [hoznia egy feladatot.](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-post?view=graph-rest-beta&tabs=http) Az alábbi kérelem használatával hozzon létre egy kiépítési feladatot. Használja az előző lépés sablonazonosítóját a feladathoz használandó sablon megadásakor.
 
 #### <a name="request"></a>*Kérés*
 <!-- {
@@ -262,14 +262,14 @@ Content-type: application/json
 }
 ```
 
-## <a name="step-3-authorize-access"></a>3\. lépés: hozzáférés engedélyezése
+## <a name="step-3-authorize-access"></a>3. lépés: Hozzáférés engedélyezése
 
-### <a name="test-the-connection-to-the-application"></a>Az alkalmazáshoz való kapcsolódás tesztelése
+### <a name="test-the-connection-to-the-application"></a>Az alkalmazáshoz való csatlakozás tesztelése
 
-A harmadik féltől származó alkalmazással való kapcsolatfelvétel tesztelése. Az alábbi példa egy olyan alkalmazáshoz szükséges, amely clientSecret és secretToken igényel. Minden alkalmazás rendelkezik a követelményeivel. Az elérhető lehetőségek megtekintéséhez tekintse át az [API dokumentációját](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-validatecredentials?view=graph-rest-beta&tabs=http) . 
+Tesztelje a kapcsolatot a külső alkalmazással. Az alábbi példa egy olyan alkalmazásra, amely ügyféltitkos és secretToken igényel. Minden alkalmazás nak megvan a követelmények. Az alkalmazások gyakran a BaseAddress címet használják az Ügyféltitkos cím helyett. Annak megállapításához, hogy milyen hitelesítő adatokra van szüksége az alkalmazásnak, keresse meg az alkalmazás létesítési konfigurációs lapját, és fejlesztői módban kattintson a tesztkapcsolatra. A hálózati forgalom a hitelesítő adatokhoz használt paramétereket jeleníti meg. A hitelesítő adatok teljes listája [itt](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-validatecredentials?view=graph-rest-beta&tabs=http)található. 
 
 #### <a name="request"></a>*Kérés*
-```http
+```msgraph-interactive
 POST https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{id}/validateCredentials
 { 
     credentials: [ 
@@ -290,10 +290,10 @@ HTTP/1.1 204 No Content
 
 ### <a name="save-your-credentials"></a>Hitelesítő adatok mentése
 
-A kiépítés konfigurálásához megbízhatósági kapcsolatot kell létrehozni az Azure AD és az alkalmazás között. Engedélyezze a hozzáférést a külső féltől származó alkalmazáshoz. Az alábbi példa egy olyan alkalmazáshoz szükséges, amely clientSecret és secretToken igényel. Minden alkalmazás rendelkezik a követelményeivel. Az elérhető lehetőségek megtekintéséhez tekintse át az [API dokumentációját](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-validatecredentials?view=graph-rest-beta&tabs=http) . 
+A kiépítés konfigurálásához az Azure AD és az alkalmazás közötti megbízhatósági kapcsolat létrehozásához. Hozzáférés engedélyezése a külső alkalmazáshoz. Az alábbi példa egy olyan alkalmazásra, amely ügyféltitkos és secretToken igényel. Minden alkalmazás nak megvan a követelmények. Tekintse át az [API dokumentációját](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-validatecredentials?view=graph-rest-beta&tabs=http) a rendelkezésre álló lehetőségek megtekintéséhez. 
 
 #### <a name="request"></a>*Kérés*
-```json
+```msgraph-interactive
 PUT https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/secrets 
  
 { 
@@ -314,8 +314,8 @@ PUT https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/secr
 HTTP/1.1 204 No Content
 ```
 
-## <a name="step-4-start-the-provisioning-job"></a>4\. lépés: a kiépítési feladatok elindítása
-Most, hogy a kiépítési feladatot konfigurálták, a következő parancs használatával [indítsa el a feladatot](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-start?view=graph-rest-beta&tabs=http). 
+## <a name="step-4-start-the-provisioning-job"></a>4. lépés: A kiépítési feladat indítása
+Most, hogy a létesítési feladat konfigurálva van, a következő paranccsal [indítsa el a feladatot.](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-start?view=graph-rest-beta&tabs=http) 
 
 
 #### <a name="request"></a>*Kérés*
@@ -338,11 +338,11 @@ HTTP/1.1 204 No Content
 ```
 
 
-## <a name="step-5-monitor-provisioning"></a>5\. lépés: a kiépítés figyelése
+## <a name="step-5-monitor-provisioning"></a>5. lépés: A kiépítés figyelése
 
-### <a name="monitor-the-provisioning-job-status"></a>A kiépítési feladatok állapotának figyelése
+### <a name="monitor-the-provisioning-job-status"></a>A létesítési feladat állapotának figyelése
 
-Most, hogy a kiépítési feladat fut, az alábbi paranccsal követheti nyomon az aktuális kiépítési ciklus állapotát, valamint a statisztikákat, például a megcélzott rendszerekben létrehozott felhasználók és csoportok számát. 
+Most, hogy a létesítési feladat fut, használja a következő parancsot az aktuális kiépítési ciklus előrehaladásának nyomon követéséhez, valamint az eddigi statisztikákat, például a célrendszerben létrehozott felhasználók és csoportok számát. 
 
 #### <a name="request"></a>*Kérés*
 <!-- {
@@ -396,8 +396,8 @@ Content-length: 2577
 ```
 
 
-### <a name="monitor-provisioning-events-using-the-provisioning-logs"></a>Kiépítési események figyelése a kiépítési naplók használatával
-A kiépítési feladatok állapotának figyelése mellett a [kiépítési naplók](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http) segítségével lekérdezheti az összes bekövetkezett eseményt (például egy adott felhasználó lekérdezését, és megállapíthatja, hogy sikerült-e kiépíteni).
+### <a name="monitor-provisioning-events-using-the-provisioning-logs"></a>Kiépítési események figyelése a létesítési naplók használatával
+A kiépítési feladat állapotának figyelése mellett a [létesítési naplók](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http) segítségével lekérdezheti az összes előforduló eseményt (például egy adott felhasználó lekérdezését, és meghatározhatja, hogy sikeresen kilett-e).
 
 #### <a name="request"></a>*Kérés*
 ```msgraph-interactive
@@ -531,5 +531,5 @@ Content-type: application/json
 ```
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 
-- [A szinkronizálási Microsoft Graph dokumentációjának áttekintése](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
-- [Egyéni SCIM-alkalmazás integrálása az Azure AD-vel](use-scim-to-provision-users-and-groups.md)
+- [A Microsoft Graph szinkronizálási dokumentációjának áttekintése](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
+- [Egyéni SCIM-alkalmazások integrálása az Azure AD-vel](use-scim-to-provision-users-and-groups.md)

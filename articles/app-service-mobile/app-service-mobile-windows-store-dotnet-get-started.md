@@ -7,13 +7,13 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.openlocfilehash: 9188db19adab9bd46d65fc97f1c62b39141cee90
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461385"
 ---
-# <a name="create-a-windows-app-with-an-azure-backend"></a>Windows-alkalmazás létrehozása Azure-háttérrel
+# <a name="create-a-windows-app-with-an-azure-backend"></a>Hozzon létre egy Windows-alkalmazást Azure-háttérrendszerrel
 
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
@@ -30,9 +30,9 @@ Az oktatóanyag végrehajtása feltétele a Mobile Apps UWP-alkalmazásokra vona
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Aktív Azure-fiók. Ha nincs fiókja, regisztráljon az Azure próba-előfizetésére, és akár 10 ingyenes mobilalkalmazáshoz is hozzájuthat, amelyeket a próba-előfizetés lejárta után is tovább használhat. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-* Windows 10.
+* Windows 10.Windows 10.
 * Visual Studio Community 2017.
-* A UWP-alkalmazások fejlesztésének ismerete. A [UWP dokumentációjában](https://docs.microsoft.com/windows/uwp/) megtudhatja, hogyan [hozhat létre UWP-alkalmazásokat](https://docs.microsoft.com/windows/uwp/get-started/get-set-up) .
+* Az UWP alkalmazásfejlesztés ismerete. Látogasson el az [UWP dokumentációba,](https://docs.microsoft.com/windows/uwp/) ahol megtudhatja, hogyan [állíthatja be](https://docs.microsoft.com/windows/uwp/get-started/get-set-up) az UWP-alkalmazások at.
 
 ## <a name="create-a-new-azure-mobile-app-backend"></a>Új Azure Mobile Apps-háttéralkalmazás létrehozása
 
@@ -40,26 +40,26 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Adatbázis-kapcsolatok létrehozása és az ügyfél és a kiszolgáló projekt konfigurálása
+## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Adatbázis-kapcsolat létrehozása és az ügyfél- és kiszolgálóprojekt konfigurálása
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="run-the-client-project"></a>Az ügyfél projekt futtatása
+## <a name="run-the-client-project"></a>Az ügyfélprojekt futtatása
 
-1. Nyissa meg a UWP projektet.
+1. Nyissa meg az UWP projektet.
 
-2. Lépjen a [Azure Portalra](https://portal.azure.com/) , és navigáljon a létrehozott mobil alkalmazáshoz. A `Overview` panelen keresse meg azt az URL-címet, amely a Mobile App nyilvános végpontja. Példa – az sitename "test123" neve https://test123.azurewebsites.netlesz.
+2. Nyissa meg az [Azure Portalon,](https://portal.azure.com/) és keresse meg a létrehozott mobilalkalmazást. A `Overview` panelen keresse meg a mobilalkalmazás nyilvános végpontját képező URL-címet. Példa - a sitename az én app neve https://test123.azurewebsites.net"test123" lesz .
 
-3. Nyissa meg az ebben a mappában található `App.xaml.cs` fájlt – Windows-uwp-cs/ZUMOAPPNAME/. Az alkalmazás neve `ZUMOAPPNAME`.
+3. Nyissa meg `App.xaml.cs` a fájlt ebben a mappában - windows-uwp-cs/ZUMOAPPNAME/. Az alkalmazás `ZUMOAPPNAME`neve .
 
-4. `App` osztályban cserélje le a `ZUMOAPPURL` paramétert a fenti nyilvános végpontra.
+4. Az `App` osztályban `ZUMOAPPURL` cserélje le a paramétert a fenti nyilvános végpontra.
 
     `public static MobileServiceClient MobileService = new MobileServiceClient("ZUMOAPPURL");`
 
-    válik
+    Lesz
     
     `public static MobileServiceClient MobileService = new MobileServiceClient("https://test123.azurewebsites.net");`
 
-5. Az alkalmazás üzembe helyezéséhez és futtatásához nyomja le az F5 billentyűt.
+5. Nyomja le az F5 billentyűt az alkalmazás üzembe helyezéséhez és futtatásához.
 
 6. Az alkalmazásban írjon be egy értelmes, például *Az oktatóanyag befejezése* szöveget az **Insert a TodoItem** (Teendő hozzáadása) szövegmezőbe, majd kattintson a **Save** (Mentés) gombra.
 

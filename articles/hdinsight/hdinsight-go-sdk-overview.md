@@ -1,6 +1,6 @@
 ---
-title: Az Azure HDInsight SDK for go
-description: Az Azure HDInsight SDK for Go és a Apache Hadoop-fürtök használatára szolgáló anyagminta
+title: Azure HDInsight SDK for Go
+description: Referenciaanyag az Azure HDInsight SDK go- és Apache Hadoop-fürtök höz
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,42 +8,42 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 01/03/2020
-ms.openlocfilehash: 065165ddb629f0629e9b895dbad5ee33605f8bc1
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 292496c4d458621213fe62105149ac845d78891e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658882"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79479586"
 ---
-# <a name="hdinsight-sdk-for-go-preview"></a>HDInsight SDK for go (előzetes verzió)
+# <a name="hdinsight-sdk-for-go-preview"></a>HDInsight SDK go verzióhoz (előzetes verzió)
 
 ## <a name="overview"></a>Áttekintés
-Az HDInsight SDK for go olyan osztályokat és függvényeket biztosít, amelyek lehetővé teszik a HDInsight-fürtök kezelését. A művelet magában foglalja a létrehozásához, törléséhez, frissítéséhez, listázásához, átméretezéséhez, parancsfájl-műveletek végrehajtásához, figyeléséhez, a HDInsight-fürtök tulajdonságainak beolvasásához és egyebekhez.
+A HDInsight SDK for Go olyan osztályokat és függvényeket biztosít, amelyek lehetővé teszik a HDInsight-fürtök kezelését. Ez magában foglalja a hdinsight-fürtök létrehozására, törlésére, frissítésére, listára, átméretezésére, parancsfájl-műveletek végrehajtására, figyelésére, HDInsight-fürtök tulajdonságainak leésre és egyebek létrehozására irányuló műveleteket.
 
 > [!NOTE]  
->Az SDK GoDoc-segédanyaga itt is [elérhető](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight).
+>GoDoc referenciaanyag az SDK is [elérhető itt](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight).
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy [`go get` eszköz](https://github.com/golang/go/wiki/GoGetTools).
-* [Ugrás](https://golang.org/dl/).
+* Egy [ `go get` eszköz](https://github.com/golang/go/wiki/GoGetTools).
+* [Menj, menj.](https://golang.org/dl/)
 
-## <a name="sdk-installation"></a>SDK-telepítés
+## <a name="sdk-installation"></a>SDK telepítése
 
-A GOPATH-helyről futtassa `go get github.com/Azure/azure-sdk-for-go/tree/master/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight`
+A GOPATH helyéről futtassa a`go get github.com/Azure/azure-sdk-for-go/tree/master/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight`
 
 ## <a name="authentication"></a>Hitelesítés
 
-Az SDK-t először hitelesítenie kell az Azure-előfizetésével.  Az alábbi példát követve hozzon létre egy szolgáltatásnevet, és használja hitelesítésre. Ennek elvégzése után egy `ClustersClient`egy példánya lesz, amely számos funkciót tartalmaz (az alábbi részekben ismertetett), amelyek felügyeleti műveletek végrehajtásához használhatók.
+Az SDK-t először hitelesíteni kell az Azure-előfizetéssel.  Kövesse az alábbi példát egy egyszerű szolgáltatás létrehozásához és a hitelesítéshez. Miután ez megtörtént, egy példányát `ClustersClient`fogja használni, amely számos függvényt tartalmaz (az alábbi szakaszokban ismertetve), amelyek felügyeleti műveletek végrehajtására használhatók.
 
 > [!NOTE]  
-> Az alábbi példán kívül más módszerekkel is elvégezheti a hitelesítést, amelyek esetleg jobban illeszkednek az igényeihez. Az összes függvényt itt találja: [a hitelesítési függvények a go nyelvhez készült Azure SDK](https://docs.microsoft.com/azure/go/azure-sdk-go-authorization)
+> Vannak más módon is hitelesíteni mellett az alábbi példában, hogy potenciálisan jobban megfelel az Ön igényeinek. Az összes függvény itt ismertetésre kerül: [Hitelesítési függvények az Azure SDK for Go-ban](https://docs.microsoft.com/azure/go/azure-sdk-go-authorization)
 
-### <a name="authentication-example-using-a-service-principal"></a>Hitelesítési példa egyszerű szolgáltatásnév használatával
+### <a name="authentication-example-using-a-service-principal"></a>Hitelesítési példa egyszerű szolgáltatás használatával
 
-Először jelentkezzen be [Azure Cloud Shellra](https://shell.azure.com/bash). Győződjön meg arról, hogy jelenleg az előfizetést használja, amelyben a szolgáltatásnevet létre kívánja hozni.
+Először jelentkezzen be az [Azure Cloud Shellbe.](https://shell.azure.com/bash) Ellenőrizze, hogy jelenleg használja-e azt az előfizetést, amelyben az egyszerű szolgáltatás létrehozását szeretné használni.
 
 ```azurecli-interactive
 az account show
@@ -67,24 +67,24 @@ Az előfizetési adatok JSON-ként jelennek meg.
 }
 ```
 
-Ha nem jelentkezett be a megfelelő előfizetésbe, válassza ki a megfelelőt a futtatásával: 
+Ha nem a megfelelő előfizetésbe jelentkezett be, válassza ki a megfelelőt a következő futtatásával: 
 ```azurecli-interactive
 az account set -s <name or ID of subscription>
 ```
 
 > [!IMPORTANT]  
-> Ha még nem regisztrálta a HDInsight erőforrás-szolgáltatót egy másik függvény (például egy HDInsight-fürt létrehozásával a Azure Portal), ezt egyszer kell megtennie a hitelesítéshez. Ezt a [Azure Cloud Shell](https://shell.azure.com/bash) a következő parancs futtatásával teheti meg:
+> Ha egy másik függvény még nem regisztrálta a HDInsight-erőforrás-szolgáltatót (például egy HDInsight-fürt létrehozásához az Azure Portalon keresztül), ezt csak egyszer kell megtennie, mielőtt hitelesítene. Ez az Azure [Cloud Shell](https://shell.azure.com/bash) ből a következő parancs futtatásával végezhető el:
 >```azurecli-interactive
 >az provider register --namespace Microsoft.HDInsight
 >```
 
-Ezután válassza ki az egyszerű szolgáltatásnév nevét, és hozza létre a következő paranccsal:
+Ezután válassza ki a szolgáltatásnév nevét, és hozza létre a következő paranccsal:
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name <Service Principal Name> --sdk-auth
 ```
 
-Az egyszerű szolgáltatásnév adatai JSON-ként jelennek meg.
+Az egyszerű szolgáltatás információ jsonként jelenik meg.
 
 ```json
 {
@@ -94,14 +94,13 @@ Az egyszerű szolgáltatásnév adatai JSON-ként jelennek meg.
   "tenantId": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
   "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
   "resourceManagerEndpointUrl": "https://management.azure.com/",
-  "activeDirectoryGraphResourceId": "https://graph.windows.net/",
   "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
   "galleryEndpointUrl": "https://gallery.azure.com/",
   "managementEndpointUrl": "https://management.core.windows.net/"
 }
 ```
 
-Másolja az alábbi kódrészletet, és töltse ki `TENANT_ID`, `CLIENT_ID`, `CLIENT_SECRET`és `SUBSCRIPTION_ID` a JSON-ből származó karakterláncokkal, amelyeket a parancs futtatása után adott vissza az egyszerű szolgáltatásnév létrehozásához.
+Másolja az `TENANT_ID`alábbi kódrészletet, `CLIENT_ID` `CLIENT_SECRET`és `SUBSCRIPTION_ID` töltse ki a , , és a JSON karakterláncait, amelyeket a parancs futtatása után adott vissza a szolgáltatásegyszerű létrehozásához.
 
 ```golang
 package main
@@ -137,22 +136,22 @@ func main() {
 ## <a name="cluster-management"></a>Fürtkezelés
 
 > [!NOTE]  
-> Ez a szakasz feltételezi, hogy már hitelesítette és létrehozta `ClusterClient` példányát, és egy `client`nevű változóban tárolja. A `ClusterClient` hitelesítésére és beszerzésére vonatkozó utasítások a fenti hitelesítés részben találhatók.
+> Ez a szakasz feltételezi, hogy már `ClusterClient` hitelesített és épített egy `client`példányt, és tárolja a nevű változóban. A hitelesítésre és beszerzésre `ClusterClient` vonatkozó utasítások a fenti Hitelesítés című részben találhatók.
 
 ### <a name="create-a-cluster"></a>Fürt létrehozása
 
-`client.Create()`meghívásával új fürtöt hozhat létre. 
+Új fürt hozható létre `client.Create()`a hívással. 
 
 #### <a name="example"></a>Példa
 
-Ez a példa azt szemlélteti, hogyan lehet létrehozni egy [Apache Spark](https://spark.apache.org/) fürtöt két fő csomóponttal és egy feldolgozó csomóponttal.
+Ez a példa bemutatja, hogyan hozhat létre egy [Apache Spark-fürt](https://spark.apache.org/) két fő csomópontés egy feldolgozó csomópont.
 
 > [!NOTE]  
-> Először létre kell hoznia egy erőforráscsoportot és egy Storage-fiókot az alább leírtak szerint. Ha már létrehozta ezeket, akkor kihagyhatja ezeket a lépéseket.
+> Először létre kell hoznia egy erőforráscsoportot és a tárfiókot, az alábbiak szerint. Ha már létrehozta ezeket, kihagyhatja ezeket a lépéseket.
 
 ##### <a name="creating-a-resource-group"></a>Erőforráscsoport létrehozása
 
-A [Azure Cloud Shell](https://shell.azure.com/bash) használatával létrehozhat egy erőforráscsoportot a futtatásával
+Az [Azure Cloud Shell](https://shell.azure.com/bash) használatával létrehozhat egy erőforráscsoportot a
 
 ```azurecli-interactive
 az group create -l <Region Name (i.e. eastus)> --n <Resource Group Name>
@@ -160,20 +159,20 @@ az group create -l <Region Name (i.e. eastus)> --n <Resource Group Name>
 
 ##### <a name="creating-a-storage-account"></a>Tárfiók létrehozása
 
-A [Azure Cloud Shell](https://shell.azure.com/bash) a futtatásával hozhatja létre a Storage-fiókot:
+Az [Azure Cloud Shell](https://shell.azure.com/bash) használatával a következő futtatásával hozhat létre tárfiókot:
 
 ```azurecli-interactive
 az storage account create -n <Storage Account Name> -g <Existing Resource Group Name> -l <Region Name (i.e. eastus)> --sku <SKU i.e. Standard_LRS>
 ```
 
-Ezután futtassa a következő parancsot a Storage-fiók kulcsainak lekéréséhez (a fürt létrehozásához szükség lesz rá):
+Most futtassa a következő parancsot a tárfiók kulcsának lekérni (erre szüksége lesz egy fürt létrehozásához):
 
 ```azurecli-interactive
 az storage account keys list -n <Storage Account Name>
 ```
 
 ---
-Az alábbi go kódrészlet egy Spark-fürtöt hoz létre két fő csomóponttal és egy feldolgozói csomóponttal. Adja meg az üres változókat a megjegyzésekben leírtak szerint, és szabadítson fel más paramétereket az igényeinek megfelelően.
+Az alábbi Go kódrészlet létrehoz egy Spark-fürt két fő csomópont és egy munkavégző csomópont. Töltse ki az üres változókat a megjegyzésekben leírtak szerint, és nyugodtan változtasson más paramétereket, hogy megfeleljen az Ön egyedi igényeinek.
 
 ```golang
 // The name for the cluster you are creating
@@ -254,9 +253,9 @@ var parameters = hdi.ClusterCreateParametersExtended {
 client.Create(context.Background(), resourceGroupName, clusterName, parameters)
 ```
 
-### <a name="get-cluster-details"></a>Fürt részleteinek beolvasása
+### <a name="get-cluster-details"></a>Fürt részleteinek beszereznie
 
-Egy adott fürt tulajdonságainak beolvasása:
+Adott fürt tulajdonságainak beszerezni:
 
 ```golang
 client.Get(context.Background(), "<Resource Group Name>", "<Cluster Name>")
@@ -264,7 +263,7 @@ client.Get(context.Background(), "<Resource Group Name>", "<Cluster Name>")
 
 #### <a name="example"></a>Példa
 
-A `get` segítségével ellenőrizheti, hogy sikeresen létrehozta-e a fürtöt.
+A fürt `get` sikeres létrehozásának megerősítéséhez használható.
 
 ```golang
 cluster, err := client.Get(context.Background(), resourceGroupName, clusterName)
@@ -275,7 +274,7 @@ fmt.Println(*cluster.Name)
 fmt.Println(*cluster.ID
 ```
 
-A kimenetnek az alábbihoz hasonlóan kell kinéznie:
+A kimenetnek így kell kinéznie:
 
 ```
 <Cluster Name>
@@ -284,7 +283,7 @@ A kimenetnek az alábbihoz hasonlóan kell kinéznie:
 
 ### <a name="list-clusters"></a>Fürtök listázása
 
-#### <a name="list-clusters-under-the-subscription"></a>Az előfizetés alá tartozó fürtök listázása
+#### <a name="list-clusters-under-the-subscription"></a>Fürtök listázása az előfizetés alatt
 
 ```golang
 client.List()
@@ -297,11 +296,11 @@ client.ListByResourceGroup("<Resource Group Name>")
 ```
 
 > [!NOTE]  
-> A `List()` és a `ListByResourceGroup()` is egy `ClusterListResultPage` struct-t ad vissza. A következő oldal beszerzéséhez meghívhatja `Next()`. Ezt addig lehet megismételni, amíg `ClusterListResultPage.NotDone()` vissza nem `false`, ahogy az alábbi példában is látható.
+> `List()` Mindkettő, `ListByResourceGroup()` és `ClusterListResultPage` vissza a struct. A következő oldal lekérni `Next()`kívánta a . Ez a `ClusterListResultPage.NotDone()` visszatérésig `false`megismételhető , amint az az alábbi példában látható.
 
 #### <a name="example"></a>Példa
 
-A következő példa az aktuális előfizetés összes fürtjének tulajdonságait kinyomtatja:
+A következő példa az aktuális előfizetés összes fürtjének tulajdonságait nyomtatja ki:
 
 ```golang
 page, err := client.List(context.Background())
@@ -327,9 +326,9 @@ Fürt törlése:
 client.Delete(context.Background(), "<Resource Group Name>", "<Cluster Name>")
 ```
 
-### <a name="update-cluster-tags"></a>Fürthöz tartozó címkék frissítése
+### <a name="update-cluster-tags"></a>Fürtcímkék frissítése
 
-Egy adott fürt címkéit például a következőképpen frissítheti:
+Egy adott fürt címkéit a következőkkel frissítheti:
 
 ```golang
 client.Update(context.Background(), "<Resource Group Name>", "<Cluster Name>", hdi.ClusterPatchParameters{<map[string]*string} of Tags>)
@@ -343,7 +342,7 @@ client.Update(context.Background(), "SDKTestRG", "SDKTest", hdi.ClusterPatchPara
 
 ### <a name="resize-cluster"></a>Fürt átméretezése
 
-Egy adott fürthöz tartozó munkavégző csomópontok számának átméretezéséhez egy új méretet kell megadnia:
+Egy adott fürt munkavégző csomópontjainak számát átméretezheti egy új méret megadásával, így:
 
 ```golang
 client.Resize(context.Background(), "<Resource Group Name>", "<Cluster Name>", hdi.ClusterResizeParameters{<Num of Worker Nodes (int)>})
@@ -351,9 +350,9 @@ client.Resize(context.Background(), "<Resource Group Name>", "<Cluster Name>", h
 
 ## <a name="cluster-monitoring"></a>Fürtmonitorozás
 
-A HDInsight Management SDK a fürtök figyelésének kezelésére is használható az Operations Management Suite (OMS) használatával.
+A HDInsight Felügyeleti SDK az Operations Management Suite (OMS) segítségével is használható a fürtök figyelésének kezelésére.
 
-Hasonlóan ahhoz, ahogy az `ClusterClient` a felügyeleti műveletekhez való használatra létrehozott, létre kell hoznia egy `ExtensionClient` a figyelési műveletekhez. Miután elvégezte a fenti hitelesítési szakaszt, létrehozhat egy `ExtensionClient` például a következő módon:
+Hasonlóan ahhoz, `ClusterClient` ahogyan a felügyeleti műveletekhez való `ExtensionClient` használatra létrehozott, létre kell hoznia egy figyelési műveletekhez használhatót. Miután elvégezte a fenti Hitelesítés szakaszt, létrehozhat egy `ExtensionClient` hasonlót:
 
 ```golang
 extClient := hdi.NewExtensionsClient(SUBSCRIPTION_ID)
@@ -361,22 +360,22 @@ extClient.Authorizer, _ = credentials.Authorizer()
 ```
 
 > [!NOTE]  
-> Az alábbi figyelési példák feltételezik, hogy már inicializált egy `extClient` nevű `ExtensionClient`, és a fent látható módon beállította a `Authorizer`.
+> Az alábbi figyelési példák `ExtensionClient` feltételezik, hogy már inicializált egy hívott, `extClient` és állítsa be a `Authorizer` fent látható módon.
 
 ### <a name="enable-oms-monitoring"></a>OMS-figyelés engedélyezése
 
 > [!NOTE]  
-> A OMS-figyelés engedélyezéséhez meglévő Log Analytics munkaterülettel kell rendelkeznie. Ha még nem hozott létre egyet, itt megtudhatja, hogyan teheti meg ezt: [hozzon létre egy log Analytics munkaterületet a Azure Portal](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
+> Az OMS-figyelés engedélyezéséhez rendelkeznie kell egy meglévő Log Analytics-munkaterülettel. Ha még nem hozott létre egyet, itt megtudhatja, hogyan teheti meg: [Log Analytics-munkaterület létrehozása az Azure Portalon.](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)
 
-A OMS-figyelés engedélyezése a fürtön:
+Az OMS-figyelés engedélyezése a fürtön:
 
 ```golang
 extClient.EnableMonitoring(context.Background(), "<Resource Group Name", "Cluster Name", hdi.ClusterMonitoringRequest {WorkspaceID: to.StringPtr("<Workspace Id>")})
 ```
 
-### <a name="view-status-of-oms-monitoring"></a>OMS-figyelés állapotának megtekintése
+### <a name="view-status-of-oms-monitoring"></a>Az OMS-figyelés állapotának megtekintése
 
-A fürt OMS állapotának lekérése:
+Az OMS állapotának leminősítése a fürtön:
 
 ```golang
 extClient.GetMonitoringStatus(context.Background(), "<Resource Group Name", "Cluster Name")
@@ -384,29 +383,29 @@ extClient.GetMonitoringStatus(context.Background(), "<Resource Group Name", "Clu
 
 ### <a name="disable-oms-monitoring"></a>OMS-figyelés letiltása
 
-A OMS letiltása a fürtön:
+Az OMS letiltása a fürtön:
 
 ```golang
 extClient.DisableMonitoring(context.Background(), "<Resource Group Name", "Cluster Name")
 ```
 
-## <a name="script-actions"></a>Parancsfájlok műveletei
+## <a name="script-actions"></a>Parancsfájl-műveletek
 
-A HDInsight egy parancsfájl-műveletek nevű konfigurációs függvényt biztosít, amely egyéni parancsfájlokat hív meg a fürt testreszabásához.
+A HDInsight parancsfájlműveleteknek nevezett konfigurációs függvényt biztosít, amely egyéni parancsfájlokat hív meg a fürt testreszabásához.
 
 > [!NOTE]  
-> A parancsfájl-műveletek használatáról további információt itt talál: [Linux-alapú HDInsight-fürtök testreszabása parancsfájl-műveletek használatával](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)
+> A parancsfájlműveletek használatáról további információ itt található: [Linux-alapú HDInsight-fürtök testreszabása parancsfájlműveletek használatával](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)
 
 ### <a name="execute-script-actions"></a>Parancsfájl-műveletek végrehajtása
 
-Parancsfájl-műveleteket futtathat egy adott fürtön, például:
+Parancsfájlműveleteket hajthat végre egy adott fürtön, így:
 
 ```golang
 var scriptAction1 = hdi.RuntimeScriptAction{Name: to.StringPtr("<Script Name>"), URI: to.StringPtr("<URL To Script>"), Roles: <&[]string of roles>} //valid roles are "headnode", "workernode", "zookeepernode", and "edgenode"
 client.ExecuteScriptActions(context.Background(), "<Resource Group Name>", "<Cluster Name>", hdi.ExecuteScriptActionParameters{PersistOnSuccess: to.BoolPtr(true), ScriptActions: &[]hdi.RuntimeScriptAction{scriptAction1}}) //add more RuntimeScriptActions to the list to execute multiple scripts
 ```
 
-A "parancsfájl törlése művelet" és a "megőrzött parancsfájl-műveletek listázása" művelethez létre kell hoznia egy `ScriptActionsClient`, hasonlóan ahhoz, ahogyan az `ClusterClient` a felügyeleti műveletekhez való használatra készült. Miután elvégezte a fenti hitelesítési szakaszt, létrehozhat egy `ScriptActionsClient` például a következő módon:
+A "Parancsfájl-művelet törlése" és a "Persisted Script Actions listázása" műveletekhez létre kell hoznia egy `ScriptActionsClient`, hasonlóan ahhoz, ahogyan a felügyeleti műveletekhez való használatra létrehozott. `ClusterClient` Miután elvégezte a fenti Hitelesítés szakaszt, létrehozhat egy `ScriptActionsClient` hasonlót, így:
 
 ```golang
 scriptActionsClient := hdi.NewScriptActionsClient(SUBSCRIPTION_ID)
@@ -414,22 +413,22 @@ scriptActionsClient.Authorizer, _ = credentials.Authorizer()
 ```
 
 > [!NOTE]  
-> Az alábbi parancsfájl-műveletek feltételezik, hogy már inicializált egy `scriptActionsClient` nevű `ScriptActionsClient`, és a fent látható módon beállította a `Authorizer`.
+> Az alábbi parancsfájlműveletek példái feltételezik, `scriptActionsClient` hogy `Authorizer` már inicializált egy `ScriptActionsClient` hívott, és állítsa be a fent látható módon.
 
 ### <a name="delete-script-action"></a>Parancsfájl-művelet törlése
 
-Megadott megőrzött parancsfájl törlési művelete egy adott fürtön:
+Adott, megőrzött parancsfájlművelet törlése egy adott fürtön:
 
 ```golang
 scriptActionsClient.Delete(context.Background(), "<Resource Group Name>", "<Cluster Name>", "<Script Name>")
 ```
 
-### <a name="list-persisted-script-actions"></a>Megőrzött parancsfájl-műveletek listázása
+### <a name="list-persisted-script-actions"></a>A megőrzött parancsfájlműveletek listája
 
 > [!NOTE]  
-> Mindkét `ListByCluster()` egy `ScriptActionsListPage` struct-t ad vissza. A következő oldal beszerzéséhez meghívhatja `Next()`. Ezt addig lehet megismételni, amíg `ClusterListResultPage.NotDone()` vissza nem `false`, ahogy az alábbi példában is látható.
+> Mindkettő `ListByCluster()` egy `ScriptActionsListPage` struct-ot ad vissza. A következő oldal lekérni `Next()`kívánta a . Ez a `ClusterListResultPage.NotDone()` visszatérésig `false`megismételhető , amint az az alábbi példában látható.
 
-A megadott fürt összes megőrzött parancsfájl-műveletének listázása:
+A megadott fürt összes megőrzött parancsfájlműveletének listázása:
 ```golang
 scriptActionsClient.ListByCluster(context.Background(), "<Resource Group Name>", "<Cluster Name>")
 ```
@@ -452,9 +451,9 @@ for (page.NotDone()) {
 }
 ```
 
-### <a name="list-all-scripts-execution-history"></a>Az összes parancsfájl végrehajtási előzményeinek listázása
+### <a name="list-all-scripts-execution-history"></a>Az összes parancsfájl végrehajtási előzményének listázása
 
-Ehhez a művelethez létre kell hoznia egy `ScriptExecutionHistoryClient`, hasonlóan ahhoz, ahogyan a `ClusterClient` a felügyeleti műveletekhez való használatra létrehozott. Miután elvégezte a fenti hitelesítési szakaszt, létrehozhat egy `ScriptActionsClient` például a következő módon:
+Ehhez a művelethez létre `ScriptExecutionHistoryClient`kell hoznia egy `ClusterClient` , hasonlóan ahhoz, ahogyan a felügyeleti műveletekhez való használatra létrehozott. Miután elvégezte a fenti Hitelesítés szakaszt, létrehozhat egy `ScriptActionsClient` hasonlót, így:
 
 ```golang
 scriptExecutionHistoryClient := hdi.NewScriptExecutionHistoryClient(SUBSCRIPTION_ID)
@@ -462,9 +461,9 @@ scriptExecutionHistoryClient.Authorizer, _ = credentials.Authorizer()
 ```
 
 > [!NOTE]  
-> Az alábbi feltételezések feltételezik, hogy már inicializált egy `scriptExecutionHistoryClient` nevű `ScriptExecutionHistoryClient`, és a fent látható módon beállította a `Authorizer`.
+> Az alábbiakban azt feltételezi, `ScriptExecutionHistoryClient` hogy `scriptExecutionHistoryClient` már `Authorizer` inicializáltegy hívott, és állítsa be a fent látható módon.
 
-A megadott fürt összes parancsfájl-végrehajtási előzményeinek listázása:
+A megadott fürt összes parancsfájljának végrehajtási előzményeinek listázása:
 
 ```golang
 scriptExecutionHistoryClient.ListByCluster(context.Background(), "<Resource Group Name>", "<Cluster Name>")
@@ -472,7 +471,7 @@ scriptExecutionHistoryClient.ListByCluster(context.Background(), "<Resource Grou
 
 #### <a name="example"></a>Példa
 
-Ez a példa az összes korábbi parancsfájl-végrehajtás részleteit nyomtatja ki.
+Ez a példa az összes korábbi parancsfájl-végrehajtás összes részletét kinyomtatja.
 
 ```golang
 page, err := scriptExecutionHistoryClient.ListByCluster(context.Background(), resourceGroupName, clusterName)
@@ -490,6 +489,6 @@ for (page.NotDone()) {
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ismerkedjen meg a [GoDoc-anyagmintával](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight). A GoDocs az SDK összes funkciója számára biztosít dokumentációt.
+Fedezze fel a [GoDoc referenciaanyagot.](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight) A GoDocs referenciadokumentációt nyújt az SDK összes függvényének.

@@ -1,6 +1,6 @@
 ---
-title: A fiók zárolásának hibáinak megoldása a Azure AD Domain Servicesban | Microsoft Docs
-description: Megtudhatja, hogyan lehet elhárítani a felhasználói fiókokat a Azure Active Directory Domain Servicesban kizárni kívánt gyakori problémákat.
+title: Fiókzárolás hibaelhárítása az Azure AD tartományi szolgáltatásokban | Microsoft dokumentumok
+description: Ismerje meg, hogyan háríthatja el az Azure Active Directory tartományi szolgáltatásokban a felhasználói fiókokat zároló gyakori problémákelhárítását.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -10,55 +10,55 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: iainfou
-ms.openlocfilehash: 29789f299f266c86d719d56cfbf8e262907f7264
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 2e274aa353f6c3e485ae10a6a67ee2940eb88b08
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827077"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246319"
 ---
-# <a name="troubleshoot-account-lockout-problems-with-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services felügyelt tartománnyal kapcsolatos fiókzárolási problémák elhárítása
+# <a name="troubleshoot-account-lockout-problems-with-an-azure-ad-domain-services-managed-domain"></a>Az Azure AD tartományi szolgáltatások által kezelt tartománnyal kapcsolatos fiókzárolási problémák elhárítása
 
-A rosszindulatúan ismétlődő bejelentkezési kísérletek megelőzése érdekében az Azure AD DS egy meghatározott küszöbérték után zárolja a fiókokat. Ez a fiókzárolás a bejelentkezési támadás incidense nélkül is történhet véletlenül. Ha például a felhasználó többször is helytelen jelszót ad meg, vagy a szolgáltatás egy régi jelszót próbál használni, a rendszer kizárja a fiókot.
+Az ismételt rosszindulatú bejelentkezési kísérletek elkerülése érdekében az Azure AD DS zárolja a fiókokat egy meghatározott küszöbérték után. Ez a fiókzárolás véletlenül is előfordulhat bejelentkezési támadási incidens nélkül. Ha például egy felhasználó ismételten rossz jelszót ad meg, vagy egy szolgáltatás egy régi jelszót próbál használni, a fiók zárolva lesz.
 
-Ez a hibaelhárítási cikk azt ismerteti, hogy miért történik a fiókok zárolása, és hogyan konfigurálhatja a viselkedést, és hogyan tekintheti át a biztonsági naplózást a zárolási események hibaelhárítása érdekében.
+Ez a hibaelhárítási cikk ismerteti, hogy miért történik a fiókzárolások, és hogyan konfigurálhatja a viselkedést, és hogyan tekintheti át a biztonsági naplózásokat a zárolási események elhárításához.
 
 ## <a name="what-is-an-account-lockout"></a>Mi az a fiókzárolás?
 
-Az Azure AD DSban lévő felhasználói fiók ki van zárva, ha a sikertelen bejelentkezési kísérletek meghatározott küszöbértéke teljesül. Ez a fiókzárolási viselkedés úgy lett kialakítva, hogy megvédje a nem kötelezően kikényszerített, automatikus digitális támadásra utaló kísérleteket.
+Az Azure AD DS-ben egy felhasználói fiók zárolva van, ha a sikertelen bejelentkezési kísérletek meghatározott küszöbértéke teljesült. Ez a fiókzárolási viselkedés úgy van kialakítva, hogy megvédje Önt az ismétlődő találgatásos bejelentkezési kísérletektől, amelyek automatikus digitális támadásra utalhatnak.
 
-**Alapértelmezés szerint, ha 2 percen belül 5 hibás jelszóval próbálkozik, a fiók 30 percig ki lesz zárva.**
+**Alapértelmezés szerint, ha 2 percen belül 5 rossz jelszókísérlet van, a fiók 30 percre zárolva van.**
 
-Az alapértelmezett fiókzárolási küszöbértékek a részletes jelszóházirendek használatával konfigurálhatók. Ha a követelmények meghatározott készletével rendelkezik, felülbírálhatja ezeket az alapértelmezett fiókzárolási küszöbértékeket. Azonban nem ajánlott a küszöbértékek növelését végrehajtani, hogy csökkentse a fiók zárolását. Először hárítsa el a fiókzárolási viselkedés forrását.
+Az alapértelmezett fiókzárolási küszöbértékek részletes jelszóházirenddel vannak konfigurálva. Ha meghatározott követelményekkel rendelkezik, felülbírálhatja ezeket az alapértelmezett fiókzárolási küszöbértékeket. Azonban nem ajánlott, hogy növelje a küszöbértéket, hogy megpróbálja csökkenteni a szám fiók zárolások. Először hárítsa el a fiókzárolási viselkedés forrását.
 
-### <a name="fine-grained-password-policy"></a>Részletes jelszóházirendek
+### <a name="fine-grained-password-policy"></a>Részletes jelszóházirend
 
-A részletes jelszóházirendek (Fgpp-EK) segítségével meghatározott korlátozásokat alkalmazhat a jelszó-és fiókzárolási házirendek számára a tartomány különböző felhasználói számára. A FGPP csak az Azure AD DSban létrehozott felhasználókat érinti. A felhőalapú felhasználókat és tartományi felhasználókat az Azure AD-ből szinkronizálták az Azure AD DS felügyelt tartományba, a jelszóházirend nem érinti.
+A részletes jelszóházirendek (FGPP-k) lehetővé teszik, hogy a tartomány különböző felhasználóira speciális korlátozásokat alkalmazzon a jelszó- és fiókzárolási házirendekre vonatkozóan. Az FGPP csak az Azure AD DS-ben létrehozott felhasználókat érinti. Az Azure AD DS által felügyelt tartományba szinkronizált felhőfelhasználókat és tartományi felhasználókat az Azure AD-ből nem érintik a jelszóházirendek.
 
-A szabályzatokat az Azure AD DS felügyelt tartományán keresztül osztják el, és az elvégzett módosítások a következő felhasználói bejelentkezéskor lesznek alkalmazva. A házirend módosítása nem oldja fel a már kizárt felhasználói fiók zárolását.
+A szabályzatok az Azure AD DS felügyelt tartományban lévő csoporttársításon keresztül kerülnek elosztásra, és a módosítások a következő felhasználó bejelentkezéskor lesznek alkalmazva. A házirend módosítása nem oldja fel a már zárolt felhasználói fiókot.
 
-A részletes jelszóházirendek részletes ismertetését lásd: [jelszó-és fiókzárolási házirendek konfigurálása][configure-fgpp].
+A részletes jelszóházirendekkel kapcsolatos további információkért olvassa el [a Jelszó- és fiókzárolási házirendek konfigurálása című témakört.][configure-fgpp]
 
 ## <a name="common-account-lockout-reasons"></a>Gyakori fiókzárolási okok
 
-A fiókok zárolásának leggyakoribb okai a kártékony szándékok vagy tényezők nélkül, a következő esetekben:
+A fiók rosszindulatú szándék és tényezők nélküli zárlatának leggyakoribb okai a következő forgatókönyvek:
 
-* **A felhasználó zárolta magát.**
-    * A legutóbbi jelszó módosítása után a felhasználó továbbra is egy korábbi jelszót használ? Az 5 sikertelen kísérletet 2 percen belül az alapértelmezett fiókzárolási házirend miatt a felhasználó véletlenül újrapróbálkozhat egy régi jelszóval.
-* **Van olyan alkalmazás vagy szolgáltatás, amely régi jelszóval rendelkezik.**
-    * Ha egy fiókot alkalmazások vagy szolgáltatások használnak, akkor előfordulhat, hogy az erőforrások többször is megpróbálnak bejelentkezni egy régi jelszóval. Ez a viselkedés a fiók zárolását okozza.
-    * Próbálja meg csökkenteni a fiókok használatát több különböző alkalmazás vagy szolgáltatás között, és jegyezze fel a hitelesítő adatokat. Ha a fiók jelszava megváltozik, frissítse a kapcsolódó alkalmazásokat vagy szolgáltatásokat.
-* **A jelszó egy másik környezetben módosult, és az új jelszó még nincs szinkronizálva.**
-    * Ha a fiók jelszava az Azure-AD DSon kívül módosul, például egy helyszíni AD DS környezetben, eltarthat néhány percig, amíg a jelszó megváltozása szinkronizálva lesz az Azure AD-ben és az Azure-AD DS.
-    * Olyan felhasználó, aki az Azure AD DS használatával próbál bejelentkezni egy erőforrásba, mielőtt a jelszó-szinkronizálási folyamat befejeződik, a fiókját ki kell zárni.
+* **A felhasználó kizárta magát.**
+    * A jelszó legutóbbi módosítása után a felhasználó továbbra is használt egy korábbi jelszót? Az 5 sikertelen kísérlet alapértelmezett zárolási házirendje 2 perc alatt az okozhatja, hogy a felhasználó véletlenül újra próbálkozik egy régi jelszóval.
+* **Van egy alkalmazás vagy szolgáltatás, amely egy régi jelszót.**
+    * Ha egy fiókot alkalmazások vagy szolgáltatások használnak, ezek az erőforrások ismételten megpróbálhatnak bejelentkezni egy régi jelszóval. Ez a viselkedés okozza a fiók zárolt.
+    * Próbálja meg minimalizálni a fiókhasználatot több különböző alkalmazásban vagy szolgáltatásban, és rögzítse, hogy hol használja a hitelesítő adatokat. Ha a fiók jelszavát módosítja, ennek megfelelően frissítse a kapcsolódó alkalmazásokat vagy szolgáltatásokat.
+* **A jelszó megváltozott egy másik környezetben, és az új jelszó még nem szinkronizálva.**
+    * Ha egy fiók jelszavát az Azure AD DS-en kívül módosítják, például egy helyszíni AD DS-környezetben, eltarthat néhány percig, amíg a jelszómódosítása szinkronizálódik az Azure AD-n keresztül és az Azure AD DS-ben.
+    * Egy felhasználó, amely megpróbál bejelentkezni egy erőforrásba az Azure AD DS-en keresztül, mielőtt a jelszó-szinkronizálási folyamat befejeződött, a fiók zárolva van.
 
-## <a name="troubleshoot-account-lockouts-with-security-audits"></a>Fiókok zárolásának hibakeresése biztonsági naplózással
+## <a name="troubleshoot-account-lockouts-with-security-audits"></a>Fiókzárolások biztonsági naplózással – problémamegoldás
 
-Az [Azure AD DS (jelenleg előzetes verzióban elérhető) biztonsági naplózásának engedélyezésével][security-audit-events]elháríthatja a fiókzárolási események bekövetkezésekor felmerülő problémákat. A naplózási események csak a szolgáltatás engedélyezésének időpontjában vannak rögzítve. Ideális esetben a biztonsági naplózást is engedélyeznie kell, *mielőtt* probléma merül fel a hibakeresés során. Ha egy felhasználói fióknak többször is van zárolási problémája, akkor a következő esetekben engedélyezheti a biztonsági naplózást.
+Ha hibaelhárítást szeretne, ha fiókzárolási események történnek, és honnan származnak, [engedélyezze az Azure AD DS biztonsági naplózását.][security-audit-events] A naplózási események rögzítése csak a funkció engedélyezésétől kezdve lesz rögzítve. Ideális esetben engedélyeznie kell a biztonsági naplózást, *mielőtt* fiókzárolási probléma merülne fel a hibaelhárításhoz. Ha egy felhasználói fiók többször is zárolási problémákkal küzd, engedélyezheti a biztonsági naplózást a következő helyzet bekövetkezésekor.
 
-A biztonsági naplózás engedélyezése után az alábbi példák bemutatják, hogyan tekintheti át a fiókzárolási *eseményeket*, a *4740*kódot.
+Miután engedélyezte a biztonsági naplózást, a következő mintalekérdezések bemutatják, hogyan tekintheti át *a fiókzárolási eseményeket*, *4740-es*kód.
 
-Az összes fiókzárolási esemény megtekintése az elmúlt hét napban:
+Az elmúlt hét nap összes fiókzárolási eseményének megtekintése:
 
 ```Kusto
 AADDomainServicesAccountManagement
@@ -66,7 +66,7 @@ AADDomainServicesAccountManagement
 | where OperationName has "4740"
 ```
 
-A *driley*nevű fiók utolsó hét napjához tartozó összes fiókzárolási esemény megtekintése.
+A *driley*nevű fiók összes fiókzárolási eseményének megtekintése az elmúlt hét napban.
 
 ```Kusto
 AADDomainServicesAccountLogon
@@ -75,7 +75,7 @@ AADDomainServicesAccountLogon
 | where "driley" == tolower(extract("Logon Account:\t(.+[0-9A-Za-z])",1,tostring(ResultDescription)))
 ```
 
-Az összes fiókzárolási esemény megtekintése a 2019. június 26. között, 9:00 és 2019 éjfél, a dátum és idő szerint növekvő sorrendbe rendezve:
+2019. június 26. 2019. július 1-je éjfélkor, a dátum és az idő szerint rendezve:
 
 ```Kusto
 AADDomainServicesAccountManagement
@@ -86,9 +86,9 @@ AADDomainServicesAccountManagement
 
 ## <a name="next-steps"></a>További lépések
 
-A fiókzárolási küszöbértékek beállítására szolgáló részletes jelszóházirendek részletes ismertetését lásd: [jelszó-és fiókzárolási házirendek konfigurálása][configure-fgpp].
+A fiókzárolási küszöbértékek módosításához szükséges részletes jelszóházirendekkel kapcsolatos további információkért olvassa el [a Jelszó- és fiókzárolási házirendek konfigurálása című témakört.][configure-fgpp]
 
-Ha továbbra sem sikerül csatlakoztatni a virtuális gépet az Azure AD DS felügyelt tartományhoz, [keressen segítséget a Azure Active Directory támogatási jegyének megnyitásához][azure-ad-support].
+Ha továbbra is problémái vannak a virtuális gépnek az Azure AD DS felügyelt tartományhoz való csatlakozásával, [kérjen segítséget, és nyisson meg egy támogatási jegyet az Azure Active Directoryhoz.][azure-ad-support]
 
 <!-- INTERNAL LINKS -->
 [configure-fgpp]: password-policy.md

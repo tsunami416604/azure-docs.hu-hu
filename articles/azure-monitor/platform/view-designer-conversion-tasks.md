@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor tervező átalakítása munkafüzetekbe konvertálás gyakori feladatai
+title: Az Azure Monitor nézet tervezője a munkafüzetek átalakításának gyakori feladataihoz
 description: ''
 author: austonli
 ms.author: aul
@@ -7,50 +7,50 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: 5559dac916262998d621b40757398088ec613609
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77658744"
 ---
-# <a name="view-designer-to-workbooks-conversion-common-tasks"></a>Designerek megtekintése a munkafüzetek átalakításához – gyakori feladatok
-A [tervező](view-designer.md) a Azure monitor egyik funkciója, amely lehetővé teszi, hogy egyéni nézeteket hozzon létre, amelyek segítségével megjelenítheti a log Analytics-munkaterületen lévő, diagramokkal, listákkal és időpontokkal kapcsolatos adatait. A rendszer fokozatosan lecseréli azokat a munkafüzetekkel, amelyek további funkciókat biztosítanak. Ez a cikk azokat a feladatokat ismerteti, amelyek gyakoriak a nézetek munkafüzetekbe való konvertálása során.
+# <a name="view-designer-to-workbooks-conversion-common-tasks"></a>A tervező és a munkafüzetek átalakításának gyakori feladatainak megtekintése
+[A View designer](view-designer.md) az Azure Monitor egyik szolgáltatása, amely lehetővé teszi, hogy egyéni nézeteket hozzon létre, amelyek segítségével megjelenítheti az adatokat a Log Analytics-munkaterületen, diagramokkal, listákkal és ütemtervekkel. Ezeket fokozatosan megszüntetik, és olyan munkafüzetekre cserélik, amelyek további funkciókat biztosítanak. Ez a cikk a nézetek munkafüzetté alakításában gyakran előforduló feladatokat részletezi.
 
 
-## <a name="quickstart-with-preset-view-designer-templates"></a>Gyors üzembe helyezés előre beállított tervezői sablonokkal
+## <a name="quickstart-with-preset-view-designer-templates"></a>Gyorsútmutató előre beállított nézettervezői sablonokkal
 
-A Log Analytics munkaterületeken található munkafüzetek már rendelkeznek olyan sablonokkal, amelyek megfelelnek a View Designerben lévő egyes nézeteknek. A **tervezői útmutatók** kategóriában válassza a **tervezői átmenet áttekintése** lehetőséget a beállítások megismeréséhez, vagy válasszon egyet az előre definiált sablonok közül.
+A Log Analytics-munkaterületeken lévő munkafüzetek már rendelkeznek olyan sablonokkal, amelyek megfelelnek a nézettervező egyes nézeteinek. A **Designer-segédvonalak megtekintése kategóriában** válassza a **Tervezői áttűnési útmutató megtekintése** lehetőséget a beállítások megismeréséhez, vagy válasszon egy előre beállított sablont.
 
 ![Példa sablonok](media/view-designer-conversion-tasks/templates.png)
 
 ## <a name="enabling-time-range-filter"></a>Időtartomány-szűrő engedélyezése
-A Designer nézet beépített alapértelmezett időtartomány-szűrőt tartalmaz, azonban a munkafüzetekben ez a beállítás alapértelmezés szerint nincs engedélyezve. A munkafüzetek lehetővé teszik a felhasználók számára, hogy saját időtartomány-szűrőket hozzanak létre, amelyek az adatnaplókra is érvényesek lehetnek. A szűrő létrehozásához szükséges lépések az alábbi listában láthatók:
+A nézettervező beépített alapértelmezett időtartomány-szűrővel rendelkezik, azonban a munkafüzetekben ez a beállítás alapértelmezés szerint nincs engedélyezve. A munkafüzetek lehetővé teszik a felhasználók számára, hogy saját időtartomány-szűrőket hozzanak létre, amelyek jobban alkalmazhatók az adatnaplóikra. A szűrő létrehozásának lépései az alábbiak:
 
-Válassza a **Paraméterek hozzáadása** lehetőséget. Az alapértelmezett **stílus** a *tabletták*értékre van állítva.
+Válassza a **Paraméterek hozzáadása** lehetőséget. Az alapértelmezett **stílus** beállítása *Pills*.
 
 ![Param hozzáadása](media/view-designer-conversion-tasks/add-param.png)
 
- Kattintson a **paraméter hozzáadása** gombra.
+ Válassza a **Paraméter hozzáadása** gombot.
 
 ![Paraméter hozzáadása](media/view-designer-conversion-tasks/add-parameter.png)
 
-Az oldalsáv menüjében, a **paraméter neve** szövegmezőbe írja be a következőt: *TimeRange*. **Paraméter típusának** beállítása *időtartomány-választóként* Jelölje be a **kötelező?** jelölőnégyzetet.
+Az oldalsáv **menüjében** a Paraméter név szövegmezőbe írja be a *TimeRange*parancsot. **Paramétertípus** beállítása *időtartomány-választóként*. Jelölje be a **Kötelező?** jelölőnégyzetet.
 
 ![Paraméter menü](media/view-designer-conversion-tasks/parameter-menu.png)
 
-Mentse a paramétert az oldalsáv menüjének bal felső sarkában. Alapértelmezés *szerint a* legördülő lista nem törölhető, vagy kiválaszthat egy alapértelmezett **TimeRange** értéket (például *24 óra*). Válassza a **Szerkesztés kész**lehetőséget.
+Mentse a paramétert az oldalsáv menü bal felső sarkába. A legördülő menüt alapértelmezés szerint *unset* néven hagyhatja, vagy kiválaszthat egy alapértelmezett **TimeRange** értéket, például *24 órát.* Válassza a **Kész szerkesztés lehetőséget.**
 
-A paraméterek használhatók a lekérdezésekben kapcsos zárójelek hozzáadásával {} a paraméter nevét. A paraméterekkel kapcsolatos további részleteket a [munkafüzetek dokumentációjában](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/Parameters/Parameters.md)találhat.
+A paraméterek a lekérdezésekben is használhatók, {} ha kapcsos zárójeleket adnak hozzá a paraméter neve köré. A paraméterekkel kapcsolatos további részletek a [munkafüzetek paraméterekre vonatkozó dokumentációjában](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/Parameters/Parameters.md)találhatók.
 
 ## <a name="updating-queries-with-the-timerange-parameter"></a>Lekérdezések frissítése a TimeRange paraméterrel
 
-### <a name="option-1-select-timerange-from-the-time-range-dropdown"></a>1\. lehetőség: a TimeRange kiválasztása az időtartomány legördülő listából
+### <a name="option-1-select-timerange-from-the-time-range-dropdown"></a>1. lehetőség: Válassza ki a TimeRange-t az Időtartomány legördülő menüből
 
-![Time paraméter](media/view-designer-conversion-tasks/time-parameter.png)
+![Idő paraméter](media/view-designer-conversion-tasks/time-parameter.png)
 
-### <a name="option-2-update-your-log-queries"></a>2\. lehetőség: a napló lekérdezésének frissítése
+### <a name="option-2-update-your-log-queries"></a>2. lehetőség: A naplólekérdezések frissítése
 
-A lekérdezésben adja hozzá a következő sort: `| where TimeGenerated {TimeRange}` az alábbi példában látható módon:
+A lekérdezésben adja `| where TimeGenerated {TimeRange}` hozzá a sort: ahogy a következő példában:
 
 Eredeti lekérdezés
 ```KQL
@@ -66,15 +66,15 @@ search *
 ```
 
 ## <a name="including-a-list"></a>Listával együtt
-A nézet tervezői nézeteinek többsége tartalmaz egy listát, és ezt a standard listát egy munkafüzetben is reprodukálhatja.
+A legtöbb nézettervezői nézet tartalmaz egy listát, és ezt a szabványos listát reprodukálhatja egy munkafüzetben.
 
-![Csempe listája](media/view-designer-conversion-tasks/tile-list.png)
+![Mozaiklista](media/view-designer-conversion-tasks/tile-list.png)
 
-Adjon hozzá egy vizualizációt a cella beállításai közül a **lekérdezés hozzáadása** lehetőségre kattintva.
+Vizualizáció hozzáadásához kattintson a **Lekérdezés hozzáadása** elemre a cellabeállítások közül.
 
 ![Param hozzáadása](media/view-designer-conversion-tasks/add-param.png)
 
-A Tervező nézet egy alapértelmezett lekérdezést alkalmaz, amely megfelel az eredeti példa szintaxisának. Ezt úgy frissítheti, ha a lekérdezést a következő példában látható módon módosítja a frissített űrlapra:
+A Nézettervező olyan alapértelmezett lekérdezést alkalmaz, amely megegyezik az Eredeti példa szintaxisával. Ez a lekérdezés frissített űrlapra való módosításával frissíthető, akövetkező példában:
 
 Eredeti lekérdezés
 ```KQL
@@ -88,12 +88,12 @@ search *
 | summarize Count = count() by Type
 ```
 
-Ez a következőhöz hasonló listát hoz majd ki:
+Ez létrehoz egy listát, amely a következőhöz hasonló:
 
-![Példa a listára](media/view-designer-conversion-tasks/list-example.png)
+![Példa lista](media/view-designer-conversion-tasks/list-example.png)
 
 ## <a name="enabling-sparklines"></a>Értékgörbék engedélyezése
-A Gridek gyakori funkciója, hogy értékgörbék hozzáadásával összegzi a különböző adatmintázatokat az idő múlásával. A Designer nézet az összes listához **engedélyezi az értékgörbék engedélyezése** funkciót, akárcsak a munkafüzetek. Ha olyan értékgörbék közé szeretné foglalni az adatnézeteket, amelyek megfelelnek a View designernek, csatlakoztassa az adatait az eredeti lekérdezéshez, ahogy az alábbi példában is látható:
+A rácsok gyakori jellemzője, hogy értékgörbéket ad hozzá a különböző adatminták idővel való összegzéséhez. A View designer az **Értékgörbék engedélyezése** funkciót kínálja az összes listához, akárcsak a munkafüzetek. Ha a nézettervezőnek megfelelő értékgörbéket szeretne felvenni az adatokba, az alábbi példában látható módon egyesítse az adatokat az eredeti lekérdezéssel:
 
 Eredeti lekérdezés
 ```KQL
@@ -110,49 +110,49 @@ search *
 | project Type, AggregatedValue, Trend
 ```
 
-Válassza az **oszlop beállításai**lehetőséget.
-![oszlop beállításai](media/view-designer-conversion-tasks/column-settings.png)
+Válassza **az Oszlopbeállítások lehetőséget.**
+![Oszlopbeállítások](media/view-designer-conversion-tasks/column-settings.png)
 
-Az **oszlop megjelenítő** legördülő lista frissítése Spark- *területekként*.
-![értékgörbék](media/view-designer-conversion-tasks/sparkline.png)
+Frissítse az **Oszlopmegjelenítő** legördülő menüt *Spark-területté.*
+![Értékgörbék](media/view-designer-conversion-tasks/sparkline.png)
 
-Mentse a beállításokat, majd futtassa újra a lekérdezést a tábla frissítéséhez, hogy tartalmazzon egy értékgörbe-t is.
+Mentse a beállításokat, és futtassa újra a lekérdezést, hogy frissítse a táblát, hogy egy értékgörbét is tartalmazzon.
 
-Az eredményül kapott rács a következőhöz hasonlóan fog kinézni: ![értékgörbe példája](media/view-designer-conversion-tasks/sparkline-example.png)
+Az eredményül kapott rács ![a következőhöz hasonlóan fog kinézni: Értékgörbe példa](media/view-designer-conversion-tasks/sparkline-example.png)
 
-## <a name="advanced-cell-settings"></a>Speciális cella beállításai
-A nézet Designer tükrözéséhez olyan feladatokat hajthat végre, mint például a munkafüzet cellái méretének módosítása vagy a PIN-kódok és külső hivatkozások hozzáadása a naplókhoz.
+## <a name="advanced-cell-settings"></a>Speciális cellabeállítások
+A nézettervező tükrözéséhez olyan feladatokat hajthat végre, mint a munkafüzetcellák méretének módosítása, vagy pinek és külső hivatkozások hozzáadása a naplókhoz.
 
-A **Speciális beállítások** eléréséhez válassza a fogaskerék ikont az egyes cellák alján.
+A **Speciális beállítások** eléréséhez jelölje ki az egyes cellák alján található fogaskerék ikont.
 
 ![Speciális beállítások](media/view-designer-conversion-tasks/advanced-settings.png)
 
-Ekkor megjelenik egy menü, amely különböző lehetőségeket kínál:
+Ez megjelenik egy menü különböző lehetőségekkel:
 
 ![Speciális beállítások beállításai](media/view-designer-conversion-tasks/advanced-settings-settings.png)
 
-PIN-kód hozzáadásához és külső lekérdezésre mutató hivatkozás kiválasztásához jelölje ki a megfelelő jelölőnégyzeteket. Ha címet szeretne felvenni a cellába, írja be a kívánt címet a **diagram címe** szakaszba.
+Pin és külső lekérdezésre mutató hivatkozás hozzáadásához jelölje be a megfelelő jelölőnégyzeteket. Ha címet szeretne hozzáadni a cellához, írja be a kívánt címet a **Diagram cím** szakaszába.
 
-Alapértelmezés szerint a munkafüzetek cellája úgy van beállítva, hogy a teljes oldal szélességét elvégezze, de ezt úgy is beállíthatja, hogy a **Speciális beállítások** menü **Style (stílus** ) lapján a cella lefelé skálázásával leállítja a cellát.
+Alapértelmezés szerint minden munkafüzetcella úgy van beállítva, hogy a teljes oldalszélességet elvegye, de ezt úgy módosíthatja, hogy a cellát lefelé skálázhatja a **Speciális beállítások** menü **Stílus** lapján.
 
 ![Speciális beállítások stílusa](media/view-designer-conversion-tasks/advanced-settings-style.png)
 
  
 ## <a name="additional-parameters"></a>További paraméterek
-Válassza a **paraméter hozzáadása** lehetőséget egy új paraméter létrehozásához a munkafüzetben. 
+Új paraméter létrehozásához válassza a **Paraméter hozzáadása** lehetőséget. 
 
-Az előfizetés kiválasztásához írja *be az előfizetést* a **paraméter neve** mezőbe az oldalsó menüben, és válassza az *előfizetés választó* elemet a **paraméter típusa** legördülő listából.
+Előfizetés kiválasztásához írja be az *Előfizetés* szót az oldalsó menü **Paraméternév** mezőjébe, és válassza az *Előfizetésválasztó* lehetőséget a **Paramétertípus** legördülő menüből.
 
 ![Előfizetés menü](media/view-designer-conversion-tasks/subscription-filter.png)
 
-Ha ki szeretne választani egy erőforrást, írja be az *erőforrást* a **paraméter neve** mezőbe az oldalsó menüben, majd válassza az *erőforrás-választó* elemet a **paraméter típusa** legördülő listából.
+Erőforrás kijelöléséhez írja be az *Erőforrás* szót az oldalmenü **Paraméternév** mezőjébe, és válassza az *Erőforrás-választó* lehetőséget a **Paraméter típus** legördülő menüből.
 
 ![Erőforrás menü](media/view-designer-conversion-tasks/resource-filter.png)
 
-Ekkor a legördülő menüvel érheti el a különböző előfizetéseit és erőforrásait.
+Ez beilleszti a legördülő menüt, amely lehetővé teszi a különböző előfizetések és erőforrások elérését.
 
-![Előfizetési erőforrás legördülő listája](media/view-designer-conversion-tasks/subscription-resource.png)
+![Előfizetési erőforrás legördülő menü](media/view-designer-conversion-tasks/subscription-resource.png)
 
 
-## <a name="next-steps"></a>Következő lépések
-- [Csempe konverziója](view-designer-conversion-tiles.md)
+## <a name="next-steps"></a>További lépések
+- [Csempekonverziók](view-designer-conversion-tiles.md)

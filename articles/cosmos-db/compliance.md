@@ -1,74 +1,75 @@
 ---
-title: Azure Cosmos DB megfelelőség
-description: Ez a cikk a Azure Cosmos DB megfelelőségi ajánlatokra vonatkozó minősítési lefedettséget ismerteti.
+title: Az Azure Cosmos DB megfelelősége
+description: Ez a cikk az Azure Cosmos DB megfelelőségi ajánlatai minősítési lefedettségét ismerteti.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 03/18/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: a41d95a5ab0665698676d0f17333e2f5c7f467eb
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 5a35ec10d7d9bc60bbbf28ee85c83c838108050b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872203"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79527367"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Megfelelőség az Azure Cosmos DB-ben 
 
-Azure Cosmos DB az összes Azure-régióban elérhető. A Microsoft öt különböző Azure Cloud Environment-környezetet tesz elérhetővé az ügyfelek számára:
+Az Azure Cosmos DB minden Azure-régióban elérhető. A Microsoft öt különböző Azure-felhőkörnyezetet tesz elérhetővé az ügyfelek számára:
 
-* **Azure nyilvános** felhő, amely globálisan elérhető.
+* **Az Azure nyilvános** felhője, amely globálisan elérhető.
 
-* Az **Azure China 21Vianet** a Microsoft és a 21Vianet közötti egyedi partneri kapcsolaton keresztül érhető el, amely az ország egyik legnagyobb internetszolgáltatója.
+* **Az Azure China 21Vianet** a Microsoft és a 21Vianet, az ország egyik legnagyobb internetszolgáltatója közötti egyedi partnerségen keresztül érhető el.
 
-* Az **Azure Germany** egy adatkezelői modell keretében nyújt szolgáltatásokat, amely biztosítja, hogy a vásárlói adat Németországban maradjon a T-Systems International GmbH, a Deutsche Telecom leányvállalata, a német adatkezelő nevében.
+* **Az Azure Germany** adatkezelő imitátusként nyújt szolgáltatásokat, amely biztosítja, hogy az ügyféladatok Németországban maradjanak a Deutsche Telecom leányvállalata, a T-Systems International GmbH ellenőrzése alatt, amely német vagyonkezelőként működik.
 
-* **Azure Government** a Egyesült Államok négy régiójában érhető el az USA kormányzati szervei és azok partnerei számára. 
+* Az **Azure Government** az Egyesült Államok négy régiójában érhető el az Egyesült Államok kormányzati szervei és partnerei számára. 
 
-* A **védelmi minisztérium (DoD) Azure Government** a Egyesült Államok két régiójában érhető el az USA védelmi Minisztériuma számára.
+* **Az Azure Government for Department of Defense(DoD)** az Egyesült Államok két régiójában érhető el az Egyesült Államok Védelmi Minisztériuma számára.
 
-Annak érdekében, hogy az ügyfelek megfeleljenek a saját megfelelőségi kötelezettségeiknek a szabályozott iparágakban és piacokon, az Azure a legnagyobb megfelelőségi portfóliót az iparágban tartja fenn mind a szélesség (az ajánlatok teljes száma), mind a mélység tekintetében (az ügyfelek száma). szolgáltatások az értékelés hatókörében).  Az Azure-megfelelőségi ajánlatok négy szegmensbe vannak csoportosítva – globálisan alkalmazható, Egyesült államokbeli kormányzat, iparág-specifikus, régió vagy ország/régió – specifikusak.  A megfelelőségi ajánlatok különféle típusú garancián alapulnak, beleértve a formális tanúsítványokat, a tanúsítványokat, az igazolásokat, az engedélyeket, valamint a független külső könyvvizsgáló cégek által létrehozott értékeléseket, valamint a szerződéses módosításokat, a Microsoft által készített önértékelések és ügyfél-útmutató dokumentumok.
+Annak érdekében, hogy az ügyfelek eleget tehessék saját megfelelőségi kötelezettségeiknek a szabályozott iparágakban és piacokon világszerte, az Azure az iparág legnagyobb megfelelőségi portfólióját tartja fenn mind a szélesség (az ajánlatok teljes száma) és a mélység (az ügyfelek felé néző az értékelési hatályban).  Az Azure megfelelőségi ajánlatai négy szegmensre vannak csoportosítva – globálisan alkalmazható, az Egyesült Államok kormánya, iparág-specifikus, valamint régió- vagy ország-/régióspecifikus.  A megfelelőségi ajánlatok különböző típusú biztosítékokon alapulnak, beleértve a hivatalos tanúsítványokat, tanúsítványokat, érvényesítéseket, engedélyeket és független, harmadik fél könyvvizsgáló cégek által készített értékeléseket, valamint a szerződéses módosításokat, önértékelés, valamint a Microsoft által készített ügyfél-útmutató dokumentumok.
 
-## <a name="azure-cosmos-db-certifications"></a>Azure Cosmos DB minősítések  
+## <a name="azure-cosmos-db-certifications"></a>Az Azure Cosmos DB tanúsítványai  
 
-Az Azure Cosmos DB által lefedett tanúsítványok köre folyamatosan bővül. A Azure Cosmos DB jelenleg a következő tanúsítvánnyal rendelkezik:
+Az Azure Cosmos DB által lefedett tanúsítványok köre folyamatosan bővül. Jelenleg az Azure Cosmos DB a következő tanúsítványokkal rendelkezik:
 
-| **Globálisan alkalmazható** | **USA-beli államigazgatás** | **Iparág-specifikus** | **Régió vagy ország – specifikus** |
+| **Globálisan alkalmazható** | **USA-beli államigazgatás** | **Iparág-specifikus** | **Régió- vagy országspecifikus** |
 | --- | --- | --- | --- |
-| CSA STAR minősítés | DoD SRG 2. szint | HIPAA BAA | Ausztrália – IRAP |
-| CSA STAR igazolás | FedRAMP mérsékelt | HITRUST | Németországi C5|
-| ISO 20000-1:2011 | GxP (FDA 21 CFR rész 11) | PCI DSS | Szingapúri MTCS szint 3 |
-| ISO 22301:2012 | | | Spanyol ENS magas|
+| CSA STAR tanúsítvány | DoD SRG 2. | HIPAA BAA | Ausztrália IRAP |
+| CSA STAR tanúsítvány | FedRAMP Moderate | HITRUST (HITRUST) | Németország C5|
+| ISO 20000-1:2011 | GxP (FDA 21 CFR 11. rész) | PCI DSS | Szingapúr MTCS Szint 3 |
+| ISO 22301:2012 | | | Spanyolország ENS Magas|
 | ISO 27001:2013| | | |
 | ISO 27017:2015 | | | |
 | ISO 27018:2014 | | | |
 | ISO 9001:2015 | | | |
+| ISO 27701:2019| | | |
 | SOC 1, 2, 3 | | | |
 
-Ha többet szeretne megtudni ezekről a megfelelőségi ajánlatokról és azok előnyeiről, tekintse meg [a Microsoft Azure megfelelőségi oldal áttekintését](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) .
+Ha többet szeretne megtudni az egyes megfelelőségi ajánlatokról és arról, hogy ezek milyen előnyökkel járnak, olvassa [el a Microsoft Azure megfelelőségi](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) lap áttekintése című témakört.
 
-A következő táblázat felsorolja a Azure Government Azure Cosmos DB által támogatott tanúsítványokat:
+Az alábbi táblázat felsorolja az Azure Cosmos DB által az Azure Government ben támogatott tanúsítványokat:
 
 | **Globálisan alkalmazható** | **USA-beli államigazgatás** | **Iparág-specifikus** | 
 | --- | --- | --- | --- |
-| CSA STAR minősítés | CJIS| HIPAA BAA | 
-| CSA STAR igazolás| DoD SRG 2. szint| HITRUST  | 
-| ISO 20000-1:2011 | DoD SRG 4. szint | PCI DSS | 
-| ISO 9001:2012 | DoD SRG szint 5 | | 
-| ISO 27001:2013 | FedRAMP magas | |
+| CSA STAR tanúsítvány | CJIS| HIPAA BAA | 
+| CSA STAR tanúsítvány| DoD SRG 2.| HITRUST (HITRUST)  | 
+| ISO 20000-1:2011 | DoD SRG 4. | PCI DSS | 
+| ISO 9001:2012 | DoD SRG 5. | | 
+| ISO 27001:2013 | FedRAMP High | |
 | ISO 9001:2015 | IRS 1075|  |
 | ISO 27017:2014 | NIST CSF | |
 | ISO 27018:2015 | NIST SP 800-171 | |
 | SOC 1, 2, 3 | | |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az Azure megfelelőségi tanúsítványokkal kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+Az Azure megfelelőségi tanúsítványairól az alábbi cikkekben olvashat bővebben:
 
-* A Azure Cosmos DB legújabb megfelelőségi tanúsítványait az [Azure megfelelőségének áttekintésében](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)találhatja meg.  
+* Az Azure Cosmos DB legújabb megfelelőségi tanúsítványainak megtekintéséhez tekintse meg az [Azure-megfelelőség áttekintése című témakört.](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)  
 
-* A Azure Cosmos DB biztonság és a legújabb Újdonságok áttekintését az [Azure Cosmos Database Security](database-security.md) című cikkben találja.
+* Az Azure Cosmos DB biztonságának áttekintését és a legújabb fejlesztéseket az [Azure Cosmos adatbázis-biztonsági cikkében](database-security.md) tekintheti meg.
 
-* További információ a Microsoft-tanúsítványokról: [Azure biztonsági és adatkezelési központ](https://azure.microsoft.com/support/trust-center/).
+* A Microsoft-tanúsítványokról az [Azure Adatvédelmi központban](https://azure.microsoft.com/support/trust-center/)talál további információt.

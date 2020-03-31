@@ -5,20 +5,20 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: gwallace
 ms.openlocfilehash: e38cecfe206f21f9189493e7ed6e8f0cadda9cd9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75463530"
 ---
-Az Azure-ügyfelek havonta 25 000 ingyenes e-mailt oldhatnak fel. Ezek a 25 000-es ingyenes havi e-mailek hozzáférést biztosítanak a speciális jelentéskészítéshez és elemzésekhez, valamint [az összes API][all APIs] -hoz (web, SMTP, Event, parse stb.). A SendGrid által biztosított további szolgáltatásokkal kapcsolatos információkért látogasson el a [SendGrid Solutions][SendGrid Solutions] oldalára.
+Az Azure-ügyfelek havonta 25 000 ingyenes e-mailt oldhatnak fel. Ez a 25 000 ingyenes havi e-mail hozzáférést biztosít a speciális jelentésekhez és elemzésekhez, valamint [az összes API-hoz][all APIs] (web, SMTP, Esemény, Elemzés stb.). A SendGrid által biztosított további szolgáltatásokról a [SendGrid Solutions][SendGrid Solutions] oldalán talál információkat.
 
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>SendGrid-fiók regisztrálása
-1. Jelentkezzen be az [Azure portálra][Azure portal].
-2. A Azure Portal menüben vagy a kezdőlapon válassza az **erőforrás létrehozása**lehetőséget.
+1. Jelentkezzen be az [Azure Portalra.][Azure portal]
+2. Az Azure Portal menüben vagy a kezdőlapon válassza **az Erőforrás létrehozása lehetőséget.**
 
     ![command-bar-new][command-bar-new]
-3. Keresse meg és válassza ki a **SendGrid**.
+3. Keresse meg és válassza a **SendGrid**lehetőséget.
 
     ![sendgrid-store][sendgrid-store]
 4. Töltse ki a regisztrációs űrlapot, majd válassza a **Létrehozás** lehetőséget.
@@ -34,11 +34,11 @@ Az Azure-ügyfelek havonta 25 000 ingyenes e-mailt oldhatnak fel. Ezek a 25 000-
 10. Adjon meg egy **Promóciókódot**, ha rendelkezik ilyennel.
 11. Adja meg a **Kapcsolattartási adatait**.
 12. Tekintse át és fogadja el a **Jogi feltételeket**.
-13. A vásárlás megerősítését követően egy **központi telepítés sikeres** előugró ablak jelenik meg, és megjelenik a fiókja.
+13. A vásárlás megerősítése után megjelenik egy **sikeres központi telepítés,** és megjelenik a fiók listája.
 
     ![all-resources][all-resources]
 
-    Miután befejezte a vásárlást, valamint a **Kezelés** gombra kattintva elindította az e-mail ellenőrzésének folyamatát, a SendGrid küld egy e-mailt, amelyben a fiókja megerősítésére kéri. Ha nem kapja meg ezt az e-mailt, vagy nem sikerül ellenőrizni a fiókját, tekintse meg a gyakori kérdéseket.
+    Miután befejezte a vásárlást, valamint a **Kezelés** gombra kattintva elindította az e-mail ellenőrzésének folyamatát, a SendGrid küld egy e-mailt, amelyben a fiókja megerősítésére kéri. Ha nem kapja meg ezt az e-mailt, vagy problémái vannak a fiókjának ellenőrzésével, kérjük, olvassa el a GYIK-et.
 
     ![kezelés][manage]
 
@@ -58,7 +58,7 @@ Az Azure-ügyfelek havonta 25 000 ingyenes e-mailt oldhatnak fel. Ezek a 25 000-
 
     ![api-keys][api-keys]
 
-3. Kattintson az **API létrehozása kulcsra**.
+3. Kattintson az **API-kulcs létrehozása gombra.**
 
     ![general-api-key][general-api-key]
 4. Adja meg legalább a **Kulcs nevét**, biztosítson teljes hozzáférést a **Levélküldés** számára, majd válassza a **Mentés** lehetőséget.
@@ -72,11 +72,11 @@ Az Azure-ügyfelek havonta 25 000 ingyenes e-mailt oldhatnak fel. Ezek a 25 000-
     ![kulcs][key]
 2. A jelszó megegyezik azzal, amelyet a beállításkor megadott. Módosításokat a **Jelszó módosítása** vagy a **Jelszó alaphelyzetbe állítása** lehetőségek kiválasztásával eszközölhet.
 
-Az e-mailek kézbesítési eredményessége beállításainak kezeléséhez kattintson a **Kezelés gombra**. A rendszer átirányítja a SendGrid-irányítópultra.
+Az e-mailek kézbesítési eredményessége beállításainak kezeléséhez kattintson a **Kezelés gombra**. Ez átirányítja a SendGrid irányítópultjára.
 
 ![kezelés][manage]
 
-Az e-mailek SendGrid-n keresztül történő elküldésével kapcsolatos további információkért tekintse meg az [E-mail API áttekintését][Email API Overview].
+A SendGriden keresztül küldött e-mailekről az [E-mail API áttekintése című témakörben olvashat bővebben.][Email API Overview]
 
 <!--images-->
 

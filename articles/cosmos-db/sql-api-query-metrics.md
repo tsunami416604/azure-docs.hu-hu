@@ -1,6 +1,6 @@
 ---
-title: SQL-lekérdezés metrikák az Azure Cosmos DB SQL API-hoz
-description: Ismerje meg, alakítsa ki és hibakeresése az Azure Cosmos DB-kérelmek SQL-lekérdezések teljesítményével kapcsolatos.
+title: SQL-lekérdezési metrikák az Azure Cosmos DB SQL API-hoz
+description: Megtudhatja, hogyan eszköz és hibakeresés az Azure Cosmos DB-kérések SQL-lekérdezési teljesítmény.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,48 +8,48 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.openlocfilehash: ae1773ec1d470b9cff2efb00c200427b7b4c2fb4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69614816"
 ---
-# <a name="tuning-query-performance-with-azure-cosmos-db"></a>Az Azure Cosmos DB lekérdezési teljesítmény hangolása
+# <a name="tuning-query-performance-with-azure-cosmos-db"></a>A lekérdezési teljesítmény finomhangolása az Azure Cosmos DB-vel
 
-Az Azure Cosmos DB biztosítja a [adatok lekérdezése az SQL API](how-to-sql-query.md), anélkül, hogy a séma vagy másodlagos indexek. Ez a cikk a fejlesztők a következő információkat biztosítja:
+Az Azure Cosmos DB egy [SQL API-t biztosít az adatok lekérdezéséhez,](how-to-sql-query.md)séma vagy másodlagos indexek nélkül. Ez a cikk a következő információkat tartalmazza a fejlesztők számára:
 
-* Azure Cosmos DB SQL-lekérdezésének végrehajtása működésével kapcsolatos részletes
-* Részletes lekérdezési kérelmek és válaszfejlécek, és az ügyfél SDK-beállítások
-* Tippek és gyakorlati tanácsok a lekérdezési teljesítmény
-* Példa bemutatja, hogyan használják a lekérdezési teljesítmény hibakeresése SQL végrehajtási statisztika
+* Az Azure Cosmos DB SQL-lekérdezés-végrehajtási működésének magas szintű részletei
+* Részletek a lekérdezési kérelem- és válaszfejlécekről, valamint az ügyfél SDK-beállításairól
+* Tippek és gyakorlati tanácsok a lekérdezési teljesítményhez
+* Példák az SQL-végrehajtási statisztikák használatára a lekérdezésteljesítmény hibakereséséhez
 
-## <a name="about-sql-query-execution"></a>Tudnivalók az SQL-lekérdezés végrehajtása
+## <a name="about-sql-query-execution"></a>AZ SQL-lekérdezés ek-végrehajtása
 
-Az Azure Cosmos DB, tárolók, amelyek bármely növelhető az adatok tárolására [mérete vagy a kérelem tárolóteljesítmény](partition-data.md). Az Azure Cosmos DB zökkenőmentesen skálázható adatok valójában az adatmennyiség növekedésének kezeléséhez, vagy pedig növelje a kiosztott átviteli sebesség fizikai partíciók között. SQL-lekérdezések használatával, a REST API vagy a támogatott valamelyik tárolója sem számára küldhet [SQL SDK-k](sql-api-sdk-dotnet.md).
+Az Azure Cosmos DB-ben tárolókban tárolja az adatokat, amelyek bármilyen [tárolási méretre vagy átviteli kapacitásra](partition-data.md)növekedhetnek. Az Azure Cosmos DB zökkenőmentesen skálázható adatok at fizikai partíciók a borítók alatt az adatok növekedésének kezelése vagy a kiosztott átviteli teljesítmény növelése. Sql-lekérdezéseket bármely tárolónak kiadhat a REST API vagy a támogatott [SQL SDK-k](sql-api-sdk-dotnet.md)egyik használatával.
 
-A particionálás rövid áttekintése: megadhat egy partíciókulcsot, például a "city", amely megadja, hogy hogyan van felosztva az adatok fizikai partíciók között. Önálló partíciókulcsokon tartozó adatok (például a "city" == "Seattle") egy fizikai partíciónak vannak tárolva, de általában egyetlen fizikai partíciók több partíciós kulccsal. Partíció mérete eléri, ha a szolgáltatás zökkenőmentesen a partíció felosztja a két új partíciót és a partíciókulcs egyenletesen elosztja érintett partíciók között. Mivel a partíciók átmeneti, az API-k használata egy "partíciókulcs-tartományok", amely azt jelzi, hogy a partíciós kulcs kivonatok adattartományokat absztrakciója. 
+A particionálás rövid áttekintése: definiálhat egy partíciókulcsot, például a "város", amely meghatározza, hogyan oszlik meg az adatok fizikai partíciók között. Az egyetlen partíciókulcshoz tartozó adatok (például "város" == "Seattle") egy fizikai partíción belül tárolódnak, de általában egyetlen fizikai partíciónak több partíciókulcsa van. Amikor egy partíció eléri a tárolási méretét, a szolgáltatás zökkenőmentesen felosztja a partíciót két új partícióra, és egyenletesen osztja el a partíciókulcsot ezek között a partíciók között. Mivel a partíciók átmenetiek, az API-k egy "partíciókulcs-tartomány" absztrakcióját használják, amely a partíciókulcs-kivonatok tartományait jelöli. 
 
-Amikor egy lekérdezést az Azure Cosmos DB, az SDK logikai lépéseket hajtja végre:
+Amikor lekérdezést ad ki az Azure Cosmos DB-nek, az SDK az alábbi logikai lépéseket hajtja végre:
 
-* Elemezni az SQL-lekérdezést a lekérdezés-végrehajtási terv meghatározásához. 
-* Ha a lekérdezés a partíciókulcs alapján szűrőt tartalmaz, például `SELECT * FROM c WHERE c.city = "Seattle"`, ugyanazon a partíción lesz irányítva. Ha a lekérdezés nem rendelkezik egy szűrőt a partíciókulcsot, majd az összes partíció hajtja végre és eredményeket egyesítésekor ügyféloldali.
-* A lekérdezés végrehajtása a-sorozat minden egyes partíción belül, vagy a párhuzamosan, az ügyfél-konfiguráció alapján. Minden egyes partíción belül előfordulhat, hogy a lekérdezés egyet, vagy a lekérdezés összetettségétől függően további adatváltások oldalméret konfigurálva, és a gyűjtemény átviteli sebesség kiosztott. Minden egyes végrehajtása számát adja vissza [kérelemegységek](request-units.md) felhasznált lekérdezés-végrehajtás, és ha szükséges, lekérdezés-végrehajtási statisztikák. 
-* Az SDK-t több partícióra kiterjedő hajt végre egy a lekérdezés eredményeinek összegzése. Például egy ORDER BY záradék a lekérdezés több partícióra kiterjedő foglal magában, majd az egyes partíciók eredményeinek-e egyesítési rendezve, globálisan rendezett sorrendben adja vissza az eredményeket. Ha a lekérdezés egy összesítés, mint például `COUNT`, a számok az egyes partíciók összeadódnak előállításához a teljes száma.
+* Elemezze az SQL-lekérdezést a lekérdezés végrehajtási tervének meghatározásához. 
+* Ha a lekérdezés szűrőt tartalmaz a `SELECT * FROM c WHERE c.city = "Seattle"`partíciókulcshoz, például a rendszer egyetlen partícióra irányítja. Ha a lekérdezés nem rendelkezik szűrővel a partíciókulcson, akkor a rendszer az összes partíción végrehajtja, és az eredmények egyesített ügyféloldalt eredményeznek.
+* A lekérdezés végrehajtása az egyes partíciókon belül sorozatban vagy párhuzamosan, az ügyfél konfigurációja alapján. Az egyes partíciókon belül a lekérdezés a lekérdezés összetettségétől, a konfigurált oldalmérettől és a gyűjtemény kiosztott átviteli hangától függően egy vagy több adatváltást tehet le. Minden végrehajtás a lekérdezés végrehajtása és szükség esetén a lekérdezés-végrehajtási statisztikák által felhasznált [kérelemegységek](request-units.md) számát adja vissza. 
+* Az SDK a lekérdezés i. partíciók közötti összegzését hajtja végre. Ha például a lekérdezés egy ORDER BY-t tartalmaz a partíciók között, akkor az egyes partíciók ból származó eredmények egyesítése az eredmények globálisan rendezett sorrendbe adása. Ha a lekérdezés egy aggregációs, mint `COUNT`a, az egyes partíciók száma össze, hogy a teljes szám.
 
-Az SDK-k a lekérdezés-végrehajtáshoz különböző lehetőségeket nyújtanak. Ha például a .NET-ben ezek a lehetőségek érhetők el a `FeedOptions` osztály. A következő táblázat ismerteti ezeket a lehetőségeket, hogy azok hatással lekérdezés végrehajtási ideje. 
+Az SDK-k különböző beállításokat biztosítanak a lekérdezés végrehajtásához. A .NET részben például ezek `FeedOptions` a beállítások az osztályban érhetők el. Az alábbi táblázat ezeket a beállításokat és a lekérdezések végrehajtási idejének befolyásolásának módját ismerteti. 
 
 | Beállítás | Leírás |
 | ------ | ----------- |
-| `EnableCrossPartitionQuery` | Állítsa true esetében, amelyek lekérdezési feltétele, hogy egynél több partíció között hajtható végre. Ez az egy explicit jelzőt, hogy tudatában teljesítmény kompromisszumokat fejlesztési idő alatt. |
-| `EnableScanInQuery` | Állítsa igaz értékre, ha az indexelés visszavonta, de szeretné futtatni a lekérdezést egy vizsgálattal ennek ellenére. Csak alkalmazható, ha a kért szűrő elérési útja indexelő le van tiltva. | 
-| `MaxItemCount` | Térjen vissza adatváltási száma a kiszolgáló elemek maximális számát. -1-beállítása, hagyhatja, hogy a kiszolgáló kezelése elemek száma. Vagy ezt az értéket csak kis számú tétel / adatváltási beolvasása csökkentheti. 
-| `MaxBufferedItemCount` | Ez egy ügyféloldali beállítást, és korlátozhatja a memóriát a partíciók közti ORDER BY végrehajtása során. Magasabb érték segítségével csökkentse a partíciók közti rendezéséhez. |
-| `MaxDegreeOfParallelism` | Lekérdezi vagy beállítja a párhuzamos műveletek számát az ügyféloldali lekérdezés-végrehajtás során az Azure Cosmos Database szolgáltatásban. Egy pozitív tulajdonság értéke a értékét párhuzamos műveletek számát korlátozza. Ha 0-nál kisebb érték, a rendszer automatikusan úgy dönt, hogy futtassa a párhuzamos műveletek számát. |
-| `PopulateQueryMetrics` | Lehetővé teszi, hogy a lekérdezés végrehajtása, például a fordítási idő, index hurok idő és a dokumentum különböző fázisait fordított idő statisztika részletes naplózás betöltési idő. Lekérdezési statisztikák kimenete megoszthatja lekérdezés teljesítménybeli problémák diagnosztizálása az Azure-támogatás. |
-| `RequestContinuation` | A lekérdezés végrehajtása révén minden lekérdezés által visszaadott folytatási átlátszatlan folytathatja. A folytatási token magában foglalja az összes állapot, a lekérdezés-végrehajtáshoz szükséges. |
-| `ResponseContinuationTokenLimitInKb` | Korlátozhatja a kiszolgáló által visszaadott folytatási tokent maximális méretét. Szüksége lehet állítsa ezt, ha az alkalmazás gazdagép korlátok a válaszok fejlécének mérete. Ezt a beállítást a teljes időtartam és a lekérdezés felhasznált Kérelemegységek növelheti.  |
+| `EnableCrossPartitionQuery` | Minden olyan lekérdezésnél, amelyet egynél több partíción kell végrehajtani, igaz értékre kell állítani. Ez egy explicit zászló, amely lehetővé teszi, hogy tudatos teljesítmény kompromisszumokat a fejlesztési idő alatt. |
+| `EnableScanInQuery` | Ha leiratkozott az indexelésről, akkor igaz értékre kell állítania, de mindenképpen futtatni szeretné a lekérdezést egy vizsgálaton keresztül. Csak akkor alkalmazható, ha a kért szűrőelérési út indexelése le van tiltva. | 
+| `MaxItemCount` | A kiszolgálóra oda-visszaút esetén visszaadandó elemek maximális száma. A -1 beállítással a kiszolgáló kezelheti az elemek számát. Azt is megteheti, hogy ezt az értéket úgy csökkentheti, hogy oda-visszaonként csak kis számú elemet kér be. 
+| `MaxBufferedItemCount` | Ez egy ügyféloldali beállítás, amely a partíciók közötti ORDER BY végrehajtásakor korlátozza a memóriafelhasználást. A magasabb érték segít csökkenteni a partíciók közötti rendezés késését. |
+| `MaxDegreeOfParallelism` | Lekérdezi vagy beállítja az egyidejű műveletek futtatásának ügyféloldali párhuzamos lekérdezésvégrehajtása az Azure Cosmos adatbázis-szolgáltatás ban. A pozitív tulajdonságérték az egyidejű műveletek számát a beállított értékre korlátozza. Ha 0-nál kisebb re van állítva, a rendszer automatikusan meghatározza a futtatandó egyidejű műveletek számát. |
+| `PopulateQueryMetrics` | Lehetővé teszi a lekérdezésvégrehajtásá különböző fázisaiban , például a fordítási idő, az indexciklus-idő és a dokumentum betöltési idejének statisztikai statisztikáinak részletes naplózását. A lekérdezési statisztikákból származó kimenetet megoszthatja az Azure Support szolgáltatással a lekérdezési teljesítményproblémák diagnosztizálása érdekében. |
+| `RequestContinuation` | Folytathatja a lekérdezés végrehajtását, ha átadja az átlátszatlan folytatási jogkivonatot, amelyet bármely lekérdezés visszaad. A folytatási jogkivonat magában foglalja a lekérdezés végrehajtásához szükséges összes állapotot. |
+| `ResponseContinuationTokenLimitInKb` | Korlátozhatja a kiszolgáló által visszaadott folytatási token maximális méretét. Előfordulhat, hogy ezt be kell állítania, ha az alkalmazásgazda korlátozza a válaszfejléc méretét. Ennek beállítása növelheti a lekérdezés teljes időtartamát és a környezetben felhasznált rövid erőforrásokat.  |
 
-Például, vessünk egy példalekérdezést a partíciókulccsal rendelkező gyűjtemény kért `/city` kulcs és a 100 000 RU/s átviteli sebesség kiosztott partícióként. A lekérdezés használatával kér `CreateDocumentQuery<T>` a .NET-ben például a következőképpen:
+Például vegyünk egy példa lekérdezést a partíciókulcsként `/city` kért és 100 000 RU/s átviteli igényű gyűjteményegy gyűjteményen kért lekérdezést. Ezt a lekérdezést a .NET-ben a következő hez hasonlóan `CreateDocumentQuery<T>` kérheti:
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -66,7 +66,7 @@ IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
 FeedResponse<dynamic> result = await query.ExecuteNextAsync();
 ```
 
-A fenti SDK kódrészlet felel meg a következő REST API-kérelem:
+A fent látható SDK-kódrészlet a következő REST API-kérésnek felel meg:
 
 ```
 POST https://arramacquerymetrics-westus.documents.azure.com/dbs/db/colls/sample/docs HTTP/1.1
@@ -93,9 +93,9 @@ Expect: 100-continue
 {"query":"SELECT * FROM c WHERE c.city = 'Seattle'"}
 ```
 
-REST API-val megfelel minden lekérdezés-végrehajtás lapon `POST` együtt a `Accept: application/query+json` fejlécére, majd az SQL-lekérdezést a törzsében. Egyes lekérdezések lehetővé teszi egy vagy több kerekíteni lelassítja a kiszolgálóra a `x-ms-continuation` jogkivonat végrehajtási folytatásához az ügyfél és kiszolgáló közötti meg. A konfigurációs beállítások FeedOptions továbbítódnak a kiszolgáló kérelemfejlécek formájában. Ha például `MaxItemCount` felel meg `x-ms-max-item-count`. 
+Minden lekérdezés-végrehajtási lap megfelel `POST` egy `Accept: application/query+json` REST API-t a fejléc, és az SQL-lekérdezés a szervezetben. Minden lekérdezés egy vagy több oda-vissza `x-ms-continuation` utat tesz a kiszolgálóra úgy, hogy a token az ügyfél és a kiszolgáló között visszhangzik a végrehajtás folytatásához. A FeedOptions konfigurációs beállításai kérésfejlécek formájában kerülnek át a kiszolgálóhoz. Például `MaxItemCount` megfelel a `x-ms-max-item-count`. 
 
-A kérelem a következő (az olvashatóság érdekében csonkolva) választ ad vissza:
+A kérelem a következő (az olvashatóság érdekében csonkolt) választ adja vissza:
 
 ```
 HTTP/1.1 200 Ok
@@ -122,54 +122,54 @@ x-ms-gatewayversion: version=1.14.33.2
 Date: Tue, 27 Jun 2017 21:59:49 GMT
 ```
 
-A kulcs válaszfejlécek, a lekérdezés által visszaadott a következők:
+A lekérdezésből visszaadott kulcsválasz-fejlécek a következők:
 
 | Beállítás | Leírás |
 | ------ | ----------- |
-| `x-ms-item-count` | A válaszban visszaadott elemek száma. Ez az adott nyelvtől függ a megadott `x-ms-max-item-count`, a válasz maximális hasznos adatainak mérete, a kiosztott átviteli sebesség és a lekérdezés-végrehajtási idő férő elemek száma. |  
-| `x-ms-continuation:` | A folytatási token, a lekérdezés végrehajtásának folytatásához, ha további eredmények érhetők el. | 
-| `x-ms-documentdb-query-metrics` | Lekérdezési statisztika a végrehajtását. Ez az idő a lekérdezés végrehajtása a különböző fázisait statisztikáit tartalmazó tagolt karakterlánc. Visszaadott if `x-ms-documentdb-populatequerymetrics` értékre van állítva `True`. | 
-| `x-ms-request-charge` | Hány [kérelemegységek](request-units.md) a lekérdezés által felhasznált. | 
+| `x-ms-item-count` | A válaszban visszaadott elemek száma. Ez a megadott `x-ms-max-item-count`, a maximális válasz hasznos terhelési méretén, a kiosztott átviteli sebességen és a lekérdezés végrehajtási idején belül elférő elemek számától függ. |  
+| `x-ms-continuation:` | A lekérdezés végrehajtásának folytatásához a folytatási jogkivonat, ha további eredmények érhetők el. | 
+| `x-ms-documentdb-query-metrics` | A végrehajtás lekérdezési statisztikája. Ez egy tagolt karakterlánc, amely a lekérdezés végrehajtásának különböző fázisaiban töltött idő statisztikáit tartalmazza. Visszaadta, `x-ms-documentdb-populatequerymetrics` ha `True`a beállítása . | 
+| `x-ms-request-charge` | A lekérdezés által felhasznált [kérelemegységek](request-units.md) száma. | 
 
-A REST API-kérelemfejlécek és a lehetőségek részletes ismertetéséért lásd: [lekérdezése a REST API-val erőforrások](https://docs.microsoft.com/rest/api/cosmos-db/querying-cosmosdb-resources-using-the-rest-api).
+A REST API-kérelemfejléceiről és -beállításairól az [Erőforrások lekérdezése a REST API használatával című témakörben](https://docs.microsoft.com/rest/api/cosmos-db/querying-cosmosdb-resources-using-the-rest-api)talál további információt.
 
-## <a name="best-practices-for-query-performance"></a>Gyakorlati tanácsok a lekérdezési teljesítmény
-Az alábbiakban a leggyakoribb tényező befolyásolja az Azure Cosmos DB lekérdezési teljesítmény. Hogy mélyebben megismerjük egyes ezek a témakörök ebben a cikkben.
+## <a name="best-practices-for-query-performance"></a>Gyakorlati tanácsok a lekérdezési teljesítményhez
+Az alábbiakban a leggyakoribb tényezők, amelyek hatással vannak az Azure Cosmos DB lekérdezési teljesítmény. Mélyebbre ásunk az alábbi témakörök mindegyikében ebben a cikkben.
 
 | Tényező | Tipp | 
 | ------ | -----| 
-| Kiosztott átviteli sebesség | Lekérdezésenként RU mérni, és győződjön meg arról, hogy rendelkezik-e a szükséges kiosztott átviteli sebesség a lekérdezésekhez. | 
-| Particionálás és a partíciókulcsok | A partíciós kulcs értékét a szűrőfeltételt az alacsony késés érdekében az alkalmazást a lekérdezéseket. |
-| SDK-t és a lekérdezési beállítások | Hajtsa végre az SDK ajánlott eljárásaival, például a közvetlen kapcsolat, és finomhangolása az ügyféloldali lekérdezés-végrehajtási lehetőségeket. |
-| Hálózati késleltetés | Hálózati mérési többletterhelést okoz a fiókot, és olvassa el a legközelebbi régióból a többkiszolgálós API-k használatával. |
-| Indexelési házirend | Győződjön meg arról, hogy az indexelő elérési utak/szabályzatot a lekérdezéshez. |
-| Lekérdezés-végrehajtási metrikák | Azonosíthatja a potenciális újraírások lekérdezési és alakzatok a lekérdezés végrehajtási metrikát elemezhet.  |
+| Kiosztott átviteli sebesség | Mérési ru lekérdezésenként, és győződjön meg arról, hogy rendelkezik a lekérdezésekhez szükséges kiépített átviteli. | 
+| Particionálási és partíciókulcsok | Előnyben részesíti a partíciókulcs-értékkel rendelkező lekérdezéseket a szűrőzáradékban az alacsony késés miatt. |
+| SDK- és lekérdezési beállítások | Kövesse az SDK ajánlott eljárásokat, például a közvetlen kapcsolatot, és hangolja be az ügyféloldali lekérdezés végrehajtási beállításait. |
+| Hálózati késleltetés | Vegye figyelembe a hálózati terhelést a méréssorán, és használja a többhoming API-kat a legközelebbi régióból történő olvasáshoz. |
+| Indexelési szabályzat | Győződjön meg arról, hogy rendelkezik a lekérdezéshez szükséges indexelési elérési utakkal/házirenddel. |
+| Lekérdezésvégrehajtási mutatók | Elemezze a lekérdezés végrehajtási metrikák at a lekérdezési és adatalakzatok lehetséges újraírásainak azonosításához.  |
 
 ### <a name="provisioned-throughput"></a>Kiosztott átviteli sebesség
-Cosmos dB-ben létrehozhat tárolókat az adatokat, minden kifejezett kérelem egységek (RU) másodpercenként fenntartott adattovábbítási kapacitással rendelkező. Egy 1 KB méretű dokumentum olvasási: 1 RU, és minden művelet (beleértve a lekérdezések) az összetettség alapján RUs rögzített számú van normalizálva. Például ha 1000 RU/s kiosztott a tárolóhoz, és rendelkezik lekérdezésben `SELECT * FROM c WHERE c.city = 'Seattle'` , amely 5 Kérelemegységet fogyaszt, akkor is végezhet (1000 RU/s) / (5 RU/lekérdezés) = 200 lekérdezés/s az ilyen lekérdezések másodpercenként. 
+A Cosmos DB-ben adattárolókat hoz létre, amelyek mindegyike kérésegységekben (RU) /másodpercben kifejezett fenntartott átviteli sebességű. Az 1 KB-os dokumentum olvasása 1 RU, és minden művelet (beleértve a lekérdezéseket is) a műveletazonosítók összetettsége alapján meghatározott számú vt-re normalizálódik. Például ha 1000 RU/s kiépített a tároló, és van `SELECT * FROM c WHERE c.city = 'Seattle'` egy lekérdezés, mint amely 5 vt-k, majd hajtsa végre (1000 RU/s) / (5 RU/query) = 200 lekérdezés/s ilyen lekérdezések másodpercenként. 
 
-Ha több mint 200 állapotlekérdezés/mp, a szolgáltatás elindul, bejövő kéréseket a sebességhatárolt 200/s felett. Az SDK-k automatikusan kezelik az ebben az esetben a leállítási/ismételt végrehajtásával, ezért előfordulhat, hogy láthatja, hogy a lekérdezések egy nagyobb késést. A szükséges érték, a kiosztott átviteli sebesség növelése javítja a Lekérdezések késése és az átviteli sebességet. 
+Ha több mint 200 lekérdezést küld másodpercenként, a szolgáltatás 200/s feletti sebességkorlátozó kéréseket indít el. Az SDK-k automatikusan kezelik ezt az esetet egy visszalépés/újrapróbálkozás végrehajtásával, ezért előfordulhat, hogy ezek a lekérdezések nagyobb késést észlelnek. A kiosztott átviteli teljesítmény növelése a szükséges értékre javítja a lekérdezés késését és átviteli képességét. 
 
-További információ a kérelemegységekről, lásd: [Kérelemegységek](request-units.md).
+Ha többet szeretne megtudni a kérelemegységekről, olvassa el az [Egységek kérése ..](request-units.md)
 
-### <a name="partitioning-and-partition-keys"></a>Particionálás és a partíciókulcsok
-Az Azure Cosmos DB lekérdezéseket végrehajtania a lassabb/kevésbé hatékony, a leggyorsabb és a legtöbb hatékony a következő sorrendben. 
+### <a name="partitioning-and-partition-keys"></a>Particionálási és partíciókulcsok
+Az Azure Cosmos DB használatával a lekérdezések általában a következő sorrendben, a leggyorsabb/leghatékonyabb tól a lassabbig és kevésbé hatékonyig hajthatók végre. 
 
-* Egy önálló partíciókulcsokon és cikk kulcs LEKÉRÉSE
-* Az önálló partíciókulcsokon szűrőfeltételt lekérdezése
-* Lekérdezése nélkül egy egyenlőség vagy tartomány szűrőfeltételt bármely vlastnost
-* Szűrők nélkül lekérdezése
+* GET egyetlen partíciókulcsés elemkulcs
+* Szűrőzáradékkal rendelkező lekérdezés egyetlen partíciókulcson
+* Egyenlőség- vagy tartományszűrő záradék nélküli lekérdezés bármely tulajdonságon
+* Lekérdezés szűrők nélkül
 
-Tekintse meg az összes partíció lekérdezések nagyobb késést kell, és magasabb fogyasztanak is. Mivel mindegyik partíció rendelkezik az összes tulajdonság automatikus indexelés, lekérdezés is hatékonyan kiszolgálható az indexből ebben az esetben. Lekérdezések partíciók gyorsabban a párhuzamossági beállítások használatával teheti meg.
+Lekérdezések, amelyek nek konzultálniuk kell az összes partíciót kell nagyobb késést, és magasabb rus-k felhasználásával. Mivel minden partíció automatikus indexelés az összes tulajdonság, a lekérdezés hatékonyan kiszolgálható az index ebben az esetben. A párhuzamossági beállításokkal gyorsabban leteheti a partíciókat átszelő lekérdezéseket.
 
-Particionálás és a partíciókulcsok kapcsolatos további információkért lásd: [az Azure Cosmos DB particionálási](partition-data.md).
+A particionálásról és a partíciókulcsokról az [Azure Cosmos DB particionálása.](partition-data.md)
 
-### <a name="sdk-and-query-options"></a>SDK-t és a lekérdezési beállítások
-Lásd: [teljesítménnyel kapcsolatos tippek](performance-tips.md) és [Teljesítménytesztelés](performance-testing.md) az Azure Cosmos DB-ből a legjobb teljesítmény érdekében az ügyféloldali beszerzése. Ez magában foglalja a legújabb SDK-k használatával, a platform-specifikus konfigurációkat, például a kapcsolatokat, gyakorisága szemétgyűjtés, alapértelmezett száma konfigurálását és a könnyen használható kapcsolati lehetőségek, például a közvetlen/TCP használatával. 
+### <a name="sdk-and-query-options"></a>SDK- és lekérdezési beállítások
+Tekintse meg a teljesítménytippek és [teljesítménytesztelés című](performance-testing.md) [témakört,](performance-tips.md) amelyből megtudhatja, hogyan szerezheti be a legjobb ügyféloldali teljesítményt az Azure Cosmos DB-től. Ez magában foglalja a legújabb SDK-k használatát, a platformspecifikus konfigurációk, például az alapértelmezett kapcsolatok számának konfigurálását, a szemétgyűjtés gyakoriságát és a könnyű kapcsolódási lehetőségek, például a Direct/TCP használatát. 
 
 
-#### <a name="max-item-count"></a>Elemek maximális száma
-A lekérdezésekhez, értékét `MaxItemCount` jelentős hatással lehet a végpontok közötti lekérdezések során. Minden egyes körbeérnek a kiszolgálón lévő elemek száma legfeljebb adja vissza `MaxItemCount` (100 elemet alapértelmezés szerint). E beállítás hatására értéke (a-1 értéket a legnagyobb, és az ajánlott) javítja a lekérdezési időtartam teljes, a kiszolgáló és az ügyfél, különösen a lekérdezések nagy eredményhalmazt közötti adatváltások számát korlátozza.
+#### <a name="max-item-count"></a>Maximális cikkszám
+Lekérdezések esetén az `MaxItemCount` értéke jelentős hatással lehet a végpontok között lekérdezési idő. Minden oda-vissza út a szerver re nem `MaxItemCount` több, mint az elemek száma (Alapértelmezett 100 elem). Ha ezt magasabb értékre állítja (-1 a maximum és ajánlott), a lekérdezés teljes időtartama összességében javítja a kiszolgáló és az ügyfél közötti adatváltások számát, különösen a nagy eredményhalmazokkal rendelkező lekérdezések esetében.
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -181,8 +181,8 @@ IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
     }).AsDocumentQuery();
 ```
 
-#### <a name="max-degree-of-parallelism"></a>Maximális párhuzamossági fok
-A Lekérdezések finomhangolása a `MaxDegreeOfParallelism` felismerésében az ajánlott az alkalmazás, különösen akkor, ha a partícióra kiterjedő lekérdezések (a partíciókulcs értékhez szűrő) nélkül végezhet. `MaxDegreeOfParallelism`  a feladatok maximális száma párhuzamos, azaz a párhuzamos látogatják partíciók maximális szabályozza. 
+#### <a name="max-degree-of-parallelism"></a>A párhuzamosság maximális mértéke
+Lekérdezések esetén `MaxDegreeOfParallelism` állítsa be a, hogy azonosítsa az alkalmazás legjobb konfigurációit, különösen akkor, ha partícióközi lekérdezéseket hajt végre (a partíció-kulcs értékének szűrője nélkül). `MaxDegreeOfParallelism`a párhuzamos feladatok maximális számát szabályozza, azaz a párhuzamosan meglátogatott partíciók maximális számát. 
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -195,31 +195,31 @@ IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
     }).AsDocumentQuery();
 ```
 
-Tegyük fel, amelyek
-* D = az alapértelmezett maximális száma (az ügyfélszámítógépen a processzor teljes száma =) párhuzamos feladatok
-* P = párhuzamos feladatok maximális száma a felhasználó által megadott
-* N látogatják a lekérdezést igénylő partíciók száma =
+Tegyük fel, hogy
+* D = Alapértelmezett Párhuzamos feladatok maximális száma (= az ügyfélgépen lévő processzorok teljes száma)
+* P = A párhuzamos feladatok felhasználó által megadott maximális száma
+* N = A lekérdezés megválaszolásához meglátogatott partíciók száma
 
-Az alábbiakban következményei hogyan viselkednek a párhuzamos lekérdezéseket a másik értékkel. o.
-* (P == 0) = > soros mód
-* (P == 1) = > egyetlen feladat maximális
-* (P > 1) = > perc (P, N) párhuzamos feladatok 
-* (P < 1) = > perc (N, D) párhuzamos feladatok
+A következőkben a párhuzamos lekérdezések hogyan viselkednének a P különböző értékeire.
+* (P == 0) => soros üzemmód
+* (P == 1) => Egy tevékenység maximális száma
+* (P > 1) => min (P, N) párhuzamos feladatok 
+* (P < 1) => Min (N, D) párhuzamos feladatok
 
-SDK kibocsátási megjegyzéseket, és részleteket megvalósított osztályok és módszerek az [SQL SDK-k](sql-api-sdk-dotnet.md)
+Az SDK kiadási megjegyzések, valamint a megvalósított osztályok és metódusok részleteiaz [SQL SDK-k](sql-api-sdk-dotnet.md)
 
 ### <a name="network-latency"></a>Hálózati késleltetés
-Lásd: [Azure Cosmos DB globális terjesztésének](tutorial-global-distribution-sql-api.md) , hogy hogyan állítsa be a globális terjesztés, és csatlakozzon a legközelebbi régiót. Hálózati késés jelentős hatással a lekérdezési teljesítményre van szüksége több adatváltásra vagy lekérdezni a lekérdezésből származó nagy eredményhalmazt. 
+Tekintse meg az [Azure Cosmos DB globális disztribúcióját](tutorial-global-distribution-sql-api.md) a globális disztribúció beállításáról és a legközelebbi régióhoz való csatlakozásról. A hálózati késés jelentős hatással van a lekérdezés teljesítményére, ha több oda-vissza utat kell tennie, vagy nagy eredményhalmazt kell lekérnie a lekérdezésből. 
 
-A szakasz a lekérdezés végrehajtási metrikák azt ismerteti, hogyan kérheti le a kiszolgáló lekérdezések végrehajtási ideje ( `totalExecutionTimeInMs`), hogy meg tudja különböztetni idő a lekérdezés-végrehajtás és az idő a hálózati átvitel során.
+A lekérdezésvégrehajtási metrikák szakasza bemutatja, hogyan `totalExecutionTimeInMs`lehet lekérni a lekérdezések ( kiszolgáló végrehajtási idejét ( ), így különbséget tehet a lekérdezés végrehajtásával töltött idő és a hálózati átvitel során töltött idő között.
 
 ### <a name="indexing-policy"></a>Indexelési szabályzat
-Lásd: [indexelési szabályzat konfigurálása](index-policy.md) indexelés elérési utak, bármilyen, és módok és milyen hatással van, a lekérdezés végrehajtása céljából. Alapértelmezés szerint az indexelési házirendet használja kivonatoló indexelő-karakterlánc, amely hatékony egyenlőség lekérdezések esetében, de nem esik lekérdezések/rendezési lekérdezésekkel. Ha karakterláncokat kell lekérdezések, javasoljuk, adja meg a tartomány minden karakterlánc index típusa. 
+Lásd: [Indexelési házirend beállítása](index-policy.md) az elérési utak, -fajták és -módok indexelése, valamint a lekérdezések végrehajtásának hatása című témakörben. Alapértelmezés szerint az indexelési házirend kivonatindexelést használ a karakterláncokhoz, amely hatékony az egyenlőségi lekérdezésekhez, de a lekérdezések általi tartománylekérdezésekhez/sorrendhez nem. Ha tartománylekérdezésekre van szüksége a karakterláncokhoz, javasoljuk, hogy adja meg a Tartomány index típusát az összes karakterlánchoz. 
 
-Alapértelmezés szerint a Azure Cosmos DB minden adattal automatikusan alkalmazza az indexelést. A nagy teljesítményű beszúrási forgatókönyvek esetében érdemes lehet kihagyni az elérési utakat, mivel ez csökkenti az egyes INSERT műveletekhez tartozó RU-költségeket. 
+Alapértelmezés szerint az Azure Cosmos DB automatikus indexelést alkalmaz az összes adatra. Nagy teljesítményű beszúrási forgatókönyvek esetén fontolja meg az elérési utak kizárását, mivel ez csökkenti az egyes beszúrási műveletek vtv-költségét. 
 
-## <a name="query-execution-metrics"></a>Lekérdezés-végrehajtási metrikák
-Ezt a nem kötelező úgy szerezheti be a lekérdezések részletes metrikákért `x-ms-documentdb-populatequerymetrics` fejléc (`FeedOptions.PopulateQueryMetrics` a .NET SDK-ban). A visszaadott érték `x-ms-documentdb-query-metrics` azt jelentette a speciális hibaelhárításhoz, a lekérdezés végrehajtása a következő kulcs-érték párokat tartalmaz. 
+## <a name="query-execution-metrics"></a>Lekérdezésvégrehajtási mutatók
+A lekérdezések végrehajtásával kapcsolatos részletes metrikákat a választható `x-ms-documentdb-populatequerymetrics` fejléc (a`FeedOptions.PopulateQueryMetrics` .NET SDK) átadásával kaphatja meg. A visszaadott `x-ms-documentdb-query-metrics` érték a következő kulcs-érték párokkal rendelkezik, amelyek a lekérdezésvégrehajtásá speciális hibaelhárításához vannak szánva. 
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -239,41 +239,41 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 | Metrika | Unit (Egység) | Leírás | 
 | ------ | -----| ----------- |
-| `totalExecutionTimeInMs` | ezredmásodperc | Lekérdezés-végrehajtási idő | 
-| `queryCompileTimeInMs` | ezredmásodperc | Lekérdezés fordítási idő  | 
-| `queryLogicalPlanBuildTimeInMs` | ezredmásodperc | Logikai lekérdezésterv építi | 
-| `queryPhysicalPlanBuildTimeInMs` | ezredmásodperc | Fizikai lekérdezésterv építi | 
-| `queryOptimizationTimeInMs` | ezredmásodperc | A lekérdezés optimalizálása töltött idő | 
-| `VMExecutionTimeInMs` | ezredmásodperc | Idő a lekérdezés futásidejű | 
-| `indexLookupTimeInMs` | ezredmásodperc | Idő a fizikai index réteg | 
-| `documentLoadTimeInMs` | ezredmásodperc | Idő a dokumentumok betöltése  | 
-| `systemFunctionExecuteTimeInMs` | ezredmásodperc | A fordított teljes idő végrehajtó rendszer (beépített) függvény ezredmásodpercben  | 
-| `userFunctionExecuteTimeInMs` | ezredmásodperc | A fordított teljes idő ezredmásodpercben végrehajtó felhasználó által definiált függvények | 
-| `retrievedDocumentCount` | count | Lekérdezett dokumentumok összesített száma  | 
-| `retrievedDocumentSize` | bájt | Teljes mérete (bájt) beolvasott dokumentumokat  | 
-| `outputDocumentCount` | count | Kimeneti dokumentumok száma | 
-| `writeOutputTimeInMs` | ezredmásodperc | Lekérdezés-végrehajtási idő (MS) | 
-| `indexUtilizationRatio` | arány (< = 1) | A dokumentumok számát a szűrővel egyező dokumentumok száma aránya betöltése  | 
+| `totalExecutionTimeInMs` | ezredmásodperc | Lekérdezés végrehajtási ideje | 
+| `queryCompileTimeInMs` | ezredmásodperc | Lekérdezés fordítási ideje  | 
+| `queryLogicalPlanBuildTimeInMs` | ezredmásodperc | A logikai lekérdezési terv elkészítésének ideje | 
+| `queryPhysicalPlanBuildTimeInMs` | ezredmásodperc | Fizikai lekérdezési terv elkészítésének ideje | 
+| `queryOptimizationTimeInMs` | ezredmásodperc | A lekérdezés optimalizálásával töltött idő | 
+| `VMExecutionTimeInMs` | ezredmásodperc | A lekérdezési futásidejű időszakban töltött idő | 
+| `indexLookupTimeInMs` | ezredmásodperc | A fizikai indexrétegben töltött idő | 
+| `documentLoadTimeInMs` | ezredmásodperc | A dokumentumok betöltése során eltöltött idő  | 
+| `systemFunctionExecuteTimeInMs` | ezredmásodperc | A rendszer (beépített) függvényeinek végrehajtó összes ideje ezredmásodpercben  | 
+| `userFunctionExecuteTimeInMs` | ezredmásodperc | A felhasználó által definiált függvények végrehajtásával töltött teljes idő ezredmásodpercben | 
+| `retrievedDocumentCount` | count | Beolvasott dokumentumok teljes száma  | 
+| `retrievedDocumentSize` | Bájt | Beolvasott dokumentumok teljes mérete bájtban  | 
+| `outputDocumentCount` | count | Kimeneti bizonylatok száma | 
+| `writeOutputTimeInMs` | ezredmásodperc | Lekérdezés végrehajtási ideje ezredmásodpercben | 
+| `indexUtilizationRatio` | arány (<=1) | A szűrővel egyeztetett dokumentumok számának és a betöltött dokumentumok számának aránya  | 
 
-Az ügyfél SDK-k belső használatra elérhetővé teheti több lekérdezési műveletek a lekérdezés minden egyes partíción belül kiszolgálása érdekében. Az ügyfél hívást egynél több partíciónkénti Ha az összes eredmény meghaladja a `x-ms-max-item-count`, ha a lekérdezés meghaladja a kiosztott átviteli sebesség a partíció, vagy ha a lekérdezés hasznos eléri a maximális méretet, egy-egy lapon, vagy ha a lekérdezés eléri a rendszer lefoglalt időtúllépési korlát. Minden egyes részleges lekérdezés-végrehajtás adja vissza egy `x-ms-documentdb-query-metrics` lap. 
+Az ügyfél SDK-k belsőleg több lekérdezési műveleteket, hogy a lekérdezés tã¶rtÃgÃG ã¶sszevonã¶sna. Az ügyfél partíciónként egynél több hívást hajt `x-ms-max-item-count`végre, ha az összesített eredmény meghaladja , ha a lekérdezés meghaladja a partíció kiosztott átviteli rendszerét, vagy ha a lekérdezés hasznos terhelése eléri az oldalankénti maximális méretet, vagy ha a lekérdezés eléri a rendszer által lefoglalt időkorlátot. Minden részleges lekérdezés-végrehajtás a `x-ms-documentdb-query-metrics` lapot ad vissza az adott laphoz. 
 
-Az alábbiakban néhány mintalekérdezést, és a mérőszámok egyes értelmezése adja vissza a lekérdezés végrehajtása: 
+Íme néhány mintalekérdezés, és hogyan értelmezhető a lekérdezés végrehajtásából visszaadott metrikák némelyike: 
 
-| Lekérdezés | Minta metrika | Leírás | 
+| Lekérdezés | Mintametria | Leírás | 
 | ------ | -----| ----------- |
-| `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | A lekért dokumentumok száma: 1 100 + megfelelően a TOP záradékot. Lekérdezés többnyire időt vesz igénybe a `WriteOutputTime` és `DocumentLoadTime` mivel ez a vizsgálat. | 
-| `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | RetrievedDocumentCount már magasabb (500 + 1 a TOP záradékot megfelelően). | 
-| `SELECT * FROM c WHERE c.N = 55` | `"IndexLookupTime": "00:00:00.0009500"` | Körülbelül 0.9-es ms van telik el a IndexLookupTime kulcskeresés, egy index keresési, mert `/N/?`. | 
-| `SELECT * FROM c WHERE c.N > 55` | `"IndexLookupTime": "00:00:00.0017700"` | Valamivel több (1.7 ms) töltött idő IndexLookupTime keresztül a tartomány ellenőrzését egy index keresési, mert `/N/?`. | 
-| `SELECT TOP 500 c.N FROM c` | `"IndexLookupTime": "00:00:00.0017700"` | Egy időben költött `DocumentLoadTime` előző lekérdezésekhez, de alacsonyabb `WriteOutputTime` , mert azt már kivetítést csak az egyik tulajdonság. | 
-| `SELECT TOP 500 udf.toPercent(c.N) FROM c` | `"UserDefinedFunctionExecutionTime": "00:00:00.2136500"` | Körülbelül 213 ms töltött `UserDefinedFunctionExecutionTime` minden értékét az UDF végrehajtása `c.N`. |
-| `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(c.Name, 'Den')` | `"IndexLookupTime": "00:00:00.0006400", "SystemFunctionExecutionTime": "00:00:00.0074100"` | Hamarosan a 0.6-os ms töltött `IndexLookupTime` a `/Name/?`. A lekérdezés végrehajtási idő (ms KB. 7) a legtöbb `SystemFunctionExecutionTime`. |
-| `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(LOWER(c.Name), 'den')` | `"IndexLookupTime": "00:00:00", "RetrievedDocumentCount": 2491,  "OutputDocumentCount": 500` | A lekérdezést hajtjuk végre, a vizsgálat, mert használja `LOWER`, és 500 2491 beolvasott dokumentumokat kívül adja vissza. |
+| `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | A beolvasott dokumentumok száma 100+1 a TOP záradéknak megfelelően. A lekérdezési idő `WriteOutputTime` `DocumentLoadTime` többnyire töltött, és mivel ez egy vizsgálat. | 
+| `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | A RetrievedDocumentCount mostantól magasabb (500+1 a TOP záradéknak megfelelően). | 
+| `SELECT * FROM c WHERE c.N = 55` | `"IndexLookupTime": "00:00:00.0009500"` | Körülbelül 0,9 ms-ot költ ünk az IndexLookupTime-ban egy kulcskeresményhez, mert ez egy `/N/?`index-keresm én. | 
+| `SELECT * FROM c WHERE c.N > 55` | `"IndexLookupTime": "00:00:00.0017700"` | Valamivel több időt (1,7 ms) töltött IndexLookupTime egy tartomány ban scan, mert ez egy index keres `/N/?`. | 
+| `SELECT TOP 500 c.N FROM c` | `"IndexLookupTime": "00:00:00.0017700"` | A korábbi `DocumentLoadTime` lekérdezésekkel azonos időt `WriteOutputTime` töltött, de alacsonyabb, mert csak egy tulajdonságot vetítünk ki. | 
+| `SELECT TOP 500 udf.toPercent(c.N) FROM c` | `"UserDefinedFunctionExecutionTime": "00:00:00.2136500"` | Körülbelül 213 ms-ot `UserDefinedFunctionExecutionTime` fordítanak az UDF `c.N`végrehajtására a minden egyes értékére. |
+| `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(c.Name, 'Den')` | `"IndexLookupTime": "00:00:00.0006400", "SystemFunctionExecutionTime": "00:00:00.0074100"` | Körülbelül 0,6 ms `IndexLookupTime` költött `/Name/?`a . A lekérdezés végrehajtási idejének nagy része `SystemFunctionExecutionTime`(~7 ms) a rendszerben. |
+| `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(LOWER(c.Name), 'den')` | `"IndexLookupTime": "00:00:00", "RetrievedDocumentCount": 2491,  "OutputDocumentCount": 500` | A lekérdezés vizsgálatként történik, `LOWER`mert a program a programot használja, és a 2491 beolvasott dokumentumból 500-at ad vissza. |
 
 
 ## <a name="next-steps"></a>További lépések
-* A támogatott SQL-lekérdezési operátorokkal vagy kulcsszavak kapcsolatos további információkért lásd: [SQL-lekérdezés](sql-query-getting-started.md). 
-* Kérelemegység kapcsolatos további információkért lásd: [kérelemegységek](request-units.md).
-* Indexelési házirend kapcsolatos további információkért lásd: [indexelési szabályzat](index-policy.md) 
+* A támogatott SQL-lekérdezés-operátorokról és kulcsszavakról az [SQL-lekérdezés](sql-query-getting-started.md)című témakörben olvashat. 
+* A kérelemegységekről a [kérelemegységek ről](request-units.md)olvashat.
+* Az indexelési szabályzatról az [indexelési szabályzat című](index-policy.md) témakörben olvashat. 
 
 

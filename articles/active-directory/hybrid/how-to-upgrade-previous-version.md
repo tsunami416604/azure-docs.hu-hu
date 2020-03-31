@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Frissítés korábbi verzióról |} A Microsoft Docs'
-description: Ismerteti a különböző módszerek frissítése a legújabb kiadása az Azure Active Directory Connect, beleértve a helyben frissítés és a egy párhuzamos migrálás.
+title: 'Azure AD Connect: Frissítés egy korábbi verzióról | Microsoft dokumentumok'
+description: Az Azure Active Directory Connect legújabb kiadására való frissítés különböző módszereit ismerteti, beleértve a helyszíni frissítést és a lengésáttelepítést.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,109 +17,109 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2a3e7373a8b0354a3d08debf944f2f77f1609382
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60347691"
 ---
-# <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: Egy előző verzióról a legújabbra frissítése
-Ez a témakör ismerteti a különböző módszereket, amelyek segítségével az Azure Active Directory (Azure AD) Connect-telepítésre frissítsen a legújabb verziót. Azt javasoljuk, hogy őrizze meg magát a kiadások, az Azure AD Connect az aktuális. Is szereplő lépések segítségével a [párhuzamos migrálás](#swing-migration) szakaszt, ha létrehoz egy jelentős konfigurációs módosítást.
+# <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: frissítés egy előző verzióról a legújabbra
+Ez a témakör ismerteti a különböző módszerek, amelyek segítségével frissítheti az Azure Active Directory (Azure AD) Connect telepítése a legújabb kiadásra. Azt javasoljuk, hogy tartsa magát naprakészen az Azure AD Connect kiadásaival. A Swing áttelepítési szakaszlépéseit is [használhatja,](#swing-migration) ha jelentős konfigurációmódosítást eszközz.
 
 >[!NOTE]
-> Jelenleg az Azure AD Connect bármely verziójának frissítése az aktuális verzióra támogatott. Helyszíni frissítés a DirSync vagy az ADSync nem támogatott, és a egy párhuzamos migrálás megadása kötelező.  Ha azt szeretné, hogy frissítésre a dirsyncről, [frissítése az Azure AD Szinkronizáló eszközéről (DirSync)](how-to-dirsync-upgrade-get-started.md) vagy a [párhuzamos migrálás](#swing-migration) szakaszban.  </br>A gyakorlatban rendkívül régi verziók rendelkező ügyfeleink az Azure AD Connect nem közvetlenül kapcsolódó problémák fordulhatnak elő. Kiszolgálók, amely már évek, éles környezetben általában számos javítást alkalmazza őket eszközt, és ezek közül nem mindegyik számítani lehet.  Ügyfelek, akik nem frissítette a 12-18 hónapos általában gondolja át a párhuzamos frissítés ehelyett Ez a beállítás a legszigorúbb és legalább kockázatos.
+> Jelenleg támogatott az Azure AD Connect bármely verziójáról való frissítés az aktuális verzióra. A DirSync vagy az ADSync helyben történő frissítése nem támogatott, és swing-áttelepítésre van szükség.  Ha a DirSync szolgáltatásról szeretne frissíteni, olvassa el a [Frissítés az Azure AD szinkronizálási eszközről (DirSync)](how-to-dirsync-upgrade-get-started.md) vagy a [Swing-áttelepítés](#swing-migration) i.  </br>A gyakorlatban a rendkívül régi verziókon lévő ügyfelek problémákat tapasztalhatnak, amelyek nem kapcsolódnak közvetlenül az Azure AD Connecthez. Azok a kiszolgálók, amelyek már több éve élestermelésben vannak, jellemzően több javítást alkalmaztak rájuk, és ezek közül nem mindegyik számolható el.  Általában, vásárlók ki volna nem felminősített -ban 12-18 hónapok kellet volna tekint egy hinta feljavít helyett mint ez a leg--bb konzervatív és a legkevésbé kockázatos választás.
 
-Ha azt szeretné, hogy frissítésre a dirsyncről, [frissítése az Azure AD Szinkronizáló eszközéről (DirSync)](how-to-dirsync-upgrade-get-started.md) helyette.
+Ha a DirSync szolgáltatásról szeretne frissíteni, olvassa el a [Frissítés az Azure AD szinkronizálási eszközről (DirSync)](how-to-dirsync-upgrade-get-started.md) című témakört.
 
-Van néhány különböző stratégiákat használhatja az Azure AD Connect frissítése.
+Az Azure AD Connect frissítéséhez néhány különböző stratégia használható.
 
 | Módszer | Leírás |
 | --- | --- |
-| [Automatikus frissítés](how-to-connect-install-automatic-upgrade.md) |Ez az a legegyszerűbb módszer az expressz telepítési rendelkező ügyfelek számára. |
-| [Frissítés helyben](#in-place-upgrade) |Ha rendelkezik egy egykiszolgálós, frissítheti a telepítési helyben ugyanazon a kiszolgálón. |
-| [Párhuzamos migrálás](#swing-migration) |Két kiszolgáló előkészítése az új kiadás vagy konfigurációs kiszolgálók egyikét, és módosítsa az aktív kiszolgáló, amikor készen áll. |
+| [Automatikus frissítés](how-to-connect-install-automatic-upgrade.md) |Ez a legegyszerűbb módszer az expressz telepítéssel rendelkező ügyfelek számára. |
+| [Frissítés helyben](#in-place-upgrade) |Ha egyetlen kiszolgálóval rendelkezik, a telepítést helyben frissítheti ugyanazon a kiszolgálón. |
+| [Párhuzamos migrálás](#swing-migration) |Két kiszolgáló esetén előkészítheti az egyik kiszolgálót az új kiadással vagy konfigurációval, és módosíthatja az aktív kiszolgálót, ha készen áll. |
 
-Engedélyek információkért lásd: a [a frissítéshez szükséges engedélyek](reference-connect-accounts-permissions.md#upgrade).
+Az engedélyekkel kapcsolatos információkat a [frissítéshez szükséges engedélyek](reference-connect-accounts-permissions.md#upgrade)ben talál.
 
 > [!NOTE]
-> Miután engedélyezte az új Azure AD Connect-kiszolgáló, kezdje a változásokat az Azure ad-hez, nem térhet vissza a DirSync vagy Azure AD Sync. Az Azure AD Connect a régebbi ügyfelekre, beleértve a DirSync és az Azure AD Sync és alacsonyabb verziójúra változtatása nem támogatott, és az Azure ad-ben problémákat, például adatvesztést okozhat.
+> Miután engedélyezte az új Azure AD Connect-kiszolgáló számára a módosítások szinkronizálását az Azure AD-hez, nem állhat vissza a DirSync vagy az Azure AD Sync használatára. Az Azure AD Connectről az örökölt ügyfelekre, például a DirSync-re és az Azure AD Sync-re való visszaminősítés nem támogatott, és olyan problémákhoz vezethet, mint például az Azure AD-ben az adatvesztés.
 
 ## <a name="in-place-upgrade"></a>Frissítés helyben
-Egy helyszíni frissítését az Azure AD Sync vagy az Azure AD Connect való áttérés működik. A Dirsync szolgáltatásról történő áthelyezésére vagy a megoldás a Forefront Identity Manager (FIM) + Azure AD-összekötő nem működik.
+A helybeni frissítés az Azure AD Sync vagy az Azure AD Connect szolgáltatásból való áttéréshez is működik. Nem működik a DirSync-ből való áthelyezéshez vagy a Forefront Identity Manager (FIM) + Azure AD Connector megoldásaihoz.
 
-Ez a módszer használata ajánlott, ha egyetlen kiszolgálón és a kisebb, mint körülbelül 100 000 objektumra. Ha módosítania kellene az out-of-box szinkronizálási szabályokat, a teljes importálást és teljes szinkronizálást a frissítés után történik. Ez a módszer biztosítja, hogy az új konfiguráció alkalmazása az összes meglévő objektumokat a rendszer. Futtatni, terjed ki a szinkronizálási motor objektumok számától függően néhány órát is igénybe vehet. A normál különbözeti szinkronizálás ütemező (amely alapértelmezés szerint szinkronizálja a 30 percenként) fel van függesztve, de a jelszó-szinkronizálás továbbra is. Célszerű a helyszíni frissítését egy hétvégén. Ha kiadás az out-of-box-konfigurációt az új Azure AD Connect nem változik, majd egy normál különbözeti importálás/szinkronizálás, inkább elindul.  
+Ez a módszer akkor ajánlott, ha egyetlen kiszolgálóval rendelkezik, és kevesebb mint 100 000 objektummal rendelkezik. Ha a beépített szinkronizálási szabályok módosulnak, a frissítés után teljes importálás és teljes szinkronizálás történik. Ez a módszer biztosítja, hogy az új konfiguráció a rendszer összes meglévő objektumára vonatkozik. Ez a futtatás eltarthat néhány órát, attól függően, hogy hány objektum van a szinkronizálási motor hatókörében. A normál különbözeti szinkronizálási ütemező (amely alapértelmezés szerint 30 percenként szinkronizál) felfüggesztésre kerül, de a jelszó-szinkronizálás folytatódik. Érdemes lehet a helyben i upgrade-et a hétvégén. Ha az azure-beli AD Connect új kiadásával nincsenek módosítások a beépített konfigurációban, akkor helyette egy normál különbözeti importálás/-szinkronizálás indul el.  
 ![Frissítés helyben](./media/how-to-upgrade-previous-version/inplaceupgrade.png)
 
-Ha az out-of-box szinkronizálási szabályokon végrehajtott módosításokat, majd ezek a szabályok állítja vissza az alapértelmezett konfiguráció, a frissítés. Győződjön meg arról, hogy a konfigurációs frissítések között tárolódik, győződjön meg arról, hogy módosításokat, hogy már leírtak szerint [ajánlott eljárások az alapértelmezett konfiguráció módosításának](how-to-connect-sync-best-practices-changing-default-configuration.md).
+Ha módosította a beépített szinkronizálási szabályokat, akkor ezek a szabályok a frissítéskor az alapértelmezett konfigurációra lesznek visszaállítva. Annak érdekében, hogy a konfiguráció a frissítések között is megmaradjon, győződjön meg arról, hogy az alapértelmezett konfiguráció módosításához ajánlott eljárásokban leírtak szerint [módosítja azokat.](how-to-connect-sync-best-practices-changing-default-configuration.md)
 
-A helyben frissítés során, előfordulhat, bevezetett változások igénylő frissítés befejezése után futtatandó meghatározott szinkronizálási tevékenység (beleértve a teljes importálást és teljes szinkronizálást lépést). Ilyen tevékenységek késlelteti, tekintse meg a szakasz [késlelteti a frissítés után teljes szinkronizálást hogyan](#how-to-defer-full-synchronization-after-upgrade).
+A helybeni frissítés során előfordulhatnak olyan módosítások, amelyek a frissítés befejezése után meghatározott szinkronizálási tevékenységeket igényelnek (beleértve a teljes importálás és a teljes szinkronizálási lépést). Az ilyen tevékenységek elhalasztásához olvassa el A [teljes szinkronizálás elhalasztása a frissítés után című szakaszt.](#how-to-defer-full-synchronization-after-upgrade)
 
-Ha az Azure AD Connect nem szabványos összekötővel (például az általános LDAP-összekötő és az általános SQL-összekötő) használ, frissítenie kell a megfelelő, az összekötő-konfiguráció a [Synchronization Service Managert](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-connectors) helybeni verziófrissítés. Az összekötő konfigurációjának frissítése a részletekért tekintse meg a cikk a szakasz [Connector Verziókiadásai – hibaelhárítás](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-connector-version-history#troubleshooting). Ha nem frissíti a konfigurációt, a behozatali és kiviteli lépéseket nem működnek megfelelően az összekötőhöz. Az alkalmazások eseménynaplójában, az üzenet a következő hibaüzenetet kap *"szerelvény verziója az AAD-összekötő konfigurációja ("X.X.XXX. "X") már korábban, mint a tényleges verzió ("X.X.XXX. "X") a "C:\Program Files\Microsoft Azure ad-ben Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll".*
+Ha az Azure AD Connect nem szabványos összekötővel (például általános LDAP-összekötővel és általános SQL-összekötővel) használja, frissítenie kell a megfelelő összekötő konfigurációt a [szinkronizálási szolgáltatáskezelőben](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-connectors) a helybeni frissítés után. Az összekötő konfigurációjának frissítésével kapcsolatos részletekért tekintse meg az [Összekötő verziókiadási előzmények – Hibaelhárítás](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-connector-version-history#troubleshooting)című cikket. Ha nem frissíti a konfigurációt, az importálási és exportálási futtatási lépések nem fognak megfelelően működni az összekötőnél. A következő hibaüzenet jelenik meg az alkalmazás eseménynaplójában a *következő üzenettel: "Assembly verzió AAD-összekötő konfigurációban ("X.X.XXX. X") korábbi, mint a tényleges változat ("X.X.XXX. X") a "C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll" mappából.*
 
 ## <a name="swing-migration"></a>Párhuzamos migrálás
-Ha egy összetett telepítést vagy több objektum van, az élő rendszer helyben történő frissítés nem célszerű lehet. Egyes ügyfelek számára a folyamat több napot--is igénybe vehet, és ebben az időszakban nem változásokat feldolgozása. Is használhatja ezt a módszert, ha azt tervezi, hogy a konfiguráció jelentős változtatásokat, és próbálja ki őket, mielőtt azok már leküldte a felhő szeretne.
+Ha összetett központi telepítéssel vagy sok objektumot rendelkezik, előfordulhat, hogy nem célszerű helyben frissíteni az élő rendszert. Egyes ügyfelek esetében ez a folyamat több napot is igénybe vehet , és ez idő alatt nem történik delta módosítás feldolgozása. Ezt a módszert akkor is használhatja, ha azt tervezi, hogy jelentős módosításokat hajt végre a konfiguráción, és ki szeretné próbálni őket, mielőtt a felhőbe lelöknék őket.
 
-Az ajánlott módszer az ilyen feladatokhoz szükséges, hogy a párhuzamos migrálás. (Legalább) két kiszolgáló – több aktív kiszolgálót és a egy átmeneti kiszolgálón van szüksége. (A folytonos kék vonal az alábbi ábrán látható) az aktív kiszolgáló felelős az aktív éles terhelés. Az átmeneti kiszolgálón (a szaggatott lila vonal látható) az új kiadás vagy a konfiguráció kész. Teljes mértékben készen áll, amikor a kiszolgáló akkor aktív. Az előző aktív kiszolgáló, amely most már van a régi verziót vagy a telepített konfigurációs, az átmeneti kiszolgálóra történik, és frissül.
+Az ajánlott módszer ezekhez a forgatókönyvekhez a swing-áttelepítés használata. Szüksége van (legalább) két kiszolgálóra – egy aktív kiszolgálóra és egy átmeneti kiszolgálóra. Az aktív kiszolgáló (az alábbi képen egyszínű kék vonalakkal) felelős az aktív termelési terhelésért. Az átmeneti kiszolgáló (szaggatott lila vonalakkal) az új kiadással vagy konfigurációval van előkészítve. Amikor teljesen készen áll, ez a kiszolgáló aktívvá vált. Az előző aktív kiszolgáló, amely most már a régi verzió vagy konfiguráció telepítve van, az átmeneti kiszolgálóra kerül, és frissül.
 
-A két kiszolgáló is eltérő verziókat használnak. Például az aktív kiszolgáló, amely le szeretné szerelni használhatja az Azure AD Sync szolgáltatásról, és az új átmeneti kiszolgáló az Azure AD Connect használatával. Párhuzamos migrálás használatával egy új konfiguráció fejlesztése, célszerű a egyeznie kell a két kiszolgáló található.  
+A két kiszolgáló különböző verziókat használhat. Például az aktív kiszolgáló, amely azt tervezi, hogy leszerelhető használhatja az Azure AD Sync, és az új átmeneti kiszolgáló használhatja az Azure AD Connect. Ha a swing áttelepítés segítségével új konfigurációt fejleszt ki, célszerű, hogy ugyanazokat a verziókat a két kiszolgálón.  
 ![Átmeneti kiszolgáló](./media/how-to-upgrade-previous-version/stagingserver1.png)
 
 > [!NOTE]
-> Egyes ügyfelek inkább három vagy négy kiszolgálót ebben a forgatókönyvben. Ha az átmeneti kiszolgáló frissítve van, nem szükséges a biztonsági mentési kiszolgálóra [vész-helyreállítási](how-to-connect-sync-staging-server.md#disaster-recovery). Három vagy négy kiszolgálókkal készítse elő az új verziót, amely biztosítja, hogy mindig van egy átmeneti kiszolgálón, amely készen áll a átveszi az elsődleges vagy készenléti állapotban lévő kiszolgálók egy csoportja.
+> Egyes ügyfelek inkább három vagy négy kiszolgálót szeretnenak ebben a forgatókönyvben. Az átmeneti kiszolgáló frissítésekénél nincs tartalék kiszolgáló a [vészhelyreállításhoz.](how-to-connect-sync-staging-server.md#disaster-recovery) Három vagy négy kiszolgáló esetén előkészítheti az elsődleges/készenléti kiszolgálók egy készletét az új verzióval, amely biztosítja, hogy mindig legyen egy átmeneti kiszolgáló, amely készen áll az átlépésre.
 
-Ezeket a lépéseket áthelyezése az Azure AD Sync vagy az FIM + az Azure AD-összekötő megoldással is működik. Ezeket a lépéseket nem működnek a Dirsync szinkronizálással, de a azonos párhuzamos áttelepítés (más néven párhuzamos üzembe helyezés) a lépéseket a DirSync módja a [frissítése az Azure Active Directory sync (DirSync)](how-to-dirsync-upgrade-get-started.md).
+Ezek a lépések is dolgozik az Azure AD Sync vagy a FIM + Azure AD-összekötő megoldás áthelyezése. Ezek a lépések nem működnek a DirSync esetében, de ugyanaz a swing-áttelepítési módszer (más néven párhuzamos telepítés) a DirSync lépéseivel az [Azure Active Directory-szinkronizálás frissítése (DirSync)](how-to-dirsync-upgrade-get-started.md).
 
-### <a name="use-a-swing-migration-to-upgrade"></a>A párhuzamos áttelepítés használatával frissíti
-1. Ha az Azure AD Connect mindkét kiszolgálón, és tervezze tétele csak a konfiguráció módosítása, ellenőrizze, hogy az aktív kiszolgáló és az átmeneti kiszolgálón egyaránt használja ugyanazt a verziót. Amely megkönnyíti a különbségek később. Ha frissít, az Azure AD-Szinkronizálóról, akkor ezeket a kiszolgálókat különböző verziói rendelkezik. Ha az Azure AD Connect egy régebbi verziójáról frissít, célszerű elindítani a két kiszolgáló, amely ugyanazt a verziót használ, de ez nem szükséges.
-2. Ha az átmeneti kiszolgáló nem rendelkezik, egy egyéni konfigurációt végrehajtott, kövesse a [az aktív kiszolgáló egyéni konfigurációs áthelyezése az átmeneti kiszolgáló](#move-a-custom-configuration-from-the-active-server-to-the-staging-server).
-3. Ha frissít, az Azure AD Connect egy korábbi verziója, az átmeneti kiszolgáló frissítése a legújabb verzióra. Ha az Azure AD-Szinkronizálóról telepít át, majd az Azure AD Connect telepítése az átmeneti kiszolgálón.
-4. A szinkronizálási motor teljes importálást és teljes szinkronizálást futtatni az átmeneti kiszolgálón legyen.
-5. Ellenőrizze, hogy az új konfigurációt a lépésekkel, a "Hitelesítés" nem okozhat váratlan módosítások be [ellenőrizze a konfigurációs kiszolgáló](how-to-connect-sync-staging-server.md#verify-the-configuration-of-a-server). Ha valami nem a várt módon, javítsa ki, és futtassa az importálás és szinkronizálás, és ellenőrizze az adatokat, amíg nem, minden rendben, az alábbi lépéseket.
-6. Váltás az átmeneti kiszolgálót az aktív kiszolgáló. Ez az utolsó lépésben "Kapcsoló active server" [ellenőrizze a konfigurációs kiszolgáló](how-to-connect-sync-staging-server.md#verify-the-configuration-of-a-server).
-7. Ha frissít, az Azure AD Connect, frissítse a kiszolgálót, amelyet már az átmeneti környezetű üzemmód legfrissebb verzióját. Ugyanezekkel a lépésekkel, mielőtt az adatokat és a frissített konfiguráció beolvasásához. Ha frissített az Azure AD-Szinkronizálóról, most kapcsolja ki és a régi kiszolgáló leszerelése.
+### <a name="use-a-swing-migration-to-upgrade"></a>A frissítéshez használjon lengőáttelepítést
+1. Ha az Azure AD Connect mindkét kiszolgálón, és azt tervezi, hogy csak a konfiguráció módosítása, győződjön meg arról, hogy az aktív kiszolgáló és az átmeneti kiszolgáló egyaránt ugyanazt a verziót használja. Ez megkönnyíti a különbségek későbbi összehasonlítását. Ha az Azure AD Sync-ről frissít, akkor ezek a kiszolgálók különböző verziókkal rendelkeznek. Ha az Azure AD Connect egy régebbi verziójáról frissít, érdemes az azonos verziót használó két kiszolgálóval kezdeni, de ez nem kötelező.
+2. Ha egyéni konfigurációt hozott létre, és az átmeneti kiszolgáló nem rendelkezik vele, kövesse az [Egyéni konfiguráció áthelyezése az aktív kiszolgálóról az átmeneti kiszolgálóra](#move-a-custom-configuration-from-the-active-server-to-the-staging-server)című csoport lépéseit.
+3. Ha az Azure AD Connect korábbi kiadásáról frissít, frissítse az átmeneti kiszolgálót a legújabb verzióra. Ha az Azure AD Sync-ről költözik, telepítse az Azure AD Connectet az átmeneti kiszolgálóra.
+4. Hagyja, hogy a szinkronizálási motor futtassa a teljes importálást és a teljes szinkronizálást az átmeneti kiszolgálón.
+5. Ellenőrizze, hogy az új konfiguráció nem okozott-e váratlan módosításokat a [kiszolgáló konfigurációjának ellenőrzése](how-to-connect-sync-staging-server.md#verify-the-configuration-of-a-server)című, "Ellenőrzés" című részében található lépésekkel. Ha valami nem a várt módon történik, javítsa ki, futtassa az importálást és a szinkronizálást, és ellenőrizze az adatokat, amíg jól nem néz ki a lépések végrehajtásával.
+6. Váltson az átmeneti kiszolgálóra, hogy az legyen az aktív kiszolgáló. Ez az utolsó lépés "Váltás aktív szerver" a [konfiguráció ellenőrzése a szerver](how-to-connect-sync-staging-server.md#verify-the-configuration-of-a-server).
+7. Ha az Azure AD Connectet frissíti, frissítse a most átmeneti módban lévő kiszolgálót a legújabb kiadásra. Az adatok és a konfiguráció frissítéséhez kövesse ugyanazokat a lépéseket, mint korábban. Ha az Azure AD Sync-ről frissített, most kikapcsolhatja és leszerelheti a régi kiszolgálót.
 
-### <a name="move-a-custom-configuration-from-the-active-server-to-the-staging-server"></a>Az aktív kiszolgáló egyéni konfigurációs áthelyezése az átmeneti kiszolgálón
-Ha az aktív kiszolgáló végrehajtott konfigurációs módosítások, győződjön meg arról, hogy a módosításokat az átmeneti kiszolgálón vannak alkalmazva szeretné. Az áthelyezési érdekében használhatja a [az Azure AD Connect konfigurációs dokumentáló](https://github.com/Microsoft/AADConnectConfigDocumenter).
+### <a name="move-a-custom-configuration-from-the-active-server-to-the-staging-server"></a>Egyéni konfiguráció áthelyezése az aktív kiszolgálóról az átmeneti kiszolgálóra
+Ha konfigurációs módosításokat hajtott végre az aktív kiszolgálón, meg kell győződnie arról, hogy ugyanazok a módosítások vonatkoznak az átmeneti kiszolgálóra. Az áthelyezés hez használhatja az [Azure AD Connect konfigurációs dokumentumot.](https://github.com/Microsoft/AADConnectConfigDocumenter)
 
-Továbbléphet az egyéni szinkronizálási szabályokat, hogy létrehozott PowerShell-lel. Telepítenie kell más módosítást ugyanúgy mindkét rendszereken, és nem telepíthető át a módosításokat. A [konfigurációs dokumentáló](https://github.com/Microsoft/AADConnectConfigDocumenter) összehasonlítása, győződjön meg arról, hogy megegyeznek a két rendszer segítségével. Az eszköz is segít a jelen szakaszban található lépéseket automatizálását.
+Áthelyezheti az egyéni szinkronizálási szabályokat, amelyeket a PowerShell használatával hozott létre. Mindkét rendszeren ugyanúgy kell alkalmaznia a többi módosítást, és nem telepítheti át a módosításokat. A [konfigurációs dokumentumkezelő](https://github.com/Microsoft/AADConnectConfigDocumenter) segítségével összehasonlíthatja a két rendszert, hogy megbizonyosodjon arról, hogy azonosak. Az eszköz az ebben a szakaszban található lépések automatizálásában is segítséget nyújt.
 
-Mindkét kiszolgálón ugyanúgy konfigurálhatja a következőkre van szüksége:
+Mindkét kiszolgálón a következő beállításokat kell ugyanúgy konfigurálnia:
 
-* Kapcsolat az azonos erdőkhöz
-* Bármely tartomány és szervezeti egységek szűrése
-* Az azonos választható funkciók, például a jelszó-szinkronizálás és jelszóvisszaíró
+* Csatlakozás ugyanahhoz az erdőhöz
+* Bármely tartomány- és szervezetiegység-szűrés
+* Ugyanazok a választható funkciók, például a jelszószinkronizálás és a jelszó-visszaírás
 
 **Egyéni szinkronizálási szabályok áthelyezése**  
-Egyéni szinkronizálási szabályok áthelyezni, tegye a következőket:
+Az egyéni szinkronizálási szabályok áthelyezéséhez tegye a következőket:
 
-1. Nyissa meg **szinkronizálási Szabályszerkesztővel** az aktív kiszolgáló.
-2. Jelöljön ki egy egyéni szabályt. Kattintson a **exportálása**. Ez megnyit egy Jegyzettömb-ablakot. Az ideiglenes fájlt mentse PS1 kiterjesztéssel. Így egy PowerShell-parancsfájlt. Az átmeneti kiszolgálón másolja a PS1 fájlnevet.  
+1. Nyissa **meg a Szinkronizálási szabályok szerkesztőjét** az aktív kiszolgálón.
+2. Jelöljön ki egy egyéni szabályt. Kattintson az **Export** (Exportálás) gombra. Ez egy jegyzettömb ablakot hoz létre. Mentse az ideiglenes fájlt PS1 kiterjesztéssel. Ez teszi a PowerShell-parancsfájl. Másolja a PS1 fájlt az átmeneti kiszolgálóra.  
    ![Szinkronizálási szabály exportálása](./media/how-to-upgrade-previous-version/exportrule.png)
-3. Az összekötő GUID-azonosítója nem egyezik az átmeneti kiszolgálón, és módosítania kell. A globálisan egyedi Azonosítót kap, először **szinkronizálási Szabályszerkesztővel**, válassza ki a beépített szabályokat, amelyek azonos csatlakoztatott rendszer képviselik, és kattintson az egyik **exportálása**. A globálisan egyedi Azonosítót a PS1 fájlban cserélje le az átmeneti kiszolgáló származó GUID Azonosítóval.
-4. Egy PowerShell-parancssorban futtassa a PS1 fájlnevet. Ez létrehozza a egyéni szinkronizálási szabályt az átmeneti kiszolgálón.
-5. Ismételje meg ezt az egyéni szabályokat.
+3. Az összekötő GUID azonosítója eltér az átmeneti kiszolgálón, és módosítania kell azt. A GUID lekért elemével indítsa el a **Szinkronizálási szabályok szerkesztőjét,** válassza ki az ugyanazon csatlakoztatott rendszert képviselő beépített szabályok egyikét, majd kattintson az **Exportálás gombra.** Cserélje le a PS1-fájlguid azonosítóját az átmeneti kiszolgáló guid azonosítójára.
+4. A PowerShell-parancssorban futtassa a PS1-fájlt. Ez létrehozza az egyéni szinkronizálási szabályt az átmeneti kiszolgálón.
+5. Ismételje meg ezt az összes egyéni szabályesetében.
 
-## <a name="how-to-defer-full-synchronization-after-upgrade"></a>Hogyan késlelteti a frissítés után teljes szinkronizálást
-A helyben frissítés során, előfordulhat, bevezetett változások igénylő futtatandó meghatározott szinkronizálási tevékenység (beleértve a teljes importálást és teljes szinkronizálást lépést). Például összekötő sémaváltozások igényelnek **teljes importálást** lépés és out-of-box szinkronizálási szabály megváltoztatása igényli **teljes szinkronizálás** lépéssel hajtható végre, az érintett összekötőt. A frissítés során az Azure AD Connect határozza meg, milyen szinkronizálási tevékenység szükség, és rögzíti őket *felülbírálások*. A következő szinkronizálási ciklusban a szinkronizálásütemező ezeket a felülbírálásokat és egy naplóbejegyzésbe hajtja végre őket. Miután sikeresen hajtja végre a felülbírálást, a rendszer eltávolítja.
+## <a name="how-to-defer-full-synchronization-after-upgrade"></a>A teljes szinkronizálás elhalasztása frissítés után
+A helybeni frissítés során előfordulhatnak olyan módosítások, amelyek konkrét szinkronizálási tevékenységeket igényelnek (beleértve a Teljes importálás és a Teljes szinkronizálás lépést) a végrehajtáshoz. Például az összekötőséma módosításai **teljes importálási** lépést igényelnek, és a beépített szinkronizálási szabályok módosításai **teljes szinkronizálási** lépést igényelnek az érintett összekötőkön. A frissítés során az Azure AD Connect meghatározza, hogy milyen szinkronizálási tevékenységekre van szükség, és *felülírásként*rögzíti azokat. A következő szinkronizálási ciklusban a szinkronizálási ütemező felveszi ezeket a felülbírálásokat, és végrehajtja azokat. A felülbírálás sikeres végrehajtása után a rendszer eltávolítja azt.
 
-Előfordulhat, hogy amennyiben nem szeretné ezeket a felülbírálásokat, hogy végre lehessen hajtani a frissítés után azonnal helyzetekben. Például számos szinkronizált objektummal rendelkezik, és szeretné ezeket a szinkronizálási lépéseket munkaidő után fordul elő. Ezeket a felülbírálásokat eltávolítása:
+Előfordulhatnak olyan helyzetek, amikor nem szeretné, hogy ezek a felülbírálások közvetlenül a frissítés után sor kerüljenek. Például számos szinkronizált objektumot tartalmaz, és azt szeretné, hogy ezek a szinkronizálási lépések munkaidő után történjenek. A felülbírálások eltávolítása:
 
-1. A frissítés során **törölje a jelet** lehetőséget **indítsa el a szinkronizálást, amint a konfigurálás befejeződik**. Ez a szinkronizálásütemező letiltja, és megakadályozza, hogy a szinkronizálási ciklust zajlik automatikusan előtt a felülbírálások el lesznek távolítva.
+1. A frissítés során törölje a **jelet** a **szinkronizálási folyamat indítása a konfiguráció befejezésekor jelölőnégyzetből.** Ez letiltja a szinkronizálási ütemezőt, és megakadályozza, hogy a szinkronizálási ciklus automatikusan megtörténjék a felülbírálások eltávolítása előtt.
 
    ![DisableFullSyncAfterUpgrade](./media/how-to-upgrade-previous-version/disablefullsync01.png)
 
-2. Frissítés befejezése után futtassa a következő parancsmag ismerje meg, mely a felülbírálások lettek hozzáadva: `Get-ADSyncSchedulerConnectorOverride | fl`
+2. A frissítés befejezése után futtassa a következő parancsmast, hogy megtudja, milyen felülírásokat adtak hozzá:`Get-ADSyncSchedulerConnectorOverride | fl`
 
    >[!NOTE]
-   > A felülbírálások összekötő-specifikus. A következő példában a teljes importálást és teljes szinkronizálást lépést lettek hozzáadva a mind a helyszíni AD-összekötő és az Azure AD-összekötőt.
+   > A felülbírálások összekötő-specifikusak. A következő példában a Teljes importálás és a Teljes szinkronizálás i. lépés a helyszíni AD-összekötőhöz és az Azure AD-összekötőhöz is hozzá lett adva.
 
    ![DisableFullSyncAfterUpgrade](./media/how-to-upgrade-previous-version/disablefullsync02.png)
 
-3. Jegyezze fel a meglévő felülbírálások hozzáadott.
+3. Jegyezze fel a meglévő felülírásokat, amelyeket hozzáadtak.
    
-4. A felülbírálásokat is teljes importálást és teljes szinkronizálást egy tetszőleges összekötő eltávolításához futtassa a következő parancsmagot: `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid-of-ConnectorIdentifier> -FullImportRequired $false -FullSyncRequired $false`
+4. A teljes importálás és a teljes szinkronizálás felülbírálásának eltávolításához futtassa a következő parancsmast:`Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid-of-ConnectorIdentifier> -FullImportRequired $false -FullSyncRequired $false`
 
-   A felülbírálások, az összes összekötő eltávolításához hajtsa végre a következő PowerShell-parancsfájlt:
+   A felülírások eltávolításához az összes összekötőn hajtsa végre a következő PowerShell-parancsfájlt:
 
    ```
    foreach ($connectorOverride in Get-ADSyncSchedulerConnectorOverride)
@@ -128,23 +128,23 @@ Előfordulhat, hogy amennyiben nem szeretné ezeket a felülbírálásokat, hogy
    }
    ```
 
-5. Az ütemező újraindításához futtassa a következő parancsmagot: `Set-ADSyncScheduler -SyncCycleEnabled $true`
+5. Az ütemező folytatásához futtassa a következő parancsmast:`Set-ADSyncScheduler -SyncCycleEnabled $true`
 
    >[!IMPORTANT]
-   > Ne feledje, a szinkronizálás szükséges lépéseket az Önnek legkorábbi végrehajtásához. Manuálisan hajtható végre ezeket a lépéseket a Synchronization Service Managert használatával, vagy adja hozzá a felülbírálások biztonsági másolatot, a Set-ADSyncSchedulerConnectorOverride parancsmaggal.
+   > Ne felejtse el végrehajtani a szükséges szinkronizálási lépéseket a lehető leghamarabb. Ezeket a lépéseket manuálisan hajthatja végre a Szinkronizálási szolgáltatáskezelővel, vagy hozzáadhatja a felülbírálásokat a Set-ADSyncSchedulerConnectorOverride parancsmag használatával.
 
-Egy tetszőleges összekötő teljes importálást és teljes szinkronizálást a felülbírálás hozzáadásához futtassa az alábbi parancsmagot:  `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
+A teljes importálás és a teljes szinkronizálás felülbírálásának tetszőleges összekötőn történő hozzáadásához futtassa a következő parancsmast:`Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
-A következő szakasz tartalmazza a hibaelhárítás és információt, amelyet használhat, ha az Azure AD Connect frissítése problémát tapasztal.
+A következő szakasz hibaelhárítási és információkat tartalmaz, amelyek et használhat, ha problémát tapasztal az Azure AD Connect frissítése során.
 
-### <a name="azure-active-directory-connector-missing-error-during-azure-ad-connect-upgrade"></a>Az Azure Active Directory connector hiányzó hiba során az Azure AD Connect frissítése
+### <a name="azure-active-directory-connector-missing-error-during-azure-ad-connect-upgrade"></a>Az Azure Active Directory-összekötő hiányzó hiba az Azure AD Connect frissítése során
 
-Amikor az Azure AD Connect egy korábbi verziójáról frissít, előfordulhat, hogy eléri a következő hiba történt a frissítés kezdetén 
+Amikor az Azure AD Connectet egy korábbi verzióról frissíti, előfordulhat, hogy a frissítés elején bekövetkező hibaüzenet jelenik meg 
 
 ![Hiba](./media/how-to-upgrade-previous-version/error1.png)
 
-Ez a hiba akkor fordul elő, mert azonosítójú b891884f-051e-4a83-95af - 2544101c 9083, az Azure Active Directory-összekötő nem létezik az aktuális Azure AD Connect konfiguráció. Ellenőrizze, hogy ez a helyzet, nyissa meg egy PowerShell-ablakot, a parancsmag futtatása `Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083`
+Ez a hiba azért fordul elő, mert az Azure Active Directory-összekötő azonosítóval, b891884f-051e-4a83-95af-2544101c9083, nem létezik a jelenlegi Azure AD Connect konfiguráció. Ennek ellenőrzéséhez nyisson meg egy PowerShell-ablakot, futtassa a Parancsmag`Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083`
 
 ```
 PS C:\> Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083
@@ -159,13 +159,13 @@ At line:1 char:1
 
 ```
 
-A PowerShell-parancsmag jelzi a hiba **nem található a megadott MA**.
+A PowerShell-parancsmag jelenti a **hibát, amelyet a megadott ma nem található.**
 
-Ennek oka, mert az aktuális Azure AD Connect konfiguráció frissítése nem támogatott. 
+Ennek az az oka, hogy a jelenlegi Azure AD Connect-konfiguráció nem támogatott a frissítéshez. 
 
-Ha szeretné-e az Azure AD Connect egy újabb verzió telepítése: az Azure AD Connect varázsló bezárásához, távolítsa el a meglévő Azure AD Connect és az újabb Azure AD Connect tiszta telepítését.
+Ha az Azure AD Connect újabb verzióját szeretné telepíteni: zárja be az Azure AD Connect varázslót, távolítsa el a meglévő Azure AD Connectet, és végezze el az újabb Azure AD Connect tiszta telepítését.
 
 
 
 ## <a name="next-steps"></a>További lépések
-Tudjon meg többet [a helyszíni identitások integrálása az Azure Active Directory](whatis-hybrid-identity.md).
+További információ [a helyszíni identitások azure-active Directoryval való integrálásáról.](whatis-hybrid-identity.md)

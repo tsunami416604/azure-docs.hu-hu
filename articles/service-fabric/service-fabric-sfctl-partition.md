@@ -1,15 +1,15 @@
 ---
-title: Azure Service Fabric CLI – sfctl partíció
-description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. A szolgáltatáshoz tartozó partíciók kezelésére szolgáló parancsok listáját tartalmazza.
+title: Azure Service Fabric CLI- sfctl partíció
+description: Ismerje meg az sfctl, az Azure Service Fabric parancssori felület. Egy szolgáltatás partícióinak kezeléséhez szükséges parancsok listáját tartalmazza.
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: c038ef3266a727bf6984a5bd88ca540a589380db
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76905836"
 ---
 # <a name="sfctl-partition"></a>sfctl-partíció
@@ -19,385 +19,385 @@ Bármely szolgáltatás partícióinak lekérdezése és kezelése.
 
 |Parancs|Leírás|
 | --- | --- |
-| adatvesztés | Ez az API a megadott partíció adatvesztését fogja okozni. |
-| adatvesztés – állapot | A StartDataLoss API használatával elindított partíciós adatvesztési művelet előrehaladásának beolvasása. |
-| egészségügy | Lekéri a megadott Service Fabric partíció állapotát. |
-| információ | Egy Service Fabric partíció információinak beolvasása. |
-| lista | Lekéri egy Service Fabric szolgáltatás partícióinak listáját. |
-| betöltés | Lekéri a megadott Service Fabric partíció betöltési információit. |
-| betöltés – alaphelyzetbe állítás | Visszaállítja egy Service Fabric partíció aktuális terhelését. |
-| kvórum – veszteség | Egy adott állapot-nyilvántartó szolgáltatásbeli partíció Kvórumának elvesztését okozhatja. |
-| kvórum – veszteség – állapot | Lekérdezi a kvórum elvesztése műveletének előrehaladását a StartQuorumLoss API használatával megkezdett partíción. |
-| Visszaszerez | Azt jelzi, hogy a Service Fabric-fürtön olyan adott partíciót kell helyreállítani, amely jelenleg a kvórum elvesztése miatt beragadt. |
-| összes helyreállítása | Azt jelzi, hogy a Service Fabric-fürtön olyan szolgáltatásokat (beleértve a rendszerszolgáltatásokat is) kell helyreállítani, amelyek jelenleg a kvórum elvesztése miatt megakadnak. |
-| jelentés – állapot | Állapotjelentés küldése a Service Fabric partíción. |
+| adatvesztés | Ez az API adatvesztést okoz a megadott partícióhoz. |
+| adatvesztés állapota | Beszerzi a StartDataLoss API-val megkezdett partícióadat-veszteségművelet folyamatát. |
+| Egészségügyi | Letöltője a megadott Service Fabric-partíció állapotát. |
+| Info | A Service Fabric-partícióra vonatkozó információk leése. |
+| lista | Egy Service Fabric-szolgáltatás partícióinak listájának letöltője. |
+| betöltés | Beszerzi a megadott Service Fabric partíció betöltési adatait. |
+| terhelés visszaállítása | Alaphelyzetbe állítja a Service Fabric partíció aktuális terhelését. |
+| kvórum-veszteség | Kvórumvesztést idéz elő egy adott állapotalapú szolgáltatáspartícióhoz. |
+| kvórum-veszteség-állapot | A StartQuorumLoss API-val megkezdett partíciók kvórumveszteség-műveletének folyamatát kapja meg. |
+| Visszaszerez | Azt jelzi a Service Fabric-fürtnek, hogy meg kell próbálnia helyreállítani egy adott partíciót, amely jelenleg beragadt a kvórumveszteség. |
+| vissza-minden | Azt jelzi a Service Fabric-fürtnek, hogy meg kell próbálnia helyreállítani minden olyan szolgáltatást (beleértve a rendszerszolgáltatásokat is), amelyek jelenleg kvórumveszteségben ragadtak. |
+| jelentés-egészségügy | Állapotjelentést küld a Service Fabric partíción. |
 | restart | Ez az API újraindítja a megadott partíció néhány vagy összes replikáját vagy példányát. |
-| újraindítás állapota | A StartPartitionRestart használatával megkezdett PartitionRestart-művelet előrehaladásának beolvasása. |
-| SVC-név | Lekéri egy partíció Service Fabric szolgáltatásának nevét. |
+| újrakezdés állapota | A StartPartitionRestart használatával megkezdett PartitionRestart művelet folyamatának letiltása. |
+| svc-név | Lekéri a Service Fabric szolgáltatás nevét egy partícióhoz. |
 
-## <a name="sfctl-partition-data-loss"></a>sfctl partíciós adatvesztés
-Ez az API a megadott partíció adatvesztését fogja okozni.
+## <a name="sfctl-partition-data-loss"></a>sfctl partíció adatvesztés
+Ez az API adatvesztést okoz a megadott partícióhoz.
 
-Elindítja a partíció OnDataLossAsync API-ját.  Ez az API a megadott partíció adatvesztését fogja okozni. Elindítja a partíció OnDataLoss API-ját. A tényleges adatvesztés a megadott Datalossmode objektum függ.
-- PartialDataLoss: a rendszer csak a replikák kvórumát távolítja el, és a partícióra vonatkozóan OnDataLoss vált ki, a tényleges adatvesztés azonban a repülés közbeni replikációtól függ.  
-- FullDataLoss: a rendszer eltávolítja az összes replikát, ezért az összes adatvesztés történik, és a rendszer elindítja a OnDataLoss. Ezt az API-t csak a célként megadott állapot-nyilvántartó szolgáltatással hívhatja. Az API meghívása Rendszerszolgáltatással, mivel a cél nem ajánlott.
+A partíció OnDataLossAsync API-jának hívását indítja el.  Ez az API adatvesztést okoz a megadott partícióhoz. Elindítja a partíció OnDataLoss API-hívását. A tényleges adatvesztés a megadott DataLossMode-tól függ.
+- PartialDataLoss: Csak a kópiák kvóruma törlődik, és OnDataLoss aktiválódik a partíciót, de a tényleges adatvesztés attól függ, hogy a jelenléte a repülés közbeni replikáció.  
+- FullDataLoss: Az összes replikák törlődnek, így minden adat elvész, és OnDataLoss aktiválódik. Ezt az API-t csak egy állapotalapú szolgáltatással kell meghívni a célként. Az API-t egy rendszerszolgáltatással a célként való hívása nem ajánlott.
 
 > [!NOTE]   
-> Az API meghívása után az nem vonható vissza. A CancelOperation hívása csak a végrehajtás leállítását és a belső rendszerállapot tisztítását eredményezi. Nem állítja vissza az adatvesztést, ha a parancs elég messzire ért, hogy adatvesztést okozzon. Hívja meg a GetDataLossProgress API-t ugyanazzal a OperationId, hogy az API-val megkezdett művelettel kapcsolatos információkat kérjen vissza.
+> Az API hívása után nem vonható vissza. A Megszakítás művelet hívása csak a végrehajtást és a rendszer belső állapotának törlését teszi lehetővé. Nem állítja vissza az adatokat, ha a parancs elég messzire haladt ahhoz, hogy adatvesztést okozzon. Hívja meg a GetDataLossProgress API-t ugyanazzal az OperationId azonosítóval az API-val indított műveletadatainak adására.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --adatvesztési mód [kötelező] | Ezt az enumerálást a StartDataLoss API adja át, amely azt jelzi, hogy milyen típusú adatvesztést okoz. |
-| --Operation-ID [kötelező] | Az API hívását azonosító GUID.  Ezt a rendszer átadja a megfelelő GetProgress API-nak. |
-| --Partition-ID [kötelező] | A partíció identitása. |
-| --Service-ID [kötelező] | A szolgáltatás identitása. Ez az azonosító általában a szolgáltatás teljes neve a "Fabric\:" URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a "\~" karakterrel vannak tagolva. Ha például a szolgáltatás neve "Fabric\:/MyApp/App1/svc1", a szolgáltatás identitása a korábbi verziókban a következő: "SajátPr\~App1\~svc1" (6.0 + és "SajátPr/App1/svc1"). |
-| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --adatvesztés-mód [Kötelező] | Ez a felsorítás átkerül a StartDataLoss API-ba, hogy jelezze, milyen típusú adatvesztést kell indukálni. |
+| --művelet-azonosító [Kötelező] | Az API hívását azonosító GUID.  Ez a megfelelő GetProgress API-ba kerül. |
+| --partition-id [Kötelező] | A partíció identitása. |
+| --service-id [Kötelező] | A szolgáltatás identitása. Ez az azonosító általában a teljes neve a\:szolgáltatás nélkül a "fabric" URI-séma. A 6.0-s verziótól kezdődően a hierarchikus neveket a "\~" karakter nel dekvanálja. Ha például a szolgáltatás neve\:"fabric /myapp/app1/svc1", a szolgáltatás\~identitása\~"myapp app1 svc1" lesz 6.0+ és "myapp/app1/svc1" a korábbi verziókban. |
+| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-partition-data-loss-status"></a>sfctl partíciós adatvesztési állapot
-A StartDataLoss API használatával elindított partíciós adatvesztési művelet előrehaladásának beolvasása.
+## <a name="sfctl-partition-data-loss-status"></a>sfctl partíció adatvesztési állapota
+Beszerzi a StartDataLoss API-val megkezdett partícióadat-veszteségművelet folyamatát.
 
-Lekérdezi a StartDataLoss-vel elindított adatvesztési művelet állapotát a OperationId használatával.
+Leveszi a StartDataLoss használatával az OperationId használatával elindított adatvesztési művelet előrehaladását.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --Operation-ID [kötelező] | Az API hívását azonosító GUID.  Ezt a rendszer átadja a megfelelő GetProgress API-nak. |
-| --Partition-ID [kötelező] | A partíció identitása. |
-| --Service-ID [kötelező] | A szolgáltatás identitása. Ez az azonosító általában a szolgáltatás teljes neve a "Fabric\:" URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a "\~" karakterrel vannak tagolva. Ha például a szolgáltatás neve "Fabric\:/MyApp/App1/svc1", a szolgáltatás identitása a korábbi verziókban a következő: "SajátPr\~App1\~svc1" (6.0 + és "SajátPr/App1/svc1"). |
-| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --művelet-azonosító [Kötelező] | Az API hívását azonosító GUID.  Ez a megfelelő GetProgress API-ba kerül. |
+| --partition-id [Kötelező] | A partíció identitása. |
+| --service-id [Kötelező] | A szolgáltatás identitása. Ez az azonosító általában a teljes neve a\:szolgáltatás nélkül a "fabric" URI-séma. A 6.0-s verziótól kezdődően a hierarchikus neveket a "\~" karakter nel dekvanálja. Ha például a szolgáltatás neve\:"fabric /myapp/app1/svc1", a szolgáltatás\~identitása\~"myapp app1 svc1" lesz 6.0+ és "myapp/app1/svc1" a korábbi verziókban. |
+| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-partition-health"></a>sfctl-partíció állapota
-Lekéri a megadott Service Fabric partíció állapotát.
+## <a name="sfctl-partition-health"></a>sfctl partíció állapota
+Letöltője a megadott Service Fabric-partíció állapotát.
 
-A EventsHealthStateFilter használatával szűrheti a szolgáltatáson jelentett állapotú események gyűjteményét az állapot alapján. A ReplicasHealthStateFilter használatával szűrheti a ReplicaHealthState objektumok gyűjteményét a partíción. Ha olyan partíciót ad meg, amely nem létezik az állapotfigyelő tárolóban, a kérelem hibát ad vissza.
+Az EventsHealthStateFilter használatával szűrheti a szolgáltatáson jelentett állapotesemények gyűjteményét az állapot alapján. A ReplicasHealthStateFilter segítségével szűrje a partitionon lévő ReplicaHealthState objektumok gyűjteményét. Ha olyan partíciót ad meg, amely nem létezik a health store-ban, a kérés hibát ad vissza.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --Partition-ID [kötelező] | A partíció identitása. |
-| --Events-Health-State-Filter | Engedélyezi az állapot alapján visszaadott HealthEvent-objektumok gyűjteményének szűrését. A paraméter lehetséges értékei a következő állapotok egyikének egészét tartalmazzák. Csak a szűrőnek megfelelő események lesznek visszaadva. A rendszer minden eseményt felhasznál az összesített állapot kiértékelésére. Ha nincs megadva, a rendszer az összes bejegyzést visszaadja. Az állapotok a jelző-alapú enumerálások, így az érték a bitenkénti "vagy" operátor használatával kapott értékek kombinációja lehet. Ha például a megadott érték 6, akkor a rendszer az összes, az OK (2) és a figyelmeztetés (4) HealthState értékű eseményt adja vissza.  <br> – Alapértelmezett – alapértelmezett érték. Megfelel bármely HealthState. Az érték nulla.  <br> – Nincs – a HealthState értéknek nem megfelelő szűrő. Az adott állapotok egy adott gyűjteményében nem lehet eredményt visszaadni. Az érték 1.  <br> – Ok – a HealthState értékkel egyező bemenettel rendelkező szűrő. Az érték 2.  <br> -Figyelmeztetés – a HealthState értékkel rendelkező bemenettel egyező szűrő. Az érték 4.  <br> – Hiba – a HealthState értékű bemenettel egyező szűrő. Az érték 8.  <br> – Minden olyan szűrő, amely megfelel bármely HealthState értéknek. Az érték 65535. |
-| --kizárás-Health-Statistics | Azt jelzi, hogy az állapot statisztikáját a lekérdezés eredményének részeként kell-e visszaadni. Alapértelmezés szerint hamis. A statisztikákban a gyermek entitások számának állapota ok, figyelmeztetés és hiba látható. |
-| --replika-állapot-szűrő | Engedélyezi a ReplicaHealthState objektumok gyűjteményének szűrését a partíción. Az érték a tagok vagy bitenkénti műveleteiből szerezhető be a HealthStateFilter tagjain. Csak a szűrőnek megfelelő replikák lesznek visszaadva. Az összesített állapot kiértékeléséhez az összes replikát fogja használni a rendszer. Ha nincs megadva, a rendszer az összes bejegyzést visszaadja. Az állapotadatok a jelölő-alapú enumerálások, így az érték a bitenkénti "vagy" operátor használatával kapott értékek kombinációja lehet. Ha például a megadott érték 6, akkor a rendszer az összes, az OK (2) HealthState értékű eseményt és a figyelmeztetést (4) adja vissza. A paraméter lehetséges értékei a következő állapotok egyikének egészét tartalmazzák.  <br> – Alapértelmezett – alapértelmezett érték. Megfelel bármely HealthState. Az érték nulla.  <br> – Nincs – a HealthState értéknek nem megfelelő szűrő. Az adott állapotok egy adott gyűjteményében nem lehet eredményt visszaadni. Az érték 1.  <br> – Ok – a HealthState értékkel egyező bemenettel rendelkező szűrő. Az érték 2.  <br> -Figyelmeztetés – a HealthState értékkel rendelkező bemenettel egyező szűrő. Az érték 4.  <br> – Hiba – a HealthState értékű bemenettel egyező szűrő. Az érték 8.  <br> – Minden olyan szűrő, amely megfelel bármely HealthState értéknek. Az érték 65535. |
-| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --partition-id [Kötelező] | A partíció identitása. |
+| --események-állapot-állapot-szűrő | Lehetővé teszi az állapot alapján visszaadott HealthEvent objektumok gyűjteményének szűrését. A paraméter lehetséges értékei közé tartozik az alábbi állapotok egyikének egész értéke. A rendszer csak a szűrőnek megfelelő eseményeket adja vissza. Az összes esemény az összesített állapot kiértékelésére szolgál. Ha nincs megadva, a program az összes bejegyzést visszaadja. Az állapotértékek jelzőalapú felsorolás, így az érték ezeknek az értékeknek a kombinációja lehet, amelyet a bitenkénti "OR" operátorral kapunk. Ha például a megadott érték 6, akkor az összes eseményt, amelynek HealthState értéke OK (2) és Figyelmeztetés (4) visszaadja.  <br> - Alapértelmezett - Alapértelmezett érték. Megfelel bármely HealthState.Matches any HealthState. Az érték nulla.  <br> - Nincs - Szűrő, amely nem felel meg semmilyen HealthState érték. Annak érdekében, hogy nem ad vissza eredményt egy adott gyűjtemény állapotok. Az érték 1.  <br> - Ok - Szűrő, amely megfelel a bemenet HealthState érték Ok. Az érték 2.  <br> - Figyelmeztetés - Szűrő, amely megfelel a bemenet healthstate érték Figyelmeztetés. Az érték 4.  <br> - Hiba - A bemenetnek a HealthState értékhibával egyeztetett szűrő. Az érték 8.  <br> - All - Szűrő, amely megfelel a bemenet bármely HealthState érték. Az érték 65535. |
+| --kizárás-egészségügyi statisztikák | Azt jelzi, hogy az állapotstatisztikát vissza kell-e adni a lekérdezés eredményének részeként. Alapértelmezés szerint hamis. A statisztikák az Ok, Figyelmeztetés és Hiba állapotban lévő gyermekentitások számát mutatják. |
+| --replikák-állapot-állapot-szűrő | Lehetővé teszi a ReplicaHealthState objektumok gyűjteményének szűrését a partíción. Az érték a HealthStateFilter tagjainak tagjaitól vagy bitenkénti műveleteiből szerezhető be. Csak a szűrőnek megfelelő replikák at adja vissza a rendszer. Az összes replikák lesznek használva az összesített állapot kiértékelésére. Ha nincs megadva, az összes bejegyzést visszaadja. Az állapotértékek jelzőalapú felsorolás, így az érték lehet ezeknek az értékeknek a kombinációja, amelyeket bitenkénti "OR" operátorral kapunk. Ha például a megadott érték 6, akkor az ÖSSZES HEALTHState értékű esemény (2) és figyelmeztetés (4) lesz visszaadva. A paraméter lehetséges értékei közé tartozik az alábbi állapotok egyikének egész értéke.  <br> - Alapértelmezett - Alapértelmezett érték. Megfelel bármely HealthState.Matches any HealthState. Az érték nulla.  <br> - Nincs - Szűrő, amely nem felel meg semmilyen HealthState érték. Annak érdekében, hogy nem ad vissza eredményt egy adott gyűjtemény állapotok. Az érték 1.  <br> - Ok - Szűrő, amely megfelel a bemenet HealthState érték Ok. Az érték 2.  <br> - Figyelmeztetés - Szűrő, amely megfelel a bemenet healthstate érték Figyelmeztetés. Az érték 4.  <br> - Hiba - A bemenetnek a HealthState értékhibával egyeztetett szűrő. Az érték 8.  <br> - All - Szűrő, amely megfelel a bemenet bármely HealthState érték. Az érték 65535. |
+| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-partition-info"></a>sfctl-partíció adatai
-Egy Service Fabric partíció információinak beolvasása.
+## <a name="sfctl-partition-info"></a>sfctl partíció infó
+A Service Fabric-partícióra vonatkozó információk leése.
 
-A megadott partícióval kapcsolatos információk beolvasása. A válasz tartalmazza a partíció AZONOSÍTÓját, a particionálási séma adatait, a partíció által támogatott kulcsokat, az állapotot, az állapotot és a partíció egyéb részleteit.
+A megadott partícióra vonatkozó információk bekéselése. A válasz tartalmazza a partíció azonosítóját, particionálási séma adatait, a partíció által támogatott kulcsokat, állapotot, állapotot és a partíció egyéb részleteit.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --Partition-ID [kötelező] | A partíció identitása. |
-| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --partition-id [Kötelező] | A partíció identitása. |
+| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-partition-list"></a>sfctl-partíciók listája
-Lekéri egy Service Fabric szolgáltatás partícióinak listáját.
+## <a name="sfctl-partition-list"></a>sfctl partíciólista
+Egy Service Fabric-szolgáltatás partícióinak listájának letöltője.
 
-A válasz tartalmazza a partíció AZONOSÍTÓját, a particionálási séma adatait, a partíció által támogatott kulcsokat, az állapotot, az állapotot és a partíció egyéb részleteit.
+A válasz tartalmazza a partíció azonosítóját, particionálási séma adatait, a partíció által támogatott kulcsokat, állapotot, állapotot és a partíció egyéb részleteit.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --Service-ID [kötelező] | A szolgáltatás identitása. Ez az azonosító általában a szolgáltatás teljes neve a "Fabric\:" URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a "\~" karakterrel vannak tagolva. Ha például a szolgáltatás neve "Fabric\:/MyApp/App1/svc1", a szolgáltatás identitása a korábbi verziókban a következő: "SajátPr\~App1\~svc1" (6.0 + és "SajátPr/App1/svc1"). |
-| --Folytatás-token | A folytatási jogkivonat paraméter az eredmények következő készletének beszerzésére szolgál. Egy nem üres értékkel rendelkező folytatási token szerepel az API válaszában, ha a rendszer eredményei nem illeszkednek egyetlen válaszhoz. Ha ezt az értéket átadja a következő API-hívásnak, az API az eredmények következő készletét adja vissza. Ha nincs további eredmény, akkor a folytatási jogkivonat nem tartalmaz értéket. A paraméter értéke nem lehet URL-kódolású. |
-| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --service-id [Kötelező] | A szolgáltatás identitása. Ez az azonosító általában a teljes neve a\:szolgáltatás nélkül a "fabric" URI-séma. A 6.0-s verziótól kezdődően a hierarchikus neveket a "\~" karakter nel dekvanálja. Ha például a szolgáltatás neve\:"fabric /myapp/app1/svc1", a szolgáltatás\~identitása\~"myapp app1 svc1" lesz 6.0+ és "myapp/app1/svc1" a korábbi verziókban. |
+| --folytatás-token | A folytatási token paraméter az eredmények következő készletének elérésére szolgál. A folytatási jogkivonat egy nem üres érték szerepel az API válasza, ha a rendszer eredményei nem férnek el egyetlen válasz. Ha ezt az értéket a következő API-hívás, az API adja vissza a következő eredményhalmaz. Ha nincsenek további eredmények, akkor a folytatási jogkivonat nem tartalmaz értéket. Ennek a paraméternek az értékét nem szabad URL-kódolásra kódolni. |
+| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-partition-load"></a>sfctl partíció betöltése
-Lekéri a megadott Service Fabric partíció betöltési információit.
+## <a name="sfctl-partition-load"></a>sfctl partíció terhelése
+Beszerzi a megadott Service Fabric partíció betöltési adatait.
 
-Egy megadott partíció betöltésére vonatkozó adatokat ad vissza. A válasz tartalmazza a Service Fabric partícióhoz tartozó betöltési jelentések listáját. Minden jelentés tartalmazza a betöltési metrika nevét, értékét és az utolsó jelentett időt UTC szerint.
+Információt ad vissza egy megadott partíció terheléséről. A válasz tartalmazza a Service Fabric-partícióterhelési jelentések listáját. Minden jelentés tartalmazza a terhelési metrika nevét, értékét és az utc-ben jelentett utolsó jelentett időt.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --Partition-ID [kötelező] | A partíció identitása. |
-| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --partition-id [Kötelező] | A partíció identitása. |
+| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-partition-load-reset"></a>sfctl partíciójának betöltése – alaphelyzetbe állítás
-Visszaállítja egy Service Fabric partíció aktuális terhelését.
+## <a name="sfctl-partition-load-reset"></a>sfctl partíció terhelés-reset
+Alaphelyzetbe állítja a Service Fabric partíció aktuális terhelését.
 
-Visszaállítja egy Service Fabric partíció aktuális terhelését a szolgáltatás alapértelmezett terhelésére.
+Visszaállítja a Service Fabric partíció aktuális terhelését a szolgáltatás alapértelmezett terhelésére.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --Partition-ID [kötelező] | A partíció identitása. |
-| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --partition-id [Kötelező] | A partíció identitása. |
+| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-partition-quorum-loss"></a>sfctl-partíció kvóruma – veszteség
-Egy adott állapot-nyilvántartó szolgáltatásbeli partíció Kvórumának elvesztését okozhatja.
+## <a name="sfctl-partition-quorum-loss"></a>sfctl partíció kvórumveszteség
+Kvórumvesztést idéz elő egy adott állapotalapú szolgáltatáspartícióhoz.
 
-Ez az API hasznos lehet egy ideiglenes kvórum elvesztése esetén a szolgáltatásban. Hívja meg a GetQuorumLossProgress API-t ugyanazzal a OperationId, hogy az API-val megkezdett művelettel kapcsolatos információkat kérjen vissza. Ez csak állapot-nyilvántartó megőrzött (HasPersistedState = = true) szolgáltatások esetében hívható meg.  Ne használja ezt az API-t állapot nélküli szolgáltatásokra vagy állapot-nyilvántartó szolgáltatásokra.
+Ez az API a szolgáltatás ideiglenes kvórumveszteség-helyzetéhez hasznos. Hívja meg a GetQuorumLossProgress API-t ugyanazzal az OperationId azonosítóval, hogy információt ad vissza az API-val indított műveletről. Ez csak állapotalapú, megőrzött (HasPersistedState==true) szolgáltatásokon hívható meg.  Ne használja ezt az API-t állapotnélküli szolgáltatásokon vagy csak állapotalapú memórián belüli szolgáltatásokon.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --Operation-ID [kötelező] | Az API hívását azonosító GUID.  Ezt a rendszer átadja a megfelelő GetProgress API-nak. |
-| --Partition-ID [kötelező] | A partíció identitása. |
-| – kvórum – veszteség – időtartam [kötelező] | Az az időtartam, ameddig a partíció megőrzi a kvórum elvesztését.  Ezt másodpercben kell megadni. |
-| --kvórum-Loss-mode [kötelező] | Ezt az enumerálást a StartQuorumLoss API adja át, amely azt jelzi, hogy milyen típusú kvórum elvesztését kell kiváltani. |
-| --Service-ID [kötelező] | A szolgáltatás identitása. Ez az azonosító általában a szolgáltatás teljes neve a "Fabric\:" URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a "\~" karakterrel vannak tagolva. Ha például a szolgáltatás neve "Fabric\:/MyApp/App1/svc1", a szolgáltatás identitása a korábbi verziókban a következő: "SajátPr\~App1\~svc1" (6.0 + és "SajátPr/App1/svc1"). |
-| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --művelet-azonosító [Kötelező] | Az API hívását azonosító GUID.  Ez a megfelelő GetProgress API-ba kerül. |
+| --partition-id [Kötelező] | A partíció identitása. |
+| --kvórum-veszteség időtartama [Kötelező] | Az az idő, amerre a partíció kvórumveszteségben marad.  Ezt másodpercben kell megadni. |
+| --kvórum-veszteség-mód [Kötelező] | Ez a felsorítás átkerül a StartQuorumLoss API-ba, jelezve, hogy milyen típusú kvórumveszteséget kell előidézni. |
+| --service-id [Kötelező] | A szolgáltatás identitása. Ez az azonosító általában a teljes neve a\:szolgáltatás nélkül a "fabric" URI-séma. A 6.0-s verziótól kezdődően a hierarchikus neveket a "\~" karakter nel dekvanálja. Ha például a szolgáltatás neve\:"fabric /myapp/app1/svc1", a szolgáltatás\~identitása\~"myapp app1 svc1" lesz 6.0+ és "myapp/app1/svc1" a korábbi verziókban. |
+| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-partition-quorum-loss-status"></a>sfctl-partíció Kvórumának elvesztése – állapot
-Lekérdezi a kvórum elvesztése műveletének előrehaladását a StartQuorumLoss API használatával megkezdett partíción.
+## <a name="sfctl-partition-quorum-loss-status"></a>sfctl partíció kvórum-veszteség-állapot
+A StartQuorumLoss API-val megkezdett partíciók kvórumveszteség-műveletének folyamatát kapja meg.
 
-Lekérdezi a StartQuorumLoss által elindított kvórum-elvesztési művelet állapotát a megadott OperationId használatával.
+A StartQuorumLoss szolgáltatással kezdődő kvórumveszteség-művelet előrehaladásának lekezdete a megadott OperationId használatával.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --Operation-ID [kötelező] | Az API hívását azonosító GUID.  Ezt a rendszer átadja a megfelelő GetProgress API-nak. |
-| --Partition-ID [kötelező] | A partíció identitása. |
-| --Service-ID [kötelező] | A szolgáltatás identitása. Ez az azonosító általában a szolgáltatás teljes neve a "Fabric\:" URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a "\~" karakterrel vannak tagolva. Ha például a szolgáltatás neve "Fabric\:/MyApp/App1/svc1", a szolgáltatás identitása a korábbi verziókban a következő: "SajátPr\~App1\~svc1" (6.0 + és "SajátPr/App1/svc1"). |
-| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --művelet-azonosító [Kötelező] | Az API hívását azonosító GUID.  Ez a megfelelő GetProgress API-ba kerül. |
+| --partition-id [Kötelező] | A partíció identitása. |
+| --service-id [Kötelező] | A szolgáltatás identitása. Ez az azonosító általában a teljes neve a\:szolgáltatás nélkül a "fabric" URI-séma. A 6.0-s verziótól kezdődően a hierarchikus neveket a "\~" karakter nel dekvanálja. Ha például a szolgáltatás neve\:"fabric /myapp/app1/svc1", a szolgáltatás\~identitása\~"myapp app1 svc1" lesz 6.0+ és "myapp/app1/svc1" a korábbi verziókban. |
+| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
 
 ## <a name="sfctl-partition-recover"></a>sfctl partíció helyreállítása
-Azt jelzi, hogy a Service Fabric-fürtön olyan adott partíciót kell helyreállítani, amely jelenleg a kvórum elvesztése miatt beragadt.
+Azt jelzi a Service Fabric-fürtnek, hogy meg kell próbálnia helyreállítani egy adott partíciót, amely jelenleg beragadt a kvórumveszteség.
 
-Ezt a műveletet csak akkor kell végrehajtani, ha ismert, hogy a leállított replikák nem állíthatók helyre. Az API helytelen használata lehetséges adatvesztést eredményezhet.
-
-### <a name="arguments"></a>Argumentumok
-
-|Argumentum|Leírás|
-| --- | --- |
-| --Partition-ID [kötelező] | A partíció identitása. |
-| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
-
-### <a name="global-arguments"></a>Globális argumentumok
-
-|Argumentum|Leírás|
-| --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
-
-## <a name="sfctl-partition-recover-all"></a>sfctl Partition Recover-all
-Azt jelzi, hogy a Service Fabric-fürtön olyan szolgáltatásokat (beleértve a rendszerszolgáltatásokat is) kell helyreállítani, amelyek jelenleg a kvórum elvesztése miatt megakadnak.
-
-Ezt a műveletet csak akkor kell végrehajtani, ha ismert, hogy a leállított replikák nem állíthatók helyre. Az API helytelen használata lehetséges adatvesztést eredményezhet.
+Ezt a műveletet csak akkor kell végrehajtani, ha ismeretes, hogy a nem működő replikák nem állíthatók helyre. Az API helytelen használata adatvesztést okozhat.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --partition-id [Kötelező] | A partíció identitása. |
+| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-partition-report-health"></a>sfctl partíciós jelentés – állapot
-Állapotjelentés küldése a Service Fabric partíción.
+## <a name="sfctl-partition-recover-all"></a>sfctl partíció vissza-minden
+Azt jelzi a Service Fabric-fürtnek, hogy meg kell próbálnia helyreállítani minden olyan szolgáltatást (beleértve a rendszerszolgáltatásokat is), amelyek jelenleg kvórumveszteségben ragadtak.
 
-A megadott Service Fabric partíció állapotának jelentése. A jelentésnek tartalmaznia kell az állapotjelentést és a jelentést tartalmazó tulajdonság forrásával kapcsolatos információkat. A rendszer elküldi a jelentést egy Service Fabric átjáró-partícióra, amely továbbítja az állapot-tárolónak. Előfordulhat, hogy a jelentést az átjáró fogadja el, de a további ellenőrzés után a Health Store elutasította. Az állapotfigyelő például elutasítja a jelentést egy Érvénytelen paraméter miatt, például egy elavult sorszámot. Ha szeretné megtekinteni, hogy a jelentés az állapot-áruházban volt-e alkalmazva, ellenőrizze, hogy a jelentés megjelenik-e az események szakaszban.
+Ezt a műveletet csak akkor kell végrehajtani, ha ismeretes, hogy a nem működő replikák nem állíthatók helyre. Az API helytelen használata adatvesztést okozhat.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --Health-Property [kötelező] | Az állapotadatok tulajdonsága. <br><br> Az entitások különböző tulajdonságokhoz tartozhatnak állapotjelentést. A tulajdonság egy karakterlánc, nem pedig rögzített enumerálás, amely lehetővé teszi, hogy a jelentéskészítő rugalmasan kategorizálja a jelentést kiváltó állapot feltételeit. A "LocalWatchdog" SourceId forrásazonosító rendelkező jelentéskészítő például nyomon követheti a csomópontok rendelkezésre álló lemezének állapotát, így az adott csomópont "AvailableDisk" tulajdonságát is jelentheti. Ugyanaz a riporter figyelheti a csomópontok kapcsolatát, így a "kapcsolat" tulajdonságot is jelentheti ugyanazon a csomóponton. Az állapotfigyelő szolgáltatásban ezek a jelentések különálló állapotadatokként lesznek kezelve a megadott csomópont esetében. A SourceId forrásazonosító együtt a tulajdonság egyedileg azonosítja az állapotadatok adatait. |
-| --állapotadatok [kötelező] | A lehetséges értékek a következők lehetnek:\: "Érvénytelen", "OK", "Warning", "Error", "Unknown". |
-| --Partition-ID [kötelező] | A partíció identitása. |
-| – forrás-azonosító [kötelező] | Az állapottal kapcsolatos adatokat létrehozó ügyfél/watchdog/rendszer összetevőt azonosító forrás neve. |
-| – Leírás | Az állapotadatok leírása. <br><br> A jelentésből származó, emberi olvasásra alkalmas adatok hozzáadására szolgáló szabad szöveget jelöli. A Leírás maximális hossza 4096 karakter. Ha a megadott karakterlánc már nem érhető el, a rendszer automatikusan csonkolja. A csonkítás során a Leírás utolsó karakterei a "[csonkolt]" jelölőt tartalmazzák, a teljes karakterlánc mérete pedig 4096 karakter. A jelölő jelenléte azt jelzi, hogy a felhasználók csonkítva lettek. Vegye figyelembe, hogy a csonkítás során a Leírás kevesebb, mint 4096 karakterből áll az eredeti sztringből. |
-| – azonnali | Egy jelző, amely jelzi, hogy a jelentést azonnal el kell-e juttatni. <br><br> Egy állapotjelentés érkezik egy Service Fabric Gateway-alkalmazásba, amely továbbítja az állapot-áruháznak. Ha az azonnali beállítás értéke TRUE (igaz), a rendszer azonnal elküldi a jelentést a HTTP-átjáróról az állapotfigyelő tárolóba, függetlenül a HTTP-átjáró alkalmazás által használt háló-ügyfél beállításaitól. Ez olyan kritikus fontosságú jelentések esetében hasznos, amelyeket a lehető leghamarabb el kell juttatni. Az Időzítéstől és az egyéb feltételektől függően előfordulhat, hogy a jelentés küldése továbbra is meghiúsul, például ha a HTTP-átjáró be van zárva, vagy az üzenet nem éri el az átjárót. Ha az azonnali beállítás hamis értékre van állítva, a rendszer a HTTP-átjáró állapot-ügyfélbeállítások alapján elküldi a jelentést. Ezért a HealthReportSendInterval-konfigurációnak megfelelően kötegbe kerül. Ez az ajánlott beállítás, mivel lehetővé teszi, hogy az állapot-ügyfél optimalizálja az állapot-jelentési üzeneteket az állapotfigyelő tárolóba, valamint az állapotjelentés feldolgozását. Alapértelmezés szerint a rendszer nem küldi el azonnal a jelentéseket. |
-| --Remove-when-lejárt | Az érték, amely azt jelzi, hogy a jelentés törlődik-e a Health Store-ból, amikor lejár. <br><br> Ha az értéke TRUE (igaz), a rendszer eltávolítja a jelentést az állapot-áruházból a lejárat után. Ha hamis értékre van állítva, a jelentés a lejártkor hibaként lesz kezelve. A tulajdonság értéke alapértelmezés szerint hamis. Amikor az ügyfelek rendszeresen jelentést küldenek, a Eltávolításlejáratkor false (alapértelmezett) értéket kell beállítania. Így a riporter problémákba ütközik (például holtpont), és nem tud jelentést készíteni, az entitást a rendszer hiba esetén kiértékeli, amikor az állapotjelentés lejár. Ez az entitás a hiba állapotának megfelelően jelenik meg. |
-| --Sequence-Number | Az állapotjelentés sorszáma numerikus karakterláncként. <br><br> A jelentés sorszámát a Health Store használja az elavult jelentések észlelésére. Ha nincs megadva, a rendszer automatikusan létrehozza a sorszámot, amikor egy jelentés hozzáadása történik. |
-| --időtúllépés-t | Alapértelmezett\: 60. |
-| --TTL | Az az időtartam, ameddig ez az állapotjelentés érvényes. Ez a mező ISO8601 formátumot használ az időtartam megadásához. <br><br> Amikor az ügyfelek rendszeresen jelentést küldenek, a jelentéseknek az élettartamuk során nagyobb gyakorisággal kell elküldeniük a jelentéseket. Ha az ügyfelek áttérnek a váltásra, beállíthatja, hogy az idő a végtelen értékre legyen állítva. Ha a lejárati idő lejár, az állapottal kapcsolatos információkat tartalmazó állapotot a rendszer eltávolítja az állapotfigyelő tárolóból, ha a Eltávolításlejáratkor értéke TRUE (igaz), vagy hiba esetén kiértékelt, ha a Eltávolításlejáratkor hamis. Ha nincs megadva, a rendszer az alapértelmezett élettartamot a végtelen értékre adja. |
+| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
+
+## <a name="sfctl-partition-report-health"></a>sfctl partíció jelentés-állapot
+Állapotjelentést küld a Service Fabric partíción.
+
+A megadott Service Fabric-partíció állapotát jelenti. A jelentésnek tartalmaznia kell az állapotjelentés forrására és a jelentett tulajdonságra vonatkozó információkat. A jelentés egy Service Fabric átjáró partíció, amely továbbítja a health Store. A jelentést az átjáró elfogadhatja, de az egészségügyi tároló további ellenőrzés után elutasítja. Például a health store elutasíthatja a jelentést, mert egy érvénytelen paraméter, mint például egy elavult sorszám. Ha meg szeretné tudni, hogy a jelentés alkalmazva lett-e az állapottárolóban, ellenőrizze, hogy a jelentés megjelenik-e az események szakaszban.
+
+### <a name="arguments"></a>Argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| --health-property [Kötelező] | Az egészségügyi információk tulajdonsága. <br><br> Egy entitás különböző tulajdonságokállapot-jelentésekkel rendelkezhet. A tulajdonság egy karakterlánc, és nem egy rögzített felsorolás, amely lehetővé teszi az előjelentés rugalmasságát a jelentést kiváltó állapot kategorizálására. Például egy "LocalWatchdog" SourceId azonosítóval rendelkező jelentéskészítő figyelheti a csomóponton rendelkezésre álló lemez állapotát, így jelentheti az "AvailableDisk" tulajdonságot az adott csomóponton. Ugyanaz a jelentéskészítő figyelheti a csomópont-kapcsolatot, így jelentheti a "Kapcsolat" tulajdonságot ugyanazon a csomóponton. Az állapottárolóban ezeket a jelentéseket külön állapoteseményekként kezeli a megadott csomópont. A SourceId-dal együtt a tulajdonság egyedileg azonosítja az állapotinformációkat. |
+| --állapot[Kötelező] | A lehetséges\: értékek a következők: "Érvénytelen", "Ok", "Figyelmeztetés", "Hiba", "Ismeretlen". |
+| --partition-id [Kötelező] | A partíció identitása. |
+| --source-id [Kötelező] | A forrásnév, amely azonosítja az ügyfél/figyelő/rendszerösszetevő, amely létrehozta az állapotadatokat. |
+| --leírás | Az egészségügyi információk leírása. <br><br> Szabad szöveget jelöl, amely a jelentéssel kapcsolatos emberi olvasható információk hozzáadására szolgál. A leírás maximális karakterlánchossza 4096 karakter. Ha a megadott karakterlánc hosszabb, a program automatikusan csonkolja. Csonkoláskor a leírás utolsó karakterei a "[Csonka]" jelölőt tartalmazzák, a teljes karakterlánc mérete pedig 4096 karakter. A jelölő jelenléte azt jelzi a felhasználóknak, hogy csonkolás történt. Ne feledje, hogy csonkoláskor a leírás kevesebb mint 4096 karaktert tartalmaz az eredeti karakterláncból. |
+| --azonnali | Egy jelző, amely jelzi, hogy a jelentést azonnal el kell-e küldeni. <br><br> Egy állapotjelentés egy Service Fabric átjáró alkalmazás, amely továbbítja a health Store. Ha az Immediate értéke igaz, a rendszer azonnal elküldi a jelentést a HTTP-átjáróból a health Store-ba, függetlenül attól, hogy a HTTP átjáróalkalmazás által használt háló-ügyfél-beállításokat használja.If Immediate is set to true, the report is sent immediately from HTTP Gateway to the health store, regardless of the fabric client settings that the HTTP Gateway Application is using. Ez akkor hasznos, ha a kritikus jelentéseket a lehető leghamarabb el kell küldeni. Az időzítéstől és az egyéb feltételektől függően a jelentés küldése továbbra is sikertelen lehet, például ha a HTTP-átjáró be van zárva, vagy ha az üzenet nem éri el az átjárót. Ha az Immediate értéke hamis, a rendszer a http-átjáró ból származó állapotügyfél-beállítások alapján küldi el a jelentést. Ezért a rendszer a HealthReportSendInterval konfigurációnak megfelelően lesz kötegelve. Ez az ajánlott beállítás, mert lehetővé teszi, hogy az állapotjelző ügyfél optimalizálja az állapotjelentési üzeneteket az állapottárolónak, valamint az állapotjelentés feldolgozását. Alapértelmezés szerint a jelentések nem kerülnek azonnal elküldésre. |
+| --remove-when-expired | Érték, amely azt jelzi, hogy a jelentés törlődik-e az állapottárolóból, amikor lejár. <br><br> Ha értéke igaz, a jelentés törlődik a health Store lejárta után. Ha hamis ra van állítva, a jelentés lejártakor hibaként lesz kezelve. A tulajdonság értéke alapértelmezés szerint hamis. Amikor az ügyfelek rendszeres időközönként jelentést, meg kell állítani a RemoveWhenExpired false (alapértelmezett). Ily módon a jelentéskészítő problémák (pl. holtpont), és nem tud jelentést, az entitás kiértékelése hiba, amikor az állapotjelentés lejár. Ez az entitást hibaállapotként jelzi. |
+| --szekvenciaszám | Az állapotjelentés sorozatszáma numerikus karakterláncként. <br><br> A jelentéssorszámot az állapottároló az elavult jelentések észlelésére használja. Ha nincs megadva, a jelentés hozzáadásakor az állapotügyfél automatikusan létrehoz egy sorszámot. |
+| --idő-out -t | Alapértelmezett\: 60. |
+| --ttl | Az az időtartam, amelyre ez az állapotjelentés érvényes. Ez a mező Az Időtartam megadásához Az ISO8601 formátumot használja. <br><br> Amikor az ügyfelek rendszeres időközönként jelentést küldenek, az életidejéneknél nagyobb gyakorisággal kell jelentéseket küldeniük. Ha az ügyfelek az átmenetről számolnak be, beállíthatják, hogy az élet ideje végtelen. Amikor lejár az életidő, az állapotadatokat tartalmazó állapotesemény törlődik az állapottárolóból, ha az RemoveWhenExpired igaz, vagy hiba esetén kiértékelve, ha az RemoveWhenExpired hamis. Ha nincs megadva, az élethez való idő nem éri el a végtelen értéket. |
+
+### <a name="global-arguments"></a>Globális argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
 
 ## <a name="sfctl-partition-restart"></a>sfctl partíció újraindítása
 Ez az API újraindítja a megadott partíció néhány vagy összes replikáját vagy példányát.
 
-Ez az API hasznos a feladatátvétel teszteléséhez. Állapot nélküli szolgáltatás partíciójának célzásához a Restartpartitionmode objektum AllReplicasOrInstances kell lennie. Hívja meg a GetPartitionRestartProgress API-t ugyanazzal a OperationId, hogy megszerezze a folyamatot.
+Ez az API feladatátvétel teszteléséhez hasznos. Ha állapotnélküli szolgáltatáspartíciót céloz meg, a RestartPartitionMode programnak AllReplicasOrInstances értékűnek kell lennie. Hívja meg a GetPartitionRestartProgress API-t ugyanazzal az OperationId azonosítóval a folyamat lehívásához.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --Operation-ID [kötelező] | Az API hívását azonosító GUID.  Ezt a rendszer átadja a megfelelő GetProgress API-nak. |
-| --Partition-ID [kötelező] | A partíció identitása. |
-| --restart-Partition-mode [kötelező] | Adja meg, hogy mely partíciókat kell újraindítani. |
-| --Service-ID [kötelező] | A szolgáltatás identitása. Ez az azonosító általában a szolgáltatás teljes neve a "Fabric\:" URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a "\~" karakterrel vannak tagolva. Ha például a szolgáltatás neve "Fabric\:/MyApp/App1/svc1", a szolgáltatás identitása a korábbi verziókban a következő: "SajátPr\~App1\~svc1" (6.0 + és "SajátPr/App1/svc1"). |
-| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --művelet-azonosító [Kötelező] | Az API hívását azonosító GUID.  Ez a megfelelő GetProgress API-ba kerül. |
+| --partition-id [Kötelező] | A partíció identitása. |
+| --restart-partition-mode [Kötelező] | Írja le, hogy mely partíciókat kell újraindítani. |
+| --service-id [Kötelező] | A szolgáltatás identitása. Ez az azonosító általában a teljes neve a\:szolgáltatás nélkül a "fabric" URI-séma. A 6.0-s verziótól kezdődően a hierarchikus neveket a "\~" karakter nel dekvanálja. Ha például a szolgáltatás neve\:"fabric /myapp/app1/svc1", a szolgáltatás\~identitása\~"myapp app1 svc1" lesz 6.0+ és "myapp/app1/svc1" a korábbi verziókban. |
+| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-partition-restart-status"></a>sfctl partíció újraindítása – állapot
-A StartPartitionRestart használatával megkezdett PartitionRestart-művelet előrehaladásának beolvasása.
+## <a name="sfctl-partition-restart-status"></a>sfctl partíció újraindítás-állapota
+A StartPartitionRestart használatával megkezdett PartitionRestart művelet folyamatának letiltása.
 
-Lekérdezi a StartPartitionRestart által a megadott OperationId használatával indított PartitionRestart előrehaladását.
+Beszerzi a StartPartitionRestart programmal indított PartitionRestart folyamatát a megadott OperationId használatával.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --Operation-ID [kötelező] | Az API hívását azonosító GUID.  Ezt a rendszer átadja a megfelelő GetProgress API-nak. |
-| --Partition-ID [kötelező] | A partíció identitása. |
-| --Service-ID [kötelező] | A szolgáltatás identitása. Ez az azonosító általában a szolgáltatás teljes neve a "Fabric\:" URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a "\~" karakterrel vannak tagolva. Ha például a szolgáltatás neve "Fabric\:/MyApp/App1/svc1", a szolgáltatás identitása a korábbi verziókban a következő: "SajátPr\~App1\~svc1" (6.0 + és "SajátPr/App1/svc1"). |
-| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --művelet-azonosító [Kötelező] | Az API hívását azonosító GUID.  Ez a megfelelő GetProgress API-ba kerül. |
+| --partition-id [Kötelező] | A partíció identitása. |
+| --service-id [Kötelező] | A szolgáltatás identitása. Ez az azonosító általában a teljes neve a\:szolgáltatás nélkül a "fabric" URI-séma. A 6.0-s verziótól kezdődően a hierarchikus neveket a "\~" karakter nel dekvanálja. Ha például a szolgáltatás neve\:"fabric /myapp/app1/svc1", a szolgáltatás\~identitása\~"myapp app1 svc1" lesz 6.0+ és "myapp/app1/svc1" a korábbi verziókban. |
+| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
 
-## <a name="sfctl-partition-svc-name"></a>sfctl Partition SVC-név
-Lekéri egy partíció Service Fabric szolgáltatásának nevét.
+## <a name="sfctl-partition-svc-name"></a>sfctl partíció svc-név
+Lekéri a Service Fabric szolgáltatás nevét egy partícióhoz.
 
-Lekéri a szolgáltatás nevét a megadott partícióhoz. A rendszer 404-es hibát ad vissza, ha a partíció azonosítója nem létezik a fürtben.
+Lekéri a szolgáltatás nevét a megadott partícióhoz. 404-es hibát ad vissza, ha a partícióazonosító nem létezik a fürtben.
 
 ### <a name="arguments"></a>Argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| --Partition-ID [kötelező] | A partíció identitása. |
-| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+| --partition-id [Kötelező] | A partíció identitása. |
+| --idő-out -t | A művelet végrehajtásához a kiszolgáló időtúlideje másodpercben. Ez az időkérés azt az időtartamot adja meg, amelyet az ügyfél hajlandó megvárni a kért művelet befejezésére. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
 |Argumentum|Leírás|
 | --- | --- |
-| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
-| --Help-h | A súgó üzenet megjelenítése és kilépés. |
-| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
-| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
-| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+| --hibakeresés | Növelje a naplózás részletességét az összes hibakeresési napló megjelenítéséhez. |
+| --segítség -h | A súgóüzenet megjelenítése és kilépés. |
+| --kimenet -o | Kimeneti formátum.  Megengedett\: értékek json, jsonc, táblázat, tsv.  Alapértelmezett\: json. |
+| --lekérdezés | JMESPath lekérdezési karakterlánc. További\:információt és példákat a http //jmespath.org/ című témakörben talál. |
+| --bőbeszédű | A naplózás igézetének növelése. Használja a --debug fájlt a teljes hibakeresési naplókhoz. |
 
 
-## <a name="next-steps"></a>Következő lépések
-- [Állítsa](service-fabric-cli.md) be a Service Fabric CLI-t.
-- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.
+## <a name="next-steps"></a>További lépések
+- [Állítsa be](service-fabric-cli.md) a Service Fabric CLI-t.
+- Ismerje meg, hogyan használhatja a Service Fabric CLI-t a [mintaparancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.

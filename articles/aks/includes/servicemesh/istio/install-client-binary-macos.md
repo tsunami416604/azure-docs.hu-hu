@@ -4,15 +4,15 @@ ms.topic: include
 ms.date: 11/15/2019
 ms.author: pabouwer
 ms.openlocfilehash: 74f5b22ccc822a188059b29d9c661a15cf8412bf
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77593970"
 ---
-## <a name="download-and-install-the-istio-istioctl-client-binary"></a>Töltse le és telepítse a Istio istioctl-ügyfél bináris fájlját
+## <a name="download-and-install-the-istio-istioctl-client-binary"></a>Az Istio istioctl kliens bináris letöltése és telepítése
 
-A MacOS rendszerű bash-alapú rendszerhéjban `curl` használatával töltse le a Istio-kiadást, majd bontsa ki a `tar` a következő módon:
+A MacOS bash-alapú rendszerhéjában töltse `curl` le az Istio `tar` kiadást, majd kivonatold ki az alábbiak szerint:
 
 ```bash
 # Specify the Istio version that will be leveraged throughout these instructions
@@ -21,7 +21,7 @@ ISTIO_VERSION=1.4.0
 curl -sL "https://github.com/istio/istio/releases/download/$ISTIO_VERSION/istio-$ISTIO_VERSION-osx.tar.gz" | tar xz
 ```
 
-A `istioctl`-ügyfél bináris fájlja fut az ügyfélszámítógépen, és lehetővé teszi a Istio szolgáltatás hálójának kezelését. A következő parancsokkal telepítheti a Istio `istioctl`-ügyfél bináris fájlját egy bash-alapú rendszerhéjba MacOS rendszeren. Ezek a parancsok a `istioctl` ügyfél bináris fájljait a `PATH`normál felhasználói program mappájába másolják.
+Az `istioctl` ügyfél bináris fut az ügyfélgépen, és lehetővé teszi, hogy az Istio szolgáltatás hálója. A következő parancsokkal telepítse az `istioctl` Istio ügyfél bináris egy bash-alapú rendszerhéj a MacOS. Ezek a `istioctl` parancsok az ügyfél bináris fájlját `PATH`a normál felhasználói program helyére másolják a rendszerben.
 
 ```bash
 cd istio-$ISTIO_VERSION
@@ -29,7 +29,7 @@ sudo cp ./bin/istioctl /usr/local/bin/istioctl
 sudo chmod +x /usr/local/bin/istioctl
 ```
 
-Ha a Istio parancssori kiegészítést szeretne végrehajtani `istioctl` ügyfél bináris fájlját, a következőképpen állítsa be:
+Ha az Istio `istioctl` ügyfél bináris parancssori befejezését szeretné, állítsa be a következőképpen:
 
 ```bash
 # Generate the bash completion file and source it in your current shell

@@ -1,7 +1,7 @@
 ---
-title: 'Partíció és minta: modul-hivatkozás'
+title: 'Partíció és minta: Modul hivatkozás'
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan használhatja a Azure Machine Learning a partíció és a minta modult az adatkészletek mintavételezésének végrehajtásához, vagy az adatkészlet partícióinak létrehozásához.
+description: Ismerje meg, hogyan használhatja a Partíció és minta modul az Azure Machine Learning mintavételezés egy adatkészleten, vagy partíciókat az adatkészletből.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,162 +9,162 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: c66457ee46cf56a98002c61b70172cef75a8e824
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 0392a05df485b45b1244f4542ed55af1837dca3d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79370066"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477510"
 ---
-# <a name="partition-and-sample-module"></a>Partíció és minta modul
+# <a name="partition-and-sample-module"></a>Partíció- és mintamodul
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk ismerteti a modul az Azure Machine Learning designer (előzetes verzió).
 
-A partíció és a minta modul használatával mintavételezést végezhet egy adatkészleten, vagy partíciókat hozhat létre az adatkészletből.
+A Partíció és a Minta modul segítségével mintavételezést végezhet egy adatkészleten, vagy partíciókat hozhat létre az adatkészletből.
 
-A mintavétel fontos eszköz a gépi tanulásban, mivel lehetővé teszi az adatkészlet méretének csökkentését az értékek azonos arányának fenntartása mellett. Ez a modul több kapcsolódó feladatot is támogat, amelyek fontosak a gépi tanulásban: 
+A mintavételezés fontos eszköz a gépi tanulásban, mivel lehetővé teszi az adatkészlet méretének csökkentését, miközben megtartja az azonos arányú értékeket. Ez a modul számos kapcsolódó feladatot támogat, amelyek fontosak a gépi tanulásban: 
 
-- Az adatait több, azonos méretű alszakaszra oszthatja. 
+- Az adatok felosztása azonos méretű több alszakaszra. 
 
-  Használhatja a partíciókat a kereszt-ellenőrzéshez, illetve az esetek véletlenszerű csoportokba való hozzárendelését is.
+  Használhatja a partíciókkereszt-ellenőrzés, vagy az esetek hozzárendelése véletlenszerű csoportokhoz.
 
-- Az adatok csoportokba való elválasztása, majd egy adott csoport adatainak használata. 
+- Az adatok csoportokra bontása, majd egy adott csoport adatainak lebontása. 
 
-  Az esetek különböző csoportokhoz való véletlenszerű hozzárendelését követően előfordulhat, hogy módosítania kell a csak egy csoporthoz társított szolgáltatásokat.
+  Miután véletlenszerűen hozzárendelte az eseteket a különböző csoportokhoz, előfordulhat, hogy módosítania kell a csak egy csoporthoz társított funkciókat.
 
 - Mintavételi. 
 
-  Kinyerheti az adatok százalékos arányát, véletlenszerű mintavételezést alkalmazhat, vagy kiválaszthatja az adatkészlet kiegyensúlyozásához használandó oszlopot, és rétegzett mintavételezést hajthat végre az értékein.
+  Kinyerheti az adatok egy százalékát, alkalmazhat véletlenszerű mintavételezést, vagy kiválaszthat egy oszlopot az adatkészlet kiegyensúlyozásához, és rétegzett mintavételezést hajthat végre az értékein.
 
-- Kisebb adatkészlet létrehozása teszteléshez. 
+- Kisebb adatkészlet létrehozása tesztelésre. 
 
-  Ha sok adat van, érdemes csak az első *n* sort használni a folyamat beállítása során, majd a modell létrehozásakor váltson a teljes adatkészlet használatára. A mintavétel használatával kisebb adathalmazt is létrehozhat a fejlesztéshez.
+  Ha sok adattal rendelkezik, érdemes lehet csak az első *n* sorokat használni a folyamat beállítása kor, majd a modell létrehozásakor váltson a teljes adatkészlet használatára. Mintavételezési segítségével is létrehozhat egy kisebb adatkészletet a fejlesztéshez.
 
 ## <a name="configure-the-module"></a>A modul konfigurálása
 
-Ez a modul a következő módszereket támogatja az adatpartíciók és a mintavételezések felosztásához. Először válassza ki a módszert, majd adja meg a metódus által igényelt további beállításokat.
+Ez a modul a következő módszereket támogatja az adatok partíciókra való felosztására vagy mintavételezésre. Először válassza ki a módszert, majd adja meg a metódus által igényelt további beállításokat.
 
 - Head
 - Mintavételezés
-- Hozzárendelés a kidobásokhoz
-- Kidobás
+- Hozzárendelés a hajtásokhoz
+- Pick fold (pick fold)
 
-### <a name="get-top-n-rows-from-a-dataset"></a>ELSŐ N sor beolvasása egy adatkészletből
+### <a name="get-top-n-rows-from-a-dataset"></a>TOP N sorok beolvasása adatkészletből
 
-Ezzel a móddal csak az első *n* sor kerül be. Ez a beállítás akkor hasznos, ha egy folyamatot kis számú sorban szeretne tesztelni, és nincs szükség az adat kiegyensúlyozására vagy bármilyen módon történő mintavételezésére.
+Ebben a módban csak az első *n* sorokat kaphatja meg. Ez a beállítás akkor hasznos, ha egy folyamatot kis számú sorban szeretne tesztelni, és nincs szüksége az adatok kiegyensúlyozottságára vagy mintavételezésére.
 
-1. Adja hozzá a **partíciót és a minta** modult a folyamathoz a csatolón, és kapcsolódjon az adatkészlethez.  
+1. Adja hozzá a **partíciót és a mintamodult** a folyamathoz a kapcsolatban, és csatlakoztassa az adatkészletet.  
 
-1. **Partíciós vagy minta mód**: ezt a beállítást állítsa a **Head**értékre.
+1. **Partíció vagy minta mód**: Állítsa ezt a beállítást **a Fej**.
 
-1. **Kijelölni kívánt sorok száma**: adja meg a visszaadni kívánt sorok számát.
+1. **A kijelölandó sorok száma**: Adja meg a visszaadandó sorok számát.
 
-   A sorok számának nem negatív egész számnak kell lennie. Ha a kiválasztott sorok száma nagyobb, mint az adatkészlet sorainak száma, a rendszer a teljes adathalmazt adja vissza.
+   A sorok számának nem negatív egész számnak kell lennie. Ha a kijelölt sorok száma nagyobb, mint az adatkészlet sorainak száma, a teljes adatkészlet et adja vissza.
 
-1. A folyamat futtatása.
+1. Küldje el a folyamatot.
 
-A modul egyetlen adatkészlet kimenetét adja meg, amely csak a megadott számú sort tartalmazza. A sorok mindig az adatkészlet elejétől lesznek beolvasva.
+A modul egyetlen adatkészletet ad ki, amely csak a megadott számú sort tartalmazza. A sorok mindig az adatkészlet tetejéről kerülnek beolvasva.
 
 ### <a name="create-a-sample-of-data"></a>Adatminta létrehozása
 
-Ez a beállítás támogatja az egyszerű véletlenszerű mintavételezést vagy a rétegzett véletlenszerű mintavételt. Akkor hasznos, ha kisebb reprezentatív minta adatkészletet szeretne létrehozni teszteléshez.
+Ez a beállítás támogatja az egyszerű véletlenszerű mintavételt vagy a rétegzett véletlenszerű mintavételt. Ez akkor hasznos, ha kisebb reprezentatív minta adatkészletet szeretne létrehozni tesztelésre.
 
-1. Adja hozzá a **partíciót és a minta** modult a folyamathoz, és kapcsolódjon az adatkészlethez.
+1. Adja hozzá a **partíciót és a mintamodult** a folyamathoz, és csatlakoztassa az adatkészletet.
 
-1. **Partíció vagy minta mód**: ezt a beállítást a **mintavételezéshez**kell beállítani.
+1. **Partíció vagy minta mód**: Állítsa ezt a beállítást **mintavételi gombra.**
 
-1. **Mintavételezési sebesség**: adjon meg egy 0 és 1 közötti értéket. Ez az érték határozza meg a forrás adatkészletből a kimeneti adatkészletbe foglalandó sorok százalékos arányát.
+1. **Mintavételi arány:** Adjon meg egy 0 és 1 közötti értéket. ez az érték a forrásadatkészlet sorainak azt a százalékát adja meg, amelyet a kimeneti adatkészletben fel kell tüntetni.
 
-   Ha például csak az eredeti adatkészlet felét szeretné használni, írja be a `0.5`t, hogy jelezze, a mintavételi sebességnek 50%-nak kell lennie.
+   Ha például az eredeti adatkészletnek csak a `0.5` felét szeretné, adja meg azt a jelzést, hogy a mintavételi arány nak 50 százaléknak kell lennie.
 
-   A bemeneti adatkészlet sorait a rendszer a megadott arány szerint rendezi és szelektíven helyezi el a kimeneti adatkészletben.
+   A bemeneti adatkészlet sorai a megadott aránynak megfelelően összekeverednek és szelektíven kerülnek a kimeneti adatkészletbe.
 
-1. **Véletlenszerű magok mintavételezéshez**: opcionálisan adjon meg egy egész számot, amelyet mag értékként kíván használni.
+1. **Véletlenszerű vetőmag mintavételhez:** Tetszés szerint adjon meg egy egész szám, amelyet vetőmagértékként szeretne használni.
 
-   Ez a beállítás akkor fontos, ha azt szeretné, hogy a sorok minden alkalommal azonos módon legyenek felosztva. Az alapértelmezett érték **0**, ami azt jelenti, hogy a rendszer órája alapján hozza létre a kezdő magot. Ez az érték némileg eltérő eredményeket eredményezhet a folyamat minden egyes indításakor.
+   Ez a beállítás akkor fontos, ha azt szeretné, hogy a sorok at minden alkalommal ugyanúgy osszák. Az alapértelmezett érték **0**, ami azt jelenti, hogy a rendszeróra alapján kezdőmag jön létre. Ez az érték a folyamat minden egyes futtatásakor némileg eltérő eredményekhez vezethet.
 
-1. **Rétegzett felosztás mintavételezéshez**: akkor válassza ezt a lehetőséget, ha fontos, hogy az adatkészlet sorait a mintavételezés előtt a kulcs oszlopa egyenletesen ossza meg.
+1. **Rétegzett felosztás mintavételezéshez:** Válassza ezt a lehetőséget, ha fontos, hogy az adatkészlet sorait a mintavétel előtt néhány kulcsoszlop egyenletesen ossza fel.
 
-   A **mintavételezési kulcs oszlopához**válassza ki az adatkészlet felosztásához használni kívánt egyetlen *rétegbeli oszlopot* . Az adatkészlet sorai a következőképpen oszlanak meg:
+   A **Mintavételezési kulcs rétegződési oszlopához**válasszon ki egy *rétegoszlopot,* amelyet az adatkészlet felosztásakor kell használnia. Az adatkészlet sorai ezután a következőképpen oszlanak meg:
 
-   1. Az összes bemeneti sor (rétegzett) a megadott rétegek oszlop értékei szerint csoportosítva van.
+   1. Az összes bemeneti sort a megadott rétegoszlop értékei csoportosítják (rétegezik).
 
-   1. A sorok az egyes csoportokon belül vannak megkeverve.
+   1. A sorok at az egyes csoportokon belül keverik.
 
-   1. Az egyes csoportok szelektíven hozzáadódnak a kimeneti adatkészlethez, hogy megfeleljenek a megadott aránynak.
+   1. Minden csoport szelektíven hozzáadódik a kimeneti adatkészlethez, hogy megfeleljen a megadott aránynak.
 
 
-1. A folyamat futtatása.
+1. Küldje el a folyamatot.
 
-   Ezzel a beállítással a modul egyetlen adatkészletet ad eredményül, amely az adatokat reprezentáló mintavételt tartalmaz. Az adatkészlet fennmaradó, nem mintavételezés alatt álló része nem kimenet. 
+   Ezzel a beállítással a modul egyetlen adatkészletet ad ki, amely az adatok reprezentatív mintavételezését tartalmazza. Az adatkészlet fennmaradó, nem mintavételezett része nem lesz kimenet. 
 
-## <a name="split-data-into-partitions"></a>Az adatfelosztás partícióra
+## <a name="split-data-into-partitions"></a>Adatok felosztása partíciókra
 
-Akkor használja ezt a beállítást, ha az adatkészletet az adat részhalmazára szeretné osztani. Ez a beállítás akkor is hasznos, ha egyéni számú kitöltést szeretne létrehozni a kereszt-ellenőrzéshez, vagy több csoportba kell osztania a sorokat.
+Akkor használja ezt a beállítást, ha az adatkészletet az adatok részhalmazaira szeretné osztani. Ez a beállítás akkor is hasznos, ha egyéni számú hajtogatási összehajthatót szeretne létrehozni keresztellenőrzésre, vagy több csoportra szeretné osztani a sorokat.
 
-1. Adja hozzá a **partíciót és a minta** modult a folyamathoz, és kapcsolódjon az adatkészlethez.
+1. Adja hozzá a **partíciót és a mintamodult** a folyamathoz, és csatlakoztassa az adatkészletet.
 
-1. A **partíció vagy a minta mód**esetében válassza **a hozzárendelés a kidobáshoz**lehetőséget.
+1. **Partíció vagy minta módban**válassza a Hozzárendelés a **hajtáshoz**lehetőséget.
 
-1. **Csere használata a particionáláskor**: válassza ezt a lehetőséget, ha azt szeretné, hogy a mintában szereplő sor visszakerüljön a sorok készletére a lehetséges újrafelhasználáshoz. Ennek eredményeképpen előfordulhat, hogy ugyanaz a sor több bedobáshoz is hozzá van rendelve.
+1. **Csere használata a particionálásban:** Válassza ezt a lehetőséget, ha azt szeretné, hogy a mintavételezett sor visszakerüljön a sorok készletébe, hogy esetlegesen újra felhasználhassa. Ennek eredményeképpen ugyanaz a sor több hajtáshoz is hozzárendelhető.
 
-   Ha nem használja a helyettesítő elemet (az alapértelmezett beállítás), a rendszer nem helyezi vissza a mintavételezési sort az esetleges újrafelhasználáshoz. Ennek eredményeképpen minden egyes sor csak egy összecsukott elemhez rendelhető hozzá.
+   Ha nem használja a csere (az alapértelmezett beállítás), a mintavételezett sor nem kerül vissza a készlet sorok esetleges újrafelhasználása. Ennek eredményeképpen minden sor csak egy hajtáshoz rendelhető hozzá.
 
-1. **Randomizált felosztás**: akkor válassza ezt a lehetőséget, ha azt szeretné, hogy a sorok véletlenszerűen legyenek kiosztva a kidobáshoz.
+1. **Randomizált felosztás:** Akkor válassza ezt a lehetőséget, ha azt szeretné, hogy a sorok véletlenszerűen legyenek hozzárendelve a behajthatókhoz.
 
-   Ha nem jelöli be ezt a beállítást, a sorok a ciklikus multiplexelés használatával lesznek kiosztva.
+   Ha nem jelöli be ezt a beállítást, a sorok a ciklikus multiplexelés módszerrel vannak hozzárendelve a behajtáshoz.
 
-1. **Véletlenszerű mag**: igény szerint adjon meg egy egész számot, amelyet a mag értékként kíván használni. Ez a beállítás akkor fontos, ha azt szeretné, hogy a sorok minden alkalommal azonos módon legyenek felosztva. Ellenkező esetben az alapértelmezett **0** érték azt jelenti, hogy a rendszer véletlenszerű kezdő magot használ.
+1. **Véletlenszerű vetőmag:** Tetszés szerint adjon meg egy egész szintet, amelyet magértékként szeretne használni. Ez a beállítás akkor fontos, ha azt szeretné, hogy a sorok at minden alkalommal ugyanúgy osszák. Ellenkező esetben a **0** alapértelmezett érték azt jelenti, hogy véletlenszerű kezdőmag lesz használva.
 
-1. **Adja meg a particionáló metódust**: jelezze, hogy az egyes partíciók számára milyen módon kell megosztani az adatmegosztást, a következő lehetőségek használatával:
+1. **Adja meg a particionáló metódust:** Adja meg, hogyan szeretné felosztani az adatokat az egyes partíciók között az alábbi beállításokkal:
 
-   - **Partíció egyenletes**használata: ezzel a beállítással az egyes partíciókban megegyező számú sort helyezhet el. A kimeneti partíciók számának megadásához adjon meg egy egész számot a **kidobások számának megadása a dobozba egyenletes felosztáshoz** .
+   - **Partíció egyenletesen**: Ezzel a beállítással azonos számú sort helyezhet el minden partíción. A kimeneti partíciók számának megadásához írjon be egy egész számot a Felosztáshoz a felosztáshoz használható **hajtások számámezőbe.**
 
-   - **Partíció testreszabott arányokkal**: ezzel a beállítással megadhatja az egyes partíciók méretét vesszővel tagolt listaként.
+   - **Testreszabott arányokkal rendelkező partíció:** Ezzel a beállítással az egyes partíciók méretét vesszővel tagolt listaként adhatja meg.
 
-     Tegyük fel például, hogy három partíciót kíván létrehozni. Az első partíció az adatmennyiség 50 százalékát fogja tartalmazni. A fennmaradó két partíció az adatmennyiség 25 százalékát fogja tartalmazni. A (z) **vesszővel elválasztott arányok listájában** adja meg a következő számokat: **.5,. 25,. 25**.
+     Tegyük fel például, hogy három partíciót szeretne létrehozni. Az első partíció az adatok 50 százalékát fogja tartalmazni. A fennmaradó két partíció mindegyike az adatok 25 százalékát fogja tartalmazni. A **Vesszővel elválasztott arányok listája** mezőbe írja be a következő számokat: **.5, .25, .25**.
 
-     Az összes partíciós méret összegének pontosan 1 értékkel kell rendelkeznie.
+     Az összes partícióméret összegének pontosan 1-et kell hozzáadnia.
 
-     Ha 1-nél *kisebb*számot ad meg, a fennmaradó sorok tárolására külön partíció jön létre. Ha például a **.2** és a **.3**értékeket adja meg, a rendszer egy harmadik partíciót hoz létre, amely az összes sor fennmaradó 50 százalékát fogja tárolni.
+     Ha olyan számokat ad meg, amelyek *legfeljebb 1 értéket*adnak ki, a fennmaradó sorok tárolására egy további partíció jön létre. Ha például a .2 és **a .3** értékeket adja meg, egy harmadik partíció jön létre az összes sor fennmaradó 50 százalékának tárolására. **.3**
      
-     Ha *több mint 1*értéket ad meg, akkor a folyamat futtatásakor hiba lép fel.
+     Ha olyan számokat ad meg, amelyek *legfeljebb 1 értéket*adnak ki, a folyamat futtatásakor hiba lép fel.
 
-1. **Rétegzett felosztás**: válassza ezt a lehetőséget, ha azt szeretné, hogy a sorok a felosztáskor rétegzett legyenek, majd válassza a _rétegek oszlopot_.
+1. **Rétegzett felosztás**: Válassza ezt a lehetőséget, ha felosztáskor rétegezi a sorokat, majd válassza ki a _rétegoszlopot._
 
-1. A folyamat futtatása.
+1. Küldje el a folyamatot.
 
-   Ha ezt a lehetőséget választja, a modul több adatkészletet ad eredményül. Az adatkészletek particionálva vannak a megadott szabályoknak megfelelően.
+   Ezzel a beállítással a modul több adatkészletet ad ki. Az adatkészletek particionálva a megadott szabályok szerint.
 
-### <a name="use-data-from-a-predefined-partition"></a>Előre definiált partíció adatainak használata  
+### <a name="use-data-from-a-predefined-partition"></a>Előre definiált partícióadatainak használata  
 
-Akkor használja ezt a beállítást, ha több partícióra osztott egy adatkészletet, és most további elemzés vagy feldolgozás céljából szeretné betölteni az egyes partíciókat.
+Akkor használja ezt a beállítást, ha egy adatkészletet több partícióra osztott fel, és most minden partíciót be szeretne tölteni további elemzés vagy feldolgozás céljából.
 
-1. Adja hozzá a **partíciót és a minta** modult a folyamathoz.
+1. Adja hozzá a **partíciót és a mintamodult** a folyamathoz.
 
-1. Kapcsolja össze a modult a **partíció és a minta**előző példányának kimenetével. A példánynak a hozzárendelés a **Kidobáshoz** lehetőséget kell használnia bizonyos számú partíció létrehozásához.
+1. Csatlakoztassa a modult a partíció **és a minta**egy korábbi példányának kimenetéhez. A példánynak a **Hozzárendelés a hajtáshoz** lehetőséget kellett használnia bizonyos számú partíció létrehozásához.
 
-1. **Partíció vagy minta mód**: válassza a **pick fold**lehetőséget.
+1. **Partíció vagy minta mód:** Válassza **a Pick Fold**lehetőséget.
 
-1. **Adja meg, hogy melyik**kiválasztható mintát szeretné kiválasztani: válassza ki a használni kívánt partíciót az indexének megadásával. A partíciós indexek 1-alapúak. Ha például három részre osztotta az adatkészletet, akkor a partíciók az 1, 2 és 3 indexekkel rendelkezhetnek.
+1. **Adja meg, hogy melyik hajtásból kell mintát venni:** Az index megadásával válassza ki a használni kívánt partíciót. A partícióindexek 1-alapúak. Ha például az adatkészletet három részre osztja, a partíciók 1, 2 és 3 indexet kapnak.
 
-   Ha érvénytelen index értéket ad meg, a rendszer tervezésidejű hibát jelez: "hiba 0018: az adatkészlet érvénytelen adatokat tartalmaz."
+   Ha érvénytelen indexértéket ad meg, a következő tervezési idejű hiba lép fel: "0018 hiba: Az adatkészlet érvénytelen adatokat tartalmaz."
 
-   Az adatkészlet összevonása mellett az adatkészletet két csoportba is elkülönítheti: a cél kidobását és minden mást. Ehhez írja be az egyetlen fold indexét, majd válassza a **kiválasztott fold komplement** (kiválasztás) elemét, hogy mindent megtegyen a megadott foldon.
+   Az adatkészlet hajtások szerinti csoportosítása mellett az adatkészletet két csoportra bonthatja: a célhajtásra és minden másra. Ehhez adja meg az index egyetlen szeres, majd válassza ki a lehetőséget **Pick kiegészíti a kiválasztott szeres,** hogy mindent, de az adatokat a megadott szeres.
 
-1. Ha több partíciót használ, a partíció **és a minta** modul több példányát is fel kell vennie az egyes partíciók kezelésére.
+1. Ha több partícióval dolgozik, hozzá kell adnia a partíció és a **mintamodul** további példányait az egyes partíciók kezeléséhez.
 
-   A második sorban lévő **partíció és minta** modul például úgy van beállítva, hogy a **kiosztásokhoz legyen hozzárendelve**, és a harmadik sorban lévő modul a **kidobásra**van beállítva.   
+   A második sorban lévő **Partíció és Minta** modul például a **Hajtogatáshoz hozzárendelés,** a harmadik sorban pedig a **Pick Fold**elem.   
 
    ![Partíció és minta](./media/module/partition-and-sample.png)
 
-1. A folyamat futtatása.
+1. Küldje el a folyamatot.
 
-   Ezzel a beállítással a modul egyetlen adatkészlet kimenetét adja meg, amely csak az ehhez a foldhoz rendelt sorokat tartalmazza.
+   Ezzel a beállítással a modul egyetlen adatkészletet ad ki, amely csak az adott hajtáshoz rendelt sorokat tartalmazza.
 
 > [!NOTE]
->  A fold megjelöléseit nem lehet közvetlenül megtekinteni. Csak a metaadatokban jelennek meg.
+>  A hajtásjelölések nem tekinthetők meg közvetlenül. Csak a metaadatokban vannak jelen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
+Tekintse meg az Azure Machine Learning [számára elérhető modulok készletét.](module-reference.md) 

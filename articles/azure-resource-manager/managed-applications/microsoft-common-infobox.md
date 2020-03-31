@@ -1,24 +1,24 @@
 ---
-title: Bezárása FELHASZNÁLÓIFELÜLET-elem
-description: A Azure Portal Microsoft. Common. bezárása felhasználói felületi elemének ismertetése. A segítségével szöveget vagy figyelmeztetéseket adhat hozzá a felügyelt alkalmazás telepítésekor.
+title: InfoBox felhasználói felület e-elem
+description: A cikk az Azure Portal Microsoft.Common.InfoBox felhasználói felületének elemét ismerteti. A felügyelt alkalmazás telepítésekor szöveget vagy figyelmeztetéseket adhat hozzá.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: tomfitz
 ms.openlocfilehash: 6d1e4a84904ef7022d9ce85803bf10285bf0b8ac
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75652475"
 ---
-# <a name="microsoftcommoninfobox-ui-element"></a>Microsoft. Common. bezárása felhasználói felületi elem
+# <a name="microsoftcommoninfobox-ui-element"></a>Microsoft.Common.InfoBox felhasználói felület
 
-Egy adatmezőt tartalmazó vezérlőelem. A mező olyan fontos szöveget vagy figyelmeztetéseket tartalmaz, amelyek segítségével a felhasználók megismerhetik az általuk nyújtott értékeket. További információkhoz is hivatkozhat egy URI-ra.
+Információs mezőt tartalmazó vezérlő. A mező fontos szöveget vagy figyelmeztetéseket tartalmaz, amelyek segítenek a felhasználóknak megérteni az általuk biztosított értékeket. További információkért az URI-hoz is csatolhat hivatkozást.
 
-## <a name="ui-sample"></a>Felhasználói felület mintája
+## <a name="ui-sample"></a>Felhasználói felület minta
 
-![Microsoft. Common. bezárása](./media/managed-application-elements/microsoft.common.infobox.png)
+![Microsoft.Common.InfoBox](./media/managed-application-elements/microsoft.common.infobox.png)
 
 
 ## <a name="schema"></a>Séma
@@ -44,10 +44,10 @@ Egy adatmezőt tartalmazó vezérlőelem. A mező olyan fontos szöveget vagy fi
 
 ## <a name="remarks"></a>Megjegyzések
 
-* `icon`esetén használja a **none**, az **info**, a **Warning**vagy a **Error**értéket.
-* A `uri` tulajdonság nem kötelező.
+* A `icon`területen használja a **Nincs**, **Információ**, **Figyelmeztetés**vagy **Hiba parancsot.**
+* A `uri` szálláshely nem kötelező.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* A felhasználói felületi definíciók létrehozásával kapcsolatban lásd: Bevezetés [a CreateUiDefinition](create-uidefinition-overview.md)használatába.
-* A felhasználói felületi elemek általános tulajdonságainak leírását lásd: [CreateUiDefinition-elemek](create-uidefinition-elements.md).
+* A felhasználói felületdefiníciók létrehozásának bemutatása a [CreateUiDefinition](create-uidefinition-overview.md)első lépései című témakörben látható.
+* A felhasználói felület elemeinek gyakori tulajdonságainak leírását a [CreateUiDefinition elements](create-uidefinition-elements.md)című témakörben található.

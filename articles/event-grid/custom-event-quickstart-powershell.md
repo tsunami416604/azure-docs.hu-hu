@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: egyéni események küldése webes végpontra – Event Grid, PowerShell'
-description: 'Rövid útmutató: a Azure Event Grid és a PowerShell használatával közzétehet egy egyéni témakört, és feliratkozhat az adott témakör eseményeire. Az eseményeket egy webalkalmazás kezeli.'
+title: 'Rövid útmutató: Egyéni események küldése a webvégpontra – Event Grid, PowerShell'
+description: 'Rövid útmutató: Az Azure Event Grid és a PowerShell használatával közzé tehet egy egyéni témakört, és előfizethet az adott témakör eseményeire. Az eseményeket egy webalkalmazás kezeli.'
 services: event-grid
 keywords: ''
 author: spelluru
@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
 ms.openlocfilehash: bc92e0cf579bc008fdb09c9cbb576d8cac0191cb
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73721439"
 ---
-# <a name="quickstart-route-custom-events-to-web-endpoint-with-powershell-and-event-grid"></a>Gyors útmutató: egyéni események továbbítása webes végponthoz a PowerShell és a Event Grid használatával
+# <a name="quickstart-route-custom-events-to-web-endpoint-with-powershell-and-event-grid"></a>Rövid útmutató: Egyéni események irányítsa a webvégpontot a PowerShell és az Event Grid segítségével
 
 Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben létrehozunk egy egyéni témakört az Azure PowerShell-lel, feliratkozunk a témakörre, majd kiváltjuk az eseményt az eredmény megtekintéséhez. Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek eseményadatokat dolgoznak fel és műveleteket hajtanak végre. A cikk egyszerűsítése érdekében azonban az eseményeket egy olyan webalkalmazásnak küldjük el, amely az üzenetek gyűjtésével és megjelenítésével foglalkozik.
 
@@ -28,9 +28,9 @@ A folyamat végén látni fogja, hogy a rendszer elküldte az eseményadatokat a
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-Ehhez a cikkhez az Azure PowerShell legújabb verzióját kell futtatnia. Ha telepíteni vagy frissíteni szeretne: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/install-Az-ps).
+Ehhez a cikkhez az Azure PowerShell legújabb verzióját kell futtatnia. Ha telepítenie vagy frissítenie kell, olvassa el [az Azure PowerShell telepítése és konfigurálása című témakört.](/powershell/azure/install-Az-ps)
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Event Grid-témakörök Azure-erőforrások, amelyeket egy Azure-erőforráscsoportba kell helyezni. Az erőforráscsoport egy olyan logikai gyűjtemény, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -46,7 +46,7 @@ New-AzResourceGroup -Name gridResourceGroup -Location westus2
 
 ## <a name="create-a-custom-topic"></a>Egyéni témakör létrehozása
 
-Az Event Grid-témakörök egy felhasználó által meghatározott végpontot biztosítanak, amelyben közzéteheti az eseményeket. Az alábbi példa az erőforráscsoportban létrehozza az egyéni témakört. A `<your-topic-name>` elemet a témakör egyedi nevére cserélje le. A témakör nevének egyedinek kell lennie, mert a DNS-bejegyzés része. Ezenkívül 3-50 karakter közöttinek kell lennie, és csak a-z, A-Z, A 0-9 és a "-" értékeket tartalmazza.
+Az Event Grid-témakörök egy felhasználó által meghatározott végpontot biztosítanak, amelyben közzéteheti az eseményeket. Az alábbi példa az erőforráscsoportban létrehozza az egyéni témakört. A `<your-topic-name>` elemet a témakör egyedi nevére cserélje le. A témakör nevének egyedinek kell lennie, mert a DNS-bejegyzés része. Továbbá 3-50 karakter között kell lennie, és csak az a-z, Az-Z, 0-9 és "-" értékeket tartalmazza.
 
 ```powershell-interactive
 $topicname="<your-topic-name>"

@@ -1,63 +1,66 @@
 ---
-title: A Azure Maps térbeli IO-modul használata | Microsoft Azure térképek
-description: Megtudhatja, hogyan használhatja a Azure Maps web SDK által biztosított térbeli i/o-modult. Ez a modul robusztus funkciókat biztosít annak érdekében, hogy a fejlesztők könnyebben integrálhatók a térbeli adatainak a Azure Maps web SDK-val.
-author: farah-alyasari
-ms.author: v-faalya
+title: Az Azure Maps térbeli IO-moduljának használata | Microsoft Azure Maps
+description: Ismerje meg, hogyan használhatja az Azure Maps Web SDK által biztosított térbeli I/o-modult. Ez a modul robusztus funkciókat biztosít, amelyek megkönnyítik a fejlesztők számára a térbeli adatok integrálását az Azure Maps web sdk-vel.
+author: philmea
+ms.author: philmea
 ms.date: 02/28/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: c309473529666d369e8accd1617021249867fb19
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 5bcfeebc1fcb96cfdf6ea802293eb4027f339815
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78371037"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335212"
 ---
-# <a name="how-to-use-the-azure-maps-spatial-io-module"></a>A Azure Maps térbeli IO-modul használata
+# <a name="how-to-use-the-azure-maps-spatial-io-module"></a>Az Azure Maps térbeli IO-moduljának használata
 
-A Azure Maps web SDK a **térbeli IO-modult**biztosítja, amely a térbeli és a Azure Maps web SDK-val együtt JavaScript vagy írógéppel használatával integrálja a térbeli adategységeket. A modul robusztus funkciói lehetővé teszik a fejlesztők számára a következőket:
+Az Azure Maps Web SDK biztosítja a **térbeli IO-modult,** amely integrálja a térbeli adatokat az Azure Maps web SDK JavaScript vagy TypeScript használatával. A modul robusztus funkciói lehetővé teszik a fejlesztők számára, hogy:
 
-- Az [információk olvasása és írása a közös térbeli fájlokba](spatial-io-read-write-spatial-data.md). Támogatott fájlformátumok: KML-, KMZ-, GPX-, GeoRSS-, GML-és CSV-fájlok, amelyek térbeli adatokat tartalmazó oszlopokat tartalmaznak.
-- [Csatlakozhat nyílt térinformatikai konzorcium (OGC) szolgáltatáshoz, és integrálhatja az Azure Maps web SDK-val. Overlay web Mapping Services (WMS) és web Map csempe Services (WMTS) rétegként a térképen.](spatial-io-add-ogc-map-layer.md)
-- [Adatlekérdezés a webes szolgáltatások (WFS) szolgáltatásban](spatial-io-connect-wfs-service.md).
-- Olyan [összetett adatkészleteket tartalmazhat, amelyek stílussal kapcsolatos információkat tartalmaznak, és automatikusan teszik azokat](spatial-io-add-simple-data-layer.md).
-- [Nagy sebességű XML-és tagolt fájl-olvasó és-író osztályok kihasználása](spatial-io-core-operations.md).
+- [Gyakori téradatfájlok olvasása és írása](spatial-io-read-write-spatial-data.md). A támogatott fájlformátumok a következők: KML, KMZ, GPX, GeoRSS, GML, GeoJSON és CSV fájlok, amelyek térbeli információkat tartalmazó oszlopokat tartalmaznak. Támogatja a jól ismert szöveget is (WKT).
+- [Csatlakozzon az Open Geospatial Consortium (OGC) szolgáltatásaihoz, és integrálja az Azure Maps webes SDK-val. Az Overlay Web Map Services (WMS) és a Web Map Tile Services (WMTS) rétegekként a térképen](spatial-io-add-ogc-map-layer.md).
+- [Adatok lekérdezése webszolgáltatásban (WFS).](spatial-io-connect-wfs-service.md)
+- [A stílusadatokat tartalmazó összetett adatkészletek átfedése, amelyek minimális kód használatával automatikusan lehetővé teszik azok megjelenítését.](spatial-io-add-simple-data-layer.md)
+- [Használja ki a nagy sebességű XML- és tagolt fájlolvasó és íróosztályokat.](spatial-io-core-operations.md)
 
-Ebből az útmutatóból megtudhatja, hogyan integrálhatja és használhatja a térbeli IO-modult egy webalkalmazásban.
+Ebben az útmutatóban megtudhatja, hogyan integrálhatja és használhatja a térbeli IO-modult egy webalkalmazásban.
+
+> [!WARNING]
+> Csak olyan adatokat és szolgáltatásokat használjon, amelyek megbízható forrásból származnak, különösen akkor, ha egy másik tartományból hivatkozik rá. A térbeli IO-modul lépéseket tesz a kockázat minimalizálása érdekében, azonban a legbiztonságosabb megközelítés túl nem teszi lehetővé semmilyen danagerous adatokat az alkalmazás kezdeni. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A térbeli i/o-modul használatához [Azure Maps fiókot kell létrehoznia](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-account-with-azure-maps) , és [be kell szereznie a fiókjához tartozó elsődleges előfizetési kulcsot](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#get-the-primary-key-for-your-account).
+A térbeli IO-modul használata előtt [azure Maps-fiókot kell készítenie,](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-account-with-azure-maps) és be kell [szereznie a fiók elsődleges előfizetési kulcsát.](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#get-the-primary-key-for-your-account)
 
-## <a name="installing-the-spatial-io-module"></a>A térbeli IO-modul telepítése
+## <a name="installing-the-spatial-io-module"></a>A térbeli IO modul telepítése
 
-A Azure Maps térbeli i/o-modult a két lehetőség egyikének használatával töltheti be:
+Az Azure Maps térbeli I/o modult a következő két lehetőség egyikével töltheti be:
 
-* A Azure Maps térbeli IO-modul globálisan üzemeltetett Azure CDN. Ehhez a beállításhoz adjon hozzá egy hivatkozást a JavaScripthez a HTML-fájl `<head>` elemében.
+* A globálisan üzemeltetett Azure CDN az Azure Maps térbeli IO-modulhoz. Ehhez a beállításhoz a HTML-fájl `<head>` elemében a JavaScriptre mutató hivatkozást kell hozzáadni.
 
     ```html
     <script src="https://atlas.microsoft.com/sdk/javascript/spatial/0/atlas-spatial.js"></script>
     ```
 
-* Az [Azure-Maps-térbeli-IO](https://www.npmjs.com/package/azure-maps-spatial-io) forráskódja helyileg tölthető be, majd az alkalmazással is üzemeltethető. Ez a csomag írógéppel kapcsolatos definíciókat is tartalmaz. Ehhez a beállításhoz használja a következő parancsot a csomag telepítéséhez:
+* Az [azure-maps-spatial-io](https://www.npmjs.com/package/azure-maps-spatial-io) forráskódja helyileg betölthető, majd az alkalmazással üzemeltethető. Ez a csomag TypeScript-definíciókat is tartalmaz. Ehhez a beállításhoz használja a következő parancsot a csomag telepítéséhez:
 
     ```sh
     npm install azure-maps-spatial-io
     ```
 
-    Ezután adjon hozzá egy hivatkozást a JavaScripthez a HTML-dokumentum `<head>` elemében:
+    Ezután adjon hozzá egy hivatkozást `<head>` a JavaScriptre a HTML-dokumentum elemében:
 
     ```html
     <script src="node_modules/azure-maps-spatial-io/dist/atlas-spatial.min.js"></script>
     ```
 
-## <a name="using-the-spatial-io-module"></a>A térbeli IO-modul használata
+## <a name="using-the-spatial-io-module"></a>A Térbeli IO modul használata
 
 1. Hozzon létre egy új HTML-fájlt.
 
-2. Töltse be a Azure Maps web SDK-t, és inicializálja a Térkép vezérlőelemet. A részletekért tekintse meg a [Azure Maps Map Control](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control) útmutatót. Ha elkészült ezzel a lépéssel, a HTML-fájlnak így kell kinéznie:
+2. Töltse be az Azure Maps Web SDK-t, és inicializálja a térképvezérlőt. Tekintse meg az [Azure Maps térképvezérlési](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control) útmutató a részleteket. Ha végzett ezzel a lépéssel, a HTML-fájlnak így kell kinéznie:
 
     ```html
     <!DOCTYPE html>
@@ -111,13 +114,13 @@ A Azure Maps térbeli i/o-modult a két lehetőség egyikének használatával t
     </html>
     ```
 
-2. Töltse be a Azure Maps térbeli IO-modult. Ehhez a gyakorlathoz használja a CDN-t a Azure Maps térbeli IO-modulhoz. Adja hozzá az alábbi hivatkozást a HTML-fájl `<head>` eleméhez:
+2. Töltse be az Azure Maps térbeli IO-modult. Ebben a gyakorlatban használja a CDN az Azure Maps térbeli IO-modul. Adja hozzá az `<head>` alábbi hivatkozást a HTML-fájl eleméhez:
 
     ```html
     <script src="https://atlas.microsoft.com/sdk/javascript/spatial/0/atlas-spatial.js"></script>
     ```
 
-3. Inicializáljon egy `datasource`, és adja hozzá az adatforrást a térképhez. Inicializáljon egy `layer`, és adja hozzá az adatforrást a Térkép réteghez. Ezután jelenítse meg az adatforrást és a réteget is. Mielőtt lefelé görgetve megtekinti a teljes kódot a következő lépésben, gondolja át az adatforrások és a rétegbeli kódrészletek legjobb helyeit. Ne felejtse el, hogy a Térkép programozott módosítása előtt várnia kell, amíg a Térkép erőforrás elkészült.
+3. Inicializálja a `datasource`, és adja hozzá az adatforrást a térképhez. Inicializálja a `layer`, és adja hozzá az adatforrást a térképréteghez. Ezután jelenítse meg az adatforrást és a réteget is. Mielőtt lefelé görgetne a teljes kód megtekintéséhez a következő lépésben, gondolja át, hogy mi a legjobb hely az adatforrás- és rétegkódrészletek elhelyezéséhez. Emlékezzünk vissza, hogy mielőtt programozottmódon manipulálnánk a térképet, meg kell várnunk, amíg a térkép erőforrás készen áll.
 
     ```javascript
     var datasource, layer;
@@ -135,7 +138,7 @@ A Azure Maps térbeli i/o-modult a két lehetőség egyikének használatával t
     map.layers.add(layer);
     ```
 
-4. A HTML-kódnak a következő kódhoz hasonlóan kell kinéznie. Ez a minta azt mutatja be, hogyan lehet XML-fájlt olvasni egy URL-címről. Ezután töltse be és jelenítse meg a fájl funkciójának a térképen való megjelenítését. 
+4. Összerakva az egészet, a HTML-kódnak a következő kódnak kell kinéznie. Ez a minta bemutatja, hogyan lehet olvasni egy XML-fájlt egy URL-címről. Ezután töltse be és jelenítse meg a fájl jellemzőadatait a térképen. 
 
     ```html
     <!DOCTYPE html>
@@ -212,37 +215,37 @@ A Azure Maps térbeli i/o-modult a két lehetőség egyikének használatával t
     </html>
     ```
 
-5. Ne felejtse el lecserélni a `<Your Azure Maps Key>`t az elsődleges kulccsal. Nyissa meg a HTML-fájlt, és az alábbi képhez hasonló eredményeket fog látni:
+5. Ne felejtse el helyettesíteni `<Your Azure Maps Key>` az elsődleges kulcsot. Nyissa meg a HTML-fájlt, és az alábbihoz hasonló eredmények jelennek meg:
 
     <center>
 
-    ![Térbeli adatértékek – példa](./media/how-to-use-spatial-io-module/spatial-data-example.png)
+    ![Példa térbeli adatokra](./media/how-to-use-spatial-io-module/spatial-data-example.png)
 
     </center>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az itt bemutatott funkció csak a térbeli IO-modul számos funkciójának egyike. Az alábbi útmutatókból megtudhatja, hogyan használhatja más funkciókat a térbeli IO-modulban:
+Az itt bemutatott funkció csak egyike a térbeli IO modul számos funkciójának. Az alábbi útmutatókból megtudhatja, hogyan használhatja a térbeli IO modul egyéb funkcióit:
 
 > [!div class="nextstepaction"]
 > [Egyszerű adatréteg hozzáadása](spatial-io-add-simple-data-layer.md)
 
 > [!div class="nextstepaction"]
-> [Térbeli információk olvasása és írása](spatial-io-read-write-spatial-data.md)
+> [Téradatok olvasása és írása](spatial-io-read-write-spatial-data.md)
 
 > [!div class="nextstepaction"]
-> [OGC-Térkép réteg hozzáadása](spatial-io-add-ogc-map-layer.md)
+> [OGC-térképréteg hozzáadása](spatial-io-add-ogc-map-layer.md)
 
 > [!div class="nextstepaction"]
-> [Kapcsolódás WFS szolgáltatáshoz](spatial-io-connect-wfs-service.md)
+> [Csatlakozás WFS-szolgáltatáshoz](spatial-io-connect-wfs-service.md)
 
 > [!div class="nextstepaction"]
-> [Alapvető műveletek kihasználása](spatial-io-core-operations.md)
+> [Az alapvető műveletek kihasználása](spatial-io-core-operations.md)
 
 > [!div class="nextstepaction"]
 > [Támogatott adatformátum részletei](spatial-io-supported-data-format-details.md)
 
-Tekintse át a Azure Maps térbeli IO dokumentációját:
+Tekintse meg az Azure Maps térbeli IO dokumentációját:
 
 > [!div class="nextstepaction"]
-> [Azure Maps térbeli IO-csomag](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/)
+> [Az Azure Maps térbeli IO-csomagja](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/)

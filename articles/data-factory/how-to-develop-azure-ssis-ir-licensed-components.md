@@ -1,6 +1,6 @@
 ---
-title: Licencelt összetevők telepítése az Azure-SSIS Integration Runtime-hoz
-description: Ismerje meg, hogy az ISV hogyan fejleszthet és telepíthet fizetős vagy licencelt egyéni összetevőket az Azure-SSIS Integration Runtime számára
+title: Licencelt összetevők telepítése az Azure-SSIS-integrációs futásórához
+description: Ismerje meg, hogyan fejleszthet és telepíthet az isv fizetős vagy licencelt egyéni összetevőket az Azure-SSIS-integrációs futásidőhez
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -12,42 +12,42 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: 599b54f8a5d97ee5ed29ce4df16980f456ffb919
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74914584"
 ---
-# <a name="install-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>Az Azure-SSIS integrációs modul fizetős vagy licencelt egyéni összetevőinek telepítése
+# <a name="install-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>Fizetős vagy licencelt egyéni összetevők telepítése az Azure-SSIS Integration Runtime-hoz
 
-Ez a cikk azt ismerteti, hogy egy ISV hogyan fejleszthet és telepíthet fizetős vagy licencelt egyéni összetevőket az Azure-ban futó SQL Server Integration Services-(SSIS-) csomagok számára az Azure-SSIS Integration Runtime-ban.
+Ez a cikk azt ismerteti, hogy az isv hogyan fejleszthet és telepíthet fizetős vagy licencelt egyéni összetevőket az Azure-ban az Azure-ban az Azure-SSIS-integrációs futásidőben futó SQL Server Integration Services (SSIS) csomagokhoz.
 
 ## <a name="the-problem"></a>A probléma
 
-Az Azure-SSIS integrációs modul természete számos kihívást jelent, amelyek az egyéni összetevők helyszíni telepítésének szokásos licencelési módszereit nem kielégítően használják. Ennek eredményeképpen a Azure-SSIS IR eltérő megközelítésre van szükség.
+Az Azure-SSIS-integrációs futásidő jellege számos kihívást jelent, amelyek az egyéni összetevők helyszíni telepítéséhez használt tipikus licencelési módszereket nem megfelelővé teszik. Ennek eredményeképpen az Azure-SSIS IR más megközelítést igényel.
 
--   A Azure-SSIS IR csomópontjai változékonyak, és bármikor lefoglalhatók vagy kiadhatók. Például elindíthatja vagy leállíthatja a csomópontokat a díjak kezeléséhez, illetve a különböző csomópontok méretének méretezésével. Ennek eredményeképpen a külső gyártótól származó licencek egy adott csomóponthoz való kötése a számítógép-specifikus adatok, például a MAC-címek vagy a CPU-AZONOSÍTÓk használatával már nem valósítható meg.
+-   Az Azure-SSIS IR csomópontjai volatilisek, és bármikor lefoglalhatók vagy felszabadíthatók. Például elindíthatja vagy leállíthatja a csomópontokat a költségek kezeléséhez, vagy felfelé és lefelé skálázható a különböző csomópontméreteken keresztül. Ennek eredményeképpen a harmadik féltől származó összetevőlicenc egy adott csomóponthoz kötése gépspecifikus adatok, például MAC-cím vagy CPU-azonosító használatával már nem életképes.
 
--   A Azure-SSIS IR a vagy a szolgáltatásban is méretezheti, hogy a csomópontok száma bármikor csökkenhet vagy kiterjeszthető legyen.
+-   Az Azure-SSIS-ir-t is méretezheti be vagy ki, így a csomópontok száma bármikor összezsugorodhat vagy kibővülhet.
 
 ## <a name="the-solution"></a>A megoldás
 
-Az előző szakaszban ismertetett hagyományos licencelési módszerek korlátai miatt a Azure-SSIS IR új megoldást biztosít. Ez a megoldás a Windows környezeti változóit és SSIS rendszerváltozókat használ a licencek kötéséhez és a külső összetevők érvényesítéséhez. A független szoftvergyártók ezeket a változókat használhatják egy Azure-SSIS IR egyedi és állandó információinak beszerzésére, például a fürt AZONOSÍTÓjának és a fürtcsomópontok számának megadására. Ezzel az információval a független szoftvergyártók az összetevőhöz tartozó licencet a *fürthöz*tartozó Azure-SSIS IRhoz kötik. Ez a kötés olyan azonosítót használ, amely nem változik az ügyfelek indításakor vagy leállításakor, vertikális fel-vagy leskálázással, méretezéssel vagy kicsinyítéssel, vagy a Azure-SSIS IR bármely módon történő újrakonfigurálásával.
+Az előző szakaszban ismertetett hagyományos licencelési módszerek korlátai nak köszönhetően az Azure-SSIS IR új megoldást kínál. Ez a megoldás Windows környezeti változókat és SSIS rendszerváltozókat használ a harmadik féltől származó összetevők licenckötéséhez és érvényesítéséhez. A független szoftverszállítók ezekkel a változókkal egyedi és állandó adatokat kaphatnak egy Azure-SSIS-ir-hez, például fürtazonosítóhoz és fürtcsomószámhoz. Ezzel az információval a független szoftverszállítók ezután *fürtként*köthetik össze az összetevőlicencét egy Azure-SSIS-ir-hez. Ez a kötés olyan azonosítót használ, amely nem változik az ügyfelek indításakor vagy leállításakor, a fel- és leskálázáskor, a be- és kiskálázáskor, illetve az Azure-SSIS-ir bármilyen módon történő újrakonfigurálásakor.
 
-Az alábbi ábrán az új változókat használó, harmadik féltől származó összetevőkre jellemző telepítési, aktiválási és licenc-kötési és érvényesítési folyamatok láthatók:
+Az alábbi ábra az új változókat használó külső összetevők tipikus telepítési, aktiválási és licenckötési és érvényesítési folyamatait mutatja be:
 
-![Licencelt összetevők telepítése](media/how-to-configure-azure-ssis-ir-licensed-components/licensed-component-installation.png)
+![Licencelt alkatrészek telepítése](media/how-to-configure-azure-ssis-ir-licensed-components/licensed-component-installation.png)
 
 ## <a name="instructions"></a>Utasítások
-1. A független szoftvergyártók a licencelt összetevőiket különböző SKU-ban vagy rétegekben (például egyetlen csomópont, legfeljebb 5 csomópont, legfeljebb 10 csomópont stb.) használhatják. Az ISV biztosítja a megfelelő termékkulcsot, amikor az ügyfelek vásárolnak egy terméket. Az ISV olyan Azure Storage BLOB-tárolót is biztosíthat, amely egy ISV telepítési parancsfájlt és egy kapcsolódó fájlt tartalmaz. Az ügyfelek átmásolhatják ezeket a fájlokat a saját tárolóba, és módosíthatják azokat a saját termékkulcs használatával (például `IsvSetup.exe -pid xxxx-xxxx-xxxx`futtatásával). Az ügyfelek ezt követően a tároló SAS URI-ja segítségével is kioszthatják vagy konfigurálhatják a Azure-SSIS IRt paraméterként. További információ: [Az Azure SSIS integrációs modul egyéni beállításai](how-to-configure-azure-ssis-ir-custom-setup.md).
+1. Az isv-k különböző sk-ekben vagy szinteken kínálhatnak licencelt összetevőket (például egyetlen csomópont, legfeljebb 5 csomópont, legfeljebb 10 csomópont stb.). The ISV provides the corresponding Product Key when customers purchase a product. The ISV can also provide an Azure Storage blob container that contains an ISV Setup script and associated files. Az ügyfelek ezeket a fájlokat a saját tárolójukba másolhatják, és saját termékkulcsukkal módosíthatják őket (például a futtatással). `IsvSetup.exe -pid xxxx-xxxx-xxxx` Az ügyfelek ezután kiépíthetik vagy újrakonfigurálhatják az Azure-SSIS-alapú hitelesítésszolgáltatót a tárolójuk SAS URI-jával paraméterként. További információ: [Az Azure SSIS integrációs modul egyéni beállításai](how-to-configure-azure-ssis-ir-custom-setup.md).
 
-2. A Azure-SSIS IR kiosztása vagy újrakonfigurálása után az ISV-telepítő minden csomóponton fut, hogy lekérdezze a Windows környezeti változóit, `SSIS_CLUSTERID` és `SSIS_CLUSTERNODECOUNT`. Ezután a Azure-SSIS IR elküldi a fürt AZONOSÍTÓját és a licenccel rendelkező termék termékkulcsot az ISV aktiválási kiszolgáló számára egy aktiválási kulcs létrehozásához.
+2. Az Azure-SSIS ir kiépítésekor vagy újrakonfigurálásakor az ISV telepítője minden `SSIS_CLUSTERID` csomóponton fut a Windows környezeti változóinak lekérdezéséhez, és `SSIS_CLUSTERNODECOUNT`. Ezután az Azure-SSIS infravörös küldi a fürtazonosítóját és a termékkulcs a licencelt termék az ISV aktiválási kiszolgáló egy aktiválási kulcs létrehozásához.
 
-3. Az aktiválási kulcs kézhezvétele után az ISV telepítő helyileg képes tárolni a kulcsot az egyes csomópontokon (például a beállításjegyzékben).
+3. Az aktiválási kulcs kézhezvétele után az ISV telepítője helyileg tárolhatja a kulcsot az egyes csomópontokon (például a beállításjegyzékben).
 
-4. Amikor az ügyfelek olyan csomagot futtatnak, amely az ISV licenccel rendelkező összetevőjét használja a Azure-SSIS IR egyik csomópontján, a csomag beolvassa a helyileg tárolt aktiválási kulcsot, és érvényesíti a csomópont fürt-azonosítójával. A csomag a fürtcsomópontok számának megadását is lehetővé teszi az ISV-aktiválási kiszolgáló számára.
+4. Amikor az ügyfelek olyan csomagot futtatnak, amely az ISV licenccel rendelkező összetevőjét használja az Azure-SSIS ir csomópontján, a csomag beolvassa a helyileg tárolt aktiválási kulcsot, és ellenőrzi azt a csomópont fürtazonosítójával. A csomag szükség esetén jelentheti a fürtcsomópont-számot az ISV-aktiválási kiszolgálónak is.
 
-    Íme egy példa az aktiválási kulcsot érvényesítő kódra, amely a fürtcsomópontok számát jelenti:
+    Íme egy példa az aktiválási kulcsot érvényesítő és a fürtcsomópont számát jelző kódra:
 
     ```csharp
     public override DTSExecResult Validate(Connections, VariableDispenser, IDTSComponentEvents componentEvents, IDTSLogging log) 
@@ -73,12 +73,12 @@ Az alábbi ábrán az új változókat használó, harmadik féltől származó 
     }
     ```
 
-## <a name="isv-partners"></a>ISV-partnerek
+## <a name="isv-partners"></a>ISV partnerek
 
-Megtalálhatja azon ISV-partnerek listáját, akik kiigazították az összetevők és a bővítmények a Azure-SSIS IR a blogbejegyzés végén, az [egyéni beállítás és a harmadik féltől származó BŐVÍTHETŐSÉG SSIS az ADF-ben](https://techcommunity.microsoft.com/t5/SQL-Server-Integration-Services/Enterprise-Edition-Custom-Setup-and-3rd-Party-Extensibility-for/ba-p/388360).
+A blogbejegyzés végén megtalálhatja azoknak a független független adó-partnereknek a listáját, akik összetevőiket és bővítményeiket az Azure-SSIS ir-hoz adaptálták a következő blogbejegyzés végén – [Enterprise Edition, Egyéni telepítés és Harmadik fél általi bővíthetőség az ADF-ben](https://techcommunity.microsoft.com/t5/SQL-Server-Integration-Services/Enterprise-Edition-Custom-Setup-and-3rd-Party-Extensibility-for/ba-p/388360).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
--   [Az Azure-SSIS Integration Runtime egyéni beállítása](how-to-configure-azure-ssis-ir-custom-setup.md)
+-   [Egyéni beállítás az Azure-SSIS integrációs futásórához](how-to-configure-azure-ssis-ir-custom-setup.md)
 
--   [A Azure-SSIS Integration Runtime Enterprise kiadása](how-to-configure-azure-ssis-ir-enterprise-edition.md)
+-   [Az Azure-SSIS integrációs futásidejű enterprise kiadása](how-to-configure-azure-ssis-ir-enterprise-edition.md)

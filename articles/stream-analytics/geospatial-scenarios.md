@@ -1,57 +1,57 @@
 ---
-title: Geokerítések és térinformatikai összesítés Azure Stream Analytics
-description: Ez a cikk azt ismerteti, hogyan használható a Azure Stream Analytics a geokerítések és a térinformatikai összesítéshez.
+title: Földrajzi kerítés és térinformatikai összesítés az Azure Stream Analytics segítségével
+description: Ez a cikk ismerteti, hogyan használhatja az Azure Stream Analytics a geofencing és a térinformatikai összesítés.
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.openlocfilehash: 5a3aa3786469c3df37b53cb82bdd396871689297
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75443637"
 ---
-# <a name="geofencing-and-geospatial-aggregation-scenarios-with-azure-stream-analytics"></a>Geokerítések és térinformatikai összesítési forgatókönyvek Azure Stream Analytics
+# <a name="geofencing-and-geospatial-aggregation-scenarios-with-azure-stream-analytics"></a>Földrajzi kerítés- és térösszesítési forgatókönyvek az Azure Stream Analytics segítségével
 
-A beépített térinformatikai függvények Azure Stream Analytics használatával olyan forgatókönyvekhez készíthet alkalmazásokat, mint például a flotta-felügyelet, a Ride Sharing, a csatlakoztatott autók és az eszközök nyomon követése.
+A beépített térinformatikai funkciókkal az Azure Stream Analytics segítségével alkalmazásokat hozhat létre olyan forgatókönyvekhez, mint a flottakezelés, a fuvarmegosztás, az összekapcsolt autók és az eszközök nyomon követése.
 
 ## <a name="geofencing"></a>Geokerítések kezelése
 
-A Azure Stream Analytics a felhőben és a IoT Edge futtatókörnyezetben is támogatja az alacsony késésű valós idejű geokerítések számításokat.
+Az Azure Stream Analytics támogatja az alacsony késleltetésű valós idejű geofencing számítások a felhőben és az IoT Edge futásidejű.
 
-### <a name="geofencing-scenario"></a>Geokerítések forgatókönyv
+### <a name="geofencing-scenario"></a>Geofencing forgatókönyv
 
-A gyártó vállalatnak az épületekben lévő eszközöket kell nyomon követnie. Minden eszközt a GPS-vel szereltek fel, és az értesítéseket szeretnék kapni, ha egy eszköz elhagyja a bizonyos területeket.
+Egy gyártó cégnek nyomon kell követnie az épületeit. Minden eszközt GPS-szel szereltek fel, és értesítést szeretnének kapni, ha egy eszköz elhagyja az adott területet.
 
-Az ebben a példában használt hivatkozási adatok a geokerítésen információkkal szolgálnak az épületekhez és az egyes épületekben engedélyezett eszközökhöz. Ne feledje, hogy a hivatkozási adatértékek lehetnek statikusak vagy lassan változnak. Ehhez a forgatókönyvhöz statikus referenciát kell használni. Az adatstream folyamatosan kibocsátja az eszköz AZONOSÍTÓját és aktuális pozícióját.
+Az ebben a példában használt referenciaadatok az egyes épületekben engedélyezett épületek és eszközök geokerítés-információit tartalmazják. Ne feledje, hogy a referenciaadatok lehetnek statikusak vagy lassúak. Ehhez a forgatókönyvhöz statikus referenciaadatokat használ. Az adatfolyam folyamatosan kibocsátja az eszköz azonosítóját és aktuális helyzetét.
 
-### <a name="define-geofences-in-reference-data"></a>Geofences definiálása
+### <a name="define-geofences-in-reference-data"></a>Geokerítések definiálása referenciaadatokban
 
-Egy geokerítésen GeoJSON objektummal is meghatározható. A 1,2-es és újabb kompatibilitási verzióval rendelkező feladatok esetében a geofences jól ismert szöveggel (WKT) is meghatározhatók `NVARCHAR(MAX)`ként. A WKT egy Nyílt térinformatikai konzorcium (OGC) szabvány, amely szöveges formátumban jeleníti meg a térbeli adattípusokat.
+Geokerítés geoJSON-objektum használatával definiálható. Az 1.2-es vagy újabb verziójú feladatok esetében a geokerítések jól ismert szöveg `NVARCHAR(MAX)`(WKT) használatával is definiálhatók a következőképpen: . A WKT egy Nyílt Térinformatikai Konzorcium (OGC) szabvány, amely a térbeli adatok szöveges formátumban történő ábrázolására szolgál.
 
-A beépített térinformatikai függvények a definiált geofences segítségével megtudhatják, hogy egy elem egy adott geokerítésen-sokszögben van-e vagy sem.
+A beépített térinformatikai függvények meghatározott geokerítések segítségével megtudhatják, hogy egy elem egy adott geokerítés-sokszögben van-e vagy sem.
 
-Az alábbi táblázat az Azure Blob Storage-ban vagy egy Azure SQL-táblában tárolt geokerítésen-hivatkozásokat szemlélteti. Minden helyet egy térinformatikai sokszög képvisel, és minden eszköz egy engedélyezett hely azonosítójával van társítva.
+Az alábbi táblázat egy példa a geokerítés referenciaadatok, amelyek tárolhatók az Azure blob storage vagy egy Azure SQL-tábla. Minden helyet egy térinformatikai sokszög jelöl, és minden eszköz egy engedélyezett helyazonosítóhoz van társítva.
 
-|SiteID|SiteName|Geokerítésen|AllowedDeviceID|
+|SiteID azonosító|SiteName|Geokerítés|AllowedDeviceID|
 |------|--------|--------|---------------|
-|1|"Redmond-építési 41"|"SOKSZÖG ((-122.1337357922017 47.63782998329432,-122.13373042778369 47.637634793257305,-122.13346757130023 47.637642022530954,-122.13348902897235 47.637508280806806,-122.13361777500506 47.637508280806806,-122.13361241058703 47.63732393354484,-122.13265754417773 47.63730947490855,-122.13266290859576 47.637519124743164,-122.13302232460376 47.637515510097955,-122.13301696018573 47.63764925180358,-122.13272728161212 47.63764925180358,-122.13274873928424 47.63784082716388,-122.13373579220172 47.63782998329432))"|B|
-|2|"Redmond-építési 40"|"SOKSZÖG ((-122.1336154507967 47.6366745947009,-122.13361008637867 47.636483015064535,-122.13349206918201 47.636479400347675,-122.13349743360004 47.63636372927573,-122.13372810357532 47.63636372927573,-122.13373346799335 47.63617576323771,-122.13263912671528 47.63616491902258,-122.13264985555134 47.63635649982525,-122.13304682248554 47.636367344000604,-122.13305218690357 47.63650831807564,-122.13276250832996 47.636497473929516,-122.13277323716602 47.63668543881025,-122.1336154507967 47.6366745947009))"|Egy|
-|3|"Redmond-építési 22"|"SOKSZÖG ((-122.13611660248233 47.63758544698554,-122.13635263687564 47.6374083293018,-122.13622389084293 47.63733603619712,-122.13622389084293 47.63717699101473,-122.13581619507266 47.63692757827657,-122.13559625393344 47.637046862778135,-122.13569281345798 47.637144458985965,-122.13570890671207 47.637314348246214,-122.13611660248233 47.63758544698554))"|C|
+|1|"Redmond épület 41"|"SOKSZÖG((-122.1337357922017 47.63782998329432,-122.13373042778369 47.6376347932573746 2022530954,-122.132.13348902897235 47.637508280806806,-122.13361777500506 47.6375082806806,-122.13361241058703 47.63732393354484,-122.13265754417773 47.63730947490855,-122.13266290859576 47.637519124743164,-122.13302232460376 47.637515510097955,-122.13301696018573 47.63764925180358,-122.13272728161212 47.63764925180358,-122.13274873928424 47.63784082716388,-122.13373579220172 47.63782998329432))"|"B"|
+|2|"Redmond épület 40"|"SOKSZÖG((-122.1336154507967 47.63667459447009,-122.13361008637867 47.636483015064535,-122.13349206918201 47.636477 9400347675,-122.13349743360004 47.63636372927573,-122.133728103575732 47,63633637372933 47.63617576323771,-122.13263912671528 47.63616491902258,-122.13264985555134 47.63635649982525,-122.13304682248554 47.636367344000604,-122.13305218690357 47.63650831807564,-122.13276250832996 47.636497473929516,-122.13277323716602 47.63668543881025,-122.1336154507967 47.6366745947009))"|"A"|
+|3|"Redmond épület 22"|"SOKSZÖG((-122.1361160248233 47.63758544698554,-122.13635263687564 47.6374083293018,-122.1362389084293 47.6373 3603619712,-122.13622389084293 47.63717179101473,-122.1358161950726 47,63692757827657,-122.1355962534 47.637046862778135,-122.13569281345798 47.637144458985965,-122.13570890671207 47.637314348246214,-122.13611660248233 47.63758544698554))"|"C"|
 
-### <a name="generate-alerts-with-geofence"></a>Riasztások előállítása a geokerítésen
+### <a name="generate-alerts-with-geofence"></a>Riasztások létrehozása geokerítéssel
 
-Az eszközök percenként bocsátják ki az azonosítót és a helyet egy `DeviceStreamInput`nevű streamen keresztül. A következő táblázat a bemeneti adatfolyamot tartalmazza.
+Az eszközök percenként bocsáthatják ki azonosítójukat `DeviceStreamInput`és helyüket a nevű adatfolyamon keresztül. Az alábbi táblázat egy bemeneti adatfolyam.
 
-|DeviceID|GeoPosition|
+|Deviceid|Geopozíció|
 |--------|-----------|
-|Egy|"PONT (-122.13292341559497 47.636318374032726)"|
-|B|"PONT (-122.13338475554553 47.63743531308874)"|
-|C|"PONT (-122.13354001095752 47.63627622505007)"|
+|"A"|"PONT(-122.1329234159497 47,636318374032726)"|
+|"B"|"PONT(-122.133384755545553 47.63743531308874)"|
+|"C"|"PONT(-122.13354001095752 47.63627622505007)"|
 
-Írhat olyan lekérdezést, amely összekapcsolja az eszköz streamjét a geokerítésen, és riasztást hoz létre minden alkalommal, amikor egy eszköz egy engedélyezett épületen kívül esik.
+Írhat egy lekérdezést, amely összefűzi az eszköz adatfolyamot a geokerítés referenciaadatokkal, és riasztást hoz létre minden alkalommal, amikor egy eszköz egy engedélyezett épületen kívül van.
 
 ```SQL
 SELECT DeviceStreamInput.DeviceID, SiteReferenceInput.SiteID, SiteReferenceInput.SiteName 
@@ -62,50 +62,50 @@ ON st_within(DeviceStreamInput.GeoPosition, SiteReferenceInput.Geofence) = 0
 WHERE DeviceStreamInput.DeviceID = SiteReferenceInput.AllowedDeviceID
 ```
 
-Az alábbi ábra a geofences jelöli. Láthatja, hogy az eszközök hol találhatók az adatfolyam-adatok bemenetének megfelelően.
+Az alábbi képen a geokerítések láthatók. Láthatja, hogy az eszközök hol vannak az adatfolyam-adatbevitelnek megfelelően.
 
-![Geofences építése](./media/geospatial-scenarios/building-geofences.png)
+![Geokerítések építése](./media/geospatial-scenarios/building-geofences.png)
 
-A "C" eszköz a 2. AZONOSÍTÓJÚ épületen belül található, amely nem engedélyezett a hivatkozási érték alapján. Az eszköznek a 3. AZONOSÍTÓJÚ épületen belül kell lennie. A művelet futtatásakor a rendszer riasztást állít elő ehhez a konkrét szabálysértéshez.
+A "C" eszköz a 2-es azonosítóval működő épületen belül található, amely a referenciaadatok szerint nem engedélyezett. Ennek az eszköznek a 3-as azonosítón belül kell lennie. A feladat futtatása riasztást hoz létre az adott megsértésről.
 
-### <a name="site-with-multiple-allowed-devices"></a>Hely több engedélyezett eszközzel
+### <a name="site-with-multiple-allowed-devices"></a>Több engedélyezett eszközzel rendelkező webhely
 
-Ha egy hely több eszközt is engedélyez, az eszközök azonosítóinak tömbje meghatározható `AllowedDeviceID`ban, és egy felhasználó által definiált függvényt is használhat a `WHERE` záradékban annak ellenőrzéséhez, hogy az adatfolyam-eszköz azonosítója megfelel-e a listában szereplő összes eszköz AZONOSÍTÓjának. További információkért tekintse meg a [JavaScript UDF](stream-analytics-javascript-user-defined-functions.md) oktatóanyag a Cloud Jobs-feladatokhoz és az [ C# UDF](stream-analytics-edge-csharp-udf.md) -oktatóanyag az Edge-feladatokhoz című témakört.
+Ha egy hely több eszközt engedélyez, eszközazonosítók tömbje `AllowedDeviceID` definiálható, és a `WHERE` záradékban egy felhasználó által definiált függvény használható annak ellenőrzésére, hogy az adatfolyam-eszköz azonosítója megfelel-e a listában szereplő bármely eszközazonosítónak. További információkért tekintse meg a [Javascript UDF](stream-analytics-javascript-user-defined-functions.md) oktatóanyag felhőfeladatok és a [C# UDF](stream-analytics-edge-csharp-udf.md) oktatóanyag peremhálózati feladatok.
 
 ## <a name="geospatial-aggregation"></a>Térinformatikai összesítés
 
-A Azure Stream Analytics a felhőben és a IoT Edge futtatókörnyezetben is támogatja az alacsony késésű valós idejű térinformatikai összesítést.
+Az Azure Stream Analytics támogatja az alacsony késleltetésű valós idejű térinformatikai összesítést a felhőben és az IoT Edge futásidőben.
 
 ### <a name="geospatial-aggregation-scenario"></a>Térinformatikai összesítési forgatókönyv
 
-A CAB-vállalat egy valós idejű alkalmazást szeretne létrehozni, amely a jelenleg nagyobb keresletet tapasztaló városok területein való használatra vágyó vezetőfülke-illesztőprogramokat ismerteti.
+Egy taxitársaság valós idejű alkalmazást szeretne építeni, hogy a taxisok a jelenleg nagyobb keresletet tapasztaló városok felé vezessék az utazást.
 
-A vállalat a város logikai régióit a hivatkozási adatként tárolja. Mindegyik régiót egy RegionID, egy RegionName és egy Geokerítésen határozza meg.
+A vállalat referenciaadatként tárolja a város logikai régióit. Minden régiót egy RegionID, RegionName és Geofence határoz meg.
 
-### <a name="define-the-geofences"></a>A geofences megadása
+### <a name="define-the-geofences"></a>A geokerítések meghatározása
 
-Az alábbi táblázat az Azure Blob Storage-ban vagy egy Azure SQL-táblában tárolt geokerítésen-hivatkozásokat szemlélteti. Minden régiót egy térinformatikai sokszög képvisel, amely a folyamatos átviteli adatoktól érkező kérések összekapcsolására szolgál.
+Az alábbi táblázat egy példa a geokerítés referenciaadatok, amelyek tárolhatók az Azure blob storage vagy egy Azure SQL-tábla. Minden régiót egy térinformatikai sokszög képvisel, amely a streamelési adatokból érkező kérésekkel korrelál.
 
-Ezek a sokszögek csak referenciák, és nem jelölik a tényleges város logikai vagy fizikai elkülönítését.
+Ezek a sokszögek csak tájékoztató jellegűek, és nem jelentenek tényleges városlogikai vagy fizikai elválasztást.
 
-|RegionID|RegionName|Geokerítésen|
+|Régióazonosító|Régióneve|Geokerítés|
 |--------|----------|--------|
-|1|Soho|"SOKSZÖG ((-74.00279525078275 40.72833625216264,-74.00547745979765 40.721929158663244,-74.00125029839018 40.71893680218994,-73.9957785919998 40.72521409075776,-73.9972377137039 40.72557184584898,-74.00279525078275 40.72833625216264) )"|
-|2|Chinatown|"SOKSZÖG ((-73.99712367114876 40.71281582267133,-73.9901070123658 40.71336881907936,-73.99023575839851 40.71452359088633,-73.98976368961189 40.71554823078944,-73.99551434573982 40.717337246783735,-73.99480624255989 40.718491949759304,-73.99652285632942 40.719109951574,-73.99776740131233 40.7168005470334,-73.99903340396736 40.71727219249899,-74.00193018970344 40.71938642421256,-74.00409741458748 40.71688186545551,-74.00051398334358 40.71517415773184,-74.0004281526551 40.714377212470005,-73.99849696216438 40.713450141693166,-73.99748845157478 40.71405192594819,-73.99712367114876 40.71281582267133))"|
-|3|Tribeca|"SOKSZÖG ((-74.01091641815208 40.72583120006787,-74.01338405044578 40.71436586362705,-74.01370591552757 40.713617702123415,-74.00862044723533 40.711308107057235,-74.00194711120628 40.7194238654018,-74.01091641815208 40.72583120006787))"|
+|1|"SoHo"|"SOKSZÖG((-74.00279525078275 40,72833625216264,-74.00547744597 9765 40,7219291586324,-74.00125029839018 40,71893680218 994,-73,995778591998 40,7252140907576,-73,9972377137039 40,72557184584898,-74,00279525078275 40,728336252162644) )"|
+|2|"Kínai negyed"|"SOKSZÖG((-73.9971236714876 40.71281582267133,-73.9901070123658 40,71336881907936,-73.9902357539851 40.71452 359088633,-73,98976368961189 40,71554823078944,-73.99551434573982 40.71733724678735,-73.994806255989 40.718491949759304,-73.99652285632942 40.719109951574,-73.99776740131233 40.7168005470334,-73.99903340396736 40.71727219249899,-74.00193018970344 40.71938642421256,-74.00409741458748 40.71688186545551,-74.00051398334358 40.71517415773184,-74.0004281526551 40.714377212470005,-73.99849696216438 40.713450141693166,-73.99748845157478 40.71405192594819,-73.99712367114876 40.71281582267133))"|
+|3|"Tribeca"|"SOKSZÖG((-74.01091641815208 40.725831200006787,-74.01338405044578 40.71436586362705,-74.01370591552757 40.7136 17702123415,-74.008620447235333 40.711308107057235,-74.00194711120628 40,7194438654018,-74.01091641815208 40.72583120006787))"|
 
-### <a name="aggregate-data-over-a-window-of-time"></a>Összesített adat egy időablakon belül
+### <a name="aggregate-data-over-a-window-of-time"></a>Adatok összesítése időablakon keresztül
 
-A következő táblázat a "rides" streaming-adatátviteli szolgáltatásait tartalmazza.
+Az alábbi táblázat a "fuvarok" streamelési adatait tartalmazza.
 
-|UserID|FromLocation|ToLocation|TripRequestedTime|
+|UserID|FromLocation (Hely)|Tolocation (hely)|TripRequestedTime|
 |------|------------|----------|-----------------|
-|Egy|"PONT (-74.00726861389182 40.71610611981975)"|"PONT (-73.98615095917779 40.703107386025835)"|"2019-03-12T07:00:00Z"|
-|B|"PONT (-74.00249841021645 40.723827238895666)"|"PONT (-74.01160699942085 40.71378884930115)"|"2019-03-12T07:01:00Z"|
-|C|"PONT (-73.99680120565864 40.716439898624024)"|"PONT (-73.98289663412544 40.72582343969828)"|"2019-03-12T07:02:00Z"|
-|D|"PONT (-74.00741090068288 40.71615626755086)"|"PONT (-73.97999843120539 40.73477895807408)"|"2019-03-12T07:03:00Z"|
+|"A"|"PONT(-74.00726861389182 40.71610611981975)"|"PONT(-73.98615095917779 40.703107386025835)"|"2019-03-12T07:00:00Z"|
+|"B"|"PONT(-74.00249841021645 40.723827238895666)"|"PONT(-74.01160699942085 40.7137884930115)"|"2019-03-12T07:01:00Z"|
+|"C"|"PONT(-73.99680120565864 40.716439898624024)"|"PONT(-73.9828963412544 40.72582343969828)"|"2019-03-12T07:02:00Z"|
+|"D"|"PONT(-74.00741090068288 40.71615626755086)"|"PONT(-73.979999843120539 40,73477895807408)"|"2019-03-12T07:03:00Z"|
 
-A következő lekérdezés összekapcsolja az eszköz streamjét a geokerítésen, és kiszámítja régiónként a kérések számát percenként 15 percen belül.
+A következő lekérdezés az eszközstreamet a geokerítés referenciaadataival egyesíti, és percenként 15 perces időablakban kiszámítja a kérelmek számát régiónként.
 
 ```SQL
 SELECT count(*) as NumberOfRequests, RegionsRefDataInput.RegionName 
@@ -115,14 +115,14 @@ ON st_within(UserRequestStreamDataInput.FromLocation, RegionsRefDataInput.Geofen
 GROUP BY RegionsRefDataInput.RegionName, hoppingwindow(minute, 1, 15)
 ```
 
-Ez a lekérdezés percenkénti kérelmek számát adja eredményül az elmúlt 15 percben a város minden régiója számára. Ezeket az információkat könnyen megtekintheti Power BI irányítópulton, vagy az összes illesztőprogramnak SMS szöveges üzenetként is közvetíthető az Azure functions szolgáltatással való integráció révén.
+Ez a lekérdezés a városon belüli egyes régiók minden egyes régiójában percenként adja ki a kérelmek számát. Ez az információ könnyen megjeleníthető a Power BI irányítópultján, vagy az összes illesztőprogram nak SMS-ben is sugározható a szolgáltatásokkal, például az Azure-funkciókkal való integráció révén.
 
-Az alábbi képen látható a lekérdezés kimenete Power BI irányítópultra. 
+Az alábbi kép a lekérdezés power BI irányítópultjára való kimenetét mutatja be. 
 
-![Eredmény kimenet Power BI irányítópulton](./media/geospatial-scenarios/power-bi-output.png)
+![Eredménykimenet a Power BI irányítópultján](./media/geospatial-scenarios/power-bi-output.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Stream Analytics térinformatikai függvények bemutatása](stream-analytics-geospatial-functions.md)
+* [Bevezetés a Stream Analytics térinformatikai funkcióiba](stream-analytics-geospatial-functions.md)
 * [Térinformatikai függvények (Azure Stream Analytics)](https://docs.microsoft.com/stream-analytics-query/geospatial-functions)

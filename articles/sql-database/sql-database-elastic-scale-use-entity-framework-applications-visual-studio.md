@@ -1,6 +1,6 @@
 ---
-title: Rugalmas adatbázis-ügyféloldali kódtár használata Entity Framework
-description: Elastic Database ügyféloldali kódtár és Entity Framework használata kódolási adatbázisokhoz
+title: Rugalmas adatbázis-ügyfélkódtár használata entitáskeretrendszerrel
+description: Rugalmas adatbázis-ügyféltár és entitáskeretrendszer használata adatbázisok kódolásához
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -12,79 +12,79 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/04/2019
 ms.openlocfilehash: 1653a904875964d86864c59c718603a6dacdcbda
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77087188"
 ---
-# <a name="elastic-database-client-library-with-entity-framework"></a>Ügyféloldali kódtár Elastic Database Entity Framework
+# <a name="elastic-database-client-library-with-entity-framework"></a>Rugalmas adatbázis-ügyféltár entitáskeretrendszerrel
 
-Ez a dokumentum egy Entity Framework alkalmazás azon módosításait mutatja be, amelyek a [Elastic Database eszközökkel](sql-database-elastic-scale-introduction.md)való integráláshoz szükségesek. A hangsúly a szegmensek közötti [Térkép kezelésének](sql-database-elastic-scale-shard-map-management.md) és az [Adatfüggő útválasztásnak](sql-database-elastic-scale-data-dependent-routing.md) a Entity Framework **Code első** megközelítéssel való létrehozásán alapul. A [kód első –](https://msdn.microsoft.com/data/jj193542.aspx) az EF-hez készült adatbázis-oktatóanyag a jelen dokumentumban futó példaként szolgál. A dokumentumot kísérő mintakód a Visual Studio Code-mintákban található, a rugalmas adatbázis-eszközök mintájának részét képezi.
+Ez a dokumentum az entitáskeret-alkalmazások azon módosításait mutatja be, amelyek a [rugalmas adatbázis-eszközökkel](sql-database-elastic-scale-introduction.md)való integrációhoz szükségesek. A hangsúly a [shard térképkezelés](sql-database-elastic-scale-shard-map-management.md) és [az adatoktól függő útválasztás](sql-database-elastic-scale-data-dependent-routing.md) összeállítása az Entitás **keretkód első** megközelítés. A [Code First – New Database](https://msdn.microsoft.com/data/jj193542.aspx) oktatóanyag az EF szolgál a futó példa ebben a dokumentumban. Az ezt a dokumentumot kísérő mintakód a Visual Studio kódmintáiban található rugalmas adatbázis-eszközök mintakészletének része.
 
 ## <a name="downloading-and-running-the-sample-code"></a>A mintakód letöltése és futtatása
 
-A cikk kódjának letöltéséhez:
+A cikk kódjának letöltése:
 
-* A Visual Studio 2012-es vagy újabb verziójára van szükség. 
-* Töltse le az [Azure SQL-Entity Framework Integration Sample-hez készült rugalmas adatbázis-eszközöket](https://github.com/Azure/elastic-db-tools/). Bontsa ki a mintát a választott helyre.
+* Visual Studio 2012-es vagy újabb verziók szükségesek. 
+* Töltse le az [Azure SQL rugalmas DB-eszközeit – Entitáskeretrendszer-integrációs minta.](https://github.com/Azure/elastic-db-tools/) Csomagolja ki a mintát az Ön által választott helyre.
 * Indítsa el a Visual Studiót. 
-* A Visual Studióban válassza a fájl-> nyitott projekt/megoldás lehetőséget. 
-* A **projekt megnyitása** párbeszédpanelen navigáljon a letöltött mintához, és válassza a **EntityFrameworkCodeFirst. SLN** elemet a minta megnyitásához. 
+* A Visual Studióban válassza a File -> Open Project/Solution (Fájl -> Projekt/Megoldás megnyitása) lehetőséget. 
+* A **Projekt megnyitása** párbeszédpanelen keresse meg a letöltött mintát, és válassza **az EntityFrameworkCodeFirst.sln** lehetőséget a minta megnyitásához. 
 
-A minta futtatásához három üres adatbázist kell létrehoznia Azure SQL Databaseban:
+A minta futtatásához három üres adatbázist kell létrehoznia az Azure SQL Database-ben:
 
-* Szegmens Map Manager-adatbázis
-* 1\. szegmens adatbázis
-* 2\. szegmens adatbázis
+* Shard Map Manager adatbázis
+* Shard 1 adatbázis
+* Shard 2 adatbázis
 
-Miután létrehozta ezeket az adatbázisokat, töltse ki a **program.cs** az Azure SQL db-kiszolgáló nevét, az adatbázis nevét, valamint az adatbázisokhoz való kapcsolódáshoz szükséges hitelesítő adatokat. Hozza létre a megoldást a Visual Studióban. A Visual Studio a létrehozási folyamat részeként letölti a rugalmas adatbázis ügyféloldali kódtár, Entity Framework és átmeneti hibák kezelésére vonatkozó szükséges NuGet-csomagokat. Győződjön meg arról, hogy az NuGet-csomagok visszaállítása engedélyezve van a megoldáshoz. A beállítás engedélyezéséhez kattintson a jobb gombbal a megoldás fájlra a Visual Studio Megoldáskezelő. 
+Miután létrehozta ezeket az adatbázisokat, töltse ki a helyőrzők **Program.cs** az Azure SQL DB-kiszolgáló nevét, az adatbázis nevét és a hitelesítő adatokat az adatbázisokhoz való csatlakozáshoz. Készítse el a megoldást a Visual Studio-ban. A Visual Studio a létrehozási folyamat részeként letölti a rugalmas adatbázis-ügyfélkódtárhoz, az Entitáskeretrendszerhez és az Átmeneti hibakezeléshez szükséges NuGet-csomagokat. Győződjön meg arról, hogy a NuGet-csomagok visszaállítása engedélyezve van a megoldáshoz. Ezt a beállítást úgy engedélyezheti, hogy a jobb gombbal a Visual Studio Solution Explorer megoldásfájljára kattint. 
 
-## <a name="entity-framework-workflows"></a>Munkafolyamatok Entity Framework
+## <a name="entity-framework-workflows"></a>Entitáskeret-munkafolyamatok
 
-Entity Framework fejlesztők az alábbi négy munkafolyamat egyikét használják az alkalmazások létrehozásához és az alkalmazás-objektumok megőrzésének biztosításához:
+Az Entitáskeretrendszer fejlesztői az alábbi négy munkafolyamat egyikére támaszkodnak az alkalmazások létrehozásához és az alkalmazásobjektumok megőrzésének biztosításához:
 
-* **Első kód (új adatbázis)** : az EF-fejlesztő létrehozza a modellt az alkalmazás kódjában, majd az EF létrehozza az adatbázist. 
-* **Első kód (meglévő adatbázis)** : a fejlesztő lehetővé teszi, hogy az EF létrehozza a modellhez tartozó alkalmazás kódját egy meglévő adatbázisból.
-* **Első modell**: a fejlesztő létrehozza a MODELLT az EF Designerben, majd az EF létrehozza az adatbázist a modellből.
-* **Adatbázis először**: a fejlesztő az EF-eszközök használatával következteti ki a modellt egy meglévő adatbázisból. 
+* **Kód első (Új adatbázis):** Az EF fejlesztő létrehozza a modellt az alkalmazáskódban, majd az EF létrehozza belőle az adatbázist. 
+* **Kód első (meglévő adatbázis)**: A fejlesztő lehetővé teszi az EF számára, hogy a modell alkalmazáskódját egy meglévő adatbázisból hozza létre.
+* **Első modell**: A fejlesztő létrehozza a modellt az EF-tervezőben, majd az EF létrehozza az adatbázist a modellből.
+* **Első adatbázis**: A fejlesztő EF-eszközökkel következtet a modellből egy meglévő adatbázisból. 
 
-Mindezek a módszerek a DbContext osztályra támaszkodnak, hogy transzparens módon kezeljék az adatbázis-kapcsolatokat és az adatbázis-sémát egy alkalmazáshoz. A DbContext alaposztály különböző konstruktorai lehetővé teszik a kapcsolatok létrehozásához, az adatbázis-indításhoz és a séma létrehozásához szükséges különböző szintű szabályozást. A kihívások elsősorban abból erednek, hogy az EF által biztosított adatbázis-kapcsolat kezelése a rugalmas adatbázis ügyféloldali kódtár által biztosított adatkezelési képességekkel összefügg. 
+Mindezek a megközelítések a DbContext osztályra támaszkodnak az alkalmazás adatbázis-kapcsolatainak és adatbázissémának transzparens kezeléséhez. A DbContext alaposztály különböző konstruktorai lehetővé teszik a kapcsolat létrehozása, az adatbázis-rendszerindítás és a séma létrehozása különböző szintű vezérlését. A kihívások elsősorban abból erednek, hogy az EF által biztosított adatbázis-kapcsolatkezelés metszi a rugalmas adatbázis-ügyfélkódtár által biztosított adatfüggő útválasztási összeköttetések kapcsolatkezelési képességeit. 
 
 ## <a name="elastic-database-tools-assumptions"></a>Rugalmas adatbázis-eszközök feltételezései
 
-A kifejezések definícióit lásd: [Elastic Database eszközök Szószedet](sql-database-elastic-scale-glossary.md).
+A kifejezésdefiníciókról az [Elastic Database tools szószedet című témakörben található.](sql-database-elastic-scale-glossary.md)
 
-A rugalmas adatbázis-ügyféloldali kódtár a shardletek nevű alkalmazásadatok partícióit határozza meg. A shardletek egy horizontális Felskálázási kulcs azonosítja, és meghatározott adatbázisokra van leképezve. Előfordulhat, hogy egy alkalmazásnak szüksége van egy tetszőleges számú adatbázisra, és terjesztenie kell a shardletek, hogy az aktuális üzleti igényeknek megfelelő kapacitást vagy teljesítményt biztosítson. Az adatbázisokra vonatkozó horizontális kulcsok értékének hozzárendelését a rugalmas adatbázis-ügyfél API-k által biztosított szegmenses Térkép tárolja. Ezt a képességet a rendszer a szegmenses **hozzárendelések felügyeletére**vagy rövid SMM. A szegmenses Térkép az adatbázis-kapcsolatok közvetítőjét is szolgálja a horizontális Felskálázási kulcsot tartalmazó kérelmek esetében. Ezt a képességet **adatátviteli útválasztásnak**nevezzük. 
+Rugalmas adatbázis-ügyfélkódtár, az alkalmazásadatok shardlets nevű partícióit definiálja. Shardlets egy szilánkos kulcs azonosítja, és meghatározott adatbázisokhoz vannak rendelve. Egy alkalmazás lehet, hogy annyi adatbázist, amennyi szükséges, és a shardlets terjesztéséhez elegendő kapacitást vagy teljesítményt az aktuális üzleti követelményeknek megfelelően. A szegmensek kulcsértékeinek leképezése az adatbázisoktárolja a rugalmas adatbázis-ügyfél API-k által biztosított shard térkép. Ez a képesség az úgynevezett **Shard Map Management**, vagy SMM röviden. A shard térkép is szolgál, mint a közvetítő az adatbázis-kapcsolatok a szilánkos kulcsot tartalmazó kérelmek. Ezt a funkciót **adatfüggő útválasztásnak nevezzük.** 
 
-A szegmensek közötti Térkép kezelője védi a felhasználókat abban, hogy inkonzisztens nézeteket shardletbe adatokba, amelyek akkor fordulhatnak elő, ha egyidejű shardletbe-kezelési műveletek történnek (például az adatoknak az egyik szegmensből egy másikba való áthelyezése). Ehhez az ügyféloldali kódtár által felügyelt szegmens térképek egy alkalmazás adatbázis-kapcsolatai. Ez lehetővé teszi az adatbázis-kapcsolatok automatikus megölését, ha a szegmens-felügyeleti műveletek hatással lehetnek arra a shardletbe, amelyhez a kapcsolódás létrejött. Ennek a megközelítésnek integrálva kell lennie az egyes EF-funkciókkal, például új kapcsolatok létrehozásával egy meglévőből az adatbázis létezésének ellenőrzéséhez. Általánosságban elmondható, hogy a standard DbContext-konstruktorok csak megbízhatóan működnek olyan zárt adatbázis-kapcsolatok esetében, amelyek biztonságosan klónozottak az EF-munkavégzéshez. A rugalmas adatbázis tervezési elve csak a közvetítő nyitott kapcsolatainak megtervezése. Előfordulhat, hogy úgy gondolja, hogy az ügyféloldali kódtár által felügyelt kapcsolat bezárása előtt az EF-DbContext való átadása megoldhatja ezt a problémát. Azonban a kapcsolódás bezárásával és az EF-re való támaszkodva újra megnyithatja a könyvtárat. Az EF-ben lévő áttelepítési funkció azonban ezeket a kapcsolatokat használja az alapul szolgáló adatbázis-séma kezelésére az alkalmazás számára transzparens módon. Ideális esetben a rugalmas adatbázis-ügyfél függvénytárában és az EF-ben is megőrizheti és egyesítheti ezeket a képességeket ugyanabban az alkalmazásban. A következő szakasz részletesebben ismerteti ezeket a tulajdonságokat és követelményeket. 
+A shard map manager védi a felhasználókat az inkonzisztens nézetek shardlet adatok, amelyek akkor fordulhatelő, ha egyidejű shardlet felügyeleti műveletek (például adatok áthelyezése az egyik szegmensből a másikba) történik. Ehhez az ügyféltár által felügyelt szegmensleképezések egy alkalmazás adatbázis-kapcsolatait közvetítik. Ez lehetővé teszi, hogy a shard térkép funkció automatikusan leáll egy adatbázis-kapcsolat, ha shard felügyeleti műveletek hatással lehet a shardlet, amely a kapcsolat hozták létre. Ennek a megközelítésnek integrálnia kell az EF néhány funkciójával, például új kapcsolatokat kell létrehoznia egy meglévőről, hogy ellenőrizze az adatbázis létezését. Általánosságban elmondható, hogy a standard DbContext konstruktorok csak megbízhatóan működnek a zárt adatbázis-kapcsolatok, amelyek biztonságosan klónozható EF munkát. A rugalmas adatbázis tervezési elve ehelyett az, hogy csak a megnyitott kapcsolatok közvetítője. Azt gondolhatnánk, hogy az ügyfélkönyvtár által közvetített kapcsolat bezárása, mielőtt átadná az EF DbContext-nek, megoldhatja ezt a problémát. Azonban a kapcsolat bezárásával és az EF újbóli megnyitásával az egyik lemond a tár által végzett érvényesítési és konzisztencia-ellenőrzésekről. Az EF áttelepítési funkciója azonban ezeket a kapcsolatokat használja az alapul szolgáló adatbázisséma olyan módon történő kezelésére, amely az alkalmazás számára átlátható módon történik. Ideális esetben megtartja és egyesíti ezeket a képességeket mind a rugalmas adatbázis-ügyfélkódtárból, mind az EF ugyanabban az alkalmazásban. A következő szakasz részletesebben ismerteti ezeket a tulajdonságokat és követelményeket. 
 
 ## <a name="requirements"></a>Követelmények
 
-Ha a rugalmas adatbázis ügyféloldali függvénytárával és Entity Framework API-kkal dolgozik, a következő tulajdonságokat szeretné megőrizni: 
+Ha a rugalmas adatbázis-ügyfélkódtárral és az entitáskeretrendszer API-kkal is dolgozik, meg szeretné őrizni a következő tulajdonságokat: 
 
-* Horizontális **felskálázás**: a többrétegű alkalmazás adatszintjéből származó adatbázisok hozzáadásához vagy eltávolításához az alkalmazás kapacitási igényei szerint. Ez azt jelenti, hogy szabályozhatja az adatbázisok létrehozását és törlését, valamint a rugalmas adatbázis-szegmens Map Manager API-kat az adatbázisok kezeléséhez és a shardletek leképezéséhez. 
-* **Konzisztencia**: az alkalmazás horizontális felskálázást alkalmaz, és az ügyféloldali függvénytár adatkezelési funkcióit használja. A sérülés vagy helytelen lekérdezési eredmények elkerülése érdekében a kapcsolatok a szegmenses Térkép kezelőjén keresztül lesznek közvetítve. Ez megtartja az érvényesítést és a konzisztenciát is.
-* **Első kód**: az EF Code első paradigma kényelmének megőrzése. Először a Code-ban az alkalmazásban szereplő osztályok transzparens módon vannak leképezve az alapul szolgáló adatbázis-struktúrákra. Az alkalmazás kódja együttműködik a DbSets, amelyek az alapul szolgáló adatbázis feldolgozásának legfontosabb szempontjait fedik le.
-* **Séma**: Entity Framework kezeli a kezdeti adatbázis-séma létrehozását és az azt követő sémák alakulását az áttelepítés során. A képességek megőrzése révén az alkalmazás alkalmazkodik az adatváltozásokhoz. 
+* **Horizontális felskálázás**: Adatbázisok hozzáadása vagy eltávolítása a szilánkos alkalmazás adatréteg, ha szükséges az alkalmazás kapacitásigénye. Ez azt jelenti, hogy szabályozhatja az adatbázisok létrehozását és törlését, és a rugalmas adatbázis-leképezéskezelő API-k használatával kezelheti az adatbázisokat és a shardlets leképezéseit. 
+* **Konzisztencia**: Az alkalmazás szilánkolást alkalmaz, és az ügyféltár adatfüggő útválasztási képességeit használja. A sérülés vagy a helytelen lekérdezési eredmények elkerülése érdekében a kapcsolatok a shard map manager en keresztül lesznek közvetítve. Ez is megtartja az érvényesítés és a konzisztencia.
+* **Kód Először**: Az EF kódjának kényelmének megőrzése az első paradigma. A Code First-ben az alkalmazás osztályai transzparens módon vannak leképezve az alapul szolgáló adatbázisstruktúrákhoz. Az alkalmazáskód együttműködik a DbSets készletekkel, amelyek elfedik az alapul szolgáló adatbázis-feldolgozásban részt vevő legtöbb szempontot.
+* **Séma**: Az entitáskeretrendszer kezeli a kezdeti adatbázisséma létrehozását és az azt követő séma-létrehozást az áttelepítéseken keresztül. Ezeknek a képességeknek a megtartásával az alkalmazás adaptálása az adatok fejlődésével egyszerű. 
 
-Az alábbi útmutatás arra utasítja, hogyan teljesítheti ezeket a követelményeket a kód első alkalmazásaihoz rugalmas adatbázis-eszközök használatával. 
+Az alábbi útmutató azt ismerteti, hogyan felelmeg ezeknek a követelményeknek a Code First alkalmazások rugalmas adatbázis-eszközök használatával. 
 
-## <a name="data-dependent-routing-using-ef-dbcontext"></a>Adatfüggő útválasztás az EF DbContext
+## <a name="data-dependent-routing-using-ef-dbcontext"></a>Adatfüggő útválasztás az EF DbContext használatával
 
-A Entity Frameworkekkel rendelkező adatbázis-kapcsolatokat általában a **DbContext**alosztályain keresztül kezeli a rendszer. Hozza létre ezeket az alosztályokat a **DbContext**-ből származtatva. Itt határozhatja meg a **DbSets** , amely megvalósítja az alkalmazáshoz tartozó CLR-objektumok adatbázis-alapú gyűjteményeit. Az Adatfüggő útválasztás kontextusában számos olyan hasznos tulajdonságot azonosíthat, amelyek nem feltétlenül tartanak fenn más EF Code első alkalmazási forgatókönyvek esetén: 
+Az Entitáskeretrendszerrel létesített adatbázis-kapcsolatok kezelése általában a DbContext alosztályain **keresztül történik.** Ezeket az alosztályokat a **DbContext**ből származó . Itt határozhatja meg a **DbSets,** amely megvalósítja az adatbázis által támogatott gyűjtemények CLR-objektumok az alkalmazáshoz. Az adatfüggő útválasztás környezetében számos hasznos tulajdonságot azonosíthat, amelyek nem feltétlenül rendelkeznek más EF-kód első alkalmazási forgatókönyveivel: 
 
-* Az adatbázis már létezik, és regisztrálva van a rugalmas adatbázis-szegmenses térképen. 
-* Az alkalmazás sémája már telepítve van az adatbázison (lásd alább). 
-* Az adatbázishoz tartozó, adatkapcsolattal rendelkező útválasztási kapcsolatokat a szegmenses Térkép felügyeli. 
+* Az adatbázis már létezik, és regisztrálva van a rugalmas adatbázis shard térképen. 
+* Az alkalmazás sémája már telepítve van az adatbázisban (az alábbiakban ismertetett). 
+* Az adatbázisadat-függő útválasztási kapcsolatokat a szegmenstérkép közvetíti. 
 
-A **DbContexts** integrálása Adatfüggő útválasztással a kibővíthető szolgáltatáshoz:
+A **DbContexts integrálása** adatfüggő útválasztással a horizontális felskálázáshoz:
 
-1. Hozzon létre fizikai adatbázis-kapcsolatokat a szegmens Map Manager rugalmas adatbázis-ügyfél felületén keresztül, 
-2. A **DbContext** alosztályhoz tartozó kapcsolatok tördelése
-3. Továbbítsa a kapcsolódást a **DbContext** alaposztályaiba, így biztosítva, hogy az EF-oldal összes feldolgozása is megtörténjen. 
+1. Hozzon létre fizikai adatbázis-kapcsolatokat a shard map manager rugalmas adatbázis-ügyfélfelületein keresztül, 
+2. A Kapcsolat tördelése a **DbContext** alosztállyal
+3. Adja át a kapcsolatot a **DbContext** alaposztályokba, hogy az EF-oldalon lévő összes feldolgozás is megtörténjen. 
 
-A következő kódrészlet szemlélteti ezt a megközelítést. (Ez a kód a kapcsolódó Visual Studio-projektben is szerepel)
+A következő példa erre a megközelítésre mutat. (Ez a kód a mellékelt Visual Studio projektben is szerepel)
 
 ```csharp
 public class ElasticScaleContext<T> : DbContext
@@ -119,21 +119,21 @@ public DbSet<Blog> Blogs { get; set; }
     }
 ```
 
-## <a name="main-points"></a>Fő pontok
+## <a name="main-points"></a>Főbb pontok
 
-* Egy új konstruktor helyettesíti az alapértelmezett konstruktort a DbContext alosztályban. 
-* Az új konstruktor azon argumentumokat veszi igénybe, amelyek az Adatfüggő útválasztáshoz szükségesek a rugalmas adatbázis ügyféloldali függvénytárán keresztül:
+* Egy új konstruktor helyettesíti a DbContext alosztály alapértelmezett konstruktorait 
+* Az új konstruktor veszi az okat, amelyek szükségesek az adatoktól függő útválasztás rugalmas adatbázis-ügyfélkódtár:
   
-  * az Adatfüggő útválasztási felületek eléréséhez szükséges szegmenses leképezés
-  * a shardletbe azonosítására szolgáló horizontális Felskálázási kulcs
-  * egy olyan kapcsolódási karakterlánc, amely a szegmenshez tartozó Adatfüggő útválasztási kapcsolatok hitelesítő adataival rendelkezik. 
-* Az alaposztály konstruktorának hívása egy statikus metódusba kerül, amely elvégzi az adatkezeléshez szükséges összes lépést. 
+  * a szegmenstérkép az adatfüggő útválasztási összeköttetések eléréséhez,
+  * a szilánkos kulcs a shardlet azonosításához,
+  * a kapcsolati karakterlánc a hitelesítő adatoktól függő útválasztási kapcsolat a szegmenshez. 
+* Az alaposztály konstruktorának hívása egy statikus metódusba kerül, amely végrehajtja az adatfüggő útválasztáshoz szükséges összes lépést. 
   
-  * A rugalmas adatbázis-ügyféloldali felületek OpenConnectionForKey hívja meg a szegmenses térképen egy nyitott kapcsolat létesítéséhez.
-  * A szegmenses Térkép létrehozza a nyitott kapcsolatokat a szegmenshez, amely az adott shardletbe tárolja.
-  * Ezt a nyitott kapcsolatot a DbContext alaposztály-konstruktora adja vissza, amely azt jelzi, hogy a kapcsolatot az EF-nek kell használnia ahelyett, hogy az EF új kapcsolatot hozzon létre automatikusan. Ily módon a rendszer a rugalmas adatbázis-ügyfél API-val címkézte a kapcsolatokat, hogy az képes legyen a konzisztencia biztosítására a szegmensek közötti Térkép-felügyeleti műveletek során.
+  * A rugalmas adatbázis-ügyfélfelületek OpenConnectionForKey hívását használja a shard térképen egy nyitott kapcsolat létrehozásához.
+  * A shard térkép létrehozza a nyílt kapcsolatot a shard, amely tartalmazza a shardlet a megadott szilánkos kulcs.
+  * Ez a nyitott kapcsolat visszakerül a DbContext alaposztálykonstruktorához, jelezve, hogy ezt a kapcsolatot az EF használja ahelyett, hogy az EF automatikusan új kapcsolatot hozna létre. Így a kapcsolat van címkézve a rugalmas adatbázis-ügyfél API-t, hogy garantálja a konzisztenciát a shard map felügyeleti műveletek.
 
-A kódban szereplő alapértelmezett konstruktor helyett használja az új konstruktort a DbContext alosztályhoz. Például: 
+Használja az új konstruktor a DbContext alosztály helyett az alapértelmezett konstruktor a kódban. Például: 
 
 ```csharp
 // Create and save a new blog.
@@ -158,13 +158,13 @@ using (var db = new ElasticScaleContext<int>(
 }
 ```
 
-Az új konstruktor megnyitja a kapcsolatot a szegmensben, amely a **tenantid1**értékével azonosított shardletbe vonatkozó adatmennyiséget tárolja. A **using** blokkban lévő kód változatlan marad, hogy hozzáférhessen a **DbSet** a blogok számára az EF használatával a **tenantid1**. Ez megváltoztatja a kód szemantikai feladatait a using blokkban úgy, hogy az összes adatbázis-művelet hatóköre a **tenantid1** által megőrzött egy szegmensre vonatkozik. A blogok **DbSet** tartozó LINQ-lekérdezések például csak az aktuális szegmensen tárolt, de más szegmenseken tárolt blogokat fogják visszaadni.  
+Az új konstruktor megnyitja a kapcsolatot a shard, amely tartalmazza az adatokat a shardlet által azonosított értéke **tenantid1**. A kód a **használatával** blokk változatlan marad, hogy a **DbSet** a blogok segítségével EF a shard a **tenantid1**. Ez megváltoztatja a szemantika a kód a használatával blokk, így az összes adatbázis-műveletek most hatóköre az egyik szegmens, ahol **tenantid1** van tárolva. Például egy LINQ-lekérdezést a **DbSet** blogokon keresztül csak az aktuális szegmensben tárolt blogokat adja vissza, de a más szegmenseken tároltakat nem.  
 
-#### <a name="transient-faults-handling"></a>Átmeneti hibák kezelésére
+#### <a name="transient-faults-handling"></a>Átmeneti hibák kezelése
 
-A Microsoft Patterns & Practices csapata közzétette az [átmeneti hibák kezelésére szolgáló alkalmazás blokkját](https://msdn.microsoft.com/library/dn440719.aspx). A kódtárat az EF-sel együtt, rugalmasan méretezhető ügyféloldali kódtár használják. Azonban győződjön meg arról, hogy az átmeneti kivétel olyan helyre tér vissza, ahol biztosíthatja, hogy az új konstruktor egy átmeneti hiba után legyen használatban, hogy az új kapcsolódási kísérleteket a csípett konstruktorok használatával hajtsa végre. Ellenkező esetben a megfelelő szegmenshez való kapcsolódás nem garantált, és nincs garancia arra, hogy a rendszer megtartja a kapcsolódást a szegmenses Térkép változásakor. 
+A Microsoft Patterns & Practices csapata közzétette az [Átmeneti hibakezelési alkalmazásblokkot.](https://msdn.microsoft.com/library/dn440719.aspx) A könyvtár rugalmas méretezési ügyfélkódtárral és EF-vel kombinálva használatos. Azonban győződjön meg arról, hogy minden átmeneti kivétel visszatér egy olyan helyre, ahol biztosíthatja, hogy az új konstruktor használata után egy átmeneti hiba, hogy minden új csatlakozási kísérlet történik a konstruktorok módosított. Ellenkező esetben a megfelelő shard kapcsolat nem garantált, és nincs garancia a kapcsolat megmarad, ha a shard térkép módosításai bekövetkeznek. 
 
-Az alábbi mintakód azt szemlélteti, hogyan használható az SQL újrapróbálkozási szabályzata az új **DbContext** alosztály-konstruktorok köré: 
+A következő kódminta bemutatja, hogyan használható az SQL újrapróbálkozási házirend az új **DbContext** alosztály konstruktorok körül: 
 
 ```csharp
 SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() => 
@@ -182,37 +182,37 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
     }); 
 ```
 
-A fenti kódban található **SqlDatabaseUtils. SqlRetryPolicy** egy 10 értékű újrapróbálkozási számmal rendelkező **SqlDatabaseTransientErrorDetectionStrategy** van definiálva, és 5 másodperc várakozási idő az újrapróbálkozások között. Ez a megközelítés hasonló az EF-hez és a felhasználó által kezdeményezett tranzakciókra vonatkozó útmutatáshoz (lásd: [korlátozások a végrehajtási stratégiák újrapróbálkozásával (EF6)](https://msdn.microsoft.com/data/dn307226). Mindkét esetben meg kell adnia, hogy az alkalmazás programja szabályozza azt a hatókört, amelyre az átmeneti kivétel vonatkozik: a tranzakció újbóli megnyitásához, vagy (ahogy azt látható) a rugalmas adatbázis-ügyféloldali függvénytárat használó megfelelő konstruktorból hozza létre újra a környezetet.
+A fenti kódban található **SqlDatabaseDatabaseUtils.SqlRetryPolicy** egy **SqlDatabaseTransientErrorDetectionStrategy** definíciója, amelynek újrapróbálkozásszáma 10, és 5 másodperces várakozási idő az újrapróbálkozások között. Ez a megközelítés hasonló az EF-re és a felhasználó által kezdeményezett tranzakciókra vonatkozó útmutatáshoz (lásd: Korlátozások a [végrehajtási stratégiák újbóli megkísérléséhez (EF6-tól)](https://msdn.microsoft.com/data/dn307226). Mindkét helyzetben megköveteli, hogy az alkalmazás program szabályozza a hatókört, amelyre az átmeneti kivétel visszatér: vagy újra megnyitja a tranzakciót, vagy (ahogy látható) újra a környezetet a megfelelő konstruktor, amely a rugalmas adatbázis-ügyfélkódtár.
 
-Annak szabályozására van szükség, hogy az átmeneti kivételek milyen mértékben kerülnek vissza a hatókörbe, az EF-hez készült beépített **SqlAzureExecutionStrategy** használatát is kizárja. A **SqlAzureExecutionStrategy** újra megnyit egy-kapcsolatot, de nem használja a **OpenConnectionForKey** -t, ezért megkerüli a **OpenConnectionForKey** -hívás részeként végrehajtott összes érvényesítést. Ehelyett a mintakód a beépített **DefaultExecutionStrategy** használja, amely az EF-hez is tartozik. A **SqlAzureExecutionStrategy**ellentétben az újrapróbálkozási szabályzattal együtt megfelelően működik az átmeneti hibák kezelésére. A végrehajtási házirend a **ElasticScaleDbConfiguration** osztályban van beállítva. Vegye figyelembe, hogy nem használjuk a **DefaultSqlExecutionStrategy** -t, mivel a **SqlAzureExecutionStrategy** használatát javasolja, ha átmeneti kivételek történnek – ami a tárgyalt helytelen viselkedéshez vezethet. A különböző újrapróbálkozási szabályzatokkal és az EF-vel kapcsolatos további információkért lásd: [a kapcsolatok rugalmassága az EF-ben](https://msdn.microsoft.com/data/dn456835.aspx).     
+Annak szabályozására, ahol az átmeneti kivételek visszavisznek minket a hatókörbe, szintén kizárja az EF beépített **SqlAzureExecutionStrategy** használatát. **Az SqlAzureExecutionStrategy** újra megnyit egy kapcsolatot, de nem használja az **OpenConnectionForKey-t,** és ezért megkerüli az **OpenConnectionForKey** hívás részeként végrehajtott összes érvényesítést. Ehelyett a kódminta a beépített **DefaultExecutionStrategy** stratégiát használja, amely az EF-hez is tartozik. Az **SqlAzureExecutionStrategy**programmal ellentétben megfelelően működik az átmeneti hibakezelés újrapróbálkozási házirendjével kombinálva. A végrehajtási házirend az **ElasticScaleDbConfiguration** osztályban van beállítva. Vegye figyelembe, hogy úgy döntöttünk, hogy nem használjuk **a DefaultSqlExecutionStrategy,mivel** azt javasolja, **hogy sqlAzureExecutionStrategy** használata esetén átmeneti kivételek fordulnak elő , ami rossz viselkedéshez vezetne, ahogy azt tárgyalta. A különböző újrapróbálkozási házirendekkel és EF-ekkel kapcsolatos további információkért lásd: [Csatlakozás rugalmasság a EF-ben.](https://msdn.microsoft.com/data/dn456835.aspx)     
 
-#### <a name="constructor-rewrites"></a>Konstruktor-újraírások
+#### <a name="constructor-rewrites"></a>A konstruktor átírja
 
-A fenti kód a fenti példák szemléltetik az alkalmazáshoz szükséges alapértelmezett konstruktorok újraírásait, hogy az Adatfüggő útválasztást a Entity Framework használatával használhassa. A következő táblázat általánosítja ezt a megközelítést más konstruktorok számára. 
+A fenti kódpéldák bemutatják az alapértelmezett konstruktor újraírása szükséges az alkalmazás az entitás keretrendszer adatfüggő útválasztás használata érdekében. Az alábbi táblázat általánosítja ezt a megközelítést más konstruktorok számára. 
 
-| Aktuális konstruktor | Újraírható konstruktor az adatforgalomhoz | Alapkonstruktor | Megjegyzések |
+| Jelenlegi konstruktor | Újraírva konstruktor adatokhoz | Alapkonstruktor | Megjegyzések |
 | --- | --- | --- | --- |
-| MyContext() |ElasticScaleContext(ShardMap, TKey) |DbContext (DbConnection, bool) |A kapcsolódásnak a szegmens Térkép és az Adatfüggő útválasztási kulcs függvényének kell lennie. Az EF használatával kell átadnia az automatikus kapcsolódást, és ehelyett a szegmenses leképezést kell használnia a kapcsolatok közvetítéséhez. |
-| MyContext(string) |ElasticScaleContext(ShardMap, TKey) |DbContext (DbConnection, bool) |A kötés a szegmens Térkép és az Adatfüggő útválasztási kulcs függvénye. A rögzített adatbázis-név vagy a kapcsolatok karakterlánca nem működik, mert a szegmenses Térkép átadja az ellenőrzést. |
-| MyContext(DbCompiledModel) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel) |DbContext(DbConnection, DbCompiledModel, bool) |A rendszer létrehozza a hozzáférést a megadott szegmenses térképhez és a horizontális Felskálázási kulcshoz a megadott modellel. A lefordított modellt a rendszer átadja az alapszintű c'tor. |
-| MyContext (DbConnection, bool) |ElasticScaleContext (ShardMap, TKey, bool) |DbContext (DbConnection, bool) |A kapcsolódást a szegmens térképből és a kulcsból kell kikövetkeztetni. Nem adható meg bemenetként (kivéve, ha a bemenet már használta a szegmenses térképet és a kulcsot). A rendszer átadja a logikai értéket. |
-| MyContext(string, DbCompiledModel) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel) |DbContext(DbConnection, DbCompiledModel, bool) |A kapcsolódást a szegmens térképből és a kulcsból kell kikövetkeztetni. Nem adható meg bemenetként (kivéve, ha a bemenet a szegmenses térképet és a kulcsot használta). A lefordított modell át lett adva. |
-| MyContext (ObjectContext, bool) |ElasticScaleContext (ShardMap, TKey, ObjectContext, bool) |DbContext (ObjectContext, bool) |Az új konstruktornak meg kell győződnie arról, hogy a ObjectContext átadott összes kapcsolatot átirányítja a rendszer a rugalmas skálázással kezelt kapcsolatok felé. A ObjectContexts részletes témája a jelen dokumentum hatókörén kívül esik. |
-| MyContext(DbConnection, DbCompiledModel, bool) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel, bool) |DbContext(DbConnection, DbCompiledModel, bool); |A kapcsolódást a szegmens térképből és a kulcsból kell kikövetkeztetni. A kapcsolatok nem adhatók meg bemenetként (kivéve, ha a bemenet már használta a szegmenses térképet és a kulcsot). A modell és a logikai érték átadása az alaposztály konstruktorának. |
+| Saját környezet() |ElasticScaleContext(ShardMap, TKey) |DbContext(DbConnection; bool) |A kapcsolatnak a szegmenstérkép és az adatfüggő útválasztási kulcs függvényének kell lennie. Meg kell haladnia az AUTOMATIKUS kapcsolat létrehozása az EF, és ehelyett a shard térkép et kell használnia a kapcsolat közvetítéséhez. |
+| Sajatkörnyezet(karakterlánc) |ElasticScaleContext(ShardMap, TKey) |DbContext(DbConnection; bool) |A kapcsolat a shard térkép és az adatfüggő útválasztási kulcs függvénye. A rögzített adatbázis név vagy kapcsolati karakterlánc nem működik, mivel a shard térkép által imitálási műveletek. |
+| Sajatkörnyezet(DbCompiledModel) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel) |DbContext(DbConnection; DbCompiledModel, bool) |A kapcsolat jön létre az adott szegmens térkép és a modell a megadott modellt. A lefordított modell átkerül az alap c'tor. |
+| SajatKörnyezet(DbConnection, bool) |ElasticScaleContext(ShardMap, TKey, bool) |DbContext(DbConnection; bool) |A kapcsolatot a shard térképből és a kulcsból kell kikövetkeztetni. Nem adható meg bemenetként (kivéve, ha ez a bemenet már használta a szegmenstérképet és a kulcsot). A logikai adták tovább. |
+| SajatKörnyezet(karakterlánc; DbCompiledModel) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel) |DbContext(DbConnection; DbCompiledModel, bool) |A kapcsolatot a shard térképből és a kulcsból kell kikövetkeztetni. Nem adható meg bemenetként (kivéve, ha ez a bemenet a szegmenstérképet és a kulcsot használta). A lefordított modell továbbadható. |
+| Sajatkörnyezet(ObjectContext, bool) |ElasticScaleContext(ShardMap, TKey, ObjectContext, bool) |DbContext(ObjectContext; bool) |Az új konstruktornak gondoskodnia kell arról, hogy az ObjectContext bemenetként átadott bármely kapcsolatát átirányítsa a Rugalmas méretezés által kezelt kapcsolatra. Az ObjectContexts részletes megvitatása nem tartozik a dokumentum hatálya alá. |
+| SajatKörnyezet(DbConnection, DbCompiledModel, bool) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel, bool) |DbContext(DbConnection, DbCompiledModel, bool); |A kapcsolatot a shard térképből és a kulcsból kell kikövetkeztetni. A kapcsolat nem adható meg bemenetként (kivéve, ha ez a bemenet már használta a szegmenstérképet és a kulcsot). A modell és a logikai érték átkerülnek az alaposztály konstruktorához. |
 
-## <a name="shard-schema-deployment-through-ef-migrations"></a>Szegmenses séma üzembe helyezése EF-Migrálás útján
+## <a name="shard-schema-deployment-through-ef-migrations"></a>Shard séma telepítése EF-áttelepítéseken keresztül
 
-Az automatikus séma-felügyelet a Entity Framework által biztosított kényelem. A rugalmas adatbázis-eszközöket használó alkalmazások kontextusában meg kívánja őrizni ezt a képességet, hogy automatikusan kiépítse a sémát az újonnan létrehozott szegmensekre, amikor az adatbázisok hozzáadódnak az alkalmazáshoz. Az elsődleges használati eset az, hogy növelje a kapacitást az adatszinten az EF-t használó horizontálisan használt alkalmazások esetében. Az EF-re épülő séma-felügyeleti funkciókra való támaszkodás csökkenti az adatbázis-adminisztrációs erőfeszítéseket egy EF-re épülő, horizontálisan használt alkalmazással. 
+Az automatikus sémakezelés az entitáskeretrendszer kényelmét biztosítja. Rugalmas adatbázis-eszközök használatával alkalmazások környezetében szeretné megőrizni ezt a képességet, hogy automatikusan kiépíti a sémát az újonnan létrehozott szegmensek, amikor adatbázisokat adnak hozzá a szilánkos alkalmazáshoz. Az elsődleges használati eset az, hogy növeli a kapacitást az adatrétegen az EF használatával szilánkos alkalmazások. Támaszkodva az EF sémakezelési képességeire támaszkodva csökkenti az adatbázis-felügyeleti erőfeszítéseket az EF-re épülő szilánkos alkalmazással. 
 
-Az EF-alapú Migrálás révén a séma a legjobban a nem **nyitott kapcsolatokon**működik. Ez ellentétben áll a rugalmas adatbázis-ügyfél API által biztosított nyitott kapcsolódásra támaszkodó, adatkezelési útválasztási forgatókönyvvel. Egy másik különbség a konzisztencia követelménye: ugyanakkor célszerű biztosítani, hogy az összes adatkapcsolattal rendelkező útválasztási kapcsolat konzisztens legyen az egyidejű szegmenses leképezések kezelésével szembeni védelem érdekében, nem jelent problémát a kezdeti séma üzembe helyezése egy olyan új adatbázison, amely még nincs regisztrálva a szegmenses térképen, és még nincs kiosztva a shardletek tárolásához. Így a forgatókönyvhöz hasonlóan rendszeres adatbázis-kapcsolatokra is támaszkodhat, az adatoktól függő útválasztással szemben.  
+A séma telepítése az EF-áttelepítéseken keresztül a **bontatlan kapcsolatokon**működik a legjobban. Ez ellentétben áll az adatfüggő útválasztás forgatókönyvével, amely a rugalmas adatbázis-ügyfél API által biztosított megnyitott kapcsolatra támaszkodik. Egy másik különbség a konzisztencia követelmény: Bár kívánatos, hogy biztosítsa a konzisztencia minden adatfüggő útválasztási kapcsolatok elleni egyidejű shard térkép manipuláció, ez nem aggályos a kezdeti séma központi egy új adatbázisba, amely még nincs regisztrálva a shard térképen, és még nincs kiosztva a shardlets tárolására. Ezért ebben a forgatókönyvben a rendszeres adatbázis-kapcsolatok, szemben az adatfüggő útválasztás.  
 
-Ez egy olyan megközelítéshez vezet, ahol az EF-Migrálás révén a séma üzembe helyezése szorosan össze van kapcsolva az új adatbázisnak az alkalmazás szegmenses térképének szegmensként való regisztrálásával. Ez a következő előfeltételekre támaszkodik: 
+Ez egy olyan megközelítéshez vezet, amelyben a séma üzembe helyezése az EF-áttelepítéseken keresztül szorosan kapcsolódik az új adatbázis az alkalmazás shard térképének shard ként történő regisztrációjához. Ez a következő előfeltételekre támaszkodik: 
 
-* Az adatbázis már létre lett hozva. 
-* Az adatbázis üres – nem rendelkezik felhasználói sémával és felhasználói adattal.
-* Az adatbázis még nem érhető el a rugalmas adatbázis-ügyfél API-kkal az Adatfüggő útválasztáshoz. 
+* Az adatbázis már létrejött. 
+* Az adatbázis üres - nem tartalmaz felhasználói sémát és felhasználói adatokat.
+* Az adatbázis még nem érhető el a rugalmas adatbázis-ügyfél API-k on keresztül az adatfüggő útválasztás. 
 
-Ezeknek az előfeltételeknek a végrehajtásához létrehozhat egy rendszeres, nem megnyitott **SqlConnection** , amelyekkel elindíthatja a séma központi telepítésének EF-alapú áttelepítéseit. A következő mintakód ezt a megközelítést mutatja be. 
+Ezekkel az előfeltételekkel létrehozhat egy rendszeres, meg nem nyitott **SqlConnection-t,** hogy elindíthassa az EF-áttelepítéseket a séma telepítéséhez. A következő kódminta ezt a megközelítést mutatja be. 
 
 ```csharp
 // Enter a new shard - i.e. an empty database - to the shard map, allocate a first tenant to it  
@@ -243,7 +243,7 @@ public void RegisterNewShard(string server, string database, string connStr, int
 } 
 ```
 
-Ez a példa azt a metódust mutatja be, amely a **RegisterNewShard** regisztrálja a szegmenst a szegmensek közötti térképen, telepíti a sémát az EF-Migrálás segítségével, és egy horizontális Felskálázási kulcs hozzárendelését tárolja a szegmensben. A **DbContext** alosztály konstruktorán alapul (a mintában szereplő**ElasticScaleContext** ), amely egy SQL-kapcsolatot megadó karakterláncot használ bemenetként. A konstruktor kódja azonnal továbbítva van, ahogy az alábbi példában látható: 
+Ez a minta a **RegisterNewShard** metódust jeleníti meg, amely regisztrálja a szegmenst a szegmenstérképen, telepíti a sémát az EF-áttelepítéseken keresztül, és egy szegmenskulcs leképezését tárolja. Támaszkodik a **DbContext** alosztály **(ElasticScaleContext** a mintában), amely egy SQL-kapcsolati karakterlánc bemenetként támaszkodik. A konstruktor kódja egyenesen előre halad, amint azt a következő példa mutatja: 
 
 ```csharp
 // C'tor to deploy schema and migrations to a new shard 
@@ -263,19 +263,19 @@ new CreateDatabaseIfNotExists<ElasticScaleContext<T>>());
 } 
 ```
 
-Az egyik lehetséges, hogy használta az alaposztálytól örökölt konstruktor verzióját. A kódnak azonban biztosítania kell, hogy a csatlakozáskor a rendszer az EF alapértelmezett inicializáló használja. Ezért a statikus metódus rövid lefoglalása, mielőtt az alaposztály konstruktorában meghívja a kapcsolatot megadó karakterláncot. Vegye figyelembe, hogy a szegmensek regisztrációjának egy másik alkalmazás-tartományban vagy folyamatban kell futnia, hogy az EF-hez tartozó inicializálási beállítások ne legyenek ütköznek. 
+Lehet, hogy az alaposztálytól örökölt konstruktor verzióját használta. De a kódnak biztosítania kell, hogy az EF alapértelmezett inicializálója legyen használva a csatlakozáskor. Ezért a rövid kitérőt a statikus metódusbe, mielőtt behívna az alaposztály konstruktorát a kapcsolati karakterlánccal. Vegye figyelembe, hogy a szegmensek regisztrációjának egy másik alkalmazástartományban vagy folyamatban kell futnia annak érdekében, hogy az EF inicializáló beállításai ne ütközzenek. 
 
 ## <a name="limitations"></a>Korlátozások
 
-A jelen dokumentumban ismertetett megközelítések néhány korlátozást foglalnak magukban: 
+Az e dokumentumban vázolt megközelítések néhány korlátozással járnak: 
 
-* Az **LocalDb** -t használó EF-alkalmazásoknak először rendszeres SQL Server adatbázisba kell áttérniük a rugalmas adatbázis-ügyféloldali kódtár használata előtt. Az alkalmazások horizontális méretezéssel történő horizontális felskálázása nem lehetséges a **LocalDb**. Vegye figyelembe, hogy a fejlesztés továbbra is használhatja a **LocalDb**-t. 
-* Az alkalmazásnak az adatbázis-sémát érintő változásait az összes szegmensen el kell végezni az EF-Migrálás során. Ennek a dokumentumnak a mintakód nem mutatja be ennek módját. Érdemes lehet az Update-Database-t egy ConnectionString paraméterrel megismételni az összes szegmensnél. vagy bontsa ki a T-SQL-szkriptet a függőben lévő áttelepítéshez a Update-Database használatával a-script kapcsolóval, és alkalmazza a T-SQL-szkriptet a szegmensekre.  
-* A kérést a rendszer feltételezi, hogy az összes adatbázis-feldolgozás egy szegmensen belül található, amelyet a kérelem által biztosított horizontális kulcs azonosít. Ez a feltételezés azonban nem mindig igaz. Például, ha nem lehet elérhetővé tenni egy horizontális Felskálázási kulcsot. Ennek megoldásához az ügyféloldali kódtár biztosítja a **MultiShardQuery** osztályt, amely egy kapcsolati absztrakciót valósít meg több szegmensben való lekérdezéshez. A **MultiShardQuery** és az EF együttes használatának megismerése a jelen dokumentum hatókörén kívül esik
+* A **LocalDb-t** használó EF-alkalmazásoknak először át kell térniük egy normál SQL Server-adatbázisba, mielőtt rugalmas adatbázis-ügyfélkódtárat használnának. A **LocalDb**segítségével nem lehet horizontális skálázással kibővíteni egy alkalmazást. Ne feledje, hogy a fejlesztés továbbra is használhatja **LocalDb**. 
+* Az alkalmazás minden olyan módosítása, amely az adatbázis-séma módosításait jelenti, az összes szegmensen keresztül kell végrehajtania az EF-áttelepítéseket. A dokumentum mintakódja nem mutatja be ennek módját. Fontolja meg az Update-Database egy ConnectionString paraméterrel az összes szegmens en történő iterálását; vagy bontsa ki a T-SQL-parancsfájlt a függőben lévő áttelepítéshez az Update-Database használatával a -Script beállítással, és alkalmazza a T-SQL parancsfájlt a szegmensekre.  
+* Egy kérelem esetén feltételezhető, hogy az összes adatbázis-feldolgozás egyetlen szegmensben található, a kérelem által biztosított szegmenskulcs által azonosított. Ez a feltételezés azonban nem mindig igaz. Például ha nem lehetséges, hogy egy szilánkos kulcs elérhetővé. Ennek megoldásához az ügyféltár biztosítja a **MultiShardQuery** osztályt, amely egy kapcsolatasztrakciót valósít meg több szegmensen keresztüli lekérdezéshez. A **MultiShardQuery** EF-el való együttes használatának elsajátítása nem tartozik a jelen dokumentum hatálya alá
 
 ## <a name="conclusion"></a>Összegzés
 
-A jelen dokumentumban ismertetett lépések végrehajtásával az EF-alkalmazások a rugalmas adatbázis ügyféloldali függvénytárát használhatják az Adatfüggő útválasztáshoz az EF-alkalmazásban használt **DbContext** alosztályok újrabontásával. Ez korlátozza azoknak a helyeknek a módosításait, amelyekben a **DbContext** -osztályok már léteznek. Emellett az EF-alkalmazások továbbra is kihasználhatják az automatikus séma telepítését azáltal, hogy összekapcsolják a szükséges EF-áttelepítéseket meghívó lépéseket az új szegmensek és leképezések a szegmenses térképen való regisztrálásával. 
+Az ebben a dokumentumban ismertetett lépések révén az EF-alkalmazások használhatják a rugalmas adatbázis-ügyfélkódtár adatfüggő útválasztásra való képességét az EF-alkalmazásban használt **DbContext** alosztályok konstruktorainak átbontásával. Ez korlátozza a szükséges módosításokat azokra a helyekre, ahol **a DbContext** osztályok már léteznek. Emellett az EF-alkalmazások továbbra is élvezhetik az automatikus sémaüzembe helyezés előnyeit a szükséges EF-áttelepítések meghívására és a szegmensek és leképezések shard térképen történő regisztrációjával kapcsolatos lépések kombinálásával. 
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

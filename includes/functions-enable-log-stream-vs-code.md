@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 06/25/2019
 ms.author: glenga
 ms.openlocfilehash: 437b4ab62cc8c4903af88ca2f9632e89b953c798
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68669669"
 ---
-Az Azure-beli Function alkalmazáshoz tartozó folyamatos átviteli naplók bekapcsolása:
+A függvényalkalmazás streamelési naplóinak bekapcsolása az Azure-ban:
 
-1. Válassza az F1 billentyűt a parancs paletta megnyitásához, majd keresse meg és futtassa **a parancsot Azure functions: Adatfolyam-naplók**indítása.
+1. Válassza az F1 lehetőséget a parancspaletta megnyitásához, majd keresse meg és futtassa az **Azure Functions: Start Streaming Logs parancsot.**
 
-1. Válassza ki a Function alkalmazást az Azure-ban, majd válassza az **Igen** lehetőséget az alkalmazás naplózásának engedélyezéséhez a Function alkalmazásban.
+1. Válassza ki a függvényalkalmazást az Azure-ban, majd válassza az **Igen** lehetőséget az alkalmazásnaplózás engedélyezéséhez a függvényalkalmazásban.
 
-1. Aktiválja funkcióit az Azure-ban. Figyelje meg, hogy a naplózási adatokat a rendszer a Visual Studio Code kimenet ablakában jeleníti meg.
+1. Indítsa el a funkciókat az Azure-ban. Figyelje meg, hogy a naplóadatok a Visual Studio-kód Kimenet ablakában jelennek meg.
 
-1. Ha elkészült, ne felejtse el futtatni a parancsot **Azure functions: Állítsa le a** folyamatos átviteli naplókat a Function alkalmazás naplózásának letiltásához.
+1. Ha elkészült, ne felejtse el futtatni az **Azure Functions: Streamelési naplók leállítása a** függvényalkalmazás naplózásának letiltásához.

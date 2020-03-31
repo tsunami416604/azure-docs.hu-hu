@@ -1,7 +1,7 @@
 ---
-title: Azure VMware-megoldások (AVS) – az AVS privát Felhőbeli tevékenységének figyelése
-description: Az Azure VMware-megoldásban az AVS-környezettel, például riasztásokkal, eseményekkel, feladatokkal és auditálással kapcsolatos tevékenységekre vonatkozó információkat ismerteti.
-titleSuffix: Azure VMware Solutions (AVS)
+title: Privát felhőbeli tevékenység figyelése
+titleSuffix: Azure VMware Solution by CloudSimple
+description: Az Azure VMware-megoldás a CloudSimple környezetben végzett tevékenységekkel kapcsolatos információkat ismerteti, beleértve a riasztásokat, eseményeket, feladatokat és naplózást.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/13/2019
@@ -9,108 +9,108 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5d6fd1b92db62ab7cc9edd47c601910b8148bb95
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 1228f3a54e02d4fe7a5133e2bfba55c38e34718a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77019672"
 ---
-# <a name="monitor-vmware-solutions-avs-activity"></a>VMware Solutions-(AVS-) tevékenységek figyelése
+# <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>VMware-megoldás figyelése a CloudSimple tevékenységével
 
-Az AVS-tevékenység naplói betekintést nyújtanak az AVS-portálon végzett műveletekre. A lista riasztásokat, eseményeket, feladatokat és naplózást tartalmaz. A tevékenységi naplók segítségével meghatározhatja, hogy ki, mikor és milyen műveleteket hajtottak végre. A Tevékenységnaplók nem tartalmazzák a felhasználó által végzett olvasási műveleteket.
+A CloudSimple tevékenységnaplók betekintést nyújtanak a CloudSimple portálon végzett műveletekbe.  A lista riasztásokat, eseményeket, feladatokat és naplózást tartalmaz.  A tevékenységnaplók segítségével határozza meg, hogy ki, mikor és milyen műveleteket hajtottak végre.  A tevékenységnaplók nem tartalmazzák a felhasználó által végzett olvasási műveleteket.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
+Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Portalon a .
 
-## <a name="access-the-avs-portal"></a>Hozzáférés az AVS-portálhoz
+## <a name="access-the-cloudsimple-portal"></a>Hozzáférés a CloudSimple portáljához
 
-Hozzáférés az [AVS-portálhoz](access-cloudsimple-portal.md).
+A [CloudSimple portál](access-cloudsimple-portal.md)elérése.
 
-## <a name="activity-information"></a>Tevékenység adatai
+## <a name="activity-information"></a>Tevékenységadatai
 
-A tevékenység oldalaihoz való hozzáféréshez válassza az oldalsó menü **tevékenység** elemét.
+A Tevékenység lapok eléréséhez válassza az oldal menü **Tevékenység parancsát.**
 
-![A tevékenységek oldalának áttekintése](media/activity-page-overview.png)
+![Tevékenység lap – áttekintés](media/activity-page-overview.png)
 
-A tevékenység lapon található tevékenységek részleteinek megtekintéséhez válassza ki a tevékenységet. A jobb oldalon megnyílik a részletek panel. A panel műveletei a tevékenység típusától függenek. A panel bezárásához kattintson az **X** gombra.
+A tevékenység oldalon található tevékenységek részleteinek megtekintéséhez jelölje ki a tevékenységet. A jobb oldalon megnyílik a részletek panel. A panelen végzett műveletek a tevékenység típusától függenek. A panel bezárásához kattintson az **X** gombra.
 
-Kattintson egy oszlop fejlécére a Megjelenítés rendezéséhez. A megtekinthető adott értékek oszlopai szűrhetők. Töltse le a tevékenység jelentését a **Letöltés CSV-ként** elemre kattintva.
+Kattintson egy oszlopfejlécre a megjelenítés rendezéséhez.  Szűrheti az oszlopokat a megtekinteni kívánt értékekre.  Töltse le a tevékenységjelentést a **Letöltés CSV-ként** ikonra kattintva.
 
-## <a name="alerts"></a>Értesítések
+## <a name="alerts"></a>Riasztások
 
-A riasztások az AVS-környezetben felmerülő jelentős tevékenységekről szóló értesítések. A riasztások olyan eseményeket érintenek, amelyek befolyásolják a számlázási vagy a felhasználói hozzáférést.
+A riasztások a CloudSimple környezetben végzett bármely jelentős tevékenységről szóló értesítések.  A riasztások közé tartoznak a számlázást vagy a felhasználói hozzáférést befolyásoló események.
 
-A riasztások elfogadásához és a listából való eltávolításához válasszon ki egyet vagy többet a listából, majd kattintson az **nyugtázás**gombra.
+A riasztások nyugtázásához és a listából való eltávolításához jelöljön ki egyet vagy többet a listából, és kattintson a **Nyugta gombra.**
 
-A riasztásokhoz a következő oszlopokban találhatók információk. Kattintson az **Oszlopok szerkesztése** elemre, és válassza ki a megtekinteni kívánt oszlopokat.
+A riasztásokhoz a következő információoszlopok érhetők el. Kattintson az **Oszlopok szerkesztése gombra,** és jelölje ki a megtekinteni kívánt oszlopokat.
 
-| Column | Leírás |
+| Oszlop | Leírás |
 ------------ | ------------- |
 | Riasztás típusa | A riasztás kategóriája.|
-| Idő | A riasztás ideje. |
-| Súlyosság | A riasztás jelentősége.|
-| Erőforrás neve | Az erőforráshoz hozzárendelt név, például az AVS Private Cloud neve. |
-| Erőforrás típusa | Erőforrás kategóriája: AVS Private Cloud, Cloud rack. |
+| Time | A riasztás bekövetkezésének időpontja. |
+| Severity | A riasztás jelentősége.|
+| Erőforrás neve | Az erőforráshoz rendelt név, például a magánfelhő neve. |
+| Erőforrás típusa | Az erőforrás kategóriája: Privát felhő, Cloud Rack. |
 | Erőforrás-azonosító | Az erőforrás azonosítója. |
-| Leírás | A riasztást kiváltó esemény leírása. |
-| Elismerte | Annak jelzése, hogy a riasztás igazolva van-e. |
+| Leírás | Annak leírása, hogy mi váltotta ki a riasztást. |
+| Nyugtázva | Annak feltüntetése, hogy a figyelmeztető jelzést elismerik-e. |
 
 ## <a name="events"></a>Események
 
-Az események a felhasználói és rendszertevékenységeket mutatják az AVS-portálon. Az események lap felsorolja az adott erőforráshoz társított tevékenységet és a hatás súlyosságát.
+Az események felhasználói és rendszertevékenységet mutatnak a CloudSimple portálon. Az Események lap felsorolja az adott erőforráshoz társított tevékenységet és a hatás súlyosságát.
 
-A riasztásokhoz a következő oszlopokban találhatók információk. Kattintson az **Oszlopok szerkesztése** elemre, és válassza ki a megtekinteni kívánt oszlopokat.
+A riasztásokhoz a következő információoszlopok érhetők el. Kattintson az **Oszlopok szerkesztése gombra,** és jelölje ki a megtekinteni kívánt oszlopokat.
 
-| Column | Leírás |
+| Oszlop | Leírás |
 ------------ | ------------- |
-| Idő | Az esemény dátuma és időpontja. |
-| Esemény típusa | Az eseményt azonosító numerikus kód. |
-| Súlyosság | Esemény súlyossága.|
-| Erőforrás neve | Az erőforráshoz hozzárendelt név, például az AVS Private Cloud neve. |
-| Erőforrás típusa | Erőforrás kategóriája: AVS Private Cloud, Cloud rack. |
-| Leírás | A riasztást kiváltó esemény leírása. |
+| Time | Az esemény bekövetkezésének dátuma és időpontja. |
+| Eseménytípus | Az eseményt azonosító numerikus kód. |
+| Severity | Esemény súlyossága.|
+| Erőforrás neve | Az erőforráshoz rendelt név, például a magánfelhő neve. |
+| Erőforrás típusa | Az erőforrás kategóriája: Privát felhő, Cloud Rack. |
+| Leírás | Annak leírása, hogy mi váltotta ki a riasztást. |
 
 ## <a name="tasks"></a>Feladatok
 
-A feladatok olyan AVS Private Cloud-tevékenységek, amelyek várhatóan 30 másodpercet vagy annál nagyobb időt vesznek igénybe. (A várhatóan 30 másodpercnél rövidebb tevékenységek jelentése csak eseményként történik.) Nyissa meg a feladatok lapokat az AVS Private Cloud-hoz tartozó feladatok állapotának nyomon követéséhez.
+A feladatok olyan privát felhőbeli tevékenységek, amelyek végrehajtása várhatóan 30 másodpercet vagy még többet vesz igénybe. (A várhatóan 30 másodpercnél rövidebb idő alatt eltartandó tevékenységek csak eseményként lesznek jelentve.) Nyissa meg a Feladatok lapokat a magánfelhő tevékenységeinek előrehaladásának nyomon követéséhez.
 
-A riasztásokhoz a következő oszlopokban találhatók információk. Kattintson az **Oszlopok szerkesztése** elemre, és válassza ki a megtekinteni kívánt oszlopokat.
+A riasztásokhoz a következő információoszlopok érhetők el. Kattintson az **Oszlopok szerkesztése gombra,** és jelölje ki a megtekinteni kívánt oszlopokat.
 
-| Column | Leírás |
+| Oszlop | Leírás |
 ------------ | ------------- |
-| Feladat azonosítója | A feladat egyedi azonosítója. |
+| Feladat azonosítója | A feladat egyedi azonosítója |
 | Művelet | A feladat által végrehajtott művelet. |
-| Felhasználó | A feladat végrehajtásához hozzárendelt felhasználó. |
+| Felhasználó | A feladat végrehajtásához rendelt felhasználó. |
 | Erőforrás neve | Az erőforráshoz rendelt név. |
-| Erőforrás típusa | Erőforrás kategóriája: AVS Private Cloud, Cloud rack. |
+| Erőforrás típusa | Az erőforrás kategóriája: Privát felhő, Cloud Rack. |
 | Erőforrás-azonosító | Az erőforrás azonosítója. |
-| Kezdés | A feladat kezdési időpontja. |
-| Vége | A feladat befejezési időpontja. |
-| Állapot | Aktuális feladat állapota. |
-| Eltelt idő | Az az idő, ameddig a feladat befejeződik (ha elkészült) vagy éppen folyamatban van (ha folyamatban van). |
+| Indítás | A tevékenység kezdési időpontja. |
+| Befejezés | A tevékenység befejezési időpontja. |
+| status | Aktuális tevékenységállapota. |
+| Eltelt idő | Az az idő, amelyet a feladat befejezéséhez (ha befejeződött) vagy jelenleg vesz igénybe (ha folyamatban van). |
 | Leírás | Feladat leírása. |
 
 ## <a name="audit"></a>Naplózás
 
-A naplók nyomon követhetik a felhasználói tevékenységeket. A naplók segítségével figyelheti a felhasználói tevékenységeket az összes felhasználó számára.
+A naplónaplók nyomon követik a felhasználói tevékenységeket. A naplók segítségével figyelheti az összes felhasználó felhasználói tevékenységét.
 
-A riasztásokhoz a következő oszlopokban találhatók információk. Kattintson az **Oszlopok szerkesztése** elemre, és válassza ki a megtekinteni kívánt oszlopokat.
+A riasztásokhoz a következő információoszlopok érhetők el. Kattintson az **Oszlopok szerkesztése gombra,** és jelölje ki a megtekinteni kívánt oszlopokat.
 
-| Column | Leírás |
+| Oszlop | Leírás |
 ------------ | ------------- |
-| Idő | A naplóbejegyzés időpontja. |
+| Time | A naplóbejegyzés időpontja. |
 | Művelet | A feladat által végrehajtott művelet. |
-| Felhasználó | A feladathoz hozzárendelt felhasználó. |
+| Felhasználó | A feladathoz rendelt felhasználó. |
 | Erőforrás neve | Az erőforráshoz rendelt név. |
-| Erőforrás típusa | Erőforrás kategóriája: AVS Private Cloud, Cloud rack. |
+| Erőforrás típusa | Az erőforrás kategóriája: Privát felhő, Cloud Rack. |
 | Erőforrás-azonosító | Az erőforrás azonosítója. |
-| Eredmény | A tevékenység eredménye, például **sikeres**. |
-| Szükséges idő | A feladat elvégzéséhez szükséges idő. |
+| Eredmény | A tevékenység eredménye, például a **Siker**. |
+| Igénybe vett idő | A feladat befejezésének ideje. |
 | Leírás | A művelet leírása. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [VMware virtuális gépek használata az Azure-ban](quickstart-create-vmware-virtual-machine.md)
-* További információ az [AVS Private felhőkről](cloudsimple-private-cloud.md)
+* [VMware rendszerű virtuális gépek felhasználása az Azure-ban](quickstart-create-vmware-virtual-machine.md)
+* További információ a [privát felhőkről](cloudsimple-private-cloud.md)

@@ -1,37 +1,37 @@
 ---
-title: Service Fabric Azure Files kötet-illesztőprogram
-description: A Service Fabric a Azure Files használatával támogatja a kötetek biztonsági mentését a tárolóból.
+title: Azure Files kötet-illesztőprogram a Service Fabric számára
+description: A Service Fabric támogatja az Azure Files használatát a tárolókötetek biztonsági mentéséhez.
 ms.topic: conceptual
 ms.date: 6/10/2018
 ms.openlocfilehash: 514a0cb12359d58e38ebc30ae12cdb277757f2b2
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75750041"
 ---
-# <a name="azure-files-volume-driver-for-service-fabric"></a>Service Fabric Azure Files kötet-illesztőprogram
+# <a name="azure-files-volume-driver-for-service-fabric"></a>Azure Files kötet-illesztőprogram a Service Fabric számára
 
-A Azure Files kötet-illesztőprogram egy [Docker-kötet beépülő modul](https://docs.docker.com/engine/extend/plugins_volume/) , amely [Azure Files](/azure/storage/files/storage-files-introduction) -alapú köteteket biztosít a Docker-tárolók számára. Service Fabric alkalmazásként van csomagolva, amely Service Fabric-fürtön telepíthető, hogy a fürtön belül más Service Fabric-tároló alkalmazások számára is biztosítson köteteket.
+Az Azure Files kötet-illesztőprogram egy [Docker kötet beépülő](https://docs.docker.com/engine/extend/plugins_volume/) modul, amely [az Azure Files](/azure/storage/files/storage-files-introduction) alapú kötetek Docker-tárolók. Service Fabric-alkalmazásként van csomagolva, amely egy Service Fabric-fürtre telepíthető, hogy köteteket biztosítson a fürtön belüli más Service Fabric tárolóalkalmazások számára.
 
 > [!NOTE]
-> A Azure Files mennyiségi beépülő modul 6.5.661.9590 verziója elérhető az általános rendelkezésre állás érdekében.
+> Az Azure Files kötet beépülő modul 6.5.661.9590-es verziója általánosan elérhető.
 >
 
 ## <a name="prerequisites"></a>Előfeltételek
-* A Azure Files kötet beépülő modul Windows-verziója a Windows [Server 1709](/windows-server/get-started/whats-new-in-windows-server-1709)-es verzióján, a [Windows 10 1709](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1709) -es vagy újabb operációs rendszereken is működik.
+* Az Azure Files kötet beépülő modul Windows-verziója csak [windows Server 1709-es](/windows-server/get-started/whats-new-in-windows-server-1709), [Windows 10-es](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1709) vagy újabb operációs rendszeren működik.
 
-* A Azure Files kötet beépülő modul linuxos verziója a Service Fabric által támogatott összes operációsrendszer-verzión működik.
+* Az Azure Files kötet beépülő modul Linux-verziója a Service Fabric által támogatott összes operációsrendszer-verzión működik.
 
-* A Azure Files Volume beépülő modul csak Service Fabric 6,2-es és újabb verziókban működik.
+* Az Azure Files kötet beépülő modul csak a Service Fabric 6.2-es és újabb verziója.
 
-* A [Azure Files dokumentációjában](/azure/storage/files/storage-how-to-create-file-share) található utasításokat követve hozzon létre egy fájlmegosztást a Service Fabric Container-alkalmazás számára, amely kötetként használható.
+* Kövesse az [Azure Files dokumentációjában](/azure/storage/files/storage-how-to-create-file-share) található utasításokat, és hozzon létre egy fájlmegosztást a Service Fabric tárolóalkalmazás kötetként való használatához.
 
-* Szüksége lesz [a powershellre a Service Fabric modul vagy a](/azure/service-fabric/service-fabric-get-started) telepített [SFCTL](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) .
+* Szüksége lesz [a Powershell a Service Fabric modul](/azure/service-fabric/service-fabric-get-started) vagy [SFCTL](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) telepítve.
 
-* Ha Hyper-V tárolókat használ, a következő kódrészleteket hozzá kell adni a Azure Resource Manager-sablon (Azure-fürt) vagy a ClusterConfig. JSON (különálló fürt) ClusterManifest (helyi fürt) vagy a fabricSettings szakaszához.
+* Ha Hyper-V-tárolókat használ, a következő kódrészleteket hozzá kell adni a ClusterManifest (helyi fürt) vagy fabricSettings szakaszban az Azure Resource Manager sablon (Azure cluster) vagy ClusterConfig.json (önálló fürt).
 
-A ClusterManifest a következőt kell hozzáadnia az üzemeltetés szakaszhoz. Ebben a példában a kötet neve **sfazurefile** , és a fürtön figyelt port **19100**. Cserélje le őket a fürt megfelelő értékeire.
+A ClusterManifest,a következő kell adni a Hosting szakaszban. Ebben a példában a kötet neve **sfazurefile,** a fürtön meghallgatott port pedig **19100.** Cserélje le őket a fürt höz megfelelő értékekre.
 
 ``` xml 
 <Section Name="Hosting">
@@ -39,7 +39,7 @@ A ClusterManifest a következőt kell hozzáadnia az üzemeltetés szakaszhoz. E
 </Section>
 ```
 
-A Azure Resource Manager sablonjának fabricSettings szakaszában (az Azure-környezetek esetében) vagy a ClusterConfig. JSON fájlnál (különálló központi telepítések esetén) a következő kódrészletet kell hozzáadnia. Ismét cserélje le a kötet nevét és a portok értékeit a saját adataira.
+A fabricSettings szakaszban az Azure Resource Manager sablon (az Azure-központi telepítések) vagy clusterconfig.json (önálló üzemelő példányok esetén) a következő kódrészletet kell hozzáadni. Ismét cserélje le a kötet nevét és a portértékeket a sajátjára.
 
 ```json
 "fabricSettings": [
@@ -55,31 +55,31 @@ A Azure Resource Manager sablonjának fabricSettings szakaszában (az Azure-kör
 ]
 ```
 
-## <a name="deploy-a-sample-application-using-service-fabric-azure-files-volume-driver"></a>Minta alkalmazás üzembe helyezése Service Fabric Azure Files kötet-illesztőprogram használatával
+## <a name="deploy-a-sample-application-using-service-fabric-azure-files-volume-driver"></a>Mintaalkalmazás központi telepítése a Service Fabric Azure Files kötet-illesztőprogramjával
 
-### <a name="using-azure-resource-manager-via-the-provided-powershell-script-recommended"></a>Azure Resource Manager használata a megadott PowerShell-parancsfájl segítségével (ajánlott)
+### <a name="using-azure-resource-manager-via-the-provided-powershell-script-recommended"></a>Az Azure Resource Manager használata a megadott Powershell-parancsfájlon keresztül (ajánlott)
 
-Ha a fürt az Azure-ban alapul, javasoljuk, hogy az alkalmazások üzembe helyezéséhez használja a Azure Resource Manager alkalmazás-erőforrás modelljét a könnyű használat érdekében, és hogy segítsen a modellben az infrastruktúra mint kód fenntartásában. Ez a megközelítés nem szükséges a Azure Files kötet-illesztőprogramhoz tartozó alkalmazás verziójának nyomon követéséhez. Emellett lehetővé teszi külön Azure Resource Manager sablonok fenntartását minden támogatott operációs rendszerhez. A parancsfájl feltételezi, hogy telepíti a Azure Files alkalmazás legújabb verzióját, és paramétereket fogad az operációs rendszer típusa, a fürt előfizetési azonosítója és az erőforráscsoport számára. A szkriptet a [Service Fabric letöltési webhelyről](https://sfazfilevd.blob.core.windows.net/sfazfilevd/DeployAzureFilesVolumeDriver.zip)töltheti le. Vegye figyelembe, hogy ez automatikusan beállítja a ListenPort, amely az a port, amelyen a Azure Files kötet beépülő modul a Docker-démontól érkező kéréseket figyeli, 19100-re. A "listenPort" nevű paraméter hozzáadásával módosíthatja. Győződjön meg arról, hogy a port nem ütközik más, a fürt vagy az alkalmazásai által használt porttal.
+Ha a fürt az Azure-ban található, azt javasoljuk, hogy alkalmazásokat telepíteni az Azure Resource Manager-alkalmazás erőforrás-modell használatával a könnyű használat és az infrastruktúra karbantartása a kód felé való elmozdulás érdekében. Ez a megközelítés szükségtelenné teszi az Azure Files kötet-illesztőprogram alkalmazásverziójának nyomon követését. Azt is lehetővé teszi, hogy minden egyes támogatott operációs rendszer hez külön Azure Resource Manager-sablonok karbantartása. A parancsfájl feltételezi, hogy az Azure Files alkalmazás legújabb verzióját telepíti, és az operációs rendszer típusának, a fürt-előfizetés-azonosítónak és az erőforráscsoportnak a paramétereit veszi igénybe. A parancsfájl letölthető a [Service Fabric letöltési webhelyéről.](https://sfazfilevd.blob.core.windows.net/sfazfilevd/DeployAzureFilesVolumeDriver.zip) Vegye figyelembe, hogy ez automatikusan beállítja a ListenPort, amely az a port, amelyen az Azure Files kötet beépülő figyel a Docker démon kéréseit, 19100-ra. Módosíthatja a "listenPort" nevű paraméter hozzáadásával. Győződjön meg arról, hogy a port nem ütközik a fürt vagy az alkalmazások által használt más portokkal.
  
 
-Azure Resource Manager központi telepítési parancs a Windows rendszerhez:
+Az Azure Resource Manager központi telepítésének parancsa a Windows rendszerhez:
 ```powershell
 .\DeployAzureFilesVolumeDriver.ps1 -subscriptionId [subscriptionId] -resourceGroupName [resourceGroupName] -clusterName [clusterName] -windows
 ```
 
-A Linux rendszerhez készült Azure Resource Manager üzembe helyezési parancs:
+Az Azure Resource Manager Linuxra vonatkozó telepítési parancsa:
 ```powershell
 .\DeployAzureFilesVolumeDriver.ps1 -subscriptionId [subscriptionId] -resourceGroupName [resourceGroupName] -clusterName [clusterName] -linux
 ```
 
-Ha sikeresen futtatta a szkriptet, ugorjon az [alkalmazás konfigurálása szakaszra.](/azure/service-fabric/service-fabric-containers-volume-logging-drivers#configure-your-applications-to-use-the-volume)
+Miután sikeresen futtatta a parancsfájlt, átugorhatja az [alkalmazás konfigurálása szakaszra.](/azure/service-fabric/service-fabric-containers-volume-logging-drivers#configure-your-applications-to-use-the-volume)
 
 
-### <a name="manual-deployment-for-standalone-clusters"></a>Manuális üzembe helyezés önálló fürtökhöz
+### <a name="manual-deployment-for-standalone-clusters"></a>Önálló fürtök manuális üzembe helyezése
 
-A tárolók köteteit biztosító Service Fabric alkalmazást a [Service Fabric letöltési helyről](https://sfazfilevd.blob.core.windows.net/sfazfilevd/AzureFilesVolumePlugin.6.5.661.9590.zip)töltheti le. Az alkalmazás a fürtön a [PowerShell](./service-fabric-deploy-remove-applications.md), a [CLI](./service-fabric-application-lifecycle-sfctl.md) vagy a [FabricClient API](./service-fabric-deploy-remove-applications-fabricclient.md)-k használatával telepíthető.
+A Service Fabric alkalmazás, amely a tárolók kötetek letölthető a [Service Fabric letöltési helyről.](https://sfazfilevd.blob.core.windows.net/sfazfilevd/AzureFilesVolumePlugin.6.5.661.9590.zip) Az alkalmazás a [PowerShell](./service-fabric-deploy-remove-applications.md), [CLI](./service-fabric-application-lifecycle-sfctl.md) vagy [FabricClient API-k](./service-fabric-deploy-remove-applications-fabricclient.md)segítségével telepíthető a fürtre.
 
-1. A parancssor használatával váltson át a letöltött alkalmazáscsomag gyökérkönyvtárára.
+1. A parancssorból módosítsa a könyvtárat a letöltött alkalmazáscsomag gyökérkönyvtárára.
 
     ```powershell
     cd .\AzureFilesVolume\
@@ -89,7 +89,7 @@ A tárolók köteteit biztosító Service Fabric alkalmazást a [Service Fabric 
     cd ~/AzureFilesVolume
     ```
 
-2. Ezután másolja az alkalmazáscsomag a rendszerkép-tárolóba a [ApplicationPackagePath] és a [ImageStoreConnectionString] megfelelő értékeivel:
+2. Ezután másolja az alkalmazáscsomagot a lemezképtárolóba a megfelelő értékekkel az [ApplicationPackagePath] és a [ImageStoreConnectionString] számára:
 
     ```powershell
     Copy-ServiceFabricApplicationPackage -ApplicationPackagePath [ApplicationPackagePath] -ImageStoreConnectionString [ImageStoreConnectionString] -ApplicationPackagePathInImageStore AzureFilesVolumePlugin
@@ -100,7 +100,7 @@ A tárolók köteteit biztosító Service Fabric alkalmazást a [Service Fabric 
     sfctl application upload --path [ApplicationPackagePath] --show-progress
     ```
 
-3. Az alkalmazás típusának regisztrálása
+3. Az alkalmazástípus regisztrálása
 
     ```powershell
     Register-ServiceFabricApplicationType -ApplicationPathInImageStore AzureFilesVolumePlugin
@@ -110,7 +110,7 @@ A tárolók köteteit biztosító Service Fabric alkalmazást a [Service Fabric 
     sfctl application provision --application-type-build-path [ApplicationPackagePath]
     ```
 
-4. Hozza létre az alkalmazást, és ügyeljen arra, hogy a **ListenPort** alkalmazás paramétereinek értéke közel legyen. Ez az érték az a port, amelyen a Azure Files kötet beépülő modul a Docker-démontól érkező kéréseket figyeli. Győződjön meg arról, hogy az alkalmazás számára megadott port megfelel a ClusterManifest lévő VolumePluginPorts, és nem ütközik a fürt vagy az alkalmazások által használt többi porttal.
+4. Hozza létre az alkalmazást, különös figyelmet fordítva a **ListenPort** alkalmazás paraméter értékére. Ez az érték az a port, amelyen az Azure Files kötet beépülő modul figyeli a Docker démon tól érkező kérelmeket. Győződjön meg arról, hogy az alkalmazásnak biztosított port megegyezik a ClusterManifest VolumePluginPorts portjával, és nem ütközik a fürt vagy az alkalmazások által használt más portokkal.
 
     ```powershell
     New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.5.661.9590   -ApplicationParameter @{ListenPort='19100'}
@@ -122,12 +122,12 @@ A tárolók köteteit biztosító Service Fabric alkalmazást a [Service Fabric 
 
 > [!NOTE]
 > 
-> A Windows Server 2016 Datacenter nem támogatja az SMB-csatlakoztatások tárolóhoz való leképezését ([Ez csak a Windows Server 1709-es verziójában támogatott](/virtualization/windowscontainers/manage-containers/container-storage)). Ez a korlátozás megakadályozza a hálózati kötetek leképezését és a 1709-nál régebbi verziókban Azure Files kötet-illesztőprogramokat.
+> A Windows Server 2016 Datacenter nem támogatja az SMB-csatlakoztatások hozzárendelését a tárolókhoz[(Ez csak a Windows Server 1709-es verziójában támogatott](/virtualization/windowscontainers/manage-containers/container-storage)). Ez a megkötés megakadályozza a hálózati kötetek leképezését és az Azure Files kötet-illesztőprogramokat az 1709-nél régebbi verziókon.
 
-#### <a name="deploy-the-application-on-a-local-development-cluster"></a>Az alkalmazás üzembe helyezése helyi fejlesztési fürtön
-Kövesse a [fenti 1-3. lépést.](/azure/service-fabric/service-fabric-containers-volume-logging-drivers#manual-deployment-for-standalone-clusters)
+#### <a name="deploy-the-application-on-a-local-development-cluster"></a>Az alkalmazás központi telepítése helyi fejlesztési fürtön
+Kövesse [az](/azure/service-fabric/service-fabric-containers-volume-logging-drivers#manual-deployment-for-standalone-clusters) 1-3.
 
- A Azure Files Volume plugin alkalmazáshoz tartozó alapértelmezett szolgáltatási példányok száma-1, ami azt jelenti, hogy a fürt minden csomópontján telepítve van a szolgáltatás egy példánya. Ha azonban a Azure Files Volume beépülő modult egy helyi fejlesztési fürtön helyezi üzembe, a szolgáltatási példányok számának 1-ként kell megadnia. Ezt a **InstanceCount** Application paraméterrel teheti meg. Ezért a Azure Files Volume beépülő modul alkalmazás helyi fejlesztési fürtön való létrehozásának parancsa a következő:
+ Az Azure Files kötetbeépülő alkalmazás alapértelmezett szolgáltatáspéldányszáma -1, ami azt jelenti, hogy a fürt minden egyes csomópontjára telepített szolgáltatás példánya telepítve van. Azonban az Azure Files kötet beépülő alkalmazás helyi fejlesztési fürtön történő telepítésekor a szolgáltatáspéldányok számát 1-ként kell megadni. Ez a **InstanceCount** alkalmazás paraméteren keresztül végezhető el. Ezért az Azure Files kötetbeépülő alkalmazás helyi fejlesztési fürtön való létrehozásának parancsa a következő:
 
 ```powershell
 New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.5.661.9590  -ApplicationParameter @{ListenPort='19100';InstanceCount='1'}
@@ -137,8 +137,8 @@ New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp 
 sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.5.661.9590  --parameter '{"ListenPort": "19100","InstanceCount": "1"}'
 ```
 
-## <a name="configure-your-applications-to-use-the-volume"></a>Alkalmazások konfigurálása a kötet használatára
-A következő kódrészlet azt mutatja be, hogyan lehet megadni egy Azure Files alapú kötetet az alkalmazás alkalmazás-jegyzékfájljában. A kamat adott eleme a **kötet** címkéje:
+## <a name="configure-your-applications-to-use-the-volume"></a>Az alkalmazások konfigurálása a kötet használatára
+A következő kódrészlet bemutatja, hogyan adható meg egy Azure-fájlalapú kötet az alkalmazás jegyzékfájljában. Az adott elem érdekes a **Kötet** címke:
 
 ```xml
 ?xml version="1.0" encoding="UTF-8"?>
@@ -172,17 +172,17 @@ A következő kódrészlet azt mutatja be, hogyan lehet megadni egy Azure Files 
 </ApplicationManifest>
 ```
 
-A Azure Files kötethez tartozó beépülő modul illesztőprogramjának neve **sfazurefile**. Ez az érték az alkalmazás jegyzékfájljának **kötetcímke** elemének **illesztőprogram** -attribútumára van beállítva.
+Az Azure Files kötetbővítmény illesztőprogram-neve **sfazurefile**. Ez az érték az **alkalmazásjegyzékBen** lévő Volume tag elem **Illesztőprogram** attribútumához van beállítva.
 
-A fenti kódrészletben a **kötet** címkéjén a Azure Files Volume beépülő modulhoz a következő attribútumok szükségesek:
-- **Forrás** – ez a kötet neve. A felhasználó bármilyen nevet kiválaszthat a kötethez.
-- **Cél** – ez az attribútum az a hely, ahol a kötet a futó tárolón belül van leképezve. Így a célhely nem lehet olyan hely, amely már létezik a tárolón belül
+A **kötet** címke a kódrészlet felett, az Azure Files kötet beépülő modul megköveteli a következő attribútumokat:
+- **Forrás** - Ez a kötet neve. A felhasználó bármilyen nevet választhat a kötetéhez.
+- **Cél** – Ez az attribútum az a hely, amelyhez a kötet le van képezve a futó tárolóban. Így az úti cél nem lehet olyan hely, amely már létezik a tárolóban
 
-Ahogy a fenti kódrészletben a **DriverOption** elemek is láthatók, a Azure Files kötet beépülő modul a következő illesztőprogram-beállításokat támogatja:
-- **megosztásnév** – a tárolóhoz tartozó kötetet biztosító Azure Files fájlmegosztás neve.
-- **storageAccountName** – az Azure Files fájlmegosztást tartalmazó Azure Storage-fiók neve.
-- a Azure Files fájlmegosztást tartalmazó Azure Storage-fiók **storageAccountKey** kulcsa.
-- **storageAccountFQDN** – a Storage-fiókhoz társított tartománynév. Ha a storageAccountFQDN nincs megadva, a rendszer a tartománynevet az alapértelmezett utótag (. file. Core. Windows. net) használatával hozza létre a storageAccountName.  
+Amint az a fenti kódrészlet **DriverOption** elemeiben látható, az Azure Files kötet beépülő modul a következő illesztőprogram-beállításokat támogatja:
+- **shareName** - Az Azure Files fájlmegosztás neve, amely a tároló kötetét biztosítja.
+- **storageAccountName** – Az Azure Files fájlmegosztást tartalmazó Azure storage-fiók neve.
+- **storageAccountKey** – Access kulcs az Azure-tárfiók, amely tartalmazza az Azure Files fájlmegosztást.
+- **storageAccountFQDN** – a tárfiókhoz társított tartománynév. Ha a storageAccountFQDN nincs megadva, a tartománynév az alapértelmezett utótaggal(.file.core.windows.net) jön létre a storageAccountName értékkel.  
 
     ```xml
     - Example1: 
@@ -198,9 +198,9 @@ Ahogy a fenti kódrészletben a **DriverOption** elemek is láthatók, a Azure F
     ```
 
 ## <a name="using-your-own-volume-or-logging-driver"></a>Saját kötet vagy naplózási illesztőprogram használata
-A Service Fabric a saját egyéni [kötet](https://docs.docker.com/engine/extend/plugins_volume/) -vagy [naplózási](https://docs.docker.com/engine/admin/logging/overview/) illesztőprogramok használatát is lehetővé teszi. Ha a Docker mennyiségi/naplózási illesztőprogramja nincs telepítve a fürtön, manuálisan is telepítheti az RDP/SSH protokoll használatával. A telepítést a következő protokollokkal végezheti el egy [virtuálisgép-méretezési csoport indítási parancsfájljában](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/) vagy egy [SetupEntryPoint-parancsfájl](/azure/service-fabric/service-fabric-application-model)használatával.
+A Service Fabric lehetővé teszi a saját egyéni [kötet](https://docs.docker.com/engine/extend/plugins_volume/) vagy [naplózásillesztőprogramok](https://docs.docker.com/engine/admin/logging/overview/) használatát is. Ha a Docker kötet/naplózási illesztőprogram nincs telepítve a fürtre, manuálisan telepítheti az RDP/SSH protokollok használatával. A telepítést ezekkel a protokollokkal egy [virtuálisgép-méretezési készletes indítási parancsfájlvagy](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/) [egy SetupEntryPoint parancsfájl](/azure/service-fabric/service-fabric-application-model)segítségével hajthatja végre.
 
-Az Azure-hoz készült [Docker-kötet illesztőprogramjának telepítéséhez szükséges](https://docs.docker.com/docker-for-azure/persistent-data-volumes/) parancsfájl például a következő:
+Egy példa a parancsfájl t telepíteni a [Docker kötet-illesztőprogram az Azure-ban](https://docs.docker.com/docker-for-azure/persistent-data-volumes/) a következő:
 
 ```bash
 docker plugin install --alias azure --grant-all-permissions docker4x/cloudstor:17.09.0-ce-azure1  \
@@ -210,7 +210,7 @@ docker plugin install --alias azure --grant-all-permissions docker4x/cloudstor:1
     DEBUG=1
 ```
 
-Az alkalmazásokban a telepített kötet-vagy naplózási illesztőprogram használatához meg kell adnia a megfelelő értékeket a **kötet** és a **LogConfig** elemben az alkalmazás jegyzékfájljának **ContainerHostPolicies** területén.
+Az alkalmazásokban a telepített kötet- vagy naplózási illesztőprogram használatához meg kell **adnia** a megfelelő értékeket a Kötet és **a LogConfig** elemekben az alkalmazásjegyzék **ContainerHostPolicies** elemében.
 
 ```xml
 <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="hyperv">
@@ -227,7 +227,7 @@ Az alkalmazásokban a telepített kötet-vagy naplózási illesztőprogram haszn
 </ContainerHostPolicies>
 ```
 
-A mennyiségi beépülő modul megadásakor a Service Fabric automatikusan létrehozza a kötetet a megadott paraméterek használatával. A **kötet** elemhez tartozó **forrásoldali** címke a kötet neve, az **illesztőprogram** -címke pedig megadja a kötet-illesztőprogram beépülő modulját. A **célként** megadott címke a **forrásnak** a futó tárolón belüli leképezett helye. Így a célhely nem lehet olyan hely, amely már létezik a tárolón belül. A beállítások a **DriverOption** címke használatával adhatók meg a következő módon:
+Kötet beépülő modul megadásakor a Service Fabric automatikusan létrehozza a kötetet a megadott paraméterek használatával. A **Kötet** elem **Forráscímkéje** a kötet neve, az **Illesztőprogram-címke** pedig a kötetillesztőprogram beépülő modulját adja meg. A **célcímke** az a hely, amelyhez a **forrás** le van képezve a futó tárolóban. Így az úti cél nem lehet olyan hely, amely már létezik a tárolóban. A beállítások a **DriverOption** címkével a következőképpen adhatók meg:
 
 ```xml
 <Volume Source="myvolume1" Destination="c:\testmountlocation4" Driver="azure" IsReadOnly="true">
@@ -235,10 +235,10 @@ A mennyiségi beépülő modul megadásakor a Service Fabric automatikusan létr
 </Volume>
 ```
 
-Az alkalmazás paramétereinek használata támogatott a kötetek esetében, ahogy az előző `MyStorageVar` jegyzékfájlban látható
+Alkalmazásparaméterek támogatottak a kötetek, ahogy az előző `MyStorageVar` jegyzékkódrészlet (keressen egy példa használata).
 
-Ha meg van adva egy Docker-napló illesztőprogramja, az ügynököket (vagy tárolókat) kell telepítenie a fürtben lévő naplók kezelésére. A **DriverOption** címke segítségével megadhatja a napló illesztőprogramjának beállításait.
+Ha meg van adva egy Docker-napló-illesztőprogram, telepítenie kell az ügynököket (vagy tárolókat) a fürtben lévő naplók kezeléséhez. A **DriverOption** címke segítségével megadhatja a naplóillesztő beállításait.
 
-## <a name="next-steps"></a>Következő lépések
-* Ha meg szeretné tekinteni a tárolók mintáit, beleértve a kötet illesztőprogramját, látogasson el a [Service Fabric Container Samples](https://github.com/Azure-Samples/service-fabric-containers)
-* Ha tárolókat szeretne üzembe helyezni egy Service Fabric fürtön, tekintse [meg a tároló üzembe helyezése a Service Fabricon](service-fabric-deploy-container.md) című cikket.
+## <a name="next-steps"></a>További lépések
+* A tárolóminták megtekintéséhez, beleértve a kötet-illesztőprogramot is, látogasson el a [Service Fabric-tárolómintákra](https://github.com/Azure-Samples/service-fabric-containers)
+* Tárolók üzembe helyezéséhez egy Service Fabric-fürtre, olvassa el a cikk [egy tároló üzembe helyezése a Service Fabric](service-fabric-deploy-container.md)

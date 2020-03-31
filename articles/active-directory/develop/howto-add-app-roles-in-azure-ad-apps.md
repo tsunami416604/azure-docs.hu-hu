@@ -1,7 +1,7 @@
 ---
-title: Alkalmazás-Szerepkörök hozzáadása és jogkivonatból való beszerzése | Azure
+title: Alkalmazásszerepkörök hozzáadása és lekérés ük tokenből | Azure
 titleSuffix: Microsoft identity platform
-description: Megtudhatja, hogyan adhat hozzá alkalmazás-szerepköröket egy Azure Active Directory regisztrált alkalmazásban, hogyan rendelhet hozzá felhasználókat és csoportokat ezekhez a szerepkörökhöz, és hogyan fogadhatja azokat a jogkivonatban található `roles` jogcímben.
+description: Megtudhatja, hogyan adhat hozzá alkalmazásszerepköröket az Azure Active Directoryban regisztrált alkalmazásokban, hogyan rendelhet felhasználókat és csoportokat ezekhez a szerepkörökhöz, és hogyan kaphatja meg őket a `roles` jogkivonatban.
 services: active-directory
 documentationcenter: ''
 author: kkrishna
@@ -15,47 +15,47 @@ ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 3a911db36fd03ebcb5e0fc53d4d7f36d68648249
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78399087"
 ---
-# <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Útmutató: alkalmazás-Szerepkörök hozzáadása az alkalmazáshoz és fogadása a jogkivonatban
+# <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Útmutató: Alkalmazásszerepkörök hozzáadása az alkalmazásban, és a jogkivonatban való fogadásuk
 
-A szerepköralapú hozzáférés-vezérlés (RBAC) egy népszerű mechanizmus az alkalmazások engedélyezésének kényszerítéséhez. A RBAC használatakor a rendszergazda engedélyeket biztosít a szerepkörökhöz, és nem az egyes felhasználókhoz vagy csoportokhoz. A rendszergazda ezután szerepköröket rendelhet a különböző felhasználókhoz és csoportokhoz annak szabályozásához, hogy ki férhet hozzá a tartalomhoz és a funkciókhoz.
+A szerepköralapú hozzáférés-vezérlés (RBAC) egy népszerű mechanizmus az alkalmazások ban az engedélyezés érvényesítésére. Az RBAC használatakor a rendszergazda engedélyeket ad a szerepköröknek, és nem az egyes felhasználóknak vagy csoportoknak. A rendszergazda ezután szerepköröket rendelhet különböző felhasználókhoz és csoportokhoz annak szabályozásához, hogy ki milyen tartalmakhoz és funkciókhoz férhozzá.
 
-Az RBAC és a szerepkör-jogcímek használatával a fejlesztők biztonságosan kikényszerítik az alkalmazásokban való engedélyezést, és csak kevés erőfeszítéssel rendelkeznek.
+Az RBAC alkalmazásszerepkörökkel és szerepkörjogcímekkel való használatával a fejlesztők biztonságosan kényszeríthetik az engedélyezést az alkalmazásaikban, kevés erőfeszítéssel a részükről.
 
-Egy másik módszer az Azure AD-csoportok és a csoportos jogcímek használata a [WebApp-GroupClaims-DotNet](https://github.com/Azure-Samples/WebApp-GroupClaims-DotNet)-ben látható módon. Az Azure AD-csoportok és az alkalmazás-szerepkörök semmiképpen nem zárják ki egymást; a használatuk párhuzamosan is használható, ami még finomabb hozzáférés-vezérlést is biztosít.
+Egy másik megközelítés az Azure AD-csoportok és csoportjogcímek használata, ahogy az a [WebApp-GroupClaims-DotNet-ben látható.](https://github.com/Azure-Samples/WebApp-GroupClaims-DotNet) Az Azure AD-csoportok és alkalmazási szerepkörök egyáltalán nem zárják ki egymást; ezek lehet használni párhuzamosan, hogy még finomabb szemcsés hozzáférés-szabályozás.
 
 ## <a name="declare-roles-for-an-application"></a>Szerepkörök deklarálása egy alkalmazáshoz
 
-Ezek az alkalmazási szerepkörök az alkalmazás regisztrációs jegyzékfájljának [Azure Portal](https://portal.azure.com) vannak meghatározva.  Amikor egy felhasználó bejelentkezik az alkalmazásba, az Azure AD egy `roles` jogcímet bocsát ki minden olyan szerepkörhöz, amelyet a felhasználó egyénileg adott meg a felhasználó és a csoporttagság alapján.  A felhasználók és csoportok szerepkörökhöz való hozzárendelése a portál felhasználói felületén vagy programozott módon, [Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/azuread-identity-access-management-concept-overview)használatával végezhető el.
+Ezek az alkalmazásszerepkörök az [Azure Portalon](https://portal.azure.com) vannak definiálva az alkalmazás regisztrációs jegyzékében.  Amikor egy felhasználó bejelentkezik az alkalmazásba, `roles` az Azure AD jogcímet ad ki minden egyes szerepkörhöz, amelyet a felhasználó egyénileg kapott a felhasználónak és a csoporttagságból.  A felhasználók és csoportok szerepkörökhöz való hozzárendelése a portál felhasználói felületén keresztül, vagy programozott módon a [Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/azuread-identity-access-management-concept-overview)segítségével végezhető el.
 
-### <a name="declare-app-roles-using-azure-portal"></a>Alkalmazás szerepköreinek deklarálása Azure Portal használatával
+### <a name="declare-app-roles-using-azure-portal"></a>Alkalmazásszerepkörök deklarálása az Azure Portal használatával
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
-1. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán.
-1. A **Kedvencek** vagy az **összes könyvtár** listában válassza ki azt a Active Directory bérlőt, ahová regisztrálni kívánja az alkalmazást.
-1. A Azure Portal keresse meg és válassza a **Azure Active Directory**lehetőséget.
-1. Az **Azure Active Directory** ablaktáblán válassza a **Alkalmazásregisztrációk** lehetőséget az alkalmazások listájának megtekintéséhez.
-1. Válassza ki azt az alkalmazást, amelyben az alkalmazás-szerepköröket meg szeretné adni. Ezután válassza a **jegyzékfájl**lehetőséget.
-1. Szerkessze az alkalmazás-jegyzékfájlt úgy, hogy megkeresi a `appRoles`-beállítást, és hozzáadja az összes alkalmazás-szerepkört.
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. A portál eszköztárán válassza a **Könyvtár + Előfizetés** ikont.
+1. A **Kedvencek** vagy az **Összes könyvtár** listában válassza ki azt az Active Directory-bérlőt, ahol regisztrálni szeretné az alkalmazást.
+1. Az Azure Portalon keresse meg és válassza az **Azure Active Directoryt.**
+1. Az **Azure Active Directory** ablaktáblában válassza **az alkalmazásregisztrációk** az összes alkalmazás listájának megtekintéséhez.
+1. Válassza ki azt az alkalmazást, amelyben alkalmazásszerepköröket szeretne definiálni. Ezután válassza **a Jegyzékfájl**lehetőséget.
+1. Az alkalmazásjegyzék szerkesztéséhez tegye `appRoles` a beállítást, és adja hozzá az összes alkalmazásszerepkört.
 
      > [!NOTE]
-     > A jegyzékfájlban szereplő összes alkalmazás-szerepkör definíciójának eltérő érvényes GUID-azonosítóval kell rendelkeznie az `id` tulajdonság jegyzékfájljának kontextusában.
+     > A jegyzékfájlban szereplő minden egyes alkalmazásszerepkör-definíciónak más érvényes `id` GUID azonosítóval kell rendelkeznie a tulajdonság jegyzékfájljának környezetében.
      >
-     > Az egyes alkalmazás-szerepkörök definíciójának `value` tulajdonságának pontosan egyeznie kell az alkalmazás kódjában használt karakterláncokkal. A `value` tulajdonság nem tartalmazhat szóközöket. Ha igen, hibaüzenetet kap a jegyzékfájl mentésekor.
+     > Az `value` egyes alkalmazásszerepkör-definíciók tulajdonságának pontosan meg kell egyeznie az alkalmazás ban használt karakterláncokkal. A `value` tulajdonság nem tartalmazhat szóközt. Ha igen, hibaüzenetet kap, amikor menti a jegyzékfájlt.
 
-1. Mentse a jegyzékfájlt.
+1. Mentse az utaslistát.
 
 ### <a name="examples"></a>Példák
 
-A következő példában a `users`hoz hozzárendelhető `appRoles` láthatók.
+A következő példa `appRoles` a hoz `users`rendelhető példát mutatja be.
 
 > [!NOTE]
->A `id` egyedi GUID-azonosítónak kell lennie.
+>A `id` kell egy egyedi GUID.
 
 ```Json
 "appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",
@@ -77,7 +77,7 @@ A következő példában a `users`hoz hozzárendelhető `appRoles` láthatók.
 > [!NOTE]
 >A `displayName` nem tartalmazhat szóközt.
 
-Megadhatja az alkalmazáshoz tartozó szerepköröket, `users`, `applications`vagy mindkettőt. Ha a `applications`elérhetővé válik, az alkalmazás szerepkörei a **szükséges engedélyek** panelen jelennek meg alkalmazási engedélyekként. Az alábbi példa egy `Application`re irányuló alkalmazás-szerepkört mutat be.
+Megadhatja a célként `users` `applications`megcélozandó alkalmazásszerepköröket, vagy mindkettőt. Ha elérhető `applications`a, az alkalmazásszerepkörök alkalmazásengedélyekként jelennek meg a **Szükséges engedélyek** panelen. A következő példa egy alkalmazásszerepkört mutat be, amely a `Application`számára irányul.
 
 ```Json
 "appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",
@@ -96,35 +96,35 @@ Megadhatja az alkalmazáshoz tartozó szerepköröket, `users`, `applications`va
 "availableToOtherTenants": false,
 ```
 
-A definiált szerepkörök száma hatással van az alkalmazás jegyzékfájljának korlátaira. A [jegyzékfájlok korlátai](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-limits) oldalon részletesen ismertetjük őket.
+A definiált szerepkörök száma hatással van az alkalmazásjegyzék korlátaira. Ezeket részletesen megvitatták a [jegyzékkorlátok](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-limits) oldalon.
 
-### <a name="assign-users-and-groups-to-roles"></a>Felhasználók és csoportok társítása szerepkörökhöz
+### <a name="assign-users-and-groups-to-roles"></a>Felhasználók és csoportok hozzárendelése szerepkörökhöz
 
-Miután hozzáadta az alkalmazás-szerepköröket az alkalmazáshoz, hozzárendelheti a felhasználókat és csoportokat ezekhez a szerepkörökhöz.
+Miután hozzáadott alkalmazásszerepköröket az alkalmazásban, felhasználókat és csoportokat rendelhet ezekhez a szerepkörökhöz.
 
-1. A **Azure Active Directory** ablaktáblán válassza a **vállalati alkalmazások** lehetőséget a **Azure Active Directory** bal oldali navigációs menüjéből.
-1. A **minden alkalmazás** elemre kattintva megtekintheti az összes alkalmazás listáját.
+1. Az **Azure Active Directory** ablaktáblán válassza **a vállalati alkalmazások** az Azure Active **Directory** bal oldali navigációs menüben.
+1. Válassza **a Minden alkalmazás** lehetőséget az összes alkalmazás listájának megtekintéséhez.
 
-     Ha nem látja a használni kívánt alkalmazást, használja a **minden alkalmazás** lista tetején található különféle szűrőket a lista korlátozásához, vagy görgessen le a listából az alkalmazás megkereséséhez.
+     Ha nem látja a kívánt alkalmazást, akkor a **Minden alkalmazás** lista tetején található különböző szűrőkkel korlátozhatja a listát, vagy görgessen le a listáról az alkalmazás megkereséséhez.
 
-1. Válassza ki azt az alkalmazást, amelyben hozzá kívánja rendelni a felhasználókat vagy a biztonsági csoportokat a szerepkörökhöz.
-1. Válassza ki a **felhasználók és csoportok** panelt az alkalmazás bal oldali navigációs menüjében.
-1. A **felhasználók és csoportok** lista tetején válassza a **felhasználó hozzáadása** gombot a **hozzárendelés hozzáadása** ablaktábla megnyitásához.
-1. Válassza ki a **felhasználók és csoportok** választót a **hozzárendelés hozzáadása** panelen.
+1. Jelölje ki azt az alkalmazást, amelyben felhasználókat vagy biztonsági csoportot szeretne hozzárendelni a szerepkörökhöz.
+1. Válassza a **Felhasználók és csoportok** ablaktáblát az alkalmazás bal oldali navigációs menüjében.
+1. A **Felhasználók és csoportok** lista tetején a Felhasználó **hozzáadása** gombra kattintva nyissa meg a **Hozzárendelés hozzáadása** ablaktáblát.
+1. Válassza ki a **Felhasználók és csoportok** választót a Hozzárendelés **hozzáadása** ablaktáblán.
 
-     A felhasználók és a biztonsági csoportok listája a szövegmezővel együtt jelenik meg egy adott felhasználó vagy csoport kereséséhez és megkereséséhez. Ezen a képernyőn egyszerre több felhasználót és csoportot is kijelölhet.
+     A felhasználók és a biztonsági csoportok listája megjelenik egy szövegdobozzal együtt egy adott felhasználó vagy csoport kereséséhez és megkereséséhez. Ez a képernyő lehetővé teszi, hogy egyszerre több felhasználót és csoportot jelöljön ki.
 
-1. Ha elkészült a felhasználók és a csoportok kiválasztásával, kattintson a lenti **kiválasztás** gombra a következő részre való áttéréshez.
-1. Válassza a **szerepkör** kiválasztása lehetőséget a **hozzárendelés hozzáadása** ablaktáblán. Megjelenik az alkalmazás jegyzékfájljában korábban megadott összes szerepkör.
-1. Válasszon egy szerepkört, és kattintson a **kiválasztás** gombra.
-1. A felhasználók és csoportok alkalmazásban való hozzárendelésének befejezéséhez nyomja le az alján található **hozzárendelés** gombot.
-1. Győződjön meg arról, hogy a hozzáadott felhasználók és csoportok megjelennek a frissített **felhasználók és csoportok** listában.
+1. Miután végzett a felhasználók és csoportok kijelölése, nyomja meg a **Kijelölés** gombot az alsó lépés a következő részre.
+1. Válassza a **Szerepkör kiválasztása** választógombot a **Hozzárendelés hozzáadása** ablaktáblán. Az alkalmazásjegyzékkorábbi, korábban deklarált szerepkörök megjelennek.
+1. Válasszon ki egy szerepkört, és nyomja meg a **Kijelölés** gombot.
+1. Az alsó **rész Hozzárendelés** gombjával befejezve a felhasználók és csoportok hozzárendelését az alkalmazáshoz.
+1. Ellenőrizze, hogy a hozzáadott felhasználók és csoportok megjelennek-e a frissített **Felhasználók és csoportok** listában.
 
 ## <a name="more-information"></a>További információ
 
-- [Engedélyezés hozzáadása az alkalmazás szerepköreinek & a szerepkörök jogcímeinek használata egy ASP.NET Core webalkalmazáshoz](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
-- [Biztonsági csoportok és alkalmazás-szerepkörök használata az alkalmazásokban (videó)](https://www.youtube.com/watch?v=V8VUPixLSiM)
-- [Azure Active Directory, a Group jogcímek és az alkalmazás szerepköreivel](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
-- [Azure Active Directory alkalmazás jegyzékfájlja](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)
-- [HRE hozzáférési jogkivonatok](access-tokens.md)
-- [HRE `id_tokens`](id-tokens.md)
+- [Engedélyezés hozzáadása alkalmazásszerepkörök kel & szerepkörjogcímek egy ASP.NET Core webalkalmazáshoz](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
+- [Biztonsági csoportok és alkalmazásszerepkörök használata az alkalmazásokban (videó)](https://www.youtube.com/watch?v=V8VUPixLSiM)
+- [Azure Active Directory, most antól csoportjogcímekkel és alkalmazásszerepkörökkel](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
+- [Az Azure Active Directory alkalmazás jegyzékfájlja](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)
+- [AAD Access-tokenek](access-tokens.md)
+- [AAD között`id_tokens`](id-tokens.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: A JIRA Kantega SSO-val az Azure Active Directory-integráció |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a JIRA Kantega SSO között.
+title: 'Oktatóanyag: Az Azure Active Directory integrációja a Kantega SSO for JIRA-val | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a Kantega SSO között a JIRA számára.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,135 +17,135 @@ ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e97a66a1b21b46649a1206eb522c180e84a0a0d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67099155"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-jira"></a>Oktatóanyag: A JIRA Kantega SSO-val az Azure Active Directory-integráció
+# <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-jira"></a>Oktatóanyag: Az Azure Active Directory integrációja a Kantega SSO for JIRA szolgáltatással
 
-Ebben az oktatóanyagban elsajátíthatja a JIRA Kantega SSO integrálása az Azure Active Directory (Azure AD).
-A JIRA Kantega SSO integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a Kantega SSO for JIRA szolgáltatást az Azure Active Directoryval (Azure AD).
+A Kantega SSO integrálása a JIRA-hoz az Azure AD-vel a következő előnyöket nyújtja:
 
-* Szabályozhatja, ki férhet hozzá Kantega SSO JIRA az Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve Kantega SSO a JIRA (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Szabályozhatja az Azure AD-ben, aki rendelkezik hozzáféréssel a Kantega SSO jira.
+* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve kantega sso jira (single sign-on) az Azure AD-fiókok.
+* Fiókjait egyetlen központi helyen kezelheti – az Azure Portalon.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha további részleteket szeretne megtudni az SaaS-alkalmazások Azure AD-vel való integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása a JIRA Kantega SSO-val, a következőkre van szükség:
+Az Azure AD-integráció konfigurálásához a Kantega SSO-val a JIRA számára a következő elemekre van szükség:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
-* A JIRA egyszeri bejelentkezés Kantega SSO engedélyezése előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [ingyenes fiókot](https://azure.microsoft.com/free/) kaphat
+* Kantega SSO a JIRA egyszeri bejelentkezéses előfizetéséhez
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben.
 
-* A JIRA támogatja Kantega SSO **SP és IDP** által kezdeményezett egyszeri bejelentkezés
+* A Kantega SSO for JIRA támogatja az **SP-t és az IDP** által kezdeményezett SSO-t
 
-## <a name="adding-kantega-sso-for-jira-from-the-gallery"></a>A JIRA Kantega SSO hozzáadása a katalógusból
+## <a name="adding-kantega-sso-for-jira-from-the-gallery"></a>Kantega SSO hozzáadása a JIRA-hoz a galériából
 
-Az Azure AD-be a JIRA Kantega SSO-integráció konfigurálásához, hozzá kell Kantega SSO a JIRA a galériából a felügyelt SaaS-alkalmazások listájára.
+A Kantega SSO in-JIRA Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Kantega SSO-t a JIRA-hoz a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**A JIRA Kantega SSO hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+**A KULTA SSO hozzáadásához a GALÉRIÁból hajtsa végre a következő lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen kattintson az **Azure Active Directory** ikonjára.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![Az Azure Active Directory gombja](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+2. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza a **Minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+3. Új alkalmazás hozzáadásához kattintson az **Új alkalmazás** gombra a párbeszéd ablak tetején.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![Az Új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Kantega SSO a JIRA**, jelölje be **Kantega SSO a JIRA** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A keresőmezőbe írja be a **Kantega SSO for JIRA kifejezést,** válassza **a Kantega SSO for JIRA lehetőséget** az eredménypanelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-    ![A JIRA az eredménylistában Kantega SSO](common/search-new-app.png)
+    ![Kantega SSO a JIRA számára az eredménylistában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés Kantega SSO-val JIRA alapján nevű tesztfelhasználó **Britta Simon**.
-Egyszeri bejelentkezés működjön, az Azure AD-felhasználót és a kapcsolódó felhasználó Kantega SSO a JIRA hivatkozás kapcsolata kell hozható létre.
+Ebben a szakaszban konfigurálja és teszteli az Azure AD egyszeri bejelentkezését a Kantega SSO-val a JIRA-hoz egy **Britta Simon**nevű tesztfelhasználó alapján.
+Egyszeri bejelentkezés a munka, egy Azure AD-felhasználó és a kapcsolódó felhasználó kantegai SSO a JIRA kell létrehozni közötti kapcsolat.
 
-Az Azure AD egyszeri bejelentkezés a JIRA Kantega SSO-val tesztelése és konfigurálása, kell hajtsa végre a következő építőelemeket:
+Konfigurálása és tesztelése az Azure AD egyszeri bejelentkezés kantega SSO a JIRA, a következő építőelemeket kell végrehajtania:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Kantega egyszeri bejelentkezést a JIRA egyszeri bejelentkezés](#configure-kantega-sso-for-jira-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Kantega egyszeri bejelentkezés létrehozása JIRA tesztfelhasználó](#create-kantega-sso-for-jira-test-user)**  – Kantega egyszeri Bejelentkezést a felhasználó Azure ad-ben reprezentációja kapcsolódó JIRA-megfelelője a Britta Simon van.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Konfigurálja az Azure AD egyszeri bejelentkezést](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. **[Konfigurálja a Kantega SSO-t a JIRA Single Sign-On-hoz](#configure-kantega-sso-for-jira-single-sign-on)** - az egyszeri bejelentkezési beállítások konfigurálásához az alkalmazás oldalon.
+3. **[Hozzon létre egy Azure AD-tesztfelhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének teszteléséhez Britta Simonnal.
+4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi Britta Simon azure AD egyszeri bejelentkezés.
+5. **[Hozzon létre Kantega SSO jira teszt felhasználó](#create-kantega-sso-for-jira-test-user)** - egy megfelelője Britta Simon Kantega SSO a JIRA, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon.
 
-Az Azure AD egyszeri bejelentkezés konfigurálásához a JIRA Kantega SSO-val, hajtsa végre az alábbi lépéseket:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához a Kantega SSO-val a JIRA számára hajtsa végre a következő lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **Kantega SSO a JIRA** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
+1. Az [Azure Portalon](https://portal.azure.com/)a **Kantega SSO for JIRA** alkalmazásintegrációs lapon válassza **az Egyszeri bejelentkezés**lehetőséget.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+    ![Egyszeri bejelentkezési kapcsolat konfigurálása](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+2. Az **Egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza **az SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezésválasztó mód](common/select-saml-option.png)
 
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
+3. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson a **Szerkesztés** ikonra az **Egyszerű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, hajtsa végre az alábbi lépéseket:
+4. Az **Egyszerű SAML-konfiguráció** szakaszban, ha az alkalmazást **IDP** által kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![JIRA-tartomány és URL-címeket egyetlen bejelentkezési információk Kantega SSO](common/idp-intiated.png)
+    ![Kantega SSO jira domainhez és URL-ek egyszeri bejelentkezési információkhoz](common/idp-intiated.png)
 
-    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    a. Az **Azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
-5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
+5. Kattintson **a További URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** által kezdeményezett módban kívánja konfigurálni:
 
-    ![JIRA-tartomány és URL-címeket egyetlen bejelentkezési információk Kantega SSO](common/metadata-upload-additional-signon.png)
+    ![Kantega SSO jira domainhez és URL-ek egyszeri bejelentkezési információkhoz](common/metadata-upload-additional-signon.png)
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
+    A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Frissítse a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-ezeket az értékeket. Ezek az értékek fogadásának Jira beépülő modul, az oktatóanyag későbbi részében ismertetett konfigurálása során.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Ezek az értékek a Jira plugin konfigurációja során érkeznek, amelyet később a bemutató ban ismertetünk.
 
-6. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+6. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány csoportjában** kattintson a **Letöltés** gombra, ha letöltheti az **összevonási metaadat-XML-t** a megadott beállításokból a követelménynek megfelelően, és mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
+    ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-7. Az a **be Kantega egyszeri Bejelentkezést a JIRA** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+7. A **Set up Kantega SSO for JIRA (Kantega SSO for JIRA)** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény nek megfelelően.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
-    b. Azure AD-azonosító
+    b. Azure Hirdetés-azonosító
 
-    c. Kijelentkezési URL
+    c. Kijelentkezés URL-címe
 
-### <a name="configure-kantega-sso-for-jira-single-sign-on"></a>JIRA egyszeri bejelentkezésre Kantega SSO konfigurálása
+### <a name="configure-kantega-sso-for-jira-single-sign-on"></a>Kantega SSO konfigurálása JIRA egyszeri bejelentkezéshez
 
-1. Egy másik böngészőablakban a jira Szolgáltatásba való bejelentkezés a helyszíni kiszolgálón rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a JIRA helyszíni kiszolgálójára rendszergazdaként.
 
-1. Vigye a mutatót a fogaskerék alakú ikonjára, majd kattintson a **bővítmények**.
+1. Mutasson a fogaskerékre, és kattintson **a bővítményekre.**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforjira-tutorial/addon1.png)
 
-1. A bővítmények lapon szakasz alatt kattintson **új bővítmények keresése**. Keresés **Kantega SSO a JIRA (SAML & Kerberos)** kattintson **telepítése** gombra az új SAML beépülő modul telepítéséhez.
+1. A Bővítmények lapcsoportban kattintson **az Új bővítmények keresése gombra.** Keressen **a Kantega SSO-ban jira (SAML & Kerberos)** elemre, és kattintson a **Telepítés** gombra az új SAML beépülő modul telepítéséhez.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforjira-tutorial/addon2.png)
 
-1. A beépülő modul telepítése elindul.
+1. A plugin telepítés elindul.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforjira-tutorial/addon3.png)
 
@@ -157,158 +157,158 @@ Az Azure AD egyszeri bejelentkezés konfigurálásához a JIRA Kantega SSO-val, 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforjira-tutorial/addon34.png)
     
-1. Új beépülő modul részen **INTEGRÁCIÓK**. Kattintson a **konfigurálása** a új beépülő modul konfigurálásához.
+1. Új plugin alatt felsorolt **integrációk**. Az új bővítmény konfigurálásához kattintson a **Konfigurálás** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforjira-tutorial/addon35.png)
 
-1. Az a **SAML** szakaszban. Válassza ki **Azure Active Directory (Azure AD)** származó a **Hozzáadás identitásszolgáltató** legördülő listából.
+1. Az **SAML** szakaszban. Válassza ki az **Azure Active Directory (Azure AD)** az **identitásszolgáltató hozzáadása** legördülő.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforjira-tutorial/addon4.png)
 
-1. Válassza ki az előfizetés szintjén, **alapszintű**.
+1. Válassza ki az előfizetési szintet **alapszintűként.**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforjira-tutorial/addon5.png)       
 
-1. Az a **alkalmazás tulajdonságai** szakaszban, hajtsa végre a következő lépéseket: 
+1. Az **Alkalmazás tulajdonságai** szakaszban hajtsa végre az alábbi lépéseket: 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforjira-tutorial/addon6.png)
 
-    a. Másolás a **Alkalmazásazonosító URI-t** értékét, és használja azt **azonosítóját, a válasz URL-cím és a bejelentkezési URL-** a a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    a. Másolja az **Alkalmazásazonosító URI-értékét,** és használja **azonosítóként, válasz URL-címként és bejelentkezési URL-címként** az Azure Portal **alapszintű SAML-konfigurációja** szakaszban.
 
-    b. Kattintson a **tovább**.
+    b. Kattintson a **Tovább** gombra.
 
-1. Az a **metaadatok importálása** szakaszban, hajtsa végre a következő lépéseket: 
+1. A **Metaadatok importálása** szakaszban hajtsa végre az alábbi lépéseket: 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforjira-tutorial/addon7.png)
 
-    a. Válassza ki **metaadatait tartalmazó fájl a számítógépen**, és az Azure Portalról letöltött feltöltési metaadatait tartalmazó fájl.
+    a. Válassza a **Metaadat-fájlt a számítógépen,** és töltse fel a metaadatfájlt, amelyet az Azure Portalról töltött le.
 
-    b. Kattintson a **tovább**.
+    b. Kattintson a **Tovább** gombra.
 
-1. Az a **nevét és az egyszeri bejelentkezés helyét** szakaszban, hajtsa végre a következő lépéseket:
+1. A Név és az **SSO hely** szakaszában hajtsa végre a következő lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforjira-tutorial/addon8.png)
 
-    a. Adja hozzá az identitásszolgáltató nevét **identitásszolgáltató neve** (például: az Azure AD) szövegmezőbe.
+    a. Adja hozzá az identitásszolgáltató nevét az **identitásszolgáltató nevének** szövegmezőjében (például Az Azure AD).
 
-    b. Kattintson a **tovább**.
+    b. Kattintson a **Tovább** gombra.
 
-1. Ellenőrizze az aláíró tanúsítványt, és kattintson a **tovább**.
+1. Ellenőrizze az aláíró tanúsítványt, és kattintson a **Tovább**gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforjira-tutorial/addon9.png)
 
-1. Az a **JIRA felhasználói fiókok** szakaszban, hajtsa végre a következő lépéseket:
+1. A **JIRA felhasználói fiókok** szakaszban hajtsa végre a következő lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforjira-tutorial/addon10.png)
 
-    a. Válassza ki **felhasználók létrehozása a JIRA a belső könyvtár szükség esetén** , és adja meg a felhasználók számára a megfelelő nevet a csoport (lehet több nem. a vesszővel elválasztott csoportok).
+    a. Válassza **a Felhasználók létrehozása a JIRA belső könyvtárában lehetőséget, ha szükséges,** és adja meg a csoport megfelelő nevét a felhasználók számára (többszörös nem is lehet. vesszővel elválasztott csoportok száma).
 
-    b. Kattintson a **tovább**.
+    b. Kattintson a **Tovább** gombra.
 
-1. Kattintson a **Befejezés**gombra.
+1. Kattintson a **Befejezés** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforjira-tutorial/addon11.png)
 
-1. Az a **ismert tartományok az Azure ad** szakaszban, hajtsa végre a következő lépéseket:
+1. Az **Azure AD ismert tartományai** szakaszban hajtsa végre a következő lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/kantegassoforjira-tutorial/addon12.png)
 
-    a. Válassza ki **tartományok ismert** az oldal bal oldali panelen.
+    a. Válassza az **Ismert tartományok lehetőséget** a lap bal oldali paneljén.
 
-    b. Adja meg a tartomány nevét a **tartományok ismert** szövegmezőbe.
+    b. Írja be a tartománynevet az **Ismert tartományok** mezőbe.
 
-    c. Kattintson a **Save** (Mentés) gombra.
+    c. Kattintson a **Mentés** gombra.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalon Britta Simon.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. Az Azure Portalon a bal oldali ablaktáblában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd az **Összes felhasználó**lehetőséget.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+    ![A "Felhasználók és csoportok" és a "Minden felhasználó" linkek](common/users.png)
 
-2. Válassza ki **új felhasználó** a képernyő tetején.
+2. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
 
     ![Új felhasználó gomb](common/new-user.png)
 
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
+3. A Felhasználó tulajdonságokban hajtsa végre a következő lépéseket.
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+    ![A Felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    a. A **Név** mezőbe írja be **a BrittaSimon**értéket.
   
-    b. Az a **felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`. Például: BrittaSimon@contoso.com
+    b. A **Felhasználónév** mező `brittasimon@yourcompanydomain.extension`típusa mezőben. Például: BrittaSimon@contoso.com
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    c. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson **a Létrehozás gombra.**
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés a JIRA Kantega SSO Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban engedélyezi Britta Simon azure egyszeri bejelentkezés használatával a Kantega SSO a JIRA.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Kantega SSO a JIRA**.
+1. Az Azure portalon válassza az **Enterprise Applications**lehetőséget, válassza az **Összes alkalmazás**lehetőséget, majd válassza **a Kantega SSO for JIRA**lehetőséget.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **Kantega SSO a JIRA**.
+2. Az alkalmazások listájában válassza a **Kantega SSO for JIRA**lehetőséget.
 
-    ![A Kantega egyszeri bejelentkezés az alkalmazásainak listájában JIRA-hivatkozás](common/all-applications.png)
+    ![A Kantega SSO for JIRA link az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+3. A bal oldali menüben válassza a **Felhasználók és csoportok**lehetőséget.
 
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+    ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Kattintson a **Felhasználó hozzáadása** gombra, majd a **Hozzárendelés hozzáadása** **párbeszédpanelen** válassza a Felhasználók és csoportok lehetőséget.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+    ![A Hozzárendelés hozzáadása ablaktábla](common/add-assign-user.png)
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+5. A **Felhasználók és csoportok** párbeszédpanelen válassza **a Britta Simon** elemet a Felhasználók listában, majd kattintson a kijelölés gombra a képernyő alján. **Select**
 
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+6. Ha az SAML-helyességben szerepkörértéket vár, akkor a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó megfelelő szerepkörét a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+7. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
 
-### <a name="create-kantega-sso-for-jira-test-user"></a>Kantega egyszeri bejelentkezés létrehozása JIRA tesztfelhasználó számára
+### <a name="create-kantega-sso-for-jira-test-user"></a>Hozzon létre Kantega SSO a JIRA teszt felhasználó
 
-Ahhoz, hogy az Azure AD-felhasználók jira Szolgáltatásba való bejelentkezéshez, akkor ki kell építeni JIRA be. JIRA Kantega egyszeri Bejelentkezést a kiépítés manuális feladat.
+Ahhoz, hogy az Azure AD-felhasználók bejelentkezhessenek a JIRA-ba, ki kell építeni őket a JIRA-ba. A Kantega SSO a JIRA kiépítése manuális feladat.
 
-**Üzembe helyez egy felhasználói fiókot, hajtsa végre az alábbi lépéseket:**
+**Felhasználói fiók kiépítéséhez hajtsa végre az alábbi lépéseket:**
 
-1. Jelentkezzen be rendszergazdaként a JIRA helyileg működtetett kiszolgálón.
+1. Jelentkezzen be a JIRA helyszíni kiszolgálójára rendszergazdaként.
 
-1. Vigye a mutatót a fogaskerék alakú ikonjára, majd kattintson a **felhasználókezelés**.
+1. Mutasson a fogaskerékre, és kattintson a **Felhasználókezelés parancsra.**
 
     ![Alkalmazott hozzáadása](./media/kantegassoforjira-tutorial/user1.png) 
 
-1. A **felhasználókezelés** szakasz lapra, majd **felhasználó létrehozása**.
+1. A **Felhasználókezelés** lap csoportban kattintson a **Felhasználó létrehozása gombra.**
 
     ![Alkalmazott hozzáadása](./media/kantegassoforjira-tutorial/user2.png) 
 
-1. Az a **"Új felhasználó létrehozása"** párbeszédpanel lapon, a következő lépésekkel:
+1. Az **"Új felhasználó létrehozása"** párbeszédpanelen hajtsa végre a következő lépéseket:
 
     ![Alkalmazott hozzáadása](./media/kantegassoforjira-tutorial/user3.png) 
 
-    a. Az a **E-mail-cím** szövegmezőbe írja be az e-mail-cím, felhasználó, például Brittasimon@contoso.com.
+    a. Az **E-mail cím** mezőbe írja be Brittasimon@contoso.coma felhasználó e-mail címét, például .
 
-    b. Az a **teljes fájlvisszaállítási név** szövegmezőbe írja be a felhasználó például Britta Simon teljes neve.
+    b. A **Teljes név** mezőbe írja be a felhasználó teljes nevét, például Britta Simon.
 
-    c. Az a **felhasználónév** szövegmezőbe írja be az e-mailt, felhasználó, például Brittasimon@contoso.com.
+    c. A **Felhasználónév** mezőbe írja be a Brittasimon@contoso.comfelhasználó e-mail címét, például .
 
-    d. Az a **jelszó** szövegmezőbe írja be a felhasználó jelszavát.
+    d. A **Jelszó** mezőbe írja be a felhasználó jelszavát.
 
-    e. Kattintson a **felhasználó létrehozása**.
+    e. Kattintson **a Felhasználó létrehozása gombra.**
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
 
-Ha rákattint a Kantega SSO JIRA csempe a hozzáférési panelen, meg kell lehet automatikusan bejelentkezett a Kantega egyszeri bejelentkezés, JIRA, amelynek beállítása egyszeri bejelentkezés az. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a Hozzáférési panelen a KANTega SSO for JIRA csempére kattint, automatikusan be kell jelentkeznie a Kantega SSO for JIRA-ba, amelyhez beállította az SSO-t. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

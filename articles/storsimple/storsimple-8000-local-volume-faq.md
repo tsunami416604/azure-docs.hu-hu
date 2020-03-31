@@ -1,6 +1,6 @@
 ---
-title: StorSimple helyileg rögzített kötetekről – gyakori kérdések |} A Microsoft Docs
-description: A StorSimple a helyileg rögzített kötetek kapcsolatos gyakori kérdésekre adott válaszokat biztosít.
+title: StorSimple helyileg rögzített kötetek GYAKORI KÉRDÉSEK| Microsoft dokumentumok
+description: Válaszokat a storSimple helyileg rögzített kötetekkel kapcsolatos gyakori kérdésekre.
 services: storsimple
 documentationcenter: NA
 author: manuaery
@@ -15,191 +15,191 @@ ms.workload: NA
 ms.date: 06/26/2017
 ms.author: manuaery
 ms.openlocfilehash: aa69d8b07d31b5cf0386e34c113475cbf4191891
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60319547"
 ---
-# <a name="storsimple-locally-pinned-volumes-frequently-asked-questions-faq"></a>StorSimple helyileg rögzített kötetekről: gyakori kérdések (GYIK)
+# <a name="storsimple-locally-pinned-volumes-frequently-asked-questions-faq"></a>StorSimple helyileg rögzített kötetek: gyakori kérdések (GYAKORI KÉRDÉSEK)
 ## <a name="overview"></a>Áttekintés
-Az alábbiakban a kérdések és válaszok, lehetséges, hogy amikor, hozzon létre egy StorSimple helyileg rögzített kötetet, konvertálja a helyileg rögzített kötetet (és fordítva), a rétegzett kötetek vagy biztonsági mentése és visszaállítása egy helyileg rögzített kötet.
+Az alábbiakban olyan kérdéseket és válaszokat, amelyek előfordulhat, hogy egy StorSimple helyileg rögzített kötet létrehozásakor, konvertálni egy rétegzett kötetet egy helyileg rögzített kötet (és fordítva), vagy biztonsági másolatot készíteni, és visszaállítani egy helyileg rögzített kötet.
 
-Kérdések és válaszok a következő kategóriákba vannak rendezve
+A kérdések és válaszok a következő kategóriákba sorolhatók:
 
-* A gyors helyi kötet létrehozása
-* Biztonsági mentése egy helyileg rögzített
-* Egy helyileg rögzített kötet rétegzett kötet konvertálása
-* Egy helyileg rögzített kötet visszaállítása
-* Egy helyileg rögzített kötet feladatátadás
+* Helyileg rögzített kötet létrehozása
+* Helyileg rögzített biztonsági mentés
+* Rétegzett kötet átalakítása helyileg rögzített kötetté
+* Helyileg rögzített kötet visszaállítása
+* Helyileg rögzített kötet feleslege
 
-## <a name="questions-about-creating-a-locally-pinned-volume"></a>Egy helyileg rögzített kötet létrehozásával kapcsolatos kérdések
-**K.** Mi az a maximális mérete egy helyileg rögzített kötet, amely képes vagyok létrehozni a 8000-es sorozatú eszközökön?
+## <a name="questions-about-creating-a-locally-pinned-volume"></a>Kérdések a helyileg rögzített kötetek létrehozásával kapcsolatban
+**K.** Mekkora a helyileg rögzített kötetek maximális mérete, amelyet a 8000-es sorozatú eszközökön létrehozhatok?
 
-**A** StorSimple 8000 Series Update 3.0 rendszerű eszközökön helyezheti üzembe a helyileg rögzített kötetekhez legfeljebb 8,5 TB, rétegzett kötetekhez legfeljebb 200 TB a 8100-as eszközön. A nagyobb 8600-as eszközön gyors helyi kötetekhez legfeljebb 22,5 TB, rétegzett kötetekhez legfeljebb 500 TB területet oszthat ki.
+**A** A StorSimple 8000-es sorozat 3.0-s frissítése taszthatói valama, és akár 8,5 TB-os vagy rétegzett köteteket is kiépíthet a 8100-as eszközön. A nagyobb 8600-as eszközön gyors helyi kötetekhez legfeljebb 22,5 TB, rétegzett kötetekhez legfeljebb 500 TB területet oszthat ki.
 
-**K.** Nemrégiben frissített 8100-as eszközöm a Update 3.0 és jelenik meg a helyileg rögzített kötet létrehozásához, a maximális méret csak 6 TB, illetve nem 8,5 TB. Miért nem hozható létre egy 8,5 TB-os kötetet?
+**K.** Nemrég frissítettem a 8100-as eszközömet a 3.0 frissítésre, és amikor megpróbálok helyileg rögzített kötetet létrehozni, a maximális rendelkezésre álló méret csak 6 TB és nem 8,5 TB. Miért nem tudok 8,5 TB-os kötetet létrehozni?
 
-**A** Ha az eszköz fut update 3.0, helyezheti üzembe a helyileg rögzített kötetekhez legfeljebb 8,5 TB-os vagy rétegzett köteteket a 8100-as eszközön legfeljebb 200 TB. Ha az eszköz már rendelkezik rétegzett köteteket, a helyileg rögzített kötet létrehozásához rendelkezésre álló területre lesz arányosan alacsonyabb, mint a maximális korlátot. Például ha körülbelül 106 TB rétegzett kötet már kiépített a 8100-as eszközön (amely a rétegzett kapacitása fele), majd egy helyi kötet, amely a 8100-as eszközön létrehozhat maximális mérete ennek megfelelően csökken 4 TB-ig (körülbelül fele a maximális helyileg rögzített kötet kapacitása).
+**A** Ha az eszköz 3.0-s frissítése fut, a 8100-as eszközön akár 8,5 TB vagy rétegzett kötetek is üzembe helyezhető helyileg rögzítetteköteteket. Ha az eszköz már rendelkezik rétegzett kötetekkel, akkor a helyileg rögzített kötetek létrehozásához rendelkezésre álló terület arányosan alacsonyabb lesz, mint ez a maximális korlát. Ha például a 8100-as eszközön (amely a rétegzett kapacitás fele) már körülbelül 106 TB rétegzett kötetet létesített, akkor a 8100-as eszközön létrehozható helyi kötet maximális mérete ennek megfelelően 4 TB-ra csökken (nagyjából 4 TB-ra csökken a maximális helyileg rögzített térfogatkapacitás fele).
 
-Mivel egyes helyi terület az eszközön, a rétegzett kötetek munkakészletének üzemeltetéséhez használt, ha az eszköz tartozik rétegzett kötet helyileg rögzített kötet létrehozásához a rendelkezésre álló területet csökken. Ezzel szemben arányosan helyileg rögzített kötet létrehozása csökkenti a rendelkezésre álló területet a rétegzett kötetek. Az alábbi táblázat foglalja össze a rendelkezésre álló rétegzett kapacitás a 8100-as és 8600-as eszközön gyors helyi kötetek létrehozásakor.
+Mivel az eszközön lévő helyi terület egy része a rétegzett kötetek munkakészletének tárolására szolgál, a helyileg rögzített kötetek létrehozásához rendelkezésre álló terület csökken, ha az eszköz rétegzett kötetekkel rendelkezik. Ezzel szemben egy helyileg rögzített kötet létrehozása arányosan csökkenti a rétegzett kötetek számára rendelkezésre álló területet. Az alábbi táblázatok a 8100-as és 8600-as eszközökön rendelkezésre álló rétegzett kapacitást foglalja össze a helyileg rögzített kötetek létrehozásakor.
 
-#### <a name="update-30"></a>Update 3.0 
+#### <a name="update-30"></a>3.0-s frissítés 
 
-| A gyors helyi kötetek kiosztott kapacitást | Ki kell építeni a rétegzett kötetek – 8100-as elérhető kapacitás | Ki kell építeni a rétegzett kötetek – 8600-as elérhető kapacitás |
+| Helyileg rögzített kötetek kiosztott kapacitás | Lépcsőzetes kötetek számára kiépíthető rendelkezésre álló kapacitás – 8100 | Többszintű kötetek számára kiépíthető rendelkezésre álló kapacitás – 8600 |
 | --- | --- | --- |
 | 0 |200 TB |500 TB |
-| 1 TB |176.5 TB |477.8 TB |
-| 4 TB |105.9 TB |411.1 TB |
-| 8,5 TB |0 TB |311.1 TB |
-| 10 TB |n/a |277.8 TB |
-| 15 TB |n/a |166.7 TB |
-| 22,5 TB |n/a |0 TB |
+| 1 TB |176,5 TB |477,8 TB |
+| 4 TB |105,9 TB |411,1 TB |
+| 8,5 TB |0 TB |311,1 TB |
+| 10 TB |NA |277,8 TB |
+| 15 TB |NA |166,7 TB |
+| 22,5 TB |NA |0 TB |
 
-**K.** Miért van a gyors helyi kötet létrehozása hosszú ideje futó művelet?
+**K.** Miért van a helyileg rögzített kötet létrehozása egy hosszú ideig futó művelet?
 
-**V.** A gyors helyi kötetek nem dinamikus kiosztásúak. Az eszköz a helyi rétegeken terület létrehozásához néhány meglévő rétegzett kötetek adatainak előfordulhat, hogy lehet leküldeni a felhőbe a kiépítési folyamat során. És mivel ez attól függ, hogy az eszköz és a rendelkezésre álló sávszélességet, a felhőbe, a meglévő adatok kiépítése folyamatban, kötet méretét a helyi kötet létrehozásához szükséges idő előfordulhat, hogy több óra is lehet.
+**A.** A helyileg rögzített kötetek vastagon vannak kiépítve. Ha helyet szeretne létrehozni az eszköz helyi szintjein, előfordulhat, hogy a meglévő rétegzett kötetek egyes adatait a kiépítési folyamat során a felhőbe kell lelökni. És mivel ez a kiépített kötet méretétől, az eszközön lévő meglévő adatoktól és a felhőhöz rendelkezésre álló sávszélességtől függ, a helyi kötet létrehozásához szükséges idő több óra is lehet.
 
-**K.** Mennyi ideig tart a helyileg rögzített kötet létrehozásához?
+**K.** Mennyi ideig tart egy helyileg rögzített kötet létrehozása?
 
-**V.** A gyors helyi kötetek nem dinamikus kiosztásúak, mivel a rétegzett kötetek néhány meglévő adatainak előfordulhat, hogy lehet leküldeni a felhőbe a kiépítési folyamat során. A helyileg rögzített kötet létrehozásához szükséges idő, ezért több tényezővel bővül, többek között a kötetet, az eszközön, és a rendelkezésre álló sávszélesség az adatok méretétől függ. Egy frissen telepített eszköz, amely rendelkezik a kötetek a helyileg rögzített kötet létrehozása ideje terabájt adat / nagyjából 10 percet. Azonban a helyi kötetek létrehozásához, amely használatban van egy eszközön a fent ismertetett tényezők alapján több óráig is eltarthat.
+**A.** Mivel a helyileg rögzített kötetek vastagon vannak kiépítve, előfordulhat, hogy a rétegzett kötetek egyes meglévő adatait a kiépítési folyamat során a felhőbe kell lelökni. Ezért a helyileg rögzített kötet létrehozásához szükséges idő több tényezőtől függ, beleértve a kötet méretét, az eszközön lévő adatokat és a rendelkezésre álló sávszélességet. Egy frissen telepített eszközön, amely nem rendelkezik kötetekkel, a helyileg rögzített kötet létrehozásához szükséges idő körülbelül 10 perc terabájtnyi adatonként. A helyi kötetek létrehozása azonban több órát is igénybe vehet a fent ismertetett tényezők alapján egy használatban lévő eszközön.
 
-**K.** Szeretném a helyileg rögzített kötet létrehozásához. Vannak-e bármilyen kell figyelembe venni, ajánlott eljárások?
+**K.** Helyileg rögzített kötetet szeretnék létrehozni. Van-e olyan bevált gyakorlat, amelyet tudnom kell?
 
-**V.** A gyors helyi kötetek alkalmasak használatához szükséges az adatok mindig helyi garanciákat, és a felhőbe az késleltetések bizalmas számítási feladatokhoz. Figyelembe véve a számítási feladatok bármelyikéhez helyi kötetek használatát, vegye figyelembe a következőket:
+**A.** A helyileg rögzített kötetek olyan számítási feladatokhoz alkalmasak, amelyek mindig helyi adatgaranciát igényelnek, és érzékenyek a felhőbeli késésekre. A helyi kötetek használata során kérjük, vegye figyelembe a következőket:
 
-* A gyors helyi kötetek nem dinamikus kiosztásúak, és a helyi kötetek létrehozása hatással van a rétegzett kötetek esetében a rendelkezésre álló területet. Ezért javasoljuk, hogy kisebb méretű kötetek kezdődhet, és a vertikális felskálázás a a storage követelmény növekedése.
-* Helyi kötetek kiépítése egy hosszú ideig futó művelet érintő rétegzett kötetek meglévő adatok leküldése a felhőben. Ennek eredményeképpen ezeken a köteteken alacsonyabb teljesítményt tapasztalhat.
-* Helyi kötetek kiépítése egy olyan időigényes művelet. Az érintett tényleges idő több tényezőtől függ: a volume önköltséggel, az eszközön, és a rendelkezésre álló sávszélesség adatok méretét. Ha nem készített biztonsági másolatot a meglévő köteteket a felhőbe, majd a kötet létrehozása lassabb lesz. Javasoljuk, hogy a meglévő kötetek felhőbeli pillanatképek igénybe vehet egy helyi kötet kiépítése előtt.
-* A gyors helyi kötetek alakíthatja át a meglévő rétegzett kötetek, és az átalakításhoz magában foglalja a kiépítés terület az eszközön, az eredményül kapott helyileg rögzített kötet (mellett a rétegzett adatok leállítása, ha bármely, a felhőben). Újra ez az egy hosszú ideig futó művelet, amely felett már beszéltünk tényezőtől függ. Javasoljuk, hogy készítsen biztonsági másolatot a meglévő köteteket a konvertálás előtt, a folyamat lassabb még akkor is, ha meglévő kötetek nem készül biztonsági másolat lesz. Az eszköz is előfordulhat, hogy tapasztalható teljesítménycsökkenés a folyamat során.
+* A helyileg rögzített kötetek vastagon vannak kiépítve, és a helyi kötetek létrehozása hatással van a rétegzett kötetek rendelkezésre álló területére. Ezért azt javasoljuk, hogy kezdje a kisebb méretű kötetek és a méretezési a tárolási igény növekedésével.
+* A helyi kötetek kiépítése egy hosszú ideig futó művelet, amely magában foglalhatja a meglévő adatok lelökése a rétegzett kötetek a felhőbe. Ennek eredményeképpen ezeken a köteteken csökkenhet a teljesítmény.
+* A helyi kötetek kiépítése időigényes művelet. A tényleges idő több tényezőtől függ: a kiosztott kötet méretétől, az eszközön lévő adatoktól és a rendelkezésre álló sávszélességtől. Ha nem tett biztonsági másolatot a meglévő kötetekről a felhőbe, akkor a kötetek létrehozása lassabb. Azt javasoljuk, hogy a meglévő kötetek felhőbeli pillanatképeket a meglévő kötetek kiépítése előtt.
+* A meglévő rétegzett köteteket helyileg rögzített kötetekké alakíthatja át, és ez az átalakítás magában foglalja a hely kiépítését az eszközön az eredményül kapott helyileg rögzített kötet számára (a rétegzett adatok lebontása mellett, ha vannak ilyenek, a felhőből). Ismét, ez egy hosszú ideig futó művelet, amely attól függ, hogy a fent tárgyalt tényezők. Javasoljuk, hogy a konvertálás előtt készüljön el a meglévő kötetekről, mivel a folyamat még lassabb lesz, ha a meglévő kötetekről nem készül biztonsági másolatot. Előfordulhat, hogy az eszköz teljesítménye is csökken a folyamat során.
 
-További információt az útmutató [helyileg rögzített kötet létrehozása](storsimple-8000-manage-volumes-u2.md#add-a-volume)
+További információ a [helyileg rögzített kötetek létrehozásáról](storsimple-8000-manage-volumes-u2.md#add-a-volume)
 
-**K.** Létrehozhatok több helyileg rögzített kötet egyszerre?
+**K.** Létrehozhatok egyszerre több helyileg rögzített kötetet?
 
-**V.** Igen, de a helyileg rögzített kötet létrehozása és bővítése feladatok feldolgozása sorrendben történik.
+**A.** Igen, de minden helyileg rögzített kötet-létrehozási és bővítési feladatok feldolgozása egymás után történik.
 
-A gyors helyi kötetek nem dinamikus kiosztásúak, és ez megköveteli, hogy a helyi területet (ami azt eredményezheti, hogy a rétegzett kötetek lehet leküldeni a felhőbe a kiépítési folyamat során meglévő adatainak) létrehozását. Ezért egy üzembe helyezési művelet folyamatban van, ha más helyi kötet-létrehozási feladatok várólistára kerül, amíg a feladat nem fejeződött.
+A helyileg rögzített kötetek vastagon vannak kiépítve, és ehhez helyi terület létrehozása szükséges az eszközön (ami azt eredményezheti, hogy a rétegzett kötetek meglévő adatait a kiépítési folyamat során a felhőbe kell lelökni). Ezért ha egy kiépítési feladat folyamatban van, a többi helyi kötet-létrehozási feladat a feladat befejezéséig várakozik.
 
-Hasonlóképpen ha meglévő helyi kötet alatt ki van bontva, vagy a rétegzett kötetek alakít át egy helyileg rögzített kötetet, majd egy új helyileg rögzített kötet létrehozása várólistára van állítva mindaddig, amíg az előző feladat befejeződött. A meglévő helyi területet az adott kötet bővítése egy helyileg rögzített kötet méretének foglalja magában. Átalakítás a helyileg rögzített egy rétegzett kötet is magában foglalja a helyi terület létrehozása a létrejövő helyileg rögzített kötet esetében. Mind a műveletek, a létrehozás vagy a helyi terület kiterjesztésének egy hosszú ideig fut. feladat.
+Hasonlóképpen, ha egy meglévő helyi kötet ki van bontva, vagy egy rétegzett kötet et konvertál egy helyileg rögzített kötetre, akkor egy új helyileg rögzített kötet létrehozása a várólistára kerül, amíg az előző feladat befejeződik. A helyileg rögzített kötet méretének növelése magában foglalja az adott kötet meglévő helyi területének bővítését. A rétegzett kötetről a helyileg rögzített kötetre való átalakítás magában foglalja a helyi legrögzített kötet helyi területének létrehozását is. Mindkét műveletben a helyi terület létrehozása vagy bővítése hosszú ideig futó feladat.
 
-Ezeket a feladatokat a **feladatok** a StorSimple-Eszközkezelő szolgáltatás paneljén. A feladat által aktívan feldolgozott folyamatosan frissül, és a hely kiépítése állapotát mutatja. A fennmaradó helyileg rögzített kötet feladatok futtatását, vannak megjelölve, de előrehaladás leállását, és azok útvonalról, a sorrendben, várólistára került.
+Ezeket a feladatokat a StorSimple Eszközkezelő szolgáltatás **Feladatok** panelen tekintheti meg. A folyamatban lévő feladat folyamatosan frissül, hogy tükrözze a területkiépítése előrehaladását. A fennmaradó helyileg rögzített kötetfeladatok futóként vannak megjelölve, de a folyamatuk leállt, és a várólistára helyezett sorrendben lesz nekik.
 
-**K.** Törölt egy helyileg rögzített kötet. Miért nem látom a regenerált terület megjelennek a rendelkezésre álló területet, amikor megpróbálom hozzon létre egy új kötetet?
+**K.** Töröltem egy helyileg rögzített kötetet. Miért nem jelenik meg a visszanyert terület a rendelkezésre álló helyen, amikor új kötetet próbálok létrehozni?
 
-**V.** Ha töröl egy helyileg rögzített kötetet, az új kötetek rendelkezésre álló terület nem frissíthető közvetlenül. A StorSimple-Eszközkezelő szolgáltatás körülbelül óránként frissíti a rendelkezésre álló helyi területet. Javasoljuk, hogy az új kötet létrehozásakor egy órás várja.
+**A.** Ha helyileg rögzített kötetet töröl, előfordulhat, hogy az új kötetek számára rendelkezésre álló terület nem frissül azonnal. A StorSimple Eszközkezelő szolgáltatás óránként frissíti a rendelkezésre álló helyi területet. Javasoljuk, hogy várjon egy órát, mielőtt megpróbállétrehozni az új kötetet.
 
-**K.** A gyors helyi kötetek a felhőalapú berendezésen támogatottak?
+**K.** A helyileg rögzített kötetek támogatottak a felhőalapú készüléken?
 
-**V.** A gyors helyi kötetek nem támogatottak a felhőalapú berendezésen (8010 és 8020-as eszközöket a StorSimple virtuális eszköz korábban nevezzük).
+**A.** A helyileg rögzített kötetek nem támogatottak a felhőalapú készüléken (8010 és 8020 eszközök, amelyeket korábban StorSimple virtuális eszköznek neveztek).
 
-**K.** Használhatom az Azure PowerShell-parancsmagok létrehozása és kezelése a gyors helyi kötetek?
+**K.** Használhatom az Azure PowerShell-parancsmagokat a helyileg rögzített kötetek létrehozásához és kezeléséhez?
 
-**V.** Nem, nem hozható létre a gyors helyi kötetek (rétegzett kötet hoz létre az Azure Powershellen keresztül) az Azure PowerShell-parancsmagok használatával. Emellett javasoljuk, hogy nem használja az Azure PowerShell-parancsmagok egy helyileg rögzített kötet bármely tulajdonságainak módosítása, a kötet típusának módosítása nem várt hatásának fog rendelkezni a rétegzett.
+**A.** Nem, nem hozhat létre helyileg rögzített köteteket az Azure PowerShell-parancsmagokon keresztül (az Azure PowerShell-en keresztül létrehozott kötetek rétegzettek). Azt is javasoljuk, hogy ne használja az Azure PowerShell-parancsmagokat a helyileg rögzített kötet ek tulajdonságainak módosítására, mivel nem kívánt hatással lesz a kötettípus rétegzettre történő módosításához.
 
-## <a name="questions-about-backing-up-a-locally-pinned-volume"></a>Egy helyileg rögzített kötet biztonsági mentésével kapcsolatos kérdések
-**K.** Helyi pillanatképei helyileg rögzített kötetek támogatott?
+## <a name="questions-about-backing-up-a-locally-pinned-volume"></a>Kérdések a helyileg rögzített kötetek biztonsági mentésével kapcsolatban
+**K.** A helyileg rögzített kötetek helyi pillanatképei támogatottak?
 
-**V.** Igen, a helyileg rögzített kötetek a helyi pillanatképek is igénybe vehet. Azonban erősen javasoljuk, hogy rendszeresen biztonsági másolatot készíteni a felhőbeli pillanatképekkel, győződjön meg arról, hogy biztonságban tudhassa adatait egy vészhelyreállítási esetben helyileg rögzített köteteit.
+**A.** Igen, helyi pillanatképeket készíthet a helyileg rögzített kötetekről. Azt javasoljuk azonban, hogy rendszeresen biztonsági másolatot készít a helyileg rögzített kötetekről felhőbeli pillanatképekkel annak érdekében, hogy az adatok biztonságban legyenek a katasztrófa esetén.
 
-Vegye figyelembe, hogy a helyi pillanatképek helyileg rögzített kötetek is is réteg ki a felhőbe, és nem biztos, hogy az eszköz helyi szinten marad.
+Vegye figyelembe, hogy a helyileg rögzített kötetek helyi pillanatképei is rétegezheti ki a felhőbe, és nem garantált, hogy az eszköz helyi rétegében marad.
 
-**K.** Vannak-e tartalmi helyileg rögzített kötetek esetében a helyi pillanatképek kezeléséhez?
+**K.** Vannak-e irányelvek a helyileg rögzített kötetek helyi pillanatképeinek kezeléséhez?
 
-**V.** A gyakori helyi pillanatkép-készítés gyakorisága a helyileg rögzített kötet adatváltozás okozhat a helyi terület gyorsan elfogy, és a az adatokat a felhőbe való adatküldés rétegzett kötetek az eszközön. Ezért javasoljuk, hogy a helyi pillanatképek számának minimálisra csökkenthető.
+**A.** A helyileg rögzített köteten az adatok nagy arányú gyakori helyi pillanatképei az eszköz helyi tárhelyének gyors felhasználását eredményezhetik, és a rétegzett kötetek adatainak a felhőbe való leküldése esetén előfordulhat, hogy a rendszer lenyomja a helyi adatokat. Ezért azt javasoljuk, hogy minimalizálja a helyi pillanatképek számát.
 
-**K.** Figyelmezteti, hogy helyileg rögzített kötetek saját helyi pillanatképei érvénytelenítve előfordulhat, hogy riasztást kapott. Ha ez fordulhat elő?
+**K.** Riasztást kaptam arról, hogy a helyileg rögzített kötetek helyi pillanatképei érvénytelenné válhatnak. Mikor történhet meg ez?
 
-**V.** A gyakori helyi pillanatkép-készítés gyakorisága a helyileg rögzített kötet adatváltozás okozhat a helyi terület gyorsan elfogy az eszközön. Ha az eszköz a helyi rétegeken használt funkcióknak, elhőbeli kimaradás eredményezheti, hogy az eszköz megtelnek, és bejövő írása a kötet azt eredményezheti, hogy a pillanatképek érvénytelenítése (mivel nincs szabad hely frissíteni a pillanatképek tekintse meg a régebbi blokk létezik adatok, amely felül lett írva). Ebben az esetben a kötetet az írási műveletek továbbra is szeretne kiszolgálni, de lehet, hogy a helyi pillanatképek érvénytelen. Nincs nem érinti a meglévő felhőbeli pillanatképeket.
+**A.** A helyileg rögzített köteten az adatok nagy arányú nagy arányú gyakori helyi pillanatképei az eszköz helyi tárhelyének gyors felhasználását eredményezhetik. Ha az eszköz helyi szintjeit erősen használják, egy kiterjesztett felhőkimaradás az eszköz megteltek, és a kötetre érkező írások a pillanatképek érvénytelenítéséhez vezethetnek (mivel nincs hely a pillanatképek frissítéséhez, hogy a régebbi blokkokra hivatkozzon felülírt adatok). Ilyen esetben a kötetre történő írások továbbra is kilesznek szolgálva, de a helyi pillanatképek érvénytelenek lehetnek. Nincs hatással a meglévő felhőbeli pillanatképek.
 
-A riasztás – figyelmeztetés, hogy Önt, hogy ez a helyzet merülnek fel, és Ön változataiban azonos időben ritkábban forduljanak a helyi pillanatképek a helyi pillanatképek ütemezését áttekintése vagy régebbi a helyi pillanatképek, amelyek már nem szükséges törlése.
+A figyelmeztetés az, hogy értesíti Önt, hogy ilyen helyzet merülhet fel, és győződjön meg róla, hogy ugyanazt időben kezelni, vagy tekintse át a helyi pillanatképek ütemezése, hogy a kevésbé gyakori helyi pillanatképek, vagy a régebbi helyi pillanatképek törlése, amelyek már nem szükséges.
 
-Ha a helyi pillanatképek érvénytelenné válnak, kapni fog egy információs riasztás arról tájékoztatja, hogy az adott biztonsági mentési szabályzat helyi pillanatképei érvénytelenítve lett a helyi pillanatképek érvénytelenített időbélyegeket listája mellett. Ezek a pillanatképek automatikusan törölve, és már nem megtekintheti őket a a **Backup katalógusok** panel az Azure Portalon.
+Ha a helyi pillanatképek érvénytelenítve vannak, egy információs riasztást kap, amely értesíti, hogy az adott biztonsági mentési szabályzat helyi pillanatképei érvénytelenültek az érvénytelenített helyi pillanatképek időbélyegeinek listája mellett. Ezek a pillanatképek automatikusan törlődnek, és a továbbiakban nem fogja tudni megtekinteni őket az Azure Portal **biztonsági másolatai** panelen.
 
-## <a name="questions-about-converting-a-tiered-volume-to-a-locally-pinned-volume"></a>Kérdések a helyileg rögzített kötet rétegzett kötet konvertálása
-**K.** Vagyok, ha az egyes lassúsága az eszközön helyileg rögzített kötetet egy rétegzett kötet konvertálása során észlelt problémát. Miért várható a változás?
+## <a name="questions-about-converting-a-tiered-volume-to-a-locally-pinned-volume"></a>Kérdések a rétegzett kötetek helyileg rögzített kötetté történő átalakításával kapcsolatban
+**K.** Némi lassúságot észlelek az eszközön, miközben egy rétegzett kötetet helyileg rögzített kötetté alakítok át. Miért történik ez?
 
-**V.** Az átalakítási folyamat két lépésből áll:
+**A.** Az átalakítási folyamat két lépésből áll:
 
-1. Kiépítés terület az eszközön a hamarosan-az--konvertálható helyileg a rögzített kötet.
-2. Garantálja a rétegzett adatok letöltése a felhőből helyi biztosításához.
+1. Hely kiépítése az eszközön a hamarosan konvertálni fogandó helyileg rögzített kötet számára.
+2. A rétegzett adatok letöltése a felhőből a helyi garanciák biztosítása érdekében.
 
-Mindkettő az alábbi lépések hosszúak futó műveletek, amelyek az átalakítandó adat az eszközön, és a rendelkezésre álló sávszélesség kötet mérete függenek. Néhány meglévő rétegzett kötetek adatainak a előfordulhat, hogy a kiépítési folyamat részeként kerülnek a felhőbe, mivel az eszköz ez idő alatt teljesítménycsökkenés is szembesülhet. Emellett az átalakítási folyamat lassabb lehet, ha:
+Mindkét lépés hosszú ideig futó művelet, amely a konvertált kötet méretétől, az eszközön lévő adatoktól és a rendelkezésre álló sávszélességtől függ. Mivel a meglévő rétegzett kötetek egyes adatai a kiépítési folyamat részeként kiömlehetnek a felhőbe, az eszköz teljesítménye csökkenhet ez idő alatt. Ezenkívül az átalakítási folyamat lassabb lehet, ha:
 
-* Meglévő kötetek nem készült biztonsági a felhőben ezért javasoljuk, hogy biztonsági másolatot egy kezdeményezése előtt a köteteket.
-* A sávszélesség-szabályozási házirendek alkalmazása, amely vendégenként a rendelkezésre álló sávszélességet, a felhőben ezért javasoljuk egy dedikált 40 MB/s, vagy több kapcsolat van, a felhőbe.
-* A fenti; több tényező miatt több órát is igénybe vehet a az átalakítási folyamat ezért javasoljuk, hogy nem csúcsokat időszakokban vagy a hétvégi a végfelhasználók a fogyasztók gyakorolt hatás elkerülése érdekében a művelet elvégzéséhez.
+* A meglévő kötetekről nem lett biztonsági másolatom a felhőbe; ezért javasoljuk, hogy a konvertálás megkezdése előtt készítsen biztonsági másolatot a kötetekről.
+* Sávszélesség-szabályozási házirendek lettek alkalmazva, amelyek korlátozhatják a rendelkezésre álló sávszélességet a felhőre; ezért javasoljuk, hogy van egy dedikált 40 Mbps vagy több kapcsolatot a felhő.
+* Az átalakítási folyamat több órát is igénybe vehet a fent ismertetett többszörös tényezők miatt; ezért azt javasoljuk, hogy ezt a műveletet nem csúcsidőszakokban vagy hétvégén hajtsa végre, hogy elkerülje a végfelhasználókra gyakorolt hatást.
 
-További információt az útmutató [egy helyileg rögzített kötet rétegzett kötet konvertálása](storsimple-8000-manage-volumes-u2.md#change-the-volume-type)
+További információ [arétegzett kötetek helyileg rögzített kötetté történő konvertálásáról](storsimple-8000-manage-volumes-u2.md#change-the-volume-type)
 
-**K.** A kötet átalakítási műveletet lemondható?
+**K.** Megszakíthatom a kötetkonverziós műveletet?
 
-**V.** Nem a Mégse gombra a átalakítási művelet elindítása után. Mivel az előző kérdésnél leírt, vegye figyelembe, hogy előfordulhat, hogy a folyamat során előforduló, és kövesse az ajánlott eljárásokat, ha azt tervezi, hogy az átalakítás a fent felsorolt a lehetséges teljesítményproblémák.
+**A.** Nem, a konverziós művelet et nem szakíthatja meg a kezdeményezésután. Az előző kérdésben tárgyaltak szerint kérjük, vegye figyelembe a folyamat során esetlegesen felmerülő teljesítményproblémákat, és kövesse a fent felsorolt ajánlott eljárásokat a konverzió megtervezésekor.
 
-**K.** Mi történik a kötetet, ha az átalakítási művelet meghiúsul?
+**K.** Mi történik a kötetemmel, ha az átalakítási művelet sikertelen?
 
-**V.** Kötet átalakítás felhőbeli kapcsolódási problémák miatt meghiúsulhat. Az eszköz leállíthatja a rétegzett adatok a felhőből a sikertelen kísérletek sorozatát követő végül leállíthatja az átalakítási folyamat. Ilyen esetben a kötet típusának, továbbra is az átalakítás előtt forrás kötettípus és:
+**A.** A kötetkonvertálás sikertelen lehet a felhőbeli kapcsolódási problémák miatt. Az eszköz végül leállíthatja az átalakítási folyamatot, miután egy sor sikertelen kísérlet a rétegzett adatok leállítására a felhőből. Ilyen esetben a kötettípus a konvertálás előtt továbbra is a forráskötet típusa marad, és:
 
-* Egy kritikus riasztást generál, amelyek figyelmeztetik, a kötet konvertálási hiba. További információ a [gyors helyi kötetek kapcsolatos riasztások](storsimple-8000-manage-alerts.md#locally-pinned-volume-alerts)
-* Ha egy rétegzett a helyileg rögzített kötetet, a kötet a rétegzett kötet tulajdonságait a számára, ahogy adatok előfordulhat, hogy továbbra is megtalálhatók a felhő továbbra is. Javasoljuk, hogy a kapcsolati problémák elhárításához, és ismételje meg az átalakítási műveletet.
-* Hasonlóképpen egy helyileg rögzített való átalakítás egy rétegzett kötet meghibásodása esetén, azonban a kötet lesznek megjelölve helyileg rögzített kötetet, ha azt fog működni, a rétegzett kötetek (mivel az adatokat a felhőbe sikerült rendelkezik kiömlött). Azonban továbbra is az eszköz a helyi rétegeken tárhelyet foglalnak. Ez a terület nem lesz elérhető, a többi helyileg rögzített kötetekhez. Javasoljuk, hogy újra megpróbálja a műveletet, győződjön meg arról, hogy a kötet konvertálása befejeződött, és az eszközön a helyi terület szabadítható.
+* A rendszer kritikus riasztást küld, amely értesíti a kötetkonverziós hibáról. További információ a [helyileg rögzített kötetekkel kapcsolatos riasztásokról](storsimple-8000-manage-alerts.md#locally-pinned-volume-alerts)
+* Ha egy rétegzett egy helyileg rögzített kötetre konvertál, a kötet továbbra is egy rétegzett kötet tulajdonságait mutatja, mivel az adatok továbbra is előfordulhat, hogy a felhőben találhatók. Javasoljuk, hogy oldja meg a kapcsolódási problémákat, majd próbálkozzon újra az átalakítási művelettel.
+* Hasonlóképpen, ha egy rétegzett kötetre helyileg rögzített átalakítás sikertelen, bár a kötet helyileg rögzített kötetként lesz megjelölve, rétegzett kötetként fog működni (mivel az adatok a felhőbe kerülhettek). Azonban továbbra is helyet foglalnak az eszköz helyi szintjein. Ez a hely nem lesz elérhető más helyileg rögzített kötetek esetén. Azt javasoljuk, hogy próbálja meg újra ezt a műveletet annak érdekében, hogy a kötet konvertálása befejeződött, és a helyi terület az eszközön visszanyerhető.
 
-## <a name="questions-about-restoring-a-locally-pinned-volume"></a>Egy helyileg rögzített kötet visszaállításával kapcsolatos gyakori kérdésekre
-**K.** A gyors helyi kötetek azonnal vissza?
+## <a name="questions-about-restoring-a-locally-pinned-volume"></a>Kérdések a helyileg rögzített kötet visszaállításáról
+**K.** A helyileg rögzített kötetek azonnal helyreállnak?
 
-**V.** Igen, a gyors helyi kötetek azonnal lettek visszaállítva. Amint a kötethez tartozó metaadat-információkat a visszaállítási művelet részeként lehívja a felhőben, a kötet online állapotba kerül, és a gazdagép által elérhető lesz. Azonban a kötet helyi garanciákat, adatok nem lesznek jelen, amíg az összes adat letöltötte a felhőből, és előfordulhat, csökkenteni a visszaállítás időtartama a kötetek teljesítménye.
+**A.** Igen, a helyileg rögzített kötetek azonnal visszaállnak. Amint a kötet metaadat-információi a visszaállítási művelet részeként lekérik a felhőből, a kötet online állapotba kerül, és a gazdagép hozzáférhet. A kötetadatok helyi garanciái azonban nem lesznek jelen, amíg az összes adatot le nem töltötte a felhőből, és a visszaállítás időtartama alatt csökkentett teljesítményt tapasztalhat ezeken a köteteken.
 
-**K.** Mennyi ideig tart egy helyileg rögzített kötet visszaállítása?
+**K.** Mennyi ideig tart a helyileg rögzített kötet visszaállítása?
 
-**V.** Gyors helyi kötetek azonnal vissza és, amint a kötet metaadatait veszi át a felhőbe, a mennyiségi adatok továbbra is le kell tölteni a háttérben online állapotba. Ez utóbbi része a visszaállítási művelet – a mennyiségi adatok--visszaállítani a helyi garanciákat egy hosszú ideig futó művelet, és el kell végezni helyi újra az adatok több órát is igénybe vehet. Azonos végrehajtásához szükséges idő attól függ, hogy több tényezővel bővül, például folyamatban van a kötet méretét és a rendelkezésre álló sávszélességen. Ha az eredeti kötet, amely kerül törölve lett, további időt megnyílik hozhat létre a helyi területet az eszközön a visszaállítási művelet részeként.
+**A.** A helyileg rögzített kötetek azonnal visszaállnak, és online állapotba kerülnek, amint a kötet metaadat-információi lekérésre kerülnek a felhőből, miközben a kötetadatok továbbra is a háttérben töltődnek le. Ez utóbbi része a visszaállítási műveletnek – a kötetadatok helyi garanciáinak visszaszerzése – hosszú ideig futó művelet, és több órát is igénybe vehet, amíg az összes adat ismét helyivé lesz téve. Az azonos befejezéshez szükséges idő több tényezőtől függ, például a visszaállítandó kötet méretétől és a rendelkezésre álló sávszélességtől. Ha a visszaállítás alatt álló eredeti kötetet törölték, további idő szükséges a helyi terület létrehozásához az eszközön a visszaállítási művelet részeként.
 
-**K.** Kell a meglévő helyileg rögzített kötet visszaállítása egy korábbi pillanatkép (elvégezni, ha a kötet rétegzett volt). A kötet visszaáll, ebben az esetben a rétegzett?
+**K.** Vissza kell állítanom a meglévő helyileg rögzített kötetet egy régebbi pillanatképre (a kötet rétegzett állapotában). Ebben az esetben a kötet rétegzettként lesz visszaállítva?
 
-**V.** Nem, a kötet lesz visszaállítva, egy helyileg rögzített kötet. Bár az idő, amikor a kötet rétegzett volt, a pillanatkép dátumát való visszaállítása során meglévő kötetek a StorSimple mindig kötet típusát a lemez jelenleg meglévő.
+**A.** Nem, a kötet helyileg rögzített kötetként lesz visszaállítva. Bár a pillanatkép a kötet rétegzett időpontjára nyúlik vissza, miközben a meglévő kötetek visszaállítása, a StorSimple mindig a lemezen lévő kötet típusát használja, ahogy jelenleg létezik.
 
-**K.** Nemrég kiterjesztett szeretnék a helyileg rögzített kötetet, de most kell visszaállítani az adatokat egy időpontot, amikor a kötet mérete kisebb volt. Visszaállítási átméretezi a jelenlegi kötetet, és ezeket kell-e a kötet kiterjesztése, a visszaállítás befejezése után?
+**K.** Nemrég kiterjesztettem a helyileg rögzített kötetemet, de most vissza kell állítanom az adatokat egy olyan időpontra, amikor a kötet kisebb méretű volt. Visszaállítja az aktuális kötet átméretezését, és a visszaállítás befejezése után ki kell terjesztenia a kötet méretét?
 
-**V.** Igen, a visszaállítás átméretezi a kötetet, és kiterjesztheti a kötet méretét, a visszaállítás befejezése után kell.
+**A.** Igen, a visszaállítás átméretezi a kötetet, és a visszaállítás befejezése után ki kell terjesztenie a kötet méretét.
 
-**K.** Módosíthatom a kötet típusa visszaállítás során?
+**K.** Módosíthatom a kötet típusát a visszaállítás során?
 
-**V.** Nem, visszaállítás során a kötet típusa nem módosítható.
+**A.** Nem, a kötet típusát a visszaállítás során nem módosíthatja.
 
-* A típus a pillanatképben tárolt kötetek törölt visszaállítását végzi.
-* Meglévő kötetek visszaállítása azok aktuális típusától, a pillanatképben tárolt típusától függően (lásd az előző két kérdések).
+* A törölt kötetek a pillanatképben tárolt típusként lesznek visszaállítva.
+* A meglévő kötetek visszaállítása az aktuális típusuk alapján történik, függetlenül a pillanatképben tárolt típustól (lásd az előző két kérdést).
 
-**K.** A helyileg rögzített kötet visszaállítása kell, de szeretnék egy helytelen pont kivételezett idő pillanatfelvétel. A jelenlegi visszaállítási műveletet lemondható?
+**K.** Vissza kell állítanom a helyileg rögzített kötetet, de helytelen időpont-pillanatképet választottam. Megszakíthatom az aktuális visszaállítási műveletet?
 
-**V.** Igen, megszakíthatja, egy folyamatban visszaállítási művelet. A kötet állapotát elején. a visszaállítási állapotba vissza lesz állítva. Azonban miközben folyamatban volt a visszaállítás a köteten végrehajtott írási elvesznek.
+**A.** Igen, megszakíthat egy folyamatos visszaállítási műveletet. A kötet állapota a visszaállítás kezdetén visszaáll az állapotra. Azonban minden olyan írás, amely a köteten, miközben a visszaállítás folyamatban volt, el vész.
 
-**K.** Egy visszaállítási művelet a gyors helyi kötetek egyik kezdtem, és most már láthatók egy pillanatképet a saját mappájában várakozó fájlok számát-katalógus, amely I nem recollect létrehozása. Ez mire való?
+**K.** Elindítottam egy visszaállítási műveletet az egyik helyileg rögzített köteten, és most megjelenik egy pillanatkép a lemaradási katalógusomban, amelynem emlékszem a létrehozásra. Mire használják ezt?
 
-**V.** Ez az ideiglenes pillanatképre, jön létre a visszaállítási művelet előtt és a visszaállítás szolgál abban az esetben a visszaállítás megszakadt, vagy sikertelen lesz. Ne törölje a pillanatkép; Ez automatikusan törli a helyreállítás befejezésekor. Ez akkor fordulhat elő, ha rendelkezik a a visszaállítási feladat csak helyileg rögzített kötetek vagy helyileg rögzített és a rétegzett kötetek kombinációját. Ha a visszaállítási feladat csak a rétegzett kötetek is tartalmaz, majd ezt a viselkedést nem történik.
+**A.** Ez az ideiglenes pillanatkép, amely a visszaállítási művelet előtt jön létre, és visszaállításra szolgál, ha a visszaállítás megszakad, vagy sikertelen. Ne törölje ezt a pillanatképet; a visszaállítás befejezésekor automatikusan törlődik. Ez a viselkedés akkor fordulhat elő, ha a visszaállítási feladat csak helyileg rögzített kötetek vagy helyileg rögzített és rétegzett kötetek vegyesen rendelkezik. Ha a visszaállítási feladat csak rétegzett köteteket tartalmaz, akkor ez a viselkedés nem fordul elő.
 
-**K.** Klónozhat a helyileg rögzített kötetet?
+**K.** Klónozhatok helyileg rögzített kötetet?
 
-**V.** Igen. Azonban a helyileg rögzített kötet klónozza, a rétegzett kötetek alapértelmezés szerint. További információt az útmutató [helyileg rögzített kötet klónozása](storsimple-8000-clone-volume-u2.md)
+**A.** Igen. A helyileg rögzített kötet azonban alapértelmezés szerint rétegzett kötetként lesz klónozva. További információ a [helyileg rögzített kötetek klónozásáról](storsimple-8000-clone-volume-u2.md)
 
-## <a name="questions-about-failing-over-a-locally-pinned-volume"></a>Egy helyileg rögzített kötet feladatátadás kapcsolatos kérdések
-**K.** Van szükségem egy másik fizikai eszköz az eszköz feladatátvételét. A gyors helyi kötetek sikertelen lesz, a helyileg rögzített vagy rétegzett több mint?
+## <a name="questions-about-failing-over-a-locally-pinned-volume"></a>Kérdések a helyileg rögzített kötetek felborulásáról
+**K.** Át kell adnom az eszközömet egy másik fizikai eszköznek. A helyileg rögzített kötetek helyileg rögzítettként vagy rétegzettként lesznek megdöntve?
 
-**V.** A gyors helyi kötetek feladatátvétel történt a helyileg rögzített a Ha a céleszközön fut-e a StorSimple 8000 series update 3 vagy nagyobb.
+**A.** A helyileg rögzített kötetek a helyileg rögzített ként feladatátvételre kerülnek, ha a céleszköz a StorSimple 8000 sorozat 3-as vagy újabb frissítését futtatja.
 
-További információ a [feladatátvétel és Vészhelyreállítás a helyileg rögzített kötetekről verziója között](storsimple-8000-device-failover-disaster-recovery.md#device-failover-across-software-versions)
+További információ a [helyileg rögzített kötetek feladatátvételéről és dr-jéről a verziók között](storsimple-8000-device-failover-disaster-recovery.md#device-failover-across-software-versions)
 
-**K.** A gyors helyi kötetek azonnal visszaállítása során a vészhelyreállítás (DR)?
+**K.** A helyileg rögzített kötetek azonnal helyreállnak a vész-helyreállítási (DR) során?
 
-**V.** Igen, a gyors helyi kötetek azonnal a feladatátvétel során állítja vissza. Amint a kötethez tartozó metaadat-információkat a felhőből kéri le a feladatátvételi művelet részeként, a kötet online állapotba kerül a céleszközön, és a gazdagép által elérhető lesz. Ugyanakkor továbbra is a mennyiségi adatok letöltését a háttérben, és ezeken a köteteken a feladatátvétel időtartama csökkentett teljesítményt tapasztalhat.
+**A.** Igen, a helyileg rögzített kötetek azonnal visszaállnak a feladatátvétel során. Amint a kötet metaadat-információi a feladatátvételi művelet részeként lekérik a felhőből, a kötet online állapotba kerül a céleszközön, és a gazdagép hozzáférhet. Eközben a kötetadatok továbbra is a háttérben töltődnek le, és ezeken a köteteken a feladatátvétel időtartama alatt csökkentett teljesítményt tapasztalhat.
 
-**K.** A feladatátvételi feladat befejeződött, hogyan tudok nyomon követheti a helyileg rögzített kötet, amely kerül a céleszközön meg?
+**K.** Látom a feladatátvételi feladat befejeződött, hogyan követhető a helyileg rögzített kötet, amely a céleszközön van visszaállítva?
 
-**V.** A feladatátvételi művelet során a feladatátvételi feladat van megjelölve, végezze el egyszer az összes a köteteket a feladatátvételi csoportban kell azonnal visszaállítva, és a céleszköz online állapotú. Ez magában foglalja a gyors helyi köteteket, előfordulhat, hogy feladatátadása megtörtént; azonban az adatok helyi garanciákat csak akkor érhető el, ha a kötet minden adatát lett letöltve. Ez a folyamat minden helyileg rögzített kötet, amely a megfelelő, a feladatátvétel részeként létrehozott helyreállítási feladatok figyelése át lett nem tudja követni. Ezek az egyes visszaállítási feladat csak a helyileg rögzített kötetekhez hozhatók létre.
+**A.** A feladatátvételi művelet során a feladatátvételi feladat akkor lesz készként megjelölve, ha a feladatátvételi készlet összes kötete azonnal helyreállt, és online állapotba került a céleszközön. Ez magában foglalja a helyileg rögzített köteteket, amelyek lehet, hogy feladatátvételt; az adatok helyi garanciái azonban csak akkor lesznek elérhetők, ha a kötet összes adatát letöltötték. Ezt a folyamatot nyomon követheti minden helyileg rögzített köteten, amely feladatátvételt kapott a feladatátvétel részeként létrehozott megfelelő visszaállítási feladatok figyelésével. Ezek az egyéni visszaállítási feladatok csak helyileg rögzített kötetekhez jönnek létre.
 
-**K.** Módosíthatom a kötet típusa feladatátvétel során?
+**K.** Módosíthatom a kötet típusát a feladatátvétel során?
 
-**V.** Nem, a kötet típusa nem módosítható a feladatátvétel alatt. Ha Ön nem működik keresztül egy másik fizikai eszközt, amelyen fut a StorSimple 8000 series 3-as frissítés, a kötetek feladatátvételekor a pillanatképben tárolt kötet típusa alapján.
+**A.** Nem, a kötet típusát nem módosíthatja feladatátvétel közben. Ha egy másik fizikai eszközre, amely a StorSimple 8000 sorozat 3-as frissítése 3, a kötetek feladatátvétele a pillanatképben tárolt kötet típusa alapján.
 
-**K.** Is lehet feladatátvételt beállítani a helyileg rögzített köteteit a felhőalapú készülék egy kötettárolót?
+**K.** Átvehetem a feladatátvételt egy kötettárolóhelyileg rögzített kötetekkel a felhőalapú készülékre?
 
-**V.** Igen. A gyors helyi kötetek kerül átadásra a rétegzett kötetek. További információ a [feladatátvétel és Vészhelyreállítás a helyileg rögzített kötetekről verziója között](storsimple-8000-device-failover-disaster-recovery.md#common-considerations-for-device-failover)
+**A.** Igen. A helyileg rögzített kötetek felzett kötetek lesznek felzett kötetek. További információ a [helyileg rögzített kötetek feladatátvételéről és dr-jéről a verziók között](storsimple-8000-device-failover-disaster-recovery.md#common-considerations-for-device-failover)
 

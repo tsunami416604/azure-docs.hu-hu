@@ -1,6 +1,6 @@
 ---
-title: Az Azure Bastion hibáinak megoldása | Microsoft Docs
-description: Ebből a cikkből megtudhatja, hogyan oldhatja meg az Azure Bastion-t.
+title: Azure-bástya – problémamegoldás | Microsoft dokumentumok
+description: Ebből a cikkből megtudhatja, hogyan háríthatja el az Azure-bástya.
 services: bastion
 author: cherylmc
 ms.service: bastion
@@ -8,38 +8,38 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: cherylmc
 ms.openlocfilehash: de112ff441bb53a0b3bc7f4ffa4456f1c241682c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73512950"
 ---
-# <a name="troubleshoot-azure-bastion"></a>Az Azure Bastion hibáinak megoldása
+# <a name="troubleshoot-azure-bastion"></a>Az Azure-bastion hibáinak elhárítása
 
-Ez a cikk bemutatja, hogyan lehet elhárítani az Azure Bastion-t.
+Ez a cikk bemutatja, hogyan háríthatja el az Azure-bástya.
 
-## <a name="nsg"></a>Nem hozható létre NSG a AzureBastionSubnet
+## <a name="unable-to-create-an-nsg-on-azurebastionsubnet"></a><a name="nsg"></a>Nem lehet nsg-t létrehozni az AzureBastionSubnet-en
 
-**K:** Amikor megpróbálok létrehozni egy NSG az Azure-beli megerősített alhálózaton, a következő hibaüzenet jelenik meg: *"a hálózati biztonsági csoport <NSG name> nem rendelkezik az Azure megerősített alhálózat AzureBastionSubnet szükséges szabályaival"* .
+**K:** Amikor nstion alhálózaton próbálok nsg-t létrehozni, a következő hibaüzenet jelenik meg: *"A hálózati biztonsági csoport <NSG name> nem rendelkezik az Azure Bastion Subnet AzureBastionSubnet szükséges szabályaival"*.
 
-**A:** Ha NSG hoz létre és alkalmaz *AzureBastionSubnet*, győződjön meg arról, hogy az alábbi szabályokat adta hozzá a NSG. Ha nem adja hozzá ezeket a szabályokat, a NSG létrehozása/frissítése sikertelen lesz.
+**A.** Ha nsg-t hoz létre és alkalmaz az *AzureBastionSubnet-re,* győződjön meg arról, hogy az nsg-ben hozzáadta a következő szabályokat. Ha nem adja hozzá ezeket a szabályokat, az NSG létrehozása/frissítése sikertelen lesz.
 
-1. Vezérlési sík kapcsolat – 443-es bejövő GatewayManager
-2. A diagnosztikai naplózás és egyebek – a AzureCloud a 443-es kimenő forgalom (a szolgáltatási címkén belüli regionális címkék még nem támogatottak.)
-3. Cél virtuális gép – 3389-es és 22-es VirtualNetwork
+1. Vezérlősík-kapcsolat – Bejövő a 443-ason a GatewayManager-től
+2. Diagnosztikai naplózás és egyéb – 443-as azurecloud-alapú kimenő (a szolgáltatáscímkében található regionális címkék még nem támogatottak.)
+3. Cél virtuális gép – 3389 és 22 a VirtualNetwork számára
 
-A NSG-szabályokra például a gyors útmutató [sablonjában](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion)van lehetőség.
-További információ: [NSG útmutató az Azure Bastion-hez](bastion-nsg.md).
+Az NSG-szabályokra példa a [rövid útmutató sablonban.](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion)
+További információ: [NSG útmutató az Azure Bastion.](bastion-nsg.md)
 
-## <a name="sshkey"></a>Az SSH-kulcs nem használható az Azure Bastion használatával
+## <a name="unable-to-use-my-ssh-key-with-azure-bastion"></a><a name="sshkey"></a>Nem lehet használni az SSH-kulcsot az Azure Bastion használatával
 
-**K:** Amikor megpróbálom böngészni az SSH-kulcsfájl, a következő hibaüzenet jelenik meg: *"a titkos SSH-kulcsnak-----BEGIN RSA titkos kulccsal-----kell kezdődnie, és a-----end RSA titkos kulccsal-----" végződik*.
+**K:** Amikor megpróbálom böngészni az SSH kulcsfájlt, a következő hibaüzenet jelenik meg: *"Az SSH titkos kulcsának a -----BEGIN RSA PRIVATE KEY------val kell kezdődnie----- és -----END RSA PRIVATE KEY-----" .*
 
-**A:** Az Azure Bastion ezen a ponton csak RSA SSH-kulcsokat támogat. Győződjön meg arról, hogy egy, az SSH-hoz készült RSA titkos kulcsú kulcsfájl, a célként megadott virtuális gépen kiosztott nyilvános kulccsal. 
+**A.** Az Azure Bastion támogatja csak RSA SSH kulcsok, ebben az időpontban. Győződjön meg arról, hogy az SSH RSA-titkos kulcsaként tallózik, és nyilvános kulcs van kiépítve a célvirtuális gépen. 
 
-Például a következő paranccsal hozhat létre egy új RSA SSH-kulcsot:
+Például a következő paranccsal új RSA SSH-kulcsot hozhat létre:
 
-**ssh-keygen-t RSA-b 4096-C "email@domain.com"**
+**ssh-keygen -t rsa -b 4096 -C "email@domain.com"**
 
 Kimenet:
 
@@ -67,24 +67,24 @@ The key's randomart image is:
 +----[SHA256]-----+
 ```
 
-## <a name="domain"></a>Nem lehet bejelentkezni a Windows-tartományhoz csatlakoztatott virtuális gépre
+## <a name="unable-to-sign-in-to-my-windows-domain-joined-virtual-machine"></a><a name="domain"></a>Nem lehet bejelentkezni a Windows tartományhoz csatlakozó virtuális gépembe
 
-**K:** Nem tudok csatlakozni a Windows rendszerű virtuális géphez, amely a tartományhoz csatlakozik.
+**K:** Nem tudok csatlakozni a tartományhoz csatlakozó Windows virtuális gépemhez.
 
-**A:** Az Azure Bastion támogatja a tartományhoz csatlakoztatott virtuális gépek bejelentkezését a Felhasználónév-jelszó alapú tartományba való bejelentkezéshez. A tartományi hitelesítő adatoknak a Azure Portal való megadásakor a bejelentkezéshez a tartomány *\ Felhasználónév* formátum helyett az UPN (username@domain) formátumot használja. Ez a tartományhoz csatlakoztatott vagy a hibrid csatlakozású (tartományhoz csatlakoztatott, valamint az Azure AD-hez csatlakoztatott) virtuális gépek esetében támogatott. Az Azure AD-hez csatlakoztatott virtuális gépek nem támogatottak.
+**A.** Az Azure Bastion támogatja a tartományhoz csatlakozott virtuális gép bejelentkezést csak felhasználónév-jelszó alapú tartománybejelentkezéshez. Amikor megadja a tartományi hitelesítő adatokat az Azureusername@domainPortalon, használja az upn ( ) formátumhelyett *domain\felhasználónév* formátumban a bejelentkezéshez. Ez a tartományhoz csatlakozott vagy hibrid csatlakozású (tartományhoz csatlakozott, valamint az Azure AD-hez csatlakozott) virtuális gépek támogatott. Nem támogatott az Azure AD-hez csatlakozott virtuális gépek.
 
-## <a name="filetransfer"></a>Fájlátviteli problémák
+## <a name="file-transfer-issues"></a><a name="filetransfer"></a>Fájlátviteli problémák
 
-**K:** Támogatja az Azure Bastion a fájlátvitelt?
+**K:** Az Azure Bastion támogatja a fájlátvitelt?
 
-**A:** A fájlátviteli szolgáltatás jelenleg nem támogatott. Dolgozunk a támogatás hozzáadásán.
+**A.** A fájlátvitel jelenleg nem támogatott. Dolgozunk a támogatás hozzáadásán.
 
-## <a name="blackscreen"></a>Fekete képernyő a Azure Portal
+## <a name="black-screen-in-the-azure-portal"></a><a name="blackscreen"></a>Fekete képernyő az Azure Portalon
 
-**K:** Amikor az Azure Bastion használatával próbálok csatlakozni, egy fekete képernyőt kapok a Azure Portal.
+**K:** Amikor az Azure-bástyával próbálok csatlakozni, fekete képernyő jelenik meg az Azure Portalon.
 
-**A:** Ez akkor fordulhat elő, ha hálózati kapcsolati probléma van a webböngésző és az Azure Bastion között (az ügyfél internetes tűzfala blokkolja a WebSocket forgalmat vagy hasonlót), illetve az Azure-alapú és a célként megadott virtuális gép között. A legtöbb esetben a AzureBastionSubnet vagy a cél virtuálisgép-alhálózaton alkalmazott NSG, amely blokkolja a virtuális hálózat RDP/SSH-forgalmát. Engedélyezze a WebSockets-forgalmat az ügyfél internetes tűzfalán, és keresse meg a NSG a cél virtuálisgép-alhálózaton.
+**A.** Ez akkor fordul elő, ha hálózati kapcsolati probléma merül fel a webböngésző és az Azure Bastion között (az ügyfél internetes tűzfala blokkolhatja a WebSockets-forgalmat vagy hasonlót), vagy az Azure Bastion és a célvirtuális gép között. A legtöbb esetben egy NSG alkalmazott vagy az AzureBastionSubnet, vagy a cél virtuális gép alhálózat, amely blokkolja az RDP/SSH forgalmat a virtuális hálózatban. Engedélyezze a WebSocket-forgalmat az ügyfél internetes tűzfalán, és ellenőrizze az NSG-ket a cél virtuálisgép-alhálózaton.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ: a [megerősített GYIK](bastion-faq.md).
+További információt a [Bástya GYIK című témakörben talál.](bastion-faq.md)

@@ -1,28 +1,28 @@
 ---
-title: Oktatóanyag – fürt konfigurálása az Azure HDInsight-ben a Ansible használatával
-description: Útmutató az Azure HDInsight-fürtök konfigurálásához, átméretezéséhez és törléséhez a Ansible használatával
-keywords: ansible, azure, devops, bash, playbook, apache hadoop, hdinsight
+title: Oktatóanyag – Fürt konfigurálása az Azure HDInsightban az Ansible használatával
+description: Ismerje meg, hogyan konfigurálhat, méretezheti át és törölheti az Ansible szolgáltatást egy Azure HDInsight-fürt konfigurálásához, átméretezéséhez és törléséhez
+keywords: ansible, azúr, devops, bash, ötletekbõl, apache hadoop, hdinsight
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 2281c9683583e1def034b79809829a068ef9f3e6
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74156671"
 ---
-# <a name="tutorial-configure-a-cluster-in-azure-hdinsight-using-ansible"></a>Oktatóanyag: fürt konfigurálása az Azure HDInsight-ben a Ansible használatával
+# <a name="tutorial-configure-a-cluster-in-azure-hdinsight-using-ansible"></a>Oktatóanyag: Fürt konfigurálása az Azure HDInsightban az Ansible használatával
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
-Az [Azure HDInsight](/azure/hdinsight/) egy Hadoop-alapú elemzési szolgáltatás az adatfeldolgozáshoz. A HDInsight egy ETL (kinyerési, átalakítási, betöltési) eszköz, amellyel a big data strukturált vagy strukturálatlan lehet. A HDInsight többféle [típusú fürtöt](/azure/hdinsight/hadoop/apache-hadoop-introduction) támogat, ahol az egyes típusok támogatják az összetevők különböző készletét. 
+[Az Azure HDInsight](/azure/hdinsight/) egy Hadoop-alapú elemzési szolgáltatás az adatok feldolgozásához. A HDInsight egy ETL (kibontás, átalakítás, betöltés) eszköz, amely a big data - strukturált vagy strukturálatlan – használatával működik. A HDInsight több [fürttípust](/azure/hdinsight/hadoop/apache-hadoop-introduction) is támogat, ahol az egyes típusok különböző összetevőket támogatnak. 
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
-> * Storage-fiók létrehozása a HDInsight
-> * [HDInsight Spark-fürt](/azure/hdinsight/spark/apache-spark-overview)konfigurálása.
+> * Tárfiók létrehozása a HDInsight számára
+> * [HdInsight Spark-fürt konfigurálása.](/azure/hdinsight/spark/apache-spark-overview)
 > * Fürt átméretezése
 > * Fürt törlése
 
@@ -31,9 +31,9 @@ Az [Azure HDInsight](/azure/hdinsight/) egy Hadoop-alapú elemzési szolgáltat�
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)] 
 
-## <a name="create-a-random-postfix"></a>Véletlenszerű Postfix létrehozása
+## <a name="create-a-random-postfix"></a>Véletlenszerű utójavítás létrehozása
 
-Az ebben a szakaszban szereplő forgatókönyv-kód egy véletlenszerű Postfix-t hoz létre az Azure HDInsight-fürt nevének részeként való használatra.
+Ebben a szakaszban a forgatókönyv-kód létrehoz egy véletlenszerű postfix az Azure HDInsight-fürt nevének részeként.
 
 ```yml
 - hosts: localhost
@@ -48,9 +48,9 @@ Az ebben a szakaszban szereplő forgatókönyv-kód egy véletlenszerű Postfix-
 
 ## <a name="create-resource-group"></a>Erőforráscsoport létrehozása
 
-Az Azure-erőforráscsoport olyan logikai tároló, amelyben az Azure-erőforrások üzembe helyezése és kezelése történik.
+Az Azure-erőforráscsoport egy logikai tároló, amelyben az Azure-erőforrások üzembe helyezése és kezelése.
 
-Az ebben a szakaszban található forgatókönyv-kód egy erőforráscsoportot hoz létre.
+Ebben a szakaszban a forgatókönyv-kód létrehoz egy erőforráscsoportot.
 
 
 ```yml
@@ -61,11 +61,11 @@ Az ebben a szakaszban található forgatókönyv-kód egy erőforráscsoportot h
         location: "{{ location }}"
 ```
 
-## <a name="create-a-storage-account-and-retrieve-key"></a>Storage-fiók létrehozása és a kulcs lekérése
+## <a name="create-a-storage-account-and-retrieve-key"></a>Tárfiók létrehozása és kulcs lekérése
 
-Az Azure Storage-fiók a HDInsight-fürt alapértelmezett tárolója. 
+Az Azure storage-fiók a HDInsight-fürt alapértelmezett tárolója. 
 
-Az ebben a szakaszban található forgatókönyv-kód a Storage-fiók eléréséhez használt kulcsot kérdezi le.
+Ebben a szakaszban a forgatókönyv-kód lekéri a tárfiók eléréséhez használt kulcsot.
 
 ```yml
 - name: Create storage account
@@ -93,7 +93,7 @@ Az ebben a szakaszban található forgatókönyv-kód a Storage-fiók elérésé
 
 ## <a name="create-an-hdinsight-spark-cluster"></a>HDInsight Spark-fürt létrehozása
 
-Az ebben a szakaszban található forgatókönyv-kód létrehozza az Azure HDInsight-fürtöt.
+Ebben a szakaszban a forgatókönyv-kód létrehozza az Azure HDInsight-fürt.
 
 ```yml
 - name: Create instance of Cluster
@@ -138,9 +138,9 @@ A példány létrehozása több percet is igénybe vehet.
 
 ## <a name="resize-the-cluster"></a>A fürt átméretezése
 
-A fürt létrehozása után az egyetlen módosítható beállítás a munkavégző csomópontok száma. 
+A fürt létrehozása után csak a munkavégző csomópontok számát módosíthatja. 
 
-Az ebben a szakaszban szereplő forgatókönyv-kód a munkavégző csomópontok számát a `workernode`on belüli `target_instance_count` frissítésével növeli.
+Ebben a szakaszban a forgatókönyv-kód a munkavégző csomópontok számát `target_instance_count` `workernode`a frissítéssel teszi meg.
 
 ```yml
 - name: Resize cluster
@@ -184,11 +184,11 @@ Az ebben a szakaszban szereplő forgatókönyv-kód a munkavégző csomópontok 
   register: output
 ```
 
-## <a name="delete-the-cluster-instance"></a>A fürt példányának törlése
+## <a name="delete-the-cluster-instance"></a>A fürtpéldány törlése
 
-A HDInsight-fürtök számlázása percenkénti arányban történik. 
+A HDInsight-fürtök számlázása percalapú. 
 
-Az ebben a szakaszban szereplő forgatókönyv-kód törli a fürtöt.
+Az ebben a szakaszban található forgatókönyvkód törli a fürtöt.
 
 ```yml
 - name: Delete instance of Cluster
@@ -198,11 +198,11 @@ Az ebben a szakaszban szereplő forgatókönyv-kód törli a fürtöt.
     state: absent
 ```
 
-## <a name="get-the-sample-playbook"></a>A minta forgatókönyvének beolvasása
+## <a name="get-the-sample-playbook"></a>A minta forgatókönyvének beszereznie
 
-A teljes példa a következő két módon szerezhető be:
-- [Töltse le a](https://github.com/Azure-Samples/ansible-playbooks/blob/master/hdinsight_create.yml) forgatókönyvet, és mentse a `hdinsight_create.yml`ba.
-- Hozzon létre egy `hdinsight_create.yml` nevű új fájlt, és másolja bele a következő tartalomba:
+A teljes forgatókönyv kétféleképpen szerezhető be:
+- [Töltse le a forgatókönyvet,](https://github.com/Azure-Samples/ansible-playbooks/blob/master/hdinsight_create.yml) és mentse el `hdinsight_create.yml`.
+- Hozzon létre `hdinsight_create.yml` egy új fájl nevű és másolja be a következő tartalmat:
 
 ```yml
 ---
@@ -344,14 +344,14 @@ A teljes példa a következő két módon szerezhető be:
         state: absent
 ```
 
-## <a name="run-the-sample-playbook"></a>A minta forgatókönyv futtatása
+## <a name="run-the-sample-playbook"></a>A mintaforgatókönyv futtatása
 
-Ebben a szakaszban a forgatókönyv futtatásával tesztelheti a cikkben látható különféle funkciókat.
+Ebben a szakaszban futtassa a forgatókönyvet a cikkben bemutatott különböző funkciók teszteléséhez.
 
-A forgatókönyv futtatása előtt végezze el a következő módosításokat:
-- A `vars` szakaszban cserélje le a `{{ resource_group_name }}` helyőrzőt az erőforráscsoport nevére.
+A forgatókönyv futtatása előtt hajtsa végre a következő módosításokat:
+- A `vars` szakaszban cserélje `{{ resource_group_name }}` le a helyőrzőt az erőforráscsoport nevére.
 
-Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
+Futtassa a `ansible-playbook` forgatókönyvet a következő paranccsal:
 
 ```bash
 ansible-playbook hdinsight.yml
@@ -361,7 +361,7 @@ ansible-playbook hdinsight.yml
 
 Ha már nincs rá szükség, törölje a cikkben létrehozott erőforrásokat. 
 
-Mentse a következő kódot `cleanup.yml`ként:
+Mentse a következő `cleanup.yml`kódot:
 
 ```yml
 - hosts: localhost
@@ -375,13 +375,13 @@ Mentse a következő kódot `cleanup.yml`ként:
         state: absent
 ```
 
-Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
+Futtassa a `ansible-playbook` forgatókönyvet a következő paranccsal:
 
 ```bash
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"] 
 > [Ansible az Azure-on](/azure/ansible/)

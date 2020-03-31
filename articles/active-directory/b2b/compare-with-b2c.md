@@ -1,5 +1,5 @@
 ---
-title: VÁLLALATKÖZI együttműködés és B2C – Azure Active Directory összehasonlítása | Microsoft Docs
+title: B2B együttműködés és B2C összehasonlítása – Azure Active Directory | Microsoft dokumentumok
 description: Mi a különbség az Azure Active Directory B2B együttműködés és az Azure AD B2C között?
 services: active-directory
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7e7f5aa324db869e30a8b2fe214416129baca8d9
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "68380745"
 ---
 # <a name="compare-b2b-collaboration-and-b2c-in-azure-active-directory"></a>A B2B-együttműködés és az Azure Active Directory B2C összehasonlítása
@@ -31,14 +31,14 @@ Az alábbi táblázat részletes összehasonlítást ad meg.
 
 B2B együttműködési lehetőségek |     Azure AD B2C önálló ajánlat
 -------- | --------
-A következő célra szánt: Azok a szervezetek, amelyek személyazonosság-szolgáltatótól függetlenül szeretnék hitelesíteni a felhasználókat a partner szervezettől. | A következő célra szánt: A mobil-és webalkalmazások ügyfeleinek meghívása, akár magánszemélyek, akár intézményi vagy szervezeti ügyfelek az Azure AD-be.
-Támogatott identitások: Munkahelyi vagy iskolai fiókkal rendelkező alkalmazottak, munkahelyi vagy iskolai fiókkal rendelkező partnerek, vagy bármely e-mail-cím. Hamarosan támogatni fogja a közvetlen összevonást.  | Támogatott identitások: Felhasználói felhasználók helyi alkalmazás-fiókkal (bármely e-mail-címmel vagy felhasználónévvel) vagy bármely támogatott közösségi identitással közvetlen összevonással.
-A külső felhasználók kezelése az alkalmazottakkal megegyező könyvtárban történik, de kifejezetten megjegyzésekkel ellátva. Az alkalmazottakkal megegyező módon kezelhetők, de hozzáadhatók ugyanahhoz a csoporthoz, és így tovább  | A külső felhasználókat az alkalmazás könyvtára kezeli. Ezeket külön kezelik a szervezet alkalmazotti és partneri könyvtára (ha van ilyen).
-Egyszeri bejelentkezés (SSO) támogatása az összes Azure AD-hez csatlakozó alkalmazásra. Hozzáférést adhat például az Office 365-höz, vagy a helyszíni alkalmazásokhoz és egyéb SaaS-alkalmazásokhoz, amilyen például a Salesforce vagy a Workday.  |  Támogatja az Azure AD B2C bérlőkön belül az ügyfél tulajdonú alkalmazásokra az SSO-t. Az Office 365-hez vagy más Microsoft SaaS-alkalmazásokhoz való egyszeri bejelentkezés nem támogatott.
-Partneri életciklus: A gazdagép/meghívó szervezet kezeli.  | Ügyfél életciklusa: Az alkalmazás önkiszolgáló vagy felügyelt.
-Biztonsági házirend és megfelelőség: A gazdagép/meghívó szervezet (például [feltételes hozzáférési szabályzatok](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access)) kezeli.  | Biztonsági házirend és megfelelőség: Az alkalmazás kezeli.
-Branding A rendszer a gazdagép és a meghívó szervezet márkáját használja.  |    Branding Az alkalmazás kezeli. Általában termékek márkái láthatók, a szervezet inkább háttérbe szorul.
-További információ: [Blogbejegyzés](https://blogs.technet.microsoft.com/enterprisemobility/2017/02/01/azure-ad-b2b-new-updates-make-cross-business-collab-easy/), [dokumentáció](what-is-b2b.md)  | További információ: [Termék lap](https://azure.microsoft.com/services/active-directory-b2c/), [dokumentáció](https://docs.microsoft.com/azure/active-directory-b2c/)
+Kinek készült: olyan szervezeteknek, ahol igény van a partner szervezetek felhasználóinak hitelesítésére az identitásszolgáltatótól függetlenül. | Mire készült: A mobil- és webalkalmazás ügyfelek meghívása az Azure AD-be, akár egyéni, intézményi vagy szervezeti ügyfelekről legyen is szó.
+Támogatott identitások: Munkahelyi vagy iskolai fiókkal rendelkező alkalmazottak, munkahelyi vagy iskolai fiókkal vagy e-mail címmel rendelkező partnerek. Hamarosan támogatni fogja a közvetlen összevonást.  | Támogatott identitások: Fogyasztói felhasználók helyi vonatkozású fiókkal (bármilyen e-mail-cím vagy felhasználónév), vagy bármely támogatott közösségi identitás közvetlen összevonással.
+A külső felhasználók kezelése ugyanabban a könyvtárban történik, mint az alkalmazottak, de külön jegyzeteket is mellékelnek. Ugyanúgy kezelhetők, mint az alkalmazottak, hozzáadhatók ugyanazokhoz a csoportokhoz, és így tovább  | A külső felhasználók kezelése az alkalmazáskönyvtárban történik. A program a szervezet alkalmazotti és partnerkönyvtárától (ha van ilyen) elkülönítve kezeli őket.
+Egyszeri bejelentkezés (SSO) támogatása az összes Azure AD-hez csatlakozó alkalmazásra. Hozzáférést adhat például az Office 365-höz, vagy a helyszíni alkalmazásokhoz és egyéb SaaS-alkalmazásokhoz, amilyen például a Salesforce vagy a Workday.  |  Támogatja az Azure AD B2C bérlőkön belül az ügyfél tulajdonú alkalmazásokra az SSO-t. Az Office 365-re vagy más Microsoft SaaS-alkalmazásokra való sso nem támogatott.
+Partner életciklus: A vendéglátó/meghívó szervezet felügyeli.  | Ügyféléletciklus: Önkiszolgáló vagy az alkalmazás felügyeli.
+Biztonsági házirend és megfelelőség: A gazdaszervezet/meghívó szervezet által kezelt (például [feltételes hozzáférési házirendekkel).](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access)  | Biztonsági házirend és megfelelőség: Az alkalmazás kezeli.
+Védjegyek: A vendéglátó/meghívó szervezet védjegyét használja.  |    Védjegyek: Az alkalmazás kezeli. Általában termékek márkái láthatók, a szervezet inkább háttérbe szorul.
+További információk: [Blogbejegyzés](https://blogs.technet.microsoft.com/enterprisemobility/2017/02/01/azure-ad-b2b-new-updates-make-cross-business-collab-easy/), [Dokumentáció](what-is-b2b.md)  | További információk: [Termék oldala](https://azure.microsoft.com/services/active-directory-b2c/), [Dokumentáció](https://docs.microsoft.com/azure/active-directory-b2c/)
 
 
 ### <a name="next-steps"></a>További lépések

@@ -1,43 +1,43 @@
 ---
-title: Virtuális hálózati szabályok – Azure Database for PostgreSQL – egyetlen kiszolgáló
-description: Megtudhatja, hogyan használhatja a Virtual Network (vnet) szolgáltatás-végpontokat Azure Database for PostgreSQL-kiszolgálóhoz való kapcsolódásra.
+title: Virtuális hálózati szabályok - Azure Database for PostgreSQL - Single Server
+description: Ismerje meg, hogyan használhatja a virtuális hálózati (vnet) szolgáltatásvégpontok az Azure Database for PostgreSQL - Single Server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 512ad8f93da53afb618491cd1769645d8edb0b14
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75965842"
 ---
-# <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>Virtual Network szolgáltatási végpontok és szabályok használata Azure Database for PostgreSQL – egyetlen kiszolgáló esetén
+# <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>Virtuális hálózati szolgáltatás végpontjainak és szabályainak használata az Azure Database for PostgreSQL - Single Server szolgáltatáshoz
 
-A *virtuális hálózati szabályok* egy tűzfal biztonsági funkciója, amely azt szabályozza, hogy a Azure Database for PostgreSQL-kiszolgáló fogadja-e a virtuális hálózatok egyes alhálózatai által továbbított kommunikációt. Ebből a cikkből megtudhatja, miért érdemes a virtuális hálózati szabály funkciót időnként a Azure Database for PostgreSQL-kiszolgálóval való kommunikáció biztonságos engedélyezésére.
+*A virtuális hálózati szabályok* egy tűzfalbiztonsági szolgáltatás, amely azt szabályozza, hogy az Azure Database for PostgreSQL-kiszolgáló elfogadja-e a virtuális hálózatok bizonyos alhálózataiból küldött kommunikációt. Ez a cikk ismerteti, hogy miért a virtuális hálózati szabály funkció néha a legjobb megoldás a biztonságos kommunikáció lehetővé tétele az Azure Database for PostgreSQL-kiszolgáló.
 
-Virtuális hálózati szabály létrehozásához először [virtuális hálózatnak][vm-virtual-network-overview] (VNet) és [virtuális hálózati szolgáltatási végpontnak][vm-virtual-network-service-endpoints-overview-649d] kell lennie ahhoz, hogy a szabály hivatkozzon. Az alábbi ábra azt szemlélteti, hogyan működik a Virtual Network szolgáltatás-végpont Azure Database for PostgreSQL:
+Virtuális hálózati szabály létrehozásához először egy [virtuális hálózatnak][vm-virtual-network-overview] (VNet) és egy [virtuális hálózati szolgáltatás végpontjának][vm-virtual-network-service-endpoints-overview-649d] kell lennie a szabályhoz. Az alábbi kép bemutatja, hogyan működik a virtuális hálózati szolgáltatás végpontja az Azure Database for PostgreSQL szolgáltatással:
 
-![Példa egy VNet-szolgáltatási végpont működésére](media/concepts-data-access-and-security-vnet/vnet-concept.png)
+![Példa a VNet-szolgáltatásvégpont működésére](media/concepts-data-access-and-security-vnet/vnet-concept.png)
 
 > [!NOTE]
-> Ez a funkció az Azure nyilvános felhő összes régiójában elérhető, ahol a Azure Database for PostgreSQL általános célú és a memóriára optimalizált kiszolgálók esetében van telepítve.
-> VNet esetén, ha a forgalom egy közös VNet-átjárón keresztül áramlik a szolgáltatási végpontokkal, és a partnernek kell lennie, hozzon létre egy ACL/VNet szabályt, amely lehetővé teszi, hogy az Azure Virtual Machines az átjáró VNet hozzáférjenek a Azure Database for PostgreSQL-kiszolgálóhoz.
+> Ez a funkció az Azure nyilvános felhőjének minden régiójában elérhető, ahol az Azure Database for PostgreSQL általános célú és memóriaoptimalizált kiszolgálókra van telepítve.
+> Virtuális hálózati társviszony-létesítés esetén, ha a forgalom egy szolgáltatás-végpontokkal rendelkező közös virtuális hálózati átjárón keresztül áramlik, és a társnak kell áramlania, hozzon létre egy ACL/VNet szabályt, amely lehetővé teszi, hogy az Azure virtuális gépek az átjáró virtuális hálózatában hozzáférjenek az Azure Database for PostgreSQL-kiszolgálóhoz.
 
 <a name="anch-terminology-and-description-82f" />
 
 ## <a name="terminology-and-description"></a>Terminológia és leírás
 
-**Virtuális hálózat:** Az Azure-előfizetéshez társított virtuális hálózatokat is használhat.
+**Virtuális hálózat:** Az Azure-előfizetéshez virtuális hálózatokat társíthat.
 
-**Alhálózat:** Egy virtuális hálózat **alhálózatokat**tartalmaz. Az alhálózatokhoz társított bármely Azure-beli virtuális gép (VM). Egy alhálózat több virtuális gépet vagy más számítási csomópontot is tartalmazhat. A virtuális hálózatán kívüli számítási csomópontok nem férnek hozzá a virtuális hálózathoz, kivéve, ha úgy konfigurálja a biztonságot, hogy engedélyezze a hozzáférést.
+**Alhálózat:** A virtuális hálózat **alhálózatokat**tartalmaz. Minden Azure virtuális gépek (Virtuális gépek), amely rendelkezik az alhálózatokhoz van rendelve. Egy alhálózat több virtuális gépet vagy más számítási csomópontot tartalmazhat. A virtuális hálózaton kívüli számítási csomópontok csak akkor férhetnek hozzá a virtuális hálózathoz, ha a biztonságot úgy állítja be, hogy engedélyezze a hozzáférést.
 
-**Virtual Network szolgáltatási végpont:** A [Virtual Network szolgáltatási végpont][vm-virtual-network-service-endpoints-overview-649d] olyan alhálózat, amelynek tulajdonságértékek egy vagy több formális Azure-szolgáltatástípus nevét tartalmazzák. Ebben a cikkben a **Microsoft. SQL**típus neve érdekli, amely az SQL Database nevű Azure-szolgáltatásra hivatkozik. Ez a szolgáltatási címke a Azure Database for PostgreSQL és a MySQL szolgáltatásokra is vonatkozik. Fontos megjegyezni, hogy amikor a **Microsoft. SQL** szolgáltatás címkéjét egy VNet-szolgáltatási végpontra alkalmazza, akkor a szolgáltatás végponti forgalmát az alhálózaton lévő összes Azure SQL Database, Azure Database for PostgreSQL és Azure Database for MySQL kiszolgáló esetében konfigurálni fogja. 
+**Virtuális hálózat szolgáltatás végpontja:** A [virtuális hálózati szolgáltatás végpontja][vm-virtual-network-service-endpoints-overview-649d] egy alhálózat, amelynek tulajdonságértékei egy vagy több hivatalos Azure-szolgáltatástípus-neveket tartalmaznak. Ebben a cikkben a **Microsoft.Sql**típusneve érdekel, amely az SQL Database nevű Azure-szolgáltatásra hivatkozik. Ez a szolgáltatáscímke a PostgreSQL- és MySQL-szolgáltatásokazure Database szolgáltatására is vonatkozik. Fontos megjegyezni, ha a **Microsoft.Sql** szolgáltatáscímke egy VNet szolgáltatás végpontra, akkor konfigurálja a szolgáltatás végponti forgalmat az összes Azure SQL-adatbázis, az Azure Database for PostgreSQL és az Azure Database for MySQL-kiszolgálók az alhálózaton. 
 
-**Virtuális hálózati szabály:** A Azure Database for PostgreSQL-kiszolgáló virtuális hálózati szabálya egy alhálózat, amely a Azure Database for PostgreSQL-kiszolgáló hozzáférés-vezérlési listájában (ACL) szerepel. Ahhoz, hogy a Azure Database for PostgreSQL-kiszolgáló ACL-je legyen, az alhálózatnak tartalmaznia kell a **Microsoft. SQL** típus nevét.
+**Virtuális hálózati szabály:** Az Azure Database for PostgreSQL-kiszolgáló virtuális hálózati szabálya egy alhálózat, amely szerepel az Azure Database for PostgreSQL-kiszolgáló hozzáférés-vezérlési listájában (ACL). Ahhoz, hogy az Azure Database for PostgreSQL-kiszolgáló a cl-ben legyen, az alhálózatnak tartalmaznia kell a **Microsoft.Sql** típusnevet.
 
-Egy virtuális hálózati szabály közli a Azure Database for PostgreSQL-kiszolgálóval, hogy fogadja a kommunikációt az alhálózaton lévő összes csomópontról.
+A virtuális hálózati szabály azt mondja az Azure Database for PostgreSQL-kiszolgáló, hogy fogadja el a kommunikációt minden csomópont, amely az alhálózaton található.
 
 
 
@@ -47,103 +47,103 @@ Egy virtuális hálózati szabály közli a Azure Database for PostgreSQL-kiszol
 
 <a name="anch-benefits-of-a-vnet-rule-68b" />
 
-## <a name="benefits-of-a-virtual-network-rule"></a>Virtuális hálózati szabály előnyei
+## <a name="benefits-of-a-virtual-network-rule"></a>A virtuális hálózati szabály előnyei
 
-Amíg el nem végzi a műveletet, az alhálózatokon lévő virtuális gépek nem tudnak kommunikálni a Azure Database for PostgreSQL-kiszolgálóval. A kommunikációt létrehozó egyik művelet egy virtuális hálózati szabály létrehozása. A VNet szabály megközelítésének indoklása egy összehasonlítási és kontrasztos vitát igényel, amely magában foglalja a tűzfal által kínált versengő biztonsági beállításokat.
+Aművelet megtételéig az alhálózatokon lévő virtuális gépek nem tudnak kommunikálni az Azure-adatbázis postgreSQL-kiszolgálóhoz szolgáltatásával. A kommunikációt létrehozó egyik művelet egy virtuális hálózati szabály létrehozása. A virtuális hálózat szabálymegközelítésének kiválasztásához a tűzfal által kínált versengő biztonsági beállításokat érintő összehasonlítási és kontraszti egyeztetést igényel.
 
 ### <a name="a-allow-access-to-azure-services"></a>A. Azure-szolgáltatásokhoz való hozzáférés engedélyezése
 
-A kapcsolat biztonsági paneljén **be-és KIkapcsoló** gomb található, amely **lehetővé teszi az Azure-szolgáltatásokhoz való hozzáférést**. A **on** beállítás lehetővé teszi az összes Azure IP-cím és az összes Azure-alhálózat kommunikációját. Előfordulhat, hogy ezek az Azure-beli IP-címek vagy alhálózatok nem tulajdonosai. Ez **a** beállítás valószínűleg nyitottabb, mint amennyire szeretné, hogy a Azure Database for PostgreSQL adatbázisa legyen. A virtuális hálózati szabály funkció sokkal finomabb, részletesebb szabályozást biztosít.
+A Kapcsolat biztonsági ablaktábláján található egy **BE/OFF** gomb, amelynek címkéje **Az Azure-szolgáltatásokhoz való hozzáférés engedélyezése.** Az **ON** beállítás lehetővé teszi az összes Azure IP-címről és az összes Azure-alhálózatról érkező kommunikációt. Ezek az Azure IP-k vagy alhálózatok előfordulhat, hogy nem az Ön tulajdonában vannak. Ez **az ON** beállítás valószínűleg nyitottabb, mint szeretné, hogy az Azure Database for PostgreSQL Database kell lennie. A virtuális hálózati szabály funkció sokkal finomabb részletes vezérlést kínál.
 
 ### <a name="b-ip-rules"></a>B. IP-szabályok
 
-A Azure Database for PostgreSQL tűzfal lehetővé teszi olyan IP-címtartományok megadását, amelyekről a Azure Database for PostgreSQL-adatbázis fogadja a kommunikációt. Ez a megközelítés az Azure-magánhálózaton kívüli stabil IP-címekre is kiváló. Az Azure-magánhálózat számos csomópontja azonban *dinamikus* IP-címekkel van konfigurálva. Előfordulhat, hogy a dinamikus IP-címek változhatnak, például a virtuális gép újraindításakor. Az éles környezetben nem lehet dinamikus IP-címet megadni egy tűzfalszabály számára.
+Az Azure Database for PostgreSQL tűzfal lehetővé teszi, hogy ip-címtartományokat adjon meg, amelyekből a kommunikációt elfogadják az Azure Database for PostgreSQL database. Ez a megközelítés az Azure magánhálózaton kívüli stabil IP-címek esetén is megfelel. Az Azure magánhálózatán belül azonban sok csomópont *dinamikus* IP-címekkel van konfigurálva. Dinamikus IP-címek változhatnak, például a virtuális gép újraindításakor. Ostobaság lenne dinamikus IP-címet megadni egy tűzfalszabályban, éles környezetben.
 
-Az IP-címet a virtuális gép *statikus* IP-címének beszerzésével lehet megmenteni. Részletekért lásd: [a virtuális gép magánhálózati IP-címeinek konfigurálása a Azure Portal használatával][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w].
+Az IP-opció mentheti egy *statikus* IP-címet a virtuális gép. További információt a [Privát IP-címek konfigurálása egy virtuális géphez az Azure Portal használatával című témakörben talál.][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]
 
-A statikus IP-cím azonban nehezen kezelhető, és költséges, ha nagy léptékben történik. A virtuális hálózati szabályok könnyebben hozhatók létre és kezelhetők.
+Azonban a statikus IP-megközelítés válhat nehéz kezelni, és költséges, ha történik a skála. A virtuális hálózati szabályok at könnyebb létrehozni és kezelni.
 
-### <a name="c-cannot-yet-have-azure-database-for-postgresql-on-a-subnet-without-defining-a-service-endpoint"></a>C. Egy alhálózaton még nem lehet Azure Database for PostgreSQL a szolgáltatási végpont definiálását nem
+### <a name="c-cannot-yet-have-azure-database-for-postgresql-on-a-subnet-without-defining-a-service-endpoint"></a>C. A PostgreSQL Azure Database szolgáltatásvégpont definiálása nélkül nem található alhálózaton
 
-Ha a **Microsoft. SQL** Server a virtuális hálózat egyik alhálózatának csomópontja volt, a virtuális hálózaton belüli összes csomópont kommunikálhat a Azure Database for PostgreSQL-kiszolgálóval. Ebben az esetben a virtuális gépek kommunikálhatnak a Azure Database for PostgreSQL anélkül, hogy virtuális hálózati szabályokat vagy IP-szabályokat kellene megadnia.
+Ha a **Microsoft.Sql-kiszolgáló** a virtuális hálózat egyik alhálózatának csomópontja volt, a virtuális hálózaton belül minden csomópont kommunikálhat az Azure Database for PostgreSQL-kiszolgálóval. Ebben az esetben a virtuális gépek kommunikálhatnak az Azure Database for PostgreSQL anélkül, hogy a virtuális hálózati szabályok vagy IP-szabályok.
 
-Azonban augusztus 2018-én a Azure Database for PostgreSQL szolgáltatás még nem tartozik az alhálózathoz közvetlenül hozzárendelhető szolgáltatások közé.
+2018 augusztusától azonban az Azure Database for PostgreSQL szolgáltatás még nem szerepel a közvetlenül egy alhálózathoz rendelhető szolgáltatások között.
 
 <a name="anch-details-about-vnet-rules-38q" />
 
 ## <a name="details-about-virtual-network-rules"></a>A virtuális hálózati szabályok részletei
 
-Ez a szakasz a virtuális hálózati szabályokkal kapcsolatos néhány részletet ismerteti.
+Ez a szakasz a virtuális hálózati szabályokkal kapcsolatos számos részletet ismerteti.
 
 ### <a name="only-one-geographic-region"></a>Csak egy földrajzi régió
 
-Minden Virtual Network szolgáltatási végpont csak egy Azure-régióra vonatkozik. A végpont nem teszi lehetővé más régiók számára, hogy fogadják a kommunikációt az alhálózatból.
+Minden virtuális hálózati szolgáltatás végpont csak egy Azure-régióban vonatkozik. A végpont nem teszi lehetővé, hogy más régiók fogadják az alhálózatkommunikációt.
 
-Bármely virtuális hálózati szabály arra a régióra korlátozódik, amelyre a mögöttes végpont vonatkozik.
+Minden virtuális hálózati szabály arra a régióra korlátozódik, amelyaz alapul szolgáló végpontja vonatkozik.
 
-### <a name="server-level-not-database-level"></a>Kiszolgáló szintű, nem adatbázis-szintű
+### <a name="server-level-not-database-level"></a>Kiszolgálószintű, nem adatbázisszintű
 
-Minden virtuális hálózati szabály a teljes Azure Database for PostgreSQL-kiszolgálóra vonatkozik, nem csupán egy adott adatbázisra a kiszolgálón. Más szóval a virtuális hálózati szabály a kiszolgáló szintjén, nem pedig az adatbázis szintjén érvényes.
+Minden virtuális hálózati szabály a teljes Azure-adatbázis postgreSQL-kiszolgálóra vonatkozik, nem csak a kiszolgálón lévő egyetlen adatbázisra. Más szóval a virtuális hálózati szabály a kiszolgáló szintjén érvényes, nem pedig az adatbázis szintjén.
 
 #### <a name="security-administration-roles"></a>Biztonsági felügyeleti szerepkörök
 
-A biztonsági szerepkörök elkülönítése Virtual Network szolgáltatási végpontok felügyelete alatt áll. A következő szerepkörök mindegyike esetében beavatkozásra van szükség:
+A virtuális hálózat szolgáltatás végpontjainak felügyeletében a biztonsági szerepkörök elkülönülnek. A következő szerepkörök mindegyikéből szükség van műveletre:
 
-- **Hálózati rendszergazda:** &nbsp; kapcsolja be a végpontot.
-- **Adatbázis-rendszergazda:** &nbsp; a hozzáférés-vezérlési lista (ACL) frissítésével adja hozzá a megadott alhálózatot a Azure Database for PostgreSQL-kiszolgálóhoz.
+- **Hálózati rendszergazda:** &nbsp; Kapcsolja be a végpontot.
+- **Adatbázis-rendszergazda:** &nbsp; Frissítse a hozzáférés-vezérlési listát (ACL) a megadott alhálózat hozzáadásához az Azure Database for PostgreSQL-kiszolgálóhoz.
 
 *RBAC alternatíva:*
 
-A hálózati rendszergazda és az adatbázis-rendszergazda szerepkörének több funkciója van, mint amennyi a virtuális hálózati szabályok kezeléséhez szükséges. A képességeinek csak egy részhalmazára van szükség.
+A hálózati rendszergazda és az adatbázis-rendszergazda szerepkörei több képességgel rendelkeznek, mint amennyi a virtuális hálózati szabályok kezeléséhez szükséges. Képességeiknek csak egy részhalmazára van szükség.
 
-Használhat [szerepköralapú hozzáférés-vezérlést (RBAC)][rbac-what-is-813s] az Azure-ban, hogy egyetlen egyéni szerepkört hozzon létre, amely csak a képességek megfelelő részhalmazát használja. Az egyéni szerepkör felhasználható a hálózati rendszergazda vagy az adatbázis-rendszergazda bevonása helyett. Ha egyéni szerepkörhöz ad hozzá felhasználót, és a másik két fő rendszergazdai szerepkörhöz hozzáadja a felhasználót, a biztonsági expozíció felülete alacsonyabb lesz.
+Lehetősége van [szerepköralapú hozzáférés-vezérlés (RBAC)][rbac-what-is-813s] használatával az Azure-ban egyetlen egyéni szerepkör, amely csak a szükséges részhalmaza képességeit. Az egyéni szerepkör a hálózati rendszergazda vagy az adatbázis-rendszergazda helyett használható. A biztonsági expozíció felülete alacsonyabb, ha egy felhasználót hozzáad egy egyéni szerepkörhöz, szemben a felhasználó másik két fő rendszergazdai szerepkörrel való hozzáadásával.
 
 > [!NOTE]
-> Bizonyos esetekben a Azure Database for PostgreSQL és a VNet különböző előfizetésekben találhatók. Ezekben az esetekben a következő konfigurációkat kell biztosítania:
-> - Mindkét előfizetésnek ugyanahhoz a Azure Active Directory bérlőhöz kell tartoznia.
-> - A felhasználó rendelkezik a szükséges engedélyekkel a műveletek elindításához, például a szolgáltatási végpontok engedélyezéséhez és egy VNet-alhálózat hozzáadásához az adott kiszolgálóhoz.
-> - Győződjön meg arról, hogy mindkét előfizetés regisztrálva van a **Microsoft. SQL** erőforrás-szolgáltatónál. További információ: [Resource-Manager-regisztráció][resource-manager-portal]
+> Bizonyos esetekben az Azure Database for PostgreSQL és a VNet-alhálózat különböző előfizetésekben vannak. Ezekben az esetekben a következő konfigurációkat kell biztosítania:
+> - Mindkét előfizetésnek ugyanabban az Azure Active Directory-bérlőben kell lennie.
+> - A felhasználó rendelkezik a műveletek kezdeményezéséhez szükséges engedélyekkel, például a szolgáltatásvégpontok engedélyezéséhez és a virtuális hálózat adott kiszolgálóhoz való hozzáadásához szükséges engedélyekkel.
+> - Győződjön meg arról, hogy mind az előfizetés rendelkezik a **Microsoft.Sql** erőforrás-szolgáltató regisztrálva. További információkért lásd [az erőforrás-kezelő-regisztrációt][resource-manager-portal]
 
 ## <a name="limitations"></a>Korlátozások
 
-Azure Database for PostgreSQL esetében a virtuális hálózati szabályok funkció a következő korlátozásokkal rendelkezik:
+A PostgreSQL-hez készült Azure Database esetében a virtuális hálózati szabályok szolgáltatása a következő korlátozásokkal rendelkezik:
 
-- A webalkalmazások egy VNet/alhálózat magánhálózati IP-címére képezhetők le. Még ha a szolgáltatási végpontok be vannak kapcsolva a megadott VNet/alhálózatból, akkor a webalkalmazás és a kiszolgáló közötti kapcsolatok Azure nyilvános IP-címmel rendelkeznek, nem VNet/alhálózat-forrásként. Ha egy webalkalmazás kapcsolatát szeretné engedélyezni egy olyan kiszolgálóra, amely VNet rendelkezik, engedélyeznie kell az Azure-szolgáltatások számára a kiszolgáló elérését a kiszolgálón.
+- A webalkalmazás leképezhető egy privát IP-címre egy virtuális hálózatban/alhálózatban. Még akkor is, ha a szolgáltatás végpontjai be vannak kapcsolva a megadott virtuális hálózatról/alhálózatról, a webalkalmazás és a kiszolgáló kapcsolata azure-beli nyilvános IP-forrással fog rendelkezni, nem pedig virtuális hálózat/alhálózati forrással. Ahhoz, hogy engedélyezze a kapcsolatot egy webalkalmazásból egy olyan kiszolgálóra, amely rendelkezik virtuálishálózati tűzfalszabályokkal, engedélyeznie kell az Azure-szolgáltatások számára a kiszolgáló elérését a kiszolgálón.
 
-- A Azure Database for PostgreSQL tűzfalában minden egyes virtuális hálózati szabály egy alhálózatra hivatkozik. Az összes hivatkozott alhálózatnak ugyanabban a földrajzi régióban kell lennie, amely a Azure Database for PostgreSQL üzemelteti.
+- A PostgreSQL Azure-adatbázis tűzfalában minden virtuális hálózati szabály egy alhálózatra hivatkozik. Mindezek a hivatkozott alhálózatok kell üzemeltetni ugyanabban a földrajzi régióban, amely az Azure Database for PostgreSQL.
 
-- Minden Azure Database for PostgreSQL-kiszolgáló legfeljebb 128 ACL-bejegyzést tartalmazhat bármely adott virtuális hálózathoz.
+- A PostgreSQL-kiszolgálók minden Egyes Azure-adatbázisa legfeljebb 128 ACL-bejegyzéssel rendelkezhet egy adott virtuális hálózathoz.
 
-- A virtuális hálózati szabályok csak Azure Resource Manager virtuális hálózatokra érvényesek; és nem a [klasszikus üzembe helyezési modell][arm-deployment-model-568f] hálózatait.
+- A virtuális hálózati szabályok csak az Azure Resource Manager virtuális hálózataira vonatkoznak; és nem a [klasszikus üzembe helyezési modell][arm-deployment-model-568f] hálózatok.
 
-- A virtuális hálózati szolgáltatási végpontok a **Microsoft. SQL** szolgáltatással való Azure Database for PostgreSQL való bekapcsolásával az összes Azure Database-szolgáltatás végpontját is engedélyezi: Azure Database for MySQL, Azure Database for PostgreSQL, Azure SQL Database és Azure SQL Data Warehouse.
+- A virtuális hálózati szolgáltatás végpontjainak bekapcsolása a PostgreSQL Azure Database for PostgreSQL szolgáltatáshoz a **Microsoft.Sql** szolgáltatáscímke használatával lehetővé teszi az összes Azure Database-szolgáltatás végpontjait is: az Azure Database for MySQL, az Azure Database for PostgreSQL, az Azure SQL Database és az Azure SQL Data Warehouse.
 
-- A VNet szolgáltatás-végpontok támogatása csak a általános célú és a memóriára optimalizált kiszolgálók esetében támogatott.
+- A Virtuálishálózat-szolgáltatás végpontjainak támogatása csak általános célú és memóriaoptimalizált kiszolgálókhoz érhető el.
 
-- A tűzfalon az IP-címtartományok a következő hálózati elemekre vonatkoznak, a virtuális hálózati szabályok azonban nem:
+- A tűzfalon az IP-címtartományok a következő hálózati elemekre vonatkoznak, de a virtuális hálózati szabályok nem:
     - [Helyek közötti (S2S) virtuális magánhálózat (VPN)][vpn-gateway-indexmd-608y]
-    - Helyszíni [ExpressRoute][expressroute-indexmd-744v] -on keresztül
+    - Helyszíni műveletek az [ExpressRoute-on][expressroute-indexmd-744v] keresztül
 
 ## <a name="expressroute"></a>ExpressRoute
 
-Ha a hálózat [ExpressRoute][expressroute-indexmd-744v]használatával csatlakozik az Azure-hálózathoz, minden áramkör két nyilvános IP-címmel van konfigurálva a Microsoft Edge-ben. A két IP-cím használatával kapcsolódhat a Microsoft-szolgáltatásokhoz, például az Azure Storage-hoz az Azure nyilvános társ-létrehozással.
+Ha a hálózat [expressroute][expressroute-indexmd-744v]használatával csatlakozik az Azure-hálózathoz, minden egyes kapcsolatcsoport két nyilvános IP-címmel van konfigurálva a Microsoft Edge-ben. A két IP-cím a Microsoft-szolgáltatásokhoz való csatlakozáshoz, például az Azure Storage-hoz való csatlakozáshoz használható az Azure nyilvános társviszony-létesítése használatával.
 
-Ha engedélyezni szeretné az áramkörről a Azure Database for PostgreSQL felé irányuló kommunikációt, létre kell hoznia IP-hálózati szabályokat az áramkörök nyilvános IP-címeihez. A ExpressRoute-áramkör nyilvános IP-címeinek megkereséséhez a Azure Portal segítségével nyisson meg egy támogatási jegyet a ExpressRoute.
+Ahhoz, hogy lehetővé tegye a kapcsolatot a kapcsolatcsoport ból azure database for PostgreSQL, létre kell hoznia az IP-hálózati szabályok at a nyilvános IP-címek a körkapcsolatok. Az ExpressRoute-kapcsolat nyilvános IP-címeinek megkereséséhez nyisson meg egy támogatási jegyet az ExpressRoute-tal az Azure Portal használatával.
 
-## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>VNET-tűzfalszabály hozzáadása a kiszolgálóhoz a VNET szolgáltatás végpontjai bekapcsolása nélkül
+## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>VNET-tűzfalszabály hozzáadása a kiszolgálóhoz a VNET-szolgáltatás végpontjainak bekapcsolása nélkül
 
-Pusztán egy tűzfalszabály beállítása nem segít a kiszolgálónak a VNet való biztonságossá tételében. **A VNet** szolgáltatás-végpontokat is be kell kapcsolni a biztonság érvénybe léptetéséhez. Ha bekapcsolja **a**szolgáltatási végpontokat, a VNet-alhálózat az állásidőt, amíg be nem fejeződik a **kikapcsolás** és **a**közötti átmenet. Ez különösen igaz a nagyméretű virtuális hálózatok kontextusában. A **IgnoreMissingServiceEndpoint** jelzővel csökkentheti vagy törölheti az állásidőt az áttérés során.
+A tűzfalszabály beállítása nem segít a kiszolgáló virtuális hálózathoz való védelmében. A virtuális hálózat szolgáltatásvégpontjait is be kell **kapcsolnia** ahhoz, hogy a biztonság érvénybe lépjen. Ha bekapcsolja **a**szolgáltatásvégpontokat, a virtuális hálózat alhálózata állásidőt tapasztal, amíg be nem fejezi a **Ki** és **Be**állás ba való átmenetet. Ez különösen igaz a nagy virtuális hálózatok összefüggésében. Az **IgnoreMissingServiceEndpoint** jelzővel csökkentheti vagy megszüntetheti az állásidőt az átmenet során.
 
-A **IgnoreMissingServiceEndpoint** jelzőt az Azure CLI vagy a portál használatával állíthatja be.
+Az **IgnoreMissingServiceEndpoint** jelző az Azure CLI vagy a portál használatával állítható be.
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
-- [Azure-beli virtuális hálózatok][vm-virtual-network-overview]
-- [Azure Virtual Network szolgáltatásbeli végpontok][vm-virtual-network-service-endpoints-overview-649d]
+- [Az Azure virtuális hálózatai][vm-virtual-network-overview]
+- [Az Azure virtuális hálózati szolgáltatásának végpontjai][vm-virtual-network-service-endpoints-overview-649d]
 
-## <a name="next-steps"></a>Következő lépések
-A VNet-szabályok létrehozásával kapcsolatos cikkekért lásd:
-- [Azure Database for PostgreSQL VNet-szabályok létrehozása és kezelése a Azure Portal használatával](howto-manage-vnet-using-portal.md)
-- [Azure Database for PostgreSQL VNet-szabályok létrehozása és kezelése az Azure CLI használatával](howto-manage-vnet-using-cli.md)
+## <a name="next-steps"></a>További lépések
+A virtuális hálózati szabályok létrehozásáról szóló cikkeka következő témakörben tetthet:
+- [Azure-adatbázis létrehozása és kezelése a PostgreSQL virtuális hálózat szabályaihoz az Azure Portal használatával](howto-manage-vnet-using-portal.md)
+- [Azure-adatbázis létrehozása és kezelése a PostgreSQL virtuális hálózat szabályaihoz az Azure CLI használatával](howto-manage-vnet-using-cli.md)
 
 
 <!-- Link references, to text, Within this same GitHub repo. -->

@@ -1,6 +1,6 @@
 ---
-title: Huzavona-adatfolyamok Azure Data Factory
-description: A Azure Data Factory huzavona-adatforgalmának áttekintése
+title: Az Azure Data Factory ban zajló adatfolyamok
+description: Az Azure Data Factory ban zajló adatfolyamatok áttekintése
 author: djpmsft
 ms.author: daperlov
 ms.reviewer: gamal
@@ -8,60 +8,60 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
 ms.openlocfilehash: 8f91ed926c733b211443805722b6817b1ce005b6
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77048362"
 ---
-# <a name="what-are-wrangling-data-flows"></a>Mik azok az huzavona-adatforgalom?
+# <a name="what-are-wrangling-data-flows"></a>Mik azok a huzavona adatfolyamok?
 
-A szervezeteknek adatelőkészítést és huzavona kell végezniük az olyan összetett adatmennyiségek pontos elemzéséhez, amelyek napról napra folyamatosan növekednek. Az adatelőkészítésre azért van szükség, hogy a szervezetek különböző üzleti folyamatok során használhassák az adatmennyiséget, és csökkentsék az időt az értékre.
+A szervezeteknek adatelőkészítést és huzavonát kell végezniük az összetett adatok pontos elemzéséhez, amelyek napról napra növekednek. Az adatok előkészítése szükséges ahhoz, hogy a szervezetek felhasználhassák az adatokat a különböző üzleti folyamatokban, és csökkenthessék az értékhez szükséges időt.
 
-A Azure Data Factory huzavona adatforgalma lehetővé teszi a kód nélküli adatelőkészítést a felhőalapú méretezési iteratív. A huzavona-adatfolyamatok integrálva vannak [Power Query online](https://docs.microsoft.com/power-query/) -nal, és Power Query M funkciókat biztosítanak a adat-előállító felhasználók számára.
+Az Azure Data Factory ban zajló adatfolyamatok lehetővé teszik, hogy a kódmentes adatelőkészítést felhőalapú, iteratív módon végezze el. A vonódsás adatfolyamok integrálhatók a [Power Query Online-nal,](https://docs.microsoft.com/power-query/) és elérhetővé teszik a Power Query M függvényeket az adatfeldolgozó felhasználók számára.
 
-A huzavona adatáramlási folyamata az Power Query online mashup-szerkesztő által generált, a Felhőbeli méretezés végrehajtásához készült Spark-kódra.
+A huzavona adatfolyam a Power Query Online Mashup Editor által generált M-et szikrakóddaként fordítja le a felhőalapú méretezés végrehajtásához.
 
-A huzavona adatforgalmai különösen hasznosak az adatmérnökök vagy a Citizen-adatintegrátorok számára.
+A vonóds adatfolyamok különösen hasznosak az adatmérnökök vagy a "polgári adatintegrátorok" számára.
 
 ## <a name="use-cases"></a>Használati esetek
 
-### <a name="fast-interactive-data-exploration-and-preparation"></a>Gyors interaktív adatfeltárás és-előkészítés
+### <a name="fast-interactive-data-exploration-and-preparation"></a>Gyors interaktív adatfeltárás és -előkészítés
 
-A több adatmérnökök és az állampolgárok adatintegrátorai interaktív módon tudják felderíteni és előkészíteni az adatkészleteket a Felhőbeli méretekben. Az adattavak mennyiségének, változatosságának és sebességének növekedésével a felhasználóknak hatékony módon kell megvizsgálniuk és előkészíteniük az adatkészleteket. Előfordulhat például, hogy létre kell hoznia egy adatkészletet, amely a "minden ügyfél demográfiai információt tartalmaz az új ügyfelek számára a 2017 óta". Nem egy ismert célhoz van hozzárendelve. Olyan adatkészleteket keres, huzavona és prepping, amelyek megfelelnek egy követelménynek, mielőtt közzéteszik azt a tóban. A huzavona-adatfolyamatokat gyakran használják kevésbé formális elemzési helyzetekben. A elő-adatkészletek felhasználhatók átalakítások és gépi tanulási műveletek végrehajtásához.
+Több adatmérnök és a polgárok adatintetegrátorai interaktívmódon feltárhatják és előkészíthetik az adatkészleteket felhőméretekben. Az adattavakban lévő adatok mennyiségének, változatosságának és sebességének növekedésével a felhasználóknak hatékony módon kell feltárniuk és előkészíteniük az adatkészleteket. Előfordulhat például, hogy olyan adatkészletet kell létrehoznia, amely "2017 óta rendelkezik az új ügyfelek összes ügyféldemográfiai adatával". Nem egy ismert célponthoz mész. Az adatkészletek feltárása, huzavona és előkészítése, hogy megfeleljen egy követelménynek, mielőtt közzétenné azt a tóban. A huzavonaadat-folyamatokat gyakran használják kevésbé formális elemzési forgatókönyvekhez. Az előkészített adatkészletek átalakítási és gépi tanulási műveletek downstream.
 
-### <a name="code-free-agile-data-preparation"></a>Kód nélküli agilis adatelőkészítés
+### <a name="code-free-agile-data-preparation"></a>Kódmentes agilis adatelőkészítés
 
-Az állampolgárok adatintegrátorai több mint 60%-ot költenek az adatgyűjtésre és-előkészítésre. Azt szeretnék, hogy a működés hatékonyságának javítása érdekében kód nélküli módon végezzék el. Lehetővé teszi az adatbányászati adatintegrátorok számára, hogy az olyan ismert eszközökkel bővítsék, formálják és tegyenek közzé az információkat, mint például a Power Query online, ami jelentősen javítja a termelékenységet. A Azure Data Factory huzavona-adatfolyama lehetővé teszi a jól ismert Power Query online adategyesítési szerkesztő számára, hogy lehetővé tegye a polgárok adatintegrátorai számára a hibák gyors javítását, a szabványosított adatmennyiséget és az üzleti döntések támogatásához magas színvonalú adatmennyiséget.
+A polgári adatintegrátorok idejük több mint 60%-át adatkeresést és -előkészítést töltenek. Kódmentes módon szeretnék megtenni, hogy javítsák a működési termelékenységet. A polgárok adatintetegrátorai számára lehetővé teszi az adatok gazdagítását, alakítását és közzétételét ismert eszközök, például a Power Query Online méretezhető módon történő skálázható módon, ami jelentősen javítja a hatékonyságot. Az Azure Data Factory ban található cigis adatfolyam lehetővé teszi, hogy a jól ismert Power Query Online-egyesítési szerkesztő lehetővé tegye a polgárok adatintegrátorai számára a hibák gyors javítását, az adatok szabványosítását és az üzleti döntések támogatásához kiváló minőségű adatok előállítását.
 
-### <a name="data-validation"></a>Adatérvényesítés
+### <a name="data-validation"></a>Adatkiértékelés
 
-Az adatokat kód nélküli módon vizsgálhatja, hogy eltávolítsa a kiugró értékeket, a rendellenességeket, és megegyezzen a gyors elemzések egy alakzatával.
+Vizuálisan bekéselheti az adatokat kódmentes módon, hogy eltávolítson minden kiugró, anomáliát, és a gyors elemzéshez használható alakzatnak feleljen meg.
 
 ## <a name="supported-sources"></a>Támogatott források
 
 | Összekötő | Adatformátum | Hitelesítés típusa |
 | -- | -- | --|
-| [Azure Blob Storage](connector-azure-blob-storage.md) | CSV, parketta | Fiókkulcs |
+| [Azure Blob Storage](connector-azure-blob-storage.md) | CSV, Parketta | Fiókkulcs |
 | [1. generációs Azure Data Lake Storage](connector-azure-data-lake-store.md) | CSV | Szolgáltatásnév |
-| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV, parketta | Fiók kulcsa, egyszerű szolgáltatásnév |
+| [2. generációs Azure Data Lake Storage](connector-azure-data-lake-storage.md) | CSV, Parketta | Fiókkulcs, egyszerű szolgáltatás |
 | [Azure SQL Database](connector-azure-sql-database.md) | - | SQL-hitelesítés |
-| [Azure szinapszis-elemzés](connector-azure-sql-data-warehouse.md) | - | SQL-hitelesítés |
+| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) | - | SQL-hitelesítés |
 
-## <a name="the-mashup-editor"></a>Az összemashup-szerkesztő
+## <a name="the-mashup-editor"></a>A mashup szerkesztő
 
-Amikor létrehoz egy huzavona-adatfolyamot, az összes forrás-adatkészlet adatkészlet-lekérdezésekvé válik, és a **ADFResource** mappába kerül. Alapértelmezés szerint a UserQuery az első adatkészlet-lekérdezésre mutat. Az összes átalakítást a UserQuery kell elvégezni, mivel az adatkészlet-lekérdezések módosításai nem támogatottak, és nem maradnak meg. A lekérdezések átnevezése, hozzáadása és törlése jelenleg nem támogatott.
+Amikor wrangling adatfolyamatot hoz létre, az összes forrásadatkészlet adatkészlet-lekérdezéssé válik, és az **ADFResource** mappába kerül. Alapértelmezés szerint a UserQuery az első adatkészlet-lekérdezésre mutat. A UserQuery en minden átalakítást el kell végezni, mivel az adatkészlet-lekérdezések módosításai nem támogatottak, és nem is maradnak meg. A lekérdezések átnevezése, hozzáadása és törlése jelenleg nem támogatott.
 
-![Huzavona](media/wrangling-data-flow/editor.png)
+![Vonagló](media/wrangling-data-flow/editor.png)
 
-Jelenleg nem minden Power Query M függvény támogatott az adatok huzavona, annak ellenére, hogy a létrehozás során elérhetővé válik. A huzavona-adatfolyamatok létrehozásakor a rendszer a következő hibaüzenetet fogja kérni, ha egy függvény nem támogatott:
+Jelenleg nem minden Power Query M függvény támogatott az adatveréshez, annak ellenére, hogy a szerzői jog során elérhető. A huzavona adatfolyamainak létrehozása során a következő hibaüzenet jelenik meg, ha egy függvény nem támogatott:
 
 `The wrangling data flow is invalid. Expression.Error: The transformation logic isn't supported. Please try a simpler expression`
 
-A támogatott átalakításokkal kapcsolatos további információkért lásd: [huzavona-adatfolyam függvények](wrangling-data-flow-functions.md).
+A támogatott átalakításokkal kapcsolatos további információkért tekintse meg az [adatfolyam-függvények összekulcsos funkcióját.](wrangling-data-flow-functions.md)
 
-Az huzavona-adatfolyam jelenleg csak egy fogadóba való írást támogatja.
+Jelenleg az adatfolyam csak egy fogadóba való írást támogat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Megtudhatja, hogyan [hozhat létre huzavona-adatfolyamokat](wrangling-data-flow-tutorial.md).
+További információ a rról, hogyan [hozhat létre vonó adatfolyamot.](wrangling-data-flow-tutorial.md)

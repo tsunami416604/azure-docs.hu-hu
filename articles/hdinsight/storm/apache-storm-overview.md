@@ -9,17 +9,17 @@ ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 03/02/2020
 ms.openlocfilehash: 24981c10985cd353fcd476f416e89c94ad6b6cc6
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78271905"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Mi az Azure HDInsight alatt futó Apache Storm?
 
-Az [Apache Storm](https://storm.apache.org/) egy elosztott, nagy hibatűrésű, nyílt forráskódú számítási rendszer. A Storm segítségével valós időben dolgozhat fel adatfolyamokat [Apache Hadoop](https://hadoop.apache.org/)használatával. A Storm-megoldások garantálják az adatfeldolgozást is, és az első alkalommal sikeresen feldolgozható adatmennyiséget képesek visszajátszani.
+Az [Apache Storm](https://storm.apache.org/) egy elosztott, nagy hibatűrésű, nyílt forráskódú számítási rendszer. A Storm segítségével valós időben dolgozhatja fel az adatfolyamokat az [Apache Hadoop](https://hadoop.apache.org/)segítségével. A Storm-megoldások garantált adatfeldolgozást is biztosíthatnak, lehetővé téve az első alkalommal nem sikeresen feldolgozott adatok visszajátszását.
 
-## <a name="why-use-apache-storm-on-hdinsight"></a>Miért érdemes Apache Storm a HDInsight?
+## <a name="why-use-apache-storm-on-hdinsight"></a>Miért érdemes használni az Apache Stormot a HDInsighton?
 
 A HDInsight alatt futó Storm a következő szolgáltatásokat biztosítja:
 
@@ -35,15 +35,15 @@ A HDInsight alatt futó Storm a következő szolgáltatásokat biztosítja:
 
 * **Dinamikus méretezés**: A futó Storm-topológiák befolyásolása nélkül adhat hozzá vagy távolíthat el feldolgozó csomópontokat. A méretezési műveletek során hozzáadott új csomópontok használatához kapcsolja ki, majd kapcsolja be újra a futó topológiákat.
 
-* **Több Azure-szolgáltatással rendelkező streaming-folyamatokat hozhat létre**: a Storm on HDInsight integrálható más Azure-szolgáltatásokkal, mint például a Event Hubs, a SQL Database, az Azure Storage és a Azure Data Lake Storage. Az Azure-szolgáltatásokkal való integrációt bemutató megoldásért lásd: [események feldolgozása Event Hubsról Apache Storm a HDInsight](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub).
+* **Streamelési folyamatok létrehozása több Azure-szolgáltatás használatával:** A Storm on HDInsight más Azure-szolgáltatásokkal, például az Event Hubs, az SQL Database, az Azure Storage és az Azure Data Lake Storage szolgáltatással integrálható. Az Azure-szolgáltatásokkal integrálható példa: [Események feldolgozása az Event Hubs ból az Apache Storm segítségével a HDInsight-on című témakört.](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)
 
 A valós idejű elemzési megoldásaikhoz Apache Stormot használó vállalatok listája itt található: [Az Apache Stormot használó vállalatok](https://storm.apache.org/Powered-By.html).
 
-A Storm használatának megkezdéséhez lásd: [Apache Storm topológia létrehozása és figyelése az Azure HDInsight-ben](apache-storm-quickstart.md).
+A Storm használatának első lépései az [Apache Storm-topológia létrehozása és figyelése az Azure HDInsightban című témakörben található.](apache-storm-quickstart.md)
 
-## <a name="how-does-apache-storm-work"></a>Hogyan működik Apache Storm
+## <a name="how-does-apache-storm-work"></a>Hogyan működik az Apache Storm?
 
-A Storm a [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) feladatok helyett topológiákat futtat. A Storm-topológiák több összetevőből állnak, amelyek egy irányított aciklikus gráfba (DAG) vannak rendezve. Az adatáramlás a gráf összetevői között zajlik. Minden összetevőbe egy vagy több stream érkezik be, valamint egy vagy több streamet sugároz. Az alábbi ábrán az összetevők közti adatfolyamok láthatók egy alapszintű szószámlálási topológiában:
+A Storm az [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) feladatok helyett topológiákat futtat, amelyeket esetleg ismer. A Storm-topológiák több összetevőből állnak, amelyek egy irányított aciklikus gráfba (DAG) vannak rendezve. Az adatáramlás a gráf összetevői között zajlik. Minden összetevőbe egy vagy több stream érkezik be, valamint egy vagy több streamet sugároz. Az alábbi ábrán az összetevők közti adatfolyamok láthatók egy alapszintű szószámlálási topológiában:
 
 ![Példa az összetevők elrendezésére egy Storm-topológiában](./media/apache-storm-overview/example-apache-storm-topology-diagram.png)
 
@@ -55,7 +55,7 @@ A Storm a [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred
 
 Az Apache Storm garantálja, hogy mindig minden bejövő üzenetet feldolgoz, még akkor is, ha az adatok elemzése több száz csomópont között oszlik meg.
 
-A Nimbus csomópont a Apache Hadoop JobTracker hasonló funkciókat biztosít, és a feladatokat a fürt más csomópontjaihoz [Apache ZooKeeper](https://zookeeper.apache.org/)használatával rendeli hozzá. A Zookeeper-csomópontok koordinációt biztosítanak a fürt számára, és elősegítik a kommunikációt a Nimbus és a feldolgozó csomópontokon futó Supervisor folyamat között. Ha egy feldolgozó csomópont leáll, arról a Nimbus csomópont értesítést kap, és kiosztja a feladatot és a kapcsolódó adatokat egy másik csomópontnak.
+A Nimbus csomópont az Apache Hadoop JobTracker-hez hasonló funkciókat biztosít, és feladatokat rendel a fürt más csomópontjaihoz az [Apache ZooKeeper](https://zookeeper.apache.org/)segítségével. A Zookeeper-csomópontok koordinációt biztosítanak a fürt számára, és elősegítik a kommunikációt a Nimbus és a feldolgozó csomópontokon futó Supervisor folyamat között. Ha egy feldolgozó csomópont leáll, arról a Nimbus csomópont értesítést kap, és kiosztja a feladatot és a kapcsolódó adatokat egy másik csomópontnak.
 
 Az alapértelmezett konfiguráció szerint az Apache Storm-fürtök csak egyetlen Nimbus csomóponttal rendelkeznek. A HDInsight alatt futó Storm két Nimbus csomóponttal rendelkezik. Ha az elsődleges csomópont meghibásodik, a Storm-fürt átvált a másodlagos csomópontra, amíg az elsődleges csomópont helyreállítása be nem következik. A következő ábra a Storm on HDInsight feladatfolyam-konfigurációját mutatja be:
 
@@ -63,28 +63,28 @@ Az alapértelmezett konfiguráció szerint az Apache Storm-fürtök csak egyetle
 
 ## <a name="ease-of-creation"></a>Könnyű létrehozás
 
-Az új Storm-fürtök percek alatt létrehozhatók a HDInsightban. A Storm-fürtök létrehozásával kapcsolatos további információkért lásd: [Apache Hadoop fürtök létrehozása a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md).
+Az új Storm-fürtök percek alatt létrehozhatók a HDInsightban. A Storm-fürt létrehozásáról további információt az [Apache Hadoop-fürtök létrehozása az Azure Portalhasználatával című témakörben talál.](../hdinsight-hadoop-create-linux-clusters-portal.md)
 
 ## <a name="ease-of-use"></a>Könnyű használat
 
 |Használat |Leírás |
 |---|---|
-|Secure Shell-(SSH-) kapcsolat|A Storm-fürt fő csomópontjait az interneten keresztül érheti el az SSH használatával. Az SSH használatával közvetlenül futtathat parancsokat a fürtön. További információ: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).|
-|Webes kapcsolat|Az összes HDInsight-fürt biztosítja a Ambari webes felhasználói felületét. Az Ambari webes felülettel egyszerűen figyelheti, konfigurálhatja és kezelheti a fürtön futó szolgáltatásokat. A Storm felhasználói felülete a Storm-fürtökön is elérhető. A Storm felhasználói felülettel böngészőből figyelhetők és kezelhetők a futó Storm-topológiák. További információkért tekintse meg a [HDInsight kezelése az Apache Ambari webes felülettel](../hdinsight-hadoop-manage-ambari.md) és a [figyelés és kezelés a Apache Storm felhasználói felületi dokumentumok használatával](apache-storm-deploy-monitor-topology-linux.md#monitor-and-manage-a-topology-using-the-storm-ui) című témakört.|
-|Azure PowerShell és Azure CLI|A PowerShell és az Azure CLI egyaránt biztosít olyan parancssori segédprogramokat, amelyeket az HDInsight és más Azure-szolgáltatásokkal való együttműködéshez használhat.|
-|Visual Studio integráció|A Visual studióhoz készült Azure Data Lake Tools többek között C# a Storm-topológiák létrehozásához használható SCP.NET keretrendszer használatával. A Data Lake Tools emellett megoldások üzembe helyezéséhez, figyeléséhez és felügyeletéhez is tartalmaz eszközöket a HDInsight alatt futó Stormhoz. További információ: [C# Storm-topológiák fejlesztése a HDInsight Tools for Visual Studio szolgáltatással](apache-storm-develop-csharp-visual-studio-topology.md).|
+|Biztonságos rendszerhéj (SSH) kapcsolat|A Storm-fürt főcsomópontjait az SSH használatával érheti el az interneten keresztül. Az SSH használatával közvetlenül futtathat parancsokat a fürtön. További információ: [SSH használata a HDInsight segítségével.](../hdinsight-hadoop-linux-use-ssh-unix.md)|
+|Webes kapcsolat|Minden HDInsight-fürt biztosítja az Ambari webes felhasználói felületét. Az Ambari webes felülettel egyszerűen figyelheti, konfigurálhatja és kezelheti a fürtön futó szolgáltatásokat. A Storm felhasználói felülete a Storm-fürtökön is elérhető. A Storm felhasználói felülettel böngészőből figyelhetők és kezelhetők a futó Storm-topológiák. További információt a [HDInsight kezelése az Apache Ambari Web felhasználói felületén](../hdinsight-hadoop-manage-ambari.md) és figyelésével című témakörben [talál, és kezelheti az Apache Storm felhasználói felületének dokumentumait.](apache-storm-deploy-monitor-topology-linux.md#monitor-and-manage-a-topology-using-the-storm-ui)|
+|Azure PowerShell és Azure CLI|A PowerShell és az Azure CLI egyaránt biztosít parancssori segédprogramokat, amelyek segítségével az ügyfélrendszer hdinsight és más Azure-szolgáltatások.|
+|Visual Studio integráció|Az Azure Data Lake Tools for Visual Studio projektsablonokat tartalmaz a C# Storm topológiák létrehozásához a SCP.NET keretrendszer használatával. A Data Lake Tools emellett megoldások üzembe helyezéséhez, figyeléséhez és felügyeletéhez is tartalmaz eszközöket a HDInsight alatt futó Stormhoz. További információ: [C# Storm-topológiák fejlesztése a HDInsight Tools for Visual Studio szolgáltatással](apache-storm-develop-csharp-visual-studio-topology.md).|
 
 ## <a name="integration-with-other-azure-services"></a>Integráció más Azure-szolgáltatásokkal
 
-* __Azure Data Lake Storage__: a Data Lake Storage a Storm-fürttel való használatának példáját lásd: a [Azure Data Lake Storage Apache Storm használata a HDInsight-on](apache-storm-write-data-lake-store.md).
+* __Azure Data Lake Storage:__ A Data Lake Storage storm-fürttel való használatának példáját az [Azure Data Lake Storage használata az Apache Storm használatával a HDInsight-on című témakörben ismeri el.](apache-storm-write-data-lake-store.md)
 
 * __Event Hubs__: Az Event Hubs és egy Storm-fürt együttes használatára vonatkozó példáért tekintse meg az alábbi dokumentumokat:
 
-    * [Események feldolgozása az Azure Event Hubs és az Apache Storm on HDInsight (Java) szolgáltatással](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)
+    * [Események feldolgozása az Azure Event Hubs-ból az Apache Storm segítségével a HDInsight (Java) szolgáltatással](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)
 
-    * [Események feldolgozása az Azure Event Hubs és az Apache Storm on HDInsightC#()](apache-storm-develop-csharp-event-hub-topology.md)
+    * [Események feldolgozása az Azure Event Hubs-ból az Apache Storm segítségével a HDInsighton (C#)](apache-storm-develop-csharp-event-hub-topology.md)
 
-* __SQL Database__, __Cosmos DB__, __Event Hubs__ és __HBase__: A Data Lake Tools for Visual Studio tartalmaz példasablonokat. További információ: a [ C# topológia fejlesztése a HDInsight-hez Apache Storm](apache-storm-develop-csharp-visual-studio-topology.md).
+* __SQL Database__, __Cosmos DB__, __Event Hubs__ és __HBase__: A Data Lake Tools for Visual Studio tartalmaz példasablonokat. További információ: [C# topológia fejlesztése apache storm hoz HDInsight](apache-storm-develop-csharp-visual-studio-topology.md).
 
 ## <a name="support"></a>Támogatás
 
@@ -102,25 +102,25 @@ Az alábbiakban néhány gyakori forgatókönyvet ismertetünk, amelyek esetén 
 * Keresés
 * Mobilmarketing
 
-A valós forgatókönyvekkel kapcsolatos információkért tekintse meg a [vállalatok hogyan használják Apache Storm](https://storm.apache.org/Powered-By.html) dokumentumot.
+A valós forgatókönyvekről a Vállalatok által az [Apache Storm-dokumentumot című](https://storm.apache.org/Powered-By.html) dokumentumban talál.
 
 ## <a name="development"></a>Fejlesztés
 
 A Data Lake Tools for Visual Studio használatával a .NET-fejlesztők C# nyelven tervezhetnek és valósíthatnak meg topológiákat. Létrehozhatók Java- és C#-összetevőket egyaránt használó hibrid topológiák is. További információk: [C#-topológiák fejlesztése HDInsight alatt futó Apache Stormra a Visual Studio használatával](apache-storm-develop-csharp-visual-studio-topology.md)
 
-Java-megoldásokat is fejleszthet tetszőleges IDE használatával. További információ: Java- [topológiák fejlesztése a HDInsight-hez Apache Storm](apache-storm-develop-java-topology.md).
+Java-megoldásokat is fejleszthet tetszőleges IDE használatával. További információ: [Java topologies for Apache Storm on HDInsight](apache-storm-develop-java-topology.md).
 
-A Python is használható Storm-összetevők fejlesztéséhez. További információ: [Apache Storm topológiák fejlesztése a Python használatával a HDInsight-on](apache-storm-develop-python-topology.md).
+A Python is használható Storm-összetevők fejlesztéséhez. További információ: [Apache Storm topológiák fejlesztése python használatával a HDInsight on](apache-storm-develop-python-topology.md).
 
 ## <a name="common-development-patterns"></a>Gyakori fejlesztési minták
 
 ### <a name="guaranteed-message-processing"></a>Garantált üzenetfeldolgozás
 
-Az Apache Storm különböző szinteken biztosít garantált üzenetfeldolgozást. Egy alapszintű Storm-alkalmazás például garantálhatja a legalább egyszeri feldolgozást, a [Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) pedig pontosan egyszeri feldolgozást tud biztosítani. További információk: [Adatfeldolgozási garancia](https://storm.apache.org/about/guarantees-data-processing.html) az apache.org webhelyen.
+Az Apache Storm különböző szinteken biztosít garantált üzenetfeldolgozást. Például egy egyszerű Storm-alkalmazás garantálja legalább egyszer feldolgozás, és [a Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) tudja garantálni, hogy pontosan egyszer feldolgozása. További információk: [Adatfeldolgozási garancia](https://storm.apache.org/about/guarantees-data-processing.html) az apache.org webhelyen.
 
 ### <a name="ibasicbolt"></a>IBasicBolt
 
-Egy bemeneti rekord olvasásának mintája, amely nulla vagy több rekordok-t bocsát ki, majd a végrehajtás módszerének végén azonnal elismerik a bemeneti rekordot. A Storm lehetővé teszi ennek a mintának az automatizálását az [IBasicBolt](https://storm.apache.org/releases/current/javadocs/org/apache/storm/topology/IBasicBolt.html) felület segítségével.
+Gyakori a bemeneti törzs olvasása, nulla vagy több tuple stuple staféta, majd a bemeneti törzs azonnali elismerése a végrehajtási metódus végén. A Storm lehetővé teszi ennek a mintának az automatizálását az [IBasicBolt](https://storm.apache.org/releases/current/javadocs/org/apache/storm/topology/IBasicBolt.html) felület segítségével.
 
 ### <a name="joins"></a>Illesztések
 
@@ -150,13 +150,13 @@ Példa az első N elem értékének kiszámítására: [RollingTopWords](https:/
 
 ## <a name="logging"></a>Naplózás
 
-A Storm az [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) használatával naplózza az adatokat. Alapértelmezés szerint nagy mennyiségű adat rögzítése történik, aminek az áttekintése nehézségekkel járhat. A Storm-topológia részeként hozzáadhat egy naplózáskonfigurációs fájlt, amely a naplózás működését vezérli.
+Storm az [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) segítségével naplózza az adatokat. Alapértelmezés szerint nagy mennyiségű adat rögzítése történik, aminek az áttekintése nehézségekkel járhat. A Storm-topológia részeként hozzáadhat egy naplózáskonfigurációs fájlt, amely a naplózás működését vezérli.
 
 A naplózás konfigurálását bemutató példatopológiát a HDInsight alatt futó Stormra vonatkozó [Java-alapú WordCount](apache-storm-develop-java-topology.md) példában tekintheti meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ a Apache Storm on HDInsight valós idejű elemzési megoldásairól:
+Tudjon meg többet a valós idejű elemzési megoldásokról az Apache Storm segítségével a HDInsight-on:
 
-* [Apache Storm topológia létrehozása és figyelése az Azure HDInsight](apache-storm-quickstart.md)
+* [Apache Storm-topológia létrehozása és figyelése az Azure HDInsightban](apache-storm-quickstart.md)
 * [HDInsight alatt futó Apache Storm példatopológiái](apache-storm-example-topology.md)

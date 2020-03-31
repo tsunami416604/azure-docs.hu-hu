@@ -1,7 +1,7 @@
 ---
-title: A kapcsolati karakterlánc lekérését az Azure Portalról
-description: A kapcsolati karakterlánc lekérését az Azure Portalról
-keywords: SQL-kapcsolatot, a kapcsolati karakterlánc
+title: A kapcsolati karakterlánc beszerzése az Azure Portalról
+description: A kapcsolati karakterlánc beszerzése az Azure Portalról
+keywords: sql kapcsolat,kapcsolati karakterlánc
 services: sql-database
 author: dalechen
 manager: craigg
@@ -11,34 +11,34 @@ ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
 ms.openlocfilehash: 6ead2e0ea326b5c3f2e76e7aa9cc4ab3c50d4154
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67179199"
 ---
-### <a name="obtain-the-connection-string-from-the-azure-portal"></a>A kapcsolati karakterlánc lekérését az Azure Portalról
-Használja a [az Azure portal](https://portal.azure.com/) beszerzése a kapcsolati karakterláncot, amely az ügyfélprogram és az Azure SQL Database használatához szükség van.
+### <a name="obtain-the-connection-string-from-the-azure-portal"></a>A kapcsolati karakterlánc beszerzése az Azure Portalról
+Az [Azure Portal](https://portal.azure.com/) használatával szerezze be a kapcsolati karakterláncot, amely szükséges az ügyfélprogram az Azure SQL Database-rel való együttműködéshez.
 
-1. Válassza ki **minden szolgáltatás** > **SQL-adatbázisok**.
+1. Válassza az **Összes szolgáltatás** > **SQL-adatbázisa lehetőséget.**
 
-2. Adja meg az adatbázis nevét a szűrő szövegmezőbe közel bal felső sarkában a **SQL-adatbázisok** panelen.
+2. Írja be az adatbázis nevét az **SQL-adatbázisok** panel bal felső részén lévő szűrőszövegmezőbe.
 
-3. Válassza ki az adatbázis a sort.
+3. Válassza ki az adatbázis sorát.
 
-4. Után a panel jelenik meg az adatbázis visual kényelmi válassza ki a **kis méret** gombok a paneleket tallózásával és szűrésével adatbázis használt összecsukásához.
+4. Miután a panel megjelenik az adatbázisban, a vizuális kényelem érdekében válassza a **Kis méret** gombokat a böngészéshez és az adatbázis-szűréshez használt panelek összecsukásához.
 
-5. Az adatbázis paneljén válassza ki a **adatbázis kapcsolati karakterláncainak megjelenítése**.
+5. Az adatbázis paneljén válassza az **Adatbázis-kapcsolati karakterláncok megjelenítése**lehetőséget.
 
-6. Másolja a megfelelő kapcsolati karakterláncot. vagyis ha szeretne használni az ADO.NET kapcsolati könyvtár, másolja a megfelelő karakterláncot, a **ADO.NET** fülre.
+6. Másolja a megfelelő kapcsolati karakterláncot. Azaz ha a ADO.NET kapcsolattárat kívánja használni, másolja a megfelelő karakterláncot a **ADO.NET** lapról.
 
-    ![Másolja a ADO kapcsolati karakterláncot az adatbázishoz][20-CopyAdoConnectionString]
+    ![Az adatbázis ADO kapcsolati karakterláncának másolása][20-CopyAdoConnectionString]
 
-7. Szükség szerint szerkessze a kapcsolati karakterláncot. például helyezze be a jelszó a kapcsolati karakterláncot, vagy távolítsa el "@&lt;servername&gt;" az a felhasználónév, ha a felhasználónév vagy a kiszolgáló neve túl hosszú.
+7. Szükség szerint szerkesztsd a kapcsolati karakterláncot. azaz szúrja be a jelszót a kapcsolati&lt;karakterláncba, vagy távolítsa el a "@ kiszolgálónév&gt;" szót a felhasználónévből, ha a felhasználónév vagy a kiszolgáló neve túl hosszú.
 
-8. Az vagy egy másik formátumba illessze be a kapcsolati sztring adatait az Ügyfélkód program.
+8. Az egyik vagy másik formátumban illessze be a kapcsolati karakterlánc adatait az ügyfél programkódjába.
 
-További információkért lásd: [kapcsolati karakterláncok és a konfigurációs fájlok](https://msdn.microsoft.com/library/ms254494.aspx).
+További információt a [Kapcsolati karakterláncok és konfigurációs fájlok című témakörben talál.](https://msdn.microsoft.com/library/ms254494.aspx)
 
 <!-- Image references. -->
 

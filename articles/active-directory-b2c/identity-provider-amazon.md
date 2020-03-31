@@ -1,7 +1,7 @@
 ---
 title: Regisztráció és bejelentkezés beállítása Amazon-fiókkal
 titleSuffix: Azure AD B2C
-description: A regisztráció és bejelentkezés az Amazon-fiókkal rendelkező ügyfelek számára Azure Active Directory B2C használatával.
+description: Az Azure Active Directory B2C használatával amazonos fiókkal rendelkező ügyfelek számára biztosíthatja a regisztrációt és a bejelentkezést az alkalmazásokban.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,33 +12,33 @@ ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d4538c1d15aeae624f5d73e9985448bda2fd8f1b
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78188460"
 ---
-# <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Egy Amazon-fiókkal történő regisztráció és bejelentkezés beállítása Azure Active Directory B2C
+# <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Bejelentkezés és bejelentkezés beállítása Amazon-fiókkal az Azure Active Directory B2C használatával
 
-## <a name="create-an-amazon-application"></a>Amazon-alkalmazás létrehozása
+## <a name="create-an-amazon-application"></a>Amazon alkalmazás létrehozása
 
-Ha Azure Active Directory B2C (Azure AD B2C) identitás- [szolgáltatóként](authorization-code-flow.md) szeretné használni az Amazon-fiókot, létre kell hoznia egy alkalmazást a bérlőben, amely azt képviseli. Ha még nem rendelkezik Amazon-fiókkal, regisztrálhat [https://www.amazon.com/](https://www.amazon.com/)címen.
+Az Amazon-fiók [identitásszolgáltatóként](authorization-code-flow.md) való használatához az Azure Active Directory B2C (Azure AD B2C) szolgáltatásban létre kell hoznia egy alkalmazást a bérlőben, amely azt képviseli. Ha még nem rendelkezik Amazon-fiókkal, [https://www.amazon.com/](https://www.amazon.com/)regisztrálhat a .
 
-1. Jelentkezzen be az [Amazon fejlesztői központjába](https://login.amazon.com/) az Amazon-fiókja hitelesítő adataival.
-1. Ha még nem tette meg, kattintson a **regisztráció**gombra, kövesse a fejlesztői regisztráció lépéseit, és fogadja el a szabályzatot.
-1. Válassza az **új alkalmazás regisztrálása**lehetőséget.
-1. Adja meg a **név**, a **Leírás**és az **adatvédelmi nyilatkozat URL-címét**, majd kattintson a **Mentés**gombra. Az adatvédelmi nyilatkozat egy olyan oldal, amelyet Ön kezel, és amely adatvédelmi információkat biztosít a felhasználóknak.
-1. A **webes beállítások** szakaszban másolja ki az **ügyfél-azonosító**értékét. Válassza a **titok megjelenítése** lehetőséget az ügyfél titkos kódjának beolvasásához, majd másolja azt. Mindkettőnek szüksége van egy Amazon-fiók konfigurálására a bérlőben. Az **ügyfél titkos kulcsa** fontos biztonsági hitelesítő adat.
-1. A **Webbeállítások** szakaszban válassza a **Szerkesztés**lehetőséget, majd írja be `https://your-tenant-name.b2clogin.com` az **engedélyezett JavaScript** -forrásokban és `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` az **engedélyezett visszatérési URL-címek**között. Cserélje le a `your-tenant-name`t a bérlő nevére. A bérlő nevének megadásakor az összes kisbetűt kell használnia, még akkor is, ha a bérlőt nagybetűvel definiálták Azure AD B2C.
-1. Kattintson a **Save** (Mentés) gombra.
+1. Jelentkezzen be az [Amazon Developer Centerbe](https://login.amazon.com/) amazonos fiókjának hitelesítő adataival.
+1. Ha még nem tette meg, kattintson a **Regisztráció**gombra, kövesse a fejlesztői regisztrációs lépéseket, és fogadja el a szabályzatot.
+1. Válassza **az Új alkalmazás regisztrálása**lehetőséget.
+1. Adja meg **a név,** **a leírás**és **az adatvédelmi nyilatkozat URL-címét,** majd kattintson a **Mentés gombra.** Az adatvédelmi nyilatkozat egy ön által kezelt oldal, amely adatvédelmi információkat biztosít a felhasználók számára.
+1. A **Webbeállítások** csoportban másolja az **Ügyfélazonosító**értékét. Válassza **a Titkos titok megjelenítése** lehetőséget az ügyféltitok leéséhez, majd másolja azt. Mindkettőre szüksége van egy Amazon-fiók konfigurálásához a bérlőidentitás-szolgáltatóként. **Az ügyféltitkos adat** fontos biztonsági hitelesítő adat.
+1. A **Webes beállítások** csoportban válassza a `https://your-tenant-name.b2clogin.com` **Szerkesztés**lehetőséget, majd `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` írja be az **Engedélyezett JavaScript-eredetek** és az Engedélyezett **visszatérési URL-címek mezőbe.** Cserélje `your-tenant-name` le a bérlő nevét. Az összes kisbetűt kell használnia a bérlő nevének megadásakor, még akkor is, ha a bérlő nagybetűkkel van definiálva az Azure AD B2C-ben.
+1. Kattintson a **Mentés** gombra.
 
-## <a name="configure-an-amazon-account-as-an-identity-provider"></a>Amazon-fiók konfigurálása identitás-szolgáltatóként
+## <a name="configure-an-amazon-account-as-an-identity-provider"></a>Amazon-fiók beállítása identitásszolgáltatóként
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure AD B2C-bérlő globális rendszergazdájaként.
-1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
+1. Győződjön meg arról, hogy az Azure AD B2C-bérlőt tartalmazó könyvtárat használja, ha a felső **menüben** a Directory + előfizetésszűrőt választja, és kiválasztja a bérlőt tartalmazó könyvtárat.
 1. Válassza az Azure Portal bal felső sarkában található **Minden szolgáltatás** lehetőséget, majd keresse meg és válassza ki az **Azure AD B2C**-t.
-1. Válassza az **identitás-szolgáltatók**, majd az **Amazon**elemet.
-1. Adjon meg egy **nevet**. Például: *Amazon*.
-1. Az **ügyfél-azonosító**mezőben adja meg a korábban létrehozott Amazon-alkalmazás ügyfél-azonosítóját.
-1. Az **ügyfél titka**mezőben adja meg a rögzített ügyfél-titkot.
+1. Válassza **az Identitásszolgáltatók**lehetőséget, majd az **Amazon**lehetőséget.
+1. Írjon be egy **nevet**. Például az *Amazon*.
+1. Az **ügyfélazonosítóhoz**adja meg a korábban létrehozott Amazon-alkalmazás ügyfélazonosítóját.
+1. Az **ügyféltitkos kulcsot**adja meg a rögzített ügyféltitkoskulcsot.
 1. Kattintson a **Mentés** gombra.
