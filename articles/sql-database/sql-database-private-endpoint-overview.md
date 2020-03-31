@@ -1,6 +1,6 @@
 ---
 title: Privát kapcsolat
-description: A Private Endpoint szolgáltatás áttekintése
+description: A privát végpont szolgáltatás áttekintése
 author: rohitnayakmsft
 ms.author: rohitna
 titleSuffix: Azure SQL Database and SQL Data Warehouse
@@ -9,103 +9,103 @@ ms.topic: overview
 ms.reviewer: vanto
 ms.date: 03/09/2020
 ms.openlocfilehash: ab9c5c5c1134d2e09a790a788a3b7e55f807dd9b
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78945368"
 ---
-# <a name="private-link-for-azure-sql-database-and-data-warehouse"></a>Privát hivatkozás a Azure SQL Database és az adattárházhoz
+# <a name="private-link-for-azure-sql-database-and-data-warehouse"></a>Privát hivatkozás az Azure SQL Adatbázishoz és adattárházhoz
 
-A privát hivatkozás lehetővé teszi, hogy egy **privát végponton**keresztül kapcsolódjon az Azure-beli különböző Pásti-szolgáltatásokhoz. A privát kapcsolati funkciót támogató Pásti-szolgáltatások listájának megtekintéséhez lépjen a [Private link dokumentációs](../private-link/index.yml) oldalára. A privát végpont egy adott [VNet](../virtual-network/virtual-networks-overview.md) és alhálózaton belüli magánhálózati IP-cím. 
+A Private Link lehetővé teszi, hogy egy **privát végponton**keresztül csatlakozzon különböző PaaS-szolgáltatásokhoz az Azure-ban. A Privát hivatkozás funkciót támogató PaaS-szolgáltatások listáját a [Privát hivatkozás dokumentációja](../private-link/index.yml) lapon találja. A privát végpont egy privát IP-cím egy adott [virtuális hálózaton](../virtual-network/virtual-networks-overview.md) és alhálózaton belül. 
 
 > [!IMPORTANT]
-> Ez a cikk az Azure SQL Serverre vonatkozik, valamint az Azure SQL Serveren létrehozott SQL Database és SQL Data Warehouse adatbázisokra is. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database. Ez a cikk *nem* vonatkozik a **felügyelt példányok** Azure SQL Database történő telepítésére.
+> Ez a cikk az Azure SQL-kiszolgálóra, valamint az Azure SQL-kiszolgálón létrehozott SQL Database és SQL Data Warehouse adatbázisokra is vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database. Ez a cikk *nem* vonatkozik az Azure SQL Database **felügyelt példányüzembe** helyezésére.
 
-## <a name="data-exfiltration-prevention"></a>Az adatkiszűrése megelőzése
+## <a name="data-exfiltration-prevention"></a>Adatszivárgás megelőzése
 
-A Azure SQL Databaseban lévő adatok kiszűrése, ha egy jogosult felhasználó, például egy adatbázis-rendszergazda képes az adatok kinyerésére egy rendszerből, és a szervezeten kívül más helyre vagy rendszerre helyezi át. A felhasználó például egy harmadik fél tulajdonában lévő Storage-fiókba helyezi át az adatátvitelt.
+Az Azure SQL Database-ben az adatok kiszivárgása az, amikor egy jogosult felhasználó, például egy adatbázis-rendszergazda képes adatokat kinyerni az egyik rendszerből, és áthelyezni egy másik helyet vagy rendszert a szervezeten kívül. Például a felhasználó áthelyezi az adatokat egy harmadik fél tulajdonában lévő tárfiókba.
 
-Vegyünk egy olyan forgatókönyvet, amely egy SQL Server Management Studio (SSMS) rendszert futtató felhasználó egy SQL Databasehoz csatlakozó Azure-beli virtuális gépen. Ez a SQL Database az USA nyugati régiójának adatközpontjában található. Az alábbi példa bemutatja, hogyan korlátozható a hozzáférés nyilvános végpontokkal a SQL Database hálózati hozzáférés-vezérlés használatával.
+Fontolja meg egy olyan forgatókönyv, amikor egy felhasználó sql server management studio (SSMS) fut egy Azure virtuális gép egy SQL-adatbázishoz csatlakozó. Ez az SQL-adatbázis az USA nyugati részén található adatközpontban található. Az alábbi példa bemutatja, hogyan korlátozhatja a hozzáférést a nyilvános végpontok az SQL Database hálózati hozzáférés-vezérlés használatával.
 
-1. Tiltsa le a nyilvános végponton keresztül SQL Database összes Azure-szolgáltatás forgalmát az Azure-szolgáltatások **kikapcsolásának**engedélyezése beállítással. Győződjön meg arról, hogy a kiszolgáló és az adatbázis szintű tűzfalszabályok nem engedélyezettek az IP-címekben. További információ: [Azure SQL Database és adatraktár hálózati hozzáférés-vezérlése](sql-database-networkaccess-overview.md).
-1. Csak a virtuális gép magánhálózati IP-címének használatával engedélyezze a SQL Database forgalmat. További információt a [szolgáltatás-végpont](sql-database-vnet-service-endpoint-rule-overview.md) és a [VNet-tűzfalszabályok](sql-database-firewall-configure.md)című cikkben talál.
-1. Az Azure-beli virtuális gépen a következő módon Szűkítse le a kimenő kapcsolatok hatókörét [hálózati biztonsági csoportok (NSG)](../virtual-network/manage-network-security-group.md) és szolgáltatás-címkék használatával.
-    - Olyan NSG-szabályt ad meg, amely engedélyezi a forgalmat a Service tag = SQL szolgáltatásban. WestUs – csak az USA nyugati régiójában lévő SQL Databasehoz való kapcsolódás engedélyezése
-    - NSG-szabály megadása ( **magasabb prioritással**) a Service tag által megtagadott forgalom megtagadásához = SQL – az összes régióban SQL Database kapcsolatok megtagadása
+1. Tiltsa le az SQL Database összes Azure-szolgáltatásforgalmát a nyilvános végponton keresztül az Azure Services engedélyezése **ki állásra**beállításával. Győződjön meg arról, hogy a kiszolgálói és adatbázisszintű tűzfalszabályok nem engedélyezettek IP-címek. További információ: [Azure SQL Database and Data Warehouse network access controls.](sql-database-networkaccess-overview.md)
+1. Csak a virtuális gép privát IP-címét használó sql-adatbázis forgalmat engedélyezze. További információt a [Szolgáltatásvégpont](sql-database-vnet-service-endpoint-rule-overview.md) és a [virtuális hálózat tűzfalszabályairól](sql-database-firewall-configure.md)szóló cikkektartalmaznak.
+1. Az Azure virtuális gép, szűkítse le a kimenő kapcsolat hatókörét a [hálózati biztonsági csoportok (NSG-k)](../virtual-network/manage-network-security-group.md) és a szolgáltatáscímkék az alábbiak szerint
+    - Adjon meg egy NSG-szabályt a Service Tag = SQL forgalom engedélyezéséhez. WestUs - csak az SQL Database-hez való csatlakozás engedélyezése az USA nyugati részén
+    - NSG-szabály megadása **(magasabb prioritással)** a Service Tag = SQL forgalom megtagadásához - az SQL-adatbázishoz való kapcsolatok megtagadása minden régióban
 
-A telepítés végén az Azure-beli virtuális gép csak az USA nyugati régiójában található SQL-adatbázisokhoz tud csatlakozni. Azonban a kapcsolat nem korlátozódik egyetlen SQL Databasera. A virtuális gép továbbra is csatlakozhat bármely SQL-adatbázishoz az USA nyugati régiójában, beleértve azokat az adatbázisokat is, amelyek nem részei az előfizetésnek. Noha a fenti forgatókönyvben lévő adatmennyiséget egy adott régióra csökkentették, nem kiszűrése el teljesen.
+A telepítés végén az Azure virtuális gép csak az USA nyugati régiójában lévő SQL-adatbázisokhoz csatlakozhat. A kapcsolat azonban nem korlátozódik egyetlen SQL-adatbázisra. A virtuális gép továbbra is csatlakozhat az USA nyugati régiójában lévő bármely SQL-adatbázishoz, beleértve azokat az adatbázisokat is, amelyek nem részei az előfizetésnek. Bár a fenti forgatókönyvben az adatok kiszivárgásának hatókörét egy adott régióra csökkentettük, azt nem szüntettük meg teljesen.
 
-Privát hivatkozással az ügyfelek mostantól olyan hálózati hozzáférés-vezérlőket állíthatnak be, mint például a NSG a privát végponthoz való hozzáférés korlátozására. Az egyes Azure-beli Pásti-erőforrások ezután adott privát végpontokra vannak leképezve. A rosszindulatú bennfentesek csak a leképezett (például egy SQL Database) erőforráshoz férnek hozzá, és nincs más erőforrás. 
+A Private Link segítségével az ügyfelek mostantól beállíthatnak hálózati hozzáférés-vezérléseket, például az NSG-ket, hogy korlátozzák a privát végponthoz való hozzáférést. Az egyes Azure PaaS-erőforrások ezután adott privát végpontokhoz vannak rendelve. Egy rosszindulatú bennfentes csak a leképezett PaaS-erőforráshoz (például egy SQL-adatbázishoz) férhet hozzá, más erőforráshoz nem. 
 
-## <a name="on-premises-connectivity-over-private-peering"></a>Helyszíni kapcsolat privát társon keresztül
+## <a name="on-premises-connectivity-over-private-peering"></a>Helyszíni kapcsolat a privát társviszony-létesítésen
 
-Amikor az ügyfelek a helyszíni gépekről csatlakoznak a nyilvános végponthoz, az IP-címüket [kiszolgálói szintű tűzfalszabály](sql-database-server-level-firewall-rule.md)használatával kell hozzáadni az IP-alapú tűzfalhoz. Habár ez a modell jól működik, hogy lehetővé tegye az egyes gépekhez való hozzáférést a fejlesztési vagy tesztelési feladatokhoz, nehéz felügyelni éles környezetben.
+Amikor az ügyfelek helyszíni gépekről csatlakoznak a nyilvános végponthoz, ip-címüket hozzá kell adni az IP-szintű tűzfalhoz egy [kiszolgálószintű tűzfalszabály](sql-database-server-level-firewall-rule.md)használatával. Bár ez a modell jól működik, amely lehetővé teszi az egyes gépek hez való hozzáférést a fejlesztési vagy tesztelési számítási feladatokhoz, éles környezetben nehéz kezelni.
 
-A privát kapcsolat lehetővé teszi, hogy az ügyfelek az [ExpressRoute](../expressroute/expressroute-introduction.md), a privát vagy a VPN-alagúton keresztül engedélyezzék a helyszíni hozzáférést a privát végponthoz. Az ügyfelek ezután letilthatják az összes hozzáférést a nyilvános végponton keresztül, és nem használhatják az IP-alapú tűzfalat az IP-címek engedélyezésére.
+A Private Link használatával az ügyfelek engedélyezhetik a magánvégponthoz való hozzáférést az [ExpressRoute,](../expressroute/expressroute-introduction.md)a privát társviszony-létesítés vagy a VPN-bújtatás használatával. Az ügyfelek ezután letilthatják az összes hozzáférést a nyilvános végponton keresztül, és nem használhatják az IP-alapú tűzfalat az IP-címek engedélyezéséhez.
 
-## <a name="how-to-set-up-private-link-for-azure-sql-database"></a>Privát hivatkozás beállítása Azure SQL Databasehoz 
+## <a name="how-to-set-up-private-link-for-azure-sql-database"></a>Privát kapcsolat beállítása az Azure SQL Database-hez 
 
 ### <a name="creation-process"></a>Létrehozási folyamat
-A privát végpontokat a portál, a PowerShell vagy az Azure CLI használatával lehet létrehozni:
-- [Portal](../private-link/create-private-endpoint-portal.md)
-- [PowerShell](../private-link/create-private-endpoint-powershell.md)
-- [Parancssori felület](../private-link/create-private-endpoint-cli.md)
+Privát végpontok hozhatók létre a portál, a PowerShell vagy az Azure CLI használatával:
+- [Portál](../private-link/create-private-endpoint-portal.md)
+- [Powershell](../private-link/create-private-endpoint-powershell.md)
+- [parancssori felület](../private-link/create-private-endpoint-cli.md)
 
 ### <a name="approval-process"></a>Jóváhagyási folyamat
-Miután a hálózati rendszergazda létrehozta a magánhálózati végpontot (PE), az SQL-rendszergazda felügyelheti a magánhálózati végponti kapcsolatokat (PEC) SQL Database.
+Miután a hálózati rendszergazda létrehozza a magánvégpontot (PE), az SQL-rendszergazda kezelheti a privát végpontkapcsolat (PEC) és az SQL-adatbázis.
 
-1. Az alábbi képernyőképen megjelenő lépések szerint navigáljon az SQL Server-erőforráshoz a Azure Portal.
+1. Keresse meg az SQL-kiszolgáló erőforrást az Azure Portalon az alábbi képernyőképen látható lépések nek köszönhetően
 
-    - (1) válassza ki a privát végponti kapcsolatokat a bal oldali ablaktáblán
-    - (2) az összes privát végponti kapcsolat (Pécs) listáját jeleníti meg
-    - (3) a megfelelő magán-végpont (PE) létrehozása ![az összes Pécs][3]
+    - (1) Válassza ki a privát végpontkapcsolatokat a bal oldali ablaktáblában
+    - (2) Az összes privát végpontkapcsolat (PEC) listáját jeleníti meg
+    - (3) Megfelelő Private Endpoint ![(PE) létrehozott Screenshot az összes PEC][3]
 
-1. Válasszon ki egy egyéni PEC-t a listából.
-![képernyőfelvétel a PEC-][6]
+1. Válasszon ki egy egyedi PEC-et a listából annak kiválasztásával.
+![Képernyőkép a PEC-en][6]
 
-1. Az SQL-rendszergazda dönthet úgy, hogy jóváhagyja vagy elutasítja a PEC-t, és opcionálisan egy rövid szöveges választ is hozzáadhat.
-a PEC jóváhagyásának ![képernyőképe][4]
+1. Az SQL-rendszergazda jóváhagyhatja vagy elutasíthatja a PEC-et, és szükség esetén rövid szöveges választ adhat hozzá.
+![Képernyőkép a PEC jóváhagyásáról][4]
 
-1. Jóváhagyás vagy elutasítás után a lista a megfelelő állapotot jeleníti meg a válasz szövegével együtt.
-![képernyőkép az összes Pécsről jóváhagyás után][5]
+1. A jóváhagyást vagy elutasítást követően a lista a válaszszöveggel együtt a megfelelő állapotot fogja tükrözni.
+![Képernyőkép az összes PEC-ről a jóváhagyás után][5]
 
-## <a name="use-cases-of-private-link-for-azure-sql-database"></a>Privát hivatkozás használata Azure SQL Database esetén 
+## <a name="use-cases-of-private-link-for-azure-sql-database"></a>Privát hivatkozás az Azure SQL-adatbázishoz 
 
-Az ügyfelek csatlakozhatnak a privát végponthoz ugyanarról a VNet, egymással azonos régióban lévő VNet, illetve a régiók közötti VNet-VNet kapcsolaton keresztül. Emellett az ügyfelek a helyszíni ExpressRoute, a privát vagy a VPN-alagúton keresztül is csatlakozhatnak. Alább látható egy egyszerűsített diagram, amely a gyakori használati eseteket mutatja.
+Az ügyfelek csatlakozhatnak a privát végponthoz ugyanarról a virtuális hálózatról, társviszony-létesített virtuális hálózat ugyanabban a régióban, vagy a virtuális hálózat és a virtuális hálózat közötti kapcsolat on régiók között. Emellett az ügyfelek a helyszíni kapcsolatfelvétel expressroute, privát társviszony-létesítés vagy VPN-bújtatás használatával csatlakozhatnak. Az alábbiakban egy egyszerűsített diagram mutatja be a gyakori használati eseteket.
 
- ![Csatlakozási lehetőségek diagramja][1]
+ ![Kapcsolódási lehetőségek diagramja][1]
 
-## <a name="test-connectivity-to-sql-database-from-an-azure-vm-in-same-virtual-network-vnet"></a>SQL Database Azure-beli virtuális gépről való kapcsolat tesztelése ugyanazon a Virtual Network (VNet)
+## <a name="test-connectivity-to-sql-database-from-an-azure-vm-in-same-virtual-network-vnet"></a>Az SQL-adatbázissal való kapcsolat tesztelése egy Azure virtuális gépről ugyanabban a virtuális hálózatban (VNet)
 
-Ebben az esetben tegyük fel, hogy létrehozott egy Windows Server 2016 rendszerű Azure-beli virtuális gépet (VM). 
+Ebben a forgatókönyvben tegyük fel, hogy létrehozott egy Windows Server 2016 rendszerű Azure Virtuális gépet (VM). 
 
-1. [Indítsa el a távoli asztal (RDP) munkamenetet, és kapcsolódjon a virtuális géphez](../virtual-machines/windows/connect-logon.md#connect-to-the-virtual-machine). 
-1. Ezt követően elvégezheti az alapszintű kapcsolat ellenőrzéseit, hogy a virtuális gép a következő eszközök használatával csatlakozzon a SQL Databasehoz a privát végponton keresztül:
+1. [Indítsa el a Távoli asztal (RDP) munkamenetét, és csatlakozzon a virtuális géphez.](../virtual-machines/windows/connect-logon.md#connect-to-the-virtual-machine) 
+1. Ezután néhány alapvető kapcsolatellenőrzést végezhet annak érdekében, hogy a virtuális gép a következő eszközökkel csatlakozzon az SQL Database-hez a privát végponton keresztül:
     1. Telnet
-    1. Psping
+    1. Psping között
     1. Nmap
     1. SQL Server Management Studio (SSMS)
 
-### <a name="check-connectivity-using-telnet"></a>Kapcsolódás ellenőrzése a Telnet használatával
+### <a name="check-connectivity-using-telnet"></a>A kapcsolat ellenőrzése a Telnet használatával
 
-A [Telnet-ügyfél](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754293%28v%3dws.10%29) egy Windows-szolgáltatás, amely a kapcsolat tesztelésére használható. A Windows operációs rendszer verziójától függően előfordulhat, hogy explicit módon engedélyeznie kell ezt a szolgáltatást. 
+[A Telnet-ügyfél](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754293%28v%3dws.10%29) egy Windows-szolgáltatás, amely a kapcsolat tesztelésére használható. A Windows operációs rendszer verziójától függően előfordulhat, hogy ezt a szolgáltatást kifejezetten engedélyeznie kell. 
 
-A Telnet telepítése után nyisson meg egy parancssorablakot. Futtassa a Telnet parancsot, és adja meg a SQL Database IP-címét és magánhálózati végpontját.
+A Telnet telepítése után nyisson meg egy parancssori ablakot. Futtassa a Telnet parancsot, és adja meg az SQL-adatbázis IP-címét és magánhálózati végpontját.
 
 ```
 >telnet 10.1.1.5 1433
 ```
 
-Ha a Telnet sikeresen csatlakozik, egy üres képernyő jelenik meg a parancsablakban, például az alábbi képen:
+Amikor a Telnet sikeresen csatlakozik, egy üres képernyő jelenik meg a parancsablakban, mint az alábbi képen:
 
- ![Telnet-diagram][2]
+ ![Telnet diagram][2]
 
-### <a name="check-connectivity-using-psping"></a>Kapcsolat ellenőrzése a Psping használatával
+### <a name="check-connectivity-using-psping"></a>A kapcsolat ellenőrzése a Psping használatával
 
-A [Psping](/sysinternals/downloads/psping) a következőképpen ellenőrizhető, hogy a magánhálózati végponti kapcsolat (PEC) figyeli-e a kapcsolatokat az 1433-as porton.
+[A psping](/sysinternals/downloads/psping) az alábbiak szerint használható annak ellenőrzésére, hogy a Privát végpontkapcsolat (PEC) figyeli-e az 1433-as porton lévő kapcsolatokat.
 
-A psping a következőképpen futtathatja a SQL Database-kiszolgáló és a 1433-es port teljes tartománynevének megadásával:
+Futtassa a psping-et az alábbiak szerint az SQL Database-kiszolgáló és az 1433-as port teljes tartományn-tartományának megadásával:
 
 ```
 >psping.exe mysqldbsrvr.database.windows.net:1433
@@ -123,13 +123,13 @@ Connecting to 10.6.1.4:1433: from 10.6.0.4:49956: 1.43ms
 Connecting to 10.6.1.4:1433: from 10.6.0.4:49958: 2.28ms
 ```
 
-A kimenet azt mutatja, hogy a Psping pingelheti a PEC-hez társított magánhálózati IP-címet.
+A kimenet azt mutatja, hogy psping ping el tudta pingelni a PEC-hez társított privát IP-címet.
 
-### <a name="check-connectivity-using-nmap"></a>Kapcsolat ellenőrzése az nmap használatával
+### <a name="check-connectivity-using-nmap"></a>A kapcsolat ellenőrzése az Nmap használatával
 
-Az nmap (Network Mapper) egy ingyenes és nyílt forráskódú eszköz, amely a hálózati felderítéshez és a biztonsági naplózáshoz használatos. További információért és a letöltési hivatkozásért látogasson el https://nmap.org. Ezzel az eszközzel ellenőrizheti, hogy a magánhálózati végpont a 1433-es porton keresztül figyeli-e a kapcsolatokat.
+Az Nmap (Network Mapper) egy ingyenes és nyílt forráskódú eszköz, amelyet a hálózat felderítésére és a biztonsági naplózásra használnak. További információért és a https://nmap.orgletöltési linkért látogasson el a alkalmazásba. Ezzel az eszközzel biztosíthatja, hogy a privát végpont figyelje az 1433-as porton lévő kapcsolatokat.
 
-A következőképpen futtathatja az nmap-t úgy, hogy megadja a magánhálózati végpontot futtató alhálózat címtartomány-tartományát.
+Futtassa az Nmap-ot az alábbiak szerint a magánhálózati végpontot tartalmazó alhálózat címtartományának megadásával.
 
 ```
 >nmap -n -sP 10.1.1.0/24
@@ -140,14 +140,14 @@ Host is up (0.00s latency).
 Nmap done: 256 IP addresses (1 host up) scanned in 207.00 seconds
 ```
 
-Az eredmény azt mutatja, hogy egy IP-cím működik; a magánhálózati végpont IP-címének felel meg.
+Az eredmény azt mutatja, hogy egy IP-cím van fel; amely megfelel a privát végpont IP-címének.
 
 
-### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>Kapcsolat ellenőrzése SQL Server Management Studio használatával (SSMS)
+### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>A kapcsolat ellenőrzése az SQL Server Management Studio (SSMS) használatával
 > [!NOTE]
-> A kiszolgáló **teljes tartománynevét (FQDN)** használja az ügyfelekhez tartozó kapcsolatok karakterláncában. A közvetlenül az IP-címen végrehajtott bejelentkezési kísérletek sikertelenek lesznek. Ez a viselkedés a tervezés szerint történik, mivel a magánhálózati végpont továbbítja a forgalmat a régióbeli SQL-átjáró felé, és a sikeres bejelentkezéshez meg kell adni a teljes tartománynevet.
+> Használja a kiszolgáló **teljes minősített tartománynevét (FQDN)** az ügyfelek kapcsolati karakterláncaiban. A közvetlenül az IP-címre tett bejelentkezési kísérletek sikertelenek lesznek. Ez a viselkedés szándékosan, mivel a privát végpont útvonalak forgalmat az SQL Gateway a régióban, és a teljes tartományn a bejelentkezések sikeres elérése érdekében meg kell adni.
 
-A [SQL Databasehoz való kapcsolódáshoz](sql-database-connect-query-ssms.md)kövesse az alábbi lépéseket a SSMS használatához. Miután a SSMS használatával kapcsolódott a SQL Databasehoz, ellenőrizze, hogy az Azure-beli virtuális gép magánhálózati IP-címéről csatlakozik a következő lekérdezés futtatásával:
+Az itt leírt lépéseket követve az SSMS segítségével [csatlakozzon az SQL-adatbázishoz](sql-database-connect-query-ssms.md). Miután az SSMS használatával csatlakozott az SQL-adatbázishoz, ellenőrizze, hogy az Azure virtuális gép privát IP-címéről csatlakozik-e a következő lekérdezés futtatásával:
 
 ````
 select client_net_address from sys.dm_exec_connections 
@@ -155,35 +155,35 @@ where session_id=@@SPID
 ````
 
 ## <a name="limitations"></a>Korlátozások 
-A magánhálózati végponttal létesített kapcsolatok csak a **proxyt** támogatják a [kapcsolati házirendként](sql-database-connectivity-architecture.md#connection-policy)
+A privát végponthoz való kapcsolatok csak a **proxyt** támogatják [kapcsolatházirendként](sql-database-connectivity-architecture.md#connection-policy)
 
 
-## <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>Csatlakozás egy Azure-beli virtuális gépről a Virtual Network (VNet) 
+## <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>Csatlakozás egy Azure virtuális gépről társviszonyban lévő virtuális hálózatban (VNet) 
 
-Konfigurálja a [VNet](../virtual-network/tutorial-connect-virtual-networks-powershell.md) -társítást úgy, hogy az Azure-beli virtuális gép SQL Database kapcsolatot hozzon létre egy egyenrangú VNet.
+Konfigurálja [a virtuális hálózat társviszony-létesítési](../virtual-network/tutorial-connect-virtual-networks-powershell.md) kapcsolatot az SQL-adatbázishoz egy Azure virtuális gép egy társviszony-létesített virtuális hálózat.
 
-## <a name="connecting-from-an-azure-vm-in-vnet-to-vnet-environment"></a>Csatlakozás egy Azure-beli virtuális gépről a VNet-VNet-környezetben
+## <a name="connecting-from-an-azure-vm-in-vnet-to-vnet-environment"></a>Csatlakozás egy Azure-beli virtuális gépről virtuális hálózat és virtuális hálózat környezetben
 
-A [VNet-to-VNET VPN Gateway-kapcsolat](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) konfigurálása egy másik régióban vagy előfizetésben lévő Azure-beli virtuális gépről létesített SQL Database kapcsolat létesítéséhez.
+Konfigurálja [a Virtuálishálózat és a Virtuális hálózat VPN-átjárókapcsolatát,](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) hogy kapcsolatot létesítsen egy SQL-adatbázissal egy másik régióban vagy előfizetésben lévő Azure virtuális gépről.
 
-## <a name="connecting-from-an-on-premises-environment-over-vpn"></a>Csatlakozás helyszíni környezetből VPN-kapcsolaton keresztül
+## <a name="connecting-from-an-on-premises-environment-over-vpn"></a>Csatlakozás helyszíni környezetből VPN-en keresztül
 
-A helyszíni környezet és a SQL Database közötti kapcsolat létesítéséhez válassza ki és implementálja a következő lehetőségek egyikét:
-- [Pont – hely kapcsolat](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
+A helyszíni környezetés az SQL-adatbázis közötti kapcsolat létrehozásához válasszon és valósítson meg egy lehetőséget:
+- [Pont-hely kapcsolat](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 - [Helyek közötti VPN-kapcsolat](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
-- [ExpressRoute áramkör](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)
+- [ExpressRoute-kapcsolat](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)
 
 
-## <a name="connecting-from-an-azure-sql-data-warehouse-to-azure-storage-using-polybase"></a>Csatlakozás egy Azure SQL Data Warehouseról az Azure Storage-ba a Base használatával
+## <a name="connecting-from-an-azure-sql-data-warehouse-to-azure-storage-using-polybase"></a>Csatlakozás Azure SQL Data Warehouse-ról az Azure Storage-ba a Polybase használatával
 
-A Base általában az adatok Azure Storage-fiókokból Azure SQL Data Warehouseba való betöltésére használatos. Ha az Azure Storage-fiók, amelyből az adatok betöltése csak a VNet-alhálózatok számára történik, csak privát végpontokon, szolgáltatási végpontokon vagy IP-alapú tűzfalakon keresztül fér hozzá Az [itt](sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)ismertetett lépéseket követve engedélyezheti a VNet-hez védett Azure Storage-hoz való csatlakozást Azure SQL Data Warehouse a Base importálási és exportálási forgatókönyveit. 
+A PolyBase gyakran használható adatok azure Storage-fiókokból az Azure SQL Data Warehouse-ba történő betöltésére. Ha az Azure Storage-fiók, amely az adatok betöltése korlátozza a hozzáférést csak egy sor virtuális hálózati alhálózatok magánvégpontokon, szolgáltatásvégpontokon vagy IP-alapú tűzfalakon keresztül, a PolyBase és a fiók közötti kapcsolat megszakad. Ha engedélyezni szeretné a PolyBase importálási és exportálási forgatókönyveit az Azure SQL Data Warehouse virtuális hálózathoz való csatlakoztatásával, kövesse az [itt](sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)megadott lépéseket. 
 
 
 
 ## <a name="next-steps"></a>További lépések
 
-- A Azure SQL Database biztonság áttekintését lásd: [az adatbázis biztonságossá tétele](sql-database-security-overview.md)
-- Az Azure SQL Database kapcsolatok áttekintését lásd: [Azure SQL connectivity Architecture](sql-database-connectivity-architecture.md)
+- Az Azure SQL Database biztonságának áttekintését az Adatbázis védelme című témakörben [találja.](sql-database-security-overview.md)
+- Az Azure SQL Database-kapcsolat áttekintését az [Azure SQL Connectivity Architecture című témakörben találja.](sql-database-connectivity-architecture.md)
 
 <!--Image references-->
 [1]: ./media/sql-database-get-started-portal/pe-connect-overview.png

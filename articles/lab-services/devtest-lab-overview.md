@@ -1,6 +1,6 @@
 ---
-title: Tudnivalók az Azure DevTest Labs |} A Microsoft Docs
-description: Ismerje meg, hogyan DevTest Labs is könnyen létrehozása, kezelése és monitorozása az Azure-beli virtuális gépek
+title: Az Azure DevTest Labs névjegye | Microsoft dokumentumok
+description: Ismerje meg, hogyan teheti lehetővé a DevTest Labs az Azure virtuális gépek létrehozását, kezelését és figyelését
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,77 +15,77 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: spelluru
 ms.openlocfilehash: b7cd6bb1fd0377ca1440d9c667453df922aacbd4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60561455"
 ---
-# <a name="about-azure-devtest-labs"></a>Tudnivalók az Azure DevTest Labs szolgáltatásban
-Az Azure DevTest Labs lehetővé teszi a fejlesztők a munkacsoportok hatékonyabban önálló kezelhetők a virtuális gépek (VM) és a PaaS-erőforrásokhoz jóváhagyások várakozás nélkül.
+# <a name="about-azure-devtest-labs"></a>Információk az Azure DevTest Labs szolgáltatásról
+Az Azure DevTest Labs lehetővé teszi a csapatok fejlesztői számára, hogy hatékonyan kezeljék a virtuális gépeket (VM-eket) és a PaaS-erőforrásokat anélkül, hogy jóváhagyásra várnának.
 
-DevTest Labs, előre konfigurált adatbázisok vagy az Azure Resource Manager-sablonok álló labs hoz létre. Ezek rendelkezik a szükséges eszközöket és szoftvereket, amelyek segítségével hozhat létre környezeteket. Órák vagy napok helyett, néhány perc alatt létrehozhat környezeteket.
+A DevTest Labs előre konfigurált bázisokból vagy Azure Resource Manager-sablonokból álló teszteredményeket hoz létre. Ezek rendelkeznek az összes szükséges eszközzel és szoftverrel, amelyekkel környezeteket hozhat létre. Néhány perc alatt létrehozhat környezeteket, nem pedig órákat vagy napokat.
 
-DevTest Labs használatával tesztelheti az alkalmazások a legfrissebb verzióit a következő feladatok végrehajtásával:
+A DevTest Labs használatával az alábbi feladatok elvégzésével tesztelheti az alkalmazások legújabb verzióit:
 
-- Gyorsan üzembe helyezhet Windows és Linux-környezetek újrahasznosítható sablonok és összetevők használatával.
-- Egyszerűen integrálhatja az üzembe helyezési folyamatait a DevTest Labs szolgáltatással igény szerinti környezetek kiépítéséhez.
-- Vertikális felskálázás terheléstesztelését több tesztügynök kiépítésével és a képzés és a demók előre kiépített környezeteket hozhat létre.
+- Windows- és Linux-környezetek gyors kiépítése újrafelhasználható sablonok és összetevők használatával.
+- Az igény szerinti környezetek kiépítéséhez egyszerűen integrálhatja az üzembe helyezési folyamatait a DevTest Labs-zel.
+- A terheléstesztelés tágíthatja több tesztügynök kiépítésével, és hozhat létre előre kiépített környezeteket a betanításhoz és a bemutatókhoz.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/What-is-Azure-DevTest-Labs/player]
 
 ## <a name="capabilities"></a>Funkciók
-DevTest Labs szolgáltatásban a virtuális gépek dolgozó fejlesztők az alábbi képességeket biztosítja:
+A DevTest Labs a következő képességeket biztosítja a virtuális gépekkel dolgozó fejlesztőknek:
 
-- Virtuális gépek gyors létrehozásához a következő kevesebb mint öt egyszerű lépésben.
-- Válassza ki a Virtuálisgép-adatbázisok konfigurált, jóváhagyott, és a csapat vezető vagy a központi által rendszerezett listáját informatikai.
-- Hozzon létre a virtuális gépek előre létrehozott egyéni lemezképek, a szoftverek és eszközök már telepítve van. 
-- Virtuális gépek létrehozása, amely telepítve van a virtuális gépek létrehozásakor a szoftver legújabb buildjei kombinálva lényegében egyéni rendszerképek képleteket. 
-- -Összetevők, amelyek az üzembe helyezett virtuális gépeken, miután azok üzemelnek bővítmények telepítése.
-- Állítsa be az automatikus leállítási és automatikusan elinduló ütemezések virtuális gépeken.
-- Jogcím egy előre létrehozott virtuális Gépet a létrehozási folyamat áthaladás nélkül.
+- Hozzon létre virtuális gépeket gyorsan kevesebb, mint öt egyszerű lépés végrehajtásával.
+- Válasszon a virtuálisgép-bázisok válogatott listájából, amelyek et a csoportvezető vagy a központi informatikai szakember konfigurált, jóváhagyott és engedélyezett.
+- Hozzon létre virtuális gépeket előre létrehozott egyéni lemezképekből, amelyek rendelkeznek az összes szoftver rel és eszközökkel. 
+- Hozzon létre virtuális gépeket olyan képletekből, amelyek lényegében egyéni lemezképek, a virtuális gépek létrehozásakor telepített szoftver legújabb buildjeivel kombinálva. 
+- Telepítse azokat a összetevőket, amelyek a virtuális gépeken üzembe helyezett bővítmények a kiépítésük után.
+- Állítsa be az automatikus leállítási és automatikus indítási ütemezéseket a virtuális gépeken.
+- Igényeljen egy előre létrehozott virtuális gép anélkül, hogy a létrehozási folyamat.
 
-DevTest Labs szolgáltatásban az alábbi képességeket biztosítja a fejlesztők számára a PaaS-környezetek használata:
+A DevTest Labs a következő képességeket biztosítja a PaaS-környezetekkel dolgozó fejlesztők számára:
 
-- Resource Manager használatával PaaS-környezetek gyors létrehozását a következő kevesebb mint három egyszerű lépésben.
-- Válassza ki a Resource Manager-sablonokat, amelyek a konfigurált, és a csapat vezető vagy a központi által rendszerezett listáját informatikai.
-- Üres erőforráscsoport (védőfal) labor kontextusában Fedezze fel az Azure Resource Manager-sablon használatával helyezhet üzembe.
+- Az Erőforrás-kezelő vel gyorsan létrehozhat PaaS-környezeteket háromnál rövidebb egyszerű lépéssel.
+- Válasszon az Erőforrás-kezelő sablonok válogatott listájából, amelyek et a csoportvezető vagy a központi informatikai szakember engedélyezte.
+- Egy üres erőforráscsoport (sandbox) egy Erőforrás-kezelő sablon használatával az Azure-t egy tesztkörnyezetben vizsgálja.
 
-DevTest Labs lehetővé teszi a központi informatikai hulladékok szabályozhatja, optimalizálhatja a költségeket az erőforrások és a következő feladatok végrehajtásával költségvetése maradva:  
+A DevTest Labs lehetővé teszi a központi informatikai rendszer számára a hulladékok ellenőrzését, az erőforrások költségeinek optimalizálását, valamint a következő feladatok elvégzésével a költségvetéseken belüli tartózkodást:  
 
-- Virtuális gépek automatikus leállítása és automatikus indítási ütemezéseket beállítása.
-- Szabályzatok beállítása a felhasználók hozhatnak létre virtuális gépek száma.
-- Szabályzatok beállítása a virtuális gépek méretei és katalógus rendszerkép található, a felhasználók közül választhat.
-- Költségeit, és a tárolók labs beállítást.
-- Első magas előre jelzett költséget laborral kapcsolatos értesítést, így a szükséges műveleteket hajthatja végre.
+- Automatikus leállítás és automatikus indításütemezésbeállítása a virtuális gépeken.
+- Házirendek beállítása a felhasználók által létrehozható virtuális gépek számára vonatkozóan.
+- Házirendek beállítása a virtuális gépek méreteés a galéria képeket, amelyek a felhasználók közül választhatnak.
+- A költségek nyomon követése és a laborok céltábláinak beállítása.
+- Értesítést kap a laborok magas tervezett költségeiről, így megteheti a szükséges műveleteket.
 
-DevTest Labs létrehozása, konfigurálása és kezelése a környezeteket a felhőben található a következő előnyöket biztosítja.
+A DevTest Labs a következő előnyökkel jár a felhőben lévő környezetek létrehozása, konfigurálása és kezelése során.
 
-## <a name="cost-control-and-governance"></a>A Cost irányítása és szabályozása
-DevTest Labs szolgáltatással egyszerűbben csökkenthetők a költségek azáltal, hogy a következő feladatokat végezheti el:
+## <a name="cost-control-and-governance"></a>Költségellenőrzés és irányítás
+A DevTest Labs megkönnyíti a költségek szabályozását azáltal, hogy lehetővé teszi a következő feladatok elvégzését:
 
-- [Házirendek beállítása a gyakorlatot](devtest-lab-get-started-with-lab-policies.md), például a felhasználónkénti vagy egy tesztlabor virtuális gépek száma. 
-- Hozzon létre [automatikus leállítására szolgáló házirendeket](devtest-lab-set-lab-policy.md) és indítsa el a virtuális gépeket.
-- A virtuális gépek és PaaS-erőforrásokat nyomon követheti a költségek fonva mentése belülre labs belül [a költségvetés](devtest-lab-configure-cost-management.md).
-- Legyen naprakész a gyakorlatot kontextusában így erőforrásokat kívül nem indíthat el.
+- [Állítsa be a szabályzatok a laborok,](devtest-lab-get-started-with-lab-policies.md)például a virtuális gépek felhasználónkénti vagy laboronkénti száma. 
+- Hozzon létre házirendeket a virtuális gépek [automatikus leállításához](devtest-lab-set-lab-policy.md) és indításához.
+- Kövesse nyomon a virtuális gépek és a PaaS-erőforrások költségeit a laborokon belül, hogy [a költségvetésen](devtest-lab-configure-cost-management.md)belül maradjon.
+- Maradjon a laborok kontextusában, hogy ne pörögjön fel rajtuk kívül.
 
-## <a name="quickly-get-to-ready-to-test"></a>Gyorsan hozzáférhet kész-teszt
-DevTest Labs lehetővé teszi minden fejlesztőcsapatának szüksége alkalmazások fejlesztéséhez és teszteléséhez felszerelt előre kiépített környezeteket hozhat létre. Csak [igényeljen környezetet](devtest-lab-add-claimable-vm.md) ahol az alkalmazás a legutóbbi megfelelő buildje telepítve van és kezdő működik. És még gyorsabb és Karcsúbb környezeteket alakíthat ki a tárolók használatával.
+## <a name="quickly-get-to-ready-to-test"></a>Gyorsan felkészüla tesztelésre
+A DevTest Labs lehetővé teszi, hogy előre kiépített környezeteket hozzon létre, amelyek mindennel rendelkeznek, amire a csapatnak szüksége van az alkalmazások fejlesztéséhez és teszteléséhez. Csak [azt állítják, a környezetben,](devtest-lab-add-claimable-vm.md) ahol az utolsó jó épít az alkalmazás telepítve van, és kezdj el dolgozni. Vagy használjon tárolókat a még gyorsabb, karcsúbb környezet létrehozásához.
 
-## <a name="create-once-use-everywhere"></a>Ha egyszer létrehozta, bárhol használhatja
-Rögzítheti és megoszthatja a PaaS [környezeti sablonokkal](devtest-lab-create-environment-from-arm.md) és [összetevők](add-artifact-repository.md) a csapat vagy szervezet – verziókövetési rendszerben az összes – egyszerűen létrehozása a fejlesztői és tesztelési környezetek.
+## <a name="create-once-use-everywhere"></a>Hozzon létre egyszer, használja mindenhol
+A [PaaS-környezetsablonjainak](devtest-lab-create-environment-from-arm.md) és [összetevőinek](add-artifact-repository.md) rögzítése és megosztása a csapaton vagy szervezeten belül – mind a forrásellenőrzés ben – a fejlesztői és tesztelési környezetek egyszerű létrehozásához.
 
-## <a name="worry-free-self-service"></a>Önkiszolgáló aggódjon – ingyenes
-DevTest Labs lehetővé teszi a fejlesztők és a tesztelők gyorsan és egyszerűen [IaaS virtuális gépek létrehozása](devtest-lab-add-vm.md) és [PaaS-erőforrásokhoz](devtest-lab-create-environment-from-arm.md) az előre konfigurált erőforrások készletét.
+## <a name="worry-free-self-service"></a>Gondtalan önkiszolgáló
+A DevTest Labs lehetővé teszi a fejlesztők és a tesztelők számára, hogy gyorsan és egyszerűen [hozzanak létre IaaS virtuális gépeket](devtest-lab-add-vm.md) és [PaaS-erőforrásokat](devtest-lab-create-environment-from-arm.md) előre konfigurált erőforrások használatával.
 
-## <a name="use-iaas-and-paas-resources"></a>IaaS és PaaS-erőforrások használata 
-A fejlesztők is is üzembe helyezése PaaS-erőforrásokhoz, például az Azure Service Fabric-fürtök, a Web Apps funkció az Azure App Service és a SharePoint-farmok, Resource Manager-sablonok használatával. Első lépésként a PaaS Labs-környezetben a sablonokat használni a [nyilvános környezetben tárház](devtest-lab-configure-use-public-environments.md) vagy [a labor csatlakozhat a saját Git-tárház](devtest-lab-create-environment-from-arm.md#configure-your-own-template-repositories). Is követheti ezeket az erőforrásokat a költségvetést költségeket.
+## <a name="use-iaas-and-paas-resources"></a>Az IaaS- és PaaS-erőforrások használata 
+A fejlesztők a PaaS-erőforrásokat, például az Azure Service Fabric-fürtöket, az Azure App Service Web Apps szolgáltatását és a SharePoint-farmokat is felpörgethetik a Resource Manager-sablonok használatával. A PaaS laborokban való használatának megkezdéséhez használja a [nyilvános környezeti tárházból](devtest-lab-configure-use-public-environments.md) származó sablonokat, vagy [csatlakoztassa a labort a saját Git-tárházához.](devtest-lab-create-environment-from-arm.md#configure-your-own-template-repositories) Ezen erőforrások költségeit is nyomon követheti, hogy a költségkereten belül maradjon.
 
-## <a name="integrate-with-your-existing-toolchain"></a>Integráció a meglévő eszközlánccal
-Előre elkészített beépülő modulok vagy az API-t fejlesztési-tesztelési környezetek üzembe helyezése a közvetlenül a kedvenc használata [folyamatos integrációs (CI) eszközről](devtest-lab-integrate-ci-cd-vsts.md), az integrált fejlesztőkörnyezetből (IDE) vagy az automatizált kibocsátási folyamatok. Az átfogó parancssori eszközt is használhatja.
+## <a name="integrate-with-your-existing-toolchain"></a>Integrálás meglévő eszközláncával
+Az előre elkészített beépülő modulok vagy az API segítségével közvetlenül az előnyben részesített [folyamatos integrációs (CI) eszközből,](devtest-lab-integrate-ci-cd-vsts.md)integrált fejlesztői környezetből (IDE) vagy automatikus kiadási folyamatból helyezhet el fejlesztési/tesztelési környezeteket. Az átfogó parancssori eszközt is használhatja.
 
 ## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket:
 
-- DevTest Labs kapcsolatos további információkért lásd: [DevTest Labs-fogalmak](devtest-lab-concepts.md).
-- Lépésről lépésre egy bemutatóért lásd: [oktatóanyag: Tesztkörnyezet beállítása az Azure DevTest Labs használatával](tutorial-create-custom-lab.md).
+- Ha többet szeretne megtudni a DevTest Labs- ről, olvassa el a [DevTest Labs fogalmait.](devtest-lab-concepts.md)
+- A részletes útmutató részletes utasításokat, olvassa [el az oktatóanyag: Labor beállítása az Azure DevTest Labs használatával.](tutorial-create-custom-lab.md)

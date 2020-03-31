@@ -1,6 +1,6 @@
 ---
-title: Az ügynök üzembe helyezése a CEF-adatkapcsolat Azure Sentinel Preview-hoz való összekapcsolásához | Microsoft Docs
-description: Megtudhatja, hogyan helyezheti üzembe az ügynököt a CEF-adatkapcsolat Azure Sentinelhez való összekapcsolásához.
+title: Az ügynök üzembe helyezése a CEF-adatok Azure Sentinel Előzetes verzióhoz való csatlakoztatásához| Microsoft dokumentumok
+description: Ismerje meg, hogyan telepítheti az ügynököt a CEF-adatok Azure Sentinelhez való csatlakoztatásához.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,38 +15,38 @@ ms.workload: na
 ms.date: 11/26/2019
 ms.author: yelevin
 ms.openlocfilehash: b0c9335357cb793ea76e1dbe68575f716a50372a
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588467"
 ---
-# <a name="step-1-deploy-the-agent"></a>1\. lépés: az ügynök üzembe helyezése
+# <a name="step-1-deploy-the-agent"></a>1. lépés: Az ügynök telepítése
 
 
-Ebben a lépésben ki kell választania azt a Linux-gépet, amely proxyként fog működni az Azure Sentinel és a biztonsági megoldás között. Futtatnia kell egy parancsfájlt a proxy gépen, amely a következőket teszi:
-- Telepíti a Log Analytics ügynököt, és szükség szerint konfigurálja a syslog-üzenetek figyeléséhez.
-- Úgy konfigurálja a syslog démont, hogy a 514-es TCP-porton keresztül figyelje a syslog-üzeneteket, majd csak a CEF üzeneteket továbbítja a Log Analytics ügynöknek a 25226-es TCP-porton keresztül.
-- Beállítja a syslog-ügynököt az adatok gyűjtésére és biztonságos küldésére az Azure Sentinel számára, ahol a rendszer elemzi és gazdagítja az adatokat.
+Ebben a lépésben ki kell választania azt a Linux-gépet, amely proxyként fog működni az Azure Sentinel és a biztonsági megoldás között. Meg kell futtatni a parancsfájlt a proxy gépen, amely:
+- Telepíti a Log Analytics-ügynököt, és szükség szerint konfigurálja a Syslog-üzenetek figyeléséhez.
+- Úgy állítja be a Syslog démont, hogy az 514-es TCP-porton keresztül meghallgassa a Syslog-üzeneteket, majd csak a CEF-üzeneteket továbbítja a Log Analytics-ügynöknek a 25226-os TCP-port használatával.
+- Beállítja a Syslog-ügynököt az adatok gyűjtésére és biztonságos elküldésére az Azure Sentinelbe, ahol elemzik és gazdagítják.
  
-## <a name="deploy-the-agent"></a>Az ügynök üzembe helyezése
+## <a name="deploy-the-agent"></a>Az ügynök telepítése
  
-1. Az Azure Sentinel portálon kattintson az **adatösszekötők** elemre, és válassza a **Common Event Format (CEF)** lehetőséget, majd **nyissa meg az összekötő lapot**. 
+1. Az Azure Sentinel portálon kattintson az **Adatösszekötők** elemre, és válassza a **Közös eseményformátum (CEF)** lehetőséget, majd **nyissa meg az összekötő lapot.** 
 
-1. **A syslog-ügynök telepítése és konfigurálása**területen válassza ki a gép típusát, akár az Azure-t, akár a másik felhőt, akár a helyszínen. 
+1. A **Syslog ügynök telepítése és konfigurálása**csoportban válassza ki a géptípusát, az Azure-t, a más felhőt vagy a helyszíni beállításokat. 
    > [!NOTE]
-   > Mivel a következő lépésben a parancsfájl telepíti a Log Analytics ügynököt, és csatlakoztatja a gépet az Azure Sentinel-munkaterülethez, győződjön meg róla, hogy ez a számítógép nincs csatlakoztatva más munkaterülethez.
-1. Emelt szintű engedélyekkel (sudo) kell rendelkeznie a gépen. A következő paranccsal ellenőrizze, hogy rendelkezik-e a Python használatával a gépen: `python –version`
+   > Mivel a parancsfájl a következő lépésben telepíti a Log Analytics-ügynököt, és csatlakoztatja a gépet az Azure Sentinel-munkaterülethez, győződjön meg arról, hogy a gép nem csatlakozik más munkaterülethez.
+1. Emelt szintű engedélyekkel (sudo) kell rendelkeznie a számítógépen. Győződjön meg arról, hogy a Python a számítógépen a következő paranccsal rendelkezik:`python –version`
 
-1. Futtassa a következő szkriptet a proxy gépen.
+1. Futtassa a következő parancsfájlt a proxyszámítógépen.
    `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
-1. A szkript futtatása közben ellenőrizze, hogy nem kap-e hibaüzenetet vagy figyelmeztető üzenetet.
+1. A parancsfájl futása közben ellenőrizze, hogy nem kap-e hibaüzenetet vagy figyelmeztető üzenetet.
 
-Folytassa a [2. lépéssel: a biztonsági megoldás konfigurálása a CEF-üzenetek továbbítására](connect-cef-solution-config.md) .
+Tovább a [2.](connect-cef-solution-config.md)
 
 
-## <a name="next-steps"></a>Következő lépések
-Ebből a dokumentumból megtudhatta, hogyan csatlakoztathatók a CEF-készülékek az Azure Sentinel szolgáltatáshoz. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
-- Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
-- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats.md).
+## <a name="next-steps"></a>További lépések
+Ebben a dokumentumban megtanulta, hogyan csatlakoztathatja a CEF-készülékeket az Azure Sentinelhez. Ha többet szeretne megtudni az Azure Sentinelről, olvassa el az alábbi cikkeket:
+- Ismerje meg, hogyan [kaphat betekintést az adatokba és a potenciális fenyegetésekbe.](quickstart-get-visibility.md)
+- Az Azure Sentinel segítségével első lépések [a fenyegetések észleléséhez.](tutorial-detect-threats.md)
 

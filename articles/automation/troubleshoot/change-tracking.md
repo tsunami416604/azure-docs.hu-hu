@@ -1,6 +1,6 @@
 ---
-title: Az Azure Change Tracking hibáinak elhárítása
-description: Megtudhatja, hogyan lehet elhárítani a Azure Automation Change Tracking és a leltár szolgáltatással kapcsolatos problémákat.
+title: Az Azure változáskövetéslel kapcsolatos problémák elhárítása
+description: Ismerje meg, hogyan háríthatja el és oldhatja meg a problémákat az Azure Automation változáskövetés és készlet szolgáltatással.
 services: automation
 ms.service: automation
 ms.subservice: change-inventory-management
@@ -10,34 +10,34 @@ ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 6cadaea1a20743071acbe8860df02ca7bbdde954
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77198530"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory"></a>A Change Tracking és az Inventory hibaelhárítása
 
 ## <a name="windows"></a>Windows
 
-### <a name="records-not-showing-windows"></a>Forgatókönyv: Change Tracking a rekordok nem jelennek meg a Windows rendszerű gépeken
+### <a name="scenario-change-tracking-records-arent-showing-for-windows-machines"></a><a name="records-not-showing-windows"></a>Eset: A változáskövetési rekordok nem jelennek meg Windows-gépeken
 
 #### <a name="issue"></a>Probléma
 
-Nem jelennek meg Change Tracking vagy leltározási eredmények a Change Tracking előkészített Windows-gépekhez.
+A változáskövetésre vagy a készletkövetésre vonatkozó anamnézis nem jelenik meg a változáskövetésre beépített Windows-gépeknél.
 
 #### <a name="cause"></a>Ok
 
-Ez a hiba a következő okok miatt fordulhat elő:
+Ennek a hibának a következő okai lehetnek:
 
-* A Microsoft monitoring Agent nem fut.
-* A rendszer blokkolja az Automation-fiókkal való kommunikációt.
-* A Change Tracking felügyeleti csomagjai nem tölthetők le.
-* Előfordulhat, hogy a bevezetésben lévő virtuális gép olyan klónozott gépről származott, amely nem volt telepítve a Microsoft monitoring Agent Sysprep használatával létrehozott.
+* A Microsoft monitoring ügynök nem fut.
+* Az Automation-fiókhoz való visszakommunikáció le van tiltva.
+* A rendszer nem tölti le a változások követéséhez való felügyeleti csomagokat.
+* Előfordulhat, hogy a beépített virtuális gép olyan klónozott gépről származik, amely nem volt sysprepped a Microsoft Monitoring Agent telepítve.
 
 #### <a name="resolution"></a>Megoldás:
 
-Az alábbiakban ismertetett megoldások segíthetnek megoldani a problémát. Ha továbbra is segítségre van szüksége, diagnosztikai információkat gyűjthet, és kapcsolatba léphet a támogatási szolgálattal. Az ügynök gépen navigáljon a C:\Program Files\Microsoft monitoring Agent\Agent\Tools, és futtassa a következő parancsokat:
+Az alábbiakban ismertetett megoldások segíthetnek a probléma megoldásában. Ha továbbra is segítségre van szüksége, diagnosztikai információkat gyűjthet, és kapcsolatba léphet az ügyfélszolgálattal. Az ügynökszámítógépen keresse meg a C:\Program Files\Microsoft Monitoring Agent\Agent\Tools mappát, és futtassa a következő parancsokat:
 
 ```cmd
 net stop healthservice
@@ -47,73 +47,73 @@ net start healthservice
 ```
 
 > [!NOTE]
-> Alapértelmezés szerint a hibák nyomon követése engedélyezve van. Az előző példában szereplő részletes hibaüzenetek engedélyezéséhez használja a *ver* paramétert. Az **StartTracing. cmd**meghívásakor használja az *inf* -et.
+> Alapértelmezés szerint a hibakövetés engedélyezve van. A részletes hibaüzenetek engedélyezéséhez, mint az előző példában, használja a *VER* paramétert. A nyomon követést az *INF* parancs használja a **StartTracing.cmd**parancs meghívásakor.
 
-##### <a name="microsoft-monitoring-agent-not-running"></a>A Microsoft monitoring Agent nem fut
+##### <a name="microsoft-monitoring-agent-not-running"></a>A Microsoft monitoring ügynöke nem fut
 
-Ellenőrizze, hogy a számítógépen fut-e a Microsoft monitoring Agent (HealthService. exe).
+Ellenőrizze, hogy a Microsoft Monitoring Agent (HealthService.exe) fut-e a számítógépen.
 
-##### <a name="communication-to-automation-account-blocked"></a>Az Automation-fiókkal folytatott kommunikáció blokkolva
+##### <a name="communication-to-automation-account-blocked"></a>Kommunikáció az Automation-fiókkal blokkolva
 
-Ellenőrizze Eseménynapló a gépen, és keresse meg a "változáskövetési" szót tartalmazó eseményeket.
+Ellenőrizze az Eseménynaplót a számítógépen, és keresse meg azokat az eseményeket, amelyekben a "changetracking" szó található.
 
-Az [adatközpontban vagy a felhőben lévő erőforrások automatizálása hibrid Runbook-feldolgozóval](../automation-hybrid-runbook-worker.md#network-planning) című cikkből megtudhatja, hogy mely címeket és portokat kell engedélyezni a Change Tracking működéséhez.
+Tekintse meg az [erőforrások automatizálása az adatközpontban vagy a felhőben a hibrid Runbook-feldolgozó használatával,](../automation-hybrid-runbook-worker.md#network-planning) hogy megismerje azokat a címeket és portokat, amelyeket engedélyezni kell a változáskövetés működéséhez.
 
-##### <a name="management-packs-not-downloaded"></a>Nem letöltött felügyeleti csomagok
+##### <a name="management-packs-not-downloaded"></a>A felügyeleti csomagok nincsenek letöltve
 
-Győződjön meg arról, hogy a következő Change Tracking és leltár-felügyeleti csomagok helyileg vannak telepítve:
+Ellenőrizze, hogy a következő változáskövetési és készletfelügyeleti csomagok vannak-e telepítve a helyileg:
 
 * Microsoft.IntelligencePacks.ChangeTrackingDirectAgent.*
 * Microsoft.IntelligencePacks.InventoryChangeTracking.*
 * Microsoft.IntelligencePacks.SingletonInventoryCollection.*
 
-##### <a name="vm-from-cloned-machine-that-has-not-been-sysprepped"></a>A klónozott gépről nem Sysprep használatával létrehozott virtuális gép
+##### <a name="vm-from-cloned-machine-that-has-not-been-sysprepped"></a>Nem sysprepped ként elnem írt klónozott gépvirtuális gépről
 
-Klónozott rendszerkép használata esetén először a rendszerképet, majd a Microsoft monitoring Agent telepítését kell telepítenie.
+Ha klónozott lemezképet használ, először sysprep a lemezképet, majd telepítse a Microsoft Monitoring Agent alkalmazást.
 
 ## <a name="linux"></a>Linux
 
-### <a name="scenario-no-change-tracking-or-inventory-results-on-linux-machines"></a>Forgatókönyv: nincs Change Tracking vagy leltározási eredmény Linux rendszerű gépeken
+### <a name="scenario-no-change-tracking-or-inventory-results-on-linux-machines"></a>Forgatókönyv: Nincs változáskövetés vagy leltáreredmények Linux-gépeken
 
 #### <a name="issue"></a>Probléma
 
-Nem jelennek meg olyan leltározási és Change Trackingi eredmények, amelyek Change Tracking előkészített linuxos gépekre vonatkoznak. 
+Nem jelennek meg olyan Leltár- vagy változáskövetési eredmények a változáskövetéshez beépített Linux-gépeknél. 
 
 #### <a name="cause"></a>Ok
-A probléma lehetséges okai a következők:
-* A Linux Log Analytics ügynöke nem fut.
-* A Log Analytics-ügynök Linux rendszerhez nincs megfelelően konfigurálva.
-* A fájlok integritásának figyelése (FIM) ütközik.
+A probléma lehetséges okai:
+* A Log Analytics-ügynök Linux nem fut.
+* A Log Analytics-ügynök linuxos nincs megfelelően konfigurálva.
+* Vannak fájlintegritás-figyelési (FIM) ütközések.
 
 #### <a name="resolution"></a>Megoldás: 
 
-##### <a name="log-analytics-agent-for-linux-not-running"></a>Log Analytics a Linux-ügynök nem fut
+##### <a name="log-analytics-agent-for-linux-not-running"></a>A Log Analytics ügynök linuxos futtatása nem
 
-Győződjön meg arról, hogy a (z) Linux rendszerhez készült Log Analytics-ügynök (omsagent) démona fut a gépen. Futtassa az alábbi lekérdezést a Log Analytics munkaterületen, amely az Automation-fiókjához van csatolva.
+Ellenőrizze, hogy a Linux-naplóügynök (omsagent) démona fut-e a számítógépen. Futtassa a következő lekérdezést az Automation-fiókhoz kapcsolódó Log Analytics-munkaterületen.
 
 ```loganalytics Copy
 Heartbeat
 | summarize by Computer, Solutions
 ```
 
-Ha nem látja a gépet a lekérdezés eredményei között, a közelmúltban nem volt bejelölve. Valószínűleg van egy helyi konfigurációs probléma, és újra kell telepítenie az ügynököt. További információ a telepítésről és a konfigurálásról: [a naplófájlok adatainak összegyűjtése a log Analytics ügynökkel](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent). 
+Ha nem látja a gépet a lekérdezési eredmények ben, akkor nemrég nem jelentkezett be. Valószínűleg helyi konfigurációs probléma van, ezért újra kell telepítenie az ügynököt. A telepítésről és a konfigurációról a [Naplóadatok gyűjtése a Log Analytics-ügynökkel című témakörben](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)talál. 
 
-Ha a gép megjelenik a lekérdezés eredményei között, ellenőrizze a hatókör-konfigurációt. Lásd: [Azure monitor-figyelési megoldások célzása](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting).
+Ha a gép megjelenik a lekérdezés eredményében, ellenőrizze a hatókör konfigurációját. Lásd: [Figyelésfigyelési megoldások az Azure Monitorban.](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting)
 
-A probléma megoldásához tekintse meg a következő [témakört: probléma: nem jelenik meg Linux-alapú információ](https://docs.microsoft.com/azure/azure-monitor/platform/agent-linux-troubleshoot#issue-you-are-not-seeing-any-linux-data).
+A probléma további hibaelhárításához olvassa el a [Probléma: Nem lát Linux-adatokat.](https://docs.microsoft.com/azure/azure-monitor/platform/agent-linux-troubleshoot#issue-you-are-not-seeing-any-linux-data)
 
-##### <a name="log-analytics-agent-for-linux-not-configured-correctly"></a>A Linux-ügynök nem megfelelően van konfigurálva Log Analytics
+##### <a name="log-analytics-agent-for-linux-not-configured-correctly"></a>A Log Analytics linuxos ügynöke nincs megfelelően konfigurálva
 
-Előfordulhat, hogy a Linux rendszerhez készült Log Analytics-ügynök nem megfelelően van konfigurálva a log és a parancssori kimeneti gyűjteményhez a OMS log Collector eszközzel. Lásd: a [környezet változásainak követése a Change Tracking megoldással](../change-tracking.md).
+Előfordulhat, hogy a Linux-naplóügynök nincs megfelelően konfigurálva a napló- és parancssori kimeneti gyűjteményhez az OMS-naplógyűjtő eszközzel. Lásd: [Változások követése a környezetben a Változáskövetési megoldással.](../change-tracking.md)
 
 ##### <a name="fim-conflicts"></a>FIM-ütközések
 
-Előfordulhat, hogy a Azure Security Center FIM-funkciója helytelenül ellenőrzi a Linux-fájlok integritását. Ellenőrizze, hogy a FIM működik-e, és megfelelően van-e konfigurálva a Linux-fájlok figyeléséhez. Lásd: a [környezet változásainak követése a Change Tracking megoldással](../change-tracking.md).
+Előfordulhat, hogy az Azure Security Center FIM-szolgáltatása helytelenül érvényesíti a Linux-fájlok integritását. Ellenőrizze, hogy a FIM működőképes-e, és megfelelően van-e konfigurálva a Linux-fájlfigyeléshez. Lásd: [Változások követése a környezetben a Változáskövetési megoldással.](../change-tracking.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha nem látja a problémát, vagy nem tudja megoldani a problémát, használja a következő csatornák egyikét a további támogatáshoz.
+Ha nem látja a problémát, vagy nem tudja megoldani a problémát, használja az alábbi csatornák egyikét további támogatásért.
 
-* Választ kaphat az Azure-szakértőktől az [Azure-fórumokon](https://azure.microsoft.com/support/forums/).
-* Az [@AzureSupport](https://twitter.com/azuresupport) a Microsoft Azure hivatalos Twitter-fiókja, amelyen keresztül a jobb felhasználói élmény érdekében igyekszünk az Azure-felhasználók közösségét ellátni a megfelelő forrásokkal: válaszokkal, támogatással és szakértői segítséggel.
-* Ha további segítségre van szüksége, egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.
+* Válaszokat kaphat az Azure szakértőitől [az Azure Forums segítségével.](https://azure.microsoft.com/support/forums/)
+* Lépjen [@AzureSupport](https://twitter.com/azuresupport) kapcsolatba – a hivatalos Microsoft Azure-fiókkal az ügyfélélmény javítása érdekében, ha az Azure-közösséget a megfelelő erőforrásokhoz, válaszokhoz, támogatáshoz és szakértőkhöz csatlakoztatja.
+* Ha további segítségre van szüksége, benyújthat egy Azure-támogatási incidenst. Nyissa meg az [Azure támogatási webhelyét,](https://azure.microsoft.com/support/options/) és válassza **a Támogatás beszerezni lehetőséget.**

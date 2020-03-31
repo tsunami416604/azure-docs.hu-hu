@@ -1,6 +1,6 @@
 ---
-title: Ütközés-feloldási típusok és megoldási szabályzatok a Azure Cosmos DB
-description: Ez a cikk a Azure Cosmos DB ütközési kategóriáit és ütközés-feloldási házirendjeit ismerteti.
+title: Ütközésfeloldási típusok és megoldási szabályzatok az Azure Cosmos DB-ben
+description: Ez a cikk ismerteti az ütközési kategóriák és az ütközésfeloldási szabályzatok az Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,48 +8,48 @@ ms.date: 08/05/2019
 ms.author: mjbrown
 ms.reviewer: sngun
 ms.openlocfilehash: a8ee72f46e1789088e779c10a0824262469ffde8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75441985"
 ---
 # <a name="conflict-types-and-resolution-policies"></a>Ütközéstípusok és -feloldási szabályzatok
 
-Az ütközések és az ütközések feloldására szolgáló házirendek akkor alkalmazhatók, ha a Azure Cosmos DB-fiók több írási régióval van konfigurálva.
+Ütközések és ütközésfeloldási szabályzatok alkalmazhatók, ha az Azure Cosmos DB-fiók több írási régióval van konfigurálva.
 
-Több írási régióval konfigurált Azure Cosmos-fiókok esetén a frissítési ütközések akkor fordulhatnak elő, ha az írók egyidejűleg frissítik ugyanazt az elemeket több régióban. A frissítési ütközések a következő három típusból lehetnek:
+Több írási régióval konfigurált Azure Cosmos-fiókok esetén frissítési ütközések fordulhatnak elő, ha az írók egyidejűleg több régióban frissítik ugyanazt az elemet. A frissítési ütközések a következő három típusból állnak:
 
-* **Ütközések beszúrása**: ezek az ütközések akkor fordulhatnak elő, ha egy alkalmazás egyidejűleg két vagy több régióban ugyanazt az egyedi indexszel rendelkező elemet szúr be. Előfordulhat például, hogy ez az ütközés egy ID tulajdonsággal együtt fordul elő.
+* **Ütközések beszúrása**: Ezek az ütközések akkor fordulhatnak elő, ha egy alkalmazás egyszerre két vagy több, azonos egyedi indexszel rendelkező elemet szúr be két vagy több régióban. Ez az ütközés például egy azonosító tulajdonsággal fordulhat elő.
 
-* **Ütközések cseréje**: ezek az ütközések akkor fordulhatnak elő, ha egy alkalmazás két vagy több régióban egyszerre frissíti ugyanazt az elemeket.
+* **Az ütközések cseréje**: Ezek az ütközések akkor fordulhatnak elő, ha egy alkalmazás egyszerre frissíti ugyanazt az elemet két vagy több régióban.
 
-* **Ütközések törlése**: ezek az ütközések akkor fordulhatnak elő, ha egy alkalmazás egyidejűleg törli az egyik régióban lévő elemeket, és egy másik régióban frissíti azt.
+* **Ütközések törlése**: Ezek az ütközések akkor fordulhatnak elő, ha egy alkalmazás egyidejűleg töröl egy elemet az egyik régióban, és frissíti azt egy másik régióban.
 
 ## <a name="conflict-resolution-policies"></a>Ütközésfeloldási szabályzatok
 
-Azure Cosmos DB rugalmas, házirend által vezérelt mechanizmust kínál az írási ütközések feloldásához. Az Azure Cosmos-tárolóban két ütközés-feloldási szabályzat közül választhat:
+Az Azure Cosmos DB rugalmas, házirend-alapú mechanizmust kínál az írási ütközések feloldásához. Az Azure Cosmos-tárolókét ütközésfeloldási szabályzata közül választhat:
 
-* **Utolsó írási WINS (LWW)** : Ez a megoldási házirend alapértelmezés szerint rendszer által definiált időbélyeg-tulajdonságot használ. Ez a Time-Sync Clock protokollon alapul. Ha az SQL API-t használja, megadhat bármilyen más egyéni numerikus tulajdonságot (például egy időbélyeg saját fogalmát) az ütközés feloldásához. Az egyéni numerikus tulajdonságokat az *ütközés feloldási útvonalnak*is nevezzük. 
+* **Last Write Wins (LWW)**: Ez a megoldási házirend alapértelmezés szerint rendszer által definiált időbélyeg-tulajdonságot használ. Az idő-szinkronizálási óra protokollon alapul. Ha az SQL API-t használja, megadhatja bármely más egyéni numerikus tulajdonságot (például az időbélyeg saját fogalmát), amelyet az ütközések feloldásához használni kell. Az egyéni numerikus tulajdonságot *ütközésfeloldási útvonalnak is nevezik.* 
 
-  Ha két vagy több elem ütközik az INSERT vagy a Replace művelettel, az ütközés feloldási útvonalának legmagasabb értékét tartalmazó elem lesz a nyertes. A rendszer meghatározza a nyertest, ha több elemnek ugyanaz a numerikus értéke az ütközési feloldási útvonalhoz. Minden régió garantáltan egyetlen nyertesnek kell lennie, és a véglegesített elem azonos verziójával kell végződnie. Ha törlési ütközések merülnek fel, a törölt verzió mindig az INSERT vagy a Replace ütközések között nyer. Ennek az eredménynek az az oka, hogy az ütközés feloldási elérési útjának értéke nem számít.
-
-  > [!NOTE]
-  > Az utolsó írási WINS az alapértelmezett ütközés-feloldási házirend, és timestamp `_ts` használ a következő API-khoz: SQL, MongoDB, Cassandra, Gremlin és Table. Az egyéni numerikus tulajdonság csak az SQL API esetében érhető el.
-
-  További információért lásd: [LWW ütközési megoldási szabályzatokat használó példák](how-to-manage-conflicts.md).
-
-* **Egyéni**: Ez a megoldási házirend az alkalmazás által definiált szemantikai szabályokhoz készült az ütközések egyeztetéséhez. Amikor beállítja ezt a házirendet az Azure Cosmos-tárolón, regisztrálnia kell egy *egyesítéssel tárolt eljárást*is. Ezt az eljárást automatikusan meghívja a rendszer, ha ütközések észlelhetők a kiszolgálón található adatbázis-tranzakció alatt. A rendszer pontosan egyszer garantálja az egyesítési eljárás végrehajtását a kötelezettségvállalási protokoll részeként.  
-
-  Ha a tárolót az egyéni feloldási lehetőséggel konfigurálja, és nem tud regisztrálni egy egyesítési eljárást a tárolón, vagy az egyesítési eljárás futásidejű kivételt jelez, az ütközések az *ütközések hírcsatornába*íródnak. Az alkalmazásnak ezután manuálisan kell feloldania az ütközéseket a hírcsatornában. További információ: példák az [Egyéni megoldási szabályzat használatára és az ütközések hírcsatornájának használatára](how-to-manage-conflicts.md).
+  Ha két vagy több elem ütközik a beszúrási vagy csereműveleteksorán, az ütközésfeloldási útvonal legnagyobb értékével rendelkező elem lesz a győztes. A rendszer határozza meg a győztest, ha több elem azonos numerikus értékkel rendelkezik az ütközésfeloldási útvonalhoz. Minden régió garantáltan egyetlen győzteshez közelít, és a véglegesített elem azonos verziójával végződik. Törlési ütközések esetén a törölt verzió mindig megnyeri az ütközések beszúrását vagy cseréjét. Ez az eredmény az ütközésfeloldási útvonal értékétől függetlenül bekövetkezik.
 
   > [!NOTE]
-  > Az egyéni ütközés-feloldási szabályzat csak az SQL API-fiókok esetében érhető el.
+  > A Last Write Wins az alapértelmezett ütközésfeloldási házirend, amely a következő API-k időbélyegét `_ts` használja: SQL, MongoDB, Cassandra, Gremlin és Table. Az egyéni numerikus tulajdonság csak az SQL API-hoz érhető el.
 
-## <a name="next-steps"></a>Következő lépések
+  További információ: [Az LWW ütközésfeloldási házirendjeit használó példák.](how-to-manage-conflicts.md)
 
-Megtudhatja, hogyan konfigurálhat ütközés-feloldási házirendeket:
+* **Egyéni**: Ez a megoldási házirend alkalmazásáltal definiált szemantikára készült az ütközések egyeztetéséhez. Ha ezt a szabályzatot az Azure Cosmos-tárolóban állítja be, regisztrálnia kell egy *egyesítési tárolt eljárást*is. Ez az eljárás automatikusan meghívásra kerül, ha a kiszolgálón lévő adatbázis-tranzakció során ütközéseket észlel. A rendszer pontosan egyszer garantálja az egyesítési eljárás végrehajtását a kötelezettségvállalási protokoll részeként.  
 
-* [Több főkiszolgáló konfigurálása az alkalmazásokban](how-to-multi-master.md)
-* [Az ütközés-feloldási házirendek kezelése](how-to-manage-conflicts.md)
-* [Az ütközések hírcsatornájának beolvasása](how-to-manage-conflicts.md#read-from-conflict-feed)
+  Ha a tárolót az egyéni feloldási beállítással konfigurálja, és nem sikerül regisztrálnia egy egyesítési eljárást a tárolón, vagy az egyesítési eljárás futásidőben kivételt okoz, az ütközések az *ütközések hírcsatornába*kerülnek. Az alkalmazásnak ezután manuálisan kell feloldania az ütközések hírcsatornájában lévő ütközéseket. További információ: [példák az egyéni megoldási házirend használatára és az ütközések hírcsatornájának használatára.](how-to-manage-conflicts.md)
+
+  > [!NOTE]
+  > Az egyéni ütközésfeloldási házirend csak SQL API-fiókok esetén érhető el.
+
+## <a name="next-steps"></a>További lépések
+
+További információ az ütközésfeloldási házirendek konfigurálásáról:
+
+* [Többfőkiszolgáló konfigurálása az alkalmazásokban](how-to-multi-master.md)
+* [Az ütközésfeloldási házirendek kezelése](how-to-manage-conflicts.md)
+* [Hogyan kell olvasni a konfliktusok feed](how-to-manage-conflicts.md#read-from-conflict-feed)

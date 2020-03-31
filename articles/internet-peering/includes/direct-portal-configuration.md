@@ -9,65 +9,65 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 2a42ba8809e6895c9eea9f8762513b7fcaa9eb3a
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75775276"
 ---
-1. A társítás **létrehozása** lap **konfiguráció** lapján töltse ki a mezőket az alább látható módon.
+1. A **Társviszony-létesítés létrehozása** lap **Konfiguráció** lapján töltse ki a mezőket az alábbi módon.
 
-    * A **társ**-kezelés típusa beállításnál válassza a *közvetlen*lehetőséget.
-    * A **Microsoft Network**esetében válassza a *AS8075*lehetőséget. Ne hozzon létre társítást ASN 8069-mel. Speciális alkalmazások számára van fenntartva, és csak a [Microsoft-partnerek](mailto:peering@microsoft.com)használják.
-    * Válassza az SKU *alapszintű ingyenes*lehetőséget. Ne válassza a *prémium szintű ingyenes* lehetőséget, mert a speciális alkalmazások számára van fenntartva.
-    * Válassza ki azt a **Metro** -helyet, ahová be szeretné állítani a társítást.
+    * **Társviszony-létesítési típus esetén**válassza a *Közvetlen*lehetőséget.
+    * **Microsoft-hálózat**esetén válassza az *AS8075*lehetőséget. Ne hozzon létre társviszony-létesítést az ASN 8069-tel. Speciális alkalmazások számára van fenntartva, és csak a [Microsoft társviszony-létesítési](mailto:peering@microsoft.com).
+    * Válassza a **Termékváltozat** *alapszintű ingyenesként*lehetőséget. Ne válassza a *Premium Free* lehetőséget, mivel speciális alkalmazásokhoz van fenntartva.
+    * Válassza ki azt a **metro** helyet, ahol be szeretné állítani a társviszony-létesítést.
 
         > [!NOTE]
-        > Ha a kiválasztott **Metro** -helyen már rendelkezik a Microsofttal való kapcsolattal, és a portálon először használja a társítást ezen a helyen, akkor a meglévő társ-összevonási kapcsolatok az alább látható módon jelennek meg a társítási **kapcsolatok** szakaszban. A Microsoft automatikusan átalakítja ezeket az összekapcsolási kapcsolatokat az Azure-erőforrással, hogy az új kapcsolatokkal együtt kezelje őket egy helyen. További információért lásd: [örökölt közvetlen társak átalakítása Azure-erőforrásra a portál használatával](../howto-legacy-direct-portal.md) .
+        > Ha már rendelkezik társviszony-létesítési kapcsolatokkal a Microsofttal a kiválasztott **metro** helyen, és első alkalommal használja a portált az adott helyen a társviszony-létesítés beállításához, akkor a meglévő társviszony-létesítési kapcsolatok az alábbi módon jelennek meg a **Társviszony-létesítési kapcsolatok** szakaszban. A Microsoft automatikusan konvertálja ezeket a társviszony-létesítési kapcsolatokat az Azure-erőforrásba, így egy helyen kezelheti őket az új kapcsolatokkal együtt. További információ: [Örökölt közvetlen társviszony-létesítés átalakítása azure-erőforrásba a portál használatával.](../howto-legacy-direct-portal.md)
         >
 
-1. A társítási **kapcsolatok**területen kattintson az **új létrehozása** elemre, és adjon hozzá egy sort minden új kapcsolathoz, amelyet be szeretne állítani.
+1. A **Társviszony-létesítési kapcsolatok csoportban**kattintson az **Új létrehozása** gombra, ha minden új kapcsolathoz hozzá szeretne adni egy vonalat.
 
-    * A kapcsolódási beállítások konfigurálásához/módosításához kattintson a sor Szerkesztés gombjára.
+    * A kapcsolatbeállítások konfigurálásához/módosításához kattintson a vonal szerkesztési gombjára.
 
         > [!div class="mx-imgBorder"]
-        > ![peering Configuration – közvetlen szerkesztés](../media/setup-direct-conf-tab-edit.png)
+        > ![Társviszony-létesítési konfiguráció – közvetlen szerkesztés](../media/setup-direct-conf-tab-edit.png)
     
-    * Egy sor törléséhez kattintson a következőre: **...** gombra > **delete**.
+    * Ha törölni szeretne egy sort, kattintson a **...** gombra > **Törlés gombra.**
 
         > [!div class="mx-imgBorder"]
-        > ![peering Configuration – közvetlen szerkesztés](../media/setup-direct-conf-tab-delete.png)
+        > ![Társviszony-létesítési konfiguráció – közvetlen szerkesztés](../media/setup-direct-conf-tab-delete.png)
 
-    * A kapcsolatok összes beállítását az alább látható módon kell megadnia.
+    * A kapcsolat összes beállítását meg kell adnia az alábbiak szerint.
 
          > [!div class="mx-imgBorder"]
-         > ![peering Configuration – közvetlen kapcsolatok](../media/setup-direct-conf-tab-connection.png)
+         > ![Társviszony-létesítési konfiguráció – közvetlen kapcsolat](../media/setup-direct-conf-tab-connection.png)
 
-        1. Válassza ki azt a társítási **létesítményt** , ahol a kapcsolatot be kell állítani.
-        1. A **munkamenet-címtartomány** segítségével megállapítható, hogy ki biztosítja a hálózat és a Microsoft közötti BGP-munkamenet beállításához szükséges alhálózatot. Ha meg tudja adni az alhálózatot, válassza a *társ*lehetőséget. Másik lehetőségként válassza a **Microsoft** és a [Microsoft-partnerek](mailto:peering@microsoft.com) felveszik Önnel a kapcsolatot. Vegye figyelembe, hogy a kiválasztásakor a Microsoft számára hosszabb időt kellene igénybe venni a partneri kérelem feldolgozására. Bizonyos esetekben előfordulhat, hogy a Microsoft nem tud olyan alhálózatokat biztosítani, amelyek a kérelmek elutasítását eredményezik.
-        1. Ha a **munkamenet-cím szolgáltatót** a *társként*választotta, akkor adja meg az IPv4-és IPv6-címeket az előtag maszkkal együtt a mezők **munkamenet IPv4-előtag** és a **munkamenet IPv6-előtag** mezőben.
-        1. Adja meg azoknak az IPv4-és IPv6-ELŐTAGOKNAK a számát, amelyeket a meghirdetett **IPv4-címek** és a **meghirdetett IPv6-címek** maximális száma mezőben fog reklámozni.
-        1. Módosítsa a **teljes sávszélesség** csúszkát, hogy tükrözze a kapcsolat sávszélességét.
-        1. A kapcsolódási beállítások mentéséhez kattintson **az OK** gombra.
+        1. Válassza ki azt a **társviszony-létesítési lehetőséget,** ahol a kapcsolatot be kell állítani.
+        1. **A munkamenet-címszolgáltató** segítségével határozható meg, hogy ki biztosítja a BGP-munkamenet beállításához szükséges alhálózatot a hálózat és a Microsoft között. Ha alhálózatot tud biztosítani, válassza a *Társ*lehetőséget. Else válassza a **Microsoft** és [a Microsoft társviszony-létesítés](mailto:peering@microsoft.com) felveszi Önnel a kapcsolatot. Vegye figyelembe, hogy ha így választ, a Microsoft nak hosszabb időt kell igénybe vennie a társviszony-létesítési kérelem feldolgozása. Bizonyos esetekben előfordulhat, hogy a Microsoft nem tud olyan alhálózatokat biztosítani, amelyek a kérelmek elutasítását eredményezik.
+        1. Ha **a Munkamenet-címszolgáltatót** választotta *társként,* akkor adja meg az IPv4- és IPv6-címet az előtagmaszkkal együtt a **Munkamenet IPv4-előtag** és a **Munkamenet IPv6-előtag** mezőkben.
+        1. Adja meg a hirdetni kívánt IPv4- és IPv6-előtagok számát a **Maximálishirdetett IPv4-címek,** illetve a **Hirdetett IPv6-címek maximális** száma mezőben.
+        1. Állítsa be a **Teljes sávszélesség** csúszkát, hogy tükrözze a kapcsolat sávszélességét.
+        1. A csatlakozási beállítások mentéséhez kattintson az **OK** gombra.
 
-1. Ismételje meg a fenti lépést további kapcsolatok hozzáadásához bármely olyan létesítményben, ahol a Microsoft a hálózattal együtt található a korábban kiválasztott **metrón** belül.
+1. Ismételje meg a fenti lépés, hogy adjunk további kapcsolatok at any létesítmény, ahol a Microsoft közös helyen található a hálózat, a **Metro** korábban kiválasztott.
 
-1. Az összes szükséges kapcsolat hozzáadását követően kattintson a **felülvizsgálat + létrehozás**gombra.
-
-    > [!div class="mx-imgBorder"]
-    > ![a társítási konfiguráció lap végleges](../media/setup-direct-conf-tab-final.png)
-
-1. Figyelje meg, hogy a portál a beírt információk alapszintű érvényesítését futtatja. Ez a felső menüszalagon jelenik meg, a *végső ellenőrzés futtatásával..* .
+1. Hozzáadása után az összes szükséges kapcsolatokat, kattintson a **Review + create**.
 
     > [!div class="mx-imgBorder"]
-    > ![társ-ellenőrzés lap](../media/setup-direct-review-tab-validation.png)
+    > ![Társviszony-létesítési konfigurációs lap végleges](../media/setup-direct-conf-tab-final.png)
 
-1. Miután bekapcsolta az *érvényesítést*, ellenőrizze az adatokat, és küldje el a kérést a **Létrehozás**gombra kattintva. Ha módosítania kell a kérelmét, kattintson az **előző** gombra, és ismételje meg a fenti lépéseket.
-
-    > [!div class="mx-imgBorder"]
-    > ![társ-beküldési](../media/setup-direct-review-tab-submit.png)
-
-1. Miután elküldte a kérést, várja meg, amíg befejeződik az üzembe helyezés. Ha a telepítés sikertelen, forduljon a [Microsoft-partneri](mailto:peering@microsoft.com)kapcsolathoz. A sikeres üzembe helyezés az alábbi módon fog megjelenni.
+1. Figyelje meg, hogy a portál futtatja a megadott adatok alapvető érvényesítését. Ez egy szalagon jelenik meg a tetején, mint *futás végső érvényesítés...*.
 
     > [!div class="mx-imgBorder"]
-    > ![a sikeres társ-kezelés](../media/setup-direct-success.png)
+    > ![Társviszony-érvényesítés lap](../media/setup-direct-review-tab-validation.png)
+
+1. Miután az *Érvényesítés i d.* elemre vált, ellenőrizze az adatokat, és küldje el a kérelmet a **Létrehozás**gombra kattintva. Ha módosítania kell a kérését, kattintson az **Előző gombra,** és ismételje meg a fenti lépéseket.
+
+    > [!div class="mx-imgBorder"]
+    > ![Társviszony-létesítés iküldött](../media/setup-direct-review-tab-submit.png)
+
+1. Miután elküldte a kérelmet, várja meg, amíg befejeződik a központi telepítés. Ha a telepítés sikertelen, forduljon [a Microsoft társviszony-létesítési](mailto:peering@microsoft.com). A sikeres telepítés az alábbiak szerint jelenik meg.
+
+    > [!div class="mx-imgBorder"]
+    > ![Társviszony-létesítési siker](../media/setup-direct-success.png)

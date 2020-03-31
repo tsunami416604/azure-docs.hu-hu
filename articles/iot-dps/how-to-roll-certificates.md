@@ -1,6 +1,6 @@
 ---
-title: A roll X. 509 tanúsítványok az Azure-ban IoT Hub Device Provisioning Service
-description: X. 509 tanúsítványok leállítása az eszköz kiépítési szolgáltatásával (DPS) rendelkező példánnyal
+title: X.509-es tanúsítványok rollja az Azure IoT Hub-eszközkiépítési szolgáltatásában
+description: X.509-es tanúsítványok görgetése az eszközkiépítési szolgáltatás (DPS) példányával
 author: wesmc7777
 ms.author: wesmc
 ms.date: 08/06/2018
@@ -8,209 +8,209 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 4d5ddb229cd6a41235990437bc0f8db08e3381ce
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74974887"
 ---
-# <a name="how-to-roll-x509-device-certificates"></a>X. 509 eszközök tanúsítványainak behelyezése
+# <a name="how-to-roll-x509-device-certificates"></a>Az X.509-es eszköztanúsítványok görgetése
 
-A IoT-megoldás életciklusa során be kell állítania a tanúsítványokat. A működés közbeni tanúsítványoknak két fő oka lehet a biztonsági szerződésszegés és a tanúsítványok lejárata. 
+Az IoT-megoldás életciklusa során szüksége lesz a tanúsítványok roll. A tanúsítványok üzembe lépésének két fő oka a biztonság megsértése és a tanúsítványok lejárata. 
 
-A működés közbeni tanúsítványok az ajánlott biztonsági eljárások, amelyekkel a rendszer biztonságban is biztonságossá tehető. A [szabálysértési módszer elvállalásának](https://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf)részeként a Microsoft azt javasolja, hogy a megelőző intézkedésekkel párhuzamosan legyen szükség reaktív biztonsági folyamatokra. Az eszköz tanúsítványait a biztonsági folyamatok részeként kell szerepeltetni. A tanúsítványok bevezetésének gyakorisága a megoldás biztonsági igényeitől függ. A fokozottan bizalmas adatokat tartalmazó megoldásokkal rendelkező ügyfelek napi rendszerességgel lefoglalhatják a tanúsítványokat, míg mások a tanúsítványokat minden pár évben elérhetik.
+A folyamatos működésbe hozó tanúsítványok biztonsági gyakorlat, amely nek köszönhetően a rendszer biztonsága érdekében, ha a rendszer megsértése esetén. A [Assume Breach Methodology](https://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf)részeként a Microsoft támogatja a reaktív biztonsági folyamatok szükségességét a megelőző intézkedésekkel együtt. Az eszköztanúsítványok gördülését a biztonsági folyamatok részét kell foglalni. A tanúsítványok görgetésének gyakorisága a megoldás biztonsági igényeitől függ. A rendkívül érzékeny adatokat tartalmazó megoldásokkal rendelkező ügyfelek naponta elforgathatják a tanúsítványt, míg mások néhány évente görgethetik tanúsítványaikat.
 
-A működés közbeni eszközök tanúsítványainak az eszközön és az IoT központban tárolt tanúsítvány frissítését is magukban foglalják. Ezt követően az eszköz kiépítheti saját magát az IoT hub-ban az eszköz kiépítési szolgáltatásával való normál [automatikus kiépítés](concepts-auto-provisioning.md) használatával.
+Az eszközállapot-legördülő tanúsítványok az eszközön és az IoT hubon tárolt tanúsítvány frissítését jelentik. Ezt követően az eszköz újra üzembe helyezheti magát az IoT hubbal az eszközkiépítési szolgáltatással való normál [automatikus kiépítés](concepts-auto-provisioning.md) használatával.
 
 
 ## <a name="obtain-new-certificates"></a>Új tanúsítványok beszerzése
 
-Számos módon szerezhet be új tanúsítványokat a IoT-eszközökhöz. Ezek közé tartozik az eszköz gyárból származó tanúsítványok beszerzése, a saját tanúsítványok generálása, valamint a tanúsítványok létrehozásával kapcsolatos harmadik fél felügyelete. 
+Az IoT-eszközökhöz számos módon szerezhet be új tanúsítványokat. Ezek közé tartozik a tanúsítványok beszerzése az eszközgyárból, a saját tanúsítványok létrehozása, valamint egy harmadik fél általi kezelés a tanúsítványok létrehozásához. 
 
-A tanúsítványokat a rendszer aláírja egymással, hogy a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványból egy [levélbeli tanúsítványra](concepts-security.md#end-entity-leaf-certificate)Bízzon. Az aláíró tanúsítvány a levél tanúsítványának a megbízhatósági lánc végén történő aláírásához használt tanúsítvány. Az aláíró tanúsítvány lehet legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány vagy egy köztes tanúsítvány a megbízhatósági láncban. További információ: [X. 509 tanúsítványok](concepts-security.md#x509-certificates).
+A tanúsítványokat egymás írják alá, hogy megbízhatósági láncot alkossanak a legfelső szintű hitelesítésszolgáltatói tanúsítványtól a [levéltanúsítványig.](concepts-security.md#end-entity-leaf-certificate) Az aláíró tanúsítvány az a tanúsítvány, amely a levéltanúsítvány aláírásához használható a megbízhatósági lánc végén. Az aláíró tanúsítvány lehet legfelső szintű hitelesítésszolgáltatói tanúsítvány vagy köztes tanúsítvány a megbízhatósági láncban. További információ: [X.509 certificates](concepts-security.md#x509-certificates).
  
-Az aláíró tanúsítvány két különböző módon szerezhető be. Az éles rendszerekhez javasolt első módszer az, ha az aláíró tanúsítványt egy főtanúsítvány-szolgáltatótól (CA) vásárolja meg. Így a láncok biztonsága egy megbízható forrásig megtörténik. 
+Az aláíró tanúsítványok beszerzésének két különböző módja van. Az éles rendszerek számára ajánlott első módszer az aláíró tanúsítvány megvásárlása egy legfelső szintű hitelesítésszolgáltatótól. Így a biztonság megbízható forrásra van leláncolni. 
 
-A második módszer a saját X. 509-tanúsítványok létrehozása egy olyan eszköz használatával, mint az OpenSSL. Ez a módszer az X. 509 tanúsítványok tesztelésére szolgál, de a biztonsággal kapcsolatos néhány garanciát nyújt. Javasoljuk, hogy csak akkor használja ezt a módszert tesztelésre, ha a saját HITELESÍTÉSSZOLGÁLTATÓI szolgáltatóként való használatra kész.
+A második módszer az, hogy saját X.509 tanúsítványokat hozzon létre egy olyan eszközzel, mint az OpenSSL. Ez a megközelítés kiválóan alkalmas az X.509-es tanúsítványok tesztelésére, de kevés garanciát nyújt a biztonsággal. Azt javasoljuk, hogy csak akkor használja ezt a módszert a teszteléshez, ha nem készült fel arra, hogy saját hitelesítésszolgáltatójaként működjön.
  
 
-## <a name="roll-the-certificate-on-the-device"></a>A tanúsítvány behelyezése az eszközön
+## <a name="roll-the-certificate-on-the-device"></a>A tanúsítvány görgetése az eszközön
 
-Az eszközön lévő tanúsítványokat mindig biztonságos helyen kell tárolni, mint például a [hardveres biztonsági modul (HSM)](concepts-device.md#hardware-security-module). Az eszközök tanúsítványainak bekapcsolásának módja attól függ, hogyan lettek létrehozva és telepítve az eszközökre az első helyen. 
+Az eszközön lévő tanúsítványokat mindig biztonságos helyen, például [hardveres biztonsági modulban (HSM)](concepts-device.md#hardware-security-module)kell tárolni. Az eszköztanúsítványok görgetésének módja elsősorban attól függ, hogyan hozták létre és telepítették őket az eszközökre. 
 
-Ha a tanúsítványait egy harmadik féltől kapta, meg kell vizsgálnia, hogyan használják a tanúsítványokat. A folyamat belefoglalható a Megállapodásba, vagy lehet egy különálló szolgáltatás is. 
+Ha a tanúsítványokat egy harmadik féltől szerezte, meg kell vizsgálnia, hogyan tekercselik a tanúsítványokat. A folyamat lehet, hogy szerepel a megállapodás velük, vagy lehet, hogy egy külön szolgáltatást kínálnak. 
 
-Ha saját eszközökhöz tartozó tanúsítványokat kezel, a tanúsítványok frissítéséhez saját folyamatot kell létrehoznia. Győződjön meg arról, hogy a régi és az új levél tanúsítványának ugyanaz a köznapi neve (CN). Ha ugyanazzal a CN-vel rendelkezik, akkor az eszköz duplikált regisztrációs rekord létrehozása nélkül is újraépítheti magát. 
+Ha saját eszköztanúsítványait kezeli, saját folyamatot kell létrehoznia a tanúsítványok frissítéséhez. Győződjön meg arról, hogy mind a régi, mind az új levéltanúsítványok közös neve (KN). Ugyanazzal a KN-vel az eszköz újra üzembe helyezheti magát anélkül, hogy ismétlődő regisztrációs rekordot hozna létre. 
 
 
-## <a name="roll-the-certificate-in-the-iot-hub"></a>A tanúsítvány behelyezése az IoT hub-ban
+## <a name="roll-the-certificate-in-the-iot-hub"></a>A tanúsítvány gördülékenyítése az IoT-központban
 
-Az eszköz tanúsítványát manuálisan is hozzáadhatja egy IoT hubhoz. A tanúsítvány automatizálható egy eszköz kiépítési szolgáltatási példányának használatával is. Ez a cikk azt feltételezi, hogy az eszköz kiépítési szolgáltatási példánya az automatikus kiépítés támogatására szolgál.
+Az eszköztanúsítvány manuálisan hozzáadható egy IoT-központhoz. A tanúsítvány egy eszközkiépítési szolgáltatáspéldány használatával is automatizálható. Ebben a cikkben feltételezzük, hogy egy eszközkiépítési szolgáltatáspéldány automatikus kiépítés támogatására használatos.
 
-Amikor egy eszköz először az automatikus kiépítés révén lett kiépítve, elindul, és kapcsolatba lép a kiépítési szolgáltatással. A kiépítési szolgáltatás úgy válaszol, hogy az eszközhöz tartozó levél tanúsítványa hitelesítő adatokkal való létrehozása előtt megtekinti az IoT hub eszköz-identitását. A kiépítési szolgáltatás ezt követően közli az eszközzel, hogy melyik IoT hub van hozzárendelve, és az eszköz ezt követően a levél tanúsítványát használja a IoT hub hitelesítéséhez és az ahhoz való kapcsolódáshoz. 
+Ha egy eszköz először kiépítés automatikus kiépítése, ez elindul, és kapcsolatba lép a létesítési szolgáltatás. A kiépítési szolgáltatás válaszol egy identitás-ellenőrzés végrehajtásával, mielőtt egy eszköz identitását egy IoT hub használatával az eszköz levél tanúsítványa a hitelesítő adat. A létesítési szolgáltatás ezután közli az eszközzel, hogy melyik IoT hubhoz van rendelve, és az eszköz ezután a levéltanúsítványt használja az IoT hub hitelesítéséhez és az IoT hubhoz való csatlakozáshoz. 
 
-Miután az új levél tanúsítványát beszállították az eszközre, az már nem tud csatlakozni az IoT hubhoz, mert új tanúsítványt használ a kapcsolódáshoz. Az IoT hub csak a régi tanúsítvánnyal rendelkező eszközt ismeri fel. Az eszköz csatlakozási kísérletének eredménye "jogosulatlan" kapcsolódási hiba lesz. A hiba megoldásához frissítenie kell az eszköz beléptetési bejegyzését az eszköz új levél-tanúsítványához. Ezt követően a kiépítési szolgáltatás szükség szerint frissítheti a IoT Hub-eszköz beállításjegyzék-információit az eszköz újraépítésekor. 
+Miután egy új levéltanúsítvány gördült az eszközre, már nem tud csatlakozni az IoT hubhoz, mert egy új tanúsítványt használ a csatlakozáshoz. Az IoT hub csak felismeri az eszközt a régi tanúsítvánnyal. Az eszköz csatlakozási kísérletének eredménye "jogosulatlan" csatlakozási hiba lesz. A hiba megoldásához frissítenie kell az eszköz regisztrációs bejegyzését, hogy figyelembe vegye az eszköz új levéltanúsítványát. Ezután a kiépítési szolgáltatás szükség szerint frissítheti az IoT Hub-eszköz beállításjegyzék-adatait, amikor az eszközt újra kiépíti. 
 
-A kapcsolódási hiba egyik lehetséges kivétele olyan forgatókönyv, amelyben létrehozott egy [regisztrációs csoportot](concepts-service.md#enrollment-group) az eszközhöz a kiépítési szolgáltatásban. Ebben az esetben, ha nem a gyökér-vagy köztes tanúsítványokat az eszköz megbízhatósági láncában látja, akkor a rendszer felismeri az eszközt, ha az új tanúsítvány a beléptetési csoportban definiált megbízhatósági lánc részét képezi. Ha ez a forgatókönyv egy biztonsági szabálysértésre való reagálásra vonatkozik, legalább a csoportba tartozó, a megszegni kívánt eszközök tanúsítványait kell feketelistán lennie. További információ: a [beléptetési csoportban lévő adott eszközök feketelistára](https://docs.microsoft.com/azure/iot-dps/how-to-revoke-device-access-portal#blacklist-specific-devices-in-an-enrollment-group)helyezése.
+A kapcsolathibája alól egy lehetséges kivétel egy olyan forgatókönyv, amelyben létrehozott egy [regisztrációs csoportot](concepts-service.md#enrollment-group) az eszközhöz a létesítési szolgáltatásban. Ebben az esetben, ha nem a legfelső szintű vagy köztes tanúsítványok at az eszköz tanúsítványlánc megbízhatósági lánc, majd az eszköz lesz felismerve, ha az új tanúsítvány része a bizalmi lánc a regisztrációs csoportban meghatározott. Ha ez a forgatókönyv a biztonság megsértésére adott reakcióként merül fel, legalább feketelistára kell tenni a csoport azon konkrét eszköztanúsítványait, amelyek et megsértve kell tekinteni. További információ: [Blacklist adott eszközök egy regisztrációs csoportban](https://docs.microsoft.com/azure/iot-dps/how-to-revoke-device-access-portal#blacklist-specific-devices-in-an-enrollment-group).
 
-A beléptetési bejegyzések frissítése a **beléptetések kezelése** oldalon végezhető el. Az oldal eléréséhez kövesse az alábbi lépéseket:
+A gördült tanúsítványok igénylési bejegyzéseinek frissítése a **Regisztrációk kezelése** lapon történik. A lap eléréséhez hajtsa végre az alábbi lépéseket:
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és navigáljon ahhoz a IoT hub Device Provisioning Service-példányhoz, amely az eszköz beléptetési bejegyzésével rendelkezik.
+1. Jelentkezzen be az [Azure Portalon,](https://portal.azure.com) és keresse meg az IoT Hub-eszközkiépítési szolgáltatás példányát, amely rendelkezik az eszköz regisztrációs bejegyzésével.
 
 2. Kattintson a **Regisztrációk kezelése** elemre.
 
     ![Regisztrációk kezelése](./media/how-to-roll-certificates/manage-enrollments-portal.png)
 
 
-A beléptetési bejegyzés frissítésének módja attól függ, hogy egyéni regisztrációkat vagy csoportos regisztrációkat használ-e. Emellett az ajánlott eljárások eltérőek lehetnek attól függően, hogy biztonsági szerződésszegés vagy a tanúsítvány lejárata miatt van-e működésben a tanúsítvány. A következő szakaszok ismertetik, hogyan kezelheti ezeket a frissítéseket.
+A regisztrációs bejegyzés frissítésének kezelése attól függ, hogy egyéni beléptetéseket vagy csoportos beléptetéseket használ.How you handle updating the enrollment entry will depend to whether you're using individual enrollments, or group enrollments. Az ajánlott eljárások attól függően is eltérnek, hogy a biztonsági előírások megsértése vagy a tanúsítvány lejárata miatt gördülékeny tanúsítványokat vezet be. A következő szakaszok ismertetik, hogyan kell kezelni ezeket a frissítéseket.
 
 
 ## <a name="individual-enrollments-and-security-breaches"></a>Egyéni regisztrációk és biztonsági rések
 
-Ha a tanúsítványokat biztonsági szabálysértésre válaszul végzi, a következő módszert kell használnia, amely azonnal törli az aktuális tanúsítványt:
+Ha a tanúsítványokat egy biztonsági rés miatt vezeti be, a következő módszert kell alkalmaznia, amely azonnal törli az aktuális tanúsítványt:
 
-1. Kattintson az **Egyéni regisztrációk**elemre, majd a listában kattintson a regisztrációs azonosító bejegyzésre. 
+1. Kattintson **az Egyéni regisztrációk gombra,** majd a listában a regisztrációs azonosító bejegyzésére. 
 
-2. Kattintson az **aktuális tanúsítvány törlése** gombra, majd kattintson a mappa ikonra a beléptetési bejegyzéshez feltöltendő új tanúsítvány kiválasztásához. Ha elkészült, kattintson a **Mentés** gombra.
+2. Kattintson az **Aktuális tanúsítvány törlése** gombra, majd a mappa ikonra kattintva jelölje ki a regisztrációs bejegyzéshez feltöltendő új tanúsítványt. Ha végzett, kattintson a **Mentés** gombra.
 
-    Ezeket a lépéseket az elsődleges és a másodlagos tanúsítvány esetében el kell végezni, ha mindkettő sérül.
+    Ezeket a lépéseket az elsődleges és másodlagos tanúsítvány esetében kell végrehajtani, ha mindkettő biztonsága sérül.
 
     ![Egyéni regisztrációk kezelése](./media/how-to-roll-certificates/manage-individual-enrollments-portal.png)
 
-3. Ha a feltört tanúsítvány el lett távolítva a kiépítési szolgáltatásból, a tanúsítvány továbbra is felhasználható az IoT hub-kapcsolat létesítésére, amennyiben az eszköz regisztrálása ott létezik. A következő két módszer közül választhat: 
+3. Miután a feltört tanúsítványt eltávolították a létesítési szolgáltatásból, a tanúsítvány továbbra is használható eszközkapcsolatok az IoT hub, amíg egy eszköz regisztrációja ott létezik. Ezt kétféleképpen oldhatja meg: 
 
-    Első lépésként manuálisan navigáljon az IoT hub-ra, és azonnal távolítsa el a feltört tanúsítványhoz társított eszköz regisztrációját. Ezután amikor az eszköz ismét kiépít egy frissített tanúsítvánnyal, új eszköz regisztrálása lesz létrehozva.     
+    Az első út az lenne, hogy manuálisan navigáljon az IoT hubhoz, és azonnal távolítsa el a sérült tanúsítványhoz társított eszközregisztrációt. Ezután amikor az eszköz ismét rendelkezik egy frissített tanúsítvánnyal, új eszközregisztráció jön létre.     
 
-    ![IoT hub-eszköz regisztrációjának eltávolítása](./media/how-to-roll-certificates/remove-hub-device-registration.png)
+    ![IoT hub-eszközregisztráció eltávolítása](./media/how-to-roll-certificates/remove-hub-device-registration.png)
 
-    A második módszer az, hogy a támogatás újralétesítésével újra kiépítse az eszközt ugyanahhoz az IoT-hubhoz. Ezzel a módszerrel lehet lecserélni az eszköz regisztrációjának tanúsítványát az IoT hub-ban. További információ: [az eszközök újraépítése](how-to-reprovision.md).
+    A második út az lenne, hogy a reprovisioning támogatás újbóli üzembe helyezheti az eszközt ugyanarra az IoT hubra. Ez a megközelítés az IT hubon történő eszközregisztráció tanúsítványának cseréjére használható. További információ: [Eszközök újbóli kiépítése.](how-to-reprovision.md)
 
-## <a name="individual-enrollments-and-certificate-expiration"></a>Egyéni regisztrációk és a tanúsítvány lejárata
+## <a name="individual-enrollments-and-certificate-expiration"></a>Egyéni beléptetések és tanúsítványok lejárata
 
-Ha a tanúsítványok lejáratának kezeléséhez a tanúsítványokat végzi, a következő módon kell használnia a másodlagos tanúsítvány konfigurációját, hogy csökkentse a kiépíteni próbált eszközök leállását.
+Ha a tanúsítványok lejáratának kezeléséhez folyamatos tanúsítványokat vezet be, a másodlagos tanúsítvány konfigurációját az alábbiak szerint kell használnia a kiépítésre próbáló eszközök állásidejének csökkentéséhez.
 
-Később, amikor a másodlagos tanúsítvány közel van a lejárathoz, és azt el kell érni, az elsődleges konfiguráció használatával forgatható. Az elsődleges és a másodlagos tanúsítványok közötti rotáció csökkenti az állásidőt a kiépíteni próbált eszközök esetében.
-
-
-1. Kattintson az **Egyéni regisztrációk**elemre, majd a listában kattintson a regisztrációs azonosító bejegyzésre. 
-
-2. Kattintson a **másodlagos tanúsítvány** elemre, majd kattintson a mappa ikonra a beléptetési bejegyzéshez feltölteni kívánt új tanúsítvány kiválasztásához. Kattintson a **Save** (Mentés) gombra.
-
-    ![Egyéni regisztrációk kezelése a másodlagos tanúsítvány használatával](./media/how-to-roll-certificates/manage-individual-enrollments-secondary-portal.png)
-
-3. Később, amikor az elsődleges tanúsítvány lejárt, térjen vissza, és törölje az elsődleges tanúsítványt az **aktuális tanúsítvány törlése** gombra kattintva.
-
-## <a name="enrollment-groups-and-security-breaches"></a>Regisztrációs csoportok és biztonsági rések
-
-Ha a csoportos regisztrációt biztonsági szabálysértésre válaszul szeretné frissíteni, akkor az alábbi módszerek egyikét kell használnia, amely az aktuális legfelső szintű HITELESÍTÉSSZOLGÁLTATÓT vagy a köztes tanúsítványt azonnal törli.
-
-#### <a name="update-compromised-root-ca-certificates"></a>Sérült legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok frissítése
-
-1. Kattintson a **tanúsítványok** lapra az eszköz kiépítési szolgáltatási példányához.
-
-2. Kattintson a feltört tanúsítványra a listában, majd kattintson a **Törlés** gombra. Erősítse meg a törlést a tanúsítvány nevének megadásával, és kattintson az **OK**gombra. Ismételje meg ezt a folyamatot az összes sérült tanúsítvány esetében.
-
-    ![Legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány törlése](./media/how-to-roll-certificates/delete-root-cert.png)
-
-3. Kövesse az [ellenőrzött hitelesítésszolgáltatói tanúsítványok konfigurálása](how-to-verify-certificates.md) az új legfelső szintű hitelesítésszolgáltatói tanúsítványok hozzáadásához és ellenőrzéséhez című témakör lépéseit.
-
-4. Kattintson a **regisztrációk kezelése** lapra az eszköz kiépítési szolgáltatási példányához, majd kattintson a **regisztrációs csoportok** listára. Kattintson a regisztrációs csoport nevére a listában.
-
-5. Kattintson a **hitelesítésszolgáltatói tanúsítvány**elemre, majd válassza ki az új legfelső szintű hitelesítésszolgáltatói tanúsítványt. Ezután kattintson a **Save** (Mentés) gombra. 
-
-    ![Az új legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány kiválasztása](./media/how-to-roll-certificates/select-new-root-cert.png)
-
-6. Ha a feltört tanúsítvány el lett távolítva a kiépítési szolgáltatásból, a tanúsítvány továbbra is használható az IoT hub eszköz-kapcsolatainak használatára, amíg az eszköz regisztrálása ott létezik. A következő két módszer közül választhat: 
-
-    Első lépésként manuálisan navigáljon az IoT hub-ra, és azonnal távolítsa el a feltört tanúsítványhoz társított eszköz regisztrációját. Ezután, amikor az eszközök ismét kiépítik a frissített tanúsítványokat, mindegyikhez új eszköz regisztrálása lesz létrehozva.     
-
-    ![IoT hub-eszköz regisztrációjának eltávolítása](./media/how-to-roll-certificates/remove-hub-device-registration.png)
-
-    A második módszer a támogatás újraépítésének használata az eszközök ugyanarra az IoT-hubhoz való újraépítésére. Ezzel a módszerrel lehet lecserélni az IoT hub-beli eszközök regisztrációjának tanúsítványait. További információ: [az eszközök újraépítése](how-to-reprovision.md).
+Később, amikor a másodlagos tanúsítvány is lejár, és meg kell hengerelt, az elsődleges konfiguráció használatával forgatható. Az elsődleges és a másodlagos tanúsítványok közötti váltás ily módon csökkenti az üzembe építést megkísérelt eszközök állásidejét.
 
 
+1. Kattintson **az Egyéni regisztrációk gombra,** majd a listában a regisztrációs azonosító bejegyzésére. 
 
-#### <a name="update-compromised-intermediate-certificates"></a>Sérült közbenső tanúsítványok frissítése
+2. Kattintson a **Másodlagos tanúsítvány** elemre, majd a mappa ikonra kattintva jelölje ki a regisztrációs bejegyzéshez feltöltendő új tanúsítványt. Kattintson a **Mentés** gombra.
 
-1. Kattintson a **beléptetési csoportok**elemre, majd kattintson a csoport nevére a listában. 
+    ![Egyéni beléptetések kezelése a másodlagos tanúsítvánnyal](./media/how-to-roll-certificates/manage-individual-enrollments-secondary-portal.png)
 
-2. Kattintson a **köztes tanúsítvány**elemre, és **törölje az aktuális tanúsítványt**. Kattintson a mappa ikonra, és navigáljon a beléptetési csoportba feltöltendő új köztes tanúsítványhoz. Ha elkészült, kattintson a **Mentés** gombra. Ezeket a lépéseket mind az elsődleges, mind a másodlagos tanúsítvány esetében el kell végezni, ha mindkettő sérül.
+3. Később, amikor az elsődleges tanúsítvány lejárt, jöjjön vissza, és törölje az elsődleges tanúsítványt az **aktuális tanúsítvány törlése** gombra kattintva.
 
-    Ezt az új közbenső tanúsítványt olyan ellenőrzött legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal kell aláírni, amely már hozzá lett adva a kiépítési szolgáltatáshoz. További információ: [X. 509 tanúsítványok](concepts-security.md#x509-certificates).
+## <a name="enrollment-groups-and-security-breaches"></a>Beléptetési csoportok és biztonsági rések
+
+Ha egy biztonsági rést megsértő csoportregisztrációt szeretne frissíteni, az alábbi módszerek egyikét kell használnia, amelyek azonnal törlik az aktuális legfelső szintű hitelesítésszolgáltatót vagy köztes tanúsítványt.
+
+#### <a name="update-compromised-root-ca-certificates"></a>A sérült legfelső szintű hitelesítésszolgáltatói tanúsítványok frissítése
+
+1. Kattintson az Eszközkiépítési szolgáltatáspéldány **Tanúsítványok** fülére.
+
+2. Kattintson a sérült tanúsítványra a listában, majd kattintson a **Törlés** gombra. Erősítse meg a törlést a tanúsítvány nevének megadásával, majd kattintson az **OK**gombra. Ismételje meg ezt a folyamatot az összes feltört tanúsítvány esetében.
+
+    ![Gyökérhitelesítési tanúsítvány törlése](./media/how-to-roll-certificates/delete-root-cert.png)
+
+3. Az [ellenőrzött hitelesítésszolgáltatói tanúsítványok konfigurálása](how-to-verify-certificates.md) és ellenőrzése című részben ismertetett lépéseket követve új legfelső szintű hitelesítésszolgáltatói tanúsítványokat adhat hozzá és ellenőrizhet.
+
+4. Kattintson az Eszközkiépítési szolgáltatáspéldány **regisztrációk kezelése** fülére, majd a **Regisztrációs csoportok listára.** Kattintson a regisztrációs csoport nevére a listában.
+
+5. Kattintson **a hitelesítésszolgáltatói tanúsítvány**elemre, és válassza ki az új legfelső szintű hitelesítésszolgáltatói tanúsítványt. Ezután kattintson a **Mentés gombra.** 
+
+    ![Az új legfelső szintű hitelesítésszolgáltatói tanúsítvány kijelölése](./media/how-to-roll-certificates/select-new-root-cert.png)
+
+6. Miután a feltört tanúsítványt eltávolították a létesítési szolgáltatásból, a tanúsítvány továbbra is használható eszközkapcsolatok az IoT hub, amíg az eszköz regisztrációk ott létezik. Ezt kétféleképpen oldhatja meg: 
+
+    Az első út az lenne, hogy manuálisan navigáljon az IoT hubhoz, és azonnal távolítsa el a sérült tanúsítványhoz társított eszközregisztrációt. Ezt követően, amikor az eszközök kiépítése ismét frissített tanúsítványokat, egy új eszköz regisztráció jön létre mindegyikhez.     
+
+    ![IoT hub-eszközregisztráció eltávolítása](./media/how-to-roll-certificates/remove-hub-device-registration.png)
+
+    A második út az lenne, hogy a reprovisioning támogatás újbóli üzembe helyezheti az eszközöket ugyanarra az IoT hubra. Ez a megközelítés az IT hubon lévő eszközregisztrációk tanúsítványainak helyettesítésére használható. További információ: [Eszközök újbóli kiépítése.](how-to-reprovision.md)
+
+
+
+#### <a name="update-compromised-intermediate-certificates"></a>A feltört köztes tanúsítványok frissítése
+
+1. Kattintson **a Regisztrációs csoportok gombra,** majd a listában a csoport nevére. 
+
+2. Kattintson **a Köztes tanúsítvány**és **az Aktuális tanúsítvány törlése parancsra.** Kattintson a mappa ikonra a regisztrációs csoport új köztes tanúsítványának megugrásához. Ha végzett, kattintson a **Mentés** gombra. Ezeket a lépéseket mind az elsődleges, mind a másodlagos tanúsítvány esetében el kell végezni, ha mindkettő biztonsága sérül.
+
+    Ezt az új köztes tanúsítványt egy ellenőrzött legfelső szintű hitelesítésszolgáltatói tanúsítvánnyal kell aláírni, amely már hozzá lett adva a kiépítési szolgáltatáshoz. További információ: [X.509 certificates](concepts-security.md#x509-certificates).
 
     ![Egyéni regisztrációk kezelése](./media/how-to-roll-certificates/enrollment-group-delete-intermediate-cert.png)
 
 
-3. Ha a feltört tanúsítvány el lett távolítva a kiépítési szolgáltatásból, a tanúsítvány továbbra is használható az IoT hub eszköz-kapcsolatainak használatára, amíg az eszköz regisztrálása ott létezik. A következő két módszer közül választhat: 
+3. Miután a feltört tanúsítványt eltávolították a létesítési szolgáltatásból, a tanúsítvány továbbra is használható eszközkapcsolatok az IoT hub, amíg az eszköz regisztrációk ott létezik. Ezt kétféleképpen oldhatja meg: 
 
-    Első lépésként manuálisan navigáljon az IoT hub-ra, és azonnal távolítsa el a feltört tanúsítványhoz társított eszköz regisztrációját. Ezután, amikor az eszközök ismét kiépítik a frissített tanúsítványokat, mindegyikhez új eszköz regisztrálása lesz létrehozva.     
+    Az első út az lenne, hogy manuálisan navigáljon az IoT hubhoz, és azonnal távolítsa el a sérült tanúsítványhoz társított eszközregisztrációt. Ezt követően, amikor az eszközök kiépítése ismét frissített tanúsítványokat, egy új eszköz regisztráció jön létre mindegyikhez.     
 
-    ![IoT hub-eszköz regisztrációjának eltávolítása](./media/how-to-roll-certificates/remove-hub-device-registration.png)
+    ![IoT hub-eszközregisztráció eltávolítása](./media/how-to-roll-certificates/remove-hub-device-registration.png)
 
-    A második módszer a támogatás újraépítésének használata az eszközök ugyanarra az IoT-hubhoz való újraépítésére. Ezzel a módszerrel lehet lecserélni az IoT hub-beli eszközök regisztrációjának tanúsítványait. További információ: [az eszközök újraépítése](how-to-reprovision.md).
-
-
-## <a name="enrollment-groups-and-certificate-expiration"></a>Regisztrációs csoportok és a tanúsítvány lejárata
-
-Ha a tanúsítványok lejáratának kezeléséhez a tanúsítványokat végzi el, a következő módon kell használnia a másodlagos tanúsítvány konfigurációját, hogy az eszközök ne legyenek leállással a kiépítési kísérletekhez.
-
-Később, amikor a másodlagos tanúsítvány közel van a lejárathoz, és azt el kell érni, az elsődleges konfiguráció használatával forgatható. Az elsődleges és a másodlagos tanúsítványok közötti elforgatás nem biztosít állásidőt a kiépíteni próbált eszközök számára. 
-
-#### <a name="update-expiring-root-ca-certificates"></a>Lejáró legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok frissítése
-
-1. Kövesse az [ellenőrzött hitelesítésszolgáltatói tanúsítványok konfigurálása](how-to-verify-certificates.md) az új legfelső szintű hitelesítésszolgáltatói tanúsítványok hozzáadásához és ellenőrzéséhez című témakör lépéseit.
-
-2. Kattintson a **regisztrációk kezelése** lapra az eszköz kiépítési szolgáltatási példányához, majd kattintson a **regisztrációs csoportok** listára. Kattintson a regisztrációs csoport nevére a listában.
-
-3. Kattintson a **hitelesítésszolgáltatói tanúsítvány**elemre, majd válassza ki az új legfelső szintű hitelesítésszolgáltatói tanúsítványt a **másodlagos tanúsítvány** konfigurálása területen. Ezután kattintson a **Save** (Mentés) gombra. 
-
-    ![Az új legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány kiválasztása](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
-
-4. Később, amikor az elsődleges tanúsítvány lejárt, kattintson az eszköz kiépítési szolgáltatási példányának **tanúsítványok** fülére. Kattintson a lejárt tanúsítványra a listában, majd kattintson a **Törlés** gombra. Erősítse meg a törlést a tanúsítvány nevének megadásával, majd kattintson **az OK**gombra.
-
-    ![Legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány törlése](./media/how-to-roll-certificates/delete-root-cert.png)
+    A második út az lenne, hogy a reprovisioning támogatás újbóli üzembe helyezheti az eszközöket ugyanarra az IoT hubra. Ez a megközelítés az IT hubon lévő eszközregisztrációk tanúsítványainak helyettesítésére használható. További információ: [Eszközök újbóli kiépítése.](how-to-reprovision.md)
 
 
+## <a name="enrollment-groups-and-certificate-expiration"></a>Igénylési csoportok és tanúsítvány lejárata
 
-#### <a name="update-expiring-intermediate-certificates"></a>Lejáró közbenső tanúsítványok frissítése
+Ha a tanúsítványok lejáratának kezeléséhez folyamatos tanúsítványokat vezet be, a másodlagos tanúsítvány konfigurációját az alábbiak szerint kell használnia annak biztosításához, hogy a kiépítést megkísérlő eszközök ne legyenek állásidő.
 
+Később, amikor a másodlagos tanúsítvány is lejár, és meg kell hengerelt, az elsődleges konfiguráció használatával forgatható. Az elsődleges és másodlagos tanúsítványok közötti váltás ily módon biztosítja, hogy nincs állásidő az üzembe létesíteni próbáló eszközök számára. 
 
-1. Kattintson a **beléptetési csoportok**elemre, majd kattintson a csoport nevére a listában. 
+#### <a name="update-expiring-root-ca-certificates"></a>Lejáró legfelső szintű hitelesítésszolgáltatói tanúsítványok frissítése
 
-2. Kattintson a **másodlagos tanúsítvány** elemre, majd kattintson a mappa ikonra a beléptetési bejegyzéshez feltölteni kívánt új tanúsítvány kiválasztásához. Kattintson a **Save** (Mentés) gombra.
+1. Az [ellenőrzött hitelesítésszolgáltatói tanúsítványok konfigurálása](how-to-verify-certificates.md) és ellenőrzése című részben ismertetett lépéseket követve új legfelső szintű hitelesítésszolgáltatói tanúsítványokat adhat hozzá és ellenőrizhet.
 
-    Ezt az új közbenső tanúsítványt olyan ellenőrzött legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal kell aláírni, amely már hozzá lett adva a kiépítési szolgáltatáshoz. További információ: [X. 509 tanúsítványok](concepts-security.md#x509-certificates).
+2. Kattintson az Eszközkiépítési szolgáltatáspéldány **regisztrációk kezelése** fülére, majd a **Regisztrációs csoportok listára.** Kattintson a regisztrációs csoport nevére a listában.
 
-   ![Egyéni regisztrációk kezelése a másodlagos tanúsítvány használatával](./media/how-to-roll-certificates/manage-enrollment-group-secondary-portal.png)
+3. Kattintson **a hitelesítésszolgáltatói tanúsítvány**elemre, és válassza ki az új legfelső szintű hitelesítésszolgáltatói tanúsítványt a **Másodlagos tanúsítvány konfigurációja** alatt. Ezután kattintson a **Mentés gombra.** 
 
-3. Később, amikor az elsődleges tanúsítvány lejárt, térjen vissza, és törölje az elsődleges tanúsítványt az **aktuális tanúsítvány törlése** gombra kattintva.
+    ![Az új legfelső szintű hitelesítésszolgáltatói tanúsítvány kijelölése](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
 
+4. Később, amikor az elsődleges tanúsítvány lejárt, kattintson az Eszközkiépítési szolgáltatáspéldány **Tanúsítványok** fülére. Kattintson a lejárt tanúsítványra a listában, majd a **Törlés** gombra. Erősítse meg a törlést a tanúsítvány nevének megadásával, majd kattintson az **OK**gombra.
 
-## <a name="reprovision-the-device"></a>Az eszköz újraépítése
-
-Ha a tanúsítvány az eszközön és az eszköz kiépítési szolgáltatásán is hengerelt, az eszköz maga is kiépítheti a kapcsolatot az eszköz kiépítési szolgáltatásával. 
-
-Az eszközök újbóli kiépítésének egyik egyszerű módja, ha az eszköz beprogramozásával kapcsolatba lép a kiépítési szolgáltatással a kiépítési folyamaton, ha az eszköz "jogosulatlan" hibaüzenetet kap az IoT hub-hoz való kapcsolódás megkísérlése közben.
-
-Egy másik lehetőség, hogy a régi és az új tanúsítványok is érvényesek legyenek egy rövid átfedésre, és az IoT hub használatával parancsokat küldenek az eszközöknek, hogy a kiépítési szolgáltatás segítségével újra regisztrálják a IoT Hub kapcsolódási adataikat. Mivel az egyes eszközök különbözőképpen tudják feldolgozni a parancsokat, meg kell programozni az eszközt, hogy megtudja, mi a teendő a parancs meghívásakor. Több módon is megadhatja az eszközt IoT Hubon keresztül, és azt javasoljuk, hogy a folyamat elindításához [közvetlen metódusokat](../iot-hub/iot-hub-devguide-direct-methods.md) vagy [feladatokat](../iot-hub/iot-hub-devguide-jobs.md) használjon.
-
-Az újratelepítést követően az eszközök az új tanúsítványokkal csatlakozhatnak IoT Hubhoz.
+    ![Gyökérhitelesítési tanúsítvány törlése](./media/how-to-roll-certificates/delete-root-cert.png)
 
 
-## <a name="blacklist-certificates"></a>Tanúsítványok feketelistája
 
-Biztonsági rések esetén előfordulhat, hogy az eszköz tanúsítványának feketelistáját kell megadnia. Az eszköz tanúsítványának feketelistára történő letiltásához tiltsa le a beléptetési bejegyzést a cél eszközhöz/tanúsítványhoz. További információ: eszközök feketelistára helyezése a nem regisztráltak [kezelése](how-to-revoke-device-access-portal.md) cikkben.
+#### <a name="update-expiring-intermediate-certificates"></a>Lejáró köztes tanúsítványok frissítése
 
-Ha egy tanúsítvány egy letiltott beléptetési bejegyzés részeként szerepel, akkor a tanúsítványokat használó IoT hub-ban való regisztrálásra tett kísérletek akkor is sikertelenek lesznek, ha egy másik beléptetési bejegyzés részeként engedélyezve van.
+
+1. Kattintson **a Regisztrációs csoportok gombra,** majd a listában a csoport nevére. 
+
+2. Kattintson a **Másodlagos tanúsítvány** elemre, majd a mappa ikonra kattintva jelölje ki a regisztrációs bejegyzéshez feltöltendő új tanúsítványt. Kattintson a **Mentés** gombra.
+
+    Ezt az új köztes tanúsítványt egy ellenőrzött legfelső szintű hitelesítésszolgáltatói tanúsítvánnyal kell aláírni, amely már hozzá lett adva a kiépítési szolgáltatáshoz. További információ: [X.509 certificates](concepts-security.md#x509-certificates).
+
+   ![Egyéni beléptetések kezelése a másodlagos tanúsítvánnyal](./media/how-to-roll-certificates/manage-enrollment-group-secondary-portal.png)
+
+3. Később, amikor az elsődleges tanúsítvány lejárt, jöjjön vissza, és törölje az elsődleges tanúsítványt az **aktuális tanúsítvány törlése** gombra kattintva.
+
+
+## <a name="reprovision-the-device"></a>Az eszköz újbóli kiépítése
+
+Miután a tanúsítvány gördült mind az eszközön, mind az eszközkiépítési szolgáltatás, az eszköz újra kiépítheti magát az eszközkiépítési szolgáltatással való kapcsolatfelvételsel. 
+
+A programozási eszközök újbóli kiépítésének egyik egyszerű módja az, hogy beprogramozza az eszközt, hogy kapcsolatba lépjen a létesítési szolgáltatással, hogy átmenjen a létesítési folyamaton, ha az eszköz "jogosulatlan" hibaüzenetet kap az IoT hubhoz való csatlakozás során.
+
+Egy másik módja az, hogy mind a régi, mind az új tanúsítványok egy rövid átfedésre érvényesek legyenek, és az IoT hub használatával parancsot küldhetnek az eszközöknek, hogy újra regisztrálhassák őket a létesítési szolgáltatáson keresztül az IoT Hub-kapcsolati adataik frissítéséhez. Mivel minden eszköz másképp tudja feldolgozni a parancsokat, be kell programoznia az eszközt, hogy tudja, mi a teendő a parancs meghívásakor. Számos módon parancsolhatja az eszközt az IoT Hubon keresztül, és javasoljuk, hogy [közvetlen módszerek](../iot-hub/iot-hub-devguide-direct-methods.md) vagy [feladatok](../iot-hub/iot-hub-devguide-jobs.md) használatával kezdeményezze a folyamatot.
+
+Az újraépítés befejezése után az eszközök az új tanúsítványaik használatával csatlakozhatnak az IoT Hubhoz.
+
+
+## <a name="blacklist-certificates"></a>Feketelista-tanúsítványok
+
+A biztonsági rés miatt előfordulhat, hogy feketelistára kell tennie egy eszköztanúsítványt. Eszköztanúsítvány feketelistára tételéhez tiltsa le a céleszköz/tanúsítvány regisztrációs bejegyzését. További információt az Eszközök lesiktatása a [Disenrollment cikk Kezelése](how-to-revoke-device-access-portal.md) című cikkben talál.
+
+Ha egy tanúsítvány szerepel egy letiltott beléptetési bejegyzés részeként, az IoT-központtal a tanúsítványok használatával történő regisztrációra tett kísérletek sikertelenek lesznek, még akkor is, ha egy másik beléptetési bejegyzés részeként engedélyezve van.
  
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Ha többet szeretne megtudni az eszköz kiépítési szolgáltatásában található X. 509 tanúsítványokról, tekintse meg a következőt: [Biztonság](concepts-security.md) 
-- Az X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványoknak az Azure IoT Hub Device Provisioning Service használatával történő igazolásával kapcsolatos további információkért lásd: [tanúsítványok ellenőrzése](how-to-verify-certificates.md)
-- Ha szeretne többet megtudni arról, hogyan használható a portál egy regisztrációs csoport létrehozásához, tekintse meg [az eszközök regisztrálásának kezelése a Azure Portal](how-to-manage-enrollments.md)használatával című témakört.
+- Ha többet szeretne tudni az Eszközkiépítési szolgáltatás X.509 tanúsítványairól, olvassa el a [Biztonság](concepts-security.md) 
+- Az X.509-es hitelesítésszolgáltatói tanúsítványok igazolásának az Azure IoT Hub-eszközkiépítési szolgáltatással történő biztosításáról a [Tanúsítványok ellenőrzése című](how-to-verify-certificates.md) témakörben olvashat.
+- Ha többet szeretne tudni arról, hogy miként hozhat létre a portált egy regisztrációs csoport létrehozásához, olvassa [el az Eszközregisztrációk kezelése az Azure Portalon című témakört.](how-to-manage-enrollments.md)
 
 
 

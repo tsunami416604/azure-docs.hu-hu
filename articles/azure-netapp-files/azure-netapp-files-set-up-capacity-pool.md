@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: b-juche
 ms.openlocfilehash: 8f50b2ad34c705c8d3831d8243f136c41d750dc0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60691098"
 ---
 # <a name="set-up-a-capacity-pool"></a>Kapacitáskészlet beállítása
@@ -33,21 +33,21 @@ Már rendelkeznie kell egy létrehozott NetApp-fiókkal.
 
 ## <a name="steps"></a>Lépések 
 
-1. A NetApp fiók felügyeleti paneljéről, és a navigációs ablaktáblán kattintson a **kapacitás készletek**.  
+1. Nyissa meg a NetApp-fiók felügyeleti paneljét, majd a navigációs ablaktáblán kattintson a **Kapacitáskészletek**elemre.  
     
-    ![Navigáljon a kapacitás-készlet](../media/azure-netapp-files/azure-netapp-files-navigate-to-capacity-pool.png)
+    ![Navigálás a kapacitáskészlethez](../media/azure-netapp-files/azure-netapp-files-navigate-to-capacity-pool.png)
 
 2. Új kapacitáskészlet létrehozásához kattintson a **+ Készletek hozzáadása** elemre.   
     Ekkor megjelenik az Új kapacitáskészlet ablak.
 
 3. Adja meg az alábbi, az új kapacitáskészletre vonatkozó információkat:  
-   * **Name (Név)**  
+   * **Név**  
      Adja meg a kapacitáskészlet nevét.  
      A kapacitáskészlet nevének a NetApp-fiókban egyedinek kell lennie.
 
-   * **Szolgáltatásszint**   
+   * **Szolgáltatási szint**   
      Ez a mező a kapacitáskészlet célteljesítményét mutatja.  
-     Adja meg a szolgáltatási szint a kapacitás-készlet: [**Prémium szintű** ](azure-netapp-files-service-levels.md#Premium) vagy [ **Standard**](azure-netapp-files-service-levels.md#Standard).
+     Adja meg a kapacitáskészlet szolgáltatási szintjét: [**Prémium**](azure-netapp-files-service-levels.md#Premium) vagy [**Standard**](azure-netapp-files-service-levels.md#Standard).
 
    * **Méret**     
      Adja meg a megvásárolni kívánt kapacitáskészlet-méretet.        
@@ -59,6 +59,6 @@ Már rendelkeznie kell egy létrehozott NetApp-fiókkal.
 
 ## <a name="next-steps"></a>További lépések 
 
-- [Szolgáltatási szintek a NetApp Azure-fájlok](azure-netapp-files-service-levels.md)
-- Tekintse meg a [Azure NetApp fájlok díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/storage/netapp/) az ár különböző szolgáltatási szintek
-- [Az Azure Files-NetApp alhálózat delegálása](azure-netapp-files-delegate-subnet.md)
+- [Az Azure NetApp Files szolgáltatásszintjei](azure-netapp-files-service-levels.md)
+- Tekintse meg az [Azure NetApp Files díjszabási lapját](https://azure.microsoft.com/pricing/details/storage/netapp/) a különböző szolgáltatási szintek áráról
+- [Alhálózat delegálása az Azure NetApp Fileshoz](azure-netapp-files-delegate-subnet.md)

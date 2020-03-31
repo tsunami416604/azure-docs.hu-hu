@@ -1,6 +1,6 @@
 ---
-title: A Spark az Azure Cosmos DB Cassandra API táblákon összesített műveletek
-description: Ez a cikk ismerteti az Azure Cosmos DB Cassandra API táblák Spark kapcsolatos művelet-végrehajtási egyszerű aggregálástól
+title: A Sparkból származó Azure Cosmos DB Cassandra API-táblák összesítési műveletei
+description: Ez a cikk az Azure Cosmos DB Cassandra API-táblák spark-i alapszintű összesítési műveleteit ismerteti
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -9,20 +9,20 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 4fbb86f4fbda9b8e521f7465bb8bb3d18602ca13
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60894186"
 ---
-# <a name="aggregate-operations-on-azure-cosmos-db-cassandra-api-tables-from-spark"></a>A Spark az Azure Cosmos DB Cassandra API táblákon összesített műveletek 
+# <a name="aggregate-operations-on-azure-cosmos-db-cassandra-api-tables-from-spark"></a>A Sparkból származó Azure Cosmos DB Cassandra API-táblák összesítési műveletei 
 
-Ez a cikk ismerteti az egyszerű aggregálástól műveleteket végeznek az Azure Cosmos DB Cassandra API táblák Spark rendszerből. 
+Ez a cikk a Sparkból származó Azure Cosmos DB Cassandra API-táblákon végrehajtható alapszintű összesítési műveleteket írja le. 
 
 > [!NOTE]
-> Kiszolgálóoldali szűrés és a kiszolgálóoldali összesítési jelenleg nem támogatott az Azure Cosmos DB Cassandra API-hoz.
+> A kiszolgálóoldali szűrés és a kiszolgálóoldali összesítés jelenleg nem támogatott az Azure Cosmos DB Cassandra API-ban.
 
-## <a name="cassandra-api-configuration"></a>Cassandra API konfigurálása
+## <a name="cassandra-api-configuration"></a>Cassandra API-konfiguráció
 
 ```scala
 import org.apache.spark.sql.cassandra._
@@ -48,7 +48,7 @@ spark.conf.set("spark.cassandra.concurrent.reads", "512")
 spark.conf.set("spark.cassandra.output.batch.grouping.buffer.size", "1000")
 spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 ```
-## <a name="sample-data-generator"></a>Minta adatgenerátor
+## <a name="sample-data-generator"></a>Mintaadat-generátor
 
 ```scala
 // Generate a simple dataset containing five values
@@ -67,39 +67,39 @@ booksDF.write
   .save()
 ```
 
-## <a name="count-operation"></a>A művelet száma
+## <a name="count-operation"></a>Számlálási művelet
 
 
-### <a name="rdd-api"></a>RDD-API
+### <a name="rdd-api"></a>RDD API
 
 ```scala
 sc.cassandraTable("books_ks", "books").count
 ```
 
-**A kimenetre:**
+**Kimeneti:**
 ```
 res48: Long = 5
 ```
 
-### <a name="dataframe-api"></a>Adathalmaz API
+### <a name="dataframe-api"></a>Dataframe API
 
-Jelenleg nem támogatott száma elleni adatkerettípusokat jelölhet.  Az alábbi minta bemutatja, hogyan hajtsa végre a dataframe száma után az adathalmaz áthidaló memória megőrzése.
+A számláló az adatkeretek ellen jelenleg nem támogatott.  Az alábbi minta bemutatja, hogyan hajtható végre egy dataframe-szám, miután az adatkeretet a memóriában megkerülte kerülő megoldásként.
 
-Válasszon egy [tárolási lehetőség]( https://spark.apache.org/docs/2.2.0/rdd-programming-guide.html#which-storage-level-to-choose) az alábbiak közül érhető el, hogy elkerülje a memóriába"ki" problémák:
+Válasszon egy [tárolási lehetőséget]( https://spark.apache.org/docs/2.2.0/rdd-programming-guide.html#which-storage-level-to-choose) az alábbi lehetőségek közül, hogy ne futjon be "kevés memóriával" kapcsolatos problémákba:
 
-* MEMORY_ONLY: Ez a beállítás az alapértelmezett tároló. Tároló RDD, mint a JVM deszerializált Java-objektumok. Az RDD nem fér el a memóriában, ha egyes partíciók nem kerülnek a gyorsítótárba, és azok vannak recomputed menet közben minden alkalommal, amikor szükség van rájuk.
+* MEMORY_ONLY: Ez az alapértelmezett tárolási lehetőség. Az RDD-t deszerializált Java-objektumként tárolja a JVM-ben. Ha az RDD nem fér el a memóriában, egyes partíciók nem lesznek gyorsítótárazva, és minden alkalommal, amikor szükség van rájuk, menet közben újraszámításra kerülnek.
 
-* MEMORY_AND_DISK: Tároló RDD, mint a JVM deszerializált Java-objektumok. Az RDD nem fér el a memóriában, tárolja a partíciók, amely nem fér el a lemezen, és minden alkalommal, amikor szükséges, olvassa el őket a helyen vannak tárolva.
+* MEMORY_AND_DISK: Az RDD-t deszerializált Java-objektumokként tárolja a JVM-ben. Ha az RDD nem fér el a memóriában, tárolja a partíciókat, amelyek nem férnek el a lemezen, és amikor szükséges, olvassa el őket a tárolt helyről.
 
-* MEMORY_ONLY_SER (Java/Scala): Tároló RDD Java partíciónként szerializált objektumok bájtos egy tömb. Ez a beállítás akkor terület hatékonyan deszerializált objektumokat, különösen akkor használ, egy gyors szerializáló képest, de több CPU-igényes olvasni.
+* MEMORY_ONLY_SER (Java/Scala): Az RDD-t partíciónként egybájtos Java-objektumként tárolja. Ez a beállítás a deszerializált objektumokhoz képest helytakarékos, különösen gyors szerializáló használata esetén, de nagyobb processzorigényes olvasása esetén.
 
-* MEMORY_AND_DISK_SER (Java/Scala): Ezzel a tárolási lehetőséggel MEMORY_ONLY_SER hasonlóan, az egyetlen különbség, hogy azt Önt partíciókra, amelyek nem egyeznek meg a lemez memóriában helyett újraszámítása őket, amikor szükség van rájuk.
+* MEMORY_AND_DISK_SER (Java/Scala): Ez a tárolási lehetőség olyan, mint MEMORY_ONLY_SER, az egyetlen különbség az, hogy kiömlik partíciókat, amelyek nem férnek el a lemez memóriájában, hanem újraszámítása őket, amikor szükség van rájuk.
 
-* DISK_ONLY: Az RDD-partíciók tárolja a lemezen.
+* DISK_ONLY: Az RDD-partíciókat csak a lemezen tárolja.
 
-* MEMORY_ONLY_2, MEMORY_AND_DISK_2...: Ugyanaz, mint a fenti szintek de mindegyik partíció két fürtcsomópontokon replikálja.
+* MEMORY_ONLY_2, MEMORY_AND_DISK_2...: Ugyanaz, mint a fenti szintek, de replikálja az egyes partíciókat két fürtcsomóponton.
 
-* (Kísérleti funkció) OFF_HEAP: Hasonló MEMORY_ONLY_SER, de a halommemória memóriában tárolja az adatokat, és engedélyezni kell a kívánt időben halommemória memóriát igényel. 
+* OFF_HEAP (kísérleti): Hasonló MEMORY_ONLY_SER, de tárolja az adatokat a halommemórián kívüli memóriában, és megköveteli, hogy a halommemóriát időben engedélyezze. 
 
 ```scala
 //Workaround
@@ -134,20 +134,20 @@ select book_author, count(*) as count from books_vw group by book_author;
 select count(*) from books_vw;
 ```
 
-## <a name="average-operation"></a>Átlagolási művelethez
+## <a name="average-operation"></a>Átlagos művelet
 
-### <a name="rdd-api"></a>RDD-API
+### <a name="rdd-api"></a>RDD API
 
 ```scala
 sc.cassandraTable("books_ks", "books").select("book_price").as((c: Double) => c).mean
 ```
 
-**A kimenetre:**
+**Kimeneti:**
 ```
 res24: Double = 16.016000175476073
 ```
 
-### <a name="dataframe-api"></a>Adathalmaz API
+### <a name="dataframe-api"></a>Dataframe API
 
 ```scala
 spark
@@ -159,7 +159,7 @@ spark
   .show
 ```
 
-**A kimenetre:**
+**Kimeneti:**
 ```
 +------------------+
 |   avg(book_price)|
@@ -173,25 +173,25 @@ spark
 ```sql
 select avg(book_price) from books_vw;
 ```
-**A kimenetre:**
+**Kimeneti:**
 ```
 16.016000175476073
 ```
 
-## <a name="min-operation"></a>Min művelet
+## <a name="min-operation"></a>Min működés
 
-### <a name="rdd-api"></a>RDD-API
+### <a name="rdd-api"></a>RDD API
 
 ```scala
 sc.cassandraTable("books_ks", "books").select("book_price").as((c: Float) => c).min
 ```
 
-**A kimenetre:**
+**Kimeneti:**
 ```
 res31: Float = 11.33
 ```
 
-### <a name="dataframe-api"></a>Adathalmaz API
+### <a name="dataframe-api"></a>Dataframe API
 
 ```scala
 spark
@@ -203,7 +203,7 @@ spark
   .show
 ```
 
-**A kimenetre:**
+**Kimeneti:**
 ```
 +---------------+
 |min(book_price)|
@@ -218,20 +218,20 @@ spark
 select min(book_price) from books_vw;
 ```
 
-**A kimenetre:**
+**Kimeneti:**
 ```
 11.33
 ```
 
-## <a name="max-operation"></a>Max művelet
+## <a name="max-operation"></a>Maximális működés
 
-### <a name="rdd-api"></a>RDD-API
+### <a name="rdd-api"></a>RDD API
 
 ```scala
 sc.cassandraTable("books_ks", "books").select("book_price").as((c: Float) => c).max
 ```
 
-### <a name="dataframe-api"></a>Adathalmaz API
+### <a name="dataframe-api"></a>Dataframe API
 
 ```scala 
 spark
@@ -243,7 +243,7 @@ spark
   .show
 ```
 
-**A kimenetre:**
+**Kimeneti:**
 ```
 +---------------+
 |max(book_price)|
@@ -257,25 +257,25 @@ spark
 ```sql
 select max(book_price) from books_vw;
 ```
-**A kimenetre:**
+**Kimeneti:**
 ```
 22.45
 ```
 
-## <a name="sum-operation"></a>Összegzési művelet
+## <a name="sum-operation"></a>Összegművelet
 
-### <a name="rdd-api"></a>RDD-API
+### <a name="rdd-api"></a>RDD API
 
 ```scala
 sc.cassandraTable("books_ks", "books").select("book_price").as((c: Float) => c).sum
 ```
 
-**A kimenetre:**
+**Kimeneti:**
 ```
 res46: Double = 80.08000087738037
 ```
 
-### <a name="dataframe-api"></a>Adathalmaz API
+### <a name="dataframe-api"></a>Dataframe API
 
 ```scala
 spark
@@ -286,7 +286,7 @@ spark
   .agg(sum("book_price"))
   .show
 ```
-**A kimenetre:**
+**Kimeneti:**
 ```
 +-----------------+
 |  sum(book_price)|
@@ -301,28 +301,28 @@ spark
 select sum(book_price) from books_vw;
 ```
 
-**A kimenetre:**
+**Kimeneti:**
 ```
 80.08000087738037
 ```
 
-## <a name="top-or-comparable-operation"></a>Felső vagy hasonló művelet
+## <a name="top-or-comparable-operation"></a>Felső vagy hasonló működés
 
-### <a name="rdd-api"></a>RDD-API
+### <a name="rdd-api"></a>RDD API
 
 ```scala
 val readCalcTopRDD = sc.cassandraTable("books_ks", "books").select("book_name","book_price").sortBy(_.getFloat(1), false)
 readCalcTopRDD.zipWithIndex.filter(_._2 < 3).collect.foreach(println)
 //delivers the first top n items without collecting the rdd to the driver.
 ```
-**A kimenetre:**
+**Kimeneti:**
 ```
 (CassandraRow{book_name: A sign of four, book_price: 22.45},0)
 (CassandraRow{book_name: The adventures of Sherlock Holmes, book_price: 19.83},1)
 (CassandraRow{book_name: The memoirs of Sherlock Holmes, book_price: 14.22},2)
 readCalcTopRDD: org.apache.spark.rdd.RDD[com.datastax.spark.connector.CassandraRow] = MapPartitionsRDD[430] at sortBy at command-2371828989676374:1
 ```
-### <a name="dataframe-api"></a>Adathalmaz API
+### <a name="dataframe-api"></a>Dataframe API
 
 ```scala
 import org.apache.spark.sql.functions._
@@ -341,7 +341,7 @@ readBooksDF.explain
 readBooksDF.show
 ```
 
-**A kimenetre:**
+**Kimeneti:**
 ```
 == Physical Plan ==
 TakeOrderedAndProject(limit=3, orderBy=[book_price#1840 DESC NULLS LAST], output=[book_name#1839,book_price#1840])
@@ -366,6 +366,6 @@ select book_name,book_price from books_vw order by book_price desc limit 3;
 
 ## <a name="next-steps"></a>További lépések
 
-Tábla másolási műveletek végrehajtásához lásd:
+A táblamásolási műveletek végrehajtásáról az:
 
-* [Tábla másolási műveletek](cassandra-spark-table-copy-ops.md)
+* [Táblamásolási műveletek](cassandra-spark-table-copy-ops.md)

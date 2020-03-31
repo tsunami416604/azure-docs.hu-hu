@@ -1,32 +1,32 @@
 ---
-title: A műveletnapló-riasztásokban használt webhook-séma ismertetése
-description: Ismerje meg a webhook URL-címére küldött JSON sémáját, ha a műveletnapló riasztása aktiválva van.
+title: A tevékenységnapló-riasztásokban használt webhook-séma ismertetése
+description: Ismerje meg a JSON sémáját, amely egy webhook URL-címére kerül, amikor egy tevékenységnapló-riasztás aktiválódik.
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
 ms.openlocfilehash: c076b8dcea350f9ddd66977e89ce99b81f377b17
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77669046"
 ---
-# <a name="webhooks-for-azure-activity-log-alerts"></a>Webhookok az Azure-beli tevékenység naplójának értesítéseihez
-A műveleti csoport definíciójának részeként konfigurálhat webhook-végpontokat a műveletnapló riasztási értesítéseinek fogadására. A webhookok segítségével ezeket az értesítéseket más rendszerekre irányíthatja a feldolgozás utáni vagy egyéni műveletekhez. Ez a cikk bemutatja, hogyan néz ki a HTTP-POST webhookhoz tartozó hasznos adat.
+# <a name="webhooks-for-azure-activity-log-alerts"></a>Webhookok az Azure tevékenységnapló-riasztásaihoz
+Egy műveletcsoport definíciójának részeként konfigurálhatja a webhook-végpontokat a tevékenységnapló-riasztási értesítések fogadására. A webhookok segítségével ezeket az értesítéseket átirányíthatja más rendszerekre utófeldolgozásvagy egyéni műveletek esetén. Ez a cikk azt mutatja be, hogy a HTTP-post egy webhook hasznos teher hogyan néz ki.
 
-További információ a műveletnapló értesítéseiről: [Azure-Tevékenységnaplók riasztások létrehozása](activity-log-alerts.md).
+A tevékenységnapló-riasztásokról az Azure [tevékenységnapló-riasztások létrehozásáról](activity-log-alerts.md)további információt talál.
 
-A műveleti csoportokról a [műveleti csoportok létrehozása](../../azure-monitor/platform/action-groups.md)című témakörben olvashat bővebben.
+A műveletcsoportokról a [műveletcsoportok létrehozásáról](../../azure-monitor/platform/action-groups.md)című témakörben talál információt.
 
 > [!NOTE]
-> Használhatja továbbá a [Common Alert sémát](https://aka.ms/commonAlertSchemaDocs)is, amely lehetővé teszi, hogy a webhook-integrációk esetében egyetlen bővíthető és egységesített riasztási adattartalom legyen a Azure monitor összes riasztási szolgáltatásában. [Ismerje meg a riasztási séma általános definícióit.](https://aka.ms/commonAlertSchemaDefinitions)
+> A [közös riasztási séma](https://aka.ms/commonAlertSchemaDocs)is használható, amely biztosítja azt az előnyt, hogy egyetlen bővíthető és egységes riasztási hasznos adataz Azure Monitor összes riasztási szolgáltatásában, a webhook-integrációk hoz. [Ismerje meg a gyakori riasztási sémadefiníciók.](https://aka.ms/commonAlertSchemaDefinitions)
 
 
 ## <a name="authenticate-the-webhook"></a>A webhook hitelesítése
-A webhook igény szerint jogkivonat-alapú hitelesítést is használhat a hitelesítéshez. A webhook URI-ja egy jogkivonat-AZONOSÍTÓval lett mentve, például `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`.
+A webhook opcionálisan használhatja a jogkivonat-alapú hitelesítés. A webhook URI-t egy token azonosítóval `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`menti a rendszer, például .
 
-## <a name="payload-schema"></a>Hasznos adatok sémája
-A POST műveletben található JSON-adattartalom eltér a hasznos adatok. Context. activityLog. eventSource mező alapján.
+## <a name="payload-schema"></a>Hasznos adatséma
+A POST műveletben található JSON-tartalom a tartalom data.context.activityLog.eventSource mezőjétől függően eltérő.
 
 ### <a name="common"></a>Közös
 
@@ -171,7 +171,7 @@ A POST műveletben található JSON-adattartalom eltér a hasznos adatok. Contex
 }
 ```
 
-### <a name="servicehealth"></a>ServiceHealth
+### <a name="servicehealth"></a>Szolgáltatáshealth
 
 ```json
 {
@@ -214,9 +214,9 @@ A POST műveletben található JSON-adattartalom eltér a hasznos adatok. Contex
 }
 ```
 
-A szolgáltatás állapotával kapcsolatos értesítési tevékenységekről értesítő riasztásokról a [szolgáltatás állapotáról szóló értesítésekben](../../azure-monitor/platform/service-notifications.md)talál további információt. Emellett megtudhatja, hogyan [konfigurálhatja a Service Health webhook-értesítéseket a meglévő probléma-kezelési megoldásokkal](../../service-health/service-health-alert-webhook-guide.md).
+A szolgáltatásállapot-értesítési tevékenységnapló-riasztások ra vonatkozó konkrét sémarészleteket a [Szolgáltatás állapotára vonatkozó értesítések ben](../../azure-monitor/platform/service-notifications.md)találja. Ezenkívül megtudhatja, hogyan konfigurálhatja a [szolgáltatásállapot-webhook-értesítéseket a meglévő problémakezelési megoldásokkal.](../../service-health/service-health-alert-webhook-guide.md)
 
-### <a name="resourcehealth"></a>ResourceHealth
+### <a name="resourcehealth"></a>Erőforrás-állapot
 
 ```json
 {
@@ -256,40 +256,40 @@ A szolgáltatás állapotával kapcsolatos értesítési tevékenységekről ér
 
 | Elem neve | Leírás |
 | --- | --- |
-| status |Metrikus riasztásokhoz használatos. Mindig az "aktivált" értékre kell beállítani a tevékenység naplójának riasztásai esetében. |
-| context |Az esemény kontextusa. |
+| status |Metrikariasztásokhoz használatos. Mindig "aktivált" a tevékenységnapló-riasztásokhoz. |
+| Összefüggésben |Az esemény kontextusa. |
 | resourceProviderName |Az érintett erőforrás erőforrás-szolgáltatója. |
-| conditionType |Mindig "esemény". |
+| conditionType (feltételtípus) |Mindig "Esemény". |
 | név |A riasztási szabály neve. |
-| id |A riasztás erőforrás-azonosítója. |
-| leírás |Riasztás leírásának beállítása a riasztás létrehozásakor. |
+| id |A riasztás erőforrásazonosítója. |
+| leírás |A riasztás leírása a riasztás létrehozásakor van beállítva. |
 | subscriptionId |Azure-előfizetés azonosítója. |
-| időbélyeg |Az az idő, amikor az eseményt a kérelmet feldolgozó Azure-szolgáltatás hozta létre. |
-| resourceId |Az érintett erőforrás erőforrás-azonosítója. |
-| resourceGroupName |Az érintett erőforráshoz tartozó erőforráscsoport neve. |
-| properties |`<Key, Value>` pár (azaz `Dictionary<String, String>`) készlete, amely az esemény részleteit tartalmazza. |
-| esemény |Az eseménnyel kapcsolatos metaadatokat tartalmazó elem. |
-| authorization |Az esemény szerepköralapú Access Control tulajdonságai. Ezek a tulajdonságok általában tartalmazzák a műveletet, a szerepkört és a hatókört. |
-| category |Az esemény kategóriája. A támogatott értékek a következők: adminisztráció, riasztás, biztonság, ServiceHealth és javaslatok. |
-| hívó |A művelet, UPN-jogcím vagy SPN-jogcím végrehajtását végző felhasználó e-mail-címe a rendelkezésre állás alapján. Bizonyos rendszerhívások esetében null értékű lehet. |
-| correlationId |Általában egy GUID formátumú karakterlánc. A correlationId események ugyanahhoz a nagyobb művelethez tartoznak, és általában egy correlationId osztoznak. |
-| eventDescription |Az esemény statikus szöveges leírása. |
-| eventDataId |Az esemény egyedi azonosítója. |
-| eventSource |Az eseményt létrehozó Azure-szolgáltatás vagy-infrastruktúra neve. |
-| httpRequest |A kérelem általában magában foglalja a ügyfélkérelem, a clientIpAddress és a HTTP-metódust (például PUT). |
-| szint |A következő értékek egyike: kritikus, hiba, figyelmeztetés és tájékoztatás. |
-| operationId |Általában egy egyedi művelethez tartozó események között megosztva GUID. |
+| időbélyeg |Az az időpont, amikor az eseményt a kérést feldolgozó Azure-szolgáltatás hozta létre. |
+| resourceId |Az érintett erőforrás erőforrásazonosítója. |
+| resourceGroupName |Az érintett erőforrás erőforráscsoportjának neve. |
+| properties |`<Key, Value>` Párkészlet `Dictionary<String, String>`(azaz) tartalmazza az esemény részleteit. |
+| Esemény |Az esemény metaadatait tartalmazó elem. |
+| engedélyezés |Az esemény szerepköralapú hozzáférés-vezérlési tulajdonságai. Ezek a tulajdonságok általában tartalmazzák a műveletet, a szerepkört és a hatókört. |
+| category |Az esemény kategóriája. A támogatott értékek közé tartozik a felügyeleti, riasztási, biztonsági, servicehealth és ajánlás. |
+| Hívó |A műveletet, az upn-jogcímeket vagy az SPN-jogcímet a rendelkezésre állást végző felhasználó e-mail-címe. Bizonyos rendszerhívások esetén null értékű lehet. |
+| correlationId |Általában karakterlánc formátumú GUID. A correlationId azonosítóval rendelkező események ugyanahhoz a nagyobb művelethez tartoznak, és általában korrelációsazonosítóval rendelkeznek. |
+| eventDescription (eseményleírás) |Az esemény statikus szöveges leírása. |
+| eventDataId |Az esemény egyedi azonosítója |
+| eventSource |Az eseményt létrehozó Azure-szolgáltatás vagy infrastruktúra neve. |
+| httpRequest (Kérés) |A kérelem általában tartalmazza az ügyfélRequestId, clientIpAddress és HTTP metódus (például PUT). |
+| szint |A következő értékek egyike: Kritikus, Hiba, Figyelmeztetés és Tájékoztató. |
+| operationId |Általában egy GUID megosztott események között megfelelő egyetlen művelet. |
 | operationName |A művelet neve. |
 | properties |Az esemény tulajdonságai. |
-| status |sztring elemet. A művelet állapotát. Az általános értékek a következők: elindítva, folyamatban, sikeres, sikertelen, aktív és megoldott. |
-| Részállapot |Általában tartalmazza a megfelelő REST-hívás HTTP-állapotkódot. Tartalmazhat továbbá más, alállapotot leíró karakterláncokat is. Az általános részállapot-értékek közé tartozik az OK (HTTP-állapotkód: 200), létrehozva (HTTP-állapotkód: 201), elfogadva (HTTP-állapotkód: 202), nincs tartalom (HTTP-állapotkód: 204), hibás kérés (http-állapotkód: 400), nem található (http-állapotkód: 404), ütközés (HTTP-állapotkód: 409 ), Belső kiszolgálóhiba (HTTP-állapotkód: 500), a szolgáltatás nem érhető el (HTTP-állapotkód: 503) és az átjáró időtúllépése (HTTP-állapotkód: 504). |
+| status |Sztring. A művelet állapota. A gyakori értékek a következők: Indítás, Folyamatban, Sikeres, Sikertelen, Aktív és Megoldva. |
+| alállapot |Általában tartalmazza a megfelelő REST-hívás HTTP-állapotkódját. Más karakterláncokat is tartalmazhat, amelyek egy alállapotot írnak le. A leggyakoribb alstátuszértékek a következők: OK (HTTP-állapotkód: 200), Létrehozva (HTTP-állapotkód: 201), Elfogadott (HTTP-állapotkód: 202), Nincs tartalom (HTTP-állapotkód: 204), Rossz kérés (HTTP állapotkód: 400), Nem található (HTTP állapotkód: 404), Ütközés (HTTP-állapotkód: 409 ), belső kiszolgálóhiba (HTTP-állapotkód: 500), Szolgáltatás nem érhető el (HTTP-állapotkód: 503) és átjáró időátvitele (HTTP-állapotkód: 504). |
 
-Az egyéb műveletnapló-riasztásokkal kapcsolatos konkrét séma részleteiért lásd: [Az Azure-tevékenység naplójának áttekintése](../../azure-monitor/platform/platform-logs-overview.md).
+Az összes többi tevékenységnapló-riasztás konkrét sémarészleteiről [az Azure-tevékenységnapló áttekintése című](../../azure-monitor/platform/platform-logs-overview.md)témakörben olvashat.
 
-## <a name="next-steps"></a>Következő lépések
-* [További információ a tevékenység naplóról](../../azure-monitor/platform/platform-logs-overview.md).
-* [Azure Automation-parancsfájlok (runbookok-EK) végrehajtása az Azure-riasztásokon](https://go.microsoft.com/fwlink/?LinkId=627081).
-* [Egy logikai alkalmazás használatával SMS-t küldhet egy Azure-riasztásból a Twilio-on keresztül](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app). Ez a példa metrikus riasztásokra vonatkozik, de úgy módosítható, hogy működjön a tevékenység naplójának riasztásával.
-* [Egy logikai alkalmazás használatával Slack-üzenetet küldhet egy Azure-riasztásból](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app). Ez a példa metrikus riasztásokra vonatkozik, de úgy módosítható, hogy működjön a tevékenység naplójának riasztásával.
-* [Logikai alkalmazás használatával küldhet üzenetet egy Azure-üzenetsor számára egy Azure-riasztásból](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app). Ez a példa metrikus riasztásokra vonatkozik, de úgy módosítható, hogy működjön a tevékenység naplójának riasztásával.
+## <a name="next-steps"></a>További lépések
+* [További információ a tevékenységnaplóról.](../../azure-monitor/platform/platform-logs-overview.md)
+* [Azure-automatizálási parancsfájlok (Runbookok) végrehajtása Azure-riasztásokon.](https://go.microsoft.com/fwlink/?LinkId=627081)
+* [Egy logikai alkalmazás segítségével küldjön egy SMS-t Twilio-n keresztül egy Azure-riasztásból.](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app) Ez a példa a metrikariasztások, de módosítható, hogy működjön együtt egy tevékenységnapló riasztást.
+* [Logikai alkalmazás használatával slack-üzenetet küldhet egy Azure-riasztásból.](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app) Ez a példa a metrikariasztások, de módosítható, hogy működjön együtt egy tevékenységnapló riasztást.
+* [Logikai alkalmazás használatával üzenetet küldhet egy Azure-várólistába egy Azure-riasztásból.](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app) Ez a példa a metrikariasztások, de módosítható, hogy működjön együtt egy tevékenységnapló riasztást.
 

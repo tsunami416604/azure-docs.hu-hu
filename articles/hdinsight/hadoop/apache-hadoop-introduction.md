@@ -1,6 +1,6 @@
 ---
-title: Mi a Apache Hadoop és a MapReduce – Azure HDInsight
-description: Bevezetés a HDInsight, valamint a Apache Hadoop Technology stackbe és összetevőkbe.
+title: Mik azok az Apache Hadoop és a MapReduce – Azure HDInsight
+description: Bevezetés a HDInsight, valamint az Apache Hadoop technológia verem és összetevők.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,53 +9,53 @@ ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.date: 02/27/2020
 ms.openlocfilehash: 7e8dd69b7c58e090c30ea1aa59feddab610dd3c5
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78244875"
 ---
-# <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Mi Apache Hadoop az Azure HDInsight?
+# <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Mi az Apache Hadoop az Azure HDInsightban?
 
-Az [Apache Hadoop](https://hadoop.apache.org/) volt a big data jellegű adatkészletek fürtökön végzett elosztott feldolgozásának, tárolásának és elemzésének eredeti nyílt forráskódú keretrendszere. A Hadoop-ökoszisztéma olyan kapcsolódó szoftvereket és segédprogramokat tartalmaz, mint például az Apache Hive, az Apache HBase, a Spark, a Kafka és sok más.
+Az [Apache Hadoop](https://hadoop.apache.org/) volt a big data jellegű adatkészletek fürtökön végzett elosztott feldolgozásának, tárolásának és elemzésének eredeti nyílt forráskódú keretrendszere. A Hadoop ökoszisztéma kapcsolódó szoftvereket és segédprogramokat tartalmaz, beleértve az Apache Hive-t, az Apache HBase-t, a Sparkot, a Kafkát és még sok mást.
 
-Az Azure HDInsight egy teljes körűen felügyelt, teljes spektrumú, nyílt forráskódú elemzési szolgáltatás a felhőben a vállalatok számára. Az Azure HDInsight-beli Apache Hadoop-fürt típusa lehetővé teszi a HDFS, a fonal-erőforrások kezelését, valamint egy egyszerű MapReduce programozási modellt, amellyel párhuzamosan dolgozhat és elemezheti a Batch-adatokat.
+Az Azure HDInsight egy teljes körűen felügyelt, teljes spektrumú, nyílt forráskódú elemzési szolgáltatás a felhőben a vállalatok számára. Az Apache Hadoop fürttípusa az Azure HDInsightban lehetővé teszi a HDFS, a YARN erőforrás-kezelés és egy egyszerű MapReduce programozási modell használatát a kötegadatok párhuzamos feldolgozásához és elemzéséhez.
 
-A HDInsight elérhető Hadoop Technology stack-összetevők megtekintéséhez tekintse meg a [HDInsight által elérhető összetevőket és verziókat](../hdinsight-component-versioning.md). További tudnivalók a HDInsightban használt Hadoopról [az Azure-szolgáltatások HDInsightra vonatkozó oldalán](https://azure.microsoft.com/services/hdinsight/) olvashatók.
+A HDInsighton elérhető Hadoop-technológiák összetevőinek megtekintése: [A HDInsighttal elérhető összetevők és verziók](../hdinsight-component-versioning.md). További tudnivalók a HDInsightban használt Hadoopról [az Azure-szolgáltatások HDInsightra vonatkozó oldalán](https://azure.microsoft.com/services/hdinsight/) olvashatók.
 
-## <a name="what-is-mapreduce"></a>Mi az a MapReduce?
+## <a name="what-is-mapreduce"></a>Mi az a MapReduce
 
-Apache Hadoop MapReduce olyan szoftver-keretrendszer, amely nagy mennyiségű adat feldolgozására szolgáló feladatokat ír. A bemeneti adatok felosztása független adattömbökbe történik. Minden adathalmaz feldolgozása párhuzamosan történik a fürt csomópontjai között. A MapReduce-feladatok két függvényből állnak:
+Az Apache Hadoop MapReduce egy olyan szoftverkeretrendszer, amely hatalmas mennyiségű adatot feldolgozó feladatok írására szolgál. A bemeneti adatok független adattömbökre vannak felosztva. Minden adattömb feldolgozása párhuzamosan a fürt csomópontjai között. A MapReduce feladat két függvényből áll:
 
-* **Mapper**: a bemeneti adatokat használja, elemzi (általában szűrési és rendezési műveletekkel), és rekordok (kulcs-érték párok) bocsát ki.
+* **Mapper**: Felhasználja a bemeneti adatokat, elemzi azokat (általában szűrési és rendezési műveletekkel), és buples -t bocsát ki (kulcs-érték párok)
 
-* **Szűkítő**: felhasználja a Mapper által kibocsátott rekordok, és olyan összegző műveletet hajt végre, amely létrehoz egy kisebb, kombinált eredményt a Mapper adataiból.
+* **Szűkítő**: A Leképező által kibocsátott tuple-k at fogyasztja, és olyan összegző műveletet hajt végre, amely kisebb, kombinált eredményt hoz létre a leképező adatokból
 
-A következő ábrán látható egy alapszintű Word Count MapReduce-feladat példája:
+A MapReduce feladat példa alapvető szószámát az alábbi ábra szemlélteti:
 
- ![HDI.WordCountDiagram](./media/apache-hadoop-introduction/hdi-word-count-diagram.gif)
+ ![Hdi. WordCountDiagram](./media/apache-hadoop-introduction/hdi-word-count-diagram.gif)
 
-Ennek a feladatoknak a kimenete annak a száma, hogy az egyes szavak hányszor fordultak elő a szövegben.
+A feladat kimenete annak a száma, hogy az egyes szavak hányszor történtek a szövegben.
 
-* A Mapper a bemeneti szöveg minden sorát bemenetként veszi át, és megszakítja a szavakat. Egy kulcs/érték párokat bocsát ki, minden alkalommal, amikor egy szó bekövetkezik a szót, majd egy 1. A kimenet rendezése megtörténik, mielőtt elküldi azt a redukáló felé.
-* A szűkítő összesíti ezeket az egyes szavakat, és egyetlen kulcs/érték párokat bocsát ki, amely a szót az előfordulások összege követve tartalmazza.
+* A leképező a bemeneti szöveg minden sorát bemenetként veszi fel, és szavakba foglalja. Kulcs/érték párt bocsát ki minden alkalommal, amikor a szó egy szavát követi egy 1. A kimenet rendezése előtt elküldi azt a szűkítő.
+* A szűkítő összegzi ezeket az egyes számokat minden egyes szóhoz, és egyetlen kulcsot/értéket bocsát ki, amely tartalmazza a szót, majd az előfordulások összegét.
 
-A MapReduce több nyelven is megvalósítható. A Java a leggyakoribb implementáció, és a jelen dokumentumban bemutató célokra szolgál.
+A MapReduce különböző nyelveken valósítható meg. A Java a leggyakoribb implementáció, és ebben a dokumentumban szemléltetési célokra használják.
 
 ## <a name="development-languages"></a>Fejlesztési nyelvek
 
-A Java és a Java virtuális gép alapú nyelvek vagy keretrendszerek közvetlenül MapReduce-feladatokként futtathatók. A dokumentumban használt példa egy Java MapReduce alkalmazás. A nem Java nyelveken (például C#, Python vagy önálló végrehajtható fájlok) a **Hadoop streaminget**kell használniuk.
+Java-n és a Java virtuális gépen alapuló nyelvek vagy keretrendszerek közvetlenül MapReduce feladatként futtathatók. A dokumentumban használt példa egy Java MapReduce alkalmazás. A nem Java nyelveknek, például a C#, python vagy önálló végrehajtható fájloknak **hadoop-streamelést kell használniuk.**
 
-A Hadoop stream a leképező és a redukáló adatátvitelt az STDIN és az STDOUT fölé továbbítja. A leképező és a redukáló adatokat tartalmazó sort olvas az STDIN-ből, és a kimenetet az STDOUT értékre írja. A leképező és a szűkítő által beolvasott vagy kibocsátott soroknak a TAB karakterrel tagolt kulcs/érték párok formátumában kell szerepelniük:
+A Hadoop streaming kommunikál a leképezővel és a szűkítővel az STDIN és az STDOUT felett. A leképező és a szűkítő egyszerre olvassa be az adatokat az STDIN-ből, és írja a kimenetet az STDOUT-ba. A leképező és a szűkítő által leolvasott vagy kibocsátott soroknak kulcs/érték pár formátumúaknak kell lenniük, tabulátorkarakterrel elválasztva:
 
     [key]/t[value]
 
-További információ: [Hadoop streaming](https://hadoop.apache.org/docs/current/hadoop-streaming/HadoopStreaming.html).
+További információ: [Hadoop Streaming](https://hadoop.apache.org/docs/current/hadoop-streaming/HadoopStreaming.html).
 
-Az Hadoop streaming HDInsight-vel való használatát bemutató példákért tekintse meg a következő dokumentumot:
+A Hadoop streamelésének HDInsight-mal való használatára vonatkozó példákat az alábbi dokumentumtartalmazza:
 
-* [MapReduce C# -feladatok fejlesztése](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
+* [C# MapReduce feladatok fejlesztése](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Apache Hadoop-fürt létrehozása a HDInsight-ben](apache-hadoop-linux-create-cluster-get-started-portal.md)
+* [Apache Hadoop-fürt létrehozása a HDInsightban](apache-hadoop-linux-create-cluster-get-started-portal.md)

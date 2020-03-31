@@ -1,6 +1,6 @@
 ---
-title: A bemeneti adatok bármilyen formátumban olvashatók a .NET-alapú egyéni deszerializálók használatával Azure Stream Analytics
-description: Ez a cikk ismerteti a szerializálási formátumot, valamint azokat az interfészeket, amelyek egyéni .NET-deszerializálók definiálását Azure Stream Analytics Felhőbeli és peremhálózati feladatok számára.
+title: A bemenetek olvasása bármilyen formátumban az Azure Stream Analytics .NET egyéni deszerializálóival
+description: Ez a cikk ismerteti a szerializálási formátumot és azokat a felületeket, amelyek egyéni .NET deszerializálókat határoznak meg az Azure Stream Analytics felhő- és peremhálózati feladatokhoz.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -8,21 +8,21 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
 ms.openlocfilehash: 270e9a31c28e7209cfe43ea8307b928ed3257a35
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76845259"
 ---
-# <a name="read-input-in-any-format-using-net-custom-deserializers"></a>A bemeneti adatok bármilyen formátumban olvashatók a .NET-alapú egyéni deszerializálók használatával
+# <a name="read-input-in-any-format-using-net-custom-deserializers"></a>Bevitel olvasása bármilyen formátumban a .NET egyéni deszerializálókkal
 
-A .NET-alapú egyéni deszerializálók lehetővé teszik, hogy az Azure Stream Analytics-feladatok a három [beépített adatformátumon](stream-analytics-parsing-json.md)kívülről is olvassák az adatformátumokat. Ez a cikk ismerteti a szerializálási formátumot, valamint azokat a csatolókat, amelyek meghatározzák a .NET-alapú egyéni deszerializálók Azure Stream Analytics a felhő és a peremhálózati feladatok számára. A protokoll-és CSV-formátumhoz is vannak példa deszerializálók.
+A .NET egyéni deszerializálók lehetővé teszik, hogy az Azure Stream Analytics-feladat a három beépített adatformátumon kívüli formátumokból [olvasson adatokat.](stream-analytics-parsing-json.md) Ez a cikk ismerteti a szerializálási formátumot és a felületeket, amelyek meghatározzák a .NET egyéni deszerializálók az Azure Stream Analytics felhő- és peremhálózati feladatok. Vannak példa deszerializálók protokoll puffer és CSV formátumban.
 
 ## <a name="net-custom-deserializer"></a>.NET egyéni deszerializáló
 
-A következő kódrészletek az egyéni deszerializáló definiáló felületek, valamint a `StreamDeserializer<T>`implementálása.
+A következő kódminták azok az interfészek, amelyek `StreamDeserializer<T>`meghatározzák az egyéni deszerializálót és implementálják.
 
-a `UserDefinedOperator` az összes egyéni adatfolyam-kezelő alaposztálya. A `StreamingContext`inicializálja a környezetet, amely magában foglalja a diagnosztika közzétételi mechanizmusát, amelynek a deszerializáló hibáit kell elhárítani.
+`UserDefinedOperator`az összes egyéni streamelési szolgáltató alaposztálya. Inicializálja `StreamingContext`, amely magában foglalja a diagnosztikai eszközök közzétételének mechanizmusát, amelyhez a deszerializálóval kapcsolatos problémákat hibakeresésre kell helyeznie.
 
 ```csharp
     public abstract class UserDefinedOperator
@@ -31,21 +31,21 @@ a `UserDefinedOperator` az összes egyéni adatfolyam-kezelő alaposztálya. A `
     }
 ```
 
-A következő kódrészlet a streaming-adatátvitelek deszerializálása. 
+A következő kódrészlet a streamelési adatok deszerializálása. 
 
-A kihagyható hibákat a `UserDefinedOperator`inicializálási metódusával `IStreamingDiagnostics` átadott módon kell kiállítani. A rendszer az összes kivételt hibákat fogja kezelni, és a deszerializáló újra létrejön. Bizonyos számú hiba után a feladatok sikertelen állapotba kerülnek.
+Az átadható 's `IStreamingDiagnostics` Initialize `UserDefinedOperator`metóduson keresztül átadható hibákat átadva kell kibocsátani. Minden kivételt a rendszer hibaként kezel, és a deszerializáló újra létrejön. Bizonyos számú hiba után a feladat sikertelen állapotba kerül.
 
-`StreamDeserializer<T>` `T`típusú objektummá deszerializál egy adatfolyamot. A következő feltételeknek kell teljesülniük:
+`StreamDeserializer<T>`deszerializálja az adatfolyamot a típusú `T`objektumba. A következő feltételeknek kell teljesülniük:
 
-1. A T egy osztály vagy egy struct.
-1. A T összes nyilvános mezője a következők egyike:
-    1. Az egyik a [sbyte érték, a byte, a short, a ushort, az int, a uint, a Long, a DateTime, a string, a float, a Double] vagy a nullával egyenértékű.
-    1. Egy másik Struct vagy osztály, amely ugyanezeket a szabályokat követi.
-    1. `T2` típusú tömb, amely ugyanazokat a szabályokat követi.
-    1. IList`T2`, ahol a T2 ugyanazokat a szabályokat követi.
-    1. Nem rendelkezik rekurzív típusokkal.
+1. T egy osztály vagy egy struct.
+1. A T-ben minden nyilvános mező
+    1. Az egyik [sbyte, byte, rövid, ushort, int, uint, hosszú, DateTime, string, float, double] vagy azok semlegesíthető megfelelői.
+    1. Egy másik struct vagy osztály követi ugyanazokat a szabályokat.
+    1. Azonos szabályokat követő típusú tömb. `T2`
+    1. IList,`T2` ahol T2 követi ugyanazokat a szabályokat.
+    1. Nincs rekurzív típusa.
 
-A `stream` paraméter a szerializált objektumot tartalmazó adatfolyam. `Deserialize` `T` példányok gyűjteményét adja vissza.
+A `stream` paraméter a szerializált objektumot tartalmazó adatfolyam. `Deserialize`példányok gyűjteményét `T` adja vissza.
 
 ```csharp
     public abstract class StreamDeserializer<T> : UserDefinedOperator
@@ -54,7 +54,7 @@ A `stream` paraméter a szerializált objektumot tartalmazó adatfolyam. `Deseri
     }
 ```
 
-`StreamingContext` olyan kontextust biztosít, amely magában foglalja a felhasználói kezelő diagnosztika-közzétételi mechanizmusát.
+`StreamingContext`olyan környezetet biztosít, amely magában foglalja a felhasználói operátor diagnosztikájának közzétételére szolgáló mechanizmust.
 
 ```csharp
     public abstract class StreamingContext
@@ -63,13 +63,13 @@ A `stream` paraméter a szerializált objektumot tartalmazó adatfolyam. `Deseri
     }
 ```
 
-`StreamingDiagnostics` a felhasználó által definiált operátorok diagnosztikája, többek között a szerializáló, a deszerializáló és a felhasználó által definiált függvények.
+`StreamingDiagnostics`a felhasználó által definiált operátorok diagnosztikája, beleértve a szerializálót, a deszerializálót és a felhasználó által definiált függvényeket.
 
-`WriteError` hibaüzenetet ír a diagnosztikai naplókhoz, és a hibát a diagnosztika számára küldi el.
+`WriteError`hibaüzenetet küld a diagnosztikai naplóknak, és elküldi a hibát a diagnosztikának.
 
-a `briefMessage` rövid hibaüzenetet jelenít meg. Ez az üzenet a diagnosztika szolgáltatásban jelenik meg, és a termék csapata hibakeresési célokat szolgál. Ne tartalmazzon bizalmas adatokat, és tartsa meg a 200 karakternél rövidebb üzenetet
+`briefMessage`egy rövid hibaüzenet. Ez az üzenet megjelenik a diagnosztikában, és a termékcsapat hibakeresési célokra használja. Ne adjon meg bizalmas adatokat, és tartsa az üzenetet 200 karakternél kisebb karakternél
 
-`detailedMessage` egy részletes hibaüzenet, amely csak a tárolóban lévő diagnosztikai naplókba kerül. Az üzenetnek 2000 karakternél rövidebbnek kell lennie.
+`detailedMessage`egy részletes hibaüzenet, amely csak a tárolóban lévő diagnosztikai naplókhoz kerül. Ennek az üzenetnek 2000 karakternél rövidebbnek kell lennie.
 
 ```csharp
     public abstract class StreamingDiagnostics
@@ -78,15 +78,15 @@ a `briefMessage` rövid hibaüzenetet jelenít meg. Ez az üzenet a diagnosztika
     }
 ```
 
-## <a name="deserializer-examples"></a>Deszerializáló – példák
+## <a name="deserializer-examples"></a>Példák deszerializáló
 
-Ez a szakasz bemutatja, hogyan írhat egyéni deszerializált a Protopuf és a CSV-hez. További példákat, például az Event hub Capture AVRO-formátumát, látogasson el [a Azure stream Analyticsre a githubon](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers).
+Ez a szakasz bemutatja, hogyan írhat egyéni deszerializálókat a Protobuf és a CSV számára. További példákért, például az Event Hub-rögzítés AVRO-formátumához látogasson el [az Azure Stream Analytics szolgáltatásba a GitHubon.](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers)
 
-### <a name="protocol-buffer-protobuf-format"></a>Protokoll-puffer (Protopuf) formátuma
+### <a name="protocol-buffer-protobuf-format"></a>Protokollpuffer (Protobuf) formátum
 
-Ez egy példa a protokoll pufferének formátumára.
+Ez egy példa protokollpuffer-formátum használatával.
 
-Tegyük fel a következő protokoll-puffer definícióját.
+Tegyük fel a következő protokollpuffer-definíciót.
 
 ```proto
 syntax = "proto3";
@@ -112,9 +112,9 @@ message MessageBodyProto {
 }
 ```
 
-`protoc.exe` futtatása a **Google. protopuf. Tools** NuGet. cs fájlt hoz létre a definícióval. A létrehozott fájl itt nem jelenik meg.
+Futás `protoc.exe` a **Google.Protobuf.Tools** NuGet létrehoz egy .cs fájlt a meghatározást. A létrehozott fájl itt nem jelenik meg.
 
-A következő kódrészlet a deszerializáló implementációja, feltételezve, hogy a létrehozott fájl szerepel a projektben. Ez a megvalósítás csak egy vékony burkoló a generált fájlon.
+A következő kódrészlet a deszerializáló implementáció, feltéve, hogy a létrehozott fájl szerepel a projektben. Ez a megvalósítás csak egy vékony burkoló a létrehozott fájl felett.
 
 ```csharp
     public class MessageBodyDeserializer : StreamDeserializer<SimulatedTemperatureSensor.MessageBodyProto>
@@ -135,7 +135,7 @@ A következő kódrészlet a deszerializáló implementációja, feltételezve, 
 
 ### <a name="csv"></a>CSV
 
-A következő kódrészlet egy egyszerű CSV-deszerializáló, amely a terjesztési hibákat is bemutatja.
+A következő kódrészlet egy egyszerű CSV deszerializáló, amely szintén bemutatja a propagálási hibákat.
 
 ```csharp
 using System.Collections.Generic;
@@ -200,9 +200,9 @@ namespace ExampleCustomCode.Serialization
 
 ## <a name="serialization-format-for-rest-apis"></a>A REST API-k szerializálási formátuma
 
-Minden Stream Analytics-bemenet **szerializálási formátummal**rendelkezik. A bemeneti beállításokkal kapcsolatos további információkért tekintse meg a [input REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-input) dokumentációját.
+Minden Stream Analytics-bemenetnek van **szerializálási formátuma.** A bemeneti beállításokról további információt a [Bemeneti REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-input) dokumentációjában talál.
 
-A következő JavaScript-kód példa a .NET deszerializáló szerializálási formátumára a REST API használatakor:
+A rest API használatakor a következő Javascript-kód a .NET deszerializáló szerializálási formátumra mutat be példát:
 
 ```javascript
 {    
@@ -219,7 +219,7 @@ A következő JavaScript-kód példa a .NET deszerializáló szerializálási fo
 }  
 ```
 
-a `serializationClassName` `StreamDeserializer<T>`t megvalósító osztálynak kell lennie. Ezt a következő szakaszban ismertetjük.
+`serializationClassName`kell egy osztály, `StreamDeserializer<T>`amely végrehajtja . Ezt a következő szakasz ismerteti.
 
 ## <a name="region-support"></a>Régió támogatása
 
@@ -232,22 +232,22 @@ Ez a funkció a következő régiókban érhető el:
 * USA 2. keleti régiója
 * Nyugat-Európa
 
-További régiók [támogatását is kérheti](https://aka.ms/ccodereqregion) .
+További [régiókhoz](https://aka.ms/ccodereqregion) is kérhet támogatást.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-### <a name="when-will-this-feature-be-available-in-all-azure-regions"></a>Mikor lesz elérhető ez a szolgáltatás az összes Azure-régióban?
+### <a name="when-will-this-feature-be-available-in-all-azure-regions"></a>Mikor lesz elérhető ez a funkció az Összes Azure-régióban?
 
-Ez a funkció [6 régióban](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples#region-support)érhető el. Ha egy másik régióban szeretné használni ezt a funkciót, [elküldhet egy kérelmet](https://aka.ms/ccodereqregion). Az összes Azure-régió támogatása az ütemterv szerint történik.
+Ez a funkció [6 régióban](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples#region-support)érhető el. Ha szeretné ezt a funkciót egy másik régióban használni, [benyújthat egy kérelmet.](https://aka.ms/ccodereqregion) Az összes Azure-régió támogatása szerepel az ütemtervben.
 
-### <a name="can-i-access-metadatapropertyvalue-from-my-inputs-similar-to-getmetadatapropertyvalue-function"></a>Hozzáférhetek a MetadataPropertyValue a saját bemenetekhez a GetMetadataPropertyValue függvényhez hasonló módon?
+### <a name="can-i-access-metadatapropertyvalue-from-my-inputs-similar-to-getmetadatapropertyvalue-function"></a>A GetMetadataPropertyValue függvényhez hasonló bemeneteimből is hozzáférhetek a MetadataPropertyValue értékhez?
 
-Ez a funkció nem támogatott. Ha erre a képességre van szüksége, szavazzon erre a kérelemre a [UserVoice](https://feedback.azure.com/forums/270577-stream-analytics/suggestions/38779801-accessing-input-metadata-properties-in-custom-dese).
+Ez a funkció nem támogatott. Ha szüksége van erre a képességre, szavazhat erre a kérésre a [UserVoice](https://feedback.azure.com/forums/270577-stream-analytics/suggestions/38779801-accessing-input-metadata-properties-in-custom-dese).
 
-### <a name="can-i-share-my-deserializer-implementation-with-the-community-so-that-others-can-benefit"></a>Megoszthatom a deszerializáló implementációját a Közösséggel, hogy mások is részesülhessenek?
+### <a name="can-i-share-my-deserializer-implementation-with-the-community-so-that-others-can-benefit"></a>Megoszthatom a deszerializáló implementációmat a közösséggel, hogy mások is élvezhessék?
 
-A deszerializáló megvalósítását követően a Közösséggel megoszthatja másokkal. Küldje be a kódot a [Azure stream Analytics GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers)-tárházba.
+Miután végrehajtotta a deszerializálóját, segíthet másoknak, ha megosztja azt a közösséggel. Küldje el a kódot az [Azure Stream Analytics GitHub tártárába.](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers)
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [.NET-alapú egyéni deszerializálók Azure Stream Analytics felhőalapú feladatokhoz](custom-deserializer.md)
+* [.NET egyéni deszerializálók az Azure Stream Analytics felhőalapú feladatokhoz](custom-deserializer.md)

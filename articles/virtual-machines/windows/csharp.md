@@ -1,6 +1,6 @@
 ---
-title: Azure-beli virtuális gép létrehozása és kezelése a használatávalC#
-description: A C# és a Azure Resource Manager használatával telepítheti a virtuális gépet és annak összes támogató erőforrását.
+title: 'Azure-beli virtuális gép létrehozása és kezelése C használatával #'
+description: A C# és az Azure Resource Manager használatával üzembe helyezhet egy virtuális gépet és annak összes támogató erőforrását.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
 ms.openlocfilehash: 3930e51f63615abd21a7b04199a0f4767925792a
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78944517"
 ---
-# <a name="create-and-manage-windows-vms-in-azure-using-c"></a>Windows rendszerű virtuális gépek létrehozása és kezelése az Azure-ban a használatávalC# #
+# <a name="create-and-manage-windows-vms-in-azure-using-c"></a>Windows-virtuális gépek létrehozása és kezelése az Azure-ban a C használatával # #
 
-Egy [Azure-beli virtuális gépnek](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) több támogató Azure-erőforrásra van szüksége. Ez a cikk a VM-erőforrások létrehozását, kezelését és törlését ismerteti a használatával C#. Az alábbiak végrehajtásának módját ismerheti meg:
+Egy [Azure virtuális gép](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) szüksége van több támogató Azure-erőforrások. Ez a cikk a virtuális gép erőforrások c#használatával történő létrehozását, kezelését és törlését ismerteti. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
 > * Visual Studio-projekt létrehozása
@@ -34,19 +34,19 @@ Egy [Azure-beli virtuális gépnek](overview.md?toc=%2fazure%2fvirtual-machines%
 > * Erőforrások törlése
 > * Az alkalmazás futtatása
 
-Ezek a lépések körülbelül 20 percet vesznek igénybe.
+Ezeket a lépéseket körülbelül 20 perc alatt kell megtennie.
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
-1. Ha még nem tette meg, telepítse a [Visual studiót](https://docs.microsoft.com/visualstudio/install/install-visual-studio). A munkaterhelések lapon válassza ki a **.net Desktop Development** elemet, majd kattintson a **telepítés**gombra. Az összegzésben láthatja, hogy a **.NET-keretrendszer 4 – 4,6 fejlesztői eszközei** automatikusan ki vannak választva. Ha már telepítette a Visual studiót, a .NET-munkaterhelést a Visual Studio Launcher használatával adhatja hozzá.
-2. A Visual Studióban kattintson a **File (Fájl)**  > **New (Új)**  > **Project (Projekt)** parancsra.
-3. A **sablonok** > **vizualizáció C#** területen válassza a **konzol alkalmazás (.NET-keretrendszer)** lehetőséget, írja be a *myDotnetProject* nevet a projekt neveként, válassza ki a projekt helyét, majd kattintson **az OK**gombra.
+1. Ha még nem tette meg, telepítse a [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio)alkalmazást. A Számítási feladatok lapon válassza a **.NET asztal fejlesztését,** majd kattintson a **Telepítés gombra.** Az összegzésben láthatja, hogy a **.NET Framework 4 - 4.6 fejlesztői eszközök** automatikusan kiválasztásra kerülnek. Ha már telepítette a Visual Studio alkalmazást, a .NET-számítási feladatot hozzáadhatja a Visual Studio launcher használatával.
+2. A Visual Studio programban kattintson az**Új** > **projekt** **fájlja** > gombra.
+3. A Templates Visual C# **(Sablonok vizuális** >  **Console App (.NET Framework)****csz.** *myDotnetProject* **OK**
 
 ## <a name="install-the-package"></a>A csomag telepítése
 
-A NuGet csomagok a legegyszerűbben a lépések végrehajtásához szükséges kódtárak telepítésére szolgálnak. A Visual Studióban szükséges kódtárak beszerzéséhez hajtsa végre a következő lépéseket:
+A NuGet csomagok a legegyszerűbb módja a lépések végrehajtásához szükséges könyvtárak telepítésének. A Visual Studio alkalmazásban szükséges könyvtárak leeléréséhez tegye a következő lépéseket:
 
-1. Kattintson az **eszközök** > **Nuget csomagkezelő**elemre, majd a **csomagkezelő konzol**elemre.
+1. Kattintson **az Eszközök** > **Nuget csomagkezelő ikonra,** majd a **Csomagkezelő konzol parancsra.**
 2. Írja be ezt a parancsot a konzolba:
 
     ```
@@ -55,12 +55,12 @@ A NuGet csomagok a legegyszerűbben a lépések végrehajtásához szükséges k
 
 ## <a name="create-credentials"></a>Hitelesítő adatok létrehozása
 
-A lépés elkezdése előtt győződjön meg arról, hogy van hozzáférése egy [Active Directory egyszerű szolgáltatáshoz](../../active-directory/develop/howto-create-service-principal-portal.md). Az alkalmazás AZONOSÍTÓját, a hitelesítési kulcsot és a bérlő AZONOSÍTÓját is rögzíteni kell egy későbbi lépésben.
+A lépés megkezdése előtt győződjön meg arról, hogy rendelkezik-e hozzáféréssel egy [Active Directory egyszerű szolgáltatáshoz.](../../active-directory/develop/howto-create-service-principal-portal.md) Az alkalmazásazonosítót, a hitelesítési kulcsot és a bérlői azonosítót is rögzítenie kell egy későbbi lépésben.
 
 ### <a name="create-the-authorization-file"></a>Az engedélyezési fájl létrehozása
 
-1. Megoldáskezelő kattintson a jobb gombbal a *myDotnetProject* elemre, > **adja hozzá** > **új elemet**, majd válassza a **szövegfájlt** a *vizualizáció C# elemei*között. Nevezze el a *azureauth. properties*fájlt, majd kattintson a **Hozzáadás**gombra.
-2. Adja hozzá az alábbi engedélyezési tulajdonságokat:
+1. A Megoldáskezelőben kattintson a jobb gombbal *a myDotnetProject* > **Új elem****hozzáadása** > elemre, majd válassza a **Szövegfájl parancsot** a *Visual C# elemekben.* Nevezze el a fájlt *azureauth.properties*, majd kattintson **a Hozzáadás gombra.**
+2. Adja hozzá ezeket az engedélyezési tulajdonságokat:
 
     ```
     subscription=<subscription-id>
@@ -73,10 +73,10 @@ A lépés elkezdése előtt győződjön meg arról, hogy van hozzáférése egy
     graphURL=https://graph.microsoft.com/
     ```
 
-    Cserélje le **&lt;előfizetés-azonosító&gt;** az előfizetési azonosítóra, **&lt;az alkalmazás-azonosító&gt;** a Active Directory alkalmazás-azonosítóval, **&lt;a hitelesítő kulcs&gt;** az alkalmazás kulcsával, és **&lt;bérlő azonosítója&gt;** a bérlői azonosítóval.
+    Cserélje le ** &lt;az&gt; előfizetés-id-t** az előfizetés-azonosítóra, ** &lt;az alkalmazásazonosítót&gt; ** az Active Directory alkalmazásazonosítóra, ** &lt;&gt; ** a hitelesítési kulcsot az alkalmazáskulcsra és ** &lt;a bérlőazonosítót&gt; ** a bérlői azonosítóra.
 
-3. Mentse a azureauth. properties fájlt. 
-4. Állítson be egy környezeti változót az AZURE_AUTH_LOCATION nevű Windowsban a létrehozott hitelesítési fájl teljes elérési útjával. Például a következő PowerShell-parancs használható:
+3. Mentse az azureauth.properties fájlt. 
+4. Állítson be egy AZURE_AUTH_LOCATION nevű környezeti változót a létrehozott engedélyezési fájl teljes elérési útjával. Például a következő PowerShell-parancs használható:
 
     ```
     [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2019\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
@@ -84,7 +84,7 @@ A lépés elkezdése előtt győződjön meg arról, hogy van hozzáférése egy
 
 ### <a name="create-the-management-client"></a>A felügyeleti ügyfél létrehozása
 
-1. Nyissa meg a létrehozott projekthez tartozó Program.cs-fájlt. Ezután adja hozzá a következő utasításokat a fájl elejéhez a meglévő utasításokhoz:
+1. Nyissa meg a létrehozott projekt Program.cs fájlját. Ezután adja hozzá ezeket a fájl tetején lévő utasításokhoz a következő utasítások használatával:
 
     ```csharp
     using Microsoft.Azure.Management.Compute.Fluent;
@@ -94,7 +94,7 @@ A lépés elkezdése előtt győződjön meg arról, hogy van hozzáférése egy
     using Microsoft.Azure.Management.ResourceManager.Fluent.Core;
     ```
 
-2. A felügyeleti ügyfél létrehozásához adja hozzá ezt a kódot a Main metódushoz:
+2. A felügyeleti ügyfél létrehozásához adja hozzá ezt a kódot a fő metódushoz:
 
     ```csharp
     var credentials = SdkContext.AzureCredentialsFactory
@@ -111,9 +111,9 @@ A lépés elkezdése előtt győződjön meg arról, hogy van hozzáférése egy
 
 ### <a name="create-the-resource-group"></a>Az erőforráscsoport létrehozása
 
-Az összes erőforrást egy [erőforráscsoporthoz](../../azure-resource-manager/management/overview.md)kell foglalni.
+Minden erőforrásnak [erőforráscsoportban](../../azure-resource-manager/management/overview.md)kell lennie.
 
-Az alkalmazás értékének megadásához és az erőforráscsoport létrehozásához adja hozzá ezt a kódot a Main metódushoz:
+Az alkalmazás értékeinek megadásához és az erőforráscsoport létrehozásához adja hozzá ezt a kódot a Fő metódushoz:
 
 ```csharp
 var groupName = "myResourceGroup";
@@ -126,11 +126,11 @@ var resourceGroup = azure.ResourceGroups.Define(groupName)
     .Create();
 ```
 
-### <a name="create-the-availability-set"></a>A rendelkezésre állási csoport létrehozása
+### <a name="create-the-availability-set"></a>Az elérhetőségi készlet létrehozása
 
-A [rendelkezésre állási](tutorial-availability-sets.md) csoportok megkönnyítik az alkalmazás által használt virtuális gépek karbantartását.
+[A rendelkezésre állási készletek](tutorial-availability-sets.md) megkönnyítik az alkalmazás által használt virtuális gépek karbantartását.
 
-A rendelkezésre állási csoport létrehozásához adja hozzá ezt a kódot a Main metódushoz:
+Az elérhetőségi készlet létrehozásához adja hozzá ezt a kódot a fő metódushoz:
 
 ```csharp
 Console.WriteLine("Creating availability set...");
@@ -141,11 +141,11 @@ var availabilitySet = azure.AvailabilitySets.Define("myAVSet")
     .Create();
 ```
 
-### <a name="create-the-public-ip-address"></a>A nyilvános IP-cím létrehozása
+### <a name="create-the-public-ip-address"></a>Nyilvános IP-cím létrehozása
 
 A virtuális géppel való kommunikációhoz [nyilvános IP-cím](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) szükséges.
 
-A virtuális gép nyilvános IP-címének létrehozásához adja hozzá ezt a kódot a Main metódushoz:
+A virtuális gép nyilvános IP-címének létrehozásához adja hozzá ezt a kódot a fő metódushoz:
    
 ```csharp
 Console.WriteLine("Creating public IP address...");
@@ -158,9 +158,9 @@ var publicIPAddress = azure.PublicIPAddresses.Define("myPublicIP")
 
 ### <a name="create-the-virtual-network"></a>A virtuális hálózat létrehozása
 
-A virtuális gépnek egy [virtuális hálózat](../../virtual-network/virtual-networks-overview.md)alhálózatán kell lennie.
+A virtuális gépnek a virtuális [hálózat](../../virtual-network/virtual-networks-overview.md)alhálózatában kell lennie.
 
-Alhálózat és virtuális hálózat létrehozásához adja hozzá ezt a kódot a Main metódushoz:
+Alhálózat és virtuális hálózat létrehozásához adja hozzá ezt a kódot a fő metódushoz:
 
 ```csharp
 Console.WriteLine("Creating virtual network...");
@@ -176,7 +176,7 @@ var network = azure.Networks.Define("myVNet")
 
 A virtuális gépnek hálózati adapterre van szüksége a virtuális hálózaton való kommunikációhoz.
 
-Hálózati adapter létrehozásához adja hozzá ezt a kódot a Main metódushoz:
+Hálózati adapter létrehozásához adja hozzá ezt a kódot a Fő metódushoz:
 
 ```csharp
 Console.WriteLine("Creating network interface...");
@@ -192,9 +192,9 @@ var networkInterface = azure.NetworkInterfaces.Define("myNIC")
 
 ### <a name="create-the-virtual-machine"></a>A virtuális gép létrehozása
 
-Most, hogy létrehozta az összes támogatási erőforrást, létrehozhat egy virtuális gépet.
+Most, hogy létrehozta az összes támogató erőforrást, létrehozhat egy virtuális gépet.
 
-A virtuális gép létrehozásához adja hozzá ezt a kódot a Main metódushoz:
+A virtuális gép létrehozásához adja hozzá ezt a kódot a fő metódushoz:
 
 ```csharp
 Console.WriteLine("Creating virtual machine...");
@@ -212,11 +212,11 @@ azure.VirtualMachines.Define(vmName)
 ```
 
 > [!NOTE]
-> Ez az oktatóanyag egy olyan virtuális gépet hoz létre, amely a Windows Server operációs rendszer egy verzióját futtatja. További információ a többi rendszerkép kiválasztásáról: [Azure-beli virtuálisgép-rendszerképek navigálása és kiválasztása a Windows PowerShell és az Azure CLI](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)használatával.
+> Ez az oktatóanyag a Windows Server operációs rendszer egy verzióját futtató virtuális gépet hoz létre. Ha többet szeretne tudni a többi lemezkép kiválasztásáról, olvassa el a [Navigálás és az Azure virtuálisgép-lemezképek kiválasztása a Windows PowerShell és az Azure CLI](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)használatával című témakört.
 > 
 >
 
-Ha a Piactéri rendszerkép helyett meglévő lemezt szeretne használni, használja a következő kódot:
+Ha piactéri lemez lemezt szeretne használni piactéri lemezkép helyett, használja ezt a kódot:
 
 ```csharp
 var managedDisk = azure.Disks.Define("myosdisk")
@@ -239,17 +239,17 @@ azure.VirtualMachines.Define("myVM")
 
 ## <a name="perform-management-tasks"></a>Felügyeleti feladatok végrehajtása
 
-A virtuális gépek életciklusa során szükség lehet felügyeleti feladatok futtatására, például a virtuális gép indítására, leállítására vagy törlésére. Emellett érdemes lehet kódot létrehozni az ismétlődő vagy összetett feladatok automatizálásához.
+A virtuális gépek életciklusa során szükség lehet felügyeleti feladatok futtatására, például a virtuális gép indítására, leállítására vagy törlésére. Ezenkívül az ismétlődő vagy összetett feladatok automatizálására kód is létrehozható.
 
-Ha bármit kell tennie a virtuális géppel, le kell kérnie a példányát:
+Ha valamit tennie kell a virtuális gép, meg kell, hogy egy példányt is:
 
 ```csharp
 var vm = azure.VirtualMachines.GetByResourceGroup(groupName, vmName);
 ```
 
-### <a name="get-information-about-the-vm"></a>A virtuális géppel kapcsolatos információk lekérése
+### <a name="get-information-about-the-vm"></a>Információ a virtuális gépről
 
-A virtuális géppel kapcsolatos információk beszerzéséhez adja hozzá ezt a kódot a Main metódushoz:
+A virtuális géppel kapcsolatos információk lefűzéséhez adja hozzá ezt a kódot a fő metódushoz:
 
 ```csharp
 Console.WriteLine("Getting information about the virtual machine...");
@@ -319,9 +319,9 @@ Console.ReadLine();
 
 ### <a name="stop-the-vm"></a>A virtuális gép leállítása
 
-Leállíthatja a virtuális gépet, és megtarthatja az összes beállítását, de továbbra is fizetnie kell, vagy leállíthatja a virtuális gépet, és felszabadíthatja azt. Ha a virtuális gép fel van foglalva, a hozzá társított összes erőforrás fel van foglalva, és a számlázás véget ér.
+Leállíthatja a virtuális gépet, és megtarthatja az összes beállítását, de továbbra is fel kell számítania, vagy leállíthatja a virtuális gépet, és felszabadíthatja azt. Amikor egy virtuális gép felvan szabadítva, a hozzá társított összes erőforrás is felszabadítva lesz, és a számlázás véget ér.
 
-Ha le szeretné állítani a virtuális gépet a felszabadítása nélkül, adja hozzá ezt a kódot a Main metódushoz:
+Ha meg szeretné állítani a virtuális gépet anélkül, hogy osztanunk szeretné, adja hozzá ezt a kódot a fő metódushoz:
 
 ```csharp
 Console.WriteLine("Stopping vm...");
@@ -330,7 +330,7 @@ Console.WriteLine("Press enter to continue...");
 Console.ReadLine();
 ```
 
-Ha felszabadítani szeretné a virtuális gépet, módosítsa a kikapcsoló hívást a következő kódra:
+Ha fel szeretné osztani a virtuális gépet, módosítsa a PowerOff-hívást erre a kódra:
 
 ```csharp
 vm.Deallocate();
@@ -338,7 +338,7 @@ vm.Deallocate();
 
 ### <a name="start-the-vm"></a>A virtuális gép elindítása
 
-A virtuális gép elindításához adja hozzá ezt a kódot a Main metódushoz:
+A virtuális gép elindításához adja hozzá ezt a kódot a fő metódushoz:
 
 ```csharp
 Console.WriteLine("Starting vm...");
@@ -349,9 +349,9 @@ Console.ReadLine();
 
 ### <a name="resize-the-vm"></a>A virtuális gép átméretezése
 
-A központi telepítés számos aspektusát figyelembe kell venni a virtuális gép méretének meghatározásakor. További információ: virtuális gépek [méretei](sizes.md).  
+A virtuális gép méretének meghatározásakor a központi telepítés számos aspektusát figyelembe kell venni. További információ: [VM méretek](sizes.md).  
 
-A virtuális gép méretének módosításához adja hozzá ezt a kódot a Main metódushoz:
+A virtuális gép méretének módosításához adja hozzá ezt a kódot a Fő metódushoz:
 
 ```csharp
 Console.WriteLine("Resizing vm...");
@@ -364,7 +364,7 @@ Console.ReadLine();
 
 ### <a name="add-a-data-disk-to-the-vm"></a>Adatlemez hozzáadása a virtuális géphez
 
-Ha adatlemezt szeretne hozzáadni a virtuális géphez, adja hozzá ezt a kódot a Main metódushoz. Ez a példa egy 2 GB méretű adatlemezt hoz létre, amely a 0 LUN-t és a ReadWrite gyorsítótárazási típusát adja meg:
+Ha adatlemezt szeretne hozzáadni a virtuális géphez, adja hozzá ezt a kódot a fő metódushoz. Ez a példa 2 GB méretű adatlemezt, 0-s logikai és gyorsítótárazási típusú ReadWrite-et ad hozzá:
 
 ```csharp
 Console.WriteLine("Adding data disk to vm...");
@@ -377,9 +377,9 @@ Console.ReadLine();
 
 ## <a name="delete-resources"></a>Erőforrások törlése
 
-Mivel az Azure-ban használt erőforrásokért kell fizetnie, mindig érdemes törölni a már nem szükséges erőforrásokat. Ha törölni szeretné a virtuális gépeket és az összes támogató erőforrást, mindössze annyit kell tennie, hogy törli az erőforráscsoportot.
+Mivel az Azure-ban használt erőforrásokért díjat számítunk fel, mindig ajánlott törölni azokat az erőforrásokat, amelyekre már nincs szükség. Ha törölni szeretné a virtuális gépeket és az összes támogató erőforrást, mindössze annyit kell tennie, hogy törli az erőforráscsoportot.
 
-Az erőforráscsoport törléséhez adja hozzá ezt a kódot a Main metódushoz:
+Az erőforráscsoport törléséhez adja hozzá ezt a kódot a Fő metódushoz:
 
 ```csharp
 azure.ResourceGroups.DeleteByName(groupName);
@@ -387,12 +387,12 @@ azure.ResourceGroups.DeleteByName(groupName);
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-Körülbelül öt percet vesz igénybe ahhoz, hogy a konzol alkalmazás teljes körűen fusson az elejétől a végéig. 
+Körülbelül öt percet vesz igénybe, amíg ez a konzolalkalmazás teljesen elindul az elejétől a végéig. 
 
-1. A konzol alkalmazás futtatásához kattintson a **Start**gombra.
+1. A konzolalkalmazás futtatásához kattintson a **Start**gombra.
 
-2. Mielőtt megnyomja az **ENTER** billentyűt az erőforrások törlésének megkezdéséhez, eltarthat néhány percig, hogy ellenőrizze az erőforrások létrehozását a Azure Portalban. A központi telepítésre vonatkozó információk megtekintéséhez kattintson a központi telepítés állapotára.
+2. Mielőtt az **Enter** billentyű lenyomásával megszeretné kezdeni az erőforrások törlését, eltarthat néhány percet az erőforrások létrehozásának ellenőrzése az Azure Portalon. Kattintson a központi telepítés állapotára a központi telepítéssel kapcsolatos információk megtekintéséhez.
 
 ## <a name="next-steps"></a>További lépések
-* Használja ki az [Azure-beli virtuális gépek üzembe helyezése és a Resource Manager-sablonok használatával C# ](csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)létrehozott virtuális gépeket használó sablonok használatát.
-* További információ a .NET- [hez készült Azure-kódtárak](https://docs.microsoft.com/dotnet/azure/?view=azure-dotnet)használatáról.
+* Használja ki a sablon használatával hozzon létre egy virtuális gépet az [Azure virtuális gép központi telepítése c# és egy Erőforrás-kezelő sablon használatával](csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)című elem információinak használatával.
+* További információ a [.NET Azure-kódtárak](https://docs.microsoft.com/dotnet/azure/?view=azure-dotnet)használatáról.

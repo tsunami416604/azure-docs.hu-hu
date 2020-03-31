@@ -1,7 +1,7 @@
 ---
-title: NSG-naplózás automatizálása – biztonsági csoport nézet
+title: NSG-naplózás automatizálása – Biztonsági csoport nézet
 titleSuffix: Azure Network Watcher
-description: Ez a lap a hálózati biztonsági csoportok naplózásának konfigurálására vonatkozó utasításokat tartalmazza.
+description: Ez a lap a hálózati biztonsági csoport naplózásának konfigurálásához
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -13,41 +13,41 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 59c1b6e6c281a736a79d110bd7d943344bcd5130
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840978"
 ---
-# <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>A NSG-naplózás automatizálása az Azure Network Watcher biztonsági csoport nézettel
+# <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>Az NSG-naplózás automatizálása az Azure Network Watcher Security csoportnézetével
 
-Az ügyfelek gyakran szembesülnek azzal a kihívással, hogy igazolják az infrastruktúrájuk biztonsági állapotát. Ez a kihívás nem különbözik az Azure-beli virtuális gépektől. Fontos, hogy a hálózati biztonsági csoport (NSG) szabályai alapján hasonló biztonsági profilt alkalmazzon. A biztonsági csoport nézet használatával lekérheti a virtuális gépen alkalmazott szabályok listáját egy NSG belül. Megadhat egy arany NSG biztonsági profilt, és elindíthatja a biztonsági csoport nézetet egy heti lépésszám esetében, és összehasonlíthatja a kimenetet az arany profiljával, és létrehozhat egy jelentést. Így könnyen azonosíthatja az összes olyan virtuális gépet, amely nem felel meg az előírt biztonsági profilnak.
+Az ügyfelek gyakran szembesülnek azzal a kihívással, hogy ellenőrizzék az infrastruktúrájuk biztonsági helyzetét. Ez a kihívás nem különbözik a virtuális gépek az Azure-ban. Fontos, hogy a hálózati biztonsági csoport (NSG) szabályai alapján hasonló biztonsági profil legyen alkalmazva. A biztonsági csoport nézet használatával most már lehívhatja az NSG-n belüli virtuális gépekre alkalmazott szabályok listáját. Megadhat egy arany NSG biztonsági profilt, és heti ütemben kezdeményezheti a Security Group View nézetet, és összehasonlíthatja a kimenetet az arany profillal, és létrehozhat egy jelentést. Így könnyedén azonosíthatja az összes olyan virtuális gépet, amely nem felel meg az előírt biztonsági profilnak.
 
-Ha nem ismeri a hálózati biztonsági csoportokat, tekintse meg a [hálózati biztonság áttekintése](../virtual-network/security-overview.md)című témakört.
+Ha nem ismeri a hálózati biztonsági csoportokat, olvassa el a [Hálózati biztonság – áttekintés című témakört.](../virtual-network/security-overview.md)
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="before-you-begin"></a>Előkészületek
 
-Ebben az esetben összehasonlítja egy ismert jó alapkonfigurációt a virtuális gép biztonsági csoport nézetének eredményeivel.
+Ebben a forgatókönyvben egy ismert jó alapkonfigurációt hasonlít össze a virtuális gép readott biztonságicsoport-nézet eredményeivel.
 
-Ez a forgatókönyv feltételezi, hogy már követte a [Network Watcher létrehozása](network-watcher-create.md) című témakör lépéseit Network Watcher létrehozásához. A forgatókönyv azt is feltételezi, hogy egy érvényes virtuális géppel rendelkező erőforráscsoport használatban van.
+Ez a forgatókönyv feltételezi, hogy már követte a [Hálózatfigyelő létrehozása](network-watcher-create.md) a Hálózatfigyelő létrehozásához című lépéseit. A forgatókönyv azt is feltételezi, hogy egy érvényes virtuális géppel rendelkező erőforráscsoport használható.
 
-## <a name="scenario"></a>Alkalmazási helyzet
+## <a name="scenario"></a>Forgatókönyv
 
-A cikkben ismertetett forgatókönyv beolvassa a virtuális gép biztonsági csoportjának nézetét.
+A forgatókönyv ebben a cikkben lekéri a virtuális gép biztonsági csoport nézetét.
 
-Ebben az esetben a következőket kell tennie:
+Ebben a forgatókönyvben a következőket fogja:
 
 - Ismert helyes szabálykészlet beolvasása
-- Virtuális gép lekérése a REST API-val
-- Biztonsági csoport nézetének beolvasása a virtuális géphez
+- Virtuális gép lekérése a Rest API-val
+- Biztonsági csoport nézet beszereznie a virtuális géphez
 - Válasz kiértékelése
 
-## <a name="retrieve-rule-set"></a>Szabálykészlet beolvasása
+## <a name="retrieve-rule-set"></a>Szabálykészlet lekérése
 
-Ebben a példában az első lépés egy meglévő alapterv használata. Az alábbi példa egy meglévő hálózati biztonsági csoportból kinyert JSON-t használ a példa alaptervként használt `Get-AzNetworkSecurityGroup` parancsmag használatával.
+Ebben a példában az első lépés egy meglévő alaptervvel való munka. A következő példa néhány json kinyert egy meglévő `Get-AzNetworkSecurityGroup` hálózati biztonsági csoport a parancsmag, amely ebben a példában használt alapkonfiguráció.
 
 ```json
 [
@@ -114,33 +114,33 @@ Ebben a példában az első lépés egy meglévő alapterv használata. Az aláb
 ]
 ```
 
-## <a name="convert-rule-set-to-powershell-objects"></a>Szabálykészlet konvertálása PowerShell-objektumokra
+## <a name="convert-rule-set-to-powershell-objects"></a>Szabálykészlet konvertálása PowerShell-objektumokká
 
-Ebben a lépésben egy olyan JSON-fájlt olvasunk, amely korábban a hálózati biztonsági csoportra várt szabályokkal lett létrehozva ebben a példában.
+Ebben a lépésben egy jsonfájlt olvasunk, amely korábban jött létre azokkal a szabályokkal, amelyek várhatóan a hálózati biztonsági csoportban lesznek ebben a példában.
 
 ```powershell
 $nsgbaserules = Get-Content -Path C:\temp\testvm1-nsg.json | ConvertFrom-Json
 ```
 
-## <a name="retrieve-network-watcher"></a>Network Watcher beolvasása
+## <a name="retrieve-network-watcher"></a>Hálózati figyelő lekérése
 
-A következő lépés az Network Watcher példány beolvasása. A `$networkWatcher` változó a `AzNetworkWatcherSecurityGroupView` parancsmagnak lesz átadva.
+A következő lépés a Network Watcher példány beolvasása. A `$networkWatcher` változó átkerül `AzNetworkWatcherSecurityGroupView` a parancsmagba.
 
 ```powershell
 $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
 ```
 
-## <a name="get-a-vm"></a>Virtuális gép beszerzése
+## <a name="get-a-vm"></a>Virtuális gép beszerezni
 
-A `Get-AzNetworkWatcherSecurityGroupView` parancsmag futtatásához virtuális gépnek kell futnia. A következő példa egy virtuálisgép-objektumot kap.
+A `Get-AzNetworkWatcherSecurityGroupView` parancsmag futtatásához virtuális gép szükséges. A következő példa lead egy virtuális gép objektumot.
 
 ```powershell
 $VM = Get-AzVM -ResourceGroupName "testrg" -Name "testvm1"
 ```
 
-## <a name="retrieve-security-group-view"></a>Biztonsági csoport nézetének beolvasása
+## <a name="retrieve-security-group-view"></a>Biztonsági csoport nézet beolvasása
 
-A következő lépés a biztonsági csoport nézet eredményének beolvasása. Ezt az eredményt a korábban bemutatott "alapkonfiguráció" JSON-hez hasonlítjuk.
+A következő lépés a biztonsági csoport nézet eredményének beolvasása. Ezt az eredményt összehasonlítjuk a korábban bemutatott "kiindulási" jsonlal.
 
 ```powershell
 $secgroup = Get-AzNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id
@@ -148,9 +148,9 @@ $secgroup = Get-AzNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatche
 
 ## <a name="analyzing-the-results"></a>Az eredmények elemzése
 
-A válasz hálózati adapterek szerint van csoportosítva. A visszaadott szabályok különböző típusai érvényesek és alapértelmezett biztonsági szabályok. Az eredmény további bontása az alkalmazás működésével, vagy egy alhálózaton vagy egy virtuális hálózati adapteren.
+A válasz hálózati adapterek szerint van csoportosítva. A visszaadott szabályok különböző típusai hatékony és alapértelmezett biztonsági szabályok. Az eredmény további bontásban, hogyan kell alkalmazni, akár egy alhálózaton, akár egy virtuális hálózati adapteren.
 
-A következő PowerShell-parancsfájl összehasonlítja a biztonsági csoport nézetének eredményét egy NSG meglévő kimenetével. Az alábbi példa egy egyszerű példa arra, hogyan lehet az eredményeket összevetni `Compare-Object` parancsmaggal.
+A következő PowerShell-parancsfájl összehasonlítja a biztonsági csoport nézet eredményeit egy NSG meglévő kimenetével. A következő példa egy egyszerű példa arra, `Compare-Object` hogyan lehet összehasonlítani az eredményeket a parancsmaggal.
 
 ```powershell
 Compare-Object -ReferenceObject $nsgbaserules `
@@ -158,7 +158,7 @@ Compare-Object -ReferenceObject $nsgbaserules `
 -Property Name,Description,Protocol,SourcePortRange,DestinationPortRange,SourceAddressPrefix,DestinationAddressPrefix,Access,Priority,Direction
 ```
 
-A következő példa az eredmény. Láthatja, hogy az első szabálykészlet két szabálya nem volt jelen az összehasonlításban.
+A következő példa az eredmény. Az első szabálykészletben lévő szabályok közül kettőt nem láthat az összehasonlításban.
 
 ```
 Name                     : My2ndRuleDoNotDelete
@@ -186,9 +186,9 @@ Direction                : Inbound
 SideIndicator            : <=
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha a beállítások módosultak, tekintse meg a [hálózati biztonsági csoportok kezelése](../virtual-network/manage-network-security-group.md) a hálózati biztonsági csoport és a szóban forgó biztonsági szabályok nyomon követéséhez című témakört.
+Ha a beállítások megváltoztak, a [Hálózati biztonsági csoportok kezelése](../virtual-network/manage-network-security-group.md) című témakörben találja nyomon a kérdéses hálózati biztonsági csoportokat és biztonsági szabályokat.
 
 
 

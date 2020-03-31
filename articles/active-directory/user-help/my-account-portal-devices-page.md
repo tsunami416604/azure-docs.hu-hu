@@ -1,6 +1,6 @@
 ---
-title: Csatlakoztatott eszközök kezelése a saját fiók portálról – Azure AD
-description: Munkahelyi vagy iskolai fiókjához csatlakoztatott eszközök megtekintése és letiltása a saját fiók portál eszközök lapján.
+title: A csatlakoztatott eszközök kezelése a Saját fiók portálról – Azure AD
+description: A munkahelyi vagy iskolai fiókjához csatlakoztatott eszközök megtekintése és letiltása a Saját fiók portál Eszközök lapján.
 services: active-directory
 author: curtand
 manager: daveba
@@ -12,76 +12,76 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
 ms.openlocfilehash: e273a44c1cbc5a6a6161f059038c7e87973a33d5
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77062489"
 ---
-# <a name="manage-your-connected-devices-from-the-devices-page"></a>A csatlakoztatott eszközök kezelése az eszközök lapról
+# <a name="manage-your-connected-devices-from-the-devices-page"></a>Csatlakoztatott eszközök kezelése az Eszközök lapon
 
-A **saját fiók** portál **eszközök** lapján kezelheti a munkahelyi vagy iskolai fiókjához csatlakoztatott eszközöket. Az **eszközök** lapon a következőket teheti:
+A **Saját fiók** portál **Eszközök** lapja segít a munkahelyi vagy iskolai fiókjához csatlakoztatott eszközök kezelésében. Az **Eszközök** lapon a következőket teheti:
 
-- Munkahelyi vagy iskolai fiókhoz csatlakoztatott eszközök megtekintése.
+- Tekintse meg munkahelyi vagy iskolai fiókhoz csatlakoztatott eszközeit.
 
-- Tiltsa le az összes olyan eszközt, amely már nem tulajdonosa, elveszett vagy ellopták.
+- Tiltson le minden olyan eszközt, amely már nem a tulajdonában van, elvesztette vagy ellopták.
 
 >[!Important]
->Ez a cikk arra szolgál, hogy a felhasználók egy munkahelyi vagy iskolai fiókhoz csatlakoztatott eszköz-információkat próbáljanak frissíteni. Ha Ön rendszergazda, aki az alkalmazottak és más felhasználások eszköz-kezelésével kapcsolatos információkat keres, tekintse meg az [eszköz identitásait ismertető dokumentációt](https://docs.microsoft.com/azure/active-directory/devices/index).
+>Ez a cikk azoknak a felhasználóknak szól, akik egy munkahelyi vagy iskolai fiókhoz kapcsolódó eszközadatokat próbálnak frissíteni. Ha Ön rendszergazda, és az alkalmazottak eszközkezelésével és más felhasználási területekkel kapcsolatos információkat keres, olvassa el az [Eszközidentitások dokumentációját.](https://docs.microsoft.com/azure/active-directory/devices/index)
 
-## <a name="view-your-connected-devices"></a>Csatlakoztatott eszközök megtekintése
+## <a name="view-your-connected-devices"></a>A csatlakoztatott eszközök megtekintése
 
-1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd lépjen a **saját fiókra** (https://myprofile.microsoft.com/) lapra.
+1. Jelentkezzen be munkahelyi vagy iskolai fiókjába, majd lépjenhttps://myprofile.microsoft.com/) a Saját **fiók** (lapra).
 
-2. Válassza az **eszközök** lehetőséget a bal oldali navigációs ablaktáblán, vagy válassza az eszközök **blokk eszközök** **kezelése** hivatkozását.
+2. Válassza az **Eszközök** lehetőséget a bal oldali navigációs ablakban, vagy válassza az **Eszközök kezelése** hivatkozást az **Eszközök** blokkból.
 
-    ![Fiókom oldal, a Kiemelt eszközök hivatkozásainak megjelenítése](media/my-account-portal/my-account-portal-devices.png)
+    ![Saját fiók lap, kiemelt Eszközök hivatkozások megjelenítése](media/my-account-portal/my-account-portal-devices.png)
 
-3. Tekintse át a csatlakoztatott eszközökre vonatkozó információkat, és ügyeljen rá, hogy mindegyiket felismerje.
+3. Tekintse át a csatlakoztatott eszközök adatait, és győződjön meg arról, hogy felismeri őket.
 
-    ![Eszköz lap, csatlakoztatott eszközök megjelenítése](media/my-account-portal/my-account-portal-devices-page.png)
+    ![Eszközlap, a csatlakoztatott eszközök megjelenítése](media/my-account-portal/my-account-portal-devices-page.png)
 
 ## <a name="disable-a-device"></a>Eszköz letiltása
 
-Bármikor letilthatja a csatlakoztatott eszközök bármelyikét. Ez különösen akkor fontos, ha egy eszköz nem ismeri Önt, vagy ha az eszköz elveszett vagy ellopták. Az eszköz letiltását követően a szervezete már nem tudja hitelesíteni az eszközt, és nem fog tudni hozzáférni a szervezet erőforrásaihoz.
+Bármelyik csatlakoztatott eszközt bármikor letilthatja. Ez különösen akkor fontos, ha egy eszköz nem ismeri az Ön számára, vagy ha egy eszköz elveszett vagy ellopták. Miután letiltása egy eszköz, már nem lehet hitelesíteni a szervezet, és nem lesz képes hozzáférni a szervezet erőforrásait.
 
 >[!Important]
->Ha hiba esetén letiltja az eszközt, nem vonható vissza. Az eszköz újbóli hozzáadásához kapcsolatba kell lépnie a szervezet rendszergazdájával.
+>Ha véletlenül letilt egy eszközt, nem lehet visszavonni. Az eszköz ismételt hozzáadásához kapcsolatba kell lépnie a szervezet rendszergazdájával.
 
-1. Válassza a **Letiltás** lehetőséget az eltávolítani kívánt eszközről.
+1. Válassza a **Letiltás lehetőséget** az eltávolítani kívánt eszközről.
 
-    ![Eszköz lap Kiemelt letiltás hivatkozással](media/my-account-portal/my-account-portal-devices-disable.png)
+    ![Eszközlap kiemelt Letiltás hivatkozással](media/my-account-portal/my-account-portal-devices-disable.png)
 
-2. Az **Igen** gombra kattintva erősítse meg, hogy le kívánja tiltani az eszközt.
+2. Válassza az **Igen** lehetőséget az eszköz letiltásának megerősítéséhez.
 
 ## <a name="view-a-bitlocker-key"></a>BitLocker-kulcs megtekintése
 
-Ha kizárta az eszközét, vagy végzetes hibát észlel, lépjen egy másik eszközre, és tekintse meg a BitLocker-kulcsot a **saját fiók** portálon.
+Ha ki van zárva az eszközről, vagy végzetes hibát észlel, akkor egy másik eszközre léphet, és megtekintheti a BitLocker-kulcsot a **Saját fiók** portálon.
 
-1. Egy másik eszközön, ahol nincs kizárva, lépjen a **saját fiók** portál **eszközök** lapjára.
+1. Egy másik eszközön, ahol nincs kizárva, nyissa meg a **Saját fiók** portál **Eszközök** lapját.
 
-    ![Eszköz oldal BitLocker-kulccsal lehetőséggel](media/my-account-portal/my-account-portal-devices-bitlocker.png)
+    ![Eszközlap BitLocker-gombbal](media/my-account-portal/my-account-portal-devices-bitlocker.png)
 
-2. Válassza a **BitLocker-kulcsok megtekintése** a zárolt eszközhöz lehetőséget, és jegyezze fel a zárolt eszköz BitLocker-kulcsát.
+2. Válassza a Zárolt eszköz **Bitlocker-kulcsainak megtekintése** lehetőséget, és írja le a zárolt eszköz BitLocker kulcsát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A csatlakoztatott eszközök megtekintése után a következőket teheti:
+A csatlakoztatott eszközök megtekintése után a következőkre van szüksége:
 
-- A [biztonsági adatok](user-help-security-info-overview.md)megtekintéséhez vagy kezeléséhez válassza a lehetőséget.
+- Bejelölésével megtekintheti vagy kezelheti a [biztonsági adatokat.](user-help-security-info-overview.md)
 
-- Megtekintheti és kezelheti a [szervezeteit](my-account-portal-organizations-page.md).
+- A [szervezetek](my-account-portal-organizations-page.md)megtekintése és kezelése.
 
-- A [bejelentkezési tevékenység](my-account-portal-sign-ins-page.md)megtekintése.
+- Tekintse meg [a bejelentkezési tevékenységet.](my-account-portal-sign-ins-page.md)
 
-- Megtekintheti, hogy a szervezet hogyan [használja az adatvédelmet érintő adatokat](my-account-portal-privacy-page.md).
+- Megtekintheti, hogy szervezete hogyan [használja fel az adatvédelemmel kapcsolatos adatokat.](my-account-portal-privacy-page.md)
 
 ## <a name="related-office-content"></a>Kapcsolódó Office-tartalom
 
-- [Jelentkezzen be az Office-termék kezeléséhez](https://support.office.com/article/sign-in-to-manage-your-office-product-959ac957-8d37-4ae4-b1b6-d6e4874e013f)
+- [Bejelentkezés az Office-termék kezeléséhez](https://support.office.com/article/sign-in-to-manage-your-office-product-959ac957-8d37-4ae4-b1b6-d6e4874e013f)
 
-- [Ugrás az Office **saját fiók** oldalára](https://portal.office.com/account/)
+- [Ugrás az **Office-fiók** lapra](https://portal.office.com/account/)
 
-- [Nyissa meg az Office **saját telepítések** lapot](https://portal.office.com/account/#installs)
+- [Ugrás az Office **Telepítések** lapra](https://portal.office.com/account/#installs)
 
-- [Ugrás az Office- **előfizetések** oldalára](https://portal.office.com/account/#subscriptions)
+- [Ugrás az **Office-előfizetések** lapra](https://portal.office.com/account/#subscriptions)

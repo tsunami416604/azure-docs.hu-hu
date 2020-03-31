@@ -1,7 +1,7 @@
 ---
-title: Fejlesztői fiókok engedélyezése Azure Active Directory használatával
+title: Fejlesztői fiókok engedélyezése az Azure Active Directory használatával
 titleSuffix: Azure API Management
-description: Megtudhatja, hogyan engedélyezheti a felhasználókat a API Management Azure Active Directory használatával.
+description: Megtudhatja, hogyan engedélyezheti a felhasználókat az Azure Active Directory használatával az API Management ben.
 services: api-management
 documentationcenter: API Management
 author: miaojiang
@@ -13,128 +13,128 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: df640f11e8a0e8af22c96a662a602e0de508715c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 6102b1e1d6ddbac01033b9cecfeba96a7eb33777
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985050"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473540"
 ---
-# <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Fejlesztői fiókok engedélyezése az Azure-beli Azure Active Directory használatával API Management
+# <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Fejlesztői fiókok engedélyezése az Azure Active Directory használatával az Azure API Managementben
 
-Ez a cikk bemutatja, hogyan engedélyezheti a hozzáférést a fejlesztői portálhoz Azure Active Directory (Azure AD) felhasználói számára. Az útmutató azt is bemutatja, hogyan kezelheti az Azure AD-felhasználók csoportjait olyan külső csoportok hozzáadásával, amelyek tartalmazzák a felhasználókat.
+Ez a cikk bemutatja, hogyan engedélyezheti a hozzáférést a fejlesztői portálhoz az Azure Active Directory (Azure AD) felhasználói számára. Ez az útmutató azt is bemutatja, hogyan kezelheti az Azure AD-felhasználók csoportjait a felhasználókat tartalmazó külső csoportok hozzáadásával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Tekintse át a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
-- Azure API Management-példány importálása és közzététele. További információ: [Importálás és közzététel](import-and-publish.md).
+- Azure API Management-példány importálása és közzététele. További információt az Importálás és közzététel című [témakörben talál.](import-and-publish.md)
 
 [!INCLUDE [premium-dev-standard.md](../../includes/api-management-availability-premium-dev-standard.md)]
 
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Fejlesztői fiókok engedélyezése az Azure AD használatával
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) 
 2. Válassza ezt: ![nyíl](./media/api-management-howto-aad/arrow.png).
 3. Írja be az **API** kifejezést a keresőmezőbe.
-4. Válassza ki **API Management szolgáltatásokat**.
+4. Válassza az **API Management services lehetőséget.**
 5. Válassza ki az API Management-szolgáltatáspéldányát.
-6. A **Biztonság**területen válassza az **identitások**lehetőséget.
-7. Válassza a felül a **+ Hozzáadás** lehetőséget.
+6. A **Biztonság csoportban**válassza **az Identitások lehetőséget.**
+7. Felülről válassza a **+Hozzáadás** lehetőséget.
 
-    A jobb oldalon megjelenik az **identitás-szolgáltató hozzáadása** panel.
-8. A **szolgáltató típusa**területen válassza a **Azure Active Directory**lehetőséget.
+    Az **Identitásszolgáltató hozzáadása** ablaktábla a jobb oldalon jelenik meg.
+8. A **Szolgáltató típusa csoportban**válassza az **Azure Active Directory**lehetőséget.
 
-    A panelen megjelenő egyéb szükséges információk megadását lehetővé tevő vezérlők. A vezérlőelemek közé tartozik az **ügyfél-azonosító** és az **ügyfél titka**. (Ezen vezérlőkről a cikk későbbi részében talál információt.)
-9. Jegyezze fel az **átirányítási URL-cím**tartalmát.
+    Az ablaktáblán megjelennek azok a vezérlők, amelyek lehetővé teszik más szükséges adatok bevitelét. A vezérlők közé tartozik **az ügyfélazonosító** és **az ügyféltitok**. (Ezekről a vezérlőkről a cikk későbbi részében olvashat.)
+9. Jegyezze fel az **átirányítási URL tartalmát.**
     
-   ![Az identitás-szolgáltató hozzáadásának lépései a Azure Portal](./media/api-management-howto-aad/api-management-with-aad001.png)  
+   ![Identitásszolgáltató azure portalon való hozzáadásának lépései](./media/api-management-howto-aad/api-management-with-aad001.png)  
 10. Nyisson meg egy másik lapot a böngészőben. 
-11. A [Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) gombra kattintva regisztrálhat egy alkalmazást a Active Directoryban.
-12. A **kezelés**területen válassza a **Alkalmazásregisztrációk**lehetőséget.
-13. Válassza az **új regisztráció**lehetőséget. Az **alkalmazás regisztrálása** lapon állítsa be az értékeket az alábbiak szerint:
+11. Keresse meg az [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) alkalmazást regisztrálva egy alkalmazást az Active Directoryban.
+12. A **Kezelés csoportban**válassza **az Alkalmazásregisztrációk lehetőséget.**
+13. Válassza **az Új regisztráció lehetőséget.** A **Jelentkezés regisztrálása** lapon állítsa be az értékeket a következőképpen:
     
-    * Adjon **nevet** egy értelmes névnek. például: *Developer-Portal*
-    * **Ebben a szervezeti könyvtárban csak**a **támogatott fióktípus** beállítása a fiókokhoz. 
-    * Állítsa be az **átirányítási URI** -t a 9. lépésben kapott értékre. 
-    * Válassza a **regisztráció**lehetőséget. 
+    * A **Név** beállítása értelmes névre. pl. *fejlesztő-portál*
+    * Állítsa **a támogatott fióktípusokat** **csak ebben a szervezeti címtárban lévő fiókok elemre.** 
+    * Állítsa be az **URI átirányítását** a 9. 
+    * Válassza a **Regisztráció**lehetőséget. 
 
 14.  Az alkalmazás regisztrálása után másolja az **alkalmazás (ügyfél) azonosítóját** az **Áttekintés** lapról. 
-15. Térjen vissza a API Management-példányra. Az **identitás-szolgáltató hozzáadása** ablakban illessze be az **alkalmazás (ügyfél) azonosító** értékét az **ügyfél-azonosító** mezőbe.
-16. Váltson vissza az Azure AD-konfigurációra, majd válassza a **tanúsítványok & a titkok** elemet a **kezelés**alatt. Válassza az **új ügyfél titka** gombot. Adjon meg egy értéket a **Leírás**mezőben, válassza a **lejárat** lehetőséget, majd válassza a **Hozzáadás**elemet. Másolja az ügyfél titkos értékét az oldal elhagyása előtt. A következő lépésben szüksége lesz ezekre. 
-17. A **kezelés**területen válassza a **hitelesítés** lehetőséget, majd válassza az **azonosító jogkivonatok** lehetőséget az **implicit engedélyezés** területen.
-18. Lépjen vissza a API Management-példányra, illessze be a titkos kulcsot az **ügyfél titkos** mezőjébe.
+15. Lépjen vissza az API Management-példányhoz. Az **Identitásszolgáltató hozzáadása** ablakban illessze be az **alkalmazás (ügyfél) azonosító** értékét az **Ügyfélazonosító** mezőbe.
+16. Váltson vissza az Azure AD-konfigurációra, válassza ki **a tanúsítványokat & titkos kulcsokat** **a Kezelés csoportban.** Válassza az **Új ügyféltitkos** kulcsot gombot. Írjon be egy értéket a **Leírás**mezőbe, válassza a **Lejárás** beállítását, és válassza a **Hozzáadás lehetőséget.** A lap elhagyása előtt másolja az ügyféltitkos értéket. A következő lépésben szüksége lesz ezekre. 
+17. A **Kezelés csoportban**válassza a **Hitelesítés** lehetőséget, majd válassza **az Azonosítótokenek** lehetőséget az Implicit támogatás csoportban. **Implicit Grant**
+18. Lépjen vissza az API Management-példányhoz, illessze be a titkos kulcsot az **ügyfél titkos** mezőjébe.
 
     > [!IMPORTANT]
-    > Győződjön meg arról, hogy a kulcs lejárta előtt frissíti az **ügyfél titkos** kulcsát. 
+    > A kulcs lejárta előtt frissítse az **ügyféltitkot.** 
     >  
     >
 
-19. Az **identitás-szolgáltató hozzáadása** ablak az **engedélyezett bérlők** szövegmezőt is tartalmazza. Itt adja meg azon Azure AD-példányok tartományait, amelyekhez hozzáférést szeretne biztosítani az API Management Service-példány API-jai számára. Több tartományt is elkülönítheti a sortörésekkel, szóközökkel vagy vesszővel.
+19. Az **Identitásszolgáltató hozzáadása** ablak tartalmazza az Engedélyezett bérlők szövegmezőt is. **Allowed Tenants** Itt adja meg az Azure AD-példányok tartományait, amelyekhez hozzáférést szeretne adni az API Management szolgáltatáspéldány API-khoz. Több tartományt is elválaszthat új vonalakkal, szóközökkel vagy vesszőkkel.
 
     > [!NOTE]
-    > Az **engedélyezett bérlők** szakaszban több tartományt is megadhat. Ahhoz, hogy egy felhasználó egy másik tartományból jelentkezzen be, mint az az eredeti tartomány, ahol az alkalmazás regisztrálva van, a különböző tartomány globális rendszergazdájának engedélyt kell adnia az alkalmazásnak a címtáradatok eléréséhez. Az engedély megadásához a globális rendszergazdának a következőnek kell lennie: a. Lépjen a `https://<URL of your developer portal>/aadadminconsent`ra (például https://contoso.portal.azure-api.net/aadadminconsent).
-    > b. Írja be annak az Azure AD-bérlőnek a tartománynevét, amelyhez hozzáférést szeretne biztosítani.
-    > c. Válassza a **Küldés**lehetőséget. 
+    > Több tartományt is megadhat az **Engedélyezett bérlők** szakaszban. Ahhoz, hogy bármely felhasználó bejelentkezzen egy másik tartományból, mint az eredeti tartomány, ahol az alkalmazás regisztrálva volt, a különböző tartomány globális rendszergazdájának engedélyt kell adnia az alkalmazás számára a címtáradatok elérésére. Az engedély megadásához a globális rendszergazdának: a. Ugrás `https://<URL of your developer portal>/aadadminconsent` (például https://contoso.portal.azure-api.net/aadadminconsent).
+    > b. Írja be az Azure AD-bérlő tartománynevét, amelyhez hozzáférést kíván adni.
+    > c. Válassza a **Küldés** lehetőséget. 
 
-20.  A kívánt konfiguráció megadása után válassza a **Hozzáadás**lehetőséget.
+20.  Miután megadta a kívánt konfigurációt, válassza a **Hozzáadás**lehetőséget.
 
-A módosítások mentése után a megadott Azure AD-példányban lévő felhasználók bejelentkezhetnek a fejlesztői portálra a [Bejelentkezés a fejlesztői portálra Azure ad-fiókkal](#log_in_to_dev_portal)című témakör lépéseit követve.
+A módosítások mentése után a megadott Azure AD-példány felhasználói bejelentkezhetnek a fejlesztői portálra az [Azure AD-fiók használatával a Bejelentkezés a fejlesztői portálra](#log_in_to_dev_portal)című lépéseit követve.
 
 ## <a name="add-an-external-azure-ad-group"></a>Külső Azure AD-csoport hozzáadása
 
-Miután engedélyezte az Azure AD-bérlő felhasználóinak hozzáférését, hozzáadhat Azure AD-csoportokat API Managementhoz. Ennek eredményeképpen a termék láthatóságát az Azure AD-csoportok használatával szabályozhatja.
+Miután engedélyezte a hozzáférést a felhasználók számára egy Azure AD-bérlőben, hozzáadhatja az Azure AD-csoportokat az API Managementhez. Ennek eredményeképpen az Azure AD-csoportok használatával szabályozhatja a termékek láthatóságát.
 
-Ha külső Azure AD-csoportot szeretne hozzáadni a APIM-hez, először el kell végeznie az előző szakaszt. Emellett a regisztrált alkalmazásnak hozzáférést kell biztosítania a Azure Active Directory Graph APIhoz `Directory.ReadAll` engedéllyel az alábbi lépések végrehajtásával: 
+Egy külső Azure AD-csoport hozzáadása az APIM-be, először ki kell töltenie az előző szakaszt. Ezenkívül a regisztrált alkalmazásnak az alábbi lépésekkel `Directory.Read.All` engedéllyel hozzáférést kell biztosítania a Microsoft Graph API-hoz: 
 
-1. Térjen vissza az alkalmazás regisztrálásához, amely az előző szakaszban lett létrehozva
-2. Az API- **engedélyek** lapon kattintson az **+ engedély hozzáadása** gombra. 
-3. A **kérelem API-engedélyek** ablaktáblán válassza a **Microsoft API** -k fület, és görgessen az aljára, és keresse meg a **Azure Active Directory gráf** csempét a támogatott örökölt API-k szakaszban, majd kattintson rá. Ezután kattintson az **alkalmazás engedélyei** gombra, és válassza ki a **Directory. ReadAll** engedélyt, majd adja hozzá az engedélyt az alján található gomb használatával. 
-4. Kattintson a **rendszergazdai jóváhagyás megadása {tenantname}** gombra, hogy hozzáférést biztosítson a címtár összes felhasználója számára. 
+1. Lépjen vissza az előző szakaszban létrehozott alkalmazásregisztrációhoz.
+2. Válassza az **API-engedélyek**lehetőséget, majd kattintson **az engedély hozzáadása**gombra. 
+3. Az **API-engedélyek kérése** ablaktáblán jelölje ki a **Microsoft API-k** lapot, majd a **Microsoft Graph** csempét. Válassza **az Alkalmazásengedélyek**lehetőséget , keresse meg a **Címtárat,** majd válassza a **Directory.Read.All** engedélyt. 
+4. Kattintson az **ablaktábla** alján az Engedélyek hozzáadása elemre, majd **a(z) {tenantname} rendszergazdai hozzájárulásának megadása** elemre, hogy hozzáférést biztosítson a címtár összes felhasználója számára. 
 
-Most hozzáadhat külső Azure AD-csoportokat a API Management példány **csoportok** lapjáról.
+Most antól hozzáadhat külső Azure AD-csoportokat az API Management-példány **Csoportok** lapjáról.
 
 1. Válassza ki a **Csoportok** lapot.
-2. Kattintson a **HRE hozzáadása** gombra.
-    !["HRE csoport hozzáadása" gomb](./media/api-management-howto-aad/api-management-with-aad008.png)
-3. Válassza ki a hozzáadni kívánt csoportot.
-4. Kattintson a **kiválasztás** gombra.
+2. Válassza az **AAD-csoport hozzáadása** gombot.
+    !["AAD-csoport hozzáadása" gomb](./media/api-management-howto-aad/api-management-with-aad008.png)
+3. Jelölje ki a hozzáadni kívánt csoportot.
+4. Nyomja meg a **Kijelölés** gombot.
 
-Külső Azure AD-csoport hozzáadása után megtekintheti és konfigurálhatja a tulajdonságait. Válassza ki a csoport nevét a **csoportok** lapon. Innen szerkesztheti a csoport **nevét** és **leírását** .
+Egy külső Azure AD-csoport hozzáadása után áttekintheti és konfigurálhatja a tulajdonságait. A **Csoportok** lapon jelölje ki a csoport nevét. Itt szerkesztheti a csoport **nevét** és **leírását.**
  
-A konfigurált Azure AD-példány felhasználói már bejelentkezhetnek a fejlesztői portálra. Megtekinthetik és előfizethetnek bármely olyan csoportra, amelyben láthatók.
+A konfigurált Azure AD-példány felhasználói most már bejelentkezhetnek a fejlesztői portálra. Megtekinthetik és feliratkozhatnak azokkal a csoportokkal, amelyek számára láthatóak.
 
-## <a name="a-idlog_in_to_dev_portal-developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"/> fejlesztői portál – Azure AD-fiók hitelesítésének hozzáadása
+## <a name="developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"/>Fejlesztői portál – Azure AD-fiók hitelesítésének hozzáadása
 
-A fejlesztői portálon jelentkezzen be a HRE-be a **Bejelentkezés gombra: OAuth** widget. A widget már szerepel a fejlesztői portál alapértelmezett tartalmának bejelentkezési oldalán.
+A fejlesztői portálon az AAD-vel való bejelentkezés a **Bejelentkezés gombbal lehetséges: OAuth** widget. A widget már szerepel az alapértelmezett fejlesztői portál tartalom bejelentkezési oldalán.
 
-Bár a rendszer automatikusan létrehoz egy új fiókot, amikor egy új felhasználó bejelentkezik a HRE-be, érdemes lehet ugyanezt a widgetet hozzáadni a regisztrációs laphoz.
+Bár egy új fiók automatikusan létrejön, amikor egy új felhasználó bejelentkezik az AAD-vel, érdemes lehet ugyanazt a widgetet hozzáadni a regisztrációs oldalhoz.
 
-A **regisztrációs űrlap: a OAuth** widget a OAuth való regisztrációhoz használt űrlapot jelöli.
+A **Regisztrációs űrlap: Az OAuth** widget az OAuth-ra való regisztrációhoz használt űrlapot jelöli.
 
 > [!IMPORTANT]
-> A HRE módosításainak érvénybe léptetéséhez újra közzé kell tennie [a portált](api-management-howto-developer-portal-customize.md#publish) .
+> Az AAD-módosítások érvénybe léptetéséhez újra közzé kell tennie [a portált.](api-management-howto-developer-portal-customize.md#publish)
 
 ## <a name="legacy-developer-portal---how-to-sign-in-with-azure-ad"></a>Örökölt fejlesztői portál – bejelentkezés az Azure AD-vel
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
-Bejelentkezés a fejlesztői portálra egy Azure AD-fiókkal, amelyet az előző részekben konfigurált:
+Bejelentkezés a fejlesztői portálra az előző szakaszokban konfigurált Azure AD-fiók használatával:
 
-1. Nyisson meg egy új böngészőablakot a bejelentkezési URL-cím használatával a Active Directory alkalmazás konfigurációjában, és válassza a **Azure Active Directory**lehetőséget.
+1. Nyisson meg egy új böngészőablakot az Active Directory alkalmazáskonfigurációjából származó bejelentkezési URL-cím használatával, és válassza az **Azure Active Directory**lehetőséget.
 
-   ![Bejelentkezési oldal][api-management-dev-portal-signin]
+   ![Bejelentkezési lap][api-management-dev-portal-signin]
 
-1. Adja meg az Azure AD egyik felhasználójának hitelesítő adatait, majd válassza a **Bejelentkezés**lehetőséget.
+1. Adja meg az egyik felhasználó hitelesítő adatait az Azure AD-ben, és válassza **a Bejelentkezés**lehetőséget.
 
    ![Bejelentkezés felhasználónévvel és jelszóval][api-management-aad-signin]
 
-1. Ha további információra van szüksége, előfordulhat, hogy a rendszer regisztrációs űrlapra kéri. Fejezze be a regisztrációs űrlapot, és **válassza a regisztráció lehetőséget**.
+1. Ha további információra van szükség, a rendszer kérheti a regisztrációs űrlapot. Töltse ki a regisztrációs űrlapot, és válassza **a Regisztráció**lehetőséget.
 
-   !["Regisztráció" gomb a regisztrációs űrlapon][api-management-complete-registration]
+   ![A regisztrációs űrlapon a "Regisztráció" gomb][api-management-complete-registration]
 
-A felhasználó most bejelentkezett a fejlesztői portálra a API Management Service-példányához.
+A felhasználó most már be van jelentkezve az API Management szolgáltatáspéldány fejlesztői portáljára.
 
-![A fejlesztői portál regisztrációjának befejezése után][api-management-registration-complete]
+![Fejlesztői portál a regisztráció befejezése után][api-management-registration-complete]
 
 [api-management-dev-portal-signin]: ./media/api-management-howto-aad/api-management-dev-portal-signin.png
 [api-management-aad-signin]: ./media/api-management-howto-aad/api-management-aad-signin.png
@@ -153,7 +153,6 @@ A felhasználó most bejelentkezett a fejlesztői portálra a API Management Ser
 
 [https://oauth.net/2/]: https://oauth.net/2/
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
-[Accessing the Graph API]: https://msdn.microsoft.com/library/azure/dn132599.aspx#BKMK_Graph
 
 [Prerequisites]: #prerequisites
 [Configure an OAuth 2.0 authorization server in API Management]: #step1

@@ -1,42 +1,42 @@
 ---
-title: Tárolók üzembe helyezése a Kubernetes az Azure-ban
-description: Megtudhatja, hogyan helyezhet üzembe tárolókat az Azure Kubernetes Service (ak)-fürtben a Helm Packaging eszköz használatával
+title: Tárolók üzembe helyezése helmtel a Kubernetes-ben az Azure-ban
+description: Ismerje meg, hogyan helyezheti üzembe a Helm csomagolási eszközt az Azure Kubernetes-szolgáltatás (AKS) fürtjében lévő tárolók üzembe helyezéséhez
 services: container-service
 author: zr-msft
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: zarhoads
 ms.openlocfilehash: 4a9ccaff0e3425c365a64ecb4fbadf3c7aa8dcfb
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77595178"
 ---
-# <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Alkalmazások telepítése az Azure Kubernetes szolgáltatásban (ak)
+# <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Alkalmazások telepítése helmtel az Azure Kubernetes szolgáltatásban (AKS)
 
-A [Helm][helm] egy nyílt forráskódú csomagolási eszköz, amely segítséget nyújt a Kubernetes-alkalmazások életciklusának telepítéséhez és kezeléséhez. A Linux-csomagkezelő, például az *apt* és a *yum*hasonlóan a Helm a Kubernetes-diagramok kezelésére szolgál, amelyek előre konfigurált Kubernetes-erőforrások csomagjai.
+[A Helm][helm] egy nyílt forráskódú csomagolási eszköz, amely segít a Kubernetes-alkalmazások életciklusának telepítésében és kezelésében. Hasonló a Linux csomagkezelők, mint az *APT* és *a Yum,* Helm kezelésére használják Kubernetes diagramok, amelyek csomagok előre konfigurált Kubernetes erőforrások.
 
-Ez a cikk bemutatja, hogyan konfigurálhatja és használhatja a Helm-t egy Kubernetes-fürtön az AK-ban.
+Ez a cikk bemutatja, hogyan konfigurálhatja és használhatja a Helm egy Kubernetes-fürtben az AKS-en.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
+Ez a cikk feltételezi, hogy rendelkezik egy meglévő AKS-fürttel. Ha AKS-fürtre van szüksége, tekintse meg az AKS [gyorsútmutatót az Azure CLI használatával][aks-quickstart-cli] vagy az Azure Portal [használatával.][aks-quickstart-portal]
 
-Szükség van a Helm CLI telepítésére is, amely a fejlesztői rendszeren futó ügyfél. Lehetővé teszi az alkalmazások indítását, leállítását és kezelését a Helm használatával. Ha a Azure Cloud Shell használja, a Helm CLI már telepítve van. A helyi platformra vonatkozó telepítési utasításokért lásd: a [Helm telepítése][helm-install].
+Szüksége van a Helm CLI-re is, amely a fejlesztői rendszeren futó ügyfél. Ez lehetővé teszi, hogy indítsa el, állítsa le, és kezelheti alkalmazások Helm. Ha az Azure Cloud Shell, a Helm CLI már telepítve van. A helyi platformon található telepítési utasításokról a [Helm telepítése című][helm-install]témakörben talál.
 
 > [!IMPORTANT]
-> A Helm Linux-csomópontokon fut. Ha a fürtben Windows Server-csomópontok vannak, akkor győződjön meg arról, hogy a Helm hüvelyek csak Linux-csomópontokon futnak. Emellett biztosítania kell, hogy a telepített Helm-diagramok is a megfelelő csomópontokon fussanak. A cikkben szereplő parancsok a [csomópont-választókat][k8s-node-selector] használják annak biztosítására, hogy a hüvelyek a megfelelő csomópontokra legyenek ütemezve, de nem minden Helm-diagramon lehet kijelölni a csomópont-választót. Érdemes lehet más beállításokat is használni a fürtön, például a [szennyező][taints]elemek használatával.
+> A Helm linuxos csomópontokon való futtatásra szolgál. Ha a fürtben Windows Server-csomópontok találhatók, biztosítania kell, hogy a Helm-podok csak Linux-csomópontokon fussanak. Azt is meg kell győződnie arról, hogy a telepített Helm-diagramok is a megfelelő csomópontokon való futtatásra vannak ütemezve. Ebben a cikkben a parancsok [csomópont-választók][k8s-node-selector] segítségével győződjön meg arról, podok vannak ütemezve a megfelelő csomópontok, de nem minden Helm-diagramok kiteheti a csomópont-választó. A fürtön más beállításokat is használhat, például [a taints-t.][taints]
 
 ## <a name="verify-your-version-of-helm"></a>A Helm verziójának ellenőrzése
 
-A `helm version` parancs használatával ellenőrizze a telepített Helm-verziót:
+A `helm version` parancs segítségével ellenőrizze a telepített Helm verzióját:
 
 ```console
 helm version
 ```
 
-A következő példa azt mutatja be, hogy a Helm Version 3.0.0 telepítve van:
+A következő példa a Helm 3.0.0-s verziójával látható:
 
 ```console
 $ helm version
@@ -44,13 +44,13 @@ $ helm version
 version.BuildInfo{Version:"v3.0.0", GitCommit:"e29ce2a54e96cd02ccfce88bee4f58bb6e2a28b6", GitTreeState:"clean", GoVersion:"go1.13.4"}
 ```
 
-A Helm V3 esetében kövesse a [Helm v3 szakasz](#install-an-application-with-helm-v3)lépéseit. A Helm v2 esetében kövesse a [Helm v2 szakasz](#install-an-application-with-helm-v2) lépéseit.
+A Helm v3 esetében kövesse a [Helm v3 szakasz lépéseit.](#install-an-application-with-helm-v3) A Helm v2 esetében kövesse a [Helm v2 szakasz lépéseit.](#install-an-application-with-helm-v2)
 
-## <a name="install-an-application-with-helm-v3"></a>Alkalmazás telepítése a Helm v3-vel
+## <a name="install-an-application-with-helm-v3"></a>Alkalmazás telepítése a Helm v3-mal
 
-### <a name="add-the-official-helm-stable-charts-repository"></a>A hivatalos Helm stabil diagramok tárházának hozzáadása
+### <a name="add-the-official-helm-stable-charts-repository"></a>Adja hozzá a hivatalos Helm stabil diagramok tárház
 
-A [Helm repo][helm-repo-add] parancs használatával adja hozzá a hivatalos Helm stabil diagramok tárházát.
+Használja a [helm repo][helm-repo-add] parancsot a hivatalos Helm stabil diagramtár hozzáadásához.
 
 ```console
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
@@ -58,13 +58,13 @@ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 
 ### <a name="find-helm-charts"></a>Helm-diagramok keresése
 
-A Helm-diagramok használatával az alkalmazások Kubernetes-fürtbe helyezhetők. Az előre létrehozott Helm-diagramok kereséséhez használja a [Helm Search][helm-search] parancsot:
+A helm diagramok segítségével alkalmazásokat telepíthet egy Kubernetes-fürtbe. Az előre létrehozott Helm-diagramok kereséséhez használja a [helm search][helm-search] parancsot:
 
 ```console
 helm search repo stable
 ```
 
-A következő összehasonlított példa kimenete a következőkhöz használható Helm-diagramok némelyikét mutatja be:
+A következő tömörített példa kimenet néhány használható Helm-diagramot mutat be:
 
 
 ```console
@@ -114,7 +114,7 @@ stable/datadog                          1.38.3          6.14.0                  
 ...
 ```
 
-A diagramok listájának frissítéséhez használja a [Helm repo Update][helm-repo-update] parancsot. Az alábbi példa egy sikeres adattár-frissítést mutat be:
+A diagramok listájának frissítéséhez használja a [helm repo update][helm-repo-update] parancsot. A következő példa egy sikeres tárújbóli frissítést mutat be:
 
 ```console
 $ helm repo update
@@ -126,7 +126,7 @@ Update Complete. ⎈ Happy Helming!⎈
 
 ### <a name="run-helm-charts"></a>Helm-diagramok futtatása
 
-Ha a diagramokat a Helm használatával szeretné telepíteni, használja a [Helm install][helm-install-command] parancsot, és adjon meg egy kiadási nevet és a telepítendő diagram nevét. A Helm-diagramok működés közbeni telepítésének megtekintéséhez telepítsen egy alapszintű Nginx-telepítést egy Helm-diagram használatával.
+A helm-diagramok telepítéséhez használja a [helm install][helm-install-command] parancsot, és adja meg a telepítendő diagram kiadási nevét és nevét. Helm-diagram telepítése működés közben, telepítsen egy alapvető nginx-telepítést helm diagram használatával.
 
 ```console
 helm install my-nginx-ingress stable/nginx-ingress \
@@ -134,7 +134,7 @@ helm install my-nginx-ingress stable/nginx-ingress \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
-A következő összehasonlított példa kimenet a Helm diagram által létrehozott Kubernetes-erőforrások telepítési állapotát mutatja:
+A következő tömörített példa kimenet a Helm-diagram által létrehozott Kubernetes-erőforrások telepítési állapotát mutatja:
 
 ```console
 $ helm install my-nginx-ingress stable/nginx-ingress \
@@ -154,7 +154,7 @@ You can watch the status by running 'kubectl --namespace default get services -o
 ...
 ```
 
-A szolgáltatás *külső IP-* címének lekéréséhez használja a `kubectl get services` parancsot. Az alábbi parancs például a *My-Nginx-beáramló-Controller* szolgáltatás *külső IP-címét* jeleníti meg:
+A `kubectl get services` parancs segítségével lejuthat a szolgáltatás *KÜLSŐ-IP-címéhez.* Az alábbi parancs például a *my-nginx-inress-controller* szolgáltatás *KÜLSŐ-IP-címét* jeleníti meg:
 
 ```console
 $ kubectl --namespace default get services -o wide -w my-nginx-ingress-controller
@@ -163,15 +163,15 @@ NAME                          TYPE           CLUSTER-IP     EXTERNAL-IP     PORT
 my-nginx-ingress-controller   LoadBalancer   10.0.123.1     <EXTERNAL-IP>   80:31301/TCP,443:31623/TCP   96s   app=nginx-ingress,component=controller,release=my-nginx-ingress
 ```
 
-### <a name="list-releases"></a>Kiadások listázása
+### <a name="list-releases"></a>Kiadási kiadások listázása
 
-A fürtön telepített kiadások listájának megtekintéséhez használja a `helm list` parancsot.
+A fürtre telepített kiadások listájának megtekintéséhez `helm list` használja a parancsot.
 
 ```console
 helm list
 ```
 
-Az alábbi példa az előző lépésben üzembe helyezett *My-Nginx-* beléptetési kiadást mutatja be:
+A következő példa az előző lépésben üzembe helyezett *my-nginx-inress kiadást* mutatja be:
 
 ```console
 $ helm list
@@ -182,13 +182,13 @@ my-nginx-ingress    default     1           2019-11-22 10:08:06.048477 -0600 CST
 
 ### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Amikor központilag telepít egy Helm-diagramot, a rendszer számos Kubernetes-erőforrást hoz létre. Ilyen erőforrások például a hüvelyek, az üzembe helyezések és a szolgáltatások. Ezen erőforrások [törléséhez használja a Helm uninstall][helm-cleanup] parancsot, és adja meg a kiadás nevét az előző `helm list` parancsban található módon.
+Helm-diagram telepítésekor számos Kubernetes-erőforrás jön létre. Ezek az erőforrások podok, üzembe helyezések és szolgáltatások. Az erőforrások karbantartásához használja a [helm uninstall][helm-cleanup] parancsot, és adja `helm list` meg a kiadás nevét, ahogy az az előző parancsban található.
 
 ```console
 helm uninstall my-nginx-ingress
 ```
 
-A következő példa a *My-Nginx-inbehatolás* nevű kiadást mutatja:
+A következő példa a *my-nginx-inress* nevű kiadás titulusa:
 
 ```console
 $ helm uninstall my-nginx-ingress
@@ -200,9 +200,9 @@ release "my-nginx-ingress" uninstalled
 
 ### <a name="create-a-service-account"></a>Szolgáltatásfiók létrehozása
 
-Mielőtt üzembe helyezi a Helm-t egy RBAC-kompatibilis AK-fürtön, szüksége lesz egy szolgáltatásfiók és egy szerepkör-kötésre a kormányrúd szolgáltatáshoz. További információ a Helm/Tiller RBAC-kompatibilis fürtön való biztonságossá tételéről: a [kormányrúd, a névterek és a RBAC][tiller-rbac]. Ha az AK-fürt nincs engedélyezve RBAC, ugorja át ezt a lépést.
+Mielőtt üzembe helyezheti a Helm-et egy RBAC-kompatibilis AKS-fürtben, szüksége van egy szolgáltatásfiókra és szerepkör-kötésre a Tiller szolgáltatáshoz. A Helm / Tiller RBAC-kompatibilis fürtben való védelméről további információt a [Tiller, a Namespaces és az RBAC című][tiller-rbac]témakörben talál. Ha az AKS-fürt nincs engedélyezve az RBAC-on, hagyja ki ezt a lépést.
 
-Hozzon létre egy `helm-rbac.yaml` nevű fájlt, és másolja a következő YAML:
+Hozzon létre `helm-rbac.yaml` egy elnevezett fájlt, és másolja a következő YAML-fájlba:
 
 ```yaml
 apiVersion: v1
@@ -225,29 +225,29 @@ subjects:
     namespace: kube-system
 ```
 
-Hozzon létre egy szolgáltatásfiókot és egy szerepkör-kötést a `kubectl apply` paranccsal:
+Hozza létre a szolgáltatásfiókot `kubectl apply` és a szerepkörkötést a következő paranccsal:
 
 ```console
 kubectl apply -f helm-rbac.yaml
 ```
 
-### <a name="secure-tiller-and-helm"></a>Biztonságos kormányrúd és Helm
+### <a name="secure-tiller-and-helm"></a>Biztonságos talajművelő és kormányrúd
 
-A Helm ügyfél és a kormányrúd szolgáltatás hitelesíti és kommunikál egymással a TLS/SSL protokollal. Ez a hitelesítési módszer segít a Kubernetes-fürt biztonságossá tételében és a központilag üzembe helyezhető szolgáltatásokban. A biztonság növelése érdekében létrehozhat saját aláírt tanúsítványokat. Minden Helm-felhasználó megkapja a saját ügyféltanúsítványt, és a kormányrúd inicializálása a Kubernetes-fürtben az alkalmazott tanúsítványokkal. További információ: a [TLS/SSL használata a Helm és a kormányrúd között][helm2-ssl].
+A Helm-ügyfél és a Tiller szolgáltatás a TLS/SSL használatával hitelesíti és kommunikálegymással. Ez a hitelesítési módszer segít a Kubernetes-fürt védelmében, és milyen szolgáltatások telepíthetők. A biztonság növelése érdekében létrehozhatja saját aláírt tanúsítványait. Minden Helm-felhasználó saját ügyféltanúsítványt kapna, és a Tiller inicializálva lenne a Kubernetes-fürtben a tanúsítványok alkalmazásával. További információ: [TLS/SSL használata Helm és Tiller között.][helm2-ssl]
 
-Egy RBAC-kompatibilis Kubernetes-fürt segítségével szabályozhatja a hozzáférés szintjét a fürthöz. Megadhatja azt a Kubernetes-névteret, amelyen a kormányrúd üzembe helyezése megtörténik, és amelyekkel korlátozható, hogy a-ben mely névterek telepíthetnek erőforrásokat a alkalmazásban. Ez a módszer lehetővé teszi, hogy a kormányrúd-példányokat különböző névterekben hozza létre, és korlátozza az üzembe helyezési határokat, és a Helm Client felhasználóit bizonyos névterekre szűkítse. További információ: [Helm szerepköralapú hozzáférés-vezérlés][helm2-rbac].
+Egy RBAC-kompatibilis Kubernetes-fürt, szabályozhatja a hozzáférési szint Tiller a fürthöz. Megadhatja a Kubernetes névteret, amelyben a Tiller telepítve van, és korlátozhatja, hogy a Tiller milyen névterekben helyezhet üzembe erőforrásokat. Ez a megközelítés lehetővé teszi, hogy tiller példányokat hozzon létre a különböző névterekben, és korlátozza a telepítési határokat, és a Helm-ügyfél felhasználóinak hatókörét bizonyos névterekre. További információ: [Helm szerepköralapú hozzáférés-vezérlés.][helm2-rbac]
 
-### <a name="configure-helm"></a>A Helm konfigurálása
+### <a name="configure-helm"></a>Helm konfigurálása
 
-Alapszintű kormányrúd egy AK-fürtbe történő üzembe helyezéséhez használja a [Helm init][helm2-init] parancsot. Ha a fürt nincs engedélyezve RBAC, távolítsa el a `--service-account` argumentumot és az értéket. Az alábbi példákban az [Előzmények – max][helm2-history-max] 200 érték is megadható.
+Egy alap-tiller üzembe helyezéséhez egy AKS-fürt, használja a [helm init][helm2-init] parancsot. Ha a fürt nincs engedélyezve `--service-account` az RBAC- kód, távolítsa el az argumentumot és az értéket. A következő példák a [történelem-max][helm2-history-max] értéket is 200-ra állították.
 
-Ha a TLS/SSL-t a kormányrúd és a Helm használatára konfigurálta, ugorja át ezt az alapszintű inicializálási lépést, és adja meg a szükséges `--tiller-tls-` a következő példában látható módon.
+Ha a TLS/SSL-t tiller hez és helmhez konfigurálta, hagyja ki ezt az alapvető inicializálási lépést, és adja meg a szükséges `--tiller-tls-` et a következő példában látható módon.
 
 ```console
 helm init --history-max 200 --service-account tiller --node-selectors "beta.kubernetes.io/os=linux"
 ```
 
-Ha a következő példában látható módon konfigurálta a TLS/SSL-t a Helm és a kormányrúd között, adja meg a saját tanúsítványok `--tiller-tls-*` paramétereit és nevét:
+Ha a TLS/SSL-t Helm és `--tiller-tls-*` Tiller között konfigurálta, adja meg a saját tanúsítványainak paramétereit és nevét, ahogy az a következő példában látható:
 
 ```console
 helm init \
@@ -263,13 +263,13 @@ helm init \
 
 ### <a name="find-helm-charts"></a>Helm-diagramok keresése
 
-A Helm-diagramok használatával az alkalmazások Kubernetes-fürtbe helyezhetők. Az előre létrehozott Helm-diagramok kereséséhez használja a [Helm Search][helm2-search] parancsot:
+A helm diagramok segítségével alkalmazásokat telepíthet egy Kubernetes-fürtbe. Az előre létrehozott Helm-diagramok kereséséhez használja a [helm search][helm2-search] parancsot:
 
 ```console
 helm search
 ```
 
-A következő összehasonlított példa kimenete a következőkhöz használható Helm-diagramok némelyikét mutatja be:
+A következő tömörített példa kimenet néhány használható Helm-diagramot mutat be:
 
 ```
 $ helm search
@@ -304,7 +304,7 @@ stable/datadog                 0.18.0           6.3.0        DataDog Agent
 ...
 ```
 
-A diagramok listájának frissítéséhez használja a [Helm repo Update][helm2-repo-update] parancsot. Az alábbi példa egy sikeres adattár-frissítést mutat be:
+A diagramok listájának frissítéséhez használja a [helm repo update][helm2-repo-update] parancsot. A következő példa egy sikeres tárújbóli frissítést mutat be:
 
 ```console
 $ helm repo update
@@ -317,7 +317,7 @@ Update Complete.
 
 ### <a name="run-helm-charts"></a>Helm-diagramok futtatása
 
-Ha a diagramokat a Helm használatával szeretné telepíteni, használja a [Helm install][helm2-install-command] parancsot, és adja meg a telepítendő diagram nevét. A Helm-diagramok működés közbeni telepítésének megtekintéséhez telepítsen egy alapszintű Nginx-telepítést egy Helm-diagram használatával. Ha a TLS/SSL-t konfigurálta, adja hozzá a `--tls` paramétert a Helm-ügyféltanúsítvány használatához.
+A helm-diagramok telepítéséhez használja a [helm install][helm2-install-command] parancsot, és adja meg a telepítendő diagram nevét. Helm-diagram telepítése működés közben, telepítsen egy alapvető nginx-telepítést helm diagram használatával. Ha a TLS/SSL konfigurálta, adja hozzá a paramétert a `--tls` Helm ügyféltanúsítvány használatához.
 
 ```console
 helm install stable/nginx-ingress \
@@ -325,7 +325,7 @@ helm install stable/nginx-ingress \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
-A következő összehasonlított példa kimenet a Helm diagram által létrehozott Kubernetes-erőforrások telepítési állapotát mutatja:
+A következő tömörített példa kimenet a Helm-diagram által létrehozott Kubernetes-erőforrások telepítési állapotát mutatja:
 
 ```
 $ helm install stable/nginx-ingress --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
@@ -352,11 +352,11 @@ flailing-alpaca-nginx-ingress-default-backend  ClusterIP     10.0.44.97  <none> 
 ...
 ```
 
-Az Nginx-beáramló-Controller szolgáltatás *külső IP-* címéhez egy-két percet vesz igénybe, és lehetővé teszi, hogy egy webböngészővel hozzáférhessen.
+A nginx-inress-controller szolgáltatás *KÜLSŐ-IP-címének* feltöltése egy-két percet vesz igénybe, és lehetővé teszi, hogy webböngészővel férjen hozzá.
 
-### <a name="list-helm-releases"></a>Helm-kiadások listázása
+### <a name="list-helm-releases"></a>List Helm kiadások
 
-A fürtön telepített kiadások listájának megtekintéséhez használja a [Helm List][helm2-list] parancsot. Az alábbi példa az Nginx-beléptetési kiadást mutatja be az előző lépésben üzembe helyezett változatban. Ha a TLS/SSL-t konfigurálta, adja hozzá a `--tls` paramétert a Helm-ügyféltanúsítvány használatához.
+A fürtre telepített kiadások listájának megtekintéséhez használja a [helm list][helm2-list] parancsot. A következő példa az előző lépésben üzembe helyezett nginx-intheskiadást mutatja be. Ha a TLS/SSL konfigurálta, adja hozzá a paramétert a `--tls` Helm ügyféltanúsítvány használatához.
 
 ```console
 $ helm list
@@ -367,7 +367,7 @@ flailing-alpaca   1         Thu May 23 12:55:21 2019    DEPLOYED    nginx-ingres
 
 ### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Amikor központilag telepít egy Helm-diagramot, a rendszer számos Kubernetes-erőforrást hoz létre. Ilyen erőforrások például a hüvelyek, az üzembe helyezések és a szolgáltatások. Az erőforrások törléséhez használja a `helm delete` parancsot, és adja meg a kiadás nevét az előző `helm list` parancsban található módon. A következő példa törli a *flailing-alpaka*nevű kiadást:
+Helm-diagram telepítésekor számos Kubernetes-erőforrás jön létre. Ezek az erőforrások podok, üzembe helyezések és szolgáltatások. Az erőforrások karbantartásához használja `helm delete` a parancsot, és adja meg `helm list` a kiadás nevét az előző parancsban található módon. A következő példa törli a *flailing-alpaca*nevű kiadást:
 
 ```console
 $ helm delete flailing-alpaca
@@ -375,12 +375,12 @@ $ helm delete flailing-alpaca
 release "flailing-alpaca" deleted
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ a Kubernetes-alkalmazások Helmtel történő kezeléséről: a Helm dokumentációja.
+A Kubernetes-alkalmazások központi telepítéseinek helmtel való kezeléséről a Helm dokumentációjában olvashat bővebben.
 
 > [!div class="nextstepaction"]
-> [A Helm dokumentációja][helm-documentation]
+> [Helm dokumentáció][helm-documentation]
 
 <!-- LINKS - external -->
 [helm]: https://github.com/kubernetes/helm/

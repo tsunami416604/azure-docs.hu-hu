@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight-fürt létrehozása – hiba szótár
-description: Tudnivalók az Azure HDInsight-fürtök létrehozásakor előforduló hibák elhárításáról
+title: Azure HDInsight Fürt létrehozása – hibaszótár
+description: Az Azure HDInsight-fürtök létrehozásakor előforduló hibák elhárítása
 author: karkrish
 ms.author: v-todmc
 ms.reviewer: hrasheed
@@ -9,74 +9,74 @@ ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/19/2019
 ms.openlocfilehash: b0dc974185ad616d57327e9cc3743db9ecb20e54
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78302729"
 ---
-# <a name="azure-hdinsight-cluster-creation-errors"></a>Azure-HDInsight: fürtök létrehozásával kapcsolatos hibák
+# <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: Fürtlétrehozási hibák
 
-Ez a cikk a fürtök létrehozásakor esetlegesen előforduló hibák megoldásait ismerteti.
+Ez a cikk a fürtök létrehozásakor előforduló hibák megoldásait ismerteti.
 
 > [!NOTE]
-> A cikkben ismertetett első három hiba érvényesítési hiba. Akkor fordulhatnak elő, amikor egy Azure HDInsight-termék a **CsmDocument_2_0** osztályt használja.
+> A cikkben ismertetett első három hiba érvényesítési hiba. Ezek akkor fordulhatnak elő, ha egy Azure HDInsight-termék a **CsmDocument_2_0** osztályt használja.
 
-## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Hibakód: a (z) "CsmDocument_2_0" DeploymentDocument nem tudta végrehajtani az ellenőrzést.
+## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Hibakód: A DeploymentDocument 'CsmDocument_2_0' nem tudta az érvényesítést
 
 ### <a name="error"></a>Hiba
 
-"A parancsfájl-művelet helye nem érhető el URI:\<parancsfájl műveleti URL-címe\>"
+"A parancsfájlművelet helye nem\<érhető el\>uri: SCRIPT ACTION URL "
 
 #### <a name="error-message"></a>Hibaüzenet
 
-"A távoli kiszolgáló a következő hibát adta vissza: (404) nem található."
+"A távoli kiszolgáló hibát adott vissza: (404) Nem található."
 
 ### <a name="cause"></a>Ok
 
-A HDInsight szolgáltatás nem fér hozzá a fürt létrehozása kérelem részeként megadott parancsfájl-művelet URL-címéhez. A szolgáltatás megkapja az előző hibaüzenetet, amikor megpróbál hozzáférni a parancsfájl művelethez.
+A HDInsight szolgáltatás nem tudja elérni a fürt létrehozása kérés részeként megadott parancsfájlművelet-URL-címet. A szolgáltatás megkapja az előző hibaüzenetet, amikor megpróbálja elérni a parancsfájl műveletet.
 
 ### <a name="resolution"></a>Megoldás:
 
-- HTTP-vagy HTTPS-URL-cím esetén ellenőrizze, hogy az URL-cím egy inkognitóban böngészőablakban található-e.
-- WASB URL-cím esetén győződjön meg arról, hogy a parancsfájl létezik a kérelemben megadott Storage-fiókban. Győződjön meg arról is, hogy a Storage-fiókhoz tartozó tárolási kulcs helyes.
-- ADLS URL-cím esetén győződjön meg arról, hogy a parancsfájl létezik a Storage-fiókban.
+- HTTP- vagy HTTPS-URL-cím esetén ellenőrizze az URL-címet egy inkognitóböngésző ablakából való ugrással.
+- A WASB URL-címet, győződjön meg arról, hogy a parancsfájl létezik a tárfiókban, hogy adja meg a kérelemben. Győződjön meg arról is, hogy a tárfiók tárolási kulcsa helyes.
+- Egy ADLS URL-címet, győződjön meg arról, hogy a parancsfájl létezik a tárfiókban.
 
 ---
 
-## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Hibakód: a (z) "CsmDocument_2_0" DeploymentDocument nem tudta végrehajtani az ellenőrzést.
+## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Hibakód: A DeploymentDocument 'CsmDocument_2_0' nem tudta az érvényesítést
 
 ### <a name="error"></a>Hiba
 
-"A parancsfájl-művelet helye nem érhető el URI: \<SCRIPT_ACTION_URL\>"
+"A parancsfájlművelet helye nem \<érhető\>el uri: SCRIPT_ACTION_URL "
 
 #### <a name="error-message"></a>Hibaüzenet
 
-"Az adott parancsfájl URI-ja \<SCRIPT_URI\> a ADLS, de ez a fürt nem rendelkezik a (z)"
+"A megadott \<parancsfájl\> URI SCRIPT_URI az ADLS-ben van, de ez a fürt nem rendelkezik adattótárolási egyszerű"
 
 ### <a name="cause"></a>Ok
 
-A HDInsight szolgáltatás nem fér hozzá a fürt létrehozása kérelem részeként megadott parancsfájl-művelet URL-címéhez. A szolgáltatás megkapja az előző hibaüzenetet, amikor megpróbál hozzáférni a parancsfájl művelethez.
+A HDInsight szolgáltatás nem tudja elérni a fürt létrehozása kérés részeként megadott parancsfájlművelet-URL-címet. A szolgáltatás megkapja az előző hibaüzenetet, amikor megpróbálja elérni a parancsfájl műveletet.
 
 ### <a name="resolution"></a>Megoldás:
 
-Adja hozzá a megfelelő Azure Data Lake Storage 1. generációs fiókot a fürthöz. Adja hozzá azt a szolgáltatásnevet is, amely hozzáfér a Data Lake Storage Gen 1 fiókhoz a fürthöz.
+Adja hozzá a megfelelő Azure Data Lake Storage Gen 1 fiókot a fürthöz. Adja hozzá a data lake storage gen 1 fiókot a fürthöz elérő egyszerű szolgáltatást is.
 
 ---
 
-## <a name="error-code-deploymentdocument-csmdocument_2_0-failed-the-validation"></a>Hibakód: a (z) "CsmDocument_2_0" DeploymentDocument nem tudta végrehajtani az ellenőrzést.
+## <a name="error-code-deploymentdocument-csmdocument_2_0-failed-the-validation"></a>Hibakód: A DeploymentDocument 'CsmDocument_2_0' nem tudta az érvényesítést
 
 ### <a name="error"></a>Hiba
 
-A kérelemben megadott "virtuálisgép-méret"\<CUSTOMER_SPECIFIED_VM_SIZE\>érvénytelen vagy nem támogatott a (z) "\<SZEREPKÖR\>" szerepkörben. Az érvényes értékek a következők: \<VALID_VM_SIZE_FOR_ROLE\>. "
+"Virtuális gép\<mérete\>' CUSTOMER_SPECIFIED_VM_SIZE ' a kérelemben megadott\<érvénytelen, vagy nem támogatott szerepkör " ROLE\>". Érvényes értékek: \<\>VALID_VM_SIZE_FOR_ROLE "
 
 ### <a name="cause"></a>Ok
 
-A virtuális gép megadott mérete nem engedélyezett a szerepkörhöz. Ez a hiba akkor fordulhat elő, ha a virtuális gép mérete nem a várt módon működik, vagy nem megfelelő a számítógép szerepkörhöz.
+A megadott virtuálisgép-méret nem engedélyezett a szerepkörhöz. Ez a hiba azért fordulhat elő, mert a virtuális gép mérete érték nem működik a várt módon, vagy nem alkalmas a számítógépes szerepkör.
 
 ### <a name="resolution"></a>Megoldás:
 
-A hibaüzenet felsorolja a virtuális gép méretének érvényes értékeit. Válassza ki az alábbi értékek egyikét, majd próbálja megismételni a fürt létrehozása kérelmet.
+A hibaüzenet a virtuális gép méretének érvényes értékeit sorolja fel. Válasszon az alábbi értékek közül, majd próbálkozzon újra a Fürt létrehozása kéréssel.
 
 ---
 
@@ -84,21 +84,21 @@ A hibaüzenet felsorolja a virtuális gép méretének érvényes értékeit. V�
 
 ### <a name="error"></a>Hiba
 
-"A VirtualNetworkId érvénytelen. VirtualNetworkId "\<USER_VIRTUALNETWORKID\>" * "
+"A VirtualNetworkId érvénytelen. VirtualNetworkId\<'\>USER_VIRTUALNETWORKID '*"
 
 ### <a name="cause"></a>Ok
 
-A fürt létrehozása során megadott **VirtualNetworkId** érték formátuma nem megfelelő.
+A fürt létrehozása során megadott **VirtualNetworkId** érték nem a megfelelő formátumú.
 
 ### <a name="resolution"></a>Megoldás:
 
-Győződjön meg arról, hogy a **VirtualNetworkId** és az alhálózati értékek a megfelelő formátumban vannak. A **VirtualNetworkId** értékének lekérése:
+Győződjön meg arról, hogy a **VirtualNetworkId** és az alhálózati értékek a megfelelő formátumban vannak. A **VirtualNetworkId** érték beszerezése:
 
 1. Nyissa meg az Azure Portalt.
 1. Válassza ki a virtuális hálózatot.
-1. Válassza a **Tulajdonságok** menüpontot. A **ResourceId** tulajdonság értéke a **VirtualNetworkId** érték.
+1. Válassza a **Tulajdonságok** menüelemet. A **ResourceID** tulajdonság értéke a **VirtualNetworkId** érték.
 
-Íme egy példa a virtuális hálózati AZONOSÍTÓra:
+Íme egy példa a virtuális hálózati azonosítóra:
 
 "/subscriptions/c15fd9b8-e2b8-1d4e-aa85-2e668040233b/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet"
 
@@ -108,15 +108,15 @@ Győződjön meg arról, hogy a **VirtualNetworkId** és az alhálózati érték
 
 ### <a name="error"></a>Hiba
 
-"A fürt központi telepítése nem sikerült, mert hiba történt az egyéni parancsfájl műveletében. Sikertelen műveletek: \<SCRIPT_NAME\>, lépjen a Ambari felhasználói felületén a hiba további hibakereséséhez. "
+"A fürt telepítése nem sikerült az egyéni parancsfájlművelet hibája miatt. Sikertelen műveletek: \<\>SCRIPT_NAME , Kérjük, látogasson el az Ambari felhasználói felületre a hiba további hibakereséséhez."
 
 ### <a name="cause"></a>Ok
 
-A fürt létrehozásakor megadott egyéni parancsfájl végrehajtása a fürt sikeres telepítése után történik. Ez a hibakód azt jelzi, hogy hiba történt a \<SCRIPT_NAME\>nevű egyéni parancsfájl végrehajtása során.
+A fürt létrehozása során megadott egyéni parancsfájl a fürt sikeres telepítése után kerül végrehajtásra. Ez a hibakód azt jelzi, hogy hiba történt \<\>a SCRIPT_NAME nevű egyéni parancsfájl végrehajtása során.
 
 ### <a name="resolution"></a>Megoldás:
 
-Mivel a szkript az egyéni szkript, javasoljuk, hogy hárítsa el a problémát, és szükség esetén futtassa újra a parancsfájlt. A parancsfájl hibáinak megoldásához vizsgálja meg a/var/lib/ambari-Agent/* mappában található naplókat. Vagy nyissa meg a Ambari felhasználói felületén az **Operations (műveletek** ) lapot, majd a hiba részleteinek megtekintéséhez válassza ki a **run_customscriptaction** műveletet.
+Mivel a parancsfájl az egyéni parancsfájl, javasoljuk, hogy hárítsa el a problémát, és szükség esetén futtassa újra a parancsfájlt. A parancsfájlhiba elhárításához vizsgálja meg a /var/lib/ambari-agent/* mappában található naplókat. Vagy nyissa meg az Ambari felhasználói **felületen** a Műveletek lapot, majd válassza ki a **run_customscriptaction** műveletet a hiba részleteinek megtekintéséhez.
 
 ---
 
@@ -124,15 +124,15 @@ Mivel a szkript az egyéni szkript, javasoljuk, hogy hárítsa el a problémát,
 
 ### <a name="error"></a>Hiba
 
-"A \<META_STORE_TYPE\> Metaadattár-sémájának verziója \<METASTORE_MAJOR_VERSION\> az adatbázisban \<DATABASE_NAME\> nem kompatibilis a fürt verziójával \<CLUSTER_VERSION\>"
+"A \<\> META_STORE_TYPE Metastore séma \<verziója\> \<METASTORE_MAJOR_VERSION\> az adatbázisban\>DATABASE_NAME nem kompatibilis a fürt CLUSTER_VERSION " \<
 
 ### <a name="cause"></a>Ok
 
-Az egyéni metaadattár nem kompatibilis a kiválasztott HDInsight-fürt verziójával. A HDInsight 4,0-fürtök jelenleg csak a 3,0-es és újabb Metaadattár-verziót támogatják, míg a HDInsight 3,6-fürtök nem támogatják a Metaadattár 3,0-es és újabb verzióit.
+Az egyéni metatároló nem kompatibilis a kiválasztott HDInsight-fürtverzióval. Jelenleg a HDInsight 4.0-s fürtjei csak a Metastore 3.0-s és újabb verzióját támogatják, míg a HDInsight 3.6-os fürtök nem támogatják a Metastore 3.0-s és újabb verzióját.
 
 ### <a name="resolution"></a>Megoldás:
 
-Csak azokat a Metaadattár-verziókat használja, amelyeket a HDInsight-fürt verziója támogat. Ha nem ad meg egyéni metaadattár, a HDInsight belsőleg létrehoz egy metaadattár, majd törli azt a fürt törlése után.
+Csak olyan Metastore-verziókat használjon, amelyeket a HDInsight-fürtverziója támogat. Ha nem ad meg egyéni metatárolót, a HDInsight belsőleg létrehoz egy metatárolót, majd fürttörléskor törli azt.
 
 ---
 
@@ -140,20 +140,20 @@ Csak azokat a Metaadattár-verziókat használja, amelyeket a HDInsight-fürt ve
 
 ### <a name="error"></a>Hiba
 
-"Nem lehet csatlakozni a fürt felügyeleti végponthoz a skálázási művelet végrehajtásához. Ellenőrizze, hogy a hálózati biztonsági szabályok nem blokkolja-e a fürt külső hozzáférését, és hogy a Fürtfelügyelő (Ambari) felhasználói felülete sikeresen elérhető-e. "
+"Nem lehet csatlakozni a fürtfelügyeleti végponthoz a skálázási művelet végrehajtásához. Ellenőrizze, hogy a hálózati biztonsági szabályok nem blokkolják-e a fürt höz való külső hozzáférést, és hogy a fürtkezelő (Ambari) felhasználói felülete sikeresen elérhető-e."
 
 ### <a name="cause"></a>Ok
 
-A hálózati biztonsági csoporton (NSG) található tűzfalszabály blokkolja a kritikus Azure állapot-és felügyeleti szolgáltatásokkal folytatott kommunikációt.
+A hálózati biztonsági csoport (NSG) tűzfalszabálya blokkolja a fürtkommunikációt a kritikus Azure-állapot- és felügyeleti szolgáltatásokkal.
 
 ### <a name="resolution"></a>Megoldás:
 
-Ha hálózati biztonsági csoportokat kíván használni a hálózati forgalom szabályozásához, a HDInsight telepítése előtt végezze el a következő műveleteket:
+Ha a hálózati biztonsági csoportokat kívánja használni a hálózati forgalom szabályozására, a HDInsight telepítése előtt tegye a következő műveleteket:
 
-- Azonosítsa az HDInsight használni kívánt Azure-régiót.
-- Azonosítsa a HDInsight által igényelt IP-címeket. További információ: [HDInsight kezelése – IP-címek](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses).
-  - Hozza létre vagy módosítsa annak az alhálózatnak a hálózati biztonsági csoportjait, amelyre telepíteni kívánja a HDInsight-et.
-  - Hálózati biztonsági csoportok esetében engedélyezze a bejövő forgalmat az 443-as porton az IP-címekről. Ez a konfiguráció biztosítja, hogy a HDInsight-kezelési szolgáltatások a virtuális hálózaton kívülről is elérjék a fürtöt.
+- Azonosítsa a HDInsighthoz használni kívánt Azure-régiót.
+- Azonosítsa a HDInsight által megkövetelt IP-címeket. További információ: [HDInsight kezelése – IP-címek](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses).
+  - Hozza létre vagy módosítsa annak az alhálózatnak a hálózati biztonsági csoportjait, amelyekbe a HDInsightot telepíteni kívánja.
+  - Hálózati biztonsági csoportok esetén engedélyezze a bejövő forgalmat a 443-as porton az IP-címekről. Ez a konfiguráció biztosítja, hogy a HDInsight felügyeleti szolgáltatások a virtuális hálózaton kívülről is elérhetik a fürtöt.
 
 ---
 
@@ -161,20 +161,20 @@ Ha hálózati biztonsági csoportokat kíván használni a hálózati forgalom s
 
 ### <a name="error"></a>Hiba
 
-"A felügyelt identitásnak nincs engedélye a Storage-fiókra. Ellenőrizze, hogy a "Storage blob-adatok tulajdonosa" szerepkör hozzá van-e rendelve a Storage-fiók felügyelt identitásához. Storage:/Subscriptions/\<előfizetés-azonosító\>/resourceGroups/\< erőforráscsoport neve\>/providers/Microsoft.Storage/storageAccounts/\<Storage-fiók neve\>, felügyelt identitás:/Subscriptions/\<előfizetés azonosítója\>/resourceGroups//\< erőforráscsoport neve\>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/\<felhasználó által felügyelt identitás neve\>"
+"A felügyelt identitás nem rendelkezik engedélyekkel a tárfiókhoz. Ellenőrizze, hogy a "Storage Blob Data Owner" szerepkör hozzá van-e rendelve a tárfiók felügyelt identitásához. Tároló: \</subscriptions/ Subscription\> ID\< /resourceGroups/ Resource Group\> Name /providers/Microsoft.Storage/storageAccounts/ \<Storage Account Name\>, Managed Identity: /subscriptions/ \<Subscription ID\> /resourceGroups/ /\< Resource Group Name\> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/ \<User Managed Identity Name\>"
 
 ### <a name="cause"></a>Ok
 
-Nem adta meg az identitás kezeléséhez szükséges engedélyeket. A felhasználó által hozzárendelt felügyelt identitás nem rendelkezik Blob Storage közreműködő szerepkörrel a Azure Data Lake Storage Gen2 Storage-fiókban.
+Nem adta meg az identitás kezeléséhez szükséges engedélyeket. A felhasználó által hozzárendelt felügyelt identitás nem rendelkezik a Blob Storage Közreműködő szerepkör az Azure Data Lake Storage Gen2 tárfiók.
 
 ### <a name="resolution"></a>Megoldás:
 
 1. Nyissa meg az Azure Portalt.
-1. Nyissa meg a Storage-fiókját.
-1. Keresse meg a **Access Control (iam)** alatt.
-1. Győződjön meg arról, hogy a felhasználó rendelkezik a Storage blob adatközreműködői szerepkörrel vagy a hozzájuk rendelt Storage blob-adattulajdonosi szerepkörrel.
+1. Nyissa meg a tárfiókot.
+1. Keresse meg a **Hozzáférés-vezérlés (IAM) területen.**
+1. Győződjön meg arról, hogy a felhasználó rendelkezik a Storage Blob Data Contributor szerepkör vagy a storage blob adattulajdonos szerepkör hozzárendelt.
 
-További információ: az [Data Lake Storage Gen2 fiókban található felügyelt identitás engedélyeinek beállítása](hdinsight-hadoop-use-data-lake-storage-gen2.md).
+További információ: [Engedélyek beállítása a Felügyelt identitáshoz a Data Lake Storage Gen2 fiókban.](hdinsight-hadoop-use-data-lake-storage-gen2.md)
 
 ---
 
@@ -182,36 +182,36 @@ További információ: az [Data Lake Storage Gen2 fiókban található felügyel
 
 ### <a name="error"></a>Hiba
 
-"A biztonsági szabályok a hálózati biztonsági csoport/Subscriptions/\<SubscriptionID\>/resourceGroups/< erőforráscsoport neve\> default/Providers/Microsoft. Network/networkSecurityGroups/\<hálózati biztonsági csoport neve\> subnet/Subscriptions/\<SubscriptionID\>/resourceGroups/\<erőforráscsoport neve\> RG-westeurope-vnet-tomtom-default/Providers/Microsoft. Network/virtualNetworks/\<Virtual A hálózati név\>/Subnets/\<alhálózat neve\> nem engedélyezi a szükséges bejövő és/vagy kimenő kapcsolatokat. További információért látogasson el [a virtuális hálózat megtervezése az Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment), vagy forduljon az ügyfélszolgálathoz. "
+"A hálózati biztonsági csoport /előfizetések/\<\>SubscriptionID /resourceGroups/<\> Resource Group name default/providers/Microsoft.Network/networkSecurityGroups/\<Network Security Group Name\> in alnet /subscriptions/\<SubscriptionID\>\</resourceGroups/ Resource Group name\> RG-westeurope-vnet-tomtom-default/providers/Microsoft.Network/virtualNetworks/\<Virtual Network A\>hálózatnév /alhálózatok/\<\> Alhálózat neve nem teszi lehetővé a szükséges bejövő és/vagy kimenő kapcsolatot. További információért látogasson el [az Azure HDInsight virtuális hálózatának megtervezése](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)vagy az ügyfélszolgálat megtervezése című oldalra."
 
 ### <a name="cause"></a>Ok
 
-Ha a hálózati biztonsági csoportok vagy a felhasználó által megadott útvonalak (UDR-EK) vezérlik a HDInsight-fürt felé irányuló bejövő forgalmat, akkor győződjön meg arról, hogy a fürt képes kommunikálni a kritikus Azure állapot-és felügyeleti szolgáltatásokkal.
+Ha a hálózati biztonsági csoportok vagy a felhasználó által definiált útvonalak (UDRs) szabályozzák a HDInsight-fürt befelé irányuló forgalmat, győződjön meg arról, hogy a fürt képes kommunikálni a kritikus Azure-állapot- és felügyeleti szolgáltatásokkal.
 
 ### <a name="resolution"></a>Megoldás:
 
-Ha hálózati biztonsági csoportokat kíván használni a hálózati forgalom szabályozásához, a HDInsight telepítése előtt végezze el a következő műveleteket:
+Ha a hálózati biztonsági csoportokat kívánja használni a hálózati forgalom szabályozására, a HDInsight telepítése előtt tegye a következő műveleteket:
 
-- Azonosítsa a HDInsight használni kívánt Azure-régiót, és hozzon létre egy biztonságos listát a régiója IP-címeiről. További információ [: állapot-és kezelési szolgáltatások: adott régiók](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses#health-and-management-services-specific-regions).
-- Azonosítsa a HDInsight által igényelt IP-címeket. További információ: [HDInsight-felügyeleti IP-címek](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses).
-- Hozza létre vagy módosítsa annak az alhálózatnak a hálózati biztonsági csoportjait, amelyre telepíteni kívánja a HDInsight-et. Hálózati biztonsági csoportok esetében engedélyezze a bejövő forgalmat az 443-as porton az IP-címekről. Ez a konfiguráció biztosítja, hogy a HDInsight-kezelési szolgáltatások a virtuális hálózaton kívülről is elérjék a fürtöt.
+- Azonosítsa a HDInsighthoz használni kívánt Azure-régiót, és hozzon létre egy biztonságos listát a régió IP-címeiről. További információ: [Egészség és kezelési szolgáltatások: Adott régiók.](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses#health-and-management-services-specific-regions)
+- Azonosítsa a HDInsight által igényelt IP-címeket. További információ: [HDInsight-felügyeleti IP-címek.](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)
+- Hozza létre vagy módosítsa annak az alhálózatnak a hálózati biztonsági csoportjait, amelyekbe a HDInsightot telepíteni kívánja. Hálózati biztonsági csoportok esetén engedélyezze a bejövő forgalmat a 443-as porton az IP-címekről. Ez a konfiguráció biztosítja, hogy a HDInsight felügyeleti szolgáltatások a virtuális hálózaton kívülről is elérhetik a fürtöt.
   
 ---
 
-## <a name="error-code-cluster-setup-failed-to-install-components-on-one-or-more-hosts"></a>Hibakód: a fürt telepítése nem tudta telepíteni az összetevőket egy vagy több gazdagépre
+## <a name="error-code-cluster-setup-failed-to-install-components-on-one-or-more-hosts"></a>Hibakód: A fürt telepítője nem tudta telepíteni az összetevőket egy vagy több állomásra
 
 ###  <a name="error"></a>Hiba
 
-"A fürt beállítása nem tudta telepíteni az összetevőket egy vagy több gazdagépre. Próbálkozzon újra a kéréssel. "
+"A fürt telepítője nem tudta telepíteni az összetevőket egy vagy több állomásra. Próbálkozzon újra a kéréssel."
 
 ### <a name="cause"></a>Ok 
 
-Ez a hiba általában akkor jön létre, ha átmeneti probléma merül fel, vagy ha egy Azure-leállás történik.
+Ez a hiba általában átmeneti probléma vagy Azure-kimaradás esetén jön létre.
 
 ### <a name="resolution"></a>Megoldás:
 
-Győződjön meg arról, hogy minden olyan Azure- [leállást](https://status.azure.com) tartalmaz, amely hatással lehet a fürt üzembe helyezésére. Ha nincsenek kimaradások, próbálja megismételni a fürt üzembe helyezését.
+Ellenőrizze az [Azure-állapot](https://status.azure.com) lapon az Azure-kimaradások, amelyek hatással lehetnek a fürt központi telepítését. Ha nincs kimaradás, próbálja meg újra a fürt központi telepítését.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-További információ a fürtök létrehozásával kapcsolatos hibák elhárításáról: [fürtök létrehozásával kapcsolatos hibák elhárítása az Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-troubleshoot-cluster-creation-fails).
+A fürtlétrehozássorán előforduló hibák elhárításáról az [Azure HDInsight szolgáltatással kapcsolatos fürtlétrehozási hibák elhárítása című témakörben talál](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-troubleshoot-cluster-creation-fails)további információt.

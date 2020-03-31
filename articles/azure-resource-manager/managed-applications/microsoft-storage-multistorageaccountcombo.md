@@ -1,24 +1,24 @@
 ---
-title: MultiStorageAccountCombo FELHASZNÁLÓIFELÜLET-elem
-description: A Azure Portal Microsoft. Storage. MultiStorageAccountCombo felhasználói felületi elemét ismerteti.
+title: MultiStorageAccountCombo felhasználói felületi elem
+description: A Microsoft.Storage.MultiStorageAccountCombo UI elem ismertetése az Azure Portalon.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: 06412a1f08f1f242a3f3bd9be17b795ee09fcf9d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75651877"
 ---
-# <a name="microsoftstoragemultistorageaccountcombo-ui-element"></a>Microsoft. Storage. MultiStorageAccountCombo FELHASZNÁLÓIFELÜLET-elem
+# <a name="microsoftstoragemultistorageaccountcombo-ui-element"></a>Microsoft.Storage.MultiStorageAccountCombo felhasználói felület
 
-Olyan vezérlők csoportja, amelyekben számos olyan Storage-fiók hozható létre, amelynek neve közös előtaggal kezdődik.
+Több tárfiók létrehozására szolgáló vezérlőelemek csoportja, amelyek neve közös előtaggal kezdődik.
 
-## <a name="ui-sample"></a>Felhasználói felület mintája
+## <a name="ui-sample"></a>Felhasználói felület minta
 
-![Microsoft. Storage. MultiStorageAccountCombo](./media/managed-application-elements/microsoft.storage.multistorageaccountcombo.png)
+![Microsoft.Storage.MultiStorageAccountCombo](./media/managed-application-elements/microsoft.storage.multistorageaccountcombo.png)
 
 ## <a name="schema"></a>Séma
 
@@ -60,13 +60,13 @@ Olyan vezérlők csoportja, amelyekben számos olyan Storage-fiók hozható lét
 
 ## <a name="remarks"></a>Megjegyzések
 
-- `defaultValue.prefix` értékének összefűzése egy vagy több egész számmal történik a Storage-fiókok nevének létrehozásához. Ha például `defaultValue.prefix` **sa** és **`count`, akkor a Storage**-fiókok nevei **SA1** és **SA2** jönnek létre. A létrehozott Storage-fiókok neve automatikusan az egyediségre van érvényesítve.
-- A Storage-fiókok nevei `count`alapján jönnek létre a lexicographically. Ha például `count` 10, akkor a Storage-fiókok nevei két számjegyből állnak (01, 02, 03).
-- A `defaultValue.prefix` alapértelmezett értéke **Null**, és a `defaultValue.type` **Premium_LRS**.
-- A `constraints.allowedTypes`ban nem megadott típusok rejtettek, és a `constraints.excludedTypes`ban nem megadott típusok jelennek meg. `constraints.allowedTypes` és `constraints.excludedTypes` egyaránt választható, de nem használható egyszerre.
-- A Storage-fiókok nevének létrehozása mellett `count` az elem megfelelő szorzójának megadására szolgál. Egy statikus értéket, például **2**vagy egy másik elemből származó dinamikus értéket támogat, például `[steps('step1').storageAccountCount]`. Az alapértelmezett érték **1**.
+- A rendszer `defaultValue.prefix` egy vagy több egész számmal összefűzi az értéket a tárfióknevek sorrendjének létrehozásához. Ha például `defaultValue.prefix` **sa** `count` és **2,** akkor a tárfiók nevek **sa1** és **sa2** jönnek létre. A létrehozott tárfióknevek automatikusan frissülnek az egyediség érdekében.
+- A tárfiók nevek jönnek lexikografikusan alapján `count`. Ha például `count` 10, akkor a tárfiók nevek kétjegyű egész számokkal végződnek (01, 02, 03).
+- Az alapértelmezett `defaultValue.prefix` érték **null,** `defaultValue.type` a Premium_LRS érték pedig **a**.
+- Minden olyan típus, `constraints.allowedTypes` amely nincs megadva, rejtett, és minden olyan típus, amely nincs `constraints.excludedTypes` megadva, megjelenik. `constraints.allowedTypes`és `constraints.excludedTypes` mindkettő választható, de nem használható egyszerre.
+- A tárfióknevek `count` létrehozása mellett a megfelelő szorzó beállítása az elem. Támogatja a statikus értéket, például **a 2**vagy a `[steps('step1').storageAccountCount]`dinamikus értéket egy másik elemből, például . Az alapértelmezett érték **1**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* A felhasználói felületi definíciók létrehozásával kapcsolatban lásd: Bevezetés [a CreateUiDefinition](create-uidefinition-overview.md)használatába.
-* A felhasználói felületi elemek általános tulajdonságainak leírását lásd: [CreateUiDefinition-elemek](create-uidefinition-elements.md).
+* A felhasználói felületdefiníciók létrehozásának bemutatása a [CreateUiDefinition](create-uidefinition-overview.md)első lépései című témakörben látható.
+* A felhasználói felület elemeinek gyakori tulajdonságainak leírását a [CreateUiDefinition elements](create-uidefinition-elements.md)című témakörben található.

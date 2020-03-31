@@ -1,6 +1,6 @@
 ---
-title: Microsoft Identity platform – Windows asztali útmutató | Microsoft Docs
-description: Ismerje meg, hogyan szerezhet be egy Windowsos asztali .NET-(XAML-) alkalmazás hozzáférési jogkivonatot, és hogyan hívhat meg egy Microsoft Identity platform-végpont által védett API-t
+title: Microsoft identity platform A Windows asztali rövid útmutatója | Microsoft dokumentumok
+description: Megtudhatja, hogy egy Asztali asztali .NET (XAML) alkalmazás hogyan kaphat hozzáférési jogkivonatot, és hogyan hívhat ja meg a Microsoft identitásplatform végpontja által védett API-t
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,15 +12,15 @@ ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 34d9af03b42df4a2806e82bb1e1fa376f099ae4c
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78271063"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Rövid útmutató: Jogkivonat lekérése és a Microsoft Graph API meghívása egy Windows asztali alkalmazásból
 
-Ebből a rövid útmutatóból megtudhatja, hogyan írhat egy Windows asztali .NET- (WPF-) alkalmazást, amely be tud jelentkezni személyes, munkahelyi és iskolai fiókokba, le tud kérni egy hozzáférési jogkivonatot, majd meg tudja hívni a Microsoft Graph API-t. (Lásd: [Hogyan működik a minta](#how-the-sample-works) egy ábrán.)
+Ebből a rövid útmutatóból megtudhatja, hogyan írhat egy Windows asztali .NET- (WPF-) alkalmazást, amely be tud jelentkezni személyes, munkahelyi és iskolai fiókokba, le tud kérni egy hozzáférési jogkivonatot, majd meg tudja hívni a Microsoft Graph API-t. (Lásd: [Hogyan működik a minta](#how-the-sample-works) egy illusztrációhoz.)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>A rövid útmutató mintaalkalmazásának regisztrálása és letöltése
@@ -28,38 +28,38 @@ Ebből a rövid útmutatóból megtudhatja, hogyan írhat egy Windows asztali .N
 > * [Expressz] [1. lehetőség: Az alkalmazás regisztrálása és automatikus konfigurálása, majd a kódminta letöltése](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
 > * [Kézi] [2. lehetőség: Az alkalmazás és a kódminta regisztrálása és kézi konfigurálása](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1\. lehetőség: Az alkalmazás regisztrálása és automatikus konfigurálása, majd a kódminta letöltése
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1. lehetőség: Az alkalmazás regisztrálása és automatikus konfigurálása, majd a kódminta letöltése
 >
-> 1. Nyissa meg az új [Azure Portal-Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs).
+> 1. Nyissa meg az új [Azure Portal – Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs).
 > 1. Adja meg az alkalmazás nevét, majd kattintson a **Regisztráció** elemre.
 > 1. Kövesse az új alkalmazás egy kattintással való letöltésére és automatikus konfigurálására vonatkozó utasításokat.
 >
-> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>2\. lehetőség: Az alkalmazás és a kódminta regisztrálása és kézi konfigurálása
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>2. lehetőség: Az alkalmazás és a kódminta regisztrálása és kézi konfigurálása
 >
-> #### <a name="step-1-register-your-application"></a>1\. lépés: Alkalmazás regisztrálása
+> #### <a name="step-1-register-your-application"></a>1. lépés: Alkalmazás regisztrálása
 > Az alkalmazás regisztrálásához és az alkalmazás regisztrációs információinak a megoldáshoz való kézi hozzáadásához kövesse az alábbi lépéseket:
 >
-> 1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+> 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
 > 1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
-> 1. Navigáljon a Microsoft Identity platform for Developers [Alkalmazásregisztrációk](https://aka.ms/MobileAppReg) oldalára.
-> 1. Válassza az **új regisztráció**lehetőséget.
+> 1. Keresse meg a Microsoft identity platform ot a fejlesztőknek [Alkalmazásregisztrációk](https://aka.ms/MobileAppReg) lapon.
+> 1. Válassza **az Új regisztráció lehetőséget.**
 >      - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `Win-App-calling-MsGraph`).
 >      - A **Támogatott fióktípusok** szakaszban jelölje be a **Tetszőleges szervezeti címtárban található fiókok és a Személyes Microsoft-fiókok (például Skype, Xbox, Outlook.com)** beállítást.
 >      - Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
 > 1. Az alkalmazás oldalainak listájában válassza a **Hitelesítés** elemet.
-> 1. Az **átirányítási URI** - **k | a nyilvános ügyfelek számára javasolt átirányítási URI-k (mobil, asztali)** szakaszban használja a **https://login.microsoftonline.com/common/oauth2/nativeclient** .
+> 1. A nyilvános | **ügyfelek (mobil, asztali) átirányítása javasolt URL-ek** **átirányítása**szakaszban használja a használatát. **https://login.microsoftonline.com/common/oauth2/nativeclient**
 > 1. Kattintson a **Mentés** gombra.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-1-configure-your-application-in-azure-portal"></a>1\. lépés: Az alkalmazás konfigurálása az Azure Portalon
-> Ahhoz, hogy a rövid útmutatóhoz tartozó mintakód működjön, hozzá kell adnia egy válasz URL-címet **https://login.microsoftonline.com/common/oauth2/nativeclientként** .
+> #### <a name="step-1-configure-your-application-in-azure-portal"></a>1. lépés: Az alkalmazás konfigurálása az Azure Portalon
+> A rövid útmutató működéséhez a kódmintához hozzá kell **https://login.microsoftonline.com/common/oauth2/nativeclient**adnia egy válasz URL-címet .
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [A módosítás alkalmazása]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Már konfigurált](media/quickstart-v2-windows-desktop/green-check.png) Az alkalmazása már konfigurálva van ezekkel az attribútumokkal.
 
-#### <a name="step-2-download-your-visual-studio-project"></a>2\. lépés: A Visual Studio-projekt letöltése
+#### <a name="step-2-download-your-visual-studio-project"></a>2. lépés: A Visual Studio-projekt letöltése
 
 > [!div renderon="docs"]
 > [A Visual Studio-projekt letöltése](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip)  
@@ -67,18 +67,18 @@ Ebből a rövid útmutatóból megtudhatja, hogyan írhat egy Windows asztali .N
 > [!div class="sxs-lookup" renderon="portal"]
 > Futtassa a projektet a Visual Studio 2019 használatával.
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
-> [A mintakód letöltése](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip)
+> [A kódminta letöltése](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>3\. lépés: az alkalmazás konfigurálva van, és készen áll a futtatásra
-> A projektet az alkalmazás tulajdonságainak értékével konfiguráltuk, és készen áll a futtatásra. 
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>3. lépés: Az alkalmazás konfigurálva van, és készen áll a futtatásra
+> A projektet az alkalmazás tulajdonságainak értékeivel konfiguráltuk, és készen áll a futtatásra. 
 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
 > > Enter_the_Supported_Account_Info_Here
 
 > [!div renderon="docs"]
-> #### <a name="step-3-configure-your-visual-studio-project"></a>3\. lépés: A Visual Studio-projekt konfigurálása
+> #### <a name="step-3-configure-your-visual-studio-project"></a>3. lépés: A Visual Studio-projekt konfigurálása
 > 1. Csomagolja ki a zip-fájlt egy helyi mappába a lemez gyökerének közelében (például: **C:\Azure-Samples**).
 > 1. Nyissa meg a projektet a Visual Studióban.
 > 1. Módosítsa az **App.Xaml.cs** fájlt, és cserélje a `ClientId` és `Tenant` mezők értékét a következő kódra:
@@ -101,10 +101,10 @@ Ebből a rövid útmutatóból megtudhatja, hogyan írhat egy Windows asztali .N
 ## <a name="more-information"></a>További információ
 
 ### <a name="how-the-sample-works"></a>A minta működése
-![Bemutatja, hogyan működik a rövid útmutatóban létrehozott minta alkalmazás](media/quickstart-v2-windows-desktop/windesktop-intro.svg)
+![Megmutatja, hogyan működik az ez a rövid útmutató által létrehozott mintaalkalmazás](media/quickstart-v2-windows-desktop/windesktop-intro.svg)
 
 ### <a name="msalnet"></a>MSAL.NET
-A MSAL ([Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) az a könyvtár, amellyel a felhasználók bejelentkezhetnek, és a Microsoft Identity platform által védett API eléréséhez használt jogkivonatokat kérhetnek. Az MSAL telepítéséhez futtassa a következő parancsot a Visual Studio **Package Manager konzolján**:
+Az MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) a Microsoft identity platform által védett API-k eléréséhez használt felhasználók bejelentkezésére és tokenek kérelmezésére használt tár. Az MSAL telepítéséhez futtassa a következő parancsot a Visual Studio **Package Manager konzolján**:
 
 ```powershell
 Install-Package Microsoft.Identity.Client -IncludePrerelease
@@ -130,7 +130,7 @@ PublicClientApplicationBuilder.Create(ClientId)
 
 > |Az elemek magyarázata: ||
 > |---------|---------|
-> | `ClientId` | Az Azure Portalon regisztrált alkalmazás **alkalmazásazonosítója (ügyfél-azonosítója)** . Ezt az értéket az alkalmazás **Áttekintés** oldalán találja az Azure Portalon. |
+> | `ClientId` | Az Azure Portalon regisztrált alkalmazás **alkalmazásazonosítója (ügyfél-azonosítója)**. Ezt az értéket az alkalmazás **Áttekintés** oldalán találja az Azure Portalon. |
 
 ### <a name="requesting-tokens"></a>Jogkivonatok lekérése
 
@@ -138,7 +138,7 @@ Az MSAL a következő két metódust használja a jogkivonatok beszerzéséhez: 
 
 #### <a name="get-a-user-token-interactively"></a>Felhasználói jogkivonat interaktív lekérése
 
-Bizonyos helyzetekben a felhasználók kényszerítéséhez a Microsoft Identity platform-végpontot egy előugró ablakon keresztül kell megkövetelni a hitelesítő adatok érvényesítéséhez vagy a jóváhagyáshoz. Néhány példa:
+Bizonyos helyzetekben a felhasználóknak egy előugró ablakon keresztül kell interakcióba lépniük a Microsoft identity platform-végponttal, hogy érvényesítsék hitelesítő adataikat, vagy beleegyezésüket adják. Néhány példa:
 
 - Az első alkalommal, amikor felhasználók bejelentkeznek az alkalmazásba
 - Ha a felhasználóknak újból meg kell adniuk a hitelesítési adataikat, mert lejárt a jelszó
@@ -156,7 +156,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(_scopes)
 
 #### <a name="get-a-user-token-silently"></a>Felhasználói jogkivonat csendes beszerzése
 
-Nem ajánlott minden egyes alkalommal megkövetelni a felhasználóktól a hitelesítő adatok érvényesítését, amikor hozzá kell férniük egy erőforráshoz. Általában szerencsésebb, ha a jogkivonatok beszerzéséhez és megújításához nincs szükség felhasználói beavatkozásra. Kezdetben használja az `AcquireTokenSilent` metódust, majd a védett erőforrásokhoz való hozzáféréshez szükséges jogkivonatok beszerzéséhez az `AcquireTokenInteractive` metódust használhatja:
+Nem ajánlott minden egyes alkalommal megkövetelni a felhasználóktól a hitelesítő adatok érvényesítését, amikor hozzá kell férniük egy erőforráshoz. Általában szerencsésebb, ha a jogkivonatok beszerzéséhez és megújításához nincs szükség felhasználói beavatkozásra. Kezdetben használja az `AcquireTokenInteractive` metódust, majd a védett erőforrásokhoz való hozzáféréshez szükséges jogkivonatok beszerzéséhez az `AcquireTokenSilent` metódust használhatja:
 
 ```csharp
 var accounts = await App.PublicClientApp.GetAccountsAsync();
@@ -172,14 +172,14 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Próbálja ki az asztali Windowshoz készült oktatóanyagot, amelyben teljes körű, részletes útmutatót talál az alkalmazások és új szolgáltatások létrehozásához, valamint megtalálja ennek a rövid útmutatónak a teljes magyarázatát is.
 
 > [!div class="nextstepaction"]
 > [A Graph API meghívása – oktatóanyag](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-windesktop)
 
-Segítsen nekünk a Microsoft Identity platform fejlesztésében. Mondja el, mit gondol egy rövid, kétkérdéses felmérés végrehajtásával.
+Segítsen nekünk a Microsoft identitásplatformjának fejlesztésében. Mondja el, mit gondol egy rövid, kétkérdésű felmérés kitöltésével.
 
 > [!div class="nextstepaction"]
-> [Microsoft Identity platform-felmérés](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)
+> [Microsoft-identitásplatform-felmérés](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

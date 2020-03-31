@@ -1,20 +1,20 @@
 ---
 title: Biztonsági vezérlők
-description: Keresse meg a szervezete Azure App Service kiértékeléséhez szükséges biztonsági ellenőrzési ellenőrzőlistát.
+description: Keresse meg a biztonsági vezérlők ellenőrzőlistáját az Azure App Service kiértékeléséhez a szervezet számára.
 author: msmbaldwin
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 2586821c4c48f809efb5408c3cdae5e42e3b3fcf
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74671451"
 ---
-# <a name="security-controls-for-azure-app-service"></a>A Azure App Service biztonsági vezérlői
+# <a name="security-controls-for-azure-app-service"></a>Az Azure App Service biztonsági vezérlői
 
-Ez a cikk a Azure App Service beépített biztonsági vezérlőket dokumentálja.
+Ez a cikk az Azure App Service beépített biztonsági vezérlőket dokumentálja.
 
 [!INCLUDE [Security controls header](../../includes/security-controls-header.md)]
 
@@ -22,42 +22,42 @@ Ez a cikk a Azure App Service beépített biztonsági vezérlőket dokumentálja
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések | Dokumentáció
 |---|---|--|
-| Szolgáltatás végpontjának támogatása| Igen | App Service számára elérhető.| [Hozzáférési korlátozások Azure App Service](app-service-ip-restrictions.md)
-| VNet-befecskendezés támogatása| Igen | App Service környezetek a App Service privát implementációi, amelyek egyetlen ügyfél számára lettek befecskendezve az ügyfél virtuális hálózatába. | [A App Service-környezetek bemutatása](environment/intro.md)
-| Hálózati elkülönítés és tűzfalak támogatása| Igen | A App Service nyilvános, több-bérlős változatához az ügyfelek konfigurálhatják a hálózati ACL-eket (IP-korlátozásokat), hogy zárolják az engedélyezett bejövő forgalmat.  App Service környezetek közvetlenül a virtuális hálózatokra vannak telepítve, így a NSG-mel is biztonságossá teheti őket. | [Hozzáférési korlátozások Azure App Service](app-service-ip-restrictions.md)
-| Kényszerített bújtatás támogatása| Igen | App Service környezetek telepíthetők az ügyfél virtuális hálózatára, ahol a kényszerített bújtatás konfigurálva van. | [Az App Service-környezet konfigurálása kényszerített bújtatással](environment/forced-tunnel-support.md)
+| A szolgáltatás végpontjának támogatása| Igen | Elérhető az App Service számára.| [Az Azure App Service hozzáférési korlátozásai](app-service-ip-restrictions.md)
+| A VNet injekciózás támogatása| Igen | Az App Service-környezetek az App Service privát implementációi, amelyek egyetlen ügyfélnek vannak kiosztva, és amelyeket az ügyfél virtuális hálózatába injektálnak. | [Az App Service Environment bemutatása](environment/intro.md)
+| Hálózati elkülönítés és tűzfaltámogatás| Igen | Az App Service nyilvános több-bérlős változata esetén az ügyfelek konfigurálhatják a hálózati ACL-eket (IP-korlátozásokat) az engedélyezett bejövő forgalom zárolásához.  Az App Service-környezetek közvetlenül a virtuális hálózatokba vannak telepítve, és így az NSG-kkel biztosíthatók. | [Az Azure App Service hozzáférési korlátozásai](app-service-ip-restrictions.md)
+| Kényszerített bújtatástámogatása| Igen | Az App Service-környezetek telepíthetők az ügyfél virtuális hálózatába, ahol a kényszerített bújtatás konfigurálva van. | [Az App Service-környezet konfigurálása kényszerített bújtatással](environment/forced-tunnel-support.md)
 
-## <a name="monitoring--logging"></a>& Naplózás figyelése
+## <a name="monitoring--logging"></a>Naplózás & figyelése
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések | Dokumentáció
 |---|---|--|
-| Azure monitoring-támogatás (log Analytics, alkalmazás-elemzések stb.)| Igen | A App Service a Application Insights (teljes .NET-keretrendszer, .NET Core, Java és Node. JS) támogató nyelvekhez integrálható Application Insightsokkal.  Lásd: [Azure app Service teljesítményének figyelése](../azure-monitor/app/azure-web-apps.md). A App Service az alkalmazás metrikáit is elküldi a Azure Monitorba. | [Alkalmazások figyelése Azure App Service](web-sites-monitor.md)
-| Vezérlési és felügyeleti síkok naplózása és naplózása| Igen | App Service objektumokon végrehajtott összes felügyeleti művelet [Azure Resource Manageron](../azure-resource-manager/index.yml)keresztül történik. Ezeknek a műveleteknek a korábbi naplói a Portálon és a CLI-n keresztül is elérhetők. | [Erőforrás-szolgáltatói műveletek Azure Resource Manager](../role-based-access-control/resource-provider-operations.md#microsoftweb) [az az monitor Activity-log](/cli/azure/monitor/activity-log)
-| Adatsíkok naplózása és naplózása | Nem | A App Service adatsíkja egy távoli fájlmegosztás, amely az ügyfél telepített webhely-tartalmát tartalmazza.  A távoli fájlmegosztás naplózása nem történik meg. |
+| Azure figyelési támogatás (Naplóelemzés, Alkalmazáselemzések stb.)| Igen | Az App Service integrálható az Application Insights alkalmazáselemzési adatokat támogató nyelvekhez (Teljes .  Lásd: [Az Azure App Service teljesítményének figyelése.](../azure-monitor/app/azure-web-apps.md) Az App Service alkalmazásmetrikákat is küld az Azure Monitorba. | [Alkalmazások figyelése az Azure App Service-ben](web-sites-monitor.md)
+| Vezérlő és felügyeleti sík naplózása és naplózása| Igen | Az App Service-objektumokon végrehajtott összes felügyeleti művelet az [Azure Resource Manageren](../azure-resource-manager/index.yml)keresztül történik. Ezek a műveletek előzménynaplói mind a portálon, mind a CLI-n keresztül elérhetők. | [Az Azure Resource Manager erőforrás-szolgáltató műveletei](../role-based-access-control/resource-provider-operations.md#microsoftweb), [az figyelési tevékenységnapló](/cli/azure/monitor/activity-log)
+| Adatsík naplózása és naplózása | Nem | Az App Service adatsíkja egy távoli fájlmegosztás, amely az ügyfél által telepített webhely tartalmat tartalmazza.  A távoli fájlmegosztás nem naplózva. |
 
-## <a name="identity"></a>Identitáskezelés
+## <a name="identity"></a>Identitás
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések |  Dokumentáció
 |---|---|--|
-| Hitelesítés| Igen | Az ügyfelek olyan App Service alkalmazásokat hozhatnak létre, amelyek automatikusan integrálva vannak a [Azure Active Directory (Azure ad)](../active-directory/index.yml) és az egyéb OAuth kompatibilis identitás-szolgáltatókkal az App Service eszközökhöz való felügyeleti hozzáféréshez, az összes hozzáférést az Azure ad hitelesített rendszerbiztonsági és Azure Resource Manager RBAC-szerepkörök kombinációja vezérli. | [Hitelesítés és engedélyezés az Azure App Service-ben](overview-authentication-authorization.md)
-| Engedélyezés| Igen | App Service eszközök felügyeletéhez az összes hozzáférés az Azure AD-beli hitelesített rendszerbiztonsági tag és a Azure Resource Manager RBAC-szerepkörök kombinációjával vezérelhető.  | [Hitelesítés és engedélyezés az Azure App Service-ben](overview-authentication-authorization.md)
+| Hitelesítés| Igen | Az ügyfelek olyan alkalmazásokat hozhatnak létre az App Service szolgáltatásban, amelyek automatikusan integrálódnak [az Azure Active Directoryval (Azure AD)](../active-directory/index.yml) és más OAuth-kompatibilis identitásszolgáltatókkal Az App Service-eszközökhöz való felügyeleti hozzáféréshez minden hozzáférést az Azure AD által hitelesített egyszerű és az Azure Resource Manager RBAC szerepkörök kombinációja szabályoz. | [Hitelesítés és engedélyezés az Azure App Service-ben](overview-authentication-authorization.md)
+| Engedélyezés| Igen | Az App Service-eszközökhöz való felügyeleti hozzáférés hez az Azure AD által hitelesített egyszerű és az Azure Resource Manager RBAC szerepkörök kombinációja szabályozza az összes hozzáférést.  | [Hitelesítés és engedélyezés az Azure App Service-ben](overview-authentication-authorization.md)
 
 ## <a name="data-protection"></a>Adatvédelem
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések | Dokumentáció
 |---|---|--|
-| Kiszolgálóoldali titkosítás nyugalmi állapotban: Microsoft által felügyelt kulcsok | Igen | A webhely fájljának tartalmát az Azure Storage tárolja, amely automatikusan titkosítja a tartalmat a nyugalmi állapotban. <br><br>Az ügyfél által megadott titkos kódok inaktívak. A titkos kulcsok titkosítása App Service konfigurációs adatbázisokban történik.<br><br>A helyileg csatlakoztatott lemezek opcionálisan használhatók a webhelyek (D:\Local és% TMP%) ideiglenes tárolóként. A helyileg csatlakoztatott lemezek nincsenek titkosítva a nyugalmi állapotban. | [Azure Storage-titkosítás a REST-adatokhoz](../storage/common/storage-service-encryption.md)
-| Kiszolgálóoldali titkosítás nyugalmi állapotban: ügyfél által felügyelt kulcsok (BYOK) | Igen | Az ügyfelek dönthetnek úgy, hogy az alkalmazás-titkokat a Key Vaultban tárolják, és futásidőben lekérik őket. | [Key Vault referenciák használata App Service és Azure Functionshoz (előzetes verzió)](app-service-key-vault-references.md)
-| Oszlop szintű titkosítás (Azure Data Services)| – | |
-| Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| Igen | Az ügyfelek a HTTPS protokollal konfigurálhatják a bejövő forgalmat, és megkövetelhetik a webhelyek használatát.  | [Csak HTTPS-Azure app Service létrehozása](https://blogs.msdn.microsoft.com/benjaminperkins/2017/11/30/how-to-make-an-azure-app-service-https-only/) (blogbejegyzés)
-| Titkosított API-hívások| Igen | App Service konfigurálására irányuló felügyeleti hívások a HTTPS-en keresztüli [Azure Resource Manager](../azure-resource-manager/index.yml) hívásokon keresztül történnek. |
+| Kiszolgálóoldali titkosítás inaktív állapotban: Microsoft által felügyelt kulcsok | Igen | A webhelyfájl tartalma az Azure Storage-ban tárolódik, amely automatikusan titkosítja a nyugalmi helyen lévő tartalmat. <br><br>Az ügyfél által megadott titkok titkosítva vannak. A titkos kulcsok titkosítva vannak az App Service konfigurációs adatbázisaiban.<br><br>A helyileg csatlakoztatott lemezeket a webhelyek (D:\local és %TMP%) ideiglenes tárolóként is használhatják. A helyileg csatlakoztatott lemezek nem lesznek titkosítva az inkett helyen. | [Az Azure Storage titkosítása az inaktív adatokhoz](../storage/common/storage-service-encryption.md)
+| Kiszolgálóoldali titkosítás inaktív állapotban: ügyfél által felügyelt kulcsok (BYOK) | Igen | Az ügyfelek dönthetnek úgy, hogy az alkalmazástitkos kulcsokat a Key Vaultban tárolják, és futásidőben lekérik őket. | [Key Vault-hivatkozások használata az App Service és az Azure Functions szolgáltatáshoz (előzetes verzió)](app-service-key-vault-references.md)
+| Oszlopszintű titkosítás (Azure Data Services)| N/A | |
+| Titkosítás átvitel közben (például ExpressRoute-titkosítás, virtuális hálózat titkosítása és Virtuálishálózati titkosítás)| Igen | Az ügyfelek beállíthatják, hogy a webhelyek https-t igényeljenek, és https-t használjanak a bejövő forgalomhoz.  | [Csak az Azure App Service HTTPS létrehozása](https://blogs.msdn.microsoft.com/benjaminperkins/2017/11/30/how-to-make-an-azure-app-service-https-only/) (blogbejegyzés)
+| TITKOSÍTOTT API-hívások| Igen | Az App Service konfigurálásához az App Service konfigurálásához az [Azure Resource Manager-hívások](../azure-resource-manager/index.yml) HTTPS-en keresztül történnek. |
 
 ## <a name="configuration-management"></a>Konfigurációkezelés
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések | Dokumentáció
 |---|---|--|
-| Configuration Management-támogatás (konfiguráció verziószámozása stb.)| Igen | Felügyeleti műveletek esetében egy App Service konfiguráció állapota Azure Resource Manager sablonként exportálható, és az idő múlásával verzióban is elvégezhető. A futásidejű műveletek esetében az ügyfelek több különböző élő verziót is kezelhetnek az App Service üzembe helyezési pontok funkció használatával. | 
+| Konfigurációkezelés támogatása (a konfiguráció verziószámozása stb.)| Igen | Felügyeleti műveletek esetén az App Service-konfiguráció állapota exportálható Azure Resource Manager-sablonként, és idővel verziószámmal verziózható. A futásidejű műveletek hez az ügyfelek az App Service központi telepítési bővítőhely-szolgáltatásával az alkalmazás több különböző élő verzióját is fenntarthatják. | 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- További információ a [beépített biztonsági vezérlőkről az Azure-szolgáltatások között](../security/fundamentals/security-controls.md).
+- További információ az [Azure-szolgáltatások beépített biztonsági vezérlőiről.](../security/fundamentals/security-controls.md)
