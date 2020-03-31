@@ -1,39 +1,39 @@
 ---
 title: A Docker Compose használata
-description: A Docker telepítése és használata Linux rendszerű virtuális gépeken az Azure CLI használatával.
+description: A Docker és a Compose linuxos virtuális gépeken való telepítése és használata az Azure CLI-vel.
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 02/14/2019
 ms.author: cynthn
 ms.openlocfilehash: 434a3ef8c9bc1738252d59a5dca5bec16d85e45e
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78970302"
 ---
-# <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Ismerkedés a Docker és a levélírás használatával többtárolós alkalmazások definiálásához és futtatásához az Azure-ban
-Az [összeállítás](https://github.com/docker/compose)során egy egyszerű szövegfájl használatával határozhat meg egy több Docker-tárolóból álló alkalmazást. Ezután elindíthatja az alkalmazást egyetlen parancsban, amely mindent megtesz a definiált környezet üzembe helyezéséhez. Ebből a cikkből megtudhatja, hogyan hozhat létre gyorsan egy WordPress-blogot egy háttérbeli MariaDB az SQL Database-ben egy Ubuntu rendszerű virtuális gépen. Az összeállítás segítségével összetettebb alkalmazásokat is beállíthat.
+# <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Ismerkedjen meg a Dockerrel és a Compose szolgáltatással egy többtárolós alkalmazás definiálásához és futtatásához az Azure-ban
+A [Compose](https://github.com/docker/compose)segítségével egy egyszerű szöveges fájlt definiálni egy alkalmazás, amely több Docker-tárolók. Ezután egyetlen parancsban üzembe helyezheti az alkalmazást, amely mindent megtesz a meghatározott környezet üzembe helyezéséhez. Például ez a cikk bemutatja, hogyan lehet gyorsan beállítani egy WordPress blogot egy háttér MariaDB SQL adatbázissal egy Ubuntu VM-en. Összetettebb alkalmazások beállításához is használhatja a Compose segítségével.
 
-Ez a cikk a [Azure Cloud Shell](https://shell.azure.com/bash) és az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 2.0.58-verziójának használatával a 2/14/2019-as utolsó tesztelésen esett át.
+Ezt a cikket utoljára 2019.02.14-én teszteltük az [Azure Cloud Shell](https://shell.azure.com/bash) és az Azure [CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 2.0.58-as verziójával.
 
 ## <a name="create-docker-host-with-azure-cli"></a>Docker-gazdagép létrehozása az Azure CLI-vel
-Telepítse a legújabb [Azure CLI](/cli/azure/install-az-cli2) -t, és jelentkezzen be egy Azure-fiókba az [az login](/cli/azure/reference-index)használatával.
+Telepítse a legújabb [Azure CLI-t,](/cli/azure/install-az-cli2) és jelentkezzen be egy Azure-fiókba [az az login](/cli/azure/reference-index)használatával.
 
-Először hozzon létre egy erőforráscsoportot a Docker-környezethez az [az Group Create](/cli/azure/group)paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
+Először hozzon létre egy erőforráscsoportot a Docker-környezethez [az csoport létrehozásával.](/cli/azure/group) A következő példa létrehoz egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen:
 
 ```azurecli-interactive
 az group create --name myDockerGroup --location eastus
 ```
 
-Hozzon létre egy *Cloud-init. txt* nevű fájlt, és illessze be a következő konfigurációt. Írja be a `sensible-editor cloud-init.txt` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. 
+Hozzon létre egy *cloud-init.txt* nevű fájlt, és illessze be a következő konfigurációt. Írja be a `sensible-editor cloud-init.txt` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. 
 
 ```yaml
 #include https://get.docker.com
 ```
 
-Most hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az-vm-create) paranccsal. Használja a `--custom-data` paramétert a cloud-init konfigurációs fájl megadásához. Adja meg a *cloud-init.txt* konfiguráció teljes elérési útját, ha az aktuális munkakönyvtáron kívülre mentette. Az alábbi példa egy *myDockerVM* nevű virtuális gépet hoz létre, és megnyitja a 80-as portot a webes forgalom számára.
+Most hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm#az-vm-create) paranccsal. Használja a `--custom-data` paramétert a cloud-init konfigurációs fájl megadásához. Adja meg a *cloud-init.txt* konfiguráció teljes elérési útját, ha az aktuális munkakönyvtáron kívülre mentette. A következő példa létrehoz egy *myDockerVM* nevű virtuális gép, és megnyitja a 80-as portot a webes forgalom számára.
 
 ```azurecli-interactive
 az vm create \
@@ -52,32 +52,32 @@ A virtuális gép létrehozása, a csomagok telepítése és az alkalmazás elin
 
                  
 
-## <a name="install-compose"></a>Összeállítás telepítése
+## <a name="install-compose"></a>Compose telepítése
 
 
-SSH-t az új Docker-gazda virtuális gépre. Adja meg a saját IP-címét.
+SSH az új Docker-gazdagép virtuális gép. Adja meg saját IP-címét.
 
 ```bash
 ssh azureuser@10.10.111.11
 ```
 
-Telepítse a levélírás szolgáltatást a virtuális gépre.
+Telepítse a Compose alkalmazást a virtuális gépre.
 
 ```bash
 sudo apt install docker-compose
 ```
 
 
-## <a name="create-a-docker-composeyml-configuration-file"></a>Docker-compose. YML konfigurációs fájl létrehozása
-Hozzon létre egy `docker-compose.yml` konfigurációs fájlt a virtuális gépen futtatandó Docker-tárolók definiálásához. A fájl meghatározza az egyes tárolókban futtatandó rendszerképet, a szükséges környezeti változókat, a függőségeket, a portokat és a tárolók közötti kapcsolatokat. A YML-fájl szintaxisával kapcsolatos részletekért lásd a [fájl összeállításának leírása](https://docs.docker.com/compose/compose-file/)című témakört.
+## <a name="create-a-docker-composeyml-configuration-file"></a>Docker-compose.yml konfigurációs fájl létrehozása
+Hozzon `docker-compose.yml` létre egy konfigurációs fájlt a virtuális gépen futtatandó Docker-tárolók meghatározásához. A fájl határozza meg az egyes tárolókon futtatandó lemezképet, a szükséges környezeti változókat és függőségeket, portokat és a tárolók közötti kapcsolatokat. Az yml fájl szintaxisával kapcsolatos részleteket a [Fájlhivatkozás összeállítása .com.](https://docs.docker.com/compose/compose-file/)
 
-Hozzon létre egy *Docker-compose. YML* fájlt. A fájlhoz a kedvenc szövegszerkesztővel adhat hozzá adatfájlokat. A következő példa létrehozza a fájlt, és rákérdez a `sensible-editor`re, és kiválaszthatja a használni kívánt szerkesztőt.
+Hozzon létre egy *docker-compose.yml* fájlt. Kedvenc szövegszerkesztője segítségével adhat hozzá adatokat a fájlhoz. A következő példa a fájlt `sensible-editor` egy általa használni kívánt szerkesztő kiválasztására vonatkozó üzenettel hozza létre.
 
 ```bash
 sensible-editor docker-compose.yml
 ```
 
-Illessze be a következő példát a Docker-összeállítási fájlba. Ez a konfiguráció a DockerHub- [beállításjegyzékből](https://registry.hub.docker.com/_/wordpress/) származó rendszerképeket használ a WordPress (nyílt forráskódú blog és tartalomkezelő rendszer) és egy csatolt háttérbeli MariaDB SQL Database telepítéséhez. Adja meg saját *MYSQL_ROOT_PASSWORDét*.
+Illessze be a következő példát a Docker-írás fájlba. Ez a konfiguráció a [DockerHub rendszerleíró adatbázisból](https://registry.hub.docker.com/_/wordpress/) származó lemezképeket használja a WordPress (a nyílt forráskódú blog- és tartalomkezelő rendszer) és a kapcsolódó Háttér-MariaDB SQL adatbázis telepítéséhez. Adja meg saját *MYSQL_ROOT_PASSWORD*.
 
 ```yml
 wordpress:
@@ -93,14 +93,14 @@ db:
     MYSQL_ROOT_PASSWORD: <your password>
 ```
 
-## <a name="start-the-containers-with-compose"></a>A tárolók elindítása összeállítással
-A *Docker-compose. YML* fájllal megegyező könyvtárban futtassa a következő parancsot (a környezettől függően előfordulhat, hogy a `sudo`használatával kell futtatnia `docker-compose`):
+## <a name="start-the-containers-with-compose"></a>A tárolók indítása a Compose segítségével
+Ugyanabban a könyvtárban, mint a *docker-compose.yml* fájl, fuss a következő parancsot `sudo`(attól függően, hogy a környezet, akkor lehet, hogy fut a): `docker-compose`
 
 ```bash
 sudo docker-compose up -d
 ```
 
-Ez a parancs elindítja a *Docker-compose. YML*által megadott Docker-tárolókat. Ennek a lépésnek a befejezéséhez egy-két percet vesz igénybe. A következőhöz hasonló kimenet jelenik meg:
+Ez a parancs elindítja a *docker-compose.yml-ben*megadott Docker-tárolókat. A lépés végrehajtásához egy-két percet vesz igénybe. A kimenet az alábbihoz hasonló lesz:
 
 ```
 Creating wordpress_db_1...
@@ -109,7 +109,7 @@ Creating wordpress_wordpress_1...
 ```
 
 
-Annak ellenőrzéséhez, hogy a tárolók fel vannak-e, írja be a `sudo docker-compose ps`. Ehhez hasonlóan kell megjelennie:
+Annak ellenőrzéséhez, hogy a `sudo docker-compose ps`tárolók fent vannak-e, írja be a következőt: Ennek nagyjából a következőképpen kell kinéznie:
 
 ```
         Name                       Command               State         Ports
@@ -118,12 +118,12 @@ azureuser_db_1          docker-entrypoint.sh mysqld      Up      3306/tcp
 azureuser_wordpress_1   docker-entrypoint.sh apach ...   Up      0.0.0.0:80->80/tcp
 ```
 
-Mostantól közvetlenül a 80-es porton keresztül csatlakozhat a WordPresshez a virtuális gépen. Nyisson meg egy webböngészőt, és adja meg a virtuális gép IP-címét. Ekkor meg kell jelennie a WordPress Start képernyőjén, ahol elvégezheti a telepítést, és megkezdheti az alkalmazás megkezdését.
+Most már közvetlenül a 80-as porton csatlakozhat a WordPress-hez a virtuális gépen. Nyisson meg egy webböngészőt, és adja meg a virtuális gép IP-címét. Most látnia kell a WordPress kezdőképernyőjét, ahol befejezheti a telepítést és elkezdheti az alkalmazást.
 
-![WordPress-kezdőképernyő](./media/docker-compose-quickstart/wordpressstart.png)
+![WordPress kezdőképernyő](./media/docker-compose-quickstart/wordpressstart.png)
 
-## <a name="next-steps"></a>Következő lépések
-* A többtárolós alkalmazások létrehozásával és üzembe helyezésével kapcsolatos további példákért tekintse meg az [összeállítás parancssori referenciáját](https://docs.docker.com/compose/reference/) és a [felhasználói útmutatót](https://docs.docker.com/compose/) .
-* Használjon egy olyan Azure Resource Manager sablont, amely a saját vagy a [Közösség](https://azure.microsoft.com/documentation/templates/)által biztosított, egy Azure-beli virtuális gép üzembe helyezése a Docker használatával és egy összeállítással beállított alkalmazás. Például a [WordPress blog üzembe helyezése a Docker](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-wordpress-mysql) sablonnal a Docker használatával és a levélírás használatával gyorsan üzembe helyezheti a WordPresst egy Ubuntu virtuális gépen futó MySQL-háttérrel.
-* Próbálja meg a Docker-összeállítást Docker Swarm-fürttel integrálni. Lásd: a [levélírás és a Swarm használata](https://docs.docker.com/compose/swarm/) forgatókönyvek esetén.
+## <a name="next-steps"></a>További lépések
+* Tekintse meg a [Parancssori útmutató](https://docs.docker.com/compose/reference/) és [a felhasználói útmutató](https://docs.docker.com/compose/) további példákat a többtárolós alkalmazások létrehozásáról és üzembe helyezéséről.
+* Azure Resource Manager-sablon használatával, akár a saját, vagy egy hozzájárult a [közösség,](https://azure.microsoft.com/documentation/templates/)üzembe helyezhet egy Azure virtuális gép a Docker és egy alkalmazás beállítása a Compose. Például a [Deploy a WordPress blog Docker](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-wordpress-mysql) sablon segítségével Docker és compose gyorsan telepíteni WordPress egy MySQL háttérrendszer egy Ubuntu VM.
+* Próbálja meg integrálni a Docker Compose-t egy Docker-raj fürttel. Lásd: [A Sraj összeállítása](https://docs.docker.com/compose/swarm/) forgatókönyveket.
 

@@ -1,6 +1,6 @@
 ---
-title: Azure-infrastruktúra rendelkezésre állása – Azure Security
-description: Ez a cikk tájékoztatást nyújt arról, hogy a Microsoft mit tesz az Azure-infrastruktúra biztonságossá tételéhez, és az ügyfelek adatainak maximális rendelkezésre állását biztosítja.
+title: Az Azure-infrastruktúra elérhetősége – Azure-biztonság
+description: Ez a cikk arról nyújt tájékoztatást, hogy a Microsoft mit tesz az Azure-infrastruktúra védelme és az ügyfelek adatainak maximális rendelkezésre állása érdekében.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,42 +16,42 @@ ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
 ms.openlocfilehash: c50c4faf47caf0a7519d61fdc8989ec9fd809d78
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68727218"
 ---
-# <a name="azure-infrastructure-availability"></a>Azure-infrastruktúra rendelkezésre állása
-Ez a cikk tájékoztatást nyújt arról, hogy a Microsoft mit tesz az Azure-infrastruktúra biztonságossá tételéhez, és az ügyfelek adatainak maximális rendelkezésre állását biztosítja. Az Azure robusztus rendelkezésre állást biztosít a virtualizációs technológiával megvalósított széles körű redundancia alapján.
+# <a name="azure-infrastructure-availability"></a>Az Azure-infrastruktúra rendelkezésre állása
+Ez a cikk arról nyújt tájékoztatást, hogy a Microsoft mit tesz az Azure-infrastruktúra védelme és az ügyfelek adatainak maximális rendelkezésre állása érdekében. Az Azure robusztus rendelkezésre állást biztosít a virtualizációs technológiával elért kiterjedt redundancia alapján.
 
-## <a name="temporary-outages-and-natural-disaster"></a>Átmeneti kimaradások és természeti katasztrófák
-A Microsoft Cloud infrastruktúra-és üzemeltetési csapat tervez, épít, működtet és javítja a felhőalapú infrastruktúra biztonságát. Ez a csapat biztosítja, hogy az Azure-infrastruktúra magas rendelkezésre állást és megbízhatóságot, nagy hatékonyságot és intelligens méretezhetőséget biztosít. A csapat biztonságosabb, privát és megbízható felhőket biztosít.
+## <a name="temporary-outages-and-natural-disaster"></a>Átmeneti leállások és természeti katasztrófák
+A Microsoft Cloud Infrastructure and Operations csapata megtervezi, felépíti, működteti és javítja a felhőalapú infrastruktúra biztonságát. Ez a csapat biztosítja, hogy az Azure-infrastruktúra magas rendelkezésre állást és megbízhatóságot, nagy hatékonyságot és intelligens méretezhetőséget biztosítson. A csapat biztonságosabb, privátabb és megbízhatóbb felhőt biztosít.
 
-A szünetmentes áramforrások és az akkumulátorok hatalmas bankjai biztosítják, hogy a villamos energia folyamatos maradjon, ha rövid távú áramkimaradás történik. A vészhelyzeti generátorok biztonsági mentési teljesítményt nyújtanak a hosszabb kimaradások és a tervezett karbantartás számára. Ha természeti katasztrófa következik be, az adatközpont a helyszíni üzemanyag-tartalékokat is használhatja.
+Szünetmentes tápegységek és hatalmas bankok az elemek biztosítják, hogy a villamos energia folyamatos marad, ha egy rövid távú áramkimaradás lép fel. A vészhelyzeti generátorok tartalék áramellátást biztosítanak a hosszabb üzemszünetek és a tervezett karbantartás érdekében. Természeti katasztrófa esetén az adatközpont helyszíni üzemanyag-tartalékokat használhat.
 
-A nagy sebességű és robusztus száloptikai hálózatok az adatközpontokat más nagyobb hubokkal és internetes felhasználókkal kötik össze. A számítási csomópontok a késés csökkentése, a Geo-redundancia biztosítása és a szolgáltatás általános rugalmasságának fokozása érdekében a munkaterheléseket közelebb hozzák a felhasználókhoz. A szolgáltatások folyamatos rendelkezésre állásának biztosítása érdekében a mérnökök csapata éjjel-nappal működik.
+A nagy sebességű és robusztus optikai hálózatok összekapcsolják az adatközpontokat más nagy központokkal és internetezőkkel. Számítási csomópontok a felhasználókhoz közelebb idomulnak a késés csökkentéséhez, a georedundancia biztosításához és az általános szolgáltatásrugalmasság növeléséhez. A mérnökök csapata éjjel-nappal azon dolgozik, hogy a szolgáltatások tartósan elérhetők legyenek.
 
-A Microsoft biztosítja a magas rendelkezésre állást a fejlett monitorozási és incidens-válaszokkal, a szolgáltatások támogatásával és a feladatátvételi képességgel kapcsolatban. A földrajzilag elosztott Microsoft Operations centerek 24/7/365-at működtetnek. Az Azure-hálózat az egyik legnagyobb a világon. A száloptika és a Content Distribution Network összekapcsolja az adatközpontokat és a peremhálózati csomópontokat a nagy teljesítmény és megbízhatóság biztosítása érdekében.
+A Microsoft magas rendelkezésre állást biztosít a fejlett figyelési és incidens-reagálás, a szolgáltatástámogatás és a biztonsági mentési feladatátvételi képesség révén. A földrajzilag elosztott Microsoft műveleti központok a 24/7/365-öt üzemeltetik. Az Azure-hálózat az egyik legnagyobb a világon. Az optikai és tartalomterjesztési hálózat adatközpontokat és peremhálózati csomópontokat köt össze a nagy teljesítmény és megbízhatóság biztosítása érdekében.
 
 ## <a name="disaster-recovery"></a>Vészhelyreállítás
-Az Azure két helyen tartja az adatvédelmet. Megadhatja a biztonsági mentési hely helyét. Az Azure mindkét helyen folyamatosan három kifogástalan adatreplikát tart fenn az adataiban.
+Az Azure két helyen is megőrzi az adatokat. Kiválaszthatja a biztonsági mentési hely helyét. Mindkét helyen az Azure folyamatosan három kifogástalan állapotú replikát tart fenn az adatokról.
 
-## <a name="database-availability"></a>Adatbázis rendelkezésre állása
-Az Azure biztosítja, hogy az adatbázisok elérhetők legyenek az Internet-átjárón keresztül a tartós adatbázisok rendelkezésre állásával. A monitorozás az aktív adatbázisok állapotát és állapotát öt percenként méri.
+## <a name="database-availability"></a>Adatbázis elérhetősége
+Az Azure biztosítja, hogy az adatbázis elérhető egy internetes átjárón keresztül, tartós adatbázis-rendelkezésre állással. A figyelés ötperces időközönként értékeli az aktív adatbázisok állapotát és állapotát.
 
 ## <a name="storage-availability"></a>Tárterület rendelkezésre állása
-Az Azure egy rugalmasan méretezhető és tartós tárolási szolgáltatáson keresztül biztosítja a tárterületet, amely csatlakozási végpontokat biztosít. Ez azt jelenti, hogy az alkalmazás közvetlenül is hozzáférhet a Storage szolgáltatáshoz. A tárolási szolgáltatás hatékonyan dolgozza fel a bejövő tárolási kérelmeket tranzakciós integritással.
+Az Azure nagy mértékben méretezhető és tartós tárolási szolgáltatáson keresztül biztosít tárhelyet, amely kapcsolódási végpontokat biztosít. Ez azt jelenti, hogy egy alkalmazás közvetlenül hozzáférhet a tárolási szolgáltatáshoz. A tárolási szolgáltatás hatékonyan, tranzakciós integritással dolgozza fel a bejövő tárolási kérelmeket.
 
 ## <a name="next-steps"></a>További lépések
-Ha többet szeretne megtudni arról, hogy mit tesz a Microsoft az Azure-infrastruktúra biztonságossá tételéhez, tekintse meg a következőt:
+Ha többet szeretne megtudni arról, hogy a Microsoft mit tesz az Azure-infrastruktúra védelme érdekében, olvassa el a következő témakört:
 
-- [Azure-létesítmények,-telephelyek és fizikai biztonság](physical-security.md)
-- [Azure Information System-összetevők és-határok](infrastructure-components.md)
+- [Az Azure létesítményei, helyiségei és fizikai biztonsága](physical-security.md)
+- [Az Azure információs rendszer összetevői és határai](infrastructure-components.md)
 - [Azure hálózati architektúra](infrastructure-network.md)
-- [Azure-beli üzemi hálózat](production-network.md)
-- [Azure SQL Database biztonsági funkciók](infrastructure-sql.md)
-- [Azure-beli üzemi műveletek és felügyelet](infrastructure-operations.md)
-- [Azure-infrastruktúra figyelése](infrastructure-monitoring.md)
-- [Azure-infrastruktúra integritása](infrastructure-integrity.md)
-- [Azure Customer-adatvédelem](protection-customer-data.md)
+- [Azure éles hálózat](production-network.md)
+- [Az Azure SQL Database biztonsági szolgáltatásai](infrastructure-sql.md)
+- [Az Azure éles üzemei és kezelése](infrastructure-operations.md)
+- [Az Azure-infrastruktúra figyelése](infrastructure-monitoring.md)
+- [Az Azure infrastruktúra integritása](infrastructure-integrity.md)
+- [Az Azure-beli ügyfelek adatainak védelme](protection-customer-data.md)

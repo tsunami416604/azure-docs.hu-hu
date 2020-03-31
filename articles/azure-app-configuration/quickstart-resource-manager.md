@@ -1,6 +1,6 @@
 ---
-title: Automatizált virtuális gépek üzembe helyezése az Azure-alkalmazás konfigurálásával – rövid útmutató
-description: Ez a rövid útmutató azt ismerteti, hogyan használható a Azure PowerShell modul és Azure Resource Manager sablonok egy Azure-alkalmazás konfigurációs tárolójának üzembe helyezéséhez. Ezután a tárolóban lévő értékek használatával helyezzen üzembe egy virtuális gépet.
+title: Automatikus virtuális géptelepítés az Azure App Konfigurációs rövid útmutatójával
+description: Ez a rövid útmutató bemutatja, hogyan használhatja az Azure PowerShell-modult és az Azure Resource Manager-sablonokat egy Azure App Configuration Store üzembe helyezéséhez. Ezután használja az értékeket az üzletben egy virtuális gép üzembe helyezéséhez.
 author: lisaguthrie
 ms.author: lcozzens
 ms.date: 03/05/2020
@@ -10,17 +10,17 @@ ms.custom:
 - mvc
 - subject-armqs
 ms.openlocfilehash: c45f6855c33dff2790ced306fd7f049b98dd1387
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79126379"
 ---
-# <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template"></a>Gyors útmutató: automatikus virtuálisgép-telepítés az alkalmazás-konfigurációval és Resource Manager-sablonnal
+# <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template"></a>Rövid útmutató: Automatikus virtuális gép telepítés alkalmazáskonfigurációs és erőforrás-kezelő sablonnal
 
-A Azure PowerShell modul Azure-erőforrások létrehozásához és kezeléséhez használható PowerShell-parancsmagokkal vagy parancsfájlokkal. Ez a rövid útmutató bemutatja, hogyan használhatók Azure PowerShell és Azure Resource Manager sablonok az Azure-alkalmazások konfigurációs tárolójának üzembe helyezéséhez. Ezután megtudhatja, hogyan használhatja a tárolóban lévő kulcs-értékeket a virtuális gépek üzembe helyezéséhez.
+Az Azure PowerShell-modul segítségével azure-erőforrásokat hozhat létre és kezelhet PowerShell-parancsmagokkal vagy parancsfájlokkal. Ez a rövid útmutató bemutatja, hogyan használhatja az Azure PowerShell és az Azure Resource Manager-sablonokat egy Azure App Configuration Store üzembe helyezéséhez. Ezután megtudhatja, hogyan használhatja a kulcsértékeket az üzletben egy virtuális gép üzembe helyezéséhez.
 
-Az előfeltételként szükséges sablonnal létrehozhat egy alkalmazás-konfigurációs tárolót, majd a Azure Portal vagy az Azure CLI használatával adhat hozzá kulcs-értékeket az áruházhoz. Az elsődleges sablon meglévő konfigurációs tárolóból származó létező kulcs-érték konfigurációkra hivatkozik. A beolvasott értékek a sablon által létrehozott erőforrások tulajdonságainak beállítására szolgálnak, például egy virtuális gépre ebben a példában.
+Az előfeltételi sablon használatával hozzon létre egy App Configuration Store, majd adja hozzá a kulcsértékeket az áruházhoz az Azure Portalon vagy az Azure CLI használatával. Az elsődleges sablon meglévő kulcsérték-konfigurációkra hivatkozik egy meglévő konfigurációs tárolóból. A beolvasott értékek a sablon által létrehozott erőforrások tulajdonságainak beállítására szolgálnak, például egy virtuális gépre ebben a példában.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -30,18 +30,18 @@ Az előfeltételként szükséges sablonnal létrehozhat egy alkalmazás-konfigu
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot.](https://azure.microsoft.com/free/)
 
-* Ehhez a rövid útmutatóhoz a Azure PowerShell modul szükséges. Ahhoz, hogy megtudja, melyik verzió van telepítve a helyi gépen, futtassa a `Get-Module -ListAvailable Az` parancsot. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-Az-ps) ismertető cikket.
+* Ehhez a rövid útmutatóhoz az Azure PowerShell-modul szükséges. Ahhoz, hogy megtudja, melyik verzió van telepítve a helyi gépen, futtassa a `Get-Module -ListAvailable Az` parancsot. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-Az-ps) ismertető cikket.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure-előfizetésbe a `Connect-AzAccount` paranccsal, és adja meg az Azure-beli hitelesítő adatait az előugró böngészőben:
+Jelentkezzen be az Azure-előfizetésbe a `Connect-AzAccount` paranccsal, és adja meg az Azure-hitelesítő adatait az előugró böngészőben:
 
 ```azurepowershell-interactive
 # Connect to your Azure account
 Connect-AzAccount
 ```
 
-Ha egynél több előfizetéssel rendelkezik, válassza ki a rövid útmutatóhoz használni kívánt előfizetést a következő parancsmagok futtatásával. Ne felejtse el lecserélni `<your subscription name>` az előfizetés nevére:
+Ha egynél több előfizetéssel rendelkezik, válassza ki a rövid útmutatóhoz használni kívánt előfizetést a következő parancsmagok futtatásával. Ne felejtse el `<your subscription name>` helyettesíteni az előfizetés nevét:
 
 ```azurepowershell-interactive
 # List all available subscriptions.
@@ -53,7 +53,7 @@ Get-AzSubscription -SubscriptionName "<your subscription name>" | Select-AzSubsc
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Hozzon létre egy Azure-erőforráscsoportot a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
+Hozzon létre egy Azure-erőforráscsoportot a [New-AzResourceGroup segítségével.](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
 ```azurepowershell-interactive
 $resourceGroup = "StreamAnalyticsRG"
@@ -63,11 +63,11 @@ New-AzResourceGroup `
     -Location $location
 ```
 
-## <a name="deploy-an-azure-app-configuration-store"></a>Azure-alkalmazás konfigurációs tárolójának üzembe helyezése
+## <a name="deploy-an-azure-app-configuration-store"></a>Azure App Configuration Store üzembe helyezése
 
-A kulcs-értékeknek a virtuális gépre való alkalmazása előtt rendelkeznie kell egy meglévő Azure app Configuration Store-tárolóval. Ez a szakasz részletesen ismerteti, hogyan helyezhet üzembe egy Azure-alkalmazás konfigurációs tárolóját egy Azure Resource Manager sablon használatával. Ha már rendelkezik egy alkalmazás-konfigurációs tárolóval, a cikk következő szakaszába léphet. 
+Mielőtt kulcsértékeket alkalmazhatna a virtuális gépre, rendelkeznie kell egy meglévő Azure App Configuration Store-ral. Ez a szakasz ismerteti, hogyan telepítheti az Azure App Configuration Store egy Azure Resource Manager-sablon használatával. Ha már rendelkezik alkalmazáskonfigurációs tárolóval, a cikk következő szakaszába léphet. 
 
-1. Másolja és illessze be a következő JSON-kódot egy új, *prereq. azuredeploy. JSON*nevű fájlba.
+1. Másolja és illessze be a következő jsonkódot egy *prereq.azuredeploy.json*nevű új fájlba.
 
    ```json
    {
@@ -109,7 +109,7 @@ A kulcs-értékeknek a virtuális gépre való alkalmazása előtt rendelkeznie 
    }
    ```
 
-1. Másolja és illessze be a következő JSON-kódot egy új, *prereq. azuredeploy. Parameters. JSON*nevű fájlba. Cserélje le a **Get-Unique** nevet a konfigurációs tároló egyedi nevére.
+1. Másolja és illessze be a következő jsonkódot egy *prereq.azuredeploy.parameters.json*nevű új fájlba. Cserélje le **a GET-UNIQUE-ot** a configuration store egyedi nevére.
 
    ```json
    {
@@ -123,7 +123,7 @@ A kulcs-értékeknek a virtuális gépre való alkalmazása előtt rendelkeznie 
    }
    ```
 
-1. A PowerShell-ablakban futtassa a következő parancsot az Azure-alkalmazás konfigurációs tárolójának üzembe helyezéséhez. Ne felejtse el lecserélni az erőforráscsoport nevét, a sablonfájl elérési útját és a Template paraméter fájljának elérési útját.
+1. A PowerShell-ablakban futtassa a következő parancsot az Azure App Configuration Store üzembe helyezéséhez. Ne felejtse el lecserélni az erőforráscsoport nevét, a sablonfájl elérési útját és a sablon paraméterfájl elérési útját.
 
    ```azurepowershell
    New-AzResourceGroupDeployment `
@@ -132,28 +132,28 @@ A kulcs-értékeknek a virtuális gépre való alkalmazása előtt rendelkeznie 
        -TemplateParameterFile "<path to prereq.azuredeploy.parameters.json>"
    ```
 
-## <a name="add-vm-configuration-key-values"></a>Virtuális gép konfigurációs kulcsának hozzáadása – értékek
+## <a name="add-vm-configuration-key-values"></a>Virtuálisgép-konfigurációs kulcsértékek hozzáadása
 
-Azure Resource Manager sablonnal létrehozhat egy alkalmazás-konfigurációs tárolót, de a Azure Portal vagy az Azure parancssori felület használatával is fel kell vennie a kulcs-értékeket. Ebben a rövid útmutatóban kulcs-értékeket adhat hozzá a Azure Portal használatával.
+Létrehozhat egy Alkalmazáskonfigurációs áruházat egy Azure Resource Manager-sablon használatával, de kulcsértékeket kell hozzáadnia az Azure Portalon vagy az Azure CLI-n keresztül. Ebben a rövid útmutatóban kulcsértékeket adhat hozzá az Azure Portal használatával.
 
-1. Az üzembe helyezés befejezését követően navigáljon az újonnan létrehozott alkalmazás-konfigurációs tárolóhoz [Azure Portal](https://portal.azure.com).
+1. A központi telepítés befejezése után keresse meg az Azure Portal újonnan létrehozott alkalmazáskonfigurációs [tárolóját.](https://portal.azure.com)
 
-1. Válassza a **beállítások** > **hozzáférési kulcsok**elemet. Jegyezze fel az elsődleges írásvédett kulcs-összekapcsolási karakterláncot. Ezt a kapcsolódási karakterláncot később fogja használni az alkalmazás konfigurálásához az Ön által létrehozott alkalmazás-konfigurációs tárolóval való kommunikációhoz.
+1. Válassza **a Beállítások** > **elérési kulcsok lehetőséget**. Jegyezze fel az elsődleges írásvédett kulcskapcsolati karakterláncot. Ezt a kapcsolati karakterláncot később fogja használni az alkalmazás konfigurálásához, hogy kommunikáljon a létrehozott alkalmazáskonfigurációs tárolóval.
 
-1. Válassza a Configuration **Explorer** > **Létrehozás** lehetőséget a következő kulcs-érték párok hozzáadásához:
+1. Válassza a Configuration **Explorer** > **Create lehetőséget** a következő kulcsérték-párok hozzáadásához:
 
-   |Paraméter|Érték|
+   |Kulcs|Érték|
    |-|-|
-   |windowsOsVersion|2019 – Datacenter|
-   |diskSizeGB|1023|
+   |windowsOsVersion|2019-Adatközpont|
+   |lemezméret|1023|
   
-   Adja meg a **címke** *sablonját* , de hagyja üresen a **tartalom típusát** .
+   Adja meg a **Címke** *sablonját,* de tartsa üresen **a Tartalomtípust.**
 
-## <a name="deploy-vm-using-stored-key-values"></a>Virtuális gép üzembe helyezése tárolt kulcs-értékek használatával
+## <a name="deploy-vm-using-stored-key-values"></a>Virtuális gép telepítése tárolt kulcsértékek használatával
 
-Most, hogy hozzáadta a kulcs-értékeket a tárolóhoz, készen áll a virtuális gép üzembe helyezésére egy Azure Resource Manager sablon használatával. A sablon a létrehozott **windowsOsVersion** és **diskSizeGB** kulcsokra hivatkozik.
+Most, hogy kulcsértékeket adott hozzá az áruházhoz, készen áll egy virtuális gép üzembe helyezésére egy Azure Resource Manager-sablon használatával. A sablon a létrehozott **windowsOsVersion** és **diskSizeGB** kulcsokra hivatkozik.
 
-1. Másolja és illessze be a következő JSON-kódot egy *azuredeploy. JSON*nevű új fájlba, vagy töltse le a fájlt az [Azure Gyorsindítás sablonjaiból](https://github.com/Azure/azure-quickstart-templates/blob/master/101-app-configuration/azuredeploy.json).
+1. Másolja és illessze be a következő jsonkódot egy *azuredeploy.json*nevű új fájlba, vagy töltse le a fájlt az [Azure gyorsindítási sablonjaiból.](https://github.com/Azure/azure-quickstart-templates/blob/master/101-app-configuration/azuredeploy.json)
 
    ```json
    {
@@ -375,7 +375,7 @@ Most, hogy hozzáadta a kulcs-értékeket a tárolóhoz, készen áll a virtuál
    }
    ```
 
-1. Másolja és illessze be a következő JSON-kódot egy új, *azuredeploy. Parameters. JSON*nevű fájlba, vagy töltse le a fájlt az [Azure Gyorsindítás sablonjaiból](https://github.com/Azure/azure-quickstart-templates/blob/master/101-app-configuration/azuredeploy.parameters.json).
+1. Másolja és illessze be a következő jsonkódot egy *azuredeploy.parameters.json*nevű új fájlba, vagy töltse le a fájlt az [Azure gyorsindítási sablonjaiból.](https://github.com/Azure/azure-quickstart-templates/blob/master/101-app-configuration/azuredeploy.parameters.json)
 
    ```json
    {
@@ -410,20 +410,20 @@ Most, hogy hozzáadta a kulcs-értékeket a tárolóhoz, készen áll a virtuál
    }
    ```
 
-   Cserélje le a sablonban szereplő paramétereket a következő értékekre:
+   Cserélje le a sablon paraméterértékeit a következő értékekre:
 
    |Paraméter|Érték|
    |-|-|
    |adminPassword|A virtuális gép rendszergazdai jelszava.|
-   |appConfigStoreName|Az Azure-alkalmazás konfigurációs tárolójának neve.|
-   |appConfigStoreResourceGroup|Az alkalmazás-konfigurációs tárolót tartalmazó erőforráscsoport.|
+   |appConfigStoreName|Az Azure App Configuration Store neve.|
+   |appConfigStoreResourceGroup|Az alkalmazáskonfigurációs tárolót tartalmazó erőforráscsoport.|
    |vmSkuKey|*windowsOSVersion*|
-   |diskSizeKey|*diskSizeGB*|
+   |diskSizeKey|*lemezméret*|
    |adminUsername|A virtuális gép rendszergazdai felhasználóneve.|
-   |storageAccountName|A virtuális géphez társított Storage-fiók egyedi neve.|
-   |Domainnamelabel értékkel|Egy egyedi tartománynév.|
+   |storageAccountName|A virtuális géphez társított tárfiók egyedi neve.|
+   |tartományNévfelirat|Egyedi tartománynév.|
 
-1. A PowerShell-ablakban futtassa a következő parancsot az Azure-alkalmazás konfigurációs tárolójának üzembe helyezéséhez. Ne felejtse el lecserélni az erőforráscsoport nevét, a sablonfájl elérési útját és a Template paraméter fájljának elérési útját.
+1. A PowerShell-ablakban futtassa a következő parancsot az Azure App Configuration Store üzembe helyezéséhez. Ne felejtse el lecserélni az erőforráscsoport nevét, a sablonfájl elérési útját és a sablon paraméterfájl elérési útját.
 
    ```azurepowershell
    New-AzResourceGroupDeployment `
@@ -432,22 +432,22 @@ Most, hogy hozzáadta a kulcs-értékeket a tárolóhoz, készen áll a virtuál
        -TemplateParameterFile "<path to prereq.azuredeploy.parameters.json>"
    ```
 
-Gratulálunk! Üzembe helyezett egy virtuális gépet az Azure-alkalmazás konfigurációjában tárolt konfigurációk használatával.
+Gratulálunk! Virtuális gép üzembe helyezése az Azure App konfigurációjában tárolt konfigurációk használatával.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, törölje az erőforráscsoportot, az alkalmazás konfigurációs tárolóját, a virtuális gépet és az összes kapcsolódó erőforrást. Ha a későbbiekben szeretné használni az alkalmazás konfigurációs tárolóját vagy a virtuális gépet, kihagyhatja a törlését. Ha nem kívánja tovább használni ezt a feladatot, törölje az ebben a rövid útmutatóban létrehozott összes erőforrást a következő parancsmag futtatásával:
+Ha már nincs szükség, törölje az erőforráscsoportot, az Alkalmazáskonfigurációs tárolót, a virtuális gépés az összes kapcsolódó erőforrást. Ha azt tervezi, hogy az App Configuration Store vagy a virtuális gép a jövőben, kihagyhatja a törlést. Ha nem fogja tovább használni ezt a feladatot, törölje a rövid útmutató által létrehozott összes erőforrást a következő parancsmag futtatásával:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup `
   -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban üzembe helyezett egy virtuális gépet egy Azure Resource Manager sablonnal és a kulcs-értékekkel az Azure-alkalmazás konfigurációjától.
+Ebben a rövid útmutatóban üzembe helyezett egy virtuális gép egy Azure Resource Manager sablon és az Azure App konfigurációja kulcsértékek használatával.
 
-További információt az Azure-alkalmazás konfigurálásával kapcsolatos egyéb alkalmazások létrehozásáról a következő cikkben talál:
+Ha többet szeretne tudni arról, hogyan hozhat létre más alkalmazásokat az Azure App Configuration alkalmazással, folytassa a következő cikkel:
 
 > [!div class="nextstepaction"]
-> [Gyors útmutató: ASP.NET Core-alkalmazás létrehozása az Azure-alkalmazás konfigurálásával](quickstart-aspnet-core-app.md)
+> [Rövid útmutató: Hozzon létre egy ASP.NET Core alkalmazást az Azure App konfigurációjával](quickstart-aspnet-core-app.md)

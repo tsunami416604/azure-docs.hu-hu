@@ -1,178 +1,178 @@
 ---
-title: Log Analytics által nyújtott Adatbiztonság |} A Microsoft Docs
-description: További tudnivalók arról, hogy a Log Analytics hogyan védi az adatait és védi az adatokat.
+title: Log Analytics-adatok biztonsága | Microsoft dokumentumok
+description: Ismerje meg, hogyan védi a Log Analytics az ön személyes adatait és védi az adatokat.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/04/2019
-ms.openlocfilehash: 0ac169060f7ba0e58aeb3e36e3af1629b6453fc1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 63d8d8d3701a9adca4bd01e6e061877f5d0bd245
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79274865"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80333361"
 ---
-# <a name="log-analytics-data-security"></a>Log Analytics és adatbiztonság
-Ennek a dokumentumnak az a célja, hogy Log Analyticsra vonatkozó információt szolgáltasson, amely a Azure Monitor egyik funkciója, hogy kiegészítse a [Azure biztonsági és adatkezelési központ](../../security/fundamentals/trust-center.md)információit.  
+# <a name="log-analytics-data-security"></a>A Log Analytics adatainak biztonsága
+Ez a dokumentum az Azure Monitor szolgáltatásának megfelelő Log Analytics szolgáltatásra vonatkozó információk szolgáltatására szolgál az [Azure Trust Center](../../security/fundamentals/trust-center.md)ben található információk kiegészítéseként.  
 
-Ez a cikk bemutatja, hogyan gyűjti és dolgozza fel a Log Analytics az adatokat, és hogyan gondoskodik a védelmükről. Ügynökök használatával a webszolgáltatáshoz csatlakozni, használja a System Center Operations Manager operatív adatok gyűjtéséhez vagy adatokat lekérni az Azure diagnostics Log Analytics általi használatra. 
+Ez a cikk bemutatja, hogyan gyűjti és dolgozza fel a Log Analytics az adatokat, és hogyan gondoskodik a védelmükről. Az ügynökök segítségével csatlakozhat a webszolgáltatáshoz, a System Center Operations Manager segítségével gyűjthet működési adatokat, vagy adatokat kérhet le az Azure diagnosztikából a Log Analytics általi használatra. 
 
-A Log Analytics szolgáltatás a felhőbeli adatok biztonságosan kezeli a következő módszerekkel:
+A Log Analytics szolgáltatás biztonságosan kezeli a felhőalapú adatokat a következő módszerekkel:
 
-* az adatok elkülönítése
+* Az adatok elkülönítése
 * Adatmegőrzés
 * Fizikai biztonság
-* incidenskezelés
+* Incidenskezelés
 * Megfelelőség
-* biztonsági szabványok tanúsítványok
+* Biztonsági szabványok tanúsításai
 
-Vegye fel velünk a kapcsolatot az alábbi információk bármelyikével kapcsolatos kérdésekkel, javaslatokkal vagy problémákkal, beleértve az [Azure-támogatási lehetőségek](https://azure.microsoft.com/support/options/)biztonsági szabályzatait is.
+Lépjen kapcsolatba velünk az alábbi információkkal kapcsolatos kérdéseivel, javaslataival vagy problémáival kapcsolatban, beleértve az Azure támogatási lehetőségeinek biztonsági [szabályzatait](https://azure.microsoft.com/support/options/)is.
 
-## <a name="sending-data-securely-using-tls-12"></a>A TLS 1.2-es biztonságos az adatok küldése 
+## <a name="sending-data-securely-using-tls-12"></a>Adatok biztonságos küldése a TLS 1.2 használatával 
 
-A Log Analytics az átvitt adatok biztonságának biztosítása érdekében, erősen javasoljuk, hogy legalább az ügynök konfigurálása Transport Layer Security (TLS) 1.2-es. A TLS/SSL (SSL) régebbi verziói sebezhetőnek találták, miközben továbbra is működnek a visszamenőleges kompatibilitás érdekében, **nem ajánlottak**, és az iparág gyorsan áthelyezi a régebbi protokollok támogatását. 
+A Log Analytics szolgáltatásba történő átvitel során az adatok biztonságának biztosítása érdekében javasoljuk, hogy konfigurálja az ügynököt legalább transport layer security (TLS) 1.2 használatára. A TLS/Secure Sockets Layer (SSL) régebbi verziói sebezhetőnek bizonyultak, és bár jelenleg is dolgoznak a visszamenőleges kompatibilitás érdekében, **nem ajánlottak,** és az iparág gyorsan elmozdul, hogy felhagyjon a régebbi protokollok támogatásával. 
 
-A [PCI biztonsági szabványoknak szóló Tanács](https://www.pcisecuritystandards.org/) a TLS/SSL régebbi verzióinak letiltására, valamint a biztonságosabb protokollokra való frissítésre vonatkozó [határidő 2018. június 30-ig](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) érvényes. Miután Azure támogatása, csökken, ha az ügynökök nem keresztül kommunikálnak, legalább a TLS 1.2-es nem tudná Log Analytics szolgáltatásnak. 
+A [PCI Biztonsági Szabványügyi Tanács](https://www.pcisecuritystandards.org/) [2018.](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) Miután az Azure eldobja az örökölt támogatást, ha az ügynökök nem tudnak kommunikálni legalább TLS 1.2-n keresztül, nem tud adatokat küldeni a Log Analytics szolgáltatásba. 
 
-Nem javasoljuk, hogy explicit módon beállítás csak a TLS 1.2 használatára, kivéve, ha az ügynök feltétlenül szükséges, ahogy azt biztonság platformfunkciók, amelyek lehetővé teszik, hogy automatikusan észleli és az újabb biztonságosabb protokollok érhető el, például váló előnyeit, azzal mint TLS 1.3. 
+Nem javasoljuk kifejezetten, hogy az ügynököt csak a TLS 1.2 használatára állítja be, kivéve, ha feltétlenül szükséges, mivel megtörheti a platformszintű biztonsági funkciókat, amelyek lehetővé teszik az újabb, biztonságosabb protokollok automatikus észlelését és kihasználását, amint elérhetővé válnak, mint például mint A TLS 1.3. 
 
-### <a name="platform-specific-guidance"></a>Egyes platformokra vonatkozó útmutatás
+### <a name="platform-specific-guidance"></a>Platformspecifikus iránymutatás
 
-|Platformon és nyelven | Támogatás | További információ |
+|Platform/nyelv | Támogatás | További információ |
 | --- | --- | --- |
-|Linux | A Linux-disztribúciók általában az [OpenSSL](https://www.openssl.org) -t használják a TLS 1,2 támogatásához.  | Ellenőrizze az OpenSSL- [changelog](https://www.openssl.org/news/changelog.html) , hogy az OpenSSL verziója támogatott-e.|
-| Windows 8.0-s és 10 | Támogatott, és alapértelmezés szerint engedélyezve van. | Annak megerősítéséhez, hogy továbbra is az [alapértelmezett beállításokat](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)használja.  |
-| A Windows Server 2012-2016-ban | Támogatott, és alapértelmezés szerint engedélyezve van. | Annak ellenőrzése, hogy továbbra is az [alapértelmezett beállításokat](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) használja-e |
-| Windows 7 SP1 és a Windows Server 2008 R2 SP1 | Támogatott, de alapértelmezés szerint nincs engedélyezve. | Az engedélyezésével kapcsolatos részletekért tekintse meg a [Transport Layer Security (TLS) beállításjegyzék-beállítások](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) lapját.  |
+|Linux | A Linux disztribúciók általában az [OpenSSL-re](https://www.openssl.org) támaszkodnak a TLS 1.2 támogatáshoz.  | Ellenőrizze az [OpenSSL Changelog-ot,](https://www.openssl.org/news/changelog.html) hogy az OpenSSL verziója támogatott-e.|
+| Windows 8.0 - 10 | Alapértelmezés szerint támogatott és engedélyezett. | Annak ellenőrzése, hogy továbbra is az [alapértelmezett beállításokat](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)használja.  |
+| Windows Server 2012 – 2016 | Alapértelmezés szerint támogatott és engedélyezett. | Annak ellenőrzése, hogy továbbra is az [alapértelmezett beállításokat használja-e](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
+| Windows 7 SP1 és Windows Server 2008 R2 SP1 | Támogatott, de alapértelmezés szerint nincs engedélyezve. | Az engedélyezés engedélyezéséről a [Transport Layer Security (TLS) beállításjegyzék-beállításlapján](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) olvashat.  |
 
-## <a name="data-segregation"></a>az adatok elkülönítése
-Miután az adatokat a Log Analytics szolgáltatás által betöltött, az adatok van logikailag elkülönítve vannak tárolva a szolgáltatás egyes összetevőiben. Az összes adat munkaterület szerint van megcímkézve. Ez a címkézés megmarad az adatok teljes életciklusa alatt, és a szolgáltatás minden rétegében érvényes. Az adatok a kiválasztott régióban a storage fürtben egy dedikált adatbázisban tárolódik.
+## <a name="data-segregation"></a>Az adatok elkülönítése
+Miután a Log Analytics szolgáltatás beírta az adatokat, az adatok logikailag elkülönítve maradnak a szolgáltatás minden egyes összetevőjében. Minden adat munkaterületenként van címkézve. Ez a címkézés megmarad az adatok teljes életciklusa alatt, és a szolgáltatás minden rétegében érvényes. Az adatok egy dedikált adatbázisban tárolódnak a kiválasztott régióban lévő tárolófürtben.
 
 ## <a name="data-retention"></a>Adatmegőrzés
-Log search indexelt adatokat tárolja és őrzi meg a díjszabási tervnek megfelelően. További információ: [log Analytics díjszabása](https://azure.microsoft.com/pricing/details/log-analytics/).
+Az indexelt naplókeresési adatok tárolása és megőrzése az árképzési tervnek megfelelően történik. További információt a [Log Analytics-díjszabás című](https://azure.microsoft.com/pricing/details/log-analytics/)témakörben talál.
 
-Az [előfizetési szerződés](https://azure.microsoft.com/support/legal/subscription-agreement/)részeként a Microsoft megtartja az adatait a szerződés feltételei szerint.  Vásárlói adatokat a rendszer eltávolítja, ha nincsenek fizikai meghajtók megsemmisül.  
+Az [előfizetési szerződés](https://azure.microsoft.com/support/legal/subscription-agreement/)részeként a Microsoft a szerződés feltételei szerint megőrzi az Ön adatait.  Az ügyféladatok eltávolításakor a fizikai meghajtók nem semmisülnek meg.  
 
-Az alábbi táblázat soroljuk fel az elérhető megoldások, és példákat tartalmaz a gyűjtött adatok típusától.
+Az alábbi táblázat néhány rendelkezésre álló megoldást sorol fel, és példákat mutat be az általuk gyűjtött adatok típusára.
 
 | **Megoldás** | **Adattípusok** |
 | --- | --- |
-| Kapacitás és teljesítmény |Teljesítményadatok és a metaadatok |
-| Frissítéskezelés |Metaadatait és adatok |
-| Naplókezelés |Felhasználó által definiált az eseménynaplókat, Windows-eseménynaplók, illetve IIS-naplók |
-| Változások követése |A szoftverleltár, a Windows-szolgáltatás és a Linux-démon metaadatok és a Windows/Linux-fájl metaadatait |
-| Az SQL és az Active Directory Assessment |WMI-adatok, a beállításjegyzék-adatok, a Teljesítményadatok és az SQL Server dinamikus felügyeleti eredmények megtekintése |
+| Kapacitás és teljesítmény |Teljesítményadatok és metaadatok |
+| Frissítéskezelés |Metaadatok és állapotadatok |
+| Naplókezelés |Felhasználó által definiált eseménynaplók, Windows eseménynaplók és/vagy IIS-naplók |
+| Változások követése |Szoftverleltár, Windows-szolgáltatás és Linux démonmetaadatok, valamint Windows/Linux fájl metaadatok |
+| SQL és Active Directory-felmérés |WMI-adatok, beállításjegyzék-adatok, teljesítményadatok és SQL Server dinamikus felügyeleti nézet eredményei |
 
-Az alábbi táblázat az adattípusok példái láthatók:
+Az alábbi táblázat példákat mutat be adattípusokra:
 
 | **Adattípus** | **Mezők** |
 | --- | --- |
-| Riasztás |Riasztás neve, riasztás leírása, BaseManagedEntityId, probléma azonosítója, IsMonitorAlert, RuleId, ResolutionState, prioritás, súlyosság, kategória, tulajdonosa, ResolvedBy, TimeRaised, TimeAdded, LastModified, LastModifiedBy, LastModifiedExceptRepeatCount, TimeResolved, TimeResolutionStateLastModified, TimeResolutionStateLastModifiedInDB, RepeatCount |
-| Konfiguráció |CustomerID, AgentID, EntityID, ManagedTypeID, ManagedTypePropertyID, CurrentValue, ChangeDate |
-| Esemény |EventId, EventOriginalID, BaseManagedEntityInternalId, RuleId, PublisherId, PublisherName, FullNumber, Number, Category, ChannelLevel, LoggingComputer, EventData, EventParameters, TimeGenerated, TimeAdded <br>**Megjegyzés:** Ha egyéni mezőkkel rendelkező eseményeket ír a Windows-eseménynaplóba, Log Analytics gyűjti őket. |
-| Metaadatok |BaseManagedEntityId, ObjectStatus, OrganizationalUnit, ActiveDirectoryObjectSid, PhysicalProcessors, NetworkName, IPAddress, ForestDNSName, NetbiosComputerName, VirtualMachineName, LastInventoryDate, HostServerNameIsVirtualMachine, IP Address, NetbiosDomainName, LogicalProcessors, DNSName, DisplayName, DomainDnsName, ActiveDirectorySite, PrincipalName, OffsetInMinuteFromGreenwichTime |
-| Teljesítmény |ObjectName, CounterName, PerfmonInstanceName, PerformanceDataId, PerformanceSourceInternalID, SampleValue, TimeSampled, TimeAdded |
-| Állapot |StateChangeEventId, StateId, NewHealthState, OldHealthState, környezet, TimeGenerated, TimeAdded, StateId2, BaseManagedEntityId, monitorid attribútumként, HealthState, LastModified, LastGreenAlertGenerated, DatabaseTimeModified |
+| Riasztás |Riasztás neve, Riasztás leírása, BaseManagedEntityId, Problémaazonosító, IsMonitorAlert, RuleId, ResolutionState, Prioritás, Súlyosság, Kategória, Tulajdonos, ResolvedBy, TimeRaised, TimeAdded, LastModified, LastModifiedBy, LastModifiedExceptCount, TimeResolved, TimeResolutionStateLastModified, TimeResolutionStateLastModifiedInDB, RepeatCount |
+| Konfiguráció |Ügyfélazonosító, Ügynök, Entitásazonosító, ManagedTypeID, ManagedTypePropertyID, CurrentValue, ChangeDate |
+| Esemény |EventId, EventOriginalID, BaseManagedEntityInternalId, RuleId, PublisherId, PublisherName, FullNumber, Number, Category, ChannelLevel, LoggingComputer, EventData, EventParameters, TimeGenerated, TimeAdded <br>**Megjegyzés:** Amikor egyéni mezőket beírásra ír eseményeket a Windows eseménynaplójába, a Log Analytics összegyűjti azokat. |
+| Metaadatok |BaseManagedEntityId, ObjectStatus, OrganizationalUnit, ActiveDirectoryObjectSid, PhysicalProcessors, NetworkName, IPAddress, ForestDNSName, NetbiosComputerName, VirtualMachineName, LastInventoryDate, HostServerNameIsVirtualMachine, IP Cím, NetbiosDomainName, LogicalProcessors, DNSName, DisplayName, DomainDnsName, ActiveDirectorySite, PrincipalName, OffsetInMinuteFromGreenwichTime |
+| Teljesítmény |Objektumnév, CounterName, PerfmonInstanceName, PerformanceDataId, PerformanceSourceInternalID, SampleValue, TimeSampled, TimeAdded |
+| Állapot |StateChangeEventId, StateId, NewHealthState, OldHealthState, Context, TimeGenerated, TimeAdded, StateId2, BaseManagedEntityId, MonitorId, HealthState, LastModified, LastGreenAlertGenerated, DatabaseTimeModified |
 
 ## <a name="physical-security"></a>Fizikai biztonság
-A Log Analytics szolgáltatás kezeli a Microsoft ezért felelős munkatársai, és az összes tevékenység naplózása, és ellenőrizhető. A log Analytics egy Azure-szolgáltatásként működik, és megfelel-e az összes Azure-megfelelőségi és biztonsági követelményeknek. Az Azure-eszközök fizikai biztonságával kapcsolatos részleteket a [Microsoft Azure biztonsági áttekintés](https://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf)18. oldalán tekintheti meg. Fizikai hozzáférési jogosultsága ahhoz, hogy biztonságos területek bárki, aki már nem rendelkezik a Log Analytics szolgáltatással, beleértve az átvitel és a megszűnés felelősséget módosítja egy munkanapon belül. A [Microsoft adatközpontokban](https://azure.microsoft.com/global-infrastructure/)használt globális fizikai infrastruktúráról olvashat.
+A Log Analytics szolgáltatást a Microsoft munkatársai kezelik, és minden tevékenység et naplózza, és naplózható. A Log Analytics Azure-szolgáltatásként működik, és megfelel az Azure megfelelőségi és biztonsági követelményeinek. Az Azure-eszközök fizikai biztonságával kapcsolatos részleteket a [Microsoft Azure biztonsági áttekintésének](https://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf)18. A biztonságos területekre vonatkozó fizikai hozzáférési jogok egy munkanapon belül megváltoznak mindenki számára, aki már nem felelős a Log Analytics szolgáltatásért, beleértve az átvitelt és a megszüntetést is. A [Microsoft Datacenters](https://azure.microsoft.com/global-infrastructure/)globális fizikai infrastruktúrájáról olvashat.
 
-## <a name="incident-management"></a>incidenskezelés
-A log Analytics egy incidenskezelési folyamatának, amelyek az összes Microsoft-szolgáltatásokkal rendelkezik. Összefoglalva, hogy:
+## <a name="incident-management"></a>Incidenskezelés
+A Log Analytics olyan incidenskezelési folyamattal rendelkezik, amelyhez minden Microsoft-szolgáltatás megfelel. Összefoglalva, mi:
 
-* A közös felelősség modell, ahol biztonsági feladata egy adott napszakban tartozik, és a egy részét az ügyfél tartozik
-* Az Azure biztonsági incidensek kezelése:
-  * Egy incidens észlelésekor vizsgálat indítása
-  * Felmérheti a hatás és a egy incidens egy a készenléti incidensmegoldási csapat egyik tagja által súlyosságának. Bizonyítékok alapján, az értékelés előfordulhat, hogy, vagy előfordulhat, hogy a biztonsági csoportnak további fordulnia eredményez.
-  * Az incidens biztonsági válasz szakértőktől a technikai vagy Törvényszéki vizsgálat végez, tartalmazottsági, kockázatcsökkentési és megoldási stratégiák meghatározása diagnosztizálásához. Ha a biztonsági csapat úgy véli, hogy ügyféladatokat előfordulhat, hogy rendelkezik válnak elérhetővé tett legyen egy jogosulatlan vagy illetéktelen, az ügyfél incidens értesítési folyamat párhuzamos végrehajtás megkezdi a párhuzamosan.  
-  * Remegő, és az incidens helyreállítása. Az incidensmegoldási csapat létrehoz egy helyreállítási tervbe, a probléma megoldásához. Válság tartalmazottsági lépést karanténba érintett rendszerek például akkor fordulhat elő, azonnal, és a diagnosztikát párhuzamosan. Hosszabb távon megoldások előfordulhat, hogy lehet tervezett, amely az azonnali kockázati letelte után kerül sor.  
-  * Az incidens lezárása és a egy menthet végez. Az incidensmegoldási csapat létrehoz egy menthet, amelyik felvázolja az incidenst, az a szándéka, hogy módosítsa a házirendek, eljárások és folyamatok, hogy az esemény egy ismétlődési részleteit.
-* Biztonsági incidensek ügyfelek értesítése:
-  * Az érintett ügyfelek, és adja meg, bárki, aki egy értesítést a lehető legrészletesebb kihatással van a hatókör határozza meg
-  * Hozzon létre egy értesítés rendelkező ügyfelek részletes elegendő információt, hogy a vizsgálat végrehajtása a végén, és bármely, a végfelhasználók számára nem jogosulatlanul késlelteti az értesítési folyamat során végzett követelmények biztosításához.
-  * Erősítse meg, és az incidens, szükség szerint deklarálható.
-  * Értesítse a felhasználókat arról, egy incidens értesítéssel feldühítheti késedelem nélkül, és minden olyan jogi vagy szerződéses kötelezettségvállalás megfelelően. Értesítések a biztonsági események egy vagy több olyan ügyfél rendszergazdái Microsoft választja, beleértve az e-mailen keresztül, bármilyen módon érkeznek.
-* Csapat készültségi és képzési folytatása:
-  * A Microsoft munkatársainak biztonsági és tájékoztatás képzési, segít azonosítani és biztonsági problémák jelentése végrehajtásához szükségesek.  
-  * A Microsoft Azure-szolgáltatás használata kezelőnél van továbbá képzési kötelezettségek körülvevő a vásárlói adatokat tároló-és nagybetűket rendszerekhez való hozzáférést.
-  * Microsoft security response munkatársai speciális képzésben a szerepkörükhöz
+* Megosztott felelősségi modell használata, ahol a biztonsági felelősség egy része a Microsofthoz tartozik, egy része pedig az ügyfélhez tartozik
+* Az Azure biztonsági incidenseikezelése:
+  * Vizsgálat indítása egy esemény észlelése után
+  * Az esemény hatásának és súlyosságának felmérése az ügyeletes incidensreagálási csapat tagja által. A bizonyítékok alapján az értékelés a biztonsági reagáló csapat további eszkalációját eredményezheti, vagy nem.
+  * Diagnosztizálja az incidenst a biztonsági reagálási szakértők által a műszaki vagy törvényszéki vizsgálat lefolytatásához, az elszigetelési, csökkentési és kerülő stratégiák azonosításához. Ha a biztonsági csoport úgy véli, hogy az ügyféladatok jogosulatlan vagy jogosulatlan személynek kerülhettek ki, az Ügyfélincidens-értesítési folyamat párhuzamos végrehajtása párhuzamosan kezdődik.  
+  * Stabilizálni és felépülni az esetből. Az incidens-elhárítási csapat helyreállítási tervet hoz létre a probléma enyhítésére. A válságelszigetelési lépések, mint például az érintett rendszerek karanténba kerülése, azonnal és a diagnózissal párhuzamosan fordulhatnak elő. Hosszabb távú mérséklések tervezhetők, amelyek a közvetlen kockázat megszűnését követően következnek be.  
+  * Zárják le az incidenst, és végezzenek boncolást. Az incidens-elhárítási csapat létrehoz egy post mortem, amely felvázolja az esemény részleteit, azzal a szándékkal, hogy vizsgálja felül a szabályzatok, eljárások és folyamatok, hogy megakadályozzák az esemény megismétlődését.
+* Az ügyfelek értesítése a biztonsági eseményekről:
+  * Határozza meg az érintett ügyfelek körét, és adjon értesítést a lehető legrészletesebb értesítésről, aki érintett.
+  * Hozzon létre egy értesítést, amely biztosítja az ügyfelek számára a részletes elegendő információt, hogy azok vizsgálatot végezhetnek a végén, és eleget tegyenek a végfelhasználóknak tett kötelezettségvállalásaiknak, miközben nem késleltetik indokolatlanul az értesítési folyamatot.
+  * Erősítse meg és jelentse be az incidenst, ha szükséges.
+  * Az ügyfeleket indokolatlan késedelem nélkül és a jogi vagy szerződéses kötelezettségvállalásnak megfelelően értesítse az incidensekről szóló értesítéssel. A biztonsági incidensekről szóló értesítéseket az ügyfél egy vagy több rendszergazdája, a Microsoft által kiválasztott bármilyen módon, többek között e-mailben is kézbesítjük.
+* Magatartás csapat készenlét és a képzés:
+  * A Microsoft munkatársainak biztonsági és tudatosságnövelő képzést kell végezniük, amely segít nekik a feltételezett biztonsági problémák azonosításában és jelentésben.  
+  * A Microsoft Azure szolgáltatáson dolgozó operátorok további képzési kötelezettségekkel rendelkeznek az ügyféladatokat tároló érzékeny rendszerekhez való hozzáférésük kel kapcsolatban.
+  * A Microsoft biztonsági válaszának munkatársai speciális képzésben részesülnek a szerepkörükhöz
 
-Ha az ügyféladatok elvesztését következik be, minden egyes ügyfél egy napon belül értesítjük. Azonban ügyfél soha nem történt adatvesztés a szolgáltatással. 
+Ha az ügyféladatok elvesztése bekövetkezik, egy napon belül értesítjük az ügyfeleket. Azonban az ügyfél adatvesztés soha nem történt meg a szolgáltatás. 
 
-További információ arról, hogyan reagál a Microsoft a biztonsági incidensekre: [Microsoft Azure biztonsági válasz a felhőben](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678/file/150826/4/Microsoft%20Azure%20Security%20Response%20in%20the%20cloud.pdf).
+Ha többet szeretne tudni arról, hogy a Microsoft hogyan reagál a biztonsági incidensekre, olvassa el [a Microsoft Azure biztonsági válasza a felhőben című témakört.](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678/file/150826/4/Microsoft%20Azure%20Security%20Response%20in%20the%20cloud.pdf)
 
 ## <a name="compliance"></a>Megfelelőség
-A Log Analytics szoftverfejlesztési és szolgáltatási csapat informatikai és irányítási programja támogatja az üzleti követelményeit, és betartja a törvényeket és rendeleteket a következő témakörben leírtak szerint: [Microsoft Azure Adatvédelmi központ](https://azure.microsoft.com/support/trust-center/) és a [Microsoft megbízhatósági központ megfelelősége](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx). Hogyan Log Analytics biztonsági követelményeket, azonosítja a biztonsági vezérlőket, felügyeli és figyeli a kockázatok is ott ismerteti. Évente, hogy tekintse át házirendek, szabványok, eljárásokra és irányelveket.
+A Log Analytics szoftverfejlesztő és -szolgáltató csapat információbiztonsági és -irányítási programja támogatja üzleti követelményeit, és betartja a [Microsoft Azure Adatvédelmi központban](https://azure.microsoft.com/support/trust-center/) és a Microsoft [Adatvédelmi központ megfelelőségi](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)szabályzataiban leírt törvényeket és előírásokat. Hogyan log analytics biztonsági követelményeket, azonosítja a biztonsági ellenőrzések, kezeli, és figyeli a kockázatokat is ismertetik. Évente felülvizsgáljuk a rendőrségeket, szabványokat, eljárásokat és irányelveket.
 
-Minden fejlesztési csapat egyik tagja megkapja a hivatalos alkalmazás biztonsági képzés. A verziókezelő rendszer belsőleg, a szoftverfejlesztés használjuk. Minden szoftver projekt a verziókövetési rendszerét védi.
+Minden fejlesztőcsapat-tag hivatalos alkalmazásbiztonsági képzést kap. Belsőleg verziókezelő rendszert használunk a szoftverfejlesztéshez. Minden szoftverprojektet a verzióvezérlő rendszer véd.
 
-A Microsoft rendelkezik egy biztonsági és megfelelőségi csapat felügyeli, és minden szolgáltatás a Microsoft értékeli. A csapat alkotó Information security officer, és azok, amelyek nem tartoznak a mérnöki csapataival, akik a Log Analytics. A biztonsági tisztviselők saját felügyeleti lánc és a termékek és szolgáltatások biztonsági és megfelelőségi független értékelések végez.
+A Microsoft rendelkezik egy biztonsági és megfelelőségi csapattal, amely felügyeli és értékeli a Microsoft összes szolgáltatását. Információbiztonsági tisztviselők alkotják a csapatot, és nem kapcsolódnak a Log Analytics-et kifejlesztésével rendelkező mérnöki csapatokhoz. A biztonsági tisztviselők saját irányítási lánccal rendelkeznek, és a biztonság és a megfelelőség biztosítása érdekében független termékeket és szolgáltatásokat végeznek.
 
-A Microsoft igazgatótanácsi egy éves jelentéssel kapcsolatos összes információ biztonsági programok a Microsoft értesítést kap.
+A Microsoft igazgatótanácsát éves jelentés értesíti a Microsoft összes információbiztonsági programjáról.
 
-A Log Analytics-szoftverek fejlesztési és a service csapata aktívan dolgozik a Microsoft Legal és megfelelőségi csapatok és más iparági partnerek különböző tanúsítványok beszerzéséhez.
+A Log Analytics szoftverfejlesztő és -szolgáltatási csapata aktívan együttműködik a Microsoft jogi és megfelelőségi csapataival és más iparági partnerekkel a különböző tanúsítványok megszerzésében.
 
-## <a name="certifications-and-attestations"></a>Minősítéseket és tanúsítványokat
-Az Azure Log Analytics megfelel a következő követelményeknek:
+## <a name="certifications-and-attestations"></a>Tanúsítványok és tanúsítványok
+Az Azure Log Analytics az alábbi követelményeknek felel meg:
 
 * [ISO/IEC 27001](https://www.iso.org/iso/home/standards/management-standards/iso27001.htm)
 * [ISO/IEC 27018:2014](https://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=61498)
 * [ISO 22301](https://azure.microsoft.com/blog/iso22301/)
-* A " [Payment Card Industry (PCI-kompatibilis") adatbiztonsági szabvány (PCI DSS)](https://www.microsoft.com/en-us/TrustCenter/Compliance/PCI) a PCI biztonsági szabványok Tanácsának keretében.
-* [Service Organization Controls (SoC) 1 Type 1 és SoC 2 Type 1](https://www.microsoft.com/en-us/TrustCenter/Compliance/SOC1-and-2) megfelelő
-* [HIPAA és HITECH](https://www.microsoft.com/en-us/TrustCenter/Compliance/hipaa) a HIPAA üzleti partneri szerződéssel rendelkező vállalatok számára
-* Windows közös mérnöki feltételek
-* Microsoft Trustworthy Computing
-* Azure-szolgáltatásként az összetevőket, amelyek a Log Analytics használja az Azure megfelelőségi követelmények felelnie. További információk a [Microsoft adatvédelmi központ megfelelőségi](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)szolgáltatásában olvashatók.
+* A PCI Security Standards Council által a PAYMENT [Card Industry (PCI-kompatibilis) adatbiztonsági szabvány (PCI DSS)](https://www.microsoft.com/en-us/TrustCenter/Compliance/PCI) alapján.
+* [Service Organization Controls (SOC) 1 1- es és SOC 2 1-es típus-kompatibilis](https://www.microsoft.com/en-us/TrustCenter/Compliance/SOC1-and-2)
+* [HIPAA és HITECH](https://www.microsoft.com/en-us/TrustCenter/Compliance/hipaa) a HIPAA üzlettársi megállapodással kötött vállalatok számára
+* A Windows általános tervezési feltételei
+* Microsoft megbízható számítástechnika
+* Azure-szolgáltatásként a Log Analytics által használt összetevők megfelelnek az Azure megfelelőségi követelményeinek. További információ: [Microsoft Adatvédelmi központ megfelelősége](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx).
 
 > [!NOTE]
-> Egyes minősítések/igazolások esetén Log Analytics a *Operational Insights*korábbi neve alatt szerepel.
+> Egyes tanúsítványokban/tanúsítványokban a Log Analytics az Operational Insights korábbi neve alatt jelenik *meg.*
 >
 >
 
-## <a name="cloud-computing-security-data-flow"></a>A felhő-számítástechnika biztonsági adatfolyama
-A céges az alábbi ábra bemutatja az adatok áramlása látható, a felhőbeli biztonsági architektúra, és hogyan, biztonságos, mivel a Log Analytics szolgáltatást, Ön általi végső soron az Azure Portalon látható helyezi át. További információ az egyes lépések a diagram követi.
+## <a name="cloud-computing-security-data-flow"></a>Felhőalapú számítástechnikabiztonsági adatfolyam
+Az alábbi ábrán egy felhőalapú biztonsági architektúra látható, amely a vállalattól származó információk áramlását, valamint a log analytics szolgáltatásba való áthelyezés módját mutatja be, amelyet végső soron Ön az Azure Portalon lát. Az egyes lépésekkel kapcsolatos további információk a diagramot követik.
 
-![A Log Analytics-adatok gyűjtése és biztonsági képe](./media/data-security/log-analytics-data-security-diagram.png)
+![A Log Analytics adatgyűjtésés és -biztonság képe](./media/data-security/log-analytics-data-security-diagram.png)
 
-## <a name="1-sign-up-for-log-analytics-and-collect-data"></a>1. Regisztráljon a Log Analyticsra, és gyűjtsön adatokat
-A szervezet a Log Analytics szolgáltatásnak egy Azure-beli virtuális gépeken, vagy a környezet vagy egyéb felhőszolgáltató virtuális vagy fizikai számítógépeken futó Windows vagy Linux ügynököt kell konfigurálni.  Ha az Operations Manager használja, a felügyeleti csoportból konfigurálja az Operations Manager-ügynök. Felhasználók (amely az Ön, más felhasználókkal vagy csoport, előfordulhat) egy vagy több Log Analytics-munkaterületek létrehozása és regisztrálása az ügynökök a következő fiókok egyikét használva:
+## <a name="1-sign-up-for-log-analytics-and-collect-data"></a>1. Regisztráljon a Log Analytics szolgáltatásra és gyűjtsön adatokat
+A szervezet adatokat küldeni a Log Analytics, konfigurálja a Windows vagy Linux ügynök fut az Azure virtuális gépeken, vagy a virtuális vagy fizikai számítógépek a környezetben vagy más felhőszolgáltató.  Ha az Operations Managert használja, a felügyeleti csoportból konfigurálja az Operations Manager-ügynököt. A felhasználók (amelyek lehetnek Ön, más egyéni felhasználók vagy személyek egy csoportja) egy vagy több Log Analytics-munkaterületet hoznak létre, és az alábbi fiókok egyikével regisztrálják az ügyintézőket:
 
 * [Szervezeti azonosító](../../active-directory/fundamentals/sign-up-organization.md)
 * [Microsoft-fiók – Outlook, Office Live, MSN](https://account.microsoft.com/account)
 
-A Log Analytics-munkaterületen, az adatokat, gyűjtött, összesítése, elemzése, és jelenik meg. A munkaterület elsősorban egy azt jelenti, hogy az adatok particionálása, és az egyes munkaterületeken egyedi. Például érdemes az üzemi adatok egy munkaterülethez felügyelt és a egy másik munkaterülettel felügyelt adatok rendelkezik. Munkaterületek egy rendszergazda felhasználó elérés is segítenek az adatok. Az egyes munkaterületeken lehet több felhasználói fiók tartozik, és minden felhasználói fiók több Log Analytics-munkaterületek hozzáférhet. Munkaterületek adatközpont-régió alapján hoz létre.
+A Log Analytics-munkaterület az adatok gyűjtése, összesítése, elemzése és bemutatása. A munkaterület elsősorban az adatok particionálására szolgál, és minden munkaterület egyedi. Előfordulhat például, hogy az éles adatokat egy munkaterülettel, a tesztadatokat pedig egy másik munkaterülettel szeretné kezelni. A munkaterületek azt is segítik a rendszergazdának, hogy szabályozzák a felhasználók hozzáférését az adatokhoz. Minden munkaterülethez több felhasználói fiók is tartozhat, és minden felhasználói fiók több Log Analytics-munkaterülethez is hozzáférhet. Az adatközpont-régió alapján hoz létre munkaterületeket.
 
-Az Operations Manager felügyeleti csoport Operations Manager, hozza létre a kapcsolatot a Log Analytics szolgáltatással. Ezután konfigurálnia melyik ügynök által felügyelt rendszerekhez a felügyeleti csoport és engedélyezett a gyűjthet adatokat küldeni a szolgáltatás. Engedélyezte a megoldástól függően vannak ezek a megoldások adatait vagy a Log Analytics szolgáltatással vagy az ügynök által felügyelt rendszer által gyűjtött adatok mennyisége miatt küldő közvetlenül egy Operations Manager felügyeleti kiszolgálóról közvetlenül a érkeznek a szolgáltatás az ügynök. Nem figyelt meg az Operations Manager rendszerhez csatlakozik biztonságosan a Log Analytics szolgáltatással közvetlenül.
+Az Operations Manager esetében az Operations Manager felügyeleti csoport kapcsolatot létesít a Log Analytics szolgáltatással. Ezután konfigurálja, hogy a felügyeleti csoport mely ügynök által felügyelt rendszerei gyűjthetnek és küldhetnek adatokat a szolgáltatásnak. Az engedélyezett megoldástól függően az ezekből a megoldásokból származó adatokat vagy közvetlenül az Operations Manager felügyeleti kiszolgálóról küldi el a Log Analytics szolgáltatásnak, vagy az ügynök által felügyelt rendszer által gyűjtött adatok mennyisége miatt közvetlenül a a közvetítőt a szolgálathoz. Az Operations Manager által nem figyelt rendszerek esetén mindegyik közvetlenül csatlakozik a Log Analytics szolgáltatáshoz.
 
-Csatlakoztatott és a Log Analytics szolgáltatás közötti minden kommunikáció titkosított. A TLS (HTTPS) protokollt használják a titkosítást.  A Microsoft SDL-folyamat után következik, hogy a Log Analytics e naprakészen tartása a legújabb fejlesztések a titkosítási protokollok.
+A csatlakoztatott rendszerek és a Log Analytics szolgáltatás közötti minden kommunikáció titkosítva van. A TLS (HTTPS) protokoll titkosításra szolgál.  A Microsoft SDL-folyamat ot követi annak biztosítása érdekében, hogy a Log Analytics naprakész legyen a kriptográfiai protokollok legújabb fejlődésével.
 
-Minden ügynök típusú Log Analytics gyűjti az adatokat. A gyűjtött adatok típus által használt megoldások függ. Az adatgyűjtés összegzését [a Solutions Gallery log Analytics-megoldások hozzáadása](../../azure-monitor/insights/solutions.md)című részében tekintheti meg. Ezenkívül részletesebb gyűjteményadatokat a legtöbb megoldás érhető el. A megoldás egy előre meghatározott nézeteket, a naplóbeli keresési lekérdezések, az adatok gyűjtési szabályok és a feldolgozási logika kötegelt. Csak rendszergazdák használhatják a Log Analytics megoldás importálása. A megoldás az importálása után Áthelyezés az Operations Manager felügyeleti kiszolgálókon (ha van), majd a kiválasztott összes ügynököt. Ezt követően az ügynök összegyűjti az adatokat.
+Minden ügynöktípus adatokat gyűjt a Log Analytics számára. Az összegyűjtött adatok típusa a használt megoldások típusától függ. Az adatgyűjtés összegzését a [Megoldások tárból származó Naplóelemzési megoldások hozzáadása című témakörben találja.](../../azure-monitor/insights/solutions.md) Ezenkívül a legtöbb megoldáshoz részletesebb adatgyűjtési információ is rendelkezésre áll. A megoldás egy előre definiált nézetek, naplókeresési lekérdezések, adatgyűjtési szabályok és feldolgozási logika kötege. Csak a rendszergazdák használhatják a Log Analytics egy megoldás importálásához. A megoldás importálása után a rendszer áthelyezi az Operations Manager felügyeleti kiszolgálóira (ha van ilyen), majd a kiválasztott ügynökökre. Ezután az ügynökök gyűjtik az adatokat.
 
-## <a name="2-send-data-from-agents"></a>2. adatok küldése az ügynököktől
-Minden ügynök esetében egy regisztrációs kulccsal regisztrálja, és a egy biztonságos kapcsolatot hoznak létre az ügynök és a Log Analytics szolgáltatás tanúsítványalapú hitelesítést és az SSL használata a 443-as porton. A log Analytics titkoskód-tárolót létrehozni, és tarthatja karban a kulcsokat használ. Titkos kulcsok vannak elforgatott a 90 naponta, és az Azure-ban vannak tárolva, és kezeli az Azure operations akik szigorú szabályozási és megfelelőségi gyakorlat szerint.
+## <a name="2-send-data-from-agents"></a>2. Adatok küldése ügynököktől
+Minden ügynöktípust regisztrál egy regisztrációs kulccsal, és biztonságos kapcsolat jön létre az ügynök és a Log Analytics szolgáltatás között a tanúsítványalapú hitelesítés és a 443-as porttal rendelkező TLS használatával. A Log Analytics egy titkos tárolót használ a kulcsok létrehozásához és karbantartásához. A személyes kulcsok 90 naponta elforgathatók, és az Azure-ban tárolódnak, és az Okat, amelyek szigorú szabályozási és megfelelőségi gyakorlatot követnek, az Azure-műveletek kezelik őket.
 
-Az Operations Managerrel a felügyeleti csoport regisztrálva a Log Analytics-munkaterületet hoz létre egy biztonságos HTTPS-kapcsolat az Operations Manager felügyeleti kiszolgálóval.
+Az Operations Manager segítségével a Log Analytics-munkaterülettel regisztrált felügyeleti csoport biztonságos HTTPS-kapcsolatot hoz létre az Operations Manager felügyeleti kiszolgálóval.
 
-Az Azure virtual machines szolgáltatásban futó Windows vagy Linux ügynökök csak olvasható tárkulcs segítségével olvassa el az Azure-táblákban diagnostické události.  
+Az Azure virtuális gépeken futó Windows- vagy Linux-ügynökök esetében egy csak olvasható tárolási kulcs szolgál az Azure-táblák diagnosztikai eseményeinek olvasásához.  
 
-Bármely, az Operations Manager felügyeleti csoport, amely integrálva van a Log Analytics felé jelentő ügynök, az nem lehet kommunikálni a felügyeleti kiszolgáló esetén a szolgáltatás bármilyen okból az összegyűjtött adatok helyben tárolódnak egy átmeneti gyorsítótárban a felügyeleti a kiszolgáló.   Próbálja meg újra elküldeni az adatokat két órán át nyolc percenként.  Megkerüli a felügyeleti kiszolgáló, és közvetlenül a Log Analytics érkezik adatok esetén a viselkedés a Windows-ügynök összhangban.  
+Ha a naplóelemzéssel integrált Operations Manager felügyeleti csoportnak jelentést tesz bármely ügynök, ha a felügyeleti kiszolgáló bármilyen okból nem tud kommunikálni a szolgáltatással, az összegyűjtött adatokat a rendszer helyileg tárolja a felügyeleti felügyelet ideiglenes gyorsítótárában. Szerver.   Megpróbálják újraküldeni az adatokat nyolc percenként két órán keresztül.  A felügyeleti kiszolgálót megkerülő és közvetlenül a Log Analytics szolgáltatásba küldött adatok esetében a viselkedés összhangban van a Windows-ügynökkel.  
 
-Felügyeleti kiszolgáló ügynök gyorsítótárazott adatok és a Windows hitelesítőadat-tár az operációs rendszer védi. Ha a szolgáltatás nem tudja feldolgozni az adatokat két órával később, az ügynökök várólistára kerülnek az adatok. Ha a várólista megtelik, az ügynök elindul, adattípusok, kezdve a teljesítményadatok elvetését. Az ügynök várólista-határérték egy beállításkulcs megadásával módosíthatja azokat, így szükség esetén. Összegyűjtött adatok tömörítve és a szolgáltatásnak az Operations Manager felügyeleti csoport adatbázisok kihagyásával, így azt nem adható hozzá bármilyen terhelést őket. Miután a rendszer elküldi a gyűjtött adatokat, a rendszer eltávolítja a gyorsítótárból.
+A Windows vagy a felügyeleti kiszolgáló ügynök gyorsítótárazott adatait az operációs rendszer hitelesítő adattárolója védi. Ha a szolgáltatás két óra elteltével nem tudja feldolgozni az adatokat, az ügynökök várólistára helyezik az adatokat. Ha a várólista megtelik, az ügynök elkezdi eldobni az adattípusokat, kezdve a teljesítményadatokkal. Az ügynökvára-várólista-korlát egy beállításkulcs, így szükség esetén módosíthatja azt. Az összegyűjtött adatok tömörítése és a szolgáltatásnak való elküldése megkerülve az Operations Manager felügyeleti csoport adatbázisait, így nem ad hozzá juk terhelést. Az összegyűjtött adatok elküldése után a rendszer eltávolítja azokat a gyorsítótárból.
 
-A fentiekben ismertetettek szerint a felügyeleti kiszolgálóról vagy közvetlenül csatlakoztatott ügynökök adatküldést SSL-kapcsolaton keresztül a Microsoft Azure-adatközpontok. Az ExpressRoute segítségével szükség esetén adja meg a további biztonsági adatok. Az ExpressRoute egy módja közvetlenül kapcsolódhat az Azure meglévő WAN hálózatról, például a többprotokollos címke váltása (mpls virtuális Magánhálózat) VPN, egy hálózati szolgáltató által biztosított. További információ: [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
+A fent leírtak szerint a felügyeleti kiszolgálóról vagy a közvetlenül csatlakoztatott ügynökökről származó adatokat a Rendszer A TLS-en keresztül küldi el a Microsoft Azure adatközpontjainak. Szükség esetén az ExpressRoute segítségével további biztonságot nyújthat az adatoknak. ExpressRoute egy módja annak, hogy közvetlenül csatlakozik az Azure-hoz a meglévő WAN-hálózat, például egy többprotokollos címkeváltás (MPLS) VPN, egy hálózati szolgáltató által biztosított. További információ: [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
 
-## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3. az Log Analytics szolgáltatás fogadja és dolgozza fel az adatfeldolgozást
-A Log Analytics szolgáltatás biztosítja, hogy a bejövő adatok megbízható forrásból érvényesítésével megjeleníthető tanúsítványok és az adatok integritásának megőrzése Azure-hitelesítéssel. A feldolgozatlan nyers adatok majd tárolódik a régióban, az adatok inaktív végül lesznek tárolva az Azure-Eseményközpontba. A tárolt adatok típusát a megoldásokat, amelyek lettek importálva, és adatokat gyűjthet típusú függ. Ezután a Log Analytics szolgáltatás folyamatok a nyers adatokat, és feltölti azt az adatbázisba.
+## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3. A Log Analytics szolgáltatás fogadja és feldolgozza az adatokat
+A Log Analytics szolgáltatás biztosítja, hogy a bejövő adatok megbízható forrásból származnak a tanúsítványok és az adatok integritásának ellenőrzése az Azure-hitelesítéssel. A feldolgozatlan nyers adatokat ezután tárolja egy Azure Event Hub a régióban az adatok végül tárolja az in-t. A tárolt adatok típusa az importált és az adatgyűjtéshez használt megoldások típusától függ. Ezután a Log Analytics szolgáltatás feldolgozza a nyers adatokat, és betöltődik az adatbázisba.
 
-Az összegyűjtött adatokat az adatbázisban tárolt a megőrzési időszak a kiválasztott díjszabással függ. Az *ingyenes* szinten az összegyűjtött adatok hét napig elérhetők. A *fizetős* csomag esetében a begyűjtött adatok alapértelmezés szerint 31 napig elérhetők, de 730 napig bővíthetők. Adatok titkosítása inaktív állapotban, adatkezelés, hogy az Azure storage tárolja, és az adatokat a helyileg redundáns tárolás (LRS) használó helyi régión belül replikálódnak. Az utolsó két hetet is tárolja SSD-alapú gyorsítótárban, és ez a gyorsítótár titkosítva van.
+Az adatbázisban tárolt összegyűjtött adatok megőrzési ideje a kiválasztott díjcsomagtól függ. Az *ingyenes* szint hez az összegyűjtött adatok hét napig állnak rendelkezésre. A *Fizetett* szint esetében az összegyűjtött adatok alapértelmezés szerint 31 napig állnak rendelkezésre, de 730 napra meghosszabbíthatók. Az adatok tárolása in-t tárol az Azure storage-ban, az adatok titkosságának biztosítása érdekében, és az adatok replikálása a helyi redundáns tárolás (LRS) használatával történik. Az elmúlt két hétben az adatok is ssd-alapú gyorsítótárban tárolódnak, és ez a gyorsítótár titkosítva van.
 
-## <a name="4-use-log-analytics-to-access-the-data"></a>4. a Log Analytics használata az adateléréshez
-A Log Analytics-munkaterület elérését, jelentkezzen be az Azure Portalon a szervezeti fiók vagy a korábban használt Microsoft-fiók használatával. A portál és a Log Analytics szolgáltatás közötti összes forgalom egy biztonságos csatornán keresztül zajlik. A portál használata esetén a munkamenet-azonosító akkor jön létre, a felhasználó ügyfélen (webböngésző), és a helyi gyorsítótárban tárolt adatokat, mindaddig, amíg a munkamenet meg lett szakítva. Ha leállt, a gyorsítótár törlődik. Ügyféloldali cookie-kat, amelyek nem tartalmaznak személyes azonosításra alkalmas adatokat, nem lesznek automatikusan eltávolítva. Munkamenet-cookie HTTPOnly vannak megjelölve, és biztosított. Egy előre meghatározott tétlen időszak után az Azure portal munkamenet meg lett szakítva.
+## <a name="4-use-log-analytics-to-access-the-data"></a>4. Az adatok eléréséhez használja a Log Analytics szolgáltatást
+A Log Analytics-munkaterület eléréséhez jelentkezzen be az Azure Portalon a korábban beállított szervezeti fiók kal vagy Microsoft-fiókkal. A portál és a Log Analytics szolgáltatás közötti összes forgalmat egy biztonságos HTTPS-csatornán keresztül küldi el a rendszer. A portál használatakor a rendszer munkamenet-azonosítót hoz létre a felhasználói ügyfélen (webböngészőben), és az adatokat a helyi gyorsítótárban tárolja, amíg a munkamenet le nem áll. Ha megszakad, a gyorsítótár törlődik. Az ügyféloldali cookie-k, amelyek nem tartalmaznak személyazonosításra alkalmas adatokat, nem törlődnek automatikusan. A munkamenet-cookie-k HTTPOnly jelöléssel vannak ellátva, és biztonságosak. Egy előre meghatározott tétlen időszak után az Azure Portal munkamenet eközben megszakad.
 
-## <a name="next-steps"></a>Következő lépések
-* Ismerje meg, hogyan gyűjthet adatokat az Azure-beli virtuális gépek Log Analyticsával az [Azure VM](../../azure-monitor/learn/quick-collect-azurevm.md)gyors üzembe helyezését követően.  
+## <a name="next-steps"></a>További lépések
+* Ismerje meg, hogyan gyűjthet adatokat az Azure-beli virtuális gépek loganalytics-szolgáltatásával az [Azure virtuális gépek rövid útmutatóját követve.](../../azure-monitor/learn/quick-collect-azurevm.md)  
 
-*  Ha a környezetben található fizikai vagy virtuális Windows-vagy Linux-számítógépekről szeretne adatokat gyűjteni, tekintse meg a Linux rendszerű [számítógépek](../../azure-monitor/learn/quick-collect-linux-computer.md) és a [Windows rendszerű számítógépek](../../azure-monitor/learn/quick-collect-windows-computer.md) gyors útmutatója című témakört.
+*  Ha a környezetében lévő fizikai vagy virtuális Windows vagy Linux rendszerű számítógépekről szeretne adatokat gyűjteni, olvassa el a [Gyorsútmutató Linux rendszerű számítógépekhez](../../azure-monitor/learn/quick-collect-linux-computer.md) vagy [a Windows rendszerű számítógépekhez készült gyorsindítást.](../../azure-monitor/learn/quick-collect-windows-computer.md)
 

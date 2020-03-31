@@ -1,96 +1,96 @@
 ---
 title: A Linkerd áttekintése
-description: A Linkerd áttekintésének beszerzése
+description: A Linkerd áttekintése
 author: paulbouwer
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 3181be62a14ec1b3450bd181172b5323ca176427
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77593767"
 ---
-# <a name="linkerd"></a>Linkerd
+# <a name="linkerd"></a>Linkerd között
 
 ## <a name="overview"></a>Áttekintés
 
-A [Linkerd][linkerd] egy könnyen használható és Lightweight Service Mesh.
+[Linkerd][linkerd] egy könnyen használható és könnyű szolgáltatás háló.
 
 ## <a name="architecture"></a>Architektúra
 
-A Linkerd olyan adatsíkokat biztosít, amely az ultrakönnyű [Linkerd][linkerd-proxy] speciális proxy oldalkocsis szolgáltatásokból áll. Ezek az intelligens proxyk a hálózott alkalmazások és munkaterhelések összes hálózati forgalmát vezérlik. A proxyk a [Prometheus][prometheus] -metrikák végpontján keresztül is elérhetővé teszik a metrikákat.
+A Linkerd egy ultrakönnyű [Linkerd][linkerd-proxy] speciális proxy oldalkocsikból álló adatsíkot biztosít. Ezek az intelligens proxyk szabályozzák az összes hálózati forgalmat az egybeesített alkalmazásokban és számítási feladatokban. A proxyk is elérhetővé teszik a metrikák at [Prometheus][prometheus] metrikák végpontok.
 
-A vezérlő síkja a következő [összetevők][linkerd-architecture]használatával kezeli a konfigurációt és az összesített telemetria:
+A vezérlősík a konfigurációt és az összesített [telemetriai adatokat][linkerd-architecture]a következő összetevőkön keresztül kezeli:
 
-- **Vezérlő** – olyan API-t biztosít, amely a Linkerd parancssori felületet és az irányítópultot vezérli. A proxyk konfigurációját biztosítja.
+- **Controller** - Biztosítja api, amely hajtja a Linkerd CLI és a Dashboard. A proxyk konfigurációját biztosítja.
 
-- **Koppintás** – valós idejű órákat hozhat létre a kérelmekkel és a válaszokkal kapcsolatban.
+- **Koppintás** – Valós idejű órák létrehozása kérésekre és válaszokra.
 
-- **Identitás** – olyan identitás-és biztonsági képességeket biztosít, amelyek lehetővé teszik a szolgáltatások közötti mTLS.
+- **Identitás** – Olyan identitás- és biztonsági képességeket biztosít, amelyek lehetővé teszik az mTLS szolgáltatások közötti futtatását.
 
-- **Web** – a Linkerd irányítópultját adja meg.
+- **Web** - Biztosítja a Linkerd irányítópultot.
 
 
-A következő architektúra-diagram azt mutatja be, hogy az adatsíkon és a vezérlési síkon lévő különböző összetevők hogyan hatnak egymásra.
+Az alábbi architektúradiagram bemutatja, hogy az adatsíkon és a vezérlősíkon belüli különböző összetevők hogyan hatnak egymásra.
 
 
 ![A Linkerd összetevőinek és architektúrájának áttekintése.](media/servicemesh/linkerd/about-architecture.png)
 
 
-## <a name="selection-criteria"></a>Kiválasztási feltételek
+## <a name="selection-criteria"></a>Kiválasztási kritériumok
 
-Fontos megérteni és figyelembe venni a következő területeket a számítási feladatok Linkerd kiértékelése során:
+Fontos, hogy a Linkerd számítási feladatokhoz való értékelésekor megértse és figyelembe vegye a következő területeket:
 
-- [Tervezési alapelvek](#design-principles)
-- [Képességek](#capabilities)
+- [Tervezési elvek](#design-principles)
+- [Funkciók](#capabilities)
 - [Forgatókönyvek](#scenarios)
 
 
 ### <a name="design-principles"></a>Tervezési alapelvek
 
-A következő tervezési alapelvek a Linkerd-projektet [ismertetik][design-principles] :
+A Linkerd projektet a következő tervezési elvek [vezérelik:][design-principles]
 
-- Az **egyszerű** használat érdekében könnyen használhatónak és érthetőnek kell lennie.
+- **Keep it Simple** - Legyen könnyen használható és érthető.
 
-- Az **erőforrásokra vonatkozó követelmények minimalizálása** – minimális teljesítmény-és erőforrás-költségeket szabhat.
+- **Erőforrás-követelmények minimalizálása** – Minimális teljesítmény- és erőforrásköltség.
 
-- **Csak munka** – ne szakítsa meg a meglévő alkalmazásokat, és ne igényeljen összetett konfigurációt.
+- **Just Work** – Ne szakítsa meg a meglévő alkalmazásokat, és ne igényeljön összetett konfigurációt.
 
 
 ### <a name="capabilities"></a>Funkciók
 
-A Linkerd a következő funkciókat biztosítja:
+A Linkerd a következő képességeket biztosítja:
 
-- **Mesh** – beépített hibakeresési lehetőség
+- **Háló** – beépített hibakeresési lehetőség
 
-- **Traffic Management** – felosztás, időtúllépés, újrapróbálkozások, bejövő forgalom
+- **Forgalomirányítás** – felosztás, időmegosztások, újrapróbálkozások, be- és be- és visszatöltés
 
-- **Biztonság** – titkosítás (mTLS), 24 óránként automatikusan elforgatott tanúsítványok
+- **Biztonság** – titkosítás (mTLS), tanúsítványok autorotated 24 óránként
 
-- **Megfigyelhetőség** – arany metrikák, koppintás, nyomkövetés, szolgáltatási profilok és útvonal-metrikák, webes irányítópult topológiai gráfokkal, Prometheus, grafana
+- **Megfigyelhetőség** – arany metrikák, koppintás, nyomkövetés, szolgáltatásprofilok és útvonal-mérőszámok, web irányítópult topológiai grafikonokkal, prométheusz, grafana
 
 
 ### <a name="scenarios"></a>Forgatókönyvek
 
-A Linkerd kiválóan alkalmas a következő helyzetekben:
+A Linkerd a következő forgatókönyvekhez megfelelő és ajánlott:
 
-- Egyszerűen használható a képességgel kapcsolatos követelmények alapvető készletével
+- Egyszerűen használható a képességekkel kapcsolatos alapvető követelményekkel
 
-- Alacsony késés, alacsony terhelés, a megfigyelésre és az egyszerű adatforgalom kezelésére összpontosítva
+- Alacsony késleltetés, alacsony rezsi, a megfigyelhetőségre és az egyszerű forgalomirányításra összpontosítva
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Az alábbi dokumentáció ismerteti, hogyan telepítheti a Linkerd-t az Azure Kubernetes Service-ben (ak):
+A következő dokumentáció bemutatja, hogyan telepítheti a Linkerd szolgáltatást az Azure Kubernetes szolgáltatásra (AKS):
 
 > [!div class="nextstepaction"]
-> [A Linkerd telepítése az Azure Kubernetes szolgáltatásban (ak)][linkerd-install]
+> [A Linkerd telepítése az Azure Kubernetes szolgáltatásban (AKS)][linkerd-install]
 
-A Linkerd funkcióit és architektúráját továbbra is megismerheti:
+A Linkerd szolgáltatásait és architektúráját is felfedezheti:
 
-- [Linkerd-funkciók][linkerd-features]
+- [Linkerd jellemzők][linkerd-features]
 - [Linkerd architektúra][linkerd-architecture]
 
 <!-- LINKS - external -->

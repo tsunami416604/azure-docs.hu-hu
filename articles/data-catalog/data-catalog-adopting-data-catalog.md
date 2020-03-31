@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 63d1213a2dded41df3f462722b354b03fe9f6e33
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72801878"
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Az Azure Data Catalog bevezetésének módszere és folyamata
@@ -54,7 +54,7 @@ Néhány tipp a stratégiai célok meghatározásához:
 
 Íme egy példa egy Data Catalog-bevezetési terv stratégiai célkitűzésire egy fiktív cég, az Adventure Works esetében:
 
-**Azure Data Catalog** lehetővé teszi, hogy az Adventure Works pénzügyi csapata közösen működjön együtt a kulcsfontosságú adatforrásokkal, így minden csapattag könnyedén megtalálhatja és használhatja a szükséges információkat, és megoszthatja tudásukat a csapat egészével.
+**Az Azure Data Catalog** lehetővé teszi a Kalandorbolt pénzügyi csapata számára, hogy együttműködjön a kulcsfontosságú adatforrásokon, így minden csapattag könnyen megtalálhatja és felhasználhatja a szükséges adatokat, és megoszthatja tudását a csapat egészével.
 
 Ha kitűzte a pontos stratégiai célokat, azok alapján kiválaszthatja a megfelelő próbaprojektet a Data Catalog bevezetéséhez. Általánosságban a Data Catalog számos forgatókönyv esetén használható, így a következő szakaszban néhány tippet olvashat a releváns használati esetek azonosításához.
 
@@ -69,7 +69,7 @@ Néhány tipp az alkalmazási helyzetek azonosításához:
 * **Határozza meg a csapat céljait** – Hogyan teljesíti a csapat a kitűzött célokat? Ekkor még ne a Data Catalog szolgáltatásra koncentráljon, hiszen ezen a ponton még objektívnek kell lennie. Ne feledje, az üzleti eredmények számítanak, nem a technológia.
 * **Határozza meg az üzleti problémát** – Milyen problémákkal néz szembe a csapat az adategységek megtalálását és megismerését illetően? Előfordulhat például, hogy a fontos adatforrásokra vonatkozó információk egy hálózati mappában vannak Excel-munkafüzetekben, amelyeket a csapat csak hosszas kereséssel talál meg.
 * **Vegye figyelembe, hogyan viszonyul a csapat a változásokhoz** – A bevezetés támasztotta kihívások sokszor nem egy új eszköz bevezetésében, hanem a változásnak való ellenállásban rejlenek. A csapat változásokhoz való hozzáállása fontos szerepet játszik a használati esetek azonosításában, mivel lehetséges, hogy a jelenlegi folyamat csak a „mindig így csináltuk” vagy a „ha nem romlott el, minek megjavítani?” indokok alapján van érvényben. Egy új eszköz vagy folyamat bevezetése mindig akkor a legegyszerűbb, ha az érintettek tisztában vannak a váltás nyújtotta előnyökkel, és elismerik a megoldandó problémák fontosságát.
-* **Tartsa Fókuszban az adategységeket** – a csapat által felmerülő üzleti problémák megvitatásakor "a gyomnövények átvágása", és a vállalati adategységek hatékonyabb kihasználásával kapcsolatos tudnivalókra kell összpontosítani.
+* **Az adateszközökkel kapcsolatos fókusz megtartása** – A csapat üzleti problémáinak megvitatása során "át kell vágnia a gazokat", és arra kell összpontosítania, hogy mi fontos a vállalati adateszközök hatékonyabb kihasználásához.
 
 Néhány példa a Data Catalog alkalmazási helyzeteire:
 
@@ -91,7 +91,7 @@ A próbatervben érdemes olyan üzleti célokat kitűzni, amelyeket a Data Catal
 
 ### <a name="target-the-right-team"></a>A megfelelő csoport megcélzása
 
-A próbaprojekt kiválasztásakor válassza azt a csoportot, amelyik a legkedvezőbb lehetőséget jelenti egy létező üzleti probléma megoldására. Ilyen például egy üzleti elemző, aki egy SQL Server-adatbázisból készít jelentéseket. A probléma az, hogy az adatforrást csak a több kollégával való beszélgetés után ismerte fel az adatforrás. Végül, miután a megtalálta, hogy mely adatforrásokat szeretné használni, egy Excel-munkafüzetet talált, amely az egyes adatforrások leírását tartalmazza. Bár az Excel-munkafüzet megfelelően leírja a szükséges táblákat, gyorsan megtalálhatja ezeket az adatforrásokat, ha regisztrálva lettek, és megjegyzésbe vették őket a **Azure Data Catalogban**.
+A próbaprojekt kiválasztásakor válassza azt a csoportot, amelyik a legkedvezőbb lehetőséget jelenti egy létező üzleti probléma megoldására. Ilyen például egy üzleti elemző, aki egy SQL Server-adatbázisból készít jelentéseket. A probléma az, hogy csak több munkatársunkkal való beszélgetés után szereztek tudomást az adatforrásról. Végül, miután idővel megpróbálták megtalálni a használni kívánt adatforrásokat, megtudták, hogy egy Excel-munkafüzetet találnak, amely tartalmazza az egyes adatforrások leírását. Bár az Excel-munkafüzet megfelelően leírja a szükséges táblákat, gyorsan megtalálták volna ezeket az adatforrásokat, ha regisztrálva vannak, és az **Azure Data Catalogban**vannak jegyzetekben.
 
 ### <a name="identify-data-heroes"></a>Adatkezelők kiválasztása
 
@@ -101,7 +101,7 @@ Az **adatalkotók** az adatforrások szakértői. David például egy másik csa
 
 Az **adatfelhasználók** az üzleti problémák adatok felhasználásával történő megoldásának szakértői. Nancy például egy üzleti elemző, aki az Adventure Works SQL Server-adatforrásait használja az adatelemzéshez.
 
-Az egyik üzleti probléma, amelyet az **Azure Data Catalog** megold, az **adatalkotók** és az **adatfelhasználók** összeköttetése. Ezt úgy valósítja meg, hogy központi adattárként szolgál a céges adatforrásokra vonatkozó információk számára. David a Data Catalog használatával nyilvántartásba veszi az Adventure Works és az SQL Server adatforrásait. A közösségi bármely olyan felhasználó, aki felderíti ezt az adatforrást, megoszthatja a saját véleményét az adatokon kívül az általuk felderített adatok használata mellett is. Nancy például a katalógusban való kereséssel megtalálja az adatforrásokat, és hozzájuk fűzve megosztja az adatokra vonatkozó szaktudását.  Mostantól az adatkatalógusban való kereséssel a cég többi munkatársa is felhasználhatja a megosztott szaktudást.
+Az egyik üzleti probléma, amelyet az **Azure Data Catalog** megold, az **adatalkotók** és az **adatfelhasználók** összeköttetése. Ezt úgy valósítja meg, hogy központi adattárként szolgál a céges adatforrásokra vonatkozó információk számára. David a Data Catalog használatával nyilvántartásba veszi az Adventure Works és az SQL Server adatforrásait. A crowdsourcing használatával minden olyan felhasználó, aki felfedezi ezt az adatforrást, megoszthatja véleményét az adatokról, az általuk felfedezett adatok használata mellett. Nancy például a katalógusban való kereséssel megtalálja az adatforrásokat, és hozzájuk fűzve megosztja az adatokra vonatkozó szaktudását.  Mostantól az adatkatalógusban való kereséssel a cég többi munkatársa is felhasználhatja a megosztott szaktudást.
 
 * Az adatforrások nyilvántartására vonatkozó további információkért lásd: [Register data sources](data-catalog-get-started.md) (Adatforrások regisztrálása).
 * Az adatforrások felfedezésére vonatkozó további információkért lásd: [Search data sources](data-catalog-get-started.md) (Adatforrások keresése).
@@ -116,7 +116,7 @@ A következő szakasz egy példaprojektet ír le az Adventure Works vállalattó
 
 ### <a name="an-example-project"></a>Egy példaprojekt
 
-Ebben a példában Nancy, az üzleti elemző egy SQL Server-adatbázisból származó adatkészletből készít jelentéseket a csapata számára. A probléma az, hogy az adatforrást csak a több kollégával való beszélgetés után ismerte fel az adatforrás. Ezek az adatforrások gyorsan megtalálhatók, ha regisztrálva lettek, és egy központi helyen (például **Azure Data Catalog**) vannak bejegyezve.
+Ebben a példában Nancy, az üzleti elemző egy SQL Server-adatbázisból származó adatkészletből készít jelentéseket a csapata számára. A probléma az, hogy csak több munkatársunkkal való beszélgetés után szereztek tudomást az adatforrásról. Gyorsan megtalálták volna ezeket az adatforrásokat, ha regisztrálva lennének, és egy központi helyen, például az **Azure Data Catalog-on**lennének.
 
 Azt, hogy Nancy és csapata milyen könnyen megtalálhatja az értékes adatokat, úgy szemléltetheti, hogy az adatforrásokra vonatkozó információkat (metaadatokat) az adatforrás-regisztráló eszköz segítségével feltölti a katalógusba. Így az adatbázisra vonatkozó információk nem csak néhány személy, de a csapat és a teljes vállalat számára is elérhetők lesznek. Miután az adatforrások regisztrálva lettek a Data Catalog szolgáltatásban, Nancy és csapata könnyedén hozzáférnek az általuk használt forrásokhoz. Az eredmény egy átfogóbb és relevánsabb adatkatalógus a csapat és a vállalat számára. Minél több csapat veszi használatba a Data Catalog szolgáltatást, annál könnyebb lesz az üzleti adatforrások megtalálása és használata, így az adatközpontúság növelésével további eredményeket hozhatnak ki az adatokból.
 
@@ -163,6 +163,6 @@ A kísérletben részt vevő kezdeti támogatók segítséget nyújthatnak a Dat
 
 Ez a cikk arról szólt, hogyan vezetheti be az **Azure Data Catalog** szolgáltatást a szervezeténél. Reméljük, sikerült elindítania egy Data Catalog-próbaprojektet, és elterjesztenie a szervezetnél a Data Catalog használatát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Azure Data Catalog létrehozása](data-catalog-get-started.md)

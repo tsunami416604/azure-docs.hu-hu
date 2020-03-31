@@ -1,7 +1,7 @@
 ---
-title: Üzembe helyezés és felhasználás
+title: Telepítés és felhasználás
 titleSuffix: ML Studio (classic) - Azure
-description: A gépi tanulási munkafolyamatok és modellek webszolgáltatásként való üzembe helyezéséhez Azure Machine Learning Studio (klasszikus) használható. Ezekhez a webszolgáltatásokhoz majd hívja a gépi tanulási modellek alkalmazásokból az interneten-t az előrejelzések valós időben vagy kötegelt módban használható.
+description: Az Azure Machine Learning Studio (klasszikus) segítségével gépi tanulási munkafolyamatokat és modelleket helyezhet üzembe webszolgáltatásként. Ezek a webszolgáltatások ezután használható a gépi tanulási modellek hívása alkalmazások az interneten keresztül, hogy valós időben vagy kötegelt módban előrejelzéseket.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,62 +11,62 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/19/2017
 ms.openlocfilehash: ff6ae0de0bbd8c47b81fa5066a97eb0b3e0cf6bc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79204392"
 ---
-# <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatások: üzembe helyezés és felhasználás
+# <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatások: Üzembe helyezés és felhasználás
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-A gépi tanulási munkafolyamatok és modellek webszolgáltatásként való üzembe helyezéséhez Azure Machine Learning Studio (klasszikus) használható. Ezekhez a webszolgáltatásokhoz majd hívja a gépi tanulási modellek alkalmazásokból az interneten-t az előrejelzések valós időben vagy kötegelt módban használható. Mivel a webes szolgáltatások RESTful, meghívhatja azokat a különböző programozási nyelvekhez és platformokhoz, mint például a .NET, a Java, és az alkalmazások, például az Excel.
+Az Azure Machine Learning Studio (klasszikus) segítségével gépi tanulási munkafolyamatokat és modelleket helyezhet üzembe webszolgáltatásként. Ezek a webszolgáltatások ezután az interneten keresztül iszákból származó gépi tanulási modellek hívására használhatók, hogy valós időben vagy kötegelt módban végezhessenek előrejelzéseket. Mivel a webszolgáltatások RESTful, hívhatja őket a különböző programozási nyelvek és platformok, mint például a .NET és a Java, és az alkalmazások, például az Excel.
 
-A következő szakaszok forgatókönyvek, kód és a dokumentációt, első lépések megtételéhez mutató hivatkozásokat.
+A következő szakaszok a kezdéshez forgatókönyvekre, kódokra és dokumentációra mutató hivatkozásokat tartalmaznak.
 
 ## <a name="deploy-a-web-service"></a>Webszolgáltatás üzembe helyezése
 
-### <a name="with-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (klasszikus)
+### <a name="with-azure-machine-learning-studio-classic"></a>Az Azure Machine Learning Studio (klasszikus)
 
-A Studio (klasszikus) portál és a Microsoft Azure Machine Learning Web Services portál segítségével programkód írása nélkül telepítheti és kezelheti a webszolgáltatásokat.
+A Studio (klasszikus) portál és a Microsoft Azure Machine Learning webservices portál segítségével kódot írás nélkül telepíthet és kezelhet egy webszolgáltatást.
 
-Az alábbi hivatkozások új webszolgáltatásként üzembe helyezésével kapcsolatos általános adatok megadása:
+Az alábbi hivatkozások általános tájékoztatást nyújtanak az új webszolgáltatások üzembe helyezéséről:
 
-* A Azure Resource Manageron alapuló új webszolgáltatás üzembe helyezéséről az [új webszolgáltatás üzembe helyezését](deploy-a-machine-learning-web-service.md)ismertető cikkben olvashat.
-* A webszolgáltatások üzembe helyezésével kapcsolatos útmutatóért lásd: [Azure Machine learning webszolgáltatás üzembe](deploy-a-machine-learning-web-service.md)helyezése.
-* A webszolgáltatások létrehozásával és üzembe helyezésével kapcsolatos teljes útmutatóért először az [1. Oktatóanyag: a hitelkockázat előrejelzése](tutorial-part1-credit-risk.md)című témakörben olvashat.
-* Webszolgáltatás üzembe helyezése konkrét példákat lásd:
+* Az Azure Resource Manager en alapuló új webszolgáltatás üzembe helyezéséről az [Új webszolgáltatás telepítése című](deploy-a-machine-learning-web-service.md)témakörben olvashat.
+* A webszolgáltatás üzembe helyezéséről szóló útmutatót az [Azure Machine Learning webszolgáltatás telepítése ( Központi telepítés) témakörben](deploy-a-machine-learning-web-service.md)talál.
+* A webszolgáltatás létrehozásáról és üzembe helyezéséről szóló teljes forgatókönyvhöz kezdje az [1.](tutorial-part1-credit-risk.md)
+* A webszolgáltatást üzembe helyező konkrét példákat a következő témakörben talál:
 
-  * [3. Oktatóanyag: hitelkockázat-modell üzembe helyezése](tutorial-part3-credit-risk-deploy.md)
-  * [Webszolgáltatás üzembe helyezése több régióban](deploy-a-machine-learning-web-service.md#multi-region)
+  * [3. oktatóanyag: Hitelkockázati modell telepítése](tutorial-part3-credit-risk-deploy.md)
+  * [Webszolgáltatás telepítése több régióban](deploy-a-machine-learning-web-service.md#multi-region)
 
-### <a name="with-web-services-resource-provider-apis-azure-resource-manager-apis"></a>A web services-szolgáltató API-k (Azure Resource Manager API-k)
+### <a name="with-web-services-resource-provider-apis-azure-resource-manager-apis"></a>Webszolgáltatások erőforrás-szolgáltatóAPI-ival (Azure Resource Manager API-kkal)
 
-A webszolgáltatások Azure Machine Learning Studio (klasszikus) erőforrás-szolgáltatója lehetővé teszi a webszolgáltatások üzembe helyezését és kezelését REST API-hívások használatával. További információ: [Machine learning webszolgáltatás (REST)](/rest/api/machinelearning/index) referenciája.
+Az Azure Machine Learning Studio (klasszikus) erőforrás-szolgáltató a webszolgáltatások lehetővé teszi a webszolgáltatások üzembe helyezését és felügyeletét REST API-hívások használatával. További információt a [Machine Learning webszolgáltatás (REST)](/rest/api/machinelearning/index) hivatkozási.
 
 <!-- [Machine Learning Web Service (REST)](https://msdn.microsoft.com/library/azure/mt767538.aspx) reference. -->
 
-### <a name="with-powershell-cmdlets"></a>A PowerShell-parancsmagokkal
+### <a name="with-powershell-cmdlets"></a>PowerShell-parancsmagokkal
 
-A webes szolgáltatások Azure Machine Learning Studio (klasszikus) erőforrás-szolgáltatója lehetővé teszi a webszolgáltatások üzembe helyezését és kezelését a PowerShell-parancsmagok használatával.
+Az Azure Machine Learning Studio (klasszikus) erőforrás-szolgáltató a webszolgáltatások lehetővé teszi a webszolgáltatások üzembe helyezését és felügyeletét a PowerShell-parancsmagok használatával.
 
-A parancsmagok használatához először be kell jelentkeznie az Azure-fiókjába a PowerShell-környezetből a [AzAccount](/powershell/module/az.accounts/connect-azaccount) parancsmag használatával. Ha nem tudja, hogyan hívhatja meg a Resource Manageren alapuló PowerShell-parancsokat, tekintse meg a [Azure PowerShell használata a Azure Resource Manager használatával](../../azure-resource-manager/management/manage-resources-powershell.md)című témakört.
+A parancsmagok használatához először be kell jelentkeznie az Azure-fiókjába a PowerShell-környezetben a [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) parancsmag használatával. Ha nem ismeri az Erőforrás-kezelőn alapuló PowerShell-parancsok hívásának módját, olvassa el [az Azure PowerShell használata az Azure Resource Managerrel című](../../azure-resource-manager/management/manage-resources-powershell.md)témakört.
 
-A prediktív kísérlet exportálásához használja [ezt a mintakód-kódot](https://github.com/ritwik20/AzureML-WebServices). Az .exe fájlt hoz létre a kódot, miután írhatja be:
+A prediktív kísérlet exportálásához használja [ezt a mintakódot.](https://github.com/ritwik20/AzureML-WebServices) Miután létrehozta az .exe fájlt a kódból, a következőt írhatja be:
 
     C:\<folder>\GetWSD <experiment-url> <workspace-auth-token>
 
-Az alkalmazás futtatása hoz létre a JSON-sablon. A webszolgáltatás üzembe helyezése a sablon használatához hozzá kell adnia a következő információkat:
+Az alkalmazás futtatása létrehoz egy webszolgáltatás JSON sablont. Ahhoz, hogy a sablont webszolgáltatás üzembe helyezéséhez használja, a következő információkat kell megadnia:
 
 * Tárfiók neve és kulcsa
 
-    A Storage-fiók nevét és kulcsát a [Azure Portal](https://portal.azure.com/)kérheti le.
-* Kötelezettségvállalási csomag azonosítója
+    A tárfiók nevét és kulcsát az [Azure Portalon](https://portal.azure.com/)szerezheti be.
+* Kötelezettségvállalási terv azonosítója
 
-    A díjcsomag beszerzéséhez jelentkezzen be a [Azure Machine learning Web Services](https://services.azureml.net) portálról, és kattintson a csomag nevére.
+    A csomagazonosítót az [Azure Machine Learning Web Services](https://services.azureml.net) portálról szerezheti be, ha bejelentkezik, és egy csomagnevére kattint.
 
-Adja hozzá őket a JSON-sablonhoz a *Tulajdonságok* csomópont gyermekeiként a *MachineLearningWorkspace* csomóponttal megegyező szinten.
+Adja hozzá őket a JSON-sablonhoz a *Tulajdonságok* csomópont gyermekeiként, ugyanazon a szinten, mint a *MachineLearningWorkspace* csomópont.
 
 Például:
 
@@ -78,28 +78,28 @@ Például:
         "id": "subscriptions/YouSubscriptionID/resourceGroups/YourResourceGroupID/providers/Microsoft.MachineLearning/commitmentPlans/YourPlanName"
     }
 
-Tekintse meg a következő cikkek és további részleteket a mintakód:
+További részleteket az alábbi cikkekben és mintakódban talál:
 
-* [Azure Machine learning Studio (klasszikus) parancsmagok](https://docs.microsoft.com/powershell/module/az.machinelearning) referenciája az MSDN-ben
-* [Útmutató](https://github.com/raymondlaghaeian/azureml-webservices-arm-powershell/blob/master/sample-commands.txt) a githubon
+* [Az Azure Machine Learning Studio (klasszikus) parancsmagok](https://docs.microsoft.com/powershell/module/az.machinelearning) hivatkozás az MSDN-en
+* [Példaforgatókönyv](https://github.com/raymondlaghaeian/azureml-webservices-arm-powershell/blob/master/sample-commands.txt) a GitHubon
 
-## <a name="consume-the-web-services"></a>A webszolgáltatások felhasználása
+## <a name="consume-the-web-services"></a>Használja a webes szolgáltatásokat
 
-### <a name="from-the-azure-machine-learning-web-services-ui-testing"></a>Az Azure Machine Learning Web Services (tesztelés) felhasználói felület
+### <a name="from-the-azure-machine-learning-web-services-ui-testing"></a>Az Azure Machine Learning webszolgáltatások felhasználói felületéről (tesztelés)
 
-Az Azure Machine Learning Web Services portálon a webszolgáltatás tesztelheti. Tesztelés a kérés-válasz szolgáltatás (RRS) és a kötegelt végrehajtási szolgáltatás (BES) felületek.
+A webszolgáltatás az Azure Machine Learning Web Services portálon tesztelheti. Ez magában foglalja a kérelem-válasz szolgáltatás (RRS) és a batch-végrehajtási szolgáltatás (BES) felületének tesztelését.
 
 * [Új webszolgáltatás üzembe helyezése](deploy-a-machine-learning-web-service.md)
 * [Azure Machine Learning webszolgáltatás üzembe helyezése](deploy-a-machine-learning-web-service.md)
-* [3. Oktatóanyag: hitelkockázat-modell üzembe helyezése](tutorial-part3-credit-risk-deploy.md)
+* [3. oktatóanyag: Hitelkockázati modell telepítése](tutorial-part3-credit-risk-deploy.md)
 
-### <a name="from-excel"></a>Az Excelből
+### <a name="from-excel"></a>Excelből
 
-Egy Excel-sablont, amely a web service tölthető le:
+A webszolgáltatást használó Excel-sablont letöltheti:
 
-* [Azure Machine Learning webszolgáltatás kihasználása az Excelből](consuming-from-excel.md)
-* [Azure Machine Learning webszolgáltatások Excel-bővítménye](excel-add-in-for-web-services.md)
+* [Azure Machine Learning webszolgáltatás használata az Excelből](consuming-from-excel.md)
+* [Excel-bővítmény az Azure Machine Learning webszolgáltatásokhoz](excel-add-in-for-web-services.md)
 
-### <a name="from-a-rest-based-client"></a>A REST-alapú ügyfél
+### <a name="from-a-rest-based-client"></a>REST-alapú ügyféltől
 
-Az Azure Machine Learning webszolgáltatások olyan REST-alapú API-k. Ezeket az API-kat különböző platformokról, például a .NET, a Python, az R, a Java stb. használatával lehet felhasználni. A webszolgáltatások felhasználható lapja a [Microsoft Azure Machine learning webszolgáltatások portálján](https://services.azureml.net) olyan mintakód található, amely segítséget nyújt az első lépésekhez. További információ: [Az Azure Machine Learning webszolgáltatásainak használata](consume-web-services.md).
+Az Azure Machine Learning webszolgáltatások RESTful API-k. Ezeket az API-kat különböző platformokról, például .NET, Python, R, Java stb. A [Microsoft Azure Machine Learning Web Services portálwebszolgáltatásának](https://services.azureml.net) **felhasználási** lapja mintakódot kínál, amely segítséget nyújt az induláshoz. További információ: [Az Azure Machine Learning webszolgáltatásainak használata](consume-web-services.md).

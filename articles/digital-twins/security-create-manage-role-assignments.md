@@ -1,6 +1,6 @@
 ---
-title: Szerepkör-hozzárendelések létrehozása és kezelése – Azure digitális Twins | Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre és kezelhet szerepkör-hozzárendeléseket az Azure digitális Twins-n belül.
+title: Szerepkör-hozzárendelések létrehozása és kezelése - Azure Digital Twins | Microsoft dokumentumok
+description: Ismerje meg a szerepkör-hozzárendelések létrehozását és kezelését az Azure Digital Twins-en belül.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: seodec18
 ms.openlocfilehash: 1c83ca0abfd17db873bec62f0a0d052703862a45
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110404"
 ---
-# <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Szerepkör-hozzárendelések létrehozása és kezelése az Azure Digital Ikrekben
+# <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Szerepkör-hozzárendelések létrehozása és kezelése az Azure Digital Twins-ben
 
-Az Azure Digital Twins szerepköralapú hozzáférés-vezérlést ([RBAC](./security-role-based-access-control.md)) használ az erőforrásokhoz való hozzáférés kezelésére.
+Az Azure Digital Twins szerepköralapú hozzáférés-vezérlést[(RBAC)](./security-role-based-access-control.md)használ az erőforrásokhoz való hozzáférés kezeléséhez.
 
-## <a name="role-assignments-overview"></a>Szerepkör-hozzárendelések áttekintése
+## <a name="role-assignments-overview"></a>Szerepkör-hozzárendelések – áttekintés
 
 Minden szerepkör-hozzárendelés megfelel a következő definíciónak:
 
@@ -36,69 +36,69 @@ Minden szerepkör-hozzárendelés megfelel a következő definíciónak:
 
 Az alábbi táblázat az egyes attribútumokat ismerteti:
 
-| Attribútum | Name (Név) | Kötelező | Típus | Leírás |
+| Attribútum | Név | Kötelező | Típus | Leírás |
 | --- | --- | --- | --- | --- |
-| Szerepkörazonosítónak | Szerepkör-definíciós azonosító | Igen | Sztring | A kívánt szerepkör-hozzárendelés egyedi azonosítója. Keresse meg a szerepkör-definíciókat és azok azonosítóját a System API lekérdezésével vagy az alábbi táblázat áttekintésével. |
-| objectId | Objektumazonosító | Igen | Sztring | Azure Active Directory azonosító, egyszerű szolgáltatásnév vagy tartománynév. A szerepkör-hozzárendelés hozzárendelése a következőhöz:. A szerepkör-hozzárendelést a hozzá tartozó típusnak megfelelően kell formázni. A `DomainName` objectIdType a objectId a `“@”` karakterrel kell kezdődnie. |
-| objectIdType | Objektumazonosító típusa | Igen | Sztring | A használt objektumazonosító típusa. Lásd alább a **támogatott ObjectIdTypes** . |
-| elérési út | Hely elérési útja | Igen | Sztring | A `Space` objektum teljes elérési útja. Például: `/{Guid}/{Guid}`. Ha egy azonosítónak a teljes gráfhoz tartozó szerepkör-hozzárendelésre van szüksége, akkor `"/"`t kell megadnia. Ez a karakter kijelöli a gyökeret, de a használata nem ajánlott. Mindig kövesse a legalacsonyabb jogosultsági szint elvét. |
-| tenantId | Bérlő azonosítója | Változó | Sztring | A legtöbb esetben egy Azure Active Directory bérlő azonosítója. `DeviceId` és `TenantId` ObjectIdTypes nem engedélyezett. `UserId` és `ServicePrincipalId` ObjectIdTypes szükséges. A tartománynév ObjectIdType nem kötelező megadni. |
+| roleId | Szerepkör-definícióazonosító | Igen | Sztring | A kívánt szerepkör-hozzárendelés egyedi azonosítója. A szerepkör-definíciókat és azok azonosítóját a Rendszer API lekérdezésével vagy az alábbi táblázat áttekintésével keresheti meg. |
+| objectId | Objektumazonosító | Igen | Sztring | Egy Azure Active Directory-azonosító, egyszerű szolgáltatásobjektum-azonosító vagy tartománynév. A szerepkör-hozzárendelés melyikhöz vagy kihez van rendelve. A szerepkör-hozzárendelést a társított típus szerint kell formázni. Az `DomainName` objectIdType esetében az objectId `“@”` azonosítónak a karakterrel kell kezdődnie. |
+| objectIdType típus | Objektumazonosító típusa | Igen | Sztring | A használt objektumazonosító-azonosító fajtája. Lásd: Az alábbi **Supported ObjectIdTypes.** |
+| path | Tér elérési útja | Igen | Sztring | Az `Space` objektum teljes elérési útja. Például: `/{Guid}/{Guid}`. Ha egy azonosítónak szüksége van a `"/"`teljes diagram szerepkör-hozzárendelésére, adja meg a mezőt. Ez a karakter jelöli a gyökeret, de használata nem ajánlott. Mindig kövesd a legkisebb kiváltság elvét. |
+| tenantId | Bérlőazonosítója | Változó | Sztring | A legtöbb esetben egy Azure Active Directory-bérlői azonosító. Nem engedélyezett `DeviceId` és `TenantId` ObjectIdTypes. Az `UserId` ObjectIdTypes `ServicePrincipalId` típushoz szükséges. Nem kötelező a DomainName ObjectIdType típushoz. |
 
 ### <a name="supported-role-definition-identifiers"></a>Támogatott szerepkör-definíciós azonosítók
 
-Minden szerepkör-hozzárendelés társít egy szerepkör-definíciót az Azure digitális Twins-környezetében lévő entitással.
+Minden szerepkör-hozzárendelés társít egy szerepkör-definíciót egy entitáshoz az Azure Digital Twins környezetben.
 
 [!INCLUDE [digital-twins-roles](../../includes/digital-twins-roles.md)]
 
 ### <a name="supported-object-identifier-types"></a>Támogatott objektumazonosító-típusok
 
-Korábban a **objectIdType** attribútum lett bevezetve.
+Korábban az **objectIdType** attribútum lett bevezetésre.
 
 [!INCLUDE [digital-twins-object-types](../../includes/digital-twins-object-id-types.md)]
 
 ## <a name="role-assignment-operations"></a>Szerepkör-hozzárendelési műveletek
 
-Az Azure digitális Twins támogatja a szerepkör-hozzárendelések teljes *létrehozási*, *olvasási*és *törlési* műveleteit. A *frissítési* műveletek kezelése szerepkör-hozzárendelések hozzáadásával, szerepkör-hozzárendelések eltávolításával, illetve a szerepkör-hozzárendelések által elérhetővé tett [térbeli intelligencia Graph](./concepts-objectmodel-spatialgraph.md) -csomópontok módosításával történik.
+Az Azure Digital Twins támogatja a teljes *CREATE,* *READ*és *DELETE* műveletek szerepkör-hozzárendelések. *Az* UPDATE-műveleteket szerepkör-hozzárendelések hozzáadásával, szerepkör-hozzárendelések eltávolításával vagy a szerepkör-hozzárendelések által hozzáférést biztosító [Térintelligencia-gráf](./concepts-objectmodel-spatialgraph.md) csomópontok módosításával kezeli a rendszer.
 
-[Szerepkör-hozzárendelési végpontok ![](media/security-roles/role-assignments.png)](media/security-roles/role-assignments.png#lightbox)
+[![Szerepkör-hozzárendelés iponttal](media/security-roles/role-assignments.png)](media/security-roles/role-assignments.png#lightbox)
 
-A rendelkezésre álló hencegés dokumentációja további információkat tartalmaz az összes elérhető API-végpontról, a kérelmek műveleteiről és a definícióról.
+A mellékelt Swagger referenciadokumentáció további információkat tartalmaz az összes rendelkezésre álló API-végpontokról, a kérelemműveletekről és a definíciókról.
 
 [!INCLUDE [Digital Twins Swagger](../../includes/digital-twins-swagger.md)]
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-### <a name="grant-permissions-to-your-service-principal"></a>Engedélyek megadása az egyszerű szolgáltatásnév számára
+### <a name="grant-permissions-to-your-service-principal"></a>Engedélyek megadása az egyszerű szolgáltatásnak
 
-Az Azure-beli digitális Twins-használat során az első lépések egyike az, hogy a szolgáltatáshoz engedélyeket adjon meg. A következőket vonja maga után:
+Az egyszerű szolgáltatás engedélyek megadása gyakran az egyik első lépés, amelyet az Azure Digital Twins használatával való munka során fog tenni. Ez a következőket foglalja magában:
 
-1. Jelentkezzen be az Azure-példányba az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) vagy a [PowerShell](https://docs.microsoft.com/powershell/azure/)használatával.
-1. Az egyszerű szolgáltatásnév adatainak beszerzése.
-1. Rendelje hozzá a kívánt szerepkört az egyszerű szolgáltatáshoz.
+1. Bejelentkezés az Azure-példányba az [Azure CLI-n](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) vagy a [PowerShellen](https://docs.microsoft.com/powershell/azure/)keresztül.
+1. A szolgáltatásegyszerű adatok beolvasása.
+1. A kívánt szerepkör hozzárendelése a szolgáltatásnévhez.
 
-Az alkalmazás AZONOSÍTÓját a rendszer a Azure Active Directoryban biztosítja. Ha többet szeretne [megtudni a Active Directory](./quickstart-view-occupancy-dotnet.md)Azure Digital ikrek konfigurálásáról és üzembe helyezéséről, olvassa el a gyors üzembe helyezési útmutatót.
+Az alkalmazásazonosítót az Azure Active Directoryban kapja meg. Ha többet szeretne megtudni az Azure Digital Twins konfigurálásáról és kiépítéséről az Active Directoryban, olvassa el a [rövid útmutatót.](./quickstart-view-occupancy-dotnet.md)
 
-Miután elvégezte az alkalmazás AZONOSÍTÓját, hajtsa végre a következő parancsok egyikét. Az Azure CLI-ben:
+Miután rendelkezik az alkalmazásazonosítóval, hajtsa végre az alábbi parancsok egyikét. Az Azure CLI-ben:
 
 ```azurecli
 az login
 az ad sp show --id <ApplicationId>
 ```
 
-A PowerShellben:
+A Powershell ben:
 
 ```powershell
 Login-AzAccount
 Get-AzADServicePrincipal -ApplicationId <ApplicationId>
 ```
 
-A **rendszergazdai** szerepkörrel rendelkező felhasználók ezt követően az URL-címre egy hitelesített http post-kérést rendelhetnek a felhasználóhoz.
+A **Rendszergazda** szerepkörrel rendelkező felhasználók ezután hozzárendelhetik a Térfelügyelő szerepkört egy felhasználóhoz, ha hitelesített HTTP POST-kérelmet küldaz URL-címre:
 
 ```URL
 YOUR_MANAGEMENT_API_URL/roleassignments
 ```
 
-A következő JSON-törzstel:
+A következő JSON-testtel:
 
 ```JSON
 {
@@ -110,17 +110,17 @@ A következő JSON-törzstel:
 }
 ```
 
-### <a name="retrieve-all-roles"></a>Összes szerepkör beolvasása
+### <a name="retrieve-all-roles"></a>Az összes szerepkör beolvasása
 
-[rendszerszerepkörök ![](media/security-roles/system-api.png)](media/security-roles/system-api.png#lightbox)
+[![Rendszerszerepkörök](media/security-roles/system-api.png)](media/security-roles/system-api.png#lightbox)
 
-Az összes elérhető szerepkör (szerepkör-definíció) listázásához hozzon végre egy hitelesített HTTP GET kérelmet a következőre:
+Az összes elérhető szerepkör (szerepkör-definíciók) listázásához kérjen hitelesített HTTP GET-kérelmet:
 
 ```URL
 YOUR_MANAGEMENT_API_URL/system/roles
 ```
 
-Egy sikeres kérelem egy JSON-tömböt ad vissza, amely az egyes hozzárendelt szerepkörökhöz tartozó bejegyzéseket tartalmazza:
+A sikeres kérelem egy JSON-tömböt ad vissza, amely minden hozzárendelhető szerepkörbejegyzéseit tartalmazza:
 
 ```JSON
 [
@@ -153,9 +153,9 @@ Egy sikeres kérelem egy JSON-tömböt ad vissza, amely az egyes hozzárendelt s
 ]
 ```
 
-### <a name="check-a-specific-role-assignment"></a>Adott szerepkör-hozzárendelés keresése
+### <a name="check-a-specific-role-assignment"></a>Adott szerepkör-hozzárendelés ellenőrzése
 
-Egy adott szerepkör-hozzárendelés vizsgálatához hozzon végre egy hitelesített HTTP GET kérelmet a következőre:
+Adott szerepkör-hozzárendelés ellenőrzéséhez kérjen hitelesített HTTP GET-kérelmet:
 
 ```URL
 YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH&accessType=YOUR_ACCESS_TYPE&resourceType=YOUR_RESOURCE_TYPE
@@ -163,16 +163,16 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 
 | **Paraméter értéke** | **Szükséges** |  **Típus** |  **Leírás** |
 | --- | --- | --- | --- |
-| YOUR_USER_ID |  True (Igaz) | Sztring |   A UserId-objectIdType objectId. |
-| YOUR_PATH | True (Igaz) | Sztring |   A kiválasztott elérési út a hozzáférés-ellenőrzési útvonalhoz. |
-| YOUR_ACCESS_TYPE |  True (Igaz) | Sztring |   *Olvasás*, *Létrehozás*, *frissítés*vagy *Törlés* |
-| YOUR_RESOURCE_TYPE | True (Igaz) | Sztring |  *Eszköz*, *DeviceBlobMetadata*, *DeviceExtendedProperty*, *ExtendedPropertyKey*, *ExtendedType*, *végpont*, *tároló*, *Matcher*, *ontológia*, *jelentés*, *definíciós*, *érzékelő*, *SensorExtendedProperty*, *szóköz*, *SpaceBlobMetadata*, *SpaceExtendedProperty*, *SpaceResource*, *SpaceRoleAssignment*, *rendszer*,  *UerDefinedFunction*, *felhasználó*, *UserBlobMetadata*vagy *UserExtendedProperty* |
+| YOUR_USER_ID |  True (Igaz) | Sztring |   A UserId objectIdType objectIdtípus objektumazonosítója. |
+| YOUR_PATH | True (Igaz) | Sztring |   A kiválasztott elérési út a hozzáférés ellenőrzéséhez. |
+| YOUR_ACCESS_TYPE |  True (Igaz) | Sztring |   *Olvasás*, *Létrehozás*, *Frissítés*vagy *Törlés* |
+| YOUR_RESOURCE_TYPE | True (Igaz) | Sztring |  *Eszköz*, *DeviceBlobMetadata*, *DeviceExtendedProperty*, *ExtendedProperty*, *ExtendedProperty*, *Endpoint*, *KeyStore*, *Matcher*, *Ontology*, *Report*, *RoleDefinition*, *Sensor*, *SensorExtendedProperty*, *Space,* *SpaceBlobMetadata*, *SpaceExtendedProperty*, *SpaceResource*, SpaceResource , *SpaceRoleAssignment*, *System*, * UerDefinedFunction*, *Felhasználó*, *UserBlobMetadata*vagy *UserExtendedProperty* |
 
-Egy sikeres kérelem logikai `true` vagy `false`t ad vissza, amely jelzi, hogy a hozzáférési típus hozzá van-e rendelve a felhasználóhoz a megadott elérési úthoz és erőforráshoz.
+A sikeres kérelem logikai `true` `false` értéket ad vissza, vagy jelzi, hogy a hozzáférési típus hozzá van-e rendelve a felhasználóhoz az adott elérési úthoz és erőforráshoz.
 
-### <a name="get-role-assignments-by-path"></a>Szerepkör-hozzárendelések beolvasása elérési út alapján
+### <a name="get-role-assignments-by-path"></a>Szerepkör-hozzárendelések beszereznie elérési út szerint
 
-Egy elérési útra vonatkozó összes szerepkör-hozzárendelés beszerzéséhez hozzon végre egy hitelesített HTTP GET kérelmet a következőre:
+Egy elérési út összes szerepkör-hozzárendelésének lekéréséhez kérjen hitelesített HTTP GET-kérelmet:
 
 ```URL
 YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
@@ -180,9 +180,9 @@ YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 
 | Érték | Csere erre |
 | --- | --- |
-| YOUR_PATH | A terület teljes elérési útja |
+| YOUR_PATH | A teljes utat a tér |
 
-Egy sikeres kérelem egy JSON-tömböt ad vissza, amely a kiválasztott **path** paraméterhez társított összes szerepkör-hozzárendelést megadja:
+A sikeres kérelem egy JSON-tömböt ad vissza a kijelölt **elérési út** paraméterhez társított minden szerepkör-hozzárendeléssel:
 
 ```JSON
 [
@@ -198,7 +198,7 @@ Egy sikeres kérelem egy JSON-tömböt ad vissza, amely a kiválasztott **path**
 
 ### <a name="revoke-a-permission"></a>Engedély visszavonása
 
-A címzettek engedélyének visszavonásához törölje a szerepkör-hozzárendelést egy hitelesített HTTP-TÖRLÉSi kérelem létrehozásával:
+Ha egy címzetttől szeretne visszavonni egy engedélyt, törölje a szerepkör-hozzárendelést hitelesített HTTP DELETE kérelem benyújtásával:
 
 ```URL
 YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID
@@ -208,17 +208,17 @@ YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID
 | --- | --- |
 | *YOUR_ROLE_ASSIGNMENT_ID* | Az eltávolítandó szerepkör-hozzárendelés **azonosítója** |
 
-A sikeres TÖRLÉSi kérelem egy 204-es válasz állapotot ad vissza. Ellenőrizze a szerepkör-hozzárendelés eltávolítását, ha [ellenőrzi](#check-a-specific-role-assignment) , hogy a szerepkör-hozzárendelés továbbra is fennáll-e.
+A sikeres DELETE kérelem 204-es válaszállapotot ad vissza. Ellenőrizze a szerepkör-hozzárendelés eltávolítását, [és ellenőrizze,](#check-a-specific-role-assignment) hogy a szerepkör-hozzárendelés továbbra is rendelkezik-e.
 
 ### <a name="create-a-role-assignment"></a>Szerepkör-hozzárendelés létrehozása
 
-Szerepkör-hozzárendelés létrehozásához hozzon létre egy hitelesített HTTP POST-kérelmet az URL-címre:
+Szerepkör-hozzárendelés létrehozásához küldjön hitelesített HTTP POST-kérelmet az URL-címre:
 
 ```URL
 YOUR_MANAGEMENT_API_URL/roleassignments
 ```
 
-Győződjön meg arról, hogy a JSON-törzs megfelel a következő sémának:
+Ellenőrizze, hogy a JSON-törzs megfelel-e a következő sémának:
 
 ```JSON
 {
@@ -230,7 +230,7 @@ Győződjön meg arról, hogy a JSON-törzs megfelel a következő sémának:
 }
 ```
 
-Egy sikeres kérelem a 201-es válasz állapotát és az újonnan létrehozott szerepkör-hozzárendelés **azonosítóját** fogja visszaadni:
+A sikeres kérelem 201 válaszállapotot ad vissza az újonnan létrehozott szerepkör-hozzárendelés **azonosítójával** együtt:
 
 ```JSON
 "d92c7823-6e65-41d4-aaaa-f5b32e3f01b9"
@@ -238,9 +238,9 @@ Egy sikeres kérelem a 201-es válasz állapotát és az újonnan létrehozott s
 
 ## <a name="configuration-examples"></a>Konfigurációs példák
 
-Az alábbi példák bemutatják, hogyan konfigurálhatja a JSON-törzset számos gyakran észlelt szerepkör-hozzárendelési forgatókönyvben.
+Az alábbi példák bemutatják, hogyan konfigurálhatja a JSON-törzset számos gyakran előforduló szerepkör-hozzárendelési forgatókönyvben.
 
-* **Példa**: a felhasználónak rendszergazdai hozzáférésre van szüksége a bérlői terület emeletéhez.
+* **Példa:** A felhasználónak rendszergazdai hozzáférésre van szüksége a bérlői terület padlójához.
 
    ```JSON
    {
@@ -252,7 +252,7 @@ Az alábbi példák bemutatják, hogyan konfigurálhatja a JSON-törzset számos
    }
    ```
 
-* **Példa**: az alkalmazások tesztelési forgatókönyveket futtatnak az eszközök és érzékelők kigúnyolása céljából.
+* **Példa:** Egy alkalmazás futtatja az eszközöket és érzékelőket gúnyoló tesztforgatókönyveket.
 
    ```JSON
    {
@@ -264,7 +264,7 @@ Az alábbi példák bemutatják, hogyan konfigurálhatja a JSON-törzset számos
    }
     ```
 
-* **Példa**: a tartomány részét képező összes felhasználó olvasási hozzáférést kap a tárhelyek, érzékelők és felhasználók számára. Ez a hozzáférés magában foglalja a hozzá tartozó kapcsolódó objektumokat is.
+* **Példa:** Minden olyan felhasználó, aki egy tartomány része, olvasási hozzáférést kap a szóközökhöz, érzékelőkhöz és felhasználókhoz. Ez a hozzáférés tartalmazza a hozzájuk tartozó objektumokat.
 
    ```JSON
    {
@@ -275,8 +275,8 @@ Az alábbi példák bemutatják, hogyan konfigurálhatja a JSON-törzset számos
    }
    ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- Az Azure digitális Twins szerepköralapú hozzáférés-vezérlésének áttekintéséhez olvassa el a [szerepköralapú hozzáférés-vezérlés](./security-authenticating-apis.md)című részt.
+- Az Azure Digital Twins szerepköralapú hozzáférés-vezérlés áttekintéséhez olvassa el [a Szerepkör-alap hozzáférés-vezérlés című](./security-authenticating-apis.md)olvasni.
 
-- Az Azure Digital Twins API-hitelesítéssel kapcsolatos információkért olvassa el az [API-hitelesítés](./security-authenticating-apis.md)című témakört.
+- Ha többet szeretne megtudni az Azure Digital Twins API-hitelesítésről, olvassa el [az API-hitelesítést.](./security-authenticating-apis.md)

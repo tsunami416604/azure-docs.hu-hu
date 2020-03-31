@@ -9,17 +9,17 @@ ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: d1cf75d8e678bc5bd3e3036930eea42526194df1
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67179360"
 ---
-## <a name="create-a-queue-in-the-azure-portal"></a>Üzenetsor létrehozása az Azure Portalon
-1. Az a **Service Bus-Namespace** lapon jelölje be **üzenetsorok** a bal oldali navigációs menüben.
-1. Az a **üzenetsorok** lapon jelölje be **+ üzenetsor** az eszköztáron.
-1. Adjon meg egy **neve** az üzenetsor, és hagyja a többi alapértelmezett értéket.
-1. Most válassza ki **létrehozás**.
+## <a name="create-a-queue-in-the-azure-portal"></a>Várólista létrehozása az Azure Portalon
+1. A **Service Bus névtér lapján** válassza a bal oldali navigációs menü **Várólisták parancsát.**
+1. A **Várólisták** lapon válassza a **+ Várólista lehetőséget** az eszköztáron.
+1. Adja meg a várólista **nevét,** és hagyja a többi értéket az alapértelmezett értékek között.
+1. Most válassza a **Létrehozás gombot.**
  
-    ![Queues -> + Queue -> Enter name -> Create](./media/service-bus-create-queue-portal/create-queue3.png)
+    ![Várólisták -> + Várólista -> Adja meg a nevét -> Create](./media/service-bus-create-queue-portal/create-queue3.png)
 

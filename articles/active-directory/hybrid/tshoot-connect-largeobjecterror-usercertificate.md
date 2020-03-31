@@ -1,6 +1,6 @@
 ---
-title: Az Azure AD Connect - userCertificate attribútum által okozott LargeObject hibák |} A Microsoft Docs
-description: Ez a témakör a javítási lépések userCertificate attribútum által okozott LargeObject hibák.
+title: Azure AD Connect – LargeObject hibák, amelyeket a userCertificate attribútum okoz | Microsoft dokumentumok
+description: Ez a témakör a userCertificate attribútum által okozott LargeObject hibák javítási lépéseit ismerteti.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -18,168 +18,168 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c851b5ef024e6584e6f8c93995208b08a91fbb60
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "62095489"
 ---
-# <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Az Azure AD Connect szinkronizálása: UserCertificate attribútum által okozott LargeObject hibák kezelése
+# <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect szinkronizálás: A userCertificate attribútum által okozott LargeObject-hibák kezelése
 
-Az Azure AD kikényszeríti a maximálisan megengedett **15** értékek tanúsítvány a **userCertificate** attribútum. Az Azure AD Connect több mint 15 értéket tartalmazó objektumot exportálja az Azure ad-ben, ha az Azure AD adja vissza egy **LargeObject** történt a következő üzenettel:
+Az Azure AD a **userCertificate** attribútumlegfeljebb **15** tanúsítványértéket kényszerít ki. Ha az Azure AD Connect 15-nél több értéket tartalmazó objektumot exportál az Azure AD-be, az Azure AD **egy LargeObject hibát** ad vissza a következő üzenettel:
 
->*"A telepített objektum mérete túl nagy. Csökkentse az attribútum objektum értékeinek számát. A művelet... a következő szinkronizálási ciklusban megpróbálja ismét"*
+>*"A kiosztott objektum túl nagy. Vágja le az objektum attribútumértékeinek számát. A műveletet a rendszer a következő szinkronizálási ciklusban újra megkísérli..."*
 
-A LargeObject hiba okozhatja más AD-attribútumok. Győződjön meg róla, valóban a userCertificate attribútum által okozott, ellenőrizze az objektum vagy a helyszíni AD- vagy a kell a [Synchronization Service Managert keresés a Metaverzumban](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-mvsearch).
+A LargeObject hibát más AD-attribútumok is okozhatták. Annak ellenőrzéséhez, hogy valóban a userCertificate attribútum okozza, ellenőriznie kell az objektumot a helyszíni AD-ben vagy a [Szinkronizálási szolgáltatáskezelő metaverzum-keresésében.](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-mvsearch)
 
-Az objektumok listájában, a bérlőben LargeObject-hibák beszerzéséhez használja a következő módszerek egyikét:
+A bérlőben lévő objektumok LargeObject-hibákkal való beszerzéséhez használja az alábbi módszerek egyikét:
 
- * Ha a bérlő Azure AD Connect Health szinkronizálási szolgáltatás engedélyezve van, olvassa el a [szinkronizálási hibajelentés](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-sync) megadott.
+ * Ha a bérlő engedélyezve van az Azure AD Connect Health szinkronizálásához, tekintse meg a [szinkronizálási hibajelentés](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-sync) biztosított.
  
- * Az egyes szinkronizálási ciklus végén küldött értesítő e-mail a címtár-szinkronizálási hibák az objektumok LargeObject-hibák listája szerepel. 
- * A [szinkronizálási szolgáltatáskezelő műveleti lapon](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-operations) kattintva legújabb Exportálás az Azure ad-ben a művelet a LargeObject-hibák objektumok listáját jeleníti meg.
+ * Az egyes szinkronizálási ciklusok végén küldött címtár-szinkronizálási hibák értesítési e-mail-címe tartalmazza a LargeObject hibákkal rendelkező objektumok listáját. 
+ * A [Szinkronizálási szolgáltatáskezelő műveletek lap](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-operations) megjeleníti a LargeObject-hibákkal rendelkező objektumok listáját, ha a legújabb Exportálás az Azure AD-be műveletre kattint.
  
-## <a name="mitigation-options"></a>Megoldás beállításai
-A LargeObject hiba megszüntetéséig egyéb attribútumainak módosítása ugyanazon az objektumon nem lehet exportálni az Azure ad-hez. A hiba elhárításához fontolja meg a következő beállításokat:
+## <a name="mitigation-options"></a>Kockázatcsökkentési lehetőségek
+Amíg a LargeObject hiba nem oldódik meg, az ugyanazon objektum hoz a többi attribútummódosítása nem exportálható az Azure AD-be. A hiba elhárításához a következő lehetőségeket veheti figyelembe:
 
- * Azure AD Connect 1.1.524.0 hozhat létre frissítése vagy után. Az Azure AD Connect 1.1.524.0, az out-of-box szinkronizálási szabályok frissítve lett-e, nem exportálhatja a attribútumok userCertificate és a userSMIMECertificate, ha az attribútumok több mint 15 értéket kell létrehozni. Az Azure AD Connect frissítése a részletekért tekintse meg a cikk [az Azure AD Connect: Frissítés egy előző verzióról a legújabbra](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version).
+ * Frissítse az Azure AD Connectet az 1.1.524.0-s vagy azt követő buildeléséhez. Az Azure AD Connect 1.1.524.0-s buildjében a beépített szinkronizálási szabályok frissültek, hogy ne exportálják a userCertificate és userSMIMECertificate attribútumokat, ha az attribútumok 15-nél több értékkel rendelkeznek. Az Azure AD Connect frissítéséről az [Azure AD Connect: Frissítés egy korábbi verzióról a legújabbra](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version)című cikkben olvashat részletesen.
 
- * Alkalmazzon egy **kimenő szinkronizálási szabály** az Azure AD Connectben exportálhatók egy **null érték helyett a tényleges értékek objektumok 15-nél több tanúsítvány értékekkel**. Ez a beállítás akkor megfelelő, ha nincs szüksége a tanúsítvány értékeket nelze exportovat do Azure AD-objektum több mint 15 értéket. A szinkronizálási szabály megvalósítása a részletekért tekintse meg a következő szakaszban [Implementing szinkronizálási szabályt, amely korlátozza az exportálási userCertificate attribútum](#implementing-sync-rule-to-limit-export-of-usercertificate-attribute).
+ * Valósítson meg egy **kimenő szinkronizálási szabályt** az Azure AD Connectben, amely null értéket exportál **a 15-nél több tanúsítványértékkel rendelkező objektumok tényleges értékei helyett.** Ez a beállítás akkor megfelelő, ha nem szükséges a tanúsítvány értékek et az Azure AD-be a 15-nél több értéket igénylő objektumok esetében. A szinkronizálási szabály megvalósításáról a következő Szakasz [A userCertificate attribútum exportálásának korlátozását célzó Szinkronizálási szabály megvalósítása](#implementing-sync-rule-to-limit-export-of-usercertificate-attribute)című szakaszban talál további részleteket.
 
- * A helyszíni tanúsítvány-értékek számának csökkentése AD-objektum (15 vagy kevesebb), amelyek már nem a szervezet által használt értékek eltávolításával. Ez a megfelelő, ha az attribútum növekedést lejárt vagy nem használt tanúsítványok okozza. Használhatja a [PowerShell-parancsprogram elérhető itt](https://gallery.technet.microsoft.com/Remove-Expired-Certificates-0517e34f) megtalálásához, biztonsági mentése, és törli a lejárt tanúsítványokat a helyszíni AD. Mielőtt törölné a tanúsítványok, javasoljuk, hogy ellenőrizze a nyilvános-kulcs – infrastruktúra-rendszergazdákkal a szervezetben.
+ * Csökkentse a tanúsítványértékek számát a helyszíni AD objektumon (15 vagy kevesebb) a szervezet által már nem használt értékek eltávolításával. Ez akkor megfelelő, ha az attribútum felfújni a lejárt vagy nem használt tanúsítványok okozzák. Az itt [elérhető PowerShell-parancsfájl](https://gallery.technet.microsoft.com/Remove-Expired-Certificates-0517e34f) segítségével megkeresheti, biztonsági másolatot készíthet és törölheti a lejárt tanúsítványokat a helyszíni AD-ben. A tanúsítványok törlése előtt ajánlott a szervezet nyilvános kulcsú infrastruktúrájának rendszergazdáival egyezgetni.
 
- * A userCertificate attribútum kizárása az Azure AD-exportálás alatt álló Azure AD Connect konfigurálására. Általában nem ajánlott ezt a beállítást, mert az attribútum használható a Microsoft Online Services által meghatározott forgatókönyvek engedélyezhetők. Ebben az esetben:
-    * A userCertificate attribútum a User objektum szolgál az Exchange online-hoz és az Outlook-ügyfelek üzenet aláíráshoz és titkosításhoz. Ez a funkció kapcsolatos további információkért tekintse meg a cikk [S/MIME-üzenet aláíráshoz és titkosításhoz](https://technet.microsoft.com/library/dn626158(v=exchg.150).aspx).
+ * Konfigurálja az Azure AD Connectet úgy, hogy kizárja a userCertificate attribútumot az Azure AD-be való exportálásból. Általában nem javasoljuk ezt a beállítást, mivel az attribútumot a Microsoft Online Services bizonyos esetek engedélyezésére is használhatják. Elsősorban:
+    * A User objektum userCertificate attribútumát az Exchange Online és az Outlook ügyfelek üzenetaláírásra és titkosításra használják. A funkcióról az [Üzenetek aláírásáról és titkosításáról az S/MIME](https://technet.microsoft.com/library/dn626158(v=exchg.150).aspx)című cikkben olvashat bővebben.
 
-    * A userCertificate attribútum a számítógép-objektum segítségével az Azure AD tartományhoz csatlakoztatott eszközök csatlakoztatása az Azure AD lehetővé teszi a helyszíni Windows 10-es. Ezen szolgáltatásáról kapcsolatos további tudnivalókért tekintse meg a cikk [csatlakoztatása az Azure AD-tartományhoz csatlakozott eszközökkel, a Windows 10-es élmény](https://docs.microsoft.com/azure/active-directory/active-directory-azureadjoin-devices-group-policy).
+    * A computer objektum userCertificate attribútumát az Azure AD arra használja, hogy a Windows 10 helyszíni tartományhoz csatlakozó eszközei csatlakozzanak az Azure AD-hez. Ha többet szeretne megtudni erről a funkcióról, olvassa el a [tartományhoz csatlakozó eszközök csatlakoztatása az Azure AD for Windows 10-es élményeket című cikket.](https://docs.microsoft.com/azure/active-directory/active-directory-azureadjoin-devices-group-policy)
 
-## <a name="implementing-sync-rule-to-limit-export-of-usercertificate-attribute"></a>Exportálás userCertificate attribútum korlátozása végrehajtási szinkronizálási szabály
-A userCertificate attribútum által okozott LargeObject hiba elhárításához is meg lehet valósítani egy kimenő szinkronizálási szabály az Azure AD Connect exportálhatók egy **null érték helyett a tényleges értékek objektumok 15-nél több tanúsítvány értékekkel**. Ez a szakasz ismerteti a lépéseket, a szinkronizálási szabály implementálásához szükséges **felhasználói** objektumokat. A lépések itt leírtakon a **forduljon** és **számítógép** objektumokat.
+## <a name="implementing-sync-rule-to-limit-export-of-usercertificate-attribute"></a>Szinkronizálási szabály megvalósítása a userCertificate attribútum exportálásának korlátozására
+A userCertificate attribútum által okozott LargeObject-hiba megoldásához valósíthat meg egy kimenő szinkronizálási szabályt az Azure AD Connect ben, amely null értéket exportál **a 15-nél több tanúsítványértékkel rendelkező objektumok tényleges értékei helyett.** Ez a szakasz a **felhasználói** objektumok szinkronizálási szabályának megvalósításához szükséges lépéseket ismerteti. A lépések a **Névjegy** és a **Számítógép** objektumokhoz igazíthatók.
 
 > [!IMPORTANT]
-> Értékek korábban már sikeresen exportálva az Azure AD-tanúsítvány exportálása a null érték eltávolítja.
+> Null érték exportálása eltávolítja a korábban exportált tanúsítványértékeket az Azure AD-be.
 
-A lépések szerint lehet összegezni:
+A lépések a következőképpen foglalhatók össze:
 
-1. Tiltsa le a szinkronizálásütemező, és ellenőrizze, hogy nincs folyamatban szinkronizálás.
-3. Keresse meg a meglévő kimenő szinkronizálási szabály userCertificate attribútum.
-4. A szükséges kimenő szinkronizálási szabály létrehozása.
-5. Ellenőrizze az új szinkronizálási szabályt egy meglévő objektum LargeObject hiba miatt.
-6. Az új szinkronizálási szabály fennmaradó objektumok LargeObject hiba történt a alkalmazni.
-7. Ellenőrizze, hogy nem az Azure ad Szolgáltatásba exportálni váró váratlan mértékben.
-8. Exportálja a módosításokat az Azure ad-hez.
-9. Engedélyezze újra a sync schedulert.
+1. Tiltsa le a szinkronizálási ütemezőt, és ellenőrizze, hogy nincs-e folyamatban szinkronizálás.
+3. Keresse meg a userCertificate attribútum meglévő kimenő szinkronizálási szabályát.
+4. Hozza létre a szükséges kimenő szinkronizálási szabályt.
+5. Ellenőrizze az új szinkronizálási szabályt egy LargeObject hibával rendelkező meglévő objektumon.
+6. Alkalmazza az új szinkronizálási szabályt a LargeObject hibával rendelkező fennmaradó objektumokra.
+7. Ellenőrizze, hogy nincsenek váratlan módosítások, amelyek az Azure AD-be való exportálásra várnak.
+8. Exportálja a módosításokat az Azure AD-be.
+9. A szinkronizálási ütemező újbóli engedélyezése.
 
-### <a name="step-1-disable-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>1\.lépés Tiltsa le a szinkronizálásütemező, és ellenőrizze, hogy nincs folyamatban lévő szinkronizálás
-Győződjön meg arról, szinkronizálás nem kerül sor, amíg Ön közepén egy új szinkronizálási szabály elkerülése érdekében az Azure AD-exportálás alatt álló nem szándékos módosítások végrehajtására. A beépített szinkronizálásütemező letiltása:
-1. Az Azure AD Connect-kiszolgálón indítsa el a PowerShell-munkamenetben.
+### <a name="step-1-disable-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>1. lépés A szinkronizálási ütemező letiltása és annak ellenőrzése, hogy nincs-e folyamatban szinkronizálás
+Győződjön meg arról, hogy nem történik szinkronizálás, miközben egy új szinkronizálási szabály megvalósítása közben kerül sor, hogy elkerülje a nem kívánt módosítások exportálását az Azure AD-be. A beépített szinkronizálási ütemező letiltása:
+1. Indítsa el a PowerShell-munkamenetet az Azure AD Connect-kiszolgálón.
 
-2. Ütemezett szinkronizálás letiltása parancsmag futtatásával: `Set-ADSyncScheduler -SyncCycleEnabled $false`
+2. Az ütemezett szinkronizálás letiltása parancsmag futtatásával:`Set-ADSyncScheduler -SyncCycleEnabled $false`
 
 > [!Note]
-> Az előző lépések az Azure AD Connect a beépített scheduler az újabb verziók (1.1.xxx.x) csak vonatkoznak. Ha az Azure AD Connect Windows Feladatütemezőt használó régebbi verziók (1.0.xxx.x) használ, vagy (közös) saját egyéni scheduler időszakos szinkronizáláshoz indításához használja, ennek megfelelően tiltsa le szeretné.
+> Az előző lépések csak az Azure AD Connect és a beépített ütemező újabb verzióira (1.1.xxx.x) vonatkoznak. Ha az Azure AD Connect régebbi verzióit (1.0.xxx.x) használja, amely Windows Feladatütemezőt használ, vagy saját egyéni ütemezőjét (nem gyakori) használja a rendszeres szinkronizálás elindításához, ennek megfelelően le kell tiltania őket.
 
-1. Indítsa el a **Synchronization Service Managert** a KEZDŐ → szinkronizálási szolgáltatás.
+1. Indítsa el a **szinkronizálási szolgáltatáskezelőt** a START → Szinkronizálási szolgáltatás sal.
 
-1. Nyissa meg a **műveletek** fülre és ellenőrizze, nincs művelet, amelynek állapota *"folyamatban."*
+1. Lépjen a **Műveletek** lapra, és ellenőrizze, hogy nincs-e olyan művelet, amelynek állapota *"folyamatban van".*
 
-### <a name="step-2-find-the-existing-outbound-sync-rule-for-usercertificate-attribute"></a>2\.lépés Keresse meg a meglévő kimenő szinkronizálási szabály userCertificate attribútum
-Meglévő szinkronizálási szabály, amely engedélyezve és konfigurálva userCertificate attribútum esetén a felhasználói objektumok exportálása az Azure AD lehetnek. Keresse meg a szinkronizálási szabály ismerje meg, hogy a **elsőbbséget** és **Hatókörszűrő** konfiguráció:
+### <a name="step-2-find-the-existing-outbound-sync-rule-for-usercertificate-attribute"></a>2. lépés A userCertificate attribútum meglévő kimenő szinkronizálási szabályának megkeresése
+Léteznie kell egy meglévő szinkronizálási szabály, amely engedélyezve van, és konfigurálva van a usercertificate attribútum exportálására a felhasználói objektumok hoz az Azure AD-be. Keresse meg ezt a szinkronizálási szabályt, hogy megtudja, **mia sorrendje** és **hatókörének szűrőkonfigurációja:**
 
-1. Indítsa el a **szinkronizálási Szabályszerkesztővel** KEZDŐ → szinkronizálási Szabályszerkesztővel címen.
+1. Indítsa el a **Szinkronizálási szabályok szerkesztőjét** a START → Szinkronizálási szabályok szerkesztőjével.
 
-2. Adja meg a keresési szűrőket a következő értékeket:
+2. Konfigurálja a keresési szűrőket a következő értékekkel:
 
     | Attribútum | Érték |
     | --- | --- |
-    | Direction |**Kimenő** |
-    | MV-objektum típusa |**Személy** |
-    | Összekötő |*az Azure AD-összekötő* |
-    | Összekötő-objektum típusa |**user** |
-    | MV-attribútum |**userCertificate** |
+    | Irány |**Kimenő** |
+    | MV objektumtípus |**Személy** |
+    | Összekötő |*Az Azure AD-összekötő neve* |
+    | Összekötő objektum típusa |**Felhasználó** |
+    | MV attribútum |**userCertificate** |
 
-3. OOB (out-of-box) szinkronizálási szabályokat az Azure AD-összekötő használatakor userCertficiate attribútum esetén a felhasználói objektumok exportálása szerezheti vissza a *"Ki az aad-ben – felhasználói ExchangeOnline"* szabály.
-4. Jegyezze fel a **elsőbbséget** értékét a szinkronizálási szabály.
-5. Válassza ki a szinkronizálási szabályt, és kattintson a **szerkesztése**.
-6. Az a *"Fenntartott szabály megerősítő szerkesztése"* felugró párbeszédpanel, kattintson a **nem**. (Ne aggódjon, nem fogjuk bármilyen módosítás a szinkronizálási szabály).
-7. A szerkesztési képernyőn válassza ki a **Scoping szűrő** fülre.
-8. Jegyezze fel a hatókörének meghatározásához a szűrők beállítását. Ha az OOB-szinkronizálási szabály használ, pontosan kell **két záradékot tartalmazó egy igényfelmérési Szűrőcsoport**, többek között:
+3. Ha OOB (out-of-box) szinkronizálási szabályokat használ az Azure AD-összekötővel a felhasználói objektumok userCertficiate attribútumának exportálásához, vissza kell kapnia a *"Out to AAD – User ExchangeOnline"* szabályt.
+4. Jegyezze fel a szinkronizálási szabály **elsőbbségi** értékét.
+5. Jelölje ki a szinkronizálási szabályt, és kattintson a **Szerkesztés gombra.**
+6. A *"Fenntartott szabály megerősítésének szerkesztése"* előugró párbeszédpanelen kattintson a **Nem**gombra. (Ne aggódjon, nem fogunk változtatni ezen a szinkronizálási szabályon).
+7. A szerkesztési képernyőn válassza a **Hatókörszűrő** lapot.
+8. Jegyezze fel a hatókörszűrő konfigurációját. Ha az OOB szinkronizálási szabályt használja, pontosan **egy hatókörszűrő-csoportnak**kell lennie, amely két záradékot tartalmaz, beleértve a következőket:
 
     | Attribútum | Művelet | Érték |
     | --- | --- | --- |
-    | sourceObjectType | EQUAL | Felhasználó |
-    | cloudMastered | NOTEQUAL | True (Igaz) |
+    | sourceObjectType | Egyenlő | Felhasználó |
+    | cloudMastered | NEM EGYENLŐ | True (Igaz) |
 
-### <a name="step-3-create-the-outbound-sync-rule-required"></a>3\. lépés. A szükséges kimenő szinkronizálási szabály létrehozása
-Az új szinkronizálási szabályt kell rendelkeznie, ugyanez **Hatókörszűrő** és **nagyobb prioritással** , mint a meglévő szinkronizálási szabályt. Ez biztosítja, hogy az új szinkronizálási szabály ugyanazt az objektumhalmazt tartalmazza, mint a meglévő szinkronizálási szabály vonatkozik, és felülírja a meglévő szinkronizálási szabályt a userCertificate attribútum. A szinkronizálási szabály létrehozása:
-1. A szinkronizálási Szabályszerkesztővel, kattintson a **új szabály hozzáadása** gombra.
-2. Alatt a **leírása lap**, adja meg a következő konfigurációt:
+### <a name="step-3-create-the-outbound-sync-rule-required"></a>3. lépés A szükséges kimenő szinkronizálási szabály létrehozása
+Az új szinkronizálási szabálynak ugyanazokkal a **hatókörszűrővel** és magasabb prioritással kell **rendelkeznie,** mint a meglévő szinkronizálási szabálynak. Ez biztosítja, hogy az új szinkronizálási szabály ugyanazokra az objektumokra vonatkozzon, mint a meglévő szinkronizálási szabály, és felülbírálja a userCertificate attribútum meglévő szinkronizálási szabályát. A szinkronizálási szabály létrehozása:
+1. A Szinkronizálási szabályok szerkesztőben kattintson az **Új szabály hozzáadása** gombra.
+2. A **Leírás lapon**adja meg a következő konfigurációt:
 
     | Attribútum | Érték | Részletek |
     | --- | --- | --- |
-    | Name (Név) | *Adjon meg egy nevet* | Például *"Ki az aad-be – egyéni felülbírálás a userCertificate"* |
-    | Leírás | *Adjon meg egy leírást* | Például *"UserCertificate attribútummal rendelkezik, több mint 15 értéket, ha exportálása null értékű."* |
-    | Csatlakoztatott rendszer | *Válassza ki az Azure AD Connectoron* |
-    | Csatlakoztatott rendszer objektum típusa | **user** | |
-    | Metaverzum-objektum típusa | **Személy** | |
+    | Név | *Adjon nevet* | Pl.: *"Out to AAD – Custom override for userCertificate"* |
+    | Leírás | *Leírás megadása* | *Például: "Ha a userCertificate attribútum 15-nél több értékből áll, exportálja a NULL értéket."* |
+    | Csatlakoztatott rendszer | *Válassza ki az Azure AD-összekötőt* |
+    | Csatlakoztatott rendszerobjektum-típus | **Felhasználó** | |
+    | Metaverzum objektum típusa | **Személy** | |
     | Hivatkozás típusa | **Csatlakozás** | |
-    | Sorrend | *1 és 99 közötti számnak választotta* | A szám kiválasztott bármely meglévő szinkronizálási szabály által nem használható, és egy alacsonyabb értékű (és így nagyobb prioritással), mint a meglévő szinkronizálási szabályt. |
+    | Precedencia | *Válasszon egy számot 1 - 99 között* | A kiválasztott számot egyetlen meglévő szinkronizálási szabály sem használhatja, és a meglévő szinkronizálási szabálynál alacsonyabb (és ezért magasabb prioritású) értékkel rendelkezik. |
 
-3. Nyissa meg a **Scoping szűrő** lapra, és a meglévő szinkronizálási szabály által használt azonos Hatókörszűrő megvalósításához.
-4. Hagyja ki a **szabályok csatlakozzon** fülre.
-5. Nyissa meg a **átalakítások** fülre kattintva vegyen fel egy új átalakítás konfiguráció a következő használatával:
+3. Nyissa meg a **Hatókörszűrő** lapot, és valósítsa meg ugyanazt a hatókörszűrőt, amelyet a meglévő szinkronizálási szabály használ.
+4. A **Csatlakozás szabályok** lap kihagyása
+5. Az **Átalakítások** lapon új átalakítást adhat hozzá a következő konfigurációhasználatával:
 
     | Attribútum | Érték |
     | --- | --- |
-    | Folyamat típusát |**Expression** |
+    | Tördelés típusa |**Kifejezés** |
     | Célattribútum |**userCertificate** |
-    | Adatforrás-attribútum |*A következő kifejezés használata*: `IIF(IsNullOrEmpty([userCertificate]), NULL, IIF((Count([userCertificate])> 15),AuthoritativeNull,[userCertificate]))` |
+    | Forrás attribútuma |*Használja a következő kifejezést:*`IIF(IsNullOrEmpty([userCertificate]), NULL, IIF((Count([userCertificate])> 15),AuthoritativeNull,[userCertificate]))` |
     
-6. Kattintson a **Hozzáadás** a szinkronizálási szabály létrehozása gombra.
+6. A **szinkronizálási** szabály létrehozásához kattintson a Hozzáadás gombra.
 
-### <a name="step-4-verify-the-new-sync-rule-on-an-existing-object-with-largeobject-error"></a>4\. lépés. Ellenőrizze az új szinkronizálási szabályt egy meglévő objektum LargeObject hiba
-Ezzel esetén ellenőrizze, hogy a szinkronizálási szabály létrehozása megfelelően működik, egy meglévő AD-objektum LargeObject hiba más objektumokra való alkalmazása előtt:
-1. Nyissa meg a **műveletek** fülre a Synchronization Service Managert.
-2. Válassza ki a legutóbbi Exportálás az Azure AD-műveletet, majd kattintson a LargeObject-hibák az objektumok közül.
-3.  Az Összekötőtér-objektum tulajdonságai előugró képernyőn kattintson a a **előzetes** gombra.
-4. Az előzetes verzió előugró képernyőn válassza ki a **teljes szinkronizálás** kattintson **véglegesítése előzetes**.
-5. Zárja be az előnézet képernyő és a Összekötőtér-objektum tulajdonságai képernyő.
-6. Nyissa meg a **összekötők** fülre a Synchronization Service Managert.
-7. Kattintson a jobb gombbal a **Azure ad-ben** összekötő, és válassza ki **futtatása...**
-8. Az összekötő futtatásához előugró ablakban válassza ki a **exportálása** lépést, és kattintson a **OK**.
-9. Várjon, amíg befejeződik, majd erősítse meg, nincs további LargeObject hiba ezt az objektumot az Azure Active Directoryba való exportálás.
+### <a name="step-4-verify-the-new-sync-rule-on-an-existing-object-with-largeobject-error"></a>4. lépés Az új szinkronizálási szabály ellenőrzése egy LargeObject hibával rendelkező meglévő objektumon
+Ez annak ellenőrzésére szolgál, hogy a létrehozott szinkronizálási szabály megfelelően működik-e egy LargeObject hibával rendelkező meglévő AD objektumon, mielőtt más objektumokra alkalmazna:
+1. Nyissa meg a Szinkronizálási szolgáltatáskezelő **Műveletek** lapját.
+2. Válassza ki a legutóbbi Exportálás az Azure AD-be műveletet, és kattintson az egyik olyan objektumra, amely largeobject hibákat tartalmaz.
+3.  Az Összekötő térobjektum tulajdonságai előugró képernyőn kattintson az **Előnézet** gombra.
+4. Az Előnézet előugró képernyőn válassza a **Teljes szinkronizálás** lehetőséget, majd kattintson az **Előnézet véglegesítése gombra.**
+5. Zárja be az Előnézet és az Összekötő térobjektum tulajdonságai képernyőt.
+6. Nyissa meg az **Összekötők** lapot a Szinkronizálási szolgáltatáskezelőben.
+7. Kattintson a jobb gombbal az **Azure AD-összekötőre,** és válassza a **Futtatás...**
+8. A Run Connector előugró ablakban válassza az **Exportálás** lépést, majd kattintson az **OK**gombra.
+9. Várja meg, amíg az Exportálás az Azure AD-be befejeződik, és ellenőrizze, hogy nincs-e több LargeObject hiba az adott objektumon.
 
-### <a name="step-5-apply-the-new-sync-rule-to-remaining-objects-with-largeobject-error"></a>5\. lépés. Az új szinkronizálási szabályt alkalmazni a hátralévő objektumokhoz LargeObject hiba
-Ha a szinkronizálási szabály hozzá lett adva, az AD Connectoron egy teljes szinkronizálást lépés futtatásához szükséges:
-1. Nyissa meg a **összekötők** fülre a Synchronization Service Managert.
-2. Kattintson a jobb gombbal a **AD** összekötő, és válassza ki **futtatása...**
-3. Az összekötő futtatásához előugró ablakban válassza ki a **teljes szinkronizálást** lépést, és kattintson a **OK**.
-4. Várjon, amíg a teljes szinkronizálás lépés befejezéséhez.
-5. Ha egynél több AD-összekötők ismételje meg a fenti lépéseket a fennmaradó AD-összekötők. Általában több összekötőt szükség, ha több helyszíni címtárral rendelkezik.
+### <a name="step-5-apply-the-new-sync-rule-to-remaining-objects-with-largeobject-error"></a>5. lépés Az új szinkronizálási szabály alkalmazása a LargeObject hibával rendelkező fennmaradó objektumokra
+A szinkronizálási szabály hozzáadása után egy teljes szinkronizálási lépést kell futtatnia az AD-összekötőn:
+1. Nyissa meg az **Összekötők** lapot a Szinkronizálási szolgáltatáskezelőben.
+2. Kattintson a jobb gombbal az **AD-összekötőre,** és válassza a **Futtatás...**
+3. A Run Connector előugró ablakban válassza a **Teljes szinkronizálás** lépés lehetőséget, és kattintson az **OK**gombra.
+4. Várja meg, amíg a teljes szinkronizálási lépés befejeződik.
+5. Ha egynél több AD-összekötővel rendelkezik, ismételje meg a fenti lépéseket a fennmaradó AD-összekötők esetében. Általában több összekötők szükségesek, ha több helyszíni könyvtárak.
 
-### <a name="step-6-verify-there-are-no-unexpected-changes-waiting-to-be-exported-to-azure-ad"></a>6\. lépés Ellenőrizze, hogy nem az Azure ad Szolgáltatásba exportálni váró váratlan mértékben
-1. Nyissa meg a **összekötők** fülre a Synchronization Service Managert.
-2. Kattintson a jobb gombbal a **Azure ad-ben** összekötő, és válassza ki **keresési Összekötőterét**.
-3. A keresési Összekötőterét előugró:
-    1. Hatókör beállítása **függő exportálás**.
-    2. Ellenőrizze az összes 3 jelölőnégyzetéből, beleértve a **Hozzáadás**, **módosítás** és **törlése**.
-    3. Kattintson a **keresési** gomb az Azure ad Szolgáltatásba exportálni váró változások az összes objektum visszaadása.
-    4. Ellenőrizze, hogy nem várt változtak. A módosítások egy adott objektum vizsgálatához kattintson duplán az objektumot.
+### <a name="step-6-verify-there-are-no-unexpected-changes-waiting-to-be-exported-to-azure-ad"></a>6. lépés Ellenőrizze, hogy nincsenek-e váratlan módosítások az Azure AD-be való exportálásra
+1. Nyissa meg az **Összekötők** lapot a Szinkronizálási szolgáltatáskezelőben.
+2. Kattintson a jobb gombbal az Azure AD-összekötőre, és válassza a **Keresési összekötő tér ben parancsot.** **Azure AD**
+3. A Keresésösszekötő tér előugró ablakában:
+    1. A Hatókör beállítása **függőexportálásra.**
+    2. Jelölje be mind a 3 jelölőnégyzetet, beleértve a **Hozzáadás,** **a Módosítás** és a **Törlés jelölőnégyzetet.**
+    3. Kattintson a **Keresés** gombra az Azure AD-be exportra váró összes objektum visszaadásához.
+    4. Ellenőrizze, hogy nincsenek-e váratlan módosítások. Egy adott objektum módosításának vizsgálatához kattintson duplán az objektumra.
 
-### <a name="step-7-export-the-changes-to-azure-ad"></a>7\. lépés A módosítások exportálása az Azure ad-hez
-A módosítások exportálása az Azure ad-hez:
-1. Nyissa meg a **összekötők** fülre a Synchronization Service Managert.
-2. Kattintson a jobb gombbal a **Azure ad-ben** összekötő, és válassza ki **futtatása...**
-4. Az összekötő futtatásához előugró ablakban válassza ki a **exportálása** lépést, és kattintson a **OK**.
-5. Várjon, amíg befejeződik, majd ellenőrizze, hogy nincsenek további LargeObject-hibák az Azure Active Directoryba való exportálás.
+### <a name="step-7-export-the-changes-to-azure-ad"></a>7. lépés A módosítások exportálása az Azure AD-be
+A módosítások exportálása az Azure AD-be:
+1. Nyissa meg az **Összekötők** lapot a Szinkronizálási szolgáltatáskezelőben.
+2. Kattintson a jobb gombbal az **Azure AD-összekötőre,** és válassza a **Futtatás...**
+4. A Run Connector előugró ablakban válassza az **Exportálás** lépést, majd kattintson az **OK**gombra.
+5. Várja meg, amíg az Exportálás az Azure AD-be befejeződik, és ellenőrizze, hogy nincs-e több LargeObject hiba.
 
-### <a name="step-8-re-enable-sync-scheduler"></a>8\. lépés Szinkronizálásütemező újbóli engedélyezése
-Most, hogy a probléma megoldódik, engedélyezze újra a beépített szinkronizálásütemező:
-1. Indítsa el a PowerShell-munkamenetben.
-2. Ütemezett szinkronizálás újra engedélyezéséhez a parancsmag futtatásával: `Set-ADSyncScheduler -SyncCycleEnabled $true`
+### <a name="step-8-re-enable-sync-scheduler"></a>8. lépés Szinkronizálási ütemező újbóli engedélyezése
+Most, hogy a probléma megoldódott, engedélyezze újra a beépített szinkronizálási ütemezőt:
+1. Indítsa el a PowerShell-munkamenetet.
+2. Az ütemezett szinkronizálás újbóli engedélyezése parancsmag futtatásával:`Set-ADSyncScheduler -SyncCycleEnabled $true`
 
 > [!Note]
-> Az előző lépések az Azure AD Connect a beépített scheduler az újabb verziók (1.1.xxx.x) csak vonatkoznak. Ha az Azure AD Connect Windows Feladatütemezőt használó régebbi verziók (1.0.xxx.x) használ, vagy (közös) saját egyéni scheduler időszakos szinkronizáláshoz indításához használja, ennek megfelelően tiltsa le szeretné.
+> Az előző lépések csak az Azure AD Connect és a beépített ütemező újabb verzióira (1.1.xxx.x) vonatkoznak. Ha az Azure AD Connect régebbi verzióit (1.0.xxx.x) használja, amely Windows Feladatütemezőt használ, vagy saját egyéni ütemezőjét (nem gyakori) használja a rendszeres szinkronizálás elindításához, ennek megfelelően le kell tiltania őket.
 
 ## <a name="next-steps"></a>További lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

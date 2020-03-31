@@ -1,7 +1,7 @@
 ---
-title: 'Átalakítás adatkészletbe: modul-hivatkozás'
+title: 'Konvertálás adatkészletre: Modulhivatkozás'
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan alakíthatja át az adatbevitelt a Microsoft Azure Machine Learning által használt belső adatkészlet-formátumba a Azure Machine Learning átalakítás adatkészletre moduljának használatával.
+description: Ismerje meg, hogyan használhatja a Convert to Dataset modult az Azure Machine Learningben az adatbevitel microsoft Azure Machine Learning által használt belső adatkészlet-formátumra való konvertálásához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,65 +9,65 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: dc3630f4b832a9b15217e8f5cdc03830f15ee2a7
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: fd45db779b7a828d247f09cae38f90fc20d12c16
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546758"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456590"
 ---
 # <a name="convert-to-dataset"></a>Átalakítás adathalmazzá
 
-Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designer (előzetes verzió) adatkészletre való konvertálása a folyamat összes adatának a tervező belső formátumára való átalakításához.
+Ez a cikk ismerteti, hogyan használhatja a Convert to Dataset modul az Azure Machine Learning designer (előzetes verzió) konvertálni a folyamat a tervező belső formátumát.
   
-A legtöbb esetben nem szükséges a konverzió. Azure Machine Learning implicit módon átalakítja az adatokat a natív adatkészlet formátumára, amikor az adatokat az összes művelet elvégzi. 
+Az átalakítás a legtöbb esetben nem szükséges. Az Azure Machine Learning implicit módon konvertálja az adatokat a natív adatkészlet formátumba, amikor bármilyen műveletet hajtanak végre az adatokon. 
 
-Azt javasoljuk, hogy az adatokat az adatkészlet formátumára mentse, ha valamilyen normalizálás vagy tisztítás történt egy adott adathalmazon, és biztosítani szeretné, hogy a módosítások más folyamatokban is használhatók legyenek.  
+Javasoljuk, hogy mentse az adatokat az adatkészlet formátumába, ha valamilyen normalizálást vagy tisztítást hajtott végre egy adathalmazon, és biztosítani szeretné, hogy a módosításokat más folyamatokban is használják.  
   
 > [!NOTE]
-> Az adatkészletre való átalakítás csak az adat formátumát módosítja. Nem menti a munkaterületen lévő új másolatát. Az adatkészlet mentéséhez kattintson duplán a kimeneti portra, válassza a **Mentés adatkészletként**lehetőséget, és adjon meg egy új nevet.  
+> A Konvertálás adatkészletbe csak az adatok formátumát módosítja. Nem menti az adatok új példányát a munkaterületre. Az adatkészlet mentéséhez kattintson duplán a kimeneti portra, válassza a **Mentés adatkészletként**lehetőséget, és adjon meg egy új nevet.  
   
-## <a name="how-to-use-convert-to-dataset"></a>A convert for DataSet használata  
+## <a name="how-to-use-convert-to-dataset"></a>A Konvertálás adatkészletgé használata  
 
-Azt javasoljuk, hogy a [metaadatok szerkesztése](edit-metadata.md) modul használatával készítse elő az adatkészletet az adatkészletre való átalakítás használata előtt. Hozzáadhat vagy módosíthat oszlopokat, módosíthatja az adattípusokat, és szükség szerint más módosításokat is végezhet.
+Azt javasoljuk, hogy a [Metaadatok szerkesztése](edit-metadata.md) modulsegítségével készítse elő az adatkészletet, mielőtt adatkészletbe konvertálna. Oszlopneveket adhat hozzá vagy módosíthat, módosíthatja az adattípusokat, és szükség szerint egyéb módosításokat hajthat végre.
 
-1.  Adja hozzá az átalakítás adatkészlethez modult a folyamathoz. Ezt a modult a Designer **Adatátalakítási** kategóriájában találja. 
+1.  Adja hozzá a Konvertálás adatkészletbe modult a folyamathoz. Ez a modul a tervező **Adatátalakítási** kategóriájában található. 
 
-2. Csatlakoztatása bármely modulhoz, amely egy adatkészletet eredményez.   
+2. Csatlakoztassa bármely olyan modulhoz, amely adatkészletet ad ki.   
 
-    Ha az adat [táblázatos](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py), akkor átalakíthatja azt egy adatkészletbe. Ez magában foglalja az [importálási adaton](import-data.md)keresztül betöltött adatokat, az [adatbevitel manuális](enter-data-manually.md)használatával létrehozott adatokat, vagy az átalakított adatkészleteket az [alkalmazás-átalakítás](apply-transformation.md)használatával.
+    Mindaddig, amíg az adatok [táblázatos,](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py)átalakíthatja őket adatkészletté. Ide tartoznak az [Adatok importálása](import-data.md), [az Adatok bevitele manuálisan](enter-data-manually.md)létrehozott adatok , illetve az [Átalakítás alkalmazása](apply-transformation.md)révén átalakított adatkészletek .
 
-3.  A **művelet** legördülő listában adja meg, hogy az adatkészlet mentése előtt szeretné-e elvégezni az adattisztítást:  
+3.  A **Művelet** legördülő listában adja meg, hogy az adatkészlet mentése előtt szeretné-e az adatok karbantartását végezni:  
   
-    - **Nincs**: használja az-t a következőképpen.  
+    - **Nincs**: Használja az adatokat a szerint.  
   
-    - **SetMissingValue**: egy adott értéket állít be egy hiányzó értékre az adatkészletben. Az alapértelmezett helyőrző a kérdőjel (?) karakter, de az **Egyéni hiányzó érték** lehetőséggel más értéket is megadhat. Ha például az **Egyéni hiányzó értékhez**a **taxit** adja meg, akkor az adatkészlet összes példánya a hiányzó értékre lesz módosítva.
+    - **SetMissingValue**: Egy adott értéket az adatkészlet hiányzó értékére állíthat be. Az alapértelmezett helyőrző a kérdőjel karakter (?), de az **Egyéni hiányzó érték** beállítással másik értéket adhat meg. Ha például a **Taxi** szót adja meg **az egyéni hiányzó értékhez,** akkor az adatkészletben lévő **Taxi** összes példánya a hiányzó értékre változik.
   
-    - **ReplaceValues**: ezzel a beállítással egyetlen pontos értéket adhat meg, amelyet más pontos értékkel kell helyettesíteni. A hiányzó értékeket vagy egyéni értékeket a **replace** metódus beállításával helyettesítheti:
+    - **ReplaceValues**: Ezzel a beállítással egyetlen pontos értéket adhat meg, amelyet bármely más pontos értékre le kell cserélni. A hiányzó értékeket vagy egyéni értékeket a **Csere** módszer beállításával helyettesítheti:
 
-      - **Hiányzik**: válassza ezt a lehetőséget a hiányzó értékek lecserélése a bemeneti adatkészletben. Az **új érték**mezőben adja meg a hiányzó értékeket a értékkel lecserélő értéket.
-      - **Egyéni**: válassza ezt a lehetőséget, ha az egyéni értékeket a bemeneti adatkészletben szeretné lecserélni. **Egyéni érték**esetén adja meg a keresett értéket. Ha például az adatok a hiányzó értékek helyőrzőként használt karakterláncot tartalmazzák `obs`, akkor `obs`kell megadnia. Az **új érték**mezőben adja meg az új értéket az eredeti sztring helyett.
+      - **Hiányzik**: Válassza ezt a lehetőséget a bemeneti adatkészlet hiányzó értékeinek lecseréléséhez. Az **Új érték mezőbe**írja be azt az értéket, amelyre a hiányzó értékeket le cseréli.
+      - **Egyéni**: Válassza ezt a lehetőséget a bemeneti adatkészlet egyéni értékeinek lecseréléséhez. Az **Egyéni érték mezőbe**írja be a keresett értéket. Ha például az adatok `obs` a hiányzó értékek helyőrzőjeként `obs`használt karakterláncot tartalmazzák, írja be a értéket. Az **Új érték mezőbe**írja be azt az új értéket, amelyre az eredeti karakterláncot le szeretné cserélni.
   
-    Vegye figyelembe, hogy a **ReplaceValues** művelet csak a pontos egyezésekre vonatkozik. Ezek a karakterláncok például nem érintettek: `obs.`, `obsolete`.  
+    Ne feledje, hogy a **ReplaceValues** művelet csak a pontos egyezésekre vonatkozik. Ezeket a karakterláncokat például `obs.`ez `obsolete`nem érinti: , .  
  
   
-5.  A folyamat futtatása.  
+5.  Küldje el a folyamatot.  
 
-## <a name="results"></a>Eredmények
+## <a name="results"></a>Results (Eredmények)
 
-+  Ha az eredményül kapott adatkészletet új névvel szeretné menteni, akkor a modul jobb oldali paneljének **outputs (kimenet** ) lapján válassza a (z) ikon **regisztrálása adatkészletet** .  
++  Ha az eredményül kapott adatkészletet új névvel szeretné menteni, jelölje ki az **adatkészlet regisztrálása** ikont a modul jobb oldali paneljének **Kimenetek** lapján.  
   
 ## <a name="technical-notes"></a>Technikai megjegyzések  
 
--   Az adatkészletet bemenetként használó modulok a CSV-fájlban vagy a TSV-fájlban is végezhetnek adatokat. A modul kódjának futtatása előtt a rendszer elődolgozza a bemeneteket. Az előfeldolgozás egyenértékű a konverzió adatkészlet-modulba való futtatásával a bemeneten.  
+-   Bármely modul, amely egy adatkészletet bemenetként vesz fel, a CSV-fájlban vagy a TSV-fájlban is adatokat vehet fel. A modulkódok futtatása előtt a bemenetek előfeldolgozása történik. Az előfeldolgozás egyenértékű a Convert to Dataset modul futtatásával a bemeneten.  
   
--   A SVMLight formátuma nem alakítható át adatkészletre.  
+-   Az SVMLight formátumból nem konvertálható adatkészletté.  
   
--   Ha egyéni csere műveletet ad meg, a keresés és csere művelet a teljes értékekre vonatkozik. A részleges egyezések nem engedélyezettek. Például lecserélheti a 3 értéket a-1 vagy a 33-es értékre, de a 3 karakter nem helyettesíthető két számjegyből (például 35).  
+-   Egyéni csereművelet megadásakor a keresés és csere művelet a teljes értékekre vonatkozik. Részleges egyezésnem engedélyezett. A 3-at például lecserélheti egy -1-esre vagy 33-ra, de a 3-ast nem helyettesítheti kétjegyű számban, például 35-ben.  
   
--   Az egyéni csere műveletei esetén a csere csendesen meghiúsul, ha helyettesítő karaktert használ, amely nem felel meg az oszlop aktuális adattípusának.  
+-   Egyéni csereműveletek esetén a csere csendben sikertelen lesz, ha olyan karaktert használ csereként, amely nem felel meg az oszlop aktuális adattípusának.  
 
   
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
+Tekintse meg az Azure Machine Learning [számára elérhető modulok készletét.](module-reference.md) 

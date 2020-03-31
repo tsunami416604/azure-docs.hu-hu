@@ -1,6 +1,6 @@
 ---
-title: Event hub-adatkapcsolat létrehozása az Azure Adatkezelőhoz a Python használatával
-description: Ebből a cikkből megtudhatja, hogyan hozhat létre egy Event hub-adatkapcsolatot az Azure Adatkezelőhoz a Python használatával.
+title: Event Hub-adatkapcsolat létrehozása az Azure Data Explorer számára a Python használatával
+description: Ebben a cikkben megtudhatja, hogyan hozhat létre egy Event Hub-adatkapcsolatot az Azure Data Explorer python használatával.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,43 +8,43 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.openlocfilehash: c08271286373ab8c3e621ee6fa59782ba2d16fb4
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77444179"
 ---
-# <a name="create-an-event-hub-data-connection-for-azure-data-explorer-by-using-python"></a>Event hub-adatkapcsolat létrehozása az Azure Adatkezelőhoz a Python használatával
+# <a name="create-an-event-hub-data-connection-for-azure-data-explorer-by-using-python"></a>Event Hub-adatkapcsolat létrehozása az Azure Data Explorer számára a Python használatával
 
 > [!div class="op_single_selector"]
-> * [Portal](ingest-data-event-hub.md)
-> * [C#](data-connection-event-hub-csharp.md)
+> * [Portál](ingest-data-event-hub.md)
+> * [C #](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager-sablon](data-connection-event-hub-resource-manager.md)
 
-Ebben a cikkben a Python használatával hoz létre egy Event hub-adatkapcsolatot az Azure Adatkezelőhoz. Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Adatkezelő a betöltést, illetve az adatok betöltését Event Hubs, IoT hubokból és blob-tárolóba írt blobokból biztosítja.
+Ebben a cikkben hozzon létre egy Event Hub-adatkapcsolatot az Azure Data Explorer python használatával. Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Az Azure Data Explorer az Event Hubs, az IoT Hubs és a blobtárolókba írt blobok betöltését vagy betöltését kínálja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+* Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-* [Python 3.4 +](https://www.python.org/downloads/).
+* [Python 3.4+](https://www.python.org/downloads/).
 
-* [Egy fürt és egy adatbázis](create-cluster-database-python.md).
+* [Fürt és adatbázis](create-cluster-database-python.md).
 
-* [Tábla-és oszlop-hozzárendelés](net-standard-ingest-data.md#create-a-table-on-your-test-cluster).
+* [Táblázat- és oszlopleképezés](net-standard-ingest-data.md#create-a-table-on-your-test-cluster).
 
-* [Adatbázis-és táblázat-házirendek](database-table-policies-python.md) (nem kötelező).
+* [Adatbázis- és táblaházirendek](database-table-policies-python.md) (nem kötelező).
 
-* Az [Event hub és a](ingest-data-event-hub.md#create-an-event-hub)betöltési adatmennyiség.
+* [Eseményközpont a betöltéshez szolgáló adatokkal.](ingest-data-event-hub.md#create-an-event-hub)
 
 [!INCLUDE [data-explorer-data-connection-install-package-python](../../includes/data-explorer-data-connection-install-package-python.md)]
 
 [!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
 
-## <a name="add-an-event-hub-data-connection"></a>Event hub-adatkapcsolat hozzáadása
+## <a name="add-an-event-hub-data-connection"></a>Eseményközpont-adatkapcsolat hozzáadása
 
-Az alábbi példa bemutatja, hogyan adhat hozzá programozott módon egy Event hub-adatkapcsolatot. Lásd: [Kapcsolódás az Event hubhoz](ingest-data-event-hub.md#connect-to-the-event-hub) az Event hub-adatkapcsolat hozzáadásához a Azure Portal használatával.
+A következő példa bemutatja, hogyan adhat hozzá egy Event Hub-adatkapcsolatot programozott módon. Tekintse meg [az eseményközponthoz való csatlakozást](ingest-data-event-hub.md#connect-to-the-event-hub) az Event Hub-adatkapcsolat azure-portálon való hozzáadásához.
 
 ```Python
 from azure.mgmt.kusto import KustoManagementClient
@@ -86,19 +86,19 @@ poller = kusto_management_client.data_connections.create_or_update(resource_grou
 
 |**Beállítás** | **Ajánlott érték** | **Mező leírása**|
 |---|---|---|
-| tenant_id | *XXXXXXXX-XXXXX-XXXX-XXXX-XXXXXXXXX* | A bérlő azonosítója. Más néven címtár-azonosító.|
-| subscriptionId | *XXXXXXXX-XXXXX-XXXX-XXXX-XXXXXXXXX* | Az erőforrás-létrehozáshoz használt előfizetés-azonosító.|
-| client_id | *XXXXXXXX-XXXXX-XXXX-XXXX-XXXXXXXXX* | Annak az alkalmazásnak az ügyfél-azonosítója, amely hozzáférhet a bérlő erőforrásaihoz.|
-| client_secret | *XXXXXXXXXXXXXX* | Az alkalmazás ügyfél-titka, amely hozzáférhet a bérlő erőforrásaihoz. |
+| tenant_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | A bérlőazonosítója. Más néven könyvtárazonosító.|
+| subscriptionId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Az erőforrás-létrehozáshoz használt előfizetés-azonosító.|
+| client_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Az alkalmazás ügyfélazonosítója, amely hozzáférhet a bérlő erőforrásaihoz.|
+| client_secret | *xxxxxxxxxxxxxx* | Az alkalmazás ügyféltka-tka, amely hozzáférhet a bérlő erőforrásaihoz. |
 | resource_group_name | *testrg* | A fürtöt tartalmazó erőforráscsoport neve.|
 | cluster_name | *mykustocluster* | A fürt neve.|
-| database_name | *mykustodatabase* | A fürtben lévő céladatbázis neve.|
-| data_connection_name | *myeventhubconnect* | Az adathálózat kívánt neve.|
-| table_name | *StormEvents* | A céladatbázis neve a célként megadott adatbázisban.|
-| mapping_rule_name | *StormEvents_CSV_Mapping* | A célként megadott táblához kapcsolódó oszlop-hozzárendelés neve|
-| data_format | *CSV* | Az üzenet adatformátuma.|
-| event_hub_resource_id | *Erőforrás-azonosító* | Az Event hub erőforrás-azonosítója, amely a betöltéshez szükséges adatot tárolja. |
-| consumer_group | *$Default* | Az Event hub fogyasztói csoportja.|
-| location | *USA középső régiója* | Az adatkapcsolatok erőforrásának helye.|
+| database_name | *mykustoadatbázis* | A fürtcél-adatbázis neve.|
+| data_connection_name | *myeventhubconnect* | Az adatkapcsolat kívánt neve.|
+| table_name | *StormEsemények* | A céltábla neve a céladatbázisban.|
+| mapping_rule_name | *StormEvents_CSV_Mapping* | A céltáblához kapcsolódó oszlopleképezés neve.|
+| data_format | *Csv* | Az üzenet adatformátuma.|
+| event_hub_resource_id | *Erőforrás azonosítója* | Az Event Hub erőforrás-azonosítója, amely a betöltéshez adatokat tartalmazza. |
+| consumer_group | *$Default* | Az Event Hub fogyasztói csoportja.|
+| location | *USA középső régiója* | Az adatkapcsolati erőforrás helye.|
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-python](../../includes/data-explorer-data-connection-clean-resources-python.md)]

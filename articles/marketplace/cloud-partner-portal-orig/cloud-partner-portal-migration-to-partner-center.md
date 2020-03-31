@@ -1,34 +1,33 @@
 ---
-title: Áttelepítés a partneri központba | Azure piactér
-description: Ajánlatok áttelepítése Cloud Partner Portalról a partneri központba.
-services: Azure, Marketplace, Cloud Partner Portal, Partner Center
-author: ChJenk
+title: Migráció a Partnerközpontba | Azure Piactér
+description: Ajánlatok áttelepítése a Cloud Partner Portalról a Partnerközpontba.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.author: v-chjen
-ms.openlocfilehash: cf1f7f7ebd7d0761f3bec0ab5a27e1d54fde256e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: dsindona
+ms.openlocfilehash: 8ef117425f945d14db535ea3ecedc50d18819868
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480657"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280167"
 ---
 # <a name="cloud-partner-portal-migration-to-partner-center"></a>Migrálás a Cloud Partner Portalról a Partnerközpontba
 
-A Microsoft áttelepíti az ajánlatokat Cloud Partner Portalról a partneri központba, így egyszerűsítve a fiókját és az ajánlat-kezelési élményt. Ha jelenleg egy kereskedelmi partner (OCP GTM) katalógusban kezeli a közös értékesítéssel kapcsolatos biztosítékokat, akkor a partner Centerben azonnal frissítheti a közös értékesítési biztosítékait.
+A fiók és az ajánlatkezelési élmény egyszerűsítése érdekében a Microsoft áttelepíti az ajánlatokat a Cloud Partner Portalról a Partnerközpontba. Ha jelenleg a One Commercial Partner Go-to-Market (OCP GTM) katalógusban kezeli a társértékesítési fedezetet, akkor hamarosan frissítheti a társértékesítési fedezetet a Partner Centerben.
 
-| **Ajánlat típusa** | **Ajánlat-kezelés áttelepítve Cloud Partner Portalról a partneri központba** | **A partner Center közös értékesítési biztosítékának frissítése** |
+| **Ajánlat típusa** | **Az ajánlatkezelés átköltözött a Felhőpartner-portálról a Partnerközpontba** | **A társértékesítési biztosítékok frissítése a Partnerközpontban** |
 |    -----------------------    |    -----------------------------  |  -----------------------------  |
-| Szolgáltatott szoftver (SaaS) |     Már elérhető       |   Általános elérhetőség a február 2020      |
-| Dynamics 365 a Customer engagement & PowerApps      |     Már elérhető        |   Már elérhető      |
+| Szoftver szolgáltatásként (SaaS) |     Már elérhető       |   Általános elérhetőség körül feb. 2020      |
+| Dynamics 365 for Customer Engagement & PowerApps      |     Már elérhető        |   Már elérhető      |
 | Dynamics 365 for Operations     |     Már elérhető       |   Már elérhető     |
-| Dynamics 365 Business Central      |     Már elérhető        |   Általános elérhetőség a február 2020     |
-| Azure-alkalmazás     |     Általános elérhetőség, dec. 2019       |   Általános elérhetőség a február 2020     |
-| Az Azure virtuális gépek szolgáltatás      |     Később jelentjük be       |   Később jelentjük be    |
-| Azure-tároló     |     Később jelentjük be       |   Később jelentjük be     |
-| Tanácsadói szolgáltatás      |     Később jelentjük be       |   Később jelentjük be     |
-| IoT Edge modul      |     Később jelentjük be       |   Később jelentjük be     |
-| Power BI szolgáltatásalkalmazás     |     Később jelentjük be       |   Később jelentjük be     |
+| Dynamics 365 Business Central      |     Már elérhető        |   Általános elérhetőség körül feb. 2020     |
+| Azure-alkalmazás     |     Általános elérhetőség 2019 dec.       |   Általános elérhetőség körül feb. 2020     |
+| Azure-beli virtuális gép      |     Bejelentendő       |   Bejelentendő    |
+| Azure-tároló     |     Bejelentendő       |   Bejelentendő     |
+| Tanácsadói szolgáltatás      |     Bejelentendő       |   Bejelentendő     |
+| IoT peremhálózati modul      |     Bejelentendő       |   Bejelentendő     |
+| Power BI Service App     |     Bejelentendő       |   Bejelentendő     |
 |  |  |

@@ -1,6 +1,6 @@
 ---
-title: Önálló/készletezett adatbázisok – tárterület-kezelés
-description: Ez a lap leírja, hogyan kezelheti a tárhelyet a Azure SQL Database önálló és készletezett adatbázisaival, és Hogyan határozható meg, hogy miként lehet egy vagy több készletezett adatbázist összezsugorodni, valamint hogyan kell egy adatbázis-zsugorodó műveletet végrehajtani.
+title: Egy/készletezésű adatbázisok fájlterületénnek kezelése
+description: Ez a lap bemutatja, hogyan kezelheti a fájlterületet egy- és összevont adatbázisokkal az Azure SQL Database-ben, és kódmintákat biztosít annak meghatározásához, hogy egy-e vagy egy készletező adatbázist kell-e zsugorítania, valamint hogyan hajthatja végre az adatbázis-zsugorítási műveletet.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -12,22 +12,22 @@ ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 007bbffbd7c4fcad339f88eb78991eb39fb829e6
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74420981"
 ---
-# <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>A tárterület kezelése az önálló és a készletezett adatbázisok esetében Azure SQL Database
+# <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>Az egy- és készletezésű adatbázisok fájlterületének kezelése az Azure SQL Database-ben
 
-Ez a cikk a Azure SQL Database önálló és készletezett adatbázisainak különböző tárolási területeit ismerteti, valamint azokat a lépéseket, amelyek akkor hajthatók végre, ha az adatbázisokhoz és a rugalmas készletekhez lefoglalt lemezterületet explicit módon kell kezelni.
+Ez a cikk az Azure SQL Database-ben az egy- és készletalapú adatbázisok különböző típusú tárhelyét ismerteti, és azokat a lépéseket, amelyek et akkor lehet elvégezni, amikor az adatbázisok és rugalmas készletek számára lefoglalt fájlterületet explicit módon kell kezelni.
 
 > [!NOTE]
-> Ez a cikk a Azure SQL Database felügyelt példányok központi telepítésére vonatkozó beállítására nem vonatkozik.
+> Ez a cikk nem vonatkozik a felügyelt példány üzembe helyezésének beállítás az Azure SQL Database.This article does not apply to the managed instance deployment option in Azure SQL Database.
 
 ## <a name="overview"></a>Áttekintés
 
-A Azure SQL Databaseban található önálló és készletezett adatbázisok esetében olyan számítási feladatok szerepelnek, amelyekben az adatbázis alapjául szolgáló adatfájlok kiosztása nagyobb lehet, mint a felhasznált adatlapok mennyisége. Ez akkor fordulhat elő, amikor növekszik a használt terület, majd később adatok törlődnek. Ennek az az oka, hogy a lefoglalt tárterületet a rendszer nem állítja automatikusan vissza az Adattörléskor.
+Az Azure SQL Database-ben egy- és készletezésű adatbázisok olyan számítási feladatok mintái vannak, ahol az alapul szolgáló adatfájlok adatbázisokhoz való lefoglalása nagyobb lehet, mint a használt adatlapok mennyisége. Ez akkor fordulhat elő, amikor növekszik a használt terület, majd később adatok törlődnek. Ennek az az oka, hogy az adatok törlésekor a lefoglalt fájlterület nem kerül automatikusan visszanyerésre.
 
 A következő esetekben szükség lehet a fájlterület használatának monitorozására és az adatfájlok zsugorítására:
 
@@ -35,47 +35,47 @@ A következő esetekben szükség lehet a fájlterület használatának monitoro
 - Ha lehetővé szeretné tenni egy önálló adatbázis vagy rugalmas készlet maximális méretének csökkentését.
 - Ha lehetővé szeretné tenni egy önálló adatbázis vagy rugalmas készlet módosítását egy másik, kisebb maximális méretű szolgáltatási vagy teljesítményszintre.
 
-### <a name="monitoring-file-space-usage"></a>A tárterület használatának figyelése
+### <a name="monitoring-file-space-usage"></a>A fájlterület használatának figyelése
 
-A Azure Portalban megjelenő legtöbb tárolóhely-metrika és a következő API-k csak a felhasznált adatlapok méretét mérik:
+Az Azure Portalon megjelenő legtöbb tárterület-metrikák és a következő API-k csak a használt adatlapok méretét mérik:
 
-- Azure Resource Manager alapú mérőszámok API-k, beleértve a PowerShell [Get-metrikákat](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetric)
-- T-SQL: [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
+- Az Azure Resource Manager alapú metrikák API-k, beleértve a PowerShell [get-metrikák](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetric)
+- T-SQL: [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 
-A következő API-k ugyanakkor az adatbázisokhoz és rugalmas készletekhez lefoglalt terület méretét is mérik:
+A következő API-k azonban az adatbázisok és rugalmas készletek számára lefoglalt terület nagyságát is mérik:
 
-- T-SQL: [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
-- T-SQL: [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
+- T-SQL: [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
+- T-SQL: [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
-### <a name="shrinking-data-files"></a>Az adatfájlok zsugorítása
+### <a name="shrinking-data-files"></a>Adatfájlok zsugorítása
 
-A SQL Database szolgáltatás nem csökkenti automatikusan az adatfájlokat a fel nem használt lefoglalt terület visszaigényléséhez, mert az adatbázis teljesítményének lehetséges következményei vannak.  Az ügyfelek azonban az önkiszolgáló szolgáltatással is csökkenthetik az adatfájlokat az adott időpontban, a [használaton kívüli lefoglalt terület visszaigénylése](#reclaim-unused-allocated-space)című cikkben ismertetett lépéseket követve.
+Az SQL Database szolgáltatás nem zsugorítja automatikusan az adatfájlokat, hogy visszaszerezzék a fel nem használt lefoglalt területet az adatbázis teljesítményére gyakorolt lehetséges hatás miatt.  Az ügyfelek azonban az általuk választott időpontban önkiszolgáló módon zsugoríthatják az adatfájlokat a [fel nem használt hely visszaigénylése](#reclaim-unused-allocated-space)című lépések végrehajtásával.
 
 > [!NOTE]
-> Az adatfájlok eltérően a SQL Database szolgáltatás automatikusan csökkenti a naplófájlokat, mivel az adott művelet nem befolyásolja az adatbázis teljesítményét.
+> Az adatfájlokkal ellentétben az SQL Database szolgáltatás automatikusan zsugorítja a naplófájlokat, mivel ez a művelet nem befolyásolja az adatbázis teljesítményét.
 
-## <a name="understanding-types-of-storage-space-for-a-database"></a>Az adatbázis tárterület-típusainak ismertetése
+## <a name="understanding-types-of-storage-space-for-a-database"></a>Az adatbázis tárhelytípusainak ismertetése
 
-A következő tárolóhelyek mennyiségének megismerése fontos az adatbázisok fájlméretének kezeléséhez.
+A következő tárterület-mennyiségek megértése fontos az adatbázis fájlterületének kezeléséhez.
 
 |Adatbázis mennyisége|Meghatározás|Megjegyzések|
 |---|---|---|
-|**Felhasznált adatterület**|Az adatbázis-adatmennyiségek 8 KB-os lapokon való tárolására szolgáló tárterület.|Általánosságban elmondható, hogy a felhasznált terület növekedése (csökkenés) a lapkáknál (deletes). Bizonyos esetekben a felhasznált terület nem változik a lapkákon és a törléseken a műveletben érintett adatmennyiségtől és a töredezettségtől függően. Ha például egy sort töröl minden adatoldalról, nem feltétlenül csökkenti a felhasznált területet.|
-|**Lefoglalt adatterület**|Az adatbázis-adattárolás számára elérhetővé tett formázott fájl mérete.|A lefoglalt terület mennyisége automatikusan növekszik, de a törlés után soha nem csökken. Ez a viselkedés biztosítja, hogy a jövőbeli lapkák gyorsabbak legyenek, mivel a tárhelyet nem kell formázni.|
-|**Lefoglalt, de fel nem használt adatterület**|A lefoglalt adatterületek és a felhasznált adatterületek mennyisége közötti különbség.|Ez a mennyiség az adatbázis-adatfájlok zsugorodásával visszaigényelhető szabad terület maximális mennyiségét jelöli.|
-|**Az adatmaximális méret**|Az adatbázis-adatmennyiség tárolására használható maximális tárterület.|A lefoglalt adatterület mennyisége nem növekedhet az adatmennyiség maximális méretén túl.|
+|**Használt adatterület**|Az adatbázisadatok 8 KB-os lapokban történő tárolására használt terület.|A lapkákon (törléseken) általában nő (csökken) a felhasznált terület. Bizonyos esetekben a felhasznált terület nem változik a beszúrásokon vagy a törléseken a műveletben részt vevő adatok mennyiségétől és mintájától, valamint a töredezettségtől függően. Ha például egy sort vesz fel minden adatlapról, az nem feltétlenül csökkenti a felhasznált területet.|
+|**Lefoglalt adatterület**|Az adatbázisadatok tárolására rendelkezésre bocsátott formázott fájlterület mennyisége.|A lefoglalt terület mennyisége automatikusan növekszik, de a törlés után soha nem csökken. Ez a viselkedés biztosítja, hogy a jövőbeli beszúrások gyorsabbak legyenek, mivel a helyet nem kell újraformázni.|
+|**Lefoglalt, de nem használt adatterület**|A lefoglalt adatterület és a felhasznált adatterület közötti különbség.|Ez a mennyiség azt a maximális szabad területet jelenti, amely az adatbázis-adatfájlok zsugorításával visszanyerhető.|
+|**Adatok maximális mérete**|Az adatbázisadatok tárolására használható maximális terület.|A lefoglalt adatterület mennyisége nem nőhet túl az adatok maximális méreténél.|
 
-Az alábbi ábra az adatbázis különböző típusai közötti kapcsolatot szemlélteti.
+Az alábbi ábra az adatbázis különböző típusú tárhelyeközötti kapcsolatot mutatja be.
 
-![tárolóhelyek típusai és kapcsolatai](./media/sql-database-file-space-management/storage-types.png)
+![tárolóhely-típusok és kapcsolatok](./media/sql-database-file-space-management/storage-types.png)
 
-## <a name="query-a-single-database-for-storage-space-information"></a>Egyetlen adatbázis lekérdezése a tárolóhelyekre vonatkozó információkhoz
+## <a name="query-a-single-database-for-storage-space-information"></a>Egyetlen adatbázis lekérdezése a tárhelyadataihoz
 
-A következő lekérdezések használhatók a tárolóhelyek mennyiségének meghatározására egyetlen adatbázis esetében.  
+A következő lekérdezések segítségével határozhatja meg egyetlen adatbázis tárterület-mennyiségét.  
 
-### <a name="database-data-space-used"></a>Az adatbázis által használt adatterület
+### <a name="database-data-space-used"></a>Használt adatbázis-adatterület
 
-Módosítsa a következő lekérdezést a felhasznált adatbázis-adatterületek mennyiségének visszaküldéséhez.  A lekérdezés eredményének egységei MB-ban vannak.
+Módosítsa a következő lekérdezést a felhasznált adatbázis-adatterület visszaadásához.  A lekérdezés eredményének egységei MB-ban vannak.
 
 ```sql
 -- Connect to master
@@ -86,9 +86,9 @@ WHERE database_name = 'db1'
 ORDER BY end_time DESC
 ```
 
-### <a name="database-data-space-allocated-and-unused-allocated-space"></a>Az adatbázis-adatterület lefoglalt és nem használt lefoglalt terület
+### <a name="database-data-space-allocated-and-unused-allocated-space"></a>Lefoglalt adatbázis-adatterület és fel nem használt lefoglalt terület
 
-A következő lekérdezéssel visszaállíthatja a lefoglalt adatbázis-adatterületek mennyiségét, valamint a lefoglalt fel nem használt terület mennyiségét.  A lekérdezés eredményének egységei MB-ban vannak.
+A következő lekérdezéssel adja vissza a lefoglalt adatbázis-adatterület és a lefoglalt fel nem használt terület nagy részét.  A lekérdezés eredményének egységei MB-ban vannak.
 
 ```sql
 -- Connect to database
@@ -100,9 +100,9 @@ GROUP BY type_desc
 HAVING type_desc = 'ROWS'
 ```
 
-### <a name="database-data-max-size"></a>Adatbázis-adatmennyiség maximális mérete
+### <a name="database-data-max-size"></a>Adatbázis-adatok maximális mérete
 
-Módosítsa a következő lekérdezést az adatbázis-adatmennyiség maximális méretének visszaküldéséhez.  A lekérdezés eredményének egységei bájtban vannak megadva.
+Módosítsa a következő lekérdezést az adatbázis-adatok maximális méretének visszaadásához.  A lekérdezés eredményének egységei bájtban vannak.
 
 ```sql
 -- Connect to database
@@ -110,24 +110,24 @@ Módosítsa a következő lekérdezést az adatbázis-adatmennyiség maximális 
 SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes
 ```
 
-## <a name="understanding-types-of-storage-space-for-an-elastic-pool"></a>A rugalmas készlethez tartozó tárterület-típusok ismertetése
+## <a name="understanding-types-of-storage-space-for-an-elastic-pool"></a>A rugalmas készlet tárhelytípusainak ismertetése
 
-A következő tárolóhelyek mennyiségének megismerése fontos a rugalmas készlet tárterületének kezeléséhez.
+A következő tárolóhely-mennyiségek megértése fontos a rugalmas készlet fájlterületének kezeléséhez.
 
-|Rugalmas készlet mennyisége|Meghatározás|Megjegyzések|
+|Rugalmas készletmennyiség|Meghatározás|Megjegyzések|
 |---|---|---|
-|**Felhasznált adatterület**|A rugalmas készletben lévő összes adatbázis által használt adatterület összegzése.||
-|**Lefoglalt adatterület**|A rugalmas készlet összes adatbázisa által lefoglalt adatterület összegzése.||
-|**Lefoglalt, de fel nem használt adatterület**|A rugalmas készletben lévő összes adatbázis által lefoglalt adatterületek és adatterületek mennyisége közötti különbség.|Ez a mennyiség a rugalmas készlet számára lefoglalt maximális tárterületet jelöli, amelyet az adatbázis-adatfájlok zsugorodásával lehet visszaigényelni.|
-|**Az adatmaximális méret**|A rugalmas készlet által az összes adatbázisához felhasználható adatterület maximális mennyisége.|A rugalmas készlethez lefoglalt terület mérete nem haladhatja meg a rugalmas készlet maximális méretét.  Ha ez az állapot előfordul, akkor a felhasználatlan helyet a rendszer az adatbázis-adatfájlok zsugorodása után visszaigényelheti.|
+|**Használt adatterület**|A rugalmas készletben lévő összes adatbázis által használt adatterület összegzése.||
+|**Lefoglalt adatterület**|A rugalmas készletben lévő összes adatbázis által lefoglalt adatterület összegzése.||
+|**Lefoglalt, de nem használt adatterület**|A lefoglalt adatterület és a rugalmas készletben lévő összes adatbázis által használt adatterület közötti különbség.|Ez a mennyiség a rugalmas készlet számára lefoglalt maximális helyet jelöli, amely az adatbázis-adatfájlok zsugorításával nyerhető vissza.|
+|**Adatok maximális mérete**|A rugalmas készlet által az összes adatbázishoz használható maximális adatterület.|A rugalmas készlet számára lefoglalt terület nem haladhatja meg a rugalmas készlet maximális méretét.  Ha ez a feltétel bekövetkezik, akkor a fel nem használt terület visszanyerhető az adatbázis-adatfájlok zsugorításával.|
 
-## <a name="query-an-elastic-pool-for-storage-space-information"></a>Rugalmas készlet lekérdezése a tárolóhelyekkel kapcsolatos információkhoz
+## <a name="query-an-elastic-pool-for-storage-space-information"></a>Rugalmas készlet lekérdezése a tárhely adataihoz
 
-A következő lekérdezések segítségével határozható meg a rugalmas készlet tárolóhelyek mennyisége.  
+A következő lekérdezések segítségével határozza meg a rugalmas készlet tárolóhely-mennyiségeit.  
 
-### <a name="elastic-pool-data-space-used"></a>Rugalmas készlethez felhasznált adatterület
+### <a name="elastic-pool-data-space-used"></a>Rugalmas készlet adatterület használt
 
-Módosítsa a következő lekérdezést, hogy visszaállítsa a felhasznált rugalmas készlet adatterületének mennyiségét.  A lekérdezés eredményének egységei MB-ban vannak.
+Módosítsa a következő lekérdezést a felhasznált rugalmas készletadatterület mennyiségének visszaadásához.  A lekérdezés eredményének egységei MB-ban vannak.
 
 ```sql
 -- Connect to master
@@ -138,16 +138,16 @@ WHERE elastic_pool_name = 'ep1'
 ORDER BY end_time DESC
 ```
 
-### <a name="elastic-pool-data-space-allocated-and-unused-allocated-space"></a>A rugalmas készlethez lefoglalt és fel nem használt lemezterület
+### <a name="elastic-pool-data-space-allocated-and-unused-allocated-space"></a>Lefoglalt készletadatterület és a fel nem használt lefoglalt terület
 
-Módosítsa az alábbi példákat egy olyan tábla visszaküldéséhez, amely a rugalmas készletben lévő minden adatbázishoz lefoglalt területet és fel nem használt területet tartalmaz. A táblázat ezeket az adatbázisokat a legkevesebb felhasználatlan lefoglalt terület közül a legnagyobb mennyiségű, nem felhasznált lefoglalt terület közül rendeli.  A lekérdezés eredményének egységei MB-ban vannak.  
+Módosítsa a következő példákat egy olyan táblázat visszaadására, amely egy rugalmas készletben lévő egyes adatbázisok számára lefoglalt és fel nem használt helyet tartalmaz. A tábla a legtöbb fel nem használt lefoglalt területtel rendelkező adatbázisokból rendeli az adatbázisokat a legkevésbé fel nem használt lefoglalt területszámára.  A lekérdezés eredményének egységei MB-ban vannak.  
 
-A rendszer a készletben lévő egyes adatbázisok számára lefoglalt terület meghatározására szolgáló lekérdezés eredményeit hozzáadhatja a rugalmas készlethez lefoglalt teljes terület meghatározásához. A lefoglalt rugalmas készlet területe nem haladhatja meg a rugalmas készlet maximális méretét.  
+A lekérdezés eredményei a készlet egyes adatbázisai számára lefoglalt terület meghatározásához hozzáadhatóak a rugalmas készlet számára lefoglalt teljes terület meghatározásához. A lefoglalt rugalmas készletterület nem haladhatja meg a rugalmas készlet maximális méretét.  
 
 > [!IMPORTANT]
-> Az Azure SQL Database továbbra is támogatja a PowerShell Azure Resource Manager (RM) modult, de a jövőbeli fejlesztés az az. SQL modulhoz kapcsolódik. A AzureRM modul továbbra is megkapja a hibajavításokat, amíg legalább december 2020-ra nem kerül sor.  Az az modul és a AzureRm modulok parancsainak argumentumai lényegében azonosak. A kompatibilitással kapcsolatos további információkért lásd: [az új Azure PowerShell bemutatása az Module](/powershell/azure/new-azureps-module-az).
+> A PowerShell Azure Resource Manager (RM) modul továbbra is támogatja az Azure SQL Database, de minden jövőbeli fejlesztés az Az.Sql modul. Az AzureRM-modul legalább 2020 decemberéig továbbra is megkapja a hibajavításokat.  Az Az modulban és az AzureRm-modulokban lévő parancsok argumentumai lényegében azonosak. A kompatibilitásukról az [Új Azure PowerShell Az modul bemutatása](/powershell/azure/new-azureps-module-az)című témakörben lehet további további további információkért.
 
-A PowerShell-parancsfájlhoz SQL Server PowerShell-modulra van szükség – lásd: a telepítéshez szükséges [PowerShell-modul letöltése](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module) .
+A PowerShell-parancsfájl hoz szükség SQL Server PowerShell modul – [lásd: PowerShell-modul letöltése](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module) a telepítéshez.
 
 ```powershell
 $resourceGroupName = "<resourceGroupName>"
@@ -180,13 +180,13 @@ Write-Output "`n" "ElasticPoolName: $poolName"
 Write-Output $databaseStorageMetrics | Sort -Property DatabaseDataSpaceAllocatedUnusedInMB -Descending | Format-Table
 ```
 
-A következő képernyőkép a parancsfájl kimenetét szemlélteti:
+A következő képernyőkép egy példa a parancsfájl kimenetére:
 
-![a rugalmas készlet lefoglalt területe és a fel nem használt szabad terület – példa](./media/sql-database-file-space-management/elastic-pool-allocated-unused.png)
+![rugalmas készlet lefoglalt terület és a fel nem használt lefoglalt terület példa](./media/sql-database-file-space-management/elastic-pool-allocated-unused.png)
 
-### <a name="elastic-pool-data-max-size"></a>Rugalmas készletre vonatkozó adatmennyiség maximális mérete
+### <a name="elastic-pool-data-max-size"></a>Rugalmas készletadatok maximális mérete
 
-Módosítsa a következő T-SQL-lekérdezést a rugalmas készlet adatmaximális méretének visszaküldéséhez.  A lekérdezés eredményének egységei MB-ban vannak.
+Módosítsa a következő T-SQL-lekérdezést a rugalmas készletadatok maximális méretének visszaadásához.  A lekérdezés eredményének egységei MB-ban vannak.
 
 ```sql
 -- Connect to master
@@ -197,46 +197,46 @@ WHERE elastic_pool_name = 'ep1'
 ORDER BY end_time DESC
 ```
 
-## <a name="reclaim-unused-allocated-space"></a>Nem használt lefoglalt terület visszaigénylése
+## <a name="reclaim-unused-allocated-space"></a>A fel nem használt lefoglalt terület visszaigénylése
 
 > [!NOTE]
-> Ez a parancs hatással lehet az adatbázis teljesítményére a futása közben, és ha lehetséges, alacsony használati időszakok alatt kell futnia.
+> Ez a parancs hatással lehet az adatbázis teljesítményére futás közben, és ha lehetséges, alacsony használat ú időszakokban kell futtatni.
 
-### <a name="dbcc-shrink"></a>DBCC zsugorodása
+### <a name="dbcc-shrink"></a>DBCC zsugorítás
 
-Miután azonosította az adatbázisokat a fel nem használt lefoglalt terület visszaigényléséhez, módosítsa az adatbázis nevét az alábbi parancsban az egyes adatbázisok adatfájljainak összezsugorodása érdekében.
+Miután a fel nem használt lefoglalt terület visszanyeréséhez azonosította az adatbázisokat, módosítsa az adatbázis nevét a következő parancsban az egyes adatbázisok adatfájljainak zsugorításához.
 
 ```sql
 -- Shrink database data space allocated.
 DBCC SHRINKDATABASE (N'db1')
 ```
 
-Ez a parancs hatással lehet az adatbázis teljesítményére a futása közben, és ha lehetséges, alacsony használati időszakok alatt kell futnia.  
+Ez a parancs hatással lehet az adatbázis teljesítményére futás közben, és ha lehetséges, alacsony használat ú időszakokban kell futtatni.  
 
-További információ erről a parancsról: [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql).
+A parancsról további információt a [SHRINKDATABASE című](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql)témakörben talál.
 
-### <a name="auto-shrink"></a>Automatikus zsugorodás
+### <a name="auto-shrink"></a>Automatikus zsugorítás
 
-Másik lehetőségként az automatikus zsugorodás is engedélyezhető az adatbázishoz.  Az automatikus zsugorodás csökkenti a fájlkezelési bonyolultságot, és kevésbé befolyásolja az adatbázis teljesítményét, mint `SHRINKDATABASE` vagy `SHRINKFILE`.  Az automatikus zsugorodás különösen hasznos lehet a sok adatbázissal rendelkező rugalmas készletek kezeléséhez.  Az automatikus zsugorodás azonban kevésbé hatékony lehet a lemezterület visszaigénylésében, mint a `SHRINKDATABASE` és a `SHRINKFILE`.
-Az automatikus zsugorodás engedélyezéséhez módosítsa az adatbázis nevét a következő parancsban.
+Másik lehetőségként engedélyezhető az automatikus zsugorítás egy adatbázishoz.  Az automatikus zsugorítás csökkenti a fájlkezelés `SHRINKDATABASE` összetettségét, és kevésbé befolyásolja az adatbázis teljesítményét, mint a . `SHRINKFILE`  Az automatikus zsugorítás különösen hasznos lehet a sok adatbázissal rendelkező rugalmas készletek kezeléséhez.  Az automatikus zsugorítás azonban kevésbé `SHRINKDATABASE` `SHRINKFILE`hatékony lehet a fájlterület visszaszerzésében, mint a és a .
+Az automatikus zsugorítás engedélyezéséhez módosítsa az adatbázis nevét a következő parancsban.
 
 ```sql
 -- Enable auto-shrink for the database.
 ALTER DATABASE [db1] SET AUTO_SHRINK ON
 ```
 
-További információ erről a parancsról: [adatbázis-beállítási](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) beállítások.
+A parancsról további információt az [ADATBÁZIS-beállításbeállításai](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) című témakörben talál.
 
 ### <a name="rebuild-indexes"></a>Indexek újraépítése
 
-Az adatbázis-adatfájlok összezsugorodása után az indexek töredezettek lehetnek, és elveszítik a teljesítmény optimalizálásának hatékonyságát. Ha a teljesítmény romlása történik, érdemes megfontolnia az adatbázis-indexek újjáépítését. Az indexek töredezettségével és újraépítésével kapcsolatos további információkért lásd: az [indexek újrarendezése és újraépítése](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).
+Az adatbázis-adatfájlok összezsugorodása után az indexek töredezetté válhatnak, és elveszíthetik teljesítményoptimalizálási hatékonyságukat. Ha teljesítménycsökkenés következik be, fontolja meg az adatbázis-indexek újraépítését. Az indexek töredezettségáról és újraépítéséről az [Indexek átrendezése és újraépítése](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)című témakörben talál további információt.
 
 ## <a name="next-steps"></a>További lépések
 
-- Az adatbázis maximális méretével kapcsolatos információkért lásd:
-  - [Azure SQL Database virtuális mag-alapú beszerzési modell korlátai egyetlen adatbázishoz](sql-database-vcore-resource-limits-single-databases.md)
-  - [Az DTU-alapú vásárlási modellt használó önálló adatbázisok erőforrás-korlátai](sql-database-dtu-resource-limits-single-databases.md)
-  - [Azure SQL Database virtuális mag-alapú beszerzési modell korlátai rugalmas készletekhez](sql-database-vcore-resource-limits-elastic-pools.md)
-  - [A rugalmas készletek erőforrásokra vonatkozó korlátai a DTU-alapú vásárlási modell használatával](sql-database-dtu-resource-limits-elastic-pools.md)
-- További információ a `SHRINKDATABASE` parancsról: [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql).
-- Az indexek töredezettségével és újraépítésével kapcsolatos további információkért lásd: az [indexek újrarendezése és újraépítése](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).
+- Az adatbázis maximális méretéről a következő témakörben talál további információt:
+  - [Az Azure SQL Database virtuálismag-alapú vásárlási modell korlátai egyetlen adatbázishoz](sql-database-vcore-resource-limits-single-databases.md)
+  - [Erőforráskorlátok a DTU-alapú vásárlási modellt használó egyetlen adatbázisokhoz](sql-database-dtu-resource-limits-single-databases.md)
+  - [Az Azure SQL Database virtuálismag-alapú vásárlási modell korlátai rugalmas készletekhez](sql-database-vcore-resource-limits-elastic-pools.md)
+  - [A DTU-alapú vásárlási modellt használó rugalmas készletek erőforráskorlátai](sql-database-dtu-resource-limits-elastic-pools.md)
+- A parancsról `SHRINKDATABASE` további információt a [SHRINKDATABASE című](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql)témakörben talál.
+- Az indexek töredezettségáról és újraépítéséről az [Indexek átrendezése és újraépítése](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)című témakörben talál további információt.

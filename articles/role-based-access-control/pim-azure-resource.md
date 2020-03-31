@@ -1,6 +1,6 @@
 ---
-title: Azure-erőforrásokhoz való hozzáférés kezelése az Azure AD és a PIM használatával
-description: Ismerje meg, hogyan kezelheti az Azure-erőforrásokhoz való hozzáférést a Azure Active Directory Privileged Identity Management (PIM) és a szerepköralapú hozzáférés-vezérlés (RBAC) használatával.
+title: Azure-erőforrásokhoz való hozzáférés kezelése az Azure AD-vel és a PIM-mel
+description: Ismerje meg az Azure-erőforrásokhoz való hozzáférés kezelését az Azure Active Directory privilegizált identitáskezelés (PIM) és a szerepköralapú hozzáférés-vezérlés (RBAC) használatával.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,21 +16,21 @@ ms.date: 03/30/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.openlocfilehash: 53c6375ce04425eae27f4c935e613cc27d058dc8
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77138035"
 ---
-# <a name="manage-access-to-azure-resources-with-azure-ad-privileged-identity-management"></a>Azure-erőforrásokhoz való hozzáférés kezelése Azure AD Privileged Identity Management
+# <a name="manage-access-to-azure-resources-with-azure-ad-privileged-identity-management"></a>Azure-erőforrásokhoz való hozzáférés kezelése az Azure AD kiemelt identitáskezelésével
 
-A rendszerjogosultságú fiókok rosszindulatú cyber-támadások elleni védelme érdekében Azure Active Directory Privileged Identity Management (PIM) használatával csökkentheti a jogosultságok expozíciós idejét, és a jelentésekkel és riasztásokkal növelheti a használat láthatóságát. A PIM ezt azáltal korlátozza, hogy a felhasználók csak az idő függvényében (JIT) használják a jogosultságokat, vagy ha jogosultságokat rendelnek a lerövidített időtartamhoz, amely után a rendszer automatikusan visszavonja a jogosultságokat. 
+A kiemelt jogosultságú fiókok védelme a rosszindulatú kibertámadások ellen, az Azure Active Directory kiemelt identitáskezelés (PIM) használatával csökkentheti a jogosultságok expozíciós idejét, és jelentések és riasztások révén növelheti a használatuk láthatóságát. A PIM ezt úgy éri el, hogy a felhasználókat csak a jogosultságaik "éppen időben" (JIT) vételére korlátozza, vagy rövidebb időtartamra rendel jogosultságokat, amely után a jogosultságokat automatikusan visszavonják. 
 
-Mostantól használhatja a PIM-t az Azure szerepköralapú hozzáférés-vezérléssel (RBAC) az Azure-erőforrásokhoz való hozzáférés felügyeletéhez, szabályozásához és figyeléséhez. A PIM képes a beépített és egyéni szerepkörök tagságának kezelésére: 
+Most már használhatja a PIM-et az Azure szerepköralapú hozzáférés-vezérléssel (RBAC) az Azure-erőforrásokhoz való hozzáférés kezeléséhez, vezérléséhez és figyeléséhez. A PIM a beépített és egyéni szerepkörök tagságát a következők segítése érdekében kezelheti: 
 
-- Igény szerinti, "egyszeri" hozzáférés engedélyezése az Azure-erőforrásokhoz
-- Erőforrás-hozzáférés automatikus lejárata a hozzárendelt felhasználókhoz és csoportokhoz
-- Az Azure-erőforrásokhoz való ideiglenes hozzáférés kiosztása gyors feladatok vagy hívási ütemtervek esetén
-- Riasztások beszerzése új felhasználók vagy csoportok erőforrás-hozzáféréshez való hozzárendelésekor, valamint a jogosult hozzárendelések aktiválásakor
+- Igény szerinti, "éppen időben" való hozzáférés engedélyezése az Azure-erőforrásokhoz
+- Erőforrás-hozzáférés automatikus lejárata hozzárendelt felhasználók és csoportok számára
+- Ideiglenes hozzáférés hozzárendelése az Azure-erőforrásokhoz a gyors feladatokhoz vagy az ügyeleti ütemezésekhez
+- Értesítések et kaphat, ha új felhasználók vagy csoportok vannak hozzárendelve az erőforrás-hozzáféréshez, és amikor aktiválják a jogosult hozzárendeléseket
 
-További információ: [Mi az Azure ad Privileged Identity Management?](../active-directory/privileged-identity-management/pim-configure.md)
+További információ: [Mi az Azure AD kiemelt identitáskezelés?](../active-directory/privileged-identity-management/pim-configure.md).

@@ -9,17 +9,17 @@ ms.date: 03/05/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 5190804180612e885b226f9b00d82b8d2f528a8a
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78668734"
 ---
 >[!NOTE]
->Keményen dolgozunk további régiók hozzáadásával. Egy régió hozzáadásakor a rendszer hozzáadja a listához.
+>Keményen dolgozunk, hogy további régiókat adjunk hozzá. Ha hozzáadegy régiót, hozzáadjuk a listához.
 >
 
-**Amerika**
+**Americas**
 * Dél-Brazília
 * Közép-Kanada
 * USA középső régiója
@@ -34,7 +34,7 @@ ms.locfileid: "78668734"
 **Európa**
 * Közép-Franciaország
 * Észak-Európa
-* Kelet-Norvégia
+* Norvégia Kelet
 * Az Egyesült Királyság déli régiója
 * Az Egyesült Királyság nyugati régiója
 * Nyugat-Európa
@@ -52,8 +52,8 @@ ms.locfileid: "78668734"
 * Nyugat-India
 
 **Közel-Kelet és Afrika**
-* Dél-Afrika északi régiója
-* UAE középső régiója
+* Dél-Afrika Észak-Afrika
+* Egyesült Arab Emírségek központi
 
 **Azure Government**
 * US DoD – Középső régió

@@ -1,33 +1,33 @@
 ---
-title: Kiszolgáló újraindítása – Azure CLI – Azure Database for MariaDB
-description: Ez a cikk azt ismerteti, hogyan lehet újraindítani egy Azure Database for MariaDB kiszolgálót az Azure CLI használatával.
+title: Kiszolgáló újraindítása - Azure CLI – Azure Database for MariaDB
+description: Ez a cikk ismerteti, hogyan indíthatja újra az Azure Database for MariaDB-kiszolgáló az Azure CLI használatával.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 9c3b86cb278d25b6200753f2f418c5aa82ca86ce
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: f5572611b99245fd62b4e0a9d73e6ed728e42f5b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74771053"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530648"
 ---
-# <a name="restart-azure-database-for-mariadb-server-using-the-azure-cli"></a>Azure Database for MariaDB kiszolgáló újraindítása az Azure CLI használatával
-Ez a témakör azt ismerteti, hogyan lehet újraindítani egy Azure Database for MariaDB-kiszolgálót. Előfordulhat, hogy a kiszolgálót karbantartás miatt újra kell indítania, ami rövid kimaradást okoz, mivel a kiszolgáló végrehajtja a műveletet.
+# <a name="restart-azure-database-for-mariadb-server-using-the-azure-cli"></a>A MariaDB-kiszolgáló Azure-adatbázisának újraindítása az Azure CLI használatával
+Ez a témakör azt ismerteti, hogyan indíthatja újra a MariaDB-kiszolgálóazure-adatbázisát. Előfordulhat, hogy karbantartási okokból újra kell indítania a kiszolgálót, ami rövid leállást okoz, mivel a kiszolgáló végrehajtja a műveletet.
 
-A kiszolgáló újraindítása le lesz tiltva, ha a szolgáltatás foglalt. Előfordulhat például, hogy a szolgáltatás feldolgoz egy korábban kért műveletet, például a skálázási virtuális mag.
+A kiszolgáló újraindítása le lesz tiltva, ha a szolgáltatás foglalt. Például a szolgáltatás lehet, hogy egy korábban kért műveletet dolgoz fel, például a virtuális magok méretezése.
 
-Az újraindítás befejezéséhez szükséges idő a MariaDB helyreállítási folyamattól függ. Az újraindítási idő csökkentése érdekében javasoljuk, hogy csökkentse a kiszolgálón előforduló tevékenységek mennyiségét az újraindítás előtt.
+Az újraindítás befejezéséhez szükséges idő a MariaDB helyreállítási folyamatától függ. Az újraindítási idő csökkentése érdekében azt javasoljuk, hogy minimalizálja a kiszolgálón az újraindítás előtt előforduló tevékenység mennyiségét.
 
 ## <a name="prerequisites"></a>Előfeltételek
-A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
-- Egy [Azure Database for MariaDB-kiszolgáló](quickstart-create-mariadb-server-database-using-azure-cli.md)
+Az útmutató befejezéséhez a következőkre van szükség:
+- [Azure-adatbázis a MariaDB-kiszolgálóhoz](quickstart-create-mariadb-server-database-using-azure-cli.md)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> Ehhez az útmutatóhoz az Azure CLI 2,0-es vagy újabb verzióját kell használnia. A verzió megerősítéséhez az Azure CLI parancssorában írja be a következőt: `az --version`. A telepítéshez vagy a frissítéshez lásd: az [Azure CLI telepítése]( /cli/azure/install-azure-cli).
+> Ez az útmutató megköveteli, hogy az Azure CLI 2.0-s vagy újabb verzióját használja. A verzió megerősítéséhez írja be az Azure `az --version`CLI parancssorába a . A telepítéshez vagy frissítéshez olvassa [el az Azure CLI telepítése]( /cli/azure/install-azure-cli)című témakört.
 
 
 ## <a name="restart-the-server"></a>Kiszolgáló újraindítása
@@ -38,6 +38,6 @@ Indítsa újra a kiszolgálót a következő paranccsal:
 az mariadb server restart --name mydemoserver --resource-group myresourcegroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Útmutató [Paraméterek beállításához a Azure Database for MariaDB](howto-configure-server-parameters-cli.md)
+További információ [a paraméterek beállításáról a MariaDB Azure Database szolgáltatásában](howto-configure-server-parameters-cli.md)

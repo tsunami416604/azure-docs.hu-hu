@@ -14,31 +14,31 @@ ms.topic: overview
 ms.date: 02/03/2020
 ms.author: spelluru
 ms.openlocfilehash: ef296035ee8f0c80b4ee078303639d7aedf5a91d
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76986631"
 ---
 # <a name="an-introduction-to-azure-lab-services"></a>Az Azure Lab Services bemutatása
-Az Azure-ban két olyan szolgáltatás található, amely lehetővé teszi, hogy tesztkörnyezet-környezeteket hozzon létre a felhőben. 
+Az Azure-ban két szolgáltatás áll, amelyek lehetővé teszik a felhőbeli laborkörnyezetek beállítását. 
 
-- **Azure DevTest Labs** – ez a szolgáltatás lehetővé teszi, hogy gyorsan beállítson egy környezetet a csapat számára (például: fejlesztési környezet vagy tesztkörnyezetben a felhőben). A tesztkörnyezet tulajdonosa létrehoz egy tesztkörnyezetet, Windows vagy Linux rendszerű virtuális gépeket épít ki, telepíti a szükséges szoftvereket és eszközöket, és elérhetővé teszi azokat a tesztkörnyezet felhasználói számára. A labor felhasználói a laborban csatlakoznak a virtuális gépekhez (VM), és felhasználhatják azokat a napi munkához, a rövid távú projektekhez. Miután a felhasználók megkezdik az erőforrások használatát a tesztkörnyezetben, a tesztkörnyezet egy rendszergazdája több tesztkörnyezetre kiterjedően elemezheti a költségeket és a használatot, és átfogó szabályzatokat állíthat be a vállalat vagy csapat költségeinek optimalizálásához.
-- **Azure Lab Services** – ez a szolgáltatás lehetővé teszi a felügyelt laborok típusának létrehozását. Jelenleg a tanterem Labs az egyetlen, Azure Lab Services által támogatott felügyelt tesztkörnyezet. A szolgáltatás maga kezeli a felügyelt tesztkörnyezet összes infrastruktúrájának kezelését, a virtuális gépek felgyorsítását a hibák kezelésére és az infrastruktúra skálázására. Azt követően, hogy a rendszergazda létrehoz egy labor-fiókot Azure Lab Servicesban, az oktató gyorsan beállíthat egy labort az osztályához, megadhatja az osztályban felhasználható virtuális gépek számát és típusát, valamint felhasználókat adhat hozzá a osztályhoz. Miután a felhasználó regisztrált a osztályba, a felhasználó elérheti a virtuális gépet, hogy az osztályhoz tartozó gyakorlatokat végezzen.  
+- **Azure DevTest Labs** – Ez a szolgáltatás lehetővé teszi, hogy gyorsan beállít egy környezetet a csapat (például: fejlesztési környezet, vagy a tesztelési környezet a felhőben). A tesztkörnyezet tulajdonosa létrehoz egy tesztkörnyezetet, Windows vagy Linux rendszerű virtuális gépeket épít ki, telepíti a szükséges szoftvereket és eszközöket, és elérhetővé teszi azokat a tesztkörnyezet felhasználói számára. A laborfelhasználók virtuális gépekhez (VM-ekhez) csatlakoznak a laborban, és a mindennapi munkájukhoz rövid távú projektekhez használják őket. Miután a felhasználók megkezdik az erőforrások használatát a tesztkörnyezetben, a tesztkörnyezet egy rendszergazdája több tesztkörnyezetre kiterjedően elemezheti a költségeket és a használatot, és átfogó szabályzatokat állíthat be a vállalat vagy csapat költségeinek optimalizálásához.
+- **Azure Lab Services** – Ez a szolgáltatás lehetővé teszi felügyelt labortípusok létrehozását. Jelenleg az Azure Lab Services által támogatott tantermi laborok az egyetlen felügyelt labortípus. A szolgáltatás maga kezeli a felügyelt tesztkörnyezet-típus összes infrastruktúra-felügyeletét, a virtuális gépek fonásától a hibák kezeléséig és az infrastruktúra méretezésétől. Miután egy informatikai rendszergazda létrehoz egy tesztkörnyezet-fiókot az Azure Lab Servicesben, az oktató gyorsan beállíthat egy tesztkörnyezetet az osztályához, megadhatja az osztályban gyakorolni kívánt virtuális gépek számát és típusát, és felhasználókat adhat hozzá az osztályhoz. Miután a felhasználó regisztrál az osztályba, a felhasználó hozzáférhet a virtuális géphez az osztály gyakorlatokhoz.  
 
 ## <a name="key-capabilities"></a>Főbb képességek
 
-Ezek a szolgáltatások (Azure DevTest Labs és Azure Lab Services) a következő főbb képességeket és funkciókat támogatják:
+Ezek a szolgáltatások (Az Azure DevTest Labs és az Azure Lab Services) a következő kulcsfontosságú képességeket és funkciókat támogatják:
 
-- **A tesztkörnyezetek gyors és rugalmas beállítása**. A tesztkörnyezetek tulajdonosai az Azure Lab Services használatával gyorsan állíthatnak be az igényeinek megfelelő tesztkörnyezetet. A szolgáltatás lehetővé teszi az összes Azure-infrastruktúra működésének kezelését a felügyelt labor típusok esetében, illetve a labor tulajdonosai számára a labor tulajdonosának előfizetésében az infrastruktúra önálló felügyeletét és testreszabását. A szolgáltatás biztosítja az infrastruktúra beépített méretezését és rugalmasságát azon tesztkörnyezetek esetén, amelyeket a tulajdonos helyett kezel.
-- **Egyszerű használat a tesztkörnyezetek felhasználói számára**. A felügyelt labor típusokban, például a tantermi laborokban a labor felhasználói regisztrálhatnak egy regisztrációs kóddal rendelkező laborba, és bármikor hozzáférhetnek a laborhoz a labor erőforrásainak használatához. A DevTest Labs szolgáltatásban létrehozott tesztkörnyezetekben a tesztkörnyezet tulajdonosa engedélyt adhat a tesztkörnyezet felhasználóinak a virtuális gépek létrehozásához és eléréséhez, az adatlemezek felügyeletéhez és újbóli használatához, valamint többször használható titkos kulcsok beállításához.  
-- **Költségoptimalizálás és elemzés**. A tesztkörnyezet tulajdonosa ütemezéseket állíthat be a tesztkörnyezetben a virtuális gépek automatikus leállításához és elindításához. A tesztkörnyezet tulajdonosa beállíthat egy ütemezést azon időtartamok meghatározásához, amikor a tesztkörnyezet virtuális gépei elérhetők a felhasználók számára, és felhasználóalapú vagy tesztkörnyezet-alapú használati szabályzatokat állíthat be a költségek optimalizálása, továbbá a tesztkörnyezetben jelentkező használati és tevékenységi trendek elemzése érdekében. A felügyelt labor típusok, például a tanterem Labs esetében jelenleg a költségcsökkentés és az elemzési lehetőségek kisebb részhalmaza érhető el.
+- **A tesztkörnyezetek gyors és rugalmas beállítása**. A tesztkörnyezetek tulajdonosai az Azure Lab Services használatával gyorsan állíthatnak be az igényeinek megfelelő tesztkörnyezetet. A szolgáltatás lehetővé teszi, hogy a felügyelt tesztkörnyezet-típusok hoz az Azure-infrastruktúra összes munkáját, vagy lehetővé tegye a labortulajdonosok számára az infrastruktúra önkezelését és testreszabását a labortulajdonos előfizetésében. A szolgáltatás biztosítja az infrastruktúra beépített méretezését és rugalmasságát azon tesztkörnyezetek esetén, amelyeket a tulajdonos helyett kezel.
+- **Egyszerű használat a tesztkörnyezetek felhasználói számára**. Egy felügyelt labortípusban, például egy tantermi laborban, a tesztkörnyezet felhasználói regisztrálhatnak egy tesztkörnyezetben egy regisztrációs kóddal, és bármikor hozzáférhetnek a labor erőforrásaihoz. A DevTest Labs szolgáltatásban létrehozott tesztkörnyezetekben a tesztkörnyezet tulajdonosa engedélyt adhat a tesztkörnyezet felhasználóinak a virtuális gépek létrehozásához és eléréséhez, az adatlemezek felügyeletéhez és újbóli használatához, valamint többször használható titkos kulcsok beállításához.  
+- **Költségoptimalizálás és elemzés**. A tesztkörnyezet tulajdonosa ütemezéseket állíthat be a tesztkörnyezetben a virtuális gépek automatikus leállításához és elindításához. A tesztkörnyezet tulajdonosa beállíthat egy ütemezést azon időtartamok meghatározásához, amikor a tesztkörnyezet virtuális gépei elérhetők a felhasználók számára, és felhasználóalapú vagy tesztkörnyezet-alapú használati szabályzatokat állíthat be a költségek optimalizálása, továbbá a tesztkörnyezetben jelentkező használati és tevékenységi trendek elemzése érdekében. Felügyelt tesztkörnyezet-típusok, például tantermi laborok, jelenleg egy kisebb részhalmaza költségoptimalizálási és elemzési lehetőségek állnak rendelkezésre.
 - **Beágyazott biztonság**. A tesztkörnyezet tulajdonosa beállíthat egy virtuális magánhálózatot és alhálózatot a tesztkörnyezet számára, és engedélyezheti a megosztott nyilvános IP-címeket. A tesztkörnyezetek felhasználói biztonságosan érhetik el az erőforrásokat az ExpressRoute vagy helyek közötti VPN használatával konfigurált virtuális hálózattal. (Jelenleg csak a DevTest Labs szolgáltatásban érhető el.)
 - **Integrálás a munkafolyamatokba és az eszközökbe**. Az Azure Lab Services lehetővé teszi a tesztkörnyezetek integrálását a vállalat webhelyébe és felügyeleti rendszereibe. Automatikusan építhet ki környezeteket a folyamatos integrációs/folyamatos üzembehelyezési (CI/CD) eszközökből. (Jelenleg csak a DevTest Labs szolgáltatásban érhető el.)
 
-## <a name="scenarios"></a>Alkalmazási helyzetek
+## <a name="scenarios"></a>Forgatókönyvek
 
-Íme néhány olyan forgatókönyv, amely Azure DevTest Labs és Azure Lab Services támogatást nyújt:
+Íme néhány forgatókönyv, amelyet az Azure DevTest Labs és az Azure Lab Services támogat:
 
 ### <a name="set-up-a-resizable-computer-lab-in-the-cloud-for-your-classroom"></a>Méretezhető számítógépes tesztkörnyezet beállítása a felhőben az osztályterem számára  
 
@@ -68,19 +68,19 @@ Az Azure DevTest Labs használatával több fontos forgatókönyvet megvalósít
 
 További információ: [A DevTest Labs használata teszteléshez](devtest-lab-test-env.md).
 
-## <a name="types-of-labs"></a>A laborok típusai
-Kétféle labort hozhat létre: a **felügyelt labor-típusokat** a Azure Lab Services és a **Labs** használatával Azure Lab Services. Ha azt szeretné, hogy a laborban milyen adatokat kell megadnia, és lehetővé kell tennie a szolgáltatás számára a laborhoz szükséges infrastruktúra beállítását és kezelését, válasszon az egyik **felügyelt labor típus**közül. Jelenleg a **tanterem Lab** az egyetlen felügyelt Lab-típus, amelyet a Azure Lab Services hozhat létre. Ha saját infrastruktúrát szeretne felügyelni, hozzon létre egy labort **Azure DevTest Labs**használatával.
+## <a name="types-of-labs"></a>A laboratóriumok típusai
+Kétféle laborkörnyezetet hozhat létre: **felügyelt labortípusokat** az Azure Lab Services szolgáltatással és **laborokat** az Azure Lab Services szolgáltatással. Ha azt szeretné, hogy csak a bemeneti, amire szüksége van egy laborban, és hagyja, hogy a szolgáltatás beállítása és kezelése szükséges infrastruktúra a labor, válasszon a **felügyelt labortípusok**közül. Jelenleg az **osztályterem-labor** az egyetlen felügyelt labortípus, amelyet az Azure Lab Services használatával hozhat létre. Ha saját infrastruktúráját szeretné kezelni, hozzon létre egy tesztkörnyezetet az **Azure DevTest Labs**használatával.
 
 Az alábbi szakaszokban részletesen is tárgyaljuk ezeket a tesztkörnyezeteket. 
 
 ## <a name="managed-lab-types"></a>Felügyelt tesztkörnyezet-típusok
-Az Azure Lab Services segítségével Azure által kezelt infrastruktúrával rendelkező tesztkörnyezeteket hozhat létre. Ez a cikk felügyelt labor típusokként hivatkozik rájuk. A felügyelt labor típusok különböző típusú laborokat kínálnak, amelyek megfelelnek az adott igényeknek. Jelenleg csak a által támogatott felügyelt labor típus a **tanterem Lab**. 
+Az Azure Lab Services segítségével Azure által kezelt infrastruktúrával rendelkező tesztkörnyezeteket hozhat létre. Ez a cikk felügyelt tesztkörnyezet-típusokként hivatkozik rájuk. A felügyelt labortípusok különböző típusú laborokat kínálnak, amelyek megfelelnek az Ön egyedi igényeinek. Jelenleg csak a támogatott felügyelt tesztkörnyezet-típus az **osztálytermi tesztkörnyezet.** 
 
-A felügyelt labor-típusok lehetővé teszik, hogy azonnal, minimális telepítéssel kezdjen el. A szolgáltatás maga gondoskodik a tesztkörnyezet infrastruktúrájának átfogó kezeléséről, a virtuális gépek indításától a hibák kezelésén keresztül az infrastruktúra méretezéséig. A felügyelt laborok, például a tantermi laborok létrehozásához először létre kell hoznia egy Lab-fiókot a szervezet számára. A tesztkörnyezetfiók központi fiókként szolgál a vállalat összes tesztkörnyezetének a felügyeletéhez. 
+A felügyelt tesztkörnyezet-típusok minimális beállítással azonnal lehetővé teszik a kezdést. A szolgáltatás maga gondoskodik a tesztkörnyezet infrastruktúrájának átfogó kezeléséről, a virtuális gépek indításától a hibák kezelésén keresztül az infrastruktúra méretezéséig.Felügyelt tesztkörnyezet-típus, például egy tantermi tesztkörnyezet létrehozásához először létre kell hoznia egy tesztkörnyezet-fiókot a szervezetszámára. A tesztkörnyezetfiók központi fiókként szolgál a vállalat összes tesztkörnyezetének a felügyeletéhez. 
 
-Ha Azure-erőforrásokat hoz létre és használ ezekben a felügyelt labor-típusokban, a szolgáltatás az erőforrásokat belső Microsoft-előfizetésekben hozza létre és kezeli. nem pedig az Ön Azure-előfizetésében. A szolgáltatás belső Microsoft-előfizetésekben követi nyomon ezen erőforrások használatát. A használat számlázása a tesztkörnyezetfiókot tartalmazó Azure-előfizetésben történik.   
+Amikor azure-erőforrásokat hoz létre és használ ezekben a felügyelt labortípusokban, a szolgáltatás létrehozza és kezeli a belső Microsoft-előfizetésekben lévő erőforrásokat. nem pedig az Ön Azure-előfizetésében. A szolgáltatás belső Microsoft-előfizetésekben követi nyomon ezen erőforrások használatát. A használat számlázása a tesztkörnyezetfiókot tartalmazó Azure-előfizetésben történik.   
 
-Íme néhány példa a **felügyelt labor-típusok használati eseteire**: 
+Íme néhány a **felügyelt tesztkörnyezet típusok használati esetei közül:** 
 
 - A pontosan a tanórához szükséges dolgokkal konfigurált virtuális gépekből álló tesztkörnyezet biztosítása a diákok számára. Korlátozott mennyiségű idő biztosítása minden diák számára a virtuális gépek használatához a házi feladatok vagy személyes projektek elvégzéséhez.
 - Nagy teljesítményű számítások végrehajtására képes virtuális gépek készletének beállítása nagy számítási vagy grafikai igényű kutatáshoz. A virtuális gépek futtatása igény szerint, majd a gépek törlése, miután végzett. 
@@ -89,7 +89,7 @@ Ha Azure-erőforrásokat hoz létre és használ ezekben a felügyelt labor-típ
 
 
 ## <a name="devtest-labs"></a>DevTest Labs
-Felmerülhetnek olyan forgatókönyvek, amikor a saját előfizetésén belül szeretne felügyelni minden infrastruktúrát és konfigurációt. Ehhez létrehozhat egy tesztkörnyezetet az Azure DevTest Labs használatával az Azure Portalon. Ezekben a laborokban nem kell labor-fiókot létrehoznia. Ezek a laborok nem jelennek meg a labor-fiókban (amely a felügyelt labor típusok esetében létezik).  
+Felmerülhetnek olyan forgatókönyvek, amikor a saját előfizetésén belül szeretne felügyelni minden infrastruktúrát és konfigurációt. Ehhez létrehozhat egy tesztkörnyezetet az Azure DevTest Labs használatával az Azure Portalon.Ezekhez a tesztkörnyezetekhez nem kell tesztkörnyezetfiókot létrehoznia. Ezek a laborok nem jelennek meg a laborfiókban (amely létezik a felügyelt tesztkörnyezet-típusok).  
 
 A **DevTest Labs tesztkörnyezetek néhány alkalmazási helyzete**: 
 
@@ -101,19 +101,19 @@ A **DevTest Labs tesztkörnyezetek néhány alkalmazási helyzete**:
 - Képzési foglalkozások biztosítása az ügyfeleknek a termék legújabb verziójával konfigurált tesztkörnyezettel. Korlátozott mennyiségű idő biztosítása minden ügyfél számára a tesztkörnyezet használatához. 
 
 
-## <a name="managed-lab-types-vs-devtest-labs"></a>Felügyelt labor típusok és DevTest Labs
+## <a name="managed-lab-types-vs-devtest-labs"></a>Felügyelt tesztkörnyezet-típusok és a DevTest Labs
 Az alábbi táblázat az Azure Lab Services által támogatott tesztkörnyezetek két típusát hasonlítja össze: 
 
-| Jellemzők | Felügyelt tesztkörnyezet-típusok | DevTest Labs |
+| Szolgáltatások | Felügyelt tesztkörnyezet-típusok | DevTest Labs |
 | -------- | ----------------- | ---------- |
 | Az Azure-infrastruktúra felügyelete a tesztkörnyezetben. |  A szolgáltatás automatikusan felügyeli. | A felhasználó saját maga felügyeli.  |
 | Beépített rugalmasság az infrastruktúrával kapcsolatos problémákkal szemben | A szolgáltatás automatikusan kezeli. | A felhasználó saját maga felügyeli.  |
-| Előfizetés-kezelés | A szolgáltatás kezeli az erőforrások kiosztását a szolgáltatást támogató Microsoft-előfizetéseken belül. A szolgáltatás automatikusan kezeli a méretezést. | A felhasználó saját maga felügyeli a saját Azure-előfizetésében. Nincsenek automatikus skálázási előfizetések. |
-| Azure Resource Manager-alapú üzemi környezet a tesztkörnyezetben | Nincs | Elérhető |
+| Előfizetés-kezelés | A szolgáltatás kezeli az erőforrások kiosztását a szolgáltatást támogató Microsoft-előfizetéseken belül. A szolgáltatás automatikusan kezeli a méretezést. | A felhasználó saját maga felügyeli a saját Azure-előfizetésében. Nincs automatikus skálázás az előfizetések. |
+| Azure Resource Manager-alapú üzemi környezet a tesztkörnyezetben | Nem érhető el | Elérhető |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Lásd az alábbi cikkeket: 
 
-- [A tanterem Labs ismertetése](./classroom-labs/classroom-labs-overview.md)
-- [Tudnivalók a DevTest Labs szolgáltatásról](devtest-lab-overview.md)
+- [A Tantermi Laborokról](./classroom-labs/classroom-labs-overview.md)
+- [A DevTest Labs ismertetése](devtest-lab-overview.md)

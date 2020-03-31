@@ -1,6 +1,6 @@
 ---
-title: Csoportosan felügyelt szolgáltatásfiókok a Azure AD Domain Serviceshoz | Microsoft Docs
-description: Megtudhatja, hogyan hozhat létre Azure Active Directory Domain Services felügyelt tartományokkal használható csoportosan felügyelt szolgáltatásfiókot (gMSA)
+title: Csoport kezelt szolgáltatásfiókok az Azure AD tartományi szolgáltatásokhoz | Microsoft dokumentumok
+description: Megtudhatja, hogy miként hozhat létre csoportkezelt szolgáltatásfiókot (gMSA) az Azure Active Directory tartományi szolgáltatások által felügyelt tartományokhoz való használatra
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,73 +12,73 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: iainfou
 ms.openlocfilehash: 58749e4518f6fa73c8641ce38483c101576047aa
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77614078"
 ---
-# <a name="create-a-group-managed-service-account-gmsa-in-azure-ad-domain-services"></a>Csoportosan felügyelt szolgáltatásfiók (gMSA) létrehozása Azure AD Domain Services
+# <a name="create-a-group-managed-service-account-gmsa-in-azure-ad-domain-services"></a>Csoportkezelt szolgáltatásfiók (gMSA) létrehozása az Azure AD tartományi szolgáltatásokban
 
-Az alkalmazásoknak és szolgáltatásoknak gyakran identitásra van szükségük a más erőforrásokkal való hitelesítéshez. Előfordulhat például, hogy egy webszolgáltatásnak hitelesítenie kell magát egy adatbázis-szolgáltatásban. Ha egy alkalmazásnak vagy szolgáltatásnak több példánya van, például egy webkiszolgáló-Farm, akkor manuálisan hozza létre és konfigurálja az adott erőforrásokhoz tartozó identitásokat.
+Az alkalmazásoknak és szolgáltatásoknak gyakran identitásra van szükségük ahhoz, hogy más erőforrásokkal hitelesítsék magukat. Előfordulhat például, hogy egy webszolgáltatásnak hitelesítésre van szüksége egy adatbázis-szolgáltatással. Ha egy alkalmazás vagy szolgáltatás több példányt, például egy webkiszolgáló-farmot, manuálisan létre, és konfigurálja az identitások az erőforrások időigényes lesz.
 
-Ehelyett egy csoportosan felügyelt szolgáltatásfiók (gMSA) hozható létre a Azure Active Directory Domain Services (Azure AD DS) felügyelt tartományban. A Windows operációs rendszer automatikusan kezeli a gMSA hitelesítő adatait, ami leegyszerűsíti a nagyméretű erőforrások kezelését.
+Ehelyett egy csoport felügyelt szolgáltatásfiók (gMSA) hozható létre az Azure Active Directory tartományi szolgáltatások (Azure AD DS) felügyelt tartományban. A Windows operációs rendszer automatikusan kezeli a gMSA hitelesítő adatait, ami leegyszerűsíti a nagy erőforráscsoportok kezelését.
 
-Ez a cikk bemutatja, hogyan hozhat létre gMSA egy Azure AD DS felügyelt tartományban Azure PowerShell használatával.
+Ez a cikk bemutatja, hogyan hozhat létre gMSA-t egy Azure AD DS felügyelt tartományban az Azure PowerShell használatával.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van szüksége:
+A cikk végrehajtásához a következő erőforrásokra és jogosultságokra van szükség:
 
 * Aktív Azure-előfizetés.
-    * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Az előfizetéshez társított Azure Active Directory bérlő, vagy egy helyszíni címtárral vagy egy csak felhőalapú címtárral van szinkronizálva.
-    * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
-* Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
-    * Ha szükséges, fejezze be az oktatóanyagot [egy Azure Active Directory Domain Services-példány létrehozásához és konfigurálásához][create-azure-ad-ds-instance].
-* Az Azure AD DS felügyelt tartományhoz csatlakoztatott Windows Server Management VM.
-    * Ha szükséges, fejezze be az oktatóanyagot [egy felügyeleti virtuális gép létrehozásához][tutorial-create-management-vm].
+    * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Az előfizetéshez társított Azure Active Directory-bérlő, amely et egy helyszíni könyvtárral vagy egy csak felhőbeli könyvtárral szinkronizált.
+    * Szükség esetén [hozzon létre egy Azure Active Directory-bérlőt,][create-azure-ad-tenant] vagy [társítson egy Azure-előfizetést a fiókjához.][associate-azure-ad-tenant]
+* Az Azure Active Directory tartományi szolgáltatások felügyelt tartomány a konfigurált és konfigurált az Azure AD-bérlő.
+    * Szükség esetén töltse ki az oktatóanyagot [az Azure Active Directory tartományi szolgáltatások példányának létrehozásához és konfigurálásához.][create-azure-ad-ds-instance]
+* Az Azure AD DS felügyelt tartományához csatlakozott Windows Server felügyeleti virtuális gép.
+    * Szükség esetén fejezze be az [oktatóanyagot egy felügyeleti virtuális gép létrehozásához.][tutorial-create-management-vm]
 
-## <a name="managed-service-accounts-overview"></a>A felügyelt szolgáltatásfiókok áttekintése
+## <a name="managed-service-accounts-overview"></a>Kezelt szolgáltatásfiókok – áttekintés
 
-A különálló felügyelt szolgáltatásfiók (önállóan felügyelt szolgáltatásfiókot) egy olyan tartományi fiók, amelynek a jelszava automatikusan felügyelve van. Ez a megközelítés leegyszerűsíti az egyszerű szolgáltatásnév (SPN) felügyeletét, és engedélyezi a delegált felügyeletet más rendszergazdáknak. Nem kell manuálisan létrehoznia és elforgatnia a fiók hitelesítő adatait.
+Az önálló felügyelt szolgáltatásfiók (sMSA) olyan tartományi fiók, amelynek jelszavát a rendszer automatikusan kezeli. Ez a megközelítés leegyszerűsíti az egyszerű szolgáltatásnév (SPN) kezelését, és lehetővé teszi a delegált felügyeletet más rendszergazdák számára. Nem kell manuálisan létrehoznia és elforgatnia a fiók hitelesítő adatait.
 
-A csoportosan felügyelt szolgáltatásfiókok (gMSA) ugyanazt a felügyeleti egyszerűsítést biztosítják, de a tartományban több kiszolgáló esetében is. A gMSA lehetővé teszi, hogy egy kiszolgálófarm által üzemeltetett szolgáltatás minden példánya ugyanazt a szolgáltatásnevet használja, mint a kölcsönös hitelesítési protokollok működéséhez. Ha gMSA használ, a Windows operációs rendszer ismét a rendszergazda helyett a fiók jelszavát kezeli.
+A csoport által kezelt szolgáltatásfiók (gMSA) ugyanazt a felügyeleti egyszerűsítést biztosítja, de a tartomány több kiszolgálója számára. A gMSA lehetővé teszi, hogy a kiszolgálófarmon üzemeltetett szolgáltatás minden példánya ugyanazt a szolgáltatásnévhasználatát használja a kölcsönös hitelesítési protokollok működéséhez. Ha a gMSA szolgáltatásnévként van használva, a Windows operációs rendszer ismét kezeli a fiók jelszavát ahelyett, hogy a rendszergazdára támaszkodna.
 
-További információ: [csoportosan felügyelt szolgáltatásfiókok (gMSA) áttekintése][gmsa-overview].
+További információt a [csoportkezelt szolgáltatásfiókok (gMSA) – áttekintés című témakörben talál.][gmsa-overview]
 
-## <a name="using-service-accounts-in-azure-ad-ds"></a>Szolgáltatásfiókok használata az Azure AD DS
+## <a name="using-service-accounts-in-azure-ad-ds"></a>Szolgáltatásfiókok használata az Azure AD DS-ben
 
-Mivel az Azure AD DS felügyelt tartományokat a Microsoft zárolja és kezeli, néhány szempontot figyelembe kell venni a szolgáltatásfiókok használatakor:
+Mivel az Azure AD DS által felügyelt tartományokat zárolta és a Microsoft kezeli, a szolgáltatásfiókok használata során néhány szempontot figyelembe kell venni:
 
-* Szolgáltatásfiókok létrehozása a felügyelt tartományhoz tartozó egyéni szervezeti egységekben (OU).
-    * Nem hozhat létre szolgáltatásfiókot a beépített *AADDC-felhasználók* vagy *AADDC számítógépek* szervezeti egységekben.
-    * Ehelyett [hozzon létre egy egyéni szervezeti egységet][create-custom-ou] az Azure AD DS felügyelt tartományban, majd hozzon létre szolgáltatásfiókot az adott egyéni szervezeti egységben.
-* A Key Distribution Services (KDS) legfelső szintű kulcsa előre létre van hozva.
-    * A KDS legfelső szintű kulcsa a csoportosan felügyelt szolgáltatásfiókokat jelszavának előállítására és lekérésére szolgál. Az Azure AD DS az KDS gyökerét hozza létre a rendszer.
-    * Nem rendelkezik jogosultsággal egy másik létrehozásához, vagy megtekintheti az alapértelmezett, KDS legfelső szintű kulcsot.
+* Szolgáltatási fiókok létrehozása egyéni szervezeti egységekben a felügyelt tartományban.
+    * A beépített *AADDC-felhasználók* vagy az *AADDC-számítógépek* felhasználói között nem hozhat létre szolgáltatásfiókot.
+    * Ehelyett [hozzon létre egy egyéni szervezeti egységet][create-custom-ou] az Azure AD DS felügyelt tartományban, majd hozzon létre szolgáltatásfiókokat az adott egyéni szervezeti egységben.
+* A kulcsterjesztési szolgáltatások (KDS) gyökérkulcsa előre létre van hozva.
+    * A KDS gyökérkulcs a gMSA-k jelszavainak létrehozására és beolvasására szolgál. Az Azure AD DS-ben a KDS-gyökér jön létre az Ön számára.
+    * Nincs jogosultsága egy másik kds gyökérkulcs létrehozására vagy megtekintésére.
 
 ## <a name="create-a-gmsa"></a>GMSA létrehozása
 
-Először hozzon létre egy egyéni szervezeti egységet a [New-ADOrganizationalUnit][New-AdOrganizationalUnit] parancsmag használatával. Az egyéni szervezeti egységek létrehozásával és kezelésével kapcsolatos további információkért lásd: [Egyéni szervezeti egységek az Azure ad DSban][create-custom-ou].
+Először hozzon létre egy egyéni szervezeti egységet a [New-ADOrganizationalUnit][New-AdOrganizationalUnit] parancsmag használatával. Az egyéni ousok létrehozásáról és kezeléséről az [Egyéni adottségi szerepkörök az Azure AD DS-ben][create-custom-ou]című témakörben talál további információt.
 
 > [!TIP]
-> A lépések gMSA létrehozásához [használja a felügyeleti virtuális gépet][tutorial-create-management-vm]. Ennek a felügyeleti virtuális gépnek már rendelkeznie kell a szükséges AD PowerShell-parancsmagokkal és a felügyelt tartományhoz való kapcsolódással.
+> A gMSA létrehozásához ezeket a lépéseket a [felügyeleti virtuális gép használatával hajtsa végre.][tutorial-create-management-vm] Ez a felügyeleti virtuális gép már rendelkezik a szükséges AD PowerShell-parancsmagokkal és a felügyelt tartománnyal való kapcsolattal.
 
-A következő példa létrehoz egy *myNewOU* nevű egyéni szervezeti egységet az Azure AD DS felügyelt tartomány *aaddscontoso.com*nevű felügyelt tartományában. Saját szervezeti egység és felügyelt tartománynév használata:
+A következő példa létrehoz egy egyéni ou nevű *myNewOU* az Azure AD DS felügyelt tartomány nevű *aaddscontoso.com.* Saját szervezeti egység és felügyelt tartománynév használata:
 
 ```powershell
 New-ADOrganizationalUnit -Name "myNewOU" -Path "DC=aaddscontoso,DC=COM"
 ```
 
-Most hozzon létre egy gMSA a [New-ADServiceAccount][New-ADServiceAccount] parancsmag használatával. A következő példa paraméterek vannak meghatározva:
+Most hozzon létre egy gMSA-t a [New-ADServiceAccount][New-ADServiceAccount] parancsmag használatával. A következő példaparaméterek vannak definiálva:
 
-* **-A name** értéke *WebFarmSvc*
-* **-Path** paraméter adja meg az előző lépésben létrehozott gMSA tartozó egyéni szervezeti egységet.
-* A DNS-bejegyzések és egyszerű szolgáltatásnév *WebFarmSvc.aaddscontoso.com* vannak beállítva
-* A *AADDSCONTOSO-Server $* rendszerbiztonsági tag jogosult a jelszó beolvasására az identitás használatát.
+* **-A név** *beállítása WebFarmSvc*
+* **-Az elérési út** paraméter az előző lépésben létrehozott gMSA egyéni szervezeti egységét adja meg.
+* A DNS-bejegyzések és az egyszerű szolgáltatásnevek *WebFarmSvc.aaddscontoso.com*
+* Az *AADDSCONTOSO-SERVER$* rendszerben lévő rendszertagok lekérhetik a jelszót az identitás használatával.
 
-Adja meg a saját nevét és tartományneveit.
+Adja meg saját nevét és tartománynevét.
 
 ```powershell
 New-ADServiceAccount -Name WebFarmSvc `
@@ -93,11 +93,11 @@ New-ADServiceAccount -Name WebFarmSvc `
     -PrincipalsAllowedToRetrieveManagedPassword AADDSCONTOSO-SERVER$
 ```
 
-Az alkalmazások és a szolgáltatások mostantól úgy konfigurálhatók, hogy igény szerint használják a gMSA.
+Az alkalmazások és szolgáltatások mostantól beállíthatók a gMSA szükség szerint történő használatára.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A csoportosan felügyelt szolgáltatásfiókokat kapcsolatos további információkért lásd: [Bevezetés a csoportosan felügyelt szolgáltatásfiókok][gmsa-start]használatába.
+A gMSA-król további információt a [Csoportkezelt szolgáltatásfiókok – első lépések című témakörben talál.][gmsa-start]
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

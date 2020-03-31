@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect szinkronizálás: üzemeltetési feladatok és szempontok | Microsoft Docs'
-description: Ez a témakör a Azure AD Connect szinkronizálásának működési feladatait és az összetevő működésének előkészítését ismerteti.
+title: 'Azure AD Connect szinkronizálása: Működési feladatok és szempontok | Microsoft dokumentumok'
+description: Ez a témakör az Azure AD Connect szinkronizálásának operatív feladatait ismerteti, és az összetevő üzemeltetésére való felkészülést.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,116 +17,116 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bc88640cdff4f716902a80bb149913b961d40ae3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79261020"
 ---
-# <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: átmeneti kiszolgáló és vész-helyreállítás
-Ha egy kiszolgáló átmeneti módban van, módosíthatja a konfigurációt, és előkészítheti a módosításokat a kiszolgáló aktív állapotba helyezése előtt. Azt is lehetővé teszi, hogy teljes importálást és teljes szinkronizálást futtasson annak ellenőrzéséhez, hogy az összes módosítás várható-e, mielőtt a módosításokat elvégezte az éles környezetben.
+# <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: Átmeneti kiszolgáló és vészhelyreállítás
+Ha egy kiszolgáló átmeneti üzemmódban van, módosíthatja a konfigurációt, és megtekintheti a módosítások előnézetét, mielőtt a kiszolgálót aktívvá tenné. Azt is lehetővé teszi, hogy futtassa a teljes importálás és a teljes szinkronizálás, hogy ellenőrizze, hogy minden változás várható, mielőtt ezeket a módosításokat az éles környezetben.
 
 ## <a name="staging-mode"></a>Átmeneti mód
-Az előkészítési mód több forgatókönyv esetén is használható, többek között:
+Az átmeneti mód több forgatókönyvhöz is használható, többek között a következőkre:
 
 * Magas rendelkezésre állás.
 * Tesztelje és telepítse az új konfigurációs módosításokat.
-* Vezessen be egy új kiszolgálót, és szerelje le a régit.
+* Vezessen be egy új szervert, és szerelje le a régit.
 
-A telepítés során kiválaszthatja a kiszolgálót **átmeneti módban**. Ezzel a művelettel a kiszolgáló aktív lesz az importáláshoz és a szinkronizáláshoz, de nem futtat semmilyen exportálást. Az átmeneti üzemmódú kiszolgálók nem futtatják a jelszó-szinkronizálást vagy a jelszó-visszaírási, még akkor sem, ha a telepítés során kiválasztotta ezeket a funkciókat. Az átmeneti üzemmód letiltásakor a kiszolgáló elindítja az exportálást, engedélyezi a jelszó-szinkronizálást, és engedélyezi a jelszó-visszaírási.
+A telepítés során kiválaszthatja azt a kiszolgálót, amely **átmeneti üzemmódban van.** Ez a művelet aktívvá teszi a kiszolgálót importálásra és szinkronizálásra, de nem futtat exportálást. Az átmeneti üzemmódban lévő kiszolgáló nem futtat jelszó-szinkronizálást vagy jelszó-visszaírást, még akkor sem, ha ezeket a szolgáltatásokat a telepítés során választotta ki. Az átmeneti mód letiltásakor a kiszolgáló elkezdi az exportálást, engedélyezi a jelszószinkronizálást, és engedélyezi a jelszóvisszaírást.
 
 > [!NOTE]
-> Tegyük fel, hogy van egy Azure AD Connect, amelyen engedélyezve van a jelszó-kivonatolási szinkronizálási funkció. Ha engedélyezi az átmeneti üzemmódot, a kiszolgáló leállítja a jelszó módosításait a helyszíni AD-ből. Ha letiltja az átmeneti üzemmódot, a kiszolgáló folytatja a jelszó szinkronizálását, amelyből a legutóbb abbahagyta a módosításokat. Ha a kiszolgáló hosszabb ideig nem átmeneti módban van, eltarthat egy ideig, amíg a kiszolgáló szinkronizálni tudja az adott időszakban történt összes módosítást.
+> Tegyük fel, hogy rendelkezik egy Azure AD Connect jelszókivonat-szinkronizálási funkcióval. Ha engedélyezi az átmeneti módot, a kiszolgáló leállítja a jelszómódosítások szinkronizálását a helyszíni AD-ről. Ha letiltja az átmeneti módot, a kiszolgáló folytatja a jelszómódosítások szinkronizálását onnan, ahol az utolsó abbahagyta. Ha a kiszolgáló hosszabb ideig átmeneti üzemmódban marad, eltarthat egy ideig, amíg a kiszolgáló szinkronizálja az adott időszakban bekövetkezett összes jelszómódosítást.
 >
 >
 
-Az exportálást továbbra is kényszerítheti a szinkronizálási Service Manager használatával.
+Az exportálást továbbra is kényszerítheti a szinkronizálási szolgáltatáskezelő használatával.
 
-Az átmeneti üzemmódú kiszolgálók továbbra is megkapják a Active Directory és az Azure AD módosításait, és meghibásodás esetén gyorsan átvehetik a másik kiszolgáló feladatait. Ha módosítja az elsődleges kiszolgáló konfigurációját, az Ön felelőssége, hogy a kiszolgálót átmeneti módban hajtsa végre.
+Az átmeneti üzemmódban lévő kiszolgáló továbbra is fogadja a módosításokat az Active Directoryból és az Azure AD-ből, és hiba esetén gyorsan átveheti egy másik kiszolgáló feladatait. Ha az elsődleges kiszolgálón módosítja a konfigurációt, az Ön felelőssége, hogy átmeneti módban is módosítsa a kiszolgálót.
 
-A régebbi szinkronizálási technológiák ismeretével az átmeneti üzemmód eltér, mivel a kiszolgáló saját SQL-adatbázissal rendelkezik. Ez az architektúra lehetővé teszi, hogy az átmeneti üzemmódú kiszolgáló egy másik adatközpontban legyen elhelyezve.
+Azok számára, akik ismerik a régebbi szinkronizálási technológiákat, az átmeneti mód más, mivel a kiszolgáló saját SQL-adatbázissal rendelkezik. Ez az architektúra lehetővé teszi, hogy az átmeneti módú kiszolgáló egy másik adatközpontban legyen.
 
 ### <a name="verify-the-configuration-of-a-server"></a>Kiszolgáló konfigurációjának ellenőrzése
-A metódus alkalmazásához kövesse az alábbi lépéseket:
+A módszer alkalmazásához hajtsa végre az alábbi lépéseket:
 
-1. [Előkészítése](#prepare)
-2. [Konfigurálás](#configuration)
+1. [Előkészítés](#prepare)
+2. [Konfiguráció](#configuration)
 3. [Importálás és szinkronizálás](#import-and-synchronize)
-4. [Ellenőrizze](#verify)
-5. [Aktív kiszolgáló váltása](#switch-active-server)
+4. [Ellenőrzés](#verify)
+5. [Váltás az aktív kiszolgálóközött](#switch-active-server)
 
 #### <a name="prepare"></a>Előkészítés
-1. Telepítse a Azure AD Connectt, válassza ki az **átmeneti üzemmódot**, és törölje a **szinkronizálás elindítása** a telepítővarázsló utolsó lapján. Ez a mód lehetővé teszi a szinkronizálási motor manuális futtatását.
-   ![ReadyToConfigure](./media/how-to-connect-sync-staging-server/readytoconfigure.png)
-2. Jelentkezzen ki/jelentkezzen be, és a Start menüben válassza a **szinkronizálási szolgáltatás**elemet.
+1. Telepítse az Azure AD Connectet, válassza **az átmeneti módot**, és törölje a jelet a szinkronizálás **elindításának megszüntetéséből** a telepítővarázsló utolsó lapján. Ez a mód lehetővé teszi a szinkronizálási motor manuális futtatását.
+   ![ReadyToConfigure (Készbeállításra)](./media/how-to-connect-sync-staging-server/readytoconfigure.png)
+2. Jelentkezzen ki/jelentkezzen be, és a start menüben válassza a **Szinkronizálási szolgáltatás lehetőséget.**
 
 #### <a name="configuration"></a>Konfiguráció
-Ha egyéni módosításokat hajtott végre az elsődleges kiszolgálón, és össze szeretné hasonlítani a konfigurációt az átmeneti kiszolgálóval, akkor a [Azure ad Connect Configuration documenter](https://github.com/Microsoft/AADConnectConfigDocumenter)használatával kell összehasonlítania.
+Ha egyéni módosításokat hajtott végre az elsődleges kiszolgálón, és össze szeretné hasonlítani a konfigurációt az átmeneti kiszolgálóval, használja az [Azure AD Connect konfigurációs dokumentálóját.](https://github.com/Microsoft/AADConnectConfigDocumenter)
 
 #### <a name="import-and-synchronize"></a>Importálás és szinkronizálás
-1. Válassza az **Összekötők**lehetőséget, majd válassza ki az első összekötőt **Active Directory tartományi szolgáltatások**típussal. Kattintson a **Futtatás**elemre, válassza a **teljes importálás**lehetőséget, majd **az OK gombot**. Hajtsa végre ezeket a lépéseket az összes ilyen típusú összekötőhöz.
-2. Válassza ki a **Azure Active Directory (Microsoft)** típusú összekötőt. Kattintson a **Futtatás**elemre, válassza a **teljes importálás**lehetőséget, majd **az OK gombot**.
-3. Győződjön meg arról, hogy a TAB-összekötők továbbra is ki vannak választva. Minden **Active Directory tartományi szolgáltatások**típusú összekötőhöz kattintson a **Futtatás**elemre, válassza a **különbözeti szinkronizálás**lehetőséget, majd **az OK gombot**.
-4. Válassza ki a **Azure Active Directory (Microsoft)** típusú összekötőt. Kattintson a **Futtatás**elemre, válassza a **különbözeti szinkronizálás**lehetőséget, majd **az OK gombot**.
+1. Válassza **az Összekötők**lehetőséget, és válassza ki az első Active Directory tartományi szolgáltatások típusú **összekötőt.** Kattintson **a Futtatás**menü **Teljes importálás parancsára,** és az OK **gombra.** Végezze el ezeket a lépéseket az összes ilyen típusú összekötők.
+2. Válassza ki az **Azure Active Directory (Microsoft)** típusú összekötőt. Kattintson **a Futtatás**menü **Teljes importálás parancsára,** és az OK **gombra.**
+3. Győződjön meg arról, hogy az Összekötők lap továbbra is ki van jelölve. Minden **Active Directory tartományi szolgáltatások**típusú összekötőesetén kattintson a **Futtatás**gombra, válassza a **Különbözeti szinkronizálás**lehetőséget, és az **OK gombot.**
+4. Válassza ki az **Azure Active Directory (Microsoft)** típusú összekötőt. Kattintson **a Futtatás**menü **Delta-szinkronizálás parancsára,** és **az OK gombra.**
 
-Ezzel elvégezte az Azure AD és a helyszíni Active Directory módosításainak exportálását (ha az Exchange hibrid üzembe helyezést használja). A következő lépésekkel megvizsgálhatja, hogy mi a változás, mielőtt ténylegesen elindítja az exportálást a címtárakba.
+Most már előkészített exportálási módosításokat az Azure AD és a helyszíni AD (ha az Exchange hibrid telepítés). A következő lépések lehetővé teszik, hogy ellenőrizze, mi fog változni, mielőtt ténylegesen megkezdi az exportálást a könyvtárakba.
 
 #### <a name="verify"></a>Ellenőrzés
-1. Indítsa el a parancssort, és lépjen a `%ProgramFiles%\Microsoft Azure AD Sync\bin`
-2. Run: `csexport "Name of Connector" %temp%\export.xml /f:x` az összekötő neve megtalálható a szinkronizációs szolgáltatásban. Az Azure AD-hez hasonló "contoso.com – HRE" névvel.
-3. Futtatás: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` van egy fájl a (z)% Temp% nevű exportált. csv fájlban, amely megvizsgálható a Microsoft Excelben. Ez a fájl tartalmazza az exportálandó összes módosítást.
-4. Végezze el a szükséges módosításokat az adatokat vagy a konfigurációban, majd futtassa újra ezeket a lépéseket (Importálás és szinkronizálás és ellenőrzés), amíg az exportálandó módosítások várhatóak lesznek.
+1. Indítsa el a cmd-s kérdést, és lépjen a`%ProgramFiles%\Microsoft Azure AD Sync\bin`
+2. Futtatás: `csexport "Name of Connector" %temp%\export.xml /f:x` Az összekötő neve megtalálható a Szinkronizálási szolgáltatásban. Az Azure AD"-hoz hasonló a "contoso.com – AAD" név.
+3. Futtatás: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` Van egy export.csv nevű %temp% nevű fájlja, amely et meg lehet vizsgálni a Microsoft Excelben. Ez a fájl tartalmazza az összes exportálni készülő módosítást.
+4. Hajtsa végre az adatok vagy a konfiguráció szükséges módosításait, és futtassa újra ezeket a lépéseket (Importálás és szinkronizálás és ellenőrzés), amíg az exportálandó módosítások várhatók.
 
-**Az export. csv fájl ismertetése** A fájl nagy része magától értetődő. Néhány rövidítés a tartalom megértéséhez:
-* OMODT – objektum módosításának típusa. Azt jelzi, hogy egy objektum szintjén a művelet egy Hozzáadás, frissítés vagy törlés.
-* AMODT – attribútum módosításának típusa. Azt jelzi, hogy egy attribútum szintjén a művelet egy Hozzáadás, frissítés vagy törlés.
+**Az export.csv fájl ismertetése** A legtöbb fájl magától értetődő. Néhány rövidítés, hogy megértsék a tartalmat:
+* OMODT – Objektummódosítás típusa. Azt jelzi, hogy az objektum szintű művelet hozzáadás, frissítés vagy törlés.
+* AMODT – Attribútummódosítás típusa. Azt jelzi, hogy az attribútumszintjén végzett művelet hozzáadás, frissítés vagy törlés.
 
-**Közös azonosítók beolvasása** Az export. csv fájl tartalmazza az exportálandó összes módosítást. Minden sor az összekötő terület egy objektumának változásának felel meg, és az objektumot a DN attribútum azonosítja. A DN attribútum egyedi azonosító, amely az összekötő terület egy objektumához van rendelve. Ha az export. csv fájlban sok sort vagy változást elemez, akkor nehéz lehet megállapítani, hogy mely objektumok esetében a módosítások csak a DN attribútumon alapulnak. A módosítások elemzésének egyszerűbbé tételéhez használja a csanalyzer. ps1 PowerShell-szkriptet. A parancsfájl az objektumok közös azonosítóit (például displayName, userPrincipalName) kérdezi le. A szkript használata:
-1. Másolja a PowerShell-szkriptet a [CSAnalyzer](#appendix-csanalyzer) szakaszból egy `csanalyzer.ps1`nevű fájlba.
-2. Nyisson meg egy PowerShell-ablakot, és keresse meg azt a mappát, ahová a PowerShell-parancsfájlt létrehozta.
-3. Futtatás: `.\csanalyzer.ps1 -xmltoimport %temp%\export.xml`.
-4. Most már rendelkezik egy **processedusers1. csv** nevű fájllal, amely megvizsgálható a Microsoft Excelben. Vegye figyelembe, hogy a fájl leképezést biztosít a DN attribútumból a közös azonosítók (például a displayName és a userPrincipalName) számára. Jelenleg nem tartalmazza a ténylegesen exportálandó attribútumok változásait.
+**Közös azonosítók beolvasása** Az export.csv fájl tartalmazza az összes exportálni készülő módosítást. Minden sor az összekötő térben lévő objektum változásának felel meg, és az objektumot a DN attribútum azonosítja. A DN attribútum egy egyedi azonosító, amely az összekötő térben lévő objektumhoz van rendelve. Ha az export.csv-ben sok sort/módosítást kell elemeznie, nehéz lehet kitalálni, hogy a módosítások mely objektumokra szolgálnak csak a DN attribútum alapján. A módosítások elemzésének egyszerűsítése érdekében használja a csanalyzer.ps1 PowerShell parancsfájlt. A parancsfájl beolvassa az objektumok közös azonosítóit (például displayName, userPrincipalName). A parancsfájl használata:
+1. Másolja a PowerShell-parancsfájlt a [CSAnalyzer](#appendix-csanalyzer) szakaszból egy fájlba, amelynek neve `csanalyzer.ps1`.
+2. Nyisson meg egy PowerShell-ablakot, és keresse meg azt a mappát, amelyben létrehozta a PowerShell-parancsfájlt.
+3. Adja ki a következő parancsot: `.\csanalyzer.ps1 -xmltoimport %temp%\export.xml`.
+4. Most már van egy **processedusers1.csv** nevű fájlja, amelyet meg lehet vizsgálni a Microsoft Excelben. Ne feledje, hogy a fájl a DN attribútumból a közös azonosítókhoz (például displayName és userPrincipalName) való leképezést biztosít. Jelenleg nem tartalmazza az exportálandó tényleges attribútummódosításokat.
 
-#### <a name="switch-active-server"></a>Aktív kiszolgáló váltása
-1. A jelenleg aktív kiszolgálón kapcsolja ki a kiszolgálót (az rSync/FIM/Azure AD-szinkronizáló), hogy ne exportálja az Azure AD-ba, vagy állítsa be átmeneti módban (Azure AD Connect).
-2. Futtassa a telepítő varázslót a kiszolgálón **átmeneti módban** , és tiltsa le az **átmeneti üzemmódot**.
-   ![ReadyToConfigure](./media/how-to-connect-sync-staging-server/additionaltasks.png)
+#### <a name="switch-active-server"></a>Váltás az aktív kiszolgálóközött
+1. Az aktuálisan aktív kiszolgálón kapcsolja ki a kiszolgálót (DirSync/FIM/Azure AD Sync), hogy ne exportálja az Azure AD-be, vagy állítsa be átmeneti módban (Azure AD Connect).
+2. Futtassa a telepítővarázslót a kiszolgálón **átmeneti üzemmódban,** és tiltsa le az **átmeneti üzemmódot**.
+   ![ReadyToConfigure (Készbeállításra)](./media/how-to-connect-sync-staging-server/additionaltasks.png)
 
 ## <a name="disaster-recovery"></a>Vészhelyreállítás
-A megvalósítási terv része annak a megtervezése, hogy mi a teendő abban az esetben, ha a szinkronizálási kiszolgáló elveszíti a katasztrófát. Különböző modellek használhatók, és az egyik használat több tényezőtől függ, többek között a következőktől:
+A megvalósítás tervének része, hogy megtervezze, mit kell tenni, ha katasztrófa történik, ahol elveszíti a szinkronizálási kiszolgálót. Vannak különböző modellek használata, és melyik et kell használni több tényezőtől függ, beleértve:
 
-* Mi az a tolerancia, amely nem tudja módosítani az Azure AD-beli objektumokat az állásidőben?
-* Ha jelszó-szinkronizálást használ, a felhasználók elfogadják, hogy a régi jelszót kell használniuk az Azure AD-ben abban az esetben, ha a helyszínen változtatják meg?
-* Függ a valós idejű műveletektől, például a jelszó visszaírási?
+* Mi a tűréshatára, hogy nem tudja módosítani az objektumokat az Azure AD-ben az állásidő alatt?
+* Ha jelszó-szinkronizálást használ, a felhasználók elfogadják, hogy a régi jelszót kell használniuk az Azure AD-ben, ha a helyszínen módosítják?
+* Függőséget jelent a valós idejű műveletektől, például a jelszó-visszaírástól?
 
-A kérdésekre adott válaszoktól és a szervezet házirendjétől függően az alábbi stratégiák egyike valósítható meg:
+Az ezekre a kérdésekre adott válaszoktól és a szervezet irányelveitől függően az alábbi stratégiák egyike valósítható meg:
 
 * Szükség esetén építse újra.
-* Tartalék készenléti kiszolgálóval rendelkezik, amelyet **átmeneti üzemmódnak**nevezünk.
-* Virtuális gépek használata.
+* Van egy tartalék készenléti kiszolgáló, az úgynevezett **átmeneti mód**.
+* Használjon virtuális gépeket.
 
-Ha nem használja a beépített SQL Express-adatbázist, tekintse át az [SQL magas rendelkezésre állási](#sql-high-availability) szakaszt is.
+Ha nem használja a beépített SQL Express-adatbázist, akkor tekintse át az [SQL magas rendelkezésre állású szakaszt](#sql-high-availability) is.
 
-### <a name="rebuild-when-needed"></a>Újraépítés szükség esetén
-Egy életképes stratégia a kiszolgáló újraépítésének megtervezése, ha szükséges. Általában a szinkronizálási motor telepítése és a kezdeti Importálás és szinkronizálás is elvégezhető néhány órán belül. Ha nincs elérhető tartalék kiszolgáló, akkor átmenetileg egy tartományvezérlővel is üzemeltetheti a Szinkronizáló motort.
+### <a name="rebuild-when-needed"></a>Szükség esetén újraépítés
+Egy életképes stratégia a kiszolgáló újraépítésének megtervezése, ha szükséges. Általában a szinkronizálási motor telepítése, és nem a kezdeti importálás és szinkronizálás lehet befejezni néhány órán belül. Ha nincs elérhető tartalék kiszolgáló, ideiglenesen tartományvezérlőt is használhat a szinkronizálási motor üzemeltetéséhez.
 
-A szinkronizálási motor kiszolgálója nem tárol semmilyen állapotot az objektumokról, így az adatbázis újraépíthető a Active Directory és az Azure AD-ben lévő adatokból. A **sourceAnchor** attribútum a helyszíni és a felhőből származó objektumok csatlakoztatására szolgál. Ha a kiszolgálót a helyszíni és a Felhőbeli meglévő objektumokkal építi újra, akkor a szinkronizálási motor az újratelepítéskor újra összehasonlítja ezeket az objektumokat. A dokumentálni és menteni kívánt dolgok a kiszolgálón végrehajtott konfigurációs változások, például a szűrési és szinkronizálási szabályok. Ezeket az egyéni konfigurációkat újra kell alkalmazni a szinkronizálás megkezdése előtt.
+A szinkronizálási motor kiszolgáló nem tárolja az objektumok állapotát, így az adatbázis az Active Directory és az Azure AD adataiból újraépíthető. A **sourceAnchor** attribútum a helyszíni és a felhőbeli objektumok csatlakoztatására szolgál. Ha újraépíti a kiszolgálót a meglévő helyszíni és a felhőbeli objektumokkal, akkor a szinkronizálási motor újraésen újra egyezteti ezeket az objektumokat. A dokumentálandó és mentett dokumentumok a kiszolgálón végrehajtott konfigurációs módosítások, például a szűrési és szinkronizálási szabályok. Ezeket az egyéni konfigurációkat újra alkalmazni kell a szinkronizálás megkezdése előtt.
 
-### <a name="have-a-spare-standby-server---staging-mode"></a>Készenléti kiszolgáló – átmeneti üzemmód
-Ha összetettebb környezettel rendelkezik, egy vagy több készenléti kiszolgáló használata javasolt. A telepítés során engedélyezheti, hogy a kiszolgáló **átmeneti módban**legyen.
+### <a name="have-a-spare-standby-server---staging-mode"></a>Van egy tartalék készenléti szerver - átmeneti mód
+Ha összetettebb környezettel rendelkezik, akkor egy vagy több készenléti kiszolgáló használata ajánlott. A telepítés során engedélyezheti, hogy a kiszolgáló **átmeneti üzemmódban**legyen.
 
-További információ: [átmeneti üzemmód](#staging-mode).
+További információt az [Átmeneti mód című témakörben talál.](#staging-mode)
 
 ### <a name="use-virtual-machines"></a>Virtuális gépek használata
-Egy közös és támogatott módszer a Szinkronizáló motor futtatása egy virtuális gépen. Abban az esetben, ha a gazdagép problémával rendelkezik, a szinkronizálási motor kiszolgálóját tartalmazó rendszerkép áttelepíthető egy másik kiszolgálóra.
+Gyakori és támogatott módszer a szinkronizálási motor futtatása egy virtuális gépen. Abban az esetben, ha az állomás nak problémája van, a szinkronizálási motorkiszolgálóval rendelkező lemezkép áttelepíthető egy másik kiszolgálóra.
 
-### <a name="sql-high-availability"></a>SQL magas rendelkezésre állása
-Ha nem a Azure AD Connecthoz tartozó SQL Server Express használja, akkor a SQL Server magas rendelkezésre állását is figyelembe kell venni. A támogatott magas rendelkezésre állású megoldások közé tartozik az SQL-fürtszolgáltatás és az ALAPSZABÁLYT (always on rendelkezésre állási csoportok). A nem támogatott megoldások közé tartoznak a tükrözések.
+### <a name="sql-high-availability"></a>SQL magas rendelkezésre állás
+Ha nem az Azure AD Connect hez kapcsolódó SQL Server Express szolgáltatást használja, akkor az SQL Server magas rendelkezésre állását is figyelembe kell venni. A támogatott magas rendelkezésre állású megoldások közé tartozik az SQL-fürtözés és az AOA (Always On Availability Groups). A nem támogatott megoldások közé tartozik a tükrözés.
 
-Az SQL ALAPSZABÁLYT-támogatás a 1.1.524.0 verziójában Azure AD Connect lett hozzáadva. Azure AD Connect telepítése előtt engedélyeznie kell az SQL ALAPSZABÁLYT-t. A telepítés során a Azure AD Connect észleli, hogy a megadott SQL-példány engedélyezve van-e az SQL ALAPSZABÁLYÁBAN vagy sem. Ha az SQL ALAPSZABÁLYT engedélyezve van, Azure AD Connect további adatokat, ha az SQL ALAPSZABÁLYT szinkron replikálás vagy aszinkron replikáció használatára van konfigurálva. A rendelkezésre állási csoport figyelő beállításakor ajánlott a RegisterAllProvidersIP tulajdonságot 0-ra állítani. Ennek az az oka, hogy Azure AD Connect jelenleg SQL Native Clientt használ az SQL-hez való kapcsolódáshoz, és SQL Native Client nem támogatja a MultiSubNetFailover tulajdonság használatát.
+Az SQL AOA támogatása hozzá lett adva az Azure AD Connect 1.1.524.0-s verziójú verziójához. Az Azure AD Connect telepítése előtt engedélyeznie kell az SQL AOA-t. A telepítés során az Azure AD Connect észleli, hogy a megadott SQL-példány engedélyezve van-e az SQL AOA-hoz. Ha az SQL AOA engedélyezve van, az Azure AD Connect tovább számol, hogy az SQL AOA szinkron replikáció vagy aszinkron replikáció használatára van-e konfigurálva. Az Elérhetőségi csoport figyelőjének beállításakor ajánlott a RegisterAllProvidersIP tulajdonságot 0-ra állítani. Ennek az az oka, hogy az Azure AD Connect jelenleg az SQL Natív ügyfél programot használja az SQL-hez való csatlakozáshoz, és az SQL Natív ügyfél nem támogatja a MultiSubNetFailover tulajdonság használatát.
 
-## <a name="appendix-csanalyzer"></a>CSAnalyzer függelék
-Tekintse meg a következő szakaszt: a parancsfájl használatának [ellenőrzése](#verify) .
+## <a name="appendix-csanalyzer"></a>Függelék CSAnalyzer
+Tekintse meg a parancsfájl használatát [ellenőrző](#verify) szakaszt.
 
 ```
 Param(
@@ -267,8 +267,8 @@ Write-Host Writing processedusers${outputfilecount}.csv -ForegroundColor Yellow
 $objOutputUsers | Export-Csv -path processedusers${outputfilecount}.csv -NoTypeInformation
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 **Áttekintő témakörök**  
 
-* [Azure AD Connect szinkronizálás: a szinkronizálás megismerése és testreszabása](how-to-connect-sync-whatis.md)  
+* [Azure AD Connect szinkronizálás: A szinkronizálás megértése és testreszabása](how-to-connect-sync-whatis.md)  
 * [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md)  

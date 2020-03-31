@@ -1,6 +1,6 @@
 ---
-title: Fenyegetésvédelem az Azure Security Centerben
-description: Ez a témakör a Azure Security Center veszélyforrások elleni védelmi funkciói által védett erőforrásokat ismerteti
+title: Veszélyforrások elleni védelem az Azure Security Centerben
+description: Ez a témakör az Azure Security Center fenyegetésvédelmi funkciói által védett erőforrásokat ismerteti.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -8,168 +8,133 @@ manager: rkarlin
 ms.assetid: 33c45447-3181-4b75-aa8e-c517e76cd50d
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 08/25/2019
+ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 031423d72aecacc1feed692aaa32bcd1ff7efbab
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: e348180eb94c1703ceecf2f2b00ab942ba5ff0ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79282704"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536326"
 ---
-# <a name="threat-protection-in-azure-security-center"></a>Fenyegetésvédelem az Azure Security Centerben
+# <a name="threat-protection-in-azure-security-center"></a>Veszélyforrások elleni védelem az Azure Security Centerben
 
-Ez az oldal röviden leírja a standard díjszabási szinten a felhasználók számára Azure Security Center által megjelenített biztonsági riasztások forrásait.
+Ha a Security Center fenyegetést észlel a környezet bármely területén, riasztást hoz létre. Ezek a riasztások ismertetik az érintett erőforrások részleteit, javasolt javítási lépéseket, és bizonyos esetekben egy lehetőséget, hogy egy logikai alkalmazás válaszként.
 
-Ha Security Center fenyegetést észlel az alábbi környezet bármelyik területén, riasztást hoz létre. Ezek a riasztások ismertetik az érintett erőforrások részleteit, a javasolt szervizelési lépéseket, valamint bizonyos esetekben a logikai alkalmazások válaszként való aktiválásának lehetőségét.
+Az Azure Security Center fenyegetésvédelmi szolgáltatása átfogó védelmet nyújt a környezet számára:
 
-Azt határozza meg, hogy a riasztást a Security Center hozza-e létre, vagy egy másik biztonsági terméktől Security Center fogadta-e, exportálhatja. Ha a riasztásokat az Azure Sentinelbe (vagy egy harmadik féltől származó SIEM-be) vagy más külső helyekre szeretné exportálni, kövesse a [riasztások és javaslatok exportálása](continuous-export.md)című témakör utasításait. 
+* **Fenyegetésvédelem az Azure számítási erőforrásaihoz**: Windows-gépek, Linux-gépek, Azure App Service és Azure-tárolók
+
+* **Fenyegetéselleni védelem az Azure-adaterőforrásokhoz:** SQL Database és SQL Data Warehouse, Azure Storage és Azure Cosmos DB
+
+* **Fenyegetésvédelem az Azure szolgáltatási rétegeiszámára:** Azure hálózati réteg, Azure felügyeleti réteg (Azure Resource Manager) (előzetes verzió) és Azure Key Vault (előzetes verzió)
+
+Függetlenül attól, hogy a Biztonsági központ által generált riasztást, vagy a Security Center egy másik biztonsági terméktől kapta, exportálhatja azt. Ha a riasztásokat az Azure Sentinel (vagy egy külső SIEM) vagy bármely más külső eszközbe szeretné exportálni, kövesse a [riasztások exportálása siem-be](continuous-export.md)című útmutatóutasításait. 
 
 
 
 
-## Veszélyforrások elleni védelem Windows rendszerű gépeken<a name="windows-machines"></a>
+## <a name="threat-protection-for-windows-machines"></a>Veszélyforrások elleni védelem Windows-gépekhez<a name="windows-machines"></a>
 
-A Azure Security Center együttműködik az Azure-szolgáltatásokkal a Windows-alapú gépek monitorozásához és védeleméhez. Security Center az összes szolgáltatás riasztásait és szervizelési javaslatait egyszerűen használható formátumban jeleníti meg.
+Az Azure Security Center integrálható az Azure-szolgáltatásokkal a Windows-alapú gépek figyeléséhez és védelméhez. A Security Center könnyen használható formátumban mutatja be az összes szolgáltatás riasztási és javítási javaslatait.
 
-* A **Microsoft Defender ATP** <a name="windows-atp"></a> -Security Center a Microsoft Defender komplex veszélyforrások elleni védelem (ATP) integrálásával kiterjeszti a felhőalapú munkaterhelés-védelmi platformokat. Együttesen átfogó végpont-észlelési és-reagálási (EDR) képességeket biztosítanak.
+* **A Microsoft Defender ATP** <a name="windows-atp"></a> – Security Center a Microsoft Defender komplex veszélyforrások elleni védelemmel (ATP) való integrálásával bővíti felhőalapú számítási feladatok elleni védelmi platformjait. Együttesen átfogó végpontészlelési és válaszkezelési (EDR) képességeket biztosítanak.
 
     > [!IMPORTANT]
-    > A Microsoft Defender ATP-érzékelő automatikusan engedélyezve van a Security Center-t használó Windows-kiszolgálókon.
+    > A Microsoft Defender ATP-érzékelő automatikusan engedélyezve van a Security Centert használó Windows-kiszolgálókon.
 
-    Ha a Microsoft Defender ATP fenyegetést észlel, riasztást indít el. A riasztás a Security Center irányítópulton jelenik meg. Az irányítópulton megtekintheti a Microsoft Defender ATP-konzolt, és részletes vizsgálatot végezhet a támadás hatókörének felderítése érdekében. További információ a Microsoft Defender ATP szolgáltatással kapcsolatban: kiszolgálók beléptetése [a Microsoft DEFENDER ATP szolgáltatásba](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
+    Amikor a Microsoft Defender ATP fenyegetést észlel, riasztást vált ki. A riasztás a Biztonsági központ irányítópultján jelenik meg. Az irányítópultról a Microsoft Defender ATP-konzolra léphet, és részletes vizsgálatot végezhet a támadás hatókörének feltárása érdekében. A Microsoft Defender ATP szolgáltatásról további információt [a Microsoft Defender ATP szolgáltatás fedélzeti kiszolgálói című](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints)témakörben talál.
 
-* **Összeomlási memóriakép elemzése** <a name="windows-dump"></a> – a szoftverek összeomlásakor egy összeomlási memóriakép rögzíti a memória egy részét az összeomlás időpontjában.
+* **Összeomlási memóriakép-elemzés** <a name="windows-dump"></a> – Amikor a szoftver összeomlik, az összeomlási memóriakép rögzíti a memória egy részét az összeomlás idején.
 
-    Előfordulhat, hogy az összeomlást kártevő okozta, vagy kártevőt tartalmaz. A biztonsági termékek észlelésének elkerülése érdekében a kártevő szoftverek különböző formái egy fájl nélküli támadást használnak, amely elkerüli a lemezre írást, vagy titkosítja a lemezre írt összetevőket. Az ilyen típusú támadásokat nehéz felderíteni a hagyományos lemezes megközelítések használatával.
+    Az összeomlást rosszindulatú programok okozhatták, vagy rosszindulatú programokat tartalmazhatnak. A biztonsági termékek általi észlelés elkerülése érdekében a rosszindulatú programok különböző formái fájlnélküli támadást használnak, amely megakadályozza a lemezre írást vagy a lemezre írt szoftverösszetevők titkosítását. Az ilyen típusú támadásokat nehéz észlelni a hagyományos lemezalapú megközelítések használatával.
 
-    A memória-elemzés használatával azonban az ilyen típusú támadásokat is kiderítheti. Az összeomlási memóriakép memóriájának elemzésével a Security Center képes azonosítani a támadás által használt technikákat. Előfordulhat például, hogy a támadás megkísérli a szoftver biztonsági réseit kihasználni, hozzáférni a bizalmas adatokhoz, és titokban megmarad egy feltört gépen belül. Security Center ez a művelet a gazdagépek minimális teljesítményére gyakorolt hatásával működik.
+    A memóriaelemzés segítségével azonban észlelheti az ilyen típusú támadásokat. Az összeomlási memóriakép memóriájának elemzésével a Security Center észleli a támadás által használt technikákat. Előfordulhat például, hogy a támadás megpróbálja kihasználni a szoftver biztonsági réseit, bizalmas adatokhoz fér hozzá, és titokban megmarad egy feltört gépen belül. A Security Center ezt a munkát úgy végzi el, hogy a gazdagépek nek minimális hatással lesz a teljesítményre.
 
-    Az összeomlási memóriakép elemzési riasztásával kapcsolatos részletekért tekintse meg a [riasztások hivatkozási táblázatát](alerts-reference.md#alerts-windows).
+    Az összeomlási memóriakép elemzési riasztásainak részleteit a [Riasztások hivatkozási táblázatában találja.](alerts-reference.md#alerts-windows)
 
-* A **fájlok közötti támadás észlelése** <a name="windows-fileless"></a> – a végpontokat célzó, nem gyakori támadások. Az észlelés elkerülése érdekében a fájlokkal nem rendelkező támadások rosszindulatú hasznos adatokat szúrnak be a memóriába. A támadó adattartalmai a feltört folyamatok memóriáján belül maradnak, és számos kártékony tevékenységet hajtanak végre.
+* **Fájlnélküli támadásészlelés** <a name="windows-fileless"></a> – A végpontokat célzó fájl nélküli támadások gyakoriak. Az észlelés elkerülése érdekében a fájl nélküli támadások rosszindulatú adatokat juttatnak a memóriába. A támadó imitátrától megmaradnak a feltört folyamatok memóriájában, és számos rosszindulatú tevékenységet hajtanak végre.
 
-    A fájlok közötti támadás észlelése, az automatizált memória kriminalisztikai módszerei azonosítják a fájlokra vonatkozó támadási segédanyagokat, technikákat és viselkedéseket. Ez a megoldás rendszeres időközönként ellenőrzi a gépet, és kinyeri az eredményeket közvetlenül a biztonsági szempontból kritikus folyamatok memóriájában.
+    A fájl nélküli támadásészleléssel az automatizált memóriakriminalisztikai technikák azonosítják a fájl nélküli támadási eszközkészleteket, technikákat és viselkedésmódokat. Ez a megoldás futásidőben rendszeresen megvizsgálja a gépet, és közvetlenül a biztonság szempontjából kritikus folyamatok memóriájából nyeri ki az elemzéseket.
 
-    Megtalálhatja a kihasználat, a kódok befecskendezését és a kártékony hasznos adatok végrehajtását. A fájlok közötti támadás észlelése részletes biztonsági riasztásokat generál a riasztások osztályozásának, korrelációjának és az alsóbb szintű válaszidő felgyorsításához. Ez a megközelítés kiegészíti az eseményvezérelt EDR megoldásokat, és nagyobb észlelési lefedettséget biztosít.
+    Bizonyítékot talál a kizsákmányolásra, a kódbefecskendezésre és a rosszindulatú rakományok végrehajtására. A fájl nélküli támadásészlelés részletes biztonsági riasztásokat hoz létre a riasztási osztályozás, a korreláció és az alsóbb rétegbeli válaszidő felgyorsítása érdekében. Ez a megközelítés kiegészíti az eseményalapú EDR-megoldásokat, nagyobb észlelési lefedettséget biztosítva.
 
-    A fájlokba nem kerülő támadás észlelésével kapcsolatos riasztások részleteiért tekintse meg a [riasztások hivatkozási táblázatát](alerts-reference.md#alerts-windows).
-
-> [!TIP]
-> A Windows-riasztásokat a [biztonsági riasztások Azure Security Center](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)forgatókönyvek letöltésével szimulálhatja.
-
-
-
-
-
-
-## Veszélyforrások elleni védelem Linux rendszerű gépeken<a name="linux-machines"></a>
-
-A Security Center a Linux rendszerű gépekről naplózza a naplózási rekordokat **, az**egyik leggyakrabban használt Linux-naplózási keretrendszerben. a naplózott élet a fővonali kernelben. 
-
-* **Linux auditált riasztások és Microsoft monitoring Agent (MMA) integráció** <a name="linux-auditd"></a> – az auditált rendszer egy kernel szintű alrendszerből áll, amelynek feladata a rendszerhívások figyelése. Egy megadott szabálykészlet alapján szűri őket, és üzeneteket küld nekik egy szoftvercsatorna számára. A Security Center a Microsoft monitoring Agent (MMA) szolgáltatáson belül a naplózott csomag funkcióit integrálja. Ez az integráció lehetővé teszi az auditált események gyűjtését az összes támogatott Linux-disztribúcióban, előfeltételek nélkül.  
-
-    a naplózott rekordok gyűjtése, bővítése és összesítése az eseményekre a Linux MMA-ügynök használatával történik. Security Center folyamatosan bővíti a Linux-jeleket használó új elemzéseket a Felhőbeli és a helyszíni linuxos gépek kártékony viselkedésének észlelése érdekében. A Windows-funkciókhoz hasonlóan ezek az elemzések a gyanús folyamatokon, a kétes bejelentkezési kísérleteken, a kernel modul betöltésén és más tevékenységeken is kiterjedhetnek. Ezek a tevékenységek jelezhetik, hogy a gép támadás alatt áll, vagy megsértették.  
-
-    A Linux-riasztások listáját a [riasztások hivatkozási táblázata](alerts-reference.md#alerts-linux)tartalmazza.
+    A fájl nélküli támadásészlelési riasztásokról a [Riasztások hivatkozási táblázatában talál.](alerts-reference.md#alerts-windows)
 
 > [!TIP]
-> A Linux-riasztásokat a Linux- [észlelések Azure Security Center](https://gallery.technet.microsoft.com/Azure-Security-Center-0ac8a5ef)forgatókönyv letöltésével szimulálhatja.
+> A Windows-riasztások szimulálhatók az [Azure Security Center forgatókönyvének letöltésével: Biztonsági riasztások](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046).
 
 
 
 
 
-## Veszélyforrások elleni védelem Azure App Service<a name="app-services"></a>
+
+## <a name="threat-protection-for-linux-machines"></a>Fenyegetésvédelem Linux rendszerű gépekhez<a name="linux-machines"></a>
+
+A Security Center naplóztatja a naplózási rekordokat a Linux-gépekről a **naplózási**rendszeregyik leggyakoribb Linux-naplózási keretrendszer használatával. auditált él a mainline kernel. 
+
+* **Linux auditált riasztások és a Microsoft Monitoring Agent (MMA) integráció** <a name="linux-auditd"></a> – A naplózta rendszer egy kernel szintű alrendszerből áll, amely a rendszerhívások figyelésével felelős. Egy megadott szabálykészlettel szűri őket, és üzeneteket ír számukra egy szoftvercsatornába. A Security Center integrálja a naplóztatott csomag funkcióit a Microsoft Monitoring Agent (MMA) szolgáltatásba. Ez az integráció lehetővé teszi a naplóztatott események gyűjtését az összes támogatott Linux-disztribúcióban, előfeltételek nélkül.  
+
+    a naplózott rekordokat a Linux MMA ügynök segítségével gyűjtik, gazdagítják és összesítik eseményekké. A Security Center folyamatosan új elemzéseket ad hozzá, amelyek Linux-jeleket használnak a rosszindulatú viselkedések észlelésére a felhőbeli és a helyszíni Linux-gépeken. A Windows képességeihez hasonlóan ezek az elemzések a gyanús folyamatokra, a kétes bejelentkezési kísérletekre, a kernelmodul betöltésére és egyéb tevékenységekre is kiterjednek. Ezek a tevékenységek azt jelezhetik, hogy egy gép támadás alatt áll, vagy megsértették.  
+
+    A Linux-riasztások listáját a [Riasztások hivatkozási táblázatában láthatja.](alerts-reference.md#alerts-linux)
+
+> [!TIP]
+> A Linux-riasztások szimulálhatók az [Azure Security Center forgatókönyvének letöltésével: Linux észlelések](https://gallery.technet.microsoft.com/Azure-Security-Center-0ac8a5ef).
+
+
+
+
+
+## <a name="threat-protection-for-azure-app-service"></a>Fenyegetésvédelem az Azure App Service-hez<a name="app-services"></a>
 
 > [!NOTE]
-> Ez a szolgáltatás jelenleg nem érhető el az Azure governmentben és a szuverén Felhőbeli régiókban.
+> Ez a szolgáltatás jelenleg nem érhető el az Azure kormányzati és a szuverén felhőrégiókban.
 
-Security Center a felhő méretezésével azonosítja a App Serviceon futó alkalmazásokat célzó támadásokat. A támadók webes alkalmazásokat kereshetnek a gyengeségek megtalálásához és kiaknázásához. Az Azure-ban futó alkalmazásokra irányuló kérelmek az adott környezetbe való átirányításuk előtt több átjárón keresztül futnak, ahol megvizsgálják és naplózzák azokat. Ezeket az információkat a rendszer felhasználja a biztonsági rések és a támadók azonosítására, valamint a később felhasználható új mintázatok megismerésére.
+A Security Center a felhő skáláját használja az App Service-en futó alkalmazásokat célzó támadások azonosítására. A támadók a webes alkalmazásokat megvizsgálják a gyengeségek felkeresésére és kihasználására. Mielőtt adott környezetekbe irányítanák, az Azure-ban futó alkalmazásokhoz érkező kérelmek több átjárón keresztül haladnak, ahol a rendszer ellenőrzi és naplózza őket. Ezeket az adatokat ezután a rendszer a biztonsági rések és a támadók azonosítására, valamint a később használt új minták megismerésére használja.
 
-Az Azure felhőalapú szolgáltatóként való láthatóságának használatával Security Center elemzi App Service belső naplókat, hogy azonosítsa a támadási módszereket több célponton. A módszertan például kiterjedt keresési és elosztott támadásokat tartalmaz. Ez a típusú támadás általában az IP-címek egy kis részhalmazát mutatja be, és a hasonló végpontokra való bejárási mintákat jeleníti meg több gazdagépen. A támadások egy sebezhető oldalra vagy beépülő modulra keresnek, és egyetlen gazdagép szempontjából nem azonosíthatók.
+Az Azure felhőszolgáltatóként való láthatóságának használatával a Security Center elemzi az App Service belső naplóit, hogy több célponton azonosíthassa a támadási módszertant. A módszertan például széles körű szkennelést és elosztott támadásokat foglal magában. Az ilyen típusú támadások általában az IP-k egy kis részhalmazából származnak, és több állomás hasonló végpontjaihoz való bejárási mintákat jelenít meg. A támadások sebezhető oldalt vagy bővítményt keresnek, és nem azonosíthatók egyetlen gazdagép szempontjából.
 
-Ha Windows-alapú App Service csomagot futtat, Security Center a mögöttes munkaterületeket és virtuális gépeket is elérheti. A fent említett naplózási adatokkal együtt az infrastruktúra megtudhatja a történetet egy olyan új támadástól, amely a vadonban kering, és megsérül az ügyfél-gépeken. Ezért még akkor is, ha a webalkalmazás kihasználása után Security Center van telepítve, lehetséges, hogy észlelni tudja a folyamatos támadásokat.
+Ha Windows-alapú App Service-csomagot futtat, a Security Center is hozzáfér az alapul szolgáló sandboxokhoz és virtuális gépekhez. A fent említett naplóadatokkal együtt az infrastruktúra meg tudja mondani a történetet, a vadon ban keringő új támadástól az ügyfélgépekben lévő kompromisszumokig. Ezért még akkor is, ha a Security Center egy webalkalmazás kihasználása után van telepítve, észlelheti a folyamatban lévő támadásokat.
 
-A Azure App Service riasztások listáját a [riasztások hivatkozási táblájában](alerts-reference.md#alerts-azureappserv)tekintheti meg.
+Az Azure App Service-riasztások listáját a [Riasztások hivatkozási táblázatában található.](alerts-reference.md#alerts-azureappserv)
 
-App Service csomagokkal kapcsolatos további információkért lásd: [app Service csomagok](https://azure.microsoft.com/pricing/details/app-service/plans/).
-
-
+Az App Service-csomagokról az [App Service-csomagok](https://azure.microsoft.com/pricing/details/app-service/plans/)című témakörben talál további információt.
 
 
 
-## Veszélyforrások elleni védelem Azure-tárolók esetén<a name="azure-containers"></a>
+
+
+## <a name="threat-protection-for-azure-containers"></a>Az Azure-tárolók fenyegetésvédelmi szolgáltatása<a name="azure-containers"></a>
 
 > [!NOTE]
-> Ez a szolgáltatás jelenleg nem érhető el az Azure governmentben és a szuverén Felhőbeli régiókban.
+> Ez a szolgáltatás jelenleg nem érhető el az Azure kormányzati és a szuverén felhőrégiókban.
 
-A Security Center valós idejű veszélyforrások elleni védelmet biztosít a tároló környezetek számára, és riasztásokat hoz létre a gyanús tevékenységekhez. Ezen adatok alapján gyorsan elháríthatja a biztonsági problémákat, és javíthatja tárolói védelmét.
+A Security Center valós idejű veszélyforrások elleni védelmet biztosít a tárolóba helyezett környezetek számára, és riasztásokat hoz létre a gyanús tevékenységekhez. Ezen adatok alapján gyorsan elháríthatja a biztonsági problémákat, és javíthatja tárolói védelmét.
 
-A Security Center különböző szinteken biztosítja a veszélyforrások elleni védelmet: 
+A Security Center különböző szinteken nyújt veszélyforrások elleni védelmet: 
 
-* A **gazdagép szintjének** Security Center ügynöke (a standard szinten érhető el, a részletek [díjszabása](security-center-pricing.md) ) figyeli a Linuxot a gyanús tevékenységekhez. Az ügynök riasztásokat küld a csomópontból vagy a rajta futó tárolóból származó gyanús tevékenységekről. Ilyen tevékenység például a webrendszerhéj-észlelés és a kapcsolat ismert gyanús IP-címekkel.
+* **Host szint** – A Security Center ügynöke (elérhető a standard szinten, lásd: [díjszabás](security-center-pricing.md) a részletekért) figyeli a Linux gyanús tevékenységeket. Az ügynök riasztásokat indít a csomópontról vagy a rajta futó tárolóból származó gyanús tevékenységekről. Ilyen tevékenységek közé tartozik a webes rendszerhéj észlelése és az ismert gyanús IP-címekkel való kapcsolat.
 
-    Az ügynök a tároló-specifikus elemzéseket figyeli, így mélyebb betekintést nyújt a tároló-környezet biztonságára. Riasztásokat indít az eseményekhez, például a privilegizált tárolók létrehozásához, az API-kiszolgálókhoz való gyanús hozzáféréshez, valamint a Secure Shell-(SSH-) kiszolgálókhoz, amelyek egy Docker-tárolón belül futnak.
+    A tárolóba helyezett környezet biztonságának mélyebb megismerése érdekében az ügynök figyeli a tárolóspecifikus elemzéseket. Riasztásokat indít el olyan eseményekhez, mint például a kiemelt tárolólétrehozása, az API-kiszolgálókhoz való gyanús hozzáférés és a Docker-tárolóban futó Secure Shell (SSH) kiszolgálók.
 
     >[!IMPORTANT]
-    > Ha úgy dönt, hogy nem telepíti az ügynököket a gazdagépekre, a fenyegetések elleni védelem előnyeinek és biztonsági riasztásoknak csak egy részhalmazát fogja kapni. A hálózati elemzéssel és a rosszindulatú kiszolgálókkal folytatott kommunikációval kapcsolatos riasztásokat továbbra is megkapja.
+    > Ha úgy dönt, hogy nem telepíti az ügynököket a gazdagépekre, akkor csak a fenyegetésvédelmi előnyök és a biztonsági riasztások egy részét kapja meg. Továbbra is kap a hálózati elemzéssel és a rosszindulatú kiszolgálókkal folytatott kommunikációval kapcsolatos riasztásokat.
 
-    A gazda szintű riasztások listáját a [riasztások hivatkozási táblázata](alerts-reference.md#alerts-containerhost)tartalmazza.
+    Az állomásszintű riasztások listáját a [Riasztások hivatkozási táblázatában található.](alerts-reference.md#alerts-containerhost)
 
 
-* Az AK-alapú **fürt szintjén**a fenyegetések elleni védelem a Kubernetes naplózási naplóinak elemzésén alapul. Az **ügynök** nélküli figyelés engedélyezéséhez adja hozzá az előfizetéshez a Kubernetes lehetőséget a **díjszabási & beállítások** lapon (lásd a [díjszabást](security-center-pricing.md)). A riasztások ezen a szinten történő létrehozásához Security Center figyeli az AK által felügyelt szolgáltatásokat az AK által beolvasott naplók használatával. Az ezen a szinten található események közé tartoznak például az elérhető Kubernetes-irányítópultok, a magas jogosultsági szintű szerepkörök létrehozása és a bizalmas csatlakoztatások létrehozása.
+* Az **AKS-fürt szintjén**a veszélyforrások elleni védelem a Kubernetes naplóinak elemzésén alapul. Az **ügynök nélküli** figyelés engedélyezéséhez adja hozzá a Kubernetes-beállítást az előfizetéshez a **Díjszabási & beállítások** lapon (lásd: [díjszabás).](security-center-pricing.md) Ezen a szinten riasztások létrehozásához a Security Center az AKS által felügyelt szolgáltatásokat figyeli az AKS által beolvasott naplók használatával. Ilyen szintű események példák közé tartozik a kubernetes-irányítópultok létrehozása, magas jogosultságú szerepkörök létrehozása és a bizalmas csatlakoztatások létrehozása.
 
     >[!NOTE]
-    > A Security Center biztonsági riasztásokat hoz létre az Azure Kubernetes szolgáltatás műveleteihez, illetve a Kubernetes beállítás engedélyezése után előforduló központi telepítések esetén az előfizetési beállításokban. 
+    > Security Center biztonsági riasztásokat hoz létre az Azure Kubernetes Service műveletek és üzembe helyezések után előforduló Kubernetes beállítás engedélyezve van az előfizetési beállításokat. 
 
-    Az AK-beli fürt szintű riasztások listáját a [riasztások hivatkozási táblázata](alerts-reference.md#alerts-akscluster)tartalmazza.
+    Az AKS-fürtszintű riasztások listáját a [Riasztások hivatkozási táblázatában található.](alerts-reference.md#alerts-akscluster)
 
-Emellett a biztonsági kutatók globális csapata folyamatosan figyeli a fenyegetés tájképét. A felderített tároló-specifikus riasztásokat és biztonsági réseket adják hozzá.
+Továbbá, a globális biztonsági kutatócsoport folyamatosan figyelemmel kíséri a fenyegetés táj. Tárolóspecifikus riasztásokat és biztonsági réseket adnak hozzá, amint felderítik őket.
 
 > [!TIP]
-> A tárolói riasztások szimulálása a [blogbejegyzés](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-demonstrate-the-new-containers-features-in-azure-security/ba-p/1011270)utasításait követve végezhető el.
-
-
-
-
-
-
-
-## Veszélyforrások elleni védelem az Azure hálózati rétegben<a name="network-layer"></a>
-
-Security Center a hálózati rétegbeli elemzések a minta [IPFIX adatokon](https://en.wikipedia.org/wiki/IP_Flow_Information_Export)alapulnak, amelyek az Azure Core-útválasztók által gyűjtött csomagok fejlécei. Ezen adatcsatorna alapján a Security Center gépi tanulási modelleket használ a kártékony forgalmi tevékenységek azonosítására és megjelölésére. A Security Center a Microsoft Threat Intelligence-adatbázist is használja az IP-címek dúsítására.
-
-Bizonyos hálózati konfigurációk korlátozhatják Security Center a gyanús hálózati tevékenységekre vonatkozó riasztások generálását. A hálózati riasztások létrehozásához Security Center a következőket:
-
-- A virtuális gép nyilvános IP-címmel rendelkezik (vagy egy nyilvános IP-címmel rendelkező terheléselosztó).
-
-- A virtuális gép hálózati kimenő forgalmát nem blokkolja külső azonosító megoldás.
-
-- A virtuális gép ugyanazzal az IP-címmel lett hozzárendelve, mint az a teljes óra, amelyben a gyanús kommunikáció történt. Ez a felügyelt szolgáltatás részeként létrehozott virtuális gépekre is vonatkozik (például: AK, Databricks).
-
-Az Azure hálózati réteggel kapcsolatos riasztások listáját a [riasztások hivatkozási táblázata](alerts-reference.md#alerts-azurenetlayer)tartalmazza.
-
-További információ arról, hogy a Security Center hogyan használhatók a hálózattal kapcsolatos jelek a veszélyforrások elleni védelem alkalmazásához: [a heurisztikus DNS-észlelések a Security Centerban](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/).
-
-
-
-
-
-
-
-## Veszélyforrások elleni védelem Azure Key Vault (előzetes verzió)<a name="azure-keyvault"></a>
-
-> [!NOTE]
-> Ez a szolgáltatás jelenleg nem érhető el az Azure governmentben és a szuverén Felhőbeli régiókban.
-
-A Azure Key Vault egy felhőalapú szolgáltatás, amely védelmet biztosít a titkosítási kulcsok és a titkok, például a tanúsítványok, a kapcsolatok karakterláncai és a jelszavak számára. 
-
-Azure Security Center magában foglalja az Azure-natív, komplex veszélyforrások elleni védelmet Azure Key Vault, amely egy további biztonsági intelligenciát biztosít. Security Center szokatlan és potenciálisan ártalmas kísérleteket észlel Key Vault fiókok eléréséhez vagy kiaknázásához. Ez a védelmi réteg lehetővé teszi, hogy biztonsági szakértő nélkül kezeljék a fenyegetéseket, és nincs szükség a harmadik féltől származó biztonsági figyelő rendszerek felügyeletére.  
-
-Ha rendellenes tevékenységek történnek, Security Center riasztásokat jelenít meg, és opcionálisan e-mailben küldi el őket az előfizetés-rendszergazdáknak. Ezek a riasztások tartalmazzák a gyanús tevékenység részleteit, valamint a fenyegetések kivizsgálásával és szervizelésével kapcsolatos javaslatokat. 
-
-A Azure Key Vault riasztások listáját a [riasztások hivatkozási táblájában](alerts-reference.md#alerts-azurekv)tekintheti meg.
+> A tárolóriasztásokat a [blogbejegyzésben](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-demonstrate-the-new-containers-features-in-azure-security/ba-p/1011270)található utasításokat követve szimulálhatja.
 
 
 
@@ -178,112 +143,142 @@ A Azure Key Vault riasztások listáját a [riasztások hivatkozási táblájáb
 
 
 
-## Veszélyforrások elleni védelem SQL Database és SQL Data Warehouse<a name="data-sql"></a>
+## <a name="threat-protection-for-sql-database-and-sql-data-warehouse"></a>Veszélyforrások elleni védelem az SQL Database és az SQL Data Warehouse számára<a name="data-sql"></a>
 
-A Azure SQL Database komplex veszélyforrások elleni védelme olyan rendellenes tevékenységeket észlel, amelyek szokatlan és potenciálisan ártalmas kísérleteket jeleznek az adatbázisok eléréséhez vagy kiaknázásához.
+Az Azure SQL Database komplex veszélyforrások elleni védelem észleli az adatbázisok elérésére vagy kihasználására irányuló szokatlan és potenciálisan káros kísérleteket jelző rendellenes tevékenységeket.
 
-A riasztások akkor jelennek meg, ha gyanús adatbázis-tevékenységek, potenciális sebezhetőségek vagy SQL-injektálási támadások, valamint rendellenes adatbázis-hozzáférés és lekérdezési minták vannak.
+Riasztások jelennek meg, ha gyanús adatbázis-tevékenységek, potenciális biztonsági rések vagy SQL-injektálási támadások, valamint rendellenes adatbázis-hozzáférési és lekérdezési minták jelennek meg.
 
-A Azure SQL Database és az SQL komplex veszélyforrások elleni védelme az Azure SQL Database-adatbázisokat Azure SQL Database, a felügyelt példányokat, a Azure SQL Data Warehouse-adatbázisokat és az Virtual Machines Azure-beli SQL-kiszolgálókat tartalmazó speciális SQL-alapú biztonsági képességek [(ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) egységes csomag részét képezi.
+Az Azure SQL Database és SQL speciális veszélyforrások elleni védelem része a fejlett SQL-biztonsági képességekhez szükséges, egységes ített [data security (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) csomagnak, amely az Azure SQL-adatbázisokat, az Azure SQL Database által felügyelt példányokat, az Azure SQL Data Warehouse-adatbázisokat és az Azure virtuális gépeken lévő SQL-kiszolgálókat fedi le.
 
 További információkért lásd:
 
-* [A komplex veszélyforrások elleni védelem engedélyezése a Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
-* [Az Azure-beli SQL serverek komplex veszélyforrások elleni védelmének engedélyezése Virtual Machines](security-center-iaas-advanced-data.md)
-* [A veszélyforrások elleni védelmi riasztások listája SQL Database és SQL Data Warehouse](alerts-reference.md#alerts-sql-db-and-warehouse)
+* [A komplex veszélyforrások elleni védelem engedélyezése az Azure SQL Database-hez](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
+* [A komplex veszélyforrások elleni védelem engedélyezése AZ SQL-kiszolgálók számára az Azure virtuális gépeken](security-center-iaas-advanced-data.md)
+* [Az SQL Database és az SQL Data Warehouse veszélyforrások elleni riasztásainak listája](alerts-reference.md#alerts-sql-db-and-warehouse)
 
 
 
 
-
-
-
-
-
-## Veszélyforrások elleni védelem az Azure Storage-ban<a name="azure-storage"></a>
+## <a name="threat-protection-for-azure-storage"></a>Fenyegetésvédelem az Azure Storage-hoz<a name="azure-storage"></a>
 
 > [!NOTE]
-> Ez a szolgáltatás jelenleg nem érhető el az Azure governmentben és a szuverén Felhőbeli régiókban.
+> Ez a szolgáltatás az Egyesült Államok kormányzati felhőiben érhető el, de más szuverén vagy Azure kormányzati felhőrégiókban nem.
 
-A tárolók komplex veszélyforrások elleni védelme (jelenleg csak a blob Storage esetében érhető el) szokatlan és potenciálisan ártalmas kísérleteket észlel a Storage-fiókok eléréséhez vagy kiaknázásához. Ez a védelmi réteg lehetővé teszi a fenyegetések kezelését anélkül, hogy biztonsági szakértőnek kellene lennie, és segít a biztonsági monitorozási rendszerek kezelésében.
+Komplex veszélyforrások elleni védelem a storage (jelenleg csak a Blob storage) észleli a szokatlan és potenciálisan káros kísérletek elérésére vagy a tárfiókok kihasználására. Ez a védelmi réteg lehetővé teszi a fenyegetések kezelését anélkül, hogy biztonsági szakértőnek kellene lennie, és segít a biztonsági figyelőrendszerek kezelésében.
 
 További információkért lásd:
 
-* [A komplex veszélyforrások elleni védelem engedélyezése az Azure Storage-ban](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
-* [Az Azure Storage veszélyforrások elleni védelmi értesítéseinek listája](alerts-reference.md#alerts-azurestorage)
+* [A komplex veszélyforrások elleni védelem engedélyezése az Azure Storage-hoz](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
+* [Az Azure Storage veszélyforrások elleni riasztásainak listája](alerts-reference.md#alerts-azurestorage)
 
 
 > [!TIP]
-> Az Azure Storage-riasztásokat az [ebben a blogbejegyzésben](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131)található utasításokat követve szimulálhatja.
+> Az Azure Storage-riasztások szimulálása a [blogbejegyzésben](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131)található utasításokat követve szimulálhatja.
 
 
 
 
+## <a name="threat-protection-for-azure-cosmos-db"></a>Fenyegetésvédelem az Azure Cosmos DB-hez<a name="cosmos-db"></a>
 
-
-## Veszélyforrások elleni védelem Azure Cosmos DB<a name="cosmos-db"></a>
-
-A Azure Cosmos DB riasztások szokatlan és potenciálisan ártalmas kísérletekkel jönnek létre Azure Cosmos DB fiókok eléréséhez vagy kiaknázásához.
+Az Azure Cosmos DB riasztások szokatlan és potenciálisan káros kísérletek et hoznak létre az Azure Cosmos DB-fiókok elérésére vagy kihasználására.
 
 További információkért lásd:
 
-* [A Azure Cosmos DB komplex veszélyforrások elleni védelme (előzetes verzió)](../cosmos-db/cosmos-db-advanced-threat-protection.md)
-* [A veszélyforrások elleni védelmi riasztások listája Azure Cosmos DB (előzetes verzió)](alerts-reference.md#alerts-azurecosmos)
+* [Komplex veszélyforrások elleni védelem az Azure Cosmos DB számára (előzetes verzió)](../cosmos-db/cosmos-db-advanced-threat-protection.md)
+* [Az Azure Cosmos DB fenyegetésvédelmi riasztásainak listája (előzetes verzió)](alerts-reference.md#alerts-azurecosmos)
 
 
 
 
+## <a name="threat-protection-for-azure-network-layer"></a>Fenyegetésvédelem az Azure hálózati rétegéhez<a name="network-layer"></a>
+
+A Security Center hálózati rétegelemzései minta [IPFIX-adatokon](https://en.wikipedia.org/wiki/IP_Flow_Information_Export)alapulnak, amelyek az Azure alapvető útválasztói által gyűjtött csomagfejlécek. Ezen adatcsatorna alapján a Security Center gépi tanulási modelleket használ a rosszindulatú forgalmi tevékenységek azonosítására és megjelölésére. A Security Center a Microsoft Threat Intelligence adatbázist is használja az IP-címek bővítésére.
+
+Egyes hálózati konfigurációk korlátozhatják a Security Centert abban, hogy riasztásokat generáljon a gyanús hálózati tevékenységre vonatkozóan. Ha a Security Center hálózati riasztásokat szeretne létrehozni, győződjön meg arról, hogy:
+
+- A virtuális gép rendelkezik egy nyilvános IP-címet (vagy egy nyilvános IP-címmel rendelkező terheléselosztón van).
+
+- A virtuális gép hálózati kimenő forgalom nem blokkolja egy külső IDS-megoldás.
+
+- A virtuális gép ugyanazt az IP-címet kapta a teljes óra, amely alatt a gyanús kommunikáció történt. Ez a felügyelt szolgáltatás részeként létrehozott virtuális gépekre is vonatkozik (például AKS, Databricks).
+
+Az Azure hálózati rétegriasztásainak listáját a [Riasztások hivatkozási táblázatában található.](alerts-reference.md#alerts-azurenetlayer)
+
+A Security Center fenyegetésvédelem hálózati jelekkel való használatáról a [Biztonsági központ Heurisztikus DNS-észlelések című témakörében talál részleteket.](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/)
 
 
 
-## Veszélyforrások elleni védelem az Azure felügyeleti rétegben (Azure Resource Manager) (előzetes verzió)<a name ="management-layer"></a>
+## <a name="threat-protection-for-azure-management-layer-azure-resource-manager-preview"></a>Fenyegetésvédelem az Azure felügyeleti rétegéhez (Azure Resource Manager) (előzetes verzió)<a name ="management-layer"></a>
 
-A Azure Resource Manager alapján Security Center védelmi réteg jelenleg előzetes verzióban érhető el.
+A Security Center Azure Resource Manager alapú védelmi rétege jelenleg előzetes verzióban érhető el.
 
-A Security Center egy további védelmi réteget biztosít Azure Resource Manager események használatával, amely az Azure-beli vezérlési síkon tekinthető. A Azure Resource Manager rekordok elemzésével Security Center észleli a szokatlan vagy potenciálisan ártalmas műveleteket az Azure-előfizetési környezetben.
+A Security Center egy további védelmi réteget kínál az Azure Resource Manager-események használatával, amely az Azure vezérlősíkjának minősül. Az Azure Resource Manager-rekordok elemzésével a Security Center szokatlan vagy potenciálisan káros műveleteket észlel az Azure-előfizetési környezetben.
 
-A Azure Resource Manager (előzetes verzió) riasztások listáját a [riasztások hivatkozási táblájában](alerts-reference.md#alerts-azureresourceman)tekintheti meg.
+Az Azure Resource Manager (Előzetes verzió) riasztásainak listáját a [Riasztások hivatkozási táblázatában tekintheti meg.](alerts-reference.md#alerts-azureresourceman)
 
 
 
 >[!NOTE]
-> Az előző elemzések közül több Microsoft Cloud App Security van. Ezen elemzések kihasználása érdekében aktiválni kell egy Cloud App Security licencet. Ha Cloud App Security licenccel rendelkezik, ezek a riasztások alapértelmezés szerint engedélyezve vannak. A riasztások letiltása:
+> Az előző elemzések közül többre a Microsoft Cloud App Security szolgáltatás ad ki. Ahhoz, hogy ezeket az elemzéseket élvezhesse, aktiválnia kell egy Cloud App Security licencet. Ha rendelkezik egy Cloud App Security licenccel, akkor ezek a riasztások alapértelmezés szerint engedélyezve vannak. A riasztások letiltása:
 >
-> 1. A **Security Center** panelen válassza a **biztonsági házirend**elemet. A módosítani kívánt előfizetés esetében válassza a **beállítások szerkesztése**lehetőséget.
-> 2. Válassza a **veszélyforrások észlelése**lehetőséget.
-> 3. Az **integráció engedélyezése**területen törölje a jelet a **Microsoft Cloud app Security az adatai elérésének engedélyezése**jelölőnégyzetből, majd válassza a **Mentés**lehetőséget.
+> 1. A **Biztonsági központ** panelen válassza a **Biztonsági házirend**lehetőséget. A módosítani kívánt előfizetéshez válassza a **Beállítások szerkesztése**lehetőséget.
+> 2. Válassza **a Fenyegetésészlelés lehetőséget.**
+> 3. Az **Integrációk engedélyezése**csoportban törölje **a jelet a Microsoft Cloud App Security hozzáférésének engedélyezése az adataimhoz**jelölőnégyzetből, és válassza a **Mentés lehetőséget.**
 
 >[!NOTE]
->Security Center a biztonsággal kapcsolatos ügyféladatokat ugyanabban a földrajzi régióban tárolja, mint az erőforrása. Ha a Microsoft még nem telepített Security Center az erőforrás geo-ban, akkor az a Egyesült Államok tárolja azokat. Ha Cloud App Security engedélyezve van, a rendszer ezeket az adatokat a Cloud App Security földrajzi hely szabályainak megfelelően tárolja. További információkért lásd: [adattároló a nem regionális szolgáltatásokhoz](https://azuredatacentermap.azurewebsites.net/).
+>A Security Center a biztonsággal kapcsolatos ügyféladatokat az erőforrásával azonos földrajzi helyen tárolja. Ha a Microsoft még nem telepítette a Security Centert az erőforrás földrajzi területén, akkor az adatokat az Egyesült Államokban tárolja. Ha a Cloud App Security engedélyezve van, ezeket az adatokat a Cloud App Security földrajzi helymeghatározási szabályainak megfelelően tároljuk. További információ: [Data storage for non-regional services](https://azuredatacentermap.azurewebsites.net/).
 
 
 
-## Más Microsoft-szolgáltatásoktól származó biztonsági riasztások<a name="alerts-other"></a>
 
-### Veszélyforrások elleni védelem az Azure WAF<a name="azure-waf"></a>
+
+
+
+
+## <a name="threat-protection-for-azure-key-vault-preview"></a>Fenyegetéselleni védelem az Azure Key Vaulthoz (előzetes verzió)<a name="azure-keyvault"></a>
+
+> [!NOTE]
+> Ez a szolgáltatás jelenleg nem érhető el az Azure kormányzati és a szuverén felhőrégiókban.
+
+Az Azure Key Vault egy felhőalapú szolgáltatás, amely védi a titkosítási kulcsokat és a titkos kulcsokat, például a tanúsítványokat, a kapcsolati karakterláncokat és a jelszavakat. 
+
+Az Azure Security Center azure-natív, fejlett veszélyforrások elleni védelmet biztosít az Azure Key Vault számára, amely a biztonsági intelligencia további rétegét biztosítja. A Security Center észleli a Key Vault-fiókok elérésére és kihasználására irányuló szokatlan és potenciálisan káros kísérleteket. Ez a védelmi réteg lehetővé teszi a fenyegetések kezelését anélkül, hogy biztonsági szakértő lenne, és külső biztonsági figyelőrendszereket kellene kezelnie.  
+
+Rendellenes tevékenységek esetén a Security Center riasztásokat jelenít meg, és opcionálisan e-mailben elküldi azokat az előfizetés rendszergazdáinak. Ezek a riasztások tartalmazzák a gyanús tevékenység részleteit, valamint a fenyegetések kivizsgálására és elhárítására vonatkozó ajánlásokat. 
+
+Az Azure Key Vault-riasztások listáját a [Riasztások hivatkozási táblájában láthatja.](alerts-reference.md#alerts-azurekv)
+
+
+
+
+
+## <a name="threat-protection-for-other-microsoft-services"></a>Veszélyforrások elleni védelem más Microsoft-szolgáltatásokszámára<a name="alerts-other"></a>
+
+### <a name="threat-protection-for-azure-waf"></a>Fenyegetéselleni védelem az Azure WAF-hez<a name="azure-waf"></a>
 
 Az Azure Application Gateway egy olyan webalkalmazási tűzfalat (WAF) nyújt, amely központi védelmet biztosít a webalkalmazások számára a biztonsági rések és az azokat kihasználó támadások ellen.
 
-A webalkalmazások egyre inkább a gyakran ismert biztonsági réseket kihasználó rosszindulatú támadásokra irányulnak. A Application Gateway WAF a 3,0-es alapszintű szabálykészlet alapján, vagy az Open Web Application biztonsági projekt 2.2.9 alapul. A WAF automatikusan frissül az új biztonsági rések elleni védelem érdekében. 
+A webalkalmazásokat egyre inkább rosszindulatú támadások célozzák meg, amelyek kihasználják az általánosan ismert biztonsági réseket. Az Application Gateway WAF az Open Web Application Security Project 3.0-s vagy 2.2.9-es alapszabálykészletén alapul. A WAF automatikusan frissül az új biztonsági rések elleni védelem érdekében. 
 
-Ha rendelkezik Azure WAF-licenccel, a WAF-riasztások továbbítása a Security Center, és nincs szükség további konfigurálásra. A WAF által generált riasztásokkal kapcsolatos további információkért lásd: a [webalkalmazási TŰZFAL CRS-szabályait tartalmazó csoportok és szabályok](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md?tabs=owasp31#crs911-31).
+Ha rendelkezik az Azure WAF licenccel, a WAF-riasztások streamelése a Security Centerbe további konfiguráció nélkül. A WAF által létrehozott riasztásokról további információt a [Webalkalmazás tűzfal CRS szabálycsoportjai és szabályai](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md?tabs=owasp31#crs911-31)című témakörben talál.
 
 
-### Veszélyforrások elleni védelem Azure DDoS Protection<a name="azure-ddos"></a>
+### <a name="threat-protection-for-azure-ddos-protection"></a>Fenyegetésvédelem az Azure DDoS-védelemhez<a name="azure-ddos"></a>
 
-Az elosztott szolgáltatásmegtagadási (DDoS) támadások könnyen végrehajthatók. Nagyszerű biztonsági szempontot jelentenek, különösen akkor, ha az alkalmazásokat a felhőbe helyezi át. 
+Az elosztott szolgáltatásmegtagadási (DDoS) támadások könnyen végrehajthatók. Nagy biztonsági problémát jelentenek, különösen akkor, ha az alkalmazásokat a felhőbe helyezi át. 
 
-A DDoS-támadás megpróbál kimeríteni egy alkalmazás erőforrásait, így az alkalmazás nem érhető el a legitim felhasználók számára. A DDoS-támadások az interneten keresztül elérhető végpontokat is megcélozhatja.
+A DDoS-támadás megpróbálja kimeríteni az alkalmazás erőforrásait, így az alkalmazás nem érhető el a jogos felhasználók számára. A DDoS-támadások bármely végpontot megcélozhatnak, amely az interneten keresztül érhető el.
 
-A DDoS-támadások elleni védelemhez vásároljon Azure DDoS Protection-licencet, és győződjön meg róla, hogy az alkalmazás kialakításának ajánlott eljárásait követi. A DDoS Protection különböző szolgáltatási szinteket biztosít. További információ: [Azure DDoS Protection Overview (áttekintés](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)).
+A DDoS-támadások elleni védelem érdekében vásároljon licencet az Azure DDoS Protection szolgáltatáshoz, és győződjön meg arról, hogy az alkalmazástervezési gyakorlati tanácsokat követi. A DDoS Protection különböző szolgáltatási szinteket biztosít. További információ: [Azure DDoS Protection overview](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview).
 
-A Azure DDoS Protection riasztások listáját a [riasztások hivatkozási táblájában](alerts-reference.md#alerts-azureddos)tekintheti meg.
+Az Azure DDoS Protection-riasztások listáját a [Riasztások referenciatáblázata](alerts-reference.md#alerts-azureddos)című témakörben található.
 
 
 ## <a name="next-steps"></a>További lépések
-Ha többet szeretne megtudni a veszélyforrások elleni védelmi funkciókkal kapcsolatos biztonsági riasztásokról, tekintse meg a következő cikkeket:
+A veszélyforrások elleni védelem ezen szolgáltatásaiból származó biztonsági riasztásokról az alábbi cikkekben olvashat bővebben:
 
-* [Az összes Azure Security Center-riasztás hivatkozási táblázata](alerts-reference.md)
+* [Referenciatábla az Azure Security Center összes riasztásához](alerts-reference.md)
 * [Biztonsági riasztások az Azure Security Centerben](security-center-alerts-overview.md)
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md)
 * [Biztonsági riasztások és javaslatok exportálása (előzetes verzió)](continuous-export.md)

@@ -1,42 +1,42 @@
 ---
-title: A blob kimenetének hitelesítése felügyelt identitással Azure Stream Analytics
-description: Ez a cikk azt ismerteti, hogyan használhatók a felügyelt identitások a Azure Stream Analytics-feladatok Azure Blob Storage-kimenetre való hitelesítéséhez.
+title: Blob-kimenet hitelesítése felügyelt identitással az Azure Stream Analytics segítségével
+description: Ez a cikk ismerteti, hogyan használhatja a felügyelt identitások az Azure Stream Analytics-feladat hitelesítéséhez az Azure Blob storage kimenetén.
 author: cedarbaum
 ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.openlocfilehash: 13f48a9e0bc3ed8f8c4d5f1b7da4b6c03f54cdf8
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79129977"
 ---
-# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>Felügyelt identitás használata az Azure Stream Analytics-feladatok hitelesítéséhez az Azure Blob Storage kimenetében
+# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>Az Azure Stream Analytics-feladat azure blob storage-kimenetre való hitelesítéséhez használja a felügyelt identitást
 
-Az Azure Blob Storage-hoz való kimenet [felügyelt identitás-hitelesítése](../active-directory/managed-identities-azure-resources/overview.md) lehetővé teszi, hogy stream Analytics feladatok közvetlen hozzáférést biztosítanak a Storage-fiókhoz a kapcsolati karakterláncok használata helyett. A fokozott biztonság mellett ez a funkció lehetővé teszi, hogy az Azure-ban egy Virtual Network (VNET) lévő Storage-fiókba írja az adatok.
+[Felügyelt identitás hitelesítése](../active-directory/managed-identities-azure-resources/overview.md) kimeneti Azure Blob storage biztosít Stream Analytics-feladatok közvetlen hozzáférést biztosít a tárfiók használata helyett egy kapcsolati karakterláncot. A fokozott biztonság mellett ez a funkció azt is lehetővé teszi, hogy adatokat írjon egy tárfiókba egy virtuális hálózat (VNET) az Azure-on belül.
 
-Ez a cikk bemutatja, hogyan engedélyezheti a felügyelt identitást egy Stream Analytics-feladatokhoz tartozó blob-kimenet (ek) számára a Azure Portal és egy Azure Resource Manager központi telepítés használatával.
+Ez a cikk bemutatja, hogyan engedélyezheti a felügyelt identitást a Stream Analytics-feladat Blob kimenet(ek)hez az Azure Portalon és egy Azure Resource Manager-telepítésen keresztül.
 
-## <a name="create-the-stream-analytics-job-using-the-azure-portal"></a>Hozza létre a Stream Analytics feladatot a Azure Portal használatával
+## <a name="create-the-stream-analytics-job-using-the-azure-portal"></a>A Stream Analytics-feladat létrehozása az Azure Portalhasználatával
 
-1. Hozzon létre egy új Stream Analytics feladatot, vagy nyisson meg egy meglévő feladatot a Azure Portalban. A képernyő bal oldalán található menüsávban válassza a **configure (Konfigurálás**) alatt található **felügyelt identitás** elemet. Győződjön meg arról, hogy a "rendszer által hozzárendelt felügyelt identitás használata" lehetőség van kiválasztva, majd kattintson a képernyő alján található **Save (Mentés** ) gombra.
+1. Hozzon létre egy új Stream Analytics-feladatot, vagy nyisson meg egy meglévő feladatot az Azure Portalon. A képernyő bal oldalán található menüsorban válassza a **Konfigurálás**csoportban a **Felügyelt identitás** lehetőséget. Győződjön meg arról, hogy a "Rendszeráltal hozzárendelt felügyelt identitás használata" lehetőség van kiválasztva, majd kattintson a **mentés** gombra a képernyő alján.
 
-   ![Stream Analytics felügyelt identitás konfigurálása](./media/common/stream-analytics-enable-managed-identity.png)
+   ![A Stream Analytics felügyelt identitásának konfigurálása](./media/common/stream-analytics-enable-managed-identity.png)
 
-2. Az Azure Blob Storage kimeneti tároló kimenet tulajdonságai ablakában válassza a hitelesítési mód legördülő listát, és válassza a **felügyelt identitás**lehetőséget. További információ a többi kimeneti tulajdonságról: a [Azure stream Analytics kimenetének megismerése](./stream-analytics-define-outputs.md). Ha elkészült, kattintson a **Mentés**gombra.
+2. Az Azure Blob storage kimeneti kimeneti fogadójának kimeneti tulajdonságok ablakában válassza a Hitelesítési mód legördülő menüt, és válassza a **Felügyelt identitás lehetőséget.** A többi kimeneti tulajdonsággal kapcsolatos további információkért [lásd: Az Azure Stream Analytics kimeneteinek megértése.](./stream-analytics-define-outputs.md) Amikor végzett, kattintson a **Mentés** gombra.
 
-   ![Az Azure Blob Storage kimenetének konfigurálása](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-blob-output-blade.png)
+   ![Az Azure Blob storage-kimenetének konfigurálása](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-blob-output-blade.png)
 
-3. Most, hogy létrehozta a feladatot, tekintse meg a jelen cikk a [stream Analytics feladatok elérésének biztosítása a Storage-fiókhoz](#give-the-stream-analytics-job-access-to-your-storage-account) című szakaszát.
+3. Most, hogy a feladat létrejött, tekintse meg [a Stream Analytics-feladat hozzáférésének a tárfiókhoz](#give-the-stream-analytics-job-access-to-your-storage-account) című szakaszát ebben a cikkben.
 
 ## <a name="azure-resource-manager-deployment"></a>Az Azure Resource Manager üzembe helyezése
 
-A Azure Resource Manager használata lehetővé teszi, hogy teljes mértékben automatizálja Stream Analytics feladatainak üzembe helyezését. A Resource Manager-sablonokat Azure PowerShell vagy az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)használatával is telepítheti. Az alábbi példák az Azure CLI-t használják.
+Az Azure Resource Manager használatával teljes mértékben automatizálhatja a Stream Analytics-feladat üzembe helyezését. A Resource Manager-sablonokat az Azure PowerShell vagy az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)használatával telepítheti. Az alábbi példák az Azure CLI használatával.
 
 
-1. A felügyelt identitással rendelkező **Microsoft. StreamAnalytics/streamingjobs-** erőforrások létrehozásához a Resource Manager-sablon Resource (erőforrás) szakaszában a következő tulajdonságot is használhatja:
+1. **Microsoft.StreamAnalytics/streamingjobs** erőforrást felügyelt identitással úgy hozhat létre, hogy a következő tulajdonságot építi fel az Erőforrás-kezelő sablon erőforrásszakaszában:
 
     ```json
     "Identity": {
@@ -44,7 +44,7 @@ A Azure Resource Manager használata lehetővé teszi, hogy teljes mértékben a
     },
     ```
 
-   Ez a tulajdonság azt jelzi, Azure Resource Manager a Stream Analytics feladatokhoz tartozó identitás létrehozása és kezelése. Az alábbi példa egy olyan Resource Manager-sablont mutat be, amely egy felügyelt identitással rendelkező Stream Analytics feladatot telepít, valamint egy olyan blob kimeneti fogadót, amely felügyelt identitást használ:
+   Ez a tulajdonság arra utasítja az Azure Resource Managert, hogy hozza létre és kezelje a Stream Analytics-feladat identitását. Az alábbiakban egy példa: Resource Manager-sablon, amely telepíti a Stream Analytics-feladatot felügyelt identitás engedélyezve van, és egy Blob kimeneti fogadó, amely felügyelt identitást használ:
 
     ```json
     {
@@ -95,19 +95,19 @@ A Azure Resource Manager használata lehetővé teszi, hogy teljes mértékben a
     }
     ```
 
-    A fenti feladatot az alábbi Azure CLI-parancs használatával telepítheti az erőforráscsoport **ExampleGroup** :
+    A fenti feladat az alábbi Azure CLI-parancs használatával telepíthető az **ExampleGroup** erőforráscsoportba:
 
     ```azurecli
     az group deployment create --resource-group ExampleGroup -template-file StreamingJob.json
     ```
 
-2. A feladatot a létrehozása után a Azure Resource Manager segítségével kérheti le a feladatok teljes definícióját.
+2. A feladat létrehozása után az Azure Resource Manager segítségével lekérheti a feladat teljes definícióját.
 
     ```azurecli
     az resource show --ids /subscriptions/{SUBSCRIPTION_ID}/resourceGroups/{RESOURCE_GROUP}/providers/Microsoft.StreamAnalytics/StreamingJobs/{RESOURCE_NAME}
     ```
 
-    A fenti parancs a következőhöz hasonló választ ad vissza:
+    A fenti parancs az alábbihoz hasonló választ ad vissza:
 
     ```json
     {
@@ -146,69 +146,69 @@ A Azure Resource Manager használata lehetővé teszi, hogy teljes mértékben a
     }
     ```
 
-   Jegyezze fel a **principalId** , amely a feladathoz tartozó felügyelt identitást azonosítja Azure Active Directoryban, és a következő lépésben fogja használni a stream Analytics-feladathoz való hozzáférést a Storage-fiókhoz.
+   Vegye figyelembe a **rendszerbiztonsági azonosítót** a feladat definíciója, amely azonosítja a feladat felügyelt identitás az Azure Active Directoryban, és a következő lépésben a rendszer a Stream Analytics-feladat hozzáférést a tárfiókhoz.
 
-3. Most, hogy létrehozta a feladatot, tekintse meg a jelen cikk a [stream Analytics feladatok elérésének biztosítása a Storage-fiókhoz](#give-the-stream-analytics-job-access-to-your-storage-account) című szakaszát.
+3. Most, hogy a feladat létrejött, tekintse meg [a Stream Analytics-feladat hozzáférésének a tárfiókhoz](#give-the-stream-analytics-job-access-to-your-storage-account) című szakaszát ebben a cikkben.
 
 
-## <a name="give-the-stream-analytics-job-access-to-your-storage-account"></a>A Stream Analytics-feladatok elérésének biztosítása a Storage-fiókhoz
+## <a name="give-the-stream-analytics-job-access-to-your-storage-account"></a>A Stream Analytics-feladat hozzáférésének megadása a tárfiókhoz
 
-Két hozzáférési szint közül választhat, hogy megadja a Stream Analytics feladatot:
+A Stream Analytics-feladat nak két hozzáférési szintet adhat:
 
-1. **Tároló szintű hozzáférés:** ez a beállítás hozzáférést biztosít egy adott meglévő tárolóhoz.
-2. **Fiók szintű hozzáférés:** ez a beállítás általános hozzáférést biztosít a Storage-fiókhoz, beleértve az új tárolók létrehozását is.
+1. **Tárolószintű hozzáférés:** ez a beállítás hozzáférést biztosít a feladathoz egy adott meglévő tárolóhoz.
+2. **Fiókszintű hozzáférés:** ez a beállítás általános hozzáférést biztosít a feladatnak a tárfiókhoz, beleértve az új tárolók létrehozását is.
 
-Ha nincs szüksége a tárolók létrehozásához az Ön nevében, válassza a **tároló szintű hozzáférés** lehetőséget, mivel ez a beállítás megadja a minimálisan szükséges hozzáférési szintet a feladatnak. A Azure Portal és a parancssorban mindkét lehetőség alább látható.
+Hacsak nincs szüksége a feladatra, hogy tárolókat hozzon létre az Ön nevében, válassza **a Tároló szintű hozzáférést,** mivel ez a beállítás megadja a feladatnak a szükséges minimális hozzáférési szintet. Mindkét lehetőség az alábbiakban ismertetjük az Azure Portalon és a parancssorban.
 
-### <a name="grant-access-via-the-azure-portal"></a>Hozzáférés biztosítása a Azure Portalon keresztül
+### <a name="grant-access-via-the-azure-portal"></a>Hozzáférés megadása az Azure Portalon keresztül
 
-#### <a name="container-level-access"></a>Tároló szintű hozzáférés
+#### <a name="container-level-access"></a>Tárolószintű hozzáférés
 
-1. Navigáljon a tároló konfigurációs ablaktáblájához a Storage-fiókon belül.
+1. Keresse meg a tároló konfigurációs ablaktábláját a tárfiókon belül.
 
-2. Válassza ki a **Access Control (iam)** elemet a bal oldali oldalon.
+2. A bal oldalon válassza a **hozzáférés-vezérlés (IAM)** lehetőséget.
 
-3. A "szerepkör-hozzárendelés hozzáadása" szakaszban kattintson a **Hozzáadás**gombra.
+3. A "Szerepkör-hozzárendelés hozzáadása" szakaszban kattintson a **Hozzáadás gombra.**
 
 4. A szerepkör-hozzárendelés ablaktáblán:
 
-    1. A **szerepkör** beállítása a "Storage blob-adatközreműködői" elemre
-    2. Győződjön meg arról, hogy a legördülő lista **elérésének kiosztása** "Azure ad-felhasználó,-csoport vagy egyszerű szolgáltatásnév" értékre van állítva.
-    3. Írja be a Stream Analyticsi feladatok nevét a keresőmezőbe.
-    4. Válassza ki a Stream Analytics feladatot, és kattintson a **Mentés**gombra.
+    1. A **szerepkör** beállítása "Storage Blob Data Contributor" (Tárolóblob-adatközreműködő)
+    2. Győződjön meg arról, hogy a **hozzáférés hozzárendelése a** legördülő menü "Azure AD-felhasználó, csoport vagy egyszerű szolgáltatás" lesz.
+    3. Írja be a Stream Analytics-feladat nevét a keresőmezőbe.
+    4. Válassza ki a Stream Analytics-feladatot, és kattintson a **Mentés gombra.**
 
-   ![Tároló hozzáférésének engedélyezése](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-container-access-portal.png)
+   ![Tárolóhozzáférés megadása](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-container-access-portal.png)
 
-#### <a name="account-level-access"></a>Fiók szintű hozzáférés
+#### <a name="account-level-access"></a>Fiókszintű hozzáférés
 
 1. Nyissa meg a tárfiókot.
 
-2. Válassza ki a **Access Control (iam)** elemet a bal oldali oldalon.
+2. A bal oldalon válassza a **hozzáférés-vezérlés (IAM)** lehetőséget.
 
-3. A "szerepkör-hozzárendelés hozzáadása" szakaszban kattintson a **Hozzáadás**gombra.
+3. A "Szerepkör-hozzárendelés hozzáadása" szakaszban kattintson a **Hozzáadás gombra.**
 
 4. A szerepkör-hozzárendelés ablaktáblán:
 
-    1. A **szerepkör** beállítása a "Storage blob-adatközreműködői" elemre
-    2. Győződjön meg arról, hogy a legördülő lista **elérésének kiosztása** "Azure ad-felhasználó,-csoport vagy egyszerű szolgáltatásnév" értékre van állítva.
-    3. Írja be a Stream Analyticsi feladatok nevét a keresőmezőbe.
-    4. Válassza ki a Stream Analytics feladatot, és kattintson a **Mentés**gombra.
+    1. A **szerepkör** beállítása "Storage Blob Data Contributor" (Tárolóblob-adatközreműködő)
+    2. Győződjön meg arról, hogy a **hozzáférés hozzárendelése a** legördülő menü "Azure AD-felhasználó, csoport vagy egyszerű szolgáltatás" lesz.
+    3. Írja be a Stream Analytics-feladat nevét a keresőmezőbe.
+    4. Válassza ki a Stream Analytics-feladatot, és kattintson a **Mentés gombra.**
 
-   ![Fiókhoz való hozzáférés biztosítása](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-account-access-portal.png)
+   ![Fiókhozzáférés megadása](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-account-access-portal.png)
 
-### <a name="grant-access-via-the-command-line"></a>Hozzáférés engedélyezése a parancssorból
+### <a name="grant-access-via-the-command-line"></a>Hozzáférés megadása a parancssoron keresztül
 
-#### <a name="container-level-access"></a>Tároló szintű hozzáférés
+#### <a name="container-level-access"></a>Tárolószintű hozzáférés
 
-Ha hozzáférést szeretne biztosítani egy adott tárolóhoz, futtassa az alábbi parancsot az Azure CLI használatával:
+Egy adott tárolóhoz való hozzáférés hez futtassa a következő parancsot az Azure CLI használatával:
 
    ```azurecli
    az role assignment create --role "Storage Blob Data Contributor" --assignee <principal-id> --scope /subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/<container-name>
    ```
 
-#### <a name="account-level-access"></a>Fiók szintű hozzáférés
+#### <a name="account-level-access"></a>Fiókszintű hozzáférés
 
-Ha hozzáférést szeretne adni a teljes fiókhoz, futtassa az alábbi parancsot az Azure CLI használatával:
+A teljes fiókhoz való hozzáféréshez futtassa a következő parancsot az Azure CLI használatával:
 
    ```azurecli
    az role assignment create --role "Storage Blob Data Contributor" --assignee <principal-id> --scope /subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
@@ -216,26 +216,26 @@ Ha hozzáférést szeretne adni a teljes fiókhoz, futtassa az alábbi parancsot
 
 ## <a name="enable-vnet-access"></a>VNET-hozzáférés engedélyezése
 
-A Storage-fiók **tűzfalának és virtuális hálózatának**konfigurálásakor engedélyezheti a hálózati forgalmat más megbízható Microsoft-szolgáltatásokból is. Ha a Stream Analytics felügyelt identitás használatával végzi a hitelesítést, igazolja, hogy a kérés megbízható szolgáltatásból származik. Az alábbi útmutatást követve engedélyezheti ezt a VNET hozzáférési kivételt.
+A tárfiók **tűzfalainak és virtuális hálózatainak**konfigurálásakor tetszés szerint engedélyezheti a hálózati forgalmat más megbízható Microsoft-szolgáltatásokból. Amikor a Stream Analytics a Felügyelt identitás használatával hitelesíti magát, bizonyítja, hogy a kérelem egy megbízható szolgáltatásból származik. Az alábbiakban a virtuális hálózat hozzáférési kivétel engedélyezésére vonatkozó utasításokat olvashat.
 
-1.  Navigáljon a Storage-fiók konfigurációs paneljén található "tűzfalak és virtuális hálózatok" panelre.
-2.  Győződjön meg arról, hogy a "megbízható Microsoft-szolgáltatások hozzáférésének engedélyezése ehhez a Storage-fiókhoz" beállítás engedélyezve van.
-3.  Ha engedélyezte, kattintson a **Mentés**gombra.
+1.  Keresse meg a "Tűzfalak és virtuális hálózatok" ablaktáblát a tárfiók konfigurációs ablaktábláján.
+2.  Győződjön meg arról, hogy a "Megbízható Microsoft-szolgáltatások hozzáférhetnek ehhez a tárfiókhoz" beállítás engedélyezve van.
+3.  Ha engedélyezte, kattintson a **Mentés gombra.**
 
    ![VNET-hozzáférés engedélyezése](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-vnet-exception.png)
 
 ## <a name="limitations"></a>Korlátozások
-A szolgáltatás jelenlegi korlátai a következők:
+Az alábbiakban a funkció jelenlegi korlátait olvashatja:
 
 1. Klasszikus Azure Storage-fiókok.
 
-2. Azure-fiókok Azure Active Directory nélkül.
+2. Azure-fiókok Az Azure Active Directory nélkül.
 
-3. A több-bérlős hozzáférés nem támogatott. Az adott Stream Analytics feladathoz létrehozott egyszerű szolgáltatásnak ugyanabban a Azure Active Directory-bérlőben kell lennie, amelyben a feladatot létrehozták, és nem használható olyan erőforrással, amely egy másik Azure Active Directory bérlőben található.
+3. A több-bérlős hozzáférés nem támogatott. Egy adott Stream Analytics-feladathoz létrehozott egyszerű szolgáltatásnak ugyanabban az Azure Active Directory-bérlőben kell lennie, amelyben a feladatot létrehozták, és nem használható egy másik Azure Active Directory-bérlőben található erőforrással.
 
-4. A [felhasználó által hozzárendelt identitás](../active-directory/managed-identities-azure-resources/overview.md) nem támogatott. Ez azt jelenti, hogy a felhasználó nem tudja megadni a saját egyszerű szolgáltatásnevet, amelyet a Stream Analytics feladataihoz használhatnak. Az egyszerű szolgáltatásnevet Azure Stream Analytics kell létrehozni.
+4. [A felhasználó hozrendelt identitása](../active-directory/managed-identities-azure-resources/overview.md) nem támogatott. Ez azt jelenti, hogy a felhasználó nem tudja megadni a saját egyszerű szolgáltatását, amelyet a Stream Analytics-feladat használ. Az egyszerű szolgáltatást az Azure Stream Analytics-nek kell létrehoznia.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [A Azure Stream Analytics kimenetének megismerése](./stream-analytics-define-outputs.md)
-* [Egyéni blob kimeneti particionálás Azure Stream Analytics](./stream-analytics-custom-path-patterns-blob-storage-output.md)
+* [Az Azure Stream Analytics kimeneteinek megismerése](./stream-analytics-define-outputs.md)
+* [Az Azure Stream Analytics egyéni blobkimeneti particionálása](./stream-analytics-custom-path-patterns-blob-storage-output.md)
