@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 67dedfce4be81fdf686918a310b89cf463ed389a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: dc9c55c7caf2f78d66d8873e2da8ed7efdbdcec9
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79457253"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411643"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v3"></a>Rövid útmutató: Azure Key Vault-ügyféltár a .NET -hez (SDK v3)
 
@@ -153,13 +153,26 @@ Ez a .NET gyorsindítás a környezeti változókra támaszkodik a kódba nem he
 
 Az alkalmazás létrehozása és futtatása `setx` előtt a `akvClientId` `akvClientSecret`paranccsal állítsa be a , , , `akvTenantId`és `akvSubscriptionId` a környezeti változókat a fent említett értékekre.
 
+**Windows**
+
 ```console
-setx akvClientId <your-clientID>
+setx akvClientId "<your-clientID>"
+setx akvClientSecret "<your-clientSecret>"
+```
 
-setx akvClientSecret <your-clientSecret>
-````
+**Linux**
 
-Minden híváskor `setx`a "SUCCESS: Specified value was saved" választ kell kapnia.
+```bash
+export akvClientId = "<your-clientID>"
+export akvClientSecret = "<your-clientSecret>"
+```
+
+**Macos**
+
+```bash
+export akvClientId = "<your-clientID>"
+export akvClientSecret = "<your-clientSecret>"
+```
 
 Rendelje hozzá ezeket a környezeti változókat a kódkarakterláncaihoz, majd hitelesítse az alkalmazást a [KeyVaultClient osztálynak](/dotnet/api/microsoft.azure.keyvault.keyvaultclient)való átadással:
 

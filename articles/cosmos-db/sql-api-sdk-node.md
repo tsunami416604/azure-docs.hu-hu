@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: de1c1b93b813f71b321da0625bc60e0762a859c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 181f43e060e3b4b41babeee375365a97e1d224aa
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70207956"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411273"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK SQL API-hoz: Kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.locfileid: "70207956"
 > * [Aszinkron Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [Többi](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
 > * [Tömeges végrehajtó - .NET](sql-api-sdk-bulk-executor-dot-net.md)
@@ -35,7 +35,7 @@ ms.locfileid: "70207956"
 |SDK letöltése  |   [NPM](https://www.npmjs.com/package/@azure/cosmos) 
 |API dokumentáció  |  [JavaScript SDK referenciadokumentáció](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
 |SDK telepítési utasítások  |  [Telepítési utasítások](https://github.com/Azure/azure-cosmos-js#installation)
-|Hozzájárulás az SDK-hoz | [Github](https://github.com/Azure/azure-cosmos-js/tree/master)
+|Hozzájárulás az SDK-hoz | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
 | Példák | [Node.js kódminták](sql-api-nodejs-samples.md)
 | Első lépések oktatóanyag | [A JavaScript SDK – első lépések](sql-api-nodejs-get-started.md)
 | Webalkalmazás oktatóanyaga | [Node.js webalkalmazás létrehozása az Azure Cosmos DB használatával](sql-api-nodejs-application.md)
@@ -318,7 +318,7 @@ Nem mindig a leglátványosabb változások, de segítenek a csapatunk nak jobb 
 ### <a name=""></a><a name="1.11.0"/>1.11.0</a>
 * Hozzáadva az összesítési lekérdezések támogatása (DARAB, MIN, MAX, SZUM és AVG).
 * Hozzáadva a párhuzamosság mértékének szabályozásának lehetősége a partíciók közötti lekérdezésekhez.
-* Az SSL-ellenőrzés letiltásának lehetősége az Azure Cosmos DB-emulátor on-t adta hozzá.
+* Hozzáadva a TLS-ellenőrzés letiltásának lehetősége az Azure Cosmos DB emulátor on-t.
 * A particionált gyűjtemények minimális átviteli hatása 10 100 RU/s-ról 2500 RU/s-ra csökkent.
 * Javítva az egypartíciós gyűjtemény folytatási tokenhibája. A GitHub-probléma #107.
 * Javítva a executeStoredProcedure hiba a 0 egyetlen param-ként való kezelésében. A GitHub #155.
@@ -328,7 +328,7 @@ Nem mindig a leglátványosabb változások, de segítenek a csapatunk nak jobb 
 * Kisebb kódtisztítás.
 
 ### <a name=""></a><a name="1.10.1"/>1.10.1</a>
-* SSL-ellenőrzés letiltása az SDK-val az emulátor(hostname=localhost) célzásához.
+* A TLS-ellenőrzés letiltása az SDK-val az emulátor(hostname=localhost) célzásához.
 * A parancsfájlnaplózás engedélyezésének támogatása a tárolt eljárás végrehajtása során.
 
 ### <a name=""></a><a name="1.10.0"/>1.10.0</a>

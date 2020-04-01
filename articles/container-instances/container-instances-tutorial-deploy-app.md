@@ -1,21 +1,21 @@
 ---
-title: Oktatóanyag – Container-alkalmazás üzembe helyezése a tároló-példányon
-description: Azure Container Instances oktatóanyag 3. része – a Container Application üzembe helyezése Azure Container Instances
+title: Oktatóanyag – A tárolóalkalmazás telepítése a tárolópéldányba
+description: Azure Container Instances bemutató 3/3-ból 3.
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 757b41bd69d69deb901e3b5b9a633dce3b9e133a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78249957"
 ---
-# <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Oktatóanyag: Container-alkalmazás üzembe helyezése Azure Container Instances
+# <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Oktatóanyag: Egy tárolóalkalmazás üzembe helyezése az Azure Container instances
 
 Ez az egy háromrészes sorozat utolsó oktatóanyaga. Az előző oktatóanyagokban [létrehoztunk egy tárolórendszerképet](container-instances-tutorial-prepare-app.md), és [leküldtük az Azure Container Registrybe](container-instances-tutorial-prepare-acr.md). A sorozat befejező cikke a tároló üzembe helyezését ismerteti az Azure Container Instancesben.
 
-Ebben az oktatóanyagban az alábbiakat végezte el:
+Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
 > * A tároló üzembe helyezése az Azure Container Registryből az Azure Container Instancesbe
@@ -32,11 +32,11 @@ Ebben a szakaszban az Azure CLI használatával üzembe helyezi [az első oktat�
 
 ### <a name="get-registry-credentials"></a>A tárolójegyzék hitelesítő adatainak lekérése
 
-Ha olyan rendszerképet telepít, amely egy, a [második oktatóanyagban](container-instances-tutorial-prepare-acr.md)létrehozott privát Azure Container registryben található, meg kell adnia a hitelesítő adatokat a beállításjegyzék eléréséhez. 
+Ha üzembe helyez egy olyan lemezképet, amely egy privát Azure-tároló beállításjegyzékében található, például a [második oktatóanyagban](container-instances-tutorial-prepare-acr.md)létrehozott, hitelesítő adatokat kell megadnia a beállításjegyzék eléréséhez. 
 
-Az ajánlott eljárás sok esetben egy Azure Active Directory egyszerű szolgáltatás létrehozása és konfigurálása a beállításjegyzékhez a *lekéréses* engedélyekkel. A szükséges engedélyekkel rendelkező szolgáltatásnév létrehozásához tekintse meg a [hitelesítés a Azure Container Registry használatával Azure Container instances](../container-registry/container-registry-auth-aci.md) a minta-parancsfájlok segítségével című témakört. Jegyezze fel az *egyszerű szolgáltatás azonosítóját* és a *szolgáltatás egyszerű jelszavát*. Ezeknek a hitelesítő adatoknak a használatával férhet hozzá a beállításjegyzékhez a tároló telepítésekor.
+Számos forgatókönyv esetében ajánlott eljárás az Azure Active Directory egyszerű *szolgáltatáslekéréses* engedélyekkel rendelkező létrehozása és konfigurálása a beállításjegyzékbe. [Az Azure Container-példányok hitelesítése az Azure Container-példányokból](../container-registry/container-registry-auth-aci.md) című témakörben a szükséges engedélyekkel rendelkező egyszerű szolgáltatás létrehozásához tekintse meg a hitelesítés az Azure Container-példányokból című témakört. Vegye figyelembe az *egyszerű szolgáltatásazonosítót* és az *egyszerű szolgáltatás jelszavát.* Ezekkel a hitelesítő adatokkal érheti el a rendszerleíró adatbázist a tároló telepítésekor.
 
-Szüksége lesz a tároló beállításjegyzékbeli bejelentkezési kiszolgálójának teljes nevére is (cserélje le a `<acrName>`t a beállításjegyzék nevére):
+A tárolórendszerleíró adatbázis bejelentkezési kiszolgálójának teljes `<acrName>` nevére is szüksége van (cserélje le a rendszerleíró adatbázis nevét):
 
 ```azurecli
 az acr show --name <acrName> --query loginServer
@@ -44,7 +44,7 @@ az acr show --name <acrName> --query loginServer
 
 ### <a name="deploy-container"></a>A tároló üzembe helyezése
 
-Most használja az az [Container Create][az-container-create] parancsot a tároló üzembe helyezéséhez. Cserélje le a `<acrLoginServer>` értéket az előző parancsból beszerzett értékre. Cserélje le a `<service-principal-ID>` és a `<service-principal-password>`t a beállításjegyzék eléréséhez létrehozott egyszerű szolgáltatásnév és jelszó megadásával. Cserélje le a `<aciDnsLabel>`t a kívánt DNS-névre.
+Az [az container create][az-container-create] paranccsal helyezze üzembe a tárolót. Cserélje `<acrLoginServer>` le az előző parancsból kapott értékre. Cserélje `<service-principal-ID>` `<service-principal-password>` le és írja le a rendszerleíró adatbázis eléréséhez létrehozott egyszerű szolgáltatásazonosítót és jelszót. Cserélje `<aciDnsLabel>` le a kívánt DNS-névre.
 
 ```azurecli
 az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-login-server <acrLoginServer> --registry-username <service-principal-ID> --registry-password <service-principal-password> --dns-name-label <aciDnsLabel> --ports 80
@@ -54,23 +54,23 @@ Néhány másodpercen belül meg kell kapnia az Azure kezdeti válaszát. A `--d
 
 ### <a name="verify-deployment-progress"></a>Üzembe helyezés állapotának ellenőrzése
 
-A központi telepítés állapotának megtekintéséhez használja az [az Container show][az-container-show]:
+Az üzembe helyezés állapotának megtekintéséhez használja az [az container show][az-container-show] parancsot:
 
 ```azurecli
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query instanceView.state
 ```
 
-Ismételje meg az az [Container show][az-container-show] parancsot, amíg az állapot nem változik *függőben* a *futásra*, ami egy percen belül eltarthat. Ha a tároló állapota *Fut*, folytassa a következő lépéssel.
+Ismételje meg az [az container show][az-container-show] parancsot addig, amíg az állapot *Függőben* helyett *Fut* értékre nem vált, amelynek egy percen belül meg kell történnie. Ha a tároló állapota *Fut*, folytassa a következő lépéssel.
 
 ## <a name="view-the-application-and-container-logs"></a>Az alkalmazás és a tároló naplóinak megtekintése
 
-Miután az üzembe helyezés sikeres volt, jelenítse meg a tároló teljes tartománynevét (FQDN) az az [Container show][az-container-show] paranccsal:
+Ha az üzembe helyezés sikeresen megtörtént, az [az container show][az-container-show] paranccsal jelenítse meg a tároló teljes tartománynevét:
 
 ```azurecli
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
 ```
 
-Például:
+Példa:
 ```output
 "aci-demo.eastus.azurecontainer.io"
 ```
@@ -95,13 +95,13 @@ listening on port 80
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége az oktatóanyag-sorozatban létrehozott összes erőforrásra, az az [Group delete][az-group-delete] paranccsal eltávolíthatja az erőforráscsoportot és a benne található összes erőforrást. Ez a parancs törli a létrehozott tárolóregisztrációs adatbázist, valamint a futó tárolót és annak minden kapcsolódó erőforrását is.
+Ha már nincs szüksége a jelen oktatóanyag-sorozatban létrehozott egyik erőforrásra sem, törölje az erőforráscsoportot és az azokban lévő erőforrásokat az [az group delete][az-group-delete] paranccsal. Ez a parancs törli a létrehozott tárolóregisztrációs adatbázist, valamint a futó tárolót és annak minden kapcsolódó erőforrását is.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban elvégezte a tároló üzembe helyezését az Azure Container Instancesben. A következő lépéseket hajtotta végre:
 

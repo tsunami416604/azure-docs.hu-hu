@@ -3,12 +3,12 @@ title: Speciális alkalmazásfrissítési témakörök
 description: Ez a cikk a Service Fabric-alkalmazások frissítésével kapcsolatos néhány speciális témakört ismerteti.
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 09f3fdf1f26a13c6722eb039e132256f33be38ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 182ab6dc1663e160561b8941ebf3a36b5af3d950
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76845432"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422811"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>A Service Fabric alkalmazásfrissítése: Speciális témakörök
 
@@ -20,9 +20,9 @@ Hasonlóképpen a szolgáltatástípusok is eltávolíthatók az alkalmazásból
 
 ## <a name="avoid-connection-drops-during-stateless-service-planned-downtime-preview"></a>A kapcsolatleejtés elkerülése állapot nélküli szolgáltatás tervezett állásidejének (előzetes verzió)
 
-A tervezett állapotnélküli példány állásidők, például az alkalmazás/fürt frissítése vagy a csomópont-deaktiválás esetén a kapcsolatok megszakadhatnak a kitett végpont eltávolítása miatt, miután leáll.
+A tervezett állapotmentes példány állásidők, például az alkalmazás/fürt frissítése vagy a csomópont-deaktiválás esetén a kapcsolatok megszakadhatnak a kitett végpont eltávolítása miatt a példány leállítása után, ami kényszerített kapcsolatlezárásokat eredményez.
 
-Ennek elkerülése érdekében konfigurálja a *RequestDrain* (előzetes verzió) szolgáltatást egy replikapéldány *közeli késleltetési időtartamának* hozzáadásával a szolgáltatás konfigurációjában. Ez biztosítja, hogy az állapotnélküli példány által hirdetett végpont eltávolításra *kerül, mielőtt* a késleltetési időzítő elindul a példány bezárásához. Ez a késleltetés lehetővé teszi, hogy a meglévő kérelmek kiürítése kecsesen, mielőtt a példány ténylegesen leáll. Az ügyfelek visszahívási funkcióval kapnak értesítést a végpont változásáról, így újra feloldhatják a végpontot, és elkerülhetik, hogy új kérelmeket küldjenek a példánynak.
+Ennek elkerülése érdekében konfigurálja a *RequestDrain* (előzetes verzió) szolgáltatást úgy, hogy egy *példány közeli késleltetési időtartamot* ad hozzá a szolgáltatáskonfigurációban, hogy lehetővé tegye a kiürítést, miközben a fürt más szolgáltatásaitól érkező kéréseket kap, és fordított proxyt használ, vagy az API feloldása értesítési modellt használ a végpontok frissítéséhez. Ez biztosítja, hogy az állapotnélküli példány által hirdetett végpontot a rendszer eltávolítja a késés megkezdése *előtt* a példány bezárása előtt. Ez a késleltetés lehetővé teszi, hogy a meglévő kérelmek kiürítése kecsesen, mielőtt a példány ténylegesen leáll. Az ügyfelek a késleltetés indításakor egy visszahívási függvény értesítik a végpont változásáról, hogy újra feloldhassák a végpontot, és elkerülhessék, hogy új kérelmeket küldjenek a leálló példánynak.
 
 ### <a name="service-configuration"></a>Szolgáltatás konfigurációja
 
@@ -50,24 +50,8 @@ A késés konfigurálása többféleképpen is konfigurálható a szolgáltatás
 
 ### <a name="client-configuration"></a>Ügyfél-konfiguráció
 
-Ha értesítést szeretne kapni, ha egy végpont megváltozott,`ServiceManager_ServiceNotificationFilterMatched`az ügyfelek az ehhez hasonló visszahívást ( ) regisztrálhatnak: 
-
-```csharp
-    var filterDescription = new ServiceNotificationFilterDescription
-    {
-        Name = new Uri(serviceName),
-        MatchNamePrefix = true
-    };
-    fbClient.ServiceManager.ServiceNotificationFilterMatched += ServiceManager_ServiceNotificationFilterMatched;
-    await fbClient.ServiceManager.RegisterServiceNotificationFilterAsync(filterDescription);
-
-private static void ServiceManager_ServiceNotificationFilterMatched(object sender, EventArgs e)
-{
-      // Resolve service to get a new endpoint list
-}
-```
-
-A változásértesítés azt jelzi, hogy a végpontok megváltoztak, az ügyfélnek újra fel kell oldania a végpontokat, és nem kell használnia azokat a végpontokat, amelyeket már nem hirdetnek meg, mivel hamarosan lefognak menni.
+Ha értesítést szeretne kapni egy végpont változásáról, az ügyfeleknek regisztrálniuk kell egy visszahívást a [ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription)témakörben.
+A változásértesítés azt jelzi, hogy a végpontok megváltoztak, az ügyfélnek újra fel kell oldania a végpontokat, és nem kell használnia azokat a végpontokat, amelyek már nem hirdetettek, mivel hamarosan lefognak menni.
 
 ### <a name="optional-upgrade-overrides"></a>Választható frissítési felülbírálások
 
@@ -80,6 +64,16 @@ Start-ServiceFabricClusterUpgrade [-CodePackageVersion] <String> [-ClusterManife
 ```
 
 A kés és a késleltetés időtartama csak a meghívott frissítési példányra vonatkozik, és egyébként nem módosítja az egyes szolgáltatáskésleltetési konfigurációkat. Ezzel például megadhatja `0` a késést, hogy kihagyja az előre beállított frissítési késéseket.
+
+> [!NOTE]
+> A kérelmek kiürítése nem kerül a kérelmek az Azure Load balancer nem kerül betöltésére. A beállítás nem teljesül, ha a hívó szolgáltatás panaszalapú megoldást használ.
+>
+>
+
+> [!NOTE]
+> Ez a szolgáltatás konfigurálható a meglévő szolgáltatások segítségével Update-ServiceFabricService parancsmag a fent említettek szerint, ha a fürtkód verziója 7.1.XXX vagy annál magasabb.
+>
+>
 
 ## <a name="manual-upgrade-mode"></a>Kézi frissítési mód
 

@@ -3,12 +3,12 @@ title: Fájlok és mappák biztonsági mentése – gyakori kérdések
 description: Kijavítottuk a fájlok és mappák Azure Backup segítségével való biztonsági mentésével kapcsolatos gyakori kérdéseket.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: adcbf5c3b404de46634423f8f59c4798d44bebe0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55819ce7ec5196812d935a21c096c132144d78af
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79273422"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421311"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Gyakori kérdések a fájlok és mappák biztonsági mentésével kapcsolatban
 
@@ -57,6 +57,10 @@ A biztonsági mentési adatokat a rendszer annak a tárolónak az adatközpontba
 ### <a name="does-the-mars-agent-support-windows-server-2012-deduplication"></a>Támogatja a MARS-ügynök a Windows Server 2012 deduplikációját?
 
 Igen. A MARS-ügynök a deduplikált adatokat normál adatokká alakítja a biztonsági mentési művelet előkészítésekor. Ezután optimalizálja az adatokat biztonsági mentésre, titkosítja az adatokat, majd elküldi a titkosított adatokat a tárolóba.
+
+### <a name="do-i-need-administrator-permissions-to-install-and-configure-the-mars-agent"></a>Szükségem van rendszergazdai engedélyekre a MARS-ügynök telepítéséhez és konfigurálásához?
+
+Igen, a MARS-ügynök telepítése és a MARS konzolt használó biztonsági mentések konfigurálása esetén a felhasználónak helyi rendszergazdának kell lennie a védett kiszolgálón.
 
 ## <a name="manage-backups"></a>Biztonsági másolatok kezelése
 

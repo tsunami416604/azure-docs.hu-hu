@@ -3,12 +3,12 @@ title: Azure Service Fabric-fürt telepítésének megtervezése
 description: Ismerje meg az éles Service Fabric-fürt azure-beli üzembe helyezésének tervezését és előkészítését.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 1762a6975448301957579b3437a8af5c89b3accd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad6a7a6ea9a90bea4a3b6bc553da67a46144dc03
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78193476"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422285"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>Fürt telepítésének megtervezése és előkészítése
 
@@ -86,6 +86,16 @@ Az ideiglenes operációsrendszer-lemezek nem egy adott Service Fabric-szolgált
             }
         }
     ```
+
+> [!NOTE]
+> A felhasználói alkalmazások nak nem lehetnek függőségük/fájl/műtermék ük az operációs rendszer lemezén, mivel az operációs rendszer lemeze elveszne az operációs rendszer frissítése esetén.
+> Ezért nem ajánlott a [PatchOrchestrationApplication](https://github.com/microsoft/Service-Fabric-POA) használata rövid élettartamú lemezekkel.
+>
+
+> [!NOTE]
+> A meglévő, nem rövid élettartamú VMSS nem frissíthető helyben a rövid élettartamú lemezek használatához.
+> Az áttelepítéshez a felhasználóknak hozzá kell [adniuk](./virtual-machine-scale-set-scale-node-type-scale-out.md) egy új nodeType-ot ideiglenes lemezekkel, át kell helyezniük a munkaterheléseket az új nodeType & [távolítsa el](./service-fabric-how-to-remove-node-type.md) a meglévő nodeType-ot.
+>
 
 További információkért és további konfigurációs lehetőségekért tekintse [meg az Ideiglenes operációsrendszer-lemezek et az Azure virtuális gépekhez](../virtual-machines/windows/ephemeral-os-disks.md) 
 

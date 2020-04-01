@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: d1cd4691586b27282d221a19c5fb7a1af034ed6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d5c74ac760b5746d37468d692c2a46d5aedbee72
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80125161"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436179"
 ---
 # <a name="azure-kubernetes-services-integration-with-security-center"></a>Az Azure Kubernetes-szolgáltatások integrációja a Biztonsági központtal
 
@@ -35,7 +35,7 @@ Ez a két eszköz együttesen alkotja a legjobb felhőalapú Kubernetes biztons�
 
 A két szolgáltatás együttes használata a következőket biztosítja:
 
-* **Biztonsági javaslatok** – A Security Center azonosítja az AKS-erőforrásokat, és kategorizálja őket: a fürtöktől az egyes virtuális gépekig. Ezután megtekintheti az erőforrásonkénti biztonsági javaslatokat. További információt a tárolók ajánlásai ban, az [ajánlások hivatkozási listájában talál.](recommendations-reference.md#recs-computeapp) 
+* **Biztonsági javaslatok** – A Security Center azonosítja az AKS-erőforrásokat, és kategorizálja őket: a fürtöktől az egyes virtuális gépekig. Ezután megtekintheti az erőforrásonkénti biztonsági javaslatokat. További információt a tárolók ajánlásai ban, az [ajánlások hivatkozási listájában talál.](recommendations-reference.md#recs-containers) 
 
 * **Környezetedzés** – A Security Center folyamatosan figyeli a Kubernetes-fürtök és a Docker-konfigurációk konfigurációját. Ezután olyan biztonsági javaslatokat hoz létre, amelyek tükrözik az iparági szabványokat.
 

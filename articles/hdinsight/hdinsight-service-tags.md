@@ -1,36 +1,36 @@
 ---
 title: Hálózati biztonsági csoport (NSG) szolgáltatáscímkéi az Azure HDInsighthoz
-description: A HDInsight szolgáltatáscímkék használatával engedélyezheti a fürtbe irányuló bejövő forgalmat a HDInsight állapot- és felügyeleti szolgáltatási csomópontjairól anélkül, hogy kifejezetten ip-címeket adna hozzá a hálózati biztonsági csoportokhoz.
+description: A HDInsight szolgáltatáscímkék használatával engedélyezheti a fürtbe irányuló bejövő forgalmat az állapot- és felügyeleti szolgáltatások csomópontjaiból anélkül, hogy IP-címeket adna hozzá az NSG-khez.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/10/2020
-ms.openlocfilehash: a72753d5553e79a8ed28c3afcc7e54af6c2d230c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 34ec05a8362f5947cb61924b19c6b1a52e5d91a4
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79117239"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437680"
 ---
-# <a name="network-security-group-nsg-service-tags-for-azure-hdinsight"></a>Hálózati biztonsági csoport (NSG) szolgáltatáscímkéi az Azure HDInsighthoz
+# <a name="nsg-service-tags-for-azure-hdinsight"></a>NSG szolgáltatáscímkék az Azure HDInsighthoz
 
-A hálózati biztonsági csoportok HDInsight szolgáltatáscímkéi az állapot- és felügyeleti szolgáltatások IP-címcsoportjai. Ezek a csoportok segítenek minimalizálni a biztonsági szabályok létrehozásának összetettségét. [A szolgáltatáscímkék](../virtual-network/security-overview.md#service-tags) alternatív módszert biztosítanak az adott IP-címekről érkező bejövő forgalom engedélyezéséhez anélkül, hogy a [felügyeleti IP-címeket](hdinsight-management-ip-addresses.md) a hálózati biztonsági csoportokba írnák be.
+Az Azure HDInsight szolgáltatáscímkék hálózati biztonsági csoportok (NSG-k) az állapot- és felügyeleti szolgáltatások IP-címcsoportjai. Ezek a csoportok segítenek minimalizálni a biztonsági szabályok létrehozásának összetettségét. [A szolgáltatáscímkék](../virtual-network/security-overview.md#service-tags) egy alternatív módszert biztosítanak az adott IP-címekről érkező bejövő forgalom engedélyezéséhez anélkül, hogy a [felügyeleti IP-címeket](hdinsight-management-ip-addresses.md) az NSG-kbe írnák be.
 
-Ezeket a szolgáltatáscímkéket a HDInsight szolgáltatás hozta létre és kezeli. Nem hozhat létre saját szolgáltatáscímkét, és nem módosíthatja a meglévő címkét. A Microsoft kezeli a szolgáltatáscímkének megfelelő címelőtagokat, és automatikusan frissíti a szolgáltatáscímkét a címek változásakor.
+A HDInsight szolgáltatás kezeli ezeket a szolgáltatáscímkéket. Nem hozhat létre saját szolgáltatáscímkét, és nem módosíthatja a meglévő címkét. A Microsoft kezeli a szolgáltatáscímkének megfelelő címelőtagokat, és automatikusan frissíti a szolgáltatáscímkét a címek változásakor.
 
-## <a name="getting-started-with-service-tags"></a>A szolgáltatáscímkék használata
+## <a name="get-started-with-service-tags"></a>A szolgáltatáscímkék használata
 
 A hálózati biztonsági csoportokban két lehetőség közül választhat:
 
-1. Egyetlen HDInsight-szolgáltatáscímke használata – ez a beállítás megnyitja a virtuális hálózatot az összes OLYAN IP-cím között, amelyet a HDInsight szolgáltatás a fürtök figyelésére használ az összes régióban. Ez a beállítás a legegyszerűbb módszer, de nem megfelelő, ha korlátozó biztonsági követelményekkel rendelkezik.
+- **Egyetlen globális HDInsight-szolgáltatáscímke használata:** Ez a beállítás megnyitja a virtuális hálózatot az összes OLYAN IP-címre, amelyet a HDInsight szolgáltatás a fürtök figyelésére használ az összes régióban. Ez a beállítás a legegyszerűbb módszer, de nem biztos, hogy megfelelő, ha korlátozó biztonsági követelményekkel rendelkezik.
 
-1. Használjon több regionális szolgáltatáscímkét – ez a beállítás csak az adott régióban a HDInsight által használt IP-címek számára nyitja meg a virtuális hálózatot. Ha azonban több régiót használ, akkor több szolgáltatáscímkét kell hozzáadnia a virtuális hálózathoz.
+- **Több regionális szolgáltatáscímke használata:** Ez a beállítás csak az adott régióban a HDInsight által használt IP-címek számára nyitja meg a virtuális hálózatot. Ha azonban több régiót használ, több szolgáltatáscímkét kell hozzáadnia a virtuális hálózathoz.
 
 ## <a name="use-a-single-global-hdinsight-service-tag"></a>Egyetlen globális HDInsight-szolgáltatáscímke használata
 
-A szolgáltatáscímkék HDInsight-fürtdel való használatának legegyszerűbb módja `HDInsight` a globális címke hozzáadása egy hálózati biztonsági csoportszabályhoz.
+A legegyszerűbb en keresztül kezdheti használni a szolgáltatáscímkéket a `HDInsight` HDInsight-fürttel, ha hozzáadja a globális címkét egy NSG-szabályhoz.
 
 1. Az [Azure Portalon](https://portal.azure.com/)válassza ki a hálózati biztonsági csoportot.
 
@@ -40,19 +40,19 @@ A szolgáltatáscímkék HDInsight-fürtdel való használatának legegyszerűbb
 
 1. A **Forrásszolgáltatás címke** legördülő listájában válassza a **HDInsight**lehetőséget.
 
-    ![Az Azure Portal szolgáltatáscímke hozzáadása](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
+    ![Szolgáltatáscímke hozzáadása az Azure Portalról](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
 
-Ez a címke tartalmazza az összes olyan régió ban, ahol a HDInsight elérhető, az állapot- és felügyeleti szolgáltatások IP-címét tartalmazza, és biztosítja, hogy a fürt képes legyen kommunikálni a szükséges állapot- és felügyeleti szolgáltatásokkal, függetlenül attól, hogy hol jön létre.
+Ez a címke tartalmazza az összes olyan régió ban az állapot- és felügyeleti szolgáltatások IP-címét, ahol a HDInsight elérhető. A címke biztosítja, hogy a fürt képes kommunikálni a szükséges állapot-és felügyeleti szolgáltatások nem számít, hol jön létre.
 
 ## <a name="use-regional-hdinsight-service-tags"></a>A regionális HDInsight-szolgáltatáscímkék használata
 
-Ha az első lehetőség nem működik, mert szigorúbb engedélyekre van szüksége, akkor csak a régióra vonatkozó szolgáltatáscímkéket engedélyezhet. A megfelelő szolgáltatáscímkék lehetnek egy, két vagy három szolgáltatáscímkék, attól függően, hogy a régió, ahol a fürt jön létre.
+Ha a globális címke beállítás nem működik, mert szigorúbb engedélyekre van szüksége, csak a régióra vonatkozó szolgáltatáscímkéket engedélyezhet. A fürt létrehozásának régiójától függően előfordulhat, hogy egy, két vagy három megfelelő szolgáltatáscímke van.
 
-Ha meg szeretné tudni, hogy mely szolgáltatáscímkéket szeretné hozzáadni a régióhoz, olvassa el a dokumentum következő szakaszait.
+Ha meg szeretné tudni, hogy mely szolgáltatáscímkéket kell hozzáadnia a régióhoz, olvassa el a cikk következő szakaszait.
 
 ### <a name="use-a-single-regional-service-tag"></a>Egyetlen regionális szolgáltatáscímke használata
 
-Ha a második szolgáltatáscímkét részesíti előnyben, és a fürt a táblázatban felsorolt régiók egyikében található, akkor csak egyetlen regionális szolgáltatáscímkét kell hozzáadnia a hálózati biztonsági csoporthoz.
+Ha regionális szolgáltatáscímkéket szeretne használni, és a fürt a táblázatban felsorolt régiók egyikében található, csak egyetlen regionális szolgáltatáscímkét kell hozzáadnia a hálózati biztonsági csoporthoz.
 
 | Ország | Régió | Szolgáltatáscímke |
 | ---- | ---- | ---- |
@@ -73,22 +73,22 @@ Ha a második szolgáltatáscímkét részesíti előnyben, és a fürt a tábl�
 | Japán | Nyugat-Japán | HDInsight.JapanWest |
 | Franciaország | Közép-Franciaország| HDInsight.FranceCentral |
 | Egyesült Királyság | Az Egyesült Királyság déli régiója | HDInsight.UKDél |
-| Azure Government | USDoD Közép   | HDInsight.USDoDKözép |
+| Azure Government | USDoD Közép | HDInsight.USDoDKözép |
 | &nbsp; | USGov Texas | HDInsight.USGovTexas |
 | &nbsp; | Usdod keleti | HDInsight.USDoDEast |
 | &nbsp; | USGov Arizona | HDInsight.USGovArizona |
 
 ### <a name="use-multiple-regional-service-tags"></a>Több regionális szolgáltatáscímke használata
 
-Ha a második szolgáltatáscímke-beállítást részesíti előnyben, és a régió, ahol a fürt jön létre, nem szerepel a fent, akkor engedélyeznie kell több regionális szolgáltatáscímkét. Annak szükségességét, hogy egynél több annak köszönhető, hogy a különbségek elrendezése erőforrás-szolgáltatók a különböző régiókban.
+Ha a regionális szolgáltatáscímkéket szeretné használni, de a régió, ahol a fürt jön létre, nem szerepel az előző táblázatban, engedélyeznie kell több regionális szolgáltatáscímkét. Annak szükségességét, hogy egynél több annak köszönhető, hogy a különbségek elrendezése erőforrás-szolgáltatók a különböző régiókban.
 
 A többi régió csoportokra van osztva az általuk használt regionális szolgáltatási címkék alapján.
 
 #### <a name="group-1"></a>1. csoport
 
-Ha a fürt az alábbi táblázat egyik régiójában jön `HDInsight.WestUS` létre, engedélyezze a szolgáltatáscímkéket, és `HDInsight.EastUS` a felsorolt regionális szolgáltatáscímke mellett. Ebben a szakaszban a régiók három szolgáltatáscímkét igényel.
+Ha a fürt az alábbi táblázatban szereplő régiók egyikében `HDInsight.WestUS` `HDInsight.EastUS` van létrehozva, engedélyezze a szolgáltatáscímkéket, és a felsorolt regionális szolgáltatáscímke mellett. Ebben a szakaszban a régiók három szolgáltatáscímkét igényel.
 
-Ha például a fürt a `East US 2` régióban van létrehozva, akkor a következő szolgáltatáscímkéket kell hozzáadnia a hálózati biztonsági csoporthoz:
+Ha például a fürt a `East US 2` régióban van létrehozva, a következő szolgáltatáscímkéket kell hozzáadnia a hálózati biztonsági csoporthoz:
 
 - `HDInsight.EastUS2`
 - `HDInsight.WestUS`
@@ -111,17 +111,17 @@ Ha például a fürt a `East US 2` régióban van létrehozva, akkor a következ
 
 #### <a name="group-2"></a>2. csoport
 
-A **Kína északi** és **keleti**régióiban található klasztereknek `HDInsight.ChinaNorth` két `HDInsight.ChinaEast`szolgáltatási címkét kell engedélyezniuk: és .
+A *Kína északi* és *keleti* régióiban található fürtöknek `HDInsight.ChinaNorth` `HDInsight.ChinaEast`két szolgáltatási címkét kell engedélyezniuk: és .
 
 #### <a name="group-3"></a>3. csoport
 
-Klaszterek régióiban **US Gov Iowa** és us Gov **Virginia** `HDInsight.USGovIowa` , `HDInsight.USGovVirginia`kell, hogy két szolgáltatási címkék: és .
+Klaszterek régióiban *US Gov Iowa* és az USA Gov `HDInsight.USGovVirginia` *Virginia* kell, hogy két szolgáltatási címkék: `HDInsight.USGovIowa` és .
 
 #### <a name="group-4"></a>4. csoport
 
-A **németországi közép-** és **németországi**régiókban található klasztereknek `HDInsight.GermanyCentral` két `HDInsight.GermanyNorthEast`szolgáltatási címkét kell engedélyezniuk: és .
+A *Németországi Közép-* és *Németország északkeleti* régióiban `HDInsight.GermanyCentral` található `HDInsight.GermanyNortheast`fürtöknek két szolgáltatási címkét kell engedélyezniuk: és .
 
 ## <a name="next-steps"></a>További lépések
 
-- [Hálózati biztonsági csoportok - szolgáltatáscímkék](../virtual-network/security-overview.md#security-rules)
+- [Hálózati biztonsági csoportok: szolgáltatáscímkék](../virtual-network/security-overview.md#security-rules)
 - [Virtuális hálózatok létrehozása Az Azure HDInsight-fürtökhöz](hdinsight-create-virtual-network.md)

@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5d8966c492bd77eaa4d18c8a8b9ac524b8864027
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 150801fe66da1ea8c6f10d437c6d7616a77b544e
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371746"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411008"
 ---
 # <a name="tutorial-add-outputs-to-your-arm-template"></a>Oktatóanyag: Kimenetek hozzáadása az ARM-sablonhoz
 
@@ -52,7 +52,7 @@ Készen áll a sablon üzembe helyezésére, és tekintse meg a visszaadott ért
 
 Ha még nem hozta létre az erőforráscsoportot, olvassa el az Erőforráscsoport létrehozása című [témakört.](template-tutorial-create-first-template.md#create-resource-group) A példa feltételezi, hogy beállította a **templateFile** változót a sablonfájl elérési útvonalára, ahogy az az [első oktatóanyagban](template-tutorial-create-first-template.md#deploy-template)látható.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -89,6 +89,9 @@ A központi telepítési parancs kimenetében a következőhöz hasonló objektu
     "file": "https://storeluktbfkpjjrkm.file.core.windows.net/"
 }
 ```
+
+> [!NOTE]
+> Ha a telepítés nem sikerült, használja a **hibakeresési kapcsolót** a központi telepítési paranccsal a hibakeresési naplók megjelenítéséhez.  A **részletes** kapcsolóval is megjelenítheti a teljes hibakeresési naplókat.
 
 ## <a name="review-your-work"></a>A munka áttekintése
 

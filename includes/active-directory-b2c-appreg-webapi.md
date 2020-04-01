@@ -6,44 +6,44 @@ ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
 ms.openlocfilehash: 9367719b1a1050ce8abf36804b3d0d0d58c7484b
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78183377"
 ---
-A webes API-erőforrásokat regisztrálni kell a bérlőn, mielőtt azok elfogadják és reagálni tudják a védett erőforrásokra vonatkozó kéréseket olyan ügyfélalkalmazások számára, amelyek hozzáférési jogkivonatot mutatnak be.
+A webes API-erőforrásokat regisztrálni kell a bérlőben, mielőtt elfogadnák és válaszolnának a hozzáférési jogkivonatot tartalmazó ügyfélalkalmazások védett erőforrás-kéréseire.
 
-Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja a jelenlegi **alkalmazásokat** , vagy az új, egyesített **Alkalmazásregisztrációk (előzetes verzió)** élményt. [További információ az új felületről](https://aka.ms/b2cappregintro).
+Ha regisztrálegy alkalmazást az Azure AD B2C-bérlőben, használhatja az aktuális **alkalmazások** vagy az új egyesített **alkalmazásregisztrációk (előzetes verzió)** használatát. [További információ az új felületről](https://aka.ms/b2cappregintro).
 
 #### <a name="applications"></a>[Alkalmazások](#tab/applications/)
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
-1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
-1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
-1. Válassza az **alkalmazások**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
-1. Adja meg az alkalmazás nevét. Például: *webapi1*.
-1. A **Web App/web API**esetében válassza az **Igen**lehetőséget.
-1. Az **implicit folyamat engedélyezéséhez**válassza az **Igen**lehetőséget.
-1. A **Válasz URL-cím**mezőben adjon meg egy végpontot, amelyben Azure ad B2C vissza kell adnia az alkalmazás által kért jogkivonatokat. Ebben az oktatóanyagban a minta helyileg fut, és figyeli a `https://localhost:5000`.
-1. Az **alkalmazás-azonosító URI-ja**esetében adjon hozzá egy API-végpont-azonosítót a MEGJELENÍTett URI azonosítóhoz. Ebben az oktatóanyagban adja meg a `api`t, hogy a teljes URI a `https://contosob2c.onmicrosoft.com/api`hoz hasonlítson.
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Válassza ki a **Könyvtár + előfizetés** szűrőa felső menüben, majd válassza ki az Azure AD B2C bérlőt tartalmazó könyvtárat.
+1. A bal oldali menüben válassza az **Azure AD B2C**lehetőséget. Vagy válassza a **Minden szolgáltatás** lehetőséget, és keresse meg az **Azure AD B2C elemet.**
+1. Válassza **az Alkalmazások**lehetőséget, majd a **Hozzáadás**lehetőséget.
+1. Adjon nevet az alkalmazásnak. Például *webapi1*.
+1. **Webapp/ Web API**esetén válassza az **Igen**lehetőséget.
+1. Az **Implicit folyamat engedélyezése csoportban**válassza az **Igen**lehetőséget.
+1. A **válasz URL-cím,** adjon meg egy végpontot, ahol az Azure AD B2C vissza kell adnia az alkalmazás által kért jogkivonatokat. Ebben az oktatóanyagban a minta `https://localhost:5000`helyileg fut, és a .
+1. **Az App ID URI**esetén adjon hozzá egy API-végpont-azonosítót a megjelenített URI-hoz. Ebben az oktatóanyagban írja be a `api` `https://contosob2c.onmicrosoft.com/api`be című t, hogy a teljes URI hasonló a hoz.
 1. Kattintson a **Létrehozás** gombra.
-1. Jegyezze fel az **alkalmazás azonosítóját** egy későbbi lépésben való használatra.
+1. Rögzítse az **alkalmazásazonosítót** egy későbbi lépésben való használatra.
 
 #### <a name="app-registrations-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
-1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
-1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
-1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget, majd válassza az **új regisztráció**lehetőséget.
-1. Adja meg az alkalmazás **nevét** . Például: *webapi1*.
-1. Az **átirányítási URI**területen válassza a **web**lehetőséget, majd adjon meg egy végpontot, amelyben Azure ad B2C vissza kell adnia az alkalmazás által kért jogkivonatokat. Ebben az oktatóanyagban a minta helyileg fut, és figyeli a `http://localhost:5000`.
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Válassza ki a **Könyvtár + előfizetés** szűrőa felső menüben, majd válassza ki az Azure AD B2C bérlőt tartalmazó könyvtárat.
+1. A bal oldali menüben válassza az **Azure AD B2C**lehetőséget. Vagy válassza a **Minden szolgáltatás** lehetőséget, és keresse meg az **Azure AD B2C elemet.**
+1. Válassza **az Alkalmazásregisztrációk (Előzetes verzió)** lehetőséget, majd az **Új regisztráció**lehetőséget.
+1. Adja meg az alkalmazás **nevét.** Például *webapi1*.
+1. Az **ÁTirányítás URI,válassza**ki **a Web**lehetőséget, majd adjon meg egy végpontot, ahol az Azure AD B2C vissza kell adnia az alkalmazás által kért jogkivonatokat. Ebben az oktatóanyagban a minta `http://localhost:5000`helyileg fut, és a .
 1. Kattintson a **Register** (Regisztrálás) elemre.
-1. Jegyezze fel az **alkalmazás (ügyfél) azonosítóját** egy későbbi lépésben való használatra.
+1. Rögzítse az **alkalmazás (ügyfél) azonosítóját** egy későbbi lépésben való használatra.
 
-Ezután engedélyezze az implicit engedélyezési folyamatot:
+Ezután engedélyezze az implicit támogatási folyamatot:
 
-1. A **kezelés**területen válassza a **hitelesítés**lehetőséget.
-1. Válassza **az új élmény kipróbálása** (ha látható) lehetőséget.
-1. Az **implicit engedélyezés**területen jelölje be a **hozzáférési jogkivonatok** és az **azonosító tokenek** jelölőnégyzetet.
+1. A **Kezelés csoportban**válassza a **Hitelesítés**lehetőséget.
+1. Válassza **az Új felület kipróbálása** lehetőséget (ha látható).
+1. Az **Implicit támogatás**csoportban jelölje be mind az **Access-jogkivonatokat,** mind az **Azonosító-jogkivonatokat** jelölőnégyzetekbe.
 1. Kattintson a **Mentés** gombra.

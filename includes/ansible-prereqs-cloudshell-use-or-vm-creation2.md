@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 04/30/2019
 ms.author: tarcher
 ms.openlocfilehash: fc04bcbe811db189c040b32f6924b3a51d3d9b10
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77193582"
 ---
-- A **Ansible telepítése**: a következő lehetőségek közül választhat:
+- **Telepítse ansible**: Tegye az alábbi lehetőségek közül:
 
-    - Ansible [telepítése](/azure/ansible/ansible-install-configure#install-ansible-on-an-azure-linux-virtual-machine) és [konfigurálása](/azure/ansible/ansible-install-configure#create-azure-credentials) Linux rendszerű virtuális gépen 
-    - [Konfigurálja a Azure Cloud Shell](/azure/cloud-shell/quickstart) és – ha nem rendelkezik hozzáféréssel linuxos virtuális géphez – [hozzon létre egy virtuális gépet a Ansible](/azure/ansible/ansible-create-vm)használatával.
+    - [Az](/azure/ansible/ansible-install-configure#install-ansible-on-an-azure-linux-virtual-machine) Ansible telepítése és [konfigurálása](/azure/ansible/ansible-install-configure#create-azure-credentials) Linux os virtuális gépen 
+    - [Konfigurálja az Azure Cloud Shellt,](/azure/cloud-shell/quickstart) és – ha nincs hozzáférése egy Linux-alapú virtuális géphez – [hozzon létre egy virtuális gépet az Ansible segítségével.](/azure/ansible/ansible-create-vm)

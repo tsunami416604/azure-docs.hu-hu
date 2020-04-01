@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: 25be48e9caed446be3a86a11143ce3040808065a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eb7e891c031be5ac01295905d5c3304dc6818737
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294298"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478963"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>A fizikai kiszolgáló vész-helyreállítási konfigurációs kiszolgálójának kezelése
 
@@ -290,8 +290,8 @@ Frissítse a kiszolgálót az alábbiak szerint:
 > [!NOTE]
 > Az Remove-AzSiteRecoveryFabric **-Force** kapcsolója a konfigurációs kiszolgáló eltávolításának/törlésének kényszerítésére használható.
 
-## <a name="renew-ssl-certificates"></a>SSL-tanúsítványok megújítása
-A konfigurációs kiszolgáló beépített webkiszolgálóval rendelkezik, amely a mobilitási szolgáltatás, a folyamatkiszolgálók és a hozzá csatlakoztatott fő célkiszolgálók tevékenységeit vezényli. A webkiszolgáló SSL-tanúsítványt használ az ügyfelek hitelesítéséhez. A tanúsítvány három év után lejár, és bármikor megújítható.
+## <a name="renew-tlsssl-certificates"></a>TLS/SSL-tanúsítványok megújítása
+A konfigurációs kiszolgáló beépített webkiszolgálóval rendelkezik, amely a mobilitási szolgáltatás, a folyamatkiszolgálók és a hozzá csatlakoztatott fő célkiszolgálók tevékenységeit vezényli. A webkiszolgáló TLS/SSL-tanúsítványt használ az ügyfelek hitelesítéséhez. A tanúsítvány három év után lejár, és bármikor megújítható.
 
 ### <a name="check-expiry"></a>Lejárat ellenőrzése
 

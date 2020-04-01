@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.author: jeedes
-ms.openlocfilehash: c733873a5545bb01f03abd8178ed2f371e2dd3aa
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 60fdd9b0a8fb272da885df97e39804a98e48de67
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74074086"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478871"
 ---
 # <a name="tutorial-integrate-myworkdrive-with-azure-active-directory"></a>Oktatóanyag: A MyWorkDrive integrálása az Azure Active Directoryval
 
@@ -92,7 +92,7 @@ Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Por
     > 
     > Bejelentkezési URL:Bejelentkezési URL:Sign-on URL:`https://yourserver.yourdomain.com/Account/Login-saml`
     > 
-    > Ha nem biztos abban, hogy miként állíthatja be saját állomásnevét és SSL-tanúsítványát ezekhez az értékekhez, forduljon a [MyWorkDrive támogatási csapatához.](mailto:support@myworkdrive.com)
+    > Ha nem biztos abban, hogy miként állítsa be saját állomásnevét és TLS/SSL tanúsítványát ezekhez az értékekhez, forduljon a [MyWorkDrive támogatási csapatához.](mailto:support@myworkdrive.com)
 
 1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány csoportban** kattintson a Másolás gombra az **Alkalmazásösszevonás metaadat-címének** a vágólapra másolásához.
 

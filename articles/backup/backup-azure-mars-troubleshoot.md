@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan háríthatja el az Azure Back
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 24169356600c25e664221af397051bb0fec3e459
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a15f8a4531bc31dab5b99e125454b0d9c4fd4521
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78673109"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421280"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>A Microsoft Azure Recovery Services (MARS) ügynök – hibaelhárítása
 
@@ -132,6 +132,13 @@ Set-ExecutionPolicy Unrestricted
 
 > [!TIP]
 > A módosítások következetes alkalmazásának biztosításához indítsa újra a kiszolgálót az előző lépések végrehajtása után.
+
+## <a name="resource-not-provisioned-in-service-stamp"></a>A szolgáltatásbélyegzőben nincs kiépített erőforrás
+
+Hiba | Lehetséges okok | Ajánlott műveletek
+--- | --- | ---
+Az aktuális művelet "A szolgáltatásbélyegzőben nincs kiépítve az erőforrás" belső szolgáltatáshiba miatt nem sikerült. Próbálkozzon újra a művelettel egy idő után. (ID: 230006) | A védett kiszolgáló táttolta át. | <li> Nevezze vissza a kiszolgálót a tárolóban regisztrált eredeti névre. <br> <li> Regisztrálja újra a kiszolgálót a tárolóba az új névvel.
+
 
 ## <a name="troubleshoot-restore-problems"></a>Visszaállítási problémák elhárítása
 

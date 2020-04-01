@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integráció Sectigo tanúsítványkezelővel |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és a Tanúsítványkezelő Sectigo között.
+title: 'Oktatóanyag: Az Azure Active Directory integrációja a Sectigo Tanúsítványkezelővel | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a Sectigo Certificate Manager között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,201 +17,201 @@ ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0447a8dd464363ae7e076dde2520565005d7c0a5
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67588237"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sectigo-certificate-manager"></a>Oktatóanyag: Az Azure Active Directory-integráció Sectigo tanúsítványkezelővel
+# <a name="tutorial-azure-active-directory-integration-with-sectigo-certificate-manager"></a>Oktatóanyag: Az Azure Active Directory integrációja a Sectigo Tanúsítványkezelővel
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan Sectigo Certificate Manager integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a Sectigo Tanúsítványkezelőt az Azure Active Directoryval (Azure AD).
 
-Sectigo Certificate Manager integrálása az Azure AD kínál fel a következő előnyökkel jár:
+A Sectigo Tanúsítványkezelő integrálása az Azure AD-vel a következő előnyökkel jár:
 
-* Használhatja az Azure AD-szabályozza, ki férhet Sectigo Certificate Manager.
-* Felhasználók is automatikusan megtörténik a Sectigo Certificate Manager a saját Azure AD-fiókok (egyszeri bejelentkezés).
-* A fiókok egyetlen központi helyen, az Azure Portalon kezelheti.
+* Az Azure AD segítségével szabályozhatja, hogy ki férhet hozzá a Sectigo Tanúsítványkezelőhöz.
+* A felhasználók automatikusan bejelentkezhetnek a Sectigo Tanúsítványkezelőbe az Azure AD-fiókjukkal (egyszeri bejelentkezés).
+* A fiókokat egy központi helyen, az Azure Portalon kezelheti.
 
-Az Azure ad-vel szoftverként (saas biztosított) alkalmazás integrációja szoftverrel kapcsolatos további információkért lásd: [egyszeri bejelentkezés alkalmazásokhoz az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+A szoftverszolgáltatásként (SaaS) alkalmazásintegrációaz Azure AD-vel való integrációjáról az [Azure Active Directory ban lévő alkalmazásokegyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakörben talál további információt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása Sectigo tanúsítványkezelővel, a következőkre van szükség:
+Az Azure AD-integráció sectigo tanúsítványkezelővel való konfigurálásához a következő elemekre van szükség:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik Azure AD előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) megkezdése előtt.
-* Egyszeri bejelentkezés engedélyezve van az előfizetés Sectigo Certificate Manager.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
+* Sectigo Certificate Manager-előfizetés egyszeri bejelentkezésengedélyezve.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban konfigurálni és a egy tesztkörnyezetben az Azure AD egyszeri bejelentkezés tesztelése és Sectigo Certificate Manager integrálása az Azure ad-ben.
+Ebben az oktatóanyagban konfigurálhatja és tesztelheti az Azure AD egyszeri bejelentkezését egy tesztkörnyezetben, és integrálhatja a Sectigo Tanúsítványkezelőt az Azure AD-vel.
 
-Sectigo Certificate Manager támogatja a következő funkciókat:
+A Sectigo Certificate Manager a következő szolgáltatásokat támogatja:
 
-* **SP által kezdeményezett egyszeri bejelentkezés**
-* **Identitásszolgáltató által kezdeményezett egyszeri bejelentkezés**
+* **Sp által kezdeményezett egyszeri bejelentkezés**
+* **IDP által kezdeményezett egyszeri bejelentkezés**
 
-## <a name="add-sectigo-certificate-manager-in-the-azure-portal"></a>A Tanúsítványkezelő Sectigo hozzáadása az Azure Portalon
+## <a name="add-sectigo-certificate-manager-in-the-azure-portal"></a>Sectigo tanúsítványkezelő hozzáadása az Azure Portalon
 
-Sectigo Certificate Manager integrálása az Azure ad-ben, hozzá kell adnia a Tanúsítványkezelő Sectigo a felügyelt SaaS-alkalmazások listájában.
+A Sectigo Tanúsítványkezelő azure AD-vel való integrálásához hozzá kell adnia a Sectigo Tanúsítványkezelőt a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
 
-1. A bal oldali menüben válassza ki a **Azure Active Directory**.
+1. A bal oldali menüben válassza az **Azure Active Directory**lehetőséget.
 
-    ![Az Azure Active Directoryval opciót.](common/select-azuread.png)
+    ![Az Azure Active Directory beállítás](common/select-azuread.png)
 
-1. Válassza ki **vállalati alkalmazások** > **minden alkalmazás**.
+1. Válassza **a Vállalati alkalmazások** > **minden alkalmazás lehetőséget.**
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![A Vállalati alkalmazások ablaktábla](common/enterprise-applications.png)
 
-1. Egy alkalmazás hozzáadásához válassza **új alkalmazás**.
+1. Alkalmazás hozzáadásához válassza az **Új alkalmazás**lehetőséget.
 
-    ![Az új alkalmazás-beállítás](common/add-new-app.png)
+    ![Az Új alkalmazás opció](common/add-new-app.png)
 
-1. A Keresés mezőbe írja be a **Sectigo Tanúsítványkezelő**. A keresési eredmények között, válassza ki a **Sectigo Tanúsítványkezelő**, majd válassza ki **Hozzáadás**.
+1. A keresőmezőbe írja be a **Sectigo Tanúsítványkezelő**t. A keresési eredmények között válassza a **Sectigo Tanúsítványkezelő**lehetőséget, majd a **Hozzáadás**lehetőséget.
 
-    ![Az eredmények listájában Sectigo Tanúsítványkezelő](common/search-new-app.png)
+    ![Sectigo tanúsítványkezelő az eredménylistában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés Sectigo tanúsítványkezelővel nevű tesztfelhasználó alapján **Britta Simon**. Az egyszeri bejelentkezés működéséhez, kapcsolatot kell létesítenie egy társított Azure AD-felhasználót és a kapcsolódó felhasználó közötti Sectigo Certificate Manager.
+Ebben a szakaszban konfigurálhatja és tesztelheti az Azure AD egyszeri bejelentkezését a Sectigo Certificate Managerrel egy **Britta Simon**nevű tesztfelhasználó alapján. Egyszeri bejelentkezés működéséhez létre kell hoznia egy összekapcsolt kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó sectigo tanúsítványkezelőben.
 
-Az Azure AD egyszeri bejelentkezés Sectigo tanúsítványkezelővel tesztelése és konfigurálása, hogy a következő építőelemeit kell elvégeznie:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez a Sectigo Certificate Manager rel a következő építőelemeket kell végrehajtania:
 
 | Tevékenység | Leírás |
 | --- | --- |
-| **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)** | Lehetővé teszi a felhasználók a funkció használatához. |
-| **[Tanúsítványkezelő Sectigo egyszeri bejelentkezés konfigurálása](#configure-sectigo-certificate-manager-single-sign-on)** | Az egyszeri bejelentkezési beállításainak konfigurálása az alkalmazásban. |
-| **[Hozzon létre egy Azure ad-ben tesztfelhasználó számára](#create-an-azure-ad-test-user)** | Tesztek az Azure AD egyszeri bejelentkezés egy felhasználó nevű Britta Simon. |
-| **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assign-the-azure-ad-test-user)** | Britta Simon az Azure AD egyszeri bejelentkezés használata lehetővé teszi. |
-| **[A Tanúsítványkezelő Sectigo tesztfelhasználó létrehozása](#create-a-sectigo-certificate-manager-test-user)** | Létrehoz egy megfelelője a Britta Simon Sectigo tanúsítvány Managerben, amely kapcsolódik a felhasználó Azure ad-ben ábrázolása. |
-| **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** | Ellenőrzi, hogy működik-e a konfiguráció. |
+| **[Az Azure AD egyszeri bejelentkezéskonfigurálása](#configure-azure-ad-single-sign-on)** | Lehetővé teszi a felhasználók számára a szolgáltatás használatát. |
+| **[Sectigo tanúsítványkezelő egyszeri bejelentkezésének konfigurálása](#configure-sectigo-certificate-manager-single-sign-on)** | Az alkalmazás egyszeri bejelentkezési beállításainak konfigurálása. |
+| **[Azure AD-tesztfelhasználó létrehozása](#create-an-azure-ad-test-user)** | Teszteli az Azure AD egyszeri bejelentkezést egy Britta Simon nevű felhasználó számára. |
+| **[Az Azure AD-tesztfelhasználó hozzárendelése](#assign-the-azure-ad-test-user)** | Lehetővé teszi Britta Simon számára az Azure AD egyszeri bejelentkezését. |
+| **[Sectigo tanúsítványkezelő tesztfelhasználójának létrehozása](#create-a-sectigo-certificate-manager-test-user)** | Britta Simon megfelelője a Sectigo Tanúsítványkezelőben, amely a felhasználó Azure AD-ábrázolásához kapcsolódik. |
+| **[Az egyszeri bejelentkezés tesztelése](#test-single-sign-on)** | Ellenőrzi, hogy a konfiguráció működik-e. |
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
 
-Ebben a szakaszban konfigurálja az Azure AD egyszeri bejelentkezés Sectigo tanúsítványkezelővel az Azure Portalon.
+Ebben a szakaszban konfigurálhatja az Azure AD egyszeri bejelentkezéssectigo tanúsítványkezelő az Azure Portalon.
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **Sectigo Tanúsítványkezelő** application integration ablaktáblában válassza **egyszeri bejelentkezési**.
+1. Az [Azure Portalon](https://portal.azure.com/)a **Sectigo Certificate Manager alkalmazásintegrációs** ablaktáblán válassza az **Egyszeri bejelentkezés**lehetőséget.
 
     ![Egyszeri bejelentkezési beállítás konfigurálása](common/select-sso.png)
 
-1. Az a **egyszeri bejelentkezési módszer** ablaktáblán válassza ki az **SAML** vagy **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+1. Az **Egyszeri bejelentkezési módszer kiválasztása** ablaktáblában válassza **az SAML** vagy az **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezésválasztó mód](common/select-saml-option.png)
 
-1. Az a **állítsa be egyszeri bejelentkezést az SAML** ablaktáblán válassza **szerkesztése** (a ceruza ikon) nyissa meg a **alapszintű SAML-konfigurációja** ablaktáblán.
+1. Az **Egyszeri bejelentkezés beállítása SAML-lel** ablaktáblán válassza a **Szerkesztés** (a ceruza ikon) lehetőséget az **egyszerű SAML-konfiguráció** ablaktábla megnyitásához.
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az a **alapszintű SAML-konfigurációja** ablaktáblán konfigurálása *Identitásszolgáltató által kezdeményezett mód*, kövesse az alábbi lépéseket:
+1. Az **Egyszerű SAML-konfiguráció** ablaktáblában az *IDP által kezdeményezett mód*konfigurálásához hajtsa végre az alábbi lépéseket:
 
-    1. Az a **azonosító** mezőbe írja be az alábbi URL-címek valamelyikét:
+    1. Az **Azonosító** mezőbe írja be az alábbi URL-címek egyikét:
        * https:\//cert-manager.com/shibboleth
        * https:\//hard.cert-manager.com/shibboleth
 
-    1. Az a **válasz URL-cím** mezőbe írja be az alábbi URL-címek valamelyikét:
+    1. A **Válasz URL-címe** mezőbe írja be az alábbi URL-címek egyikét:
         * https:\//cert-manager.com/Shibboleth.sso/SAML2/POST
         * https:\//hard.cert-manager.com/Shibboleth.sso/SAML2/POST
 
-    1. Válassza ki **további URL-címet beállítani**.
+    1. Válassza **a További URL-címek beállítása**lehetőséget.
 
-    1. Az a **továbbítási állapot** mezőbe írja be az alábbi URL-címek valamelyikét:
+    1. A **Továbbítási állapot** mezőbe írja be az alábbi URL-címek egyikét:
        * https:\//cert-manager.com/customer/SSLSupport/idp
        * https:\//hard.cert-manager.com/customer/SSLSupport/idp
 
-    ![A Tanúsítványkezelő Sectigo tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-relay.png)
+    ![Sectigo Tanúsítványkezelő tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-relay.png)
 
-1.  Az alkalmazás konfigurálása *SP által kezdeményezett mód*, kövesse az alábbi lépéseket:
+1.  Az alkalmazás *SP által kezdeményezett módban történő*konfigurálásához hajtsa végre az alábbi lépéseket:
 
-    * Az a **bejelentkezési URL-cím** mezőbe írja be az alábbi URL-címek valamelyikét:
+    * A **Bejelentkezési URL-cím** mezőbe írja be az alábbi URL-címek egyikét:
       * https:\//cert-manager.com/Shibboleth.sso/Login
       * https:\//hard.cert-manager.com/Shibboleth.sso/Login
 
-      ![A Tanúsítványkezelő Sectigo tartomány és URL-címeket egyetlen bejelentkezési adatait](common/both-signonurl.png)
+      ![Sectigo Tanúsítványkezelő tartomány és URL-címek egyszeri bejelentkezési adatai](common/both-signonurl.png)
 
-1. Az a **állítsa be egyszeri bejelentkezést az SAML** ablaktáblán, a a **SAML-aláíró tanúsítvány** szakaszban jelölje be **letöltése** melletti **tanúsítvány (Base64)** . Válassza ki a letöltési lehetőséget igényei alapján. Mentse a tanúsítványt a számítógépen.
+1. Az **Egyszeri bejelentkezés beállítása SAML-lel** ablaktáblán az **SAML aláíró tanúsítvány** szakaszában válassza a **Letöltés** lehetőséget a **Tanúsítvány (Base64)** mellett. Válasszon egy letöltési lehetőséget az igényei nek megfelelően. Mentse a tanúsítványt a számítógépre.
 
-    ![A tanúsítvány (Base64) a letöltési lehetőséget](common/certificatebase64.png)
+    ![A Tanúsítvány (Base64) letöltési lehetőség](common/certificatebase64.png)
 
-1. Az a **állítsa be a Sectigo tanúsítvány Managert** területén másolja a következő URL-címek igényei alapján:
+1. A **Sectigo tanúsítványkezelő beállítása** szakaszban másolja a következő URL-címeket az Ön igényei nek megfelelően:
 
     * Bejelentkezési URL
-    * Azure AD-azonosító
-    * Kijelentkezési URL
+    * Azure Hirdetés-azonosító
+    * Kijelentkezés URL-címe
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="configure-sectigo-certificate-manager-single-sign-on"></a>Tanúsítványkezelő Sectigo egyszeri bejelentkezés konfigurálása
+### <a name="configure-sectigo-certificate-manager-single-sign-on"></a>Sectigo tanúsítványkezelő egyszeri bejelentkezésének konfigurálása
 
-A Tanúsítványkezelő Sectigo oldalon konfigurálása egyszeri bejelentkezéshez, a letöltött tanúsítvány (Base64) fájlt, és a megfelelő URL-címeket, az Azure Portalról másolt küldése a [Sectigo tanúsítvány Manager támogatási munkacsoportjának](https://sectigo.com/support). A Tanúsítványkezelő Sectigo csapatával küldheti el nekik, győződjön meg arról, hogy a SAML egyszeri bejelentkezési kapcsolatot helyesen van beállítva mindkét oldalon az információkat használja.
+Az egyszeri bejelentkezés konfigurálásához a Sectigo Tanúsítványkezelő oldalán küldje el a letöltött tanúsítványfájlt (Base64) és az Azure Portalról másolt megfelelő URL-címeket a [Sectigo Tanúsítványkezelő támogatási csapatának.](https://sectigo.com/support) A Sectigo Tanúsítványkezelő támogatási csapata az elküldött adatok at használja annak biztosítására, hogy az SAML egyszeri bejelentkezési kapcsolat mindkét oldalon megfelelően legyen beállítva.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása 
 
-Ebben a szakaszban hozzon létre egy tesztfelhasználót Britta Simon nevű az Azure Portalon.
+Ebben a szakaszban hozzon létre egy britta Simon nevű tesztfelhasználót az Azure Portalon.
 
-1. Az Azure Portalon válassza ki a **Azure Active Directory** > **felhasználók** > **minden felhasználó**.
+1. Az Azure Portalon válassza az **Azure Active Directory** > **felhasználói** > **minden felhasználó lehetőséget.**
 
-    ![A felhasználók és az összes felhasználói beállítások](common/users.png)
+    ![A Felhasználók és az Összes felhasználó beállítás](common/users.png)
 
-1. Válassza ki **új felhasználó**.
+1. Válassza az **Új felhasználó**lehetőséget.
 
-    ![Az új felhasználói beállítás](common/new-user.png)
+    ![Az Új felhasználó beállítás](common/new-user.png)
 
-1. Az a **felhasználói** panelen a következő lépéseket:
+1. A **Felhasználó** ablaktáblán hajtsa végre az alábbi lépéseket:
 
-    1. Az a **neve** mezőbe írja be **BrittaSimon**.
+    1. A **Név** mezőbe írja be **a BrittaSimon**értéket.
   
-    1. Az a **felhasználónév** mezőbe írja be **brittasimon\@\<a vállalati tartomány >.\< bővítmény\>** . Ha például **brittasimon\@contoso.com**.
+    1. A **Felhasználónév** mezőbe írja be **a\@\<brittasimon\< your-company-domain>. kiterjesztés.\>** Például **a\@brittasimon contoso.com**.
 
-    1. Válassza ki a **Show jelszó** jelölőnégyzetet. Írja le az értéket, a megjelenő a **jelszó** mezőbe.
+    1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet. Írja le a **Jelszó** mezőben megjelenő értéket.
 
     1. Kattintson a **Létrehozás** gombra.
 
-    ![A felhasználói panelen](common/user-properties.png)
+    ![A Felhasználó ablaktábla](common/user-properties.png)
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban hozzáférést Britta Simon Sectigo Tanúsítványkezelő, így ő Azure egyszeri bejelentkezéshez használható.
+Ebben a szakaszban hozzáférést biztosít Britta Simonnak a Sectigo Tanúsítványkezelőhöz, hogy használhassa az Azure egyszeri bejelentkezést.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások** > **minden alkalmazás** > **Sectigo Tanúsítványkezelő**.
+1. Az Azure Portalon válassza a **Vállalati alkalmazások** > **Minden alkalmazás** > **Sectigo Tanúsítványkezelő**lehetőséget.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![A Vállalati alkalmazások ablaktábla](common/enterprise-applications.png)
 
-1. Az alkalmazások listájában jelölje ki a **Sectigo Tanúsítványkezelő**.
+1. Az alkalmazások listájában válassza a **Sectigo Tanúsítványkezelő lehetőséget.**
 
-    ![Tanúsítványkezelő Sectigo alkalmazásainak listájában](common/all-applications.png)
+    ![Sectigo tanúsítványkezelő az alkalmazások listájában](common/all-applications.png)
 
-1. Válassza a menüben **felhasználók és csoportok**.
+1. A menüben válassza a **Felhasználók és csoportok lehetőséget.**
 
-    ![A felhasználók és csoportok lehetőség](common/users-groups-blade.png)
+    ![A Felhasználók és csoportok beállítás](common/users-groups-blade.png)
 
-1. Válassza ki **felhasználó hozzáadása**. Ezt követően a a **-hozzárendelés hozzáadása** ablaktáblán válassza előbb **felhasználók és csoportok**.
+1. Válassza **a Felhasználó hozzáadása**lehetőséget. Ezután a **Hozzárendelés hozzáadása** ablaktáblán válassza a Felhasználók és **csoportok**lehetőséget.
 
-    ![A Hozzáadás hozzárendelési ablaktáblán](common/add-assign-user.png)
+    ![A Hozzárendelés hozzáadása ablaktábla](common/add-assign-user.png)
 
-1. Az a **felhasználók és csoportok** ablaktáblán válassza **Britta Simon** felhasználók listájában. Válassza a **Kiválasztás** lehetőséget
+1. A **Felhasználók és csoportok** ablaktáblán válassza a Felhasználók listájában a **Britta Simon** elemet. Válassza a **Kiválasztás** lehetőséget
 
-1. Ha az a SAML-előfeltétel szerepkör értéket várt a **szerepkör kiválasztása** ablaktáblán válassza ki a megfelelő szerepkört a felhasználóhoz a listából. Válassza a **Kiválasztás** lehetőséget
+1. Ha az SAML-feltételben szerepkörértéket vár, a **Szerepkör kiválasztása** ablaktáblában válassza ki a megfelelő szerepkört a felhasználó számára a listából. Válassza a **Kiválasztás** lehetőséget
 
-1. Az a **hozzárendelés hozzáadása** ablaktáblán válassza előbb **hozzárendelése**.
+1. A **Hozzárendelés hozzáadása** ablaktáblán válassza a **Hozzárendelés lehetőséget.**
 
-### <a name="create-a-sectigo-certificate-manager-test-user"></a>A Tanúsítványkezelő Sectigo tesztfelhasználó létrehozása
+### <a name="create-a-sectigo-certificate-manager-test-user"></a>Sectigo tanúsítványkezelő tesztfelhasználójának létrehozása
 
-Ebben a szakaszban egy Britta Simon Sectigo Certificate Manager nevű felhasználót hoz létre. Együttműködik a [Sectigo tanúsítvány Manager támogatási munkacsoportjának](https://sectigo.com/support) a felhasználó hozzáadása a Tanúsítványkezelő Sectigo platform. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Sectigo Tanúsítványkezelőben. Együttműködve a [Sectigo Tanúsítványkezelő támogatási csapatával](https://sectigo.com/support) a felhasználó sectigo tanúsítványkezelő platformon való hozzáadásához. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban a az Azure AD egyszeri bejelentkezés beállításai a saját alkalmazások portál segítségével tesztelnie.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a Saját alkalmazások portálhasználatával teszteli.
 
-Miután beállította egyszeri bejelentkezést, amikor kiválaszt **Sectigo Tanúsítványkezelő** a saját alkalmazások portál automatikusan bejelentkezett Sectigo Certificate Manager. A saját alkalmazások portál kapcsolatos további információkért lásd: [használatának és elérésének alkalmazásokat a saját alkalmazások portál](../user-help/my-apps-portal-end-user-access.md).
+Az egyszeri bejelentkezés beállítása után, amikor a **Sectigo Tanúsítványkezelő** t választja a My Apps portálon, automatikusan bejelentkezik a Sectigo Tanúsítványkezelőbe. A Saját alkalmazások portálról további információt az [Access és az alkalmazások használata a Saját alkalmazások portálon](../user-help/my-apps-portal-end-user-access.md)talál.
 
 ## <a name="next-steps"></a>További lépések
 
-További információkért tekintse át a következő cikkeket:
+További információért tekintse át az alábbi cikkeket:
 
-- [Az Azure Active Directory SaaS-alkalmazások integrálását ismertető oktatóanyagok listáját](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Egyszeri bejelentkezés az Azure Active Directory-alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [A SaaS-alkalmazások Azure Active Directoryval való integrálására szolgáló oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Egyszeri bejelentkezés az alkalmazásokba az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 

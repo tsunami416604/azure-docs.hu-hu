@@ -1,22 +1,22 @@
 ---
 title: Google-hitelesítés konfigurálása
-description: Ismerje meg, hogyan konfigurálhatja a Google-hitelesítést identitásszolgáltatóként az App Service-alkalmazáshoz.
+description: Ismerje meg, hogyan konfigurálhatja a Google-hitelesítést identitásszolgáltatóként az App Service vagy az Azure Functions alkalmazáshoz.
 ms.assetid: 2b2f9abf-9120-4aac-ac5b-4a268d9b6e2b
 ms.topic: article
 ms.date: 09/02/2019
-ms.custom: seodec18
-ms.openlocfilehash: 81ce3e393d308323c8d5a3d688c16c9b45e7be9d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: fasttrack-edit
+ms.openlocfilehash: bb6b8eebef3247cf2c39ed4b111296e1e0521a74
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74670813"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437977"
 ---
-# <a name="configure-your-app-service-app-to-use-google-login"></a>Az App Service alkalmazás konfigurálása a Google bejelentkezési adatainak használatára
+# <a name="configure-your-app-service-or-azure-functions-app-to-use-google-login"></a>Az App Service vagy az Azure Functions alkalmazás konfigurálása a Google bejelentkezési funkciójának használatára
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-Ez a témakör bemutatja, hogyan konfigurálhatja az Azure App Service-t a Google hitelesítésszolgáltatóként való használatára.
+Ez a témakör bemutatja, hogyan konfigurálhatja az Azure App Service vagy az Azure Functions a Google hitelesítési szolgáltatóként való használatát.
 
 A témakörben szereplő eljárás végrehajtásához ellenőrzött e-mail címmel rendelkezik Google-fiókkal. Új Google-fiók létrehozásához látogassa meg az [accounts.google.com](https://go.microsoft.com/fwlink/p/?LinkId=268302) webhelyet.
 

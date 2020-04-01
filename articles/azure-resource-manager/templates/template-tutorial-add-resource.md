@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 79e337b411f9d115d93050ebeee346a526913d39
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dcdbbb325e6589669abe6cf3d25ac5191e29118b
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371736"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411729"
 ---
 # <a name="tutorial-add-a-resource-to-your-arm-template"></a>Oktatóanyag: Erőforrás hozzáadása az ARM-sablonhoz
 
@@ -26,7 +26,7 @@ A Visual Studio-kódnak rendelkeznie kell a Resource Manager Tools bővítményl
 
 Tárfiók-definíció hozzáadása a meglévő sablonhoz, tekintse meg a kiemelt JSON a következő példában. Ahelyett, hogy a sablon szakaszait másolná, másolja a teljes fájlt, és cserélje le a sablon tartalmát.
 
-Cserélje le **a(z) {provide-unique-name}** nevet egy egyedi tárfióknévre.
+Cserélje le **{provide-unique-name}** (beleértve a göndör zárójeleket) egy egyedi tárfiók névre.
 
 > [!IMPORTANT]
 > A tárfiók nevének egyedinek kell lennie az egész Azure rendszerben. A névnek csak kisbetűs vagy számok lehetnek. Nem lehet hosszabb 24 karakternél. Megpróbálhat egy elnevezési mintát, például **a store1** előtagként való használatát, majd a monogram és a mai dátum hozzáadását. A használt név például úgy nézhet ki, mint **a store1abc09092019**.
@@ -61,7 +61,7 @@ A tárfiók létrehozásához telepítheti a sablont. Adjon a központi telepít
 
 Ha még nem hozta létre az erőforráscsoportot, olvassa el az Erőforráscsoport létrehozása című [témakört.](template-tutorial-create-first-template.md#create-resource-group) A példa feltételezi, hogy beállította a **templateFile** változót a sablonfájl elérési útvonalára, ahogy az az [első oktatóanyagban](template-tutorial-create-first-template.md#deploy-template)látható.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -82,6 +82,9 @@ az deployment group create \
 ```
 
 ---
+
+> [!NOTE]
+> Ha a telepítés nem sikerült, használja a **hibakeresési kapcsolót** a központi telepítési paranccsal a hibakeresési naplók megjelenítéséhez.  A **részletes** kapcsolóval is megjelenítheti a teljes hibakeresési naplókat.
 
 Két lehetséges üzembe helyezési hiba, amely nek találkozhat:
 

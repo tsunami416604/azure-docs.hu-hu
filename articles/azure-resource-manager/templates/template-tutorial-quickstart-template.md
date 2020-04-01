@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8747a4614cb8106ce80c6caef0aae36111d2c384
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b82e02ecc009e587b89d1fd151fd13f75a4bcf8
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369853"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408510"
 ---
 # <a name="tutorial-use-azure-quickstart-templates"></a>Oktatóanyag: Azure-gyorsindítási sablonok használata
 
@@ -63,7 +63,7 @@ Használja az Azure CLI vagy az Azure PowerShell egy sablon üzembe helyezéséh
 
 Ha még nem hozta létre az erőforráscsoportot, olvassa el az Erőforráscsoport létrehozása című [témakört.](template-tutorial-create-first-template.md#create-resource-group) A példa feltételezi, hogy beállította a **templateFile** változót a sablonfájl elérési útvonalára, ahogy az az [első oktatóanyagban](template-tutorial-create-first-template.md#deploy-template)látható.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -88,6 +88,9 @@ az deployment group create \
 ```
 
 ---
+
+> [!NOTE]
+> Ha a telepítés nem sikerült, használja a **hibakeresési kapcsolót** a központi telepítési paranccsal a hibakeresési naplók megjelenítéséhez.  A **részletes** kapcsolóval is megjelenítheti a teljes hibakeresési naplókat.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

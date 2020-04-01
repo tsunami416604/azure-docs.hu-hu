@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/14/2020
+ms.date: 03/31/2020
 ms.author: allensu
-ms.openlocfilehash: 48fd4b0e6f0351cd46fc4063785d961867637e0c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8234bb82ba1f4ff9bd7aea9887121d9c703ac4a3
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80060640"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473286"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Virtuális hálózatok tervezése NAT átjáró-erőforrásokkal
 
@@ -39,7 +39,7 @@ A NAT-átjáró konfigurálása és használata szándékosan egyszerű:
 NAT átjáró erőforrás:
 - Regionális vagy zónaszintű (zónaáltal elszigetelt) NAT átjáró-erőforrás létrehozása,
 - IP-címek hozzárendelése,
-- TCP tétlen időszámának módosítása (nem kötelező).
+- Szükség esetén módosítsa a TCP tétlen időidejét (nem kötelező).  Az alapértelmezett beállítások módosítása <ins>előtt</ins> tekintse át az [időzítőket.](#timers)
 
 Virtuális hálózat:
 - Konfigurálja a virtuális hálózati alhálózatot nat-átjáró használatára.
@@ -178,27 +178,50 @@ A NAT-átjárók elsőbbséget élveznek az alhálózat kimenő forgatókönyvei
 
 ### <a name="availability-zones"></a>Rendelkezésre állási zónák
 
-A NAT még rendelkezésre állási zónák nélkül is rugalmas, és több infrastruktúra-összetevő meghibásodását is képes túlélni. Ha a rendelkezésre állási zónák a forgatókönyv részét képezik, konfigurálnia kell a hálózati konfigurálásegy adott zónához.  A vezérlősík műveletei és az adatsík a megadott zónára vannak korlátozva. A forgatókönyv létezésétnem milyen hatással lesz a NAT-ra. Az ugyanabban a zónában lévő virtuális gépek kimenő forgalma a zóna elkülönítése miatt sikertelen lesz.
+#### <a name="zone-isolation-with-zonal-stacks"></a>Zónaelkülönítés övezeti halmokkal
 
 <p align="center">
-  <img src="media/nat-overview/az-directions.svg" width="425" title="Virtuális hálózati hálózati hálózati kapcsolat rendelkezésre állási zónákkal">
+  <img src="media/nat-overview/az-directions.svg" width="425" title="Virtuális hálózati hálózati hálózati kapcsolat zónaelkülönítéssel, több "zonal stacks"">
 </p>
 
-*Ábra: Virtuális hálózati hálózati hálózati kapcsolat rendelkezésre állási zónákkal*
+*Ábra: Virtuális hálózati Hálózati hálózati kapcsolat zónaelkülönítéssel, több "zónahalm" létrehozása*
 
-A zónaszigetel zárt NAT-átjáróhoz ip-címek szükségesek a NAT-átjáró zónájának megfelelően. Nem támogatottak a nat-átjáró erőforrások, amelyek ip-címei egy másik zónából vagy zóna nélküliterületről származnak.
+A NAT még rendelkezésre állási zónák nélkül is rugalmas, és több infrastruktúra-összetevő meghibásodását is képes túlélni.  A rendelkezésre állási zónák erre a rugalmasságra épülnek a NAT zónaelkülönítési forgatókönyveivel.
 
-A virtuális hálózatok és alhálózatok regionálisak, és nem zónazónákhoz igazítva. A virtuális gépnek ugyanabban a zónában kell lennie, mint a NAT-átjáró a kimenő kapcsolatok zónaszintű ígéretének. A zónaelkülönítés egy zónaszintű "verem" rendelkezésre állási zónánkénti létrehozásával jön létre. A zónaszintű ígéret nem létezik, ha egy zónaszintű NAT átjáró zónáit lépi át, vagy egy regionális NAT átjárót használ zonális virtuális gépekhez.
+A virtuális hálózatok és alhálózataik regionális konstrukciók.  Az alhálózatok nem korlátozódnak zónára.
 
-Amikor telepíti a virtuálisgép-méretezési készletek et a NAT-tal való használatra, egy zónaszintű méretezési készletet telepít a saját alhálózatára, és csatolja az egyező zóna NAT-átjáróját az adott alhálózathoz. Ha zóna-átnyúló léptékkészletek (a méretezési csoport két vagy több zónában), NAT nem nyújt zonal ígéret.  A NAT nem támogatja a zónaredundanciát.  Csak a regionális vagy zóna-elkülönítés támogatott.
+Zónaszintű zónabeli ígéret akkor létezik, ha egy NAT-átjáró-erőforrást használó virtuálisgép-példány ugyanabban a zónában van, mint a NAT átjáró-erőforrás és a nyilvános IP-címek. A zónaelkülönítéshez használni kívánt minta egy "zónaverést" hoz létre rendelkezésre állási zónánként.  Ez a "zónaszintű verem" virtuálisgép-példányokból, NAT-átjáró-erőforrásokból, nyilvános IP-címből és/vagy előtag-erőforrásokból áll egy olyan alhálózaton, amely ről feltételezik, hogy csak ugyanazt a zónát szolgálja ki.   A vezérlősík műveletei és az adatsík ezután a megadott zónához igazodnak, és a megadott zónához vannak korlátozva. 
+
+A forgatókönyv létezésétnem milyen hatással lesz a NAT-ra. Az ugyanabban a zónában lévő virtuális gépek kimenő forgalma a zóna elkülönítése miatt sikertelen lesz.  
+
+#### <a name="integrating-inbound-endpoints"></a>Bejövő végpontok integrálása
+
+Ha a forgatókönyv bejövő végpontokat igényel, két lehetősége van:
+
+| Beállítás | Mintázat | Példa | Pro | Con |
+|---|---|---|---|---|
+| (1) | **Igazítsa** a bejövő végpontokat a megfelelő **zónaverések** létre a kimenő. | Hozzon létre egy szabványos terheléselosztót zónaszintű előlapokkal. | Ugyanaz az állapotmodell és a sikertelen mód a bejövő és kimenő üzemmódhoz. Egyszerűbb a működtetés. | Előfordulhat, hogy zónánként az egyes IP-címeket egy közös DNS-névnek kell elfednie. |
+| (2) | **Fedje át** a zónaszintű halmokat egy **zónába** érkező végpontdal. | Hozzon létre egy szabványos terheléselosztózóna-redundáns előtérrel. | Egyetlen IP-cím a bejövő végponthoz. | Különböző állapotmodell és hibamódok a bejövő és kimenő.  Bonyolultabb a működtetés. |
+
+>[!NOTE]
+> A zónaszigetel zárt NAT-átjáróhoz ip-címek szükségesek a NAT-átjáró zónájának megfelelően. NAT átjáró erőforrások IP-címeket egy másik zónából, vagy anélkül, hogy a zóna nem engedélyezett.
+
+#### <a name="cross-zone-outbound-scenarios-not-supported"></a>A zónán átkelő kimenő forgatókönyvek nem támogatottak
 
 <p align="center">
-  <img src="media/nat-overview/az-directions2.svg" width="425" title="zóna-átívelő virtuális hálózati NAT">
+  <img src="media/nat-overview/az-directions2.svg" width="425" title="A virtuális hálózati hálózati hálózati kapcsolat nem kompatibilis a zónaátív alhálózattal">
 </p>
 
-*Ábra: Zónakfe virtuális hálózati hálózati hálózati hálózati*
+*Ábra: A virtuális hálózati hálózati hálózati kapcsolat nem kompatibilis a zónaátív alhálózattal*
 
-A zónák tulajdonság nem módosítható.  Telepítse újra a NAT-átjáró erőforrást a kívánt területi vagy zónapreferenciával.
+A NAT-átjáró-erőforrásokkal nem érhető el zónaszintű ígéret, ha a virtuálisgép-példányok ugyanazon alhálózaton belül több zónában vannak üzembe helyezve.   És még akkor is, ha több zónaszintű NAT átjárók egy alhálózathoz, a virtuális gép példány nem tudja, melyik NAT átjáró erőforrás kiválasztásához.
+
+A zónaszintű ígéret nem létezik, ha a) a virtuális gép példányzónája és a zónaszintű NAT-átjáró zónái nincsenek összehangolva, vagy b) egy regionális NAT átjáró-erőforrást használnak a zónaszintű virtuálisgép-példányokkal.
+
+Míg a forgatókönyv úgy tűnik, hogy működik, az állapotmodell és a hiba mód nincs definiálva a rendelkezésre állási zóna szempontjából. Fontolja meg megy a zonal halom, vagy az összes regionális helyett.
+
+>[!NOTE]
+>A NAT átjáróerőforrás zónák tulajdonsága nem módosítható.  Telepítse újra a NAT-átjáró erőforrást a kívánt területi vagy zónapreferenciával.
 
 >[!NOTE] 
 >Az IP-címek önmagukban nem zónaredundánsak, ha nincs megadva zóna.  A standard terheléselosztó előtétje [zónaredundáns,](../load-balancer/load-balancer-standard-availability-zones.md#frontend) ha egy IP-cím nem jön létre egy adott zónában.  Ez nem vonatkozik a NAT-ra.  Csak a regionális vagy zóna-elkülönítés támogatott.
@@ -255,11 +278,9 @@ Az SNAT-port kiadása után a NAT-tal konfigurált alhálózatokon lévő bárme
 
 ### <a name="scaling"></a>Méretezés
 
-A NAT-nak elegendő SNAT-portkészletre van szüksége a teljes kimenő forgatókönyvhöz. A NAT méretezése elsősorban a megosztott, rendelkezésre álló SNAT-portkészlet kezelésének függvénye. Elegendő készletnek kell léteznie a NAT átjáró-erőforráshoz kapcsolódó összes alhálózat kimenő csúcsfolyamatának kezeléséhez.
+A NAT méretezése elsősorban a megosztott, rendelkezésre álló SNAT-portkészlet kezelésének függvénye. A NAT-nak elegendő SNAT-portkészletre van szüksége a NAT-átjáró-erőforráshoz kapcsolódó összes alhálózat várható kimenő csúcsfolyamataihoz.  Nyilvános IP-cím erőforrások, nyilvános IP-előtag-erőforrások vagy mindkettő segítségével SNAT-portkészletet hozhat létre.
 
-Az SNAT több privát címet rendel le egy nyilvános címre, és több nyilvános IP-címet használ a méretezéshez.
-
-A NAT-átjáró-erőforrások 64 000 portot (SNAT-portot) használnak egy nyilvános IP-címhez.  Ezek az SNAT-portok a privát és a nyilvános folyamatleképezés rendelkezésre álló készletévé válnak. És további nyilvános IP-címek hozzáadása növeli a rendelkezésre álló készlet SNAT portok. A NAT átjáró-erőforrások legfeljebb 16 IP-címet és 1M SNAT-portot skálázhatnak.  A TCP és az UDP különálló SNAT-portkészletek és független.
+Az SNAT leképezi a privát címeket egy vagy több nyilvános IP-címre, átírva a forráscímet és a forrásportot a folyamatokban. A NAT-átjáró-erőforrások konfigurált nyilvános IP-címenként 64 000 portot (SNAT-portot) használnak ehhez a fordításhoz. A NAT átjáró-erőforrások legfeljebb 16 IP-címet és 1M SNAT-portot skálázhatnak. Ha nyilvános IP-előtag erőforrás van megadva, az előtagon belül minden IP-cím SNAT-portkészletet biztosít. És további nyilvános IP-címek hozzáadása növeli a rendelkezésre álló készlet SNAT portok. A TCP és az UDP különálló SNAT-portkészletek és független.
 
 A NAT átjáró erőforrásai opportunista módon újrafelhasználják a forrásportokat. Skálázási célokra, feltételezi, hogy minden folyamat hoz egy új SNAT-port és a kimenő forgalom rendelkezésre álló IP-címek teljes számának méretezése.
 
@@ -268,6 +289,9 @@ A NAT átjáró erőforrásai opportunista módon újrafelhasználják a forrás
 A NAT-átjáró-erőforrások interakcióba lépnek az UDP- és TCP-folyamatok IP- és IP-átviteli fejléceivel, és agnotikusak az alkalmazásréteg-adatokhoz.  Más IP-protokollok nem támogatottak.
 
 ### <a name="timers"></a>Időzítők
+
+>[!IMPORTANT]
+>A hosszú tétlen időzítő szükségtelenül növelheti az SNAT kimerültség valószínűségét. Minél hosszabb ideig adja meg az időzítőt, annál hosszabb ideig tartja a NAT-portokat, amíg végül nem lépnek le. Ha a folyamatok tétlen időtúltöltés, akkor végül sikertelen lesz, és szükségtelenül fogyasztanak SNAT port leltár.  A 2 órán ként meghibásodó folyamatok az alapértelmezett 4 percen belül is sikertelenek voltak volna. Az alapjárati időhosszabbítás növelése egy végső lehetőség, amelyet takarékosan kell használni. Ha egy folyamat soha nem megy tétlen, akkor nem érinti az tétlen időzítő.
 
 A TCP tétlen időtúlára 4 perc (alapértelmezett) és 120 perc (2 óra) között állítható be az összes folyamatesetében.  Emellett alaphelyzetbe állíthatja az alapjárati időzítőt a forgalom a folyamaton.  A hosszú tétlen kapcsolatok és végpontok élősdésének frissítéséhez ajánlott minta a TCP keepalives.  A TCP keepalives ismétlődő ACK-kként jelenik meg a végpontok számára, alacsony terheléssel rendelkezik, és az alkalmazásréteg számára láthatatlan.
 
@@ -294,7 +318,7 @@ Az SNAT-port 5 másodperc elteltével újra felhasználható ugyanarra a cél IP
 
 ## <a name="feedback"></a>Visszajelzés
 
-Azt akarjuk tudni, hogyan tudjuk javítani a szolgáltatást. Javaslatot tesz, és szavazni, hogy mit kell építeni a következő [UserVoice a NAT](https://aka.ms/natuservoice).
+Azt akarjuk tudni, hogyan tudjuk javítani a szolgáltatást. Hiányzik egy képesség? Hogy az Ön esetében, amit meg kell építeni a következő [UserVoice a NAT](https://aka.ms/natuservoice).
 
 ## <a name="next-steps"></a>További lépések
 
@@ -303,20 +327,20 @@ Azt akarjuk tudni, hogyan tudjuk javítani a szolgáltatást. Javaslatot tesz, �
 * További információ a [NAT-átjáró erőforrásainak hibaelhárításáról.](troubleshoot-nat.md)
 * Oktatóanyag a NAT-átjáró érvényesítéséhez
   - [Azure CLI](tutorial-create-validate-nat-gateway-cli.md)
-  - [Powershell](tutorial-create-validate-nat-gateway-cli.md)
+  - [PowerShell](tutorial-create-validate-nat-gateway-cli.md)
   - [Portál](tutorial-create-validate-nat-gateway-cli.md)
 * Rövid útmutató a NAT-átjáró-erőforrások telepítéséhez
   - [Azure CLI](./quickstart-create-nat-gateway-cli.md)
-  - [Powershell](./quickstart-create-nat-gateway-powershell.md)
+  - [PowerShell](./quickstart-create-nat-gateway-powershell.md)
   - [Portál](./quickstart-create-nat-gateway-portal.md)
   - [Sablon](./quickstart-create-nat-gateway-template.md)
 * Tudnivalók a NAT átjáróerőforrás API-ról
   - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
   - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)
-  - [Powershell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)
-
+  - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)
 * További információ a [rendelkezésre állási zónákról.](../availability-zones/az-overview.md)
 * További információ a [szabványos terheléselosztóról.](../load-balancer/load-balancer-standard-overview.md)
 * További információ a [rendelkezésre állási zónákról és a szabványos terheléselosztóról.](../load-balancer/load-balancer-standard-availability-zones.md)
+* [Mondja el, mit kell építeni a következő virtuális hálózati NAT a UserVoice](https://aka.ms/natuservoice).
 
 

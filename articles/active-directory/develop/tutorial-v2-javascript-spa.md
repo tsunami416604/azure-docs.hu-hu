@@ -1,6 +1,6 @@
 ---
-title: JavaScript egyoldalas alkalmazás oktatóanyaga – Microsoft Identity platform | Azure
-description: Hogyan hívhatják meg a JavaScript SPA-alkalmazások olyan API-t, amelyhez hozzáférési jogkivonatok szükségesek Azure Active Directory v 2.0 végponttal
+title: JavaScript egyoldalas alkalmazásbemutató - Microsoft identity platform | Azure
+description: Hogyan hívhatnak meg javascript SPA-alkalmazások olyan API-t, amelyhez az Azure Active Directory 2.0-s verziójú végpontja hozzáférési jogkivonatokat igényel?
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -15,31 +15,31 @@ ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 51a456a05e1d41057e80b92e44f997e1b52cb132
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 6eb144e648e8f5fa1682c353f14686d6f82c7328
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79239125"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79530444"
 ---
-# <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Bejelentkezés a felhasználókba és a Microsoft Graph API meghívása egy JavaScript egyoldalas alkalmazásból (SPA)
+# <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Jelentkezzen be a felhasználókhoz, és hívja fel a Microsoft Graph API-t egy JavaScript egyoldalas alkalmazásból (SPA)
 
-Ez az útmutató bemutatja, hogyan használható a JavaScript egyoldalas alkalmazás (SPA):
-- Bejelentkezés személyes fiókokba, valamint munkahelyi és iskolai fiókokba 
+Ez az útmutató bemutatja, hogy a JavaScript egyoldalas alkalmazás (SPA) hogyan:
+- Bejelentkezés személyes fiókok, valamint munkahelyi és iskolai fiókok 
 - Hozzáférési jogkivonat beszerzése
-- Hívja meg az Microsoft Graph API-t vagy más API-kat, amelyek hozzáférési jogkivonatokat igényelnek a *Microsoft Identity platform végpontján*
+- Hívja meg a Microsoft Graph API-t vagy más API-kat, amelyek hozzáférési jogkivonatokat igényelnek a *Microsoft identity platform végpontjáról*
 
 >[!NOTE]
-> Ha még nem ismeri a Microsoft Identity platformot, javasoljuk, hogy kezdje a [bejelentkezési felhasználókat, és szerezzen be egy hozzáférési jogkivonatot egy JavaScript Spa-](quickstart-v2-javascript.md)útmutatóban.
+> Ha most ismeri a Microsoft identitásplatformot, javasoljuk, hogy kezdje a [Bejelentkezési felhasználókkal, és szerezzen be egy hozzáférési jogkivonatot a JavaScript SPA rövid útmutatójában.](quickstart-v2-javascript.md)
 
-## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Az útmutató által létrehozott minta alkalmazás működése
+## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Az útmutató által létrehozott mintaalkalmazás működése
 
-![Bemutatja, hogyan működik az oktatóanyag által generált minta alkalmazás](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
+![Bemutatja, hogyan működik az oktatóanyag által létrehozott mintaalkalmazás](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
 
 <!--start-collapse-->
 ### <a name="more-information"></a>További információ
 
-Az útmutatóban létrehozott minta alkalmazás lehetővé teszi, hogy a JavaScript SPA lekérdezze a Microsoft Graph API-t vagy egy webes API-t, amely elfogadja a tokeneket a Microsoft Identity platform végpontján. Ebben az esetben a felhasználó bejelentkezése után hozzáférési jogkivonatot kér a rendszer, és hozzáadja a HTTP-kérésekhez az engedélyezési fejlécen keresztül. A token beszerzését és megújítását a Microsoft Authentication Library (MSAL) kezeli.
+Az útmutató által létrehozott mintaalkalmazás lehetővé teszi, hogy a JavaScript SPA lekérdezze a Microsoft Graph API-t vagy egy webes API-t, amely elfogadja a Microsoft identity platform végponttokenjeit. Ebben a forgatókönyvben, miután egy felhasználó bejelentkezik, egy hozzáférési jogkivonatot kér, és hozzáadja a HTTP-kérelmek az engedélyezési fejlécen keresztül. Ez a jogkivonat a felhasználó profiljának és e-mailjeinek az **MS Graph API-n**keresztül történő megszerzésére szolgál. A tokenek beszerzését és megújítását a **Microsoft JavaScript-hitelesítési könyvtára (MSAL)** kezeli.
 
 <!--end-collapse-->
 
@@ -48,400 +48,471 @@ Az útmutatóban létrehozott minta alkalmazás lehetővé teszi, hogy a JavaScr
 
 Ez az útmutató a következő könyvtárat használja:
 
-|Kódtár|Leírás|
+|Erőforrástár|Leírás|
 |---|---|
-|[msal. js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft Authentication Library a JavaScripthez – előzetes verzió|
+|[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft JavaScript-hitelesítési tár|
 
 > [!NOTE]
-> A *Msal. js* a Microsoft Identity platform végpontját célozza meg, amely lehetővé teszi a személyes fiókok, az iskolai és munkahelyi fiókok számára a bejelentkezést és a jogkivonatok beszerzését. A Microsoft Identity platform végpontjának [bizonyos korlátai vannak](../azuread-dev/azure-ad-endpoint-comparison.md#limitations).
-> A v 1.0 és a v 2.0 végpontok közötti különbségek megismeréséhez tekintse meg a [végpontok összehasonlító útmutatóját](../azuread-dev/azure-ad-endpoint-comparison.md).
+> *Az Msal.js* a Microsoft identity platform végpontját célozza meg, amely lehetővé teszi a személyes fiókok, valamint az iskolai és munkahelyi fiókok bejelentkezését és tokenek beszerzését. A Microsoft identity platform végpontja [bizonyos korlátozásokkal rendelkezik.](../azuread-dev/azure-ad-endpoint-comparison.md#limitations)
+> A v1.0 és a 2.0-s végpontok közötti különbségeket a [végpontok összehasonlítási útmutatójában](../azuread-dev/azure-ad-endpoint-comparison.md)talál.
 
 <!--end-collapse-->
 
 ## <a name="set-up-your-web-server-or-project"></a>Webkiszolgáló vagy projekt beállítása
 
-> Inkább a minta projektjét szeretné letölteni? A következő lehetőségek közül választhat:
-> 
-> - Ha a projektet helyi webkiszolgálóval, például a Node. js használatával szeretné futtatni, [töltse le a projektfájlt](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip).
+> Inkább letölti a minta projektjét? [Töltse le a projektfájlokat](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip).
 >
-> - Választható Ha a projektet a Microsoft Internet Information Services (IIS) kiszolgáló használatával szeretné futtatni, [töltse le a Visual Studio-projektet](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip).
->
-> A kód minta konfigurálásához a végrehajtás előtt ugorjon a [konfigurációs lépésre](#register-your-application).
+> Ha a kódmintát a végrehajtás előtt szeretné konfigurálni, ugorjon a [konfigurációs lépésre.](#register-your-application)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az oktatóanyag futtatásához helyi webkiszolgálóra, például [Node. js](https://nodejs.org/en/download/), [.net Core](https://www.microsoft.com/net/core)vagy IIS Express [Visual Studio 2017](https://www.visualstudio.com/downloads/)-integrációra van szükség.
+* Az oktatóanyag futtatásához helyi webkiszolgálóra van szükség, például [a Node.js](https://nodejs.org/en/download/), [a .NET Core](https://www.microsoft.com/net/core)vagy az IIS Express integrációra a Visual Studio [2017-tel.](https://www.visualstudio.com/downloads/)
 
-* Ha a Node. js-t használja a projekt futtatásához, telepítsen egy integrált fejlesztői környezetet (IDE), például a [Visual Studio Code](https://code.visualstudio.com/download)-ot a projektfájlok szerkesztéséhez.
-
-* Az útmutatóban szereplő utasítások a Node. js és a Visual Studio 2017-es verzión alapulnak, de bármilyen más fejlesztési környezetet vagy webkiszolgálót használhat.
+* Az útmutatóban található utasítások a Node.js-ben beépített webkiszolgálón alapulnak. Javasoljuk, hogy a [Visual Studio Code-ot](https://code.visualstudio.com/download) használja integrált fejlesztői környezetként (IDE).
 
 ## <a name="create-your-project"></a>A projekt létrehozása
 
-> ### <a name="option-1-nodejs-or-other-web-servers"></a>1\. lehetőség: Node. js vagy más webkiszolgáló
-> Győződjön meg arról, hogy telepítve van a [Node. js](https://nodejs.org/en/download/) , majd hozzon létre egy mappát az alkalmazás üzemeltetéséhez.
->
-> ### <a name="option-2-visual-studio"></a>2\. lehetőség: Visual Studio
-> Ha a Visual studiót használja, és új projektet hoz létre, kövesse az alábbi lépéseket:
-> 1. A Visual Studióban válassza a **fájl** > **új** > **projekt**lehetőséget.
-> 1. A **Visual C#\Web** területen válassza az **ASP.NET Web Application (.NET Framework)** (ASP.NET-webalkalmazás (.NET-keretrendszer)) lehetőséget.
-> 1. Adja meg az alkalmazás nevét, majd kattintson **az OK gombra**.
-> 1. Az **új ASP.net-webalkalmazás**területen válassza az **üres**lehetőséget.
+Győződjön meg arról, hogy telepítette [a Node.js fájlt,](https://nodejs.org/en/download/) majd hozzon létre egy mappát az alkalmazás üzemeltetéséhez. Ott egy egyszerű [Express](https://expressjs.com/) webszervert valósítunk meg a fájl kiszolgálására. `index.html` 
 
-## <a name="create-the-spa-ui"></a>A SPA felhasználói felületének létrehozása
-1. Hozzon létre egy *index. html* fájlt a JavaScript Spa számára. Ha a Visual studiót használja, válassza ki a projektet (projekt gyökérkönyvtára). Kattintson a jobb gombbal, és válassza az **új elem** > **hozzáadása** > **HTML-oldal**lehetőséget, és nevezze el a fájl *index. html*nevet.
+1. Először a Visual Studio Code integrált termináljának használatával keresse meg a projektmappát, majd telepítse az Express programot az NPM használatával.
 
-1. Az *index. html* fájlban adja hozzá a következő kódot:
+1. Ezután hozzon létre egy `server.js`.js nevű fájlt, majd adja hozzá a következő kódot:
+
+   ```JavaScript
+   const express = require('express');
+   const morgan = require('morgan');
+   const path = require('path');
+
+   //initialize express.
+   const app = express();
+
+   // Initialize variables.
+   const port = 3000; // process.env.PORT || 3000;
+
+   // Configure morgan module to log all requests.
+   app.use(morgan('dev'));
+
+   // Set the front-end folder to serve public assets.
+   app.use(express.static('JavaScriptSPA'))
+
+   // Set up a route for index.html.
+   app.get('*', function (req, res) {
+       res.sendFile(path.join(__dirname + '/index.html'));
+   });
+
+   // Start the server.
+   app.listen(port);
+   console.log('Listening on port ' + port + '...');
+   ```
+
+Most már van egy egyszerű szerver szolgálja a SPA. Az oktatóanyag végén található kívánt mappastruktúra a következő:
+
+![a tervezett SPA mappaszerkezet szöveges ábrázolása](./media/tutorial-v2-javascript-spa/single-page-application-folder-structure.png)
+
+## <a name="create-the-spa-ui"></a>Az SPA felhasználói felületének létrehozása
+
+1. Hozzon `index.html` létre egy fájlt a JavaScript SPA. Ez a fájl a **Bootstrap 4 Framework** rendszerrel készített felhasználói felületet valósítja meg, és parancsfájlfájlokat importál a konfigurációhoz, a hitelesítéshez és az API-híváshoz.
+
+   A `index.html` fájlba adja hozzá a következő kódot:
 
    ```html
    <!DOCTYPE html>
-   <html>
-   <head>
-       <title>Quickstart for MSAL JS</title>
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.4/bluebird.min.js"></script>
-       <script src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.0/js/msal.js"></script>
-   </head>
-   <body>
-       <h2>Welcome to MSAL.js Quickstart</h2><br/>
-       <h4 id="WelcomeMessage"></h4>
-       <button id="SignIn" onclick="signIn()">Sign In</button><br/><br/>
-       <pre id="json"></pre>
-       <script>
-           //JS code
+   <html lang="en">
+     <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+       <title>Quickstart | MSAL.JS Vanilla JavaScript SPA</title>
+
+       <!-- msal.js with a fallback to backup CDN -->
+       <script type="text/javascript" src="https://alcdn.msauth.net/lib/1.2.1/js/msal.js" integrity="sha384-9TV1245fz+BaI+VvCjMYL0YDMElLBwNS84v3mY57pXNOt6xcUYch2QLImaTahcOP" crossorigin="anonymous"></script>
+       <script type="text/javascript">
+         if(typeof Msal === 'undefined')document.write(unescape("%3Cscript src='https://alcdn.msftauth.net/lib/1.2.1/js/msal.js' type='text/javascript' integrity='sha384-m/3NDUcz4krpIIiHgpeO0O8uxSghb+lfBTngquAo2Zuy2fEF+YgFeP08PWFo5FiJ' crossorigin='anonymous'%3E%3C/script%3E"));
        </script>
-   </body>
+
+       <!-- adding Bootstrap 4 for UI components  -->
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+     </head>
+     <body>
+       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+         <a class="navbar-brand" href="/">MS Identity Platform</a>
+         <div class="btn-group ml-auto dropleft">
+           <button type="button" id="signIn" class="btn btn-secondary" onclick="signIn()">Sign In</button>
+           <button type="button" id="signOut" class="btn btn-success d-none" onclick="signOut()">Sign Out</button>
+       </div>
+       </nav>
+       <br>
+       <h5 class="card-header text-center">Vanilla JavaScript SPA calling MS Graph API with MSAL.JS</h5>
+       <br>
+       <div class="row" style="margin:auto" >
+       <div id="card-div" class="col-md-3 d-none">
+       <div class="card text-center">
+         <div class="card-body">
+           <h5 class="card-title" id="welcomeMessage">Please sign-in to see your profile and read your mails</h5>
+           <div id="profile-div"></div>
+           <br>
+           <br>
+           <button class="btn btn-primary" id="seeProfile" onclick="seeProfile()">See Profile</button>
+           <br>
+           <br>
+           <button class="btn btn-primary d-none" id="readMail" onclick="readMail()">Read Mails</button>
+         </div>
+       </div>
+       </div>
+       <br>
+       <br>
+         <div class="col-md-4">
+           <div class="list-group" id="list-tab" role="tablist">
+           </div>
+         </div>
+         <div class="col-md-5">
+           <div class="tab-content" id="nav-tabContent">
+           </div>
+         </div>
+       </div>
+       <br>
+       <br>
+
+       <!-- importing bootstrap.js and supporting js libraries -->
+       <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>  
+       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+       <!-- importing app scripts (load order is important) -->
+       <script type="text/javascript" src="./authConfig.js"></script>
+       <script type="text/javascript" src="./graphConfig.js"></script>
+       <script type="text/javascript" src="./ui.js"></script>
+
+       <!-- replace next line with authRedirect.js if you would like to use the redirect flow -->
+       <!-- <script type="text/javascript" src="./authRedirect.js"></script>   -->
+       <script type="text/javascript" src="./authPopup.js"></script>
+       <script type="text/javascript" src="./graph.js"></script>
+     </body>
    </html>
    ```
 
    > [!TIP]
-   > A MSAL. js fájl verzióját az előző szkriptben lecserélheti a legújabb, a [MSAL. js kiadásban](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)megjelent verzióra.
-
-## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>A Microsoft Authentication Library (MSAL) használatával jelentkezzen be a felhasználóba
-
-Adja hozzá a következő kódot a `index.html` fájlhoz a `<script></script>` címkén belül:
+   > Az MSAL.js verziót az előző parancsfájlban lecserélheti az [MSAL.js kiadások](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)alatt kiadott legújabb verzióra.
+   
+2. Most hozzon létre egy `ui.js`.js nevű fájlt, amely megnyitja és frissíti a DOM elemeket, és adja hozzá a következő kódot:
 
    ```JavaScript
-   var msalConfig = {
-       auth: {
-           clientId: "Enter_the_Application_Id_here",
-           authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here"
-       },
-       cache: {
-           cacheLocation: "localStorage",
-           storeAuthStateInCookie: true
-       }
-   };
+   // Select DOM elements to work with
+   const welcomeDiv = document.getElementById("welcomeMessage");
+   const signInButton = document.getElementById("signIn");
+   const signOutButton = document.getElementById('signOut');
+   const cardDiv = document.getElementById("card-div");
+   const mailButton = document.getElementById("readMail");
+   const profileButton = document.getElementById("seeProfile");
+   const profileDiv = document.getElementById("profile-div");
 
-   var graphConfig = {
-       graphMeEndpoint: "https://graph.microsoft.com/v1.0/me"
-   };
+   function showWelcomeMessage(account) {
+     // Reconfiguring DOM elements
+     cardDiv.classList.remove('d-none');
+     welcomeDiv.innerHTML = `Welcome ${account.name}`;
+     signInButton.classList.add('d-none');
+     signOutButton.classList.remove('d-none');
+   }
 
-   // this can be used for login or token request, however in more complex situations
-   // this can have diverging options
-   var requestObj = {
-        scopes: ["user.read"]
-   };
+   function updateUI(data, endpoint) {
+     console.log('Graph API responded at: ' + new Date().toString());
 
-   var myMSALObj = new Msal.UserAgentApplication(msalConfig);
-   // Register Callbacks for redirect flow
-   myMSALObj.handleRedirectCallback(authRedirectCallBack);
+     if (endpoint === graphConfig.graphMeEndpoint) {
+       const title = document.createElement('p');
+       title.innerHTML = "<strong>Title: </strong>" + data.jobTitle;
+       const email = document.createElement('p');
+       email.innerHTML = "<strong>Mail: </strong>" + data.mail;
+       const phone = document.createElement('p');
+       phone.innerHTML = "<strong>Phone: </strong>" + data.businessPhones[0];
+       const address = document.createElement('p');
+       address.innerHTML = "<strong>Location: </strong>" + data.officeLocation;
+       profileDiv.appendChild(title);
+       profileDiv.appendChild(email);
+       profileDiv.appendChild(phone);
+       profileDiv.appendChild(address);
 
+     } else if (endpoint === graphConfig.graphMailEndpoint) {
+         if (data.value.length < 1) {
+           alert("Your mailbox is empty!")
+         } else {
+           const tabList = document.getElementById("list-tab");
+           tabList.innerHTML = ''; // clear tabList at each readMail call
+           const tabContent = document.getElementById("nav-tabContent");
+
+           data.value.map((d, i) => {
+             // Keeping it simple
+             if (i < 10) {
+               const listItem = document.createElement("a");
+               listItem.setAttribute("class", "list-group-item list-group-item-action")
+               listItem.setAttribute("id", "list" + i + "list")
+               listItem.setAttribute("data-toggle", "list")
+               listItem.setAttribute("href", "#list" + i)
+               listItem.setAttribute("role", "tab")
+               listItem.setAttribute("aria-controls", i)
+               listItem.innerHTML = d.subject;
+               tabList.appendChild(listItem)
+
+               const contentItem = document.createElement("div");
+               contentItem.setAttribute("class", "tab-pane fade")
+               contentItem.setAttribute("id", "list" + i)
+               contentItem.setAttribute("role", "tabpanel")
+               contentItem.setAttribute("aria-labelledby", "list" + i + "list")
+               contentItem.innerHTML = "<strong> from: " + d.from.emailAddress.address + "</strong><br><br>" + d.bodyPreview + "...";
+               tabContent.appendChild(contentItem);
+             }
+           });
+         }
+     }
+   }
+   ```
+
+## <a name="register-your-application"></a>Alkalmazás regisztrálása
+
+Mielőtt továbblépne a hitelesítéssel, regisztrálja az alkalmazást az **Azure Active Directoryban.**
+
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Ha a fiók hozzáférést biztosít egynél több bérlőhöz, válassza ki a jobb felső sarokban lévő fiókot, majd állítsa be a portálmunkamenetet a használni kívánt Azure AD-bérlőre.
+1. Nyissa meg a Microsoft identity platform ot a [fejlesztőknek Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lapon.
+1. Ha megjelenik az **Alkalmazás regisztrálása** oldal, adjon nevet az alkalmazásnak.
+1. A **Támogatott fióktípusok csoportban**válassza a Fiókok lehetőséget **bármely szervezeti címtárban és személyes Microsoft-fiókban.**
+1. Az **ÁTirányítás URI-csoportban** válassza ki a **webes** platformot a legördülő listából, majd állítsa be az értéket a webkiszolgálón alapuló alkalmazás URL-címére.
+1. Kattintson a **Register** (Regisztrálás) elemre.
+1. Az alkalmazás **áttekintése** lapon jegyezze fel az **alkalmazás (ügyfél) azonosító** értékét későbbi használatra.
+1. Ehhez a rövid útmutatóhoz engedélyezni kell az [Implicit támogatási folyamatot.](v2-oauth2-implicit-grant-flow.md) A regisztrált alkalmazás bal oldali ablaktáblájában válassza a **Hitelesítés**lehetőséget.
+1. A **Speciális**beállítások **csoportban**jelölje be az **Azonosító-jogkivonatok és az Access-jogkivonatok** jelölőnégyzetet. **Access tokens** Azonosító jogkivonatok és hozzáférési jogkivonatok szükségesek, mert ez az alkalmazás be kell jelentkeznie a felhasználók és egy API-t kell hívnia.
+1. Kattintson a **Mentés** gombra.
+
+> ### <a name="set-a-redirect-url-for-nodejs"></a>Átirányítási URL beállítása a Node.js-hez
+>
+> A Node.js fájlban beállíthatja a webkiszolgáló *portját.* Ez az oktatóanyag a 3000-es portot használja, de bármely más elérhető portot használhat.
+>
+> Ha átirányítási URL-címet szeretne beállítani az alkalmazás regisztrációs adatai között, váltson vissza az **Alkalmazásregisztrációs** ablaktáblára, és tegye az alábbiak egyikét:
+>
+> - Állítsa *`http://localhost:3000/`* be **átirányítási URL-címként.**
+> - Ha egyéni TCP-portot használ, *`http://localhost:<port>/`* használja (ahol * \<a port>* az egyéni TCP-portszám).
+>   1. Másolja az **URL-értéket.**
+>   1. Váltson vissza az **Alkalmazásregisztrációs** ablaktáblára, és illessze be a másolt értéket **átirányítási URL-címként.**
+>
+
+### <a name="configure-your-javascript-spa"></a>A JavaScript SPA konfigurálása
+
+Hozzon létre egy új `authConfig.js`.js nevű fájlt, amely tartalmazza a hitelesítés konfigurációs paramétereit, és adja hozzá a következő kódot:
+
+```javascript
+  const msalConfig = {
+    auth: {
+      clientId: "Enter_the_Application_Id_Here",
+      authority: "Enter_the_Cloud_Instance_Id_HereEnter_the_Tenant_Info_Here",
+      redirectUri: "Enter_the_Redirect_Uri_Here",
+    },
+    cache: {
+      cacheLocation: "sessionStorage", // This configures where your cache will be stored
+      storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
+    }
+  };  
+
+  // Add here scopes for id token to be used at MS Identity Platform endpoints.
+  const loginRequest = {
+    scopes: ["openid", "profile", "User.Read"]
+  };
+
+  // Add here scopes for access token to be used at MS Graph API endpoints.
+  const tokenRequest = {
+    scopes: ["Mail.Read"]
+  };
+```
+
+ Az elemek magyarázata:
+ - Enter_the_Application_Id_Here>a regisztrált alkalmazás **alkalmazásazonosítója.** * \<*
+ - Enter_the_Cloud_Instance_Id_Here>az Azure-felhő példánya. * \<* A fő vagy globális Azure-felhőhöz egyszerűen írja be a beírást. *https://login.microsoftonline.com* **A nemzeti** felhők (például Kína), lásd: [Nemzeti felhők](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).
+ - Enter_the_Tenant_info_here>az alábbi beállítások egyikére van beállítva: * \<*
+   - Ha az alkalmazás támogatja a *fiókok ebben a szervezeti címtárban,* cserélje le ezt az értéket a **bérlői azonosító** vagy bérlő **neve** (például *contoso.microsoft.com).*
+   - Ha az alkalmazás *bármely szervezeti címtárban támogatja a fiókokat,* cserélje le ezt az értéket **szervezetekre.**
+   - Ha az alkalmazás támogatja *a szervezeti címtárban és a személyes Microsoft-fiókokban lévő fiókokat,* cserélje le ezt az értéket a **közös értékre.** Ha csak *a személyes Microsoft-fiókokra*szeretné korlátozni a támogatást, cserélje le ezt az értéket **a fogyasztókra**.
+
+
+## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>A felhasználó bejelentkezéséhez a Microsoft hitelesítési tár (MSAL) segítségével jelentkezzen be
+
+Hozzon létre egy új `authPopup.js`.js nevű fájlt, amely tartalmazza a hitelesítési és token-beszerzési logikát, és adja hozzá a következő kódot:
+
+   ```JavaScript
+   const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 
    function signIn() {
+     myMSALObj.loginPopup(loginRequest)
+       .then(loginResponse => {
+         console.log('id_token acquired at: ' + new Date().toString());
+         console.log(loginResponse);
 
-       myMSALObj.loginPopup(requestObj).then(function (loginResponse) {
-           //Login Success
-           showWelcomeMessage();
-           acquireTokenPopupAndCallMSGraph();
-       }).catch(function (error) {
-           console.log(error);
+         if (myMSALObj.getAccount()) {
+           showWelcomeMessage(myMSALObj.getAccount());
+         }
+       }).catch(error => {
+         console.log(error);
        });
    }
 
-   function acquireTokenPopupAndCallMSGraph() {
-       //Always start with acquireTokenSilent to obtain a token in the signed in user from cache
-       myMSALObj.acquireTokenSilent(requestObj).then(function (tokenResponse) {
-            callMSGraph(graphConfig.graphMeEndpoint, tokenResponse.accessToken, graphAPICallback);
-       }).catch(function (error) {
-            console.log(error);
-            // Upon acquireTokenSilent failure (due to consent or interaction or login required ONLY)
-            // Call acquireTokenPopup(popup window)
-            if (requiresInteraction(error.errorCode)) {
-                myMSALObj.acquireTokenPopup(requestObj).then(function (tokenResponse) {
-                    callMSGraph(graphConfig.graphMeEndpoint, tokenResponse.accessToken, graphAPICallback);
-                }).catch(function (error) {
-                    console.log(error);
-                });
-            }
+   function signOut() {
+     myMSALObj.logout();
+   }
+
+   function getTokenPopup(request) {
+     return myMSALObj.acquireTokenSilent(request)
+       .catch(error => {
+         console.log(error);
+         console.log("silent token acquisition fails. acquiring token using popup");
+
+         // fallback to interaction when silent call fails
+           return myMSALObj.acquireTokenPopup(request)
+             .then(tokenResponse => {
+               return tokenResponse;
+             }).catch(error => {
+               console.log(error);
+             });
        });
    }
 
-
-   function graphAPICallback(data) {
-       document.getElementById("json").innerHTML = JSON.stringify(data, null, 2);
-   }
-
-
-   function showWelcomeMessage() {
-       var divWelcome = document.getElementById('WelcomeMessage');
-       divWelcome.innerHTML = 'Welcome ' + myMSALObj.getAccount().userName + "to Microsoft Graph API";
-       var loginbutton = document.getElementById('SignIn');
-       loginbutton.innerHTML = 'Sign Out';
-       loginbutton.setAttribute('onclick', 'signOut();');
-   }
-
-
-   //This function can be removed if you do not need to support IE
-   function acquireTokenRedirectAndCallMSGraph() {
-        //Always start with acquireTokenSilent to obtain a token in the signed in user from cache
-        myMSALObj.acquireTokenSilent(requestObj).then(function (tokenResponse) {
-            callMSGraph(graphConfig.graphMeEndpoint, tokenResponse.accessToken, graphAPICallback);
-        }).catch(function (error) {
-            console.log(error);
-            // Upon acquireTokenSilent failure (due to consent or interaction or login required ONLY)
-            // Call acquireTokenRedirect
-            if (requiresInteraction(error.errorCode)) {
-                myMSALObj.acquireTokenRedirect(requestObj);
-            }
-        });
-   }
-
-
-   function authRedirectCallBack(error, response) {
-       if (error) {
+   function seeProfile() {
+     if (myMSALObj.getAccount()) {
+       getTokenPopup(loginRequest)
+         .then(response => {
+           callMSGraph(graphConfig.graphMeEndpoint, response.accessToken, updateUI);
+           profileButton.classList.add('d-none');
+           mailButton.classList.remove('d-none');
+         }).catch(error => {
            console.log(error);
-       }
-       else {
-           if (response.tokenType === "access_token") {
-               callMSGraph(graphConfig.graphEndpoint, response.accessToken, graphAPICallback);
-           } else {
-               console.log("token type is:" + response.tokenType);
-           }
-       }
+         });
+     }
    }
 
-   function requiresInteraction(errorCode) {
-       if (!errorCode || !errorCode.length) {
-           return false;
-       }
-       return errorCode === "consent_required" ||
-           errorCode === "interaction_required" ||
-           errorCode === "login_required";
-   }
-
-   // Browser check variables
-   var ua = window.navigator.userAgent;
-   var msie = ua.indexOf('MSIE ');
-   var msie11 = ua.indexOf('Trident/');
-   var msedge = ua.indexOf('Edge/');
-   var isIE = msie > 0 || msie11 > 0;
-   var isEdge = msedge > 0;
-   //If you support IE, our recommendation is that you sign-in using Redirect APIs
-   //If you as a developer are testing using Edge InPrivate mode, please add "isEdge" to the if check
-   // can change this to default an experience outside browser use
-   var loginType = isIE ? "REDIRECT" : "POPUP";
-
-   if (loginType === 'POPUP') {
-        if (myMSALObj.getAccount()) {// avoid duplicate code execution on page load in case of iframe and popup window.
-            showWelcomeMessage();
-            acquireTokenPopupAndCallMSGraph();
-        }
-   }
-   else if (loginType === 'REDIRECT') {
-       document.getElementById("SignIn").onclick = function () {
-            myMSALObj.loginRedirect(requestObj);
-       };
-       if (myMSALObj.getAccount() && !myMSALObj.isCallback(window.location.hash)) {// avoid duplicate code execution on page load in case of iframe and popup window.
-            showWelcomeMessage();
-            acquireTokenRedirectAndCallMSGraph();
-        }
-   } else {
-       console.error('Please set a valid login type');
+   function readMail() {
+     if (myMSALObj.getAccount()) {
+       getTokenPopup(tokenRequest)
+         .then(response => {
+           callMSGraph(graphConfig.graphMailEndpoint, response.accessToken, updateUI);
+         }).catch(error => {
+           console.log(error);
+         });
+     }
    }
    ```
 
 <!--start-collapse-->
 ### <a name="more-information"></a>További információ
 
-Miután a felhasználó első alkalommal kiválasztja a **Bejelentkezés** gombot, a `signIn` metódus meghívja `loginPopup` a felhasználót a bejelentkezéshez. Ezzel a módszerrel megnyílik egy előugró ablak a *Microsoft Identity platform végpontján* a felhasználó hitelesítő adatainak megadásához és érvényesítéséhez. Sikeres bejelentkezés után a rendszer visszairányítja a felhasználót az eredeti *index. html* oldalra. A rendszer tokent fogad, `msal.js`dolgozza fel, és a jogkivonatban található információkat gyorsítótárazza. Ez a jogkivonat *azonosító jogkivonat* , és alapszintű információt tartalmaz a felhasználóról, például a felhasználó megjelenítendő nevét. Ha bármilyen célra szeretné használni a token által biztosított bármilyen adatforrást, győződjön meg róla, hogy a háttér-kiszolgáló érvényesíti ezt a jogkivonatot annak biztosításához, hogy a jogkivonatot a rendszer egy érvényes felhasználónak adja ki az alkalmazás számára.
+Miután a felhasználó **Sign In** első alkalommal kiválasztja a `signIn` Bejelentkezés `loginPopup` gombot, a metódus meghívja a felhasználót. Ez a módszer megnyit egy előugró ablakot a *Microsoft identity platform végponttal,* hogy kérje és érvényesítse a felhasználó hitelesítő adatait. A sikeres bejelentkezés után a felhasználó visszakerül az eredeti *index.html* lapra. A jogkivonat fogadása, `msal.js`a , és a tokenben található információk gyorsítótárba. Ez a jogkivonat az *id token,* és alapvető információkat tartalmaz a felhasználó, például a felhasználó megjelenítendő nevét. Ha azt tervezi, hogy a jogkivonat által biztosított adatok bármilyen célra, győződjön meg arról, hogy ezt a jogkivonatot a háttérkiszolgáló érvényesíti annak biztosítása érdekében, hogy a jogkivonatot egy érvényes felhasználó az alkalmazáshoz.
 
-Az útmutató által létrehozott fürdő `acquireTokenSilent` és/vagy `acquireTokenPopup`t hív meg a felhasználói profil adatainak Microsoft Graph API-nak a lekérdezéséhez használt *hozzáférési jogkivonat* beszerzéséhez. Ha olyan mintát kell használnia, amely érvényesíti az azonosító jogkivonatot, tekintse meg [ezt](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub Active-Directory-JavaScript-singlepageapp-DotNet-webapi-v2 minta") a minta alkalmazást a githubban. A minta egy ASP.NET webes API-t használ a jogkivonat-ellenőrzéshez.
+Az útmutató által létrehozott `acquireTokenSilent` spa hívásokat hív, és/vagy `acquireTokenPopup` a Microsoft Graph API felhasználói profiladatainak lekérdezéséhez használt *hozzáférési jogkivonat* megszerzésére szolgál. Ha szüksége van egy mintára, amely érvényesíti az azonosító jogkivonatot, tekintse meg [ezt a](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub active-directory-javascript-singlepageapp-dotnet-webapi-v2 minta") mintaalkalmazást a GitHubon. A minta egy ASP.NET webes API-t használ a token érvényesítéséhez.
 
-#### <a name="getting-a-user-token-interactively"></a>Felhasználói jogkivonat interaktív lekérése
+#### <a name="get-a-user-token-interactively"></a>Felhasználói jogkivonat interaktív lekérése
 
-A kezdeti bejelentkezés után nem kívánja megkérni a felhasználókat, hogy minden alkalommal újra hitelesíteni tudják az erőforrásokhoz való hozzáféréshez szükséges jogkivonatot. Így a *acquireTokenSilent* a legtöbb időt kell használni a tokenek beszerzéséhez. Vannak azonban olyan helyzetek, amikor kényszeríteni kell a felhasználókat, hogy együttműködjön a Microsoft Identity platform-végponttal. Példák erre vonatkozóan:
+A kezdeti bejelentkezés után nem szeretné megkérni a felhasználókat, hogy minden alkalommal, amikor egy erőforrás eléréséhez jogkivonatot kell kérniük, minden alkalommal, amikor tokenre van szükségük. Így *acquireTokenSilent* kell használni az idő nagy részében a tokenek megszerzéséhez. Vannak azonban olyan helyzetek, amikor a felhasználókat a Microsoft identity platform végpontjának kommunikálására kell kényszerítenie. Példák erre vonatkozóan:
 
 - A felhasználóknak újra meg kell adniuk a hitelesítő adataikat, mert a jelszó lejárt.
-- Az alkalmazás hozzáférést kér egy erőforráshoz, és szüksége van a felhasználó belefoglalására.
+- Az alkalmazás hozzáférést kér egy erőforráshoz, és a felhasználó beleegyezésére van szüksége.
 - Kétfaktoros hitelesítés szükséges.
 
-A *acquireTokenPopup* meghívásával megnyílik egy előugró ablak (vagy a *acquireTokenRedirect* átirányítja a felhasználókat a Microsoft Identity platform-végpontra). Ebben az ablakban a felhasználóknak kapcsolatba kell lépniük a hitelesítő adataik megerősítésével, a szükséges erőforrás jóváhagyásával, vagy a kétfaktoros hitelesítés végrehajtásával.
+Az *acquireTokenPopup hívása* megnyit egy előugró ablakot (vagy *acquireTokenRedirect* átirányítja a felhasználókat a Microsoft identity platform végpontjára). Ebben az ablakban a felhasználóknak a hitelesítő adataik megerősítésével, a szükséges erőforrás beleegyezésével vagy a kétfaktoros hitelesítés befejezésével kell együttműködniük.
 
-#### <a name="getting-a-user-token-silently"></a>Felhasználói jogkivonat csendes beszerzése
+#### <a name="get-a-user-token-silently"></a>Felhasználói jogkivonat csendes beszerzése
 
-A `acquireTokenSilent` metódus felhasználói beavatkozás nélkül kezeli a tokenek beszerzését és megújítását. `loginPopup` (vagy `loginRedirect`) első futtatása után a rendszer a következő metódust használja a védett erőforrások eléréséhez használt jogkivonatok beszerzéséhez: `acquireTokenSilent`. (A kérések és a megújítási hívások csendesen történnek.) a `acquireTokenSilent` bizonyos esetekben sikertelen lehet. Előfordulhat például, hogy a felhasználó jelszava lejárt. Az alkalmazás két módon tudja kezelni ezt a kivételt:
+A `acquireTokenSilent` módszer kezeli a tokenek beszerzése és megújítása felhasználói beavatkozás nélkül. Miután `loginPopup` `loginRedirect`(vagy ) végre az `acquireTokenSilent` első alkalommal, a módszer általánosan használt jogkivonatok eléréséhez használt védett erőforrások későbbi hívásokhoz. (A tokenek kérelmezésére vagy megújítására irányuló hívások csendesen történik.) `acquireTokenSilent` bizonyos esetekben sikertelen lehet. Előfordulhat például, hogy a felhasználó jelszava lejárt. Az alkalmazás kétféleképpen tudja kezelni ezt a kivételt:
 
-1. Hívjon `acquireTokenPopup` azonnal, amely elindítja a felhasználó bejelentkezési kérését. Ezt a mintát gyakran használják online alkalmazásokban, ahol az alkalmazás nem hitelesített tartalmakat használ a felhasználó számára. Az irányított telepítő által generált minta ezt a mintát használja.
+1. Azonnal kezdeményezze `acquireTokenPopup` a hívást, amely elindítja a felhasználói bejelentkezési kérdést. Ezt a mintát gyakran használják olyan online alkalmazásokban, ahol az alkalmazásban nincs nem hitelesített tartalom. Az irányított beállítás által létrehozott minta ezt a mintát használja.
 
-2. Az alkalmazások vizuálisan is megadhatják a felhasználónak, hogy egy interaktív bejelentkezésre van szükség, így a felhasználó kiválaszthatja a bejelentkezéshez szükséges megfelelő időt, vagy később is újrapróbálkozhat `acquireTokenSilent`. Ezt általában akkor érdemes használni, ha a felhasználó az alkalmazás egyéb funkcióit nem lehet megszakítani. Előfordulhat például, hogy nem hitelesített tartalom érhető el az alkalmazásban. Ebben az esetben a felhasználó dönthet arról, hogy mikor szeretné bejelentkezni a védett erőforrás eléréséhez, vagy az elavult információk frissítéséhez.
+1. Az alkalmazások vizuálisan is jelezhetik a felhasználónak, hogy interaktív bejelentkezésre van szükség, így a felhasználó `acquireTokenSilent` kiválaszthatja a megfelelő időpontot a bejelentkezéshez, vagy az alkalmazás később újrapróbálkozhat. Ez gyakran használatos, ha a felhasználó az alkalmazás más funkcióit is használhatja anélkül, hogy megszakadna. Előfordulhat például, hogy nem hitelesített tartalom érhető el az alkalmazásban. Ebben az esetben a felhasználó eldöntheti, hogy mikor szeretne bejelentkezni a védett erőforrás eléréséhez, vagy frissítse az elavult információkat.
 
 > [!NOTE]
-> Ez a rövid útmutató a `loginRedirect` és a `acquireTokenRedirect` metódust használja, amikor az Internet Explorer a böngészőt használja. Ezt a gyakorlatot követjük, mert az Internet Explorer az előugró ablakokat kezelő módszerével kapcsolatos [ismert probléma](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) .
+> Ez a rövid `loginPopup` `acquireTokenPopup` útmutató alapértelmezés szerint a és a metódusokat használja. Ha az Internet Explorer böngészőt használja, ajánlott `loginRedirect` `acquireTokenRedirect` használni és módszereket használni, mivel ismert [probléma](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) van azzal kapcsolatban, hogy az Internet Explorer hogyan kezeli az előugró ablakokat. Ha szeretné látni, hogyan érheti el `Redirect methods`ugyanazt az eredményt a használatával, kérjük, [olvassa el](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/blob/quickstart/JavaScriptSPA/authRedirect.js)a . 
 <!--end-collapse-->
 
-## <a name="call-the-microsoft-graph-api-by-using-the-token-you-just-acquired"></a>A Microsoft Graph API meghívása az imént beszerzett token használatával
+## <a name="call-the-microsoft-graph-api-by-using-the-token-you-just-acquired"></a>Hívja meg a Microsoft Graph API-t az imént beszerzett token használatával
 
-Adja hozzá a következő kódot a `index.html` fájlhoz a `<script></script>` címkén belül:
+1. Először hozzon létre egy `graphConfig.js`.js nevű fájlt, amely tárolja a REST-végpontokat. Adja hozzá a következő kódot:
 
-```javascript
-function callMSGraph(theUrl, accessToken, callback) {
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200)
-            callback(JSON.parse(this.responseText));
-    }
-    xmlHttp.open("GET", theUrl, true); // true for asynchronous
-    xmlHttp.setRequestHeader('Authorization', 'Bearer ' + accessToken);
-    xmlHttp.send();
-}
-```
+   ```JavaScript
+      const graphConfig = {
+        graphMeEndpoint: "Enter_the_Graph_Endpoint_Herev1.0/me",
+        graphMailEndpoint: "Enter_the_Graph_Endpoint_Herev1.0/me/messages"
+      };
+   ```
+
+   Az elemek magyarázata:
+   - Enter_the_Graph_Endpoint_Here>az MS Graph API példánya. * \<* A globális MS Graph API-végpont esetében `https://graph.microsoft.com`egyszerűen cserélje le ezt a karakterláncot a programra. A nemzeti felhőalapú telepítések ről a [Graph API dokumentációja](https://docs.microsoft.com/graph/deployments)című dokumentumban olvashat.
+
+1. Ezután hozzon létre egy `graph.js`.js nevű fájlt, amely REST-hívást kezdeményez a Microsoft Graph API-ba, és adja hozzá a következő kódot:
+
+   ```javascript
+   function callMSGraph(endpoint, token, callback) {
+     const headers = new Headers();
+     const bearer = `Bearer ${token}`;
+
+     headers.append("Authorization", bearer);
+
+     const options = {
+         method: "GET",
+         headers: headers
+     };
+
+     console.log('request made to Graph API at: ' + new Date().toString());
+  
+     fetch(endpoint, options)
+       .then(response => response.json())
+       .then(response => callback(response, endpoint))
+       .catch(error => console.log(error))
+   }
+   ```
+
 <!--start-collapse-->
 
-### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>További információ a védett API-k REST-hívásáról
+### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>További információ a REST-hívásról egy védett API-val szemben
 
-Az útmutatóban létrehozott minta alkalmazásban a `callMSGraph()` módszer a HTTP-`GET` kérések elvégzésére szolgál egy jogkivonatot igénylő védett erőforráson. A kérés ezután visszaadja a tartalmat a hívónak. Ez a metódus hozzáadja a beszerzett jogkivonatot a *http-engedélyezési fejlécben*. Az útmutatóban létrehozott minta alkalmazás esetében az erőforrás a Microsoft Graph API *Me* -végpontja, amely megjeleníti a felhasználó profiljának adatait.
+Az útmutató által létrehozott mintaalkalmazásban a `callMSGraph()` módszer http-kérelmet `GET` nyújt be egy jogkivonatot igénylő védett erőforrással szemben. A kérés ezután visszaadja a tartalmat a hívónak. Ez a módszer hozzáadja a beszerzett jogkivonatot a *HTTP-engedélyezési fejléchez.* Az útmutató által létrehozott mintaalkalmazás esetében az erőforrás a Microsoft Graph API *me* végpont, amely a felhasználó profiladatait jeleníti meg.
 
 <!--end-collapse-->
-
-## <a name="add-a-method-to-sign-out-the-user"></a>Metódus hozzáadása a felhasználó kijelentkezéséhez
-
-Adja hozzá a következő kódot a `index.html` fájlhoz a `<script></script>` címkén belül:
-
-```javascript
-/**
- * Sign out the user
- */
- function signOut() {
-     myMSALObj.logout();
- }
-```
-
-## <a name="register-your-application"></a>Alkalmazás regisztrálása
-
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
-
-1. Ha a fiókja több bérlőhöz biztosít hozzáférést, válassza ki a fiókot a jobb felső sarokban, majd állítsa be a portál munkamenetét a használni kívánt Azure AD-bérlőre.
-1. Nyissa meg a Microsoft Identity platform for Developers [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lapját.
-1. Amikor megjelenik az **alkalmazás regisztrálása** lap, adja meg az alkalmazás nevét.
-1. A **támogatott fiókok típusai**területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
-1. Az **átirányítási URI** szakaszban válassza ki a **webplatformot a** legördülő listából, majd állítsa be az értéket a webkiszolgálón alapuló alkalmazás URL-címére.
-
-   További információ a Node. js és a Visual Studio átirányítási URL-címének beállításáról és beszerzéséről: az átirányítási URL-cím beállítása a Node. js-hez és [a Visual Studio átirányítási URL-címének beállítása](#set-a-redirect-url-for-visual-studio).
-
-1. Kattintson a **Register** (Regisztrálás) elemre.
-1. Az alkalmazás **áttekintése** lapon jegyezze fel az **alkalmazás (ügyfél) azonosítójának** értékét későbbi használatra.
-1. Ez a rövid útmutató az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md) engedélyezését igényli. A regisztrált alkalmazás bal oldali ablaktábláján válassza a **hitelesítés**lehetőséget.
-1. A **Speciális beállítások**területén az **implicit engedélyezés**területen jelölje be az **azonosító tokenek** és a **hozzáférési tokenek** jelölőnégyzetet. Az azonosító jogkivonatok és hozzáférési tokenek megadása kötelező, mert az alkalmazásnak be kell jelentkeznie a felhasználókba, és hívnia kell egy API-t.
-1. Kattintson a **Mentés** gombra.
-
-> #### <a name="set-a-redirect-url-for-nodejs"></a>Adja meg a Node. js átirányítási URL-címét
-> A Node. js-ben beállíthatja a webkiszolgáló portját a *Server. js* fájlban. Ez az oktatóanyag a 30662-es portot használja, de bármilyen más elérhető portot is használhat.
->
-> Ha egy átirányítási URL-címet szeretne beállítani az alkalmazás regisztrációs adatai között, váltson vissza az **alkalmazás regisztrációja** ablaktáblára, és tegye a következők egyikét:
->
-> - *`http://localhost:30662/`* beállítása **átirányítási URL-címként**.
-> - Ha egyéni TCP-portot használ, használja a *`http://localhost:<port>/`* (ahol a *\<port >* az egyéni TCP-port száma).
->
-> #### <a name="set-a-redirect-url-for-visual-studio"></a>Átirányítási URL-cím beállítása a Visual studióhoz
-> A Visual Studio átirányítási URL-címének beszerzéséhez kövesse az alábbi lépéseket:
-> 1. A Megoldáskezelő területen válassza ki a projektet.
->
->    Megnyílik a **Tulajdonságok** ablak. Ha nem, nyomja le az F4 billentyűt.
->
->    ![A JavaScriptSPA projekt Tulajdonságok ablak](media/active-directory-develop-guidedsetup-javascriptspa-configure/vs-project-properties-screenshot.png)
->
-> 1. Másolja az **URL-címet** .
-> 1. Váltson vissza az **alkalmazás regisztrációja** ablaktáblára, és illessze be a másolt értéket az **átirányítási URL-címként**.
-
-#### <a name="configure-your-javascript-spa"></a>A JavaScript SPA konfigurálása
-
-1. A Project beállítása során létrehozott *index. html* fájlban adja meg az alkalmazás regisztrációs adatait. A fájl tetején a `<script></script>` címkén belül adja hozzá a következő kódot:
-
-    ```javascript
-    var msalConfig = {
-        auth: {
-            clientId: "<Enter_the_Application_Id_here>",
-            authority: "https://login.microsoftonline.com/<Enter_the_Tenant_info_here>"
-        },
-        cache: {
-            cacheLocation: "localStorage",
-            storeAuthStateInCookie: true
-        }
-    };
-    ```
-
-    Az elemek magyarázata:
-    - *\<Enter_the_Application_Id_here >* a regisztrált alkalmazáshoz tartozó **alkalmazás (ügyfél) azonosítója** .
-    - *\<Enter_the_Tenant_info_here >* a következő lehetőségek egyikére van beállítva:
-       - Ha az alkalmazás támogatja a *szervezeti címtárban lévő fiókokat*, cserélje le ezt az értéket a **bérlői azonosítóra** vagy a **bérlő nevére** (például *contoso.microsoft.com*).
-       - Ha az alkalmazás *minden szervezeti címtárban támogatja a fiókokat*, cserélje le ezt az értéket **szervezetekkel**.
-       - Ha az alkalmazás *minden szervezeti címtárban és személyes Microsoft-fiókban is támogatja a fiókokat*, cserélje le ezt az értéket **közösre**. Ha *csak a személyes Microsoft-fiókok*támogatását szeretné korlátozni, cserélje le ezt az értéket a **fogyasztókkal**.
 
 ## <a name="test-your-code"></a>A kód tesztelése
 
-Tesztelje a kódot az alábbi környezetek valamelyikének használatával.
+1. Állítsa be úgy a kiszolgálót, hogy az *index.html* fájl helyétől függő TCP-portot hallgasson. Node.js esetén indítsa el a webkiszolgálót a port meghallgatásához úgy, hogy az alkalmazásmappából parancssori parancssori parancssorban futtatja a parancsokat:
 
-### <a name="test-with-nodejs"></a>Tesztelés Node. js-sel
-
-Ha nem használja a Visual studiót, győződjön meg arról, hogy a webkiszolgáló elindult.
-
-1. Konfigurálja úgy a kiszolgálót, hogy az *index. html* fájljának helyétől függően TCP-portot hallgasson. A Node. js esetében indítsa el a webkiszolgálót a port figyeléséhez a következő parancsok parancssori parancssorból történő futtatásával az alkalmazás mappájából:
-
-    ```bash
-    npm install
-    node server.js
-    ```
-1. A böngészőben írja be a **http://\<span >\</span > localhost: 30662** vagy **http://\<span >\</span > localhost: {Port}** , ahol a *port* a webkiszolgáló által figyelt port. Ekkor meg kell jelennie az *index. html* fájl tartalmának és a **Bejelentkezés** gombnak.
-
-### <a name="test-with-visual-studio"></a>Tesztelés a Visual Studióval
-
-Ha a Visual studiót használja, válassza ki a Project megoldást, majd nyomja le az F5 billentyűt a projekt futtatásához. A böngésző megnyitja a http://<span></span>localhost: {Port} helyet, és a **Bejelentkezés** gombnak láthatónak kell lennie.
+   ```bash
+   npm install
+   npm start
+   ```
+1. A böngészőben **http://localhost:3000** adja **http://localhost:{port}** meg vagy a , ahol a *port* az a port, amelyet a webkiszolgáló figyel. Meg kell jelennie az *index.html* fájl tartalmának és a **Bejelentkezés** gombnak.
 
 ## <a name="test-your-application"></a>Az alkalmazás tesztelése
 
-Miután a böngésző betölti az *index. html* fájlt, válassza a **Bejelentkezés**lehetőséget. A rendszer felszólítja, hogy jelentkezzen be a Microsoft Identity platform-végponttal:
+Miután a böngésző betölti az *index.html* fájlt, válassza **a Bejelentkezés**lehetőséget. A rendszer kéri, hogy jelentkezzen be a Microsoft identity platform végpontjával:
 
 ![A JavaScript SPA-fiók bejelentkezési ablaka](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
 
-### <a name="provide-consent-for-application-access"></a>Adja meg az alkalmazás-hozzáférés beleegyezikét
+### <a name="provide-consent-for-application-access"></a>Hozzájárulás hozzájárulása az alkalmazáshoz való hozzáféréshez
 
-Amikor először jelentkezik be az alkalmazásba, a rendszer felszólítja, hogy adjon hozzáférést a profilhoz, és jelentkezzen be:
+Amikor először jelentkezik be az alkalmazásba, a rendszer kéri, hogy adjon hozzáférést a profiljához, és jelentkezzen be:
 
-![A "kért engedélyek" ablak](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspaconsent.png)
+![A "Kért engedélyek" ablak](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspaconsent.png)
 
-### <a name="view-application-results"></a>Alkalmazás eredményeinek megtekintése
+### <a name="view-application-results"></a>Alkalmazáseredmények megtekintése
 
-A bejelentkezést követően a felhasználói profil adatait a rendszer a Microsoft Graph API-válaszban jeleníti meg:
+A bejelentkezés után a rendszer a rendszer a következő ként jelenik meg a Microsoft Graph API-válaszában a felhasználói profil adatait adja vissza:
 
-![A Microsoft Graph API-hívás eredményei](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptsparesults.png)
+![A Microsoft Graph API-hívásának eredményei](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptsparesults.png)
 
 <!--start-collapse-->
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>További információ a hatókörökről és a delegált engedélyekről
 
-A Microsoft Graph API-nak a felhasználónak *. Read* hatókörrel kell rendelkeznie a felhasználói profil olvasásához. Alapértelmezés szerint a rendszer automatikusan hozzáadja ezt a hatókört a regisztrációs portálon regisztrált összes alkalmazáshoz. A Microsoft Graph egyéb API-jai, valamint a háttér-kiszolgálóhoz tartozó egyéni API-k további hatóköröket is igényelhetnek. A Microsoft Graph API-nak például a *naptárak. Read* hatókört kell megadnia a felhasználók naptárának listázásához.
+A Microsoft Graph API-nak a *user.read* hatókörre van szüksége a felhasználói profil olvasásához. Alapértelmezés szerint ez a hatókör automatikusan hozzáadódik a regisztrációs portálon regisztrált minden alkalmazáshoz. A Microsoft Graph egyéb API-k, valamint a háttérkiszolgáló egyéni API-jai további hatóköröket igényelhetnek. A Microsoft Graph API-nak például a *Mail.Read* hatókörre van szüksége a felhasználó e-mailjeinek listázásához.
 
-Ha egy alkalmazás kontextusában szeretné elérni a felhasználó naptárait, adja hozzá a *naptárakat. olvassa el* a delegált jogosultságokat az alkalmazás regisztrációs adataihoz. Ezután adja hozzá a *naptárak. Read* hatókört a `acquireTokenSilent` híváshoz.
+> [!NOTE]
+> A rendszer további jóváhagyásokat kérhet a felhasználótól, ahogy növeli a hatókörök számát.
 
->[!NOTE]
->A rendszer a hatókörök számának növelésével további hozzájárulásokat is kérhet a felhasználótól.
-
-Ha egy háttérbeli API-nak nincs szüksége hatókörre (nem ajánlott), a *clientId* használhatja a jogkivonatok beszerzésére irányuló hívások hatókörét.
+Ha egy háttér-API nem igényel hatókört (nem ajánlott), *használhatja az ügyfélazonosító* t, mint a jogkivonatok beszerzéséhez a hívások hatóköre.
 
 <!--end-collapse-->
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-Segítsen nekünk a Microsoft Identity platform fejlesztésében. Mondja el, mit gondol egy rövid, kétkérdéses felmérés végrehajtásával.
+Segítsen nekünk a Microsoft identitásplatformjának fejlesztésében. Mondja el, mit gondol egy rövid, kétkérdésű felmérés kitöltésével.
 
 > [!div class="nextstepaction"]
-> [Microsoft Identity platform-felmérés](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)
+> [Microsoft-identitásplatform-felmérés](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

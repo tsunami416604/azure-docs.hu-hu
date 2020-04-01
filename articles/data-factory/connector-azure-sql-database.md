@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: 52928b9a4d77a99f3d8b160713c7b4a7cade2d4e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f5065a0f4a2a96a747a45f64e00e86f7990bfb8
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80238772"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437794"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>Adatok másolása és átalakítása az Azure SQL Database-ben az Azure Data Factory használatával
 
@@ -143,7 +143,7 @@ Egyszerű szolgáltatásalapú Azure AD-alkalmazásjogkivonat-hitelesítés hasz
 4. Adja meg a szolgáltatás névvel szükséges engedélyeket, ahogy általában az SQL-felhasználók vagy mások. Futtassa a következő kódot. További lehetőségeket [ebben a dokumentumban](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)tartalmaz.
 
     ```sql
-    EXEC sp_addrolemember [role name], [your application name];
+    ALTER ROLE [role name] ADD MEMBER [your application name];
     ```
 
 5. Konfiguráljon egy Azure SQL Database-kapcsolt szolgáltatást az Azure Data Factoryban.
@@ -190,7 +190,7 @@ Felügyelt identitás-hitelesítés használatához kövesse az alábbi lépése
 3. Adja meg a Data Factory felügyelt identitás szükséges engedélyeket, ahogy általában az SQL-felhasználók és mások. Futtassa a következő kódot. További lehetőségeket [ebben a dokumentumban](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)tartalmaz.
 
     ```sql
-    EXEC sp_addrolemember [role name], [your Data Factory name];
+    ALTER ROLE [role name] ADD MEMBER [your Data Factory name];
     ```
 
 4. Konfiguráljon egy Azure SQL Database-kapcsolt szolgáltatást az Azure Data Factoryban.

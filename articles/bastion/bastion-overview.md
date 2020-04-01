@@ -7,16 +7,16 @@ ms.service: bastion
 ms.topic: overview
 ms.date: 01/31/2020
 ms.author: cherylmc
-ms.openlocfilehash: e995cba1c2ba06333d7bee507182693002cf4bbf
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 299a69675eed1ba958c6d13cf447407450df2abb
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76989491"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411102"
 ---
 # <a name="what-is-azure-bastion"></a>Mi az az Azure Bastion?
 
-Az Azure Bastion szolgáltatás egy új, teljesen platform által felügyelt PaaS-szolgáltatás, amelyet a virtuális hálózaton belül biztosít. Biztonságos és zökkenőmentes RDP/SSH-kapcsolatot biztosít a virtuális gépekhez közvetlenül az Azure Portalon SSL-en keresztül. Ha az Azure Bastionon keresztül csatlakozik, a virtuális gépeinek nincs szüksége nyilvános IP-címre.
+Az Azure Bastion szolgáltatás egy új, teljesen platform által felügyelt PaaS-szolgáltatás, amelyet a virtuális hálózaton belül biztosít. Biztonságos és zökkenőmentes RDP/SSH-kapcsolatot biztosít a virtuális gépekhez közvetlenül az Azure Portalon a TLS-en keresztül. Ha az Azure Bastionon keresztül csatlakozik, a virtuális gépeinek nincs szüksége nyilvános IP-címre.
 
 A Bástya biztonságos RDP- és SSH-kapcsolatot biztosít a virtuális hálózat összes virtuális gépéhez, amelyben ki van építve. Az Azure Bastion használatával megvédi a virtuális gépeket az RDP/SSH portok külvilág számára való kiteszik, miközben továbbra is biztonságos hozzáférést biztosít az RDP/SSH használatával. Az Azure Bastion segítségével közvetlenül az Azure Portalról csatlakozhat a virtuális géphez. Nincs szüksége további ügyfélre, ügynökre vagy szoftverre.
 
@@ -41,7 +41,7 @@ Ez az ábra egy Azure-bastion-telepítés architektúráját mutatja be. Ezen az
 A következő funkciók érhetők el:
 
 * **RDP és SSH közvetlenül az Azure portalon:** Közvetlenül is eljuthat az RDP- és SSH-munkamenethez közvetlenül az Azure Portalon egy kattintásnélküli élmény használatával.
-* **Távoli munkamenet SSL-en és tűzfalon keresztül az RDP/SSH-hoz:** Az Azure Bastion egy HTML5-alapú webes klienst használ, amely automatikusan streamelésre kerül a helyi eszközre, így az RDP/SSH munkamenet ssl-en keresztül érhető el a 443-as porton, amely lehetővé teszi a vállalati tűzfalak biztonságos áthaladását.
+* **Távoli munkamenet TLS-en keresztül és tűzfalbejárás RDP/SSH esetén:** Az Azure Bastion egy HTML5-alapú webes klienst használ, amely automatikusan streamelésre kerül a helyi eszközre, így az RDP/SSH munkamenet a 443-as porton lévő TLS-en keresztül érhető el, amely lehetővé teszi a vállalati tűzfalak biztonságos áthaladását.
 * **Nincs szükség nyilvános IP-címre az Azure virtuális gépen:** Az Azure Bastion megnyitja az RDP/SSH-kapcsolatot az Azure virtuális gépére a virtuális gép privát IP-címének használatával. Nincs szükség nyilvános IP-címre a virtuális gépen.
 * **Nem gond az NSG-k kezelésével:** Az Azure Bastion egy teljes körűen felügyelt platform PaaS-szolgáltatás az Azure-ból, amely belsőleg megerősített, hogy biztonságos RDP/SSH-kapcsolatot biztosítson. Nem kell nsg-ket alkalmaznia az Azure Bastion alhálózaton. Mivel az Azure Bastion privát IP-címén keresztül csatlakozik a virtuális gépekhez, konfigurálhatja az NSG-ket úgy, hogy csak az Azure Bastion RDP/SSH-t engedélyezze. Ez eltávolítja az NSG-k kezelésével kapcsolatos minden olyan alkalommal, amikor biztonságosan kell csatlakoznia a virtuális gépekhez.
 * **Védelem a portbeolvasás ellen:** Mivel nem kell a virtuális gépeket nyilvános internetnek kitenni, a virtuális gépek et a virtuális hálózaton kívül található rosszindulatú és rosszindulatú felhasználók védik a portok általi vizsgálatellen.

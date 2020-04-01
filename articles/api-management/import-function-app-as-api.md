@@ -1,5 +1,5 @@
 ---
-title: Azure-függvényalkalmazás importálása API-ként API Management
+title: Azure-függvényalkalmazás importálása API-ként az API Managementben
 titleSuffix: Azure API Management
 description: Ez az oktatóanyag bemutatja, hogyan lehet az Azure API Management használatával Azure-függvényalkalmazásokat API-ként importálni.
 services: api-management
@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: apimpm
 ms.openlocfilehash: cec1d3e07800dd3093ca79a87cafcf5fceafbf2f
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77209188"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Azure-függvényalkalmazás importálása API-ként az Azure API Management használatával
@@ -42,7 +42,7 @@ Az alábbiakat fogja elsajátítani:
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="add-new-api-from-azure-function-app"></a> Azure-függvényalkalmazás importálása új API-ként
+## <a name="import-an-azure-function-app-as-a-new-api"></a><a name="add-new-api-from-azure-function-app"></a> Azure-függvényalkalmazás importálása új API-ként
 
 Kövesse az alábbi lépéseket egy új API létrehozásához egy Azure-függvényalkalmazásból.
 
@@ -75,9 +75,9 @@ Kövesse az alábbi lépéseket egy új API létrehozásához egy Azure-függvé
 
     ![Hozzáadás függvényalkalmazásból](./media/import-function-app-as-api/add-06.png)
 
-8. Kattintson a  **Create** (Létrehozás) gombra.
+8. Kattintson **a Létrehozás gombra.**
 
-## <a name="append-azure-function-app-to-api"></a> Azure-függvényalkalmazás hozzáfűzése egy már létező API-hoz
+## <a name="append-azure-function-app-to-an-existing-api"></a><a name="append-azure-function-app-to-api"></a> Azure-függvényalkalmazás hozzáfűzése egy már létező API-hoz
 
 Kövesse az alábbi lépéseket, hogy egy Azure-függvényalkalmazást hozzáfűzzön egy már létező API-hoz.
 
@@ -107,18 +107,18 @@ Kövesse az alábbi lépéseket, hogy egy Azure-függvényalkalmazást hozzáfű
 
     ![Hozzáadás függvényalkalmazásból](./media/import-function-app-as-api/add-05.png)
 
-8. Kattintson az **Importálás** gombra.
+8. Kattintson **az Importálás gombra.**
 
     ![Hozzáfűzés függvényalkalmazásból](./media/import-function-app-as-api/append-04.png)
 
-## <a name="authorization"></a>Engedély
+## <a name="authorization"></a><a name="authorization"></a>Engedélyezési
 
 Az Azure-függvényalkalmazás importáláskor automatikusan létrehozza a következőket:
 
-* A függvényalkalmazáson belüli APIM-{az*Azure API Management szolgáltatási példányának neve*} nevű gazdagép kulcsa,
-* Megnevezett érték az Azure API Management példányban, amelynek neve {az*azure függvényalkalmazás példánynév*} – kulcs, amely a létrehozott gazdagép kulcsát tartalmazza.
+* Host kulcs a függvényalkalmazáson belül az apim-{*az Azure API Management szolgáltatáspéldány neve*},
+* Elnevezett érték az Azure API Management-példányon belül a {*az Azure Function App-példány neve*}-kulcs, amely tartalmazza a létrehozott állomáskulcsot.
 
-A 2019. április 4. után létrehozott API-k esetében a gazdagép kulcsát a rendszer a API Management lévő HTTP-kérésekben továbbítja a fejlécben található függvényalkalmazás. A régebbi API-k [lekérdezési paraméterként](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization)adják át a gazdagép kulcsát. Ez a viselkedés a függvényalkalmazáshoz társított *háttér* -entitás `PATCH Backend` [REST API hívásával](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract) módosítható.
+2019. április 4-e után létrehozott API-k esetében az állomáskulcs http-kérelmekben kerül átadásra az API Management től a függvényalkalmazásnak egy fejlécben. A régebbi API-k [lekérdezési paraméterként](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization)adják át az állomáskulcsot. Ez a `PATCH Backend` viselkedés a függvényalkalmazáshoz társított *háttérentitás* [REST API-hívásán](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract) keresztül módosítható.
 
 > [!WARNING]
 > Az új Azure-függvényalkalmazás gazdagépkulcsának vagy az Azure API Management névvel ellátott értékének eltávolítása vagy megváltoztatása megszakítja a szolgáltatások közti kommunikációt. Az értékek nem szinkronizálódnak automatikusan.
@@ -143,7 +143,7 @@ Az Azure API Management példányában válassza a **Névvel ellátott értékek
 
 ![Hozzáadás függvényalkalmazásból](./media/import-function-app-as-api/keys-01.png)
 
-## <a name="test-in-azure-portal"></a>Az új API tesztelése a Azure Portal
+## <a name="test-the-new-api-in-the-azure-portal"></a><a name="test-in-azure-portal"></a>Az új API tesztelése az Azure Portalon
 
 Az Azure Portalról közvetlenül meghívhat műveleteket. Az Azure Portalon kényelmesen megtekintheti és tesztelheti az API-k műveleteit.  
 
@@ -153,15 +153,15 @@ Az Azure Portalról közvetlenül meghívhat műveleteket. Az Azure Portalon ké
 
 3. Válasszon ki egy művelet.
 
-    Az oldalon megjelennek a lekérdezési paraméterek és a fejlécek mezői. Az egyik fejléc az **Ocp-Apim-Subscription-Key**, amely az ehhez az API-hoz társított termék előfizetési kulcsára vonatkozik. Ha Ön hozta létre az API Management-példányt, akkor már eleve rendszergazdának számít, így a kulcsot automatikusan kitölti a rendszer. 
+    Az oldalon megjelennek a lekérdezési paraméterek és a fejlécek mezői. Az egyik fejléc az **Ocp-Apim-Subscription-Key, az API-hoz**társított termék előfizetési kulcsához. Ha Ön hozta létre az API Management-példányt, akkor már eleve rendszergazdának számít, így a kulcsot automatikusan kitölti a rendszer. 
 
-4. Kattintson a **Küldés** gombra.
+4. Válassza a **Küldés**lehetőséget.
 
     A háttérrendszer a **200 OK** üzenetet és néhány adatot küld válaszként.
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Közzétett API átalakítása és védelme](transform-api.md)

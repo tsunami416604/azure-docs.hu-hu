@@ -9,12 +9,12 @@ ms.author: magoedte
 keywords: Azure automation, DSC, powershell, kívánt állapotkonfiguráció, frissítéskezelés, változáskövetés, leltár, runbookok, python, grafikus, hibrid
 ms.date: 03/24/2020
 ms.topic: overview
-ms.openlocfilehash: 85a6f8dcb9f551d81a607adc9ae482f4025d804f
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 5ffe845178fffc252e95794bfb58801c9bff16a7
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366348"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411232"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Mi az Azure Arc kiszolgálókhoz (előzetes verzió)
 
@@ -147,7 +147,7 @@ A Windows és Linux Azure Connected Machine ügynök manuálisan vagy automatiku
 
 ### <a name="agent-status"></a>Ügynök állapota
 
-A csatlakoztatott gép ügynök e-mailben normál szívverési üzenetet küld a szolgáltatásnak. Ha 15 percig nem érkezik meg, a gép offline állapotúnak minősül, és az állapot automatikusan **leválasztva** lesz a portálon. Amikor a csatlakoztatott számítógép ügynöke további szívverési üzenetet kap, az állapota automatikusan **Csatlakoztatva**állapotra változik.
+A csatlakoztatott gép ügynök e-mailben normál szívverési üzenetet küld a szolgáltatásnak. Ha a szolgáltatás leállítja a szívveréses üzenetek fogadását egy gépről, a rendszer offline állapotúnak tekinti a gépet, és az állapot 15–30 percen belül megszakad a portálon **leválasztva** állapotra. Amikor a csatlakoztatott számítógép ügynöke további szívverési üzenetet kap, az állapota automatikusan **Csatlakoztatva**állapotra változik.
 
 ## <a name="install-and-configure-agent"></a>Ügynök telepítése és konfigurálása
 

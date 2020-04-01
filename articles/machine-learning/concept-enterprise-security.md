@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 01/09/2020
-ms.openlocfilehash: d945540a769f01c33ca3d3e467fe7c983fb5e286
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/13/2020
+ms.openlocfilehash: 359fd7fc787db5710deca75dd562215d25ed9148
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80287356"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437490"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Nagyvállalati biztonság az Azure Machine Learning számára
 
@@ -107,6 +107,28 @@ Az Azure Machine Learning más Azure-szolgáltatásokra támaszkodik a számít�
 
 További információ: [Kísérletek futtatása és következtetés a virtuális hálózatban.](how-to-enable-virtual-network.md)
 
+Engedélyezheti az Azure Private Linket a munkaterületéhez is. A Privát hivatkozás lehetővé teszi, hogy korlátozza a kommunikációt a munkaterületre egy Azure virtuális hálózatról. További információ: [A Privát hivatkozás konfigurálása.](how-to-configure-private-link.md)
+
+> [!TIP]
+> A virtuális hálózat és a privát kapcsolat kombinálásával megvédheti a munkaterület és más Azure-erőforrások közötti kommunikációt. Egyes kombinációk azonban enterprise edition munkaterületet igényelnek. Az alábbi táblázat segítségével megismerheti, hogy milyen forgatókönyveket igényel az Enterprise Edition:
+>
+> | Forgatókönyv | Enterprise</br>Kiadás | Basic</br>Kiadás |
+> | ----- |:-----:|:-----:| 
+> | Nincs virtuális hálózat vagy privát kapcsolat | ✔ | ✔ |
+> | Munkaterület privát hivatkozás nélkül. Egyéb erőforrások (az Azure Container Registry kivételével) egy virtuális hálózatban | ✔ | ✔ |
+> | Munkaterület privát hivatkozás nélkül. Egyéb források a Privát linkkel | ✔ | |
+> | Munkaterület a Privát hivatkozással. Egyéb erőforrások (az Azure Container Registry kivételével) egy virtuális hálózatban | ✔ | ✔ |
+> | Munkaterület és bármely más erőforrás a Privát hivatkozással | ✔ | |
+> | Munkaterület a Privát hivatkozással. Egyéb erőforrások privát kapcsolat vagy virtuális hálózat nélkül | ✔ | ✔ |
+> | Azure Container Registry virtuális hálózatban | ✔ | |
+> | Ügyfél által kezelt kulcsok a munkaterülethez | ✔ | |
+> 
+
+> [!WARNING]
+> Az Azure Machine Learning számítási példányok előzetes verziója nem támogatott egy olyan munkaterületen, ahol a Privát kapcsolat engedélyezve van.
+> 
+> Az Azure Machine Learning nem támogatja az Azure Kubernetes-szolgáltatás használatát, amelynek privát kapcsolata engedélyezve van. Ehelyett használhatja az Azure Kubernetes szolgáltatást egy virtuális hálózatban. További információ: [Secure Azure ML kísérletezés és következtetési feladatok egy Azure virtuális hálózaton belül.](how-to-enable-virtual-network.md)
+
 ## <a name="data-encryption"></a>Adattitkosítás
 
 ### <a name="encryption-at-rest"></a>Titkosítás inaktív állapotban
@@ -123,6 +145,8 @@ Az Azure Machine Learning az Azure Machine Learning munkaterületéhez és előf
 Ha tudni szeretné, hogyan használhatja saját kulcsait az Azure Blob storage-ban tárolt adatokhoz, olvassa el az [Azure Storage titkosítása az ügyfelek által felügyelt kulcsokkal az Azure Key Vaultban című témakörben.](../storage/common/storage-encryption-keys-portal.md)
 
 A betanítási adatok általában az Azure Blob storage-ban is tárolódnak, így a betanítási számítási célok számára is elérhetők. Ezt a tárolót nem az Azure Machine Learning kezeli, hanem távoli fájlrendszerként a célok kiszámításához van csatlakoztatva.
+
+Ha el kell __forgatnia vagy vissza kell vonnia__ a kulcsot, ezt bármikor megteheti. Kulcs elforgatásakor a tárfiók az új kulcs (legújabb verzió) használatával kezdi meg az inaktív adatok titkosítását. Egy kulcs visszavonásakor (letiltása) a tárfiók gondoskodik a sikertelen kérelmek. Általában egy órát vesz igénybe, amíg a rotáció vagy a visszavonás hatékony lesz.
 
 A hozzáférési kulcsok újragenerálásáról a [Tároló-hozzáférési kulcsok újragenerálása](how-to-change-storage-access-key.md)című témakörben talál további információt.
 
@@ -157,6 +181,8 @@ Ez a Cosmos DB-példány egy Microsoft által felügyelt erőforráscsoportban j
 > * Ha törölnie kell ezt a Cosmos DB-példányt, törölnie kell az Azure Machine Learning-munkaterületet, amely azt használja. 
 > * A Cosmos DB-fiók alapértelmezett [__kérelemegysége__](../cosmos-db/request-units.md) __8000.The__default Request Units for this Cosmos DB account is set at 8000 . Az érték módosítása nem támogatott. 
 
+Ha el kell __forgatnia vagy vissza kell vonnia__ a kulcsot, ezt bármikor megteheti. Kulcs elforgatásakor a Cosmos DB az új kulcs (legújabb verzió) használatával kezdi meg az inaktív adatok titkosítását. Egy kulcs visszavonásakor (letiltásakor) a Cosmos DB gondoskodik a sikertelen kérelmekről. Általában egy órát vesz igénybe, amíg a rotáció vagy a visszavonás hatékony lesz.
+
 Az ügyfél által felügyelt kulcsokról a Cosmos DB-vel kapcsolatos további információkért [lásd: Ügyfél által felügyelt kulcsok konfigurálása az Azure Cosmos DB-fiókjához.](../cosmos-db/how-to-setup-cmk.md)
 
 #### <a name="azure-container-registry"></a>Azure Container Registry
@@ -172,7 +198,21 @@ Egy példa egy munkaterület létrehozásához egy meglévő Azure Container Reg
 
 #### <a name="azure-container-instance"></a>Azure Container Instance
 
-Az Azure Container Instance nem támogatja a lemeztitkosítást. Ha lemeztitkosításra van szüksége, azt javasoljuk, hogy egy [Azure Kubernetes-szolgáltatás példánya](how-to-deploy-azure-kubernetes-service.md) helyett. Ebben az esetben előfordulhat, hogy az Azure Machine Learning szerepköralapú hozzáférés-vezérlési támogatását is szeretné használni, hogy megakadályozza az Azure Container-példány üzembe helyezését az előfizetésében.
+Titkosíthatja az üzembe helyezett Azure Container Instance (ACI) erőforrást az ügyfél által felügyelt kulcsok használatával. Az ACI-hoz használt ügyfél által felügyelt kulcs tárolható az Azure Key Vaultban a munkaterülethez. A kulcs létrehozásáról az [Adatok titkosítása ügyfél által felügyelt kulccsal](../container-instances/container-instances-encrypt-data.md#generate-a-new-key)című témakörben talál további információt.
+
+Ha használni szeretné a kulcsot egy modell Azure Container Instance `AciWebservice.deploy_configuration()`üzembe helyezésekor, hozzon létre egy új központi telepítési konfigurációt a használatával. Adja meg a legfontosabb információkat a következő paraméterek használatával:
+
+* `cmk_vault_base_url`: A kulcsot tartalmazó kulcstartó URL-címe.
+* `cmk_key_name`: A kulcs neve.
+* `cmk_key_version`: A kulcs verziója.
+
+A központi telepítési konfiguráció kondilétrehozásáról és használatáról az alábbi cikkekben talál további információt:
+
+* [AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-) – hivatkozás
+* [Az üzembe helyezés módja és helye](how-to-deploy-and-where.md)
+* [Modell üzembe helyezése az Azure Container-példányok ba](how-to-deploy-azure-container-instance.md)
+
+Az ügyfél által felügyelt kulcs ACI-val való használatáról az [Adatok titkosítása ügyfél által felügyelt kulccsal](../container-instances/container-instances-encrypt-data.md#encrypt-data-with-a-customer-managed-key)című témakörben talál további információt.
 
 #### <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 

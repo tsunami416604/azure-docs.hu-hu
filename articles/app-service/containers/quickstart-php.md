@@ -1,24 +1,24 @@
 ---
-title: 'Gyors útmutató: PHP-alkalmazás létrehozása Linuxon'
-description: Ismerkedjen meg a Linux-alkalmazásokkal Azure App Service az első PHP-alkalmazás üzembe helyezésével a App Service Linux-tárolójában.
+title: 'Rövid útmutató: PHP alkalmazás létrehozása Linuxon'
+description: Az Azure App Service Linux-alkalmazásai nak első üzembe helyezésével az első PHP-alkalmazás egy Linux-tárolóba való üzembe helyezésével.
 ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
 ms.date: 03/27/2019
-ms.custom: seodec18
-ms.openlocfilehash: 7608c10f2d101a3c24209a5e09bccc6dc31401ca
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.custom: mvc, cli-validatem seodec18
+ms.openlocfilehash: 5a2abaf49071c90ea4fe0d5b5a454ce91f2cb1e4
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524104"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80046059"
 ---
-# <a name="create-a-php-app-in-app-service-on-linux"></a>PHP-alkalmazás létrehozása App Service Linuxon
+# <a name="create-a-php-app-in-app-service-on-linux"></a>PHP-alkalmazás létrehozása linuxos App Service szolgáltatásban
 
 > [!NOTE]
-> Ebben a cikkben egy alkalmazást helyezünk üzembe a Linuxon futó App Service-ben. A _Windows_rendszeren való app Service telepítéséhez tekintse meg [a PHP-alkalmazás létrehozása az Azure-ban](../app-service-web-get-started-php.md)című témakört.
+> Ebben a cikkben egy alkalmazást helyezünk üzembe a Linuxon futó App Service-ben. A _Windows_App Service szolgáltatásba való üzembe helyezésről a [PHP-alkalmazás létrehozása az Azure-ban](../app-service-web-get-started-php.md)című témakörben található.
 >
 
-A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy PHP-alkalmazást a Linuxon való Azure App Service a [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)használatával.
+[App Service linuxos](app-service-linux-intro.md) nyújt egy jól skálázható, önjavító web hosting szolgáltatás segítségével a Linux operációs rendszer. Ez a rövid útmutató bemutatja, hogyan telepíthet PHP-alkalmazást az Azure App Service-re Linuxon a [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)használatával.
 
 ![Az Azure-ban futó mintaalkalmazás](media/quickstart-php/hello-world-in-browser.png)
 
@@ -28,10 +28,10 @@ A cikk lépéseit Mac, Windows vagy Linux rendszert futtató gépen is követhet
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A gyorsútmutató elvégzéséhez:
+Az oktatóanyag elvégzéséhez:
 
 * <a href="https://git-scm.com/" target="_blank">A Git telepítése</a>
-* <a href="https://php.net" target="_blank">A PHP telepítése</a>
+* <a href="https://php.net" target="_blank">PHP telepítése</a>
 
 ## <a name="download-the-sample"></a>A minta letöltése
 
@@ -70,7 +70,7 @@ A terminálablakban nyomja le a **Ctrl+C** billentyűkombinációt a webkiszolg�
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-php-linux-no-h.md)] 
 
-Nyissa meg a webhelyet, és tekintse meg az újonnan létrehozott alkalmazást a beépített képpel. Cserélje le _&lt;az alkalmazás nevét >_ az alkalmazás nevére.
+Tallózással keresse meg a webhelyet, hogy az újonnan létrehozott alkalmazás beépített képpel jelenjen meg. Cserélje _ &lt;_ le az alkalmazás nevét>az alkalmazás nevére.
 
 ```bash
 http://<app_name>.azurewebsites.net
@@ -78,7 +78,7 @@ http://<app_name>.azurewebsites.net
 
 Az új alkalmazásnak így kell kinéznie:
 
-![Alkalmazás üres lapja](media/quickstart-php/app-service-web-service-created.png)
+![Alkalmazáslap kiürítése](media/quickstart-php/app-service-web-service-created.png)
 
 [!INCLUDE [Push to Azure](../../../includes/app-service-web-git-push-to-azure.md)] 
 
@@ -115,11 +115,11 @@ Tallózással keresse meg az üzembe helyezett alkalmazást a webböngésző has
 http://<app_name>.azurewebsites.net
 ```
 
-A PHP-mintakód a beépített rendszerképpel rendelkező Linuxon App Service fut.
+A PHP mintakód az App Service-ben fut Linuxon beépített lemezképpel.
 
 ![Az Azure-ban futó mintaalkalmazás](media/quickstart-php/hello-world-in-browser.png)
 
-**Gratulálunk!** Elvégezte az első PHP-webalkalmazás üzembe helyezését a Linuxon futó App Service-ben.
+**Gratulálok!** Elvégezte az első PHP-webalkalmazás üzembe helyezését a Linuxon futó App Service-ben.
 
 ## <a name="update-locally-and-redeploy-the-code"></a>A kód frissítése helyileg és ismételt üzembe helyezése
 
@@ -142,13 +142,13 @@ Az üzembe helyezés befejezését követően váltson vissza **Az alkalmazás m
 
 ## <a name="manage-your-new-azure-app"></a>Az új Azure-alkalmazás kezelése
 
-A létrehozott alkalmazás kezeléséhez lépjen a <a href="https://portal.azure.com" target="_blank">Azure Portal</a> .
+Nyissa meg az <a href="https://portal.azure.com" target="_blank">Azure Portalon</a> a létrehozott alkalmazás kezeléséhez.
 
-A bal oldali menüben kattintson a **app Services**elemre, majd kattintson az Azure-alkalmazás nevére.
+A bal oldali menüben kattintson az **App Services**elemre, majd az Azure-alkalmazás nevére.
 
 ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/quickstart-php/php-docs-hello-world-app-service-list.png)
 
-Megtekintheti az alkalmazás áttekintés lapját. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a tallózás, leállítás, elindítás, újraindítás és törlés.
+Megjelenik az alkalmazás áttekintése lap. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a tallózás, leállítás, elindítás, újraindítás és törlés.
 
 ![Az App Service lap az Azure Portalon](media/quickstart-php/php-docs-hello-world-app-service-detail.png)
 
@@ -156,10 +156,10 @@ A bal oldali menü az alkalmazás konfigurálásához biztosít különböző ol
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: PHP-alkalmazás és MySQL](tutorial-php-mysql-app.md)
+> [Bemutató: PHP alkalmazás a MySQL-rel](tutorial-php-mysql-app.md)
 
 > [!div class="nextstepaction"]
-> [A PHP-alkalmazás konfigurálása](configure-language-php.md)
+> [PHP alkalmazás konfigurálása](configure-language-php.md)

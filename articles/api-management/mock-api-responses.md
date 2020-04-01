@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: 6841695cca5d3864e6823085520d8e9162e54043
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70067941"
 ---
 # <a name="mock-api-responses"></a>API-válaszok utánzása
@@ -41,7 +41,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 + Az [Azure API Management terminológiájának](api-management-terminology.md) ismerete.
 + Az [Azure API Management-szabályzatok alapelveinek](api-management-howto-policies.md) ismerete.
-+ Hajtsa végre a következő rövid útmutatót: [Hozzon létre egy Azure API Management-példányt](get-started-create-service-instance.md).
++ Tekintse át a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
 
 ## <a name="create-a-test-api"></a>Tesztelési API létrehozása 
 
@@ -67,7 +67,7 @@ A jelen szakaszban ismertetett lépések bemutatják, hogyan hozható létre egy
     |---------------------|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | **Megjelenített név**    | *Teszthívás*                       | A **fejlesztői portálon** megjelenített név.                                                                                                                                       |
     | **URL** (HTTP-művelet) | GET                               | Az előre meghatározott HTTP-műveletek közül választhat.                                                                                                                                         |
-    | **URL-cím**             | */test*                           | Az API URL-címe.                                                                                                                                                                       |
+    | **Url**             | */teszt*                           | Az API URL-címe.                                                                                                                                                                       |
     | **Leírás**     |                                   | Adja meg a művelet leírását, amely dokumentációként szolgál majd a **fejlesztői portálon** az API-t használó fejlesztők számára.                                                    |
     | **Lekérdezés** lap       |                                   | Hozzáadhat lekérdezési paramétereket. A név és a leírás megadása mellett megadhatja az ehhez a paraméterhez rendelhető értékeket is. Az értékek egyike megjelölhető alapértelmezettként (választható). |
     | **Kérés** lap     |                                   | Definiálhatja a kéréshez tartozó tartalomtípusokat, példákat és sémákat.                                                                                                                                  |
@@ -97,7 +97,7 @@ A jelen szakaszban ismertetett lépések bemutatják, hogyan hozható létre egy
 
     ![Válaszutánzás engedélyezése](./media/mock-api-responses/mock-api-responses-set-mocking.png)
 
-7. Kattintson a **Save** (Mentés) gombra.
+7. Kattintson a **Mentés** gombra.
 
 ## <a name="test-the-mocked-api"></a>Az utánzott API tesztelése
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2019
 ms.author: memildin
-ms.openlocfilehash: 60a88e667918533f2c507846fa75b0e036ba5262
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd84058c8421d144678c91fac3e5671511d0fd4a
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77921283"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435504"
 ---
 # <a name="upgrade-to-standard-tier-for-enhanced-security"></a>Frissítés standard szintre a fokozott biztonság érdekében
 Az Azure Security Center egységes biztonsági felügyeletet és fejlett fenyegetésvédelmet biztosít az Azure-ban, a helyszínen és egyéb felhőszolgáltatásokban futó számítási feladatokhoz. Láthatóságot és vezérlést biztosít a hibrid felhőbeli számítási feladatok, a fenyegetéseknek való kitettséget csökkentő aktív védelem és az intelligens észlelés felett, amely segít lépést tartani a gyorsan változó kibertámadásokkal.
@@ -29,7 +29,7 @@ A Security Center szolgáltatást két szinten biztosítjuk:
 - Az **ingyenes** szint engedélyezve van az összes Azure-előfizetések, ha először látogat az Azure Security Center irányítópultján az Azure Portalon az első alkalommal, vagy ha engedélyezve van programozott API-n keresztül. Az ingyenes szint biztonsági szabályzatot, folyamatos biztonsági értékelést és végrehajtható biztonsági javaslatokat biztosít az Azure-erőforrások védelme érdekében.
 - A **Standard** szint kiterjeszti az ingyenes szint képességeit a magán- és más nyilvános felhőkben futó számítási feladatokra, egységes biztonsági felügyeletet és fenyegetésvédelmet biztosítva a hibrid felhőbeli számítási feladatokban. A standard szint fenyegetésvédelmi képességekkel is rendelkezik, amelyek beépített viselkedéselemzéssel és gépi tanulással azonosítják a támadásokat és a nulladik napi biztonsági réseket, a hozzáférést és az alkalmazásvezérlőket a hálózati támadásoknak és rosszindulatú programoknak való kitettség csökkentése érdekében. Emellett a standard szintű biztonsági résa a virtuális gépek biztonsági résének leolvasását is növeli. Kipróbálhatja a standard szint ingyen. A Security Center szabvány támogatja az Azure-erőforrásokat, beleértve a virtuális gépeket, a virtuálisgép-méretezési csoportokat, az App Service-t, az SQL-kiszolgálókat és a Storage-fiókokat. Ha rendelkezik az Azure Security Center szabvány, leiratkozhat a támogatás erőforrás-típus alapján. 
 
-A virtuális gépek ingyenes szintű biztonsági felméréseinek többsége, valamint számos szabványos szintű biztonsági riasztás a Microsoft Monitoring Agent (MMA) képesség telepítéséhez szükséges. Engedélyezheti, hogy a Security Center automatikus kiépítése automatikusan telepítse az ügynököt az Azure-beli virtuális gépekhez.
+A virtuális gépek ingyenes szintű biztonsági felméréseinek többsége, valamint számos szabványos szintű biztonsági riasztás a Log Analytics-ügynök képesség telepítését igényli. Engedélyezheti, hogy a Security Center automatikus kiépítése automatikusan telepítse az ügynököt az Azure-beli virtuális gépekhez.
 
 ## <a name="try-standard-tier-free-for-30-days"></a>Próbálja ki a standard szintű ingyenes 30 napig
 A standard szint az első 30 napban ingyenes. 30 nap elteltével, ha úgy dönt, hogy folytatja a szolgáltatás használatát, automatikusan megkezdjük a használat díjának díját.

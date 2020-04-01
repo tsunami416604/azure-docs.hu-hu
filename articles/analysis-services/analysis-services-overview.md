@@ -4,21 +4,21 @@ description: Ismerje meg az Azure Analysis Services teljes körűen felügyelt p
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 02/20/2020
+ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3a18218635b5fc576bd9255eb73c136756ac3caa
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 7eb46e0eda1cd702f26829fac49ffe0e7916626f
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240603"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410376"
 ---
 # <a name="what-is-azure-analysis-services"></a>Mi az Azure Analysis Services?
 
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
 
-Az Azure Analysis Services egy teljes körűen felügyelt platformszolgáltatás (PaaS), amely vállalati szintű adatmodellezésre biztosít lehetőséget a felhőben. E szolgáltatás adategyesítési és modellezési funkcióival több forrásból egyesítheti az adatokat, mérőszámokat határozhat meg, és egyetlen, megbízható, táblázatos szemantikai adatmodellben biztosíthatja az adatok védelmét. Az adatmodell egyszerűbb és gyorsabb módot biztosít a felhasználók számára, hogy nagy mennyiségű adatot keressenek az ad hoc adatok elemzéséhez.
+Az Azure Analysis Services egy teljes körűen felügyelt platformszolgáltatás (PaaS), amely vállalati szintű adatmodellezésre biztosít lehetőséget a felhőben. E szolgáltatás adategyesítési és modellezési funkcióival több forrásból egyesítheti az adatokat, mérőszámokat határozhat meg, és egyetlen, megbízható, táblázatos szemantikai adatmodellben biztosíthatja az adatok védelmét. Az adatmodell segítségével a felhasználók egyszerűbben és gyorsabban végezhetnek alkalmi adatelemzést olyan eszközökkel, mint a Power BI és az Excel.
 
 ![Adatforrások](./media/analysis-services-overview/aas-overview-overall.png)
 
@@ -38,7 +38,7 @@ Az Azure Analysis Services **fejlesztői**, **alap-** és **standard** szinten i
 
 ### <a name="developer-tier"></a>Fejlesztői szint
 
-Ezt a szintet kiértékeléshez, valamint fejlesztési és tesztelési forgatókönyvekhez ajánljuk. Egyetlen csomagban tartalmazza a standard szintű csomagéval megegyező funkciókat, de korlátozott feldolgozási teljesítménnyel, QPU-val és memóriamérettel rendelkezik. Kibővített lekérdezésreplika ehhez a szinthez *nem érhető el*. Ehhez a szinthez nem tartozik SLA.
+Ezt a szintet kiértékeléshez, valamint fejlesztési és tesztelési forgatókönyvekhez ajánljuk. Egyetlen csomagban tartalmazza a standard szintű csomagéval megegyező funkciókat, de korlátozott feldolgozási teljesítménnyel, QPU-val és memóriamérettel rendelkezik. A lekérdezésreplika horizontális *felskálázása nem érhető el* ehhez a réteghez. Ehhez a szinthez nem tartozik SLA.
 
 |Felkészülés  |QPU-k  |Memória (GB)  |
 |---------|---------|---------|
@@ -208,6 +208,10 @@ A Microsoft Analysis Services Projects ingyenesen telepíthető VSIX-csomagként
 
 Felügyelheti kiszolgálóit és modelladatbázisait az [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) segítségével. Kapcsolódhat a felhőalapú kiszolgálóihoz. Közvetlenül az XMLA lekérdezési ablakból futtathat TMSL-szkripteket. A feladatokat e szkriptekkel és a PowerShell használatával automatizálhatja. Gyakran jelennek meg új szolgáltatások és funkciók – az SSMS havonta frissül.
 
+### <a name="open-source-tools"></a>Nyílt forráskódú eszközök
+
+Az Analysis Services élénk fejlesztői közösséggel rendelkezik, akik eszközöket hoznak létre. Győződjön meg róla, hogy nézd meg [táblázatos szerkesztő](https://tabulareditor.github.io/), egy nyílt forráskódú eszköz létrehozására, fenntartására és kezelésére táblázatos modellek segítségével intuitív, könnyű szerkesztő. [A DAX Studio](https://daxstudio.org/)egy nagyszerű nyílt forráskódú eszköz a DAX-készítéshez, a diagnózishoz, a teljesítményhangoláshoz és az elemzéshez.
+
 ### <a name="powershell"></a>PowerShell
 
 Kiszolgálói erőforrás-kezelési feladatok, például kiszolgálói erőforrások létrehozása, a kiszolgálói műveletek felfüggesztése vagy folytatása, vagy a szolgáltatási szint (szint) módosítása Azure PowerShell-parancsmagokat használ. Az olyan egyéb adatbázis-kezelési feladatok, mint például a szerepkörtagok hozzáadása vagy eltávolítása, illetve a TMSL-szkriptek feldolgozása vagy futtatása az SqlServer modul parancsmagjait használják. További információ: [Az Azure Analysis Services kezelése a PowerShell-lel](analysis-services-powershell.md).
@@ -232,19 +236,15 @@ Az Azure Analysis Services támogatja a [dinamikus felügyeleti nézetek (DMV-k)
 
 Itt található az Azure Analysis Services dokumentációja. A cikkeket a böngésző képernyőjének bal oldalán látható tartalomjegyzékben keresheti meg. 
 
-Mivel az Azure Analysis Services táblázatos modelljei nagyjából megegyeznek az SQL Server Analysis Services táblázatos modelljeivel, az [SQL Server Analysis Services dokumentációjában](https://docs.microsoft.com/analysis-services/analysis-services-overview)a megosztott adatmodellezési oktatóanyagok, a fogalmi, eljárási, fejlesztői és referenciacikkek széles tárkönyvtára található. Az SQL Server Analysis Services dokumentációjában szereplő cikkek esetében a cím alatt megjelenő APPLIES TO szalagcím mutatja, hogy az adott anyag az Azure Analysis Servicesre is érvényes-e.
+Mivel az Azure Analysis Services táblázatos modelljei nagyjából megegyeznek az SQL Server Analysis Services és a Power BI Premium adatkészletek táblázatos modelljeivel, az [Analysis Services dokumentációjában](https://docs.microsoft.com/analysis-services/?view=azure-analysis-services-current)a megosztott adatmodellezési oktatóanyagok, a fogalmi, az eljárási, fejlesztői és a referenciacikkek széles tára található. A megosztott Analysis Services dokumentációjában található cikkek azt mutatják, hogy a cím alatti szalaghirdetésen az Azure Analysis Services-re is vonatkoznak.Articles in the shared Analysis Services documentation show if they also apply to banner under the title. A tartalomjegyzék feletti Verzióválasztóval is megtekintheti, hogy csak azok a cikkek jelenjenek meg, amelyek a használt platformra vonatkoznak.
 
 ![Közös dokumentáció](./media/analysis-services-overview/aas-overview-applies-to.png)
 
 ### <a name="contribute"></a>Számítunk közreműködésére!
 
-Az Analysis Services dokumentációja, ahogy ez a cikk is, nyílt hozzáférésű. Ha rendelkezik GitHub-fiókkal, a cikk szerkesztéséhez kattintson a böngésző képernyőjének jobb felső sarkában látható Szerkesztés (ceruza) ikonra. Nyissa meg a böngésző szerkesztőjét, majd kattintson a Javaslat a fájl módosítására lehetőségre. 
+Az Analysis Services dokumentációja, ahogy ez a cikk is, nyílt hozzáférésű. Ha többet szeretne megtudni arról, hogyan járulhat hozzá, olvassa el a [Dokumentumok közreműködői útmutatót.](https://docs.microsoft.com/contribute/) 
 
-![Közös dokumentáció](./media/analysis-services-overview/aas-overview-edit.png)
-
-Hozzájárulását a dokumentációs csapat fogja kiértékelni, és ha jóváhagyják azt, akkor GitHub-fiókjának nevét közreműködőként fogjuk feltüntetni. További információ: [Közreműködői útmutató](https://docs.microsoft.com/contribute/).
-
-Az Analysis Services dokumentációja is használja a [GitHub-problémák](https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs) fogalmát. Visszajelzés adhat a termékről vagy a dokumentációról. Ehhez használja a cikk alján látható **Visszajelzés** gombot. Az SQL Server Analysis Services dokumentációjában a GitHub-problémák még nincsenek engedélyezve. 
+Az Analysis Services dokumentációja is használja a [GitHub-problémák](https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs) fogalmát. Visszajelzés adhat a termékről vagy a dokumentációról. Ehhez használja a cikk alján látható **Visszajelzés** gombot. A GitHub-problémák nincsenek engedélyezve a megosztott Analysis Services dokumentációjához. 
 
 ## <a name="blogs"></a>Blogok
 

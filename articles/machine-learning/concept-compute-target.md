@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 11/04/2019
-ms.openlocfilehash: ec2d9152bf8d3d7c60f00e902f155212ee1b81cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: f9ca75943eaec2ae018b54145d872fc09294035e
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270419"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398184"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Mik azok a számítási célok az Azure Machine Learningben? 
 
@@ -48,12 +48,14 @@ Ismerje [meg, hogy hol és hogyan telepítheti a modellt egy számítási célra
 
 A felügyelt számítási erőforrást az Azure Machine Learning hoz létre és kezeli. Ez a számítási gépi tanulási számítási feladatokra van optimalizálva. Az Azure Machine Learning számítási fürtjei és [számítási példányai](concept-compute-instance.md) az egyetlen felügyelt számítási feladatok. A jövőben további felügyelt számítási erőforrások is hozzáadhatók.
 
-Azure Machine Learning-számítási példányokat (előzetes verzió) vagy számítási fürtöket hozhat létre:
+Azure Machine Learning-számítási példányokat (előzetes verzió) vagy a következő ből hozhat létre fürtöket:
+* Azure Machine Learning Studio
+* Azure Portal
+* Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) és [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py) osztályok
+* [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets)
+* Resource Manager-sablon
 
-| | Azure Machine Learning Studio | Azure portál | SDK | Resource Manager-sablon | parancssori felület |
-|---| ----- | ----- | ----- | ----- | ----- |
-| Számítási példány | igen | igen | igen | igen |  |
-| Számítási fürt | igen | igen | igen | igen | igen |
+Számítási fürtöket is létrehozhat az [Azure CLI gépi tanulási bővítményével.](tutorial-train-deploy-model-cli.md#create-the-compute-target-for-training)
 
 Amikor ezeket a számítási erőforrásokat automatikusan része a munkaterület ellentétben más típusú számítási célokat.
 

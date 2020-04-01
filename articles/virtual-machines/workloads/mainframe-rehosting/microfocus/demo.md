@@ -3,21 +3,24 @@ title: Micro Focus CICS BankDemo beállítása micro focus enterprise developer 
 description: Futtassa a Micro Focus BankDemo alkalmazást az Azure virtuális gépeken (VM-ek), hogy megtanulja a Micro Focus Enterprise Server és az Enterprise Developer használatát.
 author: sread
 ms.author: sread
-ms.date: 04/02/2019
+ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 4491fc137c2c85e2be605f5e58fde6fd422efbbe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db9d6bab2f383102434512aa63d7566cff1f579b
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67621338"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411071"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Micro Focus CICS BankDemo beállítása micro focus enterprise developer 4.0-hoz az Azure-on
 
 Amikor a Micro Focus Enterprise Server 4.0-s és az Enterprise Developer 4.0-s verziót az Azure-ban állítja be, tesztelheti az IBM z/OS számítási feladatok központi telepítését. Ez a cikk bemutatja, hogyan állíthatja be a CICS BankDemo mintaalkalmazást, amely az Enterprise Developer alkalmazással rendelkezik.
 
 A CIC az Ügyfélinformáció-ellenőrző Rendszer rövidítése, amely számos online nagyszámítógépes alkalmazás által használt tranzakciós platform. A BankDemo alkalmazás kiválóan alkalmas az Enterprise Server és az Enterprise Developer működésének megismerésére, valamint a zöld képernyős terminálokkal kiegészített tényleges alkalmazások kezelésére és telepítésére.
+
+> [!NOTE]
+> Hamarosan: Útmutató a [Micro Focus Enterprise Server 5.0](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110) beállításához az Azure virtuális gépeken.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -272,5 +275,5 @@ Gratulálunk! Most egy CICS-alkalmazást futtat az Azure-ban a Micro Focus Enter
 - [Enterprise Server futtatása Docker-tárolókban az Azure-ban](run-enterprise-server-container.md)
 - [Nagyszámítógépes áttelepítés - Portál](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
 - [Virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
-- [hibaelhárítással](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
+- [Hibaelhárítás](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
 - [Nagyszámítógép demystifying az Azure-migráláshoz](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)

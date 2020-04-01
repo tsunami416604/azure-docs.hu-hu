@@ -1,25 +1,25 @@
 ---
-title: Hasonló képek keresése a korábbi keresésekről az ImageInsightsToken – Bing Visual Search használatával
+title: Hasonló képek keresése a korábbi keresésekből a képelemzési tokenek és a Bing Visual Search API használatával
 titleSuffix: Azure Cognitive Services
-description: A Bing Visual Search SDK segítségével az ImageInsightsToken által megadott képek URL-címeit kaphatja le.
+description: A Bing Visual Search ügyféltár segítségével leszeretné késelni a korábbi keresésekből származó képek URL-címeit.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: tutorial
-ms.date: 03/27/2020
+ms.date: 03/31/2020
 ms.author: aahi
-ms.openlocfilehash: d005800ed317ff21389f18e4440858ea11042e53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad24a8a194a11c3fd5f7f77ea8c52197d5438edc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370079"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477920"
 ---
 # <a name="tutorial-find-similar-images-from-previous-searches-using-an-image-insights-token"></a>Oktatóanyag: Hasonló képek keresése a korábbi keresésekből egy képelemzési token használatával
 
-A Visual Search SDK lehetővé teszi, hogy a `ImageInsightsToken`korábbi keresésekből származó képeket online keressen, amelyek a . Ez az `ImageInsightsToken` alkalmazás lekérést kap egy, és használja a jogkivonatot egy későbbi keresés. Ezután elküldi `ImageInsightsToken` a Bing, és visszaadja az eredményeket, amelyek tartalmazzák a Bing Keresési URL-eket és URL-eket hasonló képek et talált online.
+A Visual Search ügyfélkönyvtár lehetővé teszi, hogy a `ImageInsightsToken`korábbi keresésekből származó képeket online keresse meg, amelyek a . Ez az `ImageInsightsToken` alkalmazás lekérést kap egy, és használja a jogkivonatot egy későbbi keresés. Ezután elküldi `ImageInsightsToken` a Bing, és visszaadja az eredményeket, amelyek tartalmazzák a Bing Keresési URL-eket és URL-eket hasonló képek et talált online.
 
 Az oktatóanyag teljes forráskódja további hibakezeléssel és jegyzetekkel található a [GitHubon.](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchInsightsTokens.cs)
 
@@ -36,9 +36,9 @@ Az oktatóanyag teljes forráskódja további hibakezeléssel és jegyzetekkel t
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
-## <a name="get-the-imageinsightstoken-from-the-bing-image-search-sdk"></a>Az ImageInsightsToken beszereznie a Bing Image Search SDK-ból
+## <a name="get-the-imageinsightstoken-from-the-bing-image-search-client-library"></a>Az ImageInsightsToken beszereznie a Bing képkereső ügyféltárból
 
-Ez az `ImageInsightsToken` alkalmazás a [Bing Image Search SDK-n](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart)keresztül kapott alkalmazást használja. Egy új C# konzolalkalmazásban hozzon létre egy `ImageSearchClient()`ügyfelet az API-nak a használatával történő hívásához. Ezután `SearchAsync()` használja a lekérdezéssel:
+Ez az `ImageInsightsToken` alkalmazás a [Bing Image Search ügyfélkönyvtáron](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart)keresztül kapott alkalmazást használja. Egy új C# konzolalkalmazásban hozzon létre egy `ImageSearchClient()`ügyfelet az API-nak a használatával történő hívásához. Ezután `SearchAsync()` használja a lekérdezéssel:
 
 ```csharp
 var client = new ImageSearchClient(new Microsoft.Azure.CognitiveServices.Search.ImageSearch.ApiKeyServiceClientCredentials(subKey));

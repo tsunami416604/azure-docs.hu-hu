@@ -5,31 +5,49 @@ author: cynthn
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: quickstart
-ms.custom: mvc
-ms.date: 03/27/2018
+ms.custom: mvc,subject-armqs
+ms.date: 03/27/2020
 ms.author: cynthn
-ms.openlocfilehash: 4430a73f7b46a31847322e65c0aa3c95ebd385ca
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 89d82a140a55c9409ff0cc2dbf30e884a7431ca6
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76270157"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411417"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-scale-set-with-an-azure-template"></a>Rövid útmutató: Windowsos virtuálisgép-méretezési csoport létrehozása Azure-sablonnal
 
 A virtuálisgép-méretezési csoportok segítségével azonos, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti. A méretezési csoportban lévő virtuális gépek számát beállíthatja manuálisan, de automatikus méretezési szabályokat is megadhat az erőforrás-használat (például processzorhasználat, memóriaigény vagy hálózati forgalom) alapján. Egy Azure-terheléselosztó ezután elosztja a forgalmat a méretezési csoportban lévő virtuálisgép-példányok között. Ebben a rövid útmutatóban egy virtuálisgép-méretezési csoportot hozunk létre, és üzembe helyezünk egy mintaalkalmazást egy Azure Resource Manager-sablon használatával.
 
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+## <a name="prerequisites"></a>Előfeltételek
 
+Nincs.
 
-## <a name="define-a-scale-set-in-a-template"></a>Méretezési csoport meghatározása sablonban
-Az Azure Resource Manager-sablonok segítségével egymáshoz kapcsolódó erőforráscsoportokat helyezhet üzembe. A sablonok a JavaScript Object Notation (JSON) formátumban vannak megírva, továbbá az alkalmazás teljes Azure-infrastruktúra környezetét meghatározzák. Egyetlen sablonban hozhatja létre a virtuálisgép-méretezési csoportot, telepítheti az alkalmazásokat és konfigurálhatja az automatikus méretezési szabályokat. Különféle változók és paraméterek segítségével a sablon többször is felhasználható meglévő méretezési csoportok frissítésére vagy újabbak létrehozására. A sablonokat az Azure Portal, az Azure CLI vagy az Azure PowerShell használatával, illetve folyamatos integrációs (CI) / folyamatos továbbítási (CD) folyamatokkal helyezheti üzembe.
+## <a name="create-a-scale-set"></a>Méretezési csoport létrehozása
 
-A sablonokról az [Azure Resource Manager áttekintése című témakörben olvashat bővebben.](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process) A JSON szintaxisát és tulajdonságait lásd: [Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets) sablon hivatkozás.
+Az Azure Resource Manager-sablonok segítségével egymáshoz kapcsolódó erőforráscsoportokat helyezhet üzembe. Egyetlen sablonban hozhatja létre a virtuálisgép-méretezési csoportot, telepítheti az alkalmazásokat és konfigurálhatja az automatikus méretezési szabályokat. Különféle változók és paraméterek segítségével a sablon többször is felhasználható meglévő méretezési csoportok frissítésére vagy újabbak létrehozására. Sablonokat az Azure Portalon, az Azure CLI-n, az Azure PowerShellen vagy a folyamatos integrációs/ folyamatos kézbesítési (CI/CD) folyamatain keresztül helyezhet üzembe.
 
-A sablonok határozzák meg az egyes erőforrástípusok konfigurációját. A virtuálisgép-méretezési csoport erőforrástípus az önálló virtuális gépekhez hasonló. A virtuálisgép-méretezési csoport erőforrástípus alapvető elemei a következők:
+### <a name="review-the-template"></a>A sablon áttekintése
+
+A rövid útmutatóban használt sablon az [Azure rövid útmutató sablonjaiból származik.](https://azure.microsoft.com/resources/templates/201-vmss-windows-webapp-dsc-autoscale/)
+
+:::code language="json" source="~/quickstart-templates/201-vmss-windows-webapp-dsc-autoscale/azuredeploy.json" range="1-397" highlight="236-325":::
+
+Ezek az erőforrások a következő sablonokban vannak definiálva:
+
+- [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
+- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
+- [**Microsoft.Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers)
+- [**Microsoft.Compute/virtualMachineScaleSets**](/azure/templates/microsoft.compute/virtualmachinescalesets)
+- [**Microsoft.Insights/autoscaleBeállítások**](/azure/templates/microsoft.insights/autoscalesettings)
+
+#### <a name="define-a-scale-set"></a>Méretezési csoport meghatározása
+
+A kiemelt rész a méretezési csoport erőforrás-definíciója. Méretezési csoport sablon alapján való létrehozásához definiálnia kell a megfelelő erőforrásokat. A virtuálisgép-méretezési csoport erőforrástípus alapvető elemei a következők:
 
 | Tulajdonság                     | A tulajdonság leírása                                  | Példa sablonérték                    |
 |------------------------------|----------------------------------------------------------|-------------------------------------------|
@@ -44,49 +62,10 @@ A sablonok határozzák meg az egyes erőforrástípusok konfigurációját. A v
 | osProfile.adminUsername      | Az egyes virtuálisgép-példányokhoz tartozó felhasználónév                        | azureuser                                 |
 | osProfile.adminPassword      | Az egyes virtuálisgép-példányokhoz tartozó jelszó                        | P@ssw0rd!                                 |
 
- Az alábbi példa az alapvető méretezésicsoport-erőforrás definícióját mutatja be. A méretezési csoport sablonjának testreszabásához módosíthatja a virtuális gépek méretét vagy kezdeti kapacitását, illetve használhat egy másik platformot vagy egy egyedi rendszerképet.
+A méretezési csoport sablon testreszabásához módosíthatja a virtuális gép méretét vagy kezdeti kapacitását. Egy másik lehetőség egy másik platform vagy egyéni lemezkép használata.
 
-```json
-{
-  "type": "Microsoft.Compute/virtualMachineScaleSets",
-  "name": "myScaleSet",
-  "location": "East US",
-  "apiVersion": "2017-12-01",
-  "sku": {
-    "name": "Standard_A1",
-    "capacity": "2"
-  },
-  "properties": {
-    "upgradePolicy": {
-      "mode": "Automatic"
-    },
-    "virtualMachineProfile": {
-      "storageProfile": {
-        "osDisk": {
-          "caching": "ReadWrite",
-          "createOption": "FromImage"
-        },
-        "imageReference":  {
-          "publisher": "MicrosoftWindowsServer",
-          "offer": "WindowsServer",
-          "sku": "2016-Datacenter",
-          "version": "latest"
-        }
-      },
-      "osProfile": {
-        "computerNamePrefix": "myvmss",
-        "adminUsername": "azureuser",
-        "adminPassword": "P@ssw0rd!"
-      }
-    }
-  }
-}
-```
+#### <a name="add-a-sample-application"></a>Mintaalkalmazás hozzáadása
 
- A minta rövidségének megőrzése érdekében a virtuális hálózati kártya (NIC) konfigurációját lehagytuk a képről. A további összetevők, például a terheléselosztók szintén nem láthatók. [A cikk végén](#deploy-the-template) egy teljes méretezésicsoport-sablon található.
-
-
-## <a name="add-a-sample-application"></a>Mintaalkalmazás hozzáadása
 A méretezési csoport teszteléséhez telepítsen egy alapszintű webalkalmazást. A méretezési csoportok üzembe helyezésekor a virtuálisgép-bővítményekkel biztosíthatóak az üzembe helyezést követő konfigurációs és automatizálási feladatok, például az alkalmazások telepítése. A szkriptek az Azure Storage-ből vagy a GitHubról tölthetők le, illetve megadhatók az Azure Portalon a bővítmény futásidejében. Ha alkalmazni szeretné valamelyik bővítményt a méretezési csoportra, egészítse ki az erőforrás előző példáját az *extensionProfile* szakasszal. A bővítményprofil általában az alábbi tulajdonságokat határozza meg:
 
 - Bővítmény típusa
@@ -95,44 +74,17 @@ A méretezési csoport teszteléséhez telepítsen egy alapszintű webalkalmazá
 - A konfigurációs vagy telepítési szkriptek helye
 - A virtuálisgép-példányokon végrehajtandó parancsok
 
-Az [ASP.NET alkalmazás a Windows rendszeren](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) mintasablon a PowerShell DSC bővítmény segítségével telepít egy ASP.NET MVC alkalmazást, amely az IIS-ben fut. 
+A sablon a PowerShell DSC-bővítmény segítségével telepítegy ASP.NET MVC-alkalmazást, amely az IIS-ben fut.
 
 Letölt egy telepítő szkriptet a GitHubról – ez az *url* beállításban van definiálva. A bővítmény ezután futtatja az *InstallIIS* függvényt az *IISInstall.ps1* szkriptből a *function* és a *Script* beállításoknak megfelelően. Maga az ASP.NET alkalmazás webes telepítési csomagként érhető el, amely szintén a GitHubról lesz letöltve a *WebDeployPackagePath* argumentumnak megfelelően:
 
-```json
-"extensionProfile": {
-  "extensions": [
-    {
-      "name": "Microsoft.Powershell.DSC",
-      "properties": {
-        "publisher": "Microsoft.Powershell",
-        "type": "DSC",
-        "typeHandlerVersion": "2.9",
-        "autoUpgradeMinorVersion": true,
-        "forceUpdateTag": "1.0",
-        "settings": {
-          "configuration": {
-            "url": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-windows-webapp-dsc-autoscale/DSC/IISInstall.ps1.zip",
-            "script": "IISInstall.ps1",
-            "function": "InstallIIS"
-          },
-          "configurationArguments": {
-            "nodeName": "localhost",
-            "WebDeployPackagePath": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-windows-webapp-dsc-autoscale/WebDeploy/DefaultASPWebApp.v1.0.zip"
-          }
-        }
-      }
-    }
-  ]
-}
-```
-
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
-Az [ASP.NET MVC alkalmazás a Windows rendszeren](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) sablont a következő **Üzembe helyezés az Azure-ban** gombbal helyezheti üzembe. A gomb megnyomására megnyílik az Azure Portal, betöltődik a teljes sablon, és a rendszer néhány paraméter megadását kéri (például a méretezési csomag neve, a példányok száma és a rendszergazdai hitelesítő adatok).
+
+A sablon üzembe helyezéséhez válassza a központi telepítés az **Azure-ba** gombot. A gomb megnyomására megnyílik az Azure Portal, betöltődik a teljes sablon, és a rendszer néhány paraméter megadását kéri (például a méretezési csomag neve, a példányok száma és a rendszergazdai hitelesítő adatok).
 
 [![Sablon üzembe helyezése az Azure-ban](media/virtual-machine-scale-sets-create-template/deploy-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-vmss-windows-webapp-dsc-autoscale%2Fazuredeploy.json)
 
-Az Azure PowerShell segítségével is telepítheti a ASP.NET alkalmazást a [Windows új-AzResourceGroupDeployment az](/powershell/module/az.resources/new-azresourcegroupdeployment) alábbiak szerint:
+Az Azure PowerShell használatával is telepíthet erőforrás-kezelői sablont:
 
 ```azurepowershell-interactive
 # Create a resource group
@@ -152,8 +104,8 @@ Update-AzVmss `
 
 A kérdések megválaszolásával adja meg a méretezési csoport nevét és a virtuálisgép-példányok rendszergazdai hitelesítő adatait. A méretezési csoport létrehozása és a bővítmény alkalmazása az alkalmazás konfigurálásához 10–15 percet is igénybe vehet.
 
+## <a name="test-the-deployment"></a>Az üzemelő példány tesztelése
 
-## <a name="test-your-scale-set"></a>Méretezési csoport tesztelése
 Ha ellenőrizni szeretné, hogyan működik a méretezési csoport, lépjen egy böngészőben a mintául szolgáló webalkalmazáshoz. Szerezze be a terheléselosztó nyilvános IP-címét a [Get-AzPublicIpAddress címsegítségével](/powershell/module/az.network/get-azpublicipaddress) az alábbiak szerint:
 
 ```azurepowershell-interactive
@@ -164,16 +116,16 @@ Adja meg a terheléselosztó nyilvános IP-címét egy webböngészőbe *a köve
 
 ![Futó IIS-hely](./media/virtual-machine-scale-sets-create-powershell/running-iis-site.png)
 
-
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
 Ha már nincs rá szükség, az [Eltávolítás-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) segítségével eltávolíthatja az erőforráscsoportot, méretezési készlet. A `-Force` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat. A `-AsJob` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
 ```
 
-
 ## <a name="next-steps"></a>További lépések
+
 Ebben a rövid útmutatóban egy Windows rendszerű virtuálisgép-méretezési csoportot hoztunk létre egy Azure-sablonnal, és a PowerShell DSC bővítménnyel egy alapszintű ASP.NET-alkalmazást telepítettünk a VM-példányokon. Ha bővebb információra van szüksége, lépjen tovább az Azure-beli virtuálisgép-méretezési csoportok létrehozásáról és kezeléséről szóló oktatóanyagra.
 
 > [!div class="nextstepaction"]

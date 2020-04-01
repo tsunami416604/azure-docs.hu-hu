@@ -5,16 +5,16 @@ author: jjbfour
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: fd21117219ea3db6946e7a1b889d92702af65b58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 68b8bd187d58cd71778b8a922684cc3817a0715d
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75650486"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398475"
 ---
 # <a name="azure-custom-resource-providers-overview"></a>Az Azure egyéni erőforrás-szolgáltatóinak áttekintése
 
-Az Azure egyéni erőforrás-szolgáltatók az Azure bővíthetőségi platformja. Lehetővé teszi az alapértelmezett Azure-élmény gazdagítására használható egyéni API-k definiálását. Ez a dokumentáció a következőket írja le:
+Az Azure egyéni erőforrás-szolgáltatók az Azure bővíthetőségi platformja. Lehetővé teszi, hogy egyéni API-kat határozzon meg, amelyek az alapértelmezett Azure-élmény gazdagítására használhatók. Ez a dokumentáció a következőket írja le:
 
 - Azure egyéni erőforrás-szolgáltató létrehozása és üzembe helyezése.
 - Az Azure egyéni erőforrás-szolgáltatók használata a meglévő munkafolyamatok bővítéséhez.

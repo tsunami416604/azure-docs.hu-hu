@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: c51469997af23be7a5e1b88677ecadb37e10ac64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c7e17f7c4493560bd6118b8d4837fd795a6ab0c8
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79244536"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422863"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Adatok másolása a Netezza-ból az Azure Data Factory használatával
 
@@ -158,7 +158,7 @@ Ha adatokat szeretne másolni a Netezza-ból, állítsa be a **forrástípust** 
 |:--- |:--- |:--- |
 | type | A Másolási tevékenység forrás **típustulajdonságát** **NetezzaSource (NetezzaSource )** tulajdonságra kell állítani. | Igen |
 | lekérdezés | Az adatok olvasásához használja az egyéni SQL-lekérdezést. Például: `"SELECT * FROM MyTable"` | Nem (ha az adatkészletben a "tableName" van megadva) |
-| partitionOptions | Megadja a Netezza-ból származó adatok betöltéséhez használt adatparticionálási beállításokat. <br>Az engedélyezési értékek a következők: **Nincs** (alapértelmezett), **DataSlice**és **DynamicRange**.<br>Ha egy partícióbeállítás engedélyezve van `None`(azaz nem), a Netezza adatbázisból származó adatok egyidejű [`parallelCopies`](copy-activity-performance.md#parallel-copy) betöltéséhez szükséges párhuzamosság mértékét a másolási tevékenység beállítása szabályozza. | Nem |
+| partitionOptions | Megadja a Netezza-ból származó adatok betöltéséhez használt adatparticionálási beállításokat. <br>Az engedélyezési értékek a következők: **Nincs** (alapértelmezett), **DataSlice**és **DynamicRange**.<br>Ha egy partícióbeállítás engedélyezve van `None`(azaz nem), a Netezza adatbázisból származó adatok egyidejű [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) betöltéséhez szükséges párhuzamosság mértékét a másolási tevékenység beállítása szabályozza. | Nem |
 | partitionSettings (partícióbeállításai) | Adja meg az adatparticionálás beállításainak csoportját. <br>Alkalmazza, ha a `None`partícióbeállítás nem . | Nem |
 | partitionColumnName | Adja meg a forrásoszlop nevét **egész típusban,** amelyet a tartománypartidatás a párhuzamos másoláshoz használ. Ha nincs megadva, a tábla elsődleges kulcsa automatikusan észlelhető, és partícióoszlopként lesz használva. <br>Alkalmazza, ha a `DynamicRange`partíciós beállítás . Ha lekérdezéssel olvassa be a forrásadatokat, a HOOK a `?AdfRangePartitionColumnName` WHERE záradékban. Lásd a példát a [Netezza párhuzamos másolása szakaszban.](#parallel-copy-from-netezza) | Nem |
 | partitionUpperBound között | Az adatok másolásához a partícióoszlop maximális értéke. <br>Alkalmazza, ha `DynamicRange`a partíciós beállítás . Ha lekérdezéssel olvassa be a `?AdfRangePartitionUpbound` forrásadatokat, a HOOK a WHERE záradékban. Például tekintse meg a [Netezza párhuzamos másolata](#parallel-copy-from-netezza) szakaszt. | Nem |
@@ -202,7 +202,7 @@ A Data Factory Netezza összekötő beépített adatparticionálást biztosít a
 
 ![A partícióbeállításainak képernyőképe](./media/connector-netezza/connector-netezza-partition-options.png)
 
-Ha engedélyezi a particionált másolást, a Data Factory párhuzamos lekérdezéseket futtat a Netezza forráson az adatok partíciók általi betöltéséhez. A párhuzamos mértéket a [`parallelCopies`](copy-activity-performance.md#parallel-copy) másolási tevékenység beállítása szabályozza. Ha például négyre állítja, `parallelCopies` a Data Factory egyidejűleg négy lekérdezést hoz létre és futtat a megadott partícióbeállítás és -beállítások alapján, és minden lekérdezés lekéri az adatok egy részét a Netezza adatbázisból.
+Ha engedélyezi a particionált másolást, a Data Factory párhuzamos lekérdezéseket futtat a Netezza forráson az adatok partíciók általi betöltéséhez. A párhuzamos mértéket a [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) másolási tevékenység beállítása szabályozza. Ha például négyre állítja, `parallelCopies` a Data Factory egyidejűleg négy lekérdezést hoz létre és futtat a megadott partícióbeállítás és -beállítások alapján, és minden lekérdezés lekéri az adatok egy részét a Netezza adatbázisból.
 
 Javasoljuk, hogy engedélyezze a párhuzamos másolást az adatparticionálással, különösen akkor, ha nagy mennyiségű adatot tölt be a Netezza adatbázisból. Az alábbiakban a különböző forgatókönyvekhez javasolt konfigurációkat javasoljuk. Amikor adatokat másol fájlalapú adattárba, a rendszer azt a parancsot adja meg, hogy egy mappába több fájlként írjon (csak adja meg a mappa nevét), ebben az esetben a teljesítmény jobb, mint egyetlen fájlba írni.
 

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a tartalommal | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a tartalomhoz.
+title: 'Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja a Contentful | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a Contentful között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,151 +17,151 @@ ms.date: 10/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fd218c61114c1e15009ace5a9a9bd7a536996e86
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72968680"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-contentful"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a tartalommal
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-contentful"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja a Contentful szolgáltatással
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a tartalmakat Azure Active Directory (Azure AD) használatával. Az Azure AD-val való tartalomkezelés integrálásával a következőket teheti:
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a Contentful-t az Azure Active Directoryval (Azure AD). Ha tartalomalapú integrálása az Azure AD,you can:
 
-* A tartalomhoz hozzáférő Azure AD-beli vezérlés.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek az Azure AD-fiókjával a tartalomba.
-* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
+* Szabályozhatja az Azure AD-ben, aki hozzáfér a Contentful.
+* Lehetővé teszi, hogy a felhasználók automatikusan bejelentkeznek a Contentful-ba az Azure AD-fiókjukkal.
+* Kezelje fiókjait egyetlen központi helyen – az Azure Portalon.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Első lépésként a következő elemeket kell megadnia:
+A kezdéshez a következő elemekre van szükség:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* Egyszeri bejelentkezési (SSO) engedélyezett előfizetés.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes [fiókot](https://azure.microsoft.com/free/)kaphat.
+* Tartalommentes egyszeri bejelentkezés (SSO) engedélyezve előfizetés.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztkörnyezetben.
 
-* A tartalomszolgáltató támogatja **az SP és a identitásszolgáltató** által kezdeményezett SSO-t
-* A tartalom-előállítási **szolgáltatás csak időben támogatja a** felhasználók üzembe helyezését
+* A Contentful támogatja az **SP-t és az IDP** által kezdeményezett SSO-t
+* A Tartalomalapú támogatja **a Just In Time** felhasználói kiépítést
 
 > [!NOTE]
-> Az alkalmazás azonosítója egy rögzített karakterlánc-érték. Egyetlen bérlőn csak egy példány konfigurálható.
+> Az alkalmazás azonosítója rögzített karakterlánc-érték. Csak egy példány konfigurálható egy bérlőben.
 
-## <a name="adding-contentful-from-the-gallery"></a>Tartalom kibővítése a katalógusból
+## <a name="adding-contentful-from-the-gallery"></a>Tartalommentes hozzáadása a galériából
 
-A tartalom Azure AD-ba való integrálásának konfigurálásához hozzá kell adnia egy tartalmat a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A Contentful Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Tartalommentest a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
-1. A **Hozzáadás a** katalógusból szakaszban a keresőmezőbe írja be a **tartalom** kifejezést.
-1. Válassza ki a **tartalmat** az eredmények között, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
+1. A bal oldali navigációs ablakban válassza ki az **Azure Active Directory** szolgáltatást.
+1. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza **a Minden alkalmazás lehetőséget.**
+1. Új alkalmazás hozzáadásához válassza az **Új alkalmazás**lehetőséget.
+1. A **Hozzáadás a gyűjteményből szakaszban** írja be a **Tartalommentes** kifejezést a keresőmezőbe.
+1. Válassza a **Tartalomalapú** lehetőséget az eredmények között, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzáadódik a bérlőhöz.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-contentful"></a>Azure AD-alapú egyszeri bejelentkezés konfigurálása és tesztelése a tartalomhoz
+## <a name="configure-and-test-azure-ad-single-sign-on-for-contentful"></a>Konfigurálja és tesztelje az Azure AD egyszeri bejelentkezését a Contentful számára
 
-Konfigurálja és tesztelje az Azure AD SSO-t a tartalommal rendelkező, **B. Simon**nevű felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a tartalommal.
+Konfigurálja és tesztelje az Azure AD SSO-t a Contentful segítségével egy **B.Simon**nevű tesztfelhasználó használatával. Ahhoz, hogy az SSO működjön, létre kell hoznia egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó tartalommal kapcsolatos között.
 
-Az Azure AD SSO a tartalommal való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Az Azure AD SSO tartalommal való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
-    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
-    * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-1. Az egyszeri bejelentkezés **[beállításainak konfigurálása az](#configure-contentful-sso)** alkalmazás oldalán.
-    * **[Tartalombeli tesztelési felhasználó létrehozása](#create-contentful-test-user)** – ha a felhasználó Azure ad-beli képviseletéhez kapcsolódó, B. Simon-beli partnere van.
-1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
+1. **[Konfigurálja az Azure AD egyszeri szolgáltatást](#configure-azure-ad-sso)** – lehetővé teszi a felhasználók számára a funkció használatát.
+    * **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezés b.Simon teszteléséhez.
+    * **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi b.Simon azure AD egyszeri bejelentkezés.
+1. **[Konfigurálja a Tartalommentes egyszeri bejelentkezést](#configure-contentful-sso)** – az egyszeri bejelentkezési beállítások konfigurálásához az alkalmazás oldalon.
+    * **[Hozzon létre tartalommentes teszt felhasználó](#create-contentful-test-user)** - a B.Simon tartalommentes megfelelője, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+1. **[SSO tesztelése](#test-sso)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
+Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Portalon.
 
-1. A [Azure Portal](https://portal.azure.com/)a **tartalommal** rendelkező alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az [Azure Portalon](https://portal.azure.com/)a **Tartalommentes** alkalmazásintegrációs lapon keresse meg a **Kezelés szakaszt,** és válassza **az egyszeri bejelentkezés**lehetőséget.
+1. Az **Egyetlen bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A **Beállítások beállítása SAML-lel** lapon kattintson az **egyszerű SAML-konfiguráció** szerkesztési/tollikonjára a beállítások szerkesztéséhez.
 
-   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, adja meg a következő mezők értékeit:
+1. Az **Egyszerű SAML-konfiguráció** szakaszban, ha az alkalmazást **IDP** által kezdeményezett módban szeretné konfigurálni, adja meg a következő mezők értékeit:
 
-    - A **Válasz URL-címe** szövegmezőben másolja az ACS (állítási fogyasztói szolgáltatás) URL-címét a tartalommal ellátható egyszeri bejelentkezés beállítása oldaláról. A következőképpen fog kinézni: `https://be.contentful.com/sso/<organization_id>/consume`
+    - A **Válasz URL-cím** mezőjébe másolja az ACS (helyességi feltétel fogyasztói szolgáltatás) URL-címét a Contentful sso beállítási lapjáról. Így fog kinézni:`https://be.contentful.com/sso/<organization_id>/consume`
 
-1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
+1. Kattintson **a További URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** által kezdeményezett módban szeretné konfigurálni:
 
-    - A **bejelentkezési URL** szövegmezőben másolja ki ugyanazt az ACS-t (az állítási fogyasztói szolgáltatást) tartalmazó URL-címet. A következőképpen fog kinézni: `https://be.contentful.com/sso/<organization_id>/login`
+    - A **Bejelentkezési URL-cím** mezőbe másolja ugyanazt az ACS (helyességi feltétel fogyasztói szolgáltatás) URL-címet. Így fog kinézni:`https://be.contentful.com/sso/<organization_id>/login`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges válasz URL-címmel és a bejelentkezési URL-címmel úgy, hogy az ACS-t (report Reporting Service) URL-címét másolja az SSO Setup oldaláról a tartalommal.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges válasz URL-címmel és bejelentkezési URL-címmel az ACS (helyességi fogyasztói szolgáltatás) URL-címének másolásával a Contentful sso beállítási lapjáról.
 
-1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
+1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány** szakaszában keresse meg a **Tanúsítvány (Base64)** lehetőséget, és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre való mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-1. A **tartalom-előállítók beállítása** szakaszban másolja a bejelentkezési URL-címet a tartalommal rendelkező egyszeri bejelentkezés konfigurálásához.
+1. A **Tartalomalapú beállítása** szakaszban másolja a bejelentkezési URL-címet a Tartalomalapú sso konfigurálásához.
 
     ![Konfigurációs URL-címek másolása](media/contentful-tutorial/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
+Ebben a szakaszban egy tesztfelhasználót hoz létre az Azure Portalon B.Simon néven.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
-1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
-1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+1. Az Azure Portal bal oldali ablaktáblájában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd az **Összes felhasználó**lehetőséget.
+1. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
+1. A **Felhasználói** tulajdonságok csoportban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension értéket. Például: `B.Simon@contoso.com`.
-   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a  **Create** (Létrehozás) gombra.
+   1. A **Felhasználónév** mezőbe írja username@companydomain.extensionbe a mezőt. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet, majd írja le a **Jelszó** mezőben megjelenő értéket.
+   1. Kattintson **a Létrehozás gombra.**
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést a tartalomhoz való hozzáférés biztosításával.
+Ebben a szakaszban engedélyezi b.Simon azure egyszeri bejelentkezés használatával a Contentful hozzáférést biztosít.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **tartalom**elemet.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, majd az **Összes alkalmazás**lehetőséget.
+1. Az alkalmazások listájában válassza a **Tartalomalapú**lehetőséget.
+1. Az alkalmazás áttekintése lapon keresse meg a **Kezelés szakaszt,** és válassza a **Felhasználók és csoportok**lehetőséget.
 
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+   ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza **a Felhasználó hozzáadása**lehetőséget, majd a Hozzárendelés **hozzáadása** párbeszédpanelen válassza a Felhasználók **és csoportok** lehetőséget.
 
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+    ![A Felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. A **felhasználók és csoportok** párbeszédpanelen válassza ki az **B. Simon** elemet a felhasználók listából, majd kattintson a lap alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a lap alján található **kiválasztás** gombra.
-1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+1. A **Felhasználók és csoportok** párbeszédpanelen válassza a **B.Simon** elemet a Felhasználók listában, majd kattintson a lap alján található **Kijelölés** gombra.
+1. Ha az SAML-helyességben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából, majd kattintson a lap alján található **Kijelölés** gombra.
+1. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
 
-## <a name="configure-contentful-sso"></a>Tartalommal rendelkező egyszeri bejelentkezés konfigurálása
+## <a name="configure-contentful-sso"></a>Tartalomalapú sso konfigurálása
 
-A következő lépésekkel konfigurálhatja az egyszeri bejelentkezést a **tartalommal** rendelkező oldalon.
+Az alábbi lépésekkel konfigurálhatja az egyszeri bejelentkezést a **Tartalommentes** oldalon.
 
-1. A [tartalom](https://app.contentful.com)lapon navigáljon a **szervezeti beállítások**SSO beállítása lapjára.
-1. Kattintson az **SSO beállítása**lehetőségre.
-1. Másolja és illessze be a bejelentkezési URL-címet az Azure AD-ben a **tartalom beállítása** szakaszban.
-1. Másolja és illessze be a tanúsítványt az Azure AD-ből letöltött Base64 tanúsítványfájl-fájlból.
-1. Állítson be egy SSO-nevet az SP által kezdeményezett bejelentkezéshez.
-1. Kattintson az **egyszeri bejelentkezés engedélyezése**lehetőségre.
+1. A [Tartalomtartalom párbeszédpanelen](https://app.contentful.com)keresse meg az SSO beállítási lapját a **Szervezeti beállítások**ban.
+1. Kattintson az **SSO beállítása gombra.**
+1. Másolja és illessze be a bejelentkezési URL-címet az Azure AD **Tartalommentes** beállítása szakaszából.
+1. Másolja és illessze be a tanúsítványt az Azure AD-ből letöltött Base64 tanúsítványfájlból.
+1. Állítson be egy egyszeri bejelentkezésnevet az SP által kezdeményezett bejelentkezéshez.
+1. Kattintson az **SSO engedélyezése gombra.**
 
-Ha ez nem működik, érje el a felderített [támogatási csapatot](mailto:support@contentful.com).
+Ha ez nem működik, forduljon a [Contentful támogatási csapathoz.](mailto:support@contentful.com)
 
-### <a name="create-contentful-test-user"></a>Tartalom-ellenőrző felhasználó létrehozása
+### <a name="create-contentful-test-user"></a>Tartalomalapú tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy B. Simon nevű felhasználó jön létre a tartalommal. A tartalommal rendelkező felhasználó-kiépítés a felhasználók számára alapértelmezés szerint engedélyezett. Ez a szakasz nem tartalmaz műveleti elemeket. Ha a felhasználó még nem létezik a tartalomban, akkor a hitelesítés után létrejön egy újat.
+Ebben a szakaszban egy B.Simon nevű felhasználó jön létre a Tartalomalapú. A tartalommentes támogatja a just-in-time felhasználói kiépítést, amely alapértelmezés szerint engedélyezve van. Ebben a szakaszban nincs műveletelem. Ha a felhasználó már nem létezik a Tartalomalapú, egy új jön létre a hitelesítés után.
 
-## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
+## <a name="test-sso"></a>SSO tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
 
-Ha a hozzáférési panelen a tartalom csempére kattint, akkor automatikusan be kell jelentkeznie arra a tartalomba, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor a Hozzáférési panel tartalomalapú csempéjére kattint, automatikusan be kell jelentkeznie arra a Tartalomalapú csempére, amelyhez az SSO-t beállította. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Próbálja ki a tartalmat az Azure AD-vel](https://aad.portal.azure.com/)
+- [Próbálja ki a Contentful with Azure AD-t](https://aad.portal.azure.com/)

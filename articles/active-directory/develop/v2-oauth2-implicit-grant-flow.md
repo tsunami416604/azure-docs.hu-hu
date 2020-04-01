@@ -17,12 +17,12 @@ ms.date: 11/19/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 6e3f021fd888bbb408fa66964c54d22f0d68e84e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 53d498f4aed8ec86cc57c35824a9fb8aa471dc1d
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297696"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80419685"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft-identitásplatform és implicit támogatási folyamat
 
@@ -32,7 +32,7 @@ A Microsoft identity platform végpontjával bejelentkezhet a felhasználókegyo
 * Számos engedélyezési kiszolgáló és identitásszolgáltató nem támogatja a CORS-kérelmeket.
 * A teljes oldalas böngésző átirányítása az alkalmazástól különösen invazívvá válik a felhasználói élmény számára.
 
-Ezeknél az alkalmazásoknál (AngularJS, Ember.js, React.js és így tovább) a Microsoft identity platform támogatja az OAuth 2.0 Implicit grant folyamatot. Az implicit folyamat leírása az [OAuth 2.0 specifikációban található.](https://tools.ietf.org/html/rfc6749#section-4.2) Elsődleges előnye, hogy lehetővé teszi, hogy az alkalmazás a háttérkiszolgáló hitelesítő adatok cseréje nélkül getta le a jogkivonatokat a Microsoft identitásplatformról. Ez lehetővé teszi, hogy az alkalmazás jelentkezzen be a felhasználó, a munkamenet karbantartása, és tokenek más webes API-k mind az ügyfél JavaScript-kód. Van néhány fontos biztonsági szempont, amelyet figyelembe kell venni, amikor az implicit folyamatot kifejezetten az [ügyfél](https://tools.ietf.org/html/rfc6749#section-10.3) és a [felhasználó megszemélyesítése](https://tools.ietf.org/html/rfc6749#section-10.3)körül használja.
+Ezeknél az alkalmazásoknál (Angular, Ember.js, React.js és így tovább) a Microsoft identity platform támogatja az OAuth 2.0 Implicit grant folyamatot. Az implicit folyamat leírása az [OAuth 2.0 specifikációban található.](https://tools.ietf.org/html/rfc6749#section-4.2) Elsődleges előnye, hogy lehetővé teszi, hogy az alkalmazás a háttérkiszolgáló hitelesítő adatok cseréje nélkül getta le a jogkivonatokat a Microsoft identitásplatformról. Ez lehetővé teszi, hogy az alkalmazás jelentkezzen be a felhasználó, a munkamenet karbantartása, és tokenek más webes API-k mind az ügyfél JavaScript-kód. Van néhány fontos biztonsági szempont, amelyet figyelembe kell venni, amikor az implicit folyamatot kifejezetten az [ügyfél](https://tools.ietf.org/html/rfc6749#section-10.3) és a [felhasználó megszemélyesítése](https://tools.ietf.org/html/rfc6749#section-10.3)körül használja.
 
 Ez a cikk azt ismerteti, hogy miként programozhat közvetlenül az alkalmazásban lévő protokoll ellen.  Ha lehetséges, azt javasoljuk, hogy a támogatott Microsoft Authentication Libraries (MSAL) helyett [a jogkivonatok beszerzéséhez és a biztonságos webes API-k hívásához](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)használja.  Is vessen egy pillantást a [minta alkalmazások at MSAL](sample-v2-code.md).
 
@@ -58,7 +58,7 @@ Jelenleg a webes API-k hívásainak védelmének előnyben részesített módja 
 
 Az implicit támogatási folyamat nem ad ki frissítési jogkivonatokat, főként biztonsági okokból. A frissítési jogkivonat nem olyan szűken, mint a hozzáférési jogkivonatok hatóköre, így sokkal több energiát biztosít, így sokkal több kárt okoz, ha kiszivárogna. Az implicit folyamat jogkivonatok kézbesítése az URL-cím, ezért a lehallgatás kockázata nagyobb, mint az engedélyezési kód támogatás.
 
-Azonban egy JavaScript-alkalmazás rendelkezik egy másik mechanizmus áll a rendelkezésére a hozzáférési jogkivonatok megújítása anélkül, hogy ismételten kéri a felhasználó hitelesítő adatokat. Az alkalmazás egy rejtett iframe használatával új jogkivonat-kérelmeket hajthat végre az Azure AD engedélyezési végpontja ellen: mindaddig, amíg a böngésző még rendelkezik aktív munkamenettel (olvassa el: munkamenet-cookie-val rendelkezik) az Azure AD-tartományban, a hitelesítési kérelem felhasználói beavatkozás nélkül.
+Azonban egy JavaScript-alkalmazás rendelkezik egy másik mechanizmus áll a rendelkezésére a hozzáférési jogkivonatok megújítása anélkül, hogy ismételten kéri a felhasználó hitelesítő adatokat. Az alkalmazás egy rejtett iframe-et használhat új jogkivonat-kérelmek végrehajtásához az Azure AD engedélyezési végpontja ellen: mindaddig, amíg a böngésző még rendelkezik egy aktív munkamenettel (olvassa el: rendelkezik egy munkamenet-cookie-val) az Azure AD-tartományellen, a hitelesítési kérelem sikeresen elvégezhető felhasználói beavatkozás nélkül.
 
 Ez a modell lehetővé teszi a JavaScript-alkalmazás számára, hogy önállóan megújítsa a hozzáférési jogkivonatokat, és még újakat is szerezzen be egy új API-hoz (feltéve, hogy a felhasználó korábban hozzájárult hozzájuk). Ezzel elkerülhető a nagy értékű műtermék, például egy frissítési jogkivonat beszerzésének, karbantartásának és védelmének további terhe. A rendszermászolat, amely lehetővé teszi a csendes megújítás, az Azure AD munkamenet cookie-t, az alkalmazáson kívül kezeli. Egy másik előnye ennek a megközelítésnek, hogy a felhasználó kijelentkezhet az Azure AD-ből az Azure AD-be bejelentkezett alkalmazások bármelyikével, amelyek a böngésző lapok bármelyikén futnak. Ennek eredménye az Azure AD munkamenet-cookie törlése, és a JavaScript-alkalmazás automatikusan elveszíti a kijelentkezett felhasználó jogkivonatainak megújításának lehetőségét.
 
@@ -161,7 +161,7 @@ error=access_denied
 
 Most, hogy aláírta a felhasználót az egyoldalas alkalmazásba, csendben beszerezheti a Microsoft identity platform által védett webes API-k, például a [Microsoft Graph](https://developer.microsoft.com/graph)által biztosított webes API-k hívásához szükséges hozzáférési jogkivonatokat. Még akkor is, ha `token` már kapott egy jogkivonatot a response_type használatával, ezzel a módszerrel további erőforrásoktokenek beszerzésére anélkül, hogy át kell irányítania a felhasználót, hogy jelentkezzen be újra.
 
-A normál OpenID Connect/OAuth folyamat, ezt a Microsoft identity platform `/token` végpontra irányuló kéréssel. A Microsoft identity platform végpontazonban nem támogatja a CORS-kérelmeket, így az AJAX-hívások lekérése és frissítése jogkivonatokat nem kizárt. Ehelyett használhatja az implicit folyamat egy rejtett iframe-ben, hogy új jogkivonatok at más webes API-k: 
+A normál OpenID Connect/OAuth folyamat, ezt a Microsoft identity platform `/token` végpontra irányuló kéréssel. A Microsoft identity platform végpontazonban nem támogatja a CORS-kérelmeket, így az AJAX-hívások lekérése és frissítése jogkivonatokat nem kizárt. Ehelyett használhatja az implicit folyamat egy rejtett iframe-ben, hogy új jogkivonatok at más webes API-k:
 
 ```
 // Line breaks for legibility only
@@ -170,7 +170,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &response_type=token
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
-&scope=https%3A%2F%2Fgraph.microsoft.com%2Fuser.read 
+&scope=https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
 &response_mode=fragment
 &state=12345
 &nonce=678910

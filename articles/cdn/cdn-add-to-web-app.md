@@ -16,15 +16,15 @@ ms.date: 05/14/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: 1b67522834497a264d95fc9b80246b16841d6026
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67594228"
 ---
-# <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Oktatóanyag: Az Azure CDN hozzáadása az Azure App Service webalkalmazás
+# <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Oktatóanyag: Azure CDN hozzáadása egy Azure App Service-webalkalmazáshoz
 
-Ez az oktatóanyag bemutatja, hogyan adható hozzá az [Azure Content Delivery Network (CDN)](cdn-overview.md) [a webappokhoz az Azure App Service szolgáltatásban](../app-service/overview.md). A Web Apps webalkalmazásokat, REST API-kat és mobilháttereket üzemeltető szolgáltatás. 
+Ez az oktatóanyag bemutatja, hogyan adható hozzá az [Azure Content Delivery Network (CDN)](cdn-overview.md)[a webappokhoz az Azure App Service szolgáltatásban](../app-service/overview.md). A Web Apps webalkalmazásokat, REST API-kat és mobilháttereket üzemeltető szolgáltatás. 
 
 Íme a mintaként szolgáló statikus HTML-webhely kezdőlapja, amelyet használni fog:
 
@@ -43,13 +43,13 @@ Ismertetett témák:
 Az oktatóanyag elvégzéséhez:
 
 - [A Git telepítése](https://git-scm.com/)
-- [Telepítse az Azure CLI-t](https://docs.microsoft.com/cli/azure/install-azure-cli)
+- [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-the-web-app"></a>A webapp létrehozása
 
-A használni kívánt webalkalmazás létrehozásához kövesse a [statikus HTML-es rövid útmutató](../app-service/app-service-web-get-started-html.md) **Az alkalmazás megkeresése tallózással** lépését.
+A használni kívánt webalkalmazás létrehozásához kövesse a [statikus HTML-es rövid útmutató](../app-service/app-service-web-get-started-html.md)**Az alkalmazás megkeresése tallózással** lépését.
 
 ## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 
@@ -76,7 +76,7 @@ Az **Azure Content Delivery Network** lapon adja meg az **Új végpont** beáll�
 | ------- | --------------- | ----------- |
 | **CDN-profil** | myCDNProfile | A CDN-profil ugyanabba a tarifacsomagba tartozó CDN-végpontok gyűjteménye. |
 | **Tarifacsomag** | Akamai Standard | A [tarifacsomag](cdn-features.md) határozza meg a szolgáltatót és az elérhető szolgáltatásokat. Ez az oktatóanyag a *Standard Akamai* szolgáltatást használja. |
-| **CDN-végpont neve** | Bármely egyedi név az azureedge.net tartományban | A gyorsítótárazott erőforrások az *&lt;endpointname&gt;* .azureedge.net tartományban érhetők el.
+| **CDN-végpont neve** | Bármely egyedi név az azureedge.net tartományban | A gyorsítótárazott erőforrásokat a tartomány * &lt;végpontjának&gt;.azureedge.net.-on*érheti el.
 
 Válassza a **Létrehozás** lehetőséget egy új CDN-profil létrehozásához.
 

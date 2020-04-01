@@ -1,30 +1,30 @@
 ---
-title: Service Fabric-fürt méretezése az Azure-ban
-description: Ebből az oktatóanyagból megtudhatja, hogyan méretezhető egy Service Fabric-fürt az Azure-ban és a-ben, és hogyan tisztítható fel a megmaradt erőforrások.
+title: Service Fabric-fürt skálázása az Azure-ban
+description: Ebben az oktatóanyagban megtudhatja, hogyan skálázhatja a Service Fabric-fürt az Azure-ban és be, és hogyan kell megtisztítani a maradék erőforrásokat.
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: f1b813576a94541cdc2ab0a67fea71b6f49696c5
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78251797"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Service Fabric-fürt skálázása az Azure-ban
 
-Ez az oktatóanyag egy sorozat harmadik része, amely bemutatja, hogyan méretezheti a meglévő fürtöt és a-t. Az oktatóanyag végére elsajátíthatja a fürtök skálázásának és a hátramaradt erőforrások eltávolításának módját.  Az Azure-ban futó fürtök méretezésével kapcsolatos további információkért olvassa el [Service Fabric fürtök méretezését](service-fabric-cluster-scaling.md)ismertető témakört.
+Ez az oktatóanyag egy sorozat harmadik része, és bemutatja, hogyan méretezheti ki és be a meglévő fürtöt. Az oktatóanyag végére elsajátíthatja a fürtök skálázásának és a hátramaradt erőforrások eltávolításának módját.  Az Azure-ban futó fürt méretezése című további információért olvassa el [a Méretezési szolgáltatás fabric-fürtjeit.](service-fabric-cluster-scaling.md)
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Csomópontok hozzáadása és eltávolítása (vertikális felskálázás és méretezés a-ben)
-> * Csomópont-típusok hozzáadása és eltávolítása (vertikális felskálázás és méretezés a-ben)
-> * Csomópont-erőforrások bővítése (vertikális felskálázás)
+> * Csomópontok hozzáadása és eltávolítása (kicsinyítés és méretezés)
+> * Csomóponttípusok hozzáadása és eltávolítása (horizontális felskálázás és méretezés)
+> * Csomópont-erőforrások növelése (felskálázás)
 
 Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
-> * Biztonságos Windows- [fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) létrehozása az Azure-ban sablon használatával
+> * Biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) létrehozása az Azure-ban sablon használatával
 > * [Fürt figyelése](service-fabric-tutorial-monitor-cluster.md)
 > * Fürt horizontális fel- és leskálázása
 > * [Fürt futtatókörnyezetének frissítése](service-fabric-tutorial-upgrade-cluster.md)
@@ -37,77 +37,77 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 
 Az oktatóanyag elkezdése előtt:
 
-* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Telepítse [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) vagy az [Azure CLI](/cli/azure/install-azure-cli)-t.
-* Biztonságos Windows- [fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) létrehozása az Azure-ban
+* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Telepítse [az Azure PowerShellt](https://docs.microsoft.com/powershell/azure/install-Az-ps) vagy [az Azure CLI-t.](/cli/azure/install-azure-cli)
+* Biztonságos [Windows-fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) létrehozása az Azure-ban
 
-## <a name="important-considerations-and-guidelines"></a>Fontos szempontok és irányelvek
+## <a name="important-considerations-and-guidelines"></a>Fontos szempontok és iránymutatások
 
-Az alkalmazások számítási feladatainak időbeli változása idővel megváltoznak, a meglévő szolgáltatásainak több (vagy kevesebb) erőforrásra van szüksége?  Csomópontok [hozzáadásával vagy eltávolításával](#add-nodes-to-or-remove-nodes-from-a-node-type) növelheti vagy csökkentheti a fürt erőforrásait.
+Az alkalmazás-munkaterhelések idővel változnak, a meglévő szolgáltatásoknak több (vagy kevesebb) erőforrásra van szükségük?  [Csomópontok hozzáadása vagy eltávolítása](#add-nodes-to-or-remove-nodes-from-a-node-type) csomóponttípusból a fürterőforrások növeléséhez vagy csökkentéséhez.
 
-Hozzá kell adnia több mint 100 csomópontot a fürthöz?  Egyetlen Service Fabric csomópont típusa/méretezési csoport legfeljebb 100 csomópontot/virtuális gépet tartalmazhat.  A fürt 100 csomóponton túli méretezéséhez [adjon hozzá további csomópont-típusokat](#add-nodes-to-or-remove-nodes-from-a-node-type).
+Több mint 100 csomópontot kell hozzáadnia a fürthöz?  Egyetlen Service Fabric-csomópont típusa/méretezési csoportja nem tartalmazhat 100-nál több csomópontot/virtuális gépet.  Ha egy fürtöt 100 csomóponton túl szeretne méretezni, [adjon hozzá további csomóponttípusokat.](#add-nodes-to-or-remove-nodes-from-a-node-type)
 
-Az alkalmazása több szolgáltatással rendelkezik, és ezek közül bármelyiknek nyilvánosnak vagy internetkapcsolatnak kell lennie?  A tipikus alkalmazások olyan előtér-átjáró szolgáltatást tartalmaznak, amely egy ügyféltől érkező adatokat fogad, valamint egy vagy több háttér-szolgáltatást, amely az előtér-szolgáltatásokkal kommunikál. Ebben az esetben javasoljuk, hogy [legalább két csomópont-típust adjon hozzá](#add-nodes-to-or-remove-nodes-from-a-node-type) a fürthöz.  
+Az alkalmazás több szolgáltatással rendelkezik, és bármelyiknek nyilvánosnak vagy internettel szemben kell lennie?  A tipikus alkalmazások egy előtér-átjárószolgáltatást tartalmaznak, amely bemenetet fogad egy ügyféltől és egy vagy több háttérszolgáltatástól, amelyek az előtér-szolgáltatásokkal kommunikálnak. Ebben az esetben azt javasoljuk, hogy [legalább két csomóponttípust adjon hozzá](#add-nodes-to-or-remove-nodes-from-a-node-type) a fürthöz.  
 
-A szolgáltatásai eltérő infrastrukturális igényekkel rendelkeznek, például nagyobb RAM-mal vagy magasabb CPU-ciklusokkal? Az alkalmazás például egy előtér-szolgáltatást és egy háttér-szolgáltatást tartalmaz. Az előtér-szolgáltatás a kisebb méretű virtuális gépeken (például a D2-ben) is futtatható, amelyeken a portok nyitva vannak az interneten. A háttérben futó szolgáltatás azonban nagy számítási igényű, és nagyobb méretű virtuális gépeken (például D4, D6, D15) kell futnia, amelyek nem az internetkapcsolattal rendelkeznek. Ebben az esetben javasoljuk, hogy [két vagy több csomópont-típust adjon hozzá](#add-nodes-to-or-remove-nodes-from-a-node-type) a fürthöz. Ez lehetővé teszi, hogy az egyes csomópont-típusok különböző tulajdonságokkal rendelkezzenek, például az internetkapcsolat vagy a virtuális gép méretével. A virtuális gépek száma egymástól függetlenül méretezhető.
+A szolgáltatások különböző infrastrukturális igényeket, például nagyobb RAM vagy nagyobb CPU-ciklusok? Például az alkalmazás tartalmaz egy előtér-szolgáltatás és egy háttér-szolgáltatás. Az előtér-szolgáltatás kisebb virtuális gépeken (például D2-hez hasonló virtuális gépeken) futtatható, amelyek portjai nyitva állnak az interneten. A háttérszolgáltatás azonban számításigényes, és nagyobb virtuális gépeken kell futnia (olyan virtuális gépméretekkel, mint a D4, D6, D15), amelyek nem az internetfelé néznek. Ebben az esetben azt javasoljuk, hogy [adjon hozzá két vagy több csomóponttípust](#add-nodes-to-or-remove-nodes-from-a-node-type) a fürthöz. Ez lehetővé teszi, hogy minden csomóponttípus különböző tulajdonságokkal rendelkezik, például az internetkapcsolattal vagy a virtuális gép méretével. A virtuális gépek száma egymástól függetlenül is méretezhető.
 
-Egy Azure-fürt skálázásakor tartsa szem előtt a következő irányelveket:
+Egy Azure-fürt méretezésekénél tartsa szem előtt az alábbi irányelveket:
 
-* Egyetlen Service Fabric csomópont típusa/méretezési csoport legfeljebb 100 csomópontot/virtuális gépet tartalmazhat.  A fürt 100 csomóponton túli méretezéséhez adjon hozzá további csomópont-típusokat.
-* Az éles munkaterheléseket futtató elsődleges csomópontok esetében az arany vagy ezüst [tartóssági szintnek][durability] kell lennie, és mindig legalább öt csomópontnak kell lennie.
-* Az állapot-nyilvántartó munkaterheléseket futtató nem elsődleges csomópontok esetében mindig legalább öt csomópontnak kell futnia.
-* Az állapot nélküli éles környezetben futó munkaterheléseket futtató nem elsődleges csomópontok esetében mindig legalább két csomópontnak kell futnia.
-* Az arany vagy ezüst [tartóssági szintjének][durability] minden csomópont-típusának mindig öt vagy több csomóponttal kell rendelkeznie.
-* Ha a (csomópontok eltávolítása a-ből) elsődleges csomópont típusúra történik, soha ne csökkentse a példányok számát a [megbízhatósági szinthez][reliability] szükségesnél kisebb értékre.
+* Egyetlen Service Fabric-csomópont típusa/méretezési csoportja nem tartalmazhat 100-nál több csomópontot/virtuális gépet.  Ha egy fürtöt 100 csomóponton túl szeretne méretezni, adjon hozzá további csomóponttípusokat.
+* Az éles számítási feladatokat futtató elsődleges csomóponttípusok [tartóssági szintje][durability] Arany vagy Ezüst, és mindig öt vagy több csomót.
+* Az állapotalapú éles számítási feladatokat futtató nem elsődleges csomóponttípusoknak mindig öt vagy több csomót kell rendelkezniük.
+* Állapot nélküli éles számítási feladatokat futtató nem elsődleges csomóponttípusokmindig két vagy több csomót.
+* Az Arany vagy ezüst [bármilyen csomóponttípusának][durability] mindig öt vagy több csomóval kell rendelkeznie.
+* Ha egy elsődleges csomóponttípus méretezése (csomópontok eltávolítása) esetén soha nem szabad a példányok számát a [megbízhatósági szint nél][reliability] kisebbre csökkenteni.
 
-További információért olvassa el a [fürt kapacitása című útmutatót](service-fabric-cluster-capacity.md).
+További információkért olvassa el a [fürt kapacitásra vonatkozó útmutatóját.](service-fabric-cluster-capacity.md)
 
 ## <a name="export-the-template-for-the-resource-group"></a>Erőforráscsoport sablonjának exportálása
 
-A biztonságos Windows- [fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) létrehozása és az erőforráscsoport sikeres beállítása után exportálja az erőforráscsoport Resource Manager-sablonját. A sablon exportálása lehetővé teszi a fürt és erőforrásai jövőbeli üzembe helyezésének automatizálását, mivel a sablon tartalmazza az összes teljes infrastruktúrát.  További információ a sablonok exportálásáról [: Azure Resource Manager erőforráscsoportok kezelése a Azure Portal használatával](/azure/azure-resource-manager/manage-resource-groups-portal).
+Miután létrehozott egy biztonságos [Windows-fürtöt,](service-fabric-tutorial-create-vnet-and-windows-cluster.md) és sikeresen bebiztosította az erőforráscsoportot, exportálja az erőforráscsoport Erőforrás-kezelő sablonját. A sablon exportálása lehetővé teszi a fürt és erőforrásai jövőbeli üzembe helyezésének automatizálását, mivel a sablon tartalmazza az összes teljes infrastruktúrát.  A sablonok exportálásával kapcsolatos további információkért olvassa el [az Azure Resource Manager erőforráscsoportok kezelése az Azure Portal használatával](/azure/azure-resource-manager/manage-resource-groups-portal)című olvasni.
 
-1. A [Azure Portal](https://portal.azure.com)nyissa meg a fürtöt tartalmazó erőforráscsoportot (**sfclustertutorialgroup**, ha ezt az oktatóanyagot követi). 
+1. Az [Azure Portalon](https://portal.azure.com)nyissa meg a fürtöt (**sfclustertutorialgroup**, ha az oktatóanyagot) tartalmazó erőforráscsoport. 
 
-2. A bal oldali ablaktáblán válassza a **központi telepítések**lehetőséget, vagy válassza ki a **központi telepítések**területen található hivatkozást. 
+2. A bal oldali ablaktáblában válassza a **Központi telepítések**lehetőséget, vagy válassza a hivatkozást a **Telepítések csoportban.** 
 
 3. Válassza ki a legutóbbi sikeres telepítést a listából.
 
-4. A bal oldali ablaktáblán válassza a **sablon** lehetőséget, majd válassza a **Letöltés** lehetőséget a sablon zip-fájlként való exportálásához.  Mentse a sablont és a paramétereket a helyi számítógépre.
+4. A bal oldali ablaktáblában válassza a **Sablon** lehetőséget, majd a **Letöltés** lehetőséget a sablon ZIP-fájlként történő exportálásához.  Mentse a sablont és a paramétereket a helyi számítógépre.
 
-## <a name="add-nodes-to-or-remove-nodes-from-a-node-type"></a>Csomópontok hozzáadása vagy eltávolítása csomópontok közül
+## <a name="add-nodes-to-or-remove-nodes-from-a-node-type"></a>Csomópontok hozzáadása vagy csomóponttípus eltávolítása
 
-A be-és kiskálázás, illetve a horizontális skálázás a fürtben lévő csomópontok számát módosítja. A be-és kiskálázáskor további virtuálisgép-példányokat ad hozzá a méretezési csoporthoz. Ezek a példányok lesznek a Service Fabric által használt csomópontok. A Service Fabric tudja, ha a méretezési csoport új példányokkal bővül (felskálázással), és automatikusan ennek megfelelően jár el. A fürtöt bármikor méretezheti, még akkor is, ha a munkaterhelések futnak a fürtön.
+A be- és kiskálázás, illetve a horizontális méretezés módosítja a csomópontok számát a fürtben. A méretezéskor vagy a kiskálázáskor további virtuálisgép-példányokat ad hozzá a méretezési csoporthoz. Ezek a példányok lesznek a Service Fabric által használt csomópontok. A Service Fabric tudja, ha a méretezési csoport új példányokkal bővül (felskálázással), és automatikusan ennek megfelelően jár el. A fürt bármikor méretezhető, még akkor is, ha a számítási feladatok futnak a fürtön.
 
 ### <a name="update-the-template"></a>A sablon frissítése
 
-[Exportálja a sablont és a paramétereket tartalmazó fájlt](#export-the-template-for-the-resource-group) az erőforráscsoporthoz a legutóbbi központi telepítéshez.  Nyissa meg a *Parameters. JSON* fájlt.  Ha az oktatóanyagban a [sablon][template] alapján telepítette a fürtöt, három csomópont-típus található a fürtben, és három paramétert kell beállítania a csomópontok számának megadásához az egyes csomópontok esetében: *nt0InstanceCount*, *nt1InstanceCount*és *nt2InstanceCount*.  A *nt1InstanceCount* paraméter például beállítja a példányszámot a második csomópont típusához, és beállítja a társított virtuálisgép-méretezési csoportba tartozó virtuális gépek számát.
+[Sablon- és paraméterfájl exportálása](#export-the-template-for-the-resource-group) az erőforráscsoportból a legutóbbi telepítéshez.  Nyissa meg a *parameters.json* fájlt.  Ha a fürtöt az oktatóanyag [mintasablonjával][template] telepítette, a fürtben három csomóponttípus és három paraméter határozza meg az egyes csomóponttípusok csomópontjainak számát: *nt0InstanceCount*, *nt1InstanceCount*és *nt2InstanceCount*.  Az *nt1InstanceCount* paraméter például beállítja a második csomóponttípus példányszámát, és beállítja a virtuális gépek számát a társított virtuálisgép-méretezési csoportban.
 
-Így a *nt1InstanceCount* értékének frissítésével módosíthatja a csomópontok számát a második csomópont típusában.  Ne feledje, hogy a csomópont-típusok több mint 100 csomópontra nem méretezhetők.  Az állapot-nyilvántartó munkaterheléseket futtató nem elsődleges csomópontok esetében mindig legalább öt csomópontnak kell futnia. Az állapot nélküli éles környezetben futó munkaterheléseket futtató nem elsődleges csomópontok esetében mindig legalább két csomópontnak kell futnia.
+Így az *nt1InstanceCount* értékének frissítésével módosítja a csomópontok számát a második csomóponttípusban.  Ne feledje, hogy egy csomóponttípus nem méretezhető 100-nál több csomópontra.  Az állapotalapú éles számítási feladatokat futtató nem elsődleges csomóponttípusoknak mindig öt vagy több csomót kell rendelkezniük. Állapot nélküli éles számítási feladatokat futtató nem elsődleges csomóponttípusokmindig két vagy több csomót.
 
-Ha méretezést végez, távolítsa el a csomópontokat a ból, a bronz [tartóssági szint][durability] csomópont-típusát [manuálisan el kell távolítania a csomópontok állapotát](service-fabric-cluster-scale-up-down.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set).  Az ezüst és az arany tartóssági szinten ezeket a lépéseket a platform automatikusan végrehajtja.
+Ha méretezés, csomópontok eltávolítása, a csomópont típusa Bronz [tartóssági szint][durability] manuálisan el kell [távolítani a csomópontok állapotát.](service-fabric-cluster-scale-up-down.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set)  Az Ezüst és arany tartóssági szint esetében ezeket a lépéseket a platform automatikusan elvégezheti.
 
-### <a name="deploy-the-updated-template"></a>A frissített sablon üzembe helyezése
-Mentse a *template. JSON* és a *Parameters. JSON* fájl módosításait.  A frissített sablon üzembe helyezéséhez futtassa a következő parancsot:
+### <a name="deploy-the-updated-template"></a>A frissített sablon telepítése
+Mentse a *template.json* és a *parameters.json fájlok módosításait.*  A frissített sablon telepítéséhez futtassa a következő parancsot:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ChangingInstanceCount"
 ```
-Vagy az alábbi Azure CLI-paranccsal:
+Vagy a következő Azure CLI parancs:
 ```azurecli
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
-## <a name="add-a-node-type-to-the-cluster"></a>Csomópont típusának hozzáadása a fürthöz
+## <a name="add-a-node-type-to-the-cluster"></a>Csomóponttípus hozzáadása a fürthöz
 
-Minden, az Azure-ban futó Service Fabric-fürtben definiált csomópont-típus [külön virtuálisgép-méretezési csoportként](service-fabric-cluster-nodetypes.md)van beállítva. Ezután mindegyik csomópont-típust külön lehet kezelni. Az egyes csomópont-típusok egymástól függetlenül méretezhetők, különböző portokat nyitnak meg, és különböző kapacitási metrikákat használhatnak. Külön is megváltoztathatja az egyes fürtcsomópontokon futó operációs rendszerbeli SKU-t, de vegye figyelembe, hogy a minta fürtben nem lehet a Windows és a Linux együttes használata. Egyetlen csomópont típusú/méretezési csoport legfeljebb 100 csomópontot tartalmazhat.  További csomópont-típusok/méretezési csoportok hozzáadásával vízszintesen méretezheti a fürtöt több mint 100 csomópontra. A fürtöt bármikor méretezheti, még akkor is, ha a munkaterhelések futnak a fürtön.
+Az Azure-ban futó Service Fabric-fürtben definiált minden csomóponttípus [külön virtuálisgép-méretezési csoportként van beállítva.](service-fabric-cluster-nodetypes.md) Ezután minden csomóponttípus külön-külön kezelhető. Az egyes csomóponttípusokat egymástól függetlenül skálázhatja fel- vagy le, különböző portkészleteket nyithat meg, és különböző kapacitásmutatókat használhat. Az egyes fürtcsomópontokon futó operációsrendszer-termékváltozatot is egymástól függetlenül módosíthatja, de vegye figyelembe, hogy a mintafürtben nem futtatható windowsos és Linux-csoport. Egyetlen csomóponttípus/méretezési csoport nem tartalmazhat 100-nál több csomópontot.  A fürt vízszintesen több mint 100 csomópontra méretezhető további csomóponttípusok/méretezési készletek hozzáadásával. A fürt bármikor méretezhető, még akkor is, ha a számítási feladatok futnak a fürtön.
 
 ### <a name="update-the-template"></a>A sablon frissítése
 
-[Exportálja a sablont és a paramétereket tartalmazó fájlt](#export-the-template-for-the-resource-group) az erőforráscsoporthoz a legutóbbi központi telepítéshez.  Nyissa meg a *Parameters. JSON* fájlt.  Ha az oktatóanyagban a [sablon][template] alapján telepítette a fürtöt, három csomópont-típus található a fürtben.  Ebben a szakaszban egy Resource Manager-sablon frissítésével és telepítésével adhat hozzá egy negyedik csomópont-típust. 
+[Sablon- és paraméterfájl exportálása](#export-the-template-for-the-resource-group) az erőforráscsoportból a legutóbbi telepítéshez.  Nyissa meg a *parameters.json* fájlt.  Ha a fürtöt az [oktatóanyagmintasablonhasználatával][template] telepítette, három csomóponttípus van a fürtben.  Ebben a szakaszban egy negyedik csomóponttípust ad hozzá egy Erőforrás-kezelő sablon frissítésével és telepítésével. 
 
-Az új csomópont típusa mellett hozzá kell adnia a társított virtuálisgép-méretezési csoportot is (amely a virtuális hálózat különálló alhálózatán fut) és a hálózati biztonsági csoporttal együtt.  Dönthet úgy is, hogy új vagy meglévő nyilvános IP-címet és Azure Load Balancer-erőforrásokat ad hozzá az új méretezési csoporthoz.  Az új csomópont típusa az ezüst és a "Standard_D2_V2" méretének [tartóssági szintje][durability] .
+Az új csomóponttípus mellett hozzá adja a társított virtuálisgép-méretezési csoportot (amely a virtuális hálózat külön alhálózatában fut) és a hálózati biztonsági csoportot is.  Választhat, hogy új vagy meglévő nyilvános IP-cím és az Azure terheléselosztó erőforrásokat az új méretezési csoport.  Az új csomóponttípus [tartóssági szintje][durability] Ezüst, mérete "Standard_D2_V2".
 
-A *template. JSON* fájlban adja hozzá a következő új paramétereket:
+A *template.json* fájlban adja hozzá a következő új paramétereket:
 ```json
 "nt3InstanceCount": {
     "defaultValue": 5,
@@ -122,7 +122,7 @@ A *template. JSON* fájlban adja hozzá a következő új paramétereket:
 },
 ```
 
-A *template. JSON* fájlban adja hozzá a következő új változókat:
+A *template.json* fájlban adja hozzá a következő új változókat:
 ```json
 "lbID3": "[resourceId('Microsoft.Network/loadBalancers',concat('LB','-', parameters('clusterName'),'-',variables('vmNodeType3Name')))]",
 "lbIPConfig3": "[concat(variables('lbID3'),'/frontendIPConfigurations/LoadBalancerIPConfig')]",
@@ -144,7 +144,7 @@ A *template. JSON* fájlban adja hozzá a következő új változókat:
 "subnet3Ref": "[concat(variables('vnetID'),'/subnets/',variables('subnet3Name'))]",
 ```
 
-A *template. JSON* fájlban adjon hozzá egy új alhálózatot a virtuális hálózati erőforráshoz:
+A *template.json* fájlban adjon hozzá egy új alhálózatot a virtuális hálózati erőforráshoz:
 ```json
 {
     "type": "Microsoft.Network/virtualNetworks",
@@ -181,7 +181,7 @@ A *template. JSON* fájlban adjon hozzá egy új alhálózatot a virtuális hál
 },
 ```
 
-A *template. JSON* fájlban adja hozzá az új nyilvános IP-címet és a terheléselosztó erőforrásait:
+A *template.json* fájlban adjon hozzá új nyilvános IP-cím- és terheléselosztó-erőforrásokat:
 ```json
 {
     "type": "Microsoft.Network/publicIPAddresses",
@@ -362,7 +362,7 @@ A *template. JSON* fájlban adja hozzá az új nyilvános IP-címet és a terhel
 },
 ```
 
-A *template. JSON* fájlban vegyen fel új hálózati biztonsági csoportot és virtuálisgép-méretezési csoport erőforrásait.  A virtuálisgép-méretezési csoport Service Fabric bővítmény tulajdonságaiban található NodeTypeRef tulajdonság a méretezési csoportra képezi le a megadott csomópont típusát.
+A *template.json* fájlban adjon hozzá új hálózati biztonsági csoportot és virtuálisgép-méretezési készleterőforrásokat.  A virtuálisgép-méretezési csoport Service Fabric bővítménytulajdonságaiban található NodeTypeRef tulajdonság leképezi a megadott csomóponttípust a méretezési készlethez.
 
 ```json
 {
@@ -746,7 +746,7 @@ A *template. JSON* fájlban vegyen fel új hálózati biztonsági csoportot és 
 },
 ```
 
-A *template. JSON* fájlban frissítse a fürterőforrás-t, és adjon hozzá egy új csomópont-típust:
+A *template.json* fájlban frissítse a fürterőforrást, és adjon hozzá egy új csomóponttípust:
 ```json
 {
     "type": "Microsoft.ServiceFabric/clusters",
@@ -782,7 +782,7 @@ A *template. JSON* fájlban frissítse a fürterőforrás-t, és adjon hozzá eg
 }                
 ```
 
-A *Parameters. JSON* fájlban adja hozzá a következő új paramétereket és értékeket:
+A *parameters.json* fájlban adja hozzá a következő új paramétereket és értékeket:
 ```json
 "nt3InstanceCount": {
     "Value": 5    
@@ -792,24 +792,24 @@ A *Parameters. JSON* fájlban adja hozzá a következő új paramétereket és �
 },
 ```
 
-### <a name="deploy-the-updated-template"></a>A frissített sablon üzembe helyezése
-Mentse a *template. JSON* és a *Parameters. JSON* fájl módosításait.  A frissített sablon üzembe helyezéséhez futtassa a következő parancsot:
+### <a name="deploy-the-updated-template"></a>A frissített sablon telepítése
+Mentse a *template.json* és a *parameters.json fájlok módosításait.*  A frissített sablon telepítéséhez futtassa a következő parancsot:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "AddingNodeType"
 ```
-Vagy az alábbi Azure CLI-paranccsal:
+Vagy a következő Azure CLI parancs:
 ```azurecli
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
-## <a name="remove-a-node-type-from-the-cluster"></a>Csomópont típusának eltávolítása a fürtből
-Service Fabric-fürt létrehozása után vízszintesen méretezheti a fürtöt egy csomópont-típus (virtuálisgép-méretezési csoport) és annak összes csomópontjának eltávolításával. A fürtöt bármikor méretezheti, még akkor is, ha a munkaterhelések futnak a fürtön. A fürt skálázása esetén az alkalmazások is automatikusan méretezhetők.
+## <a name="remove-a-node-type-from-the-cluster"></a>Csomóponttípus eltávolítása a fürtből
+A Service Fabric-fürt létrehozása után vízszintesen skálázhatja a fürtöt egy csomóponttípus (virtuálisgép-méretezési csoport) és annak összes csomópontjának eltávolításával. A fürt bármikor méretezhető, még akkor is, ha a számítási feladatok futnak a fürtön. A fürt méretezése, az alkalmazások automatikusan skálázható is.
 
 > [!WARNING]
-> Ha a Remove-AzServiceFabricNodeType használatával távolítja el a csomópont típusát egy éles fürtből, nem ajánlott gyakran használni. Ez egy veszélyes parancs, mivel törli a virtuálisgép-méretezési csoport erőforrását a csomópont típusa mögött. 
+> Az Remove-AzServiceFabricNodeType használatával csomóponttípus t nem ajánlott gyakran használni. Ez egy veszélyes parancs, mivel törli a virtuális gép méretezési készlet erőforrás mögött a csomópont típusát. 
 
-A csomópont típusának eltávolításához futtassa a [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) parancsmagot.  A csomópont típusának ezüst vagy arany [tartóssági szintűnek][durability] kell lennie, a parancsmag törli a csomópont-típushoz társított méretezési készletet, és eltarthat egy ideig.  Ezután futtassa a [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) parancsmagot az összes eltávolítani kívánt csomóponton, amely törli a csomópont állapotát, és eltávolítja a csomópontokat a fürtből. Ha vannak szolgáltatások a csomópontokon, akkor a szolgáltatások először egy másik csomópontra kerülnek. Ha a Fürtfelügyelő nem talál csomópontot a replika/szolgáltatás számára, a művelet késleltetve vagy Letiltva lesz.
+A csomóponttípus eltávolításához futtassa az [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) parancsmavet.  A csomóponttípusnak ezüst vagy arany [tartóssági szintnek][durability] kell lennie: A parancsmag törli a csomóponttípushoz társított méretezési készletet, és némi időt vesz igénybe.  Ezután futtassa az [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) parancsmast az eltávolítandó csomópontok mindegyikén, amely törli a csomópont állapotát, és eltávolítja a csomópontokat a fürtből. Ha vannak szolgáltatások a csomópontokon, akkor a szolgáltatások először egy másik csomópontra kerülnek. Ha a fürtkezelő nem talál csomópontot a replika/szolgáltatás számára, akkor a művelet késik/blokkolva van.
 
 ```powershell
 $groupname = "sfclustertutorialgroup"
@@ -832,42 +832,42 @@ Foreach($node in $nodes)
 }
 ```
 
-## <a name="increase-node-resources"></a>Csomópont-erőforrások bővítése 
-Service Fabric-fürt létrehozása után függőlegesen méretezheti a fürt csomópontjának típusát (módosítsa a csomópontok erőforrásait), vagy frissítse a csomópont típusú virtuális gépek operációs rendszerét.  
+## <a name="increase-node-resources"></a>Csomópont-erőforrások növelése 
+A Service Fabric-fürt létrehozása után függőlegesen skálázhatja a fürtcsomópont típusát (módosíthatja a csomópontok erőforrásait), vagy frissítheti a csomópont típusú virtuális gépek operációs rendszerét.  
 
 > [!WARNING]
-> Azt javasoljuk, hogy ne változtassa meg a méretezési csoport/csomópont típusa virtuálisgép-SKU-jának használatát, kivéve, ha az ezüst tartósságon vagy annál nagyobb mértékben fut. A VM SKU méretének módosítása egy adatpusztító helyi infrastruktúra-művelet. A módosítás késleltetése vagy monitorozása nélkül lehetséges, hogy a művelet adatvesztést okozhat az állapot-nyilvántartó szolgáltatások számára, vagy más, előre nem látható működési problémákat okozhat, még az állapot nélküli munkaterhelések esetében is.
+> Azt javasoljuk, hogy ne módosítsa a virtuális gép termékváltozata egy méretezési csoport/csomópont típusú, kivéve, ha silver tartóssági vagy nagyobb tartóssági fut. A virtuális gép termékváltozatának mérete egy adat-destruktív helyszíni infrastruktúra-művelet módosítása. Anélkül, hogy a változás késleltethető vagy figyelhető lenne, lehetséges, hogy a művelet adatvesztést okozhat az állapotalapú szolgáltatások számára, vagy más előre nem látható működési problémákat okozhat, még állapotnélküli munkaterhelések esetén is.
 
 > [!WARNING]
-> Azt javasoljuk, hogy ne változtassa meg az elsődleges csomópont típusú virtuálisgép-SKU-t, amely egy veszélyes művelet, és nem támogatott.  Ha nagyobb kapacitásra van szüksége, további virtuálisgép-példányokat vagy további csomópont-típusokat adhat hozzá.  Ha ez nem lehetséges, létrehozhat egy új fürtöt, és [visszaállíthatja az alkalmazás állapotát](service-fabric-reliable-services-backup-restore.md) (ha van ilyen) a régi fürtből.  Ha ez nem lehetséges, módosíthatja [az elsődleges csomópont típusú](service-fabric-scale-up-node-type.md)VIRTUÁLISGÉP-SKU-t.
+> Azt javasoljuk, hogy ne módosítsa a virtuális gép termékváltozatának az elsődleges csomópont típus, amely egy veszélyes művelet, és nem támogatott.  Ha több fürtkapacitásra van szüksége, további virtuálisgép-példányokat vagy további csomóponttípusokat adhat hozzá.  Ha ez nem lehetséges, létrehozhat egy új fürtöt, és [visszaállíthatja](service-fabric-reliable-services-backup-restore.md) az alkalmazás állapotát (ha van ilyen) a régi fürtből.  Ha ez nem lehetséges, [módosíthatja az elsődleges csomóponttípus virtuálisgép-termékváltozatát.](service-fabric-scale-up-node-type.md)
 
 ### <a name="update-the-template"></a>A sablon frissítése
 
-[Exportálja a sablont és a paramétereket tartalmazó fájlt](#export-the-template-for-the-resource-group) az erőforráscsoporthoz a legutóbbi központi telepítéshez.  Nyissa meg a *Parameters. JSON* fájlt.  Ha az oktatóanyagban a [sablon][template] alapján telepítette a fürtöt, három csomópont-típus található a fürtben.  
+[Sablon- és paraméterfájl exportálása](#export-the-template-for-the-resource-group) az erőforráscsoportból a legutóbbi telepítéshez.  Nyissa meg a *parameters.json* fájlt.  Ha a fürtöt az [oktatóanyagmintasablonhasználatával][template] telepítette, három csomóponttípus van a fürtben.  
 
-A második csomópont típusú virtuális gépek mérete a *vmNodeType1Size* paraméterben van beállítva.  Módosítsa a *vmNodeType1Size* paraméter értékét Standard_D2_V2ról [Standard_D3_V2ra](../virtual-machines/dv2-dsv2-series.md), ami megduplázza az egyes virtuálisgép-példányok erőforrásait.
+A második csomóponttípusban lévő virtuális gépek mérete a *vmNodeType1Size* paraméterben van beállítva.  Módosítsa a *vmNodeType1Size* paraméter értékét Standard_D2_V2-ről [Standard_D3_V2,](../virtual-machines/dv2-dsv2-series.md)amely megduplázza az egyes virtuálisgép-példányok erőforrásait.
 
-Mindhárom csomóponthoz tartozó virtuálisgép-SKU a *vmImageSku* paraméterben van beállítva.  Ismét meg kell adni a csomópontok virtuálisgép-SKU-jának módosítását körültekintően, és az elsődleges csomópont típusa nem ajánlott.
+A virtuális gép termékváltozat mindhárom csomóponttípushoz a *vmImageSku* paraméterben van beállítva.  Ismét a csomóponttípusú virtuálisgép-termékváltozat módosítását óvatosan kell megközelíteni, és az elsődleges csomóponttípushoz nem ajánlott.
 
-### <a name="deploy-the-updated-template"></a>A frissített sablon üzembe helyezése
-Mentse a *template. JSON* és a *Parameters. JSON* fájl módosításait.  A frissített sablon üzembe helyezéséhez futtassa a következő parancsot:
+### <a name="deploy-the-updated-template"></a>A frissített sablon telepítése
+Mentse a *template.json* és a *parameters.json fájlok módosításait.*  A frissített sablon telepítéséhez futtassa a következő parancsot:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ScaleUpNodeType"
 ```
-Vagy az alábbi Azure CLI-paranccsal:
+Vagy a következő Azure CLI parancs:
 ```azurecli
 az group deployment create --resource-group sfclustertutorialgroup --template-file c:\temp\template.json --parameters c:\temp\parameters.json
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Csomópontok hozzáadása és eltávolítása (vertikális felskálázás és méretezés a-ben)
-> * Csomópont-típusok hozzáadása és eltávolítása (vertikális felskálázás és méretezés a-ben)
-> * Csomópont-erőforrások bővítése (vertikális felskálázás)
+> * Csomópontok hozzáadása és eltávolítása (kicsinyítés és méretezés)
+> * Csomóponttípusok hozzáadása és eltávolítása (horizontális felskálázás és méretezés)
+> * Csomópont-erőforrások növelése (felskálázás)
 
 Folytassa a következő oktatóanyaggal, amelyben megismerheti, hogyan frissíthetők a fürtök futtatókörnyezetei.
 > [!div class="nextstepaction"]
@@ -878,8 +878,8 @@ Folytassa a következő oktatóanyaggal, amelyben megismerheti, hogyan frissíth
 [template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
 [parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json
 
-> * Csomópont-típusok hozzáadása és eltávolítása (vertikális felskálázás és méretezés a-ben)
-> * Csomópont-erőforrások bővítése (vertikális felskálázás)
+> * Csomóponttípusok hozzáadása és eltávolítása (horizontális felskálázás és méretezés)
+> * Csomópont-erőforrások növelése (felskálázás)
 
 Folytassa a következő oktatóanyaggal, amelyben megismerheti, hogyan frissíthetők a fürtök futtatókörnyezetei.
 > [!div class="nextstepaction"]

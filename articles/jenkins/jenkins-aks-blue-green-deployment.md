@@ -1,14 +1,14 @@
 ---
-title: Üzembe helyezés az Azure Kubernetes Service-ben a Jenkins és a kék/zöld üzembe helyezési minta használatával
+title: Üzembe helyezés az Azure Kubernetes szolgáltatásba a Jenkins és a kék/zöld telepítési minta használatával
 description: Útmutató az Azure Kubernetes Service-be (AKS) való üzembe helyezéshez a Jenkins és a kék/zöld üzembehelyezési minta használatával.
 keywords: jenkins, azure, devops, kubernetes, k8s, aks, kék zöld üzembehelyezés, folyamatos kézbesítés, cd
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.openlocfilehash: 9d6551f910bd99322f844b44130ebb03732df83c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78251473"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Üzembe helyezés az Azure Kubernetes Service-be (AKS) a Jenkins és a kék/zöld üzembehelyezési minta használatával
@@ -113,10 +113,10 @@ Egy kék/zöld üzembe helyezést beállíthat az AKS-ben manuálisan vagy a kor
 #### <a name="set-up-the-kubernetes-cluster-via-the-sample-setup-script"></a>A Kubernetes-fürt beállítása a minta beállítási szkripttel
 1. A **deploy/aks/setup/setup.sh** fájlt szerkesztve cserélje le a következő helyőrzőket a saját környezete megfelelő értékeivel: 
 
-   - **&lt;your-resource-group-name>** (erőforráscsoport neve)
-   - **&lt;your-kubernetes-cluster-name>** (Kubernetes-fürt neve)
-   - **&lt;your-location>** (hely)
-   - **&lt;your-dns-name-suffix>** (DNS-név utótagja)
+   - **&lt;erőforrás-csoport neve>**
+   - **&lt;a-kubernetes-cluster-name>**
+   - **&lt;tartózkodási helye>**
+   - **&lt;your-dns-name-utótag>**
 
      ![Képernyőkép a setup.sh szkriptről a Bashben, helyőrzők kiemelve](./media/jenkins-aks-blue-green-deployment/edit-setup-script.png)
 
@@ -143,7 +143,7 @@ Egy kék/zöld üzembe helyezést beállíthat az AKS-ben manuálisan vagy a kor
     kubectl apply -f  test-endpoint-green.yml
     ```
 
-1. Frissítse a DNS-nevet a nyilvános és a teszt végpontoknál. Egy Kubernetes-fürt létrehozásakor egy [további erőforráscsoport](https://github.com/Azure/AKS/issues/3) is létrehoz, amelynek elnevezési mintája **MC_&lt;your-resource-group-name> _&lt;your-kubernetes-cluster-name>_ &lt;your-location>** (MC_<erőforráscsoport-neve><kubernetes-fürt-neve><hely>).
+1. Frissítse a DNS-nevet a nyilvános és a teszt végpontoknál. Egy Kubernetes-fürt létrehozásakor egy [további erőforráscsoport](https://github.com/Azure/AKS/issues/3) is létrehoz, amelynek elnevezési mintája **MC_&lt;your-resource-group-name>_&lt;your-kubernetes-cluster-name>_&lt;your-location>** (MC_<erőforráscsoport-neve><kubernetes-fürt-neve><hely>).
 
     Keresse meg a nyilvános IP-címeket az erőforráscsoportban.
 
@@ -197,9 +197,9 @@ Ebben a szakaszban előkészíthet egy Jenkins-kiszolgálót egy összeállítá
    sudo apt-get install git maven 
    ```
    
-1. [Telepítse a Dockert](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce). Győződjön meg arról, hogy a `jenkins` felhasználó rendelkezik engedéllyel a `docker` parancsok futtatására.
+1. [Telepítse a Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce)t. Győződjön meg arról, hogy a `jenkins` felhasználó rendelkezik engedéllyel a `docker` parancsok futtatására.
 
-1. [Telepítse a kubectl-t](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
+1. [Telepítse kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
 
 1. [Töltse le a jq-t](https://stedolan.github.io/jq/download/).
 
@@ -214,7 +214,7 @@ Ebben a szakaszban előkészíthet egy Jenkins-kiszolgálót egy összeállítá
     1. Válassza a **Manage Jenkins (Jenkins kezelése)> Manage Plugins (Beépülő modulok kezelése) > Available (Elérhető)** lehetőséget.
     1. Keresse meg és telepítse az Azure Container Service beépülő modult.
 
-1. Az Azure-beli erőforrások kezeléséhez adja meg a hitelesítő adatokat. Ha még nem rendelkezik a beépülő modullal, telepítse az **Azure hitelesítőadat** -beépülő modult.
+1. Az Azure-beli erőforrások kezeléséhez adja meg a hitelesítő adatokat. Ha még nem rendelkezik a beépülő modul, telepítse az **Azure Credential** beépülő modult.
 
 1. Adja meg az Azure szolgáltatásnévhez tartozó hitelesítő adatot **Microsoft Azure Service Principal** (Microsoft Azure szolgáltatásnév) típusként.
 
@@ -247,7 +247,7 @@ Ebben a szakaszban előkészíthet egy Jenkins-kiszolgálót egy összeállítá
 ## <a name="create-the-job"></a>A feladat létrehozása
 1. Adjon hozzá egy új, **Pipeline** (Folyamat) típusú feladatot.
 
-1. Válassza a **Pipeline (Folyamat)**  > **Definition (Definíció)**  > **Pipeline script from SCM (Folyamatszkript SCM-ből)** lehetőséget.
+1. Válassza > ki a > **Folyamatdefiníciós****folyamat parancsfájlt az SCM-ből.** **Pipeline**
 
 1. Adja meg az SCM-adattár URL-címét a saját &lt;your-forked-repo> értékével.
 
@@ -280,11 +280,11 @@ Ha már nincs szüksége az ezen oktatóanyagban létrehozott erőforrásokra, t
 az group delete -y --no-wait -n <your-resource-group-name>
 ```
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 Ha a Jenkins beépülő modulok használata során bármilyen hibát tapasztal, jelentse be a problémát az adott összetevő [Jenkins JIRA](https://issues.jenkins-ci.org/) felületén.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezhet üzembe helyezést az AKS-re a Jenkins és a kék/zöld üzembehelyezési minta használatával. További információt az Azure Jenkins szolgáltatóról a Jenkins az Azure-on című cikkben talál.
 

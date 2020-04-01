@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Proxyclick |} A Microsoft Docs'
-description: Ebben az oktatóanyagban elsajátíthatja fog konfigurálása egyszeri bejelentkezéshez Proxyclick és az Azure Active Directory között.
+title: 'Oktatóanyag: Az Azure Active Directory integrációja a Proxyclick | Microsoft dokumentumok'
+description: Ebben az oktatóanyagban megtudhatja, hogyan konfigurálhatja az Azure Active Directory és a Proxyclick közötti egyszeri bejelentkezést.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,246 +16,246 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 6a4d1c8a390ebd1194d14c057bb32d3111bf39be
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67093490"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-proxyclick"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Proxyclick
+# <a name="tutorial-azure-active-directory-integration-with-proxyclick"></a>Oktatóanyag: Az Azure Active Directory integrációja a Proxyclicktel
 
-Ebben az oktatóanyagban elsajátíthatja a Proxyclick integrálása az Azure Active Directory (Azure AD) lesz.
-Ez az integráció ezeket az előnyöket biztosítja:
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a Proxyclicket az Azure Active Directoryval (Azure AD).
+Ez az integráció a következő előnyöket nyújtja:
 
-* Az Azure AD, hogy ki férhet hozzá Proxyclick is használhatja.
-* Engedélyezheti a felhasználók számára, hogy automatikusan jelentkezzenek be Proxyclick (egyszeri bejelentkezés), az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen kezelheti: az Azure Portalon.
+* Az Azure AD segítségével szabályozhatja, hogy ki férhet hozzá a Proxyclickhez.
+* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve proxyclick (egyszeri bejelentkezés) az Azure AD-fiókok.
+* Fiókjait egyetlen központi helyen kezelheti: az Azure Portalon.
 
-SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további információkért lásd: [egyszeri bejelentkezés alkalmazásokhoz az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrációjáról, olvassa [el az Alkalmazásokra való egyszeri bejelentkezés az Azure Active Directoryban című témakört.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása Proxyclick, szüksége lesz:
+Az Azure AD-integráció proxykattintással való konfigurálásához a következőkre van szükség:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, akkor regisztráljon egy [egy havi próbalehetőség](https://azure.microsoft.com/pricing/free-trial/).
-* Proxyclick előfizetés, amely egyszeri bejelentkezés engedélyezve van.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Egy Azure AD-környezettel, regisztrálhat egy [egyhónapos próbaverzióra.](https://azure.microsoft.com/pricing/free-trial/)
+* Proxyclick-előfizetés, amelynek egyszeri bejelentkezése engedélyezve van.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban fogja konfigurálni, és egy tesztelési környezetben az Azure AD egyszeri bejelentkezés tesztelése.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben.
 
-* Proxyclick supports SP-initiated and IdP-initiated SSO.
+* A Proxyclick támogatja az SP által kezdeményezett és az IdP által kezdeményezett egyszeri szolgáltatót.
 
-## <a name="add-proxyclick-from-the-gallery"></a>Proxyclick hozzáadása a katalógusból
+## <a name="add-proxyclick-from-the-gallery"></a>Proxyclick hozzáadása a gyűjteményből
 
-Proxyclick integrálása az Azure AD beállításához, hozzá kell Proxyclick a galériából a felügyelt SaaS-alkalmazások listájára.
+A Proxyclick azure AD-be való integrálásának beállításához hozzá kell adnia a proxykattintást a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Az a [az Azure portal](https://portal.azure.com), a bal oldali panelen válassza ki a **Azure Active Directory**:
+1. Az [Azure Portalon](https://portal.azure.com)a bal oldali ablaktáblában válassza az **Azure Active Directory**lehetőséget:
 
     ![Válassza az Azure Active Directory elemet.](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások** > **minden alkalmazás**:
+2. Ugrás **az Enterprise applications** > **Összes alkalmazásra:**
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
 
-3. Egy alkalmazás hozzáadásához válassza **új alkalmazás** az ablak tetején:
+3. Alkalmazás hozzáadásához válassza az **Új alkalmazás** lehetőséget az ablak tetején:
 
-    ![Válassza ki az új alkalmazás](common/add-new-app.png)
+    ![Új alkalmazás kiválasztása](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Proxyclick**. Válassza ki **Proxyclick** a keresési eredmények, és válassza ki a **Hozzáadás**.
+4. A keresőmezőbe írja be a **Proxyclick ( Proxyclick ) kifejezést.** Válassza a **Proxyclick (Proxyclick) lehetőséget** a keresési eredmények között, majd a **Hozzáadás**lehetőséget.
 
      ![Keresési eredmények](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
 
-Ebben a szakaszban fog konfigurálása és tesztelése az Azure AD egyszeri bejelentkezés az Proxyclick Britta Simon nevű tesztfelhasználó használatával.
-Egyszeri bejelentkezés engedélyezéséhez szüksége Proxyclick az Azure AD-felhasználót és a megfelelő felhasználó közötti kapcsolat létrehozásához.
+Ebben a szakaszban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést a Proxyclick segítségével egy Britta Simon nevű tesztfelhasználó használatával.
+Egyszeri bejelentkezés engedélyezéséhez létre kell hoznia egy kapcsolatot egy Azure AD-felhasználó és a megfelelő felhasználó proxyclick.
 
-Az Azure AD egyszeri bejelentkezés az Proxyclick tesztelése és konfigurálása, szüksége a lépések elvégzéséhez:
+Az Azure AD egyszeri bejelentkezéskonfigurálásához és teszteléséhez a Proxyclick segítségével az alábbi lépéseket kell végrehajtania:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  a felhasználók számára a funkció engedélyezéséhez.
-2. **[Proxyclick egyszeri bejelentkezés konfigurálása](#configure-proxyclick-single-sign-on)**  az alkalmazás oldalán.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  az Azure AD egyszeri bejelentkezés teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  ahhoz, hogy az Azure AD egyszeri bejelentkezés a felhasználó számára.
-5. **[Hozzon létre egy Proxyclick tesztfelhasználót](#create-a-proxyclick-test-user)**  , amely kapcsolódik a felhasználó Azure ad-ben ábrázolása.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  , hogy működik-e a konfiguráció ellenőrzéséhez.
+1. **[Konfigurálja az Azure AD egyszeri bejelentkezést](#configure-azure-ad-single-sign-on)** a szolgáltatás felhasználók számára való engedélyezéséhez.
+2. **[Konfigurálja a Proxyclick egyszeri bejelentkezést](#configure-proxyclick-single-sign-on)** az alkalmazás oldalon.
+3. **[Hozzon létre egy Azure AD-tesztfelhasználót](#create-an-azure-ad-test-user)** az Azure AD egyszeri bejelentkezésének teszteléséhez.
+4. **[Rendelje hozzá az Azure AD tesztfelhasználót](#assign-the-azure-ad-test-user)** az Azure AD egyszeri bejelentkezés engedélyezéséhez a felhasználó számára.
+5. **[Hozzon létre egy Proxyclick tesztfelhasználó,](#create-a-proxyclick-test-user)** amely kapcsolódik a felhasználó Azure AD-ábrázolása.
+6. **[Tesztelje az egyszeri bejelentkezést](#test-single-sign-on)** a konfiguráció működésének ellenőrzéséhez.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon.
 
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Proxyclick, ezeket a lépéseket:
+Az Azure AD egyszeri bejelentkezése a Proxyclick alkalmazásával az alábbi lépésekkel:
 
-1. Az a [az Azure portal](https://portal.azure.com/), az alkalmazás integrációs Proxyclick oldalán válassza **egyszeri bejelentkezési**:
+1. Az [Azure Portalon](https://portal.azure.com/)a Proxyclick alkalmazásintegrációs lapon válassza az **Egyszeri bejelentkezés**lehetőséget:
 
-    ![Válassza ki az egyszeri bejelentkezés](common/select-sso.png)
+    ![Egyszeri bejelentkezés kiválasztása](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válasszon **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése:
+2. Az **Egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza az **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezéséhez:
 
-    ![Egyszeri bejelentkezés módszer kiválasztása](common/select-saml-option.png)
+    ![Egyetlen bejelentkezési módszer kiválasztása](common/select-saml-option.png)
 
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** lapon válassza ki a **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel:
+3. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson a **Szerkesztés** ikonra az **Egyszerű SAML-konfiguráció** párbeszédpanel megnyitásához:
 
     ![Szerkesztés ikon](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** párbeszédpanel, ha azt szeretné, konfigurálja az alkalmazás identitásszolgáltató által kezdeményezett módban, az alábbi lépéseket.
+4. Az **Egyszerű SAML-konfiguráció** párbeszédpanelen, ha az alkalmazást IdP által kezdeményezett módban szeretné konfigurálni, tegye a következő lépéseket.
 
-    ![Alapszintű SAML-konfigurációja párbeszédpanel](common/idp-intiated.png)
+    ![Egyszerű SAML konfiguráció párbeszédpanel](common/idp-intiated.png)
 
-    1. Az a **azonosító** mezőbe írjon be egy URL-címe ebben a mintában:
+    1. Az **Azonosító** mezőbe írjon be egy URL-címet a következő mintába:
    
        `https://saml.proxyclick.com/init/<companyId>`
 
-    1. Az a **válasz URL-cím** mezőbe írjon be egy URL-címe ebben a mintában:
+    1. A **Válasz URL-címe** mezőbe írjon be egy URL-címet a következő mintába:
 
        `https://saml.proxyclick.com/consume/<companyId>`
 
-5. Ha az alkalmazás konfigurálása a Szolgáltató által kezdeményezett módban szeretne, válassza ki a **további URL-címet beállítani**. Az a **bejelentkezési URL-cím** mezőbe írjon be egy URL-címe ebben a mintában:
+5. Ha az alkalmazást SP által kezdeményezett módban szeretné konfigurálni, válassza **a További URL-címek beállítása**lehetőséget. A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő mintába:
    
    `https://saml.proxyclick.com/init/<companyId>`
 
-    ![Proxyclick tartomány és URL-címeket egyetlen bejelentkezési adatait](common/metadata-upload-additional-signon.png)
+    ![Proxyclick-tartomány és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
 
     
 
     > [!NOTE]
-    > Ezeket az értékeket a helyőrzők. Tényleges azonosítóját használja, válasz URL-cím és a sign-on URL-címet kell. Ez az oktatóanyag egy későbbi része ismerteti ezeket az értékeket szükséges lépések.
+    > Ezek az értékek helyőrzők. A tényleges azonosítót, a válasz URL-címét és a bejelentkezési URL-címet kell használnia. Az értékek elérésének lépéseit az oktatóanyag későbbi részében ismertetik.
 
-6. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** szakaszban jelölje be a **letöltése** mellett kapcsolni **tanúsítvány (Base64)** , a igényeknek, és mentse el a tanúsítványt a számítógépen:
+6. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány** szakaszában válassza a **Tanúsítvány (Base64)** melletti **Letöltés** hivatkozást, és mentse a tanúsítványt a számítógépre:
 
-    ![Tanúsítvány letöltésére szolgáló hivatkozásra.](common/certificatebase64.png)
+    ![Tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-7. Az a **Proxyclick beállítása** területén másolja a megfelelő URL-címeket, a követelmények alapján:
+7. A **Proxyclick beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények nek megfelelően:
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![A konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    1. **Bejelentkezési URL-cím**.
+    1. **Bejelentkezési URL.**
 
-    1. **Az Azure AD-azonosító**.
+    1. **Az Azure Hirdetési azonosítója**.
 
-    1. **Kijelentkezési URL-címe**.
+    1. **Kijelentkezési URL-cím**.
 
-### <a name="configure-proxyclick-single-sign-on"></a>Proxyclick egyszeri bejelentkezés konfigurálása
+### <a name="configure-proxyclick-single-sign-on"></a>A Proxyclick egyszeri bejelentkezéskonfigurálása
 
-1. Egy új böngészőablakban jelentkezzen be a Proxyclick vállalati hely rendszergazdaként.
+1. Egy új böngészőablakban jelentkezzen be a Proxyclick vállalati webhelyére rendszergazdaként.
 
-2. Válassza ki **fiók & beállítások**:
+2. Válassza **a Fiók & beállítások lehetőséget:**
 
-    ![Válassza ki a fiók & beállításai](./media/proxyclick-tutorial/configure1.png)
+    ![Fiók & beállítások kiválasztása](./media/proxyclick-tutorial/configure1.png)
 
-3. Görgessen le a **Integrációk** szakaszt, és válassza **SAML**:
+3. Görgessen le az **Integrációk** szakaszhoz, és válassza az **SAML**lehetőséget:
 
-    ![Válassza ki az SAML](./media/proxyclick-tutorial/configure2.png)
+    ![SAML kiválasztása](./media/proxyclick-tutorial/configure2.png)
 
-4. Az a **SAML** területén az alábbi lépéseket.
+4. Az **SAML** szakaszban tegye a következő lépéseket.
 
-    ![SAML-szakaszában](./media/proxyclick-tutorial/configure3.png)
+    ![SAML szakasz](./media/proxyclick-tutorial/configure3.png)
 
-    1. Másolás a **SAML ügyfél URL-címe** értékét, és illessze be azt a **válasz URL-cím** párbeszédpanel a **alapszintű SAML-konfigurációja** párbeszédpanel az Azure Portalon.
+    1. Másolja az **SAML-fogyasztó URL-értékét,** és illessze be a **Válasz URL-cím** mezőjébe az Azure Portal **Egyszerű SAML-konfiguráció** párbeszédpanelén.
 
-    1. Másolás a **SAML egyszeri bejelentkezés átirányítási URL-cím** értékét, és illessze be azt a **bejelentkezési URL-cím** és **azonosító** lévő a **alapszintű SAML-konfigurációja** az Azure Portal párbeszédpanel.
+    1. Másolja az **SAML SSO átirányítási URL-értékét,** és illessze be a **Bejelentkezési URL-címbe** és **az Azonosító** mezőbe az Azure Portal **alapszintű SAML-konfiguráció** párbeszédpanelén.
 
-    1. Az a **SAML-kérelem metódus** listáról válassza ki **HTTP-átirányítás**.
+    1. Az **SAML kérelemmetódus listájában** válassza a **HTTP Redirect (HTTP Átirányítás)** lehetőséget.
 
-    1. Az a **kibocsátó** mezőbe illessze be a **az Azure AD-azonosító** , az Azure Portalról másolt érték.
+    1. A **Kiállító** mezőbe illessze be az Azure AD-azonosító az Azure Portalról másolt **Azure AD-azonosító** értékét.
 
-    1. Az a **SAML 2.0-s végponti URL-cím** mezőbe illessze be a **bejelentkezési URL-cím** , az Azure Portalról másolt érték.
+    1. Az **SAML 2.0 Végpont URL-címe** mezőbe illessze be az Azure Portalról másolt **bejelentkezési URL-címet.**
 
-    1. A Jegyzettömbben nyissa meg a tanúsítványfájlt, amely az Azure Portalról letöltött. Illessze be a fájl tartalmát a **tanúsítvány** mezőbe.
+    1. A Jegyzettömbben nyissa meg az Azure Portalról letöltött tanúsítványfájlt. Illessze be a fájl tartalmát a **Tanúsítvány** mezőbe.
 
-    1. Válassza ki **módosítások mentése**.
+    1. Válassza a **Módosítások mentése lehetőséget.**
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
 
-Ebben a szakaszban az Azure Portalon Britta Simon nevű tesztfelhasználó fog létrehozni.
+Ebben a szakaszban egy Britta Simon nevű tesztfelhasználót hoz létre az Azure Portalon.
 
-1. Az Azure Portalon válassza ki a **Azure Active Directory** a bal oldali panelen válassza ki a **felhasználók**, majd válassza ki **minden felhasználó**:
+1. Az Azure Portalon válassza az **Azure Active Directory** lehetőséget a bal oldali ablaktáblában, válassza a **Felhasználók**lehetőséget, majd válassza az **Összes felhasználó**lehetőséget:
 
-    ![Válassza ki az összes felhasználó](common/users.png)
+    ![Válassza a Minden felhasználó lehetőséget](common/users.png)
 
-2. Válassza ki **új felhasználó** a képernyő tetején:
+2. Válassza az **Új felhasználó** lehetőséget a képernyő tetején:
 
-    ![Válassza ki az új felhasználó](common/new-user.png)
+    ![Új felhasználó kiválasztása](common/new-user.png)
 
-3. Az a **felhasználói** párbeszédpanel mezőbe az alábbi lépéseket.
+3. A **Felhasználó** párbeszédpanelen tegye a következő lépéseket.
 
-    ![Felhasználói párbeszédpanel](common/user-properties.png)
+    ![Felhasználó párbeszédpanel](common/user-properties.png)
 
-    1. Az a **neve** mezőbe írja be **BrittaSimon**.
+    1. A **Név** mezőbe írja be **a BrittaSimon**értéket.
   
-    1. Az a **felhasználónév** mezőbe írja be **BrittaSimon @\<vállalati_tartomány >.\< bővítmény >** . (Például BrittaSimon@contoso.com.)
+    1. A **Felhasználónév** mezőbe írja be **BrittaSimon@\<\< vállalattartomány>. kiterjesztés>. ** (Például.) BrittaSimon@contoso.com
 
-    1. Válassza ki **jelszó megjelenítése**, és jegyezze fel az értéket, amely szerepel a **jelszó** mezőbe.
+    1. Válassza **a Jelszó megjelenítése**lehetőséget, majd írja le a **Jelszó** mezőbe írt értéket.
 
     1. Kattintson a **Létrehozás** gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban Britta Simon számára a hozzáférés biztosításával a Proxyclick Azure egyszeri bejelentkezés használatához engedélyeznie kell.
+Ebben a szakaszban engedélyezi Britta Simon azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít neki a Proxyclick.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**válassza **minden alkalmazás**, majd válassza ki **Proxyclick**.
+1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, válassza a **Minden alkalmazás**lehetőséget, majd a **Proxyclick**lehetőséget.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **Proxyclick**.
+2. Az alkalmazások listájában válassza a **Proxyclick**lehetőséget.
 
     ![Alkalmazások listája](common/all-applications.png)
 
-3. A bal oldali panelen válassza ki a **felhasználók és csoportok**:
+3. A bal oldali ablaktáblában válassza a **Felhasználók és csoportok**lehetőséget:
 
     ![Felhasználók és csoportok kiválasztása](common/users-groups-blade.png)
 
-4. Válassza ki **felhasználó hozzáadása**, majd válassza ki **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel bezárásához.
+4. Válassza **a Felhasználó hozzáadása**lehetőséget, majd a Hozzárendelés **hozzáadása** **párbeszédpanelen** a Felhasználók és csoportok lehetőséget.
 
     ![Felhasználó hozzáadása kiválasztása](common/add-assign-user.png)
 
-5. A a **felhasználók és csoportok** párbeszédpanelen jelölje ki **Britta Simon** a felhasználók listában, és kattintson a **válassza** gombra az ablak alján.
+5. A **Felhasználók és csoportok** párbeszédpanelen jelölje ki **a Britta Simon** elemet a felhasználók listájában, majd kattintson az ablak alján található **Kijelölés** gombra.
 
-6. Ha a SAML-előfeltétel szerepkör értéket a várt a **Szerepkörválasztás** párbeszédpanelen jelölje ki a megfelelő szerepkört a felhasználóhoz a listából. Kattintson a **kiválasztása** gombra az ablak alján.
+6. Ha az SAML-feltételben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából. Kattintson az ablak alján található **Kijelölés** gombra.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen jelölje ki **hozzárendelése**.
+7. A **Hozzárendelés hozzáadása** párbeszédpanelen válassza a **Hozzárendelés lehetőséget.**
 
-### <a name="create-a-proxyclick-test-user"></a>Proxyclick tesztfelhasználó létrehozása
+### <a name="create-a-proxyclick-test-user"></a>Proxyclick-tesztfelhasználó létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók Proxyclick bejelentkezni, azokat hozzá Proxyclick kell. Adja hozzá manuálisan kell.
+Ahhoz, hogy az Azure AD-felhasználók bejelentkezhessenek a Proxyclickbe, hozzá kell adnia őket a Proxyclickhez. Manuálisan kell hozzáadnia őket.
 
-Hozzon létre egy felhasználói fiókot, az alábbi lépéseket kell végrehajtani:
+Felhasználói fiók létrehozásához tegye a következőket:
 
-1. A Proxyclick vállalati hely jelentkezzen be rendszergazdaként.
+1. Jelentkezzen be a Proxyclick vállalati webhelyére rendszergazdaként.
 
-1. Válassza ki **munkatársai** az ablak tetején:
+1. Válassza a **Munkatársak** elemet az ablak tetején:
 
-    ![Válassza ki a munkatársakkal](./media/proxyclick-tutorial/user1.png)
+    ![Munkatársak kiválasztása](./media/proxyclick-tutorial/user1.png)
 
-1. Válassza ki **munkatársa hozzáadása**:
+1. Válassza **a Munkatárs hozzáadása**lehetőséget:
 
-    ![Válassza a munkatársak hozzáadása](./media/proxyclick-tutorial/user2.png)
+    ![Munkatárs hozzáadása kijelölése](./media/proxyclick-tutorial/user2.png)
 
-1. Az a **adjon hozzá egy munkatársa** területén az alábbi lépéseket.
+1. A **Munkatársak hozzáadása** csoportban tegye a következő lépéseket.
 
-    ![Adjon hozzá egy munkatársa szakasz](./media/proxyclick-tutorial/user3.png)
+    ![Munkatárs hozzáadása szakasz](./media/proxyclick-tutorial/user3.png)
 
-    1. Az a **E-mail** mezőbe írja be a felhasználó e-mail-címét. Ebben az esetben **brittasimon\@contoso.com**.
+    1. Az **E-mail** mezőbe írja be a felhasználó e-mail címét. Ebben az **esetben, brittasimon\@contoso.com**.
 
-    1. Az a **Utónév** mezőbe írja be a felhasználó utónevét. Ebben az esetben **Britta**.
+    1. Az **Utónév mezőbe** írja be a felhasználó keresztnevét. Ebben az **esetben, Britta**.
 
-    1. Az a **Vezetéknév** mezőbe írja be a felhasználó vezetékneve. Ebben az esetben **Simon**.
+    1. A **Vezetéknév** mezőbe írja be a felhasználó vezetéknevét. Ebben az esetben, **Simon**.
 
-    1. Válassza ki **felhasználó hozzáadása**.
+    1. Válassza **a Felhasználó hozzáadása**lehetőséget.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-Most szüksége az Azure AD egyszeri bejelentkezési konfigurációjának tesztelése a hozzáférési Panel használatával.
+Most kell tesztelniaz Azure AD egyszeri bejelentkezési konfiguráció a hozzáférési panel használatával.
 
-A Proxyclick csempe kiválasztásakor a hozzáférési panelen azt kell automatikusan megtörténik a a Proxyclick példányhoz, amelyhez beállítani az egyszeri bejelentkezés Konfigurálásához. A hozzáférési panelen kapcsolatos további információkért lásd: [alkalmazások használatának és elérésének a saját alkalmazások portál](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor a Hozzáférési panelen kiválasztja a Proxyclick csempét, automatikusan be kell jelentkeznie a Proxyclick-példányba, amelyhez az SSO-t beállította. A Hozzáférési panelről további információt az [Alkalmazások portálon található Alkalmazások elérése és használata című témakörben](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)talál.
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory számára oktatóanyagokkal](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

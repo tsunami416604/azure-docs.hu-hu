@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ace76b9a13f44c14e348a0338ca01dd6b3948ce3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b05bccf10ef5f273a74ca49e02162fd0408230f
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369930"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411728"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Oktatóanyag: Az első ARM-sablon létrehozása és üzembe helyezése
 
@@ -79,7 +79,7 @@ Gratulálunk, az első sablont hozta létre.
 
 Az Azure PowerShell/Azure CLI használatával való munkához jelentkezzen be az Azure-hitelesítő adatokkal.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 Connect-AzAccount
@@ -96,7 +96,7 @@ az login
 
 Sablon üzembe helyezésekor meg kell adnia egy erőforráscsoportot, amely tartalmazza az erőforrásokat. A központi telepítési parancs futtatása előtt hozza létre az erőforráscsoportot az Azure CLI vagy az Azure PowerShell használatával. Válassza ki a lapokat a következő kódszakaszban az Azure PowerShell és az Azure CLI közül választhat. A CLI példák ebben a cikkben vannak írva a Bash shell.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroup `
@@ -118,14 +118,14 @@ az group create \
 
 A sablon üzembe helyezéséhez használja az Azure CLI vagy az Azure PowerShell. Használja a létrehozott erőforráscsoportot. Adjon nevet a központi telepítésnek, hogy könnyen azonosíthassa a központi telepítési előzményekben. A kényelem érdekében hozzon létre egy változót is, amely tárolja a sablonfájl elérési útját. Ez a változó megkönnyíti a központi telepítési parancsok futtatását, mivel nem kell minden telepítéskor újrabeírnia az elérési utat.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $templateFile = "{provide-the-path-to-the-template-file}"
 New-AzResourceGroupDeployment `
   -Name blanktemplate `
   -ResourceGroupName myResourceGroup `
-  -TemplateFile $templateFile
+  -TemplateFile $templateFile 
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -144,7 +144,7 @@ az deployment group create \
 
 A központi telepítési parancs eredményeket ad vissza. Keresse `ProvisioningState` meg, hogy a központi telepítés sikerült-e.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ![PowerShell központi telepítési kiépítési állapota](./media/template-tutorial-create-first-template/resource-manager-deployment-provisioningstate.png)
 
@@ -153,6 +153,9 @@ A központi telepítési parancs eredményeket ad vissza. Keresse `ProvisioningS
 ![Az Azure CLI telepítési kiépítési állapota](./media/template-tutorial-create-first-template/azure-cli-provisioning-state.png)
 
 ---
+
+> [!NOTE]
+> Ha a telepítés nem sikerült, használja a **hibakeresési kapcsolót** a központi telepítési paranccsal a hibakeresési naplók megjelenítéséhez.  A **részletes** kapcsolóval is megjelenítheti a teljes hibakeresési naplókat.
 
 ## <a name="verify-deployment"></a>Az üzembe helyezés ellenőrzése
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: thweiss
-ms.openlocfilehash: 944341b1ef88c7e3d64a74536720eb9fb1d17321
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9a6a1560e169c51256c198868dc7293a020189f4
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80152740"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421425"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Azure Private Link konfigurálása Azure Cosmos-fiókhoz
 
@@ -24,7 +24,7 @@ Csatlakozhat egy Azure Cosmos-fiókhoz, amely a Private Link szolgáltatással k
 Ez a cikk a privát végpont létrehozásának lépéseit ismerteti. Feltételezi, hogy az automatikus jóváhagyási módszert használja.
 
 > [!NOTE]
-> A privát végponttámogatása jelenleg általánosan elérhető a támogatott régiókban csak átjárókapcsolati módban. Közvetlen módban előnézeti funkcióként érhető el.
+> A privát végpont támogatása jelenleg csak átjárókapcsolati módban érhető el. Közvetlen módban előnézeti funkcióként érhető el.
 
 ## <a name="create-a-private-endpoint-by-using-the-azure-portal"></a>Privát végpont létrehozása az Azure Portal használatával
 
@@ -639,14 +639,9 @@ A terület eltávolításakor ugyanazokat a lépéseket használhatja. A régió
 
 A következő korlátozások érvényesek, ha privát kapcsolatot használ egy Azure Cosmos-fiókkal:
 
-* Az Azure Cosmos-fiókok és a virtuális hálózatok private linktámogatása csak bizonyos régiókban érhető el. A támogatott régiók listáját a Privát hivatkozás cikk [Elérhető régiók](../private-link/private-link-overview.md#availability) című szakaszában olvashat. 
-
-  > [!NOTE]
-  > Privát végpont létrehozásához győződjön meg arról, hogy mind a virtuális hálózat, mind az Azure Cosmos-fiók támogatott régiókban található.
-
 * Ha egy Azure Cosmos-fiókkal használja a Privát kapcsolatot egy közvetlen módú kapcsolat használatával, csak a TCP protokollt használhatja. A HTTP protokoll még nem támogatott.
 
-* A privát végponttámogatása jelenleg általánosan elérhető a támogatott régiókban csak átjárókapcsolati módban. Közvetlen módban előnézeti funkcióként érhető el.
+* A privát végpont támogatása jelenleg csak átjárókapcsolati módban érhető el. Közvetlen módban előnézeti funkcióként érhető el.
 
 * Ha az Azure Cosmos DB API-ját használja a MongoDB-fiókokhoz, a rendszer csak a 3.6-os kiszolgálón lévő `*.mongo.cosmos.azure.com`fiókok (azaz a végpontot formátumban használó fiókok) támogatja a privát végpontot. A Private Link nem támogatott a 3.2-es kiszolgálón lévő fiókok `*.documents.azure.com`(azaz a végpontot formátumban használó fiókok) esetében. A Privát hivatkozás használatához telepítse át a régi fiókokat az új verzióra.
 

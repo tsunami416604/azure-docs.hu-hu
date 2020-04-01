@@ -1,14 +1,14 @@
 ---
-title: HTTPS-végpont hozzáadása a vércse használatával
+title: HTTPS-végpont hozzáadása a Kestrel használatával
 description: Ez az oktatóanyag azt ismerteti, hogyan adhat hozzá HTTPS-végpontot egy ASP.NET Core előtér-webszolgáltatáshoz a Kestrel használatával, és hogyan helyezheti üzembe az alkalmazást egy fürtön.
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 077c2ab67efa51542baa3048eb678fa22b0bc2eb
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79238929"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Oktatóanyag: HTTPS-végpont hozzáadása ASP.NET Core Web API előtér-szolgáltatáshoz a Kestrel használatával
@@ -30,7 +30,7 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > * [.NET Service Fabric-alkalmazás létrehozása](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 > * [Az alkalmazás üzembe helyezése egy távoli fürtön](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 > * HTTPS-végpont hozzáadása ASP.NET Core kezelőfelületi szolgáltatáshoz
-> * [CI/CD konfigurálása az Azure Pipelines használatával](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
+> * [A CI/CD konfigurálása az Azure Pipelines használatával](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * [Figyelés és diagnosztika beállítása az alkalmazáshoz](service-fabric-tutorial-monitoring-aspnet.md)
 
 
@@ -40,13 +40,13 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 
 Az oktatóanyag elkezdése előtt:
 
-* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Telepítse a Visual Studio 2019](https://www.visualstudio.com/) 15,5-es vagy újabb verzióját az **Azure fejlesztési** és **ASP.net, valamint a webes fejlesztési** számítási feladatokkal.
+* Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* [Telepítse a Visual Studio 2019](https://www.visualstudio.com/) 15.5-ös vagy újabb verzióját az **Azure fejlesztési** és **ASP.NET és webfejlesztési** munkaterhelésekkel.
 * [A Service Fabric SDK telepítése](service-fabric-get-started.md)
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>Tanúsítvány beszerzése vagy egy önaláírt fejlesztési tanúsítvány létrehozása
 
-Éles alkalmazásokhoz használjon [hitelesítésszolgáltatói (CA-)](https://wikipedia.org/wiki/Certificate_authority) tanúsítványt. Fejlesztési és tesztelési célok érdekében létrehozhat és használhat önaláírt tanúsítványt. A Service Fabric SDK biztosítja a *CertSetup.ps1* szkriptet, amely létrehozza az önaláírt tanúsítványt, és importálja azt a `Cert:\LocalMachine\My` tanúsítványtárolóba. Nyisson meg egy parancssort rendszergazdaként, és futtassa a következő parancsot egy, a "CN = mytestcert" tárgyú tanúsítvány létrehozásához:
+Éles alkalmazásokhoz használjon [hitelesítésszolgáltatói (CA-)](https://wikipedia.org/wiki/Certificate_authority) tanúsítványt. Fejlesztési és tesztelési célok érdekében létrehozhat és használhat önaláírt tanúsítványt. A Service Fabric SDK biztosítja a *CertSetup.ps1* szkriptet, amely létrehozza az önaláírt tanúsítványt, és importálja azt a `Cert:\LocalMachine\My` tanúsítványtárolóba. Nyisson meg egy parancssort rendszergazdaként, és futtassa a következő parancsot a "CN=mytestcert" címmel rendelkező tanúsítvány létrehozásához:
 
 ```powershell
 PS C:\program files\microsoft sdks\service fabric\clustersetup\secure> .\CertSetup.ps1 -Install -CertSubjectName CN=mytestcert
@@ -152,8 +152,8 @@ serviceContext =>
 
 Adja hozzá a következő metódust, hogy a Kestrel megtalálja a tanúsítványt a `Cert:\LocalMachine\My` tárolóban a tárgy segítségével.  
 
-Ha létrehozott egy önaláírt tanúsítványt az előző PowerShell-paranccsal, vagy használja a tanúsítvány CN-t, cserélje le a "&lt;your_CN_value&gt;" kifejezést "mytestcert" értékre.
-Vegye figyelembe, hogy a helyi üzembe `localhost` helyezés esetén a rendszer inkább a "CN = localhost" használatát használja a hitelesítési kivételek elkerülése érdekében.
+Cserélje&lt;le&gt;a " your_CN_value " helyett "mytestcert", ha létrehozott egy önaláírt tanúsítványt az előző PowerShell-paranccsal, vagy használja a tanúsítvány CN-jét.
+Ne feledje, hogy abban `localhost` az esetben, ha a helyi központi telepítés, hogy célszerű használni a "CN=localhost" hitelesítési kivételek elkerülése érdekében.
 
 ```csharp
 private X509Certificate2 GetHttpsCertificateFromStore()
@@ -176,7 +176,7 @@ private X509Certificate2 GetHttpsCertificateFromStore()
 
 ## <a name="give-network-service-access-to-the-certificates-private-key"></a>Hálózatiszolgáltatás-hozzáférés hozzáadása a tanúsítvány titkos kulcsához
 
-Előzőleg importálta a tanúsítványt a fejlesztői számítógép `Cert:\LocalMachine\My` tárolójába.  Most explicit módon adja meg a szolgáltatást futtató fiókot (a hálózati szolgáltatás alapértelmezés szerint), és hozzáférést biztosít a tanúsítvány titkos kulcsához. Ezt a lépést manuálisan is elvégezheti (a certlm. msc eszközzel), de jobb, ha egy PowerShell-parancsfájlt úgy szeretne futtatni, hogy a szolgáltatás jegyzékfájljának **SetupEntryPoint** [konfigurálja az indítási parancsfájlt](service-fabric-run-script-at-service-startup.md) .
+Előzőleg importálta a tanúsítványt a fejlesztői számítógép `Cert:\LocalMachine\My` tárolójába.  Most kifejezetten adjon hozzáférést a szolgáltatást futtató fióknak (NETWORK SERVICE, alapértelmezés szerint) a tanúsítvány titkos kulcsához. Ezt a lépést manuálisan is elteheti (a certlm.msc eszközzel), de jobb, ha automatikusan futtat egy PowerShell-parancsfájlt [egy indítási parancsfájl konfigurálásával](service-fabric-run-script-at-service-startup.md) a szolgáltatásjegyzék **SetupEntryPoint** jában.
 
 ### <a name="configure-the-service-setup-entry-point"></a>Szolgáltatásbeállítás belépési pontjának konfigurálása
 
@@ -335,23 +335,23 @@ Ezután a VotingWebPkg **ServiceManifestImport** szakaszban konfigurálja a **Ru
 
 ## <a name="run-the-application-locally"></a>Az alkalmazás helyi futtatása
 
-A Megoldáskezelő válassza ki a **szavazó** alkalmazást, és állítsa be az **alkalmazás URL-címe** tulajdonságot a "https:\//localhost: 443" értékre.
+A Megoldáskezelőben jelölje ki a **szavazási** alkalmazást, és\/állítsa az **alkalmazás URL-címét** "https: /localhost:443" (https: /localhost:443) beállításra.
 
-Mentse a fájlokat és nyomja le az F5 billentyűt az alkalmazás helyi futtatásához.  Az alkalmazás üzembe helyezését követően megnyílik egy webböngésző a https:\//localhost: 443. Ha önaláírt tanúsítványt használ, látni fog egy figyelmeztetést, amely szerint a számítógépe nem bízik az adott webhely biztonságában.  Tovább a weblapra.
+Mentse a fájlokat és nyomja le az F5 billentyűt az alkalmazás helyi futtatásához.  Az alkalmazás telepítése után egy webböngésző\/nyílik meg https: /localhost:443. Ha önaláírt tanúsítványt használ, látni fog egy figyelmeztetést, amely szerint a számítógépe nem bízik az adott webhely biztonságában.  Tovább a weblapra.
 
 ![Szavazóalkalmazás][image2]
 
 ## <a name="install-certificate-on-cluster-nodes"></a>Tanúsítvány telepítése fürtcsomópontokon
 
-Mielőtt telepítené az alkalmazást az Azure-ban, telepítse a tanúsítványt a távoli fürtcsomópontok `Cert:\LocalMachine\My` tárolójába.  A szolgáltatások a fürt különböző csomópontjaira léphetnek át.  Ha az előtér-webszolgáltatás elindul a fürtcsomóponton, az indítási szkript megkeresi a tanúsítványt, és konfigurálja a hozzáférési engedélyeket.
+Az alkalmazás üzembe helyezése előtt az Azure-ban telepítse a tanúsítványt az `Cert:\LocalMachine\My` összes távoli fürtcsomópont tárolójába.  A szolgáltatások a fürt különböző csomópontjaira helyezhető át.  Ha az előtér-webszolgáltatás elindul a fürtcsomóponton, az indítási szkript megkeresi a tanúsítványt, és konfigurálja a hozzáférési engedélyeket.
 
-Először exportálja a tanúsítványt egy PFX-fájlba. Nyissa meg a certlm.msc alkalmazást, majd keresse meg a **Személyes**>**tanúsítványok** elemet.  Kattintson a jobb gombbal a *mytestcert* tanúsítványra, és válassza az **összes feladat**>**Exportálás**lehetőséget.
+Először exportálja a tanúsítványt egy PFX-fájlba. Nyissa meg a certlm.msc alkalmazást, és keresse meg a **Személyes**>**tanúsítványok lapot.**  Kattintson a jobb gombbal a *mytestcert tanúsítványra,* és válassza **az Összes feladat exportálása**>**parancsot.**
 
 ![Tanúsítvány exportálása][image4]
 
 Az exportálási varázslóban válassza az **Igen, a titkos kulcs exportálását választom** lehetőséget, majd a Személyes információcsere (PFX) formátumot.  Exportálja a fájlt a *C:\Users\sfuser\votingappcert.pfx* helyre.
 
-Ezután telepítse a tanúsítványt a távoli fürtön a [megadott PowerShell-parancsfájlok](./scripts/service-fabric-powershell-add-application-certificate.md)használatával.
+Ezután telepítse a tanúsítványt a távoli fürtre ezekkel a [megadott Powershell-parancsfájlokkal.](./scripts/service-fabric-powershell-add-application-certificate.md)
 
 > [!Warning]
 > Az önaláírt tanúsítvány elegendő alkalmazások fejlesztéséhez és teszteléséhez. Éles alkalmazásokhoz használja a [hitelesítésszolgáltatói (CA-)](https://wikipedia.org/wiki/Certificate_authority) tanúsítványt az önaláírt tanúsítvány helyett.
@@ -385,11 +385,11 @@ $slb | Set-AzLoadBalancer
 
 Mentsen minden fájlt, váltson Hibakeresésről Kiadásra, majd nyomja le az F6 billentyűt az újraépítéshez.  A Megoldáskezelőben kattintson a jobb gombbal a **Szavazás** elemre, majd válassza a **Közzététel** lehetőséget. Válassza ki az [Alkalmazás üzembe helyezése egy fürtön](service-fabric-tutorial-deploy-app-to-party-cluster.md) területen létrehozott fürt kapcsolati végpontját, vagy válasszon ki egy másik fürtöt.  Kattintson a **Közzététel** gombra az alkalmazás közzétételéhez a távoli fürtön.
 
-Az alkalmazás üzembe helyezése után nyisson meg egy webböngészőt, majd keresse meg a következő elemet: [https://mycluster.region.cloudapp.azure.com:443](https://mycluster.region.cloudapp.azure.com:443) (frissítse az URL-címet a fürtjéhez tartozó kapcsolati végponttal). Ha önaláírt tanúsítványt használ, látni fog egy figyelmeztetést, amely szerint a számítógépe nem bízik az adott webhely biztonságában.  Tovább a weblapra.
+Amikor az alkalmazás telepíti, nyisson [https://mycluster.region.cloudapp.azure.com:443](https://mycluster.region.cloudapp.azure.com:443) meg egy webböngészőt, és keresse meg az URL-címet a fürt kapcsolatvégpontjával). Ha önaláírt tanúsítványt használ, látni fog egy figyelmeztetést, amely szerint a számítógépe nem bízik az adott webhely biztonságában.  Tovább a weblapra.
 
 ![Szavazóalkalmazás][image3]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 
@@ -403,7 +403,7 @@ Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 
 Folytassa a következő oktatóanyaggal:
 > [!div class="nextstepaction"]
-> [CI/CD konfigurálása az Azure Pipelines használatával](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
+> [A CI/CD konfigurálása az Azure Pipelines használatával](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 
 [image1]: ./media/service-fabric-tutorial-dotnet-app-enable-https-endpoint/SetupBatProperties.png
 [image2]: ./media/service-fabric-tutorial-dotnet-app-enable-https-endpoint/VotingAppLocal.png

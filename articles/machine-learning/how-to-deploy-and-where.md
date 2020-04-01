@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 02/27/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 96d9a0722ae04dc150b639dced34fa290da93630
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0deace98c5be0b2ce2f29abce4c8a804145afdb1
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80159412"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475628"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellek üzembe helyezése az Azure Machine Learninggel
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -537,9 +537,9 @@ A helyi, az Azure Container-példányok és az AKS-webszolgáltatások osztálya
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
 
-### <a name="securing-deployments-with-ssl"></a>Központi telepítések biztonságossá tétele SSL-lel
+### <a name="securing-deployments-with-tls"></a>Központi telepítések biztonságossá tétele a TLS-sel
 
-A webszolgáltatások központi telepítésének biztonságossá helyezéséről az [SSL használata webszolgáltatás védelmében](how-to-secure-web-service.md#enable)című témakörben talál további információt.
+A webszolgáltatások telepítésének biztonságossá helyezéséről a [TLS engedélyezése és telepítése című témakörben talál](how-to-secure-web-service.md#enable)további információt.
 
 ### <a name="local-deployment"></a><a id="local"></a>Helyi telepítés
 
@@ -907,6 +907,24 @@ service_name = 'my-sklearn-service'
 service = Model.deploy(ws, service_name, [model])
 ```
 
+MEGJEGYZÉS: A predict_proba támogató modellek alapértelmezés szerint ezt a módszert fogják használni. Ha felül szeretné bírni ezt az előrejelzést, a POST törzset az alábbiak szerint módosíthatja:
+```python
+import json
+
+
+input_payload = json.dumps({
+    'data': [
+        [ 0.03807591,  0.05068012,  0.06169621, 0.02187235, -0.0442235,
+         -0.03482076, -0.04340085, -0.00259226, 0.01990842, -0.01764613]
+    ],
+    'method': 'predict'  # If you have a classification model, the default behavior is to run 'predict_proba'.
+})
+
+output = service.run(input_payload)
+
+print(output)
+```
+
 MEGJEGYZÉS: Ezek a függőségek szerepelnek az előre összeállított sklearn következtetéstárolóban:
 
 ```yaml
@@ -1154,7 +1172,7 @@ def run(request):
 
 * [Modell üzembe helyezése egyéni Docker-rendszerkép használatával](how-to-deploy-custom-docker-image.md)
 * [Központi telepítés – hibaelhárítás](how-to-troubleshoot-deployment.md)
-* [Biztonságos Azure Machine Learning-webszolgáltatások SSL-lel](how-to-secure-web-service.md)
+* [Webszolgáltatás biztonságossá tétele az Azure Machine Learning en keresztül a TLS használatával](how-to-secure-web-service.md)
 * [Webszolgáltatásként üzembe helyezett Azure Machine Learning-modell felhasználása](how-to-consume-web-service.md)
 * [Az Azure Machine Learning-modellek figyelése az Application Insights segítségével](how-to-enable-app-insights.md)
 * [Adatok gyűjtése a termelésben lévő modellekről](how-to-enable-data-collection.md)

@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: c78c1d3ce6dae874ace2abfa8b2bbec6d489538a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4025c620aea49dfb26ab203630c121d29d88d9d7
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536479"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474537"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning-adatkészletek létrehozása
 
@@ -52,7 +52,7 @@ A fő tényező az, hogy mekkora az adatkészlet a memóriában, azaz adatkeretk
  
 Ha Pandákat használ, nincs oka 1-nél több vCPU-nak, mivel ez minden, amit használni fog. Könnyedén párhuzamosítható számos vCPU-val egyetlen Azure Machine Learning-számítási példány/csomópont modin és Dask/Ray segítségével, és szükség esetén `import pandas as pd` `import modin.pandas as pd`egy nagy fürtre skálázható, egyszerűen átválthat a rendszerre. 
  
-Ha nem tud elég nagy virtuális az adatokhoz, két lehetősége van: használjon olyan keretrendszert, mint a Spark vagy a Dask, hogy elvégezze a feldolgozást a "kevés memórián kívüli" adatokon, azaz a dataframe partícióval és feldolgozással betöltődik a RAM partícióba, és a végeredmény a végeredmény a végén gyűlt össze. Ha ez túl lassú, a Spark vagy a Dask lehetővé teszi, hogy egy fürtre skálázható, amely továbbra is használható interaktívan. 
+Ha nem tud elég nagy virtuális az adatok, akkor két lehetőség közül választhat: használja a keretrendszer, mint a Spark vagy dask a feldolgozás végrehajtásához az adatok "elfogyott a memória", azaz a dataframe betöltődik RAM partíciópartícióés feldolgozott, a végeredmény a végén gyűjtött. Ha ez túl lassú, a Spark vagy a Dask lehetővé teszi, hogy egy fürtre skálázható, amely továbbra is használható interaktívan. 
 
 ## <a name="dataset-types"></a>Adathalmaz-típusok
 
@@ -108,6 +108,7 @@ Alapértelmezés szerint a táblázatos adathalmaz létrehozásakor az oszlopada
 > Ha a tárhely egy virtuális hálózat vagy tűzfal mögött van, csak az SDK-n keresztül létrehozott adatkészlet támogatott. Az adatkészlet létrehozásához mindenképpen adja meg `validate=False` `infer_column_types=False` a `from_delimited_files()` paramétereket és a metódusban. Ez megkerüli a kezdeti érvényesítési ellenőrzést, és biztosítja, hogy az adatkészletet ezekből a biztonságos fájlokból hozhassa létre. 
 
 ```Python
+from azureml.core import Dataset
 from azureml.data.dataset_factory import DataType
 
 # create a TabularDataset from a delimited file behind a public web url and convert column "Survived" to boolean

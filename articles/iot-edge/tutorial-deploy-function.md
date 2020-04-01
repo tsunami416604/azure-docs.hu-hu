@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 1f4b3387375b52b28600590a099884277f3de63e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f909ca12ce080fc5d1241bcc649c041361e405a7
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78943033"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421180"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Oktatóanyag: Az Azure-függvények üzembe helyezése IoT Edge-modulokként
 
@@ -31,9 +31,6 @@ Az Azure Functions használatával olyan kódot helyezhet üzembe, amely közvet
 
 ![Diagram – Bemutatóarchitektúra: a funkciómodul színpadra helyezése és telepítése](./media/tutorial-deploy-function/functions-architecture.png)
 </center>
-
->[!NOTE]
->Az Azure Function moduljai [nyilvános előzetes verzióban](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) érhetők el az Azure IoT Edge szolgáltatásban.
 
 Az ebben az oktatóanyagban létrehozott Azure-függvény szűri az eszköze által létrehozott hőmérsékletadatokat. A függvény csak akkor küld felfelé irányuló üzeneteket az Azure IoT Hubra, amikor a hőmérséklet egy megadott küszöbérték felett van.
 

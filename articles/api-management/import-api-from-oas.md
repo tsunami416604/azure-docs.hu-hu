@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: apimpm
 ms.openlocfilehash: 57803ec9889cb6a19dae6d6d1070d8381577aff0
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77468388"
 ---
 # <a name="import-an-openapi-specification"></a>OpenAPI-specifikáció importálása
@@ -35,16 +35,16 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Végezze el a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md)
+A következő rövid útmutató befejezése: [Hozzon létre egy Azure API Management-példányt](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"> </a>Háttérbeli API importálása és közzététele
+## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>Háttér-API importálása és közzététele
 
 1. Válassza ki az **API-kat** az **API MANAGEMENT** részben.
 2. Az **Új API hozzáadása** listáról válassza az **OpenAPI-specifikáció** lehetőséget.
 
-    ![OpenAPI-specifikáció](./media/import-api-from-oas/oas-api.png)
+    ![OpenAPI specifikáció](./media/import-api-from-oas/oas-api.png)
 3. Adja meg a megfelelő beállításokat. Minden API-értéket beállíthat a létrehozás során. Másik lehetőségként néhányukat később is megadhatja a **Beállítások** lapon. <br/> Ha lenyomja a **Tab** billentyűt, a rendszer feltölti némelyik (vagy az összes) mezőt a háttérszolgáltatásból származó megadott információval.
 
     ![API létrehozása](./media/api-management-get-started/create-api.png)
@@ -53,7 +53,7 @@ Végezze el a következő rövid útmutatót: [Azure API Management-példány l�
     |---|---|---|
     |**OpenAPI-specifikáció**|https://conferenceapi.azurewebsites.net?format=json|Az API-t alkalmazó szolgáltatásra hivatkozik. Az API Management erre a címre továbbítja a kérelmeket.|
     |**Megjelenített név**|*Demo Conference API*|Ha a szolgáltatás URL-címének beírása után lenyomja a Tab billentyűt, az APIM kitölti ezt a mezőt a JSON-fájl tartalma alapján. <br/>Ez a név a fejlesztői portálon jelenik meg.|
-    |**Name (Név)**|*demo-conference-api*|Egyedi nevet ad meg az API-nak. <br/>Ha a szolgáltatás URL-címének beírása után lenyomja a Tab billentyűt, az APIM kitölti ezt a mezőt a JSON-fájl tartalma alapján.|
+    |**Név**|*demo-conference-api*|Egyedi nevet ad meg az API-nak. <br/>Ha a szolgáltatás URL-címének beírása után lenyomja a Tab billentyűt, az APIM kitölti ezt a mezőt a JSON-fájl tartalma alapján.|
     |**Leírás**|Adjon meg egy opcionális leírást az API-hoz.|Ha a szolgáltatás URL-címének beírása után lenyomja a Tab billentyűt, az APIM kitölti ezt a mezőt a JSON-fájl tartalma alapján.|
     |**API URL-címének utótagja**|*conference*|Az utótag az API Management szolgáltatás kiindulási URL-címéhez van hozzáfűzve. Az API Management az API-kat az utótag alapján különbözteti meg, ezért az utótagnak egy adott közzétevő minden API-ja esetében egyedinek kell lennie.|
     |**URL-séma**|*HTTPS*|Meghatározza, mely protokollok használatával lehet hozzáférni az API-hoz. |
@@ -62,9 +62,9 @@ Végezze el a következő rövid útmutatót: [Azure API Management-példány l�
 4. Kattintson a **Létrehozás** gombra.
 
 > [!NOTE]
-> Az API-importálási korlátozások [egy másik cikkben](api-management-api-import-restrictions.md)vannak dokumentálva.
+> Az API-importálási korlátozásokat [egy másik cikk](api-management-api-import-restrictions.md)dokumentálja.
 
-## <a name="test-the-new-api-in-the-azure-portal"></a>Az új API tesztelése a Azure Portal
+## <a name="test-the-new-api-in-the-azure-portal"></a>Az új API tesztelése az Azure Portalon
 
 ![API-leképezés tesztelése](./media/api-management-get-started/01-import-first-api-01.png)
 
@@ -81,7 +81,7 @@ A műveleteket meg lehet hívni közvetlenül az Azure Portalról, ami kényelme
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Közzétett API átalakítása és védelme](transform-api.md)
