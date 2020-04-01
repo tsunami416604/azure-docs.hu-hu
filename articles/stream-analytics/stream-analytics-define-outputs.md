@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: e0b4bcac8494f136dde21b03422e12b72cecb8f3
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 4517f85fae278bd8bc15a9586d9dc0202e7dfe56
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366442"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475229"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Az Azure Stream Analytics kimeneteinek megismerése
 
@@ -188,7 +188,7 @@ Az alábbi táblázat a tulajdonságneveket és azok leírását tartalmazza a t
 | Tábla neve |A tábla neve. A tábla létrejön, ha nem létezik. |
 | Partíciókulcs |A partíciókulcsot tartalmazó kimeneti oszlop neve. A partíciókulcs egy olyan tábla partíciójának egyedi azonosítója, amely az entitás elsődleges kulcsának első részét képezi. Ez egy karakterlánc-érték, amely legfeljebb 1 KB méretű lehet. |
 | Sorkulcs |A sorkulcsot tartalmazó kimeneti oszlop neve. A sorkulcs egy partíción belüli entitás egyedi azonosítója. Az entitás elsődleges kulcsának második részét képezi. A sorkulcs olyan karakterlánc-érték, amelynek mérete legfeljebb 1 KB lehet. |
-| Köteg mérete |A kötegelt művelet rekordjainak száma. Az alapértelmezett (100) elegendő a legtöbb feladathoz. A beállítás módosításáról további részleteket a [Táblakötegelés specifikációja](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._table_batch_operation) tartalmaz. |
+| Köteg mérete |A kötegelt művelet rekordjainak száma. Az alapértelmezett (100) elegendő a legtöbb feladathoz. A beállítás módosításáról további részleteket a [Táblakötegelés specifikációja](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.tablebatchoperation) tartalmaz. |
 
 ## <a name="service-bus-queues"></a>Service Bus-üzenetsorok
 
@@ -342,18 +342,18 @@ Az Azure Stream Analytics változó méretű kötegeket használ az események f
 
 Az alábbi táblázat a kimeneti kötegelés néhány szempontját ismerteti:
 
-| Kimenet típusa | Üzenet maximális mérete | Kötegméret optimalizálása |
+| Kimenet típusa |    Üzenet maximális mérete | Kötegméret optimalizálása |
 | :--- | :--- | :--- |
 | Azure Data Lake Store | Lásd: [Data Lake Storage korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-store-limits). | Írási műveletenként legfeljebb 4 MB-ot használhat. |
 | Azure SQL Database | A maximális kötegszám használatával konfigurálható. Alapértelmezés szerint legfeljebb 10 000 maximális és 100 minimális sor egyetlen ömlesztett lapkánként.<br />Lásd: [Azure SQL-korlátok](../sql-database/sql-database-resource-limits.md). |  Kezdetben minden köteg tömegesen bevan szúrva, maximális kötegszámmal. A köteg ek felére oszlik (a minimális kötegszámig) az SQL újrapróbálható hibái alapján. |
 | Azure Blob Storage | Lásd: [Azure Storage-korlátozások.](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits) | A blobblokk maximális mérete 4 MB.<br />A blob bock maximális száma 50 000. |
-| Azure Event Hubs  | 256 KB vagy 1 MB/üzenet. <br />Lásd: [Eseményközpontok korlátai.](../event-hubs/event-hubs-quotas.md) |  Ha a bemeneti/kimeneti particionálás nincs összehangolva, minden esemény külön-külön `EventData` van csomagolva, és a maximális üzenetméretig kötegben kerül elküldésre. Ez akkor is előfordul, ha [egyéni metaadat-tulajdonságokat](#custom-metadata-properties-for-output) használ. <br /><br />  A bemeneti/kimeneti particionálás igazításakor több `EventData` esemény egyetlen példányba van csomagolva, a maximális üzenetméretig, és elküldésre kerül. |
+| Azure Event Hubs    | 256 KB vagy 1 MB/üzenet. <br />Lásd: [Eseményközpontok korlátai.](../event-hubs/event-hubs-quotas.md) |    Ha a bemeneti/kimeneti particionálás nincs összehangolva, minden esemény külön-külön `EventData` van csomagolva, és a maximális üzenetméretig kötegben kerül elküldésre. Ez akkor is előfordul, ha [egyéni metaadat-tulajdonságokat](#custom-metadata-properties-for-output) használ. <br /><br />  A bemeneti/kimeneti particionálás igazításakor több `EventData` esemény egyetlen példányba van csomagolva, a maximális üzenetméretig, és elküldésre kerül.    |
 | Power BI | Lásd: [Power BI Rest API-korlátozások](https://msdn.microsoft.com/library/dn950053.aspx). |
 | Azure Table Storage | Lásd: [Azure Storage-korlátozások.](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits) | Az alapértelmezett érték 100 entitás egy tranzakciónként. Beállíthatja, hogy egy kisebb értéket, ha szükséges. |
-| Azure Service Bus-üzenetsor   | 256 KB/üzenet a standard szinthez, 1 MB a prémium szinthez.<br /> Lásd: [Service Bus korlátok](../service-bus-messaging/service-bus-quotas.md). | Üzenetenként egyetlen eseményt használjon. |
+| Azure Service Bus-üzenetsor    | 256 KB/üzenet a standard szinthez, 1 MB a prémium szinthez.<br /> Lásd: [Service Bus korlátok](../service-bus-messaging/service-bus-quotas.md). | Üzenetenként egyetlen eseményt használjon. |
 | Azure Service Bus-témakör | 256 KB/üzenet a standard szinthez, 1 MB a prémium szinthez.<br /> Lásd: [Service Bus korlátok](../service-bus-messaging/service-bus-quotas.md). | Üzenetenként egyetlen eseményt használjon. |
-| Azure Cosmos DB   | Tekintse meg [az Azure Cosmos DB-kor .](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cosmos-db-limits) | A kötegek mérete és az írási gyakoriság dinamikusan módosul az Azure Cosmos DB válaszai alapján. <br /> A Stream Analytics nem korlátoz előre meghatározott korlátozásokat. |
-| Azure Functions   | | Az alapértelmezett kötegméret 262 144 bájt (256 KB). <br /> Az alapértelmezett eseményszám kötegenként 100. <br /> A kötegméret konfigurálható, és növelhető vagy csökkenthető a Stream Analytics [kimeneti beállításaiban.](#azure-functions)
+| Azure Cosmos DB    | Tekintse meg [az Azure Cosmos DB-kor .](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cosmos-db-limits) | A kötegek mérete és az írási gyakoriság dinamikusan módosul az Azure Cosmos DB válaszai alapján. <br /> A Stream Analytics nem korlátoz előre meghatározott korlátozásokat. |
+| Azure Functions    | | Az alapértelmezett kötegméret 262 144 bájt (256 KB). <br /> Az alapértelmezett eseményszám kötegenként 100. <br /> A kötegméret konfigurálható, és növelhető vagy csökkenthető a Stream Analytics [kimeneti beállításaiban.](#azure-functions)
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]

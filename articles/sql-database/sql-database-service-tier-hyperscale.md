@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: efb6cd1a45ac14dcbd5b2b6d8e70f5ee096ddbd8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a9917010b7301bf70c3bebf68c35d82f4839e0f
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255833"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409048"
 ---
 # <a name="hyperscale-service-tier"></a>Rugalmas skálázás szolgáltatási szint
 
@@ -25,7 +25,7 @@ Az Azure SQL Database az SQL Server Database Engine architektúrán alapul, amel
 -  Rugalmas skálázás
 -  Üzleti kritikus /Prémium
 
-Az Azure SQL Database nagy kapacitású szolgáltatási szintje a virtuálismag-alapú vásárlási modell legújabb szolgáltatási szintje. Ez a szolgáltatási szint egy jól méretezhető tárolási és számítási teljesítményszint, amely az Azure architektúrát kihasználva az Azure SQL-adatbázis tárolási és számítási erőforrásait jelentősen túllépi az általános célú és üzleti célokra rendelkezésre álló korlátokat. Kritikus szolgáltatási szintek.
+Az Azure SQL Database nagy kapacitású szolgáltatási szintje a virtuálismag-alapú vásárlási modell legújabb szolgáltatási szintje. Ez a szolgáltatási szint egy jól méretezhető tárolási és számítási teljesítményszint, amely az Azure architektúrát kihasználva az Azure SQL-adatbázis tárolási és számítási erőforrásait jelentősen túllépi az általános cél és az üzleti legkritikusabb szolgáltatási szintek számára elérhető korlátokat.
 
 > 
 > [!NOTE]
@@ -96,7 +96,7 @@ A lapkiszolgálók olyan rendszerek, amelyek egy kibővített tárolómotort ké
 
 ### <a name="log-service"></a>Naplószolgáltatás
 
-A naplószolgáltatás elfogadja az elsődleges számítási replika naplórekordjait, tartós gyorsítótárban megőrzi azokat, és továbbítja a naplórekordokat a többi számítási replikának (hogy frissíthessék a gyorsítótáraikat), valamint a megfelelő oldalkiszolgáló(ka)t, hogy az adatok frissíthetők legyenek. ott. Ily módon az elsődleges számítási kópia összes adatváltozása a naplószolgáltatáson keresztül az összes másodlagos számítási replikának és lapkiszolgálónak lesz propagálva. Végül a naplórekordok kivannak tolt a hosszú távú tárolás az Azure Storage, amely egy gyakorlatilag végtelen tárház. Ez a mechanizmus szükségtelenül veszi a gyakori naplócsonkolást. A naplószolgáltatás helyi gyorsítótárral is rendelkezik a naplóbejegyzésekhez való hozzáférés felgyorsítása érdekében.
+A naplószolgáltatás elfogadja az elsődleges számítási replika naplórekordjait, tartós gyorsítótárban megőrzi azokat, és továbbítja a naplórekordokat a többi számítási replikának (hogy frissíthessék a gyorsítótáraikat), valamint a megfelelő lapkiszolgáló(ka)t, hogy az adatok frissíthetők legyenek ott. Ily módon az elsődleges számítási kópia összes adatváltozása a naplószolgáltatáson keresztül az összes másodlagos számítási replikának és lapkiszolgálónak lesz propagálva. Végül a naplórekordok kivannak tolt a hosszú távú tárolás az Azure Storage, amely egy gyakorlatilag végtelen tárház. Ez a mechanizmus szükségtelenül veszi a gyakori naplócsonkolást. A naplószolgáltatás helyi gyorsítótárral is rendelkezik a naplóbejegyzésekhez való hozzáférés felgyorsítása érdekében.
 
 ### <a name="azure-storage"></a>Azure Storage-tárterület
 
@@ -205,8 +205,7 @@ Ezek a nagy kapacitású szolgáltatási szint jelenlegi korlátai, mint a GA.  
 | Probléma | Leírás |
 | :---- | :--------- |
 | A logikai kiszolgáló Biztonsági mentések kezelése ablaktáblája nem jeleníti meg a nagy méretű adatbázisok sql-kiszolgálóról történő szűrését  | A nagy kapacitású biztonsági mentések kezelésére külön módszert alkalmaznak, és mint ilyen, a hosszú távú megőrzési és a pont-in time biztonsági mentés idotartatási beállításai nem érvényesek / érvénytelenítik. Ennek megfelelően a nagy kapacitású adatbázisok nem jelennek meg a Biztonsági másolat kezelése ablaktáblában. |
-| Adott időpontnak megfelelő helyreállítás | Az adatbázis nagy kapacitású szolgáltatási szintre való áttelepítése után az áttelepítés t megelőző időpontra való visszaállítás nem támogatott.|
-| Nem nagy méretű DB visszaállítása nagy méretűre és fordítva | A nagy kapacitású adatbázisok nem állíthatók vissza nem nagy kapacitású adatbázisba, és nem nagy kapacitású adatbázisokba sem állíthatók vissza.|
+| Adott időpontnak megfelelő helyreállítás | A nagy kapacitású adatbázisok nem nagy kapacitású adatbázisba állíthatók vissza, nem nagy kapacitású adatbázis-megőrzési időszakon belül. Nem nagy kapacitású adatbázis nem állítható vissza nagy kapacitású adatbázisba.|
 | Ha egy adatbázis egy vagy több adatfájlja 1 TB-nál nagyobb, az áttelepítés sikertelen | Bizonyos esetekben előfordulhat, hogy a probléma megkerülése a nagy fájlok 1 TB-nál kisebbre zsugorításával lehetséges. Ha az áttelepítési folyamat során használt adatbázist telepít át, győződjön meg arról, hogy egyetlen fájl sem lesz nagyobb 1 TB-nál. Az adatbázisfájlok méretének meghatározásához használja az alábbi lekérdezést. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | Felügyelt példány | Az Azure SQL Database felügyelt példánya jelenleg nem támogatott a nagy kapacitású adatbázisok. |
 | Rugalmas készletek |  Rugalmas készletek jelenleg nem támogatott az SQL Database nagykapacitású.|

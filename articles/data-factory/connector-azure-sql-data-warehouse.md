@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/25/2020
-ms.openlocfilehash: 950bbc17af920f104f31af4d324f5546ff29217e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 822a981b84919670aa476567625cdf914206eaa8
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257954"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422184"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Adatok másolása és átalakítása az Azure Synapse Analytics (korábbi években Azure SQL Data Warehouse) szolgáltatásban az Azure Data Factory használatával 
 
@@ -485,7 +485,7 @@ Ha a követelmények nem teljesülnek, az Azure Data Factory ellenőrzi a beáll
 
 ### <a name="staged-copy-by-using-polybase"></a>Szakaszos másolás a PolyBase használatával
 
-Ha a forrásadatok natív módon nem kompatibilisek a PolyBase szolgáltatással, engedélyezze az adatok másolását egy köztes átmeneti Azure Blob storage-példányon keresztül (nem lehet az Azure Premium Storage). Ebben az esetben az Azure Data Factory automatikusan konvertálja az adatokat, hogy megfeleljenek a PolyBase adatformátum-követelményeinek. Ezután meghívja a PolyBase adatokat az SQL Data Warehouse-ba. Végül törli az ideiglenes adatokat a blob storage-ból. Tekintse [meg a Szakaszos másolás](copy-activity-performance.md#staged-copy) az adatok egy átmeneti Azure Blob storage-példányon keresztül történő másolásának részleteit.
+Ha a forrásadatok natív módon nem kompatibilisek a PolyBase szolgáltatással, engedélyezze az adatok másolását egy köztes átmeneti Azure Blob storage-példányon keresztül (nem lehet az Azure Premium Storage). Ebben az esetben az Azure Data Factory automatikusan konvertálja az adatokat, hogy megfeleljenek a PolyBase adatformátum-követelményeinek. Ezután meghívja a PolyBase adatokat az SQL Data Warehouse-ba. Végül törli az ideiglenes adatokat a blob storage-ból. Tekintse [meg a Szakaszos másolás](copy-activity-performance-features.md#staged-copy) az adatok egy átmeneti Azure Blob storage-példányon keresztül történő másolásának részleteit.
 
 A funkció használatához hozzon létre egy [Azure Blob Storage-kapcsolt szolgáltatás,](connector-azure-blob-storage.md#linked-service-properties) amely hivatkozik az Azure storage-fiók az ideiglenes blob storage. Ezután `enableStaging` adja `stagingSettings` meg a másolási tevékenység és tulajdonságait az alábbi kódban látható módon.
 
@@ -613,7 +613,7 @@ A COPY utasítás használata a következő konfigurációt támogatja:
 2. A formázási beállítások a következők:
 
    1. **Parketta** `compression` esetén: nem lehet **tömörítés,** **Snappy**vagy **GZip**.
-   2. **Orc**esetén: `compression` nem lehet **tömörítés,** **zlib**vagy **Snappy**.
+   2. **Orc**esetén: `compression` lehet nem **```zlib```** **tömörítés**, vagy **Snappy**.
    3. **Tagolt szöveg**esetén:
       1. `rowDelimiter`explicit módon **egyetlen karakterként** vagy "**\r\n**" karakterként van beállítva, az alapértelmezett érték nem támogatott.
       2. `nullValue`marad alapértelmezettként, vagy **üres karakterláncra** van állítva ("").
@@ -705,7 +705,7 @@ Az Azure Synapse Analytics-beállítások a forrásátalakítás **Forrásbeáll
 
 * SQL példa:```Select * from MyTable where customerId > 1000 and customerId < 2000```
 
-**Kötegméret:** Adja meg a köteg méretét, hogy nagy adatokat tömbljön be olvasásokba.
+**Kötegméret:** Adja meg a köteg méretét, hogy nagy adatokat tömbljön be olvasásokba. Az adatfolyamokban az ADF ezzel a beállítással állítja be a Spark oszlopos gyorsítótárazását. Ez egy olyan beállításmező, amely a Spark alapértelmezéseit fogja használni, ha üresen hagyja.
 
 **Elkülönítési szint**: Az SQL-források alapértelmezett leképezési adatfolyam olvasása nem véglegesített. Az elkülönítési szintet itt a következő értékek egyikére módosíthatja:
 * Véglegesített olvasás

@@ -1,6 +1,6 @@
 ---
-title: Apache Kafka SSL titkosítás & hitelesítés - Azure HDInsight
-description: SSL titkosítás beállítása a Kafka ügyfelek és a Kafka brókerek, valamint a Kafka brókerek közötti kommunikációhoz. Az ügyfelek SSL-hitelesítésének beállítása.
+title: Apache Kafka TLS titkosítás & hitelesítés - Azure HDInsight
+description: TLS titkosítás beállítása a Kafka ügyfelek és a Kafka brókerek, valamint a Kafka brókerek közötti kommunikációhoz. Az ügyfelek SSL-hitelesítésének beállítása.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,25 +8,25 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4a363caf61046cf39c31ae2d5f35622b7b9109f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 027a66f4b83225f3c776e1bff1d706f6f4dba976
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80130013"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436997"
 ---
-# <a name="set-up-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Secure Sockets Layer (SSL) titkosítás és hitelesítés beállítása az Apache Kafka számára az Azure HDInsightban
+# <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>TLS-titkosítás és -hitelesítés beállítása az Apache Kafkához az Azure HDInsightban
 
-Ez a cikk bemutatja, hogyan állíthat be SSL-titkosítást az Apache Kafka-ügyfelek és az Apache Kafka brókerek között. Azt is bemutatja, hogyan állíthatja be az ügyfelek (más néven kétirányú SSL) hitelesítését.
+Ez a cikk bemutatja, hogyan állíthatja be a Transport Layer Security (TLS) titkosítást, amelyet korábban Secure Sockets Layer (SSL) titkosításnak neveznek az Apache Kafka ügyfelek és az Apache Kafka brókerek között. Azt is bemutatja, hogyan állíthatja be az ügyfelek (más néven kétirányú TLS) hitelesítését.
 
 > [!Important]
-> A Kafka alkalmazásokhoz két ügyfél használható: egy Java-ügyfél és egy konzolügyfél. Csak a `ProducerConsumer.java` Java kliens használhatja az SSL-t mind a gyártás, mind a felhasználás során. A konzolgyártó `console-producer.sh` ügyfele nem működik az SSL-lel.
+> A Kafka alkalmazásokhoz két ügyfél használható: egy Java-ügyfél és egy konzolügyfél. Csak a `ProducerConsumer.java` Java kliens használhatja a TLS-t mind a gyártás, mind a felhasználás során. A konzolgyártó `console-producer.sh` ügyfele nem működik a TLS-sel.
 
 > [!Note] 
 > A HDInsight Kafka konzolgyártó 1.1-es verzióval nem támogatja az SSL-t.
 ## <a name="apache-kafka-broker-setup"></a>Apache Kafka bróker beállítása
 
-A Kafka SSL-bróker beállítása négy HDInsight-fürtvirtuális gépet fog használni a következő módon:
+A Kafka TLS-bróker beállítása négy HDInsight-fürtvirtuális gépet fog használni a következő módon:
 
 * headnode 0 - Hitelesítésszolgáltató (CA)
 * 0, 1 és 2 dolgozói csomópont - brókerek
@@ -119,7 +119,7 @@ A bróker beállításának befejezéséhez kövesse az alábbi részletes utas�
 
     ```
 
-## <a name="update-kafka-configuration-to-use-ssl-and-restart-brokers"></a>A Kafka-konfiguráció frissítése az SSL használatához és a brókerek újraindításához
+## <a name="update-kafka-configuration-to-use-tls-and-restart-brokers"></a>A Kafka-konfiguráció frissítése a TLS használatához és a brókerek újraindítása
 
 Most már beállította az egyes Kafka-brókereket egy keystore-szal és megbízhatósági tárolóval, és importálta a megfelelő tanúsítványokat. Ezután módosítsa a kapcsolódó Kafka konfigurációs tulajdonságokat az Ambari használatával, majd indítsa újra a Kafka brókereket.
 
@@ -166,7 +166,7 @@ A konfigurációs módosítás végrehajtásához hajtsa végre az alábbi lép�
 
 ## <a name="client-setup-without-authentication"></a>Ügyfél beállítása (hitelesítés nélkül)
 
-Ha nincs szüksége hitelesítésre, a csak SSL-titkosítás beállításához szükséges lépések összegzése a következő:
+Ha nincs szüksége hitelesítésre, a csak a TLS-titkosítás beállításának lépései a következők:
 
 1. Jelentkezzen be a hitelesítésszolgáltatásba (aktív főcsomópont).
 1. Másolja a hitelesítésatanúsítványt az ügyfélgépre a hitelesítés-hitelesítési gépről (wn0).
@@ -219,7 +219,7 @@ Ezeket a lépéseket az alábbi kódrészletek részletezik.
 ## <a name="client-setup-with-authentication"></a>Ügyfél beállítása (hitelesítéssel)
 
 > [!Note]
-> A következő lépések re van szükség, ha az SSL-titkosítás **és** a hitelesítés is beállítás. Ha csak titkosítást állít be, olvassa el [az Ügyfél hitelesítés nélküli beállítása](apache-kafka-ssl-encryption-authentication.md#client-setup-without-authentication)című témakört.
+> A következő lépések re van szükség, ha a TLS-titkosítást **és** a hitelesítést is beállítja. Ha csak titkosítást állít be, olvassa el [az Ügyfél hitelesítés nélküli beállítása](apache-kafka-ssl-encryption-authentication.md#client-setup-without-authentication)című témakört.
 
 A következő négy lépés az ügyfél beállításának befejezéséhez szükséges feladatokat foglalja össze:
 
@@ -302,7 +302,7 @@ Az egyes lépcsők részleteit az alábbiakban találja.
 ## <a name="verification"></a>Ellenőrzés
 
 > [!Note]
-> Ha a HDInsight 4.0 és a Kafka 2.1 telepítve van, a konzol gyártójával/fogyasztóival ellenőrizheti a beállítást. Ha nem, futtassa a Kafka gyártót a 9092-es porton, és küldjön üzeneteket a témának, majd használja a Kafka fogyasztót a 9093-as porton, amely SSL-t használ.
+> Ha a HDInsight 4.0 és a Kafka 2.1 telepítve van, a konzol gyártójával/fogyasztóival ellenőrizheti a beállítást. Ha nem, futtassa a Kafka gyártót a 9092-es porton, és küldjön üzeneteket a témának, majd használja a Kafka fogyasztót a 9093-as porton, amely a TLS-t használja.
 
 ### <a name="kafka-21-or-above"></a>Kafka 2.1 vagy újabb
 

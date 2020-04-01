@@ -12,12 +12,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: 34057f1962338927a252011dccc56ed6a77bec47
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f9fb250109a1c9000eae8da0d6337c96f19f0f89
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69636030"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410539"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-php"></a>Hogyan használjuk a Twilio-t hang- és SMS-képességekhez a PHP-ben
 Ez az útmutató bemutatja, hogyan hajthat végre közös programozási feladatokat az Azure-beli Twilio API-szolgáltatással. A tárgyalt forgatókönyvek közé tartozik a telefonhívás és a rövid üzenetszolgáltatás (SMS) küldése. A Twilio használatával, valamint a hang- és SMS-használattal kapcsolatos további információkért tekintse meg a [Következő lépések](#NextSteps) című szakaszt.
@@ -32,7 +32,7 @@ Az Azure-ügyfelek [különleges ajánlatot](https://www.twilio.com/azure)kapnak
 
 A Twilio egy felosztó-kiosztó szolgáltatás. Nincsenek beállítási díjak, és bármikor megszüntetheti fiókját. További részleteket a [Twilio Pricing][twilio_pricing]oldalon talál.
 
-## <a name="concepts"></a><a id="Concepts"></a>Fogalmak
+## <a name="concepts"></a><a id="Concepts"></a>Alapelvek
 A Twilio API egy RESTful API, amely hang- és SMS-funkciókat biztosít az alkalmazások számára. Az ügyféltárak több nyelven is elérhetők; a listát a [Twilio API Libraries című témakörben található.][twilio_libraries]
 
 A Twilio API fő szempontjai a Twilio-műveletek és a Twilio markup nyelv (TwiML).
@@ -138,7 +138,7 @@ Az alábbiakban bemutatjuk, hogyan kezdeményezz kimenő hívást a **Services_T
 
 Mint említettük, ez a kód egy Twilio által biztosított hely a TwiML-válasz visszaadásához. Ehelyett használhatja a saját webhelyét a TwiML-válasz megadására; További információt a [TwiML-válaszok saját webhelyről történő nyújtása című témakörben talál.](#howto_provide_twiml_responses)
 
-* **Megjegyzés:** Az SSL-tanúsítványok érvényesítésével kapcsolatos hibák elhárításához lásd:[http://readthedocs.org/docs/twilio-php/en/latest/usage/rest.html][ssl_validation] 
+* **Megjegyzés:** A TLS/SSL tanúsítványérvényesítési hibák elhárításához lásd:[http://readthedocs.org/docs/twilio-php/en/latest/usage/rest.html][ssl_validation] 
 
 ## <a name="how-to-send-an-sms-message"></a><a id="howto_send_sms"></a>Útmutató: SMS küldése
 Az alábbiakban bemutatjuk, hogyan küldhet SMS-üzenetet a **Services_Twilio** osztály használatával. A **Feladó** számot a Twilio biztosítja az SMS-üzenetek küldéséhez próbafiókok számára. A **to** szám ellenőrizni kell a Twilio-fiók a kód futtatása előtt.

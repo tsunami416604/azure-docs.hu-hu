@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: aec8048c7ef2eb0d944cdd2a863e23578f4f87e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db36033ea524603416f16db27f40d5eefb8bf613
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77561680"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437115"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Az Azure Storage Explorer hibaelhárítási útmutatója
 
@@ -76,7 +76,7 @@ Számos beépített RBAC szerepkör létezik, amelyek biztosíthatják a Storage
 A tanúsítványhibák általában az alábbi esetek egyikében fordulnak elő:
 
 - Az alkalmazás egy _transzparens proxyn_keresztül csatlakozik , ami azt jelenti, hogy egy kiszolgáló (például a vállalati kiszolgáló) elfogja a HTTPS-forgalmat, visszafejti, majd önaláírt tanúsítvánnyal titkosítja azt.
-- Egy olyan alkalmazást futtat, amely önaláírt SSL-tanúsítványt ad a kapott HTTPS-üzenetekbe. Tanúsítványokat befecskendező alkalmazások közé tartozik például a víruskereső és a hálózati forgalom ellenőrző szoftvere.
+- Olyan alkalmazást futtat, amely önaláírt TLS/SSL-tanúsítványt ad a kapott HTTPS-üzenetekbe. Tanúsítványokat befecskendező alkalmazások közé tartozik például a víruskereső és a hálózati forgalom ellenőrző szoftvere.
 
 Amikor a Storage Explorer önaláírt vagy nem megbízható tanúsítványt lát, már nem tudja, hogy a fogadott HTTPS-üzenet módosult-e. Ha rendelkezik az önaláírt tanúsítvány másolatával, az alábbi lépésekkel utasíthatja a Storage Explorert, hogy bízzon benne:
 

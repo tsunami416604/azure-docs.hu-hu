@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/24/2020
-ms.openlocfilehash: ad7d171cb115729e174090c1c80915abbde5999f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b905c75e920577e46017caeb456f8237421086b2
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80238729"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421208"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Adatok másolása az SAP Business Warehouse-ból az Open Hub szolgáltatáson keresztül az Azure Data Factory használatával
 
@@ -187,9 +187,9 @@ Az SAP BW Open Hub-ból történő adatok másolásához a következő tulajdons
 | baseRequestId | A delta-betöltési kérelem azonosítója. Beállítása után csak a tulajdonság értékénnél **nagyobb** requestId azonosítóval rendelkező adatok kerülnek beolvasásra.  | Nem |
 
 >[!TIP]
->Ha az Open Hub tábla csak az egykérelem-azonosító által létrehozott adatokat tartalmazza, például mindig teljes terhelést végez, és felülírja a táblázatban lévő meglévő adatokat, vagy csak egyszer futtatja a DTP-t tesztre, ne felejtse el kilépni a "excludeLastRequest" opció jelölőnégyzetből a másoláshoz. adatokat.
+>Ha az Open Hub tábla csak az egykérelem-azonosító által létrehozott adatokat tartalmazza, például mindig teljes terhelést végez, és felülírja a táblázatban lévő meglévő adatokat, vagy csak egyszer futtatja a DTP-t tesztre, ne felejtse el kilépni a "excludeLastRequest" opció jelölőnégyzetből az adatok másolásához.
 
-Az adatok betöltésének felgyorsítása érdekében beállíthatja [`parallelCopies`](copy-activity-performance.md#parallel-copy) a másolási tevékenységet, hogy párhuzamosan töltse be az adatokat az SAP BW Open Hub-ból. Ha például négyre állít, `parallelCopies` a Data Factory egyidejűleg négy RFC-hívást hajt végre, és minden Egyes RFC-hívás lekéri az ADATOK egy részét az SAP BW Open Hub táblából, amelyet a DTP-kérelemazonosító és a csomagazonosító particionál. Ez akkor érvényes, ha az egyedi DTP-kérelemazonosító + csomagazonosító száma nagyobb, mint a `parallelCopies`értéke. Amikor adatokat másol fájlalapú adattárba, azt is megkell parancsolni, hogy több fájlként írjon egy mappába (csak adja meg a mappa nevét), ebben az esetben a teljesítmény jobb, mint egyetlen fájlba írni.
+Az adatok betöltésének felgyorsítása érdekében beállíthatja [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) a másolási tevékenységet, hogy párhuzamosan töltse be az adatokat az SAP BW Open Hub-ból. Ha például négyre állít, `parallelCopies` a Data Factory egyidejűleg négy RFC-hívást hajt végre, és minden Egyes RFC-hívás lekéri az ADATOK egy részét az SAP BW Open Hub táblából, amelyet a DTP-kérelemazonosító és a csomagazonosító particionál. Ez akkor érvényes, ha az egyedi DTP-kérelemazonosító + csomagazonosító száma nagyobb, mint a `parallelCopies`értéke. Amikor adatokat másol fájlalapú adattárba, azt is megkell parancsolni, hogy több fájlként írjon egy mappába (csak adja meg a mappa nevét), ebben az esetben a teljesítmény jobb, mint egyetlen fájlba írni.
 
 **Példa:**
 

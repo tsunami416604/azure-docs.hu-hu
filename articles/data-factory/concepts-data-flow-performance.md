@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: 95a60abef283984d66736358d2d02048f08d700d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4baf7974bdb0a5efe4cb556e820e9d13aeac5d8a
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246993"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409847"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Az adatfolyamok teljesítményének és hangolási útmutatójának leképezése
 
@@ -69,7 +69,7 @@ Alapértelmezés szerint a hibakeresés bekapcsolása az alapértelmezett Azure-
 
 A forrásátalakítás **Forrásbeállításai csoportjában** a következő beállítások befolyásolhatják a teljesítményt:
 
-* A kötegméret arra utasítja az ADF-et, hogy az adatokat a memóriában tárolja a sorok helyett. A kötegméret nem kötelező beállítás, és elfogyhatnak az erőforrások a számítási csomópontokon, ha nem megfelelően vannak méretezve.
+* A kötegméret arra utasítja az ADF-et, hogy az adatokat a Spark memóriájában tárolja a sorok helyett. A kötegméret nem kötelező beállítás, és elfogyhatnak az erőforrások a számítási csomópontokon, ha nem megfelelően vannak méretezve. Ha nem állítja be ezt a tulajdonságot, akkor a Spark-gyorsítótárazási köteg alapértelmezett beállításait fogja használni.
 * A lekérdezés beállításával szűrheti a sorokat a forrásnál, mielőtt azok feldolgozásra megérkeznének az adatfolyamba. Ez gyorsabbá teheti a kezdeti adatgyűjtést. Ha lekérdezést használ, hozzáadhat opcionális lekérdezési tippeket az Azure SQL DB-hez, például a READ UNCOMMITTED.If you use a query, you can add optional query hints for your Azure SQL DB, such as READ UNCOMMITTED.
 * A nem véglegesített olvasás gyorsabb lekérdezési eredményeket biztosít a forrástranszformáción
 
@@ -77,7 +77,7 @@ A forrásátalakítás **Forrásbeállításai csoportjában** a következő be�
 
 ### <a name="sink-batch-size"></a>Fogadó kötegmérete
 
-Az adatfolyamok soronkénti feldolgozásának elkerülése érdekében állítsa be a **Kötegméretet** az Azure SQL DB és az Azure SQL DW-fogadók Beállítások lapján. Ha a kötegméret be van állítva, az ADF feldolgozza az adatbázis kötegekben történő írását a megadott méret alapján.
+Az adatfolyamok soronkénti feldolgozásának elkerülése érdekében állítsa be a **Kötegméretet** az Azure SQL DB és az Azure SQL DW-fogadók Beállítások lapján. Ha a kötegméret be van állítva, az ADF feldolgozza az adatbázis kötegekben történő írását a megadott méret alapján. Ha nem állítja be ezt a tulajdonságot, akkor a Spark-gyorsítótárazási köteg alapértelmezett beállításait fogja használni.
 
 ![Sink (Fogadó)](media/data-flow/sink4.png "Sink (Fogadó)")
 

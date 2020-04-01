@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 5467794bf246fab4ff7ded9c445dbeee0c4093b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cbbdf724b9d7fe4948553e7526410b994f491b49
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79139623"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435259"
 ---
 # <a name="integrate-azure-security-center-with-windows-admin-center"></a>Az Azure Security Center integrálása a Windows Felügyeleti központtal
 
@@ -48,7 +48,7 @@ E két eszköz kombinálásával a Security Center egyetlen ablaktáblává vál
     * A kiszolgálórendelkezik egy munkaterülettel, amelynek jelentenie kell, és egy társított előfizetés.
     * A Security Center szabványos szintű Log Analytics-megoldása engedélyezve van a munkaterületen. Ez a megoldás a Security Center standard szintű szolgáltatásait biztosítja *az erre* a munkaterületre jelentést tevő összes kiszolgálóhoz és virtuális géphez.
     * A Security Center normál szintű díjszabása a virtuális géphez engedélyezve van az előfizetésben.
-    * A Microsoft Monitoring Agent (MMA) telepítve van a kiszolgálón, és úgy van beállítva, hogy jelentsen a kijelölt munkaterületnek. Ha a kiszolgáló már jelentést tesz egy másik munkaterületnek, akkor úgy van beállítva, hogy az újonnan kiválasztott munkaterületnek is jelentsen.
+    * A Log Analytics-ügynök telepítve van a kiszolgálón, és úgy van beállítva, hogy jelentse na a kijelölt munkaterületnek. Ha a kiszolgáló már jelentést tesz egy másik munkaterületnek, akkor úgy van beállítva, hogy az újonnan kiválasztott munkaterületnek is jelentsen.
 
     > [!NOTE]
     > Az ajánlások megjelenése a bevezetés után eltarthat egy ideig. Valójában a szerver tevékenységétől függően előfordulhat, hogy nem *kap* figyelmeztetést. Ha tesztriasztásokat szeretne létrehozni a riasztások megfelelő működéséhez, kövesse [a riasztásérvényesítési eljárás utasításait.](security-center-alert-validation.md)

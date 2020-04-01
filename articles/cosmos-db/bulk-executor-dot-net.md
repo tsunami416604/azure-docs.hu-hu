@@ -6,17 +6,22 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 09/01/2019
+ms.date: 03/23/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: d7600267dcd196a9a5c06c29774ea21d582cd7ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40ef05107f20a3396f6710f894a2dbad2d7fa6c9
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79246876"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478849"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>A tömeges végrehajtó .NET-kódtár használatával tömeges műveleteket hajthat végre az Azure Cosmos DB-ben
+
+> [!NOTE]
+> Ez a cikkben ismertetett tömeges végrehajtókönyvtár a .NET SDK 2.x verziót használó alkalmazások számára marad fenn. Új alkalmazások esetén használhatja a [.NET SDK 3.x-es verziójával](tutorial-sql-api-dotnet-bulk-import.md) közvetlenül elérhető **tömeges támogatást,** és nem igényel külső könyvtárat. 
+
+> Ha jelenleg használja a tömeges végrehajtó könyvtár, és tervezi, hogy áttelepíti a tömeges támogatást az újabb SDK, használja az [áttelepítési útmutató](how-to-migrate-from-bulk-executor-library.md) az alkalmazás áttelepítése lépéseket.
 
 Ez az oktatóanyag utasításokat tartalmaz a tömeges végrehajtó .NET könyvtár használatával dokumentumok importálása és frissítése egy Azure Cosmos-tárolóba. A tömeges végrehajtó könyvtár, és hogyan segít a tömeges átviteli és tárolási tőkeáttétel, tekintse meg a [tömeges végrehajtó könyvtár áttekintése](bulk-executor-overview.md) cikket. Ebben az oktatóanyagban egy minta .NET alkalmazás jelenik meg, amely tömegesen importálja a véletlenszerűen generált dokumentumokat egy Azure Cosmos-tárolóba. Importálás után bemutatja, hogyan frissítheti tömegesen az importált adatokat, ha javításokat ad meg műveletekként, amelyeket bizonyos dokumentummezőkön hajt végre.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: A Java használatával hívja meg a Bing Image Search REST API-t'
+title: 'Gyorsútmutató: Képek keresése a Bing Image Search REST API-val és a Java-val'
 titleSuffix: Azure Cognitive Services
 description: Ezzel a rövid útmutatóval képkeresési kérelmeket küldhet a Bing Image Search REST API-nak Java használatával, és JSON-válaszokat kaphat.
 services: cognitive-services
@@ -9,15 +9,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 12/06/2019
+ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: c1e339643613db188819e7eb8853cad8a48ea47f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 979bd034b2f4d3665de64fe8ffdb33efc7a370cb
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74928139"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478582"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-api-an-azure-cognitive-service"></a>Rövid útmutató: Képek keresése a Bing Image Search API-val, amely egy Azure kognitív szolgáltatás 
 

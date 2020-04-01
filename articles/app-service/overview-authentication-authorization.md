@@ -1,22 +1,22 @@
 ---
 title: Hitelesítés és engedélyezés
-description: Ismerje meg az Azure App Service beépített hitelesítési és engedélyezési támogatását, valamint azt, hogy miként segíthet az alkalmazás jogosulatlan hozzáféréselleni védelmében.
+description: Ismerje meg az Azure App Service és az Azure Functions beépített hitelesítési és engedélyezési támogatását, valamint azt, hogy miként segíthet az alkalmazás jogosulatlan hozzáféréselleni védelmében.
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: mahender
-ms.custom: seodec18
-ms.openlocfilehash: 825d113bbe081ba6fb85da19ff6449824db92d10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: fasttrack-edit
+ms.openlocfilehash: f16b10f13c945dd7f1ae4fdc3f4e02dcd7c5a018
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475391"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437945"
 ---
-# <a name="authentication-and-authorization-in-azure-app-service"></a>Hitelesítés és engedélyezés az Azure App Service-ben
+# <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Hitelesítés és engedélyezés az Azure App Service és az Azure Functions szolgáltatásban
 
 > [!NOTE]
-> Jelenleg az AAD V2 (beleértve az MSAL-t is) nem támogatott az Azure App Services és az Azure Functions. Kérjük, látogasson vissza a frissítéseket.
+> Jelenleg az [Azure Active Directory v2.0-s (beleértve](../active-directory/develop/v2-overview.md) az [MSAL-t](../active-directory/develop/msal-overview.md)is) nem támogatott az Azure App Service és az Azure Functions. Kérjük, látogasson vissza a frissítéseket.
 >
 
 Az Azure App Service beépített hitelesítési és engedélyezési támogatást nyújt, így bejelentkezhet a felhasználókba, és hozzáférhet az adatokhoz, ha minimális kódot ír a webalkalmazásában, a RESTful API-ban és a mobil háttérrendszerben, valamint az [Azure Functionsben.](../azure-functions/functions-overview.md) Ez a cikk azt ismerteti, hogy az App Service hogyan egyszerűsíti az alkalmazás hitelesítését és engedélyezését.
@@ -24,7 +24,7 @@ Az Azure App Service beépített hitelesítési és engedélyezési támogatást
 A biztonságos hitelesítés és engedélyezés a biztonság alapos megértését igényli, beleértve az összevonást, a titkosítást, a [JSON-webtokenek (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) kezelését, [a támogatási típusokat](https://oauth.net/2/grant-types/)és így tovább. Az App Service biztosítja ezeket a segédprogramokat, így több időt és energiát fordíthat arra, hogy üzleti értéket biztosítson az ügyfélnek.
 
 > [!IMPORTANT]
-> Nem kell használnia az App Service-t az AuthN/AuthO szolgáltatáshoz. Használhatja a mellékelt biztonsági funkciókat a választott webes keretrendszerben, vagy írhat saját segédprogramokat. Ne feledje azonban, hogy a Chrome 80 a Cookie-k (2020 március a 2020. március környékén) [megvalósítása során megszakítja a samesite végrehajtását,](https://www.chromestatus.com/feature/5088147346030592) és az egyéni távoli hitelesítés vagy más, a webhelyek közötti cookie-közzétételre támaszkodó forgatókönyvek megszakadhatnak az ügyfél Chrome-böngészők frissítésekor. A megoldás összetett, mert támogatnia kell a különböző SameSite viselkedést a különböző böngészőkhöz. 
+> Ezt a szolgáltatást nem kell használnia hitelesítéshez és engedélyezéshez. Használhatja a mellékelt biztonsági funkciókat a választott webes keretrendszerben, vagy írhat saját segédprogramokat. Ne feledje azonban, hogy a Chrome 80 a Cookie-k (2020 március a 2020. március környékén) [megvalósítása során megszakítja a samesite végrehajtását,](https://www.chromestatus.com/feature/5088147346030592) és az egyéni távoli hitelesítés vagy más, a webhelyek közötti cookie-közzétételre támaszkodó forgatókönyvek megszakadhatnak az ügyfél Chrome-böngészők frissítésekor. A megoldás összetett, mert támogatnia kell a különböző SameSite viselkedést a különböző böngészőkhöz. 
 >
 > Az App Service által üzemeltetett ASP.NET Core 2.1 és újabb verziók már javításra kerülnek ehhez a törésváltozáshoz, és megfelelően kezelik a Chrome 80 és a régebbi böngészőket. Emellett a ASP.NET Framework 4.7.2-es összes javítása 2020 januárjában az App Service-példányokon is telepítve van. További információért, például arról, hogy az alkalmazás megkapta-e a javítást, olvassa el az [Azure App Service SameSite cookie-frissítését.](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/)
 >
@@ -46,11 +46,11 @@ Ez a modul több dolgot is kezel az alkalmazáshoz:
 
 A modul az alkalmazáskódtól elkülönítve fut, és az alkalmazásbeállítások használatával van konfigurálva. Nincs szükség SDK-kra, meghatározott nyelvekre vagy az alkalmazáskód módosítására. 
 
-### <a name="user-claims"></a>Felhasználói jogcímek
+### <a name="userapplication-claims"></a>Felhasználói/alkalmazás jogcímek
 
-Az Összes nyelvi keretrendszerek, App Service elérhetővé teszi a felhasználó jogcímeket a kód a kérelem fejlécek befecskendezése. A ASP.NET 4.6-os alkalmazások esetében az App Service feltölti a [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current) alkalmazást a hitelesített felhasználó jogcímekkel, így követheti a szabványos .NET-kódmintát, beleértve az `[Authorize]` attribútumot is. Hasonlóképpen, a PHP alkalmazások, App Service `_SERVER['REMOTE_USER']` feltölti a változó. Java-alkalmazások esetén a jogcímek [a Tomcat servletből érhetők el.](containers/configure-language-java.md#authenticate-users-easy-auth)
+Az összes nyelvi keretrendszerek, App Service teszi a jogcímek a bejövő jogkivonatot (függetlenül attól, hogy egy hitelesített végfelhasználó vagy egy ügyfélalkalmazás) elérhetővé teszi a kódot a kérelem fejlécek. A ASP.NET 4.6-os alkalmazások esetében az App Service feltölti a [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current) alkalmazást a hitelesített felhasználó jogcímekkel, így követheti a szabványos .NET-kódmintát, beleértve az `[Authorize]` attribútumot is. Hasonlóképpen, a PHP alkalmazások, App Service `_SERVER['REMOTE_USER']` feltölti a változó. Java-alkalmazások esetén a jogcímek [a Tomcat servletből érhetők el.](containers/configure-language-java.md#authenticate-users-easy-auth)
 
-Az [Azure](../azure-functions/functions-overview.md) `ClaimsPrincipal.Current` Functions esetében a .NET-kód nem hidratált, de továbbra is megtalálhatja a felhasználói jogcímeket a kérelemfejlécekben.
+Az [Azure](../azure-functions/functions-overview.md) `ClaimsPrincipal.Current` Functions , nincs feltöltve a .NET-kód, de továbbra is megtalálhatja `ClaimsPrincipal` a felhasználói jogcímeket a kérelem fejlécében, vagy az objektum ot a kérelem környezetéből, vagy akár egy kötési paraméteren keresztül. További információt az [ügyfélidentitásokkal való munka](../azure-functions/functions-bindings-http-webhook-trigger.md#working-with-client-identities) című témakörben talál.
 
 További információt a Felhasználói jogcímek elérése című [témakörben talál.](app-service-authentication-how-to.md#access-user-claims)
 
@@ -63,7 +63,7 @@ Az App Service egy beépített jogkivonat-tárolót biztosít, amely a webalkalm
 
 Általában meg kell írnia a kódot gyűjteni, tárolni és frissíteni ezeket a jogkivonatokat az alkalmazásban. A jogkivonat-tároló, csak [letölteni a jogkivonatokat,](app-service-authentication-how-to.md#retrieve-tokens-in-app-code) amikor szüksége van rájuk, és [mondja app service frissíteni őket,](app-service-authentication-how-to.md#refresh-identity-provider-tokens) ha érvénytelenné válnak. 
 
-Az id-jogkivonatok, a hozzáférési jogkivonatok és a frissítési jogkivonatok a hitelesített munkamenet gyorsítótárazott, és azok csak a társított felhasználó által érhető el.  
+Az id-jogkivonatok, a hozzáférési jogkivonatok és a frissítési jogkivonatok gyorsítótárba kerülnek a hitelesített munkamenetszámára, és csak a társított felhasználó férhet hozzá.  
 
 Ha nem kell dolgozni a jogkivonatokat az alkalmazásban, letilthatja a jogkivonat-tároló.
 
@@ -93,7 +93,7 @@ A hitelesítési folyamat minden szolgáltató esetében azonos, de attól függ
 - A szolgáltató SDK: Az alkalmazás bejelentkezik a felhasználók a szolgáltató manuálisan, majd elküldi a hitelesítési jogkivonatot az App Service érvényesítésre. Ez általában a böngésző nélküli alkalmazások esetében van így, amelyek nem mutathatják be a szolgáltató bejelentkezési lapját a felhasználónak. Az alkalmazáskód kezeli a bejelentkezési folyamatot, ezért _ügyféláltal irányított folyamatnak_ vagy _ügyfélfolyamatnak is nevezik._ Ez az eset a REST API-kra, [az Azure Functionsre](../azure-functions/functions-overview.md)és a JavaScript böngészőügyfelekre, valamint azokra a böngészőalkalmazásokra vonatkozik, amelyek nagyobb rugalmasságot igényelnek a bejelentkezési folyamatsorán. Ez vonatkozik a natív mobilalkalmazások, amelyek a felhasználók a szolgáltató SDK használatával.
 
 > [!NOTE]
-> Az App Service-ben egy megbízható böngészőalkalmazásból érkező hívások egy másik REST API-t hívnak meg az App Service-ben vagy az [Azure Functionsben](../azure-functions/functions-overview.md) a kiszolgáló által irányított folyamat használatával. További információt a [Hitelesítés és engedélyezés testreszabása az App Service szolgáltatásban című témakörben talál.](app-service-authentication-how-to.md)
+> Az App Service-ben egy megbízható böngészőalkalmazásból egy másik REST API-hoz az App Service-ben vagy az [Azure Functions-ben](../azure-functions/functions-overview.md) érkező hívások hitelesíthetők a kiszolgáló által irányított folyamat használatával. További információt a [Hitelesítés és engedélyezés testreszabása az App Service szolgáltatásban című témakörben talál.](app-service-authentication-how-to.md)
 >
 
 Az alábbi táblázat a hitelesítési folyamat lépéseit mutatja be.

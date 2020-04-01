@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Képek keresése REST API és Python – Bing képkeresés'
+title: 'Rövid útmutató: Képek keresése a Bing Image Search REST API-val és a Pythonnal'
 titleSuffix: Azure Cognitive Services
 description: Ezzel a rövid útmutatóval képkeresési kérelmeket küldhet a Bing Image Search REST API-nak a Python használatával, és JSON-válaszokat kaphat.
 services: cognitive-services
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 12/06/2019
+ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: f3d00688feb0f9d42e80cdbb51753483e53c388d
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 6287b9b8e6129fd62a896e5ac1fcca29febbf01a
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930729"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478538"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Rövid útmutató: Képek keresése a Bing Image Search REST API-val és a Pythonnal
 

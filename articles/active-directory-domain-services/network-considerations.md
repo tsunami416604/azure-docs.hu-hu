@@ -4,19 +4,18 @@ description: Ismerje meg a virtuális hálózat tervezési szempontjait és a ka
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
-ms.assetid: 23a857a5-2720-400a-ab9b-1ba61e7b145a
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: e00ec8448739ac30950877a2ae196aa78cde750c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 69f8cd0f78a45c6c5e53368edc5902c4b6695701
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264192"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408833"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Az Azure AD tartományi szolgáltatások virtuális hálózattervezési szempontjai és konfigurációs beállításai
 
@@ -76,7 +75,7 @@ A virtuális hálózatot ugyanúgy csatlakoztathatja egy másik virtuális hál�
 
 ![Virtuális hálózati kapcsolat VPN-átjáró használatával](./media/active-directory-domain-services-design-guide/vnet-connection-vpn-gateway.jpg)
 
-A virtuális magánhálózatok használatáról további információt a Virtuális hálózat és [virtuális hálózat VPN-átjárókapcsolatának konfigurálása az Azure Portal használatával című](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal)olvassa el.
+A virtuális magánhálózatok használatáról további információt a Virtuális hálózat és [virtuális hálózat VPN-átjárókapcsolatának konfigurálása az Azure Portal használatával című](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)olvassa el.
 
 ## <a name="name-resolution-when-connecting-virtual-networks"></a>Névfeloldás virtuális hálózatok csatlakoztatásakor
 
@@ -97,11 +96,11 @@ Egy Azure AD DS felügyelt tartomány hoz létre néhány hálózati erőforrás
 | Terheléselosztói szabályok                     | Ha egy Azure AD DS felügyelt tartomány van konfigurálva a biztonságos LDAP a TCP-porton 636, három szabály jön létre, és egy terheléselosztó a forgalom elosztására. |
 
 > [!WARNING]
-> Ne törölje az Azure AD DS által létrehozott hálózati erőforrást. Ha törli a hálózati erőforrások bármelyikét, az Azure AD DS szolgáltatás kimaradástörténik.
+> Ne törölje vagy módosítsa az Azure AD DS által létrehozott hálózati erőforrást, például a terheléselosztó vagy a szabályok manuális konfigurálását. Ha törli vagy módosítja a hálózati erőforrások bármelyikét, előfordulhat, hogy egy Azure AD DS-szolgáltatás kimaradás következik be.
 
 ## <a name="network-security-groups-and-required-ports"></a>Hálózati biztonsági csoportok és kötelező portok
 
-A [hálózati biztonsági csoport (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) olyan szabályok listáját tartalmazza, amelyek engedélyezik vagy megtagadják a hálózati forgalmat az Azure virtuális hálózat ban. Egy hálózati biztonsági csoport jön létre, amikor telepíti az Azure AD DS, amely olyan szabályokat tartalmaz, amelyek lehetővé teszik a szolgáltatás hitelesítési és felügyeleti funkciókat. Ez az alapértelmezett hálózati biztonsági csoport társítva van a virtuális hálózati alhálózat az Azure AD DS felügyelt tartományban telepítve van.
+A [hálózati biztonsági csoport (NSG)](../virtual-network/virtual-networks-nsg.md) olyan szabályok listáját tartalmazza, amelyek engedélyezik vagy megtagadják a hálózati forgalmat az Azure virtuális hálózat ban. Egy hálózati biztonsági csoport jön létre, amikor telepíti az Azure AD DS, amely olyan szabályokat tartalmaz, amelyek lehetővé teszik a szolgáltatás hitelesítési és felügyeleti funkciókat. Ez az alapértelmezett hálózati biztonsági csoport társítva van a virtuális hálózati alhálózat az Azure AD DS felügyelt tartományban telepítve van.
 
 A következő hálózati biztonsági csoport szabályok szükségesek az Azure AD DS hitelesítési és felügyeleti szolgáltatások biztosításához. Ne szerkessze vagy törölje ezeket a hálózati biztonsági csoportszabályokat az Azure AD DS által felügyelt tartományban üzembe helyezett virtuális hálózati alhálózathoz.
 

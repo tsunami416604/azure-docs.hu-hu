@@ -5,19 +5,21 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 51b800dde140affd222f2bdb341c0fbf3a57d8cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 3/30/2020
+ms.openlocfilehash: 332feffead74174ba0b9b278d8de1c5957d5b9e6
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530155"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422472"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>Az adatok replikációjának konfigurálása a MariaDB Azure-adatbázisában
 
 Ez a cikk bemutatja, hogyan állíthatja be az adatok replikációját az Azure Database for MariaDB-ben a fő- és replikakiszolgálók konfigurálásával. Ez a cikk feltételezi, hogy van néhány korábbi tapasztalata a MariaDB-kiszolgálókkal és -adatbázisokkal.
 
 Az Azure Database for MariaDB szolgáltatás ban egy replika létrehozásához a Data-in Replication szinkronizálja az adatokat a fő MariaDB-kiszolgálóról a helyszínen, a virtuális gépeken (VMs) vagy a felhőalapú adatbázis-szolgáltatásokban.
+
+A jelen cikkben ismertetett lépések végrehajtása előtt tekintse át az adatok replikációjának [korlátait és követelményeit.](concepts-data-in-replication.md#limitations-and-considerations)
 
 > [!NOTE]
 > Ha a főkiszolgáló 10.2-es vagy újabb verziójú, azt javasoljuk, hogy globális [tranzakcióazonosítóval](https://mariadb.com/kb/en/library/gtid/)állítsa be az Adatreplikációt.
@@ -36,11 +38,21 @@ Az Azure Database for MariaDB szolgáltatás ban egy replika létrehozásához a
     
     A felhasználói fiókok nem replikálódnak a főkiszolgálóról a replikakiszolgálóra. A replikakiszolgáló felhasználói hozzáférésének biztosításához manuálisan kell létrehoznia az összes fiókot és a megfelelő jogosultságokat az újonnan létrehozott Azure Database for MariaDB-kiszolgálón.
 
+3. Adja hozzá a főkiszolgáló IP-címét a replika tűzfalszabályaihoz. 
+
+   A tűzfalszabályokat az [Azure Portal](howto-manage-firewall-portal.md) vagy az [Azure CLI](howto-manage-firewall-cli.md) használatával frissítheti.
+
 ## <a name="configure-the-master-server"></a>A főkiszolgáló konfigurálása
 
 A következő lépések előkészítik és konfigurálják a mariadb-kiszolgálót, amely a helyszínen, a virtuális gépben vagy egy felhőalapú adatbázis-szolgáltatásban üzemelteti az adatreplikációt. A MariaDB-kiszolgáló az adatreplikáció főkiszolgálója.
 
-1. Kapcsolja be a bináris naplózást.
+1. A folytatás előtt tekintse át a [főkiszolgáló követelményeit.](concepts-data-in-replication.md#requirements) 
+
+   Például győződjön meg arról, hogy a főkiszolgáló engedélyezi a bejövő és a kimenő forgalmat a 3306-os porton, és hogy a főkiszolgáló **nyilvános IP-címmel**rendelkezik, a DNS nyilvánosan elérhető, vagy teljesen minősített tartománynévvel (FQDN) rendelkezik. 
+   
+   Tesztelje a főkiszolgálóhoz való kapcsolódást egy másik gépen vagy az Azure Portalon elérhető [Azure Cloud Shellben](https://docs.microsoft.com/azure/cloud-shell/overview) üzemeltetett, egy eszközről, például a MySQL parancssorból való csatlakozással.
+
+2. Kapcsolja be a bináris naplózást.
     
     Ha meg szeretné tudni, hogy engedélyezve van-e a bináris naplózás a főoldalon, írja be a következő parancsot:
 
@@ -52,7 +64,7 @@ A következő lépések előkészítik és konfigurálják a mariadb-kiszolgál�
 
    Ha `log_bin` az `OFF`értéket adja vissza, akkor szerkesztheti `log_bin=ON` a **my.cnf** fájlt úgy, hogy bekapcsolja a bináris naplózást. A módosítás életbe léptetéséhez indítsa újra a kiszolgálót.
 
-2. A főkiszolgáló beállításainak konfigurálása.
+3. A főkiszolgáló beállításainak konfigurálása.
 
     Az adatreplikáció megköveteli, `lower_case_table_names` hogy a paraméter konzisztens legyen a fő- és a replikakiszolgálók között. A `lower_case_table_names` paraméter `1` alapértelmezés szerint a MariaDB Azure Database-ben van beállítva.
 
@@ -60,7 +72,7 @@ A következő lépések előkészítik és konfigurálják a mariadb-kiszolgál�
    SET GLOBAL lower_case_table_names = 1;
    ```
 
-3. Hozzon létre egy új replikációs szerepkört, és állítsa be az engedélyeket.
+4. Hozzon létre egy új replikációs szerepkört, és állítsa be az engedélyeket.
 
    Hozzon létre egy felhasználói fiókot a replikációs jogosultságokkal konfigurált főkiszolgálón. Létrehozhat egy fiókot SQL-parancsokkal vagy a MySQL Workbench használatával. Ha SSL-lel szeretne replikálni, ezt a felhasználói fiók létrehozásakor meg kell adnia.
    
@@ -105,7 +117,7 @@ A következő lépések előkészítik és konfigurálják a mariadb-kiszolgál�
    ![Replikációs szolga](./media/howto-data-in-replication/replicationslave.png)
 
 
-4. Állítsa a főkiszolgálót írásvédett módba.
+5. Állítsa a főkiszolgálót írásvédett módba.
 
    Az adatbázis kiírása előtt a kiszolgálót írásvédett módban kell elhelyezni. Írásvédett módban a főkiszolgáló nem tudja feldolgozni az írási tranzakciókat. Az üzleti hatások elkerülése érdekében ütemezze az írásvédett ablakot csúcsidőn kívül.
 
@@ -114,7 +126,7 @@ A következő lépések előkészítik és konfigurálják a mariadb-kiszolgál�
    SET GLOBAL read_only = ON;
    ```
 
-5. Az aktuális bináris naplófájl nevének és eltolásának beolvasása.
+6. Az aktuális bináris naplófájl nevének és eltolásának beolvasása.
 
    Az aktuális bináris naplófájl nevének és [`show master status`](https://mariadb.com/kb/en/library/show-master-status/)eltolásának meghatározásához futtassa a parancsot.
     
@@ -127,7 +139,7 @@ A következő lépések előkészítik és konfigurálják a mariadb-kiszolgál�
 
    Jegyezze fel a bináris fájl nevét, mert a későbbi lépésekben fogja használni.
    
-6. Szerezd meg a GTID pozíciót (nem kötelező, a GTID-vel történő replikációhoz szükséges).
+7. Szerezd meg a GTID pozíciót (nem kötelező, a GTID-vel történő replikációhoz szükséges).
 
    Futtassa [`BINLOG_GTID_POS`](https://mariadb.com/kb/en/library/binlog_gtid_pos/) a függvényt a megfelelő binlog fájlnév és eltolás GTID pozíciójának lehívásához.
   
@@ -196,7 +208,7 @@ A következő lépések előkészítik és konfigurálják a mariadb-kiszolgál�
 
        ```sql
        SET @cert = '-----BEGIN CERTIFICATE-----
-       PLACE YOUR PUBLIC KEY CERTIFICATE'S CONTEXT HERE
+       PLACE YOUR PUBLIC KEY CERTIFICATE\'S CONTEXT HERE
        -----END CERTIFICATE-----'
        ```
 

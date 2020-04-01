@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 6de37daa0b9e0ebc711a5dacbdce352e3675a3db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54e44a12f593d2074eefe5b2ff890863db3199f7
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79257744"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478960"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Hibák elhárítása a VMware VM vagy fizikai gép Azure-ba való felborulása esetén
 
@@ -128,7 +128,7 @@ Ez általában nem ad okot aggodalomra, és általában figyelmen kívül hagyha
 
 Ezt a problémát akkor jelzi, ha nem látja az adattár az Azure-ban a portálon, amikor megpróbálja újra megvédeni a feladatátvételt tapasztalt virtuális gép. Ennek az az oka, hogy a fő cél nem ismeri fel a virtuális gép az Azure Site Recovery-hez hozzáadott vCenters alatt.
 
-A vitual is gépek újbóli védelméről további információt az [Újravédelem és a gépek visszaadása a helyszíni helyre az Azure-ba való feladatátvétel után című témakörben talál.](vmware-azure-reprotect.md)
+A virtuális gépek újbóli védelméről további információt az [Újravédelem és a gépek visszaadása a helyszíni helyre az Azure-ba való feladatátvétel után című témakörben talál.](vmware-azure-reprotect.md)
 
 A probléma megoldása:
 
@@ -138,7 +138,7 @@ Manuálisan hozza létre a fő cél a vCenter, amely kezeli a forrásgép. Az ad
 > 
 > A felderítési és frissítési háló műveletek akár 30 percet is igénybe vehet. 
 
-## <a name="linux-master-target-registration-with-cs-fails-with-an-ssl-error-35"></a>Linux Master Target regisztráció CS sikertelen egy SSL hiba 35 
+## <a name="linux-master-target-registration-with-cs-fails-with-a-tls-error-35"></a>Linux Master Target regisztráció CS sikertelen a TLS hiba 35 
 
 Az Azure Site Recovery Master Target regisztráció a konfigurációs kiszolgáló sikertelen, mert a hitelesített proxy engedélyezve van a fő cél. 
  

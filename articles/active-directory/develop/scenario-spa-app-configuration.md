@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: f1e0bf44515aab18019b19b4f0a6f84183e5aac3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1799b25ec1adf44342d2305d3b2a29039c39cd4
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77160083"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80419705"
 ---
 # <a name="single-page-application-code-configuration"></a>Egyoldalas alkalmazás: Kód konfigurációja
 
@@ -27,18 +27,18 @@ További információ az egyoldalas alkalmazás (SPA) kódjának konfigurálás�
 
 ## <a name="msal-libraries-that-support-implicit-flow"></a>Implicit folyamatot támogató MSAL-függvénytárak
 
-A Microsoft identity platform a következő Microsoft Authentication Library (MSAL) tárakat biztosítja az implicit folyamat támogatásához az iparág által ajánlott biztonsági eljárások alkalmazásával:  
+A Microsoft identity platform a következő Microsoft Authentication Library (MSAL) tárakat biztosítja az implicit folyamat támogatásához az iparág által ajánlott biztonsági eljárások alkalmazásával:
 
 | MSAL könyvtár | Leírás |
 |--------------|--------------|
 | ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)  | Egyszerű JavaScript-kódtár bármely olyan ügyféloldali webalkalmazásban, amely JavaScript- vagy SPA-keretrendszereken keresztül készült, például az Angular, a Vue.js és a React.js. |
-| ![MSAL szögletes](media/sample-v2-code/logo_angular.png) <br/> [MSAL szögletes](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | Burkolja a core MSAL.js könyvtár, hogy egyszerűsítse a használatát egyoldalas alkalmazásokban, amelyek az Angular keretrendszeren keresztül épülnek. Ez a könyvtár előzetes verzióban érhető el, és [ismert problémákat tartalmaz](https://github.com/AzureAD/microsoft-authentication-library-for-js/issues?q=is%3Aopen+is%3Aissue+label%3Aangular) bizonyos Szögletes verziókkal és böngészőkkel. |
+| ![MSAL szögletes](media/sample-v2-code/logo_angular.png) <br/> [MSAL szögletes](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | Burkolja a core MSAL.js könyvtár, hogy egyszerűsítse a használatát egyoldalas alkalmazásokban, amelyek az Angular keretrendszeren keresztül épülnek. |
 
 ## <a name="application-code-configuration"></a>Alkalmazáskód-konfiguráció
 
 Az MSAL-tárban az alkalmazás regisztrációs adatai a tár inicializálása során konfigurációként lesznek átadhatók.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 // Configuration object constructed.
@@ -58,16 +58,20 @@ A konfigurálható beállításokról az [Alkalmazás inicializálása az MSAL.j
 # <a name="angular"></a>[Angular](#tab/angular)
 
 ```javascript
-//In app.module.ts
+// App.module.ts
 import { MsalModule } from '@azure/msal-angular';
 
 @NgModule({
-  imports: [ MsalModule.forRoot({
-                clientID: 'your_app_id'
-            })]
-         })
+    imports: [
+        MsalModule.forRoot({
+            auth: {
+                clientId: 'your_app_id'
+            }
+        })
+    ]
+})
 
-  export class AppModule { }
+export class AppModule { }
 ```
 
 ---

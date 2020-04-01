@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2dc78c25c2cf63a510b9451c8d694795cd8a91eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 72264755d5f0379f0ffb07852f48885126a36898
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060947"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411607"
 ---
 # <a name="use-azure-files-with-linux"></a>Az Azure Files használata Linux rendszerrel
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure fájlmegosztások linuxos disztribúciókban csatlakoztathatók az [SMB kernelügyfél](https://wiki.samba.org/index.php/LinuxCIFS)használatával. Ez a cikk az Azure-fájlmegosztás csatlakoztatásának `mount` két módját mutatja be: igény `/etc/fstab`szerinti a paranccsal és az indításkor egy bejegyzés létrehozásával a rendszerben.
@@ -194,10 +194,57 @@ Ha befejezte az Azure-fájlmegosztás használatát, `sudo umount $mntPath` leve
     > [!Note]  
     > A fenti csatlakoztatási parancs SMB 3.0-s csatlakoztatása. Ha a Linux-disztribúció nem támogatja az SMB 3.0 titkosítással, vagy ha csak az SMB 2.1-es, csak csatlakoztathatja egy Azure virtuális gép ugyanabban a régióban, mint a tárfiók. Az Azure-fájlmegosztás titkosítással nem támogatott SMB 3.0-s szolgáltatásra való csatlakoztatásához le kell [tiltania a titkosítást a tárfiók átvitele során.](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 
+### <a name="using-autofs-to-automatically-mount-the-azure-file-shares"></a>Az Autofs használata az Azure-fájlmegosztás(ok) automatikus csatlakoztatásához
+
+1. **Győződjön meg arról, hogy az autofs csomag telepítve van.**  
+
+    Az autofs csomag telepíthető a csomagkezelő vel az Ön által választott Linux disztribúción. 
+
+    **Ubuntu** és **Debian alapú** disztribúciók esetén használja a `apt` csomagkezelőt:
+    ```bash
+    sudo apt update
+    sudo apt install autofs
+    ```
+    A **Fedorán**, **a Red Hat Enterprise Linux 8+** és a **CentOS 8 +** készüléken használja a `dnf` csomagkezelőt:
+    ```bash
+    sudo dnf install autofs
+    ```
+    A Red **Hat Enterprise Linux** és **centOS**régebbi verzióiban használja a `yum` csomagkezelőt:
+    ```bash
+    sudo yum install autofs 
+    ```
+    **OpenSUSE**esetén használja `zypper` a csomagkezelőt:
+    ```bash
+    sudo zypper install autofs
+    ```
+2. **Csatlakoztatási pont létrehozása a megosztás(ok)hoz:**
+   ```bash
+    sudo mkdir /fileshares
+    ```
+3. **Kréta egy új egyéni autofs konfigurációs fájl**
+    ```bash
+    sudo vi /etc/auto.fileshares
+    ```
+4. **Adja hozzá a következő bejegyzéseket az /etc/auto.fileshares fájlmegosztáshoz**
+   ```bash
+   echo "$fileShareName -fstype=cifs,credentials=$smbCredentialFile :$smbPath"" > /etc/auto.fileshares
+   ```
+5. **Adja hozzá a következő bejegyzést az /etc/auto.master**
+   ```bash
+   /fileshares /etc/auto.fileshares --timeout=60
+   ```
+6. **Autofs újraindítása**
+    ```bash
+    sudo systemctl restart autofs
+    ```
+7.  **A megosztáshoz kijelölt mappa elérése**
+    ```bash
+    cd /fileshares/$filesharename
+    ```
 ## <a name="securing-linux"></a>Linux biztonságossá tétele
 Az Azure-fájlmegosztás Linuxon való csatlakoztatásához a 445-ös portnak elérhetőnek kell lennie. Számos szervezet blokkolja a 445-ös portot az SMB 1 eredendő biztonsági kockázatai miatt. Az SMB 1, más néven CIFS (Common Internet File System) egy örökölt fájlrendszerprotokoll, amely számos Linux disztribúcióban része. Az SMB-1 egy elavult, nem hatékony és legfőképpen nem biztonságos protokoll. A jó hír az, hogy az Azure Files nem támogatja az SMB 1-et, és a Linux kernel 4.18-as verziójától kezdve a Linux lehetővé teszi az SMB 1 letiltását. Mindig [javasoljuk, hogy](https://aka.ms/stopusingsmb1) tiltsa le az SMB 1 a Linux-ügyfelek használata előtt SMB fájlmegosztások éles környezetben.
 
-A Linux kernel 4.18-tól kezdve `cifs` az SMB kernel modul, amelyet örökölt okok miatt hívtak meg, egy új modulparamétert (amelyet különböző külső dokumentumok *parm-nak* neveznek), a . `disable_legacy_dialects` Bár a Linux kernel 4.18-ban vezették be, egyes gyártók ezt a változást az általuk támogatott régebbi kernelekre módosították. A kényelem érdekében az alábbi táblázat részletezi a modulparaméter elérhetőségét a gyakori Linux-disztribúciókon.
+A Linux kernel 4.18-tól kezdve `cifs` az SMB kernel modul, amelyet örökölt okok miatt hívtak meg, `disable_legacy_dialects`egy új modulparamétert (amelyet különböző külső dokumentumok *parm-nak* neveznek), a . Bár a Linux kernel 4.18-ban vezették be, egyes gyártók ezt a változást az általuk támogatott régebbi kernelekre módosították. A kényelem érdekében az alábbi táblázat részletezi a modulparaméter elérhetőségét a gyakori Linux-disztribúciókon.
 
 | Disztribúció | Letilthatja az SMB 1-et |
 |--------------|-------------------|
@@ -282,5 +329,5 @@ Az Azure Files for Linux felhasználói csoport fórumot biztosít a visszajelz�
 Az alábbi hivatkozások további információkat tartalmaznak az Azure Filesról:
 
 * [Az Azure Files üzembe helyezésének megtervezése](storage-files-planning.md)
-* [Gyik](../storage-files-faq.md)
-* [hibaelhárítással](storage-troubleshoot-linux-file-connection-problems.md)
+* [GYIK](../storage-files-faq.md)
+* [Hibaelhárítás](storage-troubleshoot-linux-file-connection-problems.md)

@@ -4,16 +4,15 @@ description: Ismerje meg, hogyan állíthat be helyszíni helyek közötti vész
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: raynew
-ms.custom: MVC
-ms.openlocfilehash: 8d89c7eda845f0e5ed9bc8ccc7b6b3812ba275f9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f7de3c28463a86852cba03713ca4c500e7ca0339
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74132990"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437510"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Másodlagos helyszíni helyre irányuló vészhelyreállítás beállítása Hyper-V virtuális gépekhez
 
@@ -45,7 +44,7 @@ A [hálózatleképezés](hyper-v-vmm-network-mapping.md) kapcsolatot hoz létre 
 
 - A feladatátvételt követően összekapcsolja a virtuális gépeket a megfelelő céloldali virtuálisgép-hálózatokkal. 
 - Optimális módon helyezi el a virtuális replikagépeket a céloldali Hyper-V gazdakiszolgálókon. 
-- Ha nem konfigurálja a hálózatleképezést, a virtuális replikagépek nem lesznek csatlakoztatva egyetlen VM-hálózathoz sem a feladatátvétel után.
+- Ha nem konfigurálja a hálózati hozzárendelést, a replika virtuális gépek nem csatlakoznak a virtuális gép hálózatához a feladatátvétel után.
 
 A VMM előkészítését a következőképpen végezze el:
 

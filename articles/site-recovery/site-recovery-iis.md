@@ -7,18 +7,18 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 513a0f28fc03cbf24e35112245c9756d5ce00783
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dfed398124ca20771e169f6f9e7d08d4d799ee1e
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73954668"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478292"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Vészhelyreállítás beállítása többrétegű IIS-alapú webalkalmazáshoz
 
 Alkalmazás szoftver a motor az üzleti termelékenység egy szervezetben. A különböző webes alkalmazások különböző célokat szolgálhatnak egy szervezetben. Egyes alkalmazások, például a bérszámfejtéshez használt alkalmazások, a pénzügyi alkalmazások és az ügyfélfelé néző webhelyek kritikus fontosságúak lehetnek a szervezet számára. A termelékenység csökkenésének elkerülése érdekében fontos, hogy a szervezet folyamatosan működjön és működjön. Ennél is fontosabb, hogy ezek az alkalmazások következetesen elérhetők, segíthetnek megelőzni a szervezet márkájának vagy arculatának károsodását.
 
-A kritikus fontosságú webalkalmazások általában többrétegű alkalmazásokként vannak beállítva: a web, az adatbázis és az alkalmazás különböző szinteken vannak. Amellett, hogy különböző szintek között oszlik meg, az alkalmazások is használhatnak több kiszolgálót minden rétegben a forgalom terheléselosztása. Ezenkívül a különböző rétegek és a webkiszolgáló közötti leképezések statikus IP-címeken alapulhatnak. Feladatátvételkor néhány ilyen leképezést frissíteni kell, különösen akkor, ha több webhely van konfigurálva a webkiszolgálón. Ha a webalkalmazások SSL-t használnak, frissítenie kell a tanúsítványkötéseket.
+A kritikus fontosságú webalkalmazások általában többrétegű alkalmazásokként vannak beállítva: a web, az adatbázis és az alkalmazás különböző szinteken vannak. Amellett, hogy különböző szintek között oszlik meg, az alkalmazások is használhatnak több kiszolgálót minden rétegben a forgalom terheléselosztása. Ezenkívül a különböző rétegek és a webkiszolgáló közötti leképezések statikus IP-címeken alapulhatnak. Feladatátvételkor néhány ilyen leképezést frissíteni kell, különösen akkor, ha több webhely van konfigurálva a webkiszolgálón. Ha a webalkalmazások TLS-t használnak, frissítenie kell a tanúsítványkötéseket.
 
 A nem replikáción alapuló hagyományos helyreállítási módszerek különböző konfigurációs fájlok, beállításjegyzék-beállítások, kötések, egyéni összetevők (COM vagy .NET), tartalom és tanúsítványok biztonsági mentését foglalják magukban. A fájlok at manuális lépések sorozata állítja helyre. A fájlok biztonsági mentésének és manuális helyreállításának hagyományos helyreállítási módszerei nehézkesek, hibalehetőségek, és nem méretezhetők. Előfordulhat például, hogy egyszerűen elfelejt biztonsági másolatot tenni a tanúsítványokról. A feladatátvétel után nem marad más választása, mint új tanúsítványokat vásárolni a kiszolgálóhoz.
 
@@ -118,22 +118,22 @@ Minden oldal kötelező érvényű információból áll. A kötési informáci�
 >
 > Ha a helykötést az Összes ki nem osztott elemre **állítja,** nem kell frissítenie ezt a kötelező érvényű feladatátvétel után. Továbbá, ha a helyhez társított IP-cím nem módosul a feladatátvétel után, nem kell frissítenie a helykötést. (Az IP-cím megőrzése az elsődleges és helyreállítási helyekhez rendelt hálózati architektúrától és alhálózatoktól függ. Előfordulhat, hogy a frissítésük nem valósítható meg a szervezet számára.)
 
-![Képernyőkép az SSL-kötés beállítását bemutató képernyőképről](./media/site-recovery-iis/sslbinding.png)
+![Képernyőkép a TLS/SSL kötés beállítását bemutató képernyőkép](./media/site-recovery-iis/sslbinding.png)
 
 Ha az IP-címet egy helyhez társította, frissítse az összes helykötést az új IP-címmel. A helykötések módosításához adjon hozzá egy [IIS webréteg-frissítési parancsfájlt](https://aka.ms/asr-web-tier-update-runbook-classic) a 3.
 
 #### <a name="update-the-load-balancer-ip-address"></a>A terheléselosztó IP-címének frissítése
 Ha Rendelkezik ARR virtuális géppel, az IP-cím frissítéséhez adjon hozzá egy [IIS ARR feladatátvételi parancsfájlt](https://aka.ms/asr-iis-arrtier-failover-script-classic) a 4- es csoport után.
 
-#### <a name="ssl-certificate-binding-for-an-https-connection"></a>SSL-tanúsítvány kötése HTTPS-kapcsolathoz
-Előfordulhat, hogy egy webhely hez olyan SSL-tanúsítvány tartozik, amely biztosítja a biztonságos kommunikációt a webkiszolgáló és a felhasználó böngészője között. Ha a webhely HTTPS-kapcsolattal rendelkezik, és rendelkezik egy kapcsolódó HTTPS-helykötéssel az IIS-kiszolgáló IP-címéhez SSL-tanúsítványkötéssel, új helykötést kell hozzáadnia a tanúsítványhoz az IIS virtuális gép feladatátvétel utáni IP-címével.
+#### <a name="tlsssl-certificate-binding-for-an-https-connection"></a>TLS/SSL tanúsítványkötés HTTPS-kapcsolathoz
+Előfordulhat, hogy egy webhely hez olyan TLS/SSL-tanúsítvány tartozik, amely biztosítja a biztonságos kommunikációt a webkiszolgáló és a felhasználó böngészője között. Ha a webhely HTTPS-kapcsolattal rendelkezik, és rendelkezik egy Kapcsolódó HTTPS-helykötéssel az IIS-kiszolgáló IP-címéhez TLS/SSL tanúsítványkötéssel, új helykötést kell hozzáadnia a tanúsítványhoz az IIS virtuális gép feladatátvétel utáni IP-címével.
 
-Az SSL-tanúsítvány az alábbi összetevőkre adható ki:
+A TLS/SSL tanúsítvány az alábbi összetevőkre adható ki:
 
 * A teljesen minősített domain név a honlapon.
 * A kiszolgáló neve.
 * Helyettesítő karakter a tartománynévhez.  
-* Egy IP-cím. Ha az SSL-tanúsítvány t az IIS-kiszolgáló IP-címe alapján adják ki, egy másik SSL-tanúsítványt kell kiadni az Azure-kiszolgáló IIS-kiszolgáló IP-címe alapján. Ehhez a tanúsítványhoz létre kell hozni egy további SSL-kötést. Emiatt azt javasoljuk, hogy ne használjon Az IP-cím hez kiadott SSL-tanúsítványt. Ez az opció kevésbé széles körben használják, és hamarosan elavult szerint az új hitelesítésszolgáltató / böngésző fórum változásokat.
+* Egy IP-cím. Ha a TLS/SSL tanúsítvány t az IIS-kiszolgáló IP-címével szemben van kiadva, egy másik TLS/SSL-tanúsítványt kell kiállítani az Azure-webhelyen lévő IIS-kiszolgáló IP-címével szemben. Ehhez a tanúsítványhoz létre kell hozni egy további TLS-kötést. Emiatt azt javasoljuk, hogy ne használjon az IP-cím hez kiadott TLS/SSL tanúsítványt. Ez az opció kevésbé széles körben használják, és hamarosan elavult szerint az új hitelesítésszolgáltató / böngésző fórum változásokat.
 
 #### <a name="update-the-dependency-between-the-web-tier-and-the-application-tier"></a>A webes réteg és az alkalmazásszint közötti függőség frissítése
 Ha olyan alkalmazásspecifikus függősége van, amely a virtuális gépek IP-címén alapul, frissítenie kell ezt a függőséget a feladatátvétel után.

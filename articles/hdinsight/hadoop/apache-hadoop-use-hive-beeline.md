@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 77a451cb9f6598bbe7013f4215cfa7cab40186bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4f2b192765aab4c7cf18c62988ae2f6080b4b17c
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79037545"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436918"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Az Apache Beeline-ügyfél használata Apache Hive-val
 
@@ -65,7 +65,7 @@ A JDBC URL-cím megkeresése az Ambari-tól:
 
 ### <a name="over-public-or-private-endpoints"></a>Nyilvános vagy magánvégpontokon keresztül
 
-Ha nyilvános vagy privát végpontok használatával csatlakozik egy fürthöz, meg kell `admin`adnia a fürt bejelentkezési fióknevét (alapértelmezett) és a jelszót. Például a Beeline egy ügyfélrendszerből `clustername.azurehdinsight.net` csatlakozni a címhez. Ez a kapcsolat `443`porton keresztül történik, és SSL-rel van titkosítva.
+Ha nyilvános vagy privát végpontok használatával csatlakozik egy fürthöz, meg kell `admin`adnia a fürt bejelentkezési fióknevét (alapértelmezett) és a jelszót. Például a Beeline egy ügyfélrendszerből `clustername.azurehdinsight.net` csatlakozni a címhez. Ez a kapcsolat `443`porton keresztül történik, és TLS/SSL használatával titkosítva van.
 
 Cserélje le a `clustername` kifejezést a HDInsight-fürt nevére. Cserélje `admin` le a fürt bejelentkezési fiókjával a fürthöz. ESP-fürtök esetén használja a teljes upn-t (például). user@domain.com Cserélje `password` le a fürt bejelentkezési fiókjához.
 

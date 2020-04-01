@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 03/26/2020
-ms.openlocfilehash: 563a50d4589a83f710caa8ff2d2d95065909fc5f
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: c8743385f8c3c801b2f06e4a30a8672d1d80acc4
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384177"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422517"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Az Azure Monitor ügyféláltal felügyelt kulcskonfigurációja 
 
@@ -33,18 +33,18 @@ Javasoljuk, hogy a konfiguráció előtt tekintse át az alábbi [korlátozások
 
 > [!NOTE]
 > A Log Analytics és az Application Insights ugyanazt az adattár-platformot és lekérdezési motort használja.
-> Ezt a két áruházat az Application Insights log analytics-be való integrálásával hozzuk létre az Azure Monitor egyetlen egyesített naplótárolójának létrehozásához. Ez a változás a tervek szerint a 2020-as naptári év második negyedévére történik. Ha addignem kell központi telepítést telepítenie a CMK-t az Application Insights-adatokhoz, javasoljuk, hogy várja meg a konszolidáció befejezését, mivel az ilyen telepítések megzavarják a konszolidációt, és újra kell konfigurálnia a CMK-t a Napló ba való áttelepítés után Elemzési munkaterület. A napi 1 TB-os minimum a fürt szintjén érvényes, és amíg a konszolidáció a második negyedévben befejeződik, az Application Insights és a Log Analytics külön fürtöket igényel.
+> Ezt a két áruházat az Application Insights log analytics-be való integrálásával hozzuk létre az Azure Monitor egyetlen egyesített naplótárolójának létrehozásához. Ez a változás a tervek szerint a 2020-as naptári év második negyedévére történik. Ha addigra nem kell központi telepítést telepítenie az Application Insights-adatokhoz, javasoljuk, hogy várjon a konszolidáció befejezésére, mivel az ilyen központi telepítések megzavarják a konszolidációt, és újra kell konfigurálnia a CMK-t a Log Analytics munkaterületre való áttelepítés után. A napi 1 TB-os minimum a fürt szintjén érvényes, és amíg a konszolidáció a második negyedévben befejeződik, az Application Insights és a Log Analytics külön fürtöket igényel.
 
 ## <a name="customer-managed-key-cmk-overview"></a>Ügyfél által felügyelt kulcs (CMK) – áttekintés
 
 [Az inaktív titkosítás](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) gyakori adatvédelmi és biztonsági követelmény a szervezeteknél. Lehetővé teheti, hogy az Azure teljes mértékben kezelje az inaktív titkosítást, miközben számos lehetőség közül választhat a titkosítás vagy a titkosítási kulcsok szoros kezelésére.
 
-Az Azure Monitor adattár biztosítja, hogy az Azure által kezelt kulcsok használatával inkulált összes adat az Azure Storage-ban tárolva. Az Azure Monitor adattitkosítási lehetőséget is biztosít az [Azure Key Vaultban](https://docs.microsoft.com/azure/key-vault/key-vault-overview)tárolt saját kulcs használatával, amely a rendszer által hozzárendelt [felügyelt](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) identitás-hitelesítéshasználatával érhető el. Ez a kulcs lehet [szoftver vagy hardver-HSM védett](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
+Az Azure Monitor adattár biztosítja, hogy az Azure által kezelt kulcsok használatával inkulált összes adat az Azure Storage-ban tárolva. Az Azure Monitor adattitkosítási lehetőséget is biztosít az [Azure Key Vaultban](https://docs.microsoft.com/azure/key-vault/key-vault-overview)tárolt saját kulcs használatával, amely a rendszer által hozzárendelt [felügyelt identitás-hitelesítés](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) használatával érhető el. Ez a kulcs lehet [szoftver vagy hardver-HSM védett](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
 Az Azure Monitor titkosítási használata megegyezik az [Azure Storage titkosítási](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#about-azure-storage-encryption) működik.
 
 Az Azure Monitor Storage által a Key Vaulthoz hozzáférő gyakoriság 6 és 60 másodperc között van.Az Azure Monitor Storage mindig egy órán belül tiszteletben tartja a kulcsfontosságú engedélyek változásait.
 
-Az elmúlt 14 napban beadott adatok at is a rendszer a hatékony lekérdezési motor működése érdekében a gyorsítótárban (SSD-vel támogatott) is tárolják. Ezek az adatok továbbra is titkosítva maradnak a Microsoft-kulcsokkal, függetlenül a CMK konfigurációjától, de azon dolgozunk, hogy az SSD-t 2020 elején titkosítsuk a CMK-vel.
+Az elmúlt 14 napban beadott adatok at is a rendszer a hatékony lekérdezési motor működése érdekében a gyorsítótárban (SSD-vel támogatott) is tárolják. Ezek az adatok továbbra is titkosítva maradnak a Microsoft-kulcsokkal, függetlenül a CMK konfigurációjától, de azon dolgozunk, hogy az SSD-t 2020 első felében titkosítsuk a CMK-vel.
 
 ## <a name="how-cmk-works-in-azure-monitor"></a>Hogyan működik a CMK az Azure Monitorban?
 
@@ -54,19 +54,19 @@ Az Azure Monitor a rendszer által hozzárendelt felügyelt identitást használ
 1.  Az ügyfél kulcstartója.
 2.  Az ügyfél Log *Cluster* Analytics fürterőforrása, amely nek hozzáférése van a Key Vaulthoz – az identitás az adattár (ADX-fürt) szintjén támogatott.
 3.  Az Azure Monitor dedikált ADX-fürt.
-4.  A CMK-titkosításhoz fürterőforráshoz társított vevői munkaterületek.
+4.  A CMK-titkosításhoz *fürterőforráshoz* társított vevői munkaterületek.
 
 ## <a name="encryption-keys-management"></a>Titkosítási kulcsok kezelése
 
 A storage-adattitkosításban három féle kulcs szerepel:
 
-- **KEK** – kulcstitkosítási kulcs a key vaultban (CMK)
+- **KEK** - kulcstitkosítási kulcs (CMK)
 - **AEK** - Fiók titkosítási kulcsa
 - **DEK** - Adattitkosítási kulcs
 
 A következő szabályok érvényesek:
 
-- Az ADX tárfiók létrehoz egy egyedi titkosítási kulcsot minden tárfiókhoz, amely az AEK néven ismert.
+- Az ADX tárfiókok egyedi titkosítási kulcsot hoznak létre minden tárfiókhoz, amely az AEK néven ismert.
 
 - Az AEK a DEK-k származtatására szolgál, amelyek a lemezre írt adatok minden egyes blokkjának titkosítására szolgálnak.
 
@@ -105,12 +105,10 @@ Ahol *az eyJ0eXAiO...* a teljes engedélyezési jogkivonatot jelöli.
 A jogkivonatot az alábbi módszerek egyikével szerezheti be:
 
 1. Használja [az alkalmazásregisztrációk](https://docs.microsoft.com/graph/auth/auth-concepts#access-tokens) módszert.
-
 2. Az Azure Portalon
     1. Navigálás az Azure Portalra a "fejlesztői eszköz (F12) segítségével
     1. Keresse meg az engedélyezési karakterláncot a "Fejlécek kérése" alatt a "batch?api-version" példányok egyikében. Úgy néz ki, mint: \<\>"engedély: bemutatóra token ". 
     1. Másolja és adja hozzá az API-híváshoz az alábbi példák szerint.
-
 3. Nyissa meg az Azure REST dokumentációs webhelyét. Nyomja meg a "Próbálja ki" gombot bármely API-n, és másolja a tulajdonosi jogkivonatot.
 
 ### <a name="subscription-whitelisting"></a>Előfizetés engedélyezési listája
@@ -130,11 +128,11 @@ Ezek a beállítások a CLI-n és a PowerShellen keresztül érhetők el:
 
 ### <a name="create-cluster-resource"></a>*Fürterőforrás* létrehozása
 
-Ez az erőforrás a Key Vault és a munkaterületek közötti köztes identitáskapcsolatként használatos. Miután megerősítést kapott arról, hogy az előfizetések szerepelnek, hozzon létre egy Log *Analytics-fürterőforrást* a munkaterületei nek helye szerinti régióban. Az Application Insights és a Log Analytics külön *fürterőforrás-típusokat* igényel. A *fürterőforrás* típusa a létrehozás időpontjában definiálva van definiálva a "clusterType" tulajdonság "LogAnalytics" vagy "ApplicationInsights" tulajdonságra állításával. A fürt erőforrástípusa után nem módosítható.
+Ez az erőforrás a Key Vault és a Log Analytics-munkaterületek közötti köztes identitáskapcsolatként használatos. Miután megerősítést kapott arról, hogy az előfizetések szerepelnek, hozzon létre egy Log *Analytics-fürterőforrást* a munkaterületei nek helye szerinti régióban. Az Application Insights és a Log Analytics külön *fürterőforrás-típusokat* igényel. A *fürterőforrás* típusa a létrehozás időpontjában a *clusterType* tulajdonság *loganalytics*vagy *ApplicationInsights*beállításával van definiálva. A fürt erőforrástípusa után nem módosítható.
 
 Az Application Insights CMK konfiguráció, kövesse a függelék tartalmát.
 
-*Fürterőforrás* létrehozásakor meg kell adnia a *fürterőforrás* kapacitásfoglalási szintjét (termékkészlet). A kapacitásfoglalási szint 1000 és 2000 között lehet, és később 100 lépésben frissítheti. Ha 2000-nél magasabb kapacitásfoglalási szintre van szüksége, az engedélyezéshez elérje microsoftos partnerét. Ez a tulajdonság jelenleg nincs hatással a számlázásra – a dedikált fürt díjszabási modelljének bevezetése után a számlázás minden meglévő CMK-telepítésre vonatkozik.
+Fürterőforrás létrehozásakor meg kell *adnia* a kapacitásfoglalási szintet (termékhalmaz). A kapacitásfoglalási szint napi 1000 és 2000 GB között lehet, és később 100 lépésben frissítheti azt. Ha napi 2000 GB-nál magasabb kapacitásfoglalási szintre van szüksége, az engedélyezéshez elérje microsoftos partnerét. Ez a tulajdonság jelenleg nincs hatással a számlázásra – a dedikált fürt díjszabási modelljének bevezetése után a számlázás minden meglévő CMK-telepítésre vonatkozik.
 
 **Létrehozás**
 
@@ -163,9 +161,12 @@ Az identitás a *létrehozás* időpontjában van hozzárendelve a fürterőforr
 
 202 Elfogadva. Ez egy szabványos Erőforrás-kezelő válasz aszinkron műveletekhez.
 
+>[!Important]
+> Az aluli ADX-fürt kiépítése egy ideig tart. Ellenőrizheti a létesítési állapot, amikor a GET REST API-hívás végrehajtása a *fürt* erőforrás, és a *provisioningState* érték vizsgálata. A *kiépítés során a kiépítés,* és *sikeres,* ha befejeződött.
+
 ### <a name="azure-monitor-data-store-adx-cluster-provisioning"></a>Az Azure Monitor adattárának (ADX-fürt) kiépítése
 
-A szolgáltatás korai hozzáférési időszakában az ADX-fürtöt manuálisan kiépíti a termékcsapat, amint az előző lépések befejeződtek. Használja a Microsoft-csatornát a kiépítéshez, miközben biztosítja a fürterőforrás-választ. *Cluster* 
+A szolgáltatás korai hozzáférési időszakában az ADX-fürtöt manuálisan kiépíti a termékcsapat, amint az előző lépések befejeződtek. Használja a Microsoft-csatornát ehhez *Cluster* a lépéshez, és adja meg a fürterőforrás-választ. 
 
 ```rst
 GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
@@ -173,7 +174,7 @@ Authorization: Bearer <token>
 ```
 
 > [!IMPORTANT]
-> Másolja és mentse a választ, mivel szüksége lesz ezekre az adatokra a későbbi lépésekben
+> Másolja és mentse a választ, mivel szüksége lesz a részleteket a későbbi lépésekben
 
 **Válasz**
 ```json
@@ -200,9 +201,7 @@ Authorization: Bearer <token>
 }
 ```
 
->[!Important]
-> Az aluli ADX-fürt kiépítése néhány percet vesz igénybe. A *provisioningState* érték jelzi az állapotát, a *Kiépítésfiók,* míg a kiépítés és a "Sikeres" a kiépítés befejezésekor.
-> A "principalId" GUID-t a *fürterőforrás* felügyelt identitásszolgáltatása hozza létre.
+A "principalId" GUID-t a *fürterőforrás* felügyelt identitásszolgáltatása hozza létre.
 
 ### <a name="grant-key-vault-permissions"></a>Key Vault-engedélyek megadása
 
@@ -217,7 +216,7 @@ A *Get* engedély szükséges annak ellenőrzéséhez, hogy a Key Vault van konf
 
 ### <a name="update-cluster-resource-with-key-identifier-details"></a>Fürterőforrás frissítése a kulcsazonosító részleteivel
 
-Ez a lépés a key vault ban a kezdeti és a jövőbeli kulcsverzió-frissítésekre vonatkozik. Tájékoztatja az Azure Monitor Storage-t az új kulcsverzióról.
+Ez a lépés a key vault ban a kezdeti és a jövőbeli kulcsverzió-frissítésekre vonatkozik. Tájékoztatja az Azure Monitor Storage-t az adattitkosításhoz használandó kulcsverzióról. Frissítéskor az új kulcs a Storage kulcs (AEK) tördelésére és kicsomagolására szolgál.
 
 A *fürterőforrás* frissítéséhez a Key Vault *kulcsazonosítójának* részleteivel válassza ki a kulcs aktuális verzióját az Azure Key Vaultban a kulcsazonosító részleteinek leése érdekében.
 
@@ -325,10 +324,10 @@ Content-type: application/json
 }
 ```
 
-A munkaterületek társítása után a munkaterületekre bevitt adatok a felügyelt kulccsal titkosítottan tárolódnak.
+A munkaterület-társítás az Erőforrás-kezelő aszinkron műveleteken keresztül történik, amelyek végrehajtása akár 90 percet is igénybe vehet. A következő lépés bemutatja, hogyan lehet ellenőrizni a munkaterület társításának állapotát. A munkaterületek társítása után a munkaterületekre bevitt adatok a felügyelt kulccsal titkosítottan tárolódnak.
 
 ### <a name="workspace-association-verification"></a>Munkaterület-társítás ellenőrzése
-Ellenőrizheti, hogy egy munkaterület van-e társítva egy *Custer-erőforráshoz* a [Munkaterületek – Válasz bepillantása](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) című vizsgálatával. A társított munkaterület egy "clusterResourceId" *Cluster* tulajdonsággal fog rendelkezni a fürterőforrás-azonosítóval.
+Ellenőrizheti, hogy egy munkaterület van-e társítva egy *fürterőforráshoz* a [Munkaterületek – Válasz beszerez és figyel.](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) A társított munkaterületek egy "clusterResourceId" tulajdonsággal *rendelkeznek, amelynek* fürterőforrás-azonosítója van.
 
 ```rest
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview
@@ -368,24 +367,24 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 ## <a name="cmk-kek-revocation"></a>CMK (KEK) visszavonása
 
-Visszavonhatja az adatokhoz való hozzáférést a kulcs letiltásával *Cluster* vagy a fürterőforrás-hozzáférési házirend törlésével a Key Vaultban. Az Azure Monitor Storage mindig tiszteletben tartja a kulcsfontosságú engedélyek változásait egy órán belül, általában hamarabb, és a Storage elérhetetlenné válik. A *fürterőforráshoz* társított munkaterületekre bevitt adatok eldobásra kerülnek, és a lekérdezések sikertelenek lesznek. A korábban bevitt adatok mindaddig nem érhetők el az Azure Monitor Storage szolgáltatásban, amíg a kulcsot visszavonják, és a munkaterületek nem törlődnek. A nem elérhető adatokat az adatmegőrzési házirend szabályozza, és az adatmegőrzés elérésekor törlődnek.
+Visszavonhatja az adatokhoz való hozzáférést a kulcs letiltásával *Cluster* vagy a fürterőforrás-hozzáférési házirend törlésével a Key Vaultban. Az Azure Monitor Storage mindig tiszteletben tartja a kulcsfontosságú engedélyek változásait egy órán belül, általában hamarabb, és a Storage elérhetetlenné válik. A *fürterőforráshoz* társított munkaterületekre bevitt adatok eldobásra kerülnek, és a lekérdezések sikertelenek lesznek. A korábban bevitt adatok nem érhetők el az Azure Monitor Storage-ban mindaddig, amíg ön a *fürterőforrás,* és a munkaterületek nem törlődnek. A nem elérhető adatokat az adatmegőrzési házirend szabályozza, és az adatmegőrzés elérésekor törlődnek.
 
 A Storage rendszeres időközönként lekérdezi a Key Vaultot, hogy megpróbálja kicsomagolni a titkosítási kulcsot, és amint hozzáfért, az adatok betöltése és a lekérdezés 30 percen belül folytatódik.
 
 ## <a name="cmk-kek-rotation"></a>CMK (KEK) elforgatás
 
 A CMK elforgatása a *fürterőforrás* explicit frissítését igényli az Azure Key Vault új kulcsverziójával. Az Azure Monitor frissítése az új kulcsverzióval kövesse a *"Fürterőforrás* frissítése a kulcsazonosító részleteivel" című útmutató utasításait. Ha frissíti a kulcsverzióját a Key Vaultban, és nem *Cluster* frissíti az új kulcsazonosító adatait a fürterőforrásban, az Azure Monitor Storage továbbra is az előző kulcsot használja.
-Az összes adat elérhető a kulcsrotációs művelet után, beleértve a rotáció előtt és utána bevitt adatokat is, mivel az összes adat titkosítva marad a fióktitkosítási kulcs (AEK) által, miközben az új kulcstitkosítási kulcs (KEK) verziója titkosítja.
+Az összes adat elérhető a kulcsrotációs művelet után, beleértve a rotáció előtt és utána bevitt adatokat is, mivel az összes adat titkosítva marad a fióktitkosítási kulcs (AEK) által, miközben az AEK-et az új kulcstitkosítási kulcs (KEK) verziója titkosítja.
 
 ## <a name="limitations-and-constraints"></a>Korlátozások és korlátozások
 
-- A CMK-szolgáltatás ADX-fürtszinten támogatott, és dedikált Azure Monitor ADX-fürtre van szükség
+- A CMK-szolgáltatás ADX-fürt szinten támogatott, és egy dedikált Azure Monitor ADX-fürthöz szükséges, napi vagy több 1 TB-os küldését követelve.
 
 - A *fürterőforrások* maximális száma előfizetésenként legfeljebb 2
 
-- *A* fürterőforrás-társítást csak akkor szabad végrehajtani, ha a termékcsoport megerősítette, hogy az ADX-fürt kiépítése teljesült. A kiépítés előtt küldött adatokat a rendszer eldob, és nem lesz helyreállítható.
+- *A* fürterőforrás-társítást csak akkor szabad végrehajtani, ha meggyőződött arról, hogy az ADX-fürt kiépítése teljesült. A kiépítés előtt küldött adatokat a rendszer eldob, és nem lesz helyreállítható.
 
-- A CMK-titkosítás a CMK-konfiguráció után az újonnan bevitt adatokra vonatkozik. A CMK-konfiguráció előtt bevitt adatok továbbra is titkosítva maradnak a Microsoft-kulccsal. Az adatok lekérdezése a CMK-konfiguráció előtt és után zökkenőmentesen lekérdezhető.
+- A CMK-titkosítás a CMK-konfiguráció után az újonnan bevitt adatokra vonatkozik. A CMK-konfiguráció előtt bevitt adatok továbbra is titkosítva maradnak a Microsoft-kulccsal. A CMK-konfiguráció előtt és után betöltött adatok lekérdezése zökkenőmentesen.
 
 - Miután munkaterület van társítva egy *fürterőforráshoz,* nem lehet a *fürt* erőforrásból való társítást, mivel az adatok titkosítva vannak a kulccsal, és nem érhetők el az Azure Key Vaultban a KEK nélkül.
 
@@ -405,11 +404,11 @@ Az összes adat elérhető a kulcsrotációs művelet után, beleértve a rotác
 ## <a name="troubleshooting-and-management"></a>Hibaelhárítás és kezelés
 
 - A Key Vault elérhetősége
-    - Normál működés esetén a storage rövid ideig gyorsítótárazza az AEK-t, és rendszeresidőközönként visszatér a Key Vaultba a kicsomagoláshoz.
+    - Normál működés esetén - A storage rövid ideig gyorsítótárazza az AEK-et, és rendszeres időközönként visszatér a Key Vaultba.
     
-    - Átmeneti csatlakozási hibák. A storage kezeli az átmeneti hibákat (időtúllépések, kapcsolati hibák, DNS-problémák) azáltal, hogy lehetővé teszi a kulcsok számára, hogy rövid ideig a gyorsítótárban maradjanak, és ez leküzdi a rendelkezésre álló kis pontokat. A lekérdezési és betöltési képességek megszakítás nélkül folytatódnak.
+    - Átmeneti csatlakozási hibák - A storage kezeli az átmeneti hibákat (időtúllépések, kapcsolati hibák, DNS-problémák) azáltal, hogy lehetővé teszi a kulcsok számára, hogy rövid ideig a gyorsítótárban maradjanak, és ez leküzdi a rendelkezésre álló kis blips-eket. A lekérdezési és betöltési képességek megszakítás nélkül folytatódnak.
     
-    - Élő webhely, körülbelül 30 perc elérhetetlensége miatt a storage-fiók elérhetetlenné válik. A lekérdezési funkció nem érhető el, és a bevitt adatok több órán keresztül gyorsítótárazódnak a Microsoft kulccsal az adatvesztés elkerülése érdekében. A Key Vault-hoz való hozzáférés visszaállításakor a lekérdezés elérhetővé válik, és az ideiglenes gyorsítótárazott adatok az adattárba kerül, és a CMK-vel titkosítva lesznek.
+    - Élő webhely – körülbelül 30 perces elérhetetlenség esetén a Storage-fiók elérhetetlenné válik. A lekérdezési funkció nem érhető el, és a bevitt adatok több órán keresztül gyorsítótárazódnak a Microsoft kulccsal az adatvesztés elkerülése érdekében. A Key Vault-hoz való hozzáférés visszaállításakor a lekérdezés elérhetővé válik, és az ideiglenes gyorsítótárazott adatok az adattárba kerül, és a CMK-vel titkosítva lesznek.
 
 - Ha létrehoz egy *fürterőforrást,* és azonnal megadja a KeyVaultProperties tulajdonságot, a művelet sikertelen lehet, mivel a hozzáférési házirend nem határozható meg, amíg a rendszeridentitás nincs hozzárendelve a *fürterőforráshoz.*
 
@@ -465,7 +464,7 @@ Az összes adat elérhető a kulcsrotációs művelet után, beleértve a rotác
     
   Ugyanaz a válasz, mint a *"Fürterőforrások* egy erőforráscsoporthoz", de az előfizetés hatókörében.
     
-- *Fürterőforrás* törlése – a fürterőforrás, az adatok és a kapcsolódó munkaterületek 14 napon belüli helyreállítását lehetővé tenni, hogy a törlés véletlen vagy szándékos legyen, egy helyreállító törlési műveletet hajt végre, amely lehetővé teszi a *fürterőforrás,* az adatok és a kapcsolódó munkaterületek helyreállítását. A helyreállítható törlési időszak után a *fürterőforrás* és -adatok nem állíthatók helyre. A *fürterőforrás* neve továbbra is fenntartva marad a helyreállítható törlési időszakban, és nem hozhat létre új fürtöt ezzel a névvel.
+- Törölje a *fürterőforrást* – a rendszer helyreállító törlési műveletet hajt végre, amely lehetővé teszi a fürterőforrás, az adatok és a kapcsolódó munkaterületek 14 napon belüli helyreállítását, függetlenül attól, hogy a törlés véletlen vagy szándékos volt-e. A *fürterőforrás* neve továbbra is fenntartva marad a helyreállítható törlési időszakban, és nem hozhat létre új fürtöt ezzel a névvel. A helyreállítható törlési időszak után a *fürterőforrás* és -adatok nem állíthatók helyre. A társított munkaterületek nincsenek *Cluster* társítva a fürterőforrásból, és az új adatok at a megosztott tárolóba tárolják, és a Microsoft kulccsal titkosítják.
 
   ```rst
   DELETE
@@ -488,7 +487,7 @@ A Log Analytics és az Application Insights ugyanazt az adattár-platformot és 
 2020. Ez a módosítás az Application Insight-adatokat a Log Analytics-munkaterületekre hozza, és lehetővé teszi a lekérdezéseket, elemzéseket és egyéb fejlesztéseket, miközben a CMK konfigurálása a munkaterületen az Application Insights-adatokra is vonatkozik.
 
 > [!NOTE]
-> Ha nem kell telepítenie a CMK-t az Application Insight-adatokhoz az integráció előtt, javasoljuk, hogy várjon az Application Insights CMK-vel, mivel az ilyen telepítések megszakadnak az integráció miatt, és újra kell konfigurálnia a CMK-t a Napló ba való áttelepítés után Elemzési munkaterület. A napi 1 TB-os minimum a fürt szintjén érvényes, és amíg a konszolidáció a második negyedévben befejeződik, az Application Insights és a Log Analytics külön fürtöket igényel.
+> Ha nem kell telepítenie a CMK-t az Application Insight-adatokhoz az integráció előtt, javasoljuk, hogy várjon az Application Insights CMK-vel, mivel az ilyen telepítések megszakadnak az integráció miatt, és újra kell konfigurálnia a CMK-t a Log Analytics munkaterületre való áttelepítés után. A napi 1 TB-os minimum a fürt szintjén érvényes, és amíg a konszolidáció a második negyedévben befejeződik, az Application Insights és a Log Analytics külön fürtöket igényel.
 
 ## <a name="application-insights-cmk-configuration"></a>Application Insights CMK-konfigurációja
 
@@ -511,47 +510,26 @@ Authorization: Bearer <token>
 Content-type: application/json
 
 {
-  "location": "<region-name>",
-  "properties": {
-      "clusterType":"ApplicationInsights"
-  },
   "identity": {
-      "type": "systemAssigned"
-  }
-}
-```
-
-**Válasz**
-
-Az identitás a *létrehozás* időpontjában van hozzárendelve a fürterőforráshoz.
-
-```json
-
-{
-  "identity": {
-    "type": "SystemAssigned",
-    "tenantId": "tenant-id",
-    "principalId": "principle-id"
-  },
+    "type": "systemAssigned"
+    },
   "sku": {
     "name": "capacityReservation",
     "Capacity": 1000
     },
   "properties": {
-    "provisioningState": "Succeeded",
-    "clusterType": "ApplicationInsights", 
-    "clusterId": "cluster-id" 
+    "clusterType":"ApplicationInsights"
     },
-  "id": "/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.OperationalInsights/clusters/cluster-name",
-  "name": "cluster-name",
-  "type": "Microsoft.OperationalInsights/clusters",
-  "location": "region-name"
+  "location": "<region-name>"
 }
 ```
-"elv-id" olyan GUID, amelyet a felügyelt identitásszolgáltatás hozott létre.
 
-> [!IMPORTANT]
-> Másolja és tartsa meg az "elv-id" értéket, mivel szüksége lesz rá a következő lépésekben.
+**Válasz**
+
+202 Elfogadva. Ez egy szabványos Erőforrás-kezelő válasz aszinkron műveletekhez.
+
+>[!Important]
+> Az aluli ADX-fürt kiépítése néhány percet vesz igénybe. Ellenőrizheti a létesítési állapot, amikor a GET REST API-hívás végrehajtása a *fürt* erőforrás, és a *provisioningState* érték vizsgálata. A *kiépítés során a kiépítés* és a "Sikeres" kiépítés közben.
 
 ### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>Összetevő társítása *fürterőforráshoz* összetevők használatával [– API létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate)
 
@@ -598,6 +576,9 @@ Authorization: Bearer <token>
   "location": "region-name"
   }
 ```
+
+> [!IMPORTANT]
+> Másolja és tartsa meg az "elv-id" értéket, mivel szüksége lesz rá a következő lépésekben.
 
 **Összetevő társítása**
 

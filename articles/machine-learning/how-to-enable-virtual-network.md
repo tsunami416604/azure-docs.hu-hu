@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 01/13/2020
-ms.openlocfilehash: c813e8a27a7f85eccff2c23d9ffdcfa4a1442f34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/13/2020
+ms.openlocfilehash: 6e300bbec097201b33f0c576db91c2ca720fb921
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282834"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437333"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Biztonságos Azure ML-kísérletezés és következtetési feladatok az Azure virtuális hálózaton belül
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -63,7 +63,7 @@ Ha egy virtuális hálózat munkaterületéhez Azure storage-fiókot szeretne ha
     - A __Virtuális hálózatok csoportban__válassza a __Meglévő virtuális hálózati__ kapcsolat hozzáadása lehetőséget. Ez a művelet hozzáadja a virtuális hálózatot, ahol a számítási található (lásd az 1. lépést).
 
         > [!IMPORTANT]
-        > A tárfióknak ugyanabban a virtuális hálózatban kell lennie, mint a betanításhoz vagy következtetéshez használt számítási példányok vagy fürtök.
+        > A tárfióknak ugyanabban a virtuális hálózatban és alhálózatban kell lennie, mint a betanításhoz vagy következtetéshez használt számítási példányok vagy fürtök.
 
     - Jelölje be A __megbízható Microsoft-szolgáltatások hozzáférése a tárfiókhoz jelölőnégyzetet.__
 
@@ -180,8 +180,6 @@ Ha nem szeretné használni az alapértelmezett kimenő szabályokat, és korlá
    - Az Azure Storage __szolgáltatáscímkéjének__ __használatával.RegionName__. Hol `{RegionName}` található egy Azure-régió neve.
    - Azure Container Registry, az __AzureContainerRegistry.RegionName__ __szolgáltatáscímkéjének__ használatával. Hol `{RegionName}` található egy Azure-régió neve.
    - Az Azure Machine Learning __szolgáltatáscímkéjének__ __AzureMachineLearning__ használatával
-   
-- Egy __számítási példány esetén__a következő elemeket is hozzáadja:
    - Az Azure Resource Manager az __AzureResourceManager__ __szolgáltatáscímkéjének__ használatával
    - Az Azure Active Directory az __AzureActiveDirectory__ __szolgáltatáscímkéjének__ használatával
 
@@ -242,19 +240,19 @@ További információ: [Azure Batch-készlet létrehozása virtuális hálózatb
 
 Machine Learning-számítási fürt létrehozásához kövesse az alábbi lépéseket:
 
-1. Az [Azure Portalon](https://portal.azure.com)válassza ki az Azure Machine Learning-munkaterületet.
+1. Jelentkezzen be az [Azure Machine Learning-stúdióba,](https://ml.azure.com/)majd válassza ki az előfizetést és a munkaterületet.
 
-1. Az __Alkalmazás csoportban__ válassza a __Számítási__lehetőséget, majd a __Számítási hozzáadása__lehetőséget.
+1. Válassza a bal oldalon a __Számítási__ lehetőséget.
 
-1. Ha azt szeretné, hogy a számítási erőforrás virtuális hálózatot használjon, tegye a következő műveleteket:
+1. Válassza a középről a Képzési __+__ fürtök __lehetőséget,__ majd válassza a lehetőséget.
 
-    a. A __Hálózat konfigurálása__beállításhoz válassza __a Speciális__lehetőséget.
+1. Az __Új betanítási fürt__ párbeszédpanelen bontsa ki a __Speciális beállítások szakaszt.__
 
-    b. Az __Erőforráscsoport__ legördülő listában jelölje ki a virtuális hálózatot tartalmazó erőforráscsoportot.
+1. Ha azt szeretné, hogy a számítási erőforrás virtuális hálózatot használjon, hajtsa végre a következő műveleteket a __Virtuális hálózat konfigurálása__ szakaszban:
 
-    c. A __Virtuális hálózat__ legördülő listában jelölje ki az alhálózatot tartalmazó virtuális hálózatot.
-
-    d. Az __Alhálózat__ legördülő listában jelölje ki a használni kívánt alhálózatot.
+    1. Az __Erőforráscsoport__ legördülő listában jelölje ki a virtuális hálózatot tartalmazó erőforráscsoportot.
+    1. A __Virtuális hálózat__ legördülő listában jelölje ki az alhálózatot tartalmazó virtuális hálózatot.
+    1. Az __Alhálózat__ legördülő listában jelölje ki a használni kívánt alhálózatot.
 
    ![A Machine Learning Compute virtuális hálózati beállításai](./media/how-to-enable-virtual-network/amlcompute-virtual-network-screen.png)
 
@@ -356,29 +354,25 @@ Ha virtuális hálózatban szeretné hozzáadni az AKS-t a munkaterülethez, kö
 >
 > Az AKS-példány nak és az Azure virtuális hálózatnak ugyanabban a régióban kell lennie. Ha biztonságossá teszi a munkaterület által egy virtuális hálózatban használt Azure Storage-fiók(oka)t, akkor ugyanabban a virtuális hálózatban kell lenniük, mint az AKS-példány.
 
-1. Az [Azure Portalon](https://portal.azure.com)győződjön meg arról, hogy a virtuális hálózatot irányító NSG rendelkezik egy bejövő szabállyal, amely engedélyezve van az Azure Machine Learning számára az __AzureMachineLearning__ **forrásként**való használatával.
+> [!WARNING]
+> Az Azure Machine Learning nem támogatja az Azure Kubernetes-szolgáltatás használatát, amelynek privát kapcsolata engedélyezve van.
 
-    [![Azure Machine Learning Számítási munkaablak](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png)](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png#lightbox)
+1. Jelentkezzen be az [Azure Machine Learning-stúdióba,](https://ml.azure.com/)majd válassza ki az előfizetést és a munkaterületet.
 
-1. Válassza ki az Azure Machine Learning-munkaterületet.
+1. Válassza a bal oldalon a __Számítási__ lehetőséget.
 
-1. Az __Alkalmazás csoportban__ válassza a __Számítási__lehetőséget, majd a __Számítási hozzáadása__lehetőséget.
+1. Válassza __a fürtök levonása__ lehetőséget a __+__ központból, majd válassza a lehetőséget.
 
-1. Ha azt szeretné, hogy a számítási erőforrás virtuális hálózatot használjon, tegye a következő műveleteket:
+1. Az __Új következtetésfürt párbeszédpanelen__ válassza a __Speciális__ lehetőséget a __Hálózati konfiguráció csoportban.__
 
-    - A __Hálózat konfigurálása__beállításhoz válassza __a Speciális__lehetőséget.
+1. Ha azt szeretné, hogy a számítási erőforrás virtuális hálózatot használjon, hajtsa végre a következő műveleteket:
 
-    - Az __Erőforráscsoport__ legördülő listában jelölje ki a virtuális hálózatot tartalmazó erőforráscsoportot.
-
-    - A __Virtuális hálózat__ legördülő listában jelölje ki az alhálózatot tartalmazó virtuális hálózatot.
-
-    - Az __Alhálózat__ legördülő listában jelölje ki az alhálózatot.
-
-    - A __Kubernetes szolgáltatás címtartománya__ mezőbe írja be a Kubernetes szolgáltatás címtartományát. Ez a címtartomány egy osztály nélküli tartományközi útválasztás (CIDR) jelölési IP-tartományt használ a fürt höz rendelkezésre álló IP-címek meghatározásához. Nem fedheti át az alhálózati IP-címtartományokat (például 10.0.0.0/16).
-
-    - A __Kubernetes DNS-szolgáltatás IP-címe__ mezőbe írja be a Kubernetes DNS-szolgáltatás IP-címét. Ez az IP-cím a Kubernetes DNS-szolgáltatáshoz van rendelve. A Kubernetes szolgáltatás címtartományán belül kell lennie (például 10.0.0.10).
-
-    - A __Docker-híd címmezőjébe__ írja be a Docker-híd címét. Ez az IP-cím a Docker-hídhoz van rendelve. Nem lehet alhálózati IP-tartományban, vagy a Kubernetes szolgáltatás címtartományában (például 172.17.0.1/16).
+    1. Az __Erőforráscsoport__ legördülő listában jelölje ki a virtuális hálózatot tartalmazó erőforráscsoportot.
+    1. A __Virtuális hálózat__ legördülő listában jelölje ki az alhálózatot tartalmazó virtuális hálózatot.
+    1. Az __Alhálózat__ legördülő listában jelölje ki az alhálózatot.
+    1. A __Kubernetes szolgáltatás címtartománya__ mezőbe írja be a Kubernetes szolgáltatás címtartományát. Ez a címtartomány egy osztály nélküli tartományközi útválasztás (CIDR) jelölési IP-tartományt használ a fürt höz rendelkezésre álló IP-címek meghatározásához. Nem fedheti át az alhálózati IP-címtartományokat (például 10.0.0.0/16).
+    1. A __Kubernetes DNS-szolgáltatás IP-címe__ mezőbe írja be a Kubernetes DNS-szolgáltatás IP-címét. Ez az IP-cím a Kubernetes DNS-szolgáltatáshoz van rendelve. A Kubernetes szolgáltatás címtartományán belül kell lennie (például 10.0.0.10).
+    1. A __Docker-híd címmezőjébe__ írja be a Docker-híd címét. Ez az IP-cím a Docker-hídhoz van rendelve. Nem lehet alhálózati IP-tartományban, vagy a Kubernetes szolgáltatás címtartományában (például 172.17.0.1/16).
 
    ![Azure Machine Learning: Machine Learning számítási virtuális hálózati beállítások](./media/how-to-enable-virtual-network/aks-virtual-network-screen.png)
 
@@ -445,7 +439,7 @@ except:
     prov_config.docker_bridge_cidr = "172.17.0.1/16"
 
     # Create compute target
-    aks_target = ComputeTarget.create(workspace = ws, name = “myaks”, provisioning_configuration = prov_config)
+    aks_target = ComputeTarget.create(workspace = ws, name = "myaks", provisioning_configuration = prov_config)
     # Wait for the operation to complete
     aks_target.wait_for_completion(show_output = True)
     
@@ -466,7 +460,7 @@ A parancs `body.json` által hivatkozott fájl tartalma hasonló a következő J
 
 ```json
 { 
-    "location": “<region>”, 
+    "location": "<region>", 
     "properties": { 
         "resourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-id>", 
         "computeType": "AKS", 
@@ -504,7 +498,102 @@ A hálózati szabályok konfigurálásáról az [Azure Firewall telepítése és
 
 ## <a name="use-azure-container-registry"></a>Az Azure Container Registry használata
 
-Ha egy virtuális hálózatot használ az Azure Machine Learning, __ne__ helyezze az Azure Container Registry a munkaterület a virtuális hálózatban. Ez a konfiguráció nem támogatott.
+> [!IMPORTANT]
+> Az Azure Container Registry (ACR) virtuális hálózaton belül rekedhet, azonban meg kell felelnie az alábbi előfeltételeknek:
+>
+> * Az Azure Machine Learning-munkaterületnek Enterprise Edition-nek kell lennie. A frissítésről a [Frissítés a Nagyvállalati kiadásra című](how-to-manage-workspace.md#upgrade)témakörben talál további információt.
+> * Az Azure Container Registry-nek prémium verziónak kell lennie. A frissítéssel kapcsolatos további információkért lásd: [A nagykonformatika módosítása.](/azure/container-registry/container-registry-skus#changing-skus)
+> * Az Azure Container Registry kell lennie ugyanabban a virtuális hálózatban és alhálózatban, mint a tárfiók és számítási célok at a betanítás vagy következtetés.
+> * Az Azure Machine Learning-munkaterületnek tartalmaznia kell egy [Azure Machine Learning-számítási fürtöt.](how-to-set-up-training-targets.md#amlcompute)
+>
+>     Ha az ACR egy virtuális hálózat mögött van, az Azure Machine Learning nem tudja azt közvetlenül docker-lemezképek készítésére használni. Ehelyett a számítási fürt a lemezképek létrehozásához használatos.
+
+1. Az Azure Container-beállításjegyzék nevének megkereséséhez használja az alábbi módszerek egyikét:
+
+    __Azure-portál__
+
+    A munkaterület áttekintő szakaszában a __beállításjegyzék-érték__ az Azure Container Registry-re hivatkozik.
+
+    ![Azure Container Registry a munkaterülethez](./media/how-to-enable-virtual-network/azure-machine-learning-container-registry.png)
+
+    __Azure CLI__
+
+    Ha [telepítette a Machine Learning bővítményt az Azure CLI,használhatja](reference-azure-machine-learning-cli.md)a `az ml workspace show` parancsot, hogy a munkaterület adatait.
+
+    ```azurecli-interactive
+    az ml workspace show -w yourworkspacename -g resourcegroupname --query 'containerRegistry'
+    ```
+
+    Ez a parancs a `"/subscriptions/{GUID}/resourceGroups/{resourcegroupname}/providers/Microsoft.ContainerRegistry/registries/{ACRname}"`hoz hasonló értéket ad vissza. A karakterlánc utolsó része az Azure Container Registry neve a munkaterülethez.
+
+1. A virtuális hálózathoz való hozzáférés korlátozásához kövesse a [Hálózati hozzáférés konfigurálása a rendszerleíró adatbázishoz](../container-registry/container-registry-vnet.md#configure-network-access-for-registry)című. A virtuális hálózat hozzáadásakor válassza ki a virtuális hálózatot és az alhálózatot az Azure Machine Learning-erőforrásokhoz.
+
+1. Az Azure Machine Learning Python SDK használatával konfigurálhat egy számítási fürtöt docker-lemezképek létrehozásához. A következő kódrészlet bemutatja ennek módját:
+
+    ```python
+    from azureml.core import Workspace
+    # Load workspace from an existing config file
+    ws = Workspace.from_config()
+    # Update the workspace to use an existing compute cluster
+    ws.update(image_build_compute = 'mycomputecluster')
+    ```
+
+    > [!IMPORTANT]
+    > A tárfióknak, a számítási fürtnek és az Azure Container Registrynek a virtuális hálózat ugyanazon alhálózatában kell lennie.
+    
+    További információt a [update()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#update-friendly-name-none--description-none--tags-none--image-build-compute-none-) metódus hivatkozási pontjában talál.
+
+1. Ha az Azure Machine Learning-munkaterülethez privát hivatkozást használ, és a munkaterületéhez az Azure Container Registry-t egy virtuális hálózatba helyezi, a következő Azure Resource Manager-sablont is alkalmaznia kell. Ez a sablon lehetővé teszi, hogy a munkaterület kommunikáljon az ACR-rel a privát kapcsolaton keresztül.
+
+    ```json
+    {
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "keyVaultArmId": {
+        "type": "string"
+        },
+        "workspaceName": {
+        "type": "string"
+        },
+        "containerRegistryArmId": {
+        "type": "string"
+        },
+        "applicationInsightsArmId": {
+        "type": "string"
+        },
+        "storageAccountArmId": {
+        "type": "string"
+        },
+        "location": {
+        "type": "string"
+        }
+    },
+    "resources": [
+        {
+        "type": "Microsoft.MachineLearningServices/workspaces",
+        "apiVersion": "2019-11-01",
+        "name": "[parameters('workspaceName')]",
+        "location": "[parameters('location')]",
+        "identity": {
+            "type": "SystemAssigned"
+        },
+        "sku": {
+            "tier": "enterprise",
+            "name": "enterprise"
+        },
+        "properties": {
+            "sharedPrivateLinkResources":
+    [{"Name":"Acr","Properties":{"PrivateLinkResourceId":"[concat(parameters('containerRegistryArmId'), '/privateLinkResources/registry')]","GroupId":"registry","RequestMessage":"Approve","Status":"Pending"}}],
+            "keyVault": "[parameters('keyVaultArmId')]",
+            "containerRegistry": "[parameters('containerRegistryArmId')]",
+            "applicationInsights": "[parameters('applicationInsightsArmId')]",
+            "storageAccount": "[parameters('storageAccountArmId')]"
+        }
+        }
+    ]
+    }
+    ```
 
 ## <a name="next-steps"></a>További lépések
 

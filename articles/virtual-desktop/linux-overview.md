@@ -8,23 +8,31 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 967fd1fa182b7c8e581fd74cc287c5a6ba0e4038
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8c5de43ed29856451ad67e02a426b07cc34a0d54
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127824"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422419"
 ---
 # <a name="linux-support"></a>Linux-támogatás
 
-A Linux SDK for Windows Virtual Desktop segítségével önálló Windows Virtual Desktop ügyfélrendszert hozhat létre. Azt is használhatja, hogy engedélyezze a Windows virtuális asztal támogatását az ügyfélalkalmazásban. Ez a gyors útmutató elmagyarázza, mi a Linux SDK, és hogyan kell használni.
+A partnerek a Linux SDK for Windows Virtual Desktop segítségével önálló Windows virtual desktop klienst hozhatnak létre. Azt is használhatja, hogy engedélyezze a Windows virtuális asztal támogatását az ügyfélalkalmazásban. Ez a gyors útmutató elmagyarázza, mi a Linux SDK, és hogyan kell használni.
+
+## <a name="connect-with-your-linux-device"></a>Csatlakozás Linux-eszközhöz
+
+A következő partnerek jóváhagyták a Windows Virtuális asztali ügyfeleket Linux-eszközökhöz.
+
+|Partner|Partner dokumentációja|Partnertámogatás|
+|:------|:--------------------|:--------------|
+|![IGEL logó](./media/partners/igel.png)|[IGEL kliens dokumentáció](https://www.igel.com/igel-solution-family/windows-virtual-desktop/)|[IGEL támogatás](https://www.igel.com/support/)|
 
 ## <a name="what-is-the-linux-sdk"></a>Mi az a Linux SDK?
 
 Az SDK API-k segítségével lekérheti az erőforrás-hírcsatornákat, csatlakozhat asztali vagy távoli alkalmazásmunkamenetekhez, és számos olyan átirányítást használhat, amelyet a külső ügyfelek támogatnak.
 
 > [!NOTE]
-> Az SDK jelenleg fejlesztés alatt áll. Frissítjük ezt a dokumentumot az SDK elérésére vonatkozó utasításokkal, amint az elérhetővé válik.
+> Az SDK jelenleg fejlesztés alatt áll. Ezt a dokumentumot az SDK elérésére vonatkozó utasításokkal frissítjük, ha az általánosan elérhető.
 
 ### <a name="supported-linux-distributions"></a>Támogatott Linux-disztribúciók
 

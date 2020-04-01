@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 03/22/2020
+ms.date: 03/30/2020
 ms.author: alzam
-ms.openlocfilehash: 60c3a7f4f12993f475b3d03fd0915971d7673a5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5500d993a4bf3c664f14182d983f9abed8ebb08a
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80143104"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398361"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>Áttérés openVPN protokollra vagy IKEv2-re az SSTP-ből
 
@@ -33,7 +33,7 @@ A pont-hely VPN az alábbi protokollok egyikét használhatja:
 >Az IKEv2 és az OpenVPN for P2S csak az Erőforrás-kezelő telepítési modelljéhez érhető el. Ezek nem érhetők el a klasszikus üzembe helyezési modellhez. Az egyszerű átjáró termékváltozata nem támogatja az IKEv2 vagy OpenVPN protokollokat. Ha az alapvető termékváltozat, törölnie kell, és újra létre kell hoznia egy éles SKU virtuális hálózati átjáró.
 >
 
-## <a name="migrating-from-sspt-to-ikev2-or-openvpn"></a>Áttelepítés az SSPT-ről az IKEv2-re vagy az OpenVPN-re
+## <a name="migrating-from-sstp-to-ikev2-or-openvpn"></a>Áttelepítés Az SSTP-ről az IKEv2-re vagy az OpenVPN-re
 
 Előfordulhatnak olyan esetek, amikor több mint 128 egyidejű P2S-kapcsolatot szeretne támogatni egy VPN-átjáróval, de SSTP-t használ. Ebben az esetben át kell helyeznie az IKEv2 vagy openvpn protokollra.
 
@@ -135,7 +135,7 @@ A zip-fájl is biztosítja az értékeket néhány fontos beállítások at the 
 ### <a name="what-tls-policies-are-configured-on-vpn-gateways-for-p2s"></a><a name="TLS policies"></a>Milyen TLS-házirendek vannak konfigurálva a VpN-átjárók p2s?
 **TLS**
 
-|**Szabályzatok** |
+|**Házirendek** |
 |---| 
 |TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 |
 |TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 |

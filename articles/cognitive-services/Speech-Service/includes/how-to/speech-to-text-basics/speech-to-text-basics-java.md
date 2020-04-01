@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/11/2020
 ms.author: dapine
-ms.openlocfilehash: 7d29f781950784cdb8951b3a6e45d5b5d0f9819f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: c2b474c9d6485bdba31412435f4edbdd2383b3c0
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79539539"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80501377"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -36,7 +36,7 @@ Többféleképpen is inicializálhatja a következőket: [`SpeechConfig`](https:
 * Állomással: adja át az állomáscímet. A kulcs vagy engedélyezési jogkivonat nem kötelező.
 * Egy engedélyezési jogkivonattal: adja át egy engedélyezési jogkivonatot és a társított régiót.
 
-Vessünk egy pillantást arra, [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable) hogyan jön létre az a egy kulcs és régió használatával.
+Vessünk egy pillantást arra, [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable) hogyan jön létre az a egy kulcs és régió használatával. A [régióazonosító](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) megkereséséhez tekintse meg a régiótámogatási lapot.
 
 ```java
 SpeechConfig config = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");

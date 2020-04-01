@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/26/2020
+ms.date: 03/31/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76dd07a59a9fa7c0d6231a766ff4090c11f9f5bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 957aa77e18ea8f910f258d1dc59de0d093b0eab6
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80331916"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476660"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Útmutató: Az örökölt hitelesítés blokkolása az Azure AD-n feltételes hozzáféréssel   
 
@@ -92,13 +92,13 @@ Ezek a naplók jelzik, hogy mely felhasználók továbbra is az örökölt hitel
 
 ### <a name="block-legacy-authentication"></a>Régi hitelesítési folyamat letiltása 
 
-Feltételes hozzáférési házirendben olyan feltételt állíthat be, amely az erőforrások eléréséhez használt ügyfélalkalmazásokhoz van kötve. Az ügyfélalkalmazások feltétele lehetővé teszi, hogy a hatókört az örökölt hitelesítést használó alkalmazásokra szűkítse a **Mobilalkalmazások és asztali ügyfelek**Egyéb **ügyfelei** nek kiválasztásával.
+Feltételes hozzáférési házirendben olyan feltételt állíthat be, amely az erőforrások eléréséhez használt ügyfélalkalmazásokhoz van kötve. Az ügyfélalkalmazások feltétele lehetővé teszi, hogy a hatókört az örökölt hitelesítést használó alkalmazásokra szűkítse, ha az **Exchange ActiveSync-ügyfelek** et és **más ügyfeleket** választja a **Mobilalkalmazások és asztali ügyfelek**csoportban.
 
 ![Más ügyfelek](./media/block-legacy-authentication/01.png)
 
 Ha le szeretné tiltani a hozzáférést ezekhez az alkalmazásokhoz, válassza a **Hozzáférés blokkolása**lehetőséget.
 
-![Fájlhozzáférés](./media/block-legacy-authentication/02.png)
+![Hozzáférés letiltása](./media/block-legacy-authentication/02.png)
 
 ### <a name="select-users-and-cloud-apps"></a>Felhasználók és felhőalapú alkalmazások kiválasztása
 
@@ -106,7 +106,7 @@ Ha le szeretné tiltani a szervezet örökölt hitelesítését, valószínűleg
 
 - Minden felhasználó
 - Minden felhőalapú alkalmazás
-- Fájlhozzáférés
+- Hozzáférés letiltása
 
 ![Hozzárendelések](./media/block-legacy-authentication/03.png)
 

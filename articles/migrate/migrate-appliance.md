@@ -3,12 +3,12 @@ title: Azure Migrate-berendezés
 description: Áttekintést nyújt az Azure Áttelepítési készülék kiszolgáló felmérésés áttelepítése során használt.
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.openlocfilehash: 1bb3372467919f1471fa9577cd60e9cecaf1750d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bccf4738d46b65f2d149eafc8e69591141d7d073
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336947"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437592"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-berendezés
 
@@ -79,14 +79,14 @@ Az alábbi táblázat összefoglalja az Azure Migrate appliance követelményein
 Az Azure Migrate készülék internetkapcsolatra van szüksége.
 
 - A készülék üzembe helyezésekor az Azure Migrate kapcsolódási ellenőrzést végez az alábbi táblázatban összefoglalt URL-címeken.
-- Ha URL-alapú proxyt használ az internethez való csatlakozáshoz, engedélyezze a hozzáférést ezekhez az URL-címekhez, ügyelve arra, hogy a proxy feloldja az URL-címek felkeresése közben kapott CNAME rekordokat.
+- Ha URL-alapú proxyt használ az internethez való csatlakozáshoz, engedélyeznie kell a hozzáférést ezekhez az URL-címekhez, ügyelve arra, hogy a proxy feloldja az URL-címek felkeresése közben kapott CNAME rekordokat.
 
 **Url** | **Részletek**  
 --- | --- |
 *.portal.azure.com  | Lépjen az Azure Portalra.
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | Jelentkezzen be Azure-előfizetésbe.
-*.microsoftonline.com <br/> *.microsoftonline-p.com | Hozzon létre Active Directory-alkalmazásokat a készülék számára az Azure Migrate szolgáltatással való kommunikációhoz.
-management.azure.com | Hozzon létre Active Directory-alkalmazásokat a készülék számára az Azure Áttelepítés szolgáltatással való kommunikációhoz.
+*.microsoftonline.com <br/> *.microsoftonline-p.com | Hozzon létre Azure Active Directory (AD) alkalmazásokat a készülék számára az Azure Migrate szolgáltatással való kommunikációhoz.
+management.azure.com | Hozzon létre Azure AD-alkalmazásokat a készülék számára az Azure Migrate szolgáltatással való kommunikációhoz.
 dc.services.visualstudio.com | A belső figyeléshez használt alkalmazásnaplók feltöltése.
 *.vault.azure.net | Az Azure Key Vaultban kezelheti a titkos kulcsokat.
 aka.ms/* | Hozzáférés engedélyezése más néven hivatkozásokhoz. Az Azure Migrate készülékfrissítéseinek használt.

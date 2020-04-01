@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: ff4079263fd7afb02e132a798997687fad7e9961
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d27c648980338b3a9e12bd618eb4620fe9988fd7
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78206979"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436922"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>Gyakori kérdések az Azure HDInsight-beli Apache Kafkáról
 
@@ -50,7 +50,7 @@ Az [Enterprise Security Package (ESP)](../domain-joined/apache-domain-joined-arc
 
 ## <a name="is-my-data-encrypted-can-i-use-my-own-keys"></a>Titkosítva vannak az adataim? Használhatom a saját kulcsaimat?
 
-A kezelt lemezeken lévő összes Kafka-üzenet az [Azure Storage Service Encryption (SSE)](../../storage/common/storage-service-encryption.md)titkosításával van titkosítva. A tranzitadatok (például az ügyfelektől a brókereknek továbbított adatok, és fordítva) alapértelmezés szerint nem titkosított. Az ilyen forgalmat az [SSL saját beállításával](./apache-kafka-ssl-encryption-authentication.md)lehet titkosítani. Emellett a HDInsight lehetővé teszi, hogy saját kulcsokat kezeljen az inaktív adatok titkosításához. További információt [az Ügyfél által felügyelt kulcslemezek titkosítása](../disk-encryption.md)című témakörben talál.
+A kezelt lemezeken lévő összes Kafka-üzenet az [Azure Storage Service Encryption (SSE)](../../storage/common/storage-service-encryption.md)titkosításával van titkosítva. A tranzitadatok (például az ügyfelektől a brókereknek továbbított adatok, és fordítva) alapértelmezés szerint nem titkosított. Lehetőség van az ilyen forgalom titkosítására a [TLS beállításával.](./apache-kafka-ssl-encryption-authentication.md) Emellett a HDInsight lehetővé teszi, hogy saját kulcsokat kezeljen az inaktív adatok titkosításához. További információt [az Ügyfél által felügyelt kulcslemezek titkosítása](../disk-encryption.md)című témakörben talál.
 
 ## <a name="how-do-i-connect-clients-to-my-cluster"></a>Hogyan csatlakoztathatom az ügyfeleket a fürthöz?
 
@@ -96,5 +96,5 @@ Az Azure-figyelő vel elemezheti [a Kafka-naplókat.](./apache-kafka-log-analyti
 
 ## <a name="next-steps"></a>További lépések
 
-* [Secure Sockets Layer (SSL) titkosítás és hitelesítés beállítása az Apache Kafka számára az Azure HDInsightban](./apache-kafka-ssl-encryption-authentication.md)
+* [TLS-titkosítás és -hitelesítés beállítása az Apache Kafkához az Azure HDInsightban](./apache-kafka-ssl-encryption-authentication.md)
 * [A MirrorMaker használata Apache Kafka-témakörök replikálására a Kafka on HDInsight esetében](./apache-kafka-mirroring.md)

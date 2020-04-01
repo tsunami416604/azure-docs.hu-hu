@@ -7,14 +7,14 @@ author: ChristopherHouser
 ms.author: chrishou
 ms.reviewer: valthom, logicappspm
 ms.topic: article
-ms.date: 06/19/2019
+ms.date: 03/31/2020
 tags: connectors
-ms.openlocfilehash: 6bfd626c1ce69029ee720d24b0b143e7b4c3dd56
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 737c5b90b216156ca08346f4a64fd0b421ad6c19
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77650947"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410272"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Csatlakozás IBM MQ-kiszolgálóhoz az Azure Logic Apps alkalmazásból
 
@@ -22,91 +22,136 @@ Az IBM MQ-összekötő a helyszínen vagy az Azure-ban egy IBM MQ-kiszolgálón 
 
 Az IBM MQ-összekötő tartalmazza ezeket a műveleteket, de nem biztosít eseményindítókat:
 
-- Egyetlen üzenet böngészése az IBM MQ-kiszolgálóról való üzenet törlése nélkül
-- Üzenetköteg böngészése az IBM MQ-kiszolgálóról érkező üzenetek törlése nélkül
-- Egyetlen üzenet fogadása és az üzenet törlése az IBM MQ kiszolgálóról
-- Üzenetek kötegének fogadása és az IBM MQ-kiszolgálóról érkező üzenetek törlése
-- Egyetlen üzenet küldése az IBM MQ szerverre
+- Egyetlen üzenet ben tallózhat anélkül, hogy az IBM MQ kiszolgálóról ki nem vette volna az üzenetet.
+- Tallózzon az üzenetek egy kötegében anélkül, hogy az IBM MQ kiszolgálóról származó üzeneteket lelenne sújtané.
+- Egyetlen üzenet fogadása és az üzenet törlése az IBM MQ kiszolgálóról.
+- Fogadjon egy köteg üzenetet, és törölje az üzeneteket az IBM MQ szerverről.
+- Egyetlen üzenet küldése az IBM MQ-kiszolgálónak.
 
-## <a name="prerequisites"></a>Előfeltételek
-
-* Ha helyszíni MQ-kiszolgálót használ, [telepítse a helyszíni adatátjárót](../logic-apps/logic-apps-gateway-install.md) a hálózaton belüli kiszolgálóra. Annak a kiszolgálónak, ahol a helyszíni adatátjáró telepítve van, az MQ-összekötő működéséhez is telepítve kell lennie .NET Framework 4.6 rendszerrel. A helyszíni adatátjáróhoz is létre kell hoznia egy erőforrást az Azure-ban. További információt [az Adatátjáró-kapcsolat beállítása](../logic-apps/logic-apps-gateway-connection.md)című témakörben talál.
-
-  Ha azonban az MQ-kiszolgáló nyilvánosan elérhető vagy elérhető az Azure-ban, nem kell használnia az adatátjárót.
-
-* Hivatalosan támogatott IBM WebSphere MQ verziók:
+Itt vannak a hivatalosan támogatott IBM WebSphere MQ verziók:
 
   * MQ 7,5
   * MQ 8.0
   * MQ 9.0
 
-* Az a logikai alkalmazás, amelyhez hozzá szeretné adni az MQ-műveletet. Ennek a logikai alkalmazásnak ugyanazt a helyet kell használnia, mint a helyszíni adatátjáró-kapcsolatnak, és már rendelkeznie kell egy eseményindítóval, amely elindítja a munkafolyamatot. 
+## <a name="prerequisites"></a>Előfeltételek
 
-  Az MQ-összekötő nem rendelkezik eseményindítókkal, ezért először hozzá kell adnia egy eseményindítót a logikai alkalmazáshoz. Használhatja például az Ismétlődés eseményindítót. Ha most jön a logikai alkalmazások, próbálja meg ezt a [rövid útmutatót az első logikai alkalmazás létrehozásához.](../logic-apps/quickstart-create-first-logic-app-workflow.md) 
+* Ha helyszíni MQ-kiszolgálót használ, [telepítse a helyszíni adatátjárót](../logic-apps/logic-apps-gateway-install.md) a hálózaton belüli kiszolgálóra. Annak a kiszolgálónak, ahol a helyszíni adatátjáró telepítve van, az MQ-összekötő működéséhez is telepítve kell lennie .NET Framework 4.6 rendszerrel.
 
-## <a name="browse-a-single-message"></a>Egyetlen üzenet böngészése
+  Miután befejezte az átjáró telepítését, létre kell hoznia egy erőforrást az Azure-ban a helyszíni adatátjáróhoz. További információt [az Adatátjáró-kapcsolat beállítása](../logic-apps/logic-apps-gateway-connection.md)című témakörben talál.
 
-1. A logikai alkalmazásban az eseményindító vagy egy másik művelet alatt válassza az **Új lépés lehetőséget.** 
+  Ha az MQ-kiszolgáló nyilvánosan elérhető vagy elérhető az Azure-ban, nem kell használnia az adatátjárót.
 
-1. A keresőmezőbe írja be az "mq" parancsot, és válassza a műveletet: **Üzenet tallózása**
+* Az a logikai alkalmazás, amelyhez hozzá szeretné adni az MQ-műveletet. Ennek a logikai alkalmazásnak ugyanazt a helyet kell használnia, mint a helyszíni adatátjáró-kapcsolatnak, és már rendelkeznie kell egy eseményindítóval, amely elindítja a munkafolyamatot.
 
-   ![Üzenet tallózása](media/connectors-create-api-mq/Browse_message.png)
+  Az MQ-összekötő nem rendelkezik eseményindítókkal, ezért először hozzá kell adnia egy eseményindítót a logikai alkalmazáshoz. Használhatja például az Ismétlődés eseményindítót. Ha most jön a logikai alkalmazások, próbálja meg ezt a [rövid útmutatót az első logikai alkalmazás létrehozásához.](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-1. Ha nem rendelkezik meglévő MQ-kapcsolattal, hozza létre a kapcsolatot:  
+<a name="create-connection"></a>
 
-   1. A műveletben válassza a **Csatlakozás helyszíni adatátjárón keresztül**lehetőséget.
-   
-   1. Adja meg az MQ-kiszolgáló tulajdonságait.  
+## <a name="create-mq-connection"></a>MQ-kapcsolat létrehozása
 
-      Server esetén **megadhatja**az MQ-kiszolgáló nevét, vagy megadhatja az IP-címet, amelyet kettőspont és a portszám követ.
-    
-   1. Nyissa meg az **átjárólistát,** amely a korábban konfigurált átjárókapcsolatokat jeleníti meg. Válassza ki az átjárót.
-    
-   1. Ha elkészült, kattintson a **Létrehozás** gombra. 
-   
-      A kapcsolat a következő példához hasonlóan néz ki:
+Ha még nem rendelkezik MQ-kapcsolattal, amikor MQ-műveletet ad hozzá, a rendszer kéri a kapcsolat létrehozását, például:
 
-      ![Kapcsolat tulajdonságai](media/connectors-create-api-mq/Connection_Properties.png)
+![Kapcsolati információk biztosítása](media/connectors-create-api-mq/connection-properties.png)
 
-1. A művelet tulajdonságainak beállítása:
+1. Ha helyszíni MQ-kiszolgálóhoz csatlakozik, válassza a **Csatlakozás helyszíni adatátjárón keresztül**lehetőséget.
 
-   * **Várólista**: Adjon meg egy, a kapcsolattól eltérő várólistát.
+1. Adja meg az MQ-kiszolgáló csatlakozási adatait.
 
-   * **MessageId**, **CorrelationId**, **GroupId**és egyéb tulajdonságok: Üzenet tallózása az MQ-üzenetek különböző tulajdonságai alapján
+   * Server esetén **megadhatja**az MQ-kiszolgáló nevét, vagy megadhatja az IP-címet, amelyet kettőspont és a portszám követ.
 
-   * **IncludeInfo**: Adja meg **a True** értéket, ha további üzenetadatokat szeretne felvenni a kimenetbe. Vagy adja meg a **False** értéket, ha nem szeretne további üzenetinformációkat felvenni a kimenetbe.
+   * A Secure Sockets Layer (SSL) használatához válassza **az SSL engedélyezése lehetőséget.**
 
-   * **Időtúltöltés**: Adjon meg egy értéket annak meghatározásához, hogy mennyi ideig várjon az üzenet üres várólistába érkezésére. Ha semmit sem ad meg, a rendszer beolvassa a várólista első üzenetét, és nincs idő arra, hogy megvárja az üzenet megjelenését.
+     Az MQ-összekötő jelenleg csak a kiszolgáló hitelesítését támogatja, az ügyfélhitelesítést nem. További információt a [Csatlakozási és hitelesítési problémák című témakörben talál.](#connection-problems)
 
-     ![Üzenet tulajdonságainak tallózása](media/connectors-create-api-mq/Browse_message_Props.png)
+1. Az **átjáró** szakaszban hajtsa végre az alábbi lépéseket:
 
-1. **Mentse** a módosításokat, majd **futtassa** a logikai alkalmazást.
+   1. Az **Előfizetés** ek listájából válassza ki az Azure-átjáró-erőforráshoz társított Azure-előfizetést.
 
-   ![Mentés és futtatás](media/connectors-create-api-mq/Save_Run.png)
+   1. A **Connection Gateway** listából válassza ki a használni kívánt Azure-átjáró-erőforrást.
 
-   A futtatás befejezése után a futtatás lépései megjelennek, és áttekintheti a kimenetet.
+1. Amikor elkészült, válassza a **Létrehozás** lehetőséget.
 
-1. Az egyes lépcsők részleteinek áttekintéséhez jelölje be a zöld pipát. A kimeneti adatokkal kapcsolatos további információk áttekintéséhez válassza a **Nyers kimenetek megjelenítése**lehetőséget.
+<a name="connection-problems"></a>
 
-   ![Üzenet kimenetének tallózása](media/connectors-create-api-mq/Browse_message_output.png)  
+### <a name="connection-and-authentication-problems"></a>Csatlakozási és hitelesítési problémák
+
+Amikor a logikai alkalmazás megpróbál csatlakozni a helyszíni MQ-kiszolgálóhoz, a következő hibaüzenet jelenhet meg:
+
+`"MQ: Could not Connect the Queue Manager '<queue-manager-name>': The Server was expecting an SSL connection."`
+
+* Ha az MQ-összekötőt közvetlenül az Azure-ban használja, az MQ-kiszolgálónak egy megbízható hitelesítésszolgáltató által kiállított tanúsítványt kell [használnia.](https://www.ssl.com/faqs/what-is-a-certificate-authority/)
+
+* Ha a helyszíni adatátjárót használja, ha lehetséges, próbáljon meg egy megbízható [hitelesítésszolgáltató](https://www.ssl.com/faqs/what-is-a-certificate-authority/) által kiállított tanúsítványt használni. Ha azonban ez a beállítás nem lehetséges, használhat önaláírt tanúsítványt, amelyet nem megbízható [hitelesítésszolgáltató](https://www.ssl.com/faqs/what-is-a-certificate-authority/) állít ki, és kevésbé biztonságosnak tekinthető.
+
+  A kiszolgáló önaláírt tanúsítványának telepítéséhez használja a **Windows Tanúsítványkezelő** (certmgr.msc) eszközt. Ebben az esetben a helyi számítógépen, ahol a helyszíni adatátjáró szolgáltatás fut, telepítenie kell a tanúsítványt a **helyi számítógép** tanúsítványtárolójában a **Megbízható legfelső szintű hitelesítésszolgáltatók** szintjén.
+
+  1. Azon a számítógépen, amelyen a helyszíni adatátjáró szolgáltatás fut, nyissa meg a Start menüt, és válassza **a Felhasználói tanúsítványok kezelése parancsot.**
+
+  1. A Windows Certification Manager eszköz megnyitása után nyissa meg a **Tanúsítványok - Helyi számítógép** >  **megbízható legfelső szintű hitelesítésszolgáltatók** mappáját, és telepítse a tanúsítványt.
+
+     > [!IMPORTANT]
+     > Győződjön meg arról, hogy a **tanúsítványokat** > a Tanúsítványok - Helyi számítógép**megbízható legfelső szintű hitelesítésszolgáltatók** tárolójában telepíti.
+
+* Az MQ-kiszolgáló megköveteli, hogy meghatározza az SSL-kapcsolatokhoz használni kívánt titkosítási specifikációt. Az SsLStream a .NET-ben azonban nem teszi lehetővé a titkosítási specifikációk sorrendjének megadását. A korlátozás megkerüléséhez módosíthatja az MQ-kiszolgáló konfigurációját úgy, hogy megfeleljen az összekötő által az SSL-egyeztetésben küldött csomag első titkosítási specifikációjának.
+
+  A kapcsolat megkísérlésekor az MQ-kiszolgáló naplóz egy eseményüzenetet, amely azt jelzi, hogy a kapcsolat nem sikerült, mert a másik végpont helytelen titkosítási specifikációt használt. Az eseményüzenet a listában először megjelenő titkosítási specifikációt tartalmazza. Frissítse a titkosítási specifikációt a csatornakonfigurációban, hogy megfeleljen az eseményüzenetben lévő titkosítási specifikációnak.
+
+## <a name="browse-single-message"></a>Egyetlen üzenet böngészése
+
+1. A logikai alkalmazásban az eseményindító vagy egy másik művelet alatt válassza az **Új lépés**lehetőséget.
+
+1. A keresőmezőbe írja `mq`be a t, és válassza az **Üzenet tallózása** műveletet.
+
+   ![Válassza az "Üzenet tallózása" műveletet](media/connectors-create-api-mq/browse-message.png)
+
+1. Ha még nem hozott létre MQ-kapcsolatot, a rendszer kéri a [kapcsolat létrehozását.](#create-connection)
+
+1. A kapcsolat létrehozása után állítsa be a **Tallózás üzenetművelet** tulajdonságait:
+
+   | Tulajdonság | Leírás |
+   |----------|-------------|
+   | **Várólista** | Ha eltér a kapcsolatban megadott várólistától, adja meg a várólistát. |
+   | **MessageId**, **CorrelationId**, **GroupId**és egyéb tulajdonságok | Üzenet tallózása az MQ üzenet különböző tulajdonságai alapján |
+   | **IncludeInfo** | Ha további üzenetadatokat szeretne felvenni a kimenetbe, válassza a **True**lehetőséget. Ha ki szeretné hagyni a kimenetben lévő további üzenetadatokat, válassza a **false**lehetőséget. |
+   | **Időtúllépés** | Adjon meg egy értéket annak meghatározásához, hogy mennyi ideig várjon az üzenet üres várólistába érkezésére. Ha semmit sem ad meg, a rendszer beolvassa a várólista első üzenetét, és nincs idő arra, hogy megvárja az üzenet megjelenését. |
+   |||
+
+   Példa:
+
+   ![Az "Üzenet tallózása" művelet tulajdonságai](media/connectors-create-api-mq/browse-message-properties.png)
+
+1. Ha elkészült, a tervező eszköztárán válassza a **Mentés gombot.** Az alkalmazás teszteléséhez válassza a **Futtatás lehetőséget.**
+
+   A futtatás befejezése után a tervező megjeleníti a munkafolyamat lépéseit és azok állapotát, hogy áttekinthesse a kimenetet.
+
+1. Az egyes lépésekkel kapcsolatos részletek megtekintéséhez kattintson a lépés címsorára. Ha további információt szeretne áttekinteni egy lépés kimenetéről, válassza **a Nyers kimenetek megjelenítése**lehetőséget.
+
+   ![Üzenet kimenetének tallózása](media/connectors-create-api-mq/browse-message-output.png)
 
    Itt van néhány minta nyers kimenet:
 
-   ![Üzenet nyers kimenetének tallózása](media/connectors-create-api-mq/Browse_message_raw_output.png)
+   ![Üzenet nyers kimenetének tallózása](media/connectors-create-api-mq/browse-message-raw-output.png)
 
-1. Ha **az IncludeInfo értéket** igaz értékre állítja, a következő kimenet jelenik meg:
+1. Ha **az IncludeInfo értéket** **igaz**értékre állítja, további kimenet jelenik meg:
 
-   ![Tallózás üzenet információkat tartalmaz](media/connectors-create-api-mq/Browse_message_Include_Info.png)
+   ![Tallózás üzenet információkat tartalmaz](media/connectors-create-api-mq/browse-message-include-info.png)
 
 ## <a name="browse-multiple-messages"></a>Több üzenet böngészése
 
-Az **Üzenetek tallózása** művelet tartalmaz egy **BatchSize** beállítást, amely jelzi, hogy hány üzenetet kell visszaküldeni a várólistából.  Ha **a BatchSize** nem rendelkezik bejegyzéssel, a rendszer az összes üzenetet visszaadja. A visszaadott kimenet üzenetek tömbje.
+Az **Üzenetek tallózása** művelet tartalmaz egy **BatchSize** beállítást, amely jelzi, hogy hány üzenetet szeretne visszaküldeni a várólistából. Ha **a BatchSize** nem rendelkezik értékkel, a rendszer az összes üzenetet visszaadja. A visszaadott kimenet üzenetek tömbje.
 
-1. A **Tallózás üzenetek** művelet hozzáadásakor alapértelmezés szerint az első, korábban konfigurált kapcsolat lesz kijelölve. Új kapcsolat létrehozásához válassza a **Kapcsolat módosítása**lehetőséget. Vagy válasszon másik kapcsolatot.
+1. Kövesse az előző lépéseket, de adja hozzá helyette az **Üzenetek tallózása** műveletet.
 
-1. A logikai alkalmazás futásának befejezése után az üzenetek **tallózása** művelet ből néhány mintakimenet látható:
+1. Ha még nem hozott létre MQ-kapcsolatot, a rendszer kéri a [kapcsolat létrehozását.](#create-connection) Ellenkező esetben alapértelmezés szerint az első korábban konfigurált kapcsolat lesz használatban. Új kapcsolat létrehozásához válassza a **Kapcsolat módosítása**lehetőséget. Vagy válasszon másik kapcsolatot.
 
-   ![Üzenetek kimenetének tallózása](media/connectors-create-api-mq/Browse_messages_output.png)
+1. Adja meg a művelethez szükséges információkat.
+
+1. Mentse és futtassa a logikai alkalmazást.
+
+   Miután a logikai alkalmazás futása befejeződik, itt van néhány minta kimenet a **Tallózás üzenetek** művelet:
+
+   ![Minta "Üzenetek tallózása" kimenet](media/connectors-create-api-mq/browse-messages-output.png)
 
 ## <a name="receive-single-message"></a>Egyetlen üzenet fogadása
 
@@ -114,30 +159,32 @@ Az **Üzenet fogadása** művelet ugyanazokat a bemeneteket és kimeneteket, min
 
 ## <a name="receive-multiple-messages"></a>Több üzenet fogadása
 
-Az **Üzenetek fogadása** művelet ugyanazokat a bemeneteket és kimeneteket tartalmaz, mint az **Üzenetek tallózása** művelet. Az **Üzenetek fogadása**használatakor az üzenetek törlődnek a várólistából.
+Az **Üzenetek fogadása** művelet ugyanazokat a bemeneteket és kimeneteket tartalmaz, mint az **Üzenetek tallózása** művelet. Az **üzenetek fogadása**használatakor az üzenetek törlődnek a várólistából.
 
-Ha böngészés vagy fogadás közben nincsenek üzenetek a várólistában, a lépés ezzel a kimenettel sikertelen lesz:  
-
-![MQ nincs üzenethiba](media/connectors-create-api-mq/MQ_No_Msg_Error.png)
+> [!NOTE]
+> Ha olyan várólistán fut, amely nem tartalmaz üzeneteket, a művelet sikertelen lesz ezzel a kimenettel:
+>
+> ![MQ "nincs üzenet" hiba](media/connectors-create-api-mq/mq-no-message-error.png)
 
 ## <a name="send-message"></a>Üzenet küldése
 
-Az Üzenetek **küldése** művelet hozzáadásakor alapértelmezés szerint az első, korábban konfigurált kapcsolat lesz kijelölve. Új kapcsolat létrehozásához válassza a **Kapcsolat módosítása**lehetőséget. Vagy válasszon másik kapcsolatot.
+1. Kövesse az előző lépéseket, de adja hozzá helyette az **Üzenet küldése** műveletet.
 
-1. Érvényes üzenettípus kiválasztása: **Datagram**, **Válasz**vagy **Kérés**  
+1. Ha még nem hozott létre MQ-kapcsolatot, a rendszer kéri a [kapcsolat létrehozását.](#create-connection) Ellenkező esetben alapértelmezés szerint az első korábban konfigurált kapcsolat lesz használatban. Új kapcsolat létrehozásához válassza a **Kapcsolat módosítása**lehetőséget. Vagy válasszon másik kapcsolatot.
 
-   ![Msg kellékek küldése](media/connectors-create-api-mq/Send_Msg_Props.png)
+1. Adja meg a művelethez szükséges információkat. A MessageType ( **MessageType**) mezőben válasszon érvényes üzenettípust: **Datagram**, **Reply**vagy **Request**
 
-1. Miután a logikai alkalmazás futása befejeződik, itt van néhány minta kimenet az **Üzenet küldése** műveletből:
+   ![Az "Üzenet küldése művelet" tulajdonságai](media/connectors-create-api-mq/send-message-properties.png)
 
-   ![Msg kimenet küldése](media/connectors-create-api-mq/Send_Msg_Output.png)
+1. Mentse és futtassa a logikai alkalmazást.
+
+   Miután a logikai alkalmazás futása befejeződik, itt van néhány minta kimenet az **Üzenet küldése** műveletből:
+
+   ![Minta "Üzenet küldése" kimenet](media/connectors-create-api-mq/send-message-output.png)
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-Az összekötővel kapcsolatos további technikai részleteket, például az eseményindítókat, műveleteket és korlátokat az összekötő Swagger-fájlja szerint lásd az [összekötő referencialapján.](https://docs.microsoft.com/connectors/mq/)
-
-> [!NOTE]
-> [Az integrációs szolgáltatási környezetben (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)lévő logikai alkalmazások esetében az összekötő ISE-címkével ellátott verziója az [ISE-üzenetkorlátokat](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) használja.
+Az összekötő Swagger-leírása által leírt műveletek és korlátok technikai részleteiért tekintse át az összekötő [referenciaoldalát.](/connectors/mq/)
 
 ## <a name="next-steps"></a>További lépések
 

@@ -10,20 +10,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/15/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 76d1ba2717ac3c8ac8e86687ef1754a8790f3e4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9a0dd56842174d89688c862397c373326ef50d1f
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72595083"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420543"
 ---
 # <a name="reserve-public-ipv6-address-prefix"></a>Nyilvános IPv6-címelőtag lefoglalása
 Az IPv6 for Azure Virtual Network (VNet) lehetővé teszi, hogy az Azure-ban iPv6- és IPv4-kapcsolattal rendelkező alkalmazásokat üzemeltetjen virtuális hálózaton belül, valamint az internetről és az internetről. Az egyes IPv6-címek lefoglalása mellett az Azure IPv6-címek (más néven IP-előtag) összefüggő tartományait is lefoglalhatja a használatra. Ez a cikk ismerteti, hogyan hozhat létre IPv6 nyilvános IP-címeket és címtartományokat az Azure PowerShell és a CLI használatával.
 
-> [!Important]
-> Az IPv6 for Azure Virtual Network jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="create-a-single-reserved-ipv6-public-ip"></a>Egyetlen fenntartott IPv6-nyilvános IP-cím létrehozása
 

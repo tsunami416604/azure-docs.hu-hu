@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 93b10d56ae34ebdfe78dd20705634dea58721274
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 692834903899448707200b24a955301e29e14f90
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79257276"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478455"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>A VMware VM/physical server vész-helyreállítási konfigurációs kiszolgálójának kezelése
 
@@ -270,9 +270,9 @@ A konfigurációs kiszolgálót a PowerShell használatával is törölheti.
 3. A jelszófájl létrehozásához hajtsa végre a **genpassphrase.exe -v > MobSvc.passphrase fájlt.**
 4. A jelszó a **%ProgramData%\ASR\home\svsystems\bin\MobSvc.passphrase mappában**található fájlban lesz tárolva.
 
-## <a name="renew-ssl-certificates"></a>SSL-tanúsítványok megújítása
+## <a name="renew-tlsssl-certificates"></a>TLS/SSL-tanúsítványok megújítása
 
-A konfigurációs kiszolgáló beépített webkiszolgálóval rendelkezik, amely a mobilitási szolgáltatás, a folyamatkiszolgálók és a hozzá csatlakoztatott fő célkiszolgálók tevékenységeit vezényli. A webkiszolgáló SSL-tanúsítványt használ az ügyfelek hitelesítéséhez. A tanúsítvány három év után lejár, és bármikor megújítható.
+A konfigurációs kiszolgáló beépített webkiszolgálóval rendelkezik, amely a mobilitási szolgáltatás, a folyamatkiszolgálók és a hozzá csatlakoztatott fő célkiszolgálók tevékenységeit vezényli. A webkiszolgáló TLS/SSL-tanúsítványt használ az ügyfelek hitelesítéséhez. A tanúsítvány három év után lejár, és bármikor megújítható.
 
 ### <a name="check-expiry"></a>Lejárat ellenőrzése
 

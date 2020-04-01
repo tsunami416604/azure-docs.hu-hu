@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: f9043ae1414b63f25583d52100774f3e87754a74
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54263a8be900ed381d8450b460e5cf9e6117ac54
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77661839"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436119"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>GYAKRAN FELTETT KÉRDÉSEK – Általános kérdések az Azure Security Centerhasználatával kapcsolatban
 
 ## <a name="what-is-azure-security-center"></a>Mi az Azure Security Center?
 Az Azure Security Center segítségével megelőzheti, észlelheti és reagálhat a fenyegetésekre, és nagyobb rálátással és az erőforrások biztonságának szabályozására. A biztonsági megoldások átfogó ökoszisztémájának alkalmazásával az összes előfizetésére vonatkozóan integrált biztonságfelügyeletet és szabályzatkezelést biztosít, és segít felderíteni az egyébként nehezen észlelhető fenyegetéseket.
 
-A Security Center a Microsoft Monitoring Agent segítségével gyűjti és tárolja az adatokat. Részletes információt az Adatgyűjtés az Azure Security Centerben ( [Adatgyűjtés az Azure Security Centerben](security-center-enable-data-collection.md)) területen talál.
+A Security Center a Log Analytics-ügynök segítségével gyűjti és tárolja az adatokat. Részletes információt az Adatgyűjtés az Azure Security Centerben ( [Adatgyűjtés az Azure Security Centerben](security-center-enable-data-collection.md)) területen talál.
 
 
 ## <a name="how-do-i-get-azure-security-center"></a>Hogyan juthatok be az Azure Security Center?

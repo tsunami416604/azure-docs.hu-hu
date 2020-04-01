@@ -11,21 +11,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/23/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 5dc231febc2e9b605b9e7f603f5d036b8a2c62eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f3f9b32ea55f0ceebf08b22ccc7e2ceec0b6227e
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240760"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420800"
 ---
-# <a name="add-ipv6-to-an-ipv4-application-in-azure-virtual-network---azure-cli-preview"></a>IPv6 hozzáadása egy IPv4-alkalmazáshoz az Azure virtuális hálózatában – Azure CLI (előzetes verzió)
+# <a name="add-ipv6-to-an-ipv4-application-in-azure-virtual-network---azure-cli"></a>IPv6 hozzáadása egy IPv4-alkalmazáshoz az Azure virtuális hálózatában – Azure CLI
 
 Ez a cikk bemutatja, hogyan adhat iPv6-címeket egy olyan alkalmazáshoz, amely IPv4 nyilvános IP-címet használ egy Azure virtuális hálózatban az Azure CLI használatával. A helybeni frissítés tartalmaz egy virtuális hálózatot és alhálózatot, egy standard terheléselosztót IPv4 + IPV6 előtér-konfigurációkkal, iPv4 + IPv6 konfigurációval rendelkező hálózati adapterekkel rendelkező virtuális gépeket, hálózati biztonsági csoportot és nyilvános IP-címeket.
 
-> [!Important]
-> Az Azure Virtual Network IPv6-támogatása jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -33,29 +31,6 @@ Ha úgy dönt, hogy az Azure CLI-t helyileg telepíti és használja, ez a rövi
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-### <a name="register-the-service"></a>A szolgáltatás regisztrálása
-
-Mielőtt üzembe helyezne egy kétverű alkalmazást az Azure-ban, konfigurálnia kell az előfizetést ehhez az előzetes verzióhoz a következő Azure CLI használatával:
-
-```azurecli
-az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
-az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
-```
-
-A funkcióregisztráció befejezéséhez akár 30 perc is igénybe vesszen. A regisztrációs állapot ot a következő Azure CLI-parancs futtatásával ellenőrizheti:
-
-```azurecli
-az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
-az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
-```
-
-A regisztráció befejezése után futtassa a következő parancsot:
-
-```azurecli
-az provider register --namespace Microsoft.Network
-```
-
-### <a name="create-a-standard-load-balancer"></a>Standard Load Balancer létrehozása
 Ez a cikk feltételezi, hogy üzembe helyezett egy standard terheléselosztót a rövid útmutatóban leírtak [szerint: Standard terheléselosztó létrehozása - Azure CLI](../load-balancer/quickstart-load-balancer-standard-public-cli.md).
 
 ## <a name="create-ipv6-addresses"></a>IPv6-címek létrehozása
@@ -173,8 +148,6 @@ Az IPv6 kettős veremű virtuális hálózatot az Azure Portalon az alábbiak sz
 
   ![IPv6 kettős halmozott virtuális hálózat az Azure-ban](./media/ipv6-add-to-existing-vnet-powershell/ipv6-dual-stack-vnet.png)
 
-> [!NOTE]
-> Az IPv6 for Azure virtuális hálózat érhető el az Azure Portalon írásvédett ebben az előzetes verzióban.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

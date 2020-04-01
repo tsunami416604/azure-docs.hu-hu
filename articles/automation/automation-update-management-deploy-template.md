@@ -6,13 +6,13 @@ ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 02/27/2020
-ms.openlocfilehash: a8b382663b56d7481da876979e33194fb0ac533d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: e69f3d7350d0da9f364983eae0935532b576bd76
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77925799"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411459"
 ---
 # <a name="onboard-update-management-solution-using-azure-resource-manager-template"></a>Beépített frissítéskezelési megoldás az Azure Resource Manager-sablon használatával
 
@@ -25,7 +25,7 @@ ms.locfileid: "77925799"
 
 A sablon nem automatizálja egy vagy több Azure-beli vagy nem Azure-beli virtuális gép bevezetési szolgáltatását.
 
-Ha már rendelkezik egy Log Analytics-munkaterületi és Automation-fiókkal az előfizetés egy támogatott régiójában, azok nincsenek összekapcsolva, és a munkaterület még nem rendelkezik az Update Management megoldás telepítve, ezzel a sablonnal sikeresen létrehoz a kapcsolatot, és telepíti az Update Management megoldást. 
+Ha már rendelkezik egy Log Analytics-munkaterületi és Automation-fiókkal az előfizetés egy támogatott régiójában, azok nincsenek összekapcsolva, és a munkaterület még nem rendelkezik az Update Management megoldás üzembe helyezésével, ezzel a sablonnal sikeresen létrehozza a kapcsolatot, és telepíti az Update Management megoldást. 
 
 ## <a name="api-versions"></a>API-verziók
 
@@ -56,6 +56,7 @@ A sablonban a következő paraméterek a Log Analytics munkaterület alapértelm
 
 * sku - alapértelmezés szerint a 2018 áprilisában kiadott új GB-onkénti díjszabási szint
 * adatmegőrzés - alapértelmezés szerint harminc nap
+* kapacitásfoglalás - alapértelmezés szerint 100 GB
 
 >[!WARNING]
 >Ha egy Log Analytics-munkaterületet hoz létre vagy konfigurál egy olyan előfizetésben, amely az új 2018 áprilisi díjszabási modellt választotta, az egyetlen érvényes Log Analytics-díjszabási szint a **PerGB2018.**
@@ -79,7 +80,7 @@ A sablonban a következő paraméterek a Log Analytics munkaterület alapértelm
                 "description": "Workspace name"
             }
         },
-        "pricingTier": {
+        "sku": {
             "type": "string",
             "allowedValues": [
                 "pergb2018",
@@ -168,7 +169,8 @@ A sablonban a következő paraméterek a Log Analytics munkaterület alapértelm
             "apiVersion": "2017-03-15-preview",
             "location": "[parameters('location')]",
             "properties": {
-                "sku": { 
+                "sku": {
+                    "Name": "[parameters('sku')]",
                     "name": "CapacityReservation",
                     "capacityReservationLevel": 100
                 },
@@ -231,13 +233,13 @@ A sablonban a következő paraméterek a Log Analytics munkaterület alapértelm
     }
     ```
 
-2. A sablont az igényeinek megfelelően szerkesztheti.
+2. A sablont az igényeinek megfelelően szerkesztheti. Fontolja meg egy [Erőforrás-kezelő paraméterfájl létrehozását](../azure-resource-manager/templates/parameter-files.md) ahelyett, hogy a paramétereket szövegközi értékként adná át.
 
 3. Mentse a fájlt deployUMSolutiontemplate.json fájlként egy helyi mappába.
 
 4. Készen áll a sablon üzembe helyezésére. Használhatja a PowerShell vagy az Azure CLI. Amikor a rendszer egy munkaterület- és Automation-fióknév megadását kéri, adjon meg egy globálisan egyedi nevet az összes Azure-előfizetésben.
 
-    **Powershell**
+    **PowerShell**
 
     ```powershell
     New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deployUMSolutiontemplate.json

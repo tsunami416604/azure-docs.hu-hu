@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Képek keresése REST API és Node.js – Bing képkeresés'
+title: 'Gyorsútmutató: Képek keresése a Bing Image Search REST API-val és a Node.js'
 titleSuffix: Azure Cognitive Services
-description: Ezzel a rövid útmutatóval képkeresési kérelmeket küldhet a Bing Image Search REST API-nak JavaScript használatával, és JSON-válaszokat kaphat.
+description: Ezzel a rövid útmutatóval képkeresési kérelmeket küldhet a Bing Image Search REST API-nak JavaScript használatával, és JSON-választ kaphat.
 services: cognitive-services
 documentationcenter: ''
 author: aahill
@@ -9,15 +9,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 12/06/2019
+ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 2aaed57c7e1d817cd892f45c441ab59d4ffba3d3
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 15757d606a846a2951bc5c15d8d5ef0dbfd7a2a1
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930762"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478593"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-nodejs"></a>Gyorsútmutató: Képek keresése a Bing Image Search REST API-val és a Node.js
 

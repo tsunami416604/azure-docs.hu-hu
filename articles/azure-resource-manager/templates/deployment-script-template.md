@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 03/30/2020
 ms.author: jgao
-ms.openlocfilehash: 7ff91545b1b7ab1920f437e0c3a5410270efaac5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3ef1c3d3fe0fd1ecad95e027b06ce14fd70d4d3f
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153250"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437879"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Központi telepítési parancsfájlok használata sablonokban (előzetes verzió)
 
@@ -42,7 +42,7 @@ A központi telepítési parancsfájl előnyei:
 - **A felhasználó által hozzárendelt felügyelt identitás a közreműködő szerepkörét a cél erőforráscsoport.** Ez az identitás központi telepítési parancsfájlok végrehajtásához használatos. Az erőforráscsoporton kívüli műveletek végrehajtásához további engedélyeket kell megadnia. Ha például új erőforráscsoportot szeretne létrehozni, rendelje hozzá az identitást az előfizetési szinthez.
 
   > [!NOTE]
-  > A központi telepítési parancsfájl motor létrehoz egy tárfiókot, és egy tárolópéldányt a háttérben.  A felhasználó által hozzárendelt felügyelt identitás a közreműködő szerepkör előfizetési szinten van szükség, ha az előfizetés nem regisztráltaz Azure storage-fiók (Microsoft.Storage) és az Azure container instance (Microsoft.ContainerInstance) erőforrás Szolgáltatók.
+  > A központi telepítési parancsfájl motor létrehoz egy tárfiókot, és egy tárolópéldányt a háttérben.  A felhasználó által hozzárendelt felügyelt identitás a közreműködő szerepkör előfizetési szinten van szükség, ha az előfizetés nem regisztráltaz Azure storage-fiók (Microsoft.Storage) és az Azure-tárolópéldány (Microsoft.ContainerInstance) erőforrás-szolgáltatók.
 
   Identitás létrehozásához [lásd: Felhasználó által hozzárendelt felügyelt identitás létrehozása az Azure Portalon](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)keresztül , vagy az [Azure CLI használatával,](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)vagy [az Azure PowerShell használatával.](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md) A sablon telepítésekor szüksége van az identitásazonosítóra. Az identitás formátuma:
 
@@ -62,7 +62,7 @@ A központi telepítési parancsfájl előnyei:
   az identity show -g jgaoidentity1008rg -n jgaouami --query id
   ```
 
-  # <a name="powershell"></a>[Powershell](#tab/PowerShell)
+  # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
   ```azurepowershell-interactive
   $idGroup = Read-Host -Prompt "Enter the resource group name for the managed identity"
@@ -101,6 +101,12 @@ A következő json egy példa.  A legújabb sablonséma [itt](/azure/templates/m
     "forceUpdateTag": 1,
     "azPowerShellVersion": "3.0",  // or "azCliVersion": "2.0.80"
     "arguments": "[concat('-name ', parameters('name'))]",
+    "environmentVariables": [
+      {
+        "name": "someSecret",
+        "secureValue": "if this is really a secret, don't put it here... in plain text..."
+      }
+    ],
     "scriptContent": "
       param([string] $name)
       $output = 'Hello {0}' -f $name
@@ -126,6 +132,7 @@ Az ingatlan értékének részletei:
 - **forceUpdateTag**: A sablontelepítések közötti érték módosítása a központi telepítési parancsfájl újbóli végrehajtását kényszeríti. Használja a newGuid() vagy utcNow() függvényt, amelyet egy paraméter alapértelmezettértékeként kell beállítani. További információért olvassa el a [Parancsfájl többszöri futtatása témakört.](#run-script-more-than-once)
 - **azPowerShellVersion**/**azCliVersion**: Adja meg a használni kívánt modulverziót. A támogatott PowerShell- és CLI-verziók listáját az Előfeltételek című témakörben [tetszetős ekkel egészül ki.](#prerequisites)
 - **argumentumok**: Adja meg a paraméterértékeket. Az értékeket szóközök választják el egymástól.
+- **environmentVariables**: Adja meg a környezeti változók átad a parancsfájlnak. További információt a Telepítési parancsfájlok fejlesztése című [témakörben talál.](#develop-deployment-scripts)
 - **scriptContent**: Adja meg a parancsfájl tartalmát. Külső parancsfájl futtatásához `primaryScriptUri` használja helyette. Példák: [Szövegközi parancsfájl használata](#use-inline-scripts) és [Külső parancsfájl használata.](#use-external-scripts)
 - **primaryScriptUri**: Adjon meg egy nyilvánosan elérhető URL-címet az elsődleges központi telepítési parancsfájl támogatott fájlkiterjesztésekkel.
 - **supportingScriptUris**: Adjon meg egy tömbnyi nyilvánosan elérhető URL-t a vagy `ScriptContent` a programban `PrimaryScriptUri`megnevezett támogató fájlokhoz.
@@ -234,7 +241,7 @@ Szabályozhatja, hogy a PowerShell hogyan reagáljon a nem végződő hibákra a
 
 ### <a name="pass-secured-strings-to-deployment-script"></a>Biztonságos karakterláncok áthelyezése a központi telepítési parancsfájlnak
 
-A tárolópéldányok környezeti változóinak beállítása lehetővé teszi a tárolóban futó alkalmazás vagy szkript dinamikus konfigurálását. A központi telepítési parancsfájl ugyanúgy kezeli a nem biztonságos és biztonságos környezeti változókat, mint az Azure Container Instance. További információ: [Környezeti változók beállítása tárolópéldányokban.](../../container-instances/container-instances-environment-variables.md#secure-values)
+Környezeti változók (EnvironmentVariable) beállítása a tárolópéldányokban lehetővé teszi, hogy a tároló által futtatott alkalmazás vagy parancsfájl dinamikus konfigurációját biztosítsa. A központi telepítési parancsfájl ugyanúgy kezeli a nem biztonságos és biztonságos környezeti változókat, mint az Azure Container Instance. További információ: [Környezeti változók beállítása tárolópéldányokban.](../../container-instances/container-instances-environment-variables.md#secure-values)
 
 ## <a name="debug-deployment-scripts"></a>Telepítési parancsfájlok hibakeresése
 

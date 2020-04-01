@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 2/24/2020
 ms.subservice: alerts
-ms.openlocfilehash: 2f6e9cd4e7a035e6555b2241613cb9c46c3be550
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe1f1d2700619bfcac4512bb0e631262edf8401c
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79274982"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398102"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Metrikariasztás létrehozása Resource Manager-sablonnal
 
@@ -1518,6 +1518,10 @@ Ez a szakasz ismerteti az Azure Resource Manager sablonok három forgatókönyv 
 - Az összes virtuális gép figyelése (egy Azure-régióban) egy vagy több erőforráscsoportban.
 - Az összes virtuális gép figyelése (egy Azure-régióban) egy előfizetésben.
 - Virtuális gépek listájának figyelése (egy Azure-régióban) egy előfizetésben.
+
+> [!NOTE]
+>
+> Egy metrika riasztási szabály, amely több erőforrást figyel, csak egy feltétel engedélyezett.
 
 ### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Statikus küszöbérték riasztás egy vagy több erőforráscsoport összes virtuális gépén
 

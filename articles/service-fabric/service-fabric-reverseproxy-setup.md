@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan állíthatja be és konfigurálhatja az Azure S
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pepogors
-ms.openlocfilehash: 131440036896d323cbf821d7a220328456e1db36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e3edb0fe238dcaddb7d99cc68660591f081581c
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75645446"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476668"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Fordított proxy beállítása és konfigurálása az Azure Service Fabricben
 A fordított proxy egy opcionális Azure Service Fabric-szolgáltatás, amely segít a Service Fabric-fürtben futó mikroszolgáltatásoknak a http-végpontokkal rendelkező más szolgáltatások felderítésében és kommunikálásában. További információ: [Reverse proxy in Azure Service Fabric](service-fabric-reverseproxy.md). Ez a cikk bemutatja, hogyan állíthatja be és konfigurálhatja a fordított proxyt a fürtben. 
@@ -23,7 +23,7 @@ Ha [fürtöt hoz létre az Azure Portal használatával,](./service-fabric-clust
 1. 2. **lépés: Fürtkonfiguráció** **csoportjában**válassza a **Fordított proxy engedélyezése**lehetőséget.
 
    ![Fordított proxy engedélyezése a portálon](./media/service-fabric-reverseproxy-setup/enable-rp-portal.png)
-2. (Nem kötelező) A biztonságos fordított proxy konfigurálásához SSL-tanúsítványt kell konfigurálnia. A **3.** **Configure cluster security settings** **Configuration type** **Custom** Ezután a **Fordított proxy SSL-tanúsítvány**csoportban jelölje **be az SSL-tanúsítvány felvétele fordított proxyhoz** jelölőnégyzetet, és adja meg a tanúsítvány adatait.
+2. (Nem kötelező) A biztonságos fordított proxy konfigurálásához TLS/SSL tanúsítványt kell konfigurálnia. A **3.** **Configure cluster security settings** **Configuration type** **Custom** Ezután a **Fordított proxy SSL-tanúsítvány**csoportban jelölje **be az SSL-tanúsítvány felvétele fordított proxyhoz** jelölőnégyzetet, és adja meg a tanúsítvány adatait.
 
    ![Biztonságos fordított proxy konfigurálása a portálon](./media/service-fabric-reverseproxy-setup/configure-rp-certificate-portal.png)
 
@@ -74,7 +74,7 @@ Az Erőforrás-kezelő sablon használata után a következő lépésekkel enged
         ...
     }
     ```
-3. Ha az SSL-tanúsítványokat a porton a fordított proxyhoz szeretné konfigurálni, adja hozzá a tanúsítványt a **Microsoft.ServiceFabric/clusters** [Resource type szakasz](../resource-group-authoring-templates.md) ***reverseProxyCertificate*** tulajdonságához.
+3. Ha a tls-/SSL-tanúsítványokat a porton a fordított proxy portján szeretné konfigurálni, adja hozzá a tanúsítványt a **Microsoft.ServiceFabric/clusters** [Resource type szakasz](../resource-group-authoring-templates.md) ***reverseProxyCertificate*** tulajdonságához.
 
     ```json
     {

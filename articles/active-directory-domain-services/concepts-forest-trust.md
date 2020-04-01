@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 8b79e0fb24c15d2e9f16640e90d62f7df5c21f32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 903881a1d15c1f043e381f50e5b69d661cd08192
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74233700"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476439"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>A megbízhatósági kapcsolatok működése az erőforráserdőkben az Azure Active Directory tartományi szolgáltatásokban
 
@@ -114,7 +114,7 @@ Számos tartományok közötti és erdők közötti tranzakció függ a tartomá
 
 Ha egy hitelesítési kérelmet tartományra hivatkoznak, a tartomány tartományvezérlőjének meg kell határoznia, hogy létezik-e megbízhatósági kapcsolat azzal a tartománnyal, amelyről a kérelem érkezett. A megbízhatósági kapcsolat irányát és azt, hogy a bizalmi kapcsolat tranzitív vagy nem tranzitív-e, szintén meg kell határozni, mielőtt hitelesíti a felhasználót a tartomány erőforrásainak eléréséhez. A megbízható tartományok közötti hitelesítési folyamat a használt hitelesítési protokolltól függően változik. A Kerberos V5 és NTLM protokollok eltérőmódon dolgozzák fel a tartományhitelesítésre vonatkozó átirányításokat
 
-### <a name="kerberos-v5-referral-processing"></a>Kerberos V5 ajánlás feldolgozása
+### <a name="kerberos-v5-referral-processing"></a>Kerberos V5 átirányítási feldolgozás
 
 A Kerberos V5 hitelesítési protokoll az ügyfél hitelesítési és engedélyezési információihoz a tartományvezérlők hálózati bejelentkezési szolgáltatásától függ. A Kerberos protokoll egy online kulcselosztó központhoz (KDC) és a munkamenetjegyek Active Directory-fióktárolójához csatlakozik.
 
@@ -130,7 +130,7 @@ Ha az ügyfél a Kerberos V5-öt használja hitelesítésre, a fióktartományá
     * Ha igen, küldjön az ügyfélnek egy átirányítást a megbízhatósági útvonal következő tartományára.
     * Ha nem, küldjön az ügyfélnek egy bejelentkezési megtagadott üzenetet.
 
-### <a name="ntlm-referral-processing"></a>NTLM-átirányítás feldolgozása
+### <a name="ntlm-referral-processing"></a>NTLM átirányítási feldolgozás
 
 Az NTLM hitelesítési protokoll az ügyfél hitelesítési és engedélyezési információihoz a tartományvezérlők hálózati bejelentkezési szolgáltatásától függ. Ez a protokoll hitelesíti azokat az ügyfeleket, amelyek nem használnak Kerberos-hitelesítést. Az NTLM bizalmi kapcsolatokat használ a hitelesítési kérelmek tartományok közötti fogadásához.
 

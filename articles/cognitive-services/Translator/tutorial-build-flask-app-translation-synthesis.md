@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: b41b68725b6747cbada13a9acc321724b3f89d67
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 5034dafa015054e9e9d0804088f345929815b974
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77118575"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397936"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Oktatóanyag: Flask alkalmazás létrehozása az Azure Cognitive Services szolgáltatással
 
@@ -239,7 +239,7 @@ Bár ezek a minták azt mutatják, hogyan lehet html oldalakat megjeleníteni eg
    flask run
    ```
 
-4. Nyisson meg egy böngészőt, és keresse meg a megadott URL-címet. Meg kell jelennie az egyoldalas alkalmazásnak. Nyomja **le a Ctrl + c** billentyűkombinációt az alkalmazás kiiktatásához.
+4. Nyisson meg egy böngészőt, és keresse meg a megadott URL-címet. Meg kell jelennie az egyoldalas alkalmazásnak. Nyomja **le a Ctrl + C** billentyűkombinációt az alkalmazás kiiktatásához.
 
 ## <a name="translate-text"></a>Szöveg lefordítása
 
@@ -780,7 +780,7 @@ Most, hogy van egy funkciója a szövegfelolvasás konvertálásához, és egy �
        <option value="(zh-TW, Yating, Apollo)">Chinese (Taiwan)| Female | Yaiting, Apollo</option>
        <option value="(zh-TW, Zhiwei, Apollo)">Chinese (Taiwan) | Male | Zhiwei, Apollo</option>
        <option value="(hr-HR, Matej)">Croatian | Male | Matej</option>
-       <option value="(en-US, Jessa24kRUS)">English (US) | Female | Jessa24kRUS</option>
+       <option value="(en-US, AriaRUS)">English (US) | Female | AriaRUS</option>
        <option value="(en-US, Guy24kRUS)">English (US) | Male | Guy24kRUS</option>
        <option value="(en-IE, Sean)">English (IE) | Male | Sean</option>
        <option value="(fr-FR, Julie, Apollo)">French | Female | Julie, Apollo</option>

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: ec1507e09a183f8d466a456b70151861f5f0e82c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8e79f4c791d0252c719846da3aa8024b0e622dca
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80159438"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477023"
 ---
 # <a name="load-balancer-health-probes"></a>A Load Balancer állapotmintái
 
@@ -66,7 +66,7 @@ A megadott idő- és intervallumértékek határozzák meg, hogy egy példány f
 
 A viselkedést egy példával tovább illusztrálhatjuk. Ha a mintavételi válaszok számát 2-re, az intervallumot pedig 5 másodpercre állította, ez azt jelenti, hogy 10 másodperces időintervallumon belül 2 mintavételi időtúltöltési hibát kell figyelni.  Mivel a mintavétel elküldésének időpontja nem lesz szinkronizálva, amikor az alkalmazás állapota megváltozhat, két forgatókönyv vel köthetjük az időt:
 
-1. Ha az alkalmazás közvetlenül az első mintavétel érkezése előtt kezdi meg az idő-megtérési mintavételi válasz előállítását, az események észlelése 10 másodpercet (2 x 5 másodperces időközöket) vesz igénybe, valamint az alkalmazás időtartamát, amely az első időelhagyást jelzi. szonda megérkezik.  Feltételezheti, hogy ez az észlelés valamivel több mint 10 másodpercet vesz igénybe.
+1. Ha az alkalmazás elindul egy idő-megtérési mintavételi válasz közvetlenül az első mintavétel érkezése előtt, ezek az események észlelése 10 másodperc (2 x 5 másodperces időközönként), valamint az alkalmazás időtartama, amely jelzi az idő-megtérés, hogy amikor az első szonda megérkezik.  Feltételezheti, hogy ez az észlelés valamivel több mint 10 másodpercet vesz igénybe.
 2. Ha az alkalmazás elindul egy időtúllépések mintavételi válasz közvetlenül az első mintavétel érkezése után, ezek az események észlelése nem kezdődik el, amíg a következő mintavétel megérkezik (és időtúllépések) plusz további 10 másodperc (2 x 5 másodperces időközönként).  Feltételezheti, hogy ez az észlelés alig 15 másodpercet vesz igénybe.
 
 Ebben a példában, ha észlelés történt, a platform majd egy kis időt vesz igénybe, hogy reagáljon erre a változásra.  Ez azt jelenti, hogy a 
@@ -76,7 +76,10 @@ Ebben a példában, ha észlelés történt, a platform majd egy kis időt vesz 
 3. amikor az észlelést a platformon keresztül közölték 
 
 feltételezheti, hogy az időtúllépési szonda válaszára adott reakció legalább több mint 10 másodpercet és legfeljebb 15 másodpercet vesz igénybe, hogy reagáljon az alkalmazás ból érkező jel változására.  Ez a példa szemlélteti, hogy mi történik, azonban nem lehet előre jelezni a pontos időtartamot a fenti durva útmutatást ebben a példában bemutatott.
- 
+
+>[!NOTE]
+>Az állapotminta megvizsgálja a háttérkészletben futó összes futó példányt. Ha egy példány le van állítva, a vizsgálat nem történik meg, amíg újra nem indult.
+
 ## <a name="probe-types"></a><a name="types"></a>Mintavételi típusok
 
 Az állapotminta által használt protokoll a következők valamelyikére konfigurálható:
@@ -232,7 +235,7 @@ UdP terheléselosztáshoz létre kell hoznia egy egyéni állapotminta-jelet a h
 
 Ha [ha portok terheléselosztási szabályok](load-balancer-ha-ports-overview.md) [standard terheléselosztó](load-balancer-standard-overview.md)használatakor minden port terheléselosztásos, és egyetlen állapotminta válasz tükröznie kell az állapotát a teljes példány.
 
-Ne fordítson le vagy proxy egy állapotminta a példányon keresztül, amely megkapja az állapotminta egy másik példánya a virtuális hálózat, mivel ez a konfiguráció vezethet lépcsőzetes hibák a forgatókönyvben.  Vegye figyelembe a következő forgatókönyvet: egy harmadik féltől származó készülékek készlete van telepítve a terheléselosztó erőforrás háttérkészletében, hogy skálázást és redundanciát biztosítson az eszközök számára, és az állapotminta úgy van konfigurálva, hogy megvizsgálja a külső gyártótól származó készülék proxyk vagy a készülék mögötti más virtuális gépekre.  Ha ugyanazt a portot vizsgálja, amelyet a készülék mögötti többi virtuális gépre történő fordításhoz vagy proxykérelmek lefordításához használ, a készülék mögött imaslógép minden mintavételi válasza halottnak fogja jelölni. Ez a konfiguráció a teljes alkalmazásforgatókönyv kaszkádolt hibájához vezethet a készülék mögötti egyetlen háttérvégpont miatt.  Az eseményindító lehet egy szakaszos mintavételi hiba, amely hatására a terheléselosztó megjelöli az eredeti célt (a készülékpéldányt), és ezzel letilthatja a teljes alkalmazásforgatókönyvet. Ehelyett vizsgálja meg magának a készüléknek az állapotát. A mintavétel kiválasztása az állapotjelző meghatározásához fontos szempont a hálózati virtuális készülékek (NVA) forgatókönyvek, és konzultálnia kell az alkalmazás szállítójával, hogy mi a megfelelő állapotjelző az ilyen forgatókönyvek.
+Ne fordítson le vagy proxy egy állapotminta a példányon keresztül, amely megkapja az állapotminta egy másik példánya a virtuális hálózat, mivel ez a konfiguráció vezethet lépcsőzetes hibák a forgatókönyvben.  Vegye figyelembe a következő forgatókönyv: egy harmadik féltől származó készülékek egy készlet egy terheléselosztó erőforrás háttérkészletében, hogy méretezési és redundancia a készülékek és az állapotminta van beállítva, hogy vizsgálja meg a port, amely a harmadik féltől származó készülék proxyk, vagy fordítja a készülék mögött más virtuális gépek.  Ha ugyanazt a portot vizsgálja, amelyet a készülék mögötti többi virtuális gépre történő fordításhoz vagy proxykérelmek lefordításához használ, a készülék mögött imaslógép minden mintavételi válasza halottnak fogja jelölni. Ez a konfiguráció a teljes alkalmazásforgatókönyv kaszkádolt hibájához vezethet a készülék mögötti egyetlen háttérvégpont miatt.  Az eseményindító lehet egy szakaszos mintavételi hiba, amely hatására a terheléselosztó megjelöli az eredeti célt (a készülékpéldányt), és ezzel letilthatja a teljes alkalmazásforgatókönyvet. Ehelyett vizsgálja meg magának a készüléknek az állapotát. A mintavétel kiválasztása az állapotjelző meghatározásához fontos szempont a hálózati virtuális készülékek (NVA) forgatókönyvek, és konzultálnia kell az alkalmazás szállítójával, hogy mi a megfelelő állapotjelző az ilyen forgatókönyvek.
 
 Ha nem engedélyezi a mintavétel [forrás IP-címét](#probesource) a tűzfalházirendekben, az állapotminta sikertelen lesz, mivel nem tudja elérni a példányt.  Viszont a terheléselosztó megjelöli a példányt az állapotminta meghibásodása miatt.  Ez a helytelen konfiguráció a terheléselosztási alkalmazásforgatókönyv sikertelensülését okozhatja.
 

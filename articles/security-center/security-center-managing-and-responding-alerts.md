@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 6ea951b542d893b8fef3cdf19a964ce2ef8a034d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 8e44ce594375deeac47f037515d96c57d15c8359
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79415715"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398408"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben
 
@@ -73,5 +73,6 @@ A Security Center automatikusan gyűjti, elemzi és integrálja az Azure-erőfor
 
 Ebből a dokumentumból megismerte a Security Center biztonsági szabályzatainak konfigurálását. A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
+- [A Microsoft Learn modul arról, hogyan használhatja az Azure Security Center riasztási lehetőségeit a fenyegetések figyelésére és az azokra való reagálásra](https://docs.microsoft.com/learn/modules/resolve-threats-with-azure-security-center/)
 * [Biztonsági riasztások az Azure Security Centerben.](security-center-alerts-overview.md)
 * [Biztonsági események kezelése](security-center-incident.md)

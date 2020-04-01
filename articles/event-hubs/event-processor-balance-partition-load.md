@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/16/2020
 ms.author: shvija
-ms.openlocfilehash: 1244fe64d0c23782fdae7a0f92415bada4bef55a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf90120157bf64bd62a3b5ec9d8a6b2c6260e024
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76907655"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398301"
 ---
 # <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>A partícióterhelés elosztása az alkalmazás több példányában
 Az eseményfeldolgozó alkalmazás méretezéséhez futtathatja az alkalmazás több példányát, és kiegyensúlyozhatja a terhelést egymás között. A régebbi verziókban az [EventProcessorHost](event-hubs-event-processor-host.md) lehetővé tette a program több példánya és az ellenőrzőpont-események közötti terhelés egyensúlyát a fogadáskor. Az újabb verziókban (5.0-tól kezdve) az **EventProcessorClient** (.NET és Java) vagy az **EventHubConsumerClient** (Python és JavaScript) lehetővé teszi, hogy ugyanezt tegye. A fejlesztési modell egyszerűbbé vált az események használatával. Előfizet az eseményekre, amelyek érdeklik egy eseménykezelő regisztrálásával.
 
-Ez a cikk egy mintaforgatókönyvet ismerteti, amely több példányt használ az események olvasására egy eseményközpontból, majd részletesen ismerteti az eseményfeldolgozó-ügyfél szolgáltatásait, amely lehetővé teszi, hogy egyszerre több partícióról fogadja az eseményeket, és terheléselosztást más okkal fogyasztók, akik ugyanazt az eseményközpontot és fogyasztói csoportot használják.
+Ez a cikk egy mintaforgatókönyv segítségével több példányt egy eseményközpontból származó események olvasására, majd adja meg az eseményfeldolgozó-ügyfél szolgáltatásainak részleteit, amely lehetővé teszi, hogy egyszerre több partícióról érkező események fogadása és terheléselosztás más, ugyanazt az eseményközpontot és fogyasztói csoportot használó ügyfelekkel.
 
 > [!NOTE]
 > Az Event Hubs skálázásának kulcsa a particionált fogyasztók ötlete. A versengő [fogyasztói](https://msdn.microsoft.com/library/dn568101.aspx) mintával ellentétben a particionált fogyasztói minta lehetővé teszi a nagy léptékű azáltal, hogy megszünteti a versengés szűk keresztmetszetét, és megkönnyíti a végpontok közötti párhuzamosság.
@@ -83,6 +83,13 @@ Ha egy eseményfeldolgozó bontja a kapcsolatot egy partícióval, egy másik p�
 
 Amikor az ellenőrzőpontot egy esemény feldolgozottként való megjelölésére hajtja végre, az ellenőrzőpont-tárolóban egy bejegyzés kerül hozzáadásra vagy frissítésre az esemény eltolásával és sorszámával. A felhasználóknak kell eldönteniük az ellenőrzőpont frissítésének gyakoriságát. Minden sikeresen feldolgozott esemény után frissítés teljesítmény- és költséghatással járhat, mivel írási műveletet indít el az alapul szolgáló ellenőrzőpont-tárolóba. Továbbá ellenőrzőpontok minden egyes esemény jelzi a várólistára helyezett üzenetkezelési minta, amely a Service Bus-várólista lehet jobb választás, mint egy eseményközpont. Az Event Hubs ötlete az, hogy "legalább egyszer" nagy méretű kézbesítést kap. Azáltal, hogy a későbbi rendszerek idempotent, könnyen helyreállítható a hibák vagy újraindítások, amelyek eredményeként ugyanazokat az eseményeket többször kapták.
 
+> [!NOTE]
+> Ha az Azure Blob Storage-t használja ellenőrzőpont-tárolóként egy olyan környezetben, amely a Storage Blob SDK egy másik verzióját támogatja, mint az Azure-ban általában elérhető, kódot kell használnia a Storage service API-verziójának az adott környezet által támogatott verzióra való módosításához. Ha például az [Event Hubs szolgáltatást egy 2002-es Azure Stack Hub-verzión futtatja,](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)a Storage szolgáltatás legmagasabb elérhető verziója a 2017-11-09-es verzió. Ebben az esetben a Storage service API-verziójának 2017-11-09-re való célzásához kódot kell használnia. Egy adott Storage API-verzió célzásával kapcsolatos példát tekintse meg ezeket a mintákat a GitHubon: 
+> - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). 
+> - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithOlderStorageVersion.java)
+> - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.js) vagy [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.ts)
+> - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/event_processor_blob_storage_example_with_storage_api_version.py)
+
 ## <a name="thread-safety-and-processor-instances"></a>Menetbiztonsági és processzorpéldányok
 
 Alapértelmezés szerint az eseményfeldolgozó vagy -fogyasztó szálbiztos, és szinkron módon viselkedik. Amikor események érkeznek egy partícióra, az eseményeket feldolgozó függvény neve meg lesz hívva. A függvény további üzenetei és hívásai a színfalak mögött, ahogy az üzenetszivattyú továbbra is fut a háttérben más szálakon. Ez a menetbiztonság szükségtelent jelent a menetbiztos gyűjtemények számára, és jelentősen növeli a teljesítményt.
@@ -93,4 +100,4 @@ Tekintse meg a következő rövid útmutatókat:
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](event-hubs-java-get-started-send.md)
 - [Python](get-started-python-send-v2.md)
-- [Javascript](get-started-node-send-v2.md)
+- [JavaScript](get-started-node-send-v2.md)

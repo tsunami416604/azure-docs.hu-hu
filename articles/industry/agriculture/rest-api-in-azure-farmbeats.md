@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
-ms.openlocfilehash: 318b3e3f774a4381434fd56154f4c0d95c28c7a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 717a09d8377a7b95fe24300cc65222f307e7419f
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79479515"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437529"
 ---
 # <a name="references"></a>Referencia
 
@@ -162,7 +162,7 @@ Az Azure FarmBeats API-k at egy felhasználó vagy egy alkalmazás regisztráci�
     - Lépjen vissza az **Áttekintés**lapra, és válassza az Alkalmazás kezelése elemet a **helyi címtárban**.
     - Az **objektumazonosító**rögzítéséhez lépjen a **Tulajdonságok** elemre.
 
-4. Nyissa meg a [Datahub Swagger-t,](https://<yourdatahub>.azurewebsites.net/swagger/index.html) és tegye a következőket:
+4. Nyissa meg a Datahub Swagger (https://<yourdatahub>.azurewebsites.net/swagger/index.html) webhelyet, és tegye a következőket:
     - Nyissa meg a **RoleAssignment API-t.**
     - Post végrehajtása az imént létrehozott **objektumazonosítóhoz** való **RoleAssignment-objektum** létrehozásához.
 

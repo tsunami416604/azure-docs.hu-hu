@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: a429a1e454e73a1a9d544e308e5b2d60052d91a9
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 7a31eece6629558b14b614853addce59642e698b
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349778"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422729"
 ---
 # <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -38,7 +38,9 @@ A **deployer.log** fájl letöltéséhez tegye a következőket:
 **Korrekciós intézkedés**:
 
 1. Nyissa meg a FarmBeats Datahub erőforráscsoportot.   
+
 2. Válassza ki az **Event Hub** (DatafeedEventHubNamespace), majd ellenőrizze a bejövő üzenetek száma.
+
 3. A következő lehetőségek közül választhat:   
    - Ha *nincsbejövő üzenet,* forduljon az eszközpartneréhez.  
    - Bejövő *üzenetek*esetén lépjen farmbeatssupport@microsoft.comkapcsolatba a partnerrel. Csatlakoztassa a Datahub és a Accelerator naplók és rögzített telemetriai adatok.
@@ -52,6 +54,7 @@ A naplók letöltésének megértéséhez lépjen a ["Naplók manuális gyűjté
 **Korrekciós intézkedés**:
 
 1. Győződjön meg róla, hogy helyesen végezte el a partnerregisztrációt - ezt ellenőrizheti a datahub swagger- hez, keresse meg a /Partner API-t, a Get-et, és ellenőrizze, hogy a partner regisztrálva van-e. Ha nem, kövesse az [itt leírt lépéseket](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) a partner hozzáadásához.
+
 2. Győződjön meg arról, hogy a megfelelő Telemetriai üzenetformátumot használta:
 
 ```json
@@ -83,9 +86,12 @@ A naplók letöltésének megértéséhez lépjen a ["Naplók manuális gyűjté
 
 1. A Datahub Swagger ben nyissa meg a Partner API-t.
 2. Válassza **a Kipróbálás** > **kivégrehajtása** > **a Végrehajtás lehetőséget.**
-3. Jegyezze fel annak az érzékelőpartnernek a partnerazonosítóját, amely érdekli.
-4. Lépjen vissza a Partner API-hoz, és válassza **a Get/\<ID>** lehetőséget.
-5. Adja meg a partnerazonosítót a **3.**
+
+> [!NOTE]
+> Az Önt érdeklő érzékelőpartner partnerazonosítója.
+
+3. Lépjen vissza a Partner API-hoz, és válassza **a Get/\<ID>** lehetőséget.
+4. Adja meg a partnerazonosítót a **3.**
 
    Az API-válasznak rendelkeznie kell az Event Hubs kapcsolati karakterlánccal.
 

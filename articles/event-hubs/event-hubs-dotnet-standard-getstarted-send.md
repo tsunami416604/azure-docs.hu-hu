@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 1d399ffec2cd702dcfa39310803bc780b85bfde1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a8124e9860ba5703e96f96c90bc0cf37e42baf9c
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77187462"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398358"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>Események küldése az Azure Event Hubs-ba vagy fogadhat eseményeket a .NET Core (Microsoft.Azure.EventHubs) használatával
 Ez a rövid útmutató bemutatja, hogyan küldhet eseményeket egy eseményközpontba, és hogyan fogadhat eseményeket egy eseményközpontból a **Microsoft.Azure.EventHubs** .NET Core könyvtár használatával.
 
 > [!WARNING]
-> Ez a rövid útmutató a régi **Microsoft.Azure.EventHubs** csomagot használja. A legújabb **Azure.Messaging.EventHubs-könyvtárat** használó rövid útmutatót az [Események küldése és fogadása az Azure.Messaging.EventHubs-könyvtár használatával](get-started-dotnet-standard-send-v2.md)című témakörben található. Ha át szeretné helyezni az alkalmazást a régi könyvtárról az újkönyvtárra, olvassa el a [Microsoft.Azure.EventHubs-ról az Azure.Messaging.EventHubs szolgáltatásba való áttelepítés útmutatóját.](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md)
+> Ez a rövid útmutató a régi **Microsoft.Azure.EventHubs** csomagot használja. A legújabb **Azure.Messaging.EventHubs-könyvtárat** használó rövid útmutatót az [Események küldése és fogadása az Azure.Messaging.EventHubs-könyvtár használatával](get-started-dotnet-standard-send-v2.md)című témakörben található. Ha át szeretné helyezni az alkalmazást a régi könyvtárról az újkönyvtárra, olvassa el a [Microsoft.Azure.EventHubs-ról az Azure.Messaging.EventHubs szolgáltatásba való áttelepítés útmutatóját.](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ha most írja be az Azure Event Hubs, olvassa el [az Eseményközpontok áttekintése című témakört,](event-hubs-about.md) mielőtt ezt a rövid útmutatót végezné. 

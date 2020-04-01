@@ -11,12 +11,12 @@ ms.workload: big-compute
 ms.date: 12/07/2018
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: c7459c4dc700f034feafbf133b831a52b9233d11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df7db30e987c408ff158acfc468010948c821b8d
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77020165"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397536"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Azure Batch CLI-sablonok és fájlátvitel használata
 
@@ -28,7 +28,7 @@ JSON-sablonfájlokat hozhat létre és használhat az Azure CLI-vel kötegelt k�
 
 Az Azure CLI bővítménye lehetővé teszi, hogy a Batch-et végpontok között használják a nem fejlesztők által. Csak CLI-parancsokkal hozhat létre készletet, tölthet fel bemeneti adatokat, hozhat létre munkahelyeket és kapcsolódó feladatokat, és letöltheti az eredményül kapott kimeneti adatokat. Nincs szükség további kódra. Futtassa közvetlenül a CLI-parancsokat, vagy integrálja őket parancsfájlokba.
 
-A kötegsablonok az Azure CLI JSON-fájlokhoz [meglévő Batch-támogatására](batch-cli-get-started.md#json-files-for-resource-creation) épülnek, így tulajdonságértékeket adhat meg készletek, feladatok, feladatok és egyéb elemek létrehozásakor. A kötegsablonok a következő képességeket adják hozzá:
+A kötegsablonok az [Azure CLI](batch-cli-get-started.md#json-files-for-resource-creation) JSON-fájlokhoz meglévő Batch-támogatására épülnek, így tulajdonságértékeket adhat meg készletek, feladatok, feladatok és egyéb elemek létrehozásakor. A kötegsablonok a következő képességeket adják hozzá:
 
 -   Paraméterek definiálhatók. A sablon használata esetén csak a paraméterértékek vannak megadva az elem létrehozásához, a sablon törzsében megadott egyéb elemtulajdonság-értékekkel. Az a felhasználó, aki megérti a Batch-et és a Batch által futtatandó alkalmazásokat, sablonokat hozhat létre, készlet- és feladattulajdonság-értékeket adva meg. A Batch-et kevésbé ismerő felhasználónak és/vagy az alkalmazásoknak csak a megadott paraméterek értékeit kell megadniuk.
 
@@ -68,7 +68,7 @@ Az Azure Batch-sablonok hasonlóak az Azure Resource Manager-sablonokhoz, a funk
 
 -   **Paraméterek**
 
-    -   A tulajdonságértékek megadása egy törzsszakaszban, és csak a paraméterértékeket kell megadni a sablon használatakor. Például egy készlet teljes definíciója elhelyezhető a törzsben, és csak egy paraméter definiálva a készletazonosítóhoz; ezért a készlet létrehozásához csak egy készletazonosító karakterláncot kell mellékolni.
+    -   A tulajdonságértékek megadása egy törzsszakaszban, és csak a paraméterértékeket kell megadni a sablon használatakor. Például egy készlet teljes definíciója elhelyezhető a törzsben, `poolId`és csak egy paraméter adható meg a következőképpen: ezért a készlet létrehozásához csak egy készletazonosító karakterláncot kell mellékolni.
         
     -   A sablontörzset olyan személy is létrehozhatja, aki ismeri a Batch-et és a Batch által futtatandó alkalmazásokat; a sablon használatakor csak a szerző által definiált paraméterek értékeit kell megadni. A részletes batch és/vagy alkalmazásismeretekkel nem rendelkező felhasználók ezért használhatják a sablonokat.
 

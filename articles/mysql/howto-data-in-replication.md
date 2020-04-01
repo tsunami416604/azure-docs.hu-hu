@@ -6,20 +6,20 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 2148ce41267627d9d6e0437897a99a8dbdbe0746
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 18c1d8b42dc73951901ec4ae9b79715ddbd47617
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80382766"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474040"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Az Azure Database beállítása a MySQL data-in replikációhoz
 
-Ebben a cikkben megtudhatja, hogyan állíthatja be az adatok replikációját az Azure Database for MySQL szolgáltatásban a fő- és replikakiszolgálók konfigurálásával. A Data-in Replication lehetővé teszi a helyszíni, virtuális gépeken vagy más felhőszolgáltatók által üzemeltetett adatbázis-szolgáltatásokban futó fő MySQL-kiszolgáló adatainak szinkronizálását az Azure Database for MySQL szolgáltatás kópiájába. 
+Ez a cikk ismerteti, hogyan állíthatja be a Data-in Replication az Azure Database for MySQL a fő- és replikakiszolgálók konfigurálásával. Ez a cikk feltételezi, hogy van néhány korábbi tapasztalata a MySQL-kiszolgálókkal és adatbázisokkal.
 
-Ez a cikk feltételezi, hogy legalább néhány korábbi tapasztalattal rendelkezik a MySQL-kiszolgálókkal és adatbázisokkal kapcsolatban.
+Az Azure Database for MySQL szolgáltatás ban egy replika létrehozásához a Data-in Replication szinkronizálja az adatokat a helyszíni master MySQL-kiszolgálóról, a virtuális gépekről (VM- ek) vagy a felhőalapú adatbázis-szolgáltatásokból.
 
-A jelen cikkben ismertetett lépések végrehajtása előtt tekintse át az adatreplikáció [korlátait és követelményeit.](concepts-data-in-replication.md#limitations-and-considerations)
+A jelen cikkben ismertetett lépések végrehajtása előtt tekintse át az adatok replikációjának [korlátait és követelményeit.](concepts-data-in-replication.md#limitations-and-considerations)
 
 ## <a name="create-a-mysql-server-to-be-used-as-replica"></a>Kópiaként használandó MySQL-kiszolgáló létrehozása
 
@@ -47,7 +47,7 @@ A következő lépések előkészítik és konfigurálják a helyszíni, virtuá
 
    Például győződjön meg arról, hogy a főkiszolgáló engedélyezi a bejövő és a kimenő forgalmat a 3306-os porton, és hogy a főkiszolgáló **nyilvános IP-címmel**rendelkezik, a DNS nyilvánosan elérhető, vagy teljesen minősített tartománynévvel (FQDN) rendelkezik. 
    
-   Tesztelje a főkiszolgálóhoz való kapcsolódást egy másik gépen vagy az Azure Portalon elérhető [Azure Cloud Shellből](https://docs.microsoft.com/azure/cloud-shell/overview) üzemeltetett eszközről, például a MySQL parancssorból való csatlakozással. 
+   Tesztelje a főkiszolgálóhoz való kapcsolódást egy másik gépen vagy az Azure Portalon elérhető [Azure Cloud Shellben](https://docs.microsoft.com/azure/cloud-shell/overview) üzemeltetett, egy eszközről, például a MySQL parancssorból való csatlakozással.
 
 2. Bináris naplózás bekapcsolása
 
@@ -71,7 +71,7 @@ A következő lépések előkészítik és konfigurálják a helyszíni, virtuá
 
 4. Új replikációs szerepkör létrehozása és engedély beállítása
 
-   Hozzon létre egy replikációs jogosultságokkal konfigurált felhasználói fiókot a főkiszolgálón. Ez sql parancsokkal vagy egy olyan eszközzel, mint a MySQL Workbench. Fontolja meg, hogy tervezi-e az SSL-lel történő replikálását, mivel ezt meg kell adni a felhasználó létrehozásakor. A főkiszolgálón a felhasználói [fiókok hozzáadásának](https://dev.mysql.com/doc/refman/5.7/en/adding-users.html) módjáról a MySQL dokumentációjában olvashat. 
+   Hozzon létre egy replikációs jogosultságokkal konfigurált felhasználói fiókot a főkiszolgálón. Ez sql parancsokkal vagy egy olyan eszközzel, mint a MySQL Workbench. Fontolja meg, hogy tervezi-e az SSL-lel történő replikálását, mivel ezt meg kell adni a felhasználó létrehozásakor. A főkiszolgálón a felhasználói [fiókok hozzáadásának](https://dev.mysql.com/doc/refman/5.7/en/user-names.html) módjáról a MySQL dokumentációjában olvashat. 
 
    Az alábbi parancsokban a létrehozott új replikációs szerepkör bármely gépről hozzáférhet a főkiszolgálóhoz, nem csak a főkiszolgálót tartalmazó géphez. Ez úgy történik, hogy a "syncuser@'%'" értéket adja meg a Felhasználói létrehozás parancsban. A [fióknevek megadásáról](https://dev.mysql.com/doc/refman/5.7/en/account-names.html)a MySQL dokumentációjában olvashat bővebben.
 

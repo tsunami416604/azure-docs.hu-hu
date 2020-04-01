@@ -1,58 +1,114 @@
 ---
-title: Azure-tevékenységnapló gyűjtése a Log Analytics-munkaterületen
+title: Azure-tevékenységnapló gyűjtése és elemzése az Azure Monitorban
 description: Gyűjtse össze az Azure-tevékenységnaplót az Azure Figyelőnaplókban, és használja a figyelési megoldást az Azure-tevékenységnapló elemzéséhez és kereséséhez az összes Azure-előfizetésében.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/30/2019
-ms.openlocfilehash: 407bff10e2480c5210d3057bcccd6c60e591c165
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/24/2020
+ms.openlocfilehash: 4265f6050b237cb40afeddfc228ade9be06be039
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80055309"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396776"
 ---
-# <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure-tevékenységnaplók gyűjtése és elemzése az Azure-figyelő Log Analytics-munkaterületén
+# <a name="collect-and-analyze-azure-activity-log-in-azure-monitor"></a>Azure-tevékenységnapló gyűjtése és elemzése az Azure Monitorban
+Az [Azure-tevékenységnapló](platform-logs-overview.md) egy [platformnapló,](platform-logs-overview.md) amely betekintést nyújt az Azure-ban bekövetkezett előfizetési szintű eseményekbe. Bár megtekintheti a tevékenységnaplót az Azure Portalon, konfigurálnia kell, hogy küldjön egy Log Analytics-munkaterületre az Azure Monitor további funkcióinak engedélyezéséhez. Ez a cikk ismerteti, hogyan hajthatja végre ezt a konfigurációt, és hogyan küldheti el a tevékenységnaplót az Azure storage és eseményközpontok.
 
-> [!WARNING]
-> Most már összegyűjtheti a tevékenységnaplót egy Log Analytics-munkaterületen egy olyan diagnosztikai beállítás használatával, amely hasonló az erőforrásnaplók gyűjtéséhez. Lásd: [Azure-tevékenységnaplók gyűjtése és elemzése a Log Analytics-munkaterületen az Azure Monitorban.](diagnostic-settings-legacy.md)
+A tevékenységnapló gyűjtése a Log Analytics-munkaterületen a következő előnyökkel jár:
 
-Az [Azure-tevékenységnapló](platform-logs-overview.md) betekintést nyújt az Azure-előfizetésben bekövetkezett előfizetési szintű eseményekbe. Ez a cikk ismerteti, hogyan gyűjtheti a tevékenységnaplót egy Log Analytics-munkaterületre, és hogyan használhatja a Tevékenységnapló-elemzés [figyelési megoldását,](../insights/solutions.md)amely naplólekérdezéseket és nézeteket biztosít az adatok elemzéséhez. 
-
-A tevékenységnapló és a Log Analytics-munkaterület összekapcsolása a következő előnyökkel jár:
-
-- Konszolidálja a tevékenységnaplót több Azure-előfizetésből egyetlen helyre elemzésre.
+- A Log Analytics-munkaterületen tárolt tevékenységnapló-adatok értése nem számít fel adatokat.
+- A tevékenységnapló-adatok és az Azure Monitor által gyűjtött egyéb figyelési adatok korrelációja.
+- A naplólekérdezések segítségével összetett elemzéseket végezhet, és mélyreható elemzéseket nyerhet a tevékenységnapló-bejegyzésekről.
+- Naplóriasztások használata a tevékenységbejegyzések, amelyek összetettebb riasztási logikát lehetővé teszik.
 - 90 napnál hosszabb ideig tárolja a tevékenységnapló-bejegyzéseket.
-- A tevékenységnapló adatainak összefüggése az Azure Monitor által gyűjtött egyéb figyelési adatokkal.
-- A [naplólekérdezések](../log-query/log-query-overview.md) segítségével összetett elemzéseket végezhet, és mélyreható elemzéseket nyerhet a tevékenységnapló-bejegyzésekről.
+- Konszolidálja a több Azure-előfizetésből és bérlőből származó naplóbejegyzéseket egy helyre elemzésre.
 
-## <a name="connect-to-log-analytics-workspace"></a>Csatlakozás a Log Analytics-munkaterülethez
-Egyetlen munkaterület is csatlakoztatható a tevékenységnapló több előfizetések ugyanabban az Azure-bérlőben. Több bérlő közötti gyűjtésért olvassa el [az Azure-tevékenységnaplók gyűjtése egy Log Analytics-munkaterületre a különböző Azure Active Directory-bérlők előfizetései között.](activity-log-collect-tenants.md)
 
-> [!IMPORTANT]
-> A következő eljárással hibaüzenet jelenhet meg, ha a Microsoft.OperationalInsights és a Microsoft.OperationsManagement erőforrás-szolgáltatók nincsenek regisztrálva az előfizetéshez. Tekintse meg [az Azure-erőforrás-szolgáltatók és -típusok](../../azure-resource-manager/management/resource-providers-and-types.md) ezek a szolgáltatók regisztrálásához.
 
-A tevékenységnaplót az alábbi eljárással kapcsolhatja össze a Log Analytics-munkaterülettel:
+## <a name="collecting-activity-log"></a>Tevékenységnapló gyűjtése
+A tevékenységnapló automatikusan frissül [az Azure Portalon való megtekintéshez.](activity-log-view.md) Ha egy Log Analytics-munkaterületen szeretné összegyűjteni, vagy el szeretné küldeni neki az Azure storage- vagy eseményközpontokat, hozzon létre egy [diagnosztikai beállítást.](diagnostic-settings.md) Ez ugyanaz a módszer, amelyet az erőforrásnaplók használnak, így az összes [platformnaplóban](platform-logs-overview.md)konzisztens.  
+
+Diagnosztikai beállítás létrehozásához a tevékenységnapló, válassza **diagnosztikai beállítások** az Azure Monitor **tevékenységnapló** menüjében. A beállítás létrehozásáról a diagnosztikai beállítás létrehozása című témakörben a [platformnaplók és metrikák azure-beli gyűjtéséhez](diagnostic-settings.md) című témakörben talál. A szűrhető kategóriák leírását [lásd a Kategóriák a tevékenységnaplóban.](activity-log-view.md#categories-in-the-activity-log) Ha vannak örökölt beállításai, a diagnosztikai beállítások létrehozása előtt győződjön meg arról, hogy letiltja őket. Ha mindkettő engedélyezve van, az ismétlődő adatokat eredményezhet.
+
+![Diagnosztikai beállítások](media/diagnostic-settings-subscription/diagnostic-settings.png)
+
+
+> [!NOTE]
+> Jelenleg csak az Azure Portal és a Resource Manager-sablon használatával hozhat létre előfizetési szint diagnosztikai beállítást. 
+
+
+## <a name="legacy-settings"></a>Örökölt beállítások 
+Bár a diagnosztikai beállítások az előnyben részesített módszer a tevékenységnapló különböző célokra való elküldéséhez, az örökölt módszerek továbbra is működnek, ha nem választja a diagnosztikai beállítással való lecserélést. A diagnosztikai beállítások a következő előnyökkel járnak az örökölt módszerekkel szemben, ezért ajánlott frissíteni a konfigurációt:
+
+- Konzisztens módszer az összes platformnapló összegyűjtésére.
+- Tevékenységnapló gyűjtése több előfizetésés bérlő között.
+- Szűrőgyűjtés, hogy csak bizonyos kategóriáknaplóit gyűjtse össze.
+- Gyűjtse össze az összes tevékenységnapló-kategóriát. Egyes kategóriák nem gyűjtik örökölt módszerrel.
+- Gyorsabb késés a naplóbetöltéshez. Az előző módszer körülbelül 15 perces késés, míg a diagnosztikai beállítások hozzáteszi, csak körülbelül 1 perc.
+
+
+
+### <a name="log-profiles"></a>Naplóprofilok
+A naplóprofilok a tevékenységnapló Azure-tárolókba vagy eseményközpontokba történő küldésének örökölt módjai. Az alábbi eljárással folytathatja a munkát egy naplóprofillal, vagy letilthatja azt a diagnosztikai beállításba való áttelepítés előkészítéseként.
+
+1. Az **Azure-portál Azure Monitor** menüjében válassza a **Tevékenységnapló**lehetőséget.
+3. Kattintson a **Diagnosztikai beállítások** elemre.
+
+   ![Diagnosztikai beállítások](media/diagnostic-settings-subscription/diagnostic-settings.png)
+
+4. Kattintson a lila banner az örökölt élmény.
+
+    ![Örökölt élmény](media/diagnostic-settings-subscription/legacy-experience.png)
+
+### <a name="log-analytics-workspace"></a>Log Analytics-munkaterület
+A tevékenységnapló naplóba való gyűjtésének örökölt módja a napló a munkaterület konfigurációjában való csatlakoztatása. 
 
 1. Az Azure Portal **Log Analytics-munkaterületeinek** menüjében válassza ki a munkaterületet a tevékenységnapló gyűjtéséhez.
 1. A munkaterület menüjének **Munkaterület-adatforrások** szakaszában válassza az **Azure-tevékenységnapló t.**
 1. Kattintson a csatlakoztatni kívánt előfizetésre.
 
-    ![Munkaterületek](media/activity-log-export/workspaces.png)
+    ![Munkaterületek](media/activity-log-collect/workspaces.png)
 
 1. Kattintson a **Csatlakozás** gombra, ha az előfizetésben lévő tevékenységnaplót a kijelölt munkaterülethez szeretné csatlakoztatni. Ha az előfizetés már csatlakoztatva van egy másik munkaterülethez, először a **Kapcsolat bontásához** kattintson a Kapcsolat bontása gombra.
 
-    ![Munkaterületek összekapcsolása](media/activity-log-export/connect-workspace.png)
+    ![Munkaterületek összekapcsolása](media/activity-log-collect/connect-workspace.png)
 
-## <a name="analyze-in-log-analytics-workspace"></a>Elemzés a Log Analytics-munkaterületen
-Amikor egy tevékenységnaplót egy Log Analytics-munkaterülethez csatlakoztat, a program bejegyzéseket ír a munkaterületre egy **AzureActivity** nevű táblába, amelyet [naplólekérdezéssel](../log-query/log-query-overview.md)lehet beolvasni. A tábla szerkezete a [naplóbejegyzés kategóriájától](activity-log-view.md#categories-in-the-activity-log)függően változik . Az [azure-tevékenységnapló eseménysémája](activity-log-schema.md) az egyes kategóriák leírását tartalmazza.
+
+A beállítás letiltásához hajtsa végre ugyanezt az eljárást, és kattintson a **Kapcsolat bontása** gombra az előfizetés munkaterületről való eltávolításához.
+
+
+## <a name="analyze-activity-log-in-log-analytics-workspace"></a>Tevékenységnapló elemzése a Log Analytics-munkaterületen
+Amikor egy tevékenységnaplót egy Log Analytics-munkaterülethez csatlakoztat, a program bejegyzéseket ír a munkaterületre egy *AzureActivity* nevű táblába, amelyet [naplólekérdezéssel](../log-query/log-query-overview.md)lehet beolvasni. A tábla szerkezete [a naplóbejegyzés kategóriájától](activity-log-view.md#categories-in-the-activity-log)függően változik . Az [azure-tevékenységnapló eseménysémája](activity-log-schema.md) az egyes kategóriák leírását tartalmazza.
+
+
+### <a name="data-structure-changes"></a>Adatszerkezet-változások
+Diagnosztikai beállítások ugyanazokat az adatokat gyűjti, mint a korábbi módszer a tevékenységnapló gyűjtésére használt néhány változás az *AzureActivity-tábla* szerkezetét.
+
+Az alábbi táblázat oszlopai elavultak a frissített sémában. Továbbra is léteznek az *AzureActivity,* de nem lesz adat. Ezeknek az oszlopoknak a cseréje nem új, de ugyanazokat az adatokat tartalmazzák, mint az elavult oszlop. Más formátumúak, ezért előfordulhat, hogy módosítania kell az azokat használó naplólekérdezéseket. 
+
+| Elavult oszlop | Csere oszlop |
+|:---|:---|
+| ActivityStatus (Tevékenységállapota)    | ActivityStatusValue    |
+| ActivitySubstatus (Tevékenységsubstatus) | ActivitySubstatusValue érték |
+| OperationName     | OperationNameValue érték     |
+| ResourceProvider  | ResourceProviderValue érték  |
+
+> [!IMPORTANT]
+> Bizonyos esetekben az oszlopokban lévő értékek nagybetűsek lehetnek. Ha olyan lekérdezéssel rendelkezik, amely ezeket az oszlopokat tartalmazza, az [=~ operátorral](https://docs.microsoft.com/azure/kusto/query/datatypes-string-operators) végezze el a kis- és nagybetűk megkülönböztetését.
+
+A frissített sémában a következő oszlop került be az *AzureActivity szolgáltatásba:*
+
+- Authorization_d
+- Claims_d
+- Properties_d
+
 
 ## <a name="activity-logs-analytics-monitoring-solution"></a>Tevékenységnaplók elemzésének figyelési megoldása
-Az Azure Log Analytics figyelési megoldás több naplólekérdezést és nézetet tartalmaz a Naplóelemzési munkaterületen lévő tevékenységnapló-rekordok elemzéséhez.
+Az Azure Log Analytics figyelési megoldás hamarosan elavult, és helyébe egy munkafüzet segítségével a frissített séma a Log Analytics-munkaterületen. Továbbra is használhatja a megoldást, ha már engedélyezve van, de csak akkor használható, ha a tevékenységnaplót örökölt beállításokkal gyűjti. 
 
-### <a name="install-the-solution"></a>A megoldás telepítése
-A **Tevékenységnapló-elemzési** megoldás telepítéséhez a [Figyelési megoldás telepítése](../insights/solutions.md#install-a-monitoring-solution) című témaköreljárásának használatával. Nincs szükség további konfigurációra.
+
 
 ### <a name="use-the-solution"></a>Használja a megoldást
 A figyelési megoldások az Azure Portal **Monitor** menüjéből érhetők el. Válassza a **Tovább** lehetőséget az **Elemzések** szakaszban az **Áttekintés** lap megoldáscsempékkel való megnyitásához. **Az Azure-tevékenységnaplók** csempe megjeleníti az **AzureActivity-rekordok** számát a munkaterületen.
@@ -64,12 +120,96 @@ Kattintson az **Azure-tevékenységnaplók** csempére az **Azure-tevékenységn
 
 ![Az Azure-tevékenységnaplók irányítópultja](media/collect-activity-logs/activity-log-dash.png)
 
-| Képi megjelenítési rész | Leírás |
-| --- | --- |
-| Az Azure-tevékenységnapló bejegyzései | A kiválasztott dátumtartomány első Azure-tevékenységnapló-bejegyzésrekordjának sávdiagramját jeleníti meg, és megjeleníti a 10 legfontosabb tevékenységhívó listáját. Kattintson a sávdiagramra a `AzureActivity`naplókeresés futtatásához. Kattintson egy hívó elemre az adott elem összes tevékenységnapló-bejegyzését visszaadó naplókeresés futtatásához. |
-| Tevékenységnaplók állapot szerint | A kiválasztott dátumtartomány perecdiagramját és az első tíz állapotrekord listáját jeleníti meg. Kattintson a diagramra a `AzureActivity | summarize AggregatedValue = count() by ActivityStatus`naplólekérdezés futtatásához. Kattintson egy állapotelemre az állapotrekord összes tevékenységnapló-bejegyzését visszaadó naplókeresés futtatásához. |
-| Tevékenységnaplók erőforrás szerint | A tevékenységnaplókkal rendelkező erőforrások teljes számát jeleníti meg, és felsorolja az első tíz erőforrást az egyes erőforrások rekordszámával. Kattintson a teljes területre a `AzureActivity | summarize AggregatedValue = count() by Resource`naplókeresés futtatásához, amely a megoldás számára elérhető összes Azure-erőforrást megjeleníti. Kattintson egy erőforrásra az erőforrás összes tevékenységrekordját visszaadó naplólekérdezés futtatásához. |
-| Tevékenységnaplók erőforrásszolgáltató szerint | A tevékenységnaplókat előállító és az első tíz helyet tartalmazó erőforrás-szolgáltatók teljes számát jeleníti meg. Kattintson a teljes területre egy `AzureActivity | summarize AggregatedValue = count() by ResourceProvider`naplólekérdezés futtatásához, amely az összes Azure-erőforrás-szolgáltatót megjeleníti. Kattintson egy erőforrás-szolgáltatóra a szolgáltató összes tevékenységrekordját visszaadó naplólekérdezés futtatásához. |
+
+### <a name="enable-the-solution-for-new-subscriptions"></a>A megoldás engedélyezése új előfizetésekhez
+Hamarosan már nem tudja hozzáadni a Activity Logs Analytics megoldást az előfizetéséhez az Azure Portalon keresztül. Hozzáadhatja az alábbi eljárással egy erőforrás-kezelő sablonnal. 
+
+1. Másolja a következő jsont egy *ActivityLogTemplate*.json nevű fájlba.
+
+    ```json
+    {
+    "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspaceName": {
+            "type": "String",
+            "defaultValue": "my-workspace",
+            "metadata": {
+              "description": "Specifies the name of the workspace."
+            }
+        },
+        "location": {
+            "type": "String",
+            "allowedValues": [
+              "east us",
+              "west us",
+              "australia central",
+              "west europe"
+            ],
+            "defaultValue": "australia central",
+            "metadata": {
+              "description": "Specifies the location in which to create the workspace."
+            }
+        }
+      },
+        "resources": [
+        {
+            "type": "Microsoft.OperationalInsights/workspaces",
+            "name": "[parameters('workspaceName')]",
+            "apiVersion": "2015-11-01-preview",
+            "location": "[parameters('location')]",
+            "properties": {
+                "features": {
+                    "searchVersion": 2
+                }
+            }
+        },
+        {
+            "type": "Microsoft.OperationsManagement/solutions",
+            "apiVersion": "2015-11-01-preview",
+            "name": "[concat('AzureActivity(', parameters('workspaceName'),')')]",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[resourceId('microsoft.operationalinsights/workspaces', parameters('workspaceName'))]"
+            ],
+            "plan": {
+                "name": "[concat('AzureActivity(', parameters('workspaceName'),')')]",
+                "promotionCode": "",
+                "product": "OMSGallery/AzureActivity",
+                "publisher": "Microsoft"
+            },
+            "properties": {
+                "workspaceResourceId": "[resourceId('microsoft.operationalinsights/workspaces', parameters('workspaceName'))]",
+                "containedResources": [
+                    "[concat(resourceId('microsoft.operationalinsights/workspaces', parameters('workspaceName')), '/views/AzureActivity(',parameters('workspaceName'))]"
+                ]
+            }
+        },
+        {
+          "type": "Microsoft.OperationalInsights/workspaces/datasources",
+          "kind": "AzureActivityLog",
+          "name": "[concat(parameters('workspaceName'), '/', subscription().subscriptionId)]",
+          "apiVersion": "2015-11-01-preview",
+          "location": "[parameters('location')]",
+          "dependsOn": [
+              "[parameters('WorkspaceName')]"
+          ],
+          "properties": {
+              "linkedResourceId": "[concat(subscription().Id, '/providers/microsoft.insights/eventTypes/management')]"
+          }
+        }
+      ]
+    }    
+    ```
+
+2. Telepítse a sablont a következő PowerShell-parancsokkal:
+
+    ```PowerShell
+    Connect-AzAccount
+    Select-AzSubscription <SubscriptionName>
+    New-AzResourceGroupDeployment -Name activitysolution -ResourceGroupName <ResourceGroup> -TemplateFile <Path to template file>
+    ```
+
 
 ## <a name="next-steps"></a>További lépések
 

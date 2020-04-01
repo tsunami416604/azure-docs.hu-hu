@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
-ms.openlocfilehash: ea0a9de5dde02b45ae34e3e98e24b31fd01fa713
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f782985d975dd137aa2da48d12757685b47e62b1
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80235828"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421264"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Adatok másolása az Azure Data Lake Storage Gen1-ről a Gen2 szolgáltatásba az Azure Data Factory segítségével
 
@@ -146,7 +146,7 @@ Az Azure Data Lake Storage Gen1-ről az Azure Data Lake Storage Gen2-re való fr
 
 A koncepció igazolásával ellenőrizheti a végpontok között megoldást, és tesztelheti a másolási átviteli szintet a környezetben. A koncepció legfontosabb lépései: 
 
-1. Hozzon létre egy Data Factory-folyamatot egyetlen másolási tevékenységgel, és több TB-nyi adatot másoljon a Data Lake Storage Gen1-ről a Data Lake Storage Gen2-re, hogy másolatot kapjon a teljesítmény alapkonfigurációjából. Kezdje [az adatintegrációs egységekkel (DIUs)](copy-activity-performance.md#data-integration-units) 128-ként. 
+1. Hozzon létre egy Data Factory-folyamatot egyetlen másolási tevékenységgel, és több TB-nyi adatot másoljon a Data Lake Storage Gen1-ről a Data Lake Storage Gen2-re, hogy másolatot kapjon a teljesítmény alapkonfigurációjából. Kezdje [az adatintegrációs egységekkel (DIUs)](copy-activity-performance-features.md#data-integration-units) 128-ként. 
 2. Az 1. 
 3. (Nem kötelező) Hozzon létre egy vezérlőtáblát, és határozza meg az áttelepítendő fájlok particionálásához szükséges fájlszűrőt. A fájlok particionálásának módja a következő: 
 

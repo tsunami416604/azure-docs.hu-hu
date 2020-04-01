@@ -1,5 +1,5 @@
 ---
-title: Az Azure forgalomelemzési séma frissítése – 2020. Microsoft dokumentumok
+title: Az Azure Traffic Analytics sémafrissítése – 2020. Microsoft dokumentumok
 description: Mintalekérdezések új mezőket a Traffic Analytics séma.
 services: network-watcher
 documentationcenter: na
@@ -13,23 +13,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/06/2020
 ms.author: vinigam
-ms.openlocfilehash: 0e9d37e3a89473e59b94168f8f8c80e7a6621107
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4fe981576e3f6e58b0886d9c0d2eb2915d8b7720
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78969058"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396609"
 ---
-# <a name="sample-queries-with-new-fields-in-traffic-analytics-schema-august-2019-schema-update"></a>Mintalekérdezések új mezőkkel a Traffic Analytics sémában (2019. augusztusi sémafrissítés)
+# <a name="sample-queries-with-new-fields-in-the-traffic-analytics-schema-august-2019-schema-update"></a>Mintalekérdezések új mezőkkel a Traffic Analytics sémában (2019. augusztusi sémafrissítés)
 
-A [Traffic Analytics napló sémája](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema) a következő új mezőkkel bővült: **SrcPublicIPs_s** , **DestPublicIPs_s**, **NSGRule_s**. A következő néhány hónapban a következő régebbi mezők lesznek elavultak: **VMIP_s**, **Subscription_g**, **Region_s**, NSGRules_s , Subnet_s **NSGRules_s**, **VM_s** **NIC_s**, **NIC_s**, **PublicIPs_s** **FlowCount_d**.
-Az új mezők információt nyújtanak a forrás- és cél IP-kről, és egyszerűsítik a lekérdezéseket.
+A [Traffic Analytics naplósémája](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema) a következő új mezőket tartalmazza: **SrcPublicIPs_s**, **DestPublicIPs_s**, **NSGRule_s**. Az új mezők információt nyújtanak a forrás- és cél IP-kről, és egyszerűsítik a lekérdezéseket.
 
-Az alábbiakban három példa látható, amelyek bemutatják, hogyan cserélheti le a régi mezőket újakra.
+A következő néhány hónapban a következő régebbi mezők lesznek elavultak: **VMIP_s**, **Subscription_g**, **Region_s**, NSGRules_s , Subnet_s **NSGRules_s**, **VM_s** **NIC_s**, **NIC_s**, **PublicIPs_s** **FlowCount_d**.
 
-## <a name="example-1---vmip_s-subscription_g-region_s-subnet_s-vm_s-nic_s-publicips_s"></a>NIC_s VM_s Subnet_s Region_s Subscription_g VMIP_s 1. PublicIPs_s PublicIPs_s PublicIPs_s
+A következő három példa bemutatja, hogyan cserélheti le a régi mezőket az újakra.
 
-Nem kell következtetni forrás és a cél esetekben az Azure és a külső nyilvános folyamatok FlowDirection_s az AzurePublic és külsőnyilvános folyamatok kifejezetten. NVA (Network Virtual Appliance) esetén a FlowDirection_s mező nem megfelelő.
+## <a name="example-1-vmip_s-subscription_g-region_s-subnet_s-vm_s-nic_s-and-publicips_s-fields"></a>1. példa: VMIP_s, Subscription_g, Region_s, Subnet_s, VM_s NIC_s és PublicIPs_s mezők
+
+Nem kell következtetni forrás és a cél esetekben a **FlowDirection_s** mezőben az AzurePublic és külsőnyilvános folyamatok. Az is nem megfelelő, ha a **FlowDirection_s** mezőt használja egy hálózati virtuális készülékhez.
 
 ```Old Kusto query
 AzureNetworkAnalytics_CL
@@ -71,12 +72,13 @@ SourcePublicIPsAggregated = iif(isnotempty(SrcPublicIPs_s), SrcPublicIPs_s, "N/A
 DestPublicIPsAggregated = iif(isnotempty(DestPublicIPs_s), DestPublicIPs_s, "N/A")
 ```
 
+## <a name="example-2-nsgrules_s-field"></a>2. példa: NSGRules_s mező
 
-## <a name="example-2---nsgrules_s"></a>2. példa – NSGRules_s
+A régi mező a következő formátumot használta:
 
-A korábbi mező formátumú volt: <Index értéke 0)>|<NSG_RULENAME>|<Flow Direction>|<Flow Status>|<FlowCount ProcessedByRule>
+<Index értéke 0)>|<NSG_ szabályneve>|<Flow Direction>|<Flow Status>|<FlowCount ProcessedByRule>
 
-Korábban az NSG és az NSGRules közötti adatok összesítésére használtuk. Most már nem összesítjük. Tehát NSGList_s csak egy NSG-t tartalmaz, és NSGRules_s is csak egy szabályt tartalmaz. Tehát eltávolítottuk a bonyolult formázás itt, és ugyanaz megtalálható más területeken, mint az alábbiakban említett:
+A továbbiakban nem összesítjük az adatokat egy hálózati biztonsági csoport (NSG) között. A frissített sémában **NSGList_s** csak egy NSG-t tartalmaz. Az **NSGRules** is csak egy szabályt tartalmaz. Eltávolítottuk a bonyolult formázást itt és más mezőkben, amint az a példában látható.
 
 ```Old Kusto query
 AzureNetworkAnalytics_CL
@@ -101,16 +103,24 @@ FlowStatus = FlowStatus_s,
 FlowCountProcessedByRule = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d
 ```
 
-## <a name="example-3---flowcount_d"></a>3. példa – FlowCount_d
+## <a name="example-3-flowcount_d-field"></a>3. példa: FlowCount_d mező
 
-Mivel nem klub adatok egész NSG, a FlowCount_d egyszerűen AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d.
-A fenti 4-ből csak 1 lesz nulla, a többi három pedig 0. És ez azt jelzi, az állapotát és számát a hálózati adapter, ahol a folyamat elfogták.
+Mivel nem klub adatok az egész NSG, a **FlowCount_d** egyszerűen:
 
-Ha a folyamat engedélyezve volt, az "Engedélyezett" előtaggal ellátott mezők egyike ki lesz töltve. Máskülönben a rendszer kitölti a "Megtagadva" előtaggal ellátott mezőket.
-Ha a folyamat bejövő volt, a rendszer a\_"d" (InFlows_d) típusú " d" típusú mezők egyikét tölti ki. Máshol " OutFlows_d" lesz felnagyít.
+**AllowedOutFlows_d** + DeniedOutFlows_d**DeniedInFlows_d AllowedOutFlows_d** + **AllowedOutFlows_d** + **AllowedInFlows_d**
 
-Attól függően, hogy a fenti 2 feltételek, tudjuk, hogy melyik egy a 4-ből lesz feltöltve.
+A négy mező közül csak egy lesz nem nulla. A másik három mező nulla lesz. A mezők feltöltésével jelzik az állapotot és a számlálót abban a hálózati adapterben, ahol a folyamatot rögzítették.
 
+Ezeknek a feltételeknek a szemléltetésére:
 
-## <a name="next-steps"></a>Következő lépések
-A gyakran ismételt kérdésekre adott válaszokért olvassa el a [Forgalomelemzés gyakori kérdéseinek megtekintését](traffic-analytics-faq.md) a funkciókkal kapcsolatos részletekmegtekintéséhez lásd: [Forgalomelemzési dokumentáció](traffic-analytics.md)
+- Ha a folyamat engedélyezve volt, az "Engedélyezett" előtagmezők egyike lesz feltöltve.
+- Ha a folyamat megtagadva lett, a rendszer kitölti a "Megtagadva" előtagmezők egyikét.
+- Ha a folyamat bejövő volt, a rendszer kitölti az "InFlows_d" utótagmezők egyikét.
+- Ha a folyamat kimenő volt, a rendszer a "OutFlows_d" utótag mezők egyikét tölti ki.
+
+A körülményektől függően tudjuk, hogy a négy mező közül melyik lesz feltöltve.
+
+## <a name="next-steps"></a>További lépések
+
+- A gyakori kérdésekre adott válaszokért olvassa el [a Traffic Analytics gyakori kérdések et.](traffic-analytics-faq.md)
+- A funkciókkal kapcsolatos részleteket a [Traffic Analytics dokumentációjában](traffic-analytics.md)találja.

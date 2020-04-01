@@ -1,14 +1,14 @@
 ---
 title: Delegálási változások figyelése a kezelő bérlőben
 description: Ismerje meg, hogyan figyelheti a delegálási tevékenységet az ügyfél-bérlőktől a kezelő bérlőig.
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 99aa05cb73326e441c0473855c27dc71212cf415
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82c41c392210e088c85af510b9698e0140f660e5
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79478226"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421908"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Delegálási változások figyelése a kezelő bérlőben
 
@@ -73,7 +73,7 @@ Miután létrehozta az egyszerű szolgáltatásfiókot, és hozzárendelte a fig
 
 Miután létrehozott egy új egyszerű szolgáltatásfiókot a Monitoring Reader hozzáférés a kezelő bérlő gyökérhatóköréhez, használhatja a lekérdezésés és a jelentés a delegálási tevékenység a bérlőben. 
 
-Az alábbi minta az Azure PowerShell segítségével lekérdezi az elmúlt 1 nap tevékenység és jelentések bármely hozzáadott vagy eltávolított delegálások (vagy kísérletek, amelyek nem voltak sikeresek). Lekérdezi a [bérlői tevékenységnapló](https://docs.microsoft.com/rest/api/monitor/TenantActivityLogs/List) adatait, majd a következő értékeket készíti a hozzáadott vagy eltávolított delegálások jelentéséhez:
+[Ez az Azure PowerShell-parancsfájl](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/tools/monitor-delegation-changes) segítségével lekérdezheti az elmúlt 1 nap tevékenység és jelentések bármely hozzáadott vagy eltávolított delegálások (vagy kísérletek, amelyek nem voltak sikeresek). Lekérdezi a [bérlői tevékenységnapló](https://docs.microsoft.com/rest/api/monitor/TenantActivityLogs/List) adatait, majd a következő értékeket készíti a hozzáadott vagy eltávolított delegálások jelentéséhez:
 
 - **DedededResourceId**: A delegált előfizetés vagy erőforráscsoport azonosítója
 - **CustomerTenantId**: Az ügyfél bérlői azonosítója

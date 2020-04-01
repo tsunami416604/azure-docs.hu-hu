@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 22d98656f42f52f2fba0845fac6f1d210d2cf0bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c8d32a6434db0fad18b9fe7c2d6e2117795eb651
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76264678"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476741"
 ---
 # <a name="deliver-content-to-customers"></a>Tartalom kézbesítése az ügyfeleknek
 Amikor streamelési vagy igény szerinti videotartalmat jelenít meg az ügyfeleknek, a cél az, hogy kiváló minőségű videókat biztosítson különböző eszközökre különböző hálózati feltételek mellett.
@@ -40,7 +40,7 @@ Ez a cikk áttekintést nyújt a fontos tartalomkézbesítési fogalmakról.
 Az ismert problémák ellenőrzéséhez olvassa el az Ismert problémák ( [Ismert ) témakört.](media-services-deliver-content-overview.md#known-issues)
 
 ## <a name="dynamic-packaging"></a>Dinamikus csomagolás
-A Media Services által nyújtott dinamikus csomagolással az adaptív sávszélességű MP4- vagy smooth streaming kódolású tartalmakat a Media Services (MPEG-DASH, HLS, Smooth Streaming) által támogatott streamelési formátumokban is eltudja szállítani anélkül, hogy újra be kellene csomagolnia ezeket a streamelési formátumokat. Javasoljuk, hogy dinamikus csomagolással szállítsa a tartalmat.
+A Media Services által biztosított dinamikus csomagolással az adaptív sávszélességű MP4- vagy simított streamelésű kódolt tartalmakat a Media Services (MPEG-DASH, HLS, Smooth Streaming) által támogatott streamelési formátumokban is eltudja szállítani anélkül, hogy újra kellene csomagolnia ezekbe a streamelési formátumokba. Javasoljuk, hogy dinamikus csomagolással szállítsa a tartalmat.
 
 A dinamikus csomagolás előnyeinek kihasználásához a mezzanine (forrás) fájlt adaptív sávszélességű MP4-fájlokba vagy adaptív sávszélességű Smooth Streaming fájlokba kell kódolnia.
 
@@ -82,10 +82,10 @@ Az adaptív sávszélességű technológiák lehetővé teszik a videolejátszó
 Ahhoz, hogy a felhasználók a streamelési URL-eket, először létre kell hoznia egy OnDemandOrigin lokátor. A lokátor létrehozása megadja az adatfolyamként streamelni kívánt tartalmat tartalmazó eszköz alapelérési útját. Ahhoz azonban, hogy ezt a tartalmat streamelhesse, tovább kell módosítania ezt az elérési utat. A streamelési jegyzékfájl teljes URL-címének létrehozásához össze kell fűznie a lokátor elérési útját és a jegyzékfájl (filename.ism) fájlnevét. Ezután fűzze hozzá a **/Manifest parancsot,** és szükség esetén megfelelő formátumot a lokátor elérési úthoz.
 
 > [!NOTE]
-> A tartalmat SSL-kapcsolaton keresztül is streamelheti. Ehhez győződjön meg arról, hogy a streamelési URL-ek HTTPS-lel kezdődnek. Vegye figyelembe, hogy jelenleg az AMS nem támogatja az SSL-t egyéni tartományokkal.  
+> A tartalmat TLS-kapcsolaton keresztül is streamelheti. Ehhez győződjön meg arról, hogy a streamelési URL-ek HTTPS-lel kezdődnek. Vegye figyelembe, hogy jelenleg az AMS nem támogatja a TLS-t egyéni tartományokkal.  
 > 
 
-Csak akkor streamelhet SSL-en keresztül, ha az a streamelési végpont, amelyből a tartalmat kézbesíti, 2014. Ha a streamelési URL-címek a 201 streaming.mediaservices.windows.net4. A "origin.mediaservices.windows.net" (a régi formátum) tartalmazó streamelési URL-ek nem támogatják az SSL-t. Ha az URL-cím a régi formátumban van, és ssl-en keresztül szeretne streamelni, hozzon létre egy új streamelési végpontot. Az új streamelési végponton alapuló URL-címeket használhat a tartalom SSL-en keresztültörténő streameléséhez.
+Csak akkor streamelhet TLS-en keresztül, ha az a streamelési végpont, amelyből a tartalmat kézbesíti, 2014. Ha a streamelési URL-címek a 201 streaming.mediaservices.windows.net4. A "origin.mediaservices.windows.net" (a régi formátum) tartalmazó streamelési URL-ek nem támogatják a TLS-t. Ha az URL-cím a régi formátumban van, és tls-en keresztül szeretne streamelni, hozzon létre egy új streamelési végpontot. Az új streamelési végponton alapuló URL-címeket használhat a tartalom TLS-en keresztültörténő streameléséhez.
 
 ## <a name="streaming-url-formats"></a><a id="URLs"/>Streamelési URL-formátumok
 
@@ -155,7 +155,7 @@ A streamelési végpont egy streamelési szolgáltatást jelöl, amely közvetle
 
 ## <a name="known-issues"></a>Ismert problémák
 ### <a name="changes-to-smooth-streaming-manifest-version"></a>A Smooth Streaming jegyzékfájl verziójának módosításai
-2016 júliusi szolgáltatáskiadás előtt – amikor a Media Encoder Standard, a Media Encoder Premium Workflow vagy a korábbi Azure Media Encoder által előállított eszközöket dinamikus csomagolással streamelték – a visszaadott Smooth Streaming jegyzékfájl megfelelne a verziónak 2.0. A 2.0-s verzióban a töredék időtartama nem használja az úgynevezett ismétlési ('r') címkéket. Példa:
+2016 júliusi szolgáltatáskiadás előtt – amikor a Media Encoder Standard, a Media Encoder Premium Workflow vagy a korábbi Azure Media Encoder által készített eszközöket dinamikus csomagolással streamelték – a visszaadott Smooth Streaming jegyzékak a 2.0-s verziónak felel meg. A 2.0-s verzióban a töredék időtartama nem használja az úgynevezett ismétlési ('r') címkéket. Példa:
 
 
     <?xml version="1.0" encoding="UTF-8"?>

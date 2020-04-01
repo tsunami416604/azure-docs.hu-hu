@@ -3,14 +3,14 @@ title: Az Azure Update Management naplóinak lekérdezése
 description: Ez a cikk azt ismerteti, hogyan lehet lekérdezni a loganalytics-munkaterület frissítési felügyelet naplóit.
 services: automation
 ms.subservice: update-management
-ms.date: 03/11/2020
+ms.date: 03/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: f31168d47f31d8e740c95cb3d9e449f473cc78dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 863016bbeda9b4aec3bf2b4e12830bd30098150f
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79216851"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437844"
 ---
 # <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>Frissítési rekordok lekérdezése az Azure Figyelőnaplóiban az Update Management szolgáltatáshoz
 
@@ -144,7 +144,7 @@ A rendszer olyan `UpdateSummary` típusú rekordot hoz létre, amely gépenként
 | CriticalUpdatesMissing | A hiányzó kritikus frissítések száma, amelyek érvényesek. | 
 | ManagementGroupName | Az Operations Manager felügyeleti csoport vagy a Log Analytics-munkaterület neve. |
 | NETRuntimeVersion | A Windows rendszerű számítógépen telepített . |
-| OldestMissingSecurityUpdateBucket | Az értékek a következők:<br> *Legutóbbi elemek*<br> *30 nappal ezelőtt*<br> *60 nappal ezelőtt*<br> *Régebbi* | 
+| OldestMissingSecurityUpdateBucket | Az értékek a következők:<br> *Legutóbbi,* ha az érték 30 napnál rövidebb<br> *30 nappal ezelőtt*<br> *60 nappal ezelőtt*<br> *90 nappal ezelőtt*<br> *120 nappal ezelőtt*<br> *150 nappal ezelőtt*<br> *180 nappal ezelőtt*<br> *Akkor a dl,* ha az érték 180 napnál nagyobb | 
 | OldestMissingSecurityUpdateInDays | A legrégibb, nem telepített frissítéshez szükséges napok száma összesen. |
 | OsVersion | Az operációs rendszer verziója. |
 | OtherUpdatesMissing | Hiányzó észlelt frissítések száma. |

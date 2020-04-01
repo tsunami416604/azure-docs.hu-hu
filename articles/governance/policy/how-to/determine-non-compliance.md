@@ -4,10 +4,10 @@ description: Ha egy erőforrás nem megfelelő, számos oka lehet. Ismerje meg, 
 ms.date: 04/26/2019
 ms.topic: how-to
 ms.openlocfilehash: c931831ddf3cc727b9861e75969eac3bf00c9e45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 03/30/2020
 ms.locfileid: "79264634"
 ---
 # <a name="determine-causes-of-non-compliance"></a>A nemmegfelelőség okainak meghatározása
@@ -111,7 +111,7 @@ A _vendégkonfiguráció_ kategóriában az _auditIfNotExists_ házirendek eset�
 
 Előfordulhat, hogy nem rendelkezik hozzáféréssel közvetlenül a virtuális gépbe való bejelentkezéshez, de jelentést kell jelentenie arról, hogy miért _nem megfelelő_a virtuális gép.
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
 Kezdje a fenti szakaszban a szabályzatmegfelelőségi részletek megtekintéséhez szükséges lépések végrehajtásával.
 

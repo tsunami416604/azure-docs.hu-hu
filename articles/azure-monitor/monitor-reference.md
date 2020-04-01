@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: 3cd330e9c4ceba2feeb7a74cafe9f094fd03d690
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ef7e5d869ab2d7e085cbf861bfc32e57b1fad4b
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79249164"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408491"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Mit figyel az Azure Monitor?
 Ez a cikk ismerteti a különböző alkalmazások és szolgáltatások, amelyek az Azure Monitor által figyelt. 
@@ -26,7 +26,7 @@ Az insights személyre szabott figyelési élményt nyújt az egyes alkalmazáso
 | Elemzések | Leírás |
 |:---|:---|
 | [Application Insights](app/app-insights-overview.md) | Bővíthető alkalmazásteljesítmény-kezelés (APM) szolgáltatás az élő webalkalmazás figyeléséhez bármely platformon. |
-| [Azure Monitor tárolókhoz](insights/container-insights-overview.md) | Figyeli az Azure Container-példányok vagy az Azure Kubernetes-szolgáltatás (AKS) üzemeltetett felügyelt Kubernetes-fürtöküzembe helyezett tárolószámítási feladatok teljesítményét. |
+| [Az Azure-figyelő tárolókhoz](insights/container-insights-overview.md) | Figyeli az Azure Container-példányok vagy az Azure Kubernetes-szolgáltatás (AKS) üzemeltetett felügyelt Kubernetes-fürtöküzembe helyezett tárolószámítási feladatok teljesítményét. |
 | [Azure Monitor a Cosmos DB-hez (előzetes verzió)](insights/cosmosdb-insights-overview.md) | Az Azure Cosmos DB összes erőforrásának általános teljesítményét, hibáit, kapacitását és működési állapotát egységes interaktív környezetben jeleníti meg. |
 | [Azure-figyelő hálózatokhoz (előzetes verzió)](insights/network-insights-overview.md) | Átfogó képet nyújt az összes hálózati erőforrás állapotáról és mutatóiról. A speciális keresési funkció segítségével azonosíthatja az erőforrás-függőségeket, lehetővé téve az olyan forgatókönyveket, mint például a webhelyet üzemeltető erőforrások azonosítása, egyszerűen a webhely nevének keresésével. |
 [Azure-figyelő erőforráscsoportokhoz (előzetes verzió)](insights/resource-group-insights.md) |  Osztályzhatja és diagnosztizálhatja az egyes erőforrások által tapasztalt problémákat, miközben az erőforráscsoport egészének állapotát és teljesítményét illetően kontextust kínál. |
@@ -198,7 +198,7 @@ Más megoldások is rendelkezésre állnak a különböző alkalmazások és szo
 |:---|:---|
 | [Az Active Directory állapotának ellenőrzése](insights/ad-assessment.md) | Mérje fel az Active Directory-környezetek kockázatát és állapotát. |
 | [Active Directory replikációs állapota](insights/ad-replication-status.md) | Rendszeresen figyeli az Active Directory-környezetben a replikációs hibákat. |
-| [Tevékenységnapló-elemzés](platform/activity-log-view.md#activity-logs-analytics-monitoring-solution) | Tevékenységnapló-bejegyzések elemzése előre definiált naplólekérdezésekkel és -nézetekkel. |
+| [Tevékenységnapló-elemzés](platform/activity-log-view.md#azure-portal) | Tevékenységnapló-bejegyzések megtekintése. |
 | [DNS-elemzés (előzetes verzió)](insights/dns-analytics.md) | Gyűjti, elemzi és korrelálja a Windows DNS-elemzési és naplózási naplókat és egyéb kapcsolódó adatokat a DNS-kiszolgálókról. |
 | [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | Gyűjtse össze, tekintse meg és elemezze a Cloud Foundry rendszer állapotát és teljesítménymutatóit több telepítéssorán. |
 | [Tárolók](insights/containers.md) | Tekintse meg és kezelje a Docker- és Windows-tárolóállomásokat. |
@@ -220,7 +220,7 @@ Az Azure Monitor az alábbi táblázatban felsorolt módszerekkel adatokat gyűj
 | Erőforrás | Módszer |
 |:---|:---|
 | Alkalmazások | Az Application Insights használatával az Azure-on kívüli webalkalmazások figyelése. Lásd: [Mi az Application Insights?](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). |
-| Virtuális gépek | A Log Analytics-ügynök segítségével adatokat gyűjthet a más felhőalapú környezetekben vagy a helyszínen lévő virtuális gépek vendég operációs rendszeréből. Lásd: [Naplóadatok gyűjtése a Log Analytics-ügynökkel.](platform/log-analytics-agent.md) |
+| Virtual machines (Virtuális gépek) | A Log Analytics-ügynök segítségével adatokat gyűjthet a más felhőalapú környezetekben vagy a helyszínen lévő virtuális gépek vendég operációs rendszeréből. Lásd: [Naplóadatok gyűjtése a Log Analytics-ügynökkel.](platform/log-analytics-agent.md) |
 | REST API-ügyfél | Külön API-k állnak rendelkezésre az Azure Monitor naplók és metrikák bármely REST API-ügyfél adatok írásához. Lásd: [Naplóadatok küldése az Azure Monitornak a HTTP Data Collector API-val](platform/data-collector-api.md) a naplókhoz és [egyéni metrikák küldése egy Azure-erőforráshoz az Azure Monitor metrikatárolóba egy REST API](platform/metrics-store-custom-rest-api.md) metrikákhoz használatával. |
 
 

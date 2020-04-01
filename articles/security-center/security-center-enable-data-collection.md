@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 5236fd89ed99ca14bb7fc24e40ef79e12e5177d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61d0a57c541837ab3aebf65e47d757f7ecbe7e40
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79245498"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435993"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Adatgyűjtés az Azure Security Centerben
 A Security Center adatokat gyűjt az Azure virtuális gépekről (VM-ek), a virtuálisgép-méretezési csoportokból, az IaaS-tárolókból és a nem Azure-os (beleértve a helyszíni számítógépeket is) a biztonsági rések és fenyegetések figyeléséhez. Az adatok gyűjtése a Log Analytics-ügynök használatával történik, amely beolvassa a különböző biztonsággal kapcsolatos konfigurációkat és eseménynaplókat a gépről, és átmásolja az adatokat a munkaterületre elemzésre. Ilyen adatok például a következők: az operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows eseménynaplók), futó folyamatok, számítógépnév, IP-címek és bejelentkezett felhasználó. A Log Analytics Ügynök is másolja összeomlási memóriakép fájlokat a munkaterületre.
@@ -306,7 +306,7 @@ Manuálisan telepítheti a Log Analytics-ügynököt, így a Security Center biz
 
 - A nem figyelt virtuális gépek és számítógépek problémáinak azonosítása:
 
-    A virtuális gépet vagy számítógépet a Security Center nem figyeli, ha a számítógépen nem fut a Microsoft Monitoring Agent bővítmény. Előfordulhat, hogy egy számítógépen már telepítve van egy helyi ügynök, például az OMS közvetlen ügynök e vagy a System Center Operations Manager ügynök. Az ezekkel az ügynökökkel rendelkező gépek nem figyeltként vannak azonosítva, mert ezek az ügynökök nem teljes mértékben támogatottak a Security Centerben. A Security Center összes funkciójának legteljesebb kihasználása érdekében szükség van a Microsoft Monitoring Agent bővítményre.
+    A virtuális gépet vagy számítógépet a Security Center nem figyeli, ha a számítógép nem futtatja a Log Analytics ügynök bővítményt. Előfordulhat, hogy egy számítógépen már telepítve van egy helyi ügynök, például az OMS közvetlen ügynök e vagy a System Center Operations Manager ügynök. Az ezekkel az ügynökökkel rendelkező gépek nem figyeltként vannak azonosítva, mert ezek az ügynökök nem teljes mértékben támogatottak a Security Centerben. A Security Center összes funkciójának teljes kihasználása érdekében a Log Analytics-ügynök bővítmény szükséges.
 
     A Security Center automatikus kiépítésre nem képes szolgáltatásának sikeres figyelése miatt további információt az [Ügynök állapotproblémáinak figyelése](security-center-troubleshooting-guide.md#mon-agent)című témakörben talál.
 

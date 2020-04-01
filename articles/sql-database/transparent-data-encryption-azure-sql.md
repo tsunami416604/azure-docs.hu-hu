@@ -1,6 +1,6 @@
 ---
 title: Transzparens adattitkosítás
-description: Az Azure Synapse-ban az SQL Database és az SQL Analytics transzparens adattitkosításának áttekintése. A dokumentum ismerteti annak előnyeit és a konfigurációs lehetőségeket, amely magában foglalja a szolgáltatás által felügyelt transzparens adattitkosítást és a Saját kulcs hozást.
+description: Az Azure Synapse Analytics átlátható adattitkosításának áttekintése az SQL Database és a Synapse SQL számára. A dokumentum ismerteti annak előnyeit és a konfigurációs lehetőségeket, amely magában foglalja a szolgáltatás által felügyelt transzparens adattitkosítást és a Saját kulcs hozást.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,18 +12,18 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/06/2020
-ms.openlocfilehash: 5bbb537ef6545852423bf5315b7636671c598fdc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 982a59f1eb8717e2fe2d86728cdae731c919aaf0
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255638"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476965"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-azure-synapse"></a>Transzparens adattitkosítás az SQL Database és az Azure Synapse számára
 
-Az átlátszó adattitkosítás (TDE) segít megvédeni az Azure SQL Database-t, az Azure SQL felügyelt példányt és az Azure Synapse-t a rosszindulatú offline tevékenység fenyegetésével szemben az inaktív adatok titkosításával. Valós időben titkosítja és fejti vissza az adatbázist, a hozzá tartozó biztonsági másolatokat és a tranzakciónapló-fájlokat anélkül, hogy ehhez módosítani kellene az alkalmazást. Alapértelmezés szerint a TDE az összes újonnan üzembe helyezett Azure SQL-adatbázis esetében engedélyezve van. A TDE nem használható az SQL Database logikai **főadatbázisának** titkosítására.  A **főadatbázis** olyan objektumokat tartalmaz, amelyek a felhasználói adatbázisokTDE műveleteinek végrehajtásához szükségesek.
+Az átlátszó adattitkosítás (TDE) segít megvédeni az Azure SQL Database- és az Azure SQL felügyelt példánya és a Synapse SQL az Azure Synapse Analytics-ben a rosszindulatú offline tevékenység fenyegetésével szemben az inaktív adatok titkosításával. Valós időben titkosítja és fejti vissza az adatbázist, a hozzá tartozó biztonsági másolatokat és a tranzakciónapló-fájlokat anélkül, hogy ehhez módosítani kellene az alkalmazást. Alapértelmezés szerint a TDE az összes újonnan üzembe helyezett Azure SQL-adatbázis esetében engedélyezve van. A TDE nem használható az SQL Database logikai **főadatbázisának** titkosítására.  A **főadatbázis** olyan objektumokat tartalmaz, amelyek a felhasználói adatbázisokTDE műveleteinek végrehajtásához szükségesek.
 
-A TDE-t manuálisan kell engedélyezni az Azure SQL Database, az Azure SQL felügyelt példány vagy az Azure Azure Synapse régebbi adatbázisaihoz.
+A TDE-t manuálisan kell engedélyezni az Azure SQL Database, az Azure SQL felügyelt példány vagy az Azure Synapse régebbi adatbázisaihoz.
 A visszaállítással létrehozott felügyelt példányok a forrásadatbázis titkosítási állapotát öröklik.
 
 Az átlátszó adattitkosítás titkosítja a teljes adatbázis tárolását egy szimmetrikus kulcs, az adatbázis titkosítási kulcsa használatával. Ezt az adatbázis-titkosítási kulcsot az átlátszó adattitkosítás-védő védi. A protector vagy egy szolgáltatás által felügyelt tanúsítvány (szolgáltatás által felügyelt transzparens adattitkosítás) vagy egy aszimmetrikus kulcs az Azure Key Vaultban (hozd a saját kulcs). Az átlátszó adattitkosítás-védőt az Azure SQL Database és az Azure Synapse kiszolgálószintjén, valamint az Azure SQL felügyelt példány példányszintjén állíthatja be. A *kiszolgáló* kifejezés a dokumentum ban található kiszolgálóra és példányra is vonatkozik, kivéve, ha másként van megállapítva.
@@ -85,7 +85,7 @@ Az átlátszó adattitkosítási főkulcsot, más néven az átlátszó adattitk
 
 ![Transzparens adattitkosítás saját kulcstámogatással](./media/transparent-data-encryption-azure-sql/tde-byok-support.png)
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Transzparens adattitkosítás kezelése a PowerShell használatával.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 972b5415b85e82a5afdaf7d85d3a3bcb9e144d4d
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 5d947cf41e13abdea9a2fd29f8a740d0c101dc6f
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384942"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397915"
 ---
 # <a name="workflow-automation"></a>Munkafolyamat-automatizálás
 
@@ -96,10 +96,11 @@ A logikai alkalmazáspéldánynak átadott biztonsági riasztások vagy javaslat
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megismerkedett a Logic Apps létrehozásával, manuális futtatásával a Security Centerben, és a végrehajtás automatizálásával. 
+Ebben a cikkben megismerte a Logic Apps létrehozása, azok végrehajtásának automatizálása a Security Centerben, és manuálisan futtatja őket. 
 
-Egyéb kapcsolódó anyagokról lásd a következő cikkeket: 
+Egyéb kapcsolódó anyagokról: 
 
+- [A Microsoft Learn modul arról, hogyan lehet a munkafolyamat-automatizálással automatizálni a biztonsági válaszokat](https://docs.microsoft.com/learn/modules/resolve-threats-with-azure-security-center/)
 - [Biztonsági javaslatok az Azure Security Centerben](security-center-recommendations.md)
 - [Biztonsági riasztások az Azure Security Centerben](security-center-alerts-overview.md)
 - [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 01/01/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 7ca6882aea7225dcb97c9f913267b2543de07fef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a73c1998203a8696b67a5e7eb3af23898239265
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80133127"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477619"
 ---
 # <a name="use-an-app-service-environment"></a>App Service-környezet használata
 
@@ -88,7 +88,7 @@ Egy ASE-ben egy App Service-csomag legfeljebb 100 példányok skálázható. Egy
 
 ## <a name="ip-addresses"></a>IP-címek
 
-Az App Service dedikált IP-címet rendelhet egy alkalmazáshoz. Ez a funkció az IP-alapú SSL konfigurálása után érhető el, ahogy azt a [Meglévő egyéni SSL-tanúsítvány kötése az Azure App Service szolgáltatáshoz][ConfigureSSL]című dokumentum ismerteti. Az ILB ASE-ben nem adhat hozzá további IP-címeket az IP-alapú SSL-hez.
+Az App Service dedikált IP-címet rendelhet egy alkalmazáshoz. Ez a funkció az IP-alapú SSL konfigurálása után érhető el, ahogy azt egy [meglévő egyéni TLS/SSL-tanúsítvány kötése az Azure App Service szolgáltatáshoz][ConfigureSSL]című dokumentum ismerteti. Az ILB ASE-ben nem adhat hozzá további IP-címeket az IP-alapú SSL-hez.
 
 Egy külső ASE, az IP-alapú SSL-t az alkalmazás ugyanúgy konfigurálhatja, mint a több-bérlős App Service. Mindig van egy tartalék cím az ASE-ben, legfeljebb 30 IP-cím. Minden alkalommal, amikor használja az egyiket, egy másik at ad hozzá, hogy egy cím mindig könnyen elérhető legyen. Egy másik IP-cím lefoglalásához időkésleltetés szükséges. Ez a késleltetés megakadályozza az IP-címek gyors egymásutánban történő hozzáadását.
 

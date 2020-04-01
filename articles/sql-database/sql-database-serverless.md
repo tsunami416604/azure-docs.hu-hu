@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 3/11/2020
-ms.openlocfilehash: 5c36dbfbe63314ef97edfa3dfbaae34667db002d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a72d3dc7f7b3fddf66df8111b1e92116a62883a
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79268703"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474028"
 ---
 # <a name="azure-sql-database-serverless"></a>Az Azure SQL Database kiszolgáló nélküli
 
@@ -151,7 +151,7 @@ A kiszolgáló nélküli adatbázis automatikus folytatásának és automatikus 
 
 ### <a name="customer-managed-transparent-data-encryption-byok"></a>Ügyfél által kezelt transzparens adattitkosítás (BYOK)
 
-Ha [az ügyfél által felügyelt transzparens adattitkosítás](transparent-data-encryption-byok-azure-sql.md) (BYOK) használatával, és a kiszolgáló nélküli adatbázis automatikusan szünetel a kulcs törlésekor vagy visszavonásokor, akkor az adatbázis automatikusan szüneteltetve marad.  Ebben az esetben, ha a folytatása a következő kísérlet, az adatbázis szünetel, amíg az állapota átmenetek elérhetetlenné körülbelül 10 perc vagy annál kevesebb után.  Amint az adatbázis elérhetetlenné válik, a helyreállítási folyamat ugyanaz, mint a kiépített számítási adatbázisok.  Ha a kiszolgáló nélküli adatbázis online állapotban van a kulcs törlése vagy visszavonása esetén, akkor az adatbázis is elérhetetlenné válik körülbelül 10 perc vagy annál kevesebb után, ugyanúgy, mint a kiépített számítási adatbázisok.
+Ha [az ügyfél által felügyelt transzparens adattitkosítás](transparent-data-encryption-byok-azure-sql.md) (BYOK) használatával, és a kiszolgáló nélküli adatbázis automatikusan szünetel a kulcs törlésekor vagy visszavonásokor, akkor az adatbázis automatikusan szüneteltetve marad.  Ebben az esetben, ha az adatbázis következő folytatása, az adatbázis online állapotú marad, amíg az állapota átmenetek elérhetetlenné körülbelül 10 perc vagy annál kevesebb után.  Amint az adatbázis elérhetetlenné válik, a helyreállítási folyamat ugyanaz, mint a kiépített számítási adatbázisok.  Ha a kiszolgáló nélküli adatbázis online állapotban van a kulcs törlése vagy visszavonása esetén, akkor az adatbázis is elérhetetlenné válik körülbelül 10 perc vagy annál kevesebb után, ugyanúgy, mint a kiépített számítási adatbázisok.
 
 ## <a name="onboarding-into-serverless-compute-tier"></a>Bevezetés kiszolgáló nélküli számítási rétegbe
 

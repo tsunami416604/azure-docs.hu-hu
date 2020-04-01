@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/28/2019
-ms.openlocfilehash: c32731ce2de2b0f886a1e21ee8ccad3996e395eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2019
+ms.openlocfilehash: 29d5213b8eecd94ed8c8ce565972c9f98872a362
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79480266"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411428"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Naplólekérdezések optimalizálása az Azure Monitorban
 Az Azure Monitor Logs [az Azure Data Explorer (ADX)](/azure/data-explorer/) segítségével tárolja a naplóadatokat, és lekérdezéseket futtat az adatok elemzéséhez. Létrehozza, kezeli és karbantartja az ADX-fürtöket, és optimalizálja őket a naplóelemzési munkaterheléshez. Amikor egy lekérdezést futtat, az optimalizálva lesz, és a munkaterületi adatokat tároló megfelelő ADX-fürthöz irányítja. Az Azure Monitor Naplók és az Azure Data Explorer számos automatikus lekérdezésoptimalizálási mechanizmust használ. Bár az automatikus optimalizálás jelentős lökést ad, bizonyos esetekben jelentősen javíthatja a lekérdezés teljesítményét. Ez a cikk ismerteti a teljesítményszempontjait és számos technikát a javításukhoz.
@@ -57,7 +57,7 @@ A lekérdezés feldolgozási ideje a következő:
 - Adatbeolvasás – a régi adatok visszakeresése több időt fog igénybe vesz, mint a legutóbbi adatok visszakeresése.
 - Adatfeldolgozás – az adatok logikája és értékelése. 
 
-A lekérdezésfeldolgozási csomópontokban töltött időn kívül az Azure Monitor naplók további időt fordítanak a következőkre: hitelesítsék a felhasználót, és ellenőrizzék, hogy jogosultak-e hozzáférni ezekhez az adatokhoz, megkeresni az adattárat, elemezni a lekérdezést, és lefoglalni a lekérdezésfeldolgozást Csomópontok. Ez az idő nem szerepel a lekérdezés teljes CPU-idő.
+A lekérdezésfeldolgozási csomópontokban töltött időn kívül az Azure Monitor naplók további időt fordítanak a következőkre: hitelesítsék a felhasználót, és ellenőrizzék, hogy jogosultak-e az adatok elérésére, megkereshetik az adattárat, elemzik a lekérdezést, és leosztják a lekérdezésfeldolgozó csomópontokat. Ez az idő nem szerepel a lekérdezés teljes CPU-idő.
 
 ### <a name="early-filtering-of-records-prior-of-using-high-cpu-functions"></a>A rekordok korai szűrése a magas CPU-függvények használata előtt
 
@@ -155,6 +155,21 @@ Heartbeat
 
 > [!NOTE]
 > Ez a mutató csak a közvetlen fürt processzorát mutatja be. A többrégiós lekérdezésben csak az egyik régiót képviselné. Előfordulhat, hogy a többmunkaterületet lekérdező lekérdezés nem tartalmazza az összes munkaterületet.
+
+### <a name="avoid-full-xml-and-json-parsing-when-string-parsing-works"></a>Kerülje a teljes XML- és JSON-elemzést, amikor a karakterlánc-elemzés működik
+Egy XML- vagy JSON-objektum teljes elemzése magas processzor- és memória-erőforrásokat eredményezhet. Sok esetben, ha csak egy vagy két paraméterre van szükség, és az XML vagy JSON objektumok egyszerűek, könnyebb őket karakterláncként elemezni az [elemzési operátor](/azure/kusto/query/parseoperator) vagy más [szövegelemzési technikák](/azure/azure-monitor/log-query/parse-text)használatával. A teljesítménynövelések az XML- vagy JSON-objektumrekordjainak számának növekedésével jelentősebbek lesznek. Elengedhetetlen, ha a rekordok száma eléri a tízmilliókat.
+
+A következő lekérdezés például pontosan ugyanazt az eredményt adja vissza, mint a fenti lekérdezések, anélkül, hogy teljes XML-elemzést végezne. Ne feledje, hogy bizonyos feltételezéseket tesz az XML-fájl szerkezetére vonatkozóan, például hogy a FilePath elem a FileHash után jön, és egyikük sem rendelkezik attribútumokkal. 
+
+```Kusto
+//even more efficient
+SecurityEvent
+| where EventID == 8002 //Only this event have FileHash
+| where EventData !has "%SYSTEM32" //Early removal of unwanted records
+| parse EventData with * "<FilePath>" FilePath "</FilePath>" * "<FileHash>" FileHash "</FileHash>" *
+| summarize count() by FileHash, FilePath
+| where FileHash != "" // No need to filter out %SYSTEM32 here as it was removed before
+```
 
 
 ## <a name="data-used-for-processed-query"></a>Feldolgozott lekérdezéshez használt adatok

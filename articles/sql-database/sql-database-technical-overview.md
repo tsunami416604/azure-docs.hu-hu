@@ -12,16 +12,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: 209b4136678e6f04666b4a2b6180f4768bf6afc4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0d50ddbbeeaed48c14d07c42588efcbb20bb7d79
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79500827"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411157"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Mi az Azure SQL Database szolgáltatás?
 
-Az Azure SQL Database egy általános célú relációs adatbázis, amelyet felügyelt szolgáltatásként biztosítanak. Ezzel magas rendelkezésre állású és nagy teljesítményű adattárolási réteget hozhat létre az Azure-beli alkalmazásokhoz és megoldásokhoz. Az SQL Database számos modern felhőalapú alkalmazás számára lehet megfelelő választás, mivel lehetővé teszi a relációs adatok és [a nem relációs struktúrák](sql-database-multi-model-features.md), például grafikonok, JSON, térbeli és XML feldolgozását.
+Az Azure SQL Database egy olyan adatbázismotor, amely egy teljes mértékben felügyelt, szolgáltatásként nyújtott platform (PaaS), és képes kezelni az adatbázisok felügyeletével kapcsolatos legtöbb feladatot, például a frissítéseket, javítások telepítését, biztonsági mentések készítését és felhasználói beavatkozás nélküli monitorozást. Az Azure SQL Database mindig az SQL Server-adatbázismotor legfrissebb stabil verzióján és javított operációs rendszeren fut, 99,99%-os rendelkezésre állással. Az Azure SQL-adatbázisba beépített PaaS-képességek lehetővé teszik, hogy a vállalkozás számára kritikus tartományspecifikus adatbázis-felügyeleti és optimalizálási tevékenységekre összpontosítson.
+
+Az Azure SQL Database segítségével magas rendelkezésre állású és nagy teljesítményű adattárolási réteget hozhat létre az Azure-beli alkalmazások hoz létre. Az SQL Database számos modern felhőalapú alkalmazás számára lehet megfelelő választás, mivel lehetővé teszi a relációs adatok és [a nem relációs struktúrák](sql-database-multi-model-features.md), például grafikonok, JSON, térbeli és XML feldolgozását.
 
 Ez alapján a legújabb stabil változata a [Microsoft SQL Server adatbázis-motor](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json). Speciális lekérdezésfeldolgozási szolgáltatásokat is használhat, például [nagy teljesítményű memóriabeli technológiákat](sql-database-in-memory.md) és [intelligens lekérdezésfeldolgozást.](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json) Valójában az SQL Server legújabb funkciói először az SQL Database, majd maga az SQL Server számára kerülnek kiadásra. A legújabb SQL Server-képességeket kapja, amelyek nem rendelkeznek többletterheléssel a javításhoz vagy a frissítéshez, több millió adatbázison tesztelve. 
 
@@ -68,7 +70,7 @@ Az SQL Database a következő vásárlási modelleket kínálja:
 Az Azure SQL Database három szolgáltatási réteget kínál, amelyeket különböző típusú alkalmazásokhoz terveztek:
 - [Általános cél/Standard](sql-database-service-tier-general-purpose.md) szolgáltatási szint közös számítási feladatokhoz tervezve. Költségvetés-orientált, kiegyensúlyozott számítási és tárolási lehetőségeket kínál.
 - [Üzleti kritikus/prémium szolgáltatási](sql-database-service-tier-business-critical.md) szint, amelyet magas tranzakciós aránnyal és a legalacsonyabb késleltetésű I/O-val rendelkező OLTP-alkalmazásokhoz terveztek. A hibák kal szembeni legnagyobb rugalmasságot kínálja több elkülönített replikák használatával.
-- [A](sql-database-service-tier-hyperscale.md) nagy MÉRETŰ szolgáltatási szint nagyon nagy OLTP-adatbázishoz, valamint a tárolás és a számítási skálázás gördülékeny méretezéséhez tervezett nagy kapacitású.    
+- [A](sql-database-service-tier-hyperscale.md) nagy MÉRETŰ szolgáltatási szint nagyon nagy OLTP-adatbázishoz, valamint a tárolás és a számítási kapacitás gördülékeny méretezéséhez tervezett nagy kapacitású.    
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Rugalmas készletek az erőforrások kihasználtságának maximalizálásához
 
@@ -107,11 +109,11 @@ Az Azure [beépített teljesítményfigyelő](sql-database-performance-guidance.
 
 ## <a name="availability-capabilities"></a>Rendelkezésre állás
 
-Hagyományos SQL Server környezetben általában legalább két gép van beállítva helyileg. Ezek a gépek pontos, szinkron módon karbantartott másolatokkal rendelkeznek az adatokról, hogy megvédjék őket egyetlen gép vagy alkatrész meghibásodása ellen. Ez a környezet magas rendelkezésre állást biztosít, de nem nyújt védelmet az adatközpontot tönkretevő természeti katasztrófák ellen.
+Az Azure SQL Database lehetővé teszi, hogy a vállalkozás továbbra is üzemeljen a fennakadások esetén. Hagyományos SQL Server környezetben általában legalább két gép van beállítva helyileg. Ezek a gépek pontos, szinkron módon karbantartott másolatokkal rendelkeznek az adatokról, hogy megvédjék őket egyetlen gép vagy alkatrész meghibásodása ellen. Ez a környezet magas rendelkezésre állást biztosít, de nem nyújt védelmet az adatközpontot tönkretevő természeti katasztrófák ellen.
 
 Vész-helyreállítási feltételezi, hogy egy katasztrofális esemény földrajzilag elég lokalizált ahhoz, hogy egy másik gép vagy gépkészlet az adatok egy példányát messze. Az SQL Server ben az Aszinkron módban futó Always On Availability Groups használatával szerezheti be ezt a funkciót. Az emberek gyakran nem szeretnék megvárni, hogy a replikáció ilyen messze történjen a tranzakció véglegesítése előtt, így nem tervezett feladatátvételek esetén adatvesztésre lehet lehetőséget.
 
-A prémium szintű és az üzleti legkritikusabb szolgáltatási szinteken lévő adatbázisok már [valami nagyon hasonlót tesznek](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) egy rendelkezésre állási csoport szinkronizálásához. Az alacsonyabb szolgáltatási szinteken lévő adatbázisok redundanciát biztosítanak a tároláson keresztül egy [másik, de egyenértékű mechanizmus](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability)használatával. A beépített logika segít az egyetlen gépmeghibásodás elleni védelemben. Az aktív georeplikációs szolgáltatás lehetővé teszi a katasztrófa elleni védelmet, ahol egy egész régió megsemmisül.
+A prémium szintű és az üzleti legkritikusabb szolgáltatási szinteken lévő adatbázisok már [valami hasonlót tesznek](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) egy rendelkezésre állási csoport szinkronizálásához. Az alacsonyabb szolgáltatási szinteken lévő adatbázisok redundanciát biztosítanak a tároláson keresztül egy [másik, de egyenértékű mechanizmus](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability)használatával. A beépített logika segít az egyetlen gépmeghibásodás elleni védelemben. Az aktív georeplikációs szolgáltatás lehetővé teszi a katasztrófa elleni védelmet, ahol egy egész régió megsemmisül.
 
 Az Azure rendelkezésre állási zónák egyetlen régión belüli egyetlen adatközpont-épület kimaradása ellen próbál védelmet nyújt. Ez segít megvédeni a veszteség et vagy hálózati egy épület. Az SQL Database-ben a különböző replikákat különböző rendelkezésre állási zónákba helyezi (különböző épületek, hatékonyan).
 

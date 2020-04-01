@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
-ms.openlocfilehash: 5aaaf539c07a7ba2c2463d5bfd1f452853f52379
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b471fbb62862cd48ebbb239d65b563aa109ef629
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77603691"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435480"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Az Azure Security Center bevezetésautomatizálása a PowerShell használatával
 
@@ -29,13 +29,13 @@ Az Azure Security Center PowerShell használatával történő bevezetés lehet�
 
 Ez a cikk egy minta PowerShell-parancsfájlt tartalmaz, amely módosítható és használható a környezetben a Security Center előfizetések közötti bevezetéséhez. 
 
-Ebben a példában engedélyezzük a Security Center előfizetést egy azonosítóval rendelkező előfizetésen: d07c0080-170c-4c24-861d-9c817742786c, és alkalmazzuk az ajánlott beállításokat, amelyek magas szintű védelmet biztosítanak a Security Center standard szintű alkalmazásának megvalósításával, amely fejlett veszélyforrások elleni védelem és észlelési képességek:
+Ebben a példában engedélyezzük a Security Center előfizetést egy azonosítóval rendelkező előfizetésen: d07c0080-170c-4c24-861d-9c817742786c, és alkalmazzuk az ajánlott beállításokat, amelyek magas szintű védelmet biztosítanak a Security Center standard szintű verziójának megvalósításával, amely fejlett veszélyforrások elleni védelmet és észlelési képességeket biztosít:
 
 1. Állítsa be a [Security Center szabványos védelmi szintjét.](https://azure.microsoft.com/pricing/details/security-center/) 
  
-2. Állítsa be a Log Analytics munkaterületet, amelyre a Microsoft Monitoring Agent elküldi az általa gyűjtött adatokat az előfizetéshez társított virtuális gépeken – ebben a példában egy meglévő felhasználó által definiált munkaterületet (myWorkspace).
+2. Állítsa be a Log Analytics munkaterületet, amelyre a Log Analytics-ügynök elküldi az általa gyűjtött adatokat az előfizetéshez társított virtuális gépeken – ebben a példában egy meglévő felhasználó által definiált munkaterületet (myWorkspace).
 
-3. Aktiválja a Security Center automatikus ügynök-kiépítését, amely [telepíti a Microsoft Monitoring Agent szolgáltatást.](security-center-enable-data-collection.md#auto-provision-mma)
+3. Aktiválja a Security Center automatikus ügynökkiépítés, amely [telepíti a Log Analytics ügynök.](security-center-enable-data-collection.md#auto-provision-mma)
 
 5. Állítsa be a szervezet [CISO-ját a Security Center riasztásainak és figyelemre méltó eseményeinek biztonsági kapcsolattartójaként.](security-center-provide-security-contact-details.md)
 
@@ -68,7 +68,7 @@ Ezeket a lépéseket a Security Center parancsmagok futtatása előtt kell végr
         Set-AzSecurityWorkspaceSetting -Name "default" -Scope
         "/subscriptions/d07c0080-170c-4c24-861d-9c817742786c" -WorkspaceId"/subscriptions/d07c0080-170c-4c24-861d-9c817742786c/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace"
 
-4.  A Microsoft Monitoring Agent automatikus üzembe helyezése az Azure virtuális gépein:
+4.  A Log Analytics-ügynök automatikus üzembe helyezése az Azure virtuális gépeken:
     
         Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
     

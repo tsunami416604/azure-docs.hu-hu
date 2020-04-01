@@ -11,15 +11,15 @@ ms.service: batch
 ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 03/30/2020
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a4df2ec0439e659fd8dc1448c6209c9718114791
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ecae47f6aa0ab3f179632467b7da7805f06162d6
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79479790"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397267"
 ---
 # <a name="manage-your-batch-account"></a>A Batch-fiók kezelése
 
@@ -33,13 +33,13 @@ Több Batch számítási feladatot is futtathat egyetlen Batch-fiókon, de el is
 
 A Batch-fiók lehetővé teszi, hogy az Azure-ban hatékonyan futtasson nagyméretű párhuzamos és nagy teljesítményű számítási (HPC) kötegelt feladatokat. A kezelt fiókon belül:
 
-- a futtatott alkalmazások
+- A futtatott alkalmazások
 
-- a halmazok és csomópontok elosztása a halmazokon belül
+- A készletek és csomópontok elosztása a készleteken belül
 
-- a feladatok száma és típusa 
+- A feladatok száma és típusa 
 
-- az adatok bevitele és kimenete. A feladatok kezeléséhez nem kell további szoftvereket telepítenie.
+- Az adatok bemenete és kimenete. A feladatok kezeléséhez nem kell további szoftvereket telepítenie.
 
 - A Batch-fiók létrehozásakor a rendszer arra kéri, hogy rendeljen hozzá nevet. Ez a név az azonosítója, és a hozzárendelt név nem módosítható.
 

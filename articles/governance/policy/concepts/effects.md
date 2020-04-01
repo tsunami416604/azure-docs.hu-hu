@@ -3,12 +3,12 @@ title: A hatások működésének ismertetése
 description: Az Azure Policy-definíciók különböző hatásokkal rendelkeznek, amelyek meghatározzák a megfelelőség kezelését és jelentésének módját.
 ms.date: 03/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 631c941173a500a4159a37c7c31107b9a6eab872
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0330cb5c732921efda3627dec92e486657097d82
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239970"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422460"
 ---
 # <a name="understand-azure-policy-effects"></a>Az Azure-szabályzat hatásainak ismertetése
 
@@ -19,7 +19,7 @@ Ezeket a hatásokat jelenleg egy házirend-definíció támogatja:
 - [Hozzáfűzés](#append)
 - [Naplózás](#audit)
 - [AuditIfNotExists](#auditifnotexists)
-- [Tagadja](#deny)
+- [Megtagadás](#deny)
 - [DeployIfNotExists](#deployifnotexists)
 - [Letiltva](#disabled)
 - [EnforceOPAConstraint](#enforceopaconstraint) (előzetes verzió)
@@ -432,15 +432,15 @@ Példa: Kiértékeli az SQL Server-adatbázisokat annak megállapítására, hog
 
 ## <a name="enforceopaconstraint"></a>EnforceOPAConstraint
 
-Ez a hatás a `Microsoft.Kubernetes.Data`házirend-definíciós *módban* használatos. Arra használják, hogy az [OPA-korlátozási keretrendszerrel](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) definiált Gatekeeper v3-es belépésvezérlési szabályokat az Azure-beli Kubernetes-fürtöknek adja át a [Nyílt házirend-ügynök](https://www.openpolicyagent.org/) (OPA) számára.
+Ez a hatás a `Microsoft.Kubernetes.Data`házirend-definíciós *módban* használatos. Arra használják, hogy az [OPA-megszorítási keretrendszerrel](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) definiált Gatekeeper v3-es belépésvezérlési szabályokat [az Azure-beli,](https://www.openpolicyagent.org/) saját felügyeletű Kubernetes-fürtöknek adja át.
 
 > [!NOTE]
-> [A Kubernetes Azure-szabályzat](aks-engine.md) előzetes verzióban érhető el, és csak a beépített szabályzatdefiníciókat támogatja.
+> [Az Azure Policy for AKS Engine](aks-engine.md) nyilvános előzetes verzióban érhető el, és csak a beépített szabályzatdefiníciókat támogatja.
 
 ### <a name="enforceopaconstraint-evaluation"></a>EnforceOPAConstraint értékelése
 
 Az Open Policy Agent felvételi vezérlő kiértékeli az új kérelmeket a fürt valós időben.
-15 percenként befejeződik a fürt teljes vizsgálata, és az eredmények et jelentik az Azure Policy-nek.
+5 percenként befejeződik a fürt teljes vizsgálata, és az eredmények et jelentik az Azure Policy-nek.
 
 ### <a name="enforceopaconstraint-properties"></a>EnforceOPAConstraint tulajdonságai
 
@@ -455,7 +455,7 @@ Az EnforceOPAConstraint hatás **részletes** tulajdonsága a Gatekeeper v3 bel�
 
 ### <a name="enforceopaconstraint-example"></a>EnforceOPAConstraint példa
 
-Példa: Gatekeeper v3 belépésvezérlési szabály a tároló CPU- és memóriaerőforrás-korlátainak beállításához a Kubernetes-ben.
+Példa: Gatekeeper v3 belépésvezérlési szabály a tároló CPU- és memóriaerőforrás-korlátainak beállításához az AKS-motorban.
 
 ```json
 "if": {
@@ -490,8 +490,8 @@ Példa: Gatekeeper v3 belépésvezérlési szabály a tároló CPU- és memória
 
 Ez a hatás a `Microsoft.ContainerService.Data`házirend-definíciós *módban* használatos. A Gatekeeper v2-es belépésvezérlési szabályok áthaladására szolgál, amelyeket [a Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) to [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) az Azure [Kubernetes szolgáltatásban](../../../aks/intro-kubernetes.md)definiált.
 
-> [!IMPORTANT]
-> [A Kubernetes Azure-szabályzat](rego-for-aks.md) előzetes verzióban érhető el, és csak a beépített szabályzatdefiníciókat támogatja. A beépített házirendek a **Kubernetes** kategóriában találhatók. Az **EnforceRegoPolicy** hatás és a kapcsolódó **Kubernetes szolgáltatás** kategóriaházirendek _elavultak._ Ehelyett használja a frissített [EnforceOPAConstraint](#enforceopaconstraint) hatást.
+> [!NOTE]
+> [Az AKS-hez készült Azure-szabályzat](rego-for-aks.md) korlátozott előzetes verzióban érhető el, és csak a beépített szabályzatdefiníciókat támogatja
 
 ### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy értékelés
 

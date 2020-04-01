@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 71056fd04069b861b37a595b1a4f2a8bba4a01ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 105a3996753a1d1c2d71846cc8bad574e4498acf
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75689980"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478609"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Ajánlott eljárások az Azure Cache for Redis használatához 
 Az ajánlott eljárások követésével maximalizálhatja az Azure-gyorsítótár a Redis-példány teljesítményét és költséghatékony használatát.
@@ -52,7 +52,7 @@ A Redis-kiszolgálópéldányon belüli memóriahasználattal kapcsolatban szám
  * [Saláta (Java)](https://gist.github.com/warrenzhu25/181ccac7fa70411f7eb72aff23aa8a6a#file-azure-redis-lettuce-best-practices-md)
  * [Jedik (Java)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-java-jedis-md)
  * [Node.js](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-node-js-md)
- * [Php](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-php-md)
+ * [PHP](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-php-md)
  * [Asp.Net munkamenet-állapotszolgáltató](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-session-state-provider-md)
 
 
@@ -67,7 +67,7 @@ Sajnos, nincs könnyű válasz.  Minden alkalmazásnak el kell döntenie, hogy m
 Ha szeretné tesztelni, hogyan működik a kód hibakörülmények között, fontolja meg az [Újraindítás funkciót.](cache-administration.md#reboot) Az újraindítás lehetővé teszi annak megtekintését, hogy a kapcsolati blips hogyan befolyásolja az alkalmazást.
 
 ## <a name="performance-testing"></a>Teljesítménytesztelés
- * **Kezdje azzal, `redis-benchmark.exe` ** hogy megérezte a lehetséges átviteli/késési, mielőtt megírja a saját perf tesztek.  Redis-benchmark dokumentáció [itt található](https://redis.io/topics/benchmarks).  Vegye figyelembe, hogy a redis-benchmark nem támogatja az SSL-t, ezért a teszt futtatása előtt engedélyeznie kell [a nem SSL-portot a portálon keresztül.](cache-configure.md#access-ports)  [A redis-benchmark.exe windows-kompatibilis verziója itt található.](https://github.com/MSOpenTech/redis/releases)
+ * **Kezdje azzal, `redis-benchmark.exe` ** hogy megérezte a lehetséges átviteli/késési, mielőtt megírja a saját perf tesztek.  Redis-benchmark dokumentáció [itt található](https://redis.io/topics/benchmarks).  Vegye figyelembe, hogy a redis-benchmark nem támogatja a TLS-t, ezért a teszt futtatása előtt engedélyeznie kell [a nem TLS-portot a portálon keresztül.](cache-configure.md#access-ports)  [A redis-benchmark.exe windows-kompatibilis verziója itt található.](https://github.com/MSOpenTech/redis/releases)
  * A teszteléshez használt ügyfél virtuális gépnek **ugyanabban a régióban** kell lennie, mint a Redis gyorsítótár-példánynak.
  * **Javasoljuk, hogy a Dv2 VM sorozat** az ügyfél, mivel azok jobb hardver, és a legjobb eredményt.
  * Győződjön meg arról, hogy a használt ügyfél virtuális gép **legalább annyi számítási és sávszélesség,* mint a vizsgált gyorsítótár. 

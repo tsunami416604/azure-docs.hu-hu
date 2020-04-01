@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 48a2ed5e4774ac07b4b8fa72a5ee0be86811cfb2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3431576acbb01a0cc3a5f372460b28be05bf7ce7
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79298733"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437466"
 ---
 # <a name="sensor-partner-integration"></a>Érzékelői partner integrációja
 
@@ -42,7 +42,7 @@ A telemetriai adatok egy olyan kanonikus üzenethez vannak leképezve, amely fel
 
 **API-fejlesztés**
 
-Az API-k swagger műszaki dokumentációt tartalmaznak. Az API-król és a hozzájuk tartozó kérésekről vagy válaszokról a [Swagger](https://aka.ms/FarmBeatsDatahubSwagger)című témakörben talál további információt.
+Az API-k swagger műszaki dokumentációt tartalmaznak. Az API-król és a hozzájuk tartozó kérésekről vagy válaszokról a [Swagger](https://aka.ms/FarmBeatsSwagger)című témakörben talál további információt.
 
 **Hitelesítés**
 
@@ -150,8 +150,8 @@ A FarmBeats Datahub a következő API-kat kínál, amelyek lehetővé teszik az 
   Termékkód  | Termékkód vagy modellnév vagy -szám. Például RS-CO2-N01.  |
   SensorMeasures > név  | Az érzékelőmérték neve. Csak kisbetűs támogatott. A különböző mélységből történő mérésekhez adja meg a mélységet. Például soil_moisture_15cm. Ennek a névnek konzisztensnek kell lennie a telemetriai adatokkal. |
   SensorMeasures > DataType  | Telemetriai adattípus. Jelenleg a dupla támogatott. |
-  SensorMeasures > Típus  | Az érzékelő telemetriai adatainak mérési típusa. A rendszer által meghatározott típusok: AmbientTemperature, CO2, Depth, ElectricalConducttivity, LeafWetness, Length, LiquidLevel, Nitrát, O2, PH, foszfát, PointInTime, Kálium, Nyomás, RainGauge, RelativeHumidity, Sótartalom, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, WindSpeed, Evapotranspiration, PAR. To add more, refer to the /ExtendedType API.
-  SensorMeasures > egység | Érzékelő telemetriai adatok egysége. A következők a rendszer által meghatározott egységek: NoUnit, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, Mercury, PSI, Milliméter, CentiMéter, Méter, Inch, Láb, Mérföld, KiloMeter, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MéterperSecond, Degree, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, Százalék, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricionContent, Liter, Milliliter, Seconds, UnixTimestamp, MicroMolPerMeterSquaredPerSecond és InchesPerHour. To add more, refer to the /ExtendedType API.
+  SensorMeasures > Típus  | Az érzékelő telemetriai adatainak mérési típusa. A rendszer által meghatározott típusok: AmbientTemperature, CO2, Depth, ElectricalConductivity, LeafWetness, Length, LiquidLevel, Nitrát, O2, PH, Foszfát, PointInTime, Kálium, Nyomás, RainGauge, RelativeHumidity, Sótartalom, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, WindSpeed, Evapotranspiration, PAR. To add more, refer to the /ExtendedType API.
+  SensorMeasures > egység | Érzékelő telemetriai adatok egysége. A következőka rendszer által meghatározott egységek: NoUnit, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, Mercury, PSI, Milliméter, CentiMeter, Meter, Inch, Feet, Mile, KiloMeter, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, Degree, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, Százalék, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricionContent, Liter, MilliLiter, Seconds, UnixTimestamp, MicroMolPerPerSquaredPerSecond, És InchesPerHour. To add more, refer to the /ExtendedType API.
   SensorMeasures > AggregationType  | Vagy nincs, átlagos, maximális, minimális vagy StandardDeviation.
   SensorMeasures > mélység  | Az érzékelő mélysége centiméterben. Például a mérésa nedvesség 10 cm a föld alatt.
   SensorMeasures > leírás  | Adja meg a mérés értelmes leírását.
@@ -188,7 +188,7 @@ A fordítónak képesnek kell lennie arra, hogy új eszközöket vagy érzékel�
 
 ### <a name="add-new-types-and-units"></a>Új típusok és egységek hozzáadása
 
-A FarmBeats támogatja az új érzékelőmérték-típusok és -egységek hozzáadását. Az /ExtendedType API-ról további információt a [Swagger](https://aka.ms/FarmBeatsDatahubSwagger)című témakörben talál.
+A FarmBeats támogatja az új érzékelőmérték-típusok és -egységek hozzáadását. Az /ExtendedType API-ról további információt a [Swagger](https://aka.ms/FarmBeatsSwagger)című témakörben talál.
 
 ## <a name="telemetry-specifications"></a>Telemetriai specifikációk
 
@@ -230,11 +230,11 @@ A gyűjtőüzenet formátuma a következő:
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         }
       ]
     }

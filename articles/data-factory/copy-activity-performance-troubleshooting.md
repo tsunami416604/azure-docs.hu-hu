@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: 963b86852a7df557ad7179e444e7c3a2692f57d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a14f4d548053fb7aaf6f450176fdc49bc7b119bf
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79531452"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421037"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Másolási tevékenység teljesítményének – problémamegoldás
 
@@ -88,7 +88,7 @@ Ha a másolási tevékenység teljesítménye nem felel meg az elvárásoknak, a
 
   - Ellenőrizze a másolási forrás- és fogadómintát: 
 
-    - Ha a másolási minta támogatja a nagyobb, mint 4 adatintegrációs egységek (DIUs) - olvassa el ezt a [szakaszt](copy-activity-performance.md#data-integration-units) a részleteket, általában megpróbálhatja a DIUs növelése a jobb teljesítmény érdekében. 
+    - Ha a másolási minta támogatja a nagyobb, mint 4 adatintegrációs egységek (DIUs) - olvassa el ezt a [szakaszt](copy-activity-performance-features.md#data-integration-units) a részleteket, általában megpróbálhatja a DIUs növelése a jobb teljesítmény érdekében. 
 
     - Ellenkező esetben fontolja meg egyetlen nagy adatkészlet felosztása több kisebb adatkészletek, és hagyja, hogy ezek a másolási feladatok futnak egyidejűleg minden foglalkozik az adatok egy részét. Ezt megteheti a Lookup/GetMetadata + ForEach + Copy segítségével. Példaként a [Fájlok másolása több tárolóból,](solution-template-copy-files-multiple-containers.md) [Adatok áttelepítése az Amazon S3-ról az ADLS Gen2-be](solution-template-migration-s3-azure.md), vagy [például a Hármas példány vezérlőtábla-megoldássablonokkal](solution-template-bulk-copy-with-control-table.md) című dokumentum.
 
@@ -102,7 +102,7 @@ Ha a másolási tevékenység teljesítménye nem felel meg az elvárásoknak, a
 
   - Ellenőrizze a másolási forrás- és fogadómintát: 
 
-    - Ha a másolási minta támogatja a nagyobb, mint 4 adatintegrációs egységek (DIUs) - olvassa el ezt a [szakaszt](copy-activity-performance.md#data-integration-units) a részleteket, általában megpróbálhatja a DIUs növelése a jobb teljesítmény érdekében. 
+    - Ha a másolási minta támogatja a nagyobb, mint 4 adatintegrációs egységek (DIUs) - olvassa el ezt a [szakaszt](copy-activity-performance-features.md#data-integration-units) a részleteket, általában megpróbálhatja a DIUs növelése a jobb teljesítmény érdekében. 
 
     - Ellenkező esetben fokozatosan hangolja be a [párhuzamos másolatokat](copy-activity-performance-features.md), vegye figyelembe, hogy a túl sok párhuzamos másolat még a teljesítményt is károsíthatja.
 

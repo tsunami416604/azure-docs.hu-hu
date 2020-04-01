@@ -4,12 +4,12 @@ description: Megtudhatja, hogy miként készíthet biztonsági másolatot egy Ex
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 9e623b1bdce93c340ccd0e61f9f5145e7154beff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d7d28d813df82a5e1ea0fe424bba2ef5a9a2684
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78295844"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421339"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Exchange-kiszolgáló biztonsági mentése az Azure-ba az Azure Backup Server rel
 
@@ -34,7 +34,7 @@ A MABS védelmi ügynök Exchange-kiszolgálóra történő telepítéséhez haj
 4. Jelölje ki a védeni kívánt Exchange-kiszolgálóadatbázist, és kattintson a **Tovább**gombra.
 
    > [!NOTE]
-   > Ha az Exchange 2013-at védi, ellenőrizze az [Exchange 2013 előfeltételeit.](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/dn751029(v=sc.12))
+   > Ha az Exchange 2013-at védi, ellenőrizze az [Exchange 2013 előfeltételeit.](https://docs.microsoft.com/system-center/dpm/back-up-exchange?view=sc-dpm-2016)
    >
    >
 
@@ -53,7 +53,7 @@ A MABS védelmi ügynök Exchange-kiszolgálóra történő telepítéséhez haj
     Miután kiválasztotta ezt a beállítást, a biztonsági mentés konzisztencia-ellenőrzése a MABS rendszeren fut, hogy elkerülje az **eseutil** parancs Exchange kiszolgálón történő futtatásával generált I/O-forgalmat.
 
    > [!NOTE]
-   > A beállítás használatához az Ese.dll és az Eseutil.exe fájlokat át kell másolnia a MAB-kiszolgáló C:\Program Files\Microsoft Azure Backup\DPM\DPM\bin könyvtárába. Ellenkező esetben a következő hiba lép fel:  
+   > A beállítás használatához az Ese.dll és az Eseutil.exe fájlokat át kell másolnia a MABS kiszolgáló N.\Program Files\Microsoft Azure Backup\DPM\DPM\bin könyvtárába. Ellenkező esetben a következő hiba lép fel:  
    > ![eseutil hiba](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
@@ -66,7 +66,7 @@ A MABS védelmi ügynök Exchange-kiszolgálóra történő telepítéséhez haj
    >
 10. Konfigurálja a célokat a **rövid távú biztonsági mentéshez,** majd kattintson a **Tovább**gombra.
 11. Tekintse át a rendelkezésre álló lemezterületet, majd kattintson a **Tovább**gombra.
-12. Válassza ki azt az időpontot, amikor a MAB-kiszolgáló létrehozza a kezdeti replikációt, majd kattintson a **Tovább**gombra.
+12. Válassza ki azt az időpontot, amikor a MABS-kiszolgáló létrehozza a kezdeti replikációt, majd kattintson a **Tovább**gombra.
 13. Adja meg a konzisztencia-ellenőrzési beállításokat, majd kattintson a **Tovább**gombra.
 14. Válassza ki azt az adatbázist, amelyről biztonsági másolatot szeretne tenni az Azure-ba, majd kattintson a **Tovább**gombra. Példa:
 

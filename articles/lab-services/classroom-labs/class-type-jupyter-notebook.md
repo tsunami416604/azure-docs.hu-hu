@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: dfb133f9aa3dd9b76f8b4ea4c6188cfaf9a67b75
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 371c2186d44469a22b138255fb513761a9be4437
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444111"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478220"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Állítson be egy labort az adatelemzés tanítására a Python és a Jupyter notebookok segítségével
 
@@ -34,10 +34,10 @@ Engedélyezze az alábbi táblázatban leírt beállításokat a tesztkörnyezet
 
 | Laborfiók beállítása | Utasítások |
 | ------------------- | ------------ |
-| Piactér képe | Engedélyezze az [adatelemzési virtuális gép – Windows 2016-lemezkép](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) a laborfiókon belüli használatra. |
+| Piactér képe | Engedélyezze az [adatelemzési virtuális gép – Windows 2019-lemezkép](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) a laborfiókon belüli használatra. |
 
 >[!TIP]
->Ez a cikk a Windows Server operációs rendszert használó sablongépek konfigurálására összpontosít.  Lehetőség van egy adatelemzési osztály beállítása python és Jupyter notebookok segítségével [Data Science Virtual Machine for Linux (CentOS)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm) vagy Data Science Virtual Machine for Linux [(Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) rendszeraz Azure Marketplace-en.
+>Ez a cikk a Windows Server operációs rendszert használó sablongépek konfigurálására összpontosít.  Az is lehetséges, hogy hozzon létre egy adatelemzési osztály Python és Jupyter notebookok segítségével [Data Science Virtual Machine for Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) rendszeraz Azure Marketplace-en.
 
 ### <a name="lab-settings"></a>Labor beállításai
 
@@ -50,7 +50,7 @@ Az alábbi táblázatbeállításait használhatja az osztálytermi labor beáll
 
 ## <a name="template-machine"></a>Sablongép
 
-Az [adatelemzési virtuális gép – A Windows 2016-lemezkép](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) biztosítja az ilyen típusú osztályhoz szükséges mélytanulási keretrendszereket és eszközöket.  A kép tartalmazza a Jupyter notebookokat és a Visual Studio-kódot.  [Jupyter Notebooks](http://jupyter-notebook.readthedocs.io) egy webes alkalmazás, amely lehetővé teszi az adatszakértők, hogy a nyers adatok, számítások futtatása, és az eredmények megjelenítése minden ugyanabban a környezetben.  A sablongépünk höz a webalkalmazás helyileg fog futni.  [A Visual Studio Code](https://code.visualstudio.com/) egy IDE, amely gazdag interaktív élményt nyújt a jegyzetfüzetírásés tesztelés során.  További információt a [Jupyter-jegyzetfüzetek munka a Visual Studio-kódban című témakörben talál.](https://code.visualstudio.com/docs/python/jupyter-support)
+Az [adatelemzési virtuális gép – A Windows 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) lemezkép biztosítja az ilyen típusú osztályhoz szükséges mélytanulási keretrendszereket és eszközöket.  A kép tartalmazza a Jupyter notebookokat és a Visual Studio-kódot.  [Jupyter Notebooks](http://jupyter-notebook.readthedocs.io) egy webes alkalmazás, amely lehetővé teszi az adatszakértők, hogy a nyers adatok, számítások futtatása, és az eredmények megjelenítése minden ugyanabban a környezetben.  A sablongépünk höz a webalkalmazás helyileg fog futni.  [A Visual Studio Code](https://code.visualstudio.com/) egy IDE, amely gazdag interaktív élményt nyújt a jegyzetfüzetírásés tesztelés során.  További információt a [Jupyter-jegyzetfüzetek munka a Visual Studio-kódban című témakörben talál.](https://code.visualstudio.com/docs/python/jupyter-support)
 
 Az osztály beállításának fennmaradó feladata a helyi jegyzetfüzetek biztosítása.  Az Azure Machine Learning-minták használatával kapcsolatos tudnivalókat a [Jupyter-jegyzetfüzetekkel környezet konfigurálása című témakörben találja.](../../machine-learning/how-to-configure-environment.md#jupyter)  Saját jegyzetfüzeteket is megadhat a sablongépen.  A jegyzetfüzetek a sablon közzétételekor az összes tanulógépre átkerülnek.
 

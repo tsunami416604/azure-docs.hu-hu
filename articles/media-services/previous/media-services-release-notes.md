@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: a55ef4f814c0d13a6efbeeb8cd9a5565d2869432
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3893c8d19c89b639e0584f203cbcd1adf7e2dee
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78183295"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474845"
 ---
 # <a name="azure-media-services-release-notes"></a>Megjegyzések az Azure Media Services-hez
 
@@ -344,9 +344,9 @@ A [Media Services .NET SDK](https://www.nuget.org/packages/windowsazure.mediaser
 * A PlayReady licencsablon begindate és expirationdate relatív eltolásai kerültek hozzáadásra.
 
 ## <a name="november-2014-release"></a><a id="november_changes_14"></a>2014. novemberi kiadás
-* Mostmár használhatja a Media Services élő smooth streaming (fMP4) tartalom ssl-kapcsolaton keresztül történő betöltéséhez. Az SSL-en keresztüli betöltéshez frissítse a betöltési URL-címet HTTPS-re. Jelenleg a Media Services nem támogatja az SSL egyéni tartományok. Az élő közvetítésről további információt az [Azure Media Services élő közvetítése](https://msdn.microsoft.com/library/azure/dn783466.aspx)című témakörben talál.
-* Jelenleg nem lehet betöltése RTMP élő közvetítés ssl-kapcsolaton keresztül.
-* 2014. szeptember 10-e után csak akkor streamelhet SSL-en keresztül, ha az a streamelési végpont, amelyből a tartalmat kézbesíti, csak akkor jön létre. Ha a streamelési URL-címek a 201 streaming.mediaservices.windows.net4. A "origin.mediaservices.windows.net" (a régi formátum) tartalmazó streamelési URL-ek nem támogatják az SSL-t. Ha az URL-cím a régi formátumban van, és SSL-en keresztül szeretne streamelni, [hozzon létre egy új streamelési végpontot.](media-services-portal-manage-streaming-endpoints.md) A tartalom SSL-en keresztültörténő streameléséhez használja az új streamelési végponton alapuló URL-címeket.
+* Most már használhatja a Media Services élő Smooth Streaming (fMP4) tartalom tls-kapcsolaton keresztül történő betöltéséhez. A TLS-en keresztül történő betöltéshez frissítse a betöltési URL-címet HTTPS-re. Jelenleg a Media Services nem támogatja a TLS egyéni tartományok. Az élő közvetítésről további információt az [Azure Media Services élő közvetítése](https://msdn.microsoft.com/library/azure/dn783466.aspx)című témakörben talál.
+* Jelenleg nem lehet betöltése RTMP élő közvetítés tls-kapcsolaton keresztül.
+* 2014. szeptember 10-e után csak akkor streamelhet TLS-en keresztül, ha az a streamelési végpont, amelyből a tartalmat kézbesíti, létrejött. Ha a streamelési URL-címek a 201 streaming.mediaservices.windows.net4. A "origin.mediaservices.windows.net" (a régi formátum) tartalmazó streamelési URL-ek nem támogatják a TLS-t. Ha az URL-cím a régi formátumban van, és TLS-en szeretne streamelni, [hozzon létre egy új streamelési végpontot.](media-services-portal-manage-streaming-endpoints.md) A tartalom TLS-en keresztül történő streameléséhez használja az új streamelési végponton alapuló URL-címeket.
 
 ### <a name="media-services-net-sdk"></a><a id="oct_sdk"></a>Media Services .NET SDK
 A Media Services SDK a .NET kiterjesztések most verzió 2.0.0.3.
@@ -601,7 +601,7 @@ Az SDK novemberi kiadásában a következő funkciók újak lehetnek:
 [Connect to Media Services with the Media Services SDK for .NET]: https://msdn.microsoft.com/library/azure/jj129571.aspx
 [Media Services .NET SDK extensions]: https://github.com/Azure/azure-sdk-for-media-services-extensions/tree/dev
 [Azure SDK tools]: https://github.com/Azure/azure-sdk-tools
-[Github]: https://github.com/Azure/azure-sdk-for-media-services
+[GitHub]: https://github.com/Azure/azure-sdk-for-media-services
 [Manage Media Services assets across multiple Storage accounts]: https://msdn.microsoft.com/library/azure/dn271889.aspx
 [Handle Media Services job notifications]: https://msdn.microsoft.com/library/azure/dn261241.aspx
 

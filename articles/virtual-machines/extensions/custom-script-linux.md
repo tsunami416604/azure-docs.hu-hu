@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: b75b232c048a1ea49256b12ce1b65c4bd87a1cf0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 75970783a9408df0a8c128fb9540606e4e4a62f3
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535442"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478177"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Az Azure Custom Script Extension 2. verziójának használata Linux rendszerű virtuális gépekkel
 Az egyéni parancsfájl-bővítmény 2-es verziója letölti és futtatja a parancsfájlokat az Azure virtuális gépeken. Ez a bővítmény a telepítés utáni konfigurációhoz, a szoftvertelepítéshez vagy bármely más konfigurációs/felügyeleti feladathoz hasznos. Letöltheti a parancsfájlokat az Azure Storage-ból vagy más elérhető internetes helyről, vagy megadhatja őket a bővítmény futásidejéhez. 
@@ -209,6 +209,8 @@ A CustomScript a következő algoritmust használja a parancsfájlok végrehajt�
  1. a parancsfájl végrehajtása _/bin/sh -c /var/lib/waagent/custom-script/#/script.sh használatával.
 
 ####  <a name="property-managedidentity"></a>Tulajdonság: managedIdentity
+> [!NOTE]
+> Ezt a tulajdonságot csak védett beállításokban **szabad** megadni.
 
 A CustomScript (2.1-es verziótól) támogatja a [felügyelt identitást](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) a "fileUris" beállításban megadott URL-címekről történő fájlletöltéshez. Lehetővé teszi a CustomScript számára az Azure Storage privát blobjainak vagy tárolóinak elérését anélkül, hogy a felhasználónak olyan titkos kulcsokat kellene átadnia, mint a SAS-jogkivonatok vagy a tárfiók kulcsai.
 
@@ -466,4 +468,3 @@ info:    vm extension get command OK
 
 ## <a name="next-steps"></a>További lépések
 A kód, az aktuális problémák és verziók megtekintéséhez lásd: [custom-script-extension-linux repo](https://github.com/Azure/custom-script-extension-linux).
-

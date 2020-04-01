@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: dcdc338bdcdb2c04f6b8894ccb358bc773b95c07
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa8bb41684271c7d4ebe90e31ce8019994fc1f41
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258927"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478752"
 ---
 # <a name="azure-service-fabric-security"></a>Az Azure Service Fabric biztonsága 
 
@@ -208,7 +208,7 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 [Azt javasoljuk, hogy valósítson meg egy iparági szabványnak megfelelő konfigurációt, amely széles körben ismert és jól bevált, például a Microsoft biztonsági alapkonfigurációk, szemben az alapterv saját maga;](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines) a virtuálisgép-méretezési készletek kiépítése az Azure Desired State Configuration (DSC) bővítménykezelő, konfigurálása a virtuális gépek, ahogy azok online, így fut nak az éles szoftver.
 
 ## <a name="azure-firewall"></a>Azure Firewall
-[Az Azure Firewall egy felügyelt, felhőalapú hálózati biztonsági szolgáltatás, amely védi az Azure virtuális hálózati erőforrásait. Ez egy teljesen állapotalapú tűzfal, mint a szolgáltatás beépített magas rendelkezésre állás és korlátlan felhő méretezhetőség.](https://docs.microsoft.com/azure/firewall/overview); ez lehetővé teszi, hogy a kimenő HTTP/S-forgalmat a teljesen minősített tartománynevek (FQDN) megadott listájára korlátozza, beleértve a helyettesítő karaktereket is. Ehhez a szolgáltatáshoz nem szükséges SSL-lezárás. Azt javasoljuk, hogy használja [az Azure Firewall FQDN-címkék](https://docs.microsoft.com/azure/firewall/fqdn-tags) a Windows-frissítések, és a hálózati forgalom engedélyezése a Microsoft Windows Update végpontok átfolyhat a tűzfalon keresztül. [Az Azure Firewall sablon használatával történő üzembe helyezése](https://docs.microsoft.com/azure/firewall/deploy-template) mintát biztosít a Microsoft.Network/azureFirewalls erőforrássablon-definícióhoz. A Service Fabric-alkalmazások közös tűzfalszabályai a fürtök virtuális hálózatának engedélyezését teszik lehetővé:
+[Az Azure Firewall egy felügyelt, felhőalapú hálózati biztonsági szolgáltatás, amely védi az Azure virtuális hálózati erőforrásait. Ez egy teljesen állapotalapú tűzfal, mint a szolgáltatás beépített magas rendelkezésre állás és korlátlan felhő méretezhetőség.](https://docs.microsoft.com/azure/firewall/overview); ez lehetővé teszi, hogy a kimenő HTTP/S-forgalmat a teljesen minősített tartománynevek (FQDN) megadott listájára korlátozza, beleértve a helyettesítő karaktereket is. Ez a szolgáltatás nem igényel TLS/SSL-végződést. Azt javasoljuk, hogy használja [az Azure Firewall FQDN-címkék](https://docs.microsoft.com/azure/firewall/fqdn-tags) a Windows-frissítések, és a hálózati forgalom engedélyezése a Microsoft Windows Update végpontok átfolyhat a tűzfalon keresztül. [Az Azure Firewall sablon használatával történő üzembe helyezése](https://docs.microsoft.com/azure/firewall/deploy-template) mintát biztosít a Microsoft.Network/azureFirewalls erőforrássablon-definícióhoz. A Service Fabric-alkalmazások közös tűzfalszabályai a fürtök virtuális hálózatának engedélyezését teszik lehetővé:
 
 - *download.microsoft.com
 - *servicefabric.azure.com
@@ -221,7 +221,7 @@ Ezek a tűzfalszabályok kiegészítik az engedélyezett kimenő hálózati bizt
 
 ## <a name="windows-defender"></a>Windows Defender 
 
-Alapértelmezés szerint a Windows Defender víruskereső telepítve van a Windows Server 2016 rendszerre. További információt a [Windows Defender víruskereső a Windows Server 2016 rendszeren](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)talál. A felhasználói felület alapértelmezés szerint telepítve van néhány sk-ra, de nem szükséges. A Windows Defender teljesítményre gyakorolt hatásának és erőforrás-felhasználásának csökkentése érdekében, és ha a biztonsági házirendek lehetővé teszik a nyílt forráskódú szoftverek folyamatainak és elérési útjának kizárását, deklarálja a következő Virtual Machine Scale Set Extension Resource erőforrást A Kezelősablon tulajdonságai a Service Fabric-fürt vizsgálatból való kizárásához:
+Alapértelmezés szerint a Windows Defender víruskereső telepítve van a Windows Server 2016 rendszerre. További információt a [Windows Defender víruskereső a Windows Server 2016 rendszeren](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)talál. A felhasználói felület alapértelmezés szerint telepítve van néhány sk-ra, de nem szükséges. A Windows Defender teljesítményre gyakorolt hatásának és erőforrás-felhasználásának csökkentése érdekében, és ha a biztonsági házirendek lehetővé teszik a nyílt forráskódú szoftverek folyamatainak és elérési útjának kizárását, deklarálja a következő Virtual Machine Scale Scale Set Extension Resource Manager sablontulajdonságokat, hogy kizárja a Service Fabric-fürtöt a vizsgálatokból:
 
 
 ```json

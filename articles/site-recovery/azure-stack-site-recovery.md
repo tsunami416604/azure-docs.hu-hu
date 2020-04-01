@@ -1,23 +1,18 @@
 ---
 title: Az Azure Stack virtuális gépek replikálása az Azure-ba az Azure Site Recovery használatával | Microsoft dokumentumok
 description: Ismerje meg, hogyan állíthatja be a vészhelyreállítást az Azure For Azure Stack virtuális gépekhez az Azure Site Recovery szolgáltatással.
-services: site-recovery
-author: rayne-wiselman
-manager: carmonm
 ms.topic: conceptual
-ms.service: site-recovery
 ms.date: 08/05/2019
-ms.author: raynew
-ms.openlocfilehash: 15cd729063545914f791de39a075af9084f72bef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ab35463ca8c3b29e6b4ae8abc781a7081091b214
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75426571"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478512"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Azure Stack rendszerű virtuális gépek replikálása az Azure-ba
 
-Ez a cikk bemutatja, hogyan állíthatja be a vészhelyreállítási Azure Stack virtuális gépeket az Azure-ba az [Azure Site Recovery szolgáltatás](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview)használatával.
+Ez a cikk bemutatja, hogyan állíthatja be a vészhelyreállítási Azure Stack virtuális gépeket az Azure-ba az [Azure Site Recovery szolgáltatás](site-recovery-overview.md)használatával.
 
 A Site Recovery hozzájárul az üzletmenet folytonosságára és a vészhelyreállításra (BCDR) vonatkozó stratégiához. A szolgáltatás biztosítja, hogy a virtuális gép számítási feladatai továbbra is elérhetőek maradnak, ha várható és váratlan kimaradások fordulnak elő.
 
@@ -45,9 +40,9 @@ Ezekkel a lépésekkel teljes, majd futtathatja a teljes feladatátvétel az Azu
 
 **Helyen** | **Összetevő** |**Részletek**
 --- | --- | ---
-**Konfigurációs kiszolgáló** | Egyetlen Azure Stack virtuális gépen fut. | Minden előfizetésben beállít egy konfigurációs kiszolgáló virtuális gép. Ez a virtuális gép a következő Site Recovery összetevőket futtatja:<br/><br/> - Konfigurációs kiszolgáló: Koordinálja a helyszíni és az Azure közötti kommunikációt, és kezeli az adatreplikációt. - Process server: Működik, mint a replikációs átjáró. Replikációs adatokat fogad, gyorsítótárazással, tömörítéssel és titkosítással optimalizál; és elküldi az Azure storage-ba.<br/><br/> Ha a replikálni kívánt virtuális gépek meghaladják az alábbi korlátokat, beállíthat egy külön önálló folyamatkiszolgálót. [További információ](https://docs.microsoft.com/azure/site-recovery/vmware-azure-set-up-process-server-scale).
-**Mobilitási szolgáltatás** | Minden replikáni kívánt virtuális gépre telepítve. | Ebben a cikkben leírt lépésekben előkészítünk egy fiókot, hogy a mobilitási szolgáltatás automatikusan települjön a virtuális gépre, ha a replikáció engedélyezve van. Ha nem szeretné automatikusan telepíteni a szolgáltatást, számos más módszert is használhat. [További információ](https://docs.microsoft.com/azure/site-recovery/vmware-azure-install-mobility-service).
-**Azure** | Az Azure-ban szüksége van egy Recovery Services-tárolóra, egy tárfiókra és egy virtuális hálózatra. |  A replikált adatok a tárfiókban tárolódnak. Az Azure virtuális gépek kerülnek az Azure-hálózathoz feladatátvétel esetén. 
+**Konfigurációs kiszolgáló** | Egyetlen Azure Stack virtuális gépen fut. | Minden előfizetésben beállít egy konfigurációs kiszolgáló virtuális gép. Ez a virtuális gép a következő Site Recovery összetevőket futtatja:<br/><br/> - Konfigurációs kiszolgáló: Koordinálja a helyszíni és az Azure közötti kommunikációt, és kezeli az adatreplikációt. - Process server: Működik, mint a replikációs átjáró. Replikációs adatokat fogad, gyorsítótárazással, tömörítéssel és titkosítással optimalizál; és elküldi az Azure storage-ba.<br/><br/> Ha a replikálni kívánt virtuális gépek meghaladják az alábbi korlátokat, beállíthat egy külön önálló folyamatkiszolgálót. [További információ](vmware-azure-set-up-process-server-scale.md).
+**Mobilitási szolgáltatás** | Minden replikáni kívánt virtuális gépre telepítve. | Ebben a cikkben leírt lépésekben előkészítünk egy fiókot, hogy a mobilitási szolgáltatás automatikusan települjön a virtuális gépre, ha a replikáció engedélyezve van. Ha nem szeretné automatikusan telepíteni a szolgáltatást, számos más módszert is használhat. [További információ](vmware-azure-install-mobility-service.md).
+**Azure** | Az Azure-ban szüksége van egy Recovery Services-tárolóra, egy tárfiókra és egy virtuális hálózatra. |  A replikált adatok a tárfiókban tárolódnak. Az Azure virtuális gépek kerülnek az Azure-hálózathoz feladatátvétel esetén.
 
 
 A replikáció a következőképpen működik:
@@ -68,8 +63,8 @@ A forgatókönyv beállításához az alábbiakra van szükség.
 **Követelmény** | **Részletek**
 --- | ---
 **Azure-előfizetési fiók** | Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot.](https://azure.microsoft.com/pricing/free-trial/)
-**Azure-fiók engedélyei** | A használt Azure-fiókhoz engedélyek szükségesek:<br/><br/> - Hozzon létre egy helyreállítási szolgáltatás tároló<br/><br/> - Hozzon létre egy virtuális gép az erőforrás-csoport és a virtuális hálózat használata a forgatókönyv<br/><br/> - Írjon a megadott tárfiókba<br/><br/> Vegye figyelembe:<br/><br/> -Ha létrehoz egy fiókot, akkor az előfizetés rendszergazdája, és minden műveletet végrehajthat.<br/><br/> - Ha meglévő előfizetést használ, és nem Ön a rendszergazda, akkor a rendszergazdával együtt kell dolgoznia a tulajdonosi vagy közreműködői engedélyek hozzárendeléséhez.<br/><br/> - Ha részletesebb engedélyekre van szüksége, tekintse át [ezt a cikket](https://docs.microsoft.com/azure/site-recovery/site-recovery-role-based-linked-access-control). 
-**Azure Stack virtuális gép** | Szüksége van egy Azure Stack virtuális gép a bérlői előfizetésben, amely a Site Recovery konfigurációs kiszolgálóként lesz telepítve. 
+**Azure-fiók engedélyei** | A használt Azure-fiókhoz engedélyek szükségesek:<br/><br/> - Hozzon létre egy helyreállítási szolgáltatás tároló<br/><br/> - Hozzon létre egy virtuális gép az erőforrás-csoport és a virtuális hálózat használata a forgatókönyv<br/><br/> - Írjon a megadott tárfiókba<br/><br/> Vegye figyelembe:<br/><br/> -Ha létrehoz egy fiókot, akkor az előfizetés rendszergazdája, és minden műveletet végrehajthat.<br/><br/> - Ha meglévő előfizetést használ, és nem Ön a rendszergazda, akkor a rendszergazdával együtt kell dolgoznia a tulajdonosi vagy közreműködői engedélyek hozzárendeléséhez.<br/><br/> - Ha részletesebb engedélyekre van szüksége, tekintse át [ezt a cikket](site-recovery-role-based-linked-access-control.md).
+**Azure Stack virtuális gép** | Szüksége van egy Azure Stack virtuális gép a bérlői előfizetésben, amely a Site Recovery konfigurációs kiszolgálóként lesz telepítve.
 
 
 ### <a name="prerequisites-for-the-configuration-server"></a>A konfigurációs kiszolgáló előfeltételei
@@ -77,7 +72,7 @@ A forgatókönyv beállításához az alábbiakra van szükség.
 [!INCLUDE [site-recovery-config-server-reqs-physical](../../includes/site-recovery-config-server-reqs-physical.md)]
 
 
- 
+
 ## <a name="step-1-prepare-azure-stack-vms"></a>1. lépés: Az Azure Stack virtuális gépek előkészítése
 
 ### <a name="verify-the-operating-system"></a>Az operációs rendszer ellenőrzése
@@ -89,7 +84,7 @@ Győződjön meg arról, hogy a virtuális gépek a táblázatban összegzett op
 --- | ---
 **64 bites Windows** | Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 (SP1 rendszerből)
 **CentOS** | 5,2–5,11, 6,1–6,9, 7,0–7,3
-**Ubuntu** | 14.04 LTS kiszolgáló, 16.04 LTS szerver. [A támogatott kernelek áttekintése](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#ubuntu-kernel-versions)
+**Ubuntu** | 14.04 LTS kiszolgáló, 16.04 LTS szerver. [A támogatott kernelek áttekintése](vmware-physical-azure-support-matrix.md#ubuntu-kernel-versions)
 
 ### <a name="prepare-for-mobility-service-installation"></a>Felkészülés a mobilitási szolgáltatás telepítésére
 
@@ -109,10 +104,10 @@ Minden replikálni kívánt virtuális gépnek telepítve kell lennie a Mobilit�
     - Ehhez futtassa **a wf.msc** fájl futtatását a Windows tűzfal konzol megnyitásához. Kattintson a jobb gombbal **a Bejövő szabályok** > **új szabályparancsára.** Válassza **az Előre definiált**lehetőséget, majd a listából a **Fájl- és nyomtatómegosztás lehetőséget.** Fejezze be a varázslót, és jelölje be a kapcsolat engedélyezését > **Befejezés gombra**.
     - Tartományi számítógépek esetén ehhez főházirend-kiszolgálót használhat.
 
-    
+
 #### <a name="linux-machines"></a>Linux gépek
 
-- Gondoskodjon róla, hogy legyen hálózati kapcsolat a Linux-számítógép és a folyamatkiszolgáló közt.
+- Győződjön meg arról, hogy van-e hálózati kapcsolat a Linux számítógép és a folyamatkiszolgáló között.
 - Azon a számítógépen, amelyen engedélyezi a replikációt, olyan fiókra van szüksége, amely a forrás Linux-kiszolgálón root felhasználó:
     - Ezt a fiókot a Site Recovery beállításakor adja meg. Ezután a folyamatkiszolgáló ezt a fiókot használja a Mobilitás szolgáltatás telepítéséhez, ha a replikáció engedélyezve van.
     - Ezt a fiókot a Site Recovery csak a leküldéses telepítéshez és a Mobilitás szolgáltatás frissítéséhez fogja használni.
@@ -143,7 +138,7 @@ A replikálni kívánt gépekhez keresse meg az IP-címet:
 ## <a name="step-2-create-a-vault-and-select-a-replication-goal"></a>2. lépés: Tároló létrehozása és replikációs cél kiválasztása
 
 1. Az Azure Portalon válassza az > **Erőforrás-kezelő eszközök** > **biztonsági mentése és a Webhely-helyreállítás** **létrehozása**lehetőséget.
-2. A **Név** mezőben adjon meg egy, a tárolót azonosító rövid nevet. 
+2. A **Név** mezőben adjon meg egy, a tárolót azonosító rövid nevet.
 3. Az **Erőforráscsoportban**hozzon létre vagy jelöljön ki egy erőforráscsoportot. **ContosoRG-t**használunk.
 4. A **Hely mezőbe**írja be az Azure-régiót. a **Nyugat-Európa** beállítást használjuk.
 5. Ha gyorsan el szeretné érni a tárolót az irányítópultról, válassza a **Rögzítés az irányítópult** > **létrehozása lehetőséget.**
@@ -182,7 +177,7 @@ A replikálni kívánt gépekhez keresse meg az IP-címet:
 
 A konfigurációs kiszolgáló telepítéséhez és regisztrálásához végezze el az RDP-kapcsolatot a konfigurációs kiszolgálóhoz használni kívánt virtuális géptel, és futtassa az egyesített telepítést.
 
-Mielőtt elkezdené, győződjön meg arról, hogy az óra szinkronizálva van [egy időkiszolgálóval](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service) a virtuális gépen, mielőtt elkezdené. A telepítés sikertelen, ha az idő több mint öt perccel eltér a helyi időnek.
+Mielőtt elkezdené, győződjön meg arról, hogy az óra szinkronizálva van [egy időkiszolgálóval](/windows-server/networking/windows-time-service/windows-time-service-top) a virtuális gépen, mielőtt elkezdené. A telepítés sikertelen, ha az idő több mint öt perccel eltér a helyi időnek.
 
 Most telepítse a konfigurációs kiszolgálót:
 
@@ -190,7 +185,7 @@ Most telepítse a konfigurációs kiszolgálót:
 
 > [!NOTE]
 > A konfigurációs kiszolgáló a parancssorból is telepíthető. [További információ](physical-manage-configuration-server.md#install-from-the-command-line).
-> 
+>
 > Akár 15 vagy még több percbe is beletelhet, amíg a fiók neve megjelenik a portálon. Az azonnali frissítéshez válassza a **Konfigurációs kiszolgáló** > ***kiszolgálójának neve*** > **Frissítési kiszolgáló**lehetőséget.
 
 ## <a name="step-4-set-up-the-target-environment"></a>4. lépés: A célkörnyezet beállítása
@@ -249,9 +244,9 @@ Győződjön meg arról, hogy az [1.](#step-1-prepare-azure-stack-vms) Ezután e
 
 > [!NOTE]
 > Amikor engedélyezi a replikációt egy adott virtuális gépen, a Site Recovery telepíti a mobilitási szolgáltatást.
-> 
+>
 > 15 vagy több percet is igénybe vehet, hogy a módosítások életbe lépjenek és megjelenjenek a portálon.
-> 
+>
 > A hozzáadott virtuális gépek figyeléséhez ellenőrizze a virtuális gépek utolsó felderített idejét a **konfigurációs kiszolgálók** > **utolsó kapcsolata a területen.** Ha nem szeretné megvárni az ütemezett felderítést a virtuális gépek hozzáadásához, emelje ki a konfigurációs kiszolgálót (ne válassza ki), majd válassza a **Frissítés** elemet.
 
 
@@ -261,16 +256,16 @@ Egy teszt feladatátvételt futtat az Azure-ba, hogy megbizonyosodjon arról, ho
 
 ### <a name="verify-machine-properties"></a>A számítógép tulajdonságainak ellenőrzése
 
-A teszt feladatátvétel futtatása előtt ellenőrizze a számítógép tulajdonságait, és győződjön meg arról, hogy azok megfelelnek az [Azure követelményeinek.](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#azure-vm-requirements) A tulajdonságok at a következőképpen tekintheti meg és módosíthatja:
+A teszt feladatátvétel futtatása előtt ellenőrizze a számítógép tulajdonságait, és győződjön meg arról, hogy azok megfelelnek az [Azure követelményeinek.](vmware-physical-azure-support-matrix.md#azure-vm-requirements) A tulajdonságok at a következőképpen tekintheti meg és módosíthatja:
 
 1. A **Védett elemek** területen kattintson a **Replikált elemek** > VM lehetőségre.
 2. A **Replikált elemek** ablaktáblában szerepel a virtuális gép információinak összegzése, állapota és a legújabb elérhető helyreállítási pontok. Kattintson a **Tulajdonságok** lehetőségre a további részletek megtekintéséhez.
 3. A **Számítási és hálózati területen**szükség szerint módosítsa a beállításokat.
 
-    - Módosíthatja az Azure virtuális gép nevét, erőforráscsoportot, célméretet, [rendelkezésre állási készletét](../virtual-machines/windows/tutorial-availability-sets.md)és a felügyelt lemez beállításait.
+    - Módosíthatja az Azure virtuális gép nevét, erőforráscsoportot, célméretet, [rendelkezésre állási készletét](/azure/virtual-machines/windows/tutorial-availability-sets)és a felügyelt lemez beállításait.
     - Megtekintheti és módosíthatja a hálózati beállításokat is. Ezek közé tartozik a hálózat/alhálózat, amelyhez az Azure virtuális gép a feladatátvétel után csatlakozik, és az IP-cím, amely hozzá lesz rendelve a virtuális géphez.
 1. A **Lemezek**alkalmazásban tekintse meg a virtuális gép operációs rendszerével és adatlemezeivel kapcsolatos információkat.
-   
+
 
 ### <a name="run-a-test-failover"></a>Feladatátvételi teszt futtatása
 
@@ -288,19 +283,19 @@ Feladatátvételi teszt futtatásakor a következő történik:
 Futtasson egy teszt feladatátvételt egy virtuális géphez az alábbiak szerint:
 
 1. A**Replikált elemek** **beállításai** > párbeszédpanelen kattintson a virtuális gép > **+A feladatátvétel tesztelése**.
-2. Ebben a forgatókönyvben a **Legújabb feldolgozott** helyreállítási pontot választjuk. 
+2. Ebben a forgatókönyvben a **Legújabb feldolgozott** helyreállítási pontot választjuk.
 3. A **Teszt feladatátvételi**területen válassza ki a cél Azure-hálózat.
 4. A feladatátvételi művelet elindításához kattintson az **OK** gombra.
 5. A virtuális gépre kattintva nyomon követheti a folyamatelőrehaladását a tulajdonságainak megnyitásához. Vagy kattintson a **Feladatátvételi** feladat tesztelése a tároló beállításai**Settings** > **feladat-helyreállítási** >**feladatok ban.** *vault name* > 
 6. A feladatátvétel befejezését követően az Azure-beli virtuális gép replikája megjelenik az Azure Portal > **Virtuális gépek** területen. Ellenőrizze, hogy a virtuális gép a megfelelő méretű, csatlakozik a megfelelő hálózathoz, és fut.
-7. Így már tudnia kell csatlakozni a replikált virtuális géphez az Azure-ban. [További információ](https://docs.microsoft.com/azure/site-recovery/site-recovery-test-failover-to-azure#prepare-to-connect-to-azure-vms-after-failover).
+7. Így már tudnia kell csatlakozni a replikált virtuális géphez az Azure-ban. [További információ](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
 8. A feladatátvételi teszt során létrehozott Azure-beli virtuális gépek törléséhez kattintson a **Feladatátvételi teszt eltávolítása** elemre a virtuális gépen. A **Megjegyzések**alkalmazásban mentse a tesztfeladat-átvételhez kapcsolódó megfigyeléseket.
 
 ## <a name="fail-over-and-fail-back"></a>Feladatátadás és feladatátvétel
 
 Miután beállította a replikációt, és futtatott egy fúrót, hogy megbizonyosodjon arról, hogy minden működik, szükség szerint átveheti a gépeket az Azure-ba.
 
-A feladatátvétel futtatása előtt, ha szeretne csatlakozni a géphez az Azure-ban a feladatátvétel után, majd [előkészíti a csatlakozást,](https://docs.microsoft.com/azure/site-recovery/site-recovery-test-failover-to-azure#prepare-to-connect-to-azure-vms-after-failover) mielőtt elkezdené.
+A feladatátvétel futtatása előtt, ha szeretne csatlakozni a géphez az Azure-ban a feladatátvétel után, majd [előkészíti a csatlakozást,](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover) mielőtt elkezdené.
 
 Ezután futtasson feladatátvételt az alábbiak szerint:
 
@@ -308,7 +303,7 @@ Ezután futtasson feladatátvételt az alábbiak szerint:
 1. A**Replikált elemek** **beállításai** > párbeszédpanelen kattintson a > **feladatátvételi**gépre.
 2. Jelölje ki a használni kívánt helyreállítási pontot.
 3. A **Teszt feladatátvételi**területen válassza ki a cél Azure-hálózat.
-4. Válassza a **Gép leállítása a feladatátvétel megkezdése előtt** lehetőséget. Ezzel a beállítással a Site Recovery megpróbálja leállítani a forrásgépet a feladatátvétel megkezdése előtt. A feladatátvétel azonban akkor is folytatódik, ha a leállítás sikertelen. 
+4. Válassza a **Gép leállítása a feladatátvétel megkezdése előtt** lehetőséget. Ezzel a beállítással a Site Recovery megpróbálja leállítani a forrásgépet a feladatátvétel megkezdése előtt. A feladatátvétel azonban akkor is folytatódik, ha a leállítás sikertelen.
 5. A feladatátvételi művelet elindításához kattintson az **OK** gombra. A feladatátvételi folyamatot a Feladatok lapon **követheti.**
 6. A feladatátvétel befejezését követően az Azure-beli virtuális gép replikája megjelenik az Azure Portal > **Virtuális gépek** területen. Ha kész csatlakozni a feladatátvétel után, ellenőrizze, hogy a virtuális gép a megfelelő méretű, csatlakozik a megfelelő hálózathoz, és fut.
 7. A virtuális gép ellenőrzése után kattintson a **Véglegesítés gombra** a feladatátvétel befejezéséhez. Ezzel törli az összes rendelkezésre álló helyreállítási pontot.
@@ -321,18 +316,18 @@ Ezután futtasson feladatátvételt az alábbiak szerint:
 
 Ha az elsődleges hely újra működik, az Azure-ból visszaléphet az Azure Stackbe. Ehhez le kell töltenie az Azure virtuális gép virtuális merevlemezét, és fel kell töltenie az Azure Stackbe.
 
-1. Állítsa le az Azure virtuális gép, a virtuális merevlemez letölthető. 
+1. Állítsa le az Azure virtuális gép, a virtuális merevlemez letölthető.
 2. A virtuális merevlemez letöltésének megkezdéséhez telepítse az [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)t.
 3. Keresse meg a virtuális gép az Azure Portalon (a virtuális gép nevét).
 4. A **Lemezek csoportban**kattintson a lemez nevére, és gyűjtse össze a beállításokat.
 
-    - Például a tesztben használt VHD https://502055westcentralus.blob.core.windows.net/wahv9b8d2ceb284fb59287/copied-3676553984.vhd URI: a következő bemeneti paraméterek, amelyek a virtuális merevlemez letöltéséhez használt a következő bemeneti paraméterek lehívása érdekében.
+    - Például a tesztben használt VHD `https://502055westcentralus.blob.core.windows.net/wahv9b8d2ceb284fb59287/copied-3676553984.vhd` URI: a következő bemeneti paraméterek, amelyek a virtuális merevlemez letöltéséhez használt a következő bemeneti paraméterek lehívása érdekében.
         - Tárfiók: 502055westcentralus
         - Konténer: wahv9b8d2ceb284fb59287
         - VHD-név: másolt-3676553984.vhd
 
 5. Most az Azure Storage Explorer segítségével töltse le a virtuális merevlemezt.
-6. Töltse fel a virtuális merevlemezt az Azure Stackbe [ezekkel](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-manage-vm-disks#use-powershell-to-add-multiple-disks-to-a-vm)a lépésekkel.
+6. Töltse fel a virtuális merevlemezt az Azure Stackbe [ezekkel](/azure-stack/user/azure-stack-manage-vm-disks#use-powershell-to-add-multiple-disks-to-a-vm)a lépésekkel.
 7. A meglévő virtuális gép vagy új virtuális gép, csatolja a feltöltött virtuális gépek.
 8. Ellenőrizze, hogy az operációs rendszer lemeze helyes,, és indítsa el a virtuális gép.
 

@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: 0c2190c29054301a8e21a9a27eb078802fbc9612
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: da476dc14949ebab1a054a9624d91acb25b9f2b4
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350861"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474481"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Teljesítmény-finomhangolás eredményhalmaz gyorsítótárazásával  
 Ha az eredményhalmaz-gyorsítótárazás engedélyezve van, az SQL Analytics automatikusan gyorsítótárazza a lekérdezési eredményeket a felhasználói adatbázisban ismétlődő használat érdekében.  Ez lehetővé teszi, hogy a lekérdezés-végrehajtások közvetlenül a megőrzött gyorsítótárból kapjanak eredményeket, így nincs szükség újraszámításra.   Az eredményhalmaz-gyorsítótárazás javítja a lekérdezési teljesítményt és csökkenti a számítási erőforrás-használatot.  Emellett a gyorsítótárazott eredményhalmazt használó lekérdezések nem használnak egyidejűségi tárolóhelyeket, és így nem számítanak bele a meglévő egyidejűségi korlátokba. A biztonság érdekében a felhasználók csak akkor férhetnek hozzá a gyorsítótárazott eredményekhez, ha ugyanolyan adatelérési engedélyekkel rendelkeznek, mint a gyorsítótárazott eredményeket létrehozó felhasználók.  
@@ -65,10 +65,10 @@ A gyorsítótárazott eredményhalmazt újra felhasználja a rendszer egy lekér
 - Pontos egyezés van az új lekérdezés és az eredményhalmaz gyorsítótárát létrehozó előző lekérdezés között.
 - Nincs adat- vagy sémaváltozás azokban a táblákban, amelyekből a gyorsítótárazott eredményhalmaz létrejött.
 
-Futtassa ezt a parancsot annak ellenőrzéséhez, hogy a lekérdezés végrehajtása eredménygyorsítótár-találattal vagy -tévesztéssel történt-e. Ha gyorsítótár-találat van, a result_cache_hit 1-et ad vissza.
+Futtassa ezt a parancsot annak ellenőrzéséhez, hogy a lekérdezés végrehajtása eredménygyorsítótár-találattal vagy -tévesztéssel történt-e. A result_set_cache oszlop 1-et ad vissza a gyorsítótár letöréséhez, 0-t a gyorsítótár-tévesztéshez, és negatív értékeket, amelyek miatt az eredménykészlet-gyorsítótárazás nem volt használva. Ellenőrizze [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016-au7) a részleteket.
 
 ```sql
-SELECT request_id, command, result_cache_hit FROM sys.dm_pdw_exec_requests 
+SELECT request_id, command, result_set_cache FROM sys.dm_pdw_exec_requests
 WHERE request_id = <'Your_Query_Request_ID'>
 ```
 

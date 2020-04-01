@@ -7,16 +7,16 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 01/22/2020
-ms.openlocfilehash: aaf61ccbb3577036c614aa6196d2af57124550fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8eeff5187d27cb75b9e55eba8311dede8970bc4a
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76908552"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435223"
 ---
 # <a name="integrate-a-static-website-with-azure-cdn"></a>Statikus webhely integrálása az Azure CDN-nel
 
-Engedélyezheti, hogy [az Azure Content Delivery Network (CDN)](../../cdn/cdn-overview.md) gyorsítótárazhassa a tartalmat egy Azure-tárfiókban üzemeltetett statikus [webhelyről.](storage-blob-static-website.md) Az Azure CDN segítségével konfigurálhatja az egyéni tartományvégpontot a statikus webhelyhez, egyéni SSL-tanúsítványokat hozhat létre, és egyéni újraírási szabályokat konfigurálhat. Az Azure CDN konfigurálása további díjakat eredményez, de a világ bármely pontjáról konzisztens, alacsony késéseket biztosít a webhelyére. Az Azure CDN is biztosít SSL-titkosítást a saját tanúsítványt. 
+Engedélyezheti, hogy [az Azure Content Delivery Network (CDN)](../../cdn/cdn-overview.md) gyorsítótárazhassa a tartalmat egy Azure-tárfiókban üzemeltetett statikus [webhelyről.](storage-blob-static-website.md) Az Azure CDN segítségével konfigurálhatja az egyéni tartomány végponta a statikus webhely, egyéni TLS/SSL-tanúsítványok kiépítése, és egyéni újraírási szabályok konfigurálása. Az Azure CDN konfigurálása további díjakat eredményez, de a világ bármely pontjáról konzisztens, alacsony késéseket biztosít a webhelyére. Az Azure CDN is biztosít TLS-titkosítást a saját tanúsítványt. 
 
 Az Azure CDN-díjszabásáról az [Azure CDN-díjszabáscímű](https://azure.microsoft.com/pricing/details/cdn/)témakörben talál.
 

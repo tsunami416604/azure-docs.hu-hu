@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: a2a85d98bf29e78d58bf0c578ce79943bae21fc1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5655a58c3538ac47e8649619b079dc46ee01242
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79244965"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473215"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Azure hálózati adapter IP-címének hozzáadása, módosítása vagy eltávolítása
 
@@ -78,7 +78,7 @@ Előfordulhat, hogy módosítania kell egy IPv4-cím hozzárendelési módját, 
 6. Kattintson a **Mentés** gombra.
 
 >[!NOTE]
->Ha az elsődleges hálózati adapter több IP-konfigurációval rendelkezik, és módosítja az elsődleges IP-konfiguráció privát IP-címét, manuálisan kell újra hozzárendelnie az elsődleges és másodlagos IP-címeket a Windows hálózati adapteréhez (linuxos használatra nem szükséges) . Ha manuálisan szeretne IP-címeket rendelni egy operációs rendszeren belüli hálózati adapterhez, olvassa el a [Több IP-cím hozzárendelése virtuális gépekhez](virtual-network-multiple-ip-addresses-portal.md#os-config)című témakört. Az IP-címek virtuálisgép-operációs rendszerhez való manuális hozzáadása előtt további szempontokat a [magánhálózati](#private) IP-címek című témakörben lehet figyelembe venni. Ne adjon nyilvános IP-címeket a virtuális gép operációs rendszeréhez.
+>Ha az elsődleges hálózati adapter több IP-konfigurációval rendelkezik, és módosítja az elsődleges IP-konfiguráció privát IP-címét, manuálisan kell újra hozzárendelnie az elsődleges és másodlagos IP-címeket a Windows hálózati adapteréhez (linuxos kapcsolat esetén nem szükséges). Ha manuálisan szeretne IP-címeket rendelni egy operációs rendszeren belüli hálózati adapterhez, olvassa el a [Több IP-cím hozzárendelése virtuális gépekhez](virtual-network-multiple-ip-addresses-portal.md#os-config)című témakört. Az IP-címek virtuálisgép-operációs rendszerhez való manuális hozzáadása előtt további szempontokat a [magánhálózati](#private) IP-címek című témakörben lehet figyelembe venni. Ne adjon nyilvános IP-címeket a virtuális gép operációs rendszeréhez.
 
 **Parancsok**
 
@@ -120,7 +120,7 @@ Az elsődleges IP-konfigurációmellett a hálózati adapterhez nulla vagy több
 
 - Privát IPv4- vagy IPv6-címmel kell rendelkeznie. Ha a cím IPv6, a hálózati adapternek csak egy másodlagos IP-konfigurációja lehet. Ha a cím IPv4, a hálózati adapterhez több másodlagos IP-konfiguráció is rendelhető. Ha többet szeretne megtudni arról, hogy hány magán- és nyilvános IPv4-cím rendelhető hozzá egy hálózati adapterhez, tekintse meg az [Azure limits](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) cikket.
 - Nyilvános IPv4- vagy IPv6-cím is rendelhető hozzá. Több IPv4-cím hozzárendelése hálózati adapterhez olyan esetekben hasznos, mint például:
-  - Több webhely vagy szolgáltatás üzemeltetése különböző IP-címekkel és SSL-tanúsítványokkal egyetlen kiszolgálón.
+  - Több webhely vagy szolgáltatás üzemeltetése különböző IP-címekkel és TLS/SSL-tanúsítványokkal egyetlen kiszolgálón.
   - Hálózati virtuális berendezésként, például tűzfalként vagy terheléselosztóként szolgáló virtuális gép.
   - Az a képesség, hogy adjunk hozzá a hálózati adapterek bármelyikének privát IPv4-címét egy Azure Load Balancer háttérkészlethez. A múltban csak az elsődleges hálózati adapter elsődleges IPv4-címe adható hozzá egy háttérkészlethez. Ha többet szeretne tudni atöbb IPv4-konfiguráció terheléselosztásáról, olvassa el a [Több IP-konfiguráció terheléselosztásáról](../load-balancer/load-balancer-multiple-ip.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szóló cikket. 
   - A hálózati adapterhez rendelt egy IPv6-cím elelosztásának lehetősége. Ha többet szeretne tudni arról, hogy miként töltheti be az egyenleget egy privát IPv6-címre, olvassa el a [Terheléselosztás IPv6-címek ről szóló](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) cikket.
@@ -136,7 +136,7 @@ A privát [IPv4-](#ipv4) vagy IPv6-címek lehetővé teszik, hogy a virtuális g
 Alapértelmezés szerint az Azure DHCP-kiszolgálók hozzárendelik a privát IPv4-címet az Azure hálózati adapter [elsődleges IP-konfigurációjához](#primary) a virtuális gép operációs rendszerén belüli hálózati adapterhez. Ha csak szükséges, soha ne állítsa be manuálisan a virtuális gép operációs rendszerén belüli hálózati adapter IP-címét.
 
 > [!WARNING]
-> Ha a virtuális gép operációs rendszerén belül a hálózati adapter elsődleges IP-címeként beállított IPv4-cím valaha is eltér a virtuális géphez csatlakoztatott elsődleges hálózati adapter elsődleges IP-konfigurációjához rendelt magánAlapú IPv4-címtől az Azure-on belül elveszíti a virtuális géphez való kapcsolódást.
+> Ha a virtuális gép operációs rendszerén belül a hálózati adapter elsődleges IP-címeként beállított IPv4-cím valaha is eltér az Azure-on belüli virtuális géphez csatlakoztatott elsődleges hálózati adapter elsődleges IP-konfigurációjához rendelt privát IPv4-címtől, elveszíti a virtuális géphez való kapcsolódást.
 
 Vannak olyan esetek, amikor manuálisan kell beállítani a virtuális csatoló IP-címét a virtuális gép operációs rendszerén belül. Például manuálisan kell beállítania a Windows operációs rendszer elsődleges és másodlagos IP-címét, amikor több IP-címet ad hozzá egy Azure virtuális géphez. Linux os virtuális gép esetén előfordulhat, hogy csak a másodlagos IP-címeket kell manuálisan beállítania. A részletekért [lásd: IP-címek hozzáadása virtuális gép operációs rendszerhez](virtual-network-multiple-ip-addresses-portal.md#os-config) című témakörben. Ha bármikor módosítania kell az IP-konfigurációhoz rendelt címet, javasoljuk, hogy:
 

@@ -3,12 +3,12 @@ title: Az Azure fájlmegosztás biztonsági másolata
 description: Ismerje meg, hogyan lehet biztonsági másolatot adni az Azure-fájlmegosztásokról a Recovery Services-tárolóban
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 0e17b05a3febaa673fb29d45c2bcef25e2996df8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: fd5bb51b2c7b5c09e9d859b69c3094eb50c205b5
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78386719"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396279"
 ---
 # <a name="about-azure-file-share-backup"></a>Az Azure fájlmegosztás biztonsági másolata
 
@@ -43,6 +43,15 @@ Az Azure fájlmegosztási biztonsági mentés egy natív, felhőalapú biztonsá
 6. Az Azure-fájlmegosztás tartalmát (az egyes fájlokat vagy a teljes megosztást) a forrásfájl-megosztáson elérhető pillanatképekből állíthatja vissza. A művelet aktiválása után a pillanatkép URL-címe beolvasásra kerül a metaadat-tárolóból, és az adatok megjelennek, és a forráspillanatképből a választott célfájl-megosztásra kerülnek.
 
 7. A biztonsági mentési és visszaállítási feladat figyelési adatok leküldéses az Azure Backup monitoring szolgáltatás. Ez lehetővé teszi a fájlmegosztások felhőbeli biztonsági másolatainak egyetlen irányítópulton való figyelését. Emellett riasztásokat vagy e-mail értesítéseket is konfigurálhat, ha a biztonsági mentés állapota érintett. Az e-maileket az Azure e-mail szolgáltatásán keresztül küldik.
+
+## <a name="backup-costs"></a>Biztonsági mentésköltségei
+
+Az Azure File share backup egy pillanatkép-alapú megoldás, és a pillanatképekért felmerülő tárolási díjakat az Azure Files Usage-nal együtt számlázunk az [itt](https://azure.microsoft.com/pricing/details/storage/files/)említett díjszabási részleteknek megfelelően.
+
+A biztonsági mentési megoldás kihasználásáért fizetendő védett példánydíj azonban a [Biztonsági mentés az Azure Files](https://azure.microsoft.com/pricing/details/backup/) számára szakaszban ismertetett díjszabási modell szerint történik. Jelenleg a tényleges ár csak az USA nyugati középső régiója esetében lett frissítve. Más régiók esetében a pontos árak hamarosan frissülnek néhány regionális változással, de ugyanazt az árképzési modellt használva.
+
+>[!NOTE]
+>Az előzetes verzió során nincs "Védett példány díja", és csak az [itt](https://azure.microsoft.com/pricing/details/storage/files/)említett áraknak megfelelően számítunk fel díjat a pillanatképekért.
 
 ## <a name="next-steps"></a>További lépések
 

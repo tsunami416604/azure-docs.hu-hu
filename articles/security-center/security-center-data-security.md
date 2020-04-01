@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: memildin
-ms.openlocfilehash: a25bbd0f14d38a70624dbc58755c0e814753a181
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 987cdd76ba533fa0ae4b37c2755fe84a00d14de5
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77604178"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435848"
 ---
 # <a name="azure-security-center-data-security"></a>Az Azure Security Center által nyújtott adatbiztonság
 Az Azure Security Center biztonsággal kapcsolatos adatokat gyűjt és dolgoz fel (például konfigurációs információkat, metaadatokat, eseménynaplókat, összeomlási memóriaképeket és még sok mást), hogy segítsen az ügyfeleknek a fenyegetések megelőzésében, észlelésében és elhárításában. A Microsoft szigorú megfelelőségi és biztonsági szabályokat követ, a kódolástól kezdve egészen a szolgáltatások üzemeltetéséig.
@@ -71,8 +71,8 @@ A gépösszetevők tárolása központilag történik, ugyanabban a régióban, 
 
 ## <a name="managing-data-collection-from-virtual-machines"></a>Az adatgyűjtés kezelése a virtuális gépeken
 
-Ha bekapcsolja a Security Centert az Azure-ban, az adatgyűjtés bekapcsolódik minden előfizetésénél. Az előfizetések adatgyűjtését az Azure Security Center Biztonsági szabályzat részén is bekapcsolhatja. Amikor az adatgyűjtés be van kapcsolva, az Azure Security Center létrehozza a Microsoft Monitoring Agentet minden meglévő és újonnan létrehozott Azure-beli támogatott virtuális gépen.
-A Microsoft Monitoring Agent megkeresi a biztonsághoz kapcsolódó különböző konfigurációkat, és eseményként felveszi őket a [Windows esemény-nyomkövetés](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) nyomkövetéseibe. Az operációs rendszer emellett az eseménynaplóba írandó eseményeket hoz létre a gép futtatása során. A gyűjtött adatok például a következők: az operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép neve, az IP-címek, a bejelentkezett felhasználó és a bérlő azonosítója. A Microsoft Monitoring Agent kiolvassa az eseménynapló-bejegyzéseket és az ETW-nyomkövetéseket, és átmásolja őket az Ön munkaterületeire elemzés céljából. A Microsoft Monitoring Agent az összeomlási memóriaképeket is átmásolja a munkaterületeire, valamint engedélyezi a folyamat-létrehozási eseményeket és lehetővé teszi a parancssori naplózást.
+Ha bekapcsolja a Security Centert az Azure-ban, az adatgyűjtés bekapcsolódik minden előfizetésénél. Az előfizetések adatgyűjtését az Azure Security Center Biztonsági szabályzat részén is bekapcsolhatja. Ha az adatgyűjtés be van kapcsolva, az Azure Security Center a Log Analytics-ügynököt az összes meglévő támogatott Azure virtuális gépen és a létrehozott újgépeken írja elő.
+A Log Analytics-ügynök megkeresi a különböző biztonsággal kapcsolatos konfigurációkat és eseményeket [a Windows eseménykövetés](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) nyomkövetésekbe. Az operációs rendszer emellett az eseménynaplóba írandó eseményeket hoz létre a gép futtatása során. A gyűjtött adatok például a következők: az operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép neve, az IP-címek, a bejelentkezett felhasználó és a bérlő azonosítója. A Log Analytics-ügynök beolvassa az eseménynapló-bejegyzéseket, és az ETW nyomon követi őket, és elemzésre átmásolja azokat a munkaterület(ek)re. A Log Analytics-ügynök az összeomlási memóriakép-fájlokat is átmásolja a munkaterület(ek)re, engedélyezi a folyamatlétrehozási eseményeket, és engedélyezi a parancssori naplózást.
 
 Ha az Azure Security Center ingyenes verzióját használja, le is tilthatja a virtuális gépekről történő adatgyűjtést a biztonsági szabályzatban. A Standard szintű előfizetésekhez az adatgyűjtés kötelező. A virtuálisgép-lemez pillanatképeinek és összetevőinek gyűjtése akkor is engedélyezve lesz, ha letiltotta az adatgyűjtést.
 

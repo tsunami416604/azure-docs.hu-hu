@@ -3,12 +3,12 @@ title: A Microsoft Azure Recovery Services (MARS) ügynök telepítése
 description: Megtudhatja, hogy miként telepítheti a Microsoft Azure Recovery Services (MARS) ügynököt a Windows-gépek biztonsági mentéséhez.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: b9a6791709d5aff82d11bbf10e5f084fd8c1a000
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3932b66dbc41ff2631e2cccbe716c0877a509d3
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247760"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422931"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>Az Azure Backup MARS ügynök telepítése
 
@@ -36,6 +36,7 @@ A biztonsági mentéshez rendelkezésre álló adatok attól függnek, hogy az �
 * Tekintse [át, hogy mit támogat, és mit tud a](backup-support-matrix-mars-agent.md) MARS-ügynök.
 * Győződjön meg arról, hogy rendelkezik egy Azure-fiókkal, ha biztonsági másolatot kell készítenie egy kiszolgálóról vagy ügyfélről az Azure-ba. Ha nem rendelkezik fiókkal, néhány perc alatt létrehozhat egy [ingyenes fiókot.](https://azure.microsoft.com/free/)
 * Ellenőrizze az internet-hozzáférést azokon a gépeken, amelyekről biztonsági másolatot szeretne tenni.
+* Győződjön meg arról, hogy a MARS-ügynök telepítését és konfigurálását végző felhasználó helyi rendszergazdai jogosultságokkal rendelkezik a védendő kiszolgálón.
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 

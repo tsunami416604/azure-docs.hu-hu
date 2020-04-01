@@ -26,7 +26,7 @@ ms.locfileid: "80336639"
 # <a name="tutorial-send-push-notifications-to-swift-ios-apps-using-notification-hubs-rest-api"></a>Oktatóanyag: Leküldéses értesítések küldése swift iOS-alkalmazásoknak az Értesítési központok REST API-jával
 
 > [!div class="op_single_selector"]
-> * [Célkitűzés-C](notification-hubs-ios-apple-push-notification-apns-get-started.md)
+> * [Objective-C](notification-hubs-ios-apple-push-notification-apns-get-started.md)
 > * [Swift](notification-hubs-ios-push-notifications-swift-apps-get-started.md)
 
 Ebben az oktatóanyagban az Azure Notification Hubs használatával leküldheti az értesítéseket egy Swift-alapú iOS-alkalmazásba a [REST API](/rest/api/notificationhubs/)használatával. Egy üres iOS-alkalmazást is létrehozhat, amely leküldéses értesítéseket kap az [Apple leküldéses értesítési szolgáltatás (APN)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1)használatával.
@@ -736,7 +736,7 @@ Most már rendelkezik egy alapvető iOS Swift alkalmazással, amely a [REST API-
 - [Értesítési központok SDK a háttér-műveletek](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)
 - [Értesítési központok SDK a GitHubon](https://github.com/Azure/azure-notificationhubs)
 - [Regisztráció alkalmazás háttérablakával](notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md)
-- [Regisztráció kezelése](notification-hubs-push-notification-registration-management.md)
+- [Regisztrációkezelés](notification-hubs-push-notification-registration-management.md)
 - [Címkék használata](notification-hubs-tags-segment-push-message.md) 
 - [Egyéni sablonok használata](notification-hubs-templates-cross-platform-push-messages.md)
 - [A Service Bus hozzáférés-vezérlése megosztott hozzáférés-aláírásokkal](../service-bus-messaging/service-bus-sas.md)

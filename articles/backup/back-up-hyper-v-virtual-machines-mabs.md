@@ -3,12 +3,12 @@ title: Hyper-V virtuális gépek biztonsági és biztonsági másolatot kell fon
 description: Ez a cikk a Microsoft Azure Backup Server (MABS) használatával a virtuális gépek biztonsági mentésére és helyreállítására vonatkozó eljárásokat tartalmazza.
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: 00d1dd04522c51e4d68450a7b8f25d7159d63724
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71cf446472ef0cf4f50bf64e47d359ea08ccc087
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78255067"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420400"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Hyper-V virtuális gépek biztonsági mentése az Azure Backup Server rel
 
@@ -99,83 +99,6 @@ Ezek a Hyper-V virtuális gépek MABS-szel történő biztonsági mentésének e
 9. A **Konzisztencia-ellenőrzési beállítások** oldalon válassza ki, hogyan szeretné automatizálni a konzisztencia-ellenőrzéseket. Beállíthatja hogy a rendszer ütemezés szerint futtasson ellenőrzést, vagy csak akkor, amikor a replikaadatok inkonzisztenssé válnak. Ha nem szeretne automatikus konzisztencia-ellenőrzést beállítani, bármikor lefuttathat egy manuális ellenőrzést, ha a jobb gombbal a védelmi csoportra kattint, és a **Konzisztencia-ellenőrzés végrehajtása** elemet választja.
 
     A védelmi csoport létrehozását követően megtörténik az adatok kezdeti replikálása a kiválasztott módszernek megfelelően. A kezdeti replikálás után a védelmi csoport beállításai szerint lezajlanak az egyes biztonsági mentések. Ha biztonsági másolatot kell szereznie, vegye figyelembe a következőket:
-
-## <a name="back-up-virtual-machines-configured-for-live-migration"></a>Az élő áttelepítéshez konfigurált virtuális gépek biztonsági mentése
-
-Ha a virtuális gépek aktív áttelepítésben vesznek részt, a MABS továbbra is védi a virtuális gépeket, amíg a MABS védelmi ügynök telepítve van a Hyper-V gazdagépen. A virtuális gépek MABS-védelmének módja az élő áttelepítés típusától függ.
-
-**A fürtön belüli élő áttelepítés** – Ha egy virtuális gépet egy fürtön belül telepítát, az MABS észleli az áttelepítést, és biztonsági másolatot tesz a virtuális gépről az új fürtcsomópontról a felhasználói beavatkozás követelménye nélkül. Mivel a tárolási hely nem változott, a MABS expressz teljes biztonsági másolatokkal folytatódik.
-
-**A fürtön kívüli élő áttelepítés** – Ha egy virtuális gépet önálló kiszolgálók, különböző fürtök vagy önálló kiszolgáló és fürt között telepít át, az MABS észleli az áttelepítést, és felhasználói beavatkozás nélkül biztonsági másolatot tud fésülni a virtuális gépről.
-
-### <a name="requirements-for-maintaining-protection"></a>A védelem fenntartásának követelményei
-
-Az élő áttelepítés közben a védelem fenntartásához az alábbi követelmények teljesülése szükséges:
-
-- A virtuális gépek Hyper-V-állomásainak egy System Center VMM-felhőben, egy VMM-kiszolgálón kell elhelyezkedniük, és legalább a System Center 2012 SP1-et kell futtatniuk.
-
-- A MABS védelmi ügynököt minden Hyper-V állomásra telepíteni kell.
-
-- A MABS-kiszolgálóknak csatlakozniuk kell a VMM-kiszolgálóhoz. A VMM-felhőösszes Hyper-V gazdakiszolgálójának is csatlakoznia kell a MABS-kiszolgálókhoz. Ez lehetővé teszi a MABS számára, hogy kommunikáljon a VMM-kiszolgálóval, így a MABS megtudhatja, hogy a virtuális gép jelenleg melyik Hyper-V gazdakiszolgálón fut, és új biztonsági másolatot hozhat létre a Rról a Hyper-V kiszolgálóról. Ha a kapcsolat nem jön létre a Hyper-V kiszolgálóval, a biztonsági mentés sikertelen lesz egy üzenettel, hogy a MABS védelmi ügynök nem érhető el.
-
-- Minden MABS-kiszolgálónak, VMM-kiszolgálónak és Hyper-V gazdakiszolgálónak ugyanabban a tartományban kell lennie.
-
-### <a name="details-about-live-migration"></a>Az élő áttelepítés részletei
-
-Az élő áttelepítés közbeni biztonsági mentés során vegye figyelembe a következőket:
-
-- Ha egy élő áttelepítés izolátus átviszi a tárolót, a MABS teljes konzisztencia-ellenőrzést végez a virtuális gépen, majd folytatja az expressz teljes biztonsági mentéseket. A tárolás élő áttelepítésekor a Hyper-V átrendezi a virtuális merevlemezt (VHD) vagy a VHDX-et, ami egyszeri csúcsot eredményez a MABS biztonsági mentési adatainak méretében.
-
-- A virtuális védelem engedélyezéséhez kapcsolja be az automatikus csatlakoztatást a virtuális gép gazdagépén, és tiltsa le a TCP Chimney tehermentesítést.
-
-- A MABS a 6070-es portot használja alapértelmezett portként a DPM-VMM segítő szolgáltatás üzemeltetéséhez. A beállításjegyzék módosítása:
-
-    1. Keresse meg a **HKLM\Software\Microsoft\Microsoft Data Protection Manager\Configuration mappát.**
-    2. Hozza létre a következő 32 bites duplaszó értéket: DpmVmmHelperServicePort, és írja be az új portszámot a beállításkulcs részeként.
-    3. Nyissa meg a következőt: ```<Install directory>\Azure Backup Server\DPM\DPM\VmmHelperService\VmmHelperServiceHost.exe.config```, és módosítsa a portszámot 6070-ről az új portszámra. Például:```<add baseAddress="net.tcp://localhost:6080/VmmHelperService/" />```
-    4. Indítsa újra a DPM VMM segítő szolgáltatást és a DPM szolgáltatást.
-
-### <a name="set-up-protection-for-live-migration"></a>Védelem beállítása élő áttelepítéshez
-
-Védelem beállítása élő áttelepítéshez:
-
-1. Állítsa be a MABS-kiszolgálót és annak tárolóját, és telepítse a MABS-védelmi ügynököt a VMM-felhő minden Hyper-V gazdakiszolgálójára vagy fürtcsomópontjára. Ha SMB-tárolót használ egy fürtben, telepítse a MABS-védelmi ügynököt az összes fürtcsomópontra.
-
-2. Telepítse a VMM-konzolt ügyfélösszetevőként a MABS-kiszolgálóra, hogy a MABS kommunikálni tudjon a VMM-kiszolgálóval. A konzolnak a VMM-kiszolgálón futó verzióval azonos verziójúnak kell lennie.
-
-3. Rendelje hozzá a MABSMachineName$ fiókot írásvédett rendszergazdai fiókként a VMM felügyeleti kiszolgálón.
-
-4. Csatlakoztassa az összes Hyper-V gazdakiszolgálót `Set-DPMGlobalProperty` az összes MABS-kiszolgálóhoz a PowerShell-parancsmaggal. A parancsmag több MABS-kiszolgálónevet is elfogad. Használja a következő formátumot: `Set-DPMGlobalProperty -dpmservername <MABSservername> -knownvmmservers <vmmservername>`. További információ: [Set-DPMGlobalProperty](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmglobalproperty?view=systemcenter-ps-2019).
-
-5. Miután a VMM-felhő Hyper-V-gazdagépein futó összes virtuális gép felderítése megtörtént a VMM-ben, állítson be egy védelmi csoportot, és abba vegye fel a védeni kívánt virtuális gépeket. Automatikus konzisztencia-ellenőrzések engedélyezni kell a védelmi csoport szintjén a virtuális gép mobilitási forgatókönyvek védelme.
-
-6. A beállítások konfigurálása után, amikor egy virtuális gép áttelepíti az egyik fürtről a másikra, az összes biztonsági mentés a várt módon folytatódik. A következő módon ellenőrizheti, hogy az élő áttelepítés a várt módon van-e engedélyezve:
-
-   1. Ellenőrizze, hogy fut-e a DPM VMM segítő szolgáltatás. Ha nem, indítsa el.
-
-   2. Nyissa meg a Microsoft SQL Server Management Studio alkalmazást, és csatlakozzon a MABS-adatbázist (DPMDB) tároló példányhoz. Futtassa a DPMDB-n a következő lekérdezést: `SELECT TOP 1000 [PropertyName] ,[PropertyValue] FROM[DPMDB].[dbo].[tbl_DLS_GlobalSetting]`.
-
-      Ez a lekérdezés `KnownVMMServer`egy . A tulajdonság értékének meg kell egyeznie a `Set-DPMGlobalProperty` parancsmaggal megadott értékkel.
-
-   3. Futtassa a következő lekérdezést a *VMMIdentifier* paraméter egy adott virtuális gép `PhysicalPathXML` elemében történő ellenőrzéséhez. A `VMName` helyére a virtuális gép nevét írja.
-
-      ```sql
-      select cast(PhysicalPath as XML) from tbl_IM_ProtectedObject where DataSourceId in (select datasourceid from tbl_IM_DataSource   where DataSourceName like '%<VMName>%')
-      ```
-
-   4. Nyissa meg azt az .xml-fájlt, amelyet a lekérdezés visszaad, és ellenőrizze, hogy a *VMMIdentifier* mezőhöz tartozik-e érték.
-
-### <a name="run-manual-migration"></a>Manuális áttelepítés futtatása
-
-Miután elvégezte az előző szakaszokban leírt lépéseket, és befejeződött a MABS Summary Manager feladat, az áttelepítés engedélyezve van. Alapértelmezés szerint ez a feladat éjfélkor kezdődik, és reggelente fut. Ha manuális áttelepítést szeretne végezni annak ellenőrzéséhez, hogy minden a várt módon működik-e, tegye a következőket:
-
-1. Nyissa meg az SQL Server Management Studio alkalmazást, és csatlakozzon a MABS-adatbázist tároló példányhoz.
-
-2. Futtassa a következő lekérdezést: `SELECT SCH.ScheduleId FROM tbl_JM_JobDefinition JD JOIN tbl_SCH_ScheduleDefinition SCH ON JD.JobDefinitionId = SCH.JobDefinitionId WHERE JD.Type = '282faac6-e3cb-4015-8c6d-4276fcca11d4' AND JD.IsDeleted = 0 AND SCH.IsDeleted = 0`. A lekérdezés visszaadja a **ScheduleID** értékét. Jegyezze fel ezt az azonosítót, mert a következő lépésben szükség lesz rá.
-
-3. Az SQL Server Management Studióban bontsa ki az **SQL Server Agent**, majd a **Jobs** (Feladatok) csomópontot. Jobb gombbal kattintson a feljegyzett **ScheduleID**-re, és válassza a **Start Job at Step** (Feladat indítása adott lépésnél) parancsot.
-
-A feladat futtatásakor a biztonsági mentés teljesítménye hatással van. A feladat végrehajtásához szükséges idő a rendszer méretétől függ.
 
 ## <a name="back-up-replica-virtual-machines"></a>Replika virtuális gépek biztonsági mentése
 

@@ -1,5 +1,5 @@
 ---
-title: Biztonság a StorSimple eszköz | Microsoft dokumentumok
+title: Biztonságosan telepíthető & storSimple 8000 sorozatú eszköz működtetése
 description: Ez a témakör ismerteti a biztonsági konvenciókat, irányelveket és szempontokat, és ismerteti a StorSimple-eszköz biztonságos telepítését és üzemeltetését.
 services: storsimple
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2017
 ms.author: alkohli
-ms.openlocfilehash: 66b881ab13e27ee457af4fa1bafb82ad14e9674d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c880cd18e7227a728d7e276e72a5ea8c1e421de
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60631676"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396634"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>A StorSimple eszköz biztonságos telepítése és működtetése
 ![A](./media/storsimple-safety/IC740879.png)

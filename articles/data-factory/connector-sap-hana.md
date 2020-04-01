@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/17/2020
-ms.openlocfilehash: fa165c21622110bb18476efdebf3264a11e26ad7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e1a3ff32956e8a8530684ba7f300f06d0c032227
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79265882"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421119"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Adatok másolása az SAP HANA-ból az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
@@ -188,7 +188,7 @@ Az SAP HANA-ból származó adatok másolásához a **source** következő tulaj
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrásának típustulajdonságát a következőre kell állítani: **SapHanaSource** | Igen |
 | lekérdezés | Megadja az SAP HANA-példány ból adatokat olvasandó SQL-lekérdezést. | Igen |
-| partitionOptions | Megadja az SAP HANA-ból származó adatok betöltéséhez használt adatparticionálási beállításokat. További információ az SAP HANA szakasz párhuzamos másolása című [részéből.](#parallel-copy-from-sap-hana)<br>Az értékek a következők: **Nincs** (alapértelmezett), **PhysicalPartitionsOfTable**, **SapHanaDynamicRange**. További információ az SAP HANA szakasz párhuzamos másolása című [részéből.](#parallel-copy-from-sap-hana) `PhysicalPartitionsOfTable`csak tábla adatainak másolásakor használható, de lekérdezésre nem. <br>Ha egy partícióbeállítás engedélyezve van `None`(azaz nem), a párhuzamosság mértékét az SAP HANA-ból származó adatok egyidejű betöltéséhez a [`parallelCopies`](copy-activity-performance.md#parallel-copy) másolási tevékenység beállítása szabályozza. | False (Hamis) |
+| partitionOptions | Megadja az SAP HANA-ból származó adatok betöltéséhez használt adatparticionálási beállításokat. További információ az SAP HANA szakasz párhuzamos másolása című [részéből.](#parallel-copy-from-sap-hana)<br>Az értékek a következők: **Nincs** (alapértelmezett), **PhysicalPartitionsOfTable**, **SapHanaDynamicRange**. További információ az SAP HANA szakasz párhuzamos másolása című [részéből.](#parallel-copy-from-sap-hana) `PhysicalPartitionsOfTable`csak tábla adatainak másolásakor használható, de lekérdezésre nem. <br>Ha egy partícióbeállítás engedélyezve van `None`(azaz nem), a párhuzamosság mértékét az SAP HANA-ból származó adatok egyidejű betöltéséhez a [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) másolási tevékenység beállítása szabályozza. | False (Hamis) |
 | partitionSettings (partícióbeállításai) | Adja meg az adatparticionálás beállításainak csoportját.<br>Alkalmazza, ha `SapHanaDynamicRange`a partíciós beállítás . | False (Hamis) |
 | partitionColumnName | Adja meg annak a forrásoszlopnak a nevét, amelyet a partíció a párhuzamos másoláshoz használ. Ha nincs megadva, a rendszer automatikusan észleli az indexet vagy a tábla elsődleges kulcsát, és partícióoszlopként használja.<br>Alkalmazza, ha a `SapHanaDynamicRange`partíciós beállítás . Ha lekérdezéssel olvassa be a forrásadatokat, a HOOK a `?AdfHanaDynamicRangePartitionCondition` WHERE záradékban. Példa az SAP HANA szakasz [párhuzamos másolása](#parallel-copy-from-sap-hana) című témakörben. | Igen partíció `SapHanaDynamicRange` használatakor. |
 | packetSize | Megadja azt a hálózati csomagméretet (kilobájtban), amelynek célja az adatok több blokkra való felosztása. Ha nagy mennyiségű adatot másolhat, a csomagméret növelése a legtöbb esetben növelheti az SAP HANA olvasási sebességét. A csomagméret beállításakor teljesítményvizsgálat ajánlott. | Nem.<br>Az alapértelmezett érték 2048 (2 MB). |
@@ -233,7 +233,7 @@ A Data Factory SAP HANA-összekötő beépített adatparticionálást biztosít 
 
 ![A partícióbeállításainak képernyőképe](./media/connector-sap-hana/connector-sap-hana-partition-options.png)
 
-Ha engedélyezi a particionált másolást, a Data Factory párhuzamos lekérdezéseket futtat az SAP HANA-forrással az adatok partíciók általi lekéréséhez. A párhuzamos mértéket a [`parallelCopies`](copy-activity-performance.md#parallel-copy) másolási tevékenység beállítása szabályozza. Ha például négyre állítva, `parallelCopies` a Data Factory egyidejűleg négy lekérdezést hoz létre és futtat a megadott partícióbeállítás és -beállítások alapján, és minden lekérdezés lekéri az adatok egy részét az SAP HANA-ból.
+Ha engedélyezi a particionált másolást, a Data Factory párhuzamos lekérdezéseket futtat az SAP HANA-forrással az adatok partíciók általi lekéréséhez. A párhuzamos mértéket a [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) másolási tevékenység beállítása szabályozza. Ha például négyre állítva, `parallelCopies` a Data Factory egyidejűleg négy lekérdezést hoz létre és futtat a megadott partícióbeállítás és -beállítások alapján, és minden lekérdezés lekéri az adatok egy részét az SAP HANA-ból.
 
 Azt javasoljuk, hogy engedélyezze a párhuzamos másolás adatparticionálás, különösen akkor, ha nagy mennyiségű adatot az SAP HANA betöltése. Az alábbiakban a különböző forgatókönyvekhez javasolt konfigurációkat javasoljuk. Amikor adatokat másol fájlalapú adattárba, ajánlott egy mappába több fájlként írni (csak mappanevet kell megadni), ebben az esetben a teljesítmény jobb, mint egyetlen fájlba írni.
 

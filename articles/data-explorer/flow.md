@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: dorcohen
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 03/15/2020
-ms.openlocfilehash: 7745888dcaa1324d4a9d956e93d0504c8da8c026
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/25/2020
+ms.openlocfilehash: 198b78d5bab15057fdb6c7f6d4e8fff9f77d496e
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501770"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397090"
 ---
 # <a name="microsoft-flow-connector-preview"></a>Microsoft Flow-összekötő (előzetes verzió)
 
@@ -116,7 +116,7 @@ Használja a Vezérlőközpont futtatása parancsot, és jelenítse meg az eredm
 ### <a name="run-query-and-list-results"></a>Lekérdezési és listaeredmények futtatása
 
 > [!Note]
-> Ha a lekérdezés pontokkal kezdődik (azaz [vezérlőpara),](https://docs.microsoft.com/azure/kusto/management/index)használja a [Vezérlés futtatása parancsot, és jelenítse meg az eredményeket](#run-control-command-and-visualize-results)
+> Ha a lekérdezés pontokkal kezdődik (azaz [vezérlőpara),](https://docs.microsoft.com/azure/kusto/management/index)használja a [Vezérlés futtatása parancsot, és jelenítse meg az eredményeket.](#run-control-command-and-visualize-results)
 
 Ez a művelet lekérdezést küld a Kusto-fürtnek. Az ezt követően hozzáadott műveletek a lekérdezés eredményeinek minden sorában iterálni.
 
@@ -130,7 +130,7 @@ A következő példa percenként elindítja a lekérdezést, és e-mailt küld a
 ### <a name="run-query-and-visualize-results"></a>Lekérdezés futtatása és eredmények megjelenítése
         
 > [!Note]
-> Ha a lekérdezés pontokkal kezdődik (azaz [vezérlőpara),](https://docs.microsoft.com/azure/kusto/management/index)használja a [Vezérlés futtatása parancsot, és jelenítse meg az eredményeket](#run-control-command-and-visualize-results)
+> Ha a lekérdezés pontokkal kezdődik (azaz [vezérlőpara),](https://docs.microsoft.com/azure/kusto/management/index)használja a [Vezérlés futtatása parancsot, és jelenítse meg az eredményeket.](#run-control-command-and-visualize-results)
         
 A Lekérdezés futtatása és az eredményművelet megjelenítése segítségével a Kusto-lekérdezés eredményét táblázatként vagy diagramként jelenítheti meg. Ezzel a folyamattal például napi ICM-jelentéseket kaphat e-mailben. 
     
@@ -147,17 +147,21 @@ Bármely folyamatba beilleszthet egy lépést, amellyel e-mailben küldhet jelen
 
 1. Válassza a **+ Új lépés lehetőséget,** ha új lépést szeretne hozzáadni a folyamathoz.
 1. A keresőmezőbe írja be az Office 365-öt, és válassza az **Office 365 Outlook**lehetőséget.
-1. Válassza az **E-mail küldése** lehetőséget.
+1. Válassza **az E-mail küldése (V2) lehetőséget.**
 1. Adja meg azt az e-mail címet, ahová el szeretné küldeni az e-mail jelentést.
 1. Adja meg az e-mail tárgyát.
-1. A *Törzs* mező Dinamikus tartalom mezőjében válassza a **Törzs**lehetőséget.
+1. Válassza **a Kód nézet lehetőséget.**
+1. Helyezze a kurzort a *Törzs* mezőbe, és válassza **a Dinamikus tartalom hozzáadása**lehetőséget.
+1. Válassza **a BodyHtml**lehetőséget.
+    ![E-mail küldése](./media/flow/flow-send-email.png)
 1. Válassza a **Speciális beállítások megjelenítése** lehetőséget.
 1. A *Mellékletek neve -1* mezőben válassza a **Melléklet neve lehetőséget.**
 1. A *Mellékletek tartalma* mezőben válassza a **Melléklettartalma**lehetőséget.
+1. Ha szükséges, adjon hozzá további mellékleteket. 
 1. Szükség esetén állítsa be a fontossági szintet.
 1. Kattintson a **Mentés** gombra.
 
-![E-mail küldése](./media/flow/flow-sendemail.png)
+![E-mail küldése](./media/flow/flow-add-attachments.png)
 
 ## <a name="check-if-your-flow-succeeded"></a>Annak ellenőrzése, hogy a folyamat sikeres volt-e
 

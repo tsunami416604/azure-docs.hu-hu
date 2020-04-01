@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e3297319c67ad2b7c94371356cde49113c7ef737
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d26dc55cfd0f2ef0bb78e4153fffe3f1cb910b73
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79251608"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474868"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformok és eszközök adatelemzési projektekhez
 
@@ -49,7 +49,7 @@ Ez is ml **és AI szerszámok** szeret xgboost, mxnet, és Vowpal Wabbit.
 
 Jelenleg a DSVM **elérhető Windows** és Linux **CentOS** operációs rendszerekben. Válassza ki a DSVM méretét (a CPU-magok számát és a memória mennyiségét) a végrehajtani kívánt adatelemzési projektek igényei alapján. 
 
-A DSVM Windows-kiadásáról további információt a [Microsoft Data Science virtuális gép](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) az Azure Piactéren című témakörben talál. A DSVM Linux-kiadásáról lásd: [Linux Data Science Virtual Machine](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/).
+A DSVM Windows-kiadásáról további információt a [Microsoft Data Science virtuális gép](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) az Azure Piactéren című témakörben talál. A DSVM Linux-kiadásáról lásd: [Linux Data Science Virtual Machine](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu).
 
 Ha meg szeretné tudni, hogyan hajthatja végre hatékonyan a DSVM-en végzett gyakori adatelemzési feladatokat, tekintse [meg a 10 dolgot, amelyet az adatelemzési virtuális gépen végezhet.](../data-science-virtual-machine/vm-do-ten-things.md)
 

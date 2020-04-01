@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: af1032de9aabac45ad7a86cfe1f36ed2c04c0f71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1c5bdd1d210a1933699cad52dbf123b50048e01
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75444619"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421334"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Az Azure Cosmos DB elérése virtuális hálózatról (VNet)
 
@@ -50,7 +50,7 @@ Az engedélyezés érvényesíti a virtuális hálózati erőforrás-művelet en
 Csak a virtuális hálózat és az Azure Cosmos-fiókhoz hozzáadott alhálózatai rendelkeznek hozzáféréssel. A társviszony-létesített virtuális hálózatok nem férhetnek hozzá a fiókhoz, amíg a társviszonyba tartozó virtuális hálózatokalhálózatai hozzá nem kerülnek a fiókhoz.
 
 ### <a name="what-is-the-maximum-number-of-subnets-allowed-to-access-a-single-cosmos-account"></a>Mi az egyetlen Cosmos-fiók eléréséhez engedélyezett alhálózatok maximális száma? 
-Jelenleg legbőlegelhet egy Azure Cosmos-fiókhoz engedélyezett legbőlegelhető 64 alhálózatot.
+Jelenleg legbőlegfelvan egészen 256 alhálózat engedélyezett egy Azure Cosmos-fiókhoz.
 
 ### <a name="can-i-enable-access-from-vpn-and-express-route"></a>Engedélyezhetem a hozzáférést a VPN-ről és az expressz útvonalról? 
 Az Azure Cosmos-fiók elérése expressz útvonalon a helyszínen, engedélyeznie kell a Microsoft társviszony-létesítés. Miután ip-tűzfalat vagy virtuális hálózati hozzáférési szabályokat tett, hozzáadhatja a Microsoft társviszony-létesítéséhez használt nyilvános IP-címeket az Azure Cosmos-fiók IP-tűzfalán, hogy a helyszíni szolgáltatások hozzáférjenek az Azure Cosmos-fiókhoz. 

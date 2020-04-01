@@ -11,47 +11,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/17/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 003d677dcdead5792f932ecfe6350df63184cee2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3cfe80962c11e37c79549a74d7e4b19cd08f4684
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75368325"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420921"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---powershell-preview"></a>IPv6-alapú kétverű alkalmazás központi telepítése egyszerű terheléselosztóhasználatával – PowerShell (előzetes verzió)
+# <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---powershell"></a>IPv6-alapú kétverű alkalmazás központi telepítése alapszintű terheléselosztóval – PowerShell
 
-Ebből a cikkből megtudhatja, hogyan telepíthet kétverű (IPv4 + IPv6) alkalmazást alapszintű terheléselosztóval az Azure PowerShell használatával, amely kétverű virtuális hálózatot és alhálózatot, egy kettős (IPv4 + IPv6) előtér-konfigurációval rendelkező egyszerű terheléselosztót, hálózati adapterekkel rendelkező virtuális gépeket tartalmaz, kettős IP-konfigurációval, hálózati biztonsági csoporttal és nyilvános IP-címvel rendelkeznek.
+Ez a cikk bemutatja, hogyan telepíthet egy kétverű (IPv4 + IPv6) alkalmazást alapszintű terheléselosztóval az Azure PowerShell használatával, amely kétverű virtuális hálózatot és alhálózatot, egy két (IPv4 + IPv6) előtér-konfigurációval rendelkező egyszerű terheléselosztót, kettős IP-konfigurációval rendelkező hálózati adapterrel rendelkező virtuális gépeket, hálózati biztonsági csoportot és nyilvános IP-címeket tartalmaz.
 
 Ha kétverű (IPV4 + IPv6) alkalmazást szeretne üzembe helyezni a standard terheléselosztó használatával, [olvassa el az IPv6-alapú kettős veremalkalmazás üzembe helyezése standard terheléselosztóval az Azure PowerShell használatával című témakört.](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)
 
-> [!Important]
-> Az Azure Virtual Network IPv6-támogatása jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Ha úgy dönt, hogy helyileg telepíti és használja a PowerShellt, ez a cikk az Azure PowerShell-modul 6.9.0-s vagy újabb verzióját igényli. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
-## <a name="prerequisites"></a>Előfeltételek
-Mielőtt üzembe helyezne egy kétverű alkalmazást az Azure-ban, konfigurálnia kell az előfizetését ehhez az előzetes verzióhoz a következő Azure PowerShell használatával:
-
-Regisztráljon a következőképpen:
-
-```azurepowershell
-Register-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
-Register-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
-```
-A funkcióregisztráció befejezéséhez akár 30 perc is igénybe vesszen. A regisztrációs állapot ot a következő Azure PowerShell-parancs futtatásával ellenőrizheti: Ellenőrizze a regisztrációt az alábbiak szerint:
-```azurepowershell
-Get-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
-Get-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
-```
-A regisztráció befejezése után futtassa a következő parancsot:
-
-```azurepowershell
-Register-AzResourceProvider -ProviderNamespace Microsoft.Network
-```
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
@@ -272,7 +251,7 @@ Hozzon létre virtuális hálózati adaptereket a [New-AzNetworkInterface](/powe
     -PrivateIpAddressVersion IPv4 `
     -LoadBalancerBackendAddressPool $backendPoolv4 `
     -PublicIpAddress  $RdpPublicIP_1
-    
+      
   $Ip6Config=New-AzNetworkInterfaceIpConfig `
     -Name dsIp6Config `
     -Subnet $vnet.subnets[0] `
@@ -373,8 +352,6 @@ Az IPv6 kettős veremű virtuális hálózatot az Azure Portalon az alábbiak sz
 
   ![IPv6 kettős halmozott virtuális hálózat az Azure-ban](./media/virtual-network-ipv4-ipv6-dual-stack-powershell/dual-stack-vnet.png)
 
-> [!NOTE]
-> Az IPv6 for Azure virtuális hálózat érhető el az Azure Portalon írásvédett ebben az előzetes verzióban.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

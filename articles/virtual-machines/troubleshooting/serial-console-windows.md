@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 87ccb1c4995337b385f685797980a9fc3962bc6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 68089a86b8b832638abd30aa7c36aa1c5bd84225
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79267000"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410122"
 ---
 # <a name="azure-serial-console-for-windows"></a>Azure soros konzol windowshoz
 
@@ -60,7 +60,7 @@ Másik lehetőségként a 2018 februárja előtt létrehozott Windows virtuális
 
 1. Csatlakozás a Windows virtuális géphez a Távoli asztal használatával
 1. A felügyeleti parancssorból futtassa a következő parancsokat:
-    - `bcdedit /ems {current} on`
+    - `bcdedit /ems {current} on`, `bcdedit /ems '{current}' on` vagy ha PowerShellt használ
     - `bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 1. Indítsa újra a SAC-konzol engedélyezéséhez szükséges rendszert.
 
@@ -102,15 +102,15 @@ Ha engedélyeznie kell a Windows rendszertöltő üzenetének megjelenítését 
 
     ![Csatlakozás a SAC-hoz](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
 
-1.  Adja `cmd` meg, hogy hozzon létre egy csatornát, amely egy CMD-példány.
+1.    Adja `cmd` meg, hogy hozzon létre egy csatornát, amely egy CMD-példány.
 
-1.  A `ch -si 1` CMD-példányt futtató csatornára való váltáshoz írja be vagy nyomja `<esc>+<tab>` le a billentyűparancsokat.
+1.    A `ch -si 1` CMD-példányt futtató csatornára való váltáshoz írja be vagy nyomja `<esc>+<tab>` le a billentyűparancsokat.
 
-1.  Nyomja le az **Enter**billentyűt, és írja be a rendszergazdai engedélyekkel rendelkező bejelentkezési hitelesítő adatokat.
+1.    Nyomja le az **Enter**billentyűt, és írja be a rendszergazdai engedélyekkel rendelkező bejelentkezési hitelesítő adatokat.
 
-1.  Miután megadta az érvényes hitelesítő adatokat, megnyílik a CMD-példány.
+1.    Miután megadta az érvényes hitelesítő adatokat, megnyílik a CMD-példány.
 
-1.  PowerShell-példány indításához `PowerShell` írja be a CMD-példányba, majd nyomja le az **Enter billentyűt.**
+1.    PowerShell-példány indításához `PowerShell` írja be a CMD-példányba, majd nyomja le az **Enter billentyűt.**
 
     ![PowerShell-példány megnyitása](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
 

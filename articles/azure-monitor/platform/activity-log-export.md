@@ -7,20 +7,20 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: edaa585ffb3448a80b021aa924a9d654ac829931
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12c750f96b8852cdd6a6039ebfa750c2ee792a6b
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79096286"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396724"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Azure-tevékenységnapló exportálása tárhelyre vagy Azure-eseményközpontokba
 
 > [!IMPORTANT]
-> Az Azure-tevékenységnapló Azure Storage és Az Azure Event Hubs szolgáltatásba való elküldésének módja [diagnosztikai beállításokra](diagnostic-settings.md)változott. Ez a cikk az elavult örökölt módszert ismerteti. Az összehasonlításért olvassa el az [Azure-tevékenységnapló-gyűjtemény frissítése és exportálása.](diagnostic-settings-legacy.md)
+> Az Azure-tevékenységnapló Azure Storage és Az Azure Event Hubs szolgáltatásba való elküldésének módja [diagnosztikai beállításokra](diagnostic-settings.md)változott. Ez a cikk az elavult örökölt módszert ismerteti. Az összehasonlításért tekintse meg az [Azure-tevékenységnapló gyűjtésére és elemzésére](activity-log-collect.md) című témakört az Azure Monitorban.
 
 
-Az [Azure-tevékenységnapló](platform-logs-overview.md) betekintést nyújt az Azure-előfizetésben bekövetkezett előfizetési szintű eseményekbe. A mellett, hogy megtekinti a tevékenységnaplót az Azure Portalon, vagy átmásolja egy Log Analytics-munkaterületre, ahol elemezhető az Azure Monitor által gyűjtött egyéb adatokkal, létrehozhat egy naplóprofilt a tevékenységnapló archiválására egy Azure-tárfiókba, vagy streamelheti egy Eseményközpont.
+Az [Azure-tevékenységnapló](platform-logs-overview.md) betekintést nyújt az Azure-előfizetésben bekövetkezett előfizetési szintű eseményekbe. A mellett, hogy megtekinti a tevékenységnaplót az Azure Portalon, vagy átmásolja egy Log Analytics-munkaterületre, ahol elemezhető az Azure Monitor által gyűjtött más adatokkal, létrehozhat egy naplóprofilt a tevékenységnapló archiválásához egy Azure-tárfiókba, vagy streamelheti egy Event Hubba.
 
 ## <a name="archive-activity-log"></a>Archiválási tevékenységnapló
 A tevékenységnapló tárfiókba való archiválása akkor hasznos, ha 90 napnál hosszabb ideig szeretné megőrizni a naplóadatokat (az adatmegőrzési házirend teljes körű szabályozásával) naplózás, statikus elemzés vagy biztonsági mentés esetén. Ha csak 90 napig vagy annál rövidebb ideig kell megőriznie az eseményeket, nem kell archiválást beállítania egy tárfiókhoz, mivel a tevékenységnapló-események 90 napig megmaradnak az Azure platformon.

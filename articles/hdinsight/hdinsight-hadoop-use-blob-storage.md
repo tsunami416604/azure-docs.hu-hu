@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: e62f6f8df51c6acf4e2ad8e28e431d264c2c99e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6a4ae2932f8d294ecf71de0ae405204a1f4d7b4d
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79037245"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436945"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Az Azure Storage és az Azure HDInsight-fürtök együttes használata
 
@@ -40,7 +40,7 @@ Nem támogatott egy blobtároló megosztása több fürt alapértelmezett fájlr
 
 ## <a name="access-files-from-within-cluster"></a>Fájlok elérése a fürtből
 
-A Data Lake Storage-ban található fájlok hdinsight-fürtről többféleképpen érhetők el. Az URI séma titkosítatlan hozzáférést (a *wasb:* előtaggal) és SSL titkosított hozzáférést (a *wasbs* előtaggal) biztosít. Ajánlott a *wasbs* előtagot használnia, amikor lehetséges, még akkor is, amikor az Azure-ban ugyanabban a régióban lévő adatokat éri el.
+A Data Lake Storage-ban található fájlok hdinsight-fürtről többféleképpen érhetők el. Az URI-séma titkosítatlan hozzáférést biztosít (a *wasb:* előtaggal) és a TLS titkosított hozzáférést *(wasbs-szel).* Ajánlott a *wasbs* előtagot használnia, amikor lehetséges, még akkor is, amikor az Azure-ban ugyanabban a régióban lévő adatokat éri el.
 
 * **A teljes név használatával**. Ezzel a módszerrel az elérni kívánt fájl teljes elérési útját megadja.
 

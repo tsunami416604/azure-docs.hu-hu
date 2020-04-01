@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: e4103f8360f6fa80470b0f8002a61f8ac903bd8b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b94725d4d3eb9fd6f13a39d00486b4ab085b9ef9
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255430"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473935"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Teljesítmény- és méretezhetőségi ellenőrzőlista a Blob storage-hoz
 
@@ -125,7 +125,7 @@ A sávszélesség és a hálózati kapcsolat minősége fontos szerepet játszik
 
 #### <a name="throughput"></a>Teljesítmény
 
-A sávszélesség esetében a probléma gyakran az ügyfél képességei. A nagyobb Azure-példányok hálózati adapterek nagyobb kapacitással rendelkeznek, ezért érdemes egy nagyobb példányt vagy több virtuális gépet használni, ha egyetlen gépről magasabb hálózati korlátokra van szüksége. Ha az Azure Storage-t egy helyszíni alkalmazásból éri el, akkor ugyanaz a szabály vonatkozik: ismerje meg az ügyféleszköz hálózati képességeit és az Azure Storage helyéhez való hálózati kapcsolatot, és szükség szerint javítsa őket, vagy tervezze meg alkalmazás a képességeiken belül.
+A sávszélesség esetében a probléma gyakran az ügyfél képességei. A nagyobb Azure-példányok hálózati adapterek nagyobb kapacitással rendelkeznek, ezért érdemes egy nagyobb példányt vagy több virtuális gépet használni, ha egyetlen gépről magasabb hálózati korlátokra van szüksége. Ha az Azure Storage-t egy helyszíni alkalmazásból éri el, akkor ugyanaz a szabály vonatkozik: ismerje meg az ügyféleszköz hálózati képességeit és az Azure Storage-helyhez való hálózati kapcsolatot, és szükség szerint javítsa őket, vagy tervezze meg az alkalmazást, hogy a képességeiknek megfelelően működjön.
 
 #### <a name="link-quality"></a>Kapcsolat minősége
 
@@ -267,7 +267,7 @@ Blobok gyors feltöltéséhez először határozza meg, hogy egy blobot vagy tö
 Egyetlen nagy blob gyors feltöltéséhez az ügyfélalkalmazás párhuzamosan töltheti fel a blokkokat vagy az oldalakat, figyelembe véve az egyes blobok méretezhetőségi céljait és a tárfiók egészét. Az Azure Storage-ügyfélkódtárak támogatják a párhuzamos feltöltést. A következő tulajdonságok kal például megadhatja a .NET vagy a Java rendszerben engedélyezett egyidejű kérelmek számát. Más támogatott nyelvek ügyféltárai hasonló beállításokat biztosítanak.
 
 - A .NET beállításhoz állítsa be a [BlobRequestOptions.ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount) tulajdonságot.
-- Java/Android esetén hívja meg a [BlobRequestOptions.setConcurrentRequestCount(végső integer concurrentRequestCount)](/java/api/com.microsoft.azure.storage.blob._blob_request_options.setconcurrentrequestcount) metódust.
+- Java/Android esetén hívja meg a [BlobRequestOptions.setConcurrentRequestCount(végső integer concurrentRequestCount)](/java/api/com.microsoft.azure.storage.blob.blobrequestoptions.setconcurrentrequestcount) metódust.
 
 ### <a name="upload-many-blobs-quickly"></a>Töltsön fel sok blobot gyorsan
 

@@ -3,12 +3,12 @@ title: Az Azure Service Fabric fürtbeállításainak módosítása
 description: Ez a cikk ismerteti a háló beállításait és a háló frissítési szabályzatok, amelyek testre szabhatók.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: a4e64a4db70d419a3ef6441545d53abd298c85bb
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8ca40791e625f1ea5904c4e2516e3f211ba551cf
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346796"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477892"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric-fürt beállításainak testreszabása
 Ez a cikk ismerteti a különböző háló beállításait a Service Fabric-fürt, amely testre szabható. Az Azure-ban üzemeltetett fürtök esetében testreszabhatja a beállításokat az [Azure Portalon](https://portal.azure.com) keresztül vagy egy Azure Resource Manager-sablon használatával. További információ: [Az Azure-fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-azure.md)című témakörben talál. Önálló fürtök esetén a *fürtökConfig.json* fájl frissítésével és a fürt konfigurációs frissítésével testreszabhatja a beállításokat. További információt [az Önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md)című témakörben talál.
@@ -29,7 +29,7 @@ Az alábbi lista a Fabric-beállításokat, amelyek testre szabható, szakasz sz
 |BodyChunkMéret |Uint, alapértelmezett érték: 16384 |Dinamikus| Megadja a test olvasásához használt adattömb méretét bájtban. |
 |CrlCheckingFlag|uint, az alapértelmezett érték: 0x40000000 |Dinamikus| Jelzők az alkalmazás/szolgáltatás tanúsítványlánc érvényesítéséhez; pl. crl-ellenőrzés 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY A 0-ra állítás letiltja a visszavont tanúsítványok listájának ellenőrzését A támogatott értékek teljes listáját a CertGetCertificateChain dwFlagjei dokumentálják:https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx  |
 |AlapértelmezettHttpRequestTimeout |Idő másodpercben. alapértelmezett 120 |Dinamikus|Adja meg az időtartományt másodpercben.  Megadja az alapértelmezett kérelem időmeghosszabbítása a http-kérelmek feldolgozása a http app átjáró. |
-|ForwardClientCertificate (Továbbítügyfél-tanúsítvány)|az alapértelmezett érték HAMIS|Dinamikus|Ha hamis, a fordított proxy nem kér az ügyféltanúsítványt. Ha értéke igaz, a fordított proxy az SSL-kézfogás során kéri az ügyféltanúsítványt, és továbbítja a base64 kódolású PEM formátumú karakterláncot a szolgáltatásnak egy X-Client-Certificate nevű fejlécben. a tanúsítvány adatainak vizsgálata után. Ha ez igaz, és az ügyfél nem mutat be tanúsítványt, a fordított proxy egy üres fejlécet továbbít, és hagyja, hogy a szolgáltatás kezelje az esetet. Fordított proxy fog működni, mint egy átlátszó réteg. További információ: [Ügyféltanúsítvány-hitelesítés beállítása.](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy) |
+|ForwardClientCertificate (Továbbítügyfél-tanúsítvány)|az alapértelmezett érték HAMIS|Dinamikus|Ha hamis, a fordított proxy nem kér az ügyféltanúsítványt. Ha értéke igaz, a fordított proxy az SSL-kézfogás során kéri az ügyféltanúsítványt, és továbbítja a base64 kódolású PEM formátumú karakterláncot a szolgáltatásnak egy X-Client-Certificate nevű fejlécben. Ha ez igaz, és az ügyfél nem mutat be tanúsítványt, a fordított proxy egy üres fejlécet továbbít, és hagyja, hogy a szolgáltatás kezelje az esetet. Fordított proxy fog működni, mint egy átlátszó réteg. További információ: [Ügyféltanúsítvány-hitelesítés beállítása.](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy) |
 |GatewayAuthCredentialType típus |karakterlánc, az alapértelmezett érték "Nincs" |Statikus| A http-alkalmazásátjáró végpontja in használandó biztonsági hitelesítő adatok típusát jelzi: Az érvényes értékek: Nincs/X509. |
 |GatewayX509CertificateFindType |karakterlánc, az alapértelmezett érték a "FindByThumbprint" |Dinamikus| Azt jelzi, hogy miként kereshet tanúsítványt a GatewayX509CertificateStoreName Supported value: FindByThumbprint érték által megadott tárolóban; FindBySubjectName. |
 |GatewayX509CertificateFindValue | karakterlánc, az alapértelmezett a "" |Dinamikus| A http-alkalmazásátjáró-tanúsítvány megkereséséhez használt keresési szűrőérték. Ez a tanúsítvány a https-végponton van konfigurálva, és az alkalmazás identitásának ellenőrzésére is használható, ha a szolgáltatások szükséges. Először a FindValue értéket keresse meg; és ha ez nem létezik; A FindValueSecondary keresett. |
@@ -55,9 +55,9 @@ Az alábbi lista a Fabric-beállításokat, amelyek testre szabható, szakasz sz
 | **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
 |MinReplicaSetMéret|int, az alapértelmezett érték 0|Statikus|A MinReplicaSetSize for BackupRestoreService |
-|Elhelyezési kényszerek|karakterlánc, az alapértelmezett a ""|Statikus|  A BackupRestore szolgáltatás elhelyezési kényszerei |
+|Elhelyezési kényszerek|karakterlánc, az alapértelmezett a ""|Statikus|    A BackupRestore szolgáltatás elhelyezési kényszerei |
 |SecretEncryptionCertThumbprint|karakterlánc, az alapértelmezett a ""|Dinamikus|A titkos titkosítási X509 tanúsítvány ujjlenyomata |
-|SecretEncryptionCertX509StoreName|karakterlánc, az alapértelmezett érték "Saját"|   Dinamikus|    Ez azt a tanúsítványt jelzi, amelyet a creds titkosításához és visszafejtéséhez használ Az X.509 tanúsítványtároló neve, amelyet a Biztonsági másolat-visszaállítás szolgáltatás által használt tárolóhitelesítő adatok titkosítására használnak |
+|SecretEncryptionCertX509StoreName|karakterlánc, az alapértelmezett érték "Saját"|    Dinamikus|    Ez azt a tanúsítványt jelzi, amelyet a creds titkosításához és visszafejtéséhez használ Az X.509 tanúsítványtároló neve, amelyet a Biztonsági másolat-visszaállítás szolgáltatás által használt tárolóhitelesítő adatok titkosítására használnak |
 |CélReplicaSetMéret|int, az alapértelmezett érték 0|Statikus| A TargetReplicaSetSize for BackupRestoreService |
 
 ## <a name="clustermanager"></a>ClusterManager
@@ -147,7 +147,7 @@ Az alábbi lista a Fabric-beállításokat, amelyek testre szabható, szakasz sz
 | **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
 |MinReplicaSetMéret|int, az alapértelmezett érték 0|Statikus|A MinReplicaSetSize for EventStore szolgáltatás |
-|Elhelyezési kényszerek|karakterlánc, az alapértelmezett a ""|Statikus|  Az EventStore szolgáltatás elhelyezési kényszerei |
+|Elhelyezési kényszerek|karakterlánc, az alapértelmezett a ""|Statikus|    Az EventStore szolgáltatás elhelyezési kényszerei |
 |CélReplicaSetMéret|int, az alapértelmezett érték 0|Statikus| Az EventStore szolgáltatás TargetReplicaSetSize szolgáltatása |
 
 ## <a name="fabricclient"></a>FabricClient (Hálóclient)
@@ -270,7 +270,7 @@ Az alábbi lista a Fabric-beállításokat, amelyek testre szabható, szakasz sz
 |CommonNameNtlmPasswordSecret|SecureString, az alapértelmezett érték: Common::SecureString("")| Statikus|A jelszó titok, amely magként használt, hogy ugyanazt a jelszót hozza létre NTLM-hitelesítés használatakor |
 |DiskSpaceHealthReportingintervalWhenCloseToOutOfDiskspace |TimeSpan, az alapértelmezett érték common::TimeSpan::FromMinutes(5)|Dinamikus|Adja meg az időtartományt másodpercben. Az állapotesemény jelentéséhez szükséges lemezterület ellenőrzése között eltelt idő, ha a lemez közel van a területhez. |
 |DiskSpaceHealthReportingIntervalWhenenoughDiskSpace |TimeSpan, az alapértelmezett érték common::TimeSpan::FromMinutes(15)|Dinamikus|Adja meg az időtartományt másodpercben. Az állapotesemény jelentéséhez szükséges lemezterület ellenőrzése között eltelt idő, ha van elég hely a lemezen. |
-|EnableImageStoreHealthReporting |bool, az alapértelmezett érték IGAZ |Statikus|Konfigurációs adatokkal határozhatja meg, hogy a fájltároló szolgáltatás nak jelentenie kell-e az állapotát. |
+|EnableImageStoreHealthReporting |bool, az alapértelmezett érték IGAZ    |Statikus|Konfigurációs adatokkal határozhatja meg, hogy a fájltároló szolgáltatás nak jelentenie kell-e az állapotát. |
 |FreeDiskspaceNotificationSizeInKB|int64, az alapértelmezett\*érték 25 1024 |Dinamikus|Az a szabad lemezterület mérete, amely alatt egészségügyi figyelmeztetés fordulhat elő. A konfiguráció minimális értéke és a FreeDiskSpaceNotificationThresholdPercentage konfiguráció az állapotfigyelmeztetés elküldésének meghatározásához használatos. |
 |FreeDiskSpaceNotificationThresholdpercentage|dupla, az alapértelmezett érték 0,02 |Dinamikus|A szabad lemezterület azon százaléka, amely alatt állapotfigyelmeztetés fordulhat elő. A konfiguráció minimális értéke és a FreeDiskSpaceNotificationInMB konfiguráció az állapotfigyelmeztetés elküldésének meghatározásához használatos. |
 |GenerateV1CommonNameAccount| bool, az alapértelmezett érték IGAZ|Statikus|Itt adható meg, hogy létre kell-e hozni egy v1-es létrehozási algoritmussal rendelkező fiókot. A Service Fabric 6.1-es verziójával kezdve; egy fiókot v2 generáció mindig létre. A V1-fiók olyan verziókról/verziókra való frissítéshez szükséges, amelyek nem támogatják a V2-generációt (6.1 előtt).|
@@ -320,7 +320,7 @@ Az alábbi lista a Fabric-beállításokat, amelyek testre szabható, szakasz sz
 |MaxPercentDeltaUnhealthyNodes|int, az alapértelmezett érték 10|Statikus|Fürtfrissítési állapotértékelési házirend: a különbözeti állapotjelző csomópontok maximális százaléka lehetővé tette a fürt kifogástalan állapotának megőrzését |
 |MaxPercentUpgradeDomainDeltaUnhealthyNodes|int, az alapértelmezett érték 15|Statikus|Fürtfrissítési állapotkiértékelési házirend: a nem megfelelő állapotú csomópontok különbözetének maximális százaléka egy frissítési tartományban lehetővé tette a fürt kifogástalan állapotának megőrzését |
 
-## <a name="hosting"></a>Hosting
+## <a name="hosting"></a>Üzemeltetés
 
 | **Paraméter** | **Engedélyezett értékek** | **Frissítési szabályzat** | **Útmutatás vagy rövid leírás** |
 | --- | --- | --- | --- |
@@ -547,7 +547,7 @@ Az alábbi lista a Fabric-beállításokat, amelyek testre szabható, szakasz sz
 |MinPlacementInterval | Idő másodpercben, az alapértelmezett érték 1 |Dinamikus| Adja meg az időtartományt másodpercben. Azt a minimális időtartamot határozza meg, amelynek két egymást követő elhelyezési kör előtt el kell telnie. |
 |MoveExistingReplicaForPlacement | Bool, az alapértelmezett igaz |Dinamikus|Annak beállítása, hogy a meglévő kópiát helyezze-e át az elhelyezés során. |
 |MovementPerPartitionThrottleCountingInterval | Idő másodpercben, az alapértelmezett érték 600 |Statikus| Adja meg az időtartományt másodpercben. Adja meg annak az elmúlt időköznek a hosszát, amelyhez az egyes partíciók replikamozgásait nyomon kell követni (a MovementPerPartitionThrottleThreshold-szal együtt). |
-|MovementPerPartitionThrottleThreshold | Uint, az alapértelmezett érték 50 |Dinamikus| Nem történik kiegyensúlyozási kapcsolatos mozgás egy partícióesetében, ha a partíció replikáihoz tartozó kiegyenlítési kapcsolódó mozgások száma elérte vagy meghaladta a MovementPerFailoverUnitThrottleThreshold-ot az előző intervallumban, amelyet a partíció jelzett, MovementPerPartitionThrottleCountingInterval. |
+|MovementPerPartitionThrottleThreshold | Uint, az alapértelmezett érték 50 |Dinamikus| Nincs kiegyensúlyozásgal kapcsolatos mozgás egy partícióhoz, ha a partíció replikáihoz kapcsolódó mozgások kiegyensúlyozásának száma elérte vagy meghaladta a MovementPerFailoverUnitThrottleThreshold-ot a MovementPerPartitionThrottleCountingInterval által jelzett múltbeli intervallumban. |
 |MoveParentToFixAffinityViolation | Bool, az alapértelmezett érték hamis |Dinamikus| Annak beállítása, hogy a szülőkópiák áthelyezhetők-e az affinitási megkötések javításához.|
 |Részlegeshelyszolgáltatások | Bool, az alapértelmezett igaz |Dinamikus| Azt határozza meg, hogy a fürtben lévő összes szolgáltatásreplikája "mindent vagy semmit" kerül-e a megfelelő csomópontok ra.|
 |PlaceChildWithoutParent nélkül | Bool, az alapértelmezett igaz | Dinamikus|Annak beállítása, hogy meghatározza-e, hogy a gyermekszolgáltatás replika elhelyezhető-e, ha egyetlen szülőkópia sem működik. |
@@ -568,8 +568,8 @@ Az alábbi lista a Fabric-beállításokat, amelyek testre szabható, szakasz sz
 |TraceCRMReasons |Bool, az alapértelmezett igaz |Dinamikus|Itt adható meg, hogy nyomon kell-e követni a CRM által kibocsátott mozgások okait a működési eseménycsatornára. |
 |UpgradeDomainConstraintPriority | Int, az alapértelmezett érték 1| Dinamikus|Meghatározza a frissítési tartomány megkötésének prioritását: 0: Kemény; 1: Puha; negatív: Figyelmen kívül hagyás. |
 |UseMoveCostReports | Bool, az alapértelmezett érték hamis | Dinamikus|Arra utasítja az LB-t, hogy hagyja figyelmen kívül a pontozási függvény költségelemét; potenciálisan nagy számú lépés a kiegyensúlyozottabb elhelyezés érdekében. |
-|UseSeparateSecondaryLoad | Bool, az alapértelmezett igaz | Dinamikus|Annak beállítása, hogy melyik határozza meg, hogy más másodlagos terhelést használ-e. |
-|UseSeparateSecondaryMoveCost|Bool, az alapértelmezett érték HAMIS | Dinamikus|Annak beállítása, hogy a PLB-nek más áthelyezési költséget kell-e használnia a másodlagos csomóponton, ha a UseSeparateSecondaryMoveCost ki van kapcsolva: - Az egyik csomópont másodlagos áthelyezési költsége túlterhelte az áthelyezési költséget (az összes többi csomóponton) Ha UseSeparateSecondaryMoveCost be van kapcsolva: - Jelentett áthelyezési költség másodlagos egy csomóponton lép érvénybe csak, hogy a másodlagos (nincs hatással a másodlagos más csomópontok) - Ha replika összeomlás történik - új replika jön létre az alapértelmezett áthelyezési költség a szolgáltatás szint - Ha PLB mozog a meglévő replika - mozog költség megy vele |
+|UseSeparateSecondaryLoad | Bool, az alapértelmezett igaz | Dinamikus|A másodlagos replikákhoz külön terhelést kell-e használni. |
+|UseSeparateSecondaryMoveCost | Bool, az alapértelmezett érték hamis | Dinamikus|Annak beállítása, hogy melyik határozza meg, hogy a másodlagos replikákhoz külön áthelyezési költséget kell-e használni. |
 |ValidatePlacementConstraint | Bool, az alapértelmezett igaz |Dinamikus| Itt adható meg, hogy a szolgáltatás Elhelyezésconstraint kifejezése érvényesítve legyen-e a szolgáltatás ServiceDescription frissítésekor. |
 |ValidatePrimaryPlacementConstraintOnPromote| Bool, az alapértelmezett érték IGAZ |Dinamikus|Itt adható meg, hogy a szolgáltatás Elhelyezésconstraint kifejezése ki legyen-e értékelve a feladatátvétel elsődleges beállítására. |
 |Részletes healthreportlimit | Int, alapértelmezett érték 20 | Dinamikus|Azt határozza meg, hogy egy kópiának hány alkalommal kell eltenned, mielőtt állapotfigyelmeztetést jelentenek érte (ha a részletes állapotjelentés engedélyezve van). |
@@ -685,7 +685,7 @@ Az alábbi lista a Fabric-beállításokat, amelyek testre szabható, szakasz sz
 |SettingsX509StoreName| karakterlánc, az alapértelmezett érték "MY"| Dinamikus|X509 tanúsítványtároló, amelyet a háló használ a konfiguráció védelmére |
 |UseClusterCertForIpcServerTlsSecurity|az alapértelmezett érték HAMIS|Statikus|Fürttanúsítvány használata az IPC Server TLS átviteli egység védelméhez |
 |X509mappa|karakterlánc, az alapértelmezett : /var/lib/waagent|Statikus|Az X509-tanúsítványokat és személyes kulcsokat tartalmazó mappa |
-|TLS1_2_CipherList| sztring| Statikus|Ha nem üres karakterláncra van állítva; felülírja a TLS1.2 és az alatti támogatott titkosítási listát. Lásd a támogatott rejtjellista visszakeresésére szolgáló "openssl-ciphers" dokumentációt és a listaformátumot Példa a TLS1.2 erős titkosítási listájára: "ECDHE-ECDSA-AES256-GC M-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384: ECDHE-RSA-AES-128-GCM-SHA256:ECDHE-ECDSA-AES256-CBC-SHA384:ECDHE-ECDSA-AES12 8-CBC-SHA256:ECDHE-RSA-AES256-CBC-SHA384:ECDHE-RSA-AES128-CBC-SHA256" Csak Linuxra vonatkozik. |
+|TLS1_2_CipherList| sztring| Statikus|Ha nem üres karakterláncra van állítva; felülírja a TLS1.2 és az alatti támogatott titkosítási listát. Lásd a támogatott rejtjellista visszakeresésére szolgáló "openssl-ciphers" dokumentációt és a listaformátumot Példa a TLS1.2 erős titkosítási listájára: "ECDHE-ECDSA-AES256-GCM--SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES-128-GCM-SHA256:ECDHE-ECDSA-AES256-CBC-SHA384:ECDHE-ECDSA-AES128--CBC-SHA256:ECDHE-RSA-AES256-CBC-SHA384:ECDHE-RSA-AES128-CBC-SHA256" Csak Linuxra vonatkozik. |
 
 ## <a name="securityadminclientx509names"></a>Biztonsági/AdminClientX509Nevek
 

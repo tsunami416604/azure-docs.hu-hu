@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: 698fab470cdc8b8d04fa4319fd71c31b58d1c5a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2c7cad2dfdcd55073a1cf09d79e5223b666ced5f
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066880"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478145"
 ---
 # <a name="custom-script-extension-for-windows"></a>Egyéniszkript-bővítmény Windows rendszerre
 
@@ -106,7 +106,7 @@ Ezeket az elemeket bizalmas adatként kell kezelni, és a bővítmények védett
 > A bővítménynek csak egy verziója telepíthető egy virtuális gépre egy adott időpontban, és az egyéni parancsfájl kétszeri megadása ugyanabban az Erőforrás-kezelő sablonban ugyanahhoz a virtuális géphez sikertelen lesz.
 
 > [!NOTE]
-> Ezt a sémát használhatjuk a VirtualMachine erőforráson belül vagy önálló erőforrásként. Az erőforrás nevének "virtualMachineName/extensionName" formátumban kell lennie, ha ezt a bővítményt önálló erőforrásként használja az ARM sablonban. 
+> Ezt a sémát használhatjuk a VirtualMachine erőforráson belül vagy önálló erőforrásként. Az erőforrás nevének "virtualMachineName/extensionName" formátumban kell lennie, ha ezt a bővítményt önálló erőforrásként használja az ARM sablonban.
 
 ### <a name="property-values"></a>Tulajdonság értékek
 
@@ -146,6 +146,8 @@ A nyilvános beállítások használata hasznos lehet a hibakereséshez, de ajá
 A nyilvános beállításokat a rendszer tiszta szövegként küldi el a virtuális gépnek, ahol a parancsfájl végrehajtása megtörténik.  A védett beállítások titkosítva vannak egy csak az Azure és a virtuális gép által ismert kulcs használatával. A beállításokat a rendszer a virtuális gépre menti, ahogy elküldésük kor, azaz ha a beállítások titkosítva vannak, akkor a virtuális gép titkosított anam-re kerül. A titkosított értékek visszafejtéséhez használt tanúsítvány a virtuális gép tárolja, és a beállítások visszafejtésére (ha szükséges) futásidőben.
 
 ####  <a name="property-managedidentity"></a>Tulajdonság: managedIdentity
+> [!NOTE]
+> Ezt a tulajdonságot csak védett beállításokban **szabad** megadni.
 
 A CustomScript (1.10-es verziótól) támogatja a [felügyelt identitásletöltést](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) a "fileUris" beállításban megadott URL-címekről. Lehetővé teszi a CustomScript számára az Azure Storage privát blobjainak vagy tárolóinak elérését anélkül, hogy a felhasználónak olyan titkos kulcsokat kellene átadnia, mint a SAS-jogkivonatok vagy a tárfiók kulcsai.
 
@@ -278,7 +280,7 @@ Az egyéni parancsfájl-bővítmény méretezési készleten történő üzembe 
 
 Az egyéni parancsfájl-bővítmény üzembe helyezéséhez a klasszikus virtuális gépeken használhatja az Azure Portalon vagy a klasszikus Azure PowerShell-parancsmagokat.
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
 Keresse meg a klasszikus virtuálisgép-erőforrást. Válassza **a Bővítmények** lehetőséget a Beállítások **csoportban.**
 

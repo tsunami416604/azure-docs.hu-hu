@@ -10,12 +10,12 @@ ms.date: 03/19/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: bef3b53a160f17248c1a26e97bc85a86843cb3c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e7878cae7bc6aabf1db58bfd63338955b9e830d3
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80061214"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478237"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>Ügyfél által felügyelt kulcsok konfigurálása az Azure Key Vault használatával az Azure Portal használatával
 
@@ -32,7 +32,7 @@ Ha tudni szeretné, hogyan engedélyezheti ezeket a tulajdonságokat egy meglév
 - [A soft-delete használata a PowerShell használatával.](../../key-vault/key-vault-soft-delete-powershell.md)
 - [A soft-delete használata a CLI-vel.](../../key-vault/key-vault-soft-delete-cli.md)
 
-Csak a 2048-as méretű RSA-kulcsok at támogatja az Azure Storage titkosítása. A kulcsokról további információt az [Azure Key Vault-kulcsok, titkos kulcsok és tanúsítványok –](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys) **Kulcstároló-kulcsok** című témakörben talál.
+Csak 2048 bites RSA és RSA-HSM kulcsok at az Azure Storage titkosítása támogatja. A kulcsokról további információt az [Azure Key Vault-kulcsok, titkos kulcsok és tanúsítványok –](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys) **Kulcstároló-kulcsok** című témakörben talál.
 
 ## <a name="enable-customer-managed-keys"></a>Ügyfél által kezelt kulcsok engedélyezése
 

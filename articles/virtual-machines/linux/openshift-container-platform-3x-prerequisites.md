@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: b2b34a6fdf96613c5bc372e585598fabbe43d53d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8767a6ee6218223280ea6219e22540c53d1e89be
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066610"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409125"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>Az OpenShift Container Platform 3.11 azure-beli üzembe helyezésének gyakori előfeltételei
 
@@ -143,15 +143,15 @@ A szolgáltatásegyszerű szolgáltatásokról további információt az [Azure 
 
 ## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>Csak az Erőforrás-kezelő sablonra vonatkozó előfeltételek
 
-Titkos kulcsokat kell létrehozni az SSH titkos kulcshoz **(sshPrivateKey),** az Azure AD ügyféltitkos kulcshoz (**aadClientSecret),** OpenShift rendszergazdai jelszóhoz (**openshiftPassword**) és a Red Hat Subscription Manager jelszóhoz vagy aktiválási kulcshoz (**rhsmPasswordOrActivationKey**).  Ezenkívül egyéni SSL-tanúsítványok esetén hat további titkos kulcsot kell létrehozni - **routingcafile**, **routingcertfile**, **routingkeyfile**, **mastercafile**, **mastercertfile**és **masterkeyfile**.  Ezeket a paramétereket részletesebben ismertetjük.
+Titkos kulcsokat kell létrehozni az SSH titkos kulcshoz **(sshPrivateKey),** az Azure AD ügyféltitkos kulcshoz (**aadClientSecret),** OpenShift rendszergazdai jelszóhoz (**openshiftPassword**) és a Red Hat Subscription Manager jelszóhoz vagy aktiválási kulcshoz (**rhsmPasswordOrActivationKey**).  Ezenkívül egyéni TLS/SSL-tanúsítványok esetén hat további titkos kulcsot kell létrehozni - **routingcafile**, **routingcertfile**, **routingkeyfile**, **mastercafile**, **mastercertfile**és **masterkeyfile**.  Ezeket a paramétereket részletesebben ismertetjük.
 
 A sablon konkrét titkos nevekre hivatkozik, ezért a fent felsorolt félkövér neveket **kell** használnia (a kis- és nagybetűk megkülönböztetése).
 
 ### <a name="custom-certificates"></a>Egyéni tanúsítványok
 
-Alapértelmezés szerint a sablon egy OpenShift-fürtöt telepít az OpenShift webkonzol és az útválasztási tartomány önaláírt tanúsítványai val. Ha egyéni SSL-tanúsítványokat szeretne használni, állítsa a "routingCertType" (routingCertType' (intézi) és a "masterCertType" (egyéni' beállítását 'custom' (egyéni) beállításra.  A tanúsítványokhoz a hitelesítésszolgáltató, a tanúsítvány és a kulcsfájlok .pem formátumban vannak.  Lehetőség van egyéni tanúsítványok használatára az egyikhez, de a másikhoz nem.
+Alapértelmezés szerint a sablon egy OpenShift-fürtöt telepít az OpenShift webkonzol és az útválasztási tartomány önaláírt tanúsítványai val. Ha egyéni TLS/SSL-tanúsítványokat szeretne használni, állítsa a "routingCertType" (routingCertType' (intézés' beállítását ' custom' és "masterCertType" (egyéni' beállításra.  A tanúsítványokhoz a hitelesítésszolgáltató, a tanúsítvány és a kulcsfájlok .pem formátumban vannak.  Lehetőség van egyéni tanúsítványok használatára az egyikhez, de a másikhoz nem.
 
-Ezeket a fájlokat a Key Vault titkos fájljaiban kell tárolnia.  Használja ugyanazt a Key Vaultot, mint a személyes kulcshoz használt.  Ahelyett, hogy 6 további bemenetet igényelne a titkos nevekhez, a sablon kódolva van, hogy az SSL-tanúsítványfájlok mindegyikéhez speciális titkos neveket használjon.  A tanúsítvány adatokat az alábbi táblázatban szereplő adatok alapján tárolhatja.
+Ezeket a fájlokat a Key Vault titkos fájljaiban kell tárolnia.  Használja ugyanazt a Key Vaultot, mint a személyes kulcshoz használt.  Ahelyett, hogy 6 további bemenetet igényelne a titkos nevekhez, a sablon kódolva van, hogy minden Egyes TLS/SSL tanúsítványfájlhoz speciális titkos neveket használjon.  A tanúsítvány adatokat az alábbi táblázatban szereplő adatok alapján tárolhatja.
 
 | Titkos név      | Tanúsítványfájl   |
 |------------------|--------------------|

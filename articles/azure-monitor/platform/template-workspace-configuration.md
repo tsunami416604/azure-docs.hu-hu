@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
-ms.openlocfilehash: 357075caaf91769026deb839e038e5d42fb63a38
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 60f85a30815bc1bace409b50af6332bb6622d7ca
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80054689"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477982"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>A Log Analytics-munkaterület kezelése az Azure Resource Manager-sablonokkal
 
@@ -48,6 +48,9 @@ Az alábbi táblázat a példában használt erőforrások API-verzióját sorol
 
 A következő példa létrehoz egy munkaterületet a helyi számítógépsablon használatával. A JSON-sablon úgy van beállítva, hogy csak az új munkaterület nevét és helyét követelje meg. Más munkaterületi paraméterekhez megadott értékeket használ, például [a hozzáférés-vezérlési módot,](design-logs-deployment.md#access-control-mode)a tarifacsomagot, a megőrzési és a kapacitásfoglalási szintet.
 
+> [!WARNING]
+> A következő sablon létrehoz egy Log Analytics-munkaterületet, és konfigurálja az adatgyűjtést. Ez megváltoztathatja a számlázási beállításokat. A Log Analytics-munkaterületen gyűjtött adatok számlázásának megismerése az [Azure-környezetben](manage-cost-storage.md) való alkalmazás előtt tekintse át a Használat és a költségek kezelése című részt.
+
 A kapacitásfoglaláshoz az adatok betöltéséhez kijelölt kapacitásfoglalást határoz `CapacityReservation` meg a termékváltozat `capacityReservationLevel`és a tulajdonság GB-ban megadott értékének megadásával. Az alábbi lista részletezi a támogatott értékeket és a viselkedést a konfigurálásakor.
 
 - Miután beállította a foglalási korlátot, 31 napon belül nem válthat másik termékváltozatra.
@@ -75,7 +78,7 @@ A kapacitásfoglaláshoz az adatok betöltéséhez kijelölt kapacitásfoglalás
               "description": "Specifies the name of the workspace."
             }
         },
-      "pricingTier": {
+      "sku": {
         "type": "string",
         "allowedValues": [
           "pergb2018",
@@ -131,7 +134,7 @@ A kapacitásfoglaláshoz az adatok betöltéséhez kijelölt kapacitásfoglalás
             "location": "[parameters('location')]",
             "properties": {
                 "sku": {
-          "name": "[parameters('pricingTier')]"
+                    "name": "[parameters('sku')]"
                 },
                 "retentionInDays": 120,
                 "features": {
@@ -145,15 +148,15 @@ A kapacitásfoglaláshoz az adatok betöltéséhez kijelölt kapacitásfoglalás
     }
     ```
 
-> [Információ] a kapacitásfoglalási beállításokhoz az alábbi tulajdonságokat használja a "termékváltozat" alatt:
+   >[!NOTE]
+   >A kapacitásfoglalási beállításokhoz használja ezeket a tulajdonságokat a "termékváltozat" alatt:
+   >* "név": "CapacityReservation",
+   >* "capacityReservationLevel": 100
 
->   "név": "CapacityReservation",
+2. A sablont az igényeinek megfelelően szerkesztheti. Fontolja meg egy [Erőforrás-kezelő paraméterfájl létrehozását](../../azure-resource-manager/templates/parameter-files.md) ahelyett, hogy a paramétereket szövegközi értékként adná át. Tekintse át a [Microsoft.OperationalInsights/workspaces](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) sablonhivatkozást, és ismerje meg, hogy mely tulajdonságok és értékek támogatottak. 
 
->   "capacityReservationLevel": 100
-
-
-2. A sablont az igényeinek megfelelően szerkesztheti. Tekintse át a [Microsoft.OperationalInsights/workspaces](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) sablonhivatkozást, és ismerje meg, hogy mely tulajdonságok és értékek támogatottak. 
 3. Mentse a fájlt **deploylaworkspacetemplate.json fájlként** egy helyi mappába.
+
 4. Készen áll a sablon üzembe helyezésére. A munkaterület létrehozásához vagy a parancssorból hozhatja létre a munkaterületet, és megadhatja a munkaterület nevét és helyét a parancs részeként. A munkaterület nevének globálisan egyedinek kell lennie az összes Azure-előfizetésben.
 
    * A PowerShell számára használja a következő parancsokat a sablont tartalmazó mappából:
@@ -176,7 +179,7 @@ Az üzembe helyezés eltarthat néhány percig. Amikor befejeződik, az alábbih
 A következő sablonminta bemutatja, hogyan kell:
 
 1. Megoldások hozzáadása a munkaterülethez
-2. Mentett keresések létrehozása. Annak érdekében, hogy a központi telepítések ne bírálják felül a mentett kereséseket véletlenül, egy eTag tulajdonságot kell hozzáadni a "savedSearches" erőforráshoz a mentett keresések idempotenciájának felülbírálásához és fenntartásához.
+2. Mentett keresések létrehozása. Annak érdekében, hogy a központi telepítések ne bírálják felül véletlenül a mentett kereséseket, egy eTag tulajdonságot kell hozzáadni a "savedSearches" erőforráshoz a mentett keresések idempotenciájának felülbírálásához és fenntartásához.
 3. Számítógépcsoport létrehozása
 4. IIS-naplók gyűjtésének engedélyezése olyan számítógépekről, amelyeken telepítve van a Windows-ügynök
 5. Logikai lemezperf számlálók gyűjtése Linux rendszerű számítógépekről (% használt inodák; Ingyenes Megabájt; % Használt terület; Lemezátvitel/mp; Lemezolvasás/mp; Lemezírás/mp)
@@ -197,7 +200,7 @@ A következő sablonminta bemutatja, hogyan kell:
         "description": "Workspace name"
       }
     },
-    "pricingTier": {
+    "sku": {
       "type": "string",
       "allowedValues": [
         "PerGB2018",
@@ -306,7 +309,7 @@ A következő sablonminta bemutatja, hogyan kell:
           "immediatePurgeDataOn30Days": "[parameters('immediatePurgeDataOn30Days')]"
         },
         "sku": {
-          "name": "[parameters('pricingTier')]"
+          "name": "[parameters('sku')]"
         }
       },
       "resources": [
@@ -605,7 +608,7 @@ A következő sablonminta bemutatja, hogyan kell:
       "type": "string",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').customerId]"
     },
-    "pricingTier": {
+    "sku": {
       "type": "string",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').sku.name]"
     },

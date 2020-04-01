@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: bc3d35830d833c0223a400140c53e583d2f6ed37
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79f85261115dbddcb0b04cd2863a90912de2ab87
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475425"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474904"
 ---
 # <a name="app-service-networking-features"></a>Az App Service hálózati szolgáltatásai
 
@@ -81,7 +81,7 @@ Ha egy alkalmazáshoz rendelt címet használ, a forgalom továbbra is ugyanazok
 * Az alkalmazás IP-alapú SSL-igényeinek támogatása
 * Az alkalmazáshoz olyan dedikált cím beállítása, amely nincs megosztva másokkal
 
-Megtudhatja, hogyan állíthat be egy címet az alkalmazáson az [IP-alapú SSL konfigurálásáról][appassignedaddress]szóló oktatóanyaggal. 
+Megtudhatja, hogyan állíthat be egy címet az alkalmazásban az Azure [App Service-ben TLS/SSL-tanúsítvány hozzáadása][appassignedaddress]című oktatóanyaggal. 
 
 ### <a name="access-restrictions"></a>Hozzáférési korlátozások 
 

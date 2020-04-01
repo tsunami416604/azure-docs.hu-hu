@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/08/2019
-ms.openlocfilehash: 0018ae55ab74e691577a34a397c15355587e0fac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: 5aa025fb366634e796abfb2eb9c0035d9b87dc3c
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663255"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437046"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Az Office 365 felügyeleti megoldása az Azure-ban (előzetes verzió)
 
@@ -20,7 +20,7 @@ ms.locfileid: "77663255"
 
 > [!IMPORTANT]
 > ## <a name="solution-update"></a>Megoldás frissítése
-> Ezt a megoldást az [Azure Sentinel](../../sentinel/overview.md) [Office 365](../../sentinel/connect-office-365.md) általános rendelkezésre állási megoldása és az Azure [AD jelentéskészítési és figyelési megoldásváltotta](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)fel. Együtt biztosítják az előző Azure Monitor Office 365-megoldás frissített verzióját továbbfejlesztett konfigurációs felülettel. A meglévő megoldást 2020.
+> Ezt a megoldást az [Azure Sentinel](../../sentinel/overview.md) [Office 365](../../sentinel/connect-office-365.md) általános rendelkezésre állási megoldása és az Azure [AD jelentéskészítési és figyelési megoldásváltotta](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)fel. Együtt biztosítják az előző Azure Monitor Office 365-megoldás frissített verzióját továbbfejlesztett konfigurációs felülettel. A meglévő megoldást 2020. július 30-ig továbbra is használhatja.
 > 
 > Az Azure Sentinel egy natív, natív biztonsági információkkal és eseményekkezelésével kapcsolatos megoldás, amely betöltődik a naplókba, és további SIEM-funkciókat biztosít, beleértve az észleléseket, a vizsgálatokat, a vadászatot és a gépi tanulásvezérelt elemzéseket. Az Azure Sentinel használatával mostantól az Office 365 SharePoint-tevékenység- és Exchange-felügyeleti naplók betöltését biztosítjuk.
 > 
@@ -53,7 +53,7 @@ ms.locfileid: "77663255"
 > | where TimeGenerated >= ago(1d) 
 > | where OfficeWorkload == "AzureActiveDirectory"                      
 > | where Operation == 'UserLoginFailed'
-> | summarize count() by UserId 
+> | summarize count() by UserId    
 > ```
 > 
 > ```Kusto
@@ -82,10 +82,10 @@ ms.locfileid: "77663255"
 > ### <a name="q-do-i-need-azure-sentinel-to-connect-the-azure-ad-logs"></a>K: Szükségem van az Azure Sentinelre az Azure AD-naplók csatlakoztatásához?
 > Konfigurálhatja [az Azure AD-naplók integrációját az Azure Monitorlal,](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)amely nem kapcsolódik az Azure Sentinel-megoldáshoz. Az Azure Sentinel egy natív összekötőt és beépített tartalmat biztosít az Azure AD-naplókhoz. További információt az alábbi, használatra alkalmas, biztonságorientált tartalommal kapcsolatos kérdésben talál.
 >
-> ###   <a name="q-what-are-the-differences-when-connecting-azure-ad-logs-from-azure-sentinel-and-azure-monitor"></a>K: Miak a különbségek az Azure Sentinel ből és az Azure Monitorból származó Azure AD-naplók csatlakoztatásakor?
+> ###    <a name="q-what-are-the-differences-when-connecting-azure-ad-logs-from-azure-sentinel-and-azure-monitor"></a>K: Miak a különbségek az Azure Sentinel ből és az Azure Monitorból származó Azure AD-naplók csatlakoztatásakor?
 > Az Azure Sentinel és az Azure Monitor ugyanazon [Azure AD-jelentéskészítési és figyelési megoldáson](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)alapuló Azure AD-naplókhoz csatlakozik. Az Azure Sentinel egy kattintással elérhető, natív összekötőt biztosít, amely ugyanazokat az adatokat kapcsolja össze, és figyelési információkat biztosít.
 >
-> ###   <a name="q-what-do-i-need-to-change-when-moving-to-the-new-azure-ad-reporting-and-monitoring-tables"></a>K: Mit kell módosítanom, amikor az új Azure AD-jelentési és figyelési táblákra költözik?
+> ###    <a name="q-what-do-i-need-to-change-when-moving-to-the-new-azure-ad-reporting-and-monitoring-tables"></a>K: Mit kell módosítanom, amikor az új Azure AD-jelentési és figyelési táblákra költözik?
 > Az Azure AD-adatokat használó összes lekérdezést, beleértve a riasztásokban, irányítópultokban és az Office 365 Azure AD-adatokkal létrehozott tartalmakat, újra létre kell hozni az új táblák használatával.
 >
 > Az Azure Sentinel és az Azure AD beépített tartalmat biztosít, amelyet az Azure AD jelentéskészítési és figyelési megoldásra való áttéréskor használhat. További információt a beépített biztonságorientált tartalommal és az [Azure Active Directory-jelentésekhez tartozó Azure Monitor-munkafüzetek használatával](../../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md)kapcsolatos következő kérdésben talál. 
@@ -103,7 +103,7 @@ ms.locfileid: "77663255"
 > ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>K: Az Azure Sentinel további összekötők a megoldás részeként?
 > Igen, lásd: [Azure Sentinel connect adatforrások](../../sentinel/connect-data-sources.md).
 > 
-> ###   <a name="q-what-will-happen-on-april-30-do-i-need-to-offboard-beforehand"></a>K: Mi történik április 30-án? Előre le kell mondanom?
+> ###    <a name="q-what-will-happen-on-april-30-do-i-need-to-offboard-beforehand"></a>K: Mi történik április 30-án? Előre le kell mondanom?
 > 
 > - Az **Office365-megoldásból** nem fog tudni adatokat fogadni. A megoldás a továbbiakban nem lesz elérhető a Marketplace-en
 > - Az Azure Sentinel-ügyfelek számára az **Office365** Log Analytics-munkaterületi megoldás az Azure Sentinel **SecurityInsights-megoldás** része lesz.
@@ -315,7 +315,7 @@ Ezek a rekordok akkor jönnek létre, amikor az Azure Active Directory-objektumo
 | ActorContextId (Színészkörnyezetazonosító) | Annak a szervezetnek a GUID azonosítója, amelyhez az aktor tartozik. |
 | ActorIpAddress cím | Az aktor IP-címe IPV4 vagy IPV6 címformátumban. |
 | InterSystemsId | Az Office 365 szolgáltatás összetevőiközötti műveleteket nyomon követő GUID azonosító. |
-| IntraSystemId |   Az Azure Active Directory által a művelet nyomon követéséhez generált GUID. |
+| IntraSystemId |     Az Azure Active Directory által a művelet nyomon követéséhez generált GUID. |
 | SupportTicketId azonosító | Az ügyfélszolgálati jegy azonosítója a művelethez a "cselekvés a nevében" helyzetekben. |
 | TargetContextId azonosító | Annak a szervezetnek a GUID azonosítója, amelyhez a megcélzott felhasználó tartozik. |
 
@@ -330,7 +330,7 @@ Ezek a rekordok az adatközpont-biztonsági naplózási adatokból jönnek létr
 | ElevationApprovedTime | A jogosultságszint-emelés jóváhagyásának időbélyegzője. |
 | ElevationApprover | A Microsoft-kezelő neve. |
 | MagasságIdőtartam | Az az időtartam, amelynél a magasság aktív volt. |
-| Magasságkérése |  A magassági kérelem egyedi azonosítója. |
+| Magasságkérése |     A magassági kérelem egyedi azonosítója. |
 | ElevationRole (Magassági szerepkör) | A jogosultságszint-emelés kért szerepkör. |
 | Magassági idő | A magasság kezdési időpontja. |
 | Start_Time | A parancsmag végrehajtásának kezdő időpontja. |
@@ -344,8 +344,8 @@ Ezek a rekordok az Exchange-konfiguráció módosításakor jönnek létre.
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType (Rekordtípus)     | ExchangeAdmin |
-| ExternalAccess |  Itt adható meg, hogy a parancsmackét a szervezet egyik felhasználója, a Microsoft adatközpont munkatársai vagy egy adatközpont-szolgáltatási fiók vagy egy delegált rendszergazda futtatta-e. A Hamis érték azt jelzi, hogy a parancsmatot a szervezet egy tagja futtatta. Az Igaz érték azt jelzi, hogy a parancsmac-ot adatközpont-személyzet, egy adatközpont-szolgáltatásfiók vagy egy delegált rendszergazda futtatta. |
-| ModifiedObjectResolvedName |  Ez annak az objektumnak a felhasználóbarát neve, amelyet a parancsmag módosított. Ez csak akkor kerül naplózásra, ha a parancsmag módosítja az objektumot. |
+| ExternalAccess |     Itt adható meg, hogy a parancsmackét a szervezet egyik felhasználója, a Microsoft adatközpont munkatársai vagy egy adatközpont-szolgáltatási fiók vagy egy delegált rendszergazda futtatta-e. A Hamis érték azt jelzi, hogy a parancsmatot a szervezet egy tagja futtatta. Az Igaz érték azt jelzi, hogy a parancsmac-ot adatközpont-személyzet, egy adatközpont-szolgáltatásfiók vagy egy delegált rendszergazda futtatta. |
+| ModifiedObjectResolvedName |     Ez annak az objektumnak a felhasználóbarát neve, amelyet a parancsmag módosított. Ez csak akkor kerül naplózásra, ha a parancsmag módosítja az objektumot. |
 | OrganizationName | A bérlő neve. |
 | Származókiszolgáló | Annak a kiszolgálónak a neve, amelyről a parancsmag ot végrehajtották. |
 | Paraméterek | Az Operations tulajdonságban azonosított parancsmaggal használt összes paraméter neve és értéke. |
@@ -366,7 +366,7 @@ Ezek a rekordok akkor jönnek létre, amikor az Exchange-postaládákban módos�
 | Ügyfélverzió | Az e-mail ügyfél verziója . |
 | InternalLogonType típus | Belső használatra fenntartva. |
 | Logon_Type | Azt jelzi, hogy ki kit feknek hozzá a postaládához, és milyen típusú a naplózott művelet. |
-| LogonUserDisplayName |    A műveletet végző felhasználó felhasználóbarát neve. |
+| LogonUserDisplayName |     A műveletet végző felhasználó felhasználóbarát neve. |
 | LogonUserSid | A műveletet végző felhasználó biztonsági azonosítója. |
 | MailboxGuid (Postaláda guid) | Az elérni kívánt postaláda Exchange GUID azonosítója. |
 | MailboxOwnerMasterAccountSid | A postaláda-tulajdonosi fiók fő fiókjának biztonsági azonosítója. |
@@ -419,7 +419,7 @@ Ezek a tulajdonságok minden SharePoint-rekordban közösek.
 | EventSource (Eseményforrás) | Azt határozza meg, hogy történt-e esemény a SharePointban. A lehetséges értékek a SharePoint vagy az ObjectModel. |
 | ItemType | Az elért vagy módosított objektum típusa. Az objektumtípusokról az ItemType táblában talál részleteket. |
 | MachineDomainInfo | Információ az eszközszinkronizálási műveletekről. Ez eket az adatokat csak akkor jelenti a program, ha az szerepel a kérésben. |
-| MachineId |   Információ az eszközszinkronizálási műveletekről. Ez eket az adatokat csak akkor jelenti a program, ha az szerepel a kérésben. |
+| MachineId |     Információ az eszközszinkronizálási műveletekről. Ez eket az adatokat csak akkor jelenti a program, ha az szerepel a kérésben. |
 | Site_ | Annak a helynek a GUID azonosítója, ahol a felhasználó által elért fájl vagy mappa található. |
 | Source_Name | A naplózott műveletet aktiváló entitás. A lehetséges értékek a SharePoint vagy az ObjectModel. |
 | Useragent | Információ a felhasználó ügyfél- vagy böngészőjéről. Ezt az információt az ügyfél vagy a böngésző biztosítja. |
@@ -434,7 +434,7 @@ Ezek a rekordok akkor jönnek létre, amikor a SharePoint konfigurációs módos
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
 | Egyéni esemény | Választható karakterlánc egyéni eseményekhez. |
-| Event_Data |  Választható hasznos adat egyéni eseményekhez. |
+| Event_Data |     Választható hasznos adat egyéni eseményekhez. |
 | Módosítotttulajdonságok | A tulajdonság rendszergazdai eseményekhez, például egy felhasználó hozzáadása webhely vagy webhelycsoport felügyeleti csoportjának tagjaként. A tulajdonság tartalmazza a módosított tulajdonság nevét (például a Webhely gazdák csoportját), a módosított tulajdonság új értékét (például a webhely adminisztrátoraként hozzáadott felhasználót) és a módosított objektum korábbi értékét. |
 
 
@@ -452,9 +452,9 @@ Ezek a rekordok a SharePoint fájlműveleteire válaszul jönnek létre.
 | Megosztástípusa | Az erőforrást megosztó felhasználóhoz rendelt megosztási engedélyek típusa. Ezt a felhasználót a UserSharedWith paraméter azonosítja. |
 | Site_Url | Annak a webhelynek az URL-címe, ahol a felhasználó által elért fájl vagy mappa található. |
 | SourceFileExtension | A fájl kiterjesztése a fájl, amely a felhasználó által elért. Ez a tulajdonság üres, ha az elért objektum egy mappa. |
-| Forrásfájlneve |  A felhasználó által elért fájl vagy mappa neve. |
+| Forrásfájlneve |     A felhasználó által elért fájl vagy mappa neve. |
 | SourceRelativeUrl | Annak a mappának az URL-címe, amely a felhasználó által elért fájlt tartalmazza. A SiteURL, SourceRelativeURL és SourceFileName paraméterek értékeinek kombinációja megegyezik az ObjectID tulajdonság értékével, amely a felhasználó által elért fájl teljes elérési útja. |
-| UserSharedWith |  Az a felhasználó, akivel egy erőforrást megosztottak. |
+| UserSharedWith |     Az a felhasználó, akivel egy erőforrást megosztottak. |
 
 
 

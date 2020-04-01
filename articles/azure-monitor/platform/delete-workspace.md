@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/14/2020
-ms.openlocfilehash: ead0ac04fbd2244fce97dd043ebd44f24fb0f67f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1dceb3db4572ecdaf504745dba1099a5eccead43
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80054921"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80395792"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Az Azure Log Analytics munkaterületének törlése és helyreállítása
 
@@ -43,7 +43,7 @@ A munkaterület törlése művelet eltávolítja a munkaterület Resource Manage
 
 A munkaterületet törölheti a [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0), [REST API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete)vagy az Azure Portal [használatával.](https://portal.azure.com)
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
 1. A bejelentkezéshez nyissa meg az [Azure Portalt.](https://portal.azure.com) 
 2. Az Azure Portalon válassza a **Minden szolgáltatás**lehetőséget. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza **a Log Analytics-munkaterületek lehetőséget.**
@@ -56,6 +56,17 @@ A munkaterületet törölheti a [PowerShell](https://docs.microsoft.com/powershe
 ```PowerShell
 PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
 ```
+
+### <a name="troubleshooting"></a>Hibaelhárítás
+
+A Log Analytics-munkaterület törléséhez "Log Analytics-közreműködő" engedélyekkel kell rendelkeznie.<br>
+Ha munkaterület létrehozásakor a következő hibaüzenet jelenik meg:*"Ez a munkaterület neve már használatban van*" hibaüzenet, akkor az a következő lehet:
+* A munkaterület neve nem érhető el, és a szervezet egy tagja vagy más ügyfél használja.
+* A munkaterület et törölték az elmúlt 14 napban, és a neve a helyreállítható törlési időszakra fenntartott maradt. A helyreállítható törlés hez és a munkaterület azonnali törléséhez és egy azonos nevű új munkaterület létrehozásához először hajtsa végre a munkaterület helyreállításához szükséges lépéseket, és hajtsa végre a végleges törlést:<br>
+   1. A munkaterület [helyreállítása.](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace)
+   2. [Véglegesen törölje](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete) a munkaterületet.
+   3. Hozzon létre egy új munkaterületet ugyanazzal a munkaterületnévvel.
+
 
 ## <a name="permanent-workspace-delete"></a>Állandó munkaterület törlése
 Előfordulhat, hogy a helyreállítható törlési módszer nem fér el bizonyos esetekben, például a fejlesztés és a tesztelés, ahol meg kell ismételni e központi telepítést ugyanazzal a beállítással és munkaterület nevével. Ilyen esetekben véglegesen törölheti a munkaterületet, és "felülbírálhatja" a helyreállítható törlési időszakot. Az állandó munkaterület-törlési művelet felszabadítja a munkaterület nevét, és ugyanazzal a névvel új munkaterületet hozhat létre.

@@ -4,12 +4,12 @@ description: A telepítés, az Azure Backup Server regisztrálása, valamint az 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: cc0cf7e91c1aacbc637d33ab1e5546cc54836b28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: deff49a7d00a335c396a6fa36d3846ef353331c5
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78673119"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421290"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Az Azure Backup Server hibaelhárítása
 
@@ -26,7 +26,7 @@ Javasoljuk, hogy a Microsoft Azure Backup Server (MABS) hibaelhárításának me
 - Ha a regisztráció sikertelen, akkor győződjön meg arról, hogy az azure backup servert telepíteni kívánt kiszolgáló még nincs regisztrálva egy másik tárolóban
 - Ha a leküldéses telepítés sikertelen, ellenőrizze, hogy a DPM-ügynök már jelen van-e a rendszeren. Ha igen, távolítsa el az ügynököt, és próbálkozzon újra a telepítéssel
 - [Győződjön meg arról, hogy nem zavarja másik folyamat vagy víruskereső szoftver az Azure Backup működését](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup)<br>
-- Győződjön meg róla, hogy fut-e az SQL Agent szolgáltatás, és az MAB-kiszolgálón a beállítása „automatikus”<br>
+- Annak ellenőrzése, hogy az SQL Agent szolgáltatás fut-e, és automatikusra van állítva a MABS-kiszolgálón<br>
 
 ## <a name="invalid-vault-credentials-provided"></a>A tároló megadott hitelesítő adatai érvénytelenek
 

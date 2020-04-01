@@ -5,12 +5,12 @@ ms.date: 01/23/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 00fc3a01e6f42c2704af9dbc807dce193ff2971c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 658910dc4291375c7b2ab22e88c599b970b885af
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80116902"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80419121"
 ---
 A szabványosított virtuálisgép-lemezképek lehetővé teszik a szervezetek számára a felhőbe való áttelepítést, és biztosítják a központi telepítések konzisztenciáját. A képek általában előre meghatározott biztonsági és konfigurációs beállításokat, valamint szükséges szoftvereket tartalmaznak. A saját képkezelő folyamat beállítása időt, infrastruktúrát és telepítést igényel, de az Azure VM Image Builder, csak egy egyszerű konfigurációt a lemezkép, küldje el a szolgáltatásba, és a lemezkép jön létre, és elosztott.
  
@@ -51,7 +51,7 @@ Az AIB támogatja az Azure Marketplace alap operációsrendszer-lemezképeit:
 - CENTOS 7,6, 7,7
 - SLES 12 SP4
 - SLES 15, SLES 15 SP1
-- Windows 10 RS5 Enterprise/Professional/Enterprise virtuális asztali (EVD) 
+- Windows 10 RS5 Nagyvállalati/Nagyvállalati többmunkamenetes/professzionális
 - Windows 2016
 - Windows 2019
 
@@ -78,7 +78,7 @@ Az Azure Image Builder egy teljes körűen felügyelt Azure-szolgáltatás, amel
 
 ## <a name="permissions"></a>Engedélyek
 
-Ahhoz, hogy az Azure VM Image Builder képeket terjeszthet a felügyelt lemezképekre vagy egy megosztott képtárba, meg kell adnia "Közreműködői" engedélyeket az "Azure Virtual Machine Image Builder" szolgáltatáshoz (alkalmazásazonosító: cf32a0cc-373c-47c9-9156-0db11f6a6dfc ) az erőforráscsoportokon. 
+Ahhoz, hogy az Azure VM Image Builder képeket terjesszen a felügyelt lemezképekre vagy egy megosztott képtárba, meg kell adnia "Közreműködői" engedélyeket az "Azure Virtual Machine Image Builder" szolgáltatáshoz (alkalmazásazonosító: cf32a0cc-373c-47c9-9156-0db11f6a6dfc) az erőforráscsoportokon. 
 
 Ha egy meglévő egyéni felügyelt lemezképet vagy lemezképet használ, majd az Azure Image Builder szüksége lesz egy minimális "Olvasó" hozzáférést ezekhez az erőforráscsoportokhoz.
 

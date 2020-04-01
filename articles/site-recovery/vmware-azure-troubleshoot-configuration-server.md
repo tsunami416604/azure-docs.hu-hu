@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 25e2b488d3b6e7e5cabd1a71d1489efaf01231b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0383a512dfb7c2bb1ae2422b9ade1e3c7387a70c
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73748550"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478303"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>A konfigurációs kiszolgáló problémáinak elhárítása
 
@@ -42,7 +42,7 @@ A forrásgép regisztrálja magát a konfigurációs kiszolgálón a mobilitási
     3. Győződjön meg arról, hogy a [Webhely-helyreállítási mappa víruskereső programokból való kizárásai](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) ki vannak zárva a víruskereső szoftverből.
     4. A hálózati problémák feloldása után próbálkozzon újra a regisztrációval [a Forrásgép regisztrálása a konfigurációs kiszolgálóval](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server)című útmutató ban található irányelvek betartásával.
 
-6. Ha a **karakterlánc-bejegyzéskérése: (7) - Nem található a kiszolgálóhoz való csatlakozás,** ugyanabban a naplófájlban keresse meg a karakterlánc-kérelmet: **(60) - A társtanúsítvány nem hitelesíthető adott hitelesítésszolgáltatói tanúsítványokkal.** Ez a hiba azért fordulhat elő, mert a konfigurációs kiszolgáló tanúsítványa lejárt, vagy a forrásgép nem támogatja a TLS 1.0 vagy újabb SSL protokollokat. Az akkor is előfordulhat, ha egy tűzfal blokkolja az SSL-kommunikációt a forrásgép és a konfigurációs kiszolgáló között. Ha a karakterlánc megtalálható: 
+6. Ha a **karakterlánc-bejegyzéskérése: (7) - Nem található a kiszolgálóhoz való csatlakozás,** ugyanabban a naplófájlban keresse meg a karakterlánc-kérelmet: **(60) - A társtanúsítvány nem hitelesíthető adott hitelesítésszolgáltatói tanúsítványokkal.** Ez a hiba azért fordulhat elő, mert a konfigurációs kiszolgáló tanúsítványa lejárt, vagy a forrásgép nem támogatja a TLS 1.0 vagy újabb protokollokat. Az akkor is előfordulhat, ha egy tűzfal blokkolja a TLS-kommunikációt a forrásgép és a konfigurációs kiszolgáló között. Ha a karakterlánc megtalálható: 
     1. A probléma megoldásához csatlakozzon a konfigurációs kiszolgáló IP-címéhez a forrásgép en lévő webböngészővel. Használja az URI\/ \/ https:<\>konfigurációs kiszolgáló IP-címe :443/. Győződjön meg arról, hogy a forrásgép a 443-as porton keresztül el tudja érni a konfigurációs kiszolgálót.
     2. Ellenőrizze, hogy a forrásszámítógépen lévő tűzfalszabályokat hozzá kell-e adni vagy el kell-e távolítani ahhoz, hogy a forrásgép beszélhesse a konfigurációs kiszolgálót. A használatban lévő tűzfalszoftverek sokfélesége miatt nem tudjuk felsorolni az összes szükséges tűzfalkonfigurációt. A hálózati rendszergazdákkal együttműködve feloldhatja a csatlakozási problémák at.
     3. Győződjön meg arról, hogy a [Webhely-helyreállítási mappa víruskereső programokból való kizárásai](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) ki vannak zárva a víruskereső szoftverből.  

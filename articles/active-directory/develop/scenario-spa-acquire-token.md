@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
-ms.openlocfilehash: d5d48a2fc7aca184cf8b6e7761584a8800ca5151
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 393c3a06a2366a7d6947faf8bbfe038d6c5982fc
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77160066"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80419658"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Egyoldalas alkalmazás: Jogkivonat beszerzése API-hívásához
 
@@ -42,7 +42,7 @@ Beállíthatja az API-hatókörök, amelyek a hozzáférési jogkivonatot, hogy 
 
 ## <a name="acquire-a-token-with-a-pop-up-window"></a>Token beszerzése előugró ablakkal
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A következő kód egyesíti a korábban leírt mintát az előugró felület módszereivel:
 
@@ -76,20 +76,40 @@ Az MSAL-gyűrűs biztosítja a HTTP-elfogó, amely automatikusan beszerzi a hozz
 Az API-k hatóköreit a `protectedResourceMap` konfigurációs beállításban adhatja meg. `MsalInterceptor`kérni fogja ezeket a hatóköröket, amikor automatikusan beszerzi a jogkivonatokat.
 
 ```javascript
-//In app.module.ts
+// app.module.ts
 @NgModule({
-  imports: [ MsalModule.forRoot({
-                clientID: 'your_app_id',
-                protectedResourceMap: {"https://graph.microsoft.com/v1.0/me", ["user.read", "mail.send"]}
-            })]
-         })
-
-providers: [ ProductService, {
-        provide: HTTP_INTERCEPTORS,
-        useClass: MsalInterceptor,
-        multi: true
+  declarations: [
+    // ...
+  ],
+  imports: [
+    // ...
+    MsalModule.forRoot({
+      auth: {
+        clientId: 'Enter_the_Application_Id_Here',
+      }
+    },
+    {
+      popUp: !isIE,
+      consentScopes: [
+        'user.read',
+        'openid',
+        'profile',
+      ],
+      protectedResourceMap: [
+        ['https://graph.microsoft.com/v1.0/me', ['user.read']]
+      ]
+    })
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MsalInterceptor,
+      multi: true
     }
-   ],
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
 ```
 
 A néma token-beszerzés sikeréhez és sikertelenségéhez az MSAL Angular olyan visszahívásokat biztosít, amelyekre előfizethet. Az is fontos, hogy ne feledje, hogy leiratkozni.
@@ -103,7 +123,7 @@ A néma token-beszerzés sikeréhez és sikertelenségéhez az MSAL Angular olya
 
 ngOnDestroy() {
    this.broadcastService.getMSALSubject().next(1);
-   if(this.subscription) {
+   if (this.subscription) {
      this.subscription.unsubscribe();
    }
  }
@@ -115,7 +135,7 @@ Azt is megteheti, hogy explicit módon szerez jogkivonatokat a beszerzés-token 
 
 ## <a name="acquire-a-token-with-a-redirect"></a>Token beszerzése átirányítással
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A következő minta a korábban leírt, de látható egy átirányítási módszerrel a jogkivonatok interaktív megszerzéséhez. Regisztrálnia kell az átirányításvisszahívást, ahogy azt korábban említettük.
 
@@ -149,16 +169,16 @@ A választható jogcímek a következő célokra használhatók:
 
 - További jogcímeket az alkalmazás jogkivonataiban.
 - Módosíthatja bizonyos jogcímek viselkedését, amelyeket az Azure AD jogkivonatokban ad vissza.
-- Egyéni jogcímek hozzáadása és elérése az alkalmazáshoz. 
+- Egyéni jogcímek hozzáadása és elérése az alkalmazáshoz.
 
 Ha nem kötelező `IdToken`jogcímeket szeretne kérni a `claimsRequest` alkalmazásban, `AuthenticationParameters.ts` akkor az osztály mezőjébe karakterláncba kötött jogcímobjektumot is küldhet.
 
 ```javascript
-"optionalClaims":  
+"optionalClaims":
    {
       "idToken": [
             {
-                  "name": "auth_time", 
+                  "name": "auth_time",
                   "essential": true
              }
       ],

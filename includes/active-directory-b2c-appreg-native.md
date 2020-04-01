@@ -6,38 +6,38 @@ ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
 ms.openlocfilehash: d3a323a28d92e2a5834b65316d61c7d53a42aacf
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78183778"
 ---
-Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja a jelenlegi **alkalmazásokat** , vagy az új, egyesített **Alkalmazásregisztrációk (előzetes verzió)** élményt. [További információ az új felületről](https://aka.ms/b2cappregintro).
+Ha regisztrálegy alkalmazást az Azure AD B2C-bérlőben, használhatja az aktuális **alkalmazások** vagy az új egyesített **alkalmazásregisztrációk (előzetes verzió)** használatát. [További információ az új felületről](https://aka.ms/b2cappregintro).
 
 #### <a name="applications"></a>[Alkalmazások](#tab/applications/)
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
-1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
-1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
-1. Válassza az **alkalmazások**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
-1. Adja meg az alkalmazás nevét. Például: *nativeapp1*.
-1. **Natív ügyfél**esetén válassza az **Igen**lehetőséget.
-1. **Egyéni átirányítási URI** -t adjon meg egyedi sémával. Például: `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`. Az átirányítási URI kiválasztásakor két fontos szempontot kell figyelembe venni:
-    * **Egyedi**: az átirányítási URI sémájának minden alkalmazás esetében egyedinek kell lennie. A példában a `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect``com.onmicrosoft.contosob2c.exampleapp` a séma. Ezt a mintát kell követni. Ha két alkalmazás ugyanazt a sémát használja, a felhasználó választhat egy alkalmazást. Ha a felhasználó helytelenül választ, a bejelentkezés sikertelen lesz.
-    * **Befejezés**: az átirányítási URI-nak egy sémával és egy útvonallal kell rendelkeznie. Az elérési útnak legalább egy perjelet tartalmaznia kell a tartomány után. `//oauth/` működik például, amikor `//oauth` meghibásodik. Az URI-ban ne szerepeljenek speciális karakterek, például aláhúzások.
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Válassza ki a **Könyvtár + előfizetés** szűrőa felső menüben, majd válassza ki az Azure AD B2C bérlőt tartalmazó könyvtárat.
+1. A bal oldali menüben válassza az **Azure AD B2C**lehetőséget. Vagy válassza a **Minden szolgáltatás** lehetőséget, és keresse meg az **Azure AD B2C elemet.**
+1. Válassza **az Alkalmazások**lehetőséget, majd a **Hozzáadás**lehetőséget.
+1. Adjon nevet az alkalmazásnak. Például *nativeapp1*.
+1. **Natív ügyfél esetén**válassza az **Igen**lehetőséget.
+1. Adjon meg **egy egyéni átirányítási URI-t** egyedi sémával. Például: `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`. Az átirányítási URI kiválasztásakor két fontos szempontot kell figyelembe venni:
+    * **Egyedi**: Az átirányítási URI sémának minden alkalmazásnál egyedinek kell lennie. A `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`példában `com.onmicrosoft.contosob2c.exampleapp` a rendszer szerepel. Ezt a mintát kell követni. Ha két alkalmazás ugyanazt a sémát használja, a felhasználó választhat egy alkalmazás kiválasztásával. Ha a felhasználó helytelenül választ, a bejelentkezés sikertelen lesz.
+    * **Teljes**: Az átirányítási URI-nak rendszerrel és elérési úttal is rendelkeznie kell. Az elérési útnak legalább egy perjelet kell tartalmaznia a tartomány után. Például, `//oauth/` működik, miközben `//oauth` nem sikerül. Ne adjon meg speciális karaktereket az URI-ban, például aláhúzásokat.
 1. Kattintson a **Létrehozás** gombra.
 
 #### <a name="app-registrations-preview"></a>[Alkalmazásregisztrációk (előzetes verzió)](#tab/app-reg-preview/)
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
-1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
-1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
-1. Válassza a **Alkalmazásregisztrációk (előzetes verzió)** lehetőséget, majd válassza az **új regisztráció**lehetőséget.
-1. Adja meg az alkalmazás **nevét** . Például: *nativeapp1*.
-1. A **támogatott fiókok típusai**területen válassza a **fiókok lehetőséget bármely szervezeti címtárban vagy bármely identitás-szolgáltatóban**.
-1. Az **átirányítási URI**alatt válassza a legördülő menüből a **nyilvános ügyfél/natív (mobil & Desktop)** lehetőséget.
-1. Adjon meg egy egyedi sémával rendelkező átirányítási URI-t. Például: `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`. Az átirányítási URI kiválasztásakor két fontos szempontot kell figyelembe venni:
-    * **Egyedi**: az átirányítási URI sémájának minden alkalmazás esetében egyedinek kell lennie. A példában a `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect``com.onmicrosoft.contosob2c.exampleapp` a séma. Ezt a mintát kell követni. Ha két alkalmazás ugyanazt a sémát használja, a felhasználó választhat egy alkalmazást. Ha a felhasználó helytelenül választ, a bejelentkezés sikertelen lesz.
-    * **Befejezés**: az átirányítási URI-nak egy sémával és egy útvonallal kell rendelkeznie. Az elérési útnak legalább egy perjelet tartalmaznia kell a tartomány után. `//oauth/` működik például, amikor `//oauth` meghibásodik. Az URI-ban ne szerepeljenek speciális karakterek, például aláhúzások.
-1. Az **engedélyek**területen jelölje be a *rendszergazdai jóváhagyás megadása az OpenID-hez és a offline_access engedélyekhez* jelölőnégyzetet.
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Válassza ki a **Könyvtár + előfizetés** szűrőa felső menüben, majd válassza ki az Azure AD B2C bérlőt tartalmazó könyvtárat.
+1. A bal oldali menüben válassza az **Azure AD B2C**lehetőséget. Vagy válassza a **Minden szolgáltatás** lehetőséget, és keresse meg az **Azure AD B2C elemet.**
+1. Válassza **az Alkalmazásregisztrációk (Előzetes verzió)** lehetőséget, majd az **Új regisztráció**lehetőséget.
+1. Adja meg az alkalmazás **nevét.** Például *nativeapp1*.
+1. A **Támogatott fióktípusok csoportban**válassza a Fiókok lehetőséget **bármely szervezeti címtárban vagy bármely identitásszolgáltatóban.**
+1. Az **Átirányítás URI csoportban**válassza a **Nyilvános ügyfél/natív (mobil & asztali)** lehetőséget a legördülő menüben.
+1. Adjon meg egy átirányítási URI-t egyedi sémával. Például: `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`. Az átirányítási URI kiválasztásakor két fontos szempontot kell figyelembe venni:
+    * **Egyedi**: Az átirányítási URI sémának minden alkalmazásnál egyedinek kell lennie. A `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`példában `com.onmicrosoft.contosob2c.exampleapp` a rendszer szerepel. Ezt a mintát kell követni. Ha két alkalmazás ugyanazt a sémát használja, a felhasználó választhat egy alkalmazás kiválasztásával. Ha a felhasználó helytelenül választ, a bejelentkezés sikertelen lesz.
+    * **Teljes**: Az átirányítási URI-nak rendszerrel és elérési úttal is rendelkeznie kell. Az elérési útnak legalább egy perjelet kell tartalmaznia a tartomány után. Például, `//oauth/` működik, miközben `//oauth` nem sikerül. Ne adjon meg speciális karaktereket az URI-ban, például aláhúzásokat.
+1. **Az Engedélyek csoportban**jelölje be a Rendszergazda hozzájárulása a *nyílt és offline_access engedélyekhez* jelölőnégyzetet.
 1. Kattintson a **Register** (Regisztrálás) elemre.

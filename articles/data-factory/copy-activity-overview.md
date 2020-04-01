@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 39885782b55dca9c73f10990269d912f9b5727fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: edb80c604951a140d21e3775eec3f1dc6d55af73
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257971"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421414"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Tevékenység másolása az Azure Data Factoryban
 
@@ -134,10 +134,10 @@ A Másolás tevékenység következő sablonja tartalmazza a támogatott tulajdo
 | source | Adja meg a másolási forrás típusát és az adatok beolvasásához tartozó tulajdonságokat.<br/>További információt a [Támogatott adattárak és formátumok](#supported-data-stores-and-formats)című összekötőcikk "Tevékenységtulajdonságok másolása" című szakaszában talál. | Igen |
 | Mosogató | Adja meg a másolási fogadó típusát és az adatok írásának megfelelő tulajdonságait.<br/>További információt a [Támogatott adattárak és formátumok](#supported-data-stores-and-formats)című összekötőcikk "Tevékenységtulajdonságok másolása" című szakaszában talál. | Igen |
 | Fordító | Explicit oszlopleképezések megadása forrástól fogadóig. Ez a tulajdonság akkor érvényes, ha az alapértelmezett másolási viselkedés nem felel meg az igényeinek.<br/>További információ: [Sémaleképezés másolási tevékenységben.](copy-activity-schema-and-type-mapping.md) | Nem |
-| dataIntegrationUnits | Adjon meg egy olyan mértéket, amely az [Azure-integrációs futásidejű](concepts-integration-runtime.md) által az adatmásoláshoz használt energiamennyiséget jelöli. Ezeket az egységeket korábban felhőalapú adatmozgási egységeknek (DMU) nevezték. <br/>További információ: [Data Integration Units](copy-activity-performance.md#data-integration-units). | Nem |
-| párhuzamos másolatok | Adja meg azt a párhuzamosságt, amelyet a Másolás tevékenységnek használnia kell a forrásból történő adatok olvasásakor és az adatok fogadóba írásakor.<br/>További információ: [Párhuzamos másolat](copy-activity-performance.md#parallel-copy). | Nem |
+| dataIntegrationUnits | Adjon meg egy olyan mértéket, amely az [Azure-integrációs futásidejű](concepts-integration-runtime.md) által az adatmásoláshoz használt energiamennyiséget jelöli. Ezeket az egységeket korábban felhőalapú adatmozgási egységeknek (DMU) nevezték. <br/>További információ: [Data Integration Units](copy-activity-performance-features.md#data-integration-units). | Nem |
+| párhuzamos másolatok | Adja meg azt a párhuzamosságt, amelyet a Másolás tevékenységnek használnia kell a forrásból történő adatok olvasásakor és az adatok fogadóba írásakor.<br/>További információ: [Párhuzamos másolat](copy-activity-performance-features.md#parallel-copy). | Nem |
 | Megőrzése | Adja meg, hogy meg szeretné-e őrizni a metaadatokat/ACL-okat az adatmásolás során. <br/>További információt a [Metaadatok megőrzése](copy-activity-preserve-metadata.md)című témakörben talál. |Nem |
-| engedélyezés<br/>átmeneti beállítások | Adja meg, hogy a köztes adatokat a Blob storage-ban adja-e meg ahelyett, hogy közvetlenül másolna adatokat a forrásból a fogadóba.<br/>A hasznos forgatókönyvekről és a konfigurációs részletekről a [Szakaszos másolás](copy-activity-performance.md#staged-copy)című témakörben talál további információt. | Nem |
+| engedélyezés<br/>átmeneti beállítások | Adja meg, hogy a köztes adatokat a Blob storage-ban adja-e meg ahelyett, hogy közvetlenül másolna adatokat a forrásból a fogadóba.<br/>A hasznos forgatókönyvekről és a konfigurációs részletekről a [Szakaszos másolás](copy-activity-performance-features.md#staged-copy)című témakörben talál további információt. | Nem |
 | enableSkipIncompatibleRow<br/>redirectInkompatibilisRowSettings| Adja meg, hogyan kezelje az inkompatibilis sorokat, amikor adatokat másol a forrásból a fogadóba.<br/>További információ: [Fault tolerance](copy-activity-fault-tolerance.md). | Nem |
 
 ## <a name="monitoring"></a>Figyelés

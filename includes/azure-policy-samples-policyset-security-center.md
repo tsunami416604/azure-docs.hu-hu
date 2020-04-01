@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: dacoulte
 ms.openlocfilehash: 1693d0d68b7c4a02ef473fb435e65772796067a9
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79381590"
 ---
-|Name (Név) |Leírás |Szabályzatok |Verzió |
+|Név |Leírás |Házirendek |Verzió |
 |---|---|---|---|
-|[\[előzetes verzió\]: a Protection Suite engedélyezése](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Security%20Center/ASC_DataProtection.json) |Engedélyezze az adatvédelem az SQL Server-kiszolgálókon. Ezt a kezdeményezést automatikusan Azure Security Center Standard szint rendeli hozzá. |1 |1.0.0 – előzetes verzió |
-|[Azure Security Center figyelésének engedélyezése](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Security%20Center/AzureSecurityCenter.json) |A Azure Security Center összes elérhető biztonsági javaslatának figyelése. Ez a Azure Security Center alapértelmezett házirendje. |96 |2.0.1 |
+|[\[Előzetes\]verzió : Adatvédelmi csomag engedélyezése](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Security%20Center/ASC_DataProtection.json) |Engedélyezze az adatvédelmet az SQL-kiszolgálókszámára. Ezt a kezdeményezést az Azure Security Center standard szintű csomagja automatikusan hozzárendeli. |1 |1.0.0-preview |
+|[Figyelés engedélyezése az Azure Security Centerben](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Security%20Center/AzureSecurityCenter.json) |Az Azure Security Center ben elérhető összes rendelkezésre álló biztonsági javaslat figyelése. Ez az Azure Security Center alapértelmezett szabályzata. |96 |2.0.1 |

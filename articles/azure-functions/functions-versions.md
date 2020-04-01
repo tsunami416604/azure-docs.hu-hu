@@ -3,12 +3,12 @@ title: Az Azure Functions futásidejű verziói – áttekintés
 description: Az Azure Functions a futásidejű több verzióját támogatja. Ismerje meg a különbségeket közöttük, és hogyan válassza ki az egyik, hogy az Ön számára megfelelő.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 21a7b25087efd5d4adf2154c935636c263df9afd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e90752e89be7e381b06f8a87f76f123f0e4a8e3a
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276555"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422483"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Az Azure Functions futásidejű verziói – áttekintés
 
@@ -18,7 +18,7 @@ Az Azure Functions futásidejű főverziói a .NET azon verziójához kapcsolód
 | --------------- | ------------- | ------------ |
 | 3.x | FE | .NET Core 3.1 | 
 | 2,x | FE | .NET Core 2.2 |
-| 1,x | GA<sup>2(2)</sup> | .NET keret rendszer keret 4.6<sup>3</sup> |
+| 1,x | GA<sup>2(2)</sup> | .NET keretrendszer 4.7.2<sup>3</sup> |
 
 <sup>1</sup> GA-kiadások éles forgatókönyvek esetén támogatottak.   
 <sup>2</sup> Az 1.x verzió karbantartási üzemmódban van. A fejlesztések csak a későbbi verziókban találhatók.   

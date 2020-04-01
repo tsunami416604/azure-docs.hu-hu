@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 874c685491774e2a318ae0a8b7394945a51b2f7f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 68e234b9db269c30dc9f24106ae1942c01304da7
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79244510"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422504"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Adatok másolása az Oracle-től és az Oracle-nek az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
@@ -213,7 +213,7 @@ Ha adatokat szeretne másolni az Oracle programból, állítsa a másolási tev�
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrásának típustulajdonságát a ikonra `OracleSource`kell állítani. | Igen |
 | oracleReaderQuery | Az adatok olvasásához használja az egyéni SQL-lekérdezést. Például: `"SELECT * FROM MyTable"`.<br>Ha engedélyezi a particionált terhelést, a lekérdezésben a megfelelő beépített partícióparamétereket kell csatlakoztatnia. Példák: Párhuzamos másolat az [Oracle-ből](#parallel-copy-from-oracle) szakaszban. | Nem |
-| partitionOptions | Megadja az Oracle-től az adatok betöltéséhez használt adatparticionálási beállításokat. <br>Az engedélyezett értékek a következők: **Nincs** (alapértelmezett), **PhysicalPartitionsOfTable** ,és **DynamicRange**.<br>Ha egy partícióbeállítás engedélyezve van `None`(azaz nem), az Oracle-adatbázisból származó adatok egyidejű [`parallelCopies`](copy-activity-performance.md#parallel-copy) betöltéséhez szükséges párhuzamosság mértékét a másolási tevékenység beállítása szabályozza. | Nem |
+| partitionOptions | Megadja az Oracle-től az adatok betöltéséhez használt adatparticionálási beállításokat. <br>Az engedélyezett értékek a következők: **Nincs** (alapértelmezett), **PhysicalPartitionsOfTable** ,és **DynamicRange**.<br>Ha egy partícióbeállítás engedélyezve van `None`(azaz nem), az Oracle-adatbázisból származó adatok egyidejű [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) betöltéséhez szükséges párhuzamosság mértékét a másolási tevékenység beállítása szabályozza. | Nem |
 | partitionSettings (partícióbeállításai) | Adja meg az adatparticionálás beállításainak csoportját. <br>Alkalmazza, ha a partíciós beállítás nem `None`. | Nem |
 | partícióNames | A másolandó fizikai partíciók listája. <br>Alkalmazza, ha a `PhysicalPartitionsOfTable`partíciós beállítás . Ha lekérdezéssel olvassa be a forrásadatokat, a HOOK a `?AdfTabularPartitionName` WHERE záradékban. Például tekintse meg a Párhuzamos másolat az [Oracle szakaszt.](#parallel-copy-from-oracle) | Nem |
 | partitionColumnName | Adja meg a forrásoszlop nevét **egész típusban,** amelyet a tartománypartidatás a párhuzamos másoláshoz használ. Ha nincs megadva, a tábla elsődleges kulcsa automatikusan észlelhető, és partícióoszlopként használatos. <br>Alkalmazza, ha a `DynamicRange`partíciós beállítás . Ha lekérdezéssel olvassa be a forrásadatokat, a HOOK a `?AdfRangePartitionColumnName` WHERE záradékban. Például tekintse meg a Párhuzamos másolat az [Oracle szakaszt.](#parallel-copy-from-oracle) | Nem |
@@ -300,7 +300,7 @@ A Data Factory Oracle összekötő beépített adatparticionálást biztosít az
 
 ![A partícióbeállításainak képernyőképe](./media/connector-oracle/connector-oracle-partition-options.png)
 
-Ha engedélyezi a particionált másolást, a Data Factory párhuzamos lekérdezéseket futtat az Oracle-forráson az adatok partíciók általi betöltéséhez. A párhuzamos mértéket a [`parallelCopies`](copy-activity-performance.md#parallel-copy) másolási tevékenység beállítása szabályozza. Ha például négyre állítja a beállítást, `parallelCopies` a Data Factory egyidejűleg négy lekérdezést hoz létre és futtat a megadott partícióbeállítás és -beállítások alapján, és minden lekérdezés lekéri az adatok egy részét az Oracle-adatbázisból.
+Ha engedélyezi a particionált másolást, a Data Factory párhuzamos lekérdezéseket futtat az Oracle-forráson az adatok partíciók általi betöltéséhez. A párhuzamos mértéket a [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) másolási tevékenység beállítása szabályozza. Ha például négyre állítja a beállítást, `parallelCopies` a Data Factory egyidejűleg négy lekérdezést hoz létre és futtat a megadott partícióbeállítás és -beállítások alapján, és minden lekérdezés lekéri az adatok egy részét az Oracle-adatbázisból.
 
 Javasoljuk, hogy engedélyezze a párhuzamos másolást az adatparticionálással, különösen akkor, ha nagy mennyiségű adatot tölt be az Oracle adatbázisból. Az alábbiakban a különböző forgatókönyvekhez javasolt konfigurációkat javasoljuk. Amikor adatokat másol fájlalapú adattárba, a rendszer azt a parancsot adja meg, hogy egy mappába több fájlként írjon (csak adja meg a mappa nevét), ebben az esetben a teljesítmény jobb, mint egyetlen fájlba írni.
 

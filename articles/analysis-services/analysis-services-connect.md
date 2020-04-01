@@ -4,19 +4,19 @@ description: Ismerje meg, hogyan csatlakozhat az Azure-beli Analysis Services-ki
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3231b46060cbb755ada000473c8fbe873cc51ef1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2875959a833134131fa6db6d51df0c2b47a39377
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73147311"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411317"
 ---
 # <a name="connecting-to-servers"></a>Kapcsolódás kiszolgálókhoz
 
-Ez a cikk olyan adatmodellezési és -kezelési alkalmazások, például sql Server Management Studio (SSMS) vagy Visual Studio Analysis Services-projektekkel, vagy ügyféljelentési alkalmazásokkal, például microsoft excel, Power BI alkalmazásokkal való csatlakozást ismerteti. Asztal vagy egyéni alkalmazások. Az Azure Analysis Services-hez való kapcsolatok HTTPS-t használnak.
+Ez a cikk adatmodellezési és -kezelési alkalmazások, például az SQL Server Management Studio (SSMS) vagy a Visual Studio Analysis Services-projektekkel, illetve ügyféljelentési alkalmazásokkal, például Microsoft Excel, Power BI Desktop vagy egyéni alkalmazásokkal való csatlakozást ismerteti. Az Azure Analysis Services-hez való kapcsolatok HTTPS-t használnak.
 
 ## <a name="client-libraries"></a>Ügyfélkódtárak
 

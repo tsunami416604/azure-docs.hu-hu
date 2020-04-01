@@ -1,72 +1,72 @@
 ---
-title: 'Azure VPN Gateway: átjárók csatlakoztatása több helyszíni házirend-alapú VPN-eszközhöz'
-description: Konfiguráljon egy Azure Route-alapú VPN-átjárót több házirend alapú VPN-eszközre a Azure Resource Manager és a PowerShell használatával.
+title: 'Azure VPN-átjáró: Átjárók csatlakoztatása több helyszíni házirend-alapú VPN-eszközhöz'
+description: Konfiguráljon egy Azure-útvonal-alapú VPN-átjárót több házirendalapú VPN-eszközre az Azure Resource Manager és a PowerShell használatával.
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/26/2020
 ms.author: yushwang
-ms.openlocfilehash: 028ed1a632016fcbdf29bb47ab81a36f659785da
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 687c33e50a986cf8af08d0201fe0159a79cf02a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79279311"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80123318"
 ---
-# <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Azure VPN-átjárók csatlakoztatása több helyszíni, a PowerShell-t használó helyi házirend-alapú VPN-eszközhöz
+# <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Azure VPN-átjárók csatlakoztatása több helyszíni házirend-alapú VPN-eszközhöz a PowerShell használatával
 
-Ebből a cikkből megtudhatja, hogyan konfigurálhat egy Azure Route-alapú VPN-átjárót több helyszíni, házirend-alapú VPN-eszközhöz való csatlakozáshoz, amely Egyéni IPsec/IKE-házirendeket használ a S2S VPN-kapcsolatokon.
+Ez a cikk segít konfigurálni egy Azure útvonal-alapú VPN-átjáró, hogy csatlakozzon több helyszíni házirend-alapú VPN-eszközök kihasználva az egyéni IPsec/IKE-házirendek S2S VPN-kapcsolatokon.
 
-## <a name="about"></a>Házirend-alapú és Route-alapú VPN-átjárók
+## <a name="about-policy-based-and-route-based-vpn-gateways"></a><a name="about"></a>Házirend- és útvonalalapú VPN-átjárók –
 
-A házirend-alapú és *az útválasztási alapú* VPN-eszközök különböznek az IPSec-forgalom választóinak a kapcsolaton való beállításának módjában:
+A házirendalapú *és* az útvonalalapú VPN-eszközök különböznek attól, ahogyan az IPsec-forgalom választók be vannak állítva egy kapcsolaton:
 
-* **Házirend-alapú** A VPN-eszközök mindkét hálózat előtagjainak kombinációit használják annak meghatározására, hogy a forgalom titkosítása/visszafejtése hogyan történjen az IPsec-alagutakon keresztül. Ez általában a csomagszűrés által elvégezhető tűzfalakon épül fel. A rendszer az IPsec-alagút titkosítását és visszafejtését adja hozzá a Csomagszűrés és a feldolgozó motorhoz.
-* **Route-alapú** A VPN-eszközök bármilyen típusú (helyettesítő) forgalmi választót használnak, és lehetővé teszik a különböző IPsec-alagutakra irányuló útválasztási/továbbítási táblák közvetlen forgalmát. Ez általában olyan útválasztó platformokra épül, ahol az egyes IPsec-alagutak hálózati adapterként vagy VTI (virtuális bújtatási felületen) vannak modellezve.
+* **Politikaalapú** A VPN-eszközök mindkét hálózat előtagok kombinációját használják a forgalom IPsec-alagutakon keresztüli titkosításának/visszafejtésének meghatározásához. Általában csomagszűrést végző tűzfaleszközökre épül. Az IPsec-alagút titkosítási és visszafejtési műveletei hozzáadódnak a csomagok szűrését és feldolgozását végző motorhoz.
+* **Útvonal-alapú** A VPN-eszközök bármilyen (helyettesítő) forgalomválasztót használnak, és lehetővé teszik, hogy az útválasztási/továbbítási táblák irányítsák a forgalmat a különböző IPsec-alagutakba. Általában olyan útválasztó platformokra épül, ahol minden IPsec-alagút hálózati adapterként vagy VTI-ként (virtuális alagút-összeköttetésként) van modellezve.
 
-A következő diagramok kiemelik a két modellt:
+Az alábbi ábrák kiemelik a két modellt:
 
-### <a name="policy-based-vpn-example"></a>Házirend-alapú VPN-példa
-![házirend-alapú](./media/vpn-gateway-connect-multiple-policybased-rm-ps/policybasedmultisite.png)
+### <a name="policy-based-vpn-example"></a>Példa házirendalapú VPN-re
+![politikaalapú](./media/vpn-gateway-connect-multiple-policybased-rm-ps/policybasedmultisite.png)
 
-### <a name="route-based-vpn-example"></a>Route-alapú VPN-példa
-![Route-alapú](./media/vpn-gateway-connect-multiple-policybased-rm-ps/routebasedmultisite.png)
+### <a name="route-based-vpn-example"></a>Útvonalalapú VPN-példa
+![útvonal-alapú](./media/vpn-gateway-connect-multiple-policybased-rm-ps/routebasedmultisite.png)
 
-### <a name="azure-support-for-policy-based-vpn"></a>Azure-támogatás házirend alapú VPN-hez
-Jelenleg az Azure a VPN-átjárók mindkét üzemmódját támogatja: Route-alapú VPN-átjárók és házirend-alapú VPN-átjárók. Különböző belső platformokra épülnek, amelyek különböző specifikációkat eredményeznek:
+### <a name="azure-support-for-policy-based-vpn"></a>Azure-támogatás a házirendalapú VPN-hez
+Jelenleg az Azure támogatja a VPN-átjárók mindkét módját: az útvonalalapú VPN-átjárókat és a házirend-alapú VPN-átjárókat. Különböző belső platformokra épülnek, amelyek különböző specifikációkat eredményeznek:
 
-|                          | **Házirendalapú VPN Gateway** | **Útvonalalapú VPN Gateway**       |**Útvonalalapú VPN Gateway**                          |
+|                          | **Házirendalapú VPN-átjáró** | **Útvonalalapú VPN-átjáró**       |**Útvonalalapú VPN-átjáró**                          |
 | ---                      | ---                         | ---                              |---                                                 |
-| **Azure Gateway SKU**    | Alapszintű                       | Alapszintű                            | Standard, HighPerformance, VpnGw1, VpnGw2, VpnGw3  |
-| **IKE-verzió**          | IKEv1                       | IKEv2                            | IKEv1 és IKEv2                                    |
-| **Max. S2S-kapcsolatok** | **1**                       | 10                               |Standard: 10<br> Egyéb SKU-i: 30                     |
+| **Azure Gateway Termékváltozat**    | Basic                       | Basic                            | VpnGw1, VpnGw2, VpnGw3, VpnGw4, VpnGw5  |
+| **Internetes kulcscsere verziója**          | IKEv1                       | IKEv2                            | IKEv1 és IKEv2                         |
+| **Max. S2S-kapcsolatok** | **1**                       | 10                               | 30                     |
 |                          |                             |                                  |                                                    |
 
-Az Egyéni IPsec/IKE-szabályzattal mostantól konfigurálhatja az Azure Route-alapú VPN-átjárókat, hogy a "**PolicyBasedTrafficSelectors**" beállítással rendelkező előtag-alapú forgalmi választókat használják a helyi házirend-alapú VPN-eszközökhöz való csatlakozáshoz. Ez a funkció lehetővé teszi, hogy az Azure-beli virtuális hálózatról és a VPN-átjáróról több helyszíni házirend-alapú VPN-vagy tűzfal-eszközhöz kapcsolódjon, így a jelenlegi Azure Policy-alapú VPN-átjárók egyetlen csatlakozási korlátját távolítja el.
+Az egyéni IPsec/IKE-házirenddel most már konfigurálhatja az Azure útvonalalapú VPN-átjáróit, hogy előtag-alapú forgalomválasztókat használjanak a "**PolicyBasedTrafficSelectors**" beállítással, hogy helyszíni házirend-alapú VPN-eszközökhöz csatlakozzon. Ez a funkció lehetővé teszi, hogy egy Azure virtuális hálózatról és VPN-átjáróról több helyszíni házirend-alapú VPN/tűzfal eszközhöz csatlakozzon, és távolítsa el az egyetlen kapcsolatkorlátot a jelenlegi Azure-szabályzatalapú VPN-átjárókból.
 
 > [!IMPORTANT]
-> 1. A kapcsolat engedélyezéséhez a helyszíni házirend-alapú VPN-eszközöknek támogatniuk kell a **IKEv2** az Azure Route-alapú VPN-átjáróhoz való csatlakozáshoz. Keresse meg a VPN-eszköz specifikációit.
-> 2. A házirend-alapú VPN-eszközökön keresztül az ezzel a mechanizmussal csatlakozó helyszíni hálózatok csak az Azure-beli virtuális hálózathoz csatlakozhatnak; **nem tudnak átjutni más helyszíni hálózatokra vagy virtuális hálózatokra ugyanazon Azure VPN-átjárón keresztül**.
-> 3. A konfigurációs beállítás része az Egyéni IPsec/IKE-kapcsolati házirendnek. Ha engedélyezi a házirend alapú forgalom-választó beállítást, meg kell adnia a teljes szabályzatot (IPsec/IKE titkosítási és integritási algoritmusok, kulcs erőssége és SA-élettartama).
+> 1. A kapcsolat engedélyezéséhez a helyszíni házirend-alapú VPN-eszközök nek támogatniuk kell az **IKEv2-t** az Azure útvonalalapú VPN-átjárókhoz való csatlakozáshoz. Ellenőrizze a VPN-eszköz specifikációit.
+> 2. A házirend-alapú VPN-eszközökön keresztül ezzel a mechanizmussal összekötő helyszíni hálózatok csak az Azure virtuális hálózatához csatlakozhatnak; **nem tudnak más helyszíni hálózatokra vagy virtuális hálózatokra áthaladni ugyanazon az Azure VPN-átjárón keresztül.**
+> 3. A konfigurációs beállítás az egyéni IPsec/IKE kapcsolatházirend része. Ha engedélyezi a házirend-alapú forgalomválasztó beállítást, meg kell adnia a teljes házirendet (IPsec/IKE titkosítási és integritási algoritmusok, kulcserősségek és biztonsági társítások élettartama).
 
-Az alábbi ábrán látható, hogy az Azure VPN Gateway-en keresztüli tranzit-útválasztás miért nem működik a házirend-alapú kapcsolóval:
+Az alábbi ábra bemutatja, hogy az Azure VPN-átjárón keresztüli tranzitútválasztás miért nem működik a házirendalapú beállítással:
 
-![házirend alapú tranzit](./media/vpn-gateway-connect-multiple-policybased-rm-ps/policybasedtransit.png)
+![politikaalapú tranzit](./media/vpn-gateway-connect-multiple-policybased-rm-ps/policybasedtransit.png)
 
-Ahogy az ábrán is látható, az Azure VPN Gateway a virtuális hálózatról származó forgalmi választókat is tartalmaz a helyszíni hálózati előtagok számára, a kapcsolat nélküli előtagokat azonban nem. Például a helyszíni 2., a 3. és a 4. hely egyaránt képes kommunikálni a VNet1, de az Azure VPN-átjárón keresztül nem tud csatlakozni egymáshoz. Az ábrán az Azure VPN Gateway ezen konfiguráció alatt nem elérhető, egymással összekapcsolt forgalom-választói láthatók.
+Amint az az ábrán látható, az Azure VPN-átjáró a virtuális hálózatból a virtuális hálózat minden egyes helyszíni hálózati előtaghoz, de a keresztkapcsolat-előtagokhoz. Például a helyszíni 2-es, 3-as és 4-es helyen kommunikálhat a VNet1-vel, de nem tud csatlakozni az Azure VPN-átjárón keresztül egymáshoz. Az ábrán a cross-connect forgalom választók, amelyek nem érhetők el az Azure VPN-átjáró ebben a konfigurációban.
 
-## <a name="workflow"></a>Munkafolyamat
+## <a name="workflow"></a><a name="workflow"></a>Munkafolyamat
 
-A cikkben szereplő utasítások ugyanezt a példát követik, mint az [IPSec/IKE-szabályzat konfigurálása S2S vagy VNet-to-VNet kapcsolatok](vpn-gateway-ipsecikepolicy-rm-powershell.md) számára a S2S VPN-kapcsolat létesítéséhez. Ez a következő ábrán látható:
+Ebben a cikkben található utasítások az [S2S- vagy V2S-hálózati kapcsolatok IPsec/IKE-házirendjének konfigurálása](vpn-gateway-ipsecikepolicy-rm-powershell.md) című példában leírtakat követik az S2S VPN-kapcsolatok létrehozásához. Ez az alábbi ábrán látható:
 
-![S2S – szabályzat](./media/vpn-gateway-connect-multiple-policybased-rm-ps/s2spolicypb.png)
+![s2s-politika](./media/vpn-gateway-connect-multiple-policybased-rm-ps/s2spolicypb.png)
 
-A kapcsolódást engedélyező munkafolyamat:
+A kapcsolat engedélyezéséhez:
 1. Hozza létre a virtuális hálózatot, a VPN-átjárót és a helyi hálózati átjárót a létesítmények közötti kapcsolathoz.
-2. Hozzon létre egy IPsec/IKE-házirendet.
-3. Alkalmazza a házirendet a S2S vagy a VNet-VNet közötti kapcsolatok létrehozásakor, és **engedélyezze a házirend-alapú forgalom-választókat** a kapcsolatban.
-4. Ha a kapcsolódás már létrejött, a szabályzatot alkalmazhatja vagy frissítheti egy meglévő kapcsolatban.
+2. IPsec/IKE-házirend létrehozása.
+3. Alkalmazza a házirendet, amikor s2s- vagy virtuálishálózat-vnet-kapcsolatot hoz létre, és **engedélyezi a házirend-alapú forgalomválasztókat** a kapcsolaton.
+4. Ha a kapcsolat már létrejött, alkalmazhatja vagy frissítheti a házirendet egy meglévő kapcsolatra.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -74,17 +74,17 @@ A kapcsolódást engedélyező munkafolyamat:
 
 * [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
-## <a name="enablepolicybased"></a>Házirend-alapú forgalmi választók engedélyezése
+## <a name="enable-policy-based-traffic-selectors"></a><a name="enablepolicybased"></a>Házirendalapú forgalomválasztók engedélyezése
 
-Ebből a szakaszból megtudhatja, hogyan engedélyezheti a házirend-alapú forgalmi választókat a kapcsolatok esetében. Győződjön meg arról, hogy végrehajtotta [az IPSec/IKE-házirend konfigurálása című cikk 3. részét](vpn-gateway-ipsecikepolicy-rm-powershell.md). A cikkben szereplő lépések ugyanazt a paramétereket használják.
+Ez a szakasz bemutatja, hogyan engedélyezheti a házirend-alapú forgalom választók egy kapcsolaton. Győződjön meg arról, hogy elvégezte [az IPsec/IKE házirendjének konfigurálása című cikk 3.](vpn-gateway-ipsecikepolicy-rm-powershell.md) A cikkben ismertetett lépések ugyanazokat a paramétereket használják.
 
-### <a name="step-1---create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a>1\. lépés – a virtuális hálózat, a VPN-átjáró és a helyi hálózati átjáró létrehozása
+### <a name="step-1---create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a>1. lépés - A virtuális hálózat, a VPN-átjáró és a helyi hálózati átjáró létrehozása
 
-#### <a name="connect-to-your-subscription-and-declare-your-variables"></a>Kapcsolódjon az előfizetéshez, és állapítsa meg a változókat
+#### <a name="connect-to-your-subscription-and-declare-your-variables"></a>Csatlakozás az előfizetéshez és deklarálhatja változóit
 
-1. Ha a PowerShellt helyileg futtatja a számítógépen, jelentkezzen be a *AzAccount* parancsmag használatával. Ehelyett használja a böngészőben a Azure Cloud Shell.
+1. Ha a PowerShellhelyi en fut a számítógépen, jelentkezzen be a *Connect-AzAccount* parancsmag használatával. Vagy inkább használja az Azure Cloud Shellt a böngészőjében.
 
-2. Deklarálja a változókat. Ebben a gyakorlatban a következő változókat használjuk:
+2. Deklarálja a változókat. Ehhez a gyakorlathoz a következő változókat használjuk:
 
    ```azurepowershell-interactive
    $Sub1          = "<YourSubscriptionName>"
@@ -117,7 +117,7 @@ Ebből a szakaszból megtudhatja, hogyan engedélyezheti a házirend-alapú forg
    ```azurepowershell-interactive
    New-AzResourceGroup -Name $RG1 -Location $Location1
    ```
-2. A következő példa segítségével hozza létre a virtuális hálózati TestVNet1 három alhálózattal és a VPN-átjáróval. Ha szeretné helyettesíteni az értékeket, fontos, hogy mindig az átjáró-alhálózatot nevezze el, amely kifejezetten "GatewaySubnet". Ha ezt másként nevezi el, az átjáró létrehozása meghiúsul.
+2. A következő példában három alhálózattal hozza létre a TestVNet1 virtuális hálózatot és a VPN-átjárót. Ha értékeket szeretne helyettesíteni, fontos, hogy mindig az átjáró alhálózatát kifejezetten "GatewaySubnet"-nek nevezze el. Ha ezt másként nevezi el, az átjáró létrehozása meghiúsul.
 
     ```azurepowershell-interactive
     $fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
@@ -136,21 +136,21 @@ Ebből a szakaszból megtudhatja, hogyan engedélyezheti a házirend-alapú forg
     New-AzLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 -Location $Location1 -GatewayIpAddress $LNGIP6 -AddressPrefix $LNGPrefix61,$LNGPrefix62
     ```
 
-### <a name="step-2---create-an-s2s-vpn-connection-with-an-ipsecike-policy"></a>2\. lépés – S2S VPN-kapcsolat létrehozása IPsec/IKE-házirenddel
+### <a name="step-2---create-an-s2s-vpn-connection-with-an-ipsecike-policy"></a>2. lépés – S2S VPN-kapcsolat létrehozása IPsec/IKE-házirenddel
 
-1. Hozzon létre egy IPsec/IKE-házirendet.
+1. IPsec/IKE-házirend létrehozása.
 
    > [!IMPORTANT]
-   > Létre kell hoznia egy IPsec/IKE-szabályzatot, hogy engedélyezze az "UsePolicyBasedTrafficSelectors" lehetőséget a kapcsolódáson.
+   > Létre kell hoznia egy IPsec/IKE-házirendet a "UsePolicyBasedTrafficSelectors" beállítás engedélyezéséhez a kapcsolaton.
 
-   Az alábbi példa egy IPsec/IKE-házirendet hoz létre az alábbi algoritmusokkal és paraméterekkel:
+   A következő példa létrehoz egy IPsec/IKE-házirendet ezekkel az algoritmusokkal és paraméterekkel:
     * IKEv2: AES256, SHA384, DHGroup24
-    * IPsec: AES256, SHA256, PFS nincs, SA élettartama 14400 másodperc & 102400000KB
+    * IPsec: AES256, SHA256, PFS None, SA Élettartam 14400 másodperc & 102400000KB
 
    ```azurepowershell-interactive
    $ipsecpolicy6 = New-AzIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup24 -IpsecEncryption AES256 -IpsecIntegrity SHA256 -PfsGroup None -SALifeTimeSeconds 14400 -SADataSizeKilobytes 102400000
    ```
-1. Hozza létre a S2S VPN-kapcsolat házirend-alapú forgalmi választókkal és IPsec/IKE-szabályzattal, és alkalmazza az előző lépésben létrehozott IPsec/IKE-házirendet. Vegye figyelembe a további "-UsePolicyBasedTrafficSelectors $True" paramétert, amely lehetővé teszi a házirend-alapú forgalom-választókat a kapcsolaton.
+1. Hozza létre az S2S VPN-kapcsolatot házirendalapú forgalomválasztókkal és IPsec/IKE házirenddel, és alkalmazza az előző lépésben létrehozott IPsec/IKE házirendet. Legyen tisztában a "-UsePolicyBasedTrafficSelectors $True" további paraméterrel, amely lehetővé teszi a házirend-alapú forgalomválasztók használatát a kapcsolaton.
 
    ```azurepowershell-interactive
    $vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1  -ResourceGroupName $RG1
@@ -158,31 +158,31 @@ Ebből a szakaszból megtudhatja, hogyan engedélyezheti a házirend-alapú forg
 
    New-AzVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng6 -Location $Location1 -ConnectionType IPsec -UsePolicyBasedTrafficSelectors $True -IpsecPolicies $ipsecpolicy6 -SharedKey 'AzureA1b2C3'
    ```
-1. A lépések elvégzése után a S2S VPN-kapcsolat az IPsec/IKE-házirendet fogja használni, és engedélyezi a házirend-alapú forgalom-választókat a kapcsolaton. Ugyanezeket a lépéseket megismételve további kapcsolatokat adhat hozzá a helyi házirend-alapú VPN-eszközökhöz ugyanahhoz az Azure VPN-átjáróhoz.
+1. A lépések végrehajtása után az S2S VPN-kapcsolat a definiált IPsec/IKE házirendet fogja használni, és engedélyezi a házirend-alapú forgalomválasztókat a kapcsolaton. Ugyanazokat a lépéseket megismételheti további helyszíni házirend-alapú VPN-eszközökhöz való további kapcsolatok hozzáadásához ugyanabból az Azure VPN-átjáróból.
 
-## <a name="update"></a>Házirend-alapú forgalom-választók frissítése
-Ebből a szakaszból megtudhatja, hogyan frissítheti a házirend-alapú forgalmi választókat egy meglévő S2S VPN-kapcsolathoz.
+## <a name="to-update-policy-based-traffic-selectors"></a><a name="update"></a>Házirendalapú forgalomválasztók frissítése
+Ez a szakasz bemutatja, hogyan frissítheti a házirend-alapú forgalom választók lehetőséget egy meglévő S2S VPN-kapcsolat.
 
-1. A kapcsolatok erőforrásának beolvasása.
+1. A kapcsolati erőforrás beszerezése.
 
    ```azurepowershell-interactive
    $RG1          = "TestPolicyRG1"
    $Connection16 = "VNet1toSite6"
    $connection6  = Get-AzVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
    ```
-1. Tekintse meg a házirend-alapú forgalom választói beállítást.
-A következő sor azt mutatja be, hogy a házirend alapú forgalom-választókat használja-e a rendszer a kapcsolatban:
+1. Tekintse meg a házirend-alapú forgalom választók lehetőséget.
+A következő sor azt mutatja, hogy a házirend-alapú forgalom választók használják a kapcsolatot:
 
    ```azurepowershell-interactive
    $connection6.UsePolicyBasedTrafficSelectors
    ```
 
-   Ha a sor "true" (**igaz**) értéket ad vissza, akkor a házirend-alapú forgalom választói vannak konfigurálva a kapcsolatban. Ellenkező esetben a "**false**" értéket adja vissza.
-1. A kapcsolatok erőforrásának beszerzése után engedélyezheti vagy letilthatja a házirend-alapú forgalmi választókat egy adott kapcsolatban.
+   Ha a sor "**True**" értéket ad vissza, akkor a házirend-alapú forgalomválasztók a kapcsolaton vannak konfigurálva; ellenkező esetben a "**Hamis**" értéket adja vissza.
+1. Miután megszerezte a kapcsolaterőforrást, engedélyezheti vagy letilthatja a házirend-alapú forgalomválasztókat egy kapcsolaton.
 
    - Az engedélyezéshez
 
-      A következő példa engedélyezi a házirend alapú forgalom-választókat, de változatlanul hagyja az IPsec/IKE-házirendet:
+      A következő példa engedélyezi a házirend-alapú forgalomválasztók beállítást, de változatlanul hagyja az IPsec/IKE házirendet:
 
       ```azurepowershell-interactive
       $RG1          = "TestPolicyRG1"
@@ -192,9 +192,9 @@ A következő sor azt mutatja be, hogy a házirend alapú forgalom-választókat
       Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6 -UsePolicyBasedTrafficSelectors $True
       ```
 
-   - A letiltáshoz
+   - Letiltás
 
-      A következő példa letiltja a házirend alapú forgalom-választókat, de változatlanul hagyja az IPsec/IKE-házirendet:
+      A következő példa letiltja a házirend-alapú forgalomválasztók beállítást, de változatlanul hagyja az IPsec/IKE házirendet:
 
       ```azurepowershell-interactive
       $RG1          = "TestPolicyRG1"
@@ -204,7 +204,7 @@ A következő sor azt mutatja be, hogy a házirend alapú forgalom-választókat
       Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6 -UsePolicyBasedTrafficSelectors $False
       ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. A lépésekért lásd: [Virtuális gép létrehozása](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Tekintse át az [IPSec/IKE-házirend konfigurálása a S2S VPN-hez vagy a VNet-VNet kapcsolatokhoz](vpn-gateway-ipsecikepolicy-rm-powershell.md) című témakört az egyéni IPSec/IKE-házirendekkel kapcsolatos további részletekért.
+Az egyéni IPsec/IKE-házirendekkel kapcsolatos további részletekért tekintse át [az IPsec/IKE-házirend konfigurálása S2S VPN- vagy VNet-vnet-kapcsolatokhoz](vpn-gateway-ipsecikepolicy-rm-powershell.md) című ismertetés című ismertetés című ismertetőt is.

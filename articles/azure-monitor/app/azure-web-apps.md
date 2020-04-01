@@ -3,12 +3,12 @@ title: Az Azure-alkalmazások szolgáltatásainak teljesítményének figyelése
 description: Alkalmazásteljesítmény-figyelés az Azure-alkalmazásszolgáltatásokhoz. A diagram terhelési és válaszideje, a függőségi információk és a teljesítményre vonatkozó riasztások beállítása.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 2ec503829d3e6edd7b2b6f6b36314db8a205a8cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2134e059a446c18108e8dd16bcc74504b42b15a
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297609"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437208"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Az Azure App Service teljesítményének monitorozása
 
@@ -28,7 +28,7 @@ Kétféleképpen engedélyezheti az alkalmazások figyelését az Azure App Serv
 
     * Ez a megközelítés sokkal testreszabhatóbb, de az [Application Insights SDK NuGet-csomagoktól való függőség et](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)igényel. Ez a módszer azt is jelenti, hogy saját maga kell kezelnie a csomagok legújabb verziójának frissítéseit.
 
-    * Ha egyéni API-hívásokat kell kezdeményeznie az alapértelmezetten nem rögzített események/függőségek nyomon követéséhez az ügynökalapú figyeléssel, akkor ezt a módszert kell használnia. További információért tekintse meg az [EGYÉNI események és metrikák API-ját.](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics)
+    * Ha egyéni API-hívásokat kell kezdeményeznie az alapértelmezetten nem rögzített események/függőségek nyomon követéséhez az ügynökalapú figyeléssel, akkor ezt a módszert kell használnia. További információért tekintse meg az [EGYÉNI események és metrikák API-ját.](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics) Ez jelenleg az egyetlen támogatott lehetőség a Linux alapú számítási feladatokhoz.
 
 > [!NOTE]
 > Ha mind az ügynök-alapú figyelés, mind a manuális SDK-alapú instrumentation észlelése, csak a manuális műszerezési beállítások at kell tiszteletben tartani. Ezzel megakadályozhatja az ismétlődő adatok küldését. Erről az alábbi [hibaelhárítási szakaszban olvashat bővebben.](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)

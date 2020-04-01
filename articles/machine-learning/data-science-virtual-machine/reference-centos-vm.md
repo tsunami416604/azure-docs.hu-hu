@@ -8,12 +8,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: db49a9f5e0e6675d93cb58d6af9c92fac21e8b74
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 05da812023e7525b87a3d7ef1ce1940339f99791
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77525838"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475483"
 ---
 # <a name="reference-centos-linux-data-science-virtual-machine"></a>Hivatkozás: CentOS (Linux) Adattudomány virtuális gép
 
@@ -49,7 +49,7 @@ Az adatszakértők különböző eszközöket használnak a feladatok elvégzés
 
 A Linux DSVM jelentősen enyhítheti ezt a terhet. A Linux DSVM segítségével indítsa el az elemzési projektet. A Linux DSVM segít a különböző nyelveken végzett feladatokon, például az R, Python, SQL, Java és C++ nyelven. Az Eclipse egy könnyen használható IDE-t biztosít a kód fejlesztéséhez és teszteléséhez. Az Azure SDK, a DSVM tartalmazza, segít az alkalmazások létrehozásában a Különböző linuxos szolgáltatások a Microsoft felhőplatform. Más nyelvek előtelepítettek, beleértve a Ruby, Perl, PHP és Node.js.
 
-A DSVM-rendszerkép használatát nem terhelik további szoftverdíjak. Csak az Azure hardverhasználati díjakat, amelyek értékelése alapján a virtuális gép kiépített a DSVM-lemezkép mérete alapján. A számítási díjakról további információt az Azure [Marketplace-en található Data Science Virtual Machine for Linux (CentOS) listázása](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/) című témakörben talál.
+A DSVM-rendszerkép használatát nem terhelik további szoftverdíjak. Csak az Azure hardverhasználati díjakat, amelyek értékelése alapján a virtuális gép kiépített a DSVM-lemezkép mérete alapján. A számítási díjakról további információt az [Azure Marketplace-en található Data Science Virtual Machine for Linux listázása](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) című témakörben talál.
 
 
 ## <a name="machine-learning-server"></a>Gépi tanulási kiszolgáló
@@ -176,7 +176,7 @@ A PostgresSQL nyílt forráskódú adatbázis elérhető a DSVM-en, a szolgálta
 A SQuirreL SQL egy grafikus SQL-ügyfél, amely különböző adatbázisokhoz tud csatlakozni (beleértve az SQL Servert, a PostgresSQL-t és a MySQL-t), és SQL-lekérdezéseket futtat. A SQuirreL SQL-t grafikus asztali munkamenetből futtathatja (például az X2Go ügyfélen keresztül) egy asztali ikon használatával. Vagy futtathatja az ügyfelet a következő paranccsal a rendszerhéjban:
 
 ```bash
-/usr/local/squirrel-sql-3.7/squirrel-sql.sh /usr/local/squirrel-sql-3.7/squirrel-sql.sh
+/usr/local/squirrel-sql-3.7/squirrel-sql.sh    /usr/local/squirrel-sql-3.7/squirrel-sql.sh
 ```
 
 Az első használat előtt állítsa be az illesztőprogramokat és az adatbázis-aliasokat. A JDBC illesztőprogramok a /usr/share/java/jdbcdrivers helyen találhatók.

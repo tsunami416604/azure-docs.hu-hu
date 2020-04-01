@@ -12,12 +12,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 11/20/2019
-ms.openlocfilehash: d065439839ba5db479305ae81c61892cb5cf5e70
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9bbd2e3376f1da3fdf5b10d654a331ce258be5cf
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929456"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422087"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Adatok másolása a Dynamics 365 (Common Data Service) vagy a Dynamics CRM rendszerbe az Azure Data Factory használatával
 
@@ -324,7 +324,7 @@ Adatok másolásához a Dynamics, a következő tulajdonságok at támogatja a m
 | ignoreNullValues | Azt jelzi, hogy az írási művelet során figyelmen kívül kell-e hagyni a bemeneti adatok (a kulcsmezők kivételével) null értékeit.<br/>Az engedélyezett értékek **igazak** és **hamisak.**<br>- **Igaz**: A upsert/update művelet során változatlanul hagyja a célobjektumban lévő adatokat. Beszúrási művelet esetén szúrjon be egy definiált alapértelmezett értéket.<br/>- **Hamis**: Frissítse a célobjektumadatait NULL értékre upsert/update művelet esetén. Null érték beszúrása beszúrási művelet esetén. | Nem (az alapértelmezett érték hamis) |
 
 >[!NOTE]
->A **"writeBatchSize**" fogadó alapértelmezett értéke és a Dynamics fogadó " copy activity "**[parallelCopies](copy-activity-performance.md#parallel-copy)**" másolási tevékenysége 10. Ezért egyszerre 100 rekordot küld a Dynamics rendszernek.
+>A **"writeBatchSize**" fogadó alapértelmezett értéke és a Dynamics fogadó " copy activity "**[parallelCopies](copy-activity-performance-features.md#parallel-copy)**" másolási tevékenysége 10. Ezért egyszerre 100 rekordot küld a Dynamics rendszernek.
 
 A Dynamics 365 online rendszerben [szervezetenként legfeljebb 2 kötegelt hívás érhető el.](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations) Ha ezt a korlátot túllépi, az első kérés végrehajtása előtt "Kiszolgáló foglalt" hiba lép fel. A "writeBatchSize" 10-es vagy annál kisebb tartása elkerülné az egyidejű hívások ilyen szabályozását.
 

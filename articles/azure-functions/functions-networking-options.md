@@ -5,32 +5,32 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: d8c3357325eadefec7bb97faba5d600e9c6793a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6637627d48df8f9b6126debc215aac9bceb76f6b
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276711"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80419543"
 ---
 # <a name="azure-functions-networking-options"></a>Az Azure Functions hálózatkezelési lehetőségei
 
-Ez a cikk ismerteti a hálózati funkciók érhetők el az Azure Functions üzemeltetési beállításaiközött. Az alábbi hálózati beállítások mindegyike lehetővé teszi az erőforrások elérését az internetirányítható címek használata nélkül, vagy az internet-hozzáférés korlátozását egy függvényalkalmazáshoz.
+Ez a cikk ismerteti a hálózati funkciók érhetők el az Azure Functions üzemeltetési beállításaiközött. Az alábbi hálózati beállítások mindegyike lehetővé teszi az erőforrások elérését az internet-irányítható címek használata nélkül, vagy az internet-hozzáférés korlátozását egy függvényalkalmazáshoz.
 
-A gazdamodellek különböző szintű hálózati elkülönítéssel rendelkeznek. A megfelelő kiválasztása segít a hálózati elkülönítési követelmények teljesítésében.
+A gazdamodellek különböző szintű hálózati elkülönítéssel rendelkeznek. A megfelelő beállítás segít a hálózati elkülönítési követelmények teljesítésében.
 
 A függvényalkalmazásokat többféleképpen is üzemeltetheti:
 
-* Több-bérlős infrastruktúrán futó csomagbeállítások, amelyek különböző szintű virtuális hálózati kapcsolattal és méretezési beállításokkal rendelkeznek:
-    * A [Felhasználási terv](functions-scale.md#consumption-plan), amely dinamikusan méretezhető a terhelésre reagálva, és minimális hálózati elkülönítési lehetőségeket kínál.
-    * A [prémium csomag](functions-scale.md#premium-plan), amely dinamikusan skálázódik, miközben átfogóbb hálózati elkülönítést kínál.
-    * Az Azure [App Service-csomag](functions-scale.md#app-service-plan), amely rögzített méretekben működik, és hasonló hálózati elkülönítést kínál, mint a Prémium csomag.
+* A több-bérlős infrastruktúrán futó, több-bérlős infrastruktúrán futó csomagbeállítások közül választhat, a virtuális hálózati kapcsolat és a méretezési lehetőségek különböző szintjeivel:
+    * A [felhasználási terv](functions-scale.md#consumption-plan) dinamikusan méretezhető a terhelésre reagálva, és minimális hálózati elkülönítési lehetőségeket kínál.
+    * A [Prémium csomag](functions-scale.md#premium-plan) dinamikusan is méretezhető, és átfogóbb hálózati elkülönítést kínál.
+    * Az Azure [App Service-csomag](functions-scale.md#app-service-plan) rögzített méretekben működik, és a Prémium csomaghoz hasonló hálózati elkülönítést kínál.
 * A függvények egy [App Service-környezetben](../app-service/environment/intro.md)futtathatók. Ez a módszer telepíti a funkciót a virtuális hálózatba, és teljes hálózati vezérlést és elkülönítést kínál.
 
 ## <a name="matrix-of-networking-features"></a>Hálózati funkciók mátrixa
 
 |                |[Felhasználási terv](functions-scale.md#consumption-plan)|[Prémium szintű csomag](functions-scale.md#premium-plan)|[App Szolgáltatási csomag](functions-scale.md#app-service-plan)|[App Service-környezet](../app-service/environment/intro.md)|
 |----------------|-----------|----------------|---------|-----------------------|  
-|[Bejövő IP-korlátozások & privát webhely-hozzáféréshez](#inbound-ip-restrictions)|✅Igen|✅Igen|✅Igen|✅Igen|
+|[Bejövő IP-korlátozások és privát webhely-hozzáférés](#inbound-ip-restrictions)|✅Igen|✅Igen|✅Igen|✅Igen|
 |[Virtuális hálózati integráció](#virtual-network-integration)|❌nem|✅Igen (regionális)|✅Igen (regionális és átjáró)|✅Igen|
 |[Virtuális hálózati eseményindítók (nem HTTP)](#virtual-network-triggers-non-http)|❌nem| ✅Igen |✅Igen|✅Igen|
 |[Hibrid kapcsolatok](#hybrid-connections) (csak Windows)|❌nem|✅Igen|✅Igen|✅Igen|
@@ -51,7 +51,7 @@ A privát webhely-hozzáférés azt a számítógépet illeti, hogy az alkalmaz�
 
 * A privát webhely-hozzáférés a [prémium](./functions-premium-plan.md), [a felhasználás](functions-scale.md#consumption-plan)és az [App Service-csomagokban](functions-scale.md#app-service-plan) érhető el, ha a szolgáltatásvégpontok konfigurálva vannak.
     * A szolgáltatásvégpontok alkalmazásonként konfigurálhatók a **Platform szolgáltatások** > **hálózati** > hozzáférési korlátozások > **hozzáadása**szabály**a**csoportban. A virtuális hálózatok mostantól szabálytípusként is kijelölhetők.
-    * További információt a virtuális hálózati szolgáltatás végpontjai című [témakörben talál.](../virtual-network/virtual-network-service-endpoints-overview.md)
+    * További információ: [Virtual network service endpoints](../virtual-network/virtual-network-service-endpoints-overview.md).
     * Ne feledje, hogy a szolgáltatás végpontok, a függvény továbbra is teljes kimenő hozzáférést biztosít az internethez, még a virtuális hálózati integráció konfigurálva.
 * A privát helyhozzáférés egy belső terheléselosztóval (ILB) konfigurált App Service-környezetben is elérhető. További információt a [Belső terheléselosztó létrehozása és használata App Service-környezettel című témakörben talál.](../app-service/environment/create-ilb-ase.md)
 
@@ -59,14 +59,15 @@ A privát webhely-hozzáférés beállításáról az [Azure Functions privát w
 
 ## <a name="virtual-network-integration"></a>Virtuális hálózat integrációja
 
-A virtuális hálózati integráció lehetővé teszi, hogy a függvényalkalmazás hozzáférjen a virtuális hálózaton belüli erőforrásokhoz. Az Azure Functions kétféle virtuális hálózati integrációt támogat:
+A virtuális hálózati integráció lehetővé teszi, hogy a függvényalkalmazás hozzáférjen a virtuális hálózaton belüli erőforrásokhoz.
+Az Azure Functions kétféle virtuális hálózati integrációt támogat:
 
 [!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-types.md)]
 
 Az Azure Functions virtuális hálózati integrációja megosztott infrastruktúrát használ az App Service-webalkalmazásokkal. A virtuális hálózatok integrációjának két típusáról az:
 
 * [Regionális virtuális hálózati integráció](../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration)
-* [Az átjáró szükséges virtuális hálózati integrációra](../app-service/web-sites-integrate-with-vnet.md#gateway-required-vnet-integration)
+* [Átjáró által igényelt virtuális hálózati integráció](../app-service/web-sites-integrate-with-vnet.md#gateway-required-vnet-integration)
 
 A virtuális hálózati integráció beállításáról a [Függvényalkalmazás integrálása Azure virtuális hálózattal (Integrálása)](functions-create-vnet.md)témakörben olvashat.
 
@@ -74,35 +75,36 @@ A virtuális hálózati integráció beállításáról a [Függvényalkalmazás
 
 [!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-regional.md)]
 
-## <a name="connecting-to-service-endpoint-secured-resources"></a>Csatlakozás szolgáltatásvégpontbiztonságos erőforrásaihoz
+## <a name="connect-to-service-endpoint-secured-resources"></a>Csatlakozás szolgáltatásvégponthoz biztonságos erőforrásokhoz
 
 Magasabb szintű biztonság érdekében számos Azure-szolgáltatást korlátozhatja egy virtuális hálózatra a szolgáltatásvégpontok használatával. Ezután integrálnia kell a függvényalkalmazást a virtuális hálózattal az erőforrás eléréséhez. Ez a konfiguráció minden olyan tervben támogatott, amely támogatja a virtuális hálózati integrációt.
 
-[További információ a virtuális hálózati szolgáltatás végpontjairól.](../virtual-network/virtual-network-service-endpoints-overview.md)
+További információ: [Virtuális hálózati szolgáltatás végpontjai](../virtual-network/virtual-network-service-endpoints-overview.md).
 
-## <a name="restricting-your-storage-account-to-a-virtual-network"></a>A tárfiók korlátozása virtuális hálózatra
+## <a name="restrict-your-storage-account-to-a-virtual-network"></a>A tárfiók korlátozása virtuális hálózatra
 
-Amikor létrehoz egy függvényalkalmazást, létre kell hoznia, vagy egy általános célú Azure Storage-fiókot kell létrehoznia, amely támogatja a Blob, a Queue és a Table storage-t. Jelenleg nem használhat virtuális hálózati korlátozásokat ezen a fiókon. Ha egy virtuális hálózati szolgáltatás végpontját konfigurálja a függvényalkalmazáshoz használt tárfiókban, az megszakítja az alkalmazást.
+Amikor létrehoz egy függvényalkalmazást, létre kell hoznia, vagy egy általános célú Azure Storage-fiókot kell létrehoznia, amely támogatja a Blob, a Queue és a Table storage-t. Jelenleg nem használhat virtuális hálózati korlátozásokat ezen a fiókon. Ha egy virtuális hálózati szolgáltatás végpontját konfigurálja a függvényalkalmazáshoz használt tárfiókban, az adott konfiguráció megszakítja az alkalmazást.
 
-[További információ a tárfiók követelményeiről.](./functions-create-function-app-portal.md#storage-account-requirements)
+További információ: [Tárfiók követelményei.](./functions-create-function-app-portal.md#storage-account-requirements)
 
-## <a name="using-key-vault-references"></a>A Key Vault-hivatkozások használata 
+## <a name="use-key-vault-references"></a>Kulcstartó-hivatkozások használata
 
-A Key Vault-hivatkozások lehetővé teszik az Azure Key Vault titkos kulcsainak használatát az Azure Functions alkalmazásban anélkül, hogy kódmódosításokat kellene végrehajtania. Az Azure Key Vault egy olyan szolgáltatás, amely központosított titkos kulcsok kezelését biztosítja, teljes hozzáférés-házirendek és naplózási előzmények teljes körű vezérlésével.
+Az Azure Key Vault-hivatkozások használatával az Azure Functions-alkalmazásban az Azure Key Vault titkos kulcsait használhatja anélkül, hogy kódmódosításokat kellene végrehajtania. Az Azure Key Vault egy olyan szolgáltatás, amely központosított titkos kulcsok kezelését biztosítja, teljes hozzáférés-házirendek és naplózási előzmények teljes körű vezérlésével.
 
-Jelenleg [a Key Vault-hivatkozások](../app-service/app-service-key-vault-references.md) nem fognak működni, ha a Key Vault szolgáltatásvégpontokkal van biztosítva. Ha virtuális hálózati integrációval szeretne csatlakozni egy Key Vaulthoz, meg kell hívnia a key vaultot az alkalmazáskódban.
+Jelenleg [a Key Vault-hivatkozások](../app-service/app-service-key-vault-references.md) nem fog működni, ha a kulcstartó szolgáltatás végpontokkal védett. Ha virtuális hálózati integrációhasználatával szeretne csatlakozni egy kulcstartóhoz, meg kell hívnia a Key Vaultot az alkalmazáskódban.
 
 ## <a name="virtual-network-triggers-non-http"></a>Virtuális hálózati eseményindítók (nem HTTP)
 
-Jelenleg a nem HTTP-s eseményindító függvényeket a virtuális hálózaton belül kétféleképpen használhatja: 
-+ Futtassa a függvényalkalmazást egy prémium csomagban, és engedélyezze a virtuális hálózat eseményindítói nak támogatását.
+Jelenleg a nem HTTP-s eseményindító függvényeket a virtuális hálózaton belül kétféleképpen használhatja:
+
++ Futtassa a függvényalkalmazást egy Prémium csomagban, és engedélyezze a virtuális hálózati eseményindítók támogatását.
 + Futtassa a függvényalkalmazást egy App Service-csomagban vagy az App Service-környezetben.
 
 ### <a name="premium-plan-with-virtual-network-triggers"></a>Prémium csomag virtuális hálózati eseményindítókkal
 
-Prémium csomag futtatásakor nem HTTP-trigger függvényeket csatlakoztathat a virtuális hálózaton futó szolgáltatásokhoz. Ehhez engedélyeznie kell a virtuális hálózati eseményindító konklisen-támogatását a függvényalkalmazáshoz. A **virtuális hálózat eseményindító támogatási** beállítása az Azure Portal [on](https://portal.azure.com) Function **alkalmazás beállításai**csoportban található.
+Prémium csomag futtatásakor nem HTTP-trigger függvényeket csatlakoztathat a virtuális hálózaton futó szolgáltatásokhoz. Ehhez engedélyeznie kell a virtuális hálózati eseményindító konklisen-támogatását a függvényalkalmazáshoz. A **virtuális hálózat eseményindító támogatási** beállítása az Azure [Portalon](https://portal.azure.com) található a **Függvényalkalmazás beállításai**csoportban.
 
-![VNETToggle között](media/functions-networking-options/virtual-network-trigger-toggle.png)
+![Virtuális hálózat váltása](media/functions-networking-options/virtual-network-trigger-toggle.png)
 
 A virtuális hálózati eseményindítókat a következő Azure CLI-paranccsal is engedélyezheti:
 
@@ -121,32 +123,32 @@ A virtuális hálózati eseményindítókat a Functions futásidejű 2.x-es és 
 |[Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask)| 2.0.0 vagy újabb|
 
 > [!IMPORTANT]
-> Virtuális hálózati eseményindító támogatás engedélyezésekor csak az eseményindító-típusok felett dinamikusan skálázódik az alkalmazással. Továbbra is használhatja a fent nem felsorolt eseményindítókat, de azok nem vannak az előre felmelegített példányszámon túlméretezve. Tekintse meg az [eseményindítók és kötések](./functions-triggers-bindings.md#supported-bindings) a teljes listát az eseményindítók.
+> Ha engedélyezi a virtuális hálózati eseményindítók támogatását, csak az előző táblázatban látható eseményindító-típusok skálázhatók dinamikusan az alkalmazással. Továbbra is használhatja az eseményindítók, amelyek nem szerepelnek a táblázatban, de nem vannak méretezve túl az előre felmelegített példányszáma. Az eseményindítók teljes listáját az [Eseményindítók és kötések](./functions-triggers-bindings.md#supported-bindings)című témakörben található.
 
 ### <a name="app-service-plan-and-app-service-environment-with-virtual-network-triggers"></a>App Service-csomag és App Service-környezet virtuális hálózati eseményindítókkal
 
-Ha a függvényalkalmazás egy App Service-csomagban vagy egy App Service-környezetben fut, nem HTTP-trigger függvényeket használhat. Ahhoz, hogy a függvények megfelelően aktiválódjanak, csatlakoznia kell egy virtuális hálózathoz, amely hozzáfér az eseményindító-kapcsolatban meghatározott erőforráshoz. 
+Ha a függvényalkalmazás egy App Service-csomagban vagy egy App Service-környezetben fut, nem HTTP-trigger függvényeket használhat. Ahhoz, hogy a függvények megfelelően aktiválódjanak, csatlakoznia kell egy virtuális hálózathoz, amely hozzáfér az eseményindító-kapcsolatban meghatározott erőforráshoz.
 
-Tegyük fel például, hogy az Azure Cosmos DB-t úgy szeretné konfigurálni, hogy csak egy virtuális hálózatról fogadja a forgalmat. Ebben az esetben telepítenie kell a függvényalkalmazást egy App Service-csomagban, amely virtuális hálózati integrációt biztosít az adott virtuális hálózattal. Ez lehetővé teszi, hogy az Azure Cosmos DB-erőforrás egy függvényt indítson el. 
+Tegyük fel például, hogy az Azure Cosmos DB-t úgy szeretné konfigurálni, hogy csak egy virtuális hálózatról fogadja a forgalmat. Ebben az esetben telepítenie kell a függvényalkalmazást egy App Service-csomagban, amely virtuális hálózati integrációt biztosít az adott virtuális hálózattal. Integráció lehetővé teszi, hogy egy függvényt az Azure Cosmos DB erőforrás aktivál.
 
 ## <a name="hybrid-connections"></a>Hibrid kapcsolatok
 
-[A hibrid kapcsolatok](../service-bus-relay/relay-hybrid-connections-protocol.md) az Azure Relay egyik szolgáltatása, amely segítségével más hálózatok alkalmazáserőforrásaihoz férhet hozzá. Hozzáférést biztosít az alkalmazásból egy alkalmazás végpontjához. Nem használhatja az alkalmazás eléréséhez. A hibrid kapcsolatok a Felhasználási terv kivételével a Windows rendszeren futó függvények számára érhetők el.
+[A hibrid kapcsolatok](../service-bus-relay/relay-hybrid-connections-protocol.md) az Azure Relay egyik szolgáltatása, amely segítségével más hálózatok alkalmazáserőforrásaihoz férhet hozzá. Hozzáférést biztosít az alkalmazásból egy alkalmazás végpontjához. Nem használhatja az alkalmazás eléréséhez. A hibrid kapcsolatok olyan funkciók számára érhetők el, amelyek a Felhasználási terv kivételével a Windows rendszeren futnak.
 
 Az Azure Functions ben használt, minden hibrid kapcsolat egyetlen TCP-állomás és port kombináció korrelál. Ez azt jelenti, hogy a hibrid kapcsolat végpontja bármely operációs rendszeren és bármely alkalmazásban elérhető lehet, amíg egy TCP-figyelő porthoz fér hozzá. A hibrid kapcsolatok szolgáltatás nem tudja, és nem érdekli, mi az alkalmazás protokoll, vagy mit ér el. Ez csak biztosít hálózati hozzáférést.
 
 További információ: [Az App Service dokumentációja hibrid kapcsolatok](../app-service/app-service-hybrid-connections.md). Ugyanezek a konfigurációs lépések támogatják az Azure Functions.
 
 >[!IMPORTANT]
-> A hibrid kapcsolatok csak Windows-csomagok esetén támogatottak. A Linux nem támogatott
+> A hibrid kapcsolatok csak Windows-csomagok esetén támogatottak. A Linux nem támogatott.
 
 ## <a name="outbound-ip-restrictions"></a>Kimenő IP-korlátozások
 
 A kimenő IP-korlátozások prémium csomagban, App Service-csomagban vagy App Service-környezetben érhetők el. Beállíthatja a kimenő korlátozásokat a virtuális hálózat, ahol az App Service-környezet telepítve van.
 
-Ha egy funkcióalkalmazást integrál egy Prémium csomagba vagy egy App Service-csomagba egy virtuális hálózattal, az alkalmazás alapértelmezés szerint továbbra is kezdeményezhet kimenő hívásokat az internetre. Alkalmazásbeállítás `WEBSITE_VNET_ROUTE_ALL=1`hozzáadásával az összes kimenő forgalom elküldésre kerül a virtuális hálózatba, ahol a hálózati biztonsági csoport szabályai a forgalom korlátozására használhatók.
+Ha egy funkcióalkalmazást integrál egy Prémium csomagba vagy egy App Service-csomagba egy virtuális hálózattal, az alkalmazás alapértelmezés szerint továbbra is kezdeményezhet kimenő hívásokat az internetre. Az alkalmazásbeállítás `WEBSITE_VNET_ROUTE_ALL=1`hozzáadásával az összes kimenő forgalom elküldésre kerül a virtuális hálózatba, ahol a hálózati biztonsági csoport szabályai a forgalom korlátozására használhatók.
 
-## <a name="troubleshooting"></a>Hibaelhárítás 
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 [!INCLUDE [app-service-web-vnet-troubleshooting](../../includes/app-service-web-vnet-troubleshooting.md)]
 

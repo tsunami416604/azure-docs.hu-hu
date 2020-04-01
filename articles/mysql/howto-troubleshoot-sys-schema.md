@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
-ms.date: 3/18/2020
-ms.openlocfilehash: a35a586a519ff78e8b32d986b92bd008b2c6b858
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.date: 3/30/2020
+ms.openlocfilehash: 59b8753007c3b9130c397dda30c571580cbb5326
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80067868"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411092"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>A sys_schema használata teljesítményhangolásra és adatbázis-karbantartásra az Azure Database for MySQL-ben
 
@@ -60,6 +60,9 @@ Ebben a példában az Azure Database for MySQL 53 percet töltött a slog lekér
 ## <a name="database-maintenance"></a>Adatbázis karbantartása
 
 ### <a name="sysinnodb_buffer_stats_by_table"></a>*sys.innodb_buffer_stats_by_table*
+
+[!IMPORTANT]
+> A nézet lekérdezése hatással lehet a teljesítményre. Javasoljuk, hogy ezt a hibaelhárítást csúcsidőn kívüli munkaidőben végezze el.
 
 Az InnoDB pufferkészlet a memóriában található, és a dbms és a tároló közötti fő gyorsítótár-mechanizmus. Az InnoDB pufferkészlet mérete a teljesítményszinthez van kötve, és csak akkor módosítható, ha másik terméktermékváltozat van kiválasztva. Az operációs rendszer memóriájához is, a régi oldalakat is kicserélik, hogy helyet adjanak a frissebb adatoknak. Annak kiderítéséhez, hogy mely táblák használják fel az InnoDB pufferkészlet memóriájának nagy részét, lekérdezheti a *sys.innodb_buffer_stats_by_table* nézetet.
 

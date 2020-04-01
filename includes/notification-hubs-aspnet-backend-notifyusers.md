@@ -9,10 +9,10 @@ ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 6911f769b95967aac933dd9762263e7506aef4b5
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77192769"
 ---
 ## <a name="create-the-webapi-project"></a>A WebAPI-projekt létrehozása
@@ -28,12 +28,12 @@ Az új ASP.NET WebAPI háttérrendszer létrehozása a következő műveletekkel
 > [!IMPORTANT]
 > Ha a Visual Studio 2015-ös vagy régebbi verzióját használja, az oktatóanyag elkezdése előtt ellenőrizze, hogy telepítette-e a Visual Studio NuGet-csomagkezelőjének legfrissebb verzióját.
 >
->Az ellenőrzéshez indítsa el a Visual Studiót. A **Tools** (Eszközök) menüben válassza az **Extensions and updates** (Bővítmények és frissítések) lehetőséget. Keresse meg az Ön által használt Visual Studio-verzióhoz tartozó **NuGet-csomagkezelőt**, és ellenőrizze, hogy a legfrissebb verzió van-e telepítve a gépén. Ha nem a legfrissebb verzió van telepítve a gépén, távolítsa el, és telepítse újra a NuGet-csomagkezelőt.
+>Az ellenőrzéshez indítsa el a Visual Studiót. Az **Eszközök** menüben válassza a **Bővítmények és frissítések parancsot.** Keresse meg az Ön által használt Visual Studio-verzióhoz tartozó **NuGet-csomagkezelőt**, és ellenőrizze, hogy a legfrissebb verzió van-e telepítve a gépén. Ha nem a legfrissebb verzió van telepítve a gépén, távolítsa el, és telepítse újra a NuGet-csomagkezelőt.
 
 ![][B4]
 
 > [!NOTE]
-> Ellenőrizze, hogy telepítette-e a Visual Studio webhely-üzembehelyezési [Azure SDK-ját](https://azure.microsoft.com/downloads/).
+> Győződjön meg arról, hogy telepítette a Visual Studio [Azure SDK-t](https://azure.microsoft.com/downloads/) a webhelyek üzembe helyezéséhez.
 
 1. Indítsa el a Visual Studiót vagy a Visual Studio Expresst.
 
@@ -59,7 +59,7 @@ Az új ASP.NET WebAPI háttérrendszer létrehozása a következő műveletekkel
 
     ![A Configure Microsoft Azure Web App (Microsoft Azure-webalkalmazás konfigurálása) ablak][B5]
 
-    Ha nem látja ezt a lapot az App Service-csomag konfigurálásához, folytassa az Oktatóanyaggal. Az alkalmazást később is beállíthatja az alkalmazás közzétételekor. 
+    Ha nem látja ezt az oldalt az alkalmazásszolgáltatás-csomag konfigurálásához, folytassa az oktatóanyaggal. Az alkalmazás későbbi közzététele közben konfigurálhatja. 
 
 ## <a name="authenticate-clients-to-the-webapi-backend"></a>Ügyfelek hitelesítése a WebAPI háttérrendszeren
 
@@ -186,7 +186,7 @@ Ebben a szakaszban egy új vezérlőt fog hozzáadni a WebAPI háttérrendszerhe
     }
     ```
     > [!IMPORTANT]
-    > A folytatás előtt adja meg a hub **nevét** és **DefaultFullSharedAccessSignature** . 
+    > Mielőtt továbblépne, írja be a hub **nevét** és **DefaultFullSharedAccessSignature** aláírását. 
     
 7. A következő lépésben hozzon létre egy új vezérlőt **RegisterController** néven. A Solution Explorer (Megoldáskezelő) ablakában kattintson a jobb gombbal a **Controllers** (Vezérlők) mappára, kattintson az **Add** (Hozzáadás) parancsra, majd kattintson a **Controller** (Vezérlő) gombra.
 
@@ -329,7 +329,7 @@ Ebben a szakaszban egy új vezérlőt ad hozzá, amely értesítés küldését 
     using System.Threading.Tasks;
     using System.Web;
     ```
-3. Adja hozzá a következő metódust a **NotificationsController** osztályhoz:
+3. Adja hozzá a következő módszert a **NotificationsController** osztályhoz:
 
     Ez a kód egy értesítéstípust fog küldeni a platformértesítési szolgáltatás (PNS) `pns` paramétere alapján. A(z) `to_tag` értékét a rendszer az üzenet *felhasználónév*-címkéjének beállítására használja. A címkének egyeznie kell egy aktív értesítésiközpont-regisztráció felhasználónév-címkéjével. Az értesítési üzenetet a rendszer a POST-kérés törzséből nyeri ki, és a cél PNS-nek megfelelően formázza.
 
@@ -390,7 +390,7 @@ A következőkben üzembe fogja helyezni ezt az alkalmazást egy Azure-webhelyen
 
     ![A Microsoft Azure App Service (Microsoft Azure App Service) csempe][B15]
 
-3. A **Create App Service** (App Service létrehozása) ablakban válassza ki az Azure-fiókját. Válassza a **Change Type** (Típus módosítása) > **Web App** (Webalkalmazás) lehetőséget. Tartsa meg az alapértelmezett **webalkalmazásnevet**, majd válassza a **Subscription** (Előfizetés), **Resource Group** (Erőforráscsoport) és **App Service Plan** (App Service-csomag) elemeket.
+3. A **Create App Service** (App Service létrehozása) ablakban válassza ki az Azure-fiókját. Válassza a **Típus módosítása** > **webalkalmazás lehetőséget.** Tartsa meg az alapértelmezett **webalkalmazásnevet**, majd válassza a **Subscription** (Előfizetés), **Resource Group** (Erőforráscsoport) és **App Service Plan** (App Service-csomag) elemeket.
 
 4. Kattintson a **Létrehozás** gombra.
 

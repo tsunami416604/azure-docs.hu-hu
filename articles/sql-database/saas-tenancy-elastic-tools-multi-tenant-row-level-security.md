@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: a5fe5d6d4076c5d82d33737d05bb95ede0a89c00
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4cf260620d4e907fdb9190a052155fa22f1c7985
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73822033"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398331"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Több-bérlős alkalmazások rugalmas adatbázis-eszközökkel és sorszintű biztonsággal
 
@@ -253,7 +253,7 @@ GO
 ```
 
 > [!TIP]
-> Egy összetett projektben szükség lehet az állítmány hozzáadására több száz asztalhoz, ami fárasztó lehet. Van egy segítő tárolt eljárás, amely automatikusan létrehoz egy biztonsági házirendet, és predikátumot ad a séma összes táblájához. További információt a [Sorszintű biztonság alkalmazása az összes táblára című](https://blogs.msdn.com/b/sqlsecurity/archive/20../../apply-row-level-security-to-all-tables-helper-script)blogbejegyzésben talál .
+> Egy összetett projektben szükség lehet az állítmány hozzáadására több száz asztalhoz, ami fárasztó lehet. Van egy segítő tárolt eljárás, amely automatikusan létrehoz egy biztonsági házirendet, és predikátumot ad a séma összes táblájához. További információt a [Sorszintű biztonság alkalmazása az összes táblára című](https://techcommunity.microsoft.com/t5/sql-server/apply-row-level-security-to-all-tables-helper-script/ba-p/384360)blogbejegyzésben talál .
 
 Most, ha újra futtatja a mintaalkalmazást, a bérlők csak a hozzájuk tartozó sorokat látják. Emellett az alkalmazás nem szúrhat be olyan sorokat, amelyek nem a szegmensadatbázishoz jelenleg csatlakoztatott bérlőkhöz tartoznak. Emellett az alkalmazás nem tudja frissíteni a TenantId bármely sorban látható. Ha az alkalmazás bármelyiket megpróbálja megtenni, a rendszer egy DbUpdateException-et emel ki.
 

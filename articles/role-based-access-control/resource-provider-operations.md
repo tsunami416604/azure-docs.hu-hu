@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 03/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 2fce8a7a6f6d345b83c639bd69ecd70271621e9b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b344886e89a10a027cba169e92056a6dda443d8d
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283157"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421944"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Az Azure Resource Manager erőforrás-szolgáltatóműveletei
 
@@ -65,7 +65,7 @@ Microsoft Monitoring Insights
 > | Műveletek | microsoft.aadiam/diagnosticsettingscategories/read | Diagnosztikai beállításkategóriák olvasása |
 > |  | **metricDefinitions (metrikadefiníciók)** |  |
 > | Műveletek | microsoft.aadiam/metricDefinitions/read | Bérlőszintű metrikadefiníciók olvasása |
-> |  | **metrics** |  |
+> |  | **Mutatókat** |  |
 > | Műveletek | microsoft.aadiam/metrics/read | Bérlői szintű metrikák olvasása |
 
 ## <a name="microsoftaddons"></a>Microsoft.Addons
@@ -2364,7 +2364,7 @@ Azure-szolgáltatás: [Költségkezelés](../cost-management-billing/index.yml)
 > | Műveletek | Microsoft.Fogyasztás/díjak/olvasás | Díjak listázása |
 > |  | **Hitelek** |  |
 > | Műveletek | Microsoft.Fogyasztás/kredit/olvasás | Stáblista |
-> |  | **események** |  |
+> |  | **Események** |  |
 > | Műveletek | Microsoft.Fogyasztás/események/olvasás | Események listázása |
 > |  | **külsőSzámlázási számlák/címkék** |  |
 > | Műveletek | Microsoft.Consumption/externalBillingAccounts/tags/read | Címkék listázása az EA-hoz és az előfizetésekhez. |
@@ -4992,7 +4992,7 @@ Azure-szolgáltatás: [Azure Monitor](../azure-monitor/index.yml)
 > | Műveletek | Microsoft.Insights/MetricDefinitions/providers/Microsoft.Insights/Read | Metrikadefiníciók olvasása |
 > |  | **Metrikanévterek** |  |
 > | Műveletek | Microsoft.Insights/Metricnamespaces/Read | Metrikanévterek olvasása |
-> |  | **Mutatókat** |  |
+> |  | **Mérőszámok** |  |
 > | Műveletek | Microsoft.Insights/Metrics/Read | Mérőszámok olvasása |
 > |  | **Mérőszámok/Microsoft.Insights** |  |
 > | Műveletek | Microsoft.Insights/Metrics/Microsoft.Insights/Read | Mérőszámok olvasása |
@@ -5046,7 +5046,7 @@ Azure-szolgáltatás: [Azure Monitor](../azure-monitor/index.yml)
 > | Műveletek | Microsoft.Insights/Munkafüzetek/Olvasás | Munkafüzet olvasása |
 > |  | **DataCollectionRules/Data** |  |
 > | DataAction (Adatművelet) | Microsoft.Insights/DataCollectionRules/Data/Write | Adatok küldése adatgyűjtési szabályba |
-> |  | **Mutatókat** |  |
+> |  | **Mérőszámok** |  |
 > | DataAction (Adatművelet) | Microsoft.Insights/Metrics/Write | Metrikák írása |
 
 ## <a name="microsoftintune"></a>Microsoft.Intune
@@ -8235,7 +8235,7 @@ Azure-szolgáltatás: [Azure-szolgáltatás állapota](../service-health/index.y
 > | Műveletek | Microsoft.ResourceHealth/AvailabilityStatuses/current/read | A megadott erőforrás rendelkezésre állási állapotának beírása |
 > |  | **feltörekvő szövetek** |  |
 > | Műveletek | Microsoft.ResourceHealth/emergingissues/read | Az Azure-szolgáltatások felmerülő problémáinak beszereznie |
-> |  | **események** |  |
+> |  | **Események** |  |
 > | Műveletek | Microsoft.ResourceHealth/events/read | Szolgáltatásállapot-események beszereznie az adott előfizetéshez |
 > |  | **healthevent** |  |
 > | Műveletek | Microsoft.Resourcehealth/healthevent/Activated/action | A megadott erőforrás állapotának változását jelöli |
@@ -8333,7 +8333,7 @@ Azure-szolgáltatás: [Azure Resource Manager](../azure-resource-manager/index.y
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 
-Azure szolgáltatás: [Ütemező](../scheduler/index.md)
+Azure szolgáltatás: [Ütemező](../scheduler/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Művelet típusa | Művelet | Leírás |

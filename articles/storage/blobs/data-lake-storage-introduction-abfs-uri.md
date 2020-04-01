@@ -8,12 +8,12 @@ ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: 04df30c2a97e865d23999df26768b38cb38be607
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa0f67e0d72ee5710a42b6de744ddae98e20220a
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68855557"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437135"
 ---
 # <a name="use-the-azure-data-lake-storage-gen2-uri"></a>Az Azure Data Lake Storage Gen2 URI használata
 
@@ -27,7 +27,7 @@ Ha a címezni kívánt Data Lake Storage Gen2 képes fiók **nincs** beállítva
 
 <pre>abfs[s]<sup>1</sup>://&lt;file_system&gt;<sup>2</sup>@&lt;account_name&gt;<sup>3</sup>.dfs.core.windows.net/&lt;path&gt;<sup>4</sup>/&lt;file_name&gt;<sup>5</sup></pre>
 
-1. **Sémaazonosító**: A `abfs` protokoll rendszerazonosítóként szolgál. Lehetősége van arra, hogy biztonságos aljzatú réteggel (SSL) vagy anélkül csatlakozzon. Ezzel `abfss` csatlakozhat biztonságos aljzatréteg-kapcsolathoz.
+1. **Sémaazonosító**: A `abfs` protokoll rendszerazonosítóként szolgál. Lehetősége van arra, hogy csatlakozzon a Transport Layer Security (TLS), korábbi nevén Secure Sockets Layer (SSL), kapcsolattal vagy anélkül. TLS-kapcsolathoz való csatlakozásra használható. `abfss`
 
 2. **Fájlrendszer**: A fájlokat és mappákat tartalmazó szülőhely. Ez megegyezik az Azure Storage Blobs szolgáltatás tárolóival.
 

@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 12/13/2019
+ms.date: 03/31/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e3a240901ffca2c126e2b61eaee0cf287cc31d6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 595762e6e8f22dddff30f1cff8c4bb79e89624b1
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127508"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473854"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>A Távoli asztali ügyfél – problémamegoldás
 
@@ -21,21 +21,15 @@ Ez a cikk a Távoli asztali ügyféllel kapcsolatos gyakori problémákat és az
 
 ## <a name="remote-desktop-client-for-windows-7-or-windows-10-stops-responding-or-cannot-be-opened"></a>A Windows 7 vagy a Windows 10 Távoli asztali ügyfélalkalmazása nem válaszol, vagy nem nyitható meg
 
-A következő PowerShell-parancsmagok használatával tisztítsa meg a sávon kívüli (OOB) ügyféljegyzékeket.
+Az 1.2.790-es verziótól kezdve alaphelyzetbe állíthatja a felhasználói adatokat a Beet lapon vagy egy paranccsal.
 
-```PowerShell
-Remove-ItemProperty 'HKCU:\Software\Microsoft\Terminal Server Client\Default' - Name FeedURLs
+A következő paranccsal eltávolíthatja a felhasználói adatokat, visszaállíthatja az alapértelmezett beállításokat, és leiratkozhat az összes munkaterületről.
 
-#Remove RdClientRadc registry key
-Remove-Item 'HKCU:\Software\Microsoft\RdClientRadc' -Recurse
-
-#Remove all files under %appdata%\RdClientRadc
-Remove-Item C:\Users\pavithir\AppData\Roaming\RdClientRadc\* -Recurse
+```cmd
+msrdcw.exe /reset [/f]
 ```
 
-Nyissa meg a **%AppData%\RdClientRadc elemet,** és törölje az összes tartalmat.
-
-Távolítsa el és telepítse újra a Távoli asztali ügyfélprogramot A Windows 7 és a Windows 10 rendszerhez.
+Ha a Távoli asztali ügyfél egy korábbi verzióját használja, javasoljuk, hogy távolítsa el és telepítse újra az ügyfelet.
 
 ## <a name="web-client-wont-open"></a>A webes ügyfél nem nyílik meg
 

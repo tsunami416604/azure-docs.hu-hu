@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: bd2f372bdcb949b64f748d186a9b060bb9cbec4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 96828a854c340b89c26023ce60f9c85dd1bb4cdd
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77087067"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473917"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Azure Queue Storage-műveletek végrehajtása az Azure PowerShell-lel
 
@@ -103,7 +103,7 @@ Get-AzStorageQueue -Context $ctx | Select-Object Name
 
 ## <a name="add-a-message-to-a-queue"></a>Üzenet hozzáadása várólistához
 
-A várólistában lévő tényleges üzeneteket befolyásoló műveletek a .NET storage-ügyfélkódtárban vannak elérhetővé téve a PowerShellben. Üzenet várólistához való hozzáadásához hozzon létre egy új példányt a [Microsoft.Azure.Storage.Queue.CloudQueueMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue._cloud_queue_message) osztályból. Ezután hívja meg az [AddMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue._cloud_queue.addmessage) módszert. A CloudQueueMessage egy sztringből (UTF-8 formátumban) vagy egy bájttömbből hozható létre.
+A várólistában lévő tényleges üzeneteket befolyásoló műveletek a .NET storage-ügyfélkódtárban vannak elérhetővé téve a PowerShellben. Üzenet várólistához való hozzáadásához hozzon létre egy új példányt a [Microsoft.Azure.Storage.Queue.CloudQueueMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue.cloudqueuemessage) osztályból. Ezután hívja meg az [AddMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue.cloudqueue.addmessage) módszert. A CloudQueueMessage egy sztringből (UTF-8 formátumban) vagy egy bájttömbből hozható létre.
 
 A következő példa bemutatja, hogyan adhat hozzá üzenetet a várólistához.
 

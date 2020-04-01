@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 4b2b388fb736997010a6cbbdf93b23b77c7ef3a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 51985c5fa4b2296e43c0a062d0af84a1bb51e89c
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77603970"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397762"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>Biztosítsa felügyeleti portjait a just-in-time hozzáféréssel
 
@@ -202,33 +202,22 @@ A just-in-time virtuálisgép-hozzáférési megoldás powershellen keresztül, 
 
 A következő példa beállítja a just-in-time virtuális gép hozzáférési szabályzategy adott virtuális gép, és a következőket állítja be:
 
-1.  Zárja be a 22-es és a 3389-es portot.
+1.    Zárja be a 22-es és a 3389-es portot.
 
-2.  Állítson be egy 3 órás maximális időablakot, hogy jóváhagyott kérésenként meglehessen nyitni őket.
-3.  Lehetővé teszi, hogy a hozzáférést kérő felhasználó szabályozhatja a forrás IP-címeket, és lehetővé teszi, hogy a felhasználó sikeres munkamenetet hozzon létre egy jóváhagyott just-in-time hozzáférési kérelem esetén.
+2.    Állítson be egy 3 órás maximális időablakot, hogy jóváhagyott kérésenként meglehessen nyitni őket.
+3.    Lehetővé teszi, hogy a hozzáférést kérő felhasználó szabályozhatja a forrás IP-címeket, és lehetővé teszi, hogy a felhasználó sikeres munkamenetet hozzon létre egy jóváhagyott just-in-time hozzáférési kérelem esetén.
 
 A powershellben a következőket futtassa a következők megvalósításához:
 
-1.  Rendeljen hozzá egy változót, amely tartalmazza a virtuális gép just-in-time virtuálisgép-hozzáférési szabályzatát:
+1.    Rendeljen hozzá egy változót, amely tartalmazza a virtuális gép just-in-time virtuálisgép-hozzáférési szabályzatát:
 
-        $JitPolicy = (@{
-         id="/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME"
-        ports=(@{
-             number=22;
-             protocol="*";
-             allowedSourceAddressPrefix=@("*");
-             maxRequestAccessDuration="PT3H"},
-             @{
-             number=3389;
-             protocol="*";
-             allowedSourceAddressPrefix=@("*");
-             maxRequestAccessDuration="PT3H"})})
+        $JitPolicy = (@{ id="/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME" ports=@{ number=22;        protocol="*";        allowedSourceAddressPrefix=@("*");        maxRequestAccessDuration="PT3H"}, @{ szám=3389;        protocol="*";        allowedSourceAddressPrefix=@("*");        maxRequestAccessDuration="PT3H"})})
 
-2.  Helyezze be a virtuális gép just-in-time virtuálisgép-hozzáférési szabályzatot egy tömbbe:
+2.    Helyezze be a virtuális gép just-in-time virtuálisgép-hozzáférési szabályzatot egy tömbbe:
     
         $JitPolicyArr=@($JitPolicy)
 
-3.  Konfigurálja a just-in-time virtuálisgép-hozzáférési szabályzatot a kiválasztott virtuális gépen:
+3.    Konfigurálja a just-in-time virtuálisgép-hozzáférési szabályzatot a kiválasztott virtuális gépen:
     
         Set-AzJitNetworkAccessPolicy -Kind "Basic" -Location "LOCATION" -Name "default" -ResourceGroupName "RESOURCEGROUP" -VirtualMachine $JitPolicyArr 
 
@@ -237,20 +226,15 @@ A powershellben a következőket futtassa a következők megvalósításához:
 A következő példában egy just-in-time virtuális gép hozzáférési kérelmet láthat egy adott virtuális géphez, amelyben a 22-es portot meg kell nyitni egy adott IP-címhez és egy adott ideig:
 
 Futtassa a következőket a PowerShellben:
-1.  A virtuális gép kérelem-hozzáférési tulajdonságainak konfigurálása
+1.    A virtuális gép kérelem-hozzáférési tulajdonságainak konfigurálása
 
-        $JitPolicyVm1 = (@{
-          id="/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME"
-        ports=(@{
-           number=22;
-           endTimeUtc="2018-09-17T17:00:00.3658798Z";
-           allowedSourceAddressPrefix=@("IPV4ADDRESS")})})
-2.  Szúrja be a virtuális gép hozzáférési kérelem paramétereit egy tömbbe:
+        $JitPolicyVm1 = (@{ id="/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME" ports=@{ number=22;      endTimeUtc="2018-09-17T17:00:00.3658798Z";      allowedSourceAddressPrefix=@("IPV4ADDRESS")}})
+2.    Szúrja be a virtuális gép hozzáférési kérelem paramétereit egy tömbbe:
 
         $JitPolicyArr=@($JitPolicyVm1)
-3.  A kérelem hozzáférésének küldése (az 1. lépésben kapott erőforrás-azonosító használata)
+3.    A kérelem hozzáférésének küldése (az 1. lépésben kapott erőforrás-azonosító használata)
 
-        Start-AzJitNetworkAccessPolicy -ResourceId "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Security/locations/LOCATION/jitNetworkAccessPolicies/default" -VirtualMachine $JitPolicyArr
+        Start-AzJitNetworkAccessPolicy -ResourceId "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Security/locations/LOCATION/jitNetworkAccessPolicies/default" - VirtualMachine $JitPolicyArr
 
 További információt a [PowerShell-parancsmag dokumentációjában](https://docs.microsoft.com/powershell/scripting/developer/cmdlet/cmdlet-overview)talál.
 
@@ -271,6 +255,7 @@ Ebben a cikkben megtanulta, hogyan csak-in-time virtuális gép-hozzáférés a 
 
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
+- A Microsoft Learn modul [Az Azure Security Center segítségével megvédi kiszolgálóit és virtuális gépeit a találgatásos és rosszindulatú támadásoktól](https://docs.microsoft.com/learn/modules/secure-vms-with-azure-security-center/)
 - [Biztonsági házirendek beállítása](tutorial-security-policy.md) – Megtudhatja, hogyan konfigurálhatja a biztonsági szabályzatokat az Azure-előfizetésekhez és erőforráscsoportokhoz.
 - [Biztonsági javaslatok kezelése](security-center-recommendations.md) – Ismerje meg, hogyan segíthetnek a javaslatok az Azure-erőforrások védelmében.
 - [Biztonsági állapotfigyelés](security-center-monitoring.md) – Ismerje meg, hogyan figyelheti az Azure-erőforrások állapotát.

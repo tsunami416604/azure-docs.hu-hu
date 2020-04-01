@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: 8b95bb45436f45dc0e62fb12d6ab1b24c37372e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d9ed11cd00909a104b5ea54463f8a98020837e10
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79280065"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477875"
 ---
 # <a name="virtual-network-traffic-routing"></a>Virtuális hálózat forgalmának útválasztása
 
@@ -122,7 +122,7 @@ Egy helyszíni hálózati átjáró útvonalakat cserélhet egy Azure virtuális
 
 Amikor a BGP használatával útvonalakat cserél az Azure-ban, a rendszer minden meghirdetett előtag esetében külön útvonalat ad hozzá a virtuális hálózat összes alhálózatának útvonaltáblájához. Az útvonal forrásaként és következő ugrásának típusaként *Virtuális hálózati átjáró* van feltüntetve. 
 
-Az ER és a VPN-átjáró útvonalpropagálása letiltható egy alhálózaton egy útvonaltábla tulajdonságának használatával. Amikor útvonalakat cserél az Azure-ral a BGP használatával, az útvonalak nem kerülnek az összes alhálózat útvonaltáblájához, ha a virtuális hálózati átjáró útvonalpropagálása le van tiltva. A VPN-kapcsolatok következő ugrás típusú *virtuális hálózati átjáró* és [egyéni útvonalak](#custom-routes) használatával jönnek létre. További információt a [Virtuális hálózati átjáró útvonalpropagálásának letiltása](manage-route-table.md#create-a-route-table).
+Az ER és a VPN-átjáró útvonalpropagálása letiltható egy alhálózaton egy útvonaltábla tulajdonságának használatával. Amikor útvonalakat cserél az Azure-ral a BGP használatával, az útvonalak nem kerülnek az összes alhálózat útvonaltáblájához, ha a virtuális hálózati átjáró útvonalpropagálása le van tiltva. A VPN-kapcsolatok következő ugrás típusú *virtuális hálózati átjáró* és [egyéni útvonalak](#custom-routes) használatával jönnek létre. **Az útvonalpropagálást nem szabad letiltani a GatewaySubnet-en. Az átjáró nem fog működni, ha ez a beállítás le van tiltva.** További információt a [Virtuális hálózati átjáró útvonalpropagálásának letiltása](manage-route-table.md#create-a-route-table).
 
 ## <a name="how-azure-selects-a-route"></a>Az Azure útvonalválasztásának módja
 

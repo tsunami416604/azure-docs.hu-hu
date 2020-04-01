@@ -3,14 +3,14 @@ title: Az Azure Monitor platformmetrikák exportálhatók a diagnosztikai beáll
 description: Az Azure Monitor segítségével az egyes erőforrástípusokhoz elérhető metrikák listája.
 services: azure-monitor
 ms.topic: reference
-ms.date: 02/10/2020
+ms.date: 03/30/2020
 ms.subservice: metrics
-ms.openlocfilehash: 7a75655d1707dd2491065974ed8addc4c2da1a6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6be8cb1b7e74301d16a1174f5ca2b774334dac3f
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77661362"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422111"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Az Azure Monitor platformmetrikák exportálhatók a diagnosztikai beállításokkal
 
@@ -24,7 +24,9 @@ Az Azure Monitor-háttérrendszer bonyolultsága miatt nem minden metrika export
 
 ## <a name="change-to-behavior-for-nulls-and-zero-values"></a>Változás a null-ok és a nulla értékek viselkedésére 
  
-A diagnosztikai beállításokkal exportálható platformmetrikák hoz néhány metrika, amelynek az Azure Monitor értelmezi a "0s" a "Null". Ez némi zavart okozott a valós '0s' (az erőforrás által kibocsátott) és a "0s" (Nulls) között. **2020. április** 1-jétől kezdődően a diagnosztikai beállításokkal exportált platformmutatók csak akkor exportálják a "0s"-t, ha az alapul szolgáló erőforrás valóban kibocsátotta őket. Ne feledje:
+A diagnosztikai beállításokkal exportálható platformmetrikák hoz néhány metrika, amelynek az Azure Monitor értelmezi a "0s" a "Null". Ez némi zavart okozott a valós '0s' (az erőforrás által kibocsátott) és a "0s" (Nulls) között. Hamarosan változás következik be, és a diagnosztikai beállításokkal exportált platformmutatók nem exportálják a "0s"-t, kivéve, ha az alapul szolgáló erőforrás valóban kibocsátotta őket. A változást 2020. április 1-re tervezték, de a COVID-19 miatt irdúgy is elhalasztották. 
+
+Ne feledje:
 
 1.  Ha töröl egy erőforráscsoportot vagy egy adott erőforrást, az érintett erőforrások metrikaadatait a rendszer a továbbiakban nem küldi el a diagnosztikai beállítási exportálási céloknak. Ez azt, hogy a továbbiakban nem jelenik meg az Event Hubs, storage-fiókok és a Log Analytics-munkaterületek.
 2.  Ez a javulás minden nyilvános és privát felhőben elérhető lesz.
@@ -49,7 +51,7 @@ A táblázat a következő oszlopokat tartalmazza.
 > Az alábbi táblázat alján lehet egy vízszintes görgetősáv. Ha úgy gondolja, hogy hiányoznak az adatok, ellenőrizze, hogy a görgetősáv teljesen balra van-e.  
 
 
-| Exportálható a diagnosztikai beállításokon keresztül?  | NULL-okat bocsát ki |  ResourceType  |  Metrika  |  MetricDisplayName (Metrikusmegjelenítésneve)  |  Unit (Egység)  |  AggregationType (AggregationType) | 
+| Exportálható a diagnosztikai beállításokon keresztül?  | Már bocsátanak ki NULL-okat |  ResourceType  |  Metrika  |  MetricDisplayName (Metrikusmegjelenítésneve)  |  Unit (Egység)  |  AggregationType (AggregationType) | 
 |---|---| ---- | ----- | ------ | ---- | ---- | 
 | Igen****  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  CleanerCurrentPrice  |  Memória: Tisztább aktuális ár  |  Darabszám  |  Átlag | 
 | Igen****  | Nem |  Microsoft.AnalysisServices/kiszolgálók  |  CleanerMemoryNem zsugorítható  |  Memória: A tisztább memória nem zsugorodik  |  Bájt  |  Átlag | 

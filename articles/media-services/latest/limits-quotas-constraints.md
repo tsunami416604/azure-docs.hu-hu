@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: 5a4f7e31cb17f47e8796ab99c1f8a089339903df
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 514c1466bc1a686adfc3e07e1f19bd566e979dc1
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74888427"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420878"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Kvóták és korlátozások az Azure Media Services v3-as részén
 
@@ -26,9 +26,9 @@ Ez a cikk az Azure Media Services v3-as szolgáltatásának kvótáit és korlá
 | --- | --- | 
 | Egy Azure Media Services-fiókra jutó adategység | 1,000,000|
 | Dinamikusjegyzék-szűrők|100|
-| JobInputs projektenként | 50 (rögzített)|
-| JobOutputs feladatonként | 20 (rögzített) |
-| Átalakító kimenetek átalakítása | 20 (rögzített) |
+| Feladatonkénti alapanyagok | 50 (rögzített)|
+| Feladatonkénti munkakimenetek | 20 (rögzített) |
+| Kimenetek átalakítása átalakításban | 20 (rögzített) |
 | Fájlok feladatbemenetenként|10 (rögzített)|
 | Fájlméret| Bizonyos esetekben a Media Services feldolgozásához támogatott maximális fájlméret korlátozva van. <sup>(1)</sup> |
 | Feladatok Media Services-fiókonként | 500 000 <sup>(2)</sup> (rögzített)|

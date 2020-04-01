@@ -8,18 +8,18 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 1c751fc31ba9066cf49eabbb86d37eda230c9c98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5a85f8ae1564d724b826c809261e56577f4783a
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062885"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435532"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center – Hibaelhárítási útmutató
 
 Ez az útmutató olyan informatikai (IT) szakemberek, információbiztonsági elemzők és felhőrendszergazdák számára készült, akik szervezetei az Azure Security Centert használják, és el kell hárítaniuk a használathoz kapcsolódó problémákat.
 
-A Security Center a Microsoft Monitoring Agent segítségével gyűjti és tárolja az adatokat. További információk: [Az Azure Security Center Platform migrálása](security-center-platform-migration.md). A jelen cikkben található információk a Security Center a Microsoft Monitoring Agentre való váltás után elérhető funkcióit ismertetik.
+A Security Center a Log Analytics-ügynök segítségével gyűjti és tárolja az adatokat. További információk: [Az Azure Security Center Platform migrálása](security-center-platform-migration.md). A cikkben szereplő információk a Security Center működését jelölik a Log Analytics-ügynökre való áttérés után.
 
 ## <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
@@ -52,23 +52,23 @@ A Security Center hibaelhárítása többnyire a meghibásodott összetevőhöz 
 
 A napló tartalmazza az erőforrásokon végrehajtott összes írási műveletet (PUT, POST, DELETE), nem tartalmazza azonban az olvasási műveleteket (GET).
 
-## <a name="microsoft-monitoring-agent"></a>Microsoft Monitoring Agent
+## <a name="log-analytics-agent"></a>Log Analytics-ügynök
 
-A Security Center a Microsoft Monitoring Agent -, ez ugyanaz az ügynök, amelyet az Azure Monitor szolgáltatás használ – biztonsági adatok gyűjtése az Azure virtuális gépek. Ha az adatgyűjtés engedélyezve van, és az ügynök megfelelően van telepítve a célgépen, elkezdődik az alábbi folyamat végrehajtása:
+A Security Center a Log Analytics-ügynök – ez ugyanaz az ügynök, amelyet az Azure Monitor szolgáltatás használ – biztonsági adatok gyűjtése az Azure virtuális gépek. Ha az adatgyűjtés engedélyezve van, és az ügynök megfelelően van telepítve a célgépen, elkezdődik az alábbi folyamat végrehajtása:
 
 * HealthService.exe
 
-Ha megnyitja a szolgáltatáskezelő konzolt (services.msc), a Microsoft Monitoring Agent szolgáltatást is láthatja a futó szolgáltatások között az alábbi módon:
+Ha megnyitja a szolgáltatásfelügyeleti konzolt (services.msc), a Log Analytics-ügynök szolgáltatás az alábbiak szerint fut:
 
 ![Szolgáltatások](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig5.png)
 
-Az ügynök verziójának ellenőrzéséhez nyissa meg a **Feladatkezelőt**, a **Folyamatok** lapon keresse meg a **Microsoft Monitoring Agent szolgáltatást**, kattintson rá a jobb gombbal. és kattintson a **Tulajdonságok** elemre. A **Részletek** lapon keresse meg a fájlverziót az alábbi módon:
+Ha meg szeretné tekinteni, hogy az ügynök melyik verziójával rendelkezik, nyissa meg a **Feladatkezelőt**, a **Folyamatok** lapon keresse meg a **Log Analytics ügynöki szolgáltatást,** kattintson rá a jobb gombbal, és kattintson a **Tulajdonságok parancsra.** A **Részletek** lapon keresse meg a fájlverziót az alábbi módon:
 
 ![Fájl](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
 
-## <a name="microsoft-monitoring-agent-installation-scenarios"></a>A Microsoft Monitoring Agent telepítési forgatókönyvei
+## <a name="log-analytics-agent-installation-scenarios"></a>Log Analytics-ügynök telepítési forgatókönyvei
 
-Két telepítési forgatókönyv létezik, amelyek különböző eredményeket hozhatnak, amikor telepíti a Microsoft Monitoring Agentet a számítógépére. A támogatott forgatókönyvek:
+Két telepítési forgatókönyv, amely eltérő eredményeket hozhat, amikor a Log Analytics-ügynök a számítógépre telepítésekor. A támogatott forgatókönyvek:
 
 * **A Security Center automatikusan telepítette az ügynököt**: ebben a forgatókönyvben a Security Centerben és a naplóbeli kereséssel egyaránt megtekintheti a riasztásokat. E-mailes értesítéseket fog kapni arra az e-mail címre, amely az erőforráshoz tartozó előfizetés biztonsági házirendjében konfigurált.
 
@@ -83,16 +83,16 @@ A **Figyelés állapota** megmutatja, hogy a Security Center miért nem tudja si
 
 | Figyelés állapota | Leírás | A megoldás lépései |
 |---|---|---|
-| Ügynök függőben lévő telepítése | A Microsoft Monitoring Agent telepítése még fut.  A telepítés akár néhány órát is igénybe vehet. | Várjon, amíg az automatikus telepítés befejeződik. |
-| Energiaállapot: ki | A virtuális gép leállt.  A Microsoft Monitoring Agent csak futó virtuális gépre telepíthető. | Indítsa újra a virtuális gépet. |
-| Hiányzó vagy érvénytelen azure-os virtuálisgép-ügynök | A Microsoft Monitoring Agent még nincs telepítve.  Ahhoz, hogy a Security Center telepítse a bővítményt, érvényes azure-os virtuálisgép-ügynök szükséges. | Telepítse, telepítse újra vagy frissítse a virtuális gépen található azure-os virtuálisgép-ügynököt. |
-| A virtuális gép állapota nem áll készen a telepítésre  | A Microsoft Monitoring Agent még nincs telepítve, mert a virtuális gép nem áll készen a telepítésre. A virtuális gép a virtuálisgép-ügynökkel vagy a virtuális gép üzembe helyezésével kapcsolatos probléma miatt nem áll készen a telepítésre. | Ellenőrizze a virtuális gép állapotát. Térjen vissza a **Virtuális gépek** szakaszra a portálon, és jelölje ki a virtuális gépet az állapotra vonatkozó információk megtekintéséhez. |
-|A telepítés nem sikerült – általános hiba | A Microsoft Monitoring Agent telepítése egy hiba miatt nem sikerült. | [Telepítse manuálisan a bővítményt](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) vagy távolítsa el, és a Security Center megpróbálja újból telepíteni. |
-| A telepítés nem sikerült – a helyi ügynök már telepítve van | A Microsoft Monitoring Agent telepítése nem sikerült. A Security Center azonosított egy helyi ügynököt (Log Analytics vagy System Center Operations Manager) már telepítve van a virtuális gépen. A Microsoft Monitoring Agent telepítése leállt a többkiszolgálós konfiguráció elkerülése érdekében, ahol a virtuális gép két különálló munkaterületnek küld jelentéseket. | Két megoldás létezik: az egyik [a bővítmény manuális telepítése](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) és csatlakoztatása a kívánt munkaterülethez. A másik a kívánt munkaterület alapértelmezettként való beállítása, és az ügynök automatikus üzembe helyezésének engedélyezése.  Lásd az [automatikus üzembe helyezés engedélyezését](security-center-enable-data-collection.md) ismertető részt. |
-| Az ügynök nem tud csatlakozni a munkaterülethez | A Microsoft Monitoring Agent telepítése sikerült, de a futtatás a hálózati kapcsolat hibája miatt nem sikerült.  Ellenőrizze az internetkapcsolatot, és hogy érvényes HTTP proxy van-e konfigurálva az ügynökhöz. | Lásd a Monitoring Agent hálózati követelményeit ismertető részt. |
-| Az ügynök hiányzó vagy ismeretlen munkaterülethez van csatlakoztatva | A Security Center azonosította, hogy a virtuális gépre telepített Microsoft monitoring ügynök olyan munkaterülethez csatlakozik, amelyhez nem fér hozzá. | Ez két esetben fordulhat elő. A munkaterületet törölték, és már nem létezik. Telepítse újra az ügynököt a megfelelő munkaterülettel, vagy távolítsa el az ügynököt, és engedélyezze a Security Centernek az automatikus üzembe helyezési telepítés végrehajtását. A másik eset, amikor a munkaterület egy olyan előfizetés része, amelyhez a Security Center nem rendelkezik engedéllyel. A Security Center működéséhez az előfizetéseknek engedélyezniük kell a hozzáférést a Microsoft Security erőforrás-szolgáltató számára. Az engedélyezéshez regisztrálja az előfizetést a Microsoft Security erőforrás-szolgáltatóban. Ezt megteheti egy API, a PowerShell vagy a portál segítségével, vagy a Security Center **Áttekintés** irányítópultján az előfizetésre történő szűréssel. További információ: [Erőforrás-szolgáltatók és típusaik](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal). |
+| Ügynök függőben lévő telepítése | A Log Analytics-ügynök telepítése még mindig fut.  A telepítés akár néhány órát is igénybe vehet. | Várjon, amíg az automatikus telepítés befejeződik. |
+| Energiaállapot: ki | A virtuális gép leállt.  A Log Analytics-ügynök csak akkor telepíthető a virtuális gép, amely fut. | Indítsa újra a virtuális gépet. |
+| Hiányzó vagy érvénytelen azure-os virtuálisgép-ügynök | A Log Analytics-ügynök még nincs telepítve.  Ahhoz, hogy a Security Center telepítse a bővítményt, érvényes azure-os virtuálisgép-ügynök szükséges. | Telepítse, telepítse újra vagy frissítse a virtuális gépen található azure-os virtuálisgép-ügynököt. |
+| A virtuális gép állapota nem áll készen a telepítésre  | A Log Analytics-ügynök még nincs telepítve, mert a virtuális gép nem áll készen a telepítésre. A virtuális gép a virtuálisgép-ügynökkel vagy a virtuális gép üzembe helyezésével kapcsolatos probléma miatt nem áll készen a telepítésre. | Ellenőrizze a virtuális gép állapotát. Térjen vissza a **Virtuális gépek** szakaszra a portálon, és jelölje ki a virtuális gépet az állapotra vonatkozó információk megtekintéséhez. |
+|A telepítés nem sikerült – általános hiba | A Log Analytics-ügynök telepítve lett, de hiba miatt nem sikerült. | [Telepítse manuálisan a bővítményt](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) vagy távolítsa el, és a Security Center megpróbálja újból telepíteni. |
+| A telepítés nem sikerült – a helyi ügynök már telepítve van | A Log Analytics-ügynök telepítése nem sikerült. A Security Center azonosított egy helyi ügynököt (Log Analytics vagy System Center Operations Manager) már telepítve van a virtuális gépen. A több-helymeghatározó konfiguráció elkerülése érdekében, ahol a virtuális gép két külön munkaterületnek jelent, a Log Analytics ügynök telepítése leállt. | Két megoldás létezik: az egyik [a bővítmény manuális telepítése](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) és csatlakoztatása a kívánt munkaterülethez. A másik a kívánt munkaterület alapértelmezettként való beállítása, és az ügynök automatikus üzembe helyezésének engedélyezése.  Lásd az [automatikus üzembe helyezés engedélyezését](security-center-enable-data-collection.md) ismertető részt. |
+| Az ügynök nem tud csatlakozni a munkaterülethez | A Log Analytics-ügynök telepítve van, de a hálózati kapcsolat miatt nem sikerült.  Ellenőrizze az internetkapcsolatot, és hogy érvényes HTTP proxy van-e konfigurálva az ügynökhöz. | Lásd a Monitoring Agent hálózati követelményeit ismertető részt. |
+| Az ügynök hiányzó vagy ismeretlen munkaterülethez van csatlakoztatva | Security Center azonosította, hogy a virtuális gépre telepített Log Analytics-ügynök egy olyan munkaterülethez csatlakozik, amelyhez nem fér hozzá. | Ez két esetben fordulhat elő. A munkaterületet törölték, és már nem létezik. Telepítse újra az ügynököt a megfelelő munkaterülettel, vagy távolítsa el az ügynököt, és engedélyezze a Security Centernek az automatikus üzembe helyezési telepítés végrehajtását. A másik eset, amikor a munkaterület egy olyan előfizetés része, amelyhez a Security Center nem rendelkezik engedéllyel. A Security Center működéséhez az előfizetéseknek engedélyezniük kell a hozzáférést a Microsoft Security erőforrás-szolgáltató számára. Az engedélyezéshez regisztrálja az előfizetést a Microsoft Security erőforrás-szolgáltatóban. Ezt megteheti egy API, a PowerShell vagy a portál segítségével, vagy a Security Center **Áttekintés** irányítópultján az előfizetésre történő szűréssel. További információ: [Erőforrás-szolgáltatók és típusaik](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal). |
 | Az ügynök nem válaszol, vagy hiányzik az azonosító | A Security Center annak ellenére sem tudja lekérni a virtuális gépről beolvasott biztonsági adatokat, hogy az ügynök telepítve van. | Az ügynök nem jelent semmilyen adatot, például szívverést sem. Előfordulhat, hogy az ügynök sérült, vagy valami blokkolja a forgalmat. Vagy az ügynök adatokat jelent, de hiányzik egy Azure-erőforrás-azonosító, így lehetetlen az adatok egyeztetése az Azure virtuális gép. A Linux hibaelhárításáról a [Linuxos Log Analytics ügynök hibaelhárítási útmutatója](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal)című témakörben talál. Windows hibaelhárítása: [Windows rendszerű virtuális gépek hibaelhárítása](https://github.com/MicrosoftDocs/azure-docs/blob/8c53ac4371d482eda3d85819a4fb8dac09996a89/articles/log-analytics/log-analytics-azure-vm-extension.md#troubleshooting-windows-virtual-machines). |
-| Az ügynök nincs telepítve | Az adatgyűjtés le van tiltva. | Kapcsolja be az adatgyűjtést a biztonsági szabályzatban, vagy telepítse manuálisan a Microsoft Monitoring Agentet. |
+| Az ügynök nincs telepítve | Az adatgyűjtés le van tiltva. | Kapcsolja be az adatgyűjtést a biztonsági házirendben, vagy telepítse manuálisan a Log Analytics-ügynököt. |
 
 ## <a name="troubleshooting-monitoring-agent-network-requirements"></a>A figyelőügynök hibaelhárítása – hálózati követelmények <a name="mon-network-req"></a>
 

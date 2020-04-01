@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: 78ed07560fdb15efb2de13c194549f5b433b775a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 381aad5d0a56362d9966ed54b931a8478f2f6bf2
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77500601"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410504"
 ---
 # <a name="about-point-to-site-vpn"></a>A pont-hely VPN
 
@@ -22,9 +22,9 @@ A pont–hely (P2S) VPN-átjátókapcsolat lehetővé teszi biztonságos kapcsol
 
 A pont-hely VPN az alábbi protokollok egyikét használhatja:
 
-* **OpenVPN® Protocol**, egy SSL/TLS alapú VPN protokoll. Az SSL VPN-megoldás áthatolhat a tűzfalakon, mivel a legtöbb tűzfal megnyitja a 443-as TCP-portot, amelyet az SSL használ. OpenVPN lehet használni, hogy csatlakozzon az Android, iOS (11.0-s és újabb verziók), Windows, Linux és Mac eszközök (OSX verzió10.13 és újabb).
+* **OpenVPN® Protocol**, egy SSL/TLS alapú VPN protokoll. A TLS VPN-megoldás áthatolhat a tűzfalakon, mivel a legtöbb tűzfal megnyitja a 443-as TCP-portot, amelyet a TLS használ. OpenVPN lehet használni, hogy csatlakozzon az Android, iOS (11.0-s és újabb verziók), Windows, Linux és Mac eszközök (OSX verzió10.13 és újabb).
 
-* Secure Socket Tunneling Protocol (SSTP), egy saját SSL-alapú VPN protokoll. Az SSL VPN-megoldás áthatolhat a tűzfalakon, mivel a legtöbb tűzfal megnyitja a 443-as TCP-portot, amelyet az SSL használ. Az SSTP csak Windows-eszközökön támogatott. Az Azure támogatja a Windows összes SSTP-vel (Windows 7 és újabb) verzióit.
+* Secure Socket Tunneling Protocol (SSTP), egy saját TLS-alapú VPN protokoll. A TLS VPN-megoldás áthatolhat a tűzfalakon, mivel a legtöbb tűzfal megnyitja a 443-as TCP-portot, amelyet a TLS használ. Az SSTP csak Windows-eszközökön támogatott. Az Azure támogatja a Windows összes SSTP-vel (Windows 7 és újabb) verzióit.
 
 * IKEv2 VPN, egy szabványalapú IPsec VPN-megoldás. Az IKEv2 VPN segítségével Macről is lehetségessé válik a csatlakozás (OSX 10.11-es vagy újabb verziók használata esetén).
 
@@ -141,7 +141,7 @@ A zip-fájl is biztosítja az értékeket néhány fontos beállítások at the 
 ## <a name="what-tls-policies-are-configured-on-vpn-gateways-for-p2s"></a><a name="TLS policies"></a>Milyen TLS-házirendek vannak konfigurálva a VpN-átjárók p2s?
 **TLS**
 
-|**Szabályzatok** |
+|**Házirendek** |
 |---| 
 |TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 |
 |TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 |

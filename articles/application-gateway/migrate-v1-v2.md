@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/14/2019
+ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 9909c46015fffb3bea3eef094599312e28b935c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 96f3825288846e86771ef3907eb4da4e58630df3
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77046201"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475172"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Az Azure Application Gateway és a webalkalmazás tűzfalának áttelepítése a v1-ről a v2-re
 
@@ -40,6 +40,7 @@ Egy Azure PowerShell-parancsfájl érhető el, amely a következőket teszi:
 * Ha a V1-átjáró fips-módban engedélyezve van, akkor nem lesz áttelepítve az új v2 átjáróra. A FIPS-mód nem támogatott a v2-ben.
 * A v2 nem támogatja az IPv6 protokollt, ezért az IPv6-kompatibilis v1-es átjárók áttelepítése nem történik meg. Ha futtatja a parancsfájlt, előfordulhat, hogy nem fejeződik be.
 * Ha a v1-es átjáró csak egy privát IP-címmel rendelkezik, a parancsfájl létrehoz egy nyilvános IP-címet és egy privát IP-címet az új v2 átjáróhoz. a v2 átjárók jelenleg nem csak a privát IP-címeket támogatják.
+* A betűkön, számjegyeken, kötőjeleken és aláhúzásokon kívül más neveket tartalmazó fejlécek nem kerülnek át az alkalmazásba. Ez csak a fejlécnevekre vonatkozik, a fejlécértékekre nem. Ez egy törés változás v1.
 
 ## <a name="download-the-script"></a>A szkript letöltése
 

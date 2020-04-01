@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: 0bf70b73098427847c73b4dd962d56d44fe6ee2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 554a4c64700bb189b4b9f085bd7c259312a36b4b
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283208"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410936"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Bevezetési gépek az Azure Automation állapotkonfigurációja általi kezeléshez
 
@@ -107,7 +107,7 @@ A helyszíni vagy más felhőalapú környezetekben futó Linux-kiszolgálókat 
 
      `/opt/microsoft/dsc/Scripts/Register.py <Automation account registration key> <Automation account registration URL>`
 
-   - A regisztrációs kulcs és az Automation-fiók regisztrációs URL-címének megkereséséhez tekintse meg a [Bevezetés biztonságos regisztráció t a regisztráció t,](#onboarding-securely-using-registration) ha ez a cikk.
+   - Az Automation-fiók regisztrációs kulcsának és regisztrációs URL-címének megkereséséhez tekintse meg a cikk [regisztrációbiztonságos használatával](#onboarding-securely-using-registration) című bevezetés című részét.
 
 3. Ha a PowerShell DSC Helyi Configuration Manager (LCM) alapértelmezés e nem egyezik meg a használati eset, vagy szeretné, hogy a beépített gépek, amelyek csak az Azure Automation állapotkonfiguráció, kövesse a 4-7. Ellenkező esetben folytassa közvetlenül a 7.
 

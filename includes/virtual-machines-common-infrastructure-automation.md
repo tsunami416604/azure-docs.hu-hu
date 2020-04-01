@@ -4,19 +4,19 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: 9cbc48d8bca2f7491d0464be1c5bd64054927dc9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2eb503b58f1679d138b6a1dd9304896be098ad6
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77608740"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80419174"
 ---
 Az Azure virtuális gépek (VM-ek) létrehozása és kezelése egységes módon, nagy méretekben, valamilyen automatizálási forma általában kívánatos. Számos olyan eszköz és megoldás létezik, amelyek lehetővé teszik az Azure-infrastruktúra teljes üzembe helyezésének és felügyeleti életciklusának automatizálását. Ez a cikk bemutatja az Azure-ban használható infrastruktúra-automatizálási eszközöket. Ezek az eszközök általában illeszkednek az alábbi megközelítések egyikébe:
 
 - Virtuális gépek konfigurációjának automatizálása
-    - Az eszközök közé tartozik [az Ansible](#ansible), [a Chef](#chef)és a [Puppet](#puppet).
+    - Az eszközök közé tartozik [az Ansible](#ansible), [chef](#chef), [puppet](#puppet)és az Azure Resource [Manager sablon.](#azure-resource-manager-template)
     - A virtuális gépek testreszabására jellemző eszközök közé tartozik a linuxos virtuális [gépekfelhő-init,](#cloud-init) a [PowerShell kívánt állapotkonfigurációja (DSC)](#powershell-dsc)és az [Azure Custom Script Extension](#azure-custom-script-extension) az összes Azure virtuális géphez.
- 
+
 - Infrastruktúra-kezelés automatizálása
     - Az eszközök közé tartozik a [Packer](#packer) az egyéni virtuálisgép-lemezképek automatizálásához, valamint a [Terraform](#terraform) az infrastruktúra-létrehozási folyamat automatizálásához.
     - [Az Azure Automation](#azure-automation) műveleteket hajthat végre az Azure-ban és a helyszíni infrastruktúrában.
@@ -56,7 +56,8 @@ A [cloud-init](https://cloudinit.readthedocs.io) egy széles körben használt m
 
 A cloud-init különböző disztribúciókon is működik. Például nem kell az **apt-get install** vagy a **yum install** használatával telepítenie a csomagokat. Ehelyett megadhatja a telepítendő csomagok listáját. A cloud-init automatikusan a natív csomagkezelő eszközt használja a kiválasztott disztribúcióhoz.
 
-Aktívan együttműködünk a jóváhagyott Linux disztribúciós partnereinkkel annak érdekében, hogy felhőalapú init-kompatibilis lemezképek álljanak rendelkezésre az Azure piactéren. Ezek a lemezképek teszik a felhő-init központi telepítések és konfigurációk zökkenőmentesen működnek a virtuális gépek és a virtuális gép méretezési készletek. További részletek az Azure-beli felhőalapú szolgáltatásokról:
+Aktívan együttműködünk a jóváhagyott Linux disztribúciós partnereinkkel annak érdekében, hogy felhőalapú init-kompatibilis lemezképek álljanak rendelkezésre az Azure piactéren. Ezek a lemezképek teszik a felhő-init központi telepítések és konfigurációk zökkenőmentesen működnek a virtuális gépek és a virtuális gép méretezési készletek.
+További részletek az Azure-beli felhőalapú szolgáltatásokról:
 
 - [Az Azure-ban található Linux-virtuális gépek felhőalapú init támogatása](../articles/virtual-machines/linux/using-cloud-init.md)
 - [Próbálkozzon egy oktatóanyaggal az automatikus virtuális gép konfigurációjával a cloud-init használatával.](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md)
@@ -75,7 +76,7 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 
 
 ## <a name="azure-custom-script-extension"></a>Azure egyéni szkriptek futtatására szolgáló bővítmény
-Az Azure Custom Script Extension for [Linux](../articles/virtual-machines/linux/extensions-customscript.md) vagy [Windows](../articles/virtual-machines/windows/extensions-customscript.md) letölti és végrehajtja a parancsfájlokat az Azure virtuális gépeken. Használhatja a bővítményt, amikor virtuális gép létrehozása, vagy bármikor a virtuális gép használata után. 
+Az Azure Custom Script Extension for [Linux](../articles/virtual-machines/linux/extensions-customscript.md) vagy [Windows](../articles/virtual-machines/windows/extensions-customscript.md) letölti és végrehajtja a parancsfájlokat az Azure virtuális gépeken. Használhatja a bővítményt, amikor virtuális gép létrehozása, vagy bármikor a virtuális gép használata után.
 
 A parancsfájlok letölthetők az Azure storage-ból vagy bármely nyilvános helyről, például egy GitHub-tárházból. Az egyéni parancsfájl-bővítmény, parancsfájlok bármilyen nyelven, amely fut a forrás virtuális gépen. Ezek a parancsfájlok alkalmazások telepítésére vagy a virtuális gép igény szerint konfigurálására használhatók. A hitelesítő adatok védelme érdekében a bizalmas adatok, például a jelszavak védett konfigurációban tárolhatók. Ezeket a hitelesítő adatokat csak a virtuális gépen belül fejti vissza.
 
@@ -130,6 +131,17 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 
 - [Hozzon létre egy fejlesztési infrastruktúrát egy Linux virtuális gépen az Azure-ban a Jenkins, a GitHub és a Docker segítségével.](../articles/jenkins/tutorial-jenkins-github-docker-cicd.md)
 
+
+## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
+[Az Azure Resource Manager](../articles/azure-resource-manager/templates/overview.md) az Azure üzembe helyezési és felügyeleti szolgáltatása. Felügyeleti réteget biztosít, amely lehetővé teszi az Azure-előfizetéserőforrásainak létrehozását, frissítését és törlését. A felügyeleti funkciókat, például a hozzáférés-vezérlést, a zárolásokat és a címkéket az erőforrások üzembe helyezés utáni védelmére és rendszerezésére használhatja.
+
+Az alábbiak végrehajtásának módját ismerheti meg:
+
+- [Azonnali virtuális gépek telepítése erőforrás-kezelő sablon használatával.](../articles/virtual-machines/linux/spot-template.md)
+- [Telepítsen egy Azure virtuális gépet c# és egy Erőforrás-kezelő sablon használatával.](../articles/virtual-machines/windows/csharp-template.md)
+- [Hozzon létre egy Windows virtuális gépet erőforrás-kezelő sablonból](../articles/virtual-machines/windows/ps-template.md).
+- [Töltse le a sablont egy virtuális géphez.](../articles/virtual-machines/windows/download-template.md)
+- [Hozzon létre egy Azure Image Builder sablont.](../articles/virtual-machines/linux/image-builder-json.md)
 
 ## <a name="next-steps"></a>További lépések
 Az Azure-ban számos különböző lehetőség van az infrastruktúra-automatizálási eszközök használatára. Szabadon használhatja az igényeinek és környezetének leginkább megfelelő megoldást. Első lépések, és próbálja meg az Azure-ba beépített eszközök némelyikét, olvassa el, hogyan automatizálhatja a [Linux](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md) vagy a [Windows](../articles/virtual-machines/windows/tutorial-automate-vm-deployment.md) virtuális gép testreszabását.

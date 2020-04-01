@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: 1ddbc8e909c5ba0b720e893e87c0f495d256a886
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c7b38ad40977e1042032210d3a82a73ff6169adc
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79279155"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411064"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Háttérrendszer állapot- és diagnosztikai naplói az Application Gateway-hez
 
@@ -96,9 +96,9 @@ A következő kódrészlet egy példát mutat be a válaszra:
 Az Azure-ban különböző típusú naplókat használhat az alkalmazásátjárók kezeléséhez és hibaelhárításához. Ezen naplók egy része a portálról érhető el. Az összes napló kinyerhető az Azure Blob storage-ból, és megtekintheti a különböző eszközök, például [az Azure Monitor naplók,](../azure-monitor/insights/azure-networking-analytics.md)Excel és a Power BI. A különböző típusú naplókról az alábbi listából tudhat meg többet:
 
 * **Tevékenységnapló:** Az [Azure-tevékenységnaplók](../monitoring-and-diagnostics/insights-debugging-with-events.md) (korábbi nevén működési naplók és naplónaplók) segítségével megtekintheti az Azure-előfizetésbe küldött összes műveletet és azok állapotát. A tevékenységnaplók bejegyzéseit alapértelmezés szerint gyűjti a rendszer, ezeket az Azure Portalon tekintheti meg.
-* **Hozzáférési napló**: Ezzel a naplóval megtekintheti az Application Gateway hozzáférési mintáit, és elemezheti a fontos információkat. Ez magában foglalja a hívó IP-címét, a kért URL-címet, a válasz késését, a visszatérési kódot, valamint a be- és ki- és be- és ki- és bájtokat. A hozzáférési napló t300 másodpercenként gyűjti. Ez a napló az Application Gateway példányonként egy rekordot tartalmaz. Az Application Gateway-példányt a instanceId tulajdonság azonosítja.
+* **Hozzáférési napló**: Ezzel a naplóval megtekintheti az Application Gateway hozzáférési mintáit, és elemezheti a fontos információkat. Ez magában foglalja a hívó IP-címét, a kért URL-címet, a válasz késését, a visszatérési kódot, valamint a be- és ki- és be- és ki- és bájtokat. A hozzáférési napló 60 másodpercenként gyűjti. Ez a napló az Application Gateway példányonként egy rekordot tartalmaz. Az Application Gateway-példányt a instanceId tulajdonság azonosítja.
 * **Teljesítménynapló**: Ezzel a naplóval megtekintheti az Application Gateway-példányok teljesítményét. Ez a napló rögzíti az egyes példányok teljesítményadatait, beleértve az összes kiszolgált kérelmeket, az átviteli teljesítményt bájtban, a kiszolgált összes kérelmet, a sikertelen kérelmek számát, valamint a kifogástalan és nem megfelelő háttérpéldányok számát. A teljesítménynapló 60 másodpercenként történik. A teljesítménynapló csak a v1 termékváltozathoz érhető el. A v2 termékváltozat hoz [a metrikák](application-gateway-metrics.md) teljesítményadatok.
-* **Tűzfalnapló**: Ezzel a naplóval megtekintheti a webalkalmazás tűzfalával konfigurált alkalmazásátjáró észlelési vagy megelőzési módján keresztül naplózott kérelmeket.
+* **Tűzfalnapló**: Ezzel a naplóval megtekintheti a webalkalmazás tűzfalával konfigurált alkalmazásátjáró észlelési vagy megelőzési módján keresztül naplózott kérelmeket. A tűzfalnaplókat 60 másodpercenként gyűjtik össze. 
 
 > [!NOTE]
 > A naplók csak az Azure Resource Manager üzembe helyezési modellben üzembe helyezett erőforrásokhoz érhetők el. A klasszikus központi telepítési modellben lévő erőforrásokhoz nem használhat naplókat. A két modell jobb megértését az [Erőforrás-kezelő telepítésének és a klasszikus üzembe helyezési cikknek](../azure-resource-manager/management/deployment-models.md) a megértése című cikkben talál.

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 87c3a3a904705b9fcb702c4745c4c80a4b447e69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e50d6d0623e87dfa68a7cc9744c3f595ff0179c6
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476722"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396382"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Az alkalmazás felhasználói felületének testreszabása egyéni szabályzat használatával az Azure Active Directory B2C-ben
 
@@ -30,7 +30,7 @@ Hajtsa végre az Egyéni házirendek – Első lépések című [lépéseit.](cu
 
 [!INCLUDE [active-directory-b2c-html-how-to](../../includes/active-directory-b2c-html-how-to.md)]
 
-## <a name="4-modify-the-extensions-file"></a>4. Módosítsa a kiterjesztések fájl
+### <a name="4-modify-the-extensions-file"></a>4. Módosítsa a kiterjesztések fájl
 
 A felhasználói felület testreszabásának konfigurálásához másolja a **ContentDefinition** és gyermekelemeit az alapfájlból a bővítményfájlba.
 
@@ -60,9 +60,9 @@ A felhasználói felület testreszabásának konfigurálásához másolja a **Co
 
 1. Mentse a kiterjesztésfájlt.
 
-## <a name="5-upload-and-test-your-updated-custom-policy"></a>5. Töltse fel és tesztelje a frissített egyéni házirendet
+### <a name="5-upload-and-test-your-updated-custom-policy"></a>5. Töltse fel és tesztelje a frissített egyéni házirendet
 
-### <a name="51-upload-the-custom-policy"></a>5.1 Az egyéni házirend feltöltése
+#### <a name="51-upload-the-custom-policy"></a>5.1 Az egyéni házirend feltöltése
 
 1. Győződjön meg arról, hogy az Azure AD B2C-bérlőt tartalmazó könyvtárat használja, ha a felső **menüben** a Directory + előfizetésszűrőt választja, és kiválasztja a bérlőt tartalmazó könyvtárat.
 1. Keresse meg és válassza az **Azure AD B2C**lehetőséget.
@@ -70,7 +70,7 @@ A felhasználói felület testreszabásának konfigurálásához másolja a **Co
 1. Válassza **az Egyéni házirend feltöltése lehetőséget.**
 1. Töltse fel a korábban módosított bővítményfájlt.
 
-### <a name="52-test-the-custom-policy-by-using-run-now"></a>5.2 Az egyéni házirend tesztelése a **Futtatás most** használatával
+#### <a name="52-test-the-custom-policy-by-using-run-now"></a>5.2 Az egyéni házirend tesztelése a **Futtatás most** használatával
 
 1. Válassza ki a feltöltött házirendet, majd válassza a **Futtatás most**lehetőséget.
 1. E-mail cím használatával regisztrálhat.

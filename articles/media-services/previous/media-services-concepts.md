@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 69e2c053c9fb874889bc3d5b08be6e0c7ce875a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 260ddccc1a1b0bd4090284025b79e20ff5ce4fdc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162905"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475242"
 ---
 # <a name="azure-media-services-concepts"></a>Az Azure Media Services fogalmai 
 
@@ -91,13 +91,13 @@ A [feladatot](https://docs.microsoft.com/rest/api/media/operations/job) általá
 
 A feladat metaadatokat tartalmaz a végrehajtandó feldolgozással kapcsolatban. Minden feladat egy vagy több [feladatot](https://docs.microsoft.com/rest/api/media/operations/task)tartalmaz, amelyek meghatározzák az atomi feldolgozási feladatot, a bemeneti eszközöket, a kimeneti eszközöket, a médiaprocesszort és a hozzá tartozó beállításokat. A feladaton belüli feladatok összeláncolhatók, ahol az egyik feladat kimeneti eszköze a következő feladat bemeneti eszközeként van megadva. Ily módon egy feladat a médiabemutatóhoz szükséges összes feldolgozást tartalmazhatja.
 
-## <a name="encoding"></a><a id="encoding"></a>Kódolás
+## <a name="encoding"></a><a id="encoding"></a>Encoding
 Az Azure Media Services több lehetőséget biztosít a felhőben lévő médiakódoláshoz.
 
 A Media Services szolgáltatással való indításkor fontos megérteni a kodekek és a fájlformátumok közötti különbséget.
 Kodekek a szoftver, amely végrehajtja a tömörítési / kicsomagolási algoritmusok, míg a fájlformátumok tárolók, hogy tartsa a tömörített videó.
 
-A Media Services dinamikus csomagolást biztosít, amely lehetővé teszi az adaptív sávszélességű MP4 vagy Smooth Streaming kódolású tartalom kézbesítését a Media Services által támogatott streamelési formátumokban (MPEG DASH, HLS, Smooth Streaming), anélkül, hogy újra be kellene csomagolnia ezeket a streamelési formátumokat.
+A Media Services dinamikus csomagolást biztosít, amely lehetővé teszi az adaptív sávszélességű MP4 vagy Smooth Streaming kódolású tartalom átvitelét a Media Services (MPEG DASH, HLS, Smooth Streaming) által támogatott streamelési formátumokban anélkül, hogy újra kellene csomagolnia ezekbe a streaming formátumokba.
 
 A dinamikus [csomagolás](media-services-dynamic-packaging-overview.md)előnyeinek kihasználásához a mezzanine (forrás) fájlt adaptív sávszélességű MP4-fájlokba vagy adaptív sávszélességű Smooth Streaming fájlokba kell kódolnia, és legalább egy szabványos vagy prémium szintű streamelési végpontot kell beállítania elindított állapotban.
 
@@ -166,7 +166,7 @@ A Media Services szolgáltatással végzett munka során ajánlott a mezzanine f
 ### <a name="streaming-endpoint"></a>Streamvégpont
 A StreamingEndpoint olyan adatfolyam-szolgáltatást jelöl, amely közvetlenül egy ügyféllejátszó alkalmazásnak vagy egy tartalomkézbesítési hálózatnak (CDN) képes továbbítani a tartalmat további terjesztés céljából (az Azure Media Services most már biztosítja az Azure CDN-integrációt.) A streamelési végpontszolgáltatás kimenő adatfolyama lehet egy élő közvetítés vagy egy videoon-igény szerinti eszköz a Media Services-fiókban. A Media Services ügyfelei általában egy **standard** szintű streamvégpontot vagy egy vagy több **prémium** szintű streamvégpontot választanak, saját igényeiknek megfelelően. A standard streamelési végpont a legtöbb streamelési számítási feladathoz alkalmas. 
 
-A szabványos streamvégpont a legtöbb streamelési feladat ellátására alkalmas. A standard streamelési végpontok rugalmasságot biztosítanak ahhoz, hogy a tartalmat szinte minden eszközre eljuttassák a HLS, Az MPEG-DASH és a Smooth Streaming dinamikus csomagolásán keresztül, valamint dinamikus titkosítást a Microsoft PlayReady, a Google Widevine, az Apple Fairplay és AES128.  Emellett a nagyon kicsiés a nagyon nagy közönség között is méretezhetők, több ezer egyidejű megtekintővel az Azure CDN-integráción keresztül. Ha speciális számítási feladattal rendelkezik, vagy a streamelési kapacitás követelmények nem felelnek meg a szabványos streamelési végpont átviteli céloknak, vagy szeretné szabályozni a StreamingEndpoint szolgáltatás kapacitását a növekvő sávszélesség-igények kielégítésére, ajánlott osztásegységek (más néven prémium szintű streamelési egységek) lefoglalása.
+A szabványos streamvégpont a legtöbb streamelési feladat ellátására alkalmas. A standard streamelési végpontok rugalmasságot biztosítanak ahhoz, hogy a tartalmat szinte minden eszközre eljuttassa a HLS, Az MPEG-DASH és a Smooth Streaming dinamikus csomagolásán keresztül, valamint a Microsoft PlayReady, a Google Widevine, az Apple Fairplay és az AES128 dinamikus titkosítását.  Emellett a nagyon kicsiés a nagyon nagy közönség között is méretezhetők, több ezer egyidejű megtekintővel az Azure CDN-integráción keresztül. Ha egy speciális számítási feladatok vagy a streamelési kapacitás követelmények nem felelnek meg a szabványos streamelési végpont átviteli célok, vagy szeretné szabályozni a streamingvégpont-szolgáltatás kapacitását a növekvő sávszélesség-igények kezelésére, ajánlott méretezési egységek (más néven prémium szintű streamelési egységek) lefoglalása.
 
 Javasoljuk, hogy dinamikus csomagolást és/vagy dinamikus titkosítást használjon.
 
@@ -180,7 +180,7 @@ Alapértelmezés szerint legfeljebb 2 streamelési végpont lehet a Media Servic
 A számlázás csak akkor történik meg, ha a StreamingEndpoint futó állapotban van.
 
 ### <a name="asset-delivery-policy"></a>Eszközkézbesítési irányelv
-A Media Services tartalomkézbesítési munkafolyamatának egyik lépése az adatfolyamként streamelni kívánt [eszközök kézbesítési szabályzatainak](https://docs.microsoft.com/rest/api/media/operations/assetdeliverypolicy)konfigurálása. Az eszközkézbesítési szabályzat megmondja a Media Services-nek, hogyan szeretné az eszköz kézbesítését: melyik streamelési protokollba kell dinamikusan csomagolni az eszközt (például MPEG DASH, HLS, Smooth Streaming vagy az összes), függetlenül attól, hogy dinamikusan szeretné-e titkosítani az ön eszközét és módját (boríték vagy közös titkosítás).
+A Media Services tartalomkézbesítési munkafolyamatának egyik lépése az adatfolyamként streamelni kívánt [eszközök kézbesítési szabályzatainak](https://docs.microsoft.com/rest/api/media/operations/assetdeliverypolicy)konfigurálása. Az eszközkézbesítési szabályzat megmondja a Media Services-nek, hogyan szeretné az eszköz kézbesítését: melyik streamelési protokollba kell dinamikusan csomagolni az eszközt (például MPEG DASH, HLS, Smooth Streaming vagy az összes), függetlenül attól, hogy dinamikusan titkosítani szeretné-e az eszközt, és hogyan (boríték vagy közös titkosítás).
 
 Ha rendelkezik egy tároló titkosított eszközzel, mielőtt az eszköz streamelhető, a streamelési kiszolgáló eltávolítja a tároló titkosítást, és streameli a tartalmat a megadott kézbesítési szabályzat használatával. Ha például az eszközt speciális titkosítási szabvány (AES) titkosítási kulccsal titkosíthatja, állítsa a házirend típusát DynamicEnvelopeEncryption értékre. A tárolótitkosítás eltávolításához és az eszköz titkosításának kiürítéséhez állítsa a házirend típusát NoDynamicEncryption értékre.
 
@@ -197,10 +197,10 @@ http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba01
 ### <a name="streaming-urls"></a>Streamelési URL-ek
 A tartalom streamelése az ügyfelek számára. Ahhoz, hogy a felhasználók a streamelési URL-eket, először létre kell hoznia egy OnDemandOrigin lokátor. A lokátor létrehozása, megadja az alap elérési útját az adatfolyamként adatfolyamként adatfolyamként imitátort tartalmazó eszközhöz. Ahhoz azonban, hogy ezt a tartalmat streamelhesse, tovább kell módosítania ezt az elérési utat. A streamelési jegyzékfájl teljes URL-címének létrehozásához össze kell fűznie a lokátor elérési útját és a jegyzékfájl (filename.ism) fájlnevét. Ezután fűzze hozzá a /Manifest parancsot, és szükség esetén megfelelő formátumot a lokátor elérési úthoz.
 
-A tartalmat SSL-kapcsolaton keresztül is streamelheti. Ehhez győződjön meg arról, hogy a streamelési URL-ek HTTPS-lel kezdődnek. Jelenleg az AMS nem támogatja az SSL-t egyéni tartományokkal.  
+A tartalmat TLS-kapcsolaton keresztül is streamelheti. Ehhez győződjön meg arról, hogy a streamelési URL-ek HTTPS-lel kezdődnek. Jelenleg az AMS nem támogatja a TLS-t egyéni tartományokkal.  
 
 >[!NOTE]
->Csak akkor streamelhet SSL-en keresztül, ha az a streamelési végpont, amelyből a tartalmat kézbesíti, 2014. Ha a streamelési URL-címek a szeptember 10.-e után létrehozott streamelési végpontokon alapulnak, az URL-cím "streaming.mediaservices.windows.net" (az új formátum) tartalmazza. A "origin.mediaservices.windows.net" (a régi formátum) tartalmazó streamelési URL-ek nem támogatják az SSL-t. Ha az URL-cím a régi formátumban van, és ssl-en keresztül szeretne streamelni, hozzon létre egy új streamelési végpontot. Az új streamelési végpont alapján létrehozott URL-címekkel streamelheti a tartalmat SSL-en keresztül.
+>Csak akkor streamelhet TLS-en keresztül, ha az a streamelési végpont, amelyből a tartalmat kézbesíti, 2014. Ha a streamelési URL-címek a szeptember 10.-e után létrehozott streamelési végpontokon alapulnak, az URL-cím "streaming.mediaservices.windows.net" (az új formátum) tartalmazza. A "origin.mediaservices.windows.net" (a régi formátum) tartalmazó streamelési URL-ek nem támogatják a TLS-t. Ha az URL-cím a régi formátumban van, és tls-en keresztül szeretne streamelni, hozzon létre egy új streamelési végpontot. Az új streamelési végpont alapján létrehozott URL-címekkel streamelheti a tartalmat A TLS-en keresztül.
 
 Az alábbi lista különböző streamelési formátumokat ismertet, és példákat mutat be:
 

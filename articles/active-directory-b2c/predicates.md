@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cc61ef5980a8019514f05c1db47f2300fff3603b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 887c9432f04cce775e045bb6da83f0af4a4a4bce
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78187236"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396889"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predikátumok és predikátumokÉrvényesítések
 
@@ -45,7 +45,7 @@ A **predikátumelem** a következő attribútumokat tartalmazza:
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | Azonosító | Igen | Az állítmányhoz használt azonosító. Más elemek is használhatják ezt az azonosítót a házirendben. |
-| Módszer | Igen | Az ellenőrzéshez használandó metódustípus. Lehetséges értékek: **IsLengthRange**, **MatchesRegex**, **IncludesCharacters**vagy **IsDateRange**. Az **IsLengthRange** érték azt ellenőrzi, hogy a karakterlánc-jogcímérték hossza a megadott minimális és maximális paraméterek tartományán belül van-e. A **MatchesRegex** érték azt ellenőrzi, hogy egy karakterlánc-jogcímértéke megegyezik-e egy reguláris kifejezéssel. A **IncludesCharacters** érték ellenőrzi, hogy a karakterlánc jogcímértéke tartalmaz-e karakterkészletet. Az **IsDateRange** érték ellenőrzi, hogy a dátumjogcímértéke a megadott minimális és maximális paramétertartomány között van-e. |
+| Módszer | Igen | Az ellenőrzéshez használandó metódustípus. Lehetséges értékek: [IsLengthRange](#islengthrange), [MatchesRegex](#matchesregex), [IncludesCharacters](#includescharacters)vagy [IsDateRange](#isdaterange).  |
 | HelpText | Nem | Hibaüzenet a felhasználók számára, ha az ellenőrzés sikertelen. Ez a karakterlánc a [nyelvi testreszabással](localization.md) honosítható |
 
 A **predikátum** elem a következő elemeket tartalmazza:
@@ -67,7 +67,19 @@ A **Paraméter** elem a következő attribútumokat tartalmazza:
 | ------- | ----------- | ----------- |
 | Azonosító | 1:1 | A paraméter azonosítója. |
 
-A következő példa `IsLengthRange` egy olyan `Minimum` metódust mutat be, amely tartalmazza a paramétereket, és `Maximum` amely megadja a karakterlánc hossztartományát:
+### <a name="predicate-methods"></a>Predikátummódszerek
+
+#### <a name="islengthrange"></a>Islengthrange között
+
+Az IsLengthRange metódus ellenőrzi, hogy a karakterlánc-jogcímérték hossza a megadott minimális és maximális paraméterek tartományán belül van-e. A predikátumelem a következő paramétereket támogatja:
+
+| Paraméter | Kötelező | Leírás |
+| ------- | ----------- | ----------- |
+| Maximum | Igen | A beírható karakterek maximális száma. |
+| Minimális | Igen | A beírandó karakterek minimális száma. |
+
+
+A következő példa egy IsLengthRange metódust mutat be a paraméterekkel, `Minimum` és `Maximum` amely meghatározza a karakterlánc hossztartományát:
 
 ```XML
 <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
@@ -77,6 +89,14 @@ A következő példa `IsLengthRange` egy olyan `Minimum` metódust mutat be, ame
   </Parameters>
 </Predicate>
 ```
+
+#### <a name="matchesregex"></a>MérkőzésekRegex
+
+A MatchesRegex metódus ellenőrzi, hogy egy karakterlánc-jogcímértéke megegyezik-e egy reguláris kifejezéssel. A predikátumelem a következő paramétereket támogatja:
+
+| Paraméter | Kötelező | Leírás |
+| ------- | ----------- | ----------- |
+| Szabályszerű kifejezés | Igen | A reguláris kifejezés minta, amely nek megfelel. |
 
 A következő példa `MatchesRegex` egy olyan `RegularExpression` metódust mutat be, amelynek paramétere reguláris kifejezést ad meg:
 
@@ -88,6 +108,14 @@ A következő példa `MatchesRegex` egy olyan `RegularExpression` metódust muta
 </Predicate>
 ```
 
+#### <a name="includescharacters"></a>Karaktereket tartalmaz
+
+A IncludesCharacters metódus ellenőrzi, hogy a karakterlánc jogcímértéke tartalmaz-e karakterkészletet. A predikátumelem a következő paramétereket támogatja:
+
+| Paraméter | Kötelező | Leírás |
+| ------- | ----------- | ----------- |
+| Karakterkészlet | Igen | A beírható karakterek készlete. Például `a-z`kisbetűk, nagybetűk `A-Z`, számjegyek `0-9`vagy szimbólumok listája, például `@#$%^&amp;*\-_+=[]{}|\\:',?/~"();!`. |
+
 A következő példa `IncludesCharacters` egy olyan `CharacterSet` metódust mutat be, amely nek nincs meg a karakterkészlete:
 
 ```XML
@@ -98,7 +126,16 @@ A következő példa `IncludesCharacters` egy olyan `CharacterSet` metódust mut
 </Predicate>
 ```
 
-A következő példa `IsDateRange` egy paraméteres `Minimum` `Maximum` módszert mutat be, amely `yyyy-MM-dd` a `Today`dátumtartományt adja meg a és a formátumával.
+#### <a name="isdaterange"></a>IsDateRange között
+
+Az IsDateRange metódus ellenőrzi, hogy a dátumjogcímértéke a megadott minimális és maximális paramétertartomány között van-e. A predikátumelem a következő paramétereket támogatja:
+
+| Paraméter | Kötelező | Leírás |
+| ------- | ----------- | ----------- |
+| Maximum | Igen | A beírható legnagyobb dátum. A dátum formátuma `yyyy-mm-dd` az egyezményt követi, vagy `Today`. |
+| Minimális | Igen | A beírható legkisebb dátum. A dátum formátuma `yyyy-mm-dd` az egyezményt követi, vagy `Today`.|
+
+A következő példa `IsDateRange` egy paraméteres `Minimum` `Maximum` módszert mutat be, amely `yyyy-mm-dd` a `Today`dátumtartományt adja meg a és a formátumával.
 
 ```XML
 <Predicate Id="DateRange" Method="IsDateRange" HelpText="The date must be between 1970-01-01 and today.">
@@ -388,3 +425,7 @@ A jogcím típusában adja hozzá a PredicateValidationReference elemet, és adj
   <PredicateValidationReference Id="CustomDateRange" />
 </ClaimType>
  ```
+
+## <a name="next-steps"></a>További lépések
+
+- Megtudhatja, hogyan [konfigurálhatja a jelszó összetettségét az Azure Active Directory B2C egyéni szabályzatok](custom-policy-password-complexity.md) segítségével predikátumérvényesítési adatok használatával.

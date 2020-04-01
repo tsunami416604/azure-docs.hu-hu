@@ -1,21 +1,21 @@
 ---
-title: 'Oktatóanyag: Kép feltöltése – Bing Visual Search'
+title: 'Oktatóanyag: Kép feltöltése a Bing Visual Search API használatával'
 titleSuffix: Azure Cognitive Services
-description: Lebontja a kép a Bingbe való feltöltésének folyamatát, melynek során a rendszer megállapításokat ad vissza a képről, majd elemzi és megjeleníti a választ.
+description: Megtudhatja, hogyan tölthet fel képet a Bingbe, hogyan kaphat betekintést, hogyan jelenítheti meg a választ.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: tutorial
-ms.date: 11/29/2019
+ms.date: 03/31/2020
 ms.author: scottwhi
-ms.openlocfilehash: 84a8219221525400a9d3241c2f183d24344c2f6a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ecd1ab5e613bb326b65f6aa50f3f85172bc334ac
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74689177"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477935"
 ---
 # <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>Oktatóanyag: Képek feltöltése a Bing Visual Search API-ba
 

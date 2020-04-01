@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 02/19/2020
+ms.date: 03/31/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 89240102837b65ed2a09d9f4865ad47ee5d5afa2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 91d285e2a839a7d6266c5d58f52901a48a7a8c84
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154559"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473177"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD hitelesítési és engedélyezési hibakódok
 
@@ -148,7 +148,7 @@ Keresés a visszaadott hibakód numerikus részén.  Ha például az "AADSTS1600
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
 | AADSTS65001 | DelegationDoesNotExist – A felhasználó vagy a rendszergazda nem járult hozzá az alkalmazás X azonosítóval való használatához. |
 | AADSTS65004 | UserDeclinedConsent - A felhasználó nem járult hozzá az alkalmazás hoz való hozzáféréshez. Kérje meg a felhasználót, hogy jelentkezzen be újra, és hagyja jóvá az alkalmazást|
-| AADSTS65005 | MisconfiguredApplication - Az alkalmazás szükséges erőforrás-hozzáférési lista nem tartalmazza az erőforrás által felderíthető alkalmazásokat, vagy Az ügyfélalkalmazás hozzáférést kért az erőforráshoz, amely nem volt megadva a szükséges erőforrás-hozzáférési listában, vagy a Graph szolgáltatás hibásan tért vissza kérés vagy erőforrás nem található. Ha az alkalmazás támogatja az SAML-t, előfordulhat, hogy az alkalmazást nem a megfelelő azonosítóval (entitással) konfigurálta. Próbálja ki az SAML-hez felsorolt felbontást az alábbi hivatkozássegítségével:[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
+| AADSTS65005 | MisconfiguredApplication – Az alkalmazás által igényelt erőforrás-hozzáférési lista nem tartalmazza az erőforrás által felderíthető alkalmazásokat, vagy Az ügyfélalkalmazás hozzáférést kért az erőforráshoz, amely nem volt megadva a szükséges erőforrás-hozzáférési listában, vagy a Graph szolgáltatás rossz kérést adott vissza, vagy az erőforrás nem található. Ha az alkalmazás támogatja az SAML-t, előfordulhat, hogy az alkalmazást nem a megfelelő azonosítóval (entitással) konfigurálta. Próbálja ki az SAML-hez felsorolt felbontást az alábbi hivatkozássegítségével:[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
 | AADSTS67003 | ActorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant - A hitelesítés nem sikerült. A frissítési jogkivonat érvénytelen. A hiba oka a következő ok lehet:<ul><li>A tokenkötés fejléce üres</li><li>A tokenkötés kivonata nem egyezik</li></ul> |
 | AADSTS70001 | JogosulatlanÜgyfél – Az alkalmazás le van tiltva. |
@@ -271,6 +271,8 @@ Keresés a visszaadott hibakód numerikus részén.  Ha például az "AADSTS1600
 | AADSTS700020 | Interakciószükséges – a hozzáférési támogatás hoz szükség interakciót. |
 | AADSTS700022 | InvalidMultipleResourcesScope – A bemeneti paraméter hatóköréhez megadott érték nem érvényes, mert egynél több erőforrást tartalmaz. |
 | AADSTS700023 | InvalidResourcelessScope – A megadott érték a bemeneti paraméter hatóköre nem érvényes, ha egy hozzáférési jogkivonatot kér. |
+| AADSTS700022| InvalidClientSecretExpiredKeysProvided – A megadott ügyféltitkos kulcsok lejárt. Látogasson el az Azure Portalra, és hozzon létre új kulcsokat az alkalmazáshoz, vagy fontolja meg a tanúsítványhitelesítő adatok használatát a nagyobb biztonság érdekében:https://aka.ms/certCreds |
+| AADSTS700005 | InvalidGrantRedeemAgainstWrongTenant – Feltéve, hogy az engedélyezési kód más bérlővel szemben használható, így elutasítva. Az OAuth2 engedélyezési kódot ugyanazon a bérlőn kell beváltani, amelyhez beszerezték (/közös vagy /{tenant-ID} szükség szerint) |
 | AADSTS1000000 | UserNotBoundError - A Bind API megköveteli, hogy az Azure AD-felhasználó is hitelesítse magát egy külső IDP, amely még nem történt meg. |
 | AADSTS1000002 | BindCompleteInterruptError - A kötés sikeresen befejeződött, de a felhasználót tájékoztatni kell. |
 | AADSTS7000112 | JogosulatlanClientApplicationDisabled – Az alkalmazás le van tiltva. |

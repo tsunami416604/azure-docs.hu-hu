@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/15/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 8254a7d86d5cadc2ddc03940f4ab2d08de74bd86
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 096dbcb6b6a732bd21622658f6f30c5158a821c5
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72965172"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420524"
 ---
-# <a name="reserved-public-ipv6-address-prefix-preview"></a>Fenntartott nyilvános IPv6-címelőtag (előzetes verzió)
+# <a name="reserved-public-ipv6-address-prefix"></a>Fenntartott nyilvános IPv6-cím előtagja
 
 Az Azure-ban a kétverű (IPv4+IPv6) virtuális hálózatok (VNet) és a virtuális gépek (VM-ek) alapértelmezés szerint biztonságosak, mivel nem rendelkeznek internetkapcsolattal. Az Azure load balancers és a virtuális gépek hez egyszerűen hozzáadhat iPv6-internetkapcsolatot az Azure-ból beszerzett nyilvános IPv6-címekkel.
 
@@ -30,8 +30,7 @@ A lefoglalt nyilvános IP-k az Ön által választott Azure-régióhoz és az Az
 
 Az egyes IPv6-címek lefoglalása mellett az Azure IPv6-címek (más néven IP-előtag) összefüggő tartományait is lefoglalhatja a használatra.  Az egyes IP-címekhez hasonlóan a fenntartott előtagok az Ön által választott Azure-régióhoz és az Azure-előfizetéshez kapcsolódnak. A címk kiszámítható, összefüggő tartományának lefoglalása számos felhasználási haszna van. Például nagyban leegyszerűsítheti a vállalat és az ügyfelek által üzemeltetett Azure-alkalmazások *IP-engedélyezési listáját,* mivel a statikus IP-tartományok könnyen programozhatók helyszíni tűzfalakba.  Szükség szerint létrehozhat egyéni nyilvános IP-címeket az IP-előtagból, és amikor törli ezeket az egyes nyilvános IP-címeket, azok *visszakerülnek* a fenntartott tartományba, így később újra felhasználhatja őket. Az IP-előtagban lévő összes IP-cím az előtag törléséig van fenntartva az Ön kizárólagos használatára.
 
-> [!Important]
-> Az IPv6 for Azure Virtual Network jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 ## <a name="ipv6-prefix-sizes"></a>IPv6 előtagok méretei
 A következő nyilvános IP-előtagok érhetők el:

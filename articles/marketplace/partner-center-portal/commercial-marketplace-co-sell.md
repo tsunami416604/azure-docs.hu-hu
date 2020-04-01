@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/06/2019
-ms.openlocfilehash: 3b0b38b767495b1a06405f0d41222b73baee8d53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/31/2020
+ms.openlocfilehash: f290b08d1f625600d03c9540b28c289e9b449471
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277073"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475160"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Társértékesítési lehetőség a Partnerközpontban
 
@@ -22,11 +22,11 @@ A Partnerközpont közös értékesítési lehetősége jelenleg bizonyos ajánl
 
 | **Ajánlat típusa** | **A Partnerközpontban elérhető közös értékesítési oldal** |
 |    -----------------------    |    -----------------------------  |
-| Szoftver szolgáltatásként (SaaS) |     Általános elérhetőség körül feb. 2020      |
+| Szoftver szolgáltatásként (SaaS) |     Általános elérhetőség 2020 április a környéken:     |
 | Dynamics 365 for Customer Engagement & PowerApps      |     Már elérhető      |
 | Dynamics 365 for Operations     |     Már elérhető       |
-| Dynamics 365 Business Central      |  Általános elérhetőség körül feb. 2020     |
-| Azure-alkalmazás     |     Általános elérhetőség körül feb. 2020     |
+| Dynamics 365 Business Central      |  Általános elérhetőség 2020 április a környéken:    |
+| Azure-alkalmazás     |     Általános elérhetőség 2020 április a környéken:     |
 | Azure-beli virtuális gép      |     Bejelentendő       |
 | Azure-tároló     |     Bejelentendő       |
 | Tanácsadói szolgáltatás      |     Bejelentendő       |

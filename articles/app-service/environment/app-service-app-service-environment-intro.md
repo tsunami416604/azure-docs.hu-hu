@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f655b7793bfbb5bbeddfc2f1f8e7bc973dabeb4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd3881617227430488f8dd3f2f3d24072b24b8ce
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74687362"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478727"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>Bevezetés az App Service-környezet 1-es alkalmazásába
 
@@ -48,7 +48,7 @@ Az App Service-környezet ben lévő összes számítási erőforrás kizáróla
 
 Az App Service-környezet egy előtér-alapú számítási erőforráskészletből, valamint egy-három feldolgozó számítási erőforráskészletből áll.
 
-Az előtér-készlet az SSL-végződésért felelős számítási erőforrásokat, valamint az App Service-környezeten belüli alkalmazáskérelmek automatikus terheléselosztását tartalmazza.
+Az előtér-készlet a TLS-végződésért felelős számítási erőforrásokat, valamint az App Service-környezeten belüli alkalmazáskérelmek automatikus terheléselosztását tartalmazza.
 
 Minden munkavégző készlet az [App Service-csomagokhoz][AppServicePlan]rendelt számítási erőforrásokat tartalmaz, amelyek viszont egy vagy több Azure App Service-alkalmazást tartalmaznak.  Mivel egy App Service-környezetben legfeljebb három különböző munkavégző készlet lehet, rugalmasan választhat különböző számítási erőforrásokat az egyes munkavégző készletekhez.  
 

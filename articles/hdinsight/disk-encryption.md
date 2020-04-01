@@ -7,22 +7,22 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: fd5308574e84ab6d2e30b9352254683b2d1d6fdd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c0521f384a333c3054397fb0ec7c2ab907e54f67
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78403561"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411754"
 ---
 # <a name="customer-managed-key-disk-encryption"></a>Ügyfél által felügyelt kulcson alapuló lemeztitkosítás
 
-Az Azure HDInsight támogatja az ügyfél által felügyelt kulcstitkosítást a HDInsight fürt virtuális gépeihez csatlakoztatott felügyelt lemezeken és erőforráslemezeken lévő adatokhoz. Ez a funkció lehetővé teszi, hogy az Azure Key Vault használatával kezelje a hdinsight-fürtök inaktív adatait biztonságos titkosítási kulcsokat. 
+Az Azure HDInsight támogatja az ügyfél által felügyelt kulcstitkosítást a HDInsight fürt virtuális gépeihez csatlakoztatott felügyelt lemezeken és erőforráslemezeken lévő adatokhoz. Ez a funkció lehetővé teszi, hogy az Azure Key Vault használatával kezelje a hdinsight-fürtök inaktív adatait biztonságos titkosítási kulcsokat.
 
 A HDInsight összes felügyelt lemeze az Azure Storage Service Encryption (SSE) szolgáltatással védett. Alapértelmezés szerint a lemezeken lévő adatok microsoftáltal kezelt kulccsal vannak titkosítva. Ha engedélyezi az ügyfél által felügyelt kulcsokat a HDInsight számára, akkor biztosítja a HDInsight titkosítási kulcsait a kulcsok azure Key Vault használatával való használatához és kezeléséhez.
 
 Ez a dokumentum nem foglalkozik az Azure Storage-fiókban tárolt adatokkal. Az Azure Storage titkosításáról az [Azure Storage titkosítása az inaktív adatokért](../storage/common/storage-service-encryption.md)című témakörben talál további információt. A fürtök előfordulhat, hogy egy vagy több csatolt Azure Storage-fiókok, ahol a titkosítási kulcsok is microsoft által kezelt vagy ügyfél által felügyelt, de a titkosítási szolgáltatás eltérő.
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 
 Az ügyfél által felügyelt kulcstitkosítás egy egylépéses folyamat, amelyet a fürt létrehozása során további költségek nélkül kezelnek. Mindössze annyit kell tennie, hogy regisztrálja a HDInsight-ot felügyelt identitásként az Azure Key Vaultban, és adja hozzá a titkosítási kulcsot a fürt létrehozásakor.
 
@@ -146,6 +146,42 @@ az hdinsight rotate-disk-encryption-key \
 --name MyCluster \
 --resource-group MyResourceGroup
 ```
+
+## <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sablonok
+
+Ha erőforrás-kezelő sablon használatával szeretné használni az ügyfél által kezelt kulcsokat, frissítse a sablont a következő módosításokkal:
+
+1. Az **azuredeploy.json** fájlban adja hozzá a következő tulajdonságot az erőforrások" objektumhoz:
+
+    ```json
+       "diskEncryptionProperties":
+         {
+                 "vaultUri": "[parameters('diskEncryptionVaultUri')]",
+                  "keyName": "[parameters('diskEncryptionKeyName')]",
+                  "keyVersion": "[parameters('diskEncryptionKeyVersion')]",
+                   "msiResourceId": "[parameters('diskEncryptionMsiResourceId')]"
+         }
+
+1. In the **azuredeploy.parameters.json** file, add the following parameters. You can get the values of these parameters from the Key Vault URI and the managed Identity. For example, if you have the following URI and identity values,
+    * Sample key vault URI: https://<KeyVault_Name>.vault.azure.net/keys/clusterkey/<Cluster_Key_Value>
+    * Sample user-assigned managed identity: "/subscriptions/<subscriptionID>/resourcegroups/<ResourceGroup_Name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI_Name>
+
+    The parameters in the **azuredeploy.parameters.json** file are:
+
+    ```json
+   "diskEncryptionVaultUri": {
+            "value": "https://<KeyVault_Name>.vault.azure.net"
+        },
+        "diskEncryptionKeyName": {
+            "value": "clusterkey"
+        },
+        "diskEncryptionKeyVersion": {
+            "value": "<Cluster_Key_Value>"
+        },
+        "diskEncryptionMsiResourceId": {
+            "value": "/subscriptions/<subscriptionID>/resourcegroups/<ResourceGroup_Name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI_Name>"
+        }
+    ```
 
 ## <a name="faq-for-customer-managed-key-encryption"></a>Gyakran feltett kérdések az ügyfél által kezelt kulcstitkosítással kapcsolatban
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: dech
 ms.custom: seodec18
-ms.openlocfilehash: fd044d4f32aefc00e1b04f7060e0fc0dc74fd6c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 914551bab47ad9db4e0bca4d53226fbae74b92f3
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72882345"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411669"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>Adatok kezelése az Azure Storage Explorerrel
 
@@ -215,14 +215,14 @@ Ennek a hibának többféle oka is lehet, a leggyakoribbak a következők:
 
 + Egy *átlátszó proxy*mögött van, ami azt jelenti, hogy valaki (például az informatikai részleg) https-forgalmat fog el, visszafejti, majd önaláírt tanúsítvánnyal titkosítja azt.
 
-+ Ön olyan szoftvereket futtat, például egy víruskereső szoftvert, amely a fogadott HTTPS-üzenetekbe önaláírt SSL-tanúsítványokat szúr be.
++ Olyan szoftvert futtat, például víruskereső szoftvert, amely önaláírt TLS/SSL-tanúsítványokat juttat a kapott HTTPS-üzenetekbe.
 
 Amikor a Storage Explorer egy ilyen „önaláírt tanúsítványt” észlel, onnantól nem tudja megállapítani, hogy a fogadott HTTPS-üzenetet módosították-e. Ha azonban rendelkezik az önaláírt tanúsítvány egy példányával, akkor beállíthatja, hogy a Storage Explorer megbízzon benne. Ha nem tudja biztosan, hogy ki szúrja be a tanúsítványt, akkor megpróbálhatja kideríteni az alábbi lépések végrehajtásával:
 
-1. Telepítse az Open SSL-t.
+1. OpenSSL telepítése
      - [Windows:](https://slproweb.com/products/Win32OpenSSL.html) (bármelyik egyszerűsített verzió megfelel)
      - Mac és Linux: elvileg eleve mellékelve van az operációs rendszerhez.
-2. Futtassa az Open SSL-t.
+2. OpenSSL futtatása
     - Windows: lépjen a telepítési könyvtárba, azon belül a **/bin/** mappába, majd kattintson duplán az **openssl.exe** fájlra.
     - Mac és Linux: futtassa az **openssl** parancsot egy terminálról.
 3. Hajtsa végre az `s_client -showcerts -connect microsoft.com:443` parancsot.

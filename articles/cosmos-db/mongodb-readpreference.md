@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 10e6ed556abe8f8c438e5436fbb93c1b70b85d2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 579767a0d535605a2316c35bd413a75474b5a3de
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75445162"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410005"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Olvasások globális terjesztése az Azure Cosmos DB MongoDB-hoz való API-jával
 
@@ -86,7 +86,7 @@ Az egyes olvasási beállításmódok viselkedésével kapcsolatos részletes do
 A gyakori forgatókönyvek alapján a következő beállításokhasználatát javasoljuk:
 
 1. Ha **alacsony késleltetésű olvasásra** van szükség, használja a **LEGKÖZELEBBI** olvasási beállítási módot. Ez a beállítás irányítja az olvasási műveleteket a legközelebbi elérhető régióba. Vegye figyelembe, hogy ha a legközelebbi régió a WRITE régió, majd ezek a műveletek az adott régióba lesznek irányítva.
-2. Ha **az olvasások magas rendelkezésre állása és földrajzi eloszlása** szükséges (a késés nem kényszer), akkor használja a **MÁSODLAGOS PREFERÁLT** olvasási beállítási módot. Ez a beállítás az olvasási műveleteket egy elérhető READ régióba irányítja. Ha nincs elérhető READ régió, akkor a kérelmek a WRITE régióba lesznek irányítva.
+2. Ha **az olvasások magas rendelkezésre állása és földrajzi eloszlása** szükséges (a késés nem korlátozás), akkor használja az **ELSŐDLEGES PREFERÁLT** vagy MÁSODLAGOS **PREFERÁLT** olvasási beállítási módot. Ez a beállítás az olvasási műveleteket egy elérhető WRITE vagy READ régióba irányítja. Ha a régió nem érhető el, majd a kérelmek a következő rendelkezésre álló régióba lesznek irányítva az olvasási beállítás viselkedésének megfelelően.
 
 A mintaalkalmazás következő kódrészlete bemutatja, hogyan konfigurálható a LEGKÖZELEBBI olvasási preferencia a NodeJS-ben:
 

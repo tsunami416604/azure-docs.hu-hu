@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 63b947a27c3aa24b42252bf33febd031f7caefbf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46994413ba765e18a826eebfe85a38bb65efc749
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79282691"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435622"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Útmutató az Azure Security Center tervezéséhez és működtetéséhez
 Ez az útmutató informatikai szakembereknek, informatikai tervezőknek, információbiztonsági elemzőknek és az Azure Security Center t használó felhőrendszergazdáknak szól.
@@ -131,15 +131,15 @@ A Security Center automatikusan létrehoz egy alapértelmezett biztonsági szab�
 A biztonsági szabályzatok konfigurálása előtt mindig olvassa el a [biztonsági javaslatokat](https://docs.microsoft.com/azure/security-center/security-center-recommendations), és döntse el, hogy ezek a szabályzatok megfelelőek-e az Ön által használt előfizetésekhez és erőforráscsoportokhoz. Ezenkívül fontos, hogy tisztában legyen azzal, milyen lépéseket kell tennie a biztonsági javaslatok kezelése érdekében, és a szervezeténél ki az új javaslatok monitorozásának és a szükséges lépések megtételének a felelőse.
 
 ## <a name="data-collection-and-storage"></a>Adatgyűjtés és -tárolás
-Az Azure Security Center a Microsoft Monitoring Agent - ez ugyanaz az ügynök, amelyet az Azure Monitor szolgáltatás használ – a biztonsági adatok gyűjtése a virtuális gépek. Az ebből az ügynökből [gyűjtött adatokat](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) a rendszer a Log Analytics-munkaterület(ek)en tárolja.
+Az Azure Security Center a Log Analytics-ügynök – ez ugyanaz az ügynök, amelyet az Azure Monitor szolgáltatás használ – a biztonsági adatok gyűjtése a virtuális gépek. Az ebből az ügynökből [gyűjtött adatokat](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) a rendszer a Log Analytics-munkaterület(ek)en tárolja.
 
 ### <a name="agent"></a>Ügynök
 
-Miután a biztonsági szabályzatban engedélyezte az automatikus kiépítést, a rendszer telepíti a Microsoft Monitoring Agentet ([Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) vagy [Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents) rendszerhez) az összes támogatott Azure-beli és újonnan létrehozott virtuális gépen. Ha a virtuális gépre vagy a számítógépre már telepítve van a Microsoft Monitoring Agent, az Azure Security Center az aktuális telepített ügynököt használja. Az ügynök folyamata nem invazív és rendkívül csekély hatással van a virtuális gép teljesítményére.
+Ha a biztonsági házirendben engedélyezve van az automatikus kiépítés, a Log Analytics-ügynök [(Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) vagy [Linux)](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents)minden támogatott Azure-beli virtuális gépre telepítve van, és minden új, létrehozott szolgáltatásra. Ha a virtuális gép vagy a számítógép már telepítve van a Log Analytics-ügynök, az Azure Security Center kihasználja az aktuálisan telepített ügynök. Az ügynök folyamata nem invazív és rendkívül csekély hatással van a virtuális gép teljesítményére.
 
-A Windows rendszerhez készült Microsoft Monitoring Agenthez a 443-as TCP-port használata szükséges. További részleteket talál a [Hibaelhárításról szóló cikkben](security-center-troubleshooting-guide.md).
+A Windows Log Analytics-ügynökének a 443-as TCP-portot kell használnia. További részleteket talál a [Hibaelhárításról szóló cikkben](security-center-troubleshooting-guide.md).
 
-Ha bármikor ki szeretné kapcsolni az adatgyűjtést, ezt a biztonsági szabályzatban teheti meg. Mivel azonban a Microsoft Monitoring Agent más Azure felügyeleti és figyelési szolgáltatások is használhatják, az ügynök nem lesz automatikusan eltávolítva, amikor kikapcsolja az adatgyűjtést a Security Centerben. Ha szükséges, manuálisan távolíthatja el az ügynököt.
+Ha bármikor ki szeretné kapcsolni az adatgyűjtést, ezt a biztonsági szabályzatban teheti meg. Mivel azonban a Log Analytics-ügynököt más Azure-felügyeleti és figyelési szolgáltatások is használhatják, az ügynök nem lesz automatikusan eltávolítva, amikor kikapcsolja az adatgyűjtést a Security Centerben. Ha szükséges, manuálisan távolíthatja el az ügynököt.
 
 > [!NOTE]
 > A támogatott virtuális gépek listáját az [Az Azure Security Centerhez kapcsolódó gyakori kérdések (GYIK)](faq-vms.md) című témakörben találja meg.
@@ -148,7 +148,7 @@ Ha bármikor ki szeretné kapcsolni az adatgyűjtést, ezt a biztonsági szabál
 
 A munkaterület egy adattárolóként szolgáló Azure-erőforrás. Ön vagy a szervezet más tagjai több munkaterületet is használhatnak az informatikai infrastruktúra egészéből vagy egyes részeiből begyűjtött különböző adatkészletek kezeléséhez.
 
-A Microsoft Monitoring Agentből (az Azure Security Center nevében) gyűjtött adatok az Azure-előfizetésével társított meglévő Log Analytics-munkaterületen tárolódnak, vagy egy új munkaterületen, a virtuális gép földrajzi helyét is figyelembe véve.
+A Log Analytics-ügynöktől (az Azure Security Center nevében) gyűjtött adatokat vagy az Azure-előfizetéshez társított meglévő Log Analytics-munkaterület(ek)ben, vagy egy új munkaterület(ekben) tárolják, figyelembe véve a virtuális gép földrajzi adatait.
 
 Az Azure Portalon megkeresheti a Log Analytics munkaterületeinek listáját, beleértve azokat is, amelyeket az Azure Security Center hozott létre. Egy kapcsolódó erőforráscsoport jön létre az új munkaterületek számára. Mindkettő ezt az elnevezési konvenciót követi:
 

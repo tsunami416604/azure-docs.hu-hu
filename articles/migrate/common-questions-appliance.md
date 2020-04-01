@@ -3,12 +3,12 @@ title: Az Azure Migrate készülék – gyakori kérdések
 description: Válaszok az Azure Migrate készülékkel kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 2ef7de3b31cb11a71ec9379232fc5ff1022cf666
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a08423637f255b973f52616f53172ef6e48d0804
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336975"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437612"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate készülék: Gyakori kérdések
 
@@ -94,6 +94,9 @@ Nem. Az [Azure Migrate-berendezés](migrate-appliance.md) és a vCenter-kiszolg�
 
 ## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Egy Azure Migrate projekt több készüléket is rendelkezhet?
 Egy projekthez több készülék is csatlakoztatható. Egy készülék azonban csak egy projekthez társítható. 
+
+## <a name="can-the-azure-migrate-appliancereplication-appliance-connect-to-the-same-vcenter"></a>Az Azure Migrate appliance/Replication appliance csatlakozhat ugyanahhoz a vCenterhez?
+Igen. Hozzáadhatja az Azure Migrate-készüléket (értékeléshez és ügynök nélküli VMware-áttelepítéshez), és a replikációs berendezést (a VMware virtuális gépek ügynökalapú áttelepítéséhez) ugyanarra a vCenter-kiszolgálóra.
 
 
 ## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>Hány virtuális gépet vagy kiszolgálót fedezhetek fel egy készülékkel?

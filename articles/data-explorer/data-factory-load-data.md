@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 860b1a579d9c8cee6c6e80ae4c4e7fdd7949d5c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8e17a004ff866f3915000fb72b6770757062cf83
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71300599"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422919"
 ---
 # <a name="copy-data-to-azure-data-explorer-by-using-azure-data-factory"></a>Adatok másolása az Azure Data Explorerbe az Azure Data Factory használatával 
 
@@ -29,7 +29,7 @@ Amikor adatokat tölt be az Azure Data Explorerbe, a Data Factory a következő 
 * **Nagy teljesítmény:** Az adatok betöltési sebessége akár 1 gigabájt másodpercenként (GBps) az Azure Data Explorer. További információt a [Tevékenység teljesítményének másolása](/azure/data-factory/copy-activity-performance)című témakörben talál.
 
 Ebben a cikkben a Data Factory Copy Data eszközzel tölthet be adatokat az Amazon Simple Storage Service (S3) az Azure Data Explorer be. Hasonló eljárást követhet más adattárakból, például a következőkből:
-* [Azure Blob-tárhely](/azure/data-factory/connector-azure-blob-storage)
+* [Azure Blob Storage](/azure/data-factory/connector-azure-blob-storage)
 * [Azure SQL Database](/azure/data-factory/connector-azure-sql-database)
 * [Azure SQL adattárház](/azure/data-factory/connector-azure-sql-data-warehouse)
 * [Google BigQuery](/azure/data-factory/connector-google-bigquery)
@@ -59,7 +59,7 @@ Ebben a cikkben a Data Factory Copy Data eszközzel tölthet be adatokat az Amaz
    | **Név** | A mezőbe írja be az adatgyár globálisan egyedi nevét. Ha hibaüzenetet kap, *a \"Data factory\" name LoadADXDemo nem érhető el,* adjon meg egy másik nevet az adat-előállítónak. A Data Factory-összetevők elnevezésére vonatkozó szabályokat a Data Factory elnevezési szabályai című témakörben [tésszet.](/azure/data-factory/naming-rules)|
    | **Előfizetés** | A legördülő listában válassza ki azt az Azure-előfizetést, amelyben létre szeretné hozni az adat-előállítót. |
    | **Erőforráscsoport** | Válassza **az Új létrehozása**lehetőséget, majd írja be egy új erőforráscsoport nevét. Ha már rendelkezik erőforráscsoporttal, válassza **a Meglévő használata**lehetőséget. |
-   | **Verzió** | A legördülő listában válassza a **V2**lehetőséget. |  
+   | **Verzió** | A legördülő listában válassza a **V2**lehetőséget. |    
    | **Helyen** | A legördülő listában válassza ki az adat-előállító helyét. A listában csak a támogatott helyek jelennek meg. Az adat-előállító által használt adattárak létezhetnek más helyeken vagy régiókban. |
 
 1. Kattintson a **Létrehozás** gombra.
@@ -78,7 +78,7 @@ Az Azure Data Explorerbe sokféle [adattárból](/azure/data-factory/copy-activi
 
 Az adatokat az alábbi módokon töltheti be:
 
-* Az Azure Data Factory felhasználói felületének bal oldali ablaktáblájában válassza a **Szerző** ikont, ahogy az [az Azure Data Factory felhasználói felületének használatával az Adatgyár létrehozása](/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory)című szakasz "Adatgyár létrehozása" szakaszában látható.
+* Az Azure Data Factory felhasználói felületén a bal oldali ablaktáblában válassza a **Szerző** ikont. Ez az [Azure Data Factory felhasználói felületének használatával az adatgyár létrehozása](/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory)című szakasz "Adatgyár létrehozása" című részében látható.
 * Az Azure Data Factory Copy Data eszközben, [ahogy az Adatok másolása eszköz](/azure/data-factory/quickstart-create-data-factory-copy-data-tool)ben látható az adatok másolása.
 
 ### <a name="copy-data-from-amazon-s3-source"></a>Adatok másolása az Amazon S3-ról (forrás)
@@ -124,7 +124,7 @@ Az adatokat az alábbi módokon töltheti be:
 
    ![A forrásadattár létrehozott kapcsolata](media/data-factory-load-data/source-data-store-created-connection.png)
 
-1. A **Beviteli fájl vagy mappa** ablaktábla kiválasztása csoportban tegye a következőket:
+1. A **Beviteli fájl vagy mappa kiválasztása** ablaktáblában tegye a következő lépéseket:
 
     a. Tallózással keresse meg a másolni kívánt fájlt vagy mappát, majd jelölje ki.
 
@@ -142,9 +142,12 @@ Az adatokat az alábbi módokon töltheti be:
 
 Az új Azure Data Explorer kapcsolt szolgáltatás jön létre az adatok másolása az Azure Data Explorer céltábla (fogadó), amely ebben a szakaszban meghatározott.
 
+> [!NOTE]
+> Az Azure Data Factory parancstevékenység használatával futtathatja az [Azure Data Explorer vezérlőparancsait,](data-factory-command-activity.md) és használhatja a [lekérdezési parancsokból beadott adatok](/azure/kusto/management/data-ingestion/ingest-from-query)bármelyikét, például `.set-or-replace`a.
+
 #### <a name="create-the-azure-data-explorer-linked-service"></a>Az Azure Data Explorer csatolt szolgáltatásának létrehozása
 
-Az Azure Data Explorer kapcsolt szolgáltatásának létrehozásához tegye a következőket;
+Az Azure Data Explorer kapcsolt szolgáltatásának létrehozásához tegye a következő lépéseket:
 
 1. Meglévő adattár-kapcsolat használatához vagy új adattár megadásához a **Cél adattár** ablaktábláján válassza az **Új kapcsolat létrehozása lehetőséget.**
 
@@ -154,13 +157,13 @@ Az Azure Data Explorer kapcsolt szolgáltatásának létrehozásához tegye a k�
 
     ![Az Új csatolt szolgáltatás ablaktábla](media/data-factory-load-data/adx-select-new-linked-service.png)
 
-1. Az **Új csatolt szolgáltatás (Azure Data Explorer)** ablaktáblán tegye a következőket:
+1. Az **Új csatolt szolgáltatás (Azure Data Explorer)** ablaktáblán tegye a következő lépéseket:
 
     ![Az Azure Data Explorer új csatolt szolgáltatás ablaktábla](media/data-factory-load-data/adx-new-linked-service.png)
 
    a. A **Név** mezőbe írja be az Azure Data Explorer kapcsolt szolgáltatás nevét.
 
-   b. A **Fiókkiválasztása módszer csoportban**válasszon az alábbi módszerek közül: 
+   b. A **Fiókkiválasztása csoportban**válasszon az alábbi lehetőségek közül: 
 
     * Válassza **az Azure-előfizetésből** lehetőséget, majd a legördülő listákban válassza ki az **Azure-előfizetést** és a **fürtöt.** 
 
@@ -186,7 +189,7 @@ Az Azure Data Explorer kapcsolt szolgáltatásának létrehozásához tegye a k�
 
 #### <a name="configure-the-azure-data-explorer-data-connection"></a>Az Azure Data Explorer adatkapcsolatának konfigurálása
 
-A csatolt szolgáltatáskapcsolat létrehozása után megnyílik a **Cél adattár** ablaktábla, és a létrehozott kapcsolat használható. A kapcsolat konfigurálásához tegye a következőket;
+A csatolt szolgáltatáskapcsolat létrehozása után megnyílik a **Cél adattár** ablaktábla, és a létrehozott kapcsolat használható. A kapcsolat konfigurálásához tegye a következő lépéseket:
 
 1. Válassza a **Tovább lehetőséget.**
 
@@ -214,7 +217,7 @@ A csatolt szolgáltatáskapcsolat létrehozása után megnyílik a **Cél adatt�
 
     ![A céladatkészlet "Oszlopleképezés" ablaktáblája](media/data-factory-load-data/destination-dataset-column-mapping.png)
 
-1. A **Beállítások** ablaktáblán tegye a következőket:
+1. A **Beállítások** ablaktáblán tegye a következő lépéseket:
 
     a. A **Hibatűrési beállítások csoportban**adja meg a megfelelő beállításokat.
 

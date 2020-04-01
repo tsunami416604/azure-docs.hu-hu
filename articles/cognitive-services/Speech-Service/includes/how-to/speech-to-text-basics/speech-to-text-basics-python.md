@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/11/2020
 ms.author: dapine
-ms.openlocfilehash: c8354a67d26210035355f4947cb5f17cee934508
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: a0746ec73b827756ff47c0dfc010b37ed2b79844
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79372822"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80502119"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -51,7 +51,7 @@ Többféleképpen is inicializálhatja a következőket: [`SpeechConfig`](https:
 * Állomással: adja át az állomáscímet. A kulcs vagy engedélyezési jogkivonat nem kötelező.
 * Egy engedélyezési jogkivonattal: adja át egy engedélyezési jogkivonatot és a társított régiót.
 
-Vessünk egy pillantást arra, [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python) hogyan jön létre az a egy kulcs és régió használatával.
+Vessünk egy pillantást arra, [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python) hogyan jön létre az a egy kulcs és régió használatával. A [régióazonosító](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) megkereséséhez tekintse meg a régiótámogatási lapot.
 
 ```Python
 speech_key, service_region = "YourSubscriptionKey", "YourServiceRegion"

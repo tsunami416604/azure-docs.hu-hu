@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f6366f162cb09898b694b14440718401c57c0adf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c0d19d68d016a47762fb5d2646ea6ccf74d3ef75
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79251036"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476552"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Többbites átviteli sebességű élő közvetítést fogadó csatornák kal a helyszíni kódolóktól
 
@@ -112,7 +112,7 @@ A csatorna biztosítja az élő kódolóban megadott bemeneti végpontot (betöl
 
 A betöltési URL-eket a csatorna létrehozásakor kaphatja meg. Ahhoz, hogy ezeket az URL-eket, a csatorna nem kell a **Futó** állapotban. Ha készen áll az adatok csatornára történő lenyomására, a csatornának **Futó** állapotban kell lennie. Miután a csatorna elkezdte az adatok betöltését, megtekintheti az adatfolyam előnézeti URL-címén keresztüli előnézeti előnézeti előnézeti előnézeti előnézeti előnézetét.
 
-Lehetősége van egy töredezett MP4 (Smooth Streaming) élő közvetítés ssl-kapcsolaton keresztül történő betöltésére. Az SSL-en keresztüli betöltéshez frissítse a betöltési URL-címet HTTPS-re. Jelenleg nem lehet betöltése RTMP SSL-en keresztül.
+Lehetősége van egy töredezett MP4 (Smooth Streaming) élő közvetítés TLS-kapcsolaton keresztül történő betöltésére. A TLS-en keresztül történő betöltéshez frissítse a betöltési URL-címet HTTPS-re. Jelenleg nem lehet rtmp-t bebefekni a TLS-en keresztül.
 
 #### <a name="keyframe-interval"></a><a id="keyframe_interval"></a>Kulcskép időköze
 Ha egy helyszíni élő kódolót használ a többátviteli adatfolyam létrehozásához, a kulcskép-időközed határozza meg a képek csoportjának (GOP) időtartamát, ahogy azt a külső kódoló használja. Miután a csatorna megkapta ezt a bejövő adatfolyamot, az élő közvetítést az alábbi formátumok bármelyikében továbbíthatja az ügyféllejátszási alkalmazásoknak: Sima streamelés, dinamikus adaptív streamelés HTTP-n (DASH) és HTTP Live Streaming (HLS). Élő közvetítés közben a HLS mindig dinamikusan van csomagolva. Alapértelmezés szerint a Media Services automatikusan kiszámítja a HLS szegmens csomagolási arányát (szegmensenkénti töredékek) az élő kódolótól kapott kulcskép-időköz alapján.

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/03/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: dfb6d72b3f8f61e1350101173ecec6134a614edf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4838597c50898748eb4b33e81ff22eaeea37b30
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74687138"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476890"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>Az ILB App Service Environment és az Azure Application Gateway integrációja #
 
@@ -20,7 +20,7 @@ Az [App Service-környezet](./intro.md) az Azure App Service üzembe helyezése 
 
 Webalkalmazás tűzfalak segítségével biztonságos a webes alkalmazások vizsgálatával bejövő webes forgalom blokkolja az SQL injekciók, Cross-Site Scripting, malware feltöltések & alkalmazás DDoS és egyéb támadások. Azt is megvizsgálja a válaszokat a háttér-webkiszolgálók adatveszteség-megelőzés (DLP). WaF-eszközt beszerezhet az Azure piactérről, vagy használhatja az [Azure Application Gateway-t.][appgw]
 
-Az Azure Application Gateway egy virtuális berendezés, amely a 7-es réteg terheléselosztás, SSL kiszervezés és a webalkalmazás tűzfal (WAF) védelmet biztosít. Figyelheti a nyilvános IP-címet, és az alkalmazás végpontra irányíthatja a forgalmat. Az alábbi információk azt ismertetik, hogyan integrálható a WAF által konfigurált alkalmazásátjáró egy alkalmazásegy ILB App Service Environment.  
+Az Azure Application Gateway egy virtuális berendezés, amely a 7-es réteg terheléselosztás, TLS/SSL kiszervezés és a webalkalmazás tűzfal (WAF) védelmet nyújt. Figyelheti a nyilvános IP-címet, és az alkalmazás végpontra irányíthatja a forgalmat. Az alábbi információk azt ismertetik, hogyan integrálható a WAF által konfigurált alkalmazásátjáró egy alkalmazásegy ILB App Service Environment.  
 
 Az alkalmazásátjáró integrációja az ILB App Service Environment alkalmazásszintű. Amikor konfigurálja az alkalmazásátjárót az ILB App Service Environment környezettel, azt az ILB App Service-környezetben lévő bizonyos alkalmazásokhoz teszi. Ez a módszer lehetővé teszi a biztonságos több-bérlős alkalmazások egyetlen ILB-alkalmazásszolgáltatás-környezetben való üzemeltetését.  
 

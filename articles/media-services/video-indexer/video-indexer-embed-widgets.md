@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: e475c1bc1878c6b5a0efbbe41f2a3a0fe86bcff2
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.openlocfilehash: 6ed5c509cf310b743e4ef52f411dfa34e5db09c1
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80389375"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411612"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Videoindexelő widgetek beágyazása az alkalmazásokba
 
@@ -66,16 +66,12 @@ A Szerkesztő widget segítségével új projekteket hozhat létre, és kezelhet
 
 1. Jelentkezzen be a [Video Indexer](https://www.videoindexer.ai/) webhelyére.
 2. Jelölje ki azt a videót, amelyet dolgozni szeretne.
-3. Válassza a videó alatt megjelenő **Beágyazás** gombot.
-
-    ![Beágyazás gomb a Video Indexelőben](./media/video-indexer-embed-widgets/video-indexer-widget01.png)
+3. Válassza ki a**</>** videó alatt megjelenő beágyazási gombot ( ).
 
     Miután kiválasztotta a **Beágyazás** gombot, kiválaszthatja azt a widgetet, amelyet be szeretne ágyazni az alkalmazásba.
 4. Válassza ki a kívánt típusú widgetet **(Cognitive Insights,** **Player**vagy **Editor**).
- 
-5. Másolja a beágyazási kódot, majd adja hozzá az alkalmazáshoz.
-
-    ![Alkalmazás kódjának beágyazása – Videoindexelő](./media/video-indexer-embed-widgets/video-indexer-widget02.png)
+5. Másolja a beágyazási kódot **(a beágyazott kód másolása** párbeszédpanelen jelenik meg a **Megosztás & beágyazáspárbeszédpanelen).**
+6. Adja hozzá a kódot az alkalmazáshoz.
 
 > [!NOTE]
 > Ha problémái vannak a videoURL-ek `location` megosztásával, adja hozzá a paramétert a hivatkozáshoz. A paramétert [azAzure-régiókra](regions.md)kell beállítani, amelyekben a Video Indexelő létezik. Például: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
@@ -239,7 +235,7 @@ Ha például olyan widgetet szeretne beágyazni, amely csak személyeket és kul
 
 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords`
 
-Az iframe ablak címe az iframe URL-cím megadásával `&title=<YourTitle>` is testreszabható. (Ez testre <title> szabja a HTML érték).
+Az iframe ablak címe az iframe URL-cím megadásával `&title=<YourTitle>` is testreszabható. (Ez testre `<title>` szabja a HTML érték).
    
 Ha például azt szeretné, hogy az iframe-ablak "MyInsights" címet adjon, az URL így fog kinézni:
 
@@ -257,7 +253,7 @@ Példa:
 
 Alapértelmezés szerint a Video Indexer player automatikusan létrehozott feliratokat, amelyek alapján a videó átirata. Az átirat a videóból a videó feltöltésekén kiválasztott forrásnyelvvel kerül kinyerésre.
 
-Ha más nyelvvel szeretne beágyazni, hozzáadhat &captions=< Language Code >-t a beágyazólejátszó URL-címéhez. Ha azt szeretné, hogy a feliratok alapértelmezés szerint megjelenjenek, akkor átadhatja &showCaptions=true.If you want the captions to be displayed by default default, you can pass &showCaptions=true.
+Ha más nyelvvel szeretne beágyazni, `&captions=<Language Code>` hozzáadhatja a beágyazólejátszó URL-címét. Ha azt szeretné, hogy a feliratok alapértelmezés szerint megjelenjenek, akkor átadhatja &showCaptions=true.If you want the captions to be displayed by default default, you can pass &showCaptions=true.
 
 A beágyazási URL így fog kinézni:
 

@@ -328,7 +328,7 @@ A mintaalkalmazás sikeresen fut, ha a következő eredmények jelennek meg:
 
 1. Jelentkezzen be az [Azure Portalon,](https://portal.azure.com/)keresse meg a létrehozott IoT Hubot.
 
-    ![Azure portál](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-iot-hub-portal.png)
+    ![Azure Portal](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-iot-hub-portal.png)
 
 1. A **Megosztott hozzáférési házirendek** ablaktáblán kattintson az **iothubowner házirendre**, és írja le az IoT hub kapcsolati karakterláncát.
 

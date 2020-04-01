@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan hozhat létre és kezelhet több csomópontkés
 services: container-service
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: 2045cb9a175bead3abf5b53120b9fe381a17b04b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 607419787bc0bab243d6cc2b8cbaa0ec22921e87
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80047720"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422313"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Fürt több csomópontkészletének létrehozása és kezelése az Azure Kubernetes szolgáltatásban (AKS)
 
@@ -33,8 +33,8 @@ A következő korlátozások vonatkoznak a több csomópontkészletet támogató
 * Az AKS-fürtnek a standard termékváltozat terheléselosztót kell használnia több csomópontkészlet használatához, a szolgáltatás nem támogatott az alapszintű termékváltozat terheléselosztóival.
 * Az AKS-fürtnek virtuálisgép-méretezési készleteket kell használnia a csomópontokhoz.
 * A csomópontkészlet neve csak kisalfanumerikus karaktereket tartalmazhat, és kisbetűvel kell kezdődnie. Linux-csomópontkészletek esetén a hossznak 1 és 12 karakter között kell lennie, a Windows-csomópontkészletek esetében a hossznak 1 és 6 karakter között kell lennie.
-* Minden csomópontkészletnek ugyanabban a virtuális hálózatban és alhálózatban kell lennie.
-* Ha fürtlétrehozási időben több csomópontkészletet hoz létre, a csomópontkészletek által használt összes Kubernetes-verziónak meg kell egyeznie a vezérlősíkhoz beállított verzióval. Ez a verzió frissíthető a fürt csomópontkészlet-műveletek használatával történő kiépítése után.
+* Minden csomópontkészletnek ugyanabban a virtuális hálózatban kell lennie.
+* Ha fürtlétrehozási időben több csomópontkészletet hoz létre, a csomópontkészletek által használt összes Kubernetes-verziónak meg kell egyeznie a vezérlősíkhoz beállított verzióval. Ez frissíthető a fürt csomópontonkénti készletműveletek használatával történő kiépítése után.
 
 ## <a name="create-an-aks-cluster"></a>AKS-fürt létrehozása
 
@@ -120,6 +120,29 @@ A következő példa kimenetazt mutatja, hogy *a mynodepool* sikeresen létrejö
 
 > [!TIP]
 > Ha nincs megadva *VmSize* csomópontkészlet hozzáadásakor, az alapértelmezett méret *Standard_DS2_v3* a Windows-csomópontkészletek és a Linux-csomópontkészletek *Standard_DS2_v2.* Ha nincs *megadva OrchestratorVersion,* akkor alapértelmezés szerint a vezérlősíkkal azonos verziójú.
+
+### <a name="add-a-node-pool-with-a-unique-subnet-preview"></a>Csomópontkészlet hozzáadása egyedi alhálózattal (előzetes verzió)
+
+A számítási feladatok a fürt csomópontjainak felosztását külön készletekre lehet szükség a logikai elkülönítés érdekében. Ez az elkülönítés a fürt minden csomópontkészletéhez rendelt külön alhálózattal támogatott. Ez olyan követelményekkel is megoldhatja, mint például a csomópontkészletek között felosztható, nem összefüggő virtuális hálózati címterület.
+
+#### <a name="limitations"></a>Korlátozások
+
+* A csomóponthalmazokhoz rendelt összes alhálózatnak ugyanahhoz a virtuális hálózathoz kell tartoznia.
+* A rendszerpodok nak hozzáféréssel kell rendelkezniük a fürt összes csomópontjához, hogy kritikus funkciókat, például DNS-feloldást biztosítsanak a coreDNS-en keresztül.
+* Egy egyedi alhálózat csomópontkészletenként hozzárendelése az Azure CNI előzetes verzióban korlátozódik.
+* A hálózati házirendek egyedi alhálózattal csomópontonkénti használatával nem támogatott az előzetes verzió.
+
+Ha dedikált alhálózattal rendelkező csomópontkészletet szeretne létrehozni, adja át az alhálózati erőforrás-azonosítót további paraméterként csomópontkészlet létrehozásakor.
+
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name mynodepool \
+    --node-count 3 \
+    --kubernetes-version 1.15.5
+    --vnet-subnet-id <YOUR_SUBNET_RESOURCE_ID>
+```
 
 ## <a name="upgrade-a-node-pool"></a>Csomópontkészlet frissítése
 
@@ -695,18 +718,22 @@ az group deployment create \
 
 Az Erőforrás-kezelő sablonban megadott csomópontkészlet-beállításoktól és műveletektől függően eltarthat néhány percig az AKS-fürt frissítése.
 
-## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>Nyilvános IP-cím hozzárendelése csomópontonként egy csomópontkészletben
+## <a name="assign-a-public-ip-per-node-for-a-node-pool-preview"></a>Csomópontonkénti nyilvános IP-cím hozzárendelése csomópontkészlethez (előzetes verzió)
 
 > [!WARNING]
 > A nyilvános IP-cím csomópontonkénti hozzárendelésének előzetes verziója során nem használható a *standard terheléselosztó termékváltozattal az AKS-ben* a virtuális gép kiépítésével ütköző lehetséges terheléselosztó szabályok miatt. Ennek a korlátozásnak az eredményeként a Windows-ügynökkészletek nem támogatottak ezzel az előzetes verzióval. Előzetes verzióban az *alapszintű terheléselosztó termékváltozatot* kell használnia, ha csomópontonként nyilvános IP-címet kell hozzárendelnie.
 
-Az AKS-csomópontok nak nincs szükségük saját nyilvános IP-címekre a kommunikációhoz. Egyes esetekben azonban előfordulhat, hogy egy csomópontkészlet csomópontjainak saját nyilvános IP-címekkel kell rendelkezniük. Ilyen például a játék, ahol a konzolnak közvetlen kapcsolatot kell létesítenie egy felhőalapú virtuális géppel az ugrások minimalizálása érdekében. Ez a forgatókönyv úgy érhető el, hogy regisztrál egy külön előzetes verziójú szolgáltatásra, a Csomópont nyilvános IP-címére (előzetes verzió).
+Az AKS-csomópontok nak nincs szükségük saját nyilvános IP-címekre a kommunikációhoz. Előfordulhat azonban, hogy a csomópontok csomópontkészletében lévő csomópontoknak saját dedikált nyilvános IP-címeket kell fogadniuk. Gyakori forgatókönyv a játékszámítási feladatok, ahol a konzol kell, hogy közvetlen kapcsolatot egy felhőalapú virtuális gép az ugrások minimalizálása érdekében. Ez a forgatókönyv érhető el az AKS-ben egy előzetes verziójú funkció, csomópont nyilvános IP (előzetes verzió) regisztrálásával.
+
+Regisztráljon a csomópont nyilvános IP-szolgáltatás a következő Azure CLI-parancs kiadásával.
 
 ```azurecli-interactive
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
 
-Sikeres regisztráció után telepítsen egy Azure Resource [above](#manage-node-pools-using-a-resource-manager-template) Manager-sablont a fenti `enableNodePublicIP` utasításokkal megegyező utasításokat követve, és adja hozzá a logikai érték tulajdonságot az agentPoolProfiles-hoz. Állítsa be `true` az értéket úgy, `false` ahogy alapértelmezés szerint nincs megadva. Ez a tulajdonság csak egy létrehozási idejű tulajdonság, és a 2019-06-01 minimális API-verzióját igényli. Ez linuxos és Windows-csomópontkészletekre is alkalmazható.
+Sikeres regisztráció után telepítsen egy Azure Resource [above](#manage-node-pools-using-a-resource-manager-template) Manager-sablont a `enableNodePublicIP` fenti utasításokkal megegyező utasításokat követve, és adja hozzá a logikai tulajdonságot az agentPoolProfiles-hoz. Állítsa be `true` az értéket úgy, `false` ahogy alapértelmezés szerint nincs megadva. 
+
+Ez a tulajdonság csak egy létrehozási idejű tulajdonság, és a 2019-06-01 minimális API-verzióját igényli. Ez linuxos és Windows-csomópontkészletekre is alkalmazható.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

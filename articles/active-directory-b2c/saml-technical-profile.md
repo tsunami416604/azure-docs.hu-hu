@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8c81d2bc499c3d9cae262ef62be2dac2d7280be7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 83a13e0b1bb4d55b889d96e42c8f3f18ce0f2b73
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78183839"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408926"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>SAML technikai profil definiálása az Azure Active Directory B2C egyéni házirendjében
 
@@ -90,11 +90,32 @@ A Protokoll elem **Name** attribútumát a `SAML2`parancsra kell állítani.
 
 A **OutputClaims** elem az SAML-identitásszolgáltató által a `AttributeStatement` szakasz ban visszaadott jogcímek listáját tartalmazza. Előfordulhat, hogy a házirendben definiált jogcím nevét hozzá kell képeznie az identitásszolgáltatóban megadott névhez. Az identitásszolgáltató által vissza nem adott jogcímeket is megadhat, amíg beállítja az `DefaultValue` attribútumot.
 
-Ha normalizált jogcímként szeretné elolvasni a **Tárgy** **névvel ellátott** SAML-kijelentést, állítsa a **PartnerClaimType** jogcímet a beállításra. `assertionSubjectName` Győződjön meg arról, hogy a **NameId** az első érték a helyességi helyességi feltétel XML-ben. Ha egynél több feltételt definiál, az Azure AD B2C kiválasztja a tárgy értékét az utolsó helyességi feltételből.
+### <a name="subject-name-output-claim"></a>Tulajdonos neve kimeneti jogcím
 
-A **OutputClaimsTransformations** elem tartalmazhat **OutputClaimsTransformations** elemek gyűjteményét, amelyek a kimeneti jogcímek módosítására vagy újak létrehozására szolgálnak.
+Ha normalizált jogcímként szeretné olvasni a **Tulajdonos** **névazonosítójának SAML-állítását,** `SPNameQualifier` állítsa a **PartnerClaimType** jogcímet az attribútum értékére. Ha `SPNameQualifier`az attribútum nem jelenik meg, állítsa a `NameQualifier` **PartnerClaimType** jogcím értékét az attribútum értékére. 
 
-A következő példa a Facebook-identitásszolgáltató által visszaadott jogcímeket mutatja be:
+
+SAML állítás: 
+
+```XML
+<saml:Subject>
+  <saml:NameID SPNameQualifier="http://your-idp.com/unique-identifier" Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient">david@contoso.com</saml:NameID>
+    <SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
+      <SubjectConfirmationData InResponseTo="_cd37c3f2-6875-4308-a9db-ce2cf187f4d1" NotOnOrAfter="2020-02-15T16:23:23.137Z" Recipient="https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer" />
+    </SubjectConfirmation>
+  </saml:SubjectConfirmation>
+</saml:Subject>
+```
+
+Kimeneti igény:
+
+```XML
+<OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="http://your-idp.com/unique-identifier" />
+```
+
+Ha `SPNameQualifier` mindkettő `NameQualifier` vagy attribútum nem jelenik meg az SAML-ben, állítsa a **PartnerClaimType** jogcím beállítását a beállításra. `assertionSubjectName` Győződjön meg arról, hogy a **NameId** az első érték a helyességi helyességi feltétel XML-ben. Ha egynél több feltételt definiál, az Azure AD B2C kiválasztja a tárgy értékét az utolsó helyességi feltételből.
+
+A következő példa az SAML-identitásszolgáltató által visszaadott jogcímeket mutatja be:
 
 - A **issuerUserId** jogcím az **állításSubjectName** jogcímhez van rendelve.
 - A **first_name** jogcím a **givenName** jogcímhez van rendelve.
@@ -118,6 +139,8 @@ A technikai profil olyan jogcímeket is visszaad, amelyeket az identitásszolgá
   <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
 </OutputClaims>
 ```
+
+A **OutputClaimsTransformations** elem tartalmazhat **OutputClaimsTransformations** elemek gyűjteményét, amelyek a kimeneti jogcímek módosítására vagy újak létrehozására szolgálnak.
 
 ## <a name="metadata"></a>Metaadatok
 

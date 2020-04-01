@@ -3,12 +3,12 @@ title: A Node.js szolgáltatások figyelése az Azure Application Insights segí
 description: Teljesítmény figyelése és problémák diagnosztizálása a Node.js szolgáltatásokban az Application Insights segítségével.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 320ec62e642155002e42c59d4656f51673249eb1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 38336e3faf3764233dd94bffbfb24421e054496a
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670015"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411583"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>A Node.js szolgáltatások és appok figyelése az Application Insights segítségével
 
@@ -16,7 +16,7 @@ ms.locfileid: "77670015"
 
 A megfigyelési adatok fogadásához, tárolásához és vizsgálatához építse be az SDK-t a programkódba, majd állítson be egy megfelelő Application Insights-erőforrást az Azure-ban. Az SDK ennek az erőforrásnak küldi az adatokat további elemzés és vizsgálat céljából.
 
-A Node.js SDK automatikusan képes figyelni a bejövő és kimenő HTTP-kéréseket, kivételeket és bizonyos rendszermérőszámokat. A 0.20-as verziótól kezdve az SDK bizonyos gyakori külső eredetű csomagokat is képes monitorozni, pl. a MongoDB, a MySQL és a Redis csomagjait. Az egyes bejövő HTTP-kérésekhez kapcsolódó összes eseményt összekapcsolja a gyorsabb hibaelhárítás érdekében.
+A Node.js SDK automatikusan képes figyelni a bejövő és kimenő HTTP-kéréseket, kivételeket és bizonyos rendszermérőszámokat. A 0.20-as verziótól kezdve az SDK figyelhet néhány közös [harmadik féltől származó csomagot](https://github.com/microsoft/node-diagnostic-channel/tree/master/src/diagnostic-channel-publishers#currently-supported-modules)is, például a MongoDB-t, a MySQL-t és a Redis-t. Az egyes bejövő HTTP-kérésekhez kapcsolódó összes eseményt összekapcsolja a gyorsabb hibaelhárítás érdekében.
 
 A TelemetryClient API használatával manuálisan beállíthatók és monitorozhatók az alkalmazás és a rendszer további részletei. A TelemetryClient API-t a jelen cikk egy későbbi részében részletesebben ismertetjük.
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: 8bb77a217546f1abe2c28925e32464b8d61702b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 31587777ba22dd8b4cebf81f0ff98979bb30fade
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481279"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410718"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Az Active Directory (Azure AD) alkalmazásproxyja gyakori kérdések
 
@@ -113,7 +113,7 @@ Nem, ez a forgatókönyv nem támogatott, mert az alkalmazásproxy megszakítja 
 
 Lásd: [Távoli asztal közzététele az Azure AD alkalmazásproxyval.](application-proxy-integrate-with-remote-desktop-services.md)
 
-### <a name="can-i-use-kerberos-constrained-delegation-in-the-remote-desktop-gateway-publishing-scenario"></a>Használhatom a Kerberos korlátozott delegálást a Távoli asztali átjáró közzétételi forgatókönyvében?
+### <a name="can-i-use-kerberos-constrained-delegation-single-sign-on---windows-integrated-authentication-in-the-remote-desktop-gateway-publishing-scenario"></a>Használhatom a Kerberos korlátozott delegálást (egyszeri bejelentkezés – Windows integrált hitelesítés) a Távoli asztali átjáró közzétételi forgatókönyvében?
 
 Nem, ez a forgatókönyv nem támogatott.  
 
@@ -121,7 +121,7 @@ Nem, ez a forgatókönyv nem támogatott.
 
 Igen, ez várható. Az előhitelesítési forgatókönyv hez ActiveX-vezérlő szükséges, amelyet külső böngészők nem támogatnak.
 
-### <a name="is-the-remote-desktop-web-client-supported"></a>A Távoli asztali webes ügyfél támogatott?
+### <a name="is-the-remote-desktop-web-client-html5-supported"></a>A Távoli asztali webes ügyfél (HTML5) támogatott?
 
 Nem, ez a forgatókönyv jelenleg nem támogatott. Kövesse [uservoice](https://aka.ms/aadapuservoice) visszajelzés fórum a frissítéseket ezt a funkciót.
 
@@ -135,6 +135,10 @@ Igen, ez várható. Ha a felhasználó számítógépe az Azure AD-hez csatlakoz
 
 Lásd: [Távoli hozzáférés engedélyezése a SharePointhoz az Azure AD alkalmazásproxyval](application-proxy-integrate-with-sharepoint-server.md)című részről.
 
+### <a name="can-i-use-the-sharepoint-mobile-app-ios-android-to-access-a-published-sharepoint-server"></a>Használhatom a SharePoint mobilalkalmazást (iOS/ Android) egy közzétett SharePoint-kiszolgáló eléréséhez?
+
+A [SharePoint mobilalkalmazás](https://docs.microsoft.com/sharepoint/administration/supporting-the-sharepoint-mobile-apps-online-and-on-premises) jelenleg nem támogatja az Azure Active Directory előhitelesítését.
+
 ## <a name="active-directory-federation-services-ad-fs-publishing"></a>Active Directory összevonási szolgáltatások (AD FS) közzététele 
 
 ### <a name="can-i-use-azure-ad-application-proxy-as-ad-fs-proxy-like-web-application-proxy"></a>Használhatom az Azure AD alkalmazásproxyt AD FS proxyként (például webalkalmazás-proxyként)?
@@ -147,7 +151,7 @@ Nem. Az Azure AD alkalmazásproxy úgy lett kialakítva, hogy együttműködjön
 
 Jelenleg a WebSocket protokoll támogatása továbbra is nyilvános előzetes verzióban érhető el, és előfordulhat, hogy más alkalmazásokesetében nem működik. Egyes ügyfelek vegyes sikert értek el a WebSocket protokoll más alkalmazásokkal való használatával. Ha teszteli az ilyen forgatókönyveket, szeretnénk hallani az eredményeket. Kérjük, küldje aadapfeedback@microsoft.comel nekünk visszajelzését a .
 
-A Windows Felügyeleti központban (WAC) vagy a Távoli asztali webes ügyfélszolgáltatásban (Eventlogs, PowerShell és Távoli asztali szolgáltatások) jelenleg nem működnek az Azure AD alkalmazásproxyn keresztül.
+A Windows Felügyeleti központban (WAC) vagy a Távoli asztali webes ügyfélben (HTML5) található szolgáltatások (Eseménynaplók, PowerShell és Távoli asztali szolgáltatások) jelenleg nem működnek az Azure AD alkalmazásproxyn keresztül.
 
 ## <a name="link-translation"></a>Hivatkozás fordítása
 

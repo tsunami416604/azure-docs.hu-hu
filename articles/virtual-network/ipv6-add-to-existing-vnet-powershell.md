@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/21/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: d08ce1c382d173ac98a0e61e6117ed50b958ba44
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c733538a4e730a95008a8ec1e4d50c20d6ce24ec
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76119839"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420757"
 ---
-# <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell-preview"></a>IPv4-alkalmazás frissítése IPv6-ra az Azure virtuális hálózatában – PowerShell (előzetes verzió)
+# <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell"></a>IPv4-alkalmazás frissítése IPv6-ra az Azure virtuális hálózatában – PowerShell
 
 Ez a cikk bemutatja, hogyan adhat hozzá IPv6-kapcsolatot egy meglévő IPv4-alkalmazáshoz egy szabványos terheléselosztóval és nyilvános IP-címvel rendelkező Azure virtuális hálózatban. A helyszíni frissítés a következőket tartalmazza:
 - A virtuális hálózat és alhálózat IPv6-címterülete
@@ -28,8 +28,7 @@ Ez a cikk bemutatja, hogyan adhat hozzá IPv6-kapcsolatot egy meglévő IPv4-alk
 - IPv4 + IPv6-konfigurációval rendelkező hálózati adapterekkel rendelkező virtuális gépek
 - IPv6 nyilvános IP-cím, így a terheléselosztó internetkapcsolattal rendelkezik
 
-> [!Important]
-> Az Azure Virtual Network IPv6-támogatása jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -37,27 +36,6 @@ Ha úgy dönt, hogy helyileg telepíti és használja a PowerShellt, ez a cikk a
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-### <a name="register-the-service"></a>A szolgáltatás regisztrálása
-
-Mielőtt üzembe helyezne egy kétverű alkalmazást az Azure-ban, konfigurálnia kell az előfizetését ehhez az előzetes verzióhoz a következő Azure PowerShell használatával:
-
-Regisztráljon a következőképpen:
-```azurepowershell
-Register-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
-Register-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
-```
-A funkcióregisztráció befejezéséhez akár 30 perc is igénybe vesszen. A regisztrációs állapot ot a következő Azure PowerShell-parancs futtatásával ellenőrizheti: Ellenőrizze a regisztrációt az alábbiak szerint:
-```azurepowershell
-Get-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
-Get-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
-```
-A regisztráció befejezése után futtassa a következő parancsot:
-
-```azurepowershell
-Register-AzResourceProvider -ProviderNamespace Microsoft.Network
-```
-
-### <a name="create-a-standard-load-balancer"></a>Standard Load Balancer létrehozása
 Ez a cikk feltételezi, hogy üzembe helyezett egy standard terheléselosztót a rövid útmutatóban leírtak [szerint: Standard terheléselosztó létrehozása – Azure PowerShell.](../load-balancer/quickstart-create-standard-load-balancer-powershell.md)
 
 ## <a name="retrieve-the-resource-group"></a>Az erőforráscsoport lekérése
@@ -176,8 +154,7 @@ Az IPv6 kettős veremű virtuális hálózatot az Azure Portalon az alábbiak sz
 
   ![IPv6 kettős halmozott virtuális hálózat az Azure-ban](./media/ipv6-add-to-existing-vnet-powershell/ipv6-dual-stack-vnet.png)
 
-> [!NOTE]
-> Az IPv6 for Azure virtuális hálózat érhető el az Azure Portalon írásvédett ebben az előzetes verzióban.
+
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

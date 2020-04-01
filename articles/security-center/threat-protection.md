@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: e348180eb94c1703ceecf2f2b00ab942ba5ff0ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 395f4b5481fcf2028d6bfe736e58c3174a0c80b2
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536326"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435348"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Veszélyforrások elleni védelem az Azure Security Centerben
 
@@ -73,9 +73,9 @@ Az Azure Security Center integrálható az Azure-szolgáltatásokkal a Windows-a
 
 A Security Center naplóztatja a naplózási rekordokat a Linux-gépekről a **naplózási**rendszeregyik leggyakoribb Linux-naplózási keretrendszer használatával. auditált él a mainline kernel. 
 
-* **Linux auditált riasztások és a Microsoft Monitoring Agent (MMA) integráció** <a name="linux-auditd"></a> – A naplózta rendszer egy kernel szintű alrendszerből áll, amely a rendszerhívások figyelésével felelős. Egy megadott szabálykészlettel szűri őket, és üzeneteket ír számukra egy szoftvercsatornába. A Security Center integrálja a naplóztatott csomag funkcióit a Microsoft Monitoring Agent (MMA) szolgáltatásba. Ez az integráció lehetővé teszi a naplóztatott események gyűjtését az összes támogatott Linux-disztribúcióban, előfeltételek nélkül.  
+* **Linux auditált riasztások és log analytics ügynök integráció** <a name="linux-auditd"></a> – A naplózta rendszer áll egy kernel-szintű alrendszer, amely felelős a rendszer hívások figyelése. Egy megadott szabálykészlettel szűri őket, és üzeneteket ír számukra egy szoftvercsatornába. A Security Center integrálja a naplóztatott csomag funkcióit a Log Analytics-ügynökbe. Ez az integráció lehetővé teszi a naplóztatott események gyűjtését az összes támogatott Linux-disztribúcióban, előfeltételek nélkül.
 
-    a naplózott rekordokat a Linux MMA ügynök segítségével gyűjtik, gazdagítják és összesítik eseményekké. A Security Center folyamatosan új elemzéseket ad hozzá, amelyek Linux-jeleket használnak a rosszindulatú viselkedések észlelésére a felhőbeli és a helyszíni Linux-gépeken. A Windows képességeihez hasonlóan ezek az elemzések a gyanús folyamatokra, a kétes bejelentkezési kísérletekre, a kernelmodul betöltésére és egyéb tevékenységekre is kiterjednek. Ezek a tevékenységek azt jelezhetik, hogy egy gép támadás alatt áll, vagy megsértették.  
+    a naplózott rekordokat a Rendszer a Log Analytics-ügynök Linux-ügynökhöz használatával gyűjti, gazdagítja és összesíti eseményekké. A Security Center folyamatosan új elemzéseket ad hozzá, amelyek Linux-jeleket használnak a rosszindulatú viselkedések észlelésére a felhőbeli és a helyszíni Linux-gépeken. A Windows képességeihez hasonlóan ezek az elemzések a gyanús folyamatokra, a kétes bejelentkezési kísérletekre, a kernelmodul betöltésére és egyéb tevékenységekre is kiterjednek. Ezek a tevékenységek azt jelezhetik, hogy egy gép támadás alatt áll, vagy megsértették.  
 
     A Linux-riasztások listáját a [Riasztások hivatkozási táblázatában láthatja.](alerts-reference.md#alerts-linux)
 

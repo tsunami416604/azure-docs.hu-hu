@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre privát Azure Kubernetes-fürt (A
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: cdefcfe460a97f647afa05947e92fae0c4d07001
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 87f52c5a749b531e5b0656e0b30ff0fe9c1a57bf
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79499309"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398040"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Privát Azure Kubernetes-szolgáltatásfürt létrehozása
 
@@ -80,6 +80,18 @@ Mint említettük, a virtuális hálózat társviszony-létesítés egyik módja
 7. A bal oldali ablaktáblában válassza a **Társviszony-létesítések**lehetőséget.  
 8. Válassza **a Hozzáadás**lehetőséget, adja hozzá a virtuális gép virtuális hálózatát, majd hozza létre a társviszony-létesítést.  
 9. Nyissa meg azt a virtuális hálózatot, ahol a virtuális gép rendelkezik, válassza a **Társviszony-létesítések**lehetőséget, válassza ki az AKS virtuális hálózatot, majd hozza létre a társviszony-létesítést. Ha a cím tartományok az AKS virtuális hálózat és a virtuális gép virtuális hálózati összecsapása, társviszony-létesítés sikertelen lesz. További információt a [Virtuális hálózati társviszony-létesítés][virtual-network-peering]című témakörben talál.
+
+## <a name="hub-and-spoke-with-custom-dns"></a>Hub és beszélt az egyéni DNS
+
+[A hub- és küllős architektúrákat](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) gyakran használják hálózatok azure-beli üzembe helyezésére. A küllővirtuális hálózatok DNS-beállításai sok ilyen telepítésben úgy vannak konfigurálva, hogy egy központi DNS-továbbítóra hivatkozzon, amely lehetővé teszi a helyszíni és az Azure-alapú DNS-feloldást. Amikor egy AKS-fürtöt ilyen hálózati környezetbe telepít, van néhány speciális szempont, amelyet figyelembe kell venni.
+
+![Privát fürtközpont és küllő](media/private-clusters/aks-private-hub-spoke.png)
+
+1. Alapértelmezés szerint egy privát fürt kiépítésekor egy privát végpont (1) és egy privát DNS-zóna (2) jön létre a fürt felügyelt erőforráscsoportjában. A fürt a privát zónában lévő A rekordot használja a privát végpont IP-címének feloldásához az API-kiszolgálóval való kommunikációhoz.
+
+2. A privát DNS-zóna csak ahhoz a virtuális hálózathoz kapcsolódik, amelyhez a fürtcsomópontok (3) kapcsolódnak. Ez azt jelenti, hogy a privát végpontot csak az adott csatolt virtuális hálózat állomásai oldhatják fel. Azokban az esetekben, ahol nincs egyéni DNS konfigurálva a virtuális hálózaton (alapértelmezett), ez probléma nélkül működik, mint állomások pont 168.63.129.16 A DNS, amely képes feloldani rekordok a privát DNS-zóna miatt a kapcsolatot.
+
+3. Azokban az esetekben, amikor a fürtöt tartalmazó virtuális hálózat egyéni DNS-beállításokkal (4) rendelkezik, a fürt telepítése sikertelen, kivéve, ha a magánDNS-zóna az egyéni DNS-feloldókat (5) tartalmazó virtuális hálózathoz van csatolva. Ez a kapcsolat manuálisan hozható létre a fürt kiépítése során vagy automatizálás on automation létrehozása után a zóna létrehozása az Azure Policy vagy más eseményalapú telepítési mechanizmusok (például az Azure Event Grid és az Azure Functions).
 
 ## <a name="dependencies"></a>Függőségek  
 

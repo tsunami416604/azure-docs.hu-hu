@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: fedc1f6ce8fbaeaf0d2cae3a1b04169192868e61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6683c1b78b0e7ecba162026708c83843e2c08180
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270692"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478887"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Csatlakozás az Azure Logic Apps-ből az Azure Logic Apps virtuális hálózataihoz integrációs szolgáltatási környezet (ISE) használatával
 
@@ -32,7 +32,7 @@ Ez a cikk bemutatja, hogyan hajthatja végre ezeket a feladatokat az Azure Porta
 * Hozza létre az ISE-t.
 * További kapacitást adhat az ISE-hez.
 
-Ise-t is létrehozhat a Logic Apps REST API használatával, beleértve az ügyfél által felügyelt kulcsok beállítását:
+Ise-t is létrehozhat az [Azure Resource Manager-gyorsútmutató sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment) használatával vagy a Logic Apps REST API használatával, beleértve az ügyfél által felügyelt kulcsok beállítását:
 
 * [Integrációs szolgáltatási környezet (ISE) létrehozása a Logic Apps REST API használatával](../logic-apps/create-integration-service-environment-rest-api.md)
 * [Ügyfél által kezelt kulcsok beállítása az inaktív félnek lévő adatok titkosításához az ISE-k számára](../logic-apps/customer-managed-keys-integration-service-environment.md)

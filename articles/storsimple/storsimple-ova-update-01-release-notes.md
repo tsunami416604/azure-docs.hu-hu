@@ -1,5 +1,5 @@
 ---
-title: StorSimple Virtual Array updates kiadási megjegyzések| Microsoft dokumentumok
+title: StorSimple Virtual Array Update 0.2 & 0.1 kibocsátási megjegyzések
 description: A 0.2-es és 0.1-es frissítést futtató StorSimple virtuális tömb kritikus nyitott problémáit és megoldásait ismerteti.
 services: storsimple
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/16/2016
 ms.author: alkohli
-ms.openlocfilehash: aad60024187ca180c002f119f4b975e8f69796e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95386f36340aca470769c920e40bbb70e09d34fc
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60629288"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397881"
 ---
 # <a name="storsimple-virtual-array-update-02-and-01-release-notes"></a>StorSimple Virtual Array Update 0.2 és 0.1 kiadási megjegyzések
 ## <a name="overview"></a>Áttekintés

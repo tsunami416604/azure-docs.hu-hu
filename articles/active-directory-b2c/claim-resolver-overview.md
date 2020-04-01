@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/20/2020
+ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cba97b84f77bd4e2d4cfd97601fa4f8637105eb4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1c4bbd98682d964cfdf72031c7d6cb77cf42a809
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051410"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396071"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Jogcímfeloldók az Azure Active Directory B2C egyéni szabályzataiban
 
@@ -76,7 +76,7 @@ A következő szakaszok felsorolják az elérhető jogcímfeloldókat.
 | {OIDC:Kérdés} | A `prompt` lekérdezési karakterlánc paraméter. | bejelentkezés |
 | {OIDC:RedirectUri} |A `redirect_uri` lekérdezési karakterlánc paraméter. | https://jwt.ms |
 | {OIDC:Erőforrás} |A `resource` lekérdezési karakterlánc paraméter. | N/A |
-| {OIDC:hatókör} |A `scope` lekérdezési karakterlánc paraméter. | Openid |
+| {OIDC:Hatókör} |A `scope` lekérdezési karakterlánc paraméter. | Openid |
 | {OIDC:Felhasználónév}| Az [erőforrás-tulajdonos jelszóhitelesítő adatai a](ropc-custom.md) felhasználó felhasználónevét áramtalanítódulják.| emily@contoso.com| 
 
 ### <a name="context"></a>Környezet
@@ -162,7 +162,7 @@ A következő példa egy RESTful technikai profilt mutat be ezzel a forgatókön
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="userLanguage" DefaultValue="{Culture:LCID}" AlwaysUseDefaultValue="true" />
     <InputClaim ClaimTypeReferenceId="policyName" DefaultValue="{Policy:PolicyId}" AlwaysUseDefaultValue="true" />
-    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="{OIDC:scope}" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="{OIDC:Scope}" AlwaysUseDefaultValue="true" />
     <InputClaim ClaimTypeReferenceId="clientId" DefaultValue="{OIDC:ClientId}" AlwaysUseDefaultValue="true" />
   </InputClaims>
   <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
@@ -175,7 +175,7 @@ A jogcímfeloldók használatával előre feltöltheti a bejelentkezési nevet, 
 
 ### <a name="dynamic-ui-customization"></a>A felhasználói felület dinamikus testreszabása
 
-Az Azure AD B2C lehetővé teszi, hogy lekérdezési karakterlánc-paramétereket a HTML-tartalom definíciós végpontok dinamikusan megjeleníteni az oldal tartalmát. Például ez lehetővé teszi, hogy módosítsa a háttérképet az Azure AD B2C regisztrációs vagy bejelentkezési lap alapján egy egyéni paraméter, amely átad a web vagy mobilalkalmazás. További információ: [Dinamikusan konfigurálja a felhasználói felületet az Azure Active Directory B2C egyéni szabályzatai használatával.](custom-policy-ui-customization.md) A HTML-lapot nyelvi paraméter alapján is honosíthatja, vagy módosíthatja a tartalmat az ügyfélazonosító alapján.
+Az Azure AD B2C lehetővé teszi, hogy lekérdezési karakterlánc-paramétereket a HTML-tartalom definíciós végpontok dinamikusan megjeleníteni az oldal tartalmát. Ez a funkció például lehetővé teszi, hogy módosítsa a háttérképet az Azure AD B2C regisztrációs vagy bejelentkezési oldalon egy egyéni paraméter, amely átad a webről vagy mobilalkalmazásból. További információ: [Dinamikusan konfigurálja a felhasználói felületet az Azure Active Directory B2C egyéni szabályzatai használatával.](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri) A HTML-lapot nyelvi paraméter alapján is honosíthatja, vagy módosíthatja a tartalmat az ügyfélazonosító alapján.
 
 A következő példa a **campaignId** nevű lekérdezési `Hawaii`karakterlánc-paraméterben halad át , a nyelvkódéssal **language** `en-US`és az ügyfélazonosítót képviselő **alkalmazással:**
 

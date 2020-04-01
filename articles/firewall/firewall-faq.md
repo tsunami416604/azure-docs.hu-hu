@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 60beccc2f2679a18903b74b84f48afebfb3b69da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 45276884d59ac8d1d876e2225ac02bb51c3f74fc
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257751"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437724"
 ---
 # <a name="azure-firewall-faq"></a>Gyakori kérdések az Azure tűzfalról
 
@@ -133,7 +133,7 @@ A kényszerített bújtatás támogatott. További információ: [Azure Firewall
 
 Az Azure tűzfalnak közvetlen internetkapcsolattal kell rendelkeznie. Ha az AzureFirewallSubnet megtanulja az alapértelmezett útvonalat a helyszíni hálózatra a BGP-n keresztül, felül kell bírnia ezt egy 0.0.0.0/0 UDR-rel, amelyen a **NextHopType** érték **internetként** van beállítva a közvetlen internetkapcsolat fenntartásához.
 
-Ha a konfiguráció kényszerített bújtatást igényel egy helyszíni hálózathoz, és meg tudja határozni az internetes célhelyek cél IP-előtagait, ezeket a tartományokat a helyszíni hálózattal konfigurálhatja következő ugrásként egy felhasználó által definiált útvonalon keresztül a Az AzureFirewallSubnet. Vagy használhatja a BGP-t ezeknek az útvonalaknak a definiálására.
+Ha a konfiguráció kényszerített bújtatást igényel egy helyszíni hálózatra, és meghatározhatja az internetes célhelyek cél IP-előtagait, konfigurálhatja ezeket a tartományokat a helyszíni hálózattal a következő ugrásként az AzureFirewallSubnet felhasználó által definiált útvonalon keresztül. Vagy használhatja a BGP-t ezeknek az útvonalaknak a definiálására.
 
 ## <a name="are-there-any-firewall-resource-group-restrictions"></a>Vannak tűzfalerőforrás-csoport korlátozások?
 
@@ -209,3 +209,7 @@ $fw.ThreatIntelWhitelist.IpAddress = @("ip1", "ip2", …)
 
 Set-AzFirewall -AzureFirewall $fw
 ```
+
+## <a name="why-can-a-tcp-ping-and-similar-tools-successfully-connect-to-a-target-fqdn-even-when-no-rule-on-azure-firewall-allows-that-traffic"></a>Miért tud egy TCP ping és hasonló eszközök sikeresen csatlakozni a cél fqdn akkor is, ha nincs szabály az Azure Firewall lehetővé teszi, hogy a forgalom?
+
+A TCP-ping valójában nem csatlakozik a cél teljes tartománynnna. Ez azért történik, mert az Azure Firewall transzparens proxy figyeli a 80/443-as porton a kimenő forgalom. A TCP ping kapcsolatot létesít a tűzfallal, amely ezután eldobja a csomagot, és naplózza a kapcsolatot. Ennek a viselkedésnek nincs biztonsági hatása. Azonban, hogy elkerüljék a zavart vagyunk vizsgálja lehetséges változások ezt a viselkedést. 

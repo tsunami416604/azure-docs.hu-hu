@@ -6,46 +6,38 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: d40157523a074547885a14a3d92379f8e8b6f351
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 305632a0faa1eb7e217e86d36c5159e557df7aaf
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79254286"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409252"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Az Azure Stream Analytics kimeneteinek hibaelhárítása
 
-Ez a lap a kimeneti kapcsolatokkal kapcsolatos gyakori problémákat, valamint a hibaelhárításuk és megoldásuk megoldását ismerteti.
+Ez a cikk ismerteti az Azure Stream Analytics kimeneti kapcsolatokkal kapcsolatos gyakori problémákat, a kimeneti problémák elhárításának módját és a problémák megoldásának módját. Számos hibaelhárítási lépéshez engedélyezni kell a diagnosztikai naplókat a Stream Analytics-feladathoz. Ha nincs engedélyezve a diagnosztikai naplók, olvassa el [az Azure Stream Analytics hibaelhárítása diagnosztikai naplók használatával című témakört.](stream-analytics-job-diagnostic-logs.md)
 
 ## <a name="output-not-produced-by-job"></a>Nem a feladat által előállított kimenet
+
 1.  Ellenőrizze a kimenetekhez való kapcsolódást a **Kapcsolat tesztelése** gombbal az egyes kimenetekhez.
 
 2.  Tekintse meg [**a figyelési metrikákat**](stream-analytics-monitoring.md) a **Figyelő** lapon. Mivel az értékek összesítve vannak, a metrikák néhány percet késnek.
-    - Ha a bemeneti események > 0, a feladat képes olvasni a bemeneti adatokat. Ha a bemeneti események nem 0 >, akkor:
-      - Annak ellenőrzéséhez, hogy az adatforrás rendelkezik-e érvényes adatokkal, ellenőrizze azt a [Service Bus Explorer](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a)segítségével. Ez az ellenőrzés akkor érvényes, ha a feladat az Event Hub ot használja bemenetként.
-      - Ellenőrizze, hogy az adatszerializálási formátum és az adatkódolás a várt módon történik-e.
-      - Ha a feladat eseményközpontot használ, ellenőrizze, hogy az üzenet törzse *Null értékű-e.*
+   * Ha a bemeneti események nagyobbak, mint 0, a feladat képes olvasni a bemeneti adatokat. Ha a bemeneti események nem nagyobbak, mint 0, akkor probléma van a feladat bemeneti. A [bemeneti kapcsolatok elhárításáról](stream-analytics-troubleshoot-input.md) a bemeneti kapcsolatokkal kapcsolatos problémák elhárításáról további információt olvashat.
+   * Ha az adatkonverziós hibák nagyobbak, mint a 0 és a hegymászás, tekintse meg [az Azure Stream Analytics-adatok hibáit](data-errors.md) az adatkonverziós hibákrészletes információkért.
+   * Ha a futásidejű hibák száma 0-nál nagyobb, a feladat adatokat fogadhat, de a lekérdezés feldolgozása közben hibákat generál. A hibák megkereséséhez nyissa meg a [naplókat,](../azure-resource-manager/management/view-activity-logs.md) és szűrje a *Sikertelen* állapotot.
+   * Ha az InputEvents nagyobb, mint 0, és a OutputEvents értéke 0, az alábbi adatok egyike igaz:
+      * A lekérdezés feldolgozása nulla kimeneti eseményt eredményezett.
+      * Az események vagy mezők hibásan formázhatók, így a lekérdezés feldolgozása után nulla kimenet jön létre.
+      * A feladat nem tudta lekérni az adatokat a kimeneti fogadó ban kapcsolódási vagy hitelesítési okokból.
 
-    - Ha az adatkonverziós hibák 0 > és a mászás, a következők lehetnek:
-      - A kimeneti esemény nem felel meg a célfogadó sémájának.
-      - Előfordulhat, hogy az eseményséma nem egyezik meg a lekérdezésben lévő események meghatározott vagy várt sémájával.
-      - Előfordulhat, hogy az esemény egyes mezőinek adattípusai nem felelnek meg az elvárásoknak.
-
-    - Ha a futásidejű hibák > 0, az azt jelenti, hogy a feladat fogadhatja az adatokat, de hibákat generál a lekérdezés feldolgozása közben.
-      - A hibák megkereséséhez nyissa meg a [naplókat,](../azure-resource-manager/management/view-activity-logs.md) és szűrje a *Sikertelen* állapotot.
-
-    - Ha az InputEvents > 0 és a OutputEvents = 0, az azt jelenti, hogy az alábbiak egyike igaz:
-      - A lekérdezés feldolgozása nulla kimeneti eseményt eredményezett.
-      - Az események vagy annak mezői hibásak lehetnek, így a lekérdezés feldolgozása után nulla kimenet jön létre.
-      - A feladat nem tudta lekérni az adatokat a kimeneti fogadó ban kapcsolódási vagy hitelesítési okokból.
-
-    - Az összes korábban említett hibaesetén a műveletek naplóüzenetei további részleteket magyaráznak (beleértve a történéseket is), kivéve azokat az eseteket, amikor a lekérdezési logika kiszűrte az összes eseményt. Ha több esemény feldolgozása hibákat generál, a Stream Analytics 10 percen belül naplózza az első három, azonos típusú hibaüzenetet az Operations naplókba. Ezután letiltja a további azonos hibákat egy üzenettel, amely így szól: "A hibák túl gyorsan történnek, ezek le vannak tiltva."
+   Az összes korábban említett hibaesetén a műveletek naplóüzenetei további részleteket magyaráznak (beleértve a történéseket is), kivéve azokat az eseteket, amikor a lekérdezési logika kiszűrte az összes eseményt. Ha több esemény feldolgozása hibákat generál, a hibák 10 percenként összesítve lesznek.
 
 ## <a name="job-output-is-delayed"></a>A feladat kimenete késik
 
 ### <a name="first-output-is-delayed"></a>Az első kimenet késik
+
 Stream Analytics-feladat elindításakor a bemeneti eseményeket beolvassa a rendszer, azonban bizonyos helyzetekben késés lehet tapasztalható a kimenet előállításában.
 
 Az időbeli lekérdezési elemek nagy időértékei hozzájárulhatnak a kimeneti késleltetéshez. A nagy időablakok on-ra történő helyes kimenet létrehozásához a streamelési feladat a lehető legutolsó (legfeljebb hét nappal ezelőtti) adatok olvasásával indul el az időablak kitöltéséhez. Ez alatt az idő alatt nem jön létre kimenet, amíg a függőben lévő bemeneti események felzárkózási olvasása be nem fejeződik. Ez a probléma akkor jelentkezhet, amikor a rendszer frissíti a streamelési feladatokat, így újraindítja a feladatot. Az ilyen frissítések általában néhány havonta egyszer történnek.
@@ -69,6 +61,7 @@ Ezek a tényezők befolyásolják az első generált kimenet időszerűségét:
    - Az analitikus függvények esetében a kimenet minden eseményhez létrejön, nincs késés.
 
 ### <a name="output-falls-behind"></a>A kimenet elmarad
+
 A feladat normál működése során, ha úgy találja, hogy a munka kimenete lemarad (hosszabb és hosszabb késleltetés), az alábbi tényezők vizsgálatával meghatározhatja a kiváltó okokat:
 - Azt jelzi, hogy az alsó bb rétegbeli fogadó szabályozott-e
 - Azt jelzi, hogy az upstream forrás szabályozott-e
@@ -88,11 +81,11 @@ Vegye figyelembe a következő megfigyeléseket, amikor IGNORE_DUP_KEY többfél
 
 * Nem állíthat be IGNORE_DUP_KEY elsődleges kulcsra vagy egyedi megkötésre, amely ALTER INDEX-et használ, el kell dobnia, majd újra létre kell hoznia az indexet.  
 * A IGNORE_DUP_KEY beállítás átírása az ALTER INDEX használatával állítható be egy egyedi indexhez, amely eltér az ELSŐDLEGES KULCS/EGYEDI megkötéstől, és a CREATE INDEX vagy INDEX definíció használatával jön létre.  
+
 * IGNORE_DUP_KEY nem vonatkozik az oszloptároló-indexekre, mert az ilyen indexek en nem kényszerítheti az egyediséget.  
 
 ## <a name="column-names-are-lower-cased-by-azure-stream-analytics"></a>Az oszlopneveket az Azure Stream Analytics kisbetűsen határozza meg
 Az eredeti kompatibilitási szint (1.0) használatakor az Azure Stream Analytics az oszlopnevek kisbetűsre történő módosítását használta. Ezt a viselkedést a későbbi kompatibilitási szinteken javították. Az eset megőrzése érdekében azt tanácsoljuk ügyfeleinknek, hogy az 1.1-es és újabb kompatibilitási szintre lépjenek. Az Azure Stream [Analytics-feladatok kompatibilitási szintjéről](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level)további információt talál.
-
 
 ## <a name="get-help"></a>Segítségkérés
 

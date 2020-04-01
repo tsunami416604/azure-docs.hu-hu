@@ -11,48 +11,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/17/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: fa895a294e26b6c74ab72afa3136feac2b2ec986
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bb90858f7e87e31b8b6028a30a6000bbed4d3e4b
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240250"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421095"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli-preview"></a>IPv6-alapú kétletétes alkalmazás üzembe helyezése az Azure virtuális hálózatában – CLI (előzetes verzió)
+# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli"></a>IPv6-alapú kétletétes alkalmazás üzembe helyezése az Azure virtuális hálózatában – CLI
 
-Ez a cikk bemutatja, hogyan telepíthet egy kétverű (IPv4 + IPv6) alkalmazást az Azure Standard Load Balancer használatával, amely kétverű virtuális hálózatot tartalmaz kétverű alhálózattal, egy standard terheléselosztót kettős (IPv4 + IPv6) előtér-konfigurációkkal, virtuális gépeket Hálózati adapterek, amelyek kettős IP-konfigurációval, kettős hálózati biztonsági csoport szabályokkal és kettős nyilvános IP-címvel rendelkeznek.
-
-> [!Important]
-> Az Azure Virtuális hálózat IPv6-alapú kettős veremjelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Ez a cikk bemutatja, hogyan telepíthet egy kétverű (IPv4 + IPv6) alkalmazást az Azure-ban, amely kétverű virtuális hálózatot tartalmaz kétverű alhálózattal, egy kétágyas (IPv4 + IPv6) előtér-konfigurációval rendelkező virtuális gépet, kettős IP-konfigurációval rendelkező hálózati adaptereket, kettős hálózati biztonsági csoportszabályokat és kettős nyilvános IP-címeket.
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Ha úgy dönt, hogy az Azure CLI-t helyileg telepíti és használja, ez a rövid útmutató az Azure CLI 2.0.49-es vagy újabb verzióját kell használnia. A telepített verzió megkereséséhez futtassa a futtassa a futtassa a futtassa a futtassa a program `az --version` A telepítési vagy frissítési információkért tekintse meg az [Azure CLI telepítése](/cli/azure/install-azure-cli) című témakört.
-
-## <a name="prerequisites"></a>Előfeltételek
-Az IPv6 azure-beli virtuális hálózati szolgáltatás használatához az előfizetést az Azure CLI használatával kell konfigurálnia az alábbiak szerint:
-
-```azurecli
-az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
-az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
-```
-
-A funkcióregisztráció befejezéséhez akár 30 perc is igénybe vesszen. A regisztrációs állapot ot a következő Azure CLI-parancs futtatásával ellenőrizheti:
-
-```azurecli
-az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
-az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
-```
-
-A regisztráció befejezése után futtassa a következő parancsot:
-
-```azurecli
-az provider register --namespace Microsoft.Network
-```
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
@@ -385,10 +361,6 @@ Az IPv6 kettős veremű virtuális hálózatot az Azure Portalon az alábbiak sz
 2. Amikor a **myVirtualNetwork** megjelenik a keresési eredmények között, válassza ki. Ez elindítja a *dsVnet*nevű kettős verem virtuális hálózat **áttekintése** lapját. A kétverű virtuális hálózat a két hálózati adaptert jeleníti meg, amelyek iPv4- és IPv6-konfigurációkkal is rendelkeznek, és amelyek a *dsSubnet*nevű kettős veremalhálózatban találhatók.
 
   ![IPv6 kettős halmozott virtuális hálózat az Azure-ban](./media/virtual-network-ipv4-ipv6-dual-stack-powershell/dual-stack-vnet.png)
-
-> [!NOTE]
-> Az IPv6 for Azure virtuális hálózat érhető el az Azure Portalon írásvédett ebben az előzetes verzióban.
-
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

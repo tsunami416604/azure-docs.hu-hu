@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/13/2019
-ms.openlocfilehash: a04ca3768ade6058c59393591c252bc4347a3663
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: c2690ad7cc4dcaa295bfb08b8c0396438ada0807
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275203"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437546"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Figyelési megoldások az Azure Monitorban
 A figyelési megoldások az Azure-beli szolgáltatásokat használják ki, hogy további betekintést nyújtsanak egy adott alkalmazás vagy szolgáltatás működésébe. Ez a cikk rövid áttekintést nyújt az Azure-beli figyelési megoldásokról, valamint azok használatáról és telepítéséről.
@@ -83,11 +83,7 @@ Minden figyelési megoldás hoz egy [Log Analytics munkaterületet](../platform/
 * Ha egy megoldás automatizálási fiókot igényel, akkor a Log Analytics munkaterületet és az Automation-fiókot egymáshoz kell kapcsolni. A Log Analytics-munkaterület csak egy Automation-fiókhoz kapcsolható, és egy Automation-fiók csak egy Log Analytics-munkaterülethez kapcsolható.
 * Az összekapcsoláshoz a Log Analytics munkaterület és automation-fiók ugyanabban az erőforráscsoportban és régióban kell lennie. Kivételt képez az USA keleti régiójában található munkaterület és az USA keleti régiójában 2.
 
-### <a name="create-a-link-between-a-log-analytics-workspace-and-automation-account"></a>Kapcsolat létrehozása a Log Analytics-munkaterület és az Automation-fiók között
-A Log Analytics-munkaterület és az Automation-fiók megadása a megoldás telepítési módjától függ.
-
-* Amikor telepít egy megoldást az Azure Marketplace-en keresztül, a rendszer kéri egy munkaterületi és automation-fiók. A köztük lévő kapcsolat akkor jön létre, ha még nincsenek összekapcsolva.
-* Az Azure Piactéren kívüli megoldások esetén a megoldás telepítése előtt össze kell kapcsolnia a Log Analytics-munkaterületet és az Automation-fiókot. Ezt úgy teheti meg, hogy kiválasztja bármelyik megoldást az Azure Marketplace-en, és kiválasztja a Log Analytics munkaterületet és az Automation-fiókot. Nem kell ténylegesen telepíteni a megoldást, mert a kapcsolat jön létre, amint a Log Analytics munkaterület és automation-fiók van kiválasztva. A hivatkozás létrehozása után, majd használhatja, hogy a Log Analytics munkaterület és automation-fiók bármely megoldáshoz.
+Amikor telepít egy megoldást az Azure Marketplace-en keresztül, a rendszer kéri egy munkaterületi és automation-fiók. A köztük lévő kapcsolat akkor jön létre, ha még nincsenek összekapcsolva.
 
 ### <a name="verify-the-link-between-a-log-analytics-workspace-and-automation-account"></a>A Log Analytics-munkaterület és az Automation-fiók közötti kapcsolat ellenőrzése
 A Log Analytics-munkaterület és az Automation-fiók közötti kapcsolatot az alábbi eljárással ellenőrizheti.

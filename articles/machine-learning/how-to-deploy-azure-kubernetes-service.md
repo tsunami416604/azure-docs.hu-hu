@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 01/16/2020
-ms.openlocfilehash: db2e80ebb6cbe5f31f2d99a1403a15daf38fd877
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 792964f28ddb3fcb10932b8de9499a9c7027960f
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76722407"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475377"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Modell üzembe helyezése egy Azure Kubernetes-szolgáltatásfürtben
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -131,7 +131,7 @@ Ha beállítja a , `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`majd a 
 > [!WARNING]
 > Ne hozzon létre több, egyidejű mellékletet ugyanahhoz az AKS-fürthöz a munkaterületről. Ha például egy AKS-fürtöt két különböző névvel kapcsol egy munkaterülethez. Minden új melléklet megszakítja a korábbi melléklet(eke)t.
 >
-> Ha újra csatolni szeretne egy AKS-fürtöt, például az SSL vagy más fürtkonfigurációs beállítás módosításához, először el kell távolítania a meglévő mellékletet az [AksCompute.detach()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#detach--)használatával.
+> Ha újra csatolni szeretne egy AKS-fürtöt, például módosítani szeretné a TLS-t vagy más fürtkonfigurációs beállítást, először el kell távolítania a meglévő mellékletet az [AksCompute.detach()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#detach--)használatával.
 
 Az AKS-fürt Azure CLI vagy portál használatával történő létrehozásáról az alábbi cikkekben talál további információt:
 
@@ -348,7 +348,7 @@ print(token)
 * [Biztonságos kísérletezés és következtetés a virtuális hálózatban](how-to-enable-virtual-network.md)
 * [Modell üzembe helyezése egyéni Docker-rendszerkép használatával](how-to-deploy-custom-docker-image.md)
 * [Központi telepítés – hibaelhárítás](how-to-troubleshoot-deployment.md)
-* [Biztonságos Azure Machine Learning-webszolgáltatások SSL-lel](how-to-secure-web-service.md)
+* [Webszolgáltatás biztonságossá tétele az Azure Machine Learning en keresztül a TLS használatával](how-to-secure-web-service.md)
 * [Webszolgáltatásként üzembe helyezett ml-modell felhasználása](how-to-consume-web-service.md)
 * [Az Azure Machine Learning-modellek figyelése az Application Insights segítségével](how-to-enable-app-insights.md)
 * [Adatok gyűjtése a termelésben lévő modellekről](how-to-enable-data-collection.md)

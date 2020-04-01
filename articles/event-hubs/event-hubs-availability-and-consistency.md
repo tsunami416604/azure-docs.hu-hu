@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/29/2020
+ms.date: 03/27/2020
 ms.author: shvija
-ms.openlocfilehash: 808e813ad90626acec893a021634566f091c895f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 0546adb6131479a8f5d2e7e31819483200586839
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76904483"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397339"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Rendelkezésre állás és konzisztencia az Event Hubsban
 
@@ -36,12 +36,63 @@ A Brewer-tétel a következőképpen határozza meg a konzisztenciát és a rend
 Az Event Hubs egy particionált adatmodellre épül. A telepítés során konfigurálhatja az eseményközpontban lévő partíciók számát, de ezt az értéket később nem módosíthatja. Mivel az Event Hubs partíciókat kell használnia, döntést kell hoznia az alkalmazás rendelkezésre állásáról és konzisztenciájáról.
 
 ## <a name="availability"></a>Rendelkezésre állás
-Az Event Hubs használatának legegyszerűbb módja az alapértelmezett viselkedés használata. Ha új **[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** objektumot hoz létre, és a **[Küldés](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** metódust használja, az események automatikusan ellesznek osztva az eseményközpontban lévő partíciók között. Ez a viselkedés lehetővé teszi a legnagyobb mennyiségű fel időben.
+Az Event Hubs használatának legegyszerűbb módja az alapértelmezett viselkedés használata. 
+
+#### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure.Messaging.EventHubs (5.0.0 vagy újabb)](#tab/latest)
+Ha új **[EventHubProducerClient](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient?view=azure-dotnet)** objektumot hoz létre, és a **[SendAsync](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.sendasync?view=azure-dotnet)** metódust használja, az események automatikusan ellesznek osztva az eseményközpontban lévő partíciók között. Ez a viselkedés lehetővé teszi a legnagyobb mennyiségű fel időben.
+
+#### <a name="microsoftazureeventhubs-410-or-earlier"></a>[Microsoft.Azure.EventHubs (4.1.0 vagy korábbi)](#tab/old)
+Ha új **[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** objektumot hoz létre, és a **[Küldés](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** metódust használja, az események automatikusan ellesznek osztva az eseményközpontban lévő partíciók között. Ez a viselkedés lehetővé teszi a legnagyobb mennyiségű fel időben.
+
+---
 
 A maximális felszakítási időt igénylő használati esetekesetében ez a modell ajánlott.
 
 ## <a name="consistency"></a>Konzisztencia
-Bizonyos esetekben az események rendezése fontos lehet. Előfordulhat például, hogy azt szeretné, hogy a háttérrendszer a delete parancs előtt feldolgozzon egy frissítési parancsot. Ebben az esetben beállíthatja a partíciókulcsot egy eseményen, `PartitionSender` vagy egy objektum használatával csak eseményeket küldhet egy bizonyos partícióra. Ezzel biztosítja, hogy amikor ezeket az eseményeket a partícióról olvassa be, azok sorrendben olvashatók.
+Bizonyos esetekben az események rendezése fontos lehet. Előfordulhat például, hogy azt szeretné, hogy a háttérrendszer a delete parancs előtt feldolgozzon egy frissítési parancsot. Ebben az esetben beállíthatja a partíciókulcsot egy eseményen, `PartitionSender` vagy használhat egy objektumot (ha a régi Microsoft.Azure.Messaging könyvtárat használja) csak események et küldhet egy bizonyos partícióra. Ezzel biztosítja, hogy amikor ezeket az eseményeket a partícióról olvassa be, azok sorrendben olvashatók. Ha az **Azure.Messaging.EventHubs könyvtárat** használja, és további információt a [Kód áttelepítése a PartitionSender ből az EventHubProducerClient programba](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md#migrating-code-from-partitionsender-to-eventhubproducerclient-for-publishing-events-to-a-partition)című témakörben talál, amely az események et egy partícióra teszi közzé.
+
+#### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure.Messaging.EventHubs (5.0.0 vagy újabb)](#tab/latest)
+
+```csharp
+var connectionString = "<< CONNECTION STRING FOR THE EVENT HUBS NAMESPACE >>";
+var eventHubName = "<< NAME OF THE EVENT HUB >>";
+
+await using (var producerClient = new EventHubProducerClient(connectionString, eventHubName))
+{
+    var batchOptions = new CreateBatchOptions() { PartitionId = "my-partition-id" };
+    using EventDataBatch eventBatch = await producerClient.CreateBatchAsync(batchOptions);
+    eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("First")));
+    eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("Second")));
+    
+    await producerClient.SendAsync(eventBatch);
+}
+```
+
+#### <a name="microsoftazureeventhubs-410-or-earlier"></a>[Microsoft.Azure.EventHubs (4.1.0 vagy korábbi)](#tab/old)
+
+```csharp
+var connectionString = "<< CONNECTION STRING FOR THE EVENT HUBS NAMESPACE >>";
+var eventHubName = "<< NAME OF THE EVENT HUB >>";
+
+var connectionStringBuilder = new EventHubsConnectionStringBuilder(connectionString){ EntityPath = eventHubName }; 
+var eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringBuilder.ToString());
+PartitionSender partitionSender = eventHubClient.CreatePartitionSender("my-partition-id");
+try
+{
+    EventDataBatch eventBatch = partitionSender.CreateBatch();
+    eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("First")));
+    eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("Second")));
+
+    await partitionSender.SendAsync(eventBatch);
+}
+finally
+{
+    await partitionSender.CloseAsync();
+    await eventHubClient.CloseAsync();
+}
+```
+
+---
 
 Ezzel a konfigurációval ne feledje, hogy ha az adott partíció, amelyre küld, nem érhető el, hibaüzenetet fog kapni. Összehasonlításként, ha nem rendelkezik affinitásegyetlen partícióhoz, az Event Hubs szolgáltatás elküldi az eseményt a következő elérhető partícióra.
 

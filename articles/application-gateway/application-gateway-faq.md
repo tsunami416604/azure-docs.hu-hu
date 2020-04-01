@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: victorh
-ms.openlocfilehash: 242fc115c5b2324c770de480fb19985e8b874893
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 290467d5d20a74f8b8b2c23f6da0dcadfd74cc56
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371262"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411030"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések az Alkalmazásátjáróval kapcsolatban
 
@@ -353,11 +353,11 @@ Jelenleg a be- éselőjáték-vezérlő egy példánya csak egy application átj
 
 Az Application Gateway három naplót biztosít: 
 
-* **ApplicationGatewayAccessLog**: A hozzáférési napló tartalmazza az alkalmazásátjáró előtér-előtérbe küldött minden kérelmet. Az adatok közé tartozik a hívó IP-címét, a kért URL-címet, a válaszkésést, a visszatérési kódot, valamint a be- és ki- és be- és ki- és be- és bájtokat. A hozzáférési napló t300 másodpercenként gyűjti a rendszer. Alkalmazásátjárónként egy rekordot tartalmaz.
+* **ApplicationGatewayAccessLog**: A hozzáférési napló tartalmazza az alkalmazásátjáró előtér-előtérbe küldött minden kérelmet. Az adatok közé tartozik a hívó IP-címét, a kért URL-címet, a válaszkésést, a visszatérési kódot, valamint a be- és ki- és be- és ki- és be- és bájtokat. Alkalmazásátjárónként egy rekordot tartalmaz.
 * **ApplicationGatewayPerformanceLog**: A teljesítménynapló rögzíti az egyes alkalmazásátjárók teljesítményadatait. Az információ tartalmazza az átviteli átviteli bájtban, az összes kiszolgált kérelmek száma, sikertelen kérelmek száma, valamint a kifogástalan és nem megfelelő háttérpéldányok száma.
 * **ApplicationGatewayFirewallLog**: A WAF-fel konfigurált alkalmazásátjárók esetében a tűzfalnapló olyan kéréseket tartalmaz, amelyeket észlelési vagy megelőzési módban naplóznak.
 
-További információ: [Háttérrendszer állapota, diagnosztikai naplók és metrikák az Application Gateway.](application-gateway-diagnostics.md)
+Minden naplót 60 másodpercenként gyűjtünk. További információ: [Háttérrendszer állapota, diagnosztikai naplók és metrikák az Application Gateway.](application-gateway-diagnostics.md)
 
 ### <a name="how-do-i-know-if-my-backend-pool-members-are-healthy"></a>Honnan tudhatom, hogy a háttérkészlet-tagok kifogástalan állapotúak-e?
 

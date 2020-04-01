@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 456f379e2b3c2ff411b196d45aef4663fddb0fe6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fda49ae31d7598497a3128a846a3f4e12e84ffe1
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79245407"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435914"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>A Biztonsági központ szolgáltatásainak kivonása (2019. július)
 
@@ -43,7 +43,7 @@ Ez a cikk részletes információkat tartalmaz az egyes kivisszavonult szolgált
 
 ## <a name="events-dashboard"></a>Események irányítópultja<a name="menu_events"></a>
 
-A Security Center a Microsoft Monitoring Agent segítségével különböző, biztonsággal kapcsolatos konfigurációkat és eseményeket gyűjt a gépekről. Ezeket az eseményeket a munkaterületeken tárolja. Az [események irányítópultja](https://docs.microsoft.com/azure/security-center/security-center-events-dashboard) lehetővé teszi az adatok megtekintését, és egy belépési pontot biztosít a Log Analytics számára.
+A Security Center a Log Analytics-ügynök segítségével különböző, biztonsággal kapcsolatos konfigurációkat és eseményeket gyűjt a gépekről. Ezeket az eseményeket a munkaterületeken tárolja. Az [események irányítópultja](https://docs.microsoft.com/azure/security-center/security-center-events-dashboard) lehetővé teszi az adatok megtekintését, és egy belépési pontot biztosít a Log Analytics számára.
 
 Megszüntettük a munkaterület kiválasztásakor megjelenő események irányítópultját:
 

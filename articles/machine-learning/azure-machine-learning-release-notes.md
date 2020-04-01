@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: 70e8bf95022f88dab54fa13769df4b051cf41c92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b55c351927a56afce697d07f41bfbe668144d68d
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80247146"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475520"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Az Azure Machine Learning kiadási megjegyzések
 
@@ -624,7 +624,7 @@ Az Azure Machine Learning mostantól az Event Grid erőforrás-szolgáltatója, 
     + Javítottunk egy hibát a run.get_metrics-ban, ahol a kérelmek sikertelenek lennének, ha egy futtatástúl sok gyermeket kapna
     + Javítottunk egy hibát a [run.get_metrics-ban,](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run#get-metrics-name-none--recursive-false--run-type-none--populate-false-) ahol a kérelmek sikertelenek lennének, ha egy futtatástúl sok gyermeket kapna
     + Az Arcadia fürt hitelesítésének támogatása hozzáadva.
-    + Egy kísérlet objektum létrehozása lekéri vagy létrehozza a kísérletet az Azure Machine Learning munkaterületen az előzmények nyomon követéséhez. A kísérletazonosító és az archivált idő a létrehozáskori kísérlet objektumban van feltöltve. Példa: kísérlet = Kísérlet(munkaterület, "Új kísérlet") experiment_id = experiment.id archív() és újraaktiválás() olyan függvények, amelyek egy kísérletben meghívhatók, hogy elrejtsék és visszaállítsák a kísérletet a felhasználói környezetben való megjelenítésből vagy alapértelmezés szerint egy hívásban való visszaadásból. a kísérletek listázásához. Ha egy új kísérlet az archivált kísérlet nevével azonos névvel jön létre, új név átadásával átnevezheti az archivált kísérletet. Csak egy aktív kísérlet lehet egy adott névvel. Példa: experiment1 = Experiment(workspace, "Active Experiment") experiment1.archive() # Hozzon létre új aktív kísérletet az archivált névvel. kísérlet2. = Kísérlet(munkaterület, "Aktív kísérlet") kísérlet1.reactivate(new_name="Előző aktív kísérlet") A Kísérlet statikus metóduslistája() névszűrőt és ViewType szűrőt vehet fel. ViewType értékek "ACTIVE_ONLY", "ARCHIVED_ONLY" és "ALL" Példa: archived_experiments = Experiment.list(workspace, view_type="ARCHIVED_ONLY") all_first_experiments = Experiment.list(workspace, name="First Experiment", view_type="ALL")
+    + Egy kísérlet objektum létrehozása lekéri vagy létrehozza a kísérletet az Azure Machine Learning munkaterületen az előzmények nyomon követéséhez. A kísérletazonosító és az archivált idő a létrehozáskori kísérlet objektumban van feltöltve. Példa: kísérlet = Kísérlet(munkaterület, "Új kísérlet") experiment_id = experiment.id archív() és újraaktiválás() olyan függvények, amelyek egy kísérletben meghívhatók, hogy elrejtsék és visszaállítsák a kísérletet a felhasználói környezetben való megjelenítésből vagy alapértelmezés szerint a listás kísérletek hívásából. Ha egy új kísérlet az archivált kísérlet nevével azonos névvel jön létre, új név átadásával átnevezheti az archivált kísérletet. Csak egy aktív kísérlet lehet egy adott névvel. Példa: experiment1 = Experiment(workspace, "Active Experiment") experiment1.archive() # Hozzon létre új aktív kísérletet az archivált névvel. kísérlet2. = Kísérlet(munkaterület, "Aktív kísérlet") kísérlet1.reactivate(new_name="Előző aktív kísérlet") A Kísérlet statikus metóduslistája() névszűrőt és ViewType szűrőt vehet fel. ViewType értékek "ACTIVE_ONLY", "ARCHIVED_ONLY" és "ALL" Példa: archived_experiments = Experiment.list(workspace, view_type="ARCHIVED_ONLY") all_first_experiments = Experiment.list(workspace, name="First Experiment", view_type="ALL")
     + Támogatás a modelltelepítés és a szolgáltatásfrissítés környezetének használatával
   + **azureml-datadrift**
     + A DataDriftDector osztály show attribútuma többé nem támogatja a választható "with_details" argumentumot. A show attribútum csak az adateltolódási együtthatót és a jellemzőoszlopok adateltolódási hozzájárulását mutatja be.
@@ -798,8 +798,8 @@ Az [új munkaterületi portál](https://ml.azure.com) Kísérlet lapja frissült
     + Kivétel, hogy az időbélyeg oszlop nem található lesz kidobva, ha az idő sorozatok kapcsolódó API-t nem finom időbélyeg oszlop hozzárendelt, vagy a hozzárendelt időbélyeg oszlopok eldobása.
     + A sorozatok időoszlopait dátum típusú oszlophoz kell rendelni, ellenkező esetben kivételre van lehetőség.
     + Az API "with_timestamp_columns" hozzárendeléséhez rendelt sorozatoszlopok nem tartalmazhatnak Nincs értéket finom/durva időbélyeg oszlopnévvel, amely törli a korábban hozzárendelt időbélyeg-oszlopokat.
-    + Kivétel lesz kidobmikor egyik durva gabona vagy finom szemcsés időbélyeg oszlop van csepp -val jelző részére felhasználó amit csepegés lehet megtett után egyik kizár időbélyeg oszlop -ban csepegés oldalra dől vagy hív with_time_stamp -val Nincs érték -hoz mentesít időbélyeg Oszlopok
-    + Kivétel lesz kidobmikor egyik durva gabona vagy finom szemcsés időbélyeg oszlop van nem tartalmaz -ban eltartás oszlop oldalra dől -val jelző részére felhasználó amit tartás lehet megtett után egyik beleértve időbélyeg oszlop -ban eltartás oszlop oldalra dől vagy hív with_time_stamp -val Nincs az időbélyeg-oszlopok felszabadításához.
+    + Kivétel lesz kidobva, ha vagy durva szemcse vagy finom szemcsés időbélyeg oszlop eldobódik a felhasználó jelzésével, hogy a csepegés történhet, miután vagy kizárva időbélyeg oszlop csepegtető lista vagy hívás with_time_stamp nincs érték kiadásához időbélyeg oszlopok
+    + Kivétel lesz kidobva, ha vagy durva szemcse vagy finom szemcsés időbélyeg oszlop nem szerepel a keep oszlopok listáját, jelezve a felhasználó számára, hogy a tartás lehet tenni, miután vagy beleértve az időbélyeg oszlop lista megtartása oszlop lista vagy hívja with_time_stamp nincs érték kiadásidőbélyeg oszlopok.
     + A regisztrált modell méretével kapcsolatos naplózás hozzáadva.
   + **azureml-explain-modell**
     + Rögzített figyelmeztetés nyomtatott konzol, ha a "csomagolás" python csomag nincs telepítve: "A régebbi, mint a támogatott változata lightgbm, kérjük, frissítsen a verzió nagyobb, mint 2.2.1"
@@ -925,13 +925,13 @@ Ebben a kiadásban a következő böngészők támogatottak: Chrome, Firefox, Sa
     + Frissítve a `RawDataContext` felület, hogy hozzon `AutoMLBaseSettings` létre egy, hogy csak az adatok és az objektum.
     +  Lehetővé teszi az AutoML-felhasználók számára, hogy eldobják az előrejelzéshez nem elég hosszú betanítási sorozatot. - Lehetővé teszi az AutoML-felhasználók számára, hogy olyan szemcséket dobjanak ki a tesztkészletből, amelyek előrejelzéskor nem szerepelnek a betanítási készletben.
   + **azúr-cli-ml**
-    + Most már frissítheti az SSL-tanúsítványt az AKS-fürtön telepített pontozási végponthoz, mind a Microsoft által létrehozott, mind az ügyfél tanúsítványához.
+    + Most már frissítheti a TLS/SSL tanúsítványt az AKS-fürtön telepített pontozási végponthoz mind a Microsoft által létrehozott, mind az ügyfél tanúsítványához.
   + **azureml-automl-core**
     + Kijavítottuk az AutoML azon problémája miatt, amely miatt a hiányzó címkékkel rendelkező sorok nem lettenek megfelelően eltávolítva.
     + Továbbfejlesztett hibanaplózás az AutoML-ben; a teljes hibaüzenetek mindig a naplófájlba kerülnek.
     + Az AutoML frissítette a `azureml-defaults`csomag `azureml-explain-model`rögzítési céljából , hogy tartalmazza a , és `azureml-dataprep`. Az AutoML a továbbiakban nem figyelmeztet `azureml-train-automl` a csomageltérésekre (kivéve a csomagot).
     + Kijavítottuk `timeseries` azt a hibát, amely miatt a cv felosztások nem egyenlő méretűek, ami a raktárhely számításának sikertelenét okozta.
-    + Amikor a Keresztérvényesítés képzési típushoz futó együttes iterációt futtatunk, ha végül nem tudtuk letölteni a teljes adatkészletre betanított modelleket, ellentmondás volt a modell súlyozása és a szavazásba táplált modellek között. Együttes.
+    + Amikor a Keresztérvényesítés képzési típushoz futó együttes iterációt futtatunk, ha végül nem tudtuk letölteni a teljes adatkészletre betanított modelleket, ellentmondás volt a modell súlyaés a szavazóegyüttesbe táplált modellek között.
     + Javítva a hiba, akkor merült fel, amikor a képzési és / vagy érvényesítési címkék (y és y_valid) formájában pandák dataframe, de nem numpy tömb.
     + Kijavítottuk az előrejelzési feladatokkal kapcsolatos problémát, amikor a bemeneti táblák logikai oszlopaiban a Nincs érték volt.
     + Lehetővé teszi az AutoML-felhasználók számára, hogy eldobják az előrejelzéshez nem elég hosszú betanítási sorozatot. - Lehetővé teszi az AutoML-felhasználók számára, hogy olyan szemcséket dobjanak ki a tesztkészletből, amelyek előrejelzéskor nem szerepelnek a betanítási készletben.
@@ -956,7 +956,7 @@ Ebben a kiadásban a következő böngészők támogatottak: Chrome, Firefox, Sa
     + Http csv/tsv fájlok importálása támogatott a python SDK adatkészletben.
     + A Workspace.setup() metódus elavult. A felhasználók számára megjelenített figyelmeztető üzenet a create() vagy a get()/from_config() használatát javasolja.
     + Hozzáadott Environment.add_private_pip_wheel(), amely lehetővé teszi `whl`a privát egyéni python-csomagok feltöltését a munkaterületre, és biztonságosan használja őket a környezet felépítéséhez/megvalósulására.
-    + Most már frissítheti az SSL-tanúsítványt az AKS-fürtön telepített pontozási végponthoz, mind a Microsoft által létrehozott, mind az ügyfél tanúsítványához.
+    + Most már frissítheti a TLS/SSL tanúsítványt az AKS-fürtön telepített pontozási végponthoz mind a Microsoft által létrehozott, mind az ügyfél tanúsítványához.
   + **azureml-explain-modell**
     + Hozzáadott paraméter, hogy adjunk egy modell azonosítót magyarázatok feltöltéskor.
     + Hozzáadott `is_raw` címkézés magyarázatok a memóriában, és feltölteni.
@@ -988,7 +988,7 @@ Ebben a kiadásban a következő böngészők támogatottak: Chrome, Firefox, Sa
   + A Sparkban való futtatás során jelentősen javult a teljesítménye. `read_parquet`
   + Kijavítottunk `column_type_builder` egy problémát, amely miatt nem sikerült egyetlen, nem egyértelmű dátumformátumú oszlop.
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 + **Előnézeti funkció**
   + A napló- és kimeneti fájlok streamelése mostantól elérhető a részletes oldalak futtatásához. A fájlok valós időben streamelik a frissítéseket, amikor az előnézeti kapcsoló be van kapcsolva.
   + A kvóta munkaterületi szinten történő beállításának lehetősége előzetes verzióban érhető el. Az AmlCompute kvóták az előfizetés szintjén vannak lefoglalva, de most már lehetővé tesszük, hogy ezt a kvótát elossza a munkaterületek között, és méltányos megosztásés irányítás érdekében ossza ki. Csak kattintson a **Használat + Kvóták** panelre a munkaterület bal oldali navigációs sávján, és válassza a **Kvóták konfigurálása** lapot. Ne feledje, hogy előfizetési rendszergazdának kell lennie ahhoz, hogy kvótákat állíthat be a munkaterület szintjén, mivel ez egy munkaterület-közi művelet.
@@ -1359,7 +1359,7 @@ Visszaállítottuk a jobb teljesítményt eredményező változást, mivel az az
 
 ## <a name="2019-05-06"></a>2019-05-06
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
 Az Azure Portalon most már:
 + Automatikus pénzmosási kísérletek létrehozása és futtatása
@@ -1478,7 +1478,7 @@ Megjegyzés: A Data Prep Python SDK már nem telepíti `numpy` és `pandas` a cs
 
 ## <a name="2019-04-15"></a>2019-04-15
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
   + Most már újra elküldheti egy meglévő parancsfájl futtatását egy meglévő távoli számítási fürtön.
   + Most már futtathat egy közzétett folyamatot új paraméterekkel a Folyamatok lapon.
   + A Futtatás részletei mostantól támogatják az új Snapshot fájlnézegetőt. Megtekintheti a könyvtár pillanatképét egy adott futtatás beküldésekor. A futtatás elindításához elküldött jegyzetfüzetet is letöltheti.
@@ -1573,7 +1573,7 @@ Megjegyzés: A Data Prep Python SDK már nem telepíti `numpy` és `pandas` a cs
 + **Hibajavítások és fejlesztések**
   + Az Azure Machine Learning-folyamatok ban támogatást adtunk hozzá a source_directory_data_store tulajdonság kívánt adattárba (például egy blobstorage)-ra állításához a [PythonScriptStep-hez](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py)megadott [RunConfigurations-on.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) Alapértelmezés szerint lépések használata Azure File Store, mint a biztonsági adattár, amely előfordulhat, hogy szabályozási problémák, ha nagy számú lépést egyidejűleg hajt végre.
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
 + **Új funkciók**
   + Új húzási táblázatszerkesztő-élmény a jelentésekhez. A felhasználók áthúzhatnak egy oszlopot a kútból arra a táblázatterületre, ahol megjelenik a táblázat előnézete. Az oszlopok átrendezhetők.
@@ -1798,7 +1798,7 @@ A Data Prep SDK-ról a referenciadokumentumok olvasásával olvashat [bővebben.
 
 ## <a name="2018-11-05"></a>2018-11-05
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 Az Azure Machine Learning Azure Portalon a következő frissítéseket tartalmaz:
   * A közzétett folyamatok új **folyamatok** lapja.
   * Egy meglévő HDInsight-fürt számítási célként való csatolásának támogatása.

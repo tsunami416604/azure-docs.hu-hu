@@ -4,12 +4,12 @@ description: Áttekintést kaphat arról, hogy mit tehet a metrikariasztásokkal
 ms.date: 03/17/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: b6d8bc69a407838025c5e78e0a1c773ab457c409
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a6860cad077b597df923274f8971f5652d4ba9e3
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79480232"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397977"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>A metrikariasztások működése az Azure Monitorban
 
@@ -51,7 +51,7 @@ Tegyük fel, hogy létrehozott egy egyszerű dinamikus küszöbértékek metrika
 - Visszatekintés időszakok: 4
 - Szabálysértések száma: 4
 
-A riasztási szabály létrehozása után a dinamikus küszöbértékek gépi tanulási algoritmus megszerzi a rendelkezésre álló előzményadatokat, kiszámítja a metrikasorozat viselkedési mintájának leginkább megfelelő küszöbértéket, és folyamatosan megtanulja az új adatok alapján a küszöbértéket pontosabban kell figyelembe.
+A riasztási szabály létrehozása után a dinamikus küszöbértékek gépi tanulási algoritmus beszerzi a rendelkezésre álló előzményadatokat, kiszámítja a metrikasorozat viselkedési mintájához leginkább illeszkedő küszöbértéket, és folyamatosan megtanulja az új adatok alapján a küszöbérték et, hogy pontosabb legyen.
 
 A riasztási szabály létrehozásától kezdve a figyelő 1 percenként fut, és az elmúlt 20 perc metrikaértékeit 5 percidőszakokba csoportosítva megvizsgálja, és ellenőrzi, hogy a 4 időszak időszakértékeinek átlaga meghaladja-e a várt küszöbértéket. Ha a feltétel teljesül, azaz az átlagos százalékos CPU az elmúlt 20 percben (négy 5 perc időszakok) eltért a várható viselkedés négyszer, a riasztási szabály aktiválódik egy aktivált értesítés. Ha beállított egy e-mailt vagy egy webhook-műveletet a riasztási szabályhoz társított műveletcsoportban, mindkettőről aktivált értesítést fog kapni.
 
@@ -128,7 +128,7 @@ Ez a funkció jelenleg támogatott platform metrikák (nem egyéni metrikák) a 
 
 | Szolgáltatás | Nyilvános Azure | Government | Kína |
 |:--------|:--------|:--------|:--------|
-| Virtuális gépek  | **Igen** | Nem | Nem |
+| Virtual machines (Virtuális gépek)  | **Igen** | Nem | Nem |
 | SQL-kiszolgáló-adatbázisok | **Igen** | **Igen** | Nem |
 | SQL-kiszolgáló rugalmas készletei | **Igen** | **Igen** | Nem |
 | Adatdoboz széléről lévő eszközök | **Igen** | **Igen** | Nem |
@@ -140,6 +140,10 @@ Megadhatja a figyelés hatókörét egyetlen metrika riasztási szabály három 
 - az összes virtuális gép (egy Azure-régióban) egyetlen előfizetésben
 
 Metrikariasztási szabályok létrehozása, amelyek több erőforrást figyelnek, olyan, mint [bármely más metrikariasztás létrehozása,](alerts-metric.md) amely egyetlen erőforrást figyel. Az egyetlen különbség az, hogy ki kell választania az összes figyelni kívánt erőforrást. Ezeket a szabályokat [az Azure Resource Manager-sablonokon](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources)keresztül is létrehozhatja. Minden figyelt erőforrásról külön értesítéseket fog kapni.
+
+> [!NOTE]
+>
+> Egy metrika riasztási szabály, amely több erőforrást figyel, csak egy feltétel engedélyezett.
 
 ## <a name="typical-latency"></a>Tipikus késleltetés
 

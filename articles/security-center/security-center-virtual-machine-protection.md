@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: bcf92838483fbb6b54802cc0d44cc44ea086d705
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93dde2e873a00303dcb8563caed4d56dbf11cc12
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79282639"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435629"
 ---
 # <a name="protect-your-machines-and-applications"></a>Védje gépeit és alkalmazásait
 Amikor az Azure Security Center azonosítja a potenciális biztonsági réseket, javaslatokat hoz létre, amelyek végigvezetik a szükséges vezérlők konfigurálásának folyamatán az erőforrások megerősítéséhez és védelméhez.
@@ -84,10 +84,10 @@ Itt láthatja a virtuális gép vagy a számítógép biztonsági adatait. Az al
 
 
 
-### <a name="virtual-machine-scale-sets"></a><a name="vmscale-sets"></a>Virtuálisgép-méretezési készletek
-A Security Center automatikusan felderíti, hogy rendelkezik-e méretezési készletekkel, és javasolja, hogy telepítse rájuk a Microsoft Monitoring Agent-et.
+### <a name="virtual-machine-scale-sets"></a><a name="vmscale-sets"></a>Virtuálisgép-méretezési csoportok
+A Security Center automatikusan felderíti, hogy rendelkezik-e méretezési készletekkel, és javasolja, hogy telepítse rájuk a Log Analytics-ügynököt.
 
-A Microsoft Monitoring Agent telepítése: 
+A Log Analytics-ügynök telepítése: 
 
 1. Válassza ki a javaslat **Telepítse a figyelési ügynök a virtuálisgép-méretezési csoport.** A nem figyelt méretezési csoportok listáját kapja.
 
@@ -95,7 +95,7 @@ A Microsoft Monitoring Agent telepítése:
 
    ![MMS telepítése](./media/security-center-virtual-machine-recommendations/install-mms.png)
 
-Új méretezési csoportok beállítása a Microsoft Monitoring Agent automatikus telepítéséhez:
+Új méretezési csoportok beállítása a Log Analytics-ügynök automatikus telepítéséhez:
 1. Nyissa meg az Azure-szabályzatot, és kattintson **a Definíciók gombra.**
 
 1. Keresse meg a házirend **Et Deploy Log Analytics ügynök Windows virtuálisgép-méretezési készletek,** és kattintson rá.
@@ -104,7 +104,7 @@ A Microsoft Monitoring Agent telepítése:
 
 1. Állítsa be a **Hatókör** és **a Log Analytics munkaterületet,** és kattintson a Hozzárendelés **gombra.**
 
-Ha azt szeretné, hogy az összes meglévő méretezési csoportok a Microsoft Monitoring Agent telepítéséhez, az Azure-szabályzat, lépjen **a szervizelés,** és alkalmazza a meglévő szabályzatot a meglévő méretezési csoportok.
+Ha azt szeretné, hogy az összes meglévő méretezési csoportok a Log Analytics-ügynök telepítéséhez, az Azure-szabályzat, lépjen **a szervizelés,** és alkalmazza a meglévő szabályzatot a meglévő méretezési csoportok.
 
 
 
@@ -195,7 +195,7 @@ Ha rákattint az egyik futó virtuális gépek docker, látni fogja a részletek
 
 A Security Center megvizsgálja a Docker-konfigurációkat, és egy listát készít az összes átvizsgált hibás szabályról, így láthatóvá teszi a konfigurációs hibákat. A Security Center útmutatást nyújt a problémák gyors megoldásához és az időmegtakarításhoz. A Security Center folyamatosan értékeli a Docker-konfigurációkat, és tájékoztatja a legfrissebb állapotukról.
 
-![tároló lap](./media/security-center-container-recommendations/container-cis-benchmark.png)
+![tároló lap](./media/security-center-virtual-machine-recommendations/container-cis-benchmark.png)
 
 
 ## <a name="next-steps"></a>További lépések

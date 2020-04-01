@@ -6,25 +6,30 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: bf0740bbdd4754aeba43e64f1076a1bea33cffc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f049dc6d1261a8201cf79d1779e522b30d13c4b0
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76844419"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409438"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure Stream Analytics-lekérdezések – problémamegoldás
 
 Ez a cikk a Stream Analytics-lekérdezések fejlesztésével kapcsolatos gyakori problémákat ismerteti, és a hibaelhárításukat.
 
+Ez a cikk ismerteti az Azure Stream Analytics-lekérdezések fejlesztésével kapcsolatos gyakori problémákat, a lekérdezési problémák elhárításának módját és a problémák megoldásának módját. Számos hibaelhárítási lépéshez engedélyezni kell a diagnosztikai naplókat a Stream Analytics-feladathoz. Ha nincs engedélyezve a diagnosztikai naplók, olvassa el [az Azure Stream Analytics hibaelhárítása diagnosztikai naplók használatával című témakört.](stream-analytics-job-diagnostic-logs.md)
+
 ## <a name="query-is-not-producing-expected-output"></a>A lekérdezés nem hoz létre várt kimenetet
+
 1.  Vizsgálja meg a hibákat helyi teszteléssel:
+
     - Az Azure Portal **on Query** lapon válassza a **Tesztelés lehetőséget.** A lekérdezés [teszteléséhez](stream-analytics-test-query.md)használja a letöltött mintaadatokat. Vizsgálja meg a hibákat, és próbálja meg kijavítani őket.   
     - A [lekérdezést helyileg](stream-analytics-live-data-local-testing.md) is tesztelheti az Azure Stream Analytics-eszközökkel a Visual Studio vagy a [Visual Studio Code számára.](visual-studio-code-local-run-live-input.md) 
 
-2.  [Hibakeresési lekérdezések lépésről lépésre helyileg az](debug-locally-using-job-diagram.md) Azure Stream Analytics-eszközök visual studio feladatdiagram használatával. A feladatdiagram bemutatja, hogyan áramlik a bemeneti forrásokból (Event Hub, IoT Hub, stb.) származó adatok több lekérdezési lépésen keresztül, és végül kimeneti fogadók. Minden lekérdezési lépés a parancsfájlban a WITH utasítás használatával definiált ideiglenes eredményhalmazhoz van rendelve. Megtekintheti az adatokat, valamint a metrikák minden lekérdezési lépés minden köztes eredményhalmaz, hogy megtalálják a probléma forrását.
+2.  [Hibakeresési lekérdezések lépésről lépésre helyileg az](debug-locally-using-job-diagram.md) Azure Stream Analytics-eszközök visual studio feladatdiagram használatával. A feladatdiagram bemutatja, hogyan áramlik a bemeneti forrásokból (Event Hub, IoT Hub, stb.) származó adatok több lekérdezési lépés, és végül a kimeneti fogadók. Minden lekérdezési lépés a parancsfájlban a WITH utasítás használatával definiált ideiglenes eredményhalmazhoz van rendelve. Megtekintheti az adatokat, valamint a metrikákat, minden köztes eredményhalmazban, hogy megtalálja a probléma forrását.
+
     ![Feladatdiagram előnézetének eredménye](./media/debug-locally-using-job-diagram/preview-result.png)
 
 3.  Ha [**a Timestamp By,**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics)használatával ellenőrizze, hogy az események időbélyegei nagyobbak-e, mint a [feladat kezdési ideje.](stream-analytics-out-of-order-and-late-events.md)
@@ -33,7 +38,8 @@ Ez a cikk a Stream Analytics-lekérdezések fejlesztésével kapcsolatos gyakori
     - A [**WHERE**](https://docs.microsoft.com/stream-analytics-query/where-azure-stream-analytics) záradék a lekérdezésben kiszűrte az összes eseményt, megakadályozva a kimenet ek keletkezését.
     - Egy [**CAST**](https://docs.microsoft.com/stream-analytics-query/cast-azure-stream-analytics) függvény meghibásodik, ami a feladat sikertelensítését okozza. A típusleadott hibák elkerülése érdekében használja [**helyette TRY_CAST.**](https://docs.microsoft.com/stream-analytics-query/try-cast-azure-stream-analytics)
     - Ablakfüggvények használatakor várja meg, amíg az ablak teljes időtartama megjelenik a lekérdezés ből származó kimenet.
-    - Az események időbélyege megelőzi a feladat kezdési idejét, ezért az események et eldobják.
+    - Az események időbélyege megelőzi a feladat kezdési idejét, és az események et eldobják.
+    - [**A JOIN**](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) feltételei nem egyeznek. Ha nincs egyezés, nulla kimenet lesz.
 
 5.  Győződjön meg arról, hogy az eseményrendezési házirendek a várt módon vannak konfigurálva. Nyissa meg a **Beállítások lapot,** és válassza [**az Eseményrendezés**](stream-analytics-out-of-order-and-late-events.md)lehetőséget. A házirend *nem* lesz alkalmazva, ha a **Teszt** gombbal teszteli a lekérdezést. Ez az eredmény az egyik különbség a böngészőn ként végzett tesztelés és a feladat éles környezetben való futtatása között. 
 
@@ -41,12 +47,15 @@ Ez a cikk a Stream Analytics-lekérdezések fejlesztésével kapcsolatos gyakori
     - Használja [a Naplók at,](../azure-resource-manager/resource-group-audit.md)és szűrje a hibák azonosítását és hibakeresését.
     - A [feladatdiagnosztikai naplók](stream-analytics-job-diagnostic-logs.md) segítségével azonosíthatja és debugelhatja a hibákat.
 
-## <a name="job-is-consuming-too-many-streaming-units"></a>A feladat túl sok streamelési egységet fogyaszt
+## <a name="resource-utilization-is-high"></a>Az erőforrások kihasználtsága magas
+
 Győződjön meg arról, hogy kihasználja a párhuzamosítás előnyeit az Azure Stream Analytics szolgáltatásban. A streamanalytics-feladatok [lekérdezési párhuzamosításával a](stream-analytics-parallelization.md) bemeneti partíciók konfigurálásával és az elemzési lekérdezésdefiníció finomhangolásával skálázhat.
 
 ## <a name="debug-queries-progressively"></a>Lekérdezések fokozatos hibakeresése
 
-A valós idejű adatfeldolgozás, tudva, hogy az adatok hogyan néz ki a lekérdezés közepén hasznos lehet. Mivel az Azure Stream Analytics-feladat bemenetei vagy lépései többször is olvashatók, további SELECT INTO utasítások írása. Ezzel köztes adatokat ad ki a tárolóba, és lehetővé teszi az adatok helyességének vizsgálatát, ugyanúgy, mint a *figyelési változók,* amikor hibakeresést végez egy program hibakeresésével.
+A valós idejű adatfeldolgozás, tudva, hogy az adatok hogyan néz ki a lekérdezés közepén hasznos lehet. Ezt a Visual Studio feladatábrájával láthatja. Ha nem rendelkezik a Visual Studio, további lépéseket tehet a köztes adatok kimeneteléhez.
+
+Mivel az Azure Stream Analytics-feladat bemenetei vagy lépései többször is olvashatók, további SELECT INTO utasítások írása. Ezzel köztes adatokat ad ki a tárolóba, és lehetővé teszi az adatok helyességének vizsgálatát, ugyanúgy, mint a *figyelési változók,* amikor hibakeresést végez egy program hibakeresésével.
 
 A következő példa lekérdezés egy Azure Stream Analytics-feladat ban egy stream bemenet, két referencia-adatbemenetek és egy kimenet az Azure Table Storage-ba. A lekérdezés az eseményközpontból és két hivatkozási blobból származó adatokat egyesít a név- és kategóriaadatok lekérdezéséhez:
 

@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 08/28/2019
 ms.author: labrenne
-ms.openlocfilehash: 2cff6a0e48fc7bf58a642f509fcda6b114e002ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95f27d913cd288c186bae1a6375212b072f50bb4
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022936"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422435"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>Egyéni képtár létrehozása a Megosztott képtár segítségével
 
@@ -38,6 +38,9 @@ A forgatókönyvhöz konfigurált megosztott lemezkép használata számos előn
 * **Lemezverziózás és csoportosítás a könnyebb kezelés érdekében.** A képcsoportosítási definíció információkat tartalmaz arról, hogy miért jött létre a kép, milyen operációs rendszerre készült, valamint a lemezkép használatáról. A képek csoportosítása megkönnyíti a képkezelést. További információ: [Képdefiníciók](../virtual-machines/windows/shared-image-galleries.md#image-definitions).
 
 ## <a name="prerequisites"></a>Előfeltételek
+
+> [!NOTE]
+> Hitelesítenie kell az Azure AD használatával. Ha megosztott kulcs-auth-ot használ, hitelesítési hibát fog kapni.  
 
 * **Egy Azure Batch-fiók.** Batch-fiók létrehozásához tekintse meg a Batch-rövid útmutatókat az [Azure Portalon](quick-create-portal.md) vagy az [Azure CLI-n](quick-create-cli.md)keresztül.
 
@@ -86,6 +89,9 @@ Miután sikeresen létrehozta a felügyelt lemezképet, létre kell hoznia egy m
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>Készlet létrehozása megosztott lemezképből az Azure CLI használatával
 
 Ha az Azure CLI használatával hozzon létre `az batch pool create` egy készletet a megosztott lemezképből, használja a parancsot. Adja meg a megosztott `--image` képazonosítót a mezőben. Győződjön meg arról, hogy az operációs rendszer típusa és a Termékváltozat megegyezik a`--node-agent-sku-id`
+
+> [!NOTE]
+> Hitelesítenie kell az Azure AD használatával. Ha megosztott kulcs-auth-ot használ, hitelesítési hibát fog kapni.  
 
 ```azurecli
 az batch pool create \

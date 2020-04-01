@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: 5ada709350802344bfa65cce269735baa416edf6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3bd1156de4aed7d1ea5c530605697f2dc80d63c
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80234451"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476976"
 ---
 # <a name="high-availability-ports-overview"></a>Magas rendelkezésre állású portok – áttekintés
 
@@ -95,7 +95,7 @@ Ha a forgatókönyv ben egynél több HA-port előtér-kiszolgálót kell konfig
 ## <a name="limitations"></a>Korlátozások
 
 - A HA portok terheléselosztási szabályai csak a belső standard terheléselosztóhoz érhetők el.
-- A HA-portok terheléselosztási szabályának és a nem HA-portok terheléselosztási szabályának kombinálása nem támogatott.
+- A HA-portok terheléselosztási szabályának és egy nem HA portok terheléselosztási szabályának kombinálása nem támogatott.
 - A meglévő IP-töredékeket a HA Ports terheléselosztási szabályai továbbítják ugyanarra a célhelyre, mint az első csomag.  UdP- vagy TCP-csomag IP-töredezettsége nem támogatott.
 - A folyamatszimmetria (elsősorban nva-forgatókönyvek esetén) csak akkor támogatott háttérpéldányés egyetlen hálózati adapter (és egyetlen IP-konfiguráció) alkalmazással, ha a fenti ábrán látható módon és a HA-portok terheléselosztási szabályainak használatával használható. Más forgatókönyv nem áll rendelkezésre. Ez azt jelenti, hogy két vagy több terheléselosztó erőforrás és azok szabályai független döntéseket hoznak, és soha nem koordináltak. Lásd a hálózati virtuális készülékek leírását és [diagramját.](#nva) Ha több hálózati adaptert használ, vagy az NVA-t egy nyilvános és belső terheléselosztó között szendvicsezi, az áramlási szimmetria nem érhető el.  Lehet, hogy a munka körül ezt a forrás NAT'ing a beáramló áramlás az IP a készülék, hogy a válaszok érkeznek az azonos NVA.  Azonban azt javasoljuk, hogy egyetlen hálózati adapter t, és a fenti ábrán látható referenciaarchitektúra használatát.
 

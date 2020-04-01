@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 752334e3d594b1f95786aecaca134b74c4e264d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89dc96370f65ff20d7f8be38ff78d6c1664305d3
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74688698"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477799"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>App Service-környezet létrehozása 1-es v1-ben 
 
@@ -45,7 +45,7 @@ App Service-környezet 1-es eszközének létrehozásához keressen az Azure Mar
 3. Új erőforráscsoport kijelölése vagy megadása. Az ASE-hez használt erőforráscsoportnak meg kell egyeznie a virtuális hálózathoz használt erőforráscsoporttal. Ha egy már meglévő virtuális hálózatot választ, az ASE erőforráscsoport-kiválasztása frissül, hogy tükrözze a virtuális hálózat.
    
     ![][2]
-4. Adja meg a virtuális hálózat és a hely kiválasztása. Választhat, hogy hozzon létre egy új virtuális hálózatot, vagy válasszon ki egy már meglévő virtuális hálózatot. Ha új virtuális hálózatot választ, megadhatja a nevet és a helyet. Az új virtuális hálózat címtartománya 192.168.250.0/23, és egy **alapértelmezett** nevű alhálózat, amely 192.168.250.0/24. Egyszerűen kiválaszthat egy már meglévő klasszikus vagy erőforrás-kezelő virtuális hálózatot is. A VIP-típus kiválasztása határozza meg, hogy az ASE közvetlenül elérhető-e az internetről (külső), vagy belső terheléselosztót (ILB) használ. Ha többet szeretne megtudni róluk, olvassa el [A belső terheléselosztó használata App Service-környezettel][ILBASE]című részt. Ha kiválaszt egy VIP típusú külső, akkor kiválaszthatja, hogy hány külső IP-címek a rendszer jön létre az IPSSL célokra. Ha a Belső lehetőséget választja, akkor meg kell adnia az ASE által használni kívánt altartományt. Az ASE-k olyan virtuális hálózatokba is telepíthetők, amelyek *nyilvános* címtartományokat *vagy* RFC1918 címtereket (azaz magáncímeket) használnak. Ahhoz, hogy egy nyilvános címtartományú virtuális hálózatot használhasson, előre létre kell hoznia a virtuális hálózatot. Ha kiválaszt egy már meglévő virtuális hálózatot, létre kell hoznia egy új alhálózatot az ASE létrehozása során. **A portálon nem használható előre létrehozott alhálózat. Hozzon létre egy ASE egy már meglévő alhálózat, ha az ASE egy erőforrás-kezelő sablon használatával hoz létre.** AsE sablonból való létrehozásához használja az itt található információkat, [az App Service-környezet létrehozása sablonból][ILBAseTemplate] és itt [az ILB App Service-környezet létrehozása sablonból][ASEfromTemplate].
+4. Adja meg a virtuális hálózat és a hely kiválasztása. Választhat, hogy hozzon létre egy új virtuális hálózatot, vagy válasszon ki egy már meglévő virtuális hálózatot. Ha új virtuális hálózatot választ, megadhatja a nevet és a helyet. Az új virtuális hálózat címtartománya 192.168.250.0/23, és egy **alapértelmezett** nevű alhálózat, amely 192.168.250.0/24. Egyszerűen kiválaszthat egy már meglévő klasszikus vagy erőforrás-kezelő virtuális hálózatot is. A VIP-típus kiválasztása határozza meg, hogy az ASE közvetlenül elérhető-e az internetről (külső), vagy belső terheléselosztót (ILB) használ. Ha többet szeretne megtudni róluk, olvassa el [A belső terheléselosztó használata App Service-környezettel][ILBASE]című részt. Ha kiválaszt egy VIP típusú külső, akkor kiválaszthatja, hogy hány külső IP-címek a rendszer jön létre az IP SSL célokra. Ha a Belső lehetőséget választja, akkor meg kell adnia az ASE által használni kívánt altartományt. Az ASE-k olyan virtuális hálózatokba is telepíthetők, amelyek *nyilvános* címtartományokat *vagy* RFC1918 címtereket (azaz magáncímeket) használnak. Ahhoz, hogy egy nyilvános címtartományú virtuális hálózatot használhasson, előre létre kell hoznia a virtuális hálózatot. Ha kiválaszt egy már meglévő virtuális hálózatot, létre kell hoznia egy új alhálózatot az ASE létrehozása során. **A portálon nem használható előre létrehozott alhálózat. Hozzon létre egy ASE egy már meglévő alhálózat, ha az ASE egy erőforrás-kezelő sablon használatával hoz létre.** AsE sablonból való létrehozásához használja az itt található információkat, [az App Service-környezet létrehozása sablonból][ILBAseTemplate] és itt [az ILB App Service-környezet létrehozása sablonból][ASEfromTemplate].
 
 ### <a name="details"></a>Részletek
 Az ASE 2 előtér-végződéssel és 2 dolgozóval jön létre. Az előtér-végpontok HTTP/HTTPS-végpontként működnek, és forgalmat küldenek a dolgozóknak, amelyek az alkalmazásokat üzemeltető szerepkörök. Módosíthatja a mennyiséget az ASE létrehozása után, és még automatikus skálázási szabályokat is beállíthat ezeken az erőforráskészleteken. Az App Service-környezet manuális skálázásával, kezelésével és figyelésével kapcsolatos további részletekért látogasson el ide: [Az App Service-környezet konfigurálása][ASEConfig] 

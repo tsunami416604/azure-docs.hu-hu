@@ -4,12 +4,12 @@ description: Megtudhatja, hogy miként készíthet biztonsági másolatot az Exc
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 389713767409ff49c6fc83a4d6e8dc3c87272fc9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b45efa0623edbec47b8ae12d3a97b1e032626530
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77614373"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396405"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Exchange-kiszolgáló biztonsági mentése az Azure Backupba a System Center 2012 R2 DPM-mel
 
@@ -49,7 +49,7 @@ A DPM-védelmi ügynök Exchange-kiszolgálóra történő telepítéséhez hajt
 4. Jelölje ki a védeni kívánt Exchange-kiszolgálóadatbázist, és kattintson a **Tovább**gombra.
 
    > [!NOTE]
-   > Ha az Exchange 2013-at védi, ellenőrizze az [Exchange 2013 előfeltételeit.](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/dn751029(v=sc.12))
+   > Ha az Exchange 2013-at védi, ellenőrizze az [Exchange 2013 előfeltételeit.](https://docs.microsoft.com/system-center/dpm/back-up-exchange?view=sc-dpm-2016)
    >
    >
 

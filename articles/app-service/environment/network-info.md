@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: fb931c309b5f85902d8abc9cc6da45576bff4041
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4aec7fa78292f224952dd2ae929d2b8bfd97ab9b
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259824"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477685"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service-környezet hálózati megfontolásai #
 
@@ -138,7 +138,7 @@ Ezek az IP-címek az ASE felhasználói felületéről láthatók az Azure Porta
 
 ### <a name="app-assigned-ip-addresses"></a>Alkalmazáshoz rendelt IP-címek ###
 
-Egy külső ASE segítségével IP-címeket rendelhet az egyes alkalmazásokhoz. Ezt nem teheted meg egy ILB ASE-vel. Ha többet szeretne tudni arról, hogy miként állíthatja be az alkalmazást saját IP-címmel, olvassa el [az Egyéni DNS-név biztonságossá tétele SSL-kötéssel az Azure App Service szolgáltatásban című témakört.](../configure-ssl-bindings.md)
+Egy külső ASE segítségével IP-címeket rendelhet az egyes alkalmazásokhoz. Ezt nem teheted meg egy ILB ASE-vel. Ha többet szeretne tudni arról, hogy miként konfigurálhatja az alkalmazást saját IP-címmel, olvassa el [az Egyéni DNS-név biztonságossá tétele TLS/SSL-kötéssel az Azure App Service szolgáltatásban című témakört.](../configure-ssl-bindings.md)
 
 Ha egy alkalmazás saját IP-alapú SSL-címmel rendelkezik, az ASE két portot foglal le az adott IP-címre való leképezéshez. Az egyik port http-forgalomhoz, a másik port pedig HTTPS-hez. Ezek a portok az IP-címek szakaszban az ASE felhasználói felületén találhatók. A forgalomnak képesnek kell lennie arra, hogy elérje ezeket a portokat a VIP-ből, különben az alkalmazások elérhetetlenek. Ezt a követelményt fontos megjegyezni a hálózati biztonsági csoportok konfigurálásakor.
 

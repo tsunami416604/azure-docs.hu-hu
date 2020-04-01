@@ -3,12 +3,12 @@ title: Támogatott erőforrástípusok az Azure Resource Health szolgáltatáson
 description: Támogatott erőforrástípusok az Azure Resource állapota révén
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 3ba7b308c0c7671df8a652194830cb910cb89acc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5cc80147730fdc97b1181690f6e70fc538d4afcc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258303"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478901"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Erőforrástípusok és állapotellenőrzések az Azure-erőforrások állapotában
 Az alábbi lista az erőforrás-állapotok erőforrás-típusonkénti összes ellenőrzését tartalmazza.
@@ -47,6 +47,11 @@ Az alábbi lista az erőforrás-állapotok erőforrás-típusonkénti összes el
 |Végrehajtott ellenőrzések|
 |---|
 |<ul><li>A fiók elérhető az adatközponton belülről?</li><li>Elérhető a Cognitive Services erőforrás-szolgáltató?</li><li>A Cognitive Service elérhető a megfelelő régióban?</li><li>Az erőforrás metaadatait tároló tárfiókban olvasási műveletek hajthatók végre?</li><li>Elérte az API-hívási kvótát?</li><li>Elérte az API-hívás olvasási korlátját?</li></ul>|
+
+## <a name="microsoftcomputehostgroupshosts"></a>Microsoft.compute/hostgroups/hosts
+|Végrehajtott ellenőrzések|
+|---|
+|<ul><li>A gazdagép működik</li><li>A gazdahardver leromlott?</li><li>A gazdagép felvan osztva?</li><li>A gazdahardverszolgáltatás különböző hardverrel gyógyult?</li></ul>|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.compute/virtualmachines
 |Végrehajtott ellenőrzések|

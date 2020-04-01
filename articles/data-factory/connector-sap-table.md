@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2019
-ms.openlocfilehash: e98ff7fd914bb86cae256bb1bf6c19086758d463
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 65e51258b3a24b14b5171968645e88420e92dd5a
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371540"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421079"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Adatok másolása SAP-táblából az Azure Data Factory használatával
 
@@ -230,7 +230,7 @@ Az SAP-táblából történő adatok másolásához a következő tulajdonságok
 <br/>
 >`partitionOption` Példaként `partitionOnInt` véve az egyes partíciók sorainak számát a következő képlettel `partitionUpperBound` számítjuk ki: (a sorok között és `partitionLowerBound`a )/`maxPartitionsNumber`között esik.<br/>
 <br/>
->Az adatpartíciók párhuzamos betöltéséhez a másolás felgyorsításához a [`parallelCopies`](copy-activity-performance.md#parallel-copy) párhuzamos mértéket a másolási tevékenység beállítása szabályozza. Ha például négyre állítva, `parallelCopies` a Data Factory egyidejűleg négy lekérdezést hoz létre és futtat a megadott partícióbeállítás és -beállítások alapján, és minden lekérdezés lekéri az adatok egy részét az SAP-táblából. Javasoljuk, hogy `maxPartitionsNumber` az `parallelCopies` ingatlan értékének többszörösét tegye meg. Amikor adatokat másol fájlalapú adattárba, azt is megkell parancsolni, hogy több fájlként írjon egy mappába (csak adja meg a mappa nevét), ebben az esetben a teljesítmény jobb, mint egyetlen fájlba írni.
+>Az adatpartíciók párhuzamos betöltéséhez a másolás felgyorsításához a [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) párhuzamos mértéket a másolási tevékenység beállítása szabályozza. Ha például négyre állítva, `parallelCopies` a Data Factory egyidejűleg négy lekérdezést hoz létre és futtat a megadott partícióbeállítás és -beállítások alapján, és minden lekérdezés lekéri az adatok egy részét az SAP-táblából. Javasoljuk, hogy `maxPartitionsNumber` az `parallelCopies` ingatlan értékének többszörösét tegye meg. Amikor adatokat másol fájlalapú adattárba, azt is megkell parancsolni, hogy több fájlként írjon egy mappába (csak adja meg a mappa nevét), ebben az esetben a teljesítmény jobb, mint egyetlen fájlba írni.
 
 A `rfcTableOptions`alkalmazásban a következő általános SAP-lekérdezésoperátorok segítségével szűrheti a sorokat:
 

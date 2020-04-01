@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ee3b5bd3278412949074b77f9d1c53d63a467280
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 403ca480bcf0743d81e375c122c888db96bbf543
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78189395"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408718"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Fejlesztői megjegyzések az Azure Active Directory B2C egyéni szabályzataihoz
 
@@ -59,68 +59,82 @@ Az egyéni házirend-szolgáltatáskészletet használó fejlesztőknek be kell 
 
 Egyéni szabályzat/identitásélmény-keretrendszer képességek állandó és gyors fejlesztés alatt állnak. Az alábbi táblázat a szolgáltatások és az összetevők elérhetőségének indexe.
 
-### <a name="identity-providers-tokens-protocols"></a>Identitásszolgáltatók, tokenek, protokollok
+
+### <a name="protocols-and-authorization-flows"></a>Protokollok és engedélyezési folyamatok
 
 | Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
 |-------- | :-----------: | :-------: | :--: | ----- |
-| IDP-OpenIDConnect |  |  | X | Például a Google+.  |
-| IDP-OAUTH2 |  |  | X | Például a Facebook.  |
-| IDP-OAUTH1 (twitter) |  | X |  | Például, Twitter. |
-| IDP-OAUTH1 (ex-twitter) |  |  |  | Nem támogatott |
-| IDP-SAML |  |   | X | Például Salesforce, ADFS. |
-| IDP-WSFED | X |  |  |  |
-| Függő fél OAUTH1 |  |  |  | Nem támogatott. |
-| Függő fél OAUTH2 |  |  | X |  |
-| Függő entitás OIDC |  |  | X |  |
-| Függő fél SAML |  |X  |  |  |
-| Függő fél WSFED | X |  |  |  |
-| REST API alapszintű és tanúsítvány-hitelesítéssel |  |  | X | Például az Azure Logic Apps. |
+| [OAuth2 engedélyezési kód](authorization-code-flow.md) |  |  | X |  |
+| OAuth2 engedélyezési kód a PKCE-vel |  |  | X | Csak mobilalkalmazások  |
+| [OAuth2 implicit folyamat](implicit-flow-single-page-application.md) |  |  | X |  |
+| [OAuth2 erőforrás-tulajdonos jelszóhitelesítő adatai](ropc-custom.md) |  | X |  |  |
+| [OIDC csatlakozás](openid-connect.md) |  |  | X |  |
+| [SAML2](connect-with-saml-service-providers.md)  |  |X  |  | POST és átirányítás kötések. |
+| OAuth1 |  |  |  | Nem támogatott. |
+| WSFED | X |  |  |  |
+
+### <a name="identify-providers-federation"></a>Szolgáltatók összevonásának azonosítása 
+
+| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+|-------- | :-----------: | :-------: | :--: | ----- |
+| [OpenID Connect](openid-connect-technical-profile.md) |  |  | X | Például a Google+.  |
+| [OAuth2](oauth2-technical-profile.md) |  |  | X | Például a Facebook.  |
+| [OAuth1](oauth1-technical-profile.md) |  | X |  | Például, Twitter. |
+| [SAML2](saml-technical-profile.md) |  |   | X | Például Salesforce, ADFS. |
+| WSFED| X |  |  |  |
+
+
+### <a name="rest-api-integration"></a>REST API-integráció
+
+| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+|-------- | :-----------: | :-------: | :--: | ----- |
+| [REST API alapszintű hitelesítéssel](secure-rest-api.md#http-basic-authentication) |  |  | X |  |
+| [REST API az ügyféltanúsítvány hitelesítésével](secure-rest-api.md#https-client-certificate-authentication) |  |  | X |  |
+| [REST API az OAuth2-hordozó hitelesítésével](secure-rest-api.md#oauth2-bearer-authentication) |  | X |  |  |
 
 ### <a name="component-support"></a>Összetevő támogatása
 
 | Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| Azure többtényezős hitelesítés |  |  | X |  |
-| Az Azure Active Directory helyi címtárként |  |  | X |  |
-| Azure Email alrendszer az e-mailek ellenőrzéséhez |  |  | X |  |
-| Többnyelvű támogatás|  |  | X |  |
-| Predikátum-érvényesítések |  |  | X | Például a jelszó összetettsége. |
-| Harmadik fél e-mail szolgáltatóinak használata |  |X  |  |  |
+| [Telefontényező-hitelesítés](phone-factor-technical-profile.md) |  |  | X |  |
+| [Azure MFA-hitelesítés](multi-factor-auth-technical-profile.md) |  | X |  |  |
+| [Egyszeri jelszó](one-time-password-technical-profile.md) |  | X |  |  |
+| [Az Azure Active Directory](active-directory-technical-profile.md) helyi címtárként |  |  | X |  |
+| Azure-levelezési alrendszer az e-mailek ellenőrzéséhez |  |  | X |  |
+| [Harmadik fél e-mail szolgáltatói](custom-email.md) |  |X  |  |  |
+| [Többnyelvű támogatás](localization.md)|  |  | X |  |
+| [Predikátum-ellenőrzések](predicates.md) |  |  | X | Például a jelszó összetettsége. |
+| [Vezérlők megjelenítése](display-controls.md) |  |X  |  |  |
 
-### <a name="content-definition"></a>Tartalom definíciója
+
+### <a name="page-layout-versions"></a>Oldalelrendezési verziók
 
 | Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| Hiba oldal, api.error |  |  | X |  |
-| IDP kiválasztási oldal, api.idpselections |  |  | X |  |
-| IDP-választás a regisztrációhoz, api.idpselections.signup |  |  | X |  |
-| Elfelejtett jelszó, api.localaccountpasswordreset |  |  | X |  |
-| Helyi fiók bejelentkezése, api.localaccountsignin |  |  | X |  |
-| Helyi fiókregisztráció, api.localaccountsignup |  |  | X |  |
-| MFA oldal, api.phonefactor |  |  | X |  |
-| Önérvényesítő közösségi fiók regisztráció, api.selfasserted |  |  | X |  |
-| Önérvényesítő profilfrissítés, api.selfasserted.profileupdate |  |  | X |  |
-| Egyesített regisztrációs vagy bejelentkezési oldal, api.signuporsignin, "disableSignup" paraméterrel |  |  | X |  |
-| JavaScript / Lap elrendezés |  | X |  |  |
+| [2.0.0](page-layout.md#200) |  | X |  |  |
+| [1.2.0](page-layout.md#120) |  | X |  |  |
+| [1.1.0](page-layout.md#110) |  |  | X |  |
+| [1.0.0](page-layout.md#100) |  |  | X |  |
+| [JavaScript-támogatás](javascript-samples.md) |  | X |  |  |
 
 ### <a name="app-ief-integration"></a>App-IEF integráció
 
 | Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| Lekérdezési karakterlánc paraméter domain_hint |  |  | X | Igényként elérhető, átadható az IDP-nek. |
-| Lekérdezési karakterlánc paraméter login_hint |  |  | X | Igényként elérhető, átadható az IDP-nek. |
-| A JSON beszúrása a UserJourney-be client_assertion | X |  |  | Elavult lesz. |
-| JSON beszúrása a UserJourney-be id_token_hint |  | X |  | Menj előre, hogy átmenj json-on. |
-| IDP TOKEN átad az alkalmazásnak |  | X |  | Például a Facebooktól az alkalmazásig. |
+| Lekérdezési karakterlánc paraméter`domain_hint` |  |  | X | Igényként elérhető, átadható az IDP-nek. |
+| Lekérdezési karakterlánc paraméter`login_hint` |  |  | X | Igényként elérhető, átadható az IDP-nek. |
+| A JSON beszúrása a felhasználói utazásba`client_assertion` | X |  |  | Elavult lesz. |
+| JSON beszúrása a felhasználói útra`id_token_hint` |  | X |  | Menj előre, hogy átmenj json-on. |
+| [Identitásszolgáltató-jogkivonat átadása az alkalmazásnak](idp-pass-through-custom.md) |  | X |  | Például a Facebooktól az alkalmazásig. |
 
 ### <a name="session-management"></a>Munkamenet-kezelés
 
 | Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| SSO-munkamenet-szolgáltató |  |  | X |  |
-| Külső bejelentkezési munkamenet-szolgáltató |  |  | X |  |
-| SAML sso munkamenet-szolgáltató |  |  | X |  |
-| Alapértelmezett SSO-munkamenet-szolgáltató |  |  | X |  |
+| [Alapértelmezett SSO-munkamenet-szolgáltató](custom-policy-reference-sso.md#defaultssosessionprovider) |  |  | X |  |
+| [Külső bejelentkezési munkamenet-szolgáltató](custom-policy-reference-sso.md#externalloginssosessionprovider) |  |  | X |  |
+| [SAML SSO-munkamenet-szolgáltató](custom-policy-reference-sso.md#samlssosessionprovider) |  |  | X |  |
+
 
 ### <a name="security"></a>Biztonság
 
@@ -128,16 +142,19 @@ Egyéni szabályzat/identitásélmény-keretrendszer képességek állandó és 
 |-------- | :-----------: | :-------: | :--: | ----- |
 | Házirendkulcsok- generálás, kézi, feltöltés |  |  | X |  |
 | Házirendkulcsok- RSA/Tanúsítvány, Titkok |  |  | X |  |
-| Házirend feltöltése |  |  | X |  |
+
 
 ### <a name="developer-interface"></a>Fejlesztői felület
 
 | Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Azure Portal-IEF felhasználói felület |  |  | X |  |
-| Application Insights UserJourney naplók |  | X |  | A fejlesztés során hibaelhárításra szolgál.  |
-| Application Insights eseménynaplók (vezénylési lépések) |  | X |  | A felhasználói folyamatok figyelésére szolgál az éles környezetben. |
+| Házirend feltöltése |  |  | X |  |
+| [Az Application Insights felhasználói útnaplói](troubleshoot-with-application-insights.md) |  | X |  | A fejlesztés során hibaelhárításra szolgál.  |
+| [Az Application Insights eseménynaplói](application-insights-technical-profile.md) |  | X |  | A felhasználói folyamatok figyelésére szolgál az éles környezetben. |
+
 
 ## <a name="next-steps"></a>További lépések
 
-További információ [az egyéni házirendekről és a felhasználói folyamatok közötti különbségekről.](custom-policy-overview.md)
+- Az [Azure AD B2C-hez elérhető Microsoft Graph-műveletek](microsoft-graph-operations.md) ellenőrzése
+- További információ [az egyéni házirendekről és a felhasználói folyamatok közötti különbségekről.](custom-policy-overview.md)

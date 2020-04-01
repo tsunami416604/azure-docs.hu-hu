@@ -8,22 +8,25 @@ ms.author: edprice
 manager: edprice
 editor: edprice
 ms.topic: conceptual
-ms.date: 05/29/2019
+ms.date: 03/30/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: a5426c3cd7552b24739f9a20e01d5a4b42bd383c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b3fa5faccf17df17bc4f7cc2d8b023b868fdbe1
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68834572"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411196"
 ---
 # <a name="install-micro-focus-enterprise-server-40-and-enterprise-developer-40-on-azure"></a>A Micro Focus Enterprise Server 4.0 és az Enterprise Developer 4.0 telepítése az Azure-ra
 
 Ez a cikk bemutatja, hogyan állíthatja be a [Micro Focus Enterprise Server 4.0-s](https://www.microfocus.com/documentation/enterprise-developer/es30/) és micro Focus Enterprise Developer [4.0-s verziót](https://www.microfocus.com/documentation/enterprise-developer/ed_30/) az Azure-ban.
 
 Az Azure-ban gyakori számítási feladatok egy fejlesztési és tesztelési környezet. Ez a forgatókönyv azért gyakori, mert annyira költséghatékony és könnyen telepíthető és bontható le. Az Enterprise Server segítségével a Micro Focus létrehozta az egyik legnagyobb mainframe rehosting platformot. Z/OS számítási feladatok futtathatók egy olcsóbb x86-os platformon az Azure-on Windows vagy Linux virtuális gépek (VM-ek) használatával.
+
+> [!NOTE]
+> Hamarosan: Útmutató a [Micro Focus Enterprise Server 5.0](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110) beállításához az Azure virtuális gépeken.
 
 Ez a telepítő a Windows Server 2016-lemezképet futtató Azure-virtuális gépeket használja az Azure Piactérről, és a Microsoft SQL Server 2017 már telepítve van. Ez a beállítás az Azure Stackre is vonatkozik.
 
