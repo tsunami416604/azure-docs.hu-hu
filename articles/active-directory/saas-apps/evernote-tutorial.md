@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezés (SSO) integrálása az Evernote-val | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és az Evernote között.
+title: 'Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja az Evernote-tal | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és az Evernote között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,196 +17,196 @@ ms.date: 09/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 55216e9eb4bd5cda2635564480751459f05e8309
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71121629"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-evernote"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezés (SSO) integrálása az Evernote-val
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-evernote"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja az Evernote-tal
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az Evernote-t Azure Active Directory (Azure AD-val). Ha az Azure AD-val integrálja az Evernote-t, a következőket teheti:
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja az Evernote-ot az Azure Active Directoryval (Azure AD). Ha integrálja az Evernote-ot az Azure AD-vel, a következőket teheti:
 
-* Az Evernote-hoz hozzáférő Azure AD-beli vezérlés.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek az Evernote-ba az Azure AD-fiókjával.
-* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
+* Szabályozhatja az Azure AD-ben, aki hozzáfér az Evernote-hoz.
+* Lehetővé teszi a felhasználók számára, hogy automatikusan bejelentkezve evernote az Azure AD-fiókok.
+* Kezelje fiókjait egyetlen központi helyen – az Azure Portalon.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Első lépésként a következő elemeket kell megadnia:
+A kezdéshez a következő elemekre van szükség:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* Evernote egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes [fiókot](https://azure.microsoft.com/free/)kaphat.
+* Evernote egyszeri bejelentkezés (SSO) engedélyezve előfizetés.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztkörnyezetben.
 
-* Az Evernote támogatja **az SP-t és a identitásszolgáltató** KEZDEMÉNYEZett SSO
+* Az Evernote támogatja az **SP és az IDP** által kezdeményezett SSO-t
 
 > [!NOTE]
-> Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
+> Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egy bérlőben.
 
-## <a name="adding-evernote-from-the-gallery"></a>Evernote hozzáadása a gyűjteményből
+## <a name="adding-evernote-from-the-gallery"></a>Evernote hozzáadása a galériából
 
-A Evernote Azure AD-be való integrálásának konfigurálásához hozzá kell adnia az Evernote-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
+Az Evernote Azure AD-be való integrálásának konfigurálásához hozzá kell adnia az Evernote-ot a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
-1. A **Hozzáadás a** katalógusból szakaszban írja be a " **Evernote** " kifejezést a keresőmezőbe.
-1. Válassza ki az **Evernote** elemet az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
+1. A bal oldali navigációs ablakban válassza ki az **Azure Active Directory** szolgáltatást.
+1. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza **a Minden alkalmazás lehetőséget.**
+1. Új alkalmazás hozzáadásához válassza az **Új alkalmazás**lehetőséget.
+1. A **gyűjtemény Hozzáadás szakaszába** írja be az **Evernote** kifejezést a keresőmezőbe.
+1. Válassza az **Evernote** elemet az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzáadódik a bérlőhöz.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-evernote"></a>Azure AD-beli egyszeri bejelentkezés konfigurálása és tesztelése az Evernote-hoz
+## <a name="configure-and-test-azure-ad-single-sign-on-for-evernote"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése az Evernote-hoz
 
-Konfigurálja és tesztelje az Azure AD SSO-t az Evernote-val egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó számára az Evernote-ban.
+Konfigurálja és tesztelje az Azure AD SSO-t az Evernote-tal egy **B.Simon**nevű tesztfelhasználó használatával. Ahhoz, hogy az SSO működjön, létre kell hoznia egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között az Evernote-ban.
 
-Az Azure AD SSO az Evernote-vel való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Az Azure AD SSO evernote-tal való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
-    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
-    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-1. Az **[EVERNOTE SSO konfigurálása](#configure-evernote-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-    1. **[Hozzon létre Evernote-teszt felhasználót](#create-evernote-test-user)** – a felhasználó Azure ad-beli képviseletéhez kapcsolódó B. Simon-partneri kapcsolattal.
-1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
+1. **[Konfigurálja az Azure AD egyszeri szolgáltatást](#configure-azure-ad-sso)** – lehetővé teszi a felhasználók számára a funkció használatát.
+    1. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezés b.Simon teszteléséhez.
+    1. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi b.Simon azure AD egyszeri bejelentkezés.
+1. **[Konfigurálja evernote SSO](#configure-evernote-sso)** -konfigurálása az egyszeri bejelentkezési beállításokat az alkalmazás oldalán.
+    1. **[Hozzon létre Evernote-tesztfelhasználót](#create-evernote-test-user)** – hogy b.Simon megfelelője legyen az Evernote-ban, amely a felhasználó Azure AD-megjelenítéséhez kapcsolódik.
+1. **[SSO tesztelése](#test-sso)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
+Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Portalon.
 
-1. A [Azure Portal](https://portal.azure.com/)az **Evernote** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az [Azure Portalon](https://portal.azure.com/)az **Evernote** alkalmazásintegrációs lapon keresse meg a **Kezelés szakaszt,** és válassza **az egyszeri bejelentkezés**lehetőséget.
+1. Az **Egyetlen bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A **Beállítások beállítása SAML-lel** lapon kattintson az **egyszerű SAML-konfiguráció** szerkesztési/tollikonjára a beállítások szerkesztéséhez.
 
-   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az alapszintű **SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
+1. Az **Egyszerű SAML-konfiguráció** szakaszban, ha az alkalmazást **IDP** által kezdeményezett módban szeretné konfigurálni, adja meg a következő mezők értékeit:
 
-    Az **azonosító** szövegmezőbe írja be az URL-címet:`https://www.evernote.com/saml2`
+    Az **Azonosító** mezőbe írjon be egy URL-címet:`https://www.evernote.com/saml2`
 
-1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
+1. Kattintson **a További URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** által kezdeményezett módban kívánja konfigurálni:
 
-    A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:`https://www.evernote.com/Login.action`
+    A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet:`https://www.evernote.com/Login.action`
 
-1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
+1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány** szakaszában keresse meg a **Tanúsítvány (Base64)** lehetőséget, és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre való mentéséhez.
 
-    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
+    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-7. Az **aláírási** beállítások módosításához kattintson a **Szerkesztés** gombra az **SAML-aláíró tanúsítvány** párbeszédpanel megnyitásához.
+7. Az **aláírási** beállítások módosításához kattintson a **Szerkesztés** gombra az **SAML aláíró tanúsítvány** párbeszédpanel megnyitásához.
 
     ![image](common/edit-certificate.png) 
 
     ![image](./media/evernote-tutorial/samlassertion.png)
 
-    a. Jelölje be az **SAML-válasz aláírása és** az érvényesítési beállítás az **aláíráshoz lehetőséget**.
+    a. Válassza az **Aláírás iMT-válasz és a helyességi feltétel** beállítás **átállítási lehetőséget az Aláírási beállításhoz.**
 
-    b. Kattintson a **Save** (Mentés) gombra
+    b. Kattintson a **Mentés gombra**
 
-1. Az **Evernote beállítása** szakaszban másolja ki a megfelelő URL-címet (ka) t a követelmény alapján.
+1. Az **Evernote beállítása** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
+Ebben a szakaszban egy tesztfelhasználót hoz létre az Azure Portalon B.Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
-1. Válassza ki **új felhasználó** a képernyő tetején.
-1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+1. Az Azure Portal bal oldali ablaktáblájában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd válassza az **Összes felhasználó**lehetőséget.
+1. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
+1. A **Felhasználói** tulajdonságok csoportban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
-   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. A **Felhasználónév** mezőbe írja username@companydomain.extensionbe a mezőt. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet, majd írja le a **Jelszó** mezőben megjelenő értéket.
+   1. Kattintson **a Létrehozás gombra.**
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést az Evernote hozzáférésének biztosításával.
+Ebben a szakaszban lehetővé teszi b.Simon azure egyszeri bejelentkezés használatával hozzáférést biztosít az Evernote.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza az **Evernote**elemet.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, majd az **Összes alkalmazás**lehetőséget.
+1. Az alkalmazások listájában válassza az **Evernote lehetőséget.**
+1. Az alkalmazás áttekintő lapján keresse meg a **Kezelés szakaszt,** és válassza a **Felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+   ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza **a Felhasználó hozzáadása**lehetőséget, majd a Hozzárendelés **hozzáadása** párbeszédpanelen válassza a Felhasználók **és csoportok** lehetőséget.
 
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+    ![A Felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+1. A **Felhasználók és csoportok** párbeszédpanelen válassza a **B.Simon** elemet a Felhasználók listában, majd kattintson **a** kijelölés gombra a képernyő alján.
+1. Ha az SAML-helyességben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
+1. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
 
-## <a name="configure-evernote-sso"></a>Az Evernote SSO konfigurálása
+## <a name="configure-evernote-sso"></a>Evernote SSO konfigurálása
 
-1. Ahhoz, hogy automatizálja a konfigurációt az Evernote-n belül, telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
+1. Az Evernote konfigurációjának automatizálásához telepítenie kell a **My Apps Secure Sign-in böngészőbővítményt** **a Bővítmény telepítése**gombra kattintva.
 
     ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
 
-2. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **Setup Evernote** lehetőségre, majd az Evernote-alkalmazásra irányítja. Itt adja meg a rendszergazdai hitelesítő adatokat az Evernote-ba való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-6-es lépést.
+2. Hozzáadása után kiterjesztés a böngésző, kattintson a **beállítás Evernote** irányítja, hogy az Evernote alkalmazás. Innen adja meg a rendszergazdai hitelesítő adatokat az Evernote-ba való bejelentkezéshez. A böngésző bővítmény automatikusan konfigurálja az alkalmazást, és automatizálja a 3-6.
 
-    ![Telepítési konfiguráció](common/setup-sso.png)
+    ![Beállítási konfiguráció](common/setup-sso.png)
 
-3. Ha manuálisan szeretné beállítani az Evernote-t, nyisson meg egy új böngészőablakot, és jelentkezzen be a Evernote vállalati webhelyére rendszergazdaként, és hajtsa végre a következő lépéseket:
+3. Ha manuálisan szeretné beállítani az Evernote-ot, nyisson meg egy új böngészőablakot, és jelentkezzen be az Evernote vállalati webhelyére rendszergazdaként, és hajtsa végre a következő lépéseket:
 
-4. Ugrás a **"felügyeleti konzolra"**
+4. Ugrás az **"Admin console" (Felügyeleti konzol'**
 
-    ![Rendszergazda – konzol](./media/evernote-tutorial/tutorial_evernote_adminconsole.png)
+    ![Rendszergazda-konzol](./media/evernote-tutorial/tutorial_evernote_adminconsole.png)
 
-5. A **"felügyeleti konzol"** lapon lépjen a **"biztonság"** elemre, és válassza az **"egyszeri bejelentkezés"** lehetőséget.
+5. Az **"Admin Console" (Felügyeleti konzol) oldalon**válassza a **"Biztonság"** lehetőséget, és válassza **az "Egyszeri bejelentkezés" lehetőséget.**
 
-    ![Egyszeri bejelentkezés – beállítás](./media/evernote-tutorial/tutorial_evernote_sso.png)
+    ![Egyszeri felállítás](./media/evernote-tutorial/tutorial_evernote_sso.png)
 
-6. Konfigurálja a következő értékeket:
+6. Állítsa be a következő értékeket:
 
     ![Tanúsítvány beállítása](./media/evernote-tutorial/tutorial_evernote_certx.png)
     
-    a.  **Egyszeri bejelentkezés engedélyezése:** Az egyszeri bejelentkezés alapértelmezés szerint engedélyezve van (kattintson az **egyszeri bejelentkezés letiltása** lehetőségre az egyszeri bejelentkezésre vonatkozó követelmény eltávolításához)
+    a.  **SSO engedélyezése:** Az Egyszeri bejelentkezés alapértelmezés szerint engedélyezve van (az **Egyszeri bejelentkezés letiltása gombra** kattintva el szeretné távolítani az Egyszeri bejelentkezés követelményt)
 
-    b. Illessze be a **bejelentkezési URL** értékét, amelyet a Azure Portal az **SAML HTTP-kérelem URL-címe** szövegmezőbe másolt.
+    b. **Illessze be a bejelentkezési URL-értéket,** amelyet az Azure Portalról másolt az **SAML HTTP-kérelem URL-címének** szövegmezőjébe.
 
-    c. Nyissa meg a letöltött tanúsítványt a Jegyzettömbben az Azure AD-ben, és másolja a tartalmat a "BEGIN CERTIFICATe" és a "END CERTIFICATe" kifejezésre, és illessze be az **X. 509 tanúsítvány** szövegmezőbe. 
+    c. Nyissa meg az Azure AD letöltött tanúsítványát egy jegyzettömbben, és másolja a tartalmat, beleértve a "BEGIN CERTIFICATE" és az "END CERTIFICATE" (END CERTIFICATE) szöveget, és illessze be az **X.509 tanúsítvány** szövegmezőbe. 
 
-    d. kattintson a **módosítások mentése** gombra.
+    d.Kattintson **a Módosítások mentése gombra**
 
-### <a name="create-evernote-test-user"></a>Evernote-teszt felhasználó létrehozása
+### <a name="create-evernote-test-user"></a>Evernote-tesztfelhasználó létrehozása
 
-Ahhoz, hogy lehetővé váljon az Azure AD-felhasználók számára az Evernote-ba való bejelentkezés, az Evernote-ban kell kiépíteni őket.  
-Az Evernote esetében a kiépítés manuális feladat.
+Annak érdekében, hogy az Azure AD-felhasználók bejelentkezhessenek az Evernote-ba, ki kell építeni őket az Evernote-ba.  
+Evernote esetén kiépítése manuális feladat.
 
-**Felhasználói fiókok kiépítéséhez hajtsa végre a következő lépéseket:**
+**Felhasználói fiókok létesítéséhez hajtsa végre az alábbi lépéseket:**
 
-1. Jelentkezzen be a Evernote vállalati webhelyre rendszergazdaként.
+1. Jelentkezzen be az Evernote vállalati webhelyére rendszergazdaként.
 
-2. Kattintson a **"felügyeleti konzol"** elemre.
+2. Kattintson a **"Felügyeleti konzol" gombra.**
 
-    ![Rendszergazda – konzol](./media/evernote-tutorial/tutorial_evernote_adminconsole.png)
+    ![Rendszergazda-konzol](./media/evernote-tutorial/tutorial_evernote_adminconsole.png)
 
-3. A **"felügyeleti konzol"** területen lépjen a **"felhasználók hozzáadása"** elemre.
+3. Az **"Admin Console" területen**nyissa meg a **"Felhasználók hozzáadása"** lehetőséget.
 
     ![Add-testUser](./media/evernote-tutorial/create_aaduser_0001.png)
 
-4. **Adja hozzá a csoporttagokat** az **e-mail** szövegmezőbe, írja be a felhasználói fiók e-mail-címét, és kattintson a meghívás elemre **.**
+4. Vegye fel a **csapattagokat** az **E-mail** mezőbe, írja be a felhasználói fiók e-mail címét, és kattintson a **Meghívás gombra.**
 
     ![Add-testUser](./media/evernote-tutorial/create_aaduser_0002.png)
     
-5. A meghívás elküldése után a Azure Active Directory fiók tulajdonosa kap egy e-mailt, amely elfogadja a meghívást.
+5. A meghívás elküldése után az Azure Active Directory-fiók tulajdonosa e-mailt kap a meghívás elfogadásához.
 
-## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
+## <a name="test-sso"></a>SSO tesztelése 
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
 
-Amikor a hozzáférési panelen a Evernote csempére kattint, automatikusan be kell jelentkeznie az Evernote-ba, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor a hozzáférési panelen az Evernote csempére kattint, automatikusan be kell jelentkeznie arra az Evernote-ba, amelyhez az SSO-t beállította. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Az Evernote kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
+- [Próbálja ki az Evernote-ot az Azure AD-vel](https://aad.portal.azure.com/)
 

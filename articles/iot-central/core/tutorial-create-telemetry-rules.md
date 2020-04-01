@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – szabályok létrehozása és kezelése az Azure IoT Central-alkalmazásban
-description: Ez az oktatóanyag azt mutatja be, hogy az Azure IoT Central-szabályok hogyan teszik lehetővé az eszközök közel valós idejű figyelését és a műveletek automatikus meghívását, például e-mailek küldését a szabály indításakor.
+title: Oktatóanyag – Szabályok létrehozása és kezelése az Azure IoT Central alkalmazásban
+description: Ez az oktatóanyag bemutatja, hogy az Azure IoT Central-szabályok hogyan teszik lehetővé az eszközök közel valós idejű figyelését, és automatikusan meghívja a műveleteket, például egy e-mailt, amikor a szabály aktiválódik.
 author: dominicbetts
 ms.author: dobett
 ms.date: 02/12/2020
@@ -9,23 +9,23 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: f61a41fa89c7006341db928472f6b20d272bc550
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77167420"
 ---
-# <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Oktatóanyag: szabály létrehozása és értesítések beállítása az Azure IoT Central-alkalmazásban
+# <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Oktatóanyag: Hozzon létre egy szabályt, és állítson be értesítéseket az Azure IoT Central alkalmazásban
 
 *Ez a cikk operátorokra, fejlesztőkre és rendszergazdákra vonatkozik.*
 
-Az Azure IoT Central használatával távolról is figyelheti a csatlakoztatott eszközöket. Az Azure IoT Central szabályai lehetővé teszik az eszközök közel valós idejű figyelését és a műveletek automatikus meghívását, például e-mailek küldését. Néhány kattintással megadhat egy feltételt, amely figyeli a telemetria az eszközökről, és konfigurál egy megfelelő műveletet. Ez a cikk azt ismerteti, hogyan hozhatók létre szabályok az eszköz által eljuttatott telemetria figyeléséhez.
+Az Azure IoT Central segítségével távolról figyelheti a csatlakoztatott eszközöket. Az Azure IoT Central-szabályok lehetővé teszik, hogy közel valós időben figyelje eszközeit, és automatikusan meghívja a műveleteket, például e-mailt. Néhány kattintással megadhat egy feltételt az eszközökről származó telemetriafigyeléséhez és a megfelelő művelet konfigurálásához. Ez a cikk bemutatja, hogyan hozhat létre szabályokat az eszköz által küldött telemetriai adatok figyelésére.
 
-Az eszközök a telemetria használatával numerikus adatok küldését az eszközről. Egy szabály akkor aktiválódik, ha a kiválasztott eszköz telemetria átlép egy megadott küszöbértéket.
+Az eszközök telemetriai adatokat használnak az eszközről történő numerikus adatok küldéséhez. A szabály akkor aktiválódik, amikor a kijelölt eszköz telemetriai átlépi a megadott küszöbértéket.
 
-Ebben az oktatóanyagban létrehoz egy szabályt, amely e-mailt küld, ha a szimulált környezeti érzékelő eszköz hőmérséklete meghaladja a 70&deg; F.
+Ebben az oktatóanyagban hozzon létre egy szabályt, amely e-mailt küld,&deg; ha a szimulált környezeti érzékelő eszköz hőmérséklete meghaladja a 70 F-ot.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -34,86 +34,86 @@ Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, hajtsa végre az [Azure IoT Central-alkalmazás létrehozása](./quick-deploy-iot-central.md) és [egy szimulált eszköz hozzáadása a IoT Central alkalmazás](./quick-create-pnp-device.md) -gyors útmutatóhoz a **MXChip IoT fejlesztői készlet** -sablon létrehozásához.
+Mielőtt elkezdené, töltse ki az [Azure IoT Central-alkalmazás létrehozása](./quick-deploy-iot-central.md) és [egy szimulált eszköz hozzáadása az IoT Central alkalmazás](./quick-create-pnp-device.md) rövid útmutatói hozhatja létre az **MXChip IoT DevKit** eszközsablon dolgozni.
 
 ## <a name="create-a-rule"></a>Szabály létrehozása
 
-Telemetria szabály létrehozásához az eszköz sablonjának meg kell határoznia legalább egy telemetria-mérést. Ez az oktatóanyag egy környezeti érzékelőt használó eszközt használ, amely hőmérséklet-és páratartalom-telemetria küld. Hozzáadta ezt az eszközt, és létrehozott egy szimulált eszközt a [szimulált eszköz hozzáadása a IoT Central alkalmazáshoz](./quick-create-pnp-device.md) című rövid útmutatóban. A szabály figyeli az eszköz által jelentett hőmérsékletet, és e-mailt küld, ha 70 fok fölé kerül.
+Telemetriai szabály létrehozásához az eszközsablonnak legalább egy telemetriai méréssel kell rendelkeznie. Ez az oktatóanyag egy környezeti érzékelő eszközt használ, amely hőmérséklet- és páratartalom-telemetriát küld. Hozzáadta ezt az eszközsablont, és létrehozott egy szimulált eszközt a [Szimulált eszköz hozzáadása az IoT Central alkalmazás](./quick-create-pnp-device.md) rövid útmutatójában. A szabály figyeli az eszköz által jelentett hőmérsékletet, és e-mailt küld, ha 70 fok fölé megy.
 
-1. A bal oldali ablaktáblán válassza a **szabályok**lehetőséget.
+1. A bal oldali ablaktáblában válassza a **Szabályok**lehetőséget.
 
 1. Ha még nem hozott létre szabályokat, a következő képernyő jelenik meg:
 
     ![Még nincsenek szabályok](media/tutorial-create-telemetry-rules/rules-landing-page1.png)
 
-1. Új szabály hozzáadásához válassza a **+** lehetőséget.
+1. Új **+** szabály hozzáadásához jelölje be.
 
-1. A szabály azonosításához adja meg a name _hőmérséklet-figyelőt_ , majd nyomja le az ENTER billentyűt.
+1. Írja be a _Hőmérséklet figyelő_ nevét a szabály azonosításához, és nyomja le az Enter billentyűt.
 
-1. Válassza ki a **MXChip IoT fejlesztői készlet** -eszköz sablonját. Alapértelmezés szerint a szabály automatikusan az eszköz sablonhoz társított összes eszközre vonatkozik. Az eszközök egy részhalmazának szűréséhez válassza a **+ szűrés** lehetőséget, és használja az eszköz tulajdonságait az eszközök azonosításához. A szabály letiltásához állítsa be az **engedélyezett/letiltott** gombot a szabály fejlécében:
+1. Válassza ki az **MXChip IoT DevKit** eszközsablont. Alapértelmezés szerint a szabály automatikusan vonatkozik az eszközsablonhoz társított összes eszközre. Az eszközök egy részhalmazának szűréséhez válassza a **+ Szűrő** lehetőséget, és az eszközök tulajdonságainak használatával azonosíthatja az eszközöket. A szabály letiltásához kapcsolja be az **Engedélyezve/Letiltva** gombot a szabály fejlécében:
 
     ![Szűrők és engedélyezés](media/tutorial-create-telemetry-rules/device-filters.png)
 
-### <a name="configure-the-rule-conditions"></a>A szabály feltételeinek konfigurálása
+### <a name="configure-the-rule-conditions"></a>A szabályfeltételek konfigurálása
 
-A feltételek határozzák meg a szabály által figyelt feltételeket. Ebben az oktatóanyagban úgy konfigurálja a szabályt, hogy a hőmérséklet meghaladja a 70&deg; F értéknél nagyobb hőmérsékletet.
+A feltételek határozzák meg a szabály által figyelt feltételeket. Ebben az oktatóanyagban beállíthatja, hogy a szabály&deg; akkor jelenjen meg, ha a hőmérséklet meghaladja a 70 F-ot.
 
-1. Válassza a **hőmérséklet** lehetőséget a **telemetria** legördülő menüben.
+1. Válassza ki a **Hőmérséklet** a **Telemetriai** legördülő kiválasztásában.
 
-1. Ezután válassza a **nagyobb, mint** a **kezelőt** , és adja meg a _70_ **értéket**.
+1. Ezután válassza **a Nagyobb, mint** az **Operátor** lehetőséget, és írja be a _70_ **értéket értékként.**
 
     ![Állapot](media/tutorial-create-telemetry-rules/condition-filled-out1.png)
 
-1. Igény szerint **időösszesítést**is beállíthat. Amikor kiválaszt egy időösszesítést, ki kell választania egy összesítési típust is, például az összesítési legördülő listából az átlagot vagy az összeget.
+1. Szükség esetén beállíthatja **az Időösszesítést.** Időösszesítés kiválasztásakor ki kell választania egy összesítési típust is, például átlagot vagy összeget az összesítés legördülő legördülő menüből.
 
-    * Összesítés nélkül a szabály minden olyan telemetria-adatponthoz aktiválódik, amely megfelel a feltételnek. Ha például a szabály úgy van konfigurálva, hogy a hőmérséklet értéke 70, akkor a szabály szinte azonnal elindul, amikor az eszköz a > 70 hőmérsékletet jelzi.
-    * Az összesítéssel a szabály akkor aktiválódik, ha az időablakban található telemetria-adatpontok összesített értéke megfelel a feltételnek. Ha például a szabály úgy van beállítva, hogy ha a hőmérséklet meghaladja a 70-as hőmérsékletet, az időösszesítés 10 percre van beállítva, és az összesítés típusa átlag, akkor a szabály akkor aktiválódik, ha az eszköz átlagos hőmérsékletet > 70, amely 10 percen belül van kiszámítva időköz.
+    * Összesítés nélkül a szabály minden olyan telemetriai adatponthoz aktiválódik, amely megfelel a feltételnek. Ha például a szabály úgy van beállítva, hogy 70 feletti hőmérséklet esetén aktiválódjon, akkor a szabály szinte azonnal aktiválódik, amikor az eszköz 70 > hőmérsékletet jelent.
+    * Összesítéssel a szabály akkor aktiválódik, ha a telemetriai adatpontok összesített értéke az időablakban megfelel a feltételnek. Ha például a szabály úgy van beállítva, hogy 70 feletti hőmérséklet esetén aktiválódjon, az időösszesítés 10 percre van állítva, és az összesítés típusa átlagos, akkor a szabály akkor aktiválódik, amikor az eszköz 70 > átlaghőmérsékletet jelent, amelyet 10 perces intervallumban számítanak ki.
 
-     ![Összesítési feltétel](media/tutorial-create-telemetry-rules/aggregate-condition-filled-out1.png)
+     ![Összesített feltétel](media/tutorial-create-telemetry-rules/aggregate-condition-filled-out1.png)
 
-A **+ feltétel**lehetőség kiválasztásával több feltételt is hozzáadhat egy szabályhoz. Ha több feltétel van megadva, az összes feltételnek teljesülnie kell a szabály működésének elindításához. Minden feltétel egy implicit `AND` záradékhoz van csatlakoztatva. Ha több feltételt használó időösszesítést használ, a telemetria összes értékét összesíteni kell.
+A **szabályhoz**több feltételt is hozzáadhat a + Feltétel lehetőség kiválasztásával. Ha több feltétel van megadva, a szabály aktiválásához minden feltételnek teljesülnie kell. Minden feltételhez implicit `AND` záradék kapcsolódik. Ha több feltételsel használja az időösszesítést, az összes telemetriai értéket összesíteni kell.
 
 ### <a name="configure-actions"></a>Műveletek konfigurálása
 
-Miután definiálta a feltételt, beállíthatja, hogy a szabály milyen műveleteket végezhet el. A rendszer meghívja a műveleteket, ha a szabályban megadott összes feltétel igaz értékre van kiértékelve.
+Miután definiálta a feltételt, beállítja a szabály kilépéseként végrehajtandó műveleteket. A műveletek meghívása akkor lesz meghívva, ha a szabályban megadott összes feltétel igaz értéket ad ki.
 
-1. Válassza a **+ e-mail** lehetőséget a **műveletek** szakaszban.
+1. Válassza a **+ E-mail lehetőséget** a **Műveletek** szakaszban.
 
-1. Adja meg a _hőmérsékleti figyelmeztetést_ a művelet megjelenítendő neveként, az e-mail-címét a **to** mezőben, és _tekintse meg az eszközt!_ az e-mailek törzsében megjelenő Megjegyzés.
+1. Adja meg _a Hőmérséklet figyelmeztetés,_ mint a megjelenítendő nevét a művelet, az e-mail címét a **Címzett** mezőbe, és _ellenőriznie kell a készüléket!_ az e-mail törzsében megjelenő megjegyzésként.
 
     > [!NOTE]
-    > Az e-maileket csak az alkalmazáshoz hozzáadott felhasználóknak küldi el a rendszer, és legalább egyszer bejelentkezett. További információ az Azure IoT Central [felhasználói kezeléséről](howto-administer.md) .
+    > A rendszer csak azoknak a felhasználóknak küldi el az e-maileket, akik et hozzáadtak az alkalmazáshoz, és legalább egyszer bejelentkeztek. További információ az Azure IoT Central [felhasználói felügyeletéről.](howto-administer.md)
 
    ![Művelet konfigurálása](media/tutorial-create-telemetry-rules/configure-action1.png)
 
-1. A művelet mentéséhez válassza a **kész**lehetőséget. Egy szabályhoz több műveletet is hozzáadhat.
+1. A művelet mentéséhez válassza a **Kész gombot.** Egy szabályhoz több műveletet is hozzáadhat.
 
-1. A szabály mentéséhez válassza a **Mentés**lehetőséget. A szabály néhány percen belül életbe lép, és megkezdi az alkalmazásnak küldött telemetria figyelését. Ha a szabályban megadott feltétel teljesül, a szabály elindítja a konfigurált e-mail műveletet.
+1. A szabály mentéséhez válassza a **Mentés gombot.** A szabály néhány percen belül élesben elindul, és megkezdi az alkalmazásnak küldött telemetriai adatok figyelését. Ha a szabályban megadott feltétel teljesül, a szabály elindítja a beállított e-mail műveletet.
 
-Egy idő után egy e-mail-üzenet jelenik meg, amikor a szabály a következőt jeleníti meg:
+Egy idő után e-mail ben kap egy e-mailt, amikor a szabály kigyullad:
 
 ![Példa e-mailre](media/tutorial-create-telemetry-rules/email.png)
 
 ## <a name="delete-a-rule"></a>Szabály törlése
 
-Ha már nincs szüksége egy szabályra, törölje azt a szabály megnyitásával, és válassza a **Törlés**lehetőséget.
+Ha már nincs szüksége szabályra, törölje azt a szabály megnyitásával és a **Törlés gombra.**
 
 ## <a name="enable-or-disable-a-rule"></a>Szabály engedélyezése vagy letiltása
 
-Válassza ki az engedélyezni vagy letiltani kívánt szabályt. A szabályban szereplő összes eszközhöz tartozó szabály engedélyezéséhez vagy letiltásához kapcsolja be a szabály **Engedélyezés** vagy **Letiltás** gombját.
+Válassza ki az engedélyezni vagy letiltani kívánt szabályt. A szabály **Engedélyezése** vagy **letiltása** gombbal engedélyezheti vagy letilthatja a szabályt a szabályban ható összes eszközre.
 
-## <a name="enable-or-disable-a-rule-for-a-device"></a>Eszköz szabályának engedélyezése vagy letiltása
+## <a name="enable-or-disable-a-rule-for-a-device"></a>Egy eszköz reklényjának engedélyezése vagy letiltása
 
-Válassza ki az engedélyezni vagy letiltani kívánt szabályt. Vegyen fel egy szűrőt a **hatókörök** szakaszban egy adott eszköz belefoglalásához vagy kizárásához az eszköz sablonjában.
+Válassza ki az engedélyezni vagy letiltani kívánt szabályt. Adjon hozzá egy szűrőt a **Hatókörök** szakaszhoz, hogy egy bizonyos eszközt felvegyen vagy kizárjon az eszközsablonba.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 * Telemetria-alapú szabály létrehozása
 * Művelet hozzáadása
 
-Most, hogy meghatározta a küszöbérték-alapú szabályt, a javasolt következő lépés az alábbiak megismerése:
+Most, hogy definiált egy küszöbértéken alapuló szabályt, a javasolt következő lépés a következő lépés:
 
 > [!div class="nextstepaction"]
 > [Folyamatos adatexportálás konfigurálása](./howto-export-data.md).

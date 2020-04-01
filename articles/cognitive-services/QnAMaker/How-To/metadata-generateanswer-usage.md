@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 03/31/2020
 ms.author: diberry
-ms.openlocfilehash: 6a8cbabfd4e47c50d2c2e6f4a23c50a931e645a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9beb6dbbba1c5855b8bfa97fc02f50aa59225d78
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79220643"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474851"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Válasz beszerezése a GenerateAnswer API-val és metaadatokkal
 
@@ -146,8 +146,6 @@ var response = await _services.QnAServices[QnAMakerKey].GetAnswersAsync(turnCont
 
 Az előző JSON csak olyan válaszokat kért, amelyek 30%-os vagy a küszöbérték felettiek.
 
-A támogatási robot nak van [egy példa](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-support/csharp_dotnetcore/Service/SupportBotService.cs#L418) ezzel a kóddal.
-
 ## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>Használja a QnA Maker-t egy robottal a Node.js-ben
 
 A bot keretrendszer hozzáférést biztosít a QnA Maker tulajdonságait a getAnswer API:The bot framework provides access to the QnA Maker's properties with the [getAnswer API:](https://docs.microsoft.com/javascript/api/botbuilder-ai/qnamaker?view=botbuilder-ts-latest#generateanswer-string---undefined--number--number-)
@@ -165,8 +163,6 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 ```
 
 Az előző JSON csak olyan válaszokat kért, amelyek 30%-os vagy a küszöbérték felettiek.
-
-A támogatási robot nak van [egy példa](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-activelearning/javascript_nodejs/Helpers/dialogHelper.js#L36) ezzel a kóddal.
 
 <a name="metadata-example"></a>
 

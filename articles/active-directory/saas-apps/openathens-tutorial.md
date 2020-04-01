@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a OpenAthens | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és OpenAthens között.
+title: 'Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja az OpenAthens programmal | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és az OpenAthens között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,176 +17,176 @@ ms.date: 10/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 43fc2272a81672ea613bdcbe17c5381e99cafbff
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73053213"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-openathens"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a OpenAthens
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-openathens"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja az OpenAthens programmal
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a OpenAthens a Azure Active Directory (Azure AD) szolgáltatással. Ha integrálja az OpenAthens-t az Azure AD-vel, a következőket teheti:
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja az OpenAthens-t az Azure Active Directoryval (Azure AD). Ha integrálja az OpenAthens-t az Azure AD-vel, a következőket teheti:
 
-* A OpenAthens-hez hozzáférő Azure AD-beli vezérlés.
-* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a OpenAthens az Azure AD-fiókjával.
-* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
+* Szabályozhatja az Azure AD-ben, aki hozzáfér az OpenAthens.Control in Azure AD who has access to OpenAthens.
+* Engedélyezze, hogy a felhasználók automatikusan bejelentkezve openathens az Azure AD-fiókok.
+* Kezelje fiókjait egyetlen központi helyen – az Azure Portalon.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Első lépésként a következő elemeket kell megadnia:
+A kezdéshez a következő elemekre van szükség:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* OpenAthens egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes [fiókot](https://azure.microsoft.com/free/)kaphat.
+* OpenAthens egyszeri bejelentkezés (SSO) engedélyezve előfizetés.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztkörnyezetben.
 
-* A OpenAthens támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést
-* A OpenAthens **csak időben támogatja a** felhasználók kiépítési folyamatát
+* Az OpenAthens támogatja az **IDP** által kezdeményezett SSO-t
+* Az OpenAthens támogatja a **Just In Time** felhasználói kiépítést
 
-## <a name="adding-openathens-from-the-gallery"></a>OpenAthens hozzáadása a gyűjteményből
+## <a name="adding-openathens-from-the-gallery"></a>OpenAthens hozzáadása a galériából
 
-A OpenAthens Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a OpenAthens a katalógusból a felügyelt SaaS-alkalmazások listájához.
+Az OpenAthens azure AD-be való integrációjának konfigurálásához hozzá kell adnia az OpenAthens-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
-1. A **Hozzáadás a** katalógusból szakaszban írja be a **OpenAthens** kifejezést a keresőmezőbe.
-1. Válassza ki a **OpenAthens** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
+1. A bal oldali navigációs ablakban válassza ki az **Azure Active Directory** szolgáltatást.
+1. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza **a Minden alkalmazás lehetőséget.**
+1. Új alkalmazás hozzáadásához válassza az **Új alkalmazás**lehetőséget.
+1. A **hozzáadás a gyűjteményből szakaszban** írja be az **OpenAthens** kifejezést a keresőmezőbe.
+1. Válassza **az OpenAthens** elemet az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzáadódik a bérlőhöz.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-openathens"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a OpenAthens
+## <a name="configure-and-test-azure-ad-single-sign-on-for-openathens"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése az OpenAthens számára
 
-Konfigurálja és tesztelje az Azure AD SSO-t a OpenAthens a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a OpenAthens-ben.
+Konfigurálja és tesztelje az Azure AD SSO-t az OpenAthens segítségével egy **B.Simon**nevű tesztfelhasználó használatával. Ahhoz, hogy az SSO működjön, létre kell hoznia egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó openathens.
 
-Az Azure AD SSO és a OpenAthens konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Az Azure AD SSO openathens-rel való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
-    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
-    * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-1. **[OPENATHENS SSO konfigurálása](#configure-openathens-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-    * **[Hozzon létre OpenAthens-teszt felhasználót](#create-openathens-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-OpenAthens rendelkezik.
-1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
+1. **[Konfigurálja az Azure AD egyszeri szolgáltatást](#configure-azure-ad-sso)** – lehetővé teszi a felhasználók számára a funkció használatát.
+    * **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezés b.Simon teszteléséhez.
+    * **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi b.Simon azure AD egyszeri bejelentkezés.
+1. **[Konfigurálja openathens SSO](#configure-openathens-sso)** -konfigurálása az egyszeri bejelentkezési beállításokat az alkalmazás oldalán.
+    * **[OpenAthens tesztfelhasználó](#create-openathens-test-user)** létrehozása – b.Simon megfelelője az OpenAthens-ben, amely a felhasználó Azure AD-megjelenítéséhez kapcsolódik.
+1. **[SSO tesztelése](#test-sso)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
+Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Portalon.
 
-1. A [Azure Portal](https://portal.azure.com/) **OpenAthens** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az [Azure Portalon](https://portal.azure.com/)az **OpenAthens** alkalmazásintegrációs lapon keresse meg a **Kezelés szakaszt,** és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **Egyetlen bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A **Beállítások beállítása SAML-lel** lapon kattintson az **egyszerű SAML-konfiguráció** szerkesztési/tollikonjára a beállítások szerkesztéséhez.
 
-   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **alapszintű SAML-konfiguráció** szakaszban töltse fel a **szolgáltatói metaadatokat tartalmazó fájlt**, amely az oktatóanyag későbbi részében említett lépéseket ismerteti.
+1. Az **Egyszerű SAML-konfiguráció** szakaszban töltse fel a **Szolgáltató metaadatfájlját,** amelynek lépéseit az oktatóanyag későbbi részében említi.
 
-    a. Kattintson a **metaadat-fájl feltöltése**elemre.
+    a. Kattintson **a Metaadatfájl feltöltése gombra.**
 
-    ![openathens feltöltése metaadatok](common/upload-metadata.png)
+    ![openathens feltöltésmetaadatok](common/upload-metadata.png)
 
-    b. Kattintson a **mappa emblémára** a metaadat-fájl kiválasztásához, majd kattintson a **feltöltés**elemre.
+    b. Kattintson a **mappaemblémára** a metaadatfájl kijelöléséhez, majd a **Feltöltés gombra.**
 
-    ![Openathens tallózási metaadatok feltöltése](common/browse-upload-metadata.png)
+    ![Openathens böngészés feltöltési metaadatok](common/browse-upload-metadata.png)
 
-    c. A metaadat-fájl feltöltése után az **azonosító** érték automatikusan kitöltődik az **SAML alapszintű konfigurációs** szakasz szövegmezőben:
+    c. A metaadatfájl sikeres feltöltése után az **azonosító** értéke automatikusan kilesz töltve az **Egyszerű SAML konfiguráció szakasz** szövegmezőjében:
 
-    ![OpenAthens tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-identifier.png)
+    ![OpenAthens Domain és URL-címek egyszeri bejelentkezési információk](common/idp-identifier.png)
 
-1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
+1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az SAML aláíró tanúsítvány szakaszban keresse meg az **összevonási** **metaadatok XML-jét,** és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre való mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-1. A **OpenAthens beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
+1. Az **OpenAthens beállítása** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
+Ebben a szakaszban egy tesztfelhasználót hoz létre az Azure Portalon B.Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
-1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
-1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+1. Az Azure Portal bal oldali ablaktáblájában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd válassza az **Összes felhasználó**lehetőséget.
+1. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
+1. A **Felhasználói** tulajdonságok csoportban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension értéket. Például: `B.Simon@contoso.com`.
-   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a  **Create** (Létrehozás) gombra.
+   1. A **Felhasználónév** mezőbe írja username@companydomain.extensionbe a mezőt. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet, majd írja le a **Jelszó** mezőben megjelenő értéket.
+   1. Kattintson **a Létrehozás gombra.**
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a OpenAthens.
+Ebben a szakaszban engedélyezi b.Simon azure egyszeri bejelentkezés t openathens hozzáférést biztosít.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **OpenAthens**lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, majd az **Összes alkalmazás**lehetőséget.
+1. Az alkalmazások listájában válassza az **OpenAthens**lehetőséget.
+1. Az alkalmazás áttekintő lapján keresse meg a **Kezelés szakaszt,** és válassza a **Felhasználók és csoportok**lehetőséget.
 
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+   ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza **a Felhasználó hozzáadása**lehetőséget, majd a Hozzárendelés **hozzáadása** párbeszédpanelen válassza a Felhasználók **és csoportok** lehetőséget.
 
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+    ![A Felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+1. A **Felhasználók és csoportok** párbeszédpanelen válassza a **B.Simon** elemet a Felhasználók listában, majd kattintson **a** kijelölés gombra a képernyő alján.
+1. Ha az SAML-helyességben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
+1. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
 
-## <a name="configure-openathens-sso"></a>OpenAthens SSO konfigurálása
+## <a name="configure-openathens-sso"></a>OpenAthens sso konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be a OpenAthens vállalati webhelyre rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be az OpenAthens vállalati webhelyére rendszergazdaként.
 
-1. Válassza a **kapcsolatok** lehetőséget a listából a **kezelés** lapon.
+1. Válassza a **Kapcsolatok** elemet a **Kezelés** lap listájában.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/openathens-tutorial/tutorial_openathens_application1.png)
 
-1. Válassza ki az **SAML 1.1/2.0**elemet, majd kattintson a **Konfigurálás** gombra.
+1. Válassza **az SAML 1.1/2.0**lehetőséget, majd kattintson a **Beállítás** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/openathens-tutorial/tutorial_openathens_application2.png)
 
-1. A konfiguráció hozzáadásához kattintson a **Tallózás** gombra a Azure Portal letöltött metadata. xml fájl feltöltéséhez, majd válassza a **Hozzáadás**lehetőséget.
+1. A konfiguráció hozzáadásához kattintson a **Tallózás** gombra az Azure Portalról letöltött metaadat .xml fájl feltöltéséhez, majd kattintson a **Hozzáadás gombra.**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/openathens-tutorial/tutorial_openathens_application3.png)
 
-1. Hajtsa végre a következő lépéseket a **részletek** lapon.
+1. Hajtsa végre az alábbi lépéseket a **Részletek** lapon.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/openathens-tutorial/tutorial_openathens_application4.png)
 
-    a. A **megjelenítendő név leképezése**lapon válassza az **attribútum használata**elemet.
+    a. A **Névleképezés megjelenítése**csoportban válassza az **Attribútum használata**lehetőséget.
 
-    b. A **megjelenítendő név attribútum** szövegmezőbe írja be a `http://schema.microsoft.com/identity/claims/displayname`értéket.
+    b. A **Megjelenítendő név attribútum** mezőbe `http://schema.microsoft.com/identity/claims/displayname`írja be az értéket.
 
-    c. Az **egyedi felhasználók leképezése**területen válassza az **attribútum használata**lehetőséget.
+    c. Az **Egyedi felhasználómegfeleltetés**csoportban válassza **az Attribútum használata**lehetőséget.
 
-    d. Az **egyedi felhasználói attribútum** szövegmezőbe írja be a `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`értéket.
+    d. Az **Egyedi felhasználói attribútum** mezőbe írja `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`be az értéket.
 
-    e. Az **állapot**területen jelölje be mind a három jelölőnégyzetet.
+    e. Az **Állapot párbeszédpanelen**jelölje be mind a három jelölőnégyzetet.
 
-    f. A **helyi fiókok létrehozása**területen válassza az **automatikus**lehetőséget.
+    f. A **Helyi fiókok létrehozása** **párbeszédpanelen**válassza az Automatikus lehetőséget.
 
-    g. Válassza a **módosítások mentése**lehetőséget.
+    g. Válassza a **Módosítások mentése** lehetőséget.
 
-    h. A **</> függő entitás** lapon másolja a **metaadatok URL-címét** , és nyissa meg ezt a böngészőben az **SP-metaadatok XML-** fájljának letöltéséhez. Töltse fel ezt az SP metaadat-fájlt az Azure AD **alapszintű SAML-konfiguráció** szakaszában.
+    h. A **</> Függő entitás** lapon másolja a **metaadat URL-címét,** és nyissa meg ezt a böngészőben az **SP metaadat-XML-fájl** letöltéséhez. Töltse fel ezt az SP-metaadat-fájlt az Azure AD **egyszerű SAML-konfigurációs** szakaszába.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/openathens-tutorial/tutorial_openathens_application5.png)
 
-### <a name="create-openathens-test-user"></a>OpenAthens-tesztelési felhasználó létrehozása
+### <a name="create-openathens-test-user"></a>OpenAthens tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a OpenAthens-ben. A OpenAthens támogatja az **igény szerinti felhasználói üzembe**helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a OpenAthens-ben, a rendszer egy újat hoz létre a hitelesítés után.
+Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre openathens. OpenAthens támogatja **a just-in-time felhasználói kiépítés**, amely alapértelmezés szerint engedélyezve van. Ebben a szakaszban nincs műveletelem. Ha a felhasználó már nem létezik az OpenAthens, egy új jön létre a hitelesítés után.
 
-## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
+## <a name="test-sso"></a>SSO tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
 
-Ha a hozzáférési panelen a OpenAthens csempére kattint, automatikusan be kell jelentkeznie arra a OpenAthens, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor a Hozzáférési panelen az OpenAthens csempére kattint, automatikusan be kell jelentkeznie az OpenAthens programba, amelyhez az SSO-t beállította. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [A OpenAthens kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
+- [Próbálja ki az OpenAthens szolgáltatást az Azure AD-vel](https://aad.portal.azure.com/)

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2020
+ms.date: 03/31/2020
 ms.author: spelluru
-ms.openlocfilehash: d2115b1dc7e9f3150e44eb5ee9417e88ebeaa279
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 56c31e03eeec0c81207dc402e864eadec2d768bd
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370834"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474062"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>A labor hálózatának csatlakoztatása egyenrangú virtuális hálózattal az Azure Lab Servicesben 
 Ez a cikk a laborok hálózatának egy másik hálózattal való társviszony-létesítésével kapcsolatos információkat tartalmaz. 
@@ -38,6 +38,8 @@ Bizonyos helyszíni hálózatok az [ExpressRoute](../../expressroute/expressrout
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>Konfigurálás a tesztkörnyezet-fiók létrehozásakor
 Az új tesztkörnyezet-fiók létrehozása során kiválaszthatja a meglévő virtuális hálózatot, amely a Speciális lap **Társ virtuális hálózat** legördülő listájában jelenik **meg.** A kijelölt virtuális hálózat csatlakozik (társviszonyban) a laborfiók alatt létrehozott laborok. A módosítás után létrehozott laborokban található összes virtuális gép hozzáférhet a társviszonyt létesített virtuális hálózat erőforrásaihoz. 
+
+Van is egy rendelkezés, amely a hálózati gépek **címtartományát** a laborok számára. Ha a címtartomány meg van adva, a laborok ban a laborfiók ban lévő összes virtuális gép az adott címtartományban jön létre. A címtartománynak CIDR jelöléssel kell lennie (pl. 10.20.0.0/20), és nem lehet átfedésben a meglévő címtartományokkal. Címtartomány megadásakor fontos átgondolni a laborokban létrehozandó virtuális gépek számát, és megadni egy címtartományt ennek befogadására. Egy adott tartományban, a laborok száma tud befogadni jelenik meg.
 
 ![Válassza a társhoz jelölő virtuális hálózatot](../media/how-to-connect-peer-virtual-network/select-vnet-to-peer.png)
 

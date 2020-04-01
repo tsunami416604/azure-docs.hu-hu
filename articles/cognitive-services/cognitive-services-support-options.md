@@ -9,26 +9,20 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: 2cdf34bb7df121665548be98f9f2098cc5cfe99b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 692f70e4666416f34a6e3f32fd5804d4aeb63a5b
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76169088"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477827"
 ---
-# <a name="azure-cognitive-services-support-and-help-options"></a>Az Azure Cognitive Services támogatási és súgólehetőségei
+# <a name="azure-cognitive-services-support-and-feedback-options"></a>Az Azure Cognitive Services támogatási és visszajelzési lehetőségei
 
-Csak most kezdi felfedezni az Azure Cognitive Services funkcióit? Új funkciót valósít meg az alkalmazásban? Az alábbiakban javaslatokat talál arra vonatkozóan, hogy fejlesztőként hol kaphat segítséget.
+Csak most kezdi felfedezni az Azure Cognitive Services funkcióit? Lehet, hogy egy új funkciót valósít meg az alkalmazásban. Vagy a szolgáltatás használata után van javaslata arra vonatkozóan, hogyan lehetne javítani? Az alábbiakban lehetőségeket olvashat arra vonatkozóan, hogy hol kaphat támogatást, legyen naprakész, és adjon visszajelzést a Cognitive Services szolgáltatáshoz.
 
-> [!div class="checklist"]
-> * Tájékozódjon az Azure Cognitive Services új *fejlesztéseiről.*
-> * A kibocsátási megjegyzések az összes kiadásra vonatkozó információkat tartalmaznak.
-> * Keresse meg, hogy a problémát megvitatta-e a közösség, vagy hogy létezik-e már dokumentáció.
-> * Ha nem talál kielégítő választ, tegyen fel egy kérdést a *Stack Overflow -*
-> * Ha problémát talál a GitHubon lévő minták egyikével kapcsolatban, emeljefel a *GitHub-problémát.*
-> * Keressen megoldást a *UserVoice fórumon*.
+## <a name="get-support"></a>Támogatás kérése
 
-## <a name="create-an-azure-support-request"></a>Azure-támogatáskérés létrehozása
+### <a name="create-an-azure-support-request"></a>Azure-támogatáskérés létrehozása
 
 <div class='icon is-large'>
     <img alt='Azure support' src='https://docs.microsoft.com/media/logos/logo_azure.svg'>
@@ -39,15 +33,33 @@ Fedezze fel az [Azure támogatási lehetőségeinek körét, és válassza ki a]
 * [Azure-portál](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [Azure-portál az Egyesült Államok kormánya számára](https://portal.azure.us)
 
-## <a name="post-a-question-on-stack-overflow"></a>Kérdés feladása a veremtúlcsordulásról
+### <a name="search"></a>Keresés
+
+<div class='icon is-large'>
+    <img alt='Search' src='https://docs.microsoft.com/media/common/i_search.svg'>
+</div>
+
+A gyorsabb eredmények érdekében végezzen keresést a megfelelő webhelyekre, például a [Veremtúlcsordulás,](https://stackoverflow.com/) [a Microsoft-dokumentumok](https://docs.microsoft.com/azure/cognitive-services/)vagy a [GitHub-kódmintákra.](https://github.com/azure-samples) Használja `site:` a lekérdezési jelölést a [kedvenc keresőmotorjában,](https://bing.com)például:
+
+```
+{search keywords} site:stackoverflow.com
+```
+
+Hol `{search keywords}` van a keresési kontextus. Fontolja meg az alábbi hatókörrel végzett keresések megfelelő használatát:
+
+ - Verem túlcsordulása:`site:stackoverflow.com`
+ - Microsoft Dokumentumok:`site:docs.microsoft.com`
+ - GitHub-minták:`site:github.com/azure-samples`
+
+### <a name="post-a-question-on-stack-overflow"></a>Kérdés feladása a veremtúlcsordulásról
 
 <div class='icon is-large'>
     <img alt='Stack Overflow' src='https://docs.microsoft.com/media/logos/logo_stackoverflow.svg'>
 </div>
 
-A közösség azonnali válaszaiért tekintse meg a Stack Overflow-t. Stack túlcsordulás az előnyben részesített csatorna a fejlesztéssel kapcsolatos kérdésekre. Ez az a hely, ahol a közösség és a Microsoft csapattagjai közvetlenül részt vesznek a problémák megoldásában.
+Ha nem talál választ a Veremtúlcsordulás keresőmezőjével kapcsolatos problémájára, küldjön be egy új kérdést. Stack túlcsordulás az előnyben részesített csatorna a fejlesztéssel kapcsolatos kérdésekre. Ez az a hely, ahol a Veremtúlcsordulás közösség és a Microsoft csapattagjai közvetlenül részt vesznek a problémák megoldásában.
 
-Ha nem talál választ a problémára a kereséssel, küldjön be egy új kérdést a Stack Overflow-nak. A kérdés megfogalmazásakor használja az alábbi címkék egyikét:
+ A kérdés megfogalmazásakor használja az alábbi címkék egyikét:
 
  - [Microsoft Kognitív](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
  - [Azure Cognitive Services](https://stackoverflow.com/questions/tagged/azure-cognitive-services)
@@ -57,13 +69,54 @@ Ha nem talál választ a problémára a kereséssel, küldjön be egy új kérd�
 > * [Hogyan tehetek fel egy jó kérdést?](https://stackoverflow.com/help/how-to-ask)
 > * [Hogyan hozzunk létre egy minimális, reprodukálható példát?](https://stackoverflow.com/help/minimal-reproducible-example)
 
-## <a name="uservoice-forum"></a>UserVoice-fórum
+## <a name="stay-informed"></a>Hírek
+
+Ha tájékozott marad az Azure-blog új kiadásában vagy hírében található funkciókról, könnyebben megtalálhatja a különbséget egy programozási hiba, egy szolgáltatáshiba vagy egy, a Cognitive Servicesben még nem elérhető funkció között.
+
+### <a name="release-notes"></a>Kibocsátási megjegyzések
+
+<div class='icon is-large'>
+    <img alt='Release notes' src='https://docs.microsoft.com/media/common/i_learn-about.svg'>
+</div>
+
+A Cognitive Services kiadási megjegyzések frissülnek, amint új kiadások érhetők el. A jegyzetek információkat tartalmaznak az új funkciókról, fejlesztésekről és hibajavításokról.
+
+ - [Custom Vision](custom-vision-service/release-notes.md)
+ - [Arcfelismerés](face/releasenotes.md)
+ - [Language Understanding (LUIS)](luis/whats-new.md)
+ - [Speech Services](speech-service/releasenotes.md)
+ - [Beszédszolgáltatások SDK](speech-service/devices-sdk-release-notes.md)
+ - [Szövegelemzés](text-analytics/whats-new.md)
+
+### <a name="azure-blog"></a>Azure blog
+
+<div class='icon is-large'>
+    <img alt='Stay informed' src='https://docs.microsoft.com/media/common/i_blog.svg'>
+</div>
+
+A Cognitive Services szolgáltatással kapcsolatos híreket az [Azure-blog osztja](https://azure.microsoft.com/blog/topics/cognitive-services/)meg.
+
+### <a name="reddit"></a>Vöröses
+
+<div class='icon is-large'>
+    <img alt='Reddit' src='https://docs.microsoft.com/media/logos/logo_reddit.svg'>
+</div>
+
+A Reddit egy közösségvezérelt vitafórum-webhely, amely az Azure Cognitive Services-hírekről, súgóról, információkról, tippekről és trükkökről szóló legújabb beszélgetéseket kínálja. [Azure Cognitive Services](https://www.reddit.com/r/AZURE/search/?q=Cognitive%20Services&restrict_sr=1) A regisztrált tagok tartalmat küldhetnek be, mások pedig szavazhatnak róla, ami szervesen a legrelevánsabb tartalmat emeli a hírcsatornáik tetejére.
+
+## <a name="give-feedback"></a>Visszajelzés küldése
+
+### <a name="uservoice-forum"></a>UserVoice-fórum
 
 <div class='icon is-large'>
     <img alt='UserVoice' src='https://docs.microsoft.com/media/logos/logo-uservoice.svg'>
 </div>
 
-Ha új funkciókat szeretne kérni, tegye közzé őket a UserVoice-on. Ossza meg ötleteit a Cognitive Services és a hozzá juk tartozó API-k jobb működéséhez a kifejlesztett alkalmazások számára:
+Ha új funkciókat szeretne kérni, tegye közzé őket a UserVoice-on. Ossza meg ötleteit a Cognitive Services és API-k jobb működéséhez a kifejlesztett alkalmazások számára. 
+
+> [!NOTE]
+> Bár ez egy nyilvános fórum, ne várjon támogatást a Microsofttól itt, de élvezze az új funkciók megvitatását, amelyeket a Cognitive Services közelgő kiadásaiban szeretne látni.
+
 
 | Szolgáltatás                       | Cognitive Services UserVoice URL-címe |
 |-------------------------------|---------------|
@@ -73,112 +126,58 @@ Ha új funkciókat szeretne kérni, tegye közzé őket a UserVoice-on. Ossza me
 | Tartalommoderátor             | https://cognitive.uservoice.com/forums/559960-content-moderator |
 | Custom Vision                 | https://cognitive.uservoice.com/forums/598141-custom-vision-service |
 | Arcfelismerés                          | https://cognitive.uservoice.com/forums/430315-face |
-| Űrlap                          | https://cognitive.uservoice.com/forums/921556-form-recognizer |
-| Alámerülés                     | https://feedback.azure.com/forums/34192--general-feedback |
+| Form Recognizer               | https://cognitive.uservoice.com/forums/921556-form-recognizer |
+| Ink Recognizer                | https://cognitive.uservoice.com/forums/921559-ink-recognizer |
 | Language Understanding (LUIS) | https://cognitive.uservoice.com/forums/551524-luis |
 | Personalizer                  | https://cognitive.uservoice.com/forums/921562-personalizer |
 | QnA Maker                     | https://cognitive.uservoice.com/forums/578689-qna-maker |
 | Beszédszolgáltatások               | https://cognitive.uservoice.com/forums/912208-speech-service |
+| Egyéni beszédfelismerés                 | https://cognitive.uservoice.com/forums/555934-custom-speech-service |
 | Szövegelemzés                | https://cognitive.uservoice.com/forums/555922-text-analytics |
 | Fordítói szöveg               | https://cognitive.uservoice.com/forums/558796-translator |
-| Videóindexelő                 | https://cognitive.uservoice.com/forums/598144-video-indexer |
+| Video Indexer                 | https://cognitive.uservoice.com/forums/598144-video-indexer |
 
-## <a name="release-notes"></a>Kibocsátási megjegyzések
+## <a name="report-bugs"></a>Hibák jelentése
 
-<div class='icon is-large'>
-    <img alt='Release notes' src='https://docs.microsoft.com/media/common/i_learn-about.svg'>
-</div>
-
-A kibocsátási megjegyzések az új kiadások elérhetővé frissítésekor frissülnek. A jegyzetek információkat tartalmaznak az új funkciókról, fejlesztésekről és hibajavításokról.
-
- - [Custom Vision](custom-vision-service/release-notes.md)
- - [Arcfelismerés](face/releasenotes.md)
- - [Language Understanding (LUIS)](luis/whats-new.md)
- - [Speech Services](speech-service/releasenotes.md)
- - [Beszédszolgáltatások SDK](speech-service/devices-sdk-release-notes.md)
- - [Szövegelemzés](text-analytics/whats-new.md)
-
-## <a name="stay-informed"></a>Hírek
-
-<div class='icon is-large'>
-    <img alt='Stay informed' src='https://docs.microsoft.com/media/common/i_blog.svg'>
-</div>
-
-A Cognitive Services szolgáltatással kapcsolatos híreket az [Azure-blog osztja](https://azure.microsoft.com/blog/topics/cognitive-services/)meg.
-
-## <a name="search"></a>Keresés
-
-<div class='icon is-large'>
-    <img alt='Search' src='https://docs.microsoft.com/media/common/i_search.svg'>
-</div>
-
-Előfordulhat, hogy megtalálja a választ, amire szüksége van a dokumentációban, a mintákban, vagy a [stack overflow](https://www.stackoverflow.com) kérdésekre vagy a mintákban adott válaszokban.
-
- - https://stackoverflow.com/questions/tagged/azure-cognitive-services
-
-### <a name="scoped-search"></a>Hatóköralapú keresés
-
-A gyorsabb eredmények érdekében a keresés hatóköre a megfelelő webhelyekre, például a Veremtúlcsordulás, a Microsoft-dokumentumok vagy a GitHub-kódmintákra. Használja `site:` a lekérdezési jelölést a [kedvenc keresőmotorjában:](https://bing.com)
-
-```
-{search keywords} site:stackoverflow.com
-```
-
-Hol `{search keywords}` van a keresési kontextus. Ez a keresés az eredményeket a Veremtúlcsordulás mezőre fogja kiterjeszteni. Fontolja meg az alábbi hatókörrel végzett keresések megfelelő használatát:
-
- - Verem túlcsordulása:`site:stackoverflow.com`
- - Microsoft Dokumentumok:`site:docs.microsoft.com`
- - GitHub-minták:`site:github.com/azure-samples`
-
-## <a name="create-a-github-issue"></a>GitHub-probléma létrehozása
+### <a name="create-a-github-issue-or-pull-request"></a>GitHub-probléma vagy lekéréses kérelem létrehozása
 
 <div class='icon is-large'>
     <img alt='GitHub' src='https://docs.microsoft.com/media/logos/logo_octokitty.svg'>
 </div>
 
-A mintákat gyakran nyílt forrásforrásként teszik közzé. A kérdések és problémák, hozzon létre egy *problémát* a megfelelő GitHub-tárházban. Kérést is benyújthat! Az **Azure-minták** forráskódját keresve az alábbiakban a Cognitive Services mintaforráskódjának felsorolása látható:
+Az alábbiakban három féle adattárak, ahol a fejlesztő közzétehet egy problémát, vagy hozzon létre egy lekéréses kérelmet. Probléma létrehozásához használja a *Problémák* lapot a megfelelő GitHub-tárházban, és válassza az *Új probléma*lehetőséget. Ha javítást szeretne javasolni, küldjön lekéréses kérelmet közvetlenül egy fájl szerkesztésével. A lekéréses kérelem ezután a *lekéréses kérelmek* lap alatt fog ülni, amíg a tárház tulajdonosai át nem nézhetik.
+
+#### <a name="cognitive-services-samples"></a>Kognitív szolgáltatások minták
+
+A minták gyakran nyílt forráskódúként találhatók meg a nyilvános adattárakban. A rövid útmutató minták saját tárházzal rendelkeznek, és a Microsoft dokumentációjában hivatkoznak. Ha hibákat talál a kódban, hozzon létre egy problémát vagy egy lekéréses kérelmet.
+
+Az alábbiakban a Cognitive Services rövid útmutatóját és a mintakódot listául sorolhatja:
 
 * [Azure-minták – Kognitív szolgáltatások](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=cognitive&type=&language=)
+* [A Cognitive Services rövid útmutatói](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
+* [Kognitív szolgáltatások: Dotnet](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
+* [Kognitív szolgáltatások: Menj](https://github.com/Azure-Samples/azure-sdk-for-go-samples)
+* [Kognitív szolgáltatások: Java](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
+* [Kognitív szolgáltatások: Node.js](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+* [Kognitív szolgáltatások: Python](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
 
-Létrehozhat hibajelentést, szolgáltatáskérést, vagy feltehet egy általános kérdést, és megoszthatja az ajánlott eljárásokat. Hibajelentések esetén kövesse a megadott sablont:
+#### <a name="cognitive-services-sdk-source-code"></a>Cognitive Services SDK forráskódja
 
-**Írja le a hibát**
+Az SDK-k forráskódja az egyes szolgáltatások SDK-jának néhány alapját mutatja. Ha hibát talált, vagy javítást szeretne javasolni, nyújtson be hibát, vagy hozzon létre lekéréses kérelmet.
 
-Világos és tömör leírása, hogy mi a hiba.
+Az alábbiakban a Cognitive Services SDK forráskódját listául sorolhatja:
 
-**Reprodukálni**
+* [Azure SDK for Dotnet](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices)
+* [Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices)<br>
+* [Javához készült Azure SDK](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices)
+* [Azure SDK for JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices)
+* [Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices)
 
-A viselkedés reprodukálásának lépései:
-1. ...
-2. ...
+#### <a name="azure-cognitive-services-documentation"></a>Az Azure Cognitive Services dokumentációja
 
-**Várt viselkedés**
+A Cognitive Services dokumentációja ismerteti a szolgáltatás használatát, és példákat és erőforrásokat tartalmaz a fejlesztő számára. Ha hibát talált, vagy javítást szeretne javasolni, nyújtson be hibát, vagy hozzon létre lekéréses kérelmet.
 
-Világos és tömör leírása annak, hogy mire számított.
-
-**A Cognitive Services mely ajánlatait használja**
-
-Részletezze a Cognitive Services által használni kívánt ajánlat, és adja meg a részleteket, hogy mit próbál elérni.
-
-**Platform, operációs rendszer és programozási nyelv**
-
- - OS: [pl. Windows, Linux, Android, iOS, ...] - kérjük, legyen konkrét
- - Hardver - x64, x86, ARM, ...
- - böngésző, pl. Chrome, Safari] (ha van ilyen)- kérjük, legyen konkrét
-
-**Környezet**
-
- - Hibaüzenetek, naplóadatok, veremkövetés, ...
- - Ha egy adott szolgáltatás interakciójának hibáját jelenti, jelentse a munkamenet-azonosítót és a jelentett események időzónáját (beleértve az időzónát is). A Munkamenet-azonosító minden kapott visszahívásban/eseményben megjelenik.
- - Minden egyéb további információ
-
-## <a name="reddit"></a>Vöröses
-
-<div class='icon is-large'>
-    <img alt='Reddit' src='https://docs.microsoft.com/media/logos/logo_reddit.svg'>
-</div>
-
-A Reddit a közösség vezérelte webes tartalomértékelés és vitafórum-webhely, amely az [Azure Cognitive Services](https://www.reddit.com/r/AZURE/search/?q=Cognitive%20Services&restrict_sr=1)legújabb adatait kínálja. A regisztrált tagok tartalmat küldhetnek be, mások pedig szavazhatnak róla - szervesen lehetővé téve a legrelevánsabb tartalom felemelkedését.
+[MicrosoftDocs](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/cognitive-services)
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,6 +1,6 @@
 ---
-title: 'CLI-minta: hozzon létre két virtuális gépet belső és külső NSG'
-description: Hozzon létre két virtuális gépet belső és külső NSG az Azure CLI használatával a hálózati forgalom biztonságossá tételéhez.
+title: 'CLI-minta: Hozzon létre két virtuális gépet belső és külső NSG-vel'
+description: Hozzon létre két virtuális gépet belső és külső NSG-vel a hálózati forgalom biztonságossá tétele érdekében az Azure CLI használatával.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -17,13 +17,13 @@ ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 3e3d1fe3bf464892934198d06b602a5b8bcafb67
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "75458388"
 ---
-# <a name="secure-network-traffic-between-virtual-machines-using-an-nsg"></a>Biztonságos hálózati forgalom a virtuális gépek között NSG használatával
+# <a name="secure-network-traffic-between-virtual-machines-using-an-nsg"></a>Virtuális gépek közötti hálózati forgalom biztonságossá tétele NSG használatával
 
 Ez a szkript két virtuális gépet hoz létre, és biztonságossá teszi a rájuk irányuló forgalmat. Az egyik virtuális gép az interneten érhető el, és egy olyan hálózati biztonsági csoporttal (NSG) rendelkezik, amelynek konfigurációja a 22-es és a 80-as porton engedélyezi a forgalmat. A második virtuális gép nem érhető el az interneten, és egy olyan NSG-vel rendelkezik, amelynek konfigurációja csak az első virtuális gépről érkező forgalmat engedélyezi.
 
@@ -57,7 +57,7 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 | [az network nsg rule update](https://docs.microsoft.com/cli/azure/network/nsg/rule) | Frissít egy NSG-szabályt. Ebben a példában a háttérrendszerre vonatkozó szabályt frissítjük, hogy csak az előtéri alhálózatról érkező forgalmat engedje át. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 

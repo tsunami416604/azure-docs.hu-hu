@@ -9,10 +9,10 @@ ms.author: ancav
 ms.custom: mvc
 ms.subservice: autoscale
 ms.openlocfilehash: 85ae76d9dcb0b4a1f95992c2f5da48a81fb12677
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77661652"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Automatikus méretezési beállítás Azure-erőforrásokhoz teljesítményadatok vagy ütemezés alapján
@@ -27,16 +27,16 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 > * Horizontális leskálázási művelet kiváltása és a példányszám csökkenésének megfigyelése
 > * Az erőforrások törlése
 
-Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot, mielőtt elkezdené.
 
-## <a name="log-in-to-the-azure-portal"></a>Jelentkezzen be az Azure portálra.
+## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="create-a-web-app-and-app-service-plan"></a>Webalkalmazás és App Service-csomag létrehozása
 1. Kattintson az **Erőforrás létrehozása** lehetőségre a bal oldali navigációs ablaktáblán.
 2. Keresse meg és válassza ki a *Webalkalmazás* elemet, és kattintson a **Létrehozás** elemre.
-3. Adja meg az alkalmazás nevét, például: *MyTestScaleWebApp*. Hozzon létre egy új erőforráscsoportot * myResourceGroup, vagy helyezze egy kiválasztott erőforráscsoport-csoportba.
+3. Adja meg az alkalmazás nevét, például: *MyTestScaleWebApp*. Hozzon létre egy új erőforráscsoportot *myResourceGroup', vagy helyezze el egy ön által választott erőforráscsoportba.
 
 A rendszer néhány percen belül üzembe helyezi az erőforrásokat. Az oktatóanyag fennmaradó részében használja a webalkalmazást és a vonatkozó App Service-csomagot.
 
@@ -88,7 +88,7 @@ A következő néhány lépés segít kitölteni az automatikus skálázási ké
 
 5. Az **Operátor** legyen „Nagyobb, mint”, a **Küszöbérték** legyen „10”, az **Időtartam** pedig legyen „5 perc”.
 
-6. A kiválasztott művelet legyen **„Mennyiség növelése a következővel”** , a **Példányszám** legyen „1”, a **Várakozási idő** pedig „5” perc.
+6. A kiválasztott művelet legyen **„Mennyiség növelése a következővel”**, a **Példányszám** legyen „1”, a **Várakozási idő** pedig „5” perc.
 
 7. Kattintson a **Hozzáadás** gombra.
 
@@ -109,7 +109,7 @@ Javasoljuk, hogy a felskálázási szabályok mellett mindig legyen beállítva 
 
 5. Az **Operátor** legyen „Kisebb, mint”, a **Küszöbérték** legyen „5”, az **Időtartam** pedig legyen „5 perc”.
 
-6. A kiválasztott művelet legyen **„Mennyiség csökkentése a következővel”** , a **Példányszám** legyen „1”, a **Várakozási idő** pedig „5” perc.
+6. A kiválasztott művelet legyen **„Mennyiség csökkentése a következővel”**, a **Példányszám** legyen „1”, a **Várakozási idő** pedig „5” perc.
 
 7. Kattintson a **Hozzáadás** gombra.
 
@@ -126,7 +126,7 @@ Az imént létrehozott automatikus méretezési beállítás felskálázási fel
 
 2. Egymás után gyorsan frissítse az oldalt 10-nél többször.
 
-3. Kattintson a bal oldali navigációs ablaktáblán a **Figyelés** eleme. Ha az oldal betöltött, kattintson az **Automatikus méretezés** lapra.
+3. Kattintson a bal oldali navigációs ablaktáblán a **Figyelés** eleme. Miután a lap betöltődik, válassza az **Automatikus méretezés** lapot.
 
 4. Válassza ki a listából az oktatóanyag során használt App Service-csomagot.
 
@@ -145,7 +145,7 @@ Az automatikus méretezési beállítás leskálázási feltétele akkor aktivá
 
 2. Töltse be az Azure Portalt.
 
-3. Kattintson a bal oldali navigációs ablaktáblán a **Figyelés** eleme. Ha az oldal betöltött, kattintson az **Automatikus méretezés** lapra.
+3. Kattintson a bal oldali navigációs ablaktáblán a **Figyelés** eleme. Miután a lap betöltődik, válassza az **Automatikus méretezés** lapot.
 
 4. Válassza ki a listából az oktatóanyag során használt App Service-csomagot.
 
@@ -169,7 +169,7 @@ Az automatikus méretezési beállítás leskálázási feltétele akkor aktivá
 
 4. A törlés megerősítéséhez írja be a **yes** (igen) szöveget a szövegmezőbe, majd kattintson a **Törlés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban az alábbiakat végezte el:  
 > [!div class="checklist"]

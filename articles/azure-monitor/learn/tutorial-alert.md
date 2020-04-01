@@ -1,6 +1,6 @@
 ---
-title: Riasztások küldése az Azure Application Insightsból | Microsoft Docs
-description: 'Oktatóanyag: riasztások küldése az alkalmazásban előforduló hibákra válaszul az Azure Application Insights használatával.'
+title: Értesítések küldése az Azure Application Insightsból | Microsoft dokumentumok
+description: Oktatóanyag az Azure Application Insights használatával az alkalmazás hibáira adott válaszként riasztások küldéséhez.
 ms.subservice: application-insights
 ms.topic: tutorial
 author: mrbullwinkle
@@ -8,69 +8,69 @@ ms.author: mbullwin
 ms.date: 04/10/2019
 ms.custom: mvc
 ms.openlocfilehash: 7195de1cf58e5dd2e1d0b49b309f3afc718cca92
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77656262"
 ---
-# <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>Az alkalmazás állapotának figyelése és riasztása az Azure Application Insights
+# <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>Az Azure Application Insights segítségével figyelheti és riasztást ad az alkalmazások állapotáról
 
-Az Azure Application Insights lehetővé teszi az alkalmazás figyelését, és riasztások küldését, ha nem érhető el, hiba történt, vagy a teljesítménnyel kapcsolatos problémák okozzák.  Ez az oktatóanyag végigvezeti az alkalmazás rendelkezésre állásának folyamatos ellenőrzéséhez szükséges tesztek létrehozásának folyamatán.
+Az Azure Application Insights lehetővé teszi, hogy figyelje az alkalmazást, és küldjön riasztásokat, ha az nem érhető el, hibákat tapasztal, vagy teljesítményproblémákkal küzd.  Ez az oktatóanyag végigvezeti a tesztek létrehozásának folyamatán, amelyek folyamatosan ellenőrzik az alkalmazás rendelkezésre állását.
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
 > * Rendelkezésre állási teszt létrehozása az alkalmazás válaszának folyamatos ellenőrzéséhez
-> * Levelezés küldése a rendszergazdáknak probléma esetén
+> * E-mail küldése a rendszergazdáknak, ha probléma merül fel
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez:
 
-Hozzon létre egy [Application Insights erőforrást](https://docs.microsoft.com/azure/azure-monitor/learn/dotnetcore-quick-start#enable-application-insights).
+Hozzon létre egy [Application Insights-erőforrást.](https://docs.microsoft.com/azure/azure-monitor/learn/dotnetcore-quick-start#enable-application-insights)
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
+Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Portalon a .
 
 ## <a name="create-availability-test"></a>Rendelkezésre állási teszt létrehozása
 
-A Application Insights rendelkezésre állási tesztek lehetővé teszik az alkalmazások automatikus tesztelését a világ különböző helyeiről.   Ebben az oktatóanyagban egy URL-tesztet fog végrehajtani, amely biztosítja, hogy a webalkalmazás elérhető legyen.  Létrehozhat egy teljes bemutatót is a részletes művelet teszteléséhez. 
+Az Application Insights rendelkezésre állási tesztjei lehetővé teszik, hogy automatikusan tesztelje az alkalmazást a világ különböző pontjairól.   Ebben az oktatóanyagban url-tesztet hajt végre annak érdekében, hogy a webalkalmazás elérhető legyen.  Létrehozhat egy teljes forgatókönyvet is a részletes művelet teszteléséhez. 
 
 1. Válassza ki az **Application Insights** elemet, majd az előfizetését.  
 
-2. A vizsgálat menüben válassza a **rendelkezésre állás** **lehetőséget,** majd kattintson a **teszt létrehozása**lehetőségre.
+2. Válassza az **Elérhetőség parancsot** a **Vizsgálat** menüben, majd kattintson a **Teszt létrehozása parancsra.**
 
     ![Rendelkezésre állási teszt hozzáadása](media/tutorial-alert/add-test-001.png)
 
-3. Írja be a teszt nevét, és hagyja meg a többi alapértelmezett értéket.  A kijelölés 5 percenként elindítja az alkalmazás URL-címére irányuló kérelmeket öt különböző földrajzi helyről.
+3. Írja be a teszt nevét, és hagyja meg a többi alapértelmezést.  Ez a választás öt különböző földrajzi helyről 5 percenként elindítja az alkalmazás URL-címére vonatkozó kérelmeket.
 
-4. Válassza a **riasztások** lehetőséget a **riasztások** legördülő listájának megnyitásához, ahol megadhatja, hogyan válaszoljon a tesztek, ha a teszt sikertelen. Válassza a **közel valós idejű** lehetőséget, és állítsa be az állapotot engedélyezve értékre **.**
+4. **Válassza a Riasztások lehetőséget** a **Riasztások** legördülő menü megnyitásához, ahol megadhatja, hogyan reagáljon, ha a teszt sikertelen. Válassza **a Közel valós idejű** lehetőséget, és állítsa az **állapotot Engedélyezve értékre.**
 
-    Írjon be egy e-mail-címet, amelyet a rendszer a riasztási feltételek teljesülése esetén küld.  A riasztás feltételeinek teljesülése esetén megadható, hogy a webhook milyen címen hívható meg.
+    Írja be a riasztási feltételek teljesülése esetén elküldandó e-mail címet.  A riasztási feltételek teljesülése esetén meghívandó webhook címét is beírhatja.
 
     ![Teszt létrehozása](media/tutorial-alert/create-test-001.png)
 
-5. Térjen vissza a teszt panelre, kattintson a három pontra, majd a riasztás szerkesztése elemre a közel valós idejű riasztás konfigurációjának megadásához.
+5. Térjen vissza a tesztpanelre, jelölje ki a három pontot, és szerkesztheti a riasztást a közel valós idejű riasztás konfigurációjának megadásához.
 
     ![Riasztás szerkesztése](media/tutorial-alert/edit-alert-001.png)
 
-6. A sikertelen tárolóhelyek beállítása 3 értéknél nagyobb vagy azzal egyenlő. Hozzon létre egy [műveleti csoportot](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) , amely azt konfigurálja, hogy ki kapja meg a riasztási küszöbérték megszegése esetén a rendszer értesítést kapjon.
+6. A sikertelen helyek beállítása 3-nál nagyobb ra. Hozzon létre egy [műveletcsoportot](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) annak konfigurálásához, hogy ki kap értesítést a riasztási küszöbérték megszegéséről.
 
-    ![Riasztás felhasználói felületének mentése](media/tutorial-alert/save-alert-001.png)
+    ![Riasztási felhasználói felület mentése](media/tutorial-alert/save-alert-001.png)
 
-7. Miután konfigurálta a riasztást, a teszt nevére kattintva megtekintheti az egyes helyek részleteit. A tesztek a grafikonon és a pontdiagram formátumában is megtekinthetők az adott időtartomány sikerességének és hibáinak megjelenítéséhez.
+7. Miután beállította a riasztást, kattintson a teszt nevére az egyes helyeken lévő részletek megtekintéséhez. A tesztek megtekinthetők mind a vonaldiagram, mind a scatter nyomtatási formátumban, hogy megjelenítsék egy adott időtartomány sikerét/hibáit.
 
-    ![Teszt részletei](media/tutorial-alert/test-details-001.png)
+    ![A vizsgálat részletei](media/tutorial-alert/test-details-001.png)
 
-8. Az összes teszt részleteinek részletezéséhez kattintson a pontra a scatter diagramon. Ez elindítja a végpontok közötti tranzakció részletes nézetét. Az alábbi példa egy sikertelen kérelem részleteit mutatja be.
+8. A pontdiagramon található pontra kattintva részletezheti bármely teszt részleteit. Ezzel elindítja a végpontok között a tranzakciók részletei nézetet. Az alábbi példa egy sikertelen kérelem részleteit mutatja be.
 
-    ![Teszt eredménye](media/tutorial-alert/test-result-001.png)
+    ![A vizsgálat eredménye](media/tutorial-alert/test-result-001.png)
   
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte a problémákkal kapcsolatos riasztásokat, folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan használhatja a felhasználókat az alkalmazással való kommunikációra.
+Most, hogy megtanulta, hogyan kell riasztást adni a problémákról, lépjen a következő oktatóanyagra, és ismerje meg, hogyan elemezheti, hogyan kommunikálnak a felhasználók az alkalmazással.
 
 > [!div class="nextstepaction"]
 > [A felhasználók megismerése](../../azure-monitor/learn/tutorial-users.md)

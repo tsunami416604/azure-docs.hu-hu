@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 30696c5dcb3353ea468aa78dbc107dae4d292edb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4dfc6793bba473c4046863937baa292dde7bf421
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334445"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478705"
 ---
 # <a name="data-structures-in-azure-maps-mobility-service"></a>Adatstruktúrák az Azure Maps mobilitási szolgáltatásában
 
@@ -31,13 +31,13 @@ A `metroID` egy metró terület azonosítóját, hogy lehet használni, hogy hí
 
 ## <a name="stop-ids"></a>Azonosítók leállítása
 
-A tranzitmegállókra kétféle azonosító hivatkozhat, az [általános tranzitcsatorna-specifikáció (GFTS)](https://gtfs.org/) azonosító és az Azure Maps stop azonosítója. A GFTS-azonosító t stopKey-nak nevezik, és az Azure Maps stop id-t stopid-nak nevezzük. Ha gyakran hivatkozik a tranzit-megállók, javasoljuk, hogy használja az Azure Maps stop id. a stopID stabilabb és valószínűleg ugyanaz marad mindaddig, amíg a fizikai megállás létezik. A GTFS stop id gyakrabban frissül. A GTFS stop id például frissíthető a GTFS-szolgáltató kérésére, vagy ha új GTFS-verzió jelenik meg. Bár a fizikai leállás nem változott, a GTFS stop id változhat.
+A tranzitmegállókra kétféle azonosító hivatkozhat, az [általános tranzitcsatorna-specifikáció (GFTS)](http://gtfs.org/) azonosító és az Azure Maps stop azonosítója. A GFTS-azonosító t stopKey-nak nevezik, és az Azure Maps stop id-t stopid-nak nevezzük. Ha gyakran hivatkozik a tranzit-megállók, javasoljuk, hogy használja az Azure Maps stop id. a stopID stabilabb és valószínűleg ugyanaz marad mindaddig, amíg a fizikai megállás létezik. A GTFS stop id gyakrabban frissül. A GTFS stop id például frissíthető a GTFS-szolgáltató kérésére, vagy ha új GTFS-verzió jelenik meg. Bár a fizikai leállás nem változott, a GTFS stop id változhat.
 
 A kezdéshez a közeli tranzitmegállókat a [Közeli tranzit API bekérése segítségével](https://aka.ms/AzureMapsMobilityNearbyTransit)kérheti.
 
 ## <a name="line-groups-and-lines"></a>Sorcsoportok és -vonalak
 
-A Mobility Service párhuzamos adatmodellt használ a vonalakhoz és a vonalcsoportokhoz. Ez a modell a [GTFS-útvonalaktól](https://gtfs.org/) és az utazások adataitól örökölt módosítások jobb kezelésére szolgál.
+A Mobility Service párhuzamos adatmodellt használ a vonalakhoz és a vonalcsoportokhoz. Ez a modell a [GTFS-útvonalaktól](http://gtfs.org/) és az utazások adataitól örökölt módosítások jobb kezelésére szolgál.
 
 
 ### <a name="line-groups"></a>Sorcsoportok

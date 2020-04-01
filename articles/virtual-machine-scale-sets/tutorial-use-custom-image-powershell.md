@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – egyéni virtuálisgép-rendszerkép használata egy méretezési csoporton Azure PowerShell
+title: Oktatóanyag – Egyéni virtuálisgép-lemezkép használata méretezési készletben az Azure PowerShell használatával
 description: Megismerheti, hogyan hozhat létre egyéni virtuálisgép-rendszerképeket az Azure PowerShell használatával, amelyek használatával virtuálisgép-méretezési csoportokat helyezhet üzembe
 author: cynthn
 tags: azure-resource-manager
@@ -9,15 +9,15 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: daef03b411a451fc3e5b73e46091672810b0f9bd
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76278296"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>Oktatóanyag: Egyéni rendszerkép létrehozása és használata virtuálisgép-méretezési csoportokhoz az Azure PowerShell-lel
 
-Méretezési csoport létrehozása során meg kell adnia egy rendszerképet a virtuálisgép-példányok üzembe helyezésekor. Egyéni virtuálisgép-rendszerkép használatával csökkentheti a feladatok számát a virtuálisgép-példányok üzembe helyezése után. Ez az egyéni virtuálisgép-rendszerkép tartalmaz minden szükséges alkalmazástelepítést és -konfigurációt. A méretezési csoportban létrehozott összes virtuálisgép-példány az egyéni virtuálisgép-rendszerképet használja, és készen állnak az alkalmazás forgalmának kiszolgálására. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Méretezési csoport létrehozása során meg kell adnia egy rendszerképet a virtuálisgép-példányok üzembe helyezésekor. Egyéni virtuálisgép-rendszerkép használatával csökkentheti a feladatok számát a virtuálisgép-példányok üzembe helyezése után. Ez az egyéni virtuálisgép-rendszerkép tartalmaz minden szükséges alkalmazástelepítést és -konfigurációt. A méretezési csoportban létrehozott összes virtuálisgép-példány az egyéni virtuálisgép-rendszerképet használja, és készen állnak az alkalmazás forgalmának kiszolgálására. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 > * Virtuális gép létrehozása és testre szabása
@@ -25,7 +25,7 @@ Méretezési csoport létrehozása során meg kell adnia egy rendszerképet a vi
 > * Egyéni virtuálisgép-rendszerkép létrehozása a forrás virtuális gépről
 > * Az egyéni virtuálisgép-rendszerképet használó méretezési csoport üzembe helyezése
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
@@ -37,7 +37,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 >[!NOTE]
 > Ez az oktatóanyag bemutatja az általánosított virtuálisgép-rendszerképek létrehozásának és használatának folyamatát. A méretezési csoportok speciális virtuális merevlemezről való létrehozása nem támogatott.
 
-Először hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup), majd hozzon létre egy új virtuális gépet a [New-AzVM](/powershell/module/az.compute/new-azvm). Ez a virtuális gép szolgál majd az egyéni virtuálisgép-rendszerkép forrásaként. A következő példában létrehozunk egy *myCustomVM* nevű virtuális gépet a *myResourceGroup* nevű erőforráscsoportban. Amikor a rendszer kéri, adja meg a virtuális gép bejelentkezési hitelesítő adataiként használni kívánt felhasználónevet és jelszót:
+Először hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)segítségével, majd hozzon létre egy virtuális gép [új-AzVM.](/powershell/module/az.compute/new-azvm) Ez a virtuális gép szolgál majd az egyéni virtuálisgép-rendszerkép forrásaként. A következő példában létrehozunk egy *myCustomVM* nevű virtuális gépet a *myResourceGroup* nevű erőforráscsoportban. Amikor a rendszer kéri, adja meg a virtuális gép bejelentkezési hitelesítő adataiként használni kívánt felhasználónevet és jelszót:
 
 ```azurepowershell-interactive
 # Create a resource a group
@@ -51,7 +51,7 @@ New-AzVm `
   -OpenPorts 3389
 ```
 
-A virtuális géphez való kapcsolódáshoz a következő módon sorolja fel a nyilvános IP-címet a [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) használatával:
+A virtuális géphez való csatlakozáshoz sorolja fel a nyilvános [IP-címet a Get-AzPublicIpAddress címel](/powershell/module/az.network/get-azpublicipaddress) az alábbiak szerint:
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
@@ -83,7 +83,7 @@ A virtuális géppel való távoli kapcsolat automatikusan megszakad, amikor a S
 ## <a name="create-a-custom-vm-image-from-the-source-vm"></a>Egyéni virtuálisgép-rendszerkép létrehozása a forrás virtuális gépről
 A forrás virtuális gép most már testre van szabva, és az IIS-webkiszolgáló is telepítve van. Hozzuk létre a méretezési csoporthoz használni kívánt egyéni virtuálisgép-rendszerképet.
 
-Rendszerkép létrehozásához fel kell szabadítani a virtuális gépet. Szabadítsa fel a virtuális gépet a [stop-AzVm](/powershell/module/az.compute/stop-azvm). Ezután állítsa a virtuális gép állapotát általánosítva a [set-AzVm](/powershell/module/az.compute/set-azvm) , hogy az Azure platform tudja, hogy a virtuális gép készen áll az egyéni rendszerkép használatára. Rendszerképet csak általánosított virtuális gépből hozhat létre:
+Rendszerkép létrehozásához fel kell szabadítani a virtuális gépet. A virtuális gép [felszabadítása a Stop-AzVm-mel.](/powershell/module/az.compute/stop-azvm) Ezután állítsa be a virtuális gép állapotát a [Set-AzVm](/powershell/module/az.compute/set-azvm) általánosítva, hogy az Azure platform tudja, hogy a virtuális gép készen áll egy egyéni lemezkép használatára. Rendszerképet csak általánosított virtuális gépből hozhat létre:
 
 ```azurepowershell-interactive
 Stop-AzVM -ResourceGroupName "myResourceGroup" -Name "myCustomVM" -Force
@@ -92,7 +92,7 @@ Set-AzVM -ResourceGroupName "myResourceGroup" -Name "myCustomVM" -Generalized
 
 A virtuális gép felszabadítása és általánosítása eltarthat néhány percig.
 
-Most hozzon létre egy rendszerképet a virtuális gépről a [New-AzImageConfig](/powershell/module/az.compute/new-azimageconfig) és a [New-AzImage](/powershell/module/az.compute/new-azimage). Az alábbi példa létrehoz egy *myImage* nevű rendszerképet a virtuális gépéből:
+Most hozzon létre egy képet a virtuális gép a [New-AzImageConfig](/powershell/module/az.compute/new-azimageconfig) és [a New-AzImage](/powershell/module/az.compute/new-azimage). Az alábbi példa létrehoz egy *myImage* nevű rendszerképet a virtuális gépéből:
 
 ```azurepowershell-interactive
 # Get VM object
@@ -106,7 +106,7 @@ New-AzImage -Image $image -ImageName "myImage" -ResourceGroupName "myResourceGro
 ```
 
 ## <a name="configure-the-network-security-group-rules"></a>A hálózati biztonsági csoport szabályainak konfigurálása
-A méretezési csoport létrehozása előtt konfigurálnia kell a hálózati biztonsági csoport társításának szabályait, hogy engedélyezzék a HTTP, RDP és távelérés elérését 
+A méretezési csoport létrehozása előtt konfigurálnunk kell a hálózati biztonsági csoport társítására vonatkozó szabályokat, hogy lehetővé tegyék a HTTP-hez, rdp-hez és remotinghoz való hozzáférést. 
 
 ```azurepowershell-interactive
 $rule1 = New-AzNetworkSecurityRuleConfig -Name web-rule -Description "Allow HTTP" -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 80
@@ -119,7 +119,7 @@ New-AzNetworkSecurityGroup -Name "myNSG" -ResourceGroupName "myResourceGroup" -L
 ```
 
 ## <a name="create-a-scale-set-from-the-custom-vm-image"></a>Méretezési csoport létrehozása az egyéni virtuálisgép-rendszerképből
-Most hozzon létre egy olyan méretezési készletet a [New-AzVmss](/powershell/module/az.compute/new-azvmss) , amely a `-ImageName` paramétert használja az előző lépésben létrehozott egyéni virtuálisgép-rendszerkép definiálásához. A forgalom az egyes virtuális gépek közötti elosztása érdekében a parancs egy terheléselosztót is létrehoz. A terheléselosztó szabályai elosztják a 80-as TCP-porton érkező forgalmat, valamint lehetővé teszik a távoli asztali forgalmat a 3389-es, valamint a PowerShell távoli eljáráshívásokat az 5985-ös TCP-porton. Amikor a rendszer erre kéri, adja meg használni kívánt rendszergazdai hitelesítő adatait a méretezési csoportban lévő virtuálisgép-példányokhoz:
+Most hozzon létre egy méretezési [készletet a New-AzVmss,](/powershell/module/az.compute/new-azvmss) amely a `-ImageName` paraméter segítségével határozza meg az egyéni virtuális gép lemezkép az előző lépésben létrehozott. A forgalom az egyes virtuális gépek közötti elosztása érdekében a parancs egy terheléselosztót is létrehoz. A terheléselosztó szabályai elosztják a 80-as TCP-porton érkező forgalmat, valamint lehetővé teszik a távoli asztali forgalmat a 3389-es, valamint a PowerShell távoli eljáráshívásokat az 5985-ös TCP-porton. Amikor a rendszer erre kéri, adja meg használni kívánt rendszergazdai hitelesítő adatait a méretezési csoportban lévő virtuálisgép-példányokhoz:
 
 ```azurepowershell-interactive
 New-AzVmss `
@@ -139,7 +139,7 @@ A méretezési csoport erőforrásainak és virtuális gépeinek létrehozása �
 
 
 ## <a name="test-your-scale-set"></a>Méretezési csoport tesztelése
-A méretezési csoport működés közbeni megtekintéséhez szerezze be a terheléselosztó nyilvános IP-címét a [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress) a következőképpen:
+A méretezési csoport működés közbeni megtekintéséhez a [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress) segítségével a terheléselosztó nyilvános IP-címét az alábbiak szerint kapja meg:
 
 
 ```azurepowershell-interactive
@@ -154,14 +154,14 @@ Gépelje be a nyilvános IP-címet a webböngészőjébe. Az alapértelmezett II
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-A méretezési csoport és a további erőforrások eltávolításához törölje az erőforráscsoportot és az összes erőforrását a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)használatával. A `-Force` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat. A `-AsJob` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét.
+A méretezési csoport és a további erőforrások eltávolításához törölje az erőforráscsoportot és annak összes erőforrását az [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)segítségével. A `-Force` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat. A `-AsJob` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban megtudhatta, hogyan hozhat létre és használhat egyéni virtuálisgép-rendszerképet a méretezési csoportjai esetében az Azure PowerShell segítségével:
 
 > [!div class="checklist"]

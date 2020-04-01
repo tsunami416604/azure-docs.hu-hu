@@ -1,6 +1,6 @@
 ---
-title: 'CLI: ASP.NET Core alkalmazás létrehozása a Docker-ből'
-description: Ismerje meg, hogyan automatizálható az App Service-alkalmazás üzembe helyezése és kezelése az Azure CLI használatával. Ez a példa bemutatja, hogyan hozhat létre ASP.NET Core alkalmazást a Docker hub-ból.
+title: 'CLI: Hozzon létre ASP.NET Core alkalmazást a Docker-ből'
+description: Ismerje meg, hogyan használhatja az Azure CLI-t az App Service-alkalmazás üzembe helyezésének és felügyeletének automatizálására. Ez a minta bemutatja, hogyan hozhat létre egy ASP.NET Core alkalmazást a Docker Hubból.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 3a2d1983-ff7b-476a-ac44-49ec2aabb31a
@@ -8,17 +8,17 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 80190fa767da6c593b99d79a71ebce661d561253
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 8eb95644db5b1cb00ef6e245db6197cf2a2f301b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74685983"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80044768"
 ---
-# <a name="create-an-aspnet-core-app-in-a-docker-container-from-docker-hub-using-azure-cli"></a>ASP.NET Core-alkalmazás létrehozása Docker-tárolóban a Docker hub-ból az Azure CLI használatával
+# <a name="create-an-aspnet-core-app-in-a-docker-container-from-docker-hub-using-azure-cli"></a>hozzon létre egy ASP.NET Core alkalmazást egy Docker-tárolóban a Docker Hubból az Azure CLI használatával
 
-Ez a minta parancsfájl létrehoz egy erőforráscsoportot, egy Linux App Service tervet és egy alkalmazást. Ezután üzembe helyez ASP.NET Core-alapú alkalmazást egy Docker-tároló használatával.
+Ez a mintaparancsfájl létrehoz egy erőforráscsoportot, egy Linux App Service-csomagot és egy alkalmazást. Ezután üzembe helyez ASP.NET Core-alapú alkalmazást egy Docker-tároló használatával.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -34,16 +34,16 @@ Ha a parancssori felület helyi telepítését és használatát választja, az 
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-Ez a szkript a következő parancsokat használja egy erőforráscsoport, App Service alkalmazás és az összes kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+Ez a parancsfájl a következő parancsokat használja egy erőforráscsoport, az App Service-alkalmazás és az összes kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Létrehoz egy App Service-csomagot. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy App Service alkalmazást. |
-| [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) | Beállítja a App Service alkalmazás Docker-tárolóját. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy App Service-alkalmazást. |
+| [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) | Beállítja a Docker-tárolót az App Service-alkalmazáshoz. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 

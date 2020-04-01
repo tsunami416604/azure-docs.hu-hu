@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 01/21/2020
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: c4402c1ce2f051c8d1911e7c0332d4cac787ce1d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cc1863ff4200ee4cca94f18e3adfffa7ea42db96
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77613198"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475947"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Jelszó- és fiókzárolási házirendek felügyelt tartományokon
 
@@ -105,20 +105,20 @@ Egyéni jelszóházirend létrehozásához használja az Active Directory felüg
     * Beállítások, például a jelszó összetettsége, kora vagy lejárati ideje csak az Azure AD DS felügyelt tartományban manuálisan létrehozott felhasználók számára.
     * A fiókzárolási beállítások minden felhasználóra vonatkoznak, de csak a felügyelt tartományon belül lépnek érvénybe, és nem magában az Azure AD-ben.
 
-    ![Egyéni részletes jelszóházirend létrehozása](./media/how-to/custom-fgpp.png)
+    ![Egyéni részletes jelszóházirend létrehozása](./media/password-policy/custom-fgpp.png)
 
 1. Törölje a jelet **A véletlen törlés elleni védelem**. Ha ez a beállítás be van jelölve, nem menthető az FGPP.
 1. A **Közvetlenül alkalmazandó** csoportban válassza a **Hozzáadás** gombot. A **Felhasználók vagy csoportok kiválasztása** párbeszédpanelen kattintson a **Helyek** gombra.
 
-    ![Válassza ki azokat a felhasználókat és csoportokat, akikre alkalmazni szeretné a jelszóházirendet.](./media/how-to/fgpp-applies-to.png)
+    ![Válassza ki azokat a felhasználókat és csoportokat, akikre alkalmazni szeretné a jelszóházirendet.](./media/password-policy/fgpp-applies-to.png)
 
 1. A jelszóházirendek csak csoportokra alkalmazhatók. A **Helyek** párbeszédpanelen bontsa ki a tartománynevet, például *a aaddscontoso.com*, majd jelöljön ki egy szervezeti egységet, például **az AADDC-felhasználók at.** Ha egyéni szervezeti egysége olyan felhasználói csoportot tartalmaz, amelyet alkalmazni szeretne, jelölje ki azt a szervezeti egységet.
 
-    ![Válassza ki azt a szervezeti egységet, amelyhez a csoport tartozik.](./media/how-to/fgpp-container.png)
+    ![Válassza ki azt a szervezeti egységet, amelyhez a csoport tartozik.](./media/password-policy/fgpp-container.png)
 
 1. Írja be annak a csoportnak a nevét, amelyre alkalmazni szeretné a házirendet, majd válassza a **Nevek ellenőrzése** lehetőséget a csoport létezésének ellenőrzéséhez.
 
-    ![Az FGPP alkalmazásához kívánt csoport keresése és kiválasztása](./media/how-to/fgpp-apply-group.png)
+    ![Az FGPP alkalmazásához kívánt csoport keresése és kiválasztása](./media/password-policy/fgpp-apply-group.png)
 
 1. A **közvetlenül alkalmazandó** csoportban most kiválasztott csoport nevével válassza az **OK** gombot az egyéni jelszóházirend mentéséhez.
 

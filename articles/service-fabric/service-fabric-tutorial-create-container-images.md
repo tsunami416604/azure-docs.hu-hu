@@ -1,5 +1,5 @@
 ---
-title: Tároló lemezképek létrehozása Service Fabric az Azure-ban
+title: Tárolórendszerképek létrehozása az Azure Service Fabric szolgáltatásában
 description: Ez az oktatóanyag bemutatja, hogyan hozhat létre tárolórendszerképeket többtárolós Service Fabric-alkalmazásokhoz.
 author: suhuruli
 ms.topic: tutorial
@@ -7,15 +7,15 @@ ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: fe06da759a1ad42ef5cef888f98c440cdfb9569c
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78252789"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Oktatóanyag: Tárolórendszerképek létrehozása Linux Service Fabric-fürtön
 
-Ez az oktatóanyag egy olyan sorozat első része, amely azt mutatja be, hogyan használhatók tárolók a Linux Service Fabric-fürtökben. Ebben az oktatóanyagban egy többtárolós alkalmazást fog előkészíteni a Service Fabrichez. Az ezt követő oktatóanyagok ezeket a rendszerképeket fogják használni egy Service Fabric-alkalmazás részeként. Ennek az oktatóanyagnak a segítségével megtanulhatja a következőket:
+Ez az oktatóanyag egy olyan sorozat első része, amely azt mutatja be, hogyan használhatók tárolók a Linux Service Fabric-fürtökben. Ebben az oktatóanyagban egy többtárolós alkalmazást fog előkészíteni a Service Fabrichez. Az ezt követő oktatóanyagok ezeket a rendszerképeket fogják használni egy Service Fabric-alkalmazás részeként. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 > * Alkalmazás forrásának klónozása a GitHubról
@@ -78,7 +78,7 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 ## <a name="deploy-azure-container-registry"></a>Azure Container Registry üzembe helyezése
 
-Először futtassa az az **login** parancsot az Azure-fiókjába való bejelentkezéshez.
+Először futtassa az **az bejelentkezési** parancsot az Azure-fiókjába való bejelentkezéshez.
 
 ```azurecli
 az login
@@ -106,9 +106,9 @@ az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --
 
 Az oktatóanyag hátralevő részében az „acrName” kifejezés helyettesíti a tárolóregisztrációs adatbázis választott nevét. Jegyezze fel ezt az értéket.
 
-## <a name="sign-in-to-your-container-registry"></a>Jelentkezzen be a tároló-beállításjegyzékbe
+## <a name="sign-in-to-your-container-registry"></a>Bejelentkezés a tároló beállításjegyzékébe
 
-Jelentkezzen be az ACR-példányba, mielőtt a képeket kikényszeríti. Használja az **az acr login** parancsot a művelet befejezéséhez. Adja meg a tárolóregisztrációs adatbázis egyedi nevét, amelyet a létrehozásakor adott meg.
+Jelentkezzen be az ACR-példányba, mielőtt képeket nyomna hozzá. Használja az **az acr login** parancsot a művelet befejezéséhez. Adja meg a tárolóregisztrációs adatbázis egyedi nevét, amelyet a létrehozásakor adott meg.
 
 ```azurecli
 az acr login --name <acrName>
@@ -196,9 +196,9 @@ azure-vote-front
 
 Az oktatóanyag végeztével a tárolórendszerképet egy privát Azure Container Registry-példány tárolja. Ezt a rendszerképet telepítjük az ACR-ből egy Service Fabric-fürtre a következő oktatóanyagok során.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban egy alkalmazást hoztak létre a GitHubról, és a tároló lemezképeit létrehozták, és elküldték a beállításjegyzékbe. A következő lépéseket hajtotta végre:
+Ebben az oktatóanyagban egy alkalmazás lelett választva a GitHubról, és a tárolórendszerképek létrejöttek, és a rendszerleíró adatbázisba kerültek. A következő lépéseket hajtotta végre:
 
 > [!div class="checklist"]
 > * Alkalmazás forrásának klónozása a GitHubról

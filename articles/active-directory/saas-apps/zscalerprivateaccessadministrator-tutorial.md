@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Zscaler privát hozzáférés rendszergazdája |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés Zscaler privát hozzáférés rendszergazdája és az Azure Active Directory között.
+title: 'Oktatóanyag: Az Azure Active Directory integrációja a Zscaler private access-rendszergazdával | Microsoft dokumentumok'
+description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a Zscaler Private Access Administrator között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,255 +17,255 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b7f0bc04bb8e7358f5bdb2e4dfc3db198e24303f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67085644"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-administrator"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Zscaler privát hozzáférés rendszergazdája
+# <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-administrator"></a>Oktatóanyag: Az Azure Active Directory integrációja a Zscaler private access-rendszergazdával
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan Zscaler privát hozzáférés rendszergazdája integrálása az Azure Active Directory (Azure AD).
-Zscaler privát hozzáférés rendszergazdája integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a Zscaler privát hozzáférési rendszergazdáját az Azure Active Directoryval (Azure AD).
+A Zscaler privát hozzáférési rendszergazdájának az Azure AD-vel való integrálása a következő előnyöket nyújtja:
 
-* Az Azure ad-ben a Zscaler privát hozzáférés rendszergazdai hozzáféréssel rendelkező szabályozhatja.
-* Engedélyezheti a felhasználóknak, hogy a rendszer automatikusan bejelentkezett Zscaler privát hozzáférés rendszergazdája (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Szabályozhatja az Azure AD-ben, aki hozzáfér a Zscaler privát hozzáférési rendszergazdájához.
+* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve legyenek a Zscaler Private Access Administrator (Single Sign-On) szolgáltatásba az Azure AD-fiókjukkal.
+* Fiókjait egyetlen központi helyen kezelheti – az Azure Portalon.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha további részleteket szeretne megtudni az SaaS-alkalmazások Azure AD-vel való integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása a Zscaler privát hozzáférés adminisztrátora, a következőkre van szükség:
+Az Azure AD-integráció konfigurálásához a Zscaler private access-rendszergazda, a következő elemekre van szüksége:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
-* Zscaler privát hozzáférés rendszergazdai egyszeri bejelentkezés engedélyezve van az előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [ingyenes fiókot](https://azure.microsoft.com/free/) kaphat
+* Zscaler Private Access Administrator egyszeri bejelentkezéses előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben.
 
-* Támogatja a Zscaler privát hozzáférés rendszergazdája **SP** és **Identitásszolgáltató** által kezdeményezett egyszeri bejelentkezés
+* A Zscaler Private Access Administrator támogatja az **SP** és **az IDP** által kezdeményezett sso-t
 
-## <a name="adding-zscaler-private-access-administrator-from-the-gallery"></a>Zscaler privát hozzáférést rendszergazda hozzáadása a katalógusból
+## <a name="adding-zscaler-private-access-administrator-from-the-gallery"></a>Zscaler private access administrator hozzáadása a galériából
 
-Az Azure AD-be Zscaler privát hozzáférést rendszergazda-integráció konfigurálása szüksége Zscaler privát hozzáférést rendszergazda hozzáadása a felügyelt SaaS-alkalmazások listájában a katalógusból.
+A Zscaler Private Access Administrator azure-beli AD-be való integrációjának konfigurálásához hozzá kell adnia a Zscaler Private Access Administrator-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Zscaler privát hozzáférést rendszergazda hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+**Ha a Zscaler private access-rendszergazdát a katalógusból szeretné hozzáadni, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen kattintson az **Azure Active Directory** ikonjára.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![Az Azure Active Directory gombja](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+2. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza a **Minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+3. Új alkalmazás hozzáadásához kattintson az **Új alkalmazás** gombra a párbeszéd ablak tetején.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![Az Új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Zscaler privát hozzáférés rendszergazdája**, jelölje be **Zscaler privát hozzáférés rendszergazdája** eredmény panelen kattintson a **Hozzáadás** gombra kattintva adhat hozzá a az alkalmazás.
+4. A keresőmezőbe írja be a **Zscaler Private Access Administrator ( Zscaler Private Access Administrator**) kifejezést, válassza a **Zscaler Private Access Administrator** elemet az eredménypanelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-    ![Az eredmények listájában Zscaler privát hozzáférésű rendszergazda](common/search-new-app.png)
+    ![Zscaler private access rendszergazda az eredménylistában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés a Zscaler privát hozzáférést rendszergazda nevű tesztfelhasználó alapján **Britta Simon**.
-Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó Zscaler privát hozzáférés rendszergazdája hivatkozás kapcsolata kell létrehozni.
+Ebben a szakaszban konfigurálhatja és tesztelheti az Azure AD egyszeri bejelentkezését a Zscaler Private Access Administrator szolgáltatással egy **Britta Simon**nevű tesztfelhasználó alapján.
+Egyszeri bejelentkezés működéséhez létre kell hozni egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó Zscaler private access administrator létre kell hozni.
 
-Az Azure AD egyszeri bejelentkezés Zscaler privát hozzáférés rendszergazdája tesztelése és konfigurálása, hajtsa végre a következő építőelemeit kell:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez a Zscaler Private Access Administrator alkalmazásával a következő építőelemeket kell végrehajtania:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Zscaler személyes hozzáférési rendszergazdai egyszeri bejelentkezés konfigurálása](#configure-zscaler-private-access-administrator-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre Zscaler privát hozzáférés rendszergazdája tesztfelhasználót](#create-zscaler-private-access-administrator-test-user)**  – szeretné, hogy egy megfelelője a Britta Simon a Zscaler privát hozzáférés rendszergazdája, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Konfigurálja az Azure AD egyszeri bejelentkezést](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. **[Konfigurálja a Zscaler Private Access Administrator Single Sign-On --t](#configure-zscaler-private-access-administrator-single-sign-on)** az egyszeri bejelentkezési beállítások konfigurálásához az alkalmazás oldalon.
+3. **[Hozzon létre egy Azure AD-tesztfelhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének teszteléséhez Britta Simonnal.
+4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi Britta Simon azure AD egyszeri bejelentkezés.
+5. **[Hozzon létre Zscaler Private Access Administrator teszt felhasználó](#create-zscaler-private-access-administrator-test-user)** – egy megfelelője Britta Simon zscaler privát hozzáférési rendszergazda, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon.
 
-Az Azure AD egyszeri bejelentkezés konfigurálása Zscaler privát hozzáférés rendszergazdája, hajtsa végre az alábbi lépéseket:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához a Zscaler private access-rendszergazda, hajtsa végre a következő lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com/), a a **Zscaler privát hozzáférés rendszergazdája** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
+1. Az [Azure Portalon](https://portal.azure.com/)a **Zscaler Private Access Administrator** alkalmazásintegrációs lapon válassza az **Egyszeri bejelentkezés**lehetőséget.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+    ![Egyszeri bejelentkezési kapcsolat konfigurálása](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+2. Az **Egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza **az SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezésválasztó mód](common/select-saml-option.png)
 
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
+3. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson a **Szerkesztés** ikonra az **Egyszerű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, hajtsa végre az alábbi lépéseket:
+4. Az **Egyszerű SAML-konfiguráció** szakaszban, ha az alkalmazást **IDP** által kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![Zscaler privát hozzáférés rendszergazdai tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-relay.png)
+    ![Zscaler private access administrator tartomány és URL-címek egyszeri bejelentkezési információk](common/idp-relay.png)
 
-    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<subdomain>.private.zscaler.com/auth/metadata`
+    a. Az **Azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<subdomain>.private.zscaler.com/auth/metadata`
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<subdomain>.private.zscaler.com/auth/sso`
+    b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:`https://<subdomain>.private.zscaler.com/auth/sso`
 
-    c. Kattintson a **további URL-címet beállítani**.
+    c. Kattintson **a További URL-címek beállítása gombra.**
 
-    d. Az a **továbbítási állapot** szövegmezőbe írja be egy URL-címe: `idpadminsso`
+    d. A **Továbbítási állapot** mezőbe írjon be egy URL-címet:`idpadminsso`
 
-5.  Ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód, hajtsa végre a következő lépést:
+5.  Ha az alkalmazást **SP** által kezdeményezett módban kívánja konfigurálni, hajtsa végre a következő lépést:
 
-    ![Zscaler privát hozzáférés rendszergazdai tartomány és URL-címeket egyetlen bejelentkezési adatait](common/both-signonurl.png)
+    ![Zscaler private access administrator tartomány és URL-címek egyszeri bejelentkezési információk](common/both-signonurl.png)
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<subdomain>.private.zscaler.com/auth/sso`   
+    A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<subdomain>.private.zscaler.com/auth/sso`   
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Az értékeket módosítsa a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-címet. Kapcsolattartó [Zscaler privát hozzáférés rendszergazdai ügyfél-támogatási csapatának](https://help.zscaler.com/zpa-submit-ticket) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Lépjen kapcsolatba [a Zscaler Private Access Administrator Ügyfél támogatási csapatával,](https://help.zscaler.com/zpa-submit-ticket) hogy megkapja ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
 
-6. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+6. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány csoportjában** kattintson a **Letöltés** gombra, ha letöltheti az **összevonási metaadat-XML-t** a megadott beállításokból a követelménynek megfelelően, és mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
+    ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-7. Az a **állítsa be Zscaler privát hozzáférés rendszergazdája** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+7. A **Zscaler privát hozzáférés rendszergazdájának beállítása** szakaszban másolja a megfelelő URL-cím(eke)t a követelménynek megfelelően.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
-    b. Azure AD-azonosító
+    b. Azure Hirdetés-azonosító
 
-    c. Kijelentkezési URL
+    c. Kijelentkezés URL-címe
 
-### <a name="configure-zscaler-private-access-administrator-single-sign-on"></a>Zscaler privát hozzáférés rendszergazdai egyszeri bejelentkezés konfigurálása
+### <a name="configure-zscaler-private-access-administrator-single-sign-on"></a>A Zscaler privát hozzáférési rendszergazdájának konfigurálása egyszeri bejelentkezés
 
-1. Jelentkezzen a Zscaler privát hozzáférés rendszergazdája egy másik böngészőablakban, rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be rendszergazdaként a Zscaler Private Access Administrator alkalmazásba.
 
-2. A képernyő felső részén kattintson **felügyeleti** , és keresse meg **hitelesítési** szakaszban kattintson **identitásszolgáltató konfigurációja**.
+2. A lap tetején kattintson a **Felügyelet** elemre, és keresse meg a **HITELESÍTÉS szakaszt,** és kattintson az **IdP-konfiguráció**elemre.
 
-    ![Zscaler Private Access Administrator admin](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_admin.png)
+    ![Zscaler privát hozzáférés rendszergazdája](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_admin.png)
 
-3. Kattintson a jobb felső sarokban **adja hozzá az identitásszolgáltató konfigurációja**. 
+3. A jobb felső sarokban kattintson az **IdP-konfiguráció hozzáadása gombra.** 
 
-    ![Zscaler Private Access Administrator addidp](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_addpidp.png)
+    ![Zscaler privát hozzáférési rendszergazda addidp](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_addpidp.png)
 
-4. Az a **adja hozzá az identitásszolgáltató konfigurációja** oldalon tegye a következőket:
+4. Az **IdP-konfiguráció hozzáadása** lapon hajtsa végre a következő lépéseket:
  
-    ![Zscaler privát hozzáférés rendszergazdája idpselect](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_idpselect.png)
+    ![Zscaler private access rendszergazda idpselect](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_idpselect.png)
 
-    a. Kattintson a **fájl kiválasztása** feltölteni a letöltött metaadat-fájlt az Azure AD-ből a **IdP-metaadatok fájlfeltöltés** mező.
+    a. Kattintson **a Fájl kiválasztása** gombra a letöltött metaadat-fájl feltöltéséhez az Azure AD-ből az **IdP metaadat-fájl feltöltése** mezőben.
 
-    b. Olvassa be, hogy a **identitásszolgáltató metaadatok** Azure AD-ből és tölti fel a mezők adatai az alább látható módon.
+    b. Beolvassa az **IdP-metaadatokat** az Azure AD-ből, és feltölti az összes mezőadatait az alábbiak szerint.
 
-    ![Zscaler Private Access Administrator idpconfig](./media/zscalerprivateaccessadministrator-tutorial/idpconfig.png)
+    ![Zscaler privát hozzáférési rendszergazda idpconfig](./media/zscalerprivateaccessadministrator-tutorial/idpconfig.png)
 
-    c. Válassza ki **egyszeri bejelentkezés** , **rendszergazda**.
+    c. Válassza **az Egyszeri bejelentkezés** **rendszergazdaként lehetőséget.**
 
-    d. Válassza ki a tartományt a **tartományok** mező.
+    d. Válassza ki a tartományt a **Domains** mezőből.
     
-    e. Kattintson a **Save** (Mentés) gombra.
+    e. Kattintson a **Mentés** gombra.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása 
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalon Britta Simon.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. Az Azure Portalon a bal oldali ablaktáblában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd az **Összes felhasználó**lehetőséget.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+    ![A "Felhasználók és csoportok" és a "Minden felhasználó" linkek](common/users.png)
 
-2. Válassza ki **új felhasználó** a képernyő tetején.
+2. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
 
     ![Új felhasználó gomb](common/new-user.png)
 
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
+3. A Felhasználó tulajdonságokban hajtsa végre a következő lépéseket.
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+    ![A Felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    a. A **Név** mezőbe írja be **a BrittaSimon**értéket.
   
-    b. Az a **felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`. Például: BrittaSimon@contoso.com
+    b. A **Felhasználónév** mező `brittasimon@yourcompanydomain.extension`típusa mezőben. Például: BrittaSimon@contoso.com
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    c. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson **a Létrehozás gombra.**
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon Zscaler privát hozzáférés adminisztrátora, a hozzáférés biztosításával Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban engedélyezi Britta Simon az Azure egyszeri bejelentkezést a Zscaler privát hozzáférési rendszergazdájának biztosításával.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Zscaler privát hozzáférés rendszergazdai**.
+1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, válassza az **Összes alkalmazás**lehetőséget, majd válassza a **Zscaler Private Access Administrator lehetőséget.**
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **Zscaler privát hozzáférés rendszergazdája**.
+2. Az alkalmazások listájában válassza a **Zscaler Private Access Administrator lehetőséget.**
 
-    ![A Zscaler privát hozzáférés rendszergazdája hivatkozásra az alkalmazások listáját](common/all-applications.png)
+    ![A Zscaler privát hozzáférés-rendszergazda hivatkozása az Alkalmazások listában](common/all-applications.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+3. A bal oldali menüben válassza a **Felhasználók és csoportok**lehetőséget.
 
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+    ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Kattintson a **Felhasználó hozzáadása** gombra, majd a **Hozzárendelés hozzáadása** **párbeszédpanelen** válassza a Felhasználók és csoportok lehetőséget.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+    ![A Hozzárendelés hozzáadása ablaktábla](common/add-assign-user.png)
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+5. A **Felhasználók és csoportok** párbeszédpanelen válassza **a Britta Simon** elemet a Felhasználók listában, majd kattintson a kijelölés gombra a képernyő alján. **Select**
 
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+6. Ha az SAML-helyességben szerepkörértéket vár, akkor a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó megfelelő szerepkörét a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+7. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
 
-### <a name="create-zscaler-private-access-administrator-test-user"></a>Zscaler privát hozzáférés rendszergazdája tesztfelhasználó létrehozása
+### <a name="create-zscaler-private-access-administrator-test-user"></a>Zscaler Private Access Administrator tesztfelhasználójának létrehozása
 
-Az Azure AD-felhasználók Zscaler privát hozzáférés rendszergazdai bejelentkezés engedélyezéséhez, ki kell építeni Zscaler privát hozzáférés rendszergazdája be. Esetén Zscaler privát hozzáférés adminisztrátora, a manuális tevékenység kiépítése.
+Ahhoz, hogy az Azure AD-felhasználók bejelentkezhessenek a Zscaler private access administratorba, ki kell építeni őket a Zscaler private access administrator-ba. A Zscaler private access-rendszergazda esetén a kiépítés manuális feladat.
 
-**Üzembe helyez egy felhasználói fiókot, hajtsa végre az alábbi lépéseket:**
+**Felhasználói fiók kiépítéséhez hajtsa végre az alábbi lépéseket:**
 
-1. Jelentkezzen be rendszergazdaként a Zscaler privát hozzáférés rendszergazdája vállalati webhely.
+1. Jelentkezzen be rendszergazdaként a Zscaler Private Access Administrator vállalati webhelyére.
 
-2. A képernyő felső részén kattintson **felügyeleti** , és keresse meg **hitelesítési** szakaszban kattintson **identitásszolgáltató konfigurációja**.
+2. A lap tetején kattintson a **Felügyelet** elemre, és keresse meg a **HITELESÍTÉS szakaszt,** és kattintson az **IdP-konfiguráció**elemre.
 
-    ![Zscaler Private Access Administrator admin](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_admin.png)
+    ![Zscaler privát hozzáférés rendszergazdája](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_admin.png)
 
-3. Kattintson a **rendszergazdák** a bal oldali menüben.
+3. Kattintson a menü bal oldalán a **Rendszergazdák** elemre.
 
-    ![Zscaler Private Access Administrator administrator](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_adminstrator.png)
+    ![Zscaler privát hozzáférés rendszergazdája](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_adminstrator.png)
 
-4. Kattintson a jobb felső sarokban **-rendszergazda felvétele**:
+4. A jobb felső sarokban kattintson a **Rendszergazda hozzáadása gombra:**
 
-    ![Zscaler Private Access Administrator add admin](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_addadmin.png)
+    ![Zscaler private access rendszergazda hozzáadása rendszergazda](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_addadmin.png)
 
-5. Az a **-rendszergazda felvétele** lapon, a következő lépésekkel:
+5. A **Rendszergazda hozzáadása** lapon hajtsa végre az alábbi lépéseket:
 
-    ![Zscaler privát hozzáférést rendszergazda felhasználó felügyeleti](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_useradmin.png)
+    ![Zscaler Private Access rendszergazda](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_useradmin.png)
 
-    a. Az a **felhasználónév** szövegmezőben adja meg az e-mail címét, például a felhasználó BrittaSimon@contoso.com.
+    a. A **Felhasználónév** mezőbe írja be a BrittaSimon@contoso.comfelhasználó e-mail címét, például .
 
-    b. Az a **jelszó** szövegmezőbe írja be a jelszót.
+    b. A **Jelszó** mezőbe írja be a Jelszó jelölőnégyzetet.
 
-    c. Az a **jelszó megerősítése** szövegmezőbe írja be a jelszót.
+    c. A **Jelszó megerősítése** mezőbe írja be a Jelszó jelölőnégyzetet.
 
-    d. Válassza ki **szerepkör** , **Zscaler privát hozzáférés rendszergazdája**.
+    d. Válassza a **Szerepkör t** **Zscaler Private Access Administrator (Szerepkör: Zscaler Private Access Administrator) lehetőséget.**
 
-    e. Az a **E-mail** szövegmezőben adja meg az e-mail címét, például a felhasználó BrittaSimon@contoso.com.
+    e. Az **E-mail** mezőbe írja be BrittaSimon@contoso.coma felhasználó e-mail címét, például .
 
-    f. Az a **Phone** szövegmezőbe írja be a telefonszámot.
+    f. A **Telefon** mezőbe írja be a Telefonszám mezőt.
 
-    g. Az a **időzóna** szövegmezőben válassza ki az időzónát.
+    g. Az **Időzóna** szövegmezőben jelölje ki az Időzónát.
 
-    h. Kattintson a **Save** (Mentés) gombra.
+    h. Kattintson a **Mentés** gombra.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
 
-Ha a hozzáférési panelen a Zscaler privát hozzáférés rendszergazdája csempére kattint, akkor kell automatikusan megtörténik a a Zscaler privát hozzáférést rendszergazdától, amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor a Hozzáférési panelen a Zscaler private access administrator csempére kattint, automatikusan be kell jelentkeznie a Zscaler privát hozzáférési rendszergazdájához, amelyhez beállítja az SSO-t. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

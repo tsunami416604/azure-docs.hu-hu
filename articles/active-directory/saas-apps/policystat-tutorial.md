@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integráció a PolicyStat-szel | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és PolicyStat között.
+title: 'Oktatóanyag: Az Azure Active Directory integrációja a PolicyStat programmal | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a PolicyStat között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,248 +16,248 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 327e470d60235e6bf400293e80e3aec5f6144ff4
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68943446"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-policystat"></a>Oktatóanyag: Azure Active Directory integráció a PolicyStat
+# <a name="tutorial-azure-active-directory-integration-with-policystat"></a>Oktatóanyag: Az Azure Active Directory integrációja a PolicyStat programmal
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a PolicyStat a Azure Active Directory (Azure AD) szolgáltatással.
-A PolicyStat és az Azure AD integrálásával a következő előnyöket nyújtja:
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a PolicyStatot az Azure Active Directoryval (Azure AD).
+A PolicyStat integrálása az Azure AD-vel a következő előnyöket nyújtja:
 
-* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a PolicyStat.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a PolicyStat (egyszeri bejelentkezés) az Azure AD-fiókokkal.
-* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
+* Szabályozhatja az Azure AD-ben, aki rendelkezik hozzáféréssel a PolicyStat.
+* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve policystat (single sign-on) az Azure AD-fiókok.
+* Fiókjait egyetlen központi helyen kezelheti – az Azure Portalon.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha további részleteket szeretne megtudni az SaaS-alkalmazások Azure AD-vel való integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció PolicyStat való konfigurálásához a következő elemek szükségesek:
+Az Azure AD-integráció konfigurálásához a PolicyStat,a következő elemekre van szüksége:
 
-* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) egy hónapos próbaverziót kaphat
 * PolicyStat egyszeri bejelentkezésre engedélyezett előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben.
 
-* A PolicyStat támogatja az **SP** által KEZDEMÉNYEZett SSO-t
+* A PolicyStat támogatja az **SP** által kezdeményezett SSO-t
 
-* A PolicyStat **csak időben támogatja a** felhasználók kiépítési folyamatát
+* A PolicyStat támogatja **a Just In Time** felhasználói kiépítést
 
-## <a name="adding-policystat-from-the-gallery"></a>PolicyStat hozzáadása a gyűjteményből
+## <a name="adding-policystat-from-the-gallery"></a>PolicyStat hozzáadása a galériából
 
-A PolicyStat Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a PolicyStat a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A PolicyStat azure AD-be való integrálásának konfigurálásához hozzá kell adnia a PolicyStat-ot a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Ha PolicyStat szeretne hozzáadni a katalógusból, hajtsa végre a következő lépéseket:**
+**Ha a PolicyStat-ot a katalógusból szeretné hozzáadni, hajtsa végre az alábbi lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
+1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen kattintson az **Azure Active Directory** ikonjára.
 
-    ![A Azure Active Directory gomb](common/select-azuread.png)
+    ![Az Azure Active Directory gombja](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+2. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza a **Minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
+3. Új alkalmazás hozzáadásához kattintson az **Új alkalmazás** gombra a párbeszéd ablak tetején.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![Az Új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **PolicyStat**kifejezést, válassza a **PolicyStat** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **PolicyStat**parancsot , válassza a **PolicyStat** elemet az eredménypanelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![PolicyStat az eredmények listájában](common/search-new-app.png)
+     ![PolicyStat az eredménylistában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az PolicyStat-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
-Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a PolicyStat kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
+Ebben a szakaszban konfigurálhatja és tesztelheti az Azure AD egyszeri bejelentkezését a PolicyStat-mal egy **Britta Simon**nevű tesztfelhasználó alapján.
+Egyszeri bejelentkezés működéséhez létre kell hozni egy kapcsolat közötti kapcsolat egy Azure AD-felhasználó és a kapcsolódó felhasználó PolicyStat létre kell hozni.
 
-Az Azure AD egyszeri bejelentkezés PolicyStat való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez a PolicyStat segítségével a következő építőelemeket kell végrehajtania:
 
-1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[PolicyStat egyszeri bejelentkezés konfigurálása](#configure-policystat-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
-4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
-5. **[Hozzon létre PolicyStat-teszt felhasználót](#create-policystat-test-user)** – hogy a PolicyStat Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+1. **[Konfigurálja az Azure AD egyszeri bejelentkezést](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. **[Konfigurálja a PolicyStat Single Sign-On --t](#configure-policystat-single-sign-on)** az egyszeri bejelentkezési beállítások konfigurálásához az alkalmazás oldalon.
+3. **[Hozzon létre egy Azure AD-tesztfelhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének teszteléséhez Britta Simonnal.
+4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi Britta Simon azure AD egyszeri bejelentkezés.
+5. **[Hozzon létre PolicyStat teszt felhasználó](#create-policystat-test-user)** - egy megfelelője Britta Simon a PolicyStat, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
 
-Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
+Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon.
 
-Az Azure AD egyszeri bejelentkezés PolicyStat való konfigurálásához hajtsa végre a következő lépéseket:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **PolicyStat** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az [Azure Portalon](https://portal.azure.com/)a **PolicyStat** alkalmazásintegrációs lapon válassza az **Egyszeri bejelentkezés**lehetőséget.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+    ![Egyszeri bejelentkezési kapcsolat konfigurálása](common/select-sso.png)
 
-2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
+2. Az **Egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza **az SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezésválasztó mód](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson a **Szerkesztés** ikonra az **Egyszerű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
+4. Az **Egyszerű SAML-konfiguráció** szakaszban hajtsa végre az alábbi lépéseket:
 
-    ![PolicyStat tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier.png)
+    ![PolicyStat tartomány és URL-címek egyszeri bejelentkezési információk](common/sp-identifier.png)
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<companyname>.policystat.com`
+    a. A Bejelentkezés az **URL-cím** mezőbe írja be az URL-címet a következő minta használatával:`https://<companyname>.policystat.com`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<companyname>.policystat.com/saml2/metadata/`
+    b. Az **Azonosító (entitásazonosító)** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<companyname>.policystat.com/saml2/metadata/`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek lekéréséhez forduljon a PolicyStat ügyfélszolgálati [csapatához](http://www.policystat.com/support/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges Bejelentkezési URL-címmel és azonosítóval. Lépjen kapcsolatba [a PolicyStat ügyféltámogatási csapatával,](http://www.policystat.com/support/) hogy megkapja ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
 
-4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+4. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány csoportjában** kattintson a **Letöltés** gombra, ha letöltheti az **összevonási metaadat-XML-t** a megadott beállításokból a követelménynek megfelelően, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-5. A PolicyStat-alkalmazás meghatározott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
+5. A PolicyStat alkalmazás elvárja az SAML-állításokat egy adott formátumban, amely megköveteli, hogy egyéni attribútum-hozzárendelések hozzáadása az SAML token attribútumok konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a **Felhasználói attribútumok** párbeszédpanel megnyitásához.
 
     ![image](common/edit-attribute.png)
 
-6. A fentieken kívül a PolicyStat alkalmazás néhány további attribútumot vár, amelyeket az SAML-válaszban vissza kell adni. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon:
+6. A fentieken kívül a PolicyStat alkalmazás azt várja, hogy néhány további attribútum ot kell visszaadni az SAML-válaszban. A **Felhasználói attribútumok** párbeszédpanel **Felhasználói jogcímek** szakaszában hajtsa végre az alábbi lépéseket az SAML token attribútum hozzáadásához az alábbi táblázatban látható módon:
 
-    | Név | Forrás attribútum |
+    | Név | Forrás attribútuma |
     |------------------- | -------------------- |
-    | UID | ExtractMailPrefix ([mail]) |
+    | Uid | ExtractMailPrefix([mail]) |
 
-    a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
+    a. Kattintson **az Új jogcím hozzáadása** gombra a Felhasználói **jogcímek kezelése** párbeszédpanel megnyitásához.
     
     ![image](common/new-save-attribute.png)
 
     ![image](./media/policystat-tutorial/attribute01.png)
 
-    b. A **név** szövegmezőbe írja be az adott sorhoz megjelenített attribútum nevét.
+    b. A **Név** mezőbe írja be a sor attribútumnevét.
 
-    c. Hagyja üresen a **névteret** .
+    c. Hagyja üresen a **névteret.**
 
-    d. Válassza ki a forrást **átalakításként**.
+    d. Válassza a Forrás **átalakítása**lehetőséget.
 
-    e. Az **átalakítás** listából írja be az adott sorhoz megjelenő attribútum értékét.
+    e. Az **Átalakítás** listából írja be a sor attribútumértékét.
     
-    f. Az **1. paraméter** listából írja be az adott sorhoz megjelenő attribútum értékét.
+    f. Az **1.**
 
-    g. Kattintson a **Save** (Mentés) gombra.
+    g. Kattintson a **Mentés** gombra.
 
-7. A **PolicyStat beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
+7. A **PolicyStat beállítása** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény nek megfelelően.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL-cím
+    a. Bejelentkezési URL
 
-    b. Azure AD-azonosító
+    b. Azure Hirdetés-azonosító
 
-    c. Kijelentkezési URL-cím
+    c. Kijelentkezés URL-címe
 
-### <a name="configure-policystat-single-sign-on"></a>PolicyStat egyszeri bejelentkezés konfigurálása
+### <a name="configure-policystat-single-sign-on"></a>Házirendstat egyszeri bejelentkezésének konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be a PolicyStat vállalati webhelyre rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a PolicyStat vállalati webhelyére rendszergazdaként.
 
-2. Kattintson a **felügyelet lapra, majd a bal** oldali navigációs ablaktáblán kattintson az **egyszeri bejelentkezés konfigurálása** elemre.
+2. Kattintson a **Rendszergazda** fülre, majd a bal oldali navigációs ablak **egyszeri bejelentkezési konfigurációja** parancsra.
    
-    ![Rendszergazdai menü](./media/policystat-tutorial/ic808633.png "Rendszergazdai menü")
+    ![Rendszergazda menü](./media/policystat-tutorial/ic808633.png "Rendszergazda menü")
 
-3. A **telepítés** szakaszban válassza az **egyszeri bejelentkezéses integráció engedélyezése**lehetőséget.
+3. A **Telepítés** csoportban válassza az **Egyszeri bejelentkezés engedélyezése lehetőséget.**
    
-    ![Egyszeri bejelentkezés konfigurálása](./media/policystat-tutorial/ic808634.png "Egyszeri bejelentkezés konfigurálása")
+    ![Egyszeri bejelentkezés konfigurációja](./media/policystat-tutorial/ic808634.png "Egyszeri bejelentkezés konfigurációja")
 
-4. Kattintson az **attribútumok konfigurálása**elemre, majd az **attribútumok konfigurálása** szakaszban hajtsa végre a következő lépéseket:
+4. Kattintson az **Attribútumok konfigurálása gombra,** majd az **Attribútumok konfigurálása** csoportban hajtsa végre az alábbi lépéseket:
    
-    ![Egyszeri bejelentkezés konfigurálása](./media/policystat-tutorial/ic808635.png "Egyszeri bejelentkezés konfigurálása")
+    ![Egyszeri bejelentkezés konfigurációja](./media/policystat-tutorial/ic808635.png "Egyszeri bejelentkezés konfigurációja")
    
-    a. A **username attribútum** szövegmezőbe írja be a következőt: **UID**.
+    a. A **Felhasználónév attribútum** szövegmezőbe írja be az **uid**nevet.
 
-    b. Az **Utónév attribútum** szövegmezőbe **írja be a felhasználó** **Britta**nevet.
+    b. Az **Utónév attribútum** szövegmezőbe írja be **a Britta**felhasználó **keresztnevét.**
 
-    c. A **vezetéknév attribútum** szövegmezőbe írja be a **Simon**felhasználó **LastName** nevet.
+    c. A **Vezetéknév attribútum** szövegmezőbe írja be **Simon**felhasználó **vezetéknevét.**
 
-    d. Az **e-mail-attribútum** szövegmezőbe írja be a felhasználói `BrittaSimon@contoso.com` **EmailAddress** értéket.
+    d. Az **E-mail attribútum** mezőbe írja be `BrittaSimon@contoso.com`a felhasználó **e-mail címét.**
 
-    e. Kattintson a **módosítások mentése**gombra.
+    e. Kattintson a **Save Changes** (Módosítások mentése) gombra.
 
-5. Kattintson a **identitásszolgáltató-metaadatokra**, majd a **identitásszolgáltató-metaadatok** szakaszban hajtsa végre a következő lépéseket:
+5. Kattintson **az IDP metaadatai elemre,** majd az **IDP metaadatok** szakaszában hajtsa végre az alábbi lépéseket:
    
-    ![Egyszeri bejelentkezés konfigurálása](./media/policystat-tutorial/ic808636.png "Egyszeri bejelentkezés konfigurálása")
+    ![Egyszeri bejelentkezés konfigurációja](./media/policystat-tutorial/ic808636.png "Egyszeri bejelentkezés konfigurációja")
    
-    a. Nyissa meg a letöltött metaadat-fájlt, másolja a tartalmat, majd illessze be a **saját identitás-szolgáltató metaadatok** szövegmezőbe.
+    a. Nyissa meg a letöltött metaadatfájlt, másolja a tartalmat, majd illessze be az **Identitásszolgáltató metaadatok** szövegmezőbe.
 
-    b. Kattintson a **módosítások mentése**gombra.
+    b. Kattintson a **Save Changes** (Módosítások mentése) gombra.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása 
 
-Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
+Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalon Britta Simon.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Az Azure Portalon a bal oldali ablaktáblában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd az **Összes felhasználó**lehetőséget.
 
-    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
+    ![A "Felhasználók és csoportok" és a "Minden felhasználó" linkek](common/users.png)
 
-2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+2. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
 
     ![Új felhasználó gomb](common/new-user.png)
 
-3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
+3. A Felhasználó tulajdonságokban hajtsa végre a következő lépéseket.
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+    ![A Felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
+    a. A **Név** mezőbe írja be **a BrittaSimon**értéket.
   
-    b. A **Felhasználónév** mezőbe írja be a következőt: brittasimon@yourcompanydomain.extension. Például: BrittaSimon@contoso.com
+    b. A **Felhasználónév** mező brittasimon@yourcompanydomain.extensiontípusa mezőben. Például: BrittaSimon@contoso.com
 
-    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
+    c. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a  **Create** (Létrehozás) gombra.
+    d. Kattintson **a Létrehozás gombra.**
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a PolicyStat hozzáférésének biztosításával.
+Ebben a szakaszban engedélyezi Britta Simon azure egyszeri bejelentkezés használatával a PolicyStat hozzáférést biztosít.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **PolicyStat**lehetőséget.
+1. Az Azure portalon válassza az **Enterprise Applications**lehetőséget, válassza az **Összes alkalmazás**lehetőséget, majd válassza a **PolicyStat**lehetőséget.
 
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **PolicyStat**lehetőséget.
+2. Az alkalmazások listájában válassza a **PolicyStat**lehetőséget.
 
-    ![Az PolicyStat hivatkozás az alkalmazások listájában](common/all-applications.png)
+    ![A PolicyStat hivatkozás az Alkalmazások listában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **Felhasználók és csoportok**lehetőséget.
 
-    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+    ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
+4. Kattintson a **Felhasználó hozzáadása** gombra, majd a **Hozzárendelés hozzáadása** **párbeszédpanelen** válassza a Felhasználók és csoportok lehetőséget.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+    ![A Hozzárendelés hozzáadása ablaktábla](common/add-assign-user.png)
 
-5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
+5. A **Felhasználók és csoportok** párbeszédpanelen válassza **a Britta Simon** elemet a Felhasználók listában, majd kattintson a kijelölés gombra a képernyő alján. **Select**
 
-6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+6. Ha az SAML-helyességben szerepkörértéket vár, akkor a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó megfelelő szerepkörét a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
 
-7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+7. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
 
-### <a name="create-policystat-test-user"></a>PolicyStat-tesztelési felhasználó létrehozása
+### <a name="create-policystat-test-user"></a>PolicyStat tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a PolicyStat-ben. A PolicyStat támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a PolicyStat-ben, a rendszer egy újat hoz létre a hitelesítés után.
+In this section, a user called Britta Simon is created in PolicyStat. PolicyStat támogatja a just-in-time felhasználói kiépítés, amely alapértelmezés szerint engedélyezve van. Ebben a szakaszban nincs műveletelem. Ha a felhasználó már nem létezik a PolicyStat, egy új jön létre a hitelesítés után.
 
 >[!NOTE]
->Az Azure AD felhasználói fiókjainak kiépítéséhez bármilyen más, a PolicyStat által biztosított PolicyStat felhasználói fiók létrehozására szolgáló eszközt vagy API-t használhat.
+>A PolicyStat által biztosított bármely más PolicyStat felhasználói fiók-létrehozási eszköz vagy API-k használatával azure AD felhasználói fiókok kiépítése.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
 
-Ha a hozzáférési panelen a PolicyStat csempére kattint, automatikusan be kell jelentkeznie arra a PolicyStat, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor a Hozzáférési panelen a PolicyStat csempére kattint, automatikusan be kell jelentkeznie arra a PolicyStat-ba, amelyhez az SSO-t beállította. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

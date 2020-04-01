@@ -1,17 +1,17 @@
 ---
-title: Oktatóanyag – várólisták konfigurálása Azure Service Bus Ansible használatával
-description: Útmutató Azure Service Bus üzenetsor létrehozásához a Ansible használatával
-keywords: Ansible, Azure, devops, bash, ötletekbõl, Service Bus, üzenetsor
+title: Oktatóanyag – Várólisták konfigurálása az Ansible használatával az Azure Service Busban
+description: Ismerje meg, hogyan hozhat létre az Ansible segítségével egy Azure Service Bus-várólistát
+keywords: ansible, azúr, devops, bash, ötletekbõl, szolgáltatás busz, sorban
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 8ba4c2296d903c4f35aa36eb92dfbc3b56ec4b18
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76713222"
 ---
-# <a name="tutorial-configure-queues-in-azure-service-bus-using-ansible"></a>Oktatóanyag: várólisták konfigurálása Azure Service Bus Ansible használatával
+# <a name="tutorial-configure-queues-in-azure-service-bus-using-ansible"></a>Oktatóanyag: Várólisták konfigurálása az Azure Service Bus ban az Ansible használatával
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
@@ -21,23 +21,23 @@ ms.locfileid: "76713222"
 
 > [!div class="checklist"]
 >
-> * Várólista létrehozása
-> * SAS-plicy létrehozása
-> * Névtér adatainak beolvasása
-> * Várólista-információk lekérése
-> * A várólista SAS-szabályzatának visszavonása
+> * Üzenetsor létrehozása
+> * SAS-kondisz létrehozása
+> * Névtéradatok lekérése
+> * Várólista adatainak beolvasása
+> * A várólista SAS-házirendjének visszavonása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-the-service-bus-queue"></a>Az Service Bus üzenetsor létrehozása
+## <a name="create-the-service-bus-queue"></a>A Service Bus-várólista létrehozása
 
-A példaként szolgáló ötletekbõl-kód a következő erőforrásokat hozza létre:
+A minta forgatókönyvkód a következő erőforrásokat hozza létre:
 - Azure-erőforráscsoport
-- Service Bus névtér az erőforráscsoport belül
-- Service Bus üzenetsor a névtérrel
+- Service Bus névtér az erőforráscsoporton belül
+- Service Bus-várólista a névtérrel
 
 Mentse a következő forgatókönyvet `servicebus_queue.yml` néven:
 
@@ -68,17 +68,17 @@ Mentse a következő forgatókönyvet `servicebus_queue.yml` néven:
           var: queue
 ```
 
-Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
+Futtassa a `ansible-playbook` forgatókönyvet a következő paranccsal:
 
 ```bash
 ansible-playbook servicebus_queue.yml
 ```
 
-## <a name="create-the-sas-policy"></a>SAS-szabályzat létrehozása
+## <a name="create-the-sas-policy"></a>A SAS-házirend létrehozása
 
-A [közös hozzáférésű aláírás (SAS)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1) a jogkivonatokat használó jogcím-alapú engedélyezési mechanizmus. 
+A [megosztott hozzáférésű aláírás (SAS)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1) jogcímalapú engedélyezési mechanizmus jogkivonatokat használó. 
 
-A példaként szolgáló ötletekbõl-kód két SAS-szabályzatot hoz létre egy Service Bus üzenetsor számára, különböző jogosultságokkal.
+A minta forgatókönyvkód két SAS-házirendet hoz létre egy különböző jogosultságokkal rendelkező Service Bus-várólistához.
 
 Mentse a következő forgatókönyvet `servicebus_queue_policy.yml` néven:
 
@@ -102,18 +102,18 @@ Mentse a következő forgatókönyvet `servicebus_queue_policy.yml` néven:
           var: policy
 ```
 
-A forgatókönyv futtatása előtt tekintse meg a következő megjegyzéseket:
-- A `rights` érték azt a jogosultságot jelöli, amelyet a felhasználó a várólistával rendelkezik. A következő értékek egyikét kell megadnia: `manage`, `listen`, `send`vagy `listen_send`.
+A forgatókönyv futtatása előtt tekintse meg az alábbi megjegyzéseket:
+- Az `rights` érték azt a jogosultságot jelöli, amelyet a felhasználó a várólistával kapcsolatban birtokol. Adja meg a következő `manage` `listen`értékek `send`egyikét: , , , vagy `listen_send`.
 
-Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
+Futtassa a `ansible-playbook` forgatókönyvet a következő paranccsal:
 
 ```bash
 ansible-playbook servicebus_queue_policy.yml
 ```
 
-## <a name="retrieve-namespace-information"></a>Névtér adatainak beolvasása
+## <a name="retrieve-namespace-information"></a>Névtéradatok lekérése
 
-A példaként szolgáló forgatókönyv-kód lekérdezi a névtér információit.
+A minta forgatókönyvkód lekérdezi a névtér adatait.
 
 Mentse a következő forgatókönyvet `servicebus_namespace_info.yml` néven:
 
@@ -135,18 +135,18 @@ Mentse a következő forgatókönyvet `servicebus_namespace_info.yml` néven:
           var: ns
 ```
 
-A forgatókönyv futtatása előtt tekintse meg a következő megjegyzéseket:
-- A `show_sas_policies` érték azt jelzi, hogy megjelenjenek-e a SAS-szabályzatok a megadott névtérben. Alapértelmezés szerint az érték `False` a további hálózati terhelés elkerülése érdekében.
+A forgatókönyv futtatása előtt tekintse meg az alábbi megjegyzéseket:
+- Az `show_sas_policies` érték azt jelzi, hogy a megadott névtérben megjelenjenek-e a SAS-házirendek. Alapértelmezés szerint az `False` érték a további hálózati terhelés elkerülése.
 
-Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
+Futtassa a `ansible-playbook` forgatókönyvet a következő paranccsal:
 
 ```bash
 ansible-playbook servicebus_namespace_info.yml
 ```
 
-## <a name="retrieve-queue-information"></a>Várólista-információk lekérése
+## <a name="retrieve-queue-information"></a>Várólista adatainak beolvasása
 
-A minta forgatókönyv-kód lekérdezési várólistájának adatai. 
+A minta forgatókönyvkód lekérdezések várólista adatait. 
 
 Mentse a következő forgatókönyvet `servicebus_queue_info.yml` néven:
 
@@ -170,18 +170,18 @@ Mentse a következő forgatókönyvet `servicebus_queue_info.yml` néven:
           var: queue
 ```
 
-A forgatókönyv futtatása előtt tekintse meg a következő megjegyzéseket:
-- A `show_sas_policies` érték azt jelzi, hogy megjelenjenek-e a SAS-szabályzatok a megadott várólistában. Alapértelmezés szerint ez az érték `False`re van állítva a további hálózati terhelés elkerülése érdekében.
+A forgatókönyv futtatása előtt tekintse meg az alábbi megjegyzéseket:
+- Az `show_sas_policies` érték azt jelzi, hogy a megadott várólista alatt megjelenjenek-e a SAS-házirendek. Alapértelmezés szerint ez az `False` érték úgy van beállítva, hogy elkerülje a további hálózati terhelést.
 
-Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
+Futtassa a `ansible-playbook` forgatókönyvet a következő paranccsal:
 
 ```bash
 ansible-playbook servicebus_queue_info.yml
 ```
 
-## <a name="revoke-the-queue-sas-policy"></a>A várólista SAS-szabályzatának visszavonása
+## <a name="revoke-the-queue-sas-policy"></a>A várólista SAS-házirendjének visszavonása
 
-A példa a forgatókönyvhöz tartozó SAS-szabályzatot törli.
+A minta forgatókönyvkód törli a várólista SAS-házirend.
 
 Mentse a következő forgatókönyvet `servicebus_queue_policy_delete.yml` néven:
 
@@ -202,7 +202,7 @@ Mentse a következő forgatókönyvet `servicebus_queue_policy_delete.yml` néve
           state: absent
 ```
 
-Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
+Futtassa a `ansible-playbook` forgatókönyvet a következő paranccsal:
 
 ```bash
 ansible-playbook servicebus_queue_policy_delete.yml
@@ -212,7 +212,7 @@ ansible-playbook servicebus_queue_policy_delete.yml
 
 Ha már nincs rá szükség, törölje a cikkben létrehozott erőforrásokat. 
 
-Mentse a következő kódot `cleanup.yml`ként:
+Mentse a következő `cleanup.yml`kódot:
 
 ```yml
 ---
@@ -240,12 +240,12 @@ Mentse a következő kódot `cleanup.yml`ként:
           force_delete_nonempty: yes
 ```
 
-Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
+Futtassa a `ansible-playbook` forgatókönyvet a következő paranccsal:
 
 ```bash
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"] 
-> [Oktatóanyag: témakör konfigurálása Azure Service Bus Ansible használatával](ansible-service-bus-topic-configure.md)
+> [Oktatóanyag: Témakör konfigurálása az Azure Service Bus ban az Ansible használatával](ansible-service-bus-topic-configure.md)

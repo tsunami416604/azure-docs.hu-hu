@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: 2c6e35b1e7d160064998004f87c5b14d0eaeac5e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0670331d2338b4b6419ffbff1452b5fbac91029f
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127660"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478834"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Integrációs szolgáltatási környezet (ISE) létrehozása a Logic Apps REST API használatával
 
 Ez a cikk bemutatja, hogyan hozhat létre [ *integrációs szolgáltatási környezetet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) a Logic Apps REST API-n keresztül olyan forgatókönyvekhez, ahol a logikai alkalmazásoknak és az integrációs fiókoknak hozzáférésre van szükségük egy [Azure virtuális hálózathoz.](../virtual-network/virtual-networks-overview.md) Az ISE egy elszigetelt környezet, amely dedikált tárolót és más erőforrásokat használ, amelyek elkülönülnek a "globális" több-bérlős Logic Apps szolgáltatástól. Ez a szétválasztás is csökkenti a más Azure-bérlők esetleges hatása az alkalmazások teljesítményét. Az ISE saját statikus IP-címeket is biztosít. Ezek az IP-címek elkülönülnek a statikus IP-címek, amelyek a nyilvános, több-bérlős szolgáltatás logikai alkalmazások által megosztott.
 
-Ha az Azure-portál használatával szeretne létrehozni egy ISE-t, olvassa el a [Csatlakozás az Azure-beli virtuális hálózatokhoz az Azure Logic Apps alkalmazásból című témakört.](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)
+Ise-t is létrehozhat az [Azure Resource Manager-minta-gyorskezelési sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment) vagy az Azure [Portal](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)használatával.
 
 > [!IMPORTANT]
 > A logikai alkalmazások, a beépített eseményindítók, a beépített műveletek és az ISE-ben futó összekötők a fogyasztásalapú díjcsomagtól eltérő díjszabási tervet használnak. Ha meg szeretné tudni, hogyan működik az ise-k díjszabása és számlázása, olvassa el a [Logic Apps díjszabási modelljét.](../logic-apps/logic-apps-pricing.md#fixed-pricing) Az árak, lásd: [Logic Apps árképzés.](../logic-apps/logic-apps-pricing.md)

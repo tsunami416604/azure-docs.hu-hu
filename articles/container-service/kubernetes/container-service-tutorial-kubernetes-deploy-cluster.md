@@ -1,5 +1,5 @@
 ---
-title: ELAVULT Azure Container Service oktatóanyag – fürt üzembe helyezése
+title: (ELAVULT) Azure Container Service oktatóanyag – fürt telepítése
 description: Azure Container Service-oktatóanyag – Fürt üzembe helyezése
 author: iainfoulds
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 09/14/2017
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: b8821f3bb3d48786697cbc4137baf530856774fd
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78274006"
 ---
-# <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>ELAVULT Kubernetes-fürt üzembe helyezése Azure Container Service
+# <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>(ELAVULT) Kubernetes-fürt üzembe helyezése az Azure Container Service szolgáltatásban
 
 > [!TIP]
-> Az Azure Kubernetes Service-t használó oktatóanyag frissített verziója: [oktatóanyag: Azure Kubernetes Service (ak) fürt üzembe helyezése](../../aks/tutorial-kubernetes-deploy-cluster.md).
+> Az Azure Kubernetes-szolgáltatást használó, frissített verzióról az [Oktatóanyag: Egy Azure Kubernetes-szolgáltatás (AKS) fürt telepítése](../../aks/tutorial-kubernetes-deploy-cluster.md)című témakörben található.
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -36,9 +36,9 @@ Az előző oktatóanyagokban létrehoztunk egy tárolórendszerképet, és felt�
 
 ## <a name="create-kubernetes-cluster"></a>Kubernetes-fürt létrehozása
 
-Kubernetes-fürt létrehozása az Azure Container Service szolgáltatásban az [az acs create](/cli/azure/acs#az-acs-create) parancs használatával. 
+Hozzon létre egy Kubernetes-fürtöt az Azure Container Service-ben az [az acs create](/cli/azure/acs#az-acs-create) paranccsal. 
 
-A következő példában létrehozunk egy `myK8sCluster` nevű fürtöt egy `myResourceGroup` nevű erőforráscsoportban. Az erőforráscsoportot [az előző oktatóanyagban](./container-service-tutorial-kubernetes-prepare-acr.md) hoztuk létre.
+A következő példában létrehozunk egy `myK8sCluster` nevű fürtöt egy `myResourceGroup` nevű erőforráscsoportban. Ez az erőforráscsoport az [előző oktatóanyagban](./container-service-tutorial-kubernetes-prepare-acr.md)jött létre.
 
 ```azurecli-interactive
 az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --name myK8SCluster --generate-ssh-keys 
@@ -62,7 +62,7 @@ az acs kubernetes install-cli
 
 Windows rendszeren az alapértelmezett telepítés telepítési hely a *c:\program files (x86)\kubectl.exe*. Előfordulhat, hogy ezt a fájlt hozzá kell adnia a Windows-útvonalhoz. 
 
-## <a name="connect-with-kubectl"></a>Kapcsolódás a kubectl parancssori ügyfélhez
+## <a name="connect-with-kubectl"></a>Kapcsolódás a kubectl segítségével
 
 A kubectl a Kubernetes-fürthöz való csatlakozásra konfigurálásához futtassa az [az acs kubernetes get-credentials](/cli/azure/acs/kubernetes) parancsot.
 
@@ -88,7 +88,7 @@ k8s-master-98dc3136-0   Ready,SchedulingDisabled   5m        v1.6.2
 
 Az oktatóanyag befejezésével rendelkezésére áll majd egy számítási feladatok végrehajtására kész ACS Kubernetes-fürt. Az ezt követő oktatóanyagokban egy többtárolós alkalmazást helyezünk üzembe a fürtön, majd elvégezzük annak horizontális skálázását, frissítését és monitorozását.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyagban egy Azure Container Service-beli Kubernetes fürtöt helyezett üzembe. A következő lépéseket hajtotta végre:
 

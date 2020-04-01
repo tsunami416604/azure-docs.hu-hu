@@ -1,41 +1,41 @@
 ---
-title: Fizikai kiszolgálók felmérése az Azure-ba való Migrálás Azure Migrate Server Assessment használatával
-description: Ismerteti, hogyan értékelheti a helyszíni fizikai kiszolgálókat az Azure-ba való áttelepítéshez Azure Migrate Server Assessment használatával.
+title: Az Azure Áttelepítési Kiszolgáló felmérésével fizikai kiszolgálók at vizsgálhat az Azure-ba való áttelepítéshez
+description: Ez a témakör azt ismerteti, hogyan értékelheti a helyszíni fizikai kiszolgálókat az Azure-ba való áttelepítéshez az Azure Áttelepítési kiszolgáló értékelése használatával.
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.openlocfilehash: c89c731712a625e5f3b7a1a7e9306f6a7480b96b
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76990300"
 ---
-# <a name="assess-physical-servers-with-azure-migrate-server-assessment"></a>Fizikai kiszolgálók értékelése a Azure Migratekel: kiszolgáló értékelése
+# <a name="assess-physical-servers-with-azure-migrate-server-assessment"></a>Fizikai kiszolgálók felmérése az Azure Áttelepítése szolgáltatással: Kiszolgálófelmérés
 
-Ez a cikk bemutatja, hogyan értékelheti a helyszíni fizikai kiszolgálókat a Azure Migrate: Server Assessment Tool használatával.
+Ez a cikk bemutatja, hogyan értékelheti a helyszíni fizikai kiszolgálók, az Azure Áttelepítés: Kiszolgálóértékelése eszközzel.
 
-[Azure Migrate](migrate-services-overview.md) olyan eszközöket biztosít, amelyek segítségével az alkalmazások, az infrastruktúra és a munkaterhelések felderíthető, mérhetők és áttelepíthetők a Microsoft Azure. A hub Azure Migrate eszközöket és külső gyártótól származó független szoftvergyártó (ISV) ajánlatokat tartalmaz.
+[Az Azure Migrate](migrate-services-overview.md) olyan eszközök központi eszköze, amelyek segítségével felderítheti, felmérheti és áttelepítheti az alkalmazásokat, az infrastruktúrát és a számítási feladatokat a Microsoft Azure-ba. A központ tartalmazza az Azure Migrate eszközöket és a külső független szoftverszállítói (ISV) ajánlatokat.
 
-Ez az oktatóanyag egy sorozat második része, amely bemutatja, hogyan lehet felmérni és áttelepíteni a fizikai kiszolgálókat az Azure-ba. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag a második olyan sorozat, amely bemutatja, hogyan lehet felmérni és áttelepíteni a fizikai kiszolgálók at Azure.This tutorial is the second in a series that demonstrates how to assess and migrate physical servers to Azure. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
-> * Azure Migrate projekt beállítása.
-> * Állítson be egy Azure Migrate berendezést, amely a fizikai kiszolgálók felmérésére a helyszínen fut.
-> * Indítsa el a helyszíni fizikai kiszolgálók folyamatos felderítését. A készülék konfigurációs és teljesítményadatokat küld a felderített kiszolgálókhoz az Azure-ba.
-> * Csoportosítsa a felderített kiszolgálókat, és mérje fel a kiszolgálói csoportot.
+> * Hozzon létre egy Azure Migrate projektet.
+> * Hozzon létre egy Azure Migrate-berendezést, amely a helyszínen fut a fizikai kiszolgálók felméréséhez.
+> * A helyszíni fizikai kiszolgálók folyamatos felderítésének indítása. A készülék elküldi a felderített kiszolgálók konfigurációs és teljesítményadatait az Azure-ba.
+> * Csoportosítsa a felderített kiszolgálókat, és értékelje a kiszolgálócsoportot.
 > * Tekintse át az értékelést.
 
 > [!NOTE]
-> Az oktatóanyagok bemutatják a forgatókönyvek legegyszerűbb telepítési útvonalát, így gyorsan beállíthatja a rendszer megvalósíthatóságát. Az oktatóanyagok az alapértelmezett beállításokat használják, ahol lehetséges, és nem jelennek meg az összes lehetséges beállítás és elérési út. Részletes utasításokért tekintse át a útmutató cikkeket.
+> Az oktatóanyagok a forgatókönyv legegyszerűbb telepítési útvonalát mutatják be, így gyorsan beállíthat egy proof-of-concept-et. Az oktatóanyagok lehetőség szerint az alapértelmezett beállításokat használják, és nem jelenítik meg az összes lehetséges beállítást és elérési utat. Részletes útmutatásért tekintse át az útmutató cikkeket.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/pricing/free-trial/) mielőtt elkezdené.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Fejezze](tutorial-prepare-physical.md) be az első oktatóanyagot ebben a sorozatban. Ha nem, az oktatóanyagban szereplő utasítások nem fognak működni.
-- Az első oktatóanyagban az alábbiakat kell elvégeznie:
-    - [Azure-engedélyek beállítása](tutorial-prepare-physical.md#prepare-azure) Azure Migratehoz.
-    - [Fizikai kiszolgálók előkészítése](tutorial-prepare-physical.md#prepare-for-physical-server-assessment) az értékeléshez. Ellenőrizni kell a készülék követelményeit. Emellett rendelkeznie kell egy, a fizikai kiszolgáló felderítéséhez beállított fiókkal is. A szükséges portok elérhetőnek kell lenniük, és tisztában kell lennie az Azure-hoz való hozzáféréshez szükséges URL-címekkel.
+- [Fejezze be](tutorial-prepare-physical.md) a sorozat első oktatóanyagát. Ha nem, az oktatóanyagutasításai nem fognak működni.
+- Itt van, mit kellett volna tennie az első bemutató:
+    - [Állítsa be az Azure-engedélyeket](tutorial-prepare-physical.md#prepare-azure) az Azure Migrate számára.
+    - [Készítse elő a fizikai kiszolgálókat](tutorial-prepare-physical.md#prepare-for-physical-server-assessment) az értékelésre. A készülékre vonatkozó követelményeket ellenőrizni kell. A fizikai kiszolgálófelderítéshez be kell állítani egy fiókot is. A szükséges portok nak elérhetőnek kell lenniük, és tisztában kell lennie az Azure-hoz való hozzáféréshez szükséges URL-címekkel.
 
 
 ## <a name="set-up-an-azure-migrate-project"></a>Azure Migrate projekt beállítása
@@ -46,181 +46,181 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 2. A **Szolgáltatások** területen válassza az **Azure Migrate** lehetőséget.
 3. Az **Áttekintés** területen a **Kiszolgálók felderítése, értékelése és migrálása** alatt kattintson a **Kiszolgálók értékelése és migrálása** lehetőségre.
 
-    ![Kiszolgálók felderítése és értékelése](./media/tutorial-assess-physical/assess-migrate.png)
+    ![Kiszolgálók felfedezése és értékelése](./media/tutorial-assess-physical/assess-migrate.png)
 
 4. Az **Első lépések** területen kattintson az **Eszközök hozzáadása** elemre.
 5. A **Projekt migrálása** területen válassza ki az Azure-előfizetését, majd hozzon létre egy erőforráscsoportot, ha még nem rendelkezik eggyel.     
-6. A **Project details**(projekt részletei) mezőben adja meg a projekt nevét, valamint azt a földrajzi nevet, amelyben létre kívánja hozni a projektet. Ázsia, Európa, Egyesült Királyság és a Egyesült Államok támogatottak.
+6. A **Projekt részletei**területen adja meg a projekt nevét és azt a földrajzi elhelyezkedést, amelyben a projektet létre szeretné hozni. Ázsia, Európa, az Egyesült Királyság és az Egyesült Államok támogatott.
 
-    - A projekt földrajza csak a helyszíni kiszolgálókról összegyűjtött metaadatok tárolására szolgál.
+    - A projekt földrajzi csak a helyszíni kiszolgálókról gyűjtött metaadatok tárolására szolgál.
     - Migrálás futtatása során bármilyen célrégiót választhat.
 
     ![Azure Migrate projekt létrehozása](./media/tutorial-assess-physical/migrate-project.png)
 
 
 7. Kattintson a **Tovább** gombra.
-8. Az **Assessment (kiértékelés) eszközben**válassza a **Azure Migrate: Server Assessment** > **Next (tovább**) lehetőséget.
+8. Az **Assessment (Felmérés kiválasztása) eszközben**válassza az **Azure Migrate: Server Assessment** > **Next**lehetőséget.
 
     ![Azure Migrate projekt létrehozása](./media/tutorial-assess-physical/assessment-tool.png)
 
 9. A **Migrálási eszköz kiválasztása** területen válassza **A migrálási eszköz hozzáadásának mellőzése egyelőre** > **Tovább** lehetőséget.
-10. Az **Áttekintés + eszközök hozzáadása** területen ellenőrizze a beállításokat, majd kattintson az **Eszközök hozzáadása** lehetőségre.
+10. Az **Ellenőrzés + eszközök hozzáadása párbeszédpanelen**tekintse át a beállításokat, és kattintson az Eszközök **hozzáadása**gombra.
 11. Várjon néhány percet, amíg az Azure Migrate-projekt telepítése megtörténik. Megnyílik a projekt oldala. Ha nem látja a projektet, az Azure Migrate irányítópult **Kiszolgálók** területéről elérheti.
 
 
 ## <a name="set-up-the-appliance"></a>A készülék beállítása
 
-Azure Migrate: a kiszolgáló értékelése egy könnyűsúlyú készüléket futtat.
+Azure Migrate: Server Assessment fut egy könnyű berendezés.
 
-- Ez a készülék fizikai kiszolgáló-felderítést végez, és kiszolgálói metaadatokat és teljesítményadatokat küld Azure Migrate kiszolgáló értékeléséhez.
-- A készülék beállítása:
-    - Töltse le a Azure Migrate telepítő parancsfájlt tartalmazó tömörített fájlt a Azure Portal.
-    - Bontsa ki a tömörített fájl tartalmát. Indítsa el a PowerShell-konzolt rendszergazdai jogosultságokkal.
-    - Futtassa a PowerShell-szkriptet a berendezés webalkalmazásának elindításához.
-    - Konfigurálja a készüléket első alkalommal, és regisztrálja a Azure Migrate projekttel.
-- Több berendezést is beállíthat egyetlen Azure Migrate projekthez. Minden készüléken megtalálhatja a fizikai kiszolgálók számát. Eszközönként legfeljebb 250 kiszolgálót lehet felderíteni.
+- Ez a készülék fizikai kiszolgálófelderítést hajt végre, és elküldi a kiszolgáló metaadatait és teljesítményadatait az Azure Migrate Server Assessment szolgáltatásnak.
+- A készülék beállításához:
+    - Töltsön le egy tömörített fájlt az Azure Migrate telepítőparancsfájljával az Azure Portalról.
+    - Bontsa ki a tartalmát a tömörített fájlból. Indítsa el a PowerShell-konzolrendszergazdai jogosultságokkal.
+    - Hajtsa végre a PowerShell-parancsfájlt a készülék webalkalmazás elindításához.
+    - Konfigurálja a készüléket az első alkalommal, és regisztrálja az Azure Migrate projekt.
+- Egyetlen Azure Migrate-projekthez több készüléket is beállíthat. Az összes készülék, akkor fedezze fel tetszőleges számú fizikai szerverek. Készülékenként legfeljebb 250 kiszolgáló fedezhető fel.
 
-### <a name="download-the-installer-script"></a>A telepítő parancsfájl letöltése
+### <a name="download-the-installer-script"></a>A telepítőparancsfájl letöltése
 
 Töltse le a készülék tömörített fájlját.
 
-1. Az **áttelepítési célok** > **kiszolgálók** > **Azure Migrate: kiszolgáló értékelése**területen kattintson a **felderítés**gombra.
-2. A számítógépek **felderítése** > a **gépek virtualizáltak?** kattintson a **nem virtualizált/egyéb**elemre.
-3. A tömörített fájl letöltéséhez kattintson a **Letöltés** gombra.
+1. Az Azure Migrate: Server Assessment **(Áttelepítés:** > **Kiszolgálófelmérés)****alkalmazásban** > kattintson a **Felderítés**gombra.
+2. A **Discover machines** > **Are your machines virtualizált?**, kattintson a Nem **virtualizált/ Egyéb gombra.**
+3. A **tömörített** fájl letöltéséhez kattintson a Letöltés gombra.
 
     ![Telepítő letöltése](./media/tutorial-assess-physical/download-appliance.png)
 
 
-### <a name="verify-security"></a>Biztonság ellenőrzése
+### <a name="verify-security"></a>A biztonság ellenőrzése
 
-A telepítése előtt győződjön meg arról, hogy a tömörített fájl biztonságos.
+A tömörített fájl telepítése előtt ellenőrizze, hogy a tömörített fájl biztonságos-e.
 
 1. A gépen, amelyre a fájlt letöltötte, nyisson meg egy rendszergazdai parancsablakot.
-2. Futtassa a következő parancsot a tömörített fájl kivonatának létrehozásához.
+2. A következő parancs futtatása a tömörített fájl kivonatának létrehozásához
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Gyakorlati példa: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
 
-3.  A készülék legújabb verziójához a generált kivonatnak meg kell egyeznie ezekkel a beállításokkal.
+3.  A legújabb készülék verzió, a generált kivonat olt kell egyeznie ezekkel a beállításokkal.
 
   **Algoritmus** | **Kivonat értéke**
   --- | ---
   MD5 | 1e92ede3e87c03bd148e56a708cdd33f
   SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
 
-### <a name="run-the-azure-migrate-installer-script"></a>A Azure Migrate telepítő parancsfájl futtatása
+### <a name="run-the-azure-migrate-installer-script"></a>Az Azure Migrate telepítőparancsfájljának futtatása
 
-A telepítő parancsfájl a következő műveleteket végzi el:
+A telepítő parancsfájl jaa következő:
 
-- Ügynököket és webalkalmazásokat telepít a fizikai kiszolgálók felderítéséhez és értékeléséhez.
+- Ügynökök és egy webalkalmazás telepítése a fizikai kiszolgáló felderítéséhez és értékeléséhez.
 - Telepítse a Windows-szerepköröket, beleértve a Windows aktiválási szolgáltatást, az IIS-t és a PowerShell ISE-t.
-- Töltse le és telepítse az IIS újraírható modulját. [További információk](https://www.microsoft.com/download/details.aspx?id=7435).
-- Frissíti a (HKLM) beállításkulcsot a Azure Migrate állandó beállítási részleteivel.
+- Az IIS újraírható moduljának letöltése és telepítése. [További információ](https://www.microsoft.com/download/details.aspx?id=7435).
+- Frissíti a beállításkulcsot (HKLM) az Azure Migrate állandó beállításrészleteivel.
 - A következő fájlokat hozza létre az elérési út alatt:
-    - **Konfigurációs fájlok**:%ProgramData%\Microsoft Azure\Config
-    - **Naplófájlok**:%ProgramData%\Microsoft Azure\Logs
+    - **Konfigurációs fájlok**: %ProgramData%\Microsoft Azure\Config
+    - **Naplófájlok**: %ProgramData%\Microsoft Azure\Logs
 
-Futtassa a szkriptet a következő módon:
+Futtassa a parancsfájlt az alábbiak szerint:
 
-1. Bontsa ki a tömörített fájlt egy olyan mappába a kiszolgálón, amely a készüléket fogja üzemeltetni.
+1. Bontsa ki a tömörített fájlt a kiszolgálón lévő, a készüléket fogadó mappába.
 2. Indítsa el a PowerShellt a fenti kiszolgálón rendszergazdai (emelt szintű) jogosultsággal.
-3. Módosítsa a PowerShell könyvtárat arra a mappára, ahol a rendszer kibontotta a tartalmat a letöltött tömörített fájlból.
-4. Futtassa a **AzureMigrateInstaller. ps1** nevű szkriptet a következő parancs futtatásával:
+3. Módosítsa a PowerShell-könyvtárat arra a mappára, ahol a tartalom kilett nyerve a letöltött tömörített fájlból.
+4. Futtassa az **AzureMigrateInstaller.ps1** nevű parancsfájlt a következő parancs futtatásával:
     ```
     PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1
     ```
-A szkript a készülék webalkalmazásának sikeres befejeződése után elindítja a készüléket.
+A parancsfájl elindítja a készülék webalkalmazását, amint az sikeresen befejeződik.
 
-Ha bármilyen probléma merül fel, a parancsfájl-naplókat a C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log naplófájlban érheti el a hibaelhárításhoz.
+Bármilyen probléma esetén a parancsfájlnaplókat a C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log számú időbélyegű naplóban érheti el.
 
 > [!NOTE]
-> Ne hajtsa végre a Azure Migrate telepítési parancsfájlt egy meglévő Azure Migrate berendezésen.
+> Kérjük, ne hajtsa végre az Azure Migrate telepítő parancsfájlt egy meglévő Azure Migrate-berendezésen.
 
-### <a name="verify-appliance-access-to-azure"></a>A készülék Azure-beli hozzáférésének ellenőrzése
+### <a name="verify-appliance-access-to-azure"></a>A készülék Azure-hoz való hozzáférésének ellenőrzése
 
-Győződjön meg arról, hogy a készülék tud csatlakozni az [Azure URL-címekhez](migrate-appliance.md#url-access).
+Győződjön meg arról, hogy a készülék képes csatlakozni az [Azure URL-címekhez.](migrate-appliance.md#url-access)
 
 
-### <a name="configure-the-appliance"></a>A berendezés konfigurálása
+### <a name="configure-the-appliance"></a>A készülék konfigurálása
 
-Állítsa be a készüléket első alkalommal.
+Először állítsa be a készüléket.
 
-1. Nyisson meg egy böngészőt bármely olyan gépen, amely csatlakozhat a berendezéshez, és nyissa meg a berendezés webalkalmazásának URL-címét: **https://*készülék neve vagy IP-címe*: 44368**.
+1. Nyisson meg egy böngészőt minden olyan gépen, amely csatlakozni tud a készülékhez, és nyissa meg a készülék webalkalmazás URL-címét: **https:// készülék nevét vagy*IP-címét:* 44368**.
 
-   Másik lehetőségként megnyithatja az alkalmazást az asztalról az alkalmazás parancsikonra kattintva.
-2. A webalkalmazás-> **Előfeltételek beállítása**lapon tegye a következőket:
-    - **Licenc**: fogadja el a licencfeltételeket, és olvassa el a harmadik féltől származó információkat.
-    - **Kapcsolat**: az alkalmazás ellenőrzi, hogy a kiszolgáló rendelkezik-e internet-hozzáféréssel. Ha a kiszolgáló proxyt használ:
-        - Kattintson a **Proxybeállítások**elemre, és határozza meg a proxy címe és a figyelő portját http://ProxyIPAddress vagy http://ProxyFQDN formában.
+   Az alkalmazás parancsikonjára kattintva az alkalmazás parancsikonjára kattintva is megnyithatja az alkalmazást.
+2. A webalkalmazásban > **Az előfeltételek beállítása**beállításhoz tegye a következőket:
+    - **Licenc**: Fogadja el a licencfeltételeket, és olvassa el a harmadik fél től származó információkat.
+    - **Kapcsolat**: Az alkalmazás ellenőrzi, hogy a kiszolgáló rendelkezik-e internet-hozzáféréssel. Ha a kiszolgáló proxyt használ:
+        - Kattintson **a Proxy beállításai gombra,** és adja http://ProxyIPAddress http://ProxyFQDNmeg a proxycímet és a figyelőportot az űrlapon vagy a ban.
         - Adja meg a hitelesítő adatokat, ha a proxykiszolgáló hitelesítést igényel.
         - Csak a HTTP-proxyk használata támogatott.
-    - **Idő szinkronizálása**: az idő ellenőrzése megtörtént. A készüléken a kiszolgáló felderítésének megfelelő működéséhez az idő szinkronizálása szükséges.
-    - **Frissítések telepítése**: Azure Migrate Server Assessment ellenőrzi, hogy a készüléken telepítve vannak-e a legújabb frissítések.
+    - **Időszinkronizálás**: Az idő ellenőrizve van. A készüléken töltött időnek szinkronban kell lennie az internetidővel, hogy a kiszolgálófelderítés megfelelően működjön.
+    - **Frissítések telepítése**: Az Azure Migrate Server Assessment ellenőrzi, hogy a készüléken telepítve vannak-e a legújabb frissítések.
 
-### <a name="register-the-appliance-with-azure-migrate"></a>A készülék regisztrálása a Azure Migrate
+### <a name="register-the-appliance-with-azure-migrate"></a>Regisztrálja a készüléket az Azure Migrate szolgáltatással
 
-1. Kattintson **a bejelentkezés**elemre. Ha nem jelenik meg, ellenőrizze, hogy letiltotta-e az előugró ablakokat a böngészőben.
-2. Az új lapon jelentkezzen be az Azure-beli hitelesítő adataival.
-    - Jelentkezzen be a felhasználónevével és jelszavával.
+1. Kattintson **a Bejelentkezés gombra.** Ha nem jelenik meg, győződjön meg arról, hogy letiltotta az előugró ablakok blokkolását a böngészőben.
+2. Az új lapon jelentkezzen be az Azure-hitelesítő adatokkal.
+    - Jelentkezzen be felhasználónevével és jelszavával.
     - A PIN-kóddal való bejelentkezés nem támogatott.
-3. A sikeres bejelentkezés után térjen vissza a webalkalmazáshoz.
-4. Válassza ki azt az előfizetést, amelyben a Azure Migrate projektet létrehozták. Ezután válassza ki a projektet.
-5. Adja meg a berendezés nevét. A névnek legalább 14 karakterből kell állnia.
-6. Kattintson a **regisztrálás**gombra.
+3. Sikeres bejelentkezés után lépjen vissza a webalkalmazásba.
+4. Válassza ki azt az előfizetést, amelyben az Azure Migrate projekt jött létre. Ezután válassza ki a projektet.
+5. Adja meg a készülék nevét. A névnek alfanumerikusnak kell lennie, legkevesebb karakterrel.
+6. Kattintson a **Regisztráció gombra.**
 
 
 ## <a name="start-continuous-discovery"></a>Folyamatos felderítés indítása
 
-Most kapcsolódjon a készülékről a felderíteni kívánt fizikai kiszolgálókhoz, és indítsa el a felderítést.
+Most csatlakoztassa a készülékről a fizikai kiszolgálókat, hogy felfedezzék, és indítsa el a felderítést.
 
-1. Kattintson a **hitelesítő adatok hozzáadása** elemre azon fiók hitelesítő adatainak megadásához, amelyet a berendezés a kiszolgálók felderítéséhez használ majd.  
-2. Adja meg az **operációs rendszert**, a hitelesítő adatok, a **Felhasználónév** és a **jelszó** felhasználóbarát nevét, majd kattintson a **Hozzáadás**gombra.
-A Windows-és Linux-kiszolgálókhoz is hozzáadhat egy hitelesítő adatot.
-4. Kattintson a **kiszolgáló hozzáadása**elemre, és adja meg a kiszolgáló adatait – FQDN/IP-cím és a hitelesítő adatok rövid neve (egy sor, soronként egy bejegyzés) a kiszolgálóhoz való kapcsolódáshoz.
-3. Kattintson az **Érvényesítés**elemre. Az ellenőrzés után megjelenik a felderíthető kiszolgálók listája.
-    - Ha egy kiszolgáló érvényesítése meghiúsul, tekintse át a hibát az **állapot** oszlopban látható ikon fölé helyezve. Javítsa ki a hibákat, és ismételje meg az érvényesítést.
-    - Kiszolgáló eltávolításához válassza a > **Törlés**lehetőséget.
-4. Az ellenőrzés után kattintson a Mentés gombra, **és indítsa** el a felderítést a felderítési folyamat elindításához.
+1. Kattintson a **Hitelesítő adatok hozzáadása gombra** a kiszolgálók felderítéséhez használt fiókhitelesítő adatok megadásához.  
+2. Adja meg az **operációs rendszert,** a hitelesítő adatok rövid nevét, a **felhasználónevet** és a **jelszót,** majd kattintson a **Hozzáadás gombra.**
+Windows- és Linux-kiszolgálókhoz egy-egy hitelesítő adatot adhat hozzá.
+4. Kattintson **a Kiszolgáló hozzáadása**gombra, és adja meg a kiszolgáló adatait – FQDN/IP-cím és a hitelesítő adatok rövid neve (soronként egy bejegyzés) a kiszolgálóhoz való csatlakozáshoz.
+3. Kattintson a **Validate** (Érvényesítés) elemre. Az ellenőrzés után megjelenik a felderíthető kiszolgálók listája.
+    - Ha egy kiszolgáló érvényesítése sikertelen, tekintse át a hibát úgy, hogy az **Állapot** oszlopban az ikonra viszi az egérmutatót. Javítsa ki a problémákat, és ellenőrizze újra.
+    - Kiszolgáló eltávolításához válassza a > **törlés**lehetőséget.
+4. Az ellenőrzés után kattintson a Mentés gombra, és indítsa el a **felderítést** a felderítési folyamat elindításához.
 
-Ez elindítja a felderítést. Kiszolgálónként körülbelül 1,5 percet vesz igénybe, hogy a felderített kiszolgáló metaadatai megjelenjenek a Azure Portalban.
+Ez elindítja a felderítést. Kiszolgálónként körülbelül 1,5 percet vesz igénybe, hogy a felderített kiszolgáló metaadatai megjelenjenek az Azure Portalon.
 
 ### <a name="verify-servers-in-the-portal"></a>Kiszolgálók ellenőrzése a portálon
 
-A felderítést követően ellenőrizheti, hogy a kiszolgálók megjelennek-e a Azure Portal.
+A felderítés után ellenőrizheti, hogy a kiszolgálók megjelennek-e az Azure Portalon.
 
-1. Nyissa meg a Azure Migrate irányítópultot.
-2. A **Azure Migrate-** servers > **Azure Migrate: kiszolgáló értékelése** lapon kattintson arra az ikonra, amely megjeleníti a **felderített kiszolgálók**darabszámát.
+1. Nyissa meg az Azure Migrate irányítópultot.
+2. Az **Azure Migrate – Servers** > **Azure Migrate: Server Assessment (Kiszolgálói értékelés)** lapon kattintson a **felderített kiszolgálók**számát megjelenítő ikonra.
 
 ## <a name="set-up-an-assessment"></a>Értékelés beállítása
 
-A Azure Migrate: Server Assessment használatával kétféle értékelést hozhat létre.
+Az Azure Migrate használatával kétféle értékelést hozhat létre: Kiszolgálói értékelés.
 
 **Értékelés** | **Részletek** | **Adatok**
 --- | --- | ---
-**Teljesítmény-alapú** | Értékelések az összegyűjtött teljesítményadatok alapján | **Ajánlott**virtuálisgép-méret: a processzor-és memóriahasználat adatai alapján.<br/><br/> **Ajánlott lemez típusa (standard vagy prémium szintű felügyelt lemez)** : a helyszíni lemezek IOPS és átviteli sebessége alapján.
-**Helyszíni** | Helyszíni méretezésen alapuló értékelések. | **Ajánlott**virtuálisgép-méret: a helyszíni kiszolgáló méretétől függően<br/><br> **Ajánlott lemez típusa**: az értékeléshez kiválasztott tárolási típus alapján.
+**Teljesítményalapú** | Összegyűjtött teljesítményadatokon alapuló értékelések | **Ajánlott virtuális gép mérete:** A PROCESSZOR és a memória kihasználtsági adatai alapján.<br/><br/> **Ajánlott lemeztípus (standard vagy prémium díjas felügyelt lemez)**: Az IOPS és a helyszíni lemezek átviteli hatása alapján.
+**A helyszíni** | A helyszíni méretezésen alapuló értékelések. | **Ajánlott virtuális gép méret:** A helyszíni kiszolgáló mérete alapján<br/><br> **Ajánlott lemeztípus:** Az értékeléshez kiválasztott tárolási típusbeállítás alapján.
 
 
 ### <a name="run-an-assessment"></a>Értékelés futtatása
 
-Az értékelést a következőképpen futtathatja:
+Végezze el az értékelést az alábbiak szerint:
 
-1. Tekintse át az értékelések létrehozásával kapcsolatos [ajánlott eljárásokat](best-practices-assessment.md) .
-2. A **kiszolgálók** lap **Azure Migrate: kiszolgáló értékelése** csempén kattintson az **értékelés**elemre.
+1. Tekintse át az értékelések létrehozásának [ajánlott gyakorlatait.](best-practices-assessment.md)
+2. A **Kiszolgálók** lap **Azure Migrate: Server Assessment (Kiszolgálói felmérés)** csempéjén kattintson a **Felértékelés gombra.**
 
-    ![Értékelés](./media/tutorial-assess-physical/assess.png)
+    ![Kiértékelés](./media/tutorial-assess-physical/assess.png)
 
-2. A **kiszolgálók értékelése**lapon adja meg az értékelés nevét.
+2. A **Kiszolgálók felmérése**területen adja meg az értékelés nevét.
 3. Kattintson az **Összes megtekintése** elemre az értékelési tulajdonságok áttekintéséhez.
 
-    ![Értékelés tulajdonságai](./media/tutorial-assess-physical/view-all.png)
+    ![Értékelési tulajdonságok](./media/tutorial-assess-physical/view-all.png)
 
-3. A **válasszon ki vagy hozzon létre egy csoportot**, válassza az **új létrehozása**lehetőséget, és adjon meg egy csoportnevet. Egy csoport egy vagy több kiszolgálót gyűjt össze az értékeléshez.
-4. A **számítógépek hozzáadása a csoporthoz**területen válassza ki a csoportba felvenni kívánt kiszolgálókat.
-5. A csoport létrehozásához kattintson az **Értékelés létrehozása** elemre, majd futtassa az értékelést.
+3. A **Csoport kijelölése vagy létrehozása**csoportban válassza az Új **létrehozása**lehetőséget, és adja meg a csoport nevét. Egy csoport összegyűjt egy vagy több kiszolgálót értékelésre.
+4. A **Gépek hozzáadása a csoporthoz**csoportban válassza ki a csoporthoz hozzáadni kívánt kiszolgálókat.
+5. Kattintson **az Értékelés létrehozása** a csoport létrehozásához, és futtassa az értékelést.
 
     ![Értékelés létrehozása](./media/tutorial-assess-physical/assessment-create.png)
 
-6. Az értékelés létrehozása után megtekintheti azt a **kiszolgálók** > **Azure Migrate: kiszolgálói felmérés** > **értékelések**.
+6. Az értékelés létrehozása után tekintse meg a **Kiszolgálók** > **Azure Áttelepítés: Kiszolgálóértékelési** > **értékelések**című részben.
 7. Az értékelés az **Értékelés exportálása** gombra kattintva Excel-fájlként letölthető.
 
 
@@ -229,57 +229,57 @@ Az értékelést a következőképpen futtathatja:
 
 Az értékelés a következőket írja le:
 
-- **Azure-készültség**: az, hogy a kiszolgálók alkalmasak-e az Azure-ba való áttelepítésre.
-- **Havi költségbecslés**: a kiszolgálók Azure-ban való futtatásának becsült havi számítási és tárolási költségei.
-- **Havi tárolási költségek becslése**: a lemezes tárolás becsült költségei az áttelepítés után.
+- **Azure-készenlét:** A kiszolgálók alkalmasak-e az Azure-ba való áttelepítésre.
+- **Havi költségbecslés:** A kiszolgálók Azure-beli futtatásának becsült havi számítási és tárolási költségei.
+- **Havi tárolási költség becslés:** Az áttelepítés utáni lemeztárolás becsült költségei.
 
 ### <a name="view-an-assessment"></a>Értékelés megtekintése
 
-1. Az **áttelepítési célok** >  - **kiszolgálók**területen kattintson az **értékelések** **Azure Migrate: kiszolgáló értékelése**elemre.
-2. Az **értékelésekben**kattintson egy értékelésre a megnyitásához.
+1. Az **áttelepítési célok** >  **kiszolgálói között**kattintson az Értékelések **az** **Azure Áttelepítés: Kiszolgálói értékelés**elemre.
+2. Az **Értékelések menüben**kattintson egy értékelésre a megnyitásához.
 
-    ![Értékelés összegzése](./media/tutorial-assess-physical/assessment-summary.png)
+    ![Az értékelés összefoglalója](./media/tutorial-assess-physical/assessment-summary.png)
 
-### <a name="review-azure-readiness"></a>Az Azure készültségének áttekintése
+### <a name="review-azure-readiness"></a>Az Azure-ra való felkészültség áttekintése
 
-1. Az **Azure készültségi**területén ellenőrizze, hogy a kiszolgálók készen állnak-e az Azure-ba való áttelepítésre.
+1. Az **Azure-ban készenléti**győződjön meg arról, hogy a kiszolgálók készen állnak az Azure-ba való áttelepítésre.
 2. Tekintse át az állapotot:
-    - **Készen áll az Azure-ra**: Azure Migrate javasolja a virtuális gépek méretének és becsült értékének becslését az értékelés során.
-    - **Feltételekkel kész**: megjeleníti a problémákat és a javasolt szervizelést.
-    - **Nem áll készen az Azure-ra: a**problémákat és a javasolt szervizelést jeleníti meg.
-    - **Felkészültségi ismeretlen**: akkor használatos, ha az adatelérhetőségi problémák miatt Azure Migrate nem tudja felmérni a készültséget.
+    - **Készen áll az Azure-ra:** Az Azure Migrate a virtuális gépek méretének és költségbecslésének ajánlott a felmérésben.
+    - **Kész a feltételekkel:** Problémák és javasolt szervizelés megjelenítése.
+    - **Nem áll készen az Azure-ra:** Problémák és javasolt szervizelés megjelenítése.
+    - **Készenlét ismeretlen:** Akkor használatos, ha az Azure Migrate nem tudja felmérni a készenlétet az adatok rendelkezésre állásával kapcsolatos problémák miatt.
 
-2. Kattintson egy **Azure-készültségi** állapotra. Megtekintheti a kiszolgáló készültségi adatait, és részletesen megtekintheti a kiszolgáló adatait, beleértve a számítási, tárolási és hálózati beállításokat.
+2. Kattintson egy **Azure-készenléti** állapotra. Megtekintheti a kiszolgáló készenléti részleteit, és leáshat a kiszolgáló részleteinek megtekintéséhez, beleértve a számítási, tárolási és hálózati beállításokat.
 
 
 
-### <a name="review-cost-details"></a>A Cost részleteinek áttekintése
+### <a name="review-cost-details"></a>Költségrészletek áttekintése
 
-Ez a nézet az Azure-ban futó virtuális gépek becsült számítási és tárolási költségeit jeleníti meg.
+Ez a nézet az Azure-ban futó virtuális gépek becsült számítási és tárolási költségét jeleníti meg.
 
-1. Tekintse át a havi számítási és tárolási költségeket. A költségek összesítése az összes kiszolgáló számára a vizsgált csoportban történik.
+1. Tekintse át a havi számítási és tárolási költségeket. A költségek összesítése az értékelt csoport összes kiszolgálójára vonatkozóan.
 
-    - A költségbecslés a gép méretére vonatkozó javaslatokon, valamint a lemezek és a tulajdonságok alapján történik.
-    - A számítási és tárolási költségek becsült havi költségei láthatók.
-    - A költségbecslés a helyszíni kiszolgálók IaaS virtuális gépekként való futtatására szolgál. Azure Migrate Server Assessment nem veszi figyelembe a Pásti vagy az SaaS költségeit.
+    - A költségbecslések a gép méretre vonatkozó javaslatain, valamint lemezein és tulajdonságain alapulnak.
+    - A számítási és tárolási becsült havi költségek láthatók.
+    - A költségbecslés a helyszíni kiszolgálók IaaS virtuális gépekként való futtatásához. Az Azure Áttelepítési kiszolgáló értékelése nem veszi figyelembe a PaaS- vagy SaaS-költségeket.
 
-2. Megtekintheti a havi tárolási díjak becsült összegét. Ez a nézet az értékelt csoport összesített tárolási költségeit jeleníti meg, a különböző típusú tárolóeszközök felosztásával.
-3. Megtekintheti az egyes kiszolgálók részleteit.
+2. Megtekintheti a havi tárolási költségbecsléseket. Ez a nézet az értékelt csoport összesített tárolási költségeit mutatja, különböző típusú tárolólemezekre osztva.
+3. Leáshat az adott kiszolgálók részleteinek megtekintéséhez.
 
 
 ### <a name="review-confidence-rating"></a>Megbízhatósági minősítés áttekintése
 
-Ha teljesítmény-alapú értékeléseket futtat, a rendszer megbízhatósági minősítést rendel az értékeléshez.
+Teljesítményalapú értékelések futtatásakor megbízhatósági minősítés van rendelve az értékeléshez.
 
 ![Megbízhatósági minősítés](./media/tutorial-assess-physical/confidence-rating.png)
 
-- A rendszer kinyeri az 1 csillagos (legalacsonyabb) és az 5 csillagos (legmagasabb) minősítést.
-- A megbízhatósági minősítés segít megbecsülni az értékelés által biztosított méretre vonatkozó ajánlások megbízhatóságát.
+- Az 1 csillagos (legalacsonyabb) és az 5 csillagos (legmagasabb) minősítést kapja.
+- A megbízhatósági besorolás segít megbecsülni az értékelés által biztosított méretjavaslatok megbízhatóságát.
 - A megbízhatósági minősítés az értékelés kiszámításához szükséges adatpontok rendelkezésre állásán alapul.
 
-Az értékelés megbízhatósági minősítése a következő.
+Az értékelés megbízhatósági minősítései a következők.
 
-**Adatpont rendelkezésre állása** | **Megbízhatósági minősítés**
+**Az adatpont elérhetősége** | **Megbízhatósági minősítés**
 --- | ---
 0%–20% | 1 csillag
 21%–40% | 2 csillag
@@ -287,18 +287,18 @@ Az értékelés megbízhatósági minősítése a következő.
 61%–80% | 4 csillag
 81%–100% | 5 csillag
 
-[További](best-practices-assessment.md#best-practices-for-confidence-ratings) információ a megbízhatósági minősítéssel kapcsolatos ajánlott eljárásokról.
+[További információ](best-practices-assessment.md#best-practices-for-confidence-ratings) a megbízhatósági minősítésekkel kapcsolatos gyakorlati tanácsokról.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
-> * Azure Migrate berendezés beállítása
-> * Értékelés létrehozva és felülvizsgálva
+> * Azure Migrate-berendezés beállítása
+> * Értékelés létrehozása és felülvizsgálata
 
-Folytassa a sorozat harmadik oktatóanyagával, amelyből megtudhatja, hogyan telepíthet át fizikai kiszolgálókat az Azure-ba a Azure Migrate: Server Migration használatával.
+Folytassa a sorozat harmadik oktatóanyagával, és ismerje meg, hogyan telepítheti át a fizikai kiszolgálókat az Azure-ba az Azure Áttelepítés: Kiszolgálóáttelepítés szolgáltatással.
 
 > [!div class="nextstepaction"]
 > [Fizikai kiszolgálók migrálása](./tutorial-migrate-physical-virtual-machines.md)

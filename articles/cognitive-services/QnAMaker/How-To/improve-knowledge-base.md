@@ -2,13 +2,13 @@
 title: A tudásbázis fejlesztése - QnA Maker
 description: Javítsa tudásbázisa minőségét aktív tanulással. Tekintse át, fogadja el vagy utasítsa el, adja hozzá a meglévő kérdések eltávolítása vagy módosítása nélkül.
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.openlocfilehash: 8b2176731ce456b70521cc9208435d0b19943ab8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/31/2020
+ms.openlocfilehash: 1eb0ed42f700c14350a5e4f1eff9b7592cbf8ef6
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80053080"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474887"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Aktív tanulási javasolt kérdések elfogadása a tudásbázisban
 
@@ -203,7 +203,7 @@ Az [Azure-robot minta mindkét](https://aka.ms/activelearningsamplebot)tevékeny
 
 ### <a name="example-c-code-for-train-api-with-bot-framework-4x"></a>Példa C# kód a Vonat API Bot Framework 4.x
 
-A következő kód bemutatja, hogyan küldhet vissza adatokat a QnA Maker-nek a Train API-val. Ez [a teljes kódminta](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-activelearning/csharp_dotnetcore) elérhető a GitHubon.
+A következő kód bemutatja, hogyan küldhet vissza adatokat a QnA Maker-nek a Train API-val.
 
 ```csharp
 public class FeedbackRecords
@@ -266,7 +266,7 @@ public async static void CallTrain(string endpoint, FeedbackRecords feedbackReco
 
 ### <a name="example-nodejs-code-for-train-api-with-bot-framework-4x"></a>Példa Node.js kód a Robot Framework 4.x vonat API-jához
 
-A következő kód bemutatja, hogyan küldhet vissza adatokat a QnA Maker-nek a Train API-val. Ez [a teljes kódminta](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-activelearning/javascript_nodejs) elérhető a GitHubon.
+A következő kód bemutatja, hogyan küldhet vissza adatokat a QnA Maker-nek a Train API-val.
 
 ```javascript
 async callTrain(stepContext){

@@ -15,10 +15,10 @@ ms.custom: mvc
 ms.date: 02/10/2020
 ms.author: spelluru
 ms.openlocfilehash: 27d79e28a986e929fb71dd77fc50b3c2cd32618f
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77134039"
 ---
 # <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>Oktatóanyag: Hozzáférés egy osztályterem-tesztkörnyezethez az Azure Lab Services szolgáltatásban
@@ -33,44 +33,44 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 
 ## <a name="register-to-the-lab"></a>Regisztráció a laborba
 
-1. Keresse fel a **regisztrációs URL-címet**, amelyet a tanártól/oktatótól kapott. A regisztráció befejezése után nem szükséges a regisztrációs URL-cím használata. Ehelyett használja az URL-címet: [https://labs.azure.com](https://labs.azure.com). Az Internet Explorer 11 még nem támogatott. 
+1. Keresse fel a **regisztrációs URL-címet**, amelyet a tanártól/oktatótól kapott. A regisztráció befejezése után nem kell használnia a regisztrációs URL-t. Ehelyett használja az [https://labs.azure.com](https://labs.azure.com)URL-t: . Az Internet Explorer 11 még nem támogatott. 
 1. A regisztráció elvégzéséhez jelentkezzen be a szolgáltatásba az iskolai fiókjával. 
 
     > [!NOTE]
-    > A Azure Lab Services használatához Microsoft-fiók szükséges. Ha nem Microsoft-fiók, például a Yahoo vagy a Google fiókok használatával próbál bejelentkezni a portálra, kövesse az utasításokat, és hozzon létre egy Microsoft-fiók, amely a nem Microsoft-fiókhoz lesz társítva. Ezután kövesse a lépéseket a regisztrációs folyamat befejezéséhez. 
+    > Az Azure Lab Services használatához Microsoft-fiók szükséges. Ha nem Microsoft-fiókjával, például Yahoo- vagy Google-fiókjával próbál bejelentkezni a portálra, kövesse az utasításokat, és hozzon létre egy Microsoft-fiókot, amely a nem Microsoft-fiókjához lesz csatolva. Ezután kövesse a lépéseket a regisztrációs folyamat befejezéséhez. 
 1. A regisztrációt követően ellenőrizze, hogy látja-e a virtuális gépet abban a tesztkörnyezetben, amelyhez hozzáférése van. 
-1. Várjon, amíg a virtuális gép készen áll. A virtuális gép csempén figyelje meg a következő mezőket:
-    1. A csempe tetején megjelenik a **labor neve**.
-    1. A jobb oldalon megjelenik a virtuális gép **operációs rendszerét** jelképező ikon. Ebben a példában ez a Windows operációs rendszer. 
-    1. A csempe folyamatjelzője megjeleníti az órák számát, amelyet a rendszer az Ön által hozzárendelt [kvóta-órák](how-to-configure-student-usage.md#set-quotas-for-users) száma alapján használ. Ez az idő az a további időpont, amelyet a tesztkörnyezet ütemezett ideje mellett is kiosztottak. 
-    1. A csempe alján található ikonokat/gombokat a virtuális gép elindításához/leállításához és a virtuális géphez való kapcsolódáshoz használhatja. 
-    1. A gombok jobb oldalán megtekintheti a virtuális gép állapotát. Győződjön meg arról, hogy a virtuális gép állapota **leállt**. 
+1. Várjon, amíg a virtuális gép készen áll. A virtuális gép csempéjén figyelje meg a következő mezőket:
+    1. A csempe tetején megjelenik **a labor neve**.
+    1. Jobbra a virtuális gép **operációs rendszerét (operációs rendszert)** jelző ikon látható. Ebben a példában ez a Windows operációs rendszer. 
+    1. A csempe folyamatjelző sávja a felhasznált órák számát mutatja a hozzárendelt [kvótaórák](how-to-configure-student-usage.md#set-quotas-for-users) számához képest. Ez az idő a labor ütemezett időpontja mellett az Ön számára rendelkezésre szánt további idő. 
+    1. A csempe alján ikonok/gombok jelennek meg a virtuális gép indításához/leállításához, és csatlakozhatanak a virtuális géphez. 
+    1. A gombok tól jobbra a virtuális gép állapota látható. Győződjön meg arról, hogy a virtuális gép állapota **le van állítva.** 
 
-        ![Leállított állapotú virtuális gép](../media/tutorial-connect-vm-in-classroom-lab/vm-in-stopped-state.png)
+        ![Virtuális gép leállított állapotban](../media/tutorial-connect-vm-in-classroom-lab/vm-in-stopped-state.png)
 
 ## <a name="start-the-vm"></a>A virtuális gép elindítása
-1. **Indítsa el** a virtuális gépet az alábbi képen látható első gomb kiválasztásával. Ez a folyamat hosszabb időt vesz igénybe.  
+1. **Indítsa el** a virtuális gép kiválasztásával az első gomb, ahogy az az alábbi képen látható. Ez a folyamat némi időt vesz igénybe.  
 
     ![A virtuális gép elindítása](../media/tutorial-connect-vm-in-classroom-lab/start-vm.png)
-4. Győződjön meg arról, hogy a virtuális gép állapota **fut**értékre van állítva. 
+4. Ellenőrizze, hogy a virtuális gép állapota Futás állapotú.Confirm that the status of the VM is set to **Running**. 
 
-    ![Futó állapotú virtuális gép](../media/tutorial-connect-vm-in-classroom-lab/vm-running.png)
+    ![Virtuális gép futó állapotban](../media/tutorial-connect-vm-in-classroom-lab/vm-running.png)
 
-    Figyelje meg, hogy az első gomb ikonja egy **leállítási** műveletet jelöl. Ezzel a gombbal állíthatja le a virtuális gépet. 
+    Figyelje meg, hogy az első gomb ikonja úgy változott, hogy **leállítási** műveletet jelöl. Ezt a gombot a virtuális gép leállításához válassza. 
 
 ## <a name="connect-to-the-vm"></a>Kapcsolódás a virtuális géphez
 
-1. A labor virtuális géphez való **kapcsolódáshoz** kattintson a következő képen látható második gombra. 
+1. Válassza ki a második gombot, ahogy az az alábbi képen látható a labor virtuális **gépéhez való csatlakozáshoz.** 
 
     ![Kapcsolódás egy virtuális géphez](../media/tutorial-connect-vm-in-classroom-lab/connect-vm.png)
-2. Hajtsa végre az alábbi lépések egyikét: 
-    1. **Windows rendszerű** virtuális gépek esetén mentse az **RDP** -fájlt a merevlemezre. Nyissa meg az RDP-fájlt a virtuális géphez való kapcsolódáshoz. Használja az oktató/professzor által a gépre való bejelentkezéshez kapott **felhasználónevet** és **jelszót** . 
-    3. **Linux** rendszerű virtuális gépek esetén az **SSH** vagy az **RDP** (ha engedélyezve van) használatával csatlakozhat hozzájuk. További információ: [Távoli asztali kapcsolat engedélyezése Linux rendszerű gépekhez](how-to-enable-remote-desktop-linux.md). 
+2. Tegye az alábbi lépések egyikét: 
+    1. **Windows** virtuális gépek esetén mentse az **RDP-fájlt** a merevlemezre. Nyissa meg az RDP-fájlt a virtuális géphez való csatlakozáshoz. Használja az oktatótól/professzortól kapott **felhasználónevet** és **jelszót** a gépre való bejelentkezéshez. 
+    3. **Linuxos** virtuális gépek esetén **ssh** vagy **RDP** (ha engedélyezve van) segítségével csatlakozhat hozzájuk. További információ: [Távoli asztali kapcsolat engedélyezése Linux rendszerű gépekhez című témakörben.](how-to-enable-remote-desktop-linux.md) 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban megtanult hozzáférni egy osztályterem-tesztkörnyezethez az oktatótól/tanártól kapott regisztrációs hivatkozás használatával.
 
-A labor tulajdonosaként szeretné megtekinteni, hogy ki regisztrált a laborban, és nyomon követheti a virtuális gépek használatát. Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan követheti nyomon a labor használatát:
+A tesztkörnyezet tulajdonosaként szeretné megtekinteni, hogy ki regisztrált a laborban, és nyomon követheti a virtuális gépek használatát. Haladjon tovább a következő oktatóanyaghoz, és ismerje meg, hogyan követheti nyomon a labor használatát:
 
 > [!div class="nextstepaction"]
 > [Tesztkörnyezet használatának nyomon követése](tutorial-track-usage.md) 

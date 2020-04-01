@@ -8,15 +8,15 @@ ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
 ms.openlocfilehash: 8722a52a097f7f830287d125a4e56e9bbcb9f932
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76939098"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Oktatóanyag: Webalkalmazások DNS-rekordjainak létrehozása egyéni tartományban 
 
-Az Azure DNS-t beállíthatja a webalkalmazások egyéni tartományainak üzemeltetéséhez. Létrehozhat például egy Azure-webalkalmazást, és a felhasználók a www\.contoso.com vagy a contoso.com használatával érhetik el a teljes tartománynevet (FQDN).
+Az Azure DNS-t beállíthatja a webalkalmazások egyéni tartományainak üzemeltetéséhez. Létrehozhat például egy Azure-webalkalmazást, és beállíthatja,\.hogy a felhasználók a www contoso.com vagy contoso.com teljesen minősített tartománynévként (FQDN) használatával érhessék el azt.
 
 > [!NOTE]
 > A jelen oktatóanyag példáiban a contoso.com szerepel. A contoso.com helyére írja be a saját tartománynevét.
@@ -39,7 +39,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Az egyéni gazdagépnevek tesztelése
 
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -47,7 +47,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* Meg kell adnia egy tartománynevet, hogy tesztelni tudja, hogy Azure DNS üzemeltethető-e. Teljes körű irányítással kell rendelkeznie a tartomány felett. A teljes körű irányításba beletartozik a tartomány névkiszolgálói (NS-) rekordjainak beállítására való képesség.
+* Az Azure DNS-ben üzemeltethető tartománynévvel kell rendelkeznie. Teljes körű irányítással kell rendelkeznie a tartomány felett. A teljes körű irányításba beletartozik a tartomány névkiszolgálói (NS-) rekordjainak beállítására való képesség.
 * [Hozzon létre egy App Service-alkalmazást](../app-service/app-service-web-get-started-html.md), vagy használjon egy másik oktatóanyaghoz létrehozott alkalmazást.
 
 * Hozzon létre egy DNS-zónát az Azure DNS-ben, majd delegálja azt az Azure DNS-be a tartománynév kezelőjénél.
@@ -84,7 +84,7 @@ New-AzDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
 Az App Services ezt a rekordot csak a konfiguráláskor használja annak ellenőrzéséhez, hogy Ön-e az egyéni tartomány tulajdonosa. Miután az App Service-ben érvényesítette és konfigurálta az egyéni tartományt, törölheti ezt a TXT típusú rekordot.
 
 > [!NOTE]
-> Ha szeretné ellenőrizni a tartománynevet, de a webalkalmazáshoz nem irányítja a termelési forgalmat, csak az ellenőrzési lépéshez tartozó TXT-rekordot kell megadnia.  Az ellenőrzéshez nem szükséges egy vagy CNAME rekord a TXT-rekordon kívül.
+> Ha ellenőrizni szeretné a tartománynevet, de nem szeretné az éles forgalmat a webalkalmazásba irányítani, csak meg kell adnia az ellenőrzési lépés TXT rekordját.  Az ellenőrzéshez nincs szükség A vagy CNAME rekordra a TXT rekord mellett.
 
 ```azurepowershell
 New-AzDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup `
@@ -173,7 +173,7 @@ set-AzWebApp `
 Nyissa meg valamilyen böngészőben a `http://www.<your domainname>` és a `http://<you domain name>` webhelyet.
 
 > [!NOTE]
-> Ügyeljen arra, hogy tartalmazza a `http://` előtagot, ellenkező esetben előfordulhat, hogy a böngésző megpróbál előre megjósolni egy URL-címet.
+> Győződjön meg `http://` róla, hogy tartalmazza az előtagot, különben a böngésző megkísérli megjósolni az URL-t az Ön számára!
 
 Mindkét URL-cím esetében ugyanannak az oldalnak kell megjelennie. Példa:
 
@@ -184,7 +184,7 @@ Mindkét URL-cím esetében ugyanannak az oldalnak kell megjelennie. Példa:
 
 Ha már nincs szüksége a jelen oktatóanyagban létrehozott erőforrásokra, törölheti a **myresourcegroup** erőforráscsoportot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg az Azure DNS Private Zones létrehozására szolgáló eljárást.
 

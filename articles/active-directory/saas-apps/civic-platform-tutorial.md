@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integráció a Civic platformmal | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a polgári platform között.
+title: 'Oktatóanyag: Az Azure Active Directory integrációja a Polgári Platformmal | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a Civic Platform között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,183 +17,183 @@ ms.date: 07/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ccf124c5a4160715df4e685e405dcd591c49ae7
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68496825"
 ---
-# <a name="tutorial-integrate-civic-platform-with-azure-active-directory"></a>Oktatóanyag: A polgári platform integrálása a Azure Active Directory
+# <a name="tutorial-integrate-civic-platform-with-azure-active-directory"></a>Oktatóanyag: A polgári platform integrálása az Azure Active Directoryval
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a polgári platformot Azure Active Directory (Azure AD) használatával. Ha az Azure AD-vel integrálja a polgári platformot, a következőket teheti:
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a Civic Platformot az Azure Active Directoryval (Azure AD). Ha integrálja a Civic Platformot az Azure AD-vel, a következőket teheti:
 
-* A polgári platformhoz hozzáférő Azure AD-beli vezérlés.
-* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a polgári platformba az Azure AD-fiókkal.
-* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
+* Szabályozhatja az Azure AD-ben, aki hozzáfér a Polgári platformhoz.
+* Lehetővé teszi a felhasználók számára, hogy automatikusan bejelentkezve a Civic Platform az Azure AD-fiókok.
+* Kezelje fiókjait egyetlen központi helyen – az Azure Portalon.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Első lépésként a következő elemeket kell megadnia:
+A kezdéshez a következő elemekre van szükség:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [itt](https://azure.microsoft.com/pricing/free-trial/)kérhet egy hónapos ingyenes próbaverziót.
-* Polgári platformos egyszeri bejelentkezés (SSO) engedélyezett előfizetés.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [itt](https://azure.microsoft.com/pricing/free-trial/)egy hónapos ingyenes próbaverziót kaphat.
+* A Civic Platform egyszeri bejelentkezéssel (SSO) engedélyezett előfizetéssel rendelkezik.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztkörnyezetben.
 
-* A Civic platform támogatja az **SP** által KEZDEMÉNYEZett SSO-t
-
-
+* A Polgári Platform támogatja az **SP** által kezdeményezett sso-t
 
 
 
-## <a name="adding-civic-platform-from-the-gallery"></a>Polgári platform hozzáadása a katalógusból
-
-A polgári platform Azure AD-integrációjának konfigurálásához hozzá kell adnia egy polgári platformot a katalógusból a felügyelt SaaS-alkalmazások listájához.
-
-1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
-1. A **Hozzáadás a** katalógusból szakaszban írja be a **Civic platform** kifejezést a keresőmezőbe.
-1. Válassza a **Civic platform** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="adding-civic-platform-from-the-gallery"></a>Civic Platform hozzáadása a galériából
 
-Konfigurálja és tesztelje az Azure AD SSO-t a Civic platformmal egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között a polgári platformon.
+A Civic Platform Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Civic Platformot a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-Az Azure AD SSO polgári platformmal való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
+1. A bal oldali navigációs ablakban válassza ki az **Azure Active Directory** szolgáltatást.
+1. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza **a Minden alkalmazás lehetőséget.**
+1. Új alkalmazás hozzáadásához válassza az **Új alkalmazás**lehetőséget.
+1. A **Hozzáadás a gyűjteményből szakaszban** írja be a **Polgári platform** kifejezést a keresőmezőbe.
+1. Válassza a **Polgári platform** lehetőséget az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzáadódik a bérlőhöz.
 
-1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
-2. A **[polgári platform egyszeri bejelentkezésének konfigurálása](#configure-civic-platform-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
-4. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-5. **[Hozzon létre egy Civic platform test User](#create-civic-platform-test-user)** -t, hogy a B. Simon partnere legyen a Civic platformon, amely a felhasználó Azure ad-képviseletéhez van társítva.
-6. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
+
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
+
+Konfigurálja és tesztelje az Azure AD SSO-t a Civic Platform segítségével egy **B.Simon**nevű tesztfelhasználó használatával. Ahhoz, hogy az SSO működjön, létre kell hoznia egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó a Civic Platform.
+
+Az Azure AD SSO konfigurálásához és teszteléséhez a Polgári platformon hajtsa végre a következő építőelemeket:
+
+1. **[Konfigurálja az Azure AD egyszeri szolgáltatást](#configure-azure-ad-sso)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. **[Konfigurálja a Polgári Platform Egyszeri Bejelentkezés](#configure-civic-platform-sso)** - konfigurálni az egyszeri bejelentkezési beállításokat az alkalmazás oldalán.
+3. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezés b.Simon teszteléséhez.
+4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi b.Simon azure AD egyszeri bejelentkezés.
+5. **[Hozzon létre Civic Platform teszt felhasználó](#create-civic-platform-test-user)** - egy megfelelője B.Simon a Polgári platform, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+6. **[SSO tesztelése](#test-sso)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
 ### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
+Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Portalon.
 
-1. A [Azure Portal](https://portal.azure.com/)a **Civic platform** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az alapszintű **SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az [Azure Portalon](https://portal.azure.com/)a **Polgári platform** alkalmazásintegrációs lapján keresse meg a **Kezelés szakaszt,** és válassza **az Egyszeri bejelentkezés**lehetőséget.
+1. Az **Egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A **Beállítások beállítása SAML-lel** lapon kattintson az **egyszerű SAML-konfiguráció** szerkesztési/tollikonjára a beállítások szerkesztéséhez.
 
-   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az alapszintű **SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
+1. Az **Egyszerű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.accela.com`
+    a. A Bejelentkezés az **URL-cím** mezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.accela.com`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet:`civicplatform.accela.com`
+    b. Az **Azonosító (entitásazonosító)** mezőbe írjon be egy URL-címet:`civicplatform.accela.com`
 
     > [!NOTE]
-    > A bejelentkezési URL-cím értéke nem valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez lépjen kapcsolatba a [Civic platform ügyfél-támogatási csapatával](mailto:skale@accela.com) . Az Azure Portal alapszintű **SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > A Bejelentkezés url-cím értéke nem valós. Frissítse ezt az értéket a tényleges Bejelentkezési URL-címmel. Lépjen kapcsolatba [a Civic Platform ügyféltámogatási csapatával,](mailto:skale@accela.com) hogy megkapja ezt az értéket. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
 
-1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
+1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány szakaszában** kattintson a Másolás gombra az **Alkalmazásösszevonás metaadat-címének** másolásához és mentéséhez a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozás](common/copy-metadataurl.png)
+    ![A tanúsítvány letöltési hivatkozása](common/copy-metadataurl.png)
 
-1. Navigáljon **Azure Active Directory** > **Alkalmazásregisztrációk** az Azure ad-ben, majd válassza ki az alkalmazást.
+1. Keresse meg az **Azure Active Directory** > **alkalmazás regisztrációit** az Azure AD-ben, válassza ki az alkalmazást.
 
-1. Másolja a **címtár-(bérlői) azonosítót** , és tárolja azt a Jegyzettömbben.
+1. Másolja a **címtár (bérlői) azonosítót,** és tárolja a Jegyzettömbbe.
 
-    ![Másolja a könyvtárat (bérlői azonosítót), és tárolja azt az alkalmazás kódjában.](media/civic-platform-tutorial/directoryid.png)
+    ![A könyvtár másolása (bérlőazonosító) és tárolása az alkalmazáskódban](media/civic-platform-tutorial/directoryid.png)
 
-1. Másolja ki az **alkalmazás azonosítóját** , és tárolja azt a Jegyzettömbben.
+1. Másolja az **alkalmazásazonosítót,** és tárolja a Jegyzettömbbe.
 
-   ![Az alkalmazás (ügyfél) AZONOSÍTÓjának másolása](media/civic-platform-tutorial/applicationid.png)
+   ![Az alkalmazás (ügyfél) azonosítójának másolása](media/civic-platform-tutorial/applicationid.png)
 
-1. Navigáljon **Azure Active Directory** > **Alkalmazásregisztrációk** az Azure ad-ben, majd válassza ki az alkalmazást. Válassza ki a **tanúsítványok & Secrets**elemet.
+1. Keresse meg az **Azure Active Directory** > **alkalmazás regisztrációit** az Azure AD-ben, válassza ki az alkalmazást. Válassza **a Tanúsítványok & titkos kulcsok lehetőséget.**
 
-1. Válassza ki az **ügyfél titkai-> új ügyfél titkát**.
+1. Válassza **ki az ügyféltitkokat -> Új ügyféltitok**.
 
-1. Adja meg a titok leírását és időtartamát. Ha elkészült, válassza a **Hozzáadás**lehetőséget.
+1. Adja meg a titkos kulcsot és az időtartamot. Ha végzett, válassza **a Hozzáadás**lehetőséget.
 
    > [!NOTE]
-   > Az ügyfél titkos kulcsának mentése után megjelenik az ügyfél titkos kulcsának értéke. Másolja ezt az értéket, mert később nem tudja lekérni a kulcsot.
+   > Az ügyféltitkos lista mentése után megjelenik az ügyféltitkos lista értéke. Másolja ezt az értéket, mert később nem tudja beolvasni a kulcsot.
 
-   ![Másolja a titkos értéket, mert később nem lehet beolvasni](media/civic-platform-tutorial/secretkey.png)
+   ![A titkos érték másolása, mert később nem lehet beolvasni](media/civic-platform-tutorial/secretkey.png)
 
-### <a name="configure-civic-platform-sso"></a>A polgári platform egyszeri bejelentkezésének konfigurálása
+### <a name="configure-civic-platform-sso"></a>A Polgári platform sso-jának konfigurálása
 
-1. Nyisson meg egy új böngészőablakot, és jelentkezzen be a Atlassian felhőalapú vállalati webhelyére rendszergazdaként.
+1. Nyisson meg egy új böngészőablakot, és jelentkezzen be az Atlassian Cloud vállalati webhelyére rendszergazdaként.
 
-1. Kattintson a **normál beállítások lehetőségre**.
+1. Kattintson a **Szokásos választási lehetőségek gombra.**
 
-    ![A tanúsítvány letöltési hivatkozás](media/civic-platform-tutorial/standard-choices.png)
+    ![A tanúsítvány letöltési hivatkozása](media/civic-platform-tutorial/standard-choices.png)
 
-1. Hozzon létre egy szabványos választható **ssoconfig**.
+1. Hozzon létre egy szabványos választási **ssoconfig**.
 
-1. Keresse meg a **ssoconfig** , és küldje el.
+1. Keresés **a ssoconfig** és küldje el.
 
-    ![A tanúsítvány letöltési hivatkozás](media/civic-platform-tutorial/sso-config.png)
+    ![A tanúsítvány letöltési hivatkozása](media/civic-platform-tutorial/sso-config.png)
 
-1. A piros pontra kattintva bontsa ki a SSOCONFIG elemet.
+1. Bontsa ki a SSOCONFIG elemet a piros ra kattintva.
 
-    ![A tanúsítvány letöltési hivatkozás](media/civic-platform-tutorial/sso-config01.png)
+    ![A tanúsítvány letöltési hivatkozása](media/civic-platform-tutorial/sso-config01.png)
 
-1. Adja meg az SSO-hez kapcsolódó konfigurációs információkat a következő lépésben:
+1. Adja meg az SSO-val kapcsolatos konfigurációs információkat a következő lépésben:
 
-    ![A tanúsítvány letöltési hivatkozás](media/civic-platform-tutorial/sso-config02.png)
+    ![A tanúsítvány letöltési hivatkozása](media/civic-platform-tutorial/sso-config02.png)
 
-    1. A **ApplicationId** mezőben adja meg az **alkalmazás azonosítójának** értékét, amelyet a Azure Portal másolt.
+    1. A **applicationid** mezőben adja meg az **Alkalmazásazonosító** értékét, amelyet az Azure Portalról másolt.
 
-    1. A **clientSecret** mezőben adja meg a **titkos** értéket, amelyet a Azure Portal másolt.
+    1. Az **ügyféltitkos mezőben** adja meg a **Titkos** értéket, amelyet az Azure Portalról másolt.
 
-    1. A **Könyvtárazonosító** mezőben adja meg a **könyvtár (bérlő) azonosítójának** értékét, amelyet a Azure Portal másolt.
+    1. A **címtárazonosító** mezőbe írja be a **címtár (bérlői) azonosító** értékét, amelyet az Azure Portalról másolt.
 
-    1. Adja meg a idpName. Pl.: `Azure`–.
+    1. Adja meg az idpName értéket. Pl.: `Azure`- .
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
+Ebben a szakaszban egy tesztfelhasználót hoz létre az Azure Portalon B.Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
-1. Válassza ki **új felhasználó** a képernyő tetején.
-1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+1. Az Azure Portal bal oldali ablaktáblájában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd válassza az **Összes felhasználó**lehetőséget.
+1. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
+1. A **Felhasználói** tulajdonságok csoportban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
-   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. A **Felhasználónév** mezőbe írja username@companydomain.extensionbe a mezőt. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet, majd írja le a **Jelszó** mezőben megjelenő értéket.
+   1. Kattintson **a Létrehozás gombra.**
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a polgári platformhoz.
+Ebben a szakaszban lehetővé teszi b.Simon azure egyszeri bejelentkezés t a Polgári platformhoz való hozzáférés biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **polgári platform**elemet.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, majd az **Összes alkalmazás**lehetőséget.
+1. Az alkalmazások listájában válassza a **Civic Platform**lehetőséget.
+1. Az alkalmazás áttekintő lapján keresse meg a **Kezelés szakaszt,** és válassza a **Felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+   ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza **a Felhasználó hozzáadása**lehetőséget, majd a Hozzárendelés **hozzáadása** párbeszédpanelen válassza a Felhasználók **és csoportok** lehetőséget.
 
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+    ![A Felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+1. A **Felhasználók és csoportok** párbeszédpanelen válassza a **B.Simon** elemet a Felhasználók listában, majd kattintson **a** kijelölés gombra a képernyő alján.
+1. Ha az SAML-helyességben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
+1. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
 
-### <a name="create-civic-platform-test-user"></a>Polgári platform tesztelési felhasználó létrehozása
+### <a name="create-civic-platform-test-user"></a>Civic Platform tesztfelhasználó létrehozása
 
-Ebben a szakaszban létrehoz egy B. Simon nevű felhasználót a Civic platformon. Működjön együtt a Civic platform támogatási csapatával, hogy hozzáadja a felhasználókat a [Civic platform ügyfél-támogatási csapatához](mailto:skale@accela.com). Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban hozzon létre egy B.Simon nevű felhasználót a Polgári platformban. Együttműködve civic platform támogatási csapat ával, hogy hozzáadja a felhasználókat a [Civic Platform Ügyfél támogatási csapatához.](mailto:skale@accela.com) Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
-### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
+### <a name="test-sso"></a>SSO tesztelése 
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
 
-Ha a hozzáférési panelen a Civic platform csempére kattint, automatikusan be kell jelentkeznie arra a Civic platformra, amelyhez az SSO-t beállította. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor a Hozzáférési panelen a Polgári platform csempére kattint, automatikusan be kell jelentkeznie arra a polgári platformra, amelyhez beállította az SSO-t. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

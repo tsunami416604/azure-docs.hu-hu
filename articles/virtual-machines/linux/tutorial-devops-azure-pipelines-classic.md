@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – integrált DevOps a IaaS és a Péter Azure-ban
-description: Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be az alkalmazások folyamatos integrációját (CI) és folyamatos üzembe helyezését (CD) az Azure-beli virtuális gépekhez az Azure-folyamatok használatával.
+title: Oktatóanyag – Integrált DevOps az IaaS-hez és a PaaS-hoz az Azure-ban
+description: Ebben az oktatóanyagban megtudhatja, hogyan állíthatja be a folyamatos integrációt (CI) és a folyamatos üzembe helyezést (CD) egy alkalmazás Azure-beli virtuális gépekhez az Azure Pipelines használatával.
 author: ushan
 manager: jpconnock
 tags: azure-devops-pipelines
@@ -13,84 +13,84 @@ ms.date: 1/16/2020
 ms.author: ushan
 ms.custom: devops
 ms.openlocfilehash: 5707a99b329915b35131fe793b0dfabd02348677
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77912528"
 ---
-# <a name="tutorial-integrated-devops-for-iaas-and-paas-on-azure"></a>Oktatóanyag: integrált DevOps a IaaS és a Pásti számára az Azure-ban
+# <a name="tutorial-integrated-devops-for-iaas-and-paas-on-azure"></a>Oktatóanyag: Integrált DevOps az IaaS és a PaaS számára az Azure-ban
 
-Az Azure-ban elérhető teljes körű megoldásokkal a csapatok az alkalmazások életciklusának minden fázisában DevOps eljárásokat hozhatnak létre: tervezés, fejlesztés, szállítás és működés. 
+Az Azure-beli teljes körű megoldásokkal a csapatok devops-eljárásokat valósíthatnak meg az egyes alkalmazáséletciklus-fázisokban: megtervezheti, fejlesztheti, leszállíthatja és működtetheti. 
 
-Az alábbiakban néhány olyan Azure-szolgáltatás található, amely egyszerűbbé teszi a Felhőbeli munkaterheléseket, és kombinálható a bámulatosan hatékony forgatókönyvek lehetővé tételéhez.
-Ezek a technológiák, és az emberekkel és folyamatokkal együtt lehetővé teszik a csapatok számára, hogy folyamatosan értéket adjanak az ügyfeleknek. 
+Az alábbiakban néhány, a felhőalapú számítási feladatok egyszerűsítését célzó Azure-szolgáltatások, és kombinálható, hogy elképesztően hatékony forgatókönyvek.
+Ezek a technológiák emberekkel és folyamatokkal kombinálva lehetővé teszik a csapatok számára, hogy folyamatosan értéket biztosítsanak az ügyfelek számára. 
 
-- Azure: https://portal.azure.com – portál a felhőalapú számítási feladatok létrehozásához. Az egyszerű webalkalmazások és az összetett felhőalapú alkalmazások kezelése és figyelése 
-- Azure DevOps: https://dev.azure.com – tervezze meg az intelligensebb szolgáltatást, hatékonyabban működjön együtt, és hozzon létre gyorsabban egy modern fejlesztői szolgáltatásokkal 
-- Azure Machine Learning Studio: https://ml.azure.com – az adatelőkészítés, a betanítás és a gépi tanulási modellek üzembe helyezése 
+- Azure: https://portal.azure.com – Portál felhőbeli számítási feladatok létrehozásához. Az egyszerű webalkalmazásoktól az összetett felhőalkalmazásokig mindent kezelhet és figyelhet 
+- Azure DevOps: https://dev.azure.com – Tervezzen okosabban, működjön együtt jobban, és szállítson gyorsabban a modern fejlesztői szolgáltatások készletével 
+- Azure Machine Learning-stúdió: https://ml.azure.com - Adatok előkészítése, betanítása és üzembe helyezése gépi tanulási modellek 
  
 
-Az Azure DevOps egy beépített Azure-szolgáltatás, amely a DevOps-folyamat minden egyes részét automatizálja az Azure-erőforrások folyamatos integrálásával és folyamatos szállításával.
-Akár virtuális gépeket, webalkalmazásokat, Kubernetes vagy más erőforrásokat használ, implementálhatja a kódot, a folyamatos integrációt, a folyamatos tesztelést, a folyamatos szállítást és a folyamatos figyelést az Azure és az Azure DevOps használatával.  
+Az Azure DevOps egy beépített Azure-szolgáltatás, amely a DevOps-folyamat minden egyes részét folyamatos integrációval és folyamatos kézbesítéssel automatizálja bármely Azure-erőforrás számára.
+Függetlenül attól, hogy az alkalmazás virtuális gépeket, webalkalmazásokat, Kubernetes-t vagy bármely más erőforrást használ, megvalósíthatja az infrastruktúrát kódként, a folyamatos integrációt, a folyamatos tesztelést, a folyamatos kézbesítést és a folyamatos figyelést az Azure-ral és az Azure DevOps-szal.  
 ![AzDevOps_portalView](media/tutorial-devops-azure-pipelines-classic/azdevops-view.png) 
  
  
-## <a name="iaas---configure-cicd"></a>IaaS – CI/CD konfigurálása 
-Az Azure-folyamatok teljes körűen Kiemelt CI/CD Automation-eszközöket biztosítanak a virtuális gépek üzembe helyezéséhez. Az Azure-beli virtuális gépek folyamatos kézbesítési folyamatát közvetlenül a Azure Portal lehet konfigurálni. Ez a dokumentum a Azure Portal-ból származó többszámítógépes telepítésekhez tartozó CI/CD-folyamatok beállításához szükséges lépéseket tartalmazza. A CI/CD konfigurálása Virtual Machineson.
+## <a name="iaas---configure-cicd"></a>IaaS - CI/CD konfigurálása 
+Az Azure Pipelines a CI/CD-automatizálási eszközök teljes körű, teljes funkcionalitású készletét biztosítja a virtuális gépekre történő telepítésekhez. Az Azure-beli virtuális gépek folyamatos kézbesítési folyamatát közvetlenül az Azure Portalról konfigurálhatja. Ez a dokumentum az Azure Portaltöbbgépes telepítések CI/CD-folyamatának beállításához kapcsolódó lépéseket tartalmazza. Ci/CD konfigurálása virtuális gépeken.
 
-A virtuális gépeket célként lehet hozzáadni egy [központi telepítési csoporthoz](https://docs.microsoft.com/azure/devops/pipelines/release/deployment-groups) , és a többszámítógépes működésre kiterjedő frissítésekre is használható. A központi telepítési csoportok üzembe helyezési előzményei a virtuális gép és a folyamat közötti nyomon követést biztosítanak, majd a véglegesíteni. 
+Virtuális gépek lehet hozzáadni a központi [telepítési csoport,](https://docs.microsoft.com/azure/devops/pipelines/release/deployment-groups) és célzott többgépes működés közbeni frissítéseket. A központi telepítési csoportokon belüli üzembe helyezési előzmények et követő nézetek nyomon követhetőséget biztosítanak a virtuális gépről a folyamatra, majd a véglegesítésre. 
  
-**Működés közbeni frissítések**: a működés közbeni központi telepítés lecseréli az alkalmazás korábbi verziójának példányait az alkalmazás új verziójára az egyes iterációk rögzített készletén. Nézzük meg, hogyan konfigurálhatja a működés közbeni frissítést a virtuális gépekre.  
-A folyamatos kézbesítési lehetőség használatával a "**virtuális gépekre**" is konfigurálhatja a működés közbeni frissítéseket a Azure Portalon belül. 
+**Működés közbeni frissítések**: A működés közbeni üzembe helyezés az alkalmazás előző verziójának példányait az alkalmazás új verziójának példányaira cseréli a gépek (gördülő készlet) rögzített készletén minden egyes ismétlésben. Vegyük végig, hogyan konfigurálhatja a virtuális gépek működés közbeni frissítését.  
+Az Azure Portalon belül folyamatos kézbesítési lehetőség használatával konfigurálhatja a "**virtuális gépek**" működés közbeni frissítéseit. 
 
-Itt találja a lépésenkénti útmutatót. 
-1. Jelentkezzen be a Azure Portalba, és navigáljon a virtuális géphez. 
-2. A virtuális gép bal oldali ablaktábláján navigáljon a **folyamatos kézbesítés** menüjére. Ezután kattintson a **configure (Konfigurálás**) elemre. 
+Itt van a lépésről-lépésre forgatókönyv. 
+1. Jelentkezzen be az Azure Portalon, és keresse meg a virtuális gépet. 
+2. A virtuális gép bal oldali ablaktáblájában keresse meg a **folyamatos kézbesítés** menüt. Ezután kattintson a **Configure gombra.** 
    ![AzDevOps_configure](media/tutorial-devops-azure-pipelines-classic/azdevops-configure.png) 
-3. A konfigurációs panelen kattintson az "Azure DevOps Organization" elemre egy meglévő fiók kiválasztásához, vagy hozzon létre egyet. Ezután válassza ki azt a projektet, amelynek a folyamatát konfigurálni szeretné.  
+3. A konfigurációs panelen kattintson az "Azure DevOps Organization" elemre egy meglévő fiók kiválasztásához vagy hozzon létre egyet. Ezután válassza ki azt a projektet, amely alatt konfigurálni szeretné a folyamatot.  
    ![AzDevOps_project](media/tutorial-devops-azure-pipelines-classic/azdevops-project.png) 
-4. A központi telepítési csoport a központi telepítési célként szolgáló gépek olyan logikai készlete, amely a fizikai környezeteket képviseli; ilyen például a "dev", a "test", a "ellenőrzését" és a "Production". Létrehozhat egy új központi telepítési csoportot, vagy kijelölhet egy meglévő központi telepítési csoportot is. Igény szerint címkézheti a gépet a szerepkörrel. Például: "web", "db" stb.  
-5. A folyamatos kézbesítési folyamat konfigurálásához kattintson az **OK gombra** a párbeszédpanelen. 
-6. Ha elkészült, egy folyamatos kézbesítési folyamattal fog rendelkezni, amely a virtuális gépre való üzembe helyezésre van konfigurálva.  
+4. A központi telepítési csoport a fizikai környezeteket képviselő központi telepítési célgépek logikai készlete; például "Dev", "Test", "UAT" és "Production". Létrehozhat egy új központi telepítési csoportot, vagy kiválaszthat egy meglévő telepítési csoportot. A gép a szerepkörrel is megcímkézhető. Például "web", "db" stb.  
+5. Kattintson az **OK** gombra a párbeszéden a folyamatos kézbesítési folyamat konfigurálásához. 
+6. Miután elkészült, lesz egy folyamatos kézbesítési folyamat konfigurálva a virtuális gépre való üzembe helyezéshez.  
    ![AzDevOps_pipeline](media/tutorial-devops-azure-pipelines-classic/azdevops-pipeline.png)
-7. Látni fogja, hogy a virtuális gép üzembe helyezése folyamatban van. A hivatkozásra kattintva navigáljon a folyamathoz. Kattintson a **Release-1** elemre az üzemelő példány megtekintéséhez. Vagy a **Szerkesztés** lehetőségre kattintva módosíthatja a kiadási folyamat definícióját. 
-8. Ha több virtuális géppel is konfigurálható, ismételje meg a 2-5. lépést a központi telepítési csoportba felvenni kívánt egyéb virtuális gépek esetében. 
-9. Ha elkészült, kattintson a folyamat-definícióra, navigáljon az Azure DevOps-szervezethez, és kattintson a kiadási folyamat **szerkesztése** lehetőségre. 
+7. Látni fogja, hogy a virtuális gép üzembe helyezése folyamatban van. A kapcsolatra kattintva navigálhat a folyamathoz. Kattintson **a Release-1** gombra a központi telepítés megtekintéséhez. Vagy a Szerkesztés **gombra** kattintva módosíthatja a kiadási folyamat definícióját. 
+8. Ha több virtuális gépet kell konfigurálnia, ismételje meg a 2-5. 
+9. Miután elkészült, kattintson a folyamat definíciójára, keresse meg az Azure DevOps-szervezetet, és kattintson a Kiadási folyamat **szerkesztése** elemre. 
    ![AzDevOps_edit_pipeline](media/tutorial-devops-azure-pipelines-classic/azdevops-edit-pipeline.png)
-10. Kattintson a hivatkozás **1 feladat, 1 feladat** a **fejlesztői** fázisban elemre. Kattintson a **telepítés** fázisra.  
+10. Kattintson a linkre **1 feladat, 1 feladat** **fejlesztési** szakaszban. Kattintson a **Telepítés** fázisra.  
    ![AzDevOps_deploymentGroup](media/tutorial-devops-azure-pipelines-classic/azdevops-deployment-group.png)
-11. A jobb oldali konfigurációs ablaktáblában láthatja, hogy a folyamat alapértelmezés szerint úgy van konfigurálva, hogy párhuzamosan végezze el a működés közbeni frissítést az összes cél számára. A központi telepítéseket beállíthatja úgy, hogy egy időben vagy százalékban történjen a csúszka használatával.  
+11. A jobb oldali konfigurációs ablaktáblán láthatja, hogy alapértelmezés szerint a folyamat úgy van beállítva, hogy párhuzamosan végezze el az összes tároló folyamatos frissítését. Beállíthatja, hogy a központi telepítések történni akár egy olyan időpontban, vagy a százalékos érték a csúszka használatával.  
   
   
-A **Kanári** csökkenti a kockázatot, ha lassan kivezeti a változást a felhasználók kis részhalmazára. Az új verzió megbízhatóságának növelése érdekében megkezdheti az infrastruktúra további kiszolgálóinak felszabadítását, és további felhasználókat is átirányíthat. A "**virtuális gépek**" számára a folyamatos kézbesítés lehetőség használatával konfigurálhatja Azure Portal a Kanári-környezeteket. Itt találja a lépésenkénti útmutatót. 
-1. Jelentkezzen be a Azure Portalba, és navigáljon egy virtuális géphez 
-2. Az előző szakaszban 2-5-as lépések végrehajtásával több virtuális gépet adhat hozzá a központi telepítési csoporthoz. 
-3. Adjon hozzá egy egyéni címkét a Kanári-telepítések részét képező virtuális gépekhez. Például: "Canary".
-4. Ha a folyamat konfigurálva van a virtuális gépekhez, kattintson a folyamatra, indítsa el az Azure DevOps-szervezetet, **szerkessze** a folyamatot, és navigáljon a **fejlesztői** szakaszhoz. Címke hozzáadása a "Canary" szűrőhöz. 
-5. Adjon hozzá egy másik üzembe helyezési csoport fázist, konfigurálja a fázist a címkékkel, hogy megcélozza a többi virtuális gépet a központi telepítési csoportban.  
-6. Ha szeretné, konfiguráljon egy manuális ellenőrzési lépést, amely előléptetheti vagy elutasíthatja a Kanári-környezetek központi telepítését. 
+**Kanári** csökkenti a kockázatot, lassan gördülő ki a változás egy kis részét a felhasználók. Ahogy egyre több bizalmat az új verzió, megkezdheti a kiadása, hogy több kiszolgálóaz infrastruktúra és útválasztás több felhasználó hozzá. A folyamatos kézbesítési lehetőség használatával konfigurálhatja a kanári-üzembe helyezéseket a "**virtuális gépekre"** az Azure Portalhasználatával. Itt van a lépésről-lépésre forgatókönyv. 
+1. Jelentkezzen be az Azure Portalra, és navigáljon egy virtuális gépre 
+2. Kövesse az előző szakasz 2-5. 
+3. Egyéni címke hozzáadása a kanári-telepítésekhez kapcsolódó virtuális gépekhez. Például a "kanári".
+4. Miután a folyamat konfigurálva van a virtuális gépekhez, kattintson a folyamatra, indítsa el az Azure DevOps-szervezetet, **szerkeszti** a folyamatot, és keresse meg a **fejlesztési** szakaszt. Add címke a szűrő "kanári". 
+5. Adjon hozzá egy másik központi telepítési csoport fázist, konfigurálja a fázist a címkékkel a központi telepítési csoportban fennmaradó virtuális gépek célzásához.  
+6. Szükség esetén konfiguráljon egy manuális ellenőrzési lépést, amely előléptetheti/elutasíthatja a kanári-telepítéseket. 
    ![AzDevOps_Canary](media/tutorial-devops-azure-pipelines-classic/azdevops-canary-deploy.png)
 
-A **Blue-Green** a központi telepítési állásidőt az azonos készenléti környezettel csökkenti. A környezetek egyike sem él. Az új kiadásra való felkészülés során az utolsó tesztelési fázist a zöld környezetben hajthatja végre. Ha a szoftver a zöld környezetben működik, állítsa át a forgalmat úgy, hogy minden bejövő kérelem a zöld környezetre lépjen – a kék környezet már tétlen.
-A folyamatos kézbesítés lehetőséggel a Azure Portal a "**virtuális gépekre**" is beállíthatja a kék-zöld környezeteket. 
+**A Blue-Green** csökkenti az üzembe helyezési állásidőt az azonos készenléti környezettel. Bármikor az egyik környezet él. Ahogy felkészülsz egy új kiadásra, a tesztelés utolsó fázisát a zöld környezetben kell elvégezned. Miután a szoftver működik a zöld környezetben, kapcsolja be a forgalmat úgy, hogy az összes bejövő kérelmek et a zöld környezet - a kék környezet most tétlen.
+Kék-zöld központi telepítések konfigurálása a "**virtuális gépek**" az Azure Portalon a folyamatos kézbesítési lehetőség használatával. 
 
-Itt találja a lépésenkénti útmutatót. 
+Itt van a lépésről-lépésre forgatókönyv. 
 
-1. Jelentkezzen be a Azure Portalba, és navigáljon egy virtuális géphez 
-2. Több virtuális gép a központi telepítési csoportba való felvételéhez kövesse a **működés közbeni frissítések** szakasz 2-5. lépéseit. Adjon hozzá egyéni címkét a kék-zöld környezetek részét képező virtuális gépekhez. Például a "kék" vagy a "zöld" a készenléti szerepkörhöz tartozó virtuális gépek esetében. 
-3. Ha a folyamat konfigurálva van a virtuális gépekhez, kattintson a folyamatra, indítsa el az Azure DevOps-szervezetet, **szerkessze** a folyamatot, és navigáljon a **fejlesztői** szakaszhoz. Címke hozzáadása a "zöld" szűrőhöz. 
-4. Adjon hozzá egy ügynök nélküli fázist, állítsa be a fázist kézi ellenőrzési lépéssel, valamint egy meghívás – REST API-lépést a címkék cseréje érdekében. 
+1. Jelentkezzen be az Azure Portalra, és keresse meg a virtuális gépet 
+2. Kövesse a 2-5. **Rolling updates** Egyéni címke hozzáadása a kék-zöld központi telepítések részét tartalmazó virtuális gépekhez. Például a "kék" vagy "zöld" a virtuális gépek, amelyek a készenléti szerepkör. 
+3. Miután a folyamat konfigurálva van a virtuális gépekhez, kattintson a folyamatra, indítsa el az Azure DevOps-szervezetet, a folyamat **szerkesztése,** keresse meg a **fejlesztési** szakaszt. Add címke a szűrő "zöld". 
+4. Adjon hozzá egy ügynök nélküli fázist, konfigurálja a fázist manuális ellenőrzési lépéssel és egy invoke-REST api-lépéssel a címkék felcseréléséhez. 
    ![AzDevOps_BlueGreen](media/tutorial-devops-azure-pipelines-classic/azdevops-blue-green-deploy.png)
  
  
 ## <a name="azure-devops-project"></a>Azure DevOps-projekt 
-Az Azure-t minden eddiginél könnyebben kezdheti meg.
+Az Azure-ral minden eddiginél egyszerűbben ismerkedhet meg.
  
-A DevOps Projects az alkalmazás futtatását bármely Azure-szolgáltatásban, mindössze három lépésben: válasszon egy alkalmazást, egy futtatókörnyezetet és egy Azure-szolgáltatást.
+A DevOps-projektek segítségével mindössze három lépésben kezdheti meg az alkalmazás futtatását bármely Azure-szolgáltatásban: válasszon ki egy alkalmazásnyelvet, egy futtatóidőt és egy Azure-szolgáltatást.
  
-[További információk](https://azure.microsoft.com/features/devops-projects/ ).
+[További információ](https://azure.microsoft.com/features/devops-projects/ ).
  
 ## <a name="additional-resources"></a>További források 
-- [Üzembe helyezés az Azure Virtual Machines DevOps Project használatával](https://docs.microsoft.com/azure/devops-project/azure-devops-project-vms)
-- [Az alkalmazás folyamatos üzembe helyezésének megvalósítása egy Azure virtuálisgép-méretezési csoportba](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)
+- [Üzembe helyezés az Azure virtuális gépekre a DevOps-projekt használatával](https://docs.microsoft.com/azure/devops-project/azure-devops-project-vms)
+- [Az alkalmazás folyamatos üzembe helyezésének megvalósítása egy Azure virtuálisgép-méretezési készletbe](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)

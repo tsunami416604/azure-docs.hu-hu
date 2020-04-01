@@ -1,30 +1,30 @@
 ---
-title: Oktatóanyag – Application Gateway bejövő adatkezelő létrehozása az Azure Kubernetes szolgáltatásban
-description: Ebben az oktatóanyagban egy Kubernetes-fürtöt hoz létre az Azure Kubernetes Application Gateway szolgáltatással a bejövő adatforgalom-vezérlővel
-keywords: Azure devops Terraform Application Gateway – bejövő forgalom (ak) kubernetes
+title: Oktatóanyag – Hozzon létre egy alkalmazásátjáró bejövő forgalom vezérlőjét az Azure Kubernetes szolgáltatásban
+description: Ebben az oktatóanyagban hozzon létre egy Kubernetes-fürtöt az Azure Kubernetes szolgáltatással az Application Gateway-rel bejövő forgalom vezérlőjeként
+keywords: azure devops terraform alkalmazásátjáró be- és aks kubernetes
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.openlocfilehash: 6b48d0acb654f0b0643c0754e53f6bc6ea76bb45
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78945321"
 ---
-# <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>Oktatóanyag: Application Gateway bejövő adatkezelő létrehozása az Azure Kubernetes szolgáltatásban
+# <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>Oktatóanyag: Hozzon létre egy application gateway bejövő forgalom vezérlőt az Azure Kubernetes szolgáltatásban
 
-Az [Azure Kubernetes Service (ak)](/azure/aks/) kezeli az üzemeltetett Kubernetes-környezetet. Az AK használatával gyorsan és egyszerűen helyezhet üzembe és kezelhet tároló alkalmazásokat a tároló-előkészítési szakértelem nélkül. Az AK azt is kiküszöböli, hogy az alkalmazások offline állapotba helyezése működési és karbantartási feladatok esetén is megtörténjen. Ezek a feladatok – többek között a kiépítéssel, a verziófrissítéssel és az erőforrások méretezésével – igény szerint is elvégezhetők.
+[Az Azure Kubernetes-szolgáltatás (AKS)](/azure/aks/) kezeli a üzemeltetett Kubernetes-környezetet. Az AKS gyors és egyszerű üzembe helyezését és kezelését teszi a tárolóvezénylési szakértelem nélkül. Az AKS kiküszöböli az alkalmazások üzembe helyezése az üzemeltetési és karbantartási feladatok hozadékát is. Az AKS használatával ezek a feladatok – beleértve az erőforrások kiépítését, frissítését és méretezését – igény szerint elvégezhetők.
 
-A bejövő adatkezelők különböző funkciókat biztosítanak a Kubernetes-szolgáltatásokhoz. Ezek a szolgáltatások közé tartozik a fordított proxy, a konfigurálható forgalom útválasztása és a TLS-lezárás. A Kubernetes bejövő erőforrásai az egyes Kubernetes-szolgáltatások bejövő szabályainak konfigurálására szolgálnak. A bejövő és a bejövő forgalomra vonatkozó szabályok használatával egyetlen IP-cím is átirányíthatja a forgalmat több szolgáltatásba egy Kubernetes-fürtben. Ezt a funkciót az Azure [Application Gateway](/azure/Application-Gateway/)biztosítja, így ideális bejövő Kubernetes az Azure-ban. 
+A be- éselőszoba-vezérlő különböző funkciókat biztosít a Kubernetes-szolgáltatásokhoz. Ezek közé tartozik a fordított proxy, a konfigurálható forgalomútválasztás és a TLS-végződtetés. Kubernetes inress erőforrások az egyes Kubernetes-szolgáltatások be- és hangrendszerszabályainak konfigurálására szolgálnak. Egy bejövő vezérlő és a bejövő forgalom szabályok használatával egyetlen IP-cím irányíthatja a forgalmat egy Kubernetes-fürt több szolgáltatásához. Mindezt a funkciót az Azure [Application Gateway](/azure/Application-Gateway/)biztosítja, így ideális ingress vezérlő az Azure-beli Kubernetes számára. 
 
-Ebből az oktatóanyagból megtudhatja, hogyan hajthatja végre a következő feladatokat:
+Ebben az oktatóanyagban megtudhatja, hogyan kell elvégezni a következő feladatokat:
 
 > [!div class="checklist"]
-> * Hozzon létre egy [Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes) -fürtöt az AK-val Application Gateway bejövő vezérlőként.
-> * A HCL (HashiCorp Language) használatával Definiáljon egy Kubernetes-fürtöt.
-> * Application Gateway erőforrás létrehozásához használja a Terraform.
-> * Hozzon létre egy Kubernetes-fürtöt a Terraform és az AK használatával.
-> * A Kubernetes-fürt rendelkezésre állásának teszteléséhez használja a kubectl eszközt.
+> * Hozzon létre egy [Kubernetes-fürtöt](https://www.redhat.com/en/topics/containers/what-is-kubernetes) az AKS-sel az Application Gateway-rel, mint a be- és élesztiirányító használatával.
+> * A HCL (HashiCorp language) segítségével definiáljon egy Kubernetes-fürtöt.
+> * A Terraform segítségével hozzon létre Alkalmazásátjáró-erőforrást.
+> * A Terraform és az AKS segítségével hozzon létre egy Kubernetes-fürtöt.
+> * A kubectl eszközzel tesztelje a Kubernetes-fürt rendelkezésre állását.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -32,11 +32,11 @@ Ebből az oktatóanyagból megtudhatja, hogyan hajthatja végre a következő fe
 
 - **A Terraform konfigurálása**: Kövesse a [Terraform telepítését és az Azure-hozzáférés konfigurálását ismertető cikkben](terraform-install-configure.md) található utasításokat
 
-- **Azure-erőforráscsoport**: Ha nem rendelkezik a bemutatóhoz használni kívánt Azure-erőforráscsoporthoz, [hozzon létre egy Azure-erőforráscsoportot](/azure/azure-resource-manager/manage-resource-groups-portal#create-resource-groups). Jegyezze fel az erőforráscsoport nevét és helyét, mivel ezek az értékek a bemutatóban szerepelnek.
+- **Azure-erőforráscsoport:** Ha nem rendelkezik azure-erőforráscsoporttal a bemutatóhoz, [hozzon létre egy Azure-erőforráscsoportot.](/azure/azure-resource-manager/manage-resource-groups-portal#create-resource-groups) Vegye figyelembe az erőforráscsoport nevét és helyét, mivel ezek az értékek a bemutatóban használatosak.
 
-- **Azure-beli szolgáltatásnév**: Kövesse az **Azure-beli szolgáltatásnév létrehozása az Azure CLI-vel** című cikk [a szolgáltatásnév létrehozását](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) ismertető szakaszában foglaltakat. Jegyezze fel a appId, a displayName és a jelszó értékeit.
+- **Azure-beli szolgáltatásnév**: Kövesse az [Azure-beli szolgáltatásnév létrehozása az Azure CLI-vel](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) című cikk **a szolgáltatásnév létrehozását** ismertető szakaszában foglaltakat. Vegye figyelembe az appId, displayName és jelszó értékeit.
 
-- Adja meg **az egyszerű szolgáltatásnév objektum azonosítóját**: futtassa a következő parancsot a Cloud Shellban: `az ad sp list --display-name <displayName>`
+- **Szerezze be az egyszerű szolgáltatásobjektum-azonosítót:** Futtassa a következő parancsot a Cloud Shell ben:`az ad sp list --display-name <displayName>`
 
 ## <a name="create-the-directory-structure"></a>A könyvtárstruktúra létrehozása
 
@@ -44,7 +44,7 @@ Az első lépés a könyvtár létrehozása, amely a feladathoz tartozó Terrafo
 
 1. Keresse fel az [Azure Portalt](https://portal.azure.com).
 
-1. Nyissa meg az [Azure Cloud Shellt](/azure/cloud-shell/overview).
+1. Nyissa meg [az Azure Cloud Shell](/azure/cloud-shell/overview)t.
 
 1. Lépjen be a `clouddrive` könyvtárba.
 
@@ -89,11 +89,11 @@ Hozza létre az Azure-szolgáltatót deklaráló Terraform konfigurációs fájl
     }
     ```
 
-1. Mentse a fájlt ( **&lt;ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;CTRL > Q**).
+1. Mentse a fájlt (**&lt;Ctrl>S),** és lépjen ki a szerkesztőből (**&lt;Ctrl>Q**).
 
-## <a name="define-input-variables"></a>Bemeneti változók definiálása
+## <a name="define-input-variables"></a>Bemeneti változók meghatározása
 
-Hozza létre a Terraform konfigurációs fájlját, amely felsorolja a telepítéshez szükséges összes változót.
+Hozza létre azt a Terraform konfigurációs fájlt, amely felsorolja a központi telepítéshez szükséges összes változót.
 
 1. Hozzon létre egy `variables.tf` nevű fájlt a Cloud Shellben.
 
@@ -232,10 +232,10 @@ Hozza létre a Terraform konfigurációs fájlját, amely felsorolja a telepít�
     }
     ```
 
-1. Mentse a fájlt ( **&lt;ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;CTRL > Q**).
+1. Mentse a fájlt (**&lt;Ctrl>S),** és lépjen ki a szerkesztőből (**&lt;Ctrl>Q**).
 
-## <a name="define-the-resources"></a>Erőforrások definiálása 
-Hozzon létre egy Terraform-konfigurációs fájlt, amely létrehozza az összes erőforrást. 
+## <a name="define-the-resources"></a>Az erőforrások meghatározása 
+Hozzon létre terraform konfigurációs fájlt, amely létrehozza az összes erőforrást. 
 
 1. Hozzon létre egy `resources.tf` nevű fájlt a Cloud Shellben.
 
@@ -243,7 +243,7 @@ Hozzon létre egy Terraform-konfigurációs fájlt, amely létrehozza az összes
     code resources.tf
     ```
 
-1. Illessze be a következő kódrészletet egy helyi blokk létrehozásához az újból felhasználható számított változókhoz:
+1. Illessze be a következő kódblokkot, hogy helyi blokkot hozzon létre a számított változók számára az újrafelhasználáshoz:
 
     ```hcl
     # # Locals block for hardcoded names. 
@@ -258,7 +258,7 @@ Hozzon létre egy Terraform-konfigurációs fájlt, amely létrehozza az összes
     }
     ```
 
-1. Illessze be a következő kódrészletet egy adatforrásnak az erőforráscsoporthoz való létrehozásához, új felhasználói identitás:
+1. Illessze be a következő kódblokkot az új felhasználói identitás adatforrásának létrehozásához:
 
     ```hcl
     data "azurerm_resource_group" "rg" {
@@ -276,7 +276,7 @@ Hozzon létre egy Terraform-konfigurációs fájlt, amely létrehozza az összes
     }
     ```
 
-1. Illessze be a következő kódrészletet az alapszintű hálózati erőforrások létrehozásához:
+1. Illessze be a következő kódblokkot az alaphálózati erőforrások létrehozásához:
 
     ```hcl
     resource "azurerm_virtual_network" "test" {
@@ -322,7 +322,7 @@ Hozzon létre egy Terraform-konfigurációs fájlt, amely létrehozza az összes
     }
     ```
 
-1. Illessze be a következő kódrészletet Application Gateway erőforrás létrehozásához:
+1. Illessze be a következő kódblokkot az Application Gateway erőforrás létrehozásához:
 
     ```hcl
     resource "azurerm_application_gateway" "network" {
@@ -389,7 +389,7 @@ Hozzon létre egy Terraform-konfigurációs fájlt, amely létrehozza az összes
     }
     ```
 
-1. A szerepkör-hozzárendelések létrehozásához illessze be a következő kódrészletet:
+1. A szerepkör-hozzárendelések létrehozásához illessze be a következő kódblokkot:
 
     ```hcl
     resource "azurerm_role_assignment" "ra1" {
@@ -422,7 +422,7 @@ Hozzon létre egy Terraform-konfigurációs fájlt, amely létrehozza az összes
     }
     ```
 
-1. Illessze be a következő kódrészletet a Kubernetes-fürt létrehozásához:
+1. Illessze be a következő kódblokkot a Kubernetes-fürt létrehozásához:
 
     ```hcl
     resource "azurerm_kubernetes_cluster" "k8s" {
@@ -472,17 +472,17 @@ Hozzon létre egy Terraform-konfigurációs fájlt, amely létrehozza az összes
 
     ```
 
-1. Mentse a fájlt ( **&lt;ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;CTRL > Q**).
+1. Mentse a fájlt (**&lt;Ctrl>S),** és lépjen ki a szerkesztőből (**&lt;Ctrl>Q**).
 
-Az ebben a szakaszban bemutatott kód a fürt, a hely és a resource_group_name nevét állítja be. A `dns_prefix` érték – a fürthöz való hozzáféréshez használt teljes tartománynév (FQDN) részét képezi.
+Az ebben a szakaszban bemutatott kód beállítja a fürt nevét, helyét és a resource_group_name. A `dns_prefix` fürt eléréséhez használt teljesen minősített tartománynév (FQDN) részét képező érték van beállítva.
 
-A `linux_profile` rekord lehetővé teszi, hogy konfigurálja azokat a beállításokat, amelyek engedélyezik az SSH-val való bejelentkezést a munkavégző csomópontokra.
+A `linux_profile` rekord lehetővé teszi, hogy konfigurálja azokat a beállításokat, amelyek lehetővé teszik a munkavégző csomópontokba való bejelentkezést az SSH használatával.
 
-Az AKS-sel csak a munkavégző csomópontokért kell fizetnie. A `agent_pool_profile` rekord a munkavégző csomópontok adatait konfigurálja. A `agent_pool_profile record` tartalmazza a létrehozandó munkavégző csomópontok számát és a feldolgozó csomópontok típusát. Ha a későbbiekben a fürt vertikális felskálázását vagy leskálázását szeretné végezni, módosítsa a rekord `count` értékét.
+Az AKS-sel csak a munkavégző csomópontokért kell fizetnie. A `agent_pool_profile` rekord konfigurálja ezeknek a munkavégző csomópontoknak a részleteit. A `agent_pool_profile record` tartalmazza a létrehozandó munkavégző csomópontok számát és a munkavégző csomópontok típusát. Ha a jövőben felkell skáláznia vagy lefelé kell `count` skáláznia a fürtöt, módosítsa a rekord értékét.
 
 ## <a name="create-a-terraform-output-file"></a>Terraform kimeneti fájl létrehozása
 
-A [Terraform kimenetei](https://www.terraform.io/docs/configuration/outputs.html) lehetővé teszik a felhasználó számára kiemelt értékek meghatározását, amikor a Terraform alkalmazza a tervet, és a `terraform output` parancs használatával kérdezhető le. Ebben a szakaszban létrehozza a kimeneti fájlt, amellyel hozzáférhet a fürthöz a [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) használatával.
+[A Terraform kimenetek](https://www.terraform.io/docs/configuration/outputs.html) lehetővé teszik, hogy olyan értékeket határozzon meg, amelyek ki `terraform output` vannak emelve a felhasználó számára, amikor a Terraform tervet alkalmaz, és a parancs segítségével lekérdezhető. Ebben a szakaszban létrehozza a kimeneti fájlt, amellyel hozzáférhet a fürthöz a [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) használatával.
 
 1. Hozzon létre egy `output.tf` nevű fájlt a Cloud Shellben.
 
@@ -530,27 +530,27 @@ A [Terraform kimenetei](https://www.terraform.io/docs/configuration/outputs.html
     }
     ```
 
-1. Mentse a fájlt ( **&lt;ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;CTRL > Q**).
+1. Mentse a fájlt (**&lt;Ctrl>S),** és lépjen ki a szerkesztőből (**&lt;Ctrl>Q**).
 
-## <a name="configure-azure-storage-to-store-terraform-state"></a>Az Azure Storage konfigurálása a Terraform állapotának tárolásához
+## <a name="configure-azure-storage-to-store-terraform-state"></a>Az Azure storage konfigurálása a Terraform állapotának tárolására
 
-A Terraform helyileg követi nyomon az állapotot a `terraform.tfstate` fájlon keresztül. Ez a minta jól működik egy egyszemélyes környezetben. A többszemélyesebb környezetekben azonban a kiszolgálón az [Azure Storage](/azure/storage/)használatával kell nyomon követnie az állapotot. Ebben a szakaszban megtudhatja, hogyan kérheti le a szükséges Storage-fiók adatait, és hogyan hozhat létre egy tárolót. Ekkor a rendszer a tárolóban tárolja a Terraform állapotinformációkat.
+A Terraform helyileg követi nyomon az állapotot a `terraform.tfstate` fájlon keresztül. Ez a minta jól működik egy egyszemélyes környezetben. Azonban egy praktikusabb többszemélyes környezetben, nyomon kell követnie az állapot ot a kiszolgálón az [Azure storage](/azure/storage/)használatával. Ebben a szakaszban megtudhatja, hogy a szükséges tárfiók adatait, és hozzon létre egy tárolótárolót. A Terraform állapotadatok ezután ebben a tárolóban tárolódnak.
 
-1. A Azure Portal az Azure- **szolgáltatások**területen válassza a **Storage-fiókok**lehetőséget. (Ha a **Storage-fiókok** beállítás nem látható a főoldalon, válassza a **További szolgáltatások** elemet, majd keresse meg és jelölje ki.)
+1. Az Azure Portalon az **Azure-szolgáltatások**csoportban válassza **a Storage-fiókok**lehetőséget. (Ha a **Tárfiókok** beállítás nem látható a főoldalon, válassza a **További szolgáltatások** lehetőséget, majd keresse meg és jelölje ki.)
 
-1. A **Storage-fiókok** lapon válassza ki annak a Storage-fióknak a nevét, amelybe a Terraform az állapotot tárolni szeretné. Használhatja például azt a tárfiókot is, amely a Cloud Shell első megnyitásakor jött létre.  A Cloud Shell által létrehozott tárfiók neve általában `cs` értékkel kezdődik, amelyet számok és betűk véletlenszerű sorozata követ. 
+1. A **Storage-fiókok** lapon válassza ki annak a tárfióknak a nevét, amelyben a Terraform az állapotot tárolja. Használhatja például azt a tárfiókot is, amely a Cloud Shell első megnyitásakor jött létre.  A Cloud Shell által létrehozott tárfiók neve általában `cs` értékkel kezdődik, amelyet számok és betűk véletlenszerű sorozata követ. 
 
-    Jegyezze fel a kiválasztott Storage-fiókot, mert később szüksége lesz rá.
+    Vegye figyelembe a kiválasztott tárfiókot, ahogy később szüksége van rá.
 
 1. A Tárfiók oldalon válassza a **Hozzáférési kulcsok** elemet.
 
     ![Tárfiók menüje](./media/terraform-k8s-cluster-appgw-with-tf-aks/storage-account.png)
 
-1. Jegyezze fel a **key1** **kulcs** értékét. (A kulcs jobb oldalán található ikonra kattintva a vágólapra másolhatja az értéket.)
+1. Jegyezze fel a **key1** **key** értékét. (A kulcs jobb oldalán található ikonra kattintva a vágólapra másolhatja az értéket.)
 
     ![Tárfiók hozzáférési kulcsa](./media/terraform-k8s-cluster-appgw-with-tf-aks/storage-account-access-key.png)
 
-1. A Cloud Shell-ban hozzon létre egy tárolót az Azure Storage-fiókban. Cserélje le a helyőrzőket az Azure Storage-fiókja megfelelő értékeire.
+1. A Cloud Shellben hozzon létre egy tárolót az Azure storage-fiókjában. Cserélje le a helyőrzőket az Azure storage-fiókjához megfelelő értékekre.
 
     ```azurecli
     az storage container create -n tfstate --account-name <YourAzureStorageAccountName> --account-key <YourAzureStorageAccountKey>
@@ -559,23 +559,23 @@ A Terraform helyileg követi nyomon az állapotot a `terraform.tfstate` fájlon 
 ## <a name="create-the-kubernetes-cluster"></a>Kubernetes-fürt létrehozása
 Ez a szakasz ismerteti, hogyan használható a `terraform init` parancs az előző szakaszokban létrehozott konfigurációs fájlokat meghatározó erőforrások létrehozásához.
 
-1. A Cloud Shell-ben inicializálja a Terraform. Cserélje le a helyőrzőket az Azure Storage-fiókja megfelelő értékeire.
+1. A Cloud Shell alkalmazásban inicializálja a Terraform ot. Cserélje le a helyőrzőket az Azure storage-fiókjához megfelelő értékekre.
 
     ```bash
     terraform init -backend-config="storage_account_name=<YourAzureStorageAccountName>" -backend-config="container_name=tfstate" -backend-config="access_key=<YourStorageAccountAccessKey>" -backend-config="key=codelab.microsoft.tfstate" 
     ```
   
-    A `terraform init` parancs a háttérrendszer és a szolgáltató beépülő modul inicializálásának sikerességét jeleníti meg:
+    A `terraform init` parancs a háttér- és szolgáltatóbeépülő modul inicializálásának sikeresét jeleníti meg:
 
     ![A „terraform init” eredményeit mutató példa](./media/terraform-k8s-cluster-appgw-with-tf-aks/terraform-init-complete.png)
 
-1. Cloud Shell hozzon létre egy `terraform.tfvars`nevű fájlt:
+1. A Cloud Shell ben `terraform.tfvars`hozzon létre egy fájl neve:
 
     ```bash
     code terraform.tfvars
     ```
 
-1. Illessze be a korábban létrehozott következő változókat a szerkesztőbe. A környezet helyének értékének beszerzéséhez használja a `az account list-locations`.
+1. Illessze be a korábban létrehozott alábbi változókat a szerkesztőbe. A környezet helyértékének lekérnie, használja a használatát. `az account list-locations`
 
     ```hcl
     resource_group_name = "<Name of the Resource Group already created>"
@@ -590,7 +590,7 @@ Ez a szakasz ismerteti, hogyan használható a `terraform init` parancs az előz
         
     ```
 
-1. Mentse a fájlt ( **&lt;ctrl > S**), és lépjen ki a szerkesztőből ( **&lt;CTRL > Q**).
+1. Mentse a fájlt (**&lt;Ctrl>S),** és lépjen ki a szerkesztőből (**&lt;Ctrl>Q**).
 
 1. Futtassa a `terraform plan` parancsot az infrastruktúra elemeit meghatározó Terraform-terv létrehozásához. 
 
@@ -602,7 +602,7 @@ Ez a szakasz ismerteti, hogyan használható a `terraform init` parancs az előz
 
     ![A „terraform plan” eredményeit mutató példa](./media/terraform-k8s-cluster-appgw-with-tf-aks/terraform-plan-complete.png)
 
-1. Futtassa a `terraform apply` parancsot a Kubernetes-fürtöt létrehozó terv alkalmazásához. A Kubernetes-fürt létrehozásának folyamata több percet is igénybe vehet, ami a Cloud Shell munkamenet időtúllépését eredményezi. Ha a Cloud Shell munkamenet időtúllépés miatt meghaladta az időkorlátot, kövesse a "helyreállítás Cloud Shell időtúllépésből" című szakasz lépéseit az oktatóanyag befejezéséhez.
+1. Futtassa a `terraform apply` parancsot a Kubernetes-fürtöt létrehozó terv alkalmazásához. A Kubernetes-fürt létrehozásának folyamata több percet is igénybe vehet, ami a Cloud Shell munkamenet időtúllépésének csökkenését eredményezi. Ha a Cloud Shell-munkamenet idővel idővel, kövesse a "Helyreállítás a felhőbeli rendszerhéj időmeghosszabbítása" című szakaszban leírt lépéseket, hogy lehetővé tegye az oktatóanyag befejezéséhez.
 
     ```bash
     terraform apply out.plan
@@ -612,13 +612,13 @@ Ez a szakasz ismerteti, hogyan használható a `terraform init` parancs az előz
 
     ![A „terraform apply” eredményeit mutató példa](./media/terraform-k8s-cluster-appgw-with-tf-aks/terraform-apply-complete.png)
 
-1. A Azure Portal a bal oldali menüben válassza az **erőforráscsoportok** lehetőséget, hogy megtekintse az új Kubernetes-fürthöz létrehozott erőforrásokat a kiválasztott erőforráscsoporthoz.
+1. Az Azure Portalon válassza a bal oldali menü **erőforráscsoportok** kiválasztásához az új Kubernetes-fürthöz a kiválasztott erőforráscsoportban létrehozott erőforrások megtekintéséhez.
 
     ![Cloud Shell-parancssor](./media/terraform-k8s-cluster-appgw-with-tf-aks/k8s-resources-created.png)
 
 ## <a name="recover-from-a-cloud-shell-timeout"></a>Helyreállítás a Cloud Shell időtúllépéséből
 
-Ha a Cloud Shell munkamenet időtúllépést tapasztal, a következő lépésekkel állíthatja helyre a helyreállítást:
+Ha a Cloud Shell munkamenet idővel idővel, a következő lépéseket, hogy visszaszerezze:
 
 1. Indítson egy Cloud Shell-munkamenetet.
 
@@ -661,31 +661,31 @@ A Kubernetes-eszközök használhatók az újonnan létrehozott fürt tesztelés
 
 ## <a name="install-azure-ad-pod-identity"></a>Az Azure AD Pod-identitás telepítése
 
-Azure Active Directory Pod Identity jogkivonat-alapú hozzáférést biztosít [Azure Resource Managerhoz](/azure/azure-resource-manager/resource-group-overview).
+Az Azure Active Directory Pod Identity tokenalapú hozzáférést biztosít az [Azure Resource Manager hez.](/azure/azure-resource-manager/resource-group-overview)
 
-Az [Azure ad Pod Identity](https://github.com/Azure/aad-pod-identity) a következő összetevőket adja hozzá a Kubernetes-fürthöz:
+[Az Azure AD Pod Identity](https://github.com/Azure/aad-pod-identity) a következő összetevőket adja hozzá a Kubernetes-fürthöz:
 
-  - Kubernetes [CRDs](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/): `AzureIdentity`, `AzureAssignedIdentity`, `AzureIdentityBinding`
-  - [Felügyelt identitás-vezérlő (MIC)](https://github.com/Azure/aad-pod-identity#managed-identity-controllermic) összetevő
-  - [Csomópont által felügyelt identitás (NMI)](https://github.com/Azure/aad-pod-identity#node-managed-identitynmi) összetevő
+  - Kubernetes [CRD-k:](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/) `AzureIdentity`, `AzureAssignedIdentity``AzureIdentityBinding`
+  - [Felügyelt identitásvezérlő (MIC)](https://github.com/Azure/aad-pod-identity#managed-identity-controllermic) összetevő
+  - [Csomópontfelügyelt identitás (NMI)](https://github.com/Azure/aad-pod-identity#node-managed-identitynmi) összetevője
 
-Ha a RBAC **engedélyezve**van, futtassa a következő parancsot az Azure ad Pod Identity telepítéséhez a fürtön:
+Ha az RBAC **engedélyezve**van, futtassa a következő parancsot az Azure AD Pod Identity fürtre való telepítéséhez:
 
 ```bash
 kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment-rbac.yaml
 ```
 
-Ha a RBAC **le van tiltva**, futtassa a következő parancsot az Azure ad Pod Identity telepítéséhez a fürtön:
+Ha az RBAC le van **tiltva,** futtassa a következő parancsot az Azure AD Pod Identity fürtre való telepítéséhez:
 
 ```bash
 kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment.yaml
 ```
 
-## <a name="install-helm"></a>A Helm telepítése
+## <a name="install-helm"></a>Helm telepítése
 
-Az ebben a szakaszban szereplő kód a [Helm](/azure/aks/kubernetes-helm) -Kubernetes csomagkezelő használatával telepíti a `application-gateway-kubernetes-ingress` csomagot:
+Az ebben a szakaszban található kód [a Helm](/azure/aks/kubernetes-helm) - `application-gateway-kubernetes-ingress` Kubernetes csomagkezelőt használja a csomag telepítéséhez:
 
-1. Ha a RBAC **engedélyezve**van, futtassa a következő parancsokat a Helm telepítéséhez és konfigurálásához:
+1. Ha az RBAC **engedélyezve**van, futtassa a Helm telepítéséhez és konfigurálásához szükséges következő parancskészletet:
 
     ```bash
     kubectl create serviceaccount --namespace kube-system tiller-sa
@@ -693,70 +693,70 @@ Az ebben a szakaszban szereplő kód a [Helm](/azure/aks/kubernetes-helm) -Kuber
     helm init --tiller-namespace kube-system --service-account tiller-sa
     ```
 
-1. Ha a RBAC **le van tiltva**, futtassa a következő parancsot a Helm telepítéséhez és konfigurálásához:
+1. Ha az RBAC le van **tiltva,** futtassa a következő parancsot a Helm telepítéséhez és konfigurálásához:
 
     ```bash
     helm init
     ```
 
-1. Adja hozzá a AGIC Helm-tárházat:
+1. Adja hozzá az AGIC Helm adattárat:
 
     ```bash
     helm repo add application-gateway-kubernetes-ingress https://appgwingress.blob.core.windows.net/ingress-azure-helm-package/
     helm repo update
     ```
 
-## <a name="install-ingress-controller-helm-chart"></a>A beáramló vezérlő Helm-diagramjának telepítése
+## <a name="install-ingress-controller-helm-chart"></a>A be- és nagybe: A vezérlő vezérlőjének diagramja
 
-1. `helm-config.yaml` letöltése a AGIC konfigurálásához:
+1. Letöltés `helm-config.yaml` az AGIC konfigurálásához:
 
     ```bash
     wget https://raw.githubusercontent.com/Azure/application-gateway-kubernetes-ingress/master/docs/examples/sample-helm-config.yaml -O helm-config.yaml
     ```
 
-1. Szerkessze a `helm-config.yaml`, és adja meg a megfelelő értékeket `appgw` és `armAuth` szakaszban.
+1. Szerkesztsd `helm-config.yaml` a megfelelő `appgw` értékeket és `armAuth` szakaszokat.
 
     ```bash
     code helm-config.yaml
     ```
 
-    Az értékek a következőképpen vannak leírva:
+    Az értékek leírása a következő:
 
-    - `verbosityLevel`: a AGIC naplózási infrastruktúrájának részletességi szintjét állítja be. Lásd: a lehetséges értékek [naplózási szintjei](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/463a87213bbc3106af6fce0f4023477216d2ad78/docs/troubleshooting.md#logging-levels) .
-    - `appgw.subscriptionId`: az App Gateway Azure-előfizetés azonosítója. Például: `a123b234-a3b4-557d-b2df-a0bc12de1234`
-    - `appgw.resourceGroup`: az az Azure-erőforráscsoport neve, amelyben az App Gateway létrejött. 
-    - `appgw.name`: a Application Gateway neve. Példa: `applicationgateway1`.
-    - `appgw.shared`: ezt a logikai jelzőt alapértelmezett értékre kell állítani a `false`. A `true` beállításnál a [megosztott alkalmazás-átjáróra](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway)van szükség.
-    - `kubernetes.watchNamespace`: adja meg azt a AGIC, amelynek a nevét meg kell nézni. A névtér lehet egy karakterlánc-érték, vagy a névterek vesszővel tagolt listája. Ha elhagyja ezt a változót, vagy üresre vagy üres karakterláncra állítja, akkor a bejövő adatforgalom-vezérlő az összes elérhető névteret megfigyelve.
-    - `armAuth.type`: `aadPodIdentity` vagy `servicePrincipal`érték.
-    - `armAuth.identityResourceID`: a felügyelt identitás erőforrás-azonosítója.
-    - `armAuth.identityClientId`: az identitás ügyfél-azonosítója.
-    - `armAuth.secretJSON`: csak akkor szükséges, ha a szolgáltatás egyszerű titkos típusa van kiválasztva (ha `armAuth.type` van beállítva a következőre: `servicePrincipal`).
+    - `verbosityLevel`: Beállítja az AGIC naplózási infrastruktúra részletességi szintjét. A lehetséges értékeket a [Naplózási szintek](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/463a87213bbc3106af6fce0f4023477216d2ad78/docs/troubleshooting.md#logging-levels) című témakörben olvassa el.
+    - `appgw.subscriptionId`: Az App Gateway Azure-előfizetési azonosítója. Például: `a123b234-a3b4-557d-b2df-a0bc12de1234`
+    - `appgw.resourceGroup`: Annak az Azure Resource Groupnak a neve, amelyben az App Gateway-t létrehozták. 
+    - `appgw.name`: Az alkalmazásátjáró neve. Példa: `applicationgateway1`.
+    - `appgw.shared`: Ezt a logikai jelzőt alapértelmezetten a. `false` Ha `true` szüksége van egy [megosztott alkalmazásátjáróra,](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway)állítsa be.
+    - `kubernetes.watchNamespace`: Adja meg azt a névközt, amelyet az AGIC-nek figyelnie kell. A névtér lehet egyetlen karakterlánc-érték, vagy a névterek vesszővel tagolt listája. Ha ezt a változót figyelmen kívül hagyja, vagy üres vagy üres karakterláncra állítja, a Bejövő vezérlő az összes elérhető névteret figyeli.
+    - `armAuth.type`: Az érték `aadPodIdentity` `servicePrincipal`vagy a .
+    - `armAuth.identityResourceID`: A felügyelt identitás erőforrásazonosítója.
+    - `armAuth.identityClientId`: Az identitás ügyfélazonosítója.
+    - `armAuth.secretJSON`: Csak akkor szükséges, ha az `armAuth.type` egyszerű szolgáltatástitkos típust választja (ha a beállítás `servicePrincipal`be van állítva).
 
-    Fontos megjegyzések:
-    - A `identityResourceID` érték a Terraform parancsfájlban jön létre, és a következő futtatásával érhető el: `echo "$(terraform output identity_resource_id)"`.
-    - A `identityClientID` érték a Terraform parancsfájlban jön létre, és a következő futtatásával érhető el: `echo "$(terraform output identity_client_id)"`.
-    - Az `<resource-group>` érték az App Gateway erőforráscsoport.
-    - A `<identity-name>` érték a létrehozott identitás neve.
-    - Az adott előfizetéshez tartozó összes identitás a következő használatával listázható: `az identity list`.
+    Főbb megjegyzések:
+    - Az `identityResourceID` érték a terraform parancsfájlban jön létre, `echo "$(terraform output identity_resource_id)"`és a következőkszerint érhető el: .
+    - Az `identityClientID` érték a terraform parancsfájlban jön létre, `echo "$(terraform output identity_client_id)"`és a következőkszerint érhető el: .
+    - Az `<resource-group>` érték az App Gateway erőforráscsoportja.
+    - Az `<identity-name>` érték a létrehozott identitás neve.
+    - Egy adott előfizetés összes identitása a `az identity list`következő használatával jelenik meg: .
 
-1. Telepítse a Application Gateway beáramló vezérlő csomagot:
+1. Az Application Gateway be- és vissza- és visszatelepítése vezérlőcsomagjának telepítése:
 
     ```bash
     helm install -f helm-config.yaml application-gateway-kubernetes-ingress/ingress-azure
     ```
 
-### <a name="install-a-sample-app"></a>Minta alkalmazás telepítése
+### <a name="install-a-sample-app"></a>Mintaalkalmazás telepítése
 
-Ha telepítette az App Gateway-t, az AK-t és a AGIC-t, a [Azure Cloud Shell](https://shell.azure.com/)használatával telepítheti a minta alkalmazást:
+Miután telepítette az App Gateway, az AKS és az AGIC alkalmazást, az [Azure Cloud Shell-en](https://shell.azure.com/)keresztül telepíthet egy mintaalkalmazást:
 
-1. A YAML fájl letöltéséhez használja a cURL parancsot:
+1. A YAML-fájl letöltéséhez használja a curl parancsot:
 
     ```bash
     curl https://raw.githubusercontent.com/Azure/application-gateway-kubernetes-ingress/master/docs/examples/aspnetapp.yaml -o aspnetapp.yaml
     ```
 
-2. A YAML fájl alkalmazása:
+2. A YAML-fájl alkalmazása:
 
     ```bash
     kubectl apply -f aspnetapp.yaml
@@ -766,7 +766,7 @@ Ha telepítette az App Gateway-t, az AK-t és a AGIC-t, a [Azure Cloud Shell](ht
 
 Ha már nincs rá szükség, törölje a cikkben létrehozott erőforrásokat.  
 
-Cserélje le a helyőrzőt a megfelelő értékre. A megadott erőforráscsoport összes erőforrása törölve lesz.
+Cserélje ki a helyőrzőt a megfelelő értékre. A megadott erőforráscsoporton belüli összes erőforrás törlődik.
 
 ```azurecli
 az group delete -n <resource-group>
@@ -775,4 +775,4 @@ az group delete -n <resource-group>
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"] 
-> [Bejövő Application Gateway vezérlő](https://azure.github.io/application-gateway-kubernetes-ingress/)
+> [Application Gateway bejövőforgalom-vezérlő](https://azure.github.io/application-gateway-kubernetes-ingress/)

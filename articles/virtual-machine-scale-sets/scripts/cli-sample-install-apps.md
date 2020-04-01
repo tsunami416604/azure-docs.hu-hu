@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-minták – alkalmazások telepítése
+title: Azure CLI-minták – Alkalmazások telepítése
 description: Ez a szkript egy Ubuntu rendszert futtató virtuálisgép-méretezési csoportot hoz létre, és az egyéni szkriptbővítmény használatával telepít alapszintű webalkalmazásokat.
 author: cynthn
 tags: azure-resource-manager
@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 12925c06c8b0fbe0e223623584f7496bf34d3618
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76278756"
 ---
 # <a name="install-applications-into-a-virtual-machine-scale-set-with-the-azure-cli"></a>Alkalmazások telepítése virtuálisgép-méretezési csoportokban az Azure CLI használatával
@@ -45,7 +45,7 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 | [az network public-ip show](/cli/azure/network/public-ip) | Lekéri a terheléselosztó által a felhasználóhoz hozzárendelt nyilvános IP-cím adatait. |
 | [az group delete](/cli/azure/ad/group) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure/overview).
 
 A virtuálisgép-méretezési csoportokhoz kapcsolódó további Azure CLI-példaszkripteket az [Azure virtuálisgép-méretezési csoportok dokumentációjában](../cli-samples.md) találhat.

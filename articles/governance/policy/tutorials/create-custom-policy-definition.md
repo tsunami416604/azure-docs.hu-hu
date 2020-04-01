@@ -1,81 +1,81 @@
 ---
-title: 'Oktatóanyag: egyéni szabályzat-definíció létrehozása'
-description: Ebben az oktatóanyagban egy egyéni szabályzat-definíciót Azure Policy az Azure-erőforrásokra vonatkozó egyéni üzleti szabályok érvénybe léptetéséhez.
+title: 'Oktatóanyag: Egyéni házirend-definíció létrehozása'
+description: Ebben az oktatóanyagban egyéni szabályzatdefiníciót hoz létre az Azure-szabályzathoz, amely egyéni üzleti szabályokat kényszerít az Azure-erőforrásokra.
 ms.date: 11/25/2019
 ms.topic: tutorial
 ms.openlocfilehash: f7c303956b209b88ce3c697b5b66243e37071c83
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79238943"
 ---
-# <a name="tutorial-create-a-custom-policy-definition"></a>Oktatóanyag: egyéni szabályzat-definíció létrehozása
+# <a name="tutorial-create-a-custom-policy-definition"></a>Oktatóanyag: Egyéni házirend-definíció létrehozása
 
-Az egyéni szabályzatok definíciója lehetővé teszi, hogy az ügyfelek definiálják saját szabályaikat az Azure használatához. Ezek a szabályok gyakran kényszerítik a következőket:
+Az egyéni szabályzat-definíció lehetővé teszi az ügyfelek számára, hogy saját szabályokat határozzanak meg az Azure használatával. Ezek a szabályok gyakran érvényt szereznek:
 
 - Biztonsági eljárások
 - Cost Management
-- Szervezetre vonatkozó szabályok (például elnevezés vagy hely)
+- Szervezetspecifikus szabályok (például elnevezés vagy helyek)
 
-Függetlenül attól, hogy az üzleti illesztőprogram egyéni házirendet hoz létre, a lépések ugyanazok, mint az új egyéni házirend definiálásához.
+Az egyéni házirend létrehozásához az üzleti illesztőprogramtól függetlenül a lépések megegyeznek az új egyéni házirend meghatározásához.
 
-Egyéni házirend létrehozása előtt tekintse meg a [szabályzat mintáit](../samples/index.md) , és ellenőrizze, hogy már létezik-e az igényeinek megfelelő szabályzat.
+Egyéni házirend létrehozása előtt ellenőrizze a [szabályzatmintákat,](../samples/index.md) hogy létezik-e már az igényeinek megfelelő házirend.
 
-Az egyéni szabályzatok létrehozásának módszere az alábbi lépésekből áll:
+Az egyéni házirendek létrehozásának az alábbi lépéseket követi:
 
 > [!div class="checklist"]
-> - Az üzleti követelmények meghatározása
-> - Minden követelmény hozzárendelése egy Azure Resource tulajdonsághoz
-> - A tulajdonság hozzárendelése aliashoz
-> - A használni kívánt effektus meghatározása
-> - A szabályzat definíciójának összeállítása
+> - Azonosítsa üzleti igényeit
+> - Minden követelmény leképezése egy Azure-erőforrás-tulajdonsághoz
+> - A tulajdonság leképezése aliashoz
+> - Határozza meg, hogy melyik hatást használja
+> - A házirend-definíció megírása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
 ## <a name="identify-requirements"></a>Követelmények azonosítása
 
-A házirend-definíció létrehozása előtt fontos megérteni a szabályzat céljait. Ebben az oktatóanyagban egy közös nagyvállalati biztonsági követelményt használunk, amely a következő lépéseket szemlélteti:
+A szabályzatdefiníció létrehozása előtt fontos megérteni a házirend szándékát. Ebben az oktatóanyagban egy közös vállalati biztonsági követelményt fogunk használni a következő lépések szemléltetésére:
 
-- Minden Storage-fióknak engedélyezve kell lennie a HTTPS-hez
-- A Storage-fiókoknak le kell tiltaniuk a HTTP-t
+- Minden tárfiókot engedélyezni kell a HTTPS-hez
+- Minden tárfiókot le kell tiltani a HTTP-hez
 
-A követelményeknek egyértelműen azonosítaniuk kell mind a "to", mind a "nem lehet" erőforrás-állapotot.
+A követelményeknek egyértelműen meg kell határozniuk mind a "lenni" és a "nem lehet" erőforrás-állapotokat.
 
-Noha meghatározta az erőforrás várható állapotát, még nem definiálta, hogy mit szeretne tenni a nem megfelelő erőforrásokkal. Azure Policy számos [effektust](../concepts/effects.md)támogat. Ebben az oktatóanyagban definiáljuk az üzleti követelményt, amely megakadályozza az erőforrások létrehozását, ha nem felelnek meg az üzleti szabályoknak. Ennek a célnak a teljesítéséhez a [Megtagadás](../concepts/effects.md#deny) effektust fogjuk használni. Azt is szeretnénk, hogy az adott hozzárendelésekre vonatkozó szabályzatot felfüggessze. Ezért a [letiltott](../concepts/effects.md#disabled) effektust fogjuk használni, és a [paramétereket](../concepts/definition-structure.md#parameters) a házirend-definícióban kell végrehajtani.
+Bár meghatároztuk az erőforrás várható állapotát, még nem határoztuk meg, hogy mit akarunk tenni a nem megfelelő erőforrásokkal. Az Azure Policy számos [effektust](../concepts/effects.md)támogat. Ebben az oktatóanyagban az üzleti követelményt úgy határozzuk meg, hogy megakadályozzuk az erőforrások létrehozását, ha azok nem felelnek meg az üzleti szabályoknak. E cél elérése érdekében a [Megtagadás](../concepts/effects.md#deny) hatást használjuk. Azt is szeretnénk, hogy a lehetőséget, hogy függessze fel a politika az egyes feladatok. Mint ilyen, a [Letiltott effektust használjuk,](../concepts/effects.md#disabled) és a hatást a házirend-definíció [ban paraméterként](../concepts/definition-structure.md#parameters) használjuk.
 
 ## <a name="determine-resource-properties"></a>Erőforrás-tulajdonságok meghatározása
 
-Az üzleti követelménytől függően az Azure-erőforrás, amellyel a Azure Policy naplózni kívánja a Storage-fiókot. Azonban nem tudjuk, hogy milyen tulajdonságokat kell használni a házirend-definícióban. Azure Policy kiértékeli az erőforrás JSON-ábrázolását, ezért meg kell értenünk az adott erőforráshoz elérhető tulajdonságokat.
+Az üzleti követelmény alapján az Azure-erőforrás naplózása az Azure Policy egy tárfiók. Azonban nem ismerjük a házirend-definícióban használandó tulajdonságokat. Az Azure Policy kiértékeli az erőforrás JSON-ábrázolását, ezért meg kell értenünk az adott erőforráson elérhető tulajdonságokat.
 
-Az Azure-erőforrások tulajdonságai számos módon meghatározhatók. Ebben az oktatóanyagban a következőket fogjuk megtekinteni:
+Egy Azure-erőforrás tulajdonságainak meghatározásához számos módon határozható meg. Majd nézd meg az egyes ez a bemutató:
 
 - Azure Policy-bővítmény VSCode-hoz
 - Resource Manager-sablonok
   - Meglévő erőforrás exportálása
   - Létrehozási élmény
-  - Gyorsindítás sablonok (GitHub)
-  - Sablon-dokumentációs dokumentumok
+  - Gyorsútmutató-sablonok (GitHub)
+  - Sablonreferencia-dokumentumok
 - Azure Resource Explorer
 
-### <a name="view-resources-in-vs-code-extension"></a>Erőforrások megtekintése a VS Code-bővítményben
+### <a name="view-resources-in-vs-code-extension"></a>Erőforrások megtekintése a VS-kód bővítményben
 
-A [vs Code bővítmény](../how-to/extension-for-vscode.md#search-for-and-view-resources) használatával böngészheti az erőforrásokat a környezetben, és megtekintheti a Resource Manager-tulajdonságokat az egyes erőforrásokon.
+A [VS-kód bővítmény](../how-to/extension-for-vscode.md#search-for-and-view-resources) segítségével tallózhat a környezetben lévő erőforrások között, és megtekintheti az erőforrás-kezelő tulajdonságait az egyes erőforrásokon.
 
 ### <a name="resource-manager-templates"></a>Resource Manager-sablonok
 
-A felügyelni kívánt tulajdonságot több módon is megtekintheti egy [Resource Manager-sablonban](../../../azure-resource-manager/templates/template-tutorial-create-encrypted-storage-accounts.md) .
+Az [Erőforrás-kezelő sablonja](../../../azure-resource-manager/templates/template-tutorial-create-encrypted-storage-accounts.md) többféleképpen is megtekinthet, amely tartalmazza a kezelni kívánt tulajdonságot.
 
 #### <a name="existing-resource-in-the-portal"></a>Meglévő erőforrás a portálon
 
-A tulajdonságok megkeresésének legegyszerűbb módja egy azonos típusú meglévő erőforrás megkeresése. A kényszeríteni kívánt beállítással már konfigurált erőforrások is megadják az összehasonlításhoz használandó értéket.
-Tekintse meg a **sablon exportálása** lapot (a **Beállítások**alatt) az adott erőforráshoz tartozó Azure Portalban.
+A tulajdonságok keresésének legegyszerűbb módja egy azonos típusú meglévő erőforrás vizsgálata. Az érvényesíteni kívánt beállítással már konfigurált erőforrások is biztosítják az összehasonlítandó értéket.
+Tekintse meg a **sablon exportálása** lapot **(a Beállítások)** az Azure Portalon az adott erőforráshoz.
 
-![Sablon exportálása lap a meglévő erőforráson](../media/create-custom-policy-definition/export-template.png)
+![Sablon exportálása lap meglévő erőforráson](../media/create-custom-policy-definition/export-template.png)
 
-A Storage-fiók esetében a következőhöz hasonló sablon látható:
+Ha egy tárfiókot szeretne, az a példához hasonló sablont tár fel:
 
 ```json
 ...
@@ -119,13 +119,13 @@ A Storage-fiók esetében a következőhöz hasonló sablon látható:
 ...
 ```
 
-A **Tulajdonságok** területen a **supportsHttpsTrafficOnly** nevű érték false ( **hamis**) értékűre van állítva. Ez a tulajdonság úgy tűnik, hogy a keresett tulajdonság lehet. Emellett az erőforrás **típusa** **Microsoft. Storage/storageAccounts**. A típus lehetővé teszi, hogy csak az ilyen típusú erőforrásokra korlátozza a szabályzatot.
+A **tulajdonságok alatt** egy **supportsHttpsTrafficOnly** nevű érték **hamis.** Ez az ingatlan úgy néz ki, mintha ez lenne az ingatlan, amit keresünk. Az erőforrás **típusa** a **Microsoft.Storage/storageAccounts .** A típus lehetővé teszi, hogy a házirendet csak az ilyen típusú erőforrásokra korlátozzuk.
 
 #### <a name="create-a-resource-in-the-portal"></a>Erőforrás létrehozása a portálon
 
-A portálon keresztül egy másik módszer az erőforrás-létrehozási élmény. Amikor a portálon keresztül hoz létre egy Storage-fiókot, a **speciális** lapon található lehetőség a **biztonságos átvitelre van szükség**. Ez a tulajdonság _letiltott_ és _engedélyezett_ beállításokat tartalmaz. Az info ikon további szöveggel rendelkezik, amely megerősíti, hogy ez a beállítás valószínűleg a kívánt tulajdonság. A portálon azonban nem jelennek meg a tulajdonságok neve ezen a képernyőn.
+A portálon keresztül egy másik út az erőforrás-létrehozási élmény. A portálon keresztül itárfiók létrehozásakor a **Speciális** lapon található **a biztonsági átvitel szükséges.** Ez a tulajdonság _letiltott_ és engedélyezett beállításokkal _rendelkezik._ Az információs ikon további szöveget tartalmaz, amely megerősíti, hogy ez a beállítás valószínűleg a kívánt tulajdonság. A portál azonban nem adja meg a képernyőn megjelenő tulajdonság nevét.
 
-A **felülvizsgálat + létrehozás** lapon egy hivatkozás található az oldal alján egy **sablon az automatizáláshoz való letöltéséhez**. A hivatkozás kiválasztásával megnyílik a konfigurált erőforrást létrehozó sablon. Ebben az esetben két fő információt látunk:
+A **Véleményezés + létrehozás** lapon egy hivatkozás található a lap alján, **amelyen egy sablon letöltése automatizálási sablonhoz**. A hivatkozás kiválasztása megnyitja a sablont, amely létrehozza az általunk konfigurált erőforrást. Ebben az esetben két kulcsfontosságú információt látunk:
 
 ```json
 ...
@@ -140,41 +140,41 @@ A **felülvizsgálat + létrehozás** lapon egy hivatkozás található az oldal
 ...
 ```
 
-Ez az információ azt jelzi, hogy a tulajdonság típusa és a **supportsHttpsTrafficOnly** is megerősíti a keresett tulajdonságot.
+Ez az információ közli velünk a tulajdonság típusát, és megerősíti **támogatjaHttpsTrafficOnly** az a tulajdonság, amit keresünk.
 
-#### <a name="quickstart-templates-on-github"></a>Gyors útmutató sablonok a GitHubon
+#### <a name="quickstart-templates-on-github"></a>Gyorsútmutató sablonok a GitHubon
 
-A GitHubon futó Azure rövid útmutató [sablonjai](https://github.com/Azure/azure-quickstart-templates) több száz Resource Manager-sablonnal rendelkeznek, amelyek különböző erőforrásokhoz készültek. Ezek a sablonok nagyszerű módot biztosítanak a keresett erőforrás-tulajdonság megkeresésére. Előfordulhat, hogy egyes tulajdonságok úgy tűnik, hogy mit keres, de mást is vezérel.
+Az [Azure gyorsindítási sablonjai](https://github.com/Azure/azure-quickstart-templates) a GitHubon több száz Erőforrás-kezelő sablont hoznak fel különböző erőforrásokhoz. Ezek a sablonok nagyszerű módja lehet annak, hogy megtalálja a keresett erőforrás-tulajdonságot. Egyes tulajdonságok úgy tűnhet, hogy mit keres, de ellenőrzés valami mást.
 
-#### <a name="resource-reference-docs"></a>Erőforrás-referenciák dokumentációja
+#### <a name="resource-reference-docs"></a>Erőforrás-referencia-dokumentumok
 
-A **supportsHttpsTrafficOnly** helyes tulajdonságának ellenőrzéséhez ellenőrizze a Storage- [fiók erőforrásának](/azure/templates/microsoft.storage/2018-07-01/storageaccounts) Resource Manager-sablonra vonatkozó hivatkozását a tárolási szolgáltatón.
-A Properties objektum érvényes paraméterek listáját tartalmazza. Az [StorageAccountPropertiesCreateParameters-Object](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) hivatkozás kiválasztásával egy elfogadható tulajdonságokat tartalmazó táblázat látható. **supportsHttpsTrafficOnly** jelennek meg, és a Leírás megfelel az üzleti igényeknek.
+A **támogatottak érvényesítéséhezAHttpsTrafficOnly** megfelelő tulajdonság, ellenőrizze az Erőforrás-kezelő sablon hivatkozási a [tárfiók erőforrás](/azure/templates/microsoft.storage/2018-07-01/storageaccounts) a storage-szolgáltató.
+A tulajdonságobjektum érvényes paraméterek et tartalmazó listával rendelkezik. A [StorageAccountPropertiesCreateParameters-object](/azure/templates/microsoft.storage/2018-07-01/storageaccounts#storageaccountpropertiescreateparameters-object) hivatkozás kiválasztásával megjelenik az elfogadható tulajdonságok táblázata. **supportsHttpsTrafficOnly** jelen van, és a leírás megegyezik azzal, amit keresünk, hogy megfeleljen az üzleti követelményeknek.
 
 ### <a name="azure-resource-explorer"></a>Azure Resource Explorer
 
-Az Azure-erőforrások megismerésének egy másik módja a [Azure erőforrás-kezelő](https://resources.azure.com) (előzetes verzió). Ez az eszköz az előfizetés kontextusát használja, ezért az Azure-beli hitelesítő adataival kell hitelesítenie a webhelyet. A hitelesítés után a szolgáltatók, előfizetések, erőforráscsoportok és erőforrások között böngészhet.
+Az Azure-erőforrások feltárásának másik módja az [Azure Resource Explorer](https://resources.azure.com) (előzetes verzió). Ez az eszköz az előfizetés környezetét használja, ezért az Azure-hitelesítő adatokkal hitelesítenie kell magát a webhelyre. A hitelesítést követően szolgáltatók, előfizetések, erőforráscsoportok és erőforrások szerint tallózhat.
 
-Keresse meg a Storage-fiók erőforrását, és tekintse meg a tulajdonságokat. Itt a **supportsHttpsTrafficOnly** tulajdonság is látható. A **dokumentáció** lapon láthatjuk, hogy a tulajdonság leírása megegyezik a korábban a hivatkozási dokumentációban találhatókkal.
+Keresse meg a tárfiók-erőforrást, és tekintse meg a tulajdonságokat. Itt is látjuk a **támogatjaHttpsTrafficOnly** tulajdonságot. A **Dokumentáció** lapon azt látjuk, hogy a tulajdonság leírása megegyezik a korábbi hivatkozási dokumentumokban találttal.
 
-## <a name="find-the-property-alias"></a>A tulajdonság aliasnevének megkeresése
+## <a name="find-the-property-alias"></a>A tulajdonság aliasának megkeresése
 
-Azonosította az erőforrás-tulajdonságot, de a tulajdonságot egy [aliasra](../concepts/definition-structure.md#aliases)kell leképeznie.
+Azonosítottuk az erőforrás tulajdonságot, de le kell képeznünk a tulajdonságot egy [aliasra.](../concepts/definition-structure.md#aliases)
 
-Az Azure-erőforrások aliasait többféleképpen is meghatározhatja. Ebben az oktatóanyagban a következőket fogjuk megtekinteni:
+Egy Azure-erőforrás aliasai többféleképpen is meghatározhatók. Majd nézd meg az egyes ez a bemutató:
 
 - Azure Policy-bővítmény VSCode-hoz
 - Azure CLI
 - Azure PowerShell
 - Azure Resource Graph
 
-### <a name="get-aliases-in-vs-code-extension"></a>Aliasok beolvasása a VS Code bővítménnyel
+### <a name="get-aliases-in-vs-code-extension"></a>Aliasok bekéselése a VS Code bővítményben
 
-A VS Code bővítmény Azure Policy bővítménye megkönnyíti az erőforrások tallózását és az [aliasok felderítését](../how-to/extension-for-vscode.md#discover-aliases-for-resource-properties).
+Az Azure Policy bővítmény vs kód bővítmény megkönnyíti az erőforrások böngészését és [az aliasok felderítését.](../how-to/extension-for-vscode.md#discover-aliases-for-resource-properties)
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Az Azure CLI-ben az `az provider`-parancs az erőforrás-aliasok keresésére szolgál. A **Microsoft. Storage** névterét a korábban az Azure-erőforrással kapcsolatban kapott részletek alapján szűrheti.
+Az Azure CLI,a `az provider` parancscsoport erőforrás-aliasok keresésére szolgál. A **Microsoft.Storage** névtér szűrése az Azure-erőforrással kapcsolatos korábbi adatok alapján.
 
 ```azurecli-interactive
 # Login first with az login if not using Cloud Shell
@@ -183,11 +183,11 @@ Az Azure CLI-ben az `az provider`-parancs az erőforrás-aliasok keresésére sz
 az provider show --namespace Microsoft.Storage --expand "resourceTypes/aliases" --query "resourceTypes[].aliases[].name"
 ```
 
-Az eredmények között a **supportsHttpsTrafficOnly**nevű Storage-fiókok által támogatott alias látható. Ennek az aliasnak a létezése azt jelenti, hogy megírhatjuk a szabályzatot az üzleti követelmények érvénybe léptetéséhez.
+Az eredmények egy aliast látunk, amelyet a **supportshttpsTrafficOnly**nevű tárfiókok támogatnak. Ez a létezése ez az alias azt jelenti, tudjuk írni a politika érvényesítésére üzleti követelmények!
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Azure PowerShell a `Get-AzPolicyAlias` parancsmag az erőforrás-aliasok keresésére szolgál. A **Microsoft. Storage** névterét a korábban az Azure-erőforrással kapcsolatban kapott részletek alapján szűrheti.
+Az Azure PowerShellben a `Get-AzPolicyAlias` parancsmag erőforrás-aliasok keresésére szolgál. A **Microsoft.Storage** névtér szűrése az Azure-erőforrással kapcsolatos korábbi adatok alapján.
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -196,11 +196,11 @@ Azure PowerShell a `Get-AzPolicyAlias` parancsmag az erőforrás-aliasok keresé
 (Get-AzPolicyAlias -NamespaceMatch 'Microsoft.Storage').Aliases
 ```
 
-Az Azure CLI-hez hasonlóan az eredmények a **supportsHttpsTrafficOnly**nevű Storage-fiókok által támogatott aliast jelenítik meg.
+Az Azure CLI-hez hasonlóan az eredmények egy, a **supportsHttpsTrafficOnly**nevű tárfiókok által támogatott aliast jelenítenek meg.
 
 ### <a name="azure-resource-graph"></a>Azure Resource Graph
 
-Az [Azure Resource Graph](../../resource-graph/overview.md) egy olyan szolgáltatás, amely egy másik módszert biztosít az Azure-erőforrások tulajdonságainak megkereséséhez. Az alábbi példa egy olyan lekérdezési lekérdezést mutat be, amely egyetlen Storage-fiókot keres az erőforrás-Gráfmal:
+[Az Azure Resource Graph](../../resource-graph/overview.md) egy olyan szolgáltatás, amely egy másik módszert biztosít az Azure-erőforrások tulajdonságainak megkereséséhez. Az alábbiakban egy mintalekérdezést olvashat egyetlen tárfiókból a Resource Graph segítségével:
 
 ```kusto
 Resources
@@ -216,7 +216,7 @@ az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' |
 Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
-Az eredmények ugyanúgy néznek ki, mint a Resource Manager-sablonokban és a Azure Erőforrás-kezelő. Az Azure Resource Graph eredményei azonban _az aliasok tömb_ _kivetítésével_ is tartalmazhatják az [alias](../concepts/definition-structure.md#aliases) részleteit:
+Az eredmények hasonlítanak az Erőforrás-kezelő sablonokban és az Azure Resource Exploreren keresztül láthatóhoz. Az Azure Resource Graph eredményei azonban [aliasrészleteket](../concepts/definition-structure.md#aliases) is tartalmazhatnak az _aliastömb_ _kivetítésével:_
 
 ```kusto
 Resources
@@ -233,7 +233,7 @@ az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' |
 Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
 ```
 
-Íme egy példa az aliasokhoz tartozó Storage-fiók kimenetére:
+Íme egy példa kimenet egy tárfiók aliasok:
 
 ```json
 "aliases": {
@@ -315,17 +315,17 @@ Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccount
 }
 ```
 
-Az Azure Resource Graph a [Cloud Shellon](https://shell.azure.com)keresztül is használható, így gyorsan és egyszerűen feltárhatja az erőforrások tulajdonságait.
+Az Azure Resource Graph a [Cloud Shell](https://shell.azure.com)segítségével is használható, így gyorsan és egyszerűen megismerheti az erőforrások tulajdonságait.
 
-## <a name="determine-the-effect-to-use"></a>A használandó effektus meghatározása
+## <a name="determine-the-effect-to-use"></a>A használandó hatás meghatározása
 
-Annak eldöntése, hogy mi a teendő a nem megfelelő erőforrásokkal, majdnem olyan fontos, mint az első helyen való kiértékelés eldöntése. A nem megfelelő erőforrásokra adott lehetséges válaszokat a rendszer [effektusnak](../concepts/effects.md)nevezzük. A hatás azt szabályozza, hogy a nem megfelelő erőforrás van-e naplózva, letiltva, van-e hozzáfűzve vagy van-e hozzárendelve az erőforrás megfelelő állapotba helyezéséhez szükséges központi telepítéshez.
+Annak eldöntése, hogy mit tegyen a nem megfelelő erőforrásokkal, majdnem olyan fontos, mint annak eldöntése, hogy mit értékeljen. A nem megfelelő erőforrásokra adott minden lehetséges választ [hatásnak](../concepts/effects.md)nevezzük. A hatás szabályozza, ha a nem megfelelő erőforrás naplózott, blokkolt, adatokat csatolt, vagy egy központi telepítés takar, hogy az erőforrás visszaad egy megfelelő állapotba.
 
-A megtagadási példa a mi az a hatása, ahogy nem szeretnénk, hogy az Azure-környezetben létrehozott nem megfelelő erőforrások ne legyenek. A naplózás jó választás a házirendek hatására, hogy megtudja, milyen hatással van a szabályzat, mielőtt a rendszer megtagadja a beállítást. Az egyes hozzárendelések hatásának megváltoztatásának egyik módja a parametrizálja. A részletekért lásd az alábbi [paramétereket](#parameters) .
+Példánkban a Megtagadás az a hatás, amit szeretnénk, mivel nem szeretnénk, ha nem megfelelő erőforrásokat hoznánk létre az Azure-környezetben. Naplózás egy jó első választás a házirend-hatás határozza meg, milyen hatása van a házirend, mielőtt azt a megtagadása. Az egyik módja annak, hogy a hozzárendelésenkénti hatás módosítása könnyebb legyen, a hatás paraméterezése. Az alábbi [paramétereket](#parameters) a részletekért lásd.
 
-## <a name="compose-the-definition"></a>A definíció összeállítása
+## <a name="compose-the-definition"></a>A definíció megírása
 
-Most már megtörtént a tulajdonságok részletei és aliasa a felügyelni kívánt tervekhez. Ezután saját maga alkotja a házirend-szabályt. Ha még nem ismeri a házirend nyelvét, a hivatkozási szabályzat [definíciójának struktúrája](../concepts/definition-structure.md) a házirend-definíció strukturálása. Itt látható egy üres sablon arról, hogy a szabályzat definíciója hogyan néz ki:
+Most már a tulajdon adatait és alias, amit tervezünk kezelni. Ezután maga a politikai szabály alkotja. Ha még nem ismeri a házirend nyelvét, a [házirend-definíciós struktúra](../concepts/definition-structure.md) hivatkozási at, hogyan strukturálhatja a házirend-definíció. Íme egy üres sablon arról, hogyan néz ki egy házirend-definíció:
 
 ```json
 {
@@ -350,7 +350,7 @@ Most már megtörtént a tulajdonságok részletei és aliasa a felügyelni kív
 
 ### <a name="metadata"></a>Metaadatok
 
-Az első három összetevő a szabályzat metaadatai. Ezek az összetevők egyszerűen biztosítanak értékeket, mert tudjuk, mi hozza létre a szabályt. A [Mode](../concepts/definition-structure.md#mode) elsődlegesen a címkék és az erőforrás helye. Mivel nem kell a címkéket támogató erőforrásokra korlátozni a kiértékelést, a _minden_ értéket használni fogjuk **.**
+Az első három összetevő a házirend metaadatai. Ezek az összetevők könnyen biztosítható értékek, mivel tudjuk, mit hozunk létre a szabály. [A mód](../concepts/definition-structure.md#mode) elsősorban a címkékről és az erőforrás helyéről szól. Mivel nem kell a kiértékelést a címkéket támogató erőforrásokra korlátoznunk, az _összes_ értéket használjuk a **módhoz.**
 
 ```json
 "displayName": "Deny storage accounts not using only HTTPS",
@@ -360,7 +360,7 @@ Az első három összetevő a szabályzat metaadatai. Ezek az összetevők egysz
 
 ### <a name="parameters"></a>Paraméterek
 
-Habár nem használunk paramétert a kiértékelés módosításához, egy paraméterrel szeretnénk engedélyezni a hibaelhárítási **effektus** módosítását. Definiálunk egy **effectType** paramétert, és csak a **Megtagadás** és a **Letiltva**értékre korlátozzuk. Ez a két lehetőség megfelel az üzleti követelményeknek. A befejezett paraméterek blokk a következő példához hasonlít:
+Bár nem használtunk paramétert a kiértékelés módosítására, szeretnénk egy paramétert használni, amely lehetővé teszi a hibaelhárítás **idohatásának** módosítását. Definiálunk egy **effectType** paramétert, és csak **a Deny** and Disabled paraméterre **korlátozzuk.** Ez a két lehetőség megfelel üzleti követelményeinknek. A kész paraméterek blokk néz ki, mint ez a példa:
 
 ```json
 "parameters": {
@@ -379,14 +379,14 @@ Habár nem használunk paramétert a kiértékelés módosításához, egy param
 },
 ```
 
-### <a name="policy-rule"></a>Szabályzatbeli szabály
+### <a name="policy-rule"></a>Házirendszabály
 
-A házirend- [szabály](../concepts/definition-structure.md#policy-rule) összeállítása az egyéni szabályzat-definíció kiépítése utolsó lépése. A teszteléshez két utasítást azonosítottak:
+A [házirendszabály](../concepts/definition-structure.md#policy-rule) összeállítása az utolsó lépés az egyéni szabályzatdefiníció létrehozásában. Két kijelentést azonosítottunk, hogy teszteljük:
 
-- A Storage-fiók **típusa** **Microsoft. Storage/storageAccounts**
-- A Storage-fiók **supportsHttpsTrafficOnly** nem **igaz**
+- A tárfiók **típusa** **Microsoft.Storage/storageAccounts**
+- A tárfiók **által támogatottHttpsTrafficOnly** nem **igaz**
 
-Mivel mindkét utasításnak igaz értékűnek kell lennie, a **allOf** [logikai operátort](../concepts/definition-structure.md#logical-operators)használjuk. Statikus deklaráció helyett a **effectType** paramétert adjuk át a hatásnak. A befejezett szabály a következő példához hasonlít:
+Mivel mindkét állításnak igaznak kell lennie, az **allOf** [logikai operátort](../concepts/definition-structure.md#logical-operators)használjuk. A **effectType** paramétert statikus deklaráció helyett adja át a hatásnak. A befejezett szabály így néz ki:
 
 ```json
 "if": {
@@ -408,7 +408,7 @@ Mivel mindkét utasításnak igaz értékűnek kell lennie, a **allOf** [logikai
 
 ### <a name="completed-definition"></a>Befejezett definíció
 
-A szabályzat mindhárom részének meghatározása után itt látható a befejezett definíció:
+A politika mindhárom részével, itt van a kitöltött meghatározás:
 
 ```json
 {
@@ -451,13 +451,13 @@ A szabályzat mindhárom részének meghatározása után itt látható a befeje
 }
 ```
 
-Az elkészült definíció használatával új szabályzat hozható létre. A portál és az egyes SDK-kat (Azure CLI, Azure PowerShell és REST API) különböző módokon fogadja el a definíciót, ezért tekintse át az egyes parancsokat a helyes használat ellenőrzéséhez. Ezután rendelje hozzá a paraméteres hatás használatával a megfelelő erőforrásokhoz a Storage-fiókok biztonságának kezeléséhez.
+A kitöltött definíció új házirend létrehozásához használható. A Portál és az egyes SDK-k (Azure CLI, Azure PowerShell és REST API) különböző módokon fogadják el a definíciót, ezért tekintse át a parancsokat az egyes a helyes használat érvényesítéséhez. Ezután rendelje hozzá a paraméterezett hatás használatával a tárfiókok biztonságának kezeléséhez szükséges megfelelő erőforrásokhoz.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha elkészült ebből az oktatóanyagból erőforrásokkal dolgozik, kövesse az alábbi lépéseket, törölje a létrehozott hozzárendeléseket vagy definíciókat fent:
+Ha végzett az oktatóanyagból származó erőforrásokkal, az alábbi lépésekkel törölheti a fent létrehozott hozzárendelések vagy definíciók bármelyikét:
 
-1. Válassza a **definíciók** **(vagy** hozzárendelések) lehetőséget a Azure Policy lap bal oldalán található **authoring (szerzői műveletek** ) elemnél.
+1. Válassza **a Definíciók** (vagy **hozzárendelések,** ha egy hozzárendelést próbál törölni) lehetőséget az Azure Policy lap bal oldalán található **Szerzői** műveletek területen.
 
 1. Keresse meg az eltávolítani kívánt új kezdeményezést vagy szabályzatdefiníciót (vagy hozzárendelést).
 
@@ -468,15 +468,15 @@ Ha elkészült ebből az oktatóanyagból erőforrásokkal dolgozik, kövesse az
 Ebben az oktatóanyagban sikeresen elvégezte a következőket:
 
 > [!div class="checklist"]
-> - Az üzleti igények azonosítása
-> - Az egyes követelmények leképezve egy Azure Resource tulajdonsághoz
-> - A tulajdonság hozzárendelése egy aliashoz
-> - A használandó effektus meghatározása
-> - A szabályzat definíciójának tagjai
+> - Az üzleti követelmények azonosítása
+> - Minden követelmény tappált egy Azure-erőforrás-tulajdonsághoz
+> - A tulajdonság leképezése aliashoz
+> - Meghatározta a hatás használatát
+> - A házirend-definíció összeáll
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ezután az egyéni házirend-definíció használatával hozzon létre és rendeljen hozzá egy házirendet:
+Ezután az egyéni házirend-definíció segítségével hozzon létre és rendeljen hozzá egy házirendet:
 
 > [!div class="nextstepaction"]
-> [Szabályzat-definíció létrehozása és társítása](../how-to/programmatically-create.md#create-and-assign-a-policy-definition)
+> [Házirend-definíció létrehozása és hozzárendelése](../how-to/programmatically-create.md#create-and-assign-a-policy-definition)

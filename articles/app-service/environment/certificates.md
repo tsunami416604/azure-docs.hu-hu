@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 65fc4ed25b0fd360de8e3b1439d1766485eb2e58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ba1d06ce83d50b6f0db84d1e423e66eae98f665d
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74688642"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477497"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>Tanúsítványok és az App Service-környezet 
 
@@ -22,7 +22,7 @@ Az ASE egyetlen bérlői rendszer. Mivel egy bérlő, vannak olyan funkciók, am
 
 ## <a name="ilb-ase-certificates"></a>ILB ASE-tanúsítványok 
 
-Ha külső ASE-t használ, akkor az alkalmazások elérése az [appname] helyen található. [asename].p.azurewebsites.net. Alapértelmezés szerint minden ASEs, még az ILB ASEs, jönnek létre a tanúsítványokat, amelyek követik ezt a formátumot. Ha rendelkezik egy ILB ASE, az alkalmazások elérése alapján a tartomány nevét, amelyet az ILB ASE létrehozásakor megadott. Ahhoz, hogy az alkalmazások támogassák az SSL-t, fel kell töltenie a tanúsítványokat. Szerezzen be érvényes SSL-tanúsítványt belső hitelesítésszolgáltatók segítségével, külső kibocsátótól vásároljon tanúsítványt, vagy önaláírt tanúsítványt használjon. 
+Ha külső ASE-t használ, akkor az alkalmazások elérése az [appname] helyen található. [asename].p.azurewebsites.net. Alapértelmezés szerint minden ASEs, még az ILB ASEs, jönnek létre a tanúsítványokat, amelyek követik ezt a formátumot. Ha rendelkezik egy ILB ASE, az alkalmazások elérése alapján a tartomány nevét, amelyet az ILB ASE létrehozásakor megadott. Ahhoz, hogy az alkalmazások támogassák a TLS-t, fel kell töltenie a tanúsítványokat. Szerezzen be érvényes TLS/SSL tanúsítványt belső hitelesítésszolgáltatók segítségével, külső kibocsátótól vásároljon tanúsítványt, vagy önaláírt tanúsítványt használjon. 
 
 Az ILB ASE-vel kétféleképpen konfigurálhatja a tanúsítványokat.  Beállíthat egy helyettesítő karakter alapértelmezett tanúsítványt az ILB ASE-hez, vagy tanúsítványokat állíthat be az ASE egyes webalkalmazásaihoz.  A választott tól függetlenül a következő tanúsítványattribútumokat kell megfelelően konfigurálni:
 
@@ -58,7 +58,7 @@ Az ASE-ben üzemeltetett alkalmazások használhatják a több-bérlős App Serv
 - IP-alapú SSL, amely csak egy külső ASE támogatja.  Az ILB ASE nem támogatja az IP-alapú SSL-t.
 - A KeyVault tárolt tanúsítványai 
 
-A tanúsítványok feltöltésére és kezelésére vonatkozó utasítások az [SSL-tanúsítvány hozzáadása](../configure-ssl-certificate.md)az Azure App Service szolgáltatásban című dokumentumban érhetők el.  Ha egyszerűen konfigurálja a tanúsítványokat, hogy megfeleljenek a webalkalmazáshoz rendelt egyéni tartománynévnek, akkor ezek az utasítások elegendőek. Ha az alapértelmezett tartománynévvel rendelkező ILB ASE webalkalmazás tanúsítványát tölti fel, akkor adja meg az scm-helyet a tanúsítvány san-ban, ahogy azt korábban említettük. 
+A tanúsítványok feltöltésére és kezelésére vonatkozó utasítások az [Azure App Service TLS/SSL-tanúsítvány ának hozzáadása](../configure-ssl-certificate.md)című dokumentumban érhetők el.  Ha egyszerűen konfigurálja a tanúsítványokat, hogy megfeleljenek a webalkalmazáshoz rendelt egyéni tartománynévnek, akkor ezek az utasítások elegendőek. Ha az alapértelmezett tartománynévvel rendelkező ILB ASE webalkalmazás tanúsítványát tölti fel, akkor adja meg az scm-helyet a tanúsítvány san-ban, ahogy azt korábban említettük. 
 
 ## <a name="tls-settings"></a>TLS-beállítások 
 

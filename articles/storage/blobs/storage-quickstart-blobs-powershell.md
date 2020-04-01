@@ -7,14 +7,14 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.date: 02/26/2020
+ms.date: 03/31/2020
 ms.author: tamram
-ms.openlocfilehash: 479145f4d42c0708c109ab582e76e3691971c6ad
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3b005bc359b3c1b0cafe663b7ce2b599b10973a1
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80061400"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474000"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>Gyorsútmutató: Blobok feltöltése, letöltése és listázása a PowerShell használatával
 
@@ -28,7 +28,7 @@ Az Azure Storage eléréséhez szüksége lesz egy Azure-előfizetésre. Ha még
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Ehhez a rövid útmutatóhoz az Azure PowerShell-modul, az Az 0.7-es vagy újabb verziója szükséges. A verzió azonosításához futtassa a következőt: `Get-InstalledModule -Name Az -AllVersions | select Name,Version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket.
+Ehhez a rövid útmutatóhoz az Azure PowerShell-modul, az Az 0.7-es vagy újabb verziója szükséges. A verzió azonosításához futtassa a következőt: `Get-InstalledModule -Name Az -AllVersions | select Name,Version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket.
 
 [!INCLUDE [storage-quickstart-tutorial-intro-include-powershell](../../../includes/storage-quickstart-tutorial-intro-include-powershell.md)]
 
@@ -36,7 +36,7 @@ Ehhez a rövid útmutatóhoz az Azure PowerShell-modul, az Az 0.7-es vagy újabb
 
 A blobok minden esetben egy tárolóba lesznek feltöltve. A blobok csoportjait hasonló módon rendszerezheti, mint a fájlokat a számítógép mappáiban.
 
-Állítsa be a tároló nevét, majd hozza létre a tárolót a [New-AzStorageContainer](/powershell/module/az.storage/new-AzStoragecontainer)használatával. A fájlokhoz való nyilvános hozzáférés engedélyezéséhez állítsa `blob` értékűre az engedélyeket. A tároló neve ebben a példában: *quickstartblobs*.
+Állítsa be a tároló nevét, majd hozza létre a tárolót a [New-AzStorageContainer](/powershell/module/az.storage/new-azstoragecontainer)használatával. A fájlokhoz való nyilvános hozzáférés engedélyezéséhez állítsa `blob` értékűre az engedélyeket. A tároló neve ebben a példában: *quickstartblobs*.
 
 ```powershell
 $containerName = "quickstartblobs"
@@ -47,7 +47,7 @@ New-AzStorageContainer -Name $containerName -Context $ctx -Permission blob
 
 A Blob Storage támogatja a blokkblobokat, a hozzáfűző blobokat és a lapblobokat. Az IaaS típusú virtuális gépek biztonsági mentéséhez használt VHD-fájlok lapblobok. A hozzáfűző blobok a naplózáshoz használhatók, például amikor egy fájlba szeretne írni, majd folyamatosan újabb információkat szeretne hozzáadni. A blobtárolókban tárolt fájlok a legtöbb esetben blokkblobok. 
 
-Fájlok blokkblobba való feltöltéséhez szerezze be a tároló hivatkozását, majd a blokkblob hivatkozását az adott tárolóban. Miután rendelkezik a blob hivatkozással, adatokat tölthet fel a [Set-AzStorageBlobContent](/powershell/module/az.storage/set-AzStorageblobcontent)használatával. Ez az eljárás létrehozza a blobot, ha az még nem létezett, vagy felülírja azt, ha már igen.
+Fájlok blokkblobba való feltöltéséhez szerezze be a tároló hivatkozását, majd a blokkblob hivatkozását az adott tárolóban. Miután rendelkezik a blob hivatkozással, adatokat tölthet fel a [Set-AzStorageBlobContent](/powershell/module/az.storage/set-azstorageblobcontent)használatával. Ez az eljárás létrehozza a blobot, ha az még nem létezett, vagy felülírja azt, ha már igen.
 
 A következő példák feltölteni *Image001.jpg* és *Image002.png* a *D:\\_TestImages* mappát a helyi lemezen a létrehozott tárolóba.
 
@@ -69,7 +69,7 @@ Mielőtt továbblépne, töltsön fel annyi fájlt, amennyit csak szeretne.
 
 ## <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
 
-A [Get-AzStorageBlob](/powershell/module/az.storage/get-AzStorageblob)használatával a tárolóban lévő blobok listájának beszereznie. A példában csak a feltöltött blobok neve látható.
+A [Get-AzStorageBlob](/powershell/module/az.storage/get-azstorageblob)használatával a tárolóban lévő blobok listájának beszereznie. A példában csak a feltöltött blobok neve látható.
 
 ```powershell
 Get-AzStorageBlob -Container $ContainerName -Context $ctx | select Name
@@ -77,7 +77,7 @@ Get-AzStorageBlob -Container $ContainerName -Context $ctx | select Name
 
 ## <a name="download-blobs"></a>Blobok letöltése
 
-Töltse le a blobokat a helyi lemezre. Minden letölteni kívánt blobhoz állítsa be a nevet, és hívja meg a [Get-AzStorageBlobContent metódust](/powershell/module/az.storage/get-AzStorageblobcontent) a blob letöltéséhez.
+Töltse le a blobokat a helyi lemezre. Minden letölteni kívánt blobhoz állítsa be a nevet, és hívja meg a [Get-AzStorageBlobContent metódust](/powershell/module/az.storage/get-azstorageblobcontent) a blob letöltéséhez.
 
 Ez a példa letölti a blobokat *D:\\_TestImages\Letöltések* a helyi lemezen. 
 

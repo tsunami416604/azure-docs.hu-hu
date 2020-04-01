@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2b21061e8a939b91c637ef05bbe6375c0b3f82e8
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 2b09a7765cff20fb49ce6ab3d1e7bce2e15f0e9e
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80383973"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475213"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Windows Java-alkalmazás konfigurálása az Azure App Service szolgáltatáshoz
 
@@ -74,7 +74,7 @@ Az Azure App Service támogatja a dobozon kívüli finomhangolást és testresza
 
 - [Alkalmazásbeállítások konfigurálása](configure-common.md#configure-app-settings)
 - [Egyéni tartomány beállítása](app-service-web-tutorial-custom-domain.md)
-- [SSL-kötések konfigurálása](configure-ssl-bindings.md)
+- [TLS-kötések konfigurálása](configure-ssl-bindings.md)
 - [CDN hozzáadása](../cdn/cdn-add-to-web-app.md)
 - [A Kudu webhely konfigurálása](https://github.com/projectkudu/kudu/wiki/Configurable-settings)
 
@@ -183,7 +183,7 @@ A szolgáltatás letiltásához hozzon `WEBSITE_AUTH_SKIP_PRINCIPAL` létre egy 
 
 ### <a name="configure-tlsssl"></a>TLS/SSL konfigurálása
 
-Kövesse a [Biztonságos egyéni DNS-név az Azure App Service-ben egy SSL-kötéssel](configure-ssl-bindings.md) című útmutatóban egy meglévő SSL-tanúsítvány feltöltéséhez és az alkalmazás tartománynevéhez kötéséhez. Alapértelmezés szerint az alkalmazás továbbra is engedélyezi a HTTP-kapcsolatokat az oktatóanyag ban az SSL és a TLS kényszerítéséhez szükséges konkrét lépések végrehajtásához.
+Kövesse a [Biztonságos egyéni DNS-név az Azure App Service-ben egy TLS-kötéssel](configure-ssl-bindings.md) című útmutatóban egy meglévő TLS/SSL-tanúsítvány feltöltéséhez, és az alkalmazás tartománynevéhez kötéséhez. Alapértelmezés szerint az alkalmazás továbbra is engedélyezi a HTTP-kapcsolatokat az oktatóanyag ban az SSL és a TLS kényszerítéséhez szükséges konkrét lépések végrehajtásához.
 
 ### <a name="use-keyvault-references"></a>KeyVault-hivatkozások használata
 

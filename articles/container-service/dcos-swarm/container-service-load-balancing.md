@@ -1,5 +1,5 @@
 ---
-title: ELAVULT Terheléselosztási tárolók az Azure DC/OS-fürtben
+title: (ELAVULT) Terheléselosztási tárolók az Azure DC/OS fürtben
 description: Több tárolóra kiterjedő terheléselosztás egy Azure Container Service DC/OS-fürtben.
 author: rgardler
 ms.service: container-service
@@ -8,17 +8,17 @@ ms.date: 06/02/2017
 ms.author: rogardle
 ms.custom: mvc
 ms.openlocfilehash: a8f863f16888e6eca2dbc72c5dd612c38edbe46e
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78273382"
 ---
-# <a name="deprecated-load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>ELAVULT Tárolók terheléselosztása egy Azure Container Service DC/OS-fürtben
+# <a name="deprecated-load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>(ELAVULT) Terheléselosztási tárolók egy Azure Container Service DC/OS-fürtben
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-Ebben a cikkben azt vizsgáljuk meg, hogyan lehet belső terheléselosztót létrehozni a Marathon-LB-vel egy, a DC/OS által kezelt Azure Container Service szolgáltatásban. Ez a konfiguráció lehetőséget nyújt az alkalmazások horizontális skálázására. Ezenkívül lehetővé teszi a nyilvános és a privát ügynökös fürtök használatát. Ehhez a terheléselosztókat a nyilvános fürtbe kell helyezni, az alkalmazástárolókat pedig a privát fürtbe. Ebben az oktatóanyagban az alábbiakat végezte el:
+Ebben a cikkben azt vizsgáljuk meg, hogyan lehet belső terheléselosztót létrehozni a Marathon-LB-vel egy, a DC/OS által kezelt Azure Container Service szolgáltatásban. Ez a konfiguráció lehetőséget nyújt az alkalmazások horizontális skálázására. Ezenkívül lehetővé teszi a nyilvános és a privát ügynökös fürtök használatát. Ehhez a terheléselosztókat a nyilvános fürtbe kell helyezni, az alkalmazástárolókat pedig a privát fürtbe. Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
 > * Egy Marathon Load Balancer konfigurálása
@@ -27,7 +27,7 @@ Ebben a cikkben azt vizsgáljuk meg, hogyan lehet belső terheléselosztót lét
 
 Az oktatóanyagban ismertetett lépések végrehajtásához szüksége lesz egy ACS DC/OS-fürtre. Amennyiben szükséges, [ezzel a mintaszkripttel](./../kubernetes/scripts/container-service-cli-deploy-dcos.md) létrehozhat egyet.
 
-Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli). 
+Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha frissíteni szeretne, tekintse meg [az Azure CLI telepítését ismertető]( /cli/azure/install-azure-cli) szakaszt. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -43,7 +43,7 @@ Az **Azure Load Balancer** nyilvános belépési pontokat biztosít (amelyekhez 
 
 A Marathon Load Balancer dinamikusan újrakonfigurálja magát az üzembe helyezett tárolók alapján. A tárolók és az ügynökök elvesztése sem zavarja meg a működését. Ilyen esetekben az Apache Mesos máshol indítja újra a tárolót, és a Marathon-LB alkalmazkodik a változáshoz.
 
-Nyissa meg a [https://shell.azure.com](https://shell.azure.com) a Cloud Shell megnyitásához a böngészőben.
+Nyissa [https://shell.azure.com](https://shell.azure.com) meg a Cloud Shell t a böngészőjében.
 
 A Marathon Load Balancer a nyilvános ügynök fürtjén való telepítéséhez futtassa a következő parancsot.
 
@@ -97,7 +97,7 @@ Ezután hozzon létre egy fájlt *hello-web.json* néven, és másolja bele a k�
 }
 ```
 
-A DC/OS CLI-vel futtassa az alkalmazást. Alapértelmezés szerint a Marathon üzembe helyezi az alkalmazást a privát fürtön. Ez azt jelenti, hogy a fenti üzembe helyezés csak a terheléselosztóról érhető el, ami általában a kívánt viselkedés.
+A DC/OS CLI-vel futtassa az alkalmazást. Alapértelmezés szerint a Marathon telepíti az alkalmazást a privát fürtre. Ez azt jelenti, hogy a fenti üzembe helyezés csak a terheléselosztóról érhető el, ami általában a kívánt viselkedés.
 
 ```console
 dcos marathon app add hello-web.json
@@ -113,7 +113,7 @@ Alapértelmezés szerint az Azure Load Balancer a 80-as, 8080-as és 443-as port
 
 De ha másik portot használ, ciklikus szabályt és egy hálózatfigyelőt kell hozzáadnia a terheléselosztón a használt porthoz. Ezt az [Azure parancssori felületén](../../azure-resource-manager/xplat-cli-azure-resource-manager.md) teheti meg az `azure network lb rule create` és `azure network lb probe create` parancsokkal.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóprogramban megismerhette az ACS terheléselosztását a Marathon és az Azure Load Balancer segítségével, és a következő műveleteket végezte el:
 

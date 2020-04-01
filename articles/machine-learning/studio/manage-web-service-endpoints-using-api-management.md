@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: cbe01ee9b8edeab349db484cea6c25dca32bf213
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7064101c21c11b48d8616dbeaa2fd9075660fd3b
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218028"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473468"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>Az Azure Machine Learning Studio (klasszikus) webes szolgáltatásainak kezelése az API Management használatával
 
@@ -217,7 +217,7 @@ A kísérlet közzétételéhez kattintson az **Igen** gombra.
 ![Igen-to-közzé](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
 
 ### <a name="test-the-web-service"></a>A webszolgáltatás tesztelése
-Az AzureML-webszolgáltatás RSS (request/response service) és BES (batch execution service) végpontokból áll. Az RSS szinkron végrehajtásra alkalmas. A BES az aszinkron feladatvégrehajtáshoz használható. Ha tesztelni szeretné a webszolgáltatást az alábbi minta Python-forrással, előfordulhat, hogy le kell töltenie és telepítenie kell az Azure SDK python-t (lásd: [Python telepítése).](/azure/python/python-sdk-azure-install)
+Az AzureML-webszolgáltatás RSS (request/response service) és BES (batch execution service) végpontokból áll. Az RSS szinkron végrehajtásra alkalmas. A BES az aszinkron feladatvégrehajtáshoz használható. Ha tesztelni szeretné a webszolgáltatást az alábbi minta Python-forrással, előfordulhat, hogy le kell töltenie és telepítenie kell az Azure SDK python-t (lásd: [Python telepítése).](/azure/developer/python/azure-sdk-install)
 
 Szüksége lesz a **munkaterületre,** a **szolgáltatásra**és **a kísérlet api_key** az alábbi mintaforráshoz. A munkaterületet és a szolgáltatást a webszolgáltatás irányítópultján a **Kérés/válasz** vagy a **Kötegelt végrehajtás** elemre kattintva találhatja meg.
 

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integráció a helyettessel | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a helyettes között.
+title: 'Oktatóanyag: Az Azure Active Directory integrációja a helyettessel | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a Helyettes között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,97 +16,97 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33830ce5822b2edee345cf58fc6f2a53d3c863fa
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: cd021b9547048e9f5218ce4f2b8b110b15d05963
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227605"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80048559"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-deputy"></a>Oktatóanyag: Azure Active Directory integráció a helyettessel
+# <a name="tutorial-azure-active-directory-integration-with-deputy"></a>Oktatóanyag: Az Azure Active Directory integrációja helyettessel
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a helyettest Azure Active Directory (Azure AD) használatával.
-Az Azure AD-vel való integráció az alábbi előnyöket nyújtja:
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a helyettest az Azure Active Directoryval (Azure AD).
+A helyettes integrálása az Azure AD-vel a következő előnyöket nyújtja:
 
-* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a helyetteshez.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a helyettes (egyszeri bejelentkezés) szolgáltatásba az Azure AD-fiókkal.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Az Azure AD-ben szabályozhatja, hogy ki férhet hozzá a helyetteshez.
+* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve a helyettes (Single Sign-On) az Azure AD-fiókok.
+* Fiókjait egyetlen központi helyen kezelheti – az Azure Portalon.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha további részleteket szeretne megtudni az SaaS-alkalmazások Azure AD-vel való integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció helyettessel való konfigurálásához a következő elemek szükségesek:
+Az Azure AD-integráció konfigurálásához a helyettessel a következő elemekre van szükség:
 
-* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
-* Egyszeri bejelentkezésre engedélyezett előfizetés helyettese
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) egy hónapos próbaverziót kaphat
+* Egyszeri bejelentkezéssel rendelkező helyettes előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben.
 
-* A helyettes támogatja az **SP** -t és a **IDENTITÁSSZOLGÁLTATÓ** kezdeményezett SSO
+* Helyettes támogatja **az SP-t** és az **IDP** kezdeményezte az SSO-t
 
-## <a name="adding-deputy-from-the-gallery"></a>Helyettes hozzáadása a gyűjteményhez
+## <a name="adding-deputy-from-the-gallery"></a>Helyettes hozzáadása a galériából
 
-Az Azure AD-beli helyettes integrálásának konfigurálásához hozzá kell adnia a katalógushoz tartozó helyettest a felügyelt SaaS-alkalmazások listájához.
+A helyettes azure AD-be való integrálásának konfigurálásához hozzá kell adnia a katalógusból a helyettest a felügyelt SaaS-alkalmazások listájához.
 
-**A következő lépések végrehajtásával adhat hozzá helyettest a katalógusból:**
+**Ha helyettest szeretne hozzáadni a galériából, hajtsa végre az alábbi lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
+1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen kattintson az **Azure Active Directory** ikonjára.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![Az Azure Active Directory gombja](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+2. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza a **Minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
+3. Új alkalmazás hozzáadásához kattintson az **Új alkalmazás** gombra a párbeszéd ablak tetején.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![Az Új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **helyettes**kifejezést, válassza az eredmény panel **helyettes** elemét, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be az **Helyettes**, Válassza **az Eredmény** panelhelyettes elemét, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![Helyettes az eredmények listájában](common/search-new-app.png)
+     ![Helyettes az eredménylistában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálhatja és tesztelheti egy **Britta Simon**nevű teszt felhasználó alapján.
-Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a hozzá tartozó kapcsolódó felhasználó közötti kapcsolat létesítése szükséges.
+Ebben a szakaszban konfigurálhatja és tesztelheti az Azure AD egyszeri bejelentkezését a Helyettessel egy **Britta Simon**nevű tesztfelhasználó alapján.
+Egyszeri bejelentkezés a munka, az Azure AD-felhasználó és a kapcsolódó felhasználó helyettes közötti kapcsolat létre kell hozni.
 
-Az Azure AD egyszeri bejelentkezés helyettessel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
-1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. Az **[egyszeri bejelentkezés konfigurálása](#configure-deputy-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
-4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
-5. **[Hozzon létre egy felhasználó-helyettest](#create-deputy-test-user)** , amely a felhasználó Azure ad-képviseletéhez kapcsolódó Britta Simon-helyettese lesz.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+1. **[Konfigurálja az Azure AD egyszeri bejelentkezést](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. **[Konfigurálja helyettes single sign-on](#configure-deputy-single-sign-on)** -, hogy konfigurálja az egyszeri bejelentkezés beállításait az alkalmazás oldalán.
+3. **[Hozzon létre egy Azure AD-tesztfelhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének teszteléséhez Britta Simonnal.
+4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi Britta Simon azure AD egyszeri bejelentkezés.
+5. **[Hozzon létre helyettes teszt felhasználó](#create-deputy-test-user)** -, hogy egy megfelelője Britta Simon helyettes, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
 
-Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
+Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon.
 
-Az Azure AD egyszeri bejelentkezés helyettessel való konfigurálásához hajtsa végre a következő lépéseket:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)az alkalmazás-integráció **helyettese** lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az [Azure Portalon](https://portal.azure.com/)a **Helyettes** alkalmazásintegrációlapon válassza az **Egyszeri bejelentkezés**lehetőséget.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+    ![Egyszeri bejelentkezési kapcsolat konfigurálása](common/select-sso.png)
 
-2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
+2. Az **Egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza **az SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezésválasztó mód](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson a **Szerkesztés** ikonra az **Egyszerű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
+4. Az **Egyszerű SAML-konfiguráció** szakaszban Ha az alkalmazást **IDP** által kezdeményezett módban kívánja konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![A tartomány és az URL-címek egyszeri bejelentkezési adatainak helyettese](common/idp-intiated.png)
+    ![Helyettes domain és URL-ek egyszeri bejelentkezési információk](common/idp-intiated.png)
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
+    a. Az **Azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:
 
     |  |
     | ----|
@@ -126,7 +126,7 @@ Az Azure AD egyszeri bejelentkezés helyettessel való konfigurálásához hajts
     | `https://<subdomain>.<region>.ent-an.deputy.com` |
     | `https://<subdomain>.<region>.deputy.com` |
 
-    b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
+    b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:
     
     | |
     |----|
@@ -146,146 +146,146 @@ Az Azure AD egyszeri bejelentkezés helyettessel való konfigurálásához hajts
     | `https://<subdomain>.<region>.ent-an.deputy.com/exec/devapp/samlacs` |
     | `https://<subdomain>.<region>.deputy.com/exec/devapp/samlacs` |
 
-5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
+5. Kattintson **a További URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** által kezdeményezett módban kívánja konfigurálni:
 
-    ![A tartomány és az URL-címek egyszeri bejelentkezési adatainak helyettese](common/metadata-upload-additional-signon.png)
+    ![Helyettes domain és URL-ek egyszeri bejelentkezési információk](common/metadata-upload-additional-signon.png)
 
-    A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<your-subdomain>.<region>.deputy.com`
+    A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<your-subdomain>.<region>.deputy.com`
 
     >[!NOTE]
-    > A helyettes régió utótagja nem kötelező, vagy az alábbiak valamelyikét kell használnia: Au | Na | EU | mint | La | AF | a | ENT-au | ENT-na | ENT-EU | ENT-as | ENT – La | ENT – AF | ENT – egy
+    > Helyettes régió utótag nem kötelező, vagy meg kell használni az egyik ilyen: au | na | eu |la |af |an |ent-au |ent-na |ent-eu |ent-as | ent-la | ent-af | ent-an
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek megszerzéséhez forduljon a [helyettes ügyfél-támogatási csapathoz](https://www.deputy.com/call-centers-customer-support-scheduling-software) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Lépjen kapcsolatba [az ügyfél-támogató csoport helyettesével,](https://www.deputy.com/call-centers-customer-support-scheduling-software) hogy megkapja ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
 
-6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+6. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány** szakaszában kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállításokból a követelménynek megfelelően, és mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
+    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-7. A **beállítás helyettese** szakaszban másolja a megfelelő URL-címeket a követelmények szerint.
+7. A **Helyettes beállítása** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény nek megfelelően.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
-    b. Azure ad-azonosító
+    b. Azure-hirdetésazonosító
 
-    c. Kijelentkezési URL
+    c. Kijelentkezés URL-címe
 
-### <a name="configure-deputy-single-sign-on"></a>Az egyszeri bejelentkezés konfigurálása
+### <a name="configure-deputy-single-sign-on"></a>Egyszeri bejelentkezés helyettes ének konfigurálása
 
-1. Navigáljon a következő URL-címre:[https://(az-altartomány). helyettes. com/exec/config/system_config]( https://(your-subdomain).deputy.com/exec/config/system_config). Lépjen a **biztonsági beállítások** menüpontra, majd kattintson a **Szerkesztés**elemre.
+1. Keresse meg a`https://(your-subdomain).deputy.com/exec/config/system_config`következő URL-címet: . Nyissa meg a **Biztonsági beállítások lapot,** és kattintson **a Szerkesztés gombra.**
    
     ![Egyszeri bejelentkezés konfigurálása](./media/deputy-tutorial/tutorial_deputy_004.png)
 
-2. A **biztonsági beállítások** lapon végezze el az alábbi lépéseket.
+2. Ezen a **Biztonsági beállítások** lapon hajtsa végre az alábbi lépéseket.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/deputy-tutorial/tutorial_deputy_005.png)
     
-    a. Engedélyezze a **közösségi bejelentkezést**.
+    a. **Közösségi bejelentkezés**engedélyezése.
    
-    b. Nyissa meg Azure Portal a Jegyzettömbben letöltött Base64-kódolású tanúsítványt, másolja a vágólapra a tartalmát, majd illessze be az **OpenSSL-tanúsítvány** szövegmezőbe.
+    b. Nyissa meg az Azure Portalról letöltött Base64-alapú tanúsítványt a jegyzettömbben, másolja annak tartalmát a vágólapra, majd illessze be az **OpenSSL tanúsítvány** szövegdobozába.
    
-    c. Az SAML SSO URL szövegmezőbe írja be a következőt: `https://<your subdomain>.deputy.com/exec/devapp/samlacs?dpLoginTo=<saml sso url>`
+    c. Az SAML SSO URL-cím ének szövegmezőbe írja be a`https://<your subdomain>.deputy.com/exec/devapp/samlacs?dpLoginTo=<saml sso url>`
     
-    d. Az SAML SSO URL szövegmezőben cserélje le a `<your subdomain>`t az altartományra.
+    d. Az SAML SSO URL-cím `<your subdomain>` mezőjében cserélje le az altartományra.
    
-    e. Az SAML SSO URL szövegmezőben cserélje le a `<saml sso url>` elemet a Azure Portalból másolt **bejelentkezési URL-címre** .
+    e. Az SAML SSO URL-cím `<saml sso url>` szövegmezőjében cserélje le az Azure Portalról másolt **bejelentkezési URL-címet.**
    
-    f. Kattintson a **Beállítások mentése**gombra.
+    f. Kattintson **a Beállítások mentése gombra.**
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása 
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalon Britta Simon.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Az Azure Portalon a bal oldali ablaktáblában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd az **Összes felhasználó**lehetőséget.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+    ![A "Felhasználók és csoportok" és a "Minden felhasználó" linkek](common/users.png)
 
-2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+2. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
 
     ![Új felhasználó gomb](common/new-user.png)
 
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
+3. A Felhasználó tulajdonságokban hajtsa végre a következő lépéseket.
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+    ![A Felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
+    a. A **Név** mezőbe írja be **a BrittaSimon**értéket.
   
-    b. A **Felhasználónév** mezőbe írja be a következőt: **brittasimon\@yourcompanydomain. Extension**  
+    b. A **Felhasználónév** mezőbe írja be **a\@brittasimon yourcompanydomain.extension típusú felhasználónév mezőt.**  
     Például: BrittaSimon@contoso.com
 
-    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
+    c. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson **a Létrehozás gombra.**
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a helyettesnek.
+Ebben a szakaszban engedélyezi Britta Simon azure egyszeri bejelentkezés használatával hozzáférést biztosít a helyettes.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **helyettes**lehetőséget.
+1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, válassza a **Minden alkalmazás**lehetőséget, majd válassza az **Helyettes**lehetőséget.
 
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **helyettes**elemet.
+2. Az alkalmazások listájában válassza a **Helyettes**lehetőséget.
 
-    ![A helyettes hivatkozás az alkalmazások listájában](common/all-applications.png)
+    ![A helyettes link az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **Felhasználók és csoportok**lehetőséget.
 
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+    ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
+4. Kattintson a **Felhasználó hozzáadása** gombra, majd a **Hozzárendelés hozzáadása** **párbeszédpanelen** válassza a Felhasználók és csoportok lehetőséget.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+    ![A Hozzárendelés hozzáadása ablaktábla](common/add-assign-user.png)
 
-5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
+5. A **Felhasználók és csoportok** párbeszédpanelen válassza **a Britta Simon** elemet a Felhasználók listában, majd kattintson a kijelölés gombra a képernyő alján. **Select**
 
-6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+6. Ha az SAML-helyességben szerepkörértéket vár, akkor a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó megfelelő szerepkörét a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
 
-7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+7. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
 
-### <a name="create-deputy-test-user"></a>Hozzon létre egy ellenőrző felhasználót
+### <a name="create-deputy-test-user"></a>Teszthelyettes felhasználó létrehozása
 
-Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Helyettesbe, a helyettesnek kell kiépíteni őket. Helyettes esetén a kiépítés manuális feladat.
+Ahhoz, hogy az Azure AD-felhasználók bejelentkezhessenek a helyettes, ki kell építeni a helyettes. Helyettes esetén a kiépítés manuális feladat.
 
-#### <a name="to-provision-a-user-account-perform-the-following-steps"></a>Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:
+#### <a name="to-provision-a-user-account-perform-the-following-steps"></a>Felhasználói fiók kiépítéséhez hajtsa végre az alábbi lépéseket:
 
-1. Jelentkezzen be a vállalati webhelyre rendszergazdaként.
+1. Jelentkezzen be a helyettes cég honlapján, mint egy rendszergazda.
 
-2. A felső navigációs ablaktáblán kattintson a **személyek**elemre.
+2. A felső navigációs ablakban kattintson a **Kapcsolatok**gombra.
    
-    ![Személyek](./media/deputy-tutorial/tutorial_deputy_001.png "Emberek")
+    ![People](./media/deputy-tutorial/tutorial_deputy_001.png "People")
 
-3. Kattintson a **személyek hozzáadása** gombra, és kattintson az **egyetlen személy hozzáadása**lehetőségre.
+3. Kattintson a **Személyek hozzáadása** gombra, majd a Személyek **hozzáadása gombra.**
    
     ![Személyek hozzáadása](./media/deputy-tutorial/tutorial_deputy_002.png "Személyek hozzáadása")
 
-4. Hajtsa végre a következő lépéseket, és kattintson a **mentés & meghívás**gombra.
+4. Hajtsa végre az alábbi lépéseket, és kattintson **a & gombra.**
    
     ![Új felhasználó](./media/deputy-tutorial/tutorial_deputy_003.png "Új felhasználó")
 
-    a. A **név** szövegmezőbe írja be a felhasználó nevét (például **BrittaSimon**).
+    a. A **Név** mezőbe írja be a felhasználó nevét, például **BrittaSimon**.
    
-    b. Az **e-mail** szövegmezőbe írja be a kiépíteni kívánt Azure ad-fiók e-mail-címét.
+    b. Az **E-mail** szövegmezőbe írja be a kiépíteni kívánt Azure AD-fiók e-mail címét.
    
-    c. A **Work on** szövegmezőbe írja be a vállalat nevét.
+    c. A **Munka a szövegmezőben** írja be a vállalkozás nevét.
    
-    d. Kattintson a **mentés & meghívás** gombra.
+    d. Kattintson **& Gombra, & meghívót.**
 
-5. Az Azure AD-fiók tulajdonosa egy e-mailt kap, és egy hivatkozást követ, amely megerősíti a fiókját, mielőtt az aktívvá válna. Az Azure AD felhasználói fiókjainak kiépítéséhez bármilyen más, a helyettes által biztosított felhasználói fiók létrehozási eszközét vagy API-t használhat.
+5. Az Azure AD-fiók tulajdonosa kap egy e-mailt, és egy linket követ, hogy erősítse meg a fiók, mielőtt aktívvá válik. Használhatja bármely más helyettes felhasználói fiók létrehozása eszközök vagy API-k által biztosított Helyettes azure AD felhasználói fiókok kiépítése.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
 
-Amikor a hozzáférési panelen a helyettes csempére kattint, automatikusan be kell jelentkeznie arra a helyettesre, amelyhez az SSO-t beállította. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor a Hozzáférési panelen az Helyettes csempére kattint, automatikusan be kell jelentkeznie arra a helyettesre, amelyhez az SSO-t beállította. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

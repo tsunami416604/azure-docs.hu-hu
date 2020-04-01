@@ -4,12 +4,12 @@ description: A QnA Maker szolgáltatással kapcsolatos leggyakoribb kérdések k
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: diberry
-ms.openlocfilehash: e002efe74bf7bcd3d944b01b0a25a731a2db3f66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 310cfe0cc8c1f647c09b8e0efb435a1ab326ff62
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284262"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474956"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>A QnA Maker hibáinak elhárítása
 
@@ -30,7 +30,7 @@ További információ [a tarifacsomagokról.](Concepts/azure-resources.md)
 <details>
 <summary><b>A QnAMaker szolgáltatás végpontjának beolvasása</b></summary>
 
-**Válasz:** A QnAMaker szolgáltatás végpontja hibakereséshez hasznos, amikor kapcsolatba lép a QnAMaker támogatásával vagy a UserVoice-val. A végpont egy URL-cím https://your-resource-name.azurewebsites.netezen a képernyőn: .
+**Válasz:** A QnAMaker szolgáltatás végpontja hibakereséshez hasznos, amikor kapcsolatba lép a QnAMaker támogatásával vagy a UserVoice-val. A végpont egy URL-cím `https://your-resource-name.azurewebsites.net`ezen a képernyőn: .
 
 1. A QnAMaker szolgáltatás (erőforráscsoport) megnyitva az [Azure Portalon](https://portal.azure.com)
 

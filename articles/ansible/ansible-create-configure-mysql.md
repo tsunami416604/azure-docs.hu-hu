@@ -1,21 +1,21 @@
 ---
-title: Oktatóanyag – adatbázisok konfigurálása Azure Database for MySQL Ansible használatával
+title: Oktatóanyag – Adatbázisok konfigurálása a MySQL Azure-adatbázisában az Ansible használatával
 description: Megtudhatja, hogyan hozhat létre és konfigurálhat egy Azure Database for MySQL-kiszolgálót az Ansible használatával
 keywords: ansible, azure, devops, bash, forgatókönyv, mysql, adatbázis
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 9cd574417733518b993bb242c2c168aba338e34a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78247873"
 ---
-# <a name="tutorial-configure-databases-in-azure-database-for-mysql-using-ansible"></a>Oktatóanyag: adatbázisok konfigurálása Azure Database for MySQL Ansible használatával
+# <a name="tutorial-configure-databases-in-azure-database-for-mysql-using-ansible"></a>Oktatóanyag: Adatbázisok konfigurálása az Azure Database for MySQL-ben az Ansible használatával
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
 
-A [Azure Database for MySQL](/azure/mysql/overview) egy, a MySQL Community Edition-re épülő, kapcsolódó adatbázis-szolgáltatás. A Azure Database for MySQL lehetővé teszi a MySQL-adatbázisok kezelését a web Appsben.
+[Az Azure Database for MySQL](/azure/mysql/overview) egy relációs adatbázis-szolgáltatás, amely a MySQL Community Edition-en alapul. Az Azure Database for MySQL lehetővé teszi a MySQL-adatbázisok kezelését a webalkalmazásokban.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
@@ -24,9 +24,9 @@ A [Azure Database for MySQL](/azure/mysql/overview) egy, a MySQL Community Editi
 > * MySql-kiszolgáló létrehozása
 > * MySql-adatbázis létrehozása
 > * Tűzfalszabály konfigurálása úgy, hogy egy külső alkalmazás csatlakozhasson a kiszolgálóhoz
-> * Kapcsolódjon a MySql-kiszolgálóhoz a Azure Cloud Shell
-> * A rendelkezésre álló MySQL-kiszolgálók lekérdezése
-> * A csatlakoztatott kiszolgálókon lévő összes adatbázis listázása
+> * Csatlakozás mysql-kiszolgálóhoz az Azure Cloud Shellből
+> * Az elérhető MySQL-kiszolgálók lekérdezése
+> * A csatlakoztatott kiszolgálók összes adatbázisának listázása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -35,7 +35,7 @@ A [Azure Database for MySQL](/azure/mysql/overview) egy, a MySQL Community Editi
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Az ebben a szakaszban található forgatókönyv-kód egy Azure-erőforráscsoportot hoz létre. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.  
+Ebben a szakaszban a forgatókönyv-kód létrehoz egy Azure-erőforráscsoportot. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.  
 
 Mentse a következő forgatókönyvet `rg.yml` néven:
 
@@ -51,12 +51,12 @@ Mentse a következő forgatókönyvet `rg.yml` néven:
         location: "{{ location }}"
 ```
 
-A forgatókönyv futtatása előtt tekintse meg a következő megjegyzéseket:
+A forgatókönyv futtatása előtt tekintse meg az alábbi megjegyzéseket:
 
 * Létrejön egy `myResourceGroup` nevű erőforráscsoport.
-* Az erőforráscsoport a `eastus` helyen jön létre:
+* Az erőforráscsoport a `eastus` következő helyen jön létre:
 
-Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
+Futtassa a `ansible-playbook` forgatókönyvet a következő paranccsal:
 
 ```bash
 ansible-playbook rg.yml
@@ -64,9 +64,9 @@ ansible-playbook rg.yml
 
 ## <a name="create-a-mysql-server-and-database"></a>MySQL-kiszolgáló és -adatbázis létrehozása
 
-Az ebben a szakaszban található forgatókönyv-kód egy MySQL-kiszolgálót és egy Azure Database for MySQL példányt hoz létre. Az új MySQL-kiszolgáló egy 5. generációs alapszintű kiszolgáló egy virtuális mag, amelynek neve `mysqlserveransible`. Az adatbázis-példány neve `mysqldbansible`.
+Ebben a szakaszban a forgatókönyv-kód létrehoz egy MySQL-kiszolgálót és egy Azure-adatbázist a MySQL-példányhoz. Az új MySQL szerver egy Gen 5 alapcélú szerver `mysqlserveransible`egy virtuális maggal, és neve . Az adatbázispéldány `mysqldbansible`neve .
 
-További információ a díjszabási csomagokról: [Azure Database for MySQL árképzési szintek](/azure/mysql/concepts-pricing-tiers). 
+A tarifacsomagokról az [Azure Database for MySQL tarifacsomagok](/azure/mysql/concepts-pricing-tiers)című témakörben talál további információt. 
 
 Mentse a következő forgatókönyvet `mysql_create.yml` néven:
 
@@ -100,12 +100,12 @@ Mentse a következő forgatókönyvet `mysql_create.yml` néven:
         name: "{{ mysqldb_name }}"
 ```
 
-A forgatókönyv futtatása előtt tekintse meg a következő megjegyzéseket:
+A forgatókönyv futtatása előtt tekintse meg az alábbi megjegyzéseket:
 
-* A `vars` szakaszban a `mysqlserver_name` értékének egyedinek kell lennie.
-* A `vars` szakaszban cserélje le a `<server_admin_password>` jelszót.
+* A `vars` szakaszban az `mysqlserver_name` értéknek egyedinek kell lennie.
+* A `vars` szakaszban `<server_admin_password>` cserélje le egy jelszóra.
 
-Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
+Futtassa a `ansible-playbook` forgatókönyvet a következő paranccsal:
 
 ```bash
 ansible-playbook mysql_create.yml
@@ -113,9 +113,9 @@ ansible-playbook mysql_create.yml
 
 ## <a name="configure-a-firewall-rule"></a>Tűzfalszabály konfigurálása
 
-A kiszolgálói szintű tűzfalszabály lehetővé teszi, hogy egy külső alkalmazás az Azure MySQL szolgáltatás tűzfala segítségével csatlakozhasson a kiszolgálóhoz. Külső alkalmazások például a `mysql` parancssori eszköz és a MySQL Workbench.
+A kiszolgálószintű tűzfalszabály lehetővé teszi, hogy egy külső alkalmazás az Azure MySQL szolgáltatás tűzfalán keresztül csatlakozzon a kiszolgálóhoz. Külső alkalmazások például `mysql` a parancssori eszköz és a MySQL Workbench.
 
-Az ebben a szakaszban szereplő forgatókönyv-kód egy `extenalaccess` nevű tűzfalszabály létrehozása, amely bármely külső IP-címről engedélyezi a kapcsolatokat. 
+Ebben a szakaszban a forgatókönyv-kód `extenalaccess` létrehoz egy tűzfalszabályt, amely lehetővé teszi a külső IP-címről érkező kapcsolatokat. 
 
 Mentse a következő forgatókönyvet `mysql_firewall.yml` néven:
 
@@ -141,13 +141,13 @@ Mentse a következő forgatókönyvet `mysql_firewall.yml` néven:
           endIpAddress: "255.255.255.255"
 ```
 
-A forgatókönyv futtatása előtt tekintse meg a következő megjegyzéseket:
+A forgatókönyv futtatása előtt tekintse meg az alábbi megjegyzéseket:
 
-* Az var szakaszban cserélje le a `startIpAddress` és a `endIpAddress`. Használja azon IP-címek tartományát, amelyek a csatlakozáshoz használt tartománynak felelnek meg.
+* A vars részben `startIpAddress` cserélje `endIpAddress`ki és a . Használja az IP-címek tartományát, amely megfelel annak a tartománynak, amelyből csatlakozni fog.
 * A MySQL-hez készült Azure-adatbázis kapcsolatai a 3306-os porton keresztül kommunikálnak. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy nem engedélyezett a kimenő forgalom a 3306-as porton keresztül. Ebben az esetben addig nem tud csatlakozni a kiszolgálóhoz, amíg az informatikai részleg meg nem nyitja az 3306-os portot.
 * A forgatókönyv a `azure_rm_resource` modult használja, amely lehetővé teszi a REST API közvetlen használatát.
 
-Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
+Futtassa a `ansible-playbook` forgatókönyvet a következő paranccsal:
 
 ```bash
 ansible-playbook mysql_firewall.yml
@@ -155,11 +155,11 @@ ansible-playbook mysql_firewall.yml
 
 ## <a name="connect-to-the-server"></a>Csatlakozás a kiszolgálóhoz
 
-Ebben a szakaszban a Azure Cloud Shell használatával kapcsolódhat a korábban létrehozott kiszolgálóhoz.
+Ebben a szakaszban az Azure Cloud Shell használatával csatlakozhat a korábban létrehozott kiszolgálóhoz.
 
-1. Az alábbi lehetőség kiválasztásával nyissa meg a shell.azure.com.
+1. Nyissa meg shell.azure.com az alábbi kijelöléssel.
 
-   [![Beágyazás elindítása](https://shell.azure.com/images/launchcloudshell.png "Az Azure Cloud Shell indítása")](https://shell.azure.com)
+   [![Indítás beágyazása](https://shell.azure.com/images/launchcloudshell.png "Az Azure Cloud Shell indítása")](https://shell.azure.com)
 
 1. Írja be a következő kódot:
 
@@ -173,7 +173,7 @@ Ebben a szakaszban a Azure Cloud Shell használatával kapcsolódhat a korábban
     mysql> status
     ```
     
-    Ha minden megfelelően működik, a következő eredményekhez hasonló kimenet jelenik meg:
+    Ha minden jól megy, a kimenet a következő eredményekhez hasonló:
     
     ```output
     demo@Azure:~$ mysql -h mysqlserveransible.mysql.database.azure.com -u mysqladmin@mysqlserveransible -p
@@ -217,7 +217,7 @@ Ebben a szakaszban a Azure Cloud Shell használatával kapcsolódhat a korábban
     
 ## <a name="query-mysql-servers"></a>MySQL-kiszolgálók lekérdezése
 
-Az ebben a szakaszban szereplő forgatókönyv-kód a MySQL-kiszolgálókat kérdezi le `myResourceGroup` és felsorolja a talált kiszolgálók adatbázisait.
+Az ebben a szakaszban található forgatókönyvkód lekérdezi a MySQL-kiszolgálókat, `myResourceGroup` és felsorolja a talált kiszolgálók adatbázisait.
 
 Mentse a következő forgatókönyvet `mysql_query.yml` néven:
 
@@ -247,7 +247,7 @@ Mentse a következő forgatókönyvet `mysql_query.yml` néven:
         var: mysqldatabasefacts
 ```
 
-Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
+Futtassa a `ansible-playbook` forgatókönyvet a következő paranccsal:
 
 ```bash
 ansible-playbook mysql_query.yml
@@ -278,7 +278,7 @@ A forgatókönyv futtatása után a következő eredményekhez hasonló kimenet 
 ]
 ```
 
-A MySQL-adatbázis következő kimenetét is megtekintheti:
+A MySQL adatbázis következő kimenete is látható:
 
 ```json
 "databases": [
@@ -330,13 +330,13 @@ Mentse a következő forgatókönyvet `cleanup.yml` néven:
         state: absent
 ```
 
-Futtassa a forgatókönyvet a `ansible-playbook` parancs használatával:
+Futtassa a `ansible-playbook` forgatókönyvet a következő paranccsal:
 
 ```bash
 ansible-playbook cleanup.yml
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"] 
 > [Ansible az Azure-on](/azure/ansible/)

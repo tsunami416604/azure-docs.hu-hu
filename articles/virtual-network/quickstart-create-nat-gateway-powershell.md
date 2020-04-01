@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: NAT-átjáró létrehozása – Azure PowerShell'
+title: 'Rövid útmutató: NAT-átjáró létrehozása – Azure PowerShell'
 titlesuffix: Azure Virtual Network NAT
-description: Ez a rövid útmutató bemutatja, hogyan hozhat létre NAT-átjárót Azure PowerShell használatával
+description: Ez a rövid útmutató bemutatja, hogyan hozhat létre NAT-átjárót az Azure PowerShell használatával
 services: virtual-network
 documentationcenter: na
 author: asudbring
@@ -15,28 +15,28 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
 ms.openlocfilehash: 1d5f8d6e0b2499bbecd32e7cb3fda2cd2cad4d19
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79202228"
 ---
-# <a name="quickstart-create-a-nat-gateway-using-azure-powershell"></a>Gyors útmutató: NAT-átjáró létrehozása Azure PowerShell használatával
+# <a name="quickstart-create-a-nat-gateway-using-azure-powershell"></a>Rövid útmutató: NAT-átjáró létrehozása az Azure PowerShell használatával
 
-Ez a rövid útmutató bemutatja, hogyan használhatja az Azure Virtual Network NAT szolgáltatást. Létre kell hoznia egy NAT-átjárót, amely kimenő kapcsolatot biztosít az Azure-beli virtuális gépek számára. 
+Ez a rövid útmutató bemutatja, hogyan használhatja az Azure virtuális hálózati NAT-szolgáltatást. NAT-átjárót hoz létre, hogy kimenő kapcsolatot biztosítson egy virtuális gép számára az Azure-ban. 
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ezt az oktatóanyagot a Azure Cloud Shell használatával vagy a parancsok helyi futtatásával végezheti el.  Ha még nem használta Azure Cloud Shellt, [Jelentkezzen be most](https://shell.azure.com).
+Ezt az oktatóanyagot az Azure Cloud Shell használatával befejezheti, vagy helyileg futtathatja a parancsokat.  Ha még nem használta az Azure Cloud Shellt, [jelentkezzen be most.](https://shell.azure.com)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=latest). Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
+Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=latest)segítségével. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
-A következő példában létrehozunk egy **myResourceGroupNAT** nevű erőforráscsoportot a **eastus2** helyen:
+A következő példa létrehoz egy **myResourceGroupNAT** nevű erőforráscsoportot az **eastus2** helyen:
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -45,20 +45,20 @@ $loc = 'eastus2'
 New-AzResourceGroup -Name $rsg -Location $loc
 ```
 
-## <a name="create-the-nat-gateway"></a>NAT-átjáró létrehozása
+## <a name="create-the-nat-gateway"></a>A NAT-átjáró létrehozása
 
 A NAT-átjáró nyilvános IP-beállításai a következők:
 
 * **Nyilvános IP-címek**
-* **Nyilvános IP-előtag**
+* **Nyilvános IP-előtagok**
 
-Mindkettő használható a NAT-átjáróval.
+Mindkettő használható NAT átjáróval.
 
-Ezt a forgatókönyvet egy nyilvános IP-cím és egy nyilvános IP-előtag hozzáadásával mutatjuk be.
+Ehhez a forgatókönyvhöz egy nyilvános IP-címet és egy nyilvános IP-előtagot adunk hozzá.
 
 ### <a name="create-a-public-ip-address"></a>Hozzon létre egy nyilvános IP-címet
 
-Az Internet eléréséhez szüksége lesz egy vagy több nyilvános IP-címre a NAT-átjáró számára. A [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress?view=latest) használatával hozzon létre egy **MYPUBLICIP** nevű nyilvános IP-cím-erőforrást a **myResourceGroupNAT**-ben. A parancs eredményét egy változóban fogja tárolni **$publicIP** későbbi használatra.
+Az internet eléréséhez egy vagy több nyilvános IP-címre van szükség a NAT-átjáróhoz. A [New-AzPublicIpAddress használatával](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress?view=latest) hozzon létre egy **myPublicIP** nevű nyilvános IP-címerőforrást a **myResourceGroupNAT-ban.** A parancs eredménye egy változóban lesz **tárolva, $publicIP** későbbi használatra.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -72,7 +72,7 @@ New-AzPublicIpAddress -Name $pbnm -ResourceGroupName $rsg -AllocationMethod Stat
 
 ### <a name="create-a-public-ip-prefix"></a>Nyilvános IP-előtag létrehozása
 
-A [New-AzPublicIpPrefix](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipprefix?view=latest) használatával hozzon létre egy **MYPUBLICIPPREFIX** nevű nyilvános IP-előtag-erőforrást a **myResourceGroupNAT**-ben.  A parancs eredménye egy **$publicIPPrefix** nevű változóban lesz tárolva későbbi használatra.
+A [New-AzPublicIpPrefix](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipprefix?view=latest) segítségével hozzon létre egy **myPublicIPprefix** nevű nyilvános IP-előtagot a **myResourceGroupNAT-ban.**  A parancs eredménye egy **$publicIPPrefix** nevű változóban lesz tárolva későbbi használatra.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -83,13 +83,13 @@ $publicIPPrefix =
 New-AzPublicIpPrefix -Name $pxnm -ResourceGroupName $rsg -Location $loc -PrefixLength 31
 ```
 
-### <a name="create-a-nat-gateway-resource"></a>NAT-átjáró erőforrásának létrehozása
+### <a name="create-a-nat-gateway-resource"></a>NAT-átjáró-erőforrás létrehozása
 
-Ez a szakasz részletesen ismerteti, hogyan hozhatja létre és konfigurálhatja a NAT-szolgáltatás következő összetevőit a NAT-átjáró erőforrásának használatával:
-  - Egy nyilvános IP-címkészlet és egy nyilvános IP-előtag, amelyet a NAT-átjáró erőforrása lefordított kimenő folyamatokhoz használ.
-  - Módosítsa az üresjárati időkorlátot az alapértelmezett 4 perctől 10 percre.
+Ez a szakasz részletezi, hogyan hozhat létre és konfigurálhat a NAT szolgáltatás következő összetevőit a NAT átjáróerőforrás használatával:
+  - Nyilvános IP-készlet és nyilvános IP-előtag a NAT átjáró erőforrás által lefordított kimenő folyamatokhoz.
+  - Módosítsa az alapjárati időoutot az alapértelmezett 4 percről 10 percre.
 
-Hozzon létre egy globális Azure NAT-átjárót a [New-AzNatGateway](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway). A parancs eredménye létrehoz egy **myNATgateway** nevű átjáró-erőforrást, amely a nyilvános IP- **myPublicIP** és a nyilvános IP-előtag **myPublicIPprefix**használja. Az Üresjárati időkorlát 10 percre van beállítva.  A parancs eredménye egy **$natGateway** nevű változóban lesz tárolva későbbi használatra.
+Hozzon létre egy globális Azure NAT-átjárót a [New-AzNatGateway segítségével.](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway) Ennek a parancsnak az eredménye egy **myNATgateway** nevű átjáró-erőforrást hoz létre, amely a nyilvános IP-címet használja **myPublicIP** és a nyilvános IP-előtag **myPublicIPprefix**. Az tétlen időjárat 10 percre van állítva.  A parancs eredménye egy **$natGateway** nevű változóban lesz tárolva későbbi használatra.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -101,13 +101,13 @@ $natGateway =
 New-AzNatGateway -Name $gnm -ResourceGroupName $rsg -PublicIpAddress $publicIP -PublicIpPrefix $publicIPPrefix -Location $loc -Sku $sku -IdleTimeoutInMinutes 10
   ```
 
-Ezen a ponton a NAT-átjáró működik, és az összes hiányzó beállítással konfigurálható, hogy a virtuális hálózat mely alhálózatai használják azt.
+Ezen a ponton a NAT-átjáró működőképes, és csak azt kell konfigurálni, hogy a virtuális hálózat mely alhálózatai használják azt.
 
 ## <a name="configure-virtual-network"></a>Virtuális hálózat konfigurálása
 
-Hozza létre a virtuális hálózatot, és rendelje hozzá az alhálózatot az átjáróhoz.
+Hozza létre a virtuális hálózatot, és társítsa az alhálózatot az átjáróhoz.
 
-Hozzon létre egy **myVnet** nevű virtuális hálózatot egy **mySubnet** nevű alhálózattal a New [-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=latest) használatával a **myResourceGroup** [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork?view=latest)használatával. A virtuális hálózat IP-címe **192.168.0.0/16**. A virtuális hálózaton belüli alhálózat **192.168.0.0/24**.  A parancsok eredményét a rendszer **$subnet** és az **$vnet** későbbi használatra fogja tárolni.
+Hozzon létre egy **myVnet** nevű virtuális hálózatot **egy mySubnet** nevű alhálózattal a [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=latest) használatával a **myResourceGroup** ban a [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork?view=latest)használatával. A virtuális hálózat IP-címterülete **192.168.0.0/16**. A virtuális hálózaton belüli **alhálózat: 192.168.0.0/24**.  A parancsok eredményét a **$subnet** és **$vnet** nevű változók tárolják későbbi használatra.
 
 ```azurepowershell-interactive
 $sbnm = 'mySubnet'
@@ -124,15 +124,15 @@ $vnet =
 New-AzVirtualNetwork -Name $vnnm -ResourceGroupName $rsg -Location $loc -AddressPrefix $pfxvn -Subnet $subnet
 ```
 
-A NAT szolgáltatás mostantól az összes internetes célhelyre irányuló kimenő forgalmat használja.  Nem szükséges konfigurálni a UDR.
+Az internetes célállomásokra irányuló összes kimenő forgalom most már a NAT szolgáltatást használja.  Nem szükséges az UDR konfigurálása.
 
 ## <a name="create-a-vm-to-use-the-nat-service"></a>Virtuális gép létrehozása a NAT szolgáltatás használatához
 
-Most létrehozunk egy virtuális gépet a NAT szolgáltatás használatához.  Ez a virtuális gép egy nyilvános IP-címmel rendelkezik, amely egy példány szintű nyilvános IP-címet használ, hogy lehetővé tegye a virtuális gép elérését.  A NAT szolgáltatás a flow irányának ismerete, és az alapértelmezett internetes célhelyet váltja fel az alhálózaton. A virtuális gép nyilvános IP-címe nem használható kimenő kapcsolatokhoz.
+Most hozzon létre egy virtuális gép a NAT szolgáltatás használatához.  Ez a virtuális gép egy nyilvános IP-cím ként használható példányszintű nyilvános IP-cím, amely lehetővé teszi a virtuális gép eléréséhez.  A NAT-szolgáltatás áramlásirány-függő, és lecseréli az alhálózat alapértelmezett internetes célját. A virtuális gép nyilvános IP-címe nem lesz használva a kimenő kapcsolatokhoz.
 
-### <a name="create-public-ip-for-source-vm"></a>Nyilvános IP-cím létrehozása a forrásként szolgáló virtuális gép számára
+### <a name="create-public-ip-for-source-vm"></a>Nyilvános IP létrehozása a forrás virtuális géphez
 
-Létrehozunk egy nyilvános IP-címet, amelyet a virtuális gép eléréséhez kíván használni.  A [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress?view=latest) használatával hozzon létre egy **MYPUBLICIPVM** nevű nyilvános IP-cím-erőforrást a **myResourceGroupNAT**-ben.  A parancs eredménye egy **$publicIpVM** nevű változóban lesz tárolva későbbi használatra.
+Létrehozunk egy nyilvános IP-t a virtuális gép eléréséhez.  A [New-AzPublicIpAddress használatával](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress?view=latest) hozzon létre egy **myResourceGroupNAT** nevű nyilvános IP-címerőforrást. **myResourceGroupNAT**  A parancs eredménye egy **$publicIpVM** nevű változóban lesz tárolva későbbi használatra.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -144,9 +144,9 @@ $publicIpVM =
 New-AzPublicIpAddress -Name $ipnm -ResourceGroupName $rsg -AllocationMethod Static -Location $loc -Sku $sku
 ```
 
-### <a name="create-an-nsg-and-expose-ssh-endpoint-for-vm"></a>Hozzon létre egy NSG, és tegye elérhetővé SSH-végpontot a virtuális géphez
+### <a name="create-an-nsg-and-expose-ssh-endpoint-for-vm"></a>NSG létrehozása és SSH-végpont elérhetővé
 
-A standard nyilvános IP-címek a "biztonság alapértelmezés szerint", létre kell hozni egy NSG, amely engedélyezi a bejövő hozzáférést az SSH-hoz. A [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup?view=latest) használatával hozzon létre egy **myNSG**nevű NSG-erőforrást. A [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig?view=latest) használatával hozzon létre egy NSG-szabályt az **SSH** -hozzáféréshez a **myResourceGroupNAT**-ben.  A parancs eredménye egy **$NSG** nevű változóban lesz tárolva későbbi használatra.
+A szabványos nyilvános IP-címek "alapértelmezés szerint biztonságosak", létre kell hoznunk egy NSG-t, hogy lehetővé tegyék az ssh bejövő hozzáférését. A [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup?view=latest) segítségével hozzon létre egy **myNSG**nevű NSG-erőforrást. A [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig?view=latest) segítségével hozzon létre egy NSG-szabályt **az ssh** nevű SSH-hozzáféréshez a **myResourceGroupNAT-ban.**  A parancs eredménye egy **$nsg** nevű változóban lesz tárolva későbbi használatra.
 
 ```azurepowershell-interactive
 $rnm = 'ssh'
@@ -169,7 +169,7 @@ New-AzNetworkSecurityGroup -ResourceGroupName $rsg -Name $rnm -Location $loc -Se
 
 ### <a name="create-nic-for-vm"></a>Hálózati adapter létrehozása virtuális géphez
 
-Hozzon létre egy hálózati adaptert a [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface?view=azps-2.8.0) nevű **myNic**. Ez a parancs a nyilvános IP-címet és a hálózati biztonsági csoportot társítja. A parancs eredménye egy **$NIC** nevű változóban lesz tárolva későbbi használatra.
+Hozzon létre egy hálózati adaptert a **MyNic**nevű [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface?view=azps-2.8.0) kapcsolattal. Ez a parancs a nyilvános IP-címet és a hálózati biztonsági csoportot társítja. A parancs eredménye egy **$nic** nevű változóban lesz tárolva későbbi használatra.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -186,20 +186,20 @@ New-AzNetworkInterface -ResourceGroupName $rsg -Name $nmn -NetworkSecurityGroupI
 
 A rövid útmutató elvégzéséhez egy SSH-kulcspárra lesz szüksége. Ha már rendelkezésére áll egy SSH-kulcspár, kihagyhatja ezt a lépést.
 
-Ssh-keygen használatával hozzon létre egy SSH-kulcspárt.
+SSH-keygen használatával sSH kulcspárt hozhat létre.
 
 ```azurepowershell-interactive
 ssh-keygen -t rsa -b 2048
 ```
 Az SSH-kulcspárok létrehozásáról, többek között a PuTTy használatáról az [SSH-kulcsok Windowsban való használatát](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) ismertető cikkben talál részletesebb információt.
 
-Ha a Cloud Shell használatával hozza létre az SSH-kulcspárt, a rendszer a kulcspárt egy tároló rendszerképében tárolja. A [rendszer automatikusan létrehozza](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage)ezt a Storage-fiókot. Ne törölje a Storage-fiókot vagy a fájlmegosztást a-ben, amíg a kulcsok beolvasása nem sikerült.
+Ha az SSH-kulcspárt a Cloud Shell használatával hozza létre, a kulcspár egy tárolólemezképtárolja. Ez [a tárfiók automatikusan létrejön.](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage) Ne törölje a tárfiókot vagy a fájlmegosztást, amíg a kulcsok be olvasása után.
 
-#### <a name="create-vm-configuration"></a>Virtuális gép konfigurációjának létrehozása
+#### <a name="create-vm-configuration"></a>Virtuálisgép-konfiguráció létrehozása
 
-Egy virtuális gép PowerShellben való létrehozásához létre kell hoznia egy olyan konfigurációt, amely a rendszerkép használatára, a méretre és a hitelesítési beállításokra vonatkozó beállításokat tartalmaz. A rendszer a virtuális gép létrehozásához használja a konfigurációt.
+Virtuális gép létrehozásához a PowerShellben hozzon létre egy konfigurációt, amely a lemezkép használatára, méretére és hitelesítési beállításaira vonatkozó beállításokat tartalmaz. A konfiguráció a virtuális gép létrehozásához használható.
 
-Határozza meg az SSH hitelesítő adatokat, az operációs rendszer adatait és a virtuális gép méretét. Ebben a példában az SSH-kulcsot a ~/.ssh/id_rsa. pub tárolja.
+Határozza meg az SSH hitelesítő adatokat, az operációs rendszer adatait és a virtuális gép méretét. Ebben a példában az SSH-kulcs a ~/.ssh/id_rsa.pub ban van tárolva.
 
 ```azurepowershell-interactive
 #Define a credential object
@@ -235,7 +235,7 @@ $sshPublicKey = cat ~/.ssh/id_rsa.pub
 Add-AzVMSshPublicKey -VM $vmconfig -KeyData $sshPublicKey -Path "/home/azureuser/.ssh/authorized_keys"
 
 ```
-A konfigurációs definíciók kombinálásával hozzon létre egy **myVM** nevű virtuális gépet a [New-AzVM](/powershell/module/az.compute/new-azvm?view=azps-2.8.0) a **myResourceGroupNAT**-ben.
+A konfigurációs definíciók kombinálásával hozzon létre egy **myVM** nevű virtuális gépet [a New-AzVM szolgáltatással](/powershell/module/az.compute/new-azvm?view=azps-2.8.0) a **myResourceGroupNAT**szolgáltatásban.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -244,11 +244,11 @@ $loc = 'eastus2'
 New-AzVM -ResourceGroupName $rsg -Location $loc -VM $vmconfig
 ```
 
-Várjon, amíg a virtuális gép felkészüljön a telepítésre, majd folytassa a további lépések végrehajtásával.
+Várja meg, amíg a virtuális gép előkészíti az üzembe helyezést, majd folytassa a többi lépéssel.
 
-## <a name="discover-the-ip-address-of-the-vm"></a>A virtuális gép IP-címének felderítése
+## <a name="discover-the-ip-address-of-the-vm"></a>A virtuális gép IP-címének felfedezése
 
-Először fel kell deríteni a létrehozott virtuális gép IP-címét. A virtuális gép nyilvános IP-címének lekéréséhez használja a [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=latest). 
+Először is fel kell derítenünk a létrehozott virtuális gép IP-címét. A virtuális gép nyilvános IP-címének leigazolásához használja a [Get-AzPublicIpAddress címet.](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=latest) 
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -258,11 +258,11 @@ Get-AzPublicIpAddress -ResourceGroupName $rsg -Name $nmn | select IpAddress
 ``` 
 
 >[!IMPORTANT]
->Másolja a nyilvános IP-címet, majd illessze be egy Jegyzettömbbe, hogy hozzáférjen a virtuális géphez.
+>Másolja a nyilvános IP-címet, majd illessze be egy jegyzettömbbe, így használhatja a virtuális gép eléréséhez.
 
-### <a name="sign-in-to-vm"></a>Bejelentkezés a virtuális gépre
+### <a name="sign-in-to-vm"></a>Bejelentkezés a virtuális gépbe
 
-Az SSH hitelesítő adatait az előző művelet során a Cloud Shell kell tárolnia.  Nyisson meg egy [Azure Cloud Shell](https://shell.azure.com) a böngészőben. Használja az előző lépésben lekért IP-címet az SSH-val a virtuális gépre.
+Az SSH hitelesítő adatokat az előző műveletből származó Felhőrendszerhéjban kell tárolni.  Nyisson meg egy [Azure Cloud Shellt](https://shell.azure.com) a böngészőjében. Használja az előző lépésben beolvasott IP-címet az SSH-hoz a virtuális géphez.
 
 ```bash
 ssh azureuser@<ip-address-destination>
@@ -272,24 +272,24 @@ Most már készen áll a NAT szolgáltatás használatára.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, a [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=latest) paranccsal távolíthatja el az erőforráscsoportot és a benne található összes erőforrást.
+Ha már nincs rá szükség, az [Eltávolítás-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=latest) paranccsal eltávolíthatja az erőforráscsoportot és a benne lévő összes erőforrást.
 
 ```azurepowershell-interactive 
 Remove-AzResourceGroup -Name myResourceGroupNAT
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban létrehozott egy NAT-átjárót és egy virtuális gépet a használatára. 
+Ebben az oktatóanyagban létrehozott egy NAT-átjárót és egy virtuális gépet a használatához. 
 
-Tekintse át a Azure Monitor mérőszámait a NAT szolgáltatás működésének megtekintéséhez. Problémák diagnosztizálása, például az elérhető SNAT-portok erőforrás-kimerülése.  A SNAT-portok erőforrásainak kimerítése további nyilvános IP-cím-erőforrások vagy nyilvános IP-előtag-erőforrások hozzáadásával vagy mindkettővel foglalkozik.
+Tekintse át a metrikákat az Azure Monitorban a NAT-szolgáltatás működésének megtekintéséhez. Diagnosztizálja az olyan problémákat, mint például a rendelkezésre álló SNAT-portok erőforrás-kimerülése.  Az SNAT-portok erőforrás-kimerülése további nyilvános IP-címerőforrások vagy nyilvános IP-előtag-erőforrások vagy mindkettő hozzáadásával történik.
 
 
-- Tudnivalók az [Azure Virtual Network NAT](./nat-overview.md) -ról
-- További információ a [NAT-átjáró erőforrásáról](./nat-gateway-resource.md).
-- Rövid útmutató a [NAT-átjáró erőforrásának Azure CLI](./quickstart-create-nat-gateway-cli.md)-vel történő üzembe helyezéséhez.
-- Útmutató a NAT- [átjáró erőforrásának Azure PowerShell használatával](./quickstart-create-nat-gateway-powershell.md)történő üzembe helyezéséhez.
-- Útmutató a NAT- [átjáró erőforrásának Azure Portal használatával](./quickstart-create-nat-gateway-portal.md)történő üzembe helyezéséhez.
+- Learn about [Azure Virtual Network NAT](./nat-overview.md)
+- További információ a [NAT átjáró-erőforrásról.](./nat-gateway-resource.md)
+- Rövid útmutató a [NAT átjáróerőforrás Azure CLI használatával történő](./quickstart-create-nat-gateway-cli.md)üzembe helyezéséhez.
+- Rövid útmutató a [NAT átjáróerőforrás Azure PowerShell használatával történő](./quickstart-create-nat-gateway-powershell.md)üzembe helyezéséhez.
+- Rövid útmutató a [NAT-átjáró-erőforrás Azure Portalon való](./quickstart-create-nat-gateway-portal.md)telepítéséhez.
 > [!div class="nextstepaction"]
 
 

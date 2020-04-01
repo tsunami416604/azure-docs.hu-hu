@@ -1,6 +1,6 @@
 ---
-title: Az adatAzure Data Box Heavy NFS-en keresztüli adatmásolási oktatóanyag | Microsoft Docs
-description: Útmutató az adatmásoláshoz a Azure Data Box Heavy NFS-en keresztül
+title: Oktatóanyag az Azure Data Box Heavy-ba az NFS-en keresztül történő másoláshoz| Microsoft dokumentumok
+description: Ismerje meg, hogyan másolhat adatokat az Azure Data Box Heavy szolgáltatásba az NFS-en keresztül
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,17 +9,17 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 4361cee3d07408c3abb5031d2ab18c15c92c5e0a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79238985"
 ---
-# <a name="tutorial-copy-data-to-azure-data-box-heavy-via-nfs"></a>Oktatóanyag: az Adatmásolás Azure Data Box Heavy NFS-en keresztül
+# <a name="tutorial-copy-data-to-azure-data-box-heavy-via-nfs"></a>Oktatóanyag: Adatok másolása az Azure Data Box Heavy szolgáltatásba NFS-en keresztül
 
-Ez az oktatóanyag azt ismerteti, hogyan csatlakozhat a gazdagépről, és hogyan másolhatja azokat a helyi webes KEZELŐFELÜLETtel a Azure Data Box Heavy.
+Ez az oktatóanyag bemutatja, hogyan csatlakozhat a gazdaszámítógéphez, és hogyan másolhat adatokat a gazdagépről a helyi webes felhasználói felület használatával az Azure Data Box Heavy szolgáltatásba.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Előfeltételek
@@ -30,10 +30,10 @@ Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-1. Elvégezte az [oktatóanyagot: Azure Data Box Heavy beállítása](data-box-heavy-deploy-set-up.md).
-2. Megkapta a Data Box Heavyt, és a portálon megjelenő megrendelés állapota **kézbesítve**.
+1. Befejezte az [oktatóanyagot: Az Azure Data Box Heavy beállítása.](data-box-heavy-deploy-set-up.md)
+2. Megkapta a Data Box Heavy-t, és a rendelés állapota a portálon **kézbesítve van.**
 3. Rendelkezik egy gazdagéppel, amelyen a Data Box Heavyre másolni kívánt adatok találhatók. A gazdaszámítógépen:
-    - egy [támogatott operációs rendszernek](data-box-heavy-system-requirements.md) kell futnia;
+    - Támogatott [operációs rendszer futtatása](data-box-heavy-system-requirements.md).
     - egy nagy sebességű hálózathoz kell csatlakoznia. A legnagyobb másolási sebesség érdekében két 40 GbE sebességű kapcsolat (csomópontonként egy) használható egyidejűleg. Ha nem rendelkezik 40 GbE sebességű kapcsolattal, javasoljuk, hogy legalább két 10 GbE sebességű kapcsolattal (csomópontonként eggyel) rendelkezzen. 
 
 ## <a name="connect-to-data-box-heavy"></a>Csatlakozás a Data Box Heavyhez
@@ -61,7 +61,7 @@ Az alábbi táblázat a Data Box Heavyn található megosztások UNC elérési �
 | Azure-lapblobok  | <li>A megosztások UNC elérési útja: `//<DeviceIPAddres>/<StorageAccountName_PageBlob>/<ContainerName>/files/a.txt`</li><li>Az Azure Storage URL-címe: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
 | Azure Files       |<li>A megosztások UNC elérési útja: `//<DeviceIPAddres>/<StorageAccountName_AzFile>/<ShareName>/files/a.txt`</li><li>Az Azure Storage URL-címe: `https://<StorageAccountName>.file.core.windows.net/<ShareName>/files/a.txt`</li>        |
 
-Ha Linux rendszerű gazdagépet használ, a következő lépésekkel konfigurálhatja az eszközt az NFS-ügyfelek elérésének engedélyezéséhez.
+Ha Linux-gazdaszámítógépet használ, hajtsa végre az alábbi lépéseket az eszköz nfs-ügyfelekhez való hozzáférés engedélyezéséhez való konfigurálásához.
 
 1. Adja meg azon ügyfelek IP-címeit, akik hozzáférhetnek a megosztáshoz. A helyi webes felületen lépjen a **Connect and copy** (Kapcsolódás és másolás) lapra. Az **NFS settings** (NFS-beállítások) pontban kattintson az **NFS client access** (NFS-ügyfélhozzáférés) lehetőségre. 
 
@@ -77,11 +77,11 @@ Ha Linux rendszerű gazdagépet használ, a következő lépésekkel konfigurál
 
     `sudo mount <Data Box Heavy device IP>:/<NFS share on Data Box Heavy device> <Path to the folder on local Linux computer>`
 
-    Az alábbi példa bemutatja, hogyan csatlakozhat NFS-en keresztül egy Data Box Heavy-megosztáshoz. A Data Box Heavy IP `10.161.23.130`, a megosztás `Mystoracct_Blob` csatlakoztatva van a ubuntuVM, a csatlakoztatási pont pedig `/home/databoxheavyubuntuhost/databoxheavy`.
+    A következő példa bemutatja, hogyan csatlakozhat NFS-en keresztül egy Data Box Heavy megosztáshoz. A Data Box `10.161.23.130`Heavy IP `Mystoracct_Blob` , a megosztás az ubuntuVM-re van szerelve, a csatlakoztatási pont `/home/databoxheavyubuntuhost/databoxheavy`.
 
     `sudo mount -t nfs 10.161.23.130:/Mystoracct_Blob /home/databoxheavyubuntuhost/databoxheavy`
     
-    Mac-ügyfelek esetén a következő módon kell hozzáadnia egy további lehetőséget: 
+    Mac-ügyfelek esetén a következőképpen kell hozzáadnia egy további lehetőséget: 
     
     `sudo mount -t nfs -o sec=sys,resvport 10.161.23.130:/Mystoracct_Blob /home/databoxheavyubuntuhost/databoxheavy`
 
@@ -89,18 +89,18 @@ Ha Linux rendszerű gazdagépet használ, a következő lépésekkel konfigurál
 
 ## <a name="copy-data-to-data-box-heavy"></a>Adatok másolása a Data Box Heavyre
 
-Ha csatlakozott a Data Box Heavy-megosztásokhoz, a következő lépés az Adatmásolás. Az adatok másolásának megkezdése előtt tekintse át a következőket:
+Miután csatlakozott a Data Box Heavy megosztásokhoz, a következő lépés az adatok másolása. Az adatok másolásának megkezdése előtt tekintse át a következőket:
 
-- Győződjön meg arról, hogy az adatokat a helyes adatformátumnak megfelelő megosztásokba másolja. A blokkblobadatokat például másolja a blokkbloboknak fenntartott megosztásba. Másolja a VHD-ket az oldal blobokra. Ha az adatok formátuma nem egyezik a megfelelő megosztástípussal, akkor egy későbbi lépés során az Azure-ba történő adatfeltöltés sikertelen lesz.
--  Az adatok másolása közben ügyeljen arra, hogy az adatok mérete megfeleljen az [Azure Storage-ban és a Data Box Heavy korlátokban](data-box-heavy-limits.md)leírt méretkorlát-korlátoknak. 
+- Győződjön meg arról, hogy az adatokat a helyes adatformátumnak megfelelő megosztásokba másolja. A blokkblobadatokat például másolja a blokkbloboknak fenntartott megosztásba. Vd-k másolása a lapblobokba. Ha az adatok formátuma nem egyezik a megfelelő megosztástípussal, akkor egy későbbi lépés során az Azure-ba történő adatfeltöltés sikertelen lesz.
+-  Az adatok másolása közben győződjön meg arról, hogy az adatok mérete megfelel az Azure storage és a [Data Box Heavy korlátokban](data-box-heavy-limits.md)leírt méretkorlátoknak. 
 - Ha a Data Box Heavy által éppen feltöltés alatt álló adatokat egyidejűleg más alkalmazások is feltöltik a Data Box Heavyn kívül, az a feltöltési feladat meghiúsulásához és az adatok sérüléséhez vezethet.
 - Azt javasoljuk, hogy ne használjon egyidejűleg SMB-t és NFS-t az Azure-ban, illetve ne másolja ugyanazokat az adatokat ugyanarra a célhelyre. Ilyen esetekben a végeredmény nem garantálható.
 - **Mindig hozzon létre egy mappát azokhoz a fájlokhoz, amelyeket másolni szeretne a megosztás alatt, majd másolja a fájlokat a létrehozott mappába**. A blokkblob- és lapblobmegosztások alatt létrehozott mappa azt a tárolót jelöli, amelybe a rendszer feltölti az adatokat blobokként. Nem másolhat fájlokat közvetlenül a tárfiók *gyökér*mappájába.
-- Ha a kis-és nagybetűket megkülönböztető könyvtárakat és fájlneveket az NFS-megosztásról az NFS-re Data Box Heavy: 
-    - Az eset a névben marad.
-    - A fájlok kis-és nagybetűk megkülönböztetése nélkül.
+- Ha nfs-megosztásról betöltő kis- és nagybetűket és fájlneveket az NFS-kiszolgálónak a Data Box Heavy mezőben: 
+    - Az eset megmarad a névben.
+    - Az akták nem tartalmaznak kis- és nagybetűket.
     
-    Ha például `SampleFile.txt` és `Samplefile.Txt`másolását, akkor a rendszer a nevet az eszközre való másoláskor megőrzi, de a második fájl felülírja az elsőt, mivel ezek ugyanaz a fájlnak tekintendők.
+    Ha például a `SampleFile.txt` `Samplefile.Txt`másolás és a másolat a névben marad meg, amikor az eszközre másolja, de a második fájl felülírja az elsőt, mivel ezek ugyanannak a fájlnak minősülnek.
 
 
 Linux rendszerű gazdagép esetében használjon egy, a Robocopyhoz hasonló másolási segédprogramot. Ilyen például az [rsync](https://rsync.samba.org/), a [FreeFileSync](https://www.freefilesync.org/), a [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) vagy az [Ultracopier](https://ultracopier.first-world.info/).  
@@ -142,7 +142,7 @@ Amennyiben az rsyncet használja többszálas másoláshoz, a következő irány
      Azt javasoljuk, hogy kezdetben 16 párhuzamos példánnyal dolgozzon, és az elérhető erőforrásoknak megfelelően növelje a szálak számát.
 
 > [!IMPORTANT]
-> A következő Linux-fájltípusok nem támogatottak: szimbolikus hivatkozások, szövegfájlok, fájlok, szoftvercsatornák és csövek blokkolása. Ezek a fájltípusok a **szállításra való előkészítés** lépésben hibát okoznak.
+> A következő Linux fájltípusok nem támogatottak: szimbolikus hivatkozások, karakterfájlok, blokkfájlok, szoftvercsatornák és csövek. Ezek a fájltípusok hibákat eredményeznek a **Szállításra való felkészülés** lépés során.
 
 Nyissa meg a célmappát a másolt fájlok megtekintéséhez és ellenőrzéséhez. Ha hibába ütközik a másolási folyamat során, töltse le a hibafájlokat a hibaelhárításhoz. További információkért lásd: [Az adatok Data Box Heavyre másolása során készült hibanaplók megtekintése](data-box-logs.md#view-error-log-during-data-copy). Az adatok másolása során felmerülő hibák részletes listájáért tekintse meg a [Data Box Heavy-problémák elhárításával](data-box-troubleshoot.md) kapcsolatos cikket.
 
@@ -151,7 +151,7 @@ Az adatok integritásának biztosítása érdekében az ellenőrzőösszeg kisz�
    ![A szabad és a felhasznált tárhely ellenőrzése az irányítópulton](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban az Azure Data Box Heavyvel kapcsolatos témakörökkel ismerkedett meg, például a következőkkel:
 

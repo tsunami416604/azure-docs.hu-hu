@@ -1,7 +1,7 @@
 ---
-title: C#oktatóanyag a keresési eredmények tördeléséről
+title: C# oktatóanyag a keresési eredmények tördeléséhez
 titleSuffix: Azure Cognitive Search
-description: Ez az oktatóanyag a keresési eredmények lapozását mutatja be. Egy meglévő Hotels-projektre épít, amely az első, a következő, az előző, az utolsó és a számozott gombok lapozásával rendelkezik. A második lapozási rendszer végtelen görgetést használ, amelyet egy függőleges görgetősávnak az alsó határértékre való áthelyezésével indít el.
+description: Ez az oktatóanyag bemutatja a keresési eredmények lapozását. Egy meglévő hotelprojektre épül, a lapozás az első, a következő, az előző, az utolsó és a számozott gombok szerint. A második lapozórendszer végtelen görgetést használ, amelyet egy függőleges görgetősáv nak az alsó határra való mozgatásával vált ki.
 manager: nitinme
 author: tchristiani
 ms.author: terrychr
@@ -9,44 +9,44 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.openlocfilehash: 9abfeb54be6e22885b8e973034a6d89df8272146
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77121518"
 ---
-# <a name="c-tutorial-search-results-pagination---azure-cognitive-search"></a>C#Oktatóanyag: keresési eredmények tördelése – Azure Cognitive Search
+# <a name="c-tutorial-search-results-pagination---azure-cognitive-search"></a>C# oktatóanyag: Keresési eredmények tördelése - Azure Cognitive Search
 
-Megtudhatja, hogyan valósítható meg két különböző lapozófájl-rendszer, az első a oldalszámok alapján, a második pedig a végtelen görgetésen. A lapozás mindkét rendszerét széles körben használják, és a jobb gombbal kiválaszthatja az eredményekkel kapcsolatos felhasználói élményt. Ez az oktatóanyag a lapozási rendszereket a következő [ C# oktatóanyagban létrehozott projektbe építi: az első alkalmazás létrehozása – Azure Cognitive Search](tutorial-csharp-create-first-app.md) oktatóanyag.
+Ismerje meg, hogyan valósíthat meg két különböző lapozási rendszert, az első az oldalszámok, a második pedig a végtelen görgetés alapján. Mindkét lapozási rendszer széles körben használatos, és a megfelelő kiválasztása attól függ, hogy milyen felhasználói élményt szeretne az eredményekkel. Ez az oktatóanyag a lapozórendszereket a [C# oktatóanyagban](tutorial-csharp-create-first-app.md) létrehozott projektbe építi: Az első alkalmazás létrehozása – Azure Cognitive Search oktatóanyag.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Az alkalmazás kiterjesztése számozott lapozással
-> * Az alkalmazás kiterjesztése végtelen görgetéssel
+> * Bővítse alkalmazását végtelen görgetéssel
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
-Használja az [ C# oktatóanyagot: hozza létre első alkalmazását – az Azure Cognitive Search-](tutorial-csharp-create-first-app.md) projektet. A projekt lehet saját verziója, vagy a GitHubról telepítheti: [első alkalmazás létrehozása](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+A [C# oktatóanyag: Hozza létre az első alkalmazást – Az Azure Cognitive Search](tutorial-csharp-create-first-app.md) projekt et bekell hozni és futtatnia kell. Ez a projekt lehet a saját verziója, vagy telepítheti a GitHubról: [Az első alkalmazás létrehozása](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 
 ## <a name="extend-your-app-with-numbered-paging"></a>Az alkalmazás kiterjesztése számozott lapozással
 
-A számozott Lapozás a fő internetes keresőmotorokhoz és a legtöbb más keresési webhelyhez választott személyhívó rendszer. A számozott lapozás általában tartalmaz egy "Next" és "Previous" beállítást is a tényleges oldalszámok tartományán kívül. Emellett az "első oldal" és az "utolsó oldal" lehetőség is elérhető lehet. Ezek a beállítások természetesen lehetővé tennék a felhasználók számára, hogy átirányítsák a navigálást az oldal alapú eredmények között.
+Számozott személyhívó a személyhívó rendszer a választás a fő internetes keresőmotorok és a legtöbb más keresési honlapokon. A számozott lapozás általában tartalmaz egy "következő" és "előző" beállítást a tényleges oldalszámok tartományán kívül. Szintén egy "első oldal" és "utolsó oldal" opció is elérhető lehet. Ezek a lehetőségek minden bizonnyal ad a felhasználó ellenőrzése alatt navigálás az oldal-alapú eredményeket.
 
-Hozzáadunk egy olyan rendszert, amely tartalmazza az első, az előző, a következő és az utolsó lehetőséget, valamint az oldalszámokat, amelyek nem 1-től kezdődnek, hanem a felhasználó aktuális oldalának a megkeresése (például ha a felhasználó a 10. oldalon található, lehet, hogy az oldalszám 8 , 9, 10, 11 és 12 jelenik meg).
+Adunk hozzá egy rendszert, amely tartalmazza az első, előző, következő és az utolsó lehetőségeket, valamint az oldalszámokat, amelyek nem indulnak 1-től, hanem körülveszik az aktuális oldalt, amelyen a felhasználó van (így például, ha a felhasználó a 10. oldalt nézi, talán 8, 9, 10, 11 és 12 oldalszám jelenik meg).
 
-A rendszer elég rugalmas lesz ahhoz, hogy a megjelenített oldalszámok számát egy globális változóban lehessen megadni.
+A rendszer elég rugalmas lesz ahhoz, hogy a látható oldalszámok számát globális változóban lehessen beállítani.
 
-A rendszer a bal szélső és a jobb oldalon lévő oldalszám gombokat speciálisként fogja kezelni, ami azt jelenti, hogy a megjelenített oldalszámok tartományának módosítását fogja eredményezni. Ha például a 8, 9, 10, 11 és 12 oldalszám jelenik meg, és a felhasználó a 8 értékre kattint, akkor az oldalszámok a 6, 7, 8, 9 és 10 értékre változnak. És a jobb oldali váltás hasonló, ha a 12 lehetőséget választotta.
+A rendszer a bal szélső és a jobb szélső oldalszám gombokat különlegesként kezeli, ami azt jelenti, hogy a megjelenített oldalszámok tartományának megváltoztatását indítja el. Ha például a 8., 9., 10., 11. És van egy hasonló váltás jobbra, ha a kiválasztott 12.
 
-### <a name="add-paging-fields-to-the-model"></a>Lapozási mezők hozzáadása a modellhez
+### <a name="add-paging-fields-to-the-model"></a>Lapozómezők hozzáadása a modellhez
 
-Nyissa meg az alapszintű keresési oldal megoldást.
+Nyissa meg az alapkeresési oldal megoldását.
 
-1. Nyissa meg a SearchData.cs-modell fájlt.
+1. Nyissa meg a SearchData.cs modellfájlt.
 
-2. Először adja hozzá a globális változókat. Az MVC-ben a globális változók a saját statikus osztályában vannak deklarálva. A **ResultsPerPage** az eredmények számát állítja be oldalanként. A **MaxPageRange** meghatározza a nézeten látható oldalszámok számát. A **PageRangeDelta** határozza meg, hogy hány oldalt balra vagy jobbra kell eltolni, ha a bal szélső vagy a jobb szélső oldalszám van kiválasztva. Ez utóbbi szám általában a **MaxPageRange**körülbelül fele. Adja hozzá a következő kódot a névtérhez.
+2. Először adjon hozzá néhány globális változót. Az MVC-ben a globális változók deklarálva vannak a saját statikus osztályukban. **Az ResultsPerPage** beállítja az egy oldalonkénti eredmények számát. **A MaxPageRange** határozza meg a nézetben látható oldalszámok számát. **A PageRangeDelta** határozza meg, hogy hány oldalt kell eltolni az oldaltartománytól, ha a bal szélső vagy a jobb oldalszám van kiválasztva. Ez utóbbi szám általában a **MaxPageRange**körülbelül fele. Adja hozzá a következő kódot a névtérbe.
 
     ```cs
     public static class GlobalVariables
@@ -77,9 +77,9 @@ Nyissa meg az alapszintű keresési oldal megoldást.
     ```
 
     >[!Tip]
-    >Ha a projektet egy kisebb képernyővel rendelkező eszközön futtatja, például egy laptopon, akkor érdemes lehet a **ResultsPerPage** 2-ra módosítani.
+    >Ha a projektet kisebb képernyővel rendelkező eszközön, például laptopon futtatja, akkor fontolja meg **a ResultsPerPage 2-re** való módosítását.
 
-3. Adja hozzá a lapozási tulajdonságokat a **SearchData** osztályhoz, azaz a **keresettszöveg** tulajdonság után.
+3. Adja hozzá a lapozási tulajdonságokat a **SearchData** osztályhoz, például a **searchText** tulajdonság után.
 
     ```cs
         // The current page being displayed.
@@ -98,9 +98,9 @@ Nyissa meg az alapszintű keresési oldal megoldást.
         public string paging { get; set; }
     ```
 
-### <a name="add-a-table-of-paging-options-to-the-view"></a>Lapozási beállítások táblázatának hozzáadása a nézethez
+### <a name="add-a-table-of-paging-options-to-the-view"></a>Lapozólaptábla hozzáadása a nézethez
 
-1. Nyissa meg az index. cshtml fájlt, és közvetlenül a záró &lt;/Body&gt; címke előtt adja hozzá a következő kódot. Ez az új kód a lapozási lehetőségek táblázatát jeleníti meg: első, előző, 1, 2, 3, 4, 5, tovább, utolsó.
+1. Nyissa meg az index.cshtml fájlt, és adja &lt;hozzá&gt; a következő kódot közvetlenül a záró /body tag előtt. Ez az új kód egy lapozási beállításokat tartalmazó táblázatot jelenít meg: első, előző, 1, 2, 3, 4, 5, következő, utolsó.
 
     ```cs
     @if (Model != null && Model.pageCount > 1)
@@ -181,11 +181,11 @@ Nyissa meg az alapszintű keresési oldal megoldást.
     }
     ```
 
-    Egy HTML-táblázatot használunk, hogy szépen illeszkedjenek a dolgokhoz. Azonban az összes művelet a @Html.ActionLink utasításokból származik, és mindegyik a vezérlőt egy olyan **új** modellel hívja meg, amely különböző bejegyzésekkel lett létrehozva a korábban hozzáadott **lapozási** tulajdonsághoz.
+    Html táblázatot használunk a dolgok szép igazításához. Azonban az összes művelet @Html.ActionLink származik a nyilatkozatok, minden hívás a vezérlő egy **új** modell létrehozott különböző bejegyzéseket a **lapozó** tulajdonság akorábban hozzáadott.
 
-    Az első és az utolsó oldal beállításai nem küldenek karakterláncokat (például "First" és "Last"), hanem a megfelelő oldalszámokat küldik el.
+    Az első és az utolsó oldal beállítás nem az "első" és az "utolsó" karakterláncokat küldi el, hanem a megfelelő oldalszámokat küldi el.
 
-2. Adjon hozzá néhány lapozási osztályt a HTML-stílusok listájához a Hotels. css fájlban. A **pageSelected** osztály azon oldal azonosítására szolgál, amelyet a felhasználó jelenleg tekint meg (a félkövér szám bekapcsolásával) a oldalszámok listájában.
+2. Adjon hozzá néhány lapozási osztályt a hotels.css fájl HTML-stílusainak listájához. A **pageSelected** osztály azonosítja azt az oldalt, amelyet a felhasználó éppen megtekint (a szám félkövérré fordításával) az oldalszámok listájában.
 
     ```html
         .pageButton {
@@ -210,9 +210,9 @@ Nyissa meg az alapszintű keresési oldal megoldást.
         }
     ```
 
-### <a name="add-a-page-action-to-the-controller"></a>Oldal művelet hozzáadása a vezérlőhöz
+### <a name="add-a-page-action-to-the-controller"></a>Oldalművelet hozzáadása a vezérlőhöz
 
-1. Nyissa meg a HomeController.cs fájlt, és adja hozzá az **oldal** műveletet. Ez a művelet a kiválasztott oldal bármelyik beállítására válaszol.
+1. Nyissa meg a HomeController.cs fájlt, és adja hozzá az **Oldal** műveletet. Ez a művelet a kijelölt oldalbeállítások bármelyikére válaszol.
 
     ```cs
         public async Task<ActionResult> Page(SearchData model)
@@ -258,12 +258,12 @@ Nyissa meg az alapszintű keresési oldal megoldást.
         }
     ```
 
-    A **RunQueryAsync** metódus ekkor egy szintaktikai hibát jelenít meg a harmadik paraméter miatt, amelyet egy kicsit fogunk megtekinteni.
+    A **RunQueryAsync** metódus most szintaktikai hibát jelenít meg a harmadik paraméter miatt, amelyhez egy kicsit meg fogunk érkezni.
 
     > [!Note]
-    > A **TempData** -hívások egy értéket ( **objektumot**) tárolnak az ideiglenes tárolóban, de ez a tárterület _csak_ egy hívást tart fenn. Ha egy ideiglenes adatmennyiséget tárolunk, akkor a rendszer a vezérlőhöz tartozó következő híváshoz lesz elérhető, de a hívás a lehető legpontosabban megtörténik. Ennek a rövid élettartamnak a következtében a keresési szöveg és a lapozási tulajdonságok visszaállnak az ideiglenes tárolóba, és minden hívás a **lapon**.
+    > A **TempData-hívások** egy értéket (egy **objektumot)** tárolnak az ideiglenes tárolóban, bár ez a tároló _csak_ egy hívásesetén marad meg. Ha tárolunk valamit az ideiglenes adatok, akkor elérhető lesz a következő hívás a vezérlő fellépés, de minden bizonnyal elment a hívás után! A rövid élettartam miatt a keresési szöveget és a lapozási tulajdonságokat **Page**minden egyes page-hívásban ideiglenesen tároljuk.
 
-2. Az **index (modell)** műveletnek frissítenie kell az ideiglenes változók tárolására, és hozzá kell adnia a bal szélső oldal paramétert a **RunQueryAsync** -híváshoz.
+2. Az **Index(modell)** műveletet frissíteni kell az ideiglenes változók tárolásához, és hozzá kell adni a bal szélső lap paramétert a **RunQueryAsync** híváshoz.
 
     ```cs
         public async Task<ActionResult> Index(SearchData model)
@@ -293,7 +293,7 @@ Nyissa meg az alapszintű keresési oldal megoldást.
         }
     ```
 
-3. A **RunQueryAsync** metódust jelentősen frissíteni kell. A **SearchParameters** osztály **skip**, **Top**és **IncludeTotalResultCount** mezőinek használatával csak egyetlen, eredményül kapott oldalt kérhet le, a **kihagyás** beállítástól kezdve. A nézethez a lapozási változókat is ki kell számítani. Cserélje le a teljes metódust a következő kódra.
+3. A **RunQueryAsync** metódust jelentősen frissíteni kell. A **SearchParameters** osztály **Skip**, **Top**és **IncludeTotalResultCount** mezőket használva csak egy oldalnyi eredményt kérhetünk, a **Kihagyás** beállítástól kezdve. Ki kell számolnunk a lapozási változókat is a véleményünkhez. Cserélje le a teljes metódust a következő kódra.
 
     ```cs
         private async Task<ActionResult> RunQueryAsync(SearchData model, int page, int leftMostPage)
@@ -352,7 +352,7 @@ Nyissa meg az alapszintű keresési oldal megoldást.
         }
     ```
 
-4. Végezetül a nézetet kis módosítással kell elvégeznie. A **resultsList. Results. Count** változó az egyik lapon visszaadott eredmények számát tartalmazza (a példában 3), nem az összes számot. Mivel a **IncludeTotalResultCount** értéke TRUE (igaz), a **resultsList. Count** változó most az eredmények teljes számát tartalmazza. Ezért keresse meg az eredmények számát a nézetben, és módosítsa a következő kódra.
+4. Végezetül, egy kis változtatást kell tennünk a nézeten. Az **resultsList.Results.Count** változó mostantól az egy oldalon visszaadott eredmények számát fogja tartalmazni (a példában 3), nem pedig a teljes számot. Mivel az **IncludeTotalResultCount értéke** igaz, az **resultsList.Count** változó most már tartalmazza az eredmények teljes számát. Így keresse meg, ahol az eredmények száma jelenik meg a nézetben, és módosítsa azt a következő kódot.
 
     ```cs
             // Show the result count.
@@ -362,50 +362,50 @@ Nyissa meg az alapszintű keresési oldal megoldást.
     ```
 
     > [!Note]
-    > A **IncludeTotalResultCount** értéke TRUE (igaz) értékre van állítva, de általában nem sokkal az a teljesítmény, mivel ezt az összeget az Azure-Cognitive Search kell kiszámítani. Az összetett adatkészletek esetében figyelmeztetést kap, hogy a visszaadott érték egy _közelítés_. A szállodai adatszolgáltatások pontosak lesznek.
+    > Van egy teljesítmény találatot, bár általában nem sok egy, beállításával **IncludeTotalResultCount** true, mivel ezt az összeget kell kiszámítani az Azure Cognitive Search. Összetett adatkészletek nél figyelmeztetés van arra, hogy a visszaadott érték _közelítés._ A szállodai adatok, akkor pontos.
 
 ### <a name="compile-and-run-the-app"></a>Az alkalmazás fordítása és futtatása
 
 Most válassza a **Start hibakeresés nélkül** lehetőséget (vagy nyomja le az F5 billentyűt).
 
-1. Keressen rá egy olyan szövegre, amely sok eredményt fog adni (például "WiFi"). Az eredményekkel könnyedén áttekintheti a lapjait?
+1. Keresés néhány szöveget, hogy ad sok eredményt (mint például a "wifi"). Tud oldal szépen át az eredményeket?
 
-    ![Számozott Lapozás a "pool" eredményein keresztül](./media/tutorial-csharp-create-first-app/azure-search-numbered-paging.png)
+    ![Számozott lapozás a "pool" eredmények között](./media/tutorial-csharp-create-first-app/azure-search-numbered-paging.png)
 
-2. Kattintson a jobb szélső, majd a bal szélső oldalszámokra. A oldalszámok megfelelően vannak módosítva a lap középpontba állításához?
+2. Kattintson a jobb szélső, majd később a bal szélső oldalszámokra. Megfelelően módosulnak az oldalszámok a bealkalmazásban lévő oldal közepére?
 
-3. Hasznosak az "első" és a "Last" lehetőség? Néhány népszerű webes keresés ezeket a beállításokat használja, mások pedig nem.
+3. Hasznosak az "első" és az "utolsó" opciók? Egyes népszerű internetes keresések ezeket a beállításokat használják, mások nem.
 
-4. Ugrás az eredmények utolsó oldalára. Az utolsó lap az egyetlen oldal, amely kevesebb, mint **ResultsPerPage** eredményt tartalmazhat.
+4. Ugrás az eredmények utolsó oldalára. Az utolsó oldal az egyetlen olyan oldal, amely kevesebb, mint **a ResultsPerPage** eredményeket tartalmazhatja.
 
-    ![A "WiFi" utolsó oldalának vizsgálata](./media/tutorial-csharp-create-first-app/azure-search-pool-last-page.png)
+    ![A "wifi" utolsó oldalának vizsgálata](./media/tutorial-csharp-create-first-app/azure-search-pool-last-page.png)
 
-5. Írja be a "város" kifejezést, majd kattintson a Keresés gombra. A lapozási beállítások nem jelennek meg, ha kevesebb, mint egy oldal ér el eredményeket.
+5. Írja be a "város" szót, és kattintson a keresés gombra. Nem jelennek meg lapozási beállítások, ha egynél kevesebb oldalnyi eredmény van.
 
     ![A "város" kifejezés keresése](./media/tutorial-csharp-create-first-app/azure-search-town.png)
 
-Most mentse a projektet, és próbáljon ki egy alternatívát ezen a lapozási űrlapon.
+Most mentse ki ezt a projektet, és próbáljunk meg egy alternatívát, hogy ezt a formát a személyhívó.
 
-## <a name="extend-your-app-with-infinite-scrolling"></a>Az alkalmazás kiterjesztése végtelen görgetéssel
+## <a name="extend-your-app-with-infinite-scrolling"></a>Bővítse alkalmazását végtelen görgetéssel
 
-A végtelen görgetés akkor aktiválódik, ha a felhasználó függőleges görgetősávot görget az utolsó megjelenített eredmények között. Ebben az esetben a rendszer meghívja a kiszolgálót az eredmények következő oldalára. Ha nincs több eredmény, a rendszer semmit sem ad vissza, és a függőleges görgetősáv nem változik. Ha több találat is van, akkor a rendszer hozzáfűzi az aktuális oldalhoz, és a görgetősáv úgy módosul, hogy több találat is elérhető lesz.
+A végtelen görgetés akkor aktiválódik, amikor a felhasználó egy függőleges görgetősávot görget az utolsó megjelenített eredményre. Ebben az esetben a kiszolgálóhívás az eredmények következő oldalára történik. Ha nincs több eredmény, a program semmit sem ad vissza, és a függőleges görgetősáv nem változik. Ha több eredmény jelenik meg, a program hozzáfűzi őket az aktuális laphoz, és a görgetősáv megváltozik, hogy több eredmény érhető el.
 
-A fontos pont az, hogy a megjelenő lap nem lesz lecserélve, de az új eredményekhez van hozzáfűzve. A felhasználó bármikor görgetheti a keresést a keresés első eredményeire.
+A lényeg itt az, hogy a megjelenített oldal nem helyettesíti, de csatolva az új eredményeket. A felhasználó bármikor visszagörgethet a keresés első eredményéhez.
 
-A végtelen görgetés megvalósításához kezdjük a projekttel, mielőtt az oldalszámot görgető elemek bármelyike hozzá lett adva. Ha tehát szükség van rá, készítsen egy másik másolatot az alapszintű keresési oldalról a GitHubról: [hozza létre az első alkalmazást](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+A végtelen görgetés megvalósításához kezdjük a projekttel, mielőtt az oldalszám görgetési elemeit hozzáadnák. Tehát, ha szükséges, készítsen egy másik másolatot az alapkeresési lapról a GitHubról: [Az első alkalmazás létrehozása](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 
-### <a name="add-paging-fields-to-the-model"></a>Lapozási mezők hozzáadása a modellhez
+### <a name="add-paging-fields-to-the-model"></a>Lapozómezők hozzáadása a modellhez
 
-1. Először adjon hozzá egy **lapozási** tulajdonságot a **SearchData** osztályhoz (a SearchData.cs-modell fájljában).
+1. Először vegyen fel egy **lapozótulajdonságot** a **SearchData** osztályba (a SearchData.cs modellfájlban).
 
     ```cs
         // Record if the next page is requested.
         public string paging { get; set; }
     ```
 
-    Ez a változó egy karakterlánc, amely a "Next" értéket tartalmazza, ha az eredmények következő oldalát kell elküldeni, vagy null értékűnek kell lennie a keresés első oldalán.
+    Ez a változó egy karakterlánc, amely a "következő" értéket tartalmazza, ha a következő találatot el kell küldeni, vagy null értékű a keresés első oldalán.
 
-2. Ugyanebben a fájlban és a névtéren belül adjon hozzá egy globális változó osztályt egy tulajdonsággal. Az MVC-ben a globális változók a saját statikus osztályában vannak deklarálva. A **ResultsPerPage** az eredmények számát állítja be oldalanként. 
+2. Ugyanabban a fájlban és a névtéren belül adjon hozzá egy globális változóosztályt egy tulajdonsággal. Az MVC-ben a globális változók deklarálva vannak a saját statikus osztályukban. **Az ResultsPerPage** beállítja az egy oldalonkénti eredmények számát. 
 
     ```cs
     public static class GlobalVariables
@@ -422,9 +422,9 @@ A végtelen görgetés megvalósításához kezdjük a projekttel, mielőtt az o
 
 ### <a name="add-a-vertical-scroll-bar-to-the-view"></a>Függőleges görgetősáv hozzáadása a nézethez
 
-1. Keresse meg az index. cshtml fájl azon szakaszát, amely az eredményeket jeleníti meg (az **@if (Model! = null)** karakterlánccal kezdődik.
+1. Keresse meg az index.cshtml fájlnak azt a részét, amely az eredményeket jeleníti meg (a ** @if (Modell != null)** értékkel kezdődik).
 
-2. Cserélje le a szakaszt az alábbi kódra. Az új **&lt;div&gt;** szakasz azon a területen helyezkedik el, amelyen görgethető lehet, és egy **túlcsordulás-y** attribútumot és egy "görgetve ()" nevű **onscroll** -függvény hívását, például:.
+2. Cserélje le a szakaszt az alábbi kódra. Az ** &lt;új&gt; div** szakasz körül van a terület, hogy kell görgethető, és hozzáteszi, mind a **túlcsordulás-y** attribútum és a hívás egy **onscroll** funkció az úgynevezett "scrolled()", mint így.
 
     ```cs
         @if (Model != null)
@@ -447,7 +447,7 @@ A végtelen görgetés megvalósításához kezdjük a projekttel, mielőtt az o
         }
     ```
 
-3. Közvetlenül a hurok alatt a &lt;/div&gt; címke után adja hozzá a **görgetett** függvényt.
+3. Közvetlenül a hurok alatt, &lt;&gt; a /div címke után adja hozzá a **görgetett** funkciót.
 
     ```javascript
         <script>
@@ -467,15 +467,15 @@ A végtelen görgetés megvalósításához kezdjük a projekttel, mielőtt az o
         </script>
     ```
 
-    Az **IF** utasítás a fenti szkriptben ellenőrzi, hogy a felhasználó görgette-e a függőleges görgetősáv aljára. Ha rendelkezik a szolgáltatással, a rendszer egy **, a** **következő**nevű műveletre irányuló hívást kezdeményez. A vezérlő nem igényel további információkat, az adatok következő oldalát fogja visszaadni. Ezeket az adatsorokat a rendszer az eredeti lapon megegyező HTML-stílusokkal formázza. Ha a rendszer nem ad vissza eredményt, semmi sem kerül hozzáfűzésre, és a dolgok maradnak.
+    A fenti parancsfájl **"if"** utasítása teszteli, hogy a felhasználó a függőleges görgetősáv aljára görgetett-e. Ha van, **a** Home vezérlő hívása a Next nevű műveletre **történik.** A vezérlőnek nincs szüksége más információra, akkor a következő adatlapot adja vissza. Ezeket az adatokat a program ezután az eredeti oldallal megegyező HTML-stílusok használatával formázza. Ha nem ad vissza eredményt, semmi sem lesz hozzáfűzve, és a dolgok úgy maradnak, ahogy vannak.
 
-### <a name="handle-the-next-action"></a>A következő művelet kezelése
+### <a name="handle-the-next-action"></a>A Következő művelet kezelése
 
-Csak három műveletet kell elküldeni a vezérlőnek: az alkalmazás első futtatása, amely meghívja az **indexet ()** , a felhasználó első keresését, amely meghívja az **indexet (Model)** , majd a további találatokat a **következő (modell)** használatával.
+Csak három műveletet kell elküldeni a vezérlőnek: az alkalmazás első futtatása, amely meghívja az **Index()** programot, a felhasználó által végzett első keresést, amely meghívja az **Index(model)** programot, majd az ezt követő további eredményeket a **Next(model)** segítségével.
 
-1. Nyissa meg a Kezdőlap vezérlő fájlját, és törölje a **RunQueryAsync** metódust az eredeti oktatóanyagból.
+1. Nyissa meg az otthoni vezérlőfájlt, és törölje a **RunQueryAsync** metódust az eredeti oktatóanyagból.
 
-2. Cserélje le az **index (modell)** műveletet a következő kódra. Ekkor a **lapozási** mezőt a NULL értékre állítja, vagy a "Next" (tovább) értékre van állítva, és kezeli a hívást az Azure Cognitive Search.
+2. Cserélje le az **Index(modell)** műveletet a következő kódra. Most kezeli a **lapozómezőt,** ha null, vagy "következő" értékre van állítva, és kezeli az Azure Cognitive Search hívását.
 
     ```cs
         public async Task<ActionResult> Index(SearchData model)
@@ -537,9 +537,9 @@ Csak három műveletet kell elküldeni a vezérlőnek: az alkalmazás első futt
         }
     ```
 
-    A számozott lapozási módszerhez hasonlóan a **kihagyás** és a **legfelső szintű** keresési beállításokat használjuk, hogy csak a szükséges adatértékeket adja vissza.
+    A számozott lapozási módszerhez hasonlóan a **Kihagyás** és a **Felső** keresési beállításokat használjuk, hogy csak a szükséges adatokat kérjük vissza.
 
-3. Adja hozzá a **következő** műveletet a Kezdőlap vezérlőhöz. Figyelje meg, hogyan ad vissza egy listát, és minden szálloda két elemet ad hozzá a listához: egy szállodai nevet és egy szállodai leírást. Ez a formátum úgy van beállítva, hogy az megfeleljen a nézet visszaadott adatának **görgetett** függvényének.
+3. Adja hozzá a **Következő** műveletet az otthoni vezérlőhöz. Figyelje meg, hogyan ad vissza egy listát, minden szálloda két elemet ad hozzá a listához: egy szálloda nevét és egy szálloda leírását. Ez a formátum úgy van beállítva, hogy megfeleljen a visszaadott adatok **görgetett** függvényáltali használatának a nézetben.
 
     ```cs
         public async Task<ActionResult> Next(SearchData model)
@@ -563,7 +563,7 @@ Csak három műveletet kell elküldeni a vezérlőnek: az alkalmazás első futt
         }
     ```
 
-4. Ha szintaktikai hibát észlel **&lt;sztring&gt;** , akkor adja hozzá a következő **using** direktívát a vezérlő fájljának fejlécéhez.
+4. Ha szintaktikai hibát észlel a **&lt;Lista karakterláncban,&gt;** akkor adja hozzá az alábbi **utasítást** a vezérlőfájl fejéhez.
 
     ```cs
     using System.Collections.Generic;
@@ -573,32 +573,32 @@ Csak három műveletet kell elküldeni a vezérlőnek: az alkalmazás első futt
 
 Most válassza a **Start hibakeresés nélkül** lehetőséget (vagy nyomja le az F5 billentyűt).
 
-1. Adjon meg egy kifejezést, amely sok eredményt ad (például "pool"), majd tesztelje a függőleges görgetősávot. Elindítja az eredmények új oldalát?
+1. Adjon meg egy kifejezést, amely sok eredményt ad (például "pool"), majd tesztelje a függőleges görgetősávot. Új eredményoldalt indít el?
 
-    ![Végtelen görgetés a "pool" eredményei között](./media/tutorial-csharp-create-first-app/azure-search-infinite-scroll.png)
+    ![Végtelen görgetés a "pool" eredmények között](./media/tutorial-csharp-create-first-app/azure-search-infinite-scroll.png)
 
     > [!Tip]
-    > Annak érdekében, hogy az első oldalon megjelenjen egy görgetősáv, az eredmények első oldalának valamivel nagyobbnak kell lennie a megjelenített terület magasságán. A példánkban a **Box1** 30 képpont magasságú **. a rajzolása 2** magassága 100 képpont, az alsó _margó pedig 24_ képpont. Így minden bejegyzés 154 képpont-t használ. Három bejegyzés 3 x 154 = 462 képpont-t vesz igénybe. Annak érdekében, hogy megjelenjen egy függőleges görgetősáv, a megjelenített területen lévő magasságot 462 képpontnál kisebb értékre kell állítani, még a 461 is. Ez a probléma csak az első oldalon fordul elő, miután a görgetősáv biztosan megjelenik. A frissítendő vonal a következő: **&lt;div id = "myDiv" style = "width: 800px; height: 450px; túlcsordulás-y: Scroll;" onscroll = "görgetett ()"&gt;** .
+    > Annak érdekében, hogy a görgetősáv megjelenjen az első oldalon, az eredmények első oldalának kissé meg kell haladnia annak a területnek a magasságát, amelyen megjelenik. A példánkban **a .box1** magassága 30 képpont, **a .box2** magassága 100 képpont, alsó margója pedig 24 képpont. _and_ Tehát minden bejegyzés 154 pixelt használ. Három bejegyzés 3 x 154 = 462 képpontot vesz igénybe. A függőleges görgetősáv megjelenítésének biztosításához a kijelzőterület magasságát 462 képpontnál kisebb rekedésnek kell beállítani, még akkor is, ha a 461 működik. Ez a probléma csak az első oldalon jelentkezik, ezt követően a görgetősáv biztosan megjelenik. A frissítendő sor: ** &lt;div id="myDiv" style="width: 800px; height: 450px; overflow-y: scroll;"&gt;onscroll="scrolled()"**.
 
-2. Görgessen le egészen az eredmények aljáig. Figyelje meg, hogy az összes információ most már az egyetlen nézet oldalon található. Az összes kiszolgáló hívásának elindítása nélkül görgetheti az összes utat a tetejére.
+2. Görgessen le egészen az eredmények aljáig. Figyelje meg, hogy az összes információ most már az egy nézet oldalon. A kiszolgálóhívások kiváltása nélkül görgethet egészen a csúcsig.
 
-A kifinomultabb végtelen görgetési rendszerek az egér görgőjét vagy hasonló más mechanizmust használhatnak az eredmények új oldalának betöltésének elindításához. Ezekben az oktatóanyagokban nem kerül sor a végtelen görgetésre, de egy kis varázsa van rá, mivel elkerüli az egér további kattintásait, és további lehetőségeket is szeretne kivizsgálni.
+A kifinomultabb végtelen görgetőrendszerek az egérgörgőt vagy más mechanizmust használhatnak egy új eredményoldal betöltéséhez. Mi nem vesz végtelen görgetés tovább ezeket az útmutatókat, de van egy bizonyos varázsa, hogy ez elkerüli extra kattintással, és érdemes megvizsgálni más lehetőségek tovább!
 
 ## <a name="takeaways"></a>Legfontosabb ismeretek
 
-Vegye figyelembe az alábbi elvihetőket a projektből:
+Vegye figyelembe a következő elvihető ételek ebből a projektből:
 
-* A számozott lapozás jó olyan keresésekhez, ahol az eredmények sorrendje némileg tetszőleges, ami azt jelenti, hogy a későbbi lapokon a felhasználók számára érdekes lehet.
-* A végtelen görgetés jó, ha az eredmények sorrendje különösen fontos. Például, ha az eredmények a rendeltetési város középpontjának a távolságára vannak rendezve.
-* A számozott lapozás nagyobb navigálást tesz lehetővé. Egy felhasználó például megjegyezheti, hogy egy érdekes eredmény a 6. oldalon található, míg a végtelen görgetés nem tartalmaz ilyen egyszerű referenciát.
-* A végtelen görgetés egyszerűen megfellebbezhető, és a görgetés felfelé és lefelé görgethető, és a kattintásra nem használható.
-* A végtelen görgetés egyik kulcsfontosságú funkciója, hogy az eredmények egy meglévő lapra kerülnek, nem helyettesíti ezt az oldalt, amely hatékony.
-* Az ideiglenes tároló csak egy hívást tart fenn, és vissza kell állítania a további hívások túléléséhez.
+* Számozott személyhívó van jó részére keres hol a rend -ból eredmények van némileg önkényes, jelentés ott május jól lenni valami -ból érdekel -hoz -a használók -on később oldalak.
+* Végtelen görgetés jó, ha az eredmények sorrendje különösen fontos. Ha például az eredményeket a célváros központjától való távolság alapján rendezi késedelmi döngés.
+* Számozott személyhívó lehetővé teszi a jobb navigációt. Például a felhasználó emlékezhet arra, hogy egy érdekes eredmény a 6.
+* Végtelen görgetés van egy egyszerű fellebbezést, görgetés fel és le nem nyűgös oldalszámokat kattintson.
+* A végtelen görgetés egyik legfontosabb jellemzője, hogy az eredményeket egy meglévő oldalhoz fűzik, nem pedig az oldal cseréjéhez, ami hatékony.
+* Az ideiglenes tárolás csak egy hívás esetén marad meg, és a további hívások túléléséhez alaphelyzetbe kell állítani.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-A lapozás alapvető fontosságú az internetes keresésekhez. A lapozással jól érintett, a következő lépés a felhasználói élmény további javítása a típus-előre megadott keresések hozzáadásával.
+A személyhívó szolgáltatás alapvető fontosságú az internetes kereséshez. A lapozás jól fedett, a következő lépés az, hogy javítsa a felhasználói élményt tovább, hozzáadásával típus-előre keres.
 
 > [!div class="nextstepaction"]
-> [C#Oktatóanyag: az autocomplete és a javaslatok hozzáadása – Azure Cognitive Search](tutorial-csharp-type-ahead-and-suggestions.md)
+> [C# oktatóanyag: Automatikus kiegészítés és javaslatok hozzáadása – Azure Cognitive Search](tutorial-csharp-type-ahead-and-suggestions.md)

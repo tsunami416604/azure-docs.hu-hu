@@ -2,15 +2,15 @@
 title: Virtuálisgép-bővítmények telepítése sablonnal
 description: Útmutató virtuális gépi bővítmények üzembe helyezéséhez Azure Resource Manager-sablonokkal.
 author: mumian
-ms.date: 11/13/2018
+ms.date: 03/31/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 469948d3d3207dd684d5a9b752e0c448ac7e83a9
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 7397e9387fe3354a926ed607a9132ab6ddc7e785
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239262"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477594"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>Oktatóanyag: Virtuálisgép-bővítmények üzembe helyezése ARM-sablonokkal
 
@@ -76,25 +76,25 @@ Adjon hozzá a meglévő sablonhoz egy virtuális gépi bővítmény erőforrás
 
 ```json
 {
-    "type": "Microsoft.Compute/virtualMachines/extensions",
-    "apiVersion": "2018-06-01",
-    "name": "[concat(variables('vmName'),'/', 'InstallWebServer')]",
-    "location": "[parameters('location')]",
-    "dependsOn": [
-        "[concat('Microsoft.Compute/virtualMachines/',variables('vmName'))]"
-    ],
-    "properties": {
-        "publisher": "Microsoft.Compute",
-        "type": "CustomScriptExtension",
-        "typeHandlerVersion": "1.7",
-        "autoUpgradeMinorVersion":true,
-        "settings": {
-            "fileUris": [
-                "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1"
-            ],
-            "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File installWebServer.ps1"
-        }
-    }
+  "type": "Microsoft.Compute/virtualMachines/extensions",
+  "apiVersion": "2018-06-01",
+  "name": "[concat(variables('vmName'),'/', 'InstallWebServer')]",
+  "location": "[parameters('location')]",
+  "dependsOn": [
+      "[concat('Microsoft.Compute/virtualMachines/',variables('vmName'))]"
+  ],
+  "properties": {
+      "publisher": "Microsoft.Compute",
+      "type": "CustomScriptExtension",
+      "typeHandlerVersion": "1.7",
+      "autoUpgradeMinorVersion":true,
+      "settings": {
+        "fileUris": [
+          "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1"
+        ],
+        "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File installWebServer.ps1"
+      }
+  }
 }
 ```
 
@@ -104,6 +104,27 @@ Az erőforrás-definícióról további információt a [bővítmény hivatkozá
 * **dependsOn**: A bővítmény erőforrás létrehozása a virtuális gép létrehozása után.
 * **fileUris**: A helyek, ahol a parancsfájlok tárolódnak. Ha úgy dönt, hogy nem használja a megadott helyet, frissítenie kell az értékeket.
 * **commandToExecute**: Ez a parancs meghívja a parancsfájlt.
+
+Meg kell nyitnia a HTTP-portot is, hogy hozzáférhessen a webkiszolgálóhoz.
+
+1. Keresse meg a **securityRules** elemet a sablonban.
+1. Adja hozzá a következő szabályt az **alapértelmezett-allow-3389**értékhez.
+
+    ```json
+    {
+      "name": "AllowHTTPInBound",
+      "properties": {
+        "priority": 1010,
+        "access": "Allow",
+        "direction": "Inbound",
+        "destinationPortRange": "80",
+        "protocol": "Tcp",
+        "sourcePortRange": "*",
+        "sourceAddressPrefix": "*",
+        "destinationAddressPrefix": "*"
+      }
+    }
+    ```
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 

@@ -1,5 +1,5 @@
 ---
-title: Tábla növekményes másolása a PowerShell-lel
+title: Táblázat növekményes másolása a PowerShell használatával
 description: Az oktatóanyag során egy Azure Data Factory-folyamatot hoz majd létre, amely adatokat másol be növekményesen egy Azure SQL-adatbázisból egy Azure Blob Storage-tárolóba.
 services: data-factory
 author: dearandyxu
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
 ms.openlocfilehash: 1a3651f82d7818ad105c0a8a7b5fd9fcf073b4a1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79239811"
 ---
-# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-powershell"></a>Adatok növekményes betöltése az Azure SQL Database-ből az Azure Blob Storage-ba a PowerShell használatával
+# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-powershell"></a>Növekményes adatok betöltése azure-SQL-adatbázisból az Azure Blob storage-ba a PowerShell használatával
 
 Az oktatóanyag során egy Azure adat-előállítót hoz majd létre egy olyan folyamattal, amely módosított adatokat tölt be egy Azure SQL-adatbázisban lévő táblából egy Azure Blob Storage-tárolóba.
 
@@ -46,7 +46,7 @@ Az alábbiak a megoldás kialakításának leglényegesebb lépései:
 2. **Egy adatraktár előkészítése a küszöbértékek tárolására**.   
     Ebben az oktatóanyagban a küszöbértékeket egy SQL-adatbázisban tároljuk.
 
-3. **Egy folyamat létrehozása a következő munkafolyamattal**:
+3. **Folyamat létrehozása a következő munkafolyamattal:**
 
     Ebben a megoldásban a folyamat a következő tevékenységeket tartalmazza:
 
@@ -55,18 +55,18 @@ Az alábbiak a megoldás kialakításának leglényegesebb lépései:
     * Egy StoredProcedure tevékenység létrehozása, amely frissíti a küszöbértékeket a folyamat következő futtatásához.
 
 
-Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot, mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* **Azure SQL Database** Ezt az adatbázist használjuk forrásadattárként. Ha még nem rendelkezik SQL-adatbázissal, a létrehozás folyamatáért lásd az [Azure SQL-adatbázis létrehozását](../sql-database/sql-database-get-started-portal.md) ismertető cikket.
-* **Azure Storage**. A blobtárolót használjuk majd fogadóadattárként. Ha még nem rendelkezik tárfiókkal, tekintse meg a [tárfiók létrehozásának](../storage/common/storage-account-create.md) lépéseit ismertető cikket. Hozzon létre egy tárolót adftutorial néven. 
-* **Azure PowerShell**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-Az-ps) ismertető cikkben szereplő utasításokat.
+* **Az Azure SQL Database .** Ezt az adatbázist használjuk forrásadattárként. Ha még nem rendelkezik SQL-adatbázissal, a létrehozás folyamatáért lásd az [Azure SQL-adatbázis létrehozását](../sql-database/sql-database-get-started-portal.md) ismertető cikket.
+* **Az Azure Storage szolgáltatást.** A blobtárolót használjuk majd fogadóadattárként. Ha még nem rendelkezik tárfiókkal, tekintse meg a [tárfiók létrehozásának](../storage/common/storage-account-create.md) lépéseit ismertető cikket. Hozzon létre egy tárolót adftutorial néven. 
+* **Az Azure PowerShell**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-Az-ps) ismertető cikkben szereplő utasításokat.
 
 ### <a name="create-a-data-source-table-in-your-sql-database"></a>Adatforrástábla létrehozása az SQL-adatbázisban
-1. Nyissa meg az SQL Server Management Studiót. A **Kiszolgálókezelőben** kattintson a jobb gombbal az adatbázisra, és válassza az **Új lekérdezés** elemet.
+1. Nyissa meg az SQL Server Management Studiót. A **Kiszolgálókezelőben**kattintson a jobb gombbal az adatbázisra, és válassza az **Új lekérdezés**parancsot.
 
 2. Futtassa a következő SQL-parancsot az SQL-adatbázison egy tábla `data_source_table` néven, adatforrástárként történő létrehozásához:
 
@@ -175,13 +175,13 @@ END
     ```powershell
     $dataFactoryName = "ADFIncCopyTutorialFactory";
     ```
-5. Az adatelőállító létrehozásához futtassa az alábbi **set-AzDataFactoryV2** parancsmagot:
+5. Az adat-előállító létrehozásához futtassa a következő **Set-AzDataFactoryV2** parancsmagát:
 
     ```powershell       
     Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location "East US" -Name $dataFactoryName
     ```
 
-Vegye figyelembe a következő pontokat:
+Vegye figyelembe a következő szempontokat:
 
 * Az adat-előállító nevének globálisan egyedinek kell lennie. Ha a következő hibaüzenetet kapja, módosítsa a nevet, majd próbálkozzon újra:
 
@@ -197,7 +197,7 @@ Vegye figyelembe a következő pontokat:
 Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattárak és a számítási szolgáltatások adat-előállítóval történő társításához. Ebben a szakaszban a tárfiókkal és az SQL-adatbázissal társított szolgáltatásokat hoz létre.
 
 ### <a name="create-a-storage-linked-service"></a>Storage-beli társított szolgáltatás létrehozása
-1. Hozzon létre egy AzureStorageLinkedService.json nevű JSON-fájlt a C:\ADF mappában az alábbi tartalommal. (Ha még nem létezik, hozza létre az ADF mappát.) A fájl mentése előtt cserélje le a `<accountName>` és a `<accountKey>` a Storage-fiók nevére és kulcsára.
+1. Hozzon létre egy AzureStorageLinkedService.json nevű JSON-fájlt a C:\ADF mappában az alábbi tartalommal. (Hozza létre az ADF mappát, ha még nem létezik.) A fájl mentése előtt cserélje le `<accountName>` és írja le a tárfiók nevét és kulcsát. `<accountKey>`
 
     ```json
     {
@@ -212,13 +212,13 @@ Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattára
     ```
 2. A PowerShellben lépjen az ADF mappára.
 
-3. Futtassa a **set-AzDataFactoryV2LinkedService** parancsmagot a társított szolgáltatás AzureStorageLinkedService létrehozásához. A következő példában a *ResourceGroupName* és a *DataFactoryName* paraméter értékeit fogja megadni:
+3. Futtassa a **Set-AzDataFactoryV2LinkedService** parancsmag a csatolt szolgáltatás AzureStorageLinkedService létrehozásához. A következő példában a *ResourceGroupName* és a *DataFactoryName* paraméterek értékeit adja meg:
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
     ```
 
-    Itt látható a kimenet mintája:
+    Itt látható a minta kimenete:
 
     ```json
     LinkedServiceName : AzureStorageLinkedService
@@ -228,7 +228,7 @@ Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattára
     ```
 
 ### <a name="create-a-sql-database-linked-service"></a>SQL Database-beli társított szolgáltatás létrehozása
-1. Hozzon létre egy AzureSQLDatabaseLinkedService.json nevű JSON-fájlt a C:\ADF mappában az alábbi tartalommal. (Ha még nem létezik, hozza létre az ADF mappát.) A fájl mentése előtt cserélje le &lt;Server&gt;, &lt;adatbázis&gt;, &lt;felhasználói azonosító&gt;és &lt;jelszó&gt; a kiszolgáló, az adatbázis, a felhasználói azonosító és a jelszó megadására.
+1. Hozzon létre egy AzureSQLDatabaseLinkedService.json nevű JSON-fájlt a C:\ADF mappában az alábbi tartalommal. (Hozza létre az ADF mappát, ha még nem létezik.) A &lt;&gt;fájl &lt;&gt;mentése &lt;előtt&gt;cserélje &lt;le&gt; a kiszolgálót, az adatbázist , a felhasználói azonosítót és a jelszót a kiszolgáló, az adatbázis, a felhasználói azonosító és a jelszó nevére.
 
     ```json
     {
@@ -243,13 +243,13 @@ Társított szolgáltatásokat hoz létre egy adat-előállítóban az adattára
     ```
 2. A PowerShellben lépjen az ADF mappára.
 
-3. Futtassa a **set-AzDataFactoryV2LinkedService** parancsmagot a társított szolgáltatás AzureSQLDatabaseLinkedService létrehozásához.
+3. Futtassa a **Set-AzDataFactoryV2LinkedService** parancsmag az AzureSQLDatabaseLinkedService csatolt szolgáltatás létrehozásához.
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
     ```
 
-    Itt látható a kimenet mintája:
+    Itt látható a minta kimenete:
 
     ```json
     LinkedServiceName : AzureSQLDatabaseLinkedService
@@ -284,7 +284,7 @@ Ebben a lépésben adatkészleteket hoz létre, amelyek a forrás és a fogadó 
     ```
     Ebben az oktatóanyagban a tábla neve a következő: data_source_table. Ha más nevű táblát használ, cserélje le a nevet.
 
-2. Futtassa a **set-AzDataFactoryV2Dataset** parancsmagot az adatkészlet SourceDataset létrehozásához.
+2. Futtassa a **Set-AzDataFactoryV2Dataset** parancsmag létrehozásához az adatkészlet SourceDataset.
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
@@ -327,7 +327,7 @@ Ebben a lépésben adatkészleteket hoz létre, amelyek a forrás és a fogadó 
     > [!IMPORTANT]
     > Ez a kódtöredék azt feltételezi, hogy a Blob Storage-ban rendelkezik egy adftutorial nevű blobtárolóval. Ha még nem létezik, hozza létre a tárolót, vagy állítsa be egy meglévő tároló nevét. Az `incrementalcopy` kimeneti mappa automatikusan létrejön, ha még nem létezik a tárolóban. Ebben az oktatóanyagban a fájl nevét dinamikusan hozzuk létre a következő kifejezés használatával: `@CONCAT('Incremental-', pipeline().RunId, '.txt')`.
 
-2. Futtassa a **set-AzDataFactoryV2Dataset** parancsmagot az adatkészlet SinkDataset létrehozásához.
+2. Futtassa a **Set-AzDataFactoryV2Dataset** parancsmag létrehozásához az adatkészlet SinkDataset.
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SinkDataset" -File ".\SinkDataset.json"
@@ -363,7 +363,7 @@ Ebben a lépésben egy adatkészletet hozunk létre a felső küszöbértékek t
         }
     }    
     ```
-2.  Futtassa a **set-AzDataFactoryV2Dataset** parancsmagot az adatkészlet WatermarkDataset létrehozásához.
+2.  Futtassa a **Set-AzDataFactoryV2Dataset** parancsmag létrehozásához az adatkészlet VízmarkDataset.
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "WatermarkDataset" -File ".\WatermarkDataset.json"
@@ -495,13 +495,13 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
     ```
 
 
-2. Futtassa a **set-AzDataFactoryV2Pipeline** parancsmagot a folyamat IncrementalCopyPipeline létrehozásához.
+2. Futtassa a **Set-AzDataFactoryV2Pipeline** parancsmag létrehozása a folyamat IncrementalCopyPipeline.
 
    ```powershell
    Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"
    ```
 
-   Itt látható a kimenet mintája:
+   Itt látható a minta kimenete:
 
    ```json
     PipelineName      : IncrementalCopyPipeline
@@ -513,18 +513,18 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
 
 ## <a name="run-the-pipeline"></a>A folyamat futtatása
 
-1. Futtassa a folyamat IncrementalCopyPipeline a **hívás-AzDataFactoryV2Pipeline** parancsmag használatával. Cserélje le a helyőrzőket a saját erőforráscsoportja és adat-előállítója nevére.
+1. Futtassa a folyamatot IncrementalCopyPipeline az **Invoke-AzDataFactoryV2Pipeline** parancsmag használatával. Cserélje le a helyőrzőket a saját erőforráscsoportja és adat-előállítója nevére.
 
     ```powershell
     $RunId = Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroupName $resourceGroupName -dataFactoryName $dataFactoryName
     ```
-2. Ellenőrizze a folyamat állapotát a **Get-AzDataFactoryV2ActivityRun** parancsmag futtatásával egészen addig, amíg nem látja az összes sikeresen futó tevékenységet. Cserélje le a helyőrzőket a saját megfelelő időértékeire a *RunStartedAfter* és a *RunStartedBefore* paraméternél. Ebben az oktatóanyagban a *-RunStartedAfter "2017/09/14"* és a *-RunStartedBefore "2017/09/15"* paramétereket használja.
+2. Ellenőrizze a folyamat állapotát a **Get-AzDataFactoryV2ActivityRun** parancsmag futtatásával, amíg az összes tevékenység sikeresen fut. Cserélje le a helyőrzőket a saját megfelelő időértékeire a *RunStartedAfter* és a *RunStartedBefore* paraméternél. Ebben az oktatóanyagban a *-RunStartedAfter "2017/09/14"* és a *-RunStartedBefore "2017/09/15"* paramétereket használja.
 
     ```powershell
     Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $RunId -RunStartedAfter "<start time>" -RunStartedBefore "<end time>"
     ```
 
-    Itt látható a kimenet mintája:
+    Itt látható a minta kimenete:
 
     ```json
     ResourceGroupName : ADF
@@ -602,7 +602,7 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
     Select * from watermarktable
     ```
 
-    Itt látható a kimenet mintája:
+    Itt látható a minta kimenete:
 
     TableName | WatermarkValue
     --------- | --------------
@@ -633,18 +633,18 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
     6 | newdata | 2017-09-06 02:23:00.000
     7 | newdata | 2017-09-07 09:01:00.000
     ```
-2. Futtassa újra a folyamat IncrementalCopyPipeline a **meghívó-AzDataFactoryV2Pipeline** parancsmag használatával. Cserélje le a helyőrzőket a saját erőforráscsoportja és adat-előállítója nevére.
+2. Futtassa újra az IncrementalCopyPipeline folyamatot az **Invoke-AzDataFactoryV2Pipeline** parancsmag használatával. Cserélje le a helyőrzőket a saját erőforráscsoportja és adat-előállítója nevére.
 
     ```powershell
     $RunId = Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroupName $resourceGroupName -dataFactoryName $dataFactoryName
     ```
-3. Ellenőrizze a folyamat állapotát a **Get-AzDataFactoryV2ActivityRun** parancsmag futtatásával egészen addig, amíg nem látja az összes sikeresen futó tevékenységet. Cserélje le a helyőrzőket a saját megfelelő időértékeire a *RunStartedAfter* és a *RunStartedBefore* paraméternél. Ebben az oktatóanyagban a *-RunStartedAfter "2017/09/14"* és a *-RunStartedBefore "2017/09/15"* paramétereket használja.
+3. Ellenőrizze a folyamat állapotát a **Get-AzDataFactoryV2ActivityRun** parancsmag futtatásával, amíg az összes tevékenység sikeresen fut. Cserélje le a helyőrzőket a saját megfelelő időértékeire a *RunStartedAfter* és a *RunStartedBefore* paraméternél. Ebben az oktatóanyagban a *-RunStartedAfter "2017/09/14"* és a *-RunStartedBefore "2017/09/15"* paramétereket használja.
 
     ```powershell
     Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $RunId -RunStartedAfter "<start time>" -RunStartedBefore "<end time>"
     ```
 
-    Itt látható a kimenet mintája:
+    Itt látható a minta kimenete:
 
     ```json
     ResourceGroupName : ADF
@@ -718,7 +718,7 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
     data_source_table | 2017-09-07 09:01:00.000
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az oktatóanyagban az alábbi lépéseket hajtotta végre:
 
 > [!div class="checklist"]

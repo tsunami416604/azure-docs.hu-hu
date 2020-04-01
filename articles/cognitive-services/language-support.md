@@ -7,15 +7,15 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 48cb1ca1427ece0ee30a124b20d3918f1ace47eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4944fd36359f35ff516aa149b357a7cda042fdae
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78274134"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477048"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Az Azure Cognitive Services természetes nyelvi támogatása
 
@@ -28,9 +28,9 @@ Ezek a Cognitive Services nyelvi agnosztikus, és nem rendelkeznek a nyelvi korl
 
 ## <a name="vision"></a>Vizuális elemek
 
-* [Számítógépes látás](https://docs.microsoft.com/azure/cognitive-services/computer-vision/faq)
-* [Videóindexelő](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview)
-
+* [Számítógépes látástechnológia](https://docs.microsoft.com/azure/cognitive-services/computer-vision/faq)
+* [Video Indexer](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview)
+* [Ink Recognizer](https://docs.microsoft.com/azure/cognitive-services/ink-recognizer/language-support)
 ## <a name="speech"></a>Beszéd
 
 * [Egyéni beszédfelismerés](https://docs.microsoft.com/azure/cognitive-services/custom-speech-service/customspeech-how-to-topics/cognitive-services-custom-speech-change-locale)
@@ -40,17 +40,17 @@ Ezek a Cognitive Services nyelvi agnosztikus, és nem rendelkeznek a nyelvi korl
 
 ## <a name="language"></a>Nyelv
 
-* [Bing helyesírás-ellenőrzés](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages)
+* [Bing – Helyesírás-ellenőrzés](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages)
 * [Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/luis-supported-languages)
 * [QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/overview/languages-supported)
-* [Fordító szövege](https://docs.microsoft.com/azure/cognitive-services/translator/languages)
+* [Fordítói szöveg](https://docs.microsoft.com/azure/cognitive-services/translator/languages)
 * [Szövegelemzés](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)
 
 ## <a name="search"></a>Keresés
 
 * [Bing – Internetes keresés](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/supported-countries-markets)
-* [Bing képkeresés](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/supported-countries-markets)
-* [Bing Hírek Keresés](https://docs.microsoft.com/azure/cognitive-services/bing-news-search/supported-countries-markets)
+* [Bing – Képkeresés](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/supported-countries-markets)
+* [Bing – Hírkeresés](https://docs.microsoft.com/azure/cognitive-services/bing-news-search/supported-countries-markets)
 * [Bing – Automatikus kiegészítés](https://docs.microsoft.com/azure/cognitive-services/Bing-Autosuggest/bing-autosuggest-supported-languages)
 * [Bing vizuális keresés](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/supported-countries-markets)
 * [Bing – Egyéni keresés](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/supported-countries-markets)

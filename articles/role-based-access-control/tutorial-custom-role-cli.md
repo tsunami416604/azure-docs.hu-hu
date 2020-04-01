@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: egyéni szerepkör létrehozása Azure-erőforrásokhoz az Azure CLI-vel'
-description: Első lépésként hozzon létre egy egyéni szerepkört az Azure-erőforrásokhoz az oktatóanyagban az Azure CLI használatával.
+title: 'Oktatóanyag: Hozzon létre egy egyéni szerepkört az Azure-erőforrásokhoz az Azure CLI-vel'
+description: Az azure-beli CLI használatával az Azure CLI használatával előismerkedése az oktatóanyagban.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -14,17 +14,17 @@ ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
 ms.openlocfilehash: f1a6e72e1444a26b675379d9948217a7773c4a1c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79239867"
 ---
-# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>Oktatóanyag: egyéni szerepkör létrehozása Azure-erőforrásokhoz az Azure CLI használatával
+# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>Oktatóanyag: Hozzon létre egy egyéni szerepkört az Azure-erőforrásokhoz az Azure CLI használatával
 
-Ha az [Azure-erőforrások beépített szerepkörei](built-in-roles.md) nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját egyéni szerepköröket is. Ebben az oktatóanyagban egy Reader Support Tickets (Olvasó – Támogatási jegyek) nevű egyéni szerepkört fog létrehozni az Azure CLI-vel. Az egyéni szerepkör lehetővé teszi a felhasználó számára, hogy megtekintse az előfizetés felügyeleti síkja összes adatát, valamint a támogatási jegyek megnyitását is.
+Ha az [Azure-erőforrások beépített szerepkörei](built-in-roles.md) nem felelnek meg a szervezet egyedi igényeinek, létrehozhat saját egyéni szerepköröket. Ebben az oktatóanyagban egy Reader Support Tickets (Olvasó – Támogatási jegyek) nevű egyéni szerepkört fog létrehozni az Azure CLI-vel. Az egyéni szerepkör lehetővé teszi a felhasználó számára, hogy tekintse meg mindent a felügyeleti síkon egy előfizetés, és megnyithatja a támogatási jegyeket.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Egyéni szerepkör létrehozása
@@ -32,7 +32,7 @@ Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 > * Egyéni szerepkörök frissítése
 > * Egyéni szerepkörök törlése
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -43,7 +43,7 @@ Az oktatóanyag elvégzéséhez a következőkre van szükség:
 
 ## <a name="sign-in-to-azure-cli"></a>Bejelentkezés az Azure CLI-be
 
-Jelentkezzen be az [Azure CLI](/cli/azure/authenticate-azure-cli)-be.
+Jelentkezzen be az [Azure CLI-be.](/cli/azure/authenticate-azure-cli)
 
 ## <a name="create-a-custom-role"></a>Egyéni szerepkör létrehozása
 
@@ -61,7 +61,7 @@ Legegyszerűbben úgy hozhat létre egyéni szerepkört, ha egy JSON-sablonnal k
 
 1. Nyissa meg a ReaderSupportRole.json fájlt egy szövegszerkesztőben, és adja hozzá a következő JSON-t.
 
-    További információ a különböző tulajdonságokkal kapcsolatban: [Egyéni szerepkörök az Azure-erőforrásokhoz](custom-roles.md).
+    A különböző tulajdonságokról az [Egyéni szerepkörök az Azure-erőforrásokhoz](custom-roles.md)című témakörben talál további információt.
 
     ```json
     {
@@ -266,7 +266,7 @@ Egyéni szerepkör frissítéséhez módosítsa a JSON-fájlt, majd frissítse a
     az role definition delete --name "Reader Support Tickets"
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Egyéni szerepkörök létrehozása Azure-erőforrásokhoz az Azure CLI használatával](custom-roles-cli.md)

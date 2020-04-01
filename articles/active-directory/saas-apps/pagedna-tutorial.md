@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező PageDNA |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és PageDNA között.
+title: 'Oktatóanyag: Az Azure Active Directory integrációja a PageDNA-val | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a PageDNA között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,98 +17,98 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3c7f8c8efcad0a07a3d3a56925866b10d94f82ed
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68227466"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező PageDNA
+# <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>Oktatóanyag: Az Azure Active Directory integrációja a PageDNA-val
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan PageDNA integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a PageDNA-t az Azure Active Directoryval (Azure AD).
 
-PageDNA integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+A PageDNA integrálása az Azure AD-vel a következő előnyöket nyújtja:
 
-* Az Azure AD-ben szabályozhatja, ki férhet hozzá PageDNA.
-* Engedélyezheti a felhasználók számára, hogy automatikusan jelentkezzenek be PageDNA (egyszeri bejelentkezés), az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen kezelheti: az Azure Portalon.
+* Az Azure AD-ben szabályozhatja, hogy ki férhet hozzá a PageDNA-hoz.
+* Engedélyezheti, hogy a felhasználók automatikusan bejelentkeznek a PageDNA-be (egyszeri bejelentkezés) az Azure AD-fiókjukkal.
+* Fiókjait egyetlen központi helyen kezelheti: az Azure Portalon.
 
-További információk az Azure AD-szoftverként (saas biztosított) alkalmazás integrációja: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+A szoftver szolgáltatásként (SaaS) alkalmazásintegráció az Azure AD-vel kapcsolatos részletekért olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-PageDNA az Azure AD-integráció konfigurálásához a következőkre van szükség:
+Az Azure AD-integráció beállítása a PageDNA-nal a következő elemekre van szüksége:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
-* Az egyszeri bejelentkezés engedélyezve PageDNA előfizetés.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
+* PageDNA-előfizetés egyszeri bejelentkezéssel.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban konfigurálni és a egy tesztkörnyezetben az Azure AD egyszeri bejelentkezés tesztelése és PageDNA integrálása az Azure ad-ben.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezését egy tesztkörnyezetben, és integrálja a PageDNA-t az Azure AD-vel.
 
-PageDNA támogatja a következő funkciókat:
+A PageDNA a következő funkciókat támogatja:
 
-* SP által kezdeményezett egyszeri bejelentkezés (SSO).
+* Sp által kezdeményezett egyszeri bejelentkezés (SSO).
 
-* Just-in-time-felhasználók létrehozásának.
+* Csak-in-time felhasználói kiépítés.
 
-## <a name="add-pagedna-from-the-azure-marketplace"></a>Az Azure Marketplace-ről PageDNA hozzáadása
+## <a name="add-pagedna-from-the-azure-marketplace"></a>PageDNA hozzáadása az Azure Piactérről
 
-Az Azure AD integrálása a PageDNA konfigurálásához hozzá kell PageDNA az Azure Marketplace-ről a felügyelt SaaS-alkalmazások listájára:
+A PageDNA Azure AD-be való integrációjának konfigurálásához hozzá kell adnia a PageDNA-t az Azure Piactérről a felügyelt SaaS-alkalmazások listájához:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com?azure-portal=true).
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com?azure-portal=true)
 1. A bal oldali panelen válassza az **Azure Active Directory** lehetőséget.
 
-    ![Az Azure Active Directoryval opciót.](common/select-azuread.png)
+    ![Az Azure Active Directory beállítás](common/select-azuread.png)
 
-1. Lépjen a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
+1. Nyissa meg a **Vállalati alkalmazások**lehetőséget, és válassza a Minden **alkalmazás lehetőséget.**
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![A Vállalati alkalmazások ablaktábla](common/enterprise-applications.png)
 
-1. Új alkalmazás hozzáadásához válassza **+ új alkalmazás** a panel tetején.
+1. Új alkalmazás hozzáadásához válassza a **+ Új alkalmazás** lehetőséget az ablaktábla tetején.
 
-    ![Az új alkalmazás-beállítás](common/add-new-app.png)
+    ![Az Új alkalmazás opció](common/add-new-app.png)
 
-1. A Keresés mezőbe írja be a **PageDNA**. A keresési eredmények között, válassza ki a **PageDNA**, majd válassza ki **Hozzáadás** , vegye fel az alkalmazást.
+1. A keresőmezőbe írja be a PageDNA ( **PageDNA**) értéket. A keresési eredmények között válassza a **PageDNA**lehetőséget, majd az Alkalmazás hozzáadásához válassza a **Hozzáadás** lehetőséget.
 
-    ![Az eredmények listájában PageDNA](common/search-new-app.png)
+    ![PageDNA az eredménylistában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az nevű tesztfelhasználó alapján PageDNA **Britta Simon**. Az egyszeri bejelentkezés működjön a PageDNA a kell létesítenie az Azure AD-felhasználót és a kapcsolódó felhasználó közötti kapcsolat.
+Ebben a szakaszban konfigurálhatja és tesztelheti az Azure AD egyszeri bejelentkezését a PageDNA-val egy **Britta Simon**nevű tesztfelhasználó alapján. Egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó PageDNA.
 
-Az Azure AD egyszeri bejelentkezés az PageDNA tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez a PageDNA-nal a következő építőelemeket kell végrehajtania:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  ahhoz, hogy ez a funkció használatát a felhasználók számára.
-1. **[PageDNA egyszeri bejelentkezés konfigurálása](#configure-pagedna-single-sign-on)**  az egyszeri bejelentkezési beállításainak konfigurálása az alkalmazás oldalán.
-1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-1. **[Hozzon létre egy PageDNA tesztfelhasználót](#create-a-pagedna-test-user)**  úgy, hogy a felhasználó a PageDNA elnevezett olyan Britta Simon kapcsolódik az Azure AD-felhasználó, aki nevű Britta Simon.
-1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  ellenőrzése, hogy működik-e a konfiguráció.
+1. **[Konfigurálja az Azure AD egyszeri bejelentkezést,](#configure-azure-ad-single-sign-on)** hogy a felhasználók használhassák ezt a funkciót.
+1. **[A PageDNA egyszeri bejelentkezés konfigurálásával](#configure-pagedna-single-sign-on)** konfigurálja az egyszeri bejelentkezési beállításokat az alkalmazás oldalon.
+1. **[Hozzon létre egy Azure AD-tesztfelhasználót](#create-an-azure-ad-test-user)** az Azure AD egyszeri bejelentkezésének britta simonnal való teszteléséhez.
+1. **[Rendelje hozzá az Azure AD tesztfelhasználót,](#assign-the-azure-ad-test-user)** hogy Britta Simon használhassa az Azure AD egyszeri bejelentkezést.
+1. **[Hozzon létre egy PageDNA-tesztfelhasználót,](#create-a-pagedna-test-user)** hogy a PageDNA-ben egy Britta Simon nevű felhasználó kapcsolódjon az Azure AD-felhasználóhoz, Britta Simon néven.
+1. **[Egyszeri bejelentkezés tesztelése annak](#test-single-sign-on)** ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon.
 
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezés PageDNA, tegye a következőket:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához a PageDNA-nal az alábbi lépéseket kell tennie:
 
-1. Az a [az Azure portal](https://portal.azure.com/), az a **PageDNA** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
+1. Az [Azure Portalon](https://portal.azure.com/)a **PageDNA-alkalmazásintegrációs** lapon válassza az Egyszeri **bejelentkezés**lehetőséget.
 
     ![Egyszeri bejelentkezési beállítás konfigurálása](common/select-sso.png)
 
-1. Az a **egyszeri bejelentkezési módszer** ablaktáblán válassza ki az **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+1. Az **Egyszeri bejelentkezési módszer kiválasztása** ablaktáblában válassza **az SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezésválasztó mód](common/select-saml-option.png)
 
-1. Az a **állítsa be egyszeri bejelentkezést az SAML** ablaktáblán válassza **szerkesztése** (a ceruza ikon) nyissa meg a **alapszintű SAML-konfigurációja** ablaktáblán.
+1. Az **Egyszeri bejelentkezés beállítása SAML-lel** ablaktáblán válassza a **Szerkesztés** (a ceruza ikon) lehetőséget az **egyszerű SAML-konfiguráció** ablaktábla megnyitásához.
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az a **alapszintű SAML-konfigurációja** ablaktáblán tegye a következőket:
+1. Az **Alapvető SAML-konfiguráció** ablaktáblán tegye a következő lépéseket:
 
-    ![PageDNA tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier.png)
+    ![PageDNA tartomány és URL-címek egyszeri bejelentkezési információi](common/sp-identifier.png)
 
-    1. Az a **bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő minták egyikét használva:
+    1. A **Bejelentkezési URL-cím** mezőbe írja be az URL-címet az alábbi minták egyikének használatával:
 
         ||
         |--|
@@ -118,7 +118,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés PageDNA, tegye a kö
         | `https://www.nationsprint.com/<your site>` |
         | |
 
-    1. Az a **azonosító (entityid)** mezőbe írjon be egy URL-címet a következő minták egyikét használva:
+    1. Az **Azonosító (entitásazonosító)** mezőbe írjon be egy URL-címet az alábbi minták egyikének használatával:
 
         ||
         |--|
@@ -127,89 +127,89 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés PageDNA, tegye a kö
         | |
 
     > [!NOTE]
-    > Ezek az értékek nem valódi. Ezek az értékek frissítse a tényleges bejelentkezési URL-cím és azonosító. Ezek az értékek beszerzéséhez forduljon a [PageDNA támogatási csapatának](mailto:success@pagedna.com). Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** panel az Azure Portalon.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Ezeknek az értékeknek a betöltéséhez forduljon a [PageDNA támogatási csapatához.](mailto:success@pagedna.com) Az Azure Portal **alapszintű SAML-konfigurációs** ablaktáblájában látható mintákat is hivatkozhat.
 
-1. Az a **állítsa be egyszeri bejelentkezést az SAML** ablaktáblán, a a **SAML-aláíró tanúsítvány** szakaszban jelölje be **letöltése** letöltéséhez **(Raw)tanúsítvány** a megadott lehetőségek közül, és mentse el a számítógépen.
+1. Az **Egyszeri bejelentkezés beállítása SAML-lel** ablaktáblán az **SAML aláíró tanúsítvány** szakaszában válassza a **Letöltés a** **Tanúsítvány (Raw)** letöltéséhez lehetőséget a megadott beállításokközül, és mentse a számítógépre.
 
-    ![A tanúsítvány (nyers) letöltési lehetőséget](common/certificateraw.png)
+    ![A Tanúsítvány (Raw) letöltési lehetőség](common/certificateraw.png)
 
-1. Az a **PageDNA beállítása** területén másolja az URL-címe vagy URL-címeket, amelyekre szüksége:
+1. A **PageDNA beállítása** csoportban másolja a szükséges URL-címet vagy URL-címeket:
 
-   * **Bejelentkezési URL-címe**
-   * **Az Azure AD-azonosító**
-   * **Kijelentkezési URL-címe**
+   * **Bejelentkezés i URL-címe**
+   * **Azure Hirdetés-azonosító**
+   * **Kijelentkezés URL-címe**
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![A konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="configure-pagedna-single-sign-on"></a>PageDNA egyszeri bejelentkezés konfigurálása
+### <a name="configure-pagedna-single-sign-on"></a>PageDNA egyszeri bejelentkezésének konfigurálása
 
-PageDNA oldalán konfigurálása egyszeri bejelentkezéshez, küldjön a letöltött tanúsítvány (Raw) és a megfelelő másolt URL-címeket, az Azure Portalról a [PageDNA támogatási csapatának](mailto:success@pagedna.com). A PageDNA csapat fogja győződjön meg arról, a SAML SSO-kapcsolat mindkét oldalán megfelelően beállítva.
+Az egyszeri bejelentkezés beállításához küldje el a letöltött tanúsítványt (Raw) és a megfelelő másolt URL-címeket az Azure Portalról a [PageDNA támogatási csapatának.](mailto:success@pagedna.com) A PageDNA csapata gondoskodik arról, hogy az SAML SSO-kapcsolat mindkét oldalon megfelelően legyen beállítva.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
 
-Ebben a szakaszban hozzon létre egy tesztfelhasználót Britta Simon nevű az Azure Portalon.
+Ebben a szakaszban hozzon létre egy tesztfelhasználót az Azure Portalon Britta Simon nevű.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**   > **felhasználók** > **minden felhasználó**.
+1. Az Azure Portalbal a bal oldali ablaktáblában válassza az **Azure Active Directory**   > **felhasználói** > **minden felhasználó lehetőséget.**
 
-    ![A felhasználók és a "Minden felhasználó" lehetőség](common/users.png)
+    ![A Felhasználók és a "Minden felhasználó" beállítás](common/users.png)
 
-1. Válassza ki a képernyő tetején lévő **+ új felhasználó**.
+1. A képernyő tetején válassza a **+ Új felhasználó**lehetőséget.
 
     ![Új felhasználói beállítás](common/new-user.png)
 
-1. Az a **felhasználói** ablaktáblán tegye a következőket:
+1. A **Felhasználó** ablaktáblán tegye a következő lépéseket:
 
-    ![A felhasználói panelen](common/user-properties.png)
+    ![A Felhasználó ablaktábla](common/user-properties.png)
 
-    1. Az a **neve** mezőbe írja be **BrittaSimon**.
+    1. A **Név** mezőbe írja be **a BrittaSimon**értéket.
   
-    1. Az a **felhasználónév** mezőbe írja be **BrittaSimon\@\<vállalati_tartomány >.\< bővítmény >** . Ha például **BrittaSimon\@contoso.com**.
+    1. A **Felhasználónév** mezőbe írja be **a\@\<BrittaSimon yourcompanydomain>.\< kiterjesztés>. ** Például **BrittaSimon\@contoso.com**.
 
-    1. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet, majd írja le a **Jelszó** mezőben megjelenő értéket.
 
     1. Kattintson a **Létrehozás** gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze a felhasználó Britta Simon azzal a felhasználói hozzáférést, ha PageDNA Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban engedélyezi, hogy a felhasználó Britta Simon azure egyszeri bejelentkezés tegyék lehetővé a felhasználói hozzáférést a PageDNA.In this section, you enable the user Britta Simon to use Azure single sign-on by granting the user access to PageDNA.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások** > **minden alkalmazás** > **PageDNA**.
+1. Az Azure Portalon válassza a **Vállalati alkalmazások** > **Minden alkalmazás** > **PageDNA**lehetőséget.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Vállalati alkalmazások ablaktábla](common/enterprise-applications.png)
 
-1. Az alkalmazások listájában jelölje ki a **PageDNA**.
+1. Az alkalmazások listájában válassza a **PageDNA**lehetőséget.
 
-    ![Az alkalmazások listáját a PageDNA](common/all-applications.png)
+    ![PageDNA az alkalmazások listájában](common/all-applications.png)
 
-1. A bal oldali panelen alatt **kezelés**válassza **felhasználók és csoportok**.
+1. A bal oldali ablaktáblában a **KEZELÉS csoportban**válassza a **Felhasználók és csoportok**lehetőséget.
 
-    ![A "Felhasználók és csoportok" lehetőséget](common/users-groups-blade.png)
+    ![A "Felhasználók és csoportok" lehetőség](common/users-groups-blade.png)
 
-1. Válassza ki **+ Hozzáadás felhasználó**, majd válassza ki **felhasználók és csoportok** a a **hozzárendelés hozzáadása** ablaktáblán.
+1. Válassza a **+ Felhasználó hozzáadása**lehetőséget , majd a Hozzárendelés **hozzáadása** ablaktáblában válassza a Felhasználók **és csoportok** lehetőséget.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+    ![A Hozzárendelés hozzáadása ablaktábla](common/add-assign-user.png)
 
-1. Az a **felhasználók és csoportok** panelen válassza **Britta Simon** a a **felhasználók** listában, és válassza a **kiválasztása** a panel alján.
+1. A **Felhasználók és csoportok** ablaktáblán válassza **a Britta Simon** elemet a **Felhasználók** listában, majd válassza a **Kijelölés** elemet az ablaktábla alján.
 
-1. Ha valakitől egy szerepkör értéket a SAML helyességi feltétel, majd a a **Szerepkörválasztás** ablaktáblán válassza ki a megfelelő szerepkört a felhasználóhoz a listából. A panel alján válassza **kiválasztása**.
+1. Ha az SAML-feltételben szerepkörértéket vár, akkor a **Szerepkör kiválasztása** ablaktáblában válassza ki a felhasználó megfelelő szerepkörét a listából. Az ablaktábla alján válassza a **Kijelölés lehetőséget.**
 
-1. Az a **hozzárendelés hozzáadása** ablaktáblán válassza előbb **hozzárendelése**.
+1. A **Hozzárendelés hozzáadása** ablaktáblán válassza a **Hozzárendelés lehetőséget.**
 
-### <a name="create-a-pagedna-test-user"></a>PageDNA tesztfelhasználó létrehozása
+### <a name="create-a-pagedna-test-user"></a>PageDNA-tesztfelhasználó létrehozása
 
-Britta Simon nevű felhasználót a PageDNA megtörtént. Nem kell tennie semmit, a felhasználó létrehozásához. PageDNA támogatja a just-in-time-felhasználók létrehozásának, amely alapértelmezés szerint engedélyezve van. Britta Simon nevű felhasználó már nem létezik az PageDNA, ha egy új jön létre a hitelesítés után.
+A Felhasználó neve Britta Simon most jön létre PageDNA. A felhasználó létrehozásához semmit sem kell tennie. A PageDNA támogatja a just-in-time felhasználói kiépítést, amely alapértelmezés szerint engedélyezve van. Ha egy Britta Simon nevű felhasználó még nem létezik a PageDNA-ben, a hitelesítés után új jelenik meg egy új.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban a az Azure AD egyszeri bejelentkezés beállításai a saját alkalmazások portál segítségével tesztelnie.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a Saját alkalmazások portálhasználatával teszteli.
 
-Ha bejelöli **PageDNA** a saját alkalmazások portál meg kell hogy automatikusan jelentkezzenek be, amelynek beállítása egyszeri bejelentkezéshez PageDNA az előfizetéshez. A saját alkalmazások portál kapcsolatos további információkért lásd: [alkalmazások használatának és elérésének a saját alkalmazások portál](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor a **PageDNA** lehetőséget választja a Saját alkalmazások portálon, automatikusan be kell jelentkeznie a PageDNA-előfizetésbe, amelyhez egyszeri bejelentkezést állított be. A Saját alkalmazások portálról további információt az [Access és az alkalmazások használata a Saját alkalmazások portálon című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 ## <a name="additional-resources"></a>További források
 
-* [SaaS-alkalmazások integrálása az Azure Active Directory számára oktatóanyagokkal listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* [A SaaS-alkalmazások Azure Active Directoryval való integrálására szolgáló oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-* [Egyszeri bejelentkezés az Azure Active Directory-alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+* [Egyszeri bejelentkezés az alkalmazásokba az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-* [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+* [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

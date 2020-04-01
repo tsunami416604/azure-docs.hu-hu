@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az SAP NetWeaver-vel | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és az SAP NetWeaver között.
+title: 'Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja az SAP NetWeaverrel | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és az SAP NetWeaver között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,75 +17,75 @@ ms.date: 08/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 700f2ca4d46b3483531fa0784cb78699befb20ca
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78897737"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-netweaver"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az SAP NetWeaver-vel
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-netweaver"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja az SAP NetWeaverrel
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az SAP NetWeavert Azure Active Directory (Azure AD) használatával. Az SAP NetWeaver és az Azure AD integrálásával a következőket teheti:
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja az SAP NetWeavert az Azure Active Directoryval (Azure AD). Ha integrálja az SAP NetWeavert az Azure AD-vel, a következőket teheti:
 
-* Az SAP NetWeaver-hez hozzáférő Azure AD-beli vezérlés.
-* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek az SAP NetWeaverba az Azure AD-fiókjával.
-* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
+* Az Azure AD-ben, aki hozzáfér az SAP NetWeaver.
+* Engedélyezze, hogy a felhasználók automatikusan bejelentkezve az SAP NetWeaver az Azure AD-fiókok.
+* Kezelje fiókjait egyetlen központi helyen – az Azure Portalon.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Első lépésként a következő elemeket kell megadnia:
+A kezdéshez a következő elemekre van szükség:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* SAP NetWeaver egyszeri bejelentkezés (SSO) engedélyezve előfizetés.
-* SAP NetWeaver V 7.20 szükséges atleast
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes [fiókot](https://azure.microsoft.com/free/)kaphat.
+* SAP NetWeaver egyszeri bejelentkezés (SSO) engedélyezve van az előfizetés.
+* SAP NetWeaver V7.20 szükséges atleast
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Az SAP NetWeaver az **SAML** (**SP által kezdeményezett SSO**) és a **OAuth**egyaránt támogatja. Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben. 
+Az SAP NetWeaver támogatja mind az **SAML** (**SP által kezdeményezett SSO)** és **az OAuth -ot.** Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztkörnyezetben. 
 
 > [!NOTE]
-> Konfigurálja az alkalmazást az SAML-ban vagy a OAuth-ben a szervezeti követelményeknek megfelelően. 
+> Konfigurálja az alkalmazást SAML-ben vagy OAuth-ban a szervezeti követelményeknek megfelelően. 
 
-## <a name="adding-sap-netweaver-from-the-gallery"></a>SAP NetWeaver hozzáadása a katalógusból
+## <a name="adding-sap-netweaver-from-the-gallery"></a>SAP NetWeaver hozzáadása a galériából
 
-Az SAP NetWeaver Azure AD-be való integrálásának konfigurálásához hozzá kell adnia az SAP NetWeaver-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
+Az SAP NetWeaver Azure AD-be való integrációjának konfigurálásához hozzá kell adnia az SAP NetWeavert a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
-1. A **Hozzáadás a** katalógusból szakaszban írja be a keresőmezőbe az **SAP NetWeaver** kifejezést.
-1. Válassza az **SAP NetWeaver** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
+1. A bal oldali navigációs ablakban válassza ki az **Azure Active Directory** szolgáltatást.
+1. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza **a Minden alkalmazás lehetőséget.**
+1. Új alkalmazás hozzáadásához válassza az **Új alkalmazás**lehetőséget.
+1. A **katalógus hozzáadásszakaszában** írja be az **SAP NetWeaver** kifejezést a keresőmezőbe.
+1. Válassza ki **az SAP NetWeaver** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzáadódik a bérlőhöz.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-sap-netweaver"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése az SAP NetWeaver szolgáltatáshoz
+## <a name="configure-and-test-azure-ad-single-sign-on-for-sap-netweaver"></a>Konfigurálja és tesztelje az Azure AD egyszeri bejelentkezését az SAP NetWeaver számára
 
-Konfigurálja és tesztelje az Azure AD SSO-t az SAP NetWeaver használatával egy **B. Simon**nevű teszt felhasználó segítségével. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és az SAP NetWeaver kapcsolódó felhasználója között.
+Konfigurálja és tesztelje az Azure AD SSO-t az SAP NetWeaver segítségével egy **B.Simon**nevű tesztfelhasználó használatával. Az SSO működéséhez létre kell hoznia egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó az SAP NetWeaver.
 
-Az Azure AD SSO SAP NetWeaver-vel való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Az Azure AD SSO SAP NetWeaver rel való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-1. **[Konfigurálja az Azure ad SSO](#configure-azure-ad-sso)** -t, hogy a felhasználók használhatják ezt a funkciót.
-    1. **[Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user)** az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
-    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** , hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-1. **[Konfigurálja az SAP NetWeaver](#configure-sap-netweaver-using-saml)** -t az SAML használatával az egyszeri bejelentkezés beállításainak konfigurálásához az alkalmazás oldalán.
-    1. **[Hozzon létre egy SAP NetWeaver-teszt felhasználót](#create-sap-netweaver-test-user)** , hogy az az SAP NetWeaver-ban található B. Simon párja legyen, amely a felhasználó Azure ad-képviseletéhez van társítva.
-1. Ellenőrizze az **[SSO](#test-sso)** -t annak ellenőrzéséhez, hogy a konfiguráció működik-e.
-1. A **[OAUTH SAP NetWeaver konfigurálása](#configure-sap-netweaver-for-oauth)** a OAuth beállításainak konfigurálásához az alkalmazás oldalán.
+1. **[Konfigurálja az Azure AD SSO-t,](#configure-azure-ad-sso)** hogy a felhasználók használhassák ezt a funkciót.
+    1. **[Hozzon létre egy Azure AD-tesztfelhasználót](#create-an-azure-ad-test-user)** az Azure AD egyszeri bejelentkezésének teszteléséhez B.Simon nal.
+    1. **[Rendelje hozzá az Azure AD tesztfelhasználót,](#assign-the-azure-ad-test-user)** hogy b.Simon az Azure AD egyszeri bejelentkezést használhasson.
+1. **[Konfigurálja az SAP NetWeaver saml használatával](#configure-sap-netweaver-using-saml)** az SSO-beállítások konfigurálásához az alkalmazás oldalon.
+    1. **[Hozzon létre SAP NetWeaver tesztfelhasználó,](#create-sap-netweaver-test-user)** hogy egy megfelelője B.Simon az SAP NetWeaver, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+1. **[Tesztelje az SSO-t,](#test-sso)** hogy ellenőrizze, működik-e a konfiguráció.
+1. **[Konfigurálja az SAP NetWeaver oauth-ra](#configure-sap-netweaver-for-oauth)** konfigurálja az OAuth-beállításokat az alkalmazás oldalon.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
+Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon.
 
-Az Azure AD egyszeri bejelentkezés az SAP NetWeaver használatával történő konfigurálásához hajtsa végre a következő lépéseket:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához az SAP NetWeaver rel hajtsa végre a következő lépéseket:
 
-1. Nyisson meg egy új böngészőablakot, és jelentkezzen be az SAP NetWeaver vállalati webhelyre rendszergazdaként
+1. Nyisson meg egy új böngészőablakot, és jelentkezzen be az SAP NetWeaver vállalati webhelyére rendszergazdaként
 
-1. Győződjön meg arról, hogy a **http** -és **https** -szolgáltatások aktívak, és a megfelelő portok a **SMICM** T-Code-ban vannak hozzárendelve.
+1. Győződjön meg arról, hogy **a http-** és **https-szolgáltatások** aktívak, és az **SMICM** T-code megfelelő portjai vannak hozzárendelve.
 
-1. Jelentkezzen be az SAP System (T01) üzleti ügyfelére, ahol az SSO szükséges, és aktiválja a HTTP biztonsági munkamenetek felügyeletét.
+1. Jelentkezzen be az SAP System (T01) üzleti ügyfélszolgáltatásba, ahol az SSO-ra van szükség, és aktiválja a HTTP security session Management szolgáltatást.
 
-    a. Nyissa meg a tranzakciós kódot **SICF_SESSIONS**. Megjeleníti az aktuális értékekkel rendelkező összes releváns profil paramétert. A következőhöz hasonlóak:
+    a. Nyissa meg a Tranzakciókód **SICF_SESSIONS.** Megjeleníti az összes releváns profilparamétert az aktuális értékekkel. Úgy néznek ki, mint az alábbiakban: -
     ```
     login/create_sso2_ticket = 2
     login/accept_sso2_ticket = 1
@@ -98,277 +98,277 @@ Az Azure AD egyszeri bejelentkezés az SAP NetWeaver használatával történő 
     rdisp/autothtime = 60
     ```
     >[!NOTE]
-    > Módosítsa a fenti paramétereket a szervezet követelményeinek megfelelően, a fenti paramétereket csak jelzésként adja meg.
+    > Állítsa be a fenti paramétereket, mint egy a szervezeti követelmények, A fenti paraméterek itt megadott jelzésként csak.
 
-    b. Ha szükséges, módosítsa a paramétereket az SAP rendszer példány/alapértelmezett profiljában, majd indítsa újra az SAP rendszert.
+    b. Ha szükséges, módosítsa a paramétereket, az SAP-rendszer példányban/alapértelmezett profiljában, és indítsa újra az SAP-rendszert.
 
-    c. A HTTP biztonsági munkamenet engedélyezéséhez kattintson duplán a megfelelő ügyfélre.
+    c. Kattintson duplán a megfelelő ügyfélre a HTTP biztonsági munkamenet engedélyezéséhez.
 
-    ![A tanúsítvány letöltési hivatkozás](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_profileparameter.png)
+    ![A tanúsítvány letöltési hivatkozása](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_profileparameter.png)
 
-    d. Aktiválja az alábbi SICF-szolgáltatásokat:
+    d. Aktiválás a SICF-szolgáltatások alatt:
     ```
     /sap/public/bc/sec/saml2
     /sap/public/bc/sec/cdc_ext_service
     /sap/bc/webdynpro/sap/saml2
     /sap/bc/webdynpro/sap/sec_diag_tool (This is only to enable / disable trace)
     ```
-1. Nyissa meg az SAP System [T01/122] üzleti ügyfelének tranzakciós kód **egy saml2** . Megnyílik egy felhasználói felület egy böngészőben. Ebben a példában a 122-as SAP üzleti ügyfélként feltételezzük.
+1. Nyissa meg az **SAML2** tranzakciókódot az SAP-rendszer üzleti kliensében [T01/122]. Megnyílik egy felhasználói felület a böngészőben. Ebben a példában azt feltételeztük, 122 SAP üzleti ügyfél.
 
-    ![A tanúsítvány letöltési hivatkozás](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_sapbusinessclient.png)
+    ![A tanúsítvány letöltési hivatkozása](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_sapbusinessclient.png)
 
-1. Adja meg felhasználónevét és jelszavát a felhasználói felületen való belépéshez, majd kattintson a **Szerkesztés**gombra.
+1. Adja meg felhasználónevét és jelszavát, hogy belépjen a felhasználói felületre, és kattintson **a Szerkesztés gombra.**
 
-    ![A tanúsítvány letöltési hivatkozás](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_userpwd.png)
+    ![A tanúsítvány letöltési hivatkozása](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_userpwd.png)
 
-1. Cserélje le a **szolgáltató nevét** a T01122-ből `http://T01122`re, és kattintson a **Mentés**gombra.
-
-    > [!NOTE]
-    > Alapértelmezés szerint a szolgáltató neve `<sid><client>` formátumban jelenik meg, de az Azure AD a nevet `<protocol>://<name>`formátumban adja meg, és a szolgáltató nevének `https://<sid><client>`ként való fenntartását javasolja, hogy több SAP NetWeaver ABAP-motort engedélyezzen az Azure AD-ben.
-
-    ![A tanúsítvány letöltési hivatkozás](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_providername.png)
-
-1. **Szolgáltatói metaadatok generálása**: – Ha elkészült a **helyi szolgáltató** és a **megbízható szolgáltatók** beállításainak konfigurálása az SAML 2,0 felhasználói felületen, a következő lépés a szolgáltató metaadat-fájljának létrehozása (amely tartalmazza az összes beállítást, a hitelesítési környezeteket és az SAP más konfigurációit). A fájl létrehozása után fel kell töltenie ezt az Azure AD-ben.
-
-    ![A tanúsítvány letöltési hivatkozás](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_generatesp.png)
-
-    a. Lépjen a **helyi szolgáltató lapra**.
-
-    b. Kattintson a **metaadatok**elemre.
-
-    c. Mentse a generált **metaadatokat tartalmazó XML-fájlt** a számítógépén, és töltse fel az **SAML alapszintű konfigurációs** szakaszba az **azonosító** és a **Válasz URL-címének** automatikus feltöltéséhez Azure Portalban.
-
-Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
-
-1. A [Azure Portal](https://portal.azure.com/) **SAP NetWeaver** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
-
-   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
-
-1. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépést:
-
-    a. Kattintson a **metaadatok feltöltése** gombra a **szolgáltatói metaadat fájljának**feltöltéséhez, amelyet korábban kapott.
-
-    b. Kattintson a **mappa emblémára** a metaadat-fájl kiválasztásához, majd kattintson a **feltöltés**elemre.
-
-    c. A metaadat-fájl feltöltése után az **azonosító** és a **Válasz URL-** értékei automatikusan feltöltve lesznek az **alapszintű SAML-konfigurációs** szakasz szövegmezőben az alábbi ábrán látható módon:
-
-    d. A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<your company instance of SAP NetWeaver>`
+1. Cserélje le **a szolgáltató nevét** T01122-ről `http://T01122` a Mentés **gombra.**
 
     > [!NOTE]
-    > Láttuk, hogy néhány ügyfelünk hibát jelzett a példányhoz konfigurált helytelen válasz URL-cím miatt. Ha ilyen hibaüzenetet kap, a következő PowerShell-parancsfájl használatával megadhatja a példány helyes válaszának URL-címét.
+    > Alapértelmezés szerint a `<sid><client>` szolgáltató neve formátumként érkezik, de `<protocol>://<name>`az Azure AD `https://<sid><client>` a név rezisztiorát várja, és azt javasolja, hogy a szolgáltató neve maradjon fenn, hogy több SAP NetWeaver ABAP-motor konfigurálható az Azure AD-ben.
+
+    ![A tanúsítvány letöltési hivatkozása](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_providername.png)
+
+1. **Generálása Szolgáltató Metaadatok**:- Miután elkészült a konfigurálása a **helyi szolgáltató** és **a megbízható szolgáltatók** beállításait SAML 2.0 felhasználói felület, a következő lépés az lenne, hogy létrehoz a szolgáltató metaadat-fájl (amely tartalmazza az összes beállítást, hitelesítési környezetek és egyéb konfigurációk SAP). A fájl létrehozása után fel kell töltenünk ezt az Azure AD-ben.
+
+    ![A tanúsítvány letöltési hivatkozása](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_generatesp.png)
+
+    a. Nyissa meg a **Helyi szolgáltató lapot**.
+
+    b. Kattintson a **Metadata gombra.**
+
+    c. Mentse a létrehozott **metaadat-XML-fájlt** a számítógépre, és töltse fel az **Egyszerű SAML konfiguráció** szakaszban az **azonosító** és a **válasz URL-értékeinek** automatikus feltöltéséhez az Azure Portalon.
+
+Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Portalon.
+
+1. Az [Azure Portalon](https://portal.azure.com/)az **SAP NetWeaver** alkalmazásintegrációs lapon keresse meg a **Kezelés szakaszt,** és válassza az **Egyszeri bejelentkezés**lehetőséget.
+1. Az **Egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A **Beállítások beállítása SAML-lel** lapon kattintson az **egyszerű SAML-konfiguráció** szerkesztési/tollikonjára a beállítások szerkesztéséhez.
+
+   ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+
+1. Az **Egyszerű SAML-konfiguráció** szakaszban, ha az alkalmazást **IDP** által kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépést:
+
+    a. Kattintson **a Metaadatfájl feltöltése gombra** a korábban beszerzett **Szolgáltató metaadatfájljának**feltöltéséhez.
+
+    b. Kattintson a **mappaemblémára** a metaadatfájl kijelöléséhez, majd a **Feltöltés gombra.**
+
+    c. A metaadatfájl sikeres feltöltése után az **azonosító** és a **válasz URL-értéke** automatikusan feltöltődik az **Egyszerű SAML konfigurációs** szakasz szövegmezőjében az alábbi módon:
+
+    d. A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<your company instance of SAP NetWeaver>`
+
+    > [!NOTE]
+    > Láttuk, hogy kevés ügyfél jelenti a példányhoz konfigurált helytelen válasz URL-címet. Ha ilyen hibát kap, a következő PowerShell-parancsfájl segítségével a megfelelő válasz URL-címet állíthatja be a példányhoz.:
     > ```
     > Set-AzureADServicePrincipal -ObjectId $ServicePrincipalObjectId -ReplyUrls "<Your Correct Reply URL(s)>"
     > ``` 
-    > Az ServicePrincipal objektum AZONOSÍTÓját elsőként kell beállítani, vagy itt is átadhatja.
+    > ServicePrincipal object id kell beállítani magát először, vagy átadhatja, hogy itt is.
 
-1. Az SAP NetWeaver alkalmazás meghatározott formátumban várja az SAML-kijelentéseket, így egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a felhasználói attribútumok párbeszédpanel megnyitásához.
+1. Az SAP NetWeaver alkalmazás az SAML-állításokat egy adott formátumban várja, amely megköveteli, hogy egyéni attribútumleképezéseket adjon hozzá az SAML token attribútumok konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a Felhasználói attribútumok párbeszédpanel megnyitásához.
 
     ![image](common/edit-attribute.png)
 
-1. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában konfigurálja az SAML-jogkivonat attribútumot a fenti képen látható módon, és hajtsa végre a következő lépéseket:
+1. A **Felhasználói attribútumok** párbeszédpanel **Felhasználói jogcímek** szakaszában konfigurálja az SAML token attribútumot a fenti képen látható módon, és hajtsa végre a következő lépéseket:
 
-    a. Kattintson a **Szerkesztés ikonra** a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
+    a. Kattintson a **Szerkesztés ikonra** a **Felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
 
     ![image](./media/sapnetweaver-tutorial/nameidattribute.png)
 
     ![image](./media/sapnetweaver-tutorial/nameidattribute1.png)
 
-    b. Az **átalakítás** listából válassza a **ExtractMailPrefix ()** elemet.
+    b. Az **Átalakítás** listában válassza **a ExtractMailPrefix() (ExtractMailPrefix() (ExtractMailPrefix() (ExtractMailPrefix() (ExtractMailPrefix() (Átalakítási**
 
-    c. Az **1. paraméter** listából válassza a **User. userPrincipalName**elemet.
+    c. Az **1.** **user.userprincipalname**
 
-    d. Kattintson a **Save** (Mentés) gombra.
+    d. Kattintson a **Mentés** gombra.
 
-1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
+1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az SAML aláíró tanúsítvány szakaszban keresse meg az **összevonási** **metaadatok XML-jét,** és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre való mentéséhez.
 
-   ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
+   ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-1. Az **SAP NetWeaver beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények alapján.
+1. Az **SAP NetWeaver beállítása** szakaszban másolja a megfelelő URL-cím(ek) a követelmény alapján.
 
    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
+Ebben a szakaszban egy tesztfelhasználót hoz létre az Azure Portalon B.Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
-1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
-1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+1. Az Azure Portal bal oldali ablaktáblájában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd válassza az **Összes felhasználó**lehetőséget.
+1. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
+1. A **Felhasználói** tulajdonságok csoportban hajtsa végre az alábbi lépéseket:
     1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-    1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
-    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-    1. Kattintson a  **Create** (Létrehozás) gombra.
+    1. A **Felhasználónév** mezőbe írja username@companydomain.extensionbe a mezőt. Például: `B.Simon@contoso.com`.
+    1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet, majd írja le a **Jelszó** mezőben megjelenő értéket.
+    1. Kattintson **a Létrehozás gombra.**
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát az SAP NetWeaver elérésének biztosításával.
+Ebben a szakaszban engedélyezi b.Simon azure egyszeri bejelentkezés az SAP NetWeaver használatával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza az **SAP NetWeaver**elemet.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, majd az **Összes alkalmazás**lehetőséget.
+1. Az alkalmazások listájában válassza az **SAP NetWeaver**lehetőséget.
+1. Az alkalmazás áttekintő lapján keresse meg a **Kezelés szakaszt,** és válassza a **Felhasználók és csoportok**lehetőséget.
 
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+    ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza **a Felhasználó hozzáadása**lehetőséget, majd a Hozzárendelés **hozzáadása** párbeszédpanelen válassza a Felhasználók **és csoportok** lehetőséget.
 
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+    ![A Felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+1. A **Felhasználók és csoportok** párbeszédpanelen válassza a **B.Simon** elemet a Felhasználók listában, majd kattintson **a** kijelölés gombra a képernyő alján.
+1. Ha az SAML-helyességben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
+1. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
 
-## <a name="configure-sap-netweaver-using-saml"></a>Az SAP NetWeaver konfigurálása az SAML használatával
+## <a name="configure-sap-netweaver-using-saml"></a>SAP NetWeaver konfigurálása SAML használatával
 
-1. Jelentkezzen be az SAP System szolgáltatásba, és lépjen a tranzakciós kód egy SAML2. Ekkor megnyílik az SAML konfigurációs képernyővel rendelkező új böngészőablak.
+1. Jelentkezzen be az SAP-rendszerbe, és lépjen az SAML2 tranzakciós kódra. Új böngészőablakot nyit meg SAML konfigurációs képernyővel.
 
-2. A megbízható identitás-szolgáltató (Azure AD) végpontjának konfigurálásához nyissa meg a **megbízható szolgáltatók** lapot.
+2. A végfelhasználói pontok konfigurálása a megbízható identitásszolgáltató (Azure AD) lapon **a Megbízható szolgáltatók** lapon.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_samlconfig.png)
 
-3. Kattintson a **Hozzáadás** gombra, és válassza a **metaadatok feltöltése** elemet a helyi menüből.
+3. Nyomja **le a Hozzáadás parancsot,** és válassza a helyi menü **Metaadatfájl feltöltése** parancsát.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_uploadmetadata.png)
 
-4. Töltse fel a metaadat-fájlt, amelyet a Azure Portal letöltött.
+4. Töltse fel a metaadatfájlt, amelyet az Azure Portalról töltött le.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_metadatafile.png)
 
-5. A következő képernyőn írja be az alias nevét. Például aadsts, majd a folytatáshoz kattintson a **tovább** gombra.
+5. A következő képernyőn írja be az Alias nevét. Például aadsts és nyomja meg a **Tovább** gombot a folytatáshoz.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_aliasname.png)
 
-6. Győződjön meg arról, hogy a **kivonatoló algoritmusnak** **SHA-256** értékűnek kell lennie, és nem kell módosítania, majd nyomja meg a **tovább**gombot.
+6. Győződjön meg arról, hogy a **Kivonatoló algoritmusnak** **SHA-256-nak** kell lennie, és nem igényel semmilyen módosítást, és nyomja meg a **Tovább**gombot.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_identityprovider.png)
 
-7. **Egyszeri bejelentkezési végpontokon**használja a **http post** elemet, majd a folytatáshoz kattintson a **tovább** gombra.
+7. Az **egyszeri bejelentkezési végpontokon**használja a **HTTP POST** protokollt, és a folytatáshoz kattintson a **Tovább** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_httpredirect.png)
 
-8. Az **egyszeri kijelentkezési végpontokon** válassza a **HTTPRedirect** lehetőséget, majd a folytatáshoz kattintson a **tovább** gombra.
+8. Az **Egykijelentkezési végpontok on** válassza a **HTTPRedirect** lehetőséget, és a **folytatáshoz** kattintson a Tovább gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_httpredirect1.png)
 
-9. Az összetevő- **végpontokon**kattintson **a Tovább gombra a** folytatáshoz.
+9. A **műtermék végpontjain**nyomja le a **Tovább** billentyűt a folytatáshoz.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_artifactendpoint.png)
 
-10. A **hitelesítési követelmények**területen kattintson a **Befejezés**gombra.
+10. A **hitelesítési követelmények en**kattintson a Befejezés **gombra.**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_authentication.png)
 
-11. Nyissa meg a lapon a **megbízható szolgáltató** > **identitás-összevonás** elemet (a képernyő aljáról). Kattintson a **Szerkesztés** gombra.
+11. Ugrás a **Megbízható szolgáltató** > **identitásösszevonása** lapra (a képernyő aljáról). Kattintson a **Szerkesztés** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_trustedprovider.png)
 
-12. Kattintson a **Hozzáadás** elemre az **identitás-összevonás** lapon (alsó ablak).
+12. Kattintson a **Hozzáadás** gombra az **Identitásösszevonás** lap (alsó ablak) alatt.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_addidentityprovider.png)
 
-13. Az előugró ablakban válassza a nem **meghatározott** lehetőséget a **támogatott NameID-formátumok** közül, majd kattintson az OK gombra.
+13. Az előugró ablakban válassza a **Meghatározatlan** lehetőséget a **Támogatott névazonosító-formátumok** közül, és kattintson az OK gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_nameid.png)
 
-14. Vegye figyelembe, hogy a **felhasználói azonosító forrása** és a **felhasználói azonosító megfeleltetési módjának** értéke határozza meg az SAP-felhasználó és az Azure ad-jogcím közötti kapcsolatot.  
+14. Vegye figyelembe, hogy **a felhasználói azonosító forrás-** és **felhasználói azonosító leképezési mód értékei** határozzák meg az SAP-felhasználó és az Azure AD-jogcím közötti kapcsolatot.  
 
-    #### <a name="scenario-sap-user-to-azure-ad-user-mapping"></a>Forgatókönyv: az SAP-felhasználó Azure AD-felhasználó általi leképezése.
+    #### <a name="scenario-sap-user-to-azure-ad-user-mapping"></a>Forgatókönyv: SAP-felhasználó az Azure AD felhasználói leképezés.
 
-    a. NameID részletei – képernyőfelvétel az SAP-ból.
+    a. NameID részletek screenshot az SAP-tól.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/sapnetweaver-tutorial/nameiddetails.png)
 
-    b. Képernyőkép az Azure AD-ben szükséges jogcímek megemlítéséről.
+    b. Képernyőkép az Azure AD-ből szükséges jogcímekről.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/sapnetweaver-tutorial/claimsaad1.png)
 
-    #### <a name="scenario-select-sap-user-id-based-on-configured-email-address-in-su01-in-this-case-email-id-should-be-configured-in-su01-for-each-user-who-requires-sso"></a>Forgatókönyv: az SAP felhasználói azonosító kiválasztása a konfigurált e-mail-cím alapján a SU01-ben. Ebben az esetben az e-mail-azonosítót a su01-ben kell konfigurálni minden olyan felhasználó esetében, aki egyszeri bejelentkezést igényel.
+    #### <a name="scenario-select-sap-user-id-based-on-configured-email-address-in-su01-in-this-case-email-id-should-be-configured-in-su01-for-each-user-who-requires-sso"></a>Eset: Válassza ki az SAP felhasználói azonosítót az SU01-ben beállított e-mail-cím alapján. Ebben az esetben az e-mail-azonosítót minden olyan felhasználó számára konfigurálni kell a su01-ben, akinek sso-t kell igényelnie.
 
-    a.  NameID részletei – képernyőfelvétel az SAP-ból.
+    a.  NameID részletek screenshot az SAP-tól.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_nameiddetails1.png)
 
-    b. képernyőkép az Azure AD-ben szükséges jogcímek megemlítéséről.
+    b. képernyőkép, amely az Azure AD-től szükséges jogcímeket említi.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/sapnetweaver-tutorial/claimsaad2.png)
 
-15. Kattintson a **Mentés** elemre, majd az **Engedélyezés** lehetőségre az Identitáskezelés engedélyezéséhez.
+15. Kattintson a **Mentés,** majd **az Engedélyezés** gombra az identitásszolgáltató engedélyezéséhez.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/sapnetweaver-tutorial/configuration1.png)
 
-16. Ha a rendszer kéri, kattintson **az OK** gombra.
+16. A rákérdezés után kattintson **az OK** gombra.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/sapnetweaver-tutorial/configuration2.png)
 
-    ### <a name="create-sap-netweaver-test-user"></a>SAP NetWeaver-teszt felhasználó létrehozása
+    ### <a name="create-sap-netweaver-test-user"></a>SAP NetWeaver tesztfelhasználó létrehozása
 
-    Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre az SAP NetWeaver-ben. Vegye fel a kapcsolatot a házon belüli SAP szakértői csapatával, vagy működjön együtt a szervezet SAP-partnerével, és vegye fel a felhasználókat az SAP NetWeaver platformon.
+    Ebben a szakaszban hozzon létre egy B.simon nevű felhasználót az SAP NetWeaver alkalmazásban. Kérjük, működjön együtt a házon belül SAP szakértői csapat, vagy a szervezet SAP-partnerrel együttműködve adja hozzá a felhasználókat az SAP NetWeaver platformon.
 
-## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
+## <a name="test-sso"></a>SSO tesztelése
 
-1. Miután aktiválta az Azure AD-szolgáltatót, próbáljon meg hozzáférni az alábbi URL-címhez az egyszeri bejelentkezéshez (a Felhasználónév & jelszava nem jelenik meg)
+1. Az Azure AD identitásszolgáltató aktiválása után próbálja meg elérni az URL-cím alatt az Egyszeri bejelentkezést (nem lesz rákérdezés a felhasználónév& jelszó)
 
     `https://<sapurl>/sap/bc/bsp/sap/it00/default.htm`
 
-    (vagy) használja az alábbi URL-címet
+    (vagy) használja az alábbi URL-t
 
     `https://<sapurl>/sap/bc/bsp/sap/it00/default.htm`
 
     > [!NOTE]
-    > Cserélje le a sapurl-t a tényleges SAP állomásnévvel.
+    > Cserélje le a sapurl-t a tényleges SAP állomásnévre.
 
-2. A fenti URL-címnek az alább említett képernyőre kell mutatnia. Ha elérheti az alábbi oldalt, az Azure AD SSO telepítése sikeresen befejeződött.
+2. A fenti URL-t kell, hogy az alábbi képernyőn. Ha képes elérni az alábbi oldalon, az Azure AD SSO beállítás sikeresen befejeződött.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/sapnetweaver-tutorial/testingsso.png)
 
-3. Ha a Felhasználónév & a jelszó kérése, akkor a probléma diagnosztizálásához engedélyezze a nyomkövetést az alábbi URL-cím használatával
+3. Ha felhasználónév & jelszókérése, diagnosztizálja a problémát az alábbi URL-cím használatával engedélyezze a nyomkövetést.
 
     `https://<sapurl>/sap/bc/webdynpro/sap/sec_diag_tool?sap-client=122&sap-language=EN#`
 
-## <a name="configure-sap-netweaver-for-oauth"></a>Az OAuth SAP NetWeaver konfigurálása
+## <a name="configure-sap-netweaver-for-oauth"></a>SAP NetWeaver konfigurálása OAuth-hoz
 
-1. Az SAP-dokumentált folyamat a következő helyen érhető el: [NetWeaver Gateway Service engedélyezése és OAuth 2,0 hatókör létrehozása](https://wiki.scn.sap.com/wiki/display/Security/NetWeaver+Gateway+Service+Enabling+and+OAuth+2.0+Scope+Creation)
+1. Az SAP által dokumentált folyamat elérhető a következő helyen: [NetWeaver átjárószolgáltatás engedélyezése és OAuth 2.0 hatókör létrehozása](https://wiki.scn.sap.com/wiki/display/Security/NetWeaver+Gateway+Service+Enabling+and+OAuth+2.0+Scope+Creation)
 
-2. Nyissa meg a SPRO, és keresse meg az **aktiválási és karbantartási szolgáltatásokat**.
+2. Nyissa meg a SPRO-t, és keresse meg **a Szolgáltatások aktiválása és karbantartása című.**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/sapnetweaver-tutorial/oauth01.png)
 
-3. Ebben a példában szeretnénk csatlakozni a OData szolgáltatáshoz: `DAAG_MNGGRP` a OAuth és az Azure AD SSO használatával. A műszaki szolgáltatás neve keresse meg a szolgáltatás `DAAG_MNGGRP`, és aktiválja, ha még nem aktív, már (keresse meg a `green` állapotot az ICF-csomópontok lapon). Győződjön meg arról, hogy a rendszeralias (a csatlakoztatott háttérrendszer, ahol a szolgáltatás ténylegesen fut) helyes.
+3. Ebben a példában szeretnénk csatlakozni `DAAG_MNGGRP` az OData szolgáltatás: az OAuth az Azure AD SSO. Használja a műszaki szolgáltatás nevét `DAAG_MNGGRP` keressen a szolgáltatásra, és `green` aktiválja, ha még nem aktív, már (az állapot keresése az ICF-csomópontok lapon). Győződjön meg arról, hogy a rendszeralias (a csatlakoztatott háttérrendszer, ahol a szolgáltatás ténylegesen fut) helyes.Ensure if system alias (the connected backend system, where the service actually running) is correct.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/sapnetweaver-tutorial/oauth02.png)
 
-    * Ezután kattintson a felső gomb sávján a nyomógomb **OAuth** elemre, és rendelje hozzá `scope` (az alapértelmezett nevet adja meg a felkínált állapotban).
+    * Ezután kattintson a nyomógombra **OAuth** a felső gomb sávés hozzárendelése `scope` (tartsa alapértelmezett nevét ajánlott).
 
-4. A példában a hatókör `DAAG_MNGGRP_001`, a szolgáltatás neve alapján automatikusan létrejön egy szám. A jelentés `/IWFND/R_OAUTH_SCOPES` segítségével módosíthatja a hatókör nevét, vagy manuálisan is létrehozhatja azt.
+4. Példánkban a `DAAG_MNGGRP_001`hatókör , a szolgáltatás nevéből jön létre egy szám automatikus hozzáadásával. A `/IWFND/R_OAUTH_SCOPES` jelentés segítségével módosíthatja a hatókör nevét, vagy manuálisan hozhat létre.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/sapnetweaver-tutorial/oauth03.png)
 
     > [!NOTE]
-    > Üzenet `soft state status is not supported` – figyelmen kívül hagyható, mert nincs probléma. További részletekért [tekintse](https://help.sap.com/doc/saphelp_nw74/7.4.16/1e/c60c33be784846aad62716b4a1df39/content.htm?no_cache=true) meg a következőt:
+    > Üzenet `soft state status is not supported` – lehet figyelmen kívül hagyni, mivel nem probléma. További részletekért [itt](https://help.sap.com/doc/saphelp_nw74/7.4.16/1e/c60c33be784846aad62716b4a1df39/content.htm?no_cache=true) olvashat.
 
-### <a name="create-a-service-user-for-the-oauth-20-client"></a>Szolgáltatás felhasználójának létrehozása a OAuth 2,0-ügyfél számára
+### <a name="create-a-service-user-for-the-oauth-20-client"></a>Szolgáltatásfelhasználó létrehozása az OAuth 2.0 ügyfélhez
 
-1. A OAuth2 `service ID` használ a végfelhasználó hozzáférési jogkivonatának beszerzéséhez a nevében. Fontos korlátozás a OAuth-kialakításban: a `OAuth 2.0 Client ID`nak meg kell egyeznie a OAuth 2,0-ügyfél által a hozzáférési jogkivonat kérésekor való bejelentkezéshez használt `username`. Ezért a példánkban az ÜGYFÉL1 nevű OAuth 2,0-ügyfelet fogjuk regisztrálni, és az előfeltétel, hogy az azonos nevű (ÜGYFÉL1) felhasználónak léteznie kell az SAP-rendszeren, és hogy a felhasználó az említett alkalmazás által használt konfigurációt fogja használni. 
+1. Az OAuth2 `service ID` egy segítségével kapja meg a hozzáférési jogkivonatot a végfelhasználó nevében. Fontos korlátozás az OAuth `OAuth 2.0 Client ID` design szerint: `username` a rendszernek meg kell egyeznie az OAuth 2.0 ügyfél bejelentkezési jogkivonat kérésekor használt ügyféllel. Ezért példánkban egy ÜGYFÉL1 nevű OAuth 2.0-s ügyfelet fogunk regisztrálni, és előfeltételként az SAP-rendszerben azonos nevű felhasználónak (CLIENT1) kell léteznie, és ezt a felhasználót úgy fogjuk konfigurálni, hogy az említett alkalmazás használja. 
 
-2. OAuth-ügyfél regisztrálásakor a `SAML Bearer Grant type`használjuk.
+2. Az OAuth ügyfél regisztrálásakor a `SAML Bearer Grant type`.
 
     >[!NOTE]
-    >További részletekért tekintse meg a OAuth 2,0 ügyfél regisztrációját az SAML-tulajdonos [engedélyezési típusához](https://wiki.scn.sap.com/wiki/display/Security/OAuth+2.0+Client+Registration+for+the+SAML+Bearer+Grant+Type) .
+    >További részletekért lásd az OAuth 2.0 ügyfélregisztrációt az SAML bearer grant típushoz [itt](https://wiki.scn.sap.com/wiki/display/Security/OAuth+2.0+Client+Registration+for+the+SAML+Bearer+Grant+Type)
 
-3. tcod: SU01/hozzon létre egy felhasználói `System type` ÜGYFÉL1 felhasználót, és rendelje hozzá a jelszót, mentse a szükséges hitelesítő adatokat az API-programozó számára, ki kell írnia a felhasználónevet a hívó kódnak. Nincs hozzárendelve profil vagy szerepkör.
+3. tcod: SU01 / hozzon `System type` létre felhasználó CLIENT1, és jelszót rendelni, mentse, mint kell, hogy a hitelesítő adatokat az API programozó, aki éget azt a felhasználónevet a hívó kódot. Nem kell profilt vagy szerepkört hozzárendelni.
 
-### <a name="register-the-new-oauth-20-client-id-with-the-creation-wizard"></a>Regisztrálja az új OAuth 2,0 ügyfél-azonosítót a létrehozás varázslóval
+### <a name="register-the-new-oauth-20-client-id-with-the-creation-wizard"></a>Az új OAuth 2.0 ügyfélazonosító regisztrálása a létrehozási varázslóval
 
-1. Új **OAuth 2,0 ügyfél** -indítási tranzakció **SOAUTH2**regisztrálása. A tranzakció áttekintést nyújt a már regisztrált OAuth 2,0-ügyfelekről. Válassza a **Létrehozás** lehetőséget, hogy elindítsa a varázslót az új OAuth-ügyfél nevű CLIENT1in ebben a példában.
+1. Új **OAuth 2.0 ügyfél** indítási **tranzakciós SOAUTH2 regisztrálása**. A tranzakció áttekintést jelenít meg a már regisztrált OAuth 2.0 ügyfelekről. Válassza a **Létrehozás gombot** az ügyfél1 névvel ellátott új OAuth-ügyfél varázslójának elindításához ebben a példában.
 
-2. Nyissa meg a T-code: **SOAUTH2** , és adja meg a leírást, majd kattintson a **tovább**gombra.
+2. Nyissa meg a T-kód: **SOAUTH2** és adja meg a leírást, majd kattintson a **következő gombra**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/sapnetweaver-tutorial/oauth04.png)
 
     ![Egyszeri bejelentkezés konfigurálása](./media/sapnetweaver-tutorial/oauth05.png)
 
-3. Válassza ki a már hozzáadott **egy saml2 identitásszolgáltató – Azure ad** elemet a legördülő listából, és mentse.
+3. Válassza ki a már hozzáadott **SAML2 IdP – Azure AD** a legördülő listából, és mentse.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/sapnetweaver-tutorial/oauth06.png)
 
@@ -376,20 +376,20 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     ![Egyszeri bejelentkezés konfigurálása](./media/sapnetweaver-tutorial/oauth08.png)
 
-4. Kattintson a **Hozzáadás** a hatókör-hozzárendelés területen lehetőségre a korábban létrehozott hatókör hozzáadásához: `DAAG_MNGGRP_001`
+4. A korábban létrehozott hatókör hozzáadásához kattintson a **Hatókör-hozzárendelés** hozzáadása elemre:`DAAG_MNGGRP_001`
 
     ![Egyszeri bejelentkezés konfigurálása](./media/sapnetweaver-tutorial/oauth09.png)
 
     ![Egyszeri bejelentkezés konfigurálása](./media/sapnetweaver-tutorial/oauth10.png)
 
-5. Kattintson a **Befejezés**gombra.
+5. Kattintson **a befejezés gombra.**
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Az SAP NetWeaver kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
+- [Próbálja ki az SAP NetWeaver t az Azure AD-vel](https://aad.portal.azure.com/)

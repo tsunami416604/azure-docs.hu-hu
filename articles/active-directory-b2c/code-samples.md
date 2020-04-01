@@ -11,10 +11,10 @@ ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: ed593cb3f53878ceb1d4913a9244369ff4600371
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78397578"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C-mintakódok
@@ -40,10 +40,10 @@ Az alábbi táblázat többek között iOS-, Android-, .NET- és Node.js-mintaal
 | [dotnetcore-webapp](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapp) | Egy ASP.NET Core-webalkalmazás, amely felhasználókat jelentkeztethet be az Azure AD B2C-vel, hozzáférési jogkivonatot szerez be az MSAL.NET használatával, és meghív egy API-t. |
 | [openidconnect-nodejs](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS) | Egy olyan Node.js-alkalmazás, amellyel gyorsan és egyszerűen állítható be egy Express-webalkalmazás az OpenID Connect használatával. |
 | [javascript-nodejs-webapi](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi) | Az Azure AD B2C kis méretű Node.js webes API-ja, amely bemutatja, hogyan lehet gondoskodni a webes API védelméről, és hogyan fogadhatók el a B2C hozzáférési jogkivonatok a passport.js használatával. |
-| [MS-Identity-Python-WebApp](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/master/README_B2C.md) | Bemutatjuk, hogyan integrálhatja a Microsoft Identity platform B2C-t egy Python-webalkalmazással.  |
+| [ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/master/README_B2C.md) | Bemutatja, hogyan integrálhatja a Microsoft identity platform B2C-jét egy Python-webalkalmazással.  |
 
 ## <a name="single-page-apps"></a>Egylapos appok
 
 | Sample | Leírás |
 |--------| ----------- |
-| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Webes API-t meghívó egyoldalas alkalmazás (single-page application, SPA). A hitelesítés Azure AD B2C a MSAL. js használatával történik. |
+| [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Webes API-t meghívó egyoldalas alkalmazás (single-page application, SPA). A hitelesítés az Azure AD B2C használatával történik MSAL.js használatával. |

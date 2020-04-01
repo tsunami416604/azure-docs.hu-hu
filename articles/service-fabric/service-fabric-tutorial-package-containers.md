@@ -7,15 +7,15 @@ ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: cc1d6e04b19d36f0ca8c7ed4b2bb3d62f5e8e15a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78252749"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Oktatóanyag: Tárolók csomagolása és üzembe helyezése Service Fabric-alkalmazásként a Yeoman használatával
 
-Ez az oktatóanyag egy sorozat második része. Az oktatóanyag azt ismerteti, hogyan lehet létrehozni Service Fabric-alkalmazásdefiníciót egy sablonkészítő eszközzel (Yeoman). Az alkalmazással ezután tárolókat helyezhet üzembe a Service Fabric rendszerében. Ennek az oktatóanyagnak a segítségével megtanulhatja a következőket:
+Ez az oktatóanyag egy sorozat második része. Az oktatóanyag azt ismerteti, hogyan lehet létrehozni Service Fabric-alkalmazásdefiníciót egy sablonkészítő eszközzel (Yeoman). Az alkalmazással ezután tárolókat helyezhet üzembe a Service Fabric rendszerében. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 > * A Yeoman telepítése
@@ -217,7 +217,7 @@ Az oktatóanyag ezen pontján üzembe lehet helyezni egy szolgáltatáscsomag-al
 
 ## <a name="create-a-service-fabric-cluster"></a>Service Fabric-fürt létrehozása
 
-Ha az alkalmazást üzembe szeretné helyezni az Azure-ban, szüksége lesz egy Service Fabric-fürtre a futtatásához. Az alábbi parancsok egy öt csomópontos fürtöt hoznak létre az Azure-ban.  A parancsok létrehoznak egy önaláírt tanúsítványt is, hozzáadják azt egy kulcstartóhoz, és a tanúsítványt helyileg töltik fel PEM-fájlként. A rendszer az új tanúsítványt használja a fürt biztonságossá tételéhez az üzembe helyezés során, és az ügyfelek hitelesítésére szolgál.
+Ha az alkalmazást üzembe szeretné helyezni az Azure-ban, szüksége lesz egy Service Fabric-fürtre a futtatásához. A következő parancsok ötcsomópontos fürtöt hoznak létre az Azure-ban.  A parancsok önaláírt tanúsítványt is hoznak létre, hozzáadja azt egy key vaulthoz, és helyileg letöltik a tanúsítványt PEM-fájlként. Az új tanúsítvány a fürt védelmére szolgál, amikor telepíti, és az ügyfelek hitelesítésére szolgál.
 
 ```azurecli
 #!/bin/bash
@@ -251,10 +251,10 @@ az sf cluster create --resource-group $ResourceGroupName --location $Location \
 ```
 
 > [!Note]
-> A webes előtérrendszer a konfigurációja szerint a 80-as porton figyeli a bejövő forgalmat. Alapértelmezés szerint a 80-es port nyitva van a fürtön futó virtuális gépeken és az Azure Load balanceren.
+> A webes előtérrendszer a konfigurációja szerint a 80-as porton figyeli a bejövő forgalmat. Alapértelmezés szerint a 80-as port meg van nyitva a fürt virtuális gépeken és az Azure terheléselosztó.
 >
 
-További információ a saját fürt létrehozásáról: Service Fabric- [fürt létrehozása az Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md)-ban.
+A saját fürt létrehozásáról további információt a [Service Fabric-fürt létrehozása az Azure-ban című témakörben talál.](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 
 ## <a name="build-and-deploy-the-application-to-the-cluster"></a>Az alkalmazás felépítése és üzembe helyezése a fürtön
 
@@ -272,11 +272,11 @@ Használja a **TestContainer** könyvtárban megadott telepítési szkriptet, ho
 ./install.sh
 ```
 
-Nyisson meg egy böngészőt, és navigáljon a Service Fabric Explorer a http:\//containertestcluster.eastus.cloudapp.azure.com:19080/Explorer címen. Bontsa ki az alkalmazások csomópontját, és figyelje meg, hogy megjelenik benne egy bejegyzés az alkalmazás típusához, egy másik pedig a példányhoz.
+Nyisson meg egy böngészőt, és\/keresse meg a Service Fabric Explorer http: /containertestcluster.eastus.cloudapp.azure.com:19080/Explorer. Bontsa ki az alkalmazások csomópontját, és figyelje meg, hogy megjelenik benne egy bejegyzés az alkalmazás típusához, egy másik pedig a példányhoz.
 
 ![Service Fabric Explorer][sfx]
 
-A futó alkalmazáshoz való kapcsolódáshoz nyisson meg egy webböngészőt, és nyissa meg a fürt URL-címét – például http:\//containertestcluster.eastus.cloudapp.azure.com:80. A webes felhasználói felületen a szavazóalkalmazásnak kell megjelennie.
+A futó alkalmazáshoz való csatlakozáshoz nyisson meg egy webböngészőt,\/és lépjen a fürt URL-címére - például http: /containertestcluster.eastus.cloudapp.azure.com:80. A webes felhasználói felületen a szavazóalkalmazásnak kell megjelennie.
 
 ![szavazóalkalmazás][votingapp]
 
@@ -395,7 +395,7 @@ Használja a sablonban megadott eltávolítási szkriptet az alkalmazáspéldán
  </ServiceManifest>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban több tárolót csomagolt egy Service Fabric-alkalmazásba a Yeoman használatával, majd az alkalmazást üzembe helyezte és futtatta egy Service Fabric-fürtön. A következő lépéseket hajtotta végre:
 

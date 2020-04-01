@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 7c971dcac702318d15a27736828092e987468ca3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 352ff91bf26c7ff4f6945431fe6e1357f030e1db
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77162973"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477528"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub-version-5"></a>Események küldése eseményközpontokba vagy események fogadása a Python használatával (az azure-eventhub 5-ös verziójával)
 Ez a rövid útmutató bemutatja, hogyan küldhet eseményeket egy eseményközpontból az **azure-eventhub 5 Python-csomag** használatával.
@@ -22,7 +22,7 @@ Ez a rövid útmutató bemutatja, hogyan küldhet eseményeket egy eseményközp
 > Ez a rövid útmutató a legújabb azure-eventhub 5-ös verziójú csomagot használja. A régi azure-eventhub 1-es verziójú csomagot használó gyorskezdésért olvassa el az [Események küldése és fogadása az azure-eventhub 1-es verziójával című témakört.](event-hubs-python-get-started-send.md) 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ha most írja be az Azure Event Hubs, olvassa el [az Eseményközpontok áttekintése című témakört,](event-hubs-about.md) mielőtt ezt a rövid útmutatót végezné. 
+Ha most írja be az Azure Event Hubs szolgáltatást, olvassa el [az Eseményközpontok áttekintése című témakört,](event-hubs-about.md) mielőtt ezt a rövid útmutatót elvégezné. 
 
 A rövid útmutató végrehajtásához a következő előfeltételekre van szükség:
 
@@ -79,9 +79,14 @@ Ebben a szakaszban hozzon létre egy Python-parancsfájlt, amely eseményeket k�
 
     > [!NOTE]
     > A teljes forráskódot, beleértve a tájékoztató megjegyzéseket, látogasson el a [GitHub send_async.py lapra.](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/samples/async_samples/send_async.py)
+    
 
 ## <a name="receive-events"></a>Események fogadása
 Ez a rövid útmutató az Azure Blob storage-ot használja ellenőrzőpont-tárolóként. Az ellenőrzőpont-tároló ellenőrzőpontok (azaz az utolsó olvasási pozíciók) megőrzésére szolgál.  
+
+> [!NOTE]
+> Ha az Azure Stack Hubon fut, akkor előfordulhat, hogy a storage blob SDK egy másik verzióját támogatja, mint az Azure-ban általában elérhető. Ha például az [Azure Stack Hub 2002-es verzióján](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)fut, a Storage szolgáltatás legmagasabb elérhető verziója a 2017-11-09-es verzió. Ebben az esetben az ebben a szakaszban ismertetett lépések mellett kódot is hozzá kell adnia a Storage service API 2017-11-09-es verziójának célzásához. Egy adott Storage API-verzió célzásának például tekintse meg a [szinkron](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py) és [aszinkron](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py) mintákat a GitHubon. Az Azure Stack Hubon támogatott Azure Storage-szolgáltatásverzióiról az [Azure Stack Hub storage: Különbségek és szempontok](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences)című további információkért tekintse meg.
+
 
 ### <a name="create-an-azure-storage-account-and-a-blob-container"></a>Azure-tárfiók és blobtároló létrehozása
 Hozzon létre egy Azure-tárfiókot és egy blobtárolót az alábbi lépésekkel:

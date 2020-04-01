@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 6db2c907abc495ca3c88e1e73e885043a8f19997
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 636f2e6139ad081d1e2fc67462a74cb7e18e3ff0
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79481534"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475859"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Oktatóanyag: Biztonságos LDAP konfigurálása egy Azure Active Directory tartományi szolgáltatások felügyelt tartományához
 
@@ -114,13 +114,13 @@ Ez a két kulcs, a *személyes* és *a nyilvános* kulcsok biztosítják, hogy c
 
 Mielőtt az előző lépésben létrehozott digitális tanúsítványt az Azure AD DS felügyelt tartományával használhatna, exportálja a tanúsítványt egy *alkalmazásba. A* személyes kulcsot tartalmazó PFX-tanúsítványfájl.
 
-1. A *Futtatás* párbeszédpanel megnyitásához jelölje ki a **Windows** és az **R** billentyűket.
+1. A *Futtatás* párbeszédpanel megnyitásához jelölje ki a **Windows** + **R** billentyűket.
 1. Nyissa meg a Microsoft Management Console (MMC) konzolt úgy, hogy beírja az **mmc parancsot** a *Futtatás* párbeszédpanelre, majd kattintson az **OK gombra.**
-1. A **Felhasználói fiókok felügyelete** parancsában kattintson az **Igen** gombra az MMC rendszergazdaként való elindításához.
-1. A **Fájl** menüben kattintson a **Beépülő modul hozzáadása/eltávolítása parancsra...**
+1. A **Felhasználói fiókok felügyelete** parancsában válassza az **Igen** lehetőséget az MMC rendszergazdaként való elindításához.
+1. A **Fájl** menüben válassza a **Beépülő modul hozzáadása/eltávolítása parancsot...**
 1. A **Tanúsítványok beépülő modul varázslóban** válassza a **Számítógépfiók (Számítógép fiók)** lehetőséget, majd a **Tovább**gombot.
 1. A **Számítógép kiválasztása** lapon válassza a **Helyi számítógép: (a konzolon futó számítógép)** lehetőséget, majd válassza a **Befejezés gombot.**
-1. A **Beépülő modulok hozzáadása vagy eltávolítása** párbeszédpanelen kattintson az **OK** gombra a tanúsítványok beépülő modul mmc-hez való hozzáadásához.
+1. A **Beépülő modulok hozzáadása vagy eltávolítása** párbeszédpanelen válassza az **OK** gombot a tanúsítványbeépülő modul MMC-hez való hozzáadásához.
 1. Az MMC ablakban bontsa ki a **Konzolgyökér csomópontot.** Válassza **a Tanúsítványok (helyi számítógép)** lehetőséget, majd bontsa ki a **Személyes** csomópontot, majd a **Tanúsítványok** csomópontot.
 
     ![A személyes tanúsítványok tárolójának megnyitása a Microsoft Management Console-ban](./media/tutorial-configure-ldaps/open-personal-store.png)
@@ -177,9 +177,6 @@ A *. A CER* tanúsítványfájl most már terjeszthető olyan ügyfélszámító
 A létrehozott és exportált digitális tanúsítvány, amely tartalmazza a személyes kulcsot, és az ügyfélszámítógép beállítása, hogy megbízik a kapcsolat, most már biztonságos LDAP az Azure AD DS felügyelt tartományban. A biztonságos LDAP engedélyezéséhez egy Azure AD DS felügyelt tartományban hajtsa végre a következő konfigurációs lépéseket:
 
 1. Az [Azure Portalon](https://portal.azure.com)adja meg a *tartományi szolgáltatásokat* az **erőforrások keresése** mezőbe. Válassza ki az **Azure AD tartományi szolgáltatások** a keresési eredményből.
-
-    ![Az Azure AD DS által felügyelt tartomány keresése és kiválasztása az Azure Portalon](./media/tutorial-configure-ldaps/search-for-domain-services.png)
-
 1. Válassza ki a felügyelt tartományt, például *a aaddscontoso.com.*
 1. Az Azure AD DS ablak bal oldalán válassza a **Biztonságos LDAP**lehetőséget.
 1. Alapértelmezés szerint a felügyelt tartományhoz való biztonságos LDAP-hozzáférés le van tiltva. Kapcsolja be a **biztonságos LDAP-t** az **engedélyezéshez.**
@@ -235,10 +232,10 @@ Ha biztonságos LDAP-hozzáférés engedélyezve van az interneten keresztül, f
 
 Állítsa be a külső DNS-szolgáltatót úgy, hogy hozzon létre egy állomásrekordot, például *az ldaps-t,* hogy feloldja ezt a külső IP-címet. Ha először helyileg szeretné tesztelni a számítógépet, létrehozhat egy bejegyzést a Windows hosts fájlban. A hosts fájl helyi számítógépen való sikeres szerkesztéséhez nyissa meg rendszergazdaként a *Jegyzettömböt,* majd nyissa meg a *C:\Windows\System32\drivers\etc fájlt.*
 
-A következő példa a DNS-bejegyzés , akár a külső DNS-szolgáltató, vagy a helyi hosts fájlban, feloldja a forgalmat *a ldaps.aaddscontoso.com* a külső IP-cím *40.121.19.239*:
+A következő példa a DNS-bejegyzés , akár a külső DNS-szolgáltató, vagy a helyi hosts fájlban, feloldja a forgalmat *ldaps.aaddscontoso.com* a külső IP-cím *168.62.205.103*:
 
 ```
-40.121.19.239    ldaps.aaddscontoso.com
+168.62.205.103    ldaps.aaddscontoso.com
 ```
 
 ## <a name="test-queries-to-the-managed-domain"></a>Lekérdezések tesztelése a felügyelt tartományba
@@ -261,7 +258,7 @@ Az Azure AD DS felügyelt tartományában tárolt objektumok megtekintése:
 1. Válassza a **Nézet** menüt, majd a **Fa**lehetőséget.
 1. Hagyja üresen a *BaseDN* mezőt, majd kattintson **az OK gombra.**
 1. Válasszon egy tárolót, például *az AADDC-felhasználók at,* majd a jobb szélen jelölje ki a tárolót, és válassza a **Keresés parancsot.**
-1. Hagyja meg az előre kitöltött mezőket, majd válassza a **Futtatás lehetőséget.** A lekérdezés eredményei a jobb oldali ablakban jelennek meg.
+1. Hagyja meg az előre kitöltött mezőket, majd válassza a **Futtatás lehetőséget.** A lekérdezés eredményei a jobb oldali ablakban jelennek meg, ahogy az a következő példa kimenetben látható:
 
     ![Objektumok keresése az Azure AD DS felügyelt tartományában az LDP.exe használatával](./media/tutorial-configure-ldaps/ldp-query.png)
 
@@ -273,7 +270,7 @@ Ha dns-bejegyzést adott hozzá a számítógép helyi hosts fájljához az okta
 
 1. A helyi számítógépen nyissa meg a *Jegyzettömbet* rendszergazdaként
 1. Tallózással keresse meg és nyissa meg a *C:\Windows\System32\drivers\etc* fájlt
-1. A hozzáadott rekord sorának törlése, például`40.121.19.239    ldaps.aaddscontoso.com`
+1. A hozzáadott rekord sorának törlése, például`168.62.205.103    ldaps.aaddscontoso.com`
 
 ## <a name="next-steps"></a>További lépések
 

@@ -13,15 +13,15 @@ ms.topic: tutorial
 ms.date: 08/27/2018
 ms.author: apimpm
 ms.openlocfilehash: 5440333360549c5df2da57c97b24dcc77436ba4b
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70072705"
 ---
 # <a name="add-an-api-manually"></a>API hozzáadása manuálisan
 
-A cikkben ismertetett lépések bemutatják, hogyan adhat hozzá manuálisan egy API-t a API Management (APIM) példányhoz a Azure Portal használatával. Az üres, manuálisan meghatározható API-t gyakran használják API-k szimulálására. További részletek az API-k szimulálásáról: [API-válaszok szimulálása](mock-api-responses.md).
+A cikk bemutatja, hogy az Azure Portal használatával hogyan adhat hozzá egy API-t manuálisan az API Management- (APIM-) példányhoz. Az üres, manuálisan meghatározható API-t gyakran használják API-k szimulálására. További részletek az API-k szimulálásáról: [API-válaszok szimulálása](mock-api-responses.md).
 
 Ha egy meglévő API-t szeretne importálni, tekintse meg a [kapcsolódó témaköröket](#related-topics).
 
@@ -29,7 +29,7 @@ Ebben a cikkben létrehozunk egy üres API-t, és a [httpbin.org](https://httpbi
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Hajtsa végre a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md)
+A következő rövid útmutató befejezése: [Hozzon létre egy Azure API Management-példányt](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -42,14 +42,14 @@ Hajtsa végre a következő rövid útmutatót: [Azure API Management-példány 
     ![Üres API](media/add-api-manually/blank-api.png)
 4. Adja meg az API beállításait.
 
-    |**Name**|**Érték**|**Leírás**|
+    |**Név**|**Érték**|**Leírás**|
     |---|---|---|
     |**Megjelenített név**|*Üres API*|Ez a név a fejlesztői portálon jelenik meg.|
-    |**Name**|*üres – API*|Egyedi nevet ad meg az API-nak.|
-    |**Webszolgáltatás URL-címe** (nem kötelező)|*https://httpbin.org*| Ha egy API-t szeretne szimulálni, akkor előfordulhat, hogy nem ad meg semmit ebben a mezőben. <br/>Ebben az esetben mi a következőt adjuk meg: [https://httpbin.org](https://httpbin.org). Ez egy nyilvános tesztelési szolgáltatás. <br/>Ha olyan API-t szeretne importálni, amely automatikusan le van képezve egy háttérrendszerre, tekintse meg a [kapcsolódó témakörök](#related-topics) egyik témakörét.|
-    |**URL-séma**|*HTTPs*|Ebben az esetben egy biztonságos HTTPS APIM-hozzáférést határozunk meg a háttérrendszerhez, bár magának a háttérrendszernek a hozzáférése nem biztonságos. <br/>Az ilyen forgatókönyveket (HTTPS–HTTP-kapcsolat) nevezzük HTTPS-zárásnak. Akkor lehet rá szükség, ha az API egy virtuális hálózatban található (és így tudja, hogy biztonságos a hozzáférés a HTTPS használata nélkül is). <br/>A „HTTPS-zárás” alkalmazásával számos processzorciklus megspórolható.|
-    |**URL-cím utótagja**|*hbin*| Az utótag lesz a név, amely azonosítja az API-t ebben az APIM-példányban. Egyedinek kell lennie az APIM-példányon belül.|
-    |**Termékek**|*Korlátlan*|Az API egy termékkel való társítással tehető közzé. Ha közzé szeretné tenni az API-t, hogy elérhető legyen a fejlesztők számára, adja hozzá egy termékhez. Ezt megteheti az API létrehozása során, vagy később is.<br/><br/>A termékek egy vagy több API társításai. Megadhatja az API-k számát, és a fejlesztői portálon elérhetővé teheti őket a fejlesztők számára. <br/>A fejlesztőknek elő kell fizetniük a termékre az API-k eléréséhez. Amikor előfizetnek, kapnak egy előfizetési kulcsot, amely a termék minden API-jához használható. Ha Ön hozta létre az APIM-példányt, akkor már eleve rendszergazdának számít, így alapértelmezés szerint minden termékre előfizetett.<br/><br/> Alapértelmezés szerint az API Management minden példányához az alábbi két mintatermék jár: **Kezdő** és **korlátlan**.| 
+    |**Név**|*üres-api*|Egyedi nevet ad meg az API-nak.|
+    |**Webszolgáltatás URL-címe** (nem kötelező)|*https://httpbin.org*| Ha egy API-t szeretne szimulálni, akkor előfordulhat, hogy nem ad meg semmit ebben a mezőben. <br/>Ebben az esetben [https://httpbin.org](https://httpbin.org)belépünk . Ez egy nyilvános tesztszolgáltatás. <br/>Ha olyan API-t szeretne importálni, amely automatikusan le van képezve egy háttérrendszerre, tekintse meg a [kapcsolódó témakörök](#related-topics) egyik témakörét.|
+    |**URL-séma**|*HTT-k*|Ebben az esetben egy biztonságos HTTPS APIM-hozzáférést határozunk meg a háttérrendszerhez, bár magának a háttérrendszernek a hozzáférése nem biztonságos. <br/>Az ilyen forgatókönyveket (HTTPS–HTTP-kapcsolat) nevezzük HTTPS-zárásnak. Akkor lehet rá szükség, ha az API egy virtuális hálózatban található (és így tudja, hogy biztonságos a hozzáférés a HTTPS használata nélkül is). <br/>A „HTTPS-zárás” alkalmazásával számos processzorciklus megspórolható.|
+    |**URL-cím utótagja**|*hbin (hbin)*| Az utótag lesz a név, amely azonosítja az API-t ebben az APIM-példányban. Egyedinek kell lennie az APIM-példányon belül.|
+    |**Termékek**|*Korlátlan*|Az API egy termékkel való társítással tehető közzé. Ha közzé szeretné tenni az API-t, hogy elérhető legyen a fejlesztők számára, adja hozzá egy termékhez. Ezt megteheti az API létrehozása során, vagy később is.<br/><br/>A termékek egy vagy több API társításai. Megadhatja az API-k számát, és a fejlesztői portálon elérhetővé teheti őket a fejlesztők számára. <br/>A fejlesztőknek elő kell fizetniük a termékre az API-k eléréséhez. Amikor előfizetnek, kapnak egy előfizetési kulcsot, amely a termék minden API-jához használható. Ha Ön hozta létre az APIM-példányt, akkor már eleve rendszergazdának számít, így alapértelmezés szerint minden termékre előfizetett.<br/><br/> Alapértelmezés szerint az API Management minden példányához az alábbi két mintatermék jár: **Starter** és **Unlimited**.| 
 5. Kattintson a **Létrehozás** gombra.
 
 Ezen a ponton nem lesz olyan művelet az APIM-ban, amely leképeződik a háttérrendszeri API-ra. Ha olyan műveletet hív meg, amely közzé lett téve a háttérrendszeren keresztül, de az APIM-on keresztül nem, a **404**-es hibaüzenetet kapja.
@@ -65,7 +65,7 @@ Ez a szakasz bemutatja, hogyan hozhat létre egy „/get” műveletet, amelyet 
 
 1. Válassza ki az előző lépésben létrehozott API-t.
 2. Kattintson a **+ Művelet hozzáadása** elemre.
-3. Az **URL** szakaszban válassza a **GET** elemet, és írja be a „ */get*” karakterláncot az erőforrás mezőjébe.
+3. Az **URL** szakaszban válassza a **GET** elemet, és írja be a „*/get*” karakterláncot az erőforrás mezőjébe.
 4. A **Megjelenített név** mezőbe írja be a következőt: „*FetchData*”.
 5. Kattintson a **Mentés** gombra.
 
@@ -87,7 +87,7 @@ Ez a szakasz bemutatja, hogyan adhat hozzá egy paramétert használó művelete
 
 1. Válassza ki az előző lépésben létrehozott API-t.
 2. Kattintson a **+ Művelet hozzáadása** elemre.
-3. Az **URL** szakaszban válassza a **GET** elemet, és írja be a „ */status/{code}* ” karakterláncot az erőforrás mezőjébe. Lehetősége van megadni a paraméterhez kapcsolódó információkat. A **TÍPUS** értéke például lehet „*Szám*”, az **ÉRTÉKEK** értéke pedig lehet „*200*” (az alapértelmezett érték).
+3. Az **URL** szakaszban válassza a **GET** elemet, és írja be a „*/status/{code}*” karakterláncot az erőforrás mezőjébe. Lehetősége van megadni a paraméterhez kapcsolódó információkat. A **TÍPUS** értéke például lehet „*Szám*”, az **ÉRTÉKEK** értéke pedig lehet „*200*” (az alapértelmezett érték).
 4. A **Megjelenített név** mezőbe írja be a következőt: „GetStatus”.
 5. Kattintson a **Mentés** gombra.
 

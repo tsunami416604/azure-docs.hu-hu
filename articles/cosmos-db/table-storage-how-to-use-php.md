@@ -1,5 +1,5 @@
 ---
-title: Az Azure Storage Table service vagy a PHP-Azure Cosmos DB Table API használata
+title: Az Azure Storage Table szolgáltatás vagy az Azure Cosmos DB Table API használata PHP-ből
 description: Az Azure Table Storage vagy az Azure Cosmos DB Table API használatával strukturált adatok tárolhatók a felhőben.
 author: sakash279
 ms.author: akshanka
@@ -9,10 +9,10 @@ ms.devlang: php
 ms.topic: sample
 ms.date: 04/05/2018
 ms.openlocfilehash: a19928516685e7496dc3e892d2598b24b5abae19
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76771054"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>Az Azure Table Storage szolgáltatás és az Azure Cosmos DB Table API használata a PHP segítségével
@@ -20,7 +20,7 @@ ms.locfileid: "76771054"
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
 ## <a name="overview"></a>Áttekintés
-Ez az útmutató bemutatja, hogyan hajthat végre gyakori forgatókönyveket az Azure Storage Table szolgáltatás és az Azure Cosmos DB Table API használatával. A mintákat a PHP-ben írták, és az [Azure Storage Table php ügyféloldali kódtárat][download]használják. Az ismertetett forgatókönyvek a **táblák létrehozásával és törlésével**, valamint a **táblaentitások beszúrásával, törlésével és lekérdezésével** foglalkoznak. Az Azure Table Service szolgáltatással kapcsolatos további információkért lásd a [További lépések](#next-steps) szakaszt.
+Ez az útmutató bemutatja, hogyan hajthat végre gyakori forgatókönyveket az Azure Storage Table szolgáltatás és az Azure Cosmos DB Table API használatával. A kódminták PHP nyelven íródtak, és az [Azure Storage Table PHP-hoz készült ügyféloldali kódtárát][download] használják. Az ismertetett forgatókönyvek a **táblák létrehozásával és törlésével**, valamint a **táblaentitások beszúrásával, törlésével és lekérdezésével** foglalkoznak. Az Azure Table Service szolgáltatással kapcsolatos további információkért lásd a [További lépések](#next-steps) szakaszt.
 
 
 ## <a name="create-an-azure-service-account"></a>Azure-szolgáltatásfiók létrehozása
@@ -95,7 +95,7 @@ Az emulátor tárolójának elérése:
 UseDevelopmentStorage = true
 ```
 
-Azure Table Service-ügyfél vagy Azure Cosmos DB-ügyfél létrehozásához a **TableRestProxy** osztályt kell használnia. Előnyök:
+Azure Table Service-ügyfél vagy Azure Cosmos DB-ügyfél létrehozásához a **TableRestProxy** osztályt kell használnia. A következőket teheti:
 
 * A kapcsolati sztringet továbbíthatja közvetlenül, vagy
 * használhatja a **CloudConfigurationManager (CCM)** eszközt, ha több külső forrást szeretne ellenőrizni a kapcsolati sztringhez:
@@ -113,7 +113,7 @@ $tableClient = TableRestProxy::createTableService($connectionString);
 ```
 
 ## <a name="create-a-table"></a>Tábla létrehozása
-A **TableRestProxy** objektum lehetővé teszi egy tábla létrehozását a **createTable** metódussal. Tábla létrehozásakor beállíthatja a Table Service időkorlátját. (További információ a Table service időtúllépésről: a [Table Service-műveletek időtúllépésének beállítása][table-service-timeouts].)
+A **TableRestProxy** objektum lehetővé teszi egy tábla létrehozását a **createTable** metódussal. Tábla létrehozásakor beállíthatja a Table Service időkorlátját. (További információkat a Table Service időkorlátjáról [a Table Service-műveletek időkorlátjának beállításával][table-service-timeouts] kapcsolatos cikkben olvashat.)
 
 ```php
 require_once 'vendor\autoload.php';
@@ -137,10 +137,10 @@ catch(ServiceException $e){
 }
 ```
 
-A táblázatos nevek korlátozásával kapcsolatos információkért lásd: [a Table Service adatmodell ismertetése][table-data-model].
+További információt a táblák nevére vonatkozó korlátozásokról a [Table Service adatmodelljét ismertető][table-data-model] témakörben talál.
 
 ## <a name="add-an-entity-to-a-table"></a>Entitás hozzáadása a táblához
-Ha hozzá szeretne adni egy entitást egy táblához, hozzon létre egy új **Entity** objektumot, és továbbítsa a **TableRestProxy->insertEntity** metódushoz. Vegye figyelembe, hogy entitás létrehozásakor meg kell adnia egy `PartitionKey` és egy `RowKey` értéket. Ezek az entitás egyedi azonosítói, és az értékeik sokkal gyorsabban lekérdezhetők, mint a többi entitástulajdonság. A rendszer a `PartitionKey` használatával automatikusan elosztja a tábla entitásait számos tárcsomópont között. Az ugyanazzal a `PartitionKey` tulajdonsággal rendelkező entitások tárolása ugyanazon a csomóponton történik. (Az ugyanazon a csomóponton tárolt több entitás műveletei jobbak, mint a különböző csomópontokon tárolt entitások esetén.) A `RowKey` a partíción belüli entitás egyedi azonosítója.
+Ha hozzá szeretne adni egy entitást egy táblához, hozzon létre egy új **Entity** objektumot, és továbbítsa a **TableRestProxy->insertEntity** metódushoz. Vegye figyelembe, hogy entitás létrehozásakor meg kell adnia egy `PartitionKey` és egy `RowKey` értéket. Ezek az entitás egyedi azonosítói, és az értékeik sokkal gyorsabban lekérdezhetők, mint a többi entitástulajdonság. A rendszer a `PartitionKey` használatával automatikusan elosztja a tábla entitásait számos tárcsomópont között. Az ugyanazzal a `PartitionKey` tulajdonsággal rendelkező entitások tárolása ugyanazon a csomóponton történik. (Az ugyanazon a csomóponton tárolt több entitásműveletei jobban teljesítenek, mint a különböző csomópontokon tárolt entitásokon.) A `RowKey` egy partíción belüli entitás egyedi azonosítója.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -174,7 +174,7 @@ catch(ServiceException $e){
 }
 ```
 
-További információ a táblázat tulajdonságairól és típusairól: [a Table Service adatmodell ismertetése][table-data-model].
+További információt a táblatulajdonságokról és -típusokról a [Table Service adatmodelljét ismertető][table-data-model] témakörben talál.
 
 A **TableRestProxy** osztály két alternatív metódust kínál az entitások beszúrásához: az **insertOrMergeEntity** és az **insertOrReplaceEntity** metódust. A két metódus használatához hozzon létre egy új **entitást**, és továbbítsa azt valamelyik metódusnak paraméterként. Mindkét metódus beszúrja az entitást, ha az nem létezik. Ha az entitás már létezik, az **insertOrMergeEntity** frissíti a tulajdonságértékeket, ha a tulajdonságok már léteznek, és új tulajdonságokat ad hozzá, ha még nem, míg az **insertOrReplaceEntity** teljesen lecseréli a meglévő entitást. A következő példa az **insertOrMergeEntity** használatát mutatja be. Ha a „taskSeattle” `PartitionKey`-értékkel, és az „1” `RowKey`-értékkel rendelkező entitás még nem létezik, akkor beszúrja. Ha azonban azt korábban már beszúrták (ahogyan a fenti példa mutatja), akkor frissíti a `DueDate` tulajdonságot, a `Status` tulajdonságot pedig hozzáadja. A `Description` és `Location` tulajdonságok is frissülnek, de olyan értékekkel, amelyek révén lényegében nem változnak. Ha a két utóbbi érték a példától eltérő módon nem lenne hozzáadva, de létezne a célentitáson, akkor meglévő értékeik változatlanok maradtak volna.
 
@@ -248,7 +248,7 @@ echo $entity->getPartitionKey().":".$entity->getRowKey();
 ```
 
 ## <a name="retrieve-all-entities-in-a-partition"></a>Egy partíció összes entitásának lekérése
-Az entitások lekérdezése szűrők használatával történik (További információ: [táblák és entitások lekérdezése][filters]). Ha egy partíció minden entitását le szeretné kérdezni, használja a "PartitionKey eq *partíció_neve*" szűrőt. Az alábbi példa bemutatja, hogyan kérheti le a `tasksSeattle` partíció minden entitását úgy, hogy egy szűrőt továbbít a **queryEntities** metódusnak.
+Az entitáslekérdezések szűrők használatával jönnek létre (további információt a [táblák és entitások lekérdezésével][filters] kapcsolatos témakörben olvashat). Ha egy partíció minden entitását le szeretné kérdezni, használja a "PartitionKey eq *partíció_neve*" szűrőt. Az alábbi példa bemutatja, hogyan kérheti le a `tasksSeattle` partíció minden entitását úgy, hogy egy szűrőt továbbít a **queryEntities** metódusnak.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -281,7 +281,7 @@ foreach($entities as $entity){
 ```
 
 ## <a name="retrieve-a-subset-of-entities-in-a-partition"></a>Entitások egy részének lekérése egy partíción belül
-Az előző példában használt minta felhasználható entitások bármilyen részhalmazának lekérésére egy partíción belül. A lekért entitások részhalmazát a használt szűrő határozza meg (További információ: [táblák és entitások lekérdezése][filters]). Az alábbi példa azt mutatja be, hogyan használható egy szűrő az összes olyan entitás lekérésére, amely egy adott `Location` és egy `DueDate` a megadott dátumnál kisebb.
+Az előző példában használt minta felhasználható entitások bármilyen részhalmazának lekérésére egy partíción belül. Az entitások részhalmazát a felhasznált szűrő határozza meg (további információt a [táblák és entitások lekérdezésével][filters] kapcsolatos témakörben olvashat). Az alábbi példa bemutatja, hogyan kérhet le egy szűrő segítségével minden olyan entitást, amely adott `Location` és a meghatározottnál korábbi `DueDate` értékkel rendelkezik.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -472,7 +472,7 @@ catch(ServiceException $e){
 }
 ```
 
-További információ a kötegelt tábla műveleteivel kapcsolatban: [entitás-csoport tranzakcióinak végrehajtása][entity-group-transactions].
+További információk a táblaműveletek kötegeléséről: [Entitáscsoport-tranzakciók végrehajtása][entity-group-transactions].
 
 ## <a name="delete-a-table"></a>Tábla törlése
 Végül tábla törléséhez továbbítsa a tábla nevét a **TableRestProxy->deleteTable** metódusnak.
@@ -500,7 +500,7 @@ catch(ServiceException $e){
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy megismerte az Azure Table Service és az Azure Cosmos DB alapjait, az alábbi hivatkozásokra kattintva tudhat meg többet.
 
 * A [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) egy ingyenes, önálló alkalmazás, amelynek segítségével vizuálisan dolgozhat Azure Storage-adatokkal Windows, macOS és Linux rendszereken.

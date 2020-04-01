@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: 34f0fb57b4432a8153f2cbaa8cb60edbb9a6f494
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: a8ef0f172a8e9118eef2d2f8a11f3efbce665171
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78271082"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473521"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Rövid útmutató: Bejelentkezés hozzáadása a Microsofttal egy Python-webalkalmazáshoz
 
@@ -98,6 +98,10 @@ A minta futtatásához a következőkre lesz szükség:
 > Töltse le a projektet, és bontsa ki a zip fájlt egy helyi mappába, amely közelebb van a gyökérmappához - például **C:\Azure-Samples**
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
 > [A kódminta letöltése](https://github.com/Azure-Samples/ms-identity-python-webapp/archive/master.zip)
+
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > `Enter_the_Supported_Account_Info_Here`
 
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-the-application"></a>3. lépés: Az alkalmazás konfigurálása

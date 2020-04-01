@@ -1,6 +1,6 @@
 ---
-title: Durva újrahonosítás a/WinRT C++-ben
-description: Részletes magyarázat arról, hogyan hozhatók létre és találhatók a/WinRT.- C++alapú durva újrahonosítást használó horgonyok
+title: Durva újralokalizáció C++/WinRT-ben
+description: Részletes magyarázat a horgonyok létrehozásáról és megkereséséről a C+++/WinRT durva újraáthelyezésével.
 author: bucurb
 manager: dacoghl
 services: azure-spatial-anchors
@@ -9,13 +9,13 @@ ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 6d2bb4c563bd7bae186ce9832ff0472f17a8afd3
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76548288"
 ---
-# <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-cwinrt"></a>Horgonyok létrehozása és megkeresése durva újrahonosítással a/WinRT C++-ben
+# <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-cwinrt"></a>Horgonyok létrehozása és megkeresése durva újraáthelyezéssel C++/WinRT nyelven
 
 > [!div  class="op_single_selector"]
 > * [Unity](set-up-coarse-reloc-unity.md)
@@ -25,16 +25,16 @@ ms.locfileid: "76548288"
 > * [C++/NDK](set-up-coarse-reloc-cpp-ndk.md)
 > * [C++/WinRT](set-up-coarse-reloc-cpp-winrt.md)
 
-Az Azure térbeli horgonyok a létrehozott horgonyokkal társíthatók az eszközön, a helymeghatározási érzékelőkkel. Ezzel az adattal gyorsan megállapítható, hogy vannak-e az eszköz közelében horgonyok. További információ: [durva újrahonosítás](../concepts/coarse-reloc.md).
+Az Azure Spatial Anchors társíthatja az eszközön, pozicionálásérzékelő adatok at a létrehozott horgonyok. Ezek az adatok arra is használhatók, hogy gyorsan megállapíthassák, vannak-e horgonyok az eszköz közelében. További információ: [Durva áthelyezés](../concepts/coarse-reloc.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik a következővel:
+Az útmutató kitöltéséhez győződjön meg arról, hogy:
 
-- Alapszintű C++ ismeretek és a <a href="https://docs.microsoft.com/windows/uwp/cpp-and-winrt-apis/intro-to-using-cpp-with-winrt" target="_blank">Windows-futtatókörnyezet API</a>-k.
-- Olvassa el az [Azure térbeli horgonyok áttekintése című témakört](../overview.md).
-- Az [5 perces rövid](../index.yml)útmutatók egyikét fejezte be.
-- Olvassa el a [create (létrehozás), majd a horgonyok megkeresése című témakört](../create-locate-anchors-overview.md).
+- Alapvető ismeretek a C++ és a <a href="https://docs.microsoft.com/windows/uwp/cpp-and-winrt-apis/intro-to-using-cpp-with-winrt" target="_blank">Windows futásidejű API-kon.</a>
+- Olvassa el az [Azure Spatial Anchors áttekintését.](../overview.md)
+- Az 5 [perces rövid összefoglalók egyike befejeződött.](../index.yml)
+- Olvassa el a [Létrehozás és a horgonyok útmutatójának megkeresését.](../create-locate-anchors-overview.md)
 
 [!INCLUDE [Configure Provider](../../../includes/spatial-anchors-set-up-coarse-reloc-configure-provider.md)]
 

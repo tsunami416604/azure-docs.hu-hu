@@ -1,5 +1,5 @@
 ---
-title: Eszközkel kapcsolatos problémák észlelése a távoli figyelési megoldással – Azure | Microsoft Docs
+title: A Távoli figyelési megoldás használata az eszközproblémák észlelésére - Azure | Microsoft dokumentumok
 description: Ez az oktatóprogram bemutatja, hogyan használja a szabályokat és műveleteket a küszöbérték-alapú eszközhibák azonosítására a távoli monitorozási megoldásban.
 author: dominicbetts
 manager: timlt
@@ -10,10 +10,10 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 676f1133a516174478a456a97bc467e7770fe6e7
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79239517"
 ---
 # <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Oktatóanyag: A monitorozási megoldáshoz csatlakoztatott eszközök problémáinak észlelése
@@ -24,7 +24,7 @@ A szabályok és riasztások bemutatásához az oktatóanyag szimulált hűtőes
 
 Továbbá az is a feladata, hogy létrehozzon egy kritikus figyelmeztetést a hűtőkhöz, amely akkor lép életbe, ha az utolsó öt perc során az eszközben az átlagos páratartalom meghaladja a 80%-ot, a hőmérséklet pedig magasabb, mint 75 Fahrenheit-fok.
 
-Ebben az oktatóanyagban az alábbiakat végezte el:
+Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 >[!div class="checklist"]
 > * A megoldás szabályainak megtekintése
@@ -33,7 +33,7 @@ Ebben az oktatóanyagban az alábbiakat végezte el:
 > * Meglévő szabály szerkesztése
 > * Szabályok be- vagy kikapcsolása
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
@@ -57,9 +57,9 @@ Kattintson az **Új szabály** elemre egy olyan szabály létrehozásához, amel
 | Leírás      | A nyomás a hűtőben túllépte a 150 PSI-t |
 | Eszközcsoport     | **Hűtők** eszközcsoport             |
 | Számítás      | Azonnali                               |
-| 1\. feltétel mezője| pressure                              |
-| 1\. feltétel operátora | Nagyobb, mint                      |
-| 1\. feltétel értéke    | 150                               |
+| 1. feltétel mezője| pressure                              |
+| 1. feltétel operátora | Nagyobb, mint                      |
+| 1. feltétel értéke    | 150                               |
 | Súlyossági szint  | Figyelmeztetés                               |
 
 [![Figyelmeztetési szabály létrehozása](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_v2-expanded.png#lightbox)
@@ -68,7 +68,7 @@ Az új szabály mentéséhez kattintson az **Alkalmaz** gombra.
 
 A szabály aktiválásának idejét a **Szabály** vagy az **Irányítópult** oldalon láthatja:
 
-[![Figyelmeztetési szabály aktiválása](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-inline.png)](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-expanded.png#lightbox)
+[![Kiváltott figyelmeztetési szabály](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-inline.png)](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-expanded.png#lightbox)
 
 ## <a name="create-an-advanced-rule"></a>Speciális szabály létrehozása
 
@@ -81,28 +81,28 @@ Kattintson az **Új szabály** elemre egy olyan többfeltételes szabály létre
 | Eszközcsoport     | **Hűtők** eszközcsoport             |
 | Számítás      | Átlag                               |
 | Időtartam      | 5                                     |
-| 1\. feltétel mezője| páratartalom                              |
-| 1\. feltétel operátora | Nagyobb, mint                      |
-| 1\. feltétel értéke    | 80                                |
+| 1. feltétel mezője| páratartalom                              |
+| 1. feltétel operátora | Nagyobb, mint                      |
+| 1. feltétel értéke    | 80                                |
 | Súlyossági szint  | Kritikus                              |
 
-[![Többfeltételes szabály létrehozásának első része](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2-expanded.png#lightbox)
+[![Több feltételszabály létrehozása első rész](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2-expanded.png#lightbox)
 
 A második feltétel hozzáadásához kattintson a „+ feltétel hozzáadása” elemre. Használja a következő értékeket az új feltételhez:
 
 | Beállítás          | Érték                                 |
 | ---------------- | ------------------------------------- |
-| 2\. feltétel mezője| hőmérséklet                           |
-| 2\. feltétel operátora | Nagyobb, mint                      |
-| 2\. feltétel értéke    | 75                                |
+| 2. feltétel mezője| hőmérséklet                           |
+| 2. feltétel operátora | Nagyobb, mint                      |
+| 2. feltétel értéke    | 75                                |
 
-[![Többfeltételes szabály létrehozásának második része](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_cond2_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_cond2_v2-expanded.png#lightbox)
+[![Több feltételszabály második részének létrehozása](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_cond2_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_cond2_v2-expanded.png#lightbox)
 
 Az új szabály mentéséhez kattintson az **Alkalmaz** gombra.
 
 A szabály aktiválásának idejét a **Szabály** vagy az **Irányítópult** oldalon láthatja:
 
-[![Többfeltételes szabály aktiválása](./media/iot-accelerators-remote-monitoring-automate/criticalruletriggered-inline.png)](./media/iot-accelerators-remote-monitoring-automate/criticalruletriggered-expanded.png#lightbox)
+[![Több feltételszabály aktiválva](./media/iot-accelerators-remote-monitoring-automate/criticalruletriggered-inline.png)](./media/iot-accelerators-remote-monitoring-automate/criticalruletriggered-expanded.png#lightbox)
 
 ## <a name="edit-an-existing-rule"></a>Meglévő szabály szerkesztése
 
@@ -132,7 +132,7 @@ Egyszerre csak egy szabály törölhető.
 
 [!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan használhatja a távoli monitorozási megoldásgyorsító található **Szabályok** lapját a megoldásban riasztásokat aktiváló szabályok létrehozásához és kezeléséhez. A következő oktatóanyagból megtudhatja, hogyan használhatja a megoldásgyorsítót a csatlakoztatott eszközök kezelésére és konfigurálására.
 

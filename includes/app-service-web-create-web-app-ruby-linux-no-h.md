@@ -9,15 +9,15 @@ ms.date: 07/10/2019
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: b864e5374dcb0bab321109e7b12ee8946adf0c05
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "67849522"
 ---
-Hozzon létre egy [webalkalmazást](../articles/app-service/containers/app-service-linux-intro.md) az `myAppServicePlan` App Service-csomagban. 
+Hozzon létre egy `myAppServicePlan` [webalkalmazást](../articles/app-service/containers/app-service-linux-intro.md) az App Service-csomagban. 
 
-A Cloud Shellben használhatja az [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest) parancsot. A következő példában cserélje ki az `<app-name>` nevet egy globálisan egyedi névre (érvényes karakterek: `a-z`, `0-9` és `-`). A futtatókörnyezet beállítása `RUBY|2.3` lett. Az összes támogatott futtatókörnyezet megtekintéséhez futtassa az [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest) parancsot. 
+A Cloud Shell, használhatja [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest) a parancsot. A következő példában cserélje ki az `<app-name>` nevet egy globálisan egyedi névre (érvényes karakterek: `a-z`, `0-9` és `-`). A futtatókörnyezet beállítása `RUBY|2.3` lett. Az összes támogatott futásidő [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest)megtekintéséhez futtassa a futtassa a futtassa a futtassa a futtassa a futtass 
 
 ```azurecli-interactive
 # Bash

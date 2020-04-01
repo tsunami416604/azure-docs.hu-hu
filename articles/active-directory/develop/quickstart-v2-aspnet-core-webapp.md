@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c4d34a6db774712e13ea86d38ae48a543a07a8bc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e60d3f0221bce836f49e87a96c762e68cf8a60ad
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79529764"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473681"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Rövid útmutató: Bejelentkezés hozzáadása a Microsofttal egy ASP.NET Core webalkalmazáshoz
 Ebben a rövid útmutatóban egy kódminta segítségével megtudhatja, hogy egy ASP.NET Core webalkalmazás hogyan tud bejelentkezni a személyes fiókokba (hotmail.com, outlook.com, mások) és munkahelyi és iskolai fiókokbármely Azure Active Directory (Azure AD) példányból. (Lásd: [Hogyan működik a minta](#how-the-sample-works) egy illusztrációhoz.)
@@ -75,7 +75,7 @@ Ebben a rövid útmutatóban egy kódminta segítségével megtudhatja, hogy egy
 > A projektet az alkalmazás tulajdonságainak értékeivel konfiguráltuk, és készen áll a futtatásra. 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > Enter_the_Supported_Account_Info_Here
+> > `Enter_the_Supported_Account_Info_Here`
 > [!div renderon="docs"]
 > #### <a name="step-3-run-your-visual-studio-project"></a>3. lépés: A Visual Studio-projekt futtatása
 > 1. A zip-fájl kibontása a gyökérmappán belüli helyi mappába – például **C:\Azure-Samples**
@@ -165,7 +165,7 @@ Az attribútum segítségével megvédheti a `[Authorize]` vezérlő- vagy vezé
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a GitHub tárhivatalebben a ASP.NET Core oktatóanyag további információkért, beleértve az utasításokat, hogyan adhat hozzá hitelesítést egy teljesen új ASP.NET Core webalkalmazás, hogyan hívja a Microsoft Graph, és más Microsoft API-k, hogyan hívja a saját API-k, hogyan kell hozzáadni engedélyezés, a nemzeti felhőkben vagy közösségi identitással rendelkező felhasználók bejelentkezése stb.
+Tekintse meg a GitHub-tárházban a ASP.NET Core oktatóanyagát, amely további információt tartalmaz, beleértve a hitelesítés hozzáadásának módját egy vadonatúj ASP.NET Core webalkalmazáshoz, hogyan hívhatja meg a Microsoft Graph-ot és más Microsoft API-kat, hogyan hívhatja meg saját API-jait, hogyan adhat hozzá engedélyezést, hogyan jelentkeztetheti be a felhasználókat a nemzeti felhőkben, vagy hogyan lehet bejelentkezni a nemzeti felhőkben, vagy közösségi identitásokkal és egyebek :
 
 > [!div class="nextstepaction"]
 > [ASP.NET Core Web App oktatóanyaga](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)

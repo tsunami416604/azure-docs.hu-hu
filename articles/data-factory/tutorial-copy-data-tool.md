@@ -1,6 +1,6 @@
 ---
-title: Adatok másolása az Azure Blob Storage-ból az SQL-be Adatok másolása eszköz használatával
-description: Hozzon létre egy Azure-beli adatelőállítót, majd az Adatok másolása eszközzel másolja át az adatait az Azure Blob Storage-ból egy SQL Databaseba.
+title: Adatok másolása az Azure Blob storage-ból az SQL-be az Adatok másolása eszközzel
+description: Hozzon létre egy Azure-adat-előállítót, majd az Adatok másolása eszközzel másolja az adatokat az Azure Blob storage-ból egy SQL-adatbázisba.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,19 +13,19 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 03/03/2020
 ms.openlocfilehash: 52ed43277eef84de826d2f4fa41ba860211a1531
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78969905"
 ---
-# <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Adatok másolása az Azure Blob Storage-ból egy SQL Databaseba a Adatok másolása eszközzel
+# <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Adatok másolása az Azure Blob storage-ból egy SQL-adatbázisba az Adatok másolása eszközzel
 
-> [!div class="op_single_selector" title1="Válassza ki a használni kívánt Data Factory-szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuális verzió](tutorial-copy-data-tool.md)
 
-Ebben az oktatóanyagban egy adat-előállítót hoz létre az Azure Portal használatával. Ezután a Adatok másolása eszközzel létrehozhat egy folyamatot, amely az Azure Blob Storage-ból másol egy SQL Database.
+Ebben az oktatóanyagban egy adat-előállítót hoz létre az Azure Portal használatával. Ezután az Adatok másolása eszközzel hozzon létre egy folyamatot, amely adatokat másol az Azure Blob storage-ból egy SQL-adatbázisba.
 
 > [!NOTE]
 > Ha még csak ismerkedik az Azure Data Factory használatával, olvassa el [az Azure Data Factory használatának első lépéseit](introduction.md) ismertető cikket.
@@ -39,12 +39,12 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
-* **Azure Storage-fiók**: a blob Storage-t használja _forrásként_ szolgáló adattárként. Ha nem rendelkezik Azure Storage-fiókkal, tekintse meg a [Storage-fiók létrehozása](../storage/common/storage-account-create.md)című témakör utasításait.
-* **Azure SQL Database**: használjon egy SQL Database a fogadó _adattárként_ . Ha nem rendelkezik SQL Databaseval, tekintse meg a [SQL Database létrehozása](../sql-database/sql-database-get-started-portal.md)című témakör utasításait.
+* **Azure Storage-fiók:** Blob storage használata forrásadattárként. _source_ Ha nem rendelkezik Azure Storage-fiókkal, olvassa el a Tárfiók létrehozása című [témakörutasításait.](../storage/common/storage-account-create.md)
+* **Azure SQL Database:** Sql-adatbázis használata _a fogadó_ adattárként. Ha nem rendelkezik SQL-adatbázissal, olvassa el az [SQL-adatbázis létrehozása](../sql-database/sql-database-get-started-portal.md)című témakör utasításait.
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Blob és SQL-tábla létrehozása
 
-A következő lépések végrehajtásával készítse elő a blob Storage-t és a SQL Database az oktatóanyaghoz.
+Készítse elő a Blob storage és az SQL-adatbázis az oktatóanyag ezekkel a lépésekkel.
 
 #### <a name="create-a-source-blob"></a>Forrás blob létrehozása
 
@@ -56,11 +56,11 @@ A következő lépések végrehajtásával készítse elő a blob Storage-t és 
     Jane|Doe
     ```
 
-1. Hozzon létre egy **adfv2tutorial** nevű tárolót és töltse fel az inputEmp.txt fájlt a tárolóba. A feladatok végrehajtásához használhatja a Azure Portal vagy különféle eszközöket, például a [Azure Storage Explorer](https://storageexplorer.com/) .
+1. Hozzon létre egy **adfv2tutorial** nevű tárolót és töltse fel az inputEmp.txt fájlt a tárolóba. Használhatja az Azure Portalon, vagy különböző eszközök, például [az Azure Storage Explorer](https://storageexplorer.com/) ezeket a feladatokat.
 
 #### <a name="create-a-sink-sql-table"></a>Fogadó SQL-tábla létrehozása
 
-1. A következő SQL-szkripttel hozzon létre egy **dbo. EMP** nevű táblát a SQL Databaseban:
+1. A következő SQL-parancsfájl segítségével hozzon létre egy **dbo.emp** nevű táblát az SQL-adatbázisban:
 
     ```sql
     CREATE TABLE dbo.emp
@@ -74,11 +74,11 @@ A következő lépések végrehajtásával készítse elő a blob Storage-t és 
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-2. Engedélyezze az SQL Server elérését az Azure-szolgáltatások számára. Ellenőrizze, hogy engedélyezve van **-e az Azure-szolgáltatások és-erőforrások elérésének engedélyezése a kiszolgáló** számára a SQL Database rendszert futtató kiszolgálón. Ezzel a beállítással engedélyezheti, hogy a Data Factory adatokat írjon az adatbázispéldányra. A beállítás ellenőrzéséhez és bekapcsolásához lépjen az Azure SQL Server > biztonsági > tűzfalak és virtuális hálózatok elemre > állítsa be az **Azure-szolgáltatások és-erőforrások engedélyezése a kiszolgálón való eléréshez** **lehetőséget.**
+2. Engedélyezze az SQL Server elérését az Azure-szolgáltatások számára. Ellenőrizze, hogy engedélyezve van-e az **Azure-szolgáltatások és -erőforrások hozzáférése a kiszolgálóhoz** az SQL Database szolgáltatást futtató kiszolgálón. Ezzel a beállítással engedélyezheti, hogy a Data Factory adatokat írjon az adatbázispéldányra. A beállítás ellenőrzéséhez és bekapcsolásához nyissa meg az Azure SQL-kiszolgáló > biztonsági > tűzfalak és virtuális > hálózatok című állítsa be az **Azure-szolgáltatások és -erőforrások hozzáférésének engedélyezése a kiszolgálóhoz** beállítást **BE beállításra.**
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
-1. A bal oldali menüben válassza az **erőforrás létrehozása** > **Analytics** > **Data Factory**:
+1. A bal oldali menüben válassza az **Erőforrás-elemzési** > **Analytics** > **adatgyár**létrehozása lehetőséget:
 
     ![Új adat-előállító létrehozása](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. Az **Új adat-előállító** lap **Név** mezőjében adja meg az **ADFTutorialDataFactory** értéket.
@@ -87,13 +87,13 @@ A következő lépések végrehajtásával készítse elő a blob Storage-t és 
 
     ![Új adat-előállító hibaüzenete](./media/doc-common-process/name-not-available-error.png)
 
-    Ha a név értékével kapcsolatos hibaüzenet kap, adjon meg másik nevet az adat-előállítóhoz. Például: _**sajátneve**_ **ADFTutorialDataFactory**. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
+    Ha a név értékével kapcsolatos hibaüzenet kap, adjon meg másik nevet az adat-előállítóhoz. Például: _**sajátneve**_**ADFTutorialDataFactory**. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
 1. Válassza ki az Azure-**előfizetést** az új adat-előállító létrehozásához.
 1. **Erőforráscsoport:** hajtsa végre a következő lépések egyikét:
 
-    a. Kattintson a **Meglévő használata** elemre, majd a legördülő listából válasszon egy meglévő erőforráscsoportot.
+    a. Válassza **a Meglévő használata**lehetőséget, és válasszon ki egy meglévő erőforráscsoportot a legördülő listából.
 
-    b. Kattintson az **Új létrehozása** elemre, és adja meg az erőforráscsoport nevét.
+    b. Válassza **az Új létrehozása**lehetőséget, és írja be egy erőforráscsoport nevét.
     
     Az erőforráscsoportokkal kapcsolatos információkért tekintse meg az [Erőforráscsoportok használata az Azure-erőforrások kezeléséhez](../azure-resource-manager/management/overview.md) ismertető cikket.
 
@@ -111,16 +111,16 @@ A következő lépések végrehajtásával készítse elő a blob Storage-t és 
 1. Az Adatok másolása eszköz elindításához az **első lépéseket** ismertető oldalon kattintson az **Adatok másolása** csempére.
 
     ![Az Adatok másolása eszköz csempéje](./media/doc-common-process/get-started-page.png)
-1. A **Tulajdonságok** lap **Feladat neve** részénél adja meg a következőt: **CopyFromBlobToSqlPipeline**. Ezután kattintson a **Tovább** gombra. A Data Factory felhasználói felülete létrehoz egy folyamatot a megadott feladatnéven.
+1. A **Tulajdonságok** lap **Feladat neve** részénél adja meg a következőt: **CopyFromBlobToSqlPipeline**. Ezután válassza a **Tovább**gombot. A Data Factory felhasználói felülete létrehoz egy folyamatot a megadott feladatnéven.
     ![Folyamat létrehozása](./media/tutorial-copy-data-tool/create-pipeline.png)
 
 1. A **Forrásadattár** oldalon hajtsa végre az alábbi lépéseket:
 
     a. Kapcsolat hozzáadásához kattintson a **+ Új kapcsolat létrehozása** lehetőségre
 
-    b. Válassza ki az **Azure Blob Storage** elemet a katalógusból, majd válassza a **Folytatás**lehetőséget.
+    b. Válassza az **Azure Blob Storage** elemet a gyűjteményből, majd kattintson a Folytatás **gombra.**
 
-    c. Az **új társított szolgáltatás** lapon válassza ki az Azure-előfizetését, és válassza ki a Storage-fiók **nevét a Storage-fiók neve** listából. Tesztelje a kapcsolatokat, majd válassza a **Létrehozás**lehetőséget.
+    c. Az **új kapcsolt szolgáltatás** lapon válassza ki az Azure-előfizetést, és válassza ki a tárfiókot a **Storage-fiók** névlistájából. Tesztelje a kapcsolatot, és válassza a **Létrehozás lehetőséget.**
 
     d. Forrásnak válassza ki az újonnan létrehozott társított szolgáltatást, majd kattintson a **Tovább** gombra.
 
@@ -132,16 +132,16 @@ A következő lépések végrehajtásával készítse elő a blob Storage-t és 
 
     b. A következő lépéshez kattintson a **Tovább** gombra.
 
-1. A **File Format Settings (fájlformátum beállításai** ) lapon engedélyezze az *első sor fejlécként*való bejelölését. Figyelje meg, hogy az eszköz automatikusan észleli az oszlopok és a sorok határolóit. Kattintson a **Tovább** gombra. Ezen a lapon megtekintheti az adatokat is, és megtekintheti a bemeneti adatok sémáját.
+1. A **Fájlformátum beállításai** lapon engedélyezze az *Első sor fejlécként jelölőnégyzetét.* Figyelje meg, hogy az eszköz automatikusan észleli az oszlop- és sorhatárolókat. Válassza a **Tovább lehetőséget.** Megtekintheti az adatok előnézetét is, és megtekintheti a bemeneti adatok sémáját ezen az oldalon.
 
     ![A Fájlformátum beállításai](./media/tutorial-copy-data-tool/file-format-settings-page.png)
 1. A **Céladattár** oldalon hajtsa végre a következő lépéseket:
 
     a. Kapcsolat hozzáadásához kattintson a **+ Új kapcsolat létrehozása** lehetőségre
 
-    b. Válassza ki **Azure SQL Database** a katalógusból, majd válassza a **Folytatás**lehetőséget.
+    b. Válassza az **Azure SQL Database elemet** a gyűjteményből, majd kattintson a Folytatás **gombra.**
 
-    c. Az **új társított szolgáltatás** lapon válassza ki a kiszolgáló nevét és az adatbázis nevét a legördülő listából, majd adja meg a felhasználónevet és a jelszót, majd kattintson a **Létrehozás**gombra.
+    c. Az **Új csatolt szolgáltatás** lapon válassza ki a kiszolgáló nevét és az adatbázis nevét a legördülő listából, majd adja meg a felhasználónevet és a jelszót, majd válassza a **Létrehozás gombot.**
 
     ![Azure SQL-adatbázis konfigurálása](./media/tutorial-copy-data-tool/config-azure-sql-db.png)
 
@@ -149,9 +149,9 @@ A következő lépések végrehajtásával készítse elő a blob Storage-t és 
 
 1. A **Tábla hozzárendelése** oldalon válassza ki a **[dbo].[emp]** táblát, majd kattintson a **Tovább** gombra.
 
-1. Figyelje meg, hogy az **oszlop-hozzárendelés** oldalon a bemeneti fájl második és harmadik oszlopa az **EMP** tábla **FirstName** és **LastName** oszlopára van leképezve. Állítsa be úgy a leképezést, hogy ne legyen hiba, majd válassza a **tovább**lehetőséget.
+1. Az **Oszlopleképezés** lapon figyelje meg, hogy a bemeneti fájl második és harmadik oszlopa az **emp** tábla **Utónév** és **Vezetéknév** oszlopaihoz lesz leképezve. Állítsa be a leképezést, hogy megbizonyosodjon arról, hogy nincs hiba, majd válassza a **Tovább**gombot.
 
-    ![Oszlop-hozzárendelési lap](./media/tutorial-copy-data-tool/column-mapping.png)
+    ![Oszlopleképezési lap](./media/tutorial-copy-data-tool/column-mapping.png)
 
 1. A **Beállítások** lapon kattintson a **Tovább** gombra.
 1. Az **Összefoglalás** lapon tekintse át a beállításokat, majd kattintson a **Tovább** gombra.
@@ -159,23 +159,23 @@ A következő lépések végrehajtásával készítse elő a blob Storage-t és 
  
     ![Folyamat figyelése](./media/tutorial-copy-data-tool/monitor-pipeline.png)
 
-1. A folyamat futtatása lapon kattintson a **frissítés** gombra a lista frissítéséhez. Kattintson a **folyamat neve** alatt látható hivatkozásra a tevékenység futtatási részleteinek megtekintéséhez vagy a folyamat újrafuttatásához. 
-    ![folyamat futtatása](./media/tutorial-copy-data-tool/pipeline-run.png)
+1. A Folyamat futtatása lapon válassza a **Frissítés** lehetőséget a lista frissítéséhez. Kattintson a **FOLYAMAT NEVE** csoporthivatkozásra a tevékenységfuttatás részleteinek megtekintéséhez vagy a folyamat újbóli futtatásához. 
+    ![Folyamat futtatása](./media/tutorial-copy-data-tool/pipeline-run.png)
 
-1. A másolási művelettel kapcsolatos további információkért a tevékenység futtatása lapon válassza a **részletek** hivatkozást (szemüveg ikon) a **tevékenység neve** oszlopban. Ha vissza szeretne térni a folyamat futási nézetéhez, válassza a **minden folyamat futtatása** hivatkozást a navigációs menüben. A nézet frissítéséhez válassza a **Frissítés** parancsot.
+1. A Tevékenység futtatása lapon válassza a **Részletek** hivatkozást (szemüveg ikon) a **TEVÉKENYSÉG NEVE** oszlopban a másolási művelettel kapcsolatos további részletekért. Ha vissza szeretne lépni a Folyamatfuttatások nézetbe, válassza az **ALL folyamat futtatása** hivatkozást a navigációs menüben. A nézet frissítéséhez válassza a **Frissítés** parancsot.
 
     ![Tevékenységfuttatások monitorozása](./media/tutorial-copy-data-tool/activity-monitoring.png)
 
 
-1. Ellenőrizze, hogy a rendszer beszúrja-e az adatait a SQL Database **dbo. EMP** táblájába.
+1. Ellenőrizze, hogy az adatok bekerülnek-e az SQL-adatbázis **dbo.emp** táblájába.
 
 
 1. A szerkesztő módra való váltáshoz kattintson a bal oldalon található **Létrehozás** fülre. A szerkesztővel frissítheti a társított szolgáltatásokat, az adatkészleteket és az eszközzel létrehozott folyamatokat. Az entitások Data Factory felhasználói felületen való szerkesztéséről [a jelen oktatóanyag Azure Portal-verziójában](tutorial-copy-data-portal.md) talál további információt.
 
-    ![Szerző lap kiválasztása](./media/tutorial-copy-data-tool/author-tab.png)
+    ![Szerző kiválasztása lap](./media/tutorial-copy-data-tool/author-tab.png)
 
-## <a name="next-steps"></a>Következő lépések
-Az ebben a példában szereplő folyamat átmásolja az adatait a blob Storage-ból egy SQL Databaseba. Megismerte, hogyan végezheti el az alábbi műveleteket:
+## <a name="next-steps"></a>További lépések
+A minta folyamata adatokat másol a Blob storage-ból egy SQL-adatbázisba. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Adat-előállító létrehozása

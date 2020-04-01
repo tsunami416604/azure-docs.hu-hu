@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag a Azure Data Box Disk rendeléséhez | Microsoft Docs
+title: Oktatóanyag az Azure Data Box Disk megrendeléséhez | Microsoft dokumentumok
 description: Ez az oktatóanyag azt ismerteti, hogyan regisztrálhat az Azure Data Box Disk szolgáltatásra, és hogyan rendelheti meg azt az adatok Azure-ba történő importálásához.
 services: databox
 author: alkohli
@@ -10,13 +10,13 @@ ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
 ms.openlocfilehash: c1626542aba71f971ad96fe9f187ce9f1c1a99f3
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70012941"
 ---
-# <a name="tutorial-order-an-azure-data-box-disk"></a>Oktatóanyag: Azure Data Box Disk megrendelése
+# <a name="tutorial-order-an-azure-data-box-disk"></a>Oktatóanyag: Azure Data Box lemez rendelése
 
 Az Azure Data Box Disk egy hibrid felhőalapú megoldás, amellyel gyorsan, könnyen és megbízhatóan importálhat helyszíni adatokat az Azure-ba. Ön letölti az adatokat a Microsoft által SSD-lemezekre, majd visszaküldi azokat a Microsoftnak. Az adatok ezt követően fel lesznek töltve az Azure-ba.
 
@@ -24,12 +24,12 @@ Ez az oktatóanyag leírja, hogyan rendelheti meg az Azure Data Box Disk szolgá
 
 > [!div class="checklist"]
 > * A Data Box Disk megrendelése
-> * A rendelés nyomon követése
+> * A megrendelés nyomon követése
 > * A rendelés lemondása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A központi telepítése előtt végezze el a következő konfigurálási előfeltételeket a Data Box szolgáltatáshoz és Data Box Diskhoz.
+A telepítés előtt hajtsa végre a Data Box szolgáltatás és a Data Box Disk következő konfigurációs előfeltételeit.
 
 ### <a name="for-service"></a>A szolgáltatás esetén
 
@@ -43,38 +43,38 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 ### <a name="for-device"></a>Az eszköz esetén
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
-- Van olyan ügyfélszámítógép, amelyről másolatot készíthet az adatokról. Az ügyfélszámítógépen:
-    - egy [támogatott operációs rendszernek](data-box-disk-system-requirements.md#supported-operating-systems-for-clients) kell futnia;
+- Rendelkezik egy ügyfélszámítógéppel, amelyről lemásolhatja az adatokat. Az ügyfélszámítógépen:
+    - Támogatott [operációs rendszer futtatása](data-box-disk-system-requirements.md#supported-operating-systems-for-clients).
     - Windows-ügyfél esetén további [szükséges szoftvereknek](data-box-disk-system-requirements.md#other-required-software-for-windows-clients) telepítve kell lennie.  
 
 ## <a name="order-data-box-disk"></a>A Data Box Disk megrendelése
 
-Jelentkezzen be ide:
+Bejelentkezés a következő ke:Jelentkezz be:
 
-- A Azure Portal ezen az URL- https://portal.azure.com címen: rendelés Data Box Disk.
-- Vagy a Azure Government portál ezen az URL-címen https://portal.azure.us:. További részletekért lépjen a [kapcsolódás Azure Government a portál használatával](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
+- Az Azure Portal ezen https://portal.azure.com az URL-címen: a Data Box Disk rendeléséhez.
+- Vagy az Azure Government portálja https://portal.azure.usezen az URL-címen: . További részletekért nyissa meg a [Csatlakozás az Azure Governmenthez a portál használatával](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal)című oldalon című.
 
-Data Box Disk megrendeléséhez hajtsa végre az alábbi lépéseket.
+A Data Box Disk rendeléséhez tegye a következő lépéseket.
 
 1. Az Azure Portal bal felső sarkában kattintson a **+ Erőforrás létrehozása** elemre, és keresse meg az *Azure Data Box* lehetőséget. Kattintson az **Azure Data Box** lehetőségre.
     
    ![Keresse meg az Azure Data Box lehetőséget 1](media/data-box-disk-deploy-ordered/search-data-box11.png)
 
-2. Kattintson a **Create** (Létrehozás) gombra.
+2. Kattintson **a Létrehozás gombra.**
 
 3. Ellenőrizze, hogy a Data Box szolgáltatás elérhető-e a régióban. Adja meg, vagy jelölje ki a következő információkat, majd kattintson az **Alkalmaz** elemre.
 
     ![Data Box Disk lehetőség kiválasztása](media/data-box-disk-deploy-ordered/select-data-box-sku-1.png)
 
-    |Beállítás|Value|
+    |Beállítás|Érték|
     |---|---|
-    |Subscription|Válassza ki azt az előfizetést, amely számára engedélyezve van a Data Box szolgáltatás.<br> Az előfizetés az Ön számlázási fiókjához lesz társítva. |
+    |Előfizetés|Válassza ki azt az előfizetést, amely számára engedélyezve van a Data Box szolgáltatás.<br> Az előfizetés az Ön számlázási fiókjához lesz társítva. |
     |Átvitel típusa| Importálás az Azure-ba|
-    |Forrásország | Válassza ki azt az országot/régiót, ahol az adatai jelenleg találhatók.|
+    |Forrásország | Válassza ki azt az országot vagy régiót, ahol az adatok jelenleg találhatók.|
     |Azure-beli célrégió|Válassza ki azt az Azure-régiót, ahova át szeretné vinni az adatokat.|
 
   
-5.  Kattintson a **Data Box Disk** elemre. A megoldás maximális kapacitása megrendelésenként (5 lemez) 35 TB. Nagyobb adatmennyiséghez több megrendelést is létrehozhat.
+5.  Válassza a **Data Box Disk** lehetőséget. A megoldás maximális kapacitása megrendelésenként (5 lemez) 35 TB. Nagyobb adatmennyiséghez több megrendelést is létrehozhat.
 
      ![Data Box Disk lehetőség kiválasztása](media/data-box-disk-deploy-ordered/select-data-box-sku-zoom.png)
 
@@ -82,26 +82,26 @@ Data Box Disk megrendeléséhez hajtsa végre az alábbi lépéseket.
 
     |Beállítás|Érték|
     |---|---|
-    |Name (Név)|Adjon meg egy rövid nevet a megrendelés nyomon követéséhez.<br> A névnek 3-24 karakter hosszúságúnak kell lennie, és csak betűket, számokat és kötőjelet tartalmazhat. <br> A névnek betűvel vagy számmal kell kezdődnie és végződnie. |
-    |Resource group| Használjon egy már létezőt, vagy hozzon létre újat. <br> Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója. |
+    |Név|Adjon meg egy rövid nevet a megrendelés nyomon követéséhez.<br> A névnek 3-24 karakter hosszúságúnak kell lennie, és csak betűket, számokat és kötőjelet tartalmazhat. <br> A névnek betűvel vagy számmal kell kezdődnie és végződnie. |
+    |Erőforráscsoport| Használjon egy már létezőt, vagy hozzon létre újat. <br> Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója. |
     |Azure-beli célrégió| Válasszon ki egy régiót a tárfiókhoz.<br> Jelenleg csak az USA régióiban, Nyugat-és Észak-Európában, Kanadában és Ausztráliában működő tárfiókok támogatottak. |
     |Adatok becsült mérete (TB)| Adjon meg egy becsült mennyiséget TB-ban. <br>Az adatmennyiség alapján a Microsoft kiküldi Önnek a megfelelő számú 8 TB-os SSD-t (7 TB felhasználható kapacitás). <br>5 lemez maximális felhasználható kapacitása 35 TB. |
-    |Lemezjelszó| Ha bejelölte az **Egyéni kulcs használata az Azure által létrehozott hozzáférési kulcs helyett** lehetőséget, adja meg a lemez hozzáférési kulcsát. <br> Adjon meg egy 12 – 32 karakterből álló alfanumerikus kulcsot, amely legalább egy numerikus és egy speciális karakterből áll. Az engedélyezett speciális karakterek a következők: `@?_+`. <br> Úgy is dönthet, hogy kihagyja ezt a lehetőséget, és az Azure által létrehozott hozzáférési kulcsot használja a lemezek feloldásához.|
-    |Tárolási cél     | Válasszon a Storage-fiók vagy a felügyelt lemezek közül, vagy mindkettőt. <br> A megadott Azure-régió alapján válassza ki a Storage-fiókot egy meglévő Storage-fiók szűrt listájából. Data Box Disk csak 1 Storage-fiókkal lehet összekapcsolni. <br> Létrehozhat egy új **általános célú v1**-, **általános célú v2-** vagy **blob Storage-fiókot**is. <br>A virtuális hálózatokkal rendelkező Storage-fiókok támogatottak. Annak engedélyezéséhez, hogy Data Box szolgáltatás biztonságos Storage-fiókokkal működjön, engedélyezze a megbízható szolgáltatásokat a Storage-fiók hálózati tűzfalának beállításai között. További információ: [Azure Data Box hozzáadása megbízható szolgáltatásként](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).|
+    |Lemez hozzáférési kulcsa| Ha bejelölte az **Egyéni kulcs használata az Azure által létrehozott hozzáférési kulcs helyett** lehetőséget, adja meg a lemez hozzáférési kulcsát. <br> Adjon meg egy 12–32 karakteres alfanumerikus kulcsot, amely legalább egy numerikus és egy speciális karakterrel rendelkezik. Az engedélyezett speciális karakterek a következők: `@?_+`. <br> Úgy is dönthet, hogy kihagyja ezt a lehetőséget, és az Azure által létrehozott hozzáférési kulcsot használja a lemezek feloldásához.|
+    |Tárolási célhely     | Válassz a Tárfiók vagy a Felügyelt lemezek lehetőséget, vagy mindkettőt. <br> A megadott Azure-régió alapján válasszon ki egy tárfiókot egy meglévő tárfiók szűrt listájából. A Data Box Disk csak 1 tárfiókkal kapcsolható össze. <br> Létrehozhat egy új **Általános célú v1**, **Általános célú v2** fiókot vagy egy **Blob Storage-fiókot** is. <br>A virtuális hálózattal rendelkező tárfiókok támogatottak. Ahhoz, hogy a Data Box szolgáltatás működjön a biztonságos tárfiókok esetében, engedélyezze a megbízható szolgáltatásokat a tárfiók hálózati tűzfalának beállításai között. További információt az [Azure Data Box megbízható szolgáltatásként való hozzáadása című](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)témakörben talál.|
 
-    Ha a Storage-fiókot tároló célhelyként használja, a következő képernyőkép jelenik meg:
+    Ha tárfiókot használ tárolási célhelyként, a következő képernyőképet fogja látni:
 
-    ![A Storage-fiók Data Box Disk sorrendje](media/data-box-disk-deploy-ordered/order-storage-account.png)
+    ![Adatdoboz lemezrendelése a tárfiókhoz](media/data-box-disk-deploy-ordered/order-storage-account.png)
 
-    Ha Data Box Disk használatával felügyelt lemezeket hoz létre a helyszíni virtuális merevlemezekről, a következő információkat is meg kell adnia:
+    Ha a Data Box Disk segítségével felügyelt lemezeket hoz létre a helyszíni virtuális merevlemezekről, akkor a következő információkat is meg kell adnia:
 
-    |Beállítás  |Value  |
+    |Beállítás  |Érték  |
     |---------|---------|
-    |Resource group     | Hozzon létre egy új erőforráscsoportot, ha felügyelt lemezeket kíván létrehozni a helyszíni virtuális merevlemezekről. Csak akkor használjon meglévő erőforráscsoportot, ha Data Box szolgáltatás által Data Box Disk megrendeléshez lett létrehozva. <br> Csak egy erőforráscsoport támogatott.|
+    |Erőforráscsoport     | Hozzon létre egy új erőforráscsoportot, ha felügyelt lemezeket kíván létrehozni a helyszíni virtuális merevlemezekről. Csak akkor használjon meglévő erőforráscsoportot, ha a Data Box Disk rendeléshez a Data Box szolgáltatás hozta létre. <br> Csak egy erőforráscsoport támogatott.|
 
-    ![Felügyelt lemez Data Box Disk sorrendje](media/data-box-disk-deploy-ordered/order-managed-disks.png)
+    ![A felügyelt lemez adatdoboz-lemezsorrendje](media/data-box-disk-deploy-ordered/order-managed-disks.png)
 
-    A felügyelt lemezekhez megadott Storage-fiók átmeneti tárolási fiókként van használatban. A Data Box szolgáltatás feltölti a virtuális merevlemezeket az átmeneti tárolási fiókba, majd átalakítja azokat a felügyelt lemezekre, és áthelyezi azokat az erőforráscsoportokba. További információ: az [adatok feltöltésének ellenőrzése az Azure](data-box-disk-deploy-upload-verify.md#verify-data-upload-to-azure)-ban.
+    A felügyelt lemezekhez megadott tárfiókot előkészítési tárfiókként használja a rendszer. A Data Box szolgáltatás feltölti a Virtuálismerevlemezeket az átmeneti tárfiókba, majd átalakítja azokat felügyelt lemezekké, és áthelyezi az erőforráscsoportokba. További információ: [Az Azure-ba történő adatfeltöltés ellenőrzése](data-box-disk-deploy-upload-verify.md#verify-data-upload-to-azure).
 
 13. Kattintson a **Tovább** gombra.
 

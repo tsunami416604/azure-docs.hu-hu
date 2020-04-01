@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/19/2020
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: f853d6d59a4c23b7b52a2a0ba800ace58c997f6e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1ac508fc9fee07482e475c46e1db262c8bfa1a12
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79481585"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476254"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Oktatóanyag: Csatlakozás Windows Server rendszerű virtuális géphez felügyelt tartományhoz
 
@@ -76,8 +76,6 @@ Ha már rendelkezik egy virtuális gép, amely tartományhoz szeretne csatlakozn
 
     Az RDP csak akkor engedélyezhető, ha szükséges, és engedélyezett IP-tartományokra korlátozva. Ez a konfiguráció segít a virtuális gép biztonságának javításában, és csökkenti a potenciális támadások területét. Vagy hozzon létre és használjon egy Azure Bastion-állomást, amely csak az Azure Portalon keresztül engedélyezi a hozzáférést a TLS-en keresztül. Az oktatóanyag következő lépésében egy Azure-bástya-gazdagép használatával biztonságosan csatlakozhat a virtuális géphez.
 
-    Egyelőre tiltsa le a virtuális gép közvetlen RDP-kapcsolatait.
-
     A **Nyilvános bejövő portok csoportban**válassza a *Nincs*lehetőséget.
 
 1. Ha elkészült, válassza a **Tovább: Lemezek**lehetőséget.
@@ -96,22 +94,23 @@ Ha már rendelkezik egy virtuális gép, amely tartományhoz szeretne csatlakozn
 
     ![Válassza ki az alhálózati konfiguráció kezelését az Azure Portalon](./media/join-windows-vm/manage-subnet.png)
 
-1. A virtuális hálózat ablakának bal oldali menüjében válassza a **Címterület lehetőséget.** A virtuális hálózat egyetlen címterülettel jön *létre: 10.0.1.0/24*, amelyet az alapértelmezett alhálózat használ.
+1. A virtuális hálózat ablakának bal oldali menüjében válassza a **Címterület lehetőséget.** A virtuális hálózat egyetlen címterülettel jön *létre: 10.0.2.0/24*, amelyet az alapértelmezett alhálózat használ. Más alhálózatok, például a *számítási feladatok* vagy az Azure Bastion is létezhetnek.
 
     Adjon hozzá egy további IP-címtartományt a virtuális hálózathoz. A címtartomány mérete és a ténylegesen használandó IP-címtartomány a már üzembe helyezett egyéb hálózati erőforrásoktól függ. Az IP-címtartomány nem fedheti át az Azure-ban vagy a helyszíni környezetben meglévő címtartományokat. Győződjön meg arról, hogy az IP-címtartomány mérete elég nagy ahhoz, hogy az alhálózatba telepíteni kívánt virtuális gépek száma.
 
-    A következő példában egy további *10.0.2.0/24* IP-címtartomány kerül hozzáadásra. Ha készen áll, válassza a **Mentés gombot.**
+    A következő példában egy további *10.0.5.0/24* IP-címtartomány kerül hozzáadásra. Ha készen áll, válassza a **Mentés gombot.**
 
-    ![További virtuális hálózati IP-címtartomány hozzáadása az Azure Portalon](./media/tutorial-configure-networking/add-vnet-address-range.png)
+    ![További virtuális hálózati IP-címtartomány hozzáadása az Azure Portalon](./media/join-windows-vm/add-vnet-address-range.png)
 
 1. Ezután a virtuális hálózati ablak bal oldali menüjében válassza az **Alhálózatok**lehetőséget, majd válassza a **+ Alhálózat** lehetőséget az alhálózat hozzáadásához.
 
-1. Válassza a **+ Alhálózat**lehetőséget, majd adja meg az alhálózat nevét, például a *felügyeletet.* Adjon meg **egy címtartományt (CIDR-blokk),** például *10.0.2.0/24.* Győződjön meg arról, hogy ez az IP-címtartomány nem fedi át más azure-vagy helyszíni címtartományokat. Hagyja a többi beállítást alapértelmezett értékként, majd kattintson **az OK gombra.**
+1. Válassza a **+ Alhálózat**lehetőséget, majd adja meg az alhálózat nevét, például a *felügyeletet.* Adjon meg **egy címtartományt (CIDR-blokk),** például *10.0.5.0/24.* Győződjön meg arról, hogy ez az IP-címtartomány nem fedi át más azure-vagy helyszíni címtartományokat. Hagyja a többi beállítást alapértelmezett értékként, majd kattintson **az OK gombra.**
 
     ![Alhálózati konfiguráció létrehozása az Azure Portalon](./media/join-windows-vm/create-subnet.png)
 
 1. Az alhálózat létrehozása néhány másodpercet vesz igénybe. Létrehozása után válassza az *X* lehetőséget az alhálózati ablak bezárásához.
 1. A **Virtuális gép** létrehozásához a Hálózat ablaktáblán válassza ki a legördülő menüből létrehozott alhálózatot, például a felügyelet *menüből.* Ismét győződjön meg arról, hogy válassza ki a megfelelő alhálózatot, és ne telepítse a virtuális gép ugyanabban az alhálózatban, mint az Azure AD DS felügyelt tartományban.
+1. **Nyilvános IP,válassza** *a Nincs* a legördülő menüből, ahogy használja az Azure Bastion a felügyeleti kapcsolathoz való csatlakozáshoz, és nem kell egy nyilvános IP-cím hozzárendelve.
 1. Hagyja a többi beállítást alapértelmezett értékként, majd válassza a **Kezelés**lehetőséget.
 1. Állítsa **a rendszerindítási diagnosztikát** *Ki*beállításra. Hagyja a többi beállítást alapértelmezett értékként, majd válassza **a Véleményezés + létrehozás**lehetőséget.
 1. Tekintse át a virtuális gép beállításait, majd válassza **a Létrehozás gombot.**

@@ -1,6 +1,6 @@
 ---
-title: A Key Vault-értesítések fogadása és reagálás Azure Event Grid
-description: Ismerje meg, hogyan integrálhatja a Key Vaultt a Azure Event Gridsal.
+title: Kulcstartó-értesítések fogadása és megválaszolása az Azure Event Griddel
+description: Ismerje meg, hogyan integrálhatja a Key Vaultot az Azure Event Griddel.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,62 +11,62 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 5eaf4cf702e56df932a61ab277dff6b34d97854d
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78185029"
 ---
-# <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid-preview"></a>A Key Vault-értesítések fogadása és reagálás Azure Event Grid (előzetes verzió)
+# <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid-preview"></a>A kulcstartó-értesítések fogadása és megválaszolása az Azure Event Grid del (előzetes verzió)
 
-Azure Key Vault a Azure Event Grid (jelenleg előzetes verzióban elérhető) integrációja lehetővé teszi a felhasználók értesítését, ha a Key vaultban tárolt titkos kód állapota megváltozott. A szolgáltatás áttekintését lásd: [Key Vault figyelése Event Gridsal](event-grid-overview.md).
+Az Azure Key Vault integráció az Azure Event Grid (jelenleg előzetes verzióban) lehetővé teszi a felhasználói értesítést, ha a titkos tárolt titkos kulcstartóban tárolt állapot megváltozott. A funkció áttekintését a [Key Vault figyelése az Eseményrácsgal](event-grid-overview.md)című témakörben találja.
 
-Ez az útmutató ismerteti, hogyan fogadhat Key Vault értesítéseket a Event Gridon keresztül, és hogyan reagálhat az állapot változásaira a Azure Automation használatával.
+Ez az útmutató bemutatja, hogyan fogadhatja a Key Vault-értesítéseket az Event Griden keresztül, és hogyan reagálhat az állapotváltozásokra az Azure Automation en keresztül.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
-- Egy kulcstartó az Azure-előfizetésében. Az Azure CLI használatával gyorsan létrehozhat egy új kulcstartót az [Azure Key Vault titkos kód beállítása és lekérése](quick-create-cli.md)a következő lépésekkel.
+- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+- Az Azure-előfizetés egyik kulcstartója. Gyorsan létrehozhat egy új kulcstartót a Készlet és [az Azure Key Vault titkos adatainak az Azure CLI használatával történő lekérésével.](quick-create-cli.md)
 
 ## <a name="concepts"></a>Alapelvek
 
-Event Grid a felhőhöz tartozó esemény-szolgáltatás. Az útmutató lépéseinek követésével előfizethet a Key Vault eseményeire, és átirányítja az eseményeket az Automation szolgáltatásba. Ha a Key Vault egyik titka hamarosan lejár, Event Grid értesítést kap az állapot változásáról, és egy HTTP-BEJEGYZÉST küld a végpontnak. Egy webhook elindít egy PowerShell-parancsfájl automatizálási végrehajtását.
+Az Event Grid a felhő eseményszolgáltatási szolgáltatása. Az útmutató ban leírt lépéseket követve előfizethet a Key Vault eseményeire, és az eseményeket az Automation-be irányíthatja. Amikor a kulcstartó egyik titkos kulcsa hamarosan lejár, event grid értesítést kap az állapotváltozás, és egy HTTP POST a végpontra. A webhook majd elindítja a PowerShell-parancsfájl Automation-végrehajtása.
 
 ![HTTP POST folyamatábra](media/image1.png)
 
 ## <a name="create-an-automation-account"></a>Automation-fiók létrehozása
 
-Hozzon létre egy Automation-fiókot a [Azure Portalon](https://portal.azure.com)keresztül:
+Hozzon létre egy Automation-fiókot az [Azure Portalon](https://portal.azure.com)keresztül:
 
-1.  Nyissa meg a portal.azure.com, és jelentkezzen be az előfizetésbe.
+1.  Lépjen a portal.azure.com, és jelentkezzen be az előfizetésbe.
 
-1.  A keresőmezőbe írja be az **Automation-fiókok**kifejezést.
+1.  A keresőmezőbe írja be az **Automation-fiókok kifejezést.**
 
-1.  A keresősáv legördülő listájának **szolgáltatások** szakaszában válassza az **Automation-fiókok**elemet.
+1.  A keresősáv legördülő listájának **Szolgáltatások** szakaszában válassza az **Automatizálási fiókok lehetőséget.**
 
 1.  Válassza a **Hozzáadás** lehetőséget.
 
-    ![Automation-fiókok ablaktábla](media/image2.png)
+    ![Automatizálási fiókok ablaktábla](media/image2.png)
 
-1.  Adja meg a szükséges információkat az **Automation-fiók hozzáadása** panelen, majd válassza a **Létrehozás**lehetőséget.
+1.  Adja meg a szükséges adatokat az **Automatizálási fiók hozzáadása** ablaktáblán, majd válassza a **Létrehozás lehetőséget.**
 
 ## <a name="create-a-runbook"></a>Runbook létrehozása
 
-Miután elkészült az Automation-fiókkal, hozzon létre egy runbook.
+Miután az Automation-fiók készen áll, hozzon létre egy runbookot.
 
 ![Runbook felhasználói felület létrehozása](media/image3.png)
 
 1.  Válassza ki az imént létrehozott Automation-fiókot.
 
-1.  Válassza a **runbookok** lehetőséget a **folyamat automatizálása**alatt.
+1.  Válassza a **Runbookok** lehetőséget a **Folyamatautomatizálás csoportban.**
 
 1.  Válassza **a Runbook létrehozása**lehetőséget.
 
-1.  Nevezze el a runbook, és válassza a **PowerShell** lehetőséget a runbook típusaként.
+1.  Nevezze el a runbookot, és válassza a **PowerShell** a runbook típusát.
 
-1.  Válassza ki a létrehozott runbook, majd kattintson a **Szerkesztés** gombra.
+1.  Jelölje ki a létrehozott runbookot, majd kattintson a **Szerkesztés** gombra.
 
-1.  Adja meg a következő kódot (tesztelési célokra), majd kattintson a **Közzététel** gombra. Ez a művelet a fogadott POST kérelem eredményét adja vissza.
+1.  Írja be a következő kódot (tesztelési célokra), és válassza a **Közzététel** gombot. Ez a művelet a beérkezett POST kérés eredményét adja vissza.
 
 ```azurepowershell
 param
@@ -92,54 +92,54 @@ write-Error "No input data found."
 }
 ```
 
-![Runbook felhasználói felületének közzététele](media/image4.png)
+![Runbook felhasználói felülete](media/image4.png)
 
 ## <a name="create-a-webhook"></a>Webhook létrehozása
 
-Hozzon létre egy webhookot az újonnan létrehozott runbook elindításához.
+Hozzon létre egy webhook az újonnan létrehozott runbook aktiválásához.
 
-1.  Válassza ki az imént közzétett runbook **erőforrások** szakaszának **webhookok** elemét.
+1.  Válassza ki a **webhookok** az **erőforrások** szakaszban a runbook az imént közzétett.
 
-1.  Válassza a **webhook hozzáadása**elemet.
+1.  Válassza **a Webhook hozzáadása**lehetőséget.
 
     ![Webhook hozzáadása gomb](media/image5.png)
 
-1.  Válassza az **új webhook létrehozása**lehetőséget.
+1.  Válassza **az Új webhook létrehozása**lehetőséget.
 
-1. Nevezze el a webhookot, állítsa be a lejárati dátumot, és másolja az URL-címet.
+1. Nevezze el a webhookot, állítson be egy lejárati dátumot, és másolja az URL-címet.
 
     > [!IMPORTANT] 
-    > A létrehozás után nem tekintheti meg az URL-címet. Győződjön meg arról, hogy egy olyan biztonságos helyen menti a másolatot, ahol az útmutató hátralévő részében elérheti.
+    > Az URL-cím létrehozása után nem tekinthető meg. Győződjön meg arról, hogy egy másolatot biztonságos helyre ment, ahol az útmutató hátralévő részében elérheti azt.
 
-1. Válassza a **paraméterek és futtatási beállítások** lehetőséget, majd kattintson **az OK gombra**. Ne adjon meg paramétereket. Ez a **Létrehozás** gomb engedélyezését teszi lehetővé.
+1. Válassza a **Paraméterek lehetőséget, majd futtassa a beállításokat,** majd kattintson **az OK gombra.** Ne adjon meg paramétereket. Ez lehetővé teszi a **Létrehozás** gombot.
 
-1. Válassza **az OK** , majd a **Létrehozás**lehetőséget.
+1. Válassza **az OK,** majd a **Létrehozás**lehetőséget.
 
-    ![Új webhook felhasználói felület létrehozása](media/image6.png)
+    ![Új Webhook felhasználói felület létrehozása](media/image6.png)
 
 ## <a name="create-an-event-grid-subscription"></a>Event Grid-előfizetés létrehozása
 
-Hozzon létre Event Grid-előfizetést a [Azure Portal](https://portal.azure.com)használatával.
+Hozzon létre egy Event Grid-előfizetést az [Azure Portalon](https://portal.azure.com)keresztül.
 
-1.  Nyissa meg a Key vaultot, és válassza az **események** lapot. Ha nem látja, ellenőrizze, hogy a [portál előzetes verzióját](https://ms.portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true)használja-e.
+1.  Nyissa meg a kulcstartót, és válassza az **Események** lapot. Ha nem látja, ellenőrizze, hogy [a portál előzetes verzióját használja-e.](https://ms.portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true)
 
-    ![Események lap a Azure Portal](media/image7.png)
+    ![Események lap az Azure Portalon](media/image7.png)
 
-1.  Válassza az **esemény-előfizetés** gombot.
+1.  Válassza az **Esemény-előfizetés** gombot.
 
 1.  Hozzon létre egy leíró nevet az előfizetéshez.
 
-1.  Válassza **Event Grid sémát**.
+1.  Válassza **az Eseményrács sémáját**.
 
-1.  A **témakör erőforrásának** az állapot változásaihoz figyelni kívánt kulcstartónak kell lennie.
+1.  **A Témakör-erőforrás** nak kell lennie a figyelni kívánt kulcstartónak az állapotváltozásokhoz.
 
-1.  Az **események típusának szűréséhez**hagyja kiválasztva az összes beállítást (**9 kiválasztva**).
+1.  A **Szűrés eseménytípusokra**mezőben hagyja az összes beállítást kijelölve (**9 kijelölve**).
 
 1.  A **Végpont típusa** mezőben válassza a **Webhook** lehetőséget.
 
-1.  Válassza **a végpont kiválasztása**lehetőséget. Az új környezet ablaktáblán illessze be a webhook URL-címét a [webhook létrehozása](#create-a-webhook) lépésből az **előfizetői végpont** mezőbe.
+1.  Válassza **a Végpont kiválasztása**lehetőséget. Az új környezet ablaktáblán illessze be a webhook URL-címét a [Webhook létrehozása](#create-a-webhook) lépésből az **Előfizetői végpont** mezőbe.
 
-1.  Válassza a **kijelölés megerősítése** elemet a helyi ablaktáblán.
+1.  A környezeti ablaktáblán válassza a **Kijelölés megerősítése** lehetőséget.
 
 1.  Kattintson a **Létrehozás** gombra.
 
@@ -147,56 +147,56 @@ Hozzon létre Event Grid-előfizetést a [Azure Portal](https://portal.azure.com
 
 ## <a name="test-and-verify"></a>Tesztelés és ellenőrzés
 
-Ellenőrizze, hogy a Event Grid-előfizetés megfelelően van-e konfigurálva. Ez a teszt feltételezi, hogy előfizetett a "titkos új verzió" értesítésre a [Event Grid előfizetés létrehozása](#create-an-event-grid-subscription)című cikkben, és hogy rendelkezik a szükséges engedélyekkel a titkos kulcs új verziójának létrehozásához a kulcstartóban.
+Ellenőrizze, hogy az Event Grid-előfizetés megfelelően van-e konfigurálva. Ez a teszt feltételezi, hogy előfizetett a "Titkos új verzió létrehozva" értesítésre az [Event Grid létrehozása előfizetésben,](#create-an-event-grid-subscription)és rendelkezik a szükséges engedélyekkel a titkos kulcs új verziójának létrehozásához egy key vaultban.
 
-![Event Grid előfizetés konfigurációjának tesztelése](media/image9.png)
+![Az Event Grid-előfizetés tesztelési konfigurációja](media/image9.png)
 
-![Create-a-Secret panel](media/image10.png)
+![Titkos létrehozása ablaktábla](media/image10.png)
 
-1.  Nyissa meg a Azure Portal a Key vaultot.
+1.  Nyissa meg a kulcstartót az Azure Portalon.
 
-1.  Hozzon létre egy új titkot. Tesztelési célból állítsa a lejárat dátumát a következő napra.
+1.  Hozzon létre egy új titkot. Tesztelési célokra állítsa a lejárati dátumot a következő napra.
 
-1.  A Key Vault **események** lapján válassza ki a létrehozott Event Grid előfizetést.
+1.  A kulcstartó **Események** lapján válassza ki a létrehozott Event Grid-előfizetést.
 
-1.  A **metrikák**területen győződjön meg arról, hogy az esemény rögzítése megtörtént-e. A rendszer két eseményt vár: SecretNewVersion és SecretNearExpiry. Ezek az események ellenőrzik, hogy Event Grid sikeresen rögzítette-e a titkos kulcs állapotának változását a kulcstartóban.
+1.  A **Metrikák csoportban**ellenőrizze, hogy egy esemény rögzítésre került-e. Két esemény várható: SecretNewVersion és SecretNearExpiry. Ezek az események ellenőrzik, hogy az Event Grid sikeresen rögzítette a titkos kulcs állapotváltozását a key vaultban.
 
-    ![Metrikák ablaktábla: rögzített események keresése](media/image11.png)
+    ![Mérőszámok ablaktábla: ellenőrizze a rögzített eseményeket](media/image11.png)
 
-1.  Nyissa meg az Automation-fiókját.
+1.  Nyissa meg az Automation-fiókot.
 
-1.  Válassza a **runbookok** lapot, majd válassza ki a létrehozott runbook.
+1.  Válassza a **Runbookok** lapot, majd válassza ki a létrehozott runbookot.
 
-1.  Válassza a **webhookok** fület, és győződjön meg róla, hogy az "utolsó indítású" időbélyegző az új titok létrehozásakor 60 másodpercen belül van. Ez az eredmény megerősíti, hogy Event Grid közzétett egy BEJEGYZÉST a webhooknak a kulcstartóban lévő állapotadatok részleteivel és a webhook aktiválásával.
+1.  Jelölje ki a **Webhooks** lapot, és ellenőrizze, hogy az "utolsó aktivált" időbélyegző az új titkos titok létrehozásától számított 60 másodpercen belül van-e. Ez az eredmény megerősíti, hogy az Event Grid postaaaaa a webhook az esemény részleteit a kulcstartóban az állapotváltozás, és hogy a webhook aktiválódott.
 
-    ![Webhookok lap, utolsó aktivált időbélyegző](media/image12.png)
+    ![Webhookok lap, Utolsó aktivált időbélyegző](media/image12.png)
 
-1. Térjen vissza a runbook, és válassza az **Áttekintés** lapot.
+1. Térjen vissza a runbookhoz, és válassza az **Áttekintés** lapot.
 
-1. Tekintse meg a **legutóbbi feladatok** listáját. Látnia kell, hogy a rendszer létrehozta a feladatot, és befejezte az állapotot. Ezzel megerősíti, hogy a webhook elindította a runbook a parancsfájl végrehajtásának megkezdéséhez.
+1. Tekintse meg a **Legutóbbi feladatok** listát. Látnia kell, hogy egy feladat jött létre, és hogy az állapot befejeződött. Ez megerősíti, hogy a webhook aktiválta a runbookot a parancsfájl végrehajtásának megkezdéséhez.
 
     ![Webhook legutóbbi feladatok listája](media/image13.png)
 
-1. Válassza ki a legutóbbi feladatot, és tekintse meg az Event Grid által a webhooknak elküldett POST-kérelmet. Vizsgálja meg a JSON-t, és ellenőrizze, hogy helyesek-e a Key Vault és az eseménytípus paraméterei. Ha a JSON-objektum "eseménytípus" paramétere megegyezik a Key vaultban bekövetkezett eseménnyel (ebben a példában a Microsoft. kulcstartó. SecretNearExpiry), a teszt sikeres volt.
+1. Válassza ki a legutóbbi feladatot, és tekintse meg a POST kérés, amely az Event Grid a webhook. Vizsgálja meg a JSON, és győződjön meg arról, hogy a paraméterek a key vault és az esemény típusa helyesek. Ha a JSON-objektum "eseménytípus" paramétere megegyezik a key vaultban történt eseménnyel (ebben a példában a Microsoft.KeyVault.SecretNearExpiry), a teszt sikeres volt.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-### <a name="you-cant-create-an-event-subscription"></a>Nem hozható létre esemény-előfizetés
+### <a name="you-cant-create-an-event-subscription"></a>Nem hozhat létre esemény-előfizetést
 
-Regisztrálja újra Event Grid és a Key Vault-szolgáltatót az Azure-előfizetési erőforrás-szolgáltatókban. Lásd: [Azure Resource Providers és types](../azure-resource-manager/management/resource-providers-and-types.md).
+Regisztrálja újra az Event Gridet és a kulcstároló-szolgáltatót az Azure-előfizetés-erőforrás-szolgáltatókban. Lásd: [Azure-erőforrás-szolgáltatók és -típusok.](../azure-resource-manager/management/resource-providers-and-types.md)
 
 ## <a name="next-steps"></a>További lépések
 
-Gratulálunk! Ha helyesen követte ezeket a lépéseket, most már készen áll arra, hogy programozott módon válaszoljon a Key vaultban tárolt titkos kódok állapotának változásaira.
+Gratulálunk! Ha helyesen követte ezeket a lépéseket, most már készen áll a kulcstartóban tárolt titkos kulcsok állapotváltozásainak programozott válaszolására.
 
-Ha egy lekérdezésen alapuló rendszert használ a titkos kulcsok állapotának változására a kulcstartóban, most már elkezdheti használni ezt az értesítési funkciót. A runbook is lecserélheti a kód segítségével, hogy programozott módon megújítsa a titkokat, amikor hamarosan lejárnak.
+Ha egy lekérdezési alapú rendszert használ a titkos kulcsok állapotváltozásainak kereséséhez a kulcstartókban, most már használhatja ezt az értesítési funkciót. A runbookban lévő tesztparancsfájlt is lecserélheti a kódra, amely programozott módon megújítja a titkos kulcsokat, amikor azok hamarosan lejárnak.
 
 További információ:
 
 
-- Áttekintés: [Key Vault figyelése Azure Event Grid (előzetes verzió)](event-grid-overview.md)
-- Útmutató: [e-mailek fogadása a Key Vault titkos változásairól](event-grid-logicapps.md)
-- [Azure Key Vault Azure Event Gridi esemény sémája (előzetes verzió)](../event-grid/event-schema-key-vault.md)
-- [Azure Key Vault áttekintése](key-vault-overview.md)
-- [Azure Event Grid áttekintése](../event-grid/overview.md)
+- Áttekintés: [Key Vault figyelése az Azure Event Griddel (előzetes verzió)](event-grid-overview.md)
+- Útmutató: [E-mailek fogadása, ha egy kulcstartó titkos titkára megváltozik](event-grid-logicapps.md)
+- [Azure Event Grid eseménysémája az Azure Key Vaulthoz (előzetes verzió)](../event-grid/event-schema-key-vault.md)
+- [Az Azure Key Vault áttekintése](key-vault-overview.md)
+- [Azure Event Grid – áttekintés](../event-grid/overview.md)
 - [Az Azure Automation áttekintése](../automation/index.yml)

@@ -132,7 +132,7 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, csak néhány további lép
     setx AZURE_TENANT_ID <tenantId-of-your-service-principal>
     ```
 
-    #### <a name="powershell"></a>[Powershell](#tab/powershell)
+    #### <a name="powershell"></a>[PowerShell](#tab/powershell)
 
     ```PowerShell
     $Env:AZURE_CLIENT_ID = <clientId-of-your-service-principal>

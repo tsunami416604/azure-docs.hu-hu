@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: 1a2a370ac92ea3edf925d97af6f5e721c79d0d2d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a8674714451f3cc686acb74d6c66ac6800b75936
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79529696"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478080"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Végpontok (Origin) streamelése az Azure Media Servicesszolgáltatásban
 
@@ -118,7 +118,7 @@ Ez a szakasz a streamelési végpont tulajdonságainak részleteit tartalmazza. 
     > [!NOTE]
     > Az ugyanabban az adatközpontban található streamelési végpontok nem oszthatók meg ugyanazt az egyéni állomásnevet.
 
-    Jelenleg a Media Services nem támogatja az SSL egyéni tartományok.
+    Jelenleg a Media Services nem támogatja a TLS egyéni tartományok.
 
 - `maxCacheAge`- Felülbírálja az alapértelmezett max-age HTTP cache vezérlő fejléc által beállított streamelési végpont a médiatöredékek és az igény szerinti jegyzékek. Az érték másodpercben van beállítva.
 - `resourceState` -
