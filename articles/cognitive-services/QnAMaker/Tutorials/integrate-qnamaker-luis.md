@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/26/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 7e1ea234bde96ce84259841bbc592bf6373bc639
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c01f5f41e61cd65855789bb753a7a297fe475885
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "71802798"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396350"
 ---
 # <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Használja a robotot a QnA Maker rel és a LUIS-szal a tudásbázis terjesztéséhez
 AQNA Maker tudásbázisának nagynövekedésével nehéz lesz egyetlen monolitikus készletként fenntartani, és a tudásbázist kisebb logikai adattömbökre kell osztani.
@@ -37,13 +37,13 @@ A fenti forgatókönyvben a QnA Maker először a bejövő kérdés szándékát
 1. [Hozzon létre egy alkalmazást](https://docs.microsoft.com/azure/cognitive-services/luis/create-new-app).
 1. Minden QnA Maker tudásbázishoz [adjon hozzá egy szándékot.](https://docs.microsoft.com/azure/cognitive-services/luis/add-intents) A példa utterances meg kell felelnie a qna maker tudásbázisok kérdéseinek.
 1. [A LUIS-alkalmazás betanítása](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train) és [a LUIS-alkalmazás a LUIS-alkalmazás közzététele.](https://docs.microsoft.com/azure/cognitive-services/luis/publishapp)
-1. A **Kezelés** szakaszban jegyezze fel a LUIS-alkalmazásazonosítót, a LUIS-végpontkulcsot és [az egyéni tartománynevet.](../../cognitive-services-custom-subdomains.md) Ezekre az értékekre később szüksége lesz. 
+1. A **Kezelés** szakaszban jegyezze fel a LUIS-alkalmazásazonosítót, a LUIS-végpontkulcsot és [az egyéni tartománynevet.](../../cognitive-services-custom-subdomains.md) Ezekre az értékekre később szüksége lesz.
 
 ## <a name="create-qna-maker-knowledge-bases"></a>QnA Maker tudásbázisok létrehozása
 
 1. Jelentkezzen be a [QnA Maker be.](https://qnamaker.ai)
 1. [Hozzon létre](https://www.qnamaker.ai/Create) egy tudásbázisok minden szándék a LUIS alkalmazásban.
-1. Tesztelje és tegye közzé a tudásbázisokat. Az egyes tudásbázisközzétételek során jegyezze fel a kb-azonosítót, az erőforrás nevét (a _.azurewebsites.net/qnamaker_előtti egyéni altartományt) és az engedélyezési végpontkulcsot. Ezekre az értékekre később szüksége lesz. 
+1. Tesztelje és tegye közzé a tudásbázisokat. Az egyes tudásbázisközzétételek során jegyezze fel a kb-azonosítót, az erőforrás nevét (a _.azurewebsites.net/qnamaker_előtti egyéni altartományt) és az engedélyezési végpontkulcsot. Ezekre az értékekre később szüksége lesz.
 
     Ez a cikk feltételezi, hogy a kb-ek ugyanabban az Azure QnA Maker-előfizetésben jönnek létre.
 
@@ -60,7 +60,7 @@ A fenti forgatókönyvben a QnA Maker először a bejövő kérdés szándékát
 
 ## <a name="change-code-in-basicluisdialogcs"></a>Kód módosítása a BasicLuisDialog.cs
 1. Az Azure Portalon a webalkalmazás robotnavigációjának **Robotkezelése** szakaszában válassza a **Build lehetőséget.**
-2. Válassza **az Online kódszerkesztő megnyitása**lehetőséget. Megnyílik egy új böngészőlap az online szerkesztési környezettel. 
+2. Válassza **az Online kódszerkesztő megnyitása**lehetőséget. Megnyílik egy új böngészőlap az online szerkesztési környezettel.
 3. A **WWWROOT** szakaszban jelölje ki a **Párbeszédek könyvtárat,** majd nyissa meg **a BasicLuisDialog.cs**.
 4. Függőségek hozzáadása a **BasicLuisDialog.cs** fájl tetejéhez:
 
@@ -155,7 +155,7 @@ A fenti forgatókönyvben a QnA Maker először a bejövő kérdés szándékát
     ```
 
 
-7. Módosítsa a BasicLuisDialog osztályt. Minden LUIS-szándéknak rendelkeznie kell egy **LuisIntent**metódussal. A dekoráció paramétere a tényleges LUIS-leképezés neve. A metódus neve, amely díszített _kell_ lennie a LUIS-leképezés neve olvashatóság és karbantarthatóság, de nem kell azonos a tervezési vagy futási idő.  
+7. Módosítsa a BasicLuisDialog osztályt. Minden LUIS-szándéknak rendelkeznie kell egy **LuisIntent**metódussal. A dekoráció paramétere a tényleges LUIS-leképezés neve. A metódus neve, amely díszített _kell_ lennie a LUIS-leképezés neve olvashatóság és karbantarthatóság, de nem kell azonos a tervezési vagy futási idő.
 
     ```csharp
     [Serializable]
@@ -170,7 +170,7 @@ A fenti forgatókönyvben a QnA Maker először a bejövő kérdés szándékát
         // assumes all KBs are created with same Azure service
         static string qnamaker_endpointKey = "<QnA Maker endpoint KEY>";
         static string qnamaker_resourceName = "my-qnamaker-s0-s";
-        
+
         // QnA Maker Human Resources Knowledge base
         static string HR_kbID = "<QnA Maker KNOWLEDGE BASE ID>";
 
@@ -240,4 +240,4 @@ Az Azure Portalon válassza a **Tesztelés a webes csevegésben** lehetőséget 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Üzletmenet-folytonossági terv kidolgozása a QnA Maker szolgáltatáshoz](../How-To/business-continuity-plan.md)
+> [Integrálja tudásbázisát egy virtuális power ügynökkel](integrate-with-power-virtual-assistant-fallback-topic.md)

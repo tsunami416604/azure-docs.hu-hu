@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Andromeda |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Andromeda között.
+title: 'Oktatóanyag: Az Azure Active Directory integrációja az Andromedával | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és az Andromeda között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,259 +17,259 @@ ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 68fa570ecfbafe2000bfa6eb9fa159dff48219a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67107073"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Andromeda
+# <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>Oktatóanyag: Az Azure Active Directory integrációja az Andromedával
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan Andromeda integrálása az Azure Active Directory (Azure AD).
-Andromeda integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja az Andromedát az Azure Active Directoryval (Azure AD).
+Az Andromeda integrálása az Azure AD-vel a következő előnyöket nyújtja:
 
-* Szabályozhatja, ki férhet hozzá Andromeda Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve Andromeda (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Az Azure AD-ben szabályozhatja, hogy ki férhet hozzá az Andromédához.
+* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve legyenek az Andromedába (Single Sign-On) az Azure AD-fiókjukkal.
+* Fiókjait egyetlen központi helyen kezelheti – az Azure Portalon.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha további részleteket szeretne megtudni az SaaS-alkalmazások Azure AD-vel való integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Andromeda az Azure AD-integráció konfigurálásához a következőkre van szükség:
+Az Azure AD-integráció konfigurálásához az Andromedával a következő elemekre van szükség:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
-* Andromeda egyszeri bejelentkezés engedélyezve van az előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [ingyenes fiókot](https://azure.microsoft.com/free/) kaphat
+* Andromeda egyszeri bejelentkezéssel rendelkező előfizetése
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben.
 
-* Támogatja a Andromeda **SP és IDP** által kezdeményezett egyszeri bejelentkezés
-* Támogatja a Andromeda **igény szerinti** felhasználók átadása
+* Az Andromeda támogatja az **SP-t és az IDP** által kezdeményezett sso-t
+* Az Andromeda támogatja a **Just In Time** felhasználói kiépítést
 
-## <a name="adding-andromeda-from-the-gallery"></a>Andromeda hozzáadása a katalógusból
+## <a name="adding-andromeda-from-the-gallery"></a>Androméda hozzáadása a galériából
 
-Az Azure AD integrálása a Andromeda konfigurálásához hozzá kell Andromeda a katalógusból a felügyelt SaaS-alkalmazások listájára.
+Az Andromeda Azure AD-be való integrációjának konfigurálásához hozzá kell adnia az Andromédát a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Andromeda hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+**Ha az Andromédát a galériából szeretné hozzáadni, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen kattintson az **Azure Active Directory** ikonjára.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![Az Azure Active Directory gombja](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+2. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza a **Minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+3. Új alkalmazás hozzáadásához kattintson az **Új alkalmazás** gombra a párbeszéd ablak tetején.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![Az Új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Andromeda**válassza **Andromeda** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A keresőmezőbe írja be az **Androméda**kifejezést , válassza az **Androméda** elemet az eredménypanelről, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-    ![Az eredmények listájában Andromeda](common/search-new-app.png)
+    ![Androméda az eredménylistában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az Andromeda nevű tesztfelhasználó alapján **Britta Simon**.
-Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó Andromeda hivatkozás kapcsolata kell létrehozni.
+Ebben a szakaszban konfigurálja és teszteli az Azure AD egyszeri bejelentkezését az Andromedával egy **Britta Simon**nevű tesztfelhasználó alapján.
+Egyszeri bejelentkezés a munka, egy Azure AD-felhasználó és a kapcsolódó felhasználó andromeda i kapcsolat létre kell hozni.
 
-Az Azure AD egyszeri bejelentkezés az Andromeda tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez az Andromédával a következő építőelemeket kell végrehajtania:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Andromeda egyszeri bejelentkezés konfigurálása](#configure-andromeda-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre Andromeda tesztfelhasználót](#create-andromeda-test-user)**  – egy megfelelője a Britta Simon Andromeda, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Konfigurálja az Azure AD egyszeri bejelentkezést](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. **[Konfigurálja az Androméda egyszeri bejelentkezést](#configure-andromeda-single-sign-on)** – az egyszeri bejelentkezési beállítások konfigurálásához az alkalmazás oldalon.
+3. **[Hozzon létre egy Azure AD-tesztfelhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének teszteléséhez Britta Simonnal.
+4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi Britta Simon azure AD egyszeri bejelentkezés.
+5. **[Hozzon létre Andromeda teszt felhasználó](#create-andromeda-test-user)** - egy megfelelője Britta Simon andromeda, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon.
 
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Andromeda, hajtsa végre az alábbi lépéseket:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához hajtsa végre az alábbi lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com/), az a **Andromeda** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
+1. Az [Azure Portalon](https://portal.azure.com/)az **Andromeda** alkalmazásintegrációs lapon válassza az **Egyszeri bejelentkezés**lehetőséget.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+    ![Egyszeri bejelentkezési kapcsolat konfigurálása](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+2. Az **Egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza **az SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezésválasztó mód](common/select-saml-option.png)
 
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
+3. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson a **Szerkesztés** ikonra az **Egyszerű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, hajtsa végre az alábbi lépéseket:
+4. Az **Egyszerű SAML-konfiguráció** szakaszban, ha az alkalmazást **IDP** által kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![Andromeda tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-intiated.png)
+    ![Az Andromeda tartomány és az URL-címek egyszeri bejelentkezési információi](common/idp-intiated.png)
 
-    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<tenantURL>.ngcxpress.com/`
+    a. Az **Azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<tenantURL>.ngcxpress.com/`
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<tenantURL>.ngcxpress.com/SAMLConsumer.aspx`
+    b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:`https://<tenantURL>.ngcxpress.com/SAMLConsumer.aspx`
 
-5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
+5. Kattintson **a További URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** által kezdeményezett módban kívánja konfigurálni:
 
-    ![Andromeda tartomány és URL-címeket egyetlen bejelentkezési adatait](common/metadata-upload-additional-signon.png)
+    ![Az Andromeda tartomány és az URL-címek egyszeri bejelentkezési információi](common/metadata-upload-additional-signon.png)
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://<tenantURL>.ngcxpress.com/SAMLLogon.aspx`
+    A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<tenantURL>.ngcxpress.com/SAMLLogon.aspx`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. A tényleges azonosítója, válasz URL-cím és a bejelentkezési URL-címet az oktatóanyag későbbi részében ismertetett frissíteni az értéket.
+    > Ezek az értékek nem valósak. Az értéket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel fogja frissíteni, amelyet az oktatóanyag későbbi részében ismertetünk.
 
-6. Andromeda alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok** szakasz alkalmazás integráció lapján. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** gombra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
+6. Az Andromeda alkalmazás az SAML-állításokat egy adott formátumban várja. Konfigurálja az alkalmazás következő jogcímeket. Ezeknek az attribútumoknak az értékeit az alkalmazásintegrációs lap **Felhasználói attribútumok** szakaszában kezelheti. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson a **Szerkesztés** gombra a **Felhasználói attribútumok** párbeszédpanel megnyitásához.
 
     ![image](common/edit-attribute.png)
 
     > [!Important]
-    > Törölje a névtér-definíciókat, ezek beállítása közben meg.
+    > Törölje a NameSpace-definíciókat ezek beállítása közben.
 
-7. Az a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen, a jogcímek szerkesztése használatával **Szerkesztés ikon** , vagy adja hozzá a jogcímek használatával **hozzáadása új jogcímet**SAML-jogkivonat attribútum beállítása, a fenti képen látható módon, és hajtsa végre az alábbi lépéseket: 
+7. A **Felhasználói attribútumok** párbeszédpanel **Felhasználói jogcímek** szakaszában a **Szerkesztés ikon** használatával szerkesztse a jogcímeket, vagy adja hozzá a jogcímeket az **Új jogcím hozzáadása** paragrafussal az SAML token attribútum konfigurálásához a fenti képen látható módon, és hajtsa végre a következő lépéseket: 
 
-    | Name (Név) | Adatforrás-attribútum|
+    | Név | Forrás attribútuma|
     | ------ | -----------|
-    | role        | Adott alkalmazás-szerepkör |
+    | Szerepet        | Alkalmazásspecifikus szerepkör |
     | type        | Alkalmazás típusa |
-    | Vállalati       | CompanyName |
+    | cég       | CompanyName |
 
     > [!NOTE]
-    > Nem áll valós értékeket. Ezek az értékek csak bemutató célra, használja a szervezet szerepkörök.
+    > Nincsenek valós értékek. Ezek az értékek csak bemutató célokra, kérjük, használja a szervezeti szerepkörök.
 
-    a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
+    a. Kattintson **az Új jogcím hozzáadása** gombra a Felhasználói **jogcímek kezelése** párbeszédpanel megnyitásához.
 
     ![image](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
-    b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
+    b. A **Név** mezőbe írja be a sor attribútumnevét.
 
-    c. Hagyja a **Namespace** üres.
+    c. Hagyja üresen a **névteret.**
 
-    d. Válassza ki a forrás, **attribútum**.
+    d. Válassza a Forrás **attribútumként lehetőséget.**
 
-    e. Az a **forrásattribútum** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
+    e. A **Forrás attribútumlistában** írja be a sor attribútumértékét.
 
-    f. Kattintson a **Ok**
+    f. Kattintson **az Ok gombra**
 
-    g. Kattintson a **Save** (Mentés) gombra.
+    g. Kattintson a **Mentés** gombra.
 
-8. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+8. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány** szakaszában kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállításokból a követelménynek megfelelően, és mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
+    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-9. Az a **Andromeda beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+9. Az **Androméda beállítása** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény nek megfelelően.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
-    b. Azure AD-azonosító
+    b. Azure Hirdetés-azonosító
 
-    c. Kijelentkezési URL
+    c. Kijelentkezés URL-címe
 
 ### <a name="configure-andromeda-single-sign-on"></a>Andromeda egyszeri bejelentkezés konfigurálása
 
-1. Bejelentkezés a Andromeda vállalati webhelyre rendszergazdaként.
+1. Jelentkezzen be az Andromeda vállalat webhelyére rendszergazdaként.
 
-2. Kattintson a menüsáv tetején **rendszergazdai** , és keresse meg **felügyeleti**.
+2. A menüsor tetején kattintson a **Rendszergazda** elemre, és keresse meg a **Felügyelet**lehetőséget.
 
-    ![Andromeda rendszergazda](./media/andromedascm-tutorial/tutorial_andromedascm_admin.png)
+    ![Androméda admin](./media/andromedascm-tutorial/tutorial_andromedascm_admin.png)
 
-3. A bal oldali eszköztáron alatt a **felületek** területén kattintson **SAML-konfigurációja**.
+3. Az eszköztár bal oldalán, **az Illesztések** csoportban kattintson az **SAML-konfiguráció gombra.**
 
-    ![Andromeda saml](./media/andromedascm-tutorial/tutorial_andromedascm_saml.png)
+    ![Androméda saml](./media/andromedascm-tutorial/tutorial_andromedascm_saml.png)
 
-4. Az a **SAML-konfigurációja** című oldalon, a következő lépésekkel:
+4. Az **SAML konfigurációja** szakasz lapon hajtsa végre az alábbi lépéseket:
 
-    ![Andromeda config](./media/andromedascm-tutorial/tutorial_andromedascm_config.png)
+    ![Androméda config](./media/andromedascm-tutorial/tutorial_andromedascm_config.png)
 
-    a. Ellenőrizze **az SAML SSO engedélyezése**.
+    a. Jelölje be **az SSO engedélyezése SAML-lel jelölőnégyzetet.**
 
-    b. Alatt **Andromeda információk** területén másolja a **SP identitás** értékét, és illessze be azt a **azonosító** szövegmezőben, hogy a **alapszintűSAML-konfigurációja** szakaszban.
+    b. Az **Androméda információ** szakaszában másolja az **SP-identitás** értékét, és illessze be az **Alapvető SAML-konfiguráció** **azonosító** szövegmezőjébe.
 
-    c. Másolás a **ügyfél URL-címe** értékét, és illessze be azt a **válasz URL-cím** szövegmezőben, hogy a **alapszintű SAML-konfigurációja** szakaszban.
+    c. Másolja a **fogyasztói URL-értéket,** és illessze be az **Egyszerű SAML-konfiguráció** **hivatkozási számú Válasz URL-mezőjébe.**
 
-    d. Másolás a **bejelentkezési URL-cím** értékét, és illessze be azt a **bejelentkezési URL-** szövegmezőben, hogy a **alapszintű SAML-konfigurációja** szakaszban.
+    d. Másolja a jelet a **bejelentkezési URL-értékre,** és illessze be az **egyszerű SAML-konfiguráció** bejelentkezési **URL-címmezőjébe.**
 
-    e. A **identitásszolgáltató SAML** területén írja be az Identitásszolgáltató nevét.
+    e. Az **SAML-identitásszolgáltató** csoportban adja meg az IDP-nevet.
 
-    f. Az a **egyszeri bejelentkezést a végpontot** szövegmező, illessze be az értéket a **bejelentkezési URL-cím** , amely az Azure Portalról másolt.
+    f. Az **egyszeri bejelentkezés a végponton** szövegmezőbe illessze be a **bejelentkezési URL-cím** értékét, amelyet az Azure Portalról másolt.
 
-    g. Nyissa meg a letöltött **Base64-kódolású tanúsítványt** Azure Portalról a Jegyzettömbben, illessze be azt a **X 509-tanúsítvány** szövegmezőbe.
+    g. Nyissa meg a letöltött **Base64 kódolású tanúsítványt** az Azure Portalról a jegyzettömbben, és illessze be az **X 509 tanúsítvány** szövegdobozába.
     
-    h. Képezze le a következő attribútumokkal az Azure AD Egyszeri bejelentkezési megkönnyítése érdekében a megfelelő értékkel. A **Felhasználóazonosító** attribútumra szükség a bejelentkezés. Üzembe helyezés, **E-mail**, **vállalati**, **UserType**, és **szerepkör** szükség. Ebben a szakaszban az Azure Portalon belül definiált meghatározzuk attribútumok leképezése (nevét és értékeit) amely összekapcsolását
+    h. Rendelje hozzá a következő attribútumokat a megfelelő értékkel az Azure AD-ből való sso-bejelentkezés megkönnyítése érdekében. A **bejelentkezéshez** meg kell adni a Felhasználói azonosító attribútumot. A kiépítéshez **e-mail**, **vállalat**, **usertype**és **szerepkör** szükséges. Ebben a szakaszban olyan attribútumok leképezését (nevét és értékeit) határozunk meg, amelyek korrelálnak az Azure Portalon definiált attribútumokkal.
 
-    ![Andromeda attbmap](./media/andromedascm-tutorial/tutorial_andromedascm_attbmap.png)
+    ![Androméda attbmap](./media/andromedascm-tutorial/tutorial_andromedascm_attbmap.png)
 
-    i. Kattintson a **Save** (Mentés) gombra.
+    i. Kattintson a **Mentés** gombra.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalon Britta Simon.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. Az Azure Portalon a bal oldali ablaktáblában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd az **Összes felhasználó**lehetőséget.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+    ![A "Felhasználók és csoportok" és a "Minden felhasználó" linkek](common/users.png)
 
-2. Válassza ki **új felhasználó** a képernyő tetején.
+2. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
 
     ![Új felhasználó gomb](common/new-user.png)
 
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
+3. A Felhasználó tulajdonságokban hajtsa végre a következő lépéseket.
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+    ![A Felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    a. A **Név** mezőbe írja be **a BrittaSimon**értéket.
   
-    b. Az a **felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`. Például: BrittaSimon@contoso.com
+    b. A **Felhasználónév** mező `brittasimon@yourcompanydomain.extension`típusa mezőben. Például: BrittaSimon@contoso.com
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    c. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson **a Létrehozás gombra.**
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Andromeda Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban engedélyezi Britta Simon az Azure egyszeri bejelentkezést az Andromeda hozzáférésének biztosításával.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Andromeda**.
+1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, válassza az **Összes alkalmazás**lehetőséget, majd válassza az **Andromeda**lehetőséget.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **Andromeda**.
+2. Az alkalmazások listájában válassza az **Androméda**lehetőséget.
 
-    ![Az alkalmazások listáját a Andromeda hivatkozásra](common/all-applications.png)
+    ![Az Androméda hivatkozás az Alkalmazások listában](common/all-applications.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+3. A bal oldali menüben válassza a **Felhasználók és csoportok**lehetőséget.
 
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+    ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Kattintson a **Felhasználó hozzáadása** gombra, majd a **Hozzárendelés hozzáadása** **párbeszédpanelen** válassza a Felhasználók és csoportok lehetőséget.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+    ![A Hozzárendelés hozzáadása ablaktábla](common/add-assign-user.png)
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+5. A **Felhasználók és csoportok** párbeszédpanelen válassza **a Britta Simon** elemet a Felhasználók listában, majd kattintson a kijelölés gombra a képernyő alján. **Select**
 
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+6. Ha az SAML-helyességben szerepkörértéket vár, akkor a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó megfelelő szerepkörét a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+7. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
 
 ### <a name="create-andromeda-test-user"></a>Andromeda tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználó Andromeda jön létre. Andromeda támogatja a just-in-time-felhasználók létrehozásának, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó már nem létezik az Andromeda, egy új jön létre a hitelesítés után. Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [Andromeda ügyfél-támogatási csapatának](https://www.ngcsoftware.com/support/).
+Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre az Andromédában. Az Andromeda támogatja a just-in-time felhasználói kiépítést, amely alapértelmezés szerint engedélyezve van. Ebben a szakaszban nincs műveletelem. Ha a felhasználó még nem létezik az Andromédában, a hitelesítés után egy új jön létre. Ha manuálisan kell létrehoznia egy felhasználót, forduljon [az Andromeda ügyféltámogatási csapatához.](https://www.ngcsoftware.com/support/)
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
 
-Ha a hozzáférési panelen a Andromeda csempére kattint, meg kell lehet automatikusan bejelentkezett a Andromeda, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor a hozzáférési panelen az Androméda csempére kattint, automatikusan be kell jelentkeznie az Andromédába, amelyhez beállítja az SSO-t. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

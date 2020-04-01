@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integráció a Brightidea-szel | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Brightidea között.
+title: 'Oktatóanyag: Az Azure Active Directory integrációja a Brightidea programmal | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a Brightidea között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,232 +17,232 @@ ms.date: 01/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ff89f7323ba4cdf14ed1c052b2dd4e4e06356e00
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73157616"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-brightidea"></a>Oktatóanyag: Azure Active Directory integráció a Brightidea
+# <a name="tutorial-azure-active-directory-integration-with-brightidea"></a>Oktatóanyag: Az Azure Active Directory integrációja a Brightidea szolgáltatással
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Brightidea a Azure Active Directory (Azure AD) szolgáltatással.
-A Brightidea és az Azure AD integrálásával a következő előnyöket nyújtja:
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a Brightidea-t az Azure Active Directoryval (Azure AD).
+A Brightidea integrálása az Azure AD-vel a következő előnyöket nyújtja:
 
-* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a Brightidea.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Brightidea (egyszeri bejelentkezés) az Azure AD-fiókokkal.
-* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
+* Az Azure AD-ben szabályozhatja, hogy ki férhet hozzá a Brightidea-hoz.
+* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve brightidea (Single Sign-On) az Azure AD-fiókok.
+* Fiókjait egyetlen központi helyen kezelheti – az Azure Portalon.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha további részleteket szeretne megtudni az SaaS-alkalmazások Azure AD-vel való integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció Brightidea való konfigurálásához a következő elemek szükségesek:
+Az Azure AD-integráció konfigurálásához a Brightidea szolgáltatással a következő elemekre van szükség:
 
-* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) egy hónapos próbaverziót kaphat
 * Brightidea egyszeri bejelentkezésre engedélyezett előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben.
 
 
-* A Brightidea támogatja **az SP és a identitásszolgáltató** által KEZDEMÉNYEZett SSO
-* A Brightidea **csak időben támogatja a** felhasználók kiépítési folyamatát
+* A Brightidea támogatja az **SP és az IDP** által kezdeményezett SSO-t
+* A Brightidea támogatja a **Just In Time** felhasználói kiépítést
 
 
-## <a name="adding-brightidea-from-the-gallery"></a>Brightidea hozzáadása a gyűjteményből
+## <a name="adding-brightidea-from-the-gallery"></a>Brightidea hozzáadása a galériából
 
-A Brightidea Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Brightidea a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A Brightidea Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Brightidea-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Ha Brightidea szeretne hozzáadni a katalógusból, hajtsa végre a következő lépéseket:**
+**Ha brightidea-t szeretne hozzáadni a galériából, hajtsa végre az alábbi lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
+1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen kattintson az **Azure Active Directory** ikonjára.
 
-    ![A Azure Active Directory gomb](common/select-azuread.png)
+    ![Az Azure Active Directory gombja](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+2. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza a **Minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
+3. Új alkalmazás hozzáadásához kattintson az **Új alkalmazás** gombra a párbeszéd ablak tetején.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![Az Új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Brightidea**kifejezést, válassza a **Brightidea** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Brightidea**kifejezést, válassza a **Brightidea** elemet az eredménypanelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![Brightidea az eredmények listájában](common/search-new-app.png)
+     ![Brightidea az eredménylistában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Brightidea-mel konfigurálja és teszteli a **Britta Simon**nevű tesztelési felhasználó alapján.
-Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Brightidea kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
+Ebben a szakaszban konfigurálhatja és tesztelheti az Azure AD egyszeri bejelentkezését a Brightidea szolgáltatással egy **Britta Simon**nevű tesztfelhasználó alapján.
+Egyszeri bejelentkezés a munka, egy Azure AD-felhasználó és a kapcsolódó felhasználó brightidea közötti kapcsolat létre kell hozni.
 
-Az Azure AD egyszeri bejelentkezés Brightidea való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez a Brightidea segítségével a következő építőelemeket kell végrehajtania:
 
-1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Brightidea egyszeri bejelentkezés konfigurálása](#configure-brightidea-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
-4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
-5. **[Hozzon létre Brightidea-teszt felhasználót](#create-brightidea-test-user)** – hogy a Brightidea Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+1. **[Konfigurálja az Azure AD egyszeri bejelentkezést](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. **[Konfigurálja brightidea single sign-on](#configure-brightidea-single-sign-on)** -, hogy konfigurálja az egyszeri bejelentkezési beállításokat az alkalmazás oldalán.
+3. **[Hozzon létre egy Azure AD-tesztfelhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének teszteléséhez Britta Simonnal.
+4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi Britta Simon azure AD egyszeri bejelentkezés.
+5. **[Hozzon létre Brightidea teszt felhasználó](#create-brightidea-test-user)** - egy megfelelője Britta Simon brightidea, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
 
-Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
+Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon.
 
-Az Azure AD egyszeri bejelentkezés Brightidea való konfigurálásához hajtsa végre a következő lépéseket:
+Az Azure AD egyszeri bejelentkezésének brightidea-val való konfigurálásához hajtsa végre az alábbi lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **Brightidea** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az [Azure Portalon](https://portal.azure.com/)a **Brightidea** alkalmazásintegrációs lapon válassza az **Egyszeri bejelentkezés**lehetőséget.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+    ![Egyszeri bejelentkezési kapcsolat konfigurálása](common/select-sso.png)
 
-2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
+2. Az **Egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza **az SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezésválasztó mód](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson a **Szerkesztés** ikonra az **Egyszerű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az **alapszintű SAML-konfiguráció** szakaszban, ha **szolgáltatói metaadatokat tartalmazó fájllal** rendelkezik, és a **identitásszolgáltató** intiated módban szeretne konfigurálni, hajtsa végre a következő lépéseket:
+4. Ha **a** **Szolgáltató metaadatfájlja** van, és **IDP-konfigurációs** üzemmódban szeretne konfigurálni, hajtsa végre a következő lépéseket:
 
-    a. Kattintson a **metaadat-fájl feltöltése**elemre.
+    a. Kattintson **a Metaadatfájl feltöltése gombra.**
 
-    ![Metaadat-fájl feltöltése](common/upload-metadata.png)
+    ![Metaadatfájl feltöltése](common/upload-metadata.png)
 
-    b. Kattintson a **mappa emblémára** a metaadat-fájl kiválasztásához, majd kattintson a **feltöltés**elemre.
+    b. Kattintson a **mappaemblémára** a metaadatfájl kijelöléséhez, majd a **Feltöltés gombra.**
 
-    ![metaadat-fájl kiválasztása](common/browse-upload-metadata.png)
+    ![metaadatfájl kiválasztása](common/browse-upload-metadata.png)
 
-    c. A metaadat-fájl feltöltése után az **azonosító** és a **Válasz URL-** értékei automatikusan fel lesznek töltve a Brightidea szakasz szövegmezőben:
+    c. A metaadatfájl sikeres feltöltése után az **azonosító** és a **válasz URL-értéke** automatikusan feltöltődik a Brightidea szakasz szövegmezőjében:
 
     ![image](common/idp-intiated.png)
 
     > [!Note]
-    > Ha az **azonosító** és a **Válasz URL-címe** nem kap automatikus polulated, akkor a követelménynek megfelelően adja meg manuálisan az értékeket.
+    > Ha az **azonosító** és a **válasz URL-értékei** nem kapnak automatikus polulated, majd töltse ki az értékeket manuálisan a követelménynek megfelelően.
 
-5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
+5. Kattintson **a További URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** által kezdeményezett módban kívánja konfigurálni:
 
     ![image](common/metadata-upload-additional-signon.png)
 
-    A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SUBDOMAIN>.brightidea.com`
+    A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<SUBDOMAIN>.brightidea.com`
 
-4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+4. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány csoportjában** kattintson a **Letöltés** gombra az **összevonási metaadat-XML** letöltéséhez a megadott beállításokból a követelménynek megfelelően, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-6. A **Brightidea beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
+6. A **Brightidea beállítása** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény szerint.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL-cím
+    a. Bejelentkezési URL
 
-    b. Azure ad-azonosító
+    b. Azure-hirdetésazonosító
 
-    c. Kijelentkezési URL-cím
+    c. Kijelentkezés URL-címe
 
 ### <a name="configure-brightidea-single-sign-on"></a>Brightidea egyszeri bejelentkezés konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be a Brightidea-be a rendszergazdai hitelesítő adatok használatával.
+1. Egy másik böngészőablakban jelentkezzen be a Brightidea alkalmazásba a rendszergazdai hitelesítő adatokkal.
 
-2. A Brightidea-rendszeren lévő egyszeri bejelentkezés funkciójának beszerzéséhez navigáljon a **vállalati telepítő** -> **hitelesítés lapra**. Itt két allapot láthat: auth Selection & SAML-profilok.
+2. A Brightidea rendszer SSO szolgáltatásának hoz a **Vállalati beállítás** -> **hitelesítése lap ra.** Itt két allapot láthat: Auth Selection & SAML profilok.
 
-    ![Brightidea-konfiguráció](./media/brightidea-tutorial/configure1.png)
+    ![Brightidea konfiguráció](./media/brightidea-tutorial/configure1.png)
 
-3. Válassza az **Auth kiválasztása**lehetőséget. Alapértelmezés szerint csak két szabványos metódus látható: a Brightidea bejelentkezési & regisztrációja. Az egyszeri bejelentkezési módszer hozzáadásakor megjelenik a listában.
+3. Válassza **az Auth Selection lehetőséget.** Alapértelmezés szerint csak két szabványos módszert jelenít meg: Brightidea Login & Registration. Amikor egy SSO metódus t, akkor megjelenik a listában.
 
-    ![Brightidea-konfiguráció](./media/brightidea-tutorial/configure2.png)
+    ![Brightidea konfiguráció](./media/brightidea-tutorial/configure2.png)
 
-4. Válassza ki az **SAML-profilokat** , és hajtsa végre a következő lépéseket:
+4. Válassza az **SAML-profilok lehetőséget,** és hajtsa végre a következő lépéseket:
 
-    ![Brightidea-konfiguráció](./media/brightidea-tutorial/configure3.png)
+    ![Brightidea konfiguráció](./media/brightidea-tutorial/configure3.png)
 
-    a. Kattintson a **metaadatok letöltése** elemre, és töltse fel az **alapszintű SAML-konfiguráció** szakaszát a Azure Portal.
+    a. Kattintson a **Metaadatok letöltése elemre,** és töltse fel az Azure Portal **alapszintű SAML-konfiguráció** szakaszát.
 
-    b. Kattintson az **új hozzáadása** gombra az identitás- **szolgáltató beállítás** alatt, és hajtsa végre a következő lépéseket:
+    b. Kattintson az **Identitásszolgáltató** beállítása alatt található Új hozzáadása **gombra,** és hajtsa végre a következő lépéseket:
     
-    ![Brightidea-konfiguráció](./media/brightidea-tutorial/configure4.png)
+    ![Brightidea konfiguráció](./media/brightidea-tutorial/configure4.png)
     
-   * Adja meg az **SAML-profil nevét** , például `Azure Ad SSO`
+   * Adja meg az **SAML-profil nevét,** például`Azure Ad SSO`
     
-   * A **metaadatok feltöltéséhez**kattintson a fájl kiválasztása lehetőségre, és töltse fel a letöltött metaadat-fájlt a Azure Portal.
+   * A **Metaadatok feltöltése**területen kattintson a Fájl kiválasztása elemre, és töltse fel a letöltött metaadatfájlt az Azure Portalról.
 
      > [!NOTE]
-     > A metaadat-fájl feltöltése után a rendszer automatikusan feltölti a többi mezőt az **egyszeri bejelentkezési szolgáltatás, az Identity Provider kiállítója, a nyilvános kulcs feltöltése** .
+     > A metaadatfájl feltöltése után a fennmaradó mezők **Egyszeri bejelentkezési szolgáltatás, Identitásszolgáltató kibocsátója, Nyilvános kulcs feltöltése** automatikusan feltöltődnek.
 
-   * Az **e-mail** szövegmezőbe írja be a `mail`értéket.
+   * Az **E-mail** mezőbe írja `mail`be az értéket a formában.
      
-   * A **képernyő neve** szövegmezőbe írja be a `givenName`értéket.
+   * A **Képernyőnév** mezőbe írja be `givenName`az értéket a formában.
      
-   * Kattintson a **módosítások mentése**gombra.  
+   * Kattintson a **Save Changes** (Módosítások mentése) gombra.  
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása 
 
-Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
+Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalon Britta Simon.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Az Azure Portalon a bal oldali ablaktáblában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd az **Összes felhasználó**lehetőséget.
 
-    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
+    ![A "Felhasználók és csoportok" és a "Minden felhasználó" linkek](common/users.png)
 
-2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+2. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
 
     ![Új felhasználó gomb](common/new-user.png)
 
-3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
+3. A Felhasználó tulajdonságokban hajtsa végre a következő lépéseket.
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+    ![A Felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
+    a. A **Név** mezőbe írja be **a BrittaSimon**értéket.
   
-    b. A **Felhasználónév** mezőbe írja be a következőt: **brittasimon\@yourcompanydomain. Extension**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
-    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
+    c. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a  **Create** (Létrehozás) gombra.
+    d. Kattintson **a Létrehozás gombra.**
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a Brightidea hozzáférésének biztosításával.
+Ebben a szakaszban engedélyezi Britta Simon azure egyszeri bejelentkezés t a Brightidea hozzáférést biztosítva.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Brightidea**lehetőséget.
+1. Az Azure Portalon válassza az **Enterprise Applications**lehetőséget, válassza az **Összes alkalmazás**lehetőséget, majd a **Brightidea**lehetőséget.
 
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Brightidea**lehetőséget.
+2. Az alkalmazások listájában válassza a **Brightidea**lehetőséget.
 
-    ![Az Brightidea hivatkozás az alkalmazások listájában](common/all-applications.png)
+    ![A Brightidea hivatkozás az Alkalmazások listában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **Felhasználók és csoportok**lehetőséget.
 
-    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+    ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
+4. Kattintson a **Felhasználó hozzáadása** gombra, majd a **Hozzárendelés hozzáadása** **párbeszédpanelen** válassza a Felhasználók és csoportok lehetőséget.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+    ![A Hozzárendelés hozzáadása ablaktábla](common/add-assign-user.png)
 
-5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
+5. A **Felhasználók és csoportok** párbeszédpanelen válassza **a Britta Simon** elemet a Felhasználók listában, majd kattintson a kijelölés gombra a képernyő alján. **Select**
 
-6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+6. Ha az SAML-helyességben szerepkörértéket vár, akkor a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó megfelelő szerepkörét a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
 
-7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+7. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
 
-### <a name="create-brightidea-test-user"></a>Brightidea-tesztelési felhasználó létrehozása
+### <a name="create-brightidea-test-user"></a>Brightidea tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a Brightidea-ben. A Brightidea támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a Brightidea-ben, a rendszer egy újat hoz létre a hitelesítés után.
+Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre brightidea. A Brightidea támogatja a just-in-time felhasználói kiépítést, amely alapértelmezés szerint engedélyezve van. Ebben a szakaszban nincs műveletelem. Ha a felhasználó még nem létezik a Brightidea, egy új jön létre a hitelesítés után.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
 
-Ha a hozzáférési panelen a Brightidea csempére kattint, automatikusan be kell jelentkeznie arra a Brightidea, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor a Hozzáférési panelbrightidea csempéjére kattint, a rendszer automatikusan bejelentkezik arra a Brightidea-ba, amelyhez az SSO-t beállította. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

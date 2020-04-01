@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/14/2020
+ms.date: 03/30/2020
 ms.author: allensu
-ms.openlocfilehash: 4a273801290a0a5833ebd83983a8b6b0ad856b45
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c012a8d83761b88cc59b62d11fd3d5542ca7f7a1
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79408484"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396093"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Az Azure virtuális hálózati nat-kapcsolatának hibái
 
@@ -40,14 +40,15 @@ A problémák megoldásához kövesse az alábbi szakaszlépéseit.
 
 Egyetlen [NAT átjáró erőforrás](nat-gateway-resource.md) 64 000-től 1 millió egyidejű folyamatig támogatja.  Minden IP-cím 64 000 SNAT-portot biztosít a rendelkezésre álló készlethez. NAT-átjáró-erőforrásonként legfeljebb 16 IP-címet használhat.  A SNAT mechanizmus [itt](nat-gateway-resource.md#source-network-address-translation) részletesebben ismertetjük.
 
-Az SNAT-kimerültség kiváltó oka gyakran a kimenő kapcsolat létrehozásának és kezelésének antimintája.  Alaposan olvassa át ezt a szakaszt.
+Az SNAT-kimerültség kiváltó oka gyakran egy anti-minta arra, hogy a kimenő kapcsolat létrehozása, kezelése vagy konfigurálható időzítői hogyan változnak az alapértelmezett értékekhez képest.  Alaposan olvassa át ezt a szakaszt.
 
 #### <a name="steps"></a>Lépések
 
-1. Vizsgálja meg, hogy az alkalmazás hogyan hoz létre kimenő kapcsolatot (például kódellenőrzés vagy csomagrögzítés). 
-2. Határozza meg, hogy ez a tevékenység várható viselkedés-e, vagy hogy az alkalmazás helytelenül viselkedik-e.  Az Azure Monitor [metrikák használatával](nat-metrics.md) támaszthatja alá a megállapításokat. Használja a "Sikertelen" kategóriát az SNAT-kapcsolatok metrikához.
-3. Értékelje, hogy követi-e a megfelelő mintákat.
-4. Értékelje ki, hogy az SNAT-port kimerülése mérsékelni kell-e a NAT-átjáró-erőforráshoz rendelt további IP-címekkel.
+1. Ellenőrizze, hogy módosította-e az alapértelmezett tétlen időtúlértéket 4 percnél magasabb értékre.
+2. Vizsgálja meg, hogy az alkalmazás hogyan hoz létre kimenő kapcsolatot (például kódellenőrzés vagy csomagrögzítés). 
+3. Határozza meg, hogy ez a tevékenység várható viselkedés-e, vagy hogy az alkalmazás helytelenül viselkedik-e.  Az Azure Monitor [metrikák használatával](nat-metrics.md) támaszthatja alá a megállapításokat. Használja a "Sikertelen" kategóriát az SNAT-kapcsolatok metrikához.
+4. Értékelje, hogy követi-e a megfelelő mintákat.
+5. Értékelje ki, hogy az SNAT-port kimerülése mérsékelni kell-e a NAT-átjáró-erőforráshoz rendelt további IP-címekkel.
 
 #### <a name="design-patterns"></a>Tervezési minták
 
@@ -55,15 +56,17 @@ Amikor csak lehetséges, mindig használja ki a kapcsolat újrafelhasználását
 
 _**Megoldás:**_ Használja a megfelelő mintákat és ajánlott eljárásokat
 
+- A NAT átjáró erőforrások alapértelmezett TCP-időhama 4 perc.  Ha ez a beállítás magasabb értékre változik, a NAT hosszabb ideig tartja a folyamatokat, és szükségtelen nyomást gyakorolhat [az SNAT portkészletre.](nat-gateway-resource.md#timers)
 - Az atomi kérelmek (kapcsolatonként egy kérelem) nem megfelelő tervezési választás. Az ilyen anti-pattern korlátozza a skálát, csökkenti a teljesítményt és csökkenti a megbízhatóságot. Ehelyett használja fel újra a HTTP/S-kapcsolatokat a kapcsolatok és a kapcsolódó SNAT-portok számának csökkentése érdekében. Az alkalmazás léptéke a csökkentett kézfogások, a terhelésés és a kriptográfiai működési költségek miatt javul ni fog a TLS használatakor.
 - A DNS számos egyéni folyamatot vezethet be a hangerőn, ha az ügyfél nem gyorsítótárazja a DNS-feloldók eredményét. Használja a gyorsítótárazást.
 - UDP-folyamatok (például DNS-keresések) snat-portokat foglalnak le az alapjárati időtúltöltés idejére. Minél hosszabb az tétlen időtúljárat, annál nagyobb a nyomás az SNAT-portokra. Használjon rövid tétlen időoutot (például 4 percet).
 - A kapcsolatkötet kialakításához használjon kapcsolatkészleteket.
-- Soha ne hagyjon el csendesen egy TCP-folyamatot, és ne hagyatkozzon a TCP időzítőkre a folyamat megtisztításához. Így a köztes rendszerekben és végpontokon lefoglalt állapot marad, és a portok nem érhetők el más kapcsolatok hoz. Ez alkalmazáshibákat és SNAT-kimerültséget okozhat. 
-- A TCP-vel kapcsolatos időzítőértékeket nem szabad megváltoztatni a hatás szakértői ismerete nélkül. Bár a TCP helyreáll, az alkalmazás teljesítményét negatívan befolyásolhatja, ha a kapcsolat végpontjai nem egyeznek az elvárásokkal. A vágy, hogy változtatni időzítő általában annak a jele, egy mögöttes tervezési probléma. Tekintse át a következő ajánlásokat.
+- Soha ne hagyjon el csendesen egy TCP-folyamatot, és ne hagyatkozzon a TCP időzítőkre a folyamat megtisztításához. Ha nem hagyja, hogy a TCP kifejezetten lezárja a kapcsolatot, az állapot továbbra is lefoglalva marad a köztes rendszerekben és végpontokon, és az SNAT-portokat más kapcsolatok számára nem teszi elérhetővé. Ez alkalmazáshibákat és SNAT-kimerültséget okozhat. 
+- Ne módosítsa az operációs rendszer szintű TCP-szintű kapcsolódó időzítőértékeket a hatás szakértői ismerete nélkül. Bár a TCP-verem helyreáll, az alkalmazás teljesítményét negatívan befolyásolhatja, ha a kapcsolat végpontjai nem egyeznek az elvárásokkal. A vágy, hogy változtatni időzítő általában annak a jele, egy mögöttes tervezési probléma. Tekintse át a következő ajánlásokat.
 
 Gyakran alkalommal SNAT kimerültség is felerősíthető más anti-minták a mögöttes alkalmazás. Tekintse át ezeket a további mintákat és gyakorlati tanácsokat a szolgáltatás méretének és megbízhatóságának javítása érdekében.
 
+- Fedezze fel a [TCP-időkiadás](nat-gateway-resource.md#timers) csökkentésének hatását az alacsonyabb értékekre, beleértve a 4 perces alapértelmezett alapjárati időmeghosszabbítást, hogy korábban felszabadítsa az SNAT-portkészletet.
 - Fontolja meg a szinkron [lekérdezési minták](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply) hosszú ideig futó műveletek számára, hogy más műveletek kapcsolati erőforrásait szabadítsa fel.
 - A hosszú élettartamú folyamatoknak (például az újrafelhasznált TCP-kapcsolatoknak) tcp keepalives vagy alkalmazásréteg-megtartási élettartamot kell használniuk a köztes rendszerek időtúllépésének elkerülése érdekében. Az alapjárati időtúltöltés növelése végső megoldás, és előfordulhat, hogy nem oldja meg a kiváltó okot. A hosszú időmeghosszabbítás alacsony sebességhibákat okozhat, amikor lejár az idő-túlóra, és késleltetést és szükségtelen hibákat vezethet be.
 - Kecses [újrapróbálkozási mintákat](https://docs.microsoft.com/azure/architecture/patterns/retry) kell használni, hogy elkerüljék az agresszív újrapróbálkozások/bursts átmeneti hiba vagy hiba helyreállítása során.
@@ -175,7 +178,7 @@ A [virtual network nat uservoice](https://aka.ms/natuservoice)-on keresztül jel
 ## <a name="next-steps"></a>További lépések
 
 * További információ a [virtuális hálózati hálózati hálózati kapcsolatról](nat-overview.md)
-* Ismerje meg ab Fry out [NAT átjáró erőforrás](nat-gateway-resource.md)
+* Tudnivalók a [NAT átjáró-erőforrásról](nat-gateway-resource.md)
 * Ismerje meg [a NAT-átjáró-erőforrások metrikáit és riasztásait.](nat-metrics.md)
 * [Mondja el, mit kell építeni a következő virtuális hálózati NAT a UserVoice](https://aka.ms/natuservoice).
 

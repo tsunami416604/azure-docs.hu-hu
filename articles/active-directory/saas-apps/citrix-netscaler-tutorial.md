@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/27/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7400c8288d8901460e462ce43b69815e178a718c
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 6771060f05a03c82879738dc5e8caccb67e55abc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384007"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477999"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-kerberos-based-authentication"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési integrációja a Citrix NetScaler -rel (Kerberos-alapú hitelesítés)
 
@@ -219,7 +219,7 @@ A terheléselosztó és a virtuális kiszolgáló kötése:
 
 ### <a name="bind-the-certificate"></a>A tanúsítvány kötése
 
-Ha a szolgáltatást SSL-ként szeretné közzétenni, kösse össze a kiszolgálótanúsítványt, majd tesztelje az alkalmazást:
+Ha a szolgáltatást TLS-ként szeretné közzétenni, kösse össze a kiszolgálótanúsítványt, majd tesztelje az alkalmazást:
 
 1. A **Tanúsítvány csoportban**válassza a **Nincs kiszolgálói tanúsítvány lehetőséget.**
 

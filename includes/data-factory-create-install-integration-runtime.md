@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: e7717cdeec33a32f926cb5ef4c1f6d28c25f9d93
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76989084"
 ---
 ## <a name="create-a-self-hosted-integration-runtime"></a>Saját üzemeltetésű Integration Runtime létrehozása
 
-Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hozhat létre, és társíthatja azt az SQL Server-adatbázist futtató helyszíni géppel. A saját üzemeltetésű integrációs modul az a komponens, amely a gépen lévő SQL Server adatait másolja az Azure SQL Database-be. 
+Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hozhat létre, és társíthatja azt az SQL Server-adatbázist futtató helyszíni géppel. A saját üzemeltetésű integrációs futásidő az az összetevő, amely adatokat másol az SQL Server a számítógépen az Azure SQL-adatbázisba. 
 
 1. Hozzon létre egy változót az integrációs modul nevéhez. Adjon meg egy egyedi nevet, és jegyezze fel. Az oktatóanyag későbbi részében használni fogja. 
 
@@ -83,7 +83,7 @@ Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hoz
 
 5. Másolja be az egyik kulcsot (idézőjelek nélkül), amelyet a következő lépésekben a gépére telepítendő, saját üzemeltetésű integrációs modul regisztrálásához használt.  
 
-## <a name="install-the-integration-runtime-tool"></a>Az Integration Runtime eszköz telepítése
+## <a name="install-the-integration-runtime-tool"></a>Az integrációs futásidejű eszköz telepítése
 
 1. Ha az integrációs modul már telepítve van a számítógépen, akkor a **Programok hozzáadása vagy eltávolítása** funkcióval távolítsa el. 
 
@@ -103,7 +103,7 @@ Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hoz
 
     ![Az integrációs modul regisztrálása](media/data-factory-create-install-integration-runtime/register-integration-runtime.png)
 
-9. Az **új Integration Runtime (helyi) csomópont** lapon válassza a **Befejezés**lehetőséget. 
+9. Az **Új integrációs futásidejű (saját üzemeltetésű) csomópont** lapon válassza a **Befejezés**lehetőséget. 
 
 10. Az integrációs modul sikeres regisztrációja esetén a következő üzenet jelenik meg:
 

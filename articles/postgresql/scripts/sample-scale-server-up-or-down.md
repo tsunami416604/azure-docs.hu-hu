@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-szkript – méretezés és monitorozás Azure Database for PostgreSQL
+title: Azure CLI-parancsfájl – Az Azure Database for PostgreSQL méretezése és figyelése
 description: Azure CLI-szkriptminta – Azure Database for PostgreSQL-kiszolgáló méretezése más teljesítményszintre a mérőszámok lekérdezése után.
 author: rachel-msft
 ms.author: raagyema
@@ -9,14 +9,14 @@ ms.custom: mvc
 ms.topic: sample
 ms.date: 08/07/2019
 ms.openlocfilehash: 24aaf461576e6e043979660f9de968358763e003
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68882989"
 ---
 # <a name="monitor-and-scale-a-single-postgresql-server-using-azure-cli"></a>Egyetlen PostgreSQL-kiszolgáló monitorozása és méretezése az Azure CLI-vel
-Ez a CLI-parancsfájl a metrikák lekérdezése után egy Azure Database for PostgreSQL kiszolgáló számítási és tárolási kapacitását méretezi. A számítás vertikális fel-vagy leskálázást végez. A tárterület csak vertikális felskálázásra használható. 
+Ez a minta CLI-parancsfájl egyetlen Azure-adatbázis postgreSQL-kiszolgálóhoz számítási és tárolási méretezését méretezi a metrikák lekérdezése után. A számítás fel- vagy leskálázható. A tárhely csak felskálázható. 
 
 [!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 
@@ -37,11 +37,11 @@ Ez a szkript a következő táblában leírt parancsokat használja:
 |---|---|
 | [az group create](/cli/azure/group) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az postgres server create](/cli/azure/postgres/server#az-postgres-server-create) | Létrehoz egy PostgreSQL-kiszolgálót, amelyen az adatbázisok futnak. |
-| [az postgres Server Update](/cli/azure/postgres/server#az-postgres-server-update) | Frissíti a PostgreSQL-kiszolgáló tulajdonságait. |
+| [az postgres kiszolgáló frissítése](/cli/azure/postgres/server#az-postgres-server-update) | Frissíti a PostgreSQL kiszolgáló tulajdonságait. |
 | [az monitor metrics list](/cli/azure/monitor/metrics) | Listázza az erőforrások metrikaértékét. |
 | [az group delete](/cli/azure/group) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
 ## <a name="next-steps"></a>További lépések
-- További információ a [Azure Database for PostgreSQL számítási és tárolási](../concepts-pricing-tiers.md) feladatokról
-- További parancsfájlok kipróbálása: [Azure CLI-minták az Azure Database for PostgreSQL szolgáltatáshoz](../sample-scripts-azure-cli.md)
-- További információ az [Azure CLI](/cli/azure) -ről
+- További információ [az Azure Database for PostgreSQL számítási és tárolási adatbázisáról](../concepts-pricing-tiers.md)
+- További szkripteket [az Azure Database for PostgreSQL-hez készült Azure CLI-példák](../sample-scripts-azure-cli.md) között találhat.
+- További információ az [Azure CLI-ről](/cli/azure)

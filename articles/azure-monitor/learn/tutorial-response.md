@@ -8,16 +8,16 @@ ms.author: bwren
 ms.date: 10/05/2018
 ms.custom: mvc
 ms.openlocfilehash: 756ce6c8551d259fc27855489b4276d90c7aa771
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77670372"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>Eseményekre való válaszadás Azure Monitor-riasztásokkal
 Az Azure Monitor-riasztások azonosítják a Log Analytics-adattárban található fontos információkat. A riasztásokat riasztási szabályok hozzák létre, amelyek rendszeres időközönként automatikusan naplókereséseket futtatnak. Ha a naplókeresés eredménye megfelel bizonyos feltételeknek, létrejön egy riasztásbejegyzés, amelyet konfigurálni lehet egy automatikus válasz végrehajtására.  Ez az oktatóanyag a [Log Analytics-adatokat tartalmazó irányítópultok létrehozása és megosztása](tutorial-logs-dashboards.md) oktatóanyag folytatása.   
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Riasztási szabály létrehozása
@@ -25,20 +25,20 @@ Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 Az oktatóanyagban található példa elvégzéséhez szüksége lesz egy meglévő virtuális gépre, amely [a Log Analytics-munkaterülethez csatlakozik](../../azure-monitor/learn/quick-collect-azurevm.md).  
 
-## <a name="sign-in-to-azure-portal"></a>Bejelentkezés az Azure portálra
-Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen. 
+## <a name="sign-in-to-azure-portal"></a>Jelentkezzen be az Azure Portalon
+Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Portalon a . 
 
 ## <a name="create-alerts"></a>Riasztások létrehozása
 A riasztásokat riasztási szabályok hozzák létre az Azure Monitorban, és rendszeres időközönként automatikusan mentett lekérdezéseket vagy egyéni naplókereséseket futtathatnak.  Riasztásokat megadott teljesítménymetrikák alapján, illetve bizonyos események létrehozásakor vagy hiányakor hozhat létre, illetve akkor, ha egy adott időtartományon belül több esemény jön létre.  A riasztások segítségével értesülhet például arról, ha az átlagos processzorhasználat meghalad egy bizonyos küszöbértéket, ha hiányzik egy frissítés, vagy ha létrejön egy esemény, amikor egy adott Windows-szolgáltatás vagy Linux-démon nem fut.  Ha a naplókeresés eredménye megfelel bizonyos feltételeknek, létrejön egy riasztás. A szabály ekkor automatikusan futtathat egy vagy több műveletet, például értesíti Önt a riasztásról, vagy meghív egy másik folyamatot. 
 
-A következő példában létrehoz egy metrikamérési riasztási szabályt az *adatok vizualizációját ismertető oktatóanyagban* mentett [Azure-beli virtuális gépek – Processzorhasználat](tutorial-logs-dashboards.md) lekérdezés alapján.  Létrejön egy riasztás minden egyes, a 90%-os küszöbértéket meghaladó virtuális géphez.  
+A következő példában létrehoz egy metrikamérési riasztási szabályt az [adatok vizualizációját ismertető oktatóanyagban](tutorial-logs-dashboards.md) mentett *Azure-beli virtuális gépek – Processzorhasználat* lekérdezés alapján.  Létrejön egy riasztás minden egyes, a 90%-os küszöbértéket meghaladó virtuális géphez.  
 
 1. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet.
 2. Új riasztás létrehozásához a bal oldali panelen válassza a **Riasztások** elemet, majd kattintson az oldal tetején található **Új riasztási szabály** elemre.<br><br> ![Új riasztási szabály létrehozása](./media/tutorial-response/alert-rule-02.png)<br>
-3. Az első lépésben a **Riasztás létrehozása** szakaszban ki fogja választani a Log Analytics-munkaterületet erőforrásként, mivel ez egy naplóalapú riasztási jelzés.  Az eredmények szűréséhez válassza ki az adott **előfizetést** a legördülő listából, ha több előfizetés is van, amely tartalmazza a korábban létrehozott virtuális gépet és Log Analytics-munkaterületet.  Szűrje az **erőforrástípusokat** a **Log Analytics** a legördülő menüből való kiválasztásával.  Végül válassza ki az **erőforrás** - **DefaultLAWorkspace** , majd kattintson a **kész**gombra.<br><br> ![Riasztás létrehozása, 1. lépés](./media/tutorial-response/alert-rule-03.png)<br>
+3. Az első lépésben a **Riasztás létrehozása** szakaszban ki fogja választani a Log Analytics-munkaterületet erőforrásként, mivel ez egy naplóalapú riasztási jelzés.  Az eredmények szűréséhez válassza ki az adott **előfizetést** a legördülő listából, ha több előfizetés is van, amely tartalmazza a korábban létrehozott virtuális gépet és Log Analytics-munkaterületet.  Szűrje az **erőforrástípusokat** a **Log Analytics** a legördülő menüből való kiválasztásával.  Végül válassza az **Erőforrás** **DefaultLAWorkspace** elemet, majd kattintson a **Kész** gombra.<br><br> ![Riasztás létrehozása, 1. lépés](./media/tutorial-response/alert-rule-03.png)<br>
 4. A **Riasztási feltételek** szakaszban kattintson a **Feltétel hozzáadása** elemre a mentett lekérdezés kiválasztásához, majd adja meg a logikát, amelyet a riasztási szabály követ.  A **Jellogika konfigurálása** panelen válassza az *Azure-beli virtuális gépek – Processzorhasználat* elemet a listából.  A panel frissül, és a riasztás konfigurációs beállításait mutatja.  Felül a kiválasztott jel és a keresési lekérdezés eredményeit mutatja az elmúlt 30 percre vonatkozóan.  
 5. Konfigurálja a riasztást az alábbi információkkal:  
-   a. A **Riasztás alapja** legördülő menüből válassza a **Metrikamérés** elemet.  A metrikamérés egy riasztást hoz létre a lekérdezés minden egyes objektumához, amelynek értéke meghaladja a megadott küszöbértéket.  
+   a. Az **Alapul** legördülő listában válassza a **Metrikus mérés**lehetőséget.  A metrikamérés egy riasztást hoz létre a lekérdezés minden egyes objektumához, amelynek értéke meghaladja a megadott küszöbértéket.  
    b. A **Feltétel** értékeként válassza a **Nagyobb, mint** lehetőséget, majd adja meg a **Küszöbérték** mezőben a **90** értéket.  
    c. A Riasztás aktiválásának alapja részben válassza az **Egymás utáni incidensek** elemet, a legördülő listából válassza a **Nagyobb, mint** lehetőséget, és adja meg a 3 értéket.  
    d. Az Értékelés szakasz alapján részben módosítsa az **Időtartam** értékét **30** percre. A szabály öt percenként fog futni, és visszaadja azokat a rekordokat, amelyek az aktuális időhöz képest harminc percen belül jöttek létre.  Ha az időtartamot szélesebb időközre állítja, figyelembe veheti az esetleges adatkésést, és biztosíthatja, hogy a lekérdezés adatokat ad vissza, így nem kap téves negatív választ, ha a figyelmeztetés soha nem aktiválódik.  
@@ -63,7 +63,7 @@ Most, hogy létrehozott egy riasztást, egyetlen panelen tekintheti meg az Azure
 
 Amikor egy riasztás aktiválódik, a táblázatban megjelenik az állapot, és hogy a választott időtartományon belül (alapértelmezés szerint az elmúlt hat óra) hányszor aktiválódott.  A beérkezett üzenetek között megjelenik egy, a következő példához hasonló e-mail, amely a küszöbértéket megsértő virtuális gépet mutatja és a keresési lekérdezésnek megfelelő első néhány eredményt.<br><br> ![Minta riasztási e-mail művelet](./media/tutorial-response/azure-alert-email-notification-01.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag bemutatta, hogyan képesek a riasztási szabályok proaktívan azonosítani a hibákat, valamint válaszolni rájuk, amikor az ütemezett naplókeresések futtatásakor az eredmények megfelelnek bizonyos feltételeknek.
 
 Kövesse ezt a hivatkozást az előre felépített Log Analytics-szkriptminták megtekintéséhez.  

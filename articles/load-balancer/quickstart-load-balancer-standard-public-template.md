@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2020
 ms.author: allensu
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 1f681a9a8d8547589873cff055d9f59973c27355
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 175c5a36c873d16d50d5192a489133a01018e335
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78295785"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474596"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>Rövid útmutató: Hozzon létre egy terheléselosztót a terheléselosztási virtuális gépekhez az Azure Resource Manager sablon használatával
 
@@ -38,7 +38,7 @@ A terheléselosztónak és a nyilvános IP-sus-oknak egyezniük kell. Standard t
 
 A rövid útmutatóban használt sablon az [Azure gyorsindítási sablonjaiból származik.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-load-balancer-standard-create/azuredeploy.json)
 
-:::code language="json" source="~/quickstart-templates/101-load-balancer-standard-create/azuredeploy.json" range="1-150" highlight="58-122":::
+:::code language="json" source="~/quickstart-templates/101-load-balancer-standard-create/azuredeploy.json" range="1-324" highlight="58-122":::
 
 A sablonban több Azure-erőforrás is definiálva van:
 

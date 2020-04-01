@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integráció az Fluxx Labs |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Fluxx Labs között.
+title: 'Oktatóanyag: Az Azure Active Directory integrációja a Fluxx Labs alkalmazással | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a Fluxx Labs között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,248 +16,248 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: e624520a9d1f39bc8115ac72e9df0398065928f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67102391"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-fluxx-labs"></a>Oktatóanyag: Az Azure Active Directory-integráció az Fluxx Labs
+# <a name="tutorial-azure-active-directory-integration-with-fluxx-labs"></a>Oktatóanyag: Az Azure Active Directory integrációja a Fluxx Labs-szel
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan Fluxx laborok integrálása az Azure Active Directory (Azure AD).
-Fluxx laborok integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a Fluxx Labst az Azure Active Directoryval (Azure AD).
+A Fluxx Labs integrálása az Azure AD-vel a következő előnyöket nyújtja:
 
-* Szabályozhatja, ki férhet hozzá Fluxx Labs Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy a rendszer automatikusan bejelentkezve Fluxx Labs (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Az Azure AD-ben szabályozhatja, hogy ki férhet hozzá a Fluxx Labshez.
+* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve fluxx labs (single sign-on) az Azure AD-fiókok.
+* Fiókjait egyetlen központi helyen kezelheti – az Azure Portalon.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha további részleteket szeretne megtudni az SaaS-alkalmazások Azure AD-vel való integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálása az Fluxx Labs, a következőkre van szükség:
+Az Azure AD-integráció fluxx labs-szel való konfigurálásához a következő elemekre van szüksége:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
-* Fluxx Labs egy bejelentkezési engedélyezett előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [ingyenes fiókot](https://azure.microsoft.com/free/) kaphat
+* Fluxx Labs egyszeri bejelentkezésre engedélyezett előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben.
 
-* Támogatja a Fluxx Labs **Identitásszolgáltató** által kezdeményezett egyszeri bejelentkezés
+* A Fluxx Labs támogatja az **IDP** által kezdeményezett SSO-t
 
-## <a name="adding-fluxx-labs-from-the-gallery"></a>Fluxx Labs hozzáadása a katalógusból
+## <a name="adding-fluxx-labs-from-the-gallery"></a>A Fluxx Labs hozzáadása a galériából
 
-Fluxx laborok integrálása az Azure AD beállítása, hozzá kell Fluxx Labs a galériából a felügyelt SaaS-alkalmazások listájára.
+A Fluxx Labs azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Fluxx Labs-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Fluxx Labs hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+**A Fluxx Labs gyűjteményből való hozzáadásához hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen kattintson az **Azure Active Directory** ikonjára.
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+    ![Az Azure Active Directory gombja](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+2. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza a **Minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+3. Új alkalmazás hozzáadásához kattintson az **Új alkalmazás** gombra a párbeszéd ablak tetején.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![Az Új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Fluxx Labs**válassza **Fluxx Labs** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A keresőmezőbe írja be a **Fluxx Labs**kifejezést, válassza a **Fluxx Labs** elemet az eredménypanelről, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![Az eredmények listájában Fluxx Labs](common/search-new-app.png)
+     ![Fluxx Labs az eredmények listájában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az úgynevezett tesztfelhasználó alapján Fluxx Labs **Britta Simon**.
-Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó Fluxx Fejlesztőlaborokban lévő hivatkozás kapcsolata kell létrehozni.
+Ebben a szakaszban konfigurálhatja és tesztelheti az Azure AD egyszeri bejelentkezését a Fluxx Labs alkalmazással egy **Britta Simon**nevű tesztfelhasználó alapján.
+Egyszeri bejelentkezés működéséhez létre kell hozni egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó fluxx labs.
 
-Az Azure AD egyszeri bejelentkezés az Fluxx Labs tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez a Fluxx Labs alkalmazással a következő építőelemeket kell végrehajtania:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Fluxx Labs egyszeri bejelentkezés konfigurálása](#configure-fluxx-labs-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre Fluxx Labs tesztfelhasználót](#create-fluxx-labs-test-user)**  – szeretné, hogy egy megfelelője a Britta Simon Fluxx Labs-környezetben, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Konfigurálja az Azure AD egyszeri bejelentkezést](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. **[Fluxx Labs single sign-on](#configure-fluxx-labs-single-sign-on)** konfigurálásához az egyszeri bejelentkezés beállításainak konfigurálásához az alkalmazás oldalon.
+3. **[Hozzon létre egy Azure AD-tesztfelhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének teszteléséhez Britta Simonnal.
+4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi Britta Simon azure AD egyszeri bejelentkezés.
+5. **[Hozzon létre Fluxx Labs teszt felhasználó](#create-fluxx-labs-test-user)** - egy megfelelője Britta Simon a Fluxx Labs, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon.
 
-Az Azure AD egyszeri bejelentkezés konfigurálása Fluxx tanulhat, hajtsa végre az alábbi lépéseket:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához hajtsa végre az alábbi lépéseket:
 
-1. Az a [az Azure portal](https://portal.azure.com/), az a **Fluxx Labs** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
+1. Az [Azure Portalon](https://portal.azure.com/)a **Fluxx Labs** alkalmazásintegrációs lapon válassza az **Egyszeri bejelentkezés**lehetőséget.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+    ![Egyszeri bejelentkezési kapcsolat konfigurálása](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+2. Az **Egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza **az SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezésválasztó mód](common/select-saml-option.png)
 
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
+3. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson a **Szerkesztés** ikonra az **Egyszerű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **állítsa be egyszeri bejelentkezést az SAML** lapon, a következő lépésekkel:
+4. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon hajtsa végre az alábbi lépéseket:
 
-    ![Fluxx Labs tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-intiated.png)
+    ![Fluxx Labs Domain és URL egyszeri bejelentkezési információk](common/idp-intiated.png)
 
-    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím:
+    a. Az **Azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:
 
-    | Környezet | Az URL-minta|
+    | Környezet | URL-minta|
     |-------------|------------|
     | Production | `https://<subdomain>.fluxx.io` |
-    | Üzem előtti | `https://<subdomain>.preprod.fluxxlabs.com`|
+    | Gyártás előtti | `https://<subdomain>.preprod.fluxxlabs.com`|
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím:
+    b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:
 
-    | Környezet | Az URL-minta|
+    | Környezet | URL-minta|
     |-------------|------------|
     | Production | `https://<subdomain>.fluxx.io/auth/saml/callback` |
-    | Üzem előtti | `https://<subdomain>.preprod.fluxxlabs.com/auth/saml/callback`|
+    | Gyártás előtti | `https://<subdomain>.preprod.fluxxlabs.com/auth/saml/callback`|
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges azonosítóját és a válasz URL-cím. Kapcsolattartó [Fluxx Labs ügyfél-támogatási csapatának](mailto:travis@fluxxlabs.com) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címével. Lépjen kapcsolatba [a Fluxx Labs ügyféltámogatási csapatával,](mailto:travis@fluxxlabs.com) hogy megkapja ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
 
-5. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+5. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány** szakaszában kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállításokból a követelménynek megfelelően, és mentse a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
+    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-6. Az a **Fluxx laborok** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+6. A **Fluxx Labs beállítása** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény nek megfelelően.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
-    b. Azure AD-azonosító
+    b. Azure Hirdetés-azonosító
 
-    c. Kijelentkezési URL
+    c. Kijelentkezés URL-címe
 
 ### <a name="configure-fluxx-labs-single-sign-on"></a>Fluxx Labs egyszeri bejelentkezés konfigurálása
 
-1. Egy másik böngészőablakban jelentkezzen be a Fluxx Labs vállalati hely rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be a Fluxx Labs vállalati webhelyére rendszergazdaként.
 
-2. Válassza ki **rendszergazdai** alább a **beállítások** szakaszban.
+2. Válassza a **Rendszergazda** lehetőséget a **Beállítások** szakasz alatt.
 
-    ![Fluxx Labs Configuration](./media/fluxxlabs-tutorial/config1.png)
+    ![Fluxx Labs konfigurációja](./media/fluxxlabs-tutorial/config1.png)
 
-3. A rendszergazda panelen válassza ki a **modulok** > **Integrációk** majd **SAML SSO-(Disabled)**
+3. A Felügyeleti panelen válassza a **Beépülő** > modulok**integrációit,** majd válassza **az SAML SSO-(Letiltva) lehetőséget.**
 
-    ![Fluxx Labs Configuration](./media/fluxxlabs-tutorial/config2.png)
+    ![Fluxx Labs konfigurációja](./media/fluxxlabs-tutorial/config2.png)
 
-4. Az attribútum a szakaszban a következő lépésekkel:
+4. Az attribútumszakaszban hajtsa végre a következő lépéseket:
 
-    ![Fluxx Labs Configuration](./media/fluxxlabs-tutorial/config3.png)
+    ![Fluxx Labs konfigurációja](./media/fluxxlabs-tutorial/config3.png)
 
-    a. Válassza ki a **SAML SSO** jelölőnégyzetet.
+    a. Jelölje be az **SAML SSO** jelölőnégyzetet.
 
-    b. Az a **kérelem elérési útját** szövegmezőbe írja be **saml/auth/** .
+    b. A **Elérési út kérése** mezőbe írja be a **/auth/saml kapcsolót.**
 
-    c. Az a **visszahívási elérési** szövegmezőbe írja be **/auth/saml/callback**.
+    c. A **Visszahívási útvonal** mezőbe írja be a **/auth/saml/callback kapcsolót.**
 
-    d. Az a **helyességi feltétel fogyasztói szolgáltatás Url(Single Sign-On URL)** szövegmezőbe írja be a **válasz URL-cím** érték, amely az Azure Portalon megadott.
+    d. A **helyességi feltétel fogyasztói szolgáltatás URL-címe (egyszeri bejelentkezés URL-címe)** mezőbe írja be a **Válasz URL-címét,** amelyet az Azure Portalon megadott.
 
-    e. Az a **célközönség (SP entitás azonosítója)** szövegmezőbe írja be a **azonosító** érték, amely az Azure Portalon megadott.
+    e. A **Közönség(SP entitás azonosítója)** mezőbe írja be az **Azonosító** értéket, amelyet az Azure Portalon megadott.
 
-    f. Az a **Identity Provider SSO cél URL-cím** szövegmezőjébe illessze be a **bejelentkezési URL-cím** érték, amely az Azure Portalról másolta.
+    f. Az **identitásszolgáltató sso cél URL-cím** szövegmezőbe illessze be a **bejelentkezési URL-értéket,** amelyet az Azure Portalról másolt.
 
-    g. Nyissa meg a base-64 kódolású tanúsítványt a Jegyzettömbben, a tartalmát a vágólapra másolja és illessze be azt a **szolgáltató Identitástanúsítványt** szövegmezőbe.
+    g. Nyissa meg az alap-64 kódolású tanúsítványt a jegyzettömbben, másolja annak tartalmát a vágólapra, majd illessze be az **identitásszolgáltató tanúsítványának** szövegmezőjébe.
 
-    h. A **névazonosító formátuma** szövegmezőbe írja be az értéket `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`.
+    h. A **Névazonosító formátuma** mezőbe `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`írja be az értéket.
 
-    i. Kattintson a **Save** (Mentés) gombra.
+    i. Kattintson a **Mentés** gombra.
 
     > [!NOTE]
-    > Miután menti a tartalmat, a mező üres, a biztonság megjelenik, de az érték a konfiguráció mentése.
+    > A tartalom mentése után a mező biztonsági okokból üresen jelenik meg, de az érték a konfigurációban lett mentve.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása 
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalon Britta Simon.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. Az Azure Portalon a bal oldali ablaktáblában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd az **Összes felhasználó**lehetőséget.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+    ![A "Felhasználók és csoportok" és a "Minden felhasználó" linkek](common/users.png)
 
-2. Válassza ki **új felhasználó** a képernyő tetején.
+2. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
 
     ![Új felhasználó gomb](common/new-user.png)
 
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
+3. A Felhasználó tulajdonságokban hajtsa végre a következő lépéseket.
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+    ![A Felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    a. A **Név** mezőbe írja be **a BrittaSimon**értéket.
   
-    b. Az a **felhasználónév** mezőbe írja be brittasimon@yourcompanydomain.extension. Például: BrittaSimon@contoso.com
+    b. A **Felhasználónév** mező brittasimon@yourcompanydomain.extensiontípusa mezőben. Például: BrittaSimon@contoso.com
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    c. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson **a Létrehozás gombra.**
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Fluxx Labs Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban engedélyezi Britta Simon azure egyszeri bejelentkezés t engedhozzá fluxx labs hozzáférést biztosít.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Fluxx Labs**.
+1. Az Azure portalon válassza az **Enterprise Applications**lehetőséget, válassza az **Összes alkalmazás**lehetőséget, majd válassza a **Fluxx Labs**lehetőséget.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **Fluxx Labs**.
+2. Az alkalmazások listájában válassza a **Fluxx Labs**lehetőséget.
 
-    ![Az alkalmazások listáját a Fluxx Labs hivatkozás](common/all-applications.png)
+    ![A Fluxx Labs hivatkozás a Alkalmazások listában](common/all-applications.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+3. A bal oldali menüben válassza a **Felhasználók és csoportok**lehetőséget.
 
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+    ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Kattintson a **Felhasználó hozzáadása** gombra, majd a **Hozzárendelés hozzáadása** **párbeszédpanelen** válassza a Felhasználók és csoportok lehetőséget.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+    ![A Hozzárendelés hozzáadása ablaktábla](common/add-assign-user.png)
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
+5. A **Felhasználók és csoportok** párbeszédpanelen válassza **a Britta Simon** elemet a Felhasználók listában, majd kattintson a kijelölés gombra a képernyő alján. **Select**
 
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
+6. Ha az SAML-helyességben szerepkörértéket vár, akkor a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó megfelelő szerepkörét a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+7. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
 
 ### <a name="create-fluxx-labs-test-user"></a>Fluxx Labs tesztfelhasználó létrehozása
 
-Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be a Fluxx Labs, akkor ki kell építeni Fluxx Labs be. Fluxx Labs, esetén kiépítése a manuális feladat.
+Ahhoz, hogy az Azure AD-felhasználók bejelentkezhessenek a Fluxx Labsbe, ki kell építeni őket a Fluxx Labs-be. Fluxx Labs esetén kiépítése manuális feladat.
 
-**Üzembe helyez egy felhasználói fiókot, hajtsa végre az alábbi lépéseket:**
+**Felhasználói fiók kiépítéséhez hajtsa végre az alábbi lépéseket:**
 
-1. Jelentkezzen be rendszergazdaként a Fluxx Labs vállalati webhely.
+1. Jelentkezzen be a Fluxx Labs vállalati webhelyére rendszergazdaként.
 
-2. Kattintson a az alábbiakban látható **ikon**.
+2. Kattintson az alábbi **ikonra**.
 
-    ![Fluxx Labs Configuration](./media/fluxxlabs-tutorial/config6.png)
+    ![Fluxx Labs konfigurációja](./media/fluxxlabs-tutorial/config6.png)
 
-3. Az irányítópulton kattintson a az alább megjelenő ikonra kattintva nyissa meg a **új személyek** kártya.
+3. Az irányítópulton kattintson az alábbi ikonra az **Új emberek** kártya megnyitásához.
 
-    ![Fluxx Labs Configuration](./media/fluxxlabs-tutorial/config4.png)
+    ![Fluxx Labs konfigurációja](./media/fluxxlabs-tutorial/config4.png)
 
-4. Az a **új személyek** szakaszban, hajtsa végre az alábbi lépéseket:
+4. Az **ÚJ EMBEREK** szakaszban hajtsa végre az alábbi lépéseket:
 
-    ![Fluxx Labs Configuration](./media/fluxxlabs-tutorial/config5.png)
+    ![Fluxx Labs konfigurációja](./media/fluxxlabs-tutorial/config5.png)
 
-    a. Fluxx Labs egyedi azonosítóként e-mailek használata Egyszeri bejelentkezéshez. Töltse fel a **SSO UID** mezőt a felhasználó e-mail címét, az e-mail-címét, amelyek használják az Egyszeri bejelentkezés megfelelő a.
+    a. A Fluxx Labs az e-mailt használja az SSO-bejelentkezések egyedi azonosítójaként. Feltölti az **SSO UID mezőt** a felhasználó e-mail címével, amely megegyezik az e-mail címmel, amelyet bejelentkezésként használnak az SSO-val.
 
-    b. Kattintson a **Save** (Mentés) gombra.
+    b. Kattintson a **Mentés** gombra.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
 
-Ha a hozzáférési panelen a Fluxx Labs csempére kattint, meg kell lehet automatikusan bejelentkezett a Fluxx Labs, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor a Hozzáférési panelen a Fluxx Labs csempére kattint, automatikusan be kell jelentkeznie a Fluxx Labs-be, amelyhez beállította az SSO-t. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

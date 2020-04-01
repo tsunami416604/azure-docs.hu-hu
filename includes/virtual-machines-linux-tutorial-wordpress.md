@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 76a080d40721fa78ad703f77f6dbe7a3363ab77e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68857399"
 ---
 ## <a name="install-wordpress"></a>A WordPress telepítése
@@ -21,7 +21,7 @@ Ez a WordPress-telepítés csak a működés ellenőrzésére szolgál. A WordPr
 
 ### <a name="install-the-wordpress-package"></a>A WordPress-csomag telepítése
 
-Futtassa a következő parancsot:
+Futtassa az alábbi parancsot:
 
 ```bash
 sudo apt install wordpress

@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: e7b8f8a33b741a8dcf2d1a68ae3cf86d6e3687eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a2674ca0f4808cb6f01781565e57369ca5d3ac37
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79284602"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478790"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Az eszközről a felhőbe irányuló üzenetek beolvasása a beépített végpontról
 
@@ -24,7 +24,7 @@ Alapértelmezés szerint az üzenetek az [Event Hubs](https://azure.microsoft.co
 | **Partíciók száma** | Állítsa be ezt a tulajdonságot a létrehozáskor az eszközről a felhőbe irányuló eseménybetöltés [partícióinak](../event-hubs/event-hubs-features.md#partitions) számának meghatározásához. |
 | **Megőrzési idő**  | Ez a tulajdonság határozza meg, hogy az IoT Hub mennyi ideig őrizze meg az üzeneteket napokban. Az alapértelmezett érték egy nap, de hét napra növelhető. |
 
-Az IoT Hub legfeljebb 7 napig engedélyezi az adatmegőrzést a beépített Event Hubs-ban. Beállíthatja a megőrzési idő létrehozása során az IoT Hub létrehozása során. Az IoT Hub adatmegőrzési ideje az IoT hub szintjétől és az egység típusától függ. A méret szempontjából a beépített Event Hubs megtarthatja a maximális üzenetmérettel rendelkező üzeneteket legalább 24 órányi kvótáig. Például 1 S1 egység IoT Hub elegendő tárhelyet biztosít legalább 400K üzenetek egyenként 4k méretű. Ha az eszközök kisebb üzeneteket küldenek, előfordulhat, hogy hosszabb ideig (legfeljebb 7 napig) maradnak meg a ttól függően, hogy mennyi tárhelyet használnak fel. Garantáljuk, hogy az adatok at a megadott megőrzési idő legalább.
+Az IoT Hub legfeljebb 7 napig engedélyezi az adatmegőrzést a beépített Event Hubs-ban. Beállíthatja a megőrzési idő létrehozása során az IoT Hub létrehozása során. Az IoT Hub adatmegőrzési ideje az IoT hub szintjétől és az egység típusától függ. A méret szempontjából a beépített Event Hubs megtarthatja a maximális üzenetmérettel rendelkező üzeneteket legalább 24 órányi kvótáig. Például 1 S1 egység IoT Hub elegendő tárhelyet biztosít legalább 400K üzenetek egyenként 4k méretű. Ha az eszközök kisebb üzeneteket küldenek, előfordulhat, hogy hosszabb ideig (legfeljebb 7 napig) maradnak meg a ttól függően, hogy mennyi tárhelyet használnak fel. Garantáljuk, hogy az adatok at a megadott megőrzési idő legalább. Az üzenetek lejárnak, és nem lesznek elérhetők a megőrzési idő lejárta után. 
 
 Az IoT Hub azt is lehetővé teszi, hogy a beépített eszközről a felhőbe irányuló fogadási végponton kezelje a fogyasztói csoportokat. Az Egyes IoT Hub-szolgáltatásokhoz legfeljebb 20 fogyasztói csoport lehet.
 
@@ -62,9 +62,9 @@ Az SDK-k segítségével csatlakozhat a beépített Event Hub-kompatibilis végp
 
 | Nyelv | SDK | Példa | Megjegyzések |
 | -------- | --- | ------ | ----- |
-| .NET | https://github.com/Azure/azure-event-hubs-dotnet | [Quickstart](quickstart-send-telemetry-dotnet.md) | Az Event Hubs-kompatibilis adatokat használja |
- Java | https://github.com/Azure/azure-event-hubs-java | [Quickstart](quickstart-send-telemetry-java.md) | Az Event Hubs-kompatibilis adatokat használja |
-| Node.js | https://github.com/Azure/azure-event-hubs-node | [Quickstart](quickstart-send-telemetry-node.md) | IoT Hub kapcsolati karakterláncot használ |
+| .NET | https://github.com/Azure/azure-event-hubs-dotnet | [Első lépések](quickstart-send-telemetry-dotnet.md) | Az Event Hubs-kompatibilis adatokat használja |
+ Java | https://github.com/Azure/azure-event-hubs-java | [Első lépések](quickstart-send-telemetry-java.md) | Az Event Hubs-kompatibilis adatokat használja |
+| Node.js | https://github.com/Azure/azure-event-hubs-node | [Első lépések](quickstart-send-telemetry-node.md) | IoT Hub kapcsolati karakterláncot használ |
 | Python | https://github.com/Azure/azure-event-hubs-python | https://github.com/Azure/azure-event-hubs-python/blob/master/examples/iothub_recv.py | IoT Hub kapcsolati karakterláncot használ |
 
 A beépített Event Hub-kompatibilis végponttal használható termékintegrációk a következők:

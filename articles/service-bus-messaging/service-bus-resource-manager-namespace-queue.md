@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 12/20/2019
+ms.date: 03/30/2020
 ms.author: spelluru
-ms.openlocfilehash: 8605dae05b7f5270513b645367248090006c04a8
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: b08253104eeb61f6bb09fde507473d235a996494
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384908"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422616"
 ---
 # <a name="quickstart-create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>Rövid útmutató: Hozzon létre egy Service Bus-névteret és egy várólistát egy Azure Resource Manager-sablon használatával
 
@@ -63,9 +63,27 @@ Ezzel a sablonnal üzembe helyezhet egy Service Bus-névteret várólistával.
 
 [A Service Bus-várólisták](service-bus-queues-topics-subscriptions.md#queues) első be, első ki (FIFO) üzenetkézbesítést kínálnak egy vagy több versenytárs fogyasztónak.
 
-Az automatikus üzembe helyezéshez kattintson az alábbi gombra:
+A központi telepítés automatikus futtatásához kattintson a következő gombra: Hozzon létre egy új erőforráscsoportot a központi telepítéshez, hogy később könnyen letakaríthassa.
 
 [![Üzembe helyezés az Azure-ban](./media/service-bus-resource-manager-namespace-queue/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-queue%2Fazuredeploy.json)
+
+## <a name="verify-the-deployment"></a>A telepítés ellenőrzése
+
+1. Válassza **az értesítések** a tetején, hogy az állapotát a központi telepítés. Várjon, amíg a telepítés sikeres lesz. Ezután válassza az Értesítési üzenet **Ugrás erőforráscsoportra** lehetőséget a Service Bus-névteret tartalmazó erőforráscsoport lapjának megugrásához. 
+
+    ![Értesítés a központi telepítésről](./media/service-bus-resource-manager-namespace-queue/notification.png)
+2. Ellenőrizze, hogy a Service Bus névtere az erőforrások listájában. 
+
+    ![Erőforráscsoport - névtér](./media/service-bus-resource-manager-namespace-queue/resource-group-namespace.png)
+3. Válassza ki a névteret a listából a **Service Bus névtér** lap megtekintéséhez. 
+
+## <a name="cleanup-resources"></a>Az erőforrások eltávolítása
+
+1. Az Azure Portalon keresse meg az **erőforráscsoport erőforráscsoport** lapját.
+2. Az eszköztáron kattintson az **Erőforráscsoport törlése** gombra. 
+3. Írja be az erőforráscsoport nevét, és válassza a **Törlés gombot.** 
+
+    ![Erőforráscsoport - törlés](./media/service-bus-resource-manager-namespace-queue/resource-group-delete.png)
 
 ## <a name="next-steps"></a>További lépések
 

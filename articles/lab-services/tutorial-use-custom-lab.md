@@ -15,14 +15,14 @@ ms.custom: mvc
 ms.date: 01/18/2019
 ms.author: spelluru
 ms.openlocfilehash: ee9a68df685095244fc9471b7d4ab0f6cee0642d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68360263"
 ---
-# <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>Oktatóanyag: Tesztkörnyezet elérése Azure DevTest Labs
-Ebben az oktatóanyagban az [oktatóanyagban létrehozott labort használja: Tesztkörnyezet létrehozása Azure DevTest Labsban](tutorial-create-custom-lab.md) .
+# <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>Oktatóanyag: Tesztkörnyezet elérése az Azure DevTest Labs szolgáltatásban
+Ebben az oktatóanyagban az [Oktatóanyag: Tesztkörnyezet létrehozása az Azure DevTest Labs szolgáltatásban](tutorial-create-custom-lab.md) című szakaszban létrehozott tesztkörnyezetet használatát ismerheti meg.
 
 Az oktatóanyag során a következő lépéseket hajtja végre:
 
@@ -31,11 +31,11 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 > * Kapcsolódás a virtuális géphez
 > * A virtuális gép lefoglalásának feloldása
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
 ## <a name="access-the-lab"></a>Hozzáférés a tesztkörnyezethez
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
 2. Válassza ki a bal oldali menü **Összes erőforrás** elemét. 
 3. Válassza ki a **DevTest Labs** erőforrástípust. 
 4. Válassza ki a tesztkörnyezetet. 
@@ -61,12 +61,12 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
     Linux rendszerű virtuális géphez való csatlakozáshoz a virtuális gép esetében engedélyezni kell az SSH- vagy az RDP-hozzáférést. A Linux rendszerű virtuális gépekhez történő RDP-csatlakozással kapcsolatban lásd: [Távoli asztal telepítése és konfigurálása Azure-beli Linux virtuális géphez való csatlakozáshoz](../virtual-machines/linux/use-remote-desktop.md). 
 
     > [!NOTE]
-    > A virtuális gép virtuálisgép-lapjára más módokon is eljuthat. Íme néhány közülük: 
+    > Vannak más módon is, hogy a virtuális gép a virtuális gép lapjára. Íme néhány közülük: 
     > 
-    > 1. Keresse meg az előfizetésben található összes virtuális gépet. Válassza ki a **virtuális gépet a virtuális gépek** listájából, hogy a virtuális gép oldalra kerüljön.
-    > 2. Navigáljon az **erőforráscsoport oldalához** . Ezután válassza ki a virtuális gépet az erőforráscsoport erőforrásainak listájából, hogy beolvassa a **virtuális gép** lapját. 
+    > 1. Keresse meg az összes virtuális gépet az előfizetésben. Válassza ki a virtuális gépet a virtuális gépek listájában a **virtuális gép** laphoz való eljutni.
+    > 2. Nyissa meg az **erőforráscsoport Erőforráscsoport** lapját. Ezután válassza ki a virtuális gépet az erőforráscsoport erőforrásainak listájából a **Virtuálisgép** laphoz való megtéréshez. 
     >
-    > Ne használja a **Kapcsolódás** gombot azon az eszköztáron, amelyet a **virtuális gép** oldalán érhet el, és használja ezeket a beállításokat. Ehelyett keresse meg a **virtuális gép** lapot az **DevTest Labs** lapon a jelen cikkben látható módon, majd használja a **Kapcsolódás** gombot az eszköztáron.
+    > Ne használja a **Csatlakozás** gombot a **Virtuálisgép-lap** eszköztárán, amelyet az alábbi beállításokkal használhat. Ehelyett keresse meg a **Virtuális gép** lapot a **DevTest Labs** lapról a jelen cikkben látható módon, majd használja a **Csatlakozás** gombot az eszköztáron.
 
 
 ## <a name="unclaim-the-vm"></a>A virtuális gép lefoglalásának feloldása
@@ -75,11 +75,11 @@ Ha már nem használja a virtuális gépet, az alábbi lépéseket követve oldj
 1. A virtuális gép oldalán válassza ki az eszköztár **Feloldás** elemét. 
 
     ![A virtuális gép lefoglalásának feloldása](./media/tutorial-use-custom-lab/unclaim-vm-menu.png)
-1. A virtuális gép a lefoglalás feloldása előtt leáll. A művelet állapota az értesítésekben látható.  
-3. Váltson vissza a DevTest Lab oldalára úgy, hogy a felső navigációs menüben a labor nevére kattint. 
+1. A virtuális gép a lefoglalás feloldása előtt leáll. A művelet állapotát az értesítésekben láthatja.  
+3. Lépjen vissza a DevTest Lab lapra, és kattintson a labor nevére a képernyő menüjének menüjében. 
     
-    ![Navigáljon vissza a laborba](./media/tutorial-use-custom-lab/breadcrumb-to-lab.png)
-1. Ellenőrizze, hogy a **virtuális** gép megjelenik-e a jogcímek listájának alján.
+    ![Vissza a laborba](./media/tutorial-use-custom-lab/breadcrumb-to-lab.png)
+1. Győződjön meg arról, hogy a virtuális gép a **követelable virtuális gépek** listájában alul.
 
     
 ## <a name="next-steps"></a>További lépések

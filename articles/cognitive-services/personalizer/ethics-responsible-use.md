@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: diberry
-ms.openlocfilehash: 11b626c0033814f0886ac76fff0c5d4087a80554
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e422284b871214dbeca31b5dd17b9177a18ad3c8
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "71720237"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478106"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>A Personalizer felelősségteljes végrehajtásának irányelvei
 
@@ -25,7 +25,7 @@ Ezek az iránymutatások nem jogi tanácsadásnak minősülnek, és külön kell
 
 Továbbá, az alkalmazás tervezésekor a Personalizer használatával, figyelembe kell vennie az adatközpontú AI-rendszer fejlesztése során fennálló felelősségek széles körét, beleértve az etikát, az adatvédelmet, a biztonságot, a biztonságot, a befogadást, az átláthatóságot és az elszámoltathatóságot. Ezekről bővebben az [Ajánlott olvasás](#recommended-reading) című részben olvashat.
 
-A következő tartalmat használhatja kezdő ellenőrzőlistaként, és testreszabhatja és finomíthatja a forgatókönyvhöz. Ez a dokumentum két fő részből áll: Az első a felelős használati szempontok kiemelésére szolgál a personalizer forgatókönyvek, funkciók és jutalmak kiválasztásakor. A második olyan értékhalmazt tartalmaz, amelyet a Microsoft úgy véli, figyelembe kell venni az AI-rendszerek létrehozásakor, és végrehajtható javaslatokat és kockázatokat ad arra vonatkozóan, hogy a Personalizer használata hogyan befolyásolja őket. 
+A következő tartalmat használhatja kezdő ellenőrzőlistaként, és testreszabhatja és finomíthatja a forgatókönyvhöz. Ez a dokumentum két fő részből áll: Az első a felelős használati szempontok kiemelésére szolgál a personalizer forgatókönyvek, funkciók és jutalmak kiválasztásakor. A második olyan értékhalmazt tartalmaz, amelyet a Microsoft úgy véli, figyelembe kell venni az AI-rendszerek létrehozásakor, és végrehajtható javaslatokat és kockázatokat ad arra vonatkozóan, hogy a Personalizer használata hogyan befolyásolja őket.
 
 
 ## <a name="your-responsibility"></a>Az Ön felelőssége
@@ -42,18 +42,18 @@ A Microsoft folyamatosan erőfeszítéseket tesz eszközeiés dokumentumai segí
 A Personalizer megvalósítása nagy értéket képviselhet a felhasználók és a vállalkozás számára. A Personalizer felelősségteljes megvalósításához először a következő irányelveket kell figyelembe venni, ha:
 
 * A Személyre szabás alkalmazásához használt esetek kiválasztása.
-* Épület [jutalom funkciók](https://github.com/Azure/personalization-rl/blob/master/docs/concepts-rewards.md).
-* Annak kiválasztása, hogy mely [funkciókat](https://github.com/Azure/personalization-rl/blob/master/docs/concepts-features.md) fogja használni a környezetről és a személyre szabáshoz szükséges lehetséges műveleteket.
+* Épület [jutalom funkciók](concept-rewards.md).
+* Annak kiválasztása, hogy mely [funkciókat](concepts-features.md) fogja használni a környezetről és a személyre szabáshoz szükséges lehetséges műveleteket.
 
 
 ## <a name="choosing-use-cases-for-personalizer"></a>Használati esetek kiválasztása a Personalizer számára
 
-Hasznos lehet olyan szolgáltatást használni, amely megtanulja a tartalom és a felhasználói felületek személyre szabását. Az is misapplied, ha az út a személyre szabott teremt negatív mellékhatások a valós világban, beleértve, ha a felhasználók nincsenek tisztában a tartalom személyre. 
+Hasznos lehet olyan szolgáltatást használni, amely megtanulja a tartalom és a felhasználói felületek személyre szabását. Az is misapplied, ha az út a személyre szabott teremt negatív mellékhatások a valós világban, beleértve, ha a felhasználók nincsenek tisztában a tartalom személyre.
 
-Példák a felhasználási Personalizer fokozott potenciális negatív mellékhatások, illetve az átláthatóság hiánya közé tartozik a forgatókönyvek, ahol a "jutalom" függ sok hosszú távú összetett tényezők, hogy ha túl egyszerűsített azonnali jutalom lehet kedvezőtlen eredményeket az egyének számára. Ezek általában "következményes" döntéseknek minősülnek, vagy olyan döntések, amelyek a károsodás kockázatával járnak. Példa: 
+Példák a felhasználási Personalizer fokozott potenciális negatív mellékhatások, vagy az átláthatóság hiánya közé tartozik a forgatókönyvek, ahol a "jutalom" függ sok hosszú távú összetett tényezők, hogy ha túl egyszerűsített azonnali jutalom lehet kedvezőtlen eredményeket az egyének számára. Ezek általában "következményes" döntéseknek minősülnek, vagy olyan döntések, amelyek a károsodás kockázatával járnak. Példa:
 
 
-* **Pénzügy**: A hitel-, pénzügyi és biztosítási termékekre vonatkozó ajánlatok személyre szabása, ahol a kockázati tényezők olyan adatokon alapulnak, amelyekről az egyének nem tudnak, nem szerezhetnek be, vagy nem vitathatják. 
+* **Pénzügy**: A hitel-, pénzügyi és biztosítási termékekre vonatkozó ajánlatok személyre szabása, ahol a kockázati tényezők olyan adatokon alapulnak, amelyekről az egyének nem tudnak, nem szerezhetnek be, vagy nem vitathatják.
 * **Oktatás**: Személyre szabása soraiban az iskolai tanfolyamok és oktatási intézmények, ahol ajánlásokat is szaporítják elfogultság és csökkenti a felhasználók figyelmét más lehetőségeket.
 * **Demokrácia és polgári részvétel**: A tartalom személyre szabása a felhasználók számára a vélemények befolyásolása céljából következményes és manipulatív.
 * **Harmadik fél jutalomértékelése:** Olyan elemek személyre szabása, amelyeknél a jutalom a felhasználó utolsó harmadik fél általi értékelésén alapul, ahelyett, hogy a felhasználó saját viselkedése által generált jutalom lenne.
@@ -85,8 +85,8 @@ Alkalmazza az alábbi eljárásokat, amikor olyan funkciókat választ, amelyeke
 * Fontolja meg a jogszerűségét és etikáját bizonyos funkciók egyes alkalmazások, és hogy ártatlannak látszó funkciók lehetnek proxy mások szeretne, vagy el kell kerülni,
 * Legyen átlátható a felhasználók számára, hogy algoritmusok és adatelemzés segítségével személyre szabott a beállításokat látnak.
 * Tegye fel magának a kérdést: Érdekelné-e a felhasználókat, és boldoglennék, ha ezeket az információkat a tartalom személyre szabására használnám fel? Szívesen mutatnám meg nekik, hogyan döntöttek úgy, hogy kiemelnek vagy elrejtenek bizonyos elemeket?
-* Eltérő jellemzőkön alapuló besorolási vagy szegmentálási adatok helyett használjon viselkedési adatokat. A demográfiai adatokat hagyományosan történelmi okokból használták a kiskereskedők – a demográfiai jellemzőket egyszerűnek tűnt a digitális korszak előtt összegyűjteni és cselekedni , de kérdés, hogy mennyire relevánsak a demográfiai adatok, ha tényleges interakcióval rendelkezünk, és a felhasználók preferenciáihoz és identitásához jobban kapcsolódó előzményadatok.
-* Fontolja meg, hogyan lehet megakadályozni, hogy a rosszindulatú felhasználók "meghamisítsák" a funkciókat, amelyek nagy számban történő kihasználásesetén félrevezető módon képezhetik a Personalizer képzését, hogy szándékosan megzavarják, zavarba hozzák és zaklassák a felhasználók bizonyos osztályait. 
+* Eltérő jellemzőkön alapuló besorolási vagy szegmentálási adatok helyett használjon viselkedési adatokat. A demográfiai adatokat hagyományosan történelmi okokból használták a kiskereskedők – a demográfiai jellemzőket egyszerűnek tűnt a digitális korszak előtt összegyűjteni és eljárni -, de megkérdőjelezi, hogy mennyire relevánsak a demográfiai adatok, ha tényleges interakció, kontextuális és történelmi adatok kapcsolódnak a felhasználók preferenciáihoz és identitásához.
+* Fontolja meg, hogyan lehet megakadályozni, hogy a rosszindulatú felhasználók "meghamisítsák" a funkciókat, amelyek nagy számban történő kihasználásesetén félrevezető módon képezhetik a Personalizer képzését, hogy szándékosan megzavarják, zavarba hozzák és zaklassák a felhasználók bizonyos osztályait.
 * Ha ez helyénvaló és megvalósítható, tervezze meg az alkalmazást úgy, hogy a felhasználók leiratkozhassanak bizonyos személyes funkciókról, vagy leiratkozhassanak róluk. Ezek csoportosíthatók, például "Helyadatok", "Eszközadatok", "Korábbi vásárlási előzmények" stb.
 
 
@@ -101,13 +101,13 @@ Például a kattintások jutalmazása a Personalizer Szolgáltatás nak minden m
 Például egy hírwebhely a kattintásoknál valami értelmesebb hez kötött jutalmakat szeretne beállítani, például "A felhasználó elegendő időt fordított a tartalom olvasására?" "Rákattintottak-e a vonatkozó cikkekre vagy hivatkozásokra?". A Personalizer segítségével könnyen összelehet kötni a mutatókat a jutalmakkal. De legyen óvatos, hogy ne zavarja a rövid távú felhasználói elkötelezettség jó eredményeket.
 
 ### <a name="unintended-consequences-from-reward-scores"></a>Nem szándékolt következmények a jutalompontszámokból
-A jutalompontszámok a legjobb szándékkal épülhetnek fel, de továbbra is váratlan következményekkel vagy nem kívánt eredményekkel járhatnak arra vonatkozóan, hogy a Personalizer hogyan rangsorolja a tartalmat. 
+A jutalompontszámok a legjobb szándékkal épülhetnek fel, de továbbra is váratlan következményekkel vagy nem kívánt eredményekkel járhatnak arra vonatkozóan, hogy a Personalizer hogyan rangsorolja a tartalmat.
 
 Tekintse meg a következő példákat:
 
 * A videótartalom személyre szabásának jutalmazása a megnézett videóhosszának százalékán valószínűleg rövidebb videókat rangsorol.
 * A közösségi média megosztásainak jutalmazása, anélkül, hogy a megosztott tartalom vagy maga a tartalom hangulatelemzése alapján rangsorolhatja a sértő, nem moderált vagy gyulladásos tartalmakat, ami hajlamos sok "elkötelezettségre" uszítani, de kevés értéket ad hozzá.
-* Jutalmazza a keresetet a felhasználói felület elemeit, hogy a felhasználók nem várják, hogy változtatni zavarhatja a használhatóság és a kiszámíthatóság a felhasználói felület, ahol a gombok meglepően változó helyét vagy célját figyelmeztetés nélkül, ami megnehezíti az egyes felhasználók csoportjait, hogy hatékonyan dolgozhassanak.
+* Jutalmazza a keresetet a felhasználói felület elemeit, hogy a felhasználók nem várják, hogy változtatni zavarhatja a használhatóság és a kiszámíthatóság a felhasználói felület, ahol a gombok meglepően változó helyét vagy célját figyelmeztetés nélkül, ami megnehezíti az egyes felhasználói csoportok, hogy felfüggeszti a produktív.
 
 Az alábbi bevált gyakorlatok végrehajtása:
 
@@ -122,7 +122,7 @@ A következő tervezési területek a mik felelős megvalósítását. Tudjon me
 ![AI-értékek a jövőbeli számításból](media/ethics-and-responsible-use/ai-values-future-computed.png)
 
 ### <a name="accountability"></a>Elszámoltathatóság
-*Az AI rendszereket tervező és üzembe helyező személyeknek elszámoltathatónak kell lenniük a rendszereik működéséért.* 
+*Az AI rendszereket tervező és üzembe helyező személyeknek elszámoltathatónak kell lenniük a rendszereik működéséért.*
 
 * Hozzon létre belső irányelveket a Rról, hogyan valósíthatja meg a Personalizer-t, dokumentálhatja és kommunikálhatja azokat a csapatával, a vezetőkkel és a beszállítókkal.
 * Rendszeresen átkell tekintenie, hogyan számítják ki a jutalompontszámokat, végezzen offline értékeléseket, hogy lássa, milyen funkciók befolyásolják a Personalizert, és az eredmények segítségével kiküszöbölheti a szükségtelen és szükségtelen funkciókat.
@@ -155,9 +155,9 @@ A következő tervezési területek a mik felelős megvalósítását. Tudjon me
 *Az AI systems-nek biztonságosnak kell lennie, és tiszteletben kell tartania az adatvédelmet.* A Personalizer használatakor:
 
 * *Tájékoztassa a felhasználókat előre az összegyűjtött adatokról és azok felhasználásáról, és előzetesen szerezze be hozzájárulásukat*a helyi és iparági előírásoknak megfelelően.
-* *Adatvédelmet védő felhasználói vezérlők biztosítása.* A személyes adatokat tároló alkalmazások esetében fontolja meg egy könnyen megtalálható gomb megadását az olyan funkciókhoz, mint például: 
-   * `Show me all you know about me`    
-   * `Forget my last interaction` 
+* *Adatvédelmet védő felhasználói vezérlők biztosítása.* A személyes adatokat tároló alkalmazások esetében fontolja meg egy könnyen megtalálható gomb megadását az olyan funkciókhoz, mint például:
+   * `Show me all you know about me`
+   * `Forget my last interaction`
    * `Delete all you know about me`
 
 Bizonyos esetekben, ezek jogilag szükséges. Fontolja meg a kompromisszumokat átképzési modellek rendszeres időközönként, így azok nem tartalmaznak nyomkövetései törölt adatokat.
@@ -165,7 +165,7 @@ Bizonyos esetekben, ezek jogilag szükséges. Fontolja meg a kompromisszumokat �
 ### <a name="inclusiveness"></a>Befogadás
 *Az emberi szükségletek és tapasztalatok széles körével foglalkozik.*
 * *Személyre szabott felhasználói élményt biztosítanak a kisegítő lehetőségeket támogató felületekhez.* A hatékonyság, hogy jön a jó személyre szabott - alkalmazott mennyiségének csökkentése érdekében az erőfeszítés, a mozgás, és szükségtelen ismétlés kölcsönhatások- lehet különösen előnyös a fogyatékkal élők számára.
-* *Az alkalmazás viselkedésének beállítása a környezethez.* A Personalizer segítségével például félreteheti a csevegőrobot szándékait, mivel a helyes értelmezés lehet kontextuális, és egy méret nem feltétlenül fér el mindenszámára. 
+* *Az alkalmazás viselkedésének beállítása a környezethez.* A Personalizer segítségével például félreteheti a csevegőrobot szándékait, mivel a helyes értelmezés lehet kontextuális, és egy méret nem feltétlenül fér el mindenszámára.
 
 
 ## <a name="proactive-readiness-for-increased-data-protection-and-governance"></a>Proaktív felkészültség a fokozott adatvédelemre és irányításra
@@ -185,7 +185,7 @@ Fontolja meg a csapattagok, a felhasználók és a vállalkozások tulajdonosai 
 Minden olyan személy, gondolkodás mellékhatások használata bármilyen technológia korlátozza a perspektíva és az élettapasztalat. Bővítse ki a rendelkezésre álló vélemények körét azáltal, hogy változatosabb hangokat hoz be a csapatokba, felhasználókba vagy tanácsadó testületekbe; hogy lehetséges legyen, és arra ösztönözzék őket, hogy felszólaljanak. Fontolja meg a képzési és tananyagok további bővítése a csapat tudás ebben a tartományban, és adjunk hozzá képesség, hogy megvitassák az összetett és bizalmas témákat.
 
 Fontolja meg a felelős használattal kapcsolatos feladatok kezelését, csakúgy, mint az alkalmazás életciklusának más, például a felhasználói élményhez, a biztonsághoz vagy a DevOps-hoz kapcsolódó feladatokat. Ezek a feladatok és követelményeik nem lehetnek utógondolatok. A felelős felhasználást az alkalmazás teljes életciklusa során meg kell vitatni és ellenőrizni kell.
- 
+
 ## <a name="questions-and-feedback"></a>Kérdések és visszajelzések
 
 A Microsoft folyamatosan erőfeszítéseket tesz olyan eszközökés dokumentumok segítségével, amelyek segítenek önnek e feladatok ellátásában. Csapatunk arra kéri Önt, hogy [küldjön visszajelzést a Microsoftnak,](mailto:cogsvcs-RL-feedback@microsoft.com?subject%3DPersonalizer%20Responsible%20Use%20Feedback&body%3D%5BPlease%20share%20any%20question%2C%20idea%20or%20concern%5D) ha úgy gondolja, hogy további eszközök, termékfunkciók és dokumentumok segíthetnek a Personalizer használatára vonatkozó irányelvek megvalósításában.

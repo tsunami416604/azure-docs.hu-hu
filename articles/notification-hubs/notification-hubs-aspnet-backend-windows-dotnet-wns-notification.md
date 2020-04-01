@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
 ms.openlocfilehash: 914ccc2ac74048abb2a66b61aa65b771f8141d5e
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71212060"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>Oktatóanyag: Értesítések küldése adott felhasználóknak az Azure Notification Hubs használatával
@@ -33,7 +33,7 @@ ms.locfileid: "71212060"
 Az oktatóanyag bemutatja, hogy hogyan küldhetők leküldéses értesítések adott alkalmazásfelhasználónak, adott eszközre az Azure Notification Hubs használatával. Az ASP.NET WebAPI háttérrendszer az ügyfelek hitelesítésére szolgál. Amikor a háttérrendszer hitelesíti az ügyfélalkalmazás felhasználóját, automatikusan hozzáad egy címkét az értesítés regisztrációjához. A háttérrendszer ezt a címkét használja, hogy értesítéseket küldjön az adott felhasználónak.
 
 > [!NOTE]
-> Az oktatóanyag teljes kódja megtalálható a [GitHubon](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers).
+> Az oktatóanyag elkészült kódja megtalálható a [GitHubon.](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers)
 
 Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 
@@ -48,25 +48,25 @@ Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az oktatóanyag az értesítési központra és a Visual Studio-projektre [épül, amelyet az oktatóanyagban hozott létre: Értesítések küldése univerzális Windows-platform alkalmazásoknak az Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) oktatóanyag használatával. Ezért fejezze be azt az oktatóanyagot a jelen oktatóanyag elkezdése előtt.
+Ez az oktatóanyag az [Oktatóanyag: Értesítések küldése az Univerzális Windows-platformon alapuló alkalmazásoknak az Azure Notification Hubs használatával](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) című oktatóanyagban létrehozott értesítési központra és Visual Studio-projektre épül. Ezért fejezze be azt az oktatóanyagot a jelen oktatóanyag elkezdése előtt.
 
 > [!NOTE]
 > Ha az Azure App Service Mobile Apps szolgáltatását használja háttérszolgáltatásként, az oktatóanyag [Mobile Apps-verzióját](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md) tekintse meg.
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
-## <a name="update-the-code-for-the-uwp-client"></a>A UWP-ügyfél kódjának frissítése
+## <a name="update-the-code-for-the-uwp-client"></a>Az UWP-ügyfél kódjának frissítése
 
-Ebben a szakaszban az [oktatóanyagban befejezett projekt kódját frissíti: Értesítések küldése univerzális Windows-platform alkalmazásoknak az Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) oktatóanyag használatával. A projektnek már társítva kell lennie a Windows Áruházhoz. Emellett úgy kell konfigurálni, hogy az értesítési központot használja. Ebben a szakaszban olyan kódot fog hozzáadni, amely meghívja az új WebAPI háttérrendszert, majd az értesítések regisztrálásához és küldéséhez használja azt.
+Ebben a szakaszban az [Oktatóanyag: Értesítések küldése az Univerzális Windows-platformon alapuló alkalmazásoknak az Azure Notification Hubs használatával](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) című oktatóanyag során létrehozott kódot fogja frissíteni. A projektnek már társítva kell lennie a Windows Áruházhoz. Emellett úgy kell konfigurálni, hogy az értesítési központot használja. Ebben a szakaszban olyan kódot fog hozzáadni, amely meghívja az új WebAPI háttérrendszert, majd az értesítések regisztrálásához és küldéséhez használja azt.
 
-1. A Visual Studióban nyissa meg az [oktatóanyaghoz létrehozott megoldást: Értesítések küldése Univerzális Windows-platform alkalmazásoknak az Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)használatával.
-2. Megoldáskezelő kattintson a jobb gombbal a Univerzális Windows-platform (UWP) projektre, majd kattintson a **NuGet-csomagok kezelése**elemre.
-3. A bal oldali oldalon válassza a **Tallózás**lehetőséget.
+1. A Visual Studióban nyissa meg az [Oktatóanyag: Értesítések küldése az Univerzális Windows-platformon alapuló alkalmazásoknak az Azure Notification Hubs használatával](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) című oktatóanyaghoz létrehozott megoldást.
+2. A Megoldáskezelőben kattintson a jobb gombbal az Univerzális Windows platform (UWP) projektre, majd kattintson **a NuGet-csomagok kezelése parancsra.**
+3. A bal oldalon válassza a **Tallózás**gombot.
 4. A **Search** (Keresés) mezőbe írja be a **Http Client** (HTTP-ügyfél) kifejezést.
 5. A találatok listájában kattintson a **System.Net.Http** elemre, majd az **Install** (Telepítés) parancsra. Fejezze be a telepítést.
 6. A NuGet **Search** (Keresés) mezőjébe írja be a **Json.net** kifejezést. Telepítse a **Newtonsoft.json** csomagot, majd zárja be a NuGet-csomagkezelő ablakát.
 7. A Megoldáskezelőben megnyitott **WindowsApp** projektben kattintson duplán a **MainPage.xaml** fájlra a Visual Studio-szerkesztőben való megnyitásához.
-8. Az `MainPage.xaml` XML-kódban cserélje le a `<Grid>` szakaszt a következő kódra: Ez a kód egy felhasználónevet és egy jelszó szövegmezőt adja meg, amelyet a felhasználó a következővel hitelesít. Emellett szövegmezőket is felvesz az értesítési üzenethez, valamint a felhasználónevet jelölő címkét, amely a következő értesítést kapja:
+8. Az `MainPage.xaml` XML-kódban `<Grid>` cserélje le a szakaszt a következő kódra: Ez a kód hozzáad egy felhasználónevet és egy jelszót tartalmazó szöveget, amelyen a felhasználó hitelesítést tesz. Azt is hozzáteszi, szövegdobozok az értesítési üzenet és a felhasználónév tag, hogy meg kell kapnia az értesítést:
 
     ```xml
     <Grid>
@@ -118,7 +118,7 @@ Ebben a szakaszban az [oktatóanyagban befejezett projekt kódját frissíti: É
         </StackPanel>
     </Grid>
     ```
-9. A megoldáskezelő nyissa meg `MainPage.xaml.cs` a **(Windows 8,1)** és a **(Windows Phone-telefon 8,1)** projekteket tartalmazó fájlt. Adja hozzá a következő `using` utasításokat mindkét fájl elejéhez:
+9. A Megoldáskezelőben `MainPage.xaml.cs` nyissa meg a **(Windows 8.1)** és **a (Windows Phone 8.1)** projektek fájlját. Adja hozzá a következő `using` utasításokat mindkét fájl elejéhez:
 
     ```csharp
     using System.Net.Http;
@@ -128,12 +128,12 @@ Ebben a szakaszban az [oktatóanyagban befejezett projekt kódját frissíti: É
     using Windows.UI.Popups;
     using System.Threading.Tasks;
     ```
-10. A WindowsApp projektben adja hozzá a következő tagot a `MainPage` osztályhoz. `MainPage.xaml.cs` Ne felejtse el az `<Enter Your Backend Endpoint>` karakterláncot a saját háttérrendszere korábban beszerzett végpontjára cserélni. Például: `http://mybackend.azurewebsites.net`.
+10. A `MainPage.xaml.cs` **WindowsApp-projekthez** vegye fel a `MainPage` következő tagot az osztályba. Ne felejtse el az `<Enter Your Backend Endpoint>` karakterláncot a saját háttérrendszere korábban beszerzett végpontjára cserélni. Például: `http://mybackend.azurewebsites.net`.
 
     ```csharp
     private static string BACKEND_ENDPOINT = "<Enter Your Backend Endpoint>";
     ```
-11. Adja hozzá az alábbi kódot a `MainPage.xaml.cs` **(Windows 8,1)** és **(Windows Phone-telefon 8,1)** projektekhez tartozó Főoldal-osztályhoz.
+11. Adja hozzá az alábbi kódot `MainPage.xaml.cs` a **(Windows 8.1)** és **a (Windows Phone 8.1)** projektek MainPage osztályához.
 
     A `PushClick` metódus a **Send Push** (Leküldéses értesítés küldése) gomb kattintáskezelője. A háttérrendszer meghívásával aktiválja egy értesítés küldését az összes olyan eszközre, amely a `to_tag` paraméterrel egyező felhasználónév-címkével rendelkezik. Az értesítési üzenet küldése a kérés törzsében található JSON-tartalomként történik.
 
@@ -215,14 +215,14 @@ Ebben a szakaszban az [oktatóanyagban befejezett projekt kódját frissíti: É
         ApplicationData.Current.LocalSettings.Values["AuthenticationToken"] = token;
     }
     ```
-12. Nyissa meg `App.xaml.cs` az `OnLaunched()` eseménykezelőt `InitNotificationsAsync()` , és keresse meg a hívást. Tegye megjegyzésbe vagy törölje az `InitNotificationsAsync()` meghívását. A gombkezelő inicializálja az értesítések regisztrálását.
+12. Nyissa `App.xaml.cs` meg és `InitNotificationsAsync()` keresse `OnLaunched()` meg a hívást az eseménykezelőben. Tegye megjegyzésbe vagy törölje az `InitNotificationsAsync()` meghívását. A gombkezelő inicializálja az értesítések regisztrálását.
 
     ```csharp
     protected override void OnLaunched(LaunchActivatedEventArgs e)
     {
         //InitNotificationsAsync();
     ```
-13. Kattintson a jobb gombbal a **WindowsApp** projektre, kattintson az **Add** (Hozzáadás) lehetőségre, majd a **Class** (Osztály) elemre. Nevezze el az `RegisterClient.cs`osztályt, majd kattintson az **OK** gombra az osztály létrehozásához.
+13. Kattintson a jobb gombbal a **WindowsApp** projektre, kattintson az **Add** (Hozzáadás) lehetőségre, majd a **Class** (Osztály) elemre. Nevezze el `RegisterClient.cs`az osztályt, majd kattintson az **OK** gombra az osztály létrehozásához.
 
     Ez az osztály burkolja azon REST-hívásokat, amelyek az alkalmazás háttérrendszeréhez való kapcsolódáshoz szükségesek a leküldéses értesítésekre való regisztrálás érdekében. Emellett helyben tárolja az értesítési központ által a [Regisztráció az alkalmazás háttérrendszeréből](https://msdn.microsoft.com/library/dn743807.aspx) című szakaszban leírtak szerint létrehozott *registrationIds* fájlt. A helyi tárterületen tárolt hitelesítési jogkivonatot használ, amikor a **Login and register** (Bejelentkezés és regisztráció) gombra kattint.
 14. Adja hozzá a következő `using` utasításokat a RegisterClient.cs fájl elejéhez:

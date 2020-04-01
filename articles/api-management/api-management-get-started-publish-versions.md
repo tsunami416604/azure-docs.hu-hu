@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: d0c837ac376f9d496baaf1ed67d0ec80c996804a
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73176833"
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>Az API több verziójának közzététele 
@@ -45,7 +45,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 ![Az API helyi menüje – Verzió hozzáadása](media/api-management-getstarted-publish-versions/AddVersionMenu.png)
 
 1. Válassza a **Demo Conference API** lehetőséget az API-k listájából.
-2. Válassza a mellette lévő helyi menüt ( **...** ).
+2. Válassza a mellette lévő helyi menüt (**...**).
 3. Válassza a **+ Verzió hozzáadása** lehetőséget.
 
 > [!TIP]
@@ -94,12 +94,12 @@ Ahhoz, hogy a hívók láthassák az új verziót, hozzá kell adni azt egy **te
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>A fejlesztői portál tallózása a verzió megtekintéséhez
 
 1. A felső menüben kattintson a **Fejlesztői portál** elemre.
-2. Válassza az **API** -k lehetőséget, majd kattintson a **bemutató konferencia API**-ra.
-3. Az API neve mellett több verziót tartalmazó legördülő listát kell látnia.
+2. Válassza ki **az API-kat,** és kattintson a **Demo Conference API-ra.**
+3. Az API-név mellett több verzióval rendelkező legördülő menünek kell lennie.
 4. Válassza a **v1** lehetőséget.
 5. Figyelje meg a lista első műveletének **Kérés URL-címe** értékét. Azt mutatja, hogy az API URL-címe tartalmazza a **v1** tagot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
