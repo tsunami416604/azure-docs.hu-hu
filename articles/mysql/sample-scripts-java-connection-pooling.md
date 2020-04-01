@@ -1,21 +1,21 @@
 ---
-title: A kapcsolatok készletezését bemutató Java-minták
-description: Ez a cikk a kapcsolatok készletezését bemutató Java-mintákat sorolja fel.
+title: Java minták a kapcsolategyesítés szemléltetésére
+description: Ez a cikk java mintákat sorol fel a kapcsolatkészletezés szemléltetésére.
 author: ambhatna
 ms.author: ambhatna
 ms.service: mysql
 ms.topic: sample
 ms.date: 02/28/2018
 ms.openlocfilehash: 78b936b21aeeed1db69ac52b2c21e3c41708f62d
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72600370"
 ---
-# <a name="java-sample-to-illustrate-connection-pooling"></a>A kapcsolatok készletezését bemutató Java-minta
+# <a name="java-sample-to-illustrate-connection-pooling"></a>Java minta a kapcsolatkészletezés szemléltetésére
 
-Az alábbi mintakód bemutatja a kapcsolatok készletezését a javában.
+Az alábbi mintakód a java kapcsolatkészletezést mutatja be.
 
 ```java
 import java.sql.Connection;

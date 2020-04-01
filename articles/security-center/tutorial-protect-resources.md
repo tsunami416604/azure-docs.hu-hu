@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/03/2018
 ms.author: memildin
-ms.openlocfilehash: 4b40b7c6f755eb2107a09b1b881ea33fa2187f29
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0b28de7af16053093cd0108224188cdd615fce55
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73686331"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435522"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Oktatóanyag: Erőforrások védelme az Azure Security Centerrel
 A Security Center korlátozza a fenyegetéseknek való kitettségét azzal, hogy hozzáférés- és alkalmazásvezérlőket használ a kártékony tevékenységek blokkolására. Just-in-time (JIT) virtuális gép (VM) hozzáférés csökkenti a támadások nak való kitettséget azáltal, hogy lehetővé teszi a virtuális gépekhez való állandó hozzáférés megtagadását. Az állandó hozzáférés helyett szabályozott és naplózott hozzáférést biztosít a virtuális gépekhez – csak akkor, ha szükség van rá. Az adaptív alkalmazásvezérlők segítenek felvértezni a virtuális gépeket a kártevők ellen azáltal, hogy szabályozzák, mely alkalmazások futhatnak rajtuk. A Security Center gépi tanulási módszerekkel elemzi a virtuális gépen futó folyamatokat, és az így szerzett információk alapján segít az engedélyezési szabályok alkalmazásában.
@@ -110,7 +110,7 @@ Ha le szeretné tiltani az automatikus kiépítést:
 4. Kattintson a **Mentés** gombra.
 
 >[!NOTE]
-> Az automatikus kiépítés letiltása nem távolítja el a Microsoft Monitoring Agentet azon Azure-beli virtuális gépekről, ahol az ügynök üzembe lett helyezve. Az automatikus kiépítés letiltása korlátozza az erőforrások biztonsági monitorozását.
+> Az automatikus kiépítés letiltása nem távolítja el a Log Analytics-ügynököt az Azure virtuális gépekről, ahol az ügynök ki van építve. Az automatikus kiépítés letiltása korlátozza az erőforrások biztonsági monitorozását.
 >
 
 ## <a name="next-steps"></a>További lépések

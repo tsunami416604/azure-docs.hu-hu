@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 63c5f068adab58c901acf5fd26261d57e1183f0d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 09fcf88c6dfe90380f387c6d72c751634f5b1606
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79481517"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475744"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Oktatóanyag: Felügyeleti virtuális gép létrehozása az Azure Active Directory tartományi szolgáltatások felügyelt tartományának konfigurálásához és felügyeletéhez
 
@@ -89,7 +89,6 @@ Első lépésekhez csatlakozzon a Windows Server virtuális géphez az alábbiak
 
     ![Csatlakozás Windows virtuális géphez az Azure Portalon található Bastion használatával](./media/join-windows-vm/connect-to-vm.png)
 
-    Azure [Bastion host (jelenleg előzetes verzióban) is létrehozhat és használhat][azure-bastion] hozzáférést csak az Azure Portalon keresztül TLS-en keresztül.
 1. Adja meg a virtuális gép hitelesítő adatait, majd válassza a **Csatlakozás lehetőséget.**
 
    ![Csatlakozás a Bástyagazdagépen keresztül az Azure Portalon](./media/join-windows-vm/connect-to-bastion.png)

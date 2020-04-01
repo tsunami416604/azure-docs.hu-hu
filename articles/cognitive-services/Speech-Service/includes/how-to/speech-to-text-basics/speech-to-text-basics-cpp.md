@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/06/2020
 ms.author: dapine
-ms.openlocfilehash: 8392e03f272c6db2bb384c8031cb975bca53d530
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 0c0fa3e07e0cdae6ce28fcd1521b63cb2575767f
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79372801"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80501956"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -37,7 +37,7 @@ Többféleképpen is inicializálhatja a következőket: [`SpeechConfig`](https:
 * Állomással: adja át az állomáscímet. A kulcs vagy engedélyezési jogkivonat nem kötelező.
 * Egy engedélyezési jogkivonattal: adja át egy engedélyezési jogkivonatot és a társított régiót.
 
-Vessünk egy pillantást arra, [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) hogyan jön létre az a egy kulcs és régió használatával.
+Vessünk egy pillantást arra, [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) hogyan jön létre az a egy kulcs és régió használatával. A [régióazonosító](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) megkereséséhez tekintse meg a régiótámogatási lapot.
 
 ```cpp
 auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");

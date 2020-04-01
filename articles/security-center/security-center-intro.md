@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: 84ed5db54874231d8bde4d892eedbc60c42a3430
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 11201d6560319dd34ec829f1fb34bd13d45011d7
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77918757"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435817"
 ---
 # <a name="what-is-azure-security-center"></a>Mi az Azure Security Center?
 
-Az Azure Security Center egy egységes infrastruktúra-biztonsági felügyeleti rendszer, amely megerősíti az adatközpontok biztonsági állapotát, és fejlett veszélyforrások elleni védelmet nyújt a felhőben lévő hibrid számítási feladatokban – függetlenül attól, hogy az Azure-ban vannak-e vagy sem –, valamint a helyszínen.
+Az Azure Security Center egy egységes infrastruktúra-biztonsági felügyeleti rendszer, amely megerősíti az adatközpontok biztonsági állapotát, és fejlett veszélyforrások elleni védelmet nyújt a felhőben lévő hibrid számítási feladatokban – függetlenül attól, hogy az Azure-ban vagy sem – és a helyszínen is.
 
 Az erőforrások biztonságának megőrzése a felhőszolgáltató, az Azure és Ön, az ügyfél közös erőfeszítése. Győződjön meg arról, hogy a számítási feladatok biztonságosak, ahogy a felhőbe, és ezzel egyidejűleg, amikor az IaaS (infrastruktúra szolgáltatásként) több ügyfél felelőssége, mint volt paaS (platform szolgáltatásként), és a SaaS (szoftver, mint szolgáltatás). Az Azure Security Center biztosítja a hálózat megkeményedéséhez, a szolgáltatások biztonságához és a biztonsági helyzethez szükséges eszközöket.
 
@@ -49,7 +49,7 @@ A Security Center eszközeivel megvédheti magát a fenti kihívásokkal szemben
 
 Mivel a Security Center natívan része az Azure-nak, az Azure PaaS-szolgáltatásait – beleértve a Service Fabricet, az SQL-adatbázisokat és a tárfiókokat – a Security Center minden üzembe helyezés nélkül figyeli és védi.
 
-Emellett a Security Center védi a nem Azure-kiszolgálók és a virtuális gépek a felhőben vagy a helyszínen, mind a Windows és Linux kiszolgálók, a Microsoft Monitoring Agent telepítésével őket. Az Azure virtuális gépek automatikusan ki vannak építve a Security Centerben.
+Emellett a Security Center védi a nem Azure-kiszolgálók és a virtuális gépek a felhőben vagy a helyszínen, mind a Windows és Linux kiszolgálók, a Log Analytics-ügynök telepítésével őket. Az Azure virtuális gépek automatikusan ki vannak építve a Security Centerben.
 
 Az ügynököktől és az Azure-ból gyűjtött események korrelálnak a biztonsági elemzési motorban, hogy személyre szabott javaslatokat (megerősítési feladatokat) nyújtsanak, amelyeket követnie kell a számítási feladatok biztonságosságának és a biztonsági riasztásoknak a biztosítása érdekében. Az ilyen riasztásokat a lehető leghamarabb vizsgálja meg, hogy megbizonyosodjon arról, hogy a számítási feladatok nem történik rosszindulatú támadások.
 
@@ -75,7 +75,7 @@ A Security Center fejlett figyelési képességei lehetővé teszik **a megfelel
 
 ### <a name="continuous-assessments"></a>Folyamatos értékelések
 
-A Security Center folyamatosan felderíti a számítási feladatok között üzembe helyezett új erőforrásokat, és felméri, hogy a biztonsági ajánlott eljárásoknak megfelelően vannak-e konfigurálva, ha nem, akkor megjelölik őket, és rangsorolt javaslatokat kap, hogy milyen meg kell javítani annak érdekében, hogy megvédje a gépeket.
+A Security Center folyamatosan felderíti a számítási feladatok között üzembe helyezett új erőforrásokat, és felméri, hogy a biztonsági ajánlott eljárások nak megfelelően vannak-e konfigurálva, ha nem, akkor megjelölik őket, és a gépek védelme érdekében a javításra váró javaslatok rangsorolt listáját kapja.
 
 Az egyik leghatékonyabb eszköz, amelyet a Security Center biztosít a hálózat biztonsági állapotának folyamatos figyelésére, a **Hálózati térkép.** A térkép lehetővé teszi a számítási feladatok topológiájának megtekintését, így láthatja, hogy minden csomópont megfelelően van-e konfigurálva. Láthatja, hogyan kapcsolódnak a csomópontok, ami segít blokkolni a nem kívánt kapcsolatokat, amelyek megkönnyíthetik a támadók számára a hálózat mentén való kúszást.
 
@@ -101,7 +101,7 @@ A javaslatok segítségével csökkentheti a támadási felületet az egyes erő
 
 A Security Center fenyegetésvédelmi szolgáltatása lehetővé teszi a fenyegetések észlelését és megelőzését az Infrastructure as a Service (IaaS) rétegben, a nem Azure-kiszolgálókon, valamint a Platformok szolgáltatásként (PaaS) az Azure-ban.
 
-A Security Center fenyegetéselleni védelme magában foglalja a fúziós kill-chain elemzést, amely automatikusan korrelálja a riasztásokat a környezetben a számítógépes ölési lánc elemzése alapján, hogy segítsen jobban megérteni a támadási kampány teljes történetét, hol kezdődött és mi ilyen hatással volt a forrásokra.
+A Security Center fenyegetésvédelmi rendszere magában foglalja a fúziós kill-chain elemzést, amely automatikusan korrelálja a riasztásokat a környezetben a számítógépes ölési lánc elemzése alapján, hogy jobban megértse a támadási kampány teljes történetét, hogy hol kezdődött, és milyen hatással volt az erőforrásokra.
 
 
 
@@ -129,17 +129,17 @@ A Security Center olyan képességeket tartalmaz, amelyek segítségével az azu
 
 ### <a name="protect-iot-and-hybrid-cloud-workloads"></a>IoT- és hibrid felhőbeli számítási feladatok védelme
 
-Az Azure Security Center for IoT (Things internet) leegyszerűsíti a hibrid számítási feladatok védelmét azáltal, hogy egységes láthatóságot és vezérlést, adaptív veszélyforrások megelőzését, valamint intelligens veszélyforrások elleni védelmet és válaszokat biztosít a peremhálózaton futó, helyszíni, az Azure-ban és más felhőkben. További információ: [Azure Security Center for IoT.](https://docs.microsoft.com/azure/asc-for-iot/)
+Az Azure Security Center for IoT (Things internetes hálózata) leegyszerűsíti a hibrid számítási feladatok védelmét azáltal, hogy egységes láthatóságot és vezérlést, adaptív veszélyforrások megelőzését, valamint intelligens veszélyforrások elleni védelmet és válaszokat biztosít a peremhálózaton, a helyszíni, az Azure-ban és más felhőkben futó számítási feladatok között. További információ: [Azure Security Center for IoT.](https://docs.microsoft.com/azure/asc-for-iot/)
 
 ## <a name="get-secure-faster"></a>Gyorsabb biztonság
 
-A natív Azure-integráció (beleértve az Azure Policy és az Azure Monitor naplóit) kombinálva a Microsoft más biztonsági megoldásaival, például a Microsoft Cloud App Security-szel és a Windows Defender komplex veszélyforrások elleni védelemmel való zökkenőmentes integrációval biztonsági megoldás átfogó, valamint egyszerűen a fedélzeti és roll out.
+A natív Azure-integráció (beleértve az Azure Policy és az Azure Monitor naplóit) kombinálva a Microsoft más biztonsági megoldásaival, például a Microsoft Cloud App Security és a Windows Defender komplex veszélyforrások elleni védelemmel való zökkenőmentes integrációval biztosíthatja, hogy a biztonsági megoldás átfogó, valamint egyszerűen bedolgozható és bevezetésre kerüljön.
 
 Emellett kiterjesztheti a teljes megoldást az Azure-on kívül más felhőkön és helyszíni adatközpontokban futó számítási feladatokra is.
 
 ### <a name="automatically-discover-and-onboard-azure-resources"></a>Az Azure-erőforrások automatikus felderítése és fedélzeti bedeszkázása
 
-A Security Center zökkenőmentes, natív integrációt biztosít az Azure és az Azure erőforrásaival. Ez azt jelenti, hogy az Azure Policy és a beépített Security Center-szabályzatok teljes biztonsági történetét összehívhatja az összes Azure-erőforrásban, és meggyőződhet arról, hogy az egész automatikusan alkalmazza az újonnan felderített erőforrásokat a létrehozásuk során az Azure-ban.
+A Security Center zökkenőmentes, natív integrációt biztosít az Azure és az Azure erőforrásaival. Ez azt jelenti, hogy az Azure Policy és a beépített Security Center-szabályzatok teljes biztonsági történetét összehívhatja az Összes Azure-erőforrásban, és meggyőződhet arról, hogy az egész automatikusan alkalmazza az újonnan felderített erőforrásokat az Azure-ban való létrehozásasorán.
 
 Kiterjedt naplógyűjtés – a Windows és linuxos naplók mind a biztonsági elemzőmotorban használatosak, és javaslatok és riasztások létrehozására szolgálnak.
 

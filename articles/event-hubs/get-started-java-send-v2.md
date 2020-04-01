@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 44f57f52be512924e228d6488a786d117c6444e7
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
-ms.translationtype: HT
+ms.openlocfilehash: 29101d0277ff0fb392917f722bcaec3b7e5983b5
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79370593"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478252"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-messaging-eventhubs"></a>A Java használatával eseményeket küldhet vagy fogadhat az Azure Event Hubs-ból (azure-messaging-eventhubs)
 Ez a rövid útmutató bemutatja, hogyan küldhet eseményeket egy eseményközpontból az **azure-messaging-eventhubs** Java csomag használatával.
@@ -23,7 +23,7 @@ Ez a rövid útmutató bemutatja, hogyan küldhet eseményeket egy eseményközp
 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ha most írja be az Azure Event Hubs, olvassa el [az Eseményközpontok áttekintése című témakört,](event-hubs-about.md) mielőtt ezt a rövid útmutatót végezné. 
+Ha most írja be az Azure Event Hubs szolgáltatást, olvassa el [az Eseményközpontok áttekintése című témakört,](event-hubs-about.md) mielőtt ezt a rövid útmutatót elvégezné. 
 
 A rövid útmutató végrehajtásához a következő előfeltételekre van szükség:
 
@@ -36,7 +36,7 @@ Ez a szakasz bemutatja, hogyan hozhat létre egy Java-alkalmazást egy eseményk
 
 ### <a name="add-reference-to-azure-event-hubs-library"></a>Hivatkozás hozzáadása az Azure Event Hubs-tárhoz
 
-Az Event Hubs Java ügyfélkönyvtára a [Maven központi adattárból](https://search.maven.org/search?q=a:azure-messaging-eventhubs)használható a Maven-projektekben. A tárra a Maven projektfájlban található következő függőségi deklaráció használatával hivatkozhat:
+Az Event Hubs Java ügyfélkönyvtára a [Maven központi adattárban](https://search.maven.org/search?q=a:azure-messaging-eventhubs)érhető el. A tárra a Maven projektfájlban található következő függőségi deklaráció használatával hivatkozhat:
 
 ```xml
 <dependency>
@@ -139,6 +139,9 @@ public class Sender {
 
 ## <a name="receive-events"></a>Események fogadása
 Az oktatóanyagban található kód a [GitHubon található EventProcessorClient mintán](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs/EventProcessorClientSample.java)alapul, amelyet megvizsgálhat a teljes működő alkalmazás megtekintéséhez.
+
+> [!NOTE]
+> Ha az Azure Stack Hubon fut, akkor előfordulhat, hogy a storage blob SDK egy másik verzióját támogatja, mint az Azure-ban általában elérhető. Ha például az [Azure Stack Hub 2002-es verzióján](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)fut, a Storage szolgáltatás legmagasabb elérhető verziója a 2017-11-09-es verzió. Ebben az esetben az ebben a szakaszban ismertetett lépések mellett kódot is hozzá kell adnia a Storage service API 2017-11-09-es verziójának célzásához. Egy adott Storage API-verzió célzásával kapcsolatos példát tekintse meg [ezt a mintát a GitHubon.](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java) Az Azure Stack Hubon támogatott Azure Storage-szolgáltatásverzióiról az [Azure Stack Hub storage: Különbségek és szempontok](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences)című további információkért tekintse meg.
 
 ### <a name="create-a-java-project"></a>Java-projekt létrehozása
 

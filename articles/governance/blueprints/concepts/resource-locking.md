@@ -1,18 +1,21 @@
 ---
 title: Az erőforrások zárolásának ismertetése
 description: Ismerje meg az Azure Blueprints zárolási lehetőségeit az erőforrások védelme érdekében a tervezet hozzárendelésekén.
-ms.date: 02/27/2020
+ms.date: 03/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: b810e8d4ddd263f9e651704d1bf9b785ce0202db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 86897ae6665f7a339b51aaae5f1c00144d8b7309
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78199699"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437737"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Az erőforrások zárolásának megismerése az Azure Blueprints-ben
 
 A konzisztens környezetek létrehozása csak akkor igazán értékes, ha van egy mechanizmus, amely fenntartja ezt a konzisztenciát. Ez a cikk bemutatja, hogyan működik az erőforrás-zárolás az Azure Blueprints. Az erőforrás-zárolás és a _megtagadási hozzárendelések_alkalmazása példáját az [új erőforrások védelme](../tutorials/protect-new-resources.md) oktatóanyag című témakörben láthatja.
+
+> [!NOTE]
+> Az Azure Blueprints által üzembe helyezett erőforrás-zárolások csak a blueprint-hozzárendelés által üzembe helyezett erőforrásokra vonatkoznak. A meglévő erőforrások, például a már létező erőforráscsoportokban lévő erőforrásokhoz nem tartozik zárolások hozzá.
 
 ## <a name="locking-modes-and-states"></a>Zárolási módok és állapotok
 

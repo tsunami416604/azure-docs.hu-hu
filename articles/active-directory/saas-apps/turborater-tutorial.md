@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező TurboRater |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és TurboRater között.
+title: 'Oktatóanyag: Az Azure Active Directory integrációja a TurboRaterrel | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a TurboRater között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,187 +16,187 @@ ms.topic: tutorial
 ms.date: 3/8/2019
 ms.author: jeedes
 ms.openlocfilehash: 3777cf09ec669fe3df6bca13f6960f53c689767c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67088270"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-turborater"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező TurboRater
+# <a name="tutorial-azure-active-directory-integration-with-turborater"></a>Oktatóanyag: Az Azure Active Directory integrációja a TurboRaterrel
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan TurboRater integrálása az Azure Active Directory (Azure AD).
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a TurboRatert az Azure Active Directoryval (Azure AD).
 
-TurboRater integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+A TurboRater integrálása az Azure AD-vel a következő előnyöket nyújtja:
 
-* Szabályozhatja, ki férhet hozzá TurboRater Azure AD-ben.
-* Engedélyezheti a felhasználók számára, hogy automatikusan jelentkezzenek be TurboRater (egyszeri bejelentkezés), az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen kezelheti: az Azure Portalon.
+* Az Azure AD-ben szabályozhatja, hogy ki férhet hozzá a TurboRaterhez.
+* Engedélyezheti, hogy a felhasználók automatikusan bejelentkeznek a TurboRaterbe (egyszeri bejelentkezés) az Azure AD-fiókjukkal.
+* Fiókjait egyetlen központi helyen kezelheti: az Azure Portalon.
 
-További információk az Azure AD-szoftverként (saas biztosított) alkalmazás integrációja: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+A szoftver szolgáltatásként (SaaS) alkalmazásintegráció az Azure AD-vel kapcsolatos részletekért olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-TurboRater az Azure AD-integráció konfigurálásához a következőkre van szükség:
+Az Azure AD-integráció konfigurálásához a TurboRater-rel a következő elemekre van szükség:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
-* Az egyszeri bejelentkezés engedélyezve TurboRater előfizetés.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
+* TurboRater-előfizetés egyszeri bejelentkezéssel.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben.
 
-TurboRater támogat IDP által kezdeményezett egyszeri bejelentkezés (SSO).
+A TurboRater támogatja az IDP által kezdeményezett egyszeri bejelentkezést (SSO).
 
-## <a name="add-turborater-from-the-azure-marketplace"></a>Az Azure Marketplace-ről TurboRater hozzáadása
+## <a name="add-turborater-from-the-azure-marketplace"></a>TurboRater hozzáadása az Azure Piactérről
 
-Az Azure AD integrálása a TurboRater konfigurálásához hozzá kell TurboRater az Azure Marketplace-ről a felügyelt SaaS-alkalmazások listájára:
+A TurboRater Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a TurboRatert az Azure Piactérről a felügyelt SaaS-alkalmazások listájához:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com?azure-portal=true).
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com?azure-portal=true)
 1. A bal oldali panelen válassza az **Azure Active Directory** lehetőséget.
 
-    ![Az Azure Active Directoryval opciót.](common/select-azuread.png)
+    ![Az Azure Active Directory beállítás](common/select-azuread.png)
 
-1. Lépjen a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
+1. Nyissa meg a **Vállalati alkalmazások**lehetőséget, és válassza a Minden **alkalmazás lehetőséget.**
 
-    ![A vállalati alkalmazások csomag](common/enterprise-applications.png)
+    ![A Vállalati alkalmazások beállítás](common/enterprise-applications.png)
 
-1. Új alkalmazás hozzáadásához válassza **+ új alkalmazás** a panel tetején.
+1. Új alkalmazás hozzáadásához válassza a **+ Új alkalmazás** lehetőséget az ablaktábla tetején.
 
-    ![Az új alkalmazás-beállítás](common/add-new-app.png)
+    ![Az Új alkalmazás opció](common/add-new-app.png)
 
-1. A Keresés mezőbe írja be a **TurboRater**. A keresési eredmények között, válassza ki a **TurboRater**, majd válassza ki **Hozzáadás** , vegye fel az alkalmazást.
+1. A keresőmezőbe írja be a **TurboRater**. A keresési eredmények között válassza a **TurboRater**lehetőséget, majd az Alkalmazás hozzáadásához válassza a **Hozzáadás** lehetőséget.
 
-    ![Az eredmények listájában TurboRater](common/search-new-app.png)
+    ![TurboRater az eredmények listájában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az nevű tesztfelhasználó alapján TurboRater **B Simon**. Az egyszeri bejelentkezés működjön a TurboRater a kell létesítenie az Azure AD-felhasználót és a kapcsolódó felhasználó közötti kapcsolat.
+Ebben a szakaszban konfigurálhatja és tesztelheti az Azure AD egyszeri bejelentkezését a TurboRater-rel egy **B Simon**nevű tesztfelhasználó alapján. Egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó TurboRater.
 
-Az Azure AD egyszeri bejelentkezés az TurboRater tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez a TurboRater segítségével a következő építőelemeket kell végrehajtania:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  ahhoz, hogy ez a funkció használatát a felhasználók számára.
-1. **[TurboRater egyszeri bejelentkezés konfigurálása](#configure-turborater-single-sign-on)**  az egyszeri bejelentkezési beállításainak konfigurálása az alkalmazás oldalán.
-1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  az Azure AD egyszeri bejelentkezés a b Simon teszteléséhez.
-1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  b Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-1. **[Hozzon létre egy TurboRater tesztfelhasználót](#create-a-turborater-test-user)**  úgy, hogy a felhasználó a TurboRater elnevezett olyan b Simon kapcsolódik az Azure AD-felhasználó, aki nevű b Simon.
-1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  ellenőrzése, hogy működik-e a konfiguráció.
+1. **[Konfigurálja az Azure AD egyszeri bejelentkezést,](#configure-azure-ad-single-sign-on)** hogy a felhasználók használhassák ezt a funkciót.
+1. **[Konfigurálja a TurboRater egyszeri bejelentkezést](#configure-turborater-single-sign-on)** az alkalmazás oldalán az egyszeri bejelentkezési beállítások konfigurálásához.
+1. **[Hozzon létre egy Azure AD-tesztfelhasználót](#create-an-azure-ad-test-user)** az Azure AD egyszeri bejelentkezésének teszteléséhez B. Simonnal.
+1. **[Rendelje hozzá az Azure AD tesztfelhasználót,](#assign-the-azure-ad-test-user)** hogy b. Simon az Azure AD egyszeri bejelentkezést.
+1. **[Hozzon létre egy TurboRater tesztfelhasználót,](#create-a-turborater-test-user)** hogy a TurboRaterben egy B. Simon nevű felhasználó kapcsolódjon az Azure AD-felhasználóhoz, B. Simon néven.
+1. **[Egyszeri bejelentkezés tesztelése annak](#test-single-sign-on)** ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon.
 
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezés TurboRater, tegye a következőket:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához a TurboRater-rel az alábbi lépésekkel:
 
-1. Az a [az Azure portal](https://portal.azure.com/), az a **TurboRater** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
+1. Az [Azure Portalon](https://portal.azure.com/)a **TurboRater** alkalmazásintegrációs lapon válassza az **Egyszeri bejelentkezés**lehetőséget.
 
     ![Egyszeri bejelentkezési beállítás konfigurálása](common/select-sso.png)
 
-1. Az a **egyszeri bejelentkezési módszer** ablaktáblán válassza ki az **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+1. Az **Egyszeri bejelentkezési módszer kiválasztása** ablaktáblán válassza **az SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezésválasztó mód](common/select-saml-option.png)
 
-1. Az a **állítsa be egyszeri bejelentkezést az SAML** lapon jelölje be **szerkesztése** (a ceruza ikon) nyissa meg a **alapszintű SAML-konfigurációja** ablaktáblán.
+1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon válassza a **Szerkesztés** (a ceruza ikon) lehetőséget az **egyszerű SAML-konfiguráció** ablaktábla megnyitásához.
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az a **alapszintű SAML-konfigurációja** ablaktáblán tegye a következőket:
+1. Az **Egyszerű SAML-konfiguráció** ablaktáblán tegye a következő lépéseket:
 
-    ![TurboRater tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-intiated.png)
+    ![TurboRater tartomány és URL egyszeri bejelentkezési információk](common/idp-intiated.png)
 
-    1. Az a **azonosító (entityid)** mezőbe írjon be egy URL-címe:
+    1. Az **Azonosító (entitásazonosító)** mezőbe írjon be egy URL-címet:
 
        `https://www.itcdataservices.com`
 
-    1. Az a **válasz URL-cím (helyességi feltétel fogyasztói szolgáltatás URL-címe)** mezőbe írjon be egy URL-címet a következő minta használatával:
+    1. A **Válasz URL-címe (helyességi feltétel fogyasztói szolgáltatás URL-címe)** mezőbe írja be az URL-címet az alábbi minta használatával:
 
        | Környezet | URL-cím |
        | ---------------| --------------- |
-       | Tesztelés  | `https://ratingqa.itcdataservices.com/webservices/imp/saml/login` |
+       | Test  | `https://ratingqa.itcdataservices.com/webservices/imp/saml/login` |
        | Élő  | `https://www.itcratingservices.com/webservices/imp/saml/login` |
 
     > [!NOTE]
-    > Ezek az értékek nem valódi. Az értékeket módosítsa a tényleges azonosítóval, és a válasz URL-címe. Ezek az értékek beszerzéséhez forduljon a [TurboRater támogatási csapatának](https://www.getitc.com/support). Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** panel az Azure Portalon.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval és a válasz URL-címével. Ezeknek az értékeknek a eléréséhez forduljon a [TurboRater támogatási csapatához.](https://www.getitc.com/support) Az Azure Portal **alapszintű SAML-konfigurációs** ablaktáblájában látható mintákat is hivatkozhat.
 
-1. Az a **állítsa be egyszeri bejelentkezést az SAML** ablaktáblán, a a **SAML-aláíró tanúsítvány** szakaszban jelölje be **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül, és mentse el a számítógépen.
+1. Az **Egyszeri bejelentkezés beállítása SAML-lel** ablaktáblán az **SAML aláíró tanúsítvány szakaszában** válassza a **Letöltés** lehetőséget, ha letöltheti az **összevonási metaadat-XML-t** a megadott lehetőségekközül, és mentheti a számítógépre.
 
-    ![Az összevonási metaadatok XML a letöltési lehetőséget](common/metadataxml.png)
+    ![Az összevonási metaadatok XML-letöltési lehetősége](common/metadataxml.png)
 
-1. Az a **TurboRater beállítása** területén másolja az URL-címe vagy URL-címeket, amelyekre szüksége:
+1. A **TurboRater beállítása** szakaszban másolja a szükséges URL-címet vagy URL-címeket:
 
-   * **Bejelentkezési URL-címe**
-   * **Azure AD Identifier**
-   * **Kijelentkezési URL-címe**
+   * **Bejelentkezés i URL-címe**
+   * **Azure Hirdetés-azonosító**
+   * **Kijelentkezés URL-címe**
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="configure-turborater-single-sign-on"></a>TurboRater egyszeri bejelentkezés konfigurálása
+### <a name="configure-turborater-single-sign-on"></a>A TurboRater egyszeri bejelentkezéskonfigurálása
 
-A TurboRater oldalon konfigurálása egyszeri bejelentkezéshez, kell küldenie a letöltött összevonási metaadatainak XML és a megfelelő másolt URL-címek az Azure Portalon a [TurboRater támogatási csapatának](https://www.getitc.com/support). A TurboRater csapat fogja győződjön meg arról, a SAML SSO-kapcsolat mindkét oldalán megfelelően beállítva.
+Az egyszeri bejelentkezés konfigurálásához a TurboRater oldalon el kell küldenie a letöltött összevonási metaadat-XML-t és a megfelelő másolt URL-címeket az Azure Portalról a [TurboRater támogatási csapatának.](https://www.getitc.com/support) A TurboRater csapat gondoskodik arról, hogy az SAML SSO kapcsolat mindkét oldalon megfelelően legyen beállítva.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
 
-Ebben a szakaszban hozzon létre egy tesztfelhasználót Britta Simon nevű az Azure Portalon.
+Ebben a szakaszban hozzon létre egy britta Simon nevű tesztfelhasználót az Azure Portalon.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**   > **felhasználók** > **minden felhasználó**.
+1. Az Azure Portalbal a bal oldali ablaktáblában válassza az **Azure Active Directory**   > **felhasználói** > **minden felhasználó lehetőséget.**
 
-    ![A felhasználók és a "Minden felhasználó" lehetőség](common/users.png)
+    ![A Felhasználók és a "Minden felhasználó" beállítás](common/users.png)
 
-1. Válassza ki a képernyő tetején lévő **+ új felhasználó**.
+1. A képernyő tetején válassza a **+ Új felhasználó**lehetőséget.
 
     ![Új felhasználói beállítás](common/new-user.png)
 
-1. Az a **felhasználói** ablaktáblán tegye a következőket:
+1. A **Felhasználó** ablaktáblán tegye a következő lépéseket:
 
-    ![A felhasználói panelen](common/user-properties.png)
+    ![A Felhasználó ablaktábla](common/user-properties.png)
 
-    1. Az a **neve** mezőbe írja be **BSimon**.
+    1. A **Név** mezőbe írja be a **BSimon**értéket.
   
-    1. Az a **felhasználónév** mezőbe írja be **BSimon\@\<vállalati_tartomány >.\< bővítmény >** . Ha például **BSimon\@contoso.com**.
+    1. A **Felhasználónév** mezőbe írja be a **BSimon\@\<\< yourcompanydomain>. kiterjesztés>. ** Például **BSimon\@contoso.com**.
 
-    1. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet, majd írja le a **Jelszó** mezőben megjelenő értéket.
 
     1. Kattintson a **Létrehozás** gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban engedélyezze b Simon által biztosított a hozzáférés TurboRater Azure egyszeri bejelentkezés használatára.
+Ebben a szakaszban engedélyezi b. Simon azure egyszeri bejelentkezés t a TurboRater hozzáférésének biztosításával.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások** > **minden alkalmazás** > **TurboRater**.
+1. Az Azure portalon válassza a **Vállalati alkalmazások** > **Minden alkalmazás** > **TurboRater**lehetőséget.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![Vállalati alkalmazások ablaktábla](common/enterprise-applications.png)
 
-1. Az alkalmazások listájában jelölje ki a **TurboRater**.
+1. Az alkalmazások listájában válassza a **TurboRater**lehetőséget.
 
-    ![Az alkalmazások listáját a TurboRater](common/all-applications.png)
+    ![TurboRater az alkalmazások listájában](common/all-applications.png)
 
-1. A bal oldali panelen alatt **kezelés**válassza **felhasználók és csoportok**.
+1. A bal oldali ablaktáblában a **KEZELÉS csoportban**válassza a **Felhasználók és csoportok**lehetőséget.
 
-    ![A "Felhasználók és csoportok" lehetőséget](common/users-groups-blade.png)
+    ![A "Felhasználók és csoportok" lehetőség](common/users-groups-blade.png)
 
-1. Válassza ki **+ Hozzáadás felhasználó**, majd válassza ki **felhasználók és csoportok** a a **hozzárendelés hozzáadása** ablaktáblán.
+1. Válassza a **+ Felhasználó hozzáadása**lehetőséget , majd a Hozzárendelés **hozzáadása** ablaktáblában válassza a Felhasználók **és csoportok** lehetőséget.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+    ![A Hozzárendelés hozzáadása ablaktábla](common/add-assign-user.png)
 
-1. Az a **felhasználók és csoportok** panelen válassza **b Simon** a a **felhasználók** listában, és válassza a **kiválasztása** a panel alján.
+1. A **Felhasználók és csoportok** ablaktáblán válassza a **B. Simon** elemet a **Felhasználók** listában, majd válassza a **Kijelölés** lehetőséget az ablaktábla alján.
 
-1. Ha valakitől egy szerepkör értéket a SAML helyességi feltétel, majd a a **Szerepkörválasztás** ablaktáblán válassza ki a megfelelő szerepkört a felhasználóhoz a listából. A panel alján válassza **kiválasztása**.
+1. Ha az SAML-feltételben szerepkörértéket vár, akkor a **Szerepkör kiválasztása** ablaktáblában válassza ki a felhasználó megfelelő szerepkörét a listából. Az ablaktábla alján válassza a **Kijelölés lehetőséget.**
 
-1. Az a **hozzárendelés hozzáadása** ablaktáblán válassza előbb **hozzárendelése**.
+1. A **Hozzárendelés hozzáadása** ablaktáblán válassza a **Hozzárendelés lehetőséget.**
 
 ### <a name="create-a-turborater-test-user"></a>TurboRater tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói b Simon nevű TurboRater hoz létre. Együttműködik a [TurboRater támogatási csapatának](https://www.getitc.com/support) b Simon TurboRater felhasználóként hozzáadni. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre a TurboRater ben. Működjön együtt a [TurboRater támogatási csapatával,](https://www.getitc.com/support) és adja hozzá B. Simont a TurboRater felhasználójaként. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban a az Azure AD egyszeri bejelentkezés beállításai a saját alkalmazások portál segítségével tesztelnie.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a Saját alkalmazások portálhasználatával teszteli.
 
-Ha bejelöli **TurboRater** a saját alkalmazások portál meg kell hogy automatikusan jelentkezzenek be, amelynek beállítása egyszeri bejelentkezéshez TurboRater az előfizetéshez. A saját alkalmazások portál kapcsolatos további információkért lásd: [alkalmazások használatának és elérésének a saját alkalmazások portál](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor a **TurboRater** lehetőséget választja a My Apps portálon, automatikusan be kell jelentkeznie a TurboRater előfizetésbe, amelyhez egyszeri bejelentkezést állított be. A Saját alkalmazások portálról további információt az [Access és az alkalmazások használata a Saját alkalmazások portálon című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 ## <a name="additional-resources"></a>További források
 
-* [SaaS-alkalmazások integrálása az Azure Active Directory számára oktatóanyagokkal listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* [A SaaS-alkalmazások Azure Active Directoryval való integrálására szolgáló oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-* [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+* [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

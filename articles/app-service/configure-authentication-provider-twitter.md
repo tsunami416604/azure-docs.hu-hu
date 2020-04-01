@@ -1,22 +1,22 @@
 ---
 title: Twitter-hitelesítés konfigurálása
-description: Ismerje meg, hogyan konfigurálhatja a Twitter-hitelesítést identitásszolgáltatóként az App Service-alkalmazáshoz.
+description: Ismerje meg, hogyan konfigurálhatja a Twitter-hitelesítést identitásszolgáltatóként az App Service vagy az Azure Functions alkalmazáshoz.
 ms.assetid: c6dc91d7-30f6-448c-9f2d-8e91104cde73
 ms.topic: article
 ms.date: 02/28/2020
-ms.custom: seodec18
-ms.openlocfilehash: 794f671b36b5aeb9f19cf5d80e488500cedb1098
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 3f85f30e0a64b6e39b905fc05503a445aa5876ba
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78207139"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437998"
 ---
-# <a name="configure-your-app-service-app-to-use-twitter-login"></a>Az App Service-alkalmazás konfigurálása a Twitter bejelentkezési használatára
+# <a name="configure-your-app-service-or-azure-functions-app-to-use-twitter-login"></a>Az App Service vagy az Azure Functions alkalmazás konfigurálása a Twitter bejelentkezési használatához
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-Ez a cikk bemutatja, hogyan konfigurálhatja az Azure App Service-t a Twitter hitelesítésszolgáltatóként való használatára.
+Ez a cikk bemutatja, hogyan konfigurálhatja az Azure App Service vagy az Azure Functions a Twitter hitelesítési szolgáltatóként való használata.
 
 A cikkben szereplő eljárás végrehajtásához olyan Twitter-fiókra van szükség, amely ellenőrzött e-mail címmel és telefonszámmal rendelkezik. Új Twitter-fiók létrehozásához nyissa meg [a twitter.com.]
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ad6b7150a43a286a4bec39a0482e08f50d95c06
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 352f52a2a6d84d352bb46e09f104efde303307f5
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77048067"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478046"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja az F5-tel
 
@@ -102,7 +102,7 @@ Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztk
 
 ### <a name="key-authentication-scenarios"></a>Kulcshitelesítési forgatókönyvek
 
-* Az Azure Active Directory natív integrációs támogatása mellett az Olyan modern hitelesítési protokollok, mint az Open ID Connect, az SAML és a WS-Fed protokollok esetében az F5 kiterjeszti a biztonságos hozzáférést az örökölt alapú hitelesítési alkalmazásokhoz mind a belső, mind a külső hozzáféréshez az Azure AD-vel, lehetővé téve a forgatókönyvek (pl. jelszó nélküli hozzáférés) ezen alkalmazásokhoz. Ez a következőket foglalja magában:
+* Az Azure Active Directory natív integrációs támogatása mellett az Azure Active Directory natív integrációs támogatása a modern hitelesítési protokollok, például az Open ID Connect, SAML és WS-Fed, F5 kiterjeszti a biztonságos hozzáférést az örökölt alapú hitelesítési alkalmazások mind a belső és külső hozzáférés az Azure AD, amely lehetővé teszi a modern forgatókönyvek (pl. jelszó nélküli hozzáférés) ezeket az alkalmazásokat. Ez a következőket foglalja magában:
 
 * Fejlécalapú hitelesítési alkalmazások
 
@@ -281,7 +281,7 @@ Ebben a szakaszban engedélyezi b.Simon azure egyszeri bejelentkezés t az F5-h�
 
 ## <a name="advanced-configuration"></a>Speciális konfiguráció
 
-Ez a szakasz akkor használható, ha nem tudja használni az irányított konfigurációt, vagy további paramétereket szeretne hozzáadni/módosítani. Az alkalmazásállomásnevéhez SSL-tanúsítvány szükséges.
+Ez a szakasz akkor használható, ha nem tudja használni az irányított konfigurációt, vagy további paramétereket szeretne hozzáadni/módosítani. Az alkalmazásállomásnevéhez TLS/SSL-tanúsítvány szükséges.
 
 1. Nyissa meg **a Rendszer> tanúsítványkezelés > forgalmi tanúsítványkezelés > SSL-tanúsítványlista .** Válassza az **Importálás lehetőséget** a jobb oldali sarokban. **Az importálás típusa** **PKCS 12(IIS)** lesz. Adja meg **a kulcs nevét** (a rendszer később a konfigurációban hivatkozik), és adja meg a PFX-fájlt. Adja meg a PFX **jelszavát.** Kattintson **az Importálás gombra.**
 
@@ -298,7 +298,7 @@ Ez a szakasz akkor használható, ha nem tudja használni az irányított konfig
  
     ![F5 (fejlécalapú) konfiguráció](./media/headerf5-tutorial/configure18.png)
 
-1. Ebben az esetben a HeaderApp2-t külsőleg https-ként tesszük közzé, **hogyan kezelje a BIG-IP rendszer az SSL forgalmat?** az **SSL leállítása az ügyféltől, az egyszerű szöveg a kiszolgálókhoz (SSL kiszervezés)** adható meg. Adja meg a tanúsítványt és a kulcsot a Használni kívánt SSL-tanúsítvány csoportban? és **melyik SSL személyes kulcsot szeretné használni?**. Adja meg a virtuális kiszolgáló IP-címét **a Virtuális kiszolgálóhoz használni kívánt IP-cím csoportban.**. 
+1. Ebben az esetben a HeaderApp2-t külsőleg https-ként tesszük közzé, **hogyan kezelje a BIG-IP rendszer az SSL forgalmat?** az **SSL leállítása az ügyféltől, az egyszerű szöveg a kiszolgálókhoz (SSL kiszervezés)** adható meg. Adja meg a tanúsítványt és a kulcsot a Melyik **Which SSL private key do you want to use?** **SSL-tanúsítvány használata csoportban?** Adja meg a virtuális kiszolgáló IP-címét **a Virtuális kiszolgálóhoz használni kívánt IP-cím csoportban.**. 
 
     * **Egyéb részletek megadása**
 

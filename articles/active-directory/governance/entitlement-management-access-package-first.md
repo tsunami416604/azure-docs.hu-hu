@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.subservice: compliance
-ms.date: 10/22/2019
+ms.date: 03/30/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd4feeb83acc3842874e7a2e4bbd32dacabcc00d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c2d31ef46dfba31a8f217f68e8d5f98b67d58da5
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75422658"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410590"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Oktatóanyag: Hozza létre az első hozzáférési csomagot az Azure AD-jogosultságkezelésben
 
@@ -84,79 +84,83 @@ A *hozzáférési csomag* olyan erőforrások egy kötege, amelyre egy csapatnak
 
 1. Az Azure Portalon a bal oldali navigációs sávon kattintson az **Azure Active Directory**elemre.
 
-1. A bal oldali menüben kattintson **az Identitás-irányítási parancsra.**
+2. A bal oldali menüben kattintson **az Identitás-irányítási parancsra.**
 
-1. A bal oldali menüben kattintson az **Access-csomagok parancsra.**  Ha az **Access megtagadva**lehetőséget látja, győződjön meg arról, hogy egy Azure AD Premium P2 licenc található a címtárban.
+3. A bal oldali menüben kattintson az **Access-csomagok parancsra.**  Ha az **Access megtagadva**lehetőséget látja, győződjön meg arról, hogy egy Azure AD Premium P2 licenc található a címtárban.
 
-1. Kattintson **az Új hozzáférési csomag gombra.**
+4. Kattintson **az Új hozzáférési csomag gombra.**
 
     ![Jogosultságkezelés az Azure Portalon](./media/entitlement-management-shared/access-packages-list.png)
 
-1. Az **Alapok** lapon írja be a **Marketingkampány-hozzáférési** csomag nevét és **leírását: Hozzáférés a kampány erőforrásaihoz.**
+5. Az **Alapok** lapon írja be a **Marketingkampány-hozzáférési** csomag nevét és **leírását: Hozzáférés a kampány erőforrásaihoz.**
 
-1. Hagyja a **Katalógus** legördülő listát **Általános**beállításra állítva.
+6. Hagyja a **Katalógus** legördülő listát **Általános**beállításra állítva.
 
     ![Új hozzáférési csomag – Alapok lap](./media/entitlement-management-access-package-first/basics.png)
 
-1. Kattintson a **Tovább** gombra az **Erőforrás-szerepkörök** lap megnyitásához.
+7. Kattintson a **Tovább** gombra az **Erőforrás-szerepkörök** lap megnyitásához.
 
     Ezen a lapon kiválaszthatja a hozzáférési csomagba felvenni kívánt erőforrásokat és erőforrásszerepkört.
 
-1. Kattintson **a Csoportok és csoportok gombra.**
+8. Kattintson **a Csoportok és csoportok gombra.**
 
-1. A Csoportok kiválasztása ablaktáblában keresse meg és jelölje ki a korábban létrehozott **Marketing erőforrás** csoportot.
+9. A Csoportok kiválasztása ablaktáblában keresse meg és jelölje ki a korábban létrehozott **Marketing erőforrás** csoportot.
 
     Alapértelmezés szerint az **Általános** katalóguson belüli és kívüli csoportok jelennek meg. Ha az **Általános** katalóguson kívül kijelöl egy csoportot, az hozzáadódik az **Általános** katalógushoz.
 
     ![Új hozzáférési csomag – Erőforrás-szerepkörök lap](./media/entitlement-management-access-package-first/resource-roles-select-groups.png)
 
-1. A **Kijelölés gombra** kattintva vegye fel a csoportot a listára.
+10. A **Kijelölés gombra** kattintva vegye fel a csoportot a listára.
 
-1. A **Szerepkör** legördülő listában válassza a **Tag**lehetőséget.
+11. A **Szerepkör** legördülő listában válassza a **Tag**lehetőséget.
 
     ![Új hozzáférési csomag – Erőforrás-szerepkörök lap](./media/entitlement-management-access-package-first/resource-roles.png)
 
-1. A **Tovább** gombra kattintva nyissa meg a **Kérések** lapot.
+    >[!NOTE]
+    > Dinamikus [csoportok](../users-groups-roles/groups-create-rule.md) használatakor a tulajdonoson kívül más szerepkörök nem jelennek meg. Ez az elvárt működés.
+    > ![Forgatókönyv áttekintése](./media/entitlement-management-access-package-first/dynamic-group-warning.png)
+
+12. A **Tovább** gombra kattintva nyissa meg a **Kérések** lapot.
 
     Ezen a lapon létrehoz egy kérelemházirendet. A *házirend* határozza meg a hozzáférési csomagok eléréséhez vezető szabályokat vagy korlátokat. Hozzon létre egy házirendet, amely lehetővé teszi, hogy egy adott felhasználó az erőforráskönyvtárban kérje ezt a hozzáférési csomagot.
 
-1. A **Felhasználók, akik hozzáférést kérhetnek,** kattintson **a Címa címtárban lévő felhasználók számára** elemre, majd a Konkrét felhasználók és **csoportok**elemre.
+13. A **Felhasználók, akik hozzáférést kérhetnek,** kattintson **a Címa címtárban lévő felhasználók számára** elemre, majd a Konkrét felhasználók és **csoportok**elemre.
 
     ![Új hozzáférési csomag – Kérések lap](./media/entitlement-management-access-package-first/requests.png)
 
-1. Kattintson **a Felhasználók és csoportok hozzáadása gombra.**
+14. Kattintson **a Felhasználók és csoportok hozzáadása gombra.**
 
-1. A Felhasználók és csoportok kiválasztása ablaktáblában jelölje ki a korábban létrehozott **Kérelmező1** felhasználót.
+15. A Felhasználók és csoportok kiválasztása ablaktáblában jelölje ki a korábban létrehozott **Kérelmező1** felhasználót.
 
     ![Új hozzáférési csomag – Kérések lap – Felhasználók és csoportok kijelölése](./media/entitlement-management-access-package-first/requests-select-users-groups.png)
 
-1. Kattintson a **Kiválasztás** gombra.
+16. Kattintson a **Kiválasztás** gombra.
 
-1. Görgessen le a **Kérelmek jóváhagyása** és **engedélyezése** szakaszhoz.
+17. Görgessen le a **Kérelmek jóváhagyása** és **engedélyezése** szakaszhoz.
 
-1. Hagyja, **hogy**a **Jóváhagyás megkövetelése** nem lesz.
+18. Hagyja, **hogy**a **Jóváhagyás megkövetelése** nem lesz.
 
-1. A **Kérelmek engedélyezése**területen kattintson az **Igen** gombra, ha engedélyezni szeretné, hogy a rendszer a létrehozást kérő hozzáférési csomagot igényeljen.
+19. A **Kérelmek engedélyezése**területen kattintson az **Igen** gombra, ha engedélyezni szeretné, hogy a rendszer a létrehozást kérő hozzáférési csomagot igényeljen.
 
     ![Új hozzáférési csomag – Kérések lap – Jóváhagyás és kérelmek engedélyezése](./media/entitlement-management-access-package-first/requests-approval-enable.png)
 
-1. Kattintson a **Tovább** **gombra** az Életciklus lap megnyitásához.
+20. Kattintson a **Tovább** **gombra** az Életciklus lap megnyitásához.
 
-1. A **Lejárat** szakaszban állítsa be az **Access-csomag-hozzárendelések lejáratát** **A napok száma beállításra.**
+21. A **Lejárat** szakaszban állítsa be az **Access-csomag-hozzárendelések lejáratát** **A napok száma beállításra.**
 
-1. A Hozzárendelések beállítása **30** nap **után lejár.**
+22. A Hozzárendelések beállítása **30** nap **után lejár.**
 
     ![Új hozzáférési csomag – Életciklus lap](./media/entitlement-management-access-package-first/lifecycle.png)
 
-1. Kattintson a **Tovább** gombra a **Véleményezés + Létrehozás** lap megnyitásához.
+23. Kattintson a **Tovább** gombra a **Véleményezés + Létrehozás** lap megnyitásához.
 
     ![Új hozzáférési csomag - Véleményezés + Létrehozás lap](./media/entitlement-management-access-package-first/review-create.png)
 
     Néhány pillanat múlva meg kell jelennie egy értesítést, hogy a hozzáférési csomag sikeresen létrejött.
 
-1. A Marketingkampány hozzáférési csomag bal oldali menüjében kattintson **az Áttekintés gombra.**
+24. A Marketingkampány hozzáférési csomag bal oldali menüjében kattintson **az Áttekintés gombra.**
 
-1. Másolja a **Saját hozzáférés portál hivatkozását**.
+25. Másolja a **Saját hozzáférés portál hivatkozását**.
 
     Ezt a hivatkozást fogja használni a következő lépéshez.
 

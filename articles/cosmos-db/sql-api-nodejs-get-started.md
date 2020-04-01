@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 67f0d79c6b074a822917829eee94c5fd3f6a1ef2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a67c00dab33272120097fde75fcf56f24f9f532b
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78274039"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411351"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Oktatóanyag: Node.js konzolalkalmazás létrehozása a JavaScript SDK-val az Azure Cosmos DB SQL API-adatok kezeléséhez
 
@@ -125,7 +125,7 @@ Most, hogy az alkalmazás létezik, győződjön meg arról, hogy tud beszélni 
    ```
    
 > [!Note]
-> Ha a **Cosmos DB emulátorhoz**csatlakozik, tiltsa le az SSL-ellenőrzést a csomópontfolyamathoz:
+> Ha a **Cosmos DB emulátorhoz**csatlakozik, tiltsa le a TLS-ellenőrzést a csomópontfolyamathoz:
 >   ```
 >   process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 >   const client = new CosmosClient({ endpoint, key });

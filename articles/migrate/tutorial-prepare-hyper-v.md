@@ -2,14 +2,14 @@
 title: Hyper-V virtuális gépek előkészítése az Azure Migrate szolgáltatással az értékelésre/áttelepítésre
 description: Ismerje meg, hogyan készülhet fel a Hyper-V virtuális gépek értékelésére/áttelepítésére az Azure Migrate szolgáltatással.
 ms.topic: tutorial
-ms.date: 03/23/2020
+ms.date: 03/31/2020
 ms.custom: mvc
-ms.openlocfilehash: 5760cf667a02384b8f68cc85540264a1b5702747
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: d14ae4282afb610d025d08419a69c6d10c2f1d08
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80336708"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436228"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Felkészülés a Hyper-V virtuális gépek Azure-ba való értékelésére és áttelepítésére
 
@@ -95,8 +95,9 @@ A Hyper-V-t manuálisan vagy konfigurációs parancsfájl használatával kész�
 - Állítsa be a PowerShell-szolgáltatás minden állomáson, hogy az Azure Migrate-berendezés futtathassa a PowerShell-parancsokat az állomáson egy WinRM-kapcsolaton keresztül.
 - Delegálja a hitelesítő adatokat, ha a virtuálisgép-lemezek távoli SMB-megosztásokon találhatók.
 - Hozzon létre egy fiókot, amelyet a készülék a Hyper-V gazdagépeken lévő virtuális gépek felderítésére használ.
-- Hyper-V integrációs szolgáltatások beállítása minden virtuális gép felszeretné deríteni és értékelni.
+- Hyper-V integrációs szolgáltatások beállítása minden virtuális gép felszeretné deríteni és értékelni. Az integrációs szolgáltatások engedélyezéséhez az alapértelmezett beállítások elegendőek az Azure Migrate számára.
 
+    ![Integrációs szolgáltatások engedélyezése](./media/tutorial-prepare-hyper-v/integrated-services.png)
 
 
 ## <a name="prepare-with-a-script"></a>Felkészülés parancsfájllal
@@ -112,7 +113,7 @@ A parancsfájl a következőket teszi:
 - Ellenőrzi, hogy az állomás a Hyper-V és a Hyper-V szerepkör támogatott verzióját futtatja-e.
 - Engedélyezi a WinRM-szolgáltatást, és megnyitja az 5985 -es (HTTP) és az 5986-os (HTTPS) portokat az állomáson (metaadat-gyűjtéshez szükséges).
 - Engedélyezi a PowerShell-távírást az állomáson.
-- Ellenőrzi, hogy a Hyper-V integrációs szolgáltatás engedélyezve van-e az összes, az állomás által kezelt virtuális gépen.
+- Ellenőrzi, hogy a Hyper-V integrációs szolgáltatások engedélyezve vannak-e az állomás által kezelt összes virtuális gépen.
 - Szükség esetén engedélyezi a CredSSP-t az állomáson.
 
 Futtassa a parancsfájlt az alábbiak szerint:

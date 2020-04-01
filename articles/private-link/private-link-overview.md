@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 02/27/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3218a2de890124915d62afa86fd5f3dca1e72b2e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f75f8392b01e69760171c13c0e6d3b2e22b20dea
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80063086"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421189"
 ---
 # <a name="what-is-azure-private-link"></a>Mi az az Azure privát kapcsolat? 
 Az Azure Private Link lehetővé teszi az Azure PaaS-szolgáltatások (például az Azure Storage és az SQL Database) és az Azure által üzemeltetett ügyféltulajdonú/partnerszolgáltatások elérését a virtuális hálózat [privát végpontján](private-endpoint-overview.md) keresztül.
@@ -47,7 +47,7 @@ Az Azure Private Link a következő előnyöket nyújtja:
 |  | 2. generációs Azure Data Lake Storage        |  Minden nyilvános régió      | FE <br/> [További információ](/azure/storage/common/storage-private-endpoints)  |
 |  |  Azure SQL Database         | Minden nyilvános régió      |   FE <br/> [További információ](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
 |  |Azure Synapse Analytics (SQL Adattár)| Minden nyilvános régió |FE <br/> [További információ](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)|
-|  |Azure Cosmos DB|  USA KELETI RÉGIÓJA, USA KELETI RÉGIÓJA, USA NYUGATI RÉSZE, USA NYUGATI RÉGIÓJA, USA KÖZÉPSŐ RÉGIÓJA, USA NYUGATI KÖZÉPSŐ RÉSZE, USA ÉSZAKI KÖZÉPSŐ RÉSZE, ÉSZAK-EURÓPA, NYUGAT-EURÓPA  |FE <br/> [További információ](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
+|  |Azure Cosmos DB|  Minden nyilvános régió |FE <br/> [További információ](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
 |  |  Azure Database for PostgreSQL – Egyetlen kiszolgáló         | Minden nyilvános régió      |   FE <br/> [További információ](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
 |  |  Azure Database for MySQL         | Minden nyilvános régió      |   FE <br/> [További információ](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)     |
 |  |  Azure Database for MariaDB         | Minden nyilvános régió      |   FE <br/> [További információ](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |

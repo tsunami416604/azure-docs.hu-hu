@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: 287933de6403d680c5aa5b6c78df49abe5f2ac56
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0c10ec94f6c089b5e5466f5dce73d32d6ce917b3
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238509"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422826"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Az Azure Cosmos emulátor használata helyi fejlesztéshez és teszteléshez
 
@@ -413,7 +413,7 @@ cd $env:LOCALAPPDATA\CosmosDBEmulator\bind-mount
 .\importcert.ps1
 ```
 
-Az emulátor elindítása után az interaktív felület bezárása leállítja az emulátor tárolóját.
+Az interaktív rendszerhéj bezárása az emulátor indítása után leállítja az emulátor tartályát.
 
 Az Adatkezelő megnyitásához nyissa meg a következő URL-címet a böngészőben. Az emulátor végpontja a fent látható válaszüzenetben van megadva.
 
@@ -445,7 +445,7 @@ Végül importálnunk kell az Emulátor Hitelesítésszolgáltató tanúsítván
 
 Ha Linuxon dolgozik, az OpenSSL .NET reléket továbbít az érvényesítéshez:
 
-1. [Exportálja a tanúsítványt PFX formátumban](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-ssl-certificate) (a PFX a személyes kulcs exportálásakor érhető el). 
+1. [Exportálja a tanúsítványt PFX formátumban](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-tlsssl-certificate) (a PFX a személyes kulcs exportálásakor érhető el). 
 
 1. Másolja a PFX fájlt a Linux környezetbe.
 
@@ -471,7 +471,7 @@ Ha Linuxon dolgozik, az OpenSSL .NET reléket továbbít az érvényesítéshez:
 
 Ha Mac en dolgozik, kövesse az alábbi lépéseket:
 
-1. [Exportálja a tanúsítványt PFX formátumban](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-ssl-certificate) (a PFX a személyes kulcs exportálásakor érhető el).
+1. [Exportálja a tanúsítványt PFX formátumban](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-tlsssl-certificate) (a PFX a személyes kulcs exportálásakor érhető el).
 
 1. Másolja a PFX-fájlt a Mac környezetébe.
 

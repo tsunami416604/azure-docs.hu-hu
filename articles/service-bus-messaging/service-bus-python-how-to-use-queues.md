@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.custom: seo-python-october2019
-ms.openlocfilehash: aa9ffc48d9b1374fa510f450bab2c66641421446
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: acb0b0e84804ecf6025e05590133dee9b0d54c48
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76773495"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478651"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-python"></a>Rövid útmutató: Az Azure Service Bus-várólisták használata pythonnal
 
@@ -32,7 +32,7 @@ A Python Azure Service Bus-kódtárakról további információt a [Service Bus-
 ## <a name="prerequisites"></a>Előfeltételek
 - Azure-előfizetés. Aktiválhatja visual [studio- vagy MSDN-előfizetői előnyeit,](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) vagy regisztrálhat egy [ingyenes fiókra.](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)
 - A Service Bus névtér, a rövid útmutató lépései alapján [létrehozott: Az Azure Portal használatával hozzon létre egy Service Bus-témakört és előfizetéseket.](service-bus-quickstart-topics-subscriptions-portal.md) Másolja az elsődleges kapcsolati karakterláncot a **Megosztott hozzáférési házirendek** képernyőre a cikk későbbi részében. 
-- Python 3.4x vagy újabb, a [Python Azure Service Bus][Python Azure Service Bus package] csomag telepítve. További információt a [Python telepítési útmutatójában talál.](/azure/python/python-sdk-azure-install) 
+- Python 3.4x vagy újabb, a [Python Azure Service Bus][Python Azure Service Bus package] csomag telepítve. További információt a [Python telepítési útmutatójában talál.](/azure/developer/python/azure-sdk-install) 
 
 ## <a name="create-a-queue"></a>Üzenetsor létrehozása
 

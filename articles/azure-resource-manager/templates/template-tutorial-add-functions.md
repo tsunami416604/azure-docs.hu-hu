@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6bb95d5a8022c6ac94dd8b7c777c65ff5e20617a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4984b286bf031b66272919a487d09a90f972ce0
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369916"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410978"
 ---
 # <a name="tutorial-add-template-functions-to-your-arm-template"></a>Oktatóanyag: Sablonfüggvények hozzáadása az ARM-sablonhoz
 
@@ -48,7 +48,7 @@ Az előző oktatóanyagokban létrehozott egy tárfiókot az USA keleti részén
 
 Ha még nem hozta létre az erőforráscsoportot, olvassa el az Erőforráscsoport létrehozása című [témakört.](template-tutorial-create-first-template.md#create-resource-group) A példa feltételezi, hogy beállította a **templateFile** változót a sablonfájl elérési útvonalára, ahogy az az [első oktatóanyagban](template-tutorial-create-first-template.md#deploy-template)látható.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -71,6 +71,9 @@ az deployment group create \
 ```
 
 ---
+
+> [!NOTE]
+> Ha a telepítés nem sikerült, használja a **hibakeresési kapcsolót** a központi telepítési paranccsal a hibakeresési naplók megjelenítéséhez.  A **részletes** kapcsolóval is megjelenítheti a teljes hibakeresési naplókat.
 
 ## <a name="verify-deployment"></a>Az üzembe helyezés ellenőrzése
 

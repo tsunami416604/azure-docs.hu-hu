@@ -1,6 +1,6 @@
 ---
 title: Az Azure VM RDP-csatlakozási problémáinak elhárítása eseményazonosító szerint | Microsoft dokumentumok
-description: ''
+description: Az eseményazonosítók segítségével elháríthatja azokat a problémákat, amelyek megakadályozzák az Azure virtuális géphez (VM) létesített távoli asztali protokoll (RDP) kapcsolatot.
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 166648402eec7f8033c090a3f7862a902bae4be6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2073d5f91b26cd2ae53e3291a6d1dad4d711b66d
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71154197"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437060"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>Az Azure-beli virtuális gépek kapcsolati hibáinak elhárítása eseményazonosító alapján 
 
@@ -63,7 +63,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **Kulcsszavak:**      Klasszikus <br />
 **Felhasználó:**          N/a <br />
 **Számítógép:**      *számítógép* <br />
-**Leírás:** A Távoli asztali munkamenetgazda-kiszolgáló nem tudta lecserélni a Távoli asztali munkamenetgazda-kiszolgáló SSL-kapcsolatokon történő hitelesítéséhez használt lejárt, saját aláírással aláírt tanúsítványt. A vonatkozó állapotkód a hozzáférés megtagadva volt.
+**Leírás:** A Távoli asztali munkamenetgazda-kiszolgáló nem tudta lecserélni a Távoli asztali munkamenetgazda-kiszolgáló TLS-kapcsolatokon történő hitelesítéséhez használt lejárt, saját aláírású tanúsítványt. A vonatkozó állapotkód a hozzáférés megtagadva volt.
 
 **Napló neve:**      Rendszer <br />
 **Forrás:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
@@ -74,7 +74,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **Kulcsszavak:**      Klasszikus <br />
 **Felhasználó:**          N/a <br />
 **Számítógép:**      *számítógép* <br />
-**Leírás:** A Távoli asztali munkamenetgazda-kiszolgáló nem tudott új, önaláírt tanúsítványt létrehozni az SSL-kapcsolatokon a Távoli asztali munkamenetgazda-kiszolgáló hitelesítéséhez, a megfelelő állapotkód már létezik.
+**Leírás:** A Távoli asztali munkamenetgazda-kiszolgáló nem tudott új, önaláírt tanúsítványt létrehozni a Távoli asztali munkamenetgazda-kiszolgáló TLS-kapcsolatokon történő hitelesítéséhez, a megfelelő állapotkód már létezik.
 
 **Napló neve:**      Rendszer <br />
 **Forrás:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
@@ -85,7 +85,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **Kulcsszavak:**      Klasszikus <br />
 **Felhasználó:**          N/a <br />
 **Számítógép:**      *számítógép* <br />
-**Leírás:** A Távoli asztali munkamenetgazda-kiszolgáló nem tudott új, önaláírt tanúsítványt létrehozni a Távoli asztali munkamenetgazda-kiszolgáló SSL-kapcsolatokon történő hitelesítéséhez. A megfelelő állapotkód nem létezik a Kulcskészlet
+**Leírás:** A Távoli asztali munkamenetgazda-kiszolgáló nem tudott új, önaláírt tanúsítványt létrehozni a Távoli asztali munkamenetgazda-kiszolgáló TLS-kapcsolatokon történő hitelesítéséhez. A megfelelő állapotkód nem létezik a Kulcskészlet
 
 A 36872-es és a 36870-es SCHANNEL-hibaeseményeket a következő parancsok futtatásával is ellenőrizheti:
 
@@ -103,7 +103,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 **Kulcsszavak:**       <br />
 **Felhasználó:**          Rendszer <br />
 **Számítógép:**      *számítógép* <br />
-**Leírás:** Végzetes hiba történt az SSL-kiszolgáló hitelesítő adatainak titkos kulcsához való hozzáférés megkísérléseksorán. A kriptográfiai modulból visszaadott hibakód: 0x8009030D.  <br />
+**Leírás:** Végzetes hiba történt a TLS-kiszolgáló hitelesítő adatainak titkos kulcsához való hozzáférés megkísérléseksorán. A kriptográfiai modulból visszaadott hibakód: 0x8009030D.  <br />
 A belső hiba állapota 10001.
 
 ### <a name="cause"></a>Ok
@@ -186,9 +186,9 @@ Ha nem tudja megújítani a tanúsítványt, az alábbi lépésekkel próbálja 
 
 Próbálja meg elérni a virtuális gép segítségével RDP újra.
 
-#### <a name="update-secure-sockets-layer-ssl-certificate"></a>Secure Sockets Layer (SSL) tanúsítvány frissítése
+#### <a name="update-tlsssl-certificate"></a>TLS/SSL-tanúsítvány frissítése
 
-Ha a virtuális gép beállítása ssl-tanúsítvány használatára, futtassa a következő parancsot az ujjlenyomat levételéhez. Ezután ellenőrizze, hogy ugyanaz-e, mint a tanúsítvány ujjlenyomata:
+Ha a virtuális gép tls/Ssl-tanúsítvány használatára van beállítva, futtassa a következő parancsot az ujjlenyomat levételéhez. Ezután ellenőrizze, hogy ugyanaz-e, mint a tanúsítvány ujjlenyomata:
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v SSLCertificateSHA1Hash

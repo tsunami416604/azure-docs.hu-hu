@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
 ms.author: memildin
-ms.openlocfilehash: 9f49b858a23d0a1f58505d9f9971a31e8c9167e9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3b7181550fd76f158ec04e9779f4301bd74484e1
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73664503"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435981"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Rövid útmutató: Linux rendszerű számítógépek felvétele a Security Centerbe
-Miután az Azure-előfizetések, engedélyezheti a Security Center for Linux-erőforrások futó azure-on kívül, például a helyszínen vagy más felhők, egy ügynök kiépítése. Az ügynök neve a Microsoft Monitoring Agent (MMA), de az OMS-ügynök néven is ismert.
+Miután az Azure-előfizetések, engedélyezheti a Security Center for Linux-erőforrások futó azure-on kívül, például a helyszínen vagy más felhők, egy ügynök kiépítése. Az ügynök neve a Log Analytics-ügynök, de az OMS-ügynök is ismert.
 
 Ez a rövid útmutató bemutatja, hogyan telepítheti az ügynököt linuxos számítógépre.
 
 ## <a name="prerequisites"></a>Előfeltételek
 A Security Center használatához Microsoft Azure-előfizetéssel kell rendelkeznie. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókkal](https://azure.microsoft.com/pricing/free-trial/).
 
-A rövid útmutató megkezdése előtt rendelkeznie kell a Security Center Standard tarifacsomagjával. A frissítési utasításokért lásd az [Azure-előfizetés a Security Center Standard verziójába történő felvételét](security-center-get-started.md) ismertető szakaszt. Kipróbálhatja a Security Center Standard díjmentesen. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
+A rövid útmutató megkezdése előtt a Security Center standard tarifacsomagján kell lennie. A frissítési utasításokért lásd az [Azure-előfizetés a Security Center Standard verziójába történő felvételét](security-center-get-started.md) ismertető szakaszt. Kipróbálhatja a Security Center Standard díjmentesen. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="add-new-linux-computer"></a>Új Linux rendszerű számítógép hozzáadása
 

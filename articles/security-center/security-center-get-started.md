@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: 26d62f2c027a093ba518b98fa37ce3a31a14f175
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3f0d624605f617a8e5ab914c49c4c94a40ebdcc6
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73664288"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435779"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Rövid útmutató: Azure-előfizetés felvétele a Security Center Standard verziójába
 Az Azure Security Center egységes biztonsági felügyeletet és fenyegetésvédelmet biztosít a hibrid felhőalapú számítási feladatokhoz. Míg az Ingyenes szint korlátozott biztonságot nyújt, és azt is csak az Azure-erőforrások számára, a Standard szint kiterjeszti ezeket a képességeket a helyszíni és egyéb felhőkre. A Security Center segítségével megtalálhatja és kijavíthatja a biztonsági réseket, hozzáférés- és alkalmazásvezérlőket alkalmazhat a kártékony tevékenységek blokkolásához, észlelheti a fenyegetéseket az analitika és az intelligencia használatával, valamint gyorsan reagálhat, ha a rendszer támadás alatt áll. Kipróbálhatja a Security Center Standard-ot díjmentesen. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
 
-Ebben a cikkben frissíteni fog a Standard szintre a további biztonság érdekében, és telepíteni fogja a Microsoft Monitoring Agentet a virtuális gépekre a biztonsági rések és fenyegetések monitorozásához.
+Ebben a cikkben a normál szintű a nagyobb biztonság érdekében, és telepítse a Log Analytics-ügynök a virtuális gépeken a biztonsági rések és fenyegetések figyeléséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 A Security Center használatához Microsoft Azure-előfizetéssel kell rendelkeznie. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókkal](https://azure.microsoft.com/pricing/free-trial/).
@@ -47,7 +47,7 @@ A Security Center első indítása után néhány percen belül a következők j
 - **Javaslatok** az Azure-előfizetések biztonságának javítására. Ha a **Javaslatok** csempére kattint, elindít egy rangsorolt listát.
 - A Security Center által éppen felmért **Számítás és alkalmazások**, **Hálózat**, **Adatbiztonság** és **Identitás és hozzáférés** erőforrások leltára, valamint ezek biztonsági állapota.
 
-A Security Center képességeinek teljes körű kihasználása érdekében végre kell hajtania az alábbi lépéseket a Standard szintre való frissítéshez és a Microsoft Monitoring Agent telepítéséhez.
+A Security Center teljes körű kihasználásához el kell végeznie az alábbi lépéseket a standard szintre való frissítéshez és a Log Analytics-ügynök telepítéséhez.
 
 ## <a name="upgrade-to-the-standard-tier"></a>Frissítés a Standard szintre
 A Security Center rövid útmutatóinak és oktatóanyagainak elvégzéséhez frissítenie kell a Standard szintre. A Security Center Standard ingyenes próbaverziója van. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/). 
@@ -66,11 +66,11 @@ A Security Center rövid útmutatóinak és oktatóanyagainak elvégzéséhez fr
   ![Biztonsági riasztások][9]
 
 ## <a name="automate-data-collection"></a>Adatgyűjtés automatizálása
-A Security Center adatokat gyűjt az Azure-beli virtuális gépekről és a nem Azure-beli számítógépekről a biztonsági rések és fenyegetések megfigyeléséhez. Az adatgyűjtés a Microsoft Monitoring Agent segítségével történik, amely a biztonsághoz kapcsolódó különböző konfigurációkat és eseménynaplókat olvas be a gépről, és elemzés céljából átmásolja az adatokat az Ön munkaterületére. Alapértelmezés szerint a Security Center létre fog hozni egy új munkaterületet.
+A Security Center adatokat gyűjt az Azure-beli virtuális gépekről és a nem Azure-beli számítógépekről a biztonsági rések és fenyegetések megfigyeléséhez. Az adatok gyűjtése a Log Analytics-ügynök használatával történik, amely beolvassa a különböző biztonsággal kapcsolatos konfigurációkat és eseménynaplókat a gépről, és átmásolja az adatokat a munkaterületre elemzésre. Alapértelmezés szerint a Security Center létre fog hozni egy új munkaterületet.
 
-Ha az automatikus kiépítés engedélyezve van, a Security Center telepíti a Microsoft Monitoring Agentet az összes támogatott Azure-beli és újonnan létrehozott virtuális gépen. Az automatikus kiépítés használata erősen ajánlott.
+Ha az automatikus kiépítés engedélyezve van, a Security Center telepíti a Log Analytics-ügynököt az összes támogatott Azure virtuális gépre és a létrehozott újakra. Az automatikus kiépítés használata erősen ajánlott.
 
-A Microsoft Monitoring Agent automatikus kiépítésének engedélyezése:
+A Log Analytics-ügynök automatikus kiépítésének engedélyezése:
 
 1. A Biztonsági központ főmenüjében válassza **az Árképzési & beállítások lehetőséget.**
 2. Az előfizetés sorában kattintson arra az előfizetésre, amelyen módosítani szeretné a beállításokat.
@@ -99,11 +99,11 @@ Ha le szeretné tiltani az automatikus kiépítést:
 4. Kattintson a **Mentés** gombra.
 
 >[!NOTE]
-> Az automatikus kiépítés letiltása nem távolítja el a Microsoft Monitoring Agentet azon Azure-beli virtuális gépekről, ahol az ügynök üzembe lett helyezve. Az automatikus kiépítés letiltása korlátozza az erőforrások biztonsági monitorozását.
+> Az automatikus kiépítés letiltása nem távolítja el a Log Analytics-ügynököt az Azure virtuális gépekről, ahol az ügynök ki van építve. Az automatikus kiépítés letiltása korlátozza az erőforrások biztonsági monitorozását.
 >
 
 ## <a name="next-steps"></a>További lépések
-Ebben a rövid útmutatóban frissített a Standard szintre, és kiépítette a Microsoft Monitoring Agentet, hogy biztosítsa az egységes biztonsági felügyeletet és fenyegetésvédelmet a hibrid felhőalapú számítási feladatokon. Ha többet szeretne megtudni a Security Center használatáról, folytassa a helyszínen és egyéb felhőszolgáltatásokban található Windows rendszerű számítógépek felvételével foglalkozó oktatóanyaggal.
+Ebben a rövid útmutatóban frissített standard szintre, és kiközösítette a Log Analytics-ügynököt az egységes biztonsági felügyelet és a fenyegetésvédelem érdekében a hibrid felhőbeli számítási feladatok között. Ha többet szeretne megtudni a Security Center használatáról, folytassa a helyszínen és egyéb felhőszolgáltatásokban található Windows rendszerű számítógépek felvételével foglalkozó oktatóanyaggal.
 
 > [!div class="nextstepaction"]
 > [Rövid útmutató: Windows rendszerű számítógépek felvétele az Azure Security Centerbe](quick-onboard-windows-computer.md)

@@ -9,12 +9,12 @@ ms.subservice: heavy
 ms.topic: overview
 ms.date: 08/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 362b7457538a16d389c3cc40fc44da19b073c0b0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 2f1f01a8cfa25c222848e7cc5c86dc3532eba348
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "70142918"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437773"
 ---
 # <a name="what-is-azure-data-box-heavy"></a>Mi az az Azure Data Box Heavy?
 
@@ -116,7 +116,7 @@ A Data Box Heavy régióelérhetőségével kapcsolatos legfrissebb információ
 
 A Data Box Heavy-ra való regisztrációhoz tegye a következő lépéseket:
 
-1. Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
+1. [Jelentkezzen be az Azure Portalon.](https://portal.azure.com)
 2. Új erőforrás létrehozásához kattintson **a + Erőforrás létrehozása** elemre. Keressen az **Azure Data Box** kifejezésre. Válassza az **Azure Data Box** szolgáltatást.
 3. Kattintson **a Létrehozás gombra.**
 4. Válassza ki a Data Box Heavy-hoz használni kívánt előfizetést. Válassza ki a régiót, ahol üzembe szeretné helyezni a Data Box Heavy-erőforrást. A **Data Box Heavy** lehetőségnél kattintson a **Regisztráció** elemre.

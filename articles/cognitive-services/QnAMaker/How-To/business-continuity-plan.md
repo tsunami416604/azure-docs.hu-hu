@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: f920a789f1ec631c5d70863b10d8364b3eb81b6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2100426923418104c31933bf9d1406a6441d3841
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77650469"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410916"
 ---
 # <a name="create-a-business-continuity-plan-for-your-qna-maker-service"></a>Üzletmenet-folytonossági terv létrehozása a QnA Maker szolgáltatáshoz
 
@@ -33,7 +33,7 @@ A fent szereplő magas szintű elképzelés a következő:
 
 4. Az elsődleges és másodlagos halmok beállítása után a [traffic manager](https://docs.microsoft.com/azure/traffic-manager/) segítségével konfigurálja a két végpontot, és állítson be egy útválasztási módszert.
 
-5. Létre kell hoznia egy Secure Sockets Layer (SSL) tanúsítványt a forgalomkezelő végponthoz. [Kösse meg az SSL-tanúsítványt](https://docs.microsoft.com/azure/app-service/configure-ssl-bindings) az alkalmazásszolgáltatásokban.
+5. Létre kell hoznia egy Transport Layer Security (TLS), korábbi nevén Secure Sockets Layer (SSL), tanúsítványt a traffic manager végpont. [Kösse meg a TLS/SSL tanúsítványt](https://docs.microsoft.com/azure/app-service/configure-ssl-bindings) az alkalmazásszolgáltatásokban.
 
 6. Végül használja a traffic manager végpontot a robot ban vagy az alkalmazásban.
 

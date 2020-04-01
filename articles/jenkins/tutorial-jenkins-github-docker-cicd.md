@@ -1,14 +1,14 @@
 ---
-title: Oktatóanyag – fejlesztési folyamat létrehozása az Azure-ban a Jenkins szolgáltatással
+title: Oktatóanyag – Fejlesztési folyamat létrehozása az Azure-ban a Jenkins-szel
 description: Oktatóanyag – Ebben az oktatóanyagban megtudhatja, hogyan hozhat létre az Azure-ban egy Jenkins-alapú virtuális gépet, amely a GitHubról kéri le a kódok véglegesítését, és létrehoz egy új Docker-tárolót az alkalmazása futtatásához.
-keywords: Jenkins, Azure, devops, folyamat, vel, Docker
+keywords: jenkins, azure, devops, pipeline, cicd, docker
 ms.topic: tutorial
 ms.date: 03/27/2017
 ms.openlocfilehash: 2560d03282b2b3c8193a0b8c2a7a9f7c4036e75a
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77606446"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Oktatóanyag: Fejlesztési infrastruktúra létrehozása egy Azure-beli Linux rendszerű virtuális gépen a Jenkins, a GitHub és a Docker használatával
@@ -23,7 +23,7 @@ Az alkalmazás fejlesztésének létrehozási és tesztelési fázisának automa
 > * Docker-rendszerkép létrehozása az alkalmazáshoz
 > * Annak ellenőrzése, hogy a GitHub-véglegesítések új Docker-rendszerképet hoznak létre és frissítik a futó alkalmazást
 
-Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](https://docs.microsoft.com/azure/cloud-shell/overview)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
+Ez az oktatóanyag az [Azure Cloud Shellen](https://docs.microsoft.com/azure/cloud-shell/overview)belüli CLI-t használja, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **Próbálja ki** a kódblokk tetejéről.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -97,7 +97,7 @@ Biztonsági okokból a Jenkins telepítésének megkezdéséhez meg kell adnia a
 ssh azureuser@<publicIps>
 ```
 
-Ellenőrizze, hogy fut-e a Jenkins a `service` parancs használatával:
+Ellenőrizze, hogy a `service` Jenkins fut-e a következő paranccsal:
 
 ```bash
 $ service jenkins status
@@ -128,7 +128,7 @@ Ezután indítson el egy webböngészőt és lépjen a `http://<publicIps>:8080`
 - Válassza a **Save and Finish** (Mentés és befejezés) elemet
 - Amint Jenkins készen áll, kattintson a **Start using Jenkins** (Jenkins használatának megkezdése) elemre
   - Ha a webböngésző Jenkins használatának megkezdésekor egy üres lapot jelenít meg, indítsa újra a Jenkins szolgáltatást. Az SSH-munkamenetben gépelje be a `sudo service jenkins restart` parancsot, majd frissítse a webböngészőt.
-- Ha szükséges, jelentkezzen be a Jenkins-be a létrehozott felhasználónévvel és jelszóval.
+- Ha szükséges, jelentkezzen be a Jenkins be a felhasználónevet és jelszót a létrehozott.
 
 
 ## <a name="create-github-webhook"></a>GitHub-webhook létrehozása
@@ -136,13 +136,13 @@ A GitHubbal való integráció konfigurálásához nyissa meg a [Node.js „Hell
 
 Hozzon létre egy webhookot a létrehozott elágazásban:
 
-- Válassza a **Beállítások**, majd a bal oldali **webhookok** lehetőséget.
-- Válassza a **webhook hozzáadása**lehetőséget, majd írja be a *Jenkins* kifejezést a szűrő mezőbe.
-- A **hasznos adatok URL-címe**mezőbe írja be a következőt: `http://<publicIps>:8080/github-webhook/`. Ügyeljen rá, hogy az URL-címből ne maradjon le a „/” záró karakter.
-- A **tartalom típusa**beállításnál válassza az *Application/x-www-Form-urlencoded*lehetőséget.
-- **Mely eseményekhez szeretné elindítani ezt a webhookot?** jelölje ki *a csak a leküldéses eseményt.*
-- Az **aktív** érték bejelölve.
-- Kattintson a **webhook hozzáadása**lehetőségre.
+- Válassza **a Beállítások**lehetőséget, majd a bal oldalon válassza a **Webhooks** lehetőséget.
+- Válassza **a Webhook hozzáadása**lehetőséget, majd írja be a *Jenkins* értéket a szűrőmezőbe.
+- A **hasznos adat URL-címéhez**írja be a . `http://<publicIps>:8080/github-webhook/` Ügyeljen rá, hogy az URL-címből ne maradjon le a „/” záró karakter.
+- **Tartalomtípus esetén**válassza *az application/x-www-form-urlencoded*lehetőséget.
+- Milyen *Just the push event.* **eseményekhez szeretné aktiválni ezt a webhookot?**
+- Állítsa **be az Aktív** beállítás átjelöltét.
+- Kattintson **a Webhook hozzáadása gombra.**
 
 ![A GitHub-webhook hozzáadása az elágaztatott adattárhoz](media/tutorial-jenkins-github-docker-cicd/github-webhook.png)
 
@@ -153,7 +153,7 @@ Ahhoz, hogy a Jenkins válaszoljon a GitHub eseményeire, például egy kód vé
 A Jenkins webhely kezdőlapján válassza a **Create new jobs** (Új feladatok létrehozása) lehetőséget.
 
 - A feladatnak adja a *HelloWorld* nevet. Válassza a **Freestyle project** (Szabad stílusú projekt) lehetőséget, majd kattintson az **OK** gombra.
-- A **General** (Általános) szakaszban válassza ki a **GitHub project** (GitHub-projekt) lehetőséget, majd adja meg az elágaztatott adattár URL-címét, például: *https://github.com/cynthn/nodejs-docs-hello-world*
+- Az **Általános** szakaszban válassza a **GitHub-projektet,** és adja meg a villás tártár URL-címét, például*https://github.com/cynthn/nodejs-docs-hello-world*
 - A **Source code management** (Forráskódkezelés) szakaszban válassza a **Git** elemet, majd adja meg az elágaztatott *.git*-adattár URL-címét, például: *https://github.com/cynthn/nodejs-docs-hello-world.git*
 - A **Build Triggers** (Eseményindítók létrehozása) szakaszban válassza a **GitHub hook trigger for GITScm polling** (GitHub beavatkozási pont eseményindító GITScm lekérdezés esetén) lehetőséget.
 - A **Build** (Létrehozás) szakaszban válassza az **Add build step** (Létrehozási lépés hozzáadása) lehetőséget. Válassza az **Execute shell** (Felület futtatása) lehetőséget, majd a parancssori ablakba írja be a következőt: `echo "Test"`.
@@ -235,7 +235,7 @@ Most szerkessze újra az *index.js* fájlt a GitHubban, majd véglegesítse a m�
 ![Node.js-alkalmazás futtatása egy újabb GitHub-véglegesítés után](media/tutorial-jenkins-github-docker-cicd/another-running-nodejs-app.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban úgy konfiguráltuk a GitHubot, hogy minden egyes kódvéglegesítéskor futtasson egy Jenkins létrehozási feladatot, majd helyezzen üzembe egy Docker-tárolót az alkalmazás teszteléséhez. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]

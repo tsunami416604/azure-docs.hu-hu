@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integráció a Montage online-nal | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a Montage online között.
+title: 'Oktatóanyag: Az Azure Active Directory integrációja a Montage Online-nal | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és a Montage Online között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,194 +16,194 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 89713d99b9a6d5f8b56d57c9cf6f184142510420
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160510"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-montage-online"></a>Oktatóanyag: Azure Active Directory integráció a Montage online-nal
+# <a name="tutorial-azure-active-directory-integration-with-montage-online"></a>Oktatóanyag: Az Azure Active Directory integrációja a Montage Online-nal
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Montage online-t a Azure Active Directory (Azure AD) használatával.
-A Montage online és az Azure AD integrálásával a következő előnyöket nyújtja:
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a Montage Online-t az Azure Active Directoryval (Azure AD).
+A Montage Online integrálása az Azure AD-vel a következő előnyöket nyújtja:
 
-* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a Montage online-hoz.
-* Engedélyezheti a felhasználók számára, hogy automatikusan bejelentkezzenek az online (egyszeri bejelentkezés) szolgáltatásba az Azure AD-fiókkal.
-* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
+* Az Azure AD-ben szabályozhatja, hogy ki férhet hozzá a Montage Online-hoz.
+* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve legyenek a Montage Online-ba (Single Sign-On) az Azure AD-fiókjukkal.
+* Fiókjait egyetlen központi helyen kezelheti – az Azure Portalon.
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha további részleteket szeretne megtudni az SaaS-alkalmazások Azure AD-vel való integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integrációnak a Montage online-nal való konfigurálásához a következő elemek szükségesek:
+Az Azure AD-integráció beállítása a Montage Online-nal a következő elemekre van szüksége:
 
-* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
-* Online egyszeri bejelentkezésre alkalmas előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) egy hónapos próbaverziót kaphat
+* A Montage Online egyszeri bejelentkezésre szóló előfizetése
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben.
 
-* A Montage online támogatja az **SP** által KEZDEMÉNYEZett SSO-t
+* A Montage Online támogatja az **SP** által kezdeményezett SSO-t
 
-## <a name="adding-montage-online-from-the-gallery"></a>Montázs online felvétele a katalógusból
+## <a name="adding-montage-online-from-the-gallery"></a>Montage Online hozzáadása a galériából
 
-A Montage online-integrációjának az Azure AD-be való konfigurálásához hozzá kell adnia a gyűjteményt a katalógusból a felügyelt SaaS-alkalmazások listájához.
+A Montage Online Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Montage Online-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Ha a katalógusból online szeretné felvenni a montázst, hajtsa végre a következő lépéseket:**
+**Ha a Montage Online-t fel szeretné adni a galériából, hajtsa végre az alábbi lépéseket:**
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
+1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen kattintson az **Azure Active Directory** ikonjára.
 
-    ![A Azure Active Directory gomb](common/select-azuread.png)
+    ![Az Azure Active Directory gombja](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+2. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza a **Minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához kattintson a párbeszédpanel tetején található **új alkalmazás** gombra.
+3. Új alkalmazás hozzáadásához kattintson az **Új alkalmazás** gombra a párbeszéd ablak tetején.
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+    ![Az Új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Montage online**kifejezést, válassza a **Montage online** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Montage Online**kifejezést, válassza az eredménypanelmontage **online** elemét, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![A Montage online az eredmények listájában](common/search-new-app.png)
+     ![Montage Online az eredmények listájában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálhatja és tesztelheti a Montage online-ban egy **Britta Simon**nevű teszt felhasználó alapján.
-Az egyszeri bejelentkezés működéséhez egy Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolatra van szükség a Montage online-ban.
+Ebben a szakaszban konfigurálhatja és tesztelheti az Azure AD egyszeri bejelentkezését a Montage Online-nal egy **Britta Simon**nevű tesztfelhasználó alapján.
+Egyszeri bejelentkezés a munka, az Azure AD-felhasználó és a kapcsolódó felhasználó a Montage Online közötti kapcsolat létre kell hozni.
 
-Az Azure AD egyszeri bejelentkezés a Montage online-ban való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez a Montage Online-nal a következő építőelemeket kell végrehajtania:
 
-1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. A **[Montage online egyszeri bejelentkezés konfigurálása](#configure-montage-online-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
-4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
-5. **[Készítse el a Montage online test User](#create-montage-online-test-user)** -t, hogy a Britta Simon in Montage online partnere legyen, amely a felhasználó Azure ad-képviseletéhez van társítva.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+1. **[Konfigurálja az Azure AD egyszeri bejelentkezést](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
+2. **[Konfigurálja a Montage Online Single Sign-On --hoz](#configure-montage-online-single-sign-on)** konfigurálni az egyszeri bejelentkezés i beállításokat az alkalmazás oldalán.
+3. **[Hozzon létre egy Azure AD-tesztfelhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezésének teszteléséhez Britta Simonnal.
+4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi Britta Simon azure AD egyszeri bejelentkezés.
+5. **[Montage Online tesztfelhasználó létrehozása](#create-montage-online-test-user)** – britta Simon megfelelője a Montage Online-ban, amely a felhasználó Azure AD-megjelenítéséhez kapcsolódik.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
 
-Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
+Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon.
 
-Az Azure AD egyszeri bejelentkezés a Montage online-ban való konfigurálásához hajtsa végre a következő lépéseket:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához hajtsa végre az alábbi lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)a **Montage online** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az [Azure Portalon](https://portal.azure.com/)a **Montage Online** alkalmazásintegrációs lapon válassza az **Egyszeri bejelentkezés**lehetőséget.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+    ![Egyszeri bejelentkezési kapcsolat konfigurálása](common/select-sso.png)
 
-2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
+2. Az **Egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza **az SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezésválasztó mód](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson a **Szerkesztés** ikonra az **Egyszerű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
+4. Az **Egyszerű SAML-konfiguráció** szakaszban hajtsa végre az alábbi lépéseket:
 
-    ![A Montage online domain és az URL-címek egyszeri bejelentkezési adatai](common/sp-identifier.png)
+    ![A Montage Online domain és az URL-címek egyszeri bejelentkezési információi](common/sp-identifier.png)
 
-    a. A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával:
+    a. A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő minta használatával:
 
-    Éles környezetben: `https://<subdomain>.montageonline.co.nz/`
+    Éles környezethez:`https://<subdomain>.montageonline.co.nz/`
 
-    Tesztelési környezet esetén: `https://build-<subdomain>.montageonline.co.nz/`
+    Tesztkörnyezethez:`https://build-<subdomain>.montageonline.co.nz/`
 
-    b. Az **azonosító** szövegmezőbe írja be az URL-címet:
+    b. Az **Azonosító** mezőbe írjon be egy URL-címet:
 
-    Éles környezetben: `MOL_Azure`
+    Éles környezethez:`MOL_Azure`
 
-    Tesztelési környezet esetén: `MOL_Azure_Build`
+    Tesztkörnyezethez:`MOL_Azure_Build`
 
     > [!NOTE] 
-    > A bejelentkezési URL-cím értéke nem valós. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez lépjen kapcsolatba a [Montage online ügyfél-támogatási csapatával](https://www.montage.co.nz/contact-us/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > A bejelentkezési URL-érték nem valós. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Lépjen kapcsolatba [a Montage Online ügyféltámogatási csapatával](https://www.montage.co.nz/contact-us/) az érték értéséhez. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+5. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány** szakaszában kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállításokból a követelménynek megfelelően, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
-6. A **Montage online beállítása** szakaszban adja meg a megfelelő URL (eke) t a követelménynek megfelelően.
+6. A **Montage Online beállítása** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény nek megfelelően.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL-cím
+    a. Bejelentkezési URL
 
-    b. Azure AD-azonosító
+    b. Azure Hirdetés-azonosító
 
-    c. Kijelentkezési URL-cím
+    c. Kijelentkezés URL-címe
 
-### <a name="configure-montage-online-single-sign-on"></a>A Montage online egyszeri bejelentkezés konfigurálása
+### <a name="configure-montage-online-single-sign-on"></a>Montage Online egyszeri bejelentkezés konfigurálása
 
-Ha az egyszeri bejelentkezést szeretné konfigurálni a **Montage online** oldalon, el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt url-címeket a Azure Portalról a [Montage online támogatási csapatához](https://www.montage.co.nz/contact-us/). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Az egyszeri bejelentkezés konfigurálásához a **Montage Online** oldalán el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt URL-címeket az Azure Portalról a [Montage Online támogatási csapatának.](https://www.montage.co.nz/contact-us/) Úgy állították be ezt a beállítást, hogy az SAML SSO-kapcsolat mindkét oldalon megfelelően legyen beállítva.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása 
 
-Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
+Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalon Britta Simon.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Az Azure Portalon a bal oldali ablaktáblában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd az **Összes felhasználó**lehetőséget.
 
-    ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
+    ![A "Felhasználók és csoportok" és a "Minden felhasználó" linkek](common/users.png)
 
-2. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+2. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
 
     ![Új felhasználó gomb](common/new-user.png)
 
-3. A felhasználó tulajdonságainál végezze el a következő lépéseket.
+3. A Felhasználó tulajdonságokban hajtsa végre a következő lépéseket.
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+    ![A Felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. A név mezőbe írja be a **BrittaSimon** **nevet** .
+    a. A **Név** mezőbe írja be **a BrittaSimon**értéket.
   
-    b. A **Felhasználónév** mezőbe írja be a következőt: **brittasimon\@yourcompanydomain. Extension**  
+    b. A **Felhasználónév** mezőbe írja be **a\@brittasimon yourcompanydomain.extension típusú felhasználónév mezőt.**  
     Például: BrittaSimon@contoso.com
 
-    c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
+    c. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a  **Create** (Létrehozás) gombra.
+    d. Kattintson **a Létrehozás gombra.**
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Ebben a szakaszban a Britta Simon az Azure egyszeri bejelentkezés használatára teszi lehetővé, hogy hozzáférést biztosítson a Montage online-hoz.
+Ebben a szakaszban engedélyezi Britta Simon számára az Azure egyszeri bejelentkezést a Montage Online-hoz való hozzáférés biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Montage online**lehetőséget.
+1. Az Azure Portalon válassza az **Enterprise Applications**lehetőséget, válassza a **Minden alkalmazás**lehetőséget, majd a **Montage Online**lehetőséget.
 
-    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Montage online**lehetőséget.
+2. Az alkalmazások listájában válassza a **Montage Online**lehetőséget.
 
-    ![A Montage online hivatkozása az alkalmazások listában](common/all-applications.png)
+    ![A Montázs Online hivatkozás az Alkalmazások listában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **Felhasználók és csoportok**lehetőséget.
 
-    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+    ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza a **felhasználók és csoportok** lehetőséget a **hozzárendelés hozzáadása** párbeszédpanelen.
+4. Kattintson a **Felhasználó hozzáadása** gombra, majd a **Hozzárendelés hozzáadása** **párbeszédpanelen** válassza a Felhasználók és csoportok lehetőséget.
 
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
+    ![A Hozzárendelés hozzáadása ablaktábla](common/add-assign-user.png)
 
-5. A **felhasználók és csoportok** párbeszédpanelen válassza a **Britta Simon** elemet a felhasználók listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
+5. A **Felhasználók és csoportok** párbeszédpanelen válassza **a Britta Simon** elemet a Felhasználók listában, majd kattintson a kijelölés gombra a képernyő alján. **Select**
 
-6. Ha az SAML-kijelentésben az egyik szerepkör értékét várja, akkor a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+6. Ha az SAML-helyességben szerepkörértéket vár, akkor a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó megfelelő szerepkörét a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
 
-7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+7. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
 
-### <a name="create-montage-online-test-user"></a>A Montage online tesztelési felhasználó létrehozása
+### <a name="create-montage-online-test-user"></a>Montage Online tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Montage online-ban. A Montage online [támogatási csapatával](https://www.montage.co.nz/contact-us/) felveheti a felhasználókat a Montage online platformba. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Montage Online-ban. Együttműködve [Montage Online támogatási csapatával,](https://www.montage.co.nz/contact-us/) hogy hozzáadja a felhasználókat a Montage Online platformhoz. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
 
-Amikor a hozzáférési panelen a Montage online csempére kattint, automatikusan be kell jelentkeznie a Montage online-ba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor a Hozzáférési panelen a Montage Online csempére kattint, automatikusan be kell jelentkeznie arra a Montage Online-ba, amelyhez beállítja az SSO-t. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 ## <a name="additional-resources"></a>További források
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

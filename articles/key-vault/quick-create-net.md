@@ -3,16 +3,16 @@ title: Rövid útmutató – Azure Key Vault-ügyféltár a .NET-hez (v4)
 description: Megtudhatja, hogy miként hozhat létre, kérhet le és törölhet titkokat egy Azure-kulcstárolóból a .NET ügyfélkódtár használatával (v4)
 author: msmbaldwin
 ms.author: mbaldwin
-ms.date: 05/20/2019
+ms.date: 03/12/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 584fe94a54facf1489382a6052bbff6b44649358
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
-ms.translationtype: HT
+ms.openlocfilehash: a94717c7bed3ba25a4682896053672fe100dc43a
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79457236"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398381"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>Rövid útmutató: Azure Key Vault-ügyféltár a .NET-hez (SDK v4)
 
@@ -40,7 +40,7 @@ Ez a rövid útmutató `dotnet`feltételezi, hogy windowsos terminálon (példá
 
 ### <a name="create-new-net-console-app"></a>Új .NET konzolalkalmazás létrehozása
 
-A konzolablakban a `dotnet new` paranccsal hozzon létre egy `akv-dotnet`új .
+A konzolablakban a `dotnet new` paranccsal hozzon létre egy `key-vault-console-app`új .
 
 ```console
 dotnet new console -n key-vault-console-app
@@ -65,13 +65,13 @@ Build succeeded.
 A konzolablakból telepítse az Azure Key Vault-ügyfélkönyvtárat a .NET-hez:
 
 ```console
-dotnet add package Azure.Security.KeyVault.Secrets --version 4.0.0
+dotnet add package Azure.Security.KeyVault.Secrets
 ```
 
 Ehhez a rövid útmutatóhoz a következő csomagokat is telepítenie kell:
 
 ```console
-dotnet add package Azure.Identity --version 1.0.0
+dotnet add package Azure.Identity
 ```
 
 ### <a name="create-a-resource-group-and-key-vault"></a>Erőforráscsoport és kulcstartó létrehozása
@@ -85,6 +85,12 @@ Ez a rövid útmutató egy előre létrehozott Azure-kulcstartót használ. Az [
 az group create --name "myResourceGroup" -l "EastUS"
 
 az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
+```
+
+```azurepowershell
+New-AzResourceGroup -Name myResourceGroup -Location EastUS
+
+New-AzKeyVault -Name <your-unique-keyvault-name> -ResourceGroupName myResourceGroup -Location EastUS
 ```
 
 ### <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
@@ -113,14 +119,39 @@ Ez a művelet kulcs/ értékpárok sorozatát adja vissza.
 }
 ```
 
+Egyszerű szolgáltatás létrehozása az Azure PowerShell [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) paranccsal:
+
+```azurepowershell
+# Create a new service principal
+$spn = New-AzADServicePrincipal -DisplayName "http://mySP"
+
+# Get the tenant ID and subscription ID of the service principal
+$tenantId = (Get-AzContext).Tenant.Id
+$subscriptionId = (Get-AzContext).Subscription.Id
+
+# Get the client ID
+$clientId = $spn.ApplicationId
+
+# Get the client Secret
+$bstr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($spn.Secret)
+$clientSecret = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($bstr)
+```
+
+Az Azure PowerShell egyszerű szolgáltatásról további információt az [Azure-szolgáltatásegyszerű szolgáltatás létrehozása az Azure PowerShell használatával](/powershell/azure/create-azure-service-principal-azureps)című dokumentumban talál.
+
 Vegye figyelembe az ügyfélazonosítót, az ügyféltitkos kulcsot és a tenantId azonosítót, mivel a következő lépésekben fogjuk használni őket.
+
 
 #### <a name="give-the-service-principal-access-to-your-key-vault"></a>A szolgáltatásegyszerű hozzáférés a key vaulthoz
 
 Hozzon létre egy hozzáférési szabályzatot a key vault, amely engedélyt ad a szolgáltatásnév átadásával az ügyfélazonosító az [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) parancs. Adja meg a szolgáltatás egyszerű lekérni, listát, és engedélyeket a kulcsok és a titkos kulcsok.
 
 ```azurecli
-az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
+az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions list get set delete purge
+```
+
+```azurepowershell
+Set-AzKeyVaultAccessPolicy -VaultName <your-unique-keyvault-name> -ServicePrincipalName <clientId-of-your-service-principal> -PermissionsToSecrets list,get,set,delete,purge
 ```
 
 #### <a name="set-environmental-variables"></a>Környezeti változók beállítása
@@ -140,6 +171,16 @@ setx KEY_VAULT_NAME <your-key-vault-name>
 ````
 
 Minden híváskor `setx`a "SUCCESS: Specified value was saved" választ kell kapnia.
+
+```shell
+AZURE_CLIENT_ID=<your-clientID>
+
+AZURE_CLIENT_SECRET=<your-clientSecret>
+
+AZURE_TENANT_ID=<your-tenantId>
+
+KEY_VAULT_NAME=<your-key-vault-name>
+```
 
 ## <a name="object-model"></a>Objektummodell
 
@@ -173,6 +214,10 @@ Ellenőrizheti, hogy a titkos kulcs az [az keyvault titkos show](/cli/azure/keyv
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
+```azurepowershell
+(Get-AzKeyVaultSecret -VaultName <your-unique-keyvault-name> -Name mySecret).SecretValueText
+```
+
 ### <a name="retrieve-a-secret"></a>Titkos titok beolvasása
 
 Most már lekérheti a korábban beállított értéket az [ügyféllel. GetSecret metódus](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync).
@@ -191,6 +236,10 @@ Ellenőrizheti, hogy a titkos titok eltűnt-e az [az keyvault titkos show](/cli/
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
+```
+
+```azurepowershell
+(Get-AzKeyVaultSecret -VaultName <your-unique-keyvault-name> -Name mySecret).SecretValueText
 ```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása

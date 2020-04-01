@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
-ms.openlocfilehash: 49e2af8fd2d71e1e5103f5337d5c7104c2904322
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 84e747d4317347b585600f97bde0d140187ada65
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74559185"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435314"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>Oktatóanyag: Reagálás a biztonsági incidensekre
 A Security Center fejlett elemzési eszközök és fenyegetésfelderítés segítségével folyamatosan elemzi a hibrid felhőbeli számítási feladatokat, hogy figyelmeztesse az esetleges rosszindulatú tevékenységekre. Ráadásul a Security Centerbe más biztonsági termékekből és szolgáltatásokból is integrálhat riasztásokat, és egyéni riasztásokat is létrehozhat a saját mutatói és intelligens forrásai alapján. Amikor valami kivált egy riasztást, gyors reagálásra van szükség a problémák kivizsgálásához és elhárításához. Az oktatóanyag során a következőket fogja elsajátítani:
@@ -114,7 +114,7 @@ Ha le szeretné tiltani az automatikus kiépítést:
 4. Kattintson a **Mentés** gombra.
 
 >[!NOTE]
-> Az automatikus kiépítés letiltása nem távolítja el a Microsoft Monitoring Agentet azon Azure-beli virtuális gépekről, ahol az ügynök üzembe lett helyezve. Az automatikus kiépítés letiltása korlátozza az erőforrások biztonsági monitorozását.
+> Az automatikus kiépítés letiltása nem távolítja el a Log Analytics-ügynököt az Azure virtuális gépekről, ahol az ügynök ki van építve. Az automatikus kiépítés letiltása korlátozza az erőforrások biztonsági monitorozását.
 >
 
 ## <a name="next-steps"></a>További lépések

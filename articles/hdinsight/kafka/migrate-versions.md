@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/18/2019
-ms.openlocfilehash: 66ea8a93723c117a364a188ec05b050e1ef60564
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a31c6cf32222277e033aacf7d04622c54aef9ea
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76548084"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437017"
 ---
 # <a name="migrate-apache-kafka-workloads-to-azure-hdinsight-40"></a>Apache Kafka számítási feladatok áttelepítése az Azure HDInsight 4.0-ra
 
@@ -68,7 +68,7 @@ A következő áttelepítési útmutató feltételezi, hogy egy Apache Kafka 1.0
 
 Az áttelepítés végrehajtásához hajtsa végre az alábbi lépéseket:
 
-1. **Telepítsen egy új HDInsight 4.0-s fürtöt és ügyfeleket tesztelésre.** Telepítsen egy új HDInsight 4.0 Kafka fürtöt. Ha több Kafka-fürtverzió is kijelölhető, ajánlott a legújabb verzió kiválasztása. Üzembe helyezés után szükség szerint állítson be néhány paramétert, és hozzon létre egy témakört a meglévő környezettel azonos nevű témakörrel. Is, állítsa be az SSL és hozd-your-own-key (BYOK) titkosítást, ha szükséges. Ezután ellenőrizze, hogy megfelelően működik-e az új fürttel.
+1. **Telepítsen egy új HDInsight 4.0-s fürtöt és ügyfeleket tesztelésre.** Telepítsen egy új HDInsight 4.0 Kafka fürtöt. Ha több Kafka-fürtverzió is kijelölhető, ajánlott a legújabb verzió kiválasztása. Üzembe helyezés után szükség szerint állítson be néhány paramétert, és hozzon létre egy témakört a meglévő környezettel azonos nevű témakörrel. Is, állítsa be a TLS és hozd-your-own-key (BYOK) titkosítást, ha szükséges. Ezután ellenőrizze, hogy megfelelően működik-e az új fürttel.
 
     ![Új HDInsight 4.0-fürtök telepítése](./media/upgrade-threesix-to-four/deploy-new-hdinsight-clusters.png)
 
