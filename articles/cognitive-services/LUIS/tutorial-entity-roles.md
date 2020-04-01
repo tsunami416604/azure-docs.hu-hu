@@ -1,26 +1,18 @@
 ---
 title: 'Oktatóanyag: Környezetfüggő adatok szerepkörökkel – LUIS'
-titleSuffix: Azure Cognitive Services
 description: Kapcsolódó adatok keresése a környezet alapján. Kapcsolódó lehet például az indulási hely és a cél egy épületből és irodából egy másik épületbe és irodába történő fizikai mozgás során.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: cd646ef061a0be06a9b1a56b72a4f35d9796aa63
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 03/30/2020
+ms.openlocfilehash: fdb463896e531619ea7ebe7c384729763dc84138
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75447860"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475823"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Oktatóanyag: Környezetfüggőadatok kinyerése egy utterance (kifejezés)
 
-Ebben az oktatóanyagban kapcsolódó adatrészleteket keresünk szövegkörnyezet alapján. Például egy kiindulási és célhelyek az egyik városból a másikba történő átvitelhez. Mindkét adatra szükség lehet, és ezek kapcsolódnak egymáshoz.
+Ebben az oktatóanyagban kapcsolódó adatrészleteket keresünk szövegkörnyezet alapján. Például az egyik városból a másikba történő átvitel kiindulási és célhelyei. Mindkét adatra szükség lehet, és ezek kapcsolódnak egymáshoz.
 
 A szerepkör bármely előre összeállított vagy egyéni entitástípussal használható, és példakimondott szövegben és mintázatban is használható.
 
@@ -49,24 +41,26 @@ Szerepkört kell használni, amikor az entitás adatok kibontása:
 
 ## <a name="create-a-new-app"></a>Új alkalmazás létrehozása
 
-1. Jelentkezzen be az előzetes LUIS-portálra a címével. [https://preview.luis.ai](https://preview.luis.ai)
+1. Jelentkezzen be a [LUIS **előzetes portáljára.** ](https://preview.luis.ai)
 
-1. Válassza **az Új alkalmazás** `HumanResources` létrehozása lehetőséget, írja be a nevet, és tartsa meg az alapértelmezett **kulturális környezetet, angol.** A leírást hagyja üresen.
-
-1. Válassza a **Done** (Kész) lehetőséget.
+1. Válassza ki a + Új `HumanResources` alkalmazás **beszélgetés**, adja meg a nevét, és tartsa meg az alapértelmezett kultúra, **angol**. Hagyja üresen a leírás és az előrejelzési erőforrást. Válassza a **Done** (Kész) lehetőséget.
 
 ## <a name="create-an-intent-to-move-employees-between-cities"></a>Az alkalmazottak városok közötti áthelyezésére irányuló szándék létrehozása
 
+A szándék a felhasználó kimondott szövegének a felhasználó szándéka alapján történő osztályozására szolgál, amelyet a természetes nyelvi szöveg határoz meg.
+
+Annak érdekében, hogy egy utterance (kifejezés) besorolásához a szándék példákat a felhasználói utterances, amely et kell osztályozni ezzel a szándékkal.
+
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-1. Válassza a **Create new intent** (Új szándék létrehozása) lehetőséget.
+1. Válassza **a + Create**lehetőséget.
 
 1. Az előugró párbeszédpanelen írja be a `MoveEmployeeToCity` karakterláncot, majd válassza a **Kész** elemet.
 
     > [!div class="mx-imgBorder"]
     > ![Új szándék létrehozása párbeszédpanel képernyőképe](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
 
-1. Adjon hozzá kimondott példaszövegeket a szándékhoz.
+1. Adjon hozzá több példa utterances ezt a szándékot, amely várhatóan egy felhasználó megkérdezi.
 
     |Példák kimondott szövegekre|
     |--|
@@ -85,24 +79,29 @@ Szerepkört kell használni, amikor az entitás adatok kibontása:
 
 ## <a name="add-prebuilt-entity-geographyv2"></a>Előre összeállított entitás földrajzi v2 hozzáadása
 
-Az előre összeállított entitás, geographyV2, kinyeri a helyadatokat, beleértve a városneveket is. Mivel a kimondott szöveg két városnév, egymáshoz kapcsolódó környezetben, szerepkörök használatával kibontja a környezetben.
+Az előre összeállított entitás, **geographyV2**, kinyeri a helyadatokat, beleértve a városneveket is. Mivel a kimondott szöveg két városnév, egymáshoz kapcsolódó környezetben, szerepkörök használatával kibontja a környezetben.
 
 1. Válassza az **Entitások lehetőséget** a bal oldali navigációs sávon.
 
-1. Válassza az Előre összeállított `geo` entitás **hozzáadása**lehetőséget, majd a keresősávban az előre összeállított entitások szűréséhez.
+1. Válassza **a + Add prebuilt entitáslehetőséget**, majd írja be `geo` a keresősávba az előre összeállított entitások szűréséhez.
 
     > [!div class="mx-imgBorder"]
     > ![GeographyV2 előre összeállított entitás hozzáadása az alkalmazáshoz](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
 
 1. Jelölje be a jelölőnégyzetet, és válassza **a Kész**lehetőséget.
+
+## <a name="add-roles-to-prebuilt-entity"></a>Szerepkörök hozzáadása előre összeállított entitáshoz
+
 1. Az **Entitások** listában válassza ki a **geographyV2** elemet az új entitás megnyitásához.
-1. Adjon hozzá `Origin`két `Destination`szerepkört, és a.
+1. Szerepkör hozzáadásához jelölje **+** ki és vegye `Origin`fel `Destination`a következő két szerepkört: . és .
 
     > [!div class="mx-imgBorder"]
     > ![Szerepkörök hozzáadása előre összeállított entitáshoz](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
 
+## <a name="label-entity-roles-in-example-utterances"></a>Entitásszerepkörök címkézése példakimondott szövegben
+
 1. Válassza **a Leképezések** lehetőséget a bal oldali navigációs sávon, majd válassza a **MoveEmployeeToCity** leképezést. Figyelje meg, hogy a városnevek az előre elkészített entitás **földrajzv2**címkével vannak ellátva.
-1. A környezet eszköztárán válassza az **Entitás paletta**lehetőséget.
+1. A context eszköztáron válassza az **Entitás palettát** a _ceruza ikonnal_.
 
     > [!div class="mx-imgBorder"]
     > ![Entitáspaletta kiválasztása a tartalomeszköztárból](media/tutorial-entity-roles/intent-detail-context-toolbar-select-entity-palette.png)
@@ -122,18 +121,21 @@ Az előre összeállított entitás, geographyV2, kinyeri a helyadatokat, beleé
 
 ## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Az alkalmazás betanítása a szándék módosításai tesztelése érdekében
 
-[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+Az alkalmazás betanításához válassza a **Vonat**lehetőséget. A betanítás a módosításokat, például az új entitásokat és a címkézett utterances az aktív modell.
 
-## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Az alkalmazás közzététele, hogy a betanított modell lekérdezhető a végpontról
+## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>Az alkalmazás közzététele a HTTP-végpontról való eléréséhez
 
-[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
+
 
 ## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Leképezés és entitás-előrejelzés beszerezni a végponttól
 
-1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
 
-1. Lépjen az URL-cím végéhez a címsorban, és írja be a következőt: `Please move Carl Chamerlin from Tampa to Portland`. Az utolsó querystring `q`paraméter a ( utterance ( kifejezés ) **lekérdezés.** Ez az utterance (kifejezés) nem ugyanaz, mint a címkézett utterances, így ez egy jó teszt, és vissza kell adnia a `MoveEmployee` szándékot az entitás kibontott.
+1. Lépjen az URL-cím végére a címsorban, és cserélje le _YOUR_QUERY_HERE_ a gombra. `Please move Carl Chamerlin from Tampa to Portland`
+
+Ez az utterance (kifejezés) nem ugyanaz, mint a címkézett utterances, így ez egy jó teszt, és vissza kell adnia a `MoveEmployee` szándékot az entitás kibontott.
 
     ```json
     {
@@ -171,11 +173,9 @@ Az előre összeállított entitás, geographyV2, kinyeri a helyadatokat, beleé
     }
     ```
 
-    A helyes szándék előre, és az entitások tömb rendelkezik a megfelelő **entitások** tulajdonság ban az eredeti és a cél szerepkörök.
+    The correct intent is predicted and the entities array has both the origin and destination roles in the corresponding **entities** property.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-
-[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](includes/quickstart-tutorial-cleanup-resources.md)]
 
 ## <a name="related-information"></a>Kapcsolódó információk
 

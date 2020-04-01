@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Everbridge |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Everbridge között.
+title: 'Oktatóanyag: Az Azure Active Directory integrációja az Everbridge-szel | Microsoft dokumentumok'
+description: Ismerje meg, hogyan konfigurálhatja az egyszeri bejelentkezést az Azure Active Directory és az Everbridge között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,227 +16,227 @@ ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 60463a00c6864bed7b3a18e816ef0143d3573782
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67103255"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Everbridge
+# <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>Oktatóanyag: Az Azure Active Directory integrációja az Everbridge-szel
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan Everbridge integrálása az Azure Active Directory (Azure AD).
-Everbridge integrálása az Azure ad-vel, akkor a következőket teheti:
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja az Everbridge-et az Azure Active Directoryval (Azure AD).
+Ha integrálja az Everbridge-et az Azure AD-vel, a következőket teheti:
 
-* Szabályozza, ki férhet hozzá Everbridge Azure AD-ben.
-* Lehetővé teszi a felhasználók számára, hogy automatikusan jelentkezzenek be Everbridge, az Azure AD-fiókjukat. A hozzáférés-vezérlés az egyszeri bejelentkezés (SSO) nevezzük.
-* A fiókok egyetlen központi helyen kezelheti az Azure portal használatával.
-Az Azure ad-vel szoftverként (saas biztosított) alkalmazás integrációja szoftverrel kapcsolatos további információkért lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+* Szabályozhatja az Azure AD-ben, aki hozzáfér az Everbridge-hez.
+* Lehetővé teszi a felhasználók számára, hogy automatikusan bejelentkeznek az Everbridge-be az Azure AD-fiókjukkal. Ezt a hozzáférés-vezérlést egyszeri bejelentkezésnek (SSO) nevezzük.
+* Egyetlen központi helyen kezelheti fiókjait az Azure Portal használatával.
+A szoftverszolgáltatásként (SaaS) alkalmazásintegrációaz Azure AD-vel kapcsolatos további tudnivalókat a [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Everbridge az Azure AD-integráció konfigurálásához a következőkre van szükség:
+Az Azure AD-integráció konfigurálásához az Everbridge-lel a következő elemekre van szükség:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókot](https://azure.microsoft.com/free/).
-* Egyszeri bejelentkezést használó Everbridge előfizetésbe.
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [ingyenes fiókot](https://azure.microsoft.com/free/)kaphat.
+* Egy Everbridge-előfizetés, amely egyszeri bejelentkezést használ.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben.
 
-* Everbridge Identitásszolgáltató által kezdeményezett egyszeri Bejelentkezést támogatja.
+* Az Everbridge támogatja az IDP által kezdeményezett egyszeri szolgáltató t.
 
-## <a name="add-everbridge-from-the-azure-marketplace"></a>Az Azure Marketplace-ről Everbridge hozzáadása
+## <a name="add-everbridge-from-the-azure-marketplace"></a>Everbridge hozzáadása az Azure Piactérről
 
-Az Azure AD integrálása a Everbridge konfigurálásához adja hozzá az Azure Marketplace-ről a felügyelt SaaS-alkalmazások listájában Everbridge.
+Az Everbridge Azure AD-be való integrációjának konfigurálásához adja hozzá az Everbridge-et az Azure Piactérről a felügyelt SaaS-alkalmazások listájához.
 
-Az Azure Marketplace-ről Everbridge hozzáadásához kövesse az alábbi lépéseket.
+Everbridge hozzáadása az Azure Piactérről, kövesse az alábbi lépéseket.
 
-1. Az a [az Azure portal](https://portal.azure.com), a bal oldali navigációs ablaktáblán válassza ki a **Azure Active Directory**.
+1. Az [Azure Portalon](https://portal.azure.com)a bal oldali navigációs ablakban válassza az **Azure Active Directory**lehetőséget.
 
-    ![Az Azure Active Directory-gomb](common/select-azuread.png)
+    ![Az Azure Active Directory gombja](common/select-azuread.png)
 
-2. Lépjen a **vállalati alkalmazások**, majd válassza ki **minden alkalmazás**.
+2. Nyissa meg a **Vállalati alkalmazások**lehetőséget, és válassza a **Minden alkalmazás**lehetőséget.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
 
-3. Új alkalmazás hozzáadásához válassza **új alkalmazás** a párbeszédpanel tetején.
+3. Új alkalmazás hozzáadásához válassza az **Új alkalmazás** lehetőséget a párbeszédpanel tetején.
 
     ![Új alkalmazás gomb](common/add-new-app.png)
 
-4. A Keresés mezőbe írja be a **Everbridge**. Válassza ki **Everbridge** az eredmény panelen, és válassza ki a **Hozzáadás**.
+4. A keresőmezőbe írja be **everbridge**. Válassza az **Everbridge** elemet az eredménypanelen, és válassza a **Hozzáadás**lehetőséget.
 
-     ![Az eredmények listájában Everbridge](common/search-new-app.png)
+     ![Everbridge az eredménylistában](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
 
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés Everbridge a tesztfelhasználó számára Britta Simon alapján.
-Az egyszeri bejelentkezés működjenek, Everbridge az Azure AD-felhasználót és a kapcsolódó felhasználó közötti hivatkozás kapcsolatot hozhat létre.
+Ebben a szakaszban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést az Everbridge-lel britta Simon tesztfelhasználó alapján.
+Egyszeri bejelentkezés a munka, hozzon létre egy kapcsolat közötti kapcsolat egy Azure AD-felhasználó és a kapcsolódó felhasználó Everbridge.For single sign-on to work, establish a link relationship between a Azure AD user and the related user in Everbridge.
 
-Az Azure AD egyszeri bejelentkezés az Everbridge tesztelése és konfigurálása, hajtsa végre a következő építőelemeket:
+Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez az Everbridge-el hajtsa végre a következő építőelemeket:
 
-- [Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on) ahhoz, hogy ez a funkció használatát a felhasználók számára.
-- [Everbridge Everbridge manager portál egyszeri bejelentkezés konfigurálása](#configure-everbridge-as-everbridge-manager-portal-single-sign-on) az egyszeri bejelentkezési beállításainak konfigurálása az alkalmazás oldalán.
-- [Everbridge Everbridge tag portál egyszeri bejelentkezés konfigurálása](#configure-everbridge-as-everbridge-member-portal-single-sign-on) az egyszeri bejelentkezési beállításainak konfigurálása az alkalmazás oldalán.
-- [Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user) az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-- [Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user) Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-- [Hozzon létre egy Everbridge tesztfelhasználót](#create-an-everbridge-test-user) egy megfelelője a Britta Simon Everbridge, amely a felhasználó Azure ad-ben reprezentációja van csatolva van.
-- [Egyszeri bejelentkezés tesztelése](#test-single-sign-on) ellenőrzése, hogy működik-e a konfiguráció.
+- [Konfigurálja az Azure AD egyszeri bejelentkezést,](#configure-azure-ad-single-sign-on) hogy a felhasználók használhassák ezt a funkciót.
+- [Konfigurálja az Everbridge-t az Everbridge-kezelő portálként egyetlen bejelentkezési portálként](#configure-everbridge-as-everbridge-manager-portal-single-sign-on) az alkalmazás oldalon az egyszeri bejelentkezési beállítások konfigurálásához.
+- [Konfigurálja az Everbridge-t everbridge-i tagportálként egyetlen bejelentkezéskor](#configure-everbridge-as-everbridge-member-portal-single-sign-on) az alkalmazás oldalon az egyszeri bejelentkezési beállítások konfigurálásához.
+- [Hozzon létre egy Azure AD-tesztfelhasználót](#create-an-azure-ad-test-user) az Azure AD egyszeri bejelentkezésének britta simonnal való teszteléséhez.
+- [Rendelje hozzá az Azure AD tesztfelhasználót,](#assign-the-azure-ad-test-user) hogy Britta Simon használhassa az Azure AD egyszeri bejelentkezést.
+- [Hozzon létre egy Everbridge-tesztfelhasználót,](#create-an-everbridge-test-user) hogy az Everbridge-ben britta Simon megfelelője legyen, amely a felhasználó Azure AD-megjelenítéséhez kapcsolódik.
+- [Egyszeri bejelentkezés tesztelése annak](#test-single-sign-on) ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
 
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
+Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon.
 
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Everbridge, kövesse az alábbi lépéseket.
+Az Azure AD egyszeri bejelentkezéskonfigurálásához az Everbridge-lel hajtsa végre az alábbi lépéseket.
 
-1. Az a [az Azure portal](https://portal.azure.com/), az a **Everbridge** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
+1. Az [Azure Portalon](https://portal.azure.com/)az **Everbridge-alkalmazásintegrációs** lapon válassza az Egyszeri **bejelentkezés**lehetőséget.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+    ![Egyszeri bejelentkezési kapcsolat konfigurálása](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza ki a **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
+2. Az **Egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen jelölje ki az **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
+    ![Egyszeri bejelentkezésválasztó mód](common/select-saml-option.png)
 
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** lapon jelölje be **szerkesztése** megnyitásához a **alapszintű SAML-konfigurációja** párbeszédpanel bezárásához.
+3. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon válassza a **Szerkesztés** lehetőséget az **Egyszerű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
     >[!NOTE]
-    >Az alkalmazás vagy a manager portál konfigurálása *vagy* , a tag portálon az Azure portal és a Everbridge portálon is.
+    >Konfigurálja az alkalmazást kezelői portálként *vagy* tagportálként az Azure Portalon és az Everbridge portálon.
 
-4. Konfigurálhatja a **Everbridge** alkalmazást, a **Everbridge manager portál**, a a **alapszintű SAML-konfigurációja** területén kövesse az alábbi lépéseket:
+4. Ha az **Everbridge** alkalmazást **Az Everbridge-kezelő portálként**szeretné konfigurálni, az Egyszerű **SAML-konfiguráció** szakaszban hajtsa végre az alábbi lépéseket:
 
-    ![Everbridge tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-intiated.png)
+    ![Everbridge tartomány és URL-címek egyszeri bejelentkezési információk](common/idp-intiated.png)
 
-    a. Az a **azonosító** mezőben adja meg azt a mintát követi `https://sso.everbridge.net/<API_Name>`
+    a. Az **Azonosító** mezőbe írjon be egy URL-címet, amely követi a mintát`https://sso.everbridge.net/<API_Name>`
 
-    b. Az a **válasz URL-cím** mezőben adja meg azt a mintát követi `https://manager.everbridge.net/saml/SSO/<API_Name>/alias/defaultAlias`
+    b. A **Válasz URL-címe** mezőbe írjon be egy URL-t, amely követi a mintát`https://manager.everbridge.net/saml/SSO/<API_Name>/alias/defaultAlias`
 
     > [!NOTE]
-    > Ezek az értékek nem valódi. Az értékeket módosítsa a tényleges azonosítóját és a válasz URL-cím értéke. Ezek az értékek beszerzéséhez forduljon a [Everbridge támogatási csapatának](mailto:support@everbridge.com). Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-értékekkel. Ezeknek az értékeknek a bekerüléséhez forduljon az [Everbridge támogatási csapatához.](mailto:support@everbridge.com) Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákra is hivatkozhat.
 
-5. Konfigurálhatja a **Everbridge** alkalmazást, a **Everbridge tag portál**, a a **alapszintű SAML-konfigurációja** területén kövesse az alábbi lépéseket:
+5. Ha az **Everbridge** alkalmazást **Everbridge-tagportálként**szeretné konfigurálni, az Egyszerű **SAML-konfiguráció** szakaszban hajtsa végre az alábbi lépéseket:
 
-  * Ha meg szeretné konfigurálni az alkalmazás Identitásszolgáltató által kezdeményezett módban, kövesse az alábbi lépéseket:
+  * Ha az alkalmazást IDP által kezdeményezett módban szeretné konfigurálni, kövesse az alábbi lépéseket:
 
-     ![Everbridge tartomány és URL-címeket egyetlen bejelentkezési adatait az Identitásszolgáltató által kezdeményezett mód](common/idp-intiated.png)
+     ![Everbridge tartomány és URL-címek egyszeri bejelentkezési információk IDP által kezdeményezett módban](common/idp-intiated.png)
 
-    a. Az a **azonosító** mezőben adja meg azt a mintát követi `https://sso.everbridge.net/<API_Name>/<Organization_ID>`
+    a. Az **Azonosító** mezőbe írjon be egy URL-címet, amely követi a mintát`https://sso.everbridge.net/<API_Name>/<Organization_ID>`
 
-    b. Az a **válasz URL-cím** mezőben adja meg azt a mintát követi `https://member.everbridge.net/saml/SSO/<API_Name>/<Organization_ID>/alias/defaultAlias`
+    b. A **Válasz URL-címe** mezőbe írjon be egy URL-t, amely követi a mintát`https://member.everbridge.net/saml/SSO/<API_Name>/<Organization_ID>/alias/defaultAlias`
 
-   * Ha az alkalmazás konfigurálása a Szolgáltató által kezdeményezett módban szeretne, válassza ki **további URL-címet beállítani** , és kövesse az alábbi lépéseket:
+   * Ha az alkalmazást SP által kezdeményezett módban szeretné konfigurálni, válassza **a További URL-ek beállítása lehetőséget,** és kövesse ezt a lépést:
 
-     ![Everbridge tartomány és URL-címeket egyetlen bejelentkezési adatait a Szolgáltató által kezdeményezett mód](common/both-signonurl.png)
+     ![Everbridge tartomány és URL-címek egyszeri bejelentkezési információk sp-kezdeményezésű módban](common/both-signonurl.png)
 
-     a. Az a **bejelentkezési URL-cím** mezőben adja meg azt a mintát követi `https://member.everbridge.net/saml/login/<API_Name>/<Organization_ID>/alias/defaultAlias?disco=true`
+     a. A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet, amely követi a mintát`https://member.everbridge.net/saml/login/<API_Name>/<Organization_ID>/alias/defaultAlias?disco=true`
 
      > [!NOTE]
-     > Ezek az értékek nem valódi. Az értékeket módosítsa a tényleges azonosítóval, válasz URL-cím, és jelentkezzen be az URL-cím értékeit. Ezek az értékek beszerzéséhez forduljon a [Everbridge támogatási csapatának](mailto:support@everbridge.com). Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
+     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító, válasz URL-cím és bejelentkezés i URL-értékekkel. Ezeknek az értékeknek a bekerüléséhez forduljon az [Everbridge támogatási csapatához.](mailto:support@everbridge.com) Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákra is hivatkozhat.
 
-6. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** szakaszban jelölje be **letöltése** letöltéséhez a **összevonási metaadatainak XML** . Mentse a számítógépre.
+6. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány szakaszában** válassza a **Letöltés** lehetőséget az **összevonási metaadat-XML**letöltéséhez. Mentse a számítógépre.
 
-    ![Tanúsítvány letöltésére szolgáló hivatkozásra.](common/metadataxml.png)
+    ![Tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-7. Az a **Everbridge beállítása** területén másolja az URL-címeket, a követelmények kielégítése érdekében:
+7. Az **Everbridge beállítása** szakaszban másolja a követelményekhez szükséges URL-címeket:
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
     - Bejelentkezési URL
-    - Azure AD-azonosító
-    - Kijelentkezési URL
+    - Azure Hirdetés-azonosító
+    - Kijelentkezés URL-címe
 
-### <a name="configure-everbridge-as-everbridge-manager-portal-single-sign-on"></a>Everbridge Everbridge manager portál egyszeri bejelentkezés konfigurálása
+### <a name="configure-everbridge-as-everbridge-manager-portal-single-sign-on"></a>Az Everbridge konfigurálása Everbridge-kezelőként egyetlen bejelentkezés
 
-Egyszeri bejelentkezés konfigurálása **Everbridge** , egy **Everbridge manager portál** alkalmazást, kövesse az alábbi lépéseket.
+Ha az SSO-t **az Everbridge-en** **Everbridge-kezelő portálalkalmazásként** szeretné konfigurálni, kövesse az alábbi lépéseket.
  
-1. Egy másik böngészőablakban jelentkezzen be Everbridge rendszergazdaként.
+1. Egy másik böngészőablakban jelentkezzen be az Everbridge-be rendszergazdaként.
 
-1. A felső menüben válassza a **beállítások** fülre. A **biztonsági**válassza **egyszeri bejelentkezés**.
+1. A felső menüben válassza a **Beállítások** lapot. A **Biztonság**csoportban válassza **az Egyszeri bejelentkezés**lehetőséget.
    
      ![Egyszeri bejelentkezés konfigurálása](./media/everbridge-tutorial/tutorial_everbridge_002.png)
    
-     a. Az a **neve** adja meg az azonosító szolgáltató neve. Ilyen például, a cég nevét.
+     a. A **Név** mezőbe írja be az azonosítószolgáltató nevét. Ilyen például a vállalat neve.
    
-     b. Az a **API neve** adja meg az API neve.
+     b. Az **API-név** mezőbe írja be az API nevét.
    
-     c. Válassza ki **fájl kiválasztása** az Azure-portálról letöltött metaadatfájl feltöltése.
+     c. Válassza **a Fájl kiválasztása lehetőséget** az Azure Portalról letöltött metaadatfájl feltöltéséhez.
    
-     d. A **SAML identitás hely**válassza **identitás a tulajdonos utasítás NameIdentifier elemében van**.
+     d. Az **SAML-identitás helyéhez**válassza **az Identitás elem a Tárgy utasítás NameIdentifier elemében**elemet.
    
-     e. Az a **Identity Provider bejelentkezési URL-cím** mezőbe illessze be a **bejelentkezési URL-cím** , az Azure Portalról másolt érték.
+     e. Az **Identitásszolgáltató bejelentkezési URL-címét** illessze be az Azure Portalról másolt **bejelentkezési URL-címértékbe.**
    
-     f. A **szolgáltató által kezdeményezett kérelem kötés**válassza **HTTP-átirányítás**.
+     f. A **Szolgáltató által kezdeményezett kérelemkötés**esetén válassza a HTTP **Átirányítás**lehetőséget.
 
      g. Kattintson a **Mentés** gombra.
 
-### <a name="configure-everbridge-as-everbridge-member-portal-single-sign-on"></a>Everbridge Everbridge tag portál egyszeri bejelentkezés konfigurálása
+### <a name="configure-everbridge-as-everbridge-member-portal-single-sign-on"></a>Az Everbridge konfigurálása Everbridge-tagként egyetlen bejelentkezés
 
-Az egyszeri bejelentkezés konfigurálása **Everbridge** , egy **Everbridge tag portál**, küldjön a letöltött **összevonási metaadatainak XML** , a [Everbridge támogatási csoport](mailto:support@everbridge.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+Ha az **Everbridge-en** egyszeri bejelentkezést **Everbridge-tagportálként**szeretné konfigurálni, küldje el a letöltött **összevonási metaadat-XML-t** az [Everbridge támogatási csapatának.](mailto:support@everbridge.com) Úgy állították be ezt a beállítást, hogy az SAML SSO-kapcsolat mindkét oldalon megfelelően legyen beállítva.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása 
 
-Az Azure Portalon a tesztfelhasználó számára Britta Simon létrehozásához kövesse az alábbi lépéseket.
+A tesztfelhasználó britta Simon az Azure Portalon, kövesse az alábbi lépéseket.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory** > **felhasználók** > **minden felhasználó**.
+1. Az Azure Portalbal a bal oldali ablaktáblában válassza az **Azure Active Directory** > **felhasználói** > **minden felhasználó lehetőséget.**
 
-    ![Felhasználók és a felhasználók minden kapcsolat](common/users.png)
+    ![Felhasználók és minden felhasználó hivatkozásai](common/users.png)
 
-2. Válassza ki **új felhasználó** a képernyő tetején.
+2. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
 
-    ![Az új felhasználó gomb](common/new-user.png)
+    ![Új felhasználó gomb](common/new-user.png)
 
-3. Az a **felhasználói** párbeszédpanelen kövesse az alábbi lépéseket.
+3. A **Felhasználó** párbeszédpanelen kövesse az alábbi lépéseket.
 
-    ![Felhasználói párbeszédpanel](common/user-properties.png)
+    ![Felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+    a. A **Név** mezőbe írja be **a BrittaSimon**értéket.
   
-    b. Az a **felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`. Például: BrittaSimon@contoso.com.
+    b. A **Felhasználónév** mezőben adja meg a következőt: `brittasimon@yourcompanydomain.extension`. Például: BrittaSimon@contoso.com.
 
-    c. Válassza ki a **jelszó megjelenítése** jelölőnégyzetet. Írja le az értéket, amely jeleníti meg a **jelszó** mezőbe.
+    c. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet. Írja le a **Jelszó** mezőben megjelenő értéket.
 
     d. Kattintson a **Létrehozás** gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
 
-Britta Simon által biztosított hozzáférés Everbridge Azure egyszeri bejelentkezés használata lehetővé.
+Engedélyezze Britta Simon számára az Azure egyszeri bejelentkezést az Everbridge-hez való hozzáférés biztosításával.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások** > **minden alkalmazás** >**Everbridge**.
+1. Az Azure Portalon válassza az **Enterprise Applications** > **All Applications** >**Everbridge**lehetőséget.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
 
-2. Az alkalmazások listájában jelölje ki a **Everbridge**.
+2. Az alkalmazások listájában válassza az **Everbridge**lehetőséget.
 
-    ![Az alkalmazások listáját Everbridge hivatkozásra](common/all-applications.png)
+    ![Everbridge link az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
+3. A bal oldali menüben válassza a **Felhasználók és csoportok**lehetőséget.
 
-    ![Felhasználók és csoportok hivatkozás](common/users-groups-blade.png)
+    ![Felhasználók és csoportok hivatkozása](common/users-groups-blade.png)
 
-4. Válassza ki **felhasználó hozzáadása**. Az a **hozzárendelés hozzáadása** párbeszédpanelen jelölje ki **felhasználók és csoportok**.
+4. Válassza **a Felhasználó hozzáadása**lehetőséget. A **Hozzárendelés hozzáadása** párbeszédpanelen válassza a **Felhasználók és csoportok**lehetőséget.
 
-    ![Hozzárendelés párbeszédpanel hozzáadása](common/add-assign-user.png)
+    ![Hozzárendelés hozzáadása párbeszédpanel](common/add-assign-user.png)
 
-5. Az a **felhasználók és csoportok** párbeszédpanelen jelölje ki **Britta Simon** a felhasználók listában. Válasszon **kiválasztása** a képernyő alján.
+5. A **Felhasználók és csoportok** párbeszédpanelen válassza a Felhasználók listájában **a Britta Simon** elemet. Válassza a **Kijelölés** lehetőséget a képernyő alján.
 
-6. Ha a várt bármely szerepkör értékét az SAML-előfeltétel a **Szerepkörválasztás** párbeszédpanelen jelölje ki a megfelelő szerepkört a felhasználóhoz a listából. Válasszon **kiválasztása** a képernyő alján.
+6. Ha az SAML-feltételben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából. Válassza a **Kijelölés** lehetőséget a képernyő alján.
 
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen jelölje ki **hozzárendelése**.
+7. A **Hozzárendelés hozzáadása** párbeszédpanelen válassza a **Hozzárendelés lehetőséget.**
 
-### <a name="create-an-everbridge-test-user"></a>Hozzon létre egy Everbridge tesztfelhasználó számára
+### <a name="create-an-everbridge-test-user"></a>Everbridge tesztfelhasználó létrehozása
 
-Ebben a szakaszban a tesztfelhasználó számára a Everbridge Britta Simon hoz létre. Felhasználók hozzáadása az Everbridge platformon, dolgozni a [Everbridge támogatási csapatának](mailto:support@everbridge.com). Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt Everbridge aktiválva. 
+In this section, you create the test user Britta Simon in Everbridge. Ha felhasználókat szeretne hozzáadni az Everbridge platformon, működjön együtt az [Everbridge támogatási csapatával.](mailto:support@everbridge.com) Az egyszeri bejelentkezés használata előtt a felhasználókat létre kell hozni és aktiválni kell az Everbridge-ben. 
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
-Az Azure AD egyszeri bejelentkezés beállításainak ellenőrzéséhez a hozzáférési panelen.
+Tesztelje az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panel használatával.
 
-A Everbridge csempe kiválasztásakor a hozzáférési panelen, kell lennie automatikusan bejelentkezett a Everbridge fiókot, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor kiválasztja az Everbridge csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra az Everbridge-fiókra, amelyhez az SSO-t beállította. A Hozzáférési panelről további információt a [Hozzáférési panel – Bevezetés című témakörben talál.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directoryval való integrálásáról szóló oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

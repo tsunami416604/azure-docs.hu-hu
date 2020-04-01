@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 9b3af6a6cee4375a110c894b6b72655605ad077d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 45276ab59f1a3dabea42b904ff54bd37326fdeca
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80372241"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398113"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs – Big Data streaming platform és eseménybetöltési szolgáltatás
 Az Azure Event Hubs egy big data streamelési platform és eseménybetöltési szolgáltatás. Másodpercenként több millió eseményt képes fogadni és feldolgozni. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók.
@@ -61,7 +61,7 @@ Az Event Hubs szolgáltatással megabájtokban kezdheti az adatstreameket, és o
 
 [Az Apache Kafka-ökoszisztémák eseményközpontjai](event-hubs-for-kafka-ecosystem-overview.md) lehetővé teszik, hogy [az Apache Kafka (1.0-s és újabb)](https://kafka.apache.org/) ügyfelek és alkalmazások az Event Hubs-szal beszéljenek. Nem kell beállítani, konfigurálni és kezelni a saját Kafka-fürtök.
 
-A különböző [nyelveken (.NET, Java, Python, Go, JavaScript)](https://github.com/Azure/azure-event-hubs)elérhető széles ökoszisztémával könnyedén elkezdheti az adatfolyamok feldolgozását az Event Hubs-ból. Az összes támogatott ügyfélnyelv alacsony szintű integrációt biztosít. Az ökoszisztéma zökkenőmentes integrációt biztosít az Azure-szolgáltatásokkal, például az Azure Stream Analytics-szel és az Azure Functions-szel, így lehetővé teszi a kiszolgáló nélküli architektúrák készítését.
+A különböző nyelveken [(.NET),](https://github.com/Azure/azure-sdk-for-net/) [Java,](https://github.com/Azure/azure-sdk-for-java/) [Python](https://github.com/Azure/azure-sdk-for-python/), [JavaScript](https://github.com/Azure/azure-sdk-for-js/)nyelven elérhető széles ökoszisztémával könnyedén elkezdheti az adatfolyamok feldolgozását az Event Hubs-ból. Az összes támogatott ügyfélnyelv alacsony szintű integrációt biztosít. Az ökoszisztéma zökkenőmentes integrációt biztosít az Azure-szolgáltatásokkal, például az Azure Stream Analytics-szel és az Azure Functions-szel, így lehetővé teszi a kiszolgáló nélküli architektúrák készítését.
 
 ## <a name="key-architecture-components"></a>Az architektúra legfontosabb összetevői
 Az Event Hubs az alábbi [fő összetevőket](event-hubs-features.md) foglalja magába:
@@ -76,6 +76,13 @@ A következő ábrán az Event Hubs streamfeldolgozási architektúrája láthat
 
 ![Event Hubs](./media/event-hubs-about/event_hubs_architecture.png)
 
+## <a name="event-hubs-on-azure-stack-hub"></a>Eseményközpontok az Azure Stack Hubon
+Az Azure Stack Hub Eseményközpontjai lehetővé teszik a hibrid felhőbeli forgatókönyvek megvalósítását. A streamelési és eseményalapú megoldások mind a helyszíni, mind az Azure felhőalapú feldolgozásához támogatottak. Függetlenül attól, hogy a forgatókönyv hibrid (csatlakoztatott), vagy leválasztva, a megoldás támogatja az események/adatfolyamok nagy méretű feldolgozását. A forgatókönyvet csak az Event Hubs fürtmérete köti, amelyet az igényeinek megfelelően hozhat ki. 
+
+Az Event Hubs-kiadások (az Azure Stack Hubon és az Azure-ban) magas szintű szolgáltatásparitást kínálnak. Ez a paritás azt jelenti, SDK-k, minták, PowerShell, CLI és portálok kínálnak hasonló élményt, kevés különbséggel. 
+
+Az Event Hubs on Stack ingyenes a nyilvános előzetes verzióban. További információ: [Event Hubs on Azure Stack Hub overview.](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)
+
 
 ## <a name="next-steps"></a>További lépések
 
@@ -84,7 +91,7 @@ Az Event Hubs használatának megkezdéséhez tekintse meg az **Események küld
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](get-started-java-send-v2.md)
 - [Python](get-started-python-send-v2.md)
-- [Javascript](get-started-node-send-v2.md)
+- [JavaScript](get-started-node-send-v2.md)
 - [Ugrás](event-hubs-go-get-started-send.md)
 - [C (csak küldés)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (csak fogadás)](event-hubs-storm-getstarted-receive.md)

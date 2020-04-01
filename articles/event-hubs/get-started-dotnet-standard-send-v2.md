@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: d7d697e3ea4b1b683275d53f6e407396f474b37b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 7bb9d3ce4c80761362c1ea564f6a632bc7a7f68a
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77462020"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398286"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-core-azuremessagingeventhubs"></a>Események küldése és események fogadása az Azure Event Hubs-ból – .NET Core (Azure.Messaging.EventHubs) 
 Ez a rövid útmutató bemutatja, hogyan küldhet eseményeket egy eseményközpontba, és hogyan fogadhat eseményeket az **Azure.Messaging.EventHubs** .NET Core függvénytár használatával. 
@@ -29,12 +29,12 @@ Ez a rövid útmutató bemutatja, hogyan küldhet eseményeket egy eseményközp
 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ha most írja be az Azure Event Hubs, olvassa el [az Eseményközpontok áttekintése című témakört,](event-hubs-about.md) mielőtt ezt a rövid útmutatót végezné. 
+Ha most írja be az Azure Event Hubs szolgáltatást, olvassa el [az Eseményközpontok áttekintése című témakört,](event-hubs-about.md) mielőtt ezt a rövid útmutatót elvégezné. 
 
 A rövid útmutató végrehajtásához a következő előfeltételekre van szükség:
 
 - **Microsoft Azure-előfizetés**. Az Azure-szolgáltatások, köztük az Azure Event Hubs használatához előfizetésre van szüksége.  Ha nem rendelkezik meglévő Azure-fiókkal, regisztrálhat egy [ingyenes próbaverzióra,](https://azure.microsoft.com/free/) vagy használhatja az MSDN-előfizetői előnyöket [a fiók létrehozásakor.](https://azure.microsoft.com)
-- **Microsoft Visual Studio 2019**. Az Azure Event Hubs ügyfélkódtár a C 8.0-s számban bevezetett új funkciókat használja.  A könyvtár továbbra is használható a C# régebbi verzióival, de néhány funkciója nem lesz elérhető.  A szolgáltatások engedélyezéséhez [a .NET Core 3.0-s verzióját kell megcéloznia,](/dotnet/standard/frameworks#how-to-specify-target-frameworks) vagy meg kell adnia a használni kívánt [nyelvi verziót](/dotnet/csharp/language-reference/configure-language-version#override-a-default) (8.0 vagy újabb). Ha visual studiót használ, a Visual Studio 2019 előtti verziók nem kompatibilisek a C# 8.0-s projektek létrehozásához szükséges eszközökkel. A Visual Studio 2019, beleértve az ingyenes közösségi kiadást, [itt](https://visualstudio.microsoft.com/vs/) tölthető le
+- **Microsoft Visual Studio 2019**. Az Azure Event Hubs ügyfélkódtár a C 8.0-s számban bevezetett új funkciókat használja.  A könyvtár továbbra is használható a C# régebbi verzióival, de néhány funkciója nem lesz elérhető.  A szolgáltatások engedélyezéséhez [a .NET Core 3.0-s verzióját kell megcéloznia,](/dotnet/standard/frameworks#how-to-specify-target-frameworks) vagy meg kell adnia a használni kívánt [nyelvi verziót](/dotnet/csharp/language-reference/configure-language-version#override-a-default) (8.0 vagy újabb). Ha a Visual Studio-t használja, a Visual Studio 2019 előtti verziók nem kompatibilisek a C# 8.0-s projektek létrehozásához szükséges eszközökkel. A Visual Studio 2019, beleértve az ingyenes közösségi kiadást, [itt](https://visualstudio.microsoft.com/vs/) tölthető le
 - **Hozzon létre egy Eseményközpontok névterét és egy eseményközpontot.** Az első lépés [az,](https://portal.azure.com) hogy az Azure Portal használatával hozzon létre egy Event Hubs típusú névteret, és szerezze be az alkalmazás által az eseményközponttal való kommunikációhoz szükséges felügyeleti hitelesítő adatokat. Névtér és eseményközpont létrehozásához kövesse a [cikkben](event-hubs-create.md)található eljárást. Ezután az **Event Hubs névtér kapcsolati karakterláncát a** cikk utasításainak követésével kapja [meg: Kapcsolati karakterlánc beszereznie](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). A kapcsolati karakterláncot később használja ebben a rövid útmutatóban.
 
 ## <a name="send-events"></a>Események küldése 
@@ -118,6 +118,9 @@ Ez a szakasz bemutatja, hogyan hozhat létre .NET Core konzolalkalmazást esemé
 Ez a szakasz azt mutatja be, hogyan írható meg egy .NET Core konzolalkalmazás, amely eseményközpontból fogad üzeneteket egy eseményprocesszor használatával. Az eseményfeldolgozó leegyszerűsíti az események fogadását az eseményközpontokból az állandó ellenőrzőpontok és az ilyen eseményközpontokból érkező párhuzamos fogadások kezelésével. Egy eseményfeldolgozó egy adott eseményközponthoz és egy fogyasztói csoporthoz van társítva. Az eseményközpontban több partícióról is fogad eseményeket, és átadja azokat egy kezelődelegáltnak a megadott kód használatával történő feldolgozáshoz. 
 
 
+> [!NOTE]
+> Ha az Azure Stack Hubon fut, akkor előfordulhat, hogy a storage blob SDK egy másik verzióját támogatja, mint az Azure-ban általában elérhető. Ha például az [Azure Stack Hub 2002-es verzióján](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)fut, a Storage szolgáltatás legmagasabb elérhető verziója a 2017-11-09-es verzió. Ebben az esetben az ebben a szakaszban ismertetett lépések mellett kódot is hozzá kell adnia a Storage service API 2017-11-09-es verziójának célzásához. Egy adott Storage API-verzió célzásával kapcsolatos példát tekintse meg [ezt a mintát a GitHubon.](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs) Az Azure Stack Hubon támogatott Azure Storage-szolgáltatásverzióiról az [Azure Stack Hub storage: Különbségek és szempontok](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences)című további információkért tekintse meg.
+
 ### <a name="create-an-azure-storage-and-a-blob-container"></a>Hozzon létre egy Azure Storage-tárolót és egy blobtárolót
 Ebben a rövid útmutatóban az Azure Storage-t használja ellenőrzőpont-tárolóként. Az Azure Storage-fiók létrehozásához kövesse az alábbi lépéseket. 
 
@@ -125,7 +128,7 @@ Ebben a rövid útmutatóban az Azure Storage-t használja ellenőrzőpont-táro
 2. [Blobtároló létrehozása](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
 3. [A kapcsolati karakterlánc beszereznie a tárfiókhoz](../storage/common/storage-configure-connection-string.md?#view-and-copy-a-connection-string)
 
-    Jegyezze fel a kapcsolati karakterláncot és a tároló nevét. Ezeket a fogadási kódban fogja használni. 
+    Jegyezze fel a kapcsolati karakterláncot és a tároló nevét. A fogadási kódban fogja használni őket. 
 
 
 ### <a name="create-a-project-for-the-receiver"></a>Projekt létrehozása a fogadó számára

@@ -9,31 +9,31 @@ ms.date: 10/15/2018
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 4c5c0197ab6cecbba4bac4c0bff5ef76de24b6de
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
-ms.translationtype: HT
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78301002"
 ---
 ## <a name="prepare-your-web-app"></a>A webalkalmazás előkészítése
 
-Egyéni biztonsági kötések létrehozásához vagy az App Service alkalmazáshoz tartozó Ügyféltanúsítványok engedélyezéséhez a [app Service tervének](https://azure.microsoft.com/pricing/details/app-service/) **alapszintű**, **standard**, **prémium**vagy **elszigetelt** szinten kell lennie. Ebben a lépésben ellenőrzi, hogy a webalkalmazás a támogatott tarifacsomagban van-e.
+Egyéni biztonsági kötések létrehozásához vagy az App Service-alkalmazás ügyféltanúsítványok engedélyezéséhez az [App Service-csomagnak](https://azure.microsoft.com/pricing/details/app-service/) az **Alapszintű,** **Standard**, **Prémium**vagy **Elkülönített** szinten kell lennie. Ebben a lépésben ellenőrzi, hogy a webalkalmazás a támogatott tarifacsomagban van-e.
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Nyissa meg az [Azure Portal](https://portal.azure.com).
+Nyissa meg az [Azure Portalt](https://portal.azure.com).
 
 ### <a name="navigate-to-your-web-app"></a>Keresse meg a webalkalmazást.
 
-Keresse meg és válassza ki a **app Services**.
+Keresse meg és válassza **az App Services**lehetőséget.
 
-![App Services kiválasztása](./media/app-service-ssl-prepare-app/app-services.png)
+![Alkalmazásszolgáltatások kiválasztása](./media/app-service-ssl-prepare-app/app-services.png)
 
-A **app Services** lapon válassza ki a webalkalmazás nevét.
+Az **App Services** lapon válassza ki a webalkalmazás nevét.
 
 ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/app-service-ssl-prepare-app/select-app.png)
 
-A webalkalmazás felügyeleti lapján található.  
+A webalkalmazás felügyeleti oldalán landolt.  
 
 ### <a name="check-the-pricing-tier"></a>A tarifacsomag ellenőrzése
 
@@ -45,7 +45,7 @@ Ellenőrizze, hogy a webalkalmazás nem az **F1** vagy a **D1** szinten van-e. A
 
 ![A tarifacsomag ellenőrzése](./media/app-service-ssl-prepare-app/check-pricing-tier.png)
 
-Az egyéni SSL nem támogatott az **F1** és a **D1** szinten. Ha vertikális felskálázásra van szüksége, kövesse az alábbi szakaszban található lépéseket. Ellenkező esetben zárjuk be a vertikális **felskálázás** lapot, és hagyja [ki a app Service-csomag vertikális felskálázása](#scale-up-your-app-service-plan) szakaszt.
+Az egyéni SSL nem támogatott az **F1** és a **D1** szinten. Ha vertikális felskálázásra van szüksége, kövesse az alábbi szakaszban található lépéseket. Ellenkező esetben zárja be a **Felskálázás** lapot, és hagyja ki az [App Service-csomag felskálázása](#scale-up-your-app-service-plan) szakaszt.
 
 ### <a name="scale-up-your-app-service-plan"></a>Az App Service-csomag vertikális felskálázása
 

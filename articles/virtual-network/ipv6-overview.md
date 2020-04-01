@@ -1,5 +1,5 @@
 ---
-title: Az IPv6 az Azure virtuális hálózathoz – áttekintése (előzetes verzió)
+title: Az IPv6 áttekintése az Azure virtuális hálózathoz
 titlesuffix: Azure Virtual Network
 description: IPv6-végpontok és adatelérési utak IPv6-szolgáltatás leírása egy Azure virtuális hálózatban.
 services: virtual-network
@@ -10,24 +10,22 @@ ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 12/19/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 9214886f468a4a052328a99289845361a059b650
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03b279ead6b1f5d26ae92b63a8780a61dfd711bb
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75780079"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420575"
 ---
-# <a name="what-is-ipv6-for-azure-virtual-network-preview"></a>Mi az IPv6 az Azure virtuális hálózathoz? (Előzetes verzió)
+# <a name="what-is-ipv6-for-azure-virtual-network"></a>Mi az IPv6 az Azure virtuális hálózathoz?
 
 Az IPv6 for Azure Virtual Network (VNet) lehetővé teszi, hogy az Azure-ban iPv6- és IPv4-kapcsolattal rendelkező alkalmazásokat üzemeltetjen virtuális hálózaton belül, valamint az internetről és az internetről. A nyilvános IPv4-címek kimerülése miatt a mobilitásés az eszközök internete (IoT) új hálózatai gyakran az IPv6-ra épülnek. Még a régóta fennálló internetszolgáltató és a mobilhálózatok is iPv6-ra alakulnak át. A csak IPv4-szolgáltatások valódi hátrányba hozhatják magukat mind a meglévő, mind a feltörekvő piacokon. A kettős veremi IPv4/IPv6-kapcsolat lehetővé teszi, hogy az Azure által üzemeltetett szolgáltatások átlépjenek ezen a technológiai résen a globálisan elérhető, kéthalmozott szolgáltatásokkal, amelyek könnyen kapcsolódnak mind a meglévő IPv4-hez, mind az új IPv6-eszközökhöz és -hálózatokhoz.
 
 Az Azure eredeti IPv6-kapcsolata megkönnyíti a kettős halmok (IPv4/IPv6) internetkapcsolatának biztosítását az Azure-ban üzemeltetett alkalmazások számára. Lehetővé teszi a terheléselosztásos IPv6-kapcsolattal rendelkező virtuális gépek egyszerű telepítését mind a bejövő, mind a kimenő kezdeményezett kapcsolatokhoz. Ez a funkció továbbra is elérhető, és további információk [itt](../load-balancer/load-balancer-ipv6-overview.md)érhetők el.
 Az IPv6 for Azure virtuális hálózat sokkal teljesebb funkcionalitású, lehetővé teszi a teljes IPv6-megoldásarchitektúrák azure-beli üzembe helyezését.
 
-> [!Important]
-> Az IPv6 for Azure Virtual Network jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Az alábbi ábra egy egyszerű kettős verem (IPv4/IPv6) üzembe helyezést ábrázol az Azure-ban:
 
@@ -74,7 +72,7 @@ Az IPv6 for Azure VNET egy alapvető szolgáltatáskészlet, amely lehetővé te
 
 ## <a name="limitations"></a>Korlátozások
 Az Azure virtuális hálózati kiadásához való jelenlegi IPv6-kiadásra a következő korlátozások vonatkoznak:
-- Az IPv6 for Azure virtuális hálózat (Előzetes verzió) minden globális Azure-régióban elérhető, de csak a globális Azure-ban– még nem kormányzati felhőkben.
+- Az IPv6 for Azure virtuális hálózat minden globális Azure-régióban elérhető, de csak a globális Azure-ban– még nem kormányzati felhőkben.
 - Az ExpressRoute- és VPN-átjárók nem használhatók olyan virtuális hálózatban, amelyben az IPv6 engedélyezve van, sem közvetlenül, sem a "UseRemoteGateway" partnerkapcsolattal. 
 - Az Azure platform (AKS, stb. ) nem támogatja az IPv6-kommunikáció t.  
 

@@ -1,14 +1,14 @@
 ---
-title: Oktatóanyag – CI/CD a Jenkins és az Azure virtuális gépek között az Azure DevOps Services használatával
+title: Oktatóanyag – CI/CD a Jenkinstől az Azure-beli virtuális gépekhez az Azure DevOps-szolgáltatásokkal
 description: Ebből az oktatóanyagból elsajátíthatja, hogyan állíthatja be a Node.js-alkalmazás folyamatos integrációját (CI) és folyamatos üzembe helyezését (CD) a Azure virtuális gépekre a Jenkins használatával a Visual Studio Team Services kiadáskezeléséből vagy a Microsoft Team Foundation Serveren
-keywords: Jenkins, Azure, devops, virtuális gép, vel
+keywords: jenkins, azúrkék, devops, virtuális gép, cicd
 ms.topic: tutorial
 ms.date: 07/31/2018
 ms.openlocfilehash: cae28b293a6217996b44c839dc8836ec940c3155
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78192608"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Oktatóanyag: Az alkalmazás üzembe helyezése Linux rendszerű virtuális gépeken az Azure-ban a Jenkins és az Azure DevOps Services használatával
@@ -26,7 +26,7 @@ egy Linux rendszerű virtuális gépeket tartalmazó [üzembehelyezési csoportb
 > * A Jenkins konfigurálása az Azure DevOps Services-el való integrációhoz.
 > * Jenkins szolgáltatási végpont létrehozása.
 > * Üzembe helyezési csoport létrehozása az Azure virtuális gépekhez.
-> * Hozzon létre egy Azure-folyamatok kiadási folyamatát.
+> * Hozzon létre egy Azure-folyamatok kiadási folyamat.
 > * Manuális és CI által kiváltott üzembe helyezések végrehajtása.
 
 ## <a name="before-you-begin"></a>Előkészületek
@@ -74,7 +74,7 @@ Először két Jenkins beépülő modult kell konfigurálnia: **NodeJS** és **V
 ## <a name="configure-a-jenkins-freestyle-project-for-nodejs"></a>Jenkins Freestyle projekt konfigurálása a Node.js-hez
 
 1. Válassza a **New Item** (Új elem) lehetőséget. Adja meg az elem nevét.
-2. Válassza a **Freestyle project** lehetőséget. Kattintson az **OK** gombra.
+2. Válassza a **Freestyle project** lehetőséget. Válassza **az OK gombot.**
 3. A **Source Code Management** (Forráskód kezelése) lapon válassza a **Git** lehetőséget, és adja meg annak az adattárnak és elágazásnak az adatait, amely az alkalmazás forráskódját tartalmazza.    
     ![Az adattár hozzáadása a buildhez](media/tutorial-build-deploy-jenkins/jenkins-git.png)
 4. Válassza a **Build Triggers** (Build-aktiválók) lapon a **Poll SCM** lehetőséget, és adja meg a `H/03 * * * *` ütemtervet a Git-adattár változásainak három percenként történő ciklikus lekérdezéshez. 
@@ -96,9 +96,9 @@ Először két Jenkins beépülő modult kell konfigurálnia: **NodeJS** és **V
 5. Válassza a **Trigger release in TFS/Team Services** (Kiadás aktiválása a TFS/Team Services-ben) lehetőséget. Adja meg az Azure DevOps Services-szervezet URI-ját, például a **https://{saját-szervezet-neve}.visualstudio.com** címet.
 6. Adja meg a **projekt** nevét.
 7. Adjon nevet a kiadási folyamatnak. (Ezt a kiadási folyamatot később fogja létrehozni az Azure DevOps Services-ben.)
-8. Válassza ki a hitelesítő adatokat az Azure DevOps-szolgáltatásokhoz vagy Azure DevOps Server-környezethez való kapcsolódáshoz:
+8. Válassza ki az Azure DevOps-szolgáltatásokhoz vagy az Azure DevOps Server környezethez való csatlakozáshoz szükséges hitelesítő adatokat:
    - Hagyja a **Username** (Felhasználónév) mezőt üresen, ha az Azure DevOps Services-t használja. 
-   - Ha Azure DevOps Server helyszíni verzióját használja, adja meg a felhasználónevet és a jelszót.    
+   - Adja meg a felhasználónevet és a jelszót, ha az Azure DevOps Server helyszíni verzióját használja.    
    ![A Jenkins felépítés utáni műveleteinek konfigurálása](media/tutorial-build-deploy-jenkins/trigger-release-from-jenkins.png)
 5. Mentse a Jenkins-projektet.
 
@@ -122,8 +122,8 @@ Szüksége van egy [üzembe helyezési csoportra](https://www.visualstudio.com/d
    > [!NOTE]
    > A következő eljárásban nem mulassza el az előfeltételek telepítését, és *ne futtassa a szkriptet sudo engedélyekkel.*
 
-1. Nyissa meg a **Build**  Release **(Build és kiadás) központ &amp;Releases** (Kiadások) lapját, nyissa meg a **Deployment groups** (Üzembe helyezési csoportok) elemet, és válassza a **+ New** (+ Új) lehetőséget.
-2. Adjon meg egy nevet a központi telepítési csoporthoz, és egy opcionális leírást. Ezután kattintson a **Létrehozás** elemre.
+1. Nyissa meg a **Build &amp; Release** (Build és kiadás) központ **Releases** (Kiadások) lapját, nyissa meg a **Deployment groups** (Üzembe helyezési csoportok) elemet, és válassza a **+ New** (+ Új) lehetőséget.
+2. Adjon meg egy nevet a központi telepítési csoporthoz, és egy opcionális leírást. Ezután válassza **a Létrehozás lehetőséget.**
 3. Válassza ki az üzembe helyezési cél virtuális gépének operációs rendszerét. Válassza például az **Ubuntu 16.04+** lehetőséget.
 4. Válassza ki a **Use a personal access token in the script for authentication** (Személyes hozzáférési jogkivonat használata a szkriptben a hitelesítéséhez) elemet.
 5. Válassza a **System prerequisites** (Rendszer előfeltételei) hivatkozást. Telepítse az előfeltételeket az operációs rendszeréhez.
@@ -138,12 +138,12 @@ A kiadási folyamat azt a folyamatot határozza meg, amelyet az Azure Pipelines 
 
 Kiadási folyamat létrehozása az Azure Pipelinesban:
 
-1. Nyissa meg a **Build**  Release **(Build és kiadás) központ &amp;Releases** (Kiadások) lapját, és válassza a **Create release pipeline** (Kiadási folyamat létrehozása) elemet. 
+1. Nyissa meg a **Build &amp; Release** (Build és kiadás) központ **Releases** (Kiadások) lapját, és válassza a **Create release pipeline** (Kiadási folyamat létrehozása) elemet. 
 2. Válassza ki az **Empty** (Üres) sablont, hogy egy **Empty process** (Üres folyamat) legyen a kezdési folyamat.
 3. Az **Artifacts** (Összetevők) szakaszban jelölje ki a **+ Add Artifact** (+ Összetevő hozzáadása) lehetőséget, és válassza a **Jenkins** elemet, mint **Source type** (Erőforrástípus). Válassza ki a Jenkins szolgáltatási végpont kapcsolatát. Ezután jelölje ki a Jenkins-forrásfeladatot, és válassza az **Add** (Hozzáadás) lehetőséget.
 4. Válassza a három pontot az **Environment 1** (1. környezet) mellett. Válassza az **Add deployment group phase** (Üzembe helyezési csoport fázisának hozzáadása) lehetőséget.
 5. Válassza ki az üzembe helyezési csoportot.
-5. Válassza a **+** lehetőséget egy feladat **Üzembe helyezési csoport fázishoz** adásához.
+5. Jelölje **+** be, ha feladatot szeretne hozzáadni a **Központi telepítési csoport fázisához.**
 6. Válassza a **Shell Script** (Felületszkript) feladatot, majd az **Add** (Hozzáadás) elemet. A **Shell Script** (Felületszkript) feladat biztosítja az egyes kiszolgálókon való futtatáshoz a szkript konfigurációját a Node.js telepítéséhez és az alkalmazás elindításához.
 8. A **Script Path** (Szkript elérési útja) mezőben adja meg a **$(System.DefaultWorkingDirectory)/Fabrikam-Node/deployscript.sh** útvonalat.
 9. Válassza az **Advanced** (Speciális) elemet, majd engedélyezze a **Specify Working Directory** (Munkakönyvtár megadása) lehetőséget.
@@ -174,11 +174,11 @@ Ebben az oktatóanyagban automatizálta az alkalmazás Azure-ban történő üze
 > * Alkalmazás létrehozása a Jenkinsben.
 > * A Jenkins konfigurálása az Azure DevOps Services-el való integrációhoz.
 > * Üzembe helyezési csoport létrehozása az Azure virtuális gépekhez.
-> * Hozzon létre egy Azure-folyamatot, amely konfigurálja a virtuális gépeket, és üzembe helyezi az alkalmazást.
+> * Hozzon létre egy Azure Pipeline, amely konfigurálja a virtuális gépeket, és telepíti az alkalmazást.
 
-Ha szeretne többet megtudni arról, hogyan használhatók az Azure-folyamatok az összeállítási és a kiadási lépésekhez, tekintse meg [ezt a témakört](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-linuxvm-deploygroups).
+Ha többet szeretne tudni arról, hogyan használhatja az Azure Pipelines-t a Build és a Release lépésekhez, olvassa el ezt a [cikket.](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-linuxvm-deploygroups)
 
-Ha szeretné megtudni, hogyan hozhat létre YAML-alapú CI/CD-folyamatot a virtuális gépekre való üzembe helyezéshez, folytassa a következő oktatóanyaggal.
+Ha meg szeretné tudni, hogyan hoz létre egy YAML-alapú CI/CD-folyamatot a virtuális gépekre való üzembe helyezéshez, ugrást a következő oktatóanyagra.
 
 > [!div class="nextstepaction"]
 > [A Jenkins az Azure-on](/azure/Jenkins/)
