@@ -1,24 +1,26 @@
 ---
-title: Gyakori kérdések az Azure-beli Cloudynről | Microsoft Docs
+title: Gyakori kérdések az Azure-beli Cloudynről
 description: A cikk a Cloudynnel kapcsolatos gyakori kérdésekre ad választ.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
-ms.topic: troubleshooting
+ms.date: 03/12/2020
+ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 5c770d83d59edf0a56184f8eea0bda6b0603893c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: b1ec81ea135079defb390becc025f51cde2dad7f
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770075"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411237"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>A Cloudynre vonatkozó gyakori kérdések
 
 A cikk a Cloudynnel kapcsolatos néhány gyakori kérdésre ad választ. Ha kérdései vannak a Cloudynnel kapcsolatban, a [Cloudyn GYIK-oldalán](https://social.msdn.microsoft.com/Forums/en-US/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-cloudyn-cost-management?forum=Cloudyn) teheti fel őket.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="how-can-i-resolve-common-indirect-enterprise-setup-problems"></a>Hogyan oldhatok meg gyakori közvetlen vállalati beállítási problémákat?
 
@@ -58,13 +60,13 @@ Ha nem tudja megtekinteni az Optimizer (Optimalizáló) javaslatait, akkor való
 
 Fiók aktiválása:
 
-1.  A Cloudyn portálon kattintson a **Settings** (Beállítások) gombra a jobb felső sarokban, és válassza a **Cloud Accounts** (Felhőbeli fiókok) lehetőséget.
-2.  A Microsoft Azure Accounts (Microsoft Azure-fiókok) lapon keresse meg azokat a fiókokat, amelyek **nem aktivált** előfizetéssel rendelkeznek.
-3.  Kattintson a nem aktivált fiók jobb oldalán található, ceruzára hasonlító **szerkesztés** szimbólumra.
-4.  A bérlő- és díjazonosítót a rendszer automatikusan észleli. Kattintson a **Tovább** gombra.
-5.  A rendszer átirányítja az Azure Portalra. Jelentkezzen be a portálra, és engedélyezze a Cloudyn Collectornak az Azure adataihoz való hozzáférést.
-6.  A rendszer ezt követően átirányítja a Cloudyn fiókkezelési oldalára, az előfizetését pedig **aktív** fiókállapotra frissíti. A fiók állapotánál egy zöld pipa látható.
-7.  Ha nem lát zöld pipát egy vagy több előfizetés esetében, akkor nincs engedélye létrehozni az olvasó alkalmazást (a CloudynCollectort) az előfizetésben. Ehhez egy magasabb jogosultsággal rendelkező felhasználónak kell megismételnie a folyamat 3. és 4. lépését.  
+1.    A Cloudyn portálon kattintson a **Settings** (Beállítások) gombra a jobb felső sarokban, és válassza a **Cloud Accounts** (Felhőbeli fiókok) lehetőséget.
+2.    A Microsoft Azure Accounts (Microsoft Azure-fiókok) lapon keresse meg azokat a fiókokat, amelyek **nem aktivált** előfizetéssel rendelkeznek.
+3.    Kattintson a nem aktivált fiók jobb oldalán található, ceruzára hasonlító **szerkesztés** szimbólumra.
+4.    A bérlő- és díjazonosítót a rendszer automatikusan észleli. Kattintson a **Tovább** gombra.
+5.    A program átirányítja az Azure Portalra. Jelentkezzen be a portálra, és engedélyezze a Cloudyn Collectornak az Azure adataihoz való hozzáférést.
+6.    A rendszer ezt követően átirányítja a Cloudyn fiókkezelési oldalára, az előfizetését pedig **aktív** fiókállapotra frissíti. A fiók állapotánál egy zöld pipa látható.
+7.    Ha nem lát zöld pipát egy vagy több előfizetés esetében, akkor nincs engedélye létrehozni az olvasó alkalmazást (a CloudynCollectort) az előfizetésben. Ehhez egy magasabb jogosultsággal rendelkező felhasználónak kell megismételnie a folyamat 3. és 4. lépését.  
 
 Miután elvégezte az előző lépéseket, egy-két napon belül megtekintheti az Optimizer (Optimalizáló) javaslatait. Azonban akár öt napot is igénybe vehet, mire az optimalizálási adatok mindegyike elérhetővé válik.
 
@@ -75,7 +77,7 @@ Először tekintsük át azt a leggyakoribb forgatókönyvet, amely miatt a felh
 
 > Tegyük fel, hogy Rendszergazda1 Microsoft-felhőszolgáltatói vagy Nagyvállalati Szerződéssel rendelkező felhasználó. A vállalata készen áll a Cloudyn használatára.  Az Azure Portalon keresztül regisztrál, és bejelentkezik a Cloudyn portálra. A Cloudyn szolgáltatást regisztráló, és a Cloudyn portálra bejelentkező személyként Rendszergazda1 lesz az *elsődleges rendszergazda*. Rendszergazda1 nem hoz létre felhasználói fiókokat. A Cloudyn portál használatával azonban létrehoz Azure-fiókokat, és beállít egy entitáshierarchiát. Rendszergazda1 arról tájékoztatja Rendszergazda2-t, a bérlői rendszergazdát, hogy regisztrálnia kell a Cloudynen, és be kell jelentkeznie a Cloudyn portálra.
 >
-> Rendszergazda2 az Azure Portalon keresztül regisztrál. A Cloudyn portálra való bejelentkezés során azonban hibaüzenetet kap, amely szerint a fiókja **fel van függesztve**. Az elsődleges rendszergazda, Rendszergazda1 értesítést kap a fiók felfüggesztéséről. Rendszergazda1-nek aktiválnia kell Rendszergazda2 fiókját, és *rendszergazdai entitás-hozzáférést* kell biztosítania a megfelelő entitásokhoz, engedélyeznie kell a felhasználó-kezeléséhez, és aktiválnia kell a felhasználói fiókot.
+> Rendszergazda2 az Azure Portalon keresztül regisztrál. A Cloudyn portálra való bejelentkezés során azonban hibaüzenetet kap, amely szerint a fiókja **fel van függesztve**. Az elsődleges rendszergazda, Rendszergazda1 értesítést kap a fiók felfüggesztéséről. Rendszergazda1-nek aktiválnia kell Rendszergazda2 fiókját, *rendszergazdai entitás-hozzáférést* kell biztosítania a megfelelő entitásokhoz, engedélyeznie kell a hozzáférést a felhasználókezeléshez, és aktiválnia kell a felhasználói fiókot.
 
 
 Ha riasztást kap, amely egy felhasználó hozzáférésének engedélyezésére irányuló kérést tartalmaz, aktiválnia kell a felhasználói fiókot.
@@ -95,7 +97,7 @@ Javasoljuk, hogy legalább két rendszergazdai Cloudyn-fiókot hozzon létre arr
 
 Ha nem tud bejelentkezni a Cloudyn portálra, ellenőrizze, hogy a helyes URL-címet használja a Cloudynbe történő bejelentkezéshez. A [https://azure.cloudyn.com](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade) címet használja.
 
-Ne használja a Cloudyn közvetlen https://app.cloudyn.com URL-címét.
+Ne használja a Cloudyn közvetlen `https://app.cloudyn.com` URL-címét.
 
 ## <a name="how-do-i-activate-unactivated-accounts-with-azure-credentials"></a>Hogyan aktiválhatom a nem aktivált fiókokat Azure hitelesítő adatokkal?
 
