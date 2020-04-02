@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2018
-ms.openlocfilehash: 4b1c1a963b065411f1a0ab84141bdf1835930ebb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0fe20c90cf857ce09a83c6ac53e6fe77eb512153
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74973543"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80528198"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Nyilvános adatkészletek teszteléshez és prototípus-készítéshez
 
@@ -31,7 +31,7 @@ A nyilvános adatkészletek ezen listájában olyan adatokat kereshet, amelyek s
 | [Földtudományi adatok a NASA-tól](https://earthdata.nasa.gov/) | Több mint 32.000 adatgyűjtés, amely a mezőgazdaság, légkör, bioszféra, klíma, krioszféra, emberi dimenziók, hidroszféra, szárazföldi felület, óceánok, nap-föld kölcsönhatások, és így tovább. | Az adatkészletek különböző formátumokban vannak. |
 | [A légi járat késése és egyéb szállítási adatok](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | "Az Egyesült Államok Közlekedési Minisztériumának (DOT) Közlekedési Statisztikai Hivatala (BTS) nyomon követi a nagy légi fuvarozók által üzemeltetett belföldi járatok időben történő teljesítményét. Összefoglaló információk száma a pontos, késleltetett, törölt, és eltérített járatok jelennek meg ... az ezen a honlapon közzétett összefoglaló táblázatokban." | A fájlok CSV formátumban vannak. |
 | [Halálos kimenetelű közlekedési balesetek – Us Fatality Analysis Reporting System (FARS)](https://www.nhtsa.gov/FARS) | "FARS egy országos népszámlálás, amely NHTSA, kongresszus, és az amerikai nyilvános éves adatok halálos sérüléseket szenvedett a gépjármű-közlekedési balesetek." | "Hozza létre saját halálozási adatait online futva a FARS query rendszer használatával. Vagy töltse le az összes FARS adatot 1975-től az FTP-helyről." |
-| [Mérgező kémiai adatok - EPA Toxicitási ForeCaster (ToxCast™) adatok](https://www.epa.gov/chemical-research/toxicity-forecaster-toxcasttm-data) | "Az EPA legfrissebb, nyilvánosan elérhető nagy átmenő képességű toxicitási adatai több ezer vegyi anyagra. Ezeket az adatokat az EPA ToxCast kutatási erőfeszítései generálják." | Az adatkészletek különböző formátumokban érhetők el, beleértve a táblázatokat, az R csomagokat és a MySQL adatbázisfájlokat. |
+| [Mérgező kémiai adatok - EPA Toxicity ForeCaster (ToxCast)&trade;adatok](https://www.epa.gov/chemical-research/toxicity-forecaster-toxcasttm-data) | "Az EPA legfrissebb, nyilvánosan elérhető nagy átmenő képességű toxicitási adatai több ezer vegyi anyagra. Ezeket az adatokat az EPA ToxCast kutatási erőfeszítései generálják." | Az adatkészletek különböző formátumokban érhetők el, beleértve a táblázatokat, az R csomagokat és a MySQL adatbázisfájlokat. |
 | [Mérgező kémiai adatok - NIH Tox21 Data Challenge 2014](https://tripod.nih.gov/tox21/challenge/) | "A 2014-es Tox21 adatkihívás célja, hogy segítsen a tudósoknak megérteni a 21. | Az adatkészletek SMILES és SDF formátumban érhetők el. Az adatok "vizsgálati aktivitási adatokat és kémiai struktúrákat tartalmaznak a Tox21 ~10 000 vegyület (Tox21 10K) gyűjteményén". |
 | [Biotechnológiai és genomadatok az NCBI-ből](https://www.ncbi.nlm.nih.gov/guide/data-software/) | Több adathalmaz, amely a géneket, genomokat és fehérjéket fedi le. | Az adatkészletek szövegben, XML-ben, BLAST-ban és más formátumokban találhatók. A BLAST alkalmazás elérhető. |
 
@@ -41,7 +41,6 @@ A nyilvános adatkészletek ezen listájában olyan adatokat kereshet, amelyek s
 |---|---|---|
 | [New York-i taxi adatok](http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml) | "A taxiutak nyilvántartásai olyan mezőket tartalmaznak, amelyek rögzítik a felvételi és a lemorzsolódási dátumokat/időpontokat, a felvételi és leadási helyeket, az utazási távolságokat, a tételes viteldíjakat, a díjtípusokat, a fizetési típusokat és a járművezető által jelentett utasszámokat." | Az adatkészletek a CSV-fájlokban havi adatok. |
 | [Microsoft Research adatkészletek - "Data Science for Research"](https://www.microsoft.com/research/academic-program/data-science-microsoft-research/) | Több adathalmaz, amely az emberi-számítógép interakciót, az audio/video, az adatbányászat/információvisszakeresés, a térinformatikai/helymeghatározási, a természetes nyelvi feldolgozást és a robotikát/számítógépes látást tartalmazza. | Adatkészletek különböző formátumokban, cipzáras letölthető. |
-| [Nyilvános genomadatok](https://www.completegenomics.com/public-data/) | "A teljes emberi genomok változatos adathalmaza szabadon hozzáférhető nyilvános használatra, hogy fokozza a genomikus vizsgálatokat..." A teljes genomika i. magánvállalat. | Az adatkészletek a kibontás után UNIX szövegformátumban vannak. Elemzési eszközök is rendelkezésre állnak. |
 | [Tudományos adatok megnyitása](https://www.opensciencedatacloud.org/projects/) | "Az Open Science Data Cloud a tudományos közösség számára erőforrásokat biztosít a terabájtos és petabájtos tudományos adatkészletek tárolásához, megosztásához és elemzéséhez."| Az adatkészletek különböző formátumokban vannak. |
 | [Globális éghajlati adatok - WorldClim](https://worldclim.org/) | "WorldClim egy sor globális éghajlati rétegek (rácsos éghajlati adatok) a térbeli felbontása körülbelül 1 km2. Ezek az adatok térképezésre és térbeli modellezésre használhatók." | Ezek a fájlok térinformatikai adatokat tartalmaznak. További információ: [Data format](https://worldclim.org/formats1). |
 | [Adatok az emberi társadalomról - A GDELT projekt](https://www.gdeltproject.org/data.html) | "A GDELT Projekt a valaha létrehozott legnagyobb, legátfogóbb és legnagyobb felbontású nyílt adatbázis az emberi társadalomszámára." | A nyers adatfájlok CSV formátumúak. |

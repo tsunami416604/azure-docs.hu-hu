@@ -1,22 +1,14 @@
 ---
 title: 'Oktatóanyag: Reguláris kifejezés entitás - LUIS'
-titleSuffix: Azure Cognitive Services
 description: Konzisztensen formázott adatok kinyerése egy utterance (kifejezés) kifejezés a reguláris entitás használatával.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 0ca6f2a67e01e4c604c2dcc8f8eaa9ffe8bad045
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/01/2020
+ms.openlocfilehash: 5b585ee52880c474d3f2736b34a267012b390aad
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75381512"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545840"
 ---
 # <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>Oktatóanyag: Jól formázott adatok beszereznie az utterance (kifejezés)
 Ebben az oktatóanyagban hozzon létre egy reguláris kifejezés entitás következetesen formázott adatokat egy utterance (kifejezés) kinyerése.
@@ -100,11 +92,9 @@ Hozzon létre egy reguláris kifejezés entitást, amely megfelel a szövegszám
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-2. Lépjen az URL-cím végére a címben, és adja meg a következő utterance (kifejezés) értéket:
+1. Lépjen az URL-cím végére a címsorban, és cserélje le _YOUR_QUERY_HERE_ a következőre:
 
     `Text my pizza delivery to x23456 x234567 x12345`
-
-    Az utolsó querystring `query`paraméter a ( utterance ( kifejezés ) **lekérdezés.**
 
     ```json
     {

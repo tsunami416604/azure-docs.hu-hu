@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
-ms.openlocfilehash: f299b13baf5811b92bdc2e40b027868617d7574c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 00dcef4ae0f04fc7f550859238ae8c7e1ad19384
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79368519"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549073"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Tanúsítványok elforgatása az Azure Kubernetes szolgáltatásban (AKS)
 
@@ -32,7 +32,7 @@ Az AKS a következő tanúsítványokat, hitelesítésszolgáltatókat és szolg
 * Minden kubelet is létrehoz egy tanúsítvány-aláíró kérelem (CSR), amely a fürt hitelesítésszolgáltató által aláírt, a kubelet az API-kiszolgáló közötti kommunikációhoz.
 * Az etcd kulcs értéktárolója rendelkezik egy, a fürthitelesítésszolgáltató által aláírt tanúsítvánnyal az API-kiszolgálóval való kommunikációhoz.
 * Az etcd kulcsérték-tároló létrehoz egy hitelesítésszolgáltatót, amely tanúsítványokat ír alá az AKS-fürt etcd replikai közötti adatreplikáció hitelesítéséhez és engedélyezéséhez.
-* Az API-gyűjtő a fürthitelesítésszolgáltató segítségével adja ki a más API-kkal, például az Azure-hoz való nyílt szolgáltatásközvetítővel való kommunikációhoz szükséges tanúsítványokat. Az API-összesítő rendelkezhet saját hitelesítésszolgáltatóval is a tanúsítványok kiállításához, de jelenleg a fürthitelesítésszolgáltatót használja.
+* Az API-összesítő a fürthitelesítésszolgáltató segítségével állít ki tanúsítványokat a más API-kkal való kommunikációhoz. Az API-összesítő rendelkezhet saját hitelesítésszolgáltatóval is a tanúsítványok kiállításához, de jelenleg a fürthitelesítésszolgáltatót használja.
 * Minden csomópont egy szolgáltatásfiók (SA) jogkivonatot használ, amelyet a fürthitelesítésszolgáltató ír alá.
 * Az `kubectl` ügyfél rendelkezik egy tanúsítvánnyal az AKS-fürttel való kommunikációhoz.
 

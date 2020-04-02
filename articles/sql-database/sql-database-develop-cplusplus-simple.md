@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
-ms.openlocfilehash: fb6094ec418d2b212759bddd2c4d49c7e6193849
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ed8e5eaa0ff9b58f80473b052aacfb9f01d45055
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73690701"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529222"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Csatlakozás AZ SQL-adatbázishoz C és C++ használatával
 
@@ -28,7 +28,7 @@ Győződjön meg róla, hogy rendelkezik az alábbi elemekkel:
 
 * Aktív Azure-fiók. Ha még nincs fiókja, regisztrálhat az [Azure ingyenes próbaverziójára](https://azure.microsoft.com/pricing/free-trial/).
 * [Visual Studio](https://www.visualstudio.com/downloads/). A minta létrehozásához és futtatásához telepítenie kell a C++ nyelvi összetevőket.
-* [Visual Studio Linux fejlesztés](https://visualstudiogallery.msdn.microsoft.com/725025cf-7067-45c2-8d01-1e0fd359ae6e). Ha Linuxon dolgozik, telepítenie kell a Visual Studio Linux bővítményt is.
+* [Visual Studio Linux fejlesztés](https://docs.microsoft.com/cpp/linux/?view=vs-2019). Ha Linuxon dolgozik, telepítenie kell a Visual Studio Linux bővítményt is.
 
 ## <a name="azure-sql-database-and-sql-server-on-virtual-machines"></a><a id="AzureSQL"></a>Azure SQL Database és SQL Server virtuális gépeken
 Az Azure SQL a Microsoft SQL Server kiszolgálóra épül, és úgy lett kialakítva, hogy magas rendelkezésre állású, nagy teljesítményű és méretezhető szolgáltatást nyújtson. Az SQL Azure használatának számos előnye van a saját, a helyszínen futó adatbázison keresztül. Az SQL Azure-ral nem kell telepítenie, beállítani, karbantartania vagy kezelnie az adatbázist, hanem csak az adatbázis tartalmát és szerkezetét. Az olyan adatbázisok, mint a hibatűrés és a redundancia jellemző dolgok mind be vannak építve.

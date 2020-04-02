@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d9cff47c61fc08305427b25f949884b1ef089fd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ca3a79b0d31cc18b8ff77f02ce4ce3d517d7a638
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289666"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548701"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>Azure-biztonsági alapkonfiguráció a MariaDB Azure-adatbázisához
 
@@ -894,9 +894,9 @@ A Kulcstartó hitelesítése felügyelt identitással:https://docs.microsoft.com
 
 **Útmutató:** Az Azure Database for MariaDB server jelenleg nem támogatja az Azure Active Directory-hitelesítést az adatbázisok eléréséhez.  A MariaDB-kiszolgáló Azure-adatbázisának létrehozásakor hitelesítő adatokat adhat meg egy rendszergazdai felhasználónak. Ezzel a rendszergazdával további MariaDB-felhasználókat hozhat létre.  
 
-Az Azure-adatbázis MariaDB-kiszolgálóhoz való hozzáféréshez használt Azure-alapú virtuális gépek vagy webalkalmazások esetében a Felügyelt szolgáltatás identitása az Azure Key Vaultszolgáltatással együtt tárolja és lekéri a MariaDB Azure Database hitelesítő adatait. Szerver.  Győződjön meg arról, hogy a Key Vault ideiglenes törlése engedélyezve van.
+Az Azure-adatbázis MariaDB-kiszolgálóhoz való hozzáféréshez használt Azure-alapú virtuális gépek vagy az Azure App Service szolgáltatáson futó webalkalmazások esetében az Azure Key Vault szolgáltatással együtt a Felügyelt szolgáltatás identitását használja a MariaDB-kiszolgáló Azure Database hitelesítő adatainak tárolásához és lekéréséhez.  Győződjön meg arról, hogy a Key Vault ideiglenes törlése engedélyezve van.
 
-Felügyelt identitások használatával automatikusan felügyelt identitást biztosítaz Azure-szolgáltatásoknak az Azure Active Directoryban (AD). Felügyelt identitások lehetővé teszi, hogy hitelesítse az Azure AD-hitelesítést támogató szolgáltatások, beleértve a Key Vault, hitelesítő adatok nélkül a kódot. Felügyelt identitások konfigurálása: https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vmHow integrálás az Azure felügyelt identitásaival:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+Felügyelt identitások használatával automatikusan felügyelt identitást biztosítaz Azure-szolgáltatásoknak az Azure Active Directoryban (AD). Felügyelt identitások lehetővé teszi, hogy hitelesítse az Azure AD-hitelesítést támogató szolgáltatások, beleértve a Key Vault, hitelesítő adatok nélkül a kódot. Felügyelt identitások konfigurálása: https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm. Integrálás az Azure felügyelt https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identityidentitásaival: .
 
 
 

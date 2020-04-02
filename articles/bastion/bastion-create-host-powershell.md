@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: c3e4c2f2bac45f2e366764473a34b0536bb4cc44
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 43d834f0c834696cd4a836466c9663fe7c31a392
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76990453"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520500"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-powershell"></a>Hozzon létre egy Azure-bastion host az Azure PowerShell használatával
 
@@ -35,7 +35,7 @@ Ez a szakasz segít egy új Azure-bastion erőforrás létrehozásában az Azure
    ```azurepowershell-interactive
    $subnetName = "AzureBastionSubnet"
    $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
-   $vnet = New-AzVirtualNetwork -Name "myVnet" -ResourceGroupName " myBastionRG " -Location "westeurope" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+   $vnet = New-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myBastionRG" -Location "westeurope" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
    ```
 
 2. Hozzon létre egy nyilvános IP-címet az Azure Bastion számára. A nyilvános IP-cím az a nyilvános IP-cím, amelyen az RDP/SSH elérhető lesz (a 443-as porton keresztül). A nyilvános IP-címnek ugyanabban a régióban kell lennie, mint a létrehozott megerősített erőforrásnak.
@@ -47,7 +47,7 @@ Ez a szakasz segít egy új Azure-bastion erőforrás létrehozásában az Azure
 3. Hozzon létre egy új Azure-bastion erőforrást a virtuális hálózat AzureBastionSubnet hálózatában. Körülbelül 5 percet vesz igénybe a Bástya erőforrás létrehozása és üzembe helyezése.
 
    ```azurepowershell-interactive
-   $bastion = New-AzBastion -ResourceGroupName " myBastionRG " -Name "myBastion" -PublicIpAddress $publicip -VirtualNetwork $vnet
+   $bastion = New-AzBastion -ResourceGroupName "myBastionRG" -Name "myBastion" -PublicIpAddress $publicip -VirtualNetwork $vnet
    ```
 
 ## <a name="next-steps"></a>További lépések

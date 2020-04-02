@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: rogarana
 ms.subservice: tables
-ms.openlocfilehash: f1846fae4cbf473df688a2b184c307d72ab2f8d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 746044aa835df52e61c234c8b5ca61164fffbbc5
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76721472"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545953"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Azure Table storage-műveletek végrehajtása az Azure PowerShell használatával 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
@@ -117,7 +117,7 @@ $storageTable = Get-AzStorageTable –Name $tableName –Context $ctx
 ## <a name="reference-cloudtable-property-of-a-specific-table"></a>Egy adott tábla Referencia CloudTable tulajdonsága
 
 > [!IMPORTANT]
-> A CloudTable használata kötelező az **AzTable** PowerShell modul használata során. Hívja meg a **Get-AzTableTable** parancsot az objektumra mutató hivatkozás lehívásához. Ez a parancs akkor is létrehozza a táblát, ha még nem létezik.
+> A CloudTable használata kötelező az **AzTable** PowerShell modul használata során. Hívja meg a **Get-AzStorageTable** parancsot az objektumra mutató hivatkozás lehívásához. Ez a parancs akkor is létrehozza a táblát, ha még nem létezik.
 
 Ha az **AzTable**segítségével műveleteket szeretne végrehajtani egy táblában, egy adott tábla CloudTable tulajdonságára kell hivatkoznia.
 

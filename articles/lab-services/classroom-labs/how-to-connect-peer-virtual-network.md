@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: spelluru
-ms.openlocfilehash: 56c31e03eeec0c81207dc402e864eadec2d768bd
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 224526efc2152e0b788c5cbc7f3bd60bb3363c1a
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474062"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545712"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>A labor hálózatának csatlakoztatása egyenrangú virtuális hálózattal az Azure Lab Servicesben 
 Ez a cikk a laborok hálózatának egy másik hálózattal való társviszony-létesítésével kapcsolatos információkat tartalmaz. 
@@ -34,7 +34,7 @@ Előfordulhat, hogy a labor hálózatát egy társvirtuális hálózattal kell c
 Bizonyos helyszíni hálózatok az [ExpressRoute](../../expressroute/expressroute-introduction.md) vagy a Virtual Network Gateway segítségével kapcsolódnak az Azure virtuális [hálózathoz.](../../vpn-gateway/vpn-gateway-about-vpngateways.md) Ezeket a szolgáltatásokat az Azure Lab Servicesen kívül kell beállítani. Ha többet szeretne tudni arról, hogy miként csatlakozhat helyszíni hálózathoz az ExpressRoute használatával az Azure-hoz, olvassa el az [ExpressRoute áttekintése című témakört.](../../expressroute/expressroute-introduction.md) A virtuális hálózati átjárót használó helyszíni kapcsolat esetén az átjárónak, a megadott virtuális hálózatnak és a tesztkörnyezet-fióknak ugyanabban a régióban kell lennie.
 
 > [!NOTE]
-> Amikor egy tesztkörnyezet-fiókkal társviszonyba kerül egy Azure virtuális hálózat létrehozásakor fontos megérteni, hogy a virtuális hálózat régiója hogyan befolyásolja az osztálytermi laborok létrehozását.  További információt a rendszergazdai útmutató [régiók\helyek](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#regions-or-locations)című szakasza tartalmaz.
+> Amikor egy tesztkörnyezet-fiókkal társviszonyba kerül egy Azure virtuális hálózat létrehozásakor fontos megérteni, hogy a virtuális hálózat régiója hogyan befolyásolja az osztálytermi laborok létrehozását.  További információt a rendszergazdai útmutató [régiók\helyek](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#regionslocations)című szakasza tartalmaz.
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>Konfigurálás a tesztkörnyezet-fiók létrehozásakor
 Az új tesztkörnyezet-fiók létrehozása során kiválaszthatja a meglévő virtuális hálózatot, amely a Speciális lap **Társ virtuális hálózat** legördülő listájában jelenik **meg.** A kijelölt virtuális hálózat csatlakozik (társviszonyban) a laborfiók alatt létrehozott laborok. A módosítás után létrehozott laborokban található összes virtuális gép hozzáférhet a társviszonyt létesített virtuális hálózat erőforrásaihoz. 

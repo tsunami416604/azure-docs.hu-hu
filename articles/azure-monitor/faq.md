@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/26/2020
-ms.openlocfilehash: 777e4e1f8fdd05345d949fe8c78b4a5b1953b8b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 306d847c2bc5af72d37dbf8bf472a5bae63e9fd5
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298249"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80528503"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor – gyakori kérdések
 
@@ -177,7 +177,7 @@ Adjon meg egy meglévő vagy új [műveletcsoportot,](platform/action-groups.md)
 
 
 ### <a name="what-are-the-firewall-requirements-for-azure-monitor-agents"></a>Milyen tűzfalkövetelmények vonatkoznak az Azure Monitor-ügynökökre?
-A [tűzfalkövetelményekkel](platform/log-analytics-agent.md#network-firewall-requirements)kapcsolatos részleteket a Hálózati tűzfal követelményeiben találja.
+A [tűzfalkövetelményekkel](platform/log-analytics-agent.md#firewall-requirements)kapcsolatos részleteket a Hálózati tűzfal követelményeiben találja.
 
 
 ## <a name="visualizations"></a>Vizualizációk
@@ -682,7 +682,7 @@ Az Azure Monitor szolgáltatás a virtuális gépek leképezése szolgáltatás 
 * Új szolgáltatásleképezési gépcsoportokat nem hozhat létre az Azure Monitor szolgáltatás virtuális gépek leképezése szolgáltatásban.  
 
 ### <a name="why-do-my-performance-charts-show-dotted-lines"></a>Miért jelennek meg pontozott vonalak a teljesítménydiagramokon?
-Ennek több oka is lehet.  Azokban az esetekben, ahol az adatgyűjtésben hézag van, a vonalakat pontozottként ábrázoljuk.  Ha módosította az engedélyezett teljesítményszámlálók adatmintavételi gyakoriságát (az alapértelmezett beállítás az adatok 60 másodpercenként történő gyűjtése), akkor a diagramon pontozott vonalak láthatók, ha szűk időtartományt választ a diagramhoz, és a mintavételi gyakoriság kisebb, mint a diagramon használt gyűjtőméret (például a mintavételi gyakoriság 10 percenként, és a diagramon minden egyes vödör 5 perc).  Ha szélesebb időtartományt választ a megtekintéshez, a diagramvonalak nak folytonos vonalakként kell megjelenniük, nem pedig pontként ebben az esetben.
+Ennek több oka is lehet.  Azokban az esetekben, ahol az adatgyűjtésben hézag van, a vonalakat pontozottként ábrázoljuk.  Ha módosította az adatmintavételgyakoriságot az engedélyezett teljesítményszámlálókhoz (az alapértelmezett beállítás az adatok 60 másodpercenként történő gyűjtése), akkor a diagramon pontozott vonalak láthatók, ha szűk időtartományt választ a diagramhoz, és a mintavételi gyakoriság kisebb, mint a diagramon használt gyűjtőméret (például a mintavételi gyakoriság 10 percenként, a diagramon pedig 5 perc).  Ha szélesebb időtartományt választ a megtekintéshez, a diagramvonalak nak folytonos vonalakként kell megjelenniük, nem pedig pontként ebben az esetben.
 
 ### <a name="are-groups-supported-with-azure-monitor-for-vms"></a>A csoportok támogatottak az Azure Monitor virtuális gépekhez?
 Igen, miután telepítette a függőségi ügynök adatokat gyűjtünk a virtuális gépekről az előfizetés, az erőforráscsoport, a virtuálisgép-méretezési készletek és a felhőszolgáltatások alapján csoportok megjelenítéséhez.  Ha szolgáltatástérképet használt, és gépcsoportokat hozott létre, ezek is megjelennek.  A számítógépcsoportok akkor is megjelennek a csoportszűrőben, ha a megtekintett munkaterülethez hozta létre őket. 

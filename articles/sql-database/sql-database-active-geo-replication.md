@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/17/2020
-ms.openlocfilehash: fe006cebe9aab30a6aaa0bdf2bf3362a494f64d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b80b58d64ea27df95c2704243d8a89fa6ca12e2a
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77426273"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548508"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Aktív georeplikáció létrehozása és használata
 
@@ -36,7 +36,7 @@ Ha bármilyen okból az elsődleges adatbázis meghibásodik, vagy egyszerűen o
 
 Az egyes adatbázisok vagy adatbázisok egy csoportjának replikációját és feladatátvételét kezelheti egy kiszolgálón vagy egy rugalmas készletben az aktív georeplikáció használatával. Ezt a következő használatával teheti meg:
 
-- Az [Azure Portal](sql-database-geo-replication-portal.md)
+- Az [Azure portál](sql-database-geo-replication-portal.md)
 - [PowerShell: Egyetlen adatbázis](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
 - [PowerShell: Rugalmas készlet](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
 - [Transact-SQL: Egyetlen adatbázis vagy rugalmas készlet](/sql/t-sql/statements/alter-database-azure-sql-database)
@@ -146,7 +146,7 @@ A módosításokat végző ügyfélnek hálózati hozzáférésre van szüksége
 
    ```sql
    create user geodrsetup for login geodrsetup
-   alter role geodrsetup dbmanager add member geodrsetup
+   alter role dbmanager add member geodrsetup
    ```
 
 1. A lekérdezés segítségével jegyezze fel az új bejelentkezés ii. 

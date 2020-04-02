@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: afc7a7406831568304c2ebd8d9a6c72b497e04e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a6540b5784a76acfc248fb15feb1aaf39420845
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75972878"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546948"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Nagyméretű adatkészletek feldolgozása a Data Factory és a Batch használatával
 > [!NOTE]
@@ -430,7 +430,7 @@ Ez a szakasz további részleteket tartalmaz a kód a Végrehajtás metódusban.
     } while (continuationToken != null);
 
     ```
-   További információt a [ListBlobsSegmented](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.listblobssegmented) metódus dokumentációjában talál.
+   További információt a [ListBlobsSegmented](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmented) metódus dokumentációjában talál.
 
 1. A blobok készletén való munka kódja logikailag a do-while cikluson belül reked. A **Végrehajtás** metódusban a teendő ciklus a blobok listáját egy Calculate nevű metódusnak **adja át.** A metódus egy **kimenet** nevű karakterlánc-változót ad vissza, amely a szegmens összes blobján keresztül iterált.
 
@@ -965,7 +965,7 @@ Az adatok feldolgozása után felhasználhatja azokat olyan online eszközökkel
 * [Azure és Power BI: Alapszintű áttekintés](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
 ## <a name="references"></a>Referencia
-* [Azure-adatgyár](https://azure.microsoft.com/documentation/services/data-factory/)
+* [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)
 
   * [Bevezetés a Data Factory szolgáltatásba](data-factory-introduction.md)
   * [Első lépések a Data Factory-val](data-factory-build-your-first-pipeline.md)

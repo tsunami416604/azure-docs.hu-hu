@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: spelluru
-ms.openlocfilehash: d17026dba26b3c1cb846d60967180c29563c425d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82773ab6decfe15ee1a9d839a1f10a158ae72c42
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74545594"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521323"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Az Event Hubs-erőforrásokhoz való hozzáférés hitelesítése megosztott hozzáférésű aláírásokkal (SAS)
 A megosztott hozzáférésű aláírás (SAS) segítségével részletesen szabályozhatja a megosztott hozzáférés-aláírással rendelkező ügyfelek számára nyújtott hozzáférés típusát. Íme néhány, a SAS-ben beállítható vezérlő: 
@@ -33,7 +33,7 @@ Ez a cikk az Event Hubs-erőforrások sas-i erőforrásokhoz való hozzáférés
 
 
 ## <a name="configuring-for-sas-authentication"></a>SAS-hitelesítés konfigurálása
-Konfigurálhatja az EventHubs megosztott hozzáférés-engedélyezési szabály egy Event Hubs névtér, vagy egy entitás (eseményközpont-példány vagy Kafka-témakör egy Kafka-kompatibilis névtér eseményközpontokban). A megosztott hozzáférés engedélyezési szabályának konfigurálása egy fogyasztói csoporton jelenleg nem támogatott, de a névtéren vagy entitáson konfigurált szabályok segítségével biztonságos hozzáférést biztosíthat a fogyasztói csoporthoz. 
+Konfigurálhatja az EventHubs megosztott hozzáférés-engedélyezési szabály egy Event Hubs névtér, vagy egy entitás (eseményközpont-példány vagy Kafka topic egy eseményközpontban). A megosztott hozzáférés engedélyezési szabályának konfigurálása egy fogyasztói csoporton jelenleg nem támogatott, de a névtéren vagy entitáson konfigurált szabályok segítségével biztonságos hozzáférést biztosíthat a fogyasztói csoporthoz. 
 
 Az alábbi képen látható, hogyan vonatkoznak az engedélyezési szabályok a mintaentitásokra. 
 

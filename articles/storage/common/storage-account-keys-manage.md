@@ -6,14 +6,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/18/2019
+ms.date: 03/31/2020
 ms.author: tamram
-ms.openlocfilehash: 13adf6de420b54299d04a226dab81e75cbb9fef2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4e91aa59168deb18375bf86ae77f655ca3dab47
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75975788"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521269"
 ---
 # <a name="manage-storage-account-access-keys"></a>Tárfiók hozzáférési kulcsainak kezelése
 
@@ -52,6 +52,8 @@ Kövesse ezt a folyamatot a tárfiók kulcsainak elforgatásához:
 
 > [!NOTE]
 > A Microsoft azt javasolja, hogy egyszerre csak az egyik kulcsot használja az összes alkalmazásban. Ha egyes helyeken az 1-es kulcsot, másokban a 2-es kulcsot használja, akkor nem tudja elforgatni a billentyűket anélkül, hogy néhány alkalmazás elveszítené a hozzáférést.
+
+Egy fiók hozzáférési kulcsainak elforgatásához a felhasználónak szolgáltatás-rendszergazdának kell lennie, vagy olyan RBAC szerepkört kell hozzárendelnie, amely tartalmazza a **Microsoft.Storage/storageAccounts/regeneratekey/action műveletet.** Néhány beépített RBAC szerepkör, amely tartalmazza ezt a műveletet a **tulajdonos,** **közreműködő**és **a tárfiók kulcsoperátori szolgáltatás szerepkör** szerepkörei. A Service Administrator szerepkörrel kapcsolatos további információkért lásd: [Klasszikus előfizetéses rendszergazdai szerepkörök, Azure RBAC-szerepkörök és Azure AD-szerepkörök.](../../role-based-access-control/rbac-and-directory-admin-roles.md) Az Azure Storage beépített RBAC szerepköreiről az [Azure RBAC beépített szerepkörei](../../role-based-access-control/built-in-roles.md#storage)tárolási **szakaszában** talál részletes információt.
 
 ## <a name="next-steps"></a>További lépések
 

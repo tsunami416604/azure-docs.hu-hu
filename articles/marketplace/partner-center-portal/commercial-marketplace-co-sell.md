@@ -7,26 +7,26 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: f290b08d1f625600d03c9540b28c289e9b449471
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: e73ba110128f6d4f0bea008840b06572d7aee140
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475160"
+ms.locfileid: "80517927"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Társértékesítési lehetőség a Partnerközpontban
 
-A Co-sell lapon történő tájékoztatás teljesen opcionális. A Co-sell Ready és az IP Co-sell Ready státusz eléréséhez szükséges. A megadott adatokat a Microsoft értékesítési csapatai arra használják fel, hogy többet tudjanak meg a megoldásról, amikor kiértékelik, hogy azok megfelelnek-e az ügyfelek igényeinek. Nem érhető el közvetlenül az ügyfelek számára. További információt az [Értékesítés a Microsofton keresztül](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer#sell-through-microsoft)című témakörben talál.
+A Co-sell lapon történő tájékoztatás teljesen opcionális. A Co-sell Ready és az IP Co-sell Ready státusz eléréséhez szükséges. A megadott adatokat a Microsoft értékesítési csapatai arra használják fel, hogy többet tudjanak meg a megoldásról, amikor kiértékelik, hogy azok megfelelnek-e az ügyfelek igényeinek. Nem érhető el közvetlenül az ügyfelek számára. További információt az [Értékesítés a Microsofton keresztül](https://partner.microsoft.com/membership/sell-with-microsoft)című témakörben talál.
 
 A Partnerközpont közös értékesítési lehetősége jelenleg bizonyos ajánlattípusokhoz érhető el. A további ajánlattípusok támogatása idővel elérhetővé válik.
 
 | **Ajánlat típusa** | **A Partnerközpontban elérhető közös értékesítési oldal** |
 |    -----------------------    |    -----------------------------  |
-| Szoftver szolgáltatásként (SaaS) |     Általános elérhetőség 2020 április a környéken:     |
+| Szoftver szolgáltatásként (SaaS) |     Általános elérhetőség 2020.      |
 | Dynamics 365 for Customer Engagement & PowerApps      |     Már elérhető      |
 | Dynamics 365 for Operations     |     Már elérhető       |
-| Dynamics 365 Business Central      |  Általános elérhetőség 2020 április a környéken:    |
-| Azure-alkalmazás     |     Általános elérhetőség 2020 április a környéken:     |
+| Dynamics 365 Business Central      |  Általános elérhetőség 2020.     |
+| Azure-alkalmazás     |     Általános elérhetőség 2020.     |
 | Azure-beli virtuális gép      |     Bejelentendő       |
 | Azure-tároló     |     Bejelentendő       |
 | Tanácsadói szolgáltatás      |     Bejelentendő       |
@@ -66,8 +66,7 @@ A Microsoft számára fedezetet nyújthat az ügyfelek igényeinek felméréséh
 
 | **Dokumentumok**    | **Leírás**  |
 | :------------------- | :-------------------|
-| *Ügyfél egy-pager* | Az ajánlat ügyfélre kész leírása. A Microsoft értékesítési csapatai megoszthatják ezeket az információkat az ügyfelekkel, hogy segítsenek meghatározni, hogy az ajánlat megfelelő-e, és hogy az ügyfél készen álljon-e. <br> <br> Használja a Partnerközpontban elérhető megfelelő sablonok egyikét: <br> <ul> <li> Microsoft Azure egyoldalas sablon </li> <li> Microsoft Dynamics 365 egyoldalozósablon </li> <li> Az Office 365 egyoldalas sablonja </li> <li> Windows 10 egyoldalú sablon </li> </ul>
- |
+| *Ügyfél egy-pager* | Az ajánlat ügyfélre kész leírása. A Microsoft értékesítési csapatai megoszthatják ezeket az információkat az ügyfelekkel, hogy segítsenek meghatározni, hogy az ajánlat megfelelő-e, és hogy az ügyfél készen álljon-e. <br> <br> Használja a Partnerközpontban elérhető megfelelő sablonok egyikét: <br> <ul> <li> Microsoft Azure egyoldalas sablon </li> <li> Microsoft Dynamics 365 egyoldalozósablon </li> <li> Az Office 365 egyoldalas sablonja </li> <li> Windows 10 egyoldalú sablon </li> </ul> |
 | *Ügyfél bemutatója* | Csúsztassa a fedélzetet a megoldás és az értékajánlat feldobásához. Miután meggyőződött arról, hogy az ajánlat készen áll az ügyfélre, a Microsoft értékesítési csapatai megoszthatják a bemutatót az ügyfelekkel, hogy megfogalmazzák azt az értéket, amelyet mindkét vállalat a közös megoldás telepítésekor képvisel. A bemutatónak ki kell terjednie arra, hogy mit csinál a megoldás, hogyan segíthet az ügyfeleknek, milyen iparágakra vonatkozik a megoldás, és hogyan viszonyul a konkurens megoldásokhoz. <br> <br> Használja a Partnerközpontban elérhető sablont.|
 | *Ügyfél esettanulmány* | Ez az információ azt mutatja, hogy ön és a Microsoft korábban hogyan telepítette ezt a megoldást. <br> <br> Használja a Partnerközpontban elérhető sablont. |
 | *Ellenőrizhető ügyfél nyer (nem kötelező)* | A megoldás üzembe helyezése utáni ügyfélsikerekre vonatkozó konkrét példák. |

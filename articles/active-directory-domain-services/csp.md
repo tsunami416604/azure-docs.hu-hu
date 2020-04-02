@@ -1,93 +1,98 @@
 ---
 title: Azure AD tartományi szolgáltatások felhőalapú megoldásszolgáltatókszámára | Microsoft dokumentumok
-description: Azure Active Directory tartományi szolgáltatások az Azure felhőbeli megoldásszolgáltatókhoz.
+description: Megtudhatja, hogy miként engedélyezheti és kezelheti az Azure Active Directory tartományi szolgáltatások által felügyelt tartományokat az Azure felhőszolgáltatók számára
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
-manager: mahesh-unnikrishnan
-editor: curtand
 ms.assetid: 56ccb219-11b2-4e43-9f07-5a76e3cd8da8
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/08/2017
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 1134c078ee36a146cb1e1cbf8ca46f6cd9f8d775
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e7276dcfca6ba033942d62f347ac3a799524cac4
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72754443"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519088"
 ---
-# <a name="azure-active-directory-ad-domain-services-for-azure-cloud-solution-providers-csp"></a>Azure Active Directory (AD) tartományi szolgáltatások Azure felhőalapú megoldásszolgáltatókhoz (CSP)
-Ez a cikk bemutatja, hogyan használhatja az Azure AD tartományi szolgáltatásokat egy Azure CSP-előfizetésben.
+# <a name="azure-active-directory-domain-services-deployment-and-management-for-azure-cloud-solution-providers"></a>Az Azure Active Directory tartományi szolgáltatások üzembe helyezése és kezelése az Azure felhőalapú megoldásszolgáltatók számára
 
-## <a name="overview-of-azure-csp"></a>Az Azure kriptanevének áttekintése
-Az Azure CSP a Microsoft Partners egyik programja, és licenccsatornát biztosít a különböző Microsoft-felhőszolgáltatásokhoz. Az Azure CSP lehetővé teszi a partnerek számára, hogy kezeljék az értékesítéseket, birtokolják a számlázási kapcsolatot, technikai és számlázási támogatást nyújtsanak, és az ügyfél egyetlen kapcsolattartója legyenek. Emellett az Azure CsP az eszközök teljes készletét biztosítja, beleértve az önkiszolgáló portált és a kísérő API-kat. Ezek az eszközök lehetővé teszik a csp-partnerek számára, hogy egyszerűen kiépítsék és kezeljék az Azure-erőforrásokat, és számlázást biztosítsanak az ügyfelek és előfizetéseik számára.
+Az Azure Cloud Solution Providers (CSP) a Microsoft Partners egyik programja, amely licenccsatornát biztosít a különböző Microsoft-felhőszolgáltatásokhoz. Az Azure CSP lehetővé teszi a partnerek számára, hogy kezeljék az értékesítéseket, birtokolják a számlázási kapcsolatot, technikai és számlázási támogatást nyújtsanak, és az ügyfél egyetlen kapcsolattartója legyenek. Emellett az Azure CsP az eszközök teljes készletét biztosítja, beleértve az önkiszolgáló portált és a kísérő API-kat. Ezek az eszközök lehetővé teszik a csp-partnerek számára, hogy egyszerűen kiépítsék és kezeljék az Azure-erőforrásokat, és számlázást biztosítsanak az ügyfelek és előfizetéseik számára.
 
-A [Partnerközpont portál](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview) belépési pontként működik az összes Azure CSP-partner számára. Gazdag ügyfélkezelési lehetőségeket, automatizált feldolgozást és egyebeket biztosít. Az Azure CSP-partnerek használhatják a Partner-központ képességeit egy webalapú felhasználói felület használatával vagy a PowerShell és a különböző API-hívások használatával.
+A [Partnerközpont portál](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview) az összes Azure CSP-partner belépési pontja, és gazdag ügyfélkezelési lehetőségeket, automatizált feldolgozást és egyebeket biztosít. Az Azure CSP-partnerek használhatják a Partner-központ képességeit egy webalapú felhasználói felület használatával vagy a PowerShell és a különböző API-hívások használatával.
 
-Az alábbi ábra bemutatja, hogyan működik a kripta-modell magas szinten. A Contoso rendelkezik egy Azure AD Active Directoryval. Partnerséget kötöttek egy kripta-szolgáltatóval, aki az Azure-kp-előfizetésükben üzembe helyezi és kezeli az erőforrásokat. A Contoso rendszeres (közvetlen) Azure-előfizetésekkel is rendelkezhet, amelyeket közvetlenül a Contoso számláz.
+Az alábbi ábra bemutatja, hogyan működik a kripta-modell magas szinten. Itt a Contoso rendelkezik egy Azure Active Directory (Azure AD) bérlővel. Partnerséget kötöttek egy kripta-szolgáltatóval, aki az Azure-kp-előfizetésükben üzembe helyezi és kezeli az erőforrásokat. A Contoso rendszeres (közvetlen) Azure-előfizetésekkel is rendelkezhet, amelyeket közvetlenül a Contoso számláz.
 
 ![A kriptamodell áttekintése](./media/csp/csp_model_overview.png)
 
-A csp-partner bérlője három speciális ügynökcsoporttal rendelkezik : rendszergazdai ügynökök, helpdesk ügynökök és értékesítési ügynökök. A rendszergazdai ügynökök csoport van rendelve a bérlői rendszergazdai szerepkör a Contoso Azure AD-címtárban. Ennek eredményeképpen a CSP-partner felügyeleti ügynökcsoportjához tartozó felhasználó bérlői rendszergazdai jogosultságokkal rendelkezik a Contoso Azure AD-címtárában. Amikor a CSP-partner egy Azure CSP-előfizetést rendel a Contoso számára, a rendszergazdai ügynökök csoportja hozzá van rendelve az adott előfizetés tulajdonosi szerepköréhez. Ennek eredményeképpen a csp-partner rendszergazdai ügynökei rendelkeznek a szükséges jogosultságokkal az Azure-erőforrások, például a virtuális gépek, a virtuális hálózatok és az Azure AD tartományi szolgáltatások contoso nevében történő kiépítéséhez.
+A csp-partner bérlője három speciális ügynökcsoporttal rendelkezik : *rendszergazdai* ügynökök, *helpdesk* ügynökök és *értékesítési* ügynökök.
+
+A *rendszergazdai* ügynökök csoport van rendelve a bérlői rendszergazdai szerepkör contoso az Azure AD-bérlő. Ennek eredményeképpen a CSP-partner felügyeleti ügynökcsoportjához tartozó felhasználó bérlői rendszergazdai jogosultságokkal rendelkezik a Contoso Azure AD-bérlőjében.
+
+Amikor a CSP-partner egy Azure CSP-előfizetést rendel a Contoso számára, a rendszergazdai ügynökök csoportja hozzá van rendelve az adott előfizetés tulajdonosi szerepköréhez. Ennek eredményeképpen a csp-partner rendszergazdai ügynökei rendelkeznek a szükséges jogosultságokkal az Azure-erőforrások, például a virtuális gépek, a virtuális hálózatok és az Azure AD tartományi szolgáltatások contoso nevében történő kiépítéséhez.
 
 További információt az [Azure CSP áttekintése című témakörben talál.](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)
 
-## <a name="benefits-of-using-azure-ad-domain-services-in-an-azure-csp-subscription"></a>Az Azure AD tartományi szolgáltatások Azure-csp-előfizetésben való használatának előnyei
-Az Azure AD tartományi szolgáltatások Windows Server AD-kompatibilis szolgáltatásokat biztosít az Azure-ban, például az LDAP-t, a Kerberos/NTLM-hitelesítést, a tartományhoz való csatlakozást, a csoportházirendet és a DNS-t. Az évtizedek során számos alkalmazás épült, hogy az AD ellen működjön ezekkel a képességekkel. Számos független szoftvergyártó (ISV) épített és telepített alkalmazásokat ügyfelei telephelyén. Ezek az alkalmazások támasztják alá, mivel gyakran hozzáférést igényelnek a különböző környezetekben, amelyekben ezek az alkalmazások telepítve vannak. Az Azure CSP-előfizetések, van egy egyszerűbb alternatíva az Azure skálázatával és rugalmasságával.
+## <a name="benefits-of-using-azure-ad-ds-in-an-azure-csp-subscription"></a>Az Azure AD DS azure-beli CSP-előfizetésben való használatának előnyei
 
-Az Azure AD tartományi szolgáltatások mostantól támogatja az Azure CSP-előfizetéseket. Most már üzembe helyezheti az alkalmazást egy Azure CSP-előfizetésben, amely az ügyfél Azure AD-címtárához van kötve. Ennek eredményeképpen az alkalmazottak (támogatási személyzet) kezelhetik, felügyelhetik és kiszolgálhatják azokat a virtuális gépeket, amelyeken az alkalmazás telepítve van a szervezet vállalati hitelesítő adataival. Továbbá azure AD tartományi szolgáltatások felügyelt tartományt is kiépíthet az ügyfél Azure AD-címtárához. Az alkalmazás az ügyfél felügyelt tartományához kapcsolódik. Ezért az alkalmazáson belüli, a Kerberos/NTLM, az LDAP vagy a [System.DirectoryServices API-ra](/dotnet/api/system.directoryservices) támaszkodó képességek zökkenőmentesen működnek az ügyfél címtárával szemben. A végfelhasználók számára nagy mértékben előnyös az alkalmazás szolgáltatásként való fogyasztása, anélkül, hogy aggódnia kellene az alkalmazás üzembe helyezett infrastruktúrájának karbantartása miatt.
+Az Azure Active Directory tartományi szolgáltatások (Azure AD DS) olyan felügyelt tartományi szolgáltatásokat biztosít, mint a tartományhoz való csatlakozás, a csoportházirend, az LDAP, a Kerberos/NTLM-hitelesítés, amelyek teljes mértékben kompatibilisek a Windows Server Active Directory tartományi szolgáltatásokkal. Az évtizedek során számos alkalmazás épült, hogy az AD ellen működjön ezekkel a képességekkel. Számos független szoftvergyártó (ISV) épített és telepített alkalmazásokat ügyfelei telephelyén. Ezeket az alkalmazásokat nehéz támogatni, mivel gyakran van szükség a különböző környezetekhez való hozzáférésre, ahol az alkalmazások telepítve vannak. Az Azure CSP-előfizetések, van egy egyszerűbb alternatíva az Azure skálázatával és rugalmasságával.
 
-Az adott előfizetésben felhasznált Azure-erőforrások összes számlázása, beleértve az Azure AD tartományi szolgáltatásokat is, visszakerül Önre. Ön fenntartja a teljes ellenőrzést a kapcsolatot az ügyféllel, amikor az értékesítés, számlázás, technikai támogatás stb. Az Azure CSP-platform rugalmasságával a támogatási ügynökök egy kis csoportja számos ilyen ügyfelet kiszolgálhat, akik az alkalmazás példányait telepítették.
+Az Azure AD DS támogatja az Azure CSP-előfizetéseket. Az alkalmazást az ügyfél Azure AD-bérlőjéhez kötött Azure CSP-előfizetésben telepítheti. Ennek eredményeképpen az alkalmazottak (támogatási személyzet) kezelhetik, felügyelhetik és kiszolgálhatják azokat a virtuális gépeket, amelyeken az alkalmazás telepítve van a szervezet vállalati hitelesítő adataival.
 
+Az Azure AD DS által felügyelt tartományt is üzembe helyezheti az ügyfél Azure AD-bérlőjében. Az alkalmazás ezután csatlakozik az ügyfél felügyelt tartományához. Az alkalmazáson belüli, a Kerberos / NTLM, Az LDAP vagy a [System.DirectoryServices API-ra](/dotnet/api/system.directoryservices) támaszkodó képességek zökkenőmentesen működnek az ügyfél tartományával szemben. A végfelhasználók számára előnyös az alkalmazás szolgáltatásként való igénybevételek, anélkül, hogy aggódniuk kellene az alkalmazás által telepített infrastruktúra karbantartása miatt.
 
-## <a name="csp-deployment-models-for-azure-ad-domain-services"></a>Az Azure AD tartományi szolgáltatások központi telepítésének modelljei
-Az Azure AD tartományi szolgáltatások azure-beli CSP-előfizetéssel kétféleképpen használhatók. Válassza ki a megfelelőt az ügyfelek biztonsági és egyszerűségi szempontjai alapján.
+Az adott előfizetésben felhasznált Azure-erőforrások összes számlázása, beleértve az Azure AD DS-t is, visszakerül Önre. Ön fenntartja a teljes ellenőrzést a kapcsolatot az ügyféllel, amikor az értékesítés, számlázás, technikai támogatás stb. Az Azure CSP-platform rugalmasságával a támogatási ügynökök egy kis csoportja számos ilyen ügyfelet kiszolgálhat, akik az alkalmazás példányait telepítették.
+
+## <a name="csp-deployment-models-for-azure-ad-ds"></a>Az Azure AD DS-hez való csp-telepítési modellek
+
+Az Azure AD DS-t kétféleképpen használhatja egy Azure CSP-előfizetéssel. Válassza ki a megfelelőt az ügyfelek biztonsági és egyszerűségi szempontjai alapján.
 
 ### <a name="direct-deployment-model"></a>Közvetlen üzembe helyezési modell
-Ebben a telepítési modellben az Azure AD tartományi szolgáltatások engedélyezve van egy virtuális hálózaton belül az Azure CSP-előfizetés. A kriptapartner rendszergazdai ügynökei a következő jogosultságokkal rendelkeznek:
-* Globális rendszergazdai jogosultságok az ügyfél Azure AD-címtárában.
-* Előfizetés-tulajdonosi jogosultságok az Azure CSP-előfizetésben.
+
+Ebben a telepítési modellben az Azure AD DS engedélyezve van egy virtuális hálózaton belül, amely az Azure CSP-előfizetéshez tartozik. A kriptapartner rendszergazdai ügynökei a következő jogosultságokkal rendelkeznek:
+
+* *Globális rendszergazdai* jogosultságok az ügyfél Azure AD-bérlőben.
+* *Előfizetés-tulajdonosi* jogosultságok az Azure CSP-előfizetésben.
 
 ![Közvetlen üzembe helyezési modell](./media/csp/csp_direct_deployment_model.png)
 
-Ebben a telepítési modellben a kripta-szolgáltató rendszergazdai ügynökei felügyelhetik az identitásokat az ügyfél számára. Ezek a rendszergazdai ügynökök képesek új felhasználókat, csoportokat, alkalmazásokat hozzáadni az ügyfél Azure AD-címtárában stb. Ez a telepítési modell alkalmas lehet a kisebb szervezetek, amelyek nem rendelkeznek dedikált identitás-rendszergazda, vagy inkább a kriptográfiai partner felügyeli identitások a nevükben.
+Ebben a telepítési modellben a kripta-szolgáltató rendszergazdai ügynökei felügyelhetik az identitásokat az ügyfél számára. Ezek a rendszergazdai ügynökök feladatokat hajthatnak végre, például új felhasználókat vagy csoportokat, vagy alkalmazásokat adhatnak hozzá az ügyfél Azure AD-bérlőn belül.
 
+Ez a telepítési modell alkalmas lehet a kisebb szervezetek, amelyek nem rendelkeznek dedikált identitás-rendszergazda, vagy inkább a kriptográfiai partner felügyelete identitások a nevükben.
 
 ### <a name="peered-deployment-model"></a>Társviszony-alapú központi telepítési modell
-Ebben a telepítési modellben az Azure AD tartományi szolgáltatások engedélyezve vannak az ügyfélhez tartozó virtuális hálózaton belül – azaz az ügyfél által fizetett közvetlen Azure-előfizetésen belül. A csp-partner ezután alkalmazásokat telepíthet az ügyfél CSP-előfizetéséhez tartozó virtuális hálózaton belül. A virtuális hálózatok ezután az Azure virtuális hálózati társviszony-létesítésével csatlakoztathatók. Ennek eredményeképpen a CSP-partner által az Azure CSP-előfizetésben üzembe helyezett számítási feladatok/alkalmazások csatlakozhatnak az ügyfél közvetlen Azure-előfizetésében kiépített felügyelt tartományához.
+
+Ebben a telepítési modellben az Azure AD DS engedélyezve van az ügyfélhez tartozó virtuális hálózaton belül – az ügyfél által fizetett közvetlen Azure-előfizetésen belül. A csp-partner alkalmazásokat telepíthet az ügyfél KP-előfizetéséhez tartozó virtuális hálózaton belül. A virtuális hálózatok ezután az Azure virtuális hálózati társviszony-létesítésével csatlakoztathatók.
+
+Ezzel a telepítéssel a CSP-partner által az Azure CSP-előfizetésben üzembe helyezett számítási feladatok vagy alkalmazások csatlakozhatnak az ügyfél közvetlen Azure-előfizetésében kiépített felügyelt tartományához.
 
 ![Társviszony-alapú központi telepítési modell](./media/csp/csp_peered_deployment_model.png)
 
 Ez a telepítési modell a jogosultságok elkülönítését biztosítja, és lehetővé teszi, hogy a csp-partner ügyfélszolgálati ügynökei felügyelhessék az Azure-előfizetést, és üzembe helyezhessék és kezelhessék az erőforrásokat. A csp-partner ügyfélszolgálati ügynökeinek azonban nem kell globális rendszergazdai jogosultságokkal rendelkezniük az ügyfél Azure AD-címtárában. Az ügyfél identitás-rendszergazdák továbbra is kezelheti identitások a szervezet számára.
 
-Ez a központi telepítési modell alkalmas lehet olyan esetekben, amikor egy független szoftverszállító (független szoftverszállító) biztosítja a helyszíni alkalmazás üzemeltetett verzióját, amelynek csatlakoznia kell az ügyfél AD-jéhez is.
+This deployment model may be suited to scenarios where an ISV provides a hosted version of their on-premises application, which also needs to connect to the customer's Azure AD.
 
+## <a name="administer-azure-ad-ds-in-csp-subscriptions"></a>Azure AD DS felügyelete a CSP-előfizetésekben
 
-## <a name="administering-azure-ad-domain-services-managed-domains-in-csp-subscriptions"></a>Az Azure AD tartományi szolgáltatások által felügyelt tartományok felügyelete a CSP-előfizetésekben
 A következő fontos szempontok vonatkoznak egy felügyelt tartomány azure-beli CSP-előfizetésben történő felügyeletekor:
 
-* **A csp-rendszergazdai ügynökök a hitelesítő adataikkal létesíthetnek felügyelt tartományt:** Az Azure AD tartományi szolgáltatások támogatja az Azure CSP-előfizetéseket. Ezért a CSP-partner felügyeleti ügynökcsoportjához tartozó felhasználók új Azure AD tartományi szolgáltatások felügyelt tartományt hozhatnak üzembe.
+* **A csp-rendszergazdai ügynökök a hitelesítő adataikkal létesíthetnek felügyelt tartományt:** Az Azure AD DS támogatja az Azure CSP-előfizetéseket. A csp-partner felügyeleti ügynöki csoportjához tartozó felhasználók új Azure AD DS felügyelt tartományt hozhatnak üzembe.
 
-* **A kript.ps-ek a PowerShell használatával új felügyelt tartományokat hozhatnak létre ügyfeleik számára:** [Tekintse meg, hogyan engedélyezheti az Azure AD tartományi szolgáltatások powershell használatával](powershell-create-instance.md) a részletekért.
+* **A kript.ps-ek a PowerShell használatával új felügyelt tartományokat hozhatnak létre ügyfeleik számára:** [Tekintse meg, hogyan engedélyezheti az Azure AD DS powershell használatával](powershell-create-instance.md) a részleteket.
 
-* **A csp-rendszergazdai ügynökök hitelesítő adataikkal nem tudnak folyamatos felügyeleti feladatokat végrehajtani a felügyelt tartományban:** A CSP-rendszergazdai felhasználók hitelesítő adataikkal nem hajthatnak végre rutinkezelési feladatokat a felügyelt tartományon belül. Ezek a felhasználók az ügyfél Azure AD-címtárán kívül vannak, és hitelesítő adataik nem érhetők el az ügyfél Azure AD-címtárában. Ezért az Azure AD tartományi szolgáltatások nem férnek hozzá a Kerberos és NTLM jelszó kivék ezekhez a felhasználókhoz. Ennek eredményeképpen ezek a felhasználók nem hitelesíthetők az Azure AD tartományi szolgáltatások által felügyelt tartományokban.
+* **A csp-rendszergazdai ügynökök hitelesítő adataikkal nem hajthatnak végre folyamatos felügyeleti feladatokat a felügyelt tartományban:** A CSP-rendszergazdai felhasználók hitelesítő adataikkal nem hajthatnak végre rutinfelügyeleti feladatokat a felügyelt tartományon belül. Ezek a felhasználók az ügyfél Azure AD-bérlőn kívül vannak, és hitelesítő adataik nem érhetők el az ügyfél Azure AD-bérlőn belül. Az Azure AD DS nem fér hozzá a Kerberos és NTLM jelszó kivéti ezekhez a felhasználókhoz, így a felhasználók nem hitelesíthetők az Azure AD DS felügyelt tartományaiban.
 
   > [!WARNING]
-  > **A felügyelt tartomány folyamatban lévő felügyeleti feladatainak végrehajtásához létre kell hoznia egy felhasználói fiókot az ügyfél címtárában.**
-  > A felügyelt tartományba nem jelentkezhet be a hitelesítésszolgáltató rendszergazdai hitelesítő adataival. Ehhez használja az ügyfél Azure AD-címtárához tartozó felhasználói fiók hitelesítő adatait. Ezekre a hitelesítő adatokra olyan feladatokhoz van szüksége, mint a virtuális gépek csatlakozása a felügyelt tartományhoz, a DNS felügyelete, a csoportházirend felügyelete stb.
+  > A felügyelt tartomány folyamatban lévő felügyeleti feladatainak végrehajtásához létre kell hoznia egy felhasználói fiókot az ügyfél címtárában.
   >
+  > A felügyelt tartományba nem jelentkezhet be a hitelesítésszolgáltató rendszergazdájának hitelesítő adataival. Ehhez használja az ügyfél Azure AD-bérlőhöz tartozó felhasználói fiók hitelesítő adatait. Ezekre a hitelesítő adatokra olyan feladatokhoz van szüksége, mint például a virtuális gépek nek a felügyelt tartományhoz való csatlakozása, a DNS felügyelete vagy a csoportházirend felügyelete.
 
-* **A folyamatos felügyelethez létrehozott felhasználói fiókot hozzá kell adni az "AAD DC rendszergazdák" csoporthoz:** Az "AAD TARTOMÁNYVEZÉRLŐ-rendszergazdák" csoport jogosultságokkal rendelkezik bizonyos delegált felügyeleti feladatok végrehajtására a felügyelt tartományban. Ezek a feladatok magukban foglalják a DNS konfigurálását, a szervezeti egységek létrehozását, a csoportházirend felügyeletét stb. Ahhoz, hogy egy csp-partner ilyen feladatokat hajtson végre egy felügyelt tartományban, létre kell hozniegy felhasználói fiókot az ügyfél Azure AD-címtárában. A fiók hitelesítő adatait meg kell osztani a kriptapartner rendszergazdai ügyintézői vel. Ezt a felhasználói fiókot hozzá kell adni az "AAD tartományvezérlő rendszergazdái" csoporthoz, hogy a felügyelt tartomány konfigurációs feladatait ezzel a felhasználói fiókkal lehessen végrehajtani.
-
+* **A folyamatos felügyelethez létrehozott felhasználói fiókot hozzá kell adni az *AAD tartományvezérlő rendszergazdák* csoportjához:** Az *AAD TARTOMÁNYVEZÉRLŐ-rendszergazdák* csoport jogosultságokkal rendelkezik bizonyos delegált felügyeleti feladatok elvégzéséhez a felügyelt tartományban. Ezek a feladatok közé tartozik a DNS konfigurálása, szervezeti egységek létrehozása és a csoportházirend felügyelete.
+    
+    Ahhoz, hogy egy csp-partner elvégezhesse ezeket a feladatokat egy felügyelt tartományban, létre kell hozniegy felhasználói fiókot az ügyfél Azure AD-bérlőjén belül. A fiók hitelesítő adatait meg kell osztani a kriptapartner rendszergazdai ügyintézői vel. Ezenkívül ezt a felhasználói fiókot hozzá kell adni az *AAD tartományvezérlő rendszergazdái* csoportjához, hogy a felügyelt tartomány konfigurációs feladatait ezzel a felhasználói fiókkal lehessen végrehajtani.
 
 ## <a name="next-steps"></a>További lépések
-* [Az Azure CSP-programban regisztrálva,](https://docs.microsoft.com/partner-center/enrolling-in-the-csp-program) és az Azure CSP-n keresztül indíthat üzleti vállalkozást.
-* Tekintse át az [Azure-ban elérhető Azure-szolgáltatások](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services)listáját.
-* [Az Azure AD Domain Services engedélyezése a PowerShell-lel](powershell-create-instance.md)
-* [Ismerkedés az Azure AD tartományi szolgáltatásokkal](tutorial-create-instance.md)
+
+Első lépésekhez [regisztráljon az Azure CSP-programban.](/partner-center/enrolling-in-the-csp-program) Ezután engedélyezheti az Azure AD tartományi szolgáltatásokat [az Azure Portalon](tutorial-create-instance.md) vagy az [Azure PowerShellen](powershell-create-instance.md)keresztül.

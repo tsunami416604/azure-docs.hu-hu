@@ -15,12 +15,12 @@ ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 8aedc78772858815a18425fb1e6cb36a4600f647
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 09d5b7a126a1b8832bfe40e2e25dd4000d5d9155
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385095"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548291"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Az Azure RBAC hibáinak elhárítása
 
@@ -80,7 +80,7 @@ $ras.Count
 
 ## <a name="access-denied-or-permission-errors"></a>Hozzáférés megtagadva vagy engedélyhibák
 
-- Ha az "Az objektumazonosítóval rendelkező ügyfél nem rendelkezik felhatalmazással a hatókörön (kód: AuthorizationFailed) keresztüli művelet végrehajtására" engedélyjelenik meg, amikor erőforrást próbál létrehozni, ellenőrizze, hogy jelenleg olyan felhasználóval van-e bejelentkezve, aki írási szerepkörrel rendelkezik. engedélyt a kijelölt hatókörben lévő erőforráshoz. Például az erőforráscsoportban található virtuális gépek kezeléséhez a [Virtuális gépek közreműködője](built-in-roles.md#virtual-machine-contributor) szerepkörrel kell rendelkeznie az erőforráscsoportban (vagy a szülő hatókörben). Az egyes beépített szerepkörökhöz tartozó engedélyek listáját a [Beépített szerepkörök Azure-erőforrásokhoz](built-in-roles.md) témakörben tekintheti meg.
+- Ha az "Az objektumazonosítóval rendelkező ügyfél nem rendelkezik engedéllyel a hatókörön (kód: AuthorizationFailed) keresztüli művelet végrehajtására" engedélyjelenik meg, amikor erőforrást próbál létrehozni, ellenőrizze, hogy jelenleg olyan felhasználóval van-e bejelentkezve, akinek írási engedélye van a kijelölt hatókörben lévő erőforráshoz. Például az erőforráscsoportban található virtuális gépek kezeléséhez a [Virtuális gépek közreműködője](built-in-roles.md#virtual-machine-contributor) szerepkörrel kell rendelkeznie az erőforráscsoportban (vagy a szülő hatókörben). Az egyes beépített szerepkörökhöz tartozó engedélyek listáját a [Beépített szerepkörök Azure-erőforrásokhoz](built-in-roles.md) témakörben tekintheti meg.
 - Ha a támogatási jegy létrehozásakor vagy frissítésekor a "Nincs engedélye támogatási kérelem létrehozására" engedélyekkel kapcsolatos hibaüzenet jelenik meg, ellenőrizze, hogy `Microsoft.Support/supportTickets/write` jelenleg olyan felhasználóval van-e bejelentkezve, aki rendelkezik engedéllyel rendelkező szerepkörrel, például [a Támogatási kérelem közreműködőjével.](built-in-roles.md#support-request-contributor)
 
 ## <a name="role-assignments-with-unknown-security-principal"></a>Szerepkör-hozzárendelések ismeretlen rendszertaggal
@@ -179,7 +179,7 @@ Ezek az elemek **írási** hozzáférést igényelnek az **Alkalmazásszolgálta
 
 Ezek az elemek **írási** hozzáférést igényelnek a webhelyet tartalmazó teljes **erőforráscsoporthoz:**  
 
-* SSL-tanúsítványok és -kötések (az SSL-tanúsítványok megoszthatók az azonos erőforráscsoportban és földrajzi helyen lévő helyek között)  
+* TLS/SSL tanúsítványok és kötések (a TLS/SSL tanúsítványok megoszthatók az azonos erőforráscsoportban és földrajzi helyen lévő helyek között)  
 * Riasztási szabályok  
 * Automatikus méretezési beállítások  
 * Alkalmazáselemzési összetevők  

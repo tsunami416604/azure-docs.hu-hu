@@ -1,30 +1,25 @@
 ---
-title: Azure Spot virtuális gépeket használó méretezési csoport létrehozása (előzetes verzió)
+title: Azure Spot virtuális gépeket használó méretezési csoport létrehozása
 description: Ismerje meg, hogyan hozhat létre Azure virtuálisgép-méretezési készleteket, amelyek azonnali virtuális gépek et használnak a költségek megtakarításához.
 author: cynthn
-tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
-ms.topic: conceptual
-ms.date: 02/11/2020
+ms.topic: article
+ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 37e914fe6bafe9587be525faf3e01c897cdd8230
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a7bd22032a554c83a2ea2323ffdb3ae52dfe4faf
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162684"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545934"
 ---
-# <a name="preview-azure-spot-vms-for-virtual-machine-scale-sets"></a>Előzetes verzió: Azure Spot virtuális gépek virtuális gépméret-készletekhez 
+# <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Azure Spot virtuális gépek virtuális gépméretezési készletekhez 
 
 Az Azure Spot méretezési csoportokon történő használatával jelentős költségmegtakarítást eredményezhet a kihasználatlan kapacitás kihasználása. Bármikor, amikor az Azure-nak szüksége van a kapacitás vissza, az Azure-infrastruktúra kilakoltatja spot példányok. Ezért a direkt példányok nagyszerűek olyan számítási feladatokhoz, amelyek kezelni tudják a megszakításokat, például a kötegelt feldolgozási feladatokat, a fejlesztési/tesztelési környezeteket, a nagy számítási számítási feladatokat és egyebeket.
 
 A rendelkezésre álló kapacitás mennyisége a mérettől, a régiótól, a napszaktól és egyebektől függően változhat. Direktszínpéldányok méretezési csoportokon történő üzembe helyezésekor az Azure csak akkor osztja le a példányt, ha van kapacitás, de ezekhez a példányokhoz nincs SLA. A direkt méretezési csoport egyetlen tartalék tartományban van telepítve, és nem nyújt magas rendelkezésre állási garanciát.
 
-> [!IMPORTANT]
-> A direktpéldányok jelenleg nyilvános előzetes verzióban vannak.
-> Ez az előzetes verzió éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
->
 
 ## <a name="pricing"></a>Díjszabás
 
@@ -172,6 +167,5 @@ Ha a példány takarása után `evictionPolicy` törölni `Delete`szeretné, mó
 **A.** Tudod felad és tag `azure-spot` a kérdést a [Q&A](https://docs.microsoft.com/answers/topics/azure-spot.html). 
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy létrehozott egy méretezési készletet a direkt virtuális gépek, próbálja meg telepíteni [az automatikus méretezési sablon segítségével Spot.](https://github.com/Azure/vm-scale-sets/tree/master/preview/lowpri)
 
 Tekintse meg a [virtuális gép méretezési beállítás árképzési oldalon](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/) az árképzésrészleteit.

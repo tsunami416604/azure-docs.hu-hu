@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: d4304abf0ca089fbbea86f12cd03dea836db612e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f44be4e1d3d1186f0122bd4669ae800ab42e31d6
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77368354"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521299"
 ---
 # <a name="authorize-access-to-azure-event-hubs"></a>Az Azure Event Hubshoz való hozzáférés engedélyezése
 Minden alkalommal, amikor eseményeket/adatokat tesz közzé vagy használ fel egy eseményközpontból, az ügyfél megpróbál hozzáférni az Event Hubs erőforrásaihoz. A biztonságos erőforrásokminden egyes kérelmét engedélyezni kell, hogy a szolgáltatás biztosíthassa, hogy az ügyfél rendelkezzen az adatok közzétételéhez/felhasználásához szükséges engedélyekkel. 
@@ -39,7 +39,7 @@ Az Event Hubs-erőforrások megosztott hozzáférési aláírásai (SAS) korlát
 
 Az Azure AD által visszaadott OAuth 2.0-s jogkivonatot használó felhasználók vagy alkalmazások engedélyezése kiváló biztonságot és egyszerű használatot biztosít a megosztott hozzáférésű aláírások (SAS) használatával. Az Azure AD-vel nem kell tárolnia a hozzáférési jogkivonatokat a kóddal, és kockáztatni a potenciális biztonsági réseket. Bár továbbra is használhatja a megosztott hozzáférésű aláírások (SAS) az Event Hubs-erőforrások részletes elérésének engedélyezéséhez, az Azure AD hasonló képességeket kínál anélkül, hogy kezelnie kellene a SAS-jogkivonatokat, vagy aggódnia kellene a sérült SAS visszavonása miatt. 
 
-Alapértelmezés szerint az Összes Event Hubs erőforrás biztonságos, és csak a fiók tulajdonosa számára érhető el. Bár a fent ismertetett engedélyezési stratégiák bármelyikével hozzáférést biztosíthat az ügyfeleknek az Event Hub-erőforrásokhoz. Csak az Azure Resource Manager telepítési modellel létrehozott Event Hubs-erőforrások támogatják az Azure AD-hitelesítést. A Microsoft azt javasolja, hogy az Azure AD, ha lehetséges, a maximális biztonság és a könnyű használat érdekében.
+Alapértelmezés szerint az Összes Event Hubs erőforrás biztonságos, és csak a fiók tulajdonosa számára érhető el. Bár a fent ismertetett engedélyezési stratégiák bármelyikével hozzáférést biztosíthat az ügyfeleknek az Event Hub-erőforrásokhoz. A Microsoft azt javasolja, hogy az Azure AD, ha lehetséges, a maximális biztonság és a könnyű használat érdekében.
 
 A SAS használatával történő engedélyezésről az [Event Hubs-erőforrásokhoz való hozzáférés engedélyezése megosztott hozzáférési aláírásokkal című témakörben](authorize-access-shared-access-signature.md)talál további információt.
 

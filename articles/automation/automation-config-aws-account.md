@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: 596dc334a412b3e0839d7661a23af771e5cd7394
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 891db5d17ddde681f75845fdca6c9252c5b32b86
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75366940"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520820"
 ---
 # <a name="authenticate-runbooks-with-amazon-web-services"></a>Forgatókönyvek hitelesítése az Amazon webszolgáltatásokkal
 
@@ -26,7 +26,7 @@ Az AWS használatával történő hitelesítéshez meg kell határozni az AWS hi
 
 Ahhoz, hogy az Azure Automation és az AWS kommunikáljon egymással, először le kell kérnie AWS hitelesítő adatait, és objektumként kell tárolnia őket az Azure Automationben. Végezze el az [AWS-fiók elérési kulcsának kezelése](https://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html) című dokumentumban leírt lépéseket egy elérési kulcs létrehozásához, és másolja át az **Elérési kulcs azonosítóját** és a **Titkos elérési kulcsot** (vagy le is töltheti kulcsfájlját, hogy egy másik, biztonságos helyen tárolja azt).
 
-Miután létrehozta és átmásolta AWS biztonsági kulcsait, létre kell hoznia egy hitelesítőadat-objektumot egy Azure Automation-fiókhoz, hogy biztonságosan tudja tárolni őket, és hivatkozni tudjon rájuk a runbookokkal. Kövesse a szakasz lépéseit: **Új hitelesítő adatok létrehozása** az Azure [Automation-cikkben](shared-resources/credentials.md#to-create-a-new-credential-asset-with-the-azure-portal) a Hitelesítő adatok között, és adja meg a következő adatokat:
+Miután létrehozta és átmásolta AWS biztonsági kulcsait, létre kell hoznia egy hitelesítőadat-objektumot egy Azure Automation-fiókhoz, hogy biztonságosan tudja tárolni őket, és hivatkozni tudjon rájuk a runbookokkal. Kövesse a szakasz lépéseit: **Új hitelesítő adatok létrehozása** az Azure [Automation-cikkben](shared-resources/credentials.md#create-a-new-credential-asset-with-the-azure-portal) a Hitelesítő adatok között, és adja meg a következő adatokat:
 
 1. A **Név** mezőbe írja be az **AWScred** nevet, vagy egy megfelelő értéket, amely követi az elnevezési szabványait.
 2. A **Felhasználónév** mezőbe írja be az **elérési azonosítót** és a **titkos hozzáférési kulcsot** a **Jelszó** és **jelszó megerősítése** mezőbe.

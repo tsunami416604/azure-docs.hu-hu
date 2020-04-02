@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: d0e66cefac496f3a54690b17a1e3de705f39c7fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 861961bb66adc7ed9509eab973516a964cb67492
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80337040"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521072"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Metrikák, riasztások és az erőforrások állapotának diagnosztikái a standard Load Balancerben
 
@@ -71,6 +71,21 @@ A többdimenziós metrikadefiníciók és értékek lekéréséhez az API-útmut
 
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>Gyakori diagnosztikai forgatókönyvek és ajánlott nézetek
 
+### <a name="configure-alerts-for-multi-dimensional-metrics"></a>Riasztások konfigurálása többdimenziós metrikákhoz ###
+
+Az Azure Standard Load Balancer támogatja a többdimenziós metrikák könnyen konfigurálható riasztásokat. Konfigurálja az egyéni küszöbértékeket az adott metrikákhoz, hogy különböző súlyossági szintű riasztásokat indítson el, hogy képessé tegye az érintés nélküli erőforrás-figyelési élményt.
+
+A riasztások konfigurálása:
+1. Lépjen a terheléselosztó riasztási alpaneljéhez
+1. Új riasztási szabály létrehozása
+    1.  Riasztási feltétel konfigurálása
+    1.  (Nem kötelező) Műveletcsoport hozzáadása az automatikus javításhoz
+    1.  Riasztás súlyosságának, nevének és leírásának hozzárendelése, amely intuitív reakciót tesz lehetővé
+
+
+  >[!NOTE]
+  >A riasztási feltétel konfigurációs ablaka a jelelőzmények idősorozatait jeleníti meg. Van egy lehetőség, hogy ezt az idősort dimenziók szerint szűrje, például a háttér-IP. Ez szűri az idősorozat-grafikont, de magát a riasztást **nem.** Adott háttér-IP-címekhez nem állíthat be riasztásokat.
+  
 #### <a name="is-the-data-path-up-and-available-for-my-load-balancer-vip"></a>Az adatelérési út felfelé és elérhető a terheléselosztó VIP-em számára?
 
 A VIP rendelkezésre állási metrika ismerteti az adatelérési út állapotát a régión belül a számítási gazdagép, ahol a virtuális gépek találhatók. A metrika tükrözi az Azure-infrastruktúra állapotát. A mérőszám segítségével:

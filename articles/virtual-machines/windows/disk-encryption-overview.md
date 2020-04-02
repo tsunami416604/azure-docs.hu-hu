@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 05db717f5d3adc2429431503f588f2cc7f79aef6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e00fee8841a2d5a817a00b942bfe0733a80b2cfc
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266779"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546321"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Azure lemeztitkosítás Windows virtuális gépekhez 
 
@@ -30,11 +30,13 @@ Az Azure Disk Encryption for Windows alapjait néhány perc alatt megismerheti a
 
 ## <a name="supported-vms-and-operating-systems"></a>Támogatott virtuális gépek és operációs rendszerek
 
-### <a name="supported-vm-sizes"></a>Támogatott virtuálisgép-méretek
+### <a name="supported-vms"></a>Támogatott virtuális gépek
 
 A Windows virtuális gépek [számos méretben](sizes-general.md)érhetők el. Az Azure Disk Encryption nem érhető el [alapszintű, A-sorozatú virtuális gépeken](https://azure.microsoft.com/pricing/details/virtual-machines/series/)vagy 2 GB-nál kevesebb memóriával rendelkező virtuális gépeken.
 
 Az Azure Disk Encryption prémium szintű tárhellyel rendelkező virtuális gépekhez is elérhető.
+
+Az Azure Disk Encryption nem érhető el [Lsv2-series VMs](../lsv2-series.md)a [2.](generation-2.md#generation-1-vs-generation-2-capabilities) További kivételek: [Azure Disk Encryption: Nem támogatott forgatókönyvek.](disk-encryption-windows.md#unsupported-scenarios)
 
 ### <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 

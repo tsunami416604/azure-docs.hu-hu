@@ -1,6 +1,6 @@
 ---
-title: Biztonságos eszközök titkosítása az automatizálásban
-description: Az Azure automation több titkosítási szinttel védi a biztonságos eszközöket. Alapértelmezés szerint a titkosítás a Microsoft által felügyelt kulcsok használatával történik. Az ügyfelek beállíthatják, hogy az automatizálási fiókok ügyfél által felügyelt kulcsokat használjanak a titkosításhoz. Ez a cikk ismerteti a részleteket a két titkosítási mód, és hogyan válthat a kettő között.
+title: Biztonságos eszközök titkosítása az Azure Automationben
+description: Az Azure Automation több titkosítási szinttel védi a biztonságos eszközöket. Alapértelmezés szerint a titkosítás a Microsoft által felügyelt kulcsok használatával történik. Az ügyfelek beállíthatják, hogy az automatizálási fiókok ügyfél által felügyelt kulcsokat használjanak a titkosításhoz. Ez a cikk ismerteti a részleteket a két titkosítási mód, és hogyan válthat a kettő között.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,18 +9,18 @@ ms.author: snmuvva
 ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
-ms.openlocfilehash: 3c21e2fcdde9bffac91af56d49dfa0bf336e8c0c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0b1d194209122fa71272243c80a2d4c57f6834a1
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78246235"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547758"
 ---
-# <a name="secure-assets-in-azure-automation"></a>Biztonságos eszközök az Azure Automationben
+# <a name="encrypt-secure-assets-in-azure-automation"></a>Biztonságos eszközök titkosítása az Azure Automationben
 
 Az Azure Automation biztonságos eszközei közé tartoznak a hitelesítő adatok, tanúsítványok, kapcsolatok és titkosított változók. Ezek az eszközök az Azure Automation több titkosítási szinthasználatával védettek. A titkosításhoz használt legfelső szintű kulcs alapján két titkosítási modell létezik:
--   Microsoft által kezelt kulcsok használata
--   Ügyfél által kezelt kulcsok használata
+-    Microsoft által kezelt kulcsok használata
+-    Ügyfél által kezelt kulcsok használata
 
 ## <a name="microsoft-managed-keys"></a>Microsoft által felügyelt kulcsok
 
@@ -40,7 +40,7 @@ Ha engedélyezi a titkosítást egy Automation-fiók ügyfél által felügyelt 
 
 Az új Automation-fiók mindig titkosítva van a Microsoft által felügyelt kulcsokkal. A fiók létrehozásakor nem lehet engedélyezni az ügyfél által kezelt kulcsokat. Az ügyfél által felügyelt kulcsok az Azure Key Vaultban tárolódnak, és a key vaultot olyan hozzáférési szabályzatokkal kell kiépíteni, amelyek kulcsengedélyeket adnak az Automation-fiókhoz társított felügyelt identitásnak. A felügyelt identitás csak a tárfiók létrehozása után érhető el.
 
-Ha módosítja az Azure Automation biztonságos eszköztitkosításához használt kulcsot az ügyfél által kezelt kulcsok engedélyezésével vagy letiltásával, a kulcsverzió frissítésével vagy egy másik kulcs megadásával, a fióktitkosítási kulcs titkosítása megváltozik, de a biztonságos eszközök az Azure Automation-fiók nem kell újra titkosítani.
+Ha módosítja az Azure Automation biztonságos eszköztitkosításához használt kulcsot az ügyfél által kezelt kulcsok engedélyezésével vagy letiltásával, a kulcsverzió frissítésével vagy egy másik kulcs megadásával, a fiók titkosítási kulcsának titkosítása megváltozik, de az Automation Azure-fiókjában lévő biztonságos eszközöket nem kell újra titkosítani.
 
 A következő három szakasz ismerteti az Automation-fiók ügyfél által felügyelt kulcsainak engedélyezésének mechanikáját. 
 

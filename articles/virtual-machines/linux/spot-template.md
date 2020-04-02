@@ -1,25 +1,18 @@
 ---
-title: Sablon használata az Azure Spot virtuális gépek üzembe helyezéséhez (előzetes verzió)
+title: Sablon használata az Azure Spot virtuális gépek üzembe helyezéséhez
 description: Ismerje meg, hogyan használhat sablont a direkt virtuális gépek üzembe helyezéséhez a költségek csökkentése érdekében.
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2020
+ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 0e635fe7ce9b442a9cc8f0fdf614feef5a3a756a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1352761e308aa2e26864654dae65c290df47102b
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79082795"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548255"
 ---
 # <a name="deploy-spot-vms-using-a-resource-manager-template"></a>Azonnali virtuális gépek telepítése Erőforrás-kezelő sablon használatával
 
@@ -29,11 +22,6 @@ A direkt virtuális gépek díjszabása változó, a régió és a termékválto
 
 Lehetősége van arra, hogy állítsa be a maximális árat, amelyet hajlandó fizetni, óránként, a virtuális gép. A direktvirtuális gép maximális ára usa dollárban (USD) állítható be, legfeljebb 5 tizedesjegy használatával. Az érték `0.98765`például óránként $0,98765 USD max ár. Ha a maximális árat `-1`állítja be, a virtuális gép nem lesz kizárva az ár alapján. A virtuális gép ára a Direktség aktuális ára vagy egy szabványos virtuális gép ára lesz, amely valaha is kevesebb, mindaddig, amíg van kapacitás és kvóta. A maximális ár beállításáról további információt a Azonnali virtuális gépek – árképzés című témakörben [talál.](spot-vms.md#pricing)
 
-> [!IMPORTANT]
-> A direktpéldányok jelenleg nyilvános előzetes verzióban vannak.
-> Ez az előzetes verzió éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
->
 
 ## <a name="use-a-template"></a>Sablon használata
 

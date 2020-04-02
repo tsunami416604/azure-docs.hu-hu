@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/18/2020
 ms.author: spelluru
-ms.openlocfilehash: d58e11551c2857c269e8985e81f84138f6d389ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b87107545761e10c6fb648e54064fbafbdbacd52
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370813"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546007"
 ---
 # <a name="classroom-lab-setup-guide"></a>Tantermi laborbeállítási útmutató
 
@@ -79,7 +79,7 @@ A Lab Services használatalapú díjszabási modellt használ, ami azt jelenti, 
 A diákok mindegyike saját virtuális gép, amely hozzá van rendelve a labor élettartama.  Választhatnak, hogy:
 
 - Mentse közvetlenül a virtuális gépre.
-- Mentés külső tárházba, például OneDrive-ra, GitHubra stb.
+- Mentés külső helyre, például OneDrive-ra, GitHubra stb.
 
 A OneDrive használatához beállíthatja ezt automatikusan a laborgépeiken lévő diákok számára.  Erről további információkat alább talál.
 
@@ -133,7 +133,7 @@ Amint megértette az osztály laborjának követelményeit, készen áll a beál
         > [!NOTE]
         > A telepített operációs rendszer típusától függően a virtuális gép indítása több percet is igénybe vehet.  Annak érdekében, hogy egy tesztkörnyezet virtuális gép készen áll az ütemezett órákban, azt javasoljuk, hogy indítsa el a virtuális gépek 30 perccel előre annak érdekében, hogy a virtuális gépek futnak, és készen áll a használatra.
 
-   - [Kvóták beállítása a felhasználók számára,](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-quotas-for-users) és [további kvóta beállítása egy adott felhasználóhoz](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-additional-quota-for-a-specific-user)
+   - [Kvóták beállítása a felhasználók számára,](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-quotas-for-users) és [további kvóta beállítása egy adott felhasználóhoz](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-additional-quotas-for-specific-users)
   
    - [Automatikus leállítás engedélyezése a kapcsolat bontásakor](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect)
 

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/10/2020
+ms.date: 03/31/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ec32990513d9199c4aaccf1bcfcbf76f348f877b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d224bd9e9e7b1f8fc9eb45d85e78811d8642fc78
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75867501"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519570"
 ---
 # <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Az Azure Portal használatával RBAC-szerepkört rendelhet a blob- és várólista-adatokhoz való hozzáféréshez
 
@@ -23,13 +23,13 @@ Az Azure Active Directory (Azure AD) [szerepköralapú hozzáférés-vezérlés 
 
 Ha egy RBAC-szerepkör egy Azure AD rendszerbiztonsági taghoz van rendelve, az Azure hozzáférést biztosít ezekhez az erőforrásokhoz az adott rendszerbiztonsági tag számára. Az access az előfizetés, az erőforráscsoport, a tárfiók vagy egy adott tároló vagy várólista szintjére ható. Az Azure AD rendszerbiztonsági tag lehet egy felhasználó, egy csoport, egy egyszerű alkalmazás vagy egy [felügyelt identitás az Azure-erőforrások.](../../active-directory/managed-identities-azure-resources/overview.md)
 
-Ez a cikk ismerteti, hogyan használhatja az Azure Portal rbac szerepkörök hozzárendelése. Az Azure Portal egy egyszerű felületet biztosít az RBAC-szerepkörök hozzárendeléséhez és a tárolási erőforrásokhoz való hozzáférés kezeléséhez. RBAC-szerepköröket is rendelhet a blob- és várólista-erőforrásokhoz az Azure parancssori eszközeivel vagy az Azure Storage felügyeleti API-k használatával. A tárolási erőforrások RBAC szerepköreiről az [Azure-blobokhoz és várólistákhoz való hozzáférés hitelesítése az Azure Active Directory használatával című](storage-auth-aad.md)témakörben talál további információt. 
+Ez a cikk ismerteti, hogyan használhatja az Azure Portal rbac szerepkörök hozzárendelése. Az Azure Portal egy egyszerű felületet biztosít az RBAC-szerepkörök hozzárendeléséhez és a tárolási erőforrásokhoz való hozzáférés kezeléséhez. RBAC-szerepköröket is rendelhet a blob- és várólista-erőforrásokhoz az Azure parancssori eszközeivel vagy az Azure Storage felügyeleti API-k használatával. A tárolási erőforrások RBAC szerepköreiről az [Azure-blobokhoz és várólistákhoz való hozzáférés hitelesítése az Azure Active Directory használatával című](storage-auth-aad.md)témakörben talál további információt.
 
 ## <a name="rbac-roles-for-blobs-and-queues"></a>RBAC-szerepkörök blobokhoz és várólistákhoz
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
-## <a name="determine-resource-scope"></a>Erőforráshatókör meghatározása 
+## <a name="determine-resource-scope"></a>Erőforráshatókör meghatározása
 
 [!INCLUDE [storage-auth-resource-scope-include](../../../includes/storage-auth-resource-scope-include.md)]
 
@@ -52,11 +52,11 @@ A következő szakaszok részletesebben ismertetik ezeket a lépéseket.
 
 Mielőtt szerepkört rendelne egy rendszerbiztonsági taghoz, mindenképpen vegye figyelembe a megadott engedélyek hatókörét. Tekintse át az [erőforráshatókör meghatározása](#determine-resource-scope) szakaszt a megfelelő hatókör meghatározásához.
 
-Az itt látható eljárás egy tárolóhoz rendelt szerepkört rendel hozzá, de ugyanazokat a lépéseket követve rendelhet hozzá egy hatókörrel ellátott szerepkört egy várólistához: 
+Az itt látható eljárás egy tárolóhoz rendelt szerepkört rendel hozzá, de ugyanazokat a lépéseket követve rendelhet hozzá egy hatókörrel ellátott szerepkört egy várólistához:
 
 1. Az [Azure Portalon](https://portal.azure.com)nyissa meg a tárfiókot, és jelenítse meg a fiók **áttekintése.**
-1. A Szolgáltatások csoportban válassza **a Blobok lehetőséget.** 
-1. Keresse meg azt a tárolót, amelyhez szerepkört szeretne rendelni, és jelenítse meg a tároló beállításait. 
+1. A Szolgáltatások csoportban válassza **a Blobok lehetőséget.**
+1. Keresse meg azt a tárolót, amelyhez szerepkört szeretne rendelni, és jelenítse meg a tároló beállításait.
 1. Válassza **a Hozzáférés-vezérlés (IAM)** lehetőséget a tároló hozzáférés-vezérlési beállításainak megjelenítéséhez. A **szerepkör-hozzárendelések** listájának megtekintéséhez válassza a Szerepkör-hozzárendelések lapot.
 
     ![Képernyőkép a tárolóhozzáférés-vezérlési beállításokról](media/storage-auth-aad-rbac-portal/portal-access-control-for-storage.png)

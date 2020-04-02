@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 9bbd62bc05e03641c2abe9308d9238bef23877c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b9184808b71cce03882022fd37967fe421e64062
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71104968"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548991"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Az API Management-szolgáltatáskonfiguráció mentése és konfigurálása a Git használatával
 
@@ -223,7 +223,7 @@ A végső `$ref-policy`beállítás , a szolgáltatáspéldány globális házir
 A `apis` mappa a szolgáltatáspéldány minden API-jához tartalmaz egy mappát, amely a következő elemeket tartalmazza.
 
 * `apis\<api name>\configuration.json`- ez az API konfigurációja, és információkat tartalmaz a háttérszolgáltatás URL-címéről és a műveletekről. Ez ugyanazokat az információkat, amelyeket vissza adna, ha `export=true` `application/json` egy adott [API bekapása](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apis/get) formátumban.
-* `apis\<api name>\api.description.html`- ez az API leírása, és `description` megfelel az [API entitás](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._entity_property)tulajdonságának.
+* `apis\<api name>\api.description.html`- ez az API leírása, és `description` megfelel az [API entitás](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.entityproperty)tulajdonságának.
 * `apis\<api name>\operations\`- ez `<operation name>.description.html` a mappa olyan fájlokat tartalmaz, amelyek leképezik az API műveleteit. Minden fájl egyetlen művelet leírását tartalmazza az API-ban, amely leképezi a `description` [műveletentitás](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties) tulajdonságát a REST API-ban.
 
 ### <a name="groups-folder"></a>csoportok mappa

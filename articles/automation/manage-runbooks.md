@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: ad8c05b3347ed4741d574a5e6bcc1d928db08411
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad2a34691a00f217db6cf6835eefed18c8862d32
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79366836"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547918"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Runbookok kezelése az Azure Automationben
 
@@ -128,6 +128,19 @@ $RGName = "ResourceGroup"
 Publish-AzAutomationRunbook -AutomationAccountName $automationAccountName `
 -Name $runbookName -ResourceGroupName $RGName
 ```
+
+### <a name="schedule-a-runbook-in-the-azure-portal"></a>Runbook ütemezése az Azure Portalon
+
+A runbook közzététele után ütemezheti azt a művelethez.
+
+1. Nyissa meg a runbookot az Azure Portalon.
+2. Válassza **az Ütemezések** lehetőséget az **Erőforrások csoportban.**
+3. Válassza **az Ütemezés hozzáadása**lehetőséget.
+4. A Runbook ütemezése ablaktáblában válassza az **Ütemezés csatolása a runbookhoz**lehetőséget.
+5. Válassza **az Új ütemezés létrehozása lehetőséget** az Ütemezés ablaktáblán.
+6. Adjon meg egy nevet, leírást és egyéb paramétereket az Új ütemezés ablaktáblán. 
+7. Az ütemezés létrehozása után jelölje ki, és kattintson az **OK**gombra. Most kell kapcsolni a runbook.
+8. Keressen egy e-mailt a postaládájában, amely értesíti a runbook állapotáról.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,15 +1,15 @@
 ---
 title: Az Azure Blockchain szolgáltatás korlátai
 description: A szolgáltatás és a funkcionális korlátok áttekintése az Azure Blockchain szolgáltatásban
-ms.date: 11/22/2019
+ms.date: 03/30/2020
 ms.topic: conceptual
-ms.reviewer: janders
-ms.openlocfilehash: f4001ee520f3f3136d1bac5ca047c80526fc92e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: ravastra
+ms.openlocfilehash: c728e617ac37795988cd596c7cb0c5025aac4ccf
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74455656"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529571"
 ---
 # <a name="limits-in-azure-blockchain-service"></a>Korlátok az Azure Blockchain szolgáltatásban
 
@@ -17,14 +17,18 @@ Az Azure Blockchain Szolgáltatás rendelkezik szolgáltatási és funkcionális
 
 ## <a name="pricing-tier"></a>Tarifacsomag
 
-A tranzakciók ra és az érvényesítő csomópontokra vonatkozó maximális korlátok attól függnek, hogy az Azure Blockchain szolgáltatást alapszintű vagy standard szintű díjszabási szinteken építi-e ki.
+A tranzakciók ra és az érvényesítő csomópontokra vonatkozó maximális korlátok attól függnek, hogy az Azure Blockchain szolgáltatást alapszintű vagy standard szintű tarifacsomagokon építi-e ki.
 
 | Tarifacsomag | Tranzakciócsomópontok maximális száma | Validator-csomópontok maximális száma |
 |:---|:---:|:---:|
 | Basic | 10 | 1 |
 | Standard | 10 | 2 |
 
-A tagság létrehozása után nem támogatott az Alapszintű és a Standard közötti tarifacsomag módosítása.
+A konzorciumi hálózatnak legalább két Azure Blockchain Service standard szintű csomóponttal kell rendelkeznie. A standard szintű csomópontok két validátorcsomópontot tartalmaznak. Négy validator csomópontnak kell megfelelnie [az isztambuli bizánci hibatűrési konszenzusnak](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus).
+
+Az alapszint használata fejlesztésre, tesztelésre és a fogalmak igazolására szolgál. Használja a szabványos szint éles szintű központi telepítések. A *Standard* szint akkor is érdemes használnia, ha blockchain data managert használ, vagy nagy mennyiségű magántranzakciót küld.
+
+A tagság létrehozása után nem támogatott a tarifacsomag alap- és szabványos szint közötti módosítása.
 
 ## <a name="storage-capacity"></a>Tárkapacitás
 
@@ -50,7 +54,7 @@ A főkönyvi és a naplótár méretének csökkentése nem támogatott.
 
 * **A konzorciumból eltávolított tagokat nem lehet újra hozzáadni**
 
-    Inkább újra meg kell hívni őket, hogy csatlakozzanak a konzorciumhoz, és hozzanak létre egy új tagot. Meglévő tagerőforrásuk nem törlődik a korábbi tranzakciók megőrzése érdekében.
+    Inkább újra meg kell hívni őket, hogy csatlakozzanak a konzorciumhoz, és hozzanak létre egy új tagot. Meglévő tagerőforrásaik nem törlődnek a korábbi tranzakciók megőrzése érdekében.
 
 * **A konzorcium minden tagjának ugyanazt a főkönyvi verziót kell használnia.**
 

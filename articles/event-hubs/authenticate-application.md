@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: a242da8cc98a21248c48a1b3981fa713706028ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4cef49f138b96848b8e59cb5b2d0b185d4568aa9
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064942"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521001"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Alkalmazás hitelesítése az Azure Active Directoryval az Event Hubs-erőforrások eléréséhez
 A Microsoft Azure integrált hozzáférés-vezérlési felügyeletet biztosít az Azure Active Directory (Azure AD) alapú erőforrások és alkalmazások számára. Az Azure AD azure-beli Event Hubs használatával való használatának egyik fő előnye, hogy már nem kell tárolnia a hitelesítő adatait a kódban. Ehelyett kérhet egy OAuth 2.0 hozzáférési jogkivonatot a Microsoft Identity platformról. A jogkivonat igényléséhez `https://eventhubs.azure.net/` szükséges erőforrás neve (A Kafka-ügyfelek `https://<namespace>.servicebus.windows.net`esetében a jogkivonatot kérő erőforrás a). Az Azure AD hitelesíti az alkalmazást futtató rendszerbiztonsági tag (egy felhasználó, csoport vagy egyszerű szolgáltatás). Ha a hitelesítés sikeres, az Azure AD egy hozzáférési jogkivonatot ad vissza az alkalmazásnak, és az alkalmazás ezután használhatja a hozzáférési jogkivonatot az Azure Event Hubs-erőforrások kérésének engedélyezéséhez.
@@ -106,7 +106,7 @@ Azokról az esetekről, amelyekesetében a tokenek beolvasása támogatott, teki
 ## <a name="samples"></a>Példák
 - [Microsoft.Azure.EventHubs mintákat](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac). 
     
-    Ezek a minták a régi **Microsoft.Azure.EventHubs-könyvtárat** használják, de könnyedén frissítheti azt a legújabb **Azure.Messaging.EventHubs-könyvtár** használatával. Ha át szeretné helyezni a mintát a régi könyvtár használatából az újkönyvtárba, olvassa el a [Microsoft.Azure.EventHubs-ról az Azure.Messaging.EventHubs szolgáltatásba való áttelepítés útmutatóját.](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md)
+    Ezek a minták a régi **Microsoft.Azure.EventHubs-könyvtárat** használják, de könnyedén frissítheti azt a legújabb **Azure.Messaging.EventHubs-könyvtár** használatával. Ha át szeretné helyezni a mintát a régi könyvtár használatából az újkönyvtárba, olvassa el a [Microsoft.Azure.EventHubs-ról az Azure.Messaging.EventHubs szolgáltatásba való áttelepítés útmutatóját.](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)
 - [Az Azure.Messaging.EventHubs-minták](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
 
     Ez a minta frissítve lett a legújabb **Azure.Messaging.EventHubs-könyvtár** használatával.

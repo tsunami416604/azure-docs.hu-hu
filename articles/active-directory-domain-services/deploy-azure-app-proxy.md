@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/6/2019
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: c6e4e6a45fbbeab64184d8ae4b0684ba055d7735
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3fb731736941293a82baba86165a1205bd8a05c5
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77613985"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519036"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-ad-domain-services-managed-domain"></a>Az Azure AD alkalmazásproxy telepítése az Azure AD tartományi szolgáltatások által felügyelt tartomány belső alkalmazásaihoz való biztonságos hozzáférés érdekében
 
@@ -25,8 +25,6 @@ Az Azure AD tartományi szolgáltatásokkal (Azure AD DS) a helyszíni futó ör
 Ha most ismerkedik az Azure AD alkalmazásproxyval, és szeretne többet megtudni, olvassa el a Belső alkalmazások biztonságos távoli elérésének biztosítása című [témakört.](../active-directory/manage-apps/application-proxy.md)
 
 Ez a cikk bemutatja, hogyan hozhat létre és konfigurálhat egy Azure AD alkalmazásproxy-összekötőt, amely biztonságos hozzáférést biztosít az Azure AD DS felügyelt tartományban lévő alkalmazásokhoz.
-
-[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Előkészületek
 

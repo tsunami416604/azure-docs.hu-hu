@@ -3,12 +3,12 @@ title: VMware virtuális gépek biztonsági mentése az Azure Backup Server rel
 description: Ebből a cikkből megtudhatja, hogyan készíthet idát meg az Azure Backup Server használatával a VMware vCenter/ESXi kiszolgálón futó VMware virtuális gépek biztonsági mentéséhez.
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: df85cba42118a2e814a4a1c8338f3927e4d75f36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 951016d393b095b0329ff18861421402e0e18a1a
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79273474"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529503"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>VMware virtuális gépek biztonsági mentése az Azure Backup Server rel
 
@@ -130,41 +130,52 @@ Az Azure Backup Server szüksége van egy felhasználói fiók a v-Center Server
 
 ### <a name="role-permissions"></a>Szerepkör-engedélyek
 
-| **A vCenter 6.5-ös és újabb felhasználói fiók jogosultságai**        | **A vCenter 6.0 felhasználói fiókjának jogosultságai**               | **A vCenter 5.5 felhasználói fiókjának jogosultságai** |
-| ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------- |
-| Datastore.AllocateSpace                                      |                                                           |                                             |
-| Datastore.Tallózás adattár                                   | Datastore.AllocateSpace                                   | Hálózat.Hozzárendelés                              |
-| Datastore.Low-level fájlműveletek                          | Global.Egyéni attribútumok kezelése                           | Datastore.AllocateSpace                     |
-| Adattár-fürt. Datatstore-fürt konfigurálása             | Global.Set egyéni attribútum                               | VirtualMachine.Config.ChangeTracking        |
-| Global.Disable metódusok                                       | Host.Local műveletek. Virtuális gép létrehozása              | VirtualMachine.State.RemoveSnapshot         |
-| Global.Metódusok engedélyezése                                        | Hálózati. Hálózat hozzárendelése                                   | VirtualMachine.State.CreateSnapshot         |
-| Globális.Licencek                                              | Erőforrás. Virtuális gép hozzárendelése erőforráskészlethez         | VirtualMachine.Provisioning.DiskRandomRead  |
-| Global.Log esemény                                             | Virtuális gép. Configuration.Add új lemez                | VirtualMachine.Interact.PowerOff            |
-| Global.Egyéni attribútumok kezelése                              | Virtuális gép. Configuration.Speciális                    | VirtualMachine.Inventory.Create             |
-| Global.Set egyéni attribútum                                  | Virtuális gép. Configuration.Disk változáskövetés        | VirtualMachine.Config.AddNewDisk            |
-| Hálózat.Hálózat hozzárendelése                                       | Virtuális gép. Configuration.Host USB-eszköz             | VirtualMachine.Config.HostUSBEszköz         |
-| Erőforrás. Virtuális gép hozzárendelése erőforráskészlethez            | Virtuális gép. Configuration.Query nem birtokolt fájlok         | VirtualMachine.Config.AdvancedConfig        |
-| Virtuális gép. Configuration.Add új lemez                   | Virtuális gép. Configuration.Swapfájl elhelyezése          | VirtualMachine.Config.SwapElhelyezés         |
-| Virtuális gép. Configuration.Speciális                       | Virtuális gép. Interakció.Kikapcsolás                     | Global.ManageCustomFields mezők                   |
-| Virtuális gép. Configuration.Disk változáskövetés           | Virtuális gép. Készlet. Új létrehozása                     |                                             |
-| Virtuális gép. Configuration.Disk címbérlet                     | Virtuális gép. Provisioning.Lemezhozzáférés engedélyezése            |                                             |
-| Virtuális gép. Configuration.Extend virtuális lemez            | Virtuális gép. Kiépítés. Írásvédett lemezhozzáférés engedélyezése |                                             |
-| Virtuális gép. Vendég operations.Guest operations módosítások | Virtuális gép. Pillanatkép-kezelés. Pillanatkép létrehozása       |                                             |
-| Virtuális gép. Vendég operations.Guest operation program végrehajtása | Virtuális gép. Pillanatkép-kezelés. Pillanatkép eltávolítása       |                                             |
-| Virtuális gép. Vendégműveletek.Vendég műveleti lekérdezések     |                                                           |                                             |
-| Virtuális gép . Kölcsönhatás. Eszközkapcsolat              |                                                           |                                             |
-| Virtuális gép . Kölcsönhatás. Vendég operációs rendszer kezelése VIX API-val |                                                           |                                             |
-| Virtuális gép . Készlet.Regisztráció                          |                                                           |                                             |
-| Virtuális gép . Készlet.Eltávolítás                            |                                                           |                                             |
-| Virtuális gép . Provisioning.Lemezhozzáférés engedélyezése              |                                                           |                                             |
-| Virtuális gép . Provisioning.Read-Only lemezhozzáférés engedélyezése    |                                                           |                                             |
-| Virtuális gép . Provisioning.A virtuális gépek letöltésének engedélyezése |                                                           |                                             |
-| Virtuális gép . Pillanatkép-kezelés. Pillanatkép készítése        |                                                           |                                             |
-| Virtuális gép . Pillanatkép-kezelés. Pillanatkép eltávolítása         |                                                           |                                             |
-| Virtuális gép . Pillanatkép-kezelés. Visszaállítás a pillanatképhez      |                                                           |                                             |
-| vApp.Add virtuális gép                                     |                                                           |                                             |
-| vApp.Erőforráskészlet hozzárendelése                                    |                                                           |                                             |
-| vApp.Unregister                                              |                                                           |                                             |
+| **A vCenter 6.7 felhasználói fiókjának jogosultságai**              | **A vCenter 6.5 felhasználói fiókjának jogosultságai**             |
+| --------------------------------------------------------- | -------------------------------------------------------- |
+| Datastore.Hely lefoglalása                                  | Datastore.Hely lefoglalása                                 |
+| Global.Log esemény                                          | Global.Log esemény                                         |
+| Global.Manage egyéni attribútumok                           | Global.Manage egyéni attribútumok                          |
+| Hálózat.Hozzárendelés                                            | Hálózat.Hozzárendelés                                           |
+| Erőforrás. Virtuális gép hozzárendelése erőforráskészlethez        | Erőforrás. Virtuális gép hozzárendelése erőforráskészlethez       |
+| VirtualMachine.Configuration.AddNewDisk                   | VirtualMachine.Configuration.AddNewDisk                  |
+| VirtualMachine.Configuration . Eszköz hozzáadása vagy eltávolítása       | VirtualMachine.Configuration . Eszköz hozzáadása vagy eltávolítása      |
+| VirtualMachine.Configuration.Advanced                     | VirtualMachine.Configuration.Advanced                    |
+| VirtualMachine.Configuration.Tole lemezváltás-követés | VirtualMachine.Configuration.Disk változáskövetés       |
+| VirtualMachine.Configuration.Configure állomás USB-eszközének konfigurálása   | VirtualMachine.Configuration.Host USB-eszköz            |
+| VirtualMachine.Configuration.Query Nem birtokolt fájlok         | VirtualMachine.Configuration.Query Nem birtokolt fájlok        |
+| VirtualMachine.Configuration.Change swapfájl elhelyezése   | VirtualMachine.Configuration.Swapfájl elhelyezése         |
+| VirtualMachine.Interaction.Kikapcsolás                      | VirtualMachine.Interaction.Kikapcsolás                     |
+| VirtualMachine.Inventory.Új létrehozása                       | VirtualMachine.Inventory.Új létrehozása                      |
+| VirtualMachine.Provisioning.Allow Lemezelérés engedélyezése            | VirtualMachine.Provisioning.Allow Lemezelérés engedélyezése           |
+| VirtualMachine.Provisioning.Allow fájlhozzáférés            | VirtualMachine.Provisioning.Allow fájlhozzáférés           |
+| VirtualMachine.Provisioning.Read-only lemezes hozzáférés engedélyezése  | VirtualMachine.Provisioning.Read-only lemezes hozzáférés engedélyezése |
+| VirtualMachine.Snapshot Management.Snapshot Management.Snapshot       | VirtualMachine.Snapshot Management.Snapshot Management.Snapshot      |
+| VirtualMachine.Snapshot Management.Remove Pillanatkép eltávolítása       | VirtualMachine.Snapshot Management.Remove Pillanatkép eltávolítása      |
+
+<br>
+
+| **A vCenter 6.0 felhasználói fiókjának jogosultságai**                | **A vCenter 5.5 felhasználói fiókjának jogosultságai** |
+| ---------------------------------------------------------- | ------------------------------------------- |
+| Datastore.AllocateSpace                                    | Hálózat.Hozzárendelés                              |
+| Global.Egyéni attribútumok kezelése                           | Datastore.AllocateSpace                     |
+| Global.Set egyéni attribútum                               | VirtualMachine.Config.ChangeTracking        |
+| Host.Local műveletek. Virtuális gép létrehozása              | VirtualMachine.State.RemoveSnapshot         |
+| Hálózati.  Hálózat hozzárendelése                                   | VirtualMachine.State.CreateSnapshot         |
+| Erőforrás.  Virtuális gép hozzárendelése erőforráskészlethez         | VirtualMachine.Provisioning.DiskRandomRead  |
+| Virtuális gép. Configuration.Add új lemez                | VirtualMachine.Interact.PowerOff            |
+| Virtuális gép. Configuration.Speciális                    | VirtualMachine.Inventory.Create             |
+| Virtuális gép. Configuration.Disk változáskövetés        | VirtualMachine.Config.AddNewDisk            |
+| Virtuális gép. Configuration.Host USB-eszköz             | VirtualMachine.Config.HostUSBEszköz         |
+| Virtuális gép. Configuration.Query nem birtokolt fájlok         | VirtualMachine.Config.AdvancedConfig        |
+| Virtuális gép. Configuration.Swapfájl elhelyezése          | VirtualMachine.Config.SwapElhelyezés         |
+| Virtuális gép. Interakció.Kikapcsolás                     | Global.ManageCustomFields mezők                   |
+| Virtuális gép. Készlet. Új létrehozása                     |                                             |
+| Virtuális gép. Provisioning.Lemezhozzáférés engedélyezése            |                                             |
+| Virtuális gép. Kiépítés. Írásvédett lemezhozzáférés engedélyezése |                                             |
+| Virtuális gép. Pillanatkép-kezelés. Pillanatkép létrehozása       |                                             |
+| Virtuális gép. Pillanatkép-kezelés. Pillanatkép eltávolítása       |                                             |
+
+
 
 ## <a name="create-a-vmware-account"></a>VMware-fiók létrehozása
 

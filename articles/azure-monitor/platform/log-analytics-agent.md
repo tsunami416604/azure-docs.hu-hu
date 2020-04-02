@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: 1ca03cde57a9496054d0860fbb70bd286caabe46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d52d8e6d0f6e3325b5c5cdc9a2e21654e6a2b621
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79533249"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520726"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics-ügynök – áttekintés
 Az Azure Log Analytics-ügynök a virtuális gépek teljes körű felügyeletére lett kifejlesztve bármely felhőben, helyszíni gépben és a [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/)által figyelt gépeken. A Windows- és Linux-ügynökök különböző forrásokból származó összegyűjtött adatokat küldenek a Log Analytics-munkaterületre az Azure Monitorban, valamint a figyelési megoldásban meghatározott egyedi naplókba vagy metrikákba. A Log Analytics-ügynök az Azure Monitor ban is támogatja az elemzéseket és más szolgáltatásokat, például [az Azure Monitor virtuális gépekhez,](../insights/vminsights-enable-overview.md)az Azure Security [Centert](/azure/security-center/)és az [Azure Automationszolgáltatást.](../../automation/automation-intro.md)
@@ -156,23 +156,27 @@ A Windows-ügynök 2020. Ez a módosítás hatással lesz az ügyfelek segítsé
 
 
 ## <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
-A Linux és a Windows ügynök e-kiszolgáló kimenő kapcsolatát kommunikálja az Azure Monitor szolgáltatással a 443-as TCP-porton keresztül, és ha a gép tűzfalon vagy proxykiszolgálón keresztül csatlakozik az interneten keresztüli kommunikációhoz, tekintse át az alábbi követelményeket a hálózati konfiguráció megértéséhez Szükséges. Ha az informatikai biztonsági házirendek nem teszik lehetővé a hálózati számítógépek az internethez való csatlakozást, beállíthatja a [Log Analytics-átjárót,](gateway.md) majd beállíthatja az ügynököt, hogy az átjárón keresztül csatlakozzon az Azure Monitor naplóihoz. Az ügynök ezután fogadhatkonfigurációs információkat, és elküldheti az összegyűjtött adatokat attól függően, hogy milyen adatgyűjtési szabályokat és figyelési megoldásokat engedélyezett a munkaterületen.
+A Linux és a Windows ügynök kommunikál az Azure Monitor szolgáltatás tcp porton keresztül 443, és ha a gép csatlakozik egy tűzfal vagy proxy kiszolgáló n keresztül kommunikálni az interneten keresztül, tekintse át az alábbi követelményeket, hogy a szükséges hálózati konfiguráció. Ha az informatikai biztonsági házirendek nem teszik lehetővé a hálózati számítógépek az internethez való csatlakozást, beállíthatja a [Log Analytics-átjárót,](gateway.md) majd beállíthatja az ügynököt, hogy az átjárón keresztül csatlakozzon az Azure Monitor naplóihoz. Az ügynök ezután fogadhatkonfigurációs információkat, és elküldheti az összegyűjtött adatokat attól függően, hogy milyen adatgyűjtési szabályokat és figyelési megoldásokat engedélyezett a munkaterületen.
 
 ![Log Analytics-ügynök kommunikációs diagramja](./media/log-analytics-agent/log-analytics-agent-01.png)
 
+Az alábbi táblázat felsorolja a proxy- és tűzfal-konfigurációs információkat, amelyek szükségesek ahhoz, hogy a Linux és a Windows-ügynökök kommunikálhassanak az Azure Monitor naplóival.
 
-## <a name="network-firewall-requirements"></a>Hálózati tűzfal követelményei
-Az alábbi információk a proxy és a tűzfal konfigurációs információkat szükséges a Linux és a Windows ügynök kommunikálni az Azure Monitor naplók.  
+### <a name="firewall-requirements"></a>Tűzfalra vonatkozó követelmények
 
 |Ügynök erőforrása|Portok |Irány |HTTPS-ellenőrzés kihagyása|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |443-as port |Kimenő|Igen |  
-|*.oms.opinsights.azure.com |443-as port |Kimenő|Igen |  
-|*.blob.core.windows.net |443-as port |Kimenő|Igen |  
+|*.ods.opinsights.azure.com |443-as port |Bejövő és kimenő|Igen |  
+|*.oms.opinsights.azure.com |443-as port |Bejövő és kimenő|Igen |  
+|*.blob.core.windows.net |443-as port |Bejövő és kimenő|Igen |
+|*.azure-automation.net |443-as port |Bejövő és kimenő|Igen |
+|*.azure.com |443-as port|Bejövő és kimenő|Igen |
 
 Az Azure Government számára szükséges tűzfalinformációkat az [Azure Government felügyeleti témakörben talál.](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs) 
 
 Ha azt tervezi, hogy az Azure Automation hybrid Runbook Worker használatával csatlakozik az Automation szolgáltatáshoz, és regisztráljon az Automation szolgáltatással a runbookok vagy felügyeleti megoldások használatához a környezetben, akkor hozzá kell férnie a portszámhoz és a [Hálózat konfigurálása a hibrid runbook-feldolgozóhoz](../../automation/automation-hybrid-runbook-worker.md#network-planning)című részben leírt URL-címekhez. 
+
+### <a name="proxy-configuration"></a>Proxy konfigurálása
 
 A Windows és Linux ügynök támogatja a kommunikációt egy proxykiszolgálón vagy a Log Analytics átjárón keresztül az Azure Monitor a HTTPS protokoll használatával.  Mind a névtelen, mind az alapfokú hitelesítés (felhasználónév/jelszó) támogatott.  A közvetlenül a szolgáltatáshoz csatlakoztatott Windows-ügynök esetében a proxykonfiguráció a telepítés során vagy a Vezérlőpultról vagy a PowerShellen [történő telepítés után](agent-manage.md#update-proxy-settings) van megadva.  
 

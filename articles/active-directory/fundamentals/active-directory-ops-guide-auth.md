@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: bc5824fcb62477d4e6dc6c2b7390b1bfa916094f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b4ec003888d75a582d25feef8ed2ce010fa7996
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77368056"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546237"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Az Azure Active Directory hitelesítéskezelési műveleteinek útmutatója
 
@@ -101,7 +101,7 @@ Ha a helyszíni szervezet hiányzik a kimaradás rugalmassági stratégia, vagy 
 
 ![jelszókivonat-szinkronizálási folyamat](./media/active-directory-ops-guide/active-directory-ops-img5.png)
 
-A hitelesítési beállítások jobb megértéséhez [olvassa el A megfelelő hitelesítési módszer kiválasztása az Azure Active Directory hibrid identitáskezelési megoldásához című témakört.](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)
+A hitelesítési beállítások jobb megértéséhez [olvassa el A megfelelő hitelesítési módszer kiválasztása az Azure Active Directory hibrid identitáskezelési megoldásához című témakört.](https://docs.microsoft.com/azure/active-directory/hybrid/choose-ad-authn)
 
 ### <a name="programmatic-usage-of-credentials"></a>Hitelesítő adatok automatizált használata
 
@@ -115,7 +115,7 @@ A Microsoft azt is javasolja, hogy lépjen kapcsolatba az alkalmazástulajdonosa
 
 ### <a name="on-premises-authentication"></a>Helyszíni hitelesítés
 
-Az integrált Windows-hitelesítéssel (IWA) vagy a zökkenőmentes egyszeri bejelentkezéssel (SSO) kezelt hitelesítés jelszókivonat-szinkronizálással vagy átadó hitelesítéssel a legjobb felhasználói élmény a vállalati hálózaton belül helyszíni tartományvezérlők számára. Minimalizálja a hitelesítő adatok gyors fáradtságát, és csökkenti annak kockázatát, hogy a felhasználók adathalász támadások áldozatául essenek. Ha már használ felhőalapú hitelesítést PHS-sel vagy PTA-val, de a felhasználóknak továbbra is be kell írniuk a jelszavukat a helyszíni hitelesítéshez, akkor azonnal [telepítenie](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)kell a zökkenőmentes egyszeri bejelentkezést. Másrészt, ha jelenleg összevont tervek et, hogy végül áttérni a felhőáltal felügyelt hitelesítés, majd végre kell hajtania a zökkenőmentes egyszeri bejelentkezés részeként az áttelepítési projekt.
+Az integrált Windows-hitelesítéssel (IWA) vagy a zökkenőmentes egyszeri bejelentkezés (SSO) által felügyelt hitelesítés jelszókivonat-szinkronizálással vagy áteresztő hitelesítéssel a legjobb felhasználói élmény a vállalati hálózaton belül, a helyszíni tartományvezérlőkre való rálátással. Minimalizálja a hitelesítő adatok gyors fáradtságát, és csökkenti annak kockázatát, hogy a felhasználók adathalász támadások áldozatául essenek. Ha már használ felhőalapú hitelesítést PHS-sel vagy PTA-val, de a felhasználóknak továbbra is be kell írniuk a jelszavukat a helyszíni hitelesítéshez, akkor azonnal [telepítenie](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)kell a zökkenőmentes egyszeri bejelentkezést. Másrészt, ha jelenleg összevont tervek et, hogy végül áttérni a felhőáltal felügyelt hitelesítés, majd végre kell hajtania a zökkenőmentes egyszeri bejelentkezés részeként az áttelepítési projekt.
 
 ### <a name="device-trust-access-policies"></a>Eszközmegbízhatósági hozzáférési szabályzatok
 
@@ -230,11 +230,11 @@ Ha már rendelkezik Azure AD Premium P2-licencekkel, amelyek támogatják a kock
 
 A Microsoft Intune Application Management (MAM) lehetővé teszi az adatvédelmi vezérlők, például a tárolás titkosításának, a PIN-kód, a távtároló-karbantartás stb. Ezenkívül feltételes hozzáférési szabályzatok hozhatók létre a felhőszolgáltatásokhoz, például az Exchange Online-hoz [való hozzáférés korlátozására](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access) a jóváhagyott vagy kompatibilis alkalmazásokból.
 
-Ha az alkalmazottak MAM-kompatibilis alkalmazásokat, például Office-mobilalkalmazásokat telepítenek a vállalati erőforrások, például az Exchange Online vagy a SharePoint Online eléréséhez, és ön is támogatja a BYOD-ot (saját eszközzel), javasoljuk, hogy telepítsen alkalmazásMAM-szabályzatokat a kezeléshez az alkalmazás konfigurációja a személyes tulajdonú eszközök nélkül MDM regisztráció, majd frissítse a feltételes hozzáférési szabályzatok csak a hozzáférést mam-képes ügyfelek.
+Ha az alkalmazottak MAM-kompatibilis alkalmazásokat, például Office-mobilalkalmazásokat telepítenek a vállalati erőforrások, például az Exchange Online vagy a SharePoint Online eléréséhez, és ön is támogatja a BYOD-ot (saját eszközzel is), javasoljuk, hogy telepítsen alkalmazásmam-szabályzatokat az alkalmazáskonfiguráció kondícionálása érdekében a személyes tulajdonban lévő eszközökön, mdm-regisztráció nélkül, majd frissítse a feltételes hozzáférési szabályzatokat, hogy csak a MAM-kompatibilis ügyfelek hozzáférését engedélyezze.
 
 ![Feltételes hozzáférés-jogosultság i. vezérlő](./media/active-directory-ops-guide/active-directory-ops-img12.png)
 
-Ha az alkalmazottak mam-kompatibilis alkalmazásokat telepítenek a vállalati erőforrások ellen, és a hozzáférés korlátozott az Intune felügyelt eszközein, akkor érdemes megfontolnia az alkalmazás MAM-házirendek telepítését a személyes eszközök alkalmazáskonfigurációjának kezeléséhez, és a feltételes hozzáférési házirendek frissítése, hogy csak a MAM-képes ügyfelek től lehessen hozzáférni.
+Ha az alkalmazottak mam-kompatibilis alkalmazásokat telepítenek a vállalati erőforrásokkal szemben, és az Intune felügyelt eszközein korlátozott a hozzáférés, akkor fontolja meg az alkalmazás MAM-házirendek telepítését a személyes eszközök alkalmazáskonfigurációjának kezeléséhez, és frissítse a feltételes hozzáférés házirendeket, hogy csak a MAM-képes ügyfelek hozzáférését engedélyezze.
 
 ### <a name="conditional-access-implementation"></a>Feltételes hozzáférés megvalósítása
 
@@ -329,7 +329,7 @@ Az alábbiakban felsoroljuk azon felhasználói és csoportbeállításokat, ame
 #### <a name="user-settings"></a>Felhasználói beállítások
 
 - **Külső felhasználók** – a külső együttműködés szervesen történhet a vállalaton belül olyan szolgáltatásokkal, mint a Teams, a Power BI, a Sharepoint Online és az Azure Information Protection. Ha explicit korlátozásokkal rendelkezik a felhasználó által kezdeményezett külső együttműködés szabályozásához, ajánlott engedélyezni a külső felhasználókat [az Azure AD-jogosultságok kezelésével](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview) vagy egy ellenőrzött művelettel, például az ügyfélszolgálaton keresztül. Ha nem szeretné engedélyezni a szolgáltatások szerves külső együttműködését, letilthatja a tagok számára, hogy [teljesen külső felhasználókat hívjanak meg.](https://docs.microsoft.com/azure/active-directory/b2b/delegate-invitations) Azt is megteheti, hogy [engedélyezi vagy letiltja az egyes tartományokat](https://docs.microsoft.com/azure/active-directory/b2b/allow-deny-list) a külső felhasználói meghívókban.
-- **Alkalmazásregisztrációk** – ha az alkalmazásregisztrációk engedélyezve vannak, a végfelhasználók maguk is bevihetik az alkalmazásokat, és hozzáférést biztosíthatnak az adataikhoz. Az alkalmazásregisztráció tipikus példája, hogy a felhasználók engedélyezik az Outlook beépülő moduljait, vagy olyan hangasszisztensek, mint az Alexa és a Siri, elolvashatják e-mailjeiket és naptárukat, vagy e-maileket küldhetnek a nevükben. Ha az ügyfél úgy dönt, hogy kikapcsolja az alkalmazásregisztrációt, az InfoSec és az IAM-csapatoknak részt kell venniük a kivételek kezelésében (az üzleti követelmények alapján szükséges alkalmazásregisztrációk), mivel az alkalmazásokat rendszergazdai fiókkal kell regisztrálniuk, és valószínűleg a folyamat működőképessé tétele érdekében egy folyamat megtervezését igényli.
+- **Alkalmazásregisztrációk** – ha az alkalmazásregisztrációk engedélyezve vannak, a végfelhasználók maguk is bevihetik az alkalmazásokat, és hozzáférést biztosíthatnak az adataikhoz. Az alkalmazásregisztráció tipikus példája, hogy a felhasználók engedélyezik az Outlook beépülő moduljait, vagy olyan hangasszisztensek, mint az Alexa és a Siri, elolvashatják e-mailjeiket és naptárukat, vagy e-maileket küldhetnek a nevükben. Ha az ügyfél úgy dönt, hogy kikapcsolja az alkalmazásregisztrációt, az InfoSec és az IAM-csapatoknak részt kell venniük a kivételek kezelésében (az üzleti követelmények alapján szükséges alkalmazásregisztrációk), mivel az alkalmazásokat rendszergazdai fiókkal kell regisztrálniuk, és valószínűleg egy folyamat tervezését kell megtervezniük a folyamat működőképessé tétele érdekében.
 - **Felügyeleti portál** – a szervezetek zárolhatják az Azure AD-panelt az Azure Portalon, így a nem rendszergazdák nem férhetnek hozzá az Azure AD-kezeléshez az Azure Portalon, és összezavarodhatnak. Lépjen a felhasználói beállítások az Azure AD felügyeleti portálon a hozzáférés korlátozásához:
 
 ![Felügyeleti portál korlátozott hozzáférés](./media/active-directory-ops-guide/active-directory-ops-img13.png)

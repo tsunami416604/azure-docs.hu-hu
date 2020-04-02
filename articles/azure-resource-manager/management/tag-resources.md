@@ -2,13 +2,13 @@
 title: Erőforrások, erőforráscsoportok és előfizetések címkézése logikai szervezethez
 description: Bemutatja, hogyan alkalmazhat címkéket az Azure-erőforrások számlázáshoz és kezeléshez való rendszerezéséhez.
 ms.topic: conceptual
-ms.date: 03/20/2020
-ms.openlocfilehash: ffc97df0923e26c3abf0eed8e7810f3b1dc61ed2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 76f9f61b3fe7002508bbd884f427efcfee698579
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80132209"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548495"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Címkék használata az Azure-erőforrások és a felügyeleti hierarchia rendszerezéséhez
 
@@ -20,7 +20,7 @@ A címkézési stratégia megvalósításával kapcsolatos javaslatokaz [Erőfor
 
 ## <a name="required-access"></a>Szükséges hozzáférés
 
-Címkék erőforrásra való alkalmazásához írási hozzáféréssel kell rendelkeznie a **Microsoft.Resources/tags** erőforrástípushoz. A **Tag közreműködő** szerepkör lehetővé teszi, hogy címkéket alkalmazzon egy entitásra anélkül, hogy magának az entitásnak kellene hozzáférnie.
+Címkék erőforrásra való alkalmazásához írási hozzáféréssel kell rendelkeznie a **Microsoft.Resources/tags** erőforrástípushoz. A [Tag közreműködő](../../role-based-access-control/built-in-roles.md#tag-contributor) szerepkör lehetővé teszi, hogy címkéket alkalmazzon egy entitásra anélkül, hogy magának az entitásnak kellene hozzáférnie. Jelenleg a címke közreműködői szerepkör nem alkalmazhat címkéket az erőforrásokra vagy erőforráscsoportokra a portálon keresztül. Címkéket alkalmazhat az előfizetésekre a portálon keresztül. Támogatja az összes címke műveletek et PowerShell és a REST API-n keresztül.  
 
 A [közreműködői](../../role-based-access-control/built-in-roles.md#contributor) szerepkör is biztosítja a szükséges hozzáférést a címkék alkalmazása bármely entitásra. Ha csak egy erőforrástípusra szeretne címkéket alkalmazni, használja az erőforrás közreműködői szerepkörét. Ha például címkéket szeretne alkalmazni a virtuális gépekre, használja a [Virtuálisgép közreműködőjét.](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
 
@@ -28,7 +28,7 @@ A [közreműködői](../../role-based-access-control/built-in-roles.md#contribut
 
 ### <a name="apply-tags"></a>Címkék alkalmazása
 
-Az Azure PowerShell két parancsot kínál a címkék alkalmazásához : [New-AzTag](/powershell/module/az.resources/new-aztag) és [Update-AzTag.](/powershell/module/az.resources/update-aztag) Ezeknek a parancsoknak a használatához az Azure PowerShell 3.6.1-es vagy újabb verzióinak is rendelkeznie kell.
+Az Azure PowerShell két parancsot kínál a címkék alkalmazásához : [New-AzTag](/powershell/module/az.resources/new-aztag) és [Update-AzTag.](/powershell/module/az.resources/update-aztag) Az Az.Resources modul 1.12.0 vagy újabb. A verziót a `Get-Module Az.Resources`segítségével ellenőrizheti. Telepítheti ezt a modult, vagy [telepítheti az Azure PowerShell](/powershell/azure/install-az-ps) 3.6.1-es vagy újabb.
 
 A **New-AzTag** felülírja az erőforrás, erőforráscsoport vagy előfizetés összes címkéjét. A parancs hívásakor adja át a címzni kívánt entitás erőforrásazonosítóját.
 

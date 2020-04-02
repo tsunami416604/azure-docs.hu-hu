@@ -1,15 +1,15 @@
 ---
 title: A Blockchain Data Manager konfigurálása az Azure Portal használatával - Azure Blockchain Szolgáltatás
 description: Az Azure Portalon keresztül létrehozhatja és kezelheti a Blockchain Data Manager for Azure Blockchain Szolgáltatást.
-ms.date: 11/04/2019
+ms.date: 03/30/2020
 ms.topic: article
-ms.reviewer: chroyal
-ms.openlocfilehash: 03c22a7a23f1579a846746f21ce048b3425399c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: ravastra
+ms.openlocfilehash: beacef0660a253c90afb507618e8a1742f0c9d2d
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79273162"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529601"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>A Blockchain Data Manager konfigurálása az Azure Portallal
 
@@ -22,7 +22,7 @@ A Blockchain Data Manager-példány konfigurálásához:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Teljes [rövid útmutató: Blockchain-tag létrehozása az Azure Portalon](create-member.md) vagy a [gyorsútmutatóban: Hozzon létre egy Azure Blockchain Service Blockchain-tagot az Azure CLI használatával](create-member-cli.md)
+* Teljes [gyorsútmutató: Hozzon létre egy blockchain tagot az Azure Portalon](create-member.md) vagy a [gyorsútmutatóban: Hozzon létre egy Azure Blockchain Service blockchain-tagot az Azure CLI használatával.](create-member-cli.md) Az Azure Blockchain Service *Standard* tier használata esetén ajánlott blockchain data manager használata.
 * [Eseményrács témakörének](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) létrehozása
 * Információ [az Eseménykezelőkről az Azure Event Gridben](../../event-grid/event-handlers.md)
 

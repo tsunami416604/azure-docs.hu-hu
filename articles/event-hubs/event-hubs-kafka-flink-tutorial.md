@@ -1,6 +1,6 @@
 ---
 title: Az Apache Flink for Apache Kafka használata – Azure Event Hubs | Microsoft dokumentumok
-description: Ez a cikk arról nyújt tájékoztatást, hogyan lehet csatlakoztatni az Apache Flinket egy Apache Kafka-kompatibilis Azure-eseményközponthoz
+description: Ez a cikk az Apache Flink Azure-eseményközponthoz való csatlakoztatásáról nyújt tájékoztatást.
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: db877279bcfa7e132841e342cfc25b66bb3ec384
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ab542e1328bb986f53d31e2eca75007cf1e0c75
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283599"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521801"
 ---
 # <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>Az Apache Flink használata az Apache Kafkához készült Event Hubs szolgáltatással
 Ez az oktatóanyag bemutatja, hogyan csatlakoztathatja az Apache Flinket egy eseményközponthoz a protokollügyfelek módosítása vagy a saját fürtök futtatása nélkül. Az Azure Event Hubs támogatja az [Apache Kafka 1.0-s verzióját.](https://kafka.apache.org/10/documentation.html).
@@ -48,7 +48,7 @@ Az oktatóanyag befejezéséhez győződjön meg arról, hogy a következő elő
 
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs-névtér létrehozása
 
-Az Event Hubs névtér bármely Event Hubs szolgáltatásból történő küldéséhez vagy fogadásához szükséges. Az Event Hubs Kafka-végpontok beszerzésével kapcsolatos további információkért tekintse meg a [Kafka-kompatibilis eseményközpontok](event-hubs-create.md) létrehozása című témakört. Győződjön meg arról, hogy másolja az Event Hubs kapcsolati karakterláncot későbbi használatra.
+Az Event Hubs névtér bármely Event Hubs szolgáltatásból történő küldéséhez vagy fogadásához szükséges. A névtér és az eseményközpont létrehozásáról az [Eseményközpont létrehozása](event-hubs-create.md) című témakörben talál útmutatást. Győződjön meg arról, hogy másolja az Event Hubs kapcsolati karakterláncot későbbi használatra.
 
 ## <a name="clone-the-example-project"></a>A példaprojekt klónozása
 
@@ -88,11 +88,11 @@ mvn clean package
 mvn exec:java -Dexec.mainClass="FlinkTestProducer"
 ```
 
-A gyártó most megkezdi az események küldését a Kafka-kompatibilis Event Hub-nak a témában, `test` és kinyomtatja az eseményeket az stdout-ra.
+A gyártó most megkezdi az események küldését az eseményközpontba a témában, `test` és kinyomtatja az eseményeket az stdout-ra.
 
 ## <a name="run-flink-consumer"></a>A Flink-fogyasztó futtatása
 
-A megadott fogyasztói példában fogadhat üzeneteket a Kafka-kompatibilis eseményközpontokból.
+A megadott fogyasztói példában fogadhat üzeneteket az eseményközpontból. 
 
 ### <a name="provide-an-event-hubs-kafka-endpoint"></a>Eseményközpontok Kafka-végpontjának biztosítása
 
@@ -136,7 +136,7 @@ Az Event Hubsszal és a Kafkához készült Event Hubsszal kapcsolatos további 
 
 - [Ismerkedés az Event Hubs szolgáltatással](event-hubs-what-is-event-hubs.md)
 - [Az Apache Kafkához készült Event Hubs](event-hubs-for-kafka-ecosystem-overview.md)
-- [Kafka-kompatibilis eseményközpont létrehozása](event-hubs-create.md)
+- [Eseményközpont létrehozása](event-hubs-create.md)
 - [Streamelés az Event Hubsba a Kafka-alkalmazásokból](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 - [Kafka-közvetítő tükrözése egy eseményközpontba](event-hubs-kafka-mirror-maker-tutorial.md)
 - [Apache Spark csatlakoztatása egy eseményközponthoz](event-hubs-kafka-spark-tutorial.md)

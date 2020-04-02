@@ -1,15 +1,15 @@
 ---
 title: A Blockchain Data Manager konfigurálása az Azure CLI - Azure Blockchain szolgáltatás használatával
 description: Blockchain Data Manager azure blockchain szolgáltatás létrehozása és kezelése az Azure CLI használatával
-ms.date: 11/04/2019
+ms.date: 03/30/2020
 ms.topic: article
-ms.reviewer: chroyal
-ms.openlocfilehash: a8061aad6d6a1513de70e7c2bc57aa109c666611
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: ravastra
+ms.openlocfilehash: 5ceca96f760ab62ca7f3df9ad26139b9b4a3e5be
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74455942"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529592"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>A Blockchain Data Manager konfigurálása az Azure CLI-vel
 
@@ -26,7 +26,7 @@ A Blockchain Data Manager-példány konfigurálásához:
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Telepítse a legújabb [Azure CLI-t,](https://docs.microsoft.com/cli/azure/install-azure-cli) és a használatával jelentkezett `az login`be.
-* Teljes [rövid útmutató: A Visual Studio-kód használatával csatlakozhat az Azure Blockchain Service konzorciumi hálózatához](connect-vscode.md)
+* Teljes [rövid útmutató: A Visual Studio-kód használatával csatlakozhat egy Azure Blockchain Service konzorciumi hálózathoz.](connect-vscode.md) Az Azure Blockchain Service *Standard* tier használata esetén ajánlott blockchain data manager használata.
 * [Eseményrács témakörének](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) létrehozása
 * Információ [az Eseménykezelőkről az Azure Event Gridben](../../event-grid/event-handlers.md)
 

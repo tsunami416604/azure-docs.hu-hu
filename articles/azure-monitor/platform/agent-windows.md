@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 21efb16cf519d4bcad520af1c7d8818f36a77218
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 65a6f51d0eef28ea33adcc755d3d51f1e06a5341
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275034"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80528340"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Windows-számítógépek csatlakoztatása az Azure Monitorhoz
 
-A virtuális gépek vagy fizikai számítógépek figyeléséhez és kezeléséhez a helyi adatközpontban vagy más felhőkörnyezetben az Azure Monitor segítségével telepítenie kell a Log Analytics-ügynököt (más néven a Microsoft Monitoring Agent (MMA)) és konfigurálnia kell jelentést készíthet egy vagy több Log Analytics-munkaterületnek. Az ügynök is támogatja a hibrid Runbook feldolgozó szerepkör az Azure Automation.  
+A virtuális gépek vagy fizikai számítógépek figyeléséhez és kezeléséhez a helyi adatközpontban vagy más felhőalapú környezetben az Azure Monitor segítségével telepítenie kell a Log Analytics-ügynököt (más néven a Microsoft Monitoring Agent (MMA)), és konfigurálnia kell, hogy egy vagy több Log Analytics-munkaterületen jelentsen. Az ügynök is támogatja a hibrid Runbook feldolgozó szerepkör az Azure Automation.  
 
 Egy figyelt Windows-számítógépen az ügynök microsoftfigyelési ügynök szolgáltatásként szerepel. A Microsoft Monitoring Agent szolgáltatás naplófájlokból és Windows-eseménynaplóból, teljesítményadatokból és egyéb telemetriai adatokból gyűjti az eseményeket. Még akkor is, ha az ügynök nem tud kommunikálni az Azure Monitor azt jelenti, hogy az ügynök továbbra is fut, és várólistára helyezi az összegyűjtött adatokat a felügyelt számítógép lemezén. A kapcsolat visszaállításakor a Microsoft Monitoring Agent szolgáltatás elküldi az összegyűjtött adatokat a szolgáltatásnak.
 
@@ -32,7 +32,7 @@ Az ügynök az alábbi módszerek egyikével telepíthető. A legtöbb esetben e
 
 Ha úgy kell konfigurálnia az ügynököt, hogy egynél több munkaterületnek jelentsen, ez nem hajtható végre a kezdeti telepítés során, csak ezt követően, a Vezérlőpulton vagy a PowerShellben a beállítások frissítésével, a [munkaterület hozzáadása vagy eltávolítása](agent-manage.md#adding-or-removing-a-workspace)című részében leírtak szerint.  
 
-A támogatott konfiguráció megismeréséhez tekintse meg a [támogatott Windows operációs rendszereket](log-analytics-agent.md#supported-windows-operating-systems) és a [hálózati tűzfalkonfigurációkat](log-analytics-agent.md#network-firewall-requirements) ismertető részt.
+A támogatott konfiguráció megismeréséhez tekintse meg a [támogatott Windows operációs rendszereket](log-analytics-agent.md#supported-windows-operating-systems) és a [hálózati tűzfalkonfigurációkat](log-analytics-agent.md#firewall-requirements) ismertető részt.
 
 ## <a name="obtain-workspace-id-and-key"></a>A munkaterület-azonosító és -kulcs lekérése
 A Windows Log Analytics-ügynök telepítése előtt szüksége van a munkaterület-azonosítóra és a kulcsra a Log Analytics-munkaterülethez.  Erre az információra az egyes telepítési módszerek beállítása során van szükség az ügynök megfelelő konfigurálásához és annak biztosításához, hogy sikeresen kommunikáljon az Azure Monitorral az Azure kereskedelmi és az Egyesült Államok kormányzati felhőjében. 
@@ -136,44 +136,44 @@ Az ügynökcsomag 32 bites és 64 bites verziói különböző termékkódokkal 
 Ha a termékkódot közvetlenül az ügynöktelepítő csomagból szeretné lekérni, az Orca.exe programot a [Windows Installer Developers Windows SDK-összetevőiből](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) használhatja, amely a Windows szoftverfejlesztői készlet összetevője, vagy a PowerShellt a Microsoft Valuable Professional (MVP) által írt [példaparancsfájlt](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) követve használhatja.  Mindkét megközelítésnél először ki kell bontania a **MOMagent.msi** fájlt az MMASetup telepítőcsomagból.  Ez az első lépés elején, az [Ügynök telepítése parancssorból](#install-the-agent-using-the-command-line)című szakaszban látható.  
 
 1. Importálja az xPSDesiredStateConfiguration DSC modult az Azure Automationbe. [https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration)  
-2.  Hozzon létre Azure Automation változóeszközöket *OPSINSIGHTS_WS_ID* és *OPSINSIGHTS_WS_KEY.* Állítsa be *OPSINSIGHTS_WS_ID* a Log Analytics-munkaterület-azonosítójára, és állítsa be a munkaterület elsődleges kulcsának *OPSINSIGHTS_WS_KEY.*
-3.  Másolja a parancsfájlt mmAgent.ps1 fájlba.
+1. Hozzon létre Azure Automation változóeszközöket *OPSINSIGHTS_WS_ID* és *OPSINSIGHTS_WS_KEY.* Állítsa be *OPSINSIGHTS_WS_ID* a Log Analytics-munkaterület-azonosítójára, és állítsa be a munkaterület elsődleges kulcsának *OPSINSIGHTS_WS_KEY.*
+1. Másolja a parancsfájlt mmAgent.ps1 fájlba.
 
-    ```powershell
-    Configuration MMAgent
-    {
-        $OIPackageLocalPath = "C:\Deploy\MMASetup-AMD64.exe"
-        $OPSINSIGHTS_WS_ID = Get-AutomationVariable -Name "OPSINSIGHTS_WS_ID"
-        $OPSINSIGHTS_WS_KEY = Get-AutomationVariable -Name "OPSINSIGHTS_WS_KEY"
+   ```powershell
+   Configuration MMAgent
+   {
+       $OIPackageLocalPath = "C:\Deploy\MMASetup-AMD64.exe"
+       $OPSINSIGHTS_WS_ID = Get-AutomationVariable -Name "OPSINSIGHTS_WS_ID"
+       $OPSINSIGHTS_WS_KEY = Get-AutomationVariable -Name "OPSINSIGHTS_WS_KEY"
 
-        Import-DscResource -ModuleName xPSDesiredStateConfiguration
-        Import-DscResource -ModuleName PSDesiredStateConfiguration
+       Import-DscResource -ModuleName xPSDesiredStateConfiguration
+       Import-DscResource -ModuleName PSDesiredStateConfiguration
 
-        Node OMSnode {
-            Service OIService
-            {
-                Name = "HealthService"
-                State = "Running"
-                DependsOn = "[Package]OI"
-            }
+       Node OMSnode {
+           Service OIService
+           {
+               Name = "HealthService"
+               State = "Running"
+               DependsOn = "[Package]OI"
+           }
 
-            xRemoteFile OIPackage {
-                Uri = "https://go.microsoft.com/fwlink/?LinkId=828603"
-                DestinationPath = $OIPackageLocalPath
-            }
+           xRemoteFile OIPackage {
+               Uri = "https://go.microsoft.com/fwlink/?LinkId=828603"
+               DestinationPath = $OIPackageLocalPath
+           }
 
-            Package OI {
-                Ensure = "Present"
-                Path  = $OIPackageLocalPath
-                Name = "Microsoft Monitoring Agent"
-                ProductId = "8A7F2C51-4C7D-4BFD-9014-91D11F24AAE2"
-                Arguments = '/C:"setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_ID=' + $OPSINSIGHTS_WS_ID + ' OPINSIGHTS_WORKSPACE_KEY=' + $OPSINSIGHTS_WS_KEY + ' AcceptEndUserLicenseAgreement=1"'
-                DependsOn = "[xRemoteFile]OIPackage"
-            }
-        }
-    }
+           Package OI {
+               Ensure = "Present"
+               Path  = $OIPackageLocalPath
+               Name = "Microsoft Monitoring Agent"
+               ProductId = "8A7F2C51-4C7D-4BFD-9014-91D11F24AAE2"
+               Arguments = '/C:"setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_ID=' + $OPSINSIGHTS_WS_ID + '      OPINSIGHTS_WORKSPACE_KEY=' + $OPSINSIGHTS_WS_KEY + ' AcceptEndUserLicenseAgreement=1"'
+               DependsOn = "[xRemoteFile]OIPackage"
+           }
+       }
+   }
 
-    ```
+   ```
 
 4. Frissítse `ProductId` a parancsfájl értékét az ügynöktelepítési csomag legújabb verziójából kinyert termékkóddal a korábban ajánlott módszerekkel. 
 5. [Importálja az MMAgent.ps1 konfigurációs parancsfájlt](../../automation/automation-dsc-getting-started.md#importing-a-configuration-into-azure-automation) az Automation-fiókba. 

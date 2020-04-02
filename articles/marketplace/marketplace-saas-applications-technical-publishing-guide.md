@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: kevidal
-ms.openlocfilehash: 2c1cb755b62812336a306994f6820573130815e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 641297ea74a08dea163cf768b8e9b245348824a4
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288359"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80544280"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>Az SaaS-alkalmazások ajánlat-közzétételi útmutatója
 
@@ -25,8 +25,8 @@ Az SaaS-alkalmazások mindkét Azure Storefrontban elérhetők Az alábbi tábl�
 
 | Kirakati lehetőség | Listázási | Próba/tranzakció |  
 | --- | --- | --- |  
-| AppSource | Igen (Kapcsolat) | Igen (PowerBI/Dynamics) |
-| Azure piactér | Nem | Igen (SaaS-alkalmazások) |   
+| AppSource | Igen | Igen |
+| Azure piactér | Nem | Igen |   
 
 **Lista:**  A Listing közzétételi lehetőség egy Kapcsolat felvételi ajánlattípusból áll, és akkor használatos, ha a próba- vagy tranzakciószintű részvétel nem valósítható meg. Ennek a megközelítésnek az az előnye, hogy lehetővé teszi a piacon lévő megoldással rendelkező megjelenítők számára, hogy azonnal elkezdjék az érdeklődőket, amelyek et üzletté alakíthatnak, hogy növeljék a vállalkozását.  
 **Próba/tranzakció:**  Az ügyfélnek lehetősége van arra, hogy közvetlenül megvásárolja vagy próbaverziót kérjen az Ön megoldásához. A próbaverzió sokkal nagyobb mértékben növeli az ügyfelek számára kínált elköteleződési szintet, és lehetővé teszi az ügyfelek számára, hogy vásárlás előtt feltárják a megoldást. A próbaverziós élménynek nagyobb esélye idái lesznek a kirakatokban való promócióra, és több és gazdagabb érdeklődőt kell várnia az ügyfelek elköteleződésétől. A próbaverzióknak tartalmazniuk kell legalább a próbaidőszak alatt nyújtott ingyenes támogatást.  
@@ -95,7 +95,7 @@ Ezenkívül az Azure Active Directory biztosít egy helyet a szolgáltatásfriss
 
 ## <a name="using-azure-active-directory-to-enable-trials"></a>A próbaverziók engedélyezése az Azure Active Directory használatával  
 
-A Microsoft hitelesíti az összes Marketplace-felhasználót az Azure AD-vel, így amikor egy hitelesített felhasználó átkattint a Marketplace-en lévő próbaverziós adatlapra, és átirányítja a próbaverziós környezetbe, a felhasználót közvetlenül egy próbaverzióba helyezheti anélkül, hogy további bejelentkezési lépés. Az alkalmazás által az Azure AD-től a hitelesítés során kapott jogkivonat értékes felhasználói adatokat tartalmaz, amelyek segítségével felhasználói fiókot hozhat létre az alkalmazásban, lehetővé téve a kiépítési élmény automatizálását és a konverzió valószínűségének növelését. A jogkivonatról további információt a [Mintajogtok című témakörben talál.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)
+A Microsoft hitelesíti az összes Marketplace-felhasználót az Azure AD-vel, így amikor egy hitelesített felhasználó a Marketplace-en lévő próbaverziós adatlapra kattint, és átirányítja a próbaverziós környezetbe, a felhasználót közvetlenül egy próbaverzióba helyezheti anélkül, hogy további bejelentkezési lépésre lenne szükség. Az alkalmazás által az Azure AD-től a hitelesítés során kapott jogkivonat értékes felhasználói adatokat tartalmaz, amelyek segítségével felhasználói fiókot hozhat létre az alkalmazásban, lehetővé téve a kiépítési élmény automatizálását és a konverzió valószínűségének növelését. A jogkivonatról további információt a [Mintajogtok című témakörben talál.](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)
 
 Az Azure AD használatával egy kattintásos hitelesítést engedélyez az alkalmazáshoz vagy a próbaverzióhoz, tegye a következőket:  
 * Egyszerűsíti az ügyfélélményt a Marketplace-ről a próbaverzióra.  

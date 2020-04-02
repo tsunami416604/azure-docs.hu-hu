@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
-ms.openlocfilehash: 6bc636b751d12bdb576e54f26536ac0045839229
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 090446d286b38a0bfcbde4ed9e77235050b36417
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70137338"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547701"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK SQL API-hoz: Kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.locfileid: "70137338"
 > * [Aszinkron Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [Többi](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
 > * [Tömeges végrehajtó - .NET](sql-api-sdk-bulk-executor-dot-net.md)
@@ -35,8 +35,8 @@ ms.locfileid: "70137338"
 |**SDK letöltése**|[PyPI](https://pypi.org/project/azure-cosmos)|
 |**API-dokumentáció**|[Python API referenciadokumentációja](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python)|
 |**SDK telepítési utasítások**|[Python SDK telepítési utasítások](https://github.com/Azure/azure-cosmos-python)|
-|**Hozzájárulás az SDK-hoz**|[Github](https://github.com/Azure/azure-cosmos-python)|
-|**Első lépések**|[A Python SDK – első lépések](sql-api-python-application.md)|
+|**Hozzájárulás az SDK-hoz**|[GitHub](https://github.com/Azure/azure-cosmos-python)|
+|**Bevezetés**|[A Python SDK – első lépések](sql-api-python-application.md)|
 |**Jelenlegi támogatott platform**|[Python 2.7](https://www.python.org/downloads/) és [Python 3.5](https://www.python.org/downloads/)|
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
@@ -84,7 +84,7 @@ ms.locfileid: "70137338"
 
 ### <a name="210"></a><a name="2.1.0"/>2.1.0
 * Az összesítési lekérdezések támogatása hozzáadva (DARAB, MIN, MAX, SZUM és AVG).
-* Hozzáadott egy lehetőséget az SSL-ellenőrzés letiltására, amikor cosmos DB emulátor ellen fut.
+* Hozzáadott egy lehetőséget a TLS-ellenőrzés letiltására, amikor cosmos DB emulátor ellen fut.
 * Eltávolította a korlátozás függő kérelmek modul pontosan 2.10.0.
 * A particionált gyűjtemények minimális átviteli hatása 10 100 RU/s-ról 2500 RU/s-ra csökkent.
 * A parancsfájlnaplózás engedélyezésének támogatása a tárolt eljárás végrehajtása során.
@@ -102,7 +102,7 @@ ms.locfileid: "70137338"
 ### <a name="190"></a><a name="1.9.0"/>1.9.0
 * Újrapróbálkozási szabályzat támogatása a szabályozott kérelmekhez hozzáadva. (A szabályozott kérelmek túl nagy kivételt kapnak, hibakód: 429.) Alapértelmezés szerint az Azure Cosmos DB újrapróbálkozik kilenc alkalommal minden kérelmet, ha hibakód 429-es hibakód merül fel, tiszteletben tartva az újrapróbálkozási idő után a válasz fejlécében. A rögzített újrapróbálkozási időmost már beállítható a ConnectionPolicy objektum Újrapróbálkozási tulajdonságának részeként, ha figyelmen kívül szeretné hagyni a kiszolgáló által az újrapróbálkozások között visszaadott újrapróbálkozási időt. Az Azure Cosmos DB most antól legfeljebb 30 másodpercet vár minden egyes szabályozás alatt álló kérelemre (az újrapróbálkozások számától függetlenül), és a 429-es hibakóddal adja vissza a választ. Ez az idő a ConnectionPolicy objektum ÚjrapróbálkozásI beállítások tulajdonságában is felülbírálható.
 * A Cosmos DB most antól x-ms-throttle-retry-count és x-ms-throttle-retry-wait-time-ms a válaszfejlécek minden kérelemben a szabályozás újrapróbálkozások számát és a kérelem által az újrapróbálkozások között várakozó összesített időt adja vissza.
-* Eltávolította a RetryPolicy osztályt és a document_client osztályban elérhetőnek megfelelő tulajdonságot (retry_policy), és ehelyett bevezetett egy RetryOptions osztályt, amely a RetryOptions tulajdonságot a ConnectionPolicy osztályban, amely a alapértelmezett újrapróbálkozási beállításokat.
+* Eltávolította a RetryPolicy osztályt és a document_client osztályban elérhetőnek megfelelő tulajdonságot (retry_policy), és ehelyett bevezetett egy RetryOptions osztályt, amely a ConnectionPolicy osztály RetryOptions tulajdonságát teszi ki, amely az alapértelmezett újrapróbálkozási beállítások egy részének felülbírálására használható.
 
 ### <a name="180"></a><a name="1.8.0"/>1.8.0
 * Hozzáadva a többrégiós adatbázisfiókok támogatása.

@@ -1,5 +1,5 @@
 ---
-title: 'Interoperabilitás az Azure háttérkapcsolati funkcióiban: Tesztelés beállítása | Microsoft dokumentumok'
+title: 'Interoperabilitás az Azure-ban : Tesztbeállítás | Microsoft dokumentumok'
 description: Ez a cikk egy tesztbeállításokat ismertet, amelyekkel elemezheti az ExpressRoute, a helyek közötti VPN és az Azure virtuális hálózati társviszony-létesítése közötti interoperabilitást.
 documentationcenter: na
 services: networking
@@ -10,14 +10,14 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 0cbd4b620a03ed26e95679cf7cb1abef277a9471
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3aec41a145d2c94a45a453393831902069b9c41b
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873795"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80518193"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-test-setup"></a>Együttműködés az Azure háttérkapcsolati funkcióiban: Tesztelés beállítása
+# <a name="interoperability-in-azure--test-setup"></a>Interoperabilitás az Azure-ban : Tesztbeállítás
 
 Ez a cikk egy tesztbeállításokat ismertet, amelyekkel elemezheti, hogy az Azure hálózati szolgáltatások hogyan működnek össze a vezérlősík és az adatsík szintjén. Röviden nézzük meg az Azure hálózati összetevőit:
 

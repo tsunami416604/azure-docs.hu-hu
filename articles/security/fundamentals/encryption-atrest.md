@@ -3,7 +3,7 @@ title: Microsoft Azure data encryption-at-in-in | Microsoft dokumentumok
 description: Ez a cikk áttekintést nyújt a Microsoft Azure inaktív adattitkosításáról, az általános képességekről és az általános szempontokról.
 services: security
 documentationcenter: na
-author: barclayn
+author: msmbaldwin
 manager: barbkess
 editor: TomSh
 ms.assetid: 9dcb190e-e534-4787-bf82-8ce73bf47dba
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/23/2020
-ms.author: barclayn
-ms.openlocfilehash: d8aa643dcf9734ac983c9c4c0d53bda24ce4688d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mbaldwin
+ms.openlocfilehash: 42b83963dc4996a7347d57be712451086fa79b26
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80125073"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548630"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-adatok titkosítása in-rest
 
@@ -125,13 +125,13 @@ A kiszolgálóoldali titkosítás inaktív modellek mindegyike a kulcskezelés m
 
 #### <a name="server-side-encryption-using-service-managed-keys"></a>Kiszolgálóoldali titkosítás szolgáltatás által kezelt kulcsok használatával
 
-Sok ügyfél számára az alapvető követelmény annak biztosítása, hogy az adatok titkosítva legyenek, amikor az inkban van. A szolgáltatás által felügyelt kulcsokat használó kiszolgálóoldali titkosítás lehetővé teszi ezt a modellt, mivel lehetővé teszi az ügyfelek számára, hogy megjelölje az adott erőforrást (tárfiók, SQL DB stb.) titkosításra, és hagyja az összes kulcsfontosságú kezelési szempontot, például a kulcskiállítást, az elforgatást és a biztonsági mentést a Microsoftnak . A legtöbb inaktív titkosítást támogató Azure-szolgáltatások általában támogatja ezt a modellt a titkosítási kulcsok kezelésének azure-ba való kiszervezése. Az Azure-erőforrás-szolgáltató létrehozza a kulcsokat, biztonságos tárolóba helyezi őket, és szükség esetén lekéri azokat. Ez azt jelenti, hogy a szolgáltatás teljes hozzáféréssel rendelkezik a kulcsokhoz, és a szolgáltatás teljes hozzáféréssel rendelkezik a hitelesítő adatok életciklusának kezelése felett.
+Sok ügyfél számára az alapvető követelmény annak biztosítása, hogy az adatok titkosítva legyenek, amikor az inkban van. A szolgáltatás által felügyelt kulcsokat használó kiszolgálóoldali titkosítás lehetővé teszi ezt a modellt, mivel lehetővé teszi az ügyfelek számára, hogy megjelölje az adott erőforrást (tárfiók, SQL DB stb.) titkosításra, és az összes kulcskezelési szempontot, például a kulcskiállítást, az elforgatást és a biztonsági mentést a Microsoftnak hagyja. A legtöbb inaktív titkosítást támogató Azure-szolgáltatások általában támogatja ezt a modellt a titkosítási kulcsok kezelésének azure-ba való kiszervezése. Az Azure-erőforrás-szolgáltató létrehozza a kulcsokat, biztonságos tárolóba helyezi őket, és szükség esetén lekéri azokat. Ez azt jelenti, hogy a szolgáltatás teljes hozzáféréssel rendelkezik a kulcsokhoz, és a szolgáltatás teljes hozzáféréssel rendelkezik a hitelesítő adatok életciklusának kezelése felett.
 
 ![Kezelt](./media/encryption-atrest/azure-security-encryption-atrest-fig4.png)
 
 A szolgáltatás által felügyelt kulcsokat használó kiszolgálóoldali titkosítás ezért gyorsan lecímezi annak szükségességét, hogy a titkosítás inaktív állapotban legyen, és az ügyfél számára alacsony többletterhelést jelent. Ha egy ügyfél általában megnyitja az Azure-portált a cél-előfizetés és erőforrás-szolgáltató számára, és bejelöl egy négyzetet, amely jelzi, hogy az adatoktitkosítást szeretnék. Egyes Erőforrás-kezelők kiszolgálóoldali titkosítása szolgáltatás által felügyelt kulcsokkal alapértelmezés szerint be van kapcsolva.
 
-A Microsoft által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítás azt jelenti, hogy a szolgáltatás teljes hozzáféréssel rendelkezik a kulcsok tárolásához és kezeléséhez. Míg egyes ügyfelek érdemes kezelni a kulcsokat, mert úgy érzik, hogy nagyobb biztonságot, a költségek és a kockázat egy egyéni kulcs tárolási megoldás figyelembe kell venni a modell kiértékelésekor. Sok esetben a szervezet megállapíthatja, hogy az erőforrás-korlátozások vagy a helyszíni megoldások kockázatai nagyobbak lehetnek, mint a titkosítás identatin belüli titkosítási felhőbeli felügyeletének kockázata.  Ez a modell azonban nem feltétlenül elegendő azoknak a szervezeteknek, amelyek nek vannak követelményei a titkosítási kulcsok létrehozásának vagy életciklusának szabályozásához, vagy hogy a szolgáltatás titkosítási kulcsait eltérő személyzet kezelje, mint a szolgáltatást kezelők (azaz a szegregációt a szolgáltatás általános irányítási modelljéből).
+A Microsoft által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítás azt jelenti, hogy a szolgáltatás teljes hozzáféréssel rendelkezik a kulcsok tárolásához és kezeléséhez. Míg egyes ügyfelek érdemes kezelni a kulcsokat, mert úgy érzik, hogy nagyobb biztonságot, a költségek és a kockázat egy egyéni kulcs tárolási megoldás figyelembe kell venni a modell kiértékelésekor. Sok esetben a szervezet megállapíthatja, hogy az erőforrás-korlátozások vagy a helyszíni megoldások kockázatai nagyobbak lehetnek, mint a titkosítás identatin belüli titkosítási felhőbeli felügyeletének kockázata.  Ez a modell azonban nem feltétlenül elegendő azon szervezetek számára, amelyek nek vannak követelményei a titkosítási kulcsok létrehozásának vagy életciklusának szabályozásához, vagy hogy a szolgáltatás titkosítási kulcsait eltérő személyzet kezelje, mint a szolgáltatást kezelők (azaz a kulcskezelés elkülönítése a szolgáltatás általános felügyeleti modelljétől).
 
 ##### <a name="key-access"></a>Kulcshozzáférés
 
@@ -288,7 +288,7 @@ Az Azure SQL Database-adatok ügyféloldali titkosítása a [Mindig titkosított
 | SAP HANA                         | Igen                | Igen, RSA 2048 bites  | -                  |
 | App Service                      | Igen                | Igen                | -                  |
 | Automation                       | Igen                | Igen                | -                  |
-| Azure portál                     | Igen                | Igen                | -                  |
+| Azure Portal                     | Igen                | Igen                | -                  |
 | Logic Apps                       | Igen                | Igen                | -                  |
 | Azure Managed Applications       | Igen                | Igen                | -                  |
 | Service Bus                      | Igen                | Igen                | -                  |

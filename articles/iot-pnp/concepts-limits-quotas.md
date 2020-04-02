@@ -3,16 +3,16 @@ title: Korlátozások és kvóták IoT Plug and Play Preview | Microsoft dokumen
 description: Ismerje meg az IoT Plug and Play előzetes verzió használatakor érvényes korlátokat, kvótákat és szabályozást.
 author: miagdp
 ms.author: miag
-ms.date: 12/26/2019
+ms.date: 04/01/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 48ecaaba6d956efd9da75d0582fa06d231cb3f80
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cce99b7d9de09134fd01afb36c41bce3966e8536
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75531377"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80518166"
 ---
 # <a name="iot-plug-and-play-preview-limits-quotas-and-throttles"></a>IoT Plug and Play előzetes korlátozások, kvóták és szabályozások
 
@@ -27,7 +27,7 @@ A nyilvános előzetes verzióhoz a következő korlátok és kvóták vonatkozn
 | A hubonként regisztrálható eszközképességi modellek (DCM-ek) vagy interfészek száma | 1500 ||
 | Eszközönként regisztrálható összeköttetések maximális száma | 40 ||
 | Eszközönként regisztrálható tartományvezérlők maximális száma | 1 ||
-| Az összeköttetés/DCM fájl maximális mérete | 512 karakter ||
+| Az összeköttetés/DCM fájl maximális mérete | 512 KB ||
 | Az összeköttetés nevének maximális mérete | 256 karakter ||
 | Tulajdonságnév maximális mérete  | 64 bájt, 7 mélységi szint (és az `$iotin`első szint fenntartva) | Megengedett karakterek: a-z, A-Z, 0-9 (nem az első karakter), és aláhúzás. |
 | Egy tulajdonságérték maximális mérete | 512 bájt ||
@@ -39,7 +39,7 @@ A nyilvános előzetes verzióhoz a következő korlátok és kvóták vonatkozn
 
 A nyilvános előzetes verzióban a következő korlátok és kvóták vonatkoznak a modelltárházra:
 
-| Korlátok, korlátozások és fojtószelepek| Érték |
+| Korlátok, korlátozások és fojtószelepek | Érték |
 |-----|-----|
 | Vállalati modelltárolók száma Az Azure Active Directory-bérlőnként | 1 |
 | Engedélyezési kulcsok száma modelltárházonként | 10  |

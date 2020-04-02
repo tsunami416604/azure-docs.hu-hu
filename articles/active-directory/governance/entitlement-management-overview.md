@@ -16,12 +16,12 @@ ms.date: 03/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3deb87fec8241ad6126314f3f6ce5fb9600ad1fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 477bb5430214b497f90e3cb6d5df69f9fcf4035f
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128562"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546159"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Mi az az Azure AD-jogosultságkezelés?
 
@@ -101,7 +101,7 @@ Az alábbi ábra egy példát mutat be a jogosultságkezelés különböző elem
 
 A hozzáférési csomagok nem helyettesítik a hozzáférés-hozzárendelés más mechanizmusait.  Ezek a legmegfelelőbb helyzetekben, mint például a következő:
 
-- Az alkalmazottaknak korlátozott időre van szükségük egy adott feladathoz.  Használhat például csoportalapú licencelést és egy dinamikus csoportot annak biztosítására, hogy minden alkalmazott rendelkezik Exchange Online-postaládával, majd hozzáférési csomagokat használhat olyan helyzetekben, amikor az alkalmazottaknak további hozzáférésre van szükségük, például egy másik részleg erőforrásainak olvasásához. Osztály.
+- Az alkalmazottaknak korlátozott időre van szükségük egy adott feladathoz.  Használhat például csoportalapú licencelést és egy dinamikus csoportot annak biztosítására, hogy minden alkalmazott rendelkezzen Exchange Online-postaládával, majd hozzáférési csomagokat használhat olyan helyzetekben, amikor az alkalmazottaknak további hozzáférésre van szükségük, például egy másik részleg részleg erőforrásainak olvasásához.
 - A hozzáférést az alkalmazott vezetőjének vagy más kijelölt személynek jóvá kell hagynia.
 - A részlegek informatikai közreműködés nélkül kívánják kezelni saját hozzáférési házirendjeiket az erőforrásaikhoz.  
 - Két vagy több szervezet dolgozik együtt egy projekten, és ennek eredményeképpen egy szervezet több felhasználóját kell behozni az Azure AD B2B-n keresztül egy másik szervezet erőforrásainak eléréséhez.
@@ -132,15 +132,16 @@ A jogosultságkezelés és a dokumentáció jobb megértéséhez tekintse vissza
 
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
-Speciális felhők, például az Azure Government, az Azure Germany és az Azure China 21Vianet jelenleg nem érhetők el.
+Speciális felhők, például az Azure Germany és az Azure China 21Vianet, jelenleg nem érhetők el.
 
 ### <a name="how-many-licenses-must-you-have"></a>Hány licenccel kell rendelkeznie?
 
-Győződjön meg arról, hogy a címtár legalább annyi Azure AD Premium P2 licenccel rendelkezik, mint ahány alkalmazottal rendelkezik, akik a következő feladatokat fogják ellátni:
+Győződjön meg arról, hogy a címtár legalább annyi Azure AD Premium P2 licenccel rendelkezik, mint ön:
 
 - Azok a tagfelhasználók, akik hozzáférési csomagot **kérhetnek.**
 - Hozzáférési csomagot kérő tag- és vendégfelhasználók.
 - A hozzáférési csomagra vonatkozó kérelmeket jóváhagyó tag- és vendégfelhasználók.
+- Azok a tag- és vendégfelhasználók, akik közvetlen hozzárendeléssel rendelkeznek egy hozzáférési csomaghoz.
 
 Az Azure AD Premium P2 licencek **nem** szükségesek a következő feladatokhoz:
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/17/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 4b10955a1d3b85acbcae109836bebc03ec04c72c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d73bab76860abf3e9fa442dad44e1ddb66d147a3
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76279366"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519546"
 ---
 Az Azure a következő beépített RBAC-szerepköröket biztosítja a blob- és várólista-adatokhoz való hozzáférés engedélyezéséhez az Azure AD és az OAuth használatával:
 
@@ -24,6 +24,8 @@ Az Azure a következő beépített RBAC-szerepköröket biztosítja a blob- és 
 - [Tárolási várólista-adatolvasó:](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-reader)írásvédett engedélyek et adhat az Azure-várólistáknak.
 - [Tárolási várólista-adatfeldolgozó:](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-processor)Betekintési, beolvasási és törlési engedélyek et adhat az Azure Storage-várólistákban lévő üzenetekhez.
 - [Tárolási várólista-adatok küldése:](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-sender)Az Azure Storage-várólistákban lévő üzenetekhez adjon hozzá engedélyeket.
+
+Az Azure Storage beépített RBAC szerepköreiről az adatszolgáltatások és a felügyeleti szolgáltatás számára részletes en olvassa el az [Azure RBAC beépített szerepkörei](../articles/role-based-access-control/built-in-roles.md#storage) **tárolási szakaszát.** Az Azure-ban engedélyeket biztosító különböző típusú szerepkörökről további információt a [Klasszikus előfizetéses rendszergazdai szerepkörök, az Azure RBAC-szerepkörök és az Azure AD-szerepkörök](../articles/role-based-access-control/rbac-and-directory-admin-roles.md)című témakörben talál.
 
 > [!NOTE]
 > Az RBAC szerepkör-hozzárendelések propagálása akár öt percet is igénybe vehet.

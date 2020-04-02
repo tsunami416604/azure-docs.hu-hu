@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 78a290b1e2984719645fb4d4ff253ab021a0826e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: acf3e6273f98d98d5da55cfb5b044677116c44dc
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299039"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520809"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-portal"></a>Az Azure Database for MySQL adattitkosítása az Azure Portal használatával
 
@@ -65,7 +65,7 @@ Ismerje meg, hogyan használhatja az Azure Portalon az Azure-adatbázis mySQL-he
 
 4. Annak érdekében, hogy az összes fájl (beleértve az ideiglenes fájlokat is) teljesen titkosítva legyen, indítsa újra a kiszolgálót.
 
-## <a name="restore-or-create-a-replica-of-the-server"></a>A kiszolgáló replikájának visszaállítása vagy létrehozása
+## <a name="using-data-encryption-for-restore-or-replica-servers"></a>Adattitkosítás használata visszaállítási vagy replikakiszolgálókhoz
 
 Miután az Azure Database for MySQL titkosítva van az ügyfél által a Key Vaultban tárolt kezelt kulccsal, a kiszolgáló újonnan létrehozott példányais titkosítva lesz. Ezt az új másolatot helyi vagy geo-visszaállítási művelettel, vagy egy replika (helyi/régióközi) művelettel is elkészítheti. Így egy titkosított MySQL szerver, akkor a következő lépéseket, hogy hozzon létre egy titkosított visszaállított szerver.
 
@@ -93,132 +93,6 @@ Miután az Azure Database for MySQL titkosítva van az ügyfél által a Key Vau
 4. A szolgáltatásnév regisztrálása után újra érvényesítse a kulcsot, és a kiszolgáló folytatja a szokásos működését.
 
    ![Képernyőkép a MySQL Azure Database szolgáltatásáról, amely a visszaállított funkciókat mutatja](media/concepts-data-access-and-security-data-encryption/restore-successful.png)
-
-
-## <a name="using-an-azure-resource-manager-template-to-enable-data-encryption"></a>Az Adatok titkosításának engedélyezéséhez Azure Resource Manager-sablon használata
-
-Az Azure Portalon kívül engedélyezheti az adatok titkosítását az Azure Database for MySQL-kiszolgálón az Azure Resource Manager-sablonok használatával az új és a meglévő kiszolgálókhoz.
-
-### <a name="for-a-new-server"></a>Új kiszolgáló esetén
-
-Használja az előre létrehozott Azure Resource Manager-sablonok egyikét a kiszolgáló kiépítéséhez, amelyen engedélyezve van az adattitkosítás: [Példa adattitkosítással](https://github.com/Azure/azure-mysql/tree/master/arm-templates/ExampleWithDataEncryption)
-
-Ez az Azure Resource Manager-sablon létrehoz egy Azure-adatbázist a MySQL-kiszolgálóhoz, és a **keyvault-ot** és a paraméterként átadott **kulcsot** használja az adattitkosítás engedélyezéséhez a kiszolgálón.
-
-### <a name="for-an-existing-server"></a>Meglévő kiszolgáló esetén
-Emellett az Azure Resource Manager-sablonok használatával engedélyezheti az adattitkosítást a meglévő Azure-adatbázisban a MySQL-kiszolgálók számára.
-
-* Adja át az Azure Key Vault-kulcs URI-ját, amelyet korábban másolt a `keyVaultKeyUri` tulajdonság alatt a tulajdonság objektumban.
-
-* Használja *a 2020-01-01-preview API-verzió.*
-
-```json
-{
-  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "location": {
-      "type": "string"
-    },
-    "serverName": {
-      "type": "string"
-    },
-    "keyVaultName": {
-      "type": "string",
-      "metadata": {
-        "description": "Key vault name where the key to use is stored"
-      }
-    },
-    "keyVaultResourceGroupName": {
-      "type": "string",
-      "metadata": {
-        "description": "Key vault resource group name where it is stored"
-      }
-    },
-    "keyName": {
-      "type": "string",
-      "metadata": {
-        "description": "Key name in the key vault to use as encryption protector"
-      }
-    },
-    "keyVersion": {
-      "type": "string",
-      "metadata": {
-        "description": "Version of the key in the key vault to use as encryption protector"
-      }
-    }
-  },
-  "variables": {
-    "serverKeyName": "[concat(parameters('keyVaultName'), '_', parameters('keyName'), '_', parameters('keyVersion'))]"
-  },
-  "resources": [
-    {
-      "type": "Microsoft.DBforMySQL/servers",
-      "apiVersion": "2017-12-01",
-      "kind": "",
-      "location": "[parameters('location')]",
-      "identity": {
-        "type": "SystemAssigned"
-      },
-      "name": "[parameters('serverName')]",
-      "properties": {
-      }
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-05-01",
-      "name": "addAccessPolicy",
-      "resourceGroup": "[parameters('keyVaultResourceGroupName')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.DBforMySQL/servers', parameters('serverName'))]"
-      ],
-      "properties": {
-        "mode": "Incremental",
-        "template": {
-          "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "resources": [
-            {
-              "type": "Microsoft.KeyVault/vaults/accessPolicies",
-              "name": "[concat(parameters('keyVaultName'), '/add')]",
-              "apiVersion": "2018-02-14-preview",
-              "properties": {
-                "accessPolicies": [
-                  {
-                    "tenantId": "[subscription().tenantId]",
-                    "objectId": "[reference(resourceId('Microsoft.DBforMySQL/servers/', parameters('serverName')), '2017-12-01', 'Full').identity.principalId]",
-                    "permissions": {
-                      "keys": [
-                        "get",
-                        "wrapKey",
-                        "unwrapKey"
-                      ]
-                    }
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "[concat(parameters('serverName'), '/', variables('serverKeyName'))]",
-      "type": "Microsoft.DBforMySQL/servers/keys",
-      "apiVersion": "2020-01-01-preview",
-      "dependsOn": [
-        "addAccessPolicy",
-        "[resourceId('Microsoft.DBforMySQL/servers', parameters('serverName'))]"
-      ],
-      "properties": {
-        "serverKeyType": "AzureKeyVault",
-        "uri": "[concat(reference(resourceId(parameters('keyVaultResourceGroupName'), 'Microsoft.KeyVault/vaults/', parameters('keyVaultName')), '2018-02-14-preview', 'Full').properties.vaultUri, 'keys/', parameters('keyName'), '/', parameters('keyVersion'))]"
-      }
-    }
-  ]
-}
-
-```
 
 ## <a name="next-steps"></a>További lépések
 

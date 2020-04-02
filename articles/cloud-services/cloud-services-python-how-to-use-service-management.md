@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: lmazuel
-ms.openlocfilehash: 50501413a63921a9a34be1c04ed259990922b686
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ae44ce77ce480cc1bc56ead5547e003d7d4bb39c
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70141464"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547587"
 ---
 # <a name="use-service-management-from-python"></a>Szolgáltatáskezelés használata a Pythonból
 Ez az útmutató bemutatja, hogyan programozott módon hajthatja végre a Python gyakori szolgáltatáskezelési feladatait. Az [Azure SDK python-ban](https://github.com/Azure/azure-sdk-for-python) található **ServiceManagementService** osztály programozott hozzáférést biztosít az [Azure Portalon][management-portal]elérhető szolgáltatáskezelési funkciók nagy részéhez. Ezzel a funkcióval felhőszolgáltatásokat, központi telepítéseket, adatkezelési szolgáltatásokat és virtuális gépeket hozhat létre, frissíthet és törölhet. Ez a funkció hasznos lehet olyan alkalmazások készítéséhez, amelyek programozott hozzáférést igényelnek a szolgáltatáskezeléshez.
@@ -29,11 +29,11 @@ Az Azure Service Management API programozott hozzáférést biztosít az [Azure 
 
 A Service Management API használatához létre kell [hoznia egy Azure-fiókot.](https://azure.microsoft.com/pricing/free-trial/)
 
-## <a name="concepts"></a><a name="Concepts"> </a>Fogalmak
-Az Azure SDK python-hoz burkolja a [Service Management API,][svc-mgmt-rest-api]amely egy REST API.The Azure SDK for Python wraps the Service Management API , which is a REST API. Minden API-művelet SSL-en keresztül történik, és az X.509 v3-as tanúsítványok használatával kölcsönösen hitelesítik őket. A felügyeleti szolgáltatás az Azure-ban futó szolgáltatásból érhető el. Azt is elérhető közvetlenül az interneten keresztül bármely alkalmazás, amely képes küldeni egy HTTPS-kérelmet, és https-választ kap.
+## <a name="concepts"></a><a name="Concepts"> </a>Alapelvek
+Az Azure SDK python-hoz burkolja a [Service Management API,][svc-mgmt-rest-api]amely egy REST API.The Azure SDK for Python wraps the Service Management API , which is a REST API. Minden API-művelet TLS-en keresztül történik, és az X.509 v3-as tanúsítványok használatával kölcsönösen hitelesítik őket. A felügyeleti szolgáltatás az Azure-ban futó szolgáltatásból érhető el. Azt is elérhető közvetlenül az interneten keresztül bármely alkalmazás, amely képes küldeni egy HTTPS-kérelmet, és https-választ kap.
 
 ## <a name="installation"></a><a name="Installation"> </a>Telepítés
-A cikkben ismertetett összes funkció `azure-servicemanagement-legacy` elérhető a csomagban, amelyet pip használatával telepíthet. A telepítésről további információt (például ha még nem is a Pythont szeretné megtudni) a [Python telepítése és az Azure SDK című](/azure/python/python-sdk-azure-install)témakörben talál.
+A cikkben ismertetett összes funkció `azure-servicemanagement-legacy` elérhető a csomagban, amelyet pip használatával telepíthet. A telepítésről további információt (például ha még nem is a Pythont szeretné megtudni) a [Python telepítése és az Azure SDK című](/azure/developer/python/azure-sdk-install)témakörben talál.
 
 ## <a name="connect-to-service-management"></a><a name="Connect"> </a>Csatlakozás szolgáltatáskezeléshez
 A szolgáltatáskezelési végponthoz való csatlakozáshoz szüksége van az Azure-előfizetés-azonosítóra és egy érvényes felügyeleti tanúsítványra. Az előfizetés-azonosítót az [Azure Portalon][management-portal]keresztül szerezheti be.

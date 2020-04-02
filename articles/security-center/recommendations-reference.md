@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: f0e74a366e8dbb515f2f50748eb4a5c76088a723
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 8f4703330190d3907e9a6e3aead8892fe69e7c13
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398036"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521214"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Biztonsági ajánlások – útmutató
 
@@ -105,7 +105,7 @@ A biztonságos pontszám a Security Center által végrehajtott javaslatok szám
 |**Az automatizálási fiókváltozókat titkosítani kell**|A bizalmas adatok tárolásakor engedélyezze az Automation-fiókváltozó eszközök titkosítását.<br>(Kapcsolódó házirend: A titkosítást engedélyezni kell az Automation-fiók változóin)|Magasság|N|Számítási erőforrások (automatizálási fiók)|
 |**A lemeztitkosítást virtuális gépeken kell alkalmazni**|Titkosítsa a virtuális gép lemezeit az Azure Disk Encryption használatával windowsos és Linuxos virtuális gépeken egyaránt. Az Azure Disk Encryption (ADE) a Windows szabványos BitLocker szolgáltatását és a Linux DM-Crypt funkcióját használja az operációs rendszer és az adatlemez titkosításának biztosításához az adatok védelme és védelme, valamint az ügyfél Azure-kulcstartójában a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítése érdekében. Ha a megfelelőségi és biztonsági követelmény megköveteli, hogy titkosítsa az adatokat végpontok szerint a titkosítási kulcsok, beleértve a titkosítást a rövid élettartamú (helyileg csatlakoztatott ideiglenes) lemez, használja az Azure lemeztitkosítást. Másik lehetőségként alapértelmezés szerint a felügyelt lemezek alapértelmezés szerint inaktív módon vannak titkosítva az Azure Storage Service Encryption használatával, ahol a titkosítási kulcsok microsoft által kezelt kulcsok az Azure-ban. Ha ez megfelel a megfelelőségi és biztonsági követelményeknek, használhatja az alapértelmezett felügyelt lemeztitkosítást, hogy megfeleljen a követelményeknek.<br>(Kapcsolódó házirend: A lemeztitkosítást virtuális gépeken kell alkalmazni)|Magasság|N|Gép|
 |**A virtuális gépeket át kell telepíteni az új Azure Resource Manager-erőforrásokba**|Használja az Azure Resource Manager a virtuális gépek, hogy a biztonsági fejlesztések, mint például: erősebb hozzáférés-vezérlés (RBAC), jobb naplózás, Resource Manager-alapú üzembe helyezés és cégirányítási, hozzáférés a felügyelt identitások, hozzáférés a kulcstartó titkos kulcsok, Az Azure AD-alapú hitelesítés és a címkék és erőforráscsoportok támogatása a könnyebb biztonsági felügyelet.<br>(Kapcsolódó szabályzat: A virtuális gépeket át kell telepíteni az azure Resource Manager új erőforrásaiba)|Alacsony|N|Gép|
-|**A biztonsági rés értékelési megoldását telepíteni kell a virtuális gépekre**|Biztonsági résértékelési megoldás telepítése a virtuális gépekre<br>(Kapcsolódó házirend: A biztonsági rés felmérését virtuális gépekre kell telepíteni)|Közepes|N|Gép|
+|**A biztonsági rés értékelési megoldását telepíteni kell a virtuális gépekre**|Biztonsági résértékelési megoldás telepítése a virtuális gépekre<br>(Kapcsolódó házirend: A biztonsági réseket a biztonsági rések felmérésének megoldásával kell orvosolni)|Közepes|N|Gép|
 |**A biztonsági réseket a biztonsági résfelmérési megoldással kell orvosolni**|Azokat a virtuális gépeket, amelyeknél a biztonsági résfelmérés harmadik féltől származó megoldás van telepítve, folyamatosan értékelik az alkalmazások és az operációs rendszer biztonsági rései alapján. Ha ilyen biztonsági réseket talál, ezek a javaslat részeként további információkért érhetők el.<br>(Kapcsolódó házirend: A biztonsági réseket a biztonsági rések felmérésének megoldásával kell orvosolni)|Magasság|N|Gép|
 |**A gépek biztonsági beállításainak biztonsági réseit ki kell újítani**|A gépek biztonsági beállításainak biztonsági rései a támadások elleni védelem érdekében.<br>(Kapcsolódó házirend: A gépek biztonsági beállításainak biztonsági réseit ki kell újítani)|Alacsony|N|Gép|
 |**A tárolóbiztonsági konfigurációk biztonsági réseit ki kell újítani**|A Docker telepítésével rendelkező gépek biztonsági biztonsági rései a támadások elleni védelem érdekében.<br>(Kapcsolódó házirend: A tárolóbiztonsági konfigurációk biztonsági réseit ki kell újítani)|Magasság|N|Gép|

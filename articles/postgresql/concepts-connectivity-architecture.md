@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: b0af19ec740e96cd572ffe37285d7e58ead83b25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d23a59e97ee3fc935a0d0954bc70b547b727fddc
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76774850"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546597"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Kapcsolódási architektúra a PostgreSQL Azure Database szolgáltatásában
 Ez a cikk ismerteti az Azure Database for PostgreSQL kapcsolatarchitektúra, valamint hogyan a forgalom az Azure Database for PostgreSQL adatbázis-példány az ügyfelek az Azure-on belül és kívül egyaránt.
@@ -35,14 +35,14 @@ Az alábbi táblázat az Azure Database for PostgreSQL átjáró elsődleges és
 | Dél-Brazília | 104.41.11.5, 191.233.201.8, 191.233.200.16  |
 | Közép-Kanada |40.85.224.249  |
 | Kelet-Kanada | 40.86.226.166    |
-| USA középső régiója | 23.99.160.139, 13.67.215.62   |
+| USA középső régiója | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38     |
 | Kelet-Kína | 139.219.130.35    |
 | Kína Keleti 2 | 40.73.82.1  |
 | Észak-Kína | 139.219.15.17    |
 | Kína Észak 2 | 40.73.50.0     |
 | Kelet-Ázsia | 191.234.2.139, 52.175.33.150, 13.75.33.20, 13.75.33.21     |
 | USA keleti régiója | 40.121.158.30, 191.238.6.43  |
-| USA 2. keleti régiója |40.79.84.180, 191.239.224.107, 52.177.185.181   |
+| USA 2. keleti régiója |40.79.84.180, 191.239.224.107, 52.177.185.181, 40.70.144.38, 52.167.105.38  |
 | Közép-Franciaország | 40.79.137.0, 40.79.129.1  |
 | Közép-Németország | 51.4.144.100     |
 | Németország Északkelet | 51.5.144.179  |
@@ -54,7 +54,7 @@ Az alábbi táblázat az Azure Database for PostgreSQL átjáró elsődleges és
 | Dél-Korea középső régiója | 52.231.32.42   |
 | Dél-Korea déli régiója | 52.231.200.86    |
 | USA északi középső régiója | 23.96.178.199, 23.98.55.75, 52.162.104.35, 52.162.104.36    |
-| Észak-Európa | 40.113.93.91, 191.235.193.75    |
+| Észak-Európa | 40.113.93.91, 191.235.193.75, 52.138.224.6, 52.138.224.7    |
 | Dél-Afrika Észak-Afrika  | 102.133.152.0    |
 | Dél-Afrika Nyugati | 102.133.24.0   |
 | USA déli középső régiója |13.66.62.124, 23.98.162.75, 104.214.16.39, 20.45.120.0   |
@@ -64,7 +64,7 @@ Az alábbi táblázat az Azure Database for PostgreSQL átjáró elsődleges és
 | Az Egyesült Királyság déli régiója | 51.140.184.11   |
 | Az Egyesült Királyság nyugati régiója | 51.141.8.11  |
 | USA nyugati középső régiója | 13.78.145.25     |
-| Nyugat-Európa | 40.68.37.158, 191.237.232.75     |
+| Nyugat-Európa | 40.68.37.158, 191.237.232.75, 13.69.105.208  |
 | USA nyugati régiója | 104.42.238.205, 23.99.34.75  |
 | USA nyugati régiója, 2. | 13.66.226.202  |
 ||||

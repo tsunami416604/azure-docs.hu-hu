@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 3ded20f37a394e6adf726ad40c01aa36d41e4e8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e155758d19b45d977fcd087bff0ceb85898f8f8
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299345"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548299"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Az Azure biztonsági tanácsai a hálózat biztonsága terén
 Ez a cikk ismerteti az Azure ajánlott eljárások gyűjteménye a hálózati biztonság növelése érdekében. Ezek az ajánlott eljárások az Azure-hálózatokkal kapcsolatos tapasztalatainkból és az önhöz hasonló ügyfelek tapasztalataiból származnak.
@@ -153,12 +153,12 @@ Azt javasoljuk, hogy a terheléselosztást, amikor csak lehet, és a szolgáltat
 - Csak biztonságos kapcsolatot fogad el, így a kiszolgálóval való titkosítatlan kommunikáció nem elfogadható.
 - Ugyanazon a hosszú ideig futó TCP-kapcsolaton több HTTP-kérelmet igényel, vagy a terheléselosztást különböző háttérkiszolgálókra kell irányítani.
 
-**Terheléselosztási lehetőség:** Használja [az Azure Application Gateway](/azure/application-gateway/application-gateway-introduction)http-webforgalom-terheléselosztót. Az Application Gateway támogatja a végpontok közötti SSL-titkosítást és az [SSL-végződést](/azure/application-gateway/application-gateway-introduction) az átjárón. A webkiszolgálók ezután megszabadulhatnak a titkosítástól és a visszafejtési terheléstől, valamint a háttérkiszolgálókra titkosítatlanul áramló forgalomtól.
+**Terheléselosztási lehetőség:** Használja [az Azure Application Gateway](/azure/application-gateway/application-gateway-introduction)http-webforgalom-terheléselosztót. Az Application Gateway támogatja a végpontok közötti TLS-titkosítást és a [TLS-végződést](/azure/application-gateway/application-gateway-introduction) az átjárón. A webkiszolgálók ezután megszabadulhatnak a titkosítástól és a visszafejtési terheléstől, valamint a háttérkiszolgálókra titkosítatlanul áramló forgalomtól.
 
 **Forgatókönyv:** Be kell töltenie az internetről érkező bejövő kapcsolatokat az Azure virtuális hálózatban található kiszolgálók között. A forgatókönyvek a következők:
 
 - Állapotnélküli alkalmazásokkal rendelkezik, amelyek elfogadják az internetről érkező bejövő kérelmeket.
-- Nem igényel ragadós ülések vagy SSL tehermentesítés. A sticky munkamenetek az alkalmazás terheléselosztásával a kiszolgáló-affinitás elérésére használt módszer.
+- Nem igényel ragadós ülések vagy TLS tehermentesítés. A sticky munkamenetek az alkalmazás terheléselosztásával a kiszolgáló-affinitás elérésére használt módszer.
 
 **Terheléselosztási lehetőség:** Az Azure Portal használatával [hozzon létre egy külső terheléselosztót,](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) amely a bejövő kérelmeket több virtuális gépközött osztja el a magasabb szintű rendelkezésre állás biztosítása érdekében.
 

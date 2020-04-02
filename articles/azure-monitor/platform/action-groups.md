@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 2/18/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 6ba48f3c40e45afa02e03a7589e968cca723118e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9bc191bb27ebb0bac631ef5cfa8ddc34bbd8214e
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79249515"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520896"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Műveletcsoportok létrehozása és kezelése az Azure Portalon
 A műveletcsoport az Azure-előfizetés tulajdonosa által meghatározott értesítési beállítások gyűjteménye. Az Azure Monitor és a Service Health riasztások műveletcsoportok használatával értesíti a felhasználókat, hogy egy riasztás tanusította. A felhasználó igényeitől függően különböző riasztások használhatják ugyanazt a műveletcsoportot vagy különböző műveletcsoportokat. Egy előfizetésben legfeljebb 2000 műveletcsoportot konfigurálhat.
@@ -52,7 +52,7 @@ Az Azure Resource Manager-sablonok műveletcsoportok konfigurálásával kapcsol
 
     1. **Név**: Adja meg a művelet egyedi azonosítóját.
 
-    1. **Művelettípusa:** Válassza az E-mail/SMS/Push/Voice, logic app, webhook, ITSM vagy Automation Runbook lehetőséget.
+    1. **Művelettípusa:** Válassza az Automation Runbook, az Azure Függvény, az E-mail Azure Resource Manager szerepkör, e-mail/SMS/Push/Voice, ITSM, Logic App, Secure Webhook, Webhook.
 
     1. **Részletek:** A művelet típusa alapján adja meg a telefonszámot, e-mail-címet, webhook URI, Azure app, ITSM-kapcsolat, vagy Automation runbook. Az ITSM-művelethez adja meg a **Munkaelemet** és az ITSM eszköz által igényelt egyéb mezőket is.
     

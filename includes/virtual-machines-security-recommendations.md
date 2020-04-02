@@ -2,18 +2,18 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: virtual-machines
-author: barclayn
+author: msmbaldwin
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 11/13/2019
-ms.author: barclayn
+ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: d0ede337f2ae17f28cd02df7ed35919bd9955e7a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df577ab2b5e9658fd55324c8fd6fd008621b4d46
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74048569"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545895"
 ---
 Ez a cikk az Azure virtuális gépek biztonsági javaslatait tartalmazza. Kövesse ezeket az ajánlásokat, hogy segítsen teljesíteni a közös felelősségre vonatkozó modellünkben leírt biztonsági kötelezettségeket. A javaslatok a webalkalmazás-megoldások általános biztonságának javítását is elősegítik. A rról, hogy a Microsoft mit tesz a szolgáltatói feladatok teljesítéséért, olvassa [el a Megosztott felelősségi körök a felhőalapú számítástechnikával kapcsolatban című témakört.](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)
 

@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: 33005bc286f7dc2c0ebed74bd9df0309e71346f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f501eb55f72811063ddf1d8e02a0ce2137d598f3
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73824838"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546312"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>A távoli monitorozási megoldásgyorsító áttekintése
 
@@ -125,9 +125,6 @@ Az ASA-feladatok biztosítják a telemetriai adatokat a csatlakoztatott eszköz�
 ### <a name="azure-time-series-insights"></a>Azure Time Series Insights
 
 [Az Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/) tárolja a telemetriai adatokat a megoldásgyorsítóhoz csatlakoztatott eszközökről. Azt is lehetővé teszi, hogy vizualizálja és lekérdezi az eszköz telemetriai adatokat a megoldás webes felhasználói felületén.
-
-> [!NOTE]
-> A Time Series Insights jelenleg nem érhető el az Azure China felhőben. Az Azure China felhőben az új távoli figyelési megoldásgyorsítók a Cosmos DB-t használják az összes tárhoz.
 
 ### <a name="configuration-microservice"></a>Konfigurációs mikroszolgáltatás
 

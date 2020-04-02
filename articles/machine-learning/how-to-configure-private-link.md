@@ -10,16 +10,18 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: c6593a2746e628c89e20f6ef92a1430bd294e4fe
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: fb70600ad245968377cdebd23a7b531e552bb546
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80438306"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529321"
 ---
-# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Az Azure Private Link konfigurálása egy Azure Machine Learning-munkaterülethez
+# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Az Azure Private Link konfigurálása egy Azure Machine Learning-munkaterülethez (előzetes verzió)
 
-Ebben a dokumentumban megtudhatja, hogyan használhatja az Azure Private Linket az Azure Machine Learning-munkaterülettel. Az Azure Private Link lehetővé teszi, hogy privát végpont használatával csatlakozzon a munkaterülethez. A privát végpont a virtuális hálózaton belüli privát IP-címek készlete. Ezután korlátozhatja a munkaterülethez való hozzáférést, hogy csak a magánjellegű IP-címeken keresztül történjen. A Private Link segít csökkenteni az adatok kiszivárgásának kockázatát. A privát végpontokról az [Azure Private Link](/azure/private-link/private-link-overview) cikkben olvashat bővebben.
+Ebben a dokumentumban megtudhatja, hogyan használhatja az Azure Private Linket az Azure Machine Learning-munkaterülettel. Ez a funkció jelenleg előzetes verzióban érhető el, és az USA keleti régiójában, az USA nyugati régiójában, az USA déli középső régióiban érhető el. 
+
+Az Azure Private Link lehetővé teszi, hogy privát végpont használatával csatlakozzon a munkaterülethez. A privát végpont a virtuális hálózaton belüli privát IP-címek készlete. Ezután korlátozhatja a munkaterülethez való hozzáférést, hogy csak a magánjellegű IP-címeken keresztül történjen. A Private Link segít csökkenteni az adatok kiszivárgásának kockázatát. A privát végpontokról az [Azure Private Link](/azure/private-link/private-link-overview) cikkben olvashat bővebben.
 
 > [!IMPORTANT]
 > Az Azure Private Link nem fejti ki az Azure vezérlősíkját (felügyeleti műveleteket), például a munkaterület törlését vagy a számítási erőforrások kezelését. Számítási cél létrehozása, frissítése vagy törlése. Ezeket a műveleteket a nyilvános interneten keresztül a szokásos módon hajtják végre.

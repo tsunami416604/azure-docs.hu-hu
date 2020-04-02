@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 11/26/2019
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: cc126af67a0d8627d61e595cee56f3df8973340d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 160873fe889d7eccc7efd08b4767854a5b24c484
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77613040"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80518975"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services"></a>Hatókörrel történő szinkronizálás konfigurálása az Azure AD és az Azure Active Directory tartományi szolgáltatások között
 
@@ -42,18 +42,20 @@ Az Azure Portal on vagy a PowerShell segítségével konfigurálhatja a hatókö
 
 | Műveletek | | |
 |--|--|--|
-| Azure AD DS felügyelt tartomány létrehozása és hatókörrel kapcsolatos szinkronizálás konfigurálása | [Azure-portál](#enable-scoped-synchronization-using-the-azure-portal) | [Powershell](#enable-scoped-synchronization-using-powershell) |
-| Hatókörrel történő szinkronizálás módosítása | [Azure-portál](#modify-scoped-synchronization-using-the-azure-portal) | [Powershell](#modify-scoped-synchronization-using-powershell) |
-| Hatókörrel szinkronizált szinkronizálás letiltása | [Azure-portál](#disable-scoped-synchronization-using-the-azure-portal) | [Powershell](#disable-scoped-synchronization-using-powershell) |
+| Azure AD DS felügyelt tartomány létrehozása és hatókörrel kapcsolatos szinkronizálás konfigurálása | [Azure-portál](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
+| Hatókörrel történő szinkronizálás módosítása | [Azure-portál](#modify-scoped-synchronization-using-the-azure-portal) | [PowerShell](#modify-scoped-synchronization-using-powershell) |
+| Hatókörrel szinkronizált szinkronizálás letiltása | [Azure-portál](#disable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#disable-scoped-synchronization-using-powershell) |
 
 > [!WARNING]
-> A szinkronizálás hatókörének módosítása azt eredményezi, hogy az Azure AD DS felügyelt tartománya újraszinkronizálja az összes adatot.
+> A szinkronizálás hatókörének módosítása azt eredményezi, hogy az Azure AD DS felügyelt tartománya újraszinkronizálja az összes adatot. A következő szempontokat kell figyelembe venni:
 > 
 >  * Ha módosítja egy Azure AD DS felügyelt tartomány szinkronizálási hatókörét, teljes újraszinkronizálás történik.
 >  * Az Azure AD DS felügyelt tartományában már nem szükséges objektumok törlődnek. Új objektumok jönnek létre a felügyelt tartományban.
 >  * Az újraszinkronizálás hosszú időt vehet igénybe. A szinkronizálási idő az Azure AD DS felügyelt tartományban és az Azure AD-címtárban lévő objektumok, például a felhasználók, csoportok és csoporttagságok számától függ. A több százezer objektumot felvonultaló nagy könyvtárak esetében az újraszinkronizálás néhány napot is igénybe vehet.
 
 ## <a name="enable-scoped-synchronization-using-the-azure-portal"></a>Hatókörrel történő szinkronizálás engedélyezése az Azure Portalon
+
+A hatókörrel kapcsolatos szinkronizálás engedélyezéséhez az Azure Portalon hajtsa végre az alábbi lépéseket:
 
 1. Kövesse az [oktatóanyagot egy Azure AD DS-példány létrehozásához és konfigurálásához.](tutorial-create-instance-advanced.md) A szinkronizálási hatókörön kívüli összes előfeltétel és telepítési lépés befejezése.
 1. Válassza **a Scoped** a szinkronizálási lépés, majd válassza ki az Azure AD-csoportok szinkronizálni az Azure AD DS-példány.
@@ -173,7 +175,7 @@ Write-Output "******************************************************************
 
 ## <a name="enable-scoped-synchronization-using-powershell"></a>Hatókörrel történő szinkronizálás engedélyezése a PowerShell használatával
 
-A PowerShell segítségével hajtsa végre ezt a lépéseket. Az [Azure Active Directory tartományi szolgáltatások PowerShell használatával történő engedélyezéséhez](powershell-create-instance.md)olvassa el az utasításokat. A cikk néhány lépése kissé módosul a hatókörrel történő szinkronizálás konfigurálásához.
+A PowerShell használatával hajtsa végre a következő lépéseket. Az [Azure Active Directory tartományi szolgáltatások PowerShell használatával történő engedélyezéséhez](powershell-create-instance.md)olvassa el az utasításokat. A cikk néhány lépése kissé módosul a hatókörrel történő szinkronizálás konfigurálásához.
 
 1. Hajtsa végre a következő feladatokat a cikkből az Azure AD DS PowerShell használatával való engedélyezéséhez. Álljon meg a lépésnél a felügyelt tartomány tényleges létrehozásához. Konfigurálja az Azure AD DS felügyelt tartományt létrehozott hatókör-szinkronizálást.
 

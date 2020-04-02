@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 88daecdf4490ffd4eef45e6cd664a16f86bad113
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2cdafa9a36a5f906151ca6946e18ef82bc7f1e01
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76170286"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529421"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Konfigurálja a tesztkörnyezetet az Azure DevTest Labs ben egy távoli asztali átjáró használatára
 Az Azure DevTest Labs konfigurálhatja a tesztkörnyezet egy távoli asztali átjáró a labor biztonságos hozzáférést biztosít a labor virtuális gépek (VM-ek) anélkül, hogy az RDP-port. A labor központi helyet biztosít a tesztkörnyezet felhasználói számára, hogy megtekinthessék és csatlakozzanak az összes olyan virtuális géphez, amelyhez hozzáféréssel rendelkeznek. A **Virtuálisgép** lap **Csatlakozás** gombja létrehoz egy gépspecifikus RDP-fájlt, amelyet megnyithat a számítógéphez való csatlakozáshoz. Az RDP-kapcsolat további testreszabásához és védelméhez csatlakoztassa a tesztkörnyezetegy távoli asztali átjáró. 
@@ -43,7 +43,7 @@ Ez a megközelítés biztonságosabb, mert a tesztkörnyezet-felhasználó hitel
 A DevTest Labs token hitelesítési szolgáltatás, néhány konfigurációs követelmények az átjáró gépek, tartománynév-szolgáltatások (DNS) és a függvények.
 
 ### <a name="requirements-for-remote-desktop-gateway-machines"></a>A távoli asztali átjárógépekre vonatkozó követelmények
-- A HTTPS-forgalom kezeléséhez ssl-tanúsítványt kell telepíteni az átjárógépre. A tanúsítványnak meg kell egyeznie az átjárófarm terheléselosztójának teljes tartománynevével (FQDN) vagy magának a gépnek a teljes tartománynncével, ha csak egy gép van. A helyettesítő kártyás SSL-tanúsítványok nem működnek.  
+- A TLS/SSL-tanúsítványt telepíteni kell az átjárógépen a HTTPS-forgalom kezeléséhez. A tanúsítványnak meg kell egyeznie az átjárófarm terheléselosztójának teljes tartománynevével (FQDN) vagy magának a gépnek a teljes tartománynncével, ha csak egy gép van. A helyettesítő karakteres TLS/SSL tanúsítványok nem működnek.  
 - Az átjárórendszer(ek)re telepített aláíró tanúsítvány. Aláírási tanúsítvány létrehozása [a Create-SigningCertificate.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1) parancsfájl használatával.
 - Telepítse a [pluggable hitelesítés](https://code.msdn.microsoft.com/windowsdesktop/Remote-Desktop-Gateway-517d6273) imodult, amely támogatja a távoli asztali átjáró tokenhitelesítését. Egy példa egy ilyen `RDGatewayFedAuth.msi` modul, hogy jön a [System Center Virtual Machine Manager (VMM) képek](/system-center/vmm/install-console?view=sc-vmm-1807). A System Center szolgáltatásról a [System Center dokumentációjában](https://docs.microsoft.com/system-center/) és [díjszabásával kapcsolatos részletekben olvashat bővebben.](https://www.microsoft.com/cloud-platform/system-center-pricing)  
 - Az átjárókiszolgáló képes kezelni `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}`a rendszernek a.
@@ -58,7 +58,7 @@ Az Azure függvény a `https://{function-app-uri}/app/host/{lab-machine-name}/po
 
 ## <a name="requirements-for-network"></a>A hálózatra vonatkozó követelmények
 
-- Az átjárógépekre telepített SSL-tanúsítványhoz társított teljes tartományna dns-ének a forgalmat az átjárógépre vagy az átjárógép-farm terheléselosztójára kell irányítania.
+- Az átjárógépekre telepített TLS/SSL-tanúsítványhoz társított teljes qdn-nek a forgalmat az átjárógépre vagy az átjárógép-farm terheléselosztójára kell irányítania.
 - Ha a laborgép privát IP-eket használ, az átjárógéptől a laborgépig kell egy hálózati elérési utat, akár ugyanazon virtuális hálózat megosztásán keresztül, akár társviszony-létesített virtuális hálózatok használatával.
 
 ## <a name="configure-the-lab-to-use-token-authentication"></a>A tesztkörnyezet konfigurálása jogkivonat-hitelesítés használatára 
@@ -79,7 +79,7 @@ Konfigurálja a tesztkörnyezetet a tokenhitelesítés használatára az alábbi
 1. A laborok listájából válassza ki a **labort.**
 1. A tesztkörnyezet lapján válassza a **Konfiguráció és házirendek**lehetőséget.
 1. A bal oldali menü **Beállítások** szakaszában válassza a **Lab beállítások lehetőséget.**
-1. A **Távoli asztal** szakaszban adja meg a távoli asztali szolgáltatások átjárógépének vagy farmjának teljesen minősített tartománynevét (FQDN) vagy IP-címét a **Gateway állomásnév** mezőhöz. Ennek az értéknek meg kell egyeznie az átjárógépeken használt SSL-tanúsítvány teljes tartománynevével.
+1. A **Távoli asztal** szakaszban adja meg a távoli asztali szolgáltatások átjárógépének vagy farmjának teljesen minősített tartománynevét (FQDN) vagy IP-címét a **Gateway állomásnév** mezőhöz. Ennek az értéknek meg kell egyeznie az átjárógépeken használt TLS/SSL tanúsítvány teljes tartománynevével.
 
     ![Távoli asztal beállításai a tesztkörnyezet beállításaiban](./media/configure-lab-remote-desktop-gateway/remote-desktop-options-in-lab-settings.png)
 1. A **Távoli asztal** szakaszátjáró-jogkivonat titkos kulcsa, adja meg a korábban létrehozott titkos kulcs nevét. **Gateway token** Ez az érték nem maga a függvénykulcs, hanem a titkos kulcs neve a labor kulcstartójában, amely a függvénykulcsot tartalmazza.
@@ -110,7 +110,7 @@ Az [Azure DevTest Labs GitHub-tárház](https://github.com/Azure/azure-devtestla
 Az alábbi lépésekkel mintamegoldást állíthat be a távoli asztali átjárófarmhoz.
 
 1. Hozzon létre egy aláíró tanúsítványt.  [Futtassa a Create-SigningCertificate.ps1 futtatását.](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1) Mentse a létrehozott tanúsítvány ujjlenyomatát, jelszavát és Base64 kódolását.
-2. Szerezzen be egy SSL-tanúsítványt. Az SSL-tanúsítványhoz társított teljes tartománynévnek a megadott tartományhoz kell tartandó. Mentse az ujjlenyomatot, a jelszót és a Base64 kódolást ehhez a tanúsítványhoz. Ujjlenyomat a PowerShell használatával, használja a következő parancsokat.
+2. TLS/SSL tanúsítvány beszerezni. A TLS/SSL-tanúsítványhoz társított teljes tartománynévnek a megadott tartományhoz kell tartandó. Mentse az ujjlenyomatot, a jelszót és a Base64 kódolást ehhez a tanúsítványhoz. Ujjlenyomat a PowerShell használatával, használja a következő parancsokat.
 
     ```powershell
     $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate;
@@ -132,9 +132,9 @@ Az alábbi lépésekkel mintamegoldást állíthat be a távoli asztali átjár�
     - instanceCount – Létrehozandó átjárógépek száma.  
     - alwaysOn – Azt jelzi, hogy a létrehozott Azure Functions alkalmazást meleg állapotban kell-e tartani. Az Azure Functions alkalmazás megtartása elkerüli a késéseket, amikor a felhasználók először próbálnak csatlakozni a laborvirtuális géphez, de költségvonzatai vannak.  
     - tokenLifetime – A létrehozott jogkivonat érvényességi ideje. A formátum: ÓÓ:PP:SS.
-    - sslcertificate – Az átjárógép SSL-tanúsítványának Base64 kódolása.
-    - sslCertificatePassword – Az átjárógép SSL-tanúsítványának jelszava.
-    - sslCertificateThumbprint - A tanúsítvány ujjlenyomata az SSL-tanúsítvány helyi tanúsítványtárolójában történő azonosításhoz.
+    - sslcertificate – Az átjárógép TLS/SSL tanúsítványának Base64 kódolása.
+    - sslCertificatePassword – Az átjárógép TLS/SSL tanúsítványának jelszava.
+    - sslCertificateThumbprint - A tls/SSL tanúsítvány helyi tanúsítványtárolójában történő azonosításra szolgáló tanúsítvány ujjlenyomata.
     - signCertificate – A Base64 kódolás az átjárógép tanúsítványának aláírásához.
     - signCertificatePassword – Az átjárószámítógép tanúsítványának aláírásához.
     - signCertificateThumbprint – A tanúsítvány ujjlenyomata az aláíró tanúsítvány helyi tanúsítványtárolójában történő azonosításhoz.
@@ -157,7 +157,7 @@ Az alábbi lépésekkel mintamegoldást állíthat be a távoli asztali átjár�
         - A(z) {utc-expiration-date} az a dátum, utc-ben, amikor a SAS-token lejár, és a SAS-jogkivonat már nem használható a tárfiók eléréséhez.
 
     Rögzítse a gatewayFQDN és a gatewayIP értékeit a sablon központi telepítési kimenetéről. Emellett mentenie kell az újonnan létrehozott függvény funkciójának értékét, amely a [Függvény alkalmazás beállításai](../azure-functions/functions-how-to-use-azure-function-app-settings.md) lapon található.
-5. Állítsa be a DNS-t úgy, hogy az SSL-tanúsítvány teljes tartományszáma az előző lépéstől kezdve a gatewayIP IP-címére irányítson.
+5. Állítsa be a DNS-t úgy, hogy a TLS/SSL tanúsítvány teljes tartományszáma az előző lépéstől kezdve a gatewayIP IP-címére irányítson.
 
     A Távoli asztali átjáró farm létrehozása és a megfelelő DNS-frissítések létrehozása után készen áll arra, hogy a DevTest Labs tesztkörnyezetében lévő tesztkörnyezet használja. Az **átjáró állomásnév** és **átjárótoken titkos** beállításait úgy kell konfigurálni, hogy a telepített átjárógép(ek)et használják. 
 

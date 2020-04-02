@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 03/24/2020
+ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 758e6123fd09df1e3f8b2e883a729b9fec4328d1
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 8bcf59ee863bb2fd2a3213480372ad215c2fc00d
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80367290"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80528590"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>A csatlakoztatott számítógép ügynökének kezelése és karbantartása
 
@@ -61,6 +61,9 @@ A telepítővarázsló felderíti, hogy létezik-e korábbi verzió, majd automa
 ### <a name="linux-agent"></a>Linux ügynök
 
 Az ügynök frissítése egy Linux gépen a legújabb verzióra, két parancsot foglal magában. Egy parancs a helyi csomagindex frissítésére az adattárakból elérhető legújabb csomagok listájával, és egy parancs a helyi csomag frissítéséhez. 
+
+> [!NOTE]
+> Az ügynök frissítéséhez *root* hozzáférési engedélyekkel vagy olyan fiókkal kell rendelkeznie, amely a Sudo használatával emelt szintű jogosultságokkal rendelkezik.
 
 #### <a name="upgrade-ubuntu"></a>Az Ubuntu frissítése
 
@@ -112,13 +115,11 @@ A [zypper](https://en.opensuse.org/Portal:Zypper) parancs műveletek, például 
 
 ## <a name="remove-the-agent"></a>Az ügynök eltávolítása
 
-Az alábbi eljárások egyikével távolítsa el a Windows vagy Linux ügynököt az ebben a szakaszban ismertetett parancssorból vagy telepítővarázslóból. Az ügynök eltávolítása előtt először válassza le a gépet az Azure Arc kiszolgálók (előzetes verzió) az alábbi lépések végrehajtásával: 
-
-1. Nyissa meg az Azure Arc kiszolgálókhoz (előzetes verzió) az [Azure Portalon.](https://aka.ms/hybridmachineportal)
-
-2. Jelölje ki a gépet a listában, jelölje ki a három pontot (**...**), majd kattintson a **Törlés gombra.**
+Hajtsa végre az alábbi módszerek egyikét a Windows vagy Linux connected machine ügynök eltávolításához a gépről. Az ügynök eltávolítása nem törölje a gép regisztrációját az Arc kiszolgálók (előzetes verzió), ez egy külön folyamat, amelyakkor hajtvégre, ha már nem kell kezelni a gépet az Azure-ban.
 
 ### <a name="windows-agent"></a>Windows-ügynök
+
+Mindkét alábbi módszer eltávolítja az ügynököt, de nem távolítja el a *C:\Program Files\AzureConnectedMachineAgent* mappát a számítógépen.
 
 #### <a name="uninstall-from-control-panel"></a>Eltávolítás a Vezérlőpultról
 
@@ -158,6 +159,9 @@ Ha manuálisan szeretné eltávolítani az ügynököt a parancssorból, vagy au
 
 ### <a name="linux-agent"></a>Linux ügynök
 
+> [!NOTE]
+> Az ügynök eltávolításához *root* hozzáférési engedélyekkel vagy a Sudo használatával emelt szintű jogosultságokkal rendelkező fiókkal kell rendelkeznie.
+
 A Linux-ügynök eltávolításához a használni kívánt parancs a Linux operációs rendszertől függ.
 
 - Ubuntu esetén futtassa a következő parancsot:
@@ -177,3 +181,11 @@ A Linux-ügynök eltávolításához a használni kívánt parancs a Linux oper�
     ```bash
     sudo zypper remove azcmagent
     ```
+
+## <a name="unregister-machine"></a>Gép regisztrációjának megszüntetése
+
+Ha azt tervezi, hogy leállítja a gép kezelését az Azure-beli támogató szolgáltatásokkal, hajtsa végre a következő lépéseket a gép regisztrációjának megszüntetése az Arc kiszolgálókhoz (előzetes verzió). Ezeket a lépést a csatlakoztatott számítógép ügynökének a készülékről való eltávolítása előtt vagy után hajthatja végre.
+
+1. Nyissa meg az Azure Arc kiszolgálókhoz (előzetes verzió) az [Azure Portalon.](https://aka.ms/hybridmachineportal)
+
+2. Jelölje ki a gépet a listában, jelölje ki a három pontot (**...**), majd kattintson a **Törlés gombra.**

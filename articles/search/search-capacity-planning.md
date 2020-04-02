@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/14/2020
-ms.openlocfilehash: e2ba5301b81b1a6f5de696ab4587cd8ff43e3c68
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: 270ff3c3e8e4cffbb1f4b1987ee497530d0c0982
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462564"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546258"
 ---
 # <a name="adjust-capacity-in-azure-cognitive-search"></a>A kapacitás beállítása az Azure Cognitive Search ben
 
@@ -38,7 +38,8 @@ Egyetlen szolgáltatásnak elegendő erőforrással kell rendelkeznie az összes
 
 Általános szabály, hogy a keresési alkalmazások általában több replikák, mint a partíciók, különösen akkor, ha a szolgáltatási műveletek elfogult a lekérdezési számítási feladatok. A [magas rendelkezésre állásról](#HA) szóló rész elmagyarázza, hogy miért.
 
-További replikák vagy partíciók hozzáadása növeli a szolgáltatás futtatásának költségeit. Győződjön meg róla, hogy ellenőrizze a [díjkalkulátor,](https://azure.microsoft.com/pricing/calculator/) hogy megértsék a számlázási következményeit további csomópontok hozzáadása. Az [alábbi táblázat](#chart) segítségével összevetheti az adott konfigurációhoz szükséges keresési egységek számát.
+> [!NOTE]
+> További replikák vagy partíciók hozzáadása növeli a szolgáltatás futtatásának költségeit, és az eredmények rendezettsének kisebb eltéréseit vezetheti be. Győződjön meg róla, hogy ellenőrizze a [díjkalkulátor,](https://azure.microsoft.com/pricing/calculator/) hogy megértsék a számlázási következményeit további csomópontok hozzáadása. Az [alábbi táblázat](#chart) segítségével összevetheti az adott konfigurációhoz szükséges keresési egységek számát. Ha többet szeretne tudni arról, hogy a további kópiák hogyan befolyásolják a lekérdezésfeldolgozását, olvassa [el az Eredmények rendezése című témakört.](search-pagination-page-layout.md#ordering-results)
 
 ## <a name="how-to-allocate-replicas-and-partitions"></a>Replikák és partíciók lefoglalása
 

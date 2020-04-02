@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 04/01/2020
 ms.author: rogarana
-ms.openlocfilehash: b7820bc3d1b14e87064e4120edcffb6762041db9
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: dbcc204f71a9bfe4f48f51ab6af36014e130cb7f
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411485"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548951"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>Active Directory-hitelesítés engedélyezése SMB-n keresztül az Azure-fájlmegosztások számára
 
@@ -63,11 +63,7 @@ Mielőtt engedélyezne AD-hitelesítést az Azure-fájlmegosztásokhoz, győződ
 
 ## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 
-Az Azure Files AD-hitelesítés (előzetes verzió) a [legtöbb nyilvános régióban](https://azure.microsoft.com/global-infrastructure/regions/)elérhető.
-
-Az Azure Files AD-hitelesítés nem érhető el a következő helyen:
-- USA nyugati régiója
-
+Az Azure Files AD-hitelesítés (előzetes verzió) a [nyilvános felhő minden régiójában](https://azure.microsoft.com/global-infrastructure/regions/)elérhető.
 
 ## <a name="workflow-overview"></a>Munkafolyamat – áttekintés
 

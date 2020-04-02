@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: f1fdb9dffbe06430ea7e3eb9339e23f5239e4e36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bb78d84aa0f9a2832b6599edeac9d50e0e226437
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76310832"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546342"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrálás fürtkonfigurációk részletes szerepköralapú hozzáféréséhez
 
@@ -131,8 +131,8 @@ Frissítsen a HDInsight SDK python-hoz [1.0.0-s](https://pypi.org/project/azure-
 
 Frissítsen a HDInsight SDK Java-hoz [1.0.0-s](https://search.maven.org/artifact/com.microsoft.azure.hdinsight.v2018_06_01_preview/azure-mgmt-hdinsight/1.0.0/jar) vagy újabb verziójára. Minimális kódmódosításra lehet szükség, ha a módosítások által érintett módszert használ:
 
-- [`ConfigurationsInner.get`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.get)**a továbbiakban nem ad vissza bizalmas paramétereket,** például a tárolási kulcsokat (core-site) vagy a HTTP-hitelesítő adatokat (átjáró).
-- [`ConfigurationsInner.update`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.update)most elavult.
+- `ConfigurationsInner.get`**a továbbiakban nem ad vissza bizalmas paramétereket,** például a tárolási kulcsokat (core-site) vagy a HTTP-hitelesítő adatokat (átjáró).
+- `ConfigurationsInner.update`most elavult.
 
 ### <a name="sdk-for-go"></a>SDK For Go
 
@@ -193,9 +193,9 @@ A fürtkonfigurációk most már a részletes szerepköralapú `Microsoft.HDInsi
 
 ### <a name="why-do-i-see-insufficient-privileges-to-complete-the-operation-when-running-the-azure-cli-command-to-assign-the-hdinsight-cluster-operator-role-to-another-user-or-service-principal"></a>Miért jelenik meg az "Elégtelen jogosultságok a művelet végrehajtásához" az Azure CLI parancs futtatásakor, hogy a HDInsight fürtkezelő szerepkört egy másik felhasználóhoz vagy egyszerű szolgáltatáshoz rendelje?
 
-A tulajdonosi szerepkör mellett a parancsot végrehajtó felhasználónak vagy egyszerű szolgáltatásnak is rendelkeznie kell elegendő AAD-engedéllyel a hozzárendelt objektumazonosítóinak felkereséséhez. Ez az üzenet nem elegendő AAD-engedélyt jelez. Próbálja meg `-–assignee` lecserélni az argumentumot, `–assignee-object-id` és adja meg a hozzárendelt objektumazonosítóját paraméterként a név helyett (vagy felügyelt identitás esetén a fő azonosítót). További információkért tekintse meg az [az szerepkör-hozzárendelés dokumentáció létrehozásának](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) választható paraméterekkel kapcsolatos szakaszát.
+Amellett, hogy a tulajdonos szerepkör, a felhasználó vagy a parancs egyszerű végrehajtó felhasználó vagy egyszerű szolgáltatás a parancsot kell rendelkeznie a megfelelő Azure AD-engedélyeket, hogy keresse meg a hozzárendelt objektumazonosítók. Ez az üzenet azt jelzi, hogy nem rendelkezik elegendő Azure AD-engedélyekkel. Próbálja meg `-–assignee` lecserélni az argumentumot, `–assignee-object-id` és adja meg a hozzárendelt objektumazonosítóját paraméterként a név helyett (vagy felügyelt identitás esetén a fő azonosítót). További információkért tekintse meg az [az szerepkör-hozzárendelés dokumentáció létrehozásának](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) választható paraméterekkel kapcsolatos szakaszát.
 
-Ha ez továbbra sem működik, lépjen kapcsolatba az AAD rendszergazdájával a megfelelő engedélyek beszerzéséhez.
+Ha ez továbbra sem működik, forduljon az Azure AD-rendszergazdához a megfelelő engedélyek beszerzéséhez.
 
 ### <a name="what-will-happen-if-i-take-no-action"></a>Mi történik, ha nem cselekszem?
 

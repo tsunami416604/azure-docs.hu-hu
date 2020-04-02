@@ -8,12 +8,12 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d37abd1b5d212c3d920cb68b6236029b2112ae24
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8e453336005f3389f67e9571fac438bfc340c1b
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74113270"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549009"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Több-bérlős SaaS-alkalmazások és az Azure Cognitive Search tervezési mintáinak tervezése
 A több-bérlős alkalmazás az egyik, amely ugyanazokat a szolgáltatásokat és képességeket, hogy tetszőleges számú bérlők, akik nem látják vagy nem osztják meg az adatokat bármely más bérlő. Ez a dokumentum ismerteti a bérlők elkülönítési stratégiák több-bérlős alkalmazások az Azure Cognitive Search.
@@ -51,7 +51,7 @@ Az Azure Cognitive Search S3 tarifacsomagjában van egy lehetőség a nagy sűr�
 
 Az S3 HD lehetővé teszi, hogy a sok kis index egyetlen keresési szolgáltatás felügyelete alatt legyen csomagolva azáltal, hogy partíciók használatával kiosztja az indexeket, hogy több indexet tudjon üzemeltetni egyetlen szolgáltatásban.
 
-Konkrétan, egy S3 szolgáltatás lehetett között 1 és 200 indexek, amelyek együttesen befogadó akár 1,4 milliárd dokumentumot. Az S3 HD ezzel szemben lehetővé tenné, hogy az egyes indexek csak 1 millió dokumentumot menjenek fel, de partíciónként akár 1000 indexet is képes kezelni (szolgáltatásonként akár 3000-ig), partíciónként 200 millió dokumentumszámmal (szolgáltatásonként akár 600 millió).
+Az S3 szolgáltatás célja, hogy meghatározott számú indexet (legfeljebb 200) tároljon, és lehetővé tegye az egyes indexek horizontális méretezését, ahogy új partíciókat adnak hozzá a szolgáltatáshoz. Partíciók hozzáadása az S3 HD-szolgáltatásokhoz növeli a szolgáltatás által üzemeltethető indexek maximális számát. Az ideális maximális méret egy egyedi S3HD index körülbelül 50-80 GB, bár nincs kemény méretkorlát minden index által előírt rendszer.
 
 ## <a name="considerations-for-multitenant-applications"></a>A több-bérlős alkalmazások szempontjai
 A több-bérlős alkalmazásoknak hatékonyan kell elosztaniuk az erőforrásokat a bérlők között, miközben meg kell őrizniük a különböző bérlők közötti adatvédelem bizonyos szintjét. Az ilyen alkalmazások architektúrájának tervezésekor néhány szempontot figyelembe kell venni:
@@ -78,7 +78,7 @@ Egy index-bérlős modellben több bérlő egyetlen Azure Cognitive Search szolg
 
 A bérlők azért érnek el adatelkülönítést, mert az Azure Cognitive Search indexszintjén minden keresési és dokumentumművelet indexszinten van kiadva. Az alkalmazásrétegben szükség van annak, hogy a különböző bérlők forgalmát a megfelelő indexek, miközben az erőforrások kezelése a szolgáltatás szintjén az összes bérlő között.
 
-A bérlőnkénti indexmodell egyik kulcsattribútuma az, hogy az alkalmazásfejlesztő túliratkozhat egy keresési szolgáltatás kapacitásán az alkalmazás bérlői között. Ha a bérlők egyenlőtlen számítási feladatok elosztása, a bérlők optimális kombinációja lehet elosztani a keresési szolgáltatás indexek elhelyezésére számos rendkívül aktív, erőforrás-igényes bérlők, miközben egyszerre szolgáló hosszú farok kevesebb aktív bérlők számára. A kompromisszum az, hogy a modell nem képes kezelni azokat a helyzeteket, amelyekben minden bérlő egyidejűleg rendkívül aktív.
+A bérlőnkénti indexmodell egyik kulcsattribútuma az, hogy az alkalmazásfejlesztő túliratkozhat egy keresési szolgáltatás kapacitásán az alkalmazás bérlői között. Ha a bérlők egyenlőtlen elosztása a munkaterhelés, a bérlők optimális kombinációja lehet elosztani a keresési szolgáltatás indexek elhelyezésére számos rendkívül aktív, erőforrás-igényes bérlők, miközben egyidejűleg szolgálja a hosszú farok kevésbé aktív bérlők. A kompromisszum az, hogy a modell nem képes kezelni azokat a helyzeteket, amelyekben minden bérlő egyidejűleg rendkívül aktív.
 
 A bérlőnkénti indexmodell egy változó költségmodell alapját képezi, ahol egy teljes Azure Cognitive Search-szolgáltatást előre megvásárolnak, majd ezt követően bérlőkkel töltik fel. Ez lehetővé teszi, hogy a kihasználatlan kapacitást próbaverziókhoz és ingyenes fiókokhoz jelöljék ki.
 

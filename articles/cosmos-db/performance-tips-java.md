@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: 3b7d221c2afc952f40da035c6e2c282b3b932aa5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a20b7d91a927d48a14812110ca714491cd726071
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69616761"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548785"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-java"></a>Az Azure Cosmos DB és a Java teljesítményével kapcsolatos tippek
 
@@ -38,7 +38,7 @@ Ha azt kérdezi: "Hogyan javíthatom az adatbázis teljesítményét?" fontolja 
 
       Az átjárómód minden SDK-platformon támogatott, és ez a konfigurált alapértelmezett beállítás.  Ha az alkalmazás fut egy vállalati hálózaton szigorú tűzfalkorlátozások, gateway a legjobb választás, mivel a szabványos HTTPS-port ot és egyetlen végpontot használ. A teljesítmény kompromisszumot, azonban az, hogy a Gateway mód egy további hálózati ugrás minden alkalommal, amikor az adatok olvasása vagy írása az Azure Cosmos DB. Emiatt a DirectHttps mód jobb teljesítményt nyújt a kevesebb hálózati ugrás miatt. 
 
-      A Java SDK https protokollt használ átviteli protokollként. A HTTPS SSL-t használ a kezdeti hitelesítéshez és a forgalom titkosításához. A Java SDK használatakor csak a 443-as HTTPS-portnak kell nyitva lennie. 
+      A Java SDK https protokollt használ átviteli protokollként. A HTTPS a TLS-t használja a kezdeti hitelesítéshez és a forgalom titkosításához. A Java SDK használatakor csak a 443-as HTTPS-portnak kell nyitva lennie. 
 
       A ConnectionMode a DocumentClient példány létrehozása során van konfigurálva a ConnectionPolicy paraméterrel. 
 

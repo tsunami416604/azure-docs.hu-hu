@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 03/17/2020
-ms.openlocfilehash: 99517e45892cd7a6167ae83ff3058edae1377b10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 95d943685cf511acb88f9e48d36a9dd43b0a27d2
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80109562"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548016"
 ---
 # <a name="install-and-use-lightingest"></a>A LightIngest telepítése és használata
 
@@ -22,6 +22,9 @@ A segédprogram lehívhatja a forrásadatokat egy helyi mappából vagy egy Azur
 ## <a name="prerequisites"></a>Előfeltételek
 
 * LightIngest – töltse le a [Microsoft.Azure.Kusto.Tools NuGet csomag](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/) részeként
+
+    ![Legmegvilágításos letöltés](media/lightingest/lightingest-download-area.png)
+
 * WinRAR - töltse le [www.win-rar.com/download.html](http://www.win-rar.com/download.html)
 
 ## <a name="install-lightingest"></a>Lightingest telepítése
@@ -44,16 +47,20 @@ A segédprogram lehívhatja a forrásadatokat egy helyi mappából vagy egy Azur
     >
     >![Parancssorsúgó súgója](media/lightingest/lightingest-cmd-line-help.png)
 
-1. Adja `LightIngest` meg a kapcsolati karakterláncot az Azure Data Explorer-fürthöz, amely kezeli a betöltést.
+1. Adja `ingest-` meg a kapcsolati karakterláncot az Azure Data Explorer-fürthöz, amely kezeli a betöltést.
     A kapcsolati karakterláncot idézőjelek közé kell tenni, és kövesse a [Kusto kapcsolati karakterláncok specifikációját.](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto)
 
     Példa:
     ```
-    LightIngest "Data Source=https://{Cluster name and region}.kusto.windows.net;AAD Federated Security=True"  -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
+    ingest-{Cluster name and region}.kusto.windows.net;AAD Federated Security=True -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
     ```
 
-* Az ajánlott módszer `LightIngest` a betöltési végpont használata `https://ingest-{yourClusterNameAndRegion}.kusto.windows.net`a. Ily módon az Azure Data Explorer szolgáltatás kezelheti a betöltési terhelést, és könnyen helyreállítható az átmeneti hibák. Azonban beállíthatja `LightIngest` azt is, hogy közvetlenül`https://{yourClusterNameAndRegion}.kusto.windows.net`a motor végpontjával ( ).
-* Az optimális betöltési teljesítmény érdekében fontos, hogy a LightIngest ismerje a nyers adatok méretét, és így `LightIngest` megbecsüli a helyi fájlok tömörítetlen méretét. Előfordulhat `LightIngest` azonban, hogy nem tudja megfelelően megbecsülni a tömörített blobok nyers méretét anélkül, hogy először letöltené őket. Ezért tömörített blobok betöltésekor `rawSizeBytes` állítsa be a tulajdonságot a blob metaadatok tömörítetlen adatméret bájtban.
+* Az ajánlott módszer a LightIngest a betöltési `https://ingest-{yourClusterNameAndRegion}.kusto.windows.net`végponttal való munkához. Ily módon az Azure Data Explorer szolgáltatás kezelheti a betöltési terhelést, és könnyen helyreállítható az átmeneti hibák. A LightIngest azonban beállítható úgy is, hogy`https://{yourClusterNameAndRegion}.kusto.windows.net`közvetlenül a motorvégponttal ( működjön.
+
+> [!Note]
+> Ha közvetlenül a motor végpontjával megy be, `ingest-`nem kell megadnia, de nem lesz DM funkció a motor védelmére és a betöltési sikerességi arány javítására.
+
+* Az optimális betöltési teljesítmény érdekében fontos, hogy a LightIngest ismerje a nyers adatok méretét, és így a LightIngest megbecsüli a helyi fájlok tömörítetlen méretét. Előfordulhat azonban, hogy a LightIngest nem tudja megfelelően megbecsülni a tömörített blobok nyers méretét anélkül, hogy először le kellene töltenie őket. Ezért tömörített blobok betöltésekor `rawSizeBytes` állítsa be a tulajdonságot a blob metaadatok tömörítetlen adatméret bájtban.
 
 ## <a name="general-command-line-arguments"></a>Általános parancssori argumentumok
 
@@ -66,21 +73,27 @@ A segédprogram lehívhatja a forrásadatokat egy helyi mappából vagy egy Azur
 |-előtag               |             |sztring  |Optional  |Amikor a betöltési forrásadatok blob storage-ban található, ezt az URL-előtagot az összes blob oka megosztja, kivéve a tároló nevét. <br>Ha például az adatok `MyContainer/Dir1/Dir2`a ban vannak, `Dir1/Dir2`akkor az előtagnak kell lennie. Dupla idézőjelek közé ágyazás ajánlott |
 |-minta              |             |sztring  |Optional  |Minta, amely forrásfájlok/blobok szedett. Támogatja a helyettesítő karaktereket. Például: `"*.csv"`. Dupla idézőjelek közé van takarva |
 |-zipPattern           |             |sztring  |Optional  |A zip-archívumban a betöltéshez használt fájlok kiválasztásakor használandó reguláris kifejezés.<br>Az archívumban lévő összes többi fájlt a rendszer figyelmen kívül hagyja. `"*.csv"`Például. Javasoljuk, hogy dupla idézőjelben vegye körül |
-|-formátum               |-f           |sztring  |Optional  |Forrásadat-formátum. A [támogatott formátumok](https://docs.microsoft.com/azure/kusto/management/data-ingestion/#supported-data-formats) egyikének kell lennie |
+|-formátum               |-f           |sztring  |Optional  |Forrásadat-formátum. A [támogatott formátumok](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats) egyikének kell lennie |
 |-inestionMappingPath |-mappingPath |sztring  |Optional  |A betöltési oszlopleképezési fájl elérési útja (json- és Avro-formátumok esetén kötelező). [Adatleképezések megtekintése](https://docs.microsoft.com/azure/kusto/management/mappings) |
 |-inestionMappingRef  |-mappingRef  |sztring  |Optional  |Előre létrehozott betöltési oszlopleképezés neve (json- és Avro-formátumok esetén kötelező). [Adatleképezések megtekintése](https://docs.microsoft.com/azure/kusto/management/mappings) |
 |-creationTimePattern  |             |sztring  |Optional  |Ha be van állítva, a creationtime tulajdonság kibontására szolgál a fájlból vagy a blob elérési útjából. Lásd: [CreationTimePattern argumentum használata](#using-creationtimepattern-argument) |
 |-ignoreFirstRow       |-ignoreFirst |Bool    |Optional  |Ha be van állítva, a rendszer figyelmen kívül hagyja az egyes fájlok/blobok első rekordját (például ha a forrásadatok fejléceket tartalmaznak) |
 |-tag                  |             |sztring  |Optional  |A bevitt adatokhoz társítani való [címkék.](https://docs.microsoft.com/azure/kusto/management/extents-overview#extent-tagging) Több előfordulás megengedett |
-|-dontVárjon             |             |Bool    |Optional  |Ha értéke "igaz", nem vár a betöltés befejezésére. Hasznos nagy mennyiségű fájl/blob betöltésekén |
+|-dontVárjon             |             |Bool    |Optional  |Ha értéke "true", nem várja meg a betöltés befejezését. Hasznos nagy mennyiségű fájl/blob betöltésekén |
 
 ### <a name="using-creationtimepattern-argument"></a>CreationTimePattern argumentum használata
 
 Az `-creationTimePattern` argumentum kinyeri a CreationTime tulajdonságot a fájlból vagy a blob elérési útjából. A mintának nem kell tükröznie a teljes elemelérési utat, csak a használni kívánt időbélyeget körülvevő szakaszt.
-Az argumentum értékének három szakaszból kell kiesnie:
+
+Az argumentumértékeknek a következőket kell tartalmazniuk:
 * Az időbélyeget közvetlenül megelőző állandó vizsgálat, egyszeres idézőjelek között
 * Az időbélyeg formátuma szabványos [.NET DateTime jelölésben](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)
-* Konstans szöveg közvetlenül az időbélyeg után: Ha például a blobnevek "historicalvalues19840101.parquet" végződésűek (az időbélyeg az év négy számjegye, a hónap két számjegye és a hónap napjának két számjegye), az `-creationTimePattern` argumentum megfelelő értéke "historicalvalues'yyyMMdd".parquet".
+* Az időbélyeget közvetlenül követő állandó szöveg. Ha például a blobnevek végződésével `historicalvalues19840101.parquet` végződik (az időbélyeg az év négy számjegye, a hónap két számjegye és a hónap napjának két számje), az argumentum megfelelő értéke a `-creationTimePattern` következő:
+
+```
+ingest-{Cluster name and region}.kusto.windows.net;AAD Federated Security=True -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -creationTimePattern:"'historicalvalues'yyyyMMdd'.parquet'"
+ -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
+```
 
 ### <a name="command-line-arguments-for-advanced-scenarios"></a>Parancssori argumentumok speciális forgatókönyvekhez
 
@@ -96,7 +109,7 @@ Az argumentum értékének három szakaszból kell kiesnie:
 |-devTracing           |-nyomkövetés       |sztring  |Optional  |Ha be van állítva, a diagnosztikai naplók `RollingLogs` a helyi könyvtárba kerülnek (alapértelmezés szerint az aktuális könyvtárban, vagy a kapcsolóérték beállításával módosíthatók) |
 
 ## <a name="blob-metadata-properties"></a>Blob metaadatok tulajdonságai
-Az Azure blobok `LightIngest` használata esetén bizonyos blobmetaadat-tulajdonságokat fog használni a betöltési folyamat bővítéséhez.
+Az Azure-blobok használata esetén a LightIngest bizonyos blobmetaadat-tulajdonságokat fog használni a betöltési folyamat bővítéséhez.
 
 |Metaadat-tulajdonság                            | Használat                                                                           |
 |---------------------------------------------|---------------------------------------------------------------------------------|

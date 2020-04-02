@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: edeafb5730f06dac22fd9919ca42ea388d5fd0f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1aa3537679ee37cbc6085344d2f31ae4043d32bb
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79277179"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520677"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table storage-kötések az Azure Functionshez
 
@@ -36,7 +36,7 @@ A table storage kötések a [Microsoft.Azure.WebJobs.Extensions.Storage](https:/
 
 Az Azure Table storage input-kötés használatával egy Azure Storage-fiókban lévő táblát olvashat.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ### <a name="one-entity"></a>Egy entitás
 
@@ -310,7 +310,7 @@ A CloudTable használatáról az [Azure Table storage használatának első lép
 Ha megpróbál kötődni, `CloudTable` és hibaüzenetet kap, győződjön meg arról, hogy [rendelkezik a megfelelő Storage SDK-verzióra](#azure-storage-sdk-version-in-functions-1x)mutató hivatkozással.
 
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A következő példa egy tábla bemeneti kötést mutat be egy *function.json* fájlban és [javascript kódot,](functions-reference-node.md) amely a kötést használja. A függvény egy várólista-eseményindítót használ egyetlen táblasor olvasásához. 
 
@@ -474,7 +474,7 @@ public Person[] get(
 
 ## <a name="input---attributes-and-annotations"></a>Bemenet - attribútumok és jegyzetek
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
  A [C# osztálytárakban](functions-dotnet-class-library.md)a következő attribútumokkal konfigurálhat táblabemeneti kötést:
 
@@ -536,7 +536,7 @@ A felhasználandó tárfiókot a következő sorrendben határozzuk meg:
 
 Az attribútumokat a C# script nem támogatja.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A JavaScript nem támogatja az attribútumokat.
 
@@ -564,13 +564,13 @@ Az alábbi táblázat a *function.json* fájlban és az `Table` attribútumban b
 |**rowKey (sorkulcs)** |**RowKey** | Választható. A beolvasandó táblaentitás sorkulcsa. A [tulajdonság](#input---usage) használatával kapcsolatos útmutatást a használati szakaszban talál.| 
 |**venni** |**Vegyünk** | Választható. A JavaScript-ben olvasandó entitások maximális száma. A [tulajdonság](#input---usage) használatával kapcsolatos útmutatást a használati szakaszban talál.| 
 |**Szűrő** |**Szűrő** | Választható. OData-szűrőkifejezés a JavaScript-alapú táblabevitelhez. A [tulajdonság](#input---usage) használatával kapcsolatos útmutatást a használati szakaszban talál.| 
-|**Kapcsolat** |**Kapcsolat** | A kötéshez használandó Storage-kapcsolati karakterláncot tartalmazó alkalmazásbeállítás neve. Ha az alkalmazásbeállítás neve "AzureWebJobs" programmal kezdődik, itt csak a név fennmaradó részét adhatja meg. Ha például "MyStorage" beállítást ad meg, `connection` a Functions futásidejű megkeresi a "MyStorage" nevű alkalmazásbeállítást. Ha üresen hagyja, `connection` a Functions futásidejű az alapértelmezett Storage-kapcsolati karakterláncot használja a neve súgás `AzureWebJobsStorage`alkalmazásbeállításban.|
+|**Kapcsolat** |**Kapcsolat** | A kötéshez használandó Storage-kapcsolati karakterláncot tartalmazó alkalmazásbeállítás neve. A beállítás lehet egy "AzureWebJobs" előtaggal vagy kapcsolati karakterlánc nevével. Ha például a beállítás neve "AzureWebJobsMyStorage", itt adhatja meg a "MyStorage" értéket. A Functions futásidejű automatikusan megkeresi az "AzureWebJobsMyStorage" nevű alkalmazásbeállítást. Ha üresen hagyja, `connection` a Functions futásidejű az alapértelmezett Storage-kapcsolati karakterláncot használja a neve súgás `AzureWebJobsStorage`alkalmazásbeállításban.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="input---usage"></a>Bemenet - használat
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 * **Egy sor olvasása**
 
@@ -596,7 +596,7 @@ Az alábbi táblázat a *function.json* fájlban és az `Table` attribútumban b
   > [!NOTE]
   > `IQueryable`a [Functions v2 futásidő](functions-versions.md)nem támogatott. Egy másik lehetőség, hogy [egy CloudTable paramName metódus paraméter](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) t az Azure Storage SDK használatával olvassa a táblát. Ha megpróbál kötődni, `CloudTable` és hibaüzenetet kap, győződjön meg arról, hogy [rendelkezik a megfelelő Storage SDK-verzióra](#azure-storage-sdk-version-in-functions-1x)mutató hivatkozással.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Állítsa `filter` be `take` a és a tulajdonságokat. Ne állítsa `partitionKey` be `rowKey`a vagy a. A beviteli tábla entitásának (vagy entitásának) elérése a használatával. `context.bindings.<BINDING_NAME>` A deszerializált objektumok és `RowKey` `PartitionKey` tulajdonságai.
 
@@ -617,7 +617,7 @@ Azure Table storage-kimeneti kötés használatával entitásokat írhat egy Azu
 > [!NOTE]
 > Ez a kimeneti kötés nem támogatja a meglévő entitások frissítését. Az `TableOperation.Replace` [Azure Storage SDK-ból származó](../cosmos-db/tutorial-develop-table-dotnet.md#delete-an-entity) művelet használatával frissítheti a meglévő entitást.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 A következő példa egy [C# függvényt](functions-dotnet-class-library.md) mutat be, amely egy HTTP-eseményindítót használ egyetlen táblázatsor írásához. 
 
@@ -696,7 +696,7 @@ public class Person
 
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A következő példa egy tábla kimeneti kötést mutat be egy *function.json* fájlban és egy [JavaScript függvényt,](functions-reference-node.md) amely a kötést használja. A függvény több táblaentitást ír.
 
@@ -883,7 +883,7 @@ public class AddPersons {
 
 ## <a name="output---attributes-and-annotations"></a>Kimenet - attribútumok és jegyzetek
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 A [C# osztálytárakban](functions-dotnet-class-library.md)használja a [TableAttribute tulajdonságot.](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables/TableAttribute.cs)
 
@@ -921,7 +921,7 @@ Az `StorageAccount` attribútum segítségével megadhatja a tárfiókot osztál
 
 Az attribútumokat a C# script nem támogatja.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A JavaScript nem támogatja az attribútumokat.
 
@@ -955,7 +955,7 @@ Az alábbi táblázat a *function.json* fájlban és az `Table` attribútumban b
 
 ## <a name="output---usage"></a>Kimenet - használat
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 A kimeneti tábla entitás elérése `ICollector<T> paramName` `IAsyncCollector<T> paramName` metódusparaméter használatával, vagy ahol `T` a és `PartitionKey` `RowKey` a tulajdonságok at tartalmazza. Ezeket a tulajdonságokat `ITableEntity` gyakran `TableEntity`a megvalósítás vagy az öröklés kíséri.
 
@@ -967,7 +967,7 @@ A kimeneti tábla entitás elérése `ICollector<T> paramName` `IAsyncCollector<
 
 Másik lehetőségként használhatja a `CloudTable` metódus paramétert írni a táblába az Azure Storage SDK használatával. Ha megpróbál kötődni, `CloudTable` és hibaüzenetet kap, győződjön meg arról, hogy [rendelkezik a megfelelő Storage SDK-verzióra](#azure-storage-sdk-version-in-functions-1x)mutató hivatkozással.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A kimeneti esemény `context.bindings.<name>` `<name>` elérése a `name` *function.json*tulajdonságában megadott érték használatával.
 
@@ -995,7 +995,7 @@ A [TableStorageOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.f
 |---|---|
 | Tábla | [Tábla hibakódjai](https://docs.microsoft.com/rest/api/storageservices/fileservices/table-service-error-codes) |
 | Blob, Tábla, Várólista | [Tárolási hibakódok](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
-| Blob, Tábla, Várólista | [hibaelhárítással](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
+| Blob, Tábla, Várólista | [Hibaelhárítás](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 ## <a name="next-steps"></a>További lépések
 

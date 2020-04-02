@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
-ms.openlocfilehash: 9f694f3f0ec740d0a4e8dc4e6bf8845c408802c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61a85b2554bbd69541b3081f72525d2b7deed625
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75897844"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529234"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Azure SQL-adatbázis importálása vagy exportálása anélkül, hogy az Azure-szolgáltatások hozzáférhetnek a kiszolgálóhoz
 
@@ -61,7 +61,7 @@ A következő lépések bemutatják, hogyan csatlakozhat a virtuális géphez t�
 
 4. Zárja be a **Csatlakozás a virtuális géphez** űrlapot.
 5. Nyissa meg az RDP-fájlt a virtuális géphez való csatlakozáshoz.
-6. Amikor a rendszer kéri, válassza a **Csatlakozás lehetőséget.** Mac rendszerben szüksége van egy RDP-kliensre, mint például a Mac App Store áruházban elérhető [távoli asztali ügyfélre](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12).
+6. Amikor a rendszer kéri, válassza a **Csatlakozás lehetőséget.** Mac rendszerben szüksége van egy RDP-kliensre, mint például a Mac App Store áruházban elérhető [távoli asztali ügyfélre](https://apps.apple.com/app/microsoft-remote-desktop-10/id1295203466?mt=12).
 
 7. Írja be a virtuális gép létrehozásakor megadott felhasználónevet és jelszót, majd válassza az **OK gombot.**
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: fe132ee6ab90fdae99463f11ecf46f352690b810
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 43d15a7252819a3e4f7635e37458b75e9b7ecca7
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69984354"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546273"
 ---
 # <a name="migrate-data-from-oracle-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Adatok áttelepítése az Oracle-ről az Azure Cosmos DB Cassandra API-fiókba a Blitzz használatával
 
@@ -36,7 +36,7 @@ A Blitzz áttelepítési megoldása lépésről lépésre közelíti meg az öss
 
 * Hibatűrő, és pontosan az adatok kézbesítését garantálja még a rendszer hardver- vagy szoftverhibája esetén is.
 
-* Az adatokat az átvitel során számos biztonsági módszerrel biztosítja, például SSL, titkosítás.
+* Az adatokat az átvitel során számos biztonsági módszerrel biztosítja, mint például a TLS/SSL, titkosítás.
 
 * Szolgáltatásokat kínál a PL/SQL-ben írt összetett üzleti logika konvertálásához az Azure Cosmos DB egyenértékű üzleti logikájává.
 
@@ -44,7 +44,7 @@ A Blitzz áttelepítési megoldása lépésről lépésre közelíti meg az öss
 
 Ez a szakasz ismerteti a Blitzz beállításához szükséges lépéseket, és áttelepíti az adatokat az Oracle-adatbázisból az Azure Cosmos DB-be.
 
-1. A Blitzz replikáns telepítését hozó számítógépről adjon hozzá egy biztonsági tanúsítványt. Ezt a tanúsítványt a Blitzz replikáns a megadott Azure Cosmos DB-fiókkal létesített SSL-kapcsolat létrehozásához. A tanúsítványt a következő lépésekkel veheti fel:
+1. A Blitzz replikáns telepítését hozó számítógépről adjon hozzá egy biztonsági tanúsítványt. Ezt a tanúsítványt a Blitzz replikáns a megadott Azure Cosmos DB-fiókkal való TLS-kapcsolat létrehozásához szükséges. A tanúsítványt a következő lépésekkel veheti fel:
 
    ```bash
    wget https://cacert.omniroot.com/bc2025.crt

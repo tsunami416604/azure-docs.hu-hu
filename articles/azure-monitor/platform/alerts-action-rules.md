@@ -4,16 +4,18 @@ description: Az Azure Monitor ban található műveletszabályok ismertetése, v
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 42f8d9cd30caa48376cda049f6404aa897a6866c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0498325984641641d6dfc9ee6b89f66800b5c7d2
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77668468"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546484"
 ---
 # <a name="action-rules-preview"></a>Műveletszabályok (előzetes verzió)
 
 A műveletszabályok segítségével definiálhatja vagy letilthatja a műveleteket bármely Azure Resource Manager hatókörben (Azure-előfizetés, erőforráscsoport vagy célerőforrás). Különböző szűrőkkel rendelkeznek, amelyek segítenek leszűkíteni a riasztási példányok adott részhalmazát, amelyet el szeretne látni.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4qXeL]
 
 ## <a name="why-and-when-should-you-use-action-rules"></a>Miért és mikor érdemes akciószabályokat használni?
 

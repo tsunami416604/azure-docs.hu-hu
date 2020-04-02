@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/09/2020
 ms.author: apimpm
-ms.openlocfilehash: dcc2c38238f707a5d43cde03502c589add9461b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 462a44f7766e0ec52ba7156d6de5ae5261e21376
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335923"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547363"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Az Azure API Management használata virtuális hálózatokkal
 Az Azure-beli virtuális hálózatokkal (VNET-ekkel) olyan nem internetalapú, irányítható hálózatokra helyezheti át Azure-erőforrásait, amelyekhez való hozzáférést Ön szabályozza. Ezek a hálózatok ezután különböző VPN-technológiák használatával csatlakoztathatók a helyszíni hálózatokhoz. Ha többet szeretne megtudni az Azure virtuális hálózatokról, kezdje az itt található információkkal: [Azure virtuális hálózat áttekintése](../virtual-network/virtual-networks-overview.md).
@@ -102,7 +102,7 @@ Az alábbiakban az API Management szolgáltatás virtuális hálózatra történ
 * **Egyéni DNS-kiszolgáló beállítása:** Az API Management szolgáltatás több Azure-szolgáltatástól függ. Ha az API Management egy virtuális hálózatban található egy egyéni DNS-kiszolgálóval, fel kell oldania az Azure-szolgáltatások állomásneveit. Kérjük, kövesse [ezt az](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) útmutatót az egyéni DNS-beállításokról. Lásd az alábbi portok táblázatát és az egyéb hálózati követelményeket.
 
 > [!IMPORTANT]
-> Ha egyéni DNS-kiszolgáló(ka)t kíván használni a virtuális hálózathoz, állítsa be, **mielőtt** egy API Management szolgáltatást telepítene hozzá. Ellenkező esetben frissítenie kell az API Management szolgáltatást minden alkalommal, amikor módosítja a DNS-kiszolgáló(ka)t a [Hálózati konfiguráció alkalmazása művelet futtatásával](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/ApiManagementService/ApplyNetworkConfigurationUpdates)
+> Ha egyéni DNS-kiszolgáló(ka)t kíván használni a virtuális hálózathoz, állítsa be, **mielőtt** egy API Management szolgáltatást telepítene hozzá. Ellenkező esetben frissítenie kell az API Management szolgáltatást minden alkalommal, amikor módosítja a DNS-kiszolgáló(ka)t a [Hálózati konfiguráció alkalmazása művelet futtatásával](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/ApiManagementService/ApplyNetworkConfigurationUpdates)
 
 * **Az API-kezeléshez szükséges portok:** Az API-kezelést alkalmazó alhálózatba irányuló bejövő és kimenő forgalom a [Hálózati biztonsági csoport][Network Security Group]használatával vezérelhető. Ha ezen portok bármelyike nem érhető el, előfordulhat, hogy az API Management nem működik megfelelően, és elérhetetlenné válhat. Egy vagy több ilyen port blokkolása egy másik gyakori helytelen konfigurációs probléma, ha az API Management et használja a virtuális hálózattal.
 
@@ -134,6 +134,8 @@ Az alábbiakban az API Management szolgáltatás virtuális hálózatra történ
 
 + **Metrikák és állapotfigyelés:** Kimenő hálózati kapcsolat az Azure Monitoring végpontok, amely a következő tartományokban oldható fel:
 
++ **Regionális szolgáltatáscímkék**": NSG-szabályok, amelyek lehetővé teszik a kimenő kapcsolatot a storage, SQL és EventHubs szolgáltatás címkék használhatják a regionális verziók e címkék megfelelő régióban az API Management-példány (például Storage.WestUS egy API Management-példány az USA nyugati régiójában). A több régiós telepítések, az NSG minden régióban lehetővé kell tennie a forgalmat a szolgáltatás címkék az adott régióban.
+
     | Azure környezet | Végpontok                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Azure Public      | <ul><li>gcs.prod.monitoring.core.windows.net(**új**)</li><li>prod.warmpath.msftcloudes.com(**elavult )**</li><li>shoebox2.metrics.microsoftmetrics.com(**új**)</li><li>shoebox2.metrics.nsatc.net(**elavult )**</li><li>prod3.metrics.microsoftmetrics.com(**új**)</li><li>prod3.metrics.nsatc.net(**elavult)**</li><li>prod3-black.prod3.metrics.microsoftmetrics.com(**új**)</li><li>prod3-black.prod3.metrics.nsatc.net(**elavult )**</li><li>prod3-red.prod3.metrics.microsoftmetrics.com(**új**)</li><li>prod3-red.prod3.metrics.nsatc.net(**elavult )**</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`.warm.ingestion.msftcloudes.com `East US 2` hol van eastus2.warm.ingestion.msftcloudes.com</li></ul> |
@@ -161,7 +163,7 @@ Az alábbiakban az API Management szolgáltatás virtuális hálózatra történ
       - SMTP-váltó
       - Fejlesztői portál CAPTCHA
 
-## <a name="troubleshooting"></a><a name="troubleshooting"> </a>hibaelhárítással
+## <a name="troubleshooting"></a><a name="troubleshooting"> </a>Hibaelhárítás
 * **Kezdeti telepítés:** Ha az API Management szolgáltatás első telepítése egy alhálózatba nem sikerül, javasoljuk, hogy először telepítsen egy virtuális gépet ugyanabba az alhálózatba. Következő távoli asztal a virtuális gépre, és ellenőrizze, hogy van-e kapcsolat az egyik az egyes erőforrások az Azure-előfizetés
     * Azure Storage blob
     * Azure SQL Database
@@ -170,7 +172,7 @@ Az alábbiakban az API Management szolgáltatás virtuális hálózatra történ
   > [!IMPORTANT]
   > Miután érvényesítette a kapcsolatot, győződjön meg arról, hogy távolítsa el az alhálózatban üzembe helyezett összes erőforrást, mielőtt az API Managementet az alhálózatba telepítené.
 
-* **Növekményes frissítések:** A hálózat módosításakor tekintse meg a [NetworkStatus API című hivatkozást](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/networkstatus)annak ellenőrzéséhez, hogy az API Management szolgáltatás nem veszítette-e el a hozzáférést a kritikus erőforrásokhoz, amelyektől függ. A kapcsolat állapotát 15 percenként frissíteni kell.
+* **Növekményes frissítések:** A hálózat módosításakor tekintse meg a [NetworkStatus API című hivatkozást](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/networkstatus)annak ellenőrzéséhez, hogy az API Management szolgáltatás nem veszítette-e el a hozzáférést a kritikus erőforrásokhoz, amelyektől függ. A kapcsolat állapotát 15 percenként frissíteni kell.
 
 * **Erőforrás-navigációs hivatkozások:** Az Erőforrás-kezelő stílusú virtuális hálózatalhálózatba való üzembe helyezésekor az API Management leszervezi az alhálózatot egy erőforrás-navigációs hivatkozás létrehozásával. Ha az alhálózat már tartalmaz egy másik szolgáltatótól származó erőforrást, a telepítés **sikertelen**lesz. Hasonlóképpen, ha egy API Management szolgáltatást áthelyez egy másik alhálózatra, vagy törli, eltávolítjuk az erőforrás-navigációs hivatkozást.
 

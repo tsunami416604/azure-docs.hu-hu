@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 01/21/2020
 ms.author: diberry
-ms.openlocfilehash: 850ab0ee89ee167886d8747a0c721bb643529e14
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ac6d72cbb69796851e58098138d51bb0988be4ec
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80052072"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520976"
 ---
 # <a name="what-is-personalizer"></a>Mi a Personalizer?
 
@@ -59,7 +59,7 @@ Personalizer használt megerősítése tanulás válassza ki az egyetlen legjobb
 
 A **Personalizer's Rank** [API-t](https://go.microsoft.com/fwlink/?linkid=2092082) _minden alkalommal, amikor_ tartalmat mutat be, valós időben. Ezt **eseménynek**nevezzük , _amelyet eseményazonosítóval jegyeznek_fel.
 
-A Personalizer **Reward** [API-ja](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) valós időben vagy késleltetett módon hívható, hogy jobban illeszkedjen az infrastruktúrához. A jutalom pontszámot az üzleti igényeid alapján határozhatod meg. Ez lehet egyetlen érték, például 1 a jó, és 0 a rossz, vagy egy számot hozott létre egy algoritmust hoz létre figyelembe véve az üzleti célok és metrikák.
+A Personalizer **Reward** [API-ja](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) valós időben vagy késleltetett módon hívható, hogy jobban illeszkedjen az infrastruktúrához. A jutalom pontszámot az üzleti igényeid alapján határozhatod meg. A jutalom pontszám a 0 és 1 között van. Ez lehet egyetlen érték, például 1 a jó, és 0 a rossz, vagy egy számot hozott létre egy algoritmust hoz létre figyelembe véve az üzleti célok és metrikák.
 
 ## <a name="personalizer-content-requirements"></a>A személyre szabásra vonatkozó tartalomra vonatkozó követelmények
 

@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/28/2020
+ms.date: 03/31/2020
 ms.author: radeltch
-ms.openlocfilehash: 5e3512ce86bdf96a5e6cfcf0e4459b656a5ac5bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f1ae2c3c949e8bdbf30c8bef496177d56cd2dcbd
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77565859"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521410"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Az SAP HANA magas rendelkezésre állása az Azure-beli virtuális gépeken a Red Hat Enterprise Linuxon
 
@@ -263,9 +263,13 @@ Az ebben a szakaszban ismertetett lépések a következő előtagokat használj�
    sudo vgcreate vg_hana_shared_<b>HN1</b> /dev/disk/azure/scsi1/lun3
    </code></pre>
 
-   Hozza létre a logikai köteteket. A lineáris kötet akkor `lvcreate` jön `-i` létre, ha kapcsoló nélkül használja. Javasoljuk, hogy hozzon létre egy csíkozott kötetet `-i` a jobb I/O teljesítmény érdekében, ahol az argumentum az alapul szolgáló fizikai kötet számának kell lennie. Ebben a dokumentumban két fizikai kötet et használ `-i` az adatmennyiség, így a kapcsoló argumentum **2.** A naplókötethez egy fizikai kötetet `-i` használ, így a rendszer kifejezetten nem használ kapcsolót. Használja `-i` a kapcsolót, és állítsa be az alapul szolgáló fizikai kötet számára, ha minden adathoz, naplóhoz vagy megosztott kötethez egynél több fizikai kötetet használ.
+   Hozza létre a logikai köteteket. A lineáris kötet akkor `lvcreate` jön `-i` létre, ha kapcsoló nélkül használja. Javasoljuk, hogy hozzon létre egy csíkozott kötetet a jobb I/O teljesítmény érdekében, és igazítsa a csíkméreteket az [SAP HANA virtuálisgép-tároló konfigurációkban dokumentált értékekhez.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) Az `-i` argumentumnak az alapul szolgáló fizikai `-I` kötetek számának, az argumentumnak pedig a csíkméretnek kell lennie. Ebben a dokumentumban két fizikai kötet et használ `-i` az adatmennyiség, így a kapcsoló argumentum **2.** Az adatmennyiség csíkmérete **256KiB**. A naplókötethez egy fizikai kötetet `-i` `-I` használ, így a naplókötet-parancsokhoz nem vagy nem használ kifejezetten kapcsolókat.  
 
-   <pre><code>sudo lvcreate <b>-i 2</b> -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
+   > [!IMPORTANT]
+   > Használja `-i` a kapcsolót, és állítsa be az alapul szolgáló fizikai kötet számára, ha minden adathoz, naplóhoz vagy megosztott kötethez egynél több fizikai kötetet használ. Csíkozott `-I` kötet létrehozásakor a kapcsolóval adhatja meg a csíkméretet.  
+   > Tekintse meg [az SAP HANA virtuálisgép tárolási konfigurációk](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) ajánlott tárolási konfigurációk, beleértve a csíkméretek és a lemezek száma.  
+
+   <pre><code>sudo lvcreate <b>-i 2</b> <b>-I 256</b> -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
    sudo lvcreate -l 100%FREE -n hana_log vg_hana_log_<b>HN1</b>
    sudo lvcreate -l 100%FREE -n hana_shared vg_hana_shared_<b>HN1</b>
    sudo mkfs.xfs /dev/vg_hana_data_<b>HN1</b>/hana_data

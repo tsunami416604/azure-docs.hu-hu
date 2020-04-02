@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 894ec4e543f0c68cc652141d2c1578cda61d7f42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c1f0bb715b3c3bf9b3a3350ab11e26834aa84c8
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77594743"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80528662"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes-szolgáltatás (AKS) üzleti folytonosságával és vész-helyreállításával kapcsolatos gyakorlati tanácsok
 
@@ -59,7 +59,7 @@ A végpontok és az útválasztás beállításáról [a Földrajzi forgalom út
 
 ### <a name="layer-7-application-routing-with-azure-front-door-service"></a>Layer 7 alkalmazásútválasztás az Azure Bejárati ajtó szolgáltatással
 
-A Traffic Manager a DNS (3. réteg) segítségével alakítja ki a forgalmat. [Az Azure Bejárati ajtó szolgáltatás](https://docs.microsoft.com/azure/frontdoor/front-door-overview) http/HTTPS (7. réteg) útválasztási beállítást biztosít. Az Azure Front Door Service további funkciói közé tartozik az SSL-megszüntetés, az egyéni tartomány, a webalkalmazás tűzfala, az URL-újraírás és a munkamenet-affinitás. Tekintse át az alkalmazásforgalom igényeit, hogy megértse, melyik megoldás a legmegfelelőbb.
+A Traffic Manager a DNS (3. réteg) segítségével alakítja ki a forgalmat. [Az Azure Bejárati ajtó szolgáltatás](https://docs.microsoft.com/azure/frontdoor/front-door-overview) http/HTTPS (7. réteg) útválasztási beállítást biztosít. Az Azure Front Door Service további funkciói közé tartozik a TLS-megszüntetés, az egyéni tartomány, a webalkalmazás tűzfala, az URL-újraírás és a munkamenet-affinitás. Tekintse át az alkalmazásforgalom igényeit, hogy megértse, melyik megoldás a legmegfelelőbb.
 
 ### <a name="interconnect-regions-with-global-virtual-network-peering"></a>Régiók összekapcsolása a globális virtuális hálózati társviszony-létesítéssel
 
@@ -122,7 +122,7 @@ A tipikus stratégia az, hogy egy közös tárolási pont, ahol az alkalmazások
 Ha Azure felügyelt lemezeket használ, a replikációs és a VÉSZ-megoldásokat, például az alábbiakat választhatja:
 
 * [Velero az Azure-ban](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md)
-* [Az Azure webhely helyreállítása](https://azure.microsoft.com/blog/asr-managed-disks-between-azure-regions/)
+* [Azure Site Recovery](https://azure.microsoft.com/blog/asr-managed-disks-between-azure-regions/)
 
 ### <a name="application-based-asynchronous-replication"></a>Alkalmazásalapú aszinkron replikáció
 

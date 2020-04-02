@@ -7,12 +7,12 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 3/5/2020
 ms.subservice: alerts
-ms.openlocfilehash: e4dfc33756a287b6d2f6e41edded3332ca85241d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 62c1e29b668c3ef58b0e26e2749c55b913279425
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79274930"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545680"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Metrikariasztások támogatott erőforrásai az Azure Monitorban
 
@@ -40,9 +40,9 @@ Az alábbiakban az újabb riasztások által támogatott Azure-figyelő metrikaf
 |Microsoft.ClassicStorage/storageAccounts/mmxclassic/fileServices|Nem|Igen|
 |Microsoft.ClassicStorage/storageAccounts/mmxclassic/queueServices|Nem|Igen|
 |Microsoft.ClassicStorage/storageAccounts/mmxclassic/tableServices|Nem|Igen| |
-|Microsoft.CognitiveServices/fiókok| N/A | Nem | [Kognitív szolgáltatások](../../azure-monitor/platform/metrics-supported.md#microsoftcognitiveservicesaccounts)|
+|Microsoft.CognitiveServices/fiókok| N/A | Nem | [Cognitive Services](../../azure-monitor/platform/metrics-supported.md#microsoftcognitiveservicesaccounts)|
 |Microsoft.Compute/virtualMachines |Igen | Igen | [Virtuális gépek](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)|
-|Microsoft.Compute/virtualMachineScaleSets |N/A | Igen |[Virtuálisgép-méretezési készletek](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)|
+|Microsoft.Compute/virtualMachineScaleSets |N/A | Igen |[Virtuálisgép-méretezési csoportok](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)|
 |Microsoft.ContainerInstance/containerGroups | Igen| Nem | [Tárolócsoportok](../../azure-monitor/platform/metrics-supported.md#microsoftcontainerinstancecontainergroups)|
 |Microsoft.ContainerService/managedClusters | Igen | Nem | [Felügyelt fürtök](../../azure-monitor/platform/metrics-supported.md#microsoftcontainerservicemanagedclusters)|
 |Microsoft.DataBoxEdge/dataBoxEdgeDevices | Igen | Igen | |
@@ -56,10 +56,10 @@ Az alábbiakban az újabb riasztások által támogatott Azure-figyelő metrikaf
 |Microsoft.EventGrid/tartományok|Nem|Igen| |
 |Microsoft.EventGrid/témakörök |Igen | Nem |[Eseményrácstémakörök](../../azure-monitor/platform/metrics-supported.md#microsofteventgridtopics)|
 |Microsoft.EventHub/clusters |Igen| Nem |[Eseményközpontok fürtjei](../../azure-monitor/platform/metrics-supported.md#microsofteventhubclusters)|
-|Microsoft.EventHub/névterek |Igen| Nem |[Eseményközpontok](../../azure-monitor/platform/metrics-supported.md#microsofteventhubnamespaces)|
+|Microsoft.EventHub/névterek |Igen| Nem |[Event Hubs](../../azure-monitor/platform/metrics-supported.md#microsofteventhubnamespaces)|
 |Microsoft.KeyVault/vaults| Nem |Nem |[Tárolók](../../azure-monitor/platform/metrics-supported.md#microsoftkeyvaultvaults)|
 |Microsoft.Logic/munkafolyamatok |N/A | Nem |[Logic Apps](../../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows) |
-|Microsoft.MachineLearningServices/munkaterületek|Igen| Nem | [Machine Learning](../../azure-monitor/platform/metrics-supported.md#microsoftmachinelearningservicesworkspaces) |
+|Microsoft.MachineLearningServices/munkaterületek|Igen| Nem | [Gépi tanulás](../../azure-monitor/platform/metrics-supported.md#microsoftmachinelearningservicesworkspaces) |
 |Microsoft.NetApp/netAppAccounts/capacityPools |Igen| Nem | [Az Azure NetApp kapacitáskészletei](../../azure-monitor/platform/metrics-supported.md#microsoftnetappnetappaccountscapacitypools) |
 |Microsoft.NetApp/netAppAccounts/capacityPools/volumes |Igen| Nem | [Azure NetApp-kötetek](../../azure-monitor/platform/metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) |
 |Microsoft.Network/applicationGateways|N/A| Nem |  |
@@ -77,7 +77,7 @@ Az alábbiakban az újabb riasztások által támogatott Azure-figyelő metrikaf
 |Microsoft.PowerBIDedikált/kapacitások | N/A | Nem | [Kapacitások](../../azure-monitor/platform/metrics-supported.md#microsoftpowerbidedicatedcapacities)|
 |Microsoft.Search/searchServices |N/A|Nem | [Keresési szolgáltatások](../../azure-monitor/platform/metrics-supported.md#microsoftsearchsearchservices)|
 |Microsoft.ServiceBus/névterek |Igen| Nem |[Service Bus](../../azure-monitor/platform/metrics-supported.md#microsoftservicebusnamespaces)|
-|Microsoft.Sql/servers/elasticPools |   Nem | Igen |
+|Microsoft.Sql/servers/elasticPools |    Nem | Igen |
 |Microsoft.Sql/servers/databases    | Nem | Igen |
 |Microsoft.Storage/storageAccounts |Igen | Nem | [Tárfiókok](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccounts)|
 |Microsoft.Storage/storageAccounts/services | Igen| Nem | [Blob Services](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsblobservices), [Fájlszolgáltatások,](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsfileservices) [Várólista-szolgáltatások](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices) és [Táblaszolgáltatások](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountstableservices)|
@@ -86,7 +86,7 @@ Az alábbiakban az újabb riasztások által támogatott Azure-figyelő metrikaf
 |Microsoft.Web/hostingEnvironments/multiRolePools | Igen | Nem | [App Service-környezet többszerepköres készletek](../../azure-monitor/platform/metrics-supported.md#microsoftwebhostingenvironmentsmultirolepools)|
 |Microsoft.Web/hostingEnvironments/workerPools | Igen | Nem | [App Service-környezet munkavégző készletei](../../azure-monitor/platform/metrics-supported.md#microsoftwebhostingenvironmentsworkerpools)|
 |Microsoft.Web/serverfarms | Igen | Nem | [App Szolgáltatási csomagok](../../azure-monitor/platform/metrics-supported.md#microsoftwebserverfarms)|
-|Microsoft.Web/webhelyek | Igen | Nem | [Alkalmazásszolgáltatások](../../azure-monitor/platform/metrics-supported.md#microsoftwebsites-excluding-functions) és [-funkciók](../../azure-monitor/platform/metrics-supported.md#microsoftwebsites-functions)|
+|Microsoft.Web/webhelyek | Igen | Nem | [App Services](../../azure-monitor/platform/metrics-supported.md#microsoftwebsites)|
 |Microsoft.Web/sites/slot | Igen | Nem | [App Service-bővítőhelyek](../../azure-monitor/platform/metrics-supported.md#microsoftwebsitesslots)|
 
 ## <a name="payload-schema"></a>Hasznos adatséma

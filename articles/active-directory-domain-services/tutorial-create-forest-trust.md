@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 5620d1cdc7dc71bdac17057b9a13a74150b12d5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eb96cb32c05d2ba3fbd38e72c16540d947436117
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77612520"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519078"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>Oktatóanyag: Kimenő erdőszintű bizalmi kapcsolat létrehozása egy helyszíni tartományba az Azure Active Directory tartományi szolgáltatásokban (előzetes verzió)
 
@@ -59,7 +59,7 @@ Mielőtt erdőszintű megbízhatósági kapcsolatot konfigurálna az Azure AD DS
 
 * Használjon privát IP-címeket. Ne hagyatkozzon dinamikus IP-cím-hozzárendeléssel rendelkező DHCP-re.
 * Kerülje az egymást átfedő IP-címterek, hogy a virtuális hálózati társviszony-létesítés és útválasztás sikeresen kommunikálni az Azure és a helyszíni.
-* Az Azure virtuális hálózatnak átjáróalhálózatra van szüksége a helyek közötti (S2S) VPN- vagy ExpressRoute-kapcsolat konfigurálásához
+* Az Azure virtuális hálózatának átjáróalhálózatra van szüksége az [Azure-helyek közötti (S2S) VPN-][vpn-gateway] vagy [ExpressRoute-kapcsolat][expressroute] konfigurálásához
 * Hozzon létre olyan alhálózatokat, amelyek elegendő IP-címmel támogatják a forgatókönyvet.
 * Győződjön meg arról, hogy az Azure AD DS saját alhálózattal rendelkezik, ne ossza meg ezt a virtuális hálózati alhálózatot az alkalmazás virtuális gépeivel és szolgáltatásaival.
 * A társviszonyba vett virtuális hálózatok nem tranzitívak.
@@ -74,7 +74,7 @@ Az Azure AD DS felügyelt tartomány ának a helyszíni környezetből történ�
 1. Válassza **a Start | Adminisztratív eszközök | DNS**
 1. Válassza ki a jobb oldali DNS-kiszolgálót, például *a myAD01-et,* válassza a **Tulajdonságok lehetőséget.**
 1. Válassza **a Továbbítók**lehetőséget, majd **a Szerkesztés lehetőséget** további továbbítók hozzáadásához.
-1. Adja hozzá az Azure AD DS felügyelt tartományÁNAK IP-címét, például *a 10.0.1.4* és *a 10.0.1.5.*
+1. Adja hozzá az Azure AD DS felügyelt tartományÁNAK IP-címét, például *a 10.0.2.4* és *a 10.0.2.5.*
 
 ## <a name="create-inbound-forest-trust-in-the-on-premises-domain"></a>Bejövő erdőszintű bizalmi kapcsolat létrehozása a helyszíni tartományban
 
@@ -85,10 +85,6 @@ A helyszíni Active Ád DS-tartomány bejövő bizalmi kapcsolatának konfigurá
 1. Válassza **a Start | Adminisztratív eszközök | Active Directory – tartományok és megbízhatósági kapcsolatok**
 1. Válassza ki a jobb oldali tartományt, például *onprem.contoso.com,* válassza a **Tulajdonságok lehetőséget.**
 1. Válassza **a Megbízhatóság ok a** lapot, majd az Új **megbízhatósági kapcsolatok lapot**
-
-   > [!NOTE]
-   > Ha nem látható a **Megbízhatóságok** menü, jelölje be az Erdő típus **tulajdonságai** *csoportjában.* Csak *az erőforráserdők* hozhatnak létre bizalmi kapcsolatokat. Ha az erdő típusa *Felhasználó,* nem hozhat létre bizalmi kapcsolatokat. Jelenleg nincs mód az Azure AD DS felügyelt tartomány erdőtípusának módosítására. A felügyelt tartományt erőforráserdőként kell törölnie, majd újra létrehoznia.
-
 1. Adja meg a nevet az Azure AD DS tartománynevében, például *aaddscontoso.com,* majd válassza a **Tovább gombot.**
 1. Válassza ki az **erdőszintű bizalmi kapcsolat**létrehozásának lehetőségét, majd hozzon létre egy **egyirányú: bejövő** bizalmi kapcsolatot.
 1. Válassza ki, hogy csak ehhez a **tartományhoz hozza-e**létre a bizalmi kapcsolatot. A következő lépésben hozza létre a megbízhatóságot az Azure AD DS felügyelt tartományban az Azure AD DS felügyelt tartományban.
@@ -104,12 +100,16 @@ Az Azure AD DS által felügyelt tartomány kimenő megbízhatósági kapcsolat�
 
 1. Az Azure Portalon keresse meg és válassza ki az **Azure AD tartományi szolgáltatásokat,** majd válassza ki a felügyelt tartományt, például *aaddscontoso.com*
 1. Az Azure AD DS felügyelt tartomány bal oldalán található menüben válassza a **Megbízhatóságok**lehetőséget, majd válassza a + Bizalmi kapcsolat **hozzáadása lehetőséget.**
+
+   > [!NOTE]
+   > Ha nem látható a **Megbízhatóságok** menü, jelölje be az Erdő típus **tulajdonságai** *csoportjában.* Csak *az erőforráserdők* hozhatnak létre bizalmi kapcsolatokat. Ha az erdő típusa *Felhasználó,* nem hozhat létre bizalmi kapcsolatokat. Jelenleg nincs mód az Azure AD DS felügyelt tartomány erdőtípusának módosítására. A felügyelt tartományt erőforráserdőként kell törölnie, majd újra létrehoznia.
+
 1. Adjon meg egy megjelenítendő nevet, amely azonosítja a megbízhatóságot, majd a helyszíni megbízható erdő DNS-nevét, például *onprem.contoso.com*
 1. Adja meg ugyanazt a megbízhatósági jelszót, amelyet a helyszíni AD DS-tartomány bejövő erdőszintű megbízhatósági kapcsolatának konfigurálásakor használt az előző szakaszban.
-1. Legalább két DNS-kiszolgáló biztosítása a helyszíni AD DS-tartományhoz, például *10.0.2.4* és *10.0.2.5*
+1. Legalább két DNS-kiszolgáló biztosítása a helyszíni AD DS-tartományhoz, például *a 10.1.1.4* és *a 10.1.1.5*
 1. Ha készen áll, **mentse** a kimenő erdőszintű bizalmi kapcsolatot
 
-    [Kimenő erdőszintű bizalmi kapcsolat létrehozása az Azure Portalon](./media/create-forest-trust/portal-create-outbound-trust.png)
+    ![Kimenő erdőszintű bizalmi kapcsolat létrehozása az Azure Portalon](./media/tutorial-create-forest-trust/portal-create-outbound-trust.png)
 
 ## <a name="validate-resource-authentication"></a>Erőforrás-hitelesítés ellenőrzése
 
@@ -126,11 +126,7 @@ Az alábbi gyakori esetekben ellenőrizheti, hogy az erdőszintű bizalmi kapcso
 
 A Windows Server virtuális gép csatlakozott az Azure AD DS erőforrás-tartományhoz. Ezzel a virtuális géppel tesztelheti a helyszíni felhasználó hitelesítést egy virtuális gépen.
 
-1. Csatlakozzon a Windows Server virtuális gép csatlakozott az Azure AD DS erőforráserdő a Távoli asztal és az Azure AD DS rendszergazdai hitelesítő adatait. Ha hálózati szintű hitelesítési (NLA) hibaüzenetet kap, ellenőrizze, hogy a használt felhasználói fiók nem tartományi felhasználói fiók-e.
-
-    > [!NOTE]
-    > Az Azure AD tartományi szolgáltatásokhoz csatlakozott virtuális gépekhez való biztonságos csatlakozáshoz használhatja az [Azure Bastion Host Service-t](https://docs.microsoft.com/azure/bastion/bastion-overview) a támogatott Azure-régiókban.
-
+1. Csatlakozzon a Windows Server virtuális gép csatlakozott az Azure AD DS erőforráserdő az [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview) és az Azure AD DS rendszergazdai hitelesítő adatait.
 1. Nyisson meg egy `whoami` parancssort, és a paranccsal jelenítse meg az aktuálisan hitelesített felhasználó megkülönböztető nevét:
 
     ```console
@@ -152,10 +148,7 @@ Az Azure AD DS erőforráserdőhöz csatlakozott Windows Server virtuális gép 
 
 #### <a name="enable-file-and-printer-sharing"></a>Fájl- és nyomtatómegosztás engedélyezése
 
-1. Csatlakozzon a Windows Server virtuális gép csatlakozott az Azure AD DS erőforráserdő a Távoli asztal és az Azure AD DS rendszergazdai hitelesítő adatait. Ha hálózati szintű hitelesítési (NLA) hibaüzenetet kap, ellenőrizze, hogy a használt felhasználói fiók nem tartományi felhasználói fiók-e.
-
-    > [!NOTE]
-    > Az Azure AD tartományi szolgáltatásokhoz csatlakozott virtuális gépekhez való biztonságos csatlakozáshoz használhatja az [Azure Bastion Host Service-t](https://docs.microsoft.com/azure/bastion/bastion-overview) a támogatott Azure-régiókban.
+1. Csatlakozzon a Windows Server virtuális gép csatlakozott az Azure AD DS erőforráserdő az [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview) és az Azure AD DS rendszergazdai hitelesítő adatait.
 
 1. Nyissa meg **a Windows beállításai t,** majd keresse meg a **Hálózati és megosztási központot.**
 1. Válassza a **Speciális megosztási** beállítások módosítása lehetőséget.
@@ -221,3 +214,5 @@ Az Azure AD DS erdőtípusaira vonatkozó további információkért lásd: [Mik
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance-advanced]: tutorial-create-instance-advanced.md
 [howto-change-sku]: change-sku.md
+[vpn-gateway]: ../vpn-gateway/vpn-gateway-about-vpngateways.md
+[expressroute]: ../expressroute/expressroute-introduction.md

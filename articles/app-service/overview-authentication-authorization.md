@@ -5,18 +5,23 @@ ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: mahender
-ms.custom: fasttrack-edit
-ms.openlocfilehash: f16b10f13c945dd7f1ae4fdc3f4e02dcd7c5a018
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.custom:
+- seodec18
+- fasttrack-edit
+ms.openlocfilehash: 0fe436b1da551bbc8a0064cb3cfdff864d8f9eb8
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437945"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520696"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Hitelesítés és engedélyezés az Azure App Service és az Azure Functions szolgáltatásban
 
 > [!NOTE]
 > Jelenleg az [Azure Active Directory v2.0-s (beleértve](../active-directory/develop/v2-overview.md) az [MSAL-t](../active-directory/develop/msal-overview.md)is) nem támogatott az Azure App Service és az Azure Functions. Kérjük, látogasson vissza a frissítéseket.
+>
+> [!NOTE]
+> Jelenleg ASP.NET Core jelenleg nem támogatja az aktuális felhasználó feltöltését a Hitelesítés/engedélyezés szolgáltatással.
 >
 
 Az Azure App Service beépített hitelesítési és engedélyezési támogatást nyújt, így bejelentkezhet a felhasználókba, és hozzáférhet az adatokhoz, ha minimális kódot ír a webalkalmazásában, a RESTful API-ban és a mobil háttérrendszerben, valamint az [Azure Functionsben.](../azure-functions/functions-overview.md) Ez a cikk azt ismerteti, hogy az App Service hogyan egyszerűsíti az alkalmazás hitelesítését és engedélyezését.
@@ -132,11 +137,17 @@ Ezzel a beállítással nem kell hitelesítési kódot írnia az alkalmazásban.
 > [!CAUTION]
 > A hozzáférés ily módon történő korlátozása az alkalmazás minden hívására vonatkozik, ami nem feltétlenül kívánatos a nyilvánosan elérhető kezdőlapot igénylő alkalmazások esetében, mint sok egyoldalas alkalmazásban.
 
+> [!NOTE]
+> A hitelesítés/engedélyezés korábban Egyszerű hitelesítés néven volt ismert.
+>
+
 ## <a name="more-resources"></a>További erőforrások
 
 [Oktatóanyag: A felhasználók hitelesítése és engedélyezése végpontok között az Azure App Service (Windows) szolgáltatásban](app-service-web-tutorial-auth-aad.md)  
 [Oktatóanyag: A felhasználók hitelesítése és engedélyezése végpontok között az Azure App Service for Linux-ban](containers/tutorial-auth-aad.md)  
-[Hitelesítés és engedélyezés testreszabása az App Service-ben](app-service-authentication-how-to.md)
+[Az Azure](app-service-authentication-how-to.md)
+[AppService EasyAuth (3. fél)](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)
+Azure App[Service-hitelesítésének beszerzése a .NET Core (3. fél) Alkalmazásszolgáltatásban .NET](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication) Core integráció testreszabása
 
 Szolgáltatóspecifikus útmutatók:
 

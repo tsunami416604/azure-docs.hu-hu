@@ -3,7 +3,7 @@ title: Az Azure-identitás & a biztonsági gyakorlati tanácsokhoz való hozzáf
 description: Ez a cikk az Azure-képességek beépített használatával az identitáskezelés és a hozzáférés-vezérlés ajánlott eljárások készletét tartalmazza.
 services: security
 documentationcenter: na
-author: barclayn
+author: terrylanfear
 manager: RKarlin
 editor: TomSh
 ms.assetid: 07d8e8a8-47e8-447c-9c06-3a88d2713bc1
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
-ms.author: barclayn
-ms.openlocfilehash: 52ef3a9b1df058d5d2e954b424094f9dbaeba15b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: terrylan
+ms.openlocfilehash: ffd9919092cdf2481767e58f10ba6525d56ca4a8
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73053341"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548457"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Az Azure-beli identitáskezelés és hozzáférés-vezérlés ajánlott biztonsági eljárásai
 
@@ -269,7 +269,7 @@ Az alábbiakban összefoglaljuk az Azure [AD hibrid és felhőalapú telepítés
 **Ajánlott eljárás:** Az összes kritikus rendszergazdai fiók jelszó nélküli (előnyben részesített) vagy többtényezős hitelesítés megkövetelése.
 **Részlet:** A [Microsoft Authenticator alkalmazással](/azure/active-directory/authentication/howto-authentication-phone-sign-in) jelentkezzen be bármely Azure AD-fiókba jelszó használata nélkül. A [Windows Hello for Business szolgáltatáshoz](/windows/security/identity-protection/hello-for-business/hello-identity-verification)hasonlóan a Microsoft Authenticator is kulcsalapú hitelesítést használ az eszközhöz kapcsolt és biometrikus hitelesítést vagy PIN-kódot használó felhasználói hitelesítő adatok engedélyezéséhez.
 
-Az Azure többtényezős hitelesítésének megkövetelése bejelentkezéskor minden olyan egyéni felhasználó számára, aki tartósan hozzá van rendelve egy vagy több Azure AD-rendszergazdai szerepkörhöz: globális rendszergazda, kiemelt szerepkör-rendszergazda, Exchange Online-rendszergazda és SharePoint Online Rendszergazda. Engedélyezze [a többtényezős hitelesítést a rendszergazdai fiókokszámára,](/azure/active-directory/authentication/howto-mfa-userstates) és győződjön meg arról, hogy a rendszergazdai fiók felhasználói regisztráltak.
+Az Azure többtényezős hitelesítés megkövetelése bejelentkezéskor minden olyan egyéni felhasználó számára, aki tartósan hozzá van rendelve egy vagy több Azure AD-rendszergazdai szerepkörhöz: globális rendszergazda, kiemelt szereprendszergazda, Exchange Online-rendszergazda és SharePoint Online-rendszergazda. Engedélyezze [a többtényezős hitelesítést a rendszergazdai fiókokszámára,](/azure/active-directory/authentication/howto-mfa-userstates) és győződjön meg arról, hogy a rendszergazdai fiók felhasználói regisztráltak.
 
 **Ajánlott eljárás:** A kritikus rendszergazdai fiókok, van egy rendszergazdai munkaállomás, ahol az éles feladatok nem engedélyezettek (például a böngészés és az e-mail). Ez megvédi a rendszergazdai fiókokat a böngészést és e-maileket használó támadási vektoroktól, és jelentősen csökkenti a súlyos események kockázatát.
 **Részlet**: Használjon rendszergazdai munkaállomást. Válassza ki a munkaállomás-biztonság szintjét:

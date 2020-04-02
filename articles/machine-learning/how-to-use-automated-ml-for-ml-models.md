@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 03/10/2020
-ms.openlocfilehash: 9999d74bf6bef3e8351460add7efc8bdbfcd1045
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aa85e80f1a90191a0a34a6962437c27a9d57ef65
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270029"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547552"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Automatizált gépi tanulási modellek létrehozása, áttekintése és üzembe helyezése az Azure Machine Learning segítségével
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -178,17 +178,27 @@ Az automatizált gépi tanulás automatikusan kínál előfeldolgozást és adat
 
 ### <a name="data-guardrails"></a>Adatkorlátok
 
-Az adatkorlátok automatikusan érvénybe lépnek az adatokkal kapcsolatos esetleges problémák (pl. hiányzó értékek, osztálykiegyensúlyozatlanság) azonosításában, és segítenek a korrekciós intézkedések elvégzésében a jobb eredmények érdekében. Számos bevált gyakorlat áll rendelkezésre, és megbízható eredmények elérése érdekében alkalmazható. 
-
-Az alábbi táblázat ismerteti a jelenleg támogatott adatkorlátokat és a kapcsolódó állapotokat, amelyekkel a felhasználók a kísérlet elküldésekor találkozhatnak.
+Az adatkorlátok akkor kerülnek alkalmazásra, ha az automatikus jellemzőbeállítás engedélyezve van, vagy az érvényesítés automatikusra van állítva. Az adatkorlátok segítségével azonosíthatja az adatokkal kapcsolatos lehetséges problémákat (pl. hiányzó értékek, osztálykiegyensúlyozatlanság), és segít a korrekciós intézkedések elvégzésében a jobb eredmények érdekében. Számos bevált gyakorlat áll rendelkezésre, és megbízható eredmények elérése érdekében alkalmazható. A felhasználók áttekinthetik az adatkorlátokat a stúdióban egy automatikus ml-futtatás **adatkorlátlapján** belül, vagy beállíthatják, ```show_output=True``` amikor egy kísérletet küld a Python SDK használatával. Az alábbi táblázat ismerteti a jelenleg támogatott adatkorlátokat és a kapcsolódó állapotokat, amelyekkel a felhasználók a kísérlet elküldésekor találkoznak.
 
 Védőkorlát|status|Az&nbsp;&nbsp;eseményindító feltétele
 ---|---|---
-Hiányzó&nbsp;&nbsp;értékek imputálása |**Átment** <br> <br> **Rögzített**|    Nincs hiányzó érték a&nbsp;bemeneti oszlopok egyikében sem <br> <br> Egyes oszlopokból hiányoznak értékek
-Keresztellenőrzés|**Kész**|Ha nem ad meg explicit érvényesítési készletet
-Nagy&nbsp;számosságú&nbsp;szolgáltatás&nbsp;észlelése|    **Átment** <br> <br>**Kész**|    Nem észlelt magas számossági jellemzőket <br><br> A rendszer nagy számosságú bemeneti oszlopokat észlelt
-Osztálymérleg észlelése    |**Átment** <br><br><br>**Figyelmeztették** |Az osztályok kiegyensúlyozottak a betanítási adatokban; Egy adatkészlet akkor tekinthető kiegyensúlyozottnak, ha minden osztály jó reprezentatimával rendelkezik az adatkészletben, a minták számával és arányával mérve. <br> <br> A betanítási adatok osztályai kiegyensúlyozatlanok
-Idősorozat-adatok konzisztenciája|**Átment** <br><br><br><br> **Rögzített** |<br> A program elemezte a kiválasztott {horizont, lag, gördülő ablak} értéket, és nem észlelt memóriabeli problémákat. <br> <br>A program elemezte a kiválasztott {horizon, lag, rolling window} értékeket, és a kísérlet memóriafogytását okozhatja. A késleltetés i vagy gördülő ablak ki van kapcsolva.
+Hiányzó jellemzőértékek imputálása |**Átment** <br><br><br> **Kész**| A program nem észlelt hiányzó jellemzőértékeket a betanítási adatokban. További információ a [hiányzó értékimputálásról.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Hiányzó jellemzőértékek észlelése a betanítási adatok és imputed.
+Nagy számosságú funkciókezelés |**Átment** <br><br><br> **Kész**| A bemenetek elemzése történt, és nem észleltek magas számossági jellemzőket. További információ a [magas számosságú funkciók észleléséről.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> A rendszer nagy számossági jellemzőket észlelt a bemeneteken, és kezelte őket.
+Érvényesítési felosztás kezelése |**Kész**| *Az érvényesítési konfiguráció "auto" volt beállítva, és a betanítási adatok **kevesebb** mint 20 000 sort tartalmaztak.* <br> A betanított modell minden egyes iterációja keresztellenőrzéssel lett érvényesítve. További információ az [érvényesítési adatokról.](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data) <br><br> *Az érvényesítési konfiguráció "auto" volt beállítva, és a betanítási adatok **több** mint 20 000 sort tartalmaztak.* <br> A bemeneti adatok at egy betanítási adatkészletre és egy érvényesítési adatkészletre osztották fel a modell érvényesítéséhez.
+Osztálykiegyensúlyozás észlelése |**Átment** <br><br><br><br> **Figyelmeztették** | A bemenetek elemzése, és minden osztály kiegyensúlyozott a betanítási adatok. Egy adatkészlet akkor tekinthető kiegyensúlyozottnak, ha minden osztály megfelelő reprezentatimával rendelkezik az adatkészletben, a minták számával és arányával mérve. <br><br><br> A rendszer kiegyensúlyozatlan osztályokat észlelt a bemenetekben. A modell torzításának javítása a kiegyensúlyozási probléma megoldásához. További információ a [kiegyensúlyozatlan adatokról.](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml#imbalance)
+Memóriaproblémák észlelése |**Átment** <br><br><br><br> **Kész** |<br> A program elemezte a kiválasztott {horizont, lag, gördülő ablak} értéket, és nem észlelt memóriabeli problémákat. További információ az [idősorozat-előrejelzési konfigurációkról.](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment) <br><br><br>A program elemezte a kiválasztott {horizon, lag, rolling window} értékeket, és a kísérlet memóriafogytását okozhatja. A késés vagy a gördülő ablakkonfigurációk ki vannak kapcsolva.
+Frekvenciaészlelés |**Átment** <br><br><br><br> **Kész** |<br> A rendszer elemezte az idősorokat, és az összes adatpont az észlelt frekvenciához igazodik. <br> <br> A rendszer elemezte az idősorokat, és olyan adatpontokat észlelt, amelyek nem illeszkednek az észlelt frekvenciához. Ezeket az adatpontokat eltávolították az adatkészletből. További információ [az idősorozat-előrejelzésre való felkészülésről.](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#preparing-data)
+
+#### <a name="data-guardrail-states"></a>Adatvédő sínállamok
+Az adatkorlátok a következő három állapot egyikét jelenítik meg: "Áthaladva", "Kész vagy "Riasztás".
+
+Állapot| Leírás
+----|----
+Átment| A rendszer nem észlelt adatproblémákat, és nincs szükség felhasználói műveletre. 
+Kész| A program módosításokat alkalmazott az adatokon. Javasoljuk a felhasználóknak, hogy tekintsék át az automatizált ml korrekciós intézkedéseket annak biztosítása érdekében, hogy a módosítások igazodjanak a várt eredményekhez. 
+Figyelmeztették| A rendszer nem pótolható adatproblémát észlelt. Javasoljuk a felhasználóknak, hogy vizsgálják felül és oldják meg a problémát. 
+
+Az automatikus ml előző verziója egy negyedik állapotot mutatott: "Javítva". Az újabb kísérletek nem jelenítik meg ezt az állapotot, és a "Rögzített" állapotot megjelenítő összes korlát mostantól a "Kész" feliratot jeleníti meg.   
 
 ## <a name="run-experiment-and-view-results"></a>Kísérlet futtatása és eredmények megtekintése
 

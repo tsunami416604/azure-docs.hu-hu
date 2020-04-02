@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 1fddbe908ccebc1384dcccde0810366f1a6d5da7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 662619e101b45d1dd8b34ea97e31f214b254124a
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73796231"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521887"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Virtuális hálózatok közötti társviszony-létesítési problémák hibaelhárítása
 
@@ -234,6 +234,15 @@ A probléma megoldásához törölje a társviszony-létesítést mindkét virtu
 ### <a name="failed-to-peer-a-databricks-virtual-network"></a>Nem sikerült társviszonyt létesíteni egy Databricks virtuális hálózattal
 
 A probléma megoldásához konfigurálja a virtuális hálózati társviszony-létesítést az **Azure Databricks**csoportban, majd adja meg a célvirtuális hálózatot **az Erőforrás-azonosító**használatával. További információ: [Peer a Databricks virtuális hálózat egy távoli virtuális hálózathoz.](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-peering.html#id2)
+
+### <a name="the-remote-virtual-network-lacks-a-gateway"></a>A távoli virtuális hálózatból hiányzik az átjáró
+
+Ez a probléma akkor fordul elő, ha különböző bérlőkvirtuális hálózatait társviszonyba állítja, majd később konfigurálni `Use Remote Gateways`szeretné. Az Azure Portal egyik korlátozása, hogy nem tudja érvényesíteni a virtuális hálózati átjáró jelenlétét egy másik bérlő virtuális hálózatában.
+
+A probléma kétféleképpen oldható meg:
+
+ * Törölje a társviszony-létesítést, és aktiválja a `Use Remote Gateways` lehetőséget új társviszony-létesítés létrehozásakor.
+ * Az Azure Portal helyett a PowerShell vagy `Use Remote Gateways`a CLI használatával engedélyezheti a használatát.
 
 ## <a name="next-steps"></a>További lépések
 

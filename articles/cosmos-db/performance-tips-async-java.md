@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: 89df941eb6ebaad6e078c278f1ed883db5528c7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b892b1f4ff73679ab425d0e97f5361e0f3712252
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77152557"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549187"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-async-java"></a>Az Azure Cosmos DB és az Async Java teljesítményével kapcsolatos tippek
 
@@ -112,7 +112,7 @@ Ha azt kérdezi: "Hogyan javíthatom az adatbázis teljesítményét?" fontolja 
 
         + **Használja a többszálas adattovábbítást az alkalmazásban a hatékony TCP adatátvitelérdekében** – A kérelem kérése után az alkalmazásnak elő kell fizetnie, hogy adatokat fogadjon egy másik szálon. Ha ezt nem teszi meg, a nem kívánt "félduplex" műveletet kényszeríti, és az ezt követő kérelmek blokkolva vannak az előző kérés válaszára várva.
 
-        + **Számítási nagy munkaterhelések elvégzése egy dedikált szálon** – Az előző csúcshoz hasonló okok miatt az olyan műveletek, mint például az összetett adatfeldolgozás, a legjobban egy külön szálban találhatók. Egy olyan kérelem, amely adatokat kér le egy másik adattárból (például ha a szál egyszerre használja az Azure Cosmos DB- és Spark-adattárakat) megnövekedett késést tapasztalhat, és ajánlott egy további szálat létrehozni, amely a másik tól érkező választ várja. adattárban.
+        + **Számítási nagy munkaterhelések elvégzése egy dedikált szálon** – Az előző csúcshoz hasonló okok miatt az olyan műveletek, mint például az összetett adatfeldolgozás, a legjobban egy külön szálban találhatók. Egy kérelem, amely lekéri az adatokat egy másik adattárból (például ha a szál használja az Azure Cosmos DB és a Spark-adattárak egyidejűleg) megnövekedhet késés, és ajánlott egy további szál, amely várja a választ a másik adattárból.
 
             + Az Async Java SDK-ban az alapul szolgáló hálózati IO-t a Netty kezeli, lásd az alábbi [tippeket a Netty IO-szálakat blokkoló kódolási minták elkerüléséhez.](troubleshoot-java-async-sdk.md#invalid-coding-pattern-blocking-netty-io-thread)
 
@@ -230,9 +230,9 @@ Ha azt kérdezi: "Hogyan javíthatom az adatbázis teljesítményét?" fontolja 
     * - nofile 100000
     ```
 
-* **Natív SSL-implementáció használata a netty-hez**
+* **Natív TLS/SSL implementáció használata a netty**
 
-    A Netty közvetlenül használhatja az OpenSSL-t az SSL implementációs veremhez a jobb teljesítmény elérése érdekében. Hiányában ez a konfiguráció netty esik vissza a Java alapértelmezett SSL megvalósítása.
+    A Netty közvetlenül használhatja az OpenSSL-t a TLS implementációs veremhez a jobb teljesítmény elérése érdekében. Hiányában ez a konfiguráció netty esik vissza a Java alapértelmezett TLS végrehajtását.
 
     Ubuntu:
     ```bash

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: bc4694928eceed57692a0d4b0469543c1a8f9678
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/1/2020
+ms.openlocfilehash: 6ca09ab0578fb88e443d6e9e1f920c22457eb042
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79532756"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548472"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>A MySQL Azure-adatbázisának korlátai
 A következő szakaszok a kapacitást, a tárolómotor-támogatást, a jogosultság-támogatást, az adatkezelési utasítások támogatását és az adatbázis-szolgáltatás funkcionális korlátait ismertetik. Lásd még a MySQL adatbázis-motorra vonatkozó [általános korlátozásokat.](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html)
@@ -150,6 +150,10 @@ Tekintse át a [MySQL dokumentációját,](https://dev.mysql.com/doc/refman/5.7/
 |Memóriaoptimalizált|8|16777216|1024|536870912|
 |Memóriaoptimalizált|16|16777216|1024|1073741824|
 |Memóriaoptimalizált|32|16777216|1024|1073741824|
+
+### <a name="time_zone"></a>time_zone
+
+Az időzóna-táblák feltölthetők `mysql.az_load_timezone` a tárolt eljárás hívásával egy eszközről, például a MySQL parancssorból vagy a MySQL Workbench-ből. Tekintse meg az [Azure Portalon](howto-server-parameters.md#working-with-the-time-zone-parameter) vagy az [Azure CLI](howto-configure-server-parameters-using-cli.md#working-with-the-time-zone-parameter) cikkeket, hogyan hívja meg a tárolt eljárást, és állítsa be a globális vagy munkamenet-szintű időzónák.
 
 ## <a name="storage-engine-support"></a>A tárolómotor támogatása
 

@@ -10,12 +10,12 @@ ms.service: lab-services
 ms.topic: article
 ms.date: 11/21/2019
 ms.author: enewman
-ms.openlocfilehash: c52a1212d160adce3a0a0638164833bc2907a856
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1aaf588f61b329fa3b838b8a92f3e287897315b
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76515003"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521189"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Útmutató a Windows-sablongépek beállításához az Azure Lab Servicesben
 
@@ -185,7 +185,7 @@ Javasoljuk, hogy az összes Microsoft Store-alkalmazást frissítsük a legújab
 3. Válassza a **Legördülő** menü Letöltés és frissítések parancsát.
 4. Kattintson **a Frissítés beszerezni** gombra.
 
-A Powershell segítségével is frissítheti a már telepített Microsoft Store-alkalmazásokat.
+A PowerShell segítségével is frissítheti a már telepített Microsoft Store-alkalmazásokat.
 
 ```powershell
 (Get-WmiObject -Namespace "root\cimv2\mdm\dmmap" -Class "MDM_EnterpriseModernAppManagement_AppManagement01").UpdateScanMethod()
@@ -234,3 +234,6 @@ Telepítsen más alkalmazásokat, amelyeket általában a Windows Áruházbeli a
 ## <a name="conclusion"></a>Összegzés
 
 Ez a cikk azt mutatja, hogy választható lépéseket, hogy előkészítse a Windows sablon virtuális gép egy hatékony osztály.  A lépések közé tartozik a OneDrive telepítése és az Office 365 telepítése, a Windows-frissítések telepítése és a Microsoft Store-alkalmazások frissítéseinek telepítése.  Azt is megvitattuk, hogyan állíthatod be a frissítéseket az osztályod számára legmegfelelőbb ütemezéshez.  
+
+## <a name="next-steps"></a>További lépések
+A Windows leállítási viselkedésének szabályozásáról szóló cikk a költségek kezelésének elősegítésére: [Útmutató a Windows leállítási viselkedésének szabályozásához](how-to-windows-shutdown.md)

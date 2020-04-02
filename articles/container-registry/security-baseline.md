@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2970ebf42acb87e93f8b827b3687b219da5867c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9225cfd9793a84f371387d6450a3dfa80ba74de3
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80244290"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547542"
 ---
 # <a name="azure-security-baseline-for-azure-container-registry"></a>Azure-biztonsági alapkonfiguráció az Azure Container Registry számára
 
@@ -68,7 +68,6 @@ A hálózati erőforrások védelme:https://docs.microsoft.com/azure/security-ce
 Használhatja az Azure Security Center Just In Time hálózati hozzáférést az NSG-k konfigurálásához, hogy korlátozott ideig korlátozza a végpontok kitettségét a jóváhagyott IP-címekre. Emellett az Azure Security Center Adaptive Network Hardening használatával olyan NSG-konfigurációkat javasolhat, amelyek a tényleges forgalom és a fenyegetésfelderítés alapján korlátozzák a portokat és a forrás IP-eket.
 
 A DDoS-védelem konfigurálása:https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
-
 
 Az Azure Tűzfal telepítése:https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal
 

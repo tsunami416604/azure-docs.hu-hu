@@ -1,6 +1,6 @@
 ---
 title: Webes API-kat megnevező mobilalkalmazás létrehozása | Azure
-titleSuffix: Microsoft identity platform
+titleSuffix: Microsoft identity platform | Azure
 description: Megtudhatja, hogy miként hozhat létre webes API-kat meghívja mobilalkalmazást (áttekintés)
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6675d67299091325fcc3e12572a906716bf5b88d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: acd44298e401aabaef03f5ddd84f37f32a3d8bcd
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77132416"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546093"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>Eset: Webes API-kat meghívjaó mobilalkalmazás
 
@@ -53,13 +53,14 @@ A mobilalkalmazásokkal kapcsolatos szempontok:
 - **A felhasználói élmény kulcsfontosságú:** Lehetővé teheti a felhasználók számára, hogy a bejelentkezés előtt lássák az alkalmazás értékét. Csak a szükséges engedélyeket kérje.
 - **Az összes felhasználói konfiguráció támogatása:** Sok mobilüzleti felhasználónak be kell tartania a feltételes hozzáférési szabályzatokat és az eszközmegfelelőségi szabályzatokat. Ügyeljen arra, hogy támogassa ezeket a kulcsfontosságú forgatókönyveket.
 - **Egyszeri bejelentkezés (SSO) megvalósítása:** Az MSAL és a Microsoft identity platform használatával engedélyezheti az egyszeri bejelentkezést az eszköz böngészőjében vagy a Microsoft Authenticatoron (és az Intune Vállalati portálon Androidon).
+- **Megosztott eszközmód megvalósítása:** Engedélyezze az alkalmazás használható megosztott eszköz forgatókönyvek, például a kórházak, a gyártás, a kiskereskedelem és a pénzügyek. [További információ a megosztott eszközmód támogatásáról.](msal-shared-devices.md)
 
 ## <a name="specifics"></a>Sajátosságai
 
 A Microsoft identitásplatformon mobilalkalmazás létrehozásakor tartsa szem előtt az alábbi szempontokat:
 
 - A platformtól függően előfordulhat, hogy a felhasználók első bejelentkezésekor bizonyos felhasználói beavatkozásra van szükség. Az iOS-nek például meg kell mutatnia a felhasználói beavatkozást, amikor először használják az Egyszeri bejelentkezést a Microsoft Authenticator (és az Android Intune Vállalati portálon) keresztül.
-- IOS és Android rendszeren az MSAL külső böngészőt használhat a felhasználók bejelentkezéséhez. Előfordulhat, hogy a külső böngésző az alkalmazás tetején jelenik meg. Testreszabhatja a konfigurációt, hogy inkább az alkalmazáson belüli WebViews-t használja.
+- IOS és Android rendszeren az MSAL külső böngészőt használhat a felhasználók bejelentkezéséhez. Előfordulhat, hogy a külső böngésző az alkalmazás tetején jelenik meg.
 - Soha ne használjon titkos kulcsot mobilalkalmazásban. Ezekben az alkalmazásokban a titkos kulcsok minden felhasználó számára elérhetők.
 
 ## <a name="next-steps"></a>További lépések

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 55bb6b620c7ba9ee13068213cbc867b165acc185
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 532e3c297c42ea16b1f462a01699fc2fd71c6cce
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76514884"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529110"
 ---
 # <a name="azure-relay-port-settings"></a>Az Azure Relay port beállításai
 
@@ -27,7 +27,7 @@ Az alábbi táblázat ismerteti az Azure Relay portértékeinek szükséges konf
 
 ## <a name="hybrid-connections"></a>Hibrid kapcsolatok
 
-A hibrid kapcsolatok websocketeket használ a 443-as porton, ahol az SSL az alapul szolgáló átviteli mechanizmus, amely csak **HTTPS-t** használ. 
+A hibrid kapcsolatok websocketeket használ a 443-as porton, amelynek a TLS az alapul szolgáló átviteli mechanizmus, amely csak **HTTPS-t** használ. 
 
 ## <a name="wcf-relays"></a>WCF-továbbítók
   

@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2f62be94c901b383e34608508baa87ea37c893af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa0a5bfe921687ad964e9321e3874de37ccf9b98
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79283601"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549300"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Gépi tanulási folyamatok létrehozása és futtatása az Azure Machine Learning SDK-val
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +31,7 @@ A létrehozott GÉP-folyamatok az Azure Machine Learning-munkaterület tagjai sz
 
 A rendszer-összeszolgáltatási folyamatok távoli számítási célokat használnak a számításhoz és a folyamathoz kapcsolódó köztes és végső adatok tárolásához. A támogatott [Azure Storage-helyekre](https://docs.microsoft.com/azure/storage/) és azokból adatokat olvashatnak és írhatnak.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt elkezdené. Próbálja ki az [Azure Machine Learning ingyenes vagy fizetős verzióját.](https://aka.ms/AMLFree)
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy ingyenes fiókot. Próbálja ki az [Azure Machine Learning ingyenes vagy fizetős verzióját.](https://aka.ms/AMLFree)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -118,7 +118,7 @@ output_data1 = PipelineData(
 
 Ha táblázatos adatokat tárol egy fájlban vagy fájlhalmazban, a [táblázatos adatkészlet](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) `DataReference`hatékony alternatívája a . `TabularDataset`objektumok támogatják a verziószámozást, a különbözetet és az összesítő statisztikákat. `TabularDataset`s lustán értékelik (mint a Python generátorok), és ez hatékony, hogy részre bontási vagy szűrés. Az `FileDataset` osztály hasonló lustán kiértékelt adatokat biztosít, amelyek egy vagy több fájlt jelölnek. 
 
-Hozzon `TabularDataset` létre egy olyan módszereket, mint [a from_delimited_files](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none-).
+Hozzon `TabularDataset` létre egy olyan módszereket, mint [a from_delimited_files](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-).
 
 ```python
 from azureml.data import TabularDataset

@@ -2,20 +2,20 @@
 title: Biztonsági javaslatok az Azure Key Vaulthoz
 description: Az Azure Key Vault biztonsági javaslatai. Ezen útmutató végrehajtása segít önnek a közös felelősségi modellünkben leírt biztonsági kötelezettségek teljesítésében
 services: key-vault
-author: barclayn
+author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: article
 ms.date: 09/30/2019
-ms.author: barclayn
+ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 9fd41ae9b61a9c74fd5d99dd71199cfde06f5cb2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d18dca2d7c44ac9db5ebabc5cc10f2f0b3f2c069
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78192370"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546360"
 ---
 # <a name="security-recommendations-for-azure-key-vault"></a>Biztonsági javaslatok az Azure Key Vaulthoz
 

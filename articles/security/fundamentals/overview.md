@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: a1dbabafe32e013d526ed88a83e446ee765cdb7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3b738d95b5b777f1cf0329fb3c1bc3e2860421e
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76045868"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545971"
 ---
 # <a name="introduction-to-azure-security"></a>Bevezetés az Azure biztonsági megoldásaiba
 ## <a name="overview"></a>Áttekintés
@@ -233,11 +233,11 @@ A Microsoft [Azure Application Gateway](../../application-gateway/overview.md) [
 
 ![Application Gateway](./media/overview/azure-security-fig2.png)
 
-Lehetővé teszi a webfarm okainak optimalizálását azáltal, hogy a CPU-igényes SSL-végződést az Application Gateway-re (más néven "SSL tehermentesítés" vagy "SSL-áthidalás" nevezi). Emellett más Layer 7 útválasztási lehetőségeket is biztosít, beleértve a bejövő forgalom ciklikus multiplexelésű elosztását, a cookie-alapú munkamenet-affinitást, az URL-útvonal-alapú útválasztást, valamint azt a lehetőséget, hogy egyetlen Alkalmazásátjáró mögött több webhelyet is üzemeltethet. Az Azure Application Gateway egy 7. rétegbeli terheléselosztó.
+Lehetővé teszi a webfarm okainak optimalizálását azáltal, hogy a CPU-igényes TLS-végződést az Application Gateway-re (más néven "TLS tehermentesítés" vagy "TLS-áthidalás" néven nevezik). Emellett más Layer 7 útválasztási lehetőségeket is biztosít, beleértve a bejövő forgalom ciklikus multiplexelésű elosztását, a cookie-alapú munkamenet-affinitást, az URL-útvonal-alapú útválasztást, valamint azt a lehetőséget, hogy egyetlen Alkalmazásátjáró mögött több webhelyet is üzemeltethet. Az Azure Application Gateway egy 7. rétegbeli terheléselosztó.
 
 Feladatátvételt és teljesítményalapú útválasztást biztosít a HTTP-kérelmek számára különböző kiszolgálók között, függetlenül attól, hogy a felhőben vagy a helyszínen vannak.
 
-Az alkalmazás számos alkalmazáskézbesítési vezérlőt (ADC) kínál, beleértve a HTTP terheléselosztást, a cookie-alapú munkamenet-affinitást, [az SSL-alapú biztonságos szoftvercsatornák](../../application-gateway/tutorial-restrict-web-traffic-powershell.md) kiszervezését, az egyéni állapotpróbákat, a többhelyes terület támogatását és még sok mást.
+Az alkalmazás számos alkalmazáskézbesítési vezérlőt (ADC) kínál, beleértve a HTTP terheléselosztást, a cookie-alapú munkamenet-affinitást, [a TLS-kiszervezést,](../../application-gateway/tutorial-restrict-web-traffic-powershell.md)az egyéni állapotpróbákat, a többhelyes és még sok más szolgáltatást.
 
 ### <a name="web-application-firewall"></a>Web Application Firewall (Webalkalmazási tűzfal)
 A webalkalmazás-tűzfal az [Azure Application Gateway](../../application-gateway/overview.md) szolgáltatása, amely védelmet nyújt az on-t használó webalkalmazások számára, amelyek alkalmazásátjárót használnak a szabványos alkalmazáskézbesítési vezérlési (ADC) függvényekhez. A webalkalmazási tűzfal ezt úgy éri el, hogy védelmet nyújt az alkalmazásoknak az OWASP 10 leggyakoribb webes biztonsági résének többségével szemben.
@@ -323,7 +323,7 @@ A javításfrissítések alapot adnak a lehetséges problémák megtalálásáho
 [A Security Center](../../security-center/security-center-intro.md) segítségével megelőzheti, észlelheti és reagálhat a fenyegetésekre, és nagyobb betekintést nyújt az Azure-erőforrások biztonságába, és szabályozhatja azokat. Integrált biztonsági figyelést és szabályzatkezelést biztosít az Azure-előfizetésekben, segít észlelni az egyébként észrevétlenül megjelenő fenyegetéseket, és a biztonsági megoldások széles ökoszisztémájával működik együtt.
 
 ## <a name="identity-and-access-management"></a>Identitás- és hozzáférés-kezelés
-A rendszerek, alkalmazások és adatok biztonságossá tétele identitásalapú hozzáférés-vezérléssel kezdődik. A Microsoft üzleti termékeibe és szolgáltatásaiba beépített identitás- és hozzáférés-kezelési funkciók segítenek megvédeni a szervezeti és személyes adatokat a jogosulatlan hozzáféréstől, miközben a jogos felhasználók számára bármikor és bárhol elérhetővé teszik azokat, amikor és ahol azok szüksége van rá.
+A rendszerek, alkalmazások és adatok biztonságossá tétele identitásalapú hozzáférés-vezérléssel kezdődik. A Microsoft üzleti termékeibe és szolgáltatásaiba beépített identitás- és hozzáférés-kezelési funkciók segítenek megvédeni a szervezeti és személyes adatokat a jogosulatlan hozzáféréstől, miközben a jogos felhasználók számára bármikor és bárhol elérhetővé teszik azokat.
 
 ### <a name="secure-identity"></a>Biztonságos identitás
 A Microsoft termékeiben és szolgáltatásaiban több biztonsági gyakorlatot és technológiát is alkalmaz az identitás és a hozzáférés kezelésére.

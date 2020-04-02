@@ -7,18 +7,18 @@ ms.reviewer: itsagui
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: c014ed2c25711677617d3bf8ff5d2f0f968a3b14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 180196f2c368207b76811700fd845406098600df
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80301043"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529436"
 ---
 # <a name="configure-customer-managed-keys-using-the-azure-portal"></a>Ügyfél által kezelt kulcsok konfigurálása az Azure Portal használatával
 
 > [!div class="op_single_selector"]
 > * [Portál](customer-managed-keys-portal.md)
-> * [C #](customer-managed-keys-csharp.md)
+> * [C#](customer-managed-keys-csharp.md)
 > * [Azure Resource Manager-sablon](customer-managed-keys-resource-manager.md)
 
 [!INCLUDE [data-explorer-configure-customer-managed-keys](../../includes/data-explorer-configure-customer-managed-keys.md)]
@@ -46,7 +46,7 @@ Ez a cikk bemutatja, hogyan engedélyezheti az ügyfél által felügyelt kulcso
 
     ![Ügyfél által kezelt kulcs mentése](media/customer-managed-keys-portal/cmk-encryption-setting.png)
 
-Az Azure Data Explorer-fürt ügyfél által felügyelt kulcsainak engedélyezésével létre fog létrehozni egy rendszerhez rendelt identitást a fürthöz, ha nem létezik. Emellett a kijelölt Key Vault-fürtön biztosítja a szükséges megtekintési engedélyeket az Azure Data Explorer-fürthöz, és lefogja szerezni a Key Vault-tulajdonságokat. 
+Az Azure Data Explorer-fürt ügyfél által felügyelt kulcsainak engedélyezésével létre fog létrehozni egy rendszerhez rendelt identitást a fürthöz, ha nem létezik. Emellett a kiválasztott Key Vault-fürtön biztosítja a szükséges get, wrapKey és unwarpKey engedélyeket az Azure Data Explorer fürthöz, és lefogja szerezni a Key Vault-tulajdonságokat. 
 
 > [!NOTE]
 > Válassza **a Ki** lehetőséget, ha a létrehozás után el szeretné távolítani az ügyfél által kezelt kulcsot.

@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 8/2/2019
-ms.openlocfilehash: 67b68cc8a1db4a058675dc51fb3805093c455908
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c5389c064e137358670aecabe97f1cea38dfbcbf
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80276665"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549274"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Replikáció – problémamegoldás az Azure virtuális gép vész-helyreállítási szolgáltatásában
 
@@ -81,7 +81,7 @@ Azt javasoljuk, hogy hozzon létre egy hálózati szolgáltatás végpontot a vi
 
 ### <a name="network-connectivity"></a>Hálózati kapcsolat
 
-A Site Recovery replikáció működéséhez a virtuális gépnek kimenő kapcsolatot kell biztosítania adott URL-címekhez vagy IP-tartományokhoz. Előfordulhat, hogy a virtuális gép egy tűzfal mögött, vagy használja a hálózati biztonsági csoport (NSG) szabályok at a kimenő kapcsolat szabályozásához. Ha igen, problémákat tapasztalhat. Ha meg szeretne győződni arról, hogy az összes URL-cím csatlakoztatva van, olvassa el [a Hely-helyreállítási URL-címek kimenő kapcsolata című témakört.](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges)
+A Site Recovery replikáció működéséhez a virtuális gépnek kimenő kapcsolatot kell biztosítania adott URL-címekhez vagy IP-tartományokhoz. Előfordulhat, hogy a virtuális gép egy tűzfal mögött, vagy használja a hálózati biztonsági csoport (NSG) szabályok at a kimenő kapcsolat szabályozásához. Ha igen, problémákat tapasztalhat. Ha meg szeretne győződni arról, hogy az összes URL-cím csatlakoztatva van, olvassa el [a Hely-helyreállítási URL-címek kimenő kapcsolata című témakört.](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-urls)
 
 ## <a name="error-id-153006---no-app-consistent-recovery-point-available-for-the-vm-in-the-past-x-minutes"></a>153006-os azonosító : Nincs elérhető alkalmazáskonzisztens helyreállítási pont a virtuális géphez az elmúlt "X" percben
 

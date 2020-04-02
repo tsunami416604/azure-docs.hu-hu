@@ -8,12 +8,12 @@ ms.date: 06/17/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4684daf2a1095a40c478170be37edcae788868ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2d6603c264c9da3f2700f460a8c61b24681fac6
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79284836"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546184"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>Az IoT Edge-ügynök és az IoT Edge hub modul twins tulajdonságai
 
@@ -55,6 +55,7 @@ Az IoT Edge-ügynök ikermodulját hívják meg, `$edgeAgent` és koordinálja a
 | Modulok. {moduleId}.status | {"futás" \| "leállítva"} | Igen |
 | Modulok. {moduleId}.restartPolicy | {"never" \| "on-failure" \| "on-unhealthy" \| "always"} | Igen |
 | Modulok. {moduleId}.imagePullPolicy | {"on-create" \| "soha"} | Nem |
+| Modulok. {moduleId}.env | A modulnak továbbítandó környezeti változók listája. A formátumot veszi`"<name>": {"value": "<value>"}` | Nem |
 | Modulok. {moduleId}.settings.image | A modulkép URI-ja. | Igen |
 | Modulok. {moduleId}.settings.createOptions | A modultároló létrehozásának lehetőségeit tartalmazó karakterláncos JSON. [Docker létrehozási beállításai](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Nem |
 | Modulok. {moduleId}.configuration.id | A modult telepítő központi telepítés azonosítója. | Az IoT Hub beállítja ezt a tulajdonságot, amikor a jegyzékfájl központi telepítés használatával van alkalmazva. Nem része a központi telepítési jegyzéknek. |

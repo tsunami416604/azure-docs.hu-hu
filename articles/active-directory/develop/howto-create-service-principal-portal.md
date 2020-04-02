@@ -8,16 +8,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 04/01/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: c5f65adfe401f2f6e99234d08b8e8dabeff7d5db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d1ee8e90d1d690315b2727a050e0383d7d28dc03
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264114"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546136"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Útmutató: A portál használatával hozzon létre egy Azure AD-alkalmazást és egyszerű szolgáltatást, amely képes hozzáférni az erőforrásokhoz
 
@@ -99,7 +99,7 @@ Exportálja ezt a tanúsítványt egy fájlba a Windows Vezérlőpultjáról el�
 
 1. A tanúsítványok megtekintéséhez a bal oldali ablaktábla **Tanúsítványok – Aktuális felhasználó területén** bontsa ki a **Személyes** könyvtárat.
 1. Kattintson a jobb gombbal a létrehozott tanúsítványra, és válassza **az Összes feladat >exportálása parancsot.**
-1. Kövesse a Tanúsítványexportálás varázslót.  Exportálja a személyes kulcsot, adja meg a tanúsítványfájl jelszavát, és exportálja egy fájlba.
+1. Kövesse a Tanúsítványexportálás varázslót.  Ne exportálja a személyes kulcsot, és ne exportálja a programba. CER fájlt.
 
 A tanúsítvány feltöltése:
 
@@ -148,7 +148,7 @@ Megfelelő engedélyekkel kell rendelkeznie ahhoz, hogy regisztrálhasson egy al
 1. A bal oldali ablaktáblában válassza a **Felhasználói beállítások lehetőséget.**
 1. Ellenőrizze az **alkalmazásregisztrációk beállítását.** Ezt az értéket csak rendszergazda állíthatja be. Ha az Azure AD-bérlő bármely felhasználója **igen,** regisztrálhat egy alkalmazást.
 
-Ha az alkalmazásregisztrációk beállítása **Nem,** csak rendszergazdai szerepkörrel rendelkező felhasználók regisztrálhatnak ilyen típusú alkalmazásokat. Tekintse meg [a rendelkezésre álló szerepkörök](../users-groups-roles/directory-assign-admin-roles.md#available-roles) és [szerepkör-engedélyek](../users-groups-roles/directory-assign-admin-roles.md#role-permissions) az elérhető rendszergazdai szerepkörök és az azure AD-ben az egyes szerepköröknek adott engedélyek megismeréséhez. Ha a fiók felhasználói szerepkörrel rendelkezik, de az alkalmazásregisztrációs beállítás rendszergazdai felhasználókra korlátozódik, kérje meg a rendszergazdát, hogy rendeljen hozzá egy olyan rendszergazdai szerepkört, amely az alkalmazásregisztrációk minden aspektusát létrehozhatja és kezelheti, vagy hogy a felhasználók regisztrálhassanak Apps.
+Ha az alkalmazásregisztrációk beállítása **Nem,** csak rendszergazdai szerepkörrel rendelkező felhasználók regisztrálhatnak ilyen típusú alkalmazásokat. Tekintse meg [a rendelkezésre álló szerepkörök](../users-groups-roles/directory-assign-admin-roles.md#available-roles) és [szerepkör-engedélyek](../users-groups-roles/directory-assign-admin-roles.md#role-permissions) az elérhető rendszergazdai szerepkörök és az azure AD-ben az egyes szerepköröknek adott engedélyek megismeréséhez. Ha a fiók felhasználói szerepkörrel rendelkezik, de az alkalmazásregisztrációs beállítás rendszergazdai felhasználókra korlátozódik, kérje meg a rendszergazdát, hogy rendeljen hozzá egy olyan rendszergazdai szerepkört, amely az alkalmazásregisztrációk minden aspektusát létrehozhatja és kezelheti, vagy hogy a felhasználók regisztrálhassák az alkalmazásokat.
 
 ### <a name="check-azure-subscription-permissions"></a>Az Azure-előfizetési engedélyek ellenőrzése
 

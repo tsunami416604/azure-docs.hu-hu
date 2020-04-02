@@ -7,19 +7,19 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: f9592f5d2666684e0cf5eef687b1e69cfb55066c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 900bf815917a4b7c9841860d663a2183b1ab71b3
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065560"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529676"
 ---
 # <a name="configure-managed-identities-for-your-azure-data-explorer-cluster"></a>Felügyelt identitások konfigurálása az Azure Data Explorer-fürthöz
 
 Az [Azure Active Directory felügyelt identitása](/azure/active-directory/managed-identities-azure-resources/overview) lehetővé teszi, hogy a fürt könnyen hozzáférjen más AAD-védelemmel ellátott erőforrásokhoz, például az Azure Key Vaulthoz. Az identitást az Azure platform kezeli, és nem követeli meg, hogy kiépítse vagy elforgassa a titkos kulcsokat. Ez a cikk bemutatja, hogyan hozhat létre felügyelt identitást az Azure Data Explorer-fürtökhöz. A felügyelt identitáskonfiguráció jelenleg csak a [fürt ügyfél által felügyelt kulcsainak engedélyezéséhez](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault)támogatott.
 
 > [!Note]
-> Felügyelt identitások az Azure Data Explorer nem fog megfelelően viselkednek, ha az alkalmazás áttelepítése az előfizetések vagy a bérlők között. Az alkalmazásnak új identitást kell beszereznie, amely a funkció [letiltásával](#remove-a-system-assigned-identity) és [újbóli engedélyezésével végezhető](#add-a-system-assigned-identity) el. Az alsóbb rétegbeli erőforrások hozzáférési házirendjeit is frissíteni kell az új identitás használatához.
+> Felügyelt identitások az Azure Data Explorer nem fog megfelelően viselkednek, ha az Azure Data Explorer-fürt áttelepítése az előfizetések vagy a bérlők között. Az alkalmazásnak új identitást kell beszereznie, amely a funkció [letiltásával](#disable-a-system-assigned-identity) és [újbóli engedélyezésével végezhető](#add-a-system-assigned-identity) el. Az alsóbb rétegbeli erőforrások hozzáférési házirendjeit is frissíteni kell az új identitás használatához.
 
 ## <a name="add-a-system-assigned-identity"></a>Rendszerhez rendelt identitás hozzáadása
                                                                                                     
@@ -56,7 +56,7 @@ Rendeljen hozzá egy rendszeráltal hozzárendelt identitást, amely a fürthöz
 
     ![Rendszerhez rendelt identitás](media/managed-identities/system-assigned-identity-on.png)
 
-# <a name="c"></a>[C #](#tab/c-sharp)
+# <a name="c"></a>[C#](#tab/c-sharp)
 
 ### <a name="add-a-system-assigned-identity-using-c"></a>Rendszeráltal hozzárendelt identitás hozzáadása C használatával #
 
@@ -164,13 +164,13 @@ A fürt létrehozásakor a következő további tulajdonságokkal rendelkezik:
 
 ---
 
-## <a name="remove-a-system-assigned-identity"></a>Rendszeráltal hozzárendelt identitás eltávolítása
+## <a name="disable-a-system-assigned-identity"></a>Rendszeráltal hozzárendelt identitás letiltása
 
 A rendszer által hozzárendelt identitás eltávolítása az AAD-ből is törlődik. A rendszer által hozzárendelt identitások is automatikusan törlődnek az AAD-ből a fürterőforrás törlésekor. A rendszer által hozzárendelt identitás a szolgáltatás letiltásával távolítható el.  A rendszer által hozzárendelt identitás eltávolítása C#, ARM-sablonok vagy az Azure Portal használatával az alábbiakban részletezett használatával.
 
 # <a name="azure-portal"></a>[Azure-portál](#tab/portal)
 
-### <a name="remove-a-system-assigned-identity-using-the-azure-portal"></a>Rendszeráltal hozzárendelt identitás eltávolítása az Azure Portalon
+### <a name="disable-a-system-assigned-identity-using-the-azure-portal"></a>Rendszeráltal hozzárendelt identitás letiltása az Azure Portal használatával
 
 1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
 1. Válassza a **Beállítások** > **identitás a** portál bal oldali ablaktáblájában lehetőséget.
@@ -181,7 +181,7 @@ A rendszer által hozzárendelt identitás eltávolítása az AAD-ből is törl�
 
     ![A rendszer hezrendelt identitása ki van kapcsolva](media/managed-identities/system-assigned-identity.png)
 
-# <a name="c"></a>[C #](#tab/c-sharp)
+# <a name="c"></a>[C#](#tab/c-sharp)
 
 ### <a name="remove-a-system-assigned-identity-using-c"></a>Rendszeráltal hozzárendelt identitás eltávolítása C használatával #
 

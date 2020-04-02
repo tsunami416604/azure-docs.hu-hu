@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 0303f09e5e704a18576bf50d1f00007f7f86f320
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 563aa701c1403a1ef26c6073496e7e59c7c5096c
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79279246"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521848"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Webalkalmazás-tűzfal CRS-szabálycsoportjai és szabályai
 
@@ -42,7 +42,7 @@ A CRS 3.1 13 szabálycsoportot tartalmaz, az alábbi táblázat ban látható m�
 
 |Szabálycsoport|Leírás|
 |---|---|
-|**[Általános](#general-31)**|Általános csoport|
+|**[Általános kérdések](#general-31)**|Általános csoport|
 |**[REQUEST-911-METHOD-ENFORCEMENT](#crs911-31)**|Lezárási módszerek (PUT, PATCH)|
 |**[REQUEST-913-SCANNER-DETECTION](#crs913-31)**|Védelem a port- és környezetszkennerek ellen|
 |**[REQUEST-920-PROTOCOL-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs920-31)**|Védelem a protokoll- és kódolási problémák ellen|
@@ -62,7 +62,7 @@ A CRS 3.0 12 szabálycsoportot tartalmaz, ahogy az az alábbi táblázatban lát
 
 |Szabálycsoport|Leírás|
 |---|---|
-|**[Általános](#general-30)**|Általános csoport|
+|**[Általános kérdések](#general-30)**|Általános csoport|
 |**[REQUEST-911-METHOD-ENFORCEMENT](#crs911-30)**|Lezárási módszerek (PUT, PATCH)|
 |**[REQUEST-913-SCANNER-DETECTION](#crs913-30)**|Védelem a port- és környezetszkennerek ellen|
 |**[REQUEST-920-PROTOCOL-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs920-30)**|Védelem a protokoll- és kódolási problémák ellen|
@@ -281,6 +281,7 @@ A következő szabálycsoportok és szabályok érhetők el, ha webalkalmazás-t
 |---|---|
 |942100|SQL injection attack észlelt keresztül libinjection|
 |942110|SQL injection attack: Gyakori injektálási vizsgálat észlelve|
+|942120|SQL injection attack: SQL operátor észlelve|
 |942130|SQL injection attack: SQL Tautology észlelt.|
 |942140|SQL injection attack = Gyakori DB-nevek észlelve|
 |942150|SQL injektálási támadás|

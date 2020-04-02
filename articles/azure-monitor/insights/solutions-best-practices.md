@@ -1,17 +1,17 @@
 ---
-title: Felügyeleti megoldás az Azure bevált módszereiben | Microsoft dokumentumok
-description: ''
+title: Felügyeleti megoldás az Azure bevált módszereiben
+description: Ebben a cikkben ismerése a felügyeleti megoldásfájl létrehozásához. Megtudhatja, hogyan dolgozhat adatforrásokkal, runbookokkal, nézetekkel és figyelmeztetésekkel.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
-ms.openlocfilehash: 837fb87d73698961ec1550b122840563d1707f8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7cb300297336edcce4294b800520ad570b12bcde
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663198"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548170"
 ---
 # <a name="best-practices-for-creating-management-solutions-in-azure-preview"></a>Gyakorlati tanácsok felügyeleti megoldások létrehozásához az Azure-ban (előzetes verzió)
 > [!NOTE]

@@ -9,12 +9,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: mamccrea
-ms.openlocfilehash: 80ec9b2bbf10d8f500e7f9e0369faca3b9663633
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79a821a4c8fe4cb2d048f0dcb0a6e091462a1779
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74129386"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548795"
 ---
 # <a name="connect-to-data-sources-from-azure-databricks"></a>Csatlakozás az Azure Databricks adatforrásaihoz
 
@@ -47,7 +47,7 @@ Az alábbi lista az Azure Databricks-szel használható adatforrásokat tartalma
 
     Ez a hivatkozás útmutatást nyújt az [Azure Event Hubs Spark-összekötő](https://github.com/Azure/azure-event-hubs-spark) azure Databricks használatával az Azure Event Hubs-adatok eléréséhez.
 
-- [Azure SQL adattárház](/azure/databricks/data/data-sources/azure/sql-data-warehouse)
+- [Azure SQL adattárház](/azure/synapse-analytics/sql-data-warehouse/)
 
     Ez a hivatkozás útmutatást nyújt az Azure SQL Data Warehouse-összekötő használatával az Azure Databricks-ből való csatlakozáshoz.
     

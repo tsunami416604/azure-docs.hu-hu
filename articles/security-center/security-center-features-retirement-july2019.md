@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: fda49ae31d7598497a3128a846a3f4e12e84ffe1
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 1f923db5c730f6dec15f4fc211ab7acbd009ac7f
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435914"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521421"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>A Biztonsági központ szolgáltatásainak kivonása (2019. július)
 
@@ -169,7 +169,7 @@ Ha már rendelkezik csatlakoztatott megoldásokkal, javasoljuk, hogy költözzö
 
 Az Azure Security Center a biztonsági konfigurációk monitorozásához egy [több mint 150 ajánlott szabályt](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) tartalmazó készletet alkalmaz az operációs rendszer védelmének fokozására. Ezek a szabályok tűzfalakra, naplózásra, jelszóházirendre és egyebekre vonatkoznak. Ha egy gép konfigurációját sebezhetőnek találja, a Security Center egy biztonsági javaslatot állít elő. A [Biztonsági konfiguráció szerkesztése képernyő](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config) lehetővé teszi az ügyfelek számára az operációs rendszer alapértelmezett biztonsági konfigurációjának testreszabását a Security Center ben.
 
-Megszüntettük ezt az előnézeti funkciót. Ha vissza szeretné állítani a biztonsági konfigurációkat az alapértelmezett értékekre a kivonási dátum után, ezt az API-n vagy a Powershellen keresztül tegye meg az [alábbi utasításokat](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20samples/Reset%20security%20configurations%20customization)használva.
+Megszüntettük ezt az előnézeti funkciót. Ha vissza szeretné állítani a biztonsági konfigurációkat az alapértelmezett értékekre a kivonási dátum után, ezt az API-n vagy a Powershellen keresztül tegye meg az [alábbi utasításokat](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/Reset%20security%20configurations%20customization)használva.
 
 ![Biztonsági konfigurációk szerkesztése][17]
 

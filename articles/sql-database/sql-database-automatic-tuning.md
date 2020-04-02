@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: d4762c86268353ff0464ff3919250cd86f0038d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: 7488fd5f8a572788933856f03bb0ad4351885704
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79214104"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80518226"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Automatikus hangolás az Azure SQL Database-ben
 
@@ -69,7 +69,7 @@ Az Azure SQL Database automatikus hangolási lehetőségei a következők:
 
 Az egy- és készletezésű adatbázisok automatikus hangolása a **CREATE INDEX**, **DROP INDEX**és A FORCE LAST **GOOD PLAN** adatbázis-tanácsadói javaslatokat használja az adatbázis teljesítményének optimalizálásához. További információ: [Database advisor recommendations in the Azure portal](sql-database-advisor-portal.md), in [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction), and in the [REST API.](https://docs.microsoft.com/rest/api/sql/serverautomatictuning)
 
-Manuálisan is alkalmazhat hangolási javaslatokat az Azure Portalon, vagy lehetővé teheti az automatikus hangolási autonóm hangolási javaslatok at. A rendszer által önállóan alkalmazott hangolási javaslatok lehetővé teszik, hogy automatikusan ellenőrizze, hogy a számítási feladatok teljesítménye pozitív nyereségre tesz szert, és ha nem észlel jelentős teljesítményjavulást, akkor automatikusan visszaállítja a hangolási javaslatot. Kérjük, vegye figyelembe, hogy a gyakran nem végrehajtott finomhangolási javaslatok által érintett lekérdezések esetén az érvényesítési fázis akár 72 órás tervezési szakaszt is igénybe vehet.
+Manuálisan is alkalmazhat hangolási javaslatokat az Azure Portalon, vagy lehetővé teheti az automatikus hangolási autonóm hangolási javaslatok at. A rendszer által önállóan alkalmazott finomhangolási javaslatok az Ön számára, hogy automatikusan ellenőrzi, hogy van-e pozitív nyereség a számítási feladatok teljesítményét, és ha nincs jelentős teljesítményjavulás észlelése, akkor automatikusan visszaállítja a hangolási javaslat. Kérjük, vegye figyelembe, hogy a gyakran nem végrehajtott finomhangolási javaslatok által érintett lekérdezések esetén az érvényesítési fázis akár 72 órás tervezési szakaszt is igénybe vehet.
 
 Abban az esetben, ha a T-SQL-en keresztül alkalmazza a hangolási javaslatokat, az automatikus teljesítmény-érvényesítés és a sztornírozási mechanizmusok nem érhetők el. Az ilyen módon alkalmazott ajánlások aktívak maradnak, és a 24-48 órás hangolási ajánlások listájában jelennek meg. mielőtt a rendszer automatikusan visszavonja azokat. Ha hamarabb szeretne eltávolítani egy javaslatot, elvetheti azt az Azure Portalról.
 
@@ -93,3 +93,4 @@ Automatikus hangolás például adatbázisok egy felügyelt példány telepíté
 ## <a name="next-steps"></a>További lépések
 
 - Az automatikus hangolásban használt beépített intelligenciáról a [Mesterséges intelligencia az Azure SQL-adatbázisainak finomhangolása című témakörben olvashat.](https://azure.microsoft.com/blog/artificial-intelligence-tunes-azure-sql-databases/)
+- Ha meg szeretné tudni, hogyan működik az automatikus hangolás a motorháztető alatt, olvassa el Az [adatbázisok millióinak automatikus indexelése](https://www.microsoft.com/en-us/research/uploads/prod/2019/02/autoindexing_azuredb.pdf)a Microsoft Azure SQL Database rendszerben című témakört.

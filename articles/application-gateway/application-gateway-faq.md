@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 04/01/2020
 ms.author: victorh
-ms.openlocfilehash: 290467d5d20a74f8b8b2c23f6da0dcadfd74cc56
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: d9691a6fd5c320242b9677776cbd08be4f800921
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411030"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80544509"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések az Alkalmazásátjáróval kapcsolatban
 
@@ -112,7 +112,15 @@ A v2 termékváltozatot használó legtöbb központi telepítés körülbelül 
 
 ### <a name="can-i-use-exchange-server-as-a-backend-with-application-gateway"></a>Használhatom az Exchange Server-t háttérrendszerként az Application Gateway-rel?
 
-Nem. Az Application Gateway nem támogatja az olyan e-mail protokollokat, mint az SMTP, az IMAP és a POP3. 
+Nem. Az Application Gateway nem támogatja az olyan e-mail protokollokat, mint az SMTP, az IMAP és a POP3.
+
+### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Van-e útmutatást a v1 termékváltozatról a v2 termékváltozatra való áttelepítéshez?
+
+Igen. További információt az [Azure Application Gateway és a Web Application Firewall áttelepítése a v1-ről a 2-es v2-re.](migrate-v1-v2.md)
+
+### <a name="will-the-application-gateway-v1-sku-continue-to-be-supported"></a>Az Application Gateway v1 termékváltozat továbbra is támogatott lesz?
+
+Igen. Az Application Gateway v1 termékváltozat továbbra is támogatott lesz. Azonban erősen ajánlott, hogy a v2-re való áttéréssel kihasználja az adott termékváltozat szolgáltatásfrissítéseit. További információ: [Autoscaling and Zone-redundáns Application Gateway v2](application-gateway-autoscaling-zone-redundant.md).
 
 ## <a name="performance"></a>Teljesítmény
 
@@ -203,10 +211,6 @@ Igen. Lásd: [Hozzáférés korlátozása adott forrás IP-khez](https://docs.mi
 ### <a name="can-i-use-the-same-port-for-both-public-facing-and-private-facing-listeners"></a>Használhatom ugyanazt a portot mind a nyilvános, mind a privát figyelők számára?
 
 Nem.
-
-### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Van-e útmutatást a v1 termékváltozatról a v2 termékváltozatra való áttelepítéshez?
-
-Igen. További információt az [Azure Application Gateway és a Web Application Firewall áttelepítése a v1-ről a 2-es v2-re.](migrate-v1-v2.md)
 
 ### <a name="does-application-gateway-support-ipv6"></a>Támogatja az Application Gateway az IPv6 protokollt?
 
@@ -329,10 +333,6 @@ További információt az [OWASP top 10-es számú biztonsági résecímű](http
 ### <a name="does-waf-support-ddos-protection"></a>Támogatja a WAF a DDoS védelmet?
 
 Igen. Engedélyezheti a DDoS-védelmet azon a virtuális hálózaton, ahol az alkalmazásátjáró telepítve van. Ez a beállítás biztosítja, hogy az Azure DDoS Protection szolgáltatás is védi az alkalmazásátjáró virtuális IP (VIP).
-
-### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Van-e útmutatást a v1 termékváltozatról a v2 termékváltozatra való áttelepítéshez?
-
-Igen. További információt az [Azure Application Gateway és a Web Application Firewall áttelepítése a v1-ről a 2-es v2-re.](migrate-v1-v2.md)
 
 ## <a name="configuration---ingress-controller-for-aks"></a>Konfiguráció - ingress vezérlő az AKS-hez
 

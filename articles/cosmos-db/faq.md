@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 75cef47c1ed2b6da054442a4a1215141e67ad1b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0c994caf094918b39204437b5194d81a64affc66
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79498576"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545662"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Gyakori kérdések az Azure Cosmos DB különböző API-jaival kapcsolatban
 
@@ -70,7 +70,7 @@ Az [Azure Cosmos DB-emulátor](local-emulator.md) használatával ingyenesen fej
 
 Feltenni egy technikai kérdést, akkor tegye az egyik a két kérdés-válasz fórumok:
 
-* [MSDN fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
+* [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
 * [Verem túlcsordulás](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack túlcsordulás a legjobb programozási kérdések. Győződjön meg róla, hogy a kérdés [on-topic,](https://stackoverflow.com/help/on-topic) és [a lehető legtöbb részletet, így a kérdés egyértelmű és megválaszolható](https://stackoverflow.com/help/how-to-ask).
 
 Új funkciók igényléséhez hozzon létre egy új kérelmet a [Felhasználói hang](https://feedback.azure.com/forums/263030-azure-cosmos-db).
@@ -219,7 +219,7 @@ Az Azure Cosmos DB MongoDB-hoz készült API-ja egy vezetékprotokoll-kompatibil
 
 Az Azure Cosmos DB MongoDB-alapú API-jával a leggyorsabban csatlakozhat a Cosmos-adatbázishoz, ha az [Azure Portalra](https://portal.azure.com)lép. Nyissa meg a fiókját, majd a bal oldali navigációs menüben kattintson a **Rövid útmutató parancsra.** A rövid útmutató a legjobb módja annak, hogy kódrészleteket kapjon az adatbázishoz való csatlakozáshoz.
 
-Az Azure Cosmos DB szigorú biztonsági követelményeket és szabványokat érvényesít. Az Azure Cosmos DB-fiókok hitelesítést és biztonságos kommunikációt igényelnek SSL-en keresztül, ezért győződjön meg róla, hogy a TLSv1.2-t használja.
+Az Azure Cosmos DB szigorú biztonsági követelményeket és szabványokat érvényesít. Az Azure Cosmos DB-fiókok hitelesítést és biztonságos kommunikációt igényelnek a TLS-en keresztül, ezért mindenképpen használja a TLSv1.2-t.
 
 További információ: [Csatlakozás a Cosmos-adatbázishoz az Azure Cosmos DB MongoDB API-jával](connect-mongodb-account.md)című témakörben talál.
 
@@ -293,7 +293,7 @@ Különösen a .NET SDK esetében vannak olyan osztályok és módszerek, amelye
 Visszajelzéseit az alábbi módokon oszthatja meg:
 
 * [Felhasználói hang](https://feedback.azure.com/forums/263030-azure-cosmos-db)
-* [MSDN fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
+* [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
 * [Verem túlcsordulás](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack túlcsordulás a legjobb programozási kérdések. Győződjön meg róla, hogy a kérdés [on-topic,](https://stackoverflow.com/help/on-topic) és [a lehető legtöbb részletet, így a kérdés egyértelmű és megválaszolható](https://stackoverflow.com/help/how-to-ask).
 
 ### <a name="what-is-the-connection-string-that-i-need-to-use-to-connect-to-the-table-api"></a>Mi az a kapcsolati karakterlánc, amelyet a Table API-hoz való csatlakozáshoz kell használnom?

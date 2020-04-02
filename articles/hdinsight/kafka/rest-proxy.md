@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: d99a3b803b80dc41990a63e647d3ba928deb31af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 8997b385960c58b17747dfcfced74010af80550b
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198905"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548221"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>Apache Kafka-fürtök használata az Azure HDInsightban REST-proxy használatával
 
@@ -20,7 +20,7 @@ A Kafka REST-proxy lehetővé teszi, hogy a Kafka-fürtöt HTTP-n keresztül i. 
 
 ## <a name="rest-api-reference"></a>REST API-referencia
 
-A Kafka REST API által támogatott műveletek teljes specifikációját a [HDInsight Kafka REST-proxy API-referencia című témakörében tetszés szerint.](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy)
+A Kafka REST API által támogatott műveletek teljes specifikációját lásd: [HDInsight Kafka REST Proxy API-referencia.](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy)
 
 ## <a name="background"></a>Háttér
 
@@ -34,9 +34,9 @@ HdInsight Kafka-fürt REST-proxyval való létrehozása létrehoz egy új nyilv�
 
 ### <a name="security"></a>Biztonság
 
-A Kafka REST-proxyhoz való hozzáférést az Azure Active Directory biztonsági csoportjai kezelik. A Kafka-fürt létrehozásakor a REST-proxy engedélyezve van, biztosítja az Azure Active Directory biztonsági csoport, amely hozzáférést kell biztosítania a REST-végponthoz. A Kafka-ügyfelek (alkalmazások), amelyek hozzáférést igényelnek a REST-proxy regisztrálnia kell ezt a csoportot a csoport tulajdonosa. A csoport tulajdonosa ezt a portálon keresztül vagy powershellen keresztül teheti meg.
+A Kafka REST-proxyhoz való hozzáférést az Azure Active Directory biztonsági csoportjai kezelik. A Kafka-fürt létrehozásakor a REST-proxy engedélyezve van, biztosítja az Azure Active Directory biztonsági csoport, amely hozzáférést kell biztosítania a REST-végponthoz. A Kafka-ügyfelek (alkalmazások), amelyek hozzáférést igényelnek a REST-proxy regisztrálnia kell ezt a csoportot a csoport tulajdonosa. A csoport tulajdonosa ezt a portálon keresztül vagy a PowerShellen keresztül teheti meg.
 
-A REST-proxy végpontra irányuló kérelmek kérése előtt az ügyfélalkalmazásnak oauth-jogkivonatot kell kapnia a megfelelő biztonsági csoport tagságának ellenőrzéséhez. Az alábbi [ügyfélalkalmazás-minta,](#client-application-sample) amely bemutatja, hogyan szerezhetbe egy OAuth-jogkivonatot. Miután az ügyfélalkalmazás rendelkezik az OAuth-jogkivonattal, át kell adniuk a jogkivonatot a REST-proxynak küldött HTTP-kérelemben.
+A REST-proxy végpontra irányuló kérelmek kérése előtt az ügyfélalkalmazásnak oauth-jogkivonatot kell kapnia a megfelelő biztonsági csoport tagságának ellenőrzéséhez. Keresse meg [az ügyfélalkalmazás-minta](#client-application-sample) az alábbiakban, amely bemutatja, hogyan juthat be egy OAuth token. Miután az ügyfélalkalmazás rendelkezik az OAuth-jogkivonattal, át kell adniuk a jogkivonatot a REST-proxynak küldött HTTP-kérelemben.
 
 > [!NOTE]  
 > Az AAD biztonsági csoportokról az [Alkalmazás- és erőforrás-hozzáférés kezelése az Azure Active Directory-csoportok használatával.](../../active-directory/fundamentals/active-directory-manage-groups.md) Az OAuth-jogkivonatok működéséről az [Azure Active Directory webalkalmazásokhoz való hozzáférés engedélyezése az OAuth 2.0-s kódtámogatási folyamat használatával című témakörben](../../active-directory/develop/v1-protocols-oauth-code.md)talál további információt.
@@ -44,7 +44,12 @@ A REST-proxy végpontra irányuló kérelmek kérése előtt az ügyfélalkalmaz
 ## <a name="prerequisites"></a>Előfeltételek
 
 1. Alkalmazás regisztrálása az Azure AD-ben. A Kafka REST-proxyval való interakcióhoz írt ügyfélalkalmazások az alkalmazás azonosítóját és titkos ját használják az Azure-hitelesítéshez.
-1. Hozzon létre egy Azure AD biztonsági csoportot, és adja hozzá az Azure AD-ben regisztrált alkalmazást a biztonsági csoporthoz. Ez a biztonsági csoport szabályozza, hogy mely alkalmazások kommunikálhatnak a REST-proxyval. Az Azure AD-csoportok létrehozásáról további információt az [Alapszintű csoport létrehozása és tagok hozzáadása az Azure Active Directory használatával című témakörben talál.](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)
+
+1. Hozzon létre egy Azure AD biztonsági csoportot, és adja hozzá az Azure AD-vel regisztrált alkalmazást a biztonsági csoporthoz a csoport "tagjaként". Ez a biztonsági csoport szabályozza, hogy mely alkalmazások kommunikálhatnak a REST-proxyval. Az Azure AD-csoportok létrehozásáról további információt az [Alapszintű csoport létrehozása és tagok hozzáadása az Azure Active Directory használatával című témakörben talál.](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)
+
+    A csoport ellenőrzése "Biztonsági" ![biztonsági csoport típusú](./media/rest-proxy/rest-proxy-group.png)
+
+    Annak ellenőrzése, hogy ![az alkalmazás tagja-e a Csoportérvényesítési tagságnak](./media/rest-proxy/rest-proxy-membergroup.png)
 
 ## <a name="create-a-kafka-cluster-with-rest-proxy-enabled"></a>Kafka-fürt létrehozása REST-proxyval
 
@@ -69,18 +74,18 @@ Az alábbi python-kód segítségével a Kafka-fürt REST-proxyjával kommuniká
 1. Mentse a mintakódot egy olyan számítógépen, amelyen telepítve van a Python.
 1. Telepítse a szükséges python-függőségeket a `pip3 install adal` végrehajtásával és `pip install msrestazure`a.
 1. A kódszakasz *módosítása: Konfigurálja ezeket a tulajdonságokat,* és frissítse a következő tulajdonságokat a környezetben:
-    1.  *Bérlői azonosító* – Az Azure-bérlő, ahol az előfizetés.
-    1.  *Ügyfélazonosító* – a biztonsági csoportban regisztrált alkalmazás azonosítója.
-    1.  *Ügyféltitok* – A biztonsági csoportban regisztrált alkalmazás titkost asztatitkára
-    1.  *Kafkarest_endpoint* – ezt az értéket a fürt "Tulajdonságok" lapján, a [központi telepítés szakaszban](#create-a-kafka-cluster-with-rest-proxy-enabled)leírtak szerint kapja meg. Meg kell a következő formátumban -`https://<clustername>-kafkarest.azurehdinsight.net`
-3. A parancssorból hajtsa végre a python fájlt a`python <filename.py>`
+    1.    *Bérlői azonosító* – Az Azure-bérlő, ahol az előfizetés.
+    1.    *Ügyfélazonosító* – a biztonsági csoportban regisztrált alkalmazás azonosítója.
+    1.    *Ügyféltitok* – A biztonsági csoportban regisztrált alkalmazás titkost asztatitkára
+    1.    *Kafkarest_endpoint* – ezt az értéket a fürt "Tulajdonságok" lapján, a [központi telepítés szakaszban](#create-a-kafka-cluster-with-rest-proxy-enabled)leírtak szerint kapja meg. Meg kell a következő formátumban -`https://<clustername>-kafkarest.azurehdinsight.net`
+1. A parancssorból hajtsa végre a python fájlt a`python <filename.py>`
 
 Ez a kód a következőket teszi:
 
 1. OAuth-jogkivonat beolvasása az Azure AD-ből
 1. A Kafka REST-proxy kérésének megjelenítése
 
-Az OAuth-tokenek pythonban való beszerzéséről a [Python AuthenticationContext osztályban](https://docs.microsoft.com/python/api/adal/adal.authentication_context.authenticationcontext?view=azure-python)talál további információt. Előfordulhat, hogy a késés tetszése közben a Kafka REST-proxyn keresztül nem létrehozott vagy törölt témakörök jelennek meg. Ez a késleltetés a gyorsítótár frissítésének köszönhető.
+Az OAuth-tokenek pythonban való beszerzéséről a [Python AuthenticationContext osztályban](https://docs.microsoft.com/python/api/adal/adal.authentication_context.authenticationcontext?view=azure-python)talál további információt. Előfordulhat, hogy a késés t, míg a kafka REST-proxyn keresztül nem létrehozott vagy törölt témakörök jelennek meg. Ez a késleltetés a gyorsítótár frissítésének köszönhető.
 
 ```python
 #Required python packages
@@ -124,6 +129,12 @@ request_url = kafkarest_endpoint + getstatus
 # sending get request and saving the response as response object
 response = requests.get(request_url, headers={'Authorization': accessToken})
 print(response.content)
+```
+
+Az alábbiakban egy másik minta, hogyan kaphat le egy jogkivonatot az Azure for REST proxy egy curl parancs használatával. Figyelje meg, `resource=https://hib.azurehdinsight.net` hogy szükségünk van a megadott, míg egy token.
+
+```cmd
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=<clientid>&client_secret=<clientsecret>&grant_type=client_credentials&resource=https://hib.azurehdinsight.net' 'https://login.microsoftonline.com/<tenantid>/oauth2/token'
 ```
 
 ## <a name="next-steps"></a>További lépések

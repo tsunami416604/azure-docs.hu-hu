@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/30/2020
-ms.openlocfilehash: 35dbd064a09a96dae58e1b15a6d8889bda45ee0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: f103db1d0de7a9d538f56b8ade331dc856b26bce
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76899851"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547024"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Az Azure Cognitive Search díjszabási szintjének kiválasztása
 
@@ -41,7 +41,9 @@ A meghatározási szinteket a következők különböztetik meg:
 
 A kiválasztott szint határozza meg a számlázható arányt. Az Alábbi képernyőkép az Azure Portalon az elérhető csomagokat mutatja, mínusz a díjszabás (amely megtalálható a portálon és a [díjszabási oldalon.](https://azure.microsoft.com/pricing/details/search/) **Az ingyenes**, **alapszintű**és **standard** a leggyakoribb szintek.
 
-**A Free** korlátozott keresési szolgáltatást hoz létre egy fürtön, amelyet más előfizetőkkel osztanak meg. Kis projekteket is végrehajthat, beleértve a rövid útmutatókat és az oktatóanyagokat, de nem skálázhatja a szolgáltatást, és nem futtathat jelentős számítási feladatokat. **Alapszintű** és **standard** a leggyakrabban használt számlázható rétegek, **a Standard** az alapértelmezett.
+**Az Ingyenes** korlátozott keresési szolgáltatást hoz létre kisebb projektekhez, beleértve a rövid útmutatókat és az oktatóanyagokat. Belsőleg replikák és partíciók több előfizető között megosztott. Nem skálázhat egy ingyenes szolgáltatást, és nem futtathat jelentős számítási feladatokat.
+
+**Alapszintű** és **standard** a leggyakrabban használt számlázható rétegek, **a Standard** az alapértelmezett. Az Ön ellenőrzése alatt álló dedikált erőforrásokkal nagyobb projekteket helyezhet üzembe, optimalizálhatja a teljesítményt, és beállíthatja a kapacitást.
 
 ![Az Azure Cognitive Search díjszabási szintjei](media/search-sku-tier/tiers.png "Az Azure Cognitive Search díjszabási szintjei")
 
@@ -55,10 +57,10 @@ A különböző szintekről a [díjszabási oldalon](https://azure.microsoft.com
 
 Az Azure Cognitive Search szolgáltatásra épülő megoldás a következő módokon járhat költségekkel:
 
-+ A szolgáltatás alapköltsége minimális konfigurációnál (szolgáltatás létrehozása)
++ A szolgáltatás fix költsége, amely a hét minden pontján fut, minimális konfigurációval (egy partíció és replika)
 + Növekményes költség felskálázáskor (replikák vagy partíciók hozzáadása)
 + Sávszélesség-díjak (kimenő adatátvitel) 
-+ Kognitív keresés (cognitive services csatolása a ai-dúsításhoz, Azure storage a tudástárolóhoz)
++ Kognitív keresés (cognitive services csatolása a ai-dúsításhoz, vagy az Azure storage használata a tudástárolóhoz)
 
 ### <a name="service-costs"></a>Szolgáltatási költségek
 
@@ -106,13 +108,13 @@ A legtöbb ügyfél a teljes kapacitásnak csak egy részét hozza online, a tö
 
 Az alábbi javaslatok segítségével minimális költségeket érhet el:
 
-- A sávszélesség-díjak minimalizálása vagy kiküszöbölése érdekében hozza létre az összes erőforrást ugyanabban a régióban vagy a lehető legkevesebb régióban.
++ A sávszélesség-díjak minimalizálása vagy kiküszöbölése érdekében hozza létre az összes erőforrást ugyanabban a régióban vagy a lehető legkevesebb régióban.
 
-- Az összes szolgáltatást egyetlen erőforráscsoportba egyesítheti, például az Azure Cognitive Search, a Cognitive Services és a megoldásban használt egyéb Azure-szolgáltatások. Az Azure Portalon keresse meg az erőforráscsoportot, és használja a **Költségkezelési** parancsokat a tényleges és a tervezett kiadások megismeréséhez.
++ Az összes szolgáltatást egyetlen erőforráscsoportba egyesítheti, például az Azure Cognitive Search, a Cognitive Services és a megoldásban használt egyéb Azure-szolgáltatások. Az Azure Portalon keresse meg az erőforráscsoportot, és használja a **Költségkezelési** parancsokat a tényleges és a tervezett kiadások megismeréséhez.
 
-- Fontolja meg az Azure Web App az előtér-alkalmazás, hogy a kérelmek és válaszok az adatközpont határain belül maradnak.
++ Fontolja meg az Azure Web App az előtér-alkalmazás, hogy a kérelmek és válaszok az adatközpont határain belül maradnak.
 
-- Skálázható az erőforrás-igényes műveletek, például az indexelés, és majd lefelé a rendszeres lekérdezési számítási feladatok. Kezdje az Azure Cognitive Search minimális konfigurációjával (egy partícióból és egy replikaból álló SU), majd figyelje a felhasználói tevékenységet a használati minták azonosításához, amelyek nagyobb kapacitást jelentenek. Ha van egy kiszámítható minta, előfordulhat, hogy képes szinkronizálni a skálát a tevékenységgel (akkor kell írni a kódot, hogy automatizálják ezt).
++ Skálázható az erőforrás-igényes műveletek, például az indexelés, és majd lefelé a rendszeres lekérdezési számítási feladatok. Kezdje az Azure Cognitive Search minimális konfigurációjával (egy partícióból és egy replikaból álló SU), majd figyelje a felhasználói tevékenységet a használati minták azonosításához, amelyek nagyobb kapacitást jelentenek. Ha van egy kiszámítható minta, előfordulhat, hogy képes szinkronizálni a skálát a tevékenységgel (akkor kell írni a kódot, hogy automatizálják ezt).
 
 Ezenkívül a kiadásokhoz kapcsolódó beépített eszközökért és funkciókért látogasson el a [Számlázás és a költségkezelés](https://docs.microsoft.com/azure/billing/billing-getting-started) oldalra.
 
@@ -130,7 +132,6 @@ Az Azure Cognitive Search kapacitás *a replikák* és *partíciók.*
 
 > [!NOTE]
 > Minden standard és tárolási optimalizált réteg támogatja [a replikák és partíciók rugalmas kombinációját,](search-capacity-planning.md#chart) így [optimalizálhatja a rendszert](search-performance-optimization.md) a sebességre vagy a tárolásra az egyenleg módosításával. Az alapszintű szint legfeljebb három replikát kínál a magas rendelkezésre álláshoz, de csak egy partícióval rendelkezik. Az ingyenes szintek nem biztosítanak dedikált erőforrásokat: a számítási erőforrásokat több előfizető osztja meg.
-
 
 ### <a name="evaluating-capacity"></a>A kapacitás értékelése
 
@@ -152,7 +153,7 @@ A kapacitás becslésének egyik megközelítése az ingyenes szinttel való kez
 
 + [Hozzon létre egy ingyenes szolgáltatást](search-create-service-portal.md).
 + Készítsen elő egy kis, reprezentatív adatkészletet.
-+ [Hozzon létre egy kezdeti indexet a portálon,](search-create-index-portal.md) és jegyezze fel annak méretét. A funkciók és attribútumok hatással vannak a tárhelyre. Például a javaslatjavasolók hozzáadása (typeahead) növeli a tárolási követelményeket. Ugyanazt az adatkészletet használva megpróbálhat több verziót létrehozni egy indexből, különböző attribútumokkal az egyes mezőkben, hogy lássa, hogyan változnak a tárolási követelmények. További információt az Alapindex létrehozása című [témakör "Tárolási vonatkozások" című témakörében](search-what-is-an-index.md#index-size)talál.
++ [Hozzon létre egy kezdeti indexet a portálon,](search-create-index-portal.md) és jegyezze fel annak méretét. A funkciók és attribútumok hatással vannak a tárhelyre. Például a javaslatjavaslatok (a te beírású lekérdezések) hozzáadása növeli a tárolási követelményeket. Ugyanazt az adatkészletet használva megpróbálhat több verziót létrehozni egy indexből, különböző attribútumokkal az egyes mezőkben, hogy lássa, hogyan változnak a tárolási követelmények. További információt az Alapindex létrehozása című [témakör "Tárolási vonatkozások" című témakörében](search-what-is-an-index.md#index-size)talál.
 
 Egy durva becslés a kezében, előfordulhat, hogy a duplája a költségvetés két indexek (fejlesztés és termelés), majd válassza ki a szint ennek megfelelően.
 
@@ -196,7 +197,7 @@ Az ingyenes szint és az előzetes verzió funkció nem biztosít [szolgáltatá
 
 + A metrikák köréépülhet a lekérdezések, és adatokat gyűjthet a használati minták (munkaidőben lekérdezések, indexelés csúcsidőn kívül) körül. Ezeket az adatokat a szolgáltatáskiépítési döntések tájékoztatásához használja. Bár ez nem praktikus óránkénti vagy napi ütemben, dinamikusan módosíthatja a partíciókat és az erőforrásokat a lekérdezési kötetek tervezett változásainak megfelelően. A nem tervezett, de tartós változásokat is befogadhatja, ha a szintek elég hosszúak ahhoz, hogy cselekvést indokoljanak.
 
-+ Ne feledje, hogy az egyetlen hátránya az alulépítés, hogy előfordulhat, hogy le kell bontania egy szolgáltatást, ha a tényleges követelmények nagyobbak, mint az előrejelzések. A szolgáltatás kimaradásának elkerülése érdekében hozzon létre egy új szolgáltatást egy magasabb szinten, és futtassa egymás mellett, amíg az összes alkalmazás és kérés az új végpontot célozza.
++ Ne feledje, hogy az egyetlen hátránya a kiépítés alatt az, hogy előfordulhat, hogy le kell bontania egy szolgáltatást, ha a tényleges követelmények nagyobbak, mint az előrejelzések. A szolgáltatás kimaradásának elkerülése érdekében hozzon létre egy új szolgáltatást egy magasabb szinten, és futtassa egymás mellett, amíg az összes alkalmazás és kérés az új végpontot célozza.
 
 ## <a name="next-steps"></a>További lépések
 

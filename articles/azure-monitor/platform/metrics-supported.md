@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 03/17/2020
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: e01ed9f784d77b3c425c60de31ab87f86dbb688b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 674321878cfce2d05189700a8b5118e233d9044d
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79500599"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520706"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Támogatott metrikák az Azure Monitorsegítségével
 
@@ -24,6 +24,9 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 > *Például*: Egy eseményközpont „Bejövő üzenetek” metrikája üzenetsoronként deríthető fel és ábrázolható. Ha azonban diagnosztikai beállításokon keresztül van exportálva, a metrika az eseményközpontban lévő összes üzenetsor összes bejövő üzeneteként lesz ábrázolva.
 >
 > A diagnosztikai beállításokkal exportálható platformmutatók listáját [ebben a cikkben](metrics-supported-export-diagnostic-settings.md)találja.
+
+
+
 
 
 
@@ -101,15 +104,15 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |EventHubDroppedEvents|Eldobott EventHub-események|Darabszám|Összesen|A várólista méretkorlátjának elérése miatt kihagyott események száma|Hely|
 |EventHubTotalBytesSent|EventHub-események mérete|Bájt|Összesen|Az EventHub-események teljes mérete bájtban|Hely|
 |Kérelmek|Kérelmek|Darabszám|Összesen|Átjárókérelem-metrikák több dimenzióval|Hely,Állomásnév,LastErrorReason,BackendResponseCode,GatewayResponseCode,BackendResponseCode,BackendResponseCodeCategory,GatewayResponseCodeCategory|
+|Hálózati kapcsolat|Az erőforrások hálózati kapcsolatállapota (előzetes verzió)|Darabszám|Összesen|Az API Management szolgáltatás függő erőforrástípusainak hálózati kapcsolata|Hely,Erőforrástípus|
 
 
 ## <a name="microsoftappconfigurationconfigurationstores"></a>Microsoft.AppConfiguration/configurationStores
 
 |Metrika|Metrikus megjelenítendő név|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|HttpIncomingRequestCount|HttpIncomingRequestCount|Darabszám|Darabszám|A bejövő http-kérések teljes száma.|None|
-|SikertelenHttpRequestCount|SikertelenHttpRequestCount|Darabszám|Darabszám|Sikertelen http-kérelmek.|None|
-|HttpIncomingRequestDuration|HttpIncomingRequestDuration|Darabszám|Átlag|Késés http-kérelem esetén.|None|
+|HttpIncomingRequestCount|HttpIncomingRequestCount|Darabszám|Darabszám|A bejövő http-kérések teljes száma.|StatusCode (Állapotkód)|
+|HttpIncomingRequestDuration|HttpIncomingRequestDuration|Darabszám|Átlag|Késés http-kérelem esetén.|StatusCode (Állapotkód)|
 
 
 ## <a name="microsoftappplatformspring"></a>Microsoft.AppPlatform/Tavasz
@@ -171,21 +174,21 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |KilépéspoolNodeCount|Kilépés készletcsomópont-számlálóból|Darabszám|Összesen|A készletből kilépő csomópontok száma|None|
 |Használhatatlan NodeCount|Használhatatlan csomópontszám|Darabszám|Összesen|Használhatatlan csomópontok száma|None|
 |PreemptedNodeCount (PreemptedNodeCount)|Preempted csomópontszám|Darabszám|Összesen|Preempted csomópontok száma|None|
-|TaskStartEvent|Feladat indítási eseményei|Darabszám|Összesen|Az elindított tevékenységek száma összesen|None|
-|TaskCompleteEvent|Feladat-befejezési események|Darabszám|Összesen|A befejezett feladatok száma összesen|None|
-|TaskFailEvent|Feladat sikertelen események|Darabszám|Összesen|A sikertelen állapotban elvégzett feladatok száma összesen|None|
-|PoolCreateEvent|Készlet létrehozási események|Darabszám|Összesen|A létrehozott készletek teljes száma|None|
-|PoolResizeStartEvent|Készlet átméretezése kezdési események|Darabszám|Összesen|Az elindított készletátméretek teljes száma|None|
-|PoolResizeCompleteEvent|Készlet átméretezése teljes események|Darabszám|Összesen|A befejezett készletátméretek teljes száma|None|
-|KészletdeleteStartevent|Készlet törlése kezdőesemények|Darabszám|Összesen|Az elindított készlettörlések teljes száma|None|
-|Készlettörléscompleteesemény|Készlet törlése teljes események|Darabszám|Összesen|A befejezett készlettörlések teljes száma|None|
-|JobDeleteCompleteEvent|Feladat teljes eseményeinek törlése|Darabszám|Összesen|A sikeresen törölt feladatok száma összesen.|None|
-|FeladatDeleteStartEvent|Feladat indítási eseményeinek törlése|Darabszám|Összesen|A törlésre kért feladatok teljes száma.|None|
-|JobDisableCompleteEvent|Feladat teljes események letiltása|Darabszám|Összesen|A sikeresen letiltott feladatok száma összesen.|None|
-|FeladatDisableStartEvent|Feladat indítási eseményeinek letiltása|Darabszám|Összesen|A letiltásra kért feladatok teljes száma.|None|
-|FeladatStartEvent|Feladatindítási események|Darabszám|Összesen|A sikeresen elindított feladatok száma összesen.|None|
-|JobTerminateCompleteEvent|Feladat befejezése – teljes események|Darabszám|Összesen|A sikeresen leállított feladatok száma összesen.|None|
-|FeladatTerminateStartEvent|Feladat indítási eseményeinek leállítása|Darabszám|Összesen|A megszüntetendő feladatok teljes száma.|None|
+|TaskStartEvent|Feladat indítási eseményei|Darabszám|Összesen|Az elindított tevékenységek száma összesen|poolId,jobId|
+|TaskCompleteEvent|Feladat-befejezési események|Darabszám|Összesen|A befejezett feladatok száma összesen|poolId,jobId|
+|TaskFailEvent|Feladat sikertelen események|Darabszám|Összesen|A sikertelen állapotban elvégzett feladatok száma összesen|poolId,jobId|
+|PoolCreateEvent|Készlet létrehozási események|Darabszám|Összesen|A létrehozott készletek teljes száma|poolId|
+|PoolResizeStartEvent|Készlet átméretezése kezdési események|Darabszám|Összesen|Az elindított készletátméretek teljes száma|poolId|
+|PoolResizeCompleteEvent|Készlet átméretezése teljes események|Darabszám|Összesen|A befejezett készletátméretek teljes száma|poolId|
+|KészletdeleteStartevent|Készlet törlése kezdőesemények|Darabszám|Összesen|Az elindított készlettörlések teljes száma|poolId|
+|Készlettörléscompleteesemény|Készlet törlése teljes események|Darabszám|Összesen|A befejezett készlettörlések teljes száma|poolId|
+|JobDeleteCompleteEvent|Feladat teljes eseményeinek törlése|Darabszám|Összesen|A sikeresen törölt feladatok száma összesen.|jobId|
+|FeladatDeleteStartEvent|Feladat indítási eseményeinek törlése|Darabszám|Összesen|A törlésre kért feladatok teljes száma.|jobId|
+|JobDisableCompleteEvent|Feladat teljes események letiltása|Darabszám|Összesen|A sikeresen letiltott feladatok száma összesen.|jobId|
+|FeladatDisableStartEvent|Feladat indítási eseményeinek letiltása|Darabszám|Összesen|A letiltásra kért feladatok teljes száma.|jobId|
+|FeladatStartEvent|Feladatindítási események|Darabszám|Összesen|A sikeresen elindított feladatok száma összesen.|jobId|
+|JobTerminateCompleteEvent|Feladat befejezése – teljes események|Darabszám|Összesen|A sikeresen leállított feladatok száma összesen.|jobId|
+|FeladatTerminateStartEvent|Feladat indítási eseményeinek leállítása|Darabszám|Összesen|A megszüntetendő feladatok teljes száma.|jobId|
 
 
 ## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/munkaterületek
@@ -417,6 +420,7 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 
 
 
+
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft.Cdn/cdnwebapplicationfirewallpolicies
 
 |Metrika|Metrikus megjelenítendő név|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
@@ -537,11 +541,12 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |Datain között|Adatok a|Bájt|Összesen|Bejövő adatok mérete bájtban.|Apiname,Műveletnév,Terület|
 |DataOut (Adatki- és a|Adatok ki|Bájt|Összesen|Kimenő adatok mérete bájtban.|Apiname,Műveletnév,Terület|
 |Késés|Késés|Ezredmásodperc|Átlag|Késés ezredmásodpercben.|Apiname,Műveletnév,Terület|
+|TotalTokenCalls|Tokenhívások összesen|Darabszám|Összesen|A tokenhívások teljes száma.|Apiname,Műveletnév,Terület|
 |Lefordított karakterek|Lefordított karakterek|Darabszám|Összesen|A bejövő szöveges kérelemben szereplő karakterek teljes száma.|Apiname,Műveletnév,Terület|
 |Karakterekbe képezve|Betanított karakterek|Darabszám|Összesen|Betanított karakterek teljes száma.|Apiname,Műveletnév,Terület|
 |SpeechSessionDuration|Beszédmunkamenet időtartama|Másodperc|Összesen|A beszédszakasz teljes időtartama másodpercben.|Apiname,Műveletnév,Terület|
 |Összes tranzakció|Összes tranzakció|Darabszám|Összesen|Tranzakciók teljes száma.|None|
-|TotalTokenCalls|Tokenhívások összesen|Darabszám|Összesen|A tokenhívások teljes száma.|Apiname,Műveletnév,Terület|
+|Feldolgozott képek|Feldolgozott képek|Darabszám|Összesen| A képfeldolgozáshoz felelős tranzakciók száma.|Apiname,szolgáltatásnév,csatorna,régió|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
 
@@ -556,16 +561,16 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |Lemezírási műveletek/mp|Lemezírási műveletek/mp|CountPerSzekszekundum|Átlag|Lemezírási IOPS|None|
 |Fennmaradó CPU-kreditek|Fennmaradó CPU-kreditek|Darabszám|Átlag|A felszakításra rendelkezésre álló kreditek teljes száma|None|
 |Cpu-kreditek felhasznált|Cpu-kreditek felhasznált|Darabszám|Átlag|A virtuális gép által felhasznált kreditek teljes száma|None|
-|Lemezolvasási bájt/mp|Adatlemez olvasási bájt/mp (elavult)|CountPerSzekszekundum|Átlag|Egyetlen lemezről beolvasott bájtok/sec a figyelési időszak alatt|SlotId között|
-|Lemezenkénti írási bájt/mp|Adatlemez írási bájt/mp (elavult)|CountPerSzekszekundum|Átlag|Egyetlen lemezre írt bájtok/mp-es írása a figyelési időszak alatt|SlotId között|
-|Lemezolvasási műveletek/mp|Adatlemez olvasási műveletei/mp (elavult)|CountPerSzekszekundum|Átlag|IOPS olvasása egyetlen lemezről a figyelési időszak alatt|SlotId között|
-|Lemezírási műveletek/mp|Adatlemez írási műveletei/mp(elavult)|CountPerSzekszekundum|Átlag|IOPS írása egyetlen lemezről a figyelési időszak alatt|SlotId között|
-|Lemezenkénti qd|Adatlemez –qd (elavult)|Darabszám|Átlag|Adatlemez-várólista mélysége(vagy várólista hossza)|SlotId között|
-|Az operációs rendszer lemezenkénti olvasási bájt/mp|Operációs rendszer lemezolvasási bájtjai/mp(elavult)|CountPerSzekszekundum|Átlag|Egyetlen lemezről beolvasott bájtok/mp-es olvasása az operációs rendszer lemezének figyelési időszaka alatt|None|
-|Operációs rendszer lemezenként i.e.|Operációs rendszer lemezírási bájtjai/mp(elavult)|CountPerSzekszekundum|Átlag|Egyetlen lemezre írt bájtok/mp-es írása az operációs rendszer lemezének figyelési időszaka alatt|None|
-|Az operációs rendszer lemezenkénti olvasási műveletei/mp|Operációs rendszer lemezolvasási műveletei/mp (elavult)|CountPerSzekszekundum|Átlag|IOPS olvasása egyetlen lemezről az operációs rendszer lemezének figyelési időszaka alatt|None|
-|Operációs rendszer lemezenkéntírási műveletek másodpercenkénti száma|Operációs rendszer lemezírási műveletei/mp (elavult)|CountPerSzekszekundum|Átlag|IOPS írása egyetlen lemezről az operációs rendszer lemezének figyelési időszaka alatt|None|
-|Operációs rendszer lemezenként – QD|Operációs rendszer lemezének qd-ja (elavult)|Darabszám|Átlag|Az operációs rendszer lemezvárólistájának mélysége(vagy a várólista hossza)|None|
+|Lemezolvasási bájt/mp|Adatlemez olvasási bájt/mp [(elavult)](portal-disk-metrics-deprecation.md)|CountPerSzekszekundum|Átlag|Egyetlen lemezről beolvasott bájtok/sec a figyelési időszak alatt|SlotId között|
+|Lemezenkénti írási bájt/mp|Adatlemez írási bájt/mp [(elavult)](portal-disk-metrics-deprecation.md)|CountPerSzekszekundum|Átlag|Egyetlen lemezre írt bájtok/mp-es írása a figyelési időszak alatt|SlotId között|
+|Lemezolvasási műveletek/mp|Adatlemez olvasási műveletei/mp [(elavult)](portal-disk-metrics-deprecation.md)|CountPerSzekszekundum|Átlag|IOPS olvasása egyetlen lemezről a figyelési időszak alatt|SlotId között|
+|Lemezírási műveletek/mp|Adatlemez írási [műveletei/mp(elavult)](portal-disk-metrics-deprecation.md)|CountPerSzekszekundum|Átlag|IOPS írása egyetlen lemezről a figyelési időszak alatt|SlotId között|
+|Lemezenkénti qd|[Adatlemez –qd [(elavult)](portal-disk-metrics-deprecation.md)](portal-disk-metrics-deprecation.md)|Darabszám|Átlag|Adatlemez-várólista mélysége(vagy várólista hossza)|SlotId között|
+|Az operációs rendszer lemezenkénti olvasási bájt/mp|Operációs rendszer lemezolvasási [bájtjai/mp(elavult)](portal-disk-metrics-deprecation.md)|CountPerSzekszekundum|Átlag|Egyetlen lemezről beolvasott bájtok/mp-es olvasása az operációs rendszer lemezének figyelési időszaka alatt|None|
+|Operációs rendszer lemezenként i.e.|Operációs rendszer lemezírási [bájtjai/mp(elavult)](portal-disk-metrics-deprecation.md)|CountPerSzekszekundum|Átlag|Egyetlen lemezre írt bájtok/mp-es írása az operációs rendszer lemezének figyelési időszaka alatt|None|
+|Az operációs rendszer lemezenkénti olvasási műveletei/mp|Operációs rendszer lemezolvasási műveletei/mp [(elavult)](portal-disk-metrics-deprecation.md)|CountPerSzekszekundum|Átlag|IOPS olvasása egyetlen lemezről az operációs rendszer lemezének figyelési időszaka alatt|None|
+|Operációs rendszer lemezenkéntírási műveletek másodpercenkénti száma|Operációs rendszer lemezírási műveletei/mp [(elavult)](portal-disk-metrics-deprecation.md)|CountPerSzekszekundum|Átlag|IOPS írása egyetlen lemezről az operációs rendszer lemezének figyelési időszaka alatt|None|
+|Operációs rendszer lemezenként – QD|Operációs rendszer lemezének [qd-ja (elavult)](portal-disk-metrics-deprecation.md)|Darabszám|Átlag|Az operációs rendszer lemezvárólistájának mélysége(vagy a várólista hossza)|None|
 |Adatlemez olvasási bájtjai/mp|Adatlemez olvasási bájtjai/mp (előzetes verzió)|CountPerSzekszekundum|Átlag|Egyetlen lemezről beolvasott bájtok/sec a figyelési időszak alatt|Lun|
 |Adatlemez írási bájt/mp|Adatlemez írási bájtjai/mp (előzetes verzió)|CountPerSzekszekundum|Átlag|Egyetlen lemezre írt bájtok/mp-es írása a figyelési időszak alatt|Lun|
 |Adatlemez olvasási műveletei/mp|Adatlemez olvasási műveletei/mp (előzetes verzió)|CountPerSzekszekundum|Átlag|IOPS olvasása egyetlen lemezről a figyelési időszak alatt|Lun|
@@ -578,8 +583,8 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |OS-lemez várakozási sorának mélysége|Az operációs rendszer lemezvárólistájának mélysége (előzetes verzió)|Darabszám|Átlag|Az operációs rendszer lemezvárólistájának mélysége(vagy a várólista hossza)|None|
 |Bejövő forgalomfolyamok|Bejövő forgalomfolyamok|Darabszám|Átlag|Bejövő folyamatok száma a bejövő irányban (a virtuális gépbe haladó forgalom)|None|
 |Kimenő folyamatok|Kimenő folyamatok|Darabszám|Átlag|Kimenő folyamatok a kimenő irányban lévő áramok száma (a virtuális gépből kimenő forgalom)|None|
-|Bejövő folyamatok maximális létrehozási aránya|Bejövő folyamatok maximális létrehozási aránya (előzetes verzió)|CountPerSzekszekundum|Átlag|A bejövő forgalom maximális létrehozási sebessége (a virtuális gépbe érkező forgalom)|None|
-|Kimenő folyamatok maximális létrehozási aránya|Kimenő folyamatok maximális létrehozási aránya (előzetes verzió)|CountPerSzekszekundum|Átlag|A kimenő folyamatok maximális létrehozási sebessége (a virtuális gépből kimenő forgalom)|None|
+|Bejövő folyamatok maximális létrehozási aránya|Bejövő folyamatok maximális létrehozási aránya|CountPerSzekszekundum|Átlag|A bejövő forgalom maximális létrehozási sebessége (a virtuális gépbe érkező forgalom)|None|
+|Kimenő folyamatok maximális létrehozási aránya|Kimenő folyamatok maximális létrehozási aránya|CountPerSzekszekundum|Átlag|A kimenő folyamatok maximális létrehozási sebessége (a virtuális gépből kimenő forgalom)|None|
 |Prémium szintű adatlemez gyorsítótárának olvasási találata|Prémium szintű adatlemez gyorsítótárának olvasási találata (előzetes verzió)|Százalék|Átlag|Prémium szintű adatlemez gyorsítótárának olvasási találata|Lun|
 |Prémium szintű adatlemez gyorsítótárolvasási tévesztése|Prémium szintű adatlemez gyorsítótárolvasási tévesztés (előzetes verzió)|Százalék|Átlag|Prémium szintű adatlemez gyorsítótárolvasási tévesztése|Lun|
 |Prémium szintű operációsrendszer-gyorsítótár olvasási találata|Prémium szintű operációsrendszer-gyorsítótár olvasási találata (előzetes verzió)|Százalék|Átlag|Prémium szintű operációsrendszer-gyorsítótár olvasási találata|None|
@@ -601,16 +606,16 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |Lemezírási műveletek/mp|Lemezírási műveletek/mp|CountPerSzekszekundum|Átlag|Lemezírási IOPS|VMName|
 |Fennmaradó CPU-kreditek|Fennmaradó CPU-kreditek|Darabszám|Átlag|A felszakításra rendelkezésre álló kreditek teljes száma|None|
 |Cpu-kreditek felhasznált|Cpu-kreditek felhasznált|Darabszám|Átlag|A virtuális gép által felhasznált kreditek teljes száma|None|
-|Lemezolvasási bájt/mp|Adatlemez olvasási bájt/mp (elavult)|CountPerSzekszekundum|Átlag|Egyetlen lemezről beolvasott bájtok/sec a figyelési időszak alatt|SlotId között|
-|Lemezenkénti írási bájt/mp|Adatlemez írási bájt/mp (elavult)|CountPerSzekszekundum|Átlag|Egyetlen lemezre írt bájtok/mp-es írása a figyelési időszak alatt|SlotId között|
-|Lemezolvasási műveletek/mp|Adatlemez olvasási műveletei/mp (elavult)|CountPerSzekszekundum|Átlag|IOPS olvasása egyetlen lemezről a figyelési időszak alatt|SlotId között|
-|Lemezírási műveletek/mp|Adatlemez írási műveletei/mp(elavult)|CountPerSzekszekundum|Átlag|IOPS írása egyetlen lemezről a figyelési időszak alatt|SlotId között|
-|Lemezenkénti qd|Adatlemez –qd (elavult)|Darabszám|Átlag|Adatlemez-várólista mélysége(vagy várólista hossza)|SlotId között|
-|Az operációs rendszer lemezenkénti olvasási bájt/mp|Operációs rendszer lemezolvasási bájtjai/mp(elavult)|CountPerSzekszekundum|Átlag|Egyetlen lemezről beolvasott bájtok/mp-es olvasása az operációs rendszer lemezének figyelési időszaka alatt|None|
-|Operációs rendszer lemezenként i.e.|Operációs rendszer lemezírási bájtjai/mp(elavult)|CountPerSzekszekundum|Átlag|Egyetlen lemezre írt bájtok/mp-es írása az operációs rendszer lemezének figyelési időszaka alatt|None|
-|Az operációs rendszer lemezenkénti olvasási műveletei/mp|Operációs rendszer lemezolvasási műveletei/mp (elavult)|CountPerSzekszekundum|Átlag|IOPS olvasása egyetlen lemezről az operációs rendszer lemezének figyelési időszaka alatt|None|
-|Operációs rendszer lemezenkéntírási műveletek másodpercenkénti száma|Operációs rendszer lemezírási műveletei/mp (elavult)|CountPerSzekszekundum|Átlag|IOPS írása egyetlen lemezről az operációs rendszer lemezének figyelési időszaka alatt|None|
-|Operációs rendszer lemezenként – QD|Operációs rendszer lemezének qd-ja (elavult)|Darabszám|Átlag|Az operációs rendszer lemezvárólistájának mélysége(vagy a várólista hossza)|None|
+|Lemezolvasási bájt/mp|Adatlemez olvasási bájt/mp [(elavult)](portal-disk-metrics-deprecation.md)|CountPerSzekszekundum|Átlag|Egyetlen lemezről beolvasott bájtok/sec a figyelési időszak alatt|SlotId között|
+|Lemezenkénti írási bájt/mp|Adatlemez írási bájt/mp [(elavult)](portal-disk-metrics-deprecation.md)|CountPerSzekszekundum|Átlag|Egyetlen lemezre írt bájtok/mp-es írása a figyelési időszak alatt|SlotId között|
+|Lemezolvasási műveletek/mp|Adatlemez olvasási műveletei/mp [(elavult)](portal-disk-metrics-deprecation.md)|CountPerSzekszekundum|Átlag|IOPS olvasása egyetlen lemezről a figyelési időszak alatt|SlotId között|
+|Lemezírási műveletek/mp|Adatlemez írási [műveletei/mp(elavult)](portal-disk-metrics-deprecation.md)|CountPerSzekszekundum|Átlag|IOPS írása egyetlen lemezről a figyelési időszak alatt|SlotId között|
+|Lemezenkénti qd|Adatlemez –qd [(elavult)](portal-disk-metrics-deprecation.md)|Darabszám|Átlag|Adatlemez-várólista mélysége(vagy várólista hossza)|SlotId között|
+|Az operációs rendszer lemezenkénti olvasási bájt/mp|Operációs rendszer lemezolvasási [bájtjai/mp(elavult)](portal-disk-metrics-deprecation.md)|CountPerSzekszekundum|Átlag|Egyetlen lemezről beolvasott bájtok/mp-es olvasása az operációs rendszer lemezének figyelési időszaka alatt|None|
+|Operációs rendszer lemezenként i.e.|Operációs rendszer lemezírási [bájtjai/mp(elavult)](portal-disk-metrics-deprecation.md)|CountPerSzekszekundum|Átlag|Egyetlen lemezre írt bájtok/mp-es írása az operációs rendszer lemezének figyelési időszaka alatt|None|
+|Az operációs rendszer lemezenkénti olvasási műveletei/mp|Operációs rendszer lemezolvasási műveletei/mp [(elavult)](portal-disk-metrics-deprecation.md)|CountPerSzekszekundum|Átlag|IOPS olvasása egyetlen lemezről az operációs rendszer lemezének figyelési időszaka alatt|None|
+|Operációs rendszer lemezenkéntírási műveletek másodpercenkénti száma|Operációs rendszer lemezírási műveletei/mp [(elavult)](portal-disk-metrics-deprecation.md)|CountPerSzekszekundum|Átlag|IOPS írása egyetlen lemezről az operációs rendszer lemezének figyelési időszaka alatt|None|
+|Operációs rendszer lemezenként – QD|Operációs rendszer lemezének [qd-ja (elavult)](portal-disk-metrics-deprecation.md)|Darabszám|Átlag|Az operációs rendszer lemezvárólistájának mélysége(vagy a várólista hossza)|None|
 |Adatlemez olvasási bájtjai/mp|Adatlemez olvasási bájtjai/mp (előzetes verzió)|CountPerSzekszekundum|Átlag|Egyetlen lemezről beolvasott bájtok/sec a figyelési időszak alatt|Névn.|
 |Adatlemez írási bájt/mp|Adatlemez írási bájtjai/mp (előzetes verzió)|CountPerSzekszekundum|Átlag|Egyetlen lemezre írt bájtok/mp-es írása a figyelési időszak alatt|Névn.|
 |Adatlemez olvasási műveletei/mp|Adatlemez olvasási műveletei/mp (előzetes verzió)|CountPerSzekszekundum|Átlag|IOPS olvasása egyetlen lemezről a figyelési időszak alatt|Névn.|
@@ -623,8 +628,8 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |OS-lemez várakozási sorának mélysége|Az operációs rendszer lemezvárólistájának mélysége (előzetes verzió)|Darabszám|Átlag|Az operációs rendszer lemezvárólistájának mélysége(vagy a várólista hossza)|VMName|
 |Bejövő forgalomfolyamok|Bejövő forgalomfolyamok|Darabszám|Átlag|Bejövő folyamatok száma a bejövő irányban (a virtuális gépbe haladó forgalom)|VMName|
 |Kimenő folyamatok|Kimenő folyamatok|Darabszám|Átlag|Kimenő folyamatok a kimenő irányban lévő áramok száma (a virtuális gépből kimenő forgalom)|VMName|
-|Bejövő folyamatok maximális létrehozási aránya|Bejövő folyamatok maximális létrehozási aránya (előzetes verzió)|CountPerSzekszekundum|Átlag|A bejövő forgalom maximális létrehozási sebessége (a virtuális gépbe érkező forgalom)|VMName|
-|Kimenő folyamatok maximális létrehozási aránya|Kimenő folyamatok maximális létrehozási aránya (előzetes verzió)|CountPerSzekszekundum|Átlag|A kimenő folyamatok maximális létrehozási sebessége (a virtuális gépből kimenő forgalom)|VMName|
+|Bejövő folyamatok maximális létrehozási aránya|Bejövő folyamatok maximális létrehozási aránya|CountPerSzekszekundum|Átlag|A bejövő forgalom maximális létrehozási sebessége (a virtuális gépbe érkező forgalom)|VMName|
+|Kimenő folyamatok maximális létrehozási aránya|Kimenő folyamatok maximális létrehozási aránya|CountPerSzekszekundum|Átlag|A kimenő folyamatok maximális létrehozási sebessége (a virtuális gépből kimenő forgalom)|VMName|
 |Prémium szintű adatlemez gyorsítótárának olvasási találata|Prémium szintű adatlemez gyorsítótárának olvasási találata (előzetes verzió)|Százalék|Átlag|Prémium szintű adatlemez gyorsítótárának olvasási találata|Névn.|
 |Prémium szintű adatlemez gyorsítótárolvasási tévesztése|Prémium szintű adatlemez gyorsítótárolvasási tévesztés (előzetes verzió)|Százalék|Átlag|Prémium szintű adatlemez gyorsítótárolvasási tévesztése|Névn.|
 |Prémium szintű operációsrendszer-gyorsítótár olvasási találata|Prémium szintű operációsrendszer-gyorsítótár olvasási találata (előzetes verzió)|Százalék|Átlag|Prémium szintű operációsrendszer-gyorsítótár olvasási találata|VMName|
@@ -646,16 +651,16 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |Lemezírási műveletek/mp|Lemezírási műveletek/mp|CountPerSzekszekundum|Átlag|Lemezírási IOPS|None|
 |Fennmaradó CPU-kreditek|Fennmaradó CPU-kreditek|Darabszám|Átlag|A felszakításra rendelkezésre álló kreditek teljes száma|None|
 |Cpu-kreditek felhasznált|Cpu-kreditek felhasznált|Darabszám|Átlag|A virtuális gép által felhasznált kreditek teljes száma|None|
-|Lemezolvasási bájt/mp|Adatlemez olvasási bájt/mp (elavult)|CountPerSzekszekundum|Átlag|Egyetlen lemezről beolvasott bájtok/sec a figyelési időszak alatt|SlotId között|
-|Lemezenkénti írási bájt/mp|Adatlemez írási bájt/mp (elavult)|CountPerSzekszekundum|Átlag|Egyetlen lemezre írt bájtok/mp-es írása a figyelési időszak alatt|SlotId között|
-|Lemezolvasási műveletek/mp|Adatlemez olvasási műveletei/mp (elavult)|CountPerSzekszekundum|Átlag|IOPS olvasása egyetlen lemezről a figyelési időszak alatt|SlotId között|
-|Lemezírási műveletek/mp|Adatlemez írási műveletei/mp(elavult)|CountPerSzekszekundum|Átlag|IOPS írása egyetlen lemezről a figyelési időszak alatt|SlotId között|
-|Lemezenkénti qd|Adatlemez –qd (elavult)|Darabszám|Átlag|Adatlemez-várólista mélysége(vagy várólista hossza)|SlotId között|
-|Az operációs rendszer lemezenkénti olvasási bájt/mp|Operációs rendszer lemezolvasási bájtjai/mp(elavult)|CountPerSzekszekundum|Átlag|Egyetlen lemezről beolvasott bájtok/mp-es olvasása az operációs rendszer lemezének figyelési időszaka alatt|None|
-|Operációs rendszer lemezenként i.e.|Operációs rendszer lemezírási bájtjai/mp(elavult)|CountPerSzekszekundum|Átlag|Egyetlen lemezre írt bájtok/mp-es írása az operációs rendszer lemezének figyelési időszaka alatt|None|
-|Az operációs rendszer lemezenkénti olvasási műveletei/mp|Operációs rendszer lemezolvasási műveletei/mp (elavult)|CountPerSzekszekundum|Átlag|IOPS olvasása egyetlen lemezről az operációs rendszer lemezének figyelési időszaka alatt|None|
-|Operációs rendszer lemezenkéntírási műveletek másodpercenkénti száma|Operációs rendszer lemezírási műveletei/mp (elavult)|CountPerSzekszekundum|Átlag|IOPS írása egyetlen lemezről az operációs rendszer lemezének figyelési időszaka alatt|None|
-|Operációs rendszer lemezenként – QD|Operációs rendszer lemezének qd-ja (elavult)|Darabszám|Átlag|Az operációs rendszer lemezvárólistájának mélysége(vagy a várólista hossza)|None|
+|Lemezolvasási bájt/mp|Adatlemez olvasási bájt/mp [(elavult)](portal-disk-metrics-deprecation.md)|CountPerSzekszekundum|Átlag|Egyetlen lemezről beolvasott bájtok/sec a figyelési időszak alatt|SlotId között|
+|Lemezenkénti írási bájt/mp|Adatlemez írási bájt/mp [(elavult)](portal-disk-metrics-deprecation.md)|CountPerSzekszekundum|Átlag|Egyetlen lemezre írt bájtok/mp-es írása a figyelési időszak alatt|SlotId között|
+|Lemezolvasási műveletek/mp|Adatlemez olvasási műveletei/mp [(elavult)](portal-disk-metrics-deprecation.md)|CountPerSzekszekundum|Átlag|IOPS olvasása egyetlen lemezről a figyelési időszak alatt|SlotId között|
+|Lemezírási műveletek/mp|Adatlemez írási [műveletei/mp(elavult)](portal-disk-metrics-deprecation.md)|CountPerSzekszekundum|Átlag|IOPS írása egyetlen lemezről a figyelési időszak alatt|SlotId között|
+|Lemezenkénti qd|Adatlemez –qd [(elavult)](portal-disk-metrics-deprecation.md)|Darabszám|Átlag|Adatlemez-várólista mélysége(vagy várólista hossza)|SlotId között|
+|Az operációs rendszer lemezenkénti olvasási bájt/mp|Operációs rendszer lemezolvasási [bájtjai/mp(elavult)](portal-disk-metrics-deprecation.md)|CountPerSzekszekundum|Átlag|Egyetlen lemezről beolvasott bájtok/mp-es olvasása az operációs rendszer lemezének figyelési időszaka alatt|None|
+|Operációs rendszer lemezenként i.e.|Operációs rendszer lemezírási [bájtjai/mp(elavult)](portal-disk-metrics-deprecation.md)|CountPerSzekszekundum|Átlag|Egyetlen lemezre írt bájtok/mp-es írása az operációs rendszer lemezének figyelési időszaka alatt|None|
+|Az operációs rendszer lemezenkénti olvasási műveletei/mp|Operációs rendszer lemezolvasási műveletei/mp [(elavult)](portal-disk-metrics-deprecation.md)|CountPerSzekszekundum|Átlag|IOPS olvasása egyetlen lemezről az operációs rendszer lemezének figyelési időszaka alatt|None|
+|Operációs rendszer lemezenkéntírási műveletek másodpercenkénti száma|Operációs rendszer lemezírási műveletei/mp [(elavult)](portal-disk-metrics-deprecation.md)|CountPerSzekszekundum|Átlag|IOPS írása egyetlen lemezről az operációs rendszer lemezének figyelési időszaka alatt|None|
+|Operációs rendszer lemezenként – QD|Operációs rendszer lemezének [qd-ja (elavult)](portal-disk-metrics-deprecation.md)|Darabszám|Átlag|Az operációs rendszer lemezvárólistájának mélysége(vagy a várólista hossza)|None|
 |Adatlemez olvasási bájtjai/mp|Adatlemez olvasási bájtjai/mp (előzetes verzió)|CountPerSzekszekundum|Átlag|Egyetlen lemezről beolvasott bájtok/sec a figyelési időszak alatt|Lun|
 |Adatlemez írási bájt/mp|Adatlemez írási bájtjai/mp (előzetes verzió)|CountPerSzekszekundum|Átlag|Egyetlen lemezre írt bájtok/mp-es írása a figyelési időszak alatt|Lun|
 |Adatlemez olvasási műveletei/mp|Adatlemez olvasási műveletei/mp (előzetes verzió)|CountPerSzekszekundum|Átlag|IOPS olvasása egyetlen lemezről a figyelési időszak alatt|Lun|
@@ -668,8 +673,8 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |OS-lemez várakozási sorának mélysége|Az operációs rendszer lemezvárólistájának mélysége (előzetes verzió)|Darabszám|Átlag|Az operációs rendszer lemezvárólistájának mélysége(vagy a várólista hossza)|None|
 |Bejövő forgalomfolyamok|Bejövő forgalomfolyamok|Darabszám|Átlag|Bejövő folyamatok száma a bejövő irányban (a virtuális gépbe haladó forgalom)|None|
 |Kimenő folyamatok|Kimenő folyamatok|Darabszám|Átlag|Kimenő folyamatok a kimenő irányban lévő áramok száma (a virtuális gépből kimenő forgalom)|None|
-|Bejövő folyamatok maximális létrehozási aránya|Bejövő folyamatok maximális létrehozási aránya (előzetes verzió)|CountPerSzekszekundum|Átlag|A bejövő forgalom maximális létrehozási sebessége (a virtuális gépbe érkező forgalom)|None|
-|Kimenő folyamatok maximális létrehozási aránya|Kimenő folyamatok maximális létrehozási aránya (előzetes verzió)|CountPerSzekszekundum|Átlag|A kimenő folyamatok maximális létrehozási sebessége (a virtuális gépből kimenő forgalom)|None|
+|Bejövő folyamatok maximális létrehozási aránya|Bejövő folyamatok maximális létrehozási aránya|CountPerSzekszekundum|Átlag|A bejövő forgalom maximális létrehozási sebessége (a virtuális gépbe érkező forgalom)|None|
+|Kimenő folyamatok maximális létrehozási aránya|Kimenő folyamatok maximális létrehozási aránya|CountPerSzekszekundum|Átlag|A kimenő folyamatok maximális létrehozási sebessége (a virtuális gépből kimenő forgalom)|None|
 |Prémium szintű adatlemez gyorsítótárának olvasási találata|Prémium szintű adatlemez gyorsítótárának olvasási találata (előzetes verzió)|Százalék|Átlag|Prémium szintű adatlemez gyorsítótárának olvasási találata|Lun|
 |Prémium szintű adatlemez gyorsítótárolvasási tévesztése|Prémium szintű adatlemez gyorsítótárolvasási tévesztés (előzetes verzió)|Százalék|Átlag|Prémium szintű adatlemez gyorsítótárolvasási tévesztése|Lun|
 |Prémium szintű operációsrendszer-gyorsítótár olvasási találata|Prémium szintű operációsrendszer-gyorsítótár olvasási találata (előzetes verzió)|Százalék|Átlag|Prémium szintű operációsrendszer-gyorsítótár olvasási találata|None|
@@ -734,6 +739,21 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |HyperVMemoryKitilizáció|Peremhálózati számítás – Memóriahasználat|Százalék|Átlag|A használatban lévő RAM mennyisége|Példánynév|
 
 
+## <a name="microsoftdatacatalogdatacatalogs"></a>Microsoft.DataCatalog/datacatalogs
+
+|Metrika|Metrikus megjelenítendő név|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|---|---|---|---|---|---|
+|Eszköz felosztása osztályozás szerint|Eszköz felosztása osztályozás szerint|Darabszám|Összesen|A meghatározott besorolással rendelkező eszközök számát jelzi, azaz az adott címkével vannak besorolva.|Besorolás,Forrás|
+|Eszközfelosztástárolótípusa|Eszköz elosztása tárolási típus szerint|Darabszám|Összesen|Egy adott tárolási típussal rendelkező eszközök számát jelzi.|StorageType típusú|
+|NumberOfAssetsWithClassifications|Legalább egy besorolással rendelkező eszközök száma|Darabszám|Átlag|A legalább egy címkebesorolással rendelkező eszközök számát jelzi.|None|
+|VizsgálatTörölve|Vizsgálat megszakítva|Darabszám|Összesen|A megszakított vizsgálatok számát jelzi.|None|
+|Vizsgálat befejezve|Vizsgálat befejezve|Darabszám|Összesen|A sikeresen végrehajtott vizsgálatok számát jelzi.|None|
+|Sikertelen vizsgálat|A vizsgálat nem sikerült|Darabszám|Összesen|A sikertelen beolvasások számát jelzi.|None|
+|ScanTimeTaken|A beszkavaltöltött idő|Másodperc|Összesen|A teljes bevizsgálati időt jelzi másodpercben.|None|
+|CatalogActiveUsers|Napi aktív felhasználók|Darabszám|Összesen|Aktív felhasználók száma naponta|None|
+|Katalógushasználata|Használat elosztása művelet szerint|Darabszám|Összesen|Adja meg, hogy a felhasználó hány műveletet végez a katalógusban, azaz az Access, a Keresés, a Szószedet.|Művelet|
+
+
 ## <a name="microsoftdatafactorydatafactories"></a>Microsoft.DataFactory/datafactories
 
 |Metrika|Metrikus megjelenítendő név|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
@@ -775,6 +795,7 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |JobAUEndedsiker|Sikeres AU idő|Másodperc|Összesen|A sikeres feladatok hoz a teljes AU idő.|None|
 |JobAUEndedFailure|Sikertelen AU idő|Másodperc|Összesen|A sikertelen feladatok összes AU ideje.|None|
 |JobAUEndedTörölve|Megszakított AU idő|Másodperc|Összesen|A törölt feladatok összes AU ideje.|None|
+|Feladatszínpad|Állások a színpadon|Darabszám|Összesen|A feladatok száma az egyes fázisokban.|None|
 
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.DataLakeStore/fiókok
@@ -786,6 +807,18 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |DataRead (Olvasd el)|Adatok olvasása|Bájt|Összesen|A fiókból beolvasott adatok teljes mennyisége.|None|
 |WriteRequests (Íráskérések)|Írási kérelmek|Darabszám|Összesen|A fiókhoz érkező adatírási kérelmek száma.|None|
 |Olvasáskérések|Olvasási kérelmek|Darabszám|Összesen|A fiókhoz intézett adatok olvasási kérelmeinek száma.|None|
+
+
+## <a name="microsoftdatashareaccounts"></a>Microsoft.DataShare/fiókok
+
+|Metrika|Metrikus megjelenítendő név|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|---|---|---|---|---|---|
+|ShareCount (ShareCount)|Elküldött megosztások|Darabszám|Maximum|A számlán küldött részvények száma|Megosztásneve|
+|ShareSubscriptionCount|Kapott részvények|Darabszám|Maximum|A számlán kapott részvények száma|ShareSubscriptionName|
+|Sikeres megosztások|Elküldött megosztási sikeres pillanatképek|Darabszám|Darabszám|A fiókban az elküldött megosztás sikeres pillanatképeinek száma|None|
+|Sikertelen megosztásszinkronizálások|Sikertelen megosztási pillanatképek elküldése|Darabszám|Darabszám|Az elküldött megosztás sikertelen pillanatképeinek száma a fiókban|None|
+|SucceededShareSubscriptionSynchrizations|Fogadott megosztás sikeres pillanatképei|Darabszám|Darabszám|A fogadott megosztás sikeres pillanatképeinek száma a fiókban|None|
+|SikertelenShareSubscription-szinkronizálások|Sikertelen megosztáspillanatképek fogadása|Darabszám|Darabszám|Sikertelen pillanatképek fogadásának száma a fiókban|None|
 
 
 ## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/kiszolgálók
@@ -866,6 +899,23 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |network_bytes_ingress|Bejövő hálózat|Bájt|Összesen|Hálózat az aktív kapcsolatok között|None|
 
 
+## <a name="microsoftdbforpostgresqlsingleservers"></a>Microsoft.DBforPostgreSQL/singleservers
+
+|Metrika|Metrikus megjelenítendő név|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|---|---|---|---|---|---|
+|cpu_percent|PROCESSZOR százalék|Százalék|Átlag|PROCESSZOR százalék|None|
+|memory_percent|Memória százaléka|Százalék|Átlag|Memória százaléka|None|
+|iops|IOPS|Darabszám|Átlag|Io műveletek másodpercenként|None|
+|storage_percent|Tárolási százalék|Százalék|Átlag|Tárolási százalék|None|
+|storage_used|Használt tároló|Bájt|Átlag|Használt tároló|None|
+|active_connections|Aktív kapcsolatok|Darabszám|Átlag|Aktív kapcsolatok|None|
+|network_bytes_egress|Kimenő hálózat|Bájt|Összesen|Hálózati kapcsolat az aktív kapcsolatok között|None|
+|network_bytes_ingress|Bejövő hálózat|Bájt|Összesen|Hálózat az aktív kapcsolatok között|None|
+|connections_failed|Sikertelen kapcsolatok|Darabszám|Összesen|Sikertelen kapcsolatok|None|
+|connections_succeeded|Sikeres kapcsolatok|Darabszám|Összesen|Sikeres kapcsolatok|None|
+|maximum_used_transactionIDs|Maximálisan használt tranzakcióazonosítók|Darabszám|Átlag|Maximálisan használt tranzakcióazonosítók|None|
+
+
 
 
 
@@ -898,8 +948,10 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |d2c.endpoints.latency.storage|Útválasztás: üzenet késése a tároláshoz|Ezredmásodperc|Átlag|Az IoT Hubba küldött üzenet és a telemetriai üzenetek tárolási végpontba való be- és telemetriai üzenete közötti átlagos késés (ezredmásodperc).|None|
 |d2c.endpoints.egress.storage.bytes|Útválasztás: a tárolóba szállított adatok|Bájt|Összesen|A tárolási végpontokhoz kézbesített adatok (bájt) adatok mennyisége (bájt).|None|
 |d2c.endpoints.egress.storage.blobok|Útválasztás: a tárolóba szállított blobok|Darabszám|Összesen|Az IoT Hub-útválasztás blobok tárolási végpontok kézbesítésének száma.|None|
-|EventGridDeliveres|Eseményrács-szállítások(előzetes verzió)|Darabszám|Összesen|Az Event Gridben közzétett IoT Hub-események száma. Használja az Eredmény dimenziót a sikeres és sikertelen kérelmek számához. Az EventType dimenzió azhttps://aka.ms/ioteventgrid)esemény típusát ( .|ResourceId,Eredmény,EventType|
+|EventGridDeliveres|Eseményrács-szállítások (előzetes verzió)|Darabszám|Összesen|Az Event Gridben közzétett IoT Hub-események száma. Használja az Eredmény dimenziót a sikeres és sikertelen kérelmek számához. Az EventType dimenzió azhttps://aka.ms/ioteventgrid)esemény típusát ( .|ResourceId,Eredmény,EventType|
 |EventGridLatency|Eseményrács késése (előzetes verzió)|Ezredmásodperc|Átlag|Az iot hub esemény létrehozásának időpontjától az esemény eseménynaptárban való közzétételének időpontjáig eltelt átlagos késés (ezredmásodperc). Ez a szám az összes eseménytípus átlaga. Az EventType dimenzió val egy adott eseménytípus késésének megtekintéséhez.|ResourceId,EventType|
+|Útválasztási szállítások|Szállítások útválasztása (előzetes verzió)|Ezredmásodperc|Összesen|Az IoT Hub által az összes végpontnak útválasztás használatával történő kézbesítése. A sikeres vagy sikertelen kísérletek számának megtekintéséhez használja az Eredmény dimenziót. A hiba okának megtekintéséhez, például érvénytelen, eldobott vagy árva, használja a FailureReasonCategory dimenziót. Az EndpointName és az EndpointType dimenziók segítségével is megismerheti, hogy hány üzenet érkezett a különböző végpontokra. A metrika értéke minden kézbesítési kísérlet esetén eggyel nő, például ha az üzenet több végpontra kerül, vagy ha az üzenet többször is ugyanarra a végpontra kerül.|ResourceId,EndpointType,EndpointName,FailureReasonCategory,Result,RoutingSource|
+|RoutingDeliveryLatency|Útválasztási kézbesítési késés (előzetes verzió)|Ezredmásodperc|Átlag|Az IoT Hubba küldött üzenet és a telemetriai üzenetek végpontba való be- és telemetriai üzenete közötti átlagos késés (ezredmásodperc). Az EndpointName és az EndpointType dimenziók segítségével megismerheti a különböző végpontok késését.|ResourceId,EndpointType,EndpointName,RoutingSource|
 |d2c.twin.read.success|Sikeres ikerolvasás eszközökről|Darabszám|Összesen|Az összes sikeres eszköz által kezdeményezett ikerolvasás száma.|None|
 |d2c.twin.read.failure|Nem sikerült ikerbeolvasás az eszközökről|Darabszám|Összesen|Az összes sikertelen eszköz által kezdeményezett ikerolvasás száma.|None|
 |d2c.twin.read.méret|Az eszközökről beolvasások válaszmérete|Bájt|Átlag|Az összes sikeres eszköz által kezdeményezett ikerolvasás átlaga, percés max.|None|
@@ -949,6 +1001,8 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |Tanúsítványkísérletek|Igazolási kísérletek|Darabszám|Összesen|A megkísérelt eszköztanúsítványok száma|ProvisioningServiceName,Állapot,Protokoll|
 
 
+
+
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
 |Metrika|Metrikus megjelenítendő név|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
@@ -956,32 +1010,62 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |AddRegion (Régió hozzáadása)|Régió hozzáadva|Darabszám|Darabszám|Régió hozzáadva|Régió|
 |AvailableStorage (Elérhető tárhely)|Rendelkezésre álló tár|Bájt|Összesen|Az 5 perces részletességgel jelentett teljes rendelkezésre álló tárterület|Gyűjteménynév,Adatbázisnév,Terület|
 |CassandraConnectionClosures|Cassandra kapcsolat lezárások|Darabszám|Összesen|A lezárt Cassandra-kapcsolatok száma, 1 perces részletességgel|APIType,Régió,LezárásOk|
+|CassandraKeyspaceTörlés|Cassandra Keyspace törölve|Darabszám|Darabszám|Cassandra Keyspace törölve|Erőforrásnév,apikind,apikindresourcetype,OperationType|
+|CassandraKeyspaceThroughputFrissítés|Cassandra Keyspace átviteli nyomás frissítve|Darabszám|Darabszám|Cassandra Keyspace átviteli nyomás frissítve|Erőforrásnév,ApiKind,ApiKindResourceType,IsThroughputRequest|
+|CassandraKeyspaceFrissítés|Cassandra Keyspace frissítve|Darabszám|Darabszám|Cassandra Keyspace frissítve|Erőforrásnév,ApiKind,ApiKindResourceType,IsThroughputRequest|
 |CassandraRequestTöltések|Cassandra kérelmek díjak|Darabszám|Összesen|A Cassandra által benyújtott kérelmekhez felhasznált|APIType,Adatbázisnév,Gyűjteménynév,Terület,Művelettípus,Erőforrástípus|
 |CassandraKéri|Cassandra kérések|Darabszám|Darabszám|Cassandra-kérelmek száma|APIType,Adatbázisnév,Gyűjteménynév,Terület,Művelettípus,Erőforrástípus,Hibakód|
+|CassandraTableDelete|Cassandra tábla törölve|Darabszám|Darabszám|Cassandra tábla törölve|Erőforrásnév,ChildResourceName,apikind,apikindresourcetype,OperationType|
+|CassandraTableThroughputFrissítés|Cassandra tábla átviteli átputja frissítve|Darabszám|Darabszám|Cassandra tábla átviteli átputja frissítve|Erőforrásnév,ChildResourceName,ApiKind,ApiKindResourceType,IsThroughputRequest|
+|CassandraTableUpdate|Cassandra tábla frissítve|Darabszám|Darabszám|Cassandra tábla frissítve|Erőforrásnév,ChildResourceName,ApiKind,ApiKindResourceType,IsThroughputRequest|
 |Fiók létrehozása|Fiók létrehozva|Darabszám|Darabszám|Fiók létrehozva|None|
 |Adathasználat|Adathasználat|Bájt|Összesen|Az 5 perces részletességgel jelentett teljes adathasználat|Gyűjteménynév,Adatbázisnév,Terület|
 |Törlési fiók|Fiók törölve|Darabszám|Darabszám|Fiók törölve|None|
 |DocumentCount (Dokumentumdarab)|Dokumentumok száma|Darabszám|Összesen|Az 5 perces részletességgel jelentett dokumentumok teljes száma|Gyűjteménynév,Adatbázisnév,Terület|
 |DocumentQuota (Dokumentumquota)|Dokumentumkvóta|Bájt|Összesen|Az 5 perces részletességgel jelentett teljes tárolási kvóta|Gyűjteménynév,Adatbázisnév,Terület|
+|GremlinDatabaseTörlés|Gremlin adatbázis törölve|Darabszám|Darabszám|Gremlin adatbázis törölve|Erőforrásnév,apikind,apikindresourcetype,OperationType|
+|GremlinDatabaseThroughputFrissítés|Gremlin adatbázis átviteli áteresztőáltal frissítve|Darabszám|Darabszám|Gremlin adatbázis átviteli áteresztőáltal frissítve|Erőforrásnév,ApiKind,ApiKindResourceType,IsThroughputRequest|
+|GremlinDatabaseFrissítés|Gremlin adatbázis frissítve|Darabszám|Darabszám|Gremlin adatbázis frissítve|Erőforrásnév,ApiKind,ApiKindResourceType,IsThroughputRequest|
+|GremlinGraphTörlés|Gremlin graph törölve|Darabszám|Darabszám|Gremlin graph törölve|Erőforrásnév,ChildResourceName,apikind,apikindresourcetype,OperationType|
+|GremlinGraphThroughputFrissítés|Gremlin Graph átviteli áteresztőáltal frissítve|Darabszám|Darabszám|Gremlin Graph átviteli áteresztőáltal frissítve|Erőforrásnév,ChildResourceName,ApiKind,ApiKindResourceType,IsThroughputRequest|
+|GremlinGraphFrissítés|Gremlin Graph frissítve|Darabszám|Darabszám|Gremlin Graph frissítve|Erőforrásnév,ChildResourceName,ApiKind,ApiKindResourceType,IsThroughputRequest|
 |Indexhasználat|Index használata|Bájt|Összesen|Az 5 perces részletességgel jelentett teljes indexhasználat|Gyűjteménynév,Adatbázisnév,Terület|
 |Metaadatkérések|Metaadat-kérelmek|Darabszám|Darabszám|Metaadat-kérelmek száma. A Cosmos DB rendszermetaadat-gyűjtést tart fenn minden egyes fiókhoz, amely lehetővé teszi a gyűjtemények, adatbázisok stb.|Adatbázisnév,Gyűjteménynév,Régió,Állapotkód,Szerepkör|
-|MongoRequestCharge|Mongo kérelem díj|Darabszám|Összesen|Mongo kérelem egységek elfogyasztott|Adatbázisnév,Gyűjteménynév,Terület,Parancsnév,Hibakód|
-|MongoKérések|Mongo kérések|Darabszám|Darabszám|Mongo kérelmek száma|Adatbázisnév,Gyűjteménynév,Terület,Parancsnév,Hibakód|
+|MongoCollectionDelete|Mongo Gyűjtemény törölve|Darabszám|Darabszám|Mongo Gyűjtemény törölve|Erőforrásnév,ChildResourceName,apikind,apikindresourcetype,OperationType|
+|MongoCollectionThroughputUpdate|Mongo gyűjtemény átviteli áttörve frissítve|Darabszám|Darabszám|Mongo gyűjtemény átviteli áttörve frissítve|Erőforrásnév,ChildResourceName,ApiKind,ApiKindResourceType,IsThroughputRequest|
+|MongoCollectionUpdate|Mongo Gyűjtemény Frissítve|Darabszám|Darabszám|Mongo Gyűjtemény Frissítve|Erőforrásnév,ChildResourceName,ApiKind,ApiKindResourceType,IsThroughputRequest|
+|MongoDBDatabaseUpdate|Mongo adatbázis frissítve|Darabszám|Darabszám|Mongo adatbázis frissítve|Erőforrásnév,ApiKind,ApiKindResourceType,IsThroughputRequest|
+|MongoDatabaseDelete|Mongo adatbázis törölve|Darabszám|Darabszám|Mongo adatbázis törölve|Erőforrásnév,apikind,apikindresourcetype,OperationType|
+|MongoDatabaseThroughputUpdate|Mongo adatbázis átviteli átállása frissítve|Darabszám|Darabszám|Mongo adatbázis átviteli átállása frissítve|Erőforrásnév,ApiKind,ApiKindResourceType,IsThroughputRequest|
+|MongoRequestCharge|Mongo kérelem díj|Darabszám|Összesen|Mongo kérelem egységek elfogyasztott|Adatbázisnév,Gyűjteménynév,Terület,Parancsnév,Hibakód,Állapot|
+|MongoKérések|Mongo kérések|Darabszám|Darabszám|Mongo kérelmek száma|Adatbázisnév,Gyűjteménynév,Terület,Parancsnév,Hibakód,Állapot|
 |MongoRequestsCount|Mongo kérelem aránya|CountPerSzekszekundum|Átlag|Mongo kérelem száma másodpercenként|Adatbázisnév,Gyűjteménynév,Terület,Parancsnév,Hibakód|
 |MongoRequestsDelete|Mongo törlési kérelem aránya|CountPerSzekszekundum|Átlag|Mongo Delete kérés másodpercenként|Adatbázisnév,Gyűjteménynév,Terület,Parancsnév,Hibakód|
 |MongoRequestsBeszúrás|Mongo kérelembehelyezési arány|CountPerSzekszekundum|Átlag|Mongo beszúrási szám másodpercenként|Adatbázisnév,Gyűjteménynév,Terület,Parancsnév,Hibakód|
 |MongoRequestsQuery|Mongo lekérdezési kérelmek aránya|CountPerSzekszekundum|Átlag|Mongo lekérdezési kérelem másodpercenként|Adatbázisnév,Gyűjteménynév,Terület,Parancsnév,Hibakód|
 |MongoRequestsFrissítés|Mongo frissítési kérelmek aránya|CountPerSzekszekundum|Átlag|Mongo frissítési kérelem másodpercenként|Adatbázisnév,Gyűjteménynév,Terület,Parancsnév,Hibakód|
+|NormalizáltRUFogyasztás|Normalizált VT-felhasználás|Százalék|Maximum|Maximális RU-fogyasztási százalék percenként|Gyűjteménynév,Adatbázisnév,Terület|
 |Kiépítettátviteli|Kiosztott átviteli sebesség|Darabszám|Maximum|Kiosztott átviteli sebesség|Adatbázisnév,Gyűjteménynév|
 |RégióFailover|A régió feladatátvétele|Darabszám|Darabszám|A régió feladatátvétele|None|
 |Régió eltávolítása|Terület eltávolítva|Darabszám|Darabszám|Terület eltávolítva|Régió|
 |ReplikációLatency|P99 replikációs késés|Ezredmásodperc|Átlag|P99 replikációs késés a földrajzi alapú fiók forrás- és célrégiói között|Forrásrégió,Célterület|
+|ServerSideLatency (KiszolgálósideLatency)|Kiszolgálóoldali késés|Ezredmásodperc|Átlag|Kiszolgálóoldali késés|Adatbázisnév,Gyűjteménynév,Terület,Kapcsolatmód,Művelettípus,PublicAPIType|
 |Szolgáltatáselérhetősége|A szolgáltatás elérhetősége|Százalék|Átlag|A fiók kérelmek elérhetősége egy óra, nap vagy hónap részletessége|None|
-|TotalRequestUnits|Összes kérelemegység|Darabszám|Összesen|Felhasznált egységek igénylése|Adatbázisnév,Gyűjteménynév,Régió,Állapotkód,Művelettípus|
-|TotalRequests|Összes kérelem|Darabszám|Darabszám|A benyújtott kérelmek száma|Adatbázisnév,Gyűjteménynév,Régió,Állapotkód,Művelettípus|
+|SqlContainerDelete|Sql tároló törölve|Darabszám|Darabszám|Sql tároló törölve|Erőforrásnév,ChildResourceName,apikind,apikindresourcetype,OperationType|
+|SqlContainerThroughputUpdate|Sql tároló átviteli átputja frissítve|Darabszám|Darabszám|Sql tároló átviteli átputja frissítve|Erőforrásnév,ChildResourceName,ApiKind,ApiKindResourceType,IsThroughputRequest|
+|SqlContainerUpdate|Sql tároló frissítve|Darabszám|Darabszám|Sql tároló frissítve|Erőforrásnév,ChildResourceName,ApiKind,ApiKindResourceType,IsThroughputRequest|
+|SqlDatabaseDelete|Sql adatbázis törölve|Darabszám|Darabszám|Sql adatbázis törölve|Erőforrásnév,apikind,apikindresourcetype,OperationType|
+|SqlDatabaseThroughputUpdate|Sql-adatbázis átviteli átputja frissítve|Darabszám|Darabszám|Sql-adatbázis átviteli átputja frissítve|Erőforrásnév,ApiKind,ApiKindResourceType,IsThroughputRequest|
+|SqlDatabaseUpdate|Sql-adatbázis frissítve|Darabszám|Darabszám|Sql-adatbázis frissítve|Erőforrásnév,ApiKind,ApiKindResourceType,IsThroughputRequest|
+|TableDelete táblatörlése|AzureTable tábla törölve|Darabszám|Darabszám|AzureTable tábla törölve|Erőforrásnév,apikind,apikindresourcetype,OperationType|
+|TableTableThroughputUpdate|AzureTable tábla átviteli átputa frissítve|Darabszám|Darabszám|AzureTable tábla átviteli átputa frissítve|Erőforrásnév,ApiKind,ApiKindResourceType,IsThroughputRequest|
+|Táblafrissítés|AzureTable tábla frissítve|Darabszám|Darabszám|AzureTable tábla frissítve|Erőforrásnév,ApiKind,ApiKindResourceType,IsThroughputRequest|
+|TotalRequestUnits|Összes kérelemegység|Darabszám|Összesen|Felhasznált egységek igénylése|Adatbázisnév,Gyűjteménynév,Régió,Állapotkód,Művelettípus,Állapot|
+|TotalRequests|Összes kérelem|Darabszám|Darabszám|A benyújtott kérelmek száma|Adatbázisnév,Gyűjteménynév,Régió,Állapotkód,Művelettípus,Állapot|
 |UpdateAccountKeys|Fiókkulcsok frissítve|Darabszám|Darabszám|Fiókkulcsok frissítve|Kulcstípus|
 |UpdateAccountNetworkSettings|Fiókhálózati beállítások frissítve|Darabszám|Darabszám|Fiókhálózati beállítások frissítve|None|
 |UpdateAccountReplicationSettings|A fiókreplikáció beállításai frissítve|Darabszám|Darabszám|A fiókreplikáció beállításai frissítve|None|
+|UpdateDiagnosticsSettings|Fiókdiagnosztikai beállítások frissítve|Darabszám|Darabszám|Fiókdiagnosztikai beállítások frissítve|DiagnosticSettingsName,ResourceGroupName|
 
 
 
@@ -1023,6 +1107,21 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |DroppedEventCount (Ejtési eseményszám)|Eldobott események|Darabszám|Összesen|Az esemény-előfizetéshez tartozó összes eldobott esemény|DropReason,EventSubscriptionName|
 |DeadLetteredCount (HalottletteredCount)|Kézbesített levéllel írt események|Darabszám|Összesen|Az esemény-előfizetésnek megfelelő kézbesítésre kész ként írt események összesen|Kézbesítési levélok címere,EventSubscriptionName|
 
+## <a name="microsofteventgridsystemtopics"></a>Microsoft.EventGrid/systemTopics
+
+|Metrika|Metrikus megjelenítendő név|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|---|---|---|---|---|---|
+|PublishSuccessCount (Közzétételsikerszáma)|Közzétett események|Darabszám|Összesen|A témakörben közzétett események összesen|None|
+|PublishFailCount|Sikertelen események közzététele|Darabszám|Összesen|Az összes eseményt nem sikerült közzétenni ebben a témakörben|Hibatípus,Hiba|
+|Nem egyező eseményszám|Páratlan események|Darabszám|Összesen|A témakörhöz tartozó esemény-előfizetések egyikének sem megfelelő összes esemény|None|
+|KözzétételSikerLatencyInM-ek|Sikeres késés közzététele|Ezredmásodperc|Összesen|Sikeres késés közzététele ezredmásodpercben|None|
+|MatchedEventCount (Egyezésű eseményszám)|Egyező események|Darabszám|Összesen|Az esemény-előfizetéshez illeszkedő összes esemény|EventSubscriptionName|
+|DeliveryAttemptFailCount|Sikertelen kézbesítési események|Darabszám|Összesen|Az összes esemény nem sikerült az esemény-előfizetéshez|Hiba,Hibatípus,EventSubscriptionName|
+|DeliverySuccessCount (DeliverySuccessCount)|Kézbesített események|Darabszám|Összesen|Az esemény-előfizetéshez kézbesített események összesen|EventSubscriptionName|
+|DestinationProcessingDurationinms|Cél feldolgozási időtartama|Ezredmásodperc|Átlag|Célfeldolgozás időtartama ezredmásodpercben|EventSubscriptionName|
+|DroppedEventCount (Ejtési eseményszám)|Eldobott események|Darabszám|Összesen|Az esemény-előfizetéshez tartozó összes eldobott esemény|DropReason,EventSubscriptionName|
+|DeadLetteredCount (HalottletteredCount)|Kézbesített levéllel írt események|Darabszám|Összesen|Az esemény-előfizetésnek megfelelő kézbesítésre kész ként írt események összesen|Kézbesítési levélok címere,EventSubscriptionName|
+
 ## <a name="microsofteventgrideventsubscriptions"></a>Microsoft.EventGrid/eventSubscriptions
 
 |Metrika|Metrikus megjelenítendő név|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
@@ -1042,6 +1141,7 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |PublishFailCount|Sikertelen események közzététele|Darabszám|Összesen|Az összes eseményt nem sikerült közzétenni ebben a témakörben|Hibatípus,Hiba|
 |Nem egyező eseményszám|Páratlan események|Darabszám|Összesen|A témakörhöz tartozó esemény-előfizetések egyikének sem megfelelő összes esemény|None|
 |KözzétételSikerLatencyInM-ek|Sikeres késés közzététele|Ezredmásodperc|Összesen|Sikeres késés közzététele ezredmásodpercben|None|
+
 
 
 
@@ -1106,6 +1206,7 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |Rögzítettbájt|Rögzített bájtok.|Bájt|Összesen|Rögzített bájtok a Microsoft.EventHub hoz.|None|
 |CPU|CPU|Százalék|Maximum|Az Eseményközpont-fürt processzorának kihasználtsága százalékban|Szerepkör|
 |Elérhető memória|Szabad memória|Százalék|Maximum|Az Event Hub Cluster számára rendelkezésre álló memória a teljes memória százalékában.|Szerepkör|
+|Méret|EventHub mérete bájtban.|Bájt|Átlag|EventHub mérete bájtban.|Szerepkör|
 
 
 ## <a name="microsofthdinsightclusters"></a>Microsoft.HDInsight/fürtök
@@ -1126,9 +1227,6 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |Megfigyeltkapacitás|Megfigyelt kapacitás|Darabszám|Átlag|Az automatikus skálázásnak jelentett kapacitás, amikor végrehajtotta.|None|
 |ScaleActionsinitiated|Kezdeményezett műveletek méretezése|Darabszám|Összesen|A méretezési művelet iránya.|Méretezésirányirány|
 
-
-
-
 ## <a name="microsoftinsightscomponents"></a>Microsoft.Insights/Components
 
 |Metrika|Metrikus megjelenítendő név|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
@@ -1141,9 +1239,9 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |browserTimings/receiveDuration|Válaszidő fogadása|Ezredmásodperc|Átlag|Az első és az utolsó bájt között vagy a kapcsolat lekapcsolásáig töltött idő.|None|
 |browserTimings/sendDuration|Kérés ideje elküldése|Ezredmásodperc|Átlag|A hálózati kapcsolat és az első bájt fogadása között töltött idő.|None|
 |browserTimings/totalDuration|A böngészőoldal betöltési ideje|Ezredmásodperc|Átlag|A felhasználói kérelemtől a DOM-ig, a stíluslapoktól, a szkriptektől és a képektől kezdve betöltődnek.|None|
-|függőségek/számlálás|Függőségi hívások|Darabszám|Darabszám|Az alkalmazás által a külső erőforrásokhoz kezdeményezett hívások száma.|függőség/típus,függőség/teljesítményBucket,függőség/sikeresség,függőség/cél,művelet/szintetikus,felhő/roleInstance,felhő/roleName|
-|függőségek/időtartam|Függőség időtartama|Ezredmásodperc|Átlag|Az alkalmazás által a külső erőforrásokhoz intézett hívások időtartama.|függőség/típus,függőség/teljesítményBucket,függőség/sikeresség,függőség/cél,művelet/szintetikus,felhő/roleInstance,felhő/roleName|
-|függőségek/sikertelen|Függőségi hívás hibái|Darabszám|Darabszám|Az alkalmazás által külső erőforrásokhoz kezdeményezett sikertelen függőségi hívások száma.|függőség/típus,függőség/teljesítményBucket,függőség/sikeresség,függőség/cél,művelet/szintetikus,felhő/roleInstance,felhő/roleName|
+|függőségek/számlálás|Függőségi hívások|Darabszám|Darabszám|Az alkalmazás által a külső erőforrásokhoz kezdeményezett hívások száma.|függőség/típus,függőség/teljesítményBucket,függőség/siker,függőség/cél,függőség/eredményKód,művelet/szintetikus,felhő/roleInstance,felhő/szerepkörnév|
+|függőségek/időtartam|Függőség időtartama|Ezredmásodperc|Átlag|Az alkalmazás által a külső erőforrásokhoz intézett hívások időtartama.|függőség/típus,függőség/teljesítményBucket,függőség/siker,függőség/cél,függőség/eredményKód,művelet/szintetikus,felhő/roleInstance,felhő/szerepkörnév|
+|függőségek/sikertelen|Függőségi hívás hibái|Darabszám|Darabszám|Az alkalmazás által külső erőforrásokhoz kezdeményezett sikertelen függőségi hívások száma.|függőség/típus,függőség/teljesítményBucket,függőség/siker,függőség/cél,függőség/eredményKód,művelet/szintetikus,felhő/roleInstance,felhő/szerepkörnév|
 |oldalmegtekintések/számlálók|Oldalnézetek|Darabszám|Darabszám|Az oldalmegtekintések száma.|művelet/szintetikus,felhő/roleName|
 |oldalMegtekintések/időtartam|Oldalnézet betöltési ideje|Ezredmásodperc|Átlag|Oldalnézet betöltési ideje|művelet/szintetikus,felhő/roleName|
 |performanceCounters/requestExecutionTime|HTTP-kérelem végrehajtási ideje|Ezredmásodperc|Átlag|A legutóbbi kérelem végrehajtási ideje.|felhő/roleInstance|
@@ -1164,6 +1262,20 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |kivételek/kiszolgáló|Kiszolgálói kivételek|Darabszám|Darabszám|A kiszolgálóalkalmazásban felnem fogott kivételek száma.|ügyfél/isServer,felhő/roleName,cloud/roleInstance|
 |nyomok/szám|Hívásláncok|Darabszám|Darabszám|Nyomkövetési dokumentumok száma|trace/severityLevel,operation/synthetic,cloud/roleName,cloud/roleInstance|
 
+
+## <a name="microsoftiotcentraliotapps"></a>Microsoft.IoTCentral/IoTApps
+
+|Metrika|Metrikus megjelenítendő név|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|---|---|---|---|---|---|
+|connectedDeviceCount (connectedDeviceCount)|Csatlakoztatott eszközök összesen|Darabszám|Átlag|Az IoT Centralhoz csatlakoztatott eszközök száma|None|
+|c2d.property.read.success|Sikeres eszköztulajdonság-olvasás az IoT-központból|Darabszám|Összesen|Az IoT Central-ból kezdeményezett összes sikeres tulajdonságolvasás száma|None|
+|c2d.property.read.failure|Sikertelen eszköztulajdonság-olvasás az IoT-központból|Darabszám|Összesen|Az IoT Centraltól kezdeményezett összes sikertelen tulajdonságolvasás oka|None|
+|d2c.property.read.success|Sikeres eszköztulajdonság-olvasás eszközökről|Darabszám|Összesen|Az eszközökről kezdeményezett összes sikeres tulajdonságolvasás száma|None|
+|d2c.property.read.failure|Az eszközökről beolvasás sikertelen eszköztulajdonság-olvasás|Darabszám|Összesen|Az eszközökről kezdeményezett összes sikertelen tulajdonságolvasás oka|None|
+|c2d.property.update.success|Sikeres eszköztulajdonság-frissítések az IoT Centraltól|Darabszám|Összesen|Az IoT Centraltól kezdeményezett összes sikeres tulajdonságfrissítés száma|None|
+|c2d.property.update.failure|Sikertelen eszköztulajdonság-frissítések az IoT Centraltól|Darabszám|Összesen|Az IoT Centraltól kezdeményezett sikertelen tulajdonságfrissítések száma|None|
+|d2c.property.update.success|Sikeres eszköztulajdonság-frissítések eszközökről|Darabszám|Összesen|Az eszközökről kezdeményezett összes sikeres tulajdonságfrissítés száma|None|
+|d2c.property.update.failure|Sikertelen eszköztulajdonság-frissítések eszközökről|Darabszám|Összesen|Az eszközökről kezdeményezett sikertelen tulajdonságfrissítések száma|None|
 
 
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
@@ -1189,10 +1301,10 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |EseményekProcessedForEventHubs|Feldolgozott események (esemény-/IoT-központok esetén)|Darabszám|Összesen|A fürt által az Event/IoT Hubból történő betöltéskor feldolgozott események száma|EventStatus|
 |Betöltéseredménye|Lenyelési eredmény|Darabszám|Darabszám|Lenyelési műveletek száma|Betöltéseredményrészletei|
 |CPU|CPU|Százalék|Átlag|CPU-kihasználtsági szint|None|
-|ContinuousExportNumOfRecordsExportált|Folyamatos exportálás – az exportált rekordok száma|Darabszám|Összesen|Az exportálási művelet során írt összes tárolási műtermékhez exportált és kilőtt rekordok száma|None|
+|ContinuousExportNumOfRecordsExportált|Folyamatos exportálás – az exportált rekordok száma|Darabszám|Összesen|Az exportálási művelet során írt összes tárolási műtermékhez exportált és kilőtt rekordok száma|ContinuousExportName,Adatbázis|
 |Exportálás Kihasználása|Kihasználtság exportálása|Százalék|Maximum|Exportálás kihasználtsága|None|
 |Folyamatos exportálásfüggő száma|Folyamatos exportálás függőben lévő száma|Darabszám|Maximum|A végrehajtásra kész függőben lévő folyamatos exportálási feladatok száma|None|
-|ContinuousExportMaxLatenessMinutes|Folyamatos exportálási maximális késési perc|Darabszám|Maximum|A végrehajtásra váró és kivitelre kész folyamatos export okainak maximális késése percben|None|
+|ContinuousExportMaxLatenessMinutes|Folyamatos exportálási maximális késés|Darabszám|Maximum|A fürt folyamatos exportálási feladatai által jelentett késés (percben)|None|
 |ContinuousExportResult|Folyamatos exportálás eredménye|Darabszám|Darabszám|Azt jelzi, hogy a folyamatos exportálás sikeres vagy sikertelen volt-e.|ContinuousExportName,Eredmény,Adatbázis|
 |StreamingIngestIdőtartam|Streamelési idő|Ezredmásodperc|Átlag|Streamelési időtartam ezredmásodpercben|None|
 |StreamingIngestDataRate|A betöltési adatok átviteli sebessége|Darabszám|Átlag|A betöltési adatsebesség streamelése (MB másodpercenként)|None|
@@ -1202,6 +1314,7 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |TotalNumberOfThrottledQueries|A szabályozott lekérdezések teljes száma|Darabszám|Összesen|A szabályozott lekérdezések teljes száma|None|
 |TotalNumberOfThrottledParancsok|A szabályozott parancsok száma összesen|Darabszám|Összesen|A szabályozott parancsok száma összesen|CommandType (CommandType)|
 |TotalNumberOfExtents|A terjedések száma összesen|Darabszám|Összesen|Az adatterjedések teljes száma|None|
+|InstanceCount (Példányszám)|Példányszám|Darabszám|Átlag|Példányok teljes száma|None|
 
 
 ## <a name="microsoftlogicworkflows"></a>Microsoft.Logic/munkafolyamatok
@@ -1242,11 +1355,6 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |BillingUsageNativeOperation művelet|Natív műveletvégrehajtás számlázási használata|Darabszám|Összesen|A számlázott natív műveletvégrehajtások száma.|None|
 |BillingUsageStandardConnector|Számlázási használat szabványos összekötő-végrehajtások esetén|Darabszám|Összesen|A számlázott szabványos összekötő-végrehajtások száma.|None|
 |BillingUsageConsumptionConsumption|Számlázási használat a tárolási felhasználás végrehajtásaihez|Darabszám|Összesen|A számlázott tárfelhasználás-végrehajtások száma.|None|
-|BillingUsageNativeOperation művelet|Natív műveletvégrehajtás számlázási használata|Darabszám|Összesen|A számlázott natív műveletvégrehajtások száma.|None|
-|BillingUsageStandardConnector|Számlázási használat szabványos összekötő-végrehajtások esetén|Darabszám|Összesen|A számlázott szabványos összekötő-végrehajtások száma.|None|
-|BillingUsageConsumptionConsumption|Számlázási használat a tárolási felhasználás végrehajtásaihez|Darabszám|Összesen|A számlázott tárfelhasználás-végrehajtások száma.|None|
-
-
 
 ## <a name="microsoftlogicintegrationserviceenvironments"></a>Microsoft.Logic/integrationServiceEnvironments
 
@@ -1289,15 +1397,26 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 
 |Metrika|Metrikus megjelenítendő név|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
+|Megszakított futtatások|Megszakított futtatások|Darabszám|Összesen|A munkaterülethez megszakított futtatások száma|Eset,RunType,Közzétett folyamatkörnyezetazonosító,Számítási típus,PipelineStepType|
+|Kért futtatások megszakítása|Kért futtatások megszakítása|Darabszám|Összesen|Azon futtatások száma, amelyekben a munkaterülethez megszakítást kértek|Eset,RunType,Közzétett folyamatkörnyezetazonosító,Számítási típus,PipelineStepType|
 |Befejezett futtatások|Befejezett futtatások|Darabszám|Összesen|A munkaterület sikeresen befejezett futtatásainak száma|Eset,RunType,Közzétett folyamatkörnyezetazonosító,Számítási típus,PipelineStepType|
-|Elkezdett futtatások|Elkezdett futtatások|Darabszám|Összesen|A munkaterülethez megkezdett futtatások száma|Eset,RunType,Közzétett folyamatkörnyezetazonosító,Számítási típus,PipelineStepType|
 |Sikertelen futtatások|Sikertelen futtatások|Darabszám|Összesen|A munkaterület sikertelen futásainak száma|Eset,RunType,Közzétett folyamatkörnyezetazonosító,Számítási típus,PipelineStepType|
+|Futások véglegesítése|Futások véglegesítése|Darabszám|Összesen|A munkaterület véglegesítési állapotába lépett futtatások száma|Eset,RunType,Közzétett folyamatkörnyezetazonosító,Számítási típus,PipelineStepType|
+|Nem válaszol fut|Nem válaszol fut|Darabszám|Összesen|A munkaterületre nem válaszoló futtatások száma|Eset,RunType,Közzétett folyamatkörnyezetazonosító,Számítási típus,PipelineStepType|
+|Nem indított futtatások|Nem indított futtatások|Darabszám|Összesen|A munkaterület indítása in not started állapotban lévő futtatások száma|Eset,RunType,Közzétett folyamatkörnyezetazonosító,Számítási típus,PipelineStepType|
+|Futások előkészítése|Futások előkészítése|Darabszám|Összesen|A munkaterületre készülő futtatások száma|Eset,RunType,Közzétett folyamatkörnyezetazonosító,Számítási típus,PipelineStepType|
+|Kiépítési futtatások|Kiépítési futtatások|Darabszám|Összesen|A munkaterülethez kiépített futtatások száma|Eset,RunType,Közzétett folyamatkörnyezetazonosító,Számítási típus,PipelineStepType|
+|Várólistán lévő futtatások|Várólistán lévő futtatások|Darabszám|Összesen|A munkaterület várólistára helyezett futásainak száma|Eset,RunType,Közzétett folyamatkörnyezetazonosító,Számítási típus,PipelineStepType|
+|Elkezdett futtatások|Elkezdett futtatások|Darabszám|Összesen|A munkaterülethez megkezdett futtatások száma|Eset,RunType,Közzétett folyamatkörnyezetazonosító,Számítási típus,PipelineStepType|
+|Kezdő futtatások|Kezdő futtatások|Darabszám|Összesen|A munkaterülethez megkezdett futtatások száma|Eset,RunType,Közzétett folyamatkörnyezetazonosító,Számítási típus,PipelineStepType|
+|Hibák|Hibák|Darabszám|Összesen|Futtatási hibák száma ezen a munkaterületen|Forgatókönyv|
+|Figyelmeztetések|Figyelmeztetések|Darabszám|Összesen|A futtatási figyelmeztetések száma ebben a munkaterületen|Forgatókönyv|
 |Sikeres modellregisztika|Sikeres modellregisztika|Darabszám|Összesen|Az ebben a munkaterületen sikeres modellregisztrációk száma|Forgatókönyv|
 |A modellregiszter nem sikerült|A modellregiszter nem sikerült|Darabszám|Összesen|A munkaterületen meghibásodott modellregisztrációk száma|Eset,StatusCode|
 |Modell üzembe helyezése elindítva|Modell üzembe helyezése elindítva|Darabszám|Összesen|Az ebben a munkaterületen elindított modelltelepítések száma|Forgatókönyv|
 |A modell telepítése sikerült|A modell telepítése sikerült|Darabszám|Összesen|Az ebben a munkaterületen sikeres modelltelepítések száma|Forgatókönyv|
 |A modell telepítése sikertelen|A modell telepítése sikertelen|Darabszám|Összesen|A munkaterületen meghibásodott modelltelepítések száma|Eset,StatusCode|
-|Összes csomópont|Összes csomópont|Darabszám|Átlag|Az összes csomópont száma. Ez az összeg tartalmaz néhány aktív csomópontot, idle csomópontokat, használhatatlan csomópontokat, preempted csomópontokat, csomópontok elhagyását|Eset,Fürtnév|
+|Összes csomópont|Összes csomópont|Darabszám|Átlag|Az összes csomópont száma. Ez az összeg tartalmaz néhány aktív csomópontot, idle csomópontokat, használhatatlan csomópontokat, előre megadott csomópontokat, Csomópontok elhagyását|Eset,Fürtnév|
 |Aktív csomópontok|Aktív csomópontok|Darabszám|Átlag|Acitve csomópontok száma. Ezek azok a csomópontok, amelyek aktívan futtatnak egy feladatot.|Eset,Fürtnév|
 |Tétlen csomópontok|Tétlen csomópontok|Darabszám|Átlag|Az alacsony annektcsomópontok száma. Az idle csomópontok azok a csomópontok, amelyek nem futtatnak semmilyen feladatot, de el fogadhatnak új feladatot, ha rendelkezésre állnak.|Eset,Fürtnév|
 |Használhatatlan csomópontok|Használhatatlan csomópontok|Darabszám|Átlag|Használhatatlan csomópontok száma. A használhatatlan csomópontok nem működnek valamilyen megoldhatatlan probléma miatt. Az Azure újrahasznosítja ezeket a csomópontokat.|Eset,Fürtnév|
@@ -1344,13 +1463,21 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |StreamingPolicyCount (StreamPolicyCount)|Streamelési irányelvek száma|Darabszám|Átlag|Hány streamelési házirend van már létrehozva az aktuális médiaszolgáltatás-fiókban?|None|
 |StreamingPolicyQuotaUsedSzázalék|A streamelési szabályzat használt kvótája százalékban|Százalék|Átlag|Az aktuális médiaszolgáltatás-fiókban használt streamelési házirend százaléka|None|
 
+
+## <a name="microsoftmixedrealityremoterenderingaccounts"></a>Microsoft.MixedReality/remoteRenderingAccounts
+
+|Metrika|Metrikus megjelenítendő név|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|---|---|---|---|---|---|
+|EszközökKonvertálva|Átváltott eszközök|Darabszám|Összesen|Az átváltott eszközök teljes száma|AppId,ResourceId,SDKVersion|
+|ActiveRenderingSessions|Aktív renderelési munkamenetek|Darabszám|Összesen|Az aktív renderelési munkamenetek teljes száma|AppId,ResourceId,SessionType,SDKVersion|
+
 ## <a name="microsoftnetappnetappaccountscapacitypoolsvolumes"></a>Microsoft.NetApp/netAppAccounts/capacityPools/volumes
 
 |Metrika|Metrikus megjelenítendő név|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |Átlagos olvasási átkés|Átlagos olvasási késleltetés|Ezredmásodperc|Átlag|Átlagos olvasási késleltetés műveletenként ezredmásodpercben|None|
 |Átlagos íráskésleltetés|Átlagos írási késés|Ezredmásodperc|Átlag|Átlagos írási késés műveletenként ezredmásodpercben|None|
-|VolumeLogicalSize (VolumeLogicalSize)|Kötet logikai mérete|Bájt|Átlag|A kötet logikai mérete (használt bájt)|None|
+|VolumeLogicalSize (VolumeLogicalSize)|Felhasznált kötet mérete|Bájt|Átlag|A kötet logikai mérete (használt bájt)|None|
 |VolumeSnapshotSize (VolumeSnapshotSize)|Kötet pillanatképének mérete|Bájt|Átlag|A kötet összes pillanatképének mérete|None|
 |ReadIops között|Olvasás iops|CountPerSzekszekundum|Átlag|Olvasás be/ki műveletek másodpercenként|None|
 |WriteIops (WriteIops)|Iops írása|CountPerSzekszekundum|Átlag|Írásbe/ki műveletek másodpercenként|None|
@@ -1359,8 +1486,8 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 
 |Metrika|Metrikus megjelenítendő név|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|Kötetkészletfelosztott|Használt kötetkészlet|Bájt|Átlag|A készlet felosztott használt mérete|None|
-|VolumePoolTotalLogicalSize|Kötetkészlet teljes logikai mérete|Bájt|Átlag|A készlethez tartozó összes kötet logikai méretének összege|None|
+|Kötetkészletfelosztott|A kötetmérethez rendelt készlet|Bájt|Átlag|A készlet felosztott használt mérete|None|
+|VolumePoolTotalLogicalSize|Készlet felhasznált mérete|Bájt|Átlag|A készlethez tartozó összes kötet logikai méretének összege|None|
 
 ## <a name="microsoftnetworknetworkinterfaces"></a>Microsoft.Network/networkInterfaces
 
@@ -1383,7 +1510,6 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |SnatConnectionCount (SnatConnectionCount)|SNAT-kapcsolatok száma|Darabszám|Összesen|Az időszakon belül létrehozott új SNAT-kapcsolatok teljes száma|ElőtérIP-cím,HáttérvégpontIP-cím,ConnectionState|
 |FelosztottSnatPorts|Lefoglalt SNAT-portok (előzetes verzió)|Darabszám|Összesen|Az időszakon belül lefoglalt SNAT-portok teljes száma|ElőtérIP-cím,BackendIPAddress,ProtocolType,IsAwaitingRemoval|
 |UsedSnatPorts|Használt SNAT-portok (előzetes verzió)|Darabszám|Összesen|Az időtartamon belül felhasznált SNAT-portok teljes száma|ElőtérIP-cím,BackendIPAddress,ProtocolType,IsAwaitingRemoval|
-
 
 ## <a name="microsoftnetworkdnszones"></a>Microsoft.Network/dnszones
 
@@ -1458,8 +1584,11 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |Sikertelen kérések|Sikertelen kérelmek|Darabszám|Összesen|Az Application Gateway által kézbesített sikertelen kérelmek száma|Háttérvégpont-beállításkészlet|
 |ResponseStatus (Válasz állapota)|Válasz állapota|Darabszám|Összesen|Az Application Gateway által visszaadott http-válaszállapot|httpstatuscsoport|
 |Jelenlegi kapcsolatok|Jelenlegi kapcsolatok|Darabszám|Összesen|Az Application Gateway-rel létrehozott aktuális kapcsolatok száma|None|
+|NewConnectionsPerSecond|Új kapcsolatok másodpercenként|CountPerSzekszekundum|Átlag|Az Application Gateway alkalmazásátjáróval létrehozott új kapcsolatok másodpercenként|None|
 |Cpukihasználtság|PROCESSZOR-kihasználtság|Százalék|Átlag|Az alkalmazásátjáró aktuális processzorkihasználtsága|None|
 |Kapacitásegységek|Aktuális kapacitásegységek|Darabszám|Átlag|Felhasznált kapacitásegységek|None|
+|FixedBillableCapacityUnits|Rögzített számlázható kapacitásegységek|Darabszám|Átlag|A felszámított minimális kapacitásegységek|None|
+|Becsültszámlázott kapacitásegységek|Becsült számlázott kapacitásegységek|Darabszám|Átlag|A felszámítandó becsült kapacitásegységek|None|
 |Számítási egységek|Aktuális számítási egységek|Darabszám|Átlag|Felhasznált számítási egységek|None|
 |HáttérvégpontVálaszállapota|Háttérválaszok állapota|Darabszám|Összesen|A háttértagok által létrehozott HTTP-válaszkódok száma. Ez nem tartalmazza az Application Gateway által létrehozott válaszkódokat.|Háttérvégpont-kiszolgáló,háttérsor,háttérrendszerHttpSetting,HttpStatusGroup|
 |TlsProtocol|Ügyfél TLS protokollja|Darabszám|Összesen|Az alkalmazásátjáróval kapcsolatot létrehozó ügyfél által kezdeményezett TLS- és nem TLS-kérelmek száma. A TLS protokoll eloszlásának megtekintéséhez szűrje a TLS protokoll dimenziója szerint.|Figyelő,TlsProtocol|
@@ -1473,6 +1602,7 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |Egyezésű ekszáma|Webalkalmazás-tűzfal v1 teljes szabályelosztása|Darabszám|Összesen|Webalkalmazás-tűzfal v1 teljes szabályelosztása a bejövő forgalomhoz|Szabálycsoport,Szabályazonosító|
 |BlockedCount (BlockedCount)|Webalkalmazás-tűzfal v1 letiltott kérelmek szabályának elosztása|Darabszám|Összesen|Webalkalmazás-tűzfal v1 blokkolt kérelmek szabály ának terjesztése|Szabálycsoport,Szabályazonosító|
 |BlockedReqCount között|Webalkalmazás-tűzfal v1 blokkolt kérelmek száma|Darabszám|Összesen|Webalkalmazás-tűzfal v1 blokkolt kérelmek száma|None|
+
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.Network/virtualNetworkGateways
 
@@ -1500,6 +1630,8 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |LineProtocol (LineProtocol)|LineProtocol (LineProtocol)|Darabszám|Átlag|A port vonalprotokoll-állapota|Hivatkozás|
 |PortBitsInPerSecond|BitsInPerSz|CountPerSzekszekundum|Átlag|Bitek be- ésmásodpercenként|Hivatkozás|
 |PortBitsOutPerSecond|BitsOutPerSz|CountPerSzekszekundum|Átlag|Bitek az Azure másodpercenkénti kijutása|Hivatkozás|
+
+
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.Network/expressRouteCircuits
 
@@ -1568,6 +1700,18 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |BackendHealthPercentage|Háttér-állapot százalékos aránya|Százalék|Átlag|A HTTP/S-proxyés a háttérrendszerek sikeres állapotminta százalékos aránya|Háttér-, háttérsor-készlet|
 |WebApplicationFirewallRequestCount|Webalkalmazás tűzfalának kérelmek száma|Darabszám|Összesen|A webalkalmazás-tűzfal által feldolgozott ügyfélkérelmek száma|Házirendnév,Szabálynév,Művelet|
 
+
+## <a name="microsoftnetworkprivatednszones"></a>Microsoft.Network/privateDnsZones
+
+|Metrika|Metrikus megjelenítendő név|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|---|---|---|---|---|---|
+|QueryVolume (Lekérdezési kötet)|Lekérdezés imtora|Darabszám|Összesen|A privát DNS-zónához megjelenített lekérdezések száma|None|
+|Rekordsor száma|Rekordkészlet száma|Darabszám|Maximum|Rekordkészletek száma egy privát DNS-zónában|None|
+|RecordSetCapacityKihasználtság|Rekordkészlet kapacitáskihasználtsága|Százalék|Maximum|A rekordkészlet-kapacitás nak a magánDNS-zóna által használt százaléka|None|
+|VirtualNetworkLinkCount (VirtualNetworkLinkCount)|Virtuális hálózati kapcsolatok száma|Darabszám|Maximum|Magán DNS-zónához kapcsolt virtuális hálózatok száma|None|
+|VirtualNetworkLinkKapacitásKihasználás|Virtuális hálózati kapcsolat kapacitáskihasználása|Százalék|Maximum|A virtuális hálózati kapcsolat kapacitásának a magándns-zóna által használt százaléka|None|
+|VirtualNetworkWithRegistrationLinkCount|Virtuális hálózati regisztrációs kapcsolatok száma|Darabszám|Maximum|Magán DNS-zónához kapcsolt virtuális hálózatok száma automatikus regisztráció engedélyezve|None|
+|VirtualNetworkWithRegistrationCapacityKihasználás|Virtuális hálózati regisztrációs kapcsolat kapacitáskihasználása|Százalék|Maximum|A virtuális hálózati kapcsolat százaléka a magánDNS-zóna által használt automatikus regisztrációs kapacitással|None|
 
 ## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft.NotificationHubs/Namespaces/NotificationHubs
 
@@ -1693,20 +1837,12 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |Average_Size lapozófájlokban tárolva|Lapozófájlokban tárolt méret|Darabszám|Átlag|Average_Size lapozófájlokban tárolva|Számítógép,Objektumnév,Példánynév,CounterPath,Forrásrendszer|
 |Average_Uptime|Uptime|Darabszám|Átlag|Average_Uptime|Számítógép,Objektumnév,Példánynév,CounterPath,Forrásrendszer|
 |Average_Users|Felhasználók|Darabszám|Átlag|Average_Users|Számítógép,Objektumnév,Példánynév,CounterPath,Forrásrendszer|
-|Average_Avg. olvasási idő (mp/olvasás) teljesítményszámlálóhoz.|Átlagos lemezmásodperc/olvasás|Darabszám|Átlag|Average_Avg. olvasási idő (mp/olvasás) teljesítményszámlálóhoz.|Számítógép,Objektumnév,Példánynév,CounterPath,Forrásrendszer|
-|Average_Avg. írási idő (mp/írás) teljesítményszámlálóhoz.|Átlagos lemez másodperc/írás|Darabszám|Átlag|Average_Avg. írási idő (mp/írás) teljesítményszámlálóhoz.|Számítógép,Objektumnév,Példánynév,CounterPath,Forrásrendszer|
 |Average_Current lemezvárólista hossza|Az aktuális lemezvárólista hossza|Darabszám|Átlag|Average_Current lemezvárólista hossza|Számítógép,Objektumnév,Példánynév,CounterPath,Forrásrendszer|
-|Average_Disk olvasás/mp|Lemezolvasás/mp|Darabszám|Átlag|Average_Disk olvasás/mp|Számítógép,Objektumnév,Példánynév,CounterPath,Forrásrendszer|
-|Average_Disk átvitelek/mp|Lemezátvitel/mp|Darabszám|Átlag|Average_Disk átvitelek/mp|Számítógép,Objektumnév,Példánynév,CounterPath,Forrásrendszer|
-|Average_Disk írások/mp|Lemezírás/mp|Darabszám|Átlag|Average_Disk írások/mp|Számítógép,Objektumnév,Példánynév,CounterPath,Forrásrendszer|
-|Average_Free megabájt|Ingyenes Megabájt|Darabszám|Átlag|Average_Free megabájt|Számítógép,Objektumnév,Példánynév,CounterPath,Forrásrendszer|
-|Average_% szabad hely|Szabad terület %-os|Darabszám|Átlag|Average_% szabad hely|Számítógép,Objektumnév,Példánynév,CounterPath,Forrásrendszer|
 |Average_Available MByte|Elérhető MBytes|Darabszám|Átlag|Average_Available MByte|Számítógép,Objektumnév,Példánynév,CounterPath,Forrásrendszer|
 |Average_%, használatban lévő lekötött bájtok|Használatban lévő lekötött bájtok %-a|Darabszám|Átlag|Average_%, használatban lévő lekötött bájtok|Számítógép,Objektumnév,Példánynév,CounterPath,Forrásrendszer|
 |Average_Bytes fogadott/mp|Másodpercenként fogadott bájtok száma|Darabszám|Átlag|Average_Bytes fogadott/mp|Számítógép,Objektumnév,Példánynév,CounterPath,Forrásrendszer|
 |Average_Bytes elküldve/mp|Küldött bájtok/mp|Darabszám|Átlag|Average_Bytes elküldve/mp|Számítógép,Objektumnév,Példánynév,CounterPath,Forrásrendszer|
 |Average_Bytes összesen/mp|Összes bájt/mp|Darabszám|Átlag|Average_Bytes összesen/mp|Számítógép,Objektumnév,Példánynév,CounterPath,Forrásrendszer|
-|Average_%-os processzoridő|A processzor kihasználtsága (%)|Darabszám|Átlag|Average_%-os processzoridő|Számítógép,Objektumnév,Példánynév,CounterPath,Forrásrendszer|
 |Average_Processor várólista hossza|Processzorvárólista hossza|Darabszám|Átlag|Average_Processor várólista hossza|Számítógép,Objektumnév,Példánynév,CounterPath,Forrásrendszer|
 |Szívverés|Szívverés|Darabszám|Összesen|Szívverés|Számítógép,OSType,Verzió,Forrásszámítógépazonosító|
 |Frissítés|Frissítés|Darabszám|Átlag|Frissítés|Számítógép,Termék,Besorolás,UpdateState,Választható,Jóváhagyott|
@@ -1727,6 +1863,7 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |IngressTrafficRate (BeressTrafficRate)|Be- és forgalom mértéke|BitsPerSz|Átlag|Bejövő forgalom sebessége bit/másodpercben|ConnectionId azonosító|
 |EgressTrafficRate|Kimenő forgalom aránya|BitsPerSz|Átlag|Kimenő forgalom sebessége bit/másodpercben|ConnectionId azonosító|
 
+
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedikált/kapacitások
 
 |Metrika|Metrikus megjelenítendő név|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
@@ -1736,6 +1873,22 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |qpu_high_utilization_metric|QPU magas kihasználtság|Darabszám|Összesen|QPU nagy kihasználtság az utolsó pillanatban, 1 A magas QPU kihasználtság, Egyébként 0|Nincsenek dimenziók|
 |memory_metric|Memory (Memória)|Bájt|Átlag|Memory. Tartomány 0-3 GB A1, 0-5 GB A2, 0-10 GB A3, 0-25 GB A4, 0-50 GB A5 és 0-100 GB A6 esetén|Nincsenek dimenziók|
 |memory_thrashing_metric|Memóriaakadozás|Százalék|Átlag|Átlagos memória verés.|Nincsenek dimenziók|
+
+
+## <a name="microsoftprojectbabylonaccounts"></a>Microsoft.ProjectBabylon/fiókok
+
+|Metrika|Metrikus megjelenítendő név|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|---|---|---|---|---|---|
+|Eszköz felosztása osztályozás szerint|Eszköz felosztása osztályozás szerint|Darabszám|Összesen|A meghatározott besorolással rendelkező eszközök számát jelzi, azaz az adott címkével vannak besorolva.|Besorolás,Forrás,Erőforrásazonosító|
+|Eszközfelosztástárolótípusa|Eszköz elosztása tárolási típus szerint|Darabszám|Összesen|Egy adott tárolási típussal rendelkező eszközök számát jelzi.|StorageType,ResourceId|
+|CatalogActiveUsers|Napi aktív felhasználók|Darabszám|Összesen|Aktív felhasználók száma naponta|ResourceId|
+|Katalógushasználata|Használat elosztása művelet szerint|Darabszám|Összesen|Adja meg, hogy a felhasználó hány műveletet végez a katalógusban, azaz az Access, a Keresés, a Szószedet.|Művelet,Erőforrásazonosító|
+|NumberOfAssetsWithClassifications|Legalább egy besorolással rendelkező eszközök száma|Darabszám|Átlag|A legalább egy címkebesorolással rendelkező eszközök számát jelzi.|ResourceId|
+|VizsgálatTörölve|Vizsgálat megszakítva|Darabszám|Összesen|A megszakított vizsgálatok számát jelzi.|ResourceId|
+|Vizsgálat befejezve|Vizsgálat befejezve|Darabszám|Összesen|A sikeresen végrehajtott vizsgálatok számát jelzi.|ResourceId|
+|Sikertelen vizsgálat|A vizsgálat nem sikerült|Darabszám|Összesen|A sikertelen beolvasások számát jelzi.|ResourceId|
+|ScanTimeTaken|A beszkavaltöltött idő|Másodperc|Összesen|A teljes bevizsgálati időt jelzi másodpercben.|ResourceId|
+
 
 
 
@@ -1849,8 +2002,8 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |dwu_used|Használt DWU|Darabszám|Maximum|Használt DWU. Csak adatraktárakra vonatkozik.|None|
 |cache_hit_percent|Gyorsítótár találati százaléka|Százalék|Maximum|Gyorsítótár találati százaléka. Csak adatraktárakra vonatkozik.|None|
 |cache_used_percent|Gyorsítótár által használt százalék|Százalék|Maximum|Gyorsítótár használt százaléka. Csak adatraktárakra vonatkozik.|None|
-|sqlserver_process_core_percent|SQL Server folyamat alapszázaléka|Százalék|Maximum|Az SQL Server folyamat processzorhasználati százaléka az operációs rendszer szerint mérve.|None|
-|sqlserver_process_memory_percent|SQL Server folyamatmemória százaléka|Százalék|Maximum|Az SQL Server folyamat memóriahasználati százaléka az operációs rendszer szerint mérve.|None|
+|sqlserver_process_core_percent|SQL Server folyamat alapszázaléka|Százalék|Maximum|A PROCESSZOR-használat az SQL DB folyamat százalékában. Adatraktárakra nem vonatkozik.|None|
+|sqlserver_process_memory_percent|SQL Server folyamatmemória százaléka|Százalék|Maximum|Memóriahasználat az SQL DB folyamat százalékában. Adatraktárakra nem vonatkozik.|None|
 |tempdb_data_size|Tempdb-adatfájl mérete kilobájt|Darabszám|Maximum|Tempdb adatfájl mérete kilobájt. Adatraktárakra nem vonatkozik.|None|
 |tempdb_log_size|Tempdb naplófájl mérete Kilobájt|Darabszám|Maximum|Tempdb naplófájl mérete kilobájt. Adatraktárakra nem vonatkozik.|None|
 |tempdb_log_used_percent|Használt Tempdb százaléknapló|Százalék|Maximum|Tempdb százaléknapló használatban. Adatraktárakra nem vonatkozik.|None|
@@ -1860,9 +2013,23 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |app_memory_percent|Alkalmazásmemória százaléka|Százalék|Átlag|Alkalmazásmemória százaléka. Kiszolgáló nélküli adatbázisokra vonatkozik.|None|
 |allocated_data_storage|Lefoglalt adatterület|Bájt|Átlag|Lefoglalt adattárolás. Adatraktárakra nem vonatkozik.|None|
 |memory_usage_percent|Memória százaléka|Százalék|Maximum|Memória százalék. Csak adatraktárakra vonatkozik.|None|
+|dw_backup_size_gb|Adattároló mérete|Darabszám|Összesen|Az adattárolási méret az adatok méretéből és a tranzakciós naplóból áll. A mérőszám beleszámít a számla "Tárolás" részébe. Csak adatraktárakra vonatkozik.|None|
+|dw_snapshot_size_gb|Pillanatkép-tároló mérete|Darabszám|Összesen|Pillanatkép-tároló mérete a pillanatképek által rögzített növekményes módosítások mérete a felhasználó által definiált és automatikus visszaállítási pontok létrehozásához. A mérőszám beleszámít a számla "Tárolás" részébe. Csak adatraktárakra vonatkozik.|None|
+|dw_geosnapshot_size_gb|Vész-helyreállítási tároló mérete|Darabszám|Összesen|Vész-helyreállítási tárolási mérete tükröződik a "vész-helyreállítási tároló" a számlán. Csak adatraktárakra vonatkozik.|None|
+|wlg_allocation_relative_to_system_percent|Számítási feladatok csoportjának lefoglalása rendszerszázalék szerint|Százalék|Maximum|Az erőforrások hozzárendelt százaléka a teljes rendszerhez képest munkaterhelési csoportonként. Csak adatraktárakra vonatkozik.|WorkloadGroupName,IsUserDefined|
+|wlg_allocation_relative_to_wlg_effective_cap_percent|Számítási feladatok csoport lefoglalása erőforrásszázalék szerint|Százalék|Maximum|Az erőforrások hozzárendelt százaléka a megadott terhelési erőforrásokhoz képest munkaterhelési csoportonként. Csak adatraktárakra vonatkozik.|WorkloadGroupName,IsUserDefined|
+|wlg_active_queries|Számítási feladatok csoport aktív lekérdezései|Darabszám|Összesen|Aktív lekérdezések a munkaterheléscsoporton belül. Csak adatraktárakra vonatkozik.|WorkloadGroupName,IsUserDefined|
+|wlg_queued_queries|Munkaterhelés-csoport várólistán lévő lekérdezései|Darabszám|Összesen|Várólistára helyezett lekérdezések a munkaterhelési csoporton belül. Csak adatraktárakra vonatkozik.|WorkloadGroupName,IsUserDefined|
+|active_queries|Aktív lekérdezések|Darabszám|Összesen|Aktív lekérdezések az összes számítási feladat csoportban. Csak adatraktárakra vonatkozik.|None|
+|queued_queries|Várakozással várakozó lekérdezések|Darabszám|Összesen|Várólistára helyezett lekérdezések az összes munkaterhelési csoportban. Csak adatraktárakra vonatkozik.|None|
+|wlg_active_queries_timeouts|Számítási feladatok csoport lekérdezési időmegválaszolásai|Darabszám|Összesen|A számítási feladatok csoport számára időkimenőt tartalmazó lekérdezések. Csak adatraktárakra vonatkozik.|WorkloadGroupName,IsUserDefined|
+|wlg_effective_min_resource_percent|Effektív min erőforrás százalék|Százalék|Maximum|A számítási feladatok csoportjához lefoglalt és elkülönített erőforrások minimális százaléka, figyelembe véve a minimális szolgáltatási szintet. Csak adatraktárakra vonatkozik.|WorkloadGroupName,IsUserDefined|
+|wlg_effective_cap_resource_percent|Effektív erőforrás-korlát százaléka|Százalék|Maximum|A számítási feladatok csoport számára engedélyezett erőforrások százalékos arányának szigorú korlátozása, figyelembe véve a más munkaterhelés-csoportok számára lefoglalt effektív erőforrás-százalékot. Csak adatraktárakra vonatkozik.|WorkloadGroupName,IsUserDefined|
 |full_backup_size_bytes|Teljes biztonsági mentési tárolóméret|Bájt|Maximum|Összesített teljes biztonsági mentési tárterület mérete. Virtuálismag-alapú adatbázisokra vonatkozik. Nem alkalmazható a nagy kapacitású adatbázisok.|None|
 |diff_backup_size_bytes|Különbözeti biztonsági mentési tárolóméret|Bájt|Maximum|Összesített különbözeti biztonsági mentési tároló mérete. Virtuálismag-alapú adatbázisokra vonatkozik. Nem alkalmazható a nagy kapacitású adatbázisok.|None|
-|log_backup_size_bytes|Biztonsági másolat tárolási méretének naplózása|Bájt|Maximum|Összesített naplóbiztonsági mentési tárolómérete. Virtuálismag-alapú adatbázisokra vonatkozik. Nem alkalmazható a nagy kapacitású adatbázisok.|None|
+|log_backup_size_bytes|Biztonsági másolat tárolási méretének naplózása|Bájt|Maximum|Összesített naplóbiztonsági mentési tárolómérete. Virtuálismag-alapú és nagy kapacitású adatbázisok vonatkozik.|None|
+|snapshot_backup_size_bytes|Pillanatkép biztonsági mentési tárolómérete|Bájt|Maximum|Összesített pillanatkép biztonsági mentési tároló mérete. Nagykapacitású adatbázisokra vonatkozik.|None|
+|base_blob_size_bytes|Alapblob-tároló mérete|Bájt|Maximum|Alapblob-tároló mérete. Nagykapacitású adatbázisokra vonatkozik.|None|
 
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft.Sql/servers/elasticPools
@@ -1893,8 +2060,8 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |database_cpu_limit|CPU-korlát|Darabszám|Átlag|CPU-korlát|DatabaseResourceId azonosító|
 |cpu_used|HASZNÁLT PROCESSZOR|Darabszám|Átlag|CPU használt. Virtuálismag-alapú rugalmas készletek vonatkozik.|None|
 |database_cpu_used|HASZNÁLT PROCESSZOR|Darabszám|Átlag|HASZNÁLT PROCESSZOR|DatabaseResourceId azonosító|
-|sqlserver_process_core_percent|SQL Server folyamat alapszázaléka|Százalék|Maximum|Az SQL Server folyamat processzorhasználati százaléka az operációs rendszer szerint mérve. Rugalmas készletekre vonatkozik.|None|
-|sqlserver_process_memory_percent|SQL Server folyamatmemória százaléka|Százalék|Maximum|Az SQL Server folyamat memóriahasználati százaléka az operációs rendszer szerint mérve. Rugalmas készletekre vonatkozik.|None|
+|sqlserver_process_core_percent|SQL Server folyamat alapszázaléka|Százalék|Maximum|A PROCESSZOR-használat az SQL DB folyamat százalékában. Rugalmas készletekre vonatkozik.|None|
+|sqlserver_process_memory_percent|SQL Server folyamatmemória százaléka|Százalék|Maximum|Memóriahasználat az SQL DB folyamat százalékában. Rugalmas készletekre vonatkozik.|None|
 |tempdb_data_size|Tempdb-adatfájl mérete kilobájt|Darabszám|Maximum|Tempdb-adatfájl mérete kilobájt|None|
 |tempdb_log_size|Tempdb naplófájl mérete Kilobájt|Darabszám|Maximum|Tempdb naplófájl mérete Kilobájt|None|
 |tempdb_log_used_percent|Használt Tempdb százaléknapló|Százalék|Maximum|Használt Tempdb százaléknapló|None|
@@ -2090,6 +2257,46 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |InputEventsSourcesBacklogged|Eldugott bemeneti események|Darabszám|Maximum|Eldugott bemeneti események|Logikai név,PartitionId|
 |InputEventsSourcesperSecond|Fogadott bemeneti források|Darabszám|Összesen|Fogadott bemeneti források|Logikai név,PartitionId|
 
+## <a name="microsoftsynapseworkspaces"></a>Microsoft.Synapse/munkaterületek
+
+|Metrika|Metrikus megjelenítendő név|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|---|---|---|---|---|---|
+|OrchestrationPipelineSEnded|A folyamat futtatása véget ért|Darabszám|Összesen|A sikeres, sikertelen vagy megszakított vezénylési folyamatfuttatások száma|Eredmény,FailureType,Folyamat|
+|OrchestrationActivityRunsEnded|A tevékenységfuttatások véget értek|Darabszám|Összesen|A sikeres, sikertelen vagy megszakított vezénylési tevékenységek száma|Eredmény,Hibatípus,Tevékenység,Tevékenységtípus,Folyamat|
+|OrchestrationTriggersEnded|Az eseményindítók véget értek|Darabszám|Összesen|Sikeres, sikertelen vagy megszakított vezénylési eseményindítók száma|Eredmény,FailureType,Eseményindító|
+|SQLOnDemandLoginAttempts|Bejelentkezési kísérletek|Darabszám|Összesen|A sikeres vagy sikertelen bejelentkezési kísérletek száma|Eredmény|
+|SQLOnDemandQueriesEnded|A lekérdezések lezárultak|Darabszám|Összesen|A sikeres, sikertelen vagy megszakított lekérdezések száma|Eredmény|
+|SQLOnDemandQueryProcessedBytes|Feldolgozott adatok|Bájt|Összesen|Lekérdezések által feldolgozott adatok mennyisége|None|
+
+## <a name="microsoftsynapseworkspacesbigdatapools"></a>Microsoft.Synapse/workspaces/bigDataPools
+
+|Metrika|Metrikus megjelenítendő név|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|---|---|---|---|---|---|
+|SparkJobsEnded|Lekötött alkalmazások|Darabszám|Összesen|A megszakított alkalmazások száma|Feladattípus,Feladateredmény|
+|MagokKapacitás|Magkapacitás|Darabszám|Maximum|Magkapacitás|None|
+|Memóriakapacitásgb|Memóriakapacitás (GB)|Darabszám|Maximum|Memóriakapacitás (GB)|None|
+
+## <a name="microsoftsynapseworkspacessqlpools"></a>Microsoft.Synapse/workspaces/sqlPools
+
+|Metrika|Metrikus megjelenítendő név|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|---|---|---|---|---|---|
+|DWULimit|DWU-korlát|Darabszám|Maximum|Az SQL-készlet szolgáltatási szintű célkitűzése|None|
+|DWUHasznált|Használt DWU|Darabszám|Maximum|A használat magas szintű megjelenítését jelöli az SQL-készletben. DWU-határértékszerint mérve * DWU százalék|None|
+|DWUUSEDPercent|DWU használt százalék|Százalék|Maximum|A használat magas szintű megjelenítését jelöli az SQL-készletben. A CPU-százalék és az adat I/-százalék közötti maximális érték figyelembevételével mérve|None|
+|Kapcsolatokblokkolástűzfallal|Tűzfal által blokkolt kapcsolatok|Darabszám|Összesen|A tűzfalszabályok által blokkolt kapcsolatok száma. Az SQL-készlet hozzáférés-vezérlési házirendjeinek újbóli meglátogatása és a kapcsolatok figyelése, ha a számláló magas|None|
+|AdaptiveCacheHitPercent|Adaptív gyorsítótár találati százaléka|Százalék|Maximum|Azt méri, hogy a munkaterhelések mennyire jól használja az adaptív gyorsítótárat. Ezzel a metrikával a gyorsítótár leolvasási százalékos metrikája határozza meg, hogy a méretezés további kapacitás vagy újrafut számítási feladatok hidratálni a gyorsítótárat|None|
+|AdaptiveCacheUsedPercent|Adaptív gyorsítótár használt százaléka|Százalék|Maximum|Azt méri, hogy a munkaterhelések mennyire jól használja az adaptív gyorsítótárat. Használja ezt a metrikát a gyorsítótár által használt százalékos metrikával annak meghatározásához, hogy további kapacitást méretez-e, vagy újrafuttassa a számítási feladatokat a gyorsítótár hidratálásához.|None|
+|LocalTempDBUsedPercent|Helyi tempdb használt százalék|Százalék|Maximum|Helyi tempdb-használat az összes számítási csomóponton – az értékek ötpercenként kerülnek kibocsátásra|None|
+|Használt memóriaPercent|Felhasznált memória százaléka|Százalék|Maximum|Memóriakihasználtság az SQL-készlet összes csomópontja között|None|
+|Kapcsolatok|Kapcsolatok|Darabszám|Összesen|Az SQL-készletbe való összes bejelentkezés száma|Eredmény|
+|WLGActiveQueries|Számítási feladatok csoport aktív lekérdezései|Darabszám|Összesen|A számítási feladatok csoporton belüli aktív lekérdezések. A szűretlen és felbontatlan mérőszám használata a rendszeren futó összes aktív lekérdezést megjeleníti.|IsUserDefined,WorkloadGroup|
+|WLGActiveQueriesIdő-outok|Számítási feladatok csoport lekérdezési időmegválaszolásai|Darabszám|Összesen|Az időkimenő terhelést okozó munkaterhelés-csoport lekérdezései. Ez a mérőszám által jelentett lekérdezési időtúllépések csak akkor jelennek meg, ha a lekérdezés végrehajtása megkezdődött (nem tartalmazza a zárolás vagy az erőforrás-várakozás miatti várakozási időt)|IsUserDefined,WorkloadGroup|
+|WLGAllocationBySystemPercent|Számítási feladatok csoportjának lefoglalása rendszerszázalék szerint|Százalék|Maximum|Az erőforrások nak a teljes rendszerhez viszonyított százalékos elosztása|IsUserDefined,WorkloadGroup|
+|WLGAllocationByMaxResourcePercent|Számítási feladatok csoportjának lefoglalása maximális erőforrásszázalék szerint|Százalék|Maximum|Az erőforrások számítási terhelésenkénti tényleges korláthoz viszonyított százalékos allokációját jeleníti meg. Ez a metrika biztosítja a számítási feladatok csoport hatékony kihasználását|IsUserDefined,WorkloadGroup|
+|WLGEffectiveCapResourcePercent|Effektív erőforrás-korlát százaléka|Százalék|Maximum|A számítási feladatok csoport tényleges erőforrás-százaléka. Ha vannak más számítási min_percentage_resource > 0-val rendelkező munkaterhelési csoportok, a effective_cap_percentage_resource arányosan csökken|IsUserDefined,WorkloadGroup|
+|wlg_effective_min_resource_percent|Effektív min erőforrás százalék|Százalék|Minimális|A szolgáltatásszint és a munkaterhelési csoport beállításainak figyelembevételével engedélyezett tényleges min erőforrás-százalékos beállítás. A hatékony min_percentage_resource magasabbra állítható az alacsonyabb szolgáltatási szinteken|IsUserDefined,WorkloadGroup|
+|WLGQueuedQueries|Munkaterhelés-csoport várólistán lévő lekérdezései|Darabszám|Összesen|A maximális egyidejűségi korlát elérése után várólistára helyezett kérelmek összesített száma|IsUserDefined,WorkloadGroup|
+
 ## <a name="microsofttimeseriesinsightsenvironments"></a>Microsoft.TimeSeriesInsights/környezetek
 
 |Metrika|Metrikus megjelenítendő név|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
@@ -2103,6 +2310,8 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |IngressReceivedMessagesCountLag|Be- és beérkező üzenetek száma lag|Darabszám|Átlag|Az eseményforrás-partíción utoljára várólistán lévő üzenetek sorszáma és a bejövő forgalomban feldolgozott üzenetek sorszáma közötti különbség|None|
 |WarmStorageMaxProperties|Meleg tároló max tulajdonságai|Darabszám|Maximum|A környezet által az S1/S2 Termékváltozat számára engedélyezett tulajdonságok maximális száma és a Warm Store által a PAYG Termékváltozathoz engedélyezett tulajdonságok maximális száma|None|
 |WarmStorageUsedProperties|A használt meleg tároló tulajdonságai |Darabszám|Maximum|A környezet által az S1/S2 Termékváltozathoz használt tulajdonságok száma és a Warm Store által a PAYG Termékváltozathoz használt tulajdonságok száma|None|
+
+
 
 ## <a name="microsofttimeseriesinsightsenvironmentseventsources"></a>Microsoft.TimeSeriesInsights/environments/eventsources
 
@@ -2171,7 +2380,7 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |TcpLastAck|TCP utolsó Ack|Darabszám|Átlag|TCP utolsó Ack|Példány|
 |TcpTimeVárakozás|TCP-idő várakozása|Darabszám|Átlag|TCP-idő várakozása|Példány|
 
-## <a name="microsoftwebsites-excluding-functions"></a>Microsoft.Web/sites (a funkciók kivételével)
+## <a name="microsoftwebsites"></a>Microsoft.Web/webhelyek
 
 > [!NOTE]
 > **A fájlrendszer használata** egy új mérőszám, amelyet globálisan vezetnek be, csak akkor várható adat, ha a privát előzetes verzióhoz engedélyezési listán szerepel.
@@ -2217,35 +2426,6 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |Gen2Gyűjtemények|Gen 2 Szemétgyűjtemények|Darabszám|Összesen|Gen 2 Szemétgyűjtemények|Példány|
 |Állapotellenőrző állapota|Állapot-ellenőrzés állapota|Darabszám|Átlag|Állapot-ellenőrzés állapota|Példány|
 |FileSystemUsage|Fájlrendszer használata|Bájt|Átlag|Fájlrendszer használata|None|
-
-## <a name="microsoftwebsites-functions"></a>Microsoft.Web/webhelyek (funkciók)
-
-|Metrika|Metrikus megjelenítendő név|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
-|---|---|---|---|---|---|
-|Fogadott bájt|Adatok a|Bájt|Összesen|Adatok a|Példány|
-|Küldött bájt|Adatok ki|Bájt|Összesen|Adatok ki|Példány|
-|Http5xx között|Http Server hibák|Darabszám|Összesen|Http Server hibák|Példány|
-|MemoryWorkingSet|Memóriamunkakészlet|Bájt|Átlag|Memóriamunkakészlet|Példány|
-|AverageMemoryWorkingSet|Átlagos memóriamunkakészlet|Bájt|Átlag|Átlagos memóriamunkakészlet|Példány|
-|FunctionExecutionUnits|Funkcióvégrehajtási egységek|MB / Ezredmásodpercek|Összesen|[Funkcióvégrehajtási egységek](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ#how-can-i-view-graphs-of-execution-count-and-gb-seconds)|Példány|
-|FunctionExecutionCount (FunctionExecutionCount)|Függvényvégrehajtási száma|Darabszám|Összesen|Függvényvégrehajtási száma|Példány|
-|Privát bájt|Privát bájtok|Bájt|Átlag|Privát bájtok|Példány|
-|IoReadBytesPerSz|Io olvasási bájt másodpercenként|BytesPerSecond|Összesen|Io olvasási bájt másodpercenként|Példány|
-|IoWriteBytesPerSecond|Io írási bájt másodpercenként|BytesPerSecond|Összesen|Io írási bájt másodpercenként|Példány|
-|IoOtherBytesPerSz|Egyéb bájtok másodpercenként|BytesPerSecond|Összesen|Egyéb bájtok másodpercenként|Példány|
-|IoReadOperationsPerSecond|Io olvasási műveletek másodpercenként|BytesPerSecond|Összesen|Io olvasási műveletek másodpercenként|Példány|
-|IoWriteOperationsPerSecond|I/O-írási műveletek másodpercenként|BytesPerSecond|Összesen|I/O-írási műveletek másodpercenként|Példány|
-|IoOtherOperationsPerSecond|Io egyéb műveletek másodpercenként|BytesPerSecond|Összesen|Io egyéb műveletek másodpercenként|Példány|
-|Kérelmekaz alkalmazásvárólistában|Kérelmek az alkalmazásvárólistában|Darabszám|Átlag|Kérelmek az alkalmazásvárólistában|Példány|
-|CurrentAssemblies között|Aktuális szerelvények|Darabszám|Átlag|Aktuális szerelvények|Példány|
-|TotalAppDomains (Összes alkalmazásdomain)|Összes alkalmazástartomány|Darabszám|Átlag|Összes alkalmazástartomány|Példány|
-|TotalAppDomainsUnloaded|A kiürített összes alkalmazástartomány|Darabszám|Átlag|A kiürített összes alkalmazástartomány|Példány|
-|Gen0Gyűjtemények|Gen 0 Szemétgyűjtemények|Darabszám|Összesen|Gen 0 Szemétgyűjtemények|Példány|
-|Gen1Gyűjtemények|Gen 1 Szemétgyűjtemények|Darabszám|Összesen|Gen 1 Szemétgyűjtemények|Példány|
-|Gen2Gyűjtemények|Gen 2 Szemétgyűjtemények|Darabszám|Összesen|Gen 2 Szemétgyűjtemények|Példány|
-|Állapotellenőrző állapota|Állapot-ellenőrzés állapota|Darabszám|Átlag|Állapot-ellenőrzés állapota|Példány|
-|FileSystemUsage|Fájlrendszer használata|Bájt|Átlag|Fájlrendszer használata|None|
-
 
 ## <a name="microsoftwebsitesslots"></a>Microsoft.Web/sites/slot
 

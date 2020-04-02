@@ -14,12 +14,12 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6c27fa8f80140e6db92ea0f998852507260cc278
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: faaff9e9ad5982efac6409f2284158a3d0711331
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80159540"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548410"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Az SQL Server 2008 és az SQL Server 2008 R2 támogatásának kiterjesztése az Azure-ral
 
@@ -66,7 +66,7 @@ Az [adatbázis-áttelepítési szolgáltatás](/azure/dms/dms-overview) egy lehe
 
 Az Azure-beli virtuális gépeken az EOS SQL Server vész-helyreállítási megoldásai a következők:
 
-- **SQL Server biztonsági mentések:** Az Azure Backup segítségével megvédheti az EOS SQL Server 2008 és 2008 R2 programot a zsarolóprogramok, a véletlen törlés és a 15 perces RPO és az időponthoz kapcsolódó helyreállítás elleni védelemhez. További részletek ebben [a cikkben olvashatók.](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#scenario-support)
+- **SQL Server biztonsági mentések:** Az Azure Backup segítségével megvédheti az EOS SQL Server 2008 és 2008 R2 programot a zsarolóprogramok, a véletlen törlés és a 15 perces RPO és az időponthoz kapcsolódó helyreállítás elleni védelemhez. További részletek ebben [a cikkben olvashatók.](https://docs.microsoft.com/azure/backup/sql-support-matrix#scenario-support)
 - **Naplószállítás:** Létrehozhat egy naplószállítási replikát egy másik zónában vagy az Azure-régióban folyamatos visszaállításokkal az RTO csökkentése érdekében. Manuálisan kell konfigurálnia a naplószállítást.
 - **Azure Site Recovery:** Replikálhatja a virtuális gép a zónák és a régiók között az Azure Site Recovery replikációs. Az SQL Server alkalmazáskonzisztens pillanatképeket igényel a helyreállítás biztosításához katasztrófa esetén. Az Azure Site Recovery legalább 1 órás RPO-t és 2 órás (plusz SQL Server helyreállítási idő) RTO-t kínál az EOS SQL Server vész-helyreállítási rendszeréhez.
 

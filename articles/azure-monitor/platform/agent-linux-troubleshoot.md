@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 24aa3462aef4f719e93d17389ff342084f6c7864
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2343de97d06abdefed2c2977a7341aa411429319
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77668757"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520743"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>A Linuxhoz készült Log Analytics-ügynökkel kapcsolatos hibák elhárítása 
 
@@ -76,7 +76,7 @@ Ha a lépések egyike sem működik, a következő támogatási csatornák is el
 | --- | --- |
 | 2 | Érvénytelen beállítás az omsadmin parancsfájlhoz. Futtatás `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` a használatra. |
 | 3 | Érvénytelen konfiguráció az omsadmin parancsfájlszámára. Futtatás `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` a használatra. |
-| 4 | Érvénytelen proxy az omsadmin parancsfájlhoz. Ellenőrizze a proxyt, és tekintse meg [a HTTP-proxy használatának dokumentációját.](log-analytics-agent.md#network-firewall-requirements) |
+| 4 | Érvénytelen proxy az omsadmin parancsfájlhoz. Ellenőrizze a proxyt, és tekintse meg [a HTTP-proxy használatának dokumentációját.](log-analytics-agent.md#firewall-requirements) |
 | 5 | 403-as HTTP-hiba érkezett az Azure Monitortól. A részleteket lásd az omsadmin parancsfájl teljes kimenetében. |
 | 6 | Nem 200-as HTTP-hiba érkezett az Azure Monitortól. A részleteket lásd az omsadmin parancsfájl teljes kimenetében. |
 | 7 | Nem lehet csatlakozni az Azure Monitorhoz. A részleteket lásd az omsadmin parancsfájl teljes kimenetében. |
@@ -157,15 +157,8 @@ Az alábbi kimeneti plugin, uncomment a `#` következő szakaszban eltávolítá
 `/opt/microsoft/omsagent/bin/omsadmin.sh -w <Workspace ID> -s <Workspace Key> -p <Proxy Conf> -v`
 
 2. Tekintse át a [Proxybeállításainak frissítése](agent-manage.md#update-proxy-settings) című szakaszt, és ellenőrizze, hogy megfelelően konfigurálta-e az ügynököt proxykiszolgálón keresztüli kommunikációra.    
-* Ellenőrizze, hogy az alábbi Azure Monitor-végpontok szerepelnek-e a listán:
 
-    |Ügynök erőforrása| Portok | Irány |
-    |------|---------|----------|  
-    |*.ods.opinsights.azure.com | 443-as port| Bejövő és kimenő |  
-    |*.oms.opinsights.azure.com | 443-as port| Bejövő és kimenő |  
-    |*.blob.core.windows.net | 443-as port| Bejövő és kimenő |  
-
-    Ha azt tervezi, hogy az Azure Automation hybrid Runbook Worker használatával csatlakozik az Automation szolgáltatáshoz, és regisztráljon az Automation szolgáltatással a runbookok vagy felügyeleti megoldások használatához a környezetben, akkor hozzá kell férnie a portszámhoz és a [Hálózat konfigurálása a hibrid runbook-feldolgozóhoz](../../automation/automation-hybrid-runbook-worker.md#network-planning)című részben leírt URL-címekhez. 
+3. Ellenőrizze, hogy az Azure Monitor hálózati [tűzfalkövetelményeilistájában](log-analytics-agent.md#firewall-requirements) ismertetett végpontok megfelelően hozzáadódnak-e az engedélyezési listához. Ha az Azure Automation, a szükséges hálózati konfigurációs lépések a fent is kapcsolódik.
 
 ## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>Probléma: 403-as hibaüzenet jelenik meg a fedélzeten
 

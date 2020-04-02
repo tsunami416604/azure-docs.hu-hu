@@ -1,22 +1,15 @@
 ---
 title: 'Oktatóanyag: Végpontkimondott szöveg áttekintése – LUIS'
-titleSuffix: Azure Cognitive Services
 description: Ebben az oktatóanyagban javítsa az alkalmazás-előrejelzéseket a LUIS HTTP-végponton keresztül kapott kimondott szövegek ellenőrzésével vagy javításával, amelyben a LUIS nem biztos. Bizonyos kimondott szövegek esetében a szándékot, míg más kimondott szövegek esetében az entitást kell ellenőrizni.
 services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 06f51ca83449b39861e7565cc9accc29efbece3f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/01/2020
+ms.openlocfilehash: 307c18d3326cb1a64b884463a571985a015834ed
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76843973"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548729"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Oktatóanyag: Javítsa ki a bizonytalan előrejelzéseket a végpontkimondott szöveg áttekintésével
 Ebben az oktatóanyagban javítsa az alkalmazás-előrejelzéseket a LUIS HTTPS-végponton keresztül kapott kimondott szövegek ellenőrzésével vagy javításával, amelyben a LUIS nem biztos. Tekintse át a végpont kimondott szövegrendszeres részeként az ütemezett LUIS-karbantartás.
@@ -46,15 +39,11 @@ Az alábbi lépésekkel importálhat egy alkalmazást.
 
 1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true).
 
-1. Az [előzetes LUIS portálon](https://preview.luis.ai)importálja a .json fájlt egy új alkalmazásba.
+[!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
-1. A **Manage** (Kezelés) szakasz **Versions** (Verziók) lapján klónozza a verziót, és adja neki a `review` nevet.
+## <a name="train-the-app-to-apply-the-entity-changes-to-the-app"></a>Az alkalmazás betanítása az entitásmódosítások alkalmazásra való alkalmazásához
 
-    > [!TIP]
-    > Az alkalmazás módosítása előtt ajánlott az új verzióba való klónozás. Amikor befejezegy verziót, exportálja a verziót (.json vagy .lu fájlként), és ellenőrizze a fájlt a forrásvezérlő rendszerbe.
-
-
-1. Az alkalmazás betanításához válassza a **Vonat**lehetőséget.
+[!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
 ## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>Az alkalmazás közzététele a HTTP-végpontról való eléréséhez
 
@@ -66,7 +55,7 @@ Ebben az alkalmazásban leképezések és entitások, de nincs végpont-használ
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. A végpont segítségével adja hozzá a következő kimondott szövegeket.
+1. Lépjen az URL-cím végére a címsorban, és cserélje le _YOUR_QUERY_HERE_ az alábbi táblázatban szereplő kimondott szövegekkel. Minden utterance (kifejezés) küldje el az utterance (kifejezés) és az eredmény. Ezután cserélje le az utterance (kifejezés) végén a következő utterance (kifejezés) helyett.
 
     |Végpont kimondott szövege|Igazított szándék|
     |--|--|
@@ -110,9 +99,9 @@ Tekintse át a végpont kimondott szövegeket a megfelelően igazított szándé
 
 Ellenőrizze, hogy a megfelelően igazított példa utterances javult az alkalmazás előrejelzése, próbálkozzon egy utterance (kifejezés közel a javított utterance (kifejezés) .
 
-1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Lépjen az URL-cím végéhez, és írja be a következőt: `Are there any natural language processing jobs in my department right now?`. Az utolsó querystring `q`paraméter a ( utterance ( kifejezés ) **lekérdezés.**
+1. Lépjen az URL-cím végére a címsorban, és cserélje le _YOUR_QUERY_HERE_ a gombra. `Are there any natural language processing jobs in my department right now?`
 
    ```json
     {

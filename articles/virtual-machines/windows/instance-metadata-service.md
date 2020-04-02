@@ -11,15 +11,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/24/2020
+ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 0fbe27fb5ed61cc187c679f9cb7420f0b444aa60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f351bba9cd474eab0774efa5ffbd2b24499d105b
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77615939"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520957"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure-példány metaadat-szolgáltatása
 
@@ -856,11 +856,15 @@ openssl x509 -noout -issuer -in signer.pem
 openssl x509 -noout -subject -in intermediate.pem
 # Verify the issuer for the intermediate certificate
 openssl x509 -noout -issuer -in intermediate.pem
-# Verify the certificate chain
+# Verify the certificate chain, for Azure China 21Vianet the intermediate certificate will be from DigiCert Global Root CA
 openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -untrusted intermediate.pem signer.pem
 ```
 
 Azokban az esetekben, amikor a köztes tanúsítvány az érvényesítés során hálózati megkötések miatt nem tölthető le, a köztes tanúsítvány rögzíthető. Az Azure azonban a szabványos PKI-gyakorlatnak megfelelően átgörgeti a tanúsítványokat. A rögzített tanúsítványokat frissíteni kell, amikor a váltás történik. Amikor a köztes tanúsítvány frissítésének módosítása a tervek szerint történik, az Azure-blog frissül, és az Azure-ügyfelek értesítést kapnak. A köztes tanúsítványok [itt](https://www.microsoft.com/pki/mscorp/cps/default.htm)találhatók. Az egyes régiók köztes tanúsítványai eltérőek lehetnek.
+
+> [!NOTE]
+> Az Azure China 21Vianet köztes tanúsítványa baltimore helyett a DigiCert globális gyökérhitelesítési szolgáltatótól származik.
+Akkor is, ha az Azure China köztes tanúsítványok at rögzítette a gyökérlánc-jogosultság módosítása részeként, a köztes tanúsítványokat frissíteni kell.
 
 ### <a name="failover-clustering-in-windows-server"></a>Feladatátvevő fürtözés a Windows Server rendszerben
 

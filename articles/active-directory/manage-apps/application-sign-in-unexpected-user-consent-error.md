@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6dff3be9a9bc7fd897f340e5fe6a4775a4914810
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ea14e02920cf7ba6c5e0a7b415cb92137c915576
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "65824940"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519708"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Váratlan hiba az alkalmazáshoz való hozzájárulás végrehajtásakor
 
@@ -33,8 +33,11 @@ Bizonyos feltételeknek meg kell felelniük ahhoz, hogy a felhasználó hozzáj�
 
 ## <a name="requesting-not-authorized-permissions-error"></a>Nem engedélyezett engedélyek kérése hiba
 * **AADSTS90093:** &lt;A clientAppDisplayName&gt; egy vagy több olyan engedélyt kér, amelynek megadása nincs engedélyezve. Lépjen kapcsolatba egy rendszergazdával, aki az Ön nevében beleegyezik ebbe az alkalmazásba.
+* **AADSTS90094:** &lt;ClientAppDisplayName&gt; engedélyre van szüksége, hogy hozzáférjen a szervezet erőforrásaihoz, hogy csak egy rendszergazda adhat. Kérjen engedélyt a rendszergazdától az alkalmazáshoz, hogy használhassa azt.
 
 Ez a hiba akkor fordul elő, ha egy nem vállalati rendszergazda felhasználó olyan alkalmazást próbál használni, amely csak a rendszergazda által megadott engedélyeket kér. Ezt a hibát megoldhatja egy rendszergazda, aki hozzáférést biztosít az alkalmazáshoz a szervezet nevében.
+
+Ez a hiba akkor is előfordulhat, ha a felhasználó nem járul hozzá egy alkalmazáshoz, mivel a Microsoft észleli, hogy az engedélykérelem kockázatos. Ebben az esetben egy naplózási esemény is naplózza a kategória "ApplicationManagement", tevékenység típusa "Hozzájárulás az alkalmazáshoz" és állapot oka a "Kockázatos alkalmazás észlelt".
 
 ## <a name="policy-prevents-granting-permissions-error"></a>A házirend megakadályozza az engedélyhiba megadását
 * **AADSTS90093:** A &lt;tenantDisplayName&gt; rendszergazdája olyan házirendet állított be, amely&gt; megakadályozza, hogy megadja az alkalmazás &lt;nevének megadását a kért engedélyekben. Lépjen kapcsolatba &lt;a tenantDisplayName&gt;rendszergazdájával, aki az Ön nevében engedélyt adhat az alkalmazásnak.

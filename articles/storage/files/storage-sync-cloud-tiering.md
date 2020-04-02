@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 11f9097fc4875f0a4300ac56dafe7af9a0b00c97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8a8502b40410df221886cde2fa5f3db15bf3eed
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79454618"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549178"
 ---
 # <a name="cloud-tiering-overview"></a>Felhőrétegezés – áttekintés
 A felhőrétegezés az Azure File Sync opcionális szolgáltatása, amelyben a gyakran használt fájlok helyileg vannak gyorsítótárazva a kiszolgálón, míg az összes többi fájl rétegzett az Azure Files-ba a házirend-beállítások alapján. Ha egy fájl rétegzett, az Azure File Sync fájlrendszer szűrő (StorageSync.sys) lecseréli a fájlt helyileg egy mutatót, vagy újraelemzési pont. Az újraelemzési pont a fájl URL-címét jelöli az Azure Files-ban. A rétegzett fájlok rendelkeznek az "offline" attribútummal és az NTFS fájlrendszerben beállított FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS attribútummal, így a harmadik féltől származó alkalmazások biztonságosan azonosíthatják a rétegzett fájlokat.
@@ -51,7 +51,22 @@ Ha egy köteten egynél több kiszolgálóvégpont van, a kötet tényleges szab
 
 <a id="date-tiering-policy"></a>
 ### <a name="how-does-the-date-tiering-policy-work-in-conjunction-with-the-volume-free-space-tiering-policy"></a>Hogyan működik a dátum rétegzési szabályzata a köteten található szabad hely rétegzési szabályzatával együtt? 
-Amikor engedélyezi a felhőrétegezést egy kiszolgálóvégponton, mennyiségi szabad területházirendet kell beállítania. Mindig elsőbbséget élvez minden más házirenddel szemben, beleértve a dátumházirendet is. Szükség esetén engedélyezheti a dátumházirendet az adott kötet en lévő minden kiszolgálóvégponthoz, ami azt jelenti, hogy csak a házirendben leírt napokon belül érhető el (azaz olvasott vagy írt) fájlok maradnak helyi szinten, a staler-fájlok rétegezve. Ne feledje, hogy a kötetszabad területházirend mindig elsőbbséget élvez, és ha nincs elég szabad hely a köteten ahhoz, hogy a dátumházirendben leírt számú fájl megőrződjön, az Azure File Sync folytatja a leghidegebb fájlok rétegezését, amíg a kötet ingyenes helyszázaléka teljesül.
+Amikor engedélyezi a felhőrétegezést egy kiszolgálóvégponton, mennyiségi szabad területházirendet kell beállítania. Mindig elsőbbséget élvez minden más házirenddel szemben, beleértve a dátumházirendet is. Szükség esetén engedélyezheti a dátumházirendet az adott kötet minden kiszolgálói végpontján. Ez a házirend kezeli, hogy csak a fájl elérhető (azaz olvasni vagy írni) a tartományon belül ez a házirend leírja marad a helyi. A megadott számú nappal nem elérhető fájlok rétegezve lesznek. 
+
+A felhőrétegezés az utolsó hozzáférési időt használja annak meghatározására, hogy mely fájlokat kell rétegzettnek tekinteni. A felhőrétegezésszűrő-illesztőprogram (storagesync.sys) nyomon követi az utolsó hozzáférési időt, és naplózza az adatokat a felhőrétegezési hőtárolóban. A hőtároló egy helyi PowerShell-parancsmag használatával látható.
+
+```powershell
+Import-Module '<SyncAgentInstallPath>\StorageSync.Management.ServerCmdlets.dll'
+Get-StorageSyncHeatStoreInformation '<LocalServerEndpointPath>'
+```
+
+> [!IMPORTANT]
+> Az utoljára elért időbélyeg nem az NTFS által követett tulajdonság, ezért alapértelmezés szerint nem látható a Fájlkezelőben. Ne használja a fájl utolsó módosítási időbélyegét annak ellenőrzésére, hogy a dátumházirend a várt módon működik-e. Ez az időbélyeg csak az írásokat követi, az olvasásokat nem. Használja a jelen lévő parancsmag, hogy az utolsó elérhető időbélyeg a kiértékeléshez.
+
+> [!WARNING]
+> Ne kapcsolja be a fájlok és mappák utolsó alkalommal elért időbélyegének nyomon követésére szolgáló NTFS-szolgáltatást. Ez a funkció alapértelmezés szerint ki van kapcsolva, mert nagy hatással van a teljesítményre. Az Azure File Sync automatikusan és nagyon hatékonyan követi nyomon az utoljára elért időpontokat, és nem használja ezt az NTFS-szolgáltatást.
+
+Ne feledje, hogy a kötet szabad terület házirend mindig elsőbbséget élvez, és ha nincs elég szabad hely a köteten, hogy megtartsa annyi nap értékű fájlokat, adátum-szabályzat ban leírt, az Azure File Sync továbbra is rétegezi a leghidegebb fájlokat, amíg a kötet szabad terület százaléka teljesül.
 
 Tegyük fel például, hogy 60 napos dátumalapú rétegezési házirenddel és 20%-os kötetszabad területházirenddel rendelkezik. Ha a dátumházirend alkalmazása után a köteten a szabad terület kevesebb mint 20%-a van, a kötetszabad terület házirend beindul, és felülbírálja a dátumházirendet. Ez azt eredményezi, hogy több fájl rétegzett lesz, így a kiszolgálón tárolt adatok mennyisége 60 napról 45 napra csökkenthető. Ezzel szemben ez a házirend akkor is kényszeríti az időtartományon kívül esik fájlok rétegezését, ha még akkor sem érte el a szabad terület küszöbértékét – így a 61 napos fájlok akkor is rétegzettek lesznek, ha a kötet üres.
 

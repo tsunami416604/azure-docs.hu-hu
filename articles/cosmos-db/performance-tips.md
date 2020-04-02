@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: sngun
-ms.openlocfilehash: 68a9a7d5f90831bb2e0c9284cb71ae4b92edffad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ee2743af2f8499aec04d8b6b733e1ba4c2a82083
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131408"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546078"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Az Azure Cosmos DB és a .NET teljesítményével kapcsolatos tippek
 
@@ -80,7 +80,7 @@ Ha a TCP-t közvetlen módban használja, az átjáróportok mellett biztosítan
 |Átjáró  |   HTTPS    |  Minden SDK    |   SQL (443), MongoDB (10250, 10255, 10256), Táblázat (443), Cassandra (10350), Graph (443)    |
 |Direct    |     TCP    |  .NET SDK    | Az 10000 és 20000 közötti tartományportjai |
 
-Az Azure Cosmos DB egy egyszerű, nyílt RESTful programozási modellhttps-en keresztül kínál. Emellett hatékony TCP protokollt is kínál, amely kommunikációs modelljében is RESTful, és a .NET ügyfél SDK-n keresztül érhető el. A TCP protokoll SSL-t használ a kezdeti hitelesítéshez és a forgalom titkosításához. A legjobb teljesítmény érdekében ha lehetséges, használja a TCP protokollt.
+Az Azure Cosmos DB egy egyszerű, nyílt RESTful programozási modellhttps-en keresztül kínál. Emellett hatékony TCP protokollt is kínál, amely kommunikációs modelljében is RESTful, és a .NET ügyfél SDK-n keresztül érhető el. A TCP protokoll tls-t használ a kezdeti hitelesítéshez és a forgalom titkosításához. A legjobb teljesítmény érdekében ha lehetséges, használja a TCP protokollt.
 
 Az SDK V3 esetében a példány létrehozásakor konfigurálja a csatlakozási módot a `CosmosClient` alkalmazásban. `CosmosClientOptions` Ne feledje, hogy a közvetlen mód az alapértelmezett.
 

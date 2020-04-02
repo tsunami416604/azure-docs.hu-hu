@@ -12,12 +12,12 @@ ms.date: 10/22/2018
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bd305d2943d1b12756171748f28d32300081d71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 42337fe958a881ee263d16c866dda69f13fe09c1
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75443390"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519626"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Annak konfigurálása, hogy a végfelhasználók hogyan járuljanak hozzá az alkalmazásokhoz
 
@@ -143,9 +143,53 @@ Az Azure AD PowerShell előzetes modul[(AzureADPreview)](https://docs.microsoft.
     }
     ```
 
+## <a name="configure-risk-based-step-up-consent"></a>Kockázatalapú step-up hozzájárulás konfigurálása
+
+A kockázatalapú step-up hozzájárulás segít csökkenteni a felhasználók kitettségét a rosszindulatú alkalmazások illegális [hozzájárulási kérelmeket.](https://docs.microsoft.com/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants) Ha a Microsoft kockázatos végfelhasználói hozzájárulási kérelmet észlel, a kérelemhez "step-up" szükséges a rendszergazdai hozzájáruláshoz. Ez a funkció alapértelmezés szerint engedélyezve van, de csak akkor eredményez viselkedésváltozást, ha a végfelhasználói jóváhagyás engedélyezve van.
+
+Kockázatos hozzájárulási kérelem észlelésekor a hozzájárulási üzenet egy üzenetet jelenít meg, amely jelzi, hogy rendszergazdai jóváhagyásra van szükség. Ha a [rendszergazdai hozzájárulási kérelem munkafolyamata](configure-admin-consent-workflow.md) engedélyezve van, a felhasználó elküldheti a kérelmet egy rendszergazdának további ellenőrzésre közvetlenül a hozzájárulási kérelemből. Ha nincs engedélyezve, a következő üzenet jelenik meg:
+
+* **AADSTS90094:** &lt;ClientAppDisplayName&gt; engedélyre van szüksége, hogy hozzáférjen a szervezet erőforrásaihoz, hogy csak egy rendszergazda adhat. Kérjen engedélyt a rendszergazdától az alkalmazáshoz, hogy használhassa azt.
+
+Ebben az esetben egy naplózási esemény is naplózza a kategória "ApplicationManagement", tevékenység típusa "Hozzájárulás az alkalmazáshoz" és állapot oka a "Kockázatos alkalmazás észlelt".
+
+> [!IMPORTANT]
+> A rendszergazdáknak a jóváhagyás előtt gondosan ki kell [értékelniük az összes hozzájárulási kérelmet,](manage-consent-requests.md#evaluating-a-request-for-tenant-wide-admin-consent) különösen akkor, ha a Microsoft kockázatot észlelt.
+
+### <a name="disable-or-re-enable-risk-based-step-up-consent-using-powershell"></a>Kockázatalapú step-up hozzájárulás letiltása vagy újbóli engedélyezése a PowerShell használatával
+
+Az Azure AD PowerShell előzetes modul[(AzureADPreview)](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)használatával letilthatja a rendszergazdai hozzájáruláshoz szükséges előrelépést azokban az esetekben, amikor a Microsoft kockázatot észlel, vagy újra engedélyezheti, ha korábban le volt tiltva.
+
+Ez a fentiekben bemutatott lépésekkel végezhető el a [csoporttulajdonos identikéna PowerShell használatával történő konfigurálásához,](#configure-group-owner-consent-using-powershell)de egy másik beállítási érték helyettesítéséhez. Három különbség van a lépésekben: 
+
+1. Ismerje meg a kockázatalapú step-up hozzájárulás beállítási értékeit:
+
+    | Beállítás       | Típus         | Leírás  |
+    | ------------- | ------------ | ------------ |
+    | _BlockUserConsentForRiskyApps_   | Logikai |  Jelző, amely jelzi, ha a felhasználó hozzájárulása le lesz tiltva, ha kockázatos kérést észlel. |
+
+2. A 3.
+
+    ```powershell
+    $riskBasedConsentEnabledValue = $settings.Values | ? { $_.Name -eq "BlockUserConsentForRiskyApps" }
+    ```
+3. Az 5.
+
+    ```powershell
+    # Disable risk-based step-up consent entirely
+    $riskBasedConsentEnabledValue.Value = "False"
+    ```
+
+    ```powershell
+    # Re-enable risk-based step-up consent, if disabled previously
+    $riskBasedConsentEnabledValue.Value = "True"
+    ```
+
 ## <a name="next-steps"></a>További lépések
 
 [A rendszergazdai hozzájárulási munkafolyamat konfigurálása](configure-admin-consent-workflow.md)
+
+[További információ az alkalmazásokhoz való hozzájárulás kezeléséről és a hozzájárulási kérelmek kiértékeléséről](manage-consent-requests.md)
 
 [Bérlői rendszergazdai hozzájárulás megadása egy alkalmazáshoz](grant-admin-consent.md)
 

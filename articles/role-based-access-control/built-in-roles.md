@@ -15,12 +15,12 @@ ms.date: 03/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: ba07a0b0d3be0366179bba14c786fafad8753dd7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2fe3b94463da07304f2c853910ac5d2a6771d070
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280694"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545641"
 ---
 # <a name="azure-built-in-roles"></a>Az Azure beépített szerepkörei
 
@@ -4644,7 +4644,7 @@ Kezelheti a szolgáltatást, de az API-kat nem
 > | Microsoft.ApiManagement/service/managedeployments/action | Termékváltozat/egységek módosítása, az API Management Service területi telepítéseinek hozzáadása/eltávolítása |
 > | Microsoft.ApiManagement/service/read | Metaadatok olvasása API-felügyeleti szolgáltatáspéldányhoz |
 > | Microsoft.ApiManagement/service/restore/action | API-felügyeleti szolgáltatás visszaállítása a megadott tárolóból egy felhasználó által megadott tárfiókban |
-> | Microsoft.ApiManagement/service/updatecertificate/action | SSL-tanúsítvány feltöltése API-felügyeleti szolgáltatáshoz |
+> | Microsoft.ApiManagement/service/updatecertificate/action | TLS-/SSL-tanúsítvány feltöltése API-kezelő szolgáltatáshoz |
 > | Microsoft.ApiManagement/service/updatehostname/action | API-felügyeleti szolgáltatás egyéni tartományneveinek beállítása, frissítése vagy eltávolítása |
 > | Microsoft.ApiManagement/service/write | API-felügyeleti szolgáltatáspéldány létrehozása vagy frissítése |
 > | Microsoft.Authorization/*/olvasás | Szerepkörök és szerepkör-hozzárendelések olvasása |

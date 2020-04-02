@@ -10,12 +10,12 @@ ms.date: 02/24/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: b0f2ad7566d0204871a9c6441315d6201662d92b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 53eca8a0b9e7cc9abb8f89cd56fca5df28f2de0f
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77616294"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521931"
 ---
 # <a name="authorizing-access-to-data-in-azure-storage"></a>Adatokhoz való hozzáférés engedélyezése az Azure Storage-ban
 
@@ -33,7 +33,7 @@ Az alábbi táblázat azokat a beállításokat ismerteti, amelyeket az Azure St
 
 Az egyes engedélyezési lehetőségeket röviden ismertetjük az alábbiakban:
 
-- **Az Azure Active Directory (Azure AD) integrációja** blobok és várólisták. Az Azure AD szerepköralapú hozzáférés-vezérlést (RBAC) biztosít az ügyfél egy tárfiókban lévő erőforrásokhoz való hozzáférésének részletes szabályozásához. A blobok és várólisták Azure AD-integrációjáról az [Azure-blobokhoz és várólistákhoz való hozzáférés engedélyezése az Azure Active Directory használatával című](storage-auth-aad.md)témakörben talál további információt.
+- **Az Azure Active Directory (Azure AD) integrációja** blobok és várólisták. Az Azure AD szerepköralapú hozzáférés-vezérlést (RBAC) biztosít az ügyfél egy tárfiókban lévő erőforrásokhoz való hozzáférésének szabályozásához. A blobok és várólisták Azure AD-integrációjáról az [Azure-blobokhoz és várólistákhoz való hozzáférés engedélyezése az Azure Active Directory használatával című](storage-auth-aad.md)témakörben talál további információt.
 
 - **Azure Active Directory tartományi szolgáltatások (Azure AD DS) hitelesítés** az Azure Files. Az Azure Files támogatja az identitásalapú engedélyezést a kiszolgálói üzenetblokkon (SMB) az Azure AD DS-en keresztül. Az RBAC segítségével részletesen szabályozhatja az ügyfél azure-fájlok hoz való hozzáférését egy tárfiókban. A tartományi szolgáltatások használatával történő Azure Files-hitelesítéssel kapcsolatos további információkért tekintse meg [az áttekintést.](../files/storage-files-active-directory-overview.md)
 

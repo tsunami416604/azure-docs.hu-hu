@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f16f6ef38b221e525340858fc7ba131f8a1bdf5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 10fc822f9f36512405dd4e3b5aba6270b53e163f
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289575"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549030"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>Azure-biztonsági alapkonfiguráció eseményközpontokhoz
 
@@ -72,7 +72,7 @@ Az Azure Security Center által biztosított hálózati biztonság ismertetése:
 
 **Útmutató:** Engedélyezze a DDoS-védelmi szabványt az eseményközpontokhoz társított virtuális hálózatokon az elosztott szolgáltatásmegtagadási (DDoS) támadások elleni védelem érdekében. Az Azure Security Center integrált fenyegetésfelderítési szolgáltatásával megtagadhatja az ismert rosszindulatú vagy nem használt internetes IP-címekkel folytatott kommunikációt.
 
-A DDoS-védelem konfigurálása:https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
+A DDoS-védelem konfigurálása:[https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection](/azure/virtual-network/manage-ddos-protection)
 
 Az Azure Security Center integrált fenyegetésfelderítési szolgáltatással kapcsolatos további információkért:https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
@@ -106,7 +106,7 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 Tűzfalszabály hozzáadása az Event Hubs szolgáltatásban egy megadott IP-címhez:
 
- https://docs.microsoft.com/azure/event-hubs/event-hubs-tutorial-virtual-networks-firewalls#add-firewall-for-specified-ip
+ https://docs.microsoft.com/azure/event-hubs/event-hubs-ip-filtering
 
 **Az Azure Security Center figyelése:** Még nem érhető el
 
@@ -140,7 +140,7 @@ Azure beépített szabályzat az Event Hubs névtérhez:https://docs.microsoft.c
 
 
 
-Azure Policy-minták hálózatépítéshez:https://docs.microsoft.com/azure/governance/policy/samples/#network
+Azure Policy-minták hálózatépítéshez:https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network
 
 
 
@@ -373,10 +373,7 @@ Az MFA engedélyezése az Azure-ban:https://docs.microsoft.com/azure/active-dire
 
 **Útmutató:** Használja az Azure Active Directory (AD) kiemelt identitáskezelés (PIM) a naplók és riasztások létrehozásához, ha gyanús vagy nem biztonságos tevékenység történik a környezetben. Az Azure AD-kockázatészlelések használatával megtekintheti a riasztásokat és a kockázatos felhasználói viselkedésről szóló jelentéseket. További naplózáshoz küldjön az Azure Security Center kockázatészlelési riasztásait az Azure Monitorba, és konfigurálja az egyéni riasztási/értesítési riasztásokat a műveletcsoportok használatával.
 
-
-
 Kiemelt identitáskezelés (PIM) telepítése:https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
-
 
 Ismerje meg az Azure AD-kockázatészleléseket:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
@@ -780,7 +777,7 @@ A feltételes hozzáférés beállítása az Azure Resource Manager eléréséne
 
 - Az Event Hubnak virtuális hálózati szolgáltatás végpontját kell használnia
 
-Azure beépített szabályzat az Event Hubs https://docs.microsoft.com/en-\ névtér: us/azure/governance/policy/samples/built-in-policies#event-hub
+Azure beépített szabályzat az Event Hubs névtérhez:https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub
 
 Az elérhető Azure-szabályzataliasok megtekintése:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
@@ -961,7 +958,7 @@ A Microsoft kártevőirtó eszköz e-alapú gazdagépen engedélyezve van az Azu
 
 **Útmutató:** Konfigurálja a geo-katasztrófa-helyreállítási Azure Event Hubs. Ha teljes Azure-régiók vagy adatközpontok (ha nincs rendelkezésre állási zónák) állásidőt tapasztal, fontos, hogy az adatfeldolgozás továbbra is egy másik régióban vagy adatközpontban működjön. Mint ilyen, a geo-katasztrófa-helyreállítási és georeplikáció fontos funkciók minden vállalat számára. Az Azure Event Hubs támogatja a földrajzi vész-helyreállítási és a georeplikáció, a névtér szintjén. 
 
-Ismerje meg az Azure Event Hubs geokatasztrófa-utáni helyreállítását:https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr#availability-zones-preview
+Ismerje meg az Azure Event Hubs geokatasztrófa-utáni helyreállítását:https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr#availability-zones
 
 **Az Azure Security Center figyelése:** Jelenleg nem érhető el
 

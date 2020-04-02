@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 0447e87fd8685188af8008995ba938092f2b87fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0547f254a64cecc7072ee9ff79eb50204b34bc17
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80293601"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548868"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Azure Application Gateway önaláírt tanúsítvány létrehozása egyéni legfelső szintű hitelesítésszolgáltatóval
 
@@ -179,7 +179,7 @@ openssl s_client -connect localhost:443 -servername www.fabrikam.com -showcerts
 
 A tanúsítvány alkalmazásátjáróban való feltöltéséhez a .crt tanúsítványt .cer formátumba kell exportálnia Base-64 kódolással. Mivel a .crt már tartalmazza a nyilvános kulcsot a 64-es alapú kódolású formátumban, egyszerűen nevezze át a fájlkiterjesztést .crt-ről .cer-re. 
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
 A megbízható főtanúsítvány portálról való feltöltéséhez válassza a **HTTP-beállítások lehetőséget,** és válassza a **HTTPS protokollt.**
 
@@ -262,12 +262,13 @@ Add-AzApplicationGatewayRequestRoutingRule `
 
 Set-AzApplicationGateway -ApplicationGateway $gw 
 ```
+
 ### <a name="verify-the-application-gateway-backend-health"></a>Az alkalmazásátjáró háttérállapotának ellenőrzése
 
 1. Kattintson az alkalmazásátjáró **háttérállapot** nézetére, és ellenőrizze, hogy a mintavétel kifogástalan állapotú-e.
-1.    Látnia kell, hogy az állapot **kifogástalan** a HTTPS-mintavétel.
+1. Látnia kell, hogy az állapot **kifogástalan** a HTTPS-mintavétel.
 
-    ![HTTPS-szonda](media/self-signed-certificates/https-probe.png)
+![HTTPS-szonda](media/self-signed-certificates/https-probe.png)
 
 ## <a name="next-steps"></a>További lépések
 

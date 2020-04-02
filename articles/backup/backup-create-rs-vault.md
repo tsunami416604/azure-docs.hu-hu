@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan hozhat létre helyreállítá
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: e722996f516d21445d8e0028df925ca44eb02bfc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 38f23ee458845b92c04af47307a2411b26c8ac81
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295020"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529378"
 ---
 # <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
@@ -90,6 +90,7 @@ Ehhez a folyamathoz a tárolási szinten szereplő díjszabási következmények
 >- Tekintse át a [támogatási mátrix](backup-support-matrix.md#cross-region-restore) ot a támogatott felügyelt típusok és régiók listájáért.
 >- A Régiók közötti visszaállítás (CRR) szolgáltatás jelenleg csak a következő régiókban érhető el: 
 >    - USA nyugati középső régiója
+>    - USA nyugati régiója
 >    - USA nyugati régiója, 2.
 >    - USA déli középső régiója
 >    - USA keleti régiója
@@ -101,11 +102,14 @@ Ehhez a folyamathoz a tárolási szinten szereplő díjszabási következmények
 >    - Délkelet-Ausztrália
 >    - Közép-India
 >    - Dél-India
+>    - Nyugat-India
 >    - Kelet-Japán
 >    - Nyugat-Japán
 >    - Délkelet-Ázsia
 >    - Az Egyesült Királyság déli régiója
 >    - Az Egyesült Királyság nyugati régiója
+>    - Nyugat-Európa
+>    - Észak-Európa
 >    - Közép-Franciaország
 >    - Dél-Korea középső régiója
 >    - Dél-Korea déli régiója

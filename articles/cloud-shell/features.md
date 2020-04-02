@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: 0aa71e4b78df8087093f183b146c525d2a8a0f99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 78275211b77cb34cf9aa92e44778e5d4d81fffed
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79366240"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521013"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Funkciók & eszközök az Azure Cloud Shellhez
 
@@ -44,7 +44,7 @@ A számítógépen `$HOME` és a gép állapotán kívül lévő fájlok nem mar
 
 ### <a name="azure-drive-azure"></a>Azure-meghajtó (Azure:)
 
-A Cloud Shell Ben lévő PowerShell elindítja az Azure Drive(`Azure:`).
+A Cloud Shell Ben a`Azure:`PowerShell biztosítja az Azure-meghajtót ( ). Az Azure-meghajtóra válthat `cd Azure:` a használatával, majd `cd  ~`vissza a kezdőkönyvtárba.
 Az Azure-meghajtó lehetővé teszi az Azure-erőforrások, például a compute, a Network, a Storage stb.
 Továbbra is használhatja a jól ismert [Azure PowerShell-parancsmagokkal](https://docs.microsoft.com/powershell/azure) ezeket az erőforrásokat, függetlenül attól, hogy a meghajtóban van-e.
 Az Azure-erőforrásokon végrehajtott módosítások, akár közvetlenül az Azure Portalon, akár az Azure PowerShell-parancsmagokon keresztül, megjelennek az Azure-meghajtóban.  Futtathatja `dir -Force` az erőforrások frissítéséhez.
@@ -78,7 +78,7 @@ A Cloud Shell előre konfigurált hitelesítést tartalmaz a nyílt forráskód�
 |Eszközök készítése            |make<br> maven<br> npm<br> Pip         |
 |Containers             |[Docker Machine](https://github.com/docker/machine)<br> [Kubectl között](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Élén](https://github.com/kubernetes/helm)<br> [DC/OS CLI](https://github.com/dcos/dcos-cli)         |
 |Adatbázisok              |MySQL kliens<br> PostgreSql kliens<br> [sqlcmd segédprogram](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
-|Egyéb                  |iPython-ügyfél<br> [Felhőöntödei CLI](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible (Ansible)](https://www.ansible.com/microsoft-azure)<br> [Chef InSpec](https://www.chef.io/inspec/)<br> [Báb csavar](https://puppet.com/docs/bolt/latest/bolt.html)<br> [HashiCorp csomagoló](https://www.packer.io/)|
+|Egyéb                  |iPython-ügyfél<br> [Felhőöntödei CLI](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Chef InSpec](https://www.chef.io/inspec/)<br> [Báb csavar](https://puppet.com/docs/bolt/latest/bolt.html)<br> [HashiCorp csomagoló](https://www.packer.io/)|
 
 ## <a name="language-support"></a>Nyelvi támogatás
 

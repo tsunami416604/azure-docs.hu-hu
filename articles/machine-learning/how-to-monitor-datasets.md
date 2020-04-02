@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: 401019c537cb0eb51fa6002637e170a79210f7d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a7a89b4ff1f6deb94c545e64b4584d7959d573a
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77617636"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546377"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Adateltolódás (előzetes verzió) észlelése adatkészleteken
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,7 +37,7 @@ Metrikák és elemzések érhetők el az [Azure Application Insights-erőforrás
 ## <a name="prerequisites"></a>Előfeltételek
 
 Adatkészlet-figyelők létrehozásához és az azokhoz való munkához a következőkre van szükség:
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt elkezdené. Próbálja ki még ma [az Azure Machine Learning ingyenes vagy fizetős verzióját.](https://aka.ms/AMLFree)
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy ingyenes fiókot. Próbálja ki még ma [az Azure Machine Learning ingyenes vagy fizetős verzióját.](https://aka.ms/AMLFree)
 * Egy [Azure Machine Learning-munkaterület.](how-to-manage-workspace.md)
 * Az [Azure Machine Learning SDK python telepítve,](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)amely tartalmazza az azureml-adatkészletek csomag.
 * Strukturált (táblázatos) adatok a fájl elérési útján, fájlnevében vagy oszlopában megadott időbélyegzővel.
@@ -77,7 +77,7 @@ A céladatkészletnek be `timeseries` kell állítania a tulajdonságot az időb
 
 #### <a name="python-sdk"></a>Python SDK
 
-Az [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) osztály [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) metódusa határozza meg az adatkészlet időbélyegző oszlopát. 
+Az [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) osztály [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) metódusa határozza meg az adatkészlet időbélyegző oszlopát. 
 
 ```python 
 from azureml.core import Workspace, Dataset, Datastore
@@ -104,7 +104,7 @@ dset = dset.with_timestamp_columns('date')
 dset = dset.register(ws, 'target')
 ```
 
-Az adatkészletek tulajdonságának `timeseries` teljes példáját a [példajegyzetfüzet](https://aka.ms/azureml-tsd-notebook) ben vagy az [SDK-dokumentációban](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-)találja.
+Az adatkészletek tulajdonságának `timeseries` teljes példáját a [példajegyzetfüzet](https://aka.ms/azureml-tsd-notebook) ben vagy az [SDK-dokumentációban](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)találja.
 
 #### <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku-inline.md)]

@@ -4,13 +4,15 @@ description: További információ arról, hogyan konfigurálhatja a Facebook-hi
 ms.assetid: b6b4f062-fcb4-47b3-b75a-ec4cb51a62fd
 ms.topic: article
 ms.date: 06/06/2019
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 9a2d390a5647ed90284730e9186e981b8e699d10
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.custom:
+- seodec18
+- fasttrack-edit
+ms.openlocfilehash: b6aad323c0d6fa8f59c9fad203640c477b162503
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80438022"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519964"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-facebook-login"></a>Az App Service vagy az Azure Functions alkalmazás konfigurálása a Facebook bejelentkezési funkciójának használatára
 

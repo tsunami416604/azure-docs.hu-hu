@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 458a1d474e9a722a98ca068e1827cf0e1abf4b47
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: befe8945468d220a04ec7f0b515f22159cb72b0f
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75548819"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549232"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Az Azure Service Fabric ajánlott biztonsági eljárásai
 Egy alkalmazás üzembe helyezése az Azure-ban gyors, egyszerű és költséghatékony. Mielőtt üzembe helyezné a felhőalapú alkalmazást éles környezetben, tekintse át a biztonságos fürtök alkalmazásában való megvalósításához szükséges alapvető és ajánlott gyakorlati tanácsok listáját.
@@ -32,7 +32,7 @@ Az Azure Service Fabric következő biztonsági gyakorlati tanácsait javasoljuk
 -   Használja az X.509 tanúsítványokat.
 -   Konfigurálja a biztonsági házirendeket.
 -   Valósítsa meg a Reliable Actors biztonsági konfiguráció.
--   SSL konfigurálása az Azure Service Fabric.
+-   Konfigurálja a TLS-t az Azure Service Fabric hez.
 -   Használja a hálózati elkülönítést és biztonságot az Azure Service Fabric használatával.
 -   Konfigurálja az Azure Key Vault ot a biztonság érdekében.
 -   Felhasználók hozzárendelése szerepkörökhöz.
@@ -118,13 +118,13 @@ Minden aktor egy aktortípus példányaként van definiálva, amely megegyezik a
 [A Replikátor biztonsági konfigurációi](../../service-fabric/service-fabric-reliable-actors-kvsactorstateprovider-configuration.md) a replikáció során használt kommunikációs csatorna védelmére szolgálnak. Ez a konfiguráció megakadályozza, hogy a szolgáltatások lássák egymás replikációs forgalmát, és biztosítja, hogy a magas rendelkezésre állású adatok biztonságosak legyenek. Alapértelmezés szerint egy üres biztonsági konfigurációs szakasz megakadályozza a replikáció biztonságát.
 A Replikátor-konfigurációk konfigurálják a replikátort, amely felelős az aktor állapotszolgáltató állapotának rendkívül megbízhatóvá tételéért.
 
-## <a name="configure-ssl-for-azure-service-fabric"></a>SSL konfigurálása az Azure Service Fabric számára
-A kiszolgálóhitelesítési folyamat [hitelesíti](../../service-fabric/service-fabric-cluster-creation-via-arm.md) a fürtkezelési végpontokat egy felügyeleti ügyfél számára. A felügyeleti ügyfél ezután felismeri, hogy a valódi fürthöz beszél. Ez a tanúsítvány egy [SSL-t](../../service-fabric/service-fabric-cluster-creation-via-arm.md) is biztosít a HTTPS-felügyeleti API-hoz és a Service Fabric Explorer HTTPS-en keresztüli kezeléséhez.
+## <a name="configure-tls-for-azure-service-fabric"></a>TLS konfigurálása az Azure Service Fabric hez
+A kiszolgálóhitelesítési folyamat [hitelesíti](../../service-fabric/service-fabric-cluster-creation-via-arm.md) a fürtkezelési végpontokat egy felügyeleti ügyfél számára. A felügyeleti ügyfél ezután felismeri, hogy a valódi fürthöz beszél. Ez a tanúsítvány [tls-t](../../service-fabric/service-fabric-cluster-creation-via-arm.md) is biztosít a HTTPS-felügyeleti API-hoz és a Service Fabric Explorer HTTPS-en keresztüli kezeléséhez.
 Egyéni tartománynevet kell beszereznie a fürt számára. Amikor tanúsítványt kér egy hitelesítésszolgáltatótól, a tanúsítvány tulajdonosnevének meg kell egyeznie a fürthöz használt egyéni tartománynévvel.
 
-Az SSL konfigurálásához először be kell szereznie egy hitelesítésszolgáltató által aláírt SSL-tanúsítványt. A hitelesítésszolgáltató megbízható harmadik fél, amely ssl-biztonsági célokra állít ki tanúsítványokat. Ha még nem rendelkezik SSL-tanúsítvánnyal, be kell szereznie egyet egy SSL-tanúsítványokat értékesítő vállalattól.
+Egy alkalmazás TLS-ének konfigurálásához először be kell szereznie egy hitelesítésszolgáltató által aláírt SSL/TLS-tanúsítványt. A hitelesítésszolgáltató egy megbízható harmadik fél, amely tls biztonsági célokra tanúsítványokat állít ki. Ha még nem rendelkezik SSL/TLS tanúsítvánnyal, be kell szereznie egyet egy SSL/TLS tanúsítványokat értékesítő vállalattól.
 
-A tanúsítványnak meg kell felelnie az Alábbi követelményeknek az SSL-tanúsítványokra vonatkozóan az Azure-ban:
+A tanúsítványnak meg kell felelnie az alábbi követelményeknek az SSL/TLS tanúsítványokhoz az Azure-ban:
 -   A tanúsítványnak titkos kulcsot kell tartalmaznia.
 
 -   A tanúsítványt kulcscseréhez kell létrehozni, és személyes adatcserefájlba (.pfx) kell exportálni.
@@ -135,13 +135,13 @@ A tanúsítványnak meg kell felelnie az Alábbi követelményeknek az SSL-tanú
     - Kérjen tanúsítványt egy olyan tulajdonosnévvel rendelkező hitelesítésszolgáltatótól, amely megfelel a szolgáltatás egyéni tartománynevének. Ha például az egyéni tartománynév __contoso__**.com,** a hitelesítésszolgáltató tanúsítványának **tulajdonosnevének .contoso.com** vagy __www__**.contoso.com**.
 
     >[!NOTE]
-    >A __cloudapp__**.net** tartomány hitelesítésszolgáltatójától nem szerezhet be SSL-tanúsítványt.
+    >A __cloudapp__**.net** tartomány hitelesítésszolgáltatójától nem szerezhet be SSL/TLS tanúsítványt.
 
 -   A tanúsítványnak legalább 2048 bites titkosítást kell használnia.
 
 A HTTP protokoll nem biztonságos, és lehallgatási támadásoknak van kitéve. A HTTP-n keresztül továbbított adatokat a webböngésző egyszerű szövegként küldi el a webkiszolgálónak vagy más végpontok között. A támadók elkaphatják és megtekinthetik a HTTP-n keresztül küldött bizalmas adatokat, például a hitelkártya adatait és a fiókbejelentkezéseket. Amikor az adatokat a böngészőn keresztül küldik vagy teszik közzé HTTPS-en keresztül, az SSL biztosítja, hogy a bizalmas adatok titkosítva legyenek és biztonságosak legyenek a lehallgatástól.
 
-Az SSL-tanúsítványok használatáról az [SSL konfigurálása az Azure-alkalmazásokhoz](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md)című témakörben olvashat bővebben.
+Az SSL/TLS-tanúsítványok használatáról a [TLS konfigurálása az Azure-ban](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md)című témakörben olvashat bővebben.
 
 ## <a name="use-network-isolation-and-security-with-azure-service-fabric"></a>Hálózati elkülönítés és biztonság használata az Azure Service Fabric használatával
 Állítson be egy 3 csomópontos biztonságos fürtöt az [Azure Resource Manager sablon](../../azure-resource-manager/templates/template-syntax.md) mintaként való használatával. A sablon és a hálózati biztonsági csoportok segítségével szabályozhatja a bejövő és kimenő hálózati forgalmat.
