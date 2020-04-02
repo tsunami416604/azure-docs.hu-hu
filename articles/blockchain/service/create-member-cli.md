@@ -1,15 +1,15 @@
 ---
 title: Hozzon létre egy Azure Blockchain szolgáltatás tagot - Azure CLI
 description: Hozzon létre egy Azure Blockchain Service-tagot egy blockchain konzorcium számára az Azure CLI használatával.
-ms.date: 03/12/2020
+ms.date: 03/30/2020
 ms.topic: quickstart
 ms.reviewer: ravastra
-ms.openlocfilehash: 0a3cf3d7c7f3dc0b8ece6fd6a466e42ae970b61c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 322b1884726b6dfe322560032ed1b8a98c600154
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79214739"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529620"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-cli"></a>Rövid útmutató: Hozzon létre egy Azure Blockchain Service blockchain tag ot az Azure CLI használatával
 
@@ -58,7 +58,7 @@ az resource create \
 | **alaphelyzetbe állítása** | A tag alapértelmezett tranzakciós csomódának jelszava. Használja a jelszót az alapfokú hitelesítéshez, amikor a blockchain tag alapértelmezett tranzakciós csomópontnyilvános végpontjához csatlakozik.
 | **Konzorcium** | A csatlakozni vagy létrehozni hozandó konzorcium neve. A konzorciumokkal kapcsolatos további információkért lásd: [Azure Blockchain Service consortium.](consortium.md)
 | **consortiumAccountPassword** | A konzorciumi fiók jelszavát tagfiók-jelszónak is nevezik. A tagfiók jelszava a tag számára létrehozott Ethereum-fiók titkos kulcsának titkosítására szolgál. A tagfiók és a tagfiók jelszavát használja a konzorciumkezeléséhez.
-| **skuName** | Szint típusa. Használja az S0-t a Normál és a B0 alapszintűhez. Használja az *alapszintű* szintet a fejlesztéshez, teszteléshez és a fogalmak igazolásához. Használja a *standard* szint éles szintű központi telepítések.
+| **skuName** | Szint típusa. Használja az S0-t a Normál és a B0 alapszintűhez. Használja az *alapszintű* szintet a fejlesztéshez, teszteléshez és a fogalmak igazolásához. Használja a *standard* szint éles szintű központi telepítések. A *Standard* szint akkor is érdemes használnia, ha blockchain data managert használ, vagy nagy mennyiségű magántranzakciót küld. A tagság létrehozása után nem támogatott a tarifacsomag alap- és szabványos szint közötti módosítása.
 
 Körülbelül 10 percet vesz igénybe a blokklánc-tag és a támogató erőforrások létrehozása.
 

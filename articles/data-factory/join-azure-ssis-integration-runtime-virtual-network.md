@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 7e8a1793a329a863c9df97ae5ddcbee6cef10e8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4819eaf2a65cf542029cf36f262d0cea5be75f2e
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76964333"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521941"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS Integration Runtime csatlakoztatása virtuális hálózathoz
 
@@ -129,7 +129,7 @@ Alhálózat kiválasztásakor:
 
 Ha saját statikus nyilvános IP-címeket szeretne biztosítani az Azure-SSIS IR számára, miközben egy virtuális hálózathoz csatlakozik, győződjön meg arról, hogy azok megfelelnek az alábbi követelményeknek:
 
-- Pontosan két nem használt is, amelyek még nem társított más Azure-erőforrásokat kell biztosítani. Az extra lesz használva, amikor rendszeresen frissítjük az Azure-SSIS IR.The extra one will be used when we periodly upgrade your Azure-SSIS IR.
+- Pontosan két nem használt is, amelyek még nem társított más Azure-erőforrásokat kell biztosítani. Az extra lesz használva, amikor rendszeresen frissítjük az Azure-SSIS IR.The extra one will be used when we periodly upgrade your Azure-SSIS IR. Vegye figyelembe, hogy egy nyilvános IP-cím nem osztható meg az aktív Azure-SSIS irs között.
 
 - Mindkettőnek szabványos típusú statikusnak kell lennie. További részletekért tekintse meg [a nyilvános IP-cím sk-jait.](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku)
 
@@ -191,10 +191,55 @@ Ha `UK South` például az Azure-SSIS ir-kapcsolat a webhelyen található, és 
 > [!NOTE]
 > Ez a megközelítés további karbantartási költségekkel jár. Rendszeresen ellenőrizze az IP-tartományt, és adjon hozzá új IP-tartományokat az UDR-hez, hogy elkerülje az Azure-SSIS IR törését. Javasoljuk, hogy havonta ellenőrizze az IP-tartományt, mert amikor az új IP megjelenik a szolgáltatási címkében, az IP még egy hónapot vesz igénybe. 
 
+Az UDR-szabályok beállításának megkönnyítése érdekében a következő Powershell-parancsfájl futtatásával vehet fel UDR-szabályokat az Azure Batch felügyeleti szolgáltatásokhoz:
+```powershell
+$Location = "[location of your Azure-SSIS IR]"
+$RouteTableResourceGroupName = "[name of Azure resource group that contains your Route Table]"
+$RouteTableResourceName = "[resource name of your Azure Route Table ]"
+$RouteTable = Get-AzRouteTable -ResourceGroupName $RouteTableResourceGroupName -Name $RouteTableResourceName
+$ServiceTags = Get-AzNetworkServiceTag -Location $Location
+$BatchServiceTagName = "BatchNodeManagement." + $Location
+$UdrRulePrefixForBatch = $BatchServiceTagName
+if ($ServiceTags -ne $null)
+{
+    $BatchIPRanges = $ServiceTags.Values | Where-Object { $_.Name -ieq $BatchServiceTagName }
+    if ($BatchIPRanges -ne $null)
+    {
+        Write-Host "Start to add rule for your route table..."
+        for ($i = 0; $i -lt $BatchIPRanges.Properties.AddressPrefixes.Count; $i++)
+        {
+            $UdrRuleName = "$($UdrRulePrefixForBatch)_$($i)"
+            Add-AzRouteConfig -Name $UdrRuleName `
+                -AddressPrefix $BatchIPRanges.Properties.AddressPrefixes[$i] `
+                -NextHopType "Internet" `
+                -RouteTable $RouteTable `
+                | Out-Null
+            Write-Host "Add rule $UdrRuleName to your route table..."
+        }
+        Set-AzRouteTable -RouteTable $RouteTable
+    }
+}
+else
+{
+    Write-Host "Failed to fetch service tags, please confirm that your Location is valid."
+}
+```
+
 A tűzfalberendezés, amely lehetővé teszi a kimenő forgalmat, engedélyeznie kell a kimenő portok alatt megegyezik a követelmény nsg kimenő szabályok.
 -   443-as port, amely nek az Azure Cloud-szolgáltatások célja.
 
-    Ha az Azure Firewall, megadhatja a hálózati szabály Az AzureCloud service tag, különben előfordulhat, hogy engedélyezi a cél, mint az összes tűzfal berendezésben.
+    Ha az Azure Firewall, megadhatja a hálózati szabály Az AzureCloud service tag. A többi típusú tűzfal esetében egyszerűen engedélyezheti a célhelyet a 443-as porthoz, vagy engedélyezheti az Azure-környezet típusa alapján az alábbi teljes tartománynnokat:
+    | Azure környezet | Végpontok                                                                                                                                                                                                                                                                                                                                                              |
+    |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | Azure Public      | <ul><li><b>Azure Data Factory (kezelés)</b></li><li style="list-style-type:none"><ul><li>\*frontend.clouddatahub.net</li></ul></li><li><b>Azure Storage (kezelés)</b></li><li style="list-style-type:none"><ul><li>\*.blob.core.windows.net</li><li>\*table.core.windows.net</li></ul></li><li><b>Azure Container-beállításjegyzék (egyéni telepítés)</b></li><li style="list-style-type:none"><ul><li>\*azurecr.io</li></ul></li><li><b>Eseményközpont (naplózás)</b></li><li style="list-style-type:none"><ul><li>\*servicebus.windows.net</li></ul></li><li><b>Microsoft naplózási szolgáltatás (belső használat)</b></li><li style="list-style-type:none"><ul><li>gcs.prod.monitoring.core.windows.net</li><li>prod.warmpath.msftcloudes.com</li><li>azurewatsonanalysis-prod.core.windows.net</li></ul></li></ul> |
+    | Azure Government  | <ul><li><b>Azure Data Factory (kezelés)</b></li><li style="list-style-type:none"><ul><li>\*frontend.datamovement.azure.us</li></ul></li><li><b>Azure Storage (kezelés)</b></li><li style="list-style-type:none"><ul><li>\*blob.core.usgovcloudapi.net</li><li>\*table.core.usgovcloudapi.net</li></ul></li><li><b>Azure Container-beállításjegyzék (egyéni telepítés)</b></li><li style="list-style-type:none"><ul><li>\*azurecr.us</li></ul></li><li><b>Eseményközpont (naplózás)</b></li><li style="list-style-type:none"><ul><li>\*servicebus.usgovcloudapi.net</li></ul></li><li><b>Microsoft naplózási szolgáltatás (belső használat)</b></li><li style="list-style-type:none"><ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>azurewatsonanalysis.usgovcloudapp.net</li></ul></li></ul> |
+    | Azure China 21Vianet     | <ul><li><b>Azure Data Factory (kezelés)</b></li><li style="list-style-type:none"><ul><li>\*frontend.datamovement.azure.cn.</li></ul></li><li><b>Azure Storage (kezelés)</b></li><li style="list-style-type:none"><ul><li>\*blob.core.chinacloudapi.cn</li><li>\*table.core.chinacloudapi.cn</li></ul></li><li><b>Azure Container-beállításjegyzék (egyéni telepítés)</b></li><li style="list-style-type:none"><ul><li>\*azurecr.cn</li></ul></li><li><b>Eseményközpont (naplózás)</b></li><li style="list-style-type:none"><ul><li>\*servicebus.chinacloudapi.cn</li></ul></li><li><b>Microsoft naplózási szolgáltatás (belső használat)</b></li><li style="list-style-type:none"><ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>azurewatsonanalysis.chinacloudapp.cn</li></ul></li></ul>
+
+    Ami az Azure Storage, az Azure Container Registry és az Event Hub teljes tartományszámait illeti, a következő szolgáltatásvégpontok engedélyezését is engedélyezheti a virtuális hálózathoz, hogy az ezekre a végpontokra irányuló hálózati forgalom az Azure gerinchálózatán keresztül haladjon át, ahelyett, hogy a tűzfalberendezésre irányítanák:
+    -  Microsoft.Storage
+    -  Microsoft.ContainerRegistry
+    -  Microsoft.EventHub
+
 
 -   80-as port, amelynek célállomása crl letöltési hely.
 
@@ -219,7 +264,7 @@ A tűzfalberendezés, amely lehetővé teszi a kimenő forgalmat, engedélyeznie
     Ha az Azure Firewall, megadhatja a hálózati szabály storage service tag, különben engedélyezheti a cél, mint adott azure fájl tárolási URL-jét a tűzfalberendezésben.
 
 > [!NOTE]
-> Az Azure SQL és Storage esetében, ha az alhálózaton konfigurálja a virtuális hálózati szolgáltatás végpontjait, akkor az Azure-SSIS IR és az Azure SQL közötti forgalom ugyanabban a régióban \ Az Azure Storage ugyanabban a régióban vagy párosított régióban közvetlenül a Microsoft Azure gerinchálózatára lesz irányítva. a tűzfalkészülék helyett.
+> Az Azure SQL és Storage esetében, ha a virtuális hálózati szolgáltatás végpontjait az alhálózaton konfigurálja, akkor az Azure-SSIS IR és az Azure SQL közötti forgalom ugyanabban a régióban \ Az Azure Storage ugyanabban a régióban vagy a párosított régióban közvetlenül a Microsoft Azure gerinchálózatára lesz irányítva a tűzfalberendezés helyett.
 
 Ha nincs szüksége az Azure-SSIS IR kimenő forgalmának ellenőrzésére, egyszerűen alkalmazhat útvonalat az összes forgalom kényszerítéséhez a következő ugrástípusú **internetre:**
 
@@ -241,7 +286,7 @@ Az Azure-SSIS ir kell létrehoznia bizonyos hálózati erőforrások at ugyanabb
 > [!NOTE]
 > Most már hozhat saját statikus nyilvános IP-címeket az Azure-SSIS IR. Ebben a forgatókönyvben csak az Azure terheléselosztót és a hálózati biztonsági csoportot hozunk létre ugyanazon erőforráscsoport ban, mint a statikus nyilvános IP-címek a virtuális hálózat helyett.
 
-Ezek az erőforrások az Azure-SSIS IR indításakor jönnek létre. Az Azure-SSIS ir leállításakor törlődnek. Ha saját statikus nyilvános IP-címeket hoz az Azure-SSIS IR-hez, azok nem törlődnek, amikor az Azure-SSIS IR leáll. Az Azure-SSIS-ir leállításának letiltása érdekében ne használja fel újra ezeket a hálózati erőforrásokat a többi erőforrásban. 
+Ezek az erőforrások az Azure-SSIS IR indításakor jönnek létre. Az Azure-SSIS ir leállításakor törlődnek. Ha saját statikus nyilvános IP-címeket hoz az Azure-SSIS IR-hez, a saját statikus nyilvános IP-címei nem törlődnek az Azure-SSIS IR leállításakor. Az Azure-SSIS-ir leállításának letiltása érdekében ne használja fel újra ezeket a hálózati erőforrásokat a többi erőforrásban.
 
 Győződjön meg arról, hogy nincs erőforrás-zárolás az erőforráscsoport/előfizetés, amelyhez a virtuális hálózat/a statikus nyilvános IP-címek tartoznak. Ha írásvédett/törlési zárolást állít be, az Azure-SSIS ir indítása és leállítása sikertelen lesz, vagy nem válaszol.
 
@@ -249,6 +294,8 @@ Győződjön meg arról, hogy nem rendelkezik olyan Azure-szabályzattal, amely 
 - Microsoft.Network/LoadBalancers 
 - Microsoft.Network/NetworkSecurityGroups 
 - Microsoft.Network/PublicIPAddresses 
+
+Győződjön meg arról, hogy az előfizetés erőforráskvótája elegendő a fenti három hálózati erőforráshoz. Pontosabban a virtuális hálózatban létrehozott minden egyes Azure-SSIS-kapcsolati kapcsolathoz két ingyenes kvótát kell lefoglalnia a fenti három hálózati erőforrás mindegyikéhez. Az azure-SSIS-ir rendszeres időközönkénti frissítésekesetén az extra egy kvóta lesz felhasználva.
 
 ### <a name="faq"></a><a name="faq"></a>Gyik
 
@@ -262,7 +309,7 @@ Győződjön meg arról, hogy nem rendelkezik olyan Azure-szabályzattal, amely 
 
   Most már hozhat saját statikus nyilvános IP-címeket az Azure-SSIS IR. Ebben az esetben hozzáadhatja az IP-címeket az adatforrások tűzfalának engedélyezési listájához. Az alábbi lehetőségeket is figyelembe veheti az Azure-SSIS ir-ből való adatelérés biztosításához a forgatókönyvtől függően:
 
-  - Ha az adatforrás a helyszínen van, miután virtuális hálózatot csatlakoztatott a helyszíni hálózathoz, és csatlakozott az Azure-SSIS ir-hez a virtuális hálózati alhálózathoz, hozzáadhatja az alhálózat privát IP-címtartományát az adatforrás tűzfalengedélyezési listájához. .
+  - Ha az adatforrás a helyszínen van, miután egy virtuális hálózatot csatlakoztatt a helyszíni hálózathoz, és csatlakozott az Azure-SSIS ir-hez a virtuális hálózati alhálózathoz, ezután hozzáadhatja az alhálózat privát IP-címtartományát a tűzfal adatforrásának engedélyezési listájához.
   - Ha az adatforrás olyan Azure-szolgáltatás, amely támogatja a virtuális hálózati szolgáltatás végpontjait, konfigurálhat egy virtuális hálózati szolgáltatás végpontját a virtuális hálózati alhálózaton, és csatlakozhat az Azure-SSIS ir-hez az adott alhálózathoz. Ezután hozzáadhat egy virtuális hálózati szabályt az adott alhálózattal az adatforrás tűzfalához.
   - Ha az adatforrás nem Azure-beli felhőszolgáltatás, az UDR segítségével statikus nyilvános IP-címen keresztül irányíthatja a kimenő forgalmat az Azure-SSIS IR-ről egy NVA/Azure tűzfalra. Ezután hozzáadhatja az NVA/Azure tűzfal statikus nyilvános IP-címét az adatforrás tűzfalengedélyezési listájához.
   - Ha a fenti lehetőségek egyike sem felel meg az igényeinek, fontolja meg [egy saját üzemeltetésű infravörös hitelesítéscsoport konfigurálását az Azure-SSIS IR proxyjaként.](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis) Ezután hozzáadhatja a saját üzemeltetésű infravörös modult tartalmazó számítógép statikus nyilvános IP-címét az adatforrás tűzfalának engedélyezési listájához.

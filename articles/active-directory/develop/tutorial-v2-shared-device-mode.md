@@ -15,12 +15,12 @@ ms.date: 1/15/2020
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: bf7e6bb22ce89d6be3f79efad1f1a3679e8780e7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e74ff320f26a4b6fa7d1caf3d4effca5e10669f4
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77086065"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546233"
 ---
 # <a name="tutorial-use-shared-device-mode-in-your-android-application"></a>Oktatóanyag: Megosztott eszköz mód használata az Android-alkalmazásban
 
@@ -96,9 +96,9 @@ Ha az `"account_mode":"SINGLE"` MSAL konfigurációs fájlban van beállítva, b
 ```java
 private ISingleAccountPublicClientApplication mSingleAccountApp;
 
-/*Configure your sample app and save state for this activity*/ 
+/*Configure your sample app and save state for this activity*/
 PublicClientApplication.create(this.getApplicationCOntext(),
-  R.raw.auth_config, 
+  R.raw.auth_config,
   new PublicClientApplication.ApplicationCreatedListener(){
   @Override
   public void onCreated(IPublicClientApplication application){
@@ -109,7 +109,7 @@ PublicClientApplication.create(this.getApplicationCOntext(),
   public void onError(MsalException exception{
   /*Fail to initialize PublicClientApplication */
   }
-});  
+});
 ```
 
 ### <a name="detect-single-vs-multiple-account-mode"></a>Egy és több fiók mód észlelése
@@ -134,7 +134,7 @@ private IPublicClientApplication mApplication;
 
 A `loadAccount` metódus beolvassa a bejelentkezett felhasználó fiókját. A `onAccountChanged` módszer azt határozza meg, hogy a bejelentkezett felhasználó megváltozott-e, és ha igen, törölje a következőket:
 
-```java 
+```java
 private void loadAccount()
 {
   mSingleAccountApp.getCurrentAccountAsync(new ISingleAccountPublicClientApplication.CurrentAccountCallback()
@@ -157,12 +157,12 @@ private void loadAccount()
         updateSingedOutUI();
       }
     }
-    @Override 
-    public void onError(@NonNull Exception exception) 
+    @Override
+    public void onError(@NonNull Exception exception)
     {
     }
   }
-}  
+}
 ```
 
 ### <a name="globally-sign-in-a-user"></a>Globális bejelentkezés egy felhasználóba
@@ -233,7 +233,7 @@ Indítsa el a Hitelesítő alkalmazást, és keresse meg a főfiók oldalát. Mi
 ![Hitelesítő fiók hozzáadása képernyő](media/tutorial-v2-shared-device-mode/authenticator-add-account.png)
 
  Nyissa meg a **Beállítások** ablaktáblát a jobb oldali menüsor használatával. Válassza az **Eszközregisztráció** lehetőséget **a Munkahelyi & Iskolai fiókok csoportban.**
- 
+
  ![Hitelesítő fiók hozzáadása képernyő](media/tutorial-v2-shared-device-mode/authenticator-settings.png)
 
  Ha erre a gombra kattint, a rendszer megkéri, hogy engedélyezze az eszköznévjegyekhez való hozzáférést. Ez annak köszönhető, hogy az Android fiókintegrációja az eszközön. Válassza az **Allow lehetőséget.**
@@ -260,10 +260,10 @@ Miután megosztott módban helyezte el az eszközt, ismertté válik a szervezet
 
 ## <a name="running-the-sample-app"></a>A mintaalkalmazás futtatása
 
-A mintaalkalmazás egy egyszerű alkalmazás, amely meghívja a szervezet Graph API-ját. n első futtatáskor a rendszer kérni fogja a beleegyezést, mivel az alkalmazás új az alkalmazotti fiókjában.
+A mintaalkalmazás egy egyszerű alkalmazás, amely meghívja a szervezet Graph API-ját. Az első futtatáskor a rendszer kérni fogja a beleegyezést, mivel az alkalmazás új az alkalmazotti fiókjában.
 
 ![Alkalmazáskonfigurációs információs képernyő](media/tutorial-v2-shared-device-mode/run-app-permissions-requested.png)
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a megosztott módról az [Android-eszközök megosztott eszköz módban](shared-device-mode.md)
+További információ a megosztott módról az [Android-eszközök megosztott eszköz módban](msal-android-shared-devices.md)

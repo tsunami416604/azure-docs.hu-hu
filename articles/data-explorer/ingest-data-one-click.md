@@ -1,93 +1,75 @@
 ---
 title: Az azure Data Explorer betöltéséhez egykattintásos betöltéssel
-description: Ismerje meg, hogyan töltheti be (töltheti be) az adatokat az Azure Data Explorerbe egy kattintással történő betöltéssel.
+description: Az adatok Azure Data Explorerbe való betöltésének (betöltésének áttekintése) egyszerűen, egy kattintással történő betöltéssel.
 author: orspod
 ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
-ms.topic: conceptual
-ms.date: 10/31/2019
-ms.openlocfilehash: 4a53f7e68501ce7f9b19dea0822d3896ec241fb8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: overview
+ms.date: 03/29/2020
+ms.openlocfilehash: 5bde63427ce76f14832551864bbf2c3d8e015fd6
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75444557"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521588"
 ---
-# <a name="use-one-click-ingestion-to-ingest-data-into-azure-data-explorer"></a>Az azure Data Explorer betöltéséhez egykattintásos betöltéssel
+# <a name="what-is-one-click-ingestion"></a>Mi az egykattintásos betöltés? 
 
-Ez a cikk bemutatja, hogyan használhatja az egykattintásos betöltést egy új tábla JSON- vagy CSV-formátumban történő gyors betöltéséhez. Az adatok a tárolóból vagy egy helyi fájlból egy meglévő táblába vagy egy új táblába is bevihetők. Használja az intuitív egykattintásos varázslót, és néhány percen belül betöltése az adatokat. Ezután szerkesztheti a táblát, és lekérdezéseket futtathat az Azure Data Explorer webfelhasználói felületének használatával.
+Az egykattintásos betöltés lehetővé teszi az adatok gyors betöltését, és automatikusan javaslatokat tesz táblák és leképezési struktúrák javasolására az Azure Data Explorer adatforrása alapján. 
+
+Az Azure Data Explorer webes felhasználói felületén adatokat vihet be a tárolóból (blobfájl), egy helyi fájlból vagy egy tárolóból (legfeljebb 10 000 blobból). A folyamatos betöltéshez egy tárolón is definiálhat eseményrácsot. Az adatok json, CSV és más formátumokban meglévő vagy új táblába is [bevihetők.](#file-formats) Egy kattintással betöltés javasolhat egy struktúrát egy új tábla és tábla leképezéséhez az adatforrás alapján, és intuitív platformot biztosít egy meglévő tábla és tábla leképezés táblaszerkezetének módosításához. Egy kattintással betöltése az adatokat a táblába néhány percen belül.
+
+Az egykattintásos betöltés különösen akkor hasznos, ha először ad be adatokat, vagy ha az adatok sémája ismeretlen az Ön számára.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-* Jelentkezzen be [az alkalmazásba.](https://dataexplorer.azure.com/)
 * Hozzon létre [egy Azure Data Explorer-fürtöt és -adatbázist.](create-cluster-database-portal.md)
-* Jelentkezzen be a [webes felhasználói felületre,](https://dataexplorer.azure.com/) és [adjon hozzá egy kapcsolatot a fürthöz.](/azure/data-explorer/web-query-data#add-clusters)
+* Jelentkezzen be az [Azure Data Explorer webes felhasználói felületére,](https://dataexplorer.azure.com/) és adjon hozzá egy kapcsolatot a [fürthöz.](/azure/data-explorer/web-query-data#add-clusters)
 
-## <a name="ingest-new-data"></a>Új adatok betöltése
+## <a name="file-formats"></a>Fájlformátumok
 
-1. Kattintson a jobb gombbal a webes felhasználói felület bal oldali menüjében lévő *adatbázisra* vagy táblasorra, és válassza **az Új adatok betöltése (előnézet) parancsot.** *table*
+Az egykattintásos betöltés a következő formátumok bármelyikében támogatja az új tábla forrásadatokból történő betöltését:
+* JSON
+* CSV
+* Tsv
+* SCSV
+* SzOHSV
+* TSVE
+* Psv
+
+## <a name="one-click-ingestion-wizard"></a>Egykattintásos betöltési varázsló
+
+Az egykattintásos betöltési varázsló végigvezeti az egykattintásos betöltési folyamaton. 
+
+> [!Note]
+> Ez a szakasz általában a varázslót ismerteti. A kiválasztott beállítások attól függnek, hogy új vagy meglévő táblába szeretne-e belépni. További információkért lásd:
+    > * Betöltés [egy új táblába](one-click-ingestion-new-table.md)
+    > * Betöltés meglévő [táblába](one-click-ingestion-existing-table.md) 
+    
+1. A varázsló eléréséhez kattintson a jobb gombbal az Azure Data Explorer webes felhasználói felületének bal oldali menüjében lévő *adatbázisra* vagy táblasorra, és válassza az **új adatok betöltése (előnézet) parancsot.** *table*
 
     ![Egyetlen kattintásos betöltés kijelölése a webes felhasználói felületen](media/ingest-data-one-click/one-click-ingestion-in-webui.png)   
- 
-1. Az **Új adatok betöltése (előnézet)** ablakban válassza a **Forrás** lapot, és fejezze be a **Projekt részletei :**
 
-    * A **Táblázat csoportban**válasszon ki egy meglévő táblanevet a legördülő menüből, vagy válassza az **Új létrehozása lehetőséget** új tábla létrehozásához.
-    * A **Betöltés típusa esetén**válassza a **raktárból** vagy **a fájlból lehetőséget.**
-      * Ha a **tárolóból**lehetőséget választotta, válassza **a Hivatkozás a tárolóhoz** lehetőséget az URL-cím hozzáadásához. Blob [SAS URL-címe](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) magántárfiókokhoz. 
-      * Ha **a fájlból**kijelölte a Lehetőséget, válassza a **Tallózás** lehetőséget, és húzza a fájlt a mezőbe.
-    * A **séma szerkesztése** lehetőséget a táblázatoszlop konfigurációjának megtekintéséhez és szerkesztéséhez válassza.
- 
-    ![Egykattintásos betöltési forrás részletei](media/ingest-data-one-click/one-click-ingestion-source.png) 
+1. A varázsló végigvezeti a következő lehetőségeken:
+       * Betöltés meglévő [táblába](one-click-ingestion-existing-table.md)
+       * Betöltés [egy új táblába](one-click-ingestion-new-table.md)
+       * Adatok betöltése a következőből: * Blob storage * Helyi fájl * Tároló
+       * Adja meg a minta méretét 1 és 10 000 sor között (csak a tárolóból)
+       
+1. Miután sikeresen kiválasztotta az adatforrást, megjelenik az adatok előnézete. 
+    Ha tárolóból távolítja be az adatokat, szűrheti az adatokat, hogy csak adott előtagokkal vagy fájlkiterjesztésekkel rendelkező fájlokat kell betöltése. Előfordulhat például, hogy csak *az Európa*szóval kezdődő fájlnévvel rendelkező fájlokat szeretné beadni, vagy csak *a .json*kiterjesztésű fájlokat. 
 
-    > [!TIP]
-    > Ha egy *táblázatsorban* az **Új adatok betöltése (előnézet)** lehetőséget választja, a kijelölt táblanév megjelenik a **Projekt részletei képernyőn.**
+1. Kattintson **a Séma szerkesztése gombra.** Ha adatokat ad be egy adott táblába, leképezheti a forrásoszlopokat a céloszlopokhoz, és eldöntheti, hogy szerepel-e az oszlopnevek között.
 
-1. Ha meglévő táblát jelölt ki, megnyílik az **Oszlopok leképezése** ablak, amely a forrásadatoszlopokat céltábla-oszlopokhoz képezi. 
-    * A Céloszlop eltávolítása a táblázatból a **Kihagyás oszlopmal.**
-    * **Az Új oszlop mal** új oszlopot vehet fel a táblába.
+1. Indítsa el az adatbetöltési folyamatot.
 
-    ![Oszlopok leképezése ablak](media/ingest-data-one-click/one-click-map-columns-window.png)
-
-1. A **Séma** lapon:
-
-    * Válassza a Legördülő menü **Tömörítés típusa parancsát,** majd válassza a **Tömörítetlen** vagy a **GZip lehetőséget.**
-    * Válassza az **Adatformátum lehetőséget** a legördülő menüből, majd válassza a **JSON,** **CSV,** **TSV**, **SCSV**, **SOHSV**, **TSVE**vagy **PSV**lehetőséget. 
-        * A **JSON** formátum kiválasztásakor a **JSON-szinteket**is ki kell választania 1 és 10 között. A szintek hatással vannak a táblaoszlop adatainak ábrázolására. 
-        * Ha a JSON formátumtól eltérő formátumot választ, a fájl címsorsorának figyelmen kívül hagyásához jelölje be az **Oszlopnevek belefoglalása** jelölőnégyzetet.
-    * **A leképezési név** beállítása automatikusan megtörténik, de szerkeszthető.
-    * Ha meglévő táblázatot választott, az **Oszlopok leképezése** lehetőséget választva megnyithatja az **Oszlopok leképezése** ablakot.
-
-    ![Egykattintásos csv formátumú séma](media/ingest-data-one-click/one-click-csv-format.png)
-
-1. A **Szerkesztő** ablaktábla felett válassza a **v** gombot a szerkesztő megnyitásához. A szerkesztőben megtekintheti és másolhatja a bemenetekből generált automatikus lekérdezéseket. 
-
-1. A táblázatban: 
-    * Kattintson a jobb gombbal az új oszlopfejlécek elemre az **Adattípus módosítása**, **Az Oszlop átnevezése,** **az Oszlop törlése,** **a Növekvő rendezés**vagy a Csökkenő rendezés **elemre.** A meglévő oszlopokon csak az adatok rendezése érhető el. 
-    * Kattintson duplán a szerkesztéshez az új oszlopnévre.
-
-1. A tábla és a leképezés létrehozásához, valamint az adatok betöltésének megkezdéséhez válassza a **Betöltés megkezdése** lehetőséget.
-
-    ![Egykattintásos betöltésI JSON formátumú séma](media/ingest-data-one-click/one-click-json-format.png) 
- 
-## <a name="query-data"></a>Adatok lekérdezése
-
-1. Az **Adatbetöltés befejeződött** ablakban mindhárom lépés zöld pipával lesz megjelölve, ha az adatok betöltése sikeresen befejeződik.
- 
-    ![Egykattintásos adatbetöltés kész](media/ingest-data-one-click/one-click-data-ingestion-complete.png)
-
-1. A lekérdezés megnyitásához kattintson a **v** gombra. Másolás a webes felhasználói felületre a lekérdezés szerkesztéséhez.
-
-1. A jobb oldali menü **gyorslekérdezéseket** és **eszközök** beállításait tartalmazza. 
-
-    * **A gyorslekérdezések** a webes felhasználói felületre mutató lekérdezésekkel rendelkező hivatkozásokat tartalmaznak.
-    * **Az eszközök** a webes felhasználói felületen található **Drop parancsokra** mutató hivatkozást tartalmaznak, amely lehetővé teszi a problémák elhárítását a megfelelő `.drop` parancsok futtatásával.
-
-    > [!TIP]
-    > Parancsok használatakor `.drop` adatok veszhetnek el. Óvatosan használja őket.
+> [!Note]
+> Ha az adatforrás egy tároló, vegye figyelembe, hogy az Azure Data Explorer adatbetöltési összesítési (kötegelési) szabályzata a betöltési folyamat optimalizálására szolgál. Alapértelmezés szerint a házirend 5 perc vagy 500 MB adatra van konfigurálva, így késést tapasztalhat. Az [batching policy](/azure/kusto/concepts/batchingpolicy) összesítési beállításokat a kötegelési házirendben láthatja. Más forrásokból származó adatok betöltésekor a betöltés azonnali hatállyal érvénybe lép.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Adatok lekérdezése az Azure Data Explorer webes felhasználói felületén](web-query-data.md)
-* [Lekérdezések írása az Azure Data Explorer hez a Kusto lekérdezési nyelv használatával](write-queries.md)
+* Döntse el, hogy egy kattintással betöltéssel beszeretné-e adni az adatokat [egy meglévő vagy egy](one-click-ingestion-existing-table.md) új [táblába.](one-click-ingestion-new-table.md)
+* [Adatok lekérdezése az Azure Data Explorer webes felhasználói felületén](/azure/data-explorer/web-query-data)
+* [Lekérdezések írása az Azure Data Explorer hez a Kusto lekérdezési nyelv használatával](/azure/data-explorer/write-queries)

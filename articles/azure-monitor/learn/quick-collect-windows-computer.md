@@ -13,18 +13,18 @@ ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 11b61612a261b32e2d15b5dc70005b18aa112ed4
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b3949159d939a043fd4ccc820bc1cdad14da7751
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240344"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80528376"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Adatok gyűjtése Windows-számítógépről hibrid környezetben az Azure Monitor segítségével
 
 [Az Azure Monitor](../overview.md) a környezetében lévő fizikai vagy virtuális Windows-számítógépekről közvetlenül adatokat gyűjthet a Log Analytics-munkaterületre a részletes elemzés és korreláció szempontjából. A [Log Analytics-ügynök](../platform/log-analytics-agent.md) telepítése lehetővé teszi, hogy az Azure Monitor adatokat gyűjtsön egy adatközpontból vagy más felhőkörnyezetből. Ez a rövid útmutató bemutatja, hogyan konfigurálhatja a windowsos számítógépekről történő adatgyűjtést néhány egyszerű lépésben. Az Azure Windows virtuális gépeiről az [Azure virtuális gépekre vonatkozó adatok gyűjtése című](../../azure-monitor/learn/quick-collect-azurevm.md)témakörben talál további információt.  
 
-A támogatott konfigurációt a [Támogatott Windows operációs rendszerek](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) és a Hálózati tűzfal [konfigurációja](../../azure-monitor/platform/log-analytics-agent.md#network-firewall-requirements)című témakörben ismerteti.
+A támogatott konfigurációt a [Támogatott Windows operációs rendszerek](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) és a Hálózati tűzfal [konfigurációja](../../azure-monitor/platform/log-analytics-agent.md#firewall-requirements)című témakörben ismerteti.
  
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 
@@ -36,7 +36,7 @@ Jelentkezzen be az Azure [https://portal.azure.com](https://portal.azure.com)Por
 
 1. Az Azure Portalon válassza a **Minden szolgáltatás**lehetőséget. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza **a Log Analytics-munkaterületek lehetőséget.**
 
-    ![Azure portál](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
+    ![Azure Portal](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
 2. Válassza **a Létrehozás**lehetőséget, majd adja meg a következő elemek hez szükséges beállításokat:
 

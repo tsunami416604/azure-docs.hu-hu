@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: weixu
-ms.openlocfilehash: 64a9e11cec7164fb4421dd018238de9f0670382b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e2c9c0aadc8e443f07f60f3ccddb4a1b6dd661b1
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76263727"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520910"
 ---
 # <a name="real-time-conversation-transcription-preview"></a>Valós idejű beszélgetésátírás (előzetes verzió)
 
@@ -32,7 +32,7 @@ A Speech SDK **ConversationTranscriber** API-ja lehetővé teszi értekezletek �
 
 A Beszédeszköz SDK mintakódot biztosít Java-ban a valós idejű hangrögzítéshez 8 csatorna használatával.
 
-- [ROOBO eszköz mintakódja](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Android/Speech%20Devices%20SDK%20Starter%20App/example/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/sdsdkstarterapp/Conversation.java)
+- [ROOBO eszköz mintakódja](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Android/Speech%20Devices%20SDK%20Starter%20App/example/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/sdsdkstarterapp/ConversationTranscription.java)
 - [Az Azure Kinect Dev Kit mintakódja](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Windows_Linux/SampleDemo/src/com/microsoft/cognitiveservices/speech/samples/Cts.java)
 
 ## <a name="prerequisites"></a>Előfeltételek

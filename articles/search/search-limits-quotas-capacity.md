@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 6ee339cb709a5d825b39b4accf294761c99ee41a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b54905e201ee7a6dbf4c6837960a6e0b63057ea9
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79282977"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549055"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Az Azure Cognitive Search szolgáltatási korlátai
 
@@ -30,7 +30,7 @@ A tárolási, számítási feladatok és indexek és egyéb objektumok mennyisé
 > [!NOTE]
 > Július 1-jéig az összes szint általánosan elérhető, beleértve a Storage-optimalizált szintet is. Minden díjszabás megtalálható az [Árképzés részletei](https://azure.microsoft.com/pricing/details/search/) oldalon.
 
-  Az S3 Nagy sűrűségű (S3 HD) speciális számítási feladatokhoz készült: [több-bérlős](search-modeling-multitenant-saas-applications.md) és nagy mennyiségű kis index (indexenként egymillió dokumentum, szolgáltatásonként háromezer index). Ez a szint nem biztosítja az [indexelő funkciót.](search-indexer-overview.md) Az S3 HD-n az adatbetöltésnek ki kell használnia a leküldéses megközelítést, és API-hívásokhasználatával le kell adnia az adatokat a forrásból az indexbe. 
+  Az S3 nagy sűrűségű (S3 HD) speciális számítási feladatokhoz készült: [több-bérlős](search-modeling-multitenant-saas-applications.md) és nagy mennyiségű kis indexek (szolgáltatásonként háromezer index). Ez a szint nem biztosítja az [indexelő funkciót.](search-indexer-overview.md) Az S3 HD-n az adatbetöltésnek ki kell használnia a leküldéses megközelítést, és API-hívásokhasználatával le kell adnia az adatokat a forrásból az indexbe. 
 
 > [!NOTE]
 > Egy szolgáltatás egy adott szinten van kiépítve. Ugrás szintek kapacitás megszerzéséhez magában foglalja egy új szolgáltatás kiépítése (nincs helyben frissítés). További információ: [Termékváltozat vagy szint kiválasztása.](search-sku-tier.md) Ha többet szeretne tudni a már kiépített szolgáltatás kapacitásának módosításáról, olvassa el [az Erőforrásszintek méretezése lekérdezési és indexelési számítási feladatokhoz.](search-capacity-planning.md)
@@ -61,38 +61,16 @@ A tárolási, számítási feladatok és indexek és egyéb objektumok mennyisé
 
 <sup>2</sup> Mivel dokumentumonként nagyon sok elem található összetett gyűjteményekben, jelenleg nagy tárolási kihasználtságot okoz. Ez egy ismert probléma. Addig is a 3000-es korlát az összes szolgáltatási szint biztonságos felső határa. Ez a korlát csak olyan indexelési műveletekesetén van érvényben, amelyek a legkorábbi`2019-05-06`általánosan elérhető (GA) API-verziót használják, amely támogatja az összetett típusmezőket ( ). Ha nem szakítjuk meg azokat az ügyfeleket, akik esetleg korábbi előzetes API-verziókat használnak (amelyek összetett típusmezőket támogatnak), nem érvényesítjük ezt a korlátot az ilyen előzetes API-verziókat használó indexelési műveletekre. Vegye figyelembe, hogy az előzetes API-verziók nem éles környezetben való használatra szolgálnak, és javasoljuk, hogy az ügyfelek a legújabb GA API-verzióra lépjenek.
 
+> [!NOTE]
+> Bár egyetlen index maximális kapacitását általában korlátozza a rendelkezésre álló tárterület, az egyetlen indexben tárolható dokumentumok teljes számán maximális felső határok vannak. Ez a korlát az Alapszintű, S1, S2 és S3 keresési szolgáltatások indexenként körülbelül 24 milliárd dokumentumot tartalmaz, és 2 milliárd dokumentumot indexenként az S3HD keresési szolgáltatásokhoz. Az összetett gyűjtemények minden eleme külön dokumentumnak számít e korlátok alkalmazásában.
+
 <a name="document-limits"></a>
 
 ## <a name="document-limits"></a>Dokumentumkorlátok 
 
-2018 októberétől már nem léteznek dokumentumkorlátok bármely számlázható szinten (Alapszintű, S1, S2, S3, S3 HD) bármely régióban létrehozott új szolgáltatásokhoz. Míg a legtöbb régióban 2017 novembere és decembere óta korlátlan a dokumentumszám, néhány régió ban, amelyek ezen időpont után is továbbra is dokumentumkorlátozásokat vezettek be. Attól függően, hogy mikor és hol hozott létre keresési szolgáltatást, előfordulhat, hogy olyan szolgáltatást futtat, amelyre továbbra is vonatkoznak a dokumentumkorlátok.
+2018 októberétől már nem léteznek olyan új szolgáltatások, amelyek bármely számlázható szinten (Alapszintű, S1, S2, S3, S3 HD) bármely régióban létrehozott új szolgáltatásokhoz nem tartoznak. A 2018 októbere előtt létrehozott régebbi szolgáltatásokra továbbra is vonatkozhatnak a dokumentumok száma.
 
 Annak megállapításához, hogy a szolgáltatás rendelkezik-e dokumentumkorlátokkal, használja a [GET Service Statistics REST API-t.](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics) A dokumentumkorlátok a válaszban `null` is megjelennek, és nem jeleznek korlátokat.
-
-> [!NOTE]
-> Annak ellenére, hogy nincsenek termékváltozat-specifikus dokumentumkorlátok, minden index továbbra is a szolgáltatás stabilitásának biztosítása érdekében a maximális biztonságos korlát vonatkozik. Ez a határ Lucene-től származik. Minden Azure Cognitive Search-dokumentum belsőleg indexelt egy vagy több Lucene-dokumentumként. A Lucene-dokumentumok keresési dokumentumonkénti száma az összetett gyűjteménymezők elemeinek teljes számától függ. Minden elem külön Lucene-dokumentumként van indexelve. Például egy összetett gyűjteménymezőben 3 elemet tartalmazó dokumentum 4 Lucene-dokumentumként lesz indexelve - 1 a dokumentumhoz és 3 az elemekhez. A Lucene-dokumentumok maximális száma indexenként nagyjából 25 milliárd.
-
-### <a name="regions-previously-having-document-limits"></a>Korábban dokumentumkorlátokkal rendelkező régiók
-
-Ha a portál dokumentumkorlátot jelez, a szolgáltatás 2017 vége előtt jött létre, vagy egy adatközpontban jött létre az Azure Cognitive Search-szolgáltatások üzemeltetéséhez alacsonyabb kapacitású fürtök használatával:
-
-+ Kelet-Ausztrália
-+ Kelet-Ázsia
-+ Közép-India
-+ Nyugat-Japán
-+ USA nyugati középső régiója
-
-A dokumentumkorlátok hatálya alá tartozó szolgáltatásokra a következő maximális korlátozások vonatkoznak:
-
-|  Ingyenes | Basic | S1 | S2 | S3 | S3&nbsp;HD |
-|-------|-------|----|----|----|-------|
-|  10,000 |1&nbsp;millió |15 millió partíciónként vagy 180 millió szolgáltatásonként |60 millió partíciónként vagy 720 millió szolgáltatásonként |120 millió partíciónként vagy 1,4 milliárd szolgáltatásonként |1 millió indexenként vagy 200 millió partíciónként |
-
-Ha a szolgáltatás korlátozza önt, hozzon létre egy új szolgáltatást, majd tegye közzé újra az összes tartalmat a szolgáltatásban. Nincs olyan mechanizmus, amely zökkenőmentesen újrakiépíti a szolgáltatást a színfalak mögött új hardverre.
-
-> [!Note] 
-> A 2017 vége után létrehozott S3 nagy sűrűségű szolgáltatások esetében a partíciónkénti 200 millió dokumentumot eltávolították, de az indexkorlátonkénti 1 millió dokumentum továbbra is fennáll.
-
 
 ### <a name="document-size-limits-per-api-call"></a>Dokumentumméret-korlátozások API-hívásonként
 

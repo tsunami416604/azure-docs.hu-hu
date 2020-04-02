@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 Customer intent: As a developer, I want to build a Node.js web application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 7a01c436f31a8ce5b8071db3eda4cf5562c421c0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3c50e82647b22a18edee92f47abc1d136670cacc
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75441265"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519670"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Oktatóanyag: Node.js webalkalmazás létrehozása a JavaScript SDK használatával egy SQL API-fiók kezeléséhez az Azure Cosmos DB-ben 
 
@@ -83,7 +83,7 @@ Most megtanulhatja, hogyan hozhat létre egy alapszintű Hello World Node.js-pro
    npm start
    ```
 
-1. Az új alkalmazást úgy tekintheti [http://localhost:3000](http://localhost:3000)meg, hogy a böngészőben a rendszerbe navigál.
+1. Az új alkalmazás megtekintéséhez navigáljon a böngészőben a következő címre: `http://localhost:3000`.
    
    ![A Node.js megismerése – Képernyőfelvétel a Hello World alkalmazásról egy böngészőablakban](./media/sql-api-nodejs-application/cosmos-db-node-js-express.png)
 
@@ -359,7 +359,7 @@ Miután most végrehajtottuk a kezdeti telepítést és konfigurálást, megírj
 
 ## <a name="build-a-user-interface"></a><a name="_Toc395783181"></a>Felhasználói felület létrehozása
 
-Most hozzuk létre a felhasználói felületet, hogy a felhasználók használatba vehessék az alkalmazást. Az előző szakaszokban létrehozott Express-alkalmazás a **Jade** megjelenítési motort használja.
+Most hozzuk létre a felhasználói felületet, hogy a felhasználó kommunikálhat az alkalmazással. Az előző szakaszokban létrehozott Express-alkalmazás a **Jade** megjelenítési motort használja.
 
 1. A rendszer a **views** (nézetek) könyvtárban található **layout.jade** fájlt használja a többi **.jade** fájl globális sablonjaként. Ebben a lépésben ezt a sablont a Twitter Bootstrap eszközkészletre módosítja majd, amellyel webhelyeket tervezhet.  
 

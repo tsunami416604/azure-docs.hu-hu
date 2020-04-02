@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/05/2020
-ms.openlocfilehash: bc7e77cc498958b2f8f0c5b2d5ab2d59db97a235
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 79deb2f33a11e8ccb6f059bde7590b7cc0fe20c0
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240407"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521143"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Rövid útmutató: Hozzon létre egy Azure Cosmos-fiókot, adatbázist, tárolót és elemeket az Azure Portalról
 
@@ -40,7 +40,38 @@ Azure-előfizetés vagy ingyenes Azure Cosmos DB próbafiók
 <a id="create-account"></a>
 ## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB-fiók létrehozása
 
-[!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
+Az [Azure Portalon](https://portal.azure.com/) hozzon létre egy Azure Cosmos DB-fiókot. Keresse meg és válassza az **Azure Cosmos DB** lehetőséget.
+
+   ![Az Azure Portal Adatbázisok panelje](./media/create-cosmosdb-resources-portal/find-nosql-cosmosdb-marketplace.png)
+
+1. Válassza a **Hozzáadás** lehetőséget.
+1. Az **Azure Cosmos DB-fiók létrehozása** lapon adja meg az új Azure Cosmos-fiók alapvető beállításait. 
+
+    |Beállítás|Érték|Leírás |
+    |---|---|---|
+    |Előfizetés|Előfizetés neve|Válassza ki az Azure Cosmos-fiókhoz használni kívánt Azure-előfizetést. |
+    |Erőforráscsoport|Erőforráscsoport neve|Jelöljön ki egy erőforráscsoportot, vagy válassza **az Új létrehozása**lehetőséget, majd adja meg az új erőforráscsoport egyedi nevét. |
+    |Fiók neve|Egyedi név|Adjon meg egy nevet az Azure Cosmos-fiók azonosításához. Mivel *documents.azure.com* az URI létrehozásához megadott névhez van hozzáfűzve, használjon egyedi nevet.<br><br>A név csak kisbetűket, számokat és kötőjelet (-) tartalmazhat. 3-31 karakter közötti hosszúságúnak kell lennie.|
+    |API|A létrehozandó fiók típusa|Válassza **a Core (SQL)** lehetőséget, ha sql szintaxissal szeretne dokumentum-adatbázist és lekérdezést létrehozni. <br><br>A létrehozni kívánt fiók típusát az API határozza meg. Az Azure Cosmos DB öt API-t biztosít: Core (SQL) és MongoDB a dokumentumadatokhoz, a Gremlin a gráfadatokhoz, az Azure Table és a Cassandra. Jelenleg létre kell hoznia egy külön fiókot minden API-hoz. <br><br>[További információ az SQL API-ról.](introduction.md)|
+    |Ingyenes szintkedvezmény alkalmazása|Alkalmazás vagy Nem alkalmazás|Az Azure Cosmos DB ingyenes szinttel az első 400 RU/s és 5 GB tárterületet kapja ingyen egy fiókban. További információ az [ingyenes szintről.](https://azure.microsoft.com/pricing/details/cosmos-db/)|
+    |Hely|A felhasználókhoz legközelebb eső régió|Válassza ki az Azure Cosmos DB-fiókot üzemeltetéséhez használni kívánt földrajzi helyet. Használja a felhasználókhoz legközelebb eső helyet, hogy a leggyorsabb hozzáférést biztosítsa számukra az adatokhoz.|
+    |Fiók típusa|Termelés vagy nem gyártás|Válassza **a Termelés** lehetőséget, ha a fiókot éles számítási feladathoz fogja használni. Válassza a **Nem éles lehetőséget,** ha a fiókot nem éles, például fejlesztéshez, teszteléshez, minőségbiztosítási vagy átmeneti állapothoz fogja használni. Ez egy Azure-erőforrás-címke beállítás, amely beállítja a portál élményt, de nem befolyásolja az alapul szolgáló Azure Cosmos DB-fiók. Ezt az értéket bármikor módosíthatja.|
+
+
+> [!NOTE]
+> Azure-előfizetésenként legfeljebb egy ingyenes Azure Cosmos DB-fiókkal rendelkezhet, és a fiók létrehozásakor engedélyeznie kell. Ha nem látja az ingyenes szint kedvezményének alkalmazását, ez azt jelenti, hogy az előfizetésegy másik fiókja már engedélyezve van az ingyenes szinttel.
+   
+   ![Az Azure Cosmos DB új fiók lapja](./media/create-cosmosdb-resources-portal/azure-cosmos-db-create-new-account-detail.png)
+
+1. Válassza az **Áttekintés + létrehozás** lehetőséget. Kihagyhatja a **Hálózat** és **címkék** szakaszt.
+
+1. Tekintse át a fiókbeállításokat, és válassza a **Létrehozás gombot.** A fiók létrehozása néhány percet vesz igénybe. Várja meg, amíg a portállap megjelenik **A telepítés befejeződött.** 
+
+    ![Az Azure Portal Értesítések panelje](./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-deployment-successful.png)
+
+1. Válassza **az Ugrás az erőforráshoz** lehetőséget az Azure Cosmos DB-fiók lapra való ugráshoz. 
+
+    ![Az Azure Cosmos DB-fiók lapja](./media/create-cosmosdb-resources-portal/azure-cosmos-db-account-quickstart-pane.png)
 
 <a id="create-container-database"></a>
 ## <a name="add-a-database-and-a-container"></a>Adatbázis és tároló hozzáadása 

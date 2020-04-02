@@ -13,17 +13,17 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 054b5c7d13df39de4fa57167e0363c0b4acf9b08
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4cabd63dc39590a9bf728528f3e7b3aa5d3f6b04
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80280745"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521757"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Oktatóanyag: Az Apache Kafka feldolgozása az Event Hubs-eseményekhez a Stream analytics használatával 
 Ez a cikk bemutatja, hogyan továbbítsa az adatokat az Event Hubs-ba, és hogyan dolgozza fel azokat az Azure Stream Analytics szolgáltatással. Végigvezeti a következő lépéseken: 
 
-1. Hozzon létre egy Kafka-kompatibilis Eseményközpontok névteret.
+1. Event Hubs-névtér létrehozása.
 2. Hozzon létre egy Kafka-ügyfelet, amely üzeneteket küld az eseményközpontnak.
 3. Hozzon létre egy Stream Analytics-feladatot, amely adatokat másol az eseményközpontból egy Azure blob-tárolóba. 
 
@@ -41,7 +41,7 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy teljesülnek a
 * Egy **Azure Storage-fiók.** Ha még nem rendelkezik ilyen, [hozzon létre egyet,](../storage/common/storage-account-create.md) mielőtt továbbhaladna. A streamanalytics-feladat ebben a forgatókönyvben tárolja a kimeneti adatokat egy Azure blob storage.The Stream Analytics job in this walkthrough stores the output data in an Azure blob storage. 
 
 
-## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Kafka-kompatibilis Event Hubs-névtér létrehozása
+## <a name="create-an-event-hubs-namespace"></a>Event Hubs-névtér létrehozása
 Szabványos **szintű** Event Hubs névtér létrehozásakor a névtér Kafka végpontja automatikusan engedélyezve lesz. A Kafka protokollt használó alkalmazások eseményeit streamelheti standard szintű Event Hubs-ba. Kövesse a lépésenkénti utasításokat a [Hozzon létre egy eseményközpontot](event-hubs-create.md) az Azure Portal használatával egy **szabványos** szintű Event Hubs névtér létrehozásához. 
 
 > [!NOTE]
@@ -185,7 +185,7 @@ Ebben a cikkben megtanulta, hogyan streamelhet az Event Hubs-ba a protokollügyf
 
 - [Ismerkedés az Event Hubs szolgáltatással](event-hubs-what-is-event-hubs.md)
 - [Az Apache Kafkához készült Event Hubs](event-hubs-for-kafka-ecosystem-overview.md)
-- [Kafka-kompatibilis eseményközpont létrehozása](event-hubs-create.md)
+- [Eseményközpont létrehozása](event-hubs-create.md)
 - [Streamelés az Event Hubsba a Kafka-alkalmazásokból](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 - [Kafka-közvetítő tükrözése egy eseményközpontba](event-hubs-kafka-mirror-maker-tutorial.md)
 - [Apache Spark csatlakoztatása egy eseményközponthoz](event-hubs-kafka-spark-tutorial.md)

@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: takamath
-ms.openlocfilehash: e2dd642139ae082cc0d0838e61399c549d2d812a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 074d512767769fe434cd4a6d4f4e8e6a88f7ed2a
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74970775"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549116"
 ---
 # <a name="enable-browser-connection-on-lab-virtual-machines"></a>Böngészőkapcsolat engedélyezése tesztkörnyezetben lévő virtuális gépeken 
 A DevTest Labs integrálható [az Azure Bastion](https://docs.microsoft.com/azure/bastion/)szolgáltatással, amely lehetővé teszi, hogy egy böngészőn keresztül csatlakozzon a virtuális gépekhez. Először engedélyeznie kell a böngészőkapcsolatot a tesztkörnyezetben lévő virtuális gépeken.
 
-A tesztkörnyezet tulajdonosaként engedélyezheti az összes tesztkörnyezetbeli virtuális gép böngészőn keresztüli elérését. Nincs szüksége további ügyfélre, ügynökre vagy szoftverre. Az Azure Bastion biztonságos és zökkenőmentes RDP/SSH-kapcsolatot biztosít a virtuális gépekhez közvetlenül az Azure Portalon SSL-en keresztül. Amikor az Azure Bastion on keresztül csatlakozik, a virtuális gépek nem kell egy nyilvános IP-címet. További információ: [Mi az Azure-bástya?](../bastion/bastion-overview.md)
+A tesztkörnyezet tulajdonosaként engedélyezheti az összes tesztkörnyezetbeli virtuális gép böngészőn keresztüli elérését. Nincs szüksége további ügyfélre, ügynökre vagy szoftverre. Az Azure Bastion biztonságos és zökkenőmentes RDP/SSH-kapcsolatot biztosít a virtuális gépekhez közvetlenül az Azure Portalon a TLS-en keresztül. Amikor az Azure Bastion on keresztül csatlakozik, a virtuális gépek nem kell egy nyilvános IP-címet. További információ: [Mi az Azure-bástya?](../bastion/bastion-overview.md)
 
 
 Ez a cikk bemutatja, hogyan engedélyezheti a böngésző kapcsolatot a tesztkörnyezetben lévő virtuális gépeken.

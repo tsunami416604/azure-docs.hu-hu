@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 02/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: af15a7366fd07cecb376ff76ad383f784202a887
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 856410f2166ae442e8beadf36eac312748407b13
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77526814"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529748"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Oktatóanyag: Azure Time Series Insights előzetes verziójú környezet beállítása
 
@@ -30,7 +30,6 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Az Azure Time Series Insights előzetes környezetébe való adatfolyamadatok futtatásához futtasson megoldásgyorsítómintát.
 > * Végezze el az adatok alapvető elemzését.
 > * Definiáljon egy idősorozat-modell típust és hierarchiát, és társítsa azt a példányokkal.
-> * Használja a Power BI-összekötőt, és jelenítse meg az adatokat a Power BI-ban.
 
 >[!TIP]
 > [Az IoT-megoldásgyorsítók](https://www.azureiotsolutions.com/Accelerators) nagyvállalati szintű, előre konfigurált megoldásokat kínálnak, amelyek segítségével felgyorsíthatja az egyéni IoT-megoldások fejlesztését.
@@ -359,3 +358,8 @@ További információ a Time Series modellekről:
 
 > [!div class="nextstepaction"]
 > [Az Azure Time Series Insights előzetes adatmodellezése](./time-series-insights-update-tsm.md)
+
+További információ a Környezet csatlakoztatása a Power BI-hoz
+
+> [!div class="nextstepaction"]
+> [A Time Series Insights adatainak megjelenítése a Power BI-ban](./how-to-connect-power-bi.md)

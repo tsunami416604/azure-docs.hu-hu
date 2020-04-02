@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: aa90655ecb14abe38ec8fdfc6c18e7d292abbef3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c8f259d2d4df46470a042c3f65ac1b8e1f66b1dd
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238677"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546027"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Oktatóanyag: Az első ML-modell betanítása
 
@@ -28,7 +28,7 @@ Eben az oktatóanyagban az alábbi feladatokkal fog megismerkedni:
 > [!div class="checklist"]
 > * A munkaterület csatlakoztatása és kísérlet létrehozása
 > * Adatok betöltése és scikit-learn modellek betanítása
-> * Képzési eredmények megtekintése a portálon
+> * Képzési eredmények megtekintése a stúdióban
 > * A legjobb modell lekérése
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -124,32 +124,33 @@ A fenti kód a következőket valósítja meg:
 
 1. A `alphas` tömb minden alfa-hiperparaméter-értékéhez egy új futtatás jön létre a kísérleten belül. Az alfa-értéket a rendszer naplózza, hogy különbséget tegyen az egyes futtatások között.
 1. Minden futtatáskor a Ridge modell példányosított, képzett, és előrejelzések futtatásához használt. A gyökér-közép-négyzet-hiba a tényleges versus előre jelzett értékeket számítja ki, majd bejelentkezik a futtatásra. Ezen a ponton a futtatás metaadatokat csatolt mind az alfa-érték, mind az rmse pontosságához.
-1. Ezután az egyes futtatások modellszerializálódik, és feltölti a futtatásra. Ez lehetővé teszi a modellfájl letöltését a portálon való futtatásról.
+1. Ezután az egyes futtatások modellszerializálódik, és feltölti a futtatásra. Ez lehetővé teszi, hogy töltse le a modell fájlt a futás a stúdióban.
 1. Minden ismétlés végén a futtatás a hívással `run.complete()`fejeződik be.
 
-Miután a betanítás `experiment` befejeződött, hívja meg a változót a kísérletre mutató hivatkozás beolvasásához a portálon.
+Miután a betanítás `experiment` befejeződött, hívja meg a változót a kísérletre mutató hivatkozás lekéréséhez a stúdióban.
 
 ```python
 experiment
 ```
 
-<table style="width:100%"><tr><th>Név</th><th>Munkaterület</th><th>Jelentés lap</th><th>Dokumentumok lap</th></tr><tr><td>cukorbetegség-kísérlet</td><td>munkaterületi név</td><td>Hivatkozás az Azure Portalra</td><td>Dokumentációra mutató hivatkozás</td></tr></table>
+<table style="width:100%"><tr><th>Név</th><th>Munkaterület</th><th>Jelentés lap</th><th>Dokumentumok lap</th></tr><tr><td>cukorbetegség-kísérlet</td><td>munkaterületi név</td><td>Hivatkozás az Azure Machine Learning stúdióra</td><td>Dokumentációra mutató hivatkozás</td></tr></table>
 
-## <a name="view-training-results-in-portal"></a>Képzési eredmények megtekintése a portálon
+## <a name="view-training-results-in-studio"></a>Képzési eredmények megtekintése a stúdióban
 
-Miután a **Link to Azure Portal** a fő kísérlet oldalon. Itt láthatja az összes egyes fut a kísérletben. Az egyéni naplózott`alpha_value` `rmse`értékek ( és ebben az esetben) mezőkké válnak az egyes futtatásokhoz, és a kísérletoldal tetején lévő diagramokhoz és csempékhez is elérhetővé válnak. Ha naplózott mérőszámot szeretne hozzáadni egy diagramhoz vagy csempéhez, mutasson rá, kattintson a szerkesztés gombra, és keresse meg az egyénileg naplózott mérőszámot.
+Miután a **Link to Azure Machine Learning studio** viszi a fő kísérlet oldalon. Itt láthatja az összes egyes fut a kísérletben. Az egyéni naplózott`alpha_value` `rmse`értékek ( és ebben az esetben) mezőkké válnak az egyes futtatásokhoz, és a kísérletoldal tetején lévő diagramokhoz és csempékhez is elérhetővé válnak. Ha naplózott mérőszámot szeretne hozzáadni egy diagramhoz vagy csempéhez, mutasson rá, kattintson a szerkesztés gombra, és keresse meg az egyénileg naplózott mérőszámot.
 
 Ha több száz és ezer különálló futtatáson keresztül nagy méretekben tanít be modelleket, ez az oldal megkönnyíti az összes betanított modell megtekintését, különösen a betanításmódját és az egyedi mérőszámok idővel történő változásának módját.
 
-![Fő kísérlet lap a Portálon](./media/tutorial-1st-experiment-sdk-train/experiment-main.png)
+:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/experiment-main.png" alt-text="Fő kísérlet oldal a stúdióban.":::
 
-Az `RUN NUMBER` oszlopban lévő futtatási számlinkre kattintva minden egyes futtatáshoz az oldalra lép. Az alapértelmezett **lap Részletek** részletesebb információkat jelenít meg az egyes futtatásokról. Keresse meg a **Kimenetek** lapot, `.pkl` és láthatja a modell, amely feltöltötte a futtatásra az egyes betanítási ismétlések során. Itt letöltheti a modellfájlt, ahelyett, hogy manuálisan kellene újrabetanítania.
 
-![Részletek lap futtatása a Portálban](./media/tutorial-1st-experiment-sdk-train/model-download.png)
+Jelöljön ki egy `RUN NUMBER` futtatási számhivatkozást az oszlopban az egyes futtatások lapjának megtekintéséhez. Az alapértelmezett **lap Részletek** részletesebb információkat jelenít meg az egyes futtatásokról. Keresse meg a **Kimenetek + naplók** lapot, és megjelenik a `.pkl` modell, amely az egyes betanítási ismétlések során feltöltött modell fájlját látja. Itt letöltheti a modellfájlt, ahelyett, hogy manuálisan kellene újrabetanítania.
+
+:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/model-download.png" alt-text="Futtassa a részleteket tartalmazó lapot a stúdióban.":::
 
 ## <a name="get-the-best-model"></a>Szerezd meg a legjobb modell
 
-Amellett, hogy képes letölteni modell fájlokat a kísérlet a portálon, akkor is letölthető őket programozott módon. A következő kód végighalad a kísérlet minden egyes futtatásán, és hozzáfér mind a naplózott futtatási metrikákhoz, mind a futtatás részleteihez (amely a run_id tartalmazza). Ez nyomon követi a legjobb futtatást, ebben az esetben a futtatást a legalacsonyabb root-mean-squared-error-tal.
+Amellett, hogy képes letölteni modell fájlokat a kísérlet a stúdióban, akkor is letölthető őket programozott módon. A következő kód végighalad a kísérlet minden egyes futtatásán, és hozzáfér mind a naplózott futtatási metrikákhoz, mind a futtatás részleteihez (amely a run_id tartalmazza). Ez nyomon követi a legjobb futtatást, ebben az esetben a futtatást a legalacsonyabb root-mean-squared-error-tal.
 
 ```python
 minimum_rmse_runid = None
@@ -214,7 +215,7 @@ Ebben az oktatóanyagban a következő feladatokat végezte el:
 > [!div class="checklist"]
 > * A munkaterület csatlakoztatása és kísérlet létrehozása
 > * Betöltött adatok és betanított scikit-learn modellek
-> * A portálon megtekintett betanítási eredmények és lekért modellek
+> * Megtekintett képzési eredmények a stúdióban és a lekért modellek
 
 [Telepítse a modellt az](tutorial-deploy-models-with-aml.md) Azure Machine Learning használatával.
 Ismerje meg, hogyan fejleszthet [automatizált gépi tanulási](tutorial-auto-train-models.md) kísérleteket.

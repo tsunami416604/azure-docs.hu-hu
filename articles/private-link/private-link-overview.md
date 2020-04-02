@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 02/27/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f75f8392b01e69760171c13c0e6d3b2e22b20dea
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 5b4347cb5032b7f3651d0d3fcb20dc5d416f9bee
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421189"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546571"
 ---
 # <a name="what-is-azure-private-link"></a>Mi az az Azure privát kapcsolat? 
 Az Azure Private Link lehetővé teszi az Azure PaaS-szolgáltatások (például az Azure Storage és az SQL Database) és az Azure által üzemeltetett ügyféltulajdonú/partnerszolgáltatások elérését a virtuális hálózat [privát végpontján](private-endpoint-overview.md) keresztül.
@@ -53,15 +53,15 @@ Az Azure Private Link a következő előnyöket nyújtja:
 |  |  Azure Database for MariaDB         | Minden nyilvános régió      |   FE <br/> [További információ](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |
 |  |  Azure Key Vault         | Minden nyilvános régió      |   FE   <br/> [További információ](https://docs.microsoft.com/azure/key-vault/private-link-service)   |
 |  |Azure Kubernetes szolgáltatás - Kubernetes API | Minden nyilvános régió      |   FE   <br/> [További információ](https://docs.microsoft.com/azure/aks/private-clusters)   |
-|  |Azure Search | USA KELETI RÉGIÓJA, US2 NYUGAT-AMERIKAI, USA DÉLI KÖZÉPSŐ RÉGIÓJA |   Előzetes verzió    |
+|  |Azure Search | USA KELETI RÉGIÓJA, USA NYUGATI RÉGIÓja 2, USA DÉLI KÖZÉPSŐ RÉGIÓJA |   Előzetes verzió    |
 |  |Azure Container Registry | Minden nyilvános régió      |   Előzetes verzió   |
 |  |Azure App Configuration | Minden nyilvános régió      |   Előzetes verzió   |
-|  |Azure Backup | USA KELETI RÉGIÓJA, US2 NYUGAT-AMERIKAI, USA DÉLI KÖZÉPSŐ RÉGIÓJA     |   Előzetes verzió   |
+|  |Azure Backup | USA KELETI RÉGIÓJA, USA NYUGATI RÉGIÓja 2, USA DÉLI KÖZÉPSŐ RÉGIÓJA     |   Előzetes verzió   |
 |  |Azure Event Hub | Minden nyilvános régió      |   Előzetes verzió    |
 |  |Azure Service Bus | Minden nyilvános régió      |   Előzetes verzió   |
 |  |Azure Relay | Minden nyilvános régió      |   Előzetes verzió   |
-|  |Azure Event Grid| Minden nyilvános régió      |   Előzetes verzió   <br/> [További információ](https://docs.microsoft.com/azure/event-grid/network-security)   |
-|  |Azure Web Apps | USA KELETI RÉGIÓJA, US2 NYUGAT-AMERIKAI, USA DÉLI KÖZÉPSŐ RÉGIÓJA      |   Előzetes verzió   <br/> [További információ](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
+|  |Azure Event Grid| USA KELETI RÉGIÓJA, USA NYUGATI RÉGIÓja 2, USA DÉLI KÖZÉPSŐ RÉGIÓJA      |   Előzetes verzió   <br/> [További információ](https://docs.microsoft.com/azure/event-grid/network-security)   |
+|  |Azure Web Apps | USA KELETI RÉGIÓJA, USA NYUGATI RÉGIÓja 2, USA DÉLI KÖZÉPSŐ RÉGIÓJA      |   Előzetes verzió   <br/> [További információ](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
 
 A legfrissebb értesítésekért tekintse meg az [Azure virtuális hálózat frissítéseit tartalmazó lapot.](https://azure.microsoft.com/updates/?product=virtual-network)
 

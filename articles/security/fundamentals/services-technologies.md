@@ -3,7 +3,7 @@ title: Azure biztonsági szolgáltatások és technológiák | Microsoft dokumen
 description: A cikk az Azure Security-szolgáltatások és -technológiák válogatott listáját tartalmazza.
 services: security
 documentationcenter: na
-author: barclayn
+author: terrylanfear
 manager: barbkess
 editor: TomSh
 ms.assetid: a5a7f60a-97e2-49b4-a8c5-7c010ff27ef8
@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
-ms.author: barclayn
-ms.openlocfilehash: 741e6b9cad20645fdfc085623fd9492a12ac1dfc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: terrylan
+ms.openlocfilehash: 83548063a796401792bd19e7ec27be36a0efa4e4
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68726565"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549209"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Az Azure-ban elérhető biztonsági szolgáltatások és technológiák
 
@@ -35,7 +35,7 @@ Idővel ez a lista az Azure-hoz ugyanúgy változik és növekszik, mint az Azur
 |--------|--------|
 |[Az&nbsp;&nbsp;Azure Biztonsági Központ](/azure/security-center/security-center-intro)| Felhőalapú számítási feladatok elleni védelem, amely biztonsági felügyeletet és speciális veszélyforrások elleni védelmet biztosít a hibrid felhőbeli számítási feladatok között.|
 |[Azure Key Vault](/azure/key-vault/key-vault-overview)| Biztonságos titkos fájlokat tárol a jelszavak, kapcsolati karakterláncok és egyéb információk, amelyek az alkalmazások működéséhez szükséges. |
-|[Az Azure Monitor naplói](/azure/log-analytics/log-analytics-overview)|Egy figyelési szolgáltatás, amely összegyűjti a telemetriai adatokat és egyéb adatokat, és egy lekérdezési nyelvet és elemzési motort biztosít az alkalmazások és erőforrások működési elemzéseinek biztosításához. Használható önmagában vagy más szolgáltatásokkal, például a Security Centerrel. |
+|[Azure Monitor-naplók](/azure/log-analytics/log-analytics-overview)|Egy figyelési szolgáltatás, amely összegyűjti a telemetriai adatokat és egyéb adatokat, és egy lekérdezési nyelvet és elemzési motort biztosít az alkalmazások és erőforrások működési elemzéseinek biztosításához. Használható önmagában vagy más szolgáltatásokkal, például a Security Centerrel. |
 |[Azure fejlesztői/tesztelési laborok](/azure/lab-services/devtest-lab-overview)|Olyan szolgáltatás, amely segít a fejlesztőknek és a tesztelőknek gyorsan létrehozni a környezeteket az Azure-ban, miközben minimalizálja a hulladékot és a költségeket.  |
 
 <!---|[Azure&nbsp;Disk&nbsp;Encryption](/azure/azure-security-disk-encryption-overview)| THIS WILL GO TO THE NEW OVERVIEW TOPIC MEGHAN STEWART IS WRITING|--->
@@ -70,7 +70,7 @@ Idővel ez a lista az Azure-hoz ugyanúgy változik és növekszik, mint az Azur
 | [Azure&nbsp;&nbsp;szerepköralapú hozzáférés-vezérlés&nbsp;](/azure/active-directory/role-based-access-control-configure)|Hozzáférés-vezérlési szolgáltatás, amely lehetővé teszi a felhasználók számára, hogy csak az erőforrásokhoz férjenek hozzá a szervezeten belüli szerepkörük alapján.  |
 | [Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis)|Felhőalapú hitelesítési tárház, amely támogatja a több-bérlős, felhőalapú címtár és több identitáskezelési szolgáltatások az Azure-ban.  |
 | [Azure Active Directory B2C](/azure/active-directory-b2c/active-directory-b2c-overview)|Identitáskezelési szolgáltatás, amely lehetővé teszi, hogy az Azure-alapú alkalmazások használata esetén szabályozhatja, hogy az ügyfelek hogyan regisztrálnak, jelentkezzenek be és kezeljék a profiljukat.   |
-| [Azure Active Directory Domain Services](/azure/active-directory-domain-services/overview)| Az Active Directory tartományi szolgáltatások felhőalapú és felügyelt verziója. |
+| [Azure Active Directory tartományi szolgáltatások](/azure/active-directory-domain-services/overview)| Az Active Directory tartományi szolgáltatások felhőalapú és felügyelt verziója. |
 | [Azure többtényezős hitelesítés](/azure/active-directory/authentication/multi-factor-authentication)| Olyan biztonsági rendelkezés, amely a hitelesítés és ellenőrzés számos különböző formáját alkalmazza, mielőtt lehetővé teszi a biztonságos információkhoz való hozzáférést. |
 
 ## <a name="backup-and-disaster-recovery"></a>Biztonsági mentés és vészhelyreállítás
@@ -91,5 +91,5 @@ Idővel ez a lista az Azure-hoz ugyanúgy változik és növekszik, mint az Azur
 | [Azure Traffic Manager](/azure/traffic-manager/traffic-manager-overview)| Globális DNS-terheléselosztó.|
 | [Azure alkalmazásproxy](/azure/active-directory/active-directory-application-proxy-get-started)| A helyszíni üzemeltetett webalkalmazások távelérésének biztosítására használt előtér-hitelesítés. |
 |[Azure Firewall](/azure/firewall/overview)|Felügyelt, felhőalapú hálózati biztonsági szolgáltatás, amely védi az Azure virtuális hálózati erőforrásait.|
-|[Azure DDoS Protection](/azure/virtual-network/ddos-protection-overview)|Kombinálva alkalmazástervezési ajánlott eljárások, védelmet nyújt a DDoS-támadások ellen.|
+|[Azure DDoS-védelem](/azure/virtual-network/ddos-protection-overview)|Kombinálva alkalmazástervezési ajánlott eljárások, védelmet nyújt a DDoS-támadások ellen.|
 |[Virtuális hálózat szolgáltatás végpontjai](/azure/virtual-network/virtual-network-service-endpoints-overview)|Kiterjeszti a virtuális hálózat magáncímterét és a virtuális hálózat identitását az Azure-szolgáltatásokra, közvetlen kapcsolaton keresztül.|

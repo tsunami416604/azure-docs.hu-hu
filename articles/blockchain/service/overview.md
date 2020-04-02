@@ -1,15 +1,15 @@
 ---
 title: Az Azure Blockchain szolgáltatás áttekintése
 description: Az Azure Blockchain szolgáltatás áttekintése
-ms.date: 03/12/2020
+ms.date: 03/30/2020
 ms.topic: overview
 ms.reviewer: ravastra
-ms.openlocfilehash: b9f5deb501fb93327fa5d5cfcfd5bb583ed6135e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 821bac0da13209e5126f5bab109aa0895ade840a
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79205072"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529140"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Mi az az Azure Blockchain Service?
 
@@ -19,7 +19,7 @@ Az Azure Blockchain Service egy teljes körűen felügyelt főkönyvi szolgálta
 * Beépített konzorciumkezelés
 * Intelligens szerződések kidolgozása ismerős fejlesztési eszközökkel
 
-Az Azure Blockchain szolgáltatás több főkönyvi protokoll t támogatja. Jelenleg az [IBFT](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) konszenzusos mechanizmus alkalmazásával támogatja az Ethereum [Quorum](https://www.goquorum.com/) főkönyvét.
+Az Azure Blockchain szolgáltatás több főkönyvi protokoll t támogatja. Jelenleg az [Isztambuli Bizánci Hibatűrés (IBFT)](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) konszenzusmechanizmus alkalmazásával támogatja az Ethereum [Kvórum](https://www.goquorum.com/) főkönyvét.
 
 Ezen képességek szinte semmilyen felügyeletet nem igényelnek, és mindegyik további költség nélkül érhető el. Az alkalmazásfejlesztésre és az üzleti logikára összpontosíthat ahelyett, hogy időt és erőforrásokat különítene meg a virtuális gépek és az infrastruktúra kezelésére. Ezenkívül tovább fejlesztheti alkalmazását az Ön által választott nyílt forráskódú eszközökkel és platformokkal, hogy új készségek elsajátítása nélkül is szállíthassa megoldásait.
 
@@ -33,13 +33,13 @@ Az Azure Blockchain Szolgáltatás két szolgáltatási szintet kínál: *alapsz
 
 ![Árképzési szintek](./media/overview/pricing-tiers.png)
 
-Amellett, hogy két validator csomópontot kínál, a *standard* szint 2 *virtuális magot* biztosít minden tranzakcióhoz és validator csomóponthoz, míg az alapszintű szint 1 virtuálismagos konfigurációt kínál.  2 virtuális mag felajánlásával a tranzakciós és érvényesítő csomópontokhoz, 1 virtuális mag is felsodható a Kvórum főkönyvhöz, míg a fennmaradó 1 virtuális mag használható más infrastruktúrával kapcsolatos szolgáltatásokhoz, biztosítva az optimális teljesítményt az éles blokklánc-számítási feladatokhoz. A díjszabással kapcsolatos további információkért lásd: [Azure Blockchain Service díjszabása.](https://azure.microsoft.com/pricing/details/blockchain-service)
+Amellett, hogy két validator csomópontot kínál, a *standard* szint két *virtuális magot* biztosít minden egyes tranzakcióhoz és validator csomóponthoz, míg az *alapszintű* szint 1 virtuálismagos konfigurációt kínál.  2 virtuális mag felajánlásával a tranzakciós és érvényesítő csomópontokhoz, 1 virtuális mag is felsodható a Kvórum főkönyvhöz, míg a fennmaradó 1 virtuális mag használható más infrastruktúrával kapcsolatos szolgáltatásokhoz, biztosítva az optimális teljesítményt az éles blokklánc-számítási feladatokhoz. A díjszabással kapcsolatos további információkért lásd: [Azure Blockchain Service díjszabása.](https://azure.microsoft.com/pricing/details/blockchain-service)
 
 ### <a name="security-and-maintenance"></a>Biztonság és karbantartás
 
 Az első blokklánc-tag kiépítése után további tranzakciócsomópontokat adhat hozzá a taghoz.  Alapértelmezés szerint a tranzakciócsomópontok tűzfalszabályokon keresztül védettek, és a hozzáféréshez konfigurációra van szükség.  Emellett minden tranzakciós csomópont titkosítja a mozgásban lévő adatokat a TLS-en keresztül.  A tranzakciós csomópont-hozzáférés biztonságossá tétele több lehetőség gel rendelkezik, beleértve a tűzfalszabályokat, az alapfokú hitelesítést, a hozzáférési kulcsokat és az Azure Active Directory-integrációt. További információt a [Tranzakciócsomópontok konfigurálása](configure-transaction-nodes.md) és [az Azure Active Directory-hozzáférés konfigurálása](configure-aad.md)című témakörben talál.
 
-Felügyelt szolgáltatásként az Azure Blockchain Szolgáltatás biztosítja, hogy a blokklánc-tag csomópontjai javításra kerülnek a legújabb gazdaoperációs rendszer- és főkönyvi szoftververem-frissítésekkel, amelyek magas rendelkezésre állásra vannak konfigurálva (csak standard szinten), így a DevOps nagy része ki van kapcsolva. hagyományos IaaS blokklánc-csomópontokhoz szükséges.  A javításokkal és frissítésekkel kapcsolatos további információkért tekintse meg az [Azure Blockchain Service támogatott főkönyvi verzióit.](ledger-versions.md)
+Felügyelt szolgáltatásként az Azure Blockchain Szolgáltatás biztosítja, hogy a blockchain tag csomópontjai a legújabb gazdaoperációs rendszer- és főkönyvi szoftververem-frissítésekkel legyenek javítva, magas rendelkezésre állásra konfigurálva (csak standard szinten), így a hagyományos IaaS blokklánc-csomópontokhoz szükséges DevOps nagy része ki van kapcsolva.  A javításokkal és frissítésekkel kapcsolatos további információkért tekintse meg az [Azure Blockchain Service támogatott főkönyvi verzióit.](ledger-versions.md)
 
 ### <a name="monitoring-and-logging"></a>Monitorozás és naplózás
 

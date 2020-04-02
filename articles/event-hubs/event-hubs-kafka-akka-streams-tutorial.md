@@ -1,6 +1,6 @@
 ---
 title: Az Akka Streams használata az Apache Kafka szolgáltatáshoz – Azure Event Hubs| Microsoft dokumentumok
-description: Ez a cikk az Akka Streams apache Kafka-kompatibilis Azure-eseményközponthoz való csatlakoztatásáról nyújt tájékoztatást.
+description: Ez a cikk az Akka-adatfolyamok Azure-eseményközponthoz való csatlakoztatásáról nyújt tájékoztatást.
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 729e78959f93b1aa1563a049a64c553929c4f97e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c53fcc7b4b99e77237ba7ea9219aef4182f2af61
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283633"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521826"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Az Akka Streams használata az Apache Kafkához készült Event Hubs szolgáltatással
 Ez az oktatóanyag bemutatja, hogyan csatlakoztathatja az Akka Streams-t egy eseményközponthoz a protokollügyfelek módosítása vagy a saját fürtök futtatása nélkül. A Kafka Azure Event Hubs támogatja az [Apache Kafka 1.0-s verzióját.](https://kafka.apache.org/10/documentation.html)
@@ -49,7 +49,7 @@ Az oktatóanyag befejezéséhez győződjön meg arról, hogy a következő elő
 
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs-névtér létrehozása
 
-Az Event Hubs névtér bármely Event Hubs szolgáltatásból történő küldéséhez vagy fogadásához szükséges. Az Event Hubs Kafka-végpontok beszerzésével kapcsolatos további információkért tekintse meg a [Kafka-kompatibilis eseményközpontok](event-hubs-create.md) létrehozása című témakört. Győződjön meg arról, hogy másolja az Event Hubs kapcsolati karakterláncot későbbi használatra.
+Az Event Hubs névtér bármely Event Hubs szolgáltatásból történő küldéséhez vagy fogadásához szükséges. Részletes információkért [lásd: Eseményközpont létrehozása.](event-hubs-create.md) Győződjön meg arról, hogy másolja az Event Hubs kapcsolati karakterláncot későbbi használatra.
 
 ## <a name="clone-the-example-project"></a>A példaprojekt klónozása
 

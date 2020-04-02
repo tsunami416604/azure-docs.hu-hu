@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 5a21f36136c6f1d77a2e9cb9108f539c9fb39334
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4c93ffa7828710c26200408666c03a28fd7f3d3c
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77134912"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549292"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data"></a>Rövid útmutató: Java-alkalmazás létrehozása az Azure Cosmos DB Cassandra API-adatok kezeléséhez
 
@@ -66,7 +66,7 @@ Most pedig váltsunk át kódok használatára. A következő lépésekben elvé
 
 Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan hozza létre a kód az adatbázis erőforrásait, tekintse át a következő kódrészleteket. Egyéb esetben ugorhat [A kapcsolati sztring frissítése](#update-your-connection-string) szakaszra. Ezek a kódrészletek mind az *src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java* fájlból származnak.  
 
-* A Cassandra gazdagép-, port-, felhasználónév-, jelszó- és SSL-beállításai meg vannak adva. A kapcsolati sztring adatai az Azure Portal kapcsolati sztring oldaláról származnak.
+* A Cassandra állomás, a port, a felhasználónév, a jelszó és a TLS/SSL beállítások meg vannak határozva. A kapcsolati sztring adatai az Azure Portal kapcsolati sztring oldaláról származnak.
 
    ```java
    cluster = Cluster.builder().addContactPoint(cassandraHost).withPort(cassandraPort).withCredentials(cassandraUsername, cassandraPassword).withSSL(sslOptions).build();
@@ -168,9 +168,9 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
     `cassandra_password=2Ggkr662ifxz2Mg...==`
 
-5. A 6. sorban, ha egy adott SSL-tanúsítványt kíván használni, cserélje le az `<SSL key store file location>` karakterláncot a SSL-tanúsítvány elérési útvonalára. Ha nem ad meg semmilyen értéket, a rendszer a <JAVA_HOME>/jre/lib/security/cacerts helyen telepített JDK-tanúsítványt használja. 
+5. A 6-os sorban, ha egy adott TLS/SSL `<SSL key store file location>` tanúsítványt szeretne használni, cserélje le a TLS/SSL tanúsítvány helyére. Ha nem ad meg semmilyen értéket, a rendszer a <JAVA_HOME>/jre/lib/security/cacerts helyen telepített JDK-tanúsítványt használja. 
 
-6. Ha a 6. sort egy adott SSL-tanúsítvány használatára módosította, frissítse a 7. sort a tanúsítvány jelszavával. 
+6. Ha módosította a 6. 
 
 7. Mentse a *config.properties* fájlt.
 

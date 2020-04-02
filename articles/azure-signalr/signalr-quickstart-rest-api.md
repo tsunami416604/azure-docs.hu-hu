@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 17371e3bd426ea81b5e7e07610aac0073ea972c9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 70053fbc47a5ba85e7bb18ab762868973d014beb
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74157679"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548131"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Rövid útmutató: Valós idejű üzenetek szétküldése konzolalkalmazásból
 
@@ -131,10 +131,17 @@ API | `1.0-preview` | `1.0`
 [Szétküldés mindenkinek](#broadcast) | **&#x2713;** | **&#x2713;**
 [Szétküldés egy csoportnak](#broadcast-group) | **&#x2713;** | **&#x2713;**
 Szétküldés néhány csoportnak | **&#x2713;** (elavult) | `N / A`
-[Küldés adott felhasználóknak](#send-user) | **&#x2713;** | **&#x2713;**
+[Küldés felhasználónak](#send-user) | **&#x2713;** | **&#x2713;**
 Küldés néhány felhasználónak | **&#x2713;** (elavult) | `N / A`
 [Felhasználó hozzáadása egy csoporthoz](#add-user-to-group) | `N / A` | **&#x2713;**
 [Felhasználó eltávolítása egy csoportból](#remove-user-from-group) | `N / A` | **&#x2713;**
+[A felhasználó létezésének ellenőrzése](#check-user-existence) | `N / A` | **&#x2713;**
+[Felhasználó eltávolítása az összes csoportból](#remove-user-from-all-groups) | `N / A` | **&#x2713;**
+[Küldés kapcsolatra](#send-connection) | `N / A` | **&#x2713;**
+[Kapcsolat hozzáadása csoporthoz](#add-connection-to-group) | `N / A` | **&#x2713;**
+[Kapcsolat eltávolítása csoportból](#remove-connection-from-group) | `N / A` | **&#x2713;**
+[Ügyfélkapcsolat bezárása](#close-connection) | `N / A` | **&#x2713;**
+[Service Health](#service-health) | `N / A` | **&#x2713;**
 
 <a name="broadcast"> </a>
 ### <a name="broadcast-to-everyone"></a>Szétküldés mindenkinek
@@ -153,7 +160,7 @@ Verzió | API HTTP-metódus | Kérés URL-címe | A kérés törzse
 `1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>` | Lásd fent
 
 <a name="send-user"> </a>
-### <a name="sending-to-specific-users"></a>Küldés adott felhasználóknak
+### <a name="sending-to-a-user"></a>Küldés felhasználónak
 
 Verzió | API HTTP-metódus | Kérés URL-címe | A kérés törzse
 --- | --- | --- | ---
@@ -165,14 +172,77 @@ Verzió | API HTTP-metódus | Kérés URL-címe | A kérés törzse
 
 Verzió | API HTTP-metódus | Kérés URL-címe
 --- | --- | ---
-`1.0` | `PUT` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<userid>`
+`1.0` | `PUT` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>`
 
 <a name="remove-user-from-group"> </a>
 ### <a name="removing-a-user-from-a-group"></a>Felhasználó eltávolítása egy csoportból
 
 Verzió | API HTTP-metódus | Kérés URL-címe
 --- | --- | ---
-`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<userid>`
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>`
+
+<a name="check-user-existence"> </a>
+### <a name="check-user-existence-in-a-group"></a>A felhasználók meglétének ellenőrzése egy csoportban
+
+API-verzió | API HTTP-metódus | Kérés URL-címe
+---|---|---
+`1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/users/<user-id>/groups/<group-name>`
+`1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>` 
+
+Válasz állapotkódja | Leírás
+---|---
+`200` | A felhasználó létezik
+`404` | A felhasználó nem létezik
+
+<a name="remove-user-from-all-groups"> </a>
+### <a name="remove-a-user-from-all-groups"></a>Felhasználó eltávolítása az összes csoportból
+
+API-verzió | API HTTP-metódus | Kérés URL-címe
+---|---|---
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/users/<user-id>/groups`
+
+<a name="send-connection"> </a>
+### <a name="send-message-to-a-connection"></a>Üzenet küldése kapcsolatra
+
+API-verzió | API HTTP-metódus | Kérés URL-címe | A kérelem törzse
+---|---|---|---
+`1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>` | `{ "target":"<method-name>", "arguments":[ ... ] }`
+
+<a name="add-connection-to-group"> </a>
+### <a name="add-a-connection-to-a-group"></a>Kapcsolat hozzáadása csoporthoz
+
+API-verzió | API HTTP-metódus | Kérés URL-címe
+---|---|---
+`1.0` | `PUT` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/connections/<connection-id>`
+`1.0` | `PUT` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>/groups/<group-name>`
+
+<a name="remove-connection-from-group"> </a>
+### <a name="remove-a-connection-from-a-group"></a>Kapcsolat eltávolítása csoportból
+
+API-verzió | API HTTP-metódus | Kérés URL-címe
+---|---|---
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/connections/<connection-id>`
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>/groups/<group-name>`
+
+<a name="close-connection"> </a>
+### <a name="close-a-client-connection"></a>Ügyfélkapcsolat bezárása
+
+API-verzió | API HTTP-metódus | Kérés URL-címe
+---|---|---
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>`
+`1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>?reason=<close-reason>`
+
+<a name="service-health"> </a>
+### <a name="service-health"></a>Service Health
+
+API-verzió | API HTTP-metódus | Kérés URL-címe
+---|---|---                             
+`1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/health`
+
+Válasz állapotkódja | Leírás
+---|---
+`200` | Szolgáltatás Jó
+`503` | A szolgáltatás nem érhető el
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 

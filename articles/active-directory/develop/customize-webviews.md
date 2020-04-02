@@ -13,42 +13,51 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 759f61860c62bcb668db6844df28c52fa28eac80
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8552fc8555207c5b6ca59bbd0da0fdebaae2e87b
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77085909"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546110"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>Útmutató: Böngészők és webnézetek testreszabása iOS/macOS rendszeren
 
-Az interaktív hitelesítéshez webböngésző szükséges. IOS rendszeren a Microsoft Authentication Library (MSAL) alapértelmezés szerint a rendszer webböngészőjét használja (amely az alkalmazás tetején jelenhet meg) interaktív hitelesítéssel a felhasználók bejelentkezéséhez. A rendszerböngésző használata azzal az előnnyel jár, hogy megosztja az Egyszeri bejelentkezés (SSO) állapotot más alkalmazásokkal és webalkalmazásokkal.
+Az interaktív hitelesítéshez webböngésző szükséges. Az iOS és a macOS 10.15+ rendszerben a Microsoft Authentication Library (MSAL) alapértelmezés szerint a rendszer webböngészőjét használja (amely az alkalmazás tetején jelenhet meg) interaktív hitelesítést végez a felhasználók bejelentkezéséhez. A rendszerböngésző használata azzal az előnnyel jár, hogy megosztja az Egyszeri bejelentkezés (SSO) állapotot más alkalmazásokkal és webalkalmazásokkal.
 
 A felhasználói élményt úgy módosíthatja, hogy a konfigurációt a webes tartalom megjelenítésének egyéb beállításaira szabja, például:
 
 Csak iOS esetén:
 
-- [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc)
 - [SFAuthentication session](https://developer.apple.com/documentation/safariservices/sfauthenticationsession?language=objc) 
 - [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller?language=objc)
 
 iOS és macOS esetén:
 
+- [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc)
 - [WKWebView](https://developer.apple.com/documentation/webkit/wkwebview?language=objc).
 
-Az MSAL csak a `WKWebView`macOS rendszeren támogatja a .
+A macOS msal `WKWebView` csak régebbi operációs rendszerverziókon támogatja a rendszert. `ASWebAuthenticationSession`csak macOS 10.15-ös és újabb rendszerekkel támogatott. 
 
 ## <a name="system-browsers"></a>Rendszerböngészők
 
-IOS , `ASWebAuthenticationSession` `SFAuthenticationSession`, `SFSafariViewController` és rendszerböngészőnek minősül. Általánosságban elmondható, hogy a rendszerböngészők cookie-kat és egyéb webhelyadatokat osztanak meg a Safari böngészőalkalmazással.
+IOS , `ASWebAuthenticationSession` `SFAuthenticationSession`, `SFSafariViewController` és rendszerböngészőnek minősül. MacOS esetén `ASWebAuthenticationSession` csak az elérhető. Általánosságban elmondható, hogy a rendszerböngészők cookie-kat és egyéb webhelyadatokat osztanak meg a Safari böngészőalkalmazással.
 
 Alapértelmezés szerint az MSAL dinamikusan észleli az iOS-verziót, és kiválasztja az adott verzióban elérhető ajánlott rendszerböngészőt. Az iOS 12+ `ASWebAuthenticationSession`rendszeren ez lesz . 
+
+### <a name="default-configuration-for-ios"></a>Az iOS alapértelmezett konfigurációja
 
 | Verzió | Webböngésző |
 |:-------------:|:-------------:|
 | iOS 12+ | ASWebAuthenticationSession |
 | iOS 11 | SFAuthentication session |
 | iOS 10 | SFSafariViewController |
+
+### <a name="default-configuration-for-macos"></a>A macOS alapértelmezett konfigurációja
+
+| Verzió | Webböngésző |
+|:-------------:|:-------------:|
+| macOS 10.15+ | ASWebAuthenticationSession |
+| egyéb verziók | WKWebView |
 
 A fejlesztők másik rendszerböngészőt is választhatnak az MSAL-alkalmazásokhoz:
 
@@ -65,7 +74,7 @@ Az Ön által használt böngésző hatással van az SSO-élményre a cookie-k m
 
 | Technológia    | Böngésző típusa  | iOS elérhetősége | a macOS elérhetősége | Cookie-k és egyéb adatok megosztása  | MSAL elérhetősége | SSO |
 |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|-------------:|
-| [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | Rendszer | iOS12 és fel | macOS 10.15 és fel | Igen | csak iOS esetén | w/ Safari-példányok
+| [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession) | Rendszer | iOS12 és fel | macOS 10.15 és fel | Igen | iOS és macOS 10.15+ | w/ Safari-példányok
 | [SFAuthentication session](https://developer.apple.com/documentation/safariservices/sfauthenticationsession) | Rendszer | iOS11 és fel | N/A | Igen | csak iOS esetén |  w/ Safari-példányok
 | [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller) | Rendszer | iOS11 és fel | N/A | Nem | csak iOS esetén | Nem**
 | **SFSafariViewController** | Rendszer | iOS10 | N/A | Igen | csak iOS esetén |  w/ Safari-példányok
@@ -138,21 +147,26 @@ Az MSAL által támogatott webböngésző-típusok deklarálva vannak az [MSALWe
 ```objc
 typedef NS_ENUM(NSInteger, MSALWebviewType)
 {
-#if TARGET_OS_IPHONE
-    // For iOS 11 and up, uses AuthenticationSession (ASWebAuthenticationSession
-    // or SFAuthenticationSession).
-    // For older versions, with AuthenticationSession not being available, uses
-    // SafariViewController.
+    /**
+     For iOS 11 and up, uses AuthenticationSession (ASWebAuthenticationSession or SFAuthenticationSession).
+     For older versions, with AuthenticationSession not being available, uses SafariViewController.
+     For macOS 10.15 and above uses ASWebAuthenticationSession
+     For older macOS versions uses WKWebView
+     */
     MSALWebviewTypeDefault,
     
-    // Use SFAuthenticationSession/ASWebAuthenticationSession
+    /** Use ASWebAuthenticationSession where available.
+     On older iOS versions uses SFAuthenticationSession
+     Doesn't allow any other webview type, so if either of these are not present, fails the request*/
     MSALWebviewTypeAuthenticationSession,
     
-    // Use SFSafariViewController for all versions.
+#if TARGET_OS_IPHONE
+    
+    /** Use SFSafariViewController for all versions. */
     MSALWebviewTypeSafariViewController,
     
 #endif
-    // Use WKWebView
+    /** Use WKWebView */
     MSALWebviewTypeWKWebView,
 };
 ```

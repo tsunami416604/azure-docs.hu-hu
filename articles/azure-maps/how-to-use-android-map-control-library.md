@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 55bfb5030d0a168e7556240212fcd5f3be30a289
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e0f0f311b7ec8adae6ddb25e01046141adadfa4
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335366"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548540"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Az Azure Maps Android SDK – első lépések
 
@@ -267,6 +267,29 @@ mapControl.onReady(map -> {
 </center>
 
 A támogatott nyelvek és a regionális nézetek teljes listáját [itt](supported-languages.md)olvashatja.
+
+## <a name="navigating-the-map"></a>Navigálás a térképen
+
+A térkép nagyításának, pásztázásának, elforgatásának és felverésének számos különböző módja van. Az alábbi adatok a térképen való navigálás különböző módjait ismertetik.
+
+**A térkép nagyítása**
+
+- Érintse meg a térképet két ujjal, és csippentsen össze a kicsinyítéshez vagy az ujjak szétterítéséhez a nagyításhoz.
+- Dupla érintse meg a térképet egy szint nagyításához.
+- Dupla koppintás két ujjal a térkép egy szinttel való kicsinyítéséhez.
+- Érintse meg kétszer; a második koppintáskor tartsa az ujját a térképen, és húzza felfelé a nagyításhoz, vagy lefelé a kicsinyítéshez.
+
+**Pásztázás a térképen**
+
+- Érintse meg a térképet, és húzza bármilyen irányba.
+
+**A térkép elforgatása**
+
+- Érintse meg a térképet két ujjal, és forgassa el.
+
+**A térkép feldobása**
+
+- Érintse meg a térképet két ujjal, és húzza őket felfelé vagy lefelé együtt.
 
 ## <a name="next-steps"></a>További lépések
 

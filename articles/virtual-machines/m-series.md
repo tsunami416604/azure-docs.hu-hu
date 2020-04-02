@@ -5,20 +5,20 @@ services: virtual-machines
 author: ayshakeen
 ms.service: virtual-machines
 ms.topic: article
-ms.date: 02/05/2019
-ms.author: lahugh
-ms.openlocfilehash: e8952218675493710cbdd1f92661e9a9c077f34c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/31/2020
+ms.author: jushiman
+ms.openlocfilehash: 3e0552570d5bdb7f812852cd058710b833b7fdd4
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78164049"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521339"
 ---
 # <a name="m-series"></a>M sorozat
 
-Az M sorozat magas vCPU-számot (akár 128 vCPU-t) és nagy mennyiségű memóriát (akár 3,8 TiB) kínál. Emellett rendkívül nagy adatbázisokhoz vagy más alkalmazásokhoz is ideális, amelyek nagy vCPU-számmal és nagy mennyiségű memóriával járnak. Az M-sorozat méretei az Intel® Xeon® CPU E7-8890 v3 @ 2.50GHz
+Az M sorozat magas vCPU-számot (akár 128 vCPU-t) és nagy mennyiségű memóriát (akár 3,8 TiB) kínál. Emellett rendkívül nagy adatbázisokhoz vagy más alkalmazásokhoz is ideális, amelyek nagy vCPU-számmal és nagy mennyiségű memóriával járnak. Az M-sorozatméretek támogatottak&reg; mind&reg; az Intel Xeon CPU E7-8890 v3&reg; @&reg; 2.50GHz és az Intel Xeon Platinum 8280M 2.7GHz (Cascade Lake) számára.
 
-M-sorozat VM funkció Intel® Hyper-Threading technológia
+M-sorozat VM funkció&reg; Intel Hyper-Threading technológia.
 
 ACU: 160–180
 

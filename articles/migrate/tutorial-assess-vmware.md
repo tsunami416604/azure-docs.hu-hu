@@ -3,12 +3,12 @@ title: A VMware virtuális gépek felmérése az Azure-ba való migráláshoz
 description: Bemutatja, hogyan értékelheti a helyszíni VMware virtuális gépeket az Azure-ba való áttelepítéshez az Azure Áttelepítési kiszolgáló értékelése használatával.
 ms.topic: tutorial
 ms.date: 03/23/2019
-ms.openlocfilehash: f33e56f7e0af920363475edfa7e86977c2efd1d9
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 944b7c12a353a29a172576974261eece63ebf668
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80336747"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548746"
 ---
 # <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>VMware virtuális gépek felmérése az Azure Migrate Server Assessment használatával
 
@@ -163,7 +163,7 @@ A készüléknek csatlakoznia kell a vCenter Server szolgáltatáshoz a virtuál
 1. A **VCenter-kiszolgáló részleteinek megadása**területen adja meg a vCenter Server-példány nevét (FQDN) vagy IP-címét. Meghagyhatja az alapértelmezett portot, vagy megadhat egy egyéni portot, amelyen a vCenter Server figyel.
 2. A **Felhasználónév** és **jelszó**csoportban adja meg azokat a vCenter-kiszolgálói fiók hitelesítő adatait, amelyeket a készülék a vCenter-kiszolgáló példányon lévő virtuális gépek felderítéséhez használ. 
 
-    - Létre kellett volna hoznia egy fiókot a szükséges engedélyekkel az [előző oktatóanyagban](/tutorial-prepare-vmware.md#set-up-an-account-for-assessment).
+    - Létre kellett volna hoznia egy fiókot a szükséges engedélyekkel az [előző oktatóanyagban](tutorial-prepare-vmware.md#set-up-an-account-for-assessment).
     - Ha a felderítést adott VMware-objektumokra (vCenter Server-adatközpontokra, fürtökre, fürtök mappájára, állomásokra, állomások mappájára vagy egyedi virtuális gépekre) szeretné hatókörbe helyezni, tekintse át a [jelen cikkben](set-discovery-scope.md) található utasításokat az Azure Migrate által használt fiók korlátozásához.
 
 3. Válassza **a Kapcsolat ellenőrzése lehetőséget,** hogy a készülék képes-e csatlakozni a vCenter Server kiszolgálóhoz.

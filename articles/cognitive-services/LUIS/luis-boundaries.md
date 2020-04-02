@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 11/07/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: d584b00caef628eb9dfd085b1fdce2bb7b353988
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c021e68f8b76d8b0d3e6e9ff21c242580f53313
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79220082"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520946"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>A LUIS-modell és -kulcsok határai
 A LUIS több határterületnek is rendelkezik. Az első a [modell határa](#model-boundaries), amely szabályozza a leképezések, entitások és szolgáltatások a LUIS. A második terület a kulcstípuson alapuló [kvótakorlátok.](#key-limits) A harmadik terület a határok a [billentyűzet kombinációja](#keyboard-controls) a LUIS-webhely vezérléséhez. A negyedik terület a [világ régió leképezése](luis-reference-regions.md) a LUIS authoring webhely és a LUIS [végpont](luis-glossary.md#endpoint) API-k között.
@@ -40,7 +40,7 @@ Ha az alkalmazás túllépi a LUIS-modell korlátait és határait, fontolja meg
 | [Előzetes verzió – Dinamikus listaentitások](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|2 lista ~1k lekérdezés-előrejelzési végpontkérésenként|
 | [Minták](luis-concept-patterns.md)|500 minta alkalmazásonként.<br>A minta maximális hossza 400 karakter.<br>3 Pattern.any entitások mintánként<br>Legfeljebb 2 egymásba ágyazott, választható szöveg a mintában|
 | [Minta.minden](./luis-concept-entity-types.md)|100 alkalmazásonként, 3 pattern.any entitás mintánként |
-| [Kifejezéslista][phrase-list]|500 kifejezéslista. A nem felcserélhető kifejezéslista legfeljebb 5000 kifejezést tartalmazza. A cserélhető kifejezéslista legfeljebb 50 000 kifejezést tartalmazza. Az összes kifejezés maximális száma 500 000 kifejezésenként.|
+| [Kifejezéslista][phrase-list]|500 kifejezéslista. 10 globális kifejezéslista a modell funkciókorlátként való listában. A nem felcserélhető kifejezéslista legfeljebb 5000 kifejezést tartalmazza. A cserélhető kifejezéslista legfeljebb 50 000 kifejezést tartalmazza. Az összes kifejezés maximális száma 500 000 kifejezésenként.|
 | [Előre összeállított entitások](./luis-prebuilt-entities.md) | nincs korlátozás|
 | [Reguláriskifejezés-entitások](./luis-concept-entity-types.md)|20 jogalany<br>500 karakter max. reguláris kifejezés entitásmintánként|
 | [Szerepkörök](luis-concept-roles.md)|300 szerepkör alkalmazásonként. 10 szerepkör entitásonként|

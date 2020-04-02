@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: java-build-tools-set
-ms.openlocfilehash: ad3b38a12020c56c31e03879b3fbcb9a8dda25f1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: d0f30272a4e605449c946ca402db4f3ba00735bc
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79136867"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520545"
 ---
 # <a name="quickstart-use-java-and-mavengradle-to-create-and-publish-a-function-to-azure"></a>Rövid útmutató: A Java és a Maven/Gradle használatával hozzon létre és tegyen közzé egy függvényt az Azure-ban
 
@@ -67,13 +67,10 @@ A Maven olyan értékeket kér, amelyek a projekt üzembe helyezéséhez szüks�
 | **artifactId** | Az edény neve verziószám nélküli érték. A rövid útmutató ban `fabrikam-functions`szereplő példák . |
 | **Változat** | A érték ének `1.0-SNAPSHOT`alapértelmezett értékét adja meg. |
 | **Csomag** | Olyan érték, amely a létrehozott függvénykód Java-csomagja. Használja az alapértelmezettet. A rövid útmutató ban `com.fabrikam.functions`szereplő példák . |
-| **appName alkalmazásneve** | Globálisan egyedi név, amely azonosítja az új függvényalkalmazást az Azure-ban. Használja az alapértelmezett, amely a _artifactId_ hozzáfűzve egy véletlen számmal. Jegyezze fel ezt az értéket, később szüksége lesz rá. |
-| **appRegion** | Válasszon egy [régiót](https://azure.microsoft.com/regions/) a közelben, vagy a függvények által elért más szolgáltatások közelében. A mező alapértelmezett értéke: `westus`. Futtassa ezt az [Azure CLI] parancsot az összes régió listájának leéséhez:<br/>`az account list-locations --query '[].{Name:name}' -o tsv` |
-| **erőforrásCsoport** | Annak az új [erőforráscsoportnak](../azure-resource-manager/management/overview.md) a neve, amelyben a függvényalkalmazást létre szeretné hozni. Használja `myResourceGroup`a t, amelyet a rövid útmutató példái használnak. Az erőforráscsoportnak egyedinek kell lennie az Azure-előfizetésében.|
 
 A `Y` megerősítéshez írja be vagy nyomja le az Enter billentyűt.
 
-A Maven egy új mappában hozza létre a projektfájlokat, `fabrikam-functions`amelynek neve _artifactId_, amely ebben a példában a. Futtassa a következő parancsot a könyvtár létrehozott projektmappára való módosításához.
+A Maven egy új mappában hozza létre a projektfájlokat, `fabrikam-functions`amelynek neve **artifactId**, amely ebben a példában a. Futtassa a következő parancsot a könyvtár létrehozott projektmappára való módosításához.
 ```bash
 cd fabrikam-function
 ```

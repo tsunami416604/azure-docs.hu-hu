@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 6dc902b6a26c175713381b4fce88934dca3f409e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e0339cf4431d3ed36f50b43134803079e30b101
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283582"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521741"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>A Kafka MirrorMaker használata Az Apache Kafka eseményelosztóival
 
-Ez az oktatóanyag bemutatja, hogyan tükrözhető egy Kafka bróker egy Kafka-kompatibilis eseményközpontban a Kafka MirrorMaker használatával.
+Ez az oktatóanyag bemutatja, hogyan tükrözegy Kafka bróker egy eseményközpontban a Kafka MirrorMaker használatával.
 
    ![Kafka MirrorMaker eseményközpontokkal](./media/event-hubs-kafka-mirror-maker-tutorial/evnent-hubs-mirror-maker1.png)
 
@@ -35,10 +35,10 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Kafka MirrorMaker konfigurálása
 > * Kafka MirrorMaker futtatása
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 A modern felhőalapú alkalmazások egyik fő szempontja az infrastruktúra frissítésének, javításának és módosításának lehetősége a szolgáltatás megszakítása nélkül. Ez az oktatóanyag bemutatja, hogy egy eseményközpont és a Kafka MirrorMaker hogyan integrálhat egy meglévő Kafka-folyamatot az Azure-ba a Kafka bemeneti adatfolyam "tükrözésével" az Event Hubs szolgáltatásban. 
 
-Az Azure Event Hubs Kafka-végpont lehetővé teszi, hogy az Azure Event Hubs-hoz a Kafka protokoll (azaz a Kafka-ügyfelek) használatával csatlakozzon. A Kafka-alkalmazások minimális módosításával csatlakozhat az Azure Event Hubs-hoz, és élvezheti az Azure-ökoszisztéma előnyeit. A Kafka engedélyezett Event Hubs jelenleg a Kafka 1.0-s és újabb verzióit támogatja.
+Az Azure Event Hubs Kafka-végpont lehetővé teszi, hogy az Azure Event Hubs-hoz a Kafka protokoll (azaz a Kafka-ügyfelek) használatával csatlakozzon. A Kafka-alkalmazások minimális módosításával csatlakozhat az Azure Event Hubs-hoz, és élvezheti az Azure-ökoszisztéma előnyeit. Az Event Hubs jelenleg a Kafka 1.0-s és újabb verzióit támogatja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -56,11 +56,11 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a köv
 
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs-névtér létrehozása
 
-Az Event Hubs-szolgáltatásokból való küldéshez és fogadáshoz szükség van egy Event Hubs-névtérre. Az Event Hubs Kafka-végpont beszerzésével kapcsolatban olvassa el a [Kafka-kompatibilis eseményközpont létrehozásáról](event-hubs-create.md) szóló cikket. Győződjön meg arról, hogy másolja az Event Hubs kapcsolati karakterláncot későbbi használatra.
+Az Event Hubs-szolgáltatásokból való küldéshez és fogadáshoz szükség van egy Event Hubs-névtérre. A névtér és az eseményközpont létrehozásáról az [Eseményközpont létrehozása](event-hubs-create.md) című témakörben talál útmutatást. Győződjön meg arról, hogy másolja az Event Hubs kapcsolati karakterláncot későbbi használatra.
 
 ## <a name="clone-the-example-project"></a>A példaprojekt klónozása
 
-Most, hogy rendelkezik egy Kafka-kompatibilis Event Hubs-kapcsolati karakterlánccal, klónozza a `mirror-maker` Kafka-tárház Azure-eseményközpontokat, és keresse meg az almappát:
+Most, hogy rendelkezik egy Event Hubs kapcsolati karakterlánccal, klónozza a Kafka-tárház Azure-eseményközpontokat, és keresse meg az `mirror-maker` almappát:
 
 ```shell
 git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
@@ -118,7 +118,7 @@ bin/kafka-mirror-maker.sh --consumer.config source-kafka.config --num.streams 1 
 
 Annak ellenőrzéséhez, hogy az események elérik-e az eseményközpontot, tekintse meg a bejövő támadások statisztikáit az [Azure Portalon,](https://azure.microsoft.com/features/azure-portal/)vagy futtasson egy fogyasztót az eseményközponton.
 
-A MirrorMaker futásával a Kafka-fürtforrásra küldött eseményeket a Kafka-fürt és a tükrözött Kafka-kompatibilis eseményközpont-szolgáltatás is megkapja. A MirrorMaker és egy Event Hubs Kafka-végpont használatával egy meglévő Kafka-folyamat ot telepíthet át a felügyelt Azure Event Hubs szolgáltatásba a meglévő fürt módosítása vagy a folyamatban lévő adatfolyam megszakítása nélkül.
+A MirrorMaker futásával a Kafka-fürtforrásra küldött eseményeket a Kafka-fürt és a tükrözött eseményközpont is megkapja. A MirrorMaker és egy Event Hubs Kafka-végpont használatával egy meglévő Kafka-folyamat ot telepíthet át a felügyelt Azure Event Hubs szolgáltatásba a meglévő fürt módosítása vagy a folyamatban lévő adatfolyam megszakítása nélkül.
 
 ## <a name="samples"></a>Példák
 Tekintse meg a következő mintákat a GitHubon:

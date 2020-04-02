@@ -1,15 +1,15 @@
 ---
 title: Hozzon létre egy Azure Blockchain szolgáltatástagot - Azure portal
 description: Hozzon létre egy Azure Blockchain service-tagot egy blokklánc-konzorcium számára az Azure Portal használatával.
-ms.date: 03/12/2020
+ms.date: 03/30/2020
 ms.topic: quickstart
 ms.reviewer: ravastra
-ms.openlocfilehash: 3c468633a193d78fb1c017a756ee372c6feefb12
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4c3dabc6abdffd2fb08ece617545d8471955d130
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79203661"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529649"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>Rövid útmutató: Hozzon létre egy Azure Blockchain Service blockchain-tagot az Azure Portalhasználatával
 
@@ -36,7 +36,7 @@ Az Azure Blockchain Service-tag egy blockchain csomópont egy privát konzorcium
     Konzorcium | Új konzorcium esetén adjon meg egy egyedi nevet. Ha egy konzorciumhoz egy meghíváson keresztül csatlakozik, válassza ki azt a konzorciumot, amelyhez csatlakozik. A konzorciumokkal kapcsolatos további információkért lásd: [Azure Blockchain Service consortium.](consortium.md)
     Név | Válasszon egyedi nevet az Azure Blockchain szolgáltatás tag. A blokklánc tag neve csak kisbetűket és számokat tartalmazhat. Az első karakternek betűnek kell lennie. Az értéknek 2 és 20 karakter közötti hosszúnak kell lennie.
     Tagfiók jelszava | A tagfiók jelszava a tag számára létrehozott Ethereum-fiók titkos kulcsának titkosítására szolgál. A tagfiók és a tagfiók jelszavát használja a konzorciumkezeléséhez.
-    Díjszabás | Az új szolgáltatás csomópontkonfigurációja és költsége. Válassza ki a **Módosítás** hivatkozást a **Standard** és **az Alapszintű** szintek közül való választáshoz. Az *alapszintű* szint használata fejlesztésre, tesztelésre és a fogalmak igazolására szolgál. Használja a *standard* szint éles szintű központi telepítések.
+    Díjszabás | Az új szolgáltatás csomópontkonfigurációja és költsége. Válassza ki a **Módosítás** hivatkozást a **Standard** és **az Alapszintű** szintek közül való választáshoz. Az *alapszintű* szint használata fejlesztésre, tesztelésre és a fogalmak igazolására szolgál. Használja a *standard* szint éles szintű központi telepítések. A *Standard* szint akkor is érdemes használnia, ha blockchain data managert használ, vagy nagy mennyiségű magántranzakciót küld. A tagság létrehozása után nem támogatott a tarifacsomag alap- és szabványos szint közötti módosítása.
     Csomópont-jelszó | A tag alapértelmezett tranzakciós csomódának jelszava. Használja a jelszót az alapfokú hitelesítéshez, amikor a blockchain tag alapértelmezett tranzakciós csomópontnyilvános végpontjához csatlakozik.
 
 1. A beállítások érvényesítéséhez válassza a **Véleményezés + létrehozás** lehetőséget. Válassza a **Létrehozás** lehetőséget a szolgáltatás kiépítéséhez. A kiépítés körülbelül 10 percet vesz igénybe.

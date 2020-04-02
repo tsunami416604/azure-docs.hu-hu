@@ -18,12 +18,12 @@ ms.date: 09/11/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: e0682a33540cafd8ebab1bb248d462b30ee4dc2a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e6bc4ed94c8b8e62740f81497231a163283ebcb7
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80127541"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521550"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase"></a>Oktatóanyag: Leküldéses értesítések küldése Android-eszközökre a Firebase használatával
 
@@ -31,7 +31,7 @@ ms.locfileid: "80127541"
 
 Ez az oktatóanyag bemutatja, hogyan használhatja az Azure Notification Hubs és a Firebase Cloud Messaging (FCM) segítségével értesítéseket egy Android-alkalmazásba. Ebben az oktatóanyagban létrehoz egy üres Android-alkalmazást, amely leküldéses értesítéseket fogad a Firebase Cloud Messaging (FCM) használatával.
 
-Az oktatóanyag elkészült kódja letölthető [a GitHubról.](https://github.com/Azure/azure-notificationhubs-android/tree/master/samples/FCMTutorialApp)
+Az oktatóanyag elkészült kódja letölthető [a GitHubról.](https://github.com/Azure/azure-notificationhubs-android/tree/master/FCMTutorialApp)
 
 Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e62b3c551f41bca0055f35cf6bf62c59d921c73b
-ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+ms.openlocfilehash: 01767e88714bfb4e134957298505edd218d462d3
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80294828"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546926"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Mit takar a Windows Virtual Desktop? 
 
@@ -43,7 +43,7 @@ A Windows Virtual Desktop segítségével méretezhető és rugalmas környezete
 * Hozzon létre egy teljes asztali virtualizálási környezetet az Azure-előfizetésében anélkül, hogy további átjárókiszolgálókat kellene futtatnia.
 * A különböző munkaterhelések kezeléséhez szükséges annyi gazdagépkészletet tehet közzé.
 * Hozza létre saját lemezképét éles számítási feladatokhoz, vagy tesztelje az Azure Gallery-ből.
-* Csökkentse költségeit a közös, többmunkamenetes erőforrásokkal. A Windows 10 Enterprise új, kizárólag a Windows Virtual Desktop és a Remote Desktop Session Host (RDSH) szerepkörrel rendelkező Windows Server szerepkörrel jelentősen csökkentheti a virtuális gépek és az operációs rendszer (OS) terhelését, miközben továbbra is ugyanazokat az erőforrásokat biztosítja a felhasználók számára.
+* Csökkentse költségeit a közös, többmunkamenetes erőforrásokkal. A Windows 10 Enterprise új, kizárólag a Windows Virtual Desktop és a Remote Desktop Session Host (RDSH) szerepkörrel rendelkező Windows Server szerepkörrel jelentősen csökkentheti a virtuális gépek és az operációs rendszer (OS) terhelését, miközben ugyanazokat az erőforrásokat biztosítja a felhasználók számára.
 * Egyéni tulajdonjog biztosítása személyes (állandó) asztali számítógépeken keresztül.
 
 Virtuális asztalok at telepíthet és kezelhet:
@@ -89,21 +89,38 @@ A Windows virtuális asztalhoz létrehozott Azure virtuális gépeknek a követk
 
 A Windows virtuális asztalhoz létrehozott Azure virtuális gépeknek a következő URL-címekhez kell hozzáférniük:
 
-|Cím|Kimenő port|Cél|
-|---|---|---|
-|*.wvd.microsoft.com|443-as TCP-port|Szolgáltatási forgalom|
-|*.blob.core.windows.net|443-as TCP-port|Ügynök, SXS verem frissítések és ügynök forgalom|
-|*.core.windows.net|443-as TCP-port|Ügynökforgalma|
-|*.servicebus.windows.net|443-as TCP-port|Ügynökforgalma|
-|prod.warmpath.msftcloudes.com|443-as TCP-port|Ügynökforgalma|
-|catalogartifact.azureedge.net|443-as TCP-port|Azure Piactér|
-|kms.core.windows.net|1688-as TCP-port|Windows 10 aktiválása|
+|Cím|Kimenő TCP-port|Cél|Szolgáltatási címke|
+|---|---|---|---|
+|*.wvd.microsoft.com|443|Szolgáltatási forgalom|WindowsVirtualDesktop|
+|mrsglobalsteus2prod.blob.core.windows.net|443|Ügynök- és SXS-veremfrissítések|AzureCloud|
+|*.core.windows.net|443|Ügynökforgalma|AzureCloud|
+|*.servicebus.windows.net|443|Ügynökforgalma|AzureCloud|
+|prod.warmpath.msftcloudes.com|443|Ügynökforgalma|AzureCloud|
+|catalogartifact.azureedge.net|443|Azure Piactér|AzureCloud|
+|kms.core.windows.net|1688|A Windows aktiválása|Internet|
+
+
 
 >[!IMPORTANT]
 >Ezeknek az URL-címeknek a megnyitása elengedhetetlen a Windows virtuális asztal megbízható telepítéséhez. Az URL-címekhez való hozzáférés letiltása nem támogatott, és hatással lesz a szolgáltatás működésére. Ezek az URL-címek csak a Windows virtuális asztali webhelyeknek és erőforrásoknak felelnek meg, és nem tartalmaznak URL-címeket más szolgáltatásokhoz, például az Azure Active Directoryhoz.
 
+Az alábbi táblázat azokat a választható URL-címeket sorolja fel, amelyekhez az Azure virtuális gépei hozzáférhetnek:
+
+|Cím|Kimenő TCP-port|Cél|Szolgáltatási címke|
+|---|---|---|---|
+|*.microsoftonline.com|443|Hitelesítés az MS online szolgáltatásaihoz|None|
+|*.events.data.microsoft.com|443|Telemetriai szolgáltatás|None|
+|www.msftconnecttest.com|443|Észleli, ha az operációs rendszer csatlakozik az internethez|None|
+|*.prod.do.dsp.mp.microsoft.com|443|Windows Update|None|
+|login.windows.net|443|Bejelentkezés az MS Online Services szolgáltatásba, Office 365|None|
+|*.sfx.ms|443|Frissítések a OneDrive-ügyfélszoftverhez|None|
+|*.digicert.com|443|Tanúsítvány-visszavonás ellenőrzése|None|
+
+
 >[!NOTE]
 >A Windows virtuális asztal jelenleg nem rendelkezik olyan IP-címtartományokkal, amelyeket a hálózati forgalom engedélyezéséhez engedélyezési listához használhatna. Jelenleg csak bizonyos URL-címek engedélyezési listázását támogatjuk.
+>
+>Az Office-hoz kapcsolódó URL-címek listáját, beleértve a szükséges Azure Active Directoryval kapcsolatos URL-eket, az [Office 365 URL-címei és IP-címtartományai](/office365/enterprise/urls-and-ip-address-ranges)című témakörben található.
 >
 >A szolgáltatásforgalmat érintő URL-címekhez a helyettesítő karaktert (*) kell használnia. Ha nem szeretné használni a * karaktert az ügynökkel kapcsolatos forgalomhoz, az alábbiak szerint keresheti meg az URL-címeket helyettesítő karakterek nélkül:
 >
@@ -137,15 +154,15 @@ A következő Távoli asztali ügyfelek támogatják a Windows virtuális asztal
 
 A Távoli asztali ügyfeleknek a következő URL-címekhez kell hozzáférniük:
 
-|Cím|Kimenő port|Cél|Ügyfél(ek)|
+|Cím|Kimenő TCP-port|Cél|Ügyfél(ek)|
 |---|---|---|---|
-|*.wvd.microsoft.com|443-as TCP-port|Szolgáltatási forgalom|Összes|
-|*.servicebus.windows.net|443-as TCP-port|Adatok kalelhárítása|Összes|
-|go.microsoft.com|443-as TCP-port|Microsoft FWLinks|Összes|
-|aka.ms|443-as TCP-port|Microsoft URL-rövidítő|Összes|
-|docs.microsoft.com|443-as TCP-port|Dokumentáció|Összes|
-|privacy.microsoft.com|443-as TCP-port|Adatvédelmi nyilatkozat|Összes|
-|query.prod.cms.rt.microsoft.com|443-as TCP-port|Ügyfélfrissítések|Windows asztali rendszer|
+|*.wvd.microsoft.com|443|Szolgáltatási forgalom|Összes|
+|*.servicebus.windows.net|443|Adatok kalelhárítása|Összes|
+|go.microsoft.com|443|Microsoft FWLinks|Összes|
+|aka.ms|443|Microsoft URL-rövidítő|Összes|
+|docs.microsoft.com|443|Dokumentáció|Összes|
+|privacy.microsoft.com|443|Adatvédelmi nyilatkozat|Összes|
+|query.prod.cms.rt.microsoft.com|443|Ügyfélfrissítések|Windows asztali rendszer|
 
 >[!IMPORTANT]
 >Ezeknek az URL-címeknek a megnyitása elengedhetetlen a megbízható ügyfélélményhez. Az URL-címekhez való hozzáférés letiltása nem támogatott, és hatással lesz a szolgáltatás működésére. Ezek az URL-címek csak az ügyfélhelyeknek és az erőforrásoknak felelnek meg, és nem tartalmaznak URL-címeket más szolgáltatásokhoz, például az Azure Active Directoryhoz.

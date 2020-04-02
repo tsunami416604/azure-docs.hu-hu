@@ -1,5 +1,5 @@
 ---
-title: 'Interoperabilitás az Azure háttérkapcsolati szolgáltatásaiban: Vezérlősík-elemzés | Microsoft dokumentumok'
+title: 'Interoperabilitás az Azure-ban : Vezérlősík-elemzés'
 description: Ez a cikk az ExpressRoute, a helyek közötti VPN és az Azure-beli virtuális hálózati társviszony-létesítés közötti együttműködés elemzéséhez használható tesztbeállítás vezérlősík-elemzését tartalmazza.
 documentationcenter: na
 services: networking
@@ -10,14 +10,14 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 4921e4c4fc0da95250a0171c66d6a69093b10687
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e41bc86533815c394077bf5276d930fe958cd19
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873845"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80518272"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-control-plane-analysis"></a>Együttműködés az Azure háttérkapcsolati szolgáltatásaiban: Vezérlősík-elemzés
+# <a name="interoperability-in-azure--control-plane-analysis"></a>Interoperabilitás az Azure-ban : Vezérlősík-elemzés
 
 Ez a cikk a [tesztbeállítás][Setup]vezérlősík-elemzését ismerteti. Áttekintheti a [tesztbeállítás konfigurációját][Configuration] és a tesztbeállítás [adatsík-elemzését][Data-Analysis] is.
 

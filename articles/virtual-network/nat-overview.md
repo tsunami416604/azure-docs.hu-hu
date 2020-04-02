@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/14/2020
 ms.author: allensu
-ms.openlocfilehash: 4b34d4208d8686cdac3f8164d2cf7efb2d881346
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 50fc8b9cefe88a80f3f954ce363139b6a4a38589
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79409898"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548388"
 ---
 # <a name="what-is-virtual-network-nat"></a>Mi az a virtuális hálózati NAT?
 
@@ -40,11 +40,11 @@ A virtuális hálózati hálózati címfordítás (hálózati címfordítás) le
 
 ## <a name="static-ip-addresses-for-outbound-only"></a>Statikus IP-címek csak kimenő célokra
 
-Kimenő kapcsolat definiálható minden nat-tal rendelkező alhálózathoz.  Ugyanazon a virtuális hálózaton belül több alhálózat különböző NAT-okkal rendelkezhet. Az alhálózat konfigurálása a használandó [NAT-átjáró-erőforrás](./nat-gateway-resource.md) megadásával történik. Bármely virtuálisgép-példány összes UDP- és TCP kimenő folyamata nat-t fog használni. 
+Kimenő kapcsolat definiálható minden nat-tal rendelkező alhálózathoz.  Ugyanazon a virtuális hálózaton belül több alhálózat különböző NAT-okkal rendelkezhet. Az alhálózat konfigurálása a használandó NAT-átjáró-erőforrás megadásával történik. Bármely virtuálisgép-példány összes UDP- és TCP kimenő folyamata nat-t fog használni. 
 
-A NAT kompatibilis a szabványos termékváltozat [nyilvános IP-cím erőforrásaival](./virtual-network-ip-addresses-overview-arm.md#standard) vagy [nyilvános IP-előtag-erőforrásokkal,](./public-ip-address-prefix.md) illetve ezek kombinációjával.  Nyilvános IP-előtag közvetlenül is használható, vagy az előtag nyilvános IP-címeit több NAT-átjáró-erőforrás között is eloszthatja. A NAT az előtag IP-címtartományba irányuló összes forgalmat ápolja.  A központi telepítések IP-engedélyezési listája mostantól egyszerű.
+A NAT kompatibilis a szabványos termékváltozat nyilvános IP-cím erőforrásaival vagy nyilvános IP-előtag-erőforrásokkal, illetve ezek kombinációjával.  Nyilvános IP-előtag közvetlenül is használható, vagy az előtag nyilvános IP-címeit több NAT-átjáró-erőforrás között is eloszthatja. A NAT az előtag IP-címtartományba irányuló összes forgalmat ápolja.  A központi telepítések IP-engedélyezési listája mostantól egyszerű.
 
-Az alhálózat összes kimenő forgalmát a NAT automatikusan, ügyfélkonfiguráció nélkül dolgozza fel.  A felhasználó által definiált útvonalaknem szükségesek. A NAT elsőbbséget élvez a többi [kimenő forgatókönyvvel szemben,](../load-balancer/load-balancer-outbound-connections.md) és felváltja az alhálózat alapértelmezett internetes célját.
+Az alhálózat összes kimenő forgalmát a NAT automatikusan, ügyfélkonfiguráció nélkül dolgozza fel.  A felhasználó által definiált útvonalaknem szükségesek. A NAT elsőbbséget élvez a többi kimenő forgatókönyvvel szemben, és felváltja az alhálózat alapértelmezett internetes célját.
 
 ## <a name="on-demand-snat-with-multiple-ip-addresses-for-scale"></a>Igény szerinti SNAT több IP-címmel a méretezéshez
 
@@ -60,9 +60,9 @@ A terheléselosztó kimenő SNAT-tal ellentétben a NAT-nak nincsenek korlátoz�
 
 A NAT a következő szabványos termékváltozat-erőforrásokkal kompatibilis:
 
-- [Load Balancer](../load-balancer/load-balancer-overview.md)
-- [Nyilvános IP-cím](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)
-- [Nyilvános IP-előtag](../virtual-network/public-ip-address-prefix.md)
+- Terheléselosztó
+- Nyilvános IP-cím
+- Nyilvános IP-előtag
 
 A NAT-tal együtt használva ezek az erőforrások bejövő internetkapcsolatot biztosítanak az alhálózat(ok)hoz. A NAT az alhálózat(ok) összes kimenő internetkapcsolatát biztosítja.
 

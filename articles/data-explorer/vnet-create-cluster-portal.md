@@ -7,12 +7,12 @@ ms.reviewer: basaba
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/24/2020
-ms.openlocfilehash: 4dff471fa0f2194756409e01512ed223a1d46024
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 99c32122fc48aaea7428fa559d7289713849f34e
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80241438"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548903"
 ---
 # <a name="create-an-azure-data-explorer-cluster-in-your-virtual-network"></a>Hozzon létre egy Azure Data Explorer-fürtöt a virtuális hálózatban
 
@@ -68,7 +68,7 @@ A hálózati biztonsági csoport létrehozása:
     | Név | AllowAzureDataExplorerManagement
     | | |
     
-1. Ismételje meg az előző két lépést az összes bejövő és kimenő függőségnél [a virtuális hálózat központi telepítésének függőségei](/azure/data-explorer/vnet-deloyment#dependencies-for-vnet-deployment)szerint. Másik lehetőségként a kimenő szabályok egyetlen szabállyal helyettesíthetők, hogy a 443-as és a 80-as *portok számára engedélyezze* az internetet.
+1. Ismételje meg az előző két lépést az összes bejövő és kimenő függőségnél [a virtuális hálózat központi telepítésének függőségei](/azure/data-explorer/vnet-deployment#dependencies-for-vnet-deployment)szerint. Másik lehetőségként a kimenő szabályok egyetlen szabállyal helyettesíthetők, hogy a 443-as és a 80-as *portok számára engedélyezze* az internetet.
     
     A bejövő és kimenő függőségek NSG-szabályainak így kell kinézniük:
 
@@ -121,7 +121,7 @@ A virtuális hálózat és az alhálózat létrehozása:
     | | | |
 
     > [!NOTE]
-    > Éles számítási feladatok esetén tervezze meg az alhálózat méretét a [virtuális hálózat csomagalhálózatának mérete](/azure/data-explorer/vnet-deloyment#plan-subnet-size-in-your-vnet) szerint
+    > Éles számítási feladatok esetén tervezze meg az alhálózat méretét a [virtuális hálózat csomagalhálózatának mérete](/azure/data-explorer/vnet-deployment#plan-subnet-size-in-your-vnet) szerint
 
 1. Válassza **a Véleményezés + létrehozás** lehetőséget a fürt részleteinek áttekintéséhez, és a **Létrehozás lehetőséget** a fürt kiépítéséhez.
 

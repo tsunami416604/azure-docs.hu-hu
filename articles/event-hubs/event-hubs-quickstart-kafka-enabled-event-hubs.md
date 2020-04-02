@@ -8,12 +8,12 @@ ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: seodec18
 ms.date: 02/12/2020
-ms.openlocfilehash: 4a0d7d30ea02af222ab4a758c18b46d7488e1a8b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d196611dcf9f29e981977b8506ad9623f4629b53
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280711"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521637"
 ---
 # <a name="quickstart-data-streaming-with-event-hubs-using-the-kafka-protocol"></a>Rövid útmutató: Adatfolyam-továbbítás az Event Hubs használatával a Kafka protokoll használatával
 Ez a rövid útmutató bemutatja, hogyan streamelhet az Event Hubs-ba a protokollügyfelek módosítása vagy a saját fürtök futtatása nélkül. Megtudhatja, hogyan használhatja a gyártók és a fogyasztók beszélni Event Hubs csak egy konfigurációs változás az alkalmazásokban. Az Azure Event Hubs az [Apache Kafka 1.0-s verzióját](https://kafka.apache.org/10/documentation.html) támogatja.
@@ -32,7 +32,7 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy teljesülnek a
 * [Git](https://www.git-scm.com/)
 
 
-## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Kafka-kompatibilis Event Hubs-névtér létrehozása
+## <a name="create-an-event-hubs-namespace"></a>Event Hubs-névtér létrehozása
 Szabványos **szintű** Event Hubs névtér létrehozásakor a névtér Kafka végpontja automatikusan engedélyezve lesz. A Kafka protokollt használó alkalmazások eseményeit streamelheti standard szintű Event Hubs-ba. Kövesse a lépésenkénti utasításokat a [Hozzon létre egy eseményközpontot](event-hubs-create.md) az Azure Portal használatával egy **szabványos** szintű Event Hubs névtér létrehozásához. 
 
 > [!NOTE]
@@ -98,7 +98,7 @@ Szabványos **szintű** Event Hubs névtér létrehozásakor a névtér Kafka v�
     A GitHubon található CustomAuthenticateCallbackHandler mintakezelő osztály forráskódját [itt](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/appsecret/consumer/src/main/java)találja.
 
     A Kafka eseményelosztóinak összes OAuth-mintáját [itt](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth)találja.
-7. Futtassa a fogyasztó kódját, és végezze el a feldolgozást a Kafka-kompatibilis Event Hubsból a Kafka-ügyfelek használatával:
+7. Futtassa a fogyasztói kódot, és dolgozza fel az eseményeket az eseményközpontból a Kafka-ügyfelek használatával:
 
     ```java
     mvn clean package
@@ -113,5 +113,5 @@ Ebben a cikkben megtanulta, hogyan streamelhet az Event Hubs-ba a protokollügyf
 - [Ismerkedés a Kafkához készült Event Hubs szolgáltatással](event-hubs-for-kafka-ecosystem-overview.md)
 - [Rövid útmutatók a Kafka eseményközpontjaihoz a GitHubon](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart)
 - [Oktatóanyagok a Kafka eseményközpontokhoz a GitHubon](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials)
-- A [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) használatával [eseményeket streamelhet a kafkai kafkai eseményekről a Kafka által engedélyezett eseményközpontokba a felhőben.](event-hubs-kafka-mirror-maker-tutorial.md)
-- Ismerje meg, hogyan streamelhet a Kafka-kompatibilis Event Hubsba az [Apache Flink](event-hubs-kafka-flink-tutorial.md) vagy az [Akka Streams](event-hubs-kafka-akka-streams-tutorial.md) használatával
+- A [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) segítségével [eseményeket streamelhet a Kafka-ból a helyszíni Eseményközpontokba a felhőben.](event-hubs-kafka-mirror-maker-tutorial.md)
+- További információ az Event Hubs-ba az [Apache Flink](event-hubs-kafka-flink-tutorial.md) vagy [az Akka Streams](event-hubs-kafka-akka-streams-tutorial.md) használatával történő streamelésről

@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 2c9baa4c0e048419ece09b954cee1af21b1f0cc1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5a34ac2d1b7401d31ae518334aedc15c626b66a3
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77158009"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529493"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>A Java használatával eseményeket küldhet vagy fogadhat az Azure Event Hubs-ból (azure-eventhubs)
 
@@ -110,7 +110,7 @@ Hozzon létre egy egyes számú eseményt egy karakterlánc UTF-8 bájt kódolá
         // handling different flavors of ingestion to Event Hubs here.
         final ScheduledExecutorService executorService = Executors.newScheduledThreadPool(4);
 
-        // Each EventHubClient instance spins up a new TCP/SSL connection, which is expensive.
+        // Each EventHubClient instance spins up a new TCP/TLS connection, which is expensive.
         // It is always a best practice to reuse these instances. The following sample shows this.
         final EventHubClient ehClient = EventHubClient.createSync(connStr.toString(), executorService);
 
@@ -144,7 +144,7 @@ Gratulálunk! Üzeneteket küldött egy eseményközpontba.
 
 ### <a name="appendix-how-messages-are-routed-to-eventhub-partitions"></a>Függelék: Az üzenetek messagehub-partíciókra való átirányítása
 
-Mielőtt a fogyasztók lekérik az üzeneteket, azokat először a közzétevőknek kell közzétenniük a partíciókon. Amikor az üzeneteket a com.microsoft.azure.eventhubs.EventHubClient objektum sendSync() metódusával szinkron módon teszik közzé az eseményközpontban, az üzenet elküldhető egy adott partícióra, vagy az összes elérhető partícióra kerekítéses módon terjeszthető. attól függően, hogy a partíciókulcs meg van-e adva vagy sem.
+Mielőtt a fogyasztók lekérik az üzeneteket, azokat először a közzétevőknek kell közzétenniük a partíciókon. Amikor az üzeneteket a com.microsoft.azure.eventhubs.EventHubClient objektum sendSync() metódusával szinkron módon teszik közzé az eseményközpontban, az üzenet elküldhető egy adott partícióra, vagy az összes elérhető partícióra kerekítési módon terjeszthető attól függően, hogy a partíciókulcs meg van-e adva vagy sem.
 
 Ha meg van adva egy partíciókulcsot jelző karakterlánc, a rendszer kivonatolta a kulcsot annak meghatározásához, hogy melyik partícióra küldje az eseményt.
 
@@ -384,7 +384,7 @@ Ez az oktatóprogram az EventProcessorHost egyetlen példányát használja. Az 
 
 ### <a name="publishing-messages-to-eventhub"></a>Üzenetek közzététele az EventHubon
 
-Mielőtt a fogyasztók lekérik az üzeneteket, azokat először a közzétevőknek kell közzétenniük a partíciókon. Érdemes megjegyezni, hogy ha az üzeneteket a com.microsoft.azure.eventhubs.EventHubs.EventHubClient objektum sendSync() metódusával szinkron módon teszik közzé az event hubon, az üzenet elküldhető egy adott partícióra, vagy terjeszthető az összes elérhető partícióra. ciklikus multiplexelésa attól függően, hogy a partíciókulcs meg van-e adva vagy sem.
+Mielőtt a fogyasztók lekérik az üzeneteket, azokat először a közzétevőknek kell közzétenniük a partíciókon. Érdemes megjegyezni, hogy amikor az üzeneteket a com.microsoft.azure.eventhubs.EventHubs.EventHubClient objektum sendSync() metódusával szinkron módon teszik közzé az event hubon, az üzenet elküldhető egy adott partícióra, vagy az összes elérhető partícióra terjeszthető, ciklikus multiplexelés isztikán, attól függően, hogy a partíciókulcs meg van-e adva vagy sem.
 
 Ha meg van adva egy partíciókulcsot jelző karakterlánc, a rendszer kivonatolta a kulcsot annak meghatározásához, hogy melyik partícióra küldje az eseményt.
 

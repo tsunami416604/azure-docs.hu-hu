@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 5da0297dd97c8263bdc47f1d5a3d7d2d1f835e4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82608c98fc8ea15167b690547906c2238b1b3c04
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298837"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80544343"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>A StorSimple Virtual Array ajánlott eljárásai
 
@@ -161,8 +161,8 @@ Ne feledje, hogy a következő gyakorlati tanácsok kiépítésekor megosztások
 
 * A többszintű megosztás kiépített méretéhez viszonyított fájlméretek befolyásolhatják a rétegződési teljesítményt. A nagy fájlok kal végzett munka lassú szintnélküli kicsomagolást eredményezhet. Nagyméretű fájlokkal végzett munka esetén azt javasoljuk, hogy a legnagyobb fájl kisebb, mint a megosztási méret 3%-a.
 * A virtuális tömbön legfeljebb 16 kötet/megosztás hozható létre. A helyileg rögzített és rétegzett kötetek/megosztások méretkorlátait mindig a [StorSimple virtuális tömb korlátokat.](storsimple-ova-limits.md)
-* Kötet létrehozásakor vegye figyelembe a várható adatfelhasználást és a jövőbeli növekedést. A kötet később nem bontható ki.
-* A kötet létrehozása után nem csökkentheti a storsimple-en lévő kötet méretét.
+* Kötet létrehozásakor vegye figyelembe a várható adatfelhasználást és a jövőbeli növekedést. A kötet vagy megosztás később nem bontható ki.
+* A kötet/megosztás létrehozása után nem csökkentheti a kötet/megosztás méretét a StorSimple-en.
 * Amikor a StorSimple rétegzett kötetére ír, amikor a kötetadatok elérnek egy bizonyos küszöbértéket (a kötet számára fenntartott helyi területhez viszonyítva), az I/O-t a rendszer szabályozza. Ha továbbra is erre a kötetre ír, az jelentősen lelassítja az I/O-t. Bár a kiosztott kapacitáson túl is írhat rétegzett kötetre (nem akadályozzuk meg aktívan, hogy a felhasználó a kiosztott kapacitáson túl írjon), megjelenik egy értesítés a túlfizetett hatásról. Miután megjelenik a riasztás, elengedhetetlen, hogy tegyen korrekciós intézkedéseket, például törölje a kötet adatok (kötet bővítés jelenleg nem támogatott).
 * A vész-helyreállítási használati esetekben, mivel a megengedett részvények/kötetek száma 16, és a párhuzamosan feldolgozható megosztások/kötetek maximális száma is 16, a megosztások/kötetek száma nincs hatással a RPO-ra és az RPO-kra.
 

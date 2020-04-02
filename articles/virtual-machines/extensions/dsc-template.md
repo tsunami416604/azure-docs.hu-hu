@@ -13,16 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: ef781653332984a7fb6d71ef91d53cbf77e6c91c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89bae60c30cfe82d38c61f385dbaef574b4152d8
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72437972"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547784"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Kívánt állapotkonfiguráció-bővítmény az Azure Resource Manager-sablonokkal
 
-Ez a cikk a [kívánt állapotkonfigurációs (DSC) bővítménykezelő](dsc-overview.md)Azure Resource Manager-sablonját ismerteti. Számos példa a **RegistrationURL** (karakterláncként biztosított) és **RegistrationKey** [(pscredentialként](/dotnet/api/system.management.automation.pscredential)biztosított) az Azure Automation-szel való alaplaphoz. Az értékek beszerzéséről további információt [a Bevezetési gépek az Azure Automation State Configuration – Biztonságos regisztráció szolgáltatás általi kezelésért.](/azure/automation/automation-dsc-onboarding#secure-registration)
+Ez a cikk a [kívánt állapotkonfigurációs (DSC) bővítménykezelő](dsc-overview.md)Azure Resource Manager-sablonját ismerteti. Számos példa a **RegistrationURL** (karakterláncként biztosított) és **RegistrationKey** [(pscredentialként](/dotnet/api/system.management.automation.pscredential)biztosított) az Azure Automation-szel való alaplaphoz. Az értékek beszerzéséről további információt [a Bevezetési gépek az Azure Automation State Configuration – Biztonságos regisztráció szolgáltatás általi kezelésért.](/azure/automation/automation-dsc-onboarding#onboarding-securely-using-registration)
 
 > [!NOTE]
 > Előfordulhat, hogy némileg eltérő séma példákat. A séma változása a 2016 októberi kiadásban történt. További információt a [Frissítés korábbi formátumból .](#update-from-a-previous-format)
