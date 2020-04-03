@@ -1,26 +1,26 @@
 ---
-title: Állami kódok társeladása | Azure Piactér
-description: Használja ezeket az állam/tartomány kódokat, amikor elérhetőségi adatokat ad meg az ajánlat Co-sell oldalán.
+title: Állami és tartományi kódok társeladása | Azure Piactér
+description: Használja ezeket az állam- és tartománykódokat, amikor elérhetőségi adatokat ad meg az ajánlat co-sell oldalán.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/27/2019
-ms.openlocfilehash: f87014a599afd6d1c56d175b92d4da1ea49d9470
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 782f2d6facb28630989f086a68c551314e02e48e
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277039"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619363"
 ---
-# <a name="co-sell-state-codes"></a>Állami kódok társeladása
+# <a name="co-sell-state-and-province-codes"></a>Állami és tartománykódok társeladása
 
 Adott esetben használja ezeket a kódokat, hogy megadja az állam/ tartomány adatait, amikor [elérhetőségi adatokat ad meg az ajánlat Co-sell oldalán.](commercial-marketplace-co-sell.md#contacts)
 
-## <a name="stateprovince-table"></a>Állam/tartomány tábla
+## <a name="us-states-and-territories"></a>Amerikai államok és területek
 
-|   Állam/tartomány neve               |   Kód    |
+|   Állam és terület neve          |   Kód    |
 |-------------------------------------|-----------|
 | Alabama                             | AMERIKAI-AL     |
 | Alaszka                              | Egyesült Államok-AK     |
@@ -78,7 +78,40 @@ Adott esetben használja ezeket a kódokat, hogy megadja az állam/ tartomány a
 | Északi Mariana-szigetek            | Amerikai-MP     |
 | Puerto Rico                         | AMERIKAI-PR     |
 | Egyesült Államok kisebb külső szigetek | AMERIKAI-UM    |
-|Amerikai Virgin-szigetek                 | US-VI     |
+| Amerikai Virgin-szigetek                 | US-VI    |
+
+## <a name="canadian-provinces-and-territories"></a>Kanadai tartományok és területek
+
+|   Tartomány és terület neve       |   Kód    |
+|-------------------------------------|-----------|
+| Alberta                             |  CA-AB    |
+| Brit Columbia                    |  CA-BC    |
+| Manitoba                            |  CA-MB    |
+| Új-Brunswick                       |  CA-NB    |
+| Új-Fundland és Labrador           |  CA-NL    |
+| Nova Scotia                         |  CA-NS    |
+| Ontario                             |  CA-ON    |
+| Prince Edward-sziget                |  CA-PE    |
+| Quebec                              |  CA-QC    |
+| Saskatchewan                        |  CA-SK    |
+| Északnyugati területek               |  CA-NT    |
+| Nunavut                             |  CA-NU    |
+| Yukon                               |  CA-YT    |
+
+
+## <a name="australian-states-and-territories"></a>Ausztrál államok és területek
+
+|   Állam és terület neve          |   Kód    |
+|-------------------------------------|-----------|
+| Új-Dél-Wales                     |  AU-NSW   |
+| Queensland                          |  AU-QLD   |
+| Dél-Ausztrália                     |  AU-SA    |
+| Tasmania                            |  AU-TAS   |
+| Victoria                            |  AU-VIC   |
+| Nyugat-Ausztrália                   |  AU-WA    |
+| Ausztrál fővárosi terület        |  AU-ACT   |
+| Északi terület                  |  AU-NT    |
+
 
 ## <a name="next-steps"></a>További lépések
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/19/2019
-ms.openlocfilehash: b0dc974185ad616d57327e9cc3743db9ecb20e54
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 803783eddfbffd5c3dbab7353ee00dd7f11a09e5
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78302729"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618903"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: Fürtlétrehozási hibák
 
@@ -157,7 +157,7 @@ Ha a hálózati biztonsági csoportokat kívánja használni a hálózati forgal
 
 ---
 
-## <a name="error-code-storagepermissionsblockedformsi"></a>Hibakód: StoragePermissionsBlockedForMsi  
+## <a name="error-code-storagepermissionsblockedformsi"></a>Hibakód: StoragePermissionsBlockedForMsi
 
 ### <a name="error"></a>Hiba
 
@@ -178,11 +178,11 @@ További információ: [Engedélyek beállítása a Felügyelt identitáshoz a D
 
 ---
 
-## <a name="error-code-invalidnetworksecuritygroupsecurityrules"></a>Hibakód: InvalidNetworkSecurityGroupSecurityRules  
+## <a name="error-code-invalidnetworksecuritygroupsecurityrules"></a>Hibakód: InvalidNetworkSecurityGroupSecurityRules
 
 ### <a name="error"></a>Hiba
 
-"A hálózati biztonsági csoport /előfizetések/\<\>SubscriptionID /resourceGroups/<\> Resource Group name default/providers/Microsoft.Network/networkSecurityGroups/\<Network Security Group Name\> in alnet /subscriptions/\<SubscriptionID\>\</resourceGroups/ Resource Group name\> RG-westeurope-vnet-tomtom-default/providers/Microsoft.Network/virtualNetworks/\<Virtual Network A\>hálózatnév /alhálózatok/\<\> Alhálózat neve nem teszi lehetővé a szükséges bejövő és/vagy kimenő kapcsolatot. További információért látogasson el [az Azure HDInsight virtuális hálózatának megtervezése](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)vagy az ügyfélszolgálat megtervezése című oldalra."
+"A hálózati biztonsági csoport /előfizetések\</ subscriptions\>/ resourceGroups/<\> Resource Group name default/providers/Microsoft.Network/networkSecurityGroups/\<Network Security\<Group Name\>\<\> in tikulátorhálózat /előfizetések/ Előfizetési /resourceGroups/ Resource Group name RG-westeurope-vnet-tomtom-default/providers/Microsoft.Network/virtualNetworks/ Virtual Network Name /Subnets/ Subnets/ Subnets/ Subnets/ Subnets/ Subnets( Subnets/ Subnets/ Subnets/ Subnets/ Subnets/ Subnets/ Subnets/ Subnets/ ResourceGroup/ Resource Group name\> RG-westeurope-vnet-tomtom-default/providers/Microsoft.Network/virtualNetworks/\<Virtual Network\>Name /Subnets/ Subnets/ Subnets/ Subnets/ Subnets/ Subnets/ Subnets/ Subnets/ Subnets/ Subnets/ Subnets/ Subnets/ Subnets/ Subnets/ Subnets/ Subnets/ Subnets/ Subnets/ Subnets/ Subnets/ Subnets/ Subnets/\<SubnetName)\> nem engedélyezi a szükséges bejövő és/vagy kimenő kapcsolatot. További információért látogasson el [az Azure HDInsight virtuális hálózatának megtervezése](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)vagy az ügyfélszolgálat megtervezése című oldalra."
 
 ### <a name="cause"></a>Ok
 
@@ -195,12 +195,12 @@ Ha a hálózati biztonsági csoportokat kívánja használni a hálózati forgal
 - Azonosítsa a HDInsighthoz használni kívánt Azure-régiót, és hozzon létre egy biztonságos listát a régió IP-címeiről. További információ: [Egészség és kezelési szolgáltatások: Adott régiók.](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses#health-and-management-services-specific-regions)
 - Azonosítsa a HDInsight által igényelt IP-címeket. További információ: [HDInsight-felügyeleti IP-címek.](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)
 - Hozza létre vagy módosítsa annak az alhálózatnak a hálózati biztonsági csoportjait, amelyekbe a HDInsightot telepíteni kívánja. Hálózati biztonsági csoportok esetén engedélyezze a bejövő forgalmat a 443-as porton az IP-címekről. Ez a konfiguráció biztosítja, hogy a HDInsight felügyeleti szolgáltatások a virtuális hálózaton kívülről is elérhetik a fürtöt.
-  
+
 ---
 
 ## <a name="error-code-cluster-setup-failed-to-install-components-on-one-or-more-hosts"></a>Hibakód: A fürt telepítője nem tudta telepíteni az összetevőket egy vagy több állomásra
 
-###  <a name="error"></a>Hiba
+### <a name="error"></a>Hiba
 
 "A fürt telepítője nem tudta telepíteni az összetevőket egy vagy több állomásra. Próbálkozzon újra a kéréssel."
 
@@ -211,6 +211,42 @@ Ez a hiba általában átmeneti probléma vagy Azure-kimaradás esetén jön lé
 ### <a name="resolution"></a>Megoldás:
 
 Ellenőrizze az [Azure-állapot](https://status.azure.com) lapon az Azure-kimaradások, amelyek hatással lehetnek a fürt központi telepítését. Ha nincs kimaradás, próbálja meg újra a fürt központi telepítését.
+
+---
+
+## <a name="error-code-failedtoconnectwithclustererrorcode"></a>Hibakód: FailedToConnectWithClusterErrorCode
+
+### <a name="error"></a>Hiba
+
+Nem lehet csatlakozni a fürtkezelési végponthoz. Próbálkozzon később.
+
+### <a name="cause"></a>Ok
+
+A HDInsight szolgáltatás nem tud csatlakozni a fürthöz a fürt létrehozásakor
+
+### <a name="resolution"></a>Megoldás:
+
+Ha egyéni virtuális hálózati biztonsági csoportot (NSG-ket) és felhasználó által definiált útvonalakat (UDRs) használ, győződjön meg arról, hogy a fürt képes kommunikálni a HDInsight felügyeleti szolgáltatásokkal. További információt a [HDInsight felügyeleti IP-címekben](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)talál.
+
+---
+
+## <a name="error-code-deployments-failed-due-to-policy-violation-resource-resource-uri-was-disallowed-by-policy-policy-identifiers-policyassignmentnamepolicy-name-idprovidersmicrosoftmanagementmanagementgroupsmanagement-group-name-providersmicrosoftauthorizationpolicyassignmentspolicy-namepolicydefinition-policy-definition"></a>Hibakód: A központi telepítéseket házirend-sértés<Resource URI>miatt nem sikerült meghiúsulni: a "Resource" ' nem engedélyezett a házirend ben. Házirend-azonosítók: '[{"policyAssignment":{"name":"<Policy Name> ","id":"/providers/Microsoft.Management/managementGroups/<Management Group Name> providers/Microsoft.Authorization/policyAssignments/<Policy Name>"},"policyDefinition":<Policy Definition>
+
+### <a name="cause"></a>Ok
+
+Az előfizetés-alapú Azure-szabályzatok megtagadhatják a nyilvános IP-címek létrehozását. A HDInsight-fürt létrehozásához két nyilvános IP-cím szükséges.
+
+A következő házirendek általában hatással vannak a fürt létrehozására:
+
+* Olyan házirendek, amelyek megakadályozzák az IP-címek vagy a terheléselosztók létrehozását az előfizetésen belül.
+* Olyan házirend, amely megakadályozza a tárfiókok létrehozását.
+* Házirend, amely megakadályozza a hálózati erőforrások, például az IP-címek vagy a terheléselosztók törlését.
+
+### <a name="resolution"></a>Megoldás:
+
+Törölje vagy tiltsa le az előfizetés-alapú Azure-szabályzatot a HDInsight-fürt létrehozása közben.
+
+---
 
 ## <a name="next-steps"></a>További lépések
 

@@ -254,6 +254,7 @@
               href: reserved-vm-instance-size-flexibility.md
         - name: Spot virtuális gépek
           href: spot-vms.md
+          displayName: 'pre-empt, preempt'
         - name: Előző generációk
           href: ../sizes-previous-gen.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
           displayName: D-series Ds-series A-series Basic

@@ -9,14 +9,17 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 55e6bbc338c1ac6f9ef935b4a3a05c32f2b5e9f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 225221635f978e3d70cec4ce7e9d78d6b100b4fd
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72755227"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618760"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Azure Cosmos-kulcsok védelme az Azure Key Vaulttal 
+
+>[!IMPORTANT]
+> Az Azure Cosmos [DB-kulcsok](managed-identity-based-authentication.md)elérésének ajánlott megoldása a rendszer által hozzárendelt felügyelt identitás használata. Ha a szolgáltatás nem tudja kihasználni a felügyelt identitások előnyeit, használja a [tanúsítvány alapú megoldást.](certificate-based-authentication.md) Ha a felügyelt identitásmegoldás és a tanúsítványalapú megoldás nem felel meg az igényeinek, használja az alábbi key vault megoldást.
 
 Az Azure Cosmos DB alkalmazások használatakor hozzáférhet az adatbázishoz, gyűjtemények, dokumentumok segítségével a végpont és a kulcs az alkalmazás konfigurációs fájljában.  Azonban nem biztonságos a kulcsokat és az URL-t közvetlenül az alkalmazáskódjába helyezni, mert azok tiszta szöveges formátumban érhetők el az összes felhasználó számára. Azt szeretné, hogy a végpont és a kulcsok biztonságos mechanizmuson keresztül legyenek elérhetők. Az Azure Key Vault segít a titkos alkalmazáskulcsok biztonságos kezelésében és tárolásában.
 
@@ -30,7 +33,7 @@ Az Azure Cosmos DB hozzáférési kulcsok key vaultból történő tárolásáho
 
 ## <a name="create-a-key-vault"></a>Kulcstartó létrehozása
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)  
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).  
 2. Válassza **az Erőforrás létrehozása > biztonság > a Key Vault lehetőséget.**  
 3. A **Kulcstartó létrehozása** szakaszban adja meg a következő információkat:  
    * **Név:** Adjon meg egyedi nevet a Key Vaultnak.  

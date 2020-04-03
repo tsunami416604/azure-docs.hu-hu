@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: c868d8c159bca0c8462acde48225dc45003cf84e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: c427c832eb613dddbff33ef6e67af63112e2f136
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350992"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586056"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Memória- és egyidejűségi korlátok az Azure Synapse Analytics számára
 Tekintse meg a memória és egyidejűségi korlátok lerendelt különböző teljesítményszintek és erőforrásosztályok az Azure Synapse Analytics.  
@@ -73,7 +73,7 @@ A számítási [feladatok csoportjainak](sql-data-warehouse-workload-isolation.m
 ||||
 
 ## <a name="concurrency-maximums-for-resource-classes"></a>Egyidejűségi maximumok erőforrásosztályokhoz
-Annak érdekében, hogy minden lekérdezés elegendő erőforrással rendelkezzen a hatékony végrehajtáshoz, az Sql Analytics az Azure Synapse-ben úgy követi nyomon az erőforrás-kihasználtságot, hogy minden lekérdezéshez aconcurrency slots-tárolóhelyeket rendel hozzá. A rendszer a lekérdezéseket a fontosság és az egyidejűségi tárolóhelyek alapján várólistába helyezi. A lekérdezések a várólistában várnak, amíg elegendő egyidejűségi tárolóhely nem érhető el. [A fontosság](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance) és az egyidejűségi tárolóhelyek határozzák meg a PROCESSZOR rangsorolását. További információ: [A munkaterhelés elemzése](analyze-your-workload.md)
+Annak érdekében, hogy minden lekérdezés elegendő erőforrással rendelkezzen a hatékony végrehajtáshoz, az erőforrás-kihasználtságot az egyes lekérdezésekhez az egyidejűségi tárolóhelyek hozzárendelésével követi nyomon a rendszer. A rendszer a lekérdezéseket a fontosság és az egyidejűségi tárolóhelyek alapján várólistába helyezi. A lekérdezések a várólistában várnak, amíg elegendő egyidejűségi tárolóhely nem érhető el. [A fontosság](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance) és az egyidejűségi tárolóhelyek határozzák meg a PROCESSZOR rangsorolását. További információ: [A munkaterhelés elemzése](analyze-your-workload.md)
 
 **Statikus erőforrásosztályok**
 

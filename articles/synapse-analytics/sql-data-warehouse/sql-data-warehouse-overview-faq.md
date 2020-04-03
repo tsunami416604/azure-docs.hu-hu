@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 766615a92e616a254cca4b2b3ce1ccde40118275
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 9ce87bac6fbcc3833684dc540c542bc14c9b4955
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350248"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586523"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics (korábban SQL DW) gyakori kérdések
 
@@ -29,9 +29,9 @@ K. Mi történt az Azure SQL Data Warehouse?Mi történt az Azure SQL Data Wareh
 
 A. Az Azure Synapse az Azure SQL Data Warehouse (SQL DW) fejlődött. Ugyanazt az iparágvezető adatraktárt a teljesítmény és a képességek egy teljesen új szintjére vittük. Folytathatja a meglévő adattárház-számítási feladatok futtatását éles környezetben az Azure Synapse segítségével, és automatikusan élvezheti az új képességek előnyeit, amelyek előzetes verzióban vannak. További információ: [Mi az Azure Synapse Analytics.](sql-data-warehouse-overview-what-is.md)
 
-K. Mi az SQL Analytics?
+K. Mi a Synapse SQL-készlet?
 
-A. Az SQL Analytics az Azure Synapse-val általánosan elérhető vállalati adattárház-funkciókra hivatkozik. További információ: [Mi az Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md).
+A. A Synapse SQL-készlet az Azure Synapse-val általánosan elérhető vállalati adattárház-funkciókra hivatkozik. További információ: [Mi az Azure Synapse Analytics](sql-data-warehouse-overview-what-is.md).
 
 K. Hogyan kezdhetem el az Azure Synapse?
 
@@ -49,7 +49,7 @@ K. Csatlakoztatható a Power BI?
 
 A. Igen! Bár a Power BI támogatja a közvetlen lekérdezést az Azure Synapse segítségével, nem nagyszámú felhasználó nak vagy valós idejű adatnak készült. A Power BI teljesítményének további optimalizálásához fontolja meg a Power BI használatát az Azure Analysis Services vagy az Analysis Service IaaS mellett.
 
-K. Mik azok az SQL Analytics kapacitáskorlátok?
+K. Mik a Synapse SQL-készlet kapacitáskorlátai?
 
 A. Tekintse meg az aktuális [kapacitáskorlátok](sql-data-warehouse-service-capacity-limits.md) oldalt. 
 
@@ -83,16 +83,15 @@ A. Számos funkció támogatott. A nem támogatott szolgáltatások a [nem támo
 
 ## <a name="tooling-and-administration"></a>Szerszámozás és adminisztráció
 
-K. Támogatja az SQL Analytics a REST API-kat?
+K. A Synapse SQL-készlet támogatja a REST API-kat?
 
-A. Igen. Az SQL Database-ben használható legtöbb REST-funkció az SQL Analytics szolgáltatással is elérhető. Az API-információk a REST dokumentációs oldalain vagy az [MSDN-ben](https://msdn.microsoft.com/library/azure/mt163685.aspx)találhatók.
-
+A. Igen. Az SQL Database-ben használható LEGTÖBB REST-funkció a Synapse SQL-készlettel is elérhető. Az API-információk a REST dokumentációs oldalain vagy az [MSDN-ben](https://msdn.microsoft.com/library/azure/mt163685.aspx)találhatók.
 
 ## <a name="loading"></a>Betöltése
 
 K. Milyen ügyfél-illesztőprogramokat támogat?
 
-A. Az SQL Analytics illesztőprogram-támogatása megtalálható a [Kapcsolati karakterláncok](sql-data-warehouse-connection-strings.md) lapon
+A. A Synapse SQL-készlet illesztőprogram-támogatása megtalálható a [Kapcsolati karakterláncok](sql-data-warehouse-connection-strings.md) lapon
 
 K: Milyen fájlformátumokat támogat a PolyBase?
 
@@ -108,7 +107,8 @@ A: Nem, a PolyBase csak a tárolóösszetevőkkel kommunikál.
 
 K: Csatlakozhatok a HDI-hez?
 
-A: A HDI az ADLS vagy a WASB hdfs-rétegként használható. Ha rendelkezik a HDFS-réteggel, betöltheti ezeket az adatokat egy SQL Analytics-adattárházba. A HDI-példányhoz azonban nem hozhat létre leküldéses számítást. 
+A: A HDI az ADLS vagy a WASB hdfs-rétegként használható. Ha van bármelyik a HDFS-réteg, betöltheti az adatokat egy Synapse SQL-készletbe. A HDI-példányhoz azonban nem hozhat létre leküldéses számítást. 
 
 ## <a name="next-steps"></a>További lépések
+
 Az Azure Synapse egészére vonatkozó további információkért tekintse meg [áttekintési oldalunkat.](sql-data-warehouse-overview-faq.md)

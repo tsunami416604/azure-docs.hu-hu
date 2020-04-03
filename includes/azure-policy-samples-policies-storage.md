@@ -2,14 +2,14 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 04/02/2020
 ms.author: dacoulte
-ms.openlocfilehash: f4212ad8c4492cb975a0af14ba054b15cd7fa284
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 14ef9a4eeb5f3c906a2121b63413685df3bdbe50
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79381736"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80623982"
 ---
 |Név |Leírás |Hatás(ok) |Verzió |GitHub |
 |---|---|---|---|---|
@@ -19,4 +19,4 @@ ms.locfileid: "79381736"
 |[A földrajzilag redundáns tárolást engedélyezni kell a tárfiókokszámára](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbf045164-79ba-4215-8f95-f8048dc1780b) |Ez a házirend minden olyan tárfiókot naplóz, amelynek georedundáns tárolása nincs engedélyezve. |Naplózás, letiltva |1.0.0 |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/GeoRedundant_StorageAccounts_Audit.json)
 |[Engedélyezni kell a tárfiókokba történő biztonságos átvitelt](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F404c3081-a854-4457-ae30-26a93ef643f9) |A tárfiókbiztonságos átvitelének naplózási követelménye. A biztonságos átvitel egy olyan lehetőség, amely arra kényszeríti a tárfiókot, hogy csak biztonságos kapcsolatokról (HTTPS) érkező kéréseket fogadjon. A HTTPS használata biztosítja a kiszolgáló és a szolgáltatás közötti hitelesítést, és megvédi az átvitel alatt álló adatokat a hálózati rétegtámadásaitól, például a középre ágyazás, a lehallgatás és a munkamenet-eltérítés |Naplózás, Megtagadás, Letiltva |1.0.1 |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Storage_AuditForHTTPSEnabled_Audit.json)
 |[A tárfiókoknak lehetővé kell tenniük a hozzáférést a megbízható Microsoft-szolgáltatásokból](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc9d007d0-c057-4772-b18c-01e546713bcd) |Egyes, a tárfiókokkal kommunikáló Microsoft-szolgáltatások olyan hálózatokról működnek, amelyek hálózati szabályokon keresztül nem biztosíthatók hozzáféréshez. Annak érdekében, hogy az ilyen típusú szolgáltatások rendeltetésszerűen működjenek, engedélyezze, hogy a megbízható Microsoft-szolgáltatások megkerüljék a hálózati szabályokat. Ezek a szolgáltatások ezután erős hitelesítést fognak használni a tárfiók eléréséhez. |Naplózás, Megtagadás, Letiltva |1.0.0 |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageAccess_TrustedMicrosoftServices_Audit.json)
-|[A tárfiókokat át kell telepíteni az új Azure Resource Manager-erőforrásokba](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F37e0d2fe-28a5-43d6-a273-67d37d1f5606) |Az új Azure Resource Manager használata a tárfiókokhoz olyan biztonsági fejlesztésekbiztosításához, mint például: erősebb hozzáférés-vezérlés (RBAC), jobb naplózás, Azure Resource Manager-alapú telepítés és cégirányítási, felügyelt identitásokhoz való hozzáférés, hozzáférés a kulcstárolóhoz titkos kulcsok, Azure AD-alapú hitelesítés és címkék és erőforráscsoportok támogatása a könnyebb biztonságkezelés érdekében |Naplózás, Megtagadás, Letiltva |1.0.0 |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Classic_AuditForClassicStorages_Audit.json)
+|[A tárfiókokat át kell telepíteni az új Azure Resource Manager-erőforrásokba](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F37e0d2fe-28a5-43d6-a273-67d37d1f5606) |Az új Azure Resource Manager használata a tárfiókokhoz olyan biztonsági fejlesztésekbiztosításához, mint például: erősebb hozzáférés-vezérlés (RBAC), jobb naplózás, Azure Resource Manager-alapú telepítés és cégirányítási rendszer, hozzáférés a felügyelt identitásokhoz, hozzáférés a titkos kulcsok kulcstárolójához, Azure AD-alapú hitelesítés, valamint címkék és erőforráscsoportok támogatása a könnyebb biztonságkezelés érdekében |Naplózás, Megtagadás, Letiltva |1.0.0 |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Classic_AuditForClassicStorages_Audit.json)

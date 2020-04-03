@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
-ms.openlocfilehash: a813c77e81e51bfe13e75ed6c8d0e24b4d0fa645
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c80056fd62173ff1e5a6ed3979adba71b7706cc
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "66392929"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582759"
 ---
 # <a name="streaming-policies"></a>Streamelési szabályok
 
@@ -34,7 +34,7 @@ A következő "Döntési fa" segítségével kiválaszthatja az előre meghatár
 
 > [!IMPORTANT]
 > * A Datetime típusú **streamelési házirendek** tulajdonságai mindig UTC formátumúak.
-> * A Media Service-fiókhoz korlátozott házirendeket kell terveznie, és újra fel kell használnia őket a streamelési lokátorokhoz, amikor ugyanazokra a beállításokra van szükség. További információt a [Kvóták és korlátozások](limits-quotas-constraints.md)című témakörben talál.
+> * A Media Service-fiókhoz korlátozott házirendeket kell terveznie, és újra fel kell használnia őket a streamelési lokátorokhoz, amikor ugyanazokra a beállításokra van szükség. További információ: [Quotas and limits](limits-quotas-constraints.md).
 
 ## <a name="decision-tree"></a>Döntési fa
 

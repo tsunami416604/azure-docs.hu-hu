@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 05f0a81a738688df15ea9060071d9e266b54b7d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a39b038d31d1b4a614ff0acf7df2586706bb0404
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136655"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585509"
 ---
 # <a name="convert-configurations-to-composite-resources"></a>Konfigurációk átalakítása összetett erőforrásokká
 
@@ -50,7 +50,7 @@ A parancsmag betölti a konfiguráció tartalmát, megkapja a paraméterek list�
 Miután létrehozott egy modult, bővítheti a verziót, és kiadási megjegyzéseket adhat hozzá minden alkalommal, amikor módosításokat hajt végre, és közzéteszi azt a saját [PowerShellGet tárházban.](https://powershellexplained.com/2018-03-03-Powershell-Using-a-NuGet-server-for-a-PSRepository/?utm_source=blog&utm_medium=blog&utm_content=psscriptrepo)
 
 Miután létrehozott egy összetett erőforrásmodult, amely tartalmazza a konfigurációt (vagy több konfigurációt), használhatja őket az [Azure-ban a Composable Authoring](/azure/automation/compose-configurationwithcompositeresources) Experience-ben, vagy hozzáadhatja őket a [DSC konfigurációs parancsfájljaihoz](/powershell/scripting/dsc/configurations/configurations) a MOF-fájlok létrehozásához és [a MOF-fájlok feltöltéséhez az Azure Automationbe.](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)
-Ezután regisztrálja a [kiszolgálókat a helyszíni](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) vagy az [Azure-ban](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) a konfigurációk lekérése.
+Ezután regisztrálja a [kiszolgálókat a helyszíni](/azure/automation/automation-dsc-onboarding#onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) vagy az [Azure-ban](/azure/automation/automation-dsc-onboarding#onboarding-azure-vms) a konfigurációk lekérése.
 A projekt legújabb frissítése az Azure Automation [számára runbookokat](https://www.powershellgallery.com/packages?q=DscGallerySamples) is közzétett a konfigurációk PowerShell-galériából történő importálásának automatizálásához.
 
 A DSC összetett erőforrásailétrehozásának automatizálásához látogasson el a [PowerShell-galériába,](https://www.powershellgallery.com/packages/compositeresource/) és töltse le a megoldást, vagy kattintson a "Projektwebhely" gombra a [dokumentáció](https://github.com/microsoft/compositeresource)megtekintéséhez.

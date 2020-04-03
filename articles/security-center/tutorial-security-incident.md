@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
-ms.openlocfilehash: 84e747d4317347b585600f97bde0d140187ada65
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 971b93422e2b3f2053e0c5564c7ba924a631d810
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435314"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585770"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>Oktatóanyag: Reagálás a biztonsági incidensekre
 A Security Center fejlett elemzési eszközök és fenyegetésfelderítés segítségével folyamatosan elemzi a hibrid felhőbeli számítási feladatokat, hogy figyelmeztesse az esetleges rosszindulatú tevékenységekre. Ráadásul a Security Centerbe más biztonsági termékekből és szolgáltatásokból is integrálhat riasztásokat, és egyéni riasztásokat is létrehozhat a saját mutatói és intelligens forrásai alapján. Amikor valami kivált egy riasztást, gyors reagálásra van szükség a problémák kivizsgálásához és elhárításához. Az oktatóanyag során a következőket fogja elsajátítani:
@@ -32,7 +32,7 @@ A Security Center fejlett elemzési eszközök és fenyegetésfelderítés segí
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az oktatóanyagban ismertetett funkciók végrehajtásához a Security Center Standard tarifacsomagjával kell rendelkeznie. Kipróbálhatja a Security Center Standard-ot díjmentesen. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/). [Az Azure-előfizetés a Security Center Standard verziójába való felvételével](security-center-get-started.md) foglalkozó rövid útmutató végigvezeti azokon a lépéseken, amelyekkel frissíthet a Standard verzióra.
+Az oktatóanyagban szereplő funkciók on-át, a Security Center standard tarifacsomagjának kell lennie. Kipróbálhatja a Security Center Standard-ot díjmentesen. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/). [Az Azure-előfizetés a Security Center Standard verziójába való felvételével](security-center-get-started.md) foglalkozó rövid útmutató végigvezeti azokon a lépéseken, amelyekkel frissíthet a Standard verzióra.
 
 ## <a name="scenario"></a>Forgatókönyv
 A Contoso vállalat nemrégiben áttelepítette egyes helyszíni erőforrásait az Azure-ba, beleértve egyes virtuális gépeken alapuló üzleti számítási feladatait és SQL-adatbázisait. A Contoso fő számítógépes biztonsági incidensmegoldó csapata, a Core Computer Security Incident Response Team (CSIRT) jelenleg nem tudja kivizsgálni a biztonsági problémákat, mivel a biztonsági intelligencia nem képezi jelenlegi incidensmegoldási eszközparkjuk szerves részét. Az integráció hiánya az észlelési szakasz során (túl sok téves riasztás), valamint a felmérési és a diagnosztikai szakaszok során is problémát jelent. Az áttelepítés részeként úgy döntöttek, hogy a probléma megoldásához igénybe veszik a Security Center segítségét.
@@ -87,7 +87,7 @@ A Security Center segítségével minden biztonsági riasztást egy egyesített 
 
    ![Vizsgálat](./media/tutorial-security-incident/tutorial-security-incident-fig5.png)
 
-   A vizsgálati térkép a biztonsági riasztáshoz vagy eseményhez kapcsolódó entitások grafikus megjelenítése. Ha a térkép egy entitására kattint, az arra vonatkozó információk új entitásokként jelennek meg, és a térkép egyre bővül. A térképen kiválasztott entitás tulajdonságai kiemelve jelennek meg az oldal jobb oldalán található panelen. Az egyes lapokon megjelenő információk a kiválasztott entitástól függően változnak. A vizsgálati folyamat során a támadó lépéseinek jobb megértése érdekében tekintse át az összes kapcsolódó információt.
+   A vizsgálati térkép a biztonsági riasztáshoz vagy eseményhez kapcsolódó entitások grafikus megjelenítése. Ha a térkép egy entitására kattint, az arra vonatkozó információk új entitásokként jelennek meg, és a térkép egyre bővül. A térképen kiválasztott entitás tulajdonságai kiemelve jelennek meg az oldal jobb oldalán található panelen. Az egyes lapokon megjelenő információk a kiválasztott entitástól függően változnak. A vizsgálati folyamat során tekintse át az összes releváns információt, hogy jobban megértse a támadó mozgását.
 
 2. Ha több bizonyítékra van szüksége, vagy további vizsgálatra van szükség a talált entitásokkal kapcsolatban, lépjen a következő lépésre.
 
@@ -124,8 +124,3 @@ Ebben az oktatóanyagban a Security Center azon funkcióit ismerte meg, amelyeke
 > * Biztonsági incidens, amely egy erőforráshoz tartozó összes riasztás együttese
 > * Vizsgálati térkép, amely a biztonsági riasztáshoz vagy eseményhez kapcsolt entitások grafikus megjelenítése
 > * Keresési képességek a sérült rendszerekre vonatkozó további bizonyítékok kereséséhez
-
-További információk a Security Center vizsgálati funkciójáról:
-
-> [!div class="nextstepaction"]
-> [Incidensek és riasztások vizsgálata](security-center-investigation.md)

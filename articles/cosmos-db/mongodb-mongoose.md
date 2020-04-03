@@ -9,12 +9,12 @@ ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
 ms.custom: seodec18
-ms.openlocfilehash: 7f4d955583b82b224e3c963431c234ef4690198a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ff4455571aa5cfa5c9214bdf18af1853b0cef352
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063737"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585403"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Node.js Mongoose alkalmazás csatlakoztatása az Azure Cosmos DB-hez
 
@@ -36,6 +36,16 @@ Hozzunk létre egy Cosmos-fiókot. Ha már rendelkezik egy használni kívánt f
 
 [!INCLUDE [cosmos-db-create-dbaccount-mongodb](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 
+### <a name="create-a-database"></a>Adatbázis létrehozása 
+Ebben az alkalmazásban az Azure Cosmos DB-ben kétféle gyűjtemény létrehozását fedjük le: 
+- **Az egyes objektummodellek külön gyűjteményben történő**tárolása : Javasoljuk, hogy [hozzon létre egy dedikált átviteli fokkal rendelkező adatbázist.](set-throughput.md#set-throughput-on-a-database) Ennek a kapacitásmodellnek a használata jobb költséghatékonyságot eredményez.
+
+    :::image type="content" source="./media/mongodb-mongoose/db-level-throughput.png" alt-text="Node.js oktatóanyag – Képernyőkép az Azure Portalról, amely bemutatja, hogyan hozhat létre adatbázist az Adatkezelőben egy Azure Cosmos DB-fiókhoz, a Mongoose csomópont modullal való használatra":::
+
+- **Az összes objektummodell egyetlen Cosmos DB-gyűjteményben való tárolása:** Ha az összes modellt egyetlen gyűjteményben szeretné tárolni, egyszerűen létrehozhat egy új adatbázist az átviteli átbocsátás lehetőség kiválasztása nélkül. Ennek a kapacitásmodellnek a használatával minden gyűjtemény saját átviteli kapacitással rendelkezik minden objektummodellhez.
+
+Az adatbázis létrehozása után az alábbi környezeti `COSMOSDB_DBNAME` változóban a nevet fogja használni.
+
 ## <a name="set-up-your-nodejs-application"></a>A Node.js-alkalmazás beállítása
 
 >[!Note]
@@ -47,8 +57,8 @@ Hozzunk létre egy Cosmos-fiókot. Ha már rendelkezik egy használni kívánt f
 
     Válaszoljon a kérdésekre, és a projekt indulásra kész.
 
-1. Vegyen fel a mappába egy új fájlt, és adja neki az ```index.js``` nevet.
-1. Telepítse a szükséges csomagokat az egyik ```npm install``` lehetőséggel:
+2. Vegyen fel a mappába egy új fájlt, és adja neki az ```index.js``` nevet.
+3. Telepítse a szükséges csomagokat az egyik ```npm install``` lehetőséggel:
    * Mongoose: ```npm install mongoose@5 --save```
 
      > [!Note]
@@ -59,26 +69,26 @@ Hozzunk létre egy Cosmos-fiókot. Ha már rendelkezik egy használni kívánt f
      >[!Note]
      > A ```--save``` jelző hozzáadja a függőséget a package.json fájlhoz.
 
-1. Importálja a függőségeket az index.js fájljába.
+4. Importálja a függőségeket az index.js fájljába.
 
     ```JavaScript
    var mongoose = require('mongoose');
    var env = require('dotenv').config();   //Use the .env file to load the variables
     ```
 
-1. Vegye fel a Cosmos DB kapcsolati sztringjét és a Cosmos DB-nevet a ```.env``` fájlba. Cserélje le a helyőrzőket {cosmos-account-name} és {dbname} saját Cosmos-fióknévre és adatbázisnévre, a kapcsoszárójel-szimbólumok nélkül.
+5. Vegye fel a Cosmos DB kapcsolati sztringjét és a Cosmos DB-nevet a ```.env``` fájlba. Cserélje le a helyőrzőket {cosmos-account-name} és {dbname} saját Cosmos-fióknévre és adatbázisnévre, a kapcsoszárójel-szimbólumok nélkül.
 
     ```JavaScript
    # You can get the following connection details from the Azure portal. You can find the details on the Connection string pane of your Azure Cosmos account.
 
-   COSMODDB_USER = "<Azure Cosmos account's user name>"
-   COSMOSDB_PASSWORD = "<Azure Cosmos account passowrd>"
+   COSMODDB_USER = "<Azure Cosmos account's user name, usually the database account name>"
+   COSMOSDB_PASSWORD = "<Azure Cosmos account password, this is one of the keys specified in your account>"
    COSMOSDB_DBNAME = "<Azure Cosmos database name>"
    COSMOSDB_HOST= "<Azure Cosmos Host name>"
    COSMOSDB_PORT=10255
     ```
 
-1. Csatlakozzon a Cosmos DB-hez a Mongúz-keretrendszer használatával, és adja hozzá a következő kódot az index.js végéhez.
+6. Csatlakozzon a Cosmos DB-hez a Mongúz-keretrendszer használatával, és adja hozzá a következő kódot az index.js végéhez.
     ```JavaScript
    mongoose.connect("mongodb://"+process.env.COSMOSDB_HOST+":"+process.env.COSMOSDB_PORT+"/"+process.env.COSMOSDB_DBNAME+"?ssl=true&replicaSet=globaldb", {
       auth: {
@@ -94,19 +104,15 @@ Hozzunk létre egy Cosmos-fiókot. Ha már rendelkezik egy használni kívánt f
 
     Ha már csatlakozott az Azure Cosmos DB-hez, elkezdheti az objektummodellek beállítását a Mongoose-ban.
 
-## <a name="caveats-to-using-mongoose-with-cosmos-db"></a>Kifogások a Mongoose és a Cosmos DB használatával kapcsolatban
+## <a name="best-practices-for-using-mongoose-with-cosmos-db"></a>A Mongoose és a Cosmos DB használatának ajánlott eljárások
 
-A Mongúz minden létrehozott modellhez létrehoz egy új gyűjteményt. Azonban a Cosmos DB gyűjteményenkénti számlázási modellje miatt előfordulhat, hogy nem a legköltséghatékonyabb megoldás, ha több objektummodellt is rendelkezik, amelyek ritkán vannak feltöltve.
+A Mongúz minden létrehozott modellhez létrehoz egy új gyűjteményt. Ez a legjobb, ha az [adatbázisszintű átviteli áteresztőkapcsolóval](set-throughput.md#set-throughput-on-a-database)foglalkozunk, amelyről korábban tárgyaltunk. Egyetlen gyűjtemény használatához mongúz [diszkriminátorokat kell használnia.](https://mongoosejs.com/docs/discriminators.html) A diszkriminátorok sémaöröklési mechanizmusok. Lehetővé teszik, hogy egy alapul szolgáló MongoDB-gyűjteményre több modell épüljön átfedő sémákkal.
 
-Ez a bemutató mindkét modellre vonatkozik. Először a gyűjteményenként egy adattípust tárolását mutatjuk be. Ez a Mongoose tényleges viselkedése.
-
-A Mongoose alkalmaz egy [diszkriminátor](https://mongoosejs.com/docs/discriminators.html) nevű koncepciót. A diszkriminátorok sémaöröklési mechanizmusok. Lehetővé teszik, hogy egy alapul szolgáló MongoDB-gyűjteményre több modell épüljön átfedő sémákkal.
-
-A különböző adatmodelleket tárolhatja ugyanabban a gyűjteményben, majd a lekérdezés időpontjában alkalmazhat egy szűrőfeltételt, hogy csak a szükséges adatokat kérje le.
+A különböző adatmodelleket tárolhatja ugyanabban a gyűjteményben, majd a lekérdezés időpontjában alkalmazhat egy szűrőfeltételt, hogy csak a szükséges adatokat kérje le. Nézzük át az egyes modellek.
 
 ### <a name="one-collection-per-object-model"></a>Objektummodellenként egy gyűjtemény
 
-A Mongoose alapértelmezés szerint létrehoz egy MongoDB-gyűjteményt minden alkalommal, amikor létrehoz egy objektummodellt. Ez a szakasz azt ismerteti, hogyan érheti el ezt az Azure Cosmos DB MongoDB-hoz való API-jával. Ez a módszer akkor ajánlott, ha nagy mennyiségű adatot rendelkező objektummodellekkel rendelkezik. Ez a Mongoose-ban az alapértelmezett működési modell, tehát ha ismeri a Mongoose-t, akkor lehet, hogy már ismeri ezt a modellt.
+Ez a szakasz azt ismerteti, hogyan érheti el ezt az Azure Cosmos DB MongoDB-hoz való API-jával. Ez a módszer az ajánlott megközelítésünk, mivel lehetővé teszi a költségek és a kapacitás ellenőrzését. Ennek eredményeképpen az adatbázisban lévő kérelemegységek mennyisége nem függ az objektummodellek számától. Ez a Mongúz alapértelmezett működési modellje, így lehet, hogy ismeri ezt.
 
 1. Nyissa meg újra az ```index.js``` fájlt.
 
@@ -319,3 +325,4 @@ Amint láthatja, a Mongoose diszkriminátorok könnyen használhatók. Így ha v
 
 [alldata]: ./media/mongodb-mongoose/mongo-collections-alldata.png
 [multiple-coll]: ./media/mongodb-mongoose/mongo-mutliple-collections.png
+[dbleveltp]: ./media/mongodb-mongoose/db-level-throughput.png

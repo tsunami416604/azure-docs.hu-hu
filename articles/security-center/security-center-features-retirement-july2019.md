@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 1f923db5c730f6dec15f4fc211ab7acbd009ac7f
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 4a760fe1e5df7cf614a68f8fa8a05926326d3edf
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521421"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583216"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>A Biztonsági központ szolgáltatásainak kivonása (2019. július)
 
@@ -97,7 +97,7 @@ A Log Analytics **identitás-& access** irányítópultjának összes szolgálta
 
 ## <a name="security-events-map"></a>Biztonsági események térképe<a name="menu_securityeventsmap"></a>
 
-A Security Center [biztonsági riasztási térképet](https://docs.microsoft.com/azure/security-center/security-center-threat-intel) biztosít a biztonsági fenyegetések azonosításához. A **térkép Ugrás a biztonsági eseményekhez** gomb megnyit egy irányítópultot, amely lehetővé teszi a nyers biztonsági események megtekintését a kiválasztott munkaterületen.
+A Security Center biztonsági riasztási térképet biztosít a biztonsági fenyegetések azonosításához. A **térkép Ugrás a biztonsági eseményekhez** gomb megnyit egy irányítópultot, amely lehetővé teszi a nyers biztonsági események megtekintését a kiválasztott munkaterületen.
 
 Eltávolítottuk az Ugrás a **biztonsági eseményekre térképgombot** és a munkaterületenkénti irányítópultot.
 
@@ -136,7 +136,7 @@ Az egyéni riasztások megszüntetésével kapcsolatos további információkér
 
 ## <a name="security-alerts-investigation"></a>Biztonsági riasztások vizsgálata<a name="menu_investigate"></a>
 
-A Biztonsági központ [Vizsgálati funkciója](https://docs.microsoft.com/azure/security-center/security-center-investigation) segít egy esetleges biztonsági incidens osztályozásában. A funkció lehetővé teszi az incidens hatókörének megértését és a kiváltó okának nyomon követését. Eltávolítottuk ezt a funkciót a Security Centerből, mert az [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/)ben javított felhasználói élményváltotta fel.
+A Biztonsági központ Vizsgálati funkciója segít egy esetleges biztonsági incidens osztályozásában. A funkció lehetővé teszi az incidens hatókörének megértését és a kiváltó okának nyomon követését. Eltávolítottuk ezt a funkciót a Security Centerből, mert az [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/)ben javított felhasználói élményváltotta fel.
 
 ![Biztonsági incidens][14]
 

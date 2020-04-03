@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan készülhet fel a VMware virtuális gépek ért
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.custom: mvc
-ms.openlocfilehash: aecc82ff4403c044fae95eb9b7c8c7561fcb82b6
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 2e8aa72300c840832168138015e0a01ab054f954
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80336665"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619428"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>A VMware virtuális gépek előkészítése a felméréshez és az Azure-ba való migráláshoz
 
@@ -36,7 +36,7 @@ Ezekre az engedélyekre az Azure-ban, a VMware virtuális gépek felmérése vag
 
 **Tevékenység** | **Részletek** 
 --- | --- 
-**Azure Migrate projekt létrehozása** | Az Azure-fióknak ontributer vagy tulajdonosi engedélyeket kell létrehoznia egy projektet. 
+**Azure Migrate projekt létrehozása** | Az Azure-fiókjának közreműködői vagy tulajdonosi engedélyekre van szüksége a projekt létrehozásához. 
 **Erőforrás-szolgáltatók regisztrálása** | Az Azure Migrate egy könnyű Azure Migrate készüléket használ a VMware virtuális gépek felderítéséhez és értékeléséhez, valamint az Azure Migrate:Server Assessment használatával az Azure-ba való áttelepítéshez.<br/><br/> A készülék regisztrációja során az erőforrás-szolgáltatók regisztrálva vannak a készülékben kiválasztott előfizetéssel. [További információ](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Az erőforrás-szolgáltatók regisztrálásához közreműködői vagy tulajdonosi szerepkörre van szüksége az előfizetéshez.
 **Azure AD-alkalmazások létrehozása** | A készülék regisztrálásakor az Azure Migrate létrehozza az Azure Active Directory (Azure AD) alkalmazásokat. <br/><br/> - Az első alkalmazás a készüléken futó ügynökök és az Azure-on futó megfelelő szolgáltatások közötti kommunikációra szolgál.<br/><br/> - A második alkalmazás kizárólag a felhasználó ügynök nélküli VMware vm-áttelepítési előfizetésében létrehozott KeyVault eléréséhez használatos. [További információ](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Engedélyeket kell létrehoznia az Azure AD-alkalmazások (az alkalmazásfejlesztői szerepkörben érhető el) létrehozásához.
 **Kulcstartó létrehozása** | A VMware virtuális gépek ügynök nélküli áttelepítés használatával történő áttelepítéséhez az Azure Migrate létrehoz egy Key Vault-ot az előfizetés replikációs tárfiókjához való hozzáférési kulcsok kezeléséhez.<br/><br/> A tároló létrehozásához szerepkör-hozzárendelési engedélyeket kell létrehozni a szerepkör-hozzárendelési engedélyeket az erőforráscsoport, amelyben az Azure Migrate projekt található.

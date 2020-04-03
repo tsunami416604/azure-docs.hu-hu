@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: absha
-ms.openlocfilehash: f31c24c96732ec3311ea904fc9c63344e2d14109
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f08cfab8f8de9183e6bee241959f7feabc31c8e3
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371241"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585911"
 ---
 # <a name="application-gateway-configuration-overview"></a>Alkalmazásátjáró konfigurációjának áttekintése
 
@@ -168,8 +168,6 @@ Válassza a HTTP vagy https lehetőséget:
 
 - Ha a HTTP lehetőséget választja, az ügyfél és az alkalmazásátjáró közötti forgalom titkosítatlan lesz.
 
-- Válassza a HTTPS lehetőséget, ha [ATLS-végződtetést](https://docs.microsoft.com/azure/application-gateway/overview#secure-sockets-layer-ssltls-termination) vagy [végpontok közötti TLS-titkosítást](https://docs.microsoft.com/azure/application-gateway/ssl-overview)szeretne. Az ügyfél és az alkalmazásátjáró közötti forgalom titkosítva van. És a TLS-kapcsolat megszakad az alkalmazás átjáró. Ha végpontok közötti TLS-titkosítást szeretne, válassza a HTTPS-t, és konfigurálja a **háttérHTTP-beállítást.** Ez biztosítja, hogy a forgalom újra titkosítva, amikor az alkalmazás átjáróból a háttérrendszerbe utazik.
-
 - Válassza a HTTPS lehetőséget, ha [ATLS-végződtetést](features.md#secure-sockets-layer-ssltls-termination) vagy [végpontok közötti TLS-titkosítást](https://docs.microsoft.com/azure/application-gateway/ssl-overview)szeretne. Az ügyfél és az alkalmazásátjáró közötti forgalom titkosítva van. És a TLS-kapcsolat megszakad az alkalmazás átjáró. Ha végpontok közötti TLS-titkosítást szeretne, válassza a HTTPS-t, és konfigurálja a **háttérHTTP-beállítást.** Ez biztosítja, hogy a forgalom újra titkosítva, amikor az alkalmazás átjáróból a háttérrendszerbe utazik.
 
 
@@ -296,7 +294,7 @@ Az alkalmazásátjáró az itt megadott konfigurációval irányítja a forgalma
 
 ### <a name="cookie-based-affinity"></a>Cookie-alapú affinitás
 
-Az Azure Application Gateway átjáró által kezelt cookie-kat használ a felhasználói munkamenetek karbantartásához. Amikor egy felhasználó elküldi az első kérést az Application Gateway-nek, egy affinitáscookie-t állít be a válaszban egy kivonatértékkel, amely tartalmazza a munkamenet részleteit, így az affinitáscookie-t hordozó további kérelmek ugyanarra a háttérkiszolgálóra lesznek irányítva fenntartása ragacsos. 
+Az Azure Application Gateway átjáró által kezelt cookie-kat használ a felhasználói munkamenetek karbantartásához. Amikor egy felhasználó elküldi az első kérelmet az Application Gateway-nek, beállítja az affinitás cookie-t a válaszban egy kivonatértékkel, amely tartalmazza a munkamenet részleteit, így az affinitáscookie-t hordozó további kérelmek ugyanahhoz a háttérkiszolgálóhoz lesznek irányítva a stickiness fenntartása érdekében. 
 
 Ez a szolgáltatás akkor hasznos, ha egy felhasználói munkamenetet ugyanazon a kiszolgálón szeretne tartani, és ha a munkamenet-állapotot helyileg menti a kiszolgálón egy felhasználói munkamenethez. Ha az alkalmazás nem tudja kezelni a cookie-alapú affinitást, nem használhatja ezt a funkciót. A használatához győződjön meg arról, hogy az ügyfelek támogatják a cookie-kat.
 

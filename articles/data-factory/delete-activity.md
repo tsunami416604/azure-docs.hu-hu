@@ -12,19 +12,19 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: d061a132699e733e78a7d717ee32222b158d73b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f265cdc955becd53ae7ba61ad827b2be69b92907
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74927522"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618267"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Törlési tevékenység az Azure Data Factoryben
 
 A Tevékenység törlése az Azure Data Factory segítségével törölheti a fájlokat vagy mappákat a helyszíni tárolókból vagy a felhőbeli tárolókból. Ezzel a tevékenységgel megtisztíthatja vagy archiválhatja a fájlokat, amikor már nincs rájuk szükség.
 
 > [!WARNING]
-> A törölt fájlokat és mappákat nem lehet visszaállítani. Körültekintően járjon el, amikor a Törlés művelettel töröl fájlokat vagy mappákat.
+> A törölt fájlok és mappák nem állíthatók vissza (kivéve, ha a tároló helyreállítható törlésengedélyezve van). Körültekintően járjon el, amikor a Törlés művelettel töröl fájlokat vagy mappákat.
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
@@ -40,7 +40,7 @@ A Tevékenység törlése az Azure Data Factory segítségével törölheti a f�
 
 ## <a name="supported-data-stores"></a>Támogatott adattárak
 
--   [Azure Blob-tárhely](connector-azure-blob-storage.md)
+-   [Azure Blob Storage](connector-azure-blob-storage.md)
 -   [1. generációs Azure Data Lake Storage](connector-azure-data-lake-store.md)
 -   [2. generációs Azure Data Lake Storage](connector-azure-data-lake-storage.md)
 -   [Azure File Storage](connector-azure-file-storage.md)
@@ -327,7 +327,7 @@ Létrehozhat egy folyamatot a régi vagy lejárt fájlok karbantartásához a f�
 A fájlokat úgy helyezheti át, hogy másolási tevékenységgel másol egy fájlt, majd egy törlési tevékenységgel törli a folyamatban lévő fájlt.  Ha több fájlt szeretne áthelyezni, használhatja a GetMetadata tevékenység + Szűrés tevékenység + Foreach tevékenység + Tevékenység másolása + Tevékenység törlése a következő példában látható módon:
 
 > [!NOTE]
-> Ha a teljes mappát úgy szeretné áthelyezni, hogy csak egy mappaelérési utat tartalmazó adatkészletet határoz meg, majd másolási tevékenységet és egy Törlés tevékenységet használ egy mappát képviselő adatkészletre való hivatkozáshoz, nagyon óvatosnak kell lennie. Ez azért van, mert meg kell győződnie arról, hogy nem lesz új fájlok érkeznek a mappába a másolási művelet és a törlési művelet között.  Ha új fájlok érkeznek a mappába abban a pillanatban, amikor a másolási tevékenység éppen befejezte a másolási feladatot, de a Törlés tevékenység nem nézett, lehetséges, hogy a Törlés tevékenység törli ezt az új érkező fájlt, amely nem másolt a a teljes mappa törlésével. 
+> Ha a teljes mappát úgy szeretné áthelyezni, hogy csak egy mappaelérési utat tartalmazó adatkészletet határoz meg, majd másolási tevékenységet és egy Törlés tevékenységet használ egy mappát képviselő adatkészletre való hivatkozáshoz, nagyon óvatosnak kell lennie. Ez azért van, mert meg kell győződnie arról, hogy nem lesz új fájlok érkeznek a mappába a másolási művelet és a törlési művelet között.  Ha vannak új fájlok érkeznek a mappába abban a pillanatban, amikor a másolási tevékenység csak befejezte a másolási feladatot, de a Törlés tevékenység nem nézett, lehetséges, hogy a Törlés tevékenység törli ezt az új érkező fájlt, amely még nem másolt a célba a teljes mappa törlésével. 
 
 #### <a name="sample-pipeline"></a>Mintafolyamat
 

@@ -3,25 +3,57 @@ title: Kibocsátási megjegyzések – Beszédszolgáltatás
 titleSuffix: Azure Cognitive Services
 description: A Beszédszolgáltatás szolgáltatásának futó naplója, fejlesztések, hibajavítások és ismert problémák.
 services: cognitive-services
-author: brianem
+author: oliversc
 manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.author: brianem
+ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: cbe9c7cbd0f402e38d1163050d77b055f89948ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7bab0a28ba2b75903b6bdf4708e6aa0a98bdc9e5
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219642"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607406"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
+## <a name="speech-sdk-1110-2020-march-release"></a>Beszéd SDK 1.11.0: 2020-március kiadás
+
+**Új funkciók**
+
+- Linux: A Red Hat Enterprise Linux (RHEL)/CentOS 7 x64 támogatása a Speech SDK rendszerének konfigurálására [vonatkozó utasításokkal.](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-rhel-centos-7)
+- Linux: A .NET Core C# támogatása Linux ARM32 és ARM64 rendszeren. Bővebben [itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=linux). 
+- C#, C++: `UtteranceId` `ConversationTranscriptionResult`Hozzáadva a, az összes köztes és végső beszédfelismerési eredmény egységes azonosítója. C# [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription.conversationtranscriptionresult?view=azure-dotnet), [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/transcription-conversationtranscriptionresult)részletek.
+- Python: Hozzáadott `Language ID`támogatás . Tekintse meg speech_sample.py a [GitHub-tárházban.](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/python/console)
+- Windows: Hozzáadott tömörített audio bemeneti formátum támogatása a Windows platform on all the win32 konzol applications. Részletek [itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams). 
+- JavaScript: Beszédszintézis támogatása (szövegfelolvasás) a NodeJS-ben. Tudjon meg többet [itt](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech). 
+- JavaScript: Új API-k hozzáadása az összes küldési és fogadott üzenet ellenőrzésének engedélyezéséhez. Tudjon meg többet [itt](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript). 
+        
+**Hibajavítások**
+
+- C#, C++: Kijavítottunk egy problémát, ezért `SendMessageAsync` most bináris üzenetet küld bináris típusként. C# [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.sendmessageasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Connection_SendMessageAsync_System_String_System_Byte___System_UInt32_), [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/connection)részletek.
+- C#, C++: Kijavítottunk `Connection MessageReceived` egy problémát, `Recognizer` amely miatt `Connection` az esemény használata összeomlást okozhat, ha az objektum előtt van elhelyezve. C# [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.messagereceived?view=azure-dotnet), [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/connection#messagereceived)részletek.
+- Android: A mikrofon ból származó hangpuffer mérete 800 ms-ról 100 ms-ra csökkent a késleltetés javítása érdekében.
+- Android: Kijavítottuk az Android-emulátorral kapcsolatos [problémát](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/563) az Android Studio alkalmazásban.
+- JavaScript: Az `fromSubscription` API-val a kínai régiók támogatása hozzáadva. Részletek [itt](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#fromsubscription-string--string-). 
+- JavaScript: További hibainformációk hozzáadása a NodeJS csatlakozási hibáiról.
+        
+**Példák**
+
+- Egység: Szándékfelismerés nyilvános minta rögzített, ahol a LUIS json import sikertelen volt. Részletek [itt](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/369).
+- Python: Minta `Language ID`hozzáadva a hoz. Részletek [itt](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py).
+    
+**Covid19 rövidített vizsgálat**
+
+Mivel az elmúlt hetekben távolról dolgoztunk, nem tudtunk annyi kézi eszközellenőrző vizsgálatot végezni, mint általában. Erre példa a mikrofonbemenet és a hangszóró kimenetének tesztelése Linux, iOS és macOS rendszeren. Nem hajtottunk végre semmilyen változtatást, ami szerintünk bármit is megszakított volna ezeken a platformokon, és az automatizált tesztjeink mind átmentek. Abban a valószínűtlen esetben, ha valamit kihagytunk, kérjük, tudassa velünk a [GitHubon](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?page=2&q=is%3Aissue+is%3Aopen).<br> Köszönöm a folyamatos támogatást. Mint mindig, kérjük, tegye kérdések vagy visszajelzések [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?page=2&q=is%3Aissue+is%3Aopen) vagy [Stack túlcsordulás](https://stackoverflow.microsoft.com/questions/tagged/731).<br>
+Maradjon egészséges!
+
 ## <a name="speech-sdk-1100-2020-february-release"></a>Beszéd SDK 1.10.0: 2020-február kiadás
 
 **Új funkciók**
+
  - Python-csomagok at adott hozzá a Python új 3.8-as kiadásának támogatásához.
  - Red Hat Enterprise Linux (RHEL)/CentOS 8 x64 támogatás (C++, C#, Java, Python).
    > [!NOTE] 
@@ -33,6 +65,7 @@ ms.locfileid: "79219642"
  - Frissítve beszédfelismerő modellek 19 területi beállításhoz, 18,6%-os átlagos szóhibaarány-csökkenéssel (es-ES, es-MX, fr-CA, fr-FR, it-IT, ja-JP, ko-KR, pt-BR, zh-CN, zh-HK, nb-NO, fi-FL, ru-RU, pl-PL, ca-ES, zh-TW, TH-TH, pt-, TR-TR-). Az új modellek jelentős fejlesztéseket hoznak több tartományban, beleértve a Diktálást, a Call-Center átírást és a videoindexelési forgatókönyveket.
 
 **Hibajavítások**
+
  - Javítottuk azt a hibát, amely szerint a Beszélgetés-átíró nem várt megfelelően a JAVA API-kban 
  - Android x86 emulátor javítás a Xamarin [GitHub problémához](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/363)
  - Hiányzó hozzáadása (Get| Set)Tulajdonság módszerek AudioConfig
@@ -40,10 +73,12 @@ ms.locfileid: "79219642"
  - Ha régió nélküli végpontot használ, az USP-hibákat okozna a beszélgetésfordítószámára
  - Az univerzális Windows-alkalmazások azonosítógenerálása mostantól megfelelően egyedi GUID algoritmust használ; ez korábban és akaratlanul nem teljesítette a csonka megvalósítást, amely gyakran ütközéseket okozott nagy kölcsönhatások során.
  
- **Minták**
+ **Példák**
+ 
  - Unityminta a Speech SDK [Unity mikrofonnal és leküldéses módú streameléssel](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/unity/from-unitymicrophone) való használatához
 
 **További változások**
+
  - [Linuxra frissítve az OpenSSL konfigurációs dokumentációja](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-openssl-linux)
 
 ## <a name="speech-sdk-190-2020-january-release"></a>Beszéd SDK 1.9.0: 2020-január kiadás
@@ -59,13 +94,11 @@ ms.locfileid: "79219642"
 - JavaScript: További `FromHost API` támogatás a használat megkönnyítéséhez a prem tárolókkal és a szuverén felhőkkel. Lásd a [dokumentációt itt](speech-container-howto.md).
 - JavaScript: Most `NODE_TLS_REJECT_UNAUTHORIZED` becsület köszönhetően hozzájárulása [orgads](https://github.com/orgads). Lásd a részleteket [itt](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/75).
 
-
 **Változások megbontása**
 
 - `OpenSSL`az 1.1.1b verzióra frissítve lett, és statikusan kapcsolódik a Speech SDK linuxos központi könyvtárához. Ez törést okozhat, ha `OpenSSL` a beérkezett `/usr/lib/ssl` üzenetek mappája nincs telepítve a rendszer könyvtárába. Kérjük, olvassa el a beszédsdkó dokumentumok [dokumentációját](how-to-configure-openssl-linux.md) a probléma megkerüléséhez.
 - A `WordLevelTimingResult.Offset` C# számára visszaadott adattípust úgy `int` módosítottuk, hogy `long` a beszédadatok hoz a 2 percnél hosszabb a hozzáféréshez. `WordLevelTimingResults`
 - `PushAudioInputStream`és `PullAudioInputStream` most küldjön wav fejléc információkat `AudioStreamFormat`a beszédszolgáltatás alapján, opcionálisan meg van adva, amikor létrehozták őket. Az ügyfeleknek most a [támogatott hangbeviteli formátumot](how-to-use-audio-input-streams.md)kell használniuk. Bármely más formátum az optimálistól elmaradó felismerési eredményeket eredményez, vagy más problémákat okozhat. 
-
 
 **Hibajavítások**
 
@@ -81,13 +114,11 @@ ms.locfileid: "79219642"
 - JavaScript: az 1.7-ben hozzáadott szolgáltatástulajdonságok beállításának támogatása.
 - JavaScript: javítottunk egy hibát, amely miatt a csatlakozási hiba folyamatos, sikertelen websocket-újracsatlakozási kísérleteket eredményezhet.
 
-
-**Minták**
+**Példák**
 
 - Hozzáadott kulcsszó elismerés minta Android [itt](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/java/android/sdkdemo).
 - Hozzáadott TTS minta a szerver forgatókönyv [itt](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_synthesis_server_scenario_sample.cs).
 - Hozzáadott többeszközes beszélgetés rövid útmutató a C # és C ++ [itt](quickstarts/multi-device-conversation.md).
-
 
 **További változások**
 
@@ -114,7 +145,7 @@ ms.locfileid: "79219642"
 
 - Összeomlás javítása, `KeywordRecognizer` ha a helyi rendszert érvényes beszédszolgáltatás-előfizetési kulcs nélkül használja
 
-**Minták**
+**Példák**
 
 - Xamarin minta`KeywordRecognizer`
 - Egységminta`KeywordRecognizer`
@@ -145,7 +176,7 @@ ms.locfileid: "79219642"
 - `DialogServiceConnector`a munkamenet mostantól megfelelően biztosítja `ListenOnceAsync()` az eseményeket, beleértve az aktív`StartKeywordRecognitionAsync()`
 - A fogadott tevékenységekkel `DialogServiceConnector` kapcsolatos összeomlás kezelése
 
-**Minták**
+**Példák**
 
 - Rövid útmutató a Xamarinhoz
 - Frissített CPP rövid útmutató linuxos ARM64 információkkal
@@ -153,7 +184,7 @@ ms.locfileid: "79219642"
 
 ## <a name="speech-sdk-160-2019-june-release"></a>Beszéd SDK 1.6.0: 2019-június kiadás
 
-**Minták**
+**Példák**
 
 - Gyorsindítási minták szövegfelolvasáshoz az UWP-n és az Egységen
 - Gyorsútmutató a Swifthez iOS rendszeren
@@ -202,7 +233,7 @@ Ez egy hibajavítás-kiadás, amely csak a natív/felügyelt SDK-t érinti. Ez n
 - A beszélgetésátírási funkció az SDK-n keresztül érhető el. Lásd [itt](conversation-transcription-service.md).
 - A közvetlen vonalbeszédcsatornával támogatást adhat a hangsegédekhez.
 
-**Minták**
+**Példák**
 
 - Hozzáadott minták at új funkciók vagy új szolgáltatások által támogatott SDK.
 
@@ -238,7 +269,7 @@ Ez egy csak JavaScript-kiadás. Nincs hozzáadódó funkció. A következő jav�
 - JavaScript: A nem alapértelmezett mikrofon oka bemeneti eszközként való támogatás.
 - JavaScript: Proxy támogatása Node.js.
 
-**Minták**
+**Példák**
 
 - A beszédfelismerési SDK C++ és Objektív-C macOS rendszeren történő használatával rendelkező minták lettek hozzáadva.
 - A szövegfelolvasó szolgáltatás használatát igazoló minták kerültek hozzáadásra.
@@ -271,7 +302,7 @@ Ez egy hibajavítás-kiadás, amely csak a natív/felügyelt SDK-t érinti. Ez n
 - A Speech SDK mostantól támogatja a Unity-t egy bétaverzióban. Visszajelzés küldése a [GitHub mintatárban](https://aka.ms/csspeech/samples)található problémaszakaszon keresztül. Ez a kiadás támogatja a Unity t Windows x86 és x64 (asztali vagy univerzális Windows Platform alkalmazások) és az Android (ARM32/64, x86) rendszeren. További információ a [Unity rövid útmutató.](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=unity)
 - A `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` fájlra (amelyet a korábbi kiadásokban szállítottak) már nincs szükség. The functionality is now integrated into the core SDK.
 
-**Minták**
+**Példák**
 
 A következő új tartalom érhető el [a mintatárban:](https://aka.ms/csspeech/samples)
 
@@ -354,7 +385,7 @@ Ez egy csak JavaScript-kiadás. Nincs hozzáadódó funkció. A következő jav�
 - JavaScript: Állítsa az alapértelmezett kimeneti `SpeechConfig`formátumot "egyszerű" értékre a ban.
 - JavaScript: A javascriptben és más nyelveken lévő konfigurációs objektum tulajdonságai közötti inkonzisztencia eltávolítása.
 
-**Minták**
+**Példák**
 
 - Több minta frissítése és rögzítése (például fordítási hangok stb.).
 - Hozzáadott Node.js mintákat a [mintatárban](https://aka.ms/csspeech/samples).
@@ -386,7 +417,7 @@ Ez egy csak JavaScript-kiadás. Nincs hozzáadódó funkció. A következő jav�
 - Javítva egy hiba, amely megakadályozta a `EndpointId` (bizonyos esetekben) beállítását a JavaScript-ben.
 - Megváltozott a paramétersorrend az AddIntent-ben `AddIntent` JavaScript-ben, és hozzáadta a hiányzó JavaScript-aláírást.
 
-**Minták**
+**Példák**
 
 - C++ és C# mintákat adott hozzá a [mintatárban](https://aka.ms/csspeech/samples)a lekéréses és leküldéses adatfolyam-használathoz.
 

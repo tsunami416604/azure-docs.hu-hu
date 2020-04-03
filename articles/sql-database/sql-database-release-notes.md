@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: sstein
-ms.openlocfilehash: 2df83e3b62994381895315b2ef100299e40b745e
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 9fa93af72c2869efd7b6d2f1e8b96b0e667f8b16
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366502"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607550"
 ---
 # <a name="sql-database-release-notes"></a>SQL Database kiadási megjegyzések
 
@@ -22,7 +22,7 @@ Ez a cikk az SQL Database jelenleg nyilvános előzetes verzióban elérhető sz
 
 ## <a name="features-in-public-preview"></a>Funkciók a nyilvános előzetes verzióban
 
-### <a name="single-database"></a>[Egyetlen adatbázis](#tab/single-database)
+### <a name="single-database"></a>[Önálló adatbázis](#tab/single-database)
 
 | Szolgáltatás | Részletek |
 | ---| --- |
@@ -78,6 +78,7 @@ A következő funkciók engedélyezve vannak a Felügyelt példány telepítési
 
 |Probléma  |Felfedezett dátum  |status  |Megoldott dátum  |
 |---------|---------|---------|---------|
+|[A felügyelt példányra nem alkalmazott erőforráscsoport engedélyei](#permissions-on-resource-group-not-applied-to-managed-instance)|Február 2020|Kerülő megoldás||
 |[A manuális feladatátvétel korlátozása a portálon keresztül a feladatátvételi csoportok számára](#limitation-of-manual-failover-via-portal-for-failover-groups)|2020. január|Kerülő megoldás||
 |[Az SQL Agent-szerepköröknek explicit EXECUTE-engedélyekre van szükségük a nem rendszergazdai bejelentkezésekhez](#in-memory-oltp-memory-limits-are-not-applied)|2019. december|Kerülő megoldás||
 |[Az SQL Agent-feladatokat megszakíthatja az ügynökfolyamat újraindítása](#sql-agent-jobs-can-be-interrupted-by-agent-process-restart)|2019. december|Nincs megoldás|Már 2020|
@@ -101,6 +102,12 @@ A következő funkciók engedélyezve vannak a Felügyelt példány telepítési
 |Az üzleti legkritikusabb szintről az általános célú szintre történő időponthoz való visszaállítás nem lesz sikeres, ha a forrásadatbázis memórián belüli OLTP-objektumokat tartalmaz.||Feloldva|2019. október|
 |Database Mail szolgáltatás külső (nem Azure-beli) levelezési kiszolgálókkal biztonságos kapcsolat használatával||Feloldva|2019. október|
 |A felügyelt példány nem támogatja a tartalmazott adatbázisokat||Feloldva|2019. augusztus|
+
+### <a name="permissions-on-resource-group-not-applied-to-managed-instance"></a>A felügyelt példányra nem alkalmazott erőforráscsoport engedélyei
+
+Felügyelt példány közreműködői RBAC szerepkör, ha egy erőforráscsoportra (RG) alkalmazott nem alkalmazzák a felügyelt példány, és nincs hatása.
+
+**Megoldás:** A felügyelt példány közreműködői szerepkör beállítása a felhasználók számára az előfizetés szintjén.
 
 ### <a name="limitation-of-manual-failover-via-portal-for-failover-groups"></a>A manuális feladatátvétel korlátozása a portálon keresztül a feladatátvételi csoportok számára
 

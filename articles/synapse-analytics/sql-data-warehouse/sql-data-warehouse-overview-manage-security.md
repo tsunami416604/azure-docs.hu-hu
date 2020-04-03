@@ -1,7 +1,6 @@
 ---
 title: Adatbázis biztonságossá tétele
-description: Tippek az adatbázis védelméhez és a megoldások fejlesztéséhez az SQL Analytics SQL készleterőforrásában.
-services: synapse-analytics
+description: Tippek az adatbázis biztonságossá tételéhez és a synapse SQL-készleterőforrás megoldásainak fejlesztéséhez.
 author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
@@ -12,14 +11,15 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 6ae9580803563971764eec4bd18fcc2430cee06d
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 46d32fdca615833bd602480ac182585da898ab98
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350199"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586442"
 ---
 # <a name="secure-a-database-in-azure-synapse"></a>Adatbázis biztonságossá tétele az Azure Synapse-ban
+
 > [!div class="op_single_selector"]
 > * [Biztonság – áttekintés](sql-data-warehouse-overview-manage-security.md)
 > * [Hitelesítés](sql-data-warehouse-authentication.md)
@@ -28,9 +28,10 @@ ms.locfileid: "80350199"
 > 
 > 
 
-Ez a cikk bemutatja az SQL-készlet SQL Analytics-en belüli védelmének alapjait. Ez a cikk első lépések a hozzáférés korlátozására, az adatok védelmére és az SQL-készlet használatával kiépített adatbázis tevékenységeinek figyelésére szolgáló erőforrásokkal.
+Ez a cikk végigvezeti a Synapse SQL-készlet biztosításának alapjait. Ez a cikk első lépések a hozzáférés korlátozására, az adatok védelmére és az SQL-készlet használatával kiépített adatbázis tevékenységeinek figyelésére szolgáló erőforrásokkal.
 
 ## <a name="connection-security"></a>Kapcsolatbiztonság
+
 A kapcsolatbiztonság azt jelenti, hogy hogyan korlátozza és védi az adatbázis kapcsolatait a tűzfalszabályok és a csatlakozástitkosítás használatával.
 
 A tűzfalszabályokat a kiszolgáló és az adatbázis egyaránt használja a kifejezetten nem engedélyezési listán szereplő IP-címekcsatlakozási kísérleteinek elutasítására. Ahhoz, hogy az alkalmazás vagy az ügyfélgép nyilvános IP-címe kapcsolatokat engedélyezze, először létre kell hoznia egy kiszolgálószintű tűzfalszabályt az Azure Portal, a REST API vagy a PowerShell használatával. 
@@ -42,6 +43,7 @@ Az Azure Synapse Analytics kiszolgálószintű IP-tűzfalszabályokat használ. 
 Az SQL-készlethez való csatlakozások alapértelmezés szerint titkosítva vannak.  A rendszer figyelmen kívül hagyja a kapcsolatbeállítások módosítását a titkosítás letiltása érdekében.
 
 ## <a name="authentication"></a>Hitelesítés
+
 A hitelesítés azt jelenti, hogy hogyan igazolja az identitását az adatbázishoz való kapcsolódáskor. Az SQL-készlet jelenleg támogatja az SQL Server hitelesítést felhasználónévvel és jelszóval, valamint az Azure Active Directoryval. 
 
 Az adatbázis logikai kiszolgálójának létrehozásakor megadta a „kiszolgálói rendszergazda” bejelentkezés felhasználónevét és jelszavát. Ezekkel a hitelesítő adatokkal hitelesítheti magát a kiszolgáló bármely adatbázisában az adatbázis tulajdonosaként, vagy "dbo" az SQL Server-hitelesítés en keresztül.

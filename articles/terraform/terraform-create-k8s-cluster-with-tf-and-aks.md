@@ -4,12 +4,12 @@ description: Ebben az oktatóanyagban kubernetes-fürtöt hoz létre az Azure Ku
 keywords: azure devops terraform aks kubernetes
 ms.topic: tutorial
 ms.date: 03/09/2020
-ms.openlocfilehash: 0a193c8da6441a04f742894797521fe92f26b2e1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b7a84d7562e99e53ff7be75b7d40795cd3f9e203
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78945298"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618935"
 ---
 # <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>Oktatóanyag: Hozzon létre egy Kubernetes-fürtöt az Azure Kubernetes szolgáltatással a Terraform használatával
 
@@ -28,7 +28,7 @@ Ebben az oktatóanyagban megtudhatja, hogyan kell elvégezni a következő felad
 
 - **A Terraform konfigurálása**: Kövesse a [Terraform telepítését és az Azure-hozzáférés konfigurálását ismertető cikkben](terraform-install-configure.md) található utasításokat
 
-- **Azure-beli szolgáltatásnév**: Kövesse az [Azure-beli szolgáltatásnév létrehozása az Azure CLI-vel](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) című cikk **a szolgáltatásnév létrehozását** ismertető szakaszában foglaltakat. Jegyezze fel az appId, a displayName, a password és a tenant értékét.
+- **Azure egyszerű szolgáltatás:** Kövesse az utasításokat a **szolgáltatásegyszerű szakaszban** található, [hozzon létre egy Azure service principal azure CLI.](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) Jegyezze fel az appId, a displayName, a password és a tenant értékét.
 
 ## <a name="create-the-directory-structure"></a>A könyvtárstruktúra létrehozása
 
@@ -303,7 +303,7 @@ Ebben a szakaszban a következő feladatok at láthatja:
 
 ## <a name="create-the-kubernetes-cluster"></a>Kubernetes-fürt létrehozása
 
-Ez a szakasz ismerteti, hogyan használható a `terraform init` parancs az előző szakaszokban létrehozott konfigurációs fájlokat meghatározó erőforrások létrehozásához.
+Ebben a szakaszban megtudhatja, `terraform init` hogyan hozhat létre a paranccsal az előző szakaszokban létrehozott konfigurációs fájlokban definiált erőforrásokat.
 
 1. A Cloud Shell alkalmazásban inicializálja a Terraform ot. Cserélje le a helyőrzőket a környezetének megfelelő értékekre.
 

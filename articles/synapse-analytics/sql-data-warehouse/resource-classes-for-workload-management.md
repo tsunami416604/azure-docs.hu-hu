@@ -11,20 +11,20 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 47fd30fbb6e6836d6edf18ac68164d515f3aeb93
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8ac9ff1f46e1d2d0ddaa313499340b4723c7da07
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350738"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584256"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Számítási feladatok kezelése erőforrás-osztályokkal az Azure Synapse Analytics szolgáltatásban
 
-Útmutató az erőforrásosztályok használatával az Azure Synapse SQL Analytics-lekérdezéseinek memóriájának és egyidejűségének kezeléséhez.  
+Útmutató az erőforrásosztályok használatával a synapszia SQL-készlet lekérdezéseinek memóriájának és egyidejűsse kezelésére az Azure Synapse-ban.  
 
 ## <a name="what-are-resource-classes"></a>Mik azok az erőforrásosztályok?
 
-A lekérdezés teljesítménykapacitását a felhasználó erőforrásosztálya határozza meg.  Az erőforrásosztályok előre meghatározott erőforráskorlátok az SQL Analytics szolgáltatásban, amelyek a számítási erőforrásokat és a lekérdezésvégrehajtásával kapcsolatos egyidejűséget szabályozzák. Az erőforrásosztályok segítségével konfigurálhatja az erőforrásokat a lekérdezésekhez azáltal, hogy korlátozza az egyidejűleg futó lekérdezések számát és az egyes lekérdezésekhez rendelt számítási erőforrásokat.  Van egy kompromisszum a memória és az egyidejűség között.
+A lekérdezés teljesítménykapacitását a felhasználó erőforrásosztálya határozza meg.  Az erőforrásosztályok előre meghatározott erőforráskorlátok a Synapse SQL-készletben, amelyek a számítási erőforrásokat és a lekérdezés végrehajtásának egyidejűségét szabályozzák. Az erőforrásosztályok segítségével konfigurálhatja az erőforrásokat a lekérdezésekhez azáltal, hogy korlátozza az egyidejűleg futó lekérdezések számát és az egyes lekérdezésekhez rendelt számítási erőforrásokat.  Van egy kompromisszum a memória és az egyidejűség között.
 
 - A kisebb erőforrásosztályok csökkentik a lekérdezésenkénti maximális memóriát, de növelik az egyidejűséget.
 - A nagyobb erőforrásosztályok növelik a lekérdezésenkénti maximális memóriát, de csökkentik az egyidejűséget.
@@ -82,7 +82,7 @@ Az egyes erőforrás-osztályok memóriafoglalása a következő.
 
 Alapértelmezés szerint minden felhasználó tagja a dynamic resource class **smallrc**.
 
-A szolgáltatás-rendszergazda erőforrásosztálya smallrc-ben van rögzítve, és nem módosítható.  A szolgáltatás-rendszergazda a kiépítési folyamat során létrehozott felhasználó.  Ebben a környezetben a szolgáltatás rendszergazdája a "Kiszolgálói bejelentkezéshez" megadott bejelentkezés, amikor új SQL Analytics-példányt hoz létre egy új kiszolgálóval.
+A szolgáltatás-rendszergazda erőforrásosztálya smallrc-ben van rögzítve, és nem módosítható.  A szolgáltatás-rendszergazda a kiépítési folyamat során létrehozott felhasználó.  Az ebben a környezetben a szolgáltatás rendszergazdája a "Kiszolgálói bejelentkezéshez" megadott bejelentkezés, amikor új Synapse SQL-készletet hoz létre egy új kiszolgálóval.
 
 > [!NOTE]
 > Az Active Directory-rendszergazdaként definiált felhasználók vagy csoportok szintén szolgáltatás-rendszergazdák.
@@ -594,5 +594,5 @@ GO
 
 ## <a name="next-steps"></a>További lépések
 
-Az adatbázis-felhasználók kezeléséről és a biztonságról az [Adatbázis védelme az SQL Analytics szolgáltatásban](sql-data-warehouse-overview-manage-security.md)című témakörben talál további információt. Ha többet szeretne tudni arról, hogy a nagyobb erőforrásosztályok hogyan javíthatják a fürtözött oszlopcentrikus index minőségét, olvassa el [a Memóriaoptimalizálás az oszlopcentrikus tömörítéshez című témakört.](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)
+Az adatbázis-felhasználók kezeléséről és a biztonságról az [Adatbázis védelme a Synapse SQL rendszerben](sql-data-warehouse-overview-manage-security.md)című témakörben talál további információt. Ha többet szeretne tudni arról, hogy a nagyobb erőforrásosztályok hogyan javíthatják a fürtözött oszlopcentrikus index minőségét, olvassa el [a Memóriaoptimalizálás az oszlopcentrikus tömörítéshez című témakört.](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)
 

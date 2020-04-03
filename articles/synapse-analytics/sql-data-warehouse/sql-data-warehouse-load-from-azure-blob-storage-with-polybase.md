@@ -1,6 +1,6 @@
 ---
-title: Contoso kiskereskedelmi adatainak betöltése SQL Analytics-adattárházba
-description: A PolyBase és a T-SQL parancsokkal két táblát tölthet be a Contoso kiskereskedelmi adataiból az Azure SQL Analytics szolgáltatásba.
+title: Contoso kiskereskedelmi adatainak betöltése egy Synapse SQL adattárházba
+description: A PolyBase és a T-SQL parancsokkal két táblát tölthet be a Contoso kiskereskedelmi adataiból a Synapse SQL-be.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 62105b783577d70ae975cf514304d2c564357641
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 7460a59dd2a7a5906a483195929136391657fa50
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351468"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584011"
 ---
-# <a name="load-contoso-retail-data-to-a-sql-analytics-data-warehouse"></a>Contoso kiskereskedelmi adatainak betöltése SQL Analytics-adattárházba
+# <a name="load-contoso-retail-data-to-a-synapse-sql-data-warehouse"></a>Contoso kiskereskedelmi adatainak betöltése egy Synapse SQL adattárházba
 
-Ebben az oktatóanyagban megtudhatja, hogy a PolyBase és a T-SQL parancsokkal két táblát tölthet be a Contoso kiskereskedelmi adataiból egy SQL Analytics-adattárházba. 
+Ebben az oktatóanyagban megtudhatja, hogy a PolyBase és a T-SQL parancsokkal két táblát tölthet be a Contoso kiskereskedelmi adataiból egy Synapse SQL-adattárházba.
 
 Ebben a tutorial lesz:
 
@@ -30,11 +30,11 @@ Ebben a tutorial lesz:
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Az oktatóanyag futtatásához olyan Azure-fiókra van szükség, amely már rendelkezik EGY SQL Analytics-adattárházsal. Ha nincs kiépítve adattárház, olvassa el az [Adatraktár létrehozása és a kiszolgálószintű tűzfalszabály beállítása című témakört.](create-data-warehouse-portal.md)
+Az oktatóanyag futtatásához olyan Azure-fiókra van szükség, amely már rendelkezik egy Synapse SQL-adattárházsal. Ha nincs kiépítve adattárház, olvassa el az [Adatraktár létrehozása és a kiszolgálószintű tűzfalszabály beállítása című témakört.](create-data-warehouse-portal.md)
 
 ## <a name="configure-the-data-source"></a>Az adatforrás konfigurálása
 
-A PolyBase T-SQL külső objektumokat használ a külső adatok helyének és attribútumainak meghatározásához. A külső objektumdefiníciók az SQL Analytics adattárházában tárolódnak. Az adatok tárolása külsőleg történik.
+A PolyBase T-SQL külső objektumokat használ a külső adatok helyének és attribútumainak meghatározásához. A külső objektumdefiníciók a Szinapsze SQL-adattárházban tárolódnak. Az adatok tárolása külsőleg történik.
 
 ## <a name="create-a-credential"></a>Hitelesítő adatok létrehozása
 
@@ -121,7 +121,7 @@ GO
 
 ## <a name="create-the-external-tables"></a>A külső táblák létrehozása
 
-Futtassa a következő parancsfájlt a DimProduct és factOnlineSales külső táblák létrehozásához. Itt mindössze oszlopneveket és adattípusokat határoz meg, és köti őket az Azure blob storage-fájlok helyéhez és formátumához. A definíció az SQL Analytics adattárházban tárolódik, és az adatok továbbra is az Azure Storage Blob.
+Futtassa a következő parancsfájlt a DimProduct és factOnlineSales külső táblák létrehozásához. Itt mindössze oszlopneveket és adattípusokat határoz meg, és köti őket az Azure blob storage-fájlok helyéhez és formátumához. A definíció az adatraktárban tárolódik, és az adatok továbbra is az Azure Storage Blob.
 
 A **LOCATION** paraméter az Azure Storage Blob gyökérmappája alatti mappa. Minden tábla más mappában van.
 
@@ -274,7 +274,7 @@ ORDER BY
 
 ## <a name="optimize-columnstore-compression"></a>Oszlopcentrikus tömörítés optimalizálása
 
-Alapértelmezés szerint az SQL Analytics adattárház tárolja a táblát fürtözött oszlopcentrikus indexként. A betöltés befejezése után előfordulhat, hogy az adatsorok egy része nem lesz tömörítve az oszloptárba.  Ennek különböző okai lehetnek. További információ: [Oszlopcentrikus indexek kezelése.](sql-data-warehouse-tables-index.md)
+Alapértelmezés szerint a Synapse SQL adattárház tárolja a táblát fürtözött oszlopcentrikus indexként. A betöltés befejezése után előfordulhat, hogy az adatsorok egy része nem lesz tömörítve az oszloptárba.  Ennek különböző okai lehetnek. További információ: [Oszlopcentrikus indexek kezelése.](sql-data-warehouse-tables-index.md)
 
 A lekérdezési teljesítmény és az oszlopcentrikus tömörítés terhelés utáni optimalizálásához építse újra a táblát úgy, hogy az oszlopcentrikus index az összes sor tömörítése. 
 

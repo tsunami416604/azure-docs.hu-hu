@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 275b3bd25f931b73e8a378433899ef9ade4d47c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6d257198fcae54b1214d77f6b905d876d2687f5
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76028274"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585534"
 ---
 # <a name="configuration-based-on-stig"></a>STIG-alapú konfiguráció
 
@@ -37,7 +37,7 @@ Számos szervezetnek dokumentálnia kell a szabályok [alóli kivételeket,](htt
 A PowerSTIG úgy oldja meg a problémát, hogy [összetett erőforrásokat](https://github.com/microsoft/powerstig#powerstigdsc) biztosít a konfiguráció egyes területének kezeléséhez, ahelyett, hogy egy nagy fájlban próbálna meg foglalkozni a beállítások teljes tartományával.
 
 A konfigurációk létrehozása után a [DSC konfigurációs parancsfájljai](/powershell/scripting/dsc/configurations/configurations) segítségével mof-fájlokat hozhat létre, és [feltöltheti a MOF-fájlokat az Azure Automationbe.](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)
-Ezután regisztrálja a [kiszolgálókat a helyszíni](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) vagy az [Azure-ban](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) a konfigurációk lekérése.
+Ezután regisztrálja a [kiszolgálókat a helyszíni](/azure/automation/automation-dsc-onboarding#onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) vagy az [Azure-ban](/azure/automation/automation-dsc-onboarding#onboarding-azure-vms) a konfigurációk lekérése.
 
 A PowerSTIG kipróbálásához látogasson el a [PowerShell-galériába,](https://www.powershellgallery.com) és töltse le a megoldást, vagy kattintson a "Projektwebhely" gombra a [dokumentáció](https://github.com/microsoft/powerstig)megtekintéséhez.
 

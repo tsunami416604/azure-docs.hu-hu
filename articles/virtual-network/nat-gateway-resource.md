@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: allensu
-ms.openlocfilehash: 8234bb82ba1f4ff9bd7aea9887121d9c703ac4a3
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 405d9bc09462f2940567080ec86775baf066d70d
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473286"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584570"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Virtuális hálózatok tervezése NAT átjáró-erőforrásokkal
 
@@ -67,19 +67,18 @@ A következő példa egy Azure Resource Manager-sablonból származó kódrészl
 - **natgatewayname** - A NAT átjáró neve.
 - **hely** – Az Azure-régió, ahol az erőforrás található.
 - **publicipname** - a NAT-átjáróhoz társított kimenő nyilvános IP-cím neve.
-- **publicipprefixname** – a NAT-átjáróhoz társított kimenő nyilvános IP-előtag neve.
 - **vnetname** - A virtuális hálózat neve.
 - **alhálózatnév** - a NAT-átjáróhoz társított alhálózat neve.
 
 Az összes IP-cím és előtag-erőforrás által megadott IP-címek száma nem haladhatja meg a 16 IP-címet összesen. Tetszőleges számú IP-cím 1 és 16 között megengedett.
 
-:::code language="json" source="~/quickstart-templates/101-nat-gateway-1-vm/azuredeploy.json" range="256-281":::
+:::code language="json" source="~/quickstart-templates/101-nat-gateway-vnet/azuredeploy.json" range="81-96":::
 
 A NAT átjáróerőforrás létrehozása után a virtuális hálózat egy vagy több alhálózatán használható. Adja meg, hogy mely alhálózatok használják ezt a NAT-átjáró-erőforrást. A NAT-átjáró nem képes egynél több virtuális hálózatra. Nem szükséges ugyanazt a NAT-átjárót hozzárendelni a virtuális hálózat összes alhálózatához. Az egyes alhálózatok különböző NAT-átjáró-erőforrásokkal konfigurálhatók.
 
 A rendelkezésre állási zónákat nem használó forgatókönyvek területi (nincs megadva zóna) lesznek. Ha rendelkezésre állási zónákat használ, megadhat egy zónát a NAT egy adott zónához való elkülönítéséhez. A zónaredundancia nem támogatott. Tekintse át a NAT [rendelkezésre állási zónáit.](#availability-zones)
 
-:::code language="json" source="~/quickstart-templates/101-nat-gateway-1-vm/azuredeploy.json" range="225-255" highlight="239-251":::
+:::code language="json" source="~/quickstart-templates/101-nat-gateway-vnet/azuredeploy.json" range="1-146" highlight="81-96":::
 
 A NAT-átjárók egy virtuális hálózaton belüli alhálózaton lévő tulajdonsággal vannak definiálva. A virtuális hálózati virtuális hálózat **név** **alhálózati névén** lévő virtuális gépek által létrehozott folyamatok a NAT-átjárót fogják használni. Minden kimenő kapcsolat a **natgatewayname-hoz** társított IP-címeket fogja használni forrás IP-címként.
 

@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/31/2020
+ms.date: 04/01/2020
 ms.author: juliako
-ms.openlocfilehash: 6fb2f8f9172533a2c7f4aa03e99bd08e16a1f1dc
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 2d4f5f83335f6f115362bcf66cf69d7f9de7eaa5
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545913"
+ms.locfileid: "80582325"
 ---
 # <a name="azure-media-services-quotas-and-limits"></a>Az Azure Media Services kvótái és korlátai
 
@@ -79,7 +79,7 @@ A fiókban lévő, 90 napnál régebbi feladatbejegyzések automatikusan törlő
 | Élő kimenetek élő eseményenként |3 <sup>(5)</sup> |
 | Élő kimenet maximális időtartama | 25 óra |
 
-<sup>4</sup> Az Élő események korlátozásairól az [Élő eseménytípusok összehasonlítása és korlátozásai](live-event-types-comparison.md)című témakörben talál részletes információt.
+<sup>4</sup> Az élő eseménykorlátokkal kapcsolatos részletes információkért lásd: [Élő eseménytípusok összehasonlítása és korlátai.](live-event-types-comparison.md)
 
 <sup>5</sup> Az élő kimenetek létrehozásakor kezdődnek, és törléskor leállnak.
 
@@ -87,7 +87,7 @@ A fiókban lévő, 90 napnál régebbi feladatbejegyzések automatikusan törlő
 
 | Erőforrás | Alapértelmezett korlát | 
 | --- | --- | 
-| [Végpontok streamelése](streaming-endpoint-concept.md) (leállítva vagy futtatva) Media Services-fiókonként|2 (rögzített)|
+| [Végpontok streamelése](streaming-endpoint-concept.md) (leállítva vagy futtatva) Media Services-fiókonként|2 |
 | [Dinamikusjegyzék-szűrők](filters-dynamic-manifest-overview.md)|100|
 | [Streamelési szabályzatok](streaming-policy-concept.md) | 100 <sup>(6) Az</sup> |
 | Egy eszközhöz egyszerre társított egyedi [streamelési lokátorok](streaming-locators-concept.md) | 100<sup>(7)</sup> (rögzített) |

@@ -16,12 +16,12 @@ ms.date: 03/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 477bb5430214b497f90e3cb6d5df69f9fcf4035f
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 65100e8584eba5c31edc2f9fd8c57ad8bd14c0d1
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546159"
+ms.locfileid: "80582544"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Mi az az Azure AD-jogosultságkezelés?
 
@@ -43,7 +43,7 @@ Ezek a problémák csak azok a felhasználók számára merülnek fel, akiknek m
 - Senki sem ismerheti meg a szervezet könyvtárainak összes konkrét személyét, hogy meghívhatja őket
 - Még ha meg is tudták hívni ezeket a felhasználókat, a szervezetben senki sem emlékszik arra, hogy következetesen kezelje a felhasználó összes hozzáférését.
 
-Az Azure AD jogosultságkezelés segíthet kezelni ezeket a kihívásokat.  Ha többet szeretne megtudni arról, hogy az ügyfelek hogyan használják az Azure AD jogosultságkezelést, olvassa el az [Avanade esettanulmányát](https://aka.ms/AvanadeELMCase) és a [Centrica esettanulmányt.](https://aka.ms/CentricaELMCase)  Ez a videó áttekintést nyújt a jogosultságok kezeléséről és értékéről:
+Az Azure AD jogosultságkezelés segíthet kezelni ezeket a kihívásokat.  Ha többet szeretne megtudni arról, hogy az ügyfelek hogyan használják az Azure AD jogosultságkezelést, olvassa el az [Avanade esettanulmányát](https://customers.microsoft.com/story/avanade-professional-services-azure-canada) és a [Centrica esettanulmányt.](https://customers.microsoft.com/story/757467-centrica-energy-azure)  Ez a videó áttekintést nyújt a jogosultságok kezeléséről és értékéről:
 
 >[!VIDEO https://www.youtube.com/embed/_Lss6bFrnQ8]
 

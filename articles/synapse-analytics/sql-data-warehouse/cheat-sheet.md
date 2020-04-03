@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: f2019f8538b6997d8fe802a1e90069e88274eb0c
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8e0515727c2155b91f18398bd9def700f4a15b34
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349123"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619410"
 ---
 # <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Cheat lap az Azure Synapse Analytics (korábban SQL DW)
 
@@ -115,7 +115,7 @@ Az erőforráscsoportok segítségével memóriát foglalnak le a lekérdezések
 
 Ha úgy látja, hogy a lekérdezések túl sokáig tartanak, ellenőrizze, hogy a felhasználók nem nagyméretű erőforrásosztályokban futnak-e. A nagyméretű erőforrás osztályok számos egyidejű helyet foglalnak le, ezért más lekérdezések várólistára helyezését okozhatják.
 
-Végül az [SQL-készlet](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse)Gen2 használatával minden erőforrásosztály 2,5-szer több memóriát kap, mint a Gen1.
+Végül az [SQL-készlet](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse)Gen2 használatával minden erőforrásosztály 2,5-szer több memóriát kap, mint a Gen1.
 
 További információk az [erőforrásosztályokról és a párhuzamos működésről](resource-classes-for-workload-management.md).
 

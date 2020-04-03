@@ -1,6 +1,6 @@
 ---
 title: T-SQL hurkok használata
-description: Tippek a T-SQL hurkok használatához és a kurzorok cseréjéhez az Azure SQL Data Warehouse-ban a megoldások fejlesztéséhez.
+description: Tippek a T-SQL hurkok használatával történő megoldásfejlesztéshez és a kurzorok cseréjéhez a Synapse SQL-készletben.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,24 +11,28 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: afb2160cb9b4e34d3d17db86bac9cd3be79886d0
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 4cec4801f2a15ebf858f50377c9718fdacac4e29
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351592"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619003"
 ---
-# <a name="using-t-sql-loops-in-sql-data-warehouse"></a>T-SQL hurkok használata az SQL Data Warehouse-ban
-Tippek a T-SQL hurkok használatához és a kurzorok cseréjéhez az Azure SQL Data Warehouse-ban a megoldások fejlesztéséhez.
+# <a name="using-t-sql-loops-in-synapse-sql-pool"></a>T-SQL hurkok használata a Szinapszis SQL-készletében
+Ez a cikk a T-SQL-hurkok használatával és a kurzorok cseréjével történő SQL-készletmegoldások fejlesztésére vonatkozó tippeket tartalmazza.
 
 ## <a name="purpose-of-while-loops"></a>A WHILE hurkok célja
 
-Az SQL Data Warehouse támogatja a [WHILE](/sql/t-sql/language-elements/while-transact-sql) hurkot az utasításblokkok ismételt végrehajtásához. Ez a WHILE ciklus addig folytatódik, amíg a megadott feltételek teljesülnek, vagy amíg a kód kifejezetten le nem állítja a ciklust a BREAK kulcsszó használatával. A hurkok az SQL-kódban definiált kurzorok cseréjéhez hasznosak. Szerencsére, szinte minden kurzorok, amelyek írt SQL-kód a gyors előre, csak olvasható fajta. Ezért a [WHILE] hurkok nagyszerű alternatívát jelentenek a kurzorok cseréjére.
+A Szinapszis SQL-készlet támogatja a [WHILE](https://docs.microsoft.com/sql/t-sql/language-elements/while-transact-sql?view=sql-server-ver15) ciklust a kimutatásblokkok ismételt végrehajtásához. Ez a WHILE ciklus addig folytatódik, amíg a megadott feltételek teljesülnek, vagy amíg a kód kifejezetten le nem állítja a ciklust a BREAK kulcsszó használatával. 
 
-## <a name="replacing-cursors-in-sql-data-warehouse"></a>Kurzorok cseréje az SQL Data Warehouse-ban
-Azonban, mielőtt búvárkodás a fejét először fel kell tennie magának a következő kérdést: "Lehet ezt a kurzort átírni, hogy használja set-alapú műveletek?." Sok esetben a válasz igen, és gyakran a legjobb megközelítés. A set-alapú műveletek gyakran gyorsabban hajtják végre, mint egy iteratív, sorról sorra megközelítés.
+A hurkok az SQL-kódban definiált kurzorok cseréjéhez hasznosak. Szerencsére, szinte minden kurzorok, amelyek írt SQL-kód a gyors előre, csak olvasható fajta. Tehát, While hurkok egy nagyszerű alternatíva helyett kurzorok.
 
-A gyors előremutató írásvédett kurzorok könnyen cserélhetők egy hurokszerkezettel. A következő egy egyszerű példa. Ez a példakód frissíti az adatbázis minden táblájának statisztikáit. A ciklusban lévő táblák ismétlésével minden parancs sorrendben hajtható végre.
+## <a name="replacing-cursors-in-synapse-sql-pool"></a>Kurzorok cseréje a Synapse SQL-készletben
+Azonban, mielőtt búvárkodás a fejét először fel kell tennie magának a következő kérdést: "Lehet ezt a kurzort átírni, hogy használja set-alapú műveletek?" 
+
+Sok esetben a válasz igen, és gyakran a legjobb megközelítés. A set-alapú műveletek gyakran gyorsabban hajtják végre, mint egy iteratív, sorról sorra megközelítés.
+
+A gyors előremutató írásvédett kurzorok könnyen cserélhetők egy hurokszerkezettel. A következő példa egy egyszerű. Ez a példakód frissíti az adatbázis minden táblájának statisztikáit. A ciklusban lévő táblák ismétlésével minden parancs sorrendben hajtható végre.
 
 Először hozzon létre egy ideiglenes táblát, amely egyedi sorszámot tartalmaz az egyes kimutatások azonosítására:
 

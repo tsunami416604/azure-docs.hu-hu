@@ -3,14 +3,14 @@ title: Gyakori kérdések
 description: Válaszok az Azure Container Registry szolgáltatással kapcsolatos gyakori kérdésekre
 author: sajayantony
 ms.topic: article
-ms.date: 07/02/2019
+ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: c0d51c9c31e4e6859eaedce371efeafaa5fd4f46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7452b5dd3c952a13a28566914d2fe513689d4751
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78403210"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618798"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Gyakori kérdések az Azure Container Registry beállításjegyzékkel kapcsolatban
 
@@ -104,7 +104,8 @@ A tűzfalszabályok módosításának propagálása némi időt vesz igénybe. A
 - [Hogyan lehet engedélyezni a TLS 1.2-t?](#how-to-enable-tls-12)
 - [Támogatja az Azure Container Registry a content trust szolgáltatást?](#does-azure-container-registry-support-content-trust)
 - [Hogyan adhatok hozzáférést a lekéréses vagy leküldéses lemezképekhez a beállításjegyzék-erőforrás kezeléséhez szükséges engedély nélkül?](#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource)
-- [Hogyan engedélyezhetem az automatikus képkarantént a rendszerleíró adatbázisban?](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
+- [Hogyan engedélyezhetem a rendszerleíró adatbázis automatikus képkarantén-beállításjegyzékét?](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
+- [Hogyan engedélyezhetem a névtelen lekéréses hozzáférést?](#how-do-i-enable-anonymous-pull-access)
 
 ### <a name="how-do-i-access-docker-registry-http-api-v2"></a>Hogyan érhetem el a Docker Registry HTTP API V2-t?
 
@@ -251,13 +252,18 @@ Csak a vagy `AcrPull` `AcrPush` a szerepkör használatával a hozzárendelt nem
 
 A képkarantén jelenleg az ACR előzetes funkciója. Engedélyezheti a rendszerleíró adatbázis karantén módját, így csak azok a lemezképek lesznek láthatók a normál felhasználók számára, amelyek sikeresen átmentek a biztonsági vizsgálaton. További információt az [ACR GitHub-tártárban talál.](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)
 
+### <a name="how-do-i-enable-anonymous-pull-access"></a>Hogyan engedélyezhetem a névtelen lekéréses hozzáférést?
+
+Az Azure container registry beállítása a névtelen (nyilvános) lekéréses hozzáféréshez jelenleg egy előzetes verziójú szolgáltatás. A nyilvános hozzáférés engedélyezéséhez nyisson https://aka.ms/acr/support/create-ticketmeg egy támogatási jegyet a helyen. További részletek az [Azure visszajelzési fórumán.](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries)
+
+
 ## <a name="diagnostics-and-health-checks"></a>Diagnosztika és egészségügyi ellenőrzések
 
 - [Ellenőrizze az állapotot`az acr check-health`](#check-health-with-az-acr-check-health)
 - [a docker-lekérése a következő hibával sikertelen: net/http: a kérés megszakadt a kapcsolatra való várakozás közben (client.Timeout túllépve, amíg fejlécre vár)](#docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers)
 - [A docker-leküldések sikeresek, de a docker-lekérése hiba esetén sikertelen: jogosulatlan: hitelesítés szükséges](#docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required)
 - [`az acr login`sikeres, de a docker-parancsok hiba esetén sikertelenek: jogosulatlan: hitelesítés szükséges](#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required)
-- [A docker-démon hibakeresési naplóinak engedélyezése és lehívása](#enable-and-get-the-debug-logs-of-the-docker-daemon) 
+- [A docker-démon hibakeresési naplóinak engedélyezése és lehívása](#enable-and-get-the-debug-logs-of-the-docker-daemon)    
 - [Előfordulhat, hogy az új felhasználói engedélyek nem lépnek azonnal a frissítés után](#new-user-permissions-may-not-be-effective-immediately-after-updating)
 - [A hitelesítési adatok nem a megfelelő formátumban vannak megadva a közvetlen REST API-hívásokon](#authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls)
 - [Miért nem sorolja fel az Azure Portal az összes adattárat vagy címkét?](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
@@ -323,13 +329,13 @@ A `--signature-verification` részleteket a `man dockerd`futással találhatja m
 
 Győződjön meg arról, hogy az összes `docker push myregistry.azurecr.io/myimage:latest`kiskiszolgáló URL-címét használja, például akkor `myRegistry`is, ha a rendszerleíró erőforrás neve nagy- vagy vegyes, például .
 
-### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>A Docker-démon hibakeresési naplóinak engedélyezése és lehívása  
+### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>A Docker-démon hibakeresési naplóinak engedélyezése és lehívása    
 
 Kezdjük `dockerd` `debug` a lehetőséggel. Először hozza létre a Docker démon`/etc/docker/daemon.json`konfigurációs fájl ( ) ha `debug` nem létezik, és adja hozzá a lehetőséget:
 
 ```json
-{   
-    "debug": true   
+{    
+    "debug": true    
 }
 ```
 
@@ -339,12 +345,12 @@ Ezután indítsa újra a démont. Például az Ubuntu 14.04 esetében:
 sudo service docker restart
 ```
 
-A részletek a [Docker dokumentációjában](https://docs.docker.com/engine/admin/#enable-debugging)találhatók. 
+A részletek a [Docker dokumentációjában](https://docs.docker.com/engine/admin/#enable-debugging)találhatók.    
 
- * A naplók a rendszertől függően különböző helyeken is létrejöhetnek. Például az Ubuntu 14.04 esetében `/var/log/upstart/docker.log`ez .   
+ * A naplók a rendszertől függően különböző helyeken is létrejöhetnek. Például az Ubuntu 14.04 esetében `/var/log/upstart/docker.log`ez .    
 A részleteket a [Docker dokumentációjában](https://docs.docker.com/engine/admin/#read-the-logs) találja.    
 
- * A Windows-hoz való Docker esetében a naplók a %LOCALAPPDATA%/docker/ alatt jönnek létre. Előfordulhat azonban, hogy még nem tartalmazza az összes hibakeresési információt.   
+ * A Windows-hoz való Docker esetében a naplók a %LOCALAPPDATA%/docker/ alatt jönnek létre. Előfordulhat azonban, hogy még nem tartalmazza az összes hibakeresési információt.    
 
    A teljes démonnapló eléréséhez további lépésekre lehet szükség:
 

@@ -4,12 +4,12 @@ description: Ismerje meg a Kubernetes alapvető fürt- és számítási feladato
 services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: bcf56aa89a42d65fdb7bf03696faad13c64cbc8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 019c886aba1c8fe34211e73e4d960b14e79303b9
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259642"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617440"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Kubernetes alapfogalmak az Azure Kubernetes szolgáltatás (AKS)
 
@@ -65,9 +65,9 @@ Az alkalmazások és a támogató szolgáltatások futtatásához kubernetes *cs
 
 ![Az Azure virtuális gépe és a Kubernetes-csomópont támogató erőforrásai](media/concepts-clusters-workloads/aks-node-resource-interactions.png)
 
-Az Azure virtuális gép mérete a csomópontok határozza meg, hogy hány processzorok, mennyi memóriát, és a rendelkezésre álló tárterület mérete és típusa (például a nagy teljesítményű SSD vagy a rendszeres HDD. Ha nagy mennyiségű processzort és memóriát vagy nagy teljesítményű tárhelyet igénylő alkalmazásokra számít, ennek megfelelően tervezze meg a csomópont méretét. Az AKS-fürtcsomópontjainak számát is felskálázhatja az igények kielégítése érdekében.
+Az Azure virtuális gép mérete a csomópontok határozza meg, hogy hány processzorok, mennyi memóriát, és a rendelkezésre álló tárterület mérete és típusa (például a nagy teljesítményű SSD vagy a rendszeres HDD. Ha nagy mennyiségű processzort és memóriát vagy nagy teljesítményű tárhelyet igénylő alkalmazásokra számít, ennek megfelelően tervezze meg a csomópont méretét. Az AKS-fürtcsomópontjainak számát is kinagyzhatja az igények kielégítése érdekében.
 
-Az AKS-ben a fürt csomópontjainak virtuálisgép-lemezképe jelenleg Ubuntu Linux vagy Windows Server 2019 rendszeren alapul. Amikor létrehoz egy AKS-fürtöt, vagy felskálázhatja a csomópontok számát, az Azure platform létrehozza a kért virtuális gépek számát, és konfigurálja őket. Nincs manuális konfiguráció, amit végre kell hajtania. Ügynök csomópontok számlázása standard virtuális gépek, így a virtuális gép által használt virtuális gép méretére vonatkozó engedmények (beleértve az [Azure-foglalások)][reservation-discounts]automatikusan alkalmazva.
+Az AKS-ben a fürt csomópontjainak virtuálisgép-lemezképe jelenleg Ubuntu Linux vagy Windows Server 2019 rendszeren alapul. Amikor létrehoz egy AKS-fürtöt, vagy kinagyítja a csomópontok számát, az Azure platform létrehozza a kért virtuális gépek számát, és konfigurálja őket. Nincs manuális konfiguráció, amit végre kell hajtania. Ügynök csomópontok számlázása standard virtuális gépek, így a virtuális gép által használt virtuális gép méretére vonatkozó engedmények (beleértve az [Azure-foglalások)][reservation-discounts]automatikusan alkalmazva.
 
 Ha egy másik gazdaoperációs rendszert, tárolófutási időt vagy egyéni csomagokat kell használnia, telepítheti saját Kubernetes-fürtjét [az aks-engine][aks-engine]használatával. Az upstream `aks-engine` kiadási funkciókat, és biztosítja a konfigurációs beállításokat, mielőtt azok hivatalosan támogatott AKS-fürtök. Ha például a Moby-tól eltérő tárolófutási időt `aks-engine` szeretne használni, konfigurálhatja és üzembe helyezheti a Kubernetes-fürtöt, amely megfelel az aktuális igényeknek.
 
@@ -96,7 +96,7 @@ A csomópont teljesítményének és működésének fenntartása érdekében az
 
 1. A kubelet démon telepítve van az összes Kubernetes-ügynök csomóponton a tároló létrehozása és megszüntetése kezelésére. Alapértelmezés szerint az AKS-ben ez a démon a következő kilakoltatási szabállyal rendelkezik: *memory.available<750Mi*, ami azt jelenti, hogy egy csomópontnak mindig legalább 750 Mi-rel kell rendelkeznie.  Ha egy gazdagép a rendelkezésre álló memória küszöbértéke alatt van, a kubelet megszakítja az egyik futó podot, hogy memóriát szabadítson fel a gazdagépen, és védje azt. Ez egy reaktív művelet, ha a rendelkezésre álló memória meghaladja a 750Mi küszöbértéket.
 
-2. A második érték a kubelet démon megfelelő működéséhez (kube-reserved) a memóriafoglalások fokozatos üteme.
+2. A második érték a kubelet démon megfelelő működéséhez (kube-reserved) a memóriafoglalások regresszív aránya.
     - Az első 4 GB memória 25%-a
     - A következő 4 GB memória 20%-a (legfeljebb 8 GB)
     - A következő 8 GB memória 10%-a (akár 16 GB)

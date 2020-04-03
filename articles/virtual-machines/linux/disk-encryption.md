@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 88d25083a1105023279f3907a4573319fabe087c
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 912677a10d7098b891a4f6972b61761cd72cf292
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520775"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585942"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Az Azure által kezelt lemezek kiszolgálóoldali titkosítása
 
@@ -34,7 +34,11 @@ Alapértelmezés szerint a felügyelt lemezek platformáltal felügyelt titkosí
 
 ## <a name="customer-managed-keys"></a>Felhasználó által kezelt kulcsok
 
-A titkosítást kezelheti az egyes felügyelt lemezek szintjén, a saját kulcsaival. Az ügyfél által felügyelt kulcsokkal rendelkező felügyelt lemezek kiszolgálóoldali titkosítása integrált élményt nyújt az Azure Key Vault szolgáltatással. Importálhatja [az RSA-kulcsokat a](../../key-vault/key-vault-hsm-protected-keys.md) Key Vaultba, vagy új RSA-kulcsokat hozhat létre az Azure Key Vaultban. Az Azure által kezelt lemezek a titkosítást és a visszafejtést teljes mértékben átlátható módon kezelik [a borítéktitkosítás használatával.](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique) Az adatokat [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256 alapú adattitkosítási kulccsal (DEK) titkosítja, amely viszont a kulcsokkal védett. A dek titkosításához és visszafejtéséhez hozzáférést kell biztosítania a key vaultban lévő felügyelt lemezekhez. Ez lehetővé teszi az adatok és kulcsok teljes körű vezérlését. Bármikor letilthatja a kulcsokat, vagy visszavonhatja a felügyelt lemezekhez való hozzáférést. A titkosítási kulcs használatát az Azure Key Vault figyelésével is naplózhatja, így biztosíthatja, hogy csak felügyelt lemezek vagy más megbízható Azure-szolgáltatások férnek hozzá a kulcsokhoz.
+A titkosítást kezelheti az egyes felügyelt lemezek szintjén, a saját kulcsaival. Az ügyfél által felügyelt kulcsokkal rendelkező felügyelt lemezek kiszolgálóoldali titkosítása integrált élményt nyújt az Azure Key Vault szolgáltatással. Importálhatja [az RSA-kulcsokat a](../../key-vault/key-vault-hsm-protected-keys.md) Key Vaultba, vagy új RSA-kulcsokat hozhat létre az Azure Key Vaultban. 
+
+Az Azure által kezelt lemezek a titkosítást és a visszafejtést teljes mértékben átlátható módon kezelik [a borítéktitkosítás használatával.](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique) Az adatokat [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256 alapú adattitkosítási kulccsal (DEK) titkosítja, amely viszont a kulcsokkal védett. A Storage szolgáltatás adattitkosítási kulcsokat hoz létre, és rsa titkosítással titkosítja azokat az ügyfél által felügyelt kulcsokkal. A borítéktitkosítás lehetővé teszi a kulcsok rendszeres elforgatását (módosítását) a megfelelőségi szabályzatok szerint anélkül, hogy ez befolyásolna a virtuális gépeket. A kulcsok elforgatásakor a Storage szolgáltatás újra titkosítja az adattitkosítási kulcsokat az új ügyfél által felügyelt kulcsokkal. 
+
+A dek titkosításához és visszafejtéséhez hozzáférést kell biztosítania a key vaultban lévő felügyelt lemezekhez. Ez lehetővé teszi az adatok és kulcsok teljes körű vezérlését. Bármikor letilthatja a kulcsokat, vagy visszavonhatja a felügyelt lemezekhez való hozzáférést. A titkosítási kulcs használatát az Azure Key Vault figyelésével is naplózhatja, így biztosíthatja, hogy csak felügyelt lemezek vagy más megbízható Azure-szolgáltatások férnek hozzá a kulcsokhoz.
 
 Prémium szintű SSD-k, szabványos SSD-k és szabványos HDD-k esetén: Ha letiltja vagy törli a kulcsot, az adott kulccsal rendelkező virtuális gépek automatikusan leállnak. Ezt követően a virtuális gépek nem lesz használható, kivéve, ha a kulcs újra engedélyezve van, vagy hozzá egy új kulcsot.
 
@@ -187,6 +191,32 @@ az disk create -n $diskName -g $rgName -l $location --encryption-type Encryption
 diskId=$(az disk show -n $diskName -g $rgName --query [id] -o tsv)
 
 az vm disk attach --vm-name $vmName --lun $diskLUN --ids $diskId 
+
+```
+
+#### <a name="change-the-key-of-a-diskencryptionset-to-rotate-the-key-for-all-the-resources-referencing-the-diskencryptionset"></a>A DiskEncryptionSet kulcsának módosítása a DiskEncryptionSet-re hivatkozó összes erőforrás kulcsának elforgatásához
+
+```azurecli
+
+rgName=yourResourceGroupName
+keyVaultName=yourKeyVaultName
+keyName=yourKeyName
+diskEncryptionSetName=yourDiskEncryptionSetName
+
+
+keyVaultId=$(az keyvault show --name $keyVaultName--query [id] -o tsv)
+
+keyVaultKeyUrl=$(az keyvault key show --vault-name $keyVaultName --name $keyName --query [key.kid] -o tsv)
+
+az disk-encryption-set update -n keyrotationdes -g keyrotationtesting --key-url $keyVaultKeyUrl --source-vault $keyVaultId
+
+```
+
+#### <a name="find-the-status-of-server-side-encryption-of-a-disk"></a>Lemez kiszolgálóoldali titkosítási állapotának megkeresése
+
+```azurecli
+
+az disk show -g yourResourceGroupName -n yourDiskName --query [encryption.type] -o tsv
 
 ```
 

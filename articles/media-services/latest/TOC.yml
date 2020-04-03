@@ -7,13 +7,13 @@
     - name: Újdonságok a Media Servicesben
       displayName: release notes
       href: release-notes.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Élő esemény portál és Wirecast használatával
       displayName: 'live, event, portal, wirecast'
       href: live-events-wirecast-quickstart.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Távoli fájl kódolása és videó streamelése
       items:
@@ -199,7 +199,7 @@
           displayName: naming
 - name: Útmutatók
   items:
-    - name: Első lépések
+    - name: Bevezetés
       items:
         - name: Fiók létrehozása
           href: create-account-howto.md
@@ -401,7 +401,7 @@
           href: 'https://aka.ms/ams-v3-ruby-sdk'
     - name: Azure Media Services Explorer
       href: 'https://github.com/Azure/Azure-Media-Services-Explorer'
-    - name: Kvóták és korlátozások
+    - name: Kvóták és korlátok
       href: limits-quotas-constraints.md
     - name: Azure-felhők és -régiók
       href: azure-clouds-regions.md

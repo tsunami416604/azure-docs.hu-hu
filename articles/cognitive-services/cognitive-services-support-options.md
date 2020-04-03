@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: 692f70e4666416f34a6e3f32fd5804d4aeb63a5b
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: d7ce77404359b32effcc7a5da3f9429e9fdf7005
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477827"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618576"
 ---
 # <a name="azure-cognitive-services-support-and-feedback-options"></a>Az Azure Cognitive Services támogatási és visszajelzési lehetőségei
 
-Csak most kezdi felfedezni az Azure Cognitive Services funkcióit? Lehet, hogy egy új funkciót valósít meg az alkalmazásban. Vagy a szolgáltatás használata után van javaslata arra vonatkozóan, hogyan lehetne javítani? Az alábbiakban lehetőségeket olvashat arra vonatkozóan, hogy hol kaphat támogatást, legyen naprakész, és adjon visszajelzést a Cognitive Services szolgáltatáshoz.
+Csak most kezdi felfedezni az Azure Cognitive Services funkcióit? Lehet, hogy egy új funkciót valósít meg az alkalmazásban. Vagy a szolgáltatás használata után van javaslata arra vonatkozóan, hogyan lehetne javítani? Az alábbiakban lehetőségeket olvashat arra, hogy hol kaphat támogatást, naprakész maradhat, visszajelzést adhat, és jelentheti a Kognitív szolgáltatások hibáit.
 
 ## <a name="get-support"></a>Támogatás kérése
 
@@ -83,7 +83,7 @@ A Cognitive Services kiadási megjegyzések frissülnek, amint új kiadások ér
 
  - [Custom Vision](custom-vision-service/release-notes.md)
  - [Arcfelismerés](face/releasenotes.md)
- - [Language Understanding (LUIS)](luis/whats-new.md)
+ - [Language Understanding (LUIS)](LUIS/whats-new.md)
  - [Speech Services](speech-service/releasenotes.md)
  - [Beszédszolgáltatások SDK](speech-service/devices-sdk-release-notes.md)
  - [Szövegelemzés](text-analytics/whats-new.md)

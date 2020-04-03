@@ -4,24 +4,24 @@ description: Ismerje meg, hogyan hozhat létre, tehet közzé és méretezhetők
 author: ccompy
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
-ms.date: 01/01/2020
+ms.date: 3/26/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 8a73c1998203a8696b67a5e7eb3af23898239265
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 4565580feeddc2df8f6ed3011302016bb39977b4
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477619"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586135"
 ---
 # <a name="use-an-app-service-environment"></a>App Service-környezet használata
 
 Az App Service-környezet (ASE) az Azure App Service egy alhálózat ba egy ügyfél Azure virtuális hálózati példányában. Az ASE a következőkből áll:
 
-- **Előtér-végek:** Ahol a HTTP vagy HTTPS leáll egy App Service-környezetben.
-- **Dolgozók**: Az alkalmazásokat üzemeltető erőforrások.
-- **Adatbázis**: A környezetet meghatározó adatokat tartalmazza.
-- **Tárolás**: Az ügyfél által közzétett alkalmazások üzemeltetésére szolgál.
+- **Előtér- végek**: Ahol a HTTP vagy https leáll egy App Service-környezetben
+- **Dolgozók**: Az alkalmazásokat üzemeltető erőforrások
+- **Adatbázis**: A környezetet meghatározó adatokat tartalmazza
+- **Tárolás**: Az ügyfél által közzétett alkalmazások üzemeltetésére szolgál
 
 Az ASE egy külső vagy belső virtuális IP-cím (VIP) az alkalmazás eléréséhez telepítheti. A külső IP-címzéssel rendelkező központi telepítést általában *külső ASE-nek*nevezik. A belső VIRTUÁLIS IP-című központi telepítést *ILB ASE-nek* nevezik, mert belső terheléselosztót (ILB) használ. Az ILB ASE-ről az [ILB ASE létrehozása és használata][MakeILBASE]című témakörben olvashat bővebben.
 
@@ -120,6 +120,22 @@ Az ILB ASE létrehozásáról az [ILB ASE létrehozása és használata][MakeILB
 
 Az SCM URL-cím a Kudu konzol elérésére vagy az alkalmazás webtelepítés sel történő közzétételére szolgál. A Kudu konzolról további információt az [Azure App Service Kudu konzolja című][Kudu]témakörben talál. A Kudu konzol webes felhasználói felületet biztosít a hibakereséshez, a fájlok feltöltéséhez, a fájlok szerkesztéséhez és még sok máshoz.
 
+### <a name="dns-configuration"></a>DNS-konfiguráció 
+
+Ha egy külső ASE használata esetén az ASE-ben készült alkalmazások regisztrálva vannak az Azure DNS-ben. Az ILB ASE-vel saját DNS-t kell kezelnie. 
+
+A DNS konfigurálása az ILB ASE-vel:
+
+    create a zone for <ASE name>.appserviceenvironment.net
+    create an A record in that zone that points * to the ILB IP address
+    create an A record in that zone that points @ to the ILB IP address
+    create a zone in <ASE name>.appserviceenvironment.net named scm
+    create an A record in the scm zone that points * to the ILB IP address
+
+Az ASE alapértelmezett tartományutótag DNS-beállításai nem korlátozzák az alkalmazásokat arra, hogy csak ezeken a neveken érhetők el. Egyéni tartománynevet az ILB ASE-ben az alkalmazások érvényesítése nélkül is beállíthat. Ha ezután létre szeretne hozni egy *contoso.net*nevű zónát, megteheti, és az ILB IP-címére mutathatja. Az egyéni tartománynév működik az alkalmazáskérelmek, de nem az scm oldalon. Az scm-webhely csak az * &lt;.scm&gt;alkalmazásnévnél érhető el.&lt; asename&gt;.appserviceenvironment.net*. 
+
+A zóna neve *.&lt; az .appserviceenvironment.net&gt;globálisan* egyedi. 2019 májusa előtt az ügyfelek meg tudták adni az ILB ASE tartományutótagot. Ha *a tartományutótagot .contoso.com* kívánta használni, akkor ezt megtehette, és ez magában foglalja az scm webhelyet is. Voltak kihívások, hogy a modell, beleértve; az alapértelmezett SSL-tanúsítvány kezelése, az egyszeri bejelentkezés hiánya az scm-helyen, valamint a helyettesítő tanúsítvány használatának követelménye. Az ILB ASE alapértelmezett tanúsítványfrissítési folyamata szintén zavaró volt, és az alkalmazás újraindítását okozta. A problémák megoldásához az ILB ASE viselkedése megváltozott, hogy az ASE neve és a Microsoft tulajdonában lévő utótag alapján használjon tartományutótagot. Az ILB ASE viselkedésének módosítása csak a 2019 májusa után végrehajtott ILB ASE-ket érinti. A már meglévő ILB-ase-knek továbbra is kezelniük kell az ASE alapértelmezett tanúsítványát és DNS-konfigurációját.
+
 ## <a name="publishing"></a>Közzététel
 
 Az ASE-ben, csakúgy, mint a több-bérlős App Service, a következő módszerekkel tehet közzé:
@@ -132,7 +148,7 @@ Az ASE-ben, csakúgy, mint a több-bérlős App Service, a következő módszere
 
 Külső ASE-vel ezek a közzétételi beállítások ugyanúgy működnek. További információ: [Deployment in Azure App Service][AppDeploy].
 
-A közzététel jelentősen különbözik az ILB ASE-től, amelyhez a közzétételi végpontok csak az ILB-n keresztül érhetők el. Az ILB egy privát IP-cím az ASE alhálózat a virtuális hálózatban. Ha nem rendelkezik hálózati hozzáféréssel az ILB-hez, nem tehet közzé alkalmazásokat az adott ASE-n. Ahogy az [ILB ASE létrehozása és használata][MakeILBASE]című részben is megjegyeztük, konfigurálnia kell a DNS-t a rendszerben lévő alkalmazásokhoz. Ez a követelmény magában foglalja az SCM-végpontot. Ha a végpontok nincsenek megfelelően definiálva, nem tehető közzé. Az IDEs-nek hálózati hozzáféréssel kell rendelkeznie az ILB-hez, hogy közvetlenül közzétehesse azt.
+Az ILB ASE esetén a közzétételi végpontok csak az ILB-n keresztül érhetők el. Az ILB egy privát IP-cím az ASE alhálózat a virtuális hálózatban. Ha nem rendelkezik hálózati hozzáféréssel az ILB-hez, nem tehet közzé alkalmazásokat az adott ASE-n. Ahogy az [ILB ASE létrehozása és használata][MakeILBASE]című részben is megjegyeztük, konfigurálnia kell a DNS-t a rendszerben lévő alkalmazásokhoz. Ez a követelmény magában foglalja az SCM-végpontot. Ha a végpontok nincsenek megfelelően definiálva, nem tehető közzé. Az IDEs-nek hálózati hozzáféréssel kell rendelkeznie az ILB-hez, hogy közvetlenül közzétehesse azt.
 
 További módosítások nélkül az internetalapú CI-rendszerek, például a GitHub és az Azure DevOps nem működnek ilb ASE-vel, mert a közzétételi végpont nem érhető el az interneten. Engedélyezheti az ILB ASE-ben való közzétételt az Azure DevOps-ból, ha saját üzemeltetésű kiadási ügynököt telepít az ILB ASE-t tartalmazó virtuális hálózatba. Másik lehetőségként használhat olyan CI-rendszert is, amely lekéréses modellt használ, például a Dropboxot.
 
@@ -169,7 +185,18 @@ Az ASE naplózásának engedélyezése:
 
 ![ASE diagnosztikai napló beállításai][4]
 
-Ha integrálható a Log Analytics szolgáltatással, megtekintheti a naplókat az ASE **portálnaplók** kiválasztásával és az **AppServiceEnvironmentPlatformLogs**lekérdezés létrehozásával.
+Ha integrálható a Log Analytics szolgáltatással, megtekintheti a naplókat az ASE **portálnaplók** kiválasztásával és az **AppServiceEnvironmentPlatformLogs**lekérdezés létrehozásával. A naplók csak akkor kerülnek kibocsátásra, ha az ASE-nek van egy eseménye, amely elindítja azt. Ha az ASE nem rendelkezik ilyen esemény, nem lesz naplók. A Log Analytics-munkaterületen a naplók egy példa gyors megtekintéséhez hajtson végre egy méretezési műveletet az ASE egyik App Service-csomagjával. Ezután futtathat egy lekérdezést **appserviceenvironmentplatformlogs** a naplók megtekintéséhez. 
+
+**Riasztás létrehozása**
+
+Ha riasztást szeretne létrehozni a naplók ellen, kövesse a [Naplóriasztások létrehozása, megtekintése és kezelése az Azure Monitor használatával című útmutatóutasításait.][logalerts] Röviden:
+
+* A Riasztások lap megnyitása az ASE-portálon
+* **Új riasztási szabály** kiválasztása
+* Válassza ki az erőforrást a Log Analytics-munkaterületének
+* Állítsa be az állapotot egy egyéni naplókereséssel az "AppServiceEnvironmentPlatformLogs | ahol a ResultDescription tartalmazza a "megkezdte a méretezést", vagy amit csak akar. Állítsa be a küszöbértéket. 
+* Szükség szerint adjon hozzá vagy hozzon létre egy műveletcsoportot. A műveletcsoportban adhatja meg a riasztásra adott választ, például e-mailt vagy SMS-t küld.
+* Nevezze el a riasztást, és mentse azt.
 
 ## <a name="upgrade-preference"></a>Frissítési beállítás
 
@@ -245,3 +272,4 @@ ASE törlése:
 [AppDeploy]: ../deploy-local-git.md
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
+[logalerts]: ../../azure-monitor/platform/alerts-log.md

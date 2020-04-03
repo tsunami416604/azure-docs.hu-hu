@@ -1,6 +1,6 @@
 ---
 title: Számítási feladat fontossága
-description: Útmutató az Azure Synapse Analytics SQL Analytics-lekérdezéseinek fontosságának beállításához.
+description: Útmutató a Synapse SQL-készlet lekérdezéseinek fontosságának beállításához az Azure Synapse Analytics szolgáltatásban.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 3dde2ad4af17313bcfce28964f8be1e831317a5a
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 84f432c45729091be1264bff85d1e32fac10f3ef
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349967"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583162"
 ---
 # <a name="azure-synapse-analytics-workload-importance"></a>Az Azure Synapse Analytics munkaterhelésének fontossága
 
-Ez a cikk bemutatja, hogyan számítási feladatok fontossága hogyan befolyásolhatja az SQL Analytics-kérelmek az Azure Synapse végrehajtásának sorrendjét.
+Ez a cikk bemutatja, hogyan számítási feladatok fontossága hogyan befolyásolhatja a synapse SQL-készlet kérelmek az Azure Synapse végrehajtásának sorrendjét.
 
 ## <a name="importance"></a>Fontosság
 
@@ -38,7 +38,7 @@ Az értékesítési és időjárási adatokkal a fent ismertetett alapvető font
 
 ### <a name="locking"></a>Zárolás
 
-Hozzáférés zárak olvasási és írási tevékenység egyik területe a természetes versengés. Az olyan tevékenységek, mint [a partícióváltás](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition) vagy [az OBJEKTUM ÁTNEVEZÉSe](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest) emelt szintű zárolást igényelnek.  Számítási feladatok fontossága nélkül az Azure Synapse SQL Analytics optimalizálja az átviteli. Az átviteli forgalom optimalizálása azt jelenti, hogy ha a futó és a várólistára helyezett kérelmek azonos zárolási igényekkel rendelkeznek, és az erőforrások rendelkezésre állnak, a várólistára helyezett kérelmek megkerülhetik a kérésvárólistába korábban megérkezett magasabb zárolási igényekkel rendelkező kérelmeket. Miután a számítási feladatok fontosságát alkalmazza a kérelmek nagyobb zárolási igényeket. A nagyobb fontosságú kéréseket a kérelem előtt alacsonyabb fontossági kérdéssel futtatja.
+Hozzáférés zárak olvasási és írási tevékenység egyik területe a természetes versengés. Az olyan tevékenységek, mint [a partícióváltás](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition) vagy [az OBJEKTUM ÁTNEVEZÉSe](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest) emelt szintű zárolást igényelnek.  Számítási feladatok fontossága nélkül az Azure Synapse Synapse Synapse synapse-i SQL-készlete az átviteli terhelést optimalizálja. Az átviteli forgalom optimalizálása azt jelenti, hogy ha a futó és a várólistára helyezett kérelmek azonos zárolási igényekkel rendelkeznek, és az erőforrások rendelkezésre állnak, a várólistára helyezett kérelmek megkerülhetik a kérésvárólistába korábban megérkezett magasabb zárolási igényekkel rendelkező kérelmeket. Miután a számítási feladatok fontosságát alkalmazza a kérelmek nagyobb zárolási igényeket. A nagyobb fontosságú kéréseket a kérelem előtt alacsonyabb fontossági kérdéssel futtatja.
 
 Tekintse meg a következő példát:
 
@@ -50,7 +50,7 @@ Ha a Q2 és q3-nak ugyanaz a fontossága, és a Q1 végrehajtása még folyamatb
 
 ### <a name="non-uniform-requests"></a>Nem egységes kérelmek
 
-Egy másik forgatókönyv, ahol fontosság segíthet az igények lekérdezése, amikor a kérelmek különböző erőforrásosztályok at küldik el.  Ahogy korábban említettük, ugyanilyen fontos, az SQL Analytics az Azure Synapse optimalizálja az átviteli. Vegyes méretű kérelmek (például smallrc vagy mediumrc) várólistára kerül, az SQL Analytics kiválasztja a legkorábbi érkező kérelmet, amely illeszkedik a rendelkezésre álló erőforrásokba. Ha a számítási feladatok fontossága van alkalmazva, a legnagyobb fontos kérés van ütemezve a következő.
+Egy másik forgatókönyv, ahol fontosság segíthet az igények lekérdezése, amikor a kérelmek különböző erőforrásosztályok at küldik el.  Mint korábban említettük, ugyanilyen fontos, synapse SQL-készlet az Azure Synapse optimalizálja az átviteli. Vegyes méretű kérelmek (például smallrc vagy mediumrc) várólistára, synapse SQL-készlet választja ki a legkorábbi érkező kérelmet, amely illeszkedik a rendelkezésre álló erőforrásokat. Ha a számítási feladatok fontossága van alkalmazva, a legnagyobb fontos kérés van ütemezve a következő.
   
 Tekintsük a következő példát a DW500c-en:
 

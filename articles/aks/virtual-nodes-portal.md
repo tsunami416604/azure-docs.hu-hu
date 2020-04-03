@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan hozhat létre az Azure Kubernetes Services (AKS
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: ea93ea4a68fad213fe5bd1dc61abcb2deaef2c9c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 696821e12e963292107cad5b22f00a9816a94b25
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473591"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616412"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Hozzon létre és konfiguráljon egy Azure Kubernetes-szolgáltatás (AKS) fürtöt virtuális csomópontok használatára az Azure Portalon
 
@@ -30,9 +30,9 @@ az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" 
 A *Microsoft.ContainerInstance* szolgáltatónak regisztráltként kell *jelentenie,* ahogy az a következő példakimeneten látható:
 
 ```output
-Namespace                    RegistrationState
----------------------------  -------------------
-Microsoft.ContainerInstance  Registered
+Namespace                    RegistrationState    RegistrationPolicy
+---------------------------  -------------------  --------------------
+Microsoft.ContainerInstance  Registered           RegistrationRequired
 ```
 
 Ha a szolgáltató notregistered néven jelenik *meg,* regisztrálja a szolgáltatót az [az szolgáltató regiszterhasználatával,][az-provider-register] ahogy az a következő példában látható:

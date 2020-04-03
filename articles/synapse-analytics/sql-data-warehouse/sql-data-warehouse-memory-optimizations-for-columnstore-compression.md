@@ -11,12 +11,12 @@ ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: a640f2f260c94cd7502aa79badb32bd26abebb11
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 81191fd3b654f612f2621757f3006268276477de
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350322"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586532"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>A sorcsoport minőségének maximalizálása oszlopcentrikushoz
 
@@ -89,7 +89,7 @@ ahol a rövid karakterlánc-oszlopok <= 32 bájt karakterlánc-adattípusokat, a
 
 A hosszú karakterláncok tömörítése szöveg tömörítésére tervezett tömörítési módszerrel történik. Ez a tömörítési módszer *szótárt* használ a szövegminták tárolására. A szótár maximális mérete 16 MB. A sorcsoport minden hosszú karakterláncoszlopához csak egy szótár tartozik.
 
-Az oszlopcentrikus memóriakövetelményeinek részletes áttekintését az [SQL Analytics méretezés: konfiguráció és útmutatás](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)videójában talál.
+Az oszlopcentrikus memóriakövetelményeinek részletes áttekintését a [Synapse SQL méretezés: konfiguráció és útmutatás](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)című videóban talál.
 
 ## <a name="ways-to-reduce-memory-requirements"></a>A memóriaigény csökkentésének módjai
 
@@ -141,4 +141,4 @@ A DWU-méret és a felhasználói erőforrásosztály együttesen határozza meg
 
 ## <a name="next-steps"></a>További lépések
 
-Az SQL Analytics teljesítményének további javítását a [Teljesítmény áttekintése című témakörben](cheat-sheet.md)találja.
+A Synapse SQL teljesítményének további javítását a [Teljesítmény áttekintése című témakörben](cheat-sheet.md)találja.

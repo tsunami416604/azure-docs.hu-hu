@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 9d41aa3447caebfeeffc05c36b5073f57c3e16cd
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 6354390c44c0991b0d6bf36cba8efd4272f9c73d
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350809"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583766"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Rövid útmutató: Hozzon létre egy számítási feladatok osztályozó t-SQL használatával
 
@@ -25,7 +25,7 @@ Ebben a rövid útmutatóban gyorsan létrehozhat egy munkaterhelés-osztályoz�
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot, mielőtt elkezdené.
 
 > [!NOTE]
-> Sql Analytics-példány létrehozása az Azure Synapse Analytics eredményezhet egy új számlázható szolgáltatás.  További információ: [Azure Synapse Analytics pricing](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+> A Synapse SQL-készletpéldány létrehozása az Azure Synapse Analytics-ben egy új számlázható szolgáltatást eredményezhet.  További információ: [Azure Synapse Analytics pricing](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 >
 >
 
@@ -109,5 +109,5 @@ Az erőforrások karbantartásához kövesse az alábbi lépéseket.
 ## <a name="next-steps"></a>További lépések
 
 - Most létrehozott egy számítási feladatok osztályozóját. Futtasson néhány lekérdezést theceo néven, hogy lássa, hogyan teljesítenek. A lekérdezések és a hozzárendelt fontosság megtekintéséhez tekintse meg a [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) című témakört.
-- Az SQL Analytics számítási feladatok kezeléséről további információt a [Számítási feladatok fontossága](sql-data-warehouse-workload-importance.md) és [a számítási feladatok besorolása című témakörben talál.](sql-data-warehouse-workload-classification.md)
+- A Synapse SQL-munkaterhelés-kezeléséről további információt a [Számítási feladatok fontossága](sql-data-warehouse-workload-importance.md) és [a számítási feladatok besorolása című témakörben talál.](sql-data-warehouse-workload-classification.md)
 - Tekintse meg a [számítási feladatok fontosságának konfigurálása](sql-data-warehouse-how-to-configure-workload-importance.md) című útmutatócikkeket, valamint a [Munkaterhelés-kezelés kezelésének és figyelésének módját.](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)

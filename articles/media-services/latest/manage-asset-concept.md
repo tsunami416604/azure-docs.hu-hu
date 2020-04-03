@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: fcdb8af770fa0068e8413d4609a56223a9a20ce2
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 9136fd702fad5c12a8ec97a68ff8a592a203d7d2
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80345896"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582202"
 ---
 # <a name="manage-assets"></a>Eszközök kezelése
 
@@ -36,7 +36,7 @@ Ez a témakör áttekintést ad arról, hogyan tölthet fel fájlokat egy eszkö
 
 A fejlesztés megkezdése előtt tekintse át a következőket:
 
-* [Fogalmak](concepts-overview.md)
+* [Alapelvek](concepts-overview.md)
 * [Fejlesztés a Media Services 3-as vAPI-jával](media-services-apis-overview.md) (információkat tartalmaz az API-k eléréséről, elnevezési konvenciókról és így tovább) 
 
 ## <a name="upload-media-files-into-an-asset"></a>Médiafájlok feltöltése eszközbe
@@ -60,7 +60,7 @@ Miután a digitális fájlokat feltöltötte a tárolóba, és társított egy e
 
     **Az AssetContainerSas.listContainerSas** egy [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) paramétert vesz fel, amelyen beállította a értékét. `expiryTime` Az időt 24 < kell állítani.
 
-    [A ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) több SAS-URL-t ad vissza, mivel minden tárfiókhoz két tárfiók kulcs ad vissza. A tárfiók két kulccsal rendelkezik, mert lehetővé teszi a tárfiók kulcsainak zökkenőmentes elforgatását (például módosítsa az egyiket a másik használata közben, majd kezdje el az új kulcsot, és forgassa el a másik kulcsot). Az első SAS-URL a tárolási kulcsot1 és a második tárolási kulcsot2 jelöli.
+    [A ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) több SAS-URL-t ad vissza, mivel minden tárfiókhoz két tárfiók kulcs ad vissza. A tárfiók két kulcs, mert segít a feladatátvétel és a tárfiók kulcsok zökkenőmentes elforgatása. Az első SAS-URL-cím az első tárfiókkulcsot, a második SAS-URL-cím pedig a második kulcsot jelöli.
 3. Az Azure Storage API-k vagy SDK-k (például a [Storage REST API](../../storage/common/storage-rest-api-auth.md) vagy a [.NET SDK)](../../storage/blobs/storage-quickstart-blobs-dotnet.md)segítségével fájlokat tölthet fel az eszköztárolóba.
 4. A Media Services v3 API-k segítségével hozzon létre egy Átalakítást és egy Feladatot a „bemeneti” adategység feldolgozásához. További információt az [átalakításokkal és feladatokkal](transform-concept.md) kapcsolatos cikkben olvashat.
 5. A tartalom streamelése a "kimeneti" eszközről.

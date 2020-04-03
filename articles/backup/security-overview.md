@@ -3,12 +3,12 @@ title: A biztonsági szolgáltatások áttekintése
 description: Ismerje meg az Azure Backup biztonsági kameráinak biztonsági funkcióit, amelyek segítenek a biztonsági mentési adatok védelmében és a vállalkozás biztonsági igényeinek kielégítésében.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 91a0f29862b0c9c35e562c143e28ebbc6c39cf94
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 2eec3ee50f1de695b5432ee50b0900e35b81a6eb
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80423183"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585819"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Az Azure Backup biztonsági szolgáltatásainak áttekintése
 
@@ -66,6 +66,8 @@ Az Azure Backup szolgáltatás a Microsoft Azure Recovery Services (MARS) ügyn�
 * A rendszer egy további hitelesítési réteget ad hozzá, amikor kritikus műveletet hajtanak végre, például egy jelszót módosítanak. Ez az ellenőrzés biztosítja, hogy az ilyen műveleteket csak érvényes Azure-hitelesítő adatokkal rendelkező felhasználók hajthassák végre. [További információ a támadásokat megakadályozó funkciókról.](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#prevent-attacks)
 
 * A törölt biztonsági mentési adatok a törlés napjától számított további 14 napig maradnak meg. Ez biztosítja az adatok helyrehozhatóságát egy adott időszakon belül, így nincs adatvesztés akkor is, ha támadás történik. Emellett nagyobb számú minimális helyreállítási pontot tartanak fenn a sérült adatok elleni védelem érdekében. [További információ a törölt biztonsági mentési adatok helyreállításáról](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#recover-deleted-backup-data).
+
+* A Microsoft Azure Recovery Services (MARS) ügynök használatával biztonsági mentésre kerülő adatok esetében a rendszer egy jelszót használ annak biztosítására, hogy az adatok titkosítása az Azure Backup ba való feltöltés előtt titkosítva legyen, és csak az Azure Backup biztonsági rendszerből való letöltés után fejtse vissza. A jelszó részletei csak a jelszót létrehozó felhasználó és a vele konfigurált ügynök számára érhetők el. A szolgáltatással semmit sem továbbít a rendszer, illetve nem oszt meg. Ez biztosítja az adatok teljes biztonságát, mivel a véletlenül elérhető adatok (például a hálózat elleni véletlen ülecsű támadás) használhatatlanok a jelszó nélkül, és a jelmondat nem kerül elküldésre a hálózaton.
 
 ## <a name="compliance-with-standardized-security-requirements"></a>A szabványosított biztonsági követelményeknek való megfelelés
 

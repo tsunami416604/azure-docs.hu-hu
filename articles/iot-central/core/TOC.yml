@@ -6,7 +6,7 @@
       href: overview-iot-central.md
     - name: Felhasználói felület bemutatása
       href: overview-iot-central-tour.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: 1. Új alkalmazás létrehozása
@@ -17,7 +17,7 @@
       href: quick-configure-rules.md
     - name: 4. Eszközök monitorozása
       href: quick-monitor-devices.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Csatlakozás
       items:
@@ -81,14 +81,10 @@
           href: howto-create-personal-dashboards.md
         - name: Feladat futtatása
           href: howto-run-a-job.md
-        - name: Verzióeszköz-sablon
-          href: howto-version-device-template.md
     - name: Átalakítás
       items:
         - name: Adatok exportálása Azure-célhelyekre
           href: howto-export-data.md
-        - name: Ismerkedés az IoT Central API-kkal
-          href: 'https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/'
         - name: Szabályokra vonatkozó webhookok létrehozása
           href: howto-create-webhooks.md
         - name: Szabályokra vonatkozó Azure Monitor-műveletcsoportok csatlakoztatása
@@ -145,7 +141,7 @@
       items:
         - name: IoT Hub
           href: /azure/iot-hub
-        - name: IoT Hub eszközkiépítési szolgáltatás
+        - name: IoT Hub Device Provisioning Service
           href: /azure/iot-dps
         - name: IoT-központ
           href: 'https://docs.microsoft.com/microsoft-iot-central/'

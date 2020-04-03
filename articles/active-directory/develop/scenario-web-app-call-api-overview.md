@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d121d6c198cb0d92cd098a40096e2f2300f65537
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 14f513306b3f0bc0c06a4143e5174c3ecddaef62
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76758989"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617166"
 ---
 # <a name="scenario-a-web-app-that-calls-web-apis"></a>Eset: Webes API-kat meghívja ó, webalkalmazás
 
@@ -48,7 +48,7 @@ Ezért regisztrálnak egy titkos (alkalmazásjelszót vagy tanúsítványt) az A
 > [!NOTE]
 > A webalkalmazásba való bejelentkezés a webalkalmazás védelméről szól. Ez a védelem *a köztes szoftvertárak* használatával érhető el, nem a Microsoft authentication library (MSAL) használatával. Az előző forgatókönyv, [a felhasználókban bejelentkező webalkalmazás](scenario-web-app-sign-user-overview.md)lefedte a témát.
 >
-> Ez a forgatókönyv ismerteti, hogyan hívhatja meg a webes API-kat egy webalkalmazásból. Hozzáférési jogkivonatokat kell beszereznie ezekhez a webes API-khoz. A jogkivonatok beszerzéséhez msal-kódtárak at kell használnia ezeket a jogkivonatokat.
+> Ez a forgatókönyv ismerteti, hogyan hívhatja meg a webes API-kat egy webalkalmazásból. Hozzáférési jogkivonatokat kell beszereznie ezekhez a webes API-khoz. Az MSAL-kódtárak segítségével szerezheti be ezeket a jogkivonatokat.
 
 A forgatókönyv fejlesztése a következő konkrét feladatokat foglalja magában:
 

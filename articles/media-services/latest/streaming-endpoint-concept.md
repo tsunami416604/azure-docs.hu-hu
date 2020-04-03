@@ -12,18 +12,18 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: a8674714451f3cc686acb74d6c66ac6800b75936
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 72cfdf172e4524e302ef2e22826d4f78ce32daf0
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478080"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582735"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Végpontok (Origin) streamelése az Azure Media Servicesszolgáltatásban
 
 A Microsoft Azure Media Services szolgáltatásban a [streamelési végpont](https://docs.microsoft.com/rest/api/media/streamingendpoints) egy dinamikus (just-in-time) csomagolási és származási szolgáltatást jelent, amely az élő és az igény szerinti tartalmat közvetlenül az ügyféllejátszó alkalmazásnak juttatja el a közös streamelési médiaprotokollok (HLS vagy DASH) egyikével. Emellett a **streamelési végpont** dinamikus (just-in-time) titkosítást biztosít az iparágvezető DRM-ek számára. 
 
-Amikor létrehoz egy Media Services-fiókot, **egy alapértelmezett** streamelési végpont jön létre az Ön számára leállított állapotban. Az **alapértelmezett** streamelési végpont nem törölhető. További streamelési végpontok hozhatók létre a fiók alatt [(lásd: Kvóták és korlátozások).](limits-quotas-constraints.md)
+Amikor létrehoz egy Media Services-fiókot, **egy alapértelmezett** streamelési végpont jön létre az Ön számára leállított állapotban. Az **alapértelmezett** streamelési végpont nem törölhető. További streamelési végpontok hozhatók létre a fiók alatt [(lásd: Kvóták és korlátok).](limits-quotas-constraints.md)
 
 > [!NOTE]
 > A videók streamelésének elindításához el kell indítania azt a **streamelési végpontot,** amelyből a videót streamelni szeretné.

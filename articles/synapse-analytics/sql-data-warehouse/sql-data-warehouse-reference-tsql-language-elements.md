@@ -1,6 +1,6 @@
 ---
 title: A T-SQL nyelvi elemei
-description: Az SQL Analytics által támogatott T-SQL utasítások dokumentációjára mutató hivatkozások.
+description: A Synapse SQL-készletben támogatott T-SQL utasítások dokumentációjára mutató hivatkozások.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,17 +11,19 @@ ms.date: 06/13/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 040a6d519896d71227777168ea9de9612f97ca6e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: f27a0a351e4a446dc950ac13f850bd14b2b3c65a
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351417"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586399"
 ---
-# <a name="t-sql-language-elements-supported-in-sql-analytics"></a>Az SQL Analytics által támogatott T-SQL nyelvi elemek
-Az SQL Analytics által támogatott T-SQL nyelvi elemek dokumentációjára mutató hivatkozások.
+# <a name="t-sql-language-elements-supported-in-synapse-sql-pool"></a>A Szinapszis SQL-készletben támogatott T-SQL nyelvi elemek
+
+A Synapse SQL-készletben támogatott T-SQL nyelvi elemek dokumentációjára mutató hivatkozások.
 
 ## <a name="core-elements"></a>Alapvető elemek
+
 * [szintaktikai konvenciók](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)
 * [objektumelnevezési szabályok](https://msdn.microsoft.com/library/ms175874.aspx)
 * [fenntartott kulcsszavak](https://msdn.microsoft.com/library/ms189822.aspx)
@@ -37,6 +39,7 @@ Az SQL Analytics által támogatott T-SQL nyelvi elemek dokumentációjára muta
 * [Használja](https://msdn.microsoft.com/library/ms188366.aspx)
 
 ## <a name="batches-control-of-flow-and-variables"></a>Kötegek, áramlásvezérlés és változók
+
 * [Kezdődik... Végén](https://msdn.microsoft.com/library/ms190487.aspx)
 * [Szünet](https://msdn.microsoft.com/library/ms181271.aspx)
 * [Állapítsa meg@local_variable](https://msdn.microsoft.com/library/ms188927.aspx)
@@ -48,6 +51,7 @@ Az SQL Analytics által támogatott T-SQL nyelvi elemek dokumentációjára muta
 * [Míg](https://msdn.microsoft.com/library/ms178642.aspx)
 
 ## <a name="operators"></a>Operátorok
+
 * [+ (Hozzáadás)](https://msdn.microsoft.com/library/ms178565.aspx)
 * [+ (Karakterlánc-összefűzés)](https://msdn.microsoft.com/library/ms177561.aspx)
 * [- (Negatív)](https://msdn.microsoft.com/library/ms189480.aspx)
@@ -57,6 +61,7 @@ Az SQL Analytics által támogatott T-SQL nyelvi elemek dokumentációjára muta
 * [Moduló](https://msdn.microsoft.com/library/ms190279.aspx)
 
 ## <a name="wildcard-characters-to-match"></a>Egyező helyettesítő karakter(ek)
+
 * [= (egyenlő)](https://msdn.microsoft.com/library/ms175118.aspx)
 * [> (nagyobb, mint)](https://msdn.microsoft.com/library/ms178590.aspx)
 * [< (kevesebb, mint)](https://msdn.microsoft.com/library/ms179873.aspx)
@@ -74,6 +79,7 @@ Az SQL Analytics által támogatott T-SQL nyelvi elemek dokumentációjára muta
 * [Vagy](https://msdn.microsoft.com/library/ms188361.aspx)
 
 ### <a name="bitwise-operators"></a>Bitenkénti operátorok
+
 * [& (bitenkénti ÉS)](https://msdn.microsoft.com/library/ms174965.aspx)
 * [| (Bitenkénti VAGY)](https://msdn.microsoft.com/library/ms186714.aspx)
 * [↑ (Bitwise exkluzív OR)](https://msdn.microsoft.com/library/ms190277.aspx)
@@ -83,6 +89,7 @@ Az SQL Analytics által támogatott T-SQL nyelvi elemek dokumentációjára muta
 * [&= (bitenkénti és egyenlő)](https://msdn.microsoft.com/library/cc627427.aspx)
 
 ## <a name="functions"></a>Functions
+
 * [@@DATEFIRST](https://msdn.microsoft.com/library/ms187766.aspx)
 * [@@ERROR](https://msdn.microsoft.com/library/ms188790.aspx)
 * [@@LANGUAGE](https://msdn.microsoft.com/library/ms177557.aspx)
@@ -227,12 +234,15 @@ Az SQL Analytics által támogatott T-SQL nyelvi elemek dokumentációjára muta
 * [XACT_STATE](https://msdn.microsoft.com/library/ms189797.aspx)
 
 ## <a name="transactions"></a>Tranzakciók
+
 * [Tranzakciók](https://msdn.microsoft.com/library/mt204031.aspx)
 
 ## <a name="diagnostic-sessions"></a>Diagnosztikai munkamenetek
+
 * [DIAGNOSZTIKAI MUNKAMENET LÉTREHOZÁSA](https://msdn.microsoft.com/library/mt204029.aspx)
 
 ## <a name="procedures"></a>Eljárások
+
 * [sp_addrolemember](https://msdn.microsoft.com/library/ms187750.aspx)
 * [sp_columns](https://msdn.microsoft.com/library/ms176077.aspx)
 * [sp_configure](https://msdn.microsoft.com/library/ms188787.aspx)
@@ -256,6 +266,7 @@ Az SQL Analytics által támogatott T-SQL nyelvi elemek dokumentációjára muta
 * [sp_unprepare](https://msdn.microsoft.com/library/ff848735.aspx)
 
 ## <a name="set-statements"></a>SET utasítások
+
 * [BEÁLLÍTÁS ANSI_DEFAULTS](https://msdn.microsoft.com/library/ms188340.aspx)
 * [SET ANSI_NULL_DFLT_OFF](https://msdn.microsoft.com/library/ms187356.aspx)
 * [BEÁLLÍTÁS ANSI_NULL_DFLT_ON](https://msdn.microsoft.com/library/ms187375.aspx)
@@ -278,5 +289,6 @@ Az SQL Analytics által támogatott T-SQL nyelvi elemek dokumentációjára muta
 * [BEÁLLÍTÁS XACT_ABORT](https://msdn.microsoft.com/library/ms188792.aspx)
 
 ## <a name="next-steps"></a>További lépések
-További információt az [SQL Analytics T-SQL-utasítások és](sql-data-warehouse-reference-tsql-statements.md) [az SQL Analytics Rendszernézetek című témakörében talál.](sql-data-warehouse-reference-tsql-system-views.md)
+
+További információt a [Synapse SQL-készlet T-SQL-utasításai](sql-data-warehouse-reference-tsql-statements.md)és [a Rendszernézetek a Synapse SQL-készletben című témakörben talál.](sql-data-warehouse-reference-tsql-system-views.md)
 

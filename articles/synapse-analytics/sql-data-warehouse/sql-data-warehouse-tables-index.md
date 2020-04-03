@@ -1,6 +1,6 @@
 ---
 title: Indexelő táblák
-description: Javaslatok és példák az SQL Analytics indexeléséhez.
+description: Javaslatok és példák a synapse SQL-készletben lévő táblák indexelése.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,26 +11,26 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ced965f94808bdc672f694bede5c239178891f97
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: d5acc2b69ed521af4fd4777dc9f3496290078379
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351293"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583273"
 ---
-# <a name="indexing-tables-in-sql-analytics"></a>Táblák indexelése az SQL Analytics szolgáltatásban
+# <a name="indexing-tables-in-synapse-sql-pool"></a>Indexelési táblák a Synapse SQL-készletben
 
-Javaslatok és példák az SQL Analytics indexeléséhez.
+Javaslatok és példák a synapse SQL-készletben lévő táblák indexelése.
 
 ## <a name="index-types"></a>Indextípusok
 
-Az SQL Analytics számos indexelési lehetőséget kínál , beleértve [a fürtözött oszlopcentrikus indexeket](/sql/relational-databases/indexes/columnstore-indexes-overview), [a fürtözött indexeket és a nem fürtözött indexeket](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described), valamint a halommemória néven is ismert nem indexelési beállítást . [heap](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes)  
+A Synapse SQL-készlet számos indexelési lehetőséget kínál , beleértve [a fürtözött oszlopcentrikus indexeket](/sql/relational-databases/indexes/columnstore-indexes-overview), [a fürtözött indexeket és a nem fürtözött indexeket](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described), valamint a [halommemória](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes)néven is ismert nem indexopciót .  
 
-Indexet mutatóval rendelkező tábla létrehozásához tekintse meg a [TABLE (SQL Analytics) létrehozása](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) dokumentációt.
+Indexet mutatóval rendelkező tábla létrehozásához tekintse meg a [TABLE (Synapse SQL pool) dokumentációját.](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
 
 ## <a name="clustered-columnstore-indexes"></a>Fürtözött oszlopcentrikus indexek
 
-Alapértelmezés szerint az SQL Analytics létrehoz egy fürtözött oszlopcentrikus indexet, ha nincs enek indexbeállítások megadva egy táblában. A fürtözött oszlopcentrikus táblák a legmagasabb szintű adattömörítést és a legjobb általános lekérdezési teljesítményt is kínálják.  A fürtözött oszlopcentrikus táblák általában jobban teljesítenek, mint a fürtözött index- vagy halommemória-táblák, és általában a legjobb választás a nagy táblák számára.  Ezen okok miatt a fürtözött oszlopcentrikus a legjobb kiindulópont, ha nem biztos abban, hogyan indexelheti a táblázatot.  
+Alapértelmezés szerint a Synapse SQL-készlet fürtözött oszlopcentrikus indexet hoz létre, ha egy táblában nincsenek indexbeállítások. A fürtözött oszlopcentrikus táblák a legmagasabb szintű adattömörítést és a legjobb általános lekérdezési teljesítményt is kínálják.  A fürtözött oszlopcentrikus táblák általában jobban teljesítenek, mint a fürtözött index- vagy halommemória-táblák, és általában a legjobb választás a nagy táblák számára.  Ezen okok miatt a fürtözött oszlopcentrikus a legjobb kiindulópont, ha nem biztos abban, hogyan indexelheti a táblázatot.  
 
 Fürtözött oszlopcentrikus tábla létrehozásához egyszerűen adja meg a FÜRTÖZÖTT COLUMNSTORE INDEX ÉRTÉKET a WITH záradékban, vagy hagyja kikapcsolva a WITH záradékot:
 
@@ -52,7 +52,7 @@ Vannak néhány forgatókönyv, ahol a fürtözött oszlopcentrikus nem lehet j�
 
 ## <a name="heap-tables"></a>Halommemória-táblák
 
-Amikor ideiglenesen adatokat hoz le az SQL Analytics szolgáltatásban, előfordulhat, hogy egy halommemória-tábla használatával gyorsabbá teszi a teljes folyamatot. Ennek az az oka, hogy a halomba betöltődések gyorsabbak, mint a táblák indexelése, és bizonyos esetekben a következő olvasás a gyorsítótárból végezhető el.  Ha csak azért tölti be az adatokat, hogy több átalakítás futtatása előtt megrendezze az adatokat, a tábla halommemóriatáblába való betöltése sokkal gyorsabb, mint az adatok betöltése egy fürtözött oszlopcentrikus táblába. Ezenkívül az adatok [ideiglenes táblába](sql-data-warehouse-tables-temporary.md) való betöltése gyorsabban töltődik be, mint egy tábla állandó tárolóba töltése.  
+Ha ideiglenesen adatokat hoz le a Synapse SQL-készletben, előfordulhat, hogy egy halommemória-tábla használatával gyorsabbá teszi a teljes folyamatot. Ennek az az oka, hogy a halomba betöltődések gyorsabbak, mint a táblák indexelése, és bizonyos esetekben a következő olvasás a gyorsítótárból végezhető el.  Ha csak azért tölti be az adatokat, hogy több átalakítás futtatása előtt megrendezze az adatokat, a tábla halommemóriatáblába való betöltése sokkal gyorsabb, mint az adatok betöltése egy fürtözött oszlopcentrikus táblába. Ezenkívül az adatok [ideiglenes táblába](sql-data-warehouse-tables-temporary.md) való betöltése gyorsabban töltődik be, mint egy tábla állandó tárolóba töltése.  
 
 Kis méretű, 60 millió nál kisebb sornál kisebb méretű memóriatáblák esetén gyakran van értelme halommemória-táblázatoknak.  Fürt oszlopcentrikus táblák kezdenek optimális tömörítést, ha több mint 60 millió sor.
 
@@ -190,7 +190,7 @@ Ezek a tényezők azt eredményezhetik, hogy az oszlopcentrikus index jelentőse
 
 ### <a name="memory-pressure-when-index-was-built"></a>Memórianyomás az index létrehozásakor
 
-A sorok száma tömörített sorcsoportonként közvetlenül kapcsolódik a sor szélességéhez és a sorcsoport feldolgozásához rendelkezésre álló memória mennyiségéhez.  Amikor a sorokat nagy memóriaterhelés mellett írja oszlopcentrikus táblákba, az oszlopcentrikus szegmens minősége gyengülhet.  Ezért az ajánlott eljárás az, hogy a munkamenet, amely írásban az oszlopcentrikus index táblák hozzáférést a lehető legtöbb memóriát.  Mivel a memória és az egyidejűség között kompromisszum van, a megfelelő memóriafoglalásra vonatkozó útmutatás a tábla egyes sorában lévő adatoktól, a rendszerhez rendelt SQL Analytics-egységektől, valamint a munkamenetnek adható egyidejűségi résidők számától függ. adatokat írhat a táblába.
+A sorok száma tömörített sorcsoportonként közvetlenül kapcsolódik a sor szélességéhez és a sorcsoport feldolgozásához rendelkezésre álló memória mennyiségéhez.  Amikor a sorokat nagy memóriaterhelés mellett írja oszlopcentrikus táblákba, az oszlopcentrikus szegmens minősége gyengülhet.  Ezért az ajánlott eljárás az, hogy a munkamenet, amely írásban az oszlopcentrikus index táblák hozzáférést a lehető legtöbb memóriát.  Mivel a memória és az egyidejűség között kompromisszum van, a megfelelő memóriafoglalásra vonatkozó útmutatás a tábla egyes sorának adataitól, a rendszerszámára lefoglalt adattárház egységektől, valamint a munkamenetnek, azaz a táblába író munkamenetnek adhatja az egyidejűségi tárolóhelyek számát.
 
 ### <a name="high-volume-of-dml-operations"></a>Nagy mennyiségű DML-művelet
 
@@ -204,13 +204,13 @@ A partícióra igazított terjesztésenként 102 400 sorból álló tömeges kü
 
 ### <a name="small-or-trickle-load-operations"></a>Kis vagy csepegtető terhelési műveletek
 
-Az SQL Analytics-adatbázisokba áramló kis terheléseket néha csepegtető terhelésnek is nevezik. Ezek általában a rendszer által betöltött adatok közel állandó adatfolyamát jelentik. Mivel azonban ez az adatfolyam közel folyamatos, a sorok mennyisége nem különösebben nagy. Gyakrabban, mint nem az adatok jelentősen a küszöbérték alatt szükséges közvetlen terhelés oszlopcentrikus formátumban.
+A Synapse SQL-készletbe áramló kis terheléseket néha csepegtető terheléseknek is nevezik. Ezek általában a rendszer által betöltött adatok közel állandó adatfolyamát jelentik. Mivel azonban ez az adatfolyam közel folyamatos, a sorok mennyisége nem különösebben nagy. Gyakrabban, mint nem az adatok jelentősen a küszöbérték alatt szükséges közvetlen terhelés oszlopcentrikus formátumban.
 
 Ezekben a helyzetekben gyakran jobb, ha az adatok először az Azure blob storage-ban, és hagyja, hogy a betöltés előtt felhalmozódnak. Ezt a technikát gyakran *mikrokötegelésnek nevezik.*
 
 ### <a name="too-many-partitions"></a>Túl sok partíció
 
-Egy másik dolog, hogy fontolja meg a particionálás hatása a fürtözött oszlopcentrikus táblák.  Particionálás előtt az SQL Analytics már 60 adatbázisra osztja az adatokat.  A particionálás tovább osztja az adatokat.  Ha particionálja az adatokat, akkor vegye figyelembe, hogy **minden** partíciónak legalább 1 millió sorra van szüksége a fürtözött oszlopcentrikus index előnyeinek kihasználása érdekében.  Ha a tábla particionálása 100 partícióra, majd a tábla szüksége van legalább 6 milliárd sort, hogy részesüljenek a fürtözött oszlopcentrikus index (60 disztribúciók *100 partíciók* 1 millió sor). Ha a 100 partíciós tábla nem rendelkezik 6 milliárd sorral, vagy csökkentse a partíciók számát, vagy fontolja meg egy halommemória-tábla használata helyett.
+Egy másik dolog, hogy fontolja meg a particionálás hatása a fürtözött oszlopcentrikus táblák.  Particionálás előtt a Synapse SQL-készlet már 60 adatbázisra osztja az adatokat.  A particionálás tovább osztja az adatokat.  Ha particionálja az adatokat, akkor vegye figyelembe, hogy **minden** partíciónak legalább 1 millió sorra van szüksége a fürtözött oszlopcentrikus index előnyeinek kihasználása érdekében.  Ha a tábla particionálása 100 partícióra, majd a tábla szüksége van legalább 6 milliárd sort, hogy részesüljenek a fürtözött oszlopcentrikus index (60 disztribúciók *100 partíciók* 1 millió sor). Ha a 100 partíciós tábla nem rendelkezik 6 milliárd sorral, vagy csökkentse a partíciók számát, vagy fontolja meg egy halommemória-tábla használata helyett.
 
 Miután a táblák betöltöttnéhány adatot, kövesse az alábbi lépéseket, hogy azonosítsa és újraépítse a táblákat az optimálistól elmaradó fürtözött oszlopcentrikus indexek.
 
@@ -252,7 +252,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-Az INDEX újraépítése az SQL Analytics szolgáltatásban egy offline művelet.  Az indexek újraépítéséről az [Oszlopcentrikus indexek töredezettségmentesítése](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)és az [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql)című témakör ALTER INDEX REBUILD című szakaszában talál további információt.
+Az index újraépítése a Synapse SQL-készletben egy offline művelet.  Az indexek újraépítéséről az [Oszlopcentrikus indexek töredezettségmentesítése](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)és az [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql)című témakör ALTER INDEX REBUILD című szakaszában talál további információt.
 
 ### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>3. lépés: A fürtözött oszlopcentrikus szegmens minőségének javítása
 
@@ -283,7 +283,7 @@ AND     [OrderDateKey] <  20010101
 ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2 WITH (TRUNCATE_TARGET = ON);
 ```
 
-A partíciók CTAS használatával történő újbóli létrehozásáról további információt a [Partíciók használata az SQL Analytics szolgáltatásban című témakörben talál.](sql-data-warehouse-tables-partition.md)
+A partíciók CTAS használatával történő újralétrehozásáról a [Partíciók használata a Synapse SQL-készletben](sql-data-warehouse-tables-partition.md)című témakörben talál további részleteket.
 
 ## <a name="next-steps"></a>További lépések
 

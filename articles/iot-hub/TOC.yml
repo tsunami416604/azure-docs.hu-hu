@@ -428,12 +428,10 @@
       href: 'https://docs.microsoft.com/javascript/api/azure-iothub/'
     - name: C eszköz SDK
       href: 'https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/'
-    - name: Azure IoT Edge
-      href: 'http://azure.github.io/iot-edge/'
     - name: REST (eszköz)
       href: 'https://docs.microsoft.com/rest/api/iothub/device'
     - name: REST (szolgáltatás)
-      href: 'https://docs.microsoft.com/rest/api/iothub/service'
+      href: 'https://docs.microsoft.com/rest/api/iothub/service/configuration'
     - name: REST (IoT Hub-erőforrás)
       href: 'https://docs.microsoft.com/rest/api/iothub/iothubresource'
     - name: REST (tanúsítványok)

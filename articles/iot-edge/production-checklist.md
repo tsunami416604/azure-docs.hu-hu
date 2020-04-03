@@ -4,16 +4,16 @@ description: Ismerje meg, hogyan viheti az Azure IoT Edge-megoldást a fejleszt�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 08/09/2019
+ms.date: 4/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5320c9d7f1ea5ae882c67ee631f5bbafbf97b039
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd24631f8e6b4f3f87438bf22654016dd7699950
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530869"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618303"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Készüljön fel az IoT Edge-megoldás éles környezetben történő üzembe helyezésére
 
@@ -134,11 +134,25 @@ Ha a tesztforgatókönyvekről éles forgatókönyvekre lép át, ne felejtse el
   * Hozzáférés kezelése a tároló beállításjegyzékéhez
   * Címkék használata a verziók kezeléséhez
 
-### <a name="manage-access-to-your-container-registry"></a>Hozzáférés kezelése a tároló beállításjegyzékéhez
+### <a name="manage-access-to-your-container-registry-with-a-service-principal"></a>A tárolóbeállításjegyzékhez való hozzáférés kezelése egyszerű szolgáltatással
 
 Mielőtt üzembe helyezné a modulokat az éles IoT Edge-eszközökhöz, győződjön meg arról, hogy szabályozza a tároló beállításjegyzékéhez való hozzáférést, hogy a kívülállók ne férhessenek hozzá a tárolórendszerképekhez, és ne módosíthassák azokat. Használjon privát, nem nyilvános tárolóbeállításjegyzéket a tárolórendszerképek kezeléséhez.
 
-Az oktatóanyagokban és egyéb dokumentációkban azt utasítjuk, hogy ugyanazokat a tároló-beállításjegyzék-hitelesítő adatokat használja az IoT Edge-eszközön, mint a fejlesztői gépen. Ezek az utasítások csak a tesztelési és fejlesztési környezetek könnyebb beállításának elősegítésére szolgálnak, és nem követhetők éles környezetben. Az Azure Container Registry azt [javasolja, hogy a szolgáltatásnévi tagok,](../container-registry/container-registry-auth-service-principal.md) amikor az alkalmazások vagy szolgáltatások lekérése tárolórendszerképek automatizált vagy más módon felügyelet nélkül, mint az IoT Edge-eszközök nem. Hozzon létre egy egyszerű szolgáltatás, amely írásvédett hozzáférést biztosít a tároló beállításjegyzékéhez, és adja meg ezt a felhasználónevet és jelszót a központi telepítési jegyzékben.
+Az oktatóanyagokban és egyéb dokumentációkban azt utasítjuk, hogy ugyanazokat a tároló-beállításjegyzék-hitelesítő adatokat használja az IoT Edge-eszközön, mint a fejlesztői gépen. Ezek az utasítások csak a tesztelési és fejlesztési környezetek könnyebb beállításának elősegítésére szolgálnak, és nem követhetők éles környezetben. Az Azure Container Registry azt [javasolja, hogy a szolgáltatásnévi tagok,](../container-registry/container-registry-auth-service-principal.md) amikor az alkalmazások vagy szolgáltatások lekérése tárolórendszerképek automatizált vagy más módon felügyelet nélküli módon (fej nélküli), mint az IoT Edge-eszközök nem.
+
+Egyszerű szolgáltatás létrehozásához futtassa a két parancsfájlt az egyszerű szolgáltatás létrehozása című szakaszban leírtak [szerint.](../container-registry/container-registry-auth-aci.md#create-a-service-principal) Ezek a parancsfájlok a következő feladatokat követik el:
+
+* Az első parancsfájl létrehozza a szolgáltatásnév. Az egyszerű szolgáltatásazonosítót és az egyszerű szolgáltatás jelszavát adja ki. Ezeket az értékeket biztonságosan tárolhatja a bejegyzésekben.
+
+* A második parancsfájl szerepkör-hozzárendeléseket hoz létre, amelyeket a szolgáltatásnévnek kell megadni, amely szükség esetén később futtatható. Azt javasoljuk, hogy alkalmazza az **acrPull** felhasználói szerepkört a `role` paraméterhez. A szerepkörök listáját az [Azure Container Registry szerepkörei és engedélyei](../container-registry/container-registry-roles.md) című témakörben található.
+
+A szolgáltatásnév használatával történő hitelesítéshez adja meg az első parancsfájlból beszerzett egyszerű szolgáltatásazonosítót és jelszót.
+
+* A felhasználónév hez vagy az ügyfélazonosítóhoz adja meg az egyszerű szolgáltatásazonosítót.
+
+* A jelszó- vagy ügyféltitkos kulcsot adja meg az egyszerű szolgáltatásjelszó megadásához.
+
+Egy példa egy tárolópéldány indítása az Azure [CLI,Lásd: Hitelesítés egyszerű szolgáltatás használatával.](../container-registry/container-registry-auth-aci.md#authenticate-using-the-service-principal)
 
 ### <a name="use-tags-to-manage-versions"></a>Címkék használata a verziók kezeléséhez
 

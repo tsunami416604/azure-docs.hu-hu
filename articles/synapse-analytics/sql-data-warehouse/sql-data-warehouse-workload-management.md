@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 1809902fb153c5c9c83a9d00b6f817fde975d0fe
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 06fc9edd55aa51c985cbb981fc5a6892d0ca75e5
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349914"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583124"
 ---
 # <a name="what-is-workload-management"></a>Mi a számítási feladatok kezelése?
 
@@ -36,11 +36,12 @@ Az adattárház teljesítménykapacitását az [adattárház egységek határozz
 
 
 ## <a name="workload-management-concepts"></a>Munkaterhelés-kezelési fogalmak
-A múltban az SQL Analytics az Azure Synapse felügyelte a lekérdezés teljesítményét [erőforrásosztályokon](resource-classes-for-workload-management.md)keresztül.  Az erőforrásosztályok lehetővé teszik a memória hozzárendelését egy lekérdezéshez a szerepkör-tagság alapján.  Az elsődleges kihívás az erőforrás-osztályok, hogy konfigurálása után nem volt irányítás vagy a számítási feladatok szabályozására képes.  
+
+A múltban az Azure Synapse Synapse Synapse synapse-i synapsza i. [resource classes](resource-classes-for-workload-management.md)  Az erőforrásosztályok lehetővé teszik a memória hozzárendelését egy lekérdezéshez a szerepkör-tagság alapján.  Az elsődleges kihívás az erőforrás-osztályok, hogy konfigurálása után nem volt irányítás vagy a számítási feladatok szabályozására képes.  
 
 Például a smallrc ad-hoc felhasználói szerepkör-tagságának megadása lehetővé tette, hogy a felhasználó a rendszer memóriájának 100%-át használja fel.  Az erőforrásosztályok, nincs módja annak, hogy lefoglalja, és biztosítja, hogy az erőforrások rendelkezésre állnak a kritikus számítási feladatokhoz.
 
-Az Azure Synapse SQL Analytics-munkaterhelés-kezelése három magas szintű koncepcióból áll: [Számítási feladatok besorolása](sql-data-warehouse-workload-classification.md), [Számítási feladatok fontossága](sql-data-warehouse-workload-importance.md) és [munkaterhelés-elkülönítés.](sql-data-warehouse-workload-isolation.md)  Ezek a képességek lehetővé teszik, hogy jobban szabályozhatja, hogy a számítási feladatok hogyan használják a rendszererőforrásait.
+Az Azure Synapse synapse-i SQL-készlet számítási feladatainak kezelése három magas szintű koncepcióból áll: [Számítási feladatok besorolása](sql-data-warehouse-workload-classification.md), [Számítási feladatok fontossága](sql-data-warehouse-workload-importance.md) és [munkaterhelés-elkülönítés.](sql-data-warehouse-workload-isolation.md)  Ezek a képességek lehetővé teszik, hogy jobban szabályozhatja, hogy a számítási feladatok hogyan használják a rendszererőforrásait.
 
 A számítási feladatok besorolása a kérelem hozzárendelésének és a fontossági szintek beállításának fogalma.  Történelmileg ez a feladat a [szerepkör-tagságon](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management#change-a-users-resource-class)keresztül történt sp_addrolemember használatával.  Ez most már a [CREATE WORKLOAD CLASSIFER](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql)segítségével végezhető el.  A besorolási képesség gazdagabb beállításokat biztosít, például a címkét, a munkamenetet és a kérelmek besorolásához szükséges időt.
 

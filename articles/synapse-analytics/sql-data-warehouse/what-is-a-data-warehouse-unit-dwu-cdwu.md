@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a7f27215c7ba053933d9d12658253ea92aefa526
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: ace4bc2e46d9e1926da18dedb163657d4f343979
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351113"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586314"
 ---
 # <a name="data-warehouse-units-dwus"></a>Adattárház-egységek (DWUs-ok)
 
@@ -24,7 +24,7 @@ Javaslatok az adattárház egységek (DW-k) ideális számának kiválasztásár
 
 ## <a name="what-are-data-warehouse-units"></a>Mik azok az adattárház-egységek?
 
-Az [SQL-készlet](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse) az [SQL Analytics](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse)használata során kiépített analitikus erőforrások gyűjteményét jelenti. Az analitikus erőforrások a PROCESSZOR, a memória és az IO kombinációjaként vannak definiálva. Ez a három erőforrás adattárházegységeknek (DWUs) nevezett számítási méretegységekbe van csomagolva. A DWU a számítási erőforrások és teljesítmény absztrakt, normalizált mértéke. A szolgáltatási szint módosítása megváltoztatja a rendszer számára rendelkezésre álló DWUs-ok számát, ami viszont módosítja a rendszer teljesítményét és költségét.
+A [szinapszis SQL-készlet](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) a kiépített analitikus erőforrások gyűjteményét jelöli. Az analitikus erőforrások a PROCESSZOR, a memória és az IO kombinációjaként vannak definiálva. Ez a három erőforrás adattárházegységeknek (DWUs) nevezett számítási méretegységekbe van csomagolva. A DWU a számítási erőforrások és teljesítmény absztrakt, normalizált mértéke. A szolgáltatási szint módosítása megváltoztatja a rendszer számára rendelkezésre álló DWUs-ok számát, ami viszont módosítja a rendszer teljesítményét és költségét.
 
 Nagyobb teljesítmény érdekében növelheti az adattárház egységek számát. A kisebb teljesítmény érdekében csökkentse az adattárház-egységeket. A tár és a számítási feladatok költségeinek számlázása külön történik, ezért az adattárházegységek számának módosítása nem befolyásolja a tárolási költségeket.
 
@@ -99,7 +99,7 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 ## <a name="change-data-warehouse-units"></a>Adatraktár-egységek módosítása
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
 DWUs módosítása:
 

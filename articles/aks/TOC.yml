@@ -314,10 +314,6 @@
                   maintainContext: true
         - name: Alkalmazások futtatása a Helm használatával
           href: kubernetes-helm.md
-        - name: Az Open Service Broker for Azure használata
-          href: integrate-azure.md
-        - name: A MongoDB-hez készült Cosmos DB API és az OSBA együttes használata
-          href: use-cosmosdb-osba-mongo-app.md
         - name: Az OpenFaaS használata
           href: openfaas.md
         - name: Spark-feladatok futtatása

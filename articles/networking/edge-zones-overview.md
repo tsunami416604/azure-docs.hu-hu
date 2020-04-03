@@ -5,14 +5,14 @@ services: vnf-manager
 author: ganesr
 ms.service: vnf-manager
 ms.topic: article
-ms.date: 03/31/2020
+ms.date: 04/02/2020
 ms.author: ganesr
-ms.openlocfilehash: d04032075166d2edd273c7f22bfb0d54aeccd8b3
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 2f2311adc231eac4260e26f0d5d1f2115f43d2eb
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545822"
+ms.locfileid: "80618714"
 ---
 # <a name="about-azure-edge-zones---preview"></a>Az Azure Edge zónák – előzetes verzió
 
@@ -132,11 +132,13 @@ VNF-szállítók, független szoftverszállítók és MSP-partnerek gazdag ökos
 | Globális sis és operátorok | Mobilszolgáltatók |
 | --- | --- |
 | Amdocs között                       | Etisalat             |
-| Amerikai torony               | Rogers               |
-| Expeto között                       | Énekel              |
-| Összevont vezeték nélküli           | Vodafone             |
-| Infosys között                      |      *                |
-| Tech Mahindra                |      *                |
+| Amerikai torony               | NTT Communications   |
+| Századi link                 | Proximus             |
+| Expeto között                       | Rogers               |
+| Összevont vezeték nélküli           | SK Távközlés           |
+| Infosys között                      | Telefonica           |
+| Tech Mahindra                | Telstra              |
+|        *                     | Vodafone             |
 
 [Lépjen kapcsolatba a Privát peremhálózati zónák csapatával,](https://aka.ms/EdgeZonesPartner) hogy további információra bírja, hogyan válhat partnerré.
 

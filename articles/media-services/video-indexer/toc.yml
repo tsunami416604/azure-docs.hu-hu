@@ -4,14 +4,14 @@
   items:
     - name: Mi az a Video Indexer?
       href: video-indexer-overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
-    - name: Első lépések
+    - name: Bevezetés
       href: video-indexer-get-started.md
     - name: Felhasználók meghívása
       href: invite-users.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: A Video Indexer API használata
       href: video-indexer-use-apis.md
@@ -111,3 +111,5 @@
       href: release-notes.md
     - name: Felhasználói vélemény
       href: 'https://cognitive.uservoice.com/forums/598144-video-indexer'
+    - name: Blogok
+      href: 'https://azure.microsoft.com/blog/tag/video-indexer/'

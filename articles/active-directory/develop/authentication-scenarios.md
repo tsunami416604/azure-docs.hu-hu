@@ -13,12 +13,12 @@ ms.date: 02/03/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: f8f5ab99086ee38e2f56247ce31f8ac0e7affc81
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6191e67f097b5ab471c5b31eff11a0e570d1c990
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80129000"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617029"
 ---
 # <a name="authentication-basics"></a>Hitelesítési alapok
 
@@ -32,7 +32,7 @@ Ez a cikk számos hitelesítési fogalmat ismerteti, amelyeket meg kell értenie
 
 Ahelyett, hogy olyan alkalmazásokat hozna létre, amelyek mindegyike saját felhasználónevet és jelszót tart fenn, ami magas felügyeleti terhet jelent, amikor felhasználókat kell hozzáadnia vagy eltávolítania több alkalmazásban, az alkalmazások átruházhatják ezt a felelősséget egy központi identitásszolgáltatóra.
 
-Az Azure Active Directory (Azure AD) egy központi identitásszolgáltató a felhőben. A hitelesítés és az engedélyezés delegálása lehetővé teszi olyan forgatókönyvek használatát, mint például a feltételes hozzáférési házirendek, amelyek megkövetelik, hogy a felhasználó egy adott helyen legyen, a többtényezős hitelesítés használatát, valamint lehetővé teszi a felhasználó számára, hogy egyszer jelentkezzen be, majd automatikusan automatikusan jelentkezzen be bejelentkezik az összes olyan webalkalmazásba, amely ugyanazt a központi könyvtárat osztja. Ezt a képességet egyszeri bejelentkezésnek (SSO) nevezik.
+Az Azure Active Directory (Azure AD) egy központi identitásszolgáltató a felhőben. A hitelesítés és az engedélyezés delegálása lehetővé teszi olyan forgatókönyvek használatát, mint például a feltételes hozzáférési házirendek, amelyek megkövetelik, hogy a felhasználó egy adott helyen legyen, a többtényezős hitelesítés használatát, valamint lehetővé teszi a felhasználó számára, hogy egyszer jelentkezzen be, majd automatikusan bejelentkezzen az összes olyan webalkalmazásba, amely ugyanazt a központi könyvtárat használja. Ezt a képességet egyszeri bejelentkezésnek (SSO) nevezik.
 
 A központosított identitásszolgáltató még fontosabb az olyan alkalmazások esetében, amelyek felhasználói a világ minden táján találhatók, és nem feltétlenül jelentkeznek be a vállalat hálózatáról. Az Azure AD hitelesíti a felhasználókat, és hozzáférési jogkivonatokat biztosít. A [hozzáférési jogkivonat](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#access-token) egy hitelesítési kiszolgáló által kiadott biztonsági jogkivonat. Információkat tartalmaz a felhasználóról és az alkalmazásról, amelynek a token et szánják; amely a webes API-k és más védett erőforrások elérésére használható.
 
@@ -170,7 +170,7 @@ Ez az attribútum hatására ASP.NET ellenőrzi, hogy a felhasználó identitás
 A felhasználói hitelesítés a böngészőn keresztül történik. Az OpenID protokoll szabványos HTTP protokollüzeneteket használ.
 * A webalkalmazás http 302-es (átirányítás) küld a böngészőnek az Azure AD használatához.
 * A felhasználó hitelesítése után az Azure AD elküldi a jogkivonatot a webalkalmazás nak egy átirányítás a böngészőn keresztül.
-* Az átirányítást a webalkalmazás biztosítja átirányítási URI formájában. Ez az átirányítási URI regisztrálva van az Azure AD alkalmazásobjektummal. Több átirányítási URI-k is lehetnek, mert az alkalmazás több URL-en is telepíthető. Így a webalkalmazásnak is meg kell adnia a használni kívánt átirányítási uRi-t.
+* Az átirányítást a webalkalmazás biztosítja átirányítási URI formájában. Ez az átirányítási URI regisztrálva van az Azure AD alkalmazásobjektummal. Több átirányítási URI-k is lehetnek, mert az alkalmazás több URL-en is telepíthető. Így a webalkalmazás nak is meg kell adnia a használni kívánt átirányítási URI-t.
 * Az Azure AD ellenőrzi, hogy a webalkalmazás által küldött átirányítási URI az alkalmazás regisztrált átirányítási URI-k egyike.
 
 ## <a name="desktop-and-mobile-app-sign-in-flow-with-azure-ad"></a>Asztali és mobilalkalmazás-bejelentkezési folyamat az Azure AD-vel

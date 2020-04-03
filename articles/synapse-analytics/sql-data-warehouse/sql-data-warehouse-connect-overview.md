@@ -1,6 +1,6 @@
 ---
-title: Kapcsolódás az Azure SQL Data Warehouse szolgáltatáshoz
-description: Csatlakozzon az Azure SQL Data Warehouse-hoz.
+title: Csatlakozás a Synapse SQL-készlethez
+description: Csatlakozzon az SQL-készlethez.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,28 +11,30 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 72825f588ff92383858020cdbcd92c7de3078ed5
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 70dd1ae883ee1f44672dccb802c0e770d7676440
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350658"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619089"
 ---
-# <a name="connect-to-azure-sql-data-warehouse"></a>Kapcsolódás az Azure SQL Data Warehouse szolgáltatáshoz
-Csatlakozzon az Azure SQL Data Warehouse-hoz.
+# <a name="connect-to-synapse-sql-pool"></a>Csatlakozás a Synapse SQL-készlethez
+Csatlakozzon az SQL-készlethez.
 
 ## <a name="find-your-server-name"></a>A kiszolgálónév lekérdezése
-A következő példában található kiszolgálónév samplesvr.database.windows.net. A teljes kiszolgálónév lekérdezése:
+A következő példában található kiszolgálónév sqlpoolservername.database.windows.net. A teljes kiszolgálónév lekérdezése:
 
-1. Nyissa meg az [Azure Portalt.][Azure portal]
-2. Kattintson az **SQL-adattárházak** elemre.
-3. Kattintson arra az adattárházra, amelyhez csatlakozni kíván.
+1. Nyissa meg az [Azure Portalt.](https://portal.azure.com)
+2. Kattintson az **Azure Synapse Analytics .**
+3. Kattintson arra az SQL-készletre, amelyhez csatlakozni szeretne.
 4. Keresse meg a teljes kiszolgálónevet.
    
     ![Teljes kiszolgálónév](media/sql-data-warehouse-connect-overview/server-connect.PNG)
 
 ## <a name="supported-drivers-and-connection-strings"></a>Támogatott illesztők és kapcsolati sztringek
-Az Azure SQL Data Warehouse a következőket támogatja: [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP][PHP] és [JDBC][JDBC]. A legújabb verzió és dokumentáció megkereséséhez kattintson az előző illesztőprogramok egyikére. Ha automatikusan létre szeretné hozni a kapcsolati karakterláncot az Azure Portalon használt illesztőprogramhoz, kattintson az előző példa **adatbázis-kapcsolati karakterláncok megjelenítése** elemre. A következő néhány példa bemutatja, hogy néz ki a kapcsolati sztring az egyes illesztők esetében.
+Az SQL készlet támogatja [a ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx), [ODBC,](https://msdn.microsoft.com/library/jj730314.aspx) [PHP](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)és [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx). A legújabb verzió és dokumentáció megkereséséhez kattintson az előző illesztőprogramok egyikére. 
+
+Ha automatikusan létre szeretné hozni a kapcsolati karakterláncot az Azure Portalon használt illesztőprogramhoz, kattintson az előző példa **adatbázis-kapcsolati karakterláncok megjelenítése** elemre. A következő néhány példa bemutatja, hogy néz ki a kapcsolati sztring az egyes illesztők esetében.
 
 > [!NOTE]
 > Javasoljuk, hogy a kapcsolat időkorlátjának 300 másodpercet adjon meg, hogy a kapcsolat rövid idejű kimaradások esetén is fennmaradjon.
@@ -60,36 +62,15 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 ```
 
 ## <a name="connection-settings"></a>Kapcsolati beállítások
-Az SQL Data Warehouse szabványosít néhány beállítást a csatlakozás és az objektumlétrehozás során. Ezeket a beállításokat nem lehet felülírni, és a következők lehetnek:
+Az SQL-készlet szabványosít néhány beállítást a kapcsolat és az objektum létrehozása során. Ezeket a beállításokat nem lehet felülírni, és a következők lehetnek:
 
 | Adatbázis-beállítások | Érték |
 |:--- |:--- |
-| [ANSI_NULLS][ANSI_NULLS] |ON |
-| [QUOTED_IDENTIFIERS][QUOTED_IDENTIFIERS] |ON |
-| [DATEFORMAT][DATEFORMAT] |hné |
-| [DATEFIRST][DATEFIRST] |7 |
+| [ANSI_NULLS](https://msdn.microsoft.com/library/ms188048.aspx) |ON |
+| [QUOTED_IDENTIFIERS](https://msdn.microsoft.com/library/ms174393.aspx) |ON |
+| [DATEFORMAT](https://msdn.microsoft.com/library/ms189491.aspx) |hné |
+| [DATEFIRST](https://msdn.microsoft.com/library/ms181598.aspx) |7 |
 
 ## <a name="next-steps"></a>További lépések
-A Visual Studióval végzett csatlakozásról és lekérdezésről lásd: [Lekérdezés a Visual Studióval][Query with Visual Studio]. A hitelesítési lehetőségekkel kapcsolatos további információkért lásd: [Authentication to Azure SQL Data Warehouse][Authentication to Azure SQL Data Warehouse] (Hitelesítés az Azure SQL Warehouse-szal).
-
-<!--Articles-->
-[Query with Visual Studio]:sql-data-warehouse-query-visual-studio.md
-[Authentication to Azure SQL Data Warehouse]:sql-data-warehouse-authentication.md
-
-<!--MSDN references-->
-[ADO.NET]: https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx
-[ODBC]: https://msdn.microsoft.com/library/jj730314.aspx
-[PHP]: https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396
-[JDBC]: https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx
-[ANSI_NULLS]: https://msdn.microsoft.com/library/ms188048.aspx
-[QUOTED_IDENTIFIERS]: https://msdn.microsoft.com/library/ms174393.aspx
-[DATEFORMAT]: https://msdn.microsoft.com/library/ms189491.aspx
-[DATEFIRST]: https://msdn.microsoft.com/library/ms181598.aspx
-
-<!--Other-->
-[Azure portal]: https://portal.azure.com
-
-<!--Image references-->
-[1]: media/sql-data-warehouse-connect-overview/server-connect.PNG
-
+A Visual Studióval végzett csatlakozásról és lekérdezésről lásd: [Lekérdezés a Visual Studióval](sql-data-warehouse-query-visual-studio.md). A hitelesítési beállításokról az [Azure Synapse Analytics hitelesítése](sql-data-warehouse-authentication.md)című témakörben olvashat bővebben.
 

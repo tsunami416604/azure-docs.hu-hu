@@ -11,20 +11,20 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: a382ef2d93f10e69569ecbbed1399f256a7afbb3
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: d10a642f9309e4bb93368564488fc75be15fa27c
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351224"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586078"
 ---
 # <a name="analyze-your-workload-in-azure-synapse-analytics"></a>A számítási feladatok elemzése az Azure Synapse Analytics szolgáltatásban
 
-Az SQL Analytics-számítási feladatok elemzésére szolgáló technikák az Azure Synapse Analytics szolgáltatásban.
+A Synapse SQL-számítási feladatának elemzésére szolgáló technikák az Azure Synapse Analytics szolgáltatásban.
 
 ## <a name="resource-classes"></a>Erőforrásosztályok
 
-Az SQL Analytics erőforrásosztályokat biztosít a rendszererőforrások lekérdezésekhez való hozzárendeléséhez.  Az erőforrásosztályokról további információt az [Erőforrásosztályok & a munkaterhelés-kezelés című](resource-classes-for-workload-management.md)témakörben talál.  A lekérdezések megvárják, hogy a lekérdezéshez rendelt erőforrásosztálynak a jelenleg rendelkezésre állónál több erőforrásra van szüksége.
+A Synapse SQL erőforrásosztályokat biztosít a rendszererőforrások lekérdezésekhez való hozzárendeléséhez.  Az erőforrásosztályokról további információt az [Erőforrásosztályok & a munkaterhelés-kezelés című](resource-classes-for-workload-management.md)témakörben talál.  A lekérdezések megvárják, hogy a lekérdezéshez rendelt erőforrásosztálynak a jelenleg rendelkezésre állónál több erőforrásra van szüksége.
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>Várakozással váró lekérdezésészlelése és egyéb DMV-k
 
@@ -63,7 +63,7 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 ;
 ```
 
-Az SQL Analytics a következő várakozási típusokkal rendelkezik:
+A Szinapszis SQL a következő várakozási típusokkal rendelkezik:
 
 * **LocalQueriesConcurrencyResourceType**: Olyan lekérdezések, amelyek az egyidejűségi tárolóhely keretrendszerén kívül helyezkednek el. A dmv-lekérdezések `SELECT @@VERSION` és a rendszerfüggvények, például a helyi lekérdezések példái.
 * **UserConcurrencyResourceType**: Lekérdezések, amelyek az egyidejűségi tárolóhely keretrendszerén belül ülnek. A végfelhasználói tábláklekérdezései olyan példákat jelentenek, amelyek ezt az erőforrástípust használnák.
@@ -153,4 +153,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>További lépések
 
-Az adatbázis-felhasználók kezeléséről és a biztonságról az [Adatbázis védelme az SQL Analytics szolgáltatásban](sql-data-warehouse-overview-manage-security.md)című témakörben talál további információt. Ha többet szeretne tudni arról, hogy a nagyobb erőforrásosztályok hogyan javíthatják a fürtözött oszlopcentrikus index minőségét, olvassa [el az Indexek létrehozása a szegmensminőség javítása érdekében](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)című témakört.
+Az adatbázis-felhasználók kezeléséről és a biztonságról az [Adatbázis védelme a Synapse SQL rendszerben](sql-data-warehouse-overview-manage-security.md)című témakörben talál további információt. Ha többet szeretne tudni arról, hogy a nagyobb erőforrásosztályok hogyan javíthatják a fürtözött oszlopcentrikus index minőségét, olvassa [el az Indexek létrehozása a szegmensminőség javítása érdekében](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)című témakört.

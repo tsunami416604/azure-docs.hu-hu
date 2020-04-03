@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 145439ebedd2ddf7c081339146010c66f37fe1af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c9933e75a39af43af9e2745d5f7732d40027b34
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136534"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582473"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Jelszó nélküli hitelesítési telepítés megtervezése az Azure Active Directoryban
 
@@ -59,7 +59,7 @@ A Microsoft jelszó nélküli hitelesítési módszerei különböző forgatók�
 | **Webalkalmazás-bejelentkezés**: <br> mobil vagy nem windowsos eszközről | **Igen** | **Nem** | **Nem** |
 | **Számítógép bejelentkezés:** <br> Nem Windows rendszerű számítógép | **Nem** | **Nem** | **Nem** |
 
-A szervezet számára legmegfelelőbb módszer kiválasztásáról a [Jelszó nélküli módszer kiválasztása](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless#deciding-a-passwordless-method)című témakörben talál.
+A szervezet számára legmegfelelőbb módszer kiválasztásáról a [Jelszó nélküli módszer kiválasztása](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless#choose-a-passwordless-method)című témakörben talál.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -97,7 +97,7 @@ Az alábbi táblázat a projekt során megvalósítandó használati eseteket is
 | --- | --- |
 | **Hozzáférés** | A jelszó nélküli bejelentkezés a vállalati hálózaton belüli vagy kívüli vállalati vagy személyes eszközről érhető el. |
 | **Naplózás** | A használati adatok közel valós idejű naplózásra a rendszergazdák rendelkezésére állnak. <br> A használati adatok legalább 29 naponta letöltődnek a vállalati rendszerekbe, vagy SIEM eszközt használnak. |
-| **Kormányzás** | A megfelelő hitelesítési módszerhez és a kapcsolódó csoportokhoz való felhasználói hozzárendelések életciklusa meghatározásra és figyelésre kerül. |
+| **Szabályozás** | A megfelelő hitelesítési módszerhez és a kapcsolódó csoportokhoz való felhasználói hozzárendelések életciklusa meghatározásra és figyelésre kerül. |
 | **Biztonság** | A megfelelő hitelesítési módszerhez való hozzáférést felhasználói és csoportos hozzárendelések szabályozzák. <br> Csak a jogosult felhasználók használhatják jelszó nélküli bejelentkezést. |
 | **Teljesítmény** | Az access-hozzárendelések propagálási ütemterveit dokumentálja és figyeli. <br> A bejelentkezési időket a könnyű használat érdekében mérjük. |
 | **Felhasználói élmény** | A felhasználók tisztában vannak a mobilkompatibilitással. <br> A felhasználók beállíthatják a Hitelesítő alkalmazást jelszó nélküli bejelentkezéshez. |
@@ -132,7 +132,7 @@ Tekintse meg a kísérleti módszerek [gyakorlati tanácsait](https://aka.ms/dep
 
 A Microsoft Authenticator alkalmazás ingyenesen letölthető a Google Playről vagy az Apple App Store áruházból. [További információ a Microsoft Authenticator alkalmazás letöltéséről.](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6) A felhasználók kalkulálják a Microsoft Authenticator alkalmazást. és kövesse az utasításokat a telefonos bejelentkezés engedélyezéséhez. 
 
-Minden iOS vagy Android telefont erős, jelszó nélküli hitelesítő adattá alakít. A felhasználók úgy jelentkeznek be bármely platformra vagy böngészőbe, hogy értesítést kapnak a telefonjukra, amely megfelel a képernyőn megjelenő számnak a telefonjukon lévőszámnak, majd biometrikus vagy PIN-kód dal megerősítik. [A Microsoft Authenticator alkalmazás működéséről című témakörben talál részleteket.](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless#user-using-microsoft-authenticator-for-passwordless-sign-in) 
+Minden iOS vagy Android telefont erős, jelszó nélküli hitelesítő adattá alakít. A felhasználók úgy jelentkeznek be bármely platformra vagy böngészőbe, hogy értesítést kapnak a telefonjukra, amely megfelel a képernyőn megjelenő számnak a telefonjukon lévőszámnak, majd biometrikus vagy PIN-kód dal megerősítik. [A Microsoft Authenticator alkalmazás működéséről című témakörben talál részleteket.](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless#microsoft-authenticator-app)
 
 ![bejelentkezés a Hitelesítő alkalmazással](./media/howto-authentication-passwordless-deployment/passwordless-dp-sign-in.png)
 

@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: c1ad8390bc5db72636c637c2ffb817e34674d0fa
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: b0530ddada68cc9d07753a3b8ab30bff642e26dd
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548851"
+ms.locfileid: "80618662"
 ---
 # <a name="deploy-azure-data-explorer-cluster-into-your-virtual-network"></a>Az Azure Data Explorer-fürt telepítése a virtuális hálózatba
 
@@ -106,7 +106,7 @@ Az Azure Data Explorer-fürt alhálózatba való üzembe helyezése lehetővé t
 | BrazíliaDél | 191.233.25.183 |
 | Közép-Kanada | 40.82.188.208 |
 | Kelet-Kanada | 40.80.255.12 |
-| Közép-India | 40.81.249.251 |
+| Közép-India | 40.81.249.251, 104.211.98.159 |
 | USA középső régiója | 40.67.188.68 |
 | USA középső régiója | 40.89.56.69 |
 | Kelet-Ázsia | 20.189.74.103 |
@@ -125,12 +125,12 @@ Az Azure Data Explorer-fürt alhálózatba való üzembe helyezése lehetővé t
 | Dél-Afrika Nyugati | 102.133.0.97 |
 | USA déli középső régiója | 20.45.3.60 |
 | Délkelet-Ázsia | 40.119.203.252 |
-| Dél-India | 40.81.72.110 |
+| Dél-India | 40.81.72.110, 104.211.224.189 |
 | Az Egyesült Királyság déli régiója | 40.81.154.254 |
 | Az Egyesült Királyság nyugati régiója | 40.81.122.39 |
 | USA nyugati középső régiója | 52.159.55.120 |
 | Nyugat-Európa | 51.145.176.215 |
-| Nyugat-India | 40.81.88.112 |
+| Nyugat-India | 40.81.88.112, 104.211.160.120 |
 | USA nyugati régiója | 13.64.38.225 |
 | USA 2. nyugati régiója | 40.90.219.23 |
 

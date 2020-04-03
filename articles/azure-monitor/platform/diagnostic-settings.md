@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: fb2f9ff5af68575d9f9d29e9a6aca83d603395b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ff9e62ed145b7892d2997193dae8e171ae49c98
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77672412"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585384"
 ---
 # <a name="create-diagnostic-setting-to-collect-platform-logs-and-metrics-in-azure"></a>Diagnosztikai beállítás létrehozása platformnaplók és metrikák gyűjtéséhez az Azure-ban
 Az Azure-beli [platformnaplók,](platform-logs-overview.md) beleértve az Azure-tevékenységnaplót és az erőforrásnaplókat, részletes diagnosztikai és naplózási információkat nyújtanak az Azure-erőforrásokhoz és az Azure platformhoz, amelytől függenek. Ez a cikk részletesen ismerteti a diagnosztikai beállítások létrehozását és konfigurálását a platformnaplók különböző célokra történő küldéséhez.
@@ -37,7 +37,7 @@ A platformnaplók az alábbi táblázatban szereplő célállomásokra küldhet�
 | Cél | Leírás |
 |:---|:---|
 | [Log Analytics-munkaterület](resource-logs-collect-workspace.md) | Naplók gyűjtése egy Log Analytics-munkaterület lehetővé teszi, hogy elemezze őket más figyelési adatokat gyűjtött az Azure Monitor hatékony naplólekérdezések, valamint kihasználni más Azure Monitor funkciók, például a riasztások és vizualizációk. |
-| [Event Hubs](resource-logs-stream-event-hubs.md) | Naplók küldése az Event Hubs lehetővé teszi, hogy adatokat továbbítson a külső rendszerek, például a külső SIEMs és más log elemzési megoldások. |
+| [Eseményközpontok](resource-logs-stream-event-hubs.md) | Naplók küldése az Event Hubs lehetővé teszi, hogy adatokat továbbítson a külső rendszerek, például a külső SIEMs és más log elemzési megoldások. |
 | [Azure tárfiók](resource-logs-collect-storage.md) | Naplók archiválása egy Azure storage-fiók naplózása, statikus elemzés vagy biztonsági mentés. |
 
 ## <a name="create-diagnostic-settings-in-azure-portal"></a>Diagnosztikai beállítások létrehozása az Azure Portalon
@@ -53,7 +53,7 @@ Diagnosztikai beállításokat az Azure Portalon vagy az Azure Monitor menüből
     
         ![Diagnosztikai beállítások](media/diagnostic-settings/menu-monitor.png)
 
-    - A tevékenységnaplóhoz kattintson a **Tevékenységnapló parancsra** az **Azure Monitor** menüben, majd a Diagnosztikai **beállítások parancsra.** Győződjön meg arról, hogy letiltja a tevékenységnapló örökölt konfigurációját. A részletekért olvassa el A [meglévő beállítások letiltása](diagnostic-settings-legacy.md#disable-existing-settings) témakört.
+    - A tevékenységnaplóhoz kattintson a **Tevékenységnapló parancsra** az **Azure Monitor** menüben, majd a Diagnosztikai **beállítások parancsra.** Győződjön meg arról, hogy letiltja a tevékenységnapló örökölt konfigurációját. A részletekért olvassa el A [meglévő beállítások letiltása](/azure/azure-monitor/platform/activity-log-collect#collecting-activity-log) témakört.
 
         ![Diagnosztikai beállítások](media/diagnostic-settings/menu-activity-log.png)
 

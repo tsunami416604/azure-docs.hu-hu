@@ -1,6 +1,6 @@
 ---
 title: Oktatóanyag betöltési adatai az Azure Data Lake Storage-ból
-description: A PolyBase külső tábláival adatokat tölthet be az Azure Data Lake Storage-ból az SQL-elemzéshez.
+description: A PolyBase külső tábláival adatokat tölthet be az Azure Data Lake Storage for Synapse SQL-ből.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,14 +11,15 @@ ms.date: 03/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: b9e28f41b251ea526044bf88dc3e79c0374fe369
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 7d599ce121b4c53662b91e5aab94130b0f3f4458
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350368"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583938"
 ---
-# <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>Adatok betöltése az Azure Data Lake Storage-ból az SQL Analytics számára
+# <a name="load-data-from-azure-data-lake-storage-for-synapse-sql"></a>Adatok betöltése az Azure Data Lake Storage-ból a Synapse SQL-hez
+
 Ez az útmutató ismerteti, hogyan használhatja a PolyBase külső táblák adatok betöltése az Azure Data Lake Storage-ból. Bár a Data Lake Storage-ban tárolt adatokon ad hoc lekérdezéseket futtathat, javasoljuk, hogy a legjobb teljesítmény érdekében importálja az adatokat. 
 
 > [!NOTE]  

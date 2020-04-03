@@ -1,5 +1,5 @@
 ---
-title: Útmutató a Security Center tervezéséhez és működtetéséhez | Microsoft Docs
+title: A Biztonsági központ tervezési és üzemeltetési útmutatója
 description: Ez a dokumentum segít az Azure Security Center bevezetése előtti tervezésben, valamint megismerteti a napi műveletekhez tartozó szempontokkal.
 services: security-center
 author: memildin
@@ -8,14 +8,14 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 46994413ba765e18a826eebfe85a38bb65efc749
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 8244a0f164c8578bf9f79e4b66beb529b6a15f67
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435622"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586016"
 ---
-# <a name="azure-security-center-planning-and-operations-guide"></a>Útmutató az Azure Security Center tervezéséhez és működtetéséhez
+# <a name="planning-and-operations-guide"></a>Tervezési és üzemeltetési útmutató
 Ez az útmutató informatikai szakembereknek, informatikai tervezőknek, információbiztonsági elemzőknek és az Azure Security Center t használó felhőrendszergazdáknak szól.
 
 
@@ -135,7 +135,7 @@ Az Azure Security Center a Log Analytics-ügynök – ez ugyanaz az ügynök, am
 
 ### <a name="agent"></a>Ügynök
 
-Ha a biztonsági házirendben engedélyezve van az automatikus kiépítés, a Log Analytics-ügynök [(Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) vagy [Linux)](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents)minden támogatott Azure-beli virtuális gépre telepítve van, és minden új, létrehozott szolgáltatásra. Ha a virtuális gép vagy a számítógép már telepítve van a Log Analytics-ügynök, az Azure Security Center kihasználja az aktuálisan telepített ügynök. Az ügynök folyamata nem invazív és rendkívül csekély hatással van a virtuális gép teljesítményére.
+Ha a biztonsági házirendben engedélyezve van az automatikus kiépítés, a Log Analytics-ügynök [(Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) vagy [Linux)](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents)minden támogatott Azure-beli virtuális gépre telepítve van, és minden új, létrehozott szolgáltatásra. Ha a virtuális gép vagy a számítógép már telepítve van a Log Analytics-ügynök, az Azure Security Center kihasználja az aktuálisan telepített ügynök. Az ügynök folyamata úgy van kialakítva, hogy nem invazív legyen, és nagyon minimális hatást gyakoroljon a virtuális gép teljesítményére.
 
 A Windows Log Analytics-ügynökének a 443-as TCP-portot kell használnia. További részleteket talál a [Hibaelhárításról szóló cikkben](security-center-troubleshooting-guide.md).
 
@@ -181,7 +181,7 @@ Ha már az összes javaslattal foglalkozott, az összes érintett erőforráshoz
 
 Az **Észlelés** szakasz gyakrabban változik. Itt azok az aktuálisan zajló, illetve a múltban lezajlott és a Security Center és a külső fejlesztőktől származó rendszerek vezérlőelemei által észlelt problémákkal kapcsolatos riasztások láthatók. A Biztonsági riasztások csempe az egyes napokban talált riasztások számát, valamint a különböző súlyossági kategóriák (alacsony, közepes, magas) közötti eloszlásukat jelző sávdiagramokat jeleníti meg. A biztonsági riasztásokkal kapcsolatos további információkért lásd: [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) (Biztonsági riasztások kezelése és reagálás a riasztásokra az Azure Security Centerben).
 
-Építse be a [fenyegetésfelderítési](https://docs.microsoft.com/azure/security-center/security-center-threat-intel) szolgáltatás használatát napi biztonsági rutinjába. Itt azonosíthatja a környezetre leselkedő biztonsági fenyegetéseket, például megállapíthatja, ha egy adott számítógép egy botnet része.
+Építse be a fenyegetésfelderítési szolgáltatás használatát napi biztonsági rutinjába. Itt azonosíthatja a környezetre leselkedő biztonsági fenyegetéseket, például megállapíthatja, ha egy adott számítógép egy botnet része.
 
 ### <a name="monitoring-for-new-or-changed-resources"></a>Új vagy módosult erőforrások keresése
 A legtöbb Azure-környezet dinamikus, az erőforrások rendszeresen jönnek létre, fel-le, újrakonfigurálása és módosítása. A Security Center segítségével könnyen átláthatja az új erőforrások biztonsági állapotát.
@@ -213,7 +213,7 @@ A biztonsági folyamatai részeként érdemes bevezetnie megelőző intézkedés
 ## <a name="incident-response"></a>Incidensmegoldás
 A Security Center észleli az előforduló fenyegetéseket, és riasztást küld róluk. Javasoljuk, hogy mindig kövesse figyelemmel az új biztonsági riasztásokat, és tegye meg a szükséges lépéseket a támadás alaposabb kivizsgálása vagy következményeinek elhárítása érdekében. A Security Center veszélyforrások elleni védelméről a Hogyan észleli az Azure Security Center a [fenyegetéseket, és hogyan reagál azokra.](security-center-alerts-overview.md#detect-threats)
 
-Bár ez a cikk nem nyújt segítséget a saját incidensmegoldási tervének kidolgozásához, a Microsoft Azure Security Response szolgáltatást fogjuk használni a felhő életciklusában az incidensmegoldási szakaszok alapjaként. Ezek a szakaszok a következő ábrán láthatók:
+Bár ez a cikk nem rendelkezik azzal a szándékkal, hogy segítsen létrehozni a saját incidens-válasz csomag, fogjuk használni a Microsoft Azure Security Response a felhőéletciklus, mint az alapja az incidens válaszszakaszait. Ezek a szakaszok a következő ábrán láthatók:
 
 ![Gyanús tevékenység](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-1.png)
 
@@ -235,7 +235,7 @@ A következő példában gyanús RDP-tevékenységre figyelmeztető üzenetet l�
 
 Ezen a lapon a támadás idejére, a forrás eszköznevére és a megcélzott virtuális gépre vonatkozó adatokat, illetve a javasolt következő lépésre vonatkozó információkat talál. Bizonyos körülmények között a támadás forrásadatai üresek lehetnek. Ezzel kapcsolatban további információkat talál a [Missing Source Information in Azure Security Center Alerts](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/25/missing-source-information-in-azure-security-center-alerts/) (Hiányzó forrásadatok az Azure Security Center riasztásaiban) című cikkben.
 
-Erről a lapról is indítható [vizsgálat](https://docs.microsoft.com/azure/security-center/security-center-investigation) a támadás idővonalának, a támadás lefolyásának, a veszélyeztetett rendszereknek és a használt hitelesítő adatoknak a behatóbb ismerete és a teljes támadásfolyam grafikus megjelenítése érdekében.
+Erről a lapról is indítható vizsgálat a támadás idővonalának, a támadás lefolyásának, a veszélyeztetett rendszereknek és a használt hitelesítő adatoknak a behatóbb ismerete és a teljes támadásfolyam grafikus megjelenítése érdekében.
 
 Miután azonosította a feltört rendszert, futtathatja a korábban létrehozott [munkafolyamat-automatizálást.](workflow-automation.md) Ezek olyan eljárások gyűjteményei, amelyek a Biztonsági központból végrehajthatók, miután egy riasztás aktiválta őket.
 

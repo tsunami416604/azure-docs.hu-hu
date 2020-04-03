@@ -2,17 +2,17 @@
 title: 'Rövid útmutató: Csatlakozás egy virtuális géphez egy privát IP-cím használatával: Azure Bastion'
 description: Ebben a cikkben megtudhatja, hogyan hozhat létre egy Azure-bastion gazdagépet egy virtuális gépről, és biztonságosan csatlakozhat egy privát IP-cím használatával.
 services: bastion
-author: cherylmc
+author: charwen
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.author: cherylmc
-ms.openlocfilehash: 0b4f0a1fa4f9cce05aa544bb24e045209a6d24ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: charwen
+ms.openlocfilehash: a420a3253040fff8b767a81f298ede283c1d214b
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79137458"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619253"
 ---
 # <a name="quickstart-connect-to-a-virtual-machine-using-a-private-ip-address-and-azure-bastion"></a>Rövid útmutató: Csatlakozás virtuális géphez egy privát IP-cím és az Azure-bastion használatával
 

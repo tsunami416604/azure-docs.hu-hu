@@ -6,12 +6,12 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: 7e00d03a8b3ec7ef56935ff7714fd932bc343cd3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02d9ce87d45c5f1c9a123aae18f7d710b268f03e
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79277439"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582258"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Az Azure Service Bus kimeneti kötése az Azure Functions-hez
 
@@ -21,7 +21,7 @@ A beállítással és a konfigurációval kapcsolatos részletekről az [átteki
 
 ## <a name="example"></a>Példa
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 A következő példa egy [C# függvényt](functions-dotnet-class-library.md) mutat be, amely egy Service Bus-üzenetüzenetben jelenik meg:
 
@@ -86,7 +86,7 @@ public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<str
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A következő példa egy Service Bus kimeneti kötést mutat be egy *function.json* fájlban, és egy [JavaScript függvényt,](functions-reference-node.md) amely a kötést használja. A függvény időzítő-eseményindítót használ a várólista-üzenet 15 másodpercenként küldéséhez.
 
@@ -227,7 +227,7 @@ Java függvények is írhat egy Service Bus témakörben. A következő példa `
 
 ## <a name="attributes-and-annotations"></a>Attribútumok és jegyzetek
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 A [C# osztálykönyvtárakban](functions-dotnet-class-library.md)használja a [ServiceBusAttribute attribútumot.](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAttribute.cs)
 
@@ -261,7 +261,7 @@ Az `ServiceBusAccount` attribútum segítségével megadhatja az osztály, metó
 
 Az attribútumokat a C# script nem támogatja.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A JavaScript nem támogatja az attribútumokat.
 
@@ -295,7 +295,7 @@ Az alábbi táblázat a *function.json* fájlban és az `ServiceBus` attribútum
 
 Az Azure Functions 1.x-ben a futásidejű létrehozza a várólistát, `manage`ha az nem létezik, és beállította a. `accessRights` A Functions 2.x-es és újabb verziójában a várólistának vagy a témakörnek már léteznie kell; ha olyan várólistát vagy témakört ad meg, amely nem létezik, a függvény sikertelen lesz. 
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 A kimenetkötéshez a következő paramétertípusokat használja:
 
@@ -329,7 +329,7 @@ C# függvényekkel végzett munka során:
 
 * A munkamenet-azonosító eléréséhez kösse meg [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) `sessionId` egy típust, és használja a tulajdonságot.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A várólista vagy `context.bindings.<name from function.json>`a témakör elérése a használatával. A programhoz karakterláncot, bájttömböt vagy JavaScript-objektumot rendelhet (json-ba deszerializálva). `context.binding.<name>`
 
@@ -383,6 +383,7 @@ Ez a szakasz a kötéshez a 2.x-es vagy újabb verziókban elérhető globális 
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------|
+|prefetchCount (előre fetchCount)|0|Lekéri vagy beállítja az üzenetek számát, amelyeket az üzenetfogadó egyidejűleg kérhet.|
 |maxAutoRenewDuration|00:05:00|Az a maximális időtartam, amelyen belül az üzenetzárolás automatikusan megújul.|
 |Automatikus|igaz|Azt jelzi, hogy az eseményindító azonnal megjelöli-e az üzenetet teljesként (automatikus kiegészítés), vagy várja meg, amíg a függvény sikeresen kilép a hívás befejezéséhez.|
 |maxConcurrentKéri|16|Az üzenetszivattyú által kezdeményezett visszahívásegyidejű hívásainak maximális száma. Alapértelmezés szerint a Függvények futásidejű folyamatok több üzenetet dolgoznak fel egyidejűleg. Ha azt szeretné, hogy a futásidejű egyszerre csak egy `maxConcurrentCalls` várólista- vagy témakörüzenet feldolgozására szolgáljon, állítsa 1-re. |

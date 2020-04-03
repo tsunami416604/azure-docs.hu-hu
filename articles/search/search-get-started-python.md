@@ -2,26 +2,26 @@
 title: 'Rövid útmutató: Keresési index létrehozása pythonban REST API-k használatával'
 titleSuffix: Azure Cognitive Search
 description: Bemutatja, hogyan hozhat létre indexet, adatokat tölthet be és futtathat lekérdezéseket python, Jupyter notebookok és az Azure Cognitive Search REST API használatával.
-author: tchristiani
+author: HeidiSteen
 manager: nitinme
-ms.author: terrychr
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
-ms.date: 02/10/2020
-ms.openlocfilehash: 93fb9ec735de1abf89eb217d0f4096fcfc0afe94
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 04/01/2020
+ms.openlocfilehash: fd87dbe125e84c171cc35a2b242879c44bc50fd9
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78227097"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585928"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>Rövid útmutató: Hozzon létre egy Azure Cognitive Search indexet a Pythonban jupyter-jegyzetfüzetek használatával
 
 > [!div class="op_single_selector"]
 > * [Python (TÖBBI)](search-get-started-python.md)
 > * [PowerShell (REST)](search-create-index-rest-api.md)
-> * [C #](search-create-index-dotnet.md)
+> * [C#](search-create-index-dotnet.md)
 > * [Postás (REST)](search-get-started-postman.md)
 > * [Portál](search-create-index-portal.md)
 > 
@@ -197,7 +197,7 @@ Dokumentumok leküldéses, használjon HTTP POST kérelmet az index URL-végpont
         "@search.action": "upload",
         "HotelId": "3",
         "HotelName": "Triple Landscape Hotel",
-        "Description": "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel’s restaurant services.",
+        "Description": "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel's restaurant services.",
         "Description_fr": "L'hôtel est situé dans une place du XIXe siècle, qui a été agrandie et rénovée aux plus hautes normes architecturales pour créer un hôtel moderne, fonctionnel et de première classe dans lequel l'art et les éléments historiques uniques coexistent avec le confort le plus moderne.",
         "Category": "Resort and Spa",
         "Tags": [ "air conditioning", "bar", "continental breakfast" ],
@@ -256,45 +256,59 @@ Ez a lépés bemutatja, hogyan lehet lekérdezni egy indexet a [Search Documents
 
    ```python
    searchstring = '&search=*&$count=true'
-   ```
 
-1. Egy új cellában adja meg a következő példát a "szállodák" és a "wifi" kifejezésekre való kereséshez. Adja meg $select, hogy mely mezők szerepeljenek a keresési eredmények között.
-
-   ```python
-   searchstring = '&search=hotels wifi&$count=true&$select=HotelId,HotelName'
-   ```
-
-1. Egy másik cellában fogalmazz meg egy kérést. Ez a GET-kérelem a hotel-rövidútmutató-index docs gyűjteményét célozza meg, és csatolja az előző lépésben megadott lekérdezést.
-
-   ```python
    url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
    response  = requests.get(url, headers=headers, json=searchstring)
    query = response.json()
    pprint(query)
    ```
 
-1. Futtasson minden lépést. Az eredményeknek a következő kimenethez hasonlóan kell kinézniük. 
+1. Egy új cellában adja meg a következő példát a "szállodák" és a "wifi" kifejezésekre való kereséshez. Adja meg $select, hogy mely mezők szerepeljenek a keresési eredmények között.
+
+   ```python
+   searchstring = '&search=hotels wifi&$count=true&$select=HotelId,HotelName'
+
+   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
+   response  = requests.get(url, headers=headers, json=searchstring)
+   query = response.json()
+   pprint(query)   
+   ```
+
+   Az eredményeknek a következő kimenethez hasonlóan kell kinézniük. 
 
     ![Keresés az indexekben](media/search-get-started-python/search-index.png "Keresés az indexekben")
 
-1. Próbáljon ki néhány más lekérdezési példát, hogy megismerjék a szintaxist. Az alábbi `searchstring` példákra cserélheti, majd újra futtathatja a keresési kérelmet. 
-
-   Szűrő alkalmazása: 
+1. Ezután alkalmazzon egy $filter kifejezést, amely csak azokat a 4-nél nagyobb minősítésű szállodákat választja ki. 
 
    ```python
    searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description,Rating'
+
+   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
+   response  = requests.get(url, headers=headers, json=searchstring)
+   query = response.json()
+   pprint(query)     
    ```
 
-   Vegyük az első két eredmény:
+1. Alapértelmezés szerint a keresőmotor a top 50 dokumentumot adja vissza, de a felső és a kihagyás segítségével adhat hozzá tördelést, és kiválaszthatja, hogy hány dokumentum van az egyes eredményekben. Ez a lekérdezés minden eredményhalmazban két dokumentumot ad vissza.
 
    ```python
-   searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description,Category'
+   searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description'
+
+   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
+   response  = requests.get(url, headers=headers, json=searchstring)
+   query = response.json()
+   pprint(query)
    ```
 
-    Rendelés adott mező szerint:
+1. Ebben az utolsó példában $orderby használatával rendezheti az eredményeket város szerint. Ez a példa a Cím gyűjtemény mezőit tartalmazza.
 
    ```python
-   searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince, Tags'
+   searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince'
+
+   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
+   response  = requests.get(url, headers=headers, json=searchstring)
+   query = response.json()
+   pprint(query)
    ```
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása

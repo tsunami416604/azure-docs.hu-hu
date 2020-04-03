@@ -1,19 +1,19 @@
 ---
-title: GitHub-műveletek használata az Azure App Configuration Sync használatával
-description: A GitHub-műveletek használatával kezdeményezheti az alkalmazáskonfigurációs példány frissítését a GitHub-tárház frissítésekén
+title: A GitHub-tárház szinkronizálása az alkalmazáskonfigurációval
+description: A GitHub-műveletek segítségével automatikusan frissítheti az alkalmazáskonfigurációs példányt a GitHub-tárház frissítésekén.
 author: lisaguthrie
 ms.author: lcozzens
 ms.date: 02/20/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 46d4aa4d4d37e9cac928e8d1a9e5e77ca0f30f18
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 602ccddf97938022df3c5903b573608558fe5d35
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384058"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585481"
 ---
-# <a name="sync-your-app-configuration-instance-using-github-actions"></a>Az App Configuration-példány szinkronizálása GitHub-műveletek segítségével
+# <a name="sync-your-github-repository-to-app-configuration"></a>A GitHub-tárház szinkronizálása az alkalmazáskonfigurációval
 
 Azok a csapatok, amelyek továbbra is szeretnék használni a meglévő forrásvezérlési gyakorlataikat, a GitHub-műveletek segítségével automatikusan szinkronizálhatják a GitHub-tárházat az alkalmazáskonfigurációs tárolójukkal. Ez lehetővé teszi, hogy a szokásos módon módosítsa a konfigurációs fájlokat, miközben az alkalmazáskonfigurációs előnyöket, például: <br>
 &nbsp;&nbsp;&nbsp;&nbsp;• A kódon kívüli központosított konfiguráció <br>

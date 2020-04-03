@@ -1,6 +1,6 @@
 ---
 title: Rendszernézetek
-description: Az SQL Analytics által támogatott rendszernézetek dokumentációjára mutató hivatkozások.
+description: A Synapse SQL-készletben támogatott rendszernézetek dokumentációjára mutató hivatkozások.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,17 +11,18 @@ ms.date: 01/06/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: b3089cfbd0abb4bafe160b07fd75df877d61741b
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 1cc6627599a533238aae742b0358c13e1a7eab8a
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350268"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586344"
 ---
-# <a name="system-views-supported-in-sql-analytics"></a>Az SQL Analytics által támogatott rendszernézetek
-Az SQL Analytics által támogatott T-SQL utasítások dokumentációjára mutató hivatkozások.
+# <a name="system-views-supported-in-synapse-sql-pool"></a>A Synapse SQL-készletáltal támogatott rendszernézetek
 
-## <a name="sql-analytics-catalog-views"></a>SQL Analytics katalógusnézetek
+A Synapse SQL-készletben támogatott T-SQL utasítások dokumentációjára mutató hivatkozások.
+
+## <a name="synapse-sql-pool-catalog-views"></a>Szinapszis SQL-készletkatalógus-nézetek
 * [sys.pdw_column_distribution_properties](https://msdn.microsoft.com/library/mt204022.aspx)
 * [sys.pdw_distributions](https://msdn.microsoft.com/library/mt203892.aspx)
 * [sys.pdw_index_mappings](https://msdn.microsoft.com/library/mt203912.aspx)
@@ -45,6 +46,7 @@ Az SQL Analytics által támogatott T-SQL utasítások dokumentációjára mutat
 * [sys.workload_management_workload_classifiers](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql)
 
 ## <a name="sql-data-warehouse-dynamic-management-views-dmvs"></a>SQL Data Warehouse dinamikus felügyeleti nézetei (DMV-k)
+
 * [sys.dm_pdw_dms_cores](https://msdn.microsoft.com/library/mt203911.aspx)
 * [sys.dm_pdw_dms_external_work](https://msdn.microsoft.com/library/mt204024.aspx)
 * [sys.dm_pdw_dms_workers](https://msdn.microsoft.com/library/mt203878.aspx)
@@ -65,14 +67,16 @@ Az SQL Analytics által támogatott T-SQL utasítások dokumentációjára mutat
 * [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql)
 * [sys.dm_workload_management_workload_groups_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql) (előzetes verzió)
 
-## <a name="sql-server-dmvs-applicable-to-sql-analytics"></a>Az SQL Analytics szolgáltatásra alkalmazható SQL Server DMV-k
-A következő DMV-k az SQL Analytics szolgáltatásra vonatkoznak, de a **fő** adatbázishoz való csatlakozással kell végrehajtani őket.
+## <a name="sql-server-dmvs-applicable-to-synapse-sql-pool"></a>A Szinapszis SQL-készletére alkalmazható SQL Server dmv-k
+
+A következő DMV-k a szinapszid SQL-készletre vonatkoznak, de a **fő** adatbázishoz való csatlakozással kell végrehajtani őket.
 
 * [sys.database_service_objectives](https://msdn.microsoft.com/library/mt712619.aspx)
 * [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx)
 * [sys.fn_helpcollations()](https://msdn.microsoft.com/library/ms187963.aspx)
 
 ## <a name="sql-server-catalog-views"></a>SQL Server katalógusnézetek
+
 * [sys.all_columns](https://msdn.microsoft.com/library/ms177522.aspx)
 * [sys.all_objects](https://msdn.microsoft.com/library/ms178618.aspx)
 * [sys.all_parameters](https://msdn.microsoft.com/library/ms190340.aspx)
@@ -145,17 +149,18 @@ A következő DMV-k az SQL Analytics szolgáltatásra vonatkoznak, de a **fő** 
 * [sys.types](https://msdn.microsoft.com/library/ms188021.aspx)
 * [sys.views](https://msdn.microsoft.com/library/ms190334.aspx)
 
-## <a name="sql-server-dmvs-available-in-sql-analytics"></a>Az SQL Analytics rendszerben elérhető SQL Server DMV-k
-Az SQL Analytics számos SQL Server dinamikus felügyeleti nézetet (DMV) elérhetővé. Ezek a nézetek, amikor lekérdezik az SQL Analytics, a disztribúciókon futó SQL-adatbázisok állapotát jelentik.
+## <a name="sql-server-dmvs-available-in-synapse-sql-pool"></a>A Synapse SQL-készletben elérhető SQL Server DMV-k
 
-Az SQL Analytics és a Parallel Data Warehouse (PDW) ugyanazokat a rendszernézeteket használja. Minden dmv rendelkezik egy pdw_node_id nevű oszlopmal, amely a számítási csomópont azonosítója. 
+A Synapse SQL-készlet számos SQL Server dinamikus felügyeleti nézetet (DMV) elérhetővé. Ezek a nézetek a Synapse SQL-készletben lekérdezve a disztribúciókon futó SQL-adatbázisok állapotát jelentik.
+
+A Synapse SQL-készlet és a párhuzamos adattárház (PDW) ugyanazokat a rendszernézeteket használja. Minden dmv rendelkezik egy pdw_node_id nevű oszlopmal, amely a számítási csomópont azonosítója. 
 
 > [!NOTE]
 > A nézetek használatához szúrja be a "pdw_nodes_" nevet a következő táblázatban látható módon:
 > 
 > 
 
-| DMV-név az SQL Analytics szolgáltatásban | SQL Server Transact-SQL cikk|
+| DMV-név a Synapse SQL-készletben | SQL Server Transact-SQL cikk|
 |:--- |:--- |
 | sys.dm_pdw_nodes_db_column_store_row_group_physical_stats | [sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql)| 
 | sys.dm_pdw_nodes_db_column_store_row_group_operational_stats | [sys.dm_db_column_store_row_group_operational_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-operational-stats-transact-sql)| 
@@ -217,8 +222,9 @@ Az SQL Analytics és a Parallel Data Warehouse (PDW) ugyanazokat a rendszernéze
 | sys.dm_pdw_nodes_tran_session_transactions |[sys.dm_tran_session_transactions](https://msdn.microsoft.com/library/ms188739.aspx) |
 | sys.dm_pdw_nodes_tran_top_version_generators |[sys.dm_tran_top_version_generators](https://msdn.microsoft.com/library/ms188778.aspx) |
 
-## <a name="sql-server-2016-polybase-dmvs-available-in-sql-analytics"></a>Az SQL Analytics rendszerben elérhető SQL Server 2016 PolyBase dmv-k
-A következő DMV-k az SQL Analytics szolgáltatásra vonatkoznak, de a **fő** adatbázishoz való csatlakozással kell végrehajtani őket.
+## <a name="sql-server-2016-polybase-dmvs-available-in-synapse-sql-pool"></a>Az SQL Server 2016 PolyBase dmv-ek a Synapse SQL-készletben érhetők el
+
+A következő DMV-k a szinapszid SQL-készletre vonatkoznak, de a **fő** adatbázishoz való csatlakozással kell végrehajtani őket.
 
 * [sys.dm_exec_compute_node_errors](https://msdn.microsoft.com/library/mt146380.aspx)
 * [sys.dm_exec_compute_node_status](https://msdn.microsoft.com/library/mt146382.aspx)
@@ -232,6 +238,7 @@ A következő DMV-k az SQL Analytics szolgáltatásra vonatkoznak, de a **fő** 
 * [sys.dm_exec_external_work](https://msdn.microsoft.com/library/mt146375.aspx)
 
 ## <a name="sql-server-information_schema-views"></a>SQL Server INFORMATION_SCHEMA nézetek
+
 * [CHECK_CONSTRAINTS](https://msdn.microsoft.com/library/ms189772.aspx)
 * [OSZLOPOK](https://msdn.microsoft.com/library/ms188348.aspx)
 * [Paraméterek](https://msdn.microsoft.com/library/ms173796.aspx)
@@ -243,4 +250,5 @@ A következő DMV-k az SQL Analytics szolgáltatásra vonatkoznak, de a **fő** 
 * [Kilátás nyílik](https://msdn.microsoft.com/library/ms181381.aspx)
 
 ## <a name="next-steps"></a>További lépések
-További információt az [SQL Analytics T-SQL-utasítások és](sql-data-warehouse-reference-tsql-statements.md) [az SQL Analytics T-SQL nyelvi elemei című témakörben talál.](sql-data-warehouse-reference-tsql-language-elements.md)
+
+További információt a [Synapse SQL-készlet T-SQL-utasításai](sql-data-warehouse-reference-tsql-statements.md)és [a Synapse SQL-készlet T-SQL nyelvi elemei című témakörben](sql-data-warehouse-reference-tsql-language-elements.md)talál.

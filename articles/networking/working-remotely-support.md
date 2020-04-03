@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: rambala
-ms.openlocfilehash: 78081329b70edff5ed2c728cb2f7c3e562a44e56
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: bcdd938365e50da1f5ae0e830e86692f1b915123
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346298"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618913"
 ---
 # <a name="working-remotely-using-azure-networking-services"></a>Az Azure hálózati szolgáltatásainak távoli használata
 
@@ -29,8 +29,6 @@ Nem minden hálózat (például a privát WAN és a vállalati alaphálózatok) 
 
 A hálózattervezők segíthetnek enyhíteni a szűk keresztmetszeteket és enyhíteni a hálózati torlódásokat azáltal, hogy szem előtt tartják, hogy a különböző forgalomtípusoknak különböző hálózati kezelési prioritásokra van szükségük, valamint néhány intelligens terhelés-átirányításra/-elosztásra. Például az orvos-beteg interakció valós idejű tele-medecine forgalma nagy jelentőséggel bír, és a késleltetés/vibrezés érzékeny. Mivel a tárolók közötti forgalom replikációja nem késlelteti az érzékeny adatokat. A korábbi forgalmat a legoptimálisabb, jobb minőségű hálózati útvonalon kell irányítani; mivel elfogadható, hogy a későbbi forgalmat az optimálistól elmaradó útvonalon irányítsák.
 
->[!NOTE] 
->A cikk vége felé a különböző Azure hálózati funkciókat és ökoszisztémákat a távolról dolgozó felhasználók támogatása érdekében mutató cikkekre mutató hivatkozások jelennek meg.
 
 
 ## <a name="sharing-our-best-practices---azure-network-is-designed-for-elasticity-and-high-availability"></a>Bevált gyakorlataink megosztása – Az Azure-hálózat rugalmasságra és magas rendelkezésre állásra lett tervezve
@@ -45,17 +43,18 @@ A Microsoft-hálózatot úgy tervezték, hogy megfeleljen a követelményeknek, 
 
 ## <a name="enable-employees-to-work-remotely"></a>Az alkalmazottak távolról történő munkavégzésének engedélyezése
 
-Az Azure VPN-átjáró támogatja mind a point-to-site (P2S) és a helyek közötti (S2S) VPN-kapcsolatok. Az Azure VPN-átjáró használatával skálázhatja az alkalmazott kapcsolatait, hogy biztonságosan hozzáférhessen az Azure üzembe helyezett erőforrásaihoz és a helyszíni erőforrásokhoz. További információt a [Felhasználók távoli munkavégzésének engedélyezése](https://go.microsoft.com/fwlink/?linkid=2123770)című témakörben talál. 
+Az Azure VPN-átjáró támogatja mind a point-to-site (P2S) és a helyek közötti (S2S) VPN-kapcsolatok. Az Azure VPN-átjáró használatával skálázhatja az alkalmazott kapcsolatait, hogy biztonságosan hozzáférhessen az Azure üzembe helyezett erőforrásaihoz és a helyszíni erőforrásokhoz. További információt a [Felhasználók távoli munkavégzésének engedélyezése](../vpn-gateway/work-remotely-support.md)című témakörben talál. 
 
-Ha SSTP protokollt használ, az egyidejű kapcsolatok száma 128-ra korlátozódik. Ahhoz, hogy nagyobb számú kapcsolatot kapjon, javasoljuk, hogy váltson openvpn vagy IKEv2 kapcsolatra. További információ: [Áttérés openVPN protokollra vagy IKEv2 az SSTP protokollból című témakörben.](https://go.microsoft.com/fwlink/?linkid=2124112)
+Ha SSTP protokollt használ, az egyidejű kapcsolatok száma 128-ra korlátozódik. Ahhoz, hogy nagyobb számú kapcsolatot kapjon, javasoljuk, hogy váltson openvpn vagy IKEv2 kapcsolatra. További információ: [Áttérés openVPN protokollra vagy IKEv2 az SSTP protokollból című témakörben.](../vpn-gateway/ikev2-openvpn-from-sstp.md
+)
 
-Az Azure-ban üzembe helyezett erőforrások eléréséhez a távoli fejlesztők a VPN-kapcsolat helyett azure-bastion-megoldást használhatnak a biztonságos shell access (RDP vagy SSH) eléréséhez anélkül, hogy nyilvános IP-címeket kellene elérni ük a virtuális gépeken. További információ: [Munka távolról az Azure Bastion használatával](https://go.microsoft.com/fwlink/?linkid=2123939)című témakörben.
+Az Azure-ban üzembe helyezett erőforrások eléréséhez a távoli fejlesztők a VPN-kapcsolat helyett azure-bastion-megoldást használhatnak a biztonságos shell access (RDP vagy SSH) eléréséhez anélkül, hogy nyilvános IP-címeket kellene elérni ük a virtuális gépeken. További információ: [Munka távolról az Azure Bastion használatával](../bastion/work-remotely-support.md)című témakörben.
 
-Nagyméretű VPN-kapcsolatok összesítéséhez, a különböző helyszíni globális helyszíneken, különböző regionális csomópontokon és küllős virtuális hálózatokon lévő erőforrások közötti kapcsolatok támogatásához, valamint több otthoni szélessávú hálózat kihasználásának optimalizálásához használhatja az Azure Virtual WAN.you can use Azure Virtual WAN. További információ: [Küzd, hogy ellát-hoz dolgozik otthonról kell igényelni? Itt tud segíteni az Azure Virtual WAN.](https://go.microsoft.com/fwlink/?linkid=2123769)
+A nagyméretű VPN-kapcsolatok összesítéséhez, a különböző helyszíni globális helyeken, különböző regionális csomópontokban és küllővirtuális hálózatokban lévő erőforrások közötti kapcsolatok támogatásához, valamint több otthoni szélessávú hálózat kihasználásának optimalizálásához használhatja az Azure Virtual WAN-t. További információ: [Küzd, hogy ellát-hoz dolgozik otthonról kell igényelni? Itt tud segíteni az Azure Virtual WAN.](../virtual-wan/work-remotely-support.md)
 
 A távoli munkaerő támogatásának másik módja az Azure virtuális hálózatában üzemeltetett virtuális asztali infrastruktúra (VDI) üzembe helyezése, amelyet egy Azure-tűzfal biztosít. A Windows virtuális asztal (WVD) például egy asztali és alkalmazásvirtualizációs szolgáltatás, amely az Azure-ban fut. A Windows Virtual Desktop segítségével méretezhető és rugalmas környezetet állíthat be az Azure-előfizetésében anélkül, hogy további átjárókiszolgálókat kellene futtatnia. Csak a virtuális hálózat WVD virtuális gépeiért felelős. További információ: [Azure Firewall remote work support](../firewall/remote-work-support.md). 
 
-Az Azure-nak számos környezetvédelmi rendszerpartnere is van. Partnereink hálózati virtuális készülékek az Azure-ban is segíthet a VPN-kapcsolat méretezése. További információ: [Network Virtual Appliance (NVA) a távoli munkával kapcsolatos szempontok.](https://go.microsoft.com/fwlink/?linkid=2123771)
+Az Azure-nak számos környezetvédelmi rendszerpartnere is van. Partnereink hálózati virtuális készülékek az Azure-ban is segíthet a VPN-kapcsolat méretezése. További információ: [Network Virtual Appliance (NVA) a távoli munkával kapcsolatos szempontok.](../vpn-gateway/nva-work-remotely-support.md)
 
 ## <a name="extend-employees-connection-to-access-globally-distributed-resources"></a>Az alkalmazottak kapcsolatának kiterjesztése a globálisan elosztott erőforrások eléréséhez
 
@@ -71,7 +70,7 @@ A következő Azure-szolgáltatások segítségével az alkalmazottak hozzáfér
 
 ## <a name="scale-customer-connectivity-to-frontend-resources"></a>Ügyfélkapcsolat méretezése előtér-erőforrásokhoz
 
-Azokban az időkben, amikor több ember megy online, sok vállalati weboldalak tapasztalat fokozott ügyfélforgalom. Az Azure Application Gateway segíthet kezelni ezt a megnövekedett előtér-számítási feladatot. További információ: [Application Gateway high traffic support](https://go.microsoft.com/fwlink/?linkid=2123940).
+Azokban az időkben, amikor több ember megy online, sok vállalati weboldalak tapasztalat fokozott ügyfélforgalom. Az Azure Application Gateway segíthet kezelni ezt a megnövekedett előtér-számítási feladatot. További információ: [Application Gateway high traffic support](../application-gateway/high-traffic-support.md).
 
 ## <a name="microsoft-support-for-multi-cloud-traffic"></a>Microsoft-támogatás a felhőalapú forgalomhoz
 
@@ -83,13 +82,13 @@ Az alábbi cikkek ismertetik, hogy a különböző Azure hálózati funkciók ho
 
 | **Cikk** | **Utolsó frissítés** |
 | --- | --- |
-| [A felhasználók távolról történő munkavégzésének engedélyezése](https://go.microsoft.com/fwlink/?linkid=2123770) | 2020. március 23. |
-| [Küzd, hogy ellát a munka otthonról kell? Itt segíthet az Azure Virtual WAN](https://go.microsoft.com/fwlink/?linkid=2123769) | 2020. március 23. |
-| [Application Gateway nagy forgalmú támogatás](https://go.microsoft.com/fwlink/?linkid=2123940) | 2020. március 23. |
-| [A hálózati virtuális berendezés (NVA) szempontjai a távoli munkához](https://go.microsoft.com/fwlink/?linkid=2123771)| 2020. március 23. |
+| [A felhasználók távolról történő munkavégzésének engedélyezése](../vpn-gateway/work-remotely-support.md) | 2020. március 23. |
+| [Küzd, hogy ellát a munka otthonról kell? Itt segíthet az Azure Virtual WAN](../virtual-wan/work-remotely-support.md) | 2020. március 23. |
+| [Nagy mennyiségű forgalom támogatása az Application Gatewayben](../application-gateway/high-traffic-support.md) | 2020. március 23. |
+| [A hálózati virtuális berendezés (NVA) szempontjai a távoli munkához](../vpn-gateway/nva-work-remotely-support.md)| 2020. március 23. |
 | [Áttérés openVPN protokollra vagy IKEv2-re az SSTP-ből](https://go.microsoft.com/fwlink/?linkid=2124112) | 2020. március 23. |
-| [Az Azure Bastion távoli használata](https://go.microsoft.com/fwlink/?linkid=2123939) | 2020. március 23. |
-| [Hibrid kapcsolat létrehozása az Azure ExpressRoute használatával a távoli felhasználók támogatása érdekében](https://go.microsoft.com/fwlink/?linkid=2123768) | 2020. március 23. |
+| [Az Azure Bastion távoli használata](../bastion/work-remotely-support.md) | 2020. március 23. |
+| [Hibrid kapcsolat létrehozása az Azure ExpressRoute használatával a távoli felhasználók támogatása érdekében](../expressroute/work-remotely-support.md) | 2020. március 23. |
 | [Az Azure Firewall távoli munkahelyi támogatása](../firewall/remote-work-support.md)|2020. március 25.|
 
 <!--Link References-->

@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: 0c10ec94f6c089b5e5466f5dce73d32d6ce917b3
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 9650bb3214c22926427717569f718ca0426ed729
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422826"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618748"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Az Azure Cosmos emulátor használata helyi fejlesztéshez és teszteléshez
 
@@ -99,7 +99,7 @@ Account key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZ
 > [!NOTE]
 > Ha az emulátort a /Key kapcsolóval indította el, `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`akkor a létrehozott kulcs helyett használja a. A /Key kapcsolóról a [Parancssori eszköz hivatkozása](#command-line) című témakörben talál további információt.
 
-Az Azure Cosmos DB-hez ugyanúgy, mint az Azure Cosmos emulátor, csak biztonságos kommunikációt támogat Az SSL-en keresztül.
+Az Azure Cosmos DB-hez ugyanúgy, mint az Azure Cosmos emulátor, csak biztonságos kommunikációt támogat a TLS-en keresztül.
 
 ## <a name="running-on-a-local-network"></a>Futtatás helyi hálózaton
 
@@ -215,17 +215,17 @@ Indítsa el az emulátort egy rendszergazdai parancssorból a "/EnableGremlinEnd
   :> g.V()
   ```
 
-## <a name="export-the-ssl-certificate"></a>Az SSL-tanúsítvány exportálása
+## <a name="export-the-tlsssl-certificate"></a>A TLS/SSL tanúsítvány exportálása
 
 A .NET-nyelvek és a futtatókörnyezet a Windows tanúsítványtárolóval csatlakozik biztonságosan az Azure Cosmos DB helyi emulátorhoz. A többi nyelv saját módszert használ a tanúsítványok kezelésére és használatára. A Java saját [tanúsítványtárolót](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html) használ, míg a Python [szoftvercsatorna-burkolókat](https://docs.python.org/2/library/ssl.html).
 
 A Windows tanúsítványtárolóval nem integrálható nyelvekkel és futtatókörnyezetekkel használni kívánt tanúsítvány beszerzéséhez a Windows tanúsítványkezelővel kell exportálnia azt. A certlm.msc futtatásával vagy az [Azure Cosmos emulátortanúsítványok exportálása](./local-emulator-export-ssl-certificates.md)című lépéslépéssel indíthatja el. Amikor fut a tanúsítványkezelő, nyissa meg a személyes tanúsítványokat az alább látható módon, és exportálja a tanúsítványt a „DocumentDBEmulatorCertificate” rövid névvel BASE-64 kódolású X.509 (.cer) fájlként.
 
-![Azure Cosmos DB helyi emulátor SSL-tanúsítványa](./media/local-emulator/database-local-emulator-ssl_certificate.png)
+![Az Azure Cosmos DB helyi emulátorTLS/SSL-tanúsítvány](./media/local-emulator/database-local-emulator-ssl_certificate.png)
 
 Az X.509 tanúsítvány a Java tanúsítványtárolóba importálható a [Tanúsítvány hozzáadása a Java hitelesítésszolgáltató tanúsítványtárolójához](https://docs.microsoft.com/azure/java-add-certificate-ca-store) című cikkben lévő utasításokkal. Miután a tanúsítvány importálása a tanúsítványtárolóba, az SQL és az Azure Cosmos DB API-mongoDB-hoz tartozó ügyfelek csatlakozhatnak az Azure Cosmos emulátorhoz.
 
-Amikor Python és Node.js SDK-kból csatlakozik az emulátorhoz, az SSL-ellenőrzés le van tiltva.
+Amikor python- és Node.js SDK-kemulátorhoz csatlakozik, a TLS-ellenőrzés le van tiltva.
 
 ## <a name="command-line-tool-reference"></a><a id="command-line"></a>Parancssori eszköz referenciája
 A telepítés helyéről a parancssorsegítségével indíthatja el és állíthatja le az emulátort, konfigurálhatja a beállításokat, és egyéb műveleteket hajthat végre.
@@ -260,8 +260,8 @@ A beállítások listájának megtekintéséhez írja be a `Microsoft.Azure.Cosm
 | StopTraces     | A LOGMAN segítségével leállíthatja a hibakeresési nyomkövetési naplók gyűjtését. | Microsoft.Azure.Cosmos.Emulator.exe /StopTraces  | |
 | StartWprTraces  |  Kezdje el gyűjteni a hibakeresési nyomkövetési naplókat a Windows Teljesítményrögzítő eszközzel. | Microsoft.Azure.Cosmos.Emulator.exe /StartWprTraces | |
 | StopWprTraces     | A Hibakeresési nyomkövetési naplók gyűjtésének leállítása a Windows Teljesítményrögzítő eszközzel. | Microsoft.Azure.Cosmos.Emulator.exe /StopWprTraces  | |
-|FailOnSslCertificateNameMismatch | Alapértelmezés szerint az Emulátor újragenerálja az önaláírt SSL-tanúsítványát, ha a tanúsítvány SAN-ja nem tartalmazza az Emulátor állomás tartománynevét, helyi IPv4-címét, "localhost" és "127.0.0.1" azonosítóját. Ezzel a beállítással az emulátor nem fog sikerülni indításkor. Ezután a /GenCert kapcsolóval hozzon létre és telepítsen egy új, önaláírt SSL-tanúsítványt. | Microsoft.Azure.Cosmos.Emulator.exe /FailOnSslCertificateNameMismatch  | |
-| GenCert között | Új, önaláírt SSL-tanúsítvány létrehozása és telepítése. opcionálisan, beleértve a további DNS-nevek vesszővel tagolt listáját az Emulátor hálózaton keresztültörténő eléréséhez. | Microsoft.Azure.Cosmos.Emulator.exe /GenCert=\<dns-nevek\> |\<dns-nevek:\>Választható vesszővel tagolt listája további dns nevek  |
+|FailOnSslCertificateNameMismatch | Alapértelmezés szerint az Emulátor újragenerálja az önaláírt TLS/SSL tanúsítványát, ha a tanúsítvány SAN-ja nem tartalmazza az emulátorállomás tartománynevét, helyi IPv4-címét, "localhost" és "127.0.0.1" tartománynevét. Ezzel a beállítással az emulátor nem fog sikerülni indításkor. Ezután a /GenCert kapcsolóval hozzon létre és telepítsen egy új, önaláírt TLS/SSL tanúsítványt. | Microsoft.Azure.Cosmos.Emulator.exe /FailOnSslCertificateNameMismatch  | |
+| GenCert között | Hozzon létre és telepítsen egy új, önaláírt TLS/SSL tanúsítványt. opcionálisan, beleértve a további DNS-nevek vesszővel tagolt listáját az Emulátor hálózaton keresztültörténő eléréséhez. | Microsoft.Azure.Cosmos.Emulator.exe /GenCert=\<dns-nevek\> |\<dns-nevek:\>Választható vesszővel tagolt listája további dns nevek  |
 | DirectPorts |A közvetlen kapcsolódáshoz használni kívánt portokat határozza meg. Az alapértelmezett értékek: 10251,10252,10253,10254. | Microsoft.Azure.Cosmos.Emulator.exe /DirectPorts:\<directports\> | \<közvetlen portok\>: 4 port vesszővel elválasztott listája |
 | Kulcs |Az emulátor engedélyezési kulcsa. A kulcsnak 64 bites vektor base-64 kódolásának kell lennie. | Microsoft.Azure.Cosmos.Emulator.exe /Kulcs:\<kulcs\> | \<kulcs\>: A kulcsnak 64 bites vektor base-64 kódolásának kell lennie|
 | EnableRateLimiting | Megadja, hogy a kérelmek sebességét korlátozó viselkedés engedélyezve van. |Microsoft.Azure.Cosmos.Emulator.exe /EnableRateLimiting | |
@@ -398,7 +398,7 @@ powershell .\importcert.ps1
 Starting interactive shell
 ```
 
-Most az ügyfél válaszában lévő végponttal és főkulccsal importálja az SSL-tanúsítványt a gazdagépre. Az SSL-tanúsítvány importálásához tegye a következőket egy rendszergazdai parancssorban:
+Most használja a végpontot és a fő kulcsot az ügyfél válaszából, és importálja a TLS/SSL tanúsítványt a gazdagépbe. A TLS/SSL-tanúsítvány importálásához tegye a következőket egy rendszergazdai parancssorból:
 
 A parancssorból:
 
@@ -527,7 +527,7 @@ Hibakeresési nyomok begyűjtéséhez futtassa a következő parancsokat egy ren
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban azt ismertettük, hogyan használhatja a helyi emulátort ingyenes helyi fejlesztési feladatokhoz. Most továbbléphet a következő oktatóanyagra, amelyben megismerheti, hogyan exportálhatja az emulátor SSL-tanúsítványait.
+Ebben az oktatóanyagban azt ismertettük, hogyan használhatja a helyi emulátort ingyenes helyi fejlesztési feladatokhoz. Most folytathatja a következő oktatóanyagot, és megtudhatja, hogyan exportálhatja az emulátor TLS/SSL-tanúsítványokat.
 
 > [!div class="nextstepaction"]
 > [Az Azure Cosmos emulátortanúsítványainak exportálása](local-emulator-export-ssl-certificates.md)

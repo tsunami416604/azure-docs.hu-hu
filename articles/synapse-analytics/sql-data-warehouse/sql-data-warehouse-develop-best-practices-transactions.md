@@ -1,6 +1,6 @@
 ---
 title: Tranzakciók optimalizálása
-description: Ismerje meg, hogyan optimalizálhatja a tranzakciós kód teljesítményét az SQL Analytics szolgáltatásban, miközben minimalizálhatja a hosszú visszaállítások kockázatát.
+description: Ismerje meg, hogyan optimalizálhatja a tranzakciós kód teljesítményét a Synapse SQL-ben, miközben minimalizálja a hosszú visszaállítások kockázatát.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,26 +11,29 @@ ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 700f4717db652d678255aaa9fce6ff8b8ff3b52f
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: d97a388477c895a4a8632d7ab3d06dc4c8982857
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350589"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582129"
 ---
-# <a name="optimizing-transactions-in-sql-analytics"></a>Tranzakciók optimalizálása az SQL Analytics szolgáltatásban
-Ismerje meg, hogyan optimalizálhatja a tranzakciós kód teljesítményét az SQL Analytics szolgáltatásban, miközben minimalizálhatja a hosszú visszaállítások kockázatát.
+# <a name="optimizing-transactions-in-synapse-sql"></a>Tranzakciók optimalizálása a Synapse SQL-ben
+
+Ismerje meg, hogyan optimalizálhatja a tranzakciós kód teljesítményét a Synapse SQL-ben, miközben minimalizálja a hosszú visszaállítások kockázatát.
 
 ## <a name="transactions-and-logging"></a>Tranzakciók és naplózás
-A tranzakciók a relációs adatbázis-motor fontos összetevői. Az SQL Analytics tranzakciókat használ az adatok módosítása során. Ezek a tranzakciók lehetnek explicitek vagy implicitek. Az egyszeri INSERT, UPDATE és DELETE utasítások mind példák az implicit tranzakciókra. Explicit transactions use BEGIN TRAN, COMMIT TRAN, or ROLLBACK TRAN. Explicit tranzakciók általában akkor használatosak, ha több módosítási utasítást kell összekötni egyetlen atomi egységben. 
 
-Az SQL Analytics tranzakciós naplók használatával véglegesíti az adatbázis módosításait. Minden disztribúció saját tranzakciónaplóval rendelkezik. A tranzakciónapló írásaautomatikus. Nincs szükség konfigurációra. Azonban, míg ez a folyamat garantálja az írást, mégis többletköltséget jelent a rendszerben. Ezt a hatást a tranzakciós hatékony kód írásával minimalizálhatja. A tranzakciós szempontból hatékony kód nagyjából két kategóriába sorolható.
+A tranzakciók a relációs adatbázis-motor fontos összetevői. A tranzakciók az adatok módosítása során használatosak. Ezek a tranzakciók lehetnek explicitek vagy implicitek. Az egyszeri INSERT, UPDATE és DELETE utasítások mind példák az implicit tranzakciókra. Explicit transactions use BEGIN TRAN, COMMIT TRAN, or ROLLBACK TRAN. Explicit tranzakciók általában akkor használatosak, ha több módosítási utasítást kell összekötni egyetlen atomi egységben. 
+
+Az adatbázis módosításait tranzakciónaplók követik nyomon. Minden disztribúció saját tranzakciónaplóval rendelkezik. A tranzakciónapló írásaautomatikus. Nincs szükség konfigurációra. Azonban, míg ez a folyamat garantálja az írást, mégis többletköltséget jelent a rendszerben. Ezt a hatást a tranzakciós hatékony kód írásával minimalizálhatja. A tranzakciós szempontból hatékony kód nagyjából két kategóriába sorolható.
 
 * Amikor csak lehetséges, használjon minimális naplózási konstrukciókat
 * Adatok feldolgozása hatókörrel kötegek használatával, hogy elkerülje az egyes hosszú ideig futó tranzakciókat
 * Partícióváltási minta elfogadása egy adott partíció nagy módosításaihoz
 
 ## <a name="minimal-vs-full-logging"></a>Minimális és teljes naplózás
+
 A teljesen naplózott műveletekkel ellentétben, amelyek a tranzakciónaplósegítségével követik nyomon az összes sorváltozást, a minimálisan naplózott műveletek csak a mértékallokációk és a metaadat-változások nyomon követését követik nyomon. Ezért a minimális naplózás magában foglalja csak azokat az információkat naplózza, amelyek a tranzakció hiba utáni visszaállításához vagy egy explicit kéréshez (ROLLBACK TRAN) szükségesek. Mivel a tranzakciónaplóban sokkal kevesebb információ kerül nyomon, a minimálisan naplózott művelet jobban teljesít, mint egy hasonló méretű, teljesen naplózott művelet. Továbbá, mivel kevesebb írási művelet megy a tranzakciós naplóba, sokkal kisebb mennyiségű naplóadat jön létre, és így több I/O-hatékony.
 
 A tranzakcióbiztonsági korlátok csak a teljesen naplózott műveletekre vonatkoznak.
@@ -41,6 +44,7 @@ A tranzakcióbiztonsági korlátok csak a teljesen naplózott műveletekre vonat
 > 
 
 ## <a name="minimally-logged-operations"></a>Minimálisan naplózott műveletek
+
 A következő műveletek minimálisan naplózva:
 
 * TÁBLA LÉTREHOZÁSA KIJELÖLÉSKÉNT ([CTA)](sql-data-warehouse-develop-ctas.md)
@@ -78,14 +82,13 @@ CTAS és INSERT... A SELECT egyaránt tömeges betöltési művelet. Azonban min
 Érdemes megjegyezni, hogy a másodlagos vagy nem fürtözött indexek frissítéséhez írt írások mindig teljesen naplózott műveleteket.
 
 > [!IMPORTANT]
-> Egy SQL Analytics-adatbázis 60 disztribúcióval rendelkezik. Ezért feltételezve, hogy az összes sor egyenletesen oszlik el, és egyetlen partíción landol, a kötegnek 6 144 000 vagy nagyobb sort kell tartalmaznia ahhoz, hogy minimálisan naplózza a fürtözött oszlopcentrikus indexbe való íráskor. Ha a tábla particionált, és a beszúrt sorok span partíció határokat, majd szüksége lesz 6.144.000 sor partíció határainként, feltételezve, hogy még adateloszlás. Minden partíció minden disztribúció egymástól függetlenül meg kell haladnia a 102.400 sor küszöbértéket a lapka minimálisan bejelentkezett a disztribúcióba.
-> 
+> A Synapse SQL-készlet adatbázis 60 disztribúciók. Ezért feltételezve, hogy az összes sor egyenletesen oszlik el, és egyetlen partíción landol, a kötegnek 6 144 000 vagy nagyobb sort kell tartalmaznia ahhoz, hogy minimálisan naplózza a fürtözött oszlopcentrikus indexbe való íráskor. Ha a tábla particionált, és a beszúrt sorok span partíció határokat, majd szüksége lesz 6.144.000 sor partíció határainként, feltételezve, hogy még adateloszlás. Minden partíció minden disztribúció egymástól függetlenül meg kell haladnia a 102.400 sor küszöbértéket a lapka minimálisan bejelentkezett a disztribúcióba.
 > 
 
 Az adatok fürtözött indexszel rendelkező nem üres táblába történő betöltése gyakran teljesen naplózott és minimálisan naplózott sorok keverékét tartalmazhatja. A csoportosított index az oldalak kiegyensúlyozott fája (b-fa). Ha a lap írása már tartalmaz sorokat egy másik tranzakció, majd ezek az írások lesz nek teljesen naplózott. Ha azonban az oldal üres, akkor az erre az oldalra írt írás minimálisan naplózva lesz.
 
 ## <a name="optimizing-deletes"></a>Törlés optimalizálása
-A DELETE egy teljesen naplózott művelet.  Ha nagy mennyiségű adatot kell törölnie egy táblában vagy partíción, `SELECT` gyakran több értelme van a megtartani kívánt adatoknak, amelyek minimálisan naplózott műveletként futtathatók.  Az adatok kijelöléséhez hozzon létre egy új táblát a [CTAS](sql-data-warehouse-develop-ctas.md)segítségével.  A létrehozás után az [ÁTNEVEZÉS](/sql/t-sql/statements/rename-transact-sql) segítségével cserélje ki a régi táblát az újonnan létrehozott táblával.
+A DELETE egy teljesen naplózott művelet.  Ha nagy mennyiségű adatot kell törölnie egy táblában vagy partíción, `SELECT` gyakran több értelme van a megtartani kívánt adatoknak, amelyek minimálisan naplózott műveletként futtathatók.  Az adatok kijelöléséhez hozzon létre egy új táblát a [CTAS](sql-data-warehouse-develop-ctas.md)segítségével.  A létrehozás után az [ÁTNEVEZÉS](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) segítségével cserélje ki a régi táblát az újonnan létrehozott táblával.
 
 ```sql
 -- Delete all sales transactions for Promotions except PromotionKey 2.
@@ -116,7 +119,7 @@ RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 ```
 
 ## <a name="optimizing-updates"></a>Frissítések optimalizálása
-Update egy teljesen naplózott művelet.  Ha egy tábla vagy partíció nagy számú sorát kell frissítenie, gyakran sokkal hatékonyabb lehet egy minimálisan naplózott művelet, például a [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) használata.
+Update egy teljesen naplózott művelet.  Ha egy tábla vagy partíció nagy számú sorát kell frissítenie, gyakran sokkal hatékonyabb lehet egy minimálisan naplózott művelet, például a [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) használata.
 
 Az alábbi példában a teljes tábla frissítése CTAS-sá lett konvertálva, így a minimális naplózás lehetséges.
 
@@ -177,7 +180,7 @@ DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
 > [!NOTE]
-> Nagy táblák újbóli létrehozása előnyös lehet az SQL Analytics számítási feladatok kezelése funkciók használatával. További információ: [Resource classes for workload management](resource-classes-for-workload-management.md).
+> Nagy táblák újbóli létrehozása előnyös lehet a Synapse SQL-készlet számítási feladatok kezelése szolgáltatások használatával. További információ: [Resource classes for workload management](resource-classes-for-workload-management.md).
 > 
 > 
 
@@ -405,7 +408,8 @@ END
 ```
 
 ## <a name="pause-and-scaling-guidance"></a>Szüneteltetési és méretezési útmutató
-Az SQL Analytics lehetővé teszi az SQL-készlet [szüneteltetését, folytatását és méretezését](sql-data-warehouse-manage-compute-overview.md) igény szerint. Az SQL-készlet szüneteltetésekor vagy méretezésekor fontos megérteni, hogy a repülés közbeni tranzakciók azonnal megszűnnek; a nyitott tranzakciók visszagörgetését. Ha a számítási feladatok hosszú ideig futó és hiányos adatmódosítást adtak ki a szüneteltetési vagy méretezési művelet előtt, akkor ezt a munkát vissza kell vonni. Ez a visszavonás hatással lehet az SQL-készlet szüneteltetéséhez vagy méretezéséhez szükséges időre. 
+
+A Szinapszis SQL lehetővé teszi az SQL-készlet [szüneteltetését, folytatását és](sql-data-warehouse-manage-compute-overview.md) méretezését igény szerint. Az SQL-készlet szüneteltetésekor vagy méretezésekor fontos megérteni, hogy a repülés közbeni tranzakciók azonnal megszűnnek; a nyitott tranzakciók visszagörgetését. Ha a számítási feladatok hosszú ideig futó és hiányos adatmódosítást adtak ki a szüneteltetési vagy méretezési művelet előtt, akkor ezt a munkát vissza kell vonni. Ez a visszavonás hatással lehet az SQL-készlet szüneteltetéséhez vagy méretezéséhez szükséges időre. 
 
 > [!IMPORTANT]
 > `UPDATE` Mindkettő, `DELETE` és teljesen naplózott műveletek, és így ezek a visszavonás/ismétlési műveletek jelentősen hosszabb időt vehet igénybe, mint egyenértékű minimálisan naplózott műveletek. 
@@ -414,9 +418,10 @@ Az SQL Analytics lehetővé teszi az SQL-készlet [szüneteltetését, folytatá
 
 A legjobb forgatókönyv az, hogy hagyja, hogy a repülési adatok módosítása tranzakciók befejezése előtt szüneteltetése vagy méretezése SQL-készlet. Ez a forgatókönyv azonban nem mindig praktikus. A hosszú visszaállítás kockázatának csökkentése érdekében vegye figyelembe az alábbi lehetőségek egyikét:
 
-* Hosszú ideig futó műveletek újraírása [CTAS-sel](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+* Hosszú ideig futó műveletek újraírása [CTAS-sel](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * A művelet megszakítása darabokra; a sorok egy részhalmazán működik
 
 ## <a name="next-steps"></a>További lépések
-További információ az elkülönítési szintekről és a tranzakciós korlátokról az [SQL Analytics tranzakciós](sql-data-warehouse-develop-transactions.md) szintjeiről.  Az egyéb gyakorlati tanácsok áttekintését az [SQL Data Warehouse ajánlott eljárások című témakörben találja.](sql-data-warehouse-best-practices.md)
+
+További információ az elkülönítési szintekről és a tranzakciós korlátokról [a Synapse SQL tranzakciói](sql-data-warehouse-develop-transactions.md) című témakörben.  Az egyéb gyakorlati tanácsok áttekintését az [SQL Data Warehouse ajánlott eljárások című témakörben találja.](sql-data-warehouse-best-practices.md)
 

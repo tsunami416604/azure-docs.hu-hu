@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan hozhat létre és kezelhet több csomópontkés
 services: container-service
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: 607419787bc0bab243d6cc2b8cbaa0ec22921e87
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 87f066ed17e5274439082956803d269bdd5853f5
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422313"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616497"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Fürt több csomópontkészletének létrehozása és kezelése az Azure Kubernetes szolgáltatásban (AKS)
 
@@ -41,7 +41,7 @@ A következő korlátozások vonatkoznak a több csomópontkészletet támogató
 Első lépésekhez hozzon létre egy AKS-fürtöt egyetlen csomópontkészlettel. A következő példa az [az csoport létrehozása][az-group-create] parancsot használja egy *myResourceGroup* nevű erőforráscsoport létrehozásához az *eastus* régióban. Ezután létrejön egy *myAKSCluster* nevű AKS-fürt az [az aks create][az-aks-create] paranccsal. A *--kubernetes-verzió* *1.15.7* segítségével mutatja be, hogyan frissítheti a csomópontkészlet egy következő lépésben. A támogatott [Kubernetes-verziót megadhatja.][supported-versions]
 
 > [!NOTE]
-> Az *alapszintű* terheléselosztó termékváltozat **nem támogatott** több csomópontkészlet használata esetén. Alapértelmezés szerint az AKS-fürtök az Azure CLI és az Azure Portal *standard* terheléselosztó Termékváltozatával jönnek létre.
+> Az *alapszintű* terheléselosztó termékváltozat **nem támogatott** több csomópontkészlet használata esetén. Alapértelmezés szerint az AKS-fürtök az Azure CLI és az Azure Portal *standard* terheléselosztó termékváltozatával jönnek létre.
 
 ```azurecli-interactive
 # Create a resource group in East US
@@ -420,7 +420,7 @@ A Kubernetes-ütemező használhat taints és tűrések korlátozhatja, milyen s
 
 A Speciális Kubernetes ütemezett funkciók használatáról az [AKS speciális ütemezőszolgáltatásainak gyakorlati tanácsai című témakörben][taints-tolerations] talál további információt.
 
-Ebben a példában alkalmazzon egy taint a GPU-alapú csomópont a --node-taints paranccsal. Adja meg a GPU-alapú csomópont nevét az `kubectl get nodes` előző parancs kimenetéből. A program key:value, majd ütemezési lehetőségként alkalmazza a taint.The taint is applied as a *key:value,* then a scheduling option. A következő példa az *sku=gpu* párt használja, és meghatározza, hogy a podok egyébként *noschedule* képességgel rendelkeznek:
+Ebben a példában alkalmazzon egy taint a GPU-alapú csomópont a --node-taints paranccsal. Adja meg a GPU-alapú csomópont nevét az `kubectl get nodes` előző parancs kimenetéből. A program key=value pairként, majd ütemezési lehetőségként alkalmazza a taint.The taint is applied as a *key=value* pair and then a scheduling option. A következő példa az *sku=gpu* párt használja, és meghatározza, hogy a podok egyébként *noschedule* képességgel rendelkeznek:
 
 ```console
 az aks nodepool add --node-taints aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
@@ -480,7 +480,7 @@ Events:
   Normal  Started    4m40s  kubelet, aks-gpunodepool-28993262-vmss000000  Started container
 ```
 
-Csak a *gpunodepool*csomópontjain ütemezhetők olyan podok, amelyek ilyen taint-ot alkalmaznak. Minden más pod lenne ütemezve a *nodepool1* csomópont-készlet. Ha további csomópontkészleteket hoz létre, további taints és tűrések használatával korlátozhatja, hogy milyen podok ütemezhetők ezeken a csomópont-erőforrásokon.
+Csak azok a podok ütemezhetők a *gpunodepool*csomópontjaira, amelyek ezt a tolatást alkalmazzák. Minden más pod lenne ütemezve a *nodepool1* csomópont-készlet. Ha további csomópontkészleteket hoz létre, további taints és tűrések használatával korlátozhatja, hogy milyen podok ütemezhetők ezeken a csomópont-erőforrásokon.
 
 ## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>Csomópontkészlet értékének, címkéjének vagy címkéjének megadása
 

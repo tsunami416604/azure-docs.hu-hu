@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 97ea98fc38fc8d06dc1bc65ee057241da6f15488
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73a9680cc570179c47b527a4844488da69193cb3
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78851382"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586101"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>A virtuális gépek indítása/leállítása munkaidőn kívüli megoldás sal kapcsolatos hibák elhárítása
 
@@ -137,7 +137,7 @@ Ezt a hibát a következő okok okozhatják:
 
 Tekintse át az alábbi listát a probléma lehetséges megoldásaiért vagy a megkereshető helyekért:
 
-* A virtuális gép indítási/leállítási forgatókönyvének munkaidőn kívüli megoldás során [történő](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags) használatakor győződjön meg arról, hogy minden egyes elindítani vagy leállítani kívánt virtuális gép rendelkezik a megfelelő címkével. Győződjön meg arról, hogy a `sequencestart` virtuális gépek, hogy el szeretné `sequencestop` indítani a címkét, és a virtuális gépek le szeretné állítani a címkét. Mindkét címke pozitív egész értéket igényel. Az alábbi példához hasonló lekérdezéssel megkeresheti az összes virtuális gépet a címkékkel és azok értékeivel.
+* A virtuális gép indítási/leállítási forgatókönyvének munkaidőn kívüli megoldás során [történő](../automation-solution-vm-management.md) használatakor győződjön meg arról, hogy minden egyes elindítani vagy leállítani kívánt virtuális gép rendelkezik a megfelelő címkével. Győződjön meg arról, hogy a `sequencestart` virtuális gépek, hogy el szeretné `sequencestop` indítani a címkét, és a virtuális gépek le szeretné állítani a címkét. Mindkét címke pozitív egész értéket igényel. Az alábbi példához hasonló lekérdezéssel megkeresheti az összes virtuális gépet a címkékkel és azok értékeivel.
 
   ```powershell-interactive
   Get-AzureRmResource | ? {$_.Tags.Keys -contains "SequenceStart" -or $_.Tags.Keys -contains "SequenceStop"} | ft Name,Tags
@@ -187,7 +187,7 @@ A megoldás megfelelő konfigurálásához tegye a következő lépéseket.
 2. Győződjön meg arról, hogy a virtuális gépek `External_Start_ResourceGroupNames` elindításához vagy leállításához szánt erőforráscsoportok a helyzettől függően a vagy `External_Stop_ResourceGroupNames` változókban vannak.
 3. Tesztelje a módosításokat `SequencedStartStop_Parent` a runbook végrehajtásával a WHATIF paraméter true értékre állítva a módosítások előnézetének megtekintéséhez.
 
-A virtuális gépek [indítása/leállítása című témakörben](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags)részletesebb és további útmutatást talál arról, hogyan használhatja a megoldást a virtuális gépek egymás után történő indítására és leállítására.
+A virtuális gépek [indítása/leállítása című témakörben](../automation-solution-vm-management.md)részletesebb és további útmutatást talál arról, hogyan használhatja a megoldást a virtuális gépek egymás után történő indítására és leállítására.
 
 ## <a name="scenario-startstop-vm-job-fails-with-403-forbidden-status"></a><a name="403"></a>Eset: A virtuális gép indítása/leállítása 403-as tiltott állapottal sikertelen
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 03/26/2020
-ms.openlocfilehash: c8743385f8c3c801b2f06e4a30a8672d1d80acc4
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 18c926d16319eb8a8736a51d5f10e434b94d0ebe
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422517"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582507"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Az Azure Monitor ügyféláltal felügyelt kulcskonfigurációja 
 
@@ -50,11 +50,11 @@ Az elmúlt 14 napban beadott adatok at is a rendszer a hatékony lekérdezési m
 
 Az Azure Monitor a rendszer által hozzárendelt felügyelt identitást használja az Azure Key Vault hoz való hozzáférés biztosításához.A rendszer által hozzárendelt felügyelt identitás csak egyetlen Azure-erőforráshoz társítható. Az Azure Monitor adattárának (ADX-fürt) identitása fürtszinten támogatott, és ez azt diktálja, hogy a CMK-képesség egy dedikált ADX-fürtön legyen. A CMK több munkaterületen való támogatásához egy új Log Analytics-erőforrás (*fürt*) köztes identitáskapcsolatként működik a Key Vault és a Log Analytics-munkaterületek között. Ez a koncepció megfelel a rendszer által hozzárendelt identitásmegkötésnek, és az identitás megmarad az ADX-fürt és a Log *Analytics-fürt* erőforrás között, míg az összes társított munkaterület adatait a Key Vault-kulcs védi. Az alávetítéses ADX-fürttároló a\' *fürterőforráshoz* társított felügyelt identitást használja az Azure Key Vault hitelesítéséhez és eléréséhez az Azure Active Directoryn keresztül.
 
-![CMK – áttekintés](media/customer-managed-keys/cmk-overview.png)
-1.  Az ügyfél kulcstartója.
-2.  Az ügyfél Log *Cluster* Analytics fürterőforrása, amely nek hozzáférése van a Key Vaulthoz – az identitás az adattár (ADX-fürt) szintjén támogatott.
-3.  Az Azure Monitor dedikált ADX-fürt.
-4.  A CMK-titkosításhoz *fürterőforráshoz* társított vevői munkaterületek.
+![CMK – áttekintés](media/customer-managed-keys/cmk-overview-8bit.png)
+1.    Az ügyfél kulcstartója.
+2.    Az ügyfél Log *Cluster* Analytics fürterőforrása, amely nek hozzáférése van a Key Vaulthoz – az identitás az adattár (ADX-fürt) szintjén támogatott.
+3.    Az Azure Monitor dedikált ADX-fürt.
+4.    A CMK-titkosításhoz *fürterőforráshoz* társított vevői munkaterületek.
 
 ## <a name="encryption-keys-management"></a>Titkosítási kulcsok kezelése
 
@@ -210,7 +210,7 @@ Frissítse a Key Vaultot egy új hozzáférési *Cluster* szabályzattal, amely 
 - Kulcsengedélyek: válassza a "Get", "Wrap Key" és "Unwrap Key" (Kulcs kicsomagolása) és a "Kulcs kicsomagolása" engedélyt.
 - Válassza ki a fő: adja meg a rendszernéviazonosító-értéket, amely az előző lépésben a válaszban visszaadott értéket adja meg.
 
-![Key Vault-engedélyek megadása](media/customer-managed-keys/grant-key-vault-permissions.png)
+![Key Vault-engedélyek megadása](media/customer-managed-keys/grant-key-vault-permissions-8bit.png)
 
 A *Get* engedély szükséges annak ellenőrzéséhez, hogy a Key Vault van konfigurálva a kulcs és az Azure Monitor adataihoz való hozzáférés védelme érdekében.
 

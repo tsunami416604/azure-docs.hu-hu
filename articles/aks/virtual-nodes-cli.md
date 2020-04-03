@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan használhatja az Azure CLI-t egy Azure Kubernet
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 31e8b5aceb356ca1415419650a9df3070462bde0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 05e32b6b0017e945044bc7593d4d6dbc543a5b64
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475527"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616466"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Hozzon létre és konfiguráljon egy Azure Kubernetes-szolgáltatás (AKS) fürtöt virtuális csomópontok használatára az Azure CLI használatával
 
@@ -19,7 +19,7 @@ Ez a cikk bemutatja, hogyan hozhat létre és konfigurálhat a virtuális háló
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A virtuális csomópontok lehetővé teszik a hálózati kommunikációt az ACI-ban futó podok és az AKS-fürt között. A kommunikáció biztosításához létrejön egy virtuális hálózati alhálózat, és delegált engedélyek vannak hozzárendelve. A virtuális csomópontok csak *a speciális* hálózatkezeléssel létrehozott AKS-fürtökkel működnek. Alapértelmezés szerint az AKS-fürtök *alapszintű* hálózatkezeléssel jönnek létre. Ez a cikk bemutatja, hogyan hozhat létre virtuális hálózatot és alhálózatokat, majd telepíthet egy speciális hálózati hálózatot használó AKS-fürtöt.
+A virtuális csomópontok lehetővé teszik a hálózati kommunikációt az Azure Container Instances (ACI) és az AKS-fürtben futó podok között. A kommunikáció biztosításához létrejön egy virtuális hálózati alhálózat, és delegált engedélyek vannak hozzárendelve. A virtuális csomópontok csak *a speciális* hálózatkezeléssel létrehozott AKS-fürtökkel működnek. Alapértelmezés szerint az AKS-fürtök *alapszintű* hálózatkezeléssel jönnek létre. Ez a cikk bemutatja, hogyan hozhat létre virtuális hálózatot és alhálózatokat, majd telepíthet egy speciális hálózati hálózatot használó AKS-fürtöt.
 
 Ha korábban még nem használta az ACI-t, regisztrálja a szolgáltatót az előfizetésével. Az ACI-szolgáltató regisztrációjának állapotát az [az provider list][az-provider-list] parancs segítségével ellenőrizheti, ahogy az a következő példában látható:
 
@@ -30,9 +30,9 @@ az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" 
 A *Microsoft.ContainerInstance* szolgáltatónak regisztráltként kell *jelentenie,* ahogy az a következő példakimeneten látható:
 
 ```output
-Namespace                    RegistrationState
----------------------------  -------------------
-Microsoft.ContainerInstance  Registered
+Namespace                    RegistrationState    RegistrationPolicy
+---------------------------  -------------------  --------------------
+Microsoft.ContainerInstance  Registered           RegistrationRequired
 ```
 
 Ha a szolgáltató notregistered néven jelenik *meg,* regisztrálja a szolgáltatót az [az szolgáltató regiszterhasználatával,][az-provider-register] ahogy az a következő példában látható:
@@ -155,7 +155,7 @@ Egy AKS-fürt üzembe helyezése az előző lépésben létrehozott AKS-alháló
 az network vnet subnet show --resource-group myResourceGroup --vnet-name myVnet --name myAKSSubnet --query id -o tsv
 ```
 
-Használja az [az aks create][az-aks-create] parancsot egy AKS-fürt létrehozásához. A következő példa egy *myAKSCluster* nevű fürtöt hoz létre egy csomóponttal. Cserélje `<subnetId>` le az előző lépésben kapott `<appId>` `<password>` azonosítóra, majd a 
+Használja az [az aks create][az-aks-create] parancsot egy AKS-fürt létrehozásához. A következő példa egy *myAKSCluster* nevű fürtöt hoz létre egy csomóponttal. Cserélje `<subnetId>` le az előző lépésben kapott `<appId>` `<password>` azonosítót, majd az előző szakaszban összegyűjtött értékeket.
 
 ```azurecli-interactive
 az aks create \
@@ -302,7 +302,7 @@ Ha a továbbiakban nem kívánja használni a virtuális csomópontokat, letilth
 
 Ha szükséges, [https://shell.azure.com](https://shell.azure.com) nyissa meg az Azure Cloud Shellt a böngészőjében.
 
-Először törölje a virtuális csomóponton futó helloworld podot:
+Először törölje `aci-helloworld` a virtuális csomóponton futó podot:
 
 ```console
 kubectl delete -f virtual-node.yaml

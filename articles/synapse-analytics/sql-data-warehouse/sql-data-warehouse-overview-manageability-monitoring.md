@@ -1,6 +1,6 @@
 ---
 title: Kezelhetőség és felügyelet – áttekintés
-description: Figyelés és kezelhetőség áttekintése az erőforrás-kihasználtság, a napló- és lekérdezési tevékenység, a javaslatok és az adatvédelem (biztonsági mentés és visszaállítás) sql-készlettel.
+description: Figyelés és kezelhetőség áttekintése az erőforrás-kihasználtság, a napló- és lekérdezési tevékenység, a javaslatok és az adatvédelem (biztonsági mentés és visszaállítás) a Synapse SQL-készlet.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 08/27/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 26e74b7b2cabfe7080c624569b5e2189a86770ea
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: e41bf003af7d0926aab04ffed86bf6ec5031c4f7
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350294"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586415"
 ---
-# <a name="manageability-and-monitoring-with-sql-pool"></a>Kezelhetőség és figyelés AZ SQL-készlettel
+# <a name="manageability-and-monitoring-with-synapse-sql-pool"></a>Kezelhetőség és figyelés a Synapse SQL-készlettel
 
-Az SQL Analytics lehetővé teszi az adattárház kiépítését az SQL-készleten keresztül. Az alábbi cikkek segítenek az adattárház kezelésében és figyelésében. Azt is megtudhatja, hogyan optimalizálhatja az adattárház használatát és teljesítményét.
+A Synapse SQL lehetővé teszi egy adattárház kiépítését az SQL-készleten keresztül. Az alábbi cikkek segítenek az adattárház kezelésében és figyelésében. Azt is megtudhatja, hogyan optimalizálhatja az adattárház használatát és teljesítményét.
 
 ## <a name="overview"></a>Áttekintés
 

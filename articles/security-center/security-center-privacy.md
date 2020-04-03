@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: 6edea1d0de53e2dc9f764de26209dc1f3110556e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf715d872fab421de30ebcb146a1981a7d008738
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75978606"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585974"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Felhasználói adatok kezelése az Azure Security Centerben
 Ez a cikk arról tartalmaz, hogyan kezelheti a felhasználói adatokat az Azure Security Centerben. A felhasználói adatok kezelése magában foglalja az adatok elérését, törlését vagy exportálását.
@@ -98,6 +98,3 @@ A Security Center felhasználói leiratkozhatnak a [biztonsági kapcsolattartás
 
 ## <a name="auditing-and-reporting"></a>Könyvvizsgálat és jelentéstétel
 A biztonsági kapcsolattartó, a just-in-time és a riasztási frissítések naplói az [Azure-tevékenységnaplókban](../azure-monitor/platform/platform-logs-overview.md)találhatók.
-
-## <a name="next-steps"></a>További lépések
-A felhasználói adatok kezeléséről az [Azure Security Center-vizsgálat során talált felhasználói adatok kezelése című témakörben](security-center-investigation-user-data.md)talál további információt.

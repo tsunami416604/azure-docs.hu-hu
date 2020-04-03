@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: b7df3c07518a9211bd1abf785e3f4954c41ebffc
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: cf6f53639cff23a9e709b44a1ddf1332df2164b7
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529451"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586047"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-forgatókönyvek Linux rendszerű virtuális gépekhez
 
@@ -407,6 +407,8 @@ Az Azure Disk Encryption nem működik a következő Linux-forgatókönyvek, -fu
 - Megosztott/elosztott fájlrendszerek titkosítása, például (de nem kizárólagosan): DFS, GFS, DRDB és CephFS.
 - Titkosított virtuális gép áthelyezése egy másik előfizetésbe.
 - Kernel összeomlási memóriakép (kdump).
+- Oracle ACFS (ASM cluster fájlrendszer)
+- Gen2 virtuális gépek (lásd: [2. generációs virtuális gépek támogatása az Azure-ban)](generation-2.md#generation-1-vs-generation-2-capabilities)
 - Lsv2 sorozatú virtuális gépek (lásd: [Lsv2 sorozat](../lsv2-series.md))
 
 ## <a name="next-steps"></a>További lépések

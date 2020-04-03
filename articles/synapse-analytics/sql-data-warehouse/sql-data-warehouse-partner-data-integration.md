@@ -11,17 +11,19 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 08df8266cc3ef8ba1b20efcf135e502a9df69e80
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 587b2aa23aa822f44d7763cbfec21eb36055b091
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351488"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583712"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Az Azure Synapse Analytics adatintegrációs partnerei
-Az adatraktári megoldás létrehozásához az Azure Synapse SQL Analytics szolgáltatásával az iparágvezető eszközök széles választékából választhat. Ez a cikk az Azure Synapse-t támogató hivatalos adatintegrációs megoldásokkal emeli ki a Microsoft partnervállalatait.
+
+Az adatraktári megoldás létrehozásához az Azure Synapse Synapse Synapse Synapse Synapse synapse szolgáltatásával, iparágvezető eszközök széles választékából választhat. Ez a cikk az Azure Synapse-t támogató hivatalos adatintegrációs megoldásokkal emeli ki a Microsoft partnervállalatait.
 
 ## <a name="data-integration-partners"></a>Adatintegrációs partnerek
+
 | Partner | Leírás | Weboldal/termék hivatkozás |
 | ------- | ----------- | -------------------- |
 | ![Alooma](./media/sql-data-warehouse-partner-data-integration/alooma_logo.png) |**Alooma**<br> Az Alooma egy kibontó, átalakítási és betöltési (ETL) megoldás, amely lehetővé teszi az adatcsapatok számára, hogy integrálják, gazdagítsák és streameljék a különböző adatsilókból származó adatokat egy Azure Synapse adattárházba, mindezt valós időben. |[Termék oldal](https://www.alooma.com/) |

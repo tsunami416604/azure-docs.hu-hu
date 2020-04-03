@@ -1,6 +1,6 @@
 ---
 title: TÁBLA LÉTREHOZÁSA KIJELÖLÉSKÉNT (CTA)CREATE TABLE AS SELECT (CTAS)
-description: Magyarázat és példák a CREATE TABLE AS SELECT (CTAS) utasításra az SQL Analytics-ben a megoldások fejlesztéséhez.
+description: Magyarázat és példák a CREATE TABLE AS SELECT (CTAS) utasításra a Synapse SQL-ben a megoldások fejlesztéséhez.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,24 +11,24 @@ ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019, azure-synapse
-ms.openlocfilehash: bb9ff52bd7d2e4cfd1a1df4d780a4c369380284f
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: e5dc8835a6d5f235cf269edd4e9f069c904e1b7e
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350604"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582143"
 ---
-# <a name="create-table-as-select-ctas-in-sql-analytics"></a>TÁBLA AS SELECT (CTAS) LÉTREHOZÁSA AZ SQL Analytics szolgáltatásban
+# <a name="create-table-as-select-ctas"></a>TÁBLA LÉTREHOZÁSA KIJELÖLÉSKÉNT (CTA)CREATE TABLE AS SELECT (CTAS)
 
-Ez a cikk ismerteti a CREATE TABLE AS SELECT (CTAS) T-SQL utasítást az SQL Analytics-ben a megoldások fejlesztéséhez. A cikk kódpéldákat is tartalmaz.
+Ez a cikk ismerteti a CREATE TABLE AS SELECT (CTAS) T-SQL utasítást a Synapse SQL-ben a megoldások fejlesztéséhez. A cikk kódpéldákat is tartalmaz.
 
 ## <a name="create-table-as-select"></a>CREATE TABLE AS SELECT
 
-A [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) (CTAS) utasítás az egyik legfontosabb elérhető T-SQL szolgáltatás. A CTAS egy párhuzamos művelet, amely egy SELECT utasítás kimenetén alapuló új táblát hoz létre. A CTAS a legegyszerűbb és leggyorsabb módja annak, hogy egyetlen paranccsal hozzon létre és szúrjon be adatokat egy táblázatba.
+A [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (CTAS) utasítás az egyik legfontosabb elérhető T-SQL szolgáltatás. A CTAS egy párhuzamos művelet, amely egy SELECT utasítás kimenetén alapuló új táblát hoz létre. A CTAS a legegyszerűbb és leggyorsabb módja annak, hogy egyetlen paranccsal hozzon létre és szúrjon be adatokat egy táblázatba.
 
 ## <a name="selectinto-vs-ctas"></a>Válassza ki... INTO és CTAS
 
-CTAS is a more customizable version of the [SELECT... INTO](/sql/t-sql/queries/select-into-clause-transact-sql) utasítás.
+CTAS is a more customizable version of the [SELECT... INTO](/sql/t-sql/queries/select-into-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) utasítás.
 
 Az alábbi példa egy egyszerű SELECT... BE:
 
@@ -123,7 +123,7 @@ DROP TABLE FactInternetSales_old;
 
 ## <a name="use-ctas-to-work-around-unsupported-features"></a>A CTAS használata a nem támogatott szolgáltatások megkerülése
 
-A CTAS segítségével az alább felsorolt nem támogatott szolgáltatások közül több is megkerülhető. Ez a módszer gyakran hasznosnak bizonyulhat, mert nem csak a kód lesz megfelelő, de gyakran gyorsabban fut az SQL Analytics. Ez a teljesítmény a teljesen párhuzamos kialakítás eredménye. A forgatókönyvek a következők:
+A CTAS segítségével az alább felsorolt nem támogatott szolgáltatások közül több is megkerülhető. Ez a módszer gyakran hasznosnak bizonyulhat, mert nem csak a kód megfelelő lesz, de gyakran gyorsabban fut a Synapse SQL.This method can often prove helpful, because not only will be compliant, but it will often run faster on Synapse SQL. Ez a teljesítmény a teljesen párhuzamos kialakítás eredménye. A forgatókönyvek a következők:
 
 * ANSI CSATLAKOZIK a UPDATEs
 * ANSI JOINs a deletes
@@ -174,7 +174,7 @@ ON    [acs].[EnglishProductCategoryName]    = [fis].[EnglishProductCategoryName]
 AND    [acs].[CalendarYear]                = [fis].[CalendarYear];
 ```
 
-Az SQL Analytics nem támogatja az ANSI-illesztéseket egy `FROM` `UPDATE` utasítás záradékában, így az előző példát nem használhatja módosítás nélkül.
+A Synapse SQL nem támogatja az ANSI-illesztéseket egy `FROM` `UPDATE` utasítás záradékában, így az előző példát nem használhatja módosítás nélkül.
 
 Az előző példa lecseréléséhez ctas és implicit illesztés kombinációjával helyettesítheti:
 
@@ -208,7 +208,7 @@ DROP TABLE CTAS_acs;
 
 ## <a name="ansi-join-replacement-for-delete-statements"></a>ANSI csatlakozás a törlési utasítások helyettesítésére
 
-Néha az adatok törlésének legjobb módszere a CTAS használata, különösen az ANSI illesztési szintaxist használó utasítások esetében. `DELETE` Ennek az az oka, hogy az SQL `FROM` Analytics nem `DELETE` támogatja az ANSI-illesztéseket egy utasítás záradékában. Az adatok törlése helyett jelölje ki a megtartani kívánt adatokat.
+Néha az adatok törlésének legjobb módszere a CTAS használata, különösen az ANSI illesztési szintaxist használó utasítások esetében. `DELETE` Ennek az az oka, hogy a Synapse `FROM` SQL nem `DELETE` támogatja az ANSI-illesztéseket egy utasítás záradékában. Az adatok törlése helyett jelölje ki a megtartani kívánt adatokat.
 
 Az alábbi példa egy `DELETE` konvertált utasítást mutat be:
 
@@ -412,7 +412,7 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 
 Láthatja, hogy a típuskonzisztencia és a nullelfogadhatósági tulajdonságok karbantartása a CTAS-on a mérnöki szempontból ajánlott eljárás. Segít megőrizni a számítások integritását, és biztosítja, hogy a partícióváltás lehetséges legyen.
 
-A CTAS az SQL Analytics egyik legfontosabb utasítása. Győződjön meg róla, hogy alaposan megértsék. Lásd a [CTAS dokumentációját](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse).
+A CTAS a Synapse SQL egyik legfontosabb utasítása. Győződjön meg róla, hogy alaposan megértsék. Lásd a [CTAS dokumentációját](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="next-steps"></a>További lépések
 

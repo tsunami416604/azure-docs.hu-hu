@@ -2,24 +2,23 @@
 title: 'Azure ExpressRoute-sablon: ExpressRoute-kapcsolat létrehozása'
 description: ExpressRoute-kapcsolat létrehozása, kiépítése, törlése és megszüntetése.
 services: expressroute
-author: cherylmc
+author: charwen
 ms.service: expressroute
 ms.topic: article
 ms.date: 11/13/2019
-ms.author: cherylmc
-ms.reviewer: ganesr
-ms.openlocfilehash: 78da84a462566cca1a2800174849159ace8dd6dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: charwen
+ms.openlocfilehash: ac2fb2f884feb0fbe6fbb1731ebe7c8bdad5114b
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75981140"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616507"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>ExpressRoute-kapcsolat létrehozása az Azure Resource Manager-sablon használatával
 
 > [!div class="op_single_selector"]
 > * [Azure-portál](expressroute-howto-circuit-portal-resource-manager.md)
-> * [Powershell](expressroute-howto-circuit-arm.md)
+> * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
 > * [Azure Resource Manager-sablon](expressroute-howto-circuit-resource-manager-template.md)
 > * [Videó – Azure-portál](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
@@ -64,7 +63,7 @@ ExpressRoute-kapcsolat létrehozása sablon telepítésével:
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-   * **A Termékváltozat-szint** határozza meg, hogy az ExpressRoute-áramkör helyi, standard vagy prémium szintű.SKU tier determines whether an ExpressRoute circuit is [Local,](expressroute-faqs.md#expressroute-local)Standard or [Premium.](expressroute-faqs.md#expressroute-premium) Megadhatja *a helyi*, *standard* vagy *prémium*értéket.
+   * **A Termékváltozat-szint** határozza meg, hogy az ExpressRoute-kör helyi, standard vagy prémium szintű.SKU tier determines whether an ExpressRoute circuit is [Local,](expressroute-faqs.md#expressroute-local)Standard vagy [Premium.](expressroute-faqs.md#expressroute-premium) Megadhatja *a Helyi*, *Standard vagy *Prémium*értéket.
    * **Termékváltozat család** határozza meg a számlázási típus. Megadhatja *metereddata* egy forgalmi díjas adatcsomag és *Unlimiteddata* korlátlan adatcsomag. A számlázási típust *Metereddata-ról* *Unlimiteddata-ra módosíthatja,* de a típust nem módosíthatja *Korlátlan adatról* *Metereddata-ra.* A *helyi* áramkör csak *Korlátlan adat.*
    * **A társviszony-létesítési hely** az a fizikai hely, ahol a Microsofttal társviszony-létesít.
 

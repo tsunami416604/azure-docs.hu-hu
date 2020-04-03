@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: 1db7009096635fc1279ce8a8358e0d8131209722
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 76ef9f92b6b6633982242ccafab1950e0ef5f410
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80372590"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582805"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Az Azure Media Services v3-as kiadási megjegyzések
 
@@ -177,7 +177,7 @@ További információ: [Felhők és régiók, ahol a Media Services v3 létezik.
 
 Hozzáadott frissítések, amelyek tartalmazzák a Media Services teljesítményének javításait.
 
-* Frissült a feldolgozásra támogatott maximális fájlméret. Lásd: [Kvóták és korlátozások](limits-quotas-constraints.md).
+* Frissült a feldolgozásra támogatott maximális fájlméret. Lásd: [Kvóták és korlátok](limits-quotas-constraints.md).
 * [A kódolás felgyorsítja a fejlesztéseket.](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types)
 
 ## <a name="april-2019"></a>2019. április
@@ -321,7 +321,7 @@ Az Event Grid következő támogatási fejlesztései láthatók:
 
 CMAF és "cbcs" titkosítási támogatás a CMAF-ot támogató Apple HLS (iOS 11+) és MPEG-DASH lejátszókhoz.
 
-### <a name="video-indexer"></a>Videóindexelő
+### <a name="video-indexer"></a>Video Indexer
 
 Video Indexer GA kiadás jelentették be augusztusban. A jelenleg támogatott szolgáltatásokról a [Mi a VideoIndexer](../../cognitive-services/video-indexer/video-indexer-overview.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json)című témakörben talál új információt. 
 

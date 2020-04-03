@@ -11,21 +11,22 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: a5bb048a2368f60a83e70dcd6d1ce663ce70a885
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 2113e5ac3563a22c5f2c6b755230b05fb9a2cb35
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350922"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583874"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Teljesítmény-finomhangolás rendezett fürtözött oszlopcentrikus index használatával  
 
-Amikor a felhasználók lekérdeznek egy oszlopcentrikus táblát az SQL Analytics szolgáltatásban, az optimalizáló ellenőrzi az egyes szegmensekben tárolt minimális és maximális értékeket.  A lekérdezési predikátum határain kívül lévő szegmenseket a rendszer nem olvassa be lemezről a memóriára.  A lekérdezés ekképpen gyorsabb teljesítményt érhet el, ha az olvasmányok száma és teljes mérete kicsi.   
+Amikor a felhasználók lekérdeznek egy oszlopcentrikus táblát a Synapse SQL-készletben, az optimalizáló ellenőrzi az egyes szegmensekben tárolt minimális és maximális értékeket.  A lekérdezési predikátum határain kívül lévő szegmenseket a rendszer nem olvassa be lemezről a memóriára.  A lekérdezés ekképpen gyorsabb teljesítményt érhet el, ha az olvasmányok száma és teljes mérete kicsi.   
 
-## <a name="ordered-vs-non-ordered-clustered-columnstore-index"></a>Rendezett és nem rendezett fürtözött oszlopcentrikus index 
-Alapértelmezés szerint minden indexbeállítás nélkül létrehozott SQL Analytics-táblához egy belső összetevő (indexszerkesztő) nem rendezett fürtözött oszlopcentrikus indexet (CCI) hoz létre rajta.  Az egyes oszlopokban lévő adatok külön CCI sorcsoportszegmensbe vannak tömörítve.  Az egyes szegmensek értéktartományában metaadatok találhatók, így a lekérdezési predikátum határain kívül lévő szegmensek nem kerülnek olvasásra a lemezről a lekérdezés végrehajtása során.  A CCI a legmagasabb szintű adattömörítést kínálja, és csökkenti a szegmensek méretét az olvasáshoz, így a lekérdezések gyorsabban futnak. Mivel azonban az indexszerkesztő nem rendezi az adatokat, mielőtt szegmensekbe tömörítené őket, egymást átfedő értéktartományokkal rendelkező szegmensek fordulhatnak elő, így a lekérdezések több szegmenst olvasnak a lemezről, és hosszabb időt vesz igénybe a befejezésük.  
+## <a name="ordered-vs-non-ordered-clustered-columnstore-index"></a>Rendezett és nem rendezett fürtözött oszlopcentrikus index
 
-Rendezett CCI létrehozásakor az SQL Analytics motor a rendelési kulcs(ok) szerint rendezi a memóriában lévő meglévő adatokat, mielőtt az indexszerkesztő indexszegmensekbe tömöríti azokat.  Rendezett adatok esetén a szegmensátfedések csökkentése csökken, így a lekérdezések hatékonyabb szegmenseltávolítással rendelkeznek, és így gyorsabb a teljesítmény, mivel a lemezről olvasandó szegmensek száma kisebb.  Ha az összes adat egyszerre rendezhető a memóriában, akkor elkerülhető a szegmensátfedés.  Tekintettel az SQL Analytics-táblákban lévő adatok nagy méretére, ez a forgatókönyv nem gyakran fordul elő.  
+Alapértelmezés szerint minden indexbeállítás nélkül létrehozott tábla esetében egy belső összetevő (indexszerkesztő) nem rendezett fürtözött oszlopcentrikus indexet (CCI) hoz létre rajta.  Az egyes oszlopokban lévő adatok külön CCI sorcsoportszegmensbe vannak tömörítve.  Az egyes szegmensek értéktartományában metaadatok találhatók, így a lekérdezési predikátum határain kívül lévő szegmensek nem kerülnek olvasásra a lemezről a lekérdezés végrehajtása során.  A CCI a legmagasabb szintű adattömörítést kínálja, és csökkenti a szegmensek méretét az olvasáshoz, így a lekérdezések gyorsabban futnak. Mivel azonban az indexszerkesztő nem rendezi az adatokat, mielőtt szegmensekbe tömörítené őket, egymást átfedő értéktartományokkal rendelkező szegmensek fordulhatnak elő, így a lekérdezések több szegmenst olvasnak a lemezről, és hosszabb időt vesz igénybe a befejezésük.  
+
+Rendezett CCI létrehozásakor a Synapse SQL motor a rendelési kulcs(ok) szerint rendezi a memóriában lévő meglévő adatokat, mielőtt az indexszerkesztő indexszegmensekbe tömöríti azokat.  Rendezett adatok esetén a szegmensátfedések csökkentése csökken, így a lekérdezések hatékonyabb szegmenseltávolítással rendelkeznek, és így gyorsabb a teljesítmény, mivel a lemezről olvasandó szegmensek száma kisebb.  Ha az összes adat egyszerre rendezhető a memóriában, akkor elkerülhető a szegmensátfedés.  Az adatraktárak nagy táblái miatt ez a forgatókönyv nem gyakran fordul elő.  
 
 Ha ellenőrizni szeretné egy oszlop szegmenstartományait, futtassa ezt a parancsot a tábla nevével és oszlopnevével:
 
@@ -49,7 +50,7 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 ```
 
 > [!NOTE] 
-> Egy rendezett CCI-táblában az ugyanazon köteg DML-ből vagy adatbetöltési műveletekből származó új adatok az adott kötegen belül vannak rendezve, nincs globális rendezés a táblázatösszes adata között.  A felhasználók a rendezett CCI-t a táblázatban szereplő összes adat rendezéséhez építhetik át.  Az SQL Analytics az oszlopcentrikus index REBUILD egy offline művelet.  Particionált tábla esetén a REBUILD egyszerre egy partícióra történik.  Az újraépítendő partícióadatai "offline" állapotúak, és nem érhetők el, amíg a REBUILD el nem készül az adott partícióra vonatkozóan. 
+> Egy rendezett CCI-táblában az ugyanazon köteg DML-ből vagy adatbetöltési műveletekből származó új adatok az adott kötegen belül vannak rendezve, nincs globális rendezés a táblázatösszes adata között.  A felhasználók a rendezett CCI-t a táblázatban szereplő összes adat rendezéséhez építhetik át.  A Synapse SQL-ben az oszlopcentrikus index REBUILD egy offline művelet.  Particionált tábla esetén a REBUILD egyszerre egy partícióra történik.  Az újraépítendő partícióadatai "offline" állapotúak, és nem érhetők el, amíg a REBUILD el nem készül az adott partícióra vonatkozóan. 
 
 ## <a name="query-performance"></a>Lekérdezési teljesítmény
 
@@ -115,14 +116,15 @@ CREATE TABLE Table1 WITH (DISTRIBUTION = HASH(c1), CLUSTERED COLUMNSTORE INDEX O
 AS SELECT * FROM ExampleTable
 OPTION (MAXDOP 1);
 ```
-- Az adatokat előre rendezheti a rendezési kulcs(ok) szerint, mielőtt betöltené őket az SQL Analytics-táblákba.
 
+- Az adatokat előre rendezheti a rendezési kulcs(ok) szerint, mielőtt táblákba betölti őket.
 
 Íme egy példa egy rendezett CCI tábla eloszlására, amelynek a fenti javaslatok szerint nulla szegmensátfedése van. A rendezett CCI-tábla egy DWU1000c adatbázisban jön létre ctas-on keresztül egy 20 GB-os halomtáblából maxdop 1 és xlargerc használatával.  A CCI egy BIGINT oszlopban van megrendezve, ismétlődések nélkül.  
 
 ![Segment_No_Overlapping](./media/performance-tuning-ordered-cci/perfect-sorting-example.png)
 
 ## <a name="create-ordered-cci-on-large-tables"></a>Rendezett CCI létrehozása nagy asztalokon
+
 A rendezett kkuk létrehozása offline művelet.  Partíciók nélküli táblák esetén az adatok nem lesznek elérhetők a felhasználók számára, amíg a rendezett CCI létrehozási folyamat be nem fejeződik.   Particionált táblák, mivel a motor létrehozza a rendezett CCI partíció partíció, a felhasználók továbbra is elérhetik az adatokat partíciókat, ahol a rendezett CCI létrehozása nem folyamatban van.   Ezzel a beállítással minimalizálhatja az állásidőt a nagy asztalokon rendezett CCI létrehozása során: 
 
 1.    Hozzon létre partíciókat a cél nagy tábla (Table_A).
@@ -135,6 +137,7 @@ A rendezett kkuk létrehozása offline művelet.  Partíciók nélküli táblák
 ## <a name="examples"></a>Példák
 
 **A. A megrendelt oszlopok és a rendelési sormező ellenőrzése:**
+
 ```sql
 SELECT object_name(c.object_id) table_name, c.name column_name, i.column_store_order_ordinal 
 FROM sys.index_columns i 
@@ -143,6 +146,7 @@ WHERE column_store_order_ordinal <>0
 ```
 
 **B. Oszlopsor módosítása, oszlopok hozzáadása vagy eltávolítása a rendelési listából, vagy a CCI-ről a megrendelt CCI-re:**
+
 ```sql
 CREATE CLUSTERED COLUMNSTORE INDEX InternetSales ON  InternetSales
 ORDER (ProductKey, SalesAmount)
@@ -150,4 +154,5 @@ WITH (DROP_EXISTING = ON)
 ```
 
 ## <a name="next-steps"></a>További lépések
+
 További fejlesztési tippeket a [fejlesztés áttekintése című témakörben talál.](sql-data-warehouse-overview-develop.md)

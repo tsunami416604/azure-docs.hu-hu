@@ -1,6 +1,6 @@
 ---
-title: Sql Analytics-javaslatok
-description: További információ az SQL Analytics-javaslatokról és azok létrehozásának módjáról
+title: Szinapszis SQL-ajánlások
+description: Ismerje meg a Synapse SQL-javaslatokat és azok létrehozásának módját
 services: synapse-analytics
 author: kevinvngo
 manager: craigg-msft
@@ -11,18 +11,18 @@ ms.date: 02/05/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 6d57fdb035e076c75363d23fbf36d39eeb72bb3f
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: c4bbd98cc28b242be5310fab76521a80de8fcb7c
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350691"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584128"
 ---
-# <a name="sql-analytics-recommendations"></a>Sql Analytics-javaslatok
+# <a name="synapse-sql-recommendations"></a>Szinapszis SQL-ajánlások
 
-Ez a cikk ismerteti az Azure Advisoron keresztül kiszolgált SQL Analytics-javaslatokat.  
+Ez a cikk ismerteti a Synapse SQL-javaslatok az Azure Advisoron keresztül kiszolgált.  
 
-Az SQL Analytics javaslatokat nyújt annak biztosítására, hogy az adattárház-számítási feladatok következetesen a teljesítményre legyenek optimalizálva. A javaslatok szorosan integrálva vannak az [Azure Advisorral,](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations) hogy közvetlenül az [Azure Portalon](https://aka.ms/Azureadvisor)keresztül nyújthassák önnek az ajánlott eljárásokat. Az SQL Analytics telemetriai adatokat gyűjt, és javaslatokat tesz az aktív munkaterhelésnapi ütemben. A támogatott javaslati forgatókönyvek az alábbiakban ismertetjük az ajánlott műveletek alkalmazásának módját.
+A Synapse SQL javaslatokat nyújt az adattárház-munkaterhelés teljesítményre való következetes optimalizálásához. A javaslatok szorosan integrálva vannak az [Azure Advisorral,](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations) hogy közvetlenül az [Azure Portalon](https://aka.ms/Azureadvisor)keresztül nyújthassák önnek az ajánlott eljárásokat. A Synapse SQL telemetriai adatokat gyűjt, és javaslatokat tesz az aktív munkaterhelésnapi ütemben. A támogatott javaslati forgatókönyvek az alábbiakban ismertetjük az ajánlott műveletek alkalmazásának módját.
 
 Akkor [ellenőrizze a javaslatokat](https://aka.ms/Azureadvisor) még ma! Jelenleg ez a funkció csak a Gen2 adatraktárakban alkalmazható. 
 

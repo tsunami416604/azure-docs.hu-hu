@@ -1,6 +1,6 @@
 ---
 title: Kapcsolódási hibák elhárítása
-description: Kapcsolódási hibák elhárítása az SQL Analytics szolgáltatásban.
+description: A synapse-i SQL-készlet kapcsolódásának elhárítása.
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 689a2e549c2627c607b6549f164e55a73318f63e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 2b0e144220e36de6157101190adb838ae651d7c4
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350047"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583330"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Kapcsolati problémák hibaelhárítása
 
-Ez a cikk az SQL Analytics-adatbázishoz való csatlakozás gyakori hibaelhárítási technikáit sorolja fel.
+Ez a cikk a szinapszis SQL-készlethez való csatlakozás gyakori hibaelhárítási technikáit sorolja fel.
 - [A szolgáltatás elérhetőségének ellenőrzése](sql-data-warehouse-troubleshoot-connectivity.md#check-service-availability)
 - [Szüneteltetett vagy skálázási művelet keresése](sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
 - [A tűzfalbeállítások ellenőrzése](sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
@@ -32,33 +32,33 @@ Ez a cikk az SQL Analytics-adatbázishoz való csatlakozás gyakori hibaelhárí
 
 ## <a name="check-service-availability"></a>A szolgáltatás elérhetőségének ellenőrzése
 
-Ellenőrizze, hogy a szolgáltatás elérhető-e. Az Azure Portalon nyissa meg a csatlakoztatni kívánt SQL Analytics-adatbázist. A bal toc panelen kattintson **a Problémák diagnosztizálása és megoldása gombra.**
+Ellenőrizze, hogy a szolgáltatás elérhető-e. Az Azure Portalon nyissa meg a csatlakozni kívánt Synapse SQL-készletet. A bal toc panelen kattintson **a Problémák diagnosztizálása és megoldása gombra.**
 
 ![Erőforrás állapotának kiválasztása](./media/sql-data-warehouse-troubleshoot-connectivity/diagnostics-link.png)
 
-Az SQL Analytics állapota itt jelenik meg. Ha a szolgáltatás nem érhető **el,** ellenőrizze a további lépéseket.
+A Synapse SQL-készlet állapota itt jelenik meg. Ha a szolgáltatás nem érhető **el,** ellenőrizze a további lépéseket.
 
 ![Elérhető szolgáltatás](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health.png)
 
-Ha az erőforrás állapota azt mutatja, hogy az SQL Analytics-példány szüneteltetve vagy méretezés, kövesse az útmutatást a példány folytatásához.
+Ha az erőforrás állapota azt mutatja, hogy a szinapszis SQL-készlet példánya szüneteltetve vagy méretezés, kövesse az útmutatást a példány folytatásához.
 
 ![Szolgáltatás szüneteltetve](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) További információ az erőforrás-állapotról itt található.
 
 ## <a name="check-for-paused-or-scaling-operation"></a>Szüneteltetett vagy skálázási művelet keresése
 
-Ellenőrizze a portálon, hogy az SQL Analytics-példány szünetelt-e vagy méretezés.
+Ellenőrizze a portálon, hogy a szinapszis SQL-készletpéldány szünetelt-e vagy méretezés.
 
 ![A szolgáltatás szünetel](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
-Ha azt látja, hogy a szolgáltatás szünetelt vagy méretezés, ellenőrizze, hogy nem a karbantartási ütemezés során. Az SQL Analytics *áttekintésportálján*láthatja a választott karbantartási ütemezést.
+Ha azt látja, hogy a szolgáltatás szünetelt vagy méretezés, ellenőrizze, hogy nem a karbantartási ütemezés során. A synapse SQL-készlet *áttekintése*portálon láthatja a választott karbantartási ütemezést.
 
 ![Áttekintő karbantartási ütemezés](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
 
-Ellenkező esetben kérdezze meg a rendszergazdát, hogy ez a karbantartás nem ütemezett esemény-e. Az SQL Analytics-példány folytatásához kövesse az [itt](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute)ismertetett lépéseket.
+Ellenkező esetben kérdezze meg a rendszergazdát, hogy ez a karbantartás nem ütemezett esemény-e. A Synapse SQL-készletpéldány folytatásához kövesse az [itt](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute)ismertetett lépéseket.
 
 ## <a name="check-your-firewall-settings"></a>A tűzfalbeállítások ellenőrzése
 
-Az SQL Analytics adatbázis a 1433-as porton keresztül kommunikál.Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ebben az esetben nem tud csatlakozni az Azure SQL-adatbáziskiszolgálóhoz, ha az informatikai részleg nem nyitja meg az 1433-as portot. A tűzfalkonfigurációkról itt talál további [információt.](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)
+A Szinapszis SQL-készlet az 1433-as porton keresztül kommunikál.Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ebben az esetben nem tud csatlakozni az Azure SQL-adatbáziskiszolgálóhoz, ha az informatikai részleg nem nyitja meg az 1433-as portot. A tűzfalkonfigurációkról itt talál további [információt.](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>A Vnet/szolgáltatásvégpont beállításainak ellenőrzése
 
@@ -68,7 +68,7 @@ Ha a 40914-es és 40615-ös hibaüzenetet kapja, olvassa el [a hiba leírását 
 
 ### <a name="software"></a>Szoftverek
 
-Ellenőrizze, hogy a legújabb eszközöket használja-e az SQL Analytics-adatbázishoz való csatlakozáshoz:
+Ellenőrizze, hogy a legújabb eszközöket használja-e a Synapse SQL-készlethez való csatlakozáshoz:
 
 * SSMS
 * Azure Data Studio
@@ -81,7 +81,7 @@ Ellenőrizze, hogy a legújabb illesztőprogram-verziókat használja-e.Az illes
 * [ODBC](https://docs.microsoft.com/sql/connect/odbc/download-odbc-driver-for-sql-server)
 * [JDBC](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)
 * [OLE DB](https://docs.microsoft.com/sql/connect/oledb/download-oledb-driver-for-sql-server)
-* [Php](https://docs.microsoft.com/sql/connect/php/download-drivers-php-sql-server)
+* [PHP](https://docs.microsoft.com/sql/connect/php/download-drivers-php-sql-server)
 
 ## <a name="check-your-connection-string"></a>A kapcsolati sztring ellenőrzése
 
@@ -113,7 +113,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="intermittent-connection-issues"></a>Időszakos kapcsolódási problémák
 
-Ellenőrizze, hogy nagy terhelés alatt áll-e a kiszolgáló, sok várólistára helyezett kéréssel. Előfordulhat, hogy további erőforrások esetén fel kell skáláznia az SQL Analytics-példányt.
+Ellenőrizze, hogy nagy terhelés alatt áll-e a kiszolgáló, sok várólistára helyezett kéréssel. Előfordulhat, hogy további erőforrásokért fel kell skáláznia a szinapszis SQL-készletét.
 
 ## <a name="common-error-messages"></a>Gyakori hibaüzenetek
 

@@ -3,7 +3,7 @@
   items:
     - name: Áttekintés
       items:
-        - name: Az Azure Dev Spaces bemutatása
+        - name: Mi az Azure Dev Spaces?
           href: about.md
     - name: Rövid útmutatók
       items:

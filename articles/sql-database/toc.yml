@@ -58,8 +58,6 @@
       href: sql-database-managed-instance-quickstart-guide.md
 - name: Alapelvek
   items:
-    - name: Közös funkciók dokumentációja
-      href: sql-database-paas-index.yml
     - name: Szolgáltatások összehasonlítása
       href: sql-database-features.md
     - name: Útmutató
@@ -280,8 +278,6 @@
                   href: sql-database-xevent-code-ring-buffer.md
     - name: Méretezhetőség
       items:
-        - name: Skálázhatósági dokumentáció
-          href: sql-database-scalability-index.yml
         - name: Vertikális felskálázás/leskálázás
           href: sql-database-scale-resources.md
         - name: Felskálázás olvasása
@@ -310,8 +306,6 @@
           href: sql-database-elastic-transactions-overview.md
     - name: Adatbázis-funkciók
       items:
-        - name: Adatbázis-funkció dokumentációja
-          href: sql-database-features-index.yml
         - name: Többmodelles képességek
           href: sql-database-multi-model-features.md
         - name: Memóriabeli
@@ -685,7 +679,6 @@
         - name: Kódminták
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: Felügyelt SQL-példány
-  href: sql-database-managed-instance-index.yml
   items:
     - name: Áttekintés
       items:

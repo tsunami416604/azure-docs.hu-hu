@@ -1,6 +1,6 @@
 ---
 title: Kapacitáskorlátok – Azure Synapse Analytics (korábban SQL DW)
-description: Az Azure Synapse-ban az SQL Analytics különböző összetevőihez engedélyezett maximális értékek.
+description: Az Azure Synapse-ban a Synapse SQL-készlet különböző összetevőihez engedélyezett maximális értékek.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: a0343dd55149fa3c2c17af1f246595a56e4c6ec2
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: f35a5da15ca1a672046844282626a6cb7b8ecbdf
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350084"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583533"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Az Azure Synapse Analytics (korábban SQL DW) kapacitáskorlátai
 

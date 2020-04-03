@@ -6,22 +6,22 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: sngun
-ms.openlocfilehash: f57b274715eb1c8a4d517f5655c09c366574d412
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f99c4d096bcbe1fbdc42cac80a491d6017266cb2
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75445221"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583587"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>A MongoDB-bővítmény parancsaival kezelheti az Azure Cosmos DB MongoDB-hoz való API-jában tárolt adatokat 
 
 Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Az Azure Cosmos DB MongoDB-hoz való API-jával kommunikálhat a nyílt forráskódú [MongoDB ügyfél-illesztőprogramok](https://docs.mongodb.org/ecosystem/drivers)bármelyikével. Az Azure Cosmos DB MongoDB-hoz való API-ja lehetővé teszi a meglévő ügyfél-illesztőprogramok használatát a [MongoDB vezetékes protokoll](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)betakarásával.
 
-Az Azure Cosmos DB MongoDB API-jának használatával élvezheti a Cosmos DB előnyeit, például a globális disztribúciót, az automatikus horizontális feldolgozást, a magas rendelkezésre állást, a késésgaranciát, az automatikus, az inaktív titkosítást, a biztonsági mentéseket és még sok mást, miközben megőrzi a befektetéseit a MongoDB alkalmazásban.
+Az Azure Cosmos DB MongoDB API-jának használatával élvezheti a Cosmos DB előnyeit, például a globális disztribúciót, az automatikus horizontális horizontális felszolgálást, a magas rendelkezésre állást, a késésgaranciát, az automatikus, az inaktív titkosítást, a biztonsági mentéseket és még sok mást, miközben megőrzi a MongoDB-alkalmazásban lévő befektetéseit.
 
 ## <a name="mongodb-protocol-support"></a>A MongoDB protokoll támogatása
 
-Alapértelmezés szerint az Azure Cosmos DB MongoDB-hoz való API-ja kompatibilis a MongoDB 3.2-es verziójával, további részletekért olvassa el a [támogatott funkciókat és a szintaxist.](mongodb-feature-support.md) A MongoDB 3.4-es verziójában hozzáadott funkciók vagy lekérdezés-operátorok jelenleg előzetes verzióként érhetők el az Azure Cosmos DB MongoDB API-jában. A következő bővítményparancsok támogatják az Azure Cosmos DB-specifikus funkciókat, amikor CRUD-műveleteket hajtanak végre az Azure Cosmos DB MongoDB API-jában tárolt adatokon:
+Alapértelmezés szerint az Azure Cosmos DB MongoDB-hoz való API-ja kompatibilis a MongoDB 3.2-es verziójával, további részletekért olvassa el a [támogatott funkciókat és a szintaxist.](mongodb-feature-support.md) A MongoDB 3.4-es verziójában hozzáadott funkciók vagy lekérdezés-operátorok jelenleg előzetes verzióként érhetők el az Azure Cosmos DB MongoDB API-jában. A következő bővítményparancsok támogatják az Azure Cosmos DB adott funkcióit, amikor CRUD-műveleteket hajtanak végre az Azure Cosmos DB MongoDB-hoz készült API-jában tárolt adatokon:
 
 * [Adatbázis létrehozása](#create-database)
 * [Adatbázis frissítése](#update-database)
@@ -160,12 +160,12 @@ A gyűjteménybővítmény létrehozása parancs létrehoz egy új MongoDB-gyűj
 
 Az alábbi táblázat a parancs paramétereit ismerteti:
 
-|**Mező**|**Típus** |**Leírás** |
-|---------|---------|---------|
-| customAction    | sztring | Az egyéni parancs neve. "CreateCollection" legyen.     |
-| Gyűjtemény      | sztring | A gyűjtemény neve                                   |
-| ajánlatThroughput | int    | Az adatbázisra beállított átviteli átbocsátás. Ez egy választható paraméter. |
-| shardkey        | sztring | Shard Key elérési út egy szilánkos gyűjtemény létrehozásához. Ez egy választható paraméter. |
+| **Mező** | **Típus** | **Szükséges** | **Leírás** |
+|---------|---------|---------|---------|
+| customAction | sztring | Kötelező | Az egyéni parancs neve. A "CreateCollection" (CreateCollection) (CreateCollection) (CreateCollection) (CreateCollection) (Create|
+| Gyűjtemény | sztring | Kötelező | A gyűjtemény neve. Különleges karakterek nem engedélyezettek.|
+| ajánlatThroughput | int | Nem kötelező* | Az adatbázisra beállított kiépített átviteli. Ha ez a paraméter nincs megadva, akkor az alapértelmezett érték a minimum 400 RU/s lesz. * A 10 000 RU/s-on `shardKey` túli átviteli átvitel megadásához a paraméter szükséges.|
+| shardkey | sztring | Nem kötelező* | A szilánkos gyűjtemény shard kulcselérési útja. Erre a paraméterre akkor van szükség, ha több mint `offerThroughput`10 000 RU/s-ot állít be a alkalmazásban.  Ha meg van adva, akkor minden beszúrt dokumentumhoz szükség lesz erre az értékre. |
 
 ### <a name="output"></a>Kimenet
 
@@ -184,7 +184,7 @@ db.runCommand({customAction: "CreateCollection", collection: "testCollection", o
 
 **Szilánkos gyűjtemény létrehozása**
 
-A "testCollection" nevű és 1000 több mint 1000 több mint akódusok kiosztott átviteli közegeinek létrehozásához használja a következő parancsot:
+A "testCollection" nevű szilánkos gyűjtemény és az 1000 több mint egy főtartalék, valamint az "a.b" shardkey tulajdonság létrehozásához használja a következő parancsot:
 
 ```shell
 use test

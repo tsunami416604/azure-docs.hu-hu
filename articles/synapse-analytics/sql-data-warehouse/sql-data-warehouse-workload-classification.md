@@ -11,16 +11,16 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 7661981f07799592f9fdfcab3fb402336d48b4d4
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 67f863826a2e9eb1bffcb316754ad5c40a2f2bb1
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349979"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583138"
 ---
 # <a name="azure-synapse-analytics-workload-classification"></a>Az Azure Synapse Analytics számítási feladatok besorolása
 
-Ez a cikk ismerteti a számítási feladatok besorolási folyamata hozzárendelése a számítási feladat csoport és fontosság a bejövő kérelmek az Azure Synapse AZ SQL Analytics.
+Ez a cikk ismerteti a számítási feladatok besorolási folyamata egy számítási feladat csoport hozzárendelése és fontossága a bejövő kérelmek Synapse SQL-készletek az Azure Synapse.
 
 ## <a name="classification"></a>Osztályozás
 
@@ -36,7 +36,7 @@ Nem minden utasítás van besorolva, mivel nem igényel erőforrásokat, vagy fo
 
 ## <a name="classification-process"></a>Osztályozási folyamat
 
-Az Sql Analytics besorolása az Azure Synapse-ban ma úgy érhető el, hogy a felhasználókat egy olyan szerepkörhöz rendeli hozzá, amelyhez a [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)használatával hozzárendelt egy megfelelő erőforrásosztályt. Ezzel a képességgel az erőforrásosztályba való bejelentkezésen túli kérelmek jellemzése korlátozott. Egy gazdagabb besorolási módszer már elérhető a [CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql) szintaxissal.  Ezzel a szintaxissal az SQL Analytics-felhasználók fontosságot rendelhetnek hozzá, `workload_group` és hogy mennyi rendszererőforrás van hozzárendelve egy kérelemhez a paraméteren keresztül. 
+Besorolás a Synapse SQL-készlet az Azure Synapse érhető el ma azáltal, hogy a felhasználók hozzárendelése egy szerepkör, amely a megfelelő erőforrás-osztály hozzá rendelt [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)használatával. Ezzel a képességgel az erőforrásosztályba való bejelentkezésen túli kérelmek jellemzése korlátozott. Egy gazdagabb besorolási módszer már elérhető a [CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql) szintaxissal.  Ezzel a szintaxissal a Szinapszis SQL-készlet felhasználói fontosságot rendelhetnek hozzá, `workload_group` és hogy mennyi rendszererőforrás van hozzárendelve egy kérelemhez a paraméteren keresztül. 
 
 > [!NOTE]
 > A besorolás értékelése kérésenként történik. Egy munkamenetben több kérelem is eltérő en adható.
@@ -87,7 +87,7 @@ JOIN    sys.database_principals AS m ON rm.member_principal_id = m.principal_id
 WHERE   r.name IN ('mediumrc','largerc','xlargerc','staticrc10','staticrc20','staticrc30','staticrc40','staticrc50','staticrc60','staticrc70','staticrc80');
 
 --for each row returned run
-sp_droprolemember ‘[Resource Class]’, membername
+sp_droprolemember '[Resource Class]', membername
 ```
 
 ## <a name="next-steps"></a>További lépések

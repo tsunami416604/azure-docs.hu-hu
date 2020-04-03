@@ -1,6 +1,6 @@
 ---
 title: Munkaterhelés figyelése – Azure portal
-description: Sql Analytics figyelése az Azure Portalhasználatával
+description: A Synapse SQL figyelése az Azure Portalon
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: ''
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 344e2cd03408b5bd1e966abc8abb72bce6078acc
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 64e61b00ecebec82b465cb13c6df0e323f6c7777
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350328"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586555"
 ---
 # <a name="monitor-workload---azure-portal"></a>Munkaterhelés figyelése – Azure portal
 
-Ez a cikk ismerteti, hogyan használhatja az Azure Portalon a számítási feladatok figyelése. Ez magában foglalja az Azure Monitor naplók beállítását a lekérdezés-végrehajtás és a számítási feladatok tendenciáinak vizsgálatára az [SQL Analytics](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/)naplóelemzési használatával.
+Ez a cikk ismerteti, hogyan használhatja az Azure Portalon a számítási feladatok figyelése. Ez magában foglalja az Azure Monitor Naplók beállítását a lekérdezések végrehajtásának és a számítási feladatok tendenciáinak vizsgálatára a [Synapse SQL](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/)naplóelemzési használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

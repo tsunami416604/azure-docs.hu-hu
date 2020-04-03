@@ -11,16 +11,16 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 85fa6a989ae1a6214392914ffd46cd12af27a8d2
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 4aa0e7da1e77334a8b9048dab4a461133f220bd1
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350483"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582451"
 ---
 # <a name="configure-workload-importance-in-azure-synapse-analytics"></a>Számítási feladatok fontosságának konfigurálása az Azure Synapse Analytics szolgáltatásban
 
-Az Azure Synapse SQL Analytics fontosságának beállítása lehetővé teszi a lekérdezések ütemezésének befolyásolását. A nagyobb fontosságú lekérdezések ütemezése alacsonyabb fontosságú lekérdezések előtt lesz ütemezve. A lekérdezések fontosságának hozzárendeléséhez létre kell hoznia egy munkaterhelés-osztályozót.
+Az Azure Synapse synapse-i synapse-i synapse-fontosságbeállításával befolyásolhatja a lekérdezések ütemezését. A nagyobb fontosságú lekérdezések ütemezése alacsonyabb fontosságú lekérdezések előtt lesz ütemezve. A lekérdezések fontosságának hozzárendeléséhez létre kell hoznia egy munkaterhelés-osztályozót.
 
 ## <a name="create-a-workload-classifier-with-importance"></a>Fontossági feladatosztályozó létrehozása
 

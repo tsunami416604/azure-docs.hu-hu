@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: a0bc6aef1becd53217be0eeb8c865b5c78a5d69f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b46c9f8b0cad74f3a4e9be8903270a60993c01f4
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239467"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585885"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>Alkalmazásátjáró be- és élesztire vonatkozó vezérlő (AGIC) telepítése új alkalmazásátjáró használatával
 
@@ -263,7 +263,7 @@ Az AAD Pod-identitás telepítése a fürtre:
 
 
    > [!NOTE]
-   > A `identityResourceID` `identityClientID` és értékek, amelyek során létrehozott [létrehozása identitás lépéseit,](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-new.md#create-an-identity) és lehet beszerezni újra a következő paranccsal:
+   > A `identityResourceID` `identityClientID` és értékek, amelyek során létrehozott [telepítése összetevők](ingress-controller-install-new.md#deploy-components) lépéseket, és lehet beszerezni újra a következő paranccsal:
    > ```azurecli
    > az identity show -g <resource-group> -n <identity-name>
    > ```

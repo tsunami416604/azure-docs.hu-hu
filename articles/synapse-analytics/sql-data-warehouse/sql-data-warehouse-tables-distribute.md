@@ -1,6 +1,6 @@
 ---
 title: Elosztott táblák tervezési útmutatója
-description: Javaslatok kivonatelosztott és ciklikus multiplexelésű elosztott táblák tervezéséhez az SQL Analytics-ben.
+description: Javaslatok kivonatelosztott és ciklikus multiplexelésű elosztott táblák synapse SQL-készletben tervezése.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,19 +11,21 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 35106e73a3a4a143bf22c72c4fe8ac6798ac5219
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8a93f3ada8e56853b78321bdc7d99a667cee6158
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351335"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583506"
 ---
-# <a name="guidance-for-designing-distributed-tables-in-sql-analytics"></a>Útmutató az elosztott táblák sql analytics-ben történő tervezéséhez
-Javaslatok kivonatelosztott és ciklikus multiplexelésű elosztott táblák tervezéséhez az SQL Analytics-ben.
+# <a name="guidance-for-designing-distributed-tables-in-synapse-sql-pool"></a>Útmutató az elosztott táblák synapse SQL-készletben történő tervezéséhez
 
-Ez a cikk feltételezi, hogy ismeri az sql analytics adatterjesztési és adatáthelyezési fogalmait.További információ: [SQL Analytics massively parallel processing (MPP) architecture.](massively-parallel-processing-mpp-architecture.md) 
+Javaslatok kivonatelosztott és ciklikus multiplexelésű elosztott táblák synapse SQL-készletek tervezése.
+
+Ez a cikk feltételezi, hogy ismeri az adatok terjesztését és az adatok mozgatási fogalmait a Synapse SQL-készletben.További információ: [Azure Synapse Analytics massively párhuzamos feldolgozási (MPP) architektúra.](massively-parallel-processing-mpp-architecture.md) 
 
 ## <a name="what-is-a-distributed-table"></a>Mi az elosztott tábla?
+
 Az elosztott tábla egyetlen táblaként jelenik meg, de a sorok ténylegesen 60 felosztásközött vannak tárolva. A sorok terjesztése kivonatoló vagy ciklikus multiplexelési algoritmussal történik.  
 
 **A kivonatoló elosztott táblák** javítják a lekérdezési teljesítményt nagy ténytáblákon, és a cikk középpontjában állnak. **A ciklikus multiplexelési táblázatok** hasznosak a betöltési sebesség növeléséhez. Ezek a tervezési lehetőségek jelentős hatással vannak a lekérdezési és betöltési teljesítmény javítására.
@@ -34,15 +36,16 @@ A táblatervezés részeként a lehető legnagyobb mértékben ismerje meg az ad
 
 - Mekkora az asztal?   
 - Milyen gyakran frissül a táblázat?   
-- Vannak tény- és dimenziótáblák az SQL Analytics-adatbázisban?   
+- Vannak tény- és dimenziótáblák a Szinapszis SQL-készletében?   
 
 
 ### <a name="hash-distributed"></a>Elosztott kivonat
+
 A kivonatoló elosztott tábla a számítási csomópontok között egy determinisztikus kivonatoló függvény használatával osztja el a táblasorokat, hogy minden sort egy [disztribúcióhoz](massively-parallel-processing-mpp-architecture.md#distributions)rendeljen. 
 
 ![Elosztott tábla](./media/sql-data-warehouse-tables-distribute/hash-distributed-table.png "Elosztott tábla")  
 
-Mivel az azonos értékek mindig azonos eloszlással rendelkeznek, az SQL Analytics beépített ismeretekkel rendelkezik a sorhelyekről. Az SQL Analytics ezt a tudást arra használja, hogy minimálisra csökkentse az adatok mozgását a lekérdezések során, ami javítja a lekérdezési teljesítményt. 
+Mivel az azonos értékek mindig azonos eloszlással rendelkeznek, az adattárház beépített ismeretekkel rendelkezik a sorhelyekről. A Synapse SQL-készletben ezt a tudást a lekérdezések során az adatok mozgásának minimalizálására használják, ami javítja a lekérdezési teljesítményt. 
 
 A kivonatoló elosztott táblák jól működnek a csillagséma nagy ténytábláihoz. Ezek nagyon nagy számú sorok, és még mindig nagy teljesítményt. Vannak, természetesen, néhány tervezési szempontok, amelyek segítenek abban, hogy a teljesítmény az elosztott rendszer célja, hogy. A cikkben ismertetett egyik ilyen szempont a helyes terjesztési oszlop kiválasztása. 
 
@@ -52,6 +55,7 @@ A kivonatoló elosztott táblák jól működnek a csillagséma nagy ténytábl�
 - A táblázat gyakori beszúrási, frissítési és törlési műveleteket is tartalmazza. 
 
 ### <a name="round-robin-distributed"></a>Ciklikus multiplexelt
+
 A ciklikus multiplexelésű elosztott tábla egyenletesen osztja el a táblasorokat az összes disztribúció között. A sorok felosztáshoz rendelése véletlenszerű. A kivonatoló elosztott táblákkal ellentétben az azonos értékű sorok nem garantáltan ugyanahhoz az eloszláshoz lesznek rendelve. 
 
 Ennek eredményeképpen a rendszernek néha meg kell hívnia egy adatmozgatási műveletet, hogy jobban rendszerezhesse az adatokat, mielőtt fel oldhatja a lekérdezést.  Ez az extra lépés lelassíthatja a lekérdezéseket. Például egy ciklikus multiplexelési tábla csatlakozása általában a sorok átkeverését igényli, ami teljesítménytalálat.
@@ -65,7 +69,7 @@ Fontolja meg a ciklikus multiplexelés eloszlása a táblához a következő ese
 - Ha az illesztés kevésbé jelentős, mint a lekérdezésben lévő többi illesztés
 - Ha a tábla ideiglenes átmeneti tábla
 
-Az oktatóanyag [A New York-i taxiadatok betöltése](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) példát ad az ADATOK betöltésére az SQL Analytics ciklikus multiplexelési átmeneti táblájába.
+A New [York-i taxiadatok betöltése](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) bemutató példa az adatok ciklikus multiplexelési átmeneti táblába történő betöltésére.
 
 
 ## <a name="choosing-a-distribution-column"></a>Terjesztési oszlop kiválasztása
@@ -109,7 +113,7 @@ A párhuzamos feldolgozás egyensúlyba hozásához jelöljön ki egy terjeszté
 
 ### <a name="choose-a-distribution-column-that-minimizes-data-movement"></a>Válassza ki az adatmozgást minimalizáló terjesztési oszlopot
 
-A megfelelő lekérdezéseredmény-lekérdezések lekérdezése adatokat helyezhet át az egyik számítási csomópontról a másikra. Az adatáthelyezés gyakran akkor fordul elő, ha a lekérdezések összekapcsolódnak és összesítik az elosztott táblákat. Az SQL Analytics-adatbázis teljesítményének optimalizálására vonatkozó egyik legfontosabb stratégia az adatok mozgásának minimalizálását segítő terjesztési oszlop kiválasztása.
+A megfelelő lekérdezéseredmény-lekérdezések lekérdezése adatokat helyezhet át az egyik számítási csomópontról a másikra. Az adatáthelyezés gyakran akkor fordul elő, ha a lekérdezések összekapcsolódnak és összesítik az elosztott táblákat. A szinapszis SQL-készlet teljesítményének optimalizálására vonatkozó egyik legfontosabb stratégia az adatáthelyezés minimalizálását segítő terjesztési oszlop kiválasztása.
 
 Az adatok mozgásának minimalizálása érdekében jelöljön ki egy terjesztési oszlopot, amely:
 
@@ -217,7 +221,7 @@ RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 
 Elosztott tábla létrehozásához használja az alábbi utasítások egyikét:
 
-- [TÁBLA LÉTREHOZÁSA (SQL Analytics)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
-- [TÁBLA AS SELECT LÉTREHOZÁSA (SQL Analytics)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+- [TÁBLA LÉTREHOZÁSA (Szinapszis SQL-készlet)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
+- [TÁBLA LÉTREHOZÁSA VÁLASZTÓKÉNT (Szinapszis SQL-készlet)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 
 

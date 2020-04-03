@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 03/24/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab129315f398061eaa427f05f3bd4b1cabff0dc3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 35f8172d418cb9926ba0be2de945ff559fba14cf
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77046770"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583107"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-box"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja a Boxkal
 
@@ -87,6 +87,8 @@ Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Por
     a. A Bejelentkezés az **URL-cím** mezőbe írja be az URL-címet a következő minta használatával:`https://<SUBDOMAIN>.account.box.com`
 
     b. Az **Azonosító (entitásazonosító)** mezőbe írjon be egy URL-címet:`box.net`
+
+    c. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet:`https://sso.services.box.net/sp/ACS.saml2`
 
     > [!NOTE]
     > A bejelentkezési URL-érték nem valós. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Contact [Box Ügyfél támogatási csapat,](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire) hogy az értéket. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.

@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: f73fbbc42085b3a0cb6ab7dd1c0e32838a166ccf
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 39501cef3bb2f7e4a0e061968520f687cf97ecc5
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350640"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584204"
 ---
 # <a name="continuous-integration-and-deployment-for-data-warehousing"></a>Folyamatos integráció és üzembe helyezés az adattárházhoz
 
@@ -62,7 +62,7 @@ Ezen a ponton van egy egyszerű környezet, ahol minden beadás a forrásvezérl
 
 ## <a name="next-steps"></a>További lépések
 
-- Az [SQL Analytics MPP architektúrájának felfedezése](massively-parallel-processing-mpp-architecture.md)
+- Fedezze fel [a Synapse SQL pool MPP architektúráját](massively-parallel-processing-mpp-architecture.md)
 - [SQL-készlet gyors létrehozása](create-data-warehouse-portal.md)
 - [Mintaadatok betöltése](load-data-from-azure-blob-storage-using-polybase.md)
 - [Videók felfedezése](/azure/sql-data-warehouse/sql-data-warehouse-videos)

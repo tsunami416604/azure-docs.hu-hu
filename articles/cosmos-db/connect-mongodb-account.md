@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 03/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: e3ab6282a3c61e12dce5dd17bc0859c0d73a7724
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cba16d79b6506f9809a76f0128938a68afd15c92
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051719"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617042"
 ---
 # <a name="connect-a-mongodb-application-to-azure-cosmos-db"></a>MongoDB-alkalmazás csatlakoztatása az Azure Cosmos DB-hez
 
@@ -51,11 +51,11 @@ Ez az oktatóanyag két módszert ismertet a kapcsolati sztringgel kapcsolatos i
 ## <a name="connection-string-requirements"></a>Csatlakozási karakterlánc követelményei
 
 > [!Important]
-> Az Azure Cosmos DB szigorú biztonsági követelményekkel és szabványokkal rendelkezik. Az Azure Cosmos DB-fiókok hitelesítést és biztonságos kommunikációt igényelnek *SSL-en*keresztül. 
+> Az Azure Cosmos DB szigorú biztonsági követelményekkel és szabványokkal rendelkezik. Az Azure Cosmos DB-fiókok hitelesítést és biztonságos kommunikációt igényelnek *a TLS-en*keresztül. 
 >
 >
 
-Az Azure Cosmos DB támogatja a szabványos MongoDB kapcsolati karakterlánc URI-formátumot, néhány speciális követelménysel: Az Azure Cosmos DB-fiókok hitelesítést és biztonságos kommunikációt igényelnek SSL-en keresztül. Tehát a kapcsolati karakterlánc formátuma:
+Az Azure Cosmos DB támogatja a szabványos MongoDB kapcsolati karakterlánc URI-formátumot, néhány speciális követelménysel: Az Azure Cosmos DB-fiókok hitelesítést és biztonságos kommunikációt igényelnek a TLS-en keresztül. Tehát a kapcsolati karakterlánc formátuma:
 
     mongodb://username:password@host:port/[database]?ssl=true
 

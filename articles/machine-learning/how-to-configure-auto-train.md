@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4cf940e38a84ea2eeb1896c8f7c628c8d5734374
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03e1d4aa74d2f71ab2f32ac55f4ad3d46f672f5c
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80247129"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618542"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált gépi tanulási kísérletek konfigurálása Pythonban
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -166,7 +166,7 @@ Néhány példa:
       automl_regressor = AutoMLConfig(
       task='regression',
       experiment_timeout_minutes=60,
-      whitelist_models=['kNN regressor'],
+      whitelist_models=['KNN'],
       primary_metric='r2_score',
       training_data=train_data,
       label_column_name=label,
@@ -245,7 +245,7 @@ automl_config = AutoMLConfig(task = 'forecasting',
 
 ### <a name="ensemble-configuration"></a><a name="ensemble"></a>Ensemble konfiguráció
 
-Az ensemble modellek alapértelmezés szerint engedélyezve vannak, és egy automatizált gépi tanulási futtatás végső futtatási ismétléseként jelennek meg. Jelenleg támogatott együttes módszerek szavazás és egymásra. A szavazás súlyozott átlagok használatával puha szavazásként történik, és a halmozási megvalósítás kétrétegű implementációt használ, ahol az első réteg ugyanazokat a modelleket használja, mint a szavazási együttes, és a második rétegmodellt használják a a modellek az első réteg. Ha ONNX modelleket használ, **vagy** engedélyezve van a modell-magyarázhatóság, a halmozás le lesz tiltva, és csak a szavazás lesz használva.
+Az ensemble modellek alapértelmezés szerint engedélyezve vannak, és egy automatizált gépi tanulási futtatás végső futtatási ismétléseként jelennek meg. Jelenleg támogatott együttes módszerek szavazás és egymásra. A szavazás súlyozott átlagok használatával puha szavazásként történik, és a halmozási implementáció kétrétegű implementációt használ, ahol az első réteg ugyanazokat a modelleket használja, mint a szavazóegyüttes, és a második rétegmodellt használják a modellek optimális kombinációjának megtalálására az első rétegből. Ha ONNX modelleket használ, **vagy** engedélyezve van a modell-magyarázhatóság, a halmozás le lesz tiltva, és csak a szavazás lesz használva.
 
 Több alapértelmezett argumentum is megadható, `kwargs` `AutoMLConfig` mint egy objektumban az alapértelmezett veremegyüttes viselkedésének megváltoztatására.
 

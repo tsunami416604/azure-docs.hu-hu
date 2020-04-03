@@ -4,7 +4,7 @@
   items:
     - name: Mi az Azure Batch?
       href: batch-technical-overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Batch-feladat futtatása – parancssori felület
@@ -15,7 +15,7 @@
       href: quick-run-dotnet.md
     - name: Batch-feladat futtatása – Python
       href: quick-run-python.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Párhuzamos fájlfeldolgozás – .NET
       href: tutorial-parallel-dotnet.md
@@ -55,7 +55,7 @@
       href: batch-retry-after-errors.md
     - name: Ajánlott eljárások
       href: best-practices.md
-    - name: Kvóták és korlátozások
+    - name: Kvóták és korlátok
       href: batch-quota-limit.md
     - name: Támogatott virtuálisgép-méretek
       href: batch-pool-vm-sizes.md
@@ -69,6 +69,8 @@
   items:
     - name: Batch-fiókok kezelése
       items:
+        - name: Saját fiók kezelése
+          href: batch-manage-account-basics.md
         - name: Batch-fiókok kezelése a portálon
           href: batch-account-create-portal.md
         - name: Batch-fiókok kezelése a Batch Management .NET használatával
@@ -83,8 +85,12 @@
           href: batch-aad-auth-management.md
         - name: A Key Vault biztonságos elérése a Batch használatával
           href: credential-access-key-vault.md
+    - name: Alkalmazáscsomagok használata
+      href: batch-application-packages.md
     - name: Fájlok és alkalmazások másolása készletcsomópontokba
       items:
+        - name: Alkalmazások és adatok másolása készletcsomópontokba
+          href: batch-applications-to-pool-nodes.md
         - name: Alkalmazáscsomagok használata
           href: batch-application-packages.md
         - name: Erőforrásfájlok létrehozása

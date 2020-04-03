@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: ebe5ddf72e13b1a66ded7a90976e0b6209a26dfd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d46f513fccf9921d4cf47835bc9d5be4c6ffe241
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060969"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607493"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 Az Azure File Sync használatával központosíthatja a szervezet fájlmegosztásait az Azure Files ban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Server kiszolgálón elérhető bármely protokoll thasználhat az adatok helyi eléréséhez, beleértve az SMB, az NFS és az FTPS protokollt. Annyi gyorsítótára lehet, amennyire szüksége van szerte a világon.
@@ -187,7 +187,7 @@ Set-AzStorageSyncServerEndpoint `
 
 Ez a probléma akkor fordulhat elő, ha a Storage Sync Monitor folyamat (AzureStorageSyncMonitor.exe) nem fut, vagy a kiszolgáló nem tud hozzáférni az Azure File Sync szolgáltatáshoz.
 
-A portálon "Kapcsolat nélküli módban jelenik meg" néven megjelenő kiszolgálón tekintse meg a 9301-es eseményazonosítót a Telemetriai eseménynaplóban (az Alkalmazások és szolgáltatások\Microsoft\FileSync\Agent mappában található), és állapítsa meg, hogy a kiszolgáló miért nem tud hozzáférni az Azure File Sync szolgáltatáshoz. Szolgáltatás. 
+A "Kapcsolat nélküliként jelenik meg" néven megjelenő kiszolgálón a portálon tekintse meg a 9301-es eseményazonosítót a Telemetriai eseménynaplóban (az Alkalmazások és szolgáltatások\Microsoft\FileSync\Agent az Eseménynaplóban található) című részt, és állapítsa meg, hogy a kiszolgáló miért nem tud hozzáférni az Azure File Sync szolgáltatáshoz. 
 
 - Ha **a GetNextJob állapot: 0 a** naplózott állapottal, a kiszolgáló kommunikálhat az Azure File Sync szolgáltatással. 
     - Nyissa meg a Feladatkezelőt a kiszolgálón, és ellenőrizze, hogy fut-e a Storage Sync Monitor-folyamat (AzureStorageSyncMonitor.exe). Ha a folyamat nem fut, először próbálja meg újraindítani a kiszolgálót. Ha a kiszolgáló újraindítása nem oldja meg a problémát, frissítsen az Azure File Sync-ügynök [legújabb verziójára](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes). 
@@ -588,7 +588,7 @@ Ha ez a hiba néhány óránál hosszabb ideig fennáll, hozzon létre egy támo
 | **Hibasztring** | CERT_E_UNTRUSTEDROOT |
 | **Szervizelés szükséges** | Igen |
 
-Ez a hiba akkor fordulhat elő, ha a vállalat SSL-leállítási proxyt használ, illetve ha egy kártevő entitás elfogja a kiszolgáló és az Azure File Sync szolgáltatás közötti adatforgalmat. Ha biztos abban, hogy ez a várt működés (mivel a vállalat SSL-leállítási proxyt használ), hagyja ki a tanúsítvány-ellenőrzést a beállításjegyzék felülbírálásával.
+Ez a hiba akkor fordulhat elő, ha a szervezet egy TLS-végződtetési proxyt használ, vagy ha egy rosszindulatú entitás elfogja a kiszolgáló és az Azure File Sync szolgáltatás közötti forgalmat. Ha biztos abban, hogy ez várható (mivel a szervezet TLS-végződtetési proxyt használ), hagyja ki a tanúsítványellenőrzést a rendszerleíró adatbázis felülbírálásával.
 
 1. Hozza létre a SkipVerifyingPinnedRootCertificate rendszerleíró értéket.
 
@@ -602,7 +602,7 @@ Ez a hiba akkor fordulhat elő, ha a vállalat SSL-leállítási proxyt használ
     Restart-Service -Name FileSyncSvc -Force
     ```
 
-Ha beállítja ezt a beállításazonosítót, az Azure File Sync-ügynök minden helyileg megbízhatónak minősülő SSL-tanúsítványt elfogad a kiszolgáló és a felhőszolgáltatás közötti adatátvitel során.
+A beállítási érték beállításával az Azure File Sync ügynök elfogadja a helyileg megbízható TLS/SSL tanúsítványt, amikor adatokat továbbít a kiszolgáló és a felhőszolgáltatás között.
 
 <a id="-2147012894"></a>**Nem lehetett kapcsolatot létesíteni a szolgáltatással.**  
 
@@ -894,7 +894,7 @@ Ez a hiba akkor fordul elő, ha egy adatbetöltési művelet meghaladja az időt
 4. Válassza ki a társított tárfiókot. Ha ez a kapcsolat sikertelen, a hivatkozott tárfiók el lett távolítva.
     ![A felhővégpont részletes ablaktábláját megjelenítő képernyőkép a tárfiókra mutató hivatkozással.](media/storage-sync-files-troubleshoot/file-share-inaccessible-1.png)
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell
 # Variables for you to populate based on your configuration
 $region = "<Az_Region>"
@@ -975,7 +975,7 @@ if ($storageAccount -eq $null) {
 2. A **fájlmegosztások** listájának megtekintéséhez válassza a Fájlok lehetőséget.
 3. Ellenőrizze, hogy a felhővégpont által hivatkozott fájlmegosztás megjelenik-e a fájlmegosztások listájában (ezt a fenti 1. lépésben meg kellett volna jegyeznie).
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell
 $fileShare = Get-AzStorageShare -Context $storageAccount.Context | Where-Object {
     $_.Name -eq $cloudEndpoint.AzureFileShareName -and
@@ -1002,7 +1002,7 @@ if ($fileShare -eq $null) {
     - A **Szerepkör mezőben** válassza az **Olvasó és az adatelérés lehetőséget.**
     - A **Kijelölés** mezőbe írja be a **Microsoft.StorageSync**parancsot, jelölje ki a szerepkört, és kattintson a **Mentés gombra.**
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell    
 $role = Get-AzRoleAssignment -Scope $storageAccount.Id | Where-Object { $_.DisplayName -eq "Microsoft.StorageSync" }
 

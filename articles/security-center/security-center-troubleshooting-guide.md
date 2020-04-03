@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: b5a85f8ae1564d724b826c809261e56577f4783a
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 47502e693b897a57517d267924cc6c2752c10440
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435532"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585326"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center – Hibaelhárítási útmutató
 
@@ -148,7 +148,6 @@ Ebben a dokumentumban megtanulhatta az Azure Security Center biztonsági szabál
 * [Riasztások érvényesítése az Azure Security Centerben](security-center-alert-validation.md)
 * [E-mail-értesítések az Azure Security Centerben](security-center-provide-security-contact-details.md)
 * [Biztonsági incidensek kezelése az Azure Security Centerben](security-center-incident.md)
-* [Incidensek és riasztások vizsgálata az Azure Security Centerben](security-center-investigation.md)
 * [Az Azure Security Center észlelési képességei](security-center-detection-capabilities.md)
 * [Partnermegoldások figyelése az Azure Security Centerrel](security-center-partner-solutions.md) – Ismerje meg, hogyan figyelheti a partnermegoldások állapotát.
 * [Az Azure Security Center –](faq-general.md) Gyakori kérdések – Gyakori kérdések a szolgáltatás használatával kapcsolatban

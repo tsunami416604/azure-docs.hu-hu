@@ -11,219 +11,179 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/14/2019
+ms.date: 03/19/2020
 ms.author: jeedes
-ms.openlocfilehash: 446ac54d84f7b2b3bf3aaf6eaf5536f0dfb804fe
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3bd559b90a4df5573a44b895ce3b097864d1add7
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67095754"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585679"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>Oktatóanyag: Az Azure Active Directory integrációja az OpsGenie-vel
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-opsgenie"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja az OpsGenie-vel
 
-Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja az OpsGenie-t az Azure Active Directoryval (Azure AD).
-Az OpsGenie integrálása az Azure AD-vel a következő előnyöket nyújtja:
+Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja az OpsGenie-t az Azure Active Directoryval (Azure AD). Ha integrálja az OpsGenie-t az Azure AD-vel, a következőket teheti:
 
-* Az Azure AD-ben szabályozhatja, hogy ki férhet hozzá az OpsGenie-hez.
-* Engedélyezheti, hogy a felhasználók automatikusan bejelentkezve OpsGenie (Single Sign-On) az Azure AD-fiókok.
-* Fiókjait egyetlen központi helyen kezelheti – az Azure Portalon.
+* Az Azure AD-ben, aki hozzáfér opsgenie.
+* Engedélyezze, hogy a felhasználók automatikusan bejelentkezve legyenek az OpsGenie-be az Azure AD-fiókjukkal.
+* Kezelje fiókjait egyetlen központi helyen – az Azure Portalon.
 
-Ha további részleteket szeretne megtudni az SaaS-alkalmazások Azure AD-vel való integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrációjáról, olvassa el [a Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval című témakörben.](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció konfigurálásához az OpsGenie-vel a következő elemekre van szükség:
+A kezdéshez a következő elemekre van szükség:
 
-* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) egy hónapos próbaverziót kaphat
-* OpsGenie egyszeri bejelentkezésre engedélyezett előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes [fiókot](https://azure.microsoft.com/free/)kaphat.
+* OpsGenie egyszeri bejelentkezés (SSO) engedélyezve előfizetés.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést egy tesztkörnyezetben.
+Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztkörnyezetben.
 
-* Az OpsGenie támogatja az **SP** által kezdeményezett SSO-t
+* Az OpsGenie támogatja az **IDP** által kezdeményezett SSO-t
+* Az OpsGenie konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatainak kiszivárgását és beszivárgását. A munkamenet-vezérlő a feltételes hozzáféréstől terjed. [Megtudhatja, hogy miként kényszerítheti ki a munkamenet-vezérlést a Microsoft Cloud App Security alkalmazással.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)
 
 ## <a name="adding-opsgenie-from-the-gallery"></a>OpsGenie hozzáadása a galériából
 
 Az OpsGenie azure AD-be való integrációjának konfigurálásához hozzá kell adnia az OpsGenie-t a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Ha opsgenie-t szeretne hozzáadni a galériából, hajtsa végre az alábbi lépéseket:**
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
+1. A bal oldali navigációs ablakban válassza ki az **Azure Active Directory** szolgáltatást.
+1. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza **a Minden alkalmazás lehetőséget.**
+1. Új alkalmazás hozzáadásához válassza az **Új alkalmazás**lehetőséget.
+1. A **hozzáadás a gyűjteményből szakaszban** írja be az **OpsGenie** kifejezést a keresőmezőbe.
+1. Válassza az **OpsGenie** lehetőséget az eredménypanelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás hozzáadódik a bérlőhöz.
 
-1. Az **[Azure Portalon](https://portal.azure.com)** a bal oldali navigációs panelen kattintson az **Azure Active Directory** ikonjára.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-opsgenie"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése az OpsGenie számára
 
-    ![Az Azure Active Directory gombja](common/select-azuread.png)
+Konfigurálja és tesztelje az Azure AD SSO-t az OpsGenie-vel egy **B.Simon**nevű tesztfelhasználó használatával. Ahhoz, hogy az SSO működjön, létre kell hoznia egy kapcsolat kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó opsgenie között.
 
-2. Nyissa meg a **Vállalati alkalmazások elemet,** és válassza a **Minden alkalmazás** lehetőséget.
+Az Azure AD SSO konfigurálásához és teszteléséhez az OpsGenie segítségével hajtsa végre a következő építőelemeket:
 
-    ![Az Enterprise alkalmazások panel](common/enterprise-applications.png)
+1. **[Konfigurálja az Azure AD egyszeri szolgáltatást](#configure-azure-ad-sso)** – lehetővé teszi a felhasználók számára a funkció használatát.
+    * **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezés b.Simon teszteléséhez.
+    * **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi b.Simon azure AD egyszeri bejelentkezés.
+1. **[Konfigurálja OpsGenie SSO](#configure-opsgenie-sso)** -konfigurálása az egyszeri bejelentkezési beállításokat az alkalmazás oldalán.
+    * **[Hozzon létre OpsGenie teszt felhasználó](#create-opsgenie-test-user)** - egy megfelelője B.Simon opsgenie, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+1. **[SSO tesztelése](#test-sso)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-3. Új alkalmazás hozzáadásához kattintson az **Új alkalmazás** gombra a párbeszéd ablak tetején.
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-    ![Az Új alkalmazás gomb](common/add-new-app.png)
+Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Portalon.
 
-4. A keresőmezőbe írja be az **OpsGenie**kifejezést, válassza az **OpsGenie** elemet az eredménypanelről, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+1. Az [Azure Portalon](https://portal.azure.com/)az **OpsGenie** alkalmazásintegrációs lapon keresse meg a **Kezelés szakaszt,** és válassza ki **az egyszeri bejelentkezést.**
+1. Az **Egyetlen bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A **Beállítások beállítása SAML-lel** lapon kattintson az **egyszerű SAML-konfiguráció** szerkesztési/tollikonjára a beállítások szerkesztéséhez.
 
-     ![OpsGenie az eredménylistában](common/search-new-app.png)
+   ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása és tesztelése
+1. Az **Egyszerű SAML-konfiguráció** szakaszban hajtsa végre az alábbi lépéseket:
 
-Ebben a szakaszban konfigurálja és teszteli az Azure AD egyszeri bejelentkezést az OpsGenie-vel egy **B. Simon**nevű tesztfelhasználó alapján.
-Egyszeri bejelentkezés a munka, egy Azure AD-felhasználó és a kapcsolódó felhasználó opsgenie közötti kapcsolat létre kell hozni.
+    a. Az **Azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:`https://app.opsginie.com/auth/saml/<UNIQUEID>`
 
-Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez az OpsGenie-vel a következő építőelemeket kell végrehajtania:
+    b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:`https://app.opsginie.com/auth/saml?id=<UNIQUEID>`
 
-1. **[Konfigurálja az Azure AD egyszeri bejelentkezést](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Konfigurálja opsgenie single sign-on](#configure-opsgenie-single-sign-on)** - konfigurálni az egyszeri bejelentkezési beállításokat az alkalmazás oldalán.
-3. **[Hozzon létre egy Azure AD-teszt felhasználó](#create-an-azure-ad-test-user)** – az Azure AD egyszeri bejelentkezés b. Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure AD-teszt felhasználó](#assign-the-azure-ad-test-user)** – lehetővé teszi B. Simon az Azure AD egyszeri bejelentkezés.
-5. **[Hozzon létre OpsGenie teszt felhasználó](#create-opsgenie-test-user)** - egy megfelelője B. Simon opsgenie, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** - annak ellenőrzéséhez, hogy a konfiguráció működik-e.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezéskonfigurálása
-
-Ebben a szakaszban engedélyezi az Azure AD egyszeri bejelentkezést az Azure Portalon.
-
-Az Azure AD egyszeri bejelentkezésének konfigurálásához hajtsa végre az alábbi lépéseket:
-
-1. Az [Azure Portalon](https://portal.azure.com/)az **OpsGenie** alkalmazásintegrációs lapon válassza az **Egyszeri bejelentkezés**lehetőséget.
-
-    ![Egyszeri bejelentkezési kapcsolat konfigurálása](common/select-sso.png)
-
-2. Az **Egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza **az SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezéséhez.
-
-    ![Egyszeri bejelentkezésválasztó mód](common/select-saml-option.png)
-
-3. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon kattintson a **Szerkesztés** ikonra az **Egyszerű SAML-konfiguráció** párbeszédpanel megnyitásához.
-
-    ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
-
-4. Az **Egyszerű SAML-konfiguráció** szakaszban hajtsa végre az alábbi lépéseket:
-
-    ![OpsGenie tartomány és URL-címek egyszeri bejelentkezési információk](common/sp-signonurl.png)
-
-    A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet:`https://app.opsgenie.com/auth/login`
+    > [!NOTE]
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel, amelyet az oktatóanyag későbbi részében ismertetünk.
 
 5. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány szakaszában** kattintson a Másolás gombra az **Alkalmazásösszevonás metaadat-címének** másolásához és mentéséhez a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/copy-metadataurl.png)
 
-6. Az **OpsGenie beállítása** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény nek megfelelően.
+1. Az **OpsGenie beállítása** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    a. Bejelentkezési URL
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
 
-    b. Azure Hirdetés-azonosító
+Ebben a szakaszban egy tesztfelhasználót hoz létre az Azure Portalon B.Simon néven.
 
-    c. Kijelentkezés URL-címe
+1. Az Azure Portal bal oldali ablaktáblájában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd válassza az **Összes felhasználó**lehetőséget.
+1. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
+1. A **Felhasználói** tulajdonságok csoportban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A **Felhasználónév** mezőbe írja username@companydomain.extensionbe a mezőt. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **Jelszó megjelenítése** jelölőnégyzetet, majd írja le a **Jelszó** mezőben megjelenő értéket.
+   1. Kattintson **a Létrehozás gombra.**
 
-### <a name="configure-opsgenie-single-sign-on"></a>OpsGenie egyszeri bejelentkezés konfigurálása
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
+
+Ebben a szakaszban lehetővé teszi b.Simon azure egyszeri bejelentkezés használatával hozzáférést opsgenie.
+
+1. Az Azure Portalon válassza a **Vállalati alkalmazások**lehetőséget, majd az **Összes alkalmazás**lehetőséget.
+1. Az alkalmazások listájában válassza az **OpsGenie**lehetőséget.
+1. Az alkalmazás áttekintő lapján keresse meg a **Kezelés szakaszt,** és válassza a **Felhasználók és csoportok**lehetőséget.
+
+   ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+
+1. Válassza **a Felhasználó hozzáadása**lehetőséget, majd a Hozzárendelés **hozzáadása** párbeszédpanelen válassza a Felhasználók **és csoportok** lehetőséget.
+
+    ![A Felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+
+1. A **Felhasználók és csoportok** párbeszédpanelen válassza a **B.Simon** elemet a Felhasználók listában, majd kattintson **a** kijelölés gombra a képernyő alján.
+1. Ha az SAML-helyességben szerepkörértéket vár, a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó számára megfelelő szerepkört a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
+1. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
+
+## <a name="configure-opsgenie-sso"></a>OpsGenie SSO konfigurálása
 
 1. Nyisson meg egy másik böngészőpéldányt, majd jelentkezzen be rendszergazdaként az OpsGenie-be.
 
 2. Kattintson a **Beállítások**gombra, majd az **Egyszeri bejelentkezés lapra.**
    
-    ![OpsGenie egyszeri bejelentkezés](./media/opsgenie-tutorial/tutorial_opsgenie_06.png)
+    ![OpsGenie egyszeri bejelentkezés](./media/opsgenie-tutorial/tutorial-opsgenie-06.png)
 
 3. Az SSO engedélyezéséhez válassza az **Engedélyezve**lehetőséget.
    
-    ![OpsGenie beállítások](./media/opsgenie-tutorial/tutorial_opsgenie_07.png) 
+    ![OpsGenie beállítások](./media/opsgenie-tutorial/tutorial-opsgenie-07.png) 
 
 4. A **Szolgáltató** csoportban kattintson az **Azure Active Directory** fülre.
    
-    ![OpsGenie beállítások](./media/opsgenie-tutorial/tutorial_opsgenie_08.png) 
+    ![OpsGenie beállítások](./media/opsgenie-tutorial/tutorial-opsgenie-08.png) 
 
 5. Az Azure Active Directory párbeszédpanelen hajtsa végre a következő lépéseket:
    
-    ![OpsGenie beállítások](./media/opsgenie-tutorial/tutorial_opsgenie_09.png)
+    ![OpsGenie beállítások](./media/opsgenie-tutorial/tutorial-opsgenie-09.png)
     
+    a. Másolja az **Alkalmazásazonosító URI-értékét,** és illessze be **az Azonosító (entitásazonosító)** szövegmezőbe az Azure Portal **Alapszintű SAML-konfiguráció** szakaszában.
+
+    a. Másolja a **válasz URL-értékét,** és illessze be a **Válasz URL-cím** szövegmezőjébe az Azure Portal **Alapszintű SAML-konfiguráció** szakaszában.
+
     a. Az **SAML 2.0 Végpont** szövegdobozába illessze be a **bejelentkezési URL-cím**értéket, amelyet az Azure Portalról másolt.
     
     b. A **Metaadat-url-cím:** szövegmezőbe illessze be **az Alkalmazásösszevonás metaadat-URL-címét,** amelyet az Azure Portalról másolt.
     
-    c. Kattintson a **Save Changes** (Módosítások mentése) gombra.
+    c. Az Egyszeri bejelentkezés engedélyezéséhez kapcsolja be az **Egyszeri bejelentkezés engedélyezése** kapcsolót.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása 
-
-Ez a szakasz célja, hogy hozzon létre egy tesztfelhasználót az Azure Portalon B. Simon.
-
-1. Az Azure Portalon a bal oldali ablaktáblában válassza az **Azure Active Directory**lehetőséget, válassza a **Felhasználók**lehetőséget, majd az **Összes felhasználó**lehetőséget.
-
-    ![A "Felhasználók és csoportok" és a "Minden felhasználó" linkek](common/users.png)
-
-2. Válassza az **Új felhasználó** lehetőséget a képernyő tetején.
-
-    ![Új felhasználó gomb](common/new-user.png)
-
-3. A Felhasználó tulajdonságokban hajtsa végre a következő lépéseket.
-
-    ![A Felhasználó párbeszédpanel](common/user-properties.png)
-
-    a. A **Név** mezőbe írja be a **B. Simon**mezőt.
-  
-    b. A **Felhasználónév** mezőtípusban**bsimon@yourcompanydomain.extension**  
-    Például: BSimon@contoso.com
-
-    c. Jelölje be **a Jelszó megjelenítése** jelölőnégyzetet, majd írja le a Jelszó mezőben megjelenő értéket.
-
-    d. Kattintson **a Létrehozás gombra.**
-
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-tesztfelhasználó hozzárendelése
-
-Ebben a szakaszban engedélyezi B. Simon azure egyszeri bejelentkezés használatával opsgenie hozzáférést biztosít.
-
-1. Az Azure Portalon válassza az **Enterprise Applications**lehetőséget, válassza az **Összes alkalmazás**lehetőséget, majd válassza az **OpsGenie**lehetőséget.
-
-    ![A vállalati alkalmazások panelje](common/enterprise-applications.png)
-
-2. Az alkalmazások listájában válassza az **OpsGenie**lehetőséget.
-
-    ![Az OpsGenie hivatkozás az Alkalmazások listában](common/all-applications.png)
-
-3. A bal oldali menüben válassza a **Felhasználók és csoportok**lehetőséget.
-
-    ![A "Felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
-4. Kattintson a **Felhasználó hozzáadása** gombra, majd a **Hozzárendelés hozzáadása** **párbeszédpanelen** válassza a Felhasználók és csoportok lehetőséget.
-
-    ![A Hozzárendelés hozzáadása ablaktábla](common/add-assign-user.png)
-
-5. A **Felhasználók és csoportok** párbeszédpanelen válassza a **B. Simon** elemet a Felhasználók listában, majd kattintson a kijelölés gombra a képernyő alján. **Select**
-
-6. Ha az SAML-helyességben szerepkörértéket vár, akkor a **Szerepkör kiválasztása** párbeszédpanelen válassza ki a felhasználó megfelelő szerepkörét a listából, majd kattintson **a** kijelölés gombra a képernyő alján.
-
-7. A **Hozzárendelés hozzáadása** párbeszédpanelen kattintson a **Hozzárendelés** gombra.
+    d. Kattintson **az SSO-beállítások alkalmazása gombra.**
 
 ### <a name="create-opsgenie-test-user"></a>OpsGenie tesztfelhasználó létrehozása
 
-A szakasz célja, hogy hozzon létre egy felhasználó nevű B. Simon opsgenie. 
+A szakasz célja, hogy hozzon létre egy b.Simon nevű felhasználó opsgenie. 
 
-1. Egy webböngésző ablakban jelentkezzen be a OpsGenie bérlő, mint egy rendszergazda.
+1. Egy webböngésző ablakban jelentkezzen be opsgenie-bérlő, mint rendszergazda.
 
 2. Keresse meg a Felhasználók listát a Bal oldali panel **Felhasználók** elemére kattintva.
    
-    ![OpsGenie beállítások](./media/opsgenie-tutorial/tutorial_opsgenie_10.png) 
+    ![OpsGenie beállítások](./media/opsgenie-tutorial/tutorial-opsgenie-10.png) 
 
 3. Kattintson az **Add User** (Felhasználó hozzáadása) elemre.
 
 4. A **Felhasználó hozzáadása** párbeszédpanelen hajtsa végre az alábbi lépéseket:
    
-    ![OpsGenie beállítások](./media/opsgenie-tutorial/tutorial_opsgenie_11.png)
+    ![OpsGenie beállítások](./media/opsgenie-tutorial/tutorial-opsgenie-11.png)
    
-    a. Az **E-mail** szövegmezőbe írja be az Azure Active Directoryban címzett B. Simon e-mail címét.
+    a. Az **E-mail** szövegmezőbe írja be az Azure Active Directoryban címzett B.Simon e-mail címét.
    
-    b. A **Teljes név** mezőbe írja be a **B. Simon**nevet.
+    b. A **Teljes név** mezőbe írja be a **B.Simon**nevet.
    
     c. Kattintson a **Mentés** gombra. 
 
->[!NOTE]
->B. Simon kap egy e-mailt a profil beállítására vonatkozó utasításokkal.
+> [!NOTE]
+> B.Simon kap egy e-mailt a profilbeállításra vonatkozó utasításokkal.
 
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
+## <a name="test-sso"></a>SSO tesztelése 
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panelen teszteli.
 
@@ -233,7 +193,10 @@ Amikor az OpsGenie csempére kattint a hozzáférési panelen, automatikusan be 
 
 - [Útmutatók a SaaS-alkalmazások Azure Active Directoryval való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)
 
-- [Mi a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [Próbálja ki az OpsGenie-t az Azure AD-vel](https://aad.portal.azure.com/)
+
+- [Mi a munkamenet-vezérlés a Microsoft Cloud App Security alkalmazásban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

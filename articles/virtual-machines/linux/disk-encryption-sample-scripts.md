@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: c98da4b41da183f56d80fad1e8c01706d1cfcf23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b54f9f3466fe5f7e2da622077f53575d6f43f72d
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78970510"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585958"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure Disk Encryption – mintaszkriptek 
 
@@ -80,7 +80,7 @@ Az alábbi táblázat bemutatja, hogy mely paraméterek használhatók a PowerSh
 
 ### <a name="prerequisites-for-os-disk-encryption"></a>Az operációs rendszer lemeztitkosításának előfeltételei
 
-* A virtuális gépnek az Azure Disk Encryption által támogatott operációs rendszerekben felsorolt operációsrendszer-titkosítással kompatibilis terjesztést kell [használnia.](disk-encryption-overview.md#supported-vm-sizes) 
+* A virtuális gépnek az Azure Disk Encryption által támogatott operációs rendszerekben felsorolt operációsrendszer-titkosítással kompatibilis terjesztést kell [használnia.](disk-encryption-overview.md#supported-vms) 
 * A virtuális gép létre kell hozni a Marketplace-rendszerkép az Azure Resource Manager.
 * Legalább 4 GB RAM-mal rendelkező Azure virtuális gép (az ajánlott méret 7 GB).
 * (RHEL és CentOS esetén) Tiltsa le az SELinux-ot. Az SELinux letiltásához lásd: "4.4.2. SELinux letiltása" a [SELinux felhasználói és rendszergazdai útmutatójában](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux) a virtuális gépen.

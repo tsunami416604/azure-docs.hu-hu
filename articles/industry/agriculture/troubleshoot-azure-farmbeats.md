@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 504dfb721c7b87d5497c73851d0694601b253d5c
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 2270ee7c850c528bd24fa2e58c2b1684acfc24d6
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529694"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585294"
 ---
 # <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -19,7 +19,7 @@ Ez a cikk megoldásokat kínál a gyakori Azure FarmBeats problémák. További 
 ## <a name="install-issues"></a>Telepítési problémák
 
   > [!NOTE]
-  > Ha hiba miatt indítja újra a telepítést, a telepítés újbóli elindítása előtt törölje az erőforráscsoportot, vagy törölje az összes erőforrást az erőforráscsoportból.
+  > Ha hiba miatt indítja újra a telepítést, a telepítés újbóli elindítása előtt törölje az **erőforráscsoportot,** vagy törölje az összes erőforrást az erőforráscsoportból.
 
 ### <a name="invalid-sentinel-credentials"></a>Érvénytelen Sentinel-hitelesítő adatok
 
@@ -31,7 +31,7 @@ Növelje a kvótát, vagy törölje a nem használt kötegfiókokat, és indíts
 
 ### <a name="invalid-resource-group-location"></a>Érvénytelen erőforráscsoport helye
 
-Győződjön meg arról, hogy az erőforráscsoport ugyanazon a helyen található, mint a telepítés során megadott régió.
+Győződjön meg arról, hogy az **erőforráscsoport** ugyanazon a helyen található, mint a telepítés során megadott **régió.**
 
 ### <a name="other-install-issues"></a>Egyéb telepítési problémák
 
@@ -39,11 +39,11 @@ Vegye fel velünk a kapcsolatot a következő adatokkal:
 
 - Az előfizetés azonosítója
 - Erőforráscsoport neve
-- Csatolja a telepítési hiba naplófájlját az alábbi lépésekkel:
+- A központi telepítési hiba naplófájljának csatolásához kövesse az alábbi lépéseket:
 
-    1. Keresse meg az erőforráscsoportot az Azure Portalon.
-    2. Válassza a Központi telepítések lehetőséget a bal oldali Beállítások csoportban.
-    3. A "Sikertelen" állapotú központi telepítéshez kattintson a részletekre, és töltse le a központi telepítés részleteit. Csatolja ezt a fájlt az e-mailhez.
+    1. Keresse meg az **erőforráscsoportot** az Azure Portalon.
+    2. Válassza **a Központi telepítések** lehetőséget a bal oldali **Beállítások** csoportban.
+    3. Minden olyan központi telepítésesetén, amely a **Sikertelen állapotú t,** válassza ki a részleteket, és töltse le a központi telepítés részleteit. Csatolja ezt a fájlt az e-mailhez.
 
 ## <a name="sensor-telemetry"></a>Érzékelő telemetriai adatai
 
@@ -51,11 +51,12 @@ Vegye fel velünk a kapcsolatot a következő adatokkal:
 
 **Jelenség:** Az eszközök vagy érzékelők telepítve vannak, és összekapcsolta a FarmBeats-t az eszközpartnerével, de nem tudja levenni vagy megtekinteni a telemetriai adatokat a FarmBeats-en.
 
-**Korrekciós intézkedés**:
+**Korrekciós intézkedés**
 
 1. Nyissa meg a FarmBeats Datahub erőforráscsoportot.
 2. Válassza ki az **Event Hub** (DatafeedEventHubNamespace), majd ellenőrizze a bejövő üzenetek száma.
 3. A következő lehetőségek közül választhat:
+
    - Ha *nincsbejövő üzenet,* forduljon az eszközpartneréhez.  
    - Bejövő *üzenetek*esetén lépjen kapcsolatba velünk a Datahub és a Accelerator naplóival és a rögzített telemetriai adatokkal.
 
@@ -65,9 +66,9 @@ A naplók letöltésének megértéséhez lépjen a ["Naplók manuális gyűjté
 
 **Jelenség:** Eszközök vagy érzékelők vannak telepítve, és létrehozta az eszközöket/érzékelőket a FarmBeats és a bevitt telemetriai adatokat az EventHubon, de nem tudja letenni vagy megtekinteni a telemetriai adatokat a FarmBeats.Symptoms: Devices or sensors are deployed, and you've created the devices/sensors on FarmBeats and intested telemetry to the EventHub, but you can't get or view telemettry data on FarmBeats.
 
-**Korrekciós intézkedés**:
+**Korrekciós intézkedés**
 
-1. Győződjön meg róla, hogy helyesen végezte el a partnerregisztrációt - ezt ellenőrizheti a datahub swagger- hez, keresse meg a /Partner API-t, a Get-et, és ellenőrizze, hogy a partner regisztrálva van-e. Ha nem, kövesse az [itt leírt lépéseket](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) a partner hozzáadásához.
+1. Győződjön meg róla, hogy helyesen végezte el a partnerregisztrációt - ezt ellenőrizheti a datahub swagger- hez, keresse meg a /Partner API-t, a Get-et, és ellenőrizze, hogy a partner regisztrálva van-e. Ha nem, az alábbi [lépésekkel](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) vehet fel partnert.
 
 2. Győződjön meg arról, hogy a megfelelő Telemetriai üzenetformátumot használta:
 
@@ -96,7 +97,7 @@ A naplók letöltésének megértéséhez lépjen a ["Naplók manuális gyűjté
 
 ### <a name="dont-have-the-azure-event-hubs-connection-string"></a>Nem rendelkezik az Azure Event Hubs kapcsolati karakterlánccal
 
-**Korrekciós intézkedés**:
+**Korrekciós intézkedés**
 
 1. A Datahub Swagger ben nyissa meg a Partner API-t.
 2. Válassza **a Kipróbálás** > **kivégrehajtása** > **a Végrehajtás lehetőséget.**
@@ -113,7 +114,7 @@ A naplók letöltésének megértéséhez lépjen a ["Naplók manuális gyűjté
 
 **Jelenségek**: Az eszközök telepítve vannak, és a FarmBeats-t összekapcsolta az eszközpartnerével. Az eszközök online állapotban vannak, és telemetriai adatokat küldenek, de offline állapotban jelennek meg.
 
-**Korrekciós művelet:** A jelentéskészítési időköz nincs konfigurálva ehhez az eszközhöz. A jelentéskészítési időköz beállításához forduljon az eszköz gyártójához. 
+**Korrekciós intézkedés** A jelentési időköz nincs konfigurálva ehhez az eszközhöz. A jelentéskészítési időköz beállításához forduljon az eszköz gyártójához. 
 
 ### <a name="error-deleting-a-device"></a>Hiba az eszköz törlésekor
 
@@ -123,7 +124,7 @@ Az eszköz törlése közben az alábbi gyakori hibaüzenetek egyike jelenhet me
 
 **Jelentés:** Az eszköz több érzékelővel van társítva, amelyek a farmban vannak telepítve.
 
-**Korrekciós intézkedés**:  
+**Korrekciós intézkedés**  
 
 1. Törölje az eszközhöz társított érzékelőket a gyorsítón keresztül.  
 2. Ha az érzékelőket egy másik eszközhöz szeretné társítani, kérje meg az eszköz partnerét, hogy tegye ugyanezt.  
@@ -140,15 +141,15 @@ Az eszköz törlése közben az alábbi gyakori hibaüzenetek egyike jelenhet me
 
     > [!NOTE]
     > Nem törölhet egy eszközt, ha érzékelők vannak társítva. A társított érzékelők törléséről további információt az Érzékelőadatok törlése az [érzékelőpartnerektől](get-sensor-data-from-sensor-partner.md)című szakaszban található **Érzékelőadatok törlése** című szakaszban talál.
-    > A partnerek nem férhetnek hozzá egy eszköz vagy érzékelő törléséhez. Csak a rendszergazdák férhetnek hozzá, hogy ugyanezt tegyék.
+    > A partnereknek nincs engedélye eszköz vagy érzékelő törlésére. Csak a rendszergazdák rendelkeznek törlési engedéllyel.
 
 ## <a name="issues-with-jobs"></a>Problémák a munkahelyek
 
 ### <a name="farmbeats-internal-error"></a>FarmBeats belső hiba
 
-**Üzenet**: "FarmBeats belső hiba, további részletekért lásd a hibaelhárítási útmutatót".
+**Üzenet**: "FarmBeats belső hiba, további részleteka hibaelhárítási útmutatóban."
 
-**Korrekciós intézkedés**: Ez a probléma az adatfolyamat ideiglenes hibájából eredhet. Hozza létre újra a feladatot. Ha a hiba továbbra is fennáll, lépjen kapcsolatba velünk a hibaüzenettel / naplókkal.
+**Korrekciós intézkedés** Ez a probléma az adatfolyamat ideiglenes hibájából eredhet. Hozza létre újra a feladatot. Ha a hiba továbbra is fennáll, lépjen kapcsolatba velünk a hibaüzenettel/naplóval.
 
 ## <a name="accelerator-troubleshooting"></a>Gyorssegédhiba-elhárítás
 
@@ -158,15 +159,15 @@ Az eszköz törlése közben az alábbi gyakori hibaüzenetek egyike jelenhet me
 
 **Üzenet**: "Nem található egyező felhasználó."
 
-**Korrekciós intézkedés:** Ellenőrizze azt az e-mail-azonosítót, amelyhez szerepkör-hozzárendelést próbál hozzáadni. Az e-mail-azonosítónak pontosan egyeznie kell az azonosítóval, amely regisztrálva van az adott felhasználóhoz az Active Directoryban. Ha a hiba továbbra is fennáll, lépjen kapcsolatba velünk a hibaüzenettel / naplókkal.
+**Korrekciós intézkedés** Ellenőrizze azt az e-mail-azonosítót, amelyhez szerepkör-hozzárendelést próbál hozzáadni. Az e-mail-azonosítónak pontosan egyeznie kell az azonosítóval, amely regisztrálva van az adott felhasználóhoz az Active Directoryban. Ha a hiba továbbra is fennáll, lépjen kapcsolatba velünk a hibaüzenettel/naplóval.
 
 ### <a name="unable-to-log-in-to-accelerator"></a>Nem lehet bejelentkezni a gyorsítóba
 
 **Üzenet**: "Hiba: Nincs jogosult a szolgáltatás hívására. Kérjen engedélyt a rendszergazdától."
 
-**Korrekciós intézkedés:** Kérje meg a rendszergazdát, hogy engedélyezze a FarmBeats központi telepítésének elérését. Ez a Szerepkör-hozzárendelés API-k postapostával vagy a gyorssegéd **Beállítások** ablaktáblájának hozzáférés-vezérlésével végezhető el.  
+**Korrekciós intézkedés** Kérje meg a rendszergazdát, hogy engedélyezze a FarmBeats központi telepítésének elérését. Ez a Szerepkör-hozzárendelés API-k postapostával vagy a gyorssegéd **Beállítások** ablaktáblájának hozzáférés-vezérlésével végezhető el.  
 
-Ha már kapott hozzáférést, és ezzel a hibával szembesül, próbálkozzon újra a lap frissítésével. Ha a hiba továbbra is fennáll, lépjen kapcsolatba velünk a hibaüzenettel / naplókkal.
+Ha már kapott hozzáférést, és ezzel a hibával szembesült, próbálkozzon újra a lap frissítésével. Ha a hiba továbbra is fennáll, lépjen kapcsolatba velünk a hibaüzenettel/naplóval.
 
 ![FarmBeats projekt](./media/troubleshoot-azure-farmbeats/accelerator-troubleshooting-1.png)
 
@@ -176,13 +177,11 @@ Ha már kapott hozzáférést, és ezzel a hibával szembesül, próbálkozzon �
 
 **Üzenet**: "Hiba: Ismeretlen hiba történt."
 
-**Korrekciós intézkedés**: Ez a hiba akkor fordul elő, ha túl sokáig hagyja tétlenül az oldalt. Frissítse az oldalt.  
-
-Ha a hiba továbbra is fennáll, lépjen kapcsolatba velünk a hibaüzenettel / naplókkal.
+**Korrekciós intézkedés** Ez a hiba akkor fordul elő, ha túl sokáig hagyja tétlenül az oldalt. Frissítse az oldalt. Ha a hiba továbbra is fennáll, lépjen kapcsolatba velünk a hibaüzenettel/naplóval.
 
 **Probléma:** A FarmBeats Accelerator nem jeleníti meg a legújabb verziót, még a FarmBeatsDeployment frissítése után sem.
 
-**Korrekciós intézkedés**: Ez a hiba a szolgáltatás dolgozóinak a böngészőben való perzisztenciája miatt fordul elő. Tegye a következőket:
+**Korrekciós intézkedés** Ez a hiba a szolgáltatás dolgozóinak a böngészőben való perzisztenciája miatt fordul elő. Tegye a következőket:
 
 1. Zárja be az összes olyan böngészőlapot, amelyen meg van nyitva a gyorssegéd, és zárja be a böngészőablakot.
 2. Indítsa el a böngésző új példányát, és töltse be újra a gyorssegéd URI-ját. Ez a művelet betölti a gyorssegéd új verzióját.
@@ -193,30 +192,30 @@ Ha a hiba továbbra is fennáll, lépjen kapcsolatba velünk a hibaüzenettel / 
 
 **Feladathiba üzenet**: "Az erőforrás eléréséhez teljes hitelesítés szükséges."
 
-**Korrekciós intézkedés**:
+**Korrekciós intézkedés**: Tegye az alábbiak egyikét:
 
-Tegye a következők egyikét:
+- Frissítse a FarmBeats-t a megfelelő felhasználónévvel/jelszóval az alábbi lépésekkel, majd próbálkozzon újra a feladattal.
 
-- Frissítse a FarmBeats-t a megfelelő felhasználónévvel / jelszóval az alábbi lépésekkel, és próbálkozzon újra a feladattal.
+  **Sentinel felhasználónév frissítése**
 
-    *Sentinel felhasználónév frissítése*
     1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
     2. A **Keresőmezőben** keresse meg a FarmBeats Datahub erőforráscsoportot.
-    3. Válassza a Tárfiók tárházának***** -> tárolók -> kötegelő-előkészítési fájlok -> to_vm -> config.ini
-    4. Kattintson a Szerkesztés gombra
+    3. Válassza ki a tárfiók tártárát***** > **a tárolók** > **kötegelőfájljai** > **to_vm** > **config.ini**
+    4. **Szerkesztés kijelölése**
     5. A felhasználónév frissítése a sentinel_account szakaszban
 
-    *Sentinel jelszó frissítése*
+  **Sentinel jelszó frissítése**
+
     1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
     2. A **Keresőmezőben** keresse meg a FarmBeats Datahub erőforráscsoportot.
     3. Keyvault kiválasztása-*****
     4. A Beállítások csoportban válassza a Hozzáférési házirendek lehetőséget
-    5. Kattintson a "Hozzáférési házirend hozzáadása" gombra
-    6. Használja a "Titkos kezelés" beállítást a Konfigurálás sablonból beállításhoz, és adja hozzá magát az egyszerű
-    7. Kattintson a Hozzáadás gombra, majd a Hozzáférési házirendek lapon a Mentés gombra.
-    8. Kattintson a Titkok gombra a Beállítások csoportban
-    9. Kattintson a Sentinel-jelszó elemre.
-    10. Az érték új verziójának létrehozása és engedélyezése
+    5. **Hozzáférési házirend hozzáadása** kiválasztása
+    6. Titkos **kezelés** használata a Konfigurálás sablonból beállításhoz, és saját magad hozzáadása az egyszerű höz
+    7. Válassza a **Hozzáadás**lehetőséget, majd a **Mentés** gombot a **Hozzáférési házirendek** lapon
+    8. A **Beállítások csoportban** válassza a Titkos kulcsok **lehetőséget.**
+    9. Válassza a **Sentinel-jelszó** lehetőséget
+    10. Hozzon létre egy új verziót az érték, és engedélyezze azt.
 
 - Futtassa újra a sikertelen feladatot, vagy futtasson egy műholdas indexfeladatot 5 és 7 napos dátumtartományban, majd ellenőrizze, hogy a feladat sikeres-e.
 
@@ -227,7 +226,7 @@ Tegye a következők egyikét:
 **Korrekciós intézkedés**:
 
 1. Nyissa meg a [Sentinel](https://scihub.copernicus.eu/dhus/) t a böngészőjében, és nézze meg, hogy a webhely elérhető-e.
-2. Ha a webhely nem érhető el, ellenőrizze, hogy a tűzfal, a vállalati hálózat vagy más blokkoló szoftver megakadályozza-e a webhelyhez való hozzáférést, majd tegye meg a szükséges lépéseket a Sentinel URL engedélyezéséhez. 
+2. Ha a webhely nem érhető el, ellenőrizze, hogy bármely tűzfal, vállalati hálózat vagy más blokkoló szoftver megakadályozza-e a webhelyhez való hozzáférést, majd tegye meg a szükséges lépéseket a Sentinel URL engedélyezéséhez. 
 3. Futtassa újra a sikertelen feladatot, vagy futtasson egy műholdas indexfeladatot 5 és 7 napos dátumtartományban, majd ellenőrizze, hogy a feladat sikeres-e.  
 
 ### <a name="sentinel-server-down-for-maintenance"></a>Sentinel szerver: Karbantartás miatt leállt
@@ -269,10 +268,11 @@ Ez a probléma akkor fordulhat elő, ha a Sentinel kiszolgálón karbantartási 
 
 ### <a name="soil-moisture-map-has-white-areas"></a>Talaj Nedvesség térkép fehér területek
 
-**Probléma**: A talaj nedvesség térkép jött létre, de a térkép többnyire fehér területek.
+**Probléma**: A **talaj nedvesség térkép** jött létre, de a térkép többnyire fehér területek.
 
 **Korrekciós intézkedés**: Ez a probléma akkor fordulhat elő, ha a térkép kérésének idejére létrehozott műholdas indexek NDVI értéke 0,3-nál kisebb. További információkért látogasson el [a Sentinel műszaki útmutatójába.](https://earth.esa.int/web/sentinel/technical-guides/sentinel-2-msi/level-2a/algorithm)
-1. Futtassa újra a feladatot egy másik dátumtartományhoz, és ellenőrizze, hogy a műholdas indexekben lévő NDVI-értékek meghaladják-e a 0,3 értéket.
+
+1. Futtassa újra a feladatot egy másik dátumtartományhoz, és ellenőrizze, hogy a műholdas indexekben az NDVI-értékek értékei meghaladják-e a 0,3 értéket.
 
 ## <a name="collect-logs-manually"></a>Naplók gyűjtése manuálisan
 

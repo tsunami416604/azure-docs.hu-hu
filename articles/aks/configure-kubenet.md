@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/26/2019
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 3fe1d36b859884ab19a645e5693c7e7931fe5c2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 119265efa7b6504f3faf2e89cb68b9e9bd70bf9f
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79368468"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617244"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Kubenet-hálózat használata saját IP-címtartományaival az Azure Kubernetes-szolgáltatásban (AKS)
 
@@ -25,7 +25,7 @@ Ez a cikk bemutatja, hogyan *kubenet* hálózat létrehozása és használata eg
 * Az AKS-fürt virtuális hálózatának engedélyeznie kell a kimenő internetkapcsolatot.
 * Ne hozzon létre egynél több AKS-fürtöt ugyanabban az alhálózatban.
 * Előfordulhat, hogy az AKS-fürtök `169.254.0.0/16`nem használnak `172.30.0.0/16`, , `172.31.0.0/16`vagy `192.0.2.0/24` a Kubernetes szolgáltatás címtartományához.
-* Az AKS-fürt által használt egyszerű szolgáltatásnak legalább [hálózati közreműködői](../role-based-access-control/built-in-roles.md#network-contributor) engedélyekkel kell rendelkeznie a virtuális hálózaton belüli alhálózaton. Ha a beépített hálózati közreműködői szerepkör használata helyett [egyéni szerepkört](../role-based-access-control/custom-roles.md) szeretne definiálni, a következő engedélyek szükségesek:
+* Az AKS-fürt által használt egyszerű szolgáltatásnak legalább [hálózati közreműködői](../role-based-access-control/built-in-roles.md#network-contributor) szerepkörrel kell rendelkeznie a virtuális hálózaton belüli alhálózaton. Ha a beépített hálózati közreműködői szerepkör használata helyett [egyéni szerepkört](../role-based-access-control/custom-roles.md) szeretne definiálni, a következő engedélyek szükségesek:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
@@ -195,7 +195,7 @@ az aks create \
     --client-secret <password>
 ```
 
-AKS-fürt létrehozásakor létrejön egy hálózati biztonsági csoport és útvonaltábla. Ezeket a hálózati erőforrásokat az AKS vezérlősík kezeli. A hálózati biztonsági csoport automatikusan társítva van a csomópontokon lévő virtuális hálózati adapterekhez. Az útvonaltábla automatikusan a virtuális hálózati alhálózathoz lesz társítva. A hálózati biztonsági csoport szabályai és útvonaltáblái, és automatikusan frissülnek a szolgáltatások létrehozásakor és elérhetővé teszik őket.
+AKS-fürt létrehozásakor létrejön egy hálózati biztonsági csoport és útvonaltábla. Ezeket a hálózati erőforrásokat az AKS vezérlősík kezeli. A hálózati biztonsági csoport automatikusan társítva van a csomópontokon lévő virtuális hálózati adapterekhez. Az útvonaltábla automatikusan a virtuális hálózati alhálózathoz lesz társítva. A hálózati biztonsági csoport szabályai és útvonaltáblái automatikusan frissülnek a szolgáltatások létrehozásakor és elérhetővé téve.
 
 ## <a name="next-steps"></a>További lépések
 

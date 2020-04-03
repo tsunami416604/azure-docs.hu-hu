@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 22a24d01f606cd3f76a0de950351feb3d964da54
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 2db7a25f3f463e9210544354395c9d33a75f633c
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478914"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619378"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Ismert problémák és az Azure Machine Learning hibaelhárítása
 
@@ -48,16 +48,6 @@ Ismerje meg az Azure Machine Learning használatával kapcsolatos [erőforráskv
     pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
     ```
 
-* **Hibaüzenet: Nem található egyező terjesztés az azureml-dataprep-native-hoz**
-
-    Az Anaconda Python 3.7.4-es disztribúciója hibát jelent, amely megszakítja az azureml-sdk telepítését. Ezt a problémát ez a [GitHub-probléma](https://github.com/ContinuumIO/anaconda-issues/issues/11195) tárgyalja
-    
-    Ez a következő paranccsal új Conda környezet létrehozásával használható:
-    ```bash
-    conda create -n <env-name> python=3.7.3
-    ```
-    Amely létrehoz egy Conda környezetet a Python 3.7.3 használatával, amely nem rendelkezik a 3.7.4-es telepítési problémával.
-
 * **Databricks hiba csomagok telepítésekor**
 
     Az Azure Machine Learning SDK telepítése sikertelen az Azure Databricks, ha több csomag van telepítve. Egyes csomagok, például `psutil`a , ütközéseket okozhatnak. A telepítési hibák elkerülése érdekében telepítse a csomagokat a könyvtár verziójának fagyasztásával. Ez a probléma a Databricks, és nem az Azure Machine Learning SDK kapcsolatos. Előfordulhat, hogy ezt a problémát más könyvtárakkal is tapasztalja. Példa:
@@ -89,10 +79,9 @@ Ismerje meg az Azure Machine Learning használatával kapcsolatos [erőforráskv
 
 * **Databricks FailToSendFeather**: Ha `FailToSendFeather` hibaüzenetet lát az Azure Databricks-fürt adatainak olvasásakor, olvassa el az alábbi megoldásokat:
     
-        * Upgrade `azureml-sdk[automl]` package to the latest version.
-        * Add `azureml-dataprep` version 1.1.8 or above.
-        * Add `pyarrow` version 0.11 or above.
-        `
+    * Frissítse `azureml-sdk[automl]` a csomagot a legújabb verzióra.
+    * Add `azureml-dataprep` 1.1.8-as vagy újabb verzió.
+    * Add `pyarrow` változat 0.11 vagy újabb.
 
 ## <a name="create-and-manage-workspaces"></a>Munkaterületek létrehozása és kezelése
 
@@ -113,9 +102,7 @@ Ha hibaüzenetet `Unable to upload project files to working directory in AzureFi
 
 Ha más számítási feladatokhoz, például adatátvitelhez használ fájlmegosztást, a javaslat a blobok használata, hogy a fájlmegosztás szabadon használható a futtatások beküldéséhez. A munkaterhelést két különböző munkaterület között is feloszthatja.
 
-### <a name="datasets-and-data-preparation"></a>Adatkészletek és adatelőkészítés
-
-Ezek az Azure Machine Learning-adatkészletek ismert problémái.
+### <a name="passing-data-as-input"></a>Adatok átadása bemenetként
 
 *  **TypeError: FileNotFound: Nincs ilyen fájl vagy könyvtár**: Ez a hiba akkor fordul elő, ha a megadott fájlelérési út nem ott található, ahol a fájl található. Győződjön meg arról, hogy a fájlra való hivatkozás módja összhangban van azzal a ponttal, ahová csatlakoztatta az adatkészletet a számítási célhoz. Determinisztikus állapot biztosítása érdekében azt javasoljuk, hogy az absztrakt elérési út használata esetén egy adatkészlet et egy számítási célhoz. A következő kódban például az adatkészletet a számítási cél fájlrendszerének `/tmp`gyökere alá csatlakoztatjuk. 
     
@@ -128,8 +115,7 @@ Ezek az Azure Machine Learning-adatkészletek ismert problémái.
 
     Ha nem adja meg a vezető perjelet, a '/', akkor előtaggal `/mnt/batch/.../tmp/dataset` kell előtagoznia a munkakönyvtárat, például a számítási célon, hogy jelezze, hol szeretné csatlakoztatni az adatkészletet.
 
-### <a name="data-labeling-projects-issues"></a>Adatcímkézési projektekkel kapcsolatos problémák
-
+### <a name="data-labeling-projects"></a>Adatcímkézési projektek
 
 |Probléma  |Megoldás:  |
 |---------|---------|
@@ -138,9 +124,9 @@ Ezek az Azure Machine Learning-adatkészletek ismert problémái.
 |Képek ellenőrzésekénként az újonnan címkézett képek nem jelennek meg     |   Az összes címkézett kép betöltéséhez kattintson az **Első** gombra. Az **Első** gomb visszavisz a lista elejére, de betölti az összes címkézett adatot.      |
 |Ha az Objektumészlelés címkézése közben lenyomja az Esc billentyűt, a bal felső sarokban nulla méretű címke keletkezik. Ebben az állapotban a címkék küldése sikertelen.     |   Törölje a címkét a mellette lévő keresztjelre kattintva.  |
 
-## <a name="azure-machine-learning-designer-issues"></a>Az Azure Machine Learning tervezői problémái
+## <a name="azure-machine-learning-designer"></a>Az Azure Machine Learning tervezője
 
-Ismert problémák a tervezővel.
+Ismert problémák:
 
 * **Hosszú számítási előkészítési idő:** Lehet, hogy néhány perc, vagy még hosszabb, amikor először csatlakozik, vagy hozzon létre egy számítási cél. 
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: c717a8d5baa57ce780fbbc0d25e67c2509ca86fc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 94be0ec16aedc317f1be41998356bc52b66f7e86
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75441954"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619207"
 ---
 # <a name="quickstart-build-a-console-app-using-azure-cosmos-dbs-api-for-mongodb-and-golang-sdk"></a>Rövid útmutató: Hozzon létre egy konzolalkalmazást az Azure Cosmos DB MongoDB és Golang SDK API-jával
 
@@ -93,7 +93,7 @@ Az alábbi kódrészletek mind a main.go fájlból származnak.
 
 ### <a name="connecting-the-go-app-to-cosmos-db"></a>A Go alkalmazás csatlakoztatása a Cosmos DB-hez
 
-Az Azure Cosmos DB MongoDB API-ja támogatja az SSL-kompatibilis kapcsolatot. A csatlakozáshoz meg kell határoznia a **DialServer** függvényt az [mgo-ban. DialInfo](https://godoc.org/gopkg.in/mgo.v2#DialInfo), és használja a [tls.* Tárcsázási* ](https://golang.org/pkg/crypto/tls#Dial) funkció a kapcsolat végrehajtásához.
+Az Azure Cosmos DB MongoDB API-ja támogatja a TLS-kompatibilis kapcsolatot. A csatlakozáshoz meg kell határoznia a **DialServer** függvényt az [mgo-ban. DialInfo](https://godoc.org/gopkg.in/mgo.v2#DialInfo), és használja a [tls.* Tárcsázási* ](https://golang.org/pkg/crypto/tls#Dial) funkció a kapcsolat végrehajtásához.
 
 A következő Golang-kódrészlet összeköti a Go alkalmazást az Azure Cosmos DB MongoDB API-jával. A *DialInfo* osztály tartalmazza a munkamenet létrehozásának lehetőségeit.
 
@@ -129,7 +129,7 @@ defer session.Close()
 session.SetSafe(&mgo.Safe{})
 ```
 
-A **mgo.Dial()** metódust akkor használatos, amikor nincs SSL-kapcsolat. Az SSL-kapcsolathoz a **mgo. DialWithInfo()** metódusra van szükség.
+Az **MGo. A Dial()** metódus tanévi kapcsolat esetén használatos. A TLS kapcsolat, a **mgo. A DialWithInfo()** metódus szükséges.
 
 A munkamenet-objektum létrehozása a **DialWIthInfo{}** objektum használatával történik. A munkamenet létrehozását követően a következő kódrészlet használatával érhető el a gyűjtemény:
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2018
 ms.author: memildin
-ms.openlocfilehash: 9e4c6577f0b8b18aff343ac54b31ff292632f5d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aa262b0be3902f6e143a53f8f1302156fc5aede6
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75979246"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582988"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Az Azure Security Center-vizsgálat során talált felhasználói adatok kezelése
 Ez a cikk az Azure Security Center vizsgálati szolgáltatásában található felhasználói adatok kezelésével kapcsolatos információkat tartalmaz. A vizsgálati adatokat az [Azure Monitor naplói](../log-analytics/log-analytics-overview.md) tárolják, és a Security Centerben teszik elérhetővé. A felhasználói adatok kezelése magában foglalja az adatok törlését vagy exportálását.
@@ -26,7 +26,7 @@ Ez a cikk az Azure Security Center vizsgálati szolgáltatásában található f
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="searching-for-and-identifying-personal-data"></a>Személyes adatok keresése és azonosítása
-Az Azure Portalon a Security Center [vizsgálati funkciójával](../security-center/security-center-investigation.md) személyes adatokat kereshet. A vizsgálati funkció a **Biztonsági riasztások**szolgáltatás ban érhető el.
+Az Azure Portalon a Security Center vizsgálati funkciójával személyes adatokat kereshet. A vizsgálati funkció a **Biztonsági riasztások**szolgáltatás ban érhető el.
 
 A vizsgálati funkció az összes entitást, felhasználói információt és adatot jeleníti meg az **Entitások** lapon.
 

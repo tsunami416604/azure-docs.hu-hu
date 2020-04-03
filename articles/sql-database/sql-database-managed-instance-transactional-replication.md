@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 02/08/2019
-ms.openlocfilehash: 41dd336bdb74fbe745ab48ebd3c168af0492ae2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a048ddefbcd76193436da13cd3ba68b8b6ffb0a
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75691006"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607597"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Tranzakciós replikáció egyetlen, készletezett és példányadatbázisokkal az Azure SQL Database-ben
 
@@ -95,7 +95,7 @@ A replikációnak különböző [típusai](https://docs.microsoft.com/sql/relati
 - A kapcsolat SQL-hitelesítést használ a replikációs résztvevők között. 
 - Egy Azure Storage-fiók megosztás a replikáció által használt működő könyvtárhoz. 
 - A 445-ös portnak (TCP kimenő) meg kell nyitva lennie a felügyelt példány alhálózatának biztonsági szabályaiban az Azure-fájlmegosztás eléréséhez. 
-- Az 1433-as portot (TCP kimenő) meg kell nyitni, ha a Publisher/Forgalmazó felügyelt példányon van, és az előfizető a helyszínen van.
+- Az 1433-as portot (TCP kimenő) meg kell nyitni, ha a Kiadó/Forgalmazó felügyelt példányon van, és az előfizető nem. Előfordulhat, hogy a 1433-as `allow_linkedserver_outbound` **célszolgáltatás címkéjének** felügyelt példánynkénti `virtualnetwork` `internet`NSG kimenő biztonsági szabályát is a-ról . 
 - A replikációs résztvevők (kiadó, forgalmazó, lekéréses előfizető és lekéréses előfizető) minden típusa elhelyezhető felügyelt példányokon, de a közzétevőnek és a forgalmazónak a felhőben vagy a helyszínen lévőnek kell lennie.
 - Ha a kiadó, a forgalmazó és/vagy az előfizető különböző virtuális hálózatokban létezik, akkor a VPN-társviszony-létesítést az egyes entitások között kell létrehozni, hogy a közzétevő és a forgalmazó között VPN-társviszony-létesítés legyen, és/vagy a forgalmazó és az előfizető között VPN-társviszony-létesítés legyen. 
 
@@ -124,7 +124,7 @@ A Publisher és a forgalmazó egyetlen felügyelt példányon belül van konfigu
 
 ### <a name="publisher-with-remote-distributor-on-a-managed-instance"></a>Közzétevő távoli forgalmazóval egy felügyelt példányon
 
-Ebben a konfigurációban az egyik felügyelt példány olyan módosításokat tesz közzé egy másik felügyelt példányon elhelyezett forgalmazónak, amely számos forrás felügyelt példányt képes kiszolgálni, és módosításokat terjeszthet egy vagy több példányra a felügyelt példányon, egyetlen adatbázison, készletezett adatbázison vagy SQL Server.
+Ebben a konfigurációban az egyik felügyelt példány olyan módosításokat tesz közzé egy másik felügyelt példányon elhelyezett forgalmazónak, amely számos forrás felügyelt példányt képes kiszolgálni, és módosításokat terjeszthet egy vagy több példányra a felügyelt példányon, az egyetlen adatbázison, a készletezett adatbázison vagy az SQL Serveren.
 
 ![Külön példányok a Kiadó és a Forgalmazó számára](media/replication-with-sql-database-managed-instance/02-separate-instances-asdbmi-pubdist.png)
 
