@@ -177,6 +177,7 @@
               href: reserved-vm-instance-size-flexibility.md
         - name: Spot virtuális gépek
           href: spot-vms.md
+          displayName: 'pre-empt, preempt'
         - name: Előző generációk
           href: ../sizes-previous-gen.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Izolált méretek

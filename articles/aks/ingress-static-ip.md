@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan telepíthet és konfigurálhat egy statikus nyi
 services: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 10422595b85c71020225df694778e6b8ae7e0185
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e79bbe76a751097acd5c9d3c42dbd4020b6866b
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78191350"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617290"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Statikus nyilvános IP-címmel rendelkező bejövő forgalomvezérlő létrehozása az Azure Kubernetes-szolgáltatásban (AKS)
 
@@ -48,7 +48,12 @@ Ezután hozzon létre egy nyilvános IP-címet a *statikus* foglalási módszerr
 az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --sku Standard --allocation-method static --query publicIp.ipAddress -o tsv
 ```
 
-Most telepítsd a *nginx-ingress táblázatot* Helm-el. Adja `--set controller.service.loadBalancerIP` hozzá a paramétert, és adja meg az előző lépésben létrehozott saját nyilvános IP-címet. A magasabb szintű redundancia érdekében az NGINX bejövő forgalmi vezérlő két replikája van telepítve a `--set controller.replicaCount` paraméterrel. A bejövő adatkezelő replikáinak teljes körű kihasználása érdekében győződjön meg arról, hogy az AKS-fürtben egynél több csomópont található.
+Most telepítsd a *nginx-ingress táblázatot* Helm-el. A magasabb szintű redundancia érdekében az NGINX bejövő forgalmi vezérlő két replikája van telepítve a `--set controller.replicaCount` paraméterrel. A bejövő adatkezelő replikáinak teljes körű kihasználása érdekében győződjön meg arról, hogy az AKS-fürtben egynél több csomópont található.
+
+Két további paramétert kell átadnia a Helm-kiadásnak, hogy a be- ésémegtalálható vezérlő a rendszer tudomást szerez a terheléselosztó statikus IP-címéről, amelyet a be- és a fürtvezérlő szolgáltatáshoz kell rendelni, és hogy a DNS-névcímke a nyilvános IP-cím erőforrásra kerül. A HTTPS-tanúsítványok megfelelő működéséhez a DNS-névcímke a befektvezérlő IP-címéhez fqdn konfigurálására szolgál.
+
+1. Adja `--set controller.service.loadBalancerIP` hozzá a paramétert. Adja meg saját nyilvános IP-címét, amely az előző lépésben jött létre.
+1. Adja `--set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"` hozzá a paramétert. Adja meg az előző lépésben létrehozott nyilvános IP-címre alkalmazandó DNS-névcímkét.
 
 A bejövő forgalmi vezérlőt egy Linux-csomóponton is ütemezni kell. A Windows Server-csomópontok (jelenleg előzetes verzióban az AKS) nem futtatható a bejövő adatbeviteli vezérlő. A csomópont-választó `--set nodeSelector` paraméterrel történő meghatározása arra utasítja a Kubernetes ütemezőt, hogy az NGINX bejövő vezérlőt Linux-alapú csomóponton futtassa.
 
@@ -57,6 +62,8 @@ A bejövő forgalmi vezérlőt egy Linux-csomóponton is ütemezni kell. A Windo
 
 > [!TIP]
 > Ha engedélyezni szeretné [az ügyfélforrás IP-címének megőrzését][client-source-ip] `--set controller.service.externalTrafficPolicy=Local` a fürtben lévő tárolókra vonatkozó kérelmekhez, adja hozzá a Helm telepítési parancshoz. Az ügyfélforrás *IP-címe az X-Forwarded-For*csoportban található kérelemfejlécben található. Ha egy olyan be- ésfeleltetót használ, amelyen az ügyfélforrás IP-megőrzése engedélyezve van, az SSL-áthaladás nem fog működni.
+
+Frissítse a következő parancsfájlt a belső kapcsolatvezérlő **IP-címével** és egy **egyedi névvel,** amelyet az FQDN előtaghoz szeretne használni:
 
 ```console
 # Create a namespace for your ingress resources
@@ -69,6 +76,7 @@ helm install nginx-ingress stable/nginx-ingress \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set controller.service.loadBalancerIP="40.121.63.72"
+    --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"="demo-aks-ingress"
 ```
 
 Amikor a Kubernetes terheléselosztó szolgáltatás jön létre az NGINX bejövő forgalom vezérlőhöz, a statikus IP-cím hozzá van rendelve, ahogy az a következő példa kimenetben látható:
@@ -83,27 +91,14 @@ nginx-ingress-default-backend               ClusterIP      10.0.95.248   <none> 
 
 Még nem jött létre bejövő házirend, így az NGINX bejövő adatószabályzó alapértelmezett 404-es lapja jelenik meg, ha a nyilvános IP-címet keresi. A bejövő támadások szabályai a következő lépésekben vannak konfigurálva.
 
-## <a name="configure-a-dns-name"></a>DNS-név konfigurálása
-
-A HTTPS-tanúsítványok megfelelő működéséhez konfiguráljon egy teljes tartománynat a be- ésécsvezérlő IP-címéhez. Frissítse a következő parancsfájlt a belső kapcsolatvezérlő IP-címével és egy egyedi névvel, amelyet a teljes tartománynévhez szeretne használni:
+A DNS-névcímke alkalmazásával ellenőrizheti, hogy a teljes tartománynevet lekérdezi a nyilvános IP-címen az alábbiak szerint:
 
 ```azurecli-interactive
 #!/bin/bash
-
-# Public IP address of your ingress controller
-IP="40.121.63.72"
-
-# Name to associate with public IP address
-DNSNAME="demo-aks-ingress"
-
-# Get the resource-id of the public ip
-PUBLICIPID=$(az network public-ip list --query "[?ipAddress!=null]|[?contains(ipAddress, '$IP')].[id]" --output tsv)
-
-# Update public ip address with DNS name
-az network public-ip update --ids $PUBLICIPID --dns-name $DNSNAME
+az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastus --query $("[?name=='myAKSPublicIP'].[dnsSettings.fqdn]") -o tsv
 ```
 
-A be- ésres-vezérlő most már elérhető a teljes tartományon keresztül.
+A be- éselőrendszer-vezérlő most már elérhető az IP-címen vagy a teljes tartománynkeresztül.
 
 ## <a name="install-cert-manager"></a>Tanúsítványkezelő telepítése
 

@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan hozhat létre dinamikusan állandó kötetet az
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 37fea36567866af69e832a1f7e3caff2a68477a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f16a6134b1d2065668952ea11c0cab7398a3559a
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77596963"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617472"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Állandó kötet dinamikus létrehozása és használata azure-lemezekkel az Azure Kubernetes-szolgáltatásban (AKS)
 
@@ -33,7 +33,7 @@ A tárolási osztály segítségével határozható meg, hogy egy egység nyikor
 Minden AKS-fürt két előre létrehozott tárolási osztályt tartalmaz, amelyek mindegyike azure-lemezekkel működik:
 
 * Az *alapértelmezett* tárolási osztály egy szabványos Azure-lemezt tartalmaz.
-    * A normál tárolást HDD-k biztosítják, és költséghatékony tárolást biztosít, miközben továbbra is teljesít. A standard lemezek ideális megoldást jelentenek költséghatékony fejlesztési és tesztelési számítási feladatokhoz.
+    * A normál tárolást HDD-k támasztják alá, és költséghatékony tárolást biztosít, miközben továbbra is teljesít. Standard lemezek ideálisak a költséghatékony fejlesztési és tesztelési számítási feladatokhoz.
 * A *felügyelt prémium szintű* tárolási osztály egy prémium szintű Azure-lemezt biztosít.
     * A prémium lemezek SSD-alapú, nagy teljesítményű, kis késleltetésű lemezek. Az éles számítási feladatokat futtató virtuális gépek esetén érdemes a használatuk mellett dönteni. Ha a fürt AKS-csomópontjai prémium szintű tárhelyet használnak, válassza ki a *felügyelt prémium szintű* osztályt.
     

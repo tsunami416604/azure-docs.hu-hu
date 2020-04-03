@@ -1,6 +1,6 @@
 ---
 title: A Visual Studio 2019 telepítése
-description: A Visual Studio és az SQL Server Development Tools (SSDT) telepítése az SQL Analytics szolgáltatáshoz
+description: A Visual Studio és az SQL Server Development Tools (SSDT) telepítése a Synapse SQL-hez
 services: synapse-analytics
 ms.custom: vs-azure, azure-synapse
 ms.workload: azure-vs
@@ -12,12 +12,12 @@ ms.subservice: ''
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: d0a1772706fa838f51322d5f5d5bd1b46eb9144a
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: aa2f903611f52f8f7a8ede0040b592a7dddd0e89
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351623"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584466"
 ---
 # <a name="getting-started-with-visual-studio-2019"></a>A Visual Studio 2019 – első lépések
 A Visual Studio **2019** SQL Server Data Tools (SSDT) egyetlen olyan eszköz, amely lehetővé teszi a következőket:
@@ -34,7 +34,7 @@ Lásd: [Visual Studio 2019 letöltése][] és telepítése a Visual Studio **16.
 
 ## <a name="unsupported-features-in-ssdt"></a>Az SSDT nem támogatott szolgáltatásai
 
-Vannak esetek, amikor az SQL Analytics szolgáltatáskiadásai nem tartalmazzák az SSDT támogatását. A következő szolgáltatások jelenleg nem támogatottak:
+Vannak esetek, amikor a synapse SQL szolgáltatáskiadásai nem tartalmazzák az SSDT támogatását. A következő szolgáltatások jelenleg nem támogatottak:
 
 - [Materializált nézetek](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest) (folyamatban)
 - [Rendezett fürtözött oszlopcentrikus indexek](https://docs.microsoft.com/sql/t-sql/statements/create-columnstore-index-transact-sql?view=azure-sqldw-latest#examples--and-) (folyamatban)

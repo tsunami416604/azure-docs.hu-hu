@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: c8eba538a7015648611e6054ce85b381dcfc9105
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a80fb97810fee04a4eb50c43178c168e66f29173
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76760998"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618732"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>Diagnosztikai naplók engedélyezése a Service Bus számára
 
@@ -76,10 +76,10 @@ A következő felügyeleti műveleteket rögzíti kondinaplók:
 
 | Hatókör | Művelet|
 |-------| -------- |
-| Névtér | <ul> <li> Névtér létrehozása</li> <li> Névtér frissítése </li> <li> Névtér törlése </li>  </ul> | 
-| Várólista | <ul> <li> Várólista létrehozása</li> <li> Várólista frissítése</li> <li> Várólista törlése </li> </ul> | 
-| Témakör | <ul> <li> Témakör létrehozása </li> <li> Témakör frissítése </li> <li> Témakör törlése </li> </ul> |
-| Előfizetés | <ul> <li> Előfizetés létrehozása </li> <li> Előfizetés frissítése </li> <li> Előfizetés törlése </li> </ul> |
+| Névtér | <ul> <li> Névtér létrehozása</li> <li> Névtér frissítése </li> <li> Névtér törlése </li> <li> Névtér sharedaccess-házirendjének frissítése </li> </ul> | 
+| Várólista | <ul> <li> Várólista létrehozása</li> <li> Várólista frissítése</li> <li> Várólista törlése </li> <li> Várólista automatikus törlése </li> </ul> | 
+| Témakör | <ul> <li> Témakör létrehozása </li> <li> Témakör frissítése </li> <li> Témakör törlése </li> <li> Törlési témakör automatikus törlése </li> </ul> |
+| Előfizetés | <ul> <li> Előfizetés létrehozása </li> <li> Előfizetés frissítése </li> <li> Előfizetés törlése </li> <li> Előfizetés törlése automatikus törlése </li> </ul> |
 
 > [!NOTE]
 > Jelenleg *olvasási* műveletek nem követi nyomon az operatív naplók.

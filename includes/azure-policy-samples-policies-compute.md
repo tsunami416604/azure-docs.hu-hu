@@ -2,14 +2,14 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 04/02/2020
 ms.author: dacoulte
-ms.openlocfilehash: 1acbcdf1aeed383591626c083f3335d9d7cf61c1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0fb6bd68026684599d94270906f1792e084ec5f6
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79381542"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80624444"
 ---
 |Név |Leírás |Hatás(ok) |Verzió |GitHub |
 |---|---|---|---|---|
@@ -23,4 +23,4 @@ ms.locfileid: "79381542"
 |[Csak jóváhagyott virtuálisgép-bővítményeket kell telepíteni](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc0e996f8-39cf-4af9-9f45-83fbde810432) |Ez a házirend szabályozza a nem jóváhagyott virtuálisgép-bővítményeket. |Naplózás, Megtagadás, Letiltva |1.0.0 |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VirtualMachines_ApprovedExtensions_Audit.json)
 |[Automatikus operációsrendszer-lemezkép-javítás megkövetelése a virtuálisgép-méretezési készleteken](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F465f0161-0087-490a-9ad9-ad6217f4f43a) |Ez a házirend kényszeríti, hogy a virtuális gép méretezési készletein engedélyezze az automatikus operációsrendszer-lemezkép-javítást, hogy a virtuális gépek mindig biztonságosak legyenek a legújabb biztonsági javítások havonta történő biztonságos alkalmazásával. |Tagadja |1.0.0 |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VMSSOSUpgradeHealthCheck_Deny.json)
 |[A nem csatlakoztatott lemezeket titkosítani kell](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2c89a2e5-7285-40fe-afe0-ae8654b92fb2) |Ez a házirend minden nem csatlakoztatott lemezt naplóz titkosítás nélkül. |Naplózás, letiltva |1.0.0 |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/UnattachedDisk_Encryption_Audit.json)
-|[A virtuális gépeket át kell telepíteni az új Azure Resource Manager-erőforrásokba](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d84d5fb-01f6-4d12-ba4f-4a26081d403d) |Az új Azure Resource Manager használata a virtuális gépekhez olyan biztonsági fejlesztések biztosításához, mint például: erősebb hozzáférés-vezérlés (RBAC), jobb naplózás, Azure Resource Manager-alapú telepítés és cégirányítási, felügyelt identitásokhoz való hozzáférés, hozzáférés a kulcstárolóhoz titkos kulcsok, Azure AD-alapú hitelesítés és címkék és erőforráscsoportok támogatása a könnyebb biztonságkezelés érdekében |Naplózás, Megtagadás, Letiltva |1.0.0 |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/ClassicCompute_Audit.json)
+|[A virtuális gépeket át kell telepíteni az új Azure Resource Manager-erőforrásokba](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d84d5fb-01f6-4d12-ba4f-4a26081d403d) |Az új Azure Resource Manager használata a virtuális gépekhez olyan biztonsági fejlesztések biztosításához, mint például: erősebb hozzáférés-vezérlés (RBAC), jobb naplózás, Azure Resource Manager-alapú telepítés és cégirányítási rendszer, hozzáférés a felügyelt identitásokhoz, hozzáférés a titkos kulcsok kulcstárolójához, Azure AD-alapú hitelesítés, valamint címkék és erőforráscsoportok támogatása a könnyebb biztonságkezelés érdekében |Naplózás, Megtagadás, Letiltva |1.0.0 |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/ClassicCompute_Audit.json)

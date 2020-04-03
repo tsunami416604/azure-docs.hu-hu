@@ -10,34 +10,31 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 03/14/2020
+ms.date: 04/2/2020
 ms.author: raiye
-ms.openlocfilehash: 51c46414b5fe39da13b6ffff53c9509b482fa0d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2b929481af3df8bc3bc6a9a6955e8277e3de3298
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79408301"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618680"
 ---
 # <a name="azure-guest-os"></a>Azure vendég operációs rendszer
 Az alábbi táblázatok a Microsoft Security Response Center (MSRC) azure-beli vendégoperációsrendszerre alkalmazott frissítéseit mutatják be. Ebben a cikkben állapítsa meg, hogy egy adott frissítés vonatkozik-e a használt vendég operációs rendszerre. A frissítések mindig az adott [családra][family-explain] vonatkozóan továbbítódnak, ahol bevezették őket.
 
 ## <a name="march-2020-guest-os"></a>Március 2020 Vendég OS
 
->[!NOTE]
->A márciusi vendég operációs rendszer jelenleg az automatikus frissítésekhez konfigurált felhőszolgáltatás-virtuális gépeken van kivezetve. Amikor a bevezetés befejeződött, ez a verzió lesz elérhető manuális frissítések az Azure Portalon keresztül és konfigurációs fájlokat. A következő javítások a márciusi vendég operációs rendszer részét képezik. Ez a lista változhat.
-
 | Termékkategória | Szülő TUDÁSBázis-cikk | A biztonsági rés leírása | Vendég operációs rendszer | Első bevezetés dátuma |
 | --- | --- | --- | --- | --- |
-|  Rel 20-03  |  [4541500]  |  Windows biztonság  | 2.96 | 2020. március 10. |
-|  Rel 20-03  |  [4540671]  |  Internet Explorer  | 2.96, 3.83, 4.76 | 2020. március 10. |
-|  Rel 20-03  |  [4540694]  |  Windows biztonság  | 3.83 | 2020. március 10. |
-|  Rel 20-03  |  [4541505]  |  Windows biztonság  | 4.76 | 2020. március 10. |
-|  Rel 20-03  |  [4540670]  |  Legutóbbi összegző frissítés (LCU)  | 5.41 | 2020. március 10. |
-|  Rel 20-03  |  [4538461]  |  Legutóbbi összegző frissítés (LCU)  | 6.17 | 2020. március 10. |
-|  Rel 20-03  |  [4537820]  |  Havi összesítés  | 2.96 | 2020. február 11. |
-|  Rel 20-03  |  [4537814]  |  Havi összesítés  | 3.83 | 2020. február 11. |
-|  Rel 20-03  |  [4537821]  |  Havi összesítés  | 4.76 | 2020. február 11. |
+|  Rel 20-03  |  [4541500]  |  Windows biztonság  | [2.96] | 2020. március 10. |
+|  Rel 20-03  |  [4540671]  |  Internet Explorer  | [2,96], [3,83,] [4,76] | 2020. március 10. |
+|  Rel 20-03  |  [4540694]  |  Windows biztonság  | [3.83] | 2020. március 10. |
+|  Rel 20-03  |  [4541505]  |  Windows biztonság  | [4.76] | 2020. március 10. |
+|  Rel 20-03  |  [4540670]  |  Legutóbbi összegző frissítés (LCU)  | [5.41] | 2020. március 10. |
+|  Rel 20-03  |  [4538461]  |  Legutóbbi összegző frissítés (LCU)  | [6.17] | 2020. március 10. |
+|  Rel 20-03  |  [4537820]  |  Havi összesítés  | [2.96] | 2020. február 11. |
+|  Rel 20-03  |  [4537814]  |  Havi összesítés  | [3.83] | 2020. február 11. |
+|  Rel 20-03  |  [4537821]  |  Havi összesítés  | [4.76] | 2020. február 11. |
 
 [4541500]: https://support.microsoft.com/kb/4541500 
 [4540671]: https://support.microsoft.com/kb/4540671 

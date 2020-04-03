@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: 9252e3e41d0c639231a2abe20202499c6b3ee32a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5820778d46f5701b82bb289192350a9e13739d37
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75444855"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619443"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processzor SDK: Megjegyzések letöltése és kiadása
 
@@ -26,7 +26,7 @@ ms.locfileid: "75444855"
 > * [Aszinkron Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [Többi](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
 > * [Tömeges végrehajtó - .NET](sql-api-sdk-bulk-executor-dot-net.md)
@@ -36,7 +36,7 @@ ms.locfileid: "75444855"
 |---|---|
 |**SDK letöltés**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
 |**API-dokumentáció**|[A Hírcsatorna-processzorkönyvtár API-jának hivatkozási dokumentációjának módosítása](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)|
-|**Első lépések**|[A hírcsatorna-feldolgozó módosítása .NET SDK – első lépések](change-feed.md)|
+|**Bevezetés**|[A hírcsatorna-feldolgozó módosítása .NET SDK – első lépések](change-feed.md)|
 |**Jelenlegi támogatott keretrendszer**| [Microsoft .NET-keretrendszer 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
 
 > [!NOTE]
@@ -45,6 +45,10 @@ ms.locfileid: "75444855"
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
 ### <a name="v2-builds"></a>v2 épít
+
+### <a name="230"></a><a name="2.3.0"/>2.3.0
+* Hozzáadott egy `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` új módszert `ICheckpointPartitionProcessorFactory`és a megfelelő nyilvános felület . Ez lehetővé teszi, hogy a `IPartitionProcessor` felület megvalósítása beépített ellenőrzőpont-mechanizmust használjon. Az új gyár hasonló `IPartitionProcessorFactory`a meglévőhez, azzal a különbséggel, hogy a `Create` módszer e `ILeaseCheckpointer` paramétert is átveszi.
+* A két módszer közül `ChangeFeedProcessorBuilder.WithPartitionProcessorFactory` csak `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory`az egyik használható, `ChangeFeedProcessorBuilder` vagy a , használható ugyanarra a példányra.
 
 ### <a name="228"></a><a name="2.2.8"/>2.2.8
 * Stabilitás és diagnosztizálhatóság javítása:
@@ -88,7 +92,7 @@ ms.locfileid: "75444855"
 
 ### <a name="220"></a><a name="2.2.0"/>2.2.0
 * A particionált címbérlet-gyűjtemények támogatása hozzáadva. A partíciókulcsot /id néven kell definiálni.
-* Kisebb megszakítási módosítás: az IChangeFeedDocumentClient felület és a ChangeFeedDocumentClient osztály metódusai a RequestOptions és a CancellationToken paraméterekkel módosították. Az IChangeFeedDocumentClient egy speciális bővíthetőségi pont, amely lehetővé teszi a dokumentumügyfél egyéni implementációját a Change Feed processzorral való használatra, pl. díszíteni A DocumentClient-t, és elfoghatja az összes hívást, hogy extra nyomon követést, hibakezelést végezzen Stb. Ezzel a frissítéssel az IChangeFeedDocumentClient programot megvalósító kódot módosítani kell, hogy új paramétereket tartalmazzon a megvalósításba.
+* Kisebb megszakítási módosítás: az IChangeFeedDocumentClient felület és a ChangeFeedDocumentClient osztály metódusai a RequestOptions és a CancellationToken paraméterekkel módosították. IChangeFeedDocumentClient egy speciális bővíthetőségi pont, amely lehetővé teszi, hogy egyéni végrehajtását a dokumentum kliens használni Change Feed processzor, pl. díszíteni DocumentClient és elfog minden hívást, hogy nem extra nyomon követése, hibakezelés, stb. Ezzel a frissítéssel az IChangeFeedDocumentClient programot megvalósító kódot módosítani kell, hogy új paramétereket tartalmazzon a megvalósításba.
 * Kisebb diagnosztikai fejlesztések.
 
 ### <a name="210"></a><a name="2.1.0"/>2.1.0
@@ -182,6 +186,7 @@ A Cosmos DB-nek a rendszer egy kivisszavonult SDK-t használó kérését a szol
 
 | Verzió | Megjelenési dátum | Nyugdíjazás dátuma |
 | --- | --- | --- |
+| [2.3.0](#2.3.0) |2020. április 2. |--- |
 | [2.2.8](#2.2.8) |2019. október 28.October 28, 2019 |--- |
 | [2.2.7](#2.2.7) |2019. május 14.May 14, 2019 |--- |
 | [2.2.6](#2.2.6) |2019. január 29., 2019. január 29. |--- |
