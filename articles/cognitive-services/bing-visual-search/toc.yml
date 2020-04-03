@@ -24,17 +24,11 @@
           href: quickstarts/ruby.md
         - name: A Go használata
           href: quickstarts/go.md
-    - name: SDK
+    - name: Ügyfélkódtár
       expanded: true
       items:
-        - name: 'A C# használata'
-          href: visual-search-sdk-c-sharp.md
-        - name: A Node.js használata
-          href: visual-search-sdk-node.md
-        - name: A Python használata
-          href: visual-search-sdk-python.md
-        - name: A Java használata
-          href: visual-search-sdk-java.md
+        - name: A Bing Video Search ügyfélkódtárai
+          href: ./quickstarts/client-libraries.md
 - name: Oktatóanyagok
   items:
     - name: Kép feltöltése

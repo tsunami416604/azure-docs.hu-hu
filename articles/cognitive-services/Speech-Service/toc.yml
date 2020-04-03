@@ -56,7 +56,7 @@
     - name: Testreszabás
       items:
         - name: Adatok előkészítése a Custom Speech szolgáltatáshoz
-          href: how-to-custom-speech-test-data.md
+          href: how-to-custom-speech-test-and-train.md
         - name: Custom Speech-adatok vizsgálata
           href: how-to-custom-speech-inspect-data.md
         - name: A Custom Speech pontosságának értékelése
@@ -67,10 +67,6 @@
           href: how-to-custom-speech-deploy-model.md
         - name: Ember által címkézett átiratok létrehozása
           href: how-to-custom-speech-human-labeled-transcriptions.md
-        - name: Egyéni kulcsszóelnevezési irányelvek
-          href: speech-devices-sdk-kws-guidelines.md
-        - name: Egyéni kulcsszófelismerés
-          href: speech-devices-sdk-create-kws.md
     - name: Referencia
       items:
         - name: Beszéd SDK API-k
@@ -448,6 +444,10 @@
         - name: Speech-tárolók az Azure Container Instancesben
           displayName: 'ACI,azure container instances,container instances,containers'
           href: deploy-speech-on-container-instances.md
+    - name: További források
+      items:
+        - name: Tárolók – GYIK
+          href: speech-container-faq.md
 - name: Beszéd SDK
   items:
     - name: Áttekintés
