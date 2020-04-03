@@ -1,20 +1,23 @@
 ---
 title: Az Azure Monitor által támogatott metrikák erőforrástípus szerint
 description: Az Azure Monitor segítségével az egyes erőforrástípusokhoz elérhető metrikák listája.
-author: anirudhcavale
+author: rboucher
 services: azure-monitor
 ms.topic: reference
 ms.date: 03/17/2020
-ms.author: ancav
+ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 674321878cfce2d05189700a8b5118e233d9044d
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 79bae9712cea04425cc36414ec56fdddd4345eab
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520706"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586028"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Támogatott metrikák az Azure Monitorsegítségével
+
+> [!NOTE]
+> Ez a lista nagyrészt automatikusan generált az Azure Monitor metrikák REST API-t. A listán a Githubon keresztül végzett módosítások figyelmeztetés nélkül átírhatók. Az állandó frissítések elkészítésével kapcsolatos részletekért forduljon a cikk szerzőjéhez.
 
 Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakcióra, beleértve a portálon való ábrázolásukat, a REST API-n keresztüli hozzáférésüket, vagy a PowerShell vagy a CLI használatával történő lekérdezésüket. Az alábbiakban az Azure Monitor metrika-folyamatával jelenleg elérhető összes metrika teljes listáját tartalmazza. Más metrikák is elérhetők lehetnek a portálon, vagy örökölt API-k használatával. Ez az alábbi lista csak az összevont Azure Monitor metrika-folyamat használatával elérhető metrikákat tartalmazza. A metrikák névtér szerint vannak rendezve. A szolgáltatások és a hozzájuk tartozó névterek listáját az [Azure-szolgáltatások erőforrás-szolgáltatói](../../azure-resource-manager/management/azure-services-resource-providers.md)című témakörben találja. A metrikák programozási célú lekérdezéséhez és eléréséhez használja a [2018-01-01 api-verziót.](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
 
@@ -24,10 +27,6 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 > *Például*: Egy eseményközpont „Bejövő üzenetek” metrikája üzenetsoronként deríthető fel és ábrázolható. Ha azonban diagnosztikai beállításokon keresztül van exportálva, a metrika az eseményközpontban lévő összes üzenetsor összes bejövő üzeneteként lesz ábrázolva.
 >
 > A diagnosztikai beállításokkal exportálható platformmutatók listáját [ebben a cikkben](metrics-supported-export-diagnostic-settings.md)találja.
-
-
-
-
 
 
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/kiszolgálók
@@ -565,7 +564,7 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |Lemezenkénti írási bájt/mp|Adatlemez írási bájt/mp [(elavult)](portal-disk-metrics-deprecation.md)|CountPerSzekszekundum|Átlag|Egyetlen lemezre írt bájtok/mp-es írása a figyelési időszak alatt|SlotId között|
 |Lemezolvasási műveletek/mp|Adatlemez olvasási műveletei/mp [(elavult)](portal-disk-metrics-deprecation.md)|CountPerSzekszekundum|Átlag|IOPS olvasása egyetlen lemezről a figyelési időszak alatt|SlotId között|
 |Lemezírási műveletek/mp|Adatlemez írási [műveletei/mp(elavult)](portal-disk-metrics-deprecation.md)|CountPerSzekszekundum|Átlag|IOPS írása egyetlen lemezről a figyelési időszak alatt|SlotId között|
-|Lemezenkénti qd|[Adatlemez –qd [(elavult)](portal-disk-metrics-deprecation.md)](portal-disk-metrics-deprecation.md)|Darabszám|Átlag|Adatlemez-várólista mélysége(vagy várólista hossza)|SlotId között|
+|Lemezenkénti qd|Adatlemez –QD [(elavult)](portal-disk-metrics-deprecation.md)](portal-disk-metrics-deprecation.md)|Darabszám|Átlag|Adatlemez-várólista mélysége(vagy várólista hossza)|SlotId között|
 |Az operációs rendszer lemezenkénti olvasási bájt/mp|Operációs rendszer lemezolvasási [bájtjai/mp(elavult)](portal-disk-metrics-deprecation.md)|CountPerSzekszekundum|Átlag|Egyetlen lemezről beolvasott bájtok/mp-es olvasása az operációs rendszer lemezének figyelési időszaka alatt|None|
 |Operációs rendszer lemezenként i.e.|Operációs rendszer lemezírási [bájtjai/mp(elavult)](portal-disk-metrics-deprecation.md)|CountPerSzekszekundum|Átlag|Egyetlen lemezre írt bájtok/mp-es írása az operációs rendszer lemezének figyelési időszaka alatt|None|
 |Az operációs rendszer lemezenkénti olvasási műveletei/mp|Operációs rendszer lemezolvasási műveletei/mp [(elavult)](portal-disk-metrics-deprecation.md)|CountPerSzekszekundum|Átlag|IOPS olvasása egyetlen lemezről az operációs rendszer lemezének figyelési időszaka alatt|None|
@@ -1974,8 +1973,6 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 
 
 
-
-
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft.Sql/servers/databases
 
 |Metrika|Metrikus megjelenítendő név|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
@@ -2002,8 +1999,8 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |dwu_used|Használt DWU|Darabszám|Maximum|Használt DWU. Csak adatraktárakra vonatkozik.|None|
 |cache_hit_percent|Gyorsítótár találati százaléka|Százalék|Maximum|Gyorsítótár találati százaléka. Csak adatraktárakra vonatkozik.|None|
 |cache_used_percent|Gyorsítótár által használt százalék|Százalék|Maximum|Gyorsítótár használt százaléka. Csak adatraktárakra vonatkozik.|None|
-|sqlserver_process_core_percent|SQL Server folyamat alapszázaléka|Százalék|Maximum|A PROCESSZOR-használat az SQL DB folyamat százalékában. Adatraktárakra nem vonatkozik.|None|
-|sqlserver_process_memory_percent|SQL Server folyamatmemória százaléka|Százalék|Maximum|Memóriahasználat az SQL DB folyamat százalékában. Adatraktárakra nem vonatkozik.|None|
+|sqlserver_process_core_percent|SQL Server folyamat alapszázaléka|Százalék|Maximum|Az SQL Server folyamat processzorhasználati százaléka az operációs rendszer szerint mérve.|None|
+|sqlserver_process_memory_percent|SQL Server folyamatmemória százaléka|Százalék|Maximum|Az SQL Server folyamat memóriahasználati százaléka az operációs rendszer szerint mérve.|None|
 |tempdb_data_size|Tempdb-adatfájl mérete kilobájt|Darabszám|Maximum|Tempdb adatfájl mérete kilobájt. Adatraktárakra nem vonatkozik.|None|
 |tempdb_log_size|Tempdb naplófájl mérete Kilobájt|Darabszám|Maximum|Tempdb naplófájl mérete kilobájt. Adatraktárakra nem vonatkozik.|None|
 |tempdb_log_used_percent|Használt Tempdb százaléknapló|Százalék|Maximum|Tempdb százaléknapló használatban. Adatraktárakra nem vonatkozik.|None|
@@ -2060,8 +2057,8 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |database_cpu_limit|CPU-korlát|Darabszám|Átlag|CPU-korlát|DatabaseResourceId azonosító|
 |cpu_used|HASZNÁLT PROCESSZOR|Darabszám|Átlag|CPU használt. Virtuálismag-alapú rugalmas készletek vonatkozik.|None|
 |database_cpu_used|HASZNÁLT PROCESSZOR|Darabszám|Átlag|HASZNÁLT PROCESSZOR|DatabaseResourceId azonosító|
-|sqlserver_process_core_percent|SQL Server folyamat alapszázaléka|Százalék|Maximum|A PROCESSZOR-használat az SQL DB folyamat százalékában. Rugalmas készletekre vonatkozik.|None|
-|sqlserver_process_memory_percent|SQL Server folyamatmemória százaléka|Százalék|Maximum|Memóriahasználat az SQL DB folyamat százalékában. Rugalmas készletekre vonatkozik.|None|
+|sqlserver_process_core_percent|SQL Server folyamat alapszázaléka|Százalék|Maximum|Az SQL Server folyamat processzorhasználati százaléka az operációs rendszer szerint mérve. Rugalmas készletekre vonatkozik.|None|
+|sqlserver_process_memory_percent|SQL Server folyamatmemória százaléka|Százalék|Maximum|Az SQL Server folyamat memóriahasználati százaléka az operációs rendszer szerint mérve. Rugalmas készletekre vonatkozik.|None|
 |tempdb_data_size|Tempdb-adatfájl mérete kilobájt|Darabszám|Maximum|Tempdb-adatfájl mérete kilobájt|None|
 |tempdb_log_size|Tempdb naplófájl mérete Kilobájt|Darabszám|Maximum|Tempdb naplófájl mérete Kilobájt|None|
 |tempdb_log_used_percent|Használt Tempdb százaléknapló|Százalék|Maximum|Használt Tempdb százaléknapló|None|
@@ -2351,15 +2348,6 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |Százalékos processzorhasználat|Százalékos processzorhasználat|Százalék|Átlag|A PROCESSZOR-kihasználtság. Ez az érték a rendszer 100%-os értékével jelenik meg a rendszer összes processzormagjával. Például egy kétutas virtuális gép, amely egy négymagos rendszer 50%-át használja, teljes mértékben két magot használ.|None|
 |Százalékprocesszorready|Százalékos CPU ready|Ezredmásodperc|Összesen|A kész idő az az idő, amely arra vár, hogy a PROCESSZOR(ok) elérhetővé váljon az elmúlt frissítési időközben.|None|
 
-
-
-
-
-
-
-
-
-
 ## <a name="microsoftwebserverfarms"></a>Microsoft.Web/serverfarms
 
 |Metrika|Metrikus megjelenítendő név|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
@@ -2380,7 +2368,7 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |TcpLastAck|TCP utolsó Ack|Darabszám|Átlag|TCP utolsó Ack|Példány|
 |TcpTimeVárakozás|TCP-idő várakozása|Darabszám|Átlag|TCP-idő várakozása|Példány|
 
-## <a name="microsoftwebsites"></a>Microsoft.Web/webhelyek
+## <a name="microsoftwebsites-excluding-functions"></a>Microsoft.Web/sites (a funkciók kivételével) 
 
 > [!NOTE]
 > **A fájlrendszer használata** egy új mérőszám, amelyet globálisan vezetnek be, csak akkor várható adat, ha a privát előzetes verzióhoz engedélyezési listán szerepel.
@@ -2410,6 +2398,37 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |Alkalmazáskapcsolatok|Kapcsolatok|Darabszám|Átlag|Kapcsolatok|Példány|
 |Kezeli|Leírók száma|Darabszám|Átlag|Leírók száma|Példány|
 |Szálak|Szálak száma|Darabszám|Átlag|Szálak száma|Példány|
+|Privát bájt|Privát bájtok|Bájt|Átlag|Privát bájtok|Példány|
+|IoReadBytesPerSz|Io olvasási bájt másodpercenként|BytesPerSecond|Összesen|Io olvasási bájt másodpercenként|Példány|
+|IoWriteBytesPerSecond|Io írási bájt másodpercenként|BytesPerSecond|Összesen|Io írási bájt másodpercenként|Példány|
+|IoOtherBytesPerSz|Egyéb bájtok másodpercenként|BytesPerSecond|Összesen|Egyéb bájtok másodpercenként|Példány|
+|IoReadOperationsPerSecond|Io olvasási műveletek másodpercenként|BytesPerSecond|Összesen|Io olvasási műveletek másodpercenként|Példány|
+|IoWriteOperationsPerSecond|I/O-írási műveletek másodpercenként|BytesPerSecond|Összesen|I/O-írási műveletek másodpercenként|Példány|
+|IoOtherOperationsPerSecond|Io egyéb műveletek másodpercenként|BytesPerSecond|Összesen|Io egyéb műveletek másodpercenként|Példány|
+|Kérelmekaz alkalmazásvárólistában|Kérelmek az alkalmazásvárólistában|Darabszám|Átlag|Kérelmek az alkalmazásvárólistában|Példány|
+|CurrentAssemblies között|Aktuális szerelvények|Darabszám|Átlag|Aktuális szerelvények|Példány|
+|TotalAppDomains (Összes alkalmazásdomain)|Összes alkalmazástartomány|Darabszám|Átlag|Összes alkalmazástartomány|Példány|
+|TotalAppDomainsUnloaded|A kiürített összes alkalmazástartomány|Darabszám|Átlag|A kiürített összes alkalmazástartomány|Példány|
+|Gen0Gyűjtemények|Gen 0 Szemétgyűjtemények|Darabszám|Összesen|Gen 0 Szemétgyűjtemények|Példány|
+|Gen1Gyűjtemények|Gen 1 Szemétgyűjtemények|Darabszám|Összesen|Gen 1 Szemétgyűjtemények|Példány|
+|Gen2Gyűjtemények|Gen 2 Szemétgyűjtemények|Darabszám|Összesen|Gen 2 Szemétgyűjtemények|Példány|
+|Állapotellenőrző állapota|Állapot-ellenőrzés állapota|Darabszám|Átlag|Állapot-ellenőrzés állapota|Példány|
+|FileSystemUsage|Fájlrendszer használata|Bájt|Átlag|Fájlrendszer használata|None|
+
+## <a name="microsoftwebsites-functions"></a>Microsoft.Web/webhelyek (funkciók)
+
+> [!NOTE]
+> **A fájlrendszer használata** egy új mérőszám, amelyet globálisan vezetnek be, csak akkor várható adat, ha a privát előzetes verzióhoz engedélyezési listán szerepel.
+
+|Metrika|Metrikus megjelenítendő név|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|---|---|---|---|---|---|
+|Fogadott bájt|Adatok a|Bájt|Összesen|Adatok a|Példány|
+|Küldött bájt|Adatok ki|Bájt|Összesen|Adatok ki|Példány|
+|Http5xx között|Http Server hibák|Darabszám|Összesen|Http Server hibák|Példány|
+|MemoryWorkingSet|Memóriamunkakészlet|Bájt|Átlag|Memóriamunkakészlet|Példány|
+|AverageMemoryWorkingSet|Átlagos memóriamunkakészlet|Bájt|Átlag|Átlagos memóriamunkakészlet|Példány|
+|FunctionExecutionUnits|Funkcióvégrehajtási egységek|MB / Ezredmásodpercek|Összesen|[Funkcióvégrehajtási egységek](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ#how-can-i-view-graphs-of-execution-count-and-gb-seconds)|Példány|
+|FunctionExecutionCount (FunctionExecutionCount)|Függvényvégrehajtási száma|Darabszám|Összesen|Függvényvégrehajtási száma|Példány|
 |Privát bájt|Privát bájtok|Bájt|Átlag|Privát bájtok|Példány|
 |IoReadBytesPerSz|Io olvasási bájt másodpercenként|BytesPerSecond|Összesen|Io olvasási bájt másodpercenként|Példány|
 |IoWriteBytesPerSecond|Io írási bájt másodpercenként|BytesPerSecond|Összesen|Io írási bájt másodpercenként|Példány|
@@ -2510,3 +2529,4 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 * [A metrikákról az Azure Monitorban olvashat](data-platform.md)
 * [Riasztások létrehozása metrikákhoz](alerts-overview.md)
 * [Mérőszámok exportálása tárolásra, eseményközpontra vagy logelemzésre](platform-logs-overview.md)
+

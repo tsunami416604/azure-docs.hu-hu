@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
-ms.date: 01/21/2020
-ms.openlocfilehash: b9fdd1b25e53e1cdc8aa76564304a61adaa8d804
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/02/2020
+ms.openlocfilehash: 06242af6cb00e3adebbc80da722898fb8e348e36
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79268781"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585358"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Mi az Azure SQL Database felügyelt példánya?
 
@@ -42,7 +42,7 @@ A felügyelt példány egyesíti az Azure SQL Database és az SQL Server Databas
 > [!IMPORTANT]
 > A felügyelt példány az SQL Server legújabb verziójának összes szolgáltatásával fut, beleértve az online műveleteket, az automatikus tervjavításokat és a vállalati teljesítmény egyéb javításait. A rendelkezésre álló szolgáltatások összehasonlítása a [Szolgáltatás összehasonlítása: Azure SQL Database versus SQL Server](sql-database-features.md).
 
-| **PaaS előnyök** | **Üzletmenet folytonossága** |
+| **PaaS előnyök** | **Az üzletmenet folytonossága** |
 | --- | --- |
 |Nincs hardverbeszerzés és -kezelés <br>Nincs felügyeleti terhelés az alapul szolgáló infrastruktúra kezeléséhez <br>Gyors kiépítés és szolgáltatásméretezés <br>Automatikus javítás és verziófrissítés <br>Integráció más PaaS-adatszolgáltatásokkal |99,99%-os előidők SLA  <br>Beépített, [magas rendelkezésre állású](sql-database-high-availability.md) <br>Automatikus biztonsági [másolatokkal](sql-database-automated-backups.md) védett adatok <br>Ügyfél által konfigurálható biztonsági mentési megőrzési időszak <br>Felhasználó által kezdeményezett [biztonsági mentések](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>[Időbeli adatbázis-visszaállítási](sql-database-recovery-using-backups.md#point-in-time-restore) képesség |
 |**Biztonság és megfelelőség** | **Felügyelet**|
@@ -67,7 +67,7 @@ A felügyelt példányok főbb jellemzőit az alábbi táblázat mutatja:
 | Portál támogatása | Igen|
 | Beépített integrációs szolgáltatás (SSIS) | Nem - Az SSIS az [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) része |
 | Beépített elemző szolgáltatás (SSAS) | Nem - Az SSAS különálló [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
-| Beépített jelentéskészítő szolgáltatás (SSRS) | Nem – Power BI vagy SSRS IaaS használata |
+| Beépített jelentéskészítő szolgáltatás (SSRS) | Nem – használja a [Power BI-s lapszámozott jelentéseket,](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) vagy az SSRS-t az Azure virtuális gépen. Bár a felügyelt példány nem tudja futtatni az SSRS szolgáltatást, sql server hitelesítéssel üzemeltethet SSRS 2019 katalógus-adatbázisokat egy külső jelentéskészítő kiszolgálóhoz. |
 |||
 
 ## <a name="vcore-based-purchasing-model"></a>Virtuálismag-alapú vásárlási modell
@@ -247,7 +247,7 @@ A titkosított adatbázis felügyelt példányba való áttelepítése az Azure 
 
 ## <a name="azure-active-directory-integration"></a>Azure Active Directory-integráció
 
-A felügyelt példány telepítési beállítás támogatja a hagyományos SQL server database motor bejelentkezések és bejelentkezések integrált Azure Active Directory (AAD). Az Azure AD-kiszolgálói egyszerű (logins) (**nyilvános előzetes verzió**) a helyszíni adatbázis-bejelentkezések helyszíni adatbázis-bejelentkezések Azure-felhőbeli verziója, amelyet a helyszíni környezetben használ. Az Azure AD-kiszolgálói egyszerű (bejelentkezési adatok) lehetővé teszik, hogy az Azure Active Directory-bérlőből származó felhasználókat és csoportokat valódi példányhatókör-rendszernévként adja meg, amely képes bármilyen példányszintű művelet et végrehajtani, beleértve az adatbázisközi lekérdezéseket is ugyanazon a felügyelt en belül Példány.
+A felügyelt példány telepítési beállítás támogatja a hagyományos SQL server database motor bejelentkezések és bejelentkezések integrált Azure Active Directory (AAD). Az Azure AD-kiszolgálói egyszerű (logins) (**nyilvános előzetes verzió**) a helyszíni adatbázis-bejelentkezések helyszíni adatbázis-bejelentkezések Azure-felhőbeli verziója, amelyet a helyszíni környezetben használ. Az Azure AD-kiszolgálói egyszerű (bejelentkezési adatok) lehetővé teszik, hogy az Azure Active Directory-bérlőből származó felhasználókat és csoportokat valódi példányhatókör-rendszernévként adja meg, amely képes bármilyen példányszintű műveletet végrehajtani, beleértve az adatbázisközi lekérdezéseket ugyanazon felügyelt példányon belül.
 
 Új szintaxis kerül bevezetésre az Azure AD-kiszolgálói egyszerű staféta-rendszerének létrehozásához **külső szolgáltatótól.** A szintaxisról további információt a <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN című</a>témakörben talál, és tekintse át az [Azure Active Directory rendszergazdájának kiépítése a felügyelt példánycikkhez](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance) című témakört.
 

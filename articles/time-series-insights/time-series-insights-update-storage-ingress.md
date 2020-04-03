@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2f12cf303c58f0fa614c59ffe643c6c2ee5d2415
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8987cbe6860422ff92119a9f3b13a0a365e6d1a4
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78246186"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618326"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Adattárolás és be- és be- és be- és bevitel az Azure Time Series Insights előzetes verzióban
 
@@ -91,7 +91,7 @@ A bejövő díjak általában a szervezetben található eszközök számának, 
 
 *  **Berendezések száma** × **Az esemény kibocsátási gyakorisága** × Az egyes események **mérete**.
 
-Alapértelmezés szerint a Time Series Insights előzetes verzió a beérkező adatokat **a Time Series Insights-környezetben legfeljebb 1 megabájt (MBps)** sebességgel tudja beadni.
+Alapértelmezés szerint a Time Series Insights előzetes verzió a beérkező adatokat **a Time Series Insights-környezetben legfeljebb 1 megabájt (MBps)** sebességgel tudja beadni. További korlátozások vannak [hubpartíciónként.](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress#hub-partitions-and-per-partition-limits)
 
 > [!TIP] 
 > * Akár 16 Mb/s sebesség betöltési sebességéhez is környezetvédelmi támogatás biztosítható.
@@ -99,7 +99,7 @@ Alapértelmezés szerint a Time Series Insights előzetes verzió a beérkező a
  
 * **1. példa:**
 
-    A Contoso Shipping 100 000 olyan eszközzel rendelkezik, amelyek percenként háromszor bocsátanak ki eseményt. Egy esemény mérete 200 bájt. Egy Event Hub négy partíciót használnak a Time Series Insights eseményforrásként.
+    A Contoso Shipping 100 000 olyan eszközzel rendelkezik, amelyek percenként háromszor bocsátanak ki eseményt. Egy esemény mérete 200 bájt. Egy Iot Hub négy partíciót használnak a Time Series Insights eseményforrásként.
 
     * A Time Series Insights-környezetbe a betöltési arány a következő lenne: **100 000 eszköz * 200 bájt/esemény * (3/60 esemény/mp) = 1 Mb/s**.
     * A partíciónkénti betöltési sebesség 0,25 Mb/s lenne.
@@ -107,11 +107,11 @@ Alapértelmezés szerint a Time Series Insights előzetes verzió a beérkező a
 
 * **2. példa**
 
-    A Contoso Fleet Analytics 60 000 olyan eszközzel rendelkezik, amelyek másodpercenként bocsátanak ki egy eseményt. Az IoT Hub 24-es partíció4-es partíciószámát használják a Time Series Insights eseményforrásként. Egy esemény mérete 200 bájt.
+    A Contoso Fleet Analytics 60 000 olyan eszközzel rendelkezik, amelyek másodpercenként bocsátanak ki egy eseményt. Egy 4-es partíciós számlálóval rendelkező Event Hubot használnak a Time Series Insights eseményforrásként. Egy esemény mérete 200 bájt.
 
-    * A környezet betöltési sebessége a következő lenne: **20 000 eszköz * 200 bájt/esemény * 1 esemény/mp = 4 Mb/s**.
-    * A partíciónkénti sebesség 1 M/s lenne.
-    * A Contoso Fleet Analytics az Azure Portalon keresztül kérelmet nyújthat be a Time Series Insights-nak a környezetük betöltési arányának növelése érdekében.
+    * A környezet betöltési sebessége a következő lenne: **60 000 eszköz * 200 bájt/esemény * 1 esemény/mp = 12 Mb/s**.
+    * A partíciónkénti sebesség 3 MBps lenne.
+    * A Contoso Fleet Analytics betöltési sebessége túllépi a környezet és a partíciókorlátokat. A Time Series Insights az Azure Portalon keresztül kérelmet nyújthat be a környezetük betöltési arányának növeléséhez, és létrehozhat egy Event Hub-ot, amely több partíciót tartalmaz az előzetes verzió korlátain belül.
 
 #### <a name="hub-partitions-and-per-partition-limits"></a>Hub-partíciók és partíciónkénti korlátok
 

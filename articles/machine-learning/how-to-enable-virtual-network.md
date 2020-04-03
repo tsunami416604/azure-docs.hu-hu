@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 03/13/2020
-ms.openlocfilehash: 6e300bbec097201b33f0c576db91c2ca720fb921
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 4d845514965a8d60c636902660ce838926cbf3c9
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437333"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607617"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Biztonságos Azure ML-kísérletezés és következtetési feladatok az Azure virtuális hálózaton belül
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ Ez a cikk részletes információkat is tartalmaz a *speciális biztonsági beá
 > Kivéve, ha kifejezetten lehívott, erőforrások használatával, például a tárfiókok vagy számítási célok egy virtuális hálózaton belül együtt fog működni mind a gépi tanulási folyamatok, és a nem csővezeték-munkafolyamatok, például a parancsfájl futtatása.
 
 > [!WARNING]
-> A Microsoft nem támogatja az Azure Machine Learning tervező vagy az automatikus gépi tanulás (a stúdióból) használatát a virtuális hálózaton belüli erőforrásokkal.
+> A Microsoft nem támogatja az Azure Machine Learning Studio szolgáltatásainak, például az automatikus ml, adatkészletek, adatcímkézés, tervező és jegyzetfüzetek használatát, ha az alapul szolgáló tároló virtuális hálózatengedélyezve van.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

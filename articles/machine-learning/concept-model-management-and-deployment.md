@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 40e335ee0377c560b15a588269cbdb39cdebca82
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f5aaf8adf33d27f8ebb99c8ca3a873d958632a4f
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477357"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616849"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Modellkezelés, -telepítés és figyelés az Azure Machine Learning segítségével
 
@@ -24,7 +24,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja az Azure Machine Learning et
 
 ## <a name="what-is-mlops"></a>Mi az az MLOps?
 
-A Machine Learning Operations (MLOps) [devops-alapelveken](https://azure.microsoft.com/overview/what-is-devops/) és eljárásokon alapul, amelyek növelik a munkafolyamatok hatékonyságát. Például folyamatos integráció, kézbesítés és üzembe helyezés. Az MLOps ezeket az elveket alkalmazza a gépi tanulási folyamatra, a következő céllal:
+A Machine Learning Operations (MLOps) [devops-alapelveken](https://azure.microsoft.com/overview/what-is-devops/) és eljárásokon alapul, amelyek növelik a munkafolyamatok hatékonyságát. Például folyamatos integráció, kézbesítés és üzembe helyezés. Az MLOps ezeket az elveket alkalmazza a gépi tanulási folyamatra, azzal a céllal, hogy:
 
 * A modellek gyorsabb kísérletezése és fejlesztése
 * A modellek gyorsabb üzembe helyezése az éles környezetben

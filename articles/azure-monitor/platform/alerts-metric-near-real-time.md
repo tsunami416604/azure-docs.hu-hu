@@ -7,12 +7,12 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 3/5/2020
 ms.subservice: alerts
-ms.openlocfilehash: 62c1e29b668c3ef58b0e26e2749c55b913279425
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: c036fa3708d718d6199d27989e60b11015a1227e
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545680"
+ms.locfileid: "80585850"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Metrikariasztások támogatott erőforrásai az Azure Monitorban
 
@@ -86,7 +86,7 @@ Az alábbiakban az újabb riasztások által támogatott Azure-figyelő metrikaf
 |Microsoft.Web/hostingEnvironments/multiRolePools | Igen | Nem | [App Service-környezet többszerepköres készletek](../../azure-monitor/platform/metrics-supported.md#microsoftwebhostingenvironmentsmultirolepools)|
 |Microsoft.Web/hostingEnvironments/workerPools | Igen | Nem | [App Service-környezet munkavégző készletei](../../azure-monitor/platform/metrics-supported.md#microsoftwebhostingenvironmentsworkerpools)|
 |Microsoft.Web/serverfarms | Igen | Nem | [App Szolgáltatási csomagok](../../azure-monitor/platform/metrics-supported.md#microsoftwebserverfarms)|
-|Microsoft.Web/webhelyek | Igen | Nem | [App Services](../../azure-monitor/platform/metrics-supported.md#microsoftwebsites)|
+|Microsoft.Web/webhelyek | Igen | Nem | [Alkalmazásszolgáltatások](../../azure-monitor/platform/metrics-supported.md#microsoftwebsites-excluding-functions) és [-funkciók](../../azure-monitor/platform/metrics-supported.md#microsoftwebsites-functions)|
 |Microsoft.Web/sites/slot | Igen | Nem | [App Service-bővítőhelyek](../../azure-monitor/platform/metrics-supported.md#microsoftwebsitesslots)|
 
 ## <a name="payload-schema"></a>Hasznos adatséma

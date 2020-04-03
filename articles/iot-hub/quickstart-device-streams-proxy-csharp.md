@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: c8ef6a87e839e6d8dfb296e7b24f3d0d95843d1c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 97551ac63066f7064c16a001d9ce1f6bc31465ec
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78675465"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586591"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Rövid útmutató: SSH és RDP engedélyezése egy IoT Hub-eszközadatfolyamon egy C# proxyalkalmazás használatával (előzetes verzió)
 
@@ -30,7 +30,7 @@ Ez a cikk először ismerteti az SSH beállítását (a 22-es porthasználatáva
 
 Az alábbi ábra bemutatja, hogy az eszköz-helyi és szolgáltatás-helyi proxyalkalmazások ebben a mintában lehetővé teszik az SSH-ügyfél és az SSH démonfolyamatok végpontok közötti kapcsolatot. Itt feltételezzük, hogy a démon ugyanazon az eszközön fut, mint az eszköz-helyi proxyalkalmazás.
 
-![Helyi proxyalkalmazás beállítása](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.svg)
+![Helyi proxyalkalmazás beállítása](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.png)
 
 1. A szolgáltatás-helyi proxyalkalmazás csatlakozik az IoT hubhoz, és kezdeményez egy eszközadatfolyamot a céleszközre.
 

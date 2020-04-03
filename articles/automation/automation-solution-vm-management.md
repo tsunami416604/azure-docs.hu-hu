@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: cef3176c99cd57ae229b602feb3c825081fcfe3e
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 906c7728365cc902549bd46c57972e1c90af979c
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548377"
+ms.locfileid: "80607477"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Megoldás a virtuális gépek munkaidőn kívüli indítására és leállítására az Azure Automation szolgáltatásban
 
@@ -140,8 +140,8 @@ Az alábbi táblázat az Automation-fiókban létrehozott változókat sorolja f
 |External_Stop_ResourceGroupNames | Egy vagy több erőforráscsoportot ad meg, amelyek vesszővel választják el az értékeket, és amelyek et a stop műveletekre használnak.|
 |External_WaitTimeForVMRetrySeconds |A várakozási idő másodpercben a műveleteket kell végrehajtani a virtuális gépeken a szekvenciális start/stop runbook.<br> Az alapértelmezett érték 2100 másodperc, és támogatja az 10800 vagy három órás maximális értékre történő konfigurálást.|
 |Internal_AutomationAccountName | Megadja az Automation-fiók nevét.|
-|Internal_AutoSnooze_ARM_WebhookURI | Megadja a klasszikus virtuális gépek automatikus leállítási forgatókönyvéhez meghívott Webhook URI-t.|
-|Internal_AutoSnooze_WebhookUri | Megadja az automatikus leállítási forgatókönyvhöz meghívott Webhook URI-t.|
+|Internal_AutoSnooze_ARM_WebhookURI | Megadja a virtuális gépek automatikus leállítási forgatókönyvéhez meghívott Webhook URI-t.|
+|Internal_AutoSnooze_WebhookUri | Megadja a klasszikus virtuális gépek automatikus leállítási forgatókönyvéhez meghívott Webhook URI-t.|
 |Internal_AzureSubscriptionId | Megadja az Azure-előfizetés-azonosítót.|
 |Internal_ResourceGroupName | Megadja az Automation-fiók erőforráscsoportjának nevét.|
 

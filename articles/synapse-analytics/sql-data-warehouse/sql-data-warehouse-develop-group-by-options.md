@@ -1,6 +1,6 @@
 ---
 title: Csoportosítás beállítások szerint
-description: Tippek a csoportok megvalósításához az Azure SQL Data Warehouse-ban a megoldások fejlesztéséhez.
+description: Tippek a csoport a Synapse SQL-készlet ben beállítások végrehajtása.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,28 +11,28 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f77445e80e701053b7fbfa1aa559248cf505353c
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 28ac075d043f7605b6dfdac6879063fbe9308123
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350513"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619046"
 ---
-# <a name="group-by-options-in-sql-data-warehouse"></a>Csoportosítás az SQL Data Warehouse beállításai szerint
-Tippek a csoportok megvalósításához az Azure SQL Data Warehouse-ban a megoldások fejlesztéséhez.
+# <a name="group-by-options-in-synapse-sql-pool"></a>Csoportosítás a Synapse SQL-készletben
+
+Ebben a cikkben tippeket talál a csoport sql készletben lévő beállítások szerinti megvalósításához.
 
 ## <a name="what-does-group-by-do"></a>Mit csinál a GROUP BY?
 
-A [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql) T-SQL záradék összesítő sorokba összesíti az adatokat. A GROUP BY néhány olyan beállítással rendelkezik, amelyet az SQL Data Warehouse nem támogat. Ezek a lehetőségek kerülő megoldásokkal rendelkeznek.
-
-Ezek a lehetőségek
+A [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql) T-SQL záradék összesítő sorokba összesíti az adatokat. A GROUP BY néhány olyan beállítással rendelkezik, amelyet az SQL-készlet nem támogat. Ezek a lehetőségek a következő kerülő megoldásokat tartalmaznak:
 
 * CSOPORTOSÍTÁS A ROLLUP-MAL
 * CSOPORTOSÍTÓ KÉSZLETEK
 * CSOPORTOSÍTÁS A KOCKA SEGÍTSÉGÉVEL
 
 ## <a name="rollup-and-grouping-sets-options"></a>Összesítő és csoportosítási beállítások
-A legegyszerűbb lehetőség itt az UNION ALL használata az összesítés végrehajtásához, nem pedig az explicit szintaxisra támaszkodva. Az eredmény pontosan ugyanaz
+
+A legegyszerűbb lehetőség itt az, hogy az UNION ALL használatával hajtsa végre az összesítést, ahelyett, hogy az explicit szintaxisra támaszkodna. Az eredmény pontosan ugyanaz.
 
 A következő példa a GROUP BY utasítást használja a ROLLUP beállítással:
 ```sql
@@ -84,11 +84,11 @@ JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritor
 A GROUPING SETS lecseréléséhez a minta elve vonatkozik. Csak létre kell hoznia az UNION ALL szakaszokat a látni kívánt összesítési szintekhez.
 
 ## <a name="cube-options"></a>Kocka beállításai
-Az UNION ALL megközelítés sel group by with cube-ot hozhat létre. A probléma az, hogy a kód gyorsan válhat nehézkes és nehézkes. Ennek csökkentése érdekében használhatja ezt a fejlettebb megközelítést.
+Az UNION ALL megközelítés sel létrehozhat egy GROUP BY WITH CUBE-ot. A probléma az, hogy a kód gyorsan válhat nehézkes és nehézkes. A probléma enyhítése érdekében használhatja ezt a fejlettebb megközelítést.
 
-Használjuk a fenti példát.
+Az előző példában az első lépés a "kocka" meghatározása, amely meghatározza a létrehozni kívánt összesítési szintet. 
 
-Az első lépés a "kocka" meghatározása, amely meghatározza a létrehozni kívánt összesítési szintet. Fontos figyelembe venni a két származtatott tábla KERESZTillesztését. Ez generálja az összes szintet számunkra. A többi kód valóban ott van a formázáshoz.
+Vegye figyelembe a CROSS JOIN a két származtatott táblák, mivel ez generálja az összes szintet számunkra. A kód többi része formázásra alkalmas:
 
 ```sql
 CREATE TABLE #Cube
@@ -119,7 +119,7 @@ SELECT Cols
 FROM GrpCube;
 ```
 
-A következőkben a CTAS eredményeit mutatják be:
+Az alábbi képen a CTAS eredményei láthatók:
 
 ![Csoportosítás kockák szerint](./media/sql-data-warehouse-develop-group-by-options/sql-data-warehouse-develop-group-by-cube.png)
 
@@ -146,7 +146,7 @@ WITH
 ;
 ```
 
-A harmadik lépés az összesítést végző oszlopok kockája. A lekérdezés az #Cube ideiglenes tábla minden sorában egyszer fog futni, és az eredményeket a #Results ideiglenes táblában tárolja.
+A harmadik lépés az összesítést végző oszlopok kockája. A lekérdezés az #Cube ideiglenes tábla minden sorának egyszer fog futni. Az eredmények a #Results temp táblázatban tárolódnak:
 
 ```sql
 SET @nbr =(SELECT MAX(Seq) FROM #Cube);
@@ -170,7 +170,7 @@ BEGIN
 END
 ```
 
-Végül, akkor vissza az eredményeket egyszerűen felolvasása a #Results ideiglenes táblázat
+Végül az eredményeket az #Results ideiglenes táblázatból való felolvasással küldheti vissza:
 
 ```sql
 SELECT *

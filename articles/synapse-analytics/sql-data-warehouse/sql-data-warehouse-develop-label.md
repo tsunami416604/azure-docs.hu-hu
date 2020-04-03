@@ -1,6 +1,6 @@
 ---
 title: Címkék használata a lekérdezések műszerezésére
-description: Tippek a címkék használatával az Azure SQL Data Warehouse-ban a megoldások fejlesztéséhez.
+description: Tippek a címkék használatához a Synapse SQL-készletben lévő lekérdezések műszeréhez megoldások fejlesztéséhez.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,19 +11,19 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 828e4a406cd0fb12877af44263ab1f338c20850c
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: c1a4ffcab3d10f1dc91ce036e995ae0026a0d718
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351679"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619016"
 ---
-# <a name="using-labels-to-instrument-queries-in-azure-sql-data-warehouse"></a>Címkék használata az Azure SQL Data Warehouse-ban lévő lekérdezések eszközkezeléséhez
-Tippek a címkék használatával az Azure SQL Data Warehouse-ban a megoldások fejlesztéséhez.
+# <a name="using-labels-to-instrument-queries-in-synapse-sql-pool"></a>Címkék használata a synapse SQL-készletben lévő lekérdezések eszközéhez
+Ez a cikk tippeket tartalmaz a címkék használatával az SQL-készletben lévő instrument lekérdezések használatával megoldások fejlesztéséhez.
 
 
 ## <a name="what-are-labels"></a>Mik azok a címkék?
-Az SQL Data Warehouse támogatja a lekérdezéscímkéknek nevezett fogalmat. Mielőtt bármilyen mélységbe menne, nézzünk meg egy példát:
+Az SQL-készlet támogatja a lekérdezéscímkéknek nevezett fogalmat. Mielőtt bármilyen mélységbe menne, nézzünk meg egy példát:
 
 ```sql
 SELECT *
@@ -32,11 +32,13 @@ OPTION (LABEL = 'My Query Label')
 ;
 ```
 
-Az utolsó sor a "Saját lekérdezés címke" karakterláncot címkézi a lekérdezéshez. Ez a címke különösen hasznos, mivel a címke lekérdezésre alkalmas a DMV-ken keresztül. Címkék lekérdezése lehetővé teszi a problémalekérdezések megkeresésére és az ELT-futtatás on keresztüli előrehaladás azonosítására.
+Az utolsó sor a "Saját lekérdezés címke" karakterláncot címkézi a lekérdezéshez. Ez a címke azért hasznos, mert a címke lekérdezésre alkalmas a DMV-ken keresztül. 
 
-Egy jó elnevezési konvenció tényleg segít. Ha például a címkét PROJECT, PROCEDURE, STATEMENT vagy COMMENT alkalmazással indítja el, a forrásvezérlő összes kódja között egyedileg azonosíthatja a lekérdezést.
+Címkék lekérdezése lehetővé teszi a problémalekérdezések megkeresésére és az ELT-futtatás on keresztüli előrehaladás azonosítására.
 
-A következő lekérdezés dinamikus felügyeleti nézetet használ a címke szerint való kereséshez.
+Egy jó elnevezési konvenció tényleg segít. Ha például a címkét PROJECT, PROCEDURE, STATEMENT vagy COMMENT programmal indítja el, a lekérdezés tanusíthatja a forrásvezérlő összes kódja között.
+
+A következő lekérdezés dinamikus felügyeleti nézetet használ a címke szerint való kereséshez:
 
 ```sql
 SELECT  *

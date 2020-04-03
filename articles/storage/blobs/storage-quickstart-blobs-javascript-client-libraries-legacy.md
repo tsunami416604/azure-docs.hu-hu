@@ -9,12 +9,12 @@ ms.author: mhopkins
 ms.date: 01/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: da5db7d956b1ba8aa1ac245b77fe0d4cb31909c1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5219af0ec343a6e7f87a07e4a7280ac5f4e85cd3
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80061460"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619115"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -90,7 +90,7 @@ A paraméterek után szereplő értékek nehezen érthetőek lehetnek. Ezek a pa
 Most, hogy a SAS létrejött, másolja a visszatérési értéket, és mentse el valahol egy közelgő lépésben való használatra. Ha a SAS-t az Azure CLI-n kívüli módszerrel hozta `?` létre, el kell távolítania a kezdeti, ha az jelen van. Ez a karakter egy URL-elválasztó, amely a témakör későbbi részében, ahol a SAS is szerepel, az URL-sablonban már szerepel.
 
 > [!IMPORTANT]
-> Éles környezetben mindig SSL használatával adja át az SAS-jogkivonatot. Ezenkívül az SAS-jogkivonatokat a kiszolgálón kell létrehozni, és a HTML-oldalra kell küldeni, hogy a rendszer visszaadja azokat az Azure Blob Storage-ba. Érdemes például kiszolgáló nélküli függvényt használni SAS-jogkivonatok létrehozásához. Az Azure Portal olyan függvénysablonokat tartalmaz, amelyekkel JavaScript-függvény használatával hozható létre SAS.
+> Éles környezetben mindig adja át a SAS-jogkivonatokat a TLS használatával. Ezenkívül az SAS-jogkivonatokat a kiszolgálón kell létrehozni, és a HTML-oldalra kell küldeni, hogy a rendszer visszaadja azokat az Azure Blob Storage-ba. Érdemes például kiszolgáló nélküli függvényt használni SAS-jogkivonatok létrehozásához. Az Azure Portal olyan függvénysablonokat tartalmaz, amelyekkel JavaScript-függvény használatával hozható létre SAS.
 
 ## <a name="implement-the-html-page"></a>A HTML-oldal implementálása
 

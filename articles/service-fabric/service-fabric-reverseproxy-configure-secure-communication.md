@@ -5,12 +5,12 @@ author: kavyako
 ms.topic: conceptual
 ms.date: 08/10/2017
 ms.author: kavyako
-ms.openlocfilehash: 4cfeaf34a39231ffa91ea970a61f66632bae40c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61a8d1e766ea576f7d2984add239b0da7e2e8183
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79282249"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617111"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Csatlakozás biztonságos szolgáltatáshoz a fordított proxyval
 
@@ -77,7 +77,7 @@ Adja meg az **ApplicationCertificateValidationPolicy** értéket **nincs** ért�
 
    A szolgáltatás köznapi nevének és kiállítói ujjlenyomatainak listájának megadásához adjon hozzá egy [**ApplicationGateway/Http/ServiceCommonNameAndIssuer**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttpservicecommonnameandissuer) szakaszt **a fabricSettings**csoportban, az alábbiak szerint. A **paraméterek** tömbjében több tanúsítvány köznapi neve és kiállítóujjlenyomat-párja is hozzáadható. 
 
-   Ha a végpont fordított proxy csatlakozik bemutatja a tanúsítványt, aki a köznapi neve és a kibocsátó ujjlenyomata megegyezik az itt megadott értékek bármelyikével, SSL-csatorna jön létre. 
+   Ha a végpont fordított proxy csatlakozik bemutatja a tanúsítványt, aki a köznapi neve és a kibocsátó ujjlenyomata megegyezik az itt megadott értékek bármelyikével, létrejön egy TLS-csatorna.
    Ha nem egyezteti a tanúsítvány adatait, a fordított proxy meghiúsul az ügyfél kérésének egy 502-es (Bad Gateway) állapotkóddal. A HTTP állapotsor az "Érvénytelen SSL-tanúsítvány" kifejezést is tartalmazza. 
 
    ```json
@@ -143,7 +143,7 @@ Adja meg az **ApplicationCertificateValidationPolicy** értéket **nincs** ért�
    }
    ```
 
-   Ha a kiszolgálótanúsítvány ujjlenyomata szerepel ebben a konfigurációs bejegyzésben, a fordított proxy váltja az SSL-kapcsolatot. Ellenkező esetben megszakítja a kapcsolatot, és nem felel meg az ügyfél kérésének egy 502-es (Bad Gateway) segítségével. A HTTP állapotsor az "Érvénytelen SSL-tanúsítvány" kifejezést is tartalmazza.
+   Ha a kiszolgálói tanúsítvány ujjlenyomata szerepel ebben a konfigurációs bejegyzésben, a fordított proxy váltja a TLS-kapcsolatot. Ellenkező esetben megszakítja a kapcsolatot, és nem felel meg az ügyfél kérésének egy 502-es (Bad Gateway) segítségével. A HTTP állapotsor az "Érvénytelen SSL-tanúsítvány" kifejezést is tartalmazza.
 
 ## <a name="endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints"></a>Végpontkijelölési logika, amikor a szolgáltatások biztonságos és nem biztonságos végpontokat biztosítanak
 A service fabric támogatja a szolgáltatás több végpontjának konfigurálását. További információt az [Erőforrások megadása szolgáltatásjegyzékben című témakörben talál.](service-fabric-service-manifest-resources.md)
@@ -173,12 +173,12 @@ A névfeloldási proxy kiválasztja az egyik végpontot a kérelem továbbítás
 > Ha a **SecureOnlyMode**rendszerben működik, ha az ügyfél http(nem biztonságos) végpontnak megfelelő **Figyelőnevet** adott meg, a fordított proxy 404-es (nem található) HTTP-állapotkóddal nem felel meg a kérésnek.
 
 ## <a name="setting-up-client-certificate-authentication-through-the-reverse-proxy"></a>Ügyféltanúsítvány-hitelesítés beállítása a fordított proxyn keresztül
-Az SSL-végződés a fordított proxynál történik, és az ügyféltanúsítvány összes adata elvész. Ahhoz, hogy a szolgáltatások végrehajtsák az ügyféltanúsítvány-hitelesítést, adja meg a **ForwardClientCertificate** beállítást az [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) szakaszban.
+A TLS-végződés a fordított proxynál történik, és az ügyféltanúsítvány összes adata elvész. Ahhoz, hogy a szolgáltatások végrehajtsák az ügyféltanúsítvány-hitelesítést, adja meg a **ForwardClientCertificate** beállítást az [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) szakaszban.
 
-1. Ha a **ForwardClientCertificate** **értéke hamis,** a fordított proxy nem kéri az ügyféltanúsítványt az ügyféllel folytatott SSL-kézfogás során.
+1. Ha a **ForwardClientCertificate** **értéke hamis,** a fordított proxy nem kéri az ügyféltanúsítványt az ügyféllel folytatott TLS-kézfogás során.
 Ez az alapértelmezett viselkedés.
 
-2. Ha a **ForwardClientCertificate** **értéke igaz,** a fordított proxy az ügyféllel folytatott SSL-kézfogás során kéri az ügyfél tanúsítványát.
+2. Ha a **ForwardClientCertificate** **értéke igaz,** a fordított proxy az ügyféllel folytatott TLS-kézfogás során kéri az ügyfél tanúsítványát.
 Ezután továbbítja az ügyféltanúsítvány adatait egy **X-Client-Certificate nevű egyéni HTTP-fejlécben.** A fejlécértéke az ügyfél tanúsítványának base64 kódolású PEM formátumú karakterlánca. A tanúsítvány adatainak vizsgálata után a szolgáltatás sikeres/sikertelen lehet a megfelelő állapotkóddal rendelkező kérelemben.
 Ha az ügyfél nem mutat be tanúsítványt, a fordított proxy továbbít egy üres fejlécet, és hagyja, hogy a szolgáltatás kezelje az esetet.
 

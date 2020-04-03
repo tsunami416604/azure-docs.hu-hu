@@ -7,18 +7,21 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: caya
-ms.openlocfilehash: e3f8445f68ec959ce1bb0d1ba4029807bd25907a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 65f404b52a5fc06d8fa5bb5aad291e57fde8caba
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257427"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617202"
 ---
-# <a name="application-gateway-high-traffic-support"></a>Application Gateway nagy forgalmú támogatás 
+# <a name="application-gateway-high-traffic-support"></a>Nagy mennyiségű forgalom támogatása az Application Gatewayben
 
-Ez a cikk néhány javasolt irányelvet ismertet, amelyek segítenek az Application Gateway beállításában a nagy forgalmú forgatókönyvek, például a COVID-19-es helyzet miatt a további forgalom kezelésére. Az Application Gateway webalkalmazás-tűzfallal (WAF) skálázható és biztonságos módon kezelheti a webalkalmazások forgalmát. 
+>[!NOTE]
+> Ez a cikk néhány javasolt útmutatást ismertet, amelyek segítenek az Application Gateway beállításában a COVID-19 válság miatt fellépő nagy forgalmú forgalom kezelése érdekében.
 
-Az alábbi javaslatok segítenek az Application Gateway WAF-fel történő beállításában a további forgalom kezelésére. 
+Az Application Gateway webalkalmazás-tűzfallal (WAF) skálázható és biztonságos módon kezelheti a webalkalmazások forgalmát.
+
+Az alábbi javaslatok segítenek az Application Gateway WAF-fel történő beállításában a további forgalom kezelésére.
 
 ## <a name="use-the-v2-sku-over-v1-for-its-autoscaling-capabilities-and-performance-benefits"></a>Használja a v2 Termékváltozat ot a v1-en keresztül az automatikus skálázási képességekhez és a teljesítményhez
 A v2 Termékváltozat automatikus skálázást kínál annak érdekében, hogy az Application Gateway a forgalom növekedésével növekedjen. Emellett más jelentős teljesítménybeli előnyöket is kínál, például az 5x jobb TLS-kiszervezési teljesítményt, a gyorsabb üzembe helyezési és frissítési időket, a zónaredundanciát és még többet a v1-hez képest. További információt a [v2 dokumentációjában](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)talál. 

@@ -1,6 +1,6 @@
 ---
 title: Tárolt eljárások használata
-description: Tippek a tárolt eljárások megvalósításához az Azure SQL Data Warehouse-ban a megoldások fejlesztéséhez.
+description: Tippek a megoldások fejlesztéséhez a tárolt eljárások synapse SQL-készletben történő megvalósításával.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,34 +11,39 @@ ms.date: 04/02/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 83c3187c580bda33df8780a0e36f0fb9f2a4f484
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: a8350f8027a78ae5692e12661f2e0d2013ab4c46
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351575"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618949"
 ---
-# <a name="using-stored-procedures-in-sql-data-warehouse"></a>Tárolt eljárások használata az SQL Data Warehouse-ban
-Tippek a tárolt eljárások megvalósításához az Azure SQL Data Warehouse-ban a megoldások fejlesztéséhez.
+# <a name="using-stored-procedures-in-synapse-sql-pool"></a>Tárolt eljárások használata a Synapse SQL-készletben
+Ez a cikk a tárolt eljárások megvalósításával ismerteti az SQL-készletmegoldások fejlesztését.
 
 ## <a name="what-to-expect"></a>Mire számíthat
 
-Az SQL Data Warehouse számos, az SQL Server ben használt T-SQL-szolgáltatást támogat. Ennél is fontosabb, hogy vannak horizontális felskálázási speciális funkciók, amelyek segítségével maximalizálhatja a megoldás teljesítményét.
+Az SQL-készlet számos, az SQL Server ben használt T-SQL-szolgáltatást támogat. Ennél is fontosabb, hogy vannak horizontális felskálázási speciális funkciók, amelyek segítségével maximalizálhatja a megoldás teljesítményét.
 
-Az SQL Data Warehouse méretezésének és teljesítményének fenntartása érdekében azonban vannak olyan funkciók és funkciók is, amelyek viselkedésbeli különbségekkel rendelkeznek, és mások, amelyek nem támogatottak.
+Emellett az SQL-készlet méretezésének és teljesítményének fenntartása érdekében további funkciók és funkciók is vannak, amelyek viselkedésbeli különbségeket mutatnak.
 
 
 ## <a name="introducing-stored-procedures"></a>A tárolt eljárások bevezetése
-A tárolt eljárások nagyszerű megoldást jelentenek az SQL-kód beágyazására; az adatok közelében tárolhatja az adattárházban. A tárolt eljárások segítségével a fejlesztők modulárissá teszik megoldásaikat azáltal, hogy a kódot kezelhető egységekbe ágyazják; a kód nagyobb újrafelhasználhatóságának elősegítése. Minden tárolt eljárás is elfogadja paramétereket, hogy azok még rugalmasabb.
+A tárolt eljárások nagyszerű en-kódbeágyazása az SQL-kód, amely az SQL-készlet adataiközelében tárolódik. A tárolt eljárások abban is segítenek a fejlesztőknek, hogy a kód kezelhető egységekbe ágyazásával modulárissá tegyezhessék megoldásaikat, megkönnyítve ezzel a nagyobb kódújrafelhasználhatóságot. Minden tárolt eljárás is elfogadja paramétereket, hogy azok még rugalmasabb.
 
-Az SQL Data Warehouse egyszerűsített és egyszerűsített tárolt eljárásmegvalósítást biztosít. Az SQL Server hez képest a legnagyobb különbség az, hogy a tárolt eljárás nem előre lefordított kód. Az adatraktárakban a fordítási idő kicsi a nagy adatkötetek lekérdezéseinek futtatásához szükséges időhöz képest. Sokkal fontosabb, hogy a tárolt eljáráskód megfelelően legyen optimalizálva a nagy lekérdezésekhez. A cél az, hogy mentse óra, perc és másodperc, nem ezredmásodperc. Ezért hasznosabb a tárolt eljárásokat az SQL-logika tárolóiként gondolni.     
+Az SQL-készlet egyszerűsített és egyszerűsített tárolt eljárásmegvalósítást biztosít. A legnagyobb különbség az SQL Serverhez képest, hogy a tárolt eljárás nem előre lefordított kód. 
 
-Amikor az SQL Data Warehouse végrehajtja a tárolt eljárást, az SQL-utasítások elemzésre kerülnek, lefordítva és optimalizálva lesznek futásidőben. A folyamat során minden utasítás elosztott lekérdezésekké alakul át. Az adatokkal végrehajtott SQL-kód eltér a beküldött lekérdezéstől.
+Az adatraktárak esetében a fordítási idő általában kicsi a nagy adatkötetek lekérdezéseinek futtatásához szükséges időhöz képest. Sokkal fontosabb, hogy a tárolt eljáráskód megfelelően legyen optimalizálva a nagy lekérdezésekhez. 
+
+> [!TIP]
+> A cél az, hogy mentse óra, perc és másodperc, nem ezredmásodperc. Ezért hasznos, ha a tárolt eljárásokat az SQL-logika tárolóiként tekintjük.     
+
+Amikor az SQL-készlet végrehajtja a tárolt eljárást, az SQL-utasítások elemzésre kerülnek, lefordítva és optimalizálva futásidőben. A folyamat során minden utasítás elosztott lekérdezésekké alakul át. Az adatokkal végrehajtott SQL-kód eltér a beküldött lekérdezéstől.
 
 ## <a name="nesting-stored-procedures"></a>Tárolt eljárások beágyazása
 Ha a tárolt eljárások más tárolt eljárásokat hívnak meg, vagy dinamikus SQL-t hajtanak végre, akkor a belső tárolt eljárás vagy kódmeghívás a beágyazottnak lesz kitéve.
 
-Az SQL Data Warehouse legfeljebb nyolc beágyazási szintet támogat. Ez némileg eltér az SQL Server kiszolgálótól. Az SQL Server fészekszintje 32.
+Az SQL-készlet legfeljebb nyolc beágyazási szintet támogat. Ezzel szemben az SQL Server fészekszintje 32.
 
 A legfelső szintű tárolt eljáráshívás megegyezik az 1-es fészekszinttel.
 
@@ -64,15 +69,13 @@ GO
 EXEC prc_nesting
 ```
 
-Megjegyzés: az SQL Data Warehouse jelenleg nem támogatja [a @@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql). Le kell nyomoznia a fészek szintjét. Nem valószínű, hogy túllépi a nyolc fészekszint korlátját, de ha igen, át kell dolgoznia a kódot, hogy elférjen a beágyazási szintek ezen a korláton belül.
+Az SQL-készlet jelenleg nem támogatja [a @@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql). Mint ilyen, nyomon kell követnie a fészek szintjét. Nem valószínű, hogy túllépi a nyolc fészekszint korlátot. Ha azonban igen, át kell dolgoznia a kódot, hogy elférjen a beágyazási szintek ezen a korláton belül.
 
 ## <a name="insertexecute"></a>Beszúrása.. Végre
-Az SQL Data Warehouse nem teszi lehetővé az INSERT utasítással tárolt eljárás eredménykészletének felhasználását. Van azonban egy alternatív megközelítés, amelyet használhat. Például az [ideiglenes táblákról](sql-data-warehouse-tables-temporary.md)szóló cikket. 
+Az SQL-készlet nem teszi lehetővé az INSERT utasítással tárolt eljárás eredménykészletének felhasználását. Van azonban egy alternatív megközelítés, amit használhat. Például az [ideiglenes táblákról](sql-data-warehouse-tables-temporary.md)szóló cikket. 
 
 ## <a name="limitations"></a>Korlátozások
-Vannak olyan szempontok a Transact-SQL tárolt eljárások, amelyek nem valósíthatók meg az SQL Data Warehouse.
-
-Ezek a következők:
+A Transact-SQL tárolt eljárásainak vannak olyan aspektusai, amelyek nincsenek megvalósítva az SQL készletben, amelyek a következők:
 
 * ideiglenestárolt eljárások
 * számozott tárolt eljárások

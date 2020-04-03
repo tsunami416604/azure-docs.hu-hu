@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: A New York-i taxiadatok betöltése'
-description: Az Oktatóanyag az Azure Portal és az SQL Server Management Studio segítségével tölti be a New York-i Taxicab-adatokat egy globális Azure blobból az SQL Analytics szolgáltatáshoz.
+description: Az oktatóanyag az Azure Portal és az SQL Server Management Studio segítségével tölti be a New York-i Taxicab-adatokat egy globális Azure-blobból a Synapse SQL számára.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: f1614538f6ab735720d090f66fee0e017e96cf72
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: e17b5be0f4f3d568bd5ec836659c4444b384b2fa
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346730"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583751"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Oktatóanyag: Töltse be a New York-i taxiadatkészletet
 

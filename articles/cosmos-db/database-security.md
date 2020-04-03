@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mjbrown
-ms.openlocfilehash: 30991f17970eefe1a140cdd70e1f6b305160349c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 345fc329df1c57cab7dd66c609bf3701fa3a6124
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79537329"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619134"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Biztonság az Azure Cosmos DB-ben – Áttekintés
 
@@ -48,7 +48,7 @@ Az adatbázisrendszerek összehasonlítására vonatkozó követelmények alább
 És bár nyilvánvalónak tűnhet, a legutóbbi [nagyszabású adatbázis-jogsértések](https://thehackernews.com/2017/01/mongodb-database-security.html) emlékeztetnek minket a következő követelmények egyszerű, de kritikus fontosságára:
 
 - Naprakészen tartott javított kiszolgálók
-- HTTPS alapértelmezés szerint/SSL-titkosítás
+- HTTPS alapértelmezés szerint/TLS-titkosítás
 - Rendszergazdai fiókok erős jelszóval
 
 ## <a name="how-does-azure-cosmos-db-secure-my-database"></a>Hogyan biztosítja az Azure Cosmos DB az adatbázisomat?
@@ -76,7 +76,7 @@ Nézzük vissza az előző listát – hány ilyen biztonsági követelményeket
 |HTTPS/SSL/TLS titkosítás|Az Azure Cosmos DB összes kapcsolata támogatja a HTTPS protokollt. Az Azure Cosmos DB a TLS 1.2-t is támogatja.<br>Lehetőség van egy minimális TLS verziókiszolgálói oldal kényszerítésére. Ehhez vegye fel [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com)a kapcsolatot.|
 |Titkosítás inaktív állapotban|Az Azure Cosmos DB-ben tárolt összes adat inkultálta az inkett. További információ az [Azure Cosmos DB titkosítása inaktív módon](./database-encryption-at-rest.md)|
 |Javított szerverek|Felügyelt adatbázisként az Azure Cosmos DB szükségtelenné teszi a kiszolgálók kezelését és javítását, amely automatikusan elvégezhető.|
-|Rendszergazdai fiókok erős jelszóval|Nehéz elhinni, hogy még ezt a követelményt is meg kell említenünk, de néhány versenytársunkkal ellentétben lehetetlen jelszó nélkül rendelkezni az Azure Cosmos DB-ben.<br><br> Az SSL- és HMAC-alapú biztonság alapértelmezés szerint bevan sütve.|
+|Rendszergazdai fiókok erős jelszóval|Nehéz elhinni, hogy még ezt a követelményt is meg kell említenünk, de néhány versenytársunkkal ellentétben lehetetlen jelszó nélkül rendelkezni az Azure Cosmos DB-ben.<br><br> A TLS- és HMAC titkos alapú hitelesítésen keresztüli biztonság alapértelmezés szerint bevan sülve.|
 |Biztonsági és adatvédelmi tanúsítványok| A tanúsítványok legfrissebb listáját lásd a teljes [Azure Compliance-webhelyen,](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) valamint a legújabb [Azure Megfelelőségi dokumentumot](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) az összes tanúsítványsal (keresés a Cosmos-ra). 2018. április 25-i posta (Azure #CosmosDB: Secure, private, compliant, amely tartalmazza a SOCS 1/2 Type 2, HITRUST, PCI DSS Level 1, ISO 27001, HIPAA, FedRAMP High és még sok más tartalmat) tartalmazó, célzottabb olvasd el.
 
 A következő képernyőkép bemutatja, hogyan használhatja a naplózási és tevékenységnaplókat a fiók figyelésére: ![Az Azure Cosmos DB tevékenységnaplói](./media/database-security/nosql-database-security-application-logging.png)

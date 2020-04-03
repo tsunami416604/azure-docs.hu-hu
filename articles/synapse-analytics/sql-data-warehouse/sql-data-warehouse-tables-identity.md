@@ -1,6 +1,6 @@
 ---
 title: Helyettesítő kulcsok létrehozása az IDENTITY használatával
-description: Javaslatok és példák az IDENTITY tulajdonság használatával helyettesítő kulcsok létrehozásához az SQL Analytics táblákon.
+description: Javaslatok és példák az IDENTITY tulajdonság használatával helyettesítő kulcsok létrehozásához a Synapse SQL-készlet táblákon.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,24 +11,24 @@ ms.date: 04/30/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ab8f4a64f7273f0fa15c20f324e132003d5afe32
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: d4a9880ed7ab26d0127026f49c0bc781cfc2a941
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351297"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586332"
 ---
-# <a name="using-identity-to-create-surrogate-keys-in-sql-analytics"></a>Helyettesítő kulcsok létrehozása az SQL Analytics szolgáltatásban az IDENTITY használatával
+# <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>Helyettesítő kulcsok létrehozása a szinapszis SQL-készletben az IDENTITY használatával
 
-Javaslatok és példák az IDENTITY tulajdonság használatával helyettesítő kulcsok létrehozásához az SQL Analytics táblákon.
+Javaslatok és példák az IDENTITY tulajdonság használatával helyettesítő kulcsok létrehozásához a Synapse SQL-készlet táblákon.
 
 ## <a name="what-is-a-surrogate-key"></a>Mi az a helyettesítő kulcs
 
-A táblázat helyettesítő kulcsa egy oszlop, amely minden sorhoz egyedi azonosítót ad. A kulcs nem jön létre a táblaadatokból. Az adatmodellezők sql analytics-modellek tervezésekor szeretnek helyettesítő kulcsokat létrehozni a tábláikban. Az IDENTITY tulajdonság gal egyszerűen és hatékonyan elérheti ezt a célt anélkül, hogy befolyásolná a terhelési teljesítményt.  
+A táblázat helyettesítő kulcsa egy oszlop, amely minden sorhoz egyedi azonosítót ad. A kulcs nem jön létre a táblaadatokból. Az adatmodellezők szeretnek helyettesítő kulcsokat létrehozni a tábláikban, amikor adattárház-modelleket terveznek. Az IDENTITY tulajdonság gal egyszerűen és hatékonyan elérheti ezt a célt anélkül, hogy befolyásolná a terhelési teljesítményt.  
 
 ## <a name="creating-a-table-with-an-identity-column"></a>IDENTITÁSoszlopot tartalmazó tábla létrehozása
 
-Az IDENTITY tulajdonság úgy van kialakítva, hogy az SQL Analytics-adatbázis összes disztribúciója között horizontálisan kiskálázható a terhelési teljesítmény befolyásolása nélkül. Ezért az IDENTITY megvalósítása e célok elérésére irányul.
+Az IDENTITY tulajdonság úgy van kialakítva, hogy a synapse SQL-készlet összes disztribúciója között horizontálisfelskálázásra kerüljön, anélkül, hogy befolyásolná a terhelési teljesítményt. Ezért az IDENTITY megvalósítása e célok elérésére irányul.
 
 A táblát az alábbi utasításhoz hasonló szintaxissal határozhatja meg úgy, hogy az IDENTITY tulajdonsággal rendelkezik:
 
@@ -50,7 +50,7 @@ Ez a szakasz további része kiemeli a megvalósítás árnyalatait, hogy segít
 
 ### <a name="allocation-of-values"></a>Az értékek felosztása
 
-Az IDENTITY tulajdonság nem garantálja a helyettesítő értékek lefoglalásának sorrendjét, ami az SQL Server és az Azure SQL Database viselkedését tükrözi. Az SQL Analytics azonban a garancia hiánya hangsúlyosabb.
+Az IDENTITY tulajdonság nem garantálja a helyettesítő értékek lefoglalásának sorrendjét, ami az SQL Server és az Azure SQL Database viselkedését tükrözi. Azonban a Synapse SQL-készletben a garancia hiánya hangsúlyosabb.
 
 A következő példa illusztráció:
 
@@ -100,7 +100,7 @@ HOZZON LÉTRE TÁBLÁZAT VÁLASZTÓKÉNT (CTAS) ugyanazt az SQL Server-viselked�
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>Értékek explicit beszúrása IDENTITY oszlopba
 
-Az SQL `SET IDENTITY_INSERT <your table> ON|OFF` Analytics támogatja a szintaxist. Ezzel a szintaxissal explicit módon szúrhat be értékeket az IDENTITY oszlopba.
+A szinapszis SQL-készlet támogatja a `SET IDENTITY_INSERT <your table> ON|OFF` szintaxist. Ezzel a szintaxissal explicit módon szúrhat be értékeket az IDENTITY oszlopba.
 
 Sok adatmodellező szeretne előre definiált negatív értékeket használni a dimenzióik bizonyos soraihoz. Erre példa az -1 vagy az "ismeretlen tag" sor.
 
@@ -161,7 +161,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > Jelenleg nem használható, `CREATE TABLE AS SELECT` ha adatokat tölt be egy IDENTITY oszlopot tartalmazó táblába.
 >
 
-Az adatok betöltésével kapcsolatos további információkért [lásd: Kivonat, Betöltés és Átalakítás (ELT) az SQL Analytics](design-elt-data-loading.md) és [a Betöltés ajánlott eljárásokhoz.](guidance-for-loading-data.md)
+Az adatok betöltésével kapcsolatos további információkért [lásd: Kivonat, Betöltés és Átalakítás (ELT) a Synapse SQL-készlethez](design-elt-data-loading.md) és [az ajánlott eljárások betöltéséhez.](guidance-for-loading-data.md)
 
 ## <a name="system-views"></a>Rendszernézetek
 
@@ -195,7 +195,7 @@ Az IDENTITY tulajdonság nem használható:
 - Ha az oszlop egyben a terjesztési kulcs is
 - Ha a táblázat külső tábla
 
-Az SQL Analytics nem támogatja a következő kapcsolódó függvényeket:
+A következő kapcsolódó függvények nem támogatottak a Synapse SQL készletben:
 
 - [IDENTITÁS()](/sql/t-sql/functions/identity-function-transact-sql)
 - [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql)

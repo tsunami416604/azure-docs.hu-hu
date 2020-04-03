@@ -5,18 +5,18 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: f83faf05eb7099557d5b653e0b24591062c44d11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 514cc25e1959145c65fe60cd3054cec4ed28f44d
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79368451"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617423"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Azure Container Registryvel történő hitelesítés az Azure Kubernetes Service-ből (AKS)
 
-Ha az Azure Kubernetes-szolgáltatással (AKS) azure Container Registry (ACR) szolgáltatást használja, létre kell hozni egy hitelesítési mechanizmust. Ez a cikk példákat tartalmaz a két Azure-szolgáltatás közötti hitelesítés konfigurálása.
+Ha az Azure Kubernetes-szolgáltatással (AKS) azure Container Registry (ACR) szolgáltatást használja, létre kell hozni egy hitelesítési mechanizmust. Ez a cikk példákat tartalmaz a két Azure-szolgáltatás közötti hitelesítés konfigurálása. 
 
-Az AKS-t az ACR-integrációhoz néhány egyszerű parancsban állíthatja be az Azure CLI-vel.
+Az AKS-t az ACR-integrációhoz néhány egyszerű parancsban állíthatja be az Azure CLI-vel. Ez az integráció az AcrPull szerepkört az AKS-fürthöz társított egyszerű szolgáltatáshoz rendeli.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -33,7 +33,7 @@ Az AKS- és ACR-integrációt az AKS-fürt kezdeti létrehozása során állíth
 
 ```azurecli
 # set this to the name of your Azure Container Registry.  It must be globally unique
-MYACR=myContainerRegistry
+$MYACR=myContainerRegistry
 
 # Run the following line to create an Azure Container Registry if you do not already have one
 az acr create -n $MYACR -g myContainerRegistryResourceGroup --sku basic

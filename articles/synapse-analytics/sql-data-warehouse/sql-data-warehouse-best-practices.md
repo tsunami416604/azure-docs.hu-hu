@@ -10,16 +10,16 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: d0b32fb2b52d2dbb126053247cff83f05781ba5e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 44dbc03a41cfde94c344ae331b21d7536778050c
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350872"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619106"
 ---
 # <a name="best-practices-for-sql-analytics-in-azure-synapse-analytics-formerly-sql-dw"></a>Az SQL Analytics gyakorlati tanácsok az Azure Synapse Analytics (korábbi években SQL DW) szolgáltatásában
 
-Ez a cikk az [SQL Analytics-telepítés](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse) ből származó optimális teljesítmény eléréséhez ajánlott eljárások gyűjteménye.  A cikk célja, hogy néhány alapvető útmutatást nyújtson, és kiemelje a fontos fókuszterületeket.  Minden szakasz bemutatja, hogy egy koncepció, majd rámutat, hogy részletesebb cikkeket, amelyek kiterjednek a koncepció mélyebben. A témák sorrendje fontos. 
+Ez a cikk az [SQL Analytics-telepítés](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) ből származó optimális teljesítmény eléréséhez ajánlott eljárások gyűjteménye.  A cikk célja, hogy néhány alapvető útmutatást nyújtson, és kiemelje a fontos fókuszterületeket.  Minden szakasz bemutatja, hogy egy koncepció, majd rámutat, hogy részletesebb cikkeket, amelyek kiterjednek a koncepció mélyebben. A témák sorrendje fontos. 
 
 ## <a name="reduce-cost-with-pause-and-scale"></a>Költségek csökkentése felfüggesztés és méretezés által
 
@@ -115,7 +115,7 @@ Amikor a sorokat nagy memóriaterhelés mellett írja oszlopcentrikus táblákba
 
 Mivel a kiváló minőségű oszlopcentrikus szegmensek fontosak, célszerű olyan felhasználói azonosítókat használni, amelyek a közepes vagy nagy erőforrásosztályban találhatók az adatok betöltéséhez. Az alacsonyabb [adattárház egységek](what-is-a-data-warehouse-unit-dwu-cdwu.md) használata azt jelenti, hogy nagyobb erőforrásosztályt szeretne hozzárendelni a betöltő felhasználóhoz.
 
-Mivel az oszlopcentrikus táblák általában nem adnak adatokat egy tömörített oszlopcentrikus szegmensbe, amíg táblaként több mint 1 millió sor van, és minden SQL Analytics-tábla 60 táblára van felosztva, ökölszabályként az oszlopcentrikus táblák nem szolgálják a lekérdezést, kivéve, ha a táblázat több mint 60 millió sort tartalmaz.  Előfordulhat, hogy a 60 milliónál kevesebb sorral rendelkező táblák esetén egyáltalán nem érdemes oszlopcentrikus indexet használni.  A használatuk azonban hátrányt sem jelent.  
+Mivel az oszlopcentrikus táblák általában nem adnak le adatokat egy tömörített oszlopcentrikus szegmensbe, amíg táblaként több mint 1 millió sor van, és minden SQL Analytics-tábla 60 táblára van particionálva, ökölszabály ként az oszlopcentrikus táblák nem szolgálnak egy lekérdezésszámára, kivéve, ha a tábla több mint 60 millió sorral rendelkezik.  Előfordulhat, hogy a 60 milliónál kevesebb sorral rendelkező táblák esetén egyáltalán nem érdemes oszlopcentrikus indexet használni.  A használatuk azonban hátrányt sem jelent.  
 
 Ha particionálja az adatait, akkor azt is érdemes figyelembe venni, hogy minden partíciónak 1 millió sorral kell rendelkeznie a fürtözött oszlopcentrikus indexek előnyeinek kihasználása érdekében.  Ha egy tábla 100 partícióval rendelkezik, akkor legalább 6 milliárd sorral kell rendelkeznie a fürtözött oszloptárolók előnyeinek kihasználása érdekében (60 elosztás × 100 partíció × 1 millió sor).  
 

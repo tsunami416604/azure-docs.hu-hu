@@ -2,17 +2,17 @@
 title: Bástyaállomás létrehozása az Azure CLI használatával | Az Azure-bástya
 description: Ebből a cikkből megtudhatja, hogyan hozhat létre és törölhet bástyaállomást
 services: bastion
-author: cherylmc
+author: mialdrid
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.author: cherylmc
-ms.openlocfilehash: 9e216bf2bb8e2e605723256f0511b9bdb63083b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mialdrid
+ms.openlocfilehash: f98c965ad3b776f3688a716ba28b5367a00c9119
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80337570"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619228"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-cli"></a>Hozzon létre egy Azure Bastion host az Azure CLI használatával
 

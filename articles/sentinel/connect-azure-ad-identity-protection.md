@@ -9,18 +9,18 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 11/17/2019
 ms.author: yelevin
-ms.openlocfilehash: 7d42ff28ddd2d883feb25139096d781efe64d50f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b82ddfef57efaaca0ae43750cd306a63a772b911
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588569"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616829"
 ---
 # <a name="connect-data-from-azure-ad-identity-protection"></a>Adatok csatlakoztatása az Azure AD Identity Protection szolgáltatásból
 
 
 
-Az [Azure AD Identity Protection](https://docs.microsoft.com/azure/information-protection/reports-aip) naplóit streamelheti az Azure Sentinelbe, így riasztásokat továbbíthat az Azure Sentinelbe az irányítópultok megtekintéséhez, egyéni riasztások létrehozásához és a vizsgálat javításához. Az Azure Active Directory identity Protection összevont nézetet biztosít a veszélyeztetett felhasználók, a kockázatészlelések és a biztonsági rések, a kockázat azonnali elhárítása, és állítsa be a szabályzatokat, hogy automatikusan kiigazítsa a jövőbeli eseményeket. A szolgáltatás a Microsoft felhasználói identitásának védelmével kapcsolatos tapasztalataira épül, és óriási pontosságot nyer a napi több mint 13 milliárd bejelentkezésből származó jelből. 
+Az [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection) naplóit streamelheti az Azure Sentinelbe, így riasztásokat továbbíthat az Azure Sentinelbe az irányítópultok megtekintéséhez, egyéni riasztások létrehozásához és a vizsgálat javításához. Az Azure Active Directory identity Protection összevont nézetet biztosít a veszélyeztetett felhasználók, a kockázatészlelések és a biztonsági rések, a kockázat azonnali elhárítása, és állítsa be a szabályzatokat, hogy automatikusan kiigazítsa a jövőbeli eseményeket. A szolgáltatás a Microsoft felhasználói identitásának védelmével kapcsolatos tapasztalataira épül, és óriási pontosságot nyer a napi több mint 13 milliárd bejelentkezésből származó jelből. 
 
 
 ## <a name="prerequisites"></a>Előfeltételek

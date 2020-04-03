@@ -1,6 +1,6 @@
 ---
 title: Integrált megoldások készítése
-description: Megoldási eszközök és partnerek, amelyek az SQL Analytics használatával kiépített adattárházlal integrálódnak.
+description: Megoldáseszközök és partnerek, amelyek integrálhatók a Synapse SQL-készlettel.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,15 +11,16 @@ ms.date: 04/17/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 680e561c08c5113e3d7f26b00422f3696bb133e9
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: c8e3598e55d3f90ab2b7401380406677f56c0ce3
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350228"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586486"
 ---
-# <a name="integrate-other-services-with-a-sql-analytics-data-warehouse"></a>Egyéb szolgáltatások integrálása az SQL Analytics adattárházával 
-Az Azure Synapse Analytics-en belüli SQL Analytics-funkció lehetővé teszi a felhasználók számára, hogy integrálódjanak számos más azure-beli szolgáltatással. Az SQL Analytics használatával adattárházat hozhat létre az SQL Pool-erőforráson keresztül, amely ezután számos további szolgáltatást használhat, amelyek közül néhány a következőket tartalmazza:
+# <a name="integrate-other-services-with-a-synapse-sql-pool"></a>Integráljon más szolgáltatásokat egy Synapse SQL készlettel
+
+A Synapse SQL-készlet funkció az Azure Synapse Analytics lehetővé teszi a felhasználók számára, hogy integrálja számos más szolgáltatások az Azure-ban. A Synapse SQL használatával adattárházat hozhat létre az SQL készleterőforráson keresztül, amely ezután számos további szolgáltatást használhat, amelyek közül néhány a következőket tartalmazza:
 
 * Power BI
 * Azure Data Factory
