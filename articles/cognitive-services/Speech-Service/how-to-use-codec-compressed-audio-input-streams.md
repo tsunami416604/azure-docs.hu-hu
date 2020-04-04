@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: amishu
 zone_pivot_groups: programming-languages-set-twelve
-ms.openlocfilehash: 6aabd27ae38cac0bb9effad2adcadc4935a28c6e
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: bd6b500a823bde654da4442704b75451806d6a46
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409598"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637276"
 ---
 # <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>Kodek tömörített hangbemenet használata a beszédfelismerési SDK-val
 
 A beszédfelismerési szolgáltatás SDK **tömörített hangbemeneti stream** API lehetővé teszi, hogy a tömörített hangot a `PullStream` vagy `PushStream`a használatával streamelje a beszédfelismerési szolgáltatásba.
 
-> [!IMPORTANT]
-> A tömörített bemeneti hang streamelése jelenleg támogatott A C#, C++, Java linuxos (Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 8, CentOS 8) esetében. Az iOS platformon a Java és az Objective-C is támogatott.
-> Beszéd SDK 1.7.0-s vagy újabb verzió szükséges (1.10.0-s vagy újabb verzió rhel 8, CentOS 8 esetén).
+A tömörített bemeneti hang streamelése jelenleg támogatott A C#, C++, Java windowsos (UWP alkalmazások nem támogatottak) és Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 8, CentOS 8) esetén. Az iOS platformon a Java és az Objective-C is támogatott.
+* Az RHEL 8 és CentOS 8 esetén a beszédfelismerési SDK 1.10.0-s vagy újabb verziója szükséges
+* A Beszéd SDK 1.11.0-s vagy újabb verziója szükséges a Windows rendszerhez.
 
 [!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 

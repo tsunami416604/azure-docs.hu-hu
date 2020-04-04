@@ -6,15 +6,15 @@ manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: e7caacf23cb489da6f9f85748ae839bc4babff8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6acf9301367ae2c6947f6935c43f420d3d7cac65
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77917305"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655016"
 ---
 # <a name="migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Az Azure AD tartományi szolgáltatások áttelepítése a klasszikus virtuális hálózati modellről az Erőforrás-kezelőre
 
@@ -158,7 +158,7 @@ Az Erőforrás-kezelő telepítési modelljére és a virtuális hálózatra tö
 
 | Lépés    | Végzett keresztül  | Becsült idő  | Állásidő  | Vissza-visszaállítás? |
 |---------|--------------------|-----------------|-----------|-------------------|
-| [1. lépés - Frissítse és keresse meg az új virtuális hálózat](#update-and-verify-virtual-network-settings) | Azure portál | 15 perc | Nincs szükség állásidőre | N/A |
+| [1. lépés - Frissítse és keresse meg az új virtuális hálózat](#update-and-verify-virtual-network-settings) | Azure Portal | 15 perc | Nincs szükség állásidőre | N/A |
 | [2. lépés – Az Azure AD DS felügyelt tartományának előkészítése áttelepítésre](#prepare-the-managed-domain-for-migration) | PowerShell | 15 – 30 perc átlagosan | Az Azure AD DS állásideje a parancs befejezése után indul el. | Visszaállíthatja és visszaállíthatja a rendelkezésre álló adatokat. |
 | [3. lépés – Az Azure AD DS felügyelt tartományának áthelyezése egy meglévő virtuális hálózatra](#migrate-the-managed-domain) | PowerShell | 1 – 3 óra átlagosan | A parancs befejezése után egy tartományvezérlő érhető el, az állásidő befejeződik. | Hiba esetén mind a visszaállítás (önkiszolgáló) és a visszaállítás elérhető. |
 | [4. lépés - A replika tartományvezérlő tesztelése és megvárása](#test-and-verify-connectivity-after-the-migration)| PowerShell és Azure portal | 1 óra vagy több, a vizsgálatok számától függően | Mindkét tartományvezérlő elérhető, és normálisan kell működnie. | N/A. Az első virtuális gép áttelepítése sikeresen megtörtént, nincs lehetőség a visszaállításra vagy visszaállításra. |

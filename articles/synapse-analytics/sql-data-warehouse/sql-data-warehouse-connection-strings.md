@@ -1,6 +1,6 @@
 ---
 title: Kapcsolati sztringek
-description: Kapcsolati karakterláncok az SQL Data Warehouse-hoz
+description: A Szinapszis SQL-készletének kapcsolati karakterláncai
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,15 +11,17 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f64c584ea5a32f371f84facc195cd02ef6ffdff0
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 4c3f73fb763fa28ac826ebb97c3c325a2408542c
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350622"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633576"
 ---
-# <a name="connection-strings-for-azure-sql-data-warehouse"></a>Kapcsolati karakterláncok az Azure SQL Data Warehouse-hoz
-Az SQL Data Warehouse-hoz számos különböző alkalmazásprotokollt használhat, például [ADO.NET,][ADO.NET] [ODBC,][ODBC] [PHP][PHP] és [JDBC.][JDBC] Az alábbiakban néhány példa a kapcsolatok karakterláncok az egyes protokollok.  Az Azure Portal on is létrehozhatja a kapcsolati karakterláncot.  Ha az Azure Portal használatával szeretné felépíteni a kapcsolati karakterláncot, keresse meg az adatbázis paneljét, az *Essentials* csoportban kattintson az *Adatbázis-kapcsolati karakterláncok megjelenítése*elemre.
+# <a name="connection-strings-for-synapse-sql-pool"></a>A Szinapszis SQL-készletének kapcsolati karakterláncai
+Az SQL-készlethez több különböző alkalmazásprotokollt is használhat, például [ADO.NET,](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx) [ODBC,](https://msdn.microsoft.com/library/jj730314.aspx) [PHP](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)és [JDBC.](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx) Az alábbiakban néhány példa a kapcsolatok karakterláncok az egyes protokollok.  Az Azure Portal on is létrehozhatja a kapcsolati karakterláncot.  
+
+Ha az Azure Portal használatával szeretné felépíteni a kapcsolati karakterláncot, keresse meg az adatbázis paneljét, az *Essentials* csoportban kattintson az *Adatbázis-kapcsolati karakterláncok megjelenítése*elemre.
 
 ## <a name="sample-adonet-connection-string"></a>Minta ADO.NET kapcsolati karakterlánc
 ```csharp
@@ -47,17 +49,4 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 > 
 
 ## <a name="next-steps"></a>További lépések
-További információ az adatraktár lekérdezéséről a Visual Studio vagy egyéb alkalmazások használatával: [Query with Visual Studio][Query with Visual Studio] (Lekérdezés a Visual Studióval).
-
-<!--Image references-->
-
-<!--Azure.com references-->
-[Query with Visual Studio]:sql-data-warehouse-query-visual-studio.md
-
-<!--MSDN references-->
-[ADO.NET]: https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx
-[ODBC]: https://msdn.microsoft.com/library/jj730314.aspx
-[PHP]: https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396
-[JDBC]: https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx
-
-<!--Other references-->
+Ha meg szeretné kezdeni az SQL-készlet lekérdezését a Visual Studio-val és más alkalmazásokkal, olvassa el [a Lekérdezés a Visual Studióval című témakört.](sql-data-warehouse-query-visual-studio.md)

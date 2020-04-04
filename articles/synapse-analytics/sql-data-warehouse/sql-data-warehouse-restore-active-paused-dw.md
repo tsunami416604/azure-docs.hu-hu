@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 635b65d16ae9a59816506023d323243f043ce7da
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: e1d0c5cd850fa0dbacf104d3fcd72d83007df878
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350389"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632253"
 ---
 # <a name="restore-an-existing-sql-pool"></a>Meglévő SQL-készlet visszaállítása
 
@@ -51,7 +51,7 @@ Meglévő SQL-készlet visszaállítása visszaállítási pontból használja a
 
 7. Ellenőrizze, hogy a visszaállított SQL-készlet online állapotban van-e.
 
-8. A visszaállítás befejezése után konfigurálhatja a helyreállított SQL-készletet [az adatbázis helyreállítás utáni konfigurálásával.](../../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery)
+8. A visszaállítás befejezése után konfigurálhatja a helyreállított SQL-készletet [az adatbázis helyreállítás utáni konfigurálásával.](../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)
 
 ```Powershell
 
@@ -100,7 +100,6 @@ $RestoredDatabase.status
     ![Automatikus visszaállítási pontok](./media/sql-data-warehouse-restore-active-paused-dw/restoring-11.png)
 
 ## <a name="next-steps"></a>Következő lépések
+
 - [Törölt SQL-készlet visszaállítása](sql-data-warehouse-restore-deleted-dw.md)
 - [Visszaállítás geo-backup SQL-készletből](sql-data-warehouse-restore-from-geo-backup.md)
-
- 

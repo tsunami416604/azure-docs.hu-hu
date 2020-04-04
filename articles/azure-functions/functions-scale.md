@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0a54d7490fb306bfbc8e1b111e7b7d64c09d2292
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 92ac0417e9d8adca168dd68e1721a1c9c890de1c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276607"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656934"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Az Azure Functions méretezése és üzemeltetése
 
@@ -109,7 +109,7 @@ Még ha mindig be van kapcsolva is, az `functionTimeout` egyes függvények vég
 
 ## <a name="determine-the-hosting-plan-of-an-existing-application"></a>Meglévő alkalmazás üzemeltetési tervének meghatározása
 
-A függvényalkalmazás által használt üzemeltetési csomag meghatározásához tekintse meg az **App Service-csomag/tarifacsomag** című témakört az [Azure Portalon](https://portal.azure.com)a függvényalkalmazás **Áttekintés** lapján. Az App Service-csomagok esetében a tarifacsomag is meg van jelölve.
+A függvényalkalmazás által használt üzemeltetési csomag meghatározásához tekintse meg az **App Service-csomag** az [Azure Portalon](https://portal.azure.com)a függvényalkalmazás **Áttekintés** lapján című témakört. A tarifacsomag megtekintéséhez válassza ki az **App Service-csomag**nevét, majd válassza a **Tulajdonságok lehetőséget** a bal oldali ablaktáblában.
 
 ![Méretezési terv megtekintése a portálon](./media/functions-scale/function-app-overview-portal.png)
 
@@ -124,7 +124,7 @@ Ha a kimenet e `dynamic`parancs, a függvényalkalmazás a felhasználási tervb
 
 ## <a name="storage-account-requirements"></a>Storage-fiókra vonatkozó követelmények
 
-Minden csomag, egy függvényalkalmazás igényel egy általános Azure Storage-fiók, amely támogatja az Azure Blob, Várólista, Fájlok és Table storage. Ennek az az oka, hogy a Functions az Azure Storage-ra támaszkodik olyan műveletekhez, mint az eseményindítók kezelése és a naplózási függvények végrehajtása, de egyes tárfiókok nem támogatják a várólistákat és a táblákat. Ezek a fiókok, amelyek magukban foglalják a blob-csak tárfiókok (beleértve a prémium szintű storage) és az általános célú storage-fiókok zónaredundáns storage replikáció, szűrjük ki a meglévő **tárfiók** választás, amikor létrehoz egy függvényalkalmazást.
+Minden csomag, egy függvényalkalmazás igényel egy általános Azure Storage-fiók, amely támogatja az Azure Blob, Várólista, Fájlok és Table storage. Ennek az az oka, hogy az Azure Functions az Azure Storage-ra támaszkodik olyan műveletekhez, mint az eseményindítók kezelése és a naplózási függvények végrehajtása, de egyes tárfiókok nem támogatják a várólistákat és a táblákat. Ezek a fiókok, amelyek magukban foglalják a blob-csak tárfiókok (beleértve a prémium szintű storage) és az általános célú storage-fiókok zónaredundáns storage replikáció, szűrjük ki a meglévő **tárfiók** választás, amikor létrehoz egy függvényalkalmazást.
 
 A függvényalkalmazás által használt tárfiók az eseményindítók és kötések is használhatják az alkalmazásadatok tárolására. Azonban a nagy tárban végzett műveletekhez külön tárfiókot kell használnia.  
 

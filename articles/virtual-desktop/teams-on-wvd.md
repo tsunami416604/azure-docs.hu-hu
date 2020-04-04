@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ea9bfd21e7f3b92c99600a2492a809a0fc051ed9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b9b33076a2c2cea27fea181b760a721488682c9
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80159617"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657016"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>A Microsoft Teams használata a Windows virtuális asztalon
 
@@ -33,15 +33,25 @@ A Microsoft Teams Windows virtuális asztalon való használata előtt az alább
 
 Windows Virtual Desktop környezetében a nem optimalizált Microsoft Teams segítségével kihasználhatja a Microsoft Teams teljes csevegési és együttműködési funkcióit, valamint a hanghívásokat. A hívások hangminősége a gazdagép konfigurációjától függően változik, mivel az nem optimalizált hívások a gazdaprocesszor több processzorát használják.
 
+### <a name="prepare-your-image-for-teams"></a>Készítse elő a képet a teamsszámára
+
+A Teams számítógépenkénti telepítésének engedélyezéséhez állítsa be a következő beállításkulcsot az állomáson:
+
+```shell
+  [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Teams\IsWVDEnvironment]
+  Type: REG_DWORD
+  Value: 0x1
+```
+
 ### <a name="install-microsoft-teams"></a>A Microsoft Teams telepítése
 
-A Microsoft Teams telepítése a Windows virtuális asztali környezetben:
+A Teams asztali alkalmazást számítógépenkénti telepítéssel telepítheti. A Microsoft Teams telepítése a Windows virtuális asztali környezetben:
 
 1. Töltse le a [Teams MSI csomagot,](https://docs.microsoft.com/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm) amely megfelel a környezetének. Javasoljuk, hogy a 64 bites telepítőt 64 bites operációs rendszeren használja.
 2. Futtassa ezt a parancsot az MSI gazdagépre való telepítéséhez.
 
       ```shell
-      msiexec /i <msi_name> /l*v < install_logfile_name> ALLUSER=1
+      msiexec /i <msi_name> /l*v < install_logfile_name> ALLUSERS=1
       ```
 
       Ezzel a Teams programfájlokba vagy programfájlokba (x86) telepíti a Csapatokat. Amikor legközelebb bejelentkezik, és elindítja a Teamst, az alkalmazás kérni fogja a hitelesítő adatait.
@@ -56,4 +66,4 @@ A Microsoft Teams telepítése a Windows virtuális asztali környezetben:
       ```
 
       > [!NOTE]
-      > Ha az ALLUSER=1 MSI beállítással telepíti a Teamst, az automatikus frissítések le lesznek tiltva. Javasoljuk, hogy legalább havonta egyszer frissítse a Csapatokat.
+      > Ha az ALLUSERS=1 MSI beállítással telepíti a Teamst, az automatikus frissítések le lesznek tiltva. Javasoljuk, hogy legalább havonta egyszer frissítse a Csapatokat.

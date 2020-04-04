@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9398aceeb7465392e82aeaa5760f6c0504f8e33d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d0331419de89775062f1309c5d854cd7325c68e4
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80159523"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656765"
 ---
-# <a name="migrate-bulk-data-to-azure-file-sync-with-azure-databox"></a>Tömeges adatok áttelepítése az Azure DataBox segítségével az Azure File Sync szolgáltatásba
+# <a name="migrate-bulk-data-to-azure-file-sync-with-azure-databox"></a>Tömeges adatmigrálás az Azure File Syncbe az Azure Data Boxszal
 A tömeges adatokat kétféleképpen telepítheti át az Azure File Sync szolgáltatásba:
 
 * **Töltse fel fájljait az Azure File Sync használatával.** Ez a legegyszerűbb módszer. Helyezze át a fájlokat helyileg a Windows Server 2012 R2 vagy újabb rendszerbe, és telepítse az Azure File Sync-ügynököt. A szinkronizálás beállítása után a rendszer feltölti a fájlokat a kiszolgálóról. (Ügyfeleink jelenleg kétnaponta átlagosan 1 TiB feltöltési sebességet tapasztalnak.) Annak érdekében, hogy a kiszolgáló ne használjon túl nagy sávszélességet az adatközpontszámára, érdemes beállítani a [sávszélesség-szabályozási ütemezést.](storage-sync-files-server-registration.md#ensuring-azure-file-sync-is-a-good-neighbor-in-your-datacenter)
@@ -25,7 +25,7 @@ Ez a cikk bemutatja, hogyan telepítheti át a fájlokat kapcsolat nélküli mó
 ## <a name="migration-tools"></a>Migrálási eszközök
 Az ebben a cikkben leírt folyamat nem csak a Data Box esetében működik, hanem más offline áttelepítési eszközökesetében is. Ez is szerkezet részére szerszámok mint AzCopy, Robocopy, vagy társ szerszámok és szolgáltatás amit dolgozik egyenes felső a Internet. Azonban a kezdeti feltöltési kihívás leküzdéséhez kövesse a cikkben leírt lépéseket, hogy ezeket az eszközöket az Azure File Sync-el kompatibilis módon használhassa.
 
-Bizonyos esetekben az Azure File Sync bevezetése előtt át kell helyeznie az egyik Windows-kiszolgálóról a másikra a Windows Servert. [A Storage Migration Service](https://aka.ms/storagemigrationservice) (SMS) segíthet ebben. Függetlenül attól, hogy az Azure File Sync (Windows Server 2012R2 és újabb) által támogatott kiszolgálóoperációs rendszerre (Windows Server 2012R2 és újabb verzió) van-e szüksége, vagy egyszerűen át kell telepítenie, mert új rendszert vásárol az Azure File Sync számára, az SMS számos olyan funkcióval és előnnyel rendelkezik, amelyek segítenek zökkenőmentesen történik.
+Bizonyos esetekben az Azure File Sync bevezetése előtt át kell helyeznie az egyik Windows-kiszolgálóról a másikra a Windows Servert. [A Storage Migration Service](https://aka.ms/storagemigrationservice) (SMS) segíthet ebben. Függetlenül attól, hogy az Azure File Sync (Windows Server 2012R2 és újabb) által támogatott kiszolgálóoperációs rendszerre (Windows Server 2012R2 és újabb verzió) kell-e áttérnie, vagy egyszerűen csak át kell telepítenie, mert új rendszert vásárol az Azure File Sync számára, az SMS számos olyan funkcióval és előnnyel rendelkezik, amelyek segítenek a zökkenőmentes áttelepítésben.
 
 ## <a name="benefits-of-using-a-tool-to-transfer-data-offline"></a>Az eszközök segítségével történő adatátvitel előnyei
 Az átviteli eszköz, például a Data Box offline áttelepítéshez való használatának fő előnyei:
@@ -53,14 +53,17 @@ Az Azure File Sync beállítása a tömeges áttelepítési eszközökkel, péld
 |---|---------------------------------------------------------------------------------------|
 | ![1. lépés](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [Rendelje meg adatdobozát.](../../databox/data-box-deploy-ordered.md) A Data Box család [számos terméket](https://azure.microsoft.com/services/storage/databox/data) kínál az Ön igényeinek megfelelően. Amikor megkapja a Data Box, kövesse a [dokumentációt, hogy másolja az adatokat,](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box) hogy ezt az UNC elérési utat a Data Box: * \\<\>\<DeviceIPAddres StorageAccountName_AzFile\>\<ShareName\>*. Itt a *ShareName* az átmeneti megosztás neve. Küldje vissza az adatdobozt az Azure-ba. |
 | ![2. lépés](media/storage-sync-files-offline-data-transfer/bullet_2.png) | Várjon, amíg a fájlok megjelennek az ideiglenes átmeneti megosztásként kiválasztott Azure-fájlmegosztásokban. *Ne engedélyezze a szinkronizálást ezekkel a megosztásokkal.* |
-| ![3. lépés](media/storage-sync-files-offline-data-transfer/bullet_3.png) | Hozzon létre egy új üres megosztást minden olyan fájlmegosztáshoz, amelyet a Data Box létrehozott. Ez az új megosztás nak ugyanabban a tárfiókban kell lennie, mint a Data Box megosztás. [Új Azure-fájlmegosztás létrehozása.](storage-how-to-create-file-share.md) |
-| ![4. lépés](media/storage-sync-files-offline-data-transfer/bullet_4.png) | [Hozzon létre egy szinkronizálási csoportot](storage-sync-files-deployment-guide.md#create-a-sync-group-and-a-cloud-endpoint) egy tárolószinkronizálási szolgáltatásban. Hivatkozzon az üres megosztásra felhővégpontként. Ismételje meg ezt a lépést minden Adatdoboz-fájlmegosztás esetén. [Állítsa be az Azure File Sync](storage-sync-files-deployment-guide.md)szolgáltatást. |
-| ![5. lépés](media/storage-sync-files-offline-data-transfer/bullet_5.png) | [Adja hozzá az élő kiszolgálókönyvtárat kiszolgálóvégpontként](storage-sync-files-deployment-guide.md#create-a-server-endpoint). A folyamat során adja meg, hogy áthelyezte a fájlokat az Azure-ba, és hivatkozzon az átmeneti megosztások. Szükség szerint engedélyezheti vagy letilthatja a felhőrétegezést. Kiszolgálóvégpont létrehozása közben az élő kiszolgálón, hivatkozzon az átmeneti megosztásra. A **Kiszolgáló végponthozzáadása** panelen az **Offline adatátvitel**csoportban válassza **az Engedélyezve**lehetőséget, majd válassza ki azt az átmeneti megosztást, amelynek ugyanabban a tárfiókban kell lennie, mint a felhővégpont. Itt az elérhető megosztások listáját a tárfiók és a még nem szinkronizált megosztások szűrik. |
+| ![3. lépés](media/storage-sync-files-offline-data-transfer/bullet_3.png) | <ul><li>Hozzon létre egy új üres megosztást minden olyan fájlmegosztáshoz, amelyet a Data Box létrehozott. Ez az új megosztás nak ugyanabban a tárfiókban kell lennie, mint a Data Box megosztás. [Új Azure-fájlmegosztás létrehozása.](storage-how-to-create-file-share.md)</li><li>[Hozzon létre egy szinkronizálási csoportot](storage-sync-files-deployment-guide.md#create-a-sync-group-and-a-cloud-endpoint) egy tárolószinkronizálási szolgáltatásban. Hivatkozzon az üres megosztásra felhővégpontként. Ismételje meg ezt a lépést minden Adatdoboz-fájlmegosztás esetén. [Állítsa be az Azure File Sync](storage-sync-files-deployment-guide.md)szolgáltatást.</li></ul> |
+| ![4. lépés](media/storage-sync-files-offline-data-transfer/bullet_4.png) | [Adja hozzá az élő kiszolgálókönyvtárat kiszolgálóvégpontként](storage-sync-files-deployment-guide.md#create-a-server-endpoint). A folyamat során adja meg, hogy áthelyezte a fájlokat az Azure-ba, és hivatkozzon az átmeneti megosztások. Szükség szerint engedélyezheti vagy letilthatja a felhőrétegezést. Kiszolgálóvégpont létrehozása közben az élő kiszolgálón, hivatkozzon az átmeneti megosztásra. A **Kiszolgáló végponthozzáadása** panelen az **Offline adatátvitel**csoportban válassza **az Engedélyezve**lehetőséget, majd válassza ki azt az átmeneti megosztást, amelynek ugyanabban a tárfiókban kell lennie, mint a felhővégpont. Itt az elérhető megosztások listáját a tárfiók és a még nem szinkronizált megosztások szűrik. A táblázatot követő képernyőkép bemutatja, hogyan hivatkozhat a DataBox-megosztásra a kiszolgálóvégpont létrehozása során az Azure Portalon. |
+| ![5. lépés](media/storage-sync-files-offline-data-transfer/bullet_5.png) | Miután hozzáadta a kiszolgálóvégpontot az előző lépésben, az adatok automatikusan elindulnak a megfelelő forrásból. A [megosztás szinkronizálása](#syncing-the-share) szakasz ismerteti, hogy mikor áramlik az adatforgalom a DataBox megosztásról vagy a Windows Server ről |
+| |
 
 ![Képernyőkép az Azure Portal felhasználói felületéről, amely bemutatja, hogyan engedélyezze az offline adatátvitelt új kiszolgálóvégpont létrehozása közben](media/storage-sync-files-offline-data-transfer/data-box-integration-2-600.png)
 
 ## <a name="syncing-the-share"></a>A megosztás szinkronizálása
 A kiszolgálóvégpont létrehozása után elindul a szinkronizálás. A szinkronizálási folyamat határozza meg, hogy a kiszolgálón lévő egyes fájlok is léteznek-e abban az átmeneti megosztásban, ahol a Data Box letétbe helyezte a fájlokat. Ha a fájl létezik, a szinkronizálási folyamat a fájlt az átmeneti megosztásról másolja, nem pedig feltölti a kiszolgálóról. Ha a fájl nem létezik az átmeneti megosztásban, vagy ha egy újabb verzió érhető el a helyi kiszolgálón, a szinkronizálási folyamat feltölti a fájlt a helyi kiszolgálóról.
+
+A megosztás szinkronizálásakor a szinkronizálás egyesíti a helyi kiszolgálón lévő fájlváltozatok hiányzó fájlattribútumait, engedélyeit vagy időbélyegeit, kombinálva azokat a DataBox-megosztáson lévő fájltársaikkal. Ez biztosítja, hogy minden fájl és mappa az Azure-fájlmegosztásban lévő összes lehetséges fájlhűséggel érkezik.
 
 > [!IMPORTANT]
 > A tömeges áttelepítési módot csak kiszolgálóvégpont létrehozása közben engedélyezheti. A kiszolgálóvégpont létrehozása után nem integrálható a már szinkronizált kiszolgálóról a névtérbe a tömegesen áttelepített adatok.

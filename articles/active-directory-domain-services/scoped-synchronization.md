@@ -8,15 +8,15 @@ ms.assetid: 9389cf0f-0036-4b17-95da-80838edd2225
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 160873fe889d7eccc7efd08b4767854a5b24c484
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 9ef7e14cc2a290cc5583e3e599e278f98882152c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80518975"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80654743"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services"></a>Hatókörrel történő szinkronizálás konfigurálása az Azure AD és az Azure Active Directory tartományi szolgáltatások között
 
@@ -42,9 +42,9 @@ Az Azure Portal on vagy a PowerShell segítségével konfigurálhatja a hatókö
 
 | Műveletek | | |
 |--|--|--|
-| Azure AD DS felügyelt tartomány létrehozása és hatókörrel kapcsolatos szinkronizálás konfigurálása | [Azure-portál](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
-| Hatókörrel történő szinkronizálás módosítása | [Azure-portál](#modify-scoped-synchronization-using-the-azure-portal) | [PowerShell](#modify-scoped-synchronization-using-powershell) |
-| Hatókörrel szinkronizált szinkronizálás letiltása | [Azure-portál](#disable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#disable-scoped-synchronization-using-powershell) |
+| Azure AD DS felügyelt tartomány létrehozása és hatókörrel kapcsolatos szinkronizálás konfigurálása | [Azure Portal](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
+| Hatókörrel történő szinkronizálás módosítása | [Azure Portal](#modify-scoped-synchronization-using-the-azure-portal) | [PowerShell](#modify-scoped-synchronization-using-powershell) |
+| Hatókörrel szinkronizált szinkronizálás letiltása | [Azure Portal](#disable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#disable-scoped-synchronization-using-powershell) |
 
 > [!WARNING]
 > A szinkronizálás hatókörének módosítása azt eredményezi, hogy az Azure AD DS felügyelt tartománya újraszinkronizálja az összes adatot. A következő szempontokat kell figyelembe venni:

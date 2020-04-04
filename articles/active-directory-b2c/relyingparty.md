@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 04/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 90ac6f35cafbe63e8c6cdb77450089d00c0e3099
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 221ed3169fff78a2721e91023036593570fbd723
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264348"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637795"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -125,7 +125,7 @@ A **SingleSignOn** elem a következő attribútumban található:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Hatókör | Igen | Az egyszeri bejelentkezési viselkedés hatóköre. Lehetséges `Suppressed`értékek: `Tenant` `Application`, `Policy`, , vagy . Az `Suppressed` érték azt jelzi, hogy a viselkedés le van tiltva. Egyszeri bejelentkezés esetén például a rendszer nem tart fenn munkamenetet a felhasználó számára, és a rendszer mindig kéri az identitásszolgáltató kiválasztását. Az `TrustFramework` érték azt jelzi, hogy a rendszer a megbízhatósági keretrendszer összes házirendjéhez alkalmazza a viselkedést. Például egy felhasználó navigálás két házirend-utak egy megbízhatósági keretrendszer nem kéri az identitásszolgáltató kiválasztása. Az `Tenant` érték azt jelzi, hogy a viselkedés a bérlő összes házirendjében alkalmazva van. Például egy felhasználó navigálás két házirend-utak egy bérlő nem kéri az identitásszolgáltató kiválasztása. Az `Application` érték azt jelzi, hogy a viselkedés a kérelmet küldő alkalmazás összes házirendjére vonatkozik. Például egy felhasználó navigálás két házirend-utak egy alkalmazás nem kéri az identitásszolgáltató kiválasztása. Az `Policy` érték azt jelzi, hogy a viselkedés csak egy házirendre vonatkozik. Például egy felhasználó navigálkét házirend-utak egy megbízhatósági keretrendszer kéri az identitásszolgáltató kiválasztása, amikor a házirendek közötti váltás. |
+| Hatókör | Igen | Az egyszeri bejelentkezési viselkedés hatóköre. Lehetséges `Suppressed`értékek: `Tenant` `Application`, `Policy`, , vagy . Az `Suppressed` érték azt jelzi, hogy a viselkedés le van tiltva, és a felhasználó mindig kéri az identitásszolgáltató kiválasztását.  Az `Tenant` érték azt jelzi, hogy a viselkedés a bérlő összes házirendjében alkalmazva van. Például egy felhasználó navigálás két házirend-utak egy bérlő nem kéri az identitásszolgáltató kiválasztása. Az `Application` érték azt jelzi, hogy a viselkedés a kérelmet küldő alkalmazás összes házirendjére vonatkozik. Például egy felhasználó navigálás két házirend-utak egy alkalmazás nem kéri az identitásszolgáltató kiválasztása. Az `Policy` érték azt jelzi, hogy a viselkedés csak egy házirendre vonatkozik. Például egy felhasználó navigálkét házirend-utak egy megbízhatósági keretrendszer kéri az identitásszolgáltató kiválasztása, amikor a házirendek közötti váltás. |
 | KeepAliveInDays között | Igen | Azt határozza meg, hogy a felhasználó mennyi ideig maradjon bejelentkezve. Ha az értéket 0-ra állítja, kikapcsolja a KMSI funkciót. További információ: [A bejelentkezve tartás](custom-policy-keep-me-signed-in.md)című témakörben talál. |
 |EnforceIdTokenHintOnLogout| Nem|  Kényszerítse, hogy egy korábban kiadott azonosító jogkivonatot továbbítson a kijelentkezési végpontnak, mint egy tipp a végfelhasználó aktuális hitelesített munkamenetéről az ügyféllel. Lehetséges értékek: `false` (alapértelmezett) vagy `true`. További információt a [Webes bejelentkezés az OpenID Connect segítségével című témakörben talál.](openid-connect.md)  |
 
@@ -190,7 +190,7 @@ A **Protokoll** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Név | Igen | Az Azure AD B2C által támogatott, a technikai profil részeként használt érvényes protokoll neve. Lehetséges `OpenIdConnect` értékek: `SAML2`vagy . Az `OpenIdConnect` érték az OpenID Connect 1.0 protokollszabványt jelöli az OpenID alapozási specifikáció szerint. Az `SAML2` az SAML 2.0 protokoll szabványt képviseli az OASIS specifikáció szerint. Ne használjon SAML-jogkivonatot éles környezetben. |
+| Név | Igen | Az Azure AD B2C által támogatott, a technikai profil részeként használt érvényes protokoll neve. Lehetséges `OpenIdConnect` értékek: `SAML2`vagy . Az `OpenIdConnect` érték az OpenID Connect 1.0 protokollszabványt jelöli az OpenID alapozási specifikáció szerint. Az `SAML2` az SAML 2.0 protokoll szabványt képviseli az OASIS specifikáció szerint. |
 
 ## <a name="outputclaims"></a>Kimeneti jogcímek
 

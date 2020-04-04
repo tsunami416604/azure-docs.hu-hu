@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: dapine
-ms.openlocfilehash: 11d2f9788f41e259058af50a728b8b82eeb10131
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 1269ff3e21a794fddc2e0f0dc5d62816fa98215b
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78383986"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80658967"
 ---
 Ebben a rövid útmutatóban megtudhatja, hogyan hozhat létre beszédfelismerést támogató terméket a Beszédfelismerési eszközök SDK-val beszédfelismerésre képes termékként, illetve hogyan [használhatja azt beszélgetés-átírási](../conversation-transcription-service.md) eszközként. A beszélgetés átírása csak az [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) támogatott. Más beszédek esetén használjon lineáris mikrofontömböket, amelyek mikrofontömb-geometriát biztosítanak.
 
@@ -74,7 +74,7 @@ Ha azt tervezi, hogy használja a szándékok szüksége lesz egy [nyelv-megért
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.10.0</version>
+             <version>1.11.0</version>
         </dependency>
     </dependencies>
    ```

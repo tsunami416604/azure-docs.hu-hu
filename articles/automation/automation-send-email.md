@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/15/2019
 ms.topic: tutorial
-ms.openlocfilehash: 6acb68b7bbaa54db2e4143a42e43aede2caed35f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 332d7e4cae3b65d794d48d208b54db3809b78a8f
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75420709"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632371"
 ---
 # <a name="tutorial-send-an-email-from-an-azure-automation-runbook"></a>Oktatóanyag: E-mail küldése egy Azure Automation-runbookból
 
@@ -149,7 +149,7 @@ Ebben a példában a **Send-GridMailMessage**nevű runbookot hozhat létre. Mód
 
 7. A **Runbook** mentéséhez és közzétételéhez válassza a Közzététel lehetőséget.
 
-Annak ellenőrzéséhez, hogy a runbook végrehajtása sikeresen befejeződött-e, kövesse a [Runbook tesztelése](manage-runbooks.md#test-a-runbook) vagy [a Runbook indítása](start-runbooks.md)című csoport lépéseit.
+Annak ellenőrzéséhez, hogy a runbook végrehajtása sikeresen befejeződött-e, kövesse a [Runbook tesztelése](manage-runbooks.md#testing-a-runbook) vagy [a Runbook indítása](start-runbooks.md)című csoport lépéseit.
 Ha kezdetben nem látja a teszte-maileket, ellenőrizze a **Levélszemét** és **a Levélszemét** mappát.
 
 ## <a name="clean-up"></a>Takarítás

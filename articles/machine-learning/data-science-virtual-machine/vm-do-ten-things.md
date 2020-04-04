@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 147f43148c0f804adf70f1a792ba1b8a772fdae4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8da8cd7110cd17d0aadd52cce1263c7c0fcfdf5c
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294493"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632172"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Tíz dolog, amit tehetünk a Windows Data Science virtuális gép
 
@@ -803,16 +803,6 @@ pd.read_sql(queryString, connection)
 ```
 
 ![A táblázat első sorai](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
-
-#### <a name="read-data-from-hdi-by-using-azure-machine-learning-studio-classic-reader-module"></a>Adatok olvasása a HDI-ből az Azure Machine Learning Studio használatával (klasszikus): olvasómodul
-
-Az olvasómodul t is használhat az Azure Machine Learning Studio (klasszikus) az adatbázis elérése egy Hadoop-fürtben. A HDI-fürtök és az Azure storage-fiók hitelesítő adatait csatlakoztatva gépi tanulási modellek létrehozásához hdi-fürtökadatbázis használatával.
-
-![Olvasómodul tulajdonságai](./media/vm-do-ten-things/AML_Reader_Hive.PNG)
-
-Ezután megtekintheti a pontozott adatkészletet:
-
-![Pontozott adatkészlet megtekintése](./media/vm-do-ten-things/AML_Model_Results.PNG)
 
 ### <a name="azure-sql-data-warehouse-and-databases"></a>Azure SQL Data Warehouse és adatbázisok
 Az Azure SQL Data Warehouse egy rugalmas adattárház, amely nagyvállalati szintű SQL Server-élményt nyújtó szolgáltatás.

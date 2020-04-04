@@ -11,12 +11,12 @@ ms.date: 07/12/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4390ed39c86e041d3fbd776415f0ffbe71f605bd
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 68d53d2a33b7ab705dfa88f03618a5d5a3d1bced
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350166"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633042"
 ---
 # <a name="geo-restore-for-sql-pool"></a>Geo-visszaállítás az SQL-készlethez
 
@@ -38,12 +38,12 @@ A visszaállításhoz geo-backup, használja a [Get-AzSqlDatabaseGeoBackup](http
 
 1. Mielőtt elkezdené, telepítse [az Azure PowerShellt.](https://docs.microsoft.com/powershell/azure/overview)
 2. Nyissa meg a PowerShellt.
-2. Csatlakozzon az Azure-fiókjához, és sorolja fel a fiókjához társított összes előfizetést.
-3. Válassza ki a visszaállítandó adatraktárt tartalmazó előfizetést.
-4. Szerezze be a helyreállítani kívánt adattárházat.
-5. Hozza létre az adatraktár helyreállítási kérelmét.
-6. Ellenőrizze a geo-alapú adattárház állapotát.
-7. Az adattárház konfigurálása a visszaállítás befejezése után, [olvassa el az Adatbázis konfigurálása a helyreállítás után]( ../../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery)című témakört.
+3. Csatlakozzon az Azure-fiókjához, és sorolja fel a fiókjához társított összes előfizetést.
+4. Válassza ki a visszaállítandó adatraktárt tartalmazó előfizetést.
+5. Szerezze be a helyreállítani kívánt adattárházat.
+6. Hozza létre az adatraktár helyreállítási kérelmét.
+7. Ellenőrizze a geo-alapú adattárház állapotát.
+8. Az adattárház konfigurálása a visszaállítás befejezése után, [olvassa el az Adatbázis konfigurálása a helyreállítás után]( ../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)című témakört.
 
 ```Powershell
 $SubscriptionName="<YourSubscriptionName>"
@@ -77,24 +77,25 @@ A helyreállított adatbázis TDE-kompatibilis lesz, ha a forrásadatbázis TDE-
 Az alábbi lépéseket követve állítsa vissza az SQL-készletet a geobiztonsági mentésből:
 
 1. Jelentkezzen be az [Azure Portal-fiókjába.](https://portal.azure.com/)
-1. Kattintson **a + Erőforrás létrehozása gombra.** 
+2. Kattintson **a + Erőforrás létrehozása gombra.**
 
-![Új DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
+   ![Új DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
 
 3. Kattintson **az adatbázisok,** majd **Azure Synapse Analytics (korábban SQL DW) **.
 
-![Új DW 2](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new-02.png)
+   ![Új DW 2](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new-02.png)
 
 4. Töltse ki az **Alapok** lapon kért információkat, és kattintson a **Tovább gombra: További beállítások**.
 
-![Alapvető beállítások](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
+   ![Alapvető beállítások](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
 
 5. A **Meglévő adatparaméter használata csoportban** válassza a **Biztonsági mentés** lehetőséget, és válassza ki a megfelelő biztonsági másolatot a lefelé görgetési beállítások közül. Kattintson **a Véleményezés + Létrehozás gombra.**
- 
-![biztonsági mentés](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
+
+   ![biztonsági mentés](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
 
 6. Az adattárház visszaállítása után ellenőrizze, hogy az **Állapot** online állapot-e.
 
 ## <a name="next-steps"></a>Következő lépések
+
 - [Meglévő SQL-készlet visszaállítása](sql-data-warehouse-restore-active-paused-dw.md)
 - [Törölt SQL-készlet visszaállítása](sql-data-warehouse-restore-deleted-dw.md)

@@ -8,20 +8,20 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 525c20f5b6e24811ab092a63fa84fe6ebbd7b618
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 42ace2444c7d8e790c7575a7c1a7b3b1219d090a
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72808194"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656418"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>Egyszerű lekérdezés létrehozása az Azure Cognitive Search szolgáltatásban
 
-Az Azure Cognitive [Search, az egyszerű lekérdezés szintaxisa](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) meghívja az alapértelmezett lekérdezéselemző teljes szöveges keresési lekérdezések egy indexen. Ez az elemző gyors, és kezeli a gyakori forgatókönyveket, beleértve a teljes szöveges keresést, a szűrt és a kifejezésre végzett keresést, valamint a földrajzi keresést. 
+Az Azure Cognitive [Search, az egyszerű lekérdezés szintaxisa](query-simple-syntax.md) meghívja az alapértelmezett lekérdezéselemző teljes szöveges keresési lekérdezések egy indexen. Ez az elemző gyors, és kezeli a gyakori forgatókönyveket, beleértve a teljes szöveges keresést, a szűrt és a kifejezésre végzett keresést, valamint a földrajzi keresést. 
 
 Ebben a cikkben példákat használunk az egyszerű szintaxis szemléltetésére.
 
-Egy másik lekérdezés szintaxisa [a Full Lucene,](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)amely összetettebb lekérdezési struktúrákat támogat, például az intelligens és helyettesítő karakteres keresést, ami további időt vehet igénybe. További információt és a teljes szintaxist bemutató példákat [a Teljes Lucene szintaxis használata](search-query-lucene-examples.md)című témakörben talál.
+Egy másik lekérdezés szintaxisa [a Full Lucene,](query-lucene-syntax.md)amely összetettebb lekérdezési struktúrákat támogat, például az intelligens és helyettesítő karakteres keresést, ami további időt vehet igénybe. További információt és a teljes szintaxist bemutató példákat [a Teljes Lucene szintaxis használata](search-query-lucene-examples.md)című témakörben talál.
 
 ## <a name="formulate-requests-in-postman"></a>A kérelmek megfogalmazása a Postmanben
 

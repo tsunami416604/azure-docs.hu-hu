@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 1287eb5de1391f40c4409d5d10522d8979ae4207
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 72e9334b4df58b1b90288cb7363a7d94bb531661
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78384078"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80658390"
 ---
 Ha C++ szintű fejlesztésre szeretne létrehozni egy Visual Studio-projektet, be kell állítania a Visual Studio fejlesztési beállításait, létre kell hoznia a projektet, ki kell választania a célarchitektúrát, és telepítenie kell a beszédfelismerési SDK-t.
 
@@ -77,4 +77,4 @@ Végül telepítse a [Speech SDK NuGet csomagot](https://aka.ms/csspeech/nuget),
 
 1. A **Változások megtekintése** párbeszédpanelen válassza az **OK gombot.**
 
-1. A **Licencelfogadás** párbeszédpanelen tekintse meg a licencet, majd válassza az **Elfogadom**lehetőséget. A csomag telepítése megkezdődik, és **Output** a telepítés befejeztével a Kimenet `Successfully installed 'Microsoft.CognitiveServices.Speech 1.10.0' to helloworld`ablaktábla a következő höz hasonló üzenetet jelenít meg: .
+1. A **Licencelfogadás** párbeszédpanelen tekintse meg a licencet, majd válassza az **Elfogadom**lehetőséget. A csomag telepítése megkezdődik, és **Output** a telepítés befejeztével a Kimenet `Successfully installed 'Microsoft.CognitiveServices.Speech 1.11.0' to helloworld`ablaktábla a következő höz hasonló üzenetet jelenít meg: .

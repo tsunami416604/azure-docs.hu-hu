@@ -1,160 +1,194 @@
 ---
-title: Mobilitási szolgáltatás leküldéses telepítésének hibaelhárítása az Azure Site Recovery f szolgáltatással
+title: Mobilitási szolgáltatás leküldéses telepítésének hibaelhárítása az Azure Site Recovery szolgáltatással
 description: Mobilitási szolgáltatások telepítési hibáinak elhárítása, amikor engedélyezi a replikációt az Azure Site Recovery-vel a vészhelyreállításhoz.
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
-ms.date: 09/11/2019
-ms.openlocfilehash: 3646499ad2104566cb82f3f26c6b55d05f84dc7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/03/2020
+ms.openlocfilehash: 1afd931249d4dbeda2b4b25f822837e2a564f959
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73953782"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656324"
 ---
-# <a name="troubleshoot-mobility-service-push-installation"></a>A mobilitási szolgáltatás leküldéses telepítésével kapcsolatos hibák elhárítása 
+# <a name="troubleshoot-mobility-service-push-installation"></a>Mobilitási szolgáltatás leküldéses telepítésének hibaelhárítása
 
-A mobilitási szolgáltatás telepítése kulcsfontosságú lépés a replikáció engedélyezése során. Ennek a lépésnek a sikere kizárólag az előfeltételek teljesítésétől és a támogatott konfigurációk együttműködésétől függ. A Mobility szolgáltatás telepítése során előforduló leggyakoribb hibák a következők:
+A Mobilitás szolgáltatás telepítése kulcsfontosságú lépés a replikáció engedélyezéséhez. A lépés sikere az előfeltételek teljesítésétől és a támogatott konfigurációk együttműködésétől függ. A Mobility szolgáltatás telepítése során előforduló leggyakoribb hibák a következők:
 
 * [Hitelesítő adatok/jogosultsági hibák](#credentials-check-errorid-95107--95108)
 * [Bejelentkezési hibák](#login-failures-errorid-95519-95520-95521-95522)
 * [Csatlakozási hibák](#connectivity-failure-errorid-95117--97118)
 * [Fájl- és nyomtatómegosztási hibák](#file-and-printer-sharing-services-check-errorid-95105--95106)
-* [WMI-hibák](#windows-management-instrumentation-wmi-configuration-check-error-code-95103)
+* [A Windows Management Instrumentation (WMI) hibái](#windows-management-instrumentation-wmi-configuration-check-error-code-95103)
 * [Nem támogatott operációs rendszerek](#unsupported-operating-systems)
 * [Nem támogatott rendszerindítási konfigurációk](#unsupported-boot-disk-configurations-errorid-95309-95310-95311)
-* [VSS-telepítési hibák](#vss-installation-failures)
+* [Kötet árnyékmásolata szolgáltatás (VSS) telepítési hibák](#vss-installation-failures)
 * [Eszköz neve GRUB konfigurációban az UUID eszköz helyett](#enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-errorid-95320)
-* [LVM-kötet](#lvm-support-from-920-version)
+* [Logikai kötetkezelő (LVM) kötete](#lvm-support-from-920-version)
 * [Újraindításra vonatkozó figyelmeztetések](#install-mobility-service-completed-with-warning-to-reboot-errorid-95265--95266)
 
-Ha engedélyezi a replikációt, az Azure Site Recovery megpróbálja leadni a telepítési szolgáltatásügynök a virtuális gépen. Ennek részeként a konfigurációs kiszolgáló megpróbál csatlakozni a virtuális géphez, és másolja az ügynököt. A sikeres telepítés hez kövesse az alábbi lépésről lépésre adott hibaelhárítási útmutatást.
+A replikáció engedélyezésekor az Azure Site Recovery megpróbálja telepíteni a mobilszolgáltatás-ügynököt a virtuális gépen.When you enable replication, Azure Site Recovery tries to install the Mobility service agent on your virtual machine (VM). Ennek a folyamatnak a részeként a konfigurációs kiszolgáló megpróbál csatlakozni a virtuális géphez, és másolja az ügynököt. A sikeres telepítés hez kövesse a részletes hibaelhárítási útmutatót.
 
 ## <a name="credentials-check-errorid-95107--95108"></a>Hitelesítő adatok ellenőrzése (Hibaazonosító: 95107 & 95108)
 
-* Ellenőrizze, hogy a replikáció engedélyezése során kiválasztott felhasználói fiók **érvényes és pontos-e.**
-* Az Azure Site Recovery **leküldéses** telepítés hez root-fiókra vagy **rendszergazdai jogosultságokkal** rendelkező felhasználói fiókra van szükség. Máskülönben a leküldéses telepítés blokkolva lesz a forrásgépen.
-  * Windows rendszerben (**95107-es hiba**) ellenőrizze, hogy a felhasználói fiók rendelkezik-e rendszergazdai hozzáféréssel helyi vagy tartományi hozzáféréssel a forrásszámítógépen.
-  * Ha nem tartományi fiókot használ, le kell tiltania a távoli felhasználói hozzáférés vezérlését a helyi számítógépen.
-    * A távoli felhasználói hozzáférés-vezérlés letiltásához a HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\CurrentVersion\Policies\Registry registry kulcs csoportban adjon hozzá egy új DWORD:LocalAccountTokenFilterPolicy parancsot. Az értéket állítsa be 1-re. A lépés végrehajtásához futtassa a következő parancsot a parancssorból:
+Ellenőrizze, hogy a replikáció engedélyezése során kiválasztott felhasználói fiók érvényes és pontos-e. Az Azure Site Recovery megköveteli a **gyökérfiók** vagy a **rendszergazdai jogosultságokkal** rendelkező felhasználói fiók leküldéses telepítés végrehajtásához. Ellenkező esetben a leküldéses telepítés blokkolva lesz a forrásgépen.
 
-         `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
-  * Linux (**hiba 95108**), ki kell választania a gyökér fiókot a mobilitásügynök sikeres telepítéséhez. Ezenkívül az SFTP-szolgáltatásoknak futniuk kell. Az SFTP-alrendszer és a jelszóhitelesítés engedélyezése a sshd_config fájlban:
-    1. Jelentkezzen be gyökér szintű felhasználóként.
-    2. Nyissa meg az /etc/ssh/sshd_config fájlt, keresse meg a PasswordAuthentication programmal kezdődő sort.
-    3. A sor megjegyzésének megjegyzése nélkül, és módosítsa az értéket igen értékre.
-    4. Keresse meg az Alrendszerrel kezdődő sort, és vonja vissza a sor megjegyzését.
-    5. Indítsa újra az sshd szolgáltatást.
+Windows rendszerben (**95107-es hiba**) ellenőrizze, hogy a felhasználói fiók rendelkezik-e rendszergazdai hozzáféréssel a forrásszámítógépen, helyi fiókkal vagy tartományi fiókkal. Ha nem tartományi fiókot használ, le kell tiltania a távoli felhasználói hozzáférés vezérlését a helyi számítógépen.
 
-Ha módosítani szeretné a kiválasztott felhasználói fiók hitelesítő adatait, kövesse az [itt](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation)megadott utasításokat .
+* A távoli felhasználói hozzáférés vezérlőjét letiltó beállításkulcs manuális hozzáadása:
+
+  * `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`
+  * Új `DWORD`hozzáadása:`LocalAccountTokenFilterPolicy`
+  * Az érték beállítása`1`
+
+* A beállításkulcs hozzáadásához futtassa a következő parancsot egy parancssorból:
+
+  `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
+
+Linux (**hiba 95108**), ki kell választania a **root** fiókot a mobility service ügynök sikeres telepítéséhez. Ezenkívül az SSH Fájlátviteli protokoll (SFTP) szolgáltatásoknak futniuk kell. Az SFTP-alrendszer és a jelszóhitelesítés engedélyezése a _sshd_config_ fájlban:
+
+1. Jelentkezzen be **gyökér** szintű felhasználóként.
+1. Nyissa meg az _/etc/ssh/sshd_config fájlt,_ `PasswordAuthentication`keresse meg a programmal kezdődő sort.
+1. A sor megjegyzésének kimegjegyzéstása és az érték módosítása . `yes`
+1. Keresse meg a `Subsystem`, és ne fűzzön megjegyzést a sorhoz.
+1. Indítsa `sshd` újra a szolgáltatást.
+
+Ha módosítani szeretné a kiválasztott felhasználói fiók hitelesítő adatait, kövesse [az alábbi utasításokat.](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation)
 
 ## <a name="insufficient-privileges-failure-errorid-95517"></a>Elégtelen jogosultsághiba (Hibaazonosító: 95517)
 
-Ha a mobilügynök telepítését választott felhasználó nem rendelkezik rendszergazdai jogosultságokkal, a konfigurációs kiszolgáló/kibővített folyamatkiszolgáló nem másolhatja a mobilügynök szoftverét a forrásszámítógépre. Tehát ez a hiba a hozzáférés megtagadott hibájának eredménye. Győződjön meg arról, hogy a felhasználói fiók rendszergazdai jogosultságokkal rendelkezik.
+Ha a mobilügynök telepítését választott felhasználó nem rendelkezik rendszergazdai jogosultságokkal, a konfigurációs kiszolgáló/kibővített folyamatkiszolgáló nem másolhatja a Mobilügynök szoftverét a forrásgépre. Ez a hiba a hozzáférés megtagadása hibájából ered. Győződjön meg arról, hogy a felhasználói fiók rendszergazdai jogosultságokkal rendelkezik.
 
-Ha módosítani szeretné a kiválasztott felhasználói fiók hitelesítő adatait, kövesse az [itt](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation)megadott utasításokat .
+Ha módosítani szeretné a kiválasztott felhasználói fiók hitelesítő adatait, kövesse [az alábbi utasításokat.](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation)
 
 ## <a name="insufficient-privileges-failure-errorid-95518"></a>Elégtelen jogosultsághiba (Hibaazonosító: 95518)
 
-Ha az elsődleges tartomány és a munkaállomás közötti tartományi megbízhatósági kapcsolat létrehozása sikertelen, miközben megpróbál bejelentkezni a forrásgépre, a mobilügynök telepítése a 95518-as azonosítóval sikertelen. Ezért győződjön meg arról, hogy a mobilitási ügynök telepítéséhez használt felhasználói fiók rendszergazdai jogosultságokkal rendelkezik a forrásgép elsődleges tartományán keresztül történő bejelentkezéshez.
+Ha az elsődleges tartomány és a munkaállomás közötti tartományi megbízhatósági kapcsolat létrehozása sikertelen, miközben megpróbál bejelentkezni a forrásgépre, a Mobilitási ügynök telepítése a 95518-as azonosítóval sikertelen lesz. Győződjön meg arról, hogy a Mobilitási ügynök telepítéséhez használt felhasználói fiók rendszergazdai jogosultságokkal rendelkezik a forrásgép elsődleges tartományán keresztül történő bejelentkezéshez.
 
-Ha módosítani szeretné a kiválasztott felhasználói fiók hitelesítő adatait, kövesse az [itt](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation)megadott utasításokat .
+Ha módosítani szeretné a kiválasztott felhasználói fiók hitelesítő adatait, kövesse az [alábbi utasításokat.](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation)
 
 ## <a name="login-failures-errorid-95519-95520-95521-95522"></a>Bejelentkezési hibák (Hibaazonosító: 95519, 95520, 95521, 95522)
 
+Ez a szakasz a hitelesítő adatokkal és bejelentkezési hibaüzenetekkel ismerteti a szükséges hibaüzeneteket.
+
 ### <a name="credentials-of-the-user-account-have-been-disabled-errorid-95519"></a>A felhasználói fiók hitelesítő adatai le vannak tiltva (Hibaazonosító: 95519)
 
-A replikáció engedélyezése során kiválasztott felhasználói fiók le van tiltva. A felhasználói fiók engedélyezéséhez olvassa el a cikket [itt,](https://aka.ms/enable_login_user) vagy futtassa a következő parancsot úgy, hogy a szöveges *felhasználónevet* a tényleges felhasználónévre cseréli.
+A replikáció engedélyezése során kiválasztott felhasználói fiók le lett tiltva. A felhasználói fiók engedélyezéséhez olvassa el ezt a [cikket,](/powershell/module/Microsoft.PowerShell.LocalAccounts/Enable-LocalUser) vagy futtassa a következő parancsot úgy, hogy a szöveges _felhasználónevet_ a tényleges felhasználónévre cseréli.
+
 `net user 'username' /active:yes`
 
-### <a name="credentials-locked-out-due-to-multiple-failed-login-attempts-errorid-95520"></a>Több sikertelen bejelentkezési kísérlet miatt zárolt hitelesítő adatok (ErrorID: 95520)
+### <a name="credentials-locked-out-because-of-multiple-failed-login-attempts-errorid-95520"></a>A hitelesítő adatok több sikertelen bejelentkezési kísérlet miatt zárolva vannak (ErrorID: 95520)
 
 A számítógép elérésére irányuló többszörös sikertelen újrapróbálkozási kísérlet zárolja a felhasználói fiókot. A hiba oka lehet:
 
-* A konfiguráció beállítása során megadott hitelesítő adatok helytelenek VAGY
-* A replikáció engedélyezése során választott felhasználói fiók hibás
+* A konfiguráció beállítása során megadott hitelesítő adatok helytelenek.
+* A replikáció engedélyezése során választott felhasználói fiók hibás.
 
-Módosítsa tehát az [itt](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation) megadott utasításokat követően kiválasztott hitelesítő adatokat, majd próbálkozzon újra a művelettel valamikor.
+Módosítsa a kiválasztott hitelesítő adatokat [az alábbi utasításokat](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation) követve, majd próbálkozzon újra a művelettel.
 
-### <a name="logon-servers-are-not-available-on-the-source-machine-errorid-95521"></a>A bejelentkezési kiszolgálók nem érhetők el a forrásszámítógépen (ErrorID: 95521)
+### <a name="logon-servers-arent-available-on-the-source-machine-errorid-95521"></a>A bejelentkezési kiszolgálók nem érhetők el a forrásszámítógépen (Hibaazonosító: 95521)
 
-Ez a hiba akkor fordul elő, ha a bejelentkezési kiszolgálók nem érhetők el a forrásszámítógépen. A bejelentkezési kiszolgálók elérhetetlensége a bejelentkezési kérelem sikertelenségéhez vezet, így a mobilitási ügynök nem telepíthető. A sikeres bejelentkezéshez győződjön meg arról, hogy a bejelentkezési kiszolgálók elérhetők a forrásszámítógépen, és indítsa el a Bejelentkezési szolgáltatást. Részletes útmutatást a KB 139410 Err Msg: There Are Currently No Logon Servers available (Részletes utasítások: KB [139410](https://support.microsoft.com/en-in/help/139410/err-msg-there-are-currently-no-logon-servers-available) Err Msg: There Are Currently No Logon Servers available) című témakörben talál.
+Ez a hiba akkor fordul elő, ha a bejelentkezési kiszolgálók nem érhetők el a forrásszámítógépen. Ha a bejelentkezési kiszolgálók nem érhetők el, a bejelentkezési kérelmek sikertelenek lesznek, és a mobilitási ügynök nem telepíthető. A sikeres bejelentkezéshez győződjön meg arról, hogy a bejelentkezési kiszolgálók elérhetők a forrásszámítógépen, és indítsa el a Netlogon szolgáltatást. További információt a [Windows bejelentkezési forgatókönyvei című témakörben talál.](/windows-server/security/windows-authentication/windows-logon-scenarios)
 
 ### <a name="logon-service-isnt-running-on-the-source-machine-errorid-95522"></a>A bejelentkezési szolgáltatás nem fut a forrásgépen (ErrorID: 95522)
 
-A bejelentkezési szolgáltatás nem fut a forrásgépen, és a bejelentkezési kérelem sikertelenségét okozta. Tehát a mobilitási ügynök nem telepíthető. A probléma megoldásához győződjön meg arról, hogy a bejelentkezési szolgáltatás fut a forrásgépen a sikeres bejelentkezéshez. A bejelentkezési szolgáltatás elindításához futtassa a "net start Logon" parancsot a parancssorból, vagy indítsa el a "NetLogon" szolgáltatást a feladatkezelőtől.
+A bejelentkezési szolgáltatás nem fut a forrásgépen, és a bejelentkezési kérelem sikertelenségét okozta. A mobilitási ügynök nem telepíthető. A hiba elhárításához használja az alábbi módszerek `Netlogon` egyikét a szolgáltatás indításához a forrásszámítógépen:
 
-## <a name="connectivity-failure-errorid-95117--97118"></a>**Kapcsolódási hiba (Hibaazonosító: 95117 & 97118)**
+* Ha parancssorból szeretné elindítani `Netlogon` a `net start Netlogon`szolgáltatást, futtassa a parancsot.
+* A Feladatkezelőből `Netlogon` indítsa el a szolgáltatást.
 
-A konfigurációs kiszolgáló/kibővített folyamatkiszolgáló megpróbál csatlakozni a forrásvirtuális géphez a Mobilügynök telepítéséhez. Ez a hiba akkor fordul elő, ha a forrásgép hálózati kapcsolati problémák miatt nem érhető el. A megoldáshoz
+## <a name="connectivity-failure-errorid-95117--97118"></a>Kapcsolódási hiba (Hibaazonosító: 95117 & 97118)
 
-* Győződjön meg arról, hogy a forrásgépet a konfigurációs kiszolgálóról pingelheti. Ha a replikáció engedélyezése során a horizontális felskálázási folyamatkiszolgálót választotta, győződjön meg arról, hogy a forrásgépet a folyamatkiszolgálóról pingelheti.
-  * A Forráskiszolgáló gépének parancssorából a Telnet segítségével pingelje a konfigurációs kiszolgálót/ kibővített folyamatkiszolgálót https-porttal (135) az alábbiak szerint, és nézze meg, hogy vannak-e hálózati csatlakozási problémák vagy tűzfalport-blokkoló problémák.
+A konfigurációs kiszolgáló/kibővített folyamatkiszolgáló megpróbál csatlakozni a forrásvirtuális géphez a mobilitási ügynök telepítéséhez. Ez a hiba akkor fordul elő, ha a forrásgép nem érhető el, mert hálózati kapcsolati problémák vannak.
 
-     `telnet <CS/ scale-out PS IP address> <135>`
-* Továbbá, a **Linux VM**,
-  * Ellenőrizze, hogy a legújabb openssh, openssh-server és openssl csomagok vannak-e telepítve.
+A hiba elhárítása:
+
+* Győződjön meg arról, hogy a konfigurációs kiszolgálóról pingelheti a forrásgépet. Ha a replikáció engedélyezése során a kibővített folyamatkiszolgálót választotta, győződjön meg arról, hogy pingelheti a forrásgépet a folyamatkiszolgálóról.
+
+* A forráskiszolgáló gépének parancssorából a konfigurációs kiszolgáló vagy a kibővített folyamatkiszolgáló pingeléséhez használható `Telnet` a 135-ös HTTPS-porton, ahogy az a következő parancsban is látható. Ez a parancs ellenőrzi, hogy vannak-e hálózati kapcsolati problémák vagy tűzfalportblokkolással kapcsolatos problémák.
+
+  `telnet <CS/ scale-out PS IP address> <135>`
+
+* Ezenkívül linuxos virtuális gép esetén:
+  * Ellenőrizze, hogy telepítve vannak-e a legújabb OpenSSH, OpenSSH Server és OpenSSL csomagok.
   * Ellenőrizze és győződjön meg arról, hogy a Secure Shell (SSH) engedélyezve van, és fut-e a 22-es porton.
-  * Az SFTP-szolgáltatásoknak futniuk kell. Az SFTP-alrendszer és a jelszóhitelesítés engedélyezéséhez a sshd_config fájlban
-    * Jelentkezzen be gyökér szintű felhasználóként.
-    * Nyissa meg az /etc/ssh/sshd_config fájlt, keresse meg a PasswordAuthentication programmal kezdődő sort.
-    * A sor megjegyzésének kimegjegyzéstása, és az érték módosítása igen értékre
-    * Az Alrendszer rel kezdődő sor megkeresése és a sor megjegyzésének fésülése
-    * Indítsa újra az sshd szolgáltatást.
-* A csatlakozási kísérlet sikertelen lehet, ha egy idő után nincs megfelelő válasz, vagy a létrehozott kapcsolat nem sikerült, mert a csatlakoztatott állomás nem tudott válaszolni.
-* Ez lehet egy kapcsolattal/hálózattal/tartománnyal kapcsolatos probléma. Ennek oka lehet a DNS-név feloldása vagy a TCP-port kimerülési problémája is. Ellenőrizze, hogy vannak-e ilyen ismert problémák a tartományban.
+  * Az SFTP-szolgáltatásoknak futniuk kell. Az SFTP-alrendszer és a jelszóhitelesítés engedélyezése a _sshd_config_ fájlban:
+
+    1. Jelentkezzen be **gyökér** szintű felhasználóként.
+    1. Nyissa meg az _/etc/ssh/sshd_config_ fájlt, `PasswordAuthentication`keresse meg a .
+    1. A sor megjegyzésének kimegjegyzéstása és az érték módosítása . `yes`
+    1. Keresse meg a `Subsystem`, és a sor megjegyzésének fésületét
+    1. Indítsa `sshd` újra a szolgáltatást.
+
+* Egy csatlakozási kísérlet sikertelen lehet, ha egy idő után nincsenek megfelelő válaszok, vagy egy létrehozott kapcsolat nem sikerült, mert egy csatlakoztatott állomás nem tudott válaszolni.
+* Ez lehet egy kapcsolattal/hálózattal/tartománnyal kapcsolatos probléma. Ez azért is lehet, mert a DNS-név megoldja a problémát vagy a TCP-port kimerülési problémája. Ellenőrizze, hogy vannak-e ilyen ismert problémák a tartományban.
 
 ## <a name="connectivity-failure-errorid-95523"></a>Kapcsolódási hiba (Hibaazonosító: 95523)
 
-Ez a hiba akkor fordul elő, ha a hálózat, amelyben a forrásgép található, nem található, vagy lehet, hogy törölték, vagy már nem érhető el. A hiba egyetlen megoldása a hálózat létezésének biztosításával történik.
+Ez a hiba akkor fordul elő, ha a forrásgép által üzemeltetett hálózat nem található, lehet, hogy törölték, vagy már nem érhető el. A hiba megoldásának egyetlen módja a hálózat létezésének biztosítása.
 
 ## <a name="file-and-printer-sharing-services-check-errorid-95105--95106"></a>Fájl- és nyomtatómegosztási szolgáltatások ellenőrzése (Hibaazonosító: 95105 & 95106)
 
-A kapcsolat ellenőrzése után ellenőrizze, hogy a fájl- és nyomtatómegosztási szolgáltatás engedélyezve van-e a virtuális gépen. Ezek a beállítások szükségesek a Mobilügynök forrásgépre történő másolásához.
+A kapcsolat ellenőrzése után ellenőrizze, hogy a Fájl- és nyomtatómegosztási szolgáltatás engedélyezve van-e a virtuális gépen. Ezek a beállítások szükségesek a mobilügynök forrásgépre történő másolásához.
 
-**Windows 2008 R2 és korábbi verziók esetén**
+**Windows 2008 R2 és korábbi verziók esetén:**
 
 * A fájl- és nyomtatómegosztás engedélyezése a Windows tűzfalon keresztül,
-  * Nyissa meg a vezérlőpultot -> Rendszer és biztonság –> Windows tűzfal -> a bal oldali ablaktáblán, kattintson a Speciális beállítások -> kattintson a konzolfán a Bejövő szabályok parancsra.
-  * Keresse meg a fájl- és nyomtatómegosztás (NB-session-In) és a Fájl- és nyomtatómegosztás (SMB-in) szabályokat. Minden szabályhoz kattintson a jobb gombbal a szabályra, majd kattintson a **Szabály engedélyezése parancsra.**
-* A fájlmegosztás engedélyezése a csoportházirenddel
-  * Nyissa meg a kezdőképernyőt, írja be a gpmc.msc kifejezést, és keressen.
-  * A navigációs ablakban nyissa meg a következő mappákat: Helyi számítógép-házirend, Felhasználói konfiguráció, Felügyeleti sablonok, Windows-összetevők és Hálózati megosztás.
-  * A részletek ablaktáblán kattintson duplán **a Felhasználók profilon belüli fájlok megosztásának megakadályozása**elemre. A csoportházirend-beállítás letiltásához és a felhasználó fájlok megosztási képességének engedélyezéséhez kattintson a Letiltva gombra. Kattintson az OK gombra a módosítások mentéséhez. További információ: [Fájlmegosztás engedélyezése vagy letiltása csoportházirenddel című témakörben.](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10))
+  1. Nyissa meg **a Vezérlőpult** > **rendszer- és biztonsági** > **windowsos tűzfalát**. A bal oldali ablaktáblában válassza a **Speciális beállítások** > **Bejövő szabályok** lehetőséget a konzolfán.
+  1. Keresse meg a fájl- és nyomtatómegosztás (NB-session-In) és a Fájl- és nyomtatómegosztás (SMB-in) szabályokat.
+  1. Minden szabályhoz kattintson a jobb gombbal a szabályra, majd kattintson a **Szabály engedélyezése parancsra.**
 
-A **későbbi verziók**esetében kövesse [a Telepítse a Mobilitás szolgáltatást a VMware virtuális gépek és a fizikai kiszolgálók vészhelyreállítása](vmware-azure-install-mobility-service.md) érdekében a fájl- és nyomtatómegosztás engedélyezéséhez című témakörutasításait.
+* Fájlmegosztás engedélyezése csoportházirenddel:
+  1. Nyissa **Start**meg a `gpmc.msc` Kezdőképernyő t, írja be és keressen.
+  1. A navigációs ablakban nyissa meg a következő mappákat: **Helyi számítógép-házirend** > **felhasználóinak konfigurálása** > Felügyeleti**sablonok** > **Windows-összetevők** > **hálózati megosztása**.
+  1. A részletek ablaktáblán kattintson duplán **a Felhasználók profilon belüli fájlok megosztásának megakadályozása**elemre.
+
+     A csoportházirend-beállítás letiltásához és a felhasználó fájlok megosztási képességének engedélyezéséhez válassza a **Letiltva**lehetőséget.
+
+  1. A módosítások mentéséhez kattintson az **OK** gombra.
+
+  További információ: [Fájlmegosztás engedélyezése vagy letiltása csoportházirenddel című témakörben.](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10))
+
+A Windows vagy Linux későbbi verzióiban a fájl- és nyomtatómegosztás engedélyezéséhez kövesse [a Mobilszolgáltatás telepítése a VMware virtuális gépek és a fizikai kiszolgálók vészvisszatérítéséhez](vmware-azure-install-mobility-service.md) című témakör utasításait.
 
 ## <a name="windows-management-instrumentation-wmi-configuration-check-error-code-95103"></a>A Windows Management Instrumentation (WMI) konfigurációjának ellenőrzése (hibakód: 95103)
 
-A fájl- és nyomtatószolgáltatások ellenőrzése után engedélyezze a WMI-szolgáltatást magán-, nyilvános és tartományi profilokhoz tűzfalon keresztül. Ezek a beállítások szükségesek a távoli végrehajtás befejezéséhez a forrásszámítógépen. Az engedélyezéshez
+A fájl- és nyomtatószolgáltatások ellenőrzése után engedélyezze a WMI-szolgáltatást magán-, nyilvános és tartományi profilokhoz a tűzfalon keresztül. Ezek a beállítások szükségesek a távoli végrehajtás befejezéséhez a forrásszámítógépen.
 
-* Nyissa meg a Vezérlőpultot, kattintson a Biztonság, majd a Windows tűzfal parancsra.
-* Kattintson a Beállítások módosítása gombra, majd a Kivételek fülre.
-* A Kivételek ablakban jelölje be a Windows Management Instrumentation (WMI) jelölőnégyzetét a WMI-forgalom tűzfalon keresztüli engedélyezéséhez. 
+A WMI engedélyezése:
 
-A WMI-forgalmat a tűzfalon keresztül is engedélyezheti a parancssorban. A következő parancs használata`netsh advfirewall firewall set rule group="windows management instrumentation (wmi)" new enable=yes`
+1. Nyissa meg a **Vezérlőpult** > **biztonságát,** és válassza a **Windows tűzfal**lehetőséget.
+1. Válassza **a Beállítások módosítása,** majd a **Kivételek** lapot.
+1. A **Kivételek** ablakban jelölje be a Windows Management Instrumentation (WMI) jelölőnégyzetét a WMI-forgalom tűzfalon keresztüli engedélyezéséhez.
+
+A WMI-forgalmat a parancssorból is engedélyezheti a tűzfalon keresztül a következő paranccsal:
+
+`netsh advfirewall firewall set rule group="windows management instrumentation (wmi)" new enable=yes`
+
 Egyéb WMI hibaelhárítási cikkek találhatók az alábbi cikkekben.
 
 * [Alapvető WMI-vizsgálat](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/)
-* [WMI hibaelhárítás](https://msdn.microsoft.com/library/aa394603(v=vs.85).aspx)
-* [WMI-parancsfájlokkal és WMI-szolgáltatásokkal kapcsolatos problémák elhárítása](https://technet.microsoft.com/library/ff406382.aspx#H22)
+* [WMI hibaelhárítás](/windows/win32/wmisdk/wmi-troubleshooting)
+* [WMI-parancsfájlokkal és WMI-szolgáltatásokkal kapcsolatos problémák elhárítása](/previous-versions/tn-archive/ff406382(v=msdn.10))
 
 ## <a name="unsupported-operating-systems"></a>Nem támogatott operációs rendszerek
 
-A hiba másik leggyakoribb oka a nem támogatott operációs rendszer lehet. Győződjön meg arról, hogy a támogatott operációs rendszer/kernel verziót használja a Mobility szolgáltatás sikeres telepítéséhez. Kerülje a privát javítás használatát.
-Az Azure Site Recovery által támogatott operációs rendszerek és kernelverziók listájának megtekintéséhez tekintse meg [támogatási mátrixunk dokumentumát.](vmware-physical-azure-support-matrix.md#replicated-machines)
+A hiba másik gyakori oka lehet egy nem támogatott operációs rendszer. A Mobility szolgáltatás sikeres telepítéséhez használjon támogatott operációs rendszert és kernelverziót. Kerülje a privát javítások használatát.
+
+Az Azure Site Recovery által támogatott operációs rendszerek és kernelverziók listájának megtekintéséhez tekintse meg a [támogatási mátrixot tartalmazó dokumentumot.](vmware-physical-azure-support-matrix.md#replicated-machines)
 
 ## <a name="unsupported-boot-disk-configurations-errorid-95309-95310-95311"></a>Nem támogatott rendszerindító lemezkonfigurációk (Hibaazonosító: 95309, 95310, 95311)
 
-### <a name="boot-and-system-partitions--volumes-are-not-the-same-disk-errorid-95309"></a>Boot és a rendszer partíciók / kötetek nem ugyanaz a lemez (ErrorID: 95309)
+### <a name="boot-and-system-partitions--volumes-arent-the-same-disk-errorid-95309"></a>Boot és a rendszer partíciók / kötetek nem ugyanaz a lemez (ErrorID: 95309)
 
-A 9.20-as verzió előtt a rendszerindító és a rendszerpartíciók/ kötetek különböző lemezeken nem támogatott konfigurációt tartalmaznak. A [9.20-as verziótól](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery)ez a konfiguráció támogatott. A támogatáshoz használja a legújabb verziót.
+A 9.20-as verzió előtt a rendszerindító és a rendszerpartíciók/kötetek különböző lemezeken nem támogatott konfigurációt jelentettek. A [9.20-as verziótól](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)kezdve ez a konfiguráció támogatott.
 
-### <a name="the-boot-disk-is-not-available-errorid-95310"></a>A rendszerindító lemez nem érhető el (ErrorID: 95310)
+### <a name="the-boot-disk-isnt-available-errorid-95310"></a>A rendszerindító lemez nem érhető el (ErrorID: 95310)
 
-Rendszerindító lemez nélküli virtuális gép nem védhető. Ez biztosítja a virtuális gép zökkenőmentes helyreállítását a feladatátvételi művelet során. A rendszerindító lemez hiánya a feladatátvétel után a gép indításának sikertelenségét eredményezi. Győződjön meg arról, hogy a virtuális gép rendszerindító lemezt tartalmaz, és próbálja meg újra a műveletet. Vegye figyelembe azt is, hogy ugyanazon a számítógépen több rendszerindító lemez nem támogatott.
+A rendszerindító lemez nélküli virtuális gépek nem védhetők. A rendszerindító lemez biztosítja a virtuális gép zökkenőmentes helyreállítását feladatátvételi művelet során. A rendszerindító lemez hiánya azt eredményezi, hogy a feladatátvétel után nem sikerül elindítani a gépet. Győződjön meg arról, hogy a virtuális gép tartalmaz egy rendszerindító lemezt, és próbálja meg újra a műveletet. Emellett ugyanazon a gépen több rendszerindító lemez sem támogatott.
 
 ### <a name="multiple-boot-disks-present-on-the-source-machine-errorid-95311"></a>Több rendszerindító lemez található a forrásgépen (ErrorID: 95311)
 
@@ -162,188 +196,202 @@ A több rendszerindító lemezzel rendelkező virtuális gép nem [támogatott k
 
 ## <a name="system-partition-on-multiple-disks-errorid-95313"></a>Rendszerpartíció több lemezen (ErrorID: 95313)
 
-A 9.20-as verzió előtt a több lemezre helyezett gyökérpartíció vagy kötet nem támogatott konfiguráció volt. A [9.20-as verziótól](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery)ez a konfiguráció támogatott. A támogatáshoz használja a legújabb verziót.
+A 9.20-as verzió előtt a gyökérpartíció vagy a kötet beállítása több lemezen nem támogatott konfiguráció volt. A [9.20-as verziótól](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)kezdve ez a konfiguráció támogatott.
 
 ## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-errorid-95320"></a>Az engedélyezési védelem nem sikerült, mivel az UUID helyett a GRUB-konfigurációban említett eszköznév (ErrorID: 95320)
 
-**Lehetséges ok:** </br>
-A GRUB konfigurációs fájlok ("/boot/grub/menu.lst", "/boot/grub/grub.cfg", "/boot/grub2/grub.cfg" vagy "/etc/default/grub") **resume** tartalmazhatják a paraméterek **gyökérértékét,** és az UUID helyett tényleges eszköznévként folytatódhatnak. A Site Recovery az UUID-megközelítést bízza meg, mivel az eszközök neve a virtuális gép újraindítása során változhat, mivel előfordulhat, hogy a virtuális gép nem jön létre ugyanazzal a névvel a feladatátvételkor, ami problémákat eredményez. Példa: </br>
+### <a name="possible-cause"></a>Lehetséges ok
 
+A Grand Unified Bootloader (GRUB) konfigurációs fájlok ( /boot/grub/menu.lst , /boot/grub.cfg , /boot/grub2/grub.cfg , vagy /etc/default/grub) konfigurációs fájlok (_/boot/grub/menu.lst_, _/boot/grub.cfg_, _/boot/grub2/grub.cfg_, vagy _/etc/default/grub)_ tartalmazhatják a paraméterek **gyökér** értékét, és az univerzálisan egyedi azonosító (UUID) helyett tényleges eszköznévként **folytatódhatnak.** A Site Recovery megbízza az UUID-megközelítést, mivel az eszköznevek a virtuális gép újraindítása során változhatnak. Előfordulhat például, hogy a virtuális gép nem érkezik meg online ugyanazzal a névvel a feladatátvételkor, és ez problémákat eredményez.
 
-- A következő sor a GRUB fájlból **/boot/grub2/grub.cfg**. <br>
-  *linux /boot/vmlinuz-3.12.49-11-default **root=/dev/sda2** ${extra_cmdline} **resume=/dev/sda1** splash=silent quiet showopts*
+Példa:
 
+- A következő sor a GRUB fájlból _/boot/grub2/grub.cfg:_
 
-- A következő sor a GRUB fájlból **/boot/grub/menu.lst**
-  *kernel /boot/vmlinuz-3.0.101-63-default **root=/dev/sda2** **resume=/dev/sda1** splash=silent crashkernel=256M-:128M showopts vga=0x314*
+  `linux /boot/vmlinuz-3.12.49-11-default root=/dev/sda2  ${extra_cmdline} resume=/dev/sda1 splash=silent quiet showopts`
 
-Ha betartja a fenti félkövér karakterláncot, a GRUB tényleges eszköznevekkel rendelkezik a "root" és a "resume" paraméterekhez az UUID helyett.
- 
-**Hogyan erősít:**<br>
-Az eszközök nevét a megfelelő UUID-azonosítókra kell cserélni.<br>
+- A következő sor a GRUB fájlból _/boot/grub/menu.lst:_
 
+  `kernel /boot/vmlinuz-3.0.101-63-default root=/dev/sda2 resume=/dev/sda1 splash=silent crashkernel=256M-:128M showopts vga=0x314`
 
-1. Keresse meg az eszköz UUID azonosítóját a \<"blkid eszköz név>" parancs végrehajtásával. Példa:<br>
-   ```
+> [!NOTE]
+> A GRUB sorok az UUID helyett a paraméterek **gyökér-** és **folytatási** paramétereinek tényleges eszközneveit tartalmazzák.
+
+### <a name="how-to-fix"></a>Hogyan erősít
+
+Az eszközök nevét a megfelelő UUID-azonosítókra kell cserélni.
+
+1. Keresse meg az eszköz UUID azonosítóját a parancs `blkid \<device name>`végrehajtásával.
+
+   Példa:
+
+   ```shell
    blkid /dev/sda1
    /dev/sda1: UUID="6f614b44-433b-431b-9ca1-4dd2f6f74f6b" TYPE="swap"
-   blkid /dev/sda2 
-   /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3" 
+   blkid /dev/sda2
+   /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3"
    ```
 
-2. Most cserélje le az eszköz nevét az UUID-jával olyan\<formátumban, mint a "root=UUID= UUID>". Például, ha kicseréljük a készülék nevét UUID a root és resume paraméter fent említett fájlok "/boot/grub2/grub.cfg", "/boot/grub2/grub.cfg" vagy "/etc/default/grub: akkor a sorok a fájlokban néz ki. <br>
-   *kernel /boot/vmlinuz-3.0.101-63-default **root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4** **resume=UUID =6f614b444-433b-431b-9ca1-4dd2f6f74f6b** splash=silent crashkernel=256M-:128M showopts vga=0x314*
-3. Indítsa újra a védelmet
+1. Most cserélje ki az eszköz nevét az UUID-val a formátumban, mint a `root=UUID=\<UUID>`. Például, ha kicseréljük az eszköz neveku-azonosító a root és resume paraméter említett fájlok _/boot/grub2/grub.cfg_, _/boot/grub2/grub.cfg_, vagy _/etc/default/grub_ akkor a sorok a fájlokat néz ki, mint a következő sorban:
 
-## <a name="install-mobility-service-completed-with-warning-to-reboot-errorid-95265--95266"></a>A Mobility Service telepítése újraindításra figyelmeztetve (ErrorID: 95265 & 95266)
+   `kernel /boot/vmlinuz-3.0.101-63-default root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4 resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b splash=silent crashkernel=256M-:128M showopts vga=0x314`
 
-A Site Recovery mobilitási szolgáltatása számos összetevőből áll, amelyek közül az egyiket szűrő-illesztőprogramnak nevezik. A szűrő-illesztőprogram csak a rendszer újraindításakor töltődik be a rendszermemóriába. Ez azt jelenti, hogy a szűrőillesztő javításacsak akkor valósítható meg, ha új szűrőillesztő van betöltve; ami csak a rendszer újraindításakor fordulhat elő.
+1. Indítsa újra a védelmet.
 
-**Kérjük, vegye figyelembe,** hogy ez egy figyelmeztetés, és a meglévő replikáció az új ügynök frissítésután is működni fog. Bármikor újraindíthatja az új szűrőillesztő előnyeit, de ha nem indítja újra, a régi szűrőillesztő tovább működik. Tehát, után egy korszerűsíteni nélkül újraindít, eltekintve szűrő vezető, **jót tesz -ból más erősítés és megalszik -ban mozgékonyság szolgáltatás gets megvalósítás**. Tehát, bár ajánlott, nem kötelező minden frissítés után újraindítani. Ha további információt, ha egy újraindítás kötelező, állítsa be a [forrásgép újraindítása után a mobilitási ügynök frissítése](https://aka.ms/v2a_asr_reboot) szakasz szolgáltatásfrissítések az Azure Site Recovery.
+## <a name="install-mobility-service-completed-with-warning-to-reboot-errorid-95265--95266"></a>A Mobility szolgáltatás telepítése újraindításra figyelmeztetve (ErrorID: 95265 & 95266)
+
+A Site Recovery Mobility szolgáltatás számos összetevőből áll, amelyek közül az egyiket szűrő-illesztőprogramnak nevezik. A szűrőillesztő csak a rendszer újraindítása során töltődik be a rendszermemóriába. A szűrőillesztések javítása csak akkor valósítható meg, ha a rendszer újraindításakor új szűrőillesztő töltődik be.
+
+> [!IMPORTANT]
+> Ez egy figyelmeztetés, és a meglévő replikáció az új ügynökfrissítés után is működni fog. Bármikor újraindíthatja az új szűrőillesztő előnyeit, de ha nem indítja újra, a régi szűrőillesztő tovább működik. Tehát, miután egy frissítés újraindítás nélkül, kivéve a szűrő driver, **előnyeit egyéb fejlesztések és javítások Mobilitás szolgáltatás kap rájött**. Bár ajánlott, nem kötelező minden frissítés után újraindítani. Ha további információt arról, hogy mikor van kötelező az újraindítás, állítsa be az [Újraindítás mobilitás után szolgáltatás frissítési](service-updates-how-to.md#reboot-after-mobility-service-upgrade) szakasza az Azure Site Recovery szolgáltatásfrissítései című szakaszban.
 
 > [!TIP]
->A karbantartási időszak ban a frissítések ütemezésével kapcsolatos gyakorlati tanácsok az Azure Site Recovery szolgáltatásfrissítéseinek [legújabb operációsrendszer-/kernelverzióinak támogatása](https://aka.ms/v2a_asr_upgrade_practice) című témakörben található.
+>A karbantartási időszak ban a frissítések ütemezésével kapcsolatos gyakorlati tanácsok érti a [legújabb operációs rendszer/kernel támogatását](service-updates-how-to.md#support-for-latest-operating-systemskernels) az Azure Site Recovery szolgáltatásfrissítéseinek témakörében.
 
 ## <a name="lvm-support-from-920-version"></a>LVM támogatás a 9.20-as verziótól
 
-A 9.20-as verzió előtt az LVM csak adatlemezek esetében támogatott. A /boot kapcsolónak lemezpartíción kell lennie, nem LVM-kötetnek.
+A 9.20-as verzió előtt a Logikai kötetkezelő (LVM) csak adatlemezeken támogatott. A `/boot` partíciónak lemezpartíción, nem LVM-köteten kell lennie.
 
-A [9.20-as verziótól](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) [az LVM rendszeren lévő operációsrendszer-lemez](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage) támogatott. A támogatáshoz használja a legújabb verziót.
+A [9.20-as verziótól](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)kezdve az [LVM operációsrendszer-lemez](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage) e támogatott.
 
 ## <a name="insufficient-space-errorid-95524"></a>Nincs elegendő hely (Hibaazonosító: 95524)
 
-A Mobilügynök forrásgépre másolásakor legalább 100 MB szabad terület szükséges. Ezért győződjön meg arról, hogy a forrásgépnek szüksége van a szabad helyre, és próbálja meg újra a műveletet.
+A Mobilügynök forrásgépre másolásakor legalább 100 MB szabad terület szükséges. Győződjön meg arról, hogy a forrásgép rendelkezik a szükséges szabad területtel, és próbálkozzon újra a művelettel.
 
 ## <a name="vss-installation-failures"></a>VSS telepítési hibák
 
-A VSS-telepítés a mobilitási ügynök telepítésének része. Ez a szolgáltatás az alkalmazáskonzisztens helyreállítási pontok létrehozásának folyamatában használatos. A VSS telepítése során több okból is előfordulhatnak hibák. A pontos hibák azonosításához olvassa el a **c:\ProgramData\ASRSetupLogs\ASRUnifiedAgentInstaller.log című témakört.** Néhány gyakori hiba és a megoldási lépések ki vannak emelve a következő szakaszban.
+A Kötet árnyékmásolat-szolgáltatás (VSS) telepítése a Mobility Agent telepítésének része. Ez a szolgáltatás a folyamat során alkalmazáskonzisztens helyreállítási pontok létrehozásához használatos. A VSS telepítése során több okból is előfordulhatnak hibák. A pontos hibák azonosításához olvassa el a _C:\ProgramData\ASRSetupLogs\ASRUnifiedAgentInstaller.log című témakört._ A gyakori hibák és a megoldási lépések egy része a következő szakaszban kerül kiemelésre.
 
 ### <a name="vss-error--2147023170-0x800706be---exit-code-511"></a>VSS-hiba -2147023170 [0x800706BE] - kilépési kód 511
 
-Ez a probléma többnyire akkor jelentkezik, ha a víruskereső szoftverek blokkolják az Azure Site Recovery-szolgáltatások műveleteit. A probléma megoldása:
+Ez a probléma leggyakrabban akkor fordul elő, ha víruskereső szoftver blokkolja az Azure Site Recovery-szolgáltatások működését.
 
-1. Az [itt](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program)említett mappák kizárása .
-2. A DLL Windows rendszerben történő regisztrációjának feloldásához kövesse a víruskereső szolgáltató által közzétett irányelveket.
+A probléma megoldása:
+
+1. Tekintse át a [víruskereső programból származó mappakizárások](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program)listáját.
+1. A DLL Windows rendszerben történő regisztrációjának feloldásához kövesse a víruskereső szolgáltató által közzétett irányelveket.
 
 ### <a name="vss-error-7-0x7---exit-code-511"></a>VSS-hiba 7 [0x7] - kilépési kód 511
 
-Ez egy futásidejű hiba, és a VSS telepítéséhez szükséges memória hiánya okozza. Győződjön meg arról, hogy növeli a lemezterületet a művelet sikeres befejezéséhez.
+Ez a hiba egy futásidejű hiba, amely azért van, mert nincs elegendő memória a VSS telepítéséhez. Növelje a művelet sikeres befejezéséhez szükséges lemezterületet.
 
 ### <a name="vss-error--2147023824-0x80070430---exit-code-517"></a>VSS hiba -2147023824 [0x80070430] - kilépési kód 517
 
-Ez a hiba akkor fordul elő, ha az Azure Site Recovery VSS Provider szolgáltatás törlésre van [megjelölve.](https://msdn.microsoft.com/library/ms838153.aspx) Próbálja meg manuálisan telepíteni a VSS-t a forrásgépre a következő parancssor futtatásával
+Ez a hiba akkor fordul elő, ha az Azure Site Recovery VSS Provider szolgáltatás törlésre van [megjelölve.](/previous-versions/ms838153(v=msdn.10)) Próbálja meg manuálisan telepíteni a VSS-t a forrásgépen a következő parancs futtatásával:
 
-`C:\Program Files (x86)\Microsoft Azure Site Recovery\agent>"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
+`"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
 
 ### <a name="vss-error--2147023841-0x8007041f---exit-code-512"></a>VSS-hiba -2147023841 [0x8007041F] - kilépési kód 512
 
-Ez a hiba akkor fordul elő, ha az Azure Site Recovery VSS Provider szolgáltatás [adatbázisa zárolva](https://msdn.microsoft.com/library/ms833798.aspx)van. Próbálja meg manuálisan telepíteni a VSS-t a forrásgépre a következő parancssor futtatásával
+Ez a hiba akkor fordul elő, ha az Azure Site Recovery VSS Provider szolgáltatás [adatbázisa zárolva](/previous-versions/ms833798(v=msdn.10))van. Próbálja meg manuálisan telepíteni a VSS-t a forrásgépen a következő parancs futtatásával a parancssorból:
 
-`C:\Program Files (x86)\Microsoft Azure Site Recovery\agent>"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
+`"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
 
-Hiba esetén ellenőrizze, hogy a víruskereső programok vagy más szolgáltatások "Indítás" állapotban vannak-e. Ez megőrizheti az adatbázis-szolgáltatások zárolását. Ez a VSS-szolgáltató telepítésének hibáihoz vezet. Győződjön meg arról, hogy nincs szolgáltatás "Indítás" állapotban, majd próbálkozzon újra a fenti művelettel.
+Hiba esetén ellenőrizze, hogy a víruskereső programok vagy más szolgáltatások beragadtak-e **indítási** állapotba. **A kezdő** állapotban lévő folyamatok megőrizhetik az adatbázis-szolgáltatások zárolását. Ez a VSS-szolgáltató telepítésének hibáihoz vezet. Győződjön meg arról, hogy nincs szolgáltatás **indítási** állapotban, majd próbálkozzon újra a fenti művelettel.
 
 ### <a name="vss-exit-code-806"></a>VSS kilépési kód 806
 
-Ez a hiba akkor fordul elő, ha a telepítéshez használt felhasználói fiók nem rendelkezik a CSScript parancs végrehajtásához szükséges engedélyekkel. Adja meg a szükséges engedélyeket a felhasználói fiókhoz a parancsfájl végrehajtásához és a művelet újrapróbálkozásához.
+Ez a hiba akkor fordul elő, ha a telepítéshez `CSScript` használt felhasználói fiók nem rendelkezik a parancs végrehajtásához szükséges engedélyekkel. Adja meg a szükséges engedélyeket a felhasználói fiókhoz a parancsfájl végrehajtásához és a művelet újrapróbálkozásához.
 
 ### <a name="other-vss-errors"></a>Egyéb VSS-hibák
 
-Próbálja meg manuálisan telepíteni a VSS-szolgáltató szolgáltatást a forrásgépen a következő parancssorfuttatásával
+Próbálja meg manuálisan telepíteni a VSS-szolgáltató szolgáltatást a forrásgépen a következő parancs futtatásával a parancssorból:
 
-`C:\Program Files (x86)\Microsoft Azure Site Recovery\agent>"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
-
-
+`"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
 
 ## <a name="vss-error---0x8004e00f"></a>VSS hiba - 0x8004E00F
 
-Ez a hiba általában a dcom-i problémák miatt a mobilitási ügynök telepítése során merül fel, és a DCOM kritikus állapotban van.
+Ez a hiba általában a Mobility ügynök telepítése során `DCOM` `DCOM` fordul elő, mert problémák vannak benne, és kritikus állapotban van.
 
 A hiba okának meghatározásához kövesse az alábbi eljárást.
 
-**A telepítési naplók vizsgálata**
+### <a name="examine-the-installation-logs"></a>A telepítési naplók vizsgálata
 
-1. Nyissa meg a c:\ProgramData\ASRSetupLogs\ASRUnifiedAgentInstaller.log mappában található telepítési naplót.
+1. Nyissa meg a _C:\ProgramData\ASRSetupLogs\ASRUnifiedAgentInstaller.log mappában_található telepítési naplót.
 2. A következő hiba jelenléte jelzi a problémát:
 
-    A meglévő alkalmazás regisztrációjának megszüntetése...  A katalógusobjektum létrehozása Alkalmazások gyűjteményének begyűjtése 
+    ```Output
+    Unregistering the existing application...
+    Create the catalogue object
+    Get the collection of Applications
 
-    Hiba:
+    ERROR:
 
-    - Hibakód: -2147164145 [0x8004E00F]
-    - Kilépési kód: 802
+    - Error code: -2147164145 [0x8004E00F]
+    - Exit code: 802
+    ```
 
 A probléma megoldása:
 
 A DCOM-probléma megoldásához forduljon a [Microsoft Windows platform csapatához.](https://aka.ms/Windows_Support)
 
-A DCOM-probléma megoldása esetén telepítse újra manuálisan az Azure Site Recovery VSS-szolgáltatót a következő paranccsal:
- 
-**C:\Program Files (x86)\Microsoft Azure Site Recovery\agent>"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd**
-  
-Ha az alkalmazás konzisztenciája nem kritikus a vész-helyreállítási követelmények, megkerülheti a VSS-szolgáltató telepítését. 
+Ha a DCOM-probléma megoldódott, telepítse újra manuálisan az Azure Site Recovery VSS-szolgáltatót a következő parancs használatával egy parancssorból:
+
+`"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
+
+Ha az alkalmazások konzisztenciája nem kritikus a vész-helyreállítási követelmények, megkerülheti a VSS-szolgáltató telepítése.
 
 Az Azure Site Recovery VSS-szolgáltató telepítésének megkerülése és az Azure Site Recovery VSS-szolgáltató manuális telepítése a telepítés után:
 
-1. Telepítse a mobilitási szolgáltatást. 
-   > [!Note]
-   > 
-   > A telepítés sikertelen lesz a "Telepítés utáni konfiguráció" lépésnél. 
-2. A VSS telepítésének megkerülése:
+1. Telepítse a Mobilitás szolgáltatást. A telepítés sikertelen lesz a következő lépésnél: **Telepítés utáni konfigurálás**.
+1. A VSS telepítésének megkerülése:
    1. Nyissa meg az Azure Site Recovery Mobility Service telepítési könyvtárát, amely a következő helyen található:
-   
-      C:\Program Files (x86)\Microsoft Azure Site Recovery\agent
-   2. Módosítsa az Azure Site Recovery VSS-szolgáltató telepítési parancsfájljait **nMageVSSProvider_Install** és **InMageVSSProvider_Uninstall.cmd-t,** hogy mindig sikeres legyen a következő sorok hozzáadásával:
-    
-      ```     
+
+      _C:\Program Files (x86)\Microsoft Azure Site Recovery\agent_
+
+   1. Módosítsa az Azure Site Recovery VSS-szolgáltató telepítési parancsfájljait _InMageVSSProvider_Install_ és _InMageVSSProvider_Uninstall.cmd-t,_ hogy mindig sikeres legyen a következő sorok hozzáadásával:
+
+      ```plaintext
       rem @echo off
       setlocal
       exit /B 0
       ```
 
-3. Futtassa újra a mobilügynök telepítését manuálisan. 
-4. Ha a telepítés sikeres, és a következő lépésre lép, **a Configure**, távolítsa el a hozzáadott sorokat.
-5. A VSS-szolgáltató telepítéséhez nyisson meg egy parancssort rendszergazdaként, és futtassa a következő parancsot:
-   
-    **C:\Program Files (x86)\Microsoft Azure Site Recovery\agent> .\InMageVSSProvider_Install.cmd**
+1. Végezze el a mobilitási ügynök manuális telepítését.
+1. Ha a telepítés sikeres, és a következő lépésre lép, **a Configure**, távolítsa el a hozzáadott sorokat.
+1. A VSS-szolgáltató telepítéséhez nyisson meg egy parancssort rendszergazdaként, és futtassa a következő parancsot:
 
-9. Ellenőrizze, hogy az ASR VSS-szolgáltató szolgáltatásként van-e telepítve a Windows-szolgáltatásokban, és nyissa meg a Komponensszolgáltatás MMC-jét, és ellenőrizze, hogy az ASR VSS-szolgáltató szerepel-e a listában.
-10. Ha a VSS-szolgáltató telepítése továbbra is sikertelen, a CX-szel együttműködve oldja fel a CAPI2-ben előforduló engedélyekkel kapcsolatos hibákat.
+   `"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
 
-## <a name="vss-provider-installation-fails-due-to-the-cluster-service-being-enabled-on-non-cluster-machine"></a>A VSS-szolgáltató telepítése sikertelen, mert a fürtszolgáltatás engedélyezve van a nem fürtgépen
+1. Ellenőrizze, hogy az Azure Site Recovery VSS-szolgáltató szolgáltatásként telepítve van-e a Windows-szolgáltatásokban. Nyissa meg a Komponensszolgáltatás MMC konzolját, és ellenőrizze, hogy a VSS-szolgáltató szerepel-e a listában.
+1. Ha a VSS-szolgáltató telepítése továbbra is sikertelen, a technikai támogatással együttműködve oldja meg a kriptográfiai alkalmazásprogramozási felület (CAPI2) engedélyhibáit.
 
-A probléma hatására az Azure site recovery mobility agent telepítése sikertelen lesz az ASAzure Site RecoveryR VSS-szolgáltató telepítési lépése során a COM+ probléma miatt, amely megakadályozza a VSS-szolgáltató telepítését.
- 
+## <a name="vss-provider-installation-fails-because-the-cluster-service-being-enabled-on-non-cluster-machine"></a>A VSS-szolgáltató telepítése sikertelen, mert a fürtszolgáltatás engedélyezve van a nem fürtgépen
+
+Ez a probléma okozza az Azure Site Recovery Mobility Agent telepítése sikertelen az Azure Site Recovery VSS-szolgáltató telepítése során. A hiba azért van, mert `COM+` van egy probléma, amely megakadályozza a VSS-szolgáltató telepítését.
+
 ### <a name="to-identify-the-issue"></a>A probléma azonosítása
 
-A C:\ProgramData\ASRSetupLogs\UploadedLogs\<dátum->UA_InstallLogFile.log konfigurációs kiszolgálón található naplóban a következő kivétel található:
+A _C:\ProgramData\ASRSetupLogs\UploadedLogs\<dátum-idő>UA_InstallLogFile.log_ konfigurációs kiszolgálón található naplóban a következő kivételtalálható:
 
-Com+ nem tudott beszélni a Microsoft elosztott tranzakciók koordinátorával (Kivétel a HRESULT-ből: 0x8004E00F)
+```plaintext
+COM+ was unable to talk to the Microsoft Distributed Transaction Coordinator (Exception from HRESULT: 0x8004E00F)
+```
 
 A probléma megoldása:
 
-1.  Ellenőrizze, hogy ez a gép nem fürtgép-e, és hogy a fürtösszetevők nincsenek-e használatban.
-3.  Ha az összetevők nincsenek használatban, távolítsa el a fürtösszetevőket a gépről.
+1. Ellenőrizze, hogy ez a gép nem fürtgép-e, és hogy a fürtösszetevők nincsenek-e használatban.
+1. Ha az összetevők nincsenek használatban, távolítsa el a fürtösszetevőket a gépről.
 
 ## <a name="drivers-are-missing-on-the-source-server"></a>Hiányoznak az illesztőprogramok a forráskiszolgálón
 
-Ha a mobilügynök telepítése nem sikerül, vizsgálja meg a C:\ProgramData\ASRSetupLogs alatti naplókat, és ellenőrizze, hogy egyes vezérlőkészletekből hiányzik-e néhány szükséges illesztőprogram.
- 
-A probléma megoldása:
-  
-1. A rendszerleíró adatbázis szerkesztőjével, például regedit.msc használatával nyissa meg a rendszerleíró adatbázist.
-2. Nyissa meg a HKEY_LOCAL_MACHINE\SYSTEM csomópontot.
-3. A RENDSZER csomópontban keresse meg a vezérlőkészleteket.
-4. Nyissa meg az egyes vezérlőcsoportokat, és ellenőrizze, hogy a következő Windows-illesztőprogramok jelen vannak-e:
+Ha a mobilügynök telepítése nem sikerül, vizsgálja meg a _C:\ProgramData\ASRSetupLogs alatti naplókat,_ és ellenőrizze, hogy egyes vezérlőkészletekből hiányzik-e néhány szükséges illesztőprogram.
 
-   - Atapi
-   - Vmbus között
-   - Storflt között
-   - Storvsc között
-   - intelide
- 
-Telepítse újra a hiányzó illesztőprogramokat.
+A probléma megoldása:
+
+1. A rendszerleíró adatbázis `regedit.msc`szerkesztőjével, például a , nyissa meg a rendszerleíró adatbázist.
+1. Nyissa `HKEY_LOCAL_MACHINE\SYSTEM` meg a csomópontot.
+1. A `SYSTEM` csomópontban keresse meg a vezérlőkészleteket.
+1. Nyissa meg az egyes vezérlőcsoportokat, és ellenőrizze, hogy a következő Windows-illesztőprogramok jelen vannak-e:
+
+   * Atapi
+   * Vmbus között
+   * Storflt között
+   * Storvsc között
+   * Intelide
+
+1. Telepítse újra a hiányzó illesztőprogramokat.
 
 ## <a name="next-steps"></a>További lépések
 
-[Ismerje meg, hogyan](vmware-azure-tutorial.md) állíthatja be a vészhelyreállítást a VMware virtuális gépekhez.
+[További információ](vmware-azure-tutorial.md) a rról, hogyan állíthat be vész-helyreállítási vmware virtuális gépekhez.

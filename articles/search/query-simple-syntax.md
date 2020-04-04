@@ -7,7 +7,7 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 04/03/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: fc1eb1836badc3ced688750bbc7c7a164773d022
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3d5a4ddf863115747c27efbca1808d51444aac8c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77152669"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656173"
 ---
 # <a name="simple-query-syntax-in-azure-cognitive-search"></a>Egyszerű lekérdezésszintaxis az Azure Cognitive Search szolgáltatásban
 
@@ -68,9 +68,15 @@ A NOT operátor mínuszjel. Például `wifi –luxury` olyan dokumentumokat kere
 > [!NOTE]  
 >  A `searchMode` beállítás azt szabályozza, hogy a NOT operátorral rendelkező kifejezés ANDed vagy `+` ORed-e a lekérdezés többi kifejezésével, vagy `|` operátor hiányában. Visszahívás, `searchMode` amely beállítható `any` (alapértelmezett) `all`vagy . Ha a `any`program használja a programot, az növeli a `-` lekérdezések visszahívását további eredmények kel, és alapértelmezés szerint "VAGY NEM" lesz értelmezve. Például `wifi -luxury` egyezik azokkal a `wifi` dokumentumokkal, amelyek vagy `luxury`tartalmazzák a kifejezést, vagy azokat, amelyek nem tartalmazzák a kifejezést. Ha a `all`, ez növeli a lekérdezések pontosságát azáltal, hogy kevesebb eredményt, és alapértelmezés szerint - lesz értelmezve"ÉS NEM". Például, `wifi -luxury` egyezik a `wifi` dokumentumokat, amelyek tartalmazzák a kifejezést, és nem tartalmazzák a "luxus". Ez vitathatatlanul egy intuitív viselkedés `-` az üzemeltető. Ezért érdemes használni, `searchMode=all` ahelyett, `searchMode=any` hogy optimalizálni szeretné a keresést a pontosság ra `-` a visszahívás helyett, *és* a felhasználók gyakran használják az operátort a keresésekben.
 
-## <a name="suffix-operator"></a>Utótag operátor
+<a name="prefix-search"></a>
 
-Az utótag operátora csillag. `*` Megkeresi `lux*` például azokat a dokumentumokat, `lux`amelyek kifejezése a következővel kezdődik, figyelmen kívül hagyva az esetet.  
+## <a name="suffix--operator-for-prefix-search"></a>Utótag `*` operátoraz előtag kereséséhez
+
+Az utótag operátora csillag. `*` Megkeresi `cap*` például azokat a dokumentumokat, `cap`amelyek kifejezése a következővel kezdődik, figyelmen kívül hagyva az esetet. 
+
+A szűrőkhöz hasonlóan az előtag-lekérdezés is pontos egyezést keres. Mint ilyen, nincs relevancia pontozás (minden eredmény kap egy keresési pontszám 1.0). Az előtag-lekérdezések lassúak lehetnek, különösen akkor, ha az index nagy, és az előtag kis számú karakterből áll. 
+
+Ha a karakterlánc utolsó részében egyező utótag-lekérdezést szeretne végrehajtani, használjon [helyettesítő karakteres keresést](query-lucene-syntax.md#bkmk_wildcard) és a teljes Lucene szintaxist.
 
 ## <a name="phrase-search-operator"></a>Kifejezéskereső operátor
 

@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3c1f0bb715b3c3bf9b3a3350ab11e26834aa84c8
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 6aff60cbc4a4cab557e6e202ea1181d5b20bbd20
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80528662"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655868"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes-szolgáltatás (AKS) üzleti folytonosságával és vész-helyreállításával kapcsolatos gyakorlati tanácsok
 
-A fürtök kezelése az Azure Kubernetes-szolgáltatás (AKS) kezelése során fontossá válik az alkalmazások rendelkezésre állása. Az AKS magas rendelkezésre állást biztosít egy rendelkezésre állási csoport több csomópontjának használatával. De ezek a több csomópont nem védi meg a rendszert a régió meghibásodása. Az állásidő maximalizálása érdekében tervezze meg előre az üzletmenet folytonosságának fenntartását és a vészhelyreállításra való felkészülést.
+A fürtök kezelése az Azure Kubernetes-szolgáltatás (AKS) kezelése során fontossá válik az alkalmazások rendelkezésre állása. Alapértelmezés szerint az AKS magas rendelkezésre állást biztosít a [virtuálisgép-méretezési csoport (VMSS)](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)több csomópontjának használatával. De ezek a több csomópont nem védi meg a rendszert a régió meghibásodása. Az állásidő maximalizálása érdekében tervezze meg előre az üzletmenet folytonosságának fenntartását és a vészhelyreállításra való felkészülést.
 
 Ez a cikk az üzletmenet folytonosságának és a vészhelyreállításnak az AKS-ben történő megtervezésére összpontosít. Az alábbiak végrehajtásának módját ismerheti meg:
 

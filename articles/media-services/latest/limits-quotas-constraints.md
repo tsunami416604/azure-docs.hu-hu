@@ -11,13 +11,14 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/01/2020
 ms.author: juliako
-ms.openlocfilehash: 2d4f5f83335f6f115362bcf66cf69d7f9de7eaa5
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: e9855a02a57d71793f3a5d6c5ce01cbfda341b70
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582325"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632212"
 ---
+<!-- If you update limits in this topic, make sure to also update https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#media-services-limits -->
 # <a name="azure-media-services-quotas-and-limits"></a>Az Azure Media Services kvótái és korlátai
 
 Ez a cikk a Leggyakoribb Microsoft Azure Media Services-korlátokat sorolja fel, amelyeket kvótáknak is neveznek.
@@ -89,7 +90,7 @@ A fiókban lévő, 90 napnál régebbi feladatbejegyzések automatikusan törlő
 | --- | --- | 
 | [Végpontok streamelése](streaming-endpoint-concept.md) (leállítva vagy futtatva) Media Services-fiókonként|2 |
 | [Dinamikusjegyzék-szűrők](filters-dynamic-manifest-overview.md)|100|
-| [Streamelési szabályzatok](streaming-policy-concept.md) | 100 <sup>(6) Az</sup> |
+| [Streamelési szabályok](streaming-policy-concept.md) | 100 <sup>(6) Az</sup> |
 | Egy eszközhöz egyszerre társított egyedi [streamelési lokátorok](streaming-locators-concept.md) | 100<sup>(7)</sup> (rögzített) |
 
 <sup>6</sup> Egyéni [streamelési házirend](https://docs.microsoft.com/rest/api/media/streamingpolicies)használataesetén a Media Service-fiókhoz korlátozott számú ilyen házirendet kell megterveznie, és újra fel kell használnia őket a StreamingLocatorok számára, amikor ugyanazokra a titkosítási beállításokra és protokollokra van szükség. Nem hozhat létre új streamelési szabályzatot az egyes streamelési lokátorokhoz.

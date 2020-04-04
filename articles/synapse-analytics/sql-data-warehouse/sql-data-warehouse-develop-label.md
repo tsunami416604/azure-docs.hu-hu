@@ -11,18 +11,21 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c1a4ffcab3d10f1dc91ce036e995ae0026a0d718
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 5e2cd03ae878e80139a7f7a8ba67cef15b24d571
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619016"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633491"
 ---
 # <a name="using-labels-to-instrument-queries-in-synapse-sql-pool"></a>Címkék használata a synapse SQL-készletben lévő lekérdezések eszközéhez
+
 Ez a cikk tippeket tartalmaz a címkék használatával az SQL-készletben lévő instrument lekérdezések használatával megoldások fejlesztéséhez.
 
+Tippek a címkék használatával az Azure SQL Data Warehouse-ban a megoldások fejlesztéséhez.
 
 ## <a name="what-are-labels"></a>Mik azok a címkék?
+
 Az SQL-készlet támogatja a lekérdezéscímkéknek nevezett fogalmat. Mielőtt bármilyen mélységbe menne, nézzünk meg egy példát:
 
 ```sql
@@ -32,7 +35,7 @@ OPTION (LABEL = 'My Query Label')
 ;
 ```
 
-Az utolsó sor a "Saját lekérdezés címke" karakterláncot címkézi a lekérdezéshez. Ez a címke azért hasznos, mert a címke lekérdezésre alkalmas a DMV-ken keresztül. 
+Az utolsó sor a "Saját lekérdezés címke" karakterláncot címkézi a lekérdezéshez. Ez a címke azért hasznos, mert a címke lekérdezésre alkalmas a DMV-ken keresztül.
 
 Címkék lekérdezése lehetővé teszi a problémalekérdezések megkeresésére és az ELT-futtatás on keresztüli előrehaladás azonosítására.
 
@@ -48,11 +51,8 @@ WHERE   r.[label] = 'My Query Label'
 ```
 
 > [!NOTE]
-> A lekérdezés során fontos, hogy szögletes zárójeleket vagy dupla idézőjeleket helyezzen a szócímke köré. A címke fenntartott szó, és hibát okoz, ha nincs elválasztva. 
-> 
-> 
+> A lekérdezés során fontos, hogy szögletes zárójeleket vagy dupla idézőjeleket helyezzen a szócímke köré. A címke fenntartott szó, és hibát okoz, ha nincs elválasztva.
 
 ## <a name="next-steps"></a>További lépések
+
 További fejlesztési tippeket a [fejlesztés áttekintése című témakörben talál.](sql-data-warehouse-overview-develop.md)
-
-

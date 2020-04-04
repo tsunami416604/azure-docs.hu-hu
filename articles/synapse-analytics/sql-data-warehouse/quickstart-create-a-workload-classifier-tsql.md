@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 6354390c44c0991b0d6bf36cba8efd4272f9c73d
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: bcac6af9efd18ef8abeea7d82961fd8f2fe70ba3
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583766"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633753"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Rövid útmutató: Hozzon létre egy számítási feladatok osztályozó t-SQL használatával
 
@@ -39,7 +39,7 @@ Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
 
 ## <a name="create-login-for-theceo"></a>Bejelentkezés létrehozása a TheCEO számára
 
-Sql Server hitelesítési bejelentkezés `master` létrehozása az adatbázisban create [login](/sql/t-sql/statements/create-login-transact-sql) használatával a "TheCEO" számára.
+Sql Server hitelesítési bejelentkezés `master` létrehozása az adatbázisban create [login](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) használatával a "TheCEO" számára.
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.sql_logins WHERE name = 'TheCEO')
@@ -51,7 +51,7 @@ END
 
 ## <a name="create-user"></a>Felhasználó létrehozása
 
-[Felhasználó létrehozása](/sql/t-sql/statements/create-user-transact-sql?view=azure-sqldw-latest), "TheCEO", a mySampleDataWarehouse alkalmazásban
+[Felhasználó létrehozása](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), "TheCEO", a mySampleDataWarehouse alkalmazásban
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = 'THECEO')
@@ -63,7 +63,7 @@ END
 
 ## <a name="create-a-workload-classifier"></a>Számítási feladatok osztályozójának létrehozása
 
-Hozzon létre egy nagy fontos [ságú "TheCEO" munkaterhelés-osztályozót.](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest)
+Hozzon létre egy nagy fontos [ságú "TheCEO" munkaterhelés-osztályozót.](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ```sql
 DROP WORKLOAD CLASSIFIER [wgcTheCEO];
@@ -108,6 +108,6 @@ Az erőforrások karbantartásához kövesse az alábbi lépéseket.
 
 ## <a name="next-steps"></a>További lépések
 
-- Most létrehozott egy számítási feladatok osztályozóját. Futtasson néhány lekérdezést theceo néven, hogy lássa, hogyan teljesítenek. A lekérdezések és a hozzárendelt fontosság megtekintéséhez tekintse meg a [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) című témakört.
+- Most létrehozott egy számítási feladatok osztályozóját. Futtasson néhány lekérdezést theceo néven, hogy lássa, hogyan teljesítenek. A lekérdezések és a hozzárendelt fontosság megtekintéséhez tekintse meg a [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) című témakört.
 - A Synapse SQL-munkaterhelés-kezeléséről további információt a [Számítási feladatok fontossága](sql-data-warehouse-workload-importance.md) és [a számítási feladatok besorolása című témakörben talál.](sql-data-warehouse-workload-classification.md)
 - Tekintse meg a [számítási feladatok fontosságának konfigurálása](sql-data-warehouse-how-to-configure-workload-importance.md) című útmutatócikkeket, valamint a [Munkaterhelés-kezelés kezelésének és figyelésének módját.](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)

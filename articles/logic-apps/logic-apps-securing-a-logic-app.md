@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: cc349e5851627ee830196982509f91a83198dfe0
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 4fc4960eb3af8a3d3c9902c9b24505bb5610b709
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349580"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657163"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Biztonságos hozzáférés és adatok az Azure Logic-alkalmazásokban
 
@@ -27,7 +27,7 @@ Az Azure Logic Apps hozzáférésének szabályozásához és az adatok védelm�
 
 ## <a name="access-to-request-based-triggers"></a>Hozzáférés a kérelemalapú eseményindítókhoz
 
-Ha a logikai alkalmazás egy kérelem-alapú eseményindítót használ, amely bejövő hívásokat vagy kéréseket fogad, például a [Kérés](../connectors/connectors-native-reqres.md) vagy a [Webhook](../connectors/connectors-native-webhook.md) eseményindítót, korlátozhatja a hozzáférést, így csak a jogosult ügyfelek hívhatják meg a logikai alkalmazást. A logikai alkalmazás által fogadott összes kérelem titkosított és biztonságos SSL protokollal.
+Ha a logikai alkalmazás egy kérelem-alapú eseményindítót használ, amely bejövő hívásokat vagy kéréseket fogad, például a [Kérés](../connectors/connectors-native-reqres.md) vagy a [Webhook](../connectors/connectors-native-webhook.md) eseményindítót, korlátozhatja a hozzáférést, így csak a jogosult ügyfelek hívhatják meg a logikai alkalmazást. A logikai alkalmazás által fogadott összes kérelem titkosított és biztonságos a Transport Layer Security (TLS), korábbi nevén Secure Sockets Layer (SSL), protokoll.
 
 Az alábbiakban olyan lehetőségeket talál, amelyek segítségével biztonságos hozzáférést biztosíthat ehhez az eseményindítótípushoz:
 
@@ -655,7 +655,7 @@ Ha az [Ügyféltanúsítvány](../active-directory/authentication/active-directo
 
 | Ingatlan (tervező) | Ingatlan (JSON) | Kötelező | Érték | Leírás |
 |---------------------|-----------------|----------|-------|-------------|
-| **Hitelesítés** | `type` | Igen | **Ügyféltanúsítvány** <br>vagy <br>`ClientCertificate` | A Secure Sockets Layer (SSL) ügyféltanúsítványokhoz használandó hitelesítési típus. Bár az önaláírt tanúsítványok támogatottak, az SSL önaláírt tanúsítványai nem támogatottak. |
+| **Hitelesítés** | `type` | Igen | **Ügyféltanúsítvány** <br>vagy <br>`ClientCertificate` | A TLS/SSL ügyféltanúsítványokhoz használandó hitelesítési típus. Bár az önaláírt tanúsítványok támogatottak, a TLS/SSL önaláírt tanúsítványai nem támogatottak. |
 | **Pfx** | `pfx` | Igen | <*kódolt-pfx-fájl-tartalom*> | A személyes adatcsere (PFX) fájlból származó base64 kódolású tartalom <p><p>A PFX-fájl base64 kódolású formátumra való konvertálásához a PowerShell t az alábbi lépésekkel használhatja: <p>1. Mentse a tanúsítvány tartalmát egy változóba: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. Konvertálja a tanúsítvány `ToBase64String()` tartalmát a funkció használatával, és mentse a tartalmat egy szöveges fájlba: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
 | **Jelszó** | `password`| Nem | <*jelszó-for-pfx-fájl*> | A PFX-fájl elérésének jelszava |
 |||||
@@ -684,7 +684,7 @@ A szolgáltatások ügyféltanúsítvány-hitelesítéssel történő védelmér
 * [A háttérszolgáltatások biztonságának növelése az Azure API Management ügyféltanúsítvány-hitelesítésével](../api-management/api-management-howto-mutual-certificates.md)
 * [A RESTfuL szolgáltatás biztonságának növelése ügyféltanúsítványok használatával](../active-directory-b2c/secure-rest-api.md)
 * [Tanúsítványhitelesítő adatok az alkalmazás hitelesítéséhez](../active-directory/develop/active-directory-certificate-credentials.md)
-* [SSL-tanúsítvány használata az alkalmazáskódban az Azure App Service-ben](../app-service/configure-ssl-certificate-in-code.md)
+* [TLS-/SSL-tanúsítvány használata a kódban az Azure App Service-ben](../app-service/configure-ssl-certificate-in-code.md)
 
 <a name="azure-active-directory-oauth-authentication"></a>
 

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: ''
-ms.date: 03/04/2020
+ms.date: 04/03/2020
 ms.author: labrenne
 ms.custom: include file
-ms.openlocfilehash: e9460108499ca76d1b149b61cebe3d3081bf6544
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dc08dcded6418208751edbffcb5d263db059ec01
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79086254"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657481"
 ---
 ### <a name="general-requirements"></a>Általános követelmények
 
@@ -65,7 +65,7 @@ Az alhálózatnak lehetővé kell tennie a Batch szolgáltatás bejövő kommuni
 
 #### <a name="network-security-groups-specifying-subnet-level-rules"></a>Hálózati biztonsági csoportok: Alhálózati szintű szabályok megadása
 
-Nem szükséges az NSG-ket a virtuális hálózat alhálózati szintjén megadni, mert a Batch saját NSG-ket konfigurál (lásd fent). Ha nsg-t társít az alhálózathoz, ahol a Batch számítási csomópontok telepítve vannak, vagy egyéni NSG-szabályokat szeretne alkalmazni az alkalmazott alapértelmezett értékek felülbírálásához, akkor ezt az NSG-t legalább a bejövő és kimenő biztonsági szabályokkal kell konfigurálnia az alábbiak szerint Táblázatok.
+Nem szükséges az NSG-ket a virtuális hálózat alhálózati szintjén megadni, mert a Batch saját NSG-ket konfigurál (lásd fent). Ha nsg-t társít az alhálózathoz, ahol a Batch számítási csomópontok telepítve vannak, vagy egyéni NSG-szabályokat szeretne alkalmazni az alkalmazott alapértelmezések felülbírálásához, akkor ezt az NSG-t legalább a bejövő és kimenő biztonsági szabályokkal kell konfigurálnia az alábbi táblázatokban látható módon.
 
 Csak akkor konfigurálja a bejövő forgalmat a 3389-es (Windows) vagy a 22-es (Linux) porton, ha engedélyeznie kell a távoli hozzáférést a külső forrásokból származó számítási csomópontokhoz. Előfordulhat, hogy engedélyeznie kell a 22-es portszabályait Linuxon, ha bizonyos MPI-futtatási időszakokkal rendelkező többpéldányos feladatok támogatására van szüksége. A portok forgalmának engedélyezése nem feltétlenül szükséges ahhoz, hogy a készlet számítási csomópontjai használhatóak legyenek.
 
@@ -75,6 +75,9 @@ Csak akkor konfigurálja a bejövő forgalmat a 3389-es (Windows) vagy a 22-es (
 | --- | --- | --- | --- | --- | --- | --- |
 | N/A | `BatchNodeManagement`[Szolgáltatáscímke](../articles/virtual-network/security-overview.md#service-tags) (ha regionális változatot használ, ugyanabban a régióban, mint a Batch-fiók) | * | Bármelyik | 29876-29877 | TCP | Engedélyezés |
 | Felhasználói forrás IP-címeket a számítási csomópontok és/vagy a számítási csomópont alhálózat a Linux többpéldányos feladatok, ha szükséges. | N/A | * | Bármelyik | 3389 (Windows), 22 (Linux) | TCP | Engedélyezés |
+
+> [!WARNING]
+> A kötegelt szolgáltatás IP-címei idővel változhatnak. Ezért erősen ajánlott a `BatchNodeManagement` szolgáltatáscímke (vagy regionális változat) használata az NSG-szabályokhoz. Nem ajánlott az NSG-szabályok feltöltése a Batch szolgáltatás IP-címeivel közvetlenül.
 
 **Kimenő biztonsági szabályok**
 

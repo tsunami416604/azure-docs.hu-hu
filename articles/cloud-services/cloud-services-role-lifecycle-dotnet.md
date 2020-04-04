@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 0a9c32affc50a6d357d4160e00486c896d762e3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a6030cbb756525137497834ac911835033858401
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75385813"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652079"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>Webes vagy feldolgozói szerepkör életciklusának testreszabása a .NET szolgáltatásban
 Amikor létrehoz egy feldolgozói szerepkört, kiterjeszti a [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) osztályt, amely olyan módszereket biztosít, amelylehetővé teszi az életciklus-eseményekre való válaszadást. Webes szerepkörök esetében ez az osztály nem kötelező, ezért életciklus-események megválaszolásához kell használnia.
@@ -23,7 +23,7 @@ A [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) osz
 
 A **RoleEntryPoint**bővítésekor tisztában kell lennie a módszerek alábbi viselkedésével:
 
-* Az [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) és [az OnStop](/previous-versions/azure/reference/ee772844(v=azure.100)) metódus logikai értéket ad vissza, így ezekből a módszerekből **hamis** értéket lehet visszaadni.
+* Az [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) metódus logikai értéket ad vissza, így ebből a módszerből **hamis** értéket lehet visszaadni.
   
    Ha a kód **hamis**értéket ad vissza, a szerepkörfolyamat hirtelen leáll, anélkül, hogy bármilyen leállítási sorrendet futtatna. Általában ne adja vissza a **hamis** az **OnStart** metódusból.
 * A **RoleEntryPoint** metódus túlterhelésén belüli nem fel nem fogott kivételt a kezelt kivételként kezeli a kezelővel nem kezelt kivétel.

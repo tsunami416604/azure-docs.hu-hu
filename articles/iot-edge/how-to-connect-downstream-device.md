@@ -8,12 +8,12 @@ ms.date: 12/08/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6ddda38d887cdfe30b449847e2f625ba17f33898
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ff9415ca20b859468528b56d27355430c4fc5a0f
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76510804"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652072"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Lefelé irányuló eszköz csatlakoztatása Azure IoT Edge-átjáróhoz
 
@@ -182,7 +182,7 @@ Ez a szakasz egy mintaalkalmazást vezet be egy Azure IoT Java-eszközügyfél �
 
 Ez a szakasz egy mintaalkalmazást vezet be egy Azure IoT Python-eszközügyfél és egy IoT Edge-átjáró csatlakoztatásához.
 
-1. A **minta** az send_message az [Azure IoT-eszköz SDK Python-minták.](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/advanced-edge-scenarios)
+1. A **minta** az send_message az [Azure IoT-eszköz SDK Python-minták.](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios)
 2. Győződjön meg arról, hogy vagy fut egy IoT Edge-tárolóban, vagy egy hibakeresési forgatókönyvben, `EdgeHubConnectionString` a környezeti változók `EdgeModuleCACertificateFile` beállítva.
 3. A minta eszközén való futtatásáról az SDK dokumentációjában olvashat.
 

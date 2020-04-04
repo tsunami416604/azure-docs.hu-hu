@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 04/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36898e75680771a9cb084fa142bb635ddbf51c70
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 43ae866959dd2112bacbb6b56e5683e7b3b851a0
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77192128"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631925"
 ---
 # <a name="conditional-access-users-and-groups"></a>Feltételes hozzáférés: Felhasználók és csoportok
 
@@ -44,7 +44,7 @@ A következő beállítások at lehet felvenni a feltételes hozzáférési ház
 
 ## <a name="exclude-users"></a>Felhasználók kizárása
 
-A kizárásokat gyakran használják vészelérési vagy üvegtöréses fiókokhoz. További információ a vészelérési fiókokról és azok fontos tudnivalóiról az alábbi cikkekben található: 
+Ha a szervezetek egy felhasználót vagy csoportot is bevonnak és kizárnak, a felhasználó vagy csoport ki van zárva a házirendből, mivel a kizárási művelet felülbírálja a házirendbe való belefoglalást. A kizárásokat gyakran használják vészelérési vagy üvegtöréses fiókokhoz. További információ a vészelérési fiókokról és azok fontos tudnivalóiról az alábbi cikkekben található: 
 
 * [Vészelérési fiókok kezelése az Azure AD-ben](../users-groups-roles/directory-emergency-access.md)
 * [Rugalmas hozzáférés-vezérlési stratégia létrehozása az Azure Active Directoryval](../authentication/concept-resilient-controls.md)
@@ -57,6 +57,16 @@ A következő lehetőségek kizárhatják a feltételes hozzáférési házirend
    - Lehetővé teszi a rendszergazdák számára, hogy válasszaki a hozzárendelés meghatározásához használt azure AD címtárszerepkörök. A szervezetek például szigorúbb házirendet hozhatnak létre a globális rendszergazdai szerepkörhöz rendelt felhasználókra vonatkozóan.
 - Felhasználók és csoportok
    - Lehetővé teszi a felhasználók meghatározott csoportjainak célzását. Például a szervezetek kiválaszthatják azt a csoportot, amely a HR-részleg összes tagját tartalmazza, ha egy HR-alkalmazást választanak ki felhőalkalmazásként. A csoport bármilyen típusú csoport lehet az Azure AD-ben, beleértve a dinamikus vagy hozzárendelt biztonsági és terjesztési csoportokat.
+
+### <a name="preventing-administrator-lockout"></a>Rendszergazdai zárolás megakadályozása
+
+Ha meg szeretné akadályozni, hogy a rendszergazda kizárja magát a címtárból a **Minden felhasználóra** és a **Minden alkalmazásra**alkalmazott házirend létrehozásakor, a következő figyelmeztetést fogja látni.
+
+> Ne zárkózz ki! Javasoljuk, hogy először a felhasználók egy kis készletére alkalmazzon házirendet, hogy ellenőrizze, hogy a várt módon viselkedik-e. Azt is javasoljuk, hogy legalább egy rendszergazdát zárjon ki ebből a házirendből. Ez biztosítja, hogy továbbra is rendelkezik hozzáféréssel, és szükség esetén frissítheti a házirendet. Tekintse át az érintett felhasználókat és alkalmazásokat.
+
+Alapértelmezés szerint a házirend lehetőséget biztosít az aktuális felhasználó kizárására a házirendből, de ezt az alapértelmezett beállítást a rendszergazda felülbírálhatja az alábbi képen látható módon. 
+
+![Figyelem, ne zárkózz ki!](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups-lockout-warning.png)
 
 ## <a name="next-steps"></a>További lépések
 

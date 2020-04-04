@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4301aaed0152e07eb2a941b56637239b66c33878
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d7ea99e2ee8e2882c211ee17acec70222dc058a8
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127359"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637102"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>A Windows 10 Enterprise több munkamenetes használata – gyakori kérdések
 
@@ -39,7 +39,7 @@ A Windows 10 Enterprise többmunkamenetes munkamenete nem futtatható a helyszí
 
 Elindíthat egy virtuális gépet (VM) az Azure-ban a Windows 10 Windows 10 Enterprise többmunkamenetes munkamenettel, és testre szabhatja azt az ÜZLETÁG-alkalmazások, a sysprep/generalize telepítésével, majd létrehozhat egy lemezképet az Azure Portalon.  
  
-Első lépésekhez hozzon létre egy virtuális gép az Azure-ban a Windows 10 Windows 10 Enterprise többmunkamenetes. Ahelyett, hogy a virtuális gép az Azure-ban, letöltheti a virtuális merevlemez közvetlenül. Ezt követően a letöltött virtuális merevlemez t, hogy hozzon létre egy új Generációs 1 virtuális gép a Windows 10 PC Hyper-V engedélyezve van.
+Első lépésekhez hozzon létre egy virtuális gép az Azure-ban a Windows 10 Enterprise többmunkamenetes. Ahelyett, hogy a virtuális gép az Azure-ban, letöltheti a virtuális merevlemez közvetlenül. Ezt követően a letöltött virtuális merevlemez t, hogy hozzon létre egy új Generációs 1 virtuális gép a Windows 10 PC Hyper-V engedélyezve van.
 
 Az üzletági alkalmazások telepítésével és a lemezkép sysprep telepítésével testreszabhatja a lemezképet az igényeinek megfelelően. Ha végzett a testreszabással, töltse fel a képet az Azure-ba a virtuális merevlemez belsejében. Ezt követően a Windows virtuális asztal az Azure Piactérről, és használja egy új gazdagépkészlet üzembe helyezéséhez a testreszabott lemezkép.
  

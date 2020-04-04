@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 08/27/2019
-ms.openlocfilehash: bf83155e971061f22e5f5fc33d216b58621c9249
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f1a56fa6ea38acd8061180407eb47fe416b61e9
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462649"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631701"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Oktatóanyag: SQL Database felügyelt példány hozzáadása feladatátvételi csoporthoz
 
@@ -42,7 +42,7 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a köv
 - Azure-előfizetés. [Hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) ha még nem rendelkezik ilyen.
 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Az oktatóanyag befejezéséhez győződjön meg arról, hogy a következő elemekkel rendelkezik:
 
 - Azure-előfizetés. [Hozzon létre egy ingyenes fiókot,](https://azure.microsoft.com/free/) ha még nem rendelkezik ilyen.
@@ -75,7 +75,7 @@ Hozza létre az erőforráscsoportot és az elsődleges felügyelt példányt az
 1. Hagyja a többi beállítást az alapértelmezett értékeken, és válassza a **Véleményezés + létrehozás** lehetőséget a felügyelt példány beállításainak áttekintéséhez. 
 1. Válassza a **Létrehozás** lehetőséget az elsődleges felügyelt példány létrehozásához. 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Hozza létre az erőforráscsoportot és az elsődleges felügyelt példányt a PowerShell használatával. 
 
@@ -433,7 +433,7 @@ Virtuális hálózat létrehozásához kövesse az alábbi lépéseket:
 
     ![Másodlagos virtuális hálózati értékek](media/sql-database-managed-instance-failover-group-tutorial/secondary-virtual-network.png)
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Ez a lépés csak akkor szükséges, ha az Azure Portal használatával telepíti a felügyelt példányt. Ugrás előre a 3. 
 
@@ -482,7 +482,7 @@ Hozza létre a másodlagos felügyelt példányt az Azure Portalhasználatával.
 1. Válassza **a Véleményezés + létrehozás** lehetőséget a másodlagos felügyelt példány beállításainak áttekintéséhez. 
 1. Válassza a **Létrehozás** lehetőséget a másodlagos felügyelt példány létrehozásához. 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Hozza létre a másodlagos felügyelt példányt a PowerShell használatával. 
 
@@ -756,7 +756,7 @@ Hozza létre az átjárót az elsődleges felügyelt példány virtuális háló
     | --- | --- |
     | **Előfizetés** |  Az az előfizetés, ahol az elsődleges felügyelt példány van. |
     | **Név** | A virtuális hálózati átjáró neve, `primary-mi-gateway`például . | 
-    | **Régió** | Az a régió, ahol a másodlagos felügyelt példány van. |
+    | **Régió** | Az a régió, ahol az elsődleges felügyelt példány található. |
     | **Átjáró típusa** | Válassza a **VPN**lehetőséget. |
     | **VPN-típus** | **Útvonalalapú kiválasztása** |
     | **Sku**| Hagyja békén `VpnGw1`a. |
@@ -773,7 +773,7 @@ Hozza létre az átjárót az elsődleges felügyelt példány virtuális háló
 1. Az új virtuális hálózati átjáró létrehozásához válassza a **Létrehozás** lehetőséget. 
 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Hozza létre az átjárót az elsődleges felügyelt példány virtuális hálózatához a PowerShell használatával. 
 
@@ -851,7 +851,7 @@ Az Azure Portal használatával ismételje meg az előző szakaszban leírt lép
    ![Másodlagos átjáróbeállítások](media/sql-database-managed-instance-failover-group-tutorial/settings-for-secondary-gateway.png)
 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Hozza létre az átjárót a másodlagos felügyelt példány virtuális hálózatához a PowerShell használatával. 
 
@@ -933,7 +933,7 @@ Csatlakoztassa a két átjárók az Azure Portalhasználatával.
 1. Az **Összegzés** lapon tekintse át a kétirányú kapcsolat beállításait, majd a kapcsolat létrehozásához kattintson az **OK gombra.** 
 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Csatlakoztassa a két átjárót a PowerShell használatával. 
 
@@ -984,7 +984,7 @@ Hozza létre a feladatátvételi csoportot az Azure Portalhasználatával.
 1. Miután a feladatátvételi csoport telepítése befejeződött, a **feladatátvételi csoport** lapra kerül vissza. 
 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Hozza létre a feladatátvételi csoportot a PowerShell használatával. 
 
    ```powershell-interactive
@@ -1027,7 +1027,7 @@ Feladatátvétel tesztelése az Azure Portalhasználatával.
 1. Lépjen az új _másodlagos_ felügyelt példányra, és válassza a **Feladatátvétel** ismét az elsődleges példány elsődleges szerepkörbe való visszakerüléséhez. 
 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Feladatátvétel tesztelése a PowerShell használatával. 
 
    ```powershell-interactive
@@ -1083,7 +1083,7 @@ Az erőforrások törlése először törli a felügyelt példányt, majd a virt
 1. Törölje a fennmaradó erőforrásokat. Írja `yes` be a szövegmezőbe az erőforrás törlésének megerősítéséhez, majd válassza a **Törlés**lehetőséget. 
 1. Az erőforráscsoport törléséhez válassza az **Erőforráscsoport törlése**lehetőséget, `myResourceGroup`írja be az erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget. 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Az erőforráscsoportot kétszer kell eltávolítania. Ha először távolítja el az erőforráscsoportot, akkor eltávolítja a felügyelt `Remove-AzResourceGroup : Long running operation failed with status 'Conflict'.`példányt és a virtuális fürtöket, de a hibaüzenet sikertelen lesz. Futtassa az Remove-AzResourceGroup parancsot még egyszer a fennmaradó erőforrások és az erőforráscsoport eltávolításához.
 
@@ -1104,7 +1104,7 @@ Az oktatóanyag ezen része a következő PowerShell-parancsmast használja:
 
 ## <a name="full-script"></a>Teljes szkript
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 [!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-managed-instance-to-failover-group-az-ps.ps1 "Add managed instance to a failover group")]
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.

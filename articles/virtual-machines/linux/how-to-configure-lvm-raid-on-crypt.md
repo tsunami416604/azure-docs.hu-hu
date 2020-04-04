@@ -1,74 +1,70 @@
 ---
-title: Az LVM és a RAID on-crypt beállítása Linux virtuális gépen
-description: Ez a cikk utasításokat tartalmaz lvm és RAID konfigurálása a kripta Linux virtuális gépeken.
+title: LvM és RAID konfigurálása titkosított eszközökön – Azure lemeztitkosítás
+description: Ez a cikk utasításokat tartalmaz az LVM és a RAID linuxos virtuális gépek titkosított eszközökön történő konfigurálásához.
 author: jofrance
 ms.service: security
 ms.topic: article
 ms.author: jofrance
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 78ba47ba887cf7c90adf70d9d444fbd8a3c721cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4e342ff44af38b8e79dc8695c1270b1f5c68e0a8
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284908"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657443"
 ---
-# <a name="how-to-configure-lvm-and-raid-on-crypt"></a>Az LVM és a RAID titkosítás beállítása a kriptában
+# <a name="configure-lvm-and-raid-on-encrypted-devices"></a>LVM és RAID konfigurálása titkosított eszközökön
 
-Ez a dokumentum egy lépésről-lépésre folyamat arról, hogyan kell elvégezni LVM a kripta és raid a kripta konfigurációk.
-
-### <a name="environment"></a>Környezet
+Ez a cikk lépésről lépésre bemutatja a logikai kötetkezelés (LVM) és a RAID titkosított eszközökön történő végrehajtásának lépéseit. A folyamat a következő környezetekre vonatkozik:
 
 - Linux disztribúciók
     - RHEL 7,6+
     - Ubuntu 18.04+
     - SUSE 12+
-- ADE egymenetes
-- ADE kettős áthaladás
+- Az Azure Disk Encryption egymenetes bővítménye
+- Azure Disk Encryption kétmenetes bővítmény
 
 
 ## <a name="scenarios"></a>Forgatókönyvek
 
-**Ez a forgatókönyv az ADE kétfázisú és egymenetes bővítményekre vonatkozik.**  
+Az ebben a cikkben szereplő eljárások a következő eseteket támogatják:  
 
-- LVM konfigurálása titkosított eszközökre (LVM-on-Crypt)
-- Raid konfigurálása titkosított eszközökön (RAID-on-Crypt)
+- LVM konfigurálása titkosított eszközökre (LVM-on-crypt)
+- Raid konfigurálása titkosított eszközökön (RAID-on-crypt)
 
-Miután az alapul szolgáló eszköz(ek) titkosítva vannak, akkor létrehozhatja az LVM vagy RAID struktúrákat a titkosított réteg tetején. A fizikai kötetek (PV) a titkosított rétegen jönnek létre.
-A fizikai kötetek a kötetcsoport létrehozásához használatosak.
-Hozza létre a köteteket, és adja hozzá a szükséges bejegyzéseket az /etc/fstab.You create the volumes and add the required entries on /etc/fstab. 
+Az alapul szolgáló eszköz vagy eszközök titkosítása után létrehozhatja az LVM vagy RAID struktúrákat a titkosított réteg en. 
 
-![Csatlakoztatott lemezek ellenőrzése](./media/disk-encryption/lvm-raid-on-crypt/000-lvm-raid-crypt-diagram.png)
+A fizikai kötetek (TV-k) a titkosított rétegen jönnek létre. A fizikai kötetek a kötetcsoport létrehozásához használatosak. Hozza létre a köteteket, és adja hozzá a szükséges bejegyzéseket az /etc/fstab.You create the volumes and add the required entries on /etc/fstab. 
 
-Hasonlóképpen a RAID-eszköz a lemezeken lévő titkosított réteg tetején jön létre. A RAID-eszköz tetején fájlrendszer jön létre, és az /etc/fstab kapcsolóhoz hozzáadja normál eszközként.
+![Az LVM-szerkezetek rétegeinek diagramja](./media/disk-encryption/lvm-raid-on-crypt/000-lvm-raid-crypt-diagram.png)
 
-### <a name="considerations"></a>Megfontolandó szempontok
+Hasonlóképpen a RAID-eszköz a lemezeken lévő titkosított réteg tetején jön létre. A RAID-eszköz tetején egy fájlrendszer jön létre, amelyet az /etc/fstab kapcsolóhoz normál eszközként adnak hozzá.
 
-Az ajánlott módszer az LVM-on-Crypt.
+## <a name="considerations"></a>Megfontolandó szempontok
 
-Raid figyelembe kell venni, ha LVM nem használható, mert az adott alkalmazás / környezet korlátai.
+Javasoljuk, hogy használja lvm-on-crypt. A RAID egy olyan lehetőség, ha az LVM nem használható adott alkalmazás- vagy környezetkorlátozások miatt.
 
-A Use the EncryptFormatAll opciót fogja használni, https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-linux#use-encryptformatall-feature-for-data-disks-on-linux-vmsa funkcióval kapcsolatos információk a következők: .
+A **UseformatAll titkosítási formát** fogja használni. Erről a beállításról a Linux os virtuális [gépeken lévő adatlemezekhez használja a UsetheFormatAll funkciót.](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-linux#use-encryptformatall-feature-for-data-disks-on-linux-vms)
 
-Bár ez a módszer az operációs rendszer titkosításakor is elvégezhető, csak az adatmeghajtók titkosítása.
+Bár ezt a módszert használhatja, amikor az operációs rendszert is titkosítja, itt csak az adatmeghajtóktitkosítását használjuk.
 
-Ez az eljárás feltételezi, hogy már áttekintette https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-linux az https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-cli-quickstartitt említett előfeltételeket: és itt .
+Az eljárások feltételezik, hogy [linuxos virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-linux) és rövid útmutatóban már áttekintette az előfeltételeket az Azure Disk Encryption [forgatókönyvekben: Linuxos virtuális gép létrehozása és titkosítása az Azure CLI-vel.](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-cli-quickstart)
 
-Az ADE kettős áthaladási verziója eprecation útvonalon van, és a továbbiakban nem használható az új ADE-titkosításokon.
+Az Azure Disk Encryption kétmenetű verziója egy eprecation elérési úton, és a továbbiakban nem használható az új titkosítások.
 
-### <a name="procedure"></a>Eljárás
-
-Az "on crypt" konfigurációk használatakor az alábbi eljárást fogja követni:
-
->[!NOTE] 
->Változókat használunk a dokumentumban, ennek megfelelően cseréljük le az értékeket.
 ## <a name="general-steps"></a>Általános lépések
-### <a name="deploy-a-vm"></a>Virtuális gép üzembe helyezése 
->[!NOTE] 
->Bár ez nem kötelező, azt javasoljuk, hogy alkalmazza ezt egy újonnan üzembe helyezett virtuális gép.
 
-PowerShell
+Az "on-crypt" konfigurációk használata esetén használja az alábbi eljárásokban ismertetett eljárást.
+
+>[!NOTE] 
+>Változókat használunk a cikkben. Ennek megfelelően cserélje le az értékeket.
+
+### <a name="deploy-a-vm"></a>Virtuális gép üzembe helyezése 
+A következő parancsok nem kötelezőek, de azt javasoljuk, hogy alkalmazza őket egy újonnan telepített virtuális gépen (VM).
+
+PowerShell:
+
 ```powershell
 New-AzVm -ResourceGroupName ${RGNAME} `
 -Name ${VMNAME} `
@@ -78,7 +74,8 @@ New-AzVm -ResourceGroupName ${RGNAME} `
 -Credential ${creds} `
 -Verbose
 ```
-Cli:
+Azure CLI:
+
 ```bash
 az vm create \
 -n ${VMNAME} \
@@ -90,8 +87,11 @@ az vm create \
 --size ${VMSIZE} \
 -o table
 ```
-### <a name="attach-disks-to-the-vm"></a>Lemezek csatlakoztatása a virtuális géphez:
-Ismétlés $N Virtuálisgép PowerShellhez csatlakoztatni kívánt új lemezek száma esetén
+### <a name="attach-disks-to-the-vm"></a>Lemezek csatolása a virtuális géphez
+Ismételje meg a `$N` következő parancsokat a virtuális géphez csatolni kívánt új lemezek száma esetén.
+
+PowerShell:
+
 ```powershell
 $storageType = 'Standard_LRS'
 $dataDiskName = ${VMNAME} + '_datadisk0'
@@ -101,7 +101,9 @@ $vm = Get-AzVM -Name ${VMNAME} -ResourceGroupName ${RGNAME}
 $vm = Add-AzVMDataDisk -VM $vm -Name $dataDiskName -CreateOption Attach -ManagedDiskId $dataDisk1.Id -Lun 0
 Update-AzVM -VM ${VM} -ResourceGroupName ${RGNAME}
 ```
-Cli:
+
+Azure CLI:
+
 ```bash
 az vm disk attach \
 -g ${RGNAME} \
@@ -111,45 +113,59 @@ az vm disk attach \
 --new \
 -o table
 ```
-### <a name="verify-the-disks-are-attached-to-the-vm"></a>Ellenőrizze, hogy a lemezek a virtuális géphez vannak-e csatlakoztatva:
+
+### <a name="verify-that-the-disks-are-attached-to-the-vm"></a>Annak ellenőrzése, hogy a lemezek a virtuális géphez vannak-e csatlakoztatva
 PowerShell:
 ```powershell
 $VM = Get-AzVM -ResourceGroupName ${RGNAME} -Name ${VMNAME}
 $VM.StorageProfile.DataDisks | Select-Object Lun,Name,DiskSizeGB
 ```
-![Ellenőrizze a csatlakoztatott](./media/disk-encryption/lvm-raid-on-crypt/001-lvm-raid-check-disks-powershell.png) PowerShell CLI lemezeket:
+![Csatolt lemezek listája a PowerShellben](./media/disk-encryption/lvm-raid-on-crypt/001-lvm-raid-check-disks-powershell.png)
+
+Azure CLI:
+
 ```bash
 az vm show -g ${RGNAME} -n ${VMNAME} --query storageProfile.dataDisks -o table
 ```
-![Ellenőrizze a csatlakoztatott](./media/disk-encryption/lvm-raid-on-crypt/002-lvm-raid-check-disks-cli.png) lemezek ![CLI Portál:](./media/disk-encryption/lvm-raid-on-crypt/003-lvm-raid-check-disks-portal.png) Ellenőrizze a csatlakoztatott lemezek CLI operációs rendszer:
+![Az Azure CLI csatolt lemezeinek listája](./media/disk-encryption/lvm-raid-on-crypt/002-lvm-raid-check-disks-cli.png)
+
+Portál:
+
+![A portálhoz csatlakoztatott lemezek listája](./media/disk-encryption/lvm-raid-on-crypt/003-lvm-raid-check-disks-portal.png)
+
+Operációs rendszer:
+
 ```bash
 lsblk 
 ```
-![Csatlakoztatott lemezek ellenőrzése](./media/disk-encryption/lvm-raid-on-crypt/004-lvm-raid-check-disks-os.png)
+![Az operációs rendszerhez csatlakoztatott lemezek listája](./media/disk-encryption/lvm-raid-on-crypt/004-lvm-raid-check-disks-os.png)
+
 ### <a name="configure-the-disks-to-be-encrypted"></a>A titkosítandó lemezek konfigurálása
-Ez a konfiguráció történik, hogy az operációs rendszer szintjén, a megfelelő lemezek vannak konfigurálva a hagyományos ADE titkosítás:
+Ez a konfiguráció az operációs rendszer szintjén történik. A megfelelő lemezek az Azure Disk Encryption hagyományos titkosításához vannak konfigurálva:
 
-A fájlrendszerek a lemezek tetején jönnek létre.
+- A fájlrendszerek a lemezek tetején jönnek létre.
+- Ideiglenes csatlakoztatási pontok jönnek létre a fájlrendszerek csatlakoztatására.
+- A fájlrendszerek az /etc/fstab kapcsolón vannak konfigurálva, hogy a rendszerindításkor legyenek csatlakoztatva.
 
-Ideiglenes csatlakoztatási pontok jönnek létre a fájlrendszerek csatlakoztatására.
-
-A fájlrendszerek az /etc/fstab kapcsolón vannak konfigurálva a rendszerindításkor való csatlakoztatáshoz.
-
-Ellenőrizze az eszköz betűrendelt az új lemezek, ebben a példában vagyunk négy adatlemezek
+Ellenőrizze az új lemezekhez rendelt eszközbetűjelet. Ebben a példában négy adatlemezt használunk.
 
 ```bash
 lsblk 
 ```
-![Csatlakoztatott lemezek ellenőrzése](./media/disk-encryption/lvm-raid-on-crypt/004-lvm-raid-check-disks-os.png)
+![Az operációs rendszerhez csatlakoztatott adatlemezek](./media/disk-encryption/lvm-raid-on-crypt/004-lvm-raid-check-disks-os.png)
 
-### <a name="create-a-filesystem-on-top-of-each-disk"></a>Hozzon létre egy fájlrendszert az egyes lemezek tetején.
-Ez a parancs a "for" ciklus "in" részén definiált lemezeken egy ext4 fájlrendszer létrehozását is megindítja.
+### <a name="create-a-file-system-on-top-of-each-disk"></a>Fájlrendszer létrehozása az egyes lemezek tetején
+Ez a parancs egy ext4 fájlrendszer létrehozását teszi meg minden olyan lemezen, amelyet a "for" ciklus "in" részén határoztak meg.
+
 ```bash
 for disk in c d e f; do echo mkfs.ext4 -F /dev/sd${disk}; done |bash
 ```
-![Ellenőrizze a csatlakoztatott](./media/disk-encryption/lvm-raid-on-crypt/005-lvm-raid-create-temp-fs.png) lemezek operációs rendszer Keresse meg a UUID a fájlrendszerek nemrég létrehozott, hozzon létre egy ideiglenes mappát csatlakoztatni, add hozzá a megfelelő bejegyzéseket /etc/fstab és csatolja az összes fájlrendszer.
+![Ext4 fájlrendszer létrehozása](./media/disk-encryption/lvm-raid-on-crypt/005-lvm-raid-create-temp-fs.png)
+
+Keresse meg a közelmúltban létrehozott fájlrendszerek univerzálisan egyedi azonosítóját (UUID), hozzon létre egy ideiglenes mappát, adja hozzá a megfelelő bejegyzéseket az /etc/fstab mappához, és csatlakoztassa az összes fájlrendszert.
 
 Ez a parancs a "for" ciklus "in" részén definiált lemezeken is iterálja:
+
 ```bash
 for disk in c d e f; do diskuuid="$(blkid -s UUID -o value /dev/sd${disk})"; \
 mkdir /tempdata${disk}; \
@@ -157,17 +173,23 @@ echo "UUID=${diskuuid} /tempdata${disk} ext4 defaults,nofail 0 0" >> /etc/fstab;
 mount -a; \
 done
 ``` 
-### <a name="verify-the-disks-are-mounted-properly"></a>Ellenőrizze, hogy a lemezek megfelelően vannak-e csatlakoztatva:
+
+### <a name="verify-that-the-disks-are-mounted-properly"></a>Ellenőrizze, hogy a lemezek megfelelően vannak-e csatlakoztatva
 ```bash
 lsblk
 ```
-![Ellenőrizze temp filesystems](./media/disk-encryption/lvm-raid-on-crypt/006-lvm-raid-verify-temp-fs.png) szerelt és konfigurálva:
+![Csatlakoztatott ideiglenes fájlrendszer jegyzéke](./media/disk-encryption/lvm-raid-on-crypt/006-lvm-raid-verify-temp-fs.png)
+
+Ellenőrizze azt is, hogy a lemezek konfigurálva vannak-e:
+
 ```bash
 cat /etc/fstab
 ```
-![Fstab ellenőrzése](./media/disk-encryption/lvm-raid-on-crypt/007-lvm-raid-verify-temp-fstab.png)
-### <a name="encrypt-the-data-disks"></a>Az adatlemezek titkosítása:
-A KEK használatával a PowerShell:
+![Konfigurációs információk az fstab segítségével](./media/disk-encryption/lvm-raid-on-crypt/007-lvm-raid-verify-temp-fstab.png)
+
+### <a name="encrypt-the-data-disks"></a>Az adatlemezek titkosítása
+PowerShell kulcstitkosítási kulcs (KEK) használatával:
+
 ```powershell
 $sequenceVersion = [Guid]::NewGuid() 
 Set-AzVMDiskEncryptionExtension -ResourceGroupName $RGNAME `
@@ -181,7 +203,9 @@ Set-AzVMDiskEncryptionExtension -ResourceGroupName $RGNAME `
 -SequenceVersion $sequenceVersion `
 -skipVmBackup;
 ```
-CLI a KEK használatával:
+
+Azure CLI kek használatával:
+
 ```bash
 az vm encryption enable \
 --resource-group ${RGNAME} \
@@ -198,125 +222,166 @@ az vm encryption enable \
 Csak akkor folytassa a következő lépéssel, ha az összes lemez titkosítva van.
 
 PowerShell:
+
 ```powershell
 Get-AzVmDiskEncryptionStatus -ResourceGroupName ${RGNAME} -VMName ${VMNAME}
 ```
-![Ellenőrizze titkosítás](./media/disk-encryption/lvm-raid-on-crypt/008-lvm-raid-verify-encryption-status-ps.png) ps CLI:
+![Titkosítási állapot a PowerShellben](./media/disk-encryption/lvm-raid-on-crypt/008-lvm-raid-verify-encryption-status-ps.png)
+
+Azure CLI:
+
 ```bash
 az vm encryption show -n ${VMNAME} -g ${RGNAME} -o table
 ```
-![Ellenőrizze titkosításCLI](./media/disk-encryption/lvm-raid-on-crypt/009-lvm-raid-verify-encryption-status-cli.png) ![portál:](./media/disk-encryption/lvm-raid-on-crypt/010-lvm-raid-verify-encryption-status-portal.png) Ellenőrizze a titkosítási operációs rendszer operációs rendszer szintje:
+![Titkosítási állapot az Azure CLI-ben](./media/disk-encryption/lvm-raid-on-crypt/009-lvm-raid-verify-encryption-status-cli.png)
+
+Portál:
+
+![Titkosításállapota a portálon](./media/disk-encryption/lvm-raid-on-crypt/010-lvm-raid-verify-encryption-status-portal.png)
+
+Operációs rendszer szintje:
+
 ```bash
 lsblk
 ```
-![Titkosítási CLI ellenőrzése](./media/disk-encryption/lvm-raid-on-crypt/011-lvm-raid-verify-encryption-status-os.png)
+![Titkosítási állapot az operációs rendszerben](./media/disk-encryption/lvm-raid-on-crypt/011-lvm-raid-verify-encryption-status-os.png)
 
-A kiterjesztés hozzáadja a fájlrendszereket a "/var/lib/azure_disk_encryption_config/azure_crypt_mount" (egy régi titkosításhoz), vagy hozzáadódik az "/etc/crypttab" (új titkosítások) értékhez.
+A kiterjesztés hozzáadja a fájlrendszereket a /var/lib/azure_disk_encryption_config/azure_crypt_mount (régi titkosítás) vagy az /etc/crypttab (új titkosítások) alkalmazáshoz.
 
-Ne módosítsa ezeket a fájlokat.
+>[!NOTE] 
+>Ne módosítsa ezeket a fájlokat.
 
-Ez a fájl lesz ügyelve aktiválása ezeket a lemezeket a rendszerindítási folyamat során, így később használható LVM vagy RAID. 
+Ez a fájl gondoskodik a lemezek aktiválásáról a rendszerindítási folyamat során, hogy az LVM vagy a RAID később használhassa őket. 
 
-Ne aggódj a mount pontokat ebben a fájlban, mint ADE elveszíti a képességét, hogy a lemezek szerelt, mint egy normál fájlrendszer után hozunk létre egy fizikai kötet vagy raid eszköz tetején a titkosított eszközök (amely megszabadulni a fájlrendszer formátumban használtunk során előkészítési folyamat).
-### <a name="remove-the-temp-folders-and-temp-fstab-entries"></a>Az ideiglenes mappák és a temp fstab bejegyzések eltávolítása
-Az LVM részeként használt lemezeken leválasztjuk a fájlrendszereket
+Ne aggódjon a fájl csatlakoztatási pontjai miatt. Az Azure Disk Encryption elveszíti azt a képességét, hogy a lemezeket normál fájlrendszerként csatlakoztatva kapja, miután fizikai kötetet vagy RAID-eszközt hoztunk létre a titkosított eszközök önrajta. (Ez eltávolítja a fájlrendszer formátumát, amelyet az előkészítési folyamat során használtunk.)
+
+### <a name="remove-the-temporary-folders-and-temporary-fstab-entries"></a>Az ideiglenes mappák és az ideiglenes fstab bejegyzések eltávolítása
+Leválaszthatja a fájlrendszereket az LVM részeként használt lemezekről.
+
 ```bash
-for disk in c d e f; do umount /tempdata${disk}; done
+for disk in c d e f; do unmount /tempdata${disk}; done
 ```
 És távolítsa el az /etc/fstab bejegyzéseket:
+
 ```bash
 vi /etc/fstab
 ```
 ### <a name="verify-that-the-disks-are-not-mounted-and-that-the-entries-on-etcfstab-were-removed"></a>Ellenőrizze, hogy a lemezek nincsenek-e csatlakoztatva, és hogy az /etc/fstab bejegyzéseket eltávolították-e.
+
 ```bash
 lsblk
 ```
-![Ellenőrizze temp filesystems](./media/disk-encryption/lvm-raid-on-crypt/012-lvm-raid-verify-disks-not-mounted.png) lenemcsatlakoztatott és konfigurálva:
+![Az ideiglenes fájlrendszerek leválasztásának ellenőrzése](./media/disk-encryption/lvm-raid-on-crypt/012-lvm-raid-verify-disks-not-mounted.png)
+
+És ellenőrizze, hogy a lemezek konfigurálva vannak-e:
 ```bash
 cat /etc/fstab
 ```
-![Ellenőrizze temp fstab bejegyzések eltávolítása](./media/disk-encryption/lvm-raid-on-crypt/013-lvm-raid-verify-fstab-temp-removed.png)
-## <a name="for-lvm-on-crypt"></a>LVM-on-crypt esetén
-Most, hogy az alapul szolgáló lemezek titkosítva vannak, folytathatja az LVM-struktúrák létrehozását.
+![Az ideiglenes fstab bejegyzések eltávolításának ellenőrzése](./media/disk-encryption/lvm-raid-on-crypt/013-lvm-raid-verify-fstab-temp-removed.png)
 
-Az eszköznév használata helyett használja a /dev/mapper elérési utat az egyes lemezekhez fizikai kötet létrehozásához (a lemez tetején lévő kriptarétegen, amely nem a lemezen található).
+## <a name="steps-for-lvm-on-crypt"></a>Az LVM-on-crypt lépései
+Most, hogy az alapul szolgáló lemezek titkosítva vannak, létrehozhatja az LVM-struktúrákat.
+
+Az eszköznév használata helyett használja a /dev/mapper elérési utat az egyes lemezekhez fizikai kötet létrehozásához (a lemez tetején lévő kriptarétegen, nem pedig magán a lemezen).
+
 ### <a name="configure-lvm-on-top-of-the-encrypted-layers"></a>LVM konfigurálása a titkosított rétegek en
 #### <a name="create-the-physical-volumes"></a>A fizikai kötetek létrehozása
-Figyelmeztetést fog kapni, amely megkérdezi, hogy nem baj-e a fájlrendszer aláírásának törlése. 
+Figyelmeztetést fog kapni, amely megkérdezi, hogy nem baj-e a fájlrendszer aláírásának törlése. Folytassuk **az y**, vagy használja echo **"y",** ahogy az ábrán látható:
 
-Folytathatja az "y" beírását, vagy használhatja az "y" visszhangot az alábbi módon:
 ```bash
 echo "y" | pvcreate /dev/mapper/c49ff535-1df9-45ad-9dad-f0846509f052
 echo "y" | pvcreate /dev/mapper/6712ad6f-65ce-487b-aa52-462f381611a1
 echo "y" | pvcreate /dev/mapper/ea607dfd-c396-48d6-bc54-603cf741bc2a
 echo "y" | pvcreate /dev/mapper/4159c60a-a546-455b-985f-92865d51158c
 ```
-![pvcreate](./media/disk-encryption/lvm-raid-on-crypt/014-lvm-raid-pvcreate.png)
+![Fizikai kötet létrehozásának ellenőrzése](./media/disk-encryption/lvm-raid-on-crypt/014-lvm-raid-pvcreate.png)
+
 >[!NOTE] 
->A /dev/mapper/device nevekitt kell cserélni a tényleges értékek et az lsblk kimenete alapján.
-#### <a name="verify-the-physical-volumes-information"></a>A fizikai kötetek adatainak ellenőrzése
+>A /dev/mapper/device neveket itt ki kell cserélni a tényleges értékekre az **lsblk**kimenete alapján.
+
+#### <a name="verify-the-information-for-physical-volumes"></a>A fizikai kötetek adatainak ellenőrzése
 ```bash
 pvs
 ```
-![fizikai kötetek ellenőrzése 1](./media/disk-encryption/lvm-raid-on-crypt/015-lvm-raid-pvs.png)
+
+![A fizikai kötetekre vonatkozó információk](./media/disk-encryption/lvm-raid-on-crypt/015-lvm-raid-pvs.png)
+
 #### <a name="create-the-volume-group"></a>A kötetcsoport létrehozása
-A VG létrehozása a már inicializált eszközökkel
+Hozza létre a kötetcsoportot a már inicializált eszközökkel:
+
 ```bash
 vgcreate vgdata /dev/mapper/
 ```
-### <a name="check-the-volume-group-information"></a>A kötetcsoport adatainak ellenőrzése
+
+### <a name="check-the-information-for-the-volume-group"></a>A kötetcsoport adatainak ellenőrzése
+
 ```bash
 vgdisplay -v vgdata
 ```
 ```bash
 pvs
 ```
-![fizikai térfogatok ellenőrzése 2](./media/disk-encryption/lvm-raid-on-crypt/016-lvm-raid-pvs-on-vg.png)
+![A kötetcsoport adatai](./media/disk-encryption/lvm-raid-on-crypt/016-lvm-raid-pvs-on-vg.png)
+
 #### <a name="create-logical-volumes"></a>Logikai kötetek létrehozása
+
 ```bash
 lvcreate -L 10G -n lvdata1 vgdata
 lvcreate -L 7G -n lvdata2 vgdata
 ``` 
-#### <a name="check-the-logical-volumes-created"></a>A létrehozott logikai kötetek ellenőrzése
+
+#### <a name="check-the-created-logical-volumes"></a>A létrehozott logikai kötetek ellenőrzése
+
 ```bash
 lvdisplay
 lvdisplay vgdata/lvdata1
 lvdisplay vgdata/lvdata2
 ```
-![ellenőrizze lvs](./media/disk-encryption/lvm-raid-on-crypt/017-lvm-raid-lvs.png)
-#### <a name="create-filesystems-on-top-of-the-logical-volumes-structures"></a>Fájlrendszerek létrehozása a logikai kötet(ek) struktúráján felül
+![Logikai kötetek adatai](./media/disk-encryption/lvm-raid-on-crypt/017-lvm-raid-lvs.png)
+
+#### <a name="create-file-systems-on-top-of-the-structures-for-logical-volumes"></a>Fájlrendszerek létrehozása a logikai kötetek struktúráinak tetején
+
 ```bash
 echo "yes" | mkfs.ext4 /dev/vgdata/lvdata1
 echo "yes" | mkfs.ext4 /dev/vgdata/lvdata2
 ```
-#### <a name="create-the-mount-points-for-the-new-filesystems"></a>Az új fájlrendszerek csatlakoztatási pontjainak létrehozása
+
+#### <a name="create-the-mount-points-for-the-new-file-systems"></a>Az új fájlrendszerek csatlakoztatási pontjainak létrehozása
+
 ```bash
 mkdir /data0
 mkdir /data1
 ```
+
 #### <a name="add-the-new-file-systems-to-etcfstab-and-mount-them"></a>Adja hozzá az új fájlrendszereket az /etc/fstab fájlhoz, és szerelje fel őket
+
 ```bash
 echo "/dev/mapper/vgdata-lvdata1 /data0 ext4 defaults,nofail 0 0" >>/etc/fstab
 echo "/dev/mapper/vgdata-lvdata2 /data1 ext4 defaults,nofail 0 0" >>/etc/fstab
 mount -a
 ```
-#### <a name="verify-that-the-new-filesystems-are-mounted"></a>Annak ellenőrzése, hogy az új fájlrendszerek csatlakoztatva vannak-e
+
+#### <a name="verify-that-the-new-file-systems-are-mounted"></a>Annak ellenőrzése, hogy az új fájlrendszerek csatlakoztatva vannak-e
+
 ```bash
 lsblk -fs
 df -h
 ```
-![logikai](./media/disk-encryption/lvm-raid-on-crypt/018-lvm-raid-lsblk-after-lvm.png) kötetek ellenőrzése Az lsblk ezen változatában felsoroljuk azokat az eszközöket, amelyek a fordított sorrendtől való függőségeket mutatják, ez a beállítás segít azonosítani a logikai kötet szerint csoportosított eszközöket az eredeti /dev/sd[disk] eszköznevek helyett.
+![Információk a csatlakoztatott fájlrendszerekhez](./media/disk-encryption/lvm-raid-on-crypt/018-lvm-raid-lsblk-after-lvm.png)
 
-Fontos: Győződjön meg arról, hogy a "nofail" beállítás hozzá van adva az ADE titkosított eszközön létrehozott LVM-kötetek csatlakoztatási pontbeállításaihoz. Fontos, hogy elkerüljék az operációs rendszer elakad a boot folyamat (vagy karbantartási módban). 
+Az **Lsblk**ezen változatán a függőségeket fordított sorrendben megjelenítő eszközöket soroljuk fel. Ez a beállítás segít azonosítani a logikai kötet szerint csoportosított eszközöket az eredeti /dev/sd[disk] eszköznevek helyett.
 
-A titkosított lemez feloldása a rendszerindítási folyamat végén történik, az LVM kötetek és a fájlrendszerek automatikusan csatlakoztatva lesznek.
+Fontos, hogy győződjön meg arról, hogy a **failfail** beállítás hozzá van adva a csatlakoztatási pont beállításait az Azure Disk Encryption által titkosított eszközön létrehozott LVM-kötetek csatlakoztatási pont beállításait. Megakadályozza, hogy az operációs rendszer elakadjon a rendszerindítási folyamat során (vagy karbantartási módban).
 
-Ha a failfail opciót nem használja, az operációs rendszer soha nem jut el abba a fázisba, ahol az ADE elindul, és az adatlemez(ek) zárolása és csatlakoztatása.
+Ha nem használja a **failopciót:**
 
-Tesztelheti a virtuális gép újraindítását, és a fájlrendszerek érvényesítése is automatikusan csatlakoztatva van a rendszerindítási idő után. 
+- Az operációs rendszer soha nem jut el abba a fázisba, amelyben az Azure Disk Encryption elindul, és az adatlemezek zárolása és csatlakoztatása. 
+- A titkosított lemezek zárolása a rendszerindítási folyamat végén lesz feloldva. Az LVM-kötetek és fájlrendszerek automatikusan csatlakoztatva lesznek, amíg az Azure Disk Encryption fel nem oldja azokat. 
 
-Vegye figyelembe, hogy ez a folyamat a fájlrendszerek számától és a fájlrendszerek méretétől függően több percet is igénybe vehet
+Tesztelheti a virtuális gép újraindítását, és ellenőrizheti, hogy a fájlrendszerek is automatikusan csatlakoztatva vannak-e a rendszerindítási idő után. Ez a folyamat a fájlrendszerek számától és méretétől függően több percet is igénybe vehet.
+
 #### <a name="reboot-the-vm-and-verify-after-reboot"></a>Indítsa újra a virtuális gépet, és ellenőrizze az újraindítás után
+
 ```bash
 shutdown -r now
 ```
@@ -324,8 +389,8 @@ shutdown -r now
 lsblk
 df -h
 ```
-## <a name="for-raid-on-crypt"></a>For RAID-on-Crypt
-Most az alapul szolgáló lemezek titkosítva vannak, továbbra is létrehozhatja a RAID-struktúrákat, ugyanúgy, mint az LVM, az eszköz név használata helyett, használja a /dev/mapper elérési utat az egyes lemezekhez.
+## <a name="steps-for-raid-on-crypt"></a>A RAID-on-crypt lépései
+Most, hogy az alapul szolgáló lemezek titkosítva vannak, folytathatja a RAID-struktúrák létrehozását. A folyamat megegyezik az LVM-vel, de az eszköznév használata helyett használja a /dev/mapper elérési utakat az egyes lemezekhez.
 
 #### <a name="configure-raid-on-top-of-the-encrypted-layer-of-the-disks"></a>Raid konfigurálása a lemezek titkosított rétege indikáta tetején
 ```bash
@@ -337,21 +402,26 @@ mdadm --create /dev/md10 \
 /dev/mapper/ea607dfd-c396-48d6-bc54-603cf741bc2a \
 /dev/mapper/4159c60a-a546-455b-985f-92865d51158c
 ```
-![mdadm létrehozása](./media/disk-encryption/lvm-raid-on-crypt/019-lvm-raid-md-creation.png)
+![Információ a konfigurált RAID-hez az mdadm paranccsal](./media/disk-encryption/lvm-raid-on-crypt/019-lvm-raid-md-creation.png)
+
 >[!NOTE] 
->A /dev/mapper/device nevekitt kell cserélni a tényleges értékek et az lsblk kimenete alapján.
-#### <a name="checkmonitor-the-raid-creation"></a>A RAID létrehozásának ellenőrzése/figyelése:
+>A /dev/mapper/device neveket itt ki kell cserélni a tényleges értékekre az **lsblk**kimenete alapján.
+
+### <a name="checkmonitor-raid-creation"></a>RAID-létrehozás ellenőrzése/monitorozása
 ```bash
 watch -n1 cat /proc/mdstat
 mdadm --examine /dev/mapper/[]
 mdadm --detail /dev/md10
 ```
-![ellenőrizze mdadm](./media/disk-encryption/lvm-raid-on-crypt/020-lvm-raid-md-details.png)
-#### <a name="create-a-filesystem-on-top-of-the-new-raid-device"></a>Hozzon létre egy fájlrendszert az új Raid eszköz tetején:
+![Raid állapota](./media/disk-encryption/lvm-raid-on-crypt/020-lvm-raid-md-details.png)
+
+### <a name="create-a-file-system-on-top-of-the-new-raid-device"></a>Fájlrendszer létrehozása az új RAID-eszköz tetején
 ```bash
 mkfs.ext4 /dev/md10
 ```
-Hozzon létre egy új csatlakoztatási pontot a fájlrendszerhez, adja hozzá az új fájlrendszert az /etc/fstab fájlhoz, és csatlakoztassa
+
+Hozzon létre egy új csatlakoztatási pontot a fájlrendszerhez, adja hozzá az új fájlrendszert az /etc/fstab fájlhoz, és csatlakoztassa:
+
 ```bash
 for device in md10; do diskuuid="$(blkid -s UUID -o value /dev/${device})"; \
 mkdir /raiddata; \
@@ -359,26 +429,30 @@ echo "UUID=${diskuuid} /raiddata ext4 defaults,nofail 0 0" >> /etc/fstab; \
 mount -a; \
 done
 ```
-Annak ellenőrzése, hogy az új fájlrendszerek csatlakoztatva vannak-e
+
+Ellenőrizze, hogy az új fájlrendszer csatlakoztatva van-e:
+
 ```bash
 lsblk -fs
 df -h
 ```
-![ellenőrizze mdadm](./media/disk-encryption/lvm-raid-on-crypt/021-lvm-raid-lsblk-md-details.png)
+![Információk a csatlakoztatott fájlrendszerekhez](./media/disk-encryption/lvm-raid-on-crypt/021-lvm-raid-lsblk-md-details.png)
 
-Fontos: Győződjön meg arról, hogy a "nofail" beállítás hozzá van adva az ADE titkosított eszközön létrehozott RAID-kötetek csatlakoztatási pontbeállításaihoz. 
+Fontos, hogy győződjön meg arról, hogy a **failfail** beállítás hozzá van adva a csatlakoztatási pont beállításait a RAID-kötetek létrehozott az Azure Disk Encryption által titkosított eszközön létrehozott. Megakadályozza, hogy az operációs rendszer elakadjon a rendszerindítási folyamat során (vagy karbantartási módban).
 
-Nagyon fontos, hogy elkerüljék az operációs rendszer elakad a boot folyamat során (vagy karbantartási módban). 
+Ha nem használja a **failopciót:**
 
-A titkosított lemez a rendszerindítási folyamat végén lesz feloldva, és a RAID-kötetek és a fájlrendszerek automatikusan csatlakoztatva lesznek, amíg az ADE fel nem oldja őket, ha a nofail opciót nem használja.
+- Az operációs rendszer soha nem jut el abba a fázisba, amelyben az Azure Disk Encryption elindul, és az adatlemezek zárolása és csatlakoztatása.
+- A titkosított lemezek zárolása a rendszerindítási folyamat végén lesz feloldva. A RAID-kötetek és a fájlrendszerek automatikusan csatlakoztatva lesznek, amíg az Azure Disk Encryption fel nem oldja azokat.
 
-Az operációs rendszer soha nem jut el abba a fázisba, ahol az ADE elindul, és az adatlemezek zárolása és csatlakoztatása történik.
+Tesztelheti a virtuális gép újraindítását, és ellenőrizheti, hogy a fájlrendszerek is automatikusan csatlakoztatva vannak-e a rendszerindítási idő után. Ez a folyamat a fájlrendszerek számától és méretétől függően több percet is igénybe vehet.
 
-Tesztelheti a virtuális gép újraindítását, és a fájlrendszerek érvényesítése is automatikusan csatlakoztatva van a rendszerindítási idő után. Vegye figyelembe, hogy ez a folyamat a fájlrendszerek számától és a fájlrendszerek méretétől függően több percet is igénybe vehet
 ```bash
 shutdown -r now
 ```
+
 És mikor tud bejelentkezni:
+
 ```bash
 lsblk
 df -h

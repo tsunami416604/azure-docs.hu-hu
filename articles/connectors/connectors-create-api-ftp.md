@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 12/15/2019
 tags: connectors
-ms.openlocfilehash: 94ca609d9dc070e6e2b4dc878ecd8dfaf9331ede
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b61b51e79c71736e18aaa63ab032c05c512c8d7
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77648172"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656336"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>FTP-fájlok létrehozása, figyelése és kezelése az Azure Logic Apps használatával
 
@@ -27,7 +27,7 @@ Olyan eseményindítókat használhat, amelyek válaszokat kapnak az FTP-kiszolg
 
 ## <a name="limitations"></a>Korlátozások
 
-* Az FTP-csatlakozó csak explicit FTP SSL (FTPS) protokollt támogatja, és nem kompatibilis az implicit FTPS-sel.
+* Az FTP-csatlakozó csak explicit FTP-t támogat TLS/SSL (FTPS) kapcsolatban, és nem kompatibilis az implicit FTPS-sel.
 
 * Alapértelmezés szerint az FTP-műveletek *50 MB vagy kisebb*fájlokat tudnak olvasni vagy írni. Az 50 MB-nál nagyobb fájlok kezeléséhez az FTP-műveletek támogatják [az üzenetdarabolást.](../logic-apps/logic-apps-handle-large-messages.md) A **Fájltartalom beszerezni** művelete implicit módon adattömböt használ.
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: jaredro
-ms.openlocfilehash: 76de7a8854a58deb924cbbe3177ad5a7b5fd57a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 587a17659a412d6f894faf5a744a7d9c444935c8
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74083462"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656748"
 ---
 # <a name="configure-expressroute-global-reach"></a>Az ExpressRoute Global Reach konfigurálása
 
@@ -38,7 +38,7 @@ A konfiguráció megkezdése előtt erősítse meg a következőket:
 1. A konfiguráció elindításához jelentkezzen be az Azure-fiókjába, és válassza ki a használni kívánt előfizetést.
 
    [!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
-2. Azonosítsa a használni kívánt ExpressRoute-áramköröket. Az ExpressRoute globális elérése bármely két ExpressRoute-kapcsolat között engedélyezhető, feltéve, hogy azok a támogatott országokban/régiókban találhatók, és különböző társviszony-létesítési helyeken jöttek létre. 
+2. Azonosítsa a használni kívánt ExpressRoute-áramköröket. Engedélyezheti az ExpressRoute globális elérését bármely két ExpressRoute-kapcsolatlétesítés között, feltéve, hogy azok a támogatott országokban/régiókban találhatók, és különböző társviszony-létesítési helyeken jöttek létre. 
 
    * Ha az előfizetés mindkét kapcsolatcsoport tulajdonosa, kiválaszthatja, hogy a következő szakaszokban futtassa a konfigurációt.
    * Ha a két kapcsolatcsoport különböző Azure-előfizetésekben található, egy Azure-előfizetésengedélyezésére van szükség. Ezután adja át az engedélyezési kulcsot, amikor futtatja a konfigurációs parancsot a másik Azure-előfizetésben.

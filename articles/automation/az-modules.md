@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 02/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: 21fa1c4faa4a080b9b495e1481fdadcd7e8bea10
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: a8d6d25a2ba7f0040b13982f14f3d6081ac32f15
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619482"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637995"
 ---
 # <a name="az-module-support-in-azure-automation"></a>Az Az modul támogatása az Azure Automationben
 
@@ -18,20 +18,27 @@ Az Azure Automation támogatja az [Azure PowerShell Az modul](/powershell/azure/
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
-Az Azure Automation összesítő Az moduljának használatakor számos szempontot figyelembe kell venni. A Runbookokat és a modulokat magasabb szintű megoldások használhatják az Automation-fiókban. A runbookok szerkesztése vagy a modulok frissítése problémákat okozhat a runbookokkal. Az új Az modulok importálása előtt gondosan tesztelje az összes runbookot és megoldást egy külön Automation-fiókban. A modulok bármilyen módosítása negatívan befolyásolhatja a [Start/Stop](automation-solution-vm-management.md) megoldást. Nem javasoljuk a modulok és runbookok módosítását az Automation-fiókokban, amelyek bármilyen megoldást tartalmaznak. Ez a viselkedés nem jellemző az Az modulokra. Ezt figyelembe kell venni az Automation-fiók bármilyen módosításának bevezetésekor.
+Az Azure Automation Ben az Az modulok használatakor számos szempontot figyelembe kell venni:
 
-Az modul importálása az Automation-fiókban nem automatikusan importálja a modult a PowerShell-munkamenetben, amelyet a runbookok használnak. A modulok a következő esetekben lesznek importálva a PowerShell-munkamenetbe:
+* Az Automation-fiók magasabb szintű megoldásai runbookokat és modulokat használhatnak. Ezért a runbookok szerkesztése vagy a modulok frissítése problémákat okozhat a megoldásokkal. Az új Az modulok importálása előtt gondosan tesztelje az összes runbookot és megoldást egy külön Automation-fiókban. 
 
-* Amikor egy runbook meghívja a modul parancsmagját
-* Amikor egy runbook kifejezetten importálja a modult a `Import-Module` parancsmaggal
-* Ha egy runbook importál egy másik modult a modultól függően
+* A modulok bármilyen módosítása negatívan befolyásolhatja a [Start/Stop](automation-solution-vm-management.md) megoldást. 
+
+* Az modul importálása az Automation-fiókban nem automatikusan importálja a modult a Runbookok által használt PowerShell-munkamenetben. A modulok a következő esetekben lesznek importálva a PowerShell-munkamenetbe:
+
+    * Amikor egy runbook meghívja a modul parancsmagját
+    * Amikor egy runbook kifejezetten importálja a modult a `Import-Module` parancsmaggal
+    * Ha egy runbook importál egy másik modult a modultól függően
+
+> [!NOTE]
+> Nem javasoljuk a modulok és runbookok módosítását az Automation-fiókokban, amelyek bármilyen megoldást tartalmaznak. Ez a rendelkezés nem az Az modulokra vonatkozik. Ezt figyelembe kell venni az Automation-fiók bármilyen módosításának bevezetésekor.
 
 > [!IMPORTANT]
 > Győződjön meg arról, hogy az Automation-fiókban lévő runbookok az Az-modulokat vagy [az AzureRM-modulokat](https://www.powershellgallery.com/packages/AzureRM/6.13.1) importálják, de mindkettőt nem egy PowerShell-munkamenetbe. Ha egy runbook importálja az Az modulokat az AzureRM-modulok előtt, a runbook befejeződik. Azonban egy hiba hivatkozva a [Get_SerializationSettings](troubleshoot/runbooks.md#get-serializationsettings) parancsmag jelenik meg a feladat streamek és parancsmagok előfordulhat, hogy nem megfelelően hajtják végre. Ha a runbook importálja az AzureRM-modulokat az Az-modulok előtt, a runbook is befejeződik. Ebben az esetben azonban hibaüzenet jelenik meg a feladatstreamekben, amely szerint az Az és az AzureRM nem importálható ugyanabban a munkamenetben, és nem használható ugyanabban a runbookban.
 
 ## <a name="migrating-to-az-modules"></a>Áttelepítés Az modulokra
 
-Javasoljuk, hogy tesztelje az Az modulokra való áttelepítést egy tesztautomatizálási fiókban. Miután létrehozta ezt a fiókot, az ebben a szakaszban található utasításokat használhatja a modulok használatához.
+Azt javasoljuk, hogy tesztelje az az modulokra való áttelepítést egy tesztautomation-fiókban. Miután létrehozta a fiókot, az ebben a szakaszban található utasításokat használhatja a modulok használatához.
 
 ### <a name="stop-and-unschedule-all-runbooks-that-use-azurerm-modules"></a>Az AzureRM-modulokat használó összes runbook leállítása és ütemezésének leállítása
 

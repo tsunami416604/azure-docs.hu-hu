@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 02/27/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5b4347cb5032b7f3651d0d3fcb20dc5d416f9bee
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 1bef4e5f4129ddc8300d61d609392ce0b07b74b8
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546571"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656253"
 ---
 # <a name="what-is-azure-private-link"></a>Mi az az Azure privát kapcsolat? 
 Az Azure Private Link lehetővé teszi az Azure PaaS-szolgáltatások (például az Azure Storage és az SQL Database) és az Azure által üzemeltetett ügyféltulajdonú/partnerszolgáltatások elérését a virtuális hálózat [privát végpontján](private-endpoint-overview.md) keresztül.
@@ -62,6 +62,7 @@ Az Azure Private Link a következő előnyöket nyújtja:
 |  |Azure Relay | Minden nyilvános régió      |   Előzetes verzió   |
 |  |Azure Event Grid| USA KELETI RÉGIÓJA, USA NYUGATI RÉGIÓja 2, USA DÉLI KÖZÉPSŐ RÉGIÓJA      |   Előzetes verzió   <br/> [További információ](https://docs.microsoft.com/azure/event-grid/network-security)   |
 |  |Azure Web Apps | USA KELETI RÉGIÓJA, USA NYUGATI RÉGIÓja 2, USA DÉLI KÖZÉPSŐ RÉGIÓJA      |   Előzetes verzió   <br/> [További információ](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
+|  |Azure Machine Learning | USA KELETI RÉGIÓJA, USA NYUGATI RÉGIÓja 2, USA DÉLI KÖZÉPSŐ RÉGIÓJA      |   Előzetes verzió   <br/> [További információ](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
 
 A legfrissebb értesítésekért tekintse meg az [Azure virtuális hálózat frissítéseit tartalmazó lapot.](https://azure.microsoft.com/updates/?product=virtual-network)
 

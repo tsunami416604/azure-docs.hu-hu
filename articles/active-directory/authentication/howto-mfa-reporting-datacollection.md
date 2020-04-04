@@ -4,19 +4,19 @@ description: Milyen adatokat használnak a felhasználók hitelesítéséhez az 
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bc0f0dbcd08df887b2484be6ca8c92a85962c1c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f3b5af972ad6dd15b7c992d5e264ede97bd1dde
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74848289"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653636"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Az Azure többtényezős hitelesítésfelhasználói adatgyűjtése
 
@@ -141,7 +141,7 @@ Az MFA Server 8.0-s vagy újabb verziójában a következő folyamat lehetővé 
 - Keressen `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` rá és készítsen\<biztonsági másolatokat a "felhasználónév>" kifejezésre (az idézőjelek szerepeljen a keresésben), hogy megtalálja a hozzáadott vagy módosított felhasználói rekord összes példányát.
    - Ezek a rekordok korlátozhatók (de nem szüntethetők meg) az MFA-kiszolgáló ux-ének naplózása, naplózás a Naplófájlok lap **"Felhasználói módosítások naplózása"** listájának bejelölésével.
    - Ha a syslog konfigurálva van, és a **"Felhasználói változások naplózása"** be van jelölve az MFA-kiszolgáló UX, Naplózás, Syslog (Syslog) szakaszában, akkor a naplóbejegyzések a syslog ból gyűjthetők össze.
-- A felhasználónév más előfordulásai a MultiFactorAuthSvc.log fájlban és a hitelesítési kísérletekhez kapcsolódó Egyéb MFA-kiszolgálónapló-fájlok ban a MultiFactorAuthGdpr.exe export vagy webszolgáltatás SDK használatával megadott adatokkal operatívnak és duplikáltnak minősülnek. GetUserGdpr.
+- A felhasználónév multifaktorauthsvc.log fájlban és a hitelesítési kísérletekhez kapcsolódó egyéb MFA-kiszolgálónapló-fájlokban a felhasználónév egyéb előfordulásai a MultiFactorAuthGdpr.exe export vagy webszolgáltatás SDK GetUserGdpr használatával megadott adatokkal operatívnak és duplikatívnak minősülnek.
 
 ## <a name="delete-data-from-mfa-server"></a>Adatok törlése az MFA-kiszolgálóról
 

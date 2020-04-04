@@ -1,6 +1,6 @@
 ---
 title: Ideiglenes táblák
-description: Alapvető útmutatás az ideiglenes táblák azure SQL Data Warehouse használatával kapcsolatban, kiemelve a munkamenetszintű ideiglenes táblák alapelveit.
+description: Alapvető útmutatás a synapse SQL-készlet ideiglenes tábláinak használatához, kiemelve a munkamenetszintű ideiglenes táblák alapelveit.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,18 +11,24 @@ ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 3a8772550e67c250b1a84dbae17d1d3fe6c5c90e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 64490bbd44066389186a59e851045b6becbe7acc
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351172"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632468"
 ---
-# <a name="temporary-tables-in-sql-data-warehouse"></a>Ideiglenes táblák az SQL Data Warehouse-ban
-Ez a cikk alapvető útmutatást tartalmaz az ideiglenes táblák használatával, és kiemeli a munkamenetszintű ideiglenes táblák alapelveit. A cikkben található információk használata segíthet a kód modularizálásában, javítva a kód újrafelhasználhatóságát és egyszerű karbantartását.
+# <a name="temporary-tables-in-synapse-sql-pool"></a>Ideiglenes táblák a Synapse SQL-készletben
+Ez a cikk alapvető útmutatást tartalmaz az ideiglenes táblák használatával, és kiemeli a munkamenetszintű ideiglenes táblák alapelveit. 
+
+A cikkben található információk használata segíthet a kód modularizálásában, javítva az újrafelhasználhatóságot és a könnyű karbantartást.
 
 ## <a name="what-are-temporary-tables"></a>Mik azok az ideiglenes táblák?
-Az ideiglenes táblák akkor hasznosak, ha adatokat dolgoz fel – különösen az átalakítás során, ahol a köztes eredmények átmenetiek. Az SQL Data Warehouse-ban ideiglenes táblák léteznek a munkamenet szintjén.  Csak az on-dikált munkamenet számára láthatók, és automatikusan eldobják őket, amikor a munkamenet kijelentkezik.  Az ideiglenes táblák teljesítménybeli előnyöket biztosítanak, mivel eredményeik a távtároló helyett a helyi tárolóba vannak írva.
+Az ideiglenes táblák akkor hasznosak, ha adatokat dolgoz fel, különösen az átalakítás során, ahol a köztes eredmények átmenetiek. Az SQL-készletben ideiglenes táblák léteznek a munkamenet szintjén.  
+
+Az ideiglenes táblák csak azon a munkameneten láthatók, amelyben létrehozták őket, és automatikusan eldobják őket, amikor a munkamenet kijelentkezik.  
+
+Az ideiglenes táblák teljesítménybeli előnyöket biztosítanak, mivel eredményeik a távtároló helyett a helyi tárolóba vannak írva.
 
 ## <a name="create-a-temporary-table"></a>Ideiglenes tábla létrehozása
 Az ideiglenes táblák úgy jönnek létre, hogy a táblanevét előrögzítik egy `#`.  Példa:
@@ -91,7 +97,9 @@ GROUP BY
 > 
 
 ## <a name="dropping-temporary-tables"></a>Ideiglenes táblák eldobása
-Új munkamenet létrehozásakor nem létezhetnek ideiglenes táblák.  Ha azonban ugyanazt a tárolt eljárást hívja meg, amely ideiglenes, azonos `CREATE TABLE` nevű eljárást hoz létre, győződjön `DROP` meg arról, hogy a kimutatások sikeresek, egy egyszerű, a létezés előtti ellenőrzés használható a következő példában:
+Új munkamenet létrehozásakor nem létezhetnek ideiglenes táblák.  
+
+Ha ugyanazt a tárolt eljárást hívja meg, amely ideiglenes, azonos nevű `CREATE TABLE` eljárást hoz létre, hogy biztosítsa a `DROP` kimutatások sikeresek legyenek, egy egyszerű, a a-val való létezés előtti ellenőrzés használható a következő példában:
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
@@ -100,14 +108,18 @@ BEGIN
 END
 ```
 
-A konzisztencia kódolásához célszerű ezt a mintát használni mind a táblák, mind az ideiglenes táblák esetében.  Érdemes az ideiglenes táblák `DROP TABLE` eltávolításához is használni, ha végzett velük a kódban.  A tárolt eljárások fejlesztése során gyakori, hogy a lerakási parancsok at egy eljárás végén összecsomagolják, hogy biztosítsák ezek az objektumok tisztítását.
+A konzisztencia kódolásához célszerű ezt a mintát használni a táblák hoz és az ideiglenes táblákhoz.  Érdemes az ideiglenes táblák eltávolításához is használni, `DROP TABLE` ha végzett velük a kódban.  
+
+A tárolt eljárások fejlesztése, gyakori, hogy a csepp parancsok at kötegelt együtt az eljárás végén annak biztosítása érdekében, ezek az objektumok törlődnek.
 
 ```sql
 DROP TABLE #stats_ddl
 ```
 
 ## <a name="modularizing-code"></a>Modularizáló kód
-Mivel az ideiglenes táblák bárhol láthatók a felhasználói munkamenetben, ez felhasználható az alkalmazáskód modularizálásához.  A következő tárolt eljárás például ddl-t hoz létre az adatbázis összes statisztikájának statisztikai név szerint való frissítéséhez.
+Mivel az ideiglenes táblák bárhol láthatók a felhasználói munkamenetben, ez a képesség kihasználva segít az alkalmazáskód modularizálásában.  
+
+A következő tárolt eljárás például ddl-t hoz létre az adatbázis összes statisztikájának statisztikai név szerint való frissítéséhez:
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_update_stats]
@@ -181,7 +193,13 @@ FROM    t1
 GO
 ```
 
-Ebben a szakaszban az egyetlen végrehajtott művelet egy tárolt eljárás létrehozása, amely egy ddl-utasításokkal rendelkező ideiglenes táblát hoz létre, #stats_ddl.  Ez a tárolt eljárás #stats_ddl, ha már létezik annak biztosítására, hogy ne sikertelen, ha egy munkameneten belül egynél többször fut.  Mivel azonban a `DROP TABLE` tárolt eljárás végén nincs, amikor a tárolt eljárás befejeződik, elhagyja a létrehozott táblát, hogy a tárolt eljáráson kívül is olvasható legyen.  Az SQL Data Warehouse-ban más SQL Server-adatbázisoktól eltérően az ideiglenes tábla az azt létrehozó eljáráson kívül is használható.  Az SQL Data Warehouse ideiglenes táblái **a munkameneten** belül bárhol használhatók. Ez a következő példához képest modulárisabb és kezelhetőbb kódhoz vezethet:
+Ebben a szakaszban az egyetlen végrehajtott művelet egy tárolt eljárás létrehozása, amely egy ddl-utasításokkal rendelkező ideiglenes táblát hoz létre, #stats_ddl.  
+
+Ez a tárolt eljárás elejt egy meglévő #stats_ddl, hogy biztosan ne sikertelenül fusson, ha egy munkameneten belül többször fut.  
+
+Mivel azonban a `DROP TABLE` tárolt eljárás végén nincs, amikor a tárolt eljárás befejeződik, elhagyja a létrehozott táblát, hogy a tárolt eljáráson kívül is olvasható legyen.  
+
+Az SQL-készletben más SQL Server-adatbázisoktól eltérően az ideiglenes tábla is használható a létrehozott eljáráson kívül.  AZ SQL-készlet ideiglenes táblái **a munkameneten** belül bárhol használhatók. Ez a funkció a következő példához képest modulárisabb és kezelhetőbb kódhoz vezethet:
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;
@@ -203,7 +221,9 @@ DROP TABLE #stats_ddl;
 ```
 
 ## <a name="temporary-table-limitations"></a>Ideiglenes táblakorlátozások
-Az SQL Data Warehouse néhány korlátozást ír elő az ideiglenes táblák megvalósításakor.  Jelenleg csak a munkamenet hatókörrel tartozó ideiglenes táblák támogatottak.  A globális ideiglenes táblák nem támogatottak.  Ezenkívül ideiglenes táblákon nem hozhatók létre nézetek.  Ideiglenes táblák csak kivonatoló vagy ciklikus multiplexeléssel hozhatók létre.  A replikált ideiglenes táblaterjesztés nem támogatott. 
+Az SQL-készlet néhány korlátozást ír elő az ideiglenes táblák megvalósításakor.  Jelenleg csak a munkamenet hatókörrel tartozó ideiglenes táblák támogatottak.  A globális ideiglenes táblák nem támogatottak.  
+
+Emellett a nézetek nem hozhatók létre ideiglenes táblákon.  Ideiglenes táblák csak kivonatoló vagy ciklikus multiplexeléssel hozhatók létre.  A replikált ideiglenes táblaterjesztés nem támogatott. 
 
 ## <a name="next-steps"></a>További lépések
 A táblázatok fejlesztéséről a Táblázat áttekintése című témakörben olvashat [bővebben.](sql-data-warehouse-tables-overview.md)

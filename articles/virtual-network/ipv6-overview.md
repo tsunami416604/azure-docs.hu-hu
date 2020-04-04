@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 03b279ead6b1f5d26ae92b63a8780a61dfd711bb
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 887f9e100a60561271a4c15777e7131ea1f1f722
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80420575"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631437"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Mi az IPv6 az Azure virtuális hálózathoz?
 
@@ -57,7 +57,8 @@ Az IPv6 for Azure virtuális hálózat a következő képességeket tartalmazza:
     - Opcionális kimenő szabályok, amelyek teljes deklaratív vezérlést biztosítanak a kimenő kapcsolatok felett, hogy ezt a képességet az adott igényekhez méretezhetők és hangolják.
     - Opcionális több előtér-konfigurációk, amelyek lehetővé teszik, hogy egy terheléselosztó több Nyilvános IPv6 IP-cím használatát teszi lehetővé- ugyanaz az előtér-protokoll és port újra felhasználható az előtér-címek között.
     - A választható IPv6-portok a terheléselosztási szabályok *lebegő IP-szolgáltatásával* újra felhasználhatók háttérpéldányokon 
-- [Standard IPv6 belső terheléselosztó](ipv6-dual-stack-standard-internal-load-balancer-powershell.md) támogatás rugalmas többrétegű alkalmazások létrehozásához az Azure VNET-kben.  
+    - Megjegyzés: A terheléselosztás nem hajt végre protokollfordítást (nat64 nem). 
+- [Standard IPv6 belső terheléselosztó](ipv6-dual-stack-standard-internal-load-balancer-powershell.md) támogatás rugalmas többrétegű alkalmazások létrehozásához az Azure VNET-kben.   
 - Alapvető IPv6 nyilvános terheléselosztó támogatása az örökölt telepítésekkel való kompatibilitás érdekében
 - [A fenntartott IPv6 nyilvános IP-címek és címtartományok](ipv6-public-ip-address-prefix.md) stabil, kiszámítható IPv6-címeket biztosítanak, amelyek megkönnyítik az azure-ban tárolt alkalmazások engedélyezési listáját a vállalat és az ügyfelek számára.
 - A példányszintű nyilvános IP-cím közvetlenül biztosít IPv6-internetkapcsolatot az egyes virtuális gépekhez.
@@ -72,8 +73,9 @@ Az IPv6 for Azure VNET egy alapvető szolgáltatáskészlet, amely lehetővé te
 
 ## <a name="limitations"></a>Korlátozások
 Az Azure virtuális hálózati kiadásához való jelenlegi IPv6-kiadásra a következő korlátozások vonatkoznak:
-- Az IPv6 for Azure virtuális hálózat minden globális Azure-régióban elérhető, de csak a globális Azure-ban– még nem kormányzati felhőkben.
-- Az ExpressRoute- és VPN-átjárók nem használhatók olyan virtuális hálózatban, amelyben az IPv6 engedélyezve van, sem közvetlenül, sem a "UseRemoteGateway" partnerkapcsolattal. 
+- Az IPv6 for Azure virtuális hálózat az összes globális Azure Commercial régióban elérhető az összes telepítési módszer használatával.  Az Egyesült Államok kormányzati felhőjében történő üzembe helyezés ideiglenesen az ARM (JSON) sablonra, a parancssori felületre (CLI) és a Powershellre korlátozódik.  Az IPv6-támogatás az Egyesült Államok kormánya felhőportálján hamarosan elérhető lesz.  
+- Az ExpressRoute-átjárók csak IPv4-forgalomhoz használhatók olyan virtuális hálózatban, amelyen engedélyezve van az IPv6.  Az IPv6-forgalom támogatása szerepel az ütemtervben.   
+- A VPN-átjárók nem használhatók olyan virtuális hálózatban, amelyben az IPv6 engedélyezve van, közvetlenül vagy társviszonyban a "UseRemoteGateway" funkcióval.
 - Az Azure platform (AKS, stb. ) nem támogatja az IPv6-kommunikáció t.  
 
 ## <a name="pricing"></a>Díjszabás

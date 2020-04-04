@@ -4,19 +4,19 @@ description: Az önkiszolgáló jelszó-visszaállítás engedélyezése az elfe
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1f0e5242d87bc68efd92a52619e8d48cff9ac87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a8675756aeef1140dbebd94023d7f7fb4c7af99
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77370067"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652262"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Útmutató: Jelszó-visszaállítás engedélyezése a Windows bejelentkezési képernyőjéről
 
@@ -141,8 +141,8 @@ Ha további naplózásra van szükség, a számítógépen lévő beállításku
 
 `HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}`
 
-- A részletes naplózás engedélyezéséhez `REG_DWORD: “EnableLogging”`hozzon létre egy t, és állítsa 1-re.
-- A részletes naplózás letiltásához `REG_DWORD: “EnableLogging”` módosítsa a 0-t.
+- A részletes naplózás engedélyezéséhez `REG_DWORD: "EnableLogging"`hozzon létre egy t, és állítsa 1-re.
+- A részletes naplózás letiltásához `REG_DWORD: "EnableLogging"` módosítsa a 0-t.
 
 ## <a name="what-do-users-see"></a>Mit látnak a felhasználók?
 

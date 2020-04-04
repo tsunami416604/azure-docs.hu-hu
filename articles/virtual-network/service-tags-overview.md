@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 568fc880711d42941fd9aef2ea19b8ac3123793a
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 7da20a0bf87b33f05ea7f1d457157c5b7ee2ec7b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384245"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631517"
 ---
 # <a name="virtual-network-service-tags"></a>Virtuális hálózati szolgáltatás címkéi
 <a name="network-service-tags"></a>
@@ -79,7 +79,7 @@ Alapértelmezés szerint a szolgáltatáscímkék a teljes felhő tartományait 
 | **AzureSiteRecovery** | Azure site-helyreállítás.<br/><br/>*Megjegyzés:* Ez a címke az **AzureActiveDirectory**, **Az AzureKeyVault,** az **EventHub,** a**GuestAndHybridManagement** és a **Storage** címkéktől függ. | Kimenő | Nem | Nem |
 | **AzureTrafficManager** | Az Azure Traffic Manager mintavételének IP-címei.<br/><br/>A Traffic Manager mintavételi IP-címeiről az [Azure Traffic Manager gyakori kérdések című témakörben talál](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs)további információt. | Bejövő | Nem | Igen |  
 | **BatchNodeManagement** | Az Azure Batch-nek szánt központi telepítések felügyeleti forgalma. | Mindkettő | Nem | Igen |
-| **CognitiveServicesManagement szolgáltatás** | Az Azure Cognitive Services forgalmának címtartományai. | Kimenő | Nem | Nem |
+| **CognitiveServicesManagement szolgáltatás** | Az Azure Cognitive Services forgalmának címtartományai. | Mindkettő | Nem | Nem |
 | **DataFactory (DataFactory)**  | Azure Data Factory | Mindkettő | Nem | Nem |
 | **DataFactoryManagement** | Az Azure Data Factory felügyeleti forgalma. | Kimenő | Nem | Nem |
 | **Dynamics365ForMarketingE-mail** | A Dynamics 365 marketing e-mail szolgáltatásának címtartományai. | Kimenő | Igen | Nem |
@@ -124,7 +124,7 @@ Az aktuális szolgáltatáscímkét és a tartományadatokat beszerezheti, amely
 ### <a name="use-the-service-tag-discovery-api-public-preview"></a>A Szolgáltatáscímke felderítése API használata (nyilvános előzetes verzió)
 A szolgáltatáscímkék aktuális listáját programozott módon, az IP-címtartomány részleteivel együtt is lekérheti:
 
-- [Többi](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
+- [REST](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
 - [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag?view=azps-2.8.0&viewFallbackFrom=azps-2.3.2)
 - [Azure CLI](https://docs.microsoft.com/cli/azure/network?view=azure-cli-latest#az-network-list-service-tags)
 

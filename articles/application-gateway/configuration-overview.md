@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: absha
-ms.openlocfilehash: f08cfab8f8de9183e6bee241959f7feabc31c8e3
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 89d894a5125a16f95e6ef8a15c2503d48f3a8e55
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585911"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632177"
 ---
 # <a name="application-gateway-configuration-overview"></a>Alkalmazásátjáró konfigurációjának áttekintése
 
@@ -118,7 +118,7 @@ Ebben a forgatókönyvben az Alkalmazásátjáró alhálózatNS-akta. A követke
 
   **1. forgatókönyv:** UDR virtuális készülékekhez
 
-  Minden olyan forgatókönyv, ahol a 0.0.0.0/0-t át kell irányítani bármely virtuális berendezésen, egy hub/küllővirtuális hálózaton vagy a helyszíni (kényszerített bújtatás) keresztül, nem támogatott a v2 nyilvános előzetes verzióban. 
+  Minden olyan forgatókönyv, ahol a 0.0.0.0/0-t át kell irányítani bármely virtuális berendezésen, egy hub/küllővirtuális hálózaton vagy a helyszíni (kényszerített bújtatás) keresztül, nem támogatott a V2 esetében.
 
 ## <a name="front-end-ip"></a>Előtér-IP
 

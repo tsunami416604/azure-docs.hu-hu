@@ -6,13 +6,13 @@ tags: azure-service-management
 ms.topic: sample
 ms.date: 01/04/2019
 ms.author: tomfitz
-ms.custom: mvc
-ms.openlocfilehash: b1d5f20ccd2f2c637d7db668af10ef331947d018
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: mvc, fasttrack-edit
+ms.openlocfilehash: 2d77dcbd07a67e3ba50d70770515416b45fbc7a3
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74971196"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637911"
 ---
 # <a name="azure-resource-manager-templates-for-app-service"></a>Azure Resource Manager-sablonok az App Service szolgáltatáshoz
 
@@ -28,11 +28,12 @@ A JSON szintaxisáról és az App Services-erőforrások tulajdonságairól a [M
 | [GitHub-tárházhoz csatolt alkalmazás](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-github-deploy)| Telepítegy App Service-alkalmazást, amely lekéri a kódot a GitHubról. |
 | [Alkalmazás egyéni központi telepítési helyekkel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-custom-deployment-slots)| Telepíti az App Service-alkalmazást egyéni központi telepítési helyekkel/környezetekkel. |
 |**Alkalmazás konfigurálása**||
-| [Alkalmazástanúsítvány a Key Vaultból](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault)| Telepíti az App Service-alkalmazás tanúsítványát egy Azure Key Vault titkos kulcsból, és ssl-kötéshez használja. |
+| [Alkalmazástanúsítvány a Key Vaultból](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault)| Egy App Service-alkalmazás tanúsítványt telepít egy Azure Key Vault titkos, és használja a TLS/SSL kötés. |
 | [Alkalmazás egyéni tartománnyal](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain)| Telepíti az Egyéni állomásnévvel rendelkező App Service-alkalmazást. |
-| [Alkalmazás egyéni tartománnyal és SSL-lel](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain-and-ssl)| Telepíti az App Service-alkalmazást egyéni állomásnévvel, és lekéri az alkalmazástanúsítványt a Key Vault SSL-kötéshez. |
+| [Alkalmazás egyéni tartománnyal és SSL-lel](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain-and-ssl)| Telepíti az Egyéni állomásnévvel rendelkező App Service-alkalmazást, és lekér egy alkalmazástanúsítványt a Key Vault tls/Ssl-kötéshez. |
 | [GoLang-bővítményes alkalmazás](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-with-golang)| Telepítegy App Service-alkalmazást a Golang-webhelybővítménylel. Ezután futtathatja a Golangben fejlesztett webalkalmazásokat az Azure-ban. |
 | [Alkalmazás Java 8-as és Tomcat 8-as verzióval](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-java-tomcat)| Telepítegy App Service-alkalmazást, amelyen engedélyezve van a Java 8 és a Tomcat 8. Ezután Java-alkalmazásokat futtathat az Azure-ban. |
+| [Alkalmazás regionális virtuális hálózat-integrációval](https://github.com/Azure/azure-quickstart-templates/tree/master/101-app-service-regional-vnet-integration)| Telepíti az App Service-alkalmazást a regionális virtuális hálózat integrációja engedélyezve van. |
 |**Alkalmazás védelme**||
 | [Az Azure Application Gateway alkalmazásba integrált alkalmazás](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-with-app-gateway-v2)| Telepíti az App Service-alkalmazást és egy Application Gateway-t, és elkülöníti a forgalmat a szolgáltatás végpontés a hozzáférési korlátozások használatával. |
 |**Linux alkalmazás csatlakoztatott erőforrásokkal**||
@@ -47,5 +48,5 @@ A JSON szintaxisáról és az App Services-erőforrások tulajdonságairól a [M
 |**App Service-környezet**||
 | [App Service Environment v2-környezet létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-asev2-create) | Létrehoz egy App Service Environment v2-környezetet a virtuális hálózaton. |
 | [App Service Environment v2-környezet létrehozása ILB-címmel](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-asev2-ilb-create/) | Létrehoz egy App Service Environment v2-környezetet a virtuális hálózaton egy privát belső terheléselosztó címmel. |
-| [Az alapértelmezett SSL-tanúsítvány konfigurálása egy ILB App Service-környezethez vagy egy ILB App Service Environment v2-környezethez](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-ase-ilb-configure-default-ssl) | Egy ILB App Service-környezet vagy egy ILB App Service Environment v2-környezet használatához konfigurálja az alapértelmezett SSL-tanúsítványt. |
+| [Az alapértelmezett SSL-tanúsítvány konfigurálása egy ILB App Service-környezethez vagy egy ILB App Service Environment v2-környezethez](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-ase-ilb-configure-default-ssl) | Az ilb-alkalmazásszolgáltatás alapértelmezett környezetéhez vagy az ILB App Service 2-es környezetéhez az alapértelmezett TLS/SSL-tanúsítványkonfigurálja. |
 | | |

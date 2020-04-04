@@ -4,19 +4,19 @@ description: A RADIUS-hitelesítés és az Azure Multi-Factor Authentication-kis
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b38341613c98bf85df8cb47ccafc3df5709a1fd4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 552226c35d4d129f73b96b689871708950b7ffb1
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75425205"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652944"
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>RADIUS-hitelesítés integrálása az Azure Multi-Factor Authentication-kiszolgálóval
 
@@ -77,9 +77,9 @@ Sikeresen konfigurálta az Azure Multi-Factor Authentication-kiszolgálót. A ki
 
 A RADIUS-ügyfél konfigurálásához kövesse az alábbi útmutatást:
 
-* Konfigurálja a RADIUS-on keresztül hitelesítendő berendezést/kiszolgálót azon Azure Multi-Factor Authentication-kiszolgáló IP-címével, amely a RADIUS-kiszolgálóként fog működni.
+* Állítsa be a készüléket/kiszolgálót, hogy radius-on keresztül hitelesítse magát az Azure többtényezős hitelesítési kiszolgáló IP-címére, amely RADIUS-kiszolgálóként működik.
 * Használja a korábban konfigurált közös titkos kulcsot.
-* A RADIUS-időtúllépést állítsa 30–60 másodpercre, hogy elegendő idő álljon rendelkezésre a felhasználó hitelesítő adatainak ellenőrzésére, a kétlépéses hitelesítés végrehajtására, a válasz fogadására és a RADIUS hozzáférési kérés megválaszolására.
+* Állítsa be a RADIUS időtúllépését 30–60 másodpercre úgy, hogy legyen idő a felhasználó hitelesítő adatainak érvényesítésére, a kétlépéses ellenőrzés végrehajtására, a válaszfogadásra, majd a RADIUS-hozzáférési kérelem megválaszolására.
 
 ## <a name="next-steps"></a>További lépések
 

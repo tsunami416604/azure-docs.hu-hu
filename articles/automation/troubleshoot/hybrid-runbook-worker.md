@@ -1,6 +1,6 @@
 ---
 title: Hibaelhárítás – Azure Automation hibrid runbook-dolgozók
-description: Ez a cikk az Azure Automation hibrid runbook-feldolgozóival kapcsolatos hibaelhárítással kapcsolatos információkat tartalmazza
+description: Ez a cikk az Azure Automation hibrid runbook-feldolgozóinak hibaelhárításával kapcsolatos információkat tartalmaz.
 services: automation
 ms.service: automation
 ms.subservice: ''
@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 33e3e162892f1e2a148258273160ca26fa9c2efd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2587af0ada18b5c4271e7411783fe60211a3479
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153522"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637864"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Hibrid Runbook-dolgozók – problémamegoldás
 
@@ -131,7 +131,9 @@ A dolgozó kezdeti regisztrációs fázisa sikertelen, és a következő hibaüz
 #### <a name="cause"></a>Ok
 
 A következő lehetséges okok lehetnek:
+
 * Az ügynök beállításaiban van egy elgépelt munkaterület-azonosító vagy munkaterületkulcs (elsődleges). 
+
 * A hibrid Runbook-feldolgozó nem tudja letölteni a konfigurációt, ami fiókcsatolási hibát okoz. Ha az Azure engedélyezi a megoldásokat, csak bizonyos régiókat támogat a Log Analytics-munkaterület és az Automation-fiók összekapcsolásához. Az is lehetséges, hogy helytelen dátum és/vagy idő van beállítva a számítógépen. Ha az idő +/-15 percre van az aktuális időtől, a bevezetés sikertelen lesz.
 
 #### <a name="resolution"></a>Megoldás:
@@ -143,7 +145,7 @@ Annak ellenőrzéséhez, hogy az ügynök munkaterület-azonosítója vagy munka
 
 A Log Analytics-munkaterületi és Automation-fióknak egy összekapcsolt régióban kell lennie. A támogatott régiók listáját az [Azure Automation és a Log Analytics munkaterület-leképezései című témakörben található.](../how-to/region-mappings.md)
 
-Előfordulhat, hogy frissítenie kell a számítógép dátumát és vagy időzónáját is. Ha egyéni időtartományt választ, győződjön meg arról, hogy a tartomány UTC-ben van, ami eltérhet a helyi időzónától.
+Előfordulhat, hogy frissítenie kell a számítógép dátumát és/vagy időzónáját is. Ha egyéni időtartományt választ, győződjön meg arról, hogy a tartomány UTC-ben van, ami eltérhet a helyi időzónától.
 
 ## <a name="linux"></a>Linux
 
@@ -220,6 +222,35 @@ Ezt a problémát okozhatja a proxy vagy a hálózati tűzfal blokkolja a Micros
 A naplókat a **c:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes mappában**tárolja a rendszer. Ellenőrizheti, hogy vannak-e figyelmeztető vagy hibaesemények az **Alkalmazás- és szolgáltatásnaplókban\Microsoft-SMA\Operations** and **Application and Services Logs\Operations Manager** eseménynaplók. Ezek a naplók olyan kapcsolatot vagy más típusú problémát jeleznek, amely hatással van a szerepkör Azure Automation-be történő bevezetésre, vagy egy normál működés során észlelt problémát. A Log Analytics-ügynökkel kapcsolatos problémák elhárításához a [Log Analytics Windows-ügynökkel kapcsolatos problémák elhárítása című témakörben talál további](../../azure-monitor/platform/agent-windows-troubleshoot.md)segítséget.
 
 A hibrid dolgozók [runbook-kimenetet és üzeneteket](../automation-runbook-output-and-messages.md) küldenek az Azure Automationbe ugyanúgy, ahogy a felhőben futó runbook-feladatok kimenetet és üzeneteket küldenek. Engedélyezheti a részletes és a folyamatfolyamok, mint te a runbookok.
+
+### <a name="scenario-orchestratorsandboxexe-cant-connect-to-office-365-through-proxy"></a><a name="no-orchestrator-sandbox-connect-O365"></a>Eset: Az Orchestrator.Sandbox.exe nem tud proxyn keresztül csatlakozni az Office 365-höz
+
+#### <a name="issue"></a>Probléma
+
+A Windows hibrid runbook-feldolgozón futó parancsfájlok nem tudnak a várt módon csatlakozni az Office 365-höz egy Orchestrator sandboxon. A parancsfájl [connect-MsolService kapcsolatot](https://docs.microsoft.com/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) használ. 
+
+Ha az **Orchestrator.Sandbox.exe.config** fájl beállításával állítja be a proxyt és a megkerülő listát, a sandbox továbbra sem csatlakozik megfelelően. Úgy tűnik, hogy a **Powershell_ise.exe.config** fájl ugyanazzal a proxy- és megkerülési listabeállítással működik, mint ahogy azt elvárja. A Szolgáltatásfelügyeleti automatizálás (SMA) naplói és a PowerShell-naplók nem nyújtanak semmilyen információt a proxyval kapcsolatban.
+
+#### <a name="cause"></a>Ok
+
+A kiszolgálón lévő Active Directory összevonási szolgáltatásokkal (ADFS) létesítő kapcsolat nem tudja megkerülni a proxyt. Ne feledje, hogy a PowerShell-sandbox a bejelentkezett felhasználóként fut. Az Orchestrator sandbox a testre szabott, és figyelmen kívül hagyhatja az **Orchestrator.Sandbox.exe.config** fájl beállításait. Ez birtokol speciális kód részére kezelés gép vagy MMA helyettes elintézés, de nem részére kezelés más szokás helyettes elintézés. 
+
+#### <a name="resolution"></a>Megoldás:
+
+Az Orchestrator sandbox probléma megoldásához a parancsfájl áttelepítésével az Azure AD-modulok használata helyett az MSOnline modul PowerShell-parancsmagok. Lásd: [Áttelepítés az Orchestratorról az Azure Automationbe (Béta)](https://docs.microsoft.com/azure/automation/automation-orchestrator-migration).
+
+Ha továbbra is használni szeretné az MSOnline modul parancsmagjait, módosítsa a parancsfájlt [az Invoke-Command parancs használatára.](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7) Adja meg `ComputerName` a `Credential` és a paraméterek értékeit. 
+
+```powershell
+$Credential = Get-AutomationPSCredential -Name MyProxyAccessibleCredential
+Invoke-Command -ComputerName $env:COMPUTERNAME -Credential $Credential 
+{ Connect-MsolService … }
+```
+
+Ez a kódmódosítás egy teljesen új PowerShell-munkamenetet indít el a megadott hitelesítő adatok környezetében. Lehetővé kell tennie, hogy a forgalom az aktív felhasználót hitelesítő proxykiszolgálón keresztül folyjon.
+
+>[!NOTE]
+>Ez a megoldás szükségtelenné teszi a sandbox konfigurációs fájl ának manipulálását. Még akkor is, ha sikerül a konfigurációs fájl működését a parancsfájlt, a fájl törlődik minden alkalommal, amikor a hibrid Runbook worker ügynök frissül.
 
 ### <a name="scenario-hybrid-runbook-worker-not-reporting"></a><a name="corrupt-cache"></a>Eset: Hibrid Runbook Feldolgozó nem jelenti
 

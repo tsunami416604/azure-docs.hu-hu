@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/17/2020
+ms.date: 04/03/2020
 ms.author: nitinme
-ms.openlocfilehash: b95e16f2d8257bfffcaf2524fe7f8ce6be565689
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7b78bdb070cdf1364fe7fbdc75f175be7ce145ff
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80366592"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656450"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Áttelepítés a Bing beszédfelismerésről a beszédfelismerési szolgáltatásra
 
@@ -25,7 +25,7 @@ Ez a cikk ismerteti a Bing beszédfelismerési API-k és a beszédfelismerési s
 
 Egyetlen beszédszolgáltatási előfizetési kulcs hozzáférést biztosít a következő funkciókhoz. Mindegyik funkció forgalmi díját külön állapítjuk meg, így csak a használt funkciókért kell fizetnie.
 
-* [Beszédfelismerés](speech-to-text.md)
+* [Diktálás](speech-to-text.md)
 * [Egyéni beszédfelismerés](https://cris.ai)
 * [Szövegfelolvasás](text-to-speech.md)
 * [Egyéni szövegfelolvasási hangok](how-to-customize-voice-font.md)
@@ -93,4 +93,4 @@ A beszédfelismerési szolgáltatás, az SDK és az API támogatása a Beszédsz
 ## <a name="see-also"></a>Lásd még
 * [Beszédszolgáltatás kiadási jegyzetei](releasenotes.md)
 * [Mi a beszédszolgáltatás](overview.md)
-* [Beszédszolgáltatás és beszédsdka dokumentációja](speech-sdk.md#get-the-sdk)
+* [Beszédszolgáltatás és beszédsdka dokumentációja](speech-sdk.md#get-the-speech-sdk)

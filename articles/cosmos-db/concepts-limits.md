@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/27/2020
-ms.openlocfilehash: bd384f2b4dd879c30fafd2b765dd9ba0efb12447
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.date: 04/03/2020
+ms.openlocfilehash: 343e94fe681d398b695e0e24c22544bca470d75a
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348390"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652185"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Az Azure Cosmos DB szolgáltatáskvótái
 
@@ -152,6 +152,9 @@ A Cosmos DB támogatja az elemek [SQL](how-to-sql-query.md)használatával tört
 | Lekérdezésenkénti maximális join-ok| 5<sup>*</sup>|
 | Maximális UDF-ek lekérdezésenként| 10<sup>*</sup>|
 | Maximális pontszám sokszögenként| 4096 |
+| A belefoglalt útvonalak maximális része tárolónként| 500 |
+| Konténerenkénti maximális kizárt elérési utak| 500 |
+| Összetett index maximális tulajdonságai| 8 |
 
 <sup>*</sup>Ezeket az SQL-lekérdezési korlátokat az Azure-támogatással való kapcsolatfelvételsel növelheti.
 
@@ -163,7 +166,7 @@ Az alábbi táblázat a MongoDB szolgáltatástámogatására vonatkozó korlát
 
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
-| A MongoDB lekérdezési memória méretének maximális mérete | 40 MB |
+| Maximális MongoDB lekérdezési memória mérete (Ez a korlátozás csak a 3.2 szerver verzió) | 40 MB |
 | A MongoDB-műveletek maximális végrehajtási ideje| 30-as évek |
 | A kiszolgálóoldali kapcsolat lezárásának tétlen kapcsolati időtúlidőpontja* | 30 perc |
 

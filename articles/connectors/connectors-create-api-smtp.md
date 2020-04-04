@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
-ms.openlocfilehash: 60acd128495176cd0a90418c61edf53bdcd88e5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1cfc53dcd730262101c0e879e0419ba3f2db4d38
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77647579"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657006"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>E-mail küldése Az SMTP-fiókból az Azure Logic Apps segítségével
 
@@ -56,7 +56,7 @@ Az Azure Logic Apps és a Simple Mail Transfer Protocol (SMTP) összekötővel a
    | **Felhasználónév** | Igen | Az SMTP-fiók felhasználóneve | 
    | **Jelszó** | Igen | Az SMTP-fiók jelszava | 
    | **SMTP-kiszolgálóport** | Nem | A használni kívánt SMTP-kiszolgáló egy adott portja | 
-   | **Engedélyezi az SSL-t?** | Nem | Az SSL-titkosítás be- és kikapcsolása. | 
+   | **Engedélyezi az SSL-t?** | Nem | A TLS/SSL titkosítás be- és kikapcsolása. | 
    |||| 
 
 1. Adja meg a kiválasztott művelethez szükséges részleteket. 

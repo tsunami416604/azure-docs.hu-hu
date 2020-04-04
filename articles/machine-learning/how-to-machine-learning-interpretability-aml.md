@@ -8,35 +8,47 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
-ms.reviewer: trbye
-ms.date: 10/25/2019
-ms.openlocfilehash: a479982eeac325c9774e3858ec51643e8ba699c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: Luis.Quintanilla
+ms.date: 04/02/2020
+ms.openlocfilehash: 1ff42149ccb629a0a7094e6dfede422d4dd7f61f
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064036"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632030"
 ---
 # <a name="model-interpretability-for-local-and-remote-runs"></a>Modell értelmezhetősége helyi és távoli futtatásokhoz
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ebben a cikkben megtudhatja, hogy az Azure Machine Learning Python SDK értelmezhetőségi csomagját használja annak megértéséhez, hogy a modell miért készítette el az előrejelzéseket. Az alábbiak végrehajtásának módját ismerheti meg:
+Ebben az útmutatóútmutatóban megtanulhatja az Azure Machine Learning Python SDK értelmezhetőségi csomagjának használatát a következő feladatok végrehajtásához:
 
-* Értelmezze a helyileg és a távoli számítási erőforrásokon betanított gépi tanulási modelleket.
-* Helyi és globális magyarázatokat tárolaz Azure Run History webhelyen.
-* Az [Azure Machine Learning stúdióban](https://ml.azure.com)megtekintheti az értelmezhetőségi vizualizációkat.
-* Telepítsen egy pontozási magyarázó a modell.
 
-További információ: [Model interpretability in Azure Machine Learning.](how-to-machine-learning-interpretability.md)
+* Magyarázza el a teljes modell viselkedését vagy az egyéni előrejelzéseket a személyes számítógépen helyileg.
 
-## <a name="local-interpretability"></a>Helyi értelmezhetőség
+* Értelmezhetőségi technikák engedélyezése a mesterséges funkciókhoz.
 
-A következő példa bemutatja, hogyan használhatja az értelmezhetőségi csomagot helyileg az Azure-szolgáltatásokkal való kapcsolatfelvétel nélkül.
+* Magyarázza el a teljes modell és az azure-beli egyéni előrejelzések viselkedését.
 
-1. Szükség esetén `pip install azureml-interpret` használja az értelmezhetőségi csomag bekapását.
+ 
+* A modell magyarázataival vizualizációs irányítópulthasználatával kommunikálhat a modell magyarázataival.
 
-1. Mintamodell betanítása helyi Jupyter-jegyzetfüzetbe.
+* A pontozási magyarázó üzembe helyezése a modell mellett a magyarázatok megfigyeléséhez a következtetés során.
+
+
+
+A támogatott értelmezhetőségi technikákról és a gépi tanulási modellekről a [Modell értelmezhetőségét](how-to-machine-learning-interpretability.md) az Azure Machine Learningben és [a mintajegyzetfüzeteket](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)című témakörben talál.
+
+## <a name="generate-feature-importance-value-on-your-personal-machine"></a>Szolgáltatásfontossági érték létrehozása a személyes gépen 
+A következő példa bemutatja, hogyan használhatja az értelmezhetőségi csomagot a személyes gépen anélkül, hogy kapcsolatba lépne az Azure-szolgáltatásokkal.
+
+1. Telepítse `azureml-interpret` `azureml-interpret-contrib` és csomagolja.
+    ```bash
+    pip install azureml-interpret
+    pip install azureml-interpret-contrib
+    ```
+
+2. Mintamodell betanítása helyi Jupyter-jegyzetfüzetbe.
 
     ```python
     # load breast cancer dataset, a well-known small dataset that comes with scikit-learn
@@ -56,7 +68,7 @@ A következő példa bemutatja, hogyan használhatja az értelmezhetőségi csom
     model = clf.fit(x_train, y_train)
     ```
 
-1. Hívd a magyarázót helyben.
+3. Hívd a magyarázót helyben.
    * A magyarázó objektum inicializálásához adja át a modellt és néhány betanítási adatot a magyarázó konstruktorának.
    * Annak érdekében, hogy a magyarázatok és a vizualizációk informatívabbak legyenek, a besorolás során megadhatja a jellemzőneveket és a kimeneti osztályneveket.
 
@@ -111,9 +123,9 @@ A következő példa bemutatja, hogyan használhatja az értelmezhetőségi csom
                              classes=classes)
     ```
 
-### <a name="overall-global-feature-importance-values"></a>Összességében a globális jellemzőfontossági értékek
+### <a name="explain-the-entire-model-behavior-global-explanation"></a>A modell teljes viselkedésének magyarázata (globális magyarázat) 
 
-A következő példában segíthet a globális jellemzőfontossági értékek lefelvételéhez.
+Az alábbi példában az összesített (globális) jellemzőfontossági értékek lehívása segíthet.
 
 ```python
 
@@ -132,9 +144,8 @@ dict(zip(sorted_global_importance_names, sorted_global_importance_values))
 global_explanation.get_feature_importance_dict()
 ```
 
-### <a name="instance-level-local-feature-importance-values"></a>Példányszintű, helyi jellemzőfontossági értékek
-
-A helyi szolgáltatás fontossági értékeit egy adott példány vagy példánycsoport magyarázatainak hívásával szerezheti be.
+### <a name="explain-an-individual-prediction-local-explanation"></a>Magyarázza el az egyéni előrejelzést (helyi magyarázat)
+A különböző adatpontok egyes jellemzőfontossági értékeit egy adott példány vagy példánycsoport magyarázatainak hívásával szerezheti be.
 > [!NOTE]
 > `PFIExplainer`nem támogatja a helyi magyarázatokat.
 
@@ -147,67 +158,7 @@ sorted_local_importance_names = local_explanation.get_ranked_local_names()
 sorted_local_importance_values = local_explanation.get_ranked_local_values()
 ```
 
-## <a name="interpretability-for-remote-runs"></a>A távoli futtatások értelmezhetősége
-
-A következő példa bemutatja, `ExplanationClient` hogyan használhatja az osztályt a modell értelmezhetőségének engedélyezésére a távoli futtatásokhoz. Fogalmilag hasonló a helyi folyamathoz, kivéve:
-
-* Használja `ExplanationClient` a távoli futtatásban az értelmezhetőségi környezet feltöltéséhez.
-* Töltse le a környezetet később egy helyi környezetben.
-
-1. Ha szükséges, `pip install azureml-contrib-interpret` használja, hogy a szükséges csomagot.
-
-1. Hozzon létre egy betanítási parancsfájlt egy helyi Jupyter-jegyzetfüzetben. Például: `train_explain.py`.
-
-    ```python
-    from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
-    from azureml.core.run import Run
-    from interpret.ext.blackbox import TabularExplainer
-
-    run = Run.get_context()
-    client = ExplanationClient.from_run(run)
-
-    # write code to get and split your data into train and test sets here
-    # write code to train your model here 
-
-    # explain predictions on your local machine
-    # "features" and "classes" fields are optional
-    explainer = TabularExplainer(model, 
-                                 x_train, 
-                                 features=feature_names, 
-                                 classes=classes)
-
-    # explain overall model predictions (global explanation)
-    global_explanation = explainer.explain_global(x_test)
-    
-    # uploading global model explanation data for storage or visualization in webUX
-    # the explanation can then be downloaded on any compute
-    # multiple explanations can be uploaded
-    client.upload_model_explanation(global_explanation, comment='global explanation: all features')
-    # or you can only upload the explanation object with the top k feature info
-    #client.upload_model_explanation(global_explanation, top_k=2, comment='global explanation: Only top 2 features')
-    ```
-
-1. Állítson be egy Azure Machine Learning-számítást számítási célként, és küldje el a betanítási futtatást. Az utasításokért tekintse meg [a számítási célok beállítása a modellbetanításhoz.](how-to-set-up-training-targets.md#amlcompute) Előfordulhat, hogy a [példajegyzetfüzetek is hasznosnak találhatják.](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation)
-
-1. Töltse le a magyarázatot a helyi Jupyter notebook.
-
-    ```python
-    from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
-    
-    client = ExplanationClient.from_run(run)
-    
-    # get model explanation data
-    explanation = client.download_model_explanation()
-    # or only get the top k (e.g., 4) most important features with their importance values
-    explanation = client.download_model_explanation(top_k=4)
-    
-    global_importance_values = explanation.get_ranked_global_values()
-    global_importance_names = explanation.get_ranked_global_names()
-    print('global importance values: {}'.format(global_importance_values))
-    print('global importance names: {}'.format(global_importance_names))
-    ```
-
-## <a name="raw-feature-transformations"></a>Nyers funkciók átalakítása
+### <a name="raw-feature-transformations"></a>Nyers funkciók átalakítása
 
 Választhat, hogy a nyers, átnemformított funkciók, nem pedig a mesterséges funkciók tekintetében kapjon magyarázatot. Ehhez a beállításhoz adja át a szolgáltatásátalakítási `train_explain.py`folyamatát a magyarázónak a alkalmazásban. Ellenkező esetben a magyarázó magyarázatot ad a mesterséges funkciók tekintetében.
 
@@ -281,31 +232,96 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
                                      transformations=transformations)
 ```
 
+## <a name="generate-feature-importance-values-via-remote-runs"></a>Szolgáltatásfontossági értékek létrehozása távoli futtatásokon keresztül
+
+A következő példa bemutatja, `ExplanationClient` hogyan használhatja az osztályt a modell értelmezhetőségének engedélyezésére a távoli futtatásokhoz. Fogalmilag hasonló a helyi folyamathoz, kivéve:
+
+* Használja `ExplanationClient` a távoli futtatásban az értelmezhetőségi környezet feltöltéséhez.
+* Töltse le a környezetet később egy helyi környezetben.
+
+1. Telepítse `azureml-interpret` `azureml-interpret-contrib` és csomagolja.
+    ```bash
+    pip install azureml-interpret
+    pip install azureml-interpret-contrib
+    ```
+1. Hozzon létre egy betanítási parancsfájlt egy helyi Jupyter-jegyzetfüzetben. Például: `train_explain.py`.
+
+    ```python
+    from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
+    from azureml.core.run import Run
+    from interpret.ext.blackbox import TabularExplainer
+
+    run = Run.get_context()
+    client = ExplanationClient.from_run(run)
+
+    # write code to get and split your data into train and test sets here
+    # write code to train your model here 
+
+    # explain predictions on your local machine
+    # "features" and "classes" fields are optional
+    explainer = TabularExplainer(model, 
+                                 x_train, 
+                                 features=feature_names, 
+                                 classes=classes)
+
+    # explain overall model predictions (global explanation)
+    global_explanation = explainer.explain_global(x_test)
+    
+    # uploading global model explanation data for storage or visualization in webUX
+    # the explanation can then be downloaded on any compute
+    # multiple explanations can be uploaded
+    client.upload_model_explanation(global_explanation, comment='global explanation: all features')
+    # or you can only upload the explanation object with the top k feature info
+    #client.upload_model_explanation(global_explanation, top_k=2, comment='global explanation: Only top 2 features')
+    ```
+
+1. Állítson be egy Azure Machine Learning-számítást számítási célként, és küldje el a betanítási futtatást. Az utasításokért tekintse meg [a számítási célok beállítása a modellbetanításhoz.](how-to-set-up-training-targets.md#amlcompute) Előfordulhat, hogy a [példajegyzetfüzetek is hasznosnak találhatják.](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation)
+
+1. Töltse le a magyarázatot a helyi Jupyter notebook.
+
+    ```python
+    from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
+    
+    client = ExplanationClient.from_run(run)
+    
+    # get model explanation data
+    explanation = client.download_model_explanation()
+    # or only get the top k (e.g., 4) most important features with their importance values
+    explanation = client.download_model_explanation(top_k=4)
+    
+    global_importance_values = explanation.get_ranked_global_values()
+    global_importance_names = explanation.get_ranked_global_names()
+    print('global importance values: {}'.format(global_importance_values))
+    print('global importance names: {}'.format(global_importance_names))
+    ```
+
+
 ## <a name="visualizations"></a>Vizualizációk
 
 Miután letöltötte a magyarázatokat a helyi Jupyter-jegyzetfüzetben, a vizualizációs irányítópult segítségével megértheti és értelmezheti a modellt.
 
-### <a name="global-visualizations"></a>Globális vizualizációk
+### <a name="understand-entire-model-behavior-global-explanation"></a>A modell teljes viselkedésének ismertetése (globális magyarázat) 
 
-A következő telkek a betanított modell globális nézetét, valamint az előrejelzéseket és magyarázatokat biztosítják.
+A következő telkek átfogó képet nyújtanak a betanított modellről az előrejelzésekkel és magyarázatokkal együtt.
 
 |Telek|Leírás|
 |----|-----------|
 |Adatok feltárása| Az adatkészlet áttekintését jeleníti meg az előrejelzési értékekkel együtt.|
-|Globális fontosság|A legjobb K (konfigurálható K) fontos funkciók megjelenítése világszerte. Segít megérteni az alapul szolgáló modell globális viselkedését.|
+|Globális fontosság|Az aggregátumok az egyes adatpontok fontossági értékeit mutatják a modell teljes top K (konfigurálható K) fontos funkcióinak megjelenítéséhez. Segít megérteni az alapul szolgáló modell általános viselkedését.|
 |Magyarázat feltárása|Bemutatja, hogy egy funkció hogyan befolyásolja a modell előrejelzési értékeinek vagy az előrejelzési értékek valószínűségét. A funkcióinterakció hatását mutatja.|
-|Összefoglaló fontosság|Helyi, jellemzőfontossági értékeket használ az összes adatpontban az egyes funkciók előrejelzési értékre gyakorolt hatásának megjelenítéséhez.|
+|Összefoglaló fontosság|Az összes adatpont egyedi jellemzőfontossági értékeit használja az egyes funkciók előrejelzési értékre gyakorolt hatásának megjelenítéséhez. Ezzel a diagrammal azt vizsgálja meg, hogy a jellemzőértékek milyen irányban befolyásolják az előrejelzési értékeket.
+|
 
 [![Visualization Dashboard globális](./media/how-to-machine-learning-interpretability-aml/global-charts.png)](./media/how-to-machine-learning-interpretability-aml/global-charts.png#lightbox)
 
-### <a name="local-visualizations"></a>Helyi vizualizációk
+### <a name="understand-individual-predictions-local-explanation"></a>Az egyéni előrejelzések ismertetése (helyi magyarázat) 
 
-A helyi, jellemzőfontossági rajzot bármely adatponthoz betöltheti, ha kiválasztja a nyomtatás egyes adatpontját.
+Az egyes jellemzőfontossági rajzot bármely adatponthoz betöltheti, ha a teljes mintaterület bármelyikében rákattint az egyes adatpontok bármelyikére.
 
 |Telek|Leírás|
 |----|-----------|
-|Helyi fontosság|A legjobb K (konfigurálható K) fontos funkciók at jeleníti meg világszerte. Segít szemléltetni az alapul szolgáló modell helyi viselkedését egy adott adatponton.|
-|Perturbation feltárása|Lehetővé teszi a kijelölt adatpont értékeinek szolgáltatását, és megfigyelheti az előrejelzési érték ebből eredő módosításait.|
+|Helyi fontosság|A felső K (konfigurálható K) fontos funkciókat jeleníti meg az egyéni előrejelzéshez. Segít szemléltetni az alapul szolgáló modell helyi viselkedését egy adott adatponton.|
+|Perturbation Exploration (mi lenne, ha elemzés)|Lehetővé teszi a kijelölt adatpont értékeinek szolgáltatását, és megfigyelheti az előrejelzési érték ebből eredő módosításait.|
 |Egyéni feltételes elvárás (ICE)| Lehetővé teszi, hogy a jellemzőérték a minimális értékről a maximális értékre változik. Segít szemléltetni, hogyan változik az adatpont előrejelzése egy szolgáltatás változásakor.|
 
 [![Vizualizációs irányítópult helyi szolgáltatásának fontossága](./media/how-to-machine-learning-interpretability-aml/local-charts.png)](./media/how-to-machine-learning-interpretability-aml/local-charts.png#lightbox)
@@ -343,14 +359,9 @@ ExplanationDashboard(global_explanation, model, x_test)
 
 ### <a name="visualization-in-azure-machine-learning-studio"></a>Képi megjelenítés az Azure Machine Learning stúdióban
 
-Ha elvégzi a [távoli értelmezhetőségi](#interpretability-for-remote-runs) lépéseket, megtekintheti a vizualizációs irányítópultot az [Azure Machine Learning stúdióban.](https://ml.azure.com) Ez az irányítópult a vizualizációs irányítópult fent ismertetett egyszerűbb változata. Ez egyetlen támogat kettő tabulátor:
+Ha elvégzi a [távoli értelmezési](how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs) lépéseket (a generált magyarázat feltöltése az Azure Machine Learning Run History szolgáltatásba), megtekintheti a vizualizációs irányítópultot az [Azure Machine Learning stúdióban.](https://ml.azure.com) Ez az irányítópult a vizualizációs irányítópult fent ismertetett egyszerűbb változata (a magyarázat feltárása és az ICE-telkek le vannak tiltva, mivel nincs olyan aktív számítás a stúdióban, amely valós idejű számításokat képes végrehajtani).
 
-|Telek|Leírás|
-|----|-----------|
-|Globális fontosság|A legjobb K (konfigurálható K) fontos funkciók megjelenítése világszerte. Segít megérteni az alapul szolgáló modell globális viselkedését.|
-|Összefoglaló fontosság|Helyi, jellemzőfontossági értékeket használ az összes adatpontban az egyes funkciók előrejelzési értékre gyakorolt hatásának megjelenítéséhez.|
-
-Ha globális és helyi magyarázatok is rendelkezésre állnak, az adatok mindkét lapot feltöltik. Ha csak egy globális magyarázat érhető el, az Összefoglaló fontosság lap le van tiltva.
+Ha az adatkészlet, a globális és a helyi magyarázatok rendelkezésre állnak, az adatok feltöltik az összes lapot (kivéve a Perturbation Exploration és az ICE). Ha csak egy globális magyarázat érhető el, az Összefoglaló fontosság lap és az összes helyi magyarázat lap le van tiltva.
 
 Az alábbi elérési utak egyikének követésével érheti el a vizualizációs irányítópultot az Azure Machine Learning stúdióban:
 
@@ -367,7 +378,7 @@ Az alábbi elérési utak egyikének követésével érheti el a vizualizációs
 
 ## <a name="interpretability-at-inference-time"></a>Értelmezhetőség a következtetési időpontban
 
-A magyarázó üzembe helyezhető az eredeti modellel együtt, és a következtetési időpontban használhatja a helyi magyarázat-információk megadásához. Kínálunk könnyebb súlyú pontozási magyarázók, hogy javítsa értelmezhetőségi teljesítmény következtetés idáig időben. A könnyebb súlyú pontozási magyarázó üzembe helyezésének folyamata hasonló a modell üzembe helyezéséhez, és a következő lépéseket tartalmazza:
+A magyarázó az eredeti modellel együtt üzembe helyezhető, és következtetési időben használhatja az egyes jellemzőfontossági értékek (helyi magyarázat) megadásához az új új adatponthoz. Kínálunk könnyebb súlyú pontozási magyarázók, hogy javítsa értelmezhetőségi teljesítmény következtetés idáig időben. A könnyebb súlyú pontozási magyarázó üzembe helyezésének folyamata hasonló a modell üzembe helyezéséhez, és a következő lépéseket tartalmazza:
 
 1. Magyarázatobjektum létrehozása. Használhatja például `TabularExplainer`a következőket:
 
@@ -385,7 +396,7 @@ A magyarázó üzembe helyezhető az eredeti modellel együtt, és a következte
 1. Hozzon létre egy pontozási magyarázó a magyarázat objektumot.
 
    ```python
-   from azureml.contrib.interpret.scoring.scoring_explainer import KernelScoringExplainer, save
+   from azureml.interpret.scoring.scoring_explainer import KernelScoringExplainer, save
 
    # create a lightweight explainer at scoring time
    scoring_explainer = KernelScoringExplainer(explainer)
@@ -411,7 +422,7 @@ A magyarázó üzembe helyezhető az eredeti modellel együtt, és a következte
 1. Opcionális lépésként lekérheti a pontozási magyarázó a felhőből, és tesztelje a magyarázatokat.
 
    ```python
-   from azureml.contrib.interpret.scoring.scoring_explainer import load
+   from azureml.interpret.scoring.scoring_explainer import load
 
    # retrieve the scoring explainer model from cloud"
    scoring_explainer_model = Model(ws, 'my_scoring_explainer')
@@ -559,3 +570,6 @@ A magyarázó üzembe helyezhető az eredeti modellel együtt, és a következte
 ## <a name="next-steps"></a>További lépések
 
 [További információ a modell értelmezhetőségéről](how-to-machine-learning-interpretability.md)
+
+[Tekintse meg az Azure Machine Learning értelmezhetőségét mintajegyzetfüzetekkel](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)
+

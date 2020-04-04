@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 3/11/2020
-ms.openlocfilehash: 00b9da150569db2972289468b1405e5087ee3321
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 4/3/2020
+ms.openlocfilehash: 07f29a01ae0128ba0a35504dea54ba1ae2dde944
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80549160"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657066"
 ---
 # <a name="azure-sql-database-serverless"></a>Az Azure SQL Database kiszolgáló nélküli
 
@@ -151,13 +151,13 @@ A kiszolgáló nélküli adatbázis automatikus folytatásának és automatikus 
 
 ### <a name="customer-managed-transparent-data-encryption-byok"></a>Ügyfél által kezelt transzparens adattitkosítás (BYOK)
 
-Ha [az ügyfél által felügyelt transzparens adattitkosítás](transparent-data-encryption-byok-azure-sql.md) (BYOK) használatával, és a kiszolgáló nélküli adatbázis automatikusan szünetel a kulcs törlésekor vagy visszavonásokor, akkor az adatbázis automatikusan szüneteltetve marad.  Ebben az esetben az adatbázis következő folytatása után az adatbázis körülbelül 10 percen belül elérhetetlenné válik.  Amint az adatbázis elérhetetlenné válik, a helyreállítási folyamat ugyanaz, mint a kiépített számítási adatbázisok.  Ha a kiszolgáló nélküli adatbázis online állapotban van a kulcs törlése vagy visszavonása esetén, akkor az adatbázis is elérhetetlenné válik körülbelül 10 perc vagy annál kevesebb után, ugyanúgy, mint a kiépített számítási adatbázisok.
+Ha [az ügyfél által felügyelt transzparens adattitkosítás](transparent-data-encryption-byok-azure-sql.md) (BYOK) használatával, és a kiszolgáló nélküli adatbázis automatikusan szünetel a kulcs törlésekor vagy visszavonásokor, akkor az adatbázis automatikusan szüneteltetve marad.  Ebben az esetben az adatbázis következő folytatása után az adatbázis körülbelül 10 percen belül elérhetetlenné válik.  Amint az adatbázis elérhetetlenné válik, a helyreállítási folyamat ugyanaz, mint a kiépített számítási adatbázisok.  Ha a kiszolgáló nélküli adatbázis online állapotban van a kulcs törlése vagy visszavonása esetén, akkor az adatbázis is elérhetetlenné válik körülbelül 10 percen belül ugyanúgy, mint a kiépített számítási adatbázisok.
 
 ## <a name="onboarding-into-serverless-compute-tier"></a>Bevezetés kiszolgáló nélküli számítási rétegbe
 
 Új adatbázis létrehozása vagy egy meglévő adatbázis áthelyezése egy kiszolgáló nélküli számítási rétegbe ugyanazt a mintát követi, mint egy új adatbázis létrehozása a kiépített számítási rétegben, és a következő két lépést foglalja magában.
 
-1. Adja meg a szolgáltatáscél nevét. A szolgáltatási cél előírja a szolgáltatási szint, a hardver generálása és a maximális virtuális magok. Az alábbi táblázat a szolgáltatáscél-beállításokat mutatja be:
+1. Adja meg a szolgáltatási célt. A szolgáltatási cél előírja a szolgáltatási szint, a hardver generálása és a maximális virtuális magok. Az alábbi táblázat a szolgáltatáscél-beállításokat mutatja be:
 
    |Szolgáltatási cél neve|Szolgáltatásszint|Hardver generálása|Maximális virtuális magok|
    |---|---|---|---|
@@ -176,12 +176,12 @@ Ha [az ügyfél által felügyelt transzparens adattitkosítás](transparent-dat
    |Paraméter|Értékválasztási lehetőségek|Alapértelmezett érték|
    |---|---|---|---|
    |Min virtuális magok|A beállított virtuális magok maximális értékétől függ - lásd [az erőforráskorlátokat.](sql-database-vcore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5)|0,5 virtuális magok|
-   |Automatikus szünetelés késleltetése|Minimum: 60 perc (1 óra)<br>Maximum: 10080 perc (7 nap)<br>Lépések: 60 perc<br>Automatikus szünet letiltása: -1|60 perc|
+   |Automatikus szünetelés késleltetése|Minimum: 60 perc (1 óra)<br>Maximum: 10080 perc (7 nap)<br>Lépések: 10 perc<br>Automatikus szünet letiltása: -1|60 perc|
 
 
 ### <a name="create-new-database-in-serverless-compute-tier"></a>Új adatbázis létrehozása kiszolgáló nélküli számítási rétegben 
 
-A következő példák egy új adatbázist hoznak létre a kiszolgáló nélküli számítási rétegben. A példák kifejezetten meghatározzák a min virtuális magokat, a maximális virtuális magokat és az automatikus szüneteléskésleltetést.
+A következő példák egy új adatbázist hoznak létre a kiszolgáló nélküli számítási rétegben.
 
 #### <a name="use-azure-portal"></a>Az Azure Portal használata
 
@@ -205,7 +205,7 @@ az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
 
 #### <a name="use-transact-sql-t-sql"></a>Transact-SQL (T-SQL) használata
 
-A következő példa új adatbázist hoz létre a kiszolgáló nélküli számítási rétegben.
+A T-SQL használataesetén a rendszer a min vcore-ok alapértelmezett értékeit alkalmazza, és az automatikus szünetelés késleltetést alkalmazza.
 
 ```sql
 CREATE DATABASE testdb
@@ -216,7 +216,7 @@ További információt az ADATBÁZIS LÉTREHOZÁSA című [témakörben](/sql/t-
 
 ### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>Adatbázis áthelyezése a kiépített számítási rétegből kiszolgáló nélküli számítási szintre
 
-A következő példák áthelyezik az adatbázist a kiépített számítási rétegből a kiszolgáló nélküli számítási szintre. A példák kifejezetten meghatározzák a min virtuális magokat, a maximális virtuális magokat és az automatikus szüneteléskésleltetést.
+A következő példák áthelyezik az adatbázist a kiépített számítási rétegből a kiszolgáló nélküli számítási szintre.
 
 #### <a name="use-powershell"></a>A PowerShell használata
 
@@ -237,7 +237,7 @@ az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
 
 #### <a name="use-transact-sql-t-sql"></a>Transact-SQL (T-SQL) használata
 
-A következő példa áthelyezi az adatbázist a kiépített számítási rétegből a kiszolgáló nélküli számítási szintre.
+A T-SQL használataesetén a rendszer a min vcore-ok alapértelmezett értékeit alkalmazza, és az automatikus szünetelés késleltetést alkalmazza.
 
 ```sql
 ALTER DATABASE testdb 

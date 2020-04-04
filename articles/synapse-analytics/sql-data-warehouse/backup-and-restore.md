@@ -11,12 +11,12 @@ ms.date: 03/04/2020
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: ae53380572e753a8bcfa20fcd165fa015766263e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 1d82c7c22bb5aeb2740884b0d7ede4a4d8f07f86
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349270"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631217"
 ---
 # <a name="backup-and-restore-in-azure-synapse-sql-pool"></a>Biztonsági mentés és visszaállítás az Azure Synapse SQL-készletében
 
@@ -26,7 +26,7 @@ Ismerje meg, hogyan használhatja a biztonsági mentést és visszaállítást a
 
 Az *adattárház pillanatképe* létrehoz egy visszaállítási pontot, amelyet az adattárház egy korábbi állapotba való másolásához használhat.  Mivel az SQL-készlet egy elosztott rendszer, az adattárház pillanatképe számos, az Azure storage-ban található fájlból áll. A pillanatképek növekményes változásokat rögzítnek az adatraktárban tárolt adatokból.
 
-Az *adattárház-visszaállítás* egy új adattárház, amely egy meglévő vagy törölt adattárház visszaállítási pontjáról jön létre. Az adattárház visszaállítása minden üzletmenet-folytonossági és vész-helyreállítási stratégia alapvető része, mivel véletlen sérülés vagy törlés után újra létrehozza az adatokat. Az adattárház hatékony mechanizmus az adattárház másolásának létrehozásához tesztelési vagy fejlesztési célokra.  Az SQL-készlet visszaállítási díjai az adatbázis méretétől és a forrás- és céladattár-tárház helyétől függően változhatnak. 
+Az *adattárház-visszaállítás* egy új adattárház, amely egy meglévő vagy törölt adattárház visszaállítási pontjáról jön létre. Az adattárház visszaállítása minden üzletmenet-folytonossági és vész-helyreállítási stratégia alapvető része, mivel véletlen sérülés vagy törlés után újra létrehozza az adatokat. Az adattárház hatékony mechanizmus az adattárház másolásának létrehozásához tesztelési vagy fejlesztési célokra.  Az SQL-készlet visszaállítási díjai az adatbázis méretétől és a forrás- és céladattár-tárház helyétől függően változhatnak.
 
 ## <a name="automatic-restore-points"></a>Automatikus visszaállítási pontok
 
@@ -45,7 +45,7 @@ order by run_id desc
 
 ## <a name="user-defined-restore-points"></a>Felhasználó által definiált visszaállítási pontok
 
-Ez a funkció lehetővé teszi, hogy manuálisan indítsa el a pillanatképeket az adattárház visszaállítási pontjainak nagy módosítások előtti és utáni létrehozásához. Ez a funkció biztosítja, hogy a visszaállítási pontok logikailag konzisztensek legyenek, ami további adatvédelmet biztosít a munkaterhelés megszakítása vagy a felhasználói hibák esetén a gyors helyreállítási idő érdekében. A felhasználó által definiált visszaállítási pontok hét napig érhetők el, és automatikusan törlődnek az Ön nevében. A felhasználó által definiált visszaállítási pontok megőrzési időszaka nem módosítható. **42 felhasználó által definiált visszaállítási pont** garantált bármely időpontban, ezért [törölni](https://go.microsoft.com/fwlink/?linkid=875299) kell őket, mielőtt létrehozna egy másik visszaállítási pontot. Pillanatképek et indíthat el a felhasználó által definiált visszaállítási pontok létrehozásához a [PowerShellen](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaserestorepoint#examples) vagy az Azure Portalon keresztül.
+Ez a funkció lehetővé teszi, hogy manuálisan indítsa el a pillanatképeket az adattárház visszaállítási pontjainak nagy módosítások előtti és utáni létrehozásához. Ez a funkció biztosítja, hogy a visszaállítási pontok logikailag konzisztensek legyenek, ami további adatvédelmet biztosít a munkaterhelés megszakítása vagy a felhasználói hibák esetén a gyors helyreállítási idő érdekében. A felhasználó által definiált visszaállítási pontok hét napig érhetők el, és automatikusan törlődnek az Ön nevében. A felhasználó által definiált visszaállítási pontok megőrzési időszaka nem módosítható. **42 felhasználó által definiált visszaállítási pont** garantált bármely időpontban, ezért [törölni](https://go.microsoft.com/fwlink/?linkid=875299) kell őket, mielőtt létrehozna egy másik visszaállítási pontot. Pillanatképek et indíthat el a felhasználó által definiált visszaállítási pontok létrehozásához a [PowerShellen](/powershell/module/az.sql/new-azsqldatabaserestorepoint?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsont#examples) vagy az Azure Portalon keresztül.
 
 > [!NOTE]
 > Ha 7 napnál hosszabb visszaállítási pontra van szüksége, kérjük, szavazzon erre a képességre [itt](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/35114410-user-defined-retention-periods-for-restore-points). Létrehozhat egy felhasználó által definiált visszaállítási pontot is, és visszaállíthatja az újonnan létrehozott visszaállítási pontot egy új adattárházba. Miután visszaállította, az SQL-készlet online állapotban van, és határozatlan időre szüneteltetheti azt a számítási költségek megtakarítása érdekében. A szüneteltetett adatbázis tárolási díjakat számít fel az Azure Premium Storage díja mellett. Ha a visszaállított adattárház aktív másolatára van szüksége, folytathatja, amely csak néhány percet vesz igénybe.
@@ -69,14 +69,14 @@ Sql-készlet eldobásakor létrejön egy végső pillanatkép, amely hét napig 
 
 ## <a name="geo-backups-and-disaster-recovery"></a>Geo-biztonsági mentések és vészhelyreállítás
 
-A rendszer naponta egyszer létrehoz egy geobiztonsági mentést egy [párosított adatközpontba.](../../best-practices-availability-paired-regions.md) A geo-visszaállításra vonatkozó RPO 24 óra. A geobiztonsági mentés bármely más régióban, ahol az SQL-készlet támogatott, visszaállíthatja a geobiztonsági mentést. A geo-backup biztosítja az adattárház visszaállítását abban az esetben, ha nem tudja elérni az elsődleges régió visszaállítási pontjait.
+A rendszer naponta egyszer létrehoz egy geobiztonsági mentést egy [párosított adatközpontba.](../../best-practices-availability-paired-regions.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) A geo-visszaállításra vonatkozó RPO 24 óra. A geobiztonsági mentés bármely más régióban, ahol az SQL-készlet támogatott, visszaállíthatja a geobiztonsági mentést. A geo-backup biztosítja az adattárház visszaállítását abban az esetben, ha nem tudja elérni az elsődleges régió visszaállítási pontjait.
 
 > [!NOTE]
 > Ha rövidebb RPO-ra van szüksége a geo-backups, szavazz erre a képességre [itt](https://feedback.azure.com/forums/307516-sql-data-warehouse). Létrehozhat egy felhasználó által definiált visszaállítási pontot is, és visszaállíthatja az újonnan létrehozott visszaállítási pontot egy másik régió új adattárházára. Miután visszaállította, online állapotban van az adattárház, és határozatlan időre szüneteltetheti azt a számítási költségek megtakarítása érdekében. A szüneteltetett adatbázis tárolási díjakat számít fel az Azure Premium Storage díja mellett. Ha az adattárház aktív másolatára van szüksége, folytathatja, amely csak néhány percet vesz igénybe.
 
 ## <a name="backup-and-restore-costs"></a>Biztonsági mentés és visszaállítás költségei
 
-Észre fogja venni, hogy az Azure-számla rendelkezik egy sortárral a storage és egy sor a vész-helyreállítási storage.You will notice the Azure bill has a line item for Storage and a line item for Disaster Recovery Storage. A tárolási díj az adatok elsődleges régióban való tárolásának teljes költsége, valamint a pillanatképek által rögzített növekményes módosítások. A pillanatképek terhelésének részletesebb magyarázatát a [Pillanatképek elhatárolási díjainak ismertetése](https://docs.microsoft.com/rest/api/storageservices/Understanding-How-Snapshots-Accrue-Charges?redirectedfrom=MSDN#snapshot-billing-scenarios)című témakörben olvashatja el. A georedundáns díj fedezi a geo-biztonsági mentések tárolásának költségeit.  
+Észre fogja venni, hogy az Azure-számla rendelkezik egy sortárral a storage és egy sor a vész-helyreállítási storage.You will notice the Azure bill has a line item for Storage and a line item for Disaster Recovery Storage. A tárolási díj az adatok elsődleges régióban való tárolásának teljes költsége, valamint a pillanatképek által rögzített növekményes módosítások. A pillanatképek terhelésének részletesebb magyarázatát a [Pillanatképek elhatárolási díjainak ismertetése](/rest/api/storageservices/Understanding-How-Snapshots-Accrue-Charges?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)című témakörben olvashatja el. A georedundáns díj fedezi a geo-biztonsági mentések tárolásának költségeit.  
 
 Az elsődleges adattárház teljes költsége és a pillanatkép hét napos módosítása a legközelebbi TB-re lesz kerekítve. Ha például az adattárház 1,5 TB-os, és a pillanatképek 100 GB-ot rögzítenek, 2 TB-os adatdíjat számlázunk az Azure Premium Storage díjszabása szerint.
 
@@ -88,7 +88,7 @@ Az Azure Synapse díjszabásáról az [Azure Synapse díjszabása](https://azure
 
 Minden pillanatkép létrehoz egy visszaállítási pontot, amely a pillanatkép indításának idejét jelöli. Az adattárház visszaállításához válasszon egy visszaállítási pontot, és adjon ki egy visszaállítási parancsot.  
 
-Megtarthatja a visszaállított adatraktárt és az aktuálisat, vagy törölheti az egyiket. Ha az aktuális adatraktárt a visszaállított adattárházra szeretné cserélni, átnevezheti azt [az ALTER DATABASE (SQL pool)](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse) használatával a NÉV MÓDOSÍTÁSA beállítással.
+Megtarthatja a visszaállított adatraktárt és az aktuálisat, vagy törölheti az egyiket. Ha az aktuális adatraktárt a visszaállított adattárházra szeretné cserélni, átnevezheti azt [az ALTER DATABASE (SQL pool)](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) használatával a NÉV MÓDOSÍTÁSA beállítással.
 
 Adattárház visszaállításáról az [SQL-készlet visszaállítása](sql-data-warehouse-restore-points.md#create-user-defined-restore-points-through-the-azure-portal)című témakörben található.
 
@@ -96,7 +96,7 @@ Törölt vagy szüneteltetett adattárház visszaállításához [hozzon létre 
 
 ## <a name="cross-subscription-restore"></a>Előfizetések közötti visszaállítás
 
-Ha közvetlenül vissza kell állítania az [here](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/36256231-enable-support-for-cross-subscription-restore)előfizetések között, itt szavazzon erre a funkcióra. Visszaállítás egy másik logikai kiszolgálóra, és ["Helyezze át"](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources) a kiszolgálót az előfizetések között, hogy keresztelőfizetés-visszaállítást hajtson végre. 
+Ha közvetlenül vissza kell állítania az [here](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/36256231-enable-support-for-cross-subscription-restore)előfizetések között, itt szavazzon erre a funkcióra. Visszaállítás egy másik logikai kiszolgálóra, és ["Helyezze át"](/azure/azure-resource-manager/resource-group-move-resources?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a kiszolgálót az előfizetések között, hogy keresztelőfizetés-visszaállítást hajtson végre.
 
 ## <a name="geo-redundant-restore"></a>Georedundáns visszaállítás
 
@@ -107,4 +107,4 @@ Az [SQL-készlet bármely](sql-data-warehouse-restore-from-geo-backup.md#restore
 
 ## <a name="next-steps"></a>További lépések
 
-A katasztrófatervezéssel kapcsolatos további információkért lásd: [Üzletmenet-folytonossági áttekintés](../../sql-database/sql-database-business-continuity.md)
+A katasztrófatervezéssel kapcsolatos további információkért lásd: [Üzletmenet-folytonossági áttekintés](../../sql-database/sql-database-business-continuity.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)

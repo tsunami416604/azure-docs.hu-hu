@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: d5acdab9fb6eec585c53cfe0d7149aafa7cdc6f9
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: c3fcbf69e7dae14ccd2114a14c685b0443f70fef
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350104"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632440"
 ---
 # <a name="azure-synapse-analytics-workload-group-isolation-preview"></a>Azure Synapse Analytics számítási feladatok csoportelkülönítése (előzetes verzió)
 
@@ -30,13 +30,13 @@ A következő szakaszok kiemelik, hogy a számítási feladatok csoportjai hogya
 
 ## <a name="workload-isolation"></a>Számítási feladatok elkülönítése
 
-A munkaterhelés elkülönítése azt jelenti, hogy az erőforrások kizárólag egy számítási feladatcsoport számára vannak lefoglalva.  A munkaterhelés elkülönítése úgy érhető el, hogy a MIN_PERCENTAGE_RESOURCE paramétert nullánál nagyobbra állítja a [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) szintaxisban.  A szoros SLA-khoz való folyamatos végrehajtási számítási feladatok hoz, amelyeknek szoros SLA-knak kell lenniük, az elkülönítés biztosítja, hogy az erőforrások mindig elérhetők legyenek a számítási feladatok csoport számára. 
+A munkaterhelés elkülönítése azt jelenti, hogy az erőforrások kizárólag egy számítási feladatcsoport számára vannak lefoglalva.  A munkaterhelés elkülönítése úgy érhető el, hogy a MIN_PERCENTAGE_RESOURCE paramétert nullánál nagyobbra állítja a [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) szintaxisban.  A szoros SLA-khoz való folyamatos végrehajtási számítási feladatok hoz, amelyeknek szoros SLA-knak kell lenniük, az elkülönítés biztosítja, hogy az erőforrások mindig elérhetők legyenek a számítási feladatok csoport számára.
 
 A számítási feladatok elkülönítésének implicit módon történő konfigurálása meghatározza az egyidejűség garantált szintjét. Például egy számítási feladatok `MIN_PERCENTAGE_RESOURCE` csoport egy 30%-os és `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 2%-os beállított garantált 15 egyidejűség garantált.  Az egyidejűség szintje garantált, mert az erőforrások 15–2%-os rése mindig le `REQUEST_*MAX*_RESOURCE_GRANT_PERCENT` van foglalva a munkaterhelési csoporton belül (függetlenül attól, hogy hogyan van konfigurálva).  Ha `REQUEST_MAX_RESOURCE_GRANT_PERCENT` nagyobb, `REQUEST_MIN_RESOURCE_GRANT_PERCENT` `CAP_PERCENTAGE_RESOURCE` mint és `MIN_PERCENTAGE_RESOURCE` nagyobb, mint a további erőforrások hozzáadása kérésenként.  Ha `REQUEST_MAX_RESOURCE_GRANT_PERCENT` `REQUEST_MIN_RESOURCE_GRANT_PERCENT` és egyenlő, `CAP_PERCENTAGE_RESOURCE` és `MIN_PERCENTAGE_RESOURCE`nagyobb, mint , további egyidejűség lehetséges.  A garantált egyidejűség meghatározásához vegye figyelembe az alábbi módszert:
 
 [Garantált egyidejűség] =`MIN_PERCENTAGE_RESOURCE`[`REQUEST_MIN_RESOURCE_GRANT_PERCENT`] / [ ]
 
-> [!NOTE] 
+> [!NOTE]
 > A min_percentage_resource speciális szolgáltatási szintminimális életképes értékeket tartalmaz.  További információ: [Effective Values](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest#effective-values) for further details.
 
 A számítási feladatok elkülönítésének hiányában a kérelmek az erőforrások [megosztott készletében](#shared-pool-resources) működnek.  A megosztott készletben lévő erőforrásokhoz való hozzáférés nem garantált, és [fontossági](sql-data-warehouse-workload-importance.md) alapon van hozzárendelve.
@@ -45,7 +45,7 @@ Számítási feladatok elkülönítésének konfigurálását óvatosan kell elv
 
 A felhasználóknak kerülniük kell egy olyan munkaterhelés-kezelési megoldást, amely 100%-os számítási feladatok elkülönítését konfigurálja: a 100%-os elkülönítés akkor érhető el, ha az összes számítási feladat csoportban konfigurált min_percentage_resource összege 100%.  Ez a konfigurációtípus túlságosan korlátozó és merev, így kevés hely marad a véletlenül rosszul minősített erőforrás-kérelmek számára. Van egy olyan rendelkezés, amely lehetővé teszi egy kérelem végrehajtását a számítási feladatok csoportjai nem konfigurált elkülönítés. A kérelemhez rendelt erőforrások nulla ként jelennek meg a rendszerekdmv-ekben, és a rendszer által fenntartott erőforrásokból kisrc szintű erőforrás-támogatást kölcsönöznek.
 
-> [!NOTE] 
+> [!NOTE]
 > Az optimális erőforrás-kihasználtság érdekében fontolja meg egy számítási feladatok kezelésére szolgáló megoldás, amely kihasználja az elkülönítést annak érdekében, hogy az SLO-k teljesüljenek és keveredjenek a megosztott erőforrásokkal, amelyek a [számítási feladatok fontossága](sql-data-warehouse-workload-importance.md)alapján érhetők el.
 
 ## <a name="workload-containment"></a>A munkaterhelés megszorítása
@@ -56,21 +56,21 @@ A számítási feladatok elszigetelésének implicit módon történő konfigur�
 
 [Maximális egyidejűség]`CAP_PERCENTAGE_RESOURCE`= [`REQUEST_MIN_RESOURCE_GRANT_PERCENT`] / [ ]
 
-> [!NOTE] 
+> [!NOTE]
 > A számítási feladatok csoportjának hatékony CAP_PERCENTAGE_RESOURCE nem éri el a 100%-ot, ha a számítási MIN_PERCENTAGE_RESOURCE nullánál nagyobb szinten lévő számítási feladatcsoportok jönnek létre.  Tekintse meg [a sys.dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?view=azure-sqldw-latest) hatékony futásidejű értékeket.
 
 ## <a name="resources-per-request-definition"></a>Erőforrások kérésenkénti definíciója
 
 A számítási feladatok csoportjai egy olyan mechanizmust biztosítanak, amely meghatározza a kérésenként lefoglalt erőforrások maz és maximális mennyiségét a REQUEST_MIN_RESOURCE_GRANT_PERCENT és REQUEST_MAX_RESOURCE_GRANT_PERCENT paraméterekkel a [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) szintaxisban.  Az erőforrások ebben az esetben a PROCESSZOR és a memória.  Ezeknek az értékeknek a konfigurálása azt diktálja, hogy mennyi erőforrás és milyen szintű egyidejűség érhető el a rendszeren.
 
-> [!NOTE] 
+> [!NOTE]
 > REQUEST_MAX_RESOURCE_GRANT_PERCENT egy választható paraméter, amely alapértelmezés szerint ugyanazt az értéket adja meg, mint REQUEST_MIN_RESOURCE_GRANT_PERCENT.
 
 Egy erőforrásosztály kiválasztásához hasonlóan a REQUEST_MIN_RESOURCE_GRANT_PERCENT konfigurálja a kérés által használt erőforrások értékét.  A beállított érték által jelzett erőforrások mennyisége garantált a kérelemhez való hozzárendeléshez a végrehajtás megkezdése előtt.  Az erőforrásosztályokból munkaterhelés-csoportokba átköltözött ügyfelek esetében érdemes a [Hogyan cikket](sql-data-warehouse-how-to-convert-resource-classes-workload-groups.md) követve az erőforrásosztályokról a munkaterhelés-csoportokra való leképezéskiindulópontként.
 
-Ha REQUEST_MAX_RESOURCE_GRANT_PERCENT REQUEST_MIN_RESOURCE_GRANT_PERCENT-nél nagyobb értékre állítja be, a rendszer kérésenként több erőforrást foglal le.  A kérelem ütemezése közben a rendszer meghatározza a kérelem hez tartozó tényleges erőforrás-hozzárendelést, amely REQUEST_MIN_RESOURCE_GRANT_PERCENT és REQUEST_MAX_RESOURCE_GRANT_PERCENT között van, a megosztott készletben lévő erőforrás rendelkezésre állása és a kérelem aktuális terhelése alapján. Rendszer.  Az erőforrásoknak a [megosztott erőforráskészletben](#shared-pool-resources) kell létezniük a lekérdezés ütemezésekor.  
+Ha REQUEST_MAX_RESOURCE_GRANT_PERCENT REQUEST_MIN_RESOURCE_GRANT_PERCENT-nél nagyobb értékre állítja be, a rendszer kérésenként több erőforrást foglal le.  A kérelem ütemezése közben a rendszer meghatározza a kérelemhez való tényleges erőforrás-hozzárendelést, amely REQUEST_MIN_RESOURCE_GRANT_PERCENT és REQUEST_MAX_RESOURCE_GRANT_PERCENT között van, a megosztott készletben lévő erőforrás rendelkezésre állása és a rendszer aktuális terhelése alapján.  Az erőforrásoknak a [megosztott erőforráskészletben](#shared-pool-resources) kell létezniük a lekérdezés ütemezésekor.  
 
-> [!NOTE] 
+> [!NOTE]
 > REQUEST_MIN_RESOURCE_GRANT_PERCENT és REQUEST_MAX_RESOURCE_GRANT_PERCENT hatékony értékekkel rendelkeznek, amelyek a tényleges MIN_PERCENTAGE_RESOURCE és CAP_PERCENTAGE_RESOURCE értékektől függenek.  Tekintse meg [a sys.dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?view=azure-sqldw-latest) hatékony futásidejű értékeket.
 
 ## <a name="execution-rules"></a>Végrehajtási szabályok

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: dfdfa9f69e00aa644c21fc96cb70e9fa460ca0c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a282a412823207e5f662441158000e8c6121796
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77211701"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637928"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Útmutató a webalkalmazások Azure Resource Manager-sablonok használatával történő üzembe helyezéséhez
 
@@ -109,7 +109,7 @@ A webalkalmazás nevének globálisan egyedinek kell lennie. Használhatja a né
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ha a sablon tartalmaz egy [Microsoft.Web/certificates](/azure/templates/microsoft.web/certificates) erőforrást az SSL-kötéshez, és a tanúsítvány egy Key Vaultban van tárolva, meg kell győződnie arról, hogy az App Service-identitás hozzáférhet a tanúsítványhoz.
+Ha a sablon tartalmaz egy [Microsoft.Web/certificates](/azure/templates/microsoft.web/certificates) erőforrást a TLS/SSL-kötéshez, és a tanúsítvány egy Key Vaultban van tárolva, meg kell győződnie arról, hogy az App Service-identitás hozzáférhet a tanúsítványhoz.
 
 A globális Azure-ban az App Service principal **abfa0a7c-a6b6-4736-8310-585508787cd**azonosítóval rendelkezik. Az App Service egyszerű szolgáltatás key vault-hozzáférésének engedélyezéséhez használja a következőket:
 

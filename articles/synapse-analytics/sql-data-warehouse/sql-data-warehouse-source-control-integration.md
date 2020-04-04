@@ -10,22 +10,22 @@ ms.subservice: ''
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 9898addfa840752e27de8716d2185e767aac809b
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 0ffa33811957af95fc10396ffecef0b3de7959fe
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350093"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633022"
 ---
 # <a name="source-control-integration-for-sql-pool"></a>Forrásvezérlés integrációja AZ SQL-készlethez
 
-Ez az oktatóanyag bemutatja, hogyan integrálható az SQL Server Data tools (SSDT) adatbázis-projekt a forrás-ellenőrzéssel.  A forrásvezérlés integrációja az első lépés a folyamatos integrációs és üzembe helyezési folyamat létrehozása az Azure Synapse Analytics SQL készleterőforrásával. 
+Ez az oktatóanyag bemutatja, hogyan integrálható az SQL Server Data tools (SSDT) adatbázis-projekt a forrás-ellenőrzéssel.  A forrásvezérlés integrációja az első lépés a folyamatos integrációs és üzembe helyezési folyamat létrehozása az Azure Synapse Analytics SQL készleterőforrásával.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
 - Regisztráció egy [Azure DevOps-szervezetre](https://azure.microsoft.com/services/devops/)
-- A [Létrehozás és csatlakoztatás](https://docs.microsoft.com/azure/sql-data-warehouse/create-data-warehouse-portal) oktatóanyag végighaladva
--  [A Visual Studio 2019 telepítése](https://visualstudio.microsoft.com/vs/older-downloads/) 
+- A [Létrehozás és csatlakoztatás](create-data-warehouse-portal.md) oktatóanyag végighaladva
+- [A Visual Studio 2019 telepítése](https://visualstudio.microsoft.com/vs/older-downloads/)
 
 ## <a name="set-up-and-connect-to-azure-devops"></a>Az Azure DevOps beállítása és csatlakozás
 
@@ -53,7 +53,7 @@ Ez az oktatóanyag bemutatja, hogyan integrálható az SQL Server Data tools (SS
 
    ![Projekt importálása](./media/sql-data-warehouse-source-control-integration/6-import-new-project.png "Projekt importálása")  
 
-3. A Visual Studio csapatkezelőjében az összes módosítást véglegesítse a helyi Git-tárházban 
+3. A Visual Studio csapatkezelőjében az összes módosítást véglegesítse a helyi Git-tárházban
 
    ![Véglegesítés](./media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "Véglegesítés")  
 

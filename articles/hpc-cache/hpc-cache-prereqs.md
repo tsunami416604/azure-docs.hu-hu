@@ -4,14 +4,14 @@ description: Az Azure HPC-gyorsítótár használatának előfeltételei
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 04/03/2020
 ms.author: rohogue
-ms.openlocfilehash: 40d282ad30a800a5e5a36a8d2211ec8da7ce63ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6da35cb60dc5f22be01ae25393bd62327db64867
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79271849"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655657"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Az Azure HPC-gyorsítótár előfeltételei
 
@@ -113,7 +113,7 @@ További információt a [NAS-konfiguráció és az NFS-tárolási célproblém�
 
   Győződjön meg arról, hogy ``rpcinfo`` a lekérdezés által visszaadott összes port engedélyezi az Azure HPC-gyorsítótár alhálózatának korlátlan forgalmát.
 
-  * A parancs által visszaadott `rpcinfo` portokon kívül győződjön meg arról, hogy ezek a gyakran használt portok engedélyezik a bejövő és kimenő forgalmat:
+  * Ha nem tudja használni `rpcinfo` a parancsot, győződjön meg arról, hogy ezek a gyakran használt portok engedélyezik a bejövő és kimenő forgalmat:
 
     | Protocol (Protokoll) | Port  | Szolgáltatás  |
     |----------|-------|----------|
@@ -122,6 +122,8 @@ További információt a [NAS-konfiguráció és az NFS-tárolási célproblém�
     | TCP/UDP  | 4045  | nlockmgr között |
     | TCP/UDP  | 4046  | csatlakoztatva   |
     | TCP/UDP  | 4047  | status   |
+
+    Egyes rendszerek különböző portszámokat használnak ezekhez a szolgáltatásokhoz – a biztos ság érdekében olvassa el a tárolórendszer dokumentációját.
 
   * Ellenőrizze a tűzfal beállításait, hogy engedélyezi-e a forgalmat az összes szükséges porton. Győződjön meg arról, hogy ellenőrizze az Azure-ban használt tűzfalakat, valamint a helyszíni tűzfalakat az adatközpontban.
 
@@ -132,7 +134,7 @@ További információt a [NAS-konfiguráció és az NFS-tárolási célproblém�
 
   További információ a címtárlistázási hozzáférésről az NFS-tároló [célhibaelhárítási cikkében.](troubleshoot-nas.md#enable-export-listing)
 
-* **Root hozzáférés:** A gyorsítótár 0-s felhasználói azonosítóként csatlakozik a háttérrendszerhez. Ellenőrizze ezeket a beállításokat a tárolórendszeren:
+* **Root access** (olvasási/írási): A gyorsítótár 0-s felhasználói azonosítóként csatlakozik a háttérrendszerhez. Ellenőrizze ezeket a beállításokat a tárolórendszeren:
   
   * Engedélyezze a. `no_root_squash` Ez a beállítás biztosítja, hogy a távoli gyökérfelhasználó hozzáférhessen a gyökér tulajdonában lévő fájlokhoz.
 
