@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 719a1985aeb0db7b0cf7f55a10762bf3ebb3e045
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8118ecde698b54213547e717d25613c0c3e0d3fd
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79250191"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631557"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Windows rendszerű VHD vagy VHDX előkészítése az Azure-ba való feltöltéshez
 
-Mielőtt feltölt egy Windows virtuális gépet (VM) a helyszíni Azure-ba, elő kell készítenie a virtuális merevlemezt (VHD vagy VHDX). Az Azure támogatja mind az 1. A virtuális merevlemez maximális mérete 1023 GB. 
+Mielőtt feltölt egy Windows virtuális gépet (VM) a helyszíni Azure-ba, elő kell készítenie a virtuális merevlemezt (VHD vagy VHDX). Az Azure támogatja mind az 1. A virtuális merevlemez maximális mérete 2 TB.
 
 Az 1. generációs virtuális gépben a VHDX fájlrendszert virtuális merevlemezre konvertálhatja. A dinamikusan bővülő lemezt rögzített méretű lemezzé is konvertálhatja. De nem módosíthatja a virtuális gép generációját. További információ: [Azure support for generation 2 VMs (preview)](generation-2.md) [Hozzon létre egy 1.](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)
 

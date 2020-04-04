@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3bd166572cea23fbb710cd053c28f51e76ba534a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 42596ba5470c6062efba4fd1050c1c9745b76e80
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476671"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637332"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Azure AD B2C felhasználói fiókok kezelése a Microsoft Graph segítségével
 
@@ -151,7 +151,7 @@ Az alkalmazás megjeleníti a végrehajtható parancsok listáját. Például az
 
 ### <a name="code-discussion"></a>Kódmegbeszélés
 
-A mintakód a [Microsoft Graph SDK-t](https://docs.microsoft.com/graph/sdks/sdks-overview)használja, amelynek célja a Microsoft Graph-hoz hozzáférő kiváló minőségű, hatékony és rugalmas alkalmazások létrehozásának egyszerűsítése. Így nem kell, hogy a közvetlen az összes Microsoft Graph API-t.
+A mintakód a [Microsoft Graph SDK-t](https://docs.microsoft.com/graph/sdks/sdks-overview)használja, amelynek célja a Microsoft Graph-hoz hozzáférő kiváló minőségű, hatékony és rugalmas alkalmazások létrehozásának egyszerűsítése.
 
 A Microsoft Graph API-ra irányuló kérelmek hitelesítéshez hozzáférési jogkivonatot igényelnek. A megoldás a [Microsoft.Graph.Auth](https://www.nuget.org/packages/Microsoft.Graph.Auth/) NuGet csomagot használja, amely a Microsoft Graph SDK-val való használatra a Microsoft Authentication Library (MSAL) hitelesítési forgatókönyv-alapú burkolóját biztosítja.
 

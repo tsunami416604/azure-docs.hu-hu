@@ -6,16 +6,15 @@ documentationcenter: ''
 author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
-ms.topic: article
-ms.custom: seodec18
-ms.date: 12/06/2018
+ms.topic: how-to
+ms.date: 04/02/2020
 ms.author: shvija
-ms.openlocfilehash: 6ab542e1328bb986f53d31e2eca75007cf1e0c75
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 2e5a2924cdc00c1cc057d71c40645085df4bae6a
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521801"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632812"
 ---
 # <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>Az Apache Flink használata az Apache Kafkához készült Event Hubs szolgáltatással
 Ez az oktatóanyag bemutatja, hogyan csatlakoztathatja az Apache Flinket egy eseményközponthoz a protokollügyfelek módosítása vagy a saját fürtök futtatása nélkül. Az Azure Event Hubs támogatja az [Apache Kafka 1.0-s verzióját.](https://kafka.apache.org/10/documentation.html).
@@ -124,22 +123,11 @@ Ha az eseményközpont eseményeket (például a gyártó is fut), akkor a `test
 Nézze meg [Flink a Kafka Connector Guide](https://ci.apache.org/projects/flink/flink-docs-stable/dev/connectors/kafka.html) részletesebb információt összekötő Flink a Kafka.
 
 ## <a name="next-steps"></a>További lépések
-Ebben az oktatóanyagban a megtanulta, hogyan csatlakoztathatja az Apache Flinket az Event Hubs-hoz a protokollügyfelek módosítása vagy a saját fürtök futtatása nélkül. Az oktatóanyag részeként a következő lépéseket hajtotta végre: 
+Ha többet szeretne megtudni a Kafka eseményközpontokról, olvassa el az alábbi cikkeket:  
 
-> [!div class="checklist"]
-> * Event Hubs-névtér létrehozása
-> * A példaprojekt klónozása
-> * Fuss Flink gyártó 
-> * A Flink-fogyasztó futtatása
-
-Az Event Hubsszal és a Kafkához készült Event Hubsszal kapcsolatos további információkért tekintse át a következő témaköröket:  
-
-- [Ismerkedés az Event Hubs szolgáltatással](event-hubs-what-is-event-hubs.md)
-- [Az Apache Kafkához készült Event Hubs](event-hubs-for-kafka-ecosystem-overview.md)
-- [Eseményközpont létrehozása](event-hubs-create.md)
-- [Streamelés az Event Hubsba a Kafka-alkalmazásokból](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 - [Kafka-közvetítő tükrözése egy eseményközpontba](event-hubs-kafka-mirror-maker-tutorial.md)
 - [Apache Spark csatlakoztatása egy eseményközponthoz](event-hubs-kafka-spark-tutorial.md)
 - [A Kafka Connect integrálása egy eseményközponttal](event-hubs-kafka-connect-tutorial.md)
-- [Akka-adatfolyamok csatlakoztatása eseményközponthoz](event-hubs-kafka-akka-streams-tutorial.md)
 - [További példák a GitHubon](https://github.com/Azure/azure-event-hubs-for-kafka)
+- [Akka-adatfolyamok csatlakoztatása eseményközponthoz](event-hubs-kafka-akka-streams-tutorial.md)
+- [Az Apache Kafka fejlesztői útmutatója az Azure Event Hubs-hoz](apache-kafka-developer-guide.md)

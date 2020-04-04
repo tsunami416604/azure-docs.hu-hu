@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/11/2020
+ms.date: 03/23/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6077db0a09b09f7e4bfb859902da53b173845e55
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: b8073240bdda38757a5e4feee66c9f54746966c4
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520772"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632047"
 ---
 ### <a name="portal"></a>Portál
 
@@ -21,7 +21,7 @@ Ha a lemezekhez ügyfél által felügyelt kulcsokat állít be, akkor az erőfo
 
 #### <a name="setting-up-your-azure-key-vault"></a>Az Azure Key Vault beállítása
 
-1. Jelentkezzen be az [Azure Portalra,](https://portal.azure.com/) és keressen a Key Vaultra
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. Keresse meg és válassza a **Key Vaults lehetőséget.**
 
     [![sse-key-vault-portal-search.png](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search.png)](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search-expanded.png#lightbox)
@@ -30,7 +30,7 @@ Ha a lemezekhez ügyfél által felügyelt kulcsokat állít be, akkor az erőfo
     > Az Azure key vault, a lemeztitkosítási készlet, a virtuális gép, a lemezek és a pillanatképek mind ugyanabban a régióban kell lennie, és előfizetés a telepítés sikeres legyen.
 
 1. Új kulcstartó létrehozásához válassza a **+Hozzáadás** lehetőséget.
-1. Új erőforráscsoport létrehozása
+1. Hozzon létre egy új erőforráscsoportot.
 1. Adja meg a kulcstartó nevét, válasszon ki egy régiót, és válasszon ki egy tarifacsomagot.
 1. Válassza **a Véleményezés + Létrehozás**lehetőséget, ellenőrizze a beállításokat, majd válassza a **Létrehozás gombot.**
 
@@ -38,7 +38,7 @@ Ha a lemezekhez ügyfél által felügyelt kulcsokat állít be, akkor az erőfo
 
 1. Miután a key vault telepítése befejeződik, válassza ki azt.
 1. Válassza a **Billentyűk lehetőséget** a **Beállítások csoportban.**
-1. **Létrehozás/importálás** kiválasztása
+1. Válassza **a Létrehozás/importálás**lehetőséget.
 
     ![Képernyőkép a Key Vault erőforrás-beállítási ablaktáblájáról. A létrehozás/importálás gomb megjelenítése a beállításokon belül.](media/virtual-machines-disk-encryption-portal/sse-key-vault-generate-settings.png)
 
@@ -49,15 +49,8 @@ Ha a lemezekhez ügyfél által felügyelt kulcsokat állít be, akkor az erőfo
 
 #### <a name="setting-up-your-disk-encryption-set"></a>A lemeztitkosítási készlet beállítása
 
-Lemeztitkosítási készletek létrehozásához és konfigurálásához a https://aka.ms/diskencryptionsetskövetkező hivatkozást kell használnia: . Ha a Microsoft Azure Government régióban van, akkor [https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)a következő hivatkozást kell használnia: . A lemeztitkosítási készlet létrehozása még nem érhető el a globális Azure Portalon.
-
-1. Nyissa meg a régiónak megfelelő lemeztitkosítási készletkapcsolatot:
-
-    Nyilvános régiók:[https://aka.ms/diskencryptionsets](https://aka.ms/diskencryptionsets)
-
-    Az Azure Government régiói:[https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)
-    
-1. Válassza **a +Hozzáadás lehetőséget.**
+1. Keresse meg a **lemeztitkosítási készleteket,** és jelölje ki.
+1. A **Lemeztitkosítási készletek** panelen válassza a **+Hozzáadás**lehetőséget.
 
     ![Képernyőkép a lemeztitkosítási portál főképernyőjéről. A Hozzáadás gomb kiemelése](media/virtual-machines-disk-encryption-portal/sse-create-disk-encryption-set.png)
 
@@ -82,12 +75,6 @@ Két értesítés nek meg kell jelennie, és sikeresnek kell lennie. Ezzel lehet
 Most, hogy létrehozta és beállította a kulcstartót és a lemeztitkosítási készletet, üzembe helyezhet egy virtuális számítógépet a titkosítás használatával.
 A virtuális gép központi telepítési folyamata hasonló a szabványos központi telepítési folyamathoz, az egyetlen különbség az, hogy a virtuális gép üzembe helyezéséhez ugyanabban a régióban, mint a többi erőforrás, és úgy dönt, hogy egy ügyfél által felügyelt kulcsot használ.
 
-1. Nyissa meg a régiónak megfelelő lemeztitkosítási készletkapcsolatot:
-
-    Nyilvános régiók:[https://aka.ms/diskencryptionsets](https://aka.ms/diskencryptionsets)
-
-    Az Azure Government régiói:[https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)
-
 1. Keressen **meg virtuális gépeket,** és válassza **a + Hozzáadás** lehetőséget a virtuális gép létrehozásához.
 1. Az **Alapszintű** lapon válassza ki ugyanazt a régiót, mint a lemeztitkosítási készlet és az Azure Key Vault.
 1. Tetszés szerint töltse ki az **Alap** lap egyéb értékeit.
@@ -102,16 +89,8 @@ A virtuális gép központi telepítési folyamata hasonló a szabványos közpo
 
 #### <a name="enable-on-an-existing-disk"></a>Engedélyezés meglévő lemezen
 
-A lemeztitkosítás meglévő lemezeken történő kezeléséhez és konfigurálásához https://aka.ms/diskencryptionsetsa következő hivatkozást kell használnia: . Az ügyfél által felügyelt kulcsok engedélyezése a meglévő lemezeken még nem érhető el a globális Azure Portalon.
-
 > [!CAUTION]
 > A virtuális géphez csatlakoztatott lemezeken a lemeztitkosítás engedélyezése megköveteli a virtuális gép leállítását.
-
-1. Nyissa meg a régiónak megfelelő lemeztitkosítási készletkapcsolatot:
-
-    Nyilvános régiók:[https://aka.ms/diskencryptionsets](https://aka.ms/diskencryptionsets)
-
-    Az Azure Government régiói:[https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)
     
 1. Keresse meg a virtuális gép, amely ugyanabban a régióban van, mint a lemez titkosítási készletek.
 1. Nyissa meg a virtuális gép, és válassza **leállítás**.

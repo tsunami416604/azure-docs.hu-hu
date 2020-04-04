@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: d10a642f9309e4bb93368564488fc75be15fa27c
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 6a38fe65b4aedf4f594531f5e9cd8cf9b5dfaac7
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586078"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631241"
 ---
 # <a name="analyze-your-workload-in-azure-synapse-analytics"></a>A számítási feladatok elemzése az Azure Synapse Analytics szolgáltatásban
 
@@ -68,7 +68,7 @@ A Szinapszis SQL a következő várakozási típusokkal rendelkezik:
 * **LocalQueriesConcurrencyResourceType**: Olyan lekérdezések, amelyek az egyidejűségi tárolóhely keretrendszerén kívül helyezkednek el. A dmv-lekérdezések `SELECT @@VERSION` és a rendszerfüggvények, például a helyi lekérdezések példái.
 * **UserConcurrencyResourceType**: Lekérdezések, amelyek az egyidejűségi tárolóhely keretrendszerén belül ülnek. A végfelhasználói tábláklekérdezései olyan példákat jelentenek, amelyek ezt az erőforrástípust használnák.
 * **DmsConcurrencyResourceType**: Az adatmozgatási műveletekből eredő várakozás.
-* **BackupConcurrencyResourceType**: Ez a várakozás azt jelzi, hogy egy adatbázisról biztonsági másolat készül. Az erőforrástípus maximális értéke 1. Ha egyszerre több biztonsági mentést is kért, a többi várólistára kerül. Általában azt javasoljuk, hogy egy minimális idő között egymást követő pillanatképek 10 perc. 
+* **BackupConcurrencyResourceType**: Ez a várakozás azt jelzi, hogy egy adatbázisról biztonsági másolat készül. Az erőforrástípus maximális értéke 1. Ha egyszerre több biztonsági mentést is kért, a többi várólistára kerül. Általában azt javasoljuk, hogy egy minimális idő között egymást követő pillanatképek 10 perc.
 
 A `sys.dm_pdw_waits` DMV segítségével megtekinthető, hogy a kérelem mely erőforrásokra vár.
 

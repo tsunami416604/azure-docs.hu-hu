@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 56975c52b22b90840fb1534187e99f6efa19469e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/1/2020
+ms.openlocfilehash: 3ba06ea592d51eedbe827e1ab6418f65722d579c
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79527673"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632299"
 ---
 # <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>Kiszolgálókonfigurációs paraméterek testreszabása az Azure CLI használatával
 Az Azure CLI, az Azure parancssori segédprogram használatával listázhatja, megjelenítheti és frissítheti a MariaDB-kiszolgálókazure Database konfigurációs paramétereit. A motorkonfigurációk egy részhalmaza a kiszolgáló szintjén érhető el, és módosítható.
@@ -59,10 +59,10 @@ Ez a kód visszaállítja a **lassú\_lekérdezésnapló\_** konfigurációját 
 
 ### <a name="populating-the-time-zone-tables"></a>Az időzóna-táblázatok feltöltése
 
-A kiszolgálón lévő időzóna-táblák feltölthetők, ha a `az_load_timezone` tárolt eljárást egy eszközből, például a MariaDB parancssorból vagy a MariaDB Workbench-ből hívja meg.
+A kiszolgálón lévő időzóna-táblák feltölthetők, ha a `mysql.az_load_timezone` tárolt eljárást egy eszközből, például a MariaDB parancssorból vagy a MariaDB Workbench-ből hívja meg.
 
 > [!NOTE]
-> Ha a parancsot a MariaDB Workbench-ből futtatja, előfordulhat, hogy először ki kell kapcsolnia a `az_load_timezone` csökkentett frissítési módot a használatával. `SET SQL_SAFE_UPDATES=0;`
+> Ha a parancsot a MariaDB Workbench-ből futtatja, előfordulhat, hogy először ki kell kapcsolnia a `mysql.az_load_timezone` csökkentett frissítési módot a használatával. `SET SQL_SAFE_UPDATES=0;`
 
 ```sql
 CALL mysql.az_load_timezone();

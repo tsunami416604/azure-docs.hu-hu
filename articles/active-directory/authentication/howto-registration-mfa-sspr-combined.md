@@ -4,19 +4,19 @@ description: Kombinált Azure AD többtényezős hitelesítés és önkiszolgál
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25c64d9e959b1d68de23e83e26d3495bd3939986
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f454b0296a3463d7346c2945b21162e5a38c0eb7
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75425191"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652508"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>A kombinált biztonsági adatok regisztrációjának engedélyezése (előzetes verzió)
 
@@ -48,7 +48,7 @@ Hajtsa végre az alábbi lépéseket a kombinált regisztráció engedélyezés�
 > 2019 márciusátantól kezdődően a telefonhívási beállítások nem lesznek elérhetők az ingyenes/próba verziós Azure AD-bérlők többtényezős hitelesítése és SSPR-felhasználói számára. Az SMS-üzeneteket ez a módosítás nem érinti. A telefonhívási beállítások továbbra is elérhetők lesznek a fizetős Azure AD-bérlők felhasználói számára.
 
 > [!NOTE]
-> A kombinált regisztráció engedélyezése után azok a felhasználók, akik regisztrálják vagy megerősítik telefonszámukat vagy mobilalkalmazásukat az új felületen keresztül, használhatják őket a többtényezős hitelesítéshez és az SSPR-hez, ha ezek a módszerek engedélyezve vannak a többtényezős hitelesítésben és az SSPR-ben. Politikák. Ha ezt az élményt letiltja, az előző SSPR regisztrációs oldalra `https://aka.ms/ssprsetup` lépő felhasználóknak többtényezős hitelesítést kell végrehajtaniuk, mielőtt hozzáférhetnének az oldalhoz.
+> Miután engedélyezte a kombinált regisztrációt, azok a felhasználók, akik regisztrálják vagy megerősítik telefonszámukat vagy mobilalkalmazásukat az új felületen keresztül, használhatják őket a többtényezős hitelesítéshez és az SSPR-hez, ha ezek a módszerek engedélyezve vannak a többtényezős hitelesítés és az SSPR-házirendekben. Ha ezt az élményt letiltja, az előző SSPR regisztrációs oldalra `https://aka.ms/ssprsetup` lépő felhasználóknak többtényezős hitelesítést kell végrehajtaniuk, mielőtt hozzáférhetnének az oldalhoz.
 
 Ha az Internet Explorer ben konfigurálta a Hely a zónához hozzárendelési listát, a következő helyeknek ugyanabban a zónában kell lenniük:
 

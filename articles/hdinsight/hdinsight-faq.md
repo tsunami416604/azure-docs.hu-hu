@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: b05b83086cc9d8449d9517897f347b6e2685aa95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a37e1b9bc4a0b953dc727dbab2813dd938ed576
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76720350"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652222"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: gyakori kérdések
 
@@ -135,7 +135,7 @@ Igen, áttelepítheti a Hive metastore-t egy ESP-ről egy nem ESP-fürtre.
 
 ### <a name="how-can-i-estimate-the-size-of-a-hive-metastore-database"></a>Hogyan becsülhetem meg egy Hive metastore adatbázis méretét?
 
-A Hive metatároló a Hive-kiszolgáló által használt adatforrások metaadatainak tárolására szolgál. A méretkövetelmények részben a Hive adatforrások számától és összetettségétől függenek, és nem becsülhetők meg előre. A [Hive metastore ajánlott eljárások](hdinsight-use-external-metadata-stores.md#hive-metastore-best-practices)szerint egy S2 réteg, amely 50 DTU és 250 GB tárhelyet biztosít, és ha szűk keresztmetszetet lát, az adatbázis skálázhatja.
+A Hive metatároló a Hive-kiszolgáló által használt adatforrások metaadatainak tárolására szolgál. A méretkövetelmények részben a Hive adatforrások számától és összetettségétől függenek, és nem becsülhetők meg előre. A [Hive metastore irányelveiben](hdinsight-use-external-metadata-stores.md#hive-metastore-guidelines)vázolt módon elkezdheti egy S2-réteggel, amely 50 DTU-t és 250 GB tárhelyet biztosít, és ha szűk keresztmetszetet lát, felskálázhatja az adatbázist.
 
 ### <a name="do-you-support-any-other-database-other-than-azure-sql-database-as-an-external-metastore"></a>Az Azure SQL Database-en kívül más adatbázist is támogat külső metatárolóként?
 

@@ -8,16 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 04/01/2020
+ms.date: 04/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01956c2fee1c15bc86e8d80aa05c70db647bf593
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 60dca30496aa17ad7add00ca4eca914cb58fddd7
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80616882"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655982"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect verziókiadásai
 Az Azure Active Directory (Azure AD) csapata rendszeresen frissíti az Azure AD Connectet új funkciókkal és funkciókkal. Nem minden kiegészítés alkalmazható minden közönségre.
@@ -57,7 +57,7 @@ Az Azure AD Connect nem minden kiadása lesz elérhető az automatikus frissít�
 ### <a name="functional-changes-adsyncautoupgrade"></a>Funkcionális változások ADSyncAutoUpgrade 
 
 - Az mS-DS-ConsistencyGuid szolgáltatás támogatása hozzáadva a csoportobjektumokhoz. Ez lehetővé teszi, hogy a csoportok áthelyezése az erdők között, vagy újra csoportokat az AD az Azure AD, ahol az AD-csoport objectID megváltozott, például ha egy AD-kiszolgáló újraépül egy csapás után. További információ: [Csoportok áthelyezése erdők között](how-to-connect-migrate-groups.md).
-- Az mS-DS-ConsistencyGuid attribútum automatikusan be van állítva az al szinkronizált csoportokon, és semmit sem kell tennie a funkció engedélyezéséhez. 
+- Az mS-DS-ConsistencyGuid attribútum automatikusan be van állítva az összes szinkronizált csoporton, és semmit sem kell tennie a szolgáltatás engedélyezéséhez. 
 - Eltávolította a Get-ADSyncRunProfile-t, mert már nincs használatban. 
 - Módosította azt a figyelmeztetést, amely akkor jelenik meg, amikor az AD DS-összekötőfiók vállalati rendszergazdai vagy tartományi rendszergazdai fiókját próbálja használni, hogy több környezetet biztosítson. 
 - Hozzáadott egy új parancsmacs, hogy távolítsa el az objektumokat az összekötő tér a régi CSDelete.exe eszköz törlődik, és ez helyébe az új Remove-ADSyncCSObject parancsmag. Az Remove-ADSyncCSObject parancsmag egy CsObject objektumot vesz fel bemenetként. Ez az objektum a Get-ADSyncCSObject parancsmag használatával olvasható be.

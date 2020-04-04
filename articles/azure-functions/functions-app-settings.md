@@ -3,12 +3,12 @@ title: Azure Functions – alkalmazásbeállítási referencia
 description: Az Azure Functions alkalmazás-beállítások vagy környezeti változók referenciadokumentációja.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 3853ccbfd492bfaf4a82d62e6d31ab938285ee2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e2d168d8828d17e13f875e3b2555c7db0d4ba32d
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79277829"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656791"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions – alkalmazásbeállítási referencia
 
@@ -20,11 +20,19 @@ Vannak más globális konfigurációs beállítások is a [host.json](functions-
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
-Az Application Insights instrumentation kulcs, ha az Application Insights használata. Lásd: [Monitor Azure Functions](functions-monitoring.md).
+Az Application Insights instrumentation kulcsa. Csak a `APPINSIGHTS_INSTRUMENTATIONKEY` vagy `APPLICATIONINSIGHTS_CONNECTIONSTRING`a egyikét használja. További információ: [Monitor Azure Functions](functions-monitoring.md). 
 
 |Kulcs|Mintaérték|
 |---|------------|
-|APPINSIGHTS_INSTRUMENTATIONKEY|5dbdd5e9-af77-484b-9032-64f83bb83bb|
+|APPINSIGHTS_INSTRUMENTATIONKEY|55555555-af77-484b-9032-64f83bb83bb|
+
+## <a name="applicationinsights_connectionstring"></a>APPLICATIONINSIGHTS_CONNECTIONSTRING
+
+Az Application Insights kapcsolati karakterlánca. Használja `APPLICATIONINSIGHTS_CONNECTIONSTRING` ahelyett, `APPINSIGHTS_INSTRUMENTATIONKEY` ha a függvényalkalmazás a kapcsolati karakterlánc által támogatott hozzáadott testreszabásokat igényel. További információt a [Kapcsolati karakterláncok](../azure-monitor/app/sdk-connection-string.md)című témakörben talál. 
+
+|Kulcs|Mintaérték|
+|---|------------|
+|APPLICATIONINSIGHTS_CONNECTIONSTRING|InstrumentationKey=[key];IngestionEndpoint=[url]; LiveEndpoint=[url]; ProfilerEndpoint=[url]; SnapshotEndpoint=[url];|
 
 ## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 

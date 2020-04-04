@@ -1,17 +1,17 @@
 ---
 title: GitHub-műveletek & Az Azure Kubernetes szolgáltatás (előzetes verzió)
 services: azure-dev-spaces
-ms.date: 02/04/2020
+ms.date: 04/03/2020
 ms.topic: conceptual
 description: A lekéréses kérelmek változásainak áttekintése és tesztelése közvetlenül az Azure Kubernetes-szolgáltatásban a GitHub-műveletek és az Azure Dev Spaces használatával
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes szolgáltatás, tárolók, GitHub-műveletek, Helm, szolgáltatásháló, szolgáltatásháló-útválasztás, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 49715e38f36d4421b7327640ec8392a83b3c2996
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a83da0ef3958748831eb0eeda1aa5e91efa7ef2e
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252374"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637947"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub-műveletek & Az Azure Kubernetes szolgáltatás (előzetes verzió)
 
@@ -101,6 +101,11 @@ Nyissa meg a villás tárházat, és kattintson a *Beállítások gombra.* Katti
 > Ezeket a titkos kulcsokat a GitHub-művelet használja, és [.github/workflows/bikes.yml][github-action-yaml]nyelven konfigurálva van.
 
 Ha a PR egyesítése után frissíteni szeretné a főterületet, adja hozzá a *GATEWAY_HOST* titkos kulcsot, amely *<MASTER_SPACE>.<HOST_SUFFIX>*<formában jelenik *meg,* amely ebben a példában dev.gateway.fedcab0987.eus.azds.io . Miután egyesíti a módosításokat a főág a villa, egy másik művelet fog futni, hogy újraépítse és futtassa a teljes alkalmazást a fő fejlesztői térben. Ebben a példában a főtér *dev*. Ez a művelet [.github/workflows/bikesharing.yml][github-action-bikesharing-yaml]nyelven van konfigurálva.
+
+Továbbá, ha azt szeretné, hogy a PR módosításai egy unokaterületen fussanak, frissítse a *MASTER_SPACE* és a *HOST* titkos kulcsokat. Ha például az alkalmazás *fejlesztői szolgáltatásban* fut egy *gyermekterület-fejlesztési/azureuser1*szolgáltatással, hogy a PR a *fejlesztési/azureuser1*gyermekterületen fusson:
+
+* Frissítse *MASTER_SPACE* a szülőtérként kívánt gyermekterületre ebben a példában *az azureuser1.*
+* Frissítse az *ÁLLOMÁST*<*>.<APP_NAME>.<HOST_SUFFIX>* GRANDPARENT_SPACE ebben a *példában dev.bikesharingweb.fedcab0987.eus.azds.io.*
 
 ## <a name="create-a-new-branch-for-code-changes"></a>Új fiók létrehozása kódmódosításokhoz
 

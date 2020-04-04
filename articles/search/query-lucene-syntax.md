@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: d35c96657f48905f37c9ebe246d81ebb9545cf27
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1392f69bea09996e46ad4c112474f9067ff5a63d
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79283133"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656914"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Lucene lekérdezés szintaxisa az Azure Cognitive Search szolgáltatásban
 
@@ -161,16 +161,17 @@ A következő példa a különbségek szemléltetése. Tegyük fel, hogy van egy
 ##  <a name="regular-expression-search"></a><a name="bkmk_regex"></a>Reguláris kifejezés keresése  
  A reguláris kifejezéskeresés a [RegExp osztályban](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html)dokumentált perjelek "/" tartalma alapján egyezést talál.  
 
- Ha például a "motel" vagy "hotel" `/[mh]otel/`tartalmazó dokumentumokat szeretné megkeresni, adja meg a értéket.  A reguláris kifejezéskeresések egyetlen szavakkal vannak egyezve.   
+ Ha például a "motel" vagy "hotel" `/[mh]otel/`tartalmazó dokumentumokat szeretné megkeresni, adja meg a értéket. A reguláris kifejezéskeresések egyetlen szavakkal vannak egyezve.
 
 ##  <a name="wildcard-search"></a><a name="bkmk_wildcard"></a>Helyettesítő karakteres keresés  
- Az általánosan elismert szintaxist több (*) vagy egy (?) karakteres helyettesítő karakteres kereséshez is használhatja. Megjegyzés: A Lucene lekérdezéselemző támogatja ezeknek a szimbólumoknak a használatát egyetlen kifejezéssel, nem pedig kifejezéssel.  
+ Az általánosan elismert szintaxist több (*) vagy egy (?) karakteres helyettesítő karakteres kereséshez is használhatja. Megjegyzés: A Lucene lekérdezéselemző támogatja ezeknek a szimbólumoknak a használatát egyetlen kifejezéssel, nem pedig kifejezéssel.
 
- Ha például a "note" előtaggal rendelkező szavakat tartalmazó dokumentumokat (például "jegyzetfüzet" vagy "jegyzettömb") szeretné megkeresni, adja meg a "note*" értéket.  
+Az előtag-keresés a csillag`*`( ) karaktert is használja. Például egy lekérdezési `search=note*` kifejezés a "notebook" vagy a "jegyzettömb" értéket adja vissza. Az előtagkereséshez nem szükséges teljes Lucene szintaxis. Az egyszerű szintaxis támogatja ezt a forgatókönyvet.
+
+Az utótagkereséshez `*` `?` , ahol vagy megelőzi a karakterláncot, teljes Lucene szintaxist és reguláris kifejezést igényel (nem használhat * vagy ? szimbólumot a keresés első karaktereként). Az "alfanumerikus" kifejezés miatt a`search=/.*numeric.*/`( ) lekérdezési kifejezés megtalálja az egyezést.
 
 > [!NOTE]  
->  Nem használhat * vagy ? szimbólumot a keresés első karaktereként.  
->  Helyettesítő karakteres keresési lekérdezéseken nem történik szövegelemzés. A lekérdezés időpontjában a helyettesítő lekérdezési kifejezéseket a rendszer összehasonlítja a keresési indexben lévő elemzett kifejezésekkel, és kibontja őket.
+> A lekérdezéselemzés során az előtagként, utótagként, helyettesítő ként vagy reguláris kifejezésként megfogalmazott lekérdezések a rendszer ugyanúgy kerülnek átadásra a lekérdezési fának, megkerülve a [lexikai elemzést.](search-lucene-query-architecture.md#stage-2-lexical-analysis) Az egyezések csak akkor találhatók meg, ha az index a lekérdezés által megadott formátumban tartalmazza a karakterláncokat. A legtöbb esetben szüksége lesz egy alternatív elemző az indexelés során, amely megőrzi a karakterlánc integritását, hogy a részleges kifejezés és a minta egyeztetése sikeres legyen. További információ: [Részleges kifejezésű keresés az Azure Cognitive Search lekérdezésekben.](search-query-partial-matching.md)
 
 ## <a name="see-also"></a>Lásd még  
 

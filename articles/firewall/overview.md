@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 03/17/2020
+ms.date: 04/03/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: ed27097d29f3a10e708044ad7e2e30736e2c60e6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: a8930af1366fef3d8c4491fca5e9403905648de1
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79471846"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80638020"
 ---
 # <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
 
@@ -61,7 +61,7 @@ Központilag hozhat létre *engedélyező* vagy *tiltó* hálózatszűrési szab
 
 ## <a name="fqdn-tags"></a>FQDN-címkék
 
-Az FQDN-címkékkel egyszerűen engedélyezheti a jól ismert Azure-szolgáltatások hálózati forgalmát a tűzfalon keresztül. Tegyük fel például, hogy engedélyezni kívánja a Windows Update hálózati forgalmát a tűzfalon keresztül. Létrehozhat egy alkalmazásszabályt, és hozzáadhatja a Windows Update címkéjét. A Windows Update hálózati forgalma ezután akadálytalanul áthaladhat a tűzfalon.
+Az FQDN-címkék megkönnyítik a jól ismert Azure-szolgáltatáshálózati forgalmat a tűzfalon keresztül. Tegyük fel például, hogy engedélyezni kívánja a Windows Update hálózati forgalmát a tűzfalon keresztül. Létrehozhat egy alkalmazásszabályt, és hozzáadhatja a Windows Update címkéjét. A Windows Update hálózati forgalma ezután akadálytalanul áthaladhat a tűzfalon.
 
 ## <a name="service-tags"></a>Szolgáltatáscímkék
 
@@ -118,7 +118,8 @@ A nem TCP/UDP-protokollokra (például ICMP) vonatkozó hálózati szűrési sza
 |Az SQL FQDN-szűrés támogatása csak proxy módban (1433-as port)|Az Azure SQL Database, az Azure SQL Data Warehouse és az Azure SQL felügyelt példány esetén:<br><br>Az előzetes verzió során az SQL FQDN-szűrés csak proxy módban (1433-as port) támogatott.<br><br>Az Azure SQL IaaS esetén:<br><br>Ha nem szabványos portokat használ, megadhatja ezeket a portokat az alkalmazásszabályokban.|Sql átirányítási módban, amely az alapértelmezett, ha az Azure-on belülről csatlakozik, ehelyett szűrheti a hozzáférést az SQL szolgáltatáscímke használatával az Azure Firewall hálózati szabályok részeként.
 |A 25-ös TCP-port kimenő forgalma nem engedélyezett| A 25-ös TCP-portot használó kimenő SMTP-kapcsolatok le vannak tiltva. A 25-ös portot elsősorban a nem hitelesített e-mailek kézbesítéséhez használják. Ez a virtuális gépek alapértelmezett platformviselkedése. További információt a [Kimenő SMTP-kapcsolattal kapcsolatos problémák elhárítása az Azure-ban](../virtual-network/troubleshoot-outbound-smtp-connectivity.md)című témakörben talál. Azonban a virtuális gépekkel ellentétben jelenleg nem lehetséges ez a funkció az Azure Firewall.|Kövesse az ajánlott módszert az E-mail küldéséhez az SMTP hibaelhárítási cikkben dokumentált módon. Vagy zárja ki azt a virtuális gépet, amelynek kimenő SMTP-hozzáférést kell biztosítania az alapértelmezett útvonalról a tűzfalhoz, és ehelyett közvetlenül az internethez konfigurálja a kimenő hozzáférést.
 |Az aktív FTP nem támogatott|Az aktív FTP le van tiltva az Azure Tűzfalon az FTP-port paranccsal történő FTP-visszafordulási támadások elleni védelem érdekében.|Használhatja passzív FTP helyett. A tűzfalon továbbra is kifejezetten meg kell nyitnia a 20-as és 21-es TCP-portokat.
-|Az SNAT-port kihasználtsági mutatója 0%-ot mutat|Az Azure Firewall SNAT-port kihasználtsági metrikája 0%-os használatot mutathat még SNAT-portok használata esetén is. Ebben az esetben a metrika használata a tűzfal állapotmetrika részeként helytelen eredményt ad.|Ezt a problémát kijavították, és a termelésre való bevezetés 2020 májusára irányul. Bizonyos esetekben a tűzfal újratelepítése megoldja a problémát, de nem konzisztens. Köztes megoldásként csak a tűzfal állapotával keresse meg az *állapot=degradálódott*, az *állapot=nem kifogástalan.* Port kimerültség jelenik meg *a leromlott*. *Nem kifogástalan* van fenntartva a későbbi használatra, ha a több metrikák hatással van a tűzfal állapotát. 
+|Az SNAT-port kihasználtsági mutatója 0%-ot mutat|Az Azure Firewall SNAT-port kihasználtsági metrikája 0%-os használatot mutathat még SNAT-portok használata esetén is. Ebben az esetben a metrika használata a tűzfal állapotmetrika részeként helytelen eredményt ad.|Ezt a problémát kijavították, és a termelésre való bevezetés 2020 májusára irányul. Bizonyos esetekben a tűzfal újratelepítése megoldja a problémát, de nem konzisztens. Köztes megoldásként csak a tűzfal állapotával keresse meg az *állapot=degradálódott*, az *állapot=nem kifogástalan.* Port kimerültség jelenik meg *a leromlott*. *Nem kifogástalan* van fenntartva a későbbi használatra, ha a több metrikák hatással van a tűzfal állapotát.
+|A DNST nem támogatott a kényszerített bújtatás engedélyezve|A kényszerített bújtatásengedélyezéssel telepített tűzfalak az aszimmetrikus útválasztás miatt nem támogatják az internetről érkező bejövő hozzáférést.|Ez szándékosan az aszimmetrikus útválasztás miatt van. A bejövő kapcsolatok visszatérési útvonala a helyszíni tűzfalon keresztül történik, amely nem látta a létrehozott kapcsolatot.
 
 ## <a name="next-steps"></a>További lépések
 

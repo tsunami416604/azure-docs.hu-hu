@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 485eb14938fc7e490ea2d68c9090cdfdbf01cc8f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1bdc089bb89a732e329bf7d3ffd3d5b5c09ba408
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78252562"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637245"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>Rövid útmutató: Privát végpont létrehozása az Azure Portal használatával
 
@@ -39,9 +39,9 @@ Ebben a szakaszban a következő paramétereket kell lecserélnie az alábbi inf
 | **\<erőforráscsoport-név>**  | myResourceGroup |
 | **\<virtuális hálózat neve>** | myVirtualNetwork          |
 | **\<régiónév>**          | USA nyugati középső régiója    |
-| **\<IPv4-címtér>**   | 10.1.0.0\16          |
+| **\<IPv4-címtér>**   | 10.1.0.0/16          |
 | **\<alhálózat-név>**          | mySubnet        |
-| **\<alhálózati címtartomány>** | 10.1.0.0\24          |
+| **\<alhálózati címtartomány>** | 10.1.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 

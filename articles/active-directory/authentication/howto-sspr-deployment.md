@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 785a8a031a10232a37b235711ba919fdc1df35d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a7be99959c2ae420cff667491f68c40dfa0862a9
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77061417"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652393"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset"></a>Azure Active Directory önkiszolgáló jelszó-visszaállítás megtervezése
 
@@ -66,7 +66,7 @@ A díjszabásról az [Azure Active Directory díjszabása](https://azure.microso
 
 ### <a name="training-resources"></a>Képzési források
 
-| Források| Hivatkozás és leírás |
+| További források| Hivatkozás és leírás |
 | - | - |
 | Videók| [Tegye hatékonyabbá a felhasználókat a jobb informatikai méretezhetőséggel](https://youtu.be/g9RpRnylxS8) 
 | |[Mi az önkiszolgáló jelszó-visszaállítás?](https://youtu.be/hc97Yx5PJiM)|

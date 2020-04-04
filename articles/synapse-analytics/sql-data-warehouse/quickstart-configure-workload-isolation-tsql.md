@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: c4920b2a5b4ff0b1a94fa8fa0e83f72761802b97
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: d3d1b9af0b26fa775beb78b313937890cb9287b3
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583799"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633761"
 ---
 # <a name="quickstart-configure-workload-isolation-using-t-sql"></a>Gyorsútmutató: A számítási feladatok elkülönítésének konfigurálása a T-SQL használatával
 
@@ -25,13 +25,11 @@ Ebben a rövid útmutatóban gyorsan létrehozhat egy számítási feladatok cso
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot, mielőtt elkezdené.
 
 > [!NOTE]
-> A Synapse SQL-készlet létrehozása az Azure Synapse Analytics-ben egy új számlázható szolgáltatást eredményezhet.  További információ: [Azure Synapse Analytics pricing](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
->
->
+> Sql Analytics-példány létrehozása az Azure Synapse Analytics eredményezhet egy új számlázható szolgáltatás.  További információ: [Azure Synapse Analytics pricing](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 
 ## <a name="prerequisites"></a>Előfeltételek
- 
-Ez a rövid útmutató feltételezi, hogy már rendelkezik egy Synapse SQL-készlet az Azure Synapse, és hogy rendelkezik CONTROL DATABASE-engedélyekkel. Ha létre kell hoznia egyet, kövesse a [Létrehozás és csatlakozás – portál](create-data-warehouse-portal.md) útmutatót egy **mySampleDataWarehouse** nevű adattárház létrehozásához.
+
+Ez a rövid útmutató feltételezi, hogy már rendelkezik egy SQL Analytics-példány az Azure Synapse, és hogy rendelkezik CONTROL DATABASE-engedélyekkel. Ha létre kell hoznia egyet, kövesse a [Létrehozás és csatlakozás – portál](create-data-warehouse-portal.md) útmutatót egy **mySampleDataWarehouse** nevű adattárház létrehozásához.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -62,12 +60,14 @@ END
 ```
 
 ## <a name="create-a-workload-group"></a>Számítási feladatcsoport létrehozása
+
 Hozzon létre egy [számítási feladatok csoportja](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) dataloads 20%-os elkülönítéssel.
+
 ```sql
 CREATE WORKLOAD GROUP DataLoads
-WITH ( MIN_PERCENTAGE_RESOURCE = 20   
+WITH ( MIN_PERCENTAGE_RESOURCE = 20
       ,CAP_PERCENTAGE_RESOURCE = 100
-      ,REQUEST_MIN_RESOURCE_GRANT_PERCENT = 5) 
+      ,REQUEST_MIN_RESOURCE_GRANT_PERCENT = 5)
 ;
 ```
 
@@ -86,15 +86,15 @@ WITH (WORKLOAD_GROUP = 'DataLoads'
 
 ```sql
 --Workload groups
-SELECT * FROM 
+SELECT * FROM
 sys.workload_management_workload_groups
 
 --Workload classifiers
-SELECT * FROM 
+SELECT * FROM
 sys.workload_management_workload_classifiers
 
 --Run-time values
-SELECT * FROM 
+SELECT * FROM
 sys.dm_workload_management_workload_groups_stats
 ```
 

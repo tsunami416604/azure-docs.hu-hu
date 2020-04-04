@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 02/12/2020
 ms.author: shvija
-ms.openlocfilehash: 6dcbf0ad0f6678d892c5c02446cac09b4325384c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7d3525bc7a25550a79ceeb008e3c69c77a56aa0a
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283650"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632874"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Azure Event Hubs használata Apache Kafka-alkalmazásokból
 Az Event Hubs egy Kafka-végpontot biztosít, amelyet a meglévő Kafka alapú alkalmazások a saját Kafka-fürt futtatása alternatívájaként használhatnak. Az Event Hubs támogatja [az Apache Kafka 1.0-s és újabb protokollt,](https://kafka.apache.org/documentation/)és együttműködik a meglévő Kafka alkalmazásokkal, beleértve a MirrorMakert is.  
@@ -94,16 +94,6 @@ Itt van a lista a Kafka funkciók, amelyek még nem támogatott:
 *   Kafka patakok
 
 ## <a name="next-steps"></a>További lépések
-
-Ez a cikk a Kafka eseményközpontok című bemutatkozását ismerteti. További információ: az alábbi hivatkozások:
-
-- [Eseményközpont létrehozása](event-hubs-create.md)
-- [Streamelés az Event Hubsba a Kafka-alkalmazásokból](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [Kafka-közvetítő tükrözése egy eseményközpontba](event-hubs-kafka-mirror-maker-tutorial.md)
-- [Apache Spark csatlakoztatása egy eseményközponthoz](event-hubs-kafka-spark-tutorial.md)
-- [Apache Flink csatlakoztatása egy eseményközponthoz](event-hubs-kafka-flink-tutorial.md)
-- [A Kafka Connect integrálása egy eseményközponttal](event-hubs-kafka-connect-tutorial.md)
-- [Akka-adatfolyamok csatlakoztatása eseményközponthoz](event-hubs-kafka-akka-streams-tutorial.md)
-- [További példák a GitHubon](https://github.com/Azure/azure-event-hubs-for-kafka)
+Ez a cikk a Kafka eseményközpontok című bemutatkozását ismerteti. További információ: [Apache Kafka fejlesztői útmutató az Azure Event Hubs-hoz.](apache-kafka-developer-guide.md)
 
 

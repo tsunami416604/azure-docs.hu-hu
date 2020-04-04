@@ -11,18 +11,20 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: ef5be63b2068297aedf4cf12d914da09b1efed41
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 4eef8a3a83456a9f2066311b9339b26b83afa009
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583822"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633804"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Teljesítmény-finomhangolás eredményhalmaz gyorsítótárazásával
 
-Ha az eredményhalmaz gyorsítótárazása engedélyezve van, a Szinapszis SQL-készlet automatikusan gyorsítótárazza a lekérdezési eredményeket a felhasználói adatbázisban ismétlődő használatra.  Ez lehetővé teszi, hogy a lekérdezés-végrehajtások közvetlenül a megőrzött gyorsítótárból kapjanak eredményeket, így nincs szükség újraszámításra.   Az eredményhalmaz-gyorsítótárazás javítja a lekérdezési teljesítményt és csökkenti a számítási erőforrás-használatot.  Emellett a gyorsítótárazott eredményhalmazt használó lekérdezések nem használnak egyidejűségi tárolóhelyeket, és így nem számítanak bele a meglévő egyidejűségi korlátokba. A biztonság érdekében a felhasználók csak akkor férhetnek hozzá a gyorsítótárazott eredményekhez, ha ugyanolyan adatelérési engedélyekkel rendelkeznek, mint a gyorsítótárazott eredményeket létrehozó felhasználók.  
+Ha az eredményhalmaz-gyorsítótárazás engedélyezve van, az SQL Analytics automatikusan gyorsítótárazza a lekérdezési eredményeket a felhasználói adatbázisban ismétlődő használat érdekében.  Ez lehetővé teszi, hogy a lekérdezés-végrehajtások közvetlenül a megőrzött gyorsítótárból kapjanak eredményeket, így nincs szükség újraszámításra.   Az eredményhalmaz-gyorsítótárazás javítja a lekérdezési teljesítményt és csökkenti a számítási erőforrás-használatot.  Emellett a gyorsítótárazott eredményhalmazt használó lekérdezések nem használnak egyidejűségi tárolóhelyeket, és így nem számítanak bele a meglévő egyidejűségi korlátokba. A biztonság érdekében a felhasználók csak akkor férhetnek hozzá a gyorsítótárazott eredményekhez, ha ugyanolyan adatelérési engedélyekkel rendelkeznek, mint a gyorsítótárazott eredményeket létrehozó felhasználók.  
 
 ## <a name="key-commands"></a>Billentyűparancsok
+
+[Felhasználói adatbázis eredménykészletének be- és kikapcsolása](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 [Felhasználói adatbázis eredménykészletének be- és kikapcsolása](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
@@ -35,6 +37,7 @@ Ha az eredményhalmaz gyorsítótárazása engedélyezve van, a Szinapszis SQL-k
 ## <a name="whats-not-cached"></a>Mi nincs gyorsítótárazva  
 
 Ha az eredményhalmaz-gyorsítótárazás be van kapcsolva egy adatbázisban, a rendszer az összes lekérdezéshez gyorsítótárba helyezi az eredményeket, amíg a gyorsítótár meg nem telik, kivéve ezeket a lekérdezéseket:
+
 - Nem determinisztikus függvényeket használó lekérdezések, például DateTime.Now()
 - Felhasználó által definiált függvényeket használó lekérdezések
 - Olyan táblákat használó lekérdezések, amelyeknél a sorszintű biztonság vagy az oszlopszintű biztonság engedélyezve van
@@ -47,9 +50,9 @@ Ha az eredményhalmaz-gyorsítótárazás be van kapcsolva egy adatbázisban, a 
 Futtassa ezt a lekérdezést a lekérdezés eredményhalmaz-gyorsítótárazási műveletei által megtett időre:
 
 ```sql
-SELECT step_index, operation_type, location_type, status, total_elapsed_time, command 
-FROM sys.dm_pdw_request_steps 
-WHERE request_id  = <'request_id'>; 
+SELECT step_index, operation_type, location_type, status, total_elapsed_time, command
+FROM sys.dm_pdw_request_steps
+WHERE request_id  = <'request_id'>;
 ```
 
 Íme egy példa kimenet egy lekérdezés tletiltva eredménykészlet gyorsítótárazás.
@@ -63,31 +66,34 @@ WHERE request_id  = <'request_id'>;
 ## <a name="when-cached-results-are-used"></a>Gyorsítótárazott eredmények használata esetén
 
 A gyorsítótárazott eredményhalmazt újra felhasználja a rendszer egy lekérdezéshez, ha az alábbi követelmények mindegyike teljesül:
+
 - A lekérdezést futtató felhasználó hozzáfér a lekérdezésben hivatkozott összes táblához.
 - Pontos egyezés van az új lekérdezés és az eredményhalmaz gyorsítótárát létrehozó előző lekérdezés között.
 - Nincs adat- vagy sémaváltozás azokban a táblákban, amelyekből a gyorsítótárazott eredményhalmaz létrejött.
 
-Futtassa ezt a parancsot annak ellenőrzéséhez, hogy a lekérdezés végrehajtása eredménygyorsítótár-találattal vagy -tévesztéssel történt-e. A result_set_cache oszlop 1-et ad vissza a gyorsítótár letöréséhez, 0-t a gyorsítótár-tévesztéshez, és negatív értékeket, amelyek miatt az eredménykészlet-gyorsítótárazás nem volt használva. Ellenőrizze [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016-au7) a részleteket.
+Futtassa ezt a parancsot annak ellenőrzéséhez, hogy a lekérdezés végrehajtása eredménygyorsítótár-találattal vagy -tévesztéssel történt-e. A result_set_cache oszlop 1-et ad vissza a gyorsítótár letöréséhez, 0-t a gyorsítótár-tévesztéshez, és negatív értékeket, amelyek miatt az eredménykészlet-gyorsítótárazás nem volt használva. Ellenőrizze [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) a részleteket.
 
 ```sql
 SELECT request_id, command, result_set_cache FROM sys.dm_pdw_exec_requests
 WHERE request_id = <'Your_Query_Request_ID'>
 ```
 
-## <a name="manage-cached-results"></a>Gyorsítótárazott eredmények kezelése 
+## <a name="manage-cached-results"></a>Gyorsítótárazott eredmények kezelése
 
 Az eredményhalmaz gyorsítótárának maximális mérete adatbázisonként 1 TB.  A gyorsítótárazott eredmények automatikusan érvénytelenítik, amikor az alapul szolgáló lekérdezési adatok megváltoznak.  
 
-A gyorsítótár-kilakoltatás kezelése automatikusan az alábbi ütemezés szerint történik: 
-- 48 óránként, ha az eredményhalmazt nem használták vagy érvénytelenítették. 
+A gyorsítótár-kilakoltatást az SQL Analytics automatikusan kezeli az alábbi ütemezés szerint:
+
+- 48 óránként, ha az eredményhalmazt nem használták vagy érvénytelenítették.
 - Amikor az eredményhalmaz gyorsítótára megközelíti a maximális méretet.
 
-A felhasználók manuálisan kiüríthetik a teljes eredményhalmaz gyorsítótárát az alábbi lehetőségek egyikével: 
-- Az adatbázis eredményhalmaz-gyorsítótár-szolgáltatásának kikapcsolása 
+A felhasználók manuálisan kiüríthetik a teljes eredményhalmaz gyorsítótárát az alábbi lehetőségek egyikével:
+
+- Az adatbázis eredményhalmaz-gyorsítótár-szolgáltatásának kikapcsolása
 - DbCC DROPRESULTSETCACHE futtatása az adatbázishoz való csatlakozás közben
 
 Az adatbázis szüneteltetése nem üríti ki a gyorsítótárazott eredményhalmazt.  
 
 ## <a name="next-steps"></a>További lépések
 
-További fejlesztési tippeket a [fejlesztés áttekintése című témakörben talál.](sql-data-warehouse-overview-develop.md) 
+További fejlesztési tippeket a [fejlesztés áttekintése című témakörben talál.](sql-data-warehouse-overview-develop.md)

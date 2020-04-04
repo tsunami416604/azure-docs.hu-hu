@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 12/17/2019
+ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: 93a5a29c225912a48cf99ba6126690c298dfef9d
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 3e7cd96b979fb97d7b50b84907881fe59d03e295
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78925510"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80658988"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -93,4 +93,4 @@ Most már készen áll az alkalmazás megépítésére és tesztelésére.
 
 ## <a name="next-steps"></a>További lépések
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [footer](../footer.md)]

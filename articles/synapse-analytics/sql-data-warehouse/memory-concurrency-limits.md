@@ -11,17 +11,19 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: c427c832eb613dddbff33ef6e67af63112e2f136
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 56ab49949b4ea2a92bc591042b2d43a7f7b2dc63
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586056"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632682"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Memória- és egyidejűségi korlátok az Azure Synapse Analytics számára
+
 Tekintse meg a memória és egyidejűségi korlátok lerendelt különböző teljesítményszintek és erőforrásosztályok az Azure Synapse Analytics.  
 
 ## <a name="data-warehouse-capacity-settings"></a>Adatraktár kapacitásbeállításai
+
 Az alábbi táblázatok az adattárház maximális kapacitását mutatják be különböző teljesítményszinteken. A teljesítményszint módosításáról a [Számítási - portál méretezése](quickstart-scale-compute-portal.md)című témakörben található.
 
 ### <a name="service-levels"></a>Szolgáltatási szintek
@@ -50,7 +52,8 @@ A szolgáltatási szintek DW100c-től DW30000c-ig terjednek.
 A maximális szolgáltatási szint DW30000c, amely 60 számítási csomóponttal és számítási csomópontonként egy disztribúcióval rendelkezik. A DW30000c 600 TB-os adattárháza például számítási csomópontonként körülbelül 10 TB-ot dolgoz fel.
 
 ## <a name="concurrency-maximums-for-workload-groups"></a>Egyidejűségi maximumok a munkaterhelés-csoportokhoz
-A számítási [feladatok csoportjainak](sql-data-warehouse-workload-isolation.md)bevezetésével az egyidejűségi résidők fogalma már nem érvényes.  A kérésenkénti erőforrások felosztása százalékalapon történik, és a számítási feladatcsoport-definícióban vannak megadva.  Azonban még az egyidejűségi tárolóhelyek eltávolításával is vannak minimális erőforrások szükségesek a lekérdezések alapján a szolgáltatási szint alapján.  Az alábbi táblázat a lekérdezésenként szükséges erőforrások minimális mennyiségét és az elérhető kapcsolódó egyidejűséget határozta meg. 
+
+A számítási [feladatok csoportjainak](sql-data-warehouse-workload-isolation.md)bevezetésével az egyidejűségi résidők fogalma már nem érvényes.  A kérésenkénti erőforrások felosztása százalékalapon történik, és a számítási feladatcsoport-definícióban vannak megadva.  Azonban még az egyidejűségi tárolóhelyek eltávolításával is vannak minimális erőforrások szükségesek a lekérdezések alapján a szolgáltatási szint alapján.  Az alábbi táblázat a lekérdezésenként szükséges erőforrások minimális mennyiségét és az elérhető kapcsolódó egyidejűséget határozta meg.
 
 |Szolgáltatási szint|Egyidejű lekérdezések maximális|Min % támogatott REQUEST_MIN_RESOURCE_GRANT_PERCENT|
 |---|---|---|
@@ -73,7 +76,8 @@ A számítási [feladatok csoportjainak](sql-data-warehouse-workload-isolation.m
 ||||
 
 ## <a name="concurrency-maximums-for-resource-classes"></a>Egyidejűségi maximumok erőforrásosztályokhoz
-Annak érdekében, hogy minden lekérdezés elegendő erőforrással rendelkezzen a hatékony végrehajtáshoz, az erőforrás-kihasználtságot az egyes lekérdezésekhez az egyidejűségi tárolóhelyek hozzárendelésével követi nyomon a rendszer. A rendszer a lekérdezéseket a fontosság és az egyidejűségi tárolóhelyek alapján várólistába helyezi. A lekérdezések a várólistában várnak, amíg elegendő egyidejűségi tárolóhely nem érhető el. [A fontosság](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance) és az egyidejűségi tárolóhelyek határozzák meg a PROCESSZOR rangsorolását. További információ: [A munkaterhelés elemzése](analyze-your-workload.md)
+
+Annak érdekében, hogy minden lekérdezés elegendő erőforrással rendelkezzen a hatékony végrehajtáshoz, az Sql Analytics az Azure Synapse-ben úgy követi nyomon az erőforrás-kihasználtságot, hogy minden lekérdezéshez aconcurrency slots-tárolóhelyeket rendel hozzá. A rendszer a lekérdezéseket a fontosság és az egyidejűségi tárolóhelyek alapján várólistába helyezi. A lekérdezések a várólistában várnak, amíg elegendő egyidejűségi tárolóhely nem érhető el. [A fontosság](sql-data-warehouse-workload-importance.md) és az egyidejűségi tárolóhelyek határozzák meg a PROCESSZOR rangsorolását. További információ: [A munkaterhelés elemzése](analyze-your-workload.md)
 
 **Statikus erőforrásosztályok**
 
@@ -121,11 +125,11 @@ Az alábbi táblázat az egyes [dinamikus erőforrás-osztályok](resource-class
 | DW15000c      | 32                         |  600                        | 18                    | 60                     | 132                   | 420                    |
 | DW30000c      | 32                         | 1200                        | 36                    | 120                    | 264                   | 840                    |
 
-
-Ha nincs elég szabad egyidejűségi bővítőhely a lekérdezés-végrehajtás elindításához, a lekérdezések várólistára kerülnek, és a fontosság alapján hajtják végre.  Ha van egyenértékű fontossági, lekérdezések hajtják végre az első-in, first-out alapon.  A lekérdezések befejeződésével, és a lekérdezések és bővítőhelyek száma a korlátok alá esik, az SQL Data Warehouse várólistás lekérdezéseket szabadít fel. 
+Ha nincs elég szabad egyidejűségi bővítőhely a lekérdezés-végrehajtás elindításához, a lekérdezések várólistára kerülnek, és a fontosság alapján hajtják végre.  Ha van egyenértékű fontossági, lekérdezések hajtják végre az első-in, first-out alapon.  A lekérdezések befejeződésével, és a lekérdezések és bővítőhelyek száma a korlátok alá esik, az SQL Data Warehouse várólistás lekérdezéseket szabadít fel.
 
 ## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni arról, hogyan használhatja ki az erőforrásosztályokat a munkaterhelés további optimalizálása érdekében, kérjük, olvassa el az alábbi cikkeket:
+
 * [Erőforrásosztályok a munkaterhelés-kezeléshez](resource-classes-for-workload-management.md)
 * [A munkaterhelés elemzése](analyze-your-workload.md)

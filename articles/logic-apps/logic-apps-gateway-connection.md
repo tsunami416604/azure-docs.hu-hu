@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
-ms.date: 11/06/2019
-ms.openlocfilehash: 29c1aaf18ea45d869d32a8817aeb03faa3b67c32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 02/14/2020
+ms.openlocfilehash: 096943ff796f9c12c7f8715cadce5c3085965d4d
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75456577"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657140"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Csatlakozás helyszíni adatforrásokhoz az Azure Logic Appsből
 
@@ -59,6 +59,9 @@ Az Azure Logic Apps támogatja az olvasási és írási műveleteket az adatátj
 * Az átjáró telepítése még nincs regisztrálva, és egy másik Azure-átjáró-erőforrás igényelt.
 
   Amikor létrehoz egy átjáró-erőforrást az Azure Portalon, kiválaszt egy átjáró-telepítést, amely az átjáró-erőforráshoz kapcsolódik, és csak az átjáró-erőforráshoz kapcsolódik. Az Azure Logic Apps, helyszíni eseményindítók és műveletek, majd az átjáró erőforrás helyszíni adatforrásokhoz való csatlakozáshoz. Ezekben az eseményindítókban és műveletekben kiválaszthatja az Azure-előfizetést és a használni kívánt átjáró-erőforrást. Minden átjáró-erőforrás csak egy átjáró-telepítésre hivatkozik, amely csak egy Azure-fiókra hivatkozik.
+
+  > [!NOTE]
+  > Csak az átjáró-rendszergazda hozhat létre az átjáró-erőforrást az Azure Portalon. Jelenleg a szolgáltatásegyszerű kezek nem támogatott. 
 
 <a name="create-gateway-resource"></a>
 

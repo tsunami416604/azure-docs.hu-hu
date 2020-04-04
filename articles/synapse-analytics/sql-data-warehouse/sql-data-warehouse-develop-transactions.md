@@ -1,6 +1,6 @@
 ---
-title: Tranzakciók használata
-description: Tippek a tranzakciók megvalósításához az Azure SQL Data Warehouse-ban a megoldások fejlesztéséhez.
+title: Tranzakciók használata a Synapse SQL-készletben
+description: Ez a cikk tippeket tartalmaz a tranzakciók megvalósításához és a megoldások fejlesztéséhez a Synapse SQL-készletben.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,26 +11,30 @@ ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a14201131eac5ce1efc4020c9ce0f40a80cac8a3
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: fdbffba7bee84c32d11f8b60431a35f185d9e637
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351564"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633432"
 ---
-# <a name="using-transactions-in-sql-data-warehouse"></a>Tranzakciók használata az SQL Data Warehouse-ban
-Tippek a tranzakciók megvalósításához az Azure SQL Data Warehouse-ban a megoldások fejlesztéséhez.
+# <a name="use-transactions-in-synapse-sql-pool"></a>Tranzakciók használata a Synapse SQL-készletben
+Ez a cikk tippeket tartalmaz a tranzakciók megvalósításához és a megoldások fejlesztéséhez az SQL-készletben.
 
 ## <a name="what-to-expect"></a>Mire számíthat
-Ahogy az várható volt, az SQL Data Warehouse támogatja a tranzakciók at az adattárház munkaterhelés részeként. Az SQL Data Warehouse teljesítményének nagy méretekben való fenntartása érdekében azonban egyes funkciók korlátozottak az SQL Server kiszolgálóhoz képest. Ez a cikk kiemeli a különbségeket, és felsorolja a többi. 
+Ahogy az várható volt, az SQL-készlet támogatja a tranzakciók at az adattárház számítási feladatok részeként. Az SQL-készlet nagy méretekben való fenntartásának biztosítása érdekében azonban egyes szolgáltatások korlátozottak az SQL Server kiszolgálóhoz képest. Ez a cikk kiemeli a különbségeket. 
 
 ## <a name="transaction-isolation-levels"></a>Tranzakcióelkülönítési szintek
-Az SQL Data Warehouse ACID tranzakciókat valósít meg. A tranzakciós támogatás elkülönítési szintje alapértelmezés szerint READ UNCOMMITTED.  A véglegesített pillanatkép-elkülönítés olvasása a felhasználói adatbázis READ_COMMITTED_SNAPSHOT adatbázisbeállításának bekapcsolásával módosítható, amikor a fő adatbázishoz csatlakozik.  Ha engedélyezve van, az adatbázis összes tranzakciója a READ COMMITTED SNAPSHOT ISOLATION alatt történik, és a READ UNCOMMITTED beállítás munkamenet szinten nem lesz tiszteletben tartva. A részletekért ellenőrizze [az ALTER ADATBÁZIS-BEÁLLÍTÁS beállításait (Transact-SQL).](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)
+Az SQL-készlet ACID-tranzakciókat valósít meg. A tranzakciós támogatás elkülönítési szintje alapértelmezés szerint READ UNCOMMITTED.  A véglegesített pillanatkép-elkülönítés olvasása a felhasználói adatbázis READ_COMMITTED_SNAPSHOT adatbázisbeállításának bekapcsolásával módosítható, amikor a fő adatbázishoz csatlakozik.  
+
+Ha engedélyezve van, az adatbázis összes tranzakciója a READ COMMITTED SNAPSHOT ISOLATION alatt történik, és a READ UNCOMMITTED beállítás munkamenet szinten nem lesz tiszteletben tartva. A részletekért ellenőrizze [az ALTER ADATBÁZIS-BEÁLLÍTÁS beállításait (Transact-SQL).](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)
 
 ## <a name="transaction-size"></a>Tranzakció mérete
-Egyetlen adatmódosítási tranzakció mérete korlátozott. A korlát felosztásonként kerül alkalmazásra. Ezért a teljes felosztás úgy számítható ki, hogy a korlátot megszorozza az eloszlási számmal. A tranzakció sorainak maximális számának közelítéséhez ossza el az elosztási korlátot az egyes sorok teljes méretével. Változó hosszúságú oszlopok esetén a maximális méret helyett érdemes átlagos oszlophosszt venni.
+Egyetlen adatmódosítási tranzakció mérete korlátozott. A korlát felosztásonként kerül alkalmazásra. Ezért a teljes felosztás úgy számítható ki, hogy a korlátot megszorozza az eloszlási számmal. 
 
-Az alábbi táblázatban a következő feltételezések et tették:
+A tranzakció sorainak maximális számának közelítéséhez ossza el az elosztási korlátot az egyes sorok teljes méretével. Változó hosszúságú oszlopok esetén a maximális méret helyett érdemes átlagos oszlophosszt venni.
+
+A következő táblázatban két feltételezés tanakki:
 
 * Az adatok egyenletes eloszlása történt 
 * Az átlagos sorhossz 250 bájt
@@ -84,14 +88,17 @@ A naplóba írt adatok mennyiségének optimalizálásához és minimalizálás�
 > 
 
 ## <a name="transaction-state"></a>Tranzakció állapota
-Az SQL Data Warehouse a XACT_STATE() függvénnyel jelenti a sikertelen tranzakciót a -2 érték használatával. Ez az érték azt jelenti, hogy a tranzakció sikertelen volt, és csak visszaállításra van megjelölve.
+Az SQL-készlet a XACT_STATE() függvénnyel jelenti a sikertelen tranzakciót a -2 érték használatával. Ez az érték azt jelenti, hogy a tranzakció sikertelen volt, és csak visszaállításra van megjelölve.
 
 > [!NOTE]
-> A -2 használata a XACT_STATE függvény által egy sikertelen tranzakció tanusította az SQL Server függvényének eltérő viselkedését. Az SQL Server a -1 érték segítségével ábrázol egy nem véglegesíthető tranzakciót. Az SQL Server elvisel bizonyos hibákat a tranzakción belül anélkül, hogy nem véglegesíthetőként kellene megjelölni. Például `SELECT 1/0` hibát okozna, de nem kényszeríthet idáig egy tranzakciót. Az SQL Server engedélyezi az olvasást a nem véglegesíthető tranzakcióban is. Az SQL Data Warehouse azonban nem engedélyezi ezt. Ha hiba történik egy SQL Data Warehouse tranzakción belül, az automatikusan a -2 állapotba kerül, és nem tud további kijelölését tenni, amíg az utasítás t nem lett visszaállítva. Ezért fontos ellenőrizni, hogy az alkalmazás kódját, hogy ha használja XACT_STATE(), ahogy lehet, hogy a kód módosítása.
-> 
-> 
+> A -2 használata a XACT_STATE függvény által egy sikertelen tranzakció tanusította az SQL Server függvényének eltérő viselkedését. Az SQL Server a -1 érték segítségével ábrázol egy nem véglegesíthető tranzakciót. Az SQL Server elvisel bizonyos hibákat a tranzakción belül anélkül, hogy nem véglegesíthetőként kellene megjelölni. Például `SELECT 1/0` hibát okozna, de nem kényszerítene egy tranzakciót nem véglegesíthető állapotba. 
 
-Az SQL Server ben például a következő rekreti jegében jelenhet meg egy tranzakció:
+Az SQL Server engedélyezi az olvasást a nem véglegesíthető tranzakcióban is. Az SQL-készlet azonban nem teszi lehetővé ezt. Ha hiba történik egy SQL készlettranzakción belül, az automatikusan a -2 állapotba kerül, és nem tud további kijelölését elkészíteni, amíg az utasítás t nem lett visszaállítva. 
+
+Ezért fontos ellenőrizni, hogy az alkalmazáskódját ellenőrzi, hogy használ-e XACT_STATE() kódot, mivel szükség lehet a kódmódosításokra.
+
+
+Az SQL Server ben például a következő rekreti jetheti a következő tetszést:
 
 ```sql
 SET NOCOUNT ON;
@@ -131,11 +138,11 @@ SELECT @xact_state AS TransactionState;
 
 Az előző kód a következő hibaüzenetet adja:
 
-Msg 111233, Level 16, State 1, 1 1 111233 vonal; Az aktuális tranzakció megszakadt, és a függőben lévő módosítások at visszavonták. Ok: A csak visszaállítási állapotban lévő tranzakció t nem lett kifejezetten visszaállítva DDL, DML vagy SELECT utasítás előtt.
+Msg 111233, Level 16, State 1, 1 1 111233 vonal; Az aktuális tranzakció megszakadt, és a függőben lévő módosítások at visszavonták. A probléma oka az, hogy a csak visszaállítási állapotban lévő tranzakció nem lesz kifejezetten visszaállítva DDL, DML vagy SELECT utasítás előtt.
 
 A ERROR_* függvények kimenete nem lesz lecsökkentve.
 
-Az SQL Data Warehouse-ban a kódot kissé módosítani kell:
+Az SQL készletben a kódot kissé módosítani kell:
 
 ```sql
 SET NOCOUNT ON;
@@ -177,17 +184,19 @@ A várt viselkedés most megfigyelhető. A tranzakció hibáját a rendszer keze
 Minden, ami megváltozott, hogy a rollback a tranzakció kellett történnie, mielőtt az olvasás a hiba információkat a CATCH blokk.
 
 ## <a name="error_line-function"></a>Error_Line() függvény
-Érdemes megjegyezni azt is, hogy az SQL Data Warehouse nem valósítja meg vagy támogatja a ERROR_LINE() függvényt. Ha ez a kódban, el kell távolítania, hogy megfeleljen az SQL Data Warehouse. Az egyenértékű funkciók megvalósításához használjon lekérdezéscímkéket a kódban. További részletek a LABEL cikkben [olvashatók.](sql-data-warehouse-develop-label.md)
+Érdemes megjegyezni, hogy az SQL-készlet nem valósítja meg vagy támogatja a ERROR_LINE() függvényt. Ha ez a kódban, el kell távolítania, hogy megfeleljen az SQL-készlet. 
+
+Az egyenértékű funkciók megvalósításához használjon lekérdezéscímkéket a kódban. További részletek a LABEL cikkben [olvashatók.](sql-data-warehouse-develop-label.md)
 
 ## <a name="using-throw-and-raiserror"></a>A THROW és a RAISERROR használata
-A THROW a kivételek emelésének modernebb megvalósítása az SQL Data Warehouse-ban, de a RAISERROR is támogatott. Van néhány különbség, hogy érdemes figyelni azonban.
+A THROW a legmodernebb megvalósítás a kivételek emelésére az SQL készletben, de a RAISERROR is támogatott. Van néhány különbség, hogy érdemes figyelni azonban.
 
 * A felhasználó által definiált hibaüzenetek száma nem lehet a 100 000-150 000 tartományban a THROW-hez
 * A RAISERROR hibaüzenetek 50 000-re vannak javítva
 * A sys.messages használata nem támogatott
 
 ## <a name="limitations"></a>Korlátozások
-Az SQL Data Warehouse rendelkezik néhány egyéb, tranzakciókkal kapcsolatos korlátozással.
+Sql-készlet nem rendelkezik néhány egyéb korlátozások, amelyek kapcsolódnak a tranzakciókhoz.
 
 Ezek a következők:
 
@@ -199,5 +208,5 @@ Ezek a következők:
 * Nincs támogatás a DDL-hez, például a CREATE TABLE-hez egy felhasználó által definiált tranzakción belül
 
 ## <a name="next-steps"></a>További lépések
-Ha többet szeretne tudni a tranzakciók optimalizálásáról, olvassa el a [Tranzakciók gyakorlati tanácsait.](sql-data-warehouse-develop-best-practices-transactions.md) Az SQL Data Warehouse egyéb bevált módszereiről az [SQL Data Warehouse ajánlott eljárások című témakörben olvashat.](sql-data-warehouse-best-practices.md)
+Ha többet szeretne tudni a tranzakciók optimalizálásáról, olvassa el a [Tranzakciók gyakorlati tanácsait.](sql-data-warehouse-develop-best-practices-transactions.md) Az SQL-készlet egyéb ajánlott eljárásokról az [SQL-készlet ajánlott eljárások című témakörben](sql-data-warehouse-best-practices.md)olvashat.
 

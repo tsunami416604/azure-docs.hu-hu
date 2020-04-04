@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: ace4bc2e46d9e1926da18dedb163657d4f343979
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 01a05755fc18a85a95e9c1bec1c470d37af656d1
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586314"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632233"
 ---
 # <a name="data-warehouse-units-dwus"></a>Adattárház-egységek (DWUs-ok)
 
@@ -24,14 +24,18 @@ Javaslatok az adattárház egységek (DW-k) ideális számának kiválasztásár
 
 ## <a name="what-are-data-warehouse-units"></a>Mik azok az adattárház-egységek?
 
-A [szinapszis SQL-készlet](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) a kiépített analitikus erőforrások gyűjteményét jelöli. Az analitikus erőforrások a PROCESSZOR, a memória és az IO kombinációjaként vannak definiálva. Ez a három erőforrás adattárházegységeknek (DWUs) nevezett számítási méretegységekbe van csomagolva. A DWU a számítási erőforrások és teljesítmény absztrakt, normalizált mértéke. A szolgáltatási szint módosítása megváltoztatja a rendszer számára rendelkezésre álló DWUs-ok számát, ami viszont módosítja a rendszer teljesítményét és költségét.
+A [szinapszis SQL-készlet](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) a kiépített analitikus erőforrások gyűjteményét jelöli. Az analitikus erőforrások a PROCESSZOR, a memória és az IO kombinációjaként vannak definiálva. 
+
+Ez a három erőforrás adattárházegységeknek (DWUs) nevezett számítási méretegységekbe van csomagolva. A DWU a számítási erőforrások és teljesítmény absztrakt, normalizált mértéke. 
+
+A szolgáltatási szint módosítása megváltoztatja a rendszer számára rendelkezésre álló DWUs-ok számát, ami viszont módosítja a rendszer teljesítményét és költségét.
 
 Nagyobb teljesítmény érdekében növelheti az adattárház egységek számát. A kisebb teljesítmény érdekében csökkentse az adattárház-egységeket. A tár és a számítási feladatok költségeinek számlázása külön történik, ezért az adattárházegységek számának módosítása nem befolyásolja a tárolási költségeket.
 
 Az adatraktár-egységek teljesítménye a következő számítási feladatok mérőszámain alapul:
 
-- Milyen gyorsan képes egy szabványos adatraktározási lekérdezés nagy számú sort beszkapogatni, majd összetett összesítést végrehajtani. Ez a művelet I/O és CPU-igényes.
-- Milyen gyorsan tudja az adattárház adatokat betöltése az Azure Storage Blobs vagy az Azure Data Lake. Ez a művelet hálózati és CPU-igényes.
+- Milyen gyorsan képes egy szabványos SQL-készletlekérdezés nagy számú sort beszkapogatni, majd összetett összesítést végrehajtani. Ez a művelet I/O és CPU-igényes.
+- Milyen gyorsan tudja az SQL-készlet adatokat betöltése az Azure Storage Blobs vagy az Azure Data Lake. Ez a művelet hálózati és CPU-igényes.
 - Milyen gyorsan másolhat egy táblát a [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL parancs. Ez a művelet magában foglalja az adatok olvasása a tárolóból, terjesztése a készülék csomópontjai között, és írásban a tároló ba újra. Ez a művelet processzor-, IO- és hálózatigényes.
 
 Növekvő DMU-k:
@@ -42,7 +46,7 @@ Növekvő DMU-k:
 
 ## <a name="service-level-objective"></a>Service Level Objective
 
-A szolgáltatási szint célkitűzés (SLO) az adattárház költség- és teljesítményszintjét meghatározó méretezhetőségi beállítás. A Gen2 SQL-készlet szolgáltatási szintjeit adattárházegységekben (DWU) mérik, például DW2000c.
+A szolgáltatási szint célkitűzés (SLO) a méretezhetőségi beállítás, amely meghatározza az SQL-készlet költség- és teljesítményszintjét. A Gen2 SQL-készlet szolgáltatási szintjeit adattárházegységekben (DWU) mérik, például DW2000c.
 
 A T-SQL-ben a SERVICE_OBJECTIVE beállítás határozza meg az SQL-készlet szolgáltatási szintjét.
 
@@ -56,7 +60,7 @@ CREATE DATABASE mySQLDW
 
 ## <a name="capacity-limits"></a>Kapacitási korlátok
 
-Minden SQL-kiszolgáló (például myserver.database.windows.net) rendelkezik egy [adatbázis-tranzakciós egység (DTU)](../../sql-database/sql-database-service-tiers-dtu.md) kvótával, amely lehetővé teszi az adattárház egységek meghatározott számát. További információt a [munkaterhelés-kezelési kapacitáskorlátok](sql-data-warehouse-service-capacity-limits.md#workload-management)című témakörben talál.
+Minden SQL-kiszolgáló (például myserver.database.windows.net) rendelkezik egy [adatbázis-tranzakciós egység (DTU)](../../sql-database/sql-database-service-tiers-dtu.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) kvótával, amely lehetővé teszi az adattárház egységek meghatározott számát. További információt a [munkaterhelés-kezelési kapacitáskorlátok](sql-data-warehouse-service-capacity-limits.md#workload-management)című témakörben talál.
 
 ## <a name="how-many-data-warehouse-units-do-i-need"></a>Hány adattárházegységre van szükségem
 
@@ -68,7 +72,9 @@ A számítási feladatokhoz legjobb DWU megtalálásának lépései:
 2. Figyelje az alkalmazás teljesítményét, miközben teszteli az adatok betöltését a rendszerbe, megfigyelve a kiválasztott DWUs-ok számát a megfigyelt teljesítményhez képest.
 3. Határozza meg az időszakos csúcsidőszakokra vonatkozó további követelményeket. Előfordulhat, hogy a jelentős csúcsokat és vályúkat mutató munkaterheléseket gyakran kell méretezni.
 
-Az SQL Analytics egy horizontális felskálázási rendszer, amely hatalmas mennyiségű számítási és lekérdezési mennyiségű adatot tud kiépíteni. A skálázás valódi képességeinek megtekintéséhez, különösen a nagyobb DW-k esetén, javasoljuk az adatkészlet méretezése méretezés közbeni méretezését annak érdekében, hogy elegendő adat elegendő adatáll-e a processzorok adagolásához. A skálavizsgálathoz legalább 1 TB-ot javasoljuk.
+Az SQL-készlet egy horizontális felskálázási rendszer, amely hatalmas mennyiségű számítási és lekérdezési mennyiségű adatot tud kiépíteni. 
+
+A skálázás valódi képességeinek megtekintéséhez, különösen a nagyobb DW-k esetén, javasoljuk az adatkészlet méretezése méretezés közbeni méretezését annak érdekében, hogy elegendő adat elegendő adatáll-e a processzorok adagolásához. A skálavizsgálathoz legalább 1 TB-ot javasoljuk.
 
 > [!NOTE]
 >
@@ -172,7 +178,7 @@ A DWU-módosítások állapotának ellenőrzése:
     FROM      sys.databases
     ;
     ```
-    
+
 1. A következő lekérdezés elküldése a művelet állapotának ellenőrzéséhez
 
     ```sql
@@ -182,7 +188,7 @@ A DWU-módosítások állapotának ellenőrzése:
     AND       major_resource_id = 'MySQLDW'
     ;
     ```
-    
+
 Ez a dmv az SQL-készlet különböző felügyeleti műveleteiről ad vissza információkat, például a műveletről és a művelet állapotáról, amely IN_PROGRESS vagy befejeződött.
 
 ## <a name="the-scaling-workflow"></a>A méretezési munkafolyamat

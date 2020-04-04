@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cd922d0e65da627f11e6aab3827cb848c3dd635
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7c6db9ed92161e968b36c75b8bee5a847137c072
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75560522"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631871"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja a Microsoft JIRA SAML SSO-jával
 
@@ -42,7 +42,7 @@ Az Atlassian JIRA kiszolgálóval rendelkező Microsoft Azure Active Directory-f
 Az Azure AD-integráció konfigurálásához a Microsoft JIRA SAML SSO-val a következő elemekre van szüksége:
 
 - Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes [fiókot](https://azure.microsoft.com/free/)kaphat.
-- A JIRA Core and Software 6.4–8.5.1 vagy JIRA Service Desk 3.0–4.6.0 rendszert telepíteni és konfigurálni kell a 64 bites Windows rendszeren
+- A JIRA Core and Software 6.4–8.8.0 vagy JIRA Service Desk 3.0–4.8.0 rendszernek a Windows 64 bites verziójára kell telepítenie és konfigurálnia
 - A JIRA kiszolgáló HTTPS-kompatibilis
 - Megjegyzés: a JIRA Plugin támogatott verzióit az alábbi szakasz ban említi.
 - A JIRA-kiszolgáló elérhető az interneten, különösen az Azure AD bejelentkezési lapjára a hitelesítéshez, és képesnek kell lennie a jogkivonat fogadására az Azure AD-től
@@ -60,8 +60,8 @@ A kezdéshez a következő elemekre van szükség:
 
 ## <a name="supported-versions-of-jira"></a>A JIRA támogatott verziói
 
-* JIRA Core és szoftver: 6.4-8.5.1
-* JIRA ügyfélszolgálat 3.0.0-tól 4.6.0-ig
+* JIRA Core és szoftver: 6.4-8.8.0
+* JIRA ügyfélszolgálat 3.0.0-tól 4.8.0-ig
 * A JIRA támogatja az 5.2.-t is. További részletekért kattintson [a Microsoft Azure Active Directory egyszeri bejelentkezési címre a JIRA 5.2-es csomaghoz.](jira52microsoft-tutorial.md)
 
 > [!NOTE]

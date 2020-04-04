@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b067b18985905b226287f9dd10ad4b937fab6df1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 38f9f85a7e961d426b66a24bb4a5c63f9f0301da
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76767971"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80638066"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Az Azure FarmBeats áttekintése (előzetes verzió)
 
@@ -43,7 +43,25 @@ A Datahub bővíthető API-platformként lett tervezve. Sokkal több szolgáltat
 
 Az Azure FarmBeats accelerator egy minta webalkalmazás, amely a Datahub ra épül. A gyorssegéd ugrás-elindítja a felhasználói felület és a modell fejlesztése. Az Azure FarmBeats gyorsító az Azure FarmBeats API-kat használja. A bevitt érzékelőadatokat diagramként és modellkimenetként ábrázolja térképként. A gyorsító val gyorsan létrehozhat egy farmot, és könnyen lekaphat egy vegetációs indextérképet vagy egy érzékelőelhelyezési térképet az adott farmhoz.
 
-## <a name="resources"></a>Források
+## <a name="role-based-access-control-rbac"></a>Szerepköralapú hozzáférés-vezérlés (RBAC)
+
+A rendszergazda hozzáférési szabályokat definiálhat az Azure FarmBeats-hez az előre definiált szerepkörök egyikének használatával. A szerepkörök határozzák meg, hogy a felhasználó milyen területeken férhet hozzá a felhasználóhoz, és milyen műveleteket hajthat végre. Az Azure FarmBeats-ben kétféle szerepkör létezik – a felhasználók és a partnerek számára.
+
+### <a name="user-roles"></a>Felhasználói szerepkörök
+
+A [rendszergazda felhasználókat vehet fel és kezelhet,](manage-users-in-azure-farmbeats.md) és hozzáférési szintjüket két felhasználói szerepkör alapján határozhatja meg: rendszergazdaés írásvédett.
+
+### <a name="partner-roles"></a>Partneri szerepkörök
+
+A rendszergazda több partnert is hozzáadhat adatszolgáltatóként az Azure FarmBeats-hez. A farmbeats-ben rendelkezésre álló partnerszerepköröket és azok engedélyeit összegezve:
+
+| Partner típusa    |   Műveletek  | Hatókör |
+| ---- | -------- | -------- |
+| Érzékelő partner  |   Létrehozás, olvasás, frissítés <br/> <br/> Olvasás, frissítés | DeviceModel, Eszköz, SensorModel, Érzékelő <br/> <br/> Kiterjesztett típus |
+| Képi partner  |   Létrehozás, olvasás, frissítés <br/> <br/> Olvasás, frissítés <br/> <br/> Olvasás | Jelenet, Jelenetfájl <br/> <br/> Kiterjesztett típus <br/> <br/> Farm |
+| Képi partner  |   Létrehozás, olvasás, frissítés <br/> <br/> Olvasás, frissítés <br/> <br/> Olvasás | WeatherDataModel, WeatherDataLocation, Feladattípus <br/> <br/> Kiterjesztett típus <br/> <br/> Farm |
+
+## <a name="resources"></a>További források
 
 Az Azure FarmBeats-t díjmentesen kínáljuk, és csak a használt Azure-erőforrásokért kell fizetnie. Az alábbi források segítségével többet tudhat meg az ajánlatról:
 

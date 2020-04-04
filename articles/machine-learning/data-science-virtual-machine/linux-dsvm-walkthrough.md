@@ -8,13 +8,13 @@ ms.subservice: data-science-vm
 author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
-ms.date: 07/16/2018
-ms.openlocfilehash: 1d15d53816d916bd28841aae39255685524faa2d
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.date: 04/02/2020
+ms.openlocfilehash: 7292064a1df8aa9bfffcd9a19a03f7b332c0615e
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477872"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632737"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Adattudomány linuxos adatelemzési virtuális géppel az Azure-ban
 
@@ -45,16 +45,22 @@ Ha több tárhelyre van szüksége, létrehozhat további lemezeket, és csatolh
 
 Az adatok letöltéséhez nyisson meg egy terminálablakot, majd futtassa a következő parancsot:
 
-    wget https://archive.ics.uci.edu/ml/machine-learning-databases/spambase/spambase.data
+```bash
+wget --no-check-certificate https://archive.ics.uci.edu/ml/machine-learning-databases/spambase/spambase.data
+```
 
 A letöltött fájlnak nincs fejlécsora. Hozzunk létre egy másik fájlt, amelynek fejléce van. A parancs futtatásával hozzon létre egy fájlt a megfelelő fejlécekkel:
 
-    echo 'word_freq_make, word_freq_address, word_freq_all, word_freq_3d,word_freq_our, word_freq_over, word_freq_remove, word_freq_internet,word_freq_order, word_freq_mail, word_freq_receive, word_freq_will,word_freq_people, word_freq_report, word_freq_addresses, word_freq_free,word_freq_business, word_freq_email, word_freq_you, word_freq_credit,word_freq_your, word_freq_font, word_freq_000, word_freq_money,word_freq_hp, word_freq_hpl, word_freq_george, word_freq_650, word_freq_lab,word_freq_labs, word_freq_telnet, word_freq_857, word_freq_data,word_freq_415, word_freq_85, word_freq_technology, word_freq_1999,word_freq_parts, word_freq_pm, word_freq_direct, word_freq_cs, word_freq_meeting,word_freq_original, word_freq_project, word_freq_re, word_freq_edu,word_freq_table, word_freq_conference, char_freq_semicolon, char_freq_leftParen,char_freq_leftBracket, char_freq_exclamation, char_freq_dollar, char_freq_pound, capital_run_length_average,capital_run_length_longest, capital_run_length_total, spam' > headers
+```bash
+echo 'word_freq_make, word_freq_address, word_freq_all, word_freq_3d,word_freq_our, word_freq_over, word_freq_remove, word_freq_internet,word_freq_order, word_freq_mail, word_freq_receive, word_freq_will,word_freq_people, word_freq_report, word_freq_addresses, word_freq_free,word_freq_business, word_freq_email, word_freq_you, word_freq_credit,word_freq_your, word_freq_font, word_freq_000, word_freq_money,word_freq_hp, word_freq_hpl, word_freq_george, word_freq_650, word_freq_lab,word_freq_labs, word_freq_telnet, word_freq_857, word_freq_data,word_freq_415, word_freq_85, word_freq_technology, word_freq_1999,word_freq_parts, word_freq_pm, word_freq_direct, word_freq_cs, word_freq_meeting,word_freq_original, word_freq_project, word_freq_re, word_freq_edu,word_freq_table, word_freq_conference, char_freq_semicolon, char_freq_leftParen,char_freq_leftBracket, char_freq_exclamation, char_freq_dollar, char_freq_pound, capital_run_length_average,capital_run_length_longest, capital_run_length_total, spam' > headers
+```
 
 Ezután fűzze össze a két fájlt:
 
-    cat spambase.data >> headers
-    mv headers spambaseHeaders.data
+```bash
+cat spambase.data >> headers
+mv headers spambaseHeaders.data
+```
 
 Az adatkészlet többféle statisztikát is lehet az egyes e-mailekhez:
 
@@ -71,51 +77,69 @@ Vizsgáljuk meg az adatokat, és végezzeel el néhány alapvető gépi tanulás
 
 A forgatókönyvben használt kódminták másolatainak beszerezéséhez használja a git segítségével az Azure-Machine-Learning-Data-Science tárház klónozásához. A Git elő van telepítve a DSVM-en. A git parancssorból futtassa a következőt:
 
-    git clone https://github.com/Azure/Azure-MachineLearning-DataScience.git
+```bash
+git clone https://github.com/Azure/Azure-MachineLearning-DataScience.git
+```
 
 Nyisson meg egy terminálablakot, és indítson új R-munkamenetet az R interaktív konzolon. Használhatja az RStudio-t is, amely elő van telepítve a DSVM-en.
 
 Az adatok importálása és a környezet beállítása:
 
-    data <- read.csv("spambaseHeaders.data")
-    set.seed(123)
+```R
+data <- read.csv("spambaseHeaders.data")
+set.seed(123)
+```
 
 Az egyes oszlopok ravonatkozó összefoglaló statisztikáinak megtekintése:
 
-    summary(data)
+```R
+summary(data)
+```
 
 Az adatok eltérő nézete esetén:
 
-    str(data)
+```R
+str(data)
+```
 
 Ez a nézet az egyes változók típusát és az adatkészlet első néhány értékét mutatja.
 
 A **levélszemét** oszlop egész számként lett felolvasva, de valójában egy kategorikus változó (vagy tényező). A típus beállítása:
 
-    data$spam <- as.factor(data$spam)
+```R
+data$spam <- as.factor(data$spam)
+```
 
 Néhány feltáró elemzéshez használja a [ggplot2](https://ggplot2.tidyverse.org/) csomagot, egy népszerű R grafikus könyvtárat, amely elő van telepítve a DSVM-en. A korábban megjelenített összegző adatok alapján összefoglaló statisztikáink vannak a felkiáltójel karakterének gyakoriságáról. Nézzük meg ezeket a frekvenciákat itt fut a következő parancsokat:
 
-    library(ggplot2)
-    ggplot(data) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
+```R
+library(ggplot2)
+ggplot(data) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
+```
 
 Mivel a nulla sáv ferde a telek, nézzük meg szüntetni:
 
-    email_with_exclamation = data[data$char_freq_exclamation > 0, ]
-    ggplot(email_with_exclamation) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
+```R
+email_with_exclamation = data[data$char_freq_exclamation > 0, ]
+ggplot(email_with_exclamation) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
+```
 
 Van egy nem triviális sűrűség felett 1, hogy érdekesnek tűnik. Nézzük csak, hogy az adatok:
 
-    ggplot(data[data$char_freq_exclamation > 1, ]) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
+```R
+ggplot(data[data$char_freq_exclamation > 1, ]) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
+```
 
 Ezután ossza meg a spam versus sonka:
 
-    ggplot(data[data$char_freq_exclamation > 1, ], aes(x=char_freq_exclamation)) +
-    geom_density(lty=3) +
-    geom_density(aes(fill=spam, colour=spam), alpha=0.55) +
-    xlab("spam") +
-    ggtitle("Distribution of spam \nby frequency of !") +
-    labs(fill="spam", y="Density")
+```R
+ggplot(data[data$char_freq_exclamation > 1, ], aes(x=char_freq_exclamation)) +
+geom_density(lty=3) +
+geom_density(aes(fill=spam, colour=spam), alpha=0.55) +
+xlab("spam") +
+ggtitle("Distribution of spam \nby frequency of !") +
+labs(fill="spam", y="Density")
+```
 
 Ezek a példák segíthetnek a hasonló telkek elrajzolásában és a többi oszlop adatainak feltárásában.
 
@@ -128,16 +152,20 @@ Tanítsunk be néhány gépi tanulási modellt, hogy az adatkészletben lévő e
 
 Először ossza fel az adatkészletet betanítási és tesztkészletekre:
 
-    rnd <- runif(dim(data)[1])
-    trainSet = subset(data, rnd <= 0.7)
-    testSet = subset(data, rnd > 0.7)
+```R
+rnd <- runif(dim(data)[1])
+trainSet = subset(data, rnd <= 0.7)
+testSet = subset(data, rnd > 0.7)
+```
 
 Ezután hozzon létre egy döntési fát az e-mailek besorolásához:
 
-    require(rpart)
-    model.rpart <- rpart(spam ~ ., method = "class", data = trainSet)
-    plot(model.rpart)
-    text(model.rpart)
+```R
+require(rpart)
+model.rpart <- rpart(spam ~ ., method = "class", data = trainSet)
+plot(model.rpart)
+text(model.rpart)
+```
 
 Itt az eredmény:
 
@@ -145,99 +173,37 @@ Itt az eredmény:
 
 Annak meghatározásához, hogy milyen jól teljesít a betanítási készleten, használja a következő kódot:
 
-    trainSetPred <- predict(model.rpart, newdata = trainSet, type = "class")
-    t <- table(`Actual Class` = trainSet$spam, `Predicted Class` = trainSetPred)
-    accuracy <- sum(diag(t))/sum(t)
-    accuracy
+```R
+trainSetPred <- predict(model.rpart, newdata = trainSet, type = "class")
+t <- table(`Actual Class` = trainSet$spam, `Predicted Class` = trainSetPred)
+accuracy <- sum(diag(t))/sum(t)
+accuracy
+```
 
 Annak meghatározásához, hogy milyen jól teljesít a tesztkészleten:
 
-    testSetPred <- predict(model.rpart, newdata = testSet, type = "class")
-    t <- table(`Actual Class` = testSet$spam, `Predicted Class` = testSetPred)
-    accuracy <- sum(diag(t))/sum(t)
-    accuracy
+```R
+testSetPred <- predict(model.rpart, newdata = testSet, type = "class")
+t <- table(`Actual Class` = testSet$spam, `Predicted Class` = testSetPred)
+accuracy <- sum(diag(t))/sum(t)
+accuracy
+```
 
 Próbáljunk ki egy véletlenszerű erdőmodellt is. Véletlenszerű erdők vonat számos döntési fák és kimenet egy osztály, amely a mód a besorolások az összes egyes döntési fák. Hatékonyabb gépi tanulási megközelítést biztosítanak, mert korrigálják a döntési famodell túlterhelését a betanítási adatkészletet.
 
-    require(randomForest)
-    trainVars <- setdiff(colnames(data), 'spam')
-    model.rf <- randomForest(x=trainSet[, trainVars], y=trainSet$spam)
+```R
+require(randomForest)
+trainVars <- setdiff(colnames(data), 'spam')
+model.rf <- randomForest(x=trainSet[, trainVars], y=trainSet$spam)
 
-    trainSetPred <- predict(model.rf, newdata = trainSet[, trainVars], type = "class")
-    table(`Actual Class` = trainSet$spam, `Predicted Class` = trainSetPred)
+trainSetPred <- predict(model.rf, newdata = trainSet[, trainVars], type = "class")
+table(`Actual Class` = trainSet$spam, `Predicted Class` = trainSetPred)
 
-    testSetPred <- predict(model.rf, newdata = testSet[, trainVars], type = "class")
-    t <- table(`Actual Class` = testSet$spam, `Predicted Class` = testSetPred)
-    accuracy <- sum(diag(t))/sum(t)
-    accuracy
-
-
-## <a name="deploy-a-model-to-azure-machine-learning-studio-classic"></a>Modell üzembe helyezése az Azure Machine Learning Studio-ban (klasszikus)
-
-[Az Azure Machine Learning Studio (klasszikus)](https://studio.azureml.net/) egy felhőalapú szolgáltatás, amely megkönnyíti a prediktív elemzési modellek készítését és üzembe helyezését. Az Azure Machine Learning Studio (klasszikus) egy szép funkciója, hogy képes bármilyen R-funkciót webszolgáltatásként közzétenni. Az Azure Machine Learning Studio (klasszikus) R-csomag egyszerűvé teszi az üzembe helyezést, közvetlenül a DSVM R-munkamenetéből.
-
-A döntési fa kódjának üzembe helyezéséhez az előző szakaszból jelentkezzen be az Azure Machine Learning Studio (klasszikus). A bejelentkezéshez szüksége van a munkaterület-azonosítóra és egy engedélyezési jogkivonatra. Ezeknek az értékeknek a megkereséséhez és az Azure Machine Learning-változók inicializálásához hajtsa végre az alábbi lépéseket:
-
-1. A bal oldali menüben válassza a **Beállítások lehetőséget.** Figyelje meg a **WORKSPACE-azonosító**értékét.
-
-   ![Az Azure Machine Learning Studio (klasszikus) munkaterület-azonosítója](./media/linux-dsvm-walkthrough/workspace-id.png)
-
-1. Válassza az **Engedélyezési jogkivonatok** lapot. **Primary Authorization Token**
-
-   ![Az Azure Machine Learning Studio (klasszikus) elsődleges engedélyezési jogkivonata](./media/linux-dsvm-walkthrough/workspace-token.png)
-1. Töltse be az **AzureML-csomagot,** majd állítsa be a változók értékeit a tokenés munkaterület-azonosítóval a DSVM R-munkamenetében:
-
-        if(!require("devtools")) install.packages("devtools")
-        devtools::install_github("RevolutionAnalytics/AzureML")
-        if(!require("AzureML")) install.packages("AzureML")
-        require(AzureML)
-        wsAuth = "<authorization-token>"
-        wsID = "<workspace-id>"
-
-1. Egyszerűsítsük le a modellt, hogy ez a bemutató könnyebben megvalósítható legyen. Válassza ki a gyökérhez legközelebb eső döntési fa három változóját, és hozzon létre egy új fát csak a három változó használatával:
-
-        colNames <- c("char_freq_dollar", "word_freq_remove", "word_freq_hp", "spam")
-        smallTrainSet <- trainSet[, colNames]
-        smallTestSet <- testSet[, colNames]
-        model.rpart <- rpart(spam ~ ., method = "class", data = smallTrainSet)
-
-1. Szükségünk van egy előrejelzési függvényre, amely a funkciókat bemenetként veszi fel, és visszaadja az előre jelzett értékeket:
-
-        predictSpam <- function(newdata) {
-        predictDF <- predict(model.rpart, newdata = newdata)
-        return(colnames(predictDF)[apply(predictDF, 1, which.max)])
-        }
-
-1. Hozzon létre egy settings.json fájlt ehhez a munkaterülethez:
-
-        vim ~/.azureml/settings.json
-
-1. Győződjön meg arról, hogy a következő tartalom van a settings.json fájlba:
-
-         {"workspace":{
-           "id": "<workspace-id>",
-           "authorization_token": "<authorization-token>",
-           "api_endpoint": "https://studioapi.azureml.net",
-           "management_endpoint": "https://management.azureml.net"
-         }
-
-
-1. Tegye közzé a **predictSpam** függvényt az AzureML-ben a **publishWebService** függvény használatával:
-
-        ws <- workspace()
-        spamWebService <- publishWebService(ws, fun = predictSpam, name="spamWebService", inputSchema = smallTrainSet, data.frame=TRUE)
-
-1. Ez a függvény veszi a **predictSpam** függvényt, létrehoz egy **spamWebService** nevű webszolgáltatást, amely definiált bemenetekkel és kimenetekkel rendelkezik, majd információt ad vissza az új végpontról.
-
-    Ezzel a paranccsal megtekintheti a legújabb közzétett webszolgáltatás részleteit, beleértve az API-végpontot és a hozzáférési kulcsokat:
-
-        s<-tail(services(ws, name = "spamWebService"), 1)
-        ep <- endpoints(ws,s)
-        ep
-
-1. Próbálja ki a tesztkészlet első 10 sorában:
-
-        consume(ep, smallTestSet[1:10, ])
+testSetPred <- predict(model.rf, newdata = testSet[, trainVars], type = "class")
+t <- table(`Actual Class` = testSet$spam, `Predicted Class` = testSetPred)
+accuracy <- sum(diag(t))/sum(t)
+accuracy
+```
 
 <a name="deep-learning"></a>
 
@@ -268,19 +234,21 @@ A többi szakasz bemutatja, hogyan kell használni a Linux DSVM-re telepített e
 
 [Az XGBoost](https://xgboost.readthedocs.org/en/latest/) gyors és pontos famegvalósítást biztosít.
 
-    require(xgboost)
-    data <- read.csv("spambaseHeaders.data")
-    set.seed(123)
+```R
+require(xgboost)
+data <- read.csv("spambaseHeaders.data")
+set.seed(123)
 
-    rnd <- runif(dim(data)[1])
-    trainSet = subset(data, rnd <= 0.7)
-    testSet = subset(data, rnd > 0.7)
+rnd <- runif(dim(data)[1])
+trainSet = subset(data, rnd <= 0.7)
+testSet = subset(data, rnd > 0.7)
 
-    bst <- xgboost(data = data.matrix(trainSet[,0:57]), label = trainSet$spam, nthread = 2, nrounds = 2, objective = "binary:logistic")
+bst <- xgboost(data = data.matrix(trainSet[,0:57]), label = trainSet$spam, nthread = 2, nrounds = 2, objective = "binary:logistic")
 
-    pred <- predict(bst, data.matrix(testSet[, 0:57]))
-    accuracy <- 1.0 - mean(as.numeric(pred > 0.5) != testSet$spam)
-    print(paste("test accuracy = ", accuracy))
+pred <- predict(bst, data.matrix(testSet[, 0:57]))
+accuracy <- 1.0 - mean(as.numeric(pred > 0.5) != testSet$spam)
+print(paste("test accuracy = ", accuracy))
+```
 
 Az XGBoost pythonból vagy parancssorból is hívhat.
 
@@ -293,45 +261,52 @@ Python-fejlesztés, az Anaconda Python disztribúciók 3.5 és 2.7 telepítve va
 
 Olvassuk el a spambázis egyes adatkészleteit, és osztályozzuk az e-maileket a support vector machines-rel a Scikit-learn-ben:
 
-    import pandas
-    from sklearn import svm
-    data = pandas.read_csv("spambaseHeaders.data", sep = ',\s*')
-    X = data.ix[:, 0:57]
-    y = data.ix[:, 57]
-    clf = svm.SVC()
-    clf.fit(X, y)
+```Python
+import pandas
+from sklearn import svm
+data = pandas.read_csv("spambaseHeaders.data", sep = ',\s*')
+X = data.ix[:, 0:57]
+y = data.ix[:, 57]
+clf = svm.SVC()
+clf.fit(X, y)
+```
 
 Ahhoz, hogy előrejelzések:
 
-    clf.predict(X.ix[0:20, :])
+```Python
+clf.predict(X.ix[0:20, :])
+```
 
 Az Azure Machine Learning-végpont közzétételének bemutatásához készítsünk egy alapvető bb modellt. Az R modell korábbi közzétételekor használt három változót fogjuk használni:
 
-    X = data[["char_freq_dollar", "word_freq_remove", "word_freq_hp"]]
-    y = data.ix[:, 57]
-    clf = svm.SVC()
-    clf.fit(X, y)
+```Python
+X = data[["char_freq_dollar", "word_freq_remove", "word_freq_hp"]]
+y = data.ix[:, 57]
+clf = svm.SVC()
+clf.fit(X, y)
+```
 
 A modell közzététele az Azure Machine Learningben:
 
-    # Publish the model.
-    workspace_id = "<workspace-id>"
-    workspace_token = "<workspace-token>"
-    from azureml import services
-    @services.publish(workspace_id, workspace_token)
-    @services.types(char_freq_dollar = float, word_freq_remove = float, word_freq_hp = float)
-    @services.returns(int) # 0 or 1
-    def predictSpam(char_freq_dollar, word_freq_remove, word_freq_hp):
-        inputArray = [char_freq_dollar, word_freq_remove, word_freq_hp]
-        return clf.predict(inputArray)
+```Python
+# Publish the model.
+workspace_id = "<workspace-id>"
+workspace_token = "<workspace-token>"
+from azureml import services
+@services.publish(workspace_id, workspace_token)
+@services.types(char_freq_dollar = float, word_freq_remove = float, word_freq_hp = float)
+@services.returns(int) # 0 or 1
+def predictSpam(char_freq_dollar, word_freq_remove, word_freq_hp):
+    inputArray = [char_freq_dollar, word_freq_remove, word_freq_hp]
+    return clf.predict(inputArray)
 
-    # Get some info about the resulting model.
-    predictSpam.service.url
-    predictSpam.service.api_key
+# Get some info about the resulting model.
+predictSpam.service.url
+predictSpam.service.api_key
 
-    # Call the model
-    predictSpam.service(1, 1, 1)
-
+# Call the model
+predictSpam.service(1, 1, 1)
+```
 
 > [!NOTE]
 > Ez a beállítás csak a Python 2.7 esetén érhető el. A Python 3.5 még nem támogatott. A futtatáshoz használja az **/anaconda/bin/python2.7 kapcsolót.**
@@ -343,14 +318,14 @@ Az Anaconda disztribúció a DSVM jön egy Jupyter notebook, egy platformfügget
 > [!NOTE]
 > Ha a Python Package Managert (a `pip` parancson keresztül) az aktuális rendszermagban lévő Jupyter notebookból szeretné használni, használja ezt a parancsot a kódcellában:
 >
->   ```python
+>   ```Python
 >    import sys
 >    ! {sys.executable} -m pip install numpy -y
 >   ```
 > 
 > Ha a Conda telepítőt `conda` (a parancson keresztül) az aktuális rendszermagban lévő Jupyter notebookból szeretné használni, használja ezt a parancsot egy kódcellában:
 >
->   ```python
+>   ```Python
 >    import sys
 >    ! {sys.prefix}/bin/conda install --yes --prefix {sys.prefix} numpy
 >   ```
@@ -372,9 +347,11 @@ A DSVM-re már több mintajegyzetfüzet van telepítve:
 
 Telepítse és indítsa el a Rattle-t az alábbi parancsok futtatásával:
 
-    if(!require("rattle")) install.packages("rattle")
-    require(rattle)
-    rattle()
+```R
+if(!require("rattle")) install.packages("rattle")
+require(rattle)
+rattle()
+```
 
 > [!NOTE]
 > Nem kell telepítenie a Rattle-t a DSVM-re. A Rattle megnyitásakor azonban további csomagok telepítésére lehet szükség.
@@ -452,48 +429,64 @@ A DSVM postgreSQL-t telepít. A PostgreSQL egy kifinomult, nyílt forráskódú 
 
 Az adatok betöltése előtt engedélyeznie kell a jelszó-hitelesítést a localhost-tól. Egy parancssorból futtassa az alábbi parancsot:
 
-    sudo gedit /var/lib/pgsql/data/pg_hba.conf
+```Bash
+sudo gedit /var/lib/pgsql/data/pg_hba.conf
+```
 
 A konfigurációs fájl alján több sor található, amelyek részletezik az engedélyezett kapcsolatokat:
 
-    # "local" is only for Unix domain socket connections:
-    local   all             all                                     trust
-    # IPv4 local connections:
-    host    all             all             127.0.0.1/32            ident
-    # IPv6 local connections:
-    host    all             all             ::1/128                 ident
+```
+# "local" is only for Unix domain socket connections:
+local   all             all                                     trust
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            ident
+# IPv6 local connections:
+host    all             all             ::1/128                 ident
+```
 
 Módosítsa az **IPv4 helyi kapcsolatok** vonalát úgy, hogy **az ident**helyett **az md5-öt** használja, így felhasználónévvel és jelszóval tudunk bejelentkezni:
 
-    # IPv4 local connections:
-    host    all             all             127.0.0.1/32            md5
+```
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            md5
+```
 
 Ezután indítsa újra a PostgreSQL szolgáltatást:
 
-    sudo systemctl restart postgresql
+```Bash
+sudo systemctl restart postgresql
+```
 
 Ha a *psql-t* (a PostgreSQL interaktív terminálját) szeretné elindítani beépített postgres felhasználóként, futtassa a következő parancsot:
 
-    sudo -u postgres psql
+```Bash
+sudo -u postgres psql
+```
 
 Hozzon létre egy új felhasználói fiókot a bejelentkezéshez használt Linux-fiók felhasználónevével. Jelszó létrehozása:
 
-    CREATE USER <username> WITH CREATEDB;
-    CREATE DATABASE <username>;
-    ALTER USER <username> password '<password>';
-    \quit
+```Bash
+CREATE USER <username> WITH CREATEDB;
+CREATE DATABASE <username>;
+ALTER USER <username> password '<password>';
+\quit
+```
 
 Jelentkezzen be a psql be:
 
-    psql
+```Bash
+psql
+```
 
 Az adatok importálása új adatbázisba:
 
-    CREATE DATABASE spam;
-    \c spam
-    CREATE TABLE data (word_freq_make real, word_freq_address real, word_freq_all real, word_freq_3d real,word_freq_our real, word_freq_over real, word_freq_remove real, word_freq_internet real,word_freq_order real, word_freq_mail real, word_freq_receive real, word_freq_will real,word_freq_people real, word_freq_report real, word_freq_addresses real, word_freq_free real,word_freq_business real, word_freq_email real, word_freq_you real, word_freq_credit real,word_freq_your real, word_freq_font real, word_freq_000 real, word_freq_money real,word_freq_hp real, word_freq_hpl real, word_freq_george real, word_freq_650 real, word_freq_lab real,word_freq_labs real, word_freq_telnet real, word_freq_857 real, word_freq_data real,word_freq_415 real, word_freq_85 real, word_freq_technology real, word_freq_1999 real,word_freq_parts real, word_freq_pm real, word_freq_direct real, word_freq_cs real, word_freq_meeting real,word_freq_original real, word_freq_project real, word_freq_re real, word_freq_edu real,word_freq_table real, word_freq_conference real, char_freq_semicolon real, char_freq_leftParen real,char_freq_leftBracket real, char_freq_exclamation real, char_freq_dollar real, char_freq_pound real, capital_run_length_average real, capital_run_length_longest real, capital_run_length_total real, spam integer);
-    \copy data FROM /home/<username>/spambase.data DELIMITER ',' CSV;
-    \quit
+```SQL
+CREATE DATABASE spam;
+\c spam
+CREATE TABLE data (word_freq_make real, word_freq_address real, word_freq_all real, word_freq_3d real,word_freq_our real, word_freq_over real, word_freq_remove real, word_freq_internet real,word_freq_order real, word_freq_mail real, word_freq_receive real, word_freq_will real,word_freq_people real, word_freq_report real, word_freq_addresses real, word_freq_free real,word_freq_business real, word_freq_email real, word_freq_you real, word_freq_credit real,word_freq_your real, word_freq_font real, word_freq_000 real, word_freq_money real,word_freq_hp real, word_freq_hpl real, word_freq_george real, word_freq_650 real, word_freq_lab real,word_freq_labs real, word_freq_telnet real, word_freq_857 real, word_freq_data real,word_freq_415 real, word_freq_85 real, word_freq_technology real, word_freq_1999 real,word_freq_parts real, word_freq_pm real, word_freq_direct real, word_freq_cs real, word_freq_meeting real,word_freq_original real, word_freq_project real, word_freq_re real, word_freq_edu real,word_freq_table real, word_freq_conference real, char_freq_semicolon real, char_freq_leftParen real,char_freq_leftBracket real, char_freq_exclamation real, char_freq_dollar real, char_freq_pound real, capital_run_length_average real, capital_run_length_longest real, capital_run_length_total real, spam integer);
+\copy data FROM /home/<username>/spambase.data DELIMITER ',' CSV;
+\quit
+```
 
 Most nézzük meg az adatokat, és futtasson néhány lekérdezést a SQuirreL SQL, egy grafikus eszköz használatával, amellyel jdbc-illesztőprogramon keresztül kommunikálhat az adatbázisokkal.
 
@@ -525,11 +518,15 @@ Egyes lekérdezések futtatása:
 
 Az adatok feltárásához sokkal több lekérdezést futtathat. Például, hogyan *változik* a szó gyakorisága a spam és a sonka között?
 
-    SELECT avg(word_freq_make), spam from data group by spam;
+```SQL
+SELECT avg(word_freq_make), spam from data group by spam;
+```
 
 Vagy, mik a jellemzői az e-mail, amely gyakran tartalmaz *3d?*
 
-    SELECT * from data order by word_freq_3d desc;
+```SQL
+SELECT * from data order by word_freq_3d desc;
+```
 
 A legtöbb e-maileket, amelyek nagy előfordulása *3d* látszólag spam. Ez az információ hasznos lehet egy prediktív modell létrehozásához az e-mailek besorolásához.
 
@@ -541,24 +538,32 @@ Az Azure SQL Data Warehouse egy felhőalapú, kibővített adatbázis, amely ké
 
 Az adattárházhoz való csatlakozáshoz és a tábla létrehozásához futtassa a következő parancsot a parancssorból:
 
-    sqlcmd -S <server-name>.database.windows.net -d <database-name> -U <username> -P <password> -I
+```Bash
+sqlcmd -S <server-name>.database.windows.net -d <database-name> -U <username> -P <password> -I
+```
 
 Az sqlcmd parancssorból futtassa a következő parancsot:
 
-    CREATE TABLE spam (word_freq_make real, word_freq_address real, word_freq_all real, word_freq_3d real,word_freq_our real, word_freq_over real, word_freq_remove real, word_freq_internet real,word_freq_order real, word_freq_mail real, word_freq_receive real, word_freq_will real,word_freq_people real, word_freq_report real, word_freq_addresses real, word_freq_free real,word_freq_business real, word_freq_email real, word_freq_you real, word_freq_credit real,word_freq_your real, word_freq_font real, word_freq_000 real, word_freq_money real,word_freq_hp real, word_freq_hpl real, word_freq_george real, word_freq_650 real, word_freq_lab real,word_freq_labs real, word_freq_telnet real, word_freq_857 real, word_freq_data real,word_freq_415 real, word_freq_85 real, word_freq_technology real, word_freq_1999 real,word_freq_parts real, word_freq_pm real, word_freq_direct real, word_freq_cs real, word_freq_meeting real,word_freq_original real, word_freq_project real, word_freq_re real, word_freq_edu real,word_freq_table real, word_freq_conference real, char_freq_semicolon real, char_freq_leftParen real,char_freq_leftBracket real, char_freq_exclamation real, char_freq_dollar real, char_freq_pound real, capital_run_length_average real, capital_run_length_longest real, capital_run_length_total real, spam integer) WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
-    GO
+```SQL
+CREATE TABLE spam (word_freq_make real, word_freq_address real, word_freq_all real, word_freq_3d real,word_freq_our real, word_freq_over real, word_freq_remove real, word_freq_internet real,word_freq_order real, word_freq_mail real, word_freq_receive real, word_freq_will real,word_freq_people real, word_freq_report real, word_freq_addresses real, word_freq_free real,word_freq_business real, word_freq_email real, word_freq_you real, word_freq_credit real,word_freq_your real, word_freq_font real, word_freq_000 real, word_freq_money real,word_freq_hp real, word_freq_hpl real, word_freq_george real, word_freq_650 real, word_freq_lab real,word_freq_labs real, word_freq_telnet real, word_freq_857 real, word_freq_data real,word_freq_415 real, word_freq_85 real, word_freq_technology real, word_freq_1999 real,word_freq_parts real, word_freq_pm real, word_freq_direct real, word_freq_cs real, word_freq_meeting real,word_freq_original real, word_freq_project real, word_freq_re real, word_freq_edu real,word_freq_table real, word_freq_conference real, char_freq_semicolon real, char_freq_leftParen real,char_freq_leftBracket real, char_freq_exclamation real, char_freq_dollar real, char_freq_pound real, capital_run_length_average real, capital_run_length_longest real, capital_run_length_total real, spam integer) WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
+GO
+```
 
 Másolja az adatokat a bcp használatával:
 
-    bcp spam in spambaseHeaders.data -q -c -t  ',' -S <server-name>.database.windows.net -d <database-name> -U <username> -P <password> -F 1 -r "\r\n"
+```bash
+bcp spam in spambaseHeaders.data -q -c -t  ',' -S <server-name>.database.windows.net -d <database-name> -U <username> -P <password> -F 1 -r "\r\n"
+```
 
 > [!NOTE]
 > A letöltött fájl Windows-stílusú sorvégződéseket tartalmaz. A bcp eszköz Unix-stílusú vonalvégződéseket vár. A bcp üzenetének a -r jelzővel.
 
 Ezt követően lekérdezés sqlcmd használatával:
 
-    select top 10 spam, char_freq_dollar from spam;
-    GO
+```sql
+select top 10 spam, char_freq_dollar from spam;
+GO
+```
 
 A SQuirreL SQL használatával is lekérdezhet. Kövesse a PostgreSQL-hez hasonló lépéseket az SQL Server JDBC illesztőprogramjával. A JDBC illesztőprogram a /usr/share/java/jdbcdrivers/sqljdbc42.jar mappában található.
 

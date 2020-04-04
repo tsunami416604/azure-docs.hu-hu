@@ -13,18 +13,18 @@ ms.topic: quickstart
 ms.date: 12/24/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: b83592aa069b5262961f5e41a909821786a178b6
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 1da862a7994d7db5ee8c9f090119e14f19c6b13a
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80528552"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637894"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Rövid útmutató: Adatok gyűjtése linuxos számítógépről hibrid környezetben az Azure Monitor segítségével
 
 [Az Azure Monitor](../overview.md) adatokat gyűjthet közvetlenül a fizikai vagy virtuális Linux-számítógépek a környezetben egy Log Analytics munkaterület részletes elemzés és korreláció. A [Log Analytics-ügynök](../platform/log-analytics-agent.md) telepítése lehetővé teszi, hogy az Azure Monitor adatokat gyűjtsön egy adatközpontból vagy más felhőkörnyezetből. Ez a rövid útmutató bemutatja, hogyan konfigurálhatja és gyűjthet adatokat a Linux-kiszolgálóról néhány egyszerű lépéssel. Az Azure Linux virtuális gépeiről az [Azure virtuális gépekre vonatkozó adatok gyűjtése című](../../azure-monitor/learn/quick-collect-azurevm.md)témakörben talál.  
 
-A támogatott konfigurációt a [Támogatott Windows operációs rendszerek](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) és a Hálózati tűzfal [konfigurációja](../../azure-monitor/platform/log-analytics-agent.md#firewall-requirements)című témakörben ismerteti.
+A támogatott konfigurációt a [Támogatott Windows operációs rendszerek](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) és a Hálózati tűzfal [konfigurációja](../../azure-monitor/platform/log-analytics-agent.md#network-requirements)című témakörben ismerteti.
  
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
 

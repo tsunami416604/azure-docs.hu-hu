@@ -11,15 +11,17 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: f904619b1cea97849e631310cf303ed07194a01e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: b1f21a996f7394def4d6b1e8bde9a5ccdf703dbb
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349922"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632429"
 ---
 # <a name="azure-synapse-analytics--workload-management-portal-monitoring-preview"></a>Azure Synapse Analytics – Számítási feladatok kezelése portálfigyelés (előzetes verzió)
-Ez a cikk ismerteti, hogyan figyelheti [a számítási feladatok csoport](sql-data-warehouse-workload-isolation.md#workload-groups) erőforrás-kihasználtságés és lekérdezési tevékenység. Az Azure Metrics Explorer konfigurálásáról az [Azure Metrics Explorer](../../azure-monitor/platform/metrics-getting-started.md) első lépések című cikkében olvashat részletesen.  Tekintse meg az [Erőforrás-kihasználtság](sql-data-warehouse-concept-resource-utilization-query-activity.md#resource-utilization) szakasz az Azure Synapse Analytics monitoring dokumentációt a rendszer erőforrás-felhasználás figyeléséről.
+
+Ez a cikk ismerteti, hogyan figyelheti [a számítási feladatok csoport](sql-data-warehouse-workload-isolation.md#workload-groups) erőforrás-kihasználtságés és lekérdezési tevékenység.
+Az Azure Metrics Explorer konfigurálásáról az [Azure Metrics Explorer](../../azure-monitor/platform/metrics-getting-started.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) első lépések című cikkében olvashat részletesen.  Tekintse meg az [Erőforrás-kihasználtság](sql-data-warehouse-concept-resource-utilization-query-activity.md#resource-utilization) szakasz az Azure Synapse Analytics monitoring dokumentációt a rendszer erőforrás-felhasználás figyeléséről.
 A számítási feladatok csoport metrikáinak két különböző kategóriája van megadva a számítási feladatok kezelésének figyeléséhez: erőforrás-elosztás és lekérdezési tevékenység.  Ezek a metrikák feloszthatók és szűrhetők számítási feladatok csoportja szerint.  A metrikák feloszthatók és szűrhetők attól függően, hogy rendszerdefiniálva vannak-e (erőforrásosztály-munkaterhelés-csoportok) vagy felhasználó által definiált (a felhasználó által [létrehozott CREATE WORKLOAD GROUP](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) szintaxissal).
 
 ## <a name="workload-management-metric-definitions"></a>Számítási feladatok kezelése metrikadefiníciók
@@ -35,20 +37,24 @@ A számítási feladatok csoport metrikáinak két különböző kategóriája v
 |Munkaterhelés-csoport várólistán lévő lekérdezései | A végrehajtás megkezdésére váró, jelenleg várólistára helyezett munkaterhelési csoport lekérdezései.  A lekérdezések várólistára lehetnek, mert erőforrásokra vagy zárolásra várnak.<br><br>A lekérdezések számos okból várhatnak.  Ha a rendszer túlterhelt, és az egyidejűségi igény nagyobb, mint a rendelkezésre álló, a lekérdezések várólistára kerülnek.<br><br>Fontolja meg további erőforrások hozzáadását `CAP_PERCENTAGE_RESOURCE` a munkaterhelési csoporthoz a [CREATE WORKLOAD GROUP](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) utasítás paraméterének növelésével.  Ha `CAP_PERCENTAGE_RESOURCE` nagyobb, mint a tényleges korlát erőforrás százalékmetria, a konfigurált számítási feladatok elkülönítése más számítási feladatok csoport hatással van az ehhez a számítási feladatok csoporthoz lefoglalt erőforrásokat. *Effective cap resource percent*  Fontolja meg `MIN_PERCENTAGE_RESOURCE` más számítási feladatok csoportjainak csökkentését, vagy a példány felskálázása további erőforrások hozzáadásához. |Összeg |
 
 ## <a name="monitoring-scenarios-and-actions"></a>Forgatókönyvek és műveletek figyelése
+
 Az alábbiakban egy sor diagram konfigurációk kiemelni számítási feladatok kezelése metrika használat hibaelhárítási együtt kapcsolódó műveletek et a probléma megoldásához.
 
 ### <a name="underutilized-workload-isolation"></a>Kihasználatlan munkaterhelés elkülönítése
-Vegye figyelembe a következő számítási feladatok csoport és `wgPriority` osztályozó konfiguráció, ahol a számítási `wcCEOPriority` feladat nevű csoport jön létre, és *theCEO* `membername` van leképezve, hogy a számítási feladatok osztályozó használatával.  A `wgPriority` számítási feladatok csoport 25%-os`MIN_PERCENTAGE_RESOURCE` számítási feladatok elkülönítése van konfigurálva ( = 25).  A *TheCEO* által benyújtott lekérdezések a rendszererőforrások 5%-át kapják (`REQUEST_MIN_RESOURCE_GRANT_PERCENT` = 5).
-```sql
-CREATE WORKLOAD GROUP wgPriority 
-WITH ( MIN_PERCENTAGE_RESOURCE = 25   
-      ,CAP_PERCENTAGE_RESOURCE = 50 
-      ,REQUEST_MIN_RESOURCE_GRANT_PERCENT = 5); 
 
-CREATE WORKLOAD CLASSIFIER wcCEOPriority 
+Vegye figyelembe a következő számítási feladatok csoport és `wgPriority` osztályozó konfiguráció, ahol a számítási `wcCEOPriority` feladat nevű csoport jön létre, és *theCEO* `membername` van leképezve, hogy a számítási feladatok osztályozó használatával.  A `wgPriority` számítási feladatok csoport 25%-os`MIN_PERCENTAGE_RESOURCE` számítási feladatok elkülönítése van konfigurálva ( = 25).  A *TheCEO* által benyújtott lekérdezések a rendszererőforrások 5%-át kapják (`REQUEST_MIN_RESOURCE_GRANT_PERCENT` = 5).
+
+```sql
+CREATE WORKLOAD GROUP wgPriority
+WITH ( MIN_PERCENTAGE_RESOURCE = 25
+      ,CAP_PERCENTAGE_RESOURCE = 50
+      ,REQUEST_MIN_RESOURCE_GRANT_PERCENT = 5);
+
+CREATE WORKLOAD CLASSIFIER wcCEOPriority
 WITH ( WORKLOAD_GROUP = 'wgPriority'
       ,MEMBERNAME = 'TheCEO');
 ```
+
 Az alábbi táblázat a következőképpen van beállítva:<br>
 1. metrika: *Tényleges min erőforrás* `blue line`százalék (avg aggregáció, )<br>
 2. *metrika: A számítási feladatok csoportfelosztása rendszerszázalék szerint* (avg aggregáció, `purple line`)<br>
@@ -56,18 +62,20 @@ Szűrő: [Munkaterhelés-csoport] =`wgPriority`<br>
 ![underutilized-wg.png](./media/sql-data-warehouse-workload-management-portal-monitor/underutilized-wg.png) A diagram azt mutatja, hogy a 25%-os munkaterhelés-elkülönítéssel átlagosan csak 10% -ot használnak.  Ebben az esetben `MIN_PERCENTAGE_RESOURCE` a paraméter értéke 10 vagy 15 közé csökkenthető, és lehetővé teszi a rendszer más számítási feladatai nak az erőforrások felhasználását.
 
 ### <a name="workload-group-bottleneck"></a>Számítási feladatok csoport szűk keresztmetszete
+
 Vegye figyelembe a következő számítási feladatok csoport és `wgDataAnalyst` osztályozó konfiguráció, ahol a számítási feladat `wcDataAnalyst` nevű csoport jön létre, és a *DataAnalyst* `membername` van leképezve, hogy a számítási feladatok osztályozó használatával.  A `wgDataAnalyst` számítási feladatok csoport 6%-os`MIN_PERCENTAGE_RESOURCE` számítási feladatok elkülönítése van beállítva hozzá ( = 6) és az erőforrás-korlát 9% (`CAP_PERCENTAGE_RESOURCE` = 9).  A *DataAnalyst* által küldött lekérdezések a rendszererőforrások`REQUEST_MIN_RESOURCE_GRANT_PERCENT` 3%-át kapják ( = 3).
 
 ```sql
 CREATE WORKLOAD GROUP wgDataAnalyst  
-WITH ( MIN_PERCENTAGE_RESOURCE = 6   
-      ,CAP_PERCENTAGE_RESOURCE = 9 
-      ,REQUEST_MIN_RESOURCE_GRANT_PERCENT = 3); 
+WITH ( MIN_PERCENTAGE_RESOURCE = 6
+      ,CAP_PERCENTAGE_RESOURCE = 9
+      ,REQUEST_MIN_RESOURCE_GRANT_PERCENT = 3);
 
-CREATE WORKLOAD CLASSIFIER wcDataAnalyst 
+CREATE WORKLOAD CLASSIFIER wcDataAnalyst
 WITH ( WORKLOAD_GROUP = 'wgDataAnalyst'
       ,MEMBERNAME = 'DataAnalyst');
 ```
+
 Az alábbi táblázat a következőképpen van beállítva:<br>
 1. *metrika: Tényleges felső korlát* `blue line`erőforrás százalék (Avg aggregáció, )<br>
 2. *metrika: Számítási feladatok csoportszerinti lefoglalás maximális erőforrásszázalékszerint* (avg aggregáció, `purple line`)<br>
@@ -76,8 +84,8 @@ Szűrő: [Munkaterhelés-csoport] =`wgDataAnalyst`<br>
 ![palacknyakú-wg](./media/sql-data-warehouse-workload-management-portal-monitor/bottle-necked-wg.png) A diagram azt mutatja, hogy az erőforrások 9%-os felső határával a számítási feladatok csoportja 90%+ kihasznált (a *Számítási feladatok csoport maximális erőforrásszázalék-mutatója).*  A lekérdezések folyamatos sorban állása a *munkaterhelési csoport várólistás lekérdezések metrikája szerint.*  Ebben az esetben `CAP_PERCENTAGE_RESOURCE` a 9%-nál magasabb értékre való növelése lehetővé teszi, hogy több lekérdezés egyidejűvégrehajtása egyidejűleg.  A `CAP_PERCENTAGE_RESOURCE` feltételezi, hogy elegendő erőforrás áll rendelkezésre, és nem elkülönítve más munkaterhelés-csoportok.  Ellenőrizze a megnövelt korlátot az *Effektív korlát erőforrásszázalék-mérőszám ellenőrzésével.*  Ha nagyobb átviteli szükséges, fontolja `REQUEST_MIN_RESOURCE_GRANT_PERCENT` meg a 3-nál nagyobb értékre való növelését is.  A `REQUEST_MIN_RESOURCE_GRANT_PERCENT` lekérdezések számának növelése lehetővé teheti a lekérdezések gyorsabb futtatását.
 
 ## <a name="next-steps"></a>További lépések
-[Gyorsútmutató: A számítási feladatok elkülönítésének konfigurálása a T-SQL használatával](quickstart-configure-workload-isolation-tsql.md)<br>
-[SZÁMÍTÁSI FELADATCSOPORT LÉTREHOZÁSA (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)<br>
-[MUNKATERHELÉS-OSZTÁLYOZÓ LÉTREHOZÁSA (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest)<br>
-[Erőforrás-kihasználtság figyelése](sql-data-warehouse-concept-resource-utilization-query-activity.md)
 
+- [Gyorsútmutató: A számítási feladatok elkülönítésének konfigurálása a T-SQL használatával](quickstart-configure-workload-isolation-tsql.md)<br>
+- [SZÁMÍTÁSI FELADATCSOPORT LÉTREHOZÁSA (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)<br>
+- [MUNKATERHELÉS-OSZTÁLYOZÓ LÉTREHOZÁSA (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest)<br>
+- [Erőforrás-kihasználtság figyelése](sql-data-warehouse-concept-resource-utilization-query-activity.md)

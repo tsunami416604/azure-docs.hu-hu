@@ -4,19 +4,19 @@ description: A Távoli asztali átjáró infrastruktúrájának integrálása az
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71d9b2332d6d78e7bde63d0fa3f5b64b588e576b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c61bea7f3ca1105edfec54501c5f0725a5a10225
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75425451"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80654115"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>A Távoli asztali átjáró infrastruktúrájának integrálása a Hálózati házirend-kiszolgáló (NPS) bővítmény és az Azure AD használatával
 
@@ -157,7 +157,7 @@ Ha saját tanúsítványokat szeretne használni, a tanúsítvány nyilvános ku
 A parancsfájl használatához adja meg a bővítményt az Azure AD-rendszergazdai hitelesítő adatokkal és az Azure AD-bérlői azonosítóval, amelyet korábban másolt. Futtassa a parancsfájlt minden olyan nps-kiszolgálón, ahol telepítette a n-ps bővítményt. Ezután tegye a következőket:
 
 1. Nyisson meg egy felügyeleti Windows PowerShell-kérdést.
-1. A PowerShell parancssorába írja be a parancsát, `cd ‘c:\Program Files\Microsoft\AzureMfa\Config’`és nyomja le az ENTER **billentyűt.**
+1. A PowerShell parancssorába írja be a parancsát, `cd 'c:\Program Files\Microsoft\AzureMfa\Config'`és nyomja le az ENTER **billentyűt.**
 1. Írja `.\AzureMfaNpsExtnConfigSetup.ps1`be a típust, és nyomja **le az ENTER billentyűt.** A parancsfájl ellenőrzi, hogy az Azure Active Directory PowerShell-modul telepítve van-e. Ha nincs telepítve, a parancsfájl telepíti a modult.
 
    ![Az AzureMfaNpsExtnConfigSetup.ps1 futtatása az Azure AD PowerShellben](./media/howto-mfa-nps-extension-rdg/image4.png)

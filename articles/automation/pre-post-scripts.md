@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 35fba966fcdb6d1c5cd7c531bb22c9c78ae16ff3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bbf7f2945ad6a94c51cfd0c7db1e8c85d739c6ed
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75417798"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631619"
 ---
 # <a name="manage-pre-and-post-scripts"></a>Parancsfájlok előtti és utáni kezelése
 
@@ -18,7 +18,7 @@ Az előzetes parancsfájlok és a parancsfájlok utáni parancsfájlok lehetőv�
 
 ## <a name="runbook-requirements"></a>Runbook-követelmények
 
-Ahhoz, hogy egy runbook ot előre vagy utólagos parancsfájlként lehessen használni, a runbookot importálni kell az Automation-fiókba, és közzé kell tenni. A folyamatról a [Runbook közzététele](manage-runbooks.md#publish-a-runbook)című témakörben olvashat bővebben.
+Ahhoz, hogy egy runbook ot előre vagy utólagos parancsfájlként lehessen használni, a runbookot importálni kell az Automation-fiókba, és közzé kell tenni. A folyamatról a [Runbook közzététele](manage-runbooks.md#publishing-a-runbook)című témakörben olvashat bővebben.
 
 ## <a name="using-a-pre-script-or-post-script"></a>Parancsfájl-elő- vagy utóparancsfájl használata
 

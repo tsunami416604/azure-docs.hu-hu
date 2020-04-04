@@ -2,26 +2,27 @@
 title: Titkos kötet csatlakoztatása tárolócsoporthoz
 description: Megtudhatja, hogyan csatlakoztathat titkos kötetet a bizalmas adatok tárolására a tárolópéldányok számára
 ms.topic: article
-ms.date: 07/19/2018
-ms.openlocfilehash: 913e3d147519bc73c3c57b8da383f9d373f3666d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/03/2020
+ms.openlocfilehash: 756828e71174246450245938595c8872afc62961
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78249951"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657152"
 ---
 # <a name="mount-a-secret-volume-in-azure-container-instances"></a>Titkos kötet csatlakoztatása az Azure Container-példányokban
 
 Titkos *kötet* használatával bizalmas információkat szolgáltat a tárolócsoportban lévő tárolók számára. A *titkos* kötet tárolja a titkos kulcsokat a köteten belüli fájlokban, a tárolócsoportban lévő tárolók által elérhető. Titkos kulcsok titkos *kötetben* való tárolásával elkerülheti a bizalmas adatok, például az SSH-kulcsok vagy az adatbázis hitelesítő adatainak hozzáadását az alkalmazáskódhoz.
 
-Az összes *titkos* kötetet [tmpfs][tmpfs], ram-alapú fájlrendszer támogatja; tartalmukat soha nem írják nem felejtő tárolásra.
+* Miután egy tárolócsoportban titkos rendszerű titkos kulcsot telepített, a titkos kötet *írásvédett.*
+* Az összes titkos kötetet [tmpfs][tmpfs], ram-alapú fájlrendszer támogatja; tartalmukat soha nem írják nem felejtő tárolásra.
 
 > [!NOTE]
 > *A titkos* kötetek jelenleg linuxos tárolókra korlátozódnak. Ismerje meg, hogyan adhatja át a biztonságos környezeti változókat mind a Windows, mind a [Linux-tárolókhoz a Set környezeti változókban.](container-instances-environment-variables.md) Miközben azon dolgozunk, hogy az összes funkciót a Windows tárolók, megtalálja a jelenlegi platform különbségek az [áttekintést.](container-instances-overview.md#linux-and-windows-containers)
 
 ## <a name="mount-secret-volume---azure-cli"></a>Titkos kötet csatlakoztatása - Azure CLI
 
-Egy vagy több titkos rendszerű tároló üzembe helyezéséhez `--secrets` az `--secrets-mount-path` Azure CLI használatával, adja meg a és a paramétereket az [az container create][az-container-create] parancs. Ez a példa egy *titkos* kötetet csatol, amely két titokból áll: "mysecret1" és "mysecret2", a következő helyen: `/mnt/secrets`
+Egy vagy több titkos rendszerű tároló üzembe helyezéséhez `--secrets` az `--secrets-mount-path` Azure CLI használatával, adja meg a és a paramétereket az [az container create][az-container-create] parancs. Ez a példa egy *titkos* kötetet csatol, amely két titkos fájlt tartalmaz, `/mnt/secrets`"mysecret1" és "mysecret2", a következő helyen:
 
 ```azurecli-interactive
 az container create \
@@ -35,11 +36,13 @@ az container create \
 A következő [az container exec][az-container-exec] kimenet egy rendszerhéj megnyitását mutatja a futó tárolóban, felsorolva a fájlokat a titkos köteten belül, majd megjeleníti azok tartalmát:
 
 ```azurecli
-az container exec --resource-group myResourceGroup --name secret-volume-demo --exec-command "/bin/sh"
+az container exec \
+  --resource-group myResourceGroup \
+  --name secret-volume-demo --exec-command "/bin/sh"
 ```
 
 ```output
-/usr/src/app # ls -1 /mnt/secrets
+/usr/src/app # ls /mnt/secrets
 mysecret1
 mysecret2
 /usr/src/app # cat /mnt/secrets/mysecret1
@@ -56,7 +59,7 @@ Tárolócsoportokat is üzembe helyezhet az Azure CLI-vel és egy [YAML-sablonna
 
 YAML-sablonnal történő üzembe helyezéskor a titkos értékeknek **Base64-kódolásúnak** kell lenniük a sablonban. A titkos értékek azonban egyszerű szövegként jelennek meg a tárolóban lévő fájlokban.
 
-A következő YAML-sablon egy tárolócsoportot határoz meg egy `/mnt/secrets`tárolóval, amely *titkos* kötetet csatlakoztat. A titkos kötetnek két titka van: "mysecret1" és "mysecret2".
+A következő YAML-sablon egy tárolócsoportot határoz meg egy `/mnt/secrets`tárolóval, amely *titkos* kötetet csatlakoztat. A titkos kötet két fájlt tartalmaz, amelyek titkos kulcsokat tartalmaznak, "mysecret1" és "mysecret2".
 
 ```yaml
 apiVersion: '2018-10-01'
@@ -91,7 +94,9 @@ A YAML-sablonnal történő telepítéshez mentse az `deploy-aci.yaml`előző YA
 
 ```azurecli-interactive
 # Deploy with YAML template
-az container create --resource-group myResourceGroup --file deploy-aci.yaml
+az container create \
+  --resource-group myResourceGroup \
+  --file deploy-aci.yaml
 ```
 
 ## <a name="mount-secret-volume---resource-manager"></a>Titkos kötet csatlakoztatása – Erőforrás-kezelő
@@ -107,11 +112,13 @@ A következő Erőforrás-kezelő sablon egy tárolócsoportot határoz *secret*
 <!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-secret.json -->
 [!code-json[volume-secret](~/azure-docs-json-samples/container-instances/aci-deploy-volume-secret.json)]
 
-Az Erőforrás-kezelő sablonnal történő telepítéshez mentse az `deploy-aci.json`előző JSON-t egy `--template-file` fájlba, majd hajtsa végre az az csoport központi telepítési [létrehozási][az-group-deployment-create] parancsát a következő paraméterrel:
+Az Erőforrás-kezelő sablonnal történő telepítéshez mentse az `deploy-aci.json`előző JSON-t egy `--template-file` fájlba, majd hajtsa végre az [az-telepítési csoport létrehozási][az-deployment-group-create] parancsát a következő paraméterrel:
 
 ```azurecli-interactive
 # Deploy with Resource Manager template
-az group deployment create --resource-group myResourceGroup --template-file deploy-aci.json
+az deployment group create \
+  --resource-group myResourceGroup \
+  --template-file deploy-aci.json
 ```
 
 ## <a name="next-steps"></a>További lépések
@@ -134,4 +141,4 @@ A tárolók (beleértve a Windows-tárolókat is) bizalmas információinak bizt
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create
 [az-container-exec]: /cli/azure/container#az-container-exec
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create

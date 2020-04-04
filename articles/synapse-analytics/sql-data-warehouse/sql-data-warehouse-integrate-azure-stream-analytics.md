@@ -11,28 +11,28 @@ ms.date: 2/5/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: feb7b52c84e5e702202bc668cfda676d291ea82e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: e281f8a1fb3959256d836134b4c59f5399deb9bd
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350433"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633287"
 ---
 # <a name="use-azure-stream-analytics-with-azure-synapse-analytics"></a>Az Azure Stream Analytics használata az Azure Synapse Analytics segítségével
 
-Az Azure Stream Analytics egy teljes körűen felügyelt szolgáltatás, amely alacsony késleltetésű, magas rendelkezésre állású, méretezhető összetett eseményfeldolgozást biztosít a felhőben lévő streamelési adatokon keresztül. Az alapokat az Azure Stream Analytics bemutatása című [elolvasásával ismerheti](../../stream-analytics/stream-analytics-introduction.md)meg. Ezután megtudhatja, hogyan hozhat létre végpontok között megoldást a Stream Analytics segítségével az [Azure Stream Analytics használatának első lépéseit](../../stream-analytics/stream-analytics-real-time-fraud-detection.md) követően.
+Az Azure Stream Analytics egy teljes körűen felügyelt szolgáltatás, amely alacsony késleltetésű, magas rendelkezésre állású, méretezhető összetett eseményfeldolgozást biztosít a felhőben lévő streamelési adatokon keresztül. Az alapokat az Azure Stream Analytics bemutatása című [elolvasásával ismerheti](../../stream-analytics/stream-analytics-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)meg. Ezután megtudhatja, hogyan hozhat létre végpontok között megoldást a Stream Analytics segítségével az [Azure Stream Analytics használatának első lépéseit](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) követően.
 
 Ebben a cikkben megtudhatja, hogyan használhatja az adatraktárt kimeneti fogadóként az Azure Stream Analytics-feladatokhoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure Stream Analytics-feladat – Az Azure Stream Analytics-feladat létrehozásához kövesse az [Azure Stream Analytics használatának első](../../stream-analytics/stream-analytics-real-time-fraud-detection.md) lépéseit:  
+* Azure Stream Analytics-feladat – Az Azure Stream Analytics-feladat létrehozásához kövesse az [Azure Stream Analytics használatának első](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) lépéseit:  
 
     1. Event Hub-bemenet létrehozása
     2. Eseménygenerátor-alkalmazás konfigurálása és indítása
     3. Stream Analytics-feladat kiépítése
     4. Feladatbemenet és lekérdezés megadása
-* Azure Synapse SQL pool adattárház – Új adattárház létrehozásához kövesse a rövid útmutató lépéseit [egy új adattárház létrehozásához.](https://docs.microsoft.com/azure/sql-data-warehouse/create-data-warehouse-portal)
+* Azure Synapse SQL pool adattárház – Új adattárház létrehozásához kövesse a rövid útmutató lépéseit [egy új adattárház létrehozásához.](create-data-warehouse-portal.md)
 
 ## <a name="specify-streaming-output-to-point-to-your-data-warehouse"></a>Az adattárházra mutató streamelési kimenet megadása
 
@@ -44,7 +44,7 @@ Az Azure Portalon nyissa meg a Stream Analytics-feladatot, és kattintson a **Ki
 
 Kattintson a **Hozzáadás** gombra, és válassza az **SQL Database** parancsot a legördülő menüből.
 
-![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaoutput.png)
+![SQL-adatbázis kiválasztása](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaoutput.png)
 
 ### <a name="step-3"></a>3. lépés
 
@@ -60,7 +60,7 @@ Kattintson a **Hozzáadás** gombra, és válassza az **SQL Database** parancsot
 * *:* Adja meg az adatbáziscéltábla nevét.
 * kattintson a **Mentés** gombra
 
-![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaoutputdbsettings.png)
+![Kitöltött SQL-adatbázis űrlap](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaoutputdbsettings.png)
 
 ### <a name="step-4"></a>4. lépés
 
@@ -102,23 +102,23 @@ WITH (DISTRIBUTION = ROUND_ROBIN)
 
 Az Azure Portalon a Stream Analytics-feladathoz kattintson a feladat nevére.  Kattintson a ***Teszt*** gombra a ***Kimenet részletei*** ablaktáblában.
 
-![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asatest.png)Amikor az adatbázissal való kapcsolat sikeres, megjelenik egy értesítés a portálon.
+![Teszt gomb outpout](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asatest.png) részletek Ha a kapcsolat az adatbázissikeres, megjelenik egy értesítés a portálon.
 
 ### <a name="step-6"></a>6. lépés
 
 Kattintson a ***Feladattopológia csoport Lekérdezés*** menüparancsára, és módosítsa a lekérdezést úgy, hogy adatokat szúrjon be a létrehozott adatfolyam-kimenetbe. ***Job topology***  A lekérdezés teszteléséhez kattintson a ***Kijelölt lekérdezés tesztelése*** gombra.  Ha a ***lekérdezési*** teszt sikeres, kattintson a Lekérdezés mentése gombra.
 
-![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaquery.png)
+![Lekérdezés mentése](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaquery.png)
 
 ### <a name="step-7"></a>7. lépés
 
 Indítsa el az Azure Stream Analytics-feladatot.  Kattintson az ***Áttekintés*** menü ***Start*** gombjára.
 
-![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastart.png)
+![Stream Analytics-feladat indítása](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastart.png)
 
-kattintson a ***Start*** gombra a kezdő feladat ablaktáblán.
+Kattintson a ***Start*** gombra a kezdőfeladat ablaktábláján.
 
-![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastartconfirm.png)
+![Kattintson a Start gombra](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastartconfirm.png)
 
 ## <a name="next-steps"></a>További lépések
 

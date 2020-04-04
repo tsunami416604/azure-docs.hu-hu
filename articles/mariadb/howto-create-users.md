@@ -5,22 +5,25 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 23e3c9db6302d2db597283358ff71c3693ecf435
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/2/2020
+ms.openlocfilehash: 1b79a49b2fb87ebf180aaaa40447f40c5a982c2e
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530172"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632283"
 ---
 # <a name="create-users-in-azure-database-for-mariadb"></a>Felhasználók létrehozása az Azure Database for MariaDB-ben 
 Ez a cikk azt ismerteti, hogyan hozhat létre felhasználókat a MariaDB Azure Database-ben.
 
 Amikor először hozta létre az Azure-adatbázist a MariaDB számára, megadta a kiszolgáló rendszergazdai bejelentkezési felhasználónevét és jelszavát. További információt a Rövid [útmutató ban](quickstart-create-mariadb-server-database-using-azure-portal.md)talál. Az Azure Portalon megkeresheti a kiszolgáló rendszergazdájának bejelentkezési felhasználónevét.
 
-A kiszolgáló rendszergazdája bizonyos jogosultságokat kap a kiszolgálóhoz a következő ként: SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, RELOAD, PROCESS, REFERENCES, INDEX, ALTER, SHOW DATABASES, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION ÜGYFÉL, NÉZET LÉTREHOZÁSA, NÉZET MEGJELENÍTÉSE, RUTIN LÉTREHOZÁSA, RUTIN MÓDOSÍTÁSA, FELHASZNÁLÓ LÉTREHOZÁSA, ESEMÉNY, ESEMÉNY
+A kiszolgáló rendszergazdája bizonyos jogosultságokat kap a kiszolgálóhoz a következő ként: SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, RELOAD, PROCESS, REFERENCES, INDEX, ALTER, SHOW DATABASES, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION CLIENT, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, CREATE USER, EVENT, TRIGGER
 
 A MariaDB-kiszolgálóhoz készült Azure Database létrehozása után az első kiszolgálófelügyeleti felhasználói fiókkal további felhasználókat hozhat létre, és rendszergazdai hozzáférést biztosíthat hozzájuk. Emellett a kiszolgálófelügyeleti fiók segítségével kevésbé kiemelt jogosultságú felhasználókat hozhat létre, akik hozzáférnek az egyes adatbázissémákhoz.
+
+> [!NOTE]
+> A SUPER jogosultság és a DBA szerepkör nem támogatott. Tekintse át a [jogosultságokat](concepts-limits.md#privilege-support) a korlátozások cikkben, hogy mi nem támogatott a szolgáltatásban.
 
 ## <a name="create-additional-admin-users"></a>További rendszergazdai felhasználók létrehozása
 1. A kapcsolat adatainak és a rendszergazdai felhasználónévnek a beszerezése.

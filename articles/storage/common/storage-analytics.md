@@ -8,12 +8,12 @@ ms.date: 03/03/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 86b399879807e480176ee9a3ca3feaba1ec5dd85
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4ad9f13bcdf36b67400adb62d58ee260ff256bb3
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250885"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637146"
 ---
 # <a name="storage-analytics"></a>Storage Analytics
 
@@ -26,8 +26,6 @@ Az összesített adatok egy jól ismert blobban (naplózás) és jól ismert tá
 A Storage Analytics 20 TB-os korláttal rendelkezik a tárfiók teljes korlátáttól független tárolt adatok mennyiségére vonatkozóan. A tárfiókok korlátairól a [Méretezhetőségi és teljesítménycélok a szabványos tárfiókokhoz](scalability-targets-standard-account.md)című témakörben talál további információt.
 
 A Storage Analytics és más eszközök használatával az Azure Storage szolgáltatással kapcsolatos problémák azonosítására, diagnosztizálására és elhárítására vonatkozó részletes útmutatót a [Microsoft Azure Storage figyelése, diagnosztizálása és hibaelhárítása](storage-monitoring-diagnosing-troubleshooting.md)című témakörben talál.
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="billing-for-storage-analytics"></a>A storage-elemzés számlázása
 

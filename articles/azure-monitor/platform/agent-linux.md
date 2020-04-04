@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 01/21/2020
-ms.openlocfilehash: aa2356901403c7a63aa4aa96dcb38f9c0c971e58
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 9807d6eeb07b953ab75b328ce64c5166ca52dd2a
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80528354"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637527"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>Linux-számítógépek csatlakoztatása az Azure Monitorhoz
 
@@ -22,7 +22,7 @@ A Log Analytics-ügynök Linuxhoz az alábbi módszerek egyikével telepíthető
 * [Manuálisan töltse le és telepítse](#install-the-agent-manually) az ügynököt. Erre akkor van szükség, ha a Linux-számítógép nem fér hozzá az internethez, és a [Log Analytics-átjárón](gateway.md)keresztül kommunikál az Azure Monitorral vagy az Azure Automationszolgáltatással. 
 * Telepítse a Linux-ügynök a GitHubon tárolt [wrapper-script használatával.](#install-the-agent-using-wrapper-script) Ez az ajánlott módszer az ügynök telepítéséhez és frissítéséhez, ha a számítógép közvetlenül vagy proxykiszolgálón keresztül kapcsolódik az internethez.
 
-A támogatott konfiguráció megismeréséhez tekintse meg a [támogatott Linux operációs rendszerek](log-analytics-agent.md#supported-linux-operating-systems) és [hálózati tűzfal konfigurációk](log-analytics-agent.md#firewall-requirements) részt.
+A támogatott konfiguráció megismeréséhez tekintse meg a [támogatott Linux operációs rendszerek](log-analytics-agent.md#supported-linux-operating-systems) és [hálózati tűzfal konfigurációk](log-analytics-agent.md#network-requirements) részt.
 
 >[!NOTE]
 >A Linuxhoz készült Log Analytics-ügynököt nem lehet úgy konfigurálni, hogy egynél több Log Analytics-munkaterületre is jelentsen. Csak úgy konfigurálható, hogy egyszerre jelentsen a System Center Operations Manager felügyeleti csoportjának és a Log Analytics-munkaterületnek, vagy külön-külön jelentsen.

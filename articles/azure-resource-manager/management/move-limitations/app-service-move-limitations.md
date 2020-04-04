@@ -3,12 +3,12 @@ title: Az Azure App Service-erőforrások áthelyezése
 description: Az Azure Resource Manager használatával áthelyezi az App Service-erőforrásokat egy új erőforráscsoportba vagy előfizetésbe.
 ms.topic: conceptual
 ms.date: 12/13/2019
-ms.openlocfilehash: 338b0559a5de9468ff60024b88d0f676a9fc3e8b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d0ecd117bdcda9238e310a3020dba19a6871a3fc
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75479799"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655775"
 ---
 # <a name="move-guidance-for-app-service-resources"></a>Útmutató áthelyezése az App Service-erőforrásokhoz
 
@@ -21,10 +21,10 @@ Amikor egy webalkalmazást előfizetések között helyez át, a következő út
 - A célerőforrás-csoport nem rendelkezhet meglévő App Service-erőforrásokkal. Az App Service-erőforrások a következők:
     - Web Apps
     - App Service-csomagok
-    - Feltöltött vagy importált SSL-tanúsítványok
+    - Feltöltött vagy importált TLS/SSL tanúsítványok
     - App Service-környezetek
 - Az erőforráscsoport összes App Service-erőforrását együtt kell áthelyezni. Vegye figyelembe, hogy az App Service-környezetek nem helyezhetők át új erőforráscsoportba vagy új előfizetésbe.
-- Az SSL-kötések törlése nélkül áthelyezheti a webhez kötött tanúsítványt, feltéve, hogy a tanúsítvány az erőforráscsoport összes többi erőforrásával együtt kerül áthelyezésre.
+- A tls-kötések törlése nélkül áthelyezheti a webhez kötött tanúsítványt, feltéve, hogy a tanúsítvány az erőforráscsoport összes többi erőforrásával együtt kerül áthelyezésre.
 - Az App Service-erőforrások csak abból az erőforráscsoportból helyezhetők át, amelyben eredetileg létrehozták őket. Ha egy App Service-erőforrás már nem az eredeti erőforráscsoportban van, helyezze vissza az eredeti erőforráscsoportba. Ezután helyezze át az erőforrást az előfizetések között.
 
 Ha nem emlékszik az eredeti erőforráscsoportra, a diagnosztika segítségével megtalálhatja. A webalkalmazáshoz válassza **a Problémák diagnosztizálása és megoldása**lehetőséget. Ezután válassza a **Konfiguráció és kezelés**lehetőséget.

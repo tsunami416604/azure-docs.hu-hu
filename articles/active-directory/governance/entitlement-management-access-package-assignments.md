@@ -16,16 +16,23 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5a2107974cd63c0d02aaeb555430453c39990bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12e3b86f41e7188778393ab717554907ef5d44ec
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79262021"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631744"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomag hozzárendeléseinek megtekintése, hozzáadása és eltávolítása az Azure AD-jogosultságkezelésben
 
 Az Azure AD jogosultságkezelés, láthatja, hogy ki van hozzárendelve a csomagok eléréséhez, a szabályzat és az állapot. Ha egy hozzáférési csomag rendelkezik megfelelő házirenddel, közvetlenül is hozzárendelheti a felhasználót egy hozzáférési csomaghoz. Ez a cikk a hozzáférési csomagok hozzárendeléseinek megtekintését, hozzáadását és eltávolítását ismerteti.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Az Azure AD jogosultságkezelés használatához és a felhasználók hozzáféréshez való hozzárendeléséhez az alábbi licencek egyikével kell rendelkeznie:
+
+- Prémium szintű Azure AD P2
+- Enterprise Mobility + Security (EMS) E5 licenc
 
 ## <a name="view-who-has-an-assignment"></a>A hozzárendelést végzők megtekintése
 

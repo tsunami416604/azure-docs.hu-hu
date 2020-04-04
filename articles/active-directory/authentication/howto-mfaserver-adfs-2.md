@@ -4,19 +4,19 @@ description: Ez az Azure Multi-Factor Authentication-oldal leírja, hogyan kezdh
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e71c1d28a90af72890b2399d5da24d08885f3cce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c79a42bbd60d7a1857649cffc97ed7f0103fa16
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051212"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653512"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>Azure Multi-Factor Authentication-kiszolgáló konfigurálása az AD FS 2.0-val való használathoz
 
@@ -59,7 +59,7 @@ Az AD FS 2.0 proxyval való védelméhez telepítse az Azure Multi-Factor Authe
 13. Amikor végzett, kattintson az **OK** gombra, hogy visszatérjen az Űrlapalapú webhely hozzáadása párbeszédpanelre.
 14. A párbeszédpanel bezárásához kattintson az **OK** gombra.
 15. Miután a rendszer észlelte vagy megadta az URL-címet és az oldal változóit, a webhely adatai megjelennek az Űrlapalapú panelen.
-16. Kattintson a **Natív modul** fülre, és jelölje ki a kiszolgálót, az AD FS-proxyt futtató webhelyet (például az „Alapértelmezett webhelyet”) vagy az AD FS-proxyalkalmazást (például az „adfs” alatt található „Is”-t) az IIS beépülő modul kívánt szinten való engedélyezéséhez.
+16. Kattintson a **Natív modul** fülre, és válassza ki azt a kiszolgálót, azt a webhelyet, amely alatt az AD FS-proxy fut (például "Alapértelmezett webhely"), vagy az AD FS proxyalkalmazást (például "ls" az "adfs" alatt) az IIS beépülő modul kívánt szintjén történő engedélyezéséhez.
 17. Kattintson az **IIS-hitelesítés engedélyezése** jelölőnégyzetre a képernyő tetején.
 
 Az IIS-hitelesítés ezzel engedélyezett.
@@ -85,8 +85,8 @@ Engedélyezte az IIS-hitelesítést, de az Active Directory (AD) LDAP-n kereszt�
 
 1. Ezután kattintson a **Vállalati beállítások** ikonra, és válassza a **Felhasználónév felbontása** lapot.
 2. Válassza az **LDAP egyedi azonosító használata attribútumot az egyező felhasználónevek választógombjához.**
-3. Ha a felhasználók „tartomány\felhasználónév” formátumban adják meg a felhasználónevüket, a kiszolgálónak le kell tudnia választani a tartományt a felhasználónévről az LDAP-lekérdezés létrehozásakor. Ez a beállításjegyzék beállításával végezhető el.
-4. Nyissa meg a beállításszerkesztőt, és 64 bites kiszolgálón lépjen a HKEY_LOCAL_MACHINE/SOFTWARE/Wow6432Node/Positive Networks/PhoneFactor elemre. Vagy 32 bites kiszolgálón ugorjon az elérési út „Wow6432Node” csomópontjára. Hozzon létre egy „UsernameCxz_stripPrefixDomain” nevű DWORD beállításjegyzék-kulcsot, és állítsa az értékét 1-re. Az Azure Multi-Factor Authentication mostantól védi az AD FS-proxyt.
+3. Ha a felhasználók "tartomány\felhasználónév" formátumban adják meg a felhasználónevüket, a kiszolgálónak képesnek kell lennie arra, hogy az LDAP-lekérdezés létrehozásakor levegye a tartományt a felhasználónévről. Ez a beállításjegyzék beállításával végezhető el.
+4. Nyissa meg a beállításszerkesztőt, és 64 bites kiszolgálón lépjen a HKEY_LOCAL_MACHINE/SOFTWARE/Wow6432Node/Positive Networks/PhoneFactor elemre. Ha egy 32 bites szerveren, hogy a "Wow6432Node" ki az útból. Hozzon létre egy "UsernameCxz_stripPrefixDomain" nevű duplaszó beállításkulcsot, és állítsa az értéket 1-re. Az Azure Multi-Factor Authentication mostantól védi az AD FS-proxyt.
 
 Győződjön meg arról, hogy importálta a felhasználókat az Active Directoryból a kiszolgálóra. Tekintse meg a [megbízható IP-címek szakaszt,](#trusted-ips) ha engedélyezni szeretné a belső IP-címeket, hogy ne szükséges a kétlépéses ellenőrzés, amikor ezekről a helyekről jelentkezik be a webhelyre.
 
@@ -107,7 +107,7 @@ Az AD FS védelmét akkor is biztosíthatja, ha az AD FS-proxy nincs használatb
    ![AD FS 2.0 Direct proxy nélkül](./media/howto-mfaserver-adfs-2/noproxy.png)
 
 8. Kattintson az **OK** gombra.
-9. Kattintson a **Natív modul** fülre, és jelölje ki a kiszolgálót, a webhelyet (például az „Alapértelmezett webhelyet”) vagy az AD FS-alkalmazást (például az „adfs” alatta található „Is”-t) az IIS beépülő modul kívánt szinten való engedélyezéséhez.
+9. Kattintson a **Natív modul** fülre, és válassza ki a kiszolgálót, a webhelyet (például az "Alapértelmezett webhely" vagy az AD FS alkalmazást (például az "adfs" alatt az "ls" parancsot), hogy az IIS beépülő modult a kívánt szinten engedélyezze.
 10. Kattintson az **IIS-hitelesítés engedélyezése** jelölőnégyzetre a képernyő tetején.
 
 Az Azure Multi-Factor Authentication mostantól védi az AD FS-t.

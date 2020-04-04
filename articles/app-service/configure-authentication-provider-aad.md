@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 09/03/2019
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 4b42f0966288e4ee72b689ddce6313a41e91f13e
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: dbbe58df4f1cfe93555b494e525fad18f5b02664
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80438034"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632574"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Az App Service vagy az Azure Functions alkalmazás konfigurálása az Azure AD bejelentkezési adatainak használatára
 
@@ -78,7 +78,7 @@ Hajtsa végre a következő lépéseket:
 1. Az alkalmazás regisztrációja létrehozása után másolja az **alkalmazás (ügyfél) azonosítóját** és a **címtár (bérlői) azonosítóját** későbbi használatra.
 1. Válassza a **Hitelesítés** lehetőséget. Az **Implicit támogatás**csoportban engedélyezze az **azonosítójogkivonatokat,** hogy engedélyezze az OpenID Connect felhasználói bejelentkezéseket az App Service-ből.
 1. (Nem kötelező) Válassza a **Márkajelzés lehetőséget.** A **kezdőlap URL-címében**adja meg az App Service-alkalmazás URL-címét, és válassza a **Mentés**lehetőséget.
-1. Válassza **az API-készlet** > felfedése**lehetőséget.** Illessze be az App Service-alkalmazás URL-címét, és válassza a **Mentés gombot.**
+1. Válassza **az API-készlet** > felfedése**lehetőséget.** Egybérlős alkalmazás esetén illessze be az App Service-alkalmazás URL-címét, és válassza a **Mentés** lehetőséget, a több-bérlős alkalmazás esetében pedig illessze be az URL-címet, amely a bérlő által ellenőrzött tartományok egyikén alapul, majd válassza a **Mentés lehetőséget.**
 
    > [!NOTE]
    > Ez az érték az alkalmazásregisztráció **alkalmazásazonosító-URI-ja.** Ha a webalkalmazás hozzáférést igényel egy API-hoz a felhőben, a felhőbeli App Service-erőforrás konfigurálásakor szüksége van a webalkalmazás **alkalmazásazonosító-URI-jára.** Ezt például akkor használhatja, ha azt szeretné, hogy a felhőszolgáltatás explicit módon biztosítson hozzáférést a webalkalmazáshoz.
@@ -133,4 +133,4 @@ Most konfigurált egy natív ügyfélalkalmazást, amely egy felhasználó nevé
 
 <!-- URLs. -->
 
-[Azure-portál]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/

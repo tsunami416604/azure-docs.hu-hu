@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: travisw
-ms.openlocfilehash: 270a8316ee7c23ebb54c7d0633fb9159ef33acbd
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 8b187e058299f8aa8b762231c0ed1e708e5ad9d1
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78383815"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80659053"
 ---
 1. Indítsa el az Android Studio alkalmazást, és válassza az **Új Android Studio-projekt indítása lehetőséget** az **Üdvözlőablakban.**
 
@@ -27,7 +27,7 @@ Az Android Studio előkészíti az új Android-projektet. Ezután konfigurálja 
 
 [!INCLUDE [License notice](cognitive-services-speech-service-license-notice.md)]
 
-A Cognitive Services beszédstka jelenlegi verziója 1.10.0.
+A Cognitive Services beszédstka jelenlegi verziója 1.11.0.
 
 Az Android-alapú beszédsdkát [AAR (Android Library)](https://developer.android.com/studio/projects/android-library)néven csomagolják, amely tartalmazza a szükséges könyvtárakat és a szükséges Android-engedélyeket.
 A maven-tárházban található https:\//csspeechstorage.blob.core.windows.net/maven/.
@@ -42,7 +42,7 @@ Készítse elő a projektet a Speech SDK használatára. Nyissa meg a **Projekts
 
    ![Képernyőkép a Könyvtár-függőségről](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. A megjelenő ablakban adja meg az Android-alapú Beszéd sdk nevét és verzióját, *com.microsoft.cognitiveservices.speech:client-sdk:1.10.0*. Ezután kattintson az **OK** gombra.
+1. A megjelenő ablakban adja meg az Android-alapú Beszéd sdk nevét és verzióját, *com.microsoft.cognitiveservices.speech:client-sdk:1.11.0*. Ezután kattintson az **OK** gombra.
    A beszédsdk-et most kell hozzáadni a függőségek listájához, ahogy az látható:
 
    ![Képernyőkép a beszédfelismerési SDK-ról a függőségek listájában](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-08-dependency-added-1.0.0.png)

@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/06/2020
 tags: connectors
-ms.openlocfilehash: 1578ca030bc8bab971a44e1afcce1d1ab9e1d5e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a3fb9a8a72b384d2af4af38bdc382e541ddf535
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78674105"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656284"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Automatizált eseményalapú munkafolyamatok létrehozása és futtatása HTTP-webhookok használatával az Azure Logic Apps alkalmazásban
 
@@ -36,7 +36,7 @@ Egy HTTP webhook-művelet is eseményalapú, és *előfizet* egy adott szolgált
 Például az Office 365 Outlook-összekötő [**Jóváhagyási e-mail küldése művelet e-mail küldése**](connectors-create-api-office365-outlook.md) művelet egy példa a webhook művelet, amely követi ezt a mintát. Ezt a mintát kiterjesztheti bármely szolgáltatásra a webhook-művelet használatával.
 
 > [!NOTE]
-> A Logic Apps kényszeríti a Transport Layer Security (TLS) 1.2-es verziójának hívását a HTTP webhook eseményindítóra vagy műveletre. Ha SSL kézfogási hibákat lát, győződjön meg arról, hogy a TLS 1.2-t használja. Bejövő hívások esetén az alábbiakban a támogatott titkosítási csomagok találhatók:
+> A Logic Apps kényszeríti a Transport Layer Security (TLS) 1.2-es verziójának hívását a HTTP webhook eseményindítóra vagy műveletre. Ha TLS kézfogási hibákat lát, győződjön meg arról, hogy a TLS 1.2-t használja. Bejövő hívások esetén az alábbiakban a támogatott titkosítási csomagok találhatók:
 >
 > * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
 > * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256

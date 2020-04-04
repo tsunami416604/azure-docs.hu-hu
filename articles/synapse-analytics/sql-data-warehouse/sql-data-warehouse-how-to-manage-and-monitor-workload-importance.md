@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 114f8d637a927a899807a676fb3e1b45f5c7687c
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 3efd8a776542616a9ceefba331b06406540905a8
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585747"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633321"
 ---
 # <a name="manage-and-monitor-workload-importance-in-azure-synapse-analytics"></a>A számítási feladatok fontosságának kezelése és figyelése az Azure Synapse Analytics szolgáltatásban
 
@@ -24,7 +24,7 @@ Kezelheti és figyelheti a Synapse SQL-kérelemszintű fontosságát az Azure Sy
 
 ## <a name="monitor-importance"></a>Fontosság figyelése
 
-A [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) dinamikus felügyeleti nézetben lévő új fontosságoszlop használatával figyelheti a fontosságot.
+A [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) dinamikus felügyeleti nézetben lévő új fontosságoszlop használatával figyelheti a fontosságot.
 Az alábbi figyelési lekérdezés a lekérdezések küldési idejét és kezdési idejét mutatja. Tekintse át a küldési és kezdési időt a fontossággal együtt, és tekintse meg, hogy a fontosság hogyan befolyásolta az ütemezést.
 
 ```sql
@@ -47,7 +47,7 @@ SELECT *
   WHERE classifier_id > 12
 ```
 
-A [sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?view=azure-sqldw-latest)katalógusnézet az osztályozó létrehozásához használt paraméterekre vonatkozó információkat tartalmazza.  Az alábbi lekérdezés azt mutatja, hogy az ```membername``` ExecReportsClassifier az ExecutiveReports értékekkel rendelkező értékek paraméterén jött létre:
+A [sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)katalógusnézet az osztályozó létrehozásához használt paraméterekre vonatkozó információkat tartalmazza.  Az alábbi lekérdezés azt mutatja, hogy az ```membername``` ExecReportsClassifier az ExecutiveReports értékekkel rendelkező értékek paraméterén jött létre:
 
 ```sql
 SELECT c.name,cd.classifier_type, classifier_value
@@ -69,6 +69,7 @@ GO
 ```
 
 ## <a name="next-steps"></a>További lépések
+
 - A besorolásról további információt a [Számítási feladatok besorolása című témakörben talál.](sql-data-warehouse-workload-classification.md)
 - A fontosságról további információt a [Munkaterhelés fontossága című témakörben talál.](sql-data-warehouse-workload-importance.md)
 

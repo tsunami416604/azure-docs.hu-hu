@@ -11,12 +11,12 @@ ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: d97a388477c895a4a8632d7ab3d06dc4c8982857
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 0139c581e6660622f1ab6db9f407725816377a6d
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582129"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633564"
 ---
 # <a name="optimizing-transactions-in-synapse-sql"></a>Tranzakciók optimalizálása a Synapse SQL-ben
 
@@ -24,7 +24,7 @@ Ismerje meg, hogyan optimalizálhatja a tranzakciós kód teljesítményét a Sy
 
 ## <a name="transactions-and-logging"></a>Tranzakciók és naplózás
 
-A tranzakciók a relációs adatbázis-motor fontos összetevői. A tranzakciók az adatok módosítása során használatosak. Ezek a tranzakciók lehetnek explicitek vagy implicitek. Az egyszeri INSERT, UPDATE és DELETE utasítások mind példák az implicit tranzakciókra. Explicit transactions use BEGIN TRAN, COMMIT TRAN, or ROLLBACK TRAN. Explicit tranzakciók általában akkor használatosak, ha több módosítási utasítást kell összekötni egyetlen atomi egységben. 
+A tranzakciók a relációs adatbázis-motor fontos összetevői. A tranzakciók az adatok módosítása során használatosak. Ezek a tranzakciók lehetnek explicitek vagy implicitek. Az egyszeri INSERT, UPDATE és DELETE utasítások mind példák az implicit tranzakciókra. Explicit transactions use BEGIN TRAN, COMMIT TRAN, or ROLLBACK TRAN. Explicit tranzakciók általában akkor használatosak, ha több módosítási utasítást kell összekötni egyetlen atomi egységben.
 
 Az adatbázis módosításait tranzakciónaplók követik nyomon. Minden disztribúció saját tranzakciónaplóval rendelkezik. A tranzakciónapló írásaautomatikus. Nincs szükség konfigurációra. Azonban, míg ez a folyamat garantálja az írást, mégis többletköltséget jelent a rendszerben. Ezt a hatást a tranzakciós hatékony kód írásával minimalizálhatja. A tranzakciós szempontból hatékony kód nagyjából két kategóriába sorolható.
 
@@ -39,9 +39,7 @@ A teljesen naplózott műveletekkel ellentétben, amelyek a tranzakciónaplóseg
 A tranzakcióbiztonsági korlátok csak a teljesen naplózott műveletekre vonatkoznak.
 
 > [!NOTE]
-> A minimálisan naplózott műveletek explicit tranzakciókban vehetnek részt. Mivel a felosztási struktúrák összes változása nyomon követhető, lehetőség van a minimálisan naplózott műveletek visszaállítására. 
-> 
-> 
+> A minimálisan naplózott műveletek explicit tranzakciókban vehetnek részt. Mivel a felosztási struktúrák összes változása nyomon követhető, lehetőség van a minimálisan naplózott műveletek visszaállítására.
 
 ## <a name="minimally-logged-operations"></a>Minimálisan naplózott műveletek
 
@@ -64,10 +62,9 @@ A következő műveletek minimálisan naplózva:
 
 > [!NOTE]
 > A tranzakció biztonsági korlátja nem érinti a belső adatmozgatási műveleteket (például a BROADCAST és a SHUFFLE).
-> 
-> 
 
 ## <a name="minimal-logging-with-bulk-load"></a>Minimális naplózás tömeges betöltéssel
+
 CTAS és INSERT... A SELECT egyaránt tömeges betöltési művelet. Azonban mindkettő befolyásolja a céltábla meghatározása, és függ a terhelési forgatókönyv. Az alábbi táblázat bemutatja, ha a tömeges műveletek teljes vagy minimális naplózása teljes mértékben vagy minimálisan:  
 
 | Elsődleges index | Betöltési forgatókönyv | Naplózási mód |
@@ -83,11 +80,11 @@ CTAS és INSERT... A SELECT egyaránt tömeges betöltési művelet. Azonban min
 
 > [!IMPORTANT]
 > A Synapse SQL-készlet adatbázis 60 disztribúciók. Ezért feltételezve, hogy az összes sor egyenletesen oszlik el, és egyetlen partíción landol, a kötegnek 6 144 000 vagy nagyobb sort kell tartalmaznia ahhoz, hogy minimálisan naplózza a fürtözött oszlopcentrikus indexbe való íráskor. Ha a tábla particionált, és a beszúrt sorok span partíció határokat, majd szüksége lesz 6.144.000 sor partíció határainként, feltételezve, hogy még adateloszlás. Minden partíció minden disztribúció egymástól függetlenül meg kell haladnia a 102.400 sor küszöbértéket a lapka minimálisan bejelentkezett a disztribúcióba.
-> 
 
 Az adatok fürtözött indexszel rendelkező nem üres táblába történő betöltése gyakran teljesen naplózott és minimálisan naplózott sorok keverékét tartalmazhatja. A csoportosított index az oldalak kiegyensúlyozott fája (b-fa). Ha a lap írása már tartalmaz sorokat egy másik tranzakció, majd ezek az írások lesz nek teljesen naplózott. Ha azonban az oldal üres, akkor az erre az oldalra írt írás minimálisan naplózva lesz.
 
 ## <a name="optimizing-deletes"></a>Törlés optimalizálása
+
 A DELETE egy teljesen naplózott művelet.  Ha nagy mennyiségű adatot kell törölnie egy táblában vagy partíción, `SELECT` gyakran több értelme van a megtartani kívánt adatoknak, amelyek minimálisan naplózott műveletként futtathatók.  Az adatok kijelöléséhez hozzon létre egy új táblát a [CTAS](sql-data-warehouse-develop-ctas.md)segítségével.  A létrehozás után az [ÁTNEVEZÉS](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) segítségével cserélje ki a régi táblát az újonnan létrehozott táblával.
 
 ```sql
@@ -98,7 +95,7 @@ CREATE TABLE [dbo].[FactInternetSales_d]
 WITH
 (    CLUSTERED COLUMNSTORE INDEX
 ,    DISTRIBUTION = HASH([ProductKey])
-,     PARTITION     (    [OrderDateKey] RANGE RIGHT 
+,     PARTITION     (    [OrderDateKey] RANGE RIGHT
                                     FOR VALUES    (    20000101, 20010101, 20020101, 20030101, 20040101, 20050101
                                                 ,    20060101, 20070101, 20080101, 20090101, 20100101, 20110101
                                                 ,    20120101, 20130101, 20140101, 20150101, 20160101, 20170101
@@ -113,12 +110,13 @@ WHERE    [PromotionKey] = 2
 OPTION (LABEL = 'CTAS : Delete')
 ;
 
---Step 02. Rename the Tables to replace the 
+--Step 02. Rename the Tables to replace the
 RENAME OBJECT [dbo].[FactInternetSales]   TO [FactInternetSales_old];
 RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 ```
 
 ## <a name="optimizing-updates"></a>Frissítések optimalizálása
+
 Update egy teljesen naplózott művelet.  Ha egy tábla vagy partíció nagy számú sorát kell frissítenie, gyakran sokkal hatékonyabb lehet egy minimálisan naplózott művelet, például a [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) használata.
 
 Az alábbi példában a teljes tábla frissítése CTAS-sá lett konvertálva, így a minimális naplózás lehetséges.
@@ -126,12 +124,12 @@ Az alábbi példában a teljes tábla frissítése CTAS-sá lett konvertálva, �
 Ebben az esetben visszamenőlegesen hozzáadjuk az engedmény összegét a táblázatban szereplő eladásokhoz:
 
 ```sql
---Step 01. Create a new table containing the "Update". 
+--Step 01. Create a new table containing the "Update".
 CREATE TABLE [dbo].[FactInternetSales_u]
 WITH
 (    CLUSTERED INDEX
 ,    DISTRIBUTION = HASH([ProductKey])
-,     PARTITION     (    [OrderDateKey] RANGE RIGHT 
+,     PARTITION     (    [OrderDateKey] RANGE RIGHT
                                     FOR VALUES    (    20000101, 20010101, 20020101, 20030101, 20040101, 20050101
                                                 ,    20060101, 20070101, 20080101, 20090101, 20100101, 20110101
                                                 ,    20120101, 20130101, 20140101, 20150101, 20160101, 20170101
@@ -140,15 +138,15 @@ WITH
                                                 )
                 )
 )
-AS 
+AS
 SELECT
     [ProductKey]  
-,    [OrderDateKey] 
+,    [OrderDateKey]
 ,    [DueDateKey]  
-,    [ShipDateKey] 
-,    [CustomerKey] 
-,    [PromotionKey] 
-,    [CurrencyKey] 
+,    [ShipDateKey]
+,    [CustomerKey]
+,    [PromotionKey]
+,    [CurrencyKey]
 ,    [SalesTerritoryKey]
 ,    [SalesOrderNumber]
 ,    [SalesOrderLineNumber]
@@ -165,7 +163,7 @@ SELECT
          END AS MONEY),0) AS [SalesAmount]
 ,    [TaxAmt]
 ,    [Freight]
-,    [CarrierTrackingNumber] 
+,    [CarrierTrackingNumber]
 ,    [CustomerPONumber]
 FROM    [dbo].[FactInternetSales]
 OPTION (LABEL = 'CTAS : Update')
@@ -181,10 +179,9 @@ DROP TABLE [dbo].[FactInternetSales_old]
 
 > [!NOTE]
 > Nagy táblák újbóli létrehozása előnyös lehet a Synapse SQL-készlet számítási feladatok kezelése szolgáltatások használatával. További információ: [Resource classes for workload management](resource-classes-for-workload-management.md).
-> 
-> 
 
 ## <a name="optimizing-with-partition-switching"></a>Optimalizálás partícióváltással
+
 Ha egy [táblázatpartíción](sql-data-warehouse-tables-partition.md)belül nagy léptékű módosításokkal szembesül, akkor a partícióváltási mintának van értelme. Ha az adatmódosítás jelentős, és több partícióra terjed ki, akkor a partíciókon keresztüli iteráció ugyanazt az eredményt éri el.
 
 A partíciókapcsoló végrehajtásának lépései a következők:
@@ -223,11 +220,11 @@ SELECT     s.name                            AS [schema_name]
 FROM        sys.schemas                    AS s
 JOIN        sys.tables                    AS t    ON  s.[schema_id]        = t.[schema_id]
 JOIN        sys.indexes                    AS i    ON     t.[object_id]        = i.[object_id]
-JOIN        sys.partitions                AS p    ON     i.[object_id]        = p.[object_id] 
-                                                AND i.[index_id]        = p.[index_id] 
+JOIN        sys.partitions                AS p    ON     i.[object_id]        = p.[object_id]
+                                                AND i.[index_id]        = p.[index_id]
 JOIN        sys.partition_schemes        AS h    ON     i.[data_space_id]    = h.[data_space_id]
 JOIN        sys.partition_functions        AS f    ON     h.[function_id]        = f.[function_id]
-LEFT JOIN    sys.partition_range_values    AS r     ON     f.[function_id]        = r.[function_id] 
+LEFT JOIN    sys.partition_range_values    AS r     ON     f.[function_id]        = r.[function_id]
                                                 AND r.[boundary_id]        = p.[partition_number]
 WHERE i.[index_id] <= 1
 )
@@ -246,7 +243,7 @@ Ez az eljárás maximalizálja a kód újrafelhasználását, és kompaktabbá t
 A következő kód bemutatja a korábban említett lépéseket a teljes partíciókapcsolási rutin eléréséhez.
 
 ```sql
---Create a partitioned aligned empty table to switch out the data 
+--Create a partitioned aligned empty table to switch out the data
 IF OBJECT_ID('[dbo].[FactInternetSales_out]') IS NOT NULL
 BEGIN
     DROP TABLE [dbo].[FactInternetSales_out]
@@ -256,7 +253,7 @@ CREATE TABLE [dbo].[FactInternetSales_out]
 WITH
 (    DISTRIBUTION = HASH([ProductKey])
 ,    CLUSTERED COLUMNSTORE INDEX
-,     PARTITION     (    [OrderDateKey] RANGE RIGHT 
+,     PARTITION     (    [OrderDateKey] RANGE RIGHT
                                     FOR VALUES    (    20020101, 20030101
                                                 )
                 )
@@ -278,20 +275,20 @@ CREATE TABLE [dbo].[FactInternetSales_in]
 WITH
 (    DISTRIBUTION = HASH([ProductKey])
 ,    CLUSTERED COLUMNSTORE INDEX
-,     PARTITION     (    [OrderDateKey] RANGE RIGHT 
+,     PARTITION     (    [OrderDateKey] RANGE RIGHT
                                     FOR VALUES    (    20020101, 20030101
                                                 )
                 )
 )
-AS 
+AS
 SELECT
     [ProductKey]  
-,    [OrderDateKey] 
+,    [OrderDateKey]
 ,    [DueDateKey]  
-,    [ShipDateKey] 
-,    [CustomerKey] 
-,    [PromotionKey] 
-,    [CurrencyKey] 
+,    [ShipDateKey]
+,    [CustomerKey]
+,    [PromotionKey]
+,    [CurrencyKey]
 ,    [SalesTerritoryKey]
 ,    [SalesOrderNumber]
 ,    [SalesOrderLineNumber]
@@ -308,7 +305,7 @@ SELECT
          END AS MONEY),0) AS [SalesAmount]
 ,    [TaxAmt]
 ,    [Freight]
-,    [CarrierTrackingNumber] 
+,    [CarrierTrackingNumber]
 ,    [CustomerPONumber]
 FROM    [dbo].[FactInternetSales]
 WHERE    OrderDateKey BETWEEN 20020101 AND 20021231
@@ -347,9 +344,10 @@ DROP TABLE #ptn_data
 ```
 
 ## <a name="minimize-logging-with-small-batches"></a>A naplózás kis tételekkel történő minimalizálása
+
 Nagy adatmódosítási műveletek esetén célszerű lehet a műveletet adattömbökre vagy kötegekre osztani a munkaegység hatókörének hatóköre érdekében.
 
-A következő kód egy működő példa. A kötegméretet triviális számra állították be a technika kiemeléséhez. A valóságban a köteg mérete jelentősen nagyobb lenne. 
+A következő kód egy működő példa. A kötegméretet triviális számra állították be a technika kiemeléséhez. A valóságban a köteg mérete jelentősen nagyobb lenne.
 
 ```sql
 SET NO_COUNT ON;
@@ -409,12 +407,10 @@ END
 
 ## <a name="pause-and-scaling-guidance"></a>Szüneteltetési és méretezési útmutató
 
-A Szinapszis SQL lehetővé teszi az SQL-készlet [szüneteltetését, folytatását és](sql-data-warehouse-manage-compute-overview.md) méretezését igény szerint. Az SQL-készlet szüneteltetésekor vagy méretezésekor fontos megérteni, hogy a repülés közbeni tranzakciók azonnal megszűnnek; a nyitott tranzakciók visszagörgetését. Ha a számítási feladatok hosszú ideig futó és hiányos adatmódosítást adtak ki a szüneteltetési vagy méretezési művelet előtt, akkor ezt a munkát vissza kell vonni. Ez a visszavonás hatással lehet az SQL-készlet szüneteltetéséhez vagy méretezéséhez szükséges időre. 
+A Szinapszis SQL lehetővé teszi az SQL-készlet [szüneteltetését, folytatását és](sql-data-warehouse-manage-compute-overview.md) méretezését igény szerint. Az SQL-készlet szüneteltetésekor vagy méretezésekor fontos megérteni, hogy a repülés közbeni tranzakciók azonnal megszűnnek; a nyitott tranzakciók visszagörgetését. Ha a számítási feladatok hosszú ideig futó és hiányos adatmódosítást adtak ki a szüneteltetési vagy méretezési művelet előtt, akkor ezt a munkát vissza kell vonni. Ez a visszavonás hatással lehet az SQL-készlet szüneteltetéséhez vagy méretezéséhez szükséges időre.
 
 > [!IMPORTANT]
-> `UPDATE` Mindkettő, `DELETE` és teljesen naplózott műveletek, és így ezek a visszavonás/ismétlési műveletek jelentősen hosszabb időt vehet igénybe, mint egyenértékű minimálisan naplózott műveletek. 
-> 
-> 
+> `UPDATE` Mindkettő, `DELETE` és teljesen naplózott műveletek, és így ezek a visszavonás/ismétlési műveletek jelentősen hosszabb időt vehet igénybe, mint egyenértékű minimálisan naplózott műveletek.
 
 A legjobb forgatókönyv az, hogy hagyja, hogy a repülési adatok módosítása tranzakciók befejezése előtt szüneteltetése vagy méretezése SQL-készlet. Ez a forgatókönyv azonban nem mindig praktikus. A hosszú visszaállítás kockázatának csökkentése érdekében vegye figyelembe az alábbi lehetőségek egyikét:
 
@@ -424,4 +420,3 @@ A legjobb forgatókönyv az, hogy hagyja, hogy a repülési adatok módosítása
 ## <a name="next-steps"></a>További lépések
 
 További információ az elkülönítési szintekről és a tranzakciós korlátokról [a Synapse SQL tranzakciói](sql-data-warehouse-develop-transactions.md) című témakörben.  Az egyéb gyakorlati tanácsok áttekintését az [SQL Data Warehouse ajánlott eljárások című témakörben találja.](sql-data-warehouse-best-practices.md)
-

@@ -1,14 +1,14 @@
 ---
 title: A politikadefiníciós struktúra részletei
 description: Bemutatja, hogyan használják a szabályzatdefiníciók at a szervezetben az Azure-erőforrásokra vonatkozó konvenciók létrehozásához.
-ms.date: 02/26/2020
+ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: d7cb1ab7d045a0595f6949052ecedba6cd1bf694
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e6b1d5c43f290fc2dd953492440670608a15faca
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239990"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80638082"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -361,7 +361,7 @@ Ez a házirendszabály-példa **értékkel** ellenőrzi, hogy a több beágyazot
     "policyRule": {
         "if": {
             "value": "[less(length(field('tags')), 3)]",
-            "equals": true
+            "equals": "true"
         },
         "then": {
             "effect": "deny"
@@ -578,6 +578,9 @@ Az [Erőforrás-kezelő sablonfunkciói](../../../azure-resource-manager/templat
 - resourceId()
 - változók()
 
+> [!NOTE]
+> Ezek a függvények `details.deployment.properties.template` továbbra is elérhetők a sablon központi telepítésének egy **deployIfNotExists** házirend-definícióban.
+
 A következő függvény használható egy házirendszabályban, de eltér az Azure Resource Manager-sablonban való használattól:
 
 - `utcNow()`- Az Erőforrás-kezelő sablonnal ellentétben ez a defaultValue értéken kívül is használható.
@@ -593,10 +596,9 @@ A következő függvények csak a házirendszabályokban érhetők el:
   - Ennek a mezőnek az értékét adja eredményül az If feltétel által kiértékelt erőforrásból.
   - `field`elsősorban **az AuditIfNotExists** és **a DeployIfNotExists** segítségével hivatkozik a kiértékelt erőforrás mezőire. Erre a használatra példa látható a [DeployIfNotExists például.](effects.md#deployifnotexists-example)
 - `requestContext().apiVersion`
-  - A házirend-kiértékelést kiváltó kérelem API-verzióját `2019-09-01`adja vissza (példa: ). Ez lesz az az API-verzió, amelyet a PUT/PATCH kérelemben az erőforrás-létrehozás/-frissítés kiértékelésére használtak. A legújabb API-verzió mindig a meglévő erőforrások megfelelőségi kiértékelése során használatos.
+  - A házirend-kiértékelést kiváltó kérelem API-verzióját `2019-09-01`adja vissza (példa: ).
+    Ez lesz az az API-verzió, amelyet a PUT/PATCH kérelemben az erőforrás-létrehozás/-frissítés kiértékelésére használtak. A legújabb API-verzió mindig a meglévő erőforrások megfelelőségi kiértékelése során használatos.
   
-
-
 #### <a name="policy-function-example"></a>Példa házirend-függvényre
 
 Ez a házirendszabály-példa az erőforrásfüggvény t `resourceGroup` használja a **névtulajdonság** leéséhez a `concat` tömb- és objektumfüggvénnyel kombinálva egy `like` olyan feltétel létrehozásához, amely az erőforrásnevét az erőforráscsoport nevével kezdi.
@@ -707,8 +709,6 @@ Ez a mintaszabály az **\[\*\]ipRules .value** **10.0.4.1-re** való egyeztetés
     }
 }
 ```
-
-
 
 További információt [a [\*] alias kiértékelése](../how-to/author-policies-for-arrays.md#evaluating-the--alias)című témakörben talál.
 

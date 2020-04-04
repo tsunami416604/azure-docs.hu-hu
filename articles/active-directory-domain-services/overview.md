@@ -10,16 +10,18 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: cf961b00c4823d0c9efcf44b0db7bb75a80d3dfa
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 0f5f890b4f32961e00fb30316a1dc7c88ef93a45
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474334"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80654840"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Mi az Azure Active Directory tartományi szolgáltatások?
 
 Az Azure Active Directory tartományi szolgáltatások (Azure AD DS) olyan felügyelt tartományi szolgáltatásokat biztosít, mint a tartományhoz való csatlakozás, a csoportházirend, a könnyű címtár-hozzáférési protokoll (LDAP) és a Kerberos / NTLM-hitelesítés, amely teljes mértékben kompatibilis a Windows Server Active Directoryval. Ezeket a tartományi szolgáltatásokat anélkül használhatja, hogy tartományvezérlőket kellene telepítenie, kezelnie és javítania a felhőben. Az Azure AD DS integrálható a meglévő Azure AD-bérlővel, amely lehetővé teszi a felhasználók számára, hogy meglévő hitelesítő adataikkal jelentkezzenek be. A meglévő csoportok és felhasználói fiókok használatával is biztosíthatja az erőforrásokhoz való hozzáférést, ami zökkenőmentesebb lift-and-shift helyszíni erőforrások at Azure-ba.
+
+Első lépésekhez [hozzon létre egy Azure AD DS felügyelt tartományt az Azure Portalon][tutorial-create]keresztül.
 
 Az Azure AD DS replikálja az Azure AD-ből származó identitásadatokat, így együttműködik a csak felhőalapú vagy helyszíni Active Directory tartományi szolgáltatásokkal (AD DS) környezettel szinkronizált Azure AD-bérlőkkel. Az Azure AD DS-szolgáltatások mindkét környezetben léteznek.
 
@@ -51,7 +53,11 @@ Az Azure AD DS alternatívát kínál a VPN-kapcsolatok helyszíni AD DS-környe
 
 ## <a name="azure-ad-ds-features-and-benefits"></a>Az Azure AD DS funkciói és előnyei
 
-Az Azure AD DS teljes mértékben kompatibilis a hagyományos AD DS-környezettel olyan műveletekhez, mint a tartomány-csatlakozás, a biztonságos LDAP (LDAPS), a csoportházirend, a DNS-kezelés és az LDAP-kötési és olvasási támogatás. LDAP írási támogatás érhető el az Azure AD DS felügyelt tartományban létrehozott objektumok, de az Azure AD-ből szinkronizált erőforrásokhoz nem érhető el. Az Azure AD DS következő szolgáltatásai egyszerűsítik az üzembe helyezési és felügyeleti műveleteket:
+Az Azure AD DS teljes mértékben kompatibilis a hagyományos AD DS-környezettel olyan műveletekhez, mint a tartomány-csatlakozás, a biztonságos LDAP (LDAPS), a csoportházirend, a DNS-kezelés és az LDAP-kötési és olvasási támogatás. LDAP írási támogatás érhető el az Azure AD DS felügyelt tartományban létrehozott objektumok, de az Azure AD-ből szinkronizált erőforrásokhoz nem érhető el.
+
+Ha többet szeretne megtudni az identitásbeállításokról, [hasonlítsa össze az Azure AD DS-t az Azure AD-vel, az Active Directory tartományi szolgáltatásokkal az Azure virtuális gépeken és az Active Directory tartományi szolgáltatások helyszíni használatával.][compare]
+
+Az Azure AD DS következő szolgáltatásai egyszerűsítik az üzembe helyezési és felügyeleti műveleteket:
 
 * **Egyszerűsített telepítési élmény:** Az Azure AD DS engedélyezve van az Azure AD-bérlő egyetlen varázsló használatával az Azure Portalon.
 * **Integrálva az Azure AD-vel:** A felhasználói fiókok, a csoporttagságok és a hitelesítő adatok automatikusan elérhetők az Azure AD-bérlőből. Az Azure AD-bérlővagy a helyszíni AD DS-környezet attribútumainak új felhasználói, csoportjai vagy attribútumainak módosításai automatikusan szinkronizálódnak az Azure AD DS szolgáltatással.

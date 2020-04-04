@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: b5d326d02587d6b5bd8fd73dcccfefdb13c47d57
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 26c5c5b31d5f3f9e1a642c0bafb947190e479055
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79500923"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632629"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Hibák elhárítása runbookokkal
 
@@ -33,7 +33,7 @@ Ha az Azure Automationben hibákat futtat, az alábbi lépésekkel diagnosztizá
 
 3. **Győződjön meg arról, hogy a csomópontok és az automatizálásmunkaterület rendelkezik a szükséges modulokkal.** 
 
-    Ha a runbook importál ja a modulokat, ellenőrizze, hogy azok elérhetők-e az Automation-fiók számára a [modulok importálása](../shared-resources/modules.md#import-modules)című részben felsorolt lépések segítségével. Frissítse a modulokat a legújabb verzióra az [Azure Automation Azure-modulok frissítésével](..//automation-update-azure-modules.md)kapcsolatos utasításokat követve. További hibaelhárítási információt a [Modulok hibaelhárítása című témakörben talál.](shared-resources.md#modules)
+    Ha a runbook importál ja a modulokat, ellenőrizze, hogy azok elérhetők-e az Automation-fiók számára a [modulok importálása](../shared-resources/modules.md#importing-modules)című részben felsorolt lépések segítségével. Frissítse a modulokat a legújabb verzióra az [Azure Automation Azure-modulok frissítésével](..//automation-update-azure-modules.md)kapcsolatos utasításokat követve. További hibaelhárítási információt a [Modulok hibaelhárítása című témakörben talál.](shared-resources.md#modules)
 
 4. **Teendő, ha a runbook fel van függesztve, vagy váratlanul meghibásodik.**
 
@@ -284,7 +284,7 @@ A hiba az alábbi problémák valamelyike miatt fordul elő:
 
 ### <a name="resolution"></a>Megoldás:
 
-* Memóriakorlát, hálózati szoftvercsatornák. A memóriakorlátokon belüli munka javasolt módja a számítási feladatok több runbook közötti felosztása, kevesebb adat feldolgozása a memóriában, a felesleges kimenet írásának elkerülése a runbookokból, és annak mérlegelése, hogy hány ellenőrzőpont van beírva a PowerShell-munkafolyamatba runbookok. Használja a tiszta módszert, például `$myVar.clear`a , `[GC]::Collect` a változók törléséhez és a szemétgyűjtés azonnali futtatásához. Ezek a műveletek csökkentik a runbook memóriaigényét futásidőben.
+* Memóriakorlát, hálózati szoftvercsatornák. A memóriakorlátokon belül a munkafeladat felosztása több runbook között, kevesebb adat feldolgozása a memóriában, a runbookok felesleges kimenetének írása, valamint a PowerShell-munkafolyamat-runbookok beírásának mérlegelése javasolt módszer. Használja a tiszta módszert, például `$myVar.clear`a , `[GC]::Collect` a változók törléséhez és a szemétgyűjtés azonnali futtatásához. Ezek a műveletek csökkentik a runbook memóriaigényét futásidőben.
 
 * Modul nem kompatibilis. Az Azure-modulok frissítéséhez kövesse az [Azure PowerShell-modulok frissítése](../automation-update-azure-modules.md)az Azure Automationben című lépéseit.
 

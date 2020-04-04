@@ -1,17 +1,17 @@
 ---
 title: OpenFaaS használata az Azure Kubernetes szolgáltatással (AKS)
-description: OpenFaaS üzembe helyezése és használata az Azure Kubernetes szolgáltatással (AKS)
+description: Megtudhatja, hogyan telepítheti és használhatja az OpenFaaS-t egy Azure Kubernetes-fürt (AKS) fürtön kiszolgáló nélküli függvények tárolókkal történő létrehozásához.
 author: justindavies
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: 2605489f73063cb16a588d4714955704482327ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95039573c607f516755f08f1ebad8b968416ec8b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473642"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631467"
 ---
 # <a name="using-openfaas-on-aks"></a>OpenFaaS használata AKS-en
 

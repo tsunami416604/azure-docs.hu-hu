@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 8ac9ff1f46e1d2d0ddaa313499340b4723c7da07
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 86cc081ef47eb2ac2e8e0a49bc79e8973f34baf1
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80584256"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633691"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Számítási feladatok kezelése erőforrás-osztályokkal az Azure Synapse Analytics szolgáltatásban
 
@@ -65,7 +65,7 @@ A dinamikus erőforrásosztályok az előre definiált adatbázis-szerepkörökk
 - nagyobbc
 - xlargerc
 
-Az egyes erőforrás-osztályok memóriafoglalása a következő. 
+Az egyes erőforrás-osztályok memóriafoglalása a következő.
 
 | Szolgáltatási szint  | smallrc között           | közepesrc               | nagyobbc                | xlargerc               |
 |:--------------:|:-----------------:|:----------------------:|:----------------------:|:----------------------:|
@@ -75,8 +75,6 @@ Az egyes erőforrás-osztályok memóriafoglalása a következő.
 | DW400c         | 6.25%             | 10%                    | 22%                    | 70%                    |
 | DW500c lehetőséget         | 5%                | 10%                    | 22%                    | 70%                    |
 | DW1000c a<br> DW30000c | 3%       | 10%                    | 22%                    | 70%                    |
-
-
 
 ### <a name="default-resource-class"></a>Alapértelmezett erőforrásosztály
 
@@ -285,8 +283,8 @@ IF @DWU IS NULL
 BEGIN
 -- Selecting proper DWU for the current DB if not specified.
 
-SELECT @DWU = 'DW'+ CAST(CASE WHEN Mem> 4 THEN Nodes*500 
-  ELSE Mem*100 
+SELECT @DWU = 'DW'+ CAST(CASE WHEN Mem> 4 THEN Nodes*500
+  ELSE Mem*100
   END AS VARCHAR(10)) +'c'
     FROM (
       SELECT Nodes=count(distinct n.pdw_node_id), Mem=max(i.committed_target_kb/1000/1000/60)
@@ -594,5 +592,4 @@ GO
 
 ## <a name="next-steps"></a>További lépések
 
-Az adatbázis-felhasználók kezeléséről és a biztonságról az [Adatbázis védelme a Synapse SQL rendszerben](sql-data-warehouse-overview-manage-security.md)című témakörben talál további információt. Ha többet szeretne tudni arról, hogy a nagyobb erőforrásosztályok hogyan javíthatják a fürtözött oszlopcentrikus index minőségét, olvassa el [a Memóriaoptimalizálás az oszlopcentrikus tömörítéshez című témakört.](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)
-
+Az adatbázis-felhasználók kezeléséről és a biztonságról az [Adatbázis védelme az SQL Analytics szolgáltatásban](sql-data-warehouse-overview-manage-security.md)című témakörben talál további információt. Ha többet szeretne tudni arról, hogy a nagyobb erőforrásosztályok hogyan javíthatják a fürtözött oszlopcentrikus index minőségét, olvassa el [a Memóriaoptimalizálás az oszlopcentrikus tömörítéshez című témakört.](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)

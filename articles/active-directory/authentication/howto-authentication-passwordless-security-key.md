@@ -4,19 +4,19 @@ description: Jelszó nélküli biztonsági kulcs bejelentkezés engedélyezése 
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e088d239a91edeff34ecd1a7dc5be7a9f8628da3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b8574fcdff12e61f7039174ed6297d0558a66dc4
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80129147"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653938"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése (előzetes verzió)
 
@@ -95,7 +95,7 @@ Ha a szolgáltatás megtekintése közben szeretné megosztani a visszajelzések
 
 A biztonsági kulcsok rendszergazdai kiépítése és kiépítésének kiirtása nem érhető el a nyilvános előzetes verzióban.
 
-### <a name="upn-changes"></a>Az upn változásai
+### <a name="upn-changes"></a>UPN-módosítások
 
 Dolgozunk egy olyan funkció támogatásán, amely lehetővé teszi az UPN-módosítást a hibrid Azure AD-hez és az Azure AD-hez csatlakozott eszközökön. Ha egy felhasználó felhasználói felülete megváltozik, a FIDO2 biztonsági kulcsok már nem módosíthatók a módosítás figyelembevétele érdekében. A megoldás az eszköz alaphelyzetbe állítása, és a felhasználónak újra regisztrálnia kell.
 

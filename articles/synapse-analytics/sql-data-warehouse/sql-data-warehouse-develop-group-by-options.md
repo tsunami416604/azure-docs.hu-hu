@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 28ac075d043f7605b6dfdac6879063fbe9308123
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 25e6770fb38d13591186754bc5e6a7641083a899
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619046"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633513"
 ---
 # <a name="group-by-options-in-synapse-sql-pool"></a>Csoportosítás a Synapse SQL-készletben
 
@@ -24,7 +24,7 @@ Ebben a cikkben tippeket talál a csoport sql készletben lévő beállítások 
 
 ## <a name="what-does-group-by-do"></a>Mit csinál a GROUP BY?
 
-A [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql) T-SQL záradék összesítő sorokba összesíti az adatokat. A GROUP BY néhány olyan beállítással rendelkezik, amelyet az SQL-készlet nem támogat. Ezek a lehetőségek a következő kerülő megoldásokat tartalmaznak:
+A [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL záradék összesítő sorokba összesíti az adatokat. A GROUP BY néhány olyan beállítással rendelkezik, amelyet az SQL-készlet nem támogat. Ezek a lehetőségek a következő kerülő megoldásokat tartalmaznak:
 
 * CSOPORTOSÍTÁS A ROLLUP-MAL
 * CSOPORTOSÍTÓ KÉSZLETEK
@@ -35,6 +35,7 @@ A [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql) T-SQL záradék ö
 A legegyszerűbb lehetőség itt az, hogy az UNION ALL használatával hajtsa végre az összesítést, ahelyett, hogy az explicit szintaxisra támaszkodna. Az eredmény pontosan ugyanaz.
 
 A következő példa a GROUP BY utasítást használja a ROLLUP beállítással:
+
 ```sql
 SELECT [SalesTerritoryCountry]
 ,      [SalesTerritoryRegion]
@@ -84,9 +85,10 @@ JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritor
 A GROUPING SETS lecseréléséhez a minta elve vonatkozik. Csak létre kell hoznia az UNION ALL szakaszokat a látni kívánt összesítési szintekhez.
 
 ## <a name="cube-options"></a>Kocka beállításai
+
 Az UNION ALL megközelítés sel létrehozhat egy GROUP BY WITH CUBE-ot. A probléma az, hogy a kód gyorsan válhat nehézkes és nehézkes. A probléma enyhítése érdekében használhatja ezt a fejlettebb megközelítést.
 
-Az előző példában az első lépés a "kocka" meghatározása, amely meghatározza a létrehozni kívánt összesítési szintet. 
+Az előző példában az első lépés a "kocka" meghatározása, amely meghatározza a létrehozni kívánt összesítési szintet.
 
 Vegye figyelembe a CROSS JOIN a két származtatott táblák, mivel ez generálja az összes szintet számunkra. A kód többi része formázásra alkalmas:
 
@@ -182,5 +184,5 @@ ORDER BY 1,2,3
 A kód szakaszokra bontásával és egy hurkolt szerkezet létrehozásával a kód kezelhetőbbé és karbantarthatóbbá válik.
 
 ## <a name="next-steps"></a>További lépések
-További fejlesztési tippeket a [fejlesztés áttekintése című témakörben talál.](sql-data-warehouse-overview-develop.md)
 
+További fejlesztési tippeket a [fejlesztés áttekintése című témakörben talál.](sql-data-warehouse-overview-develop.md)

@@ -11,16 +11,17 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 2b0e144220e36de6157101190adb838ae651d7c4
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 08fb0a6675d18370482abe9b1d7b9a0d9ee5c364
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583330"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633005"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Kapcsolati problémák hibaelhárítása
 
-Ez a cikk a szinapszis SQL-készlethez való csatlakozás gyakori hibaelhárítási technikáit sorolja fel.
+Ez a cikk az SQL Analytics-adatbázishoz való csatlakozás gyakori hibaelhárítási technikáit sorolja fel.
+
 - [A szolgáltatás elérhetőségének ellenőrzése](sql-data-warehouse-troubleshoot-connectivity.md#check-service-availability)
 - [Szüneteltetett vagy skálázási művelet keresése](sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
 - [A tűzfalbeállítások ellenőrzése](sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
@@ -54,15 +55,15 @@ Ha azt látja, hogy a szolgáltatás szünetelt vagy méretezés, ellenőrizze, 
 
 ![Áttekintő karbantartási ütemezés](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
 
-Ellenkező esetben kérdezze meg a rendszergazdát, hogy ez a karbantartás nem ütemezett esemény-e. A Synapse SQL-készletpéldány folytatásához kövesse az [itt](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute)ismertetett lépéseket.
+Ellenkező esetben kérdezze meg a rendszergazdát, hogy ez a karbantartás nem ütemezett esemény-e. Az SQL Analytics-példány folytatásához kövesse az [alábbi lépéseket.](pause-and-resume-compute-portal.md)
 
 ## <a name="check-your-firewall-settings"></a>A tűzfalbeállítások ellenőrzése
 
-A Szinapszis SQL-készlet az 1433-as porton keresztül kommunikál.Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ebben az esetben nem tud csatlakozni az Azure SQL-adatbáziskiszolgálóhoz, ha az informatikai részleg nem nyitja meg az 1433-as portot. A tűzfalkonfigurációkról itt talál további [információt.](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)
+Az SQL Analytics adatbázis a 1433-as porton keresztül kommunikál.Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ebben az esetben nem tud csatlakozni az Azure SQL-adatbáziskiszolgálóhoz, ha az informatikai részleg nem nyitja meg az 1433-as portot. A tűzfalkonfigurációkról itt talál további [információt.](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules)
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>A Vnet/szolgáltatásvégpont beállításainak ellenőrzése
 
-Ha a 40914-es és 40615-ös hibaüzenetet kapja, olvassa el [a hiba leírását és megoldását](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/sql-data-warehouse/toc.json#errors-40914-and-40615)itt.
+Ha a 40914-es és 40615-ös hibaüzenetet kapja, olvassa el [a hiba leírását és megoldását](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#errors-40914-and-40615)itt.
 
 ## <a name="check-for-the-latest-drivers"></a>A legújabb illesztők keresése
 
@@ -70,22 +71,22 @@ Ha a 40914-es és 40615-ös hibaüzenetet kapja, olvassa el [a hiba leírását 
 
 Ellenőrizze, hogy a legújabb eszközöket használja-e a Synapse SQL-készlethez való csatlakozáshoz:
 
-* SSMS
-* Azure Data Studio
-* SQL Server adateszközök (Visual Studio)
+- SSMS
+- Azure Data Studio
+- SQL Server adateszközök (Visual Studio)
 
 ### <a name="drivers"></a>Illesztőprogramok
 
 Ellenőrizze, hogy a legújabb illesztőprogram-verziókat használja-e.Az illesztőprogramok régebbi verziójának használata váratlan viselkedést eredményezhet, mivel előfordulhat, hogy a régebbi illesztőprogramok nem támogatják az új funkciókat.
 
-* [ODBC](https://docs.microsoft.com/sql/connect/odbc/download-odbc-driver-for-sql-server)
-* [JDBC](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)
-* [OLE DB](https://docs.microsoft.com/sql/connect/oledb/download-oledb-driver-for-sql-server)
-* [PHP](https://docs.microsoft.com/sql/connect/php/download-drivers-php-sql-server)
+- [ODBC](/sql/connect/odbc/download-odbc-driver-for-sql-server)
+- [JDBC](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)
+- [OLE DB](/sql/connect/oledb/download-oledb-driver-for-sql-server)
+- [PHP](/sql/connect/php/download-drivers-php-sql-server)
 
 ## <a name="check-your-connection-string"></a>A kapcsolati sztring ellenőrzése
 
-Ellenőrizze, hogy a kapcsolati sztring megfelelően van-e beállítva.  Az alábbiakban néhány mintát.  [Itt talál további információt a kapcsolati sztringekről](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-connection-strings).
+Ellenőrizze, hogy a kapcsolati sztring megfelelően van-e beállítva.  Az alábbiakban néhány mintát.  [Itt talál további információt a kapcsolati sztringekről](/sql-data-warehouse/sql-data-warehouse-connection-strings.md).
 
 ADO.NET kapcsolati sztring
 
@@ -117,7 +118,8 @@ Ellenőrizze, hogy nagy terhelés alatt áll-e a kiszolgáló, sok várólistár
 
 ## <a name="common-error-messages"></a>Gyakori hibaüzenetek
 
-Hibák 40914 és 40615, lásd a [hiba leírását és megoldását itt](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/sql-data-warehouse/toc.json#errors-40914-and-40615).
+Hibák 40914 és 40615, lásd a [hiba leírását és megoldását itt](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#errors-40914-and-40615).
 
 ## <a name="still-having-connectivity-issues"></a>Továbbra is vannak kapcsolódási problémák?
-Hozzon létre egy [támogatási jegyet,](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) hogy a mérnöki csapat támogathassa Önt.
+
+Hozzon létre egy [támogatási jegyet,](/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md) hogy a mérnöki csapat támogathassa Önt.

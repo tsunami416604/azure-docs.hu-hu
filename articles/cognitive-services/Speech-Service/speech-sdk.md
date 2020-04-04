@@ -1,126 +1,139 @@
 ---
 title: A Beszéd SDK - Beszédszolgáltatás
 titleSuffix: Azure Cognitive Services
-description: A Beszédszoftver-fejlesztő készlet (SDK) natív hozzáférést biztosít az alkalmazások számára a beszédszolgáltatás funkcióihoz, megkönnyítve a szoftverek fejlesztését. Ez a cikk további részleteket tartalmaz a Windows, Linux és Android SDK-ról.
+description: A Beszédszoftver-fejlesztő imtárkészlet (SDK) számos beszédfelismerési szolgáltatás-szolgáltatást kínál, így könnyebben fejleszthető beszédalapú alkalmazások.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 04/03/2020
 ms.author: dapine
-ms.openlocfilehash: 984d2dfe07faa22756b4be167aa86a69806b1a84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a2ff4a94c1b2941f645cd7032ef476d33dffdb00
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78331093"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656505"
 ---
 # <a name="about-the-speech-sdk"></a>A Speech SDK ismertetése
 
-A Beszédszoftver-fejlesztő készlet (SDK) hozzáférést biztosít az alkalmazások számára a beszédszolgáltatás funkcióihoz, megkönnyítve a beszédalapú szoftverek fejlesztését. Jelenleg az SDK-k hozzáférést biztosítanak a **beszéd-szöveg,** **a szövegfelolvasás, a** **beszédfordítás,** **a szándékfelismerés**és a **Bot Framework közvetlen vonali beszédcsatornájához.**
-
-A beszédközbeni SDK segítségével könnyedén rögzítheti a mikrofonból származó hangot, elolvashatja az adatfolyamból, vagy hozzáférhet a tárolóból származó hangfájlokhoz. A Speech SDK támogatja a WAV/PCM 16 bites, 16 kHz/8 kHz-es, egycsatornás hangot a beszédfelismeréshez. További hangformátumok támogatottak a [beszéd-szöveg REST-végpont](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) vagy a [kötegelt átírási szolgáltatás](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats)használatával.
-
-A képességekről és a támogatott platformokról szóló általános áttekintés a [dokumentációbeviteli oldalon](https://aka.ms/csspeech)található .
+A Beszédszoftver-fejlesztő készlet (SDK) számos beszédfelismerési szolgáltatás-szolgáltatást tesz elérhetővé, így beszédfelismerést támogató alkalmazásokat fejleszthet. A beszédstak kedélyek számos programozási nyelven és minden platformon elérhetők.
 
 [!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 
-[!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
+## <a name="scenario-capabilities"></a>Forgatókönyv-képességek
 
-## <a name="get-the-sdk"></a>Az SDK beszerezni
+A beszédstabk számos funkciót tesz elérhetővé a beszédfelismerési szolgáltatásból, de nem mindegyiket. A beszédbeszéd SDK képességei gyakran társított forgatókönyvek. A beszédbeszéd SDK ideális mind a valós idejű és nem valós idejű forgatókönyvek, a helyi eszközök, fájlok, Azure blob storage, és még a bemeneti és kimeneti adatfolyamok. Ha egy forgatókönyv nem érhető el a speech SDK, keressen egy REST API-alternatívát.
+
+### <a name="speech-to-text"></a>Diktálás
+
+[A beszédfelismerés](speech-to-text.md) (más néven *beszédfelismerés)* átírja a hangadatfolyamokat olyan szöveggé, amelyet az alkalmazások, eszközök vagy eszközök használhatnak vagy jeleníthetnek meg. A [language understanding (LUIS)](../luis/index.yml) szöveggé bírja a felhasználó szándékait az átírásból, és a hangparancsok alapján jár el. A [Beszédfordítás segítségével](speech-translation.md) egyetlen hívással lefordíthatja a beszédbevitelt egy másik nyelvre. További információt a [Szövegfelolvasás alapjai című témakörben talál.](speech-to-text-basics.md)
+
+### <a name="text-to-speech"></a>Szövegfelolvasás
+
+[A szövegfelolvasás](text-to-speech.md) (más néven *beszédszintézis)* a szöveget emberszerű szintetizált beszédmé alakítja. A beviteli szöveg vagy karakterlánc-konstansok, vagy a [beszédszintetizáló nyelvi (SSML)](speech-synthesis-markup.md)nyelvet használja. A szabványos vagy neurális hangokkal kapcsolatos további információkért lásd: [Szövegfelolvasás nyelv és hangtámogatás.](language-support.md#text-to-speech)
+
+### <a name="voice-assistants"></a>Hangvezérelt asszisztensek
+
+A beszédfelismerési SDK-t használó hangasszisztensek lehetővé teszik a fejlesztők számára, hogy természetes, emberszerű társalgási felületeket hozzanak létre alkalmazásaikhoz és felhasználói élményeikhez. A hangasszisztens-szolgáltatás gyors és megbízható interakciót biztosít az eszköz és az asszisztens között. A megvalósítás a Bot Framework közvetlen vonali beszédcsatornáját vagy az integrált egyéni parancsok (előzetes verzió) szolgáltatást használja a feladat befejezéséhez. Ezenkívül a hangasszisztensek az [egyéni hangportálhasználatával](https://aka.ms/customvoice) is létrehozható, így egyedi hangélményt hozhatnak létre.
+
+#### <a name="keyword-spotting"></a>Kulcsszóészlelés
+
+A [kulcsszófelismerés](speech-devices-sdk-create-kws.md) fogalmát a beszédfelismerési SDK támogatja. A kulcsszófelismerés a kulcsszó felismerése a beszédben, amelyet a kulcsszó meghallgatása után végrehajtanak. A "Hey Cortana" például aktiválná a Cortana-asszisztenst.
+
+### <a name="meeting-scenarios"></a>Értekezleti forgatókönyvek
+
+A beszédstabk tökéletes az értekezlet-forgatókönyvek átírásához, akár egyetlen eszközről, akár többeszközes beszélgetésről.
+
+#### <a name="conversation-transcription"></a>Beszédátírás
+
+[A Beszélgetésátírás](conversation-transcription.md) valós idejű (és aszinkron) beszédfelismerést, hangszóró-azonosítást és mondathozzárendelést tesz lehetővé az egyes előadóknak (más néven *diarizáció).* Tökéletes a személyes találkozók átírásához, és képes megkülönböztetni a hangszórókat.
+
+#### <a name="multi-device-conversation"></a>Többeszközes beszélgetés
+
+A [Többeszközes beszélgetés segítségével](multi-device-conversation.md)több eszközt vagy ügyfelet is csatlakoztathat egy beszélgetésben beszédalapú vagy szöveges üzenetek küldéséhez, és az átírás és a fordítás egyszerű támogatásával.
+
+### <a name="custom--agent-scenarios"></a>Egyéni / ügynöki forgatókönyvek
+
+A beszédsdk használható hívásközpont-forgatókönyvek átírására, ahol telefonos adatok jönnek létre.
+
+#### <a name="call-center-transcription"></a>Telefonos ügyfélszolgálati felvételek átírása
+
+[A hívásközpont-átírás](call-center-transcription.md) gyakori forgatókönyv a beszéd-szöveg íráshoz a különböző rendszerekből, például az interaktív hangválaszból (IVR) származó nagy mennyiségű telefonadat átírásához. A Beszédszolgáltatás legújabb beszédfelismerési modelljei még akkor is kitűnnek a telefonos adatok átírásában, ha az adatokat egy ember nehezen érti meg.
+
+### <a name="codec-compressed-audio-input"></a>Kodek tömörített hangbemenet
+
+A Speech SDK programozási nyelvek közül több is támogatja a kodek tömörített hangbemeneti adatfolyamait. További információt a <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">Tömörített hangbeviteli <span class="docon docon-navigate-external x-hidden-focus"> </span>formátumok használata című témakörben talál. </a>
+
+## <a name="rest-api"></a>REST API
+
+Míg a beszédbeszéd SDK a beszédszolgáltatás számos szolgáltatásfunkcióját lefedi, bizonyos esetekben érdemes lehet a REST API-t használni. Például a végpontkezelés csak a REST API-n keresztül érhető el.
+
+> [!TIP]
+> Ha a REST API-ra támaszkodik, a Swagger-szerkesztő segítségével automatikusan létrehozhatja az ügyfélkódtárakat. Például egy Batch transzkripciós ügyfélkönyvtár létrehozásához.
+> 1. Másolja az alábbi példa URL-címet:
+>     ```http
+>     https://westus.cris.ai/docs/v2.0/swagger
+>     ```
+> 1. Keresse meg a <a href="https://editor.swagger.io/" target="_blank">Swagger-szerkesztőt <span class="docon docon-navigate-external x-hidden-focus"></span> </a>
+> 1. Jelölje ki **a Fájlimportálás** > **URL-címét,** és illessze be az URL-címet
+> 1. Válassza **az Ügyfél létrehozása lehetőséget,** és válassza ki a kívánt programozási nyelvet
+
+### <a name="batch-transcription"></a>Kötegelt átírás
+
+[A kötegelt átírás](batch-transcription.md) nagy mennyiségű adat aszinkron beszéd-szöveg átírását teszi lehetővé. A kötegtranszkripció csak a REST API-ból lehetséges.
+
+## <a name="customization"></a>Testreszabás
+
+A beszédszolgáltatás kiváló funkcionalitást biztosít az alapértelmezett modellekkel a beszéd-szöveg, a szövegfelolvasás és a beszédfordítás között. Néha érdemes növelni az alapteljesítményt, hogy még jobban működjön az egyedi használati esetével. A Beszédszolgáltatás számos kód nélküli testreszabási eszközzel rendelkezik, amelyek megkönnyítik a szolgáltatást, és lehetővé teszik, hogy saját adatai alapján egyéni modellekkel versenyelőnyt hozzon létre. Ezek a modellek csak az Ön és szervezete számára lesznek elérhetők.
+
+### <a name="custom-speech-to-text"></a>Egyéni beszédfelismerési szöveg
+
+Ha a beszéd-szöveg felismerést és átírást használja egy egyedi környezetben, létrehozhat és betaníthat egyéni akusztikai, nyelvi és kiejtési modelleket a környezeti zaj vagy az iparág-specifikus szókincs kezelésére. A kód nélküli egyéni beszédfelismerési modellek létrehozása és kezelése az [egyéni beszédportálon](https://aka.ms/customspeech)keresztül érhető el. Az egyéni beszédfelismerési modell közzététele után a beszédbeszéd SDK-val használható fel.
+
+### <a name="custom-text-to-speech"></a>Egyéni szövegfelolvasás
+
+Az egyéni szövegfelolvasó, más néven egyéni hang olyan online eszközök készlete, amelyek lehetővé teszik, hogy felismerhető, egyedi hangot hozzon létre a márkája számára. A kód nélküli Egyéni hangmodellek létrehozása és kezelése az [egyéni hangportálon](https://aka.ms/customvoice)keresztül érhető el. Az egyéni hangmodell közzététele után a beszédbeszéd SDK-val használható fel.
+
+## <a name="get-the-speech-sdk"></a>A beszédfelismerési SDK beolvasása
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
-> [!WARNING]
-> A Beszéd SDK támogatja a Windows 10-es vagy újabb verziókat. A korábbi Windows-verziók **nem támogatottak.**
-
-Windows rendszerben a következő nyelveket támogatjuk:
-
-* C# (UWP és .NET), C++: A Speech SDK NuGet csomag legújabb verziójára hivatkozhat, és használhatja azokat. A csomag 32 bites és 64 bites ügyféltárakat és felügyelt (.NET) könyvtárakat tartalmaz. Az SDK a NuGet, [Microsoft.CognitiveServices.Speech](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech)használatával telepíthető a Visual Studióba.
-
-* Java: A Speech SDK Maven csomag legújabb verziójára hivatkozhat, és használhatja azokat, amelyek csak a Windows x64 rendszert támogatják. A Maven-projektben `https://csspeechstorage.blob.core.windows.net/maven/` adja hozzá további `com.microsoft.cognitiveservices.speech:client-sdk:1.8.0` tárházként, és hivatkozásként függőségként.
+[!INCLUDE [Get the Speech SDK](includes/get-speech-sdk-windows.md)]
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
-> [!NOTE]
-> Jelenleg csak az Ubuntu 16.04, Ubuntu 18.04, Debian 9, Red Hat Enterprise Linux (RHEL) 8 és CentOS 8 verzióit támogatjuk a következő célarchitektúrákon:
-> - x86 (Debian/Ubuntu), x64, ARM32 (Debian/Ubuntu) és ARM64 (Debian/Ubuntu) C++ fejlesztéshez
-> - x64, ARM32 (Debian/Ubuntu) és ARM64 (Debian/Ubuntu) Java-hoz
-> - x64 a .NET Core és a Python
+[!INCLUDE [Get the Speech SDK](includes/get-speech-sdk-linux.md)]
 
-Győződjön meg arról, hogy a szükséges könyvtárak telepítve vannak a következő parancsértelmezőparancsok futtatásával:
+# <a name="ios"></a>[iOS](#tab/ios)
 
-Ubuntu:On Ubuntu:
+[!INCLUDE [Get the Speech SDK](includes/get-speech-sdk-ios.md)]
 
-```sh
-sudo apt-get update
-sudo apt-get install libssl1.0.0 libasound2
-```
+# <a name="macos"></a>[Macos](#tab/macos)
 
-A Debian 9-en:
-
-```sh
-sudo apt-get update
-sudo apt-get install libssl1.0.2 libasound2
-```
-
-A RHEL/CentOS 8-on:
-
-```sh
-sudo yum update
-sudo yum install alsa-lib openssl
-```
-
-> [!NOTE]
-> Az RHEL/CentOS 8 rendszeren kövesse az [OpenSSL linuxos beállítására](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)vonatkozó utasításokat.
-
-* C#: A Speech SDK NuGet csomag legújabb verziójára hivatkozhat, és használhatja azokat. Az SDK-ra való hivatkozáshoz adja hozzá a következő csomaghivatkozást a projekthez:
-
-  ```xml
-  <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.8.0" />
-  ```
-
-* Java: A Speech SDK Maven csomag legújabb verziójára hivatkozhat, és használhatja azokat. A Maven-projektben `https://csspeechstorage.blob.core.windows.net/maven/` adja hozzá további `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` tárházként, és hivatkozásként függőségként.
-
-* C++: Töltse le az SDK-t [.tar csomagként,](https://aka.ms/csspeech/linuxbinary) és csomagolja ki a fájlokat egy ön által választott könyvtárba. Az alábbi táblázat az SDK mappastruktúráját mutatja be:
-
-  |Útvonal|Leírás|
-  |-|-|
-  |`license.md`|Licenc|
-  |`ThirdPartyNotices.md`|Harmadik felekkel kapcsolatos közlemények|
-  |`include`|C és C++ fejlécfájljai|
-  |`lib/x64`|Natív x64-es könyvtár az alkalmazással való összekapcsoláshoz|
-  |`lib/x86`|Natív x86-os könyvtár az alkalmazással való összekapcsoláshoz|
-
-  Alkalmazás létrehozásához másolja vagy helyezze át a szükséges bináris fájlokat (és könyvtárakat) a fejlesztői környezetbe. Szükség szerint adja meg őket a létrehozási folyamatba.
+[!INCLUDE [Get the Speech SDK](includes/get-speech-sdk-macos.md)]
 
 # <a name="android"></a>[Android](#tab/android)
 
-Az Android-alapú Java SDK [AAR (Android Library)](https://developer.android.com/studio/projects/android-library)néven van csomagolva, amely tartalmazza a szükséges könyvtárakat és a szükséges Android engedélyeket. Ez a házigazdája egy Maven `https://csspeechstorage.blob.core.windows.net/maven/` repository `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0`a csomag .
+[!INCLUDE [Get the Speech SDK](includes/get-speech-sdk-android.md)]
 
-Ha az Android Studio-projektből szeretné felhasználni a csomagot, hajtsa végre a következő módosításokat:
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-* A projektszintű build.gradle fájlban adja hozzá `repository` a következőt a szakaszhoz:
+[!INCLUDE [Get the Node.js Speech SDK](includes/get-speech-sdk-nodejs.md)]
 
-  ```gradle
-  maven { url 'https://csspeechstorage.blob.core.windows.net/maven/' }
-  ```
+# <a name="browser"></a>[Böngésző](#tab/browser)
 
-* A modulszintű build.gradle fájlban adja hozzá `dependencies` a következőt a szakaszhoz:
-
-  ```gradle
-  implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.7.0'
-  ```
-
-A Java SDK a [Beszédeszközök SDK](speech-devices-sdk.md)részét is képezi.
+[!INCLUDE [Get the Browser Speech SDK](includes/get-speech-sdk-browser.md)]
 
 ---
 
-[!INCLUDE [Get the samples](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+[!INCLUDE [License notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
+
+[!INCLUDE [Sample source code](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 
 ## <a name="next-steps"></a>További lépések
 
 * [Próbaverziós Speech-előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
-* [A beszéd felismerése C-ben #](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
+* [A beszéd felismerése C-ben #](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

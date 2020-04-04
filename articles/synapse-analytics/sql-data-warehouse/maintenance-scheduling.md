@@ -10,16 +10,16 @@ ms.subservice: ''
 ms.date: 02/02/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: f193580ca03d4b1805f3c044658a34f468f3f44f
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 43fc32e910c51e8b70e15aa49584a18e5b703fca
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346565"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631581"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>A karbantartási ütemezések használata a szolgáltatásfrissítések és -karbantartás kezeléséhez
 
-A karbantartási ütemezés i. szolgáltatás integrálja a szolgáltatásállapot-tervezett karbantartási értesítéseket, az erőforrás-állapot-ellenőrző figyelőt és a Synapse SQL-készlet (adattárház) karbantartási ütemezési szolgáltatását az Azure Synapse Analytics szolgáltatásban. 
+A karbantartási ütemezés i. szolgáltatás integrálja a szolgáltatásállapot-tervezett karbantartási értesítéseket, az erőforrás-állapot-ellenőrző figyelőt és a Synapse SQL-készlet (adattárház) karbantartási ütemezési szolgáltatását az Azure Synapse Analytics szolgáltatásban.
 
 A karbantartási ütemezés segítségével válasszon egy időablakot, amikor az új funkciók, frissítések és javítások fogadása kényelmes. Egy hétnapos időszakon belül ki kell választania egy elsődleges és egy másodlagos karbantartási időszakot, minden ablaknak külön napi tartományon belül kell lennie.
 
@@ -48,52 +48,55 @@ Minden aktív karbantartási esemény megjelenik a **Szolgáltatás állapot - T
 
 Még akkor is, ha a karbantartási ütemezés nem érhető el a kiválasztott régióban, bármikor megtekintheti és szerkesztheti a karbantartási ütemezést. Amikor a karbantartási ütemezés elérhetővé válik a régióban, az azonosított ütemezés azonnal aktívvá válik a Synapse SQL-készletben.
 
-## <a name="view-a-maintenance-schedule"></a>Karbantartási ütemezés megtekintése 
+## <a name="view-a-maintenance-schedule"></a>Karbantartási ütemezés megtekintése
 
 Alapértelmezés szerint az összes újonnan létrehozott adattárház-példány egy nyolc órás elsődleges és másodlagos karbantartási időszakot alkalmaz az üzembe helyezés során. Amint azt fentebb jeleztük, módosíthatja az ablakokat, amint a telepítés befejeződött. A megadott karbantartási időszakokon kívül nem fog karbantartás zajlani előzetes értesítés nélkül.
 
 A Synapse SQL-készletre alkalmazott karbantartási ütemezés megtekintéséhez hajtsa végre az alábbi lépéseket:
 
-1.    Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
-2.    Jelölje ki a megtekinteni kívánt Szinapsze SQL-készletet. 
-3.    A kijelölt Synapse SQL-készlet megnyílik az áttekintő panelen. Az adatraktárra alkalmazott karbantartási ütemezés a **Karbantartási ütemezés**alatt jelenik meg.
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+2. Jelölje ki a megtekinteni kívánt Szinapsze SQL-készletet.
+3. A kijelölt Synapse SQL-készlet megnyílik az áttekintő panelen. Az adatraktárra alkalmazott karbantartási ütemezés a **Karbantartási ütemezés**alatt jelenik meg.
 
 ![Áttekintő panel](./media/maintenance-scheduling/clear-overview-blade.PNG)
 
-## <a name="change-a-maintenance-schedule"></a>Karbantartási ütemezés módosítása 
+## <a name="change-a-maintenance-schedule"></a>Karbantartási ütemezés módosítása
 
-A karbantartási ütemezés bármikor frissíthető vagy módosítható. Ha a kiválasztott példány aktív karbantartási cikluson megy keresztül, a beállítások mentésre kerülnek. A következő azonosított karbantartási időszakban aktívvá válnak. [További információ](../../service-health/resource-health-overview.md) az adattárház figyeléséről egy aktív karbantartási esemény során. 
+A karbantartási ütemezés bármikor frissíthető vagy módosítható. Ha a kiválasztott példány aktív karbantartási cikluson megy keresztül, a beállítások mentésre kerülnek. A következő azonosított karbantartási időszakban aktívvá válnak. [További információ](../../service-health/resource-health-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) az adattárház figyeléséről egy aktív karbantartási esemény során.
 
 ## <a name="identifying-the-primary-and-secondary-windows"></a>Az elsődleges és másodlagos ablakok azonosítása
 
 Az elsődleges és másodlagos ablakoknak külön naptartományokkal kell rendelkezniük. Erre példa a kedd–csütörtök elsődleges ablaka, valamint a szombat–vasárnap ablak másodlagos ablaka.
 
 A Synapse SQL-készlet karbantartási ütemezésének módosításához hajtsa végre az alábbi lépéseket:
-1.    Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
-2.    Jelölje ki a frissíteni kívánt Szinapsze SQL-készletet. Az oldal megnyílik az áttekintő panelen. 
-3.    Nyissa meg a lapot a karbantartási ütemezés beállításaihoz, ha kiválasztja a **Karbantartási ütemezés összegzése** hivatkozást az áttekintő panelen. Vagy válassza a **Karbantartási ütemezés** lehetőséget a bal oldali erőforrásmenüben.  
+
+1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+2. Jelölje ki a frissíteni kívánt Szinapsze SQL-készletet. Az oldal megnyílik az áttekintő panelen.
+Nyissa meg a lapot a karbantartási ütemezés beállításaihoz, ha kiválasztja a **Karbantartási ütemezés összegzése** hivatkozást az áttekintő panelen. Vagy válassza a **Karbantartási ütemezés** lehetőséget a bal oldali erőforrásmenüben.
 
     ![Áttekintő panel beállítások](./media/maintenance-scheduling/maintenance-change-option.png)
 
-4. Az oldal tetején található beállításokkal azonosíthatja az elsődleges karbantartási időszak előnyben részesített napi tartományát. Ez a beállítás határozza meg, hogy az elsődleges ablak hétköznap vagy hétvégén következik-e be. A kijelölés frissíti a legördülő értékeket. Az előzetes verzió során előfordulhat, hogy egyes régiók még nem támogatják a rendelkezésre álló **Napi** beállítások teljes készletét.
+3. Az oldal tetején található beállításokkal azonosíthatja az elsődleges karbantartási időszak előnyben részesített napi tartományát. Ez a beállítás határozza meg, hogy az elsődleges ablak hétköznap vagy hétvégén következik-e be. A kijelölés frissíti a legördülő értékeket.
+Az előzetes verzió során előfordulhat, hogy egyes régiók még nem támogatják a rendelkezésre álló **Napi** beállítások teljes készletét.
 
    ![Karbantartási beállítások panel](./media/maintenance-scheduling/maintenance-settings-page.png)
 
-5. Válassza ki a kívánt elsődleges és másodlagos karbantartási időszakokat a legördülő listák segítségével:
+4. Válassza ki a kívánt elsődleges és másodlagos karbantartási időszakokat a legördülő listák segítségével:
    - **Nap**: A kijelölt ablakban a karbantartás előnyben részesített napja.
    - **Kezdési időpont**: A karbantartási időszak preferált kezdési időpontja.
    - **Időablak**: Az időablak preferált időtartama.
 
-   A panel alján található **Összegzés ütemezése** terület a kiválasztott értékek alapján frissül. 
+   A panel alján található **Összegzés ütemezése** terület a kiválasztott értékek alapján frissül.
   
-6. Kattintson a **Mentés** gombra. Megjelenik egy üzenet, amely megerősíti, hogy az új ütemezés aktív. 
+5. Kattintson a **Mentés** gombra. Megjelenik egy üzenet, amely megerősíti, hogy az új ütemezés aktív.
 
-   Ha olyan régióban ment egy ütemezést, amely nem támogatja a karbantartásütemezést, a következő üzenet jelenik meg. A beállítások mentésre kerülnek, és aktívvá válnak, amint a funkció elérhetővé válik a kiválasztott régióban.    
+   Ha olyan régióban ment egy ütemezést, amely nem támogatja a karbantartásütemezést, a következő üzenet jelenik meg. A beállítások mentésre kerülnek, és aktívvá válnak, amint a funkció elérhetővé válik a kiválasztott régióban.
 
    ![Üzenet a régió elérhetőségéről](./media/maintenance-scheduling/maintenance-not-active-toast.png)
 
 ## <a name="next-steps"></a>További lépések
-- [További információ](../../azure-monitor/platform/alerts-metric.md) a riasztások létrehozásáról, megtekintéséről és kezeléséről az Azure Monitor használatával.
-- [További információ](../..//azure-monitor/platform/alerts-log-webhook.md) a naplóriasztási szabályok webhook-műveletekről.
-- [További információ](../..//azure-monitor/platform/action-groups.md) Műveletcsoportok létrehozása és kezelése.
-- [További információ](../../service-health/service-health-overview.md) az Azure Service Health szolgáltatásról.
+
+- [További információ](../../azure-monitor/platform/alerts-metric.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a riasztások létrehozásáról, megtekintéséről és kezeléséről az Azure Monitor használatával.
+- [További információ](../..//azure-monitor/platform/alerts-log-webhook.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a naplóriasztási szabályok webhook-műveletekről.
+- [További információ](../..//azure-monitor/platform/action-groups.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Műveletcsoportok létrehozása és kezelése.
+- [További információ](../../service-health/service-health-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) az Azure Service Health szolgáltatásról.

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
-ms.openlocfilehash: ad8b4b39e582d10c2a3b6003bfa07138f4697b71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bcc53322ac6942b52853be561bc3441e23fbf53b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79499189"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632934"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub-lekérdezési nyelv az ikereszközökhöz - és modulokhoz, feladatokhoz, valamint az üzenetirányításhoz
 
@@ -481,7 +481,7 @@ Az ikrek és a feladatok lekérdezésekénések során az egyetlen támogatott f
 | AS_NUMBER | A bemeneti karakterláncot számmá alakítja. `noop`ha a bemenet szám; `Undefined` ha a karakterlánc nem jelent számot.|
 | IS_ARRAY | Logikai értéket ad eredményül, amely azt jelzi, hogy a megadott kifejezés típusa tömb-e. |
 | IS_BOOL | Logikai értéket ad eredményül, amely azt jelzi, hogy a megadott kifejezés típusa logikai érték-e. |
-| IS_DEFINED | Logikai értéket ad vissza, amely azt jelzi, hogy a tulajdonsághoz érték van-e hozzárendelve. |
+| IS_DEFINED | Logikai értéket ad vissza, amely azt jelzi, hogy a tulajdonsághoz érték van-e hozzárendelve. Ez csak akkor támogatott, ha az érték primitív típus. A primitív típusok közé tartozik a `null`karakterlánc, a logikai, a numerikus vagy a . A DateTime, az objektumtípusok és a tömbök nem támogatottak. |
 | IS_NULL | Logikai értéket ad eredményül, amely azt jelzi, hogy a megadott kifejezés típusa null értékű-e. |
 | IS_NUMBER | Logikai értéket ad eredményül, amely azt jelzi, hogy a megadott kifejezés típusa szám-e. |
 | IS_OBJECT | Logikai értéket ad eredményül, amely azt jelzi, hogy a megadott kifejezés típusa JSON-objektum-e. |

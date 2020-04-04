@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 04/16/2019
-ms.openlocfilehash: 906ae2a970ce1d5b82302d0277ca45bd93c23011
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b56375388f6293d27bcd2f2548d8b20205a92b15
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256912"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80638034"
 ---
 # <a name="how-to-use-a-managed-instance-in-azure-sql-database"></a>Felügyelt példány használata az Azure SQL Database-ben
 
@@ -43,6 +43,7 @@ Ebben a cikkben különböző útmutatókat, parancsfájlokat és magyarázatoka
 
 - [A tranzakciós replikáció](replication-with-sql-database-managed-instance.md) lehetővé teszi az adatok replikálását a felügyelt példányok között, vagy a helyszíni SQL Server rendszerből egy felügyelt példányba, és fordítva. A tranzakcióreplikáció használatáról és konfigurálásáról ebben az útmutatóban talál további információt.
 - [Fenyegetésészlelés konfigurálása](sql-database-managed-instance-threat-detection.md) – [a fenyegetésészlelés](sql-database-threat-detection-overview.md) egy beépített Azure SQL Database-szolgáltatás, amely észleli a különböző potenciális támadásokat, például az SQL Injection vagy a gyanús helyekről való hozzáférést. Ebben az útmutatóban megtudhatja, hogyan engedélyezheti és konfigurálhatja a felügyelt példány [fenyegetésészlelését.](sql-database-threat-detection-overview.md)
+- [Riasztások létrehozása](sql-database-managed-instance-alerts.md) lehetővé teszi, hogy riasztások beállítása a figyelt metrikák, például a CPU-kihasználtság, a tárhelyfelhasználás, IOPS és mások felügyelt példány. Ebben az útmutatóban megtudhatja, hogyan engedélyezheti és konfigurálhatja a felügyelt példány riasztásait.
 
 ## <a name="next-steps"></a>További lépések
 

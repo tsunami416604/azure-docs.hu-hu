@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 04/03/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 215244204aa58cc2fdedc639d48e01b514759694
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b270ce3cd15dbd1e8dd53bd60376a87d6e08f75c
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78196008"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637215"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Az Azure Data Lake Storage Gen2-ben elérhető Blob-tárolási funkciók
 
@@ -38,7 +38,7 @@ Ez a táblázat az Azure Data Lake Storage Gen2-vel használható Blob storage-f
 |Blob tárolási API-k|Általánosan elérhető|[Rövid útmutató: Azure Blob storage-ügyféltár v12-es a .NET-hez](storage-quickstart-blobs-dotnet.md)<br>[Gyorsútmutató: Blobok kezelése Java v12 SDK-val](storage-quickstart-blobs-java.md)<br>[Gyorsútmutató: Blobok kezelése python v12 SDK-val](storage-quickstart-blobs-python.md)<br>[Gyorsútmutató: Blobok kezelése JavaScript v12 SDK-val a Node.js-ben](storage-quickstart-blobs-nodejs.md)|
 |Archív hozzáférési szint|Előzetes verzió|[Azure Blob Storage: A gyakori és ritka elérésű, valamint az archív hozzáférési szintek](storage-blob-storage-tiers.md)|
 |Életciklus-kezelési irányelvek|Előzetes verzió|[Azure Blob Storage-életciklus felügyelete](storage-lifecycle-management-concepts.md)|
-|Diagnosztikai naplók|Előzetes verzió|[Azure Storage Analytics-naplózás](../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Diagnosztikai naplók|Általánosan elérhető|[Azure Storage Analytics-naplózás](../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Csatorna módosítása|Még nem támogatott|[Hírcsatorna-támogatás módosítása az Azure Blob storage-ban](storage-blob-change-feed.md)|
 |Fiók feladatátvétele|Még nem támogatott|[Vész-helyreállítás és fiókfeladat-átvétel](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Blob tároló ACL|Még nem támogatott|[Tároló acl beállítása](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)|

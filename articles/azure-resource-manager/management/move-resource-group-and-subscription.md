@@ -3,12 +3,12 @@ title: Erőforrások áthelyezése új előfizetésbe vagy erőforráscsoportba
 description: Az Azure Resource Manager használatával erőforrásokat helyezhet át egy új erőforráscsoportba vagy előfizetésbe.
 ms.topic: conceptual
 ms.date: 03/02/2020
-ms.openlocfilehash: 40432c55a7f7e289d2e5cbc8afe94847074e4ca8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ffb5f8be81d3628084d127db404ab994d4d5b938
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79248852"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631499"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -107,7 +107,7 @@ Szemléltetéscéljából csak egy függő erőforrásunk van.
 
 * 1. lépés: Ha a függő erőforrások különböző erőforráscsoportok között vannak elosztva, először helyezze át őket egy erőforráscsoportba.
 * 2. lépés: Helyezze át az erőforrást és a függő erőforrásokat együtt a forrás-előfizetésből a cél-előfizetésbe.
-* 3. lépés: Tetszés szerint a függő erőforrások at a cél-előfizetés különböző erőforráscsoportok között. 
+* 3. lépés: Tetszés szerint a függő erőforrások at a cél-előfizetés különböző erőforráscsoportok között.
 
 ## <a name="validate-move"></a>Áthelyezés ellenőrzése
 
@@ -260,8 +260,9 @@ Erőforrás áthelyezésekor a függő erőforrásoknak vagy a célerőforrás-c
 Egy virtuális gép áthelyezéséhez például hét erőforrástípus áthelyezése szükséges három különböző erőforrás-szolgáltatóval. Ezek az erőforrás-szolgáltatók és típusok a következők:
 
 * Microsoft.Compute
-   * virtualMachines
-   * Lemezek
+
+  * virtualMachines
+  * Lemezek
 * Microsoft.Network
   * hálózati interfészek
   * nyilvánosIP-címek

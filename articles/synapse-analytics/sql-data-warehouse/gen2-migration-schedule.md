@@ -11,12 +11,12 @@ ms.service: synapse-analytics
 ms.topic: article
 ms.date: 01/21/2020
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 4714d5908fffb6f5c1440c3ec512fb8173da4b57
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 6f2af826473bfd13f8100796a540d41cbedbb037
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346764"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631567"
 ---
 # <a name="upgrade-your-sql-pool-to-gen2"></a>Az SQL-készlet frissítése Gen2-re
 
@@ -60,8 +60,8 @@ Az önfejlesztés során két lehetőség van.  Frissítheti az aktuális SQL-k�
 - [Helybeni frissítés](upgrade-to-latest-generation.md) – Ez a beállítás a meglévő Gen1 SQL-készletet Gen2-re frissíti. A frissítési folyamat magában foglalja a kapcsolat rövid csökkenését (körülbelül 5 min), ahogy újraindítjuk az SQL-készletet.  Az SQL-készlet újraindítása után teljes mértékben elérhető lesz a használatra. Ha problémákat tapasztal a frissítés során, nyisson meg egy [támogatási kérelmet,](sql-data-warehouse-get-started-create-support-ticket.md) és a "Gen2 frissítés" hivatkozással a lehetséges okként.
 - [Frissítés visszaállítási pontról](sql-data-warehouse-restore-points.md) – Hozzon létre egy felhasználó által definiált visszaállítási pontot az aktuális Gen1 SQL-készleten, majd állítsa vissza közvetlenül egy Gen2 példányra. A meglévő Gen1 SQL-készlet a helyén marad. Miután a visszaállítás befejeződött, a Gen2 SQL-készlet teljes mértékben elérhető lesz a használatra.  Miután futtatta az összes tesztelési és érvényesítési folyamatot a visszaállított Gen2 példányon, az eredeti Gen1 példány törölhető.
 
-   - 1. lépés: Az Azure [Portalon hozzon létre egy felhasználó által definiált visszaállítási pontot.](sql-data-warehouse-restore-active-paused-dw.md)
-   - 2. lépés: Amikor egy felhasználó által definiált visszaállítási pontról állít vissza, állítsa be a "teljesítményszintet" az előnyben részesített Gen2 szintre.
+  - 1. lépés: Az Azure [Portalon hozzon létre egy felhasználó által definiált visszaállítási pontot.](sql-data-warehouse-restore-active-paused-dw.md)
+  - 2. lépés: Amikor egy felhasználó által definiált visszaállítási pontról állít vissza, állítsa be a "teljesítményszintet" az előnyben részesített Gen2 szintre.
 
 Visszaesést tapasztalhat a teljesítményben, miközben a frissítési folyamat az adatfájlok frissítését végzi a háttérben. A teljesítménycsökkenés teljes időtartama az adatfájlok méretétől függően változik.
 
@@ -82,13 +82,14 @@ További információt a [Frissítés a Gen2 rendszerre](upgrade-to-latest-gener
 
 **K: Milyen hatással lesznek a frissítések az automatizálási parancsfájljaimra?**
 
-- V: Minden olyan automatizálási parancsfájlt, amely egy szolgáltatásiszint-célkitűzésre hivatkozik, úgy kell módosítani, hogy megfeleljen a Gen2 megfelelőjének.  Lásd a részleteket [itt](upgrade-to-latest-generation.md#sign-in-to-the-azure-portal).
+- V: Minden olyan automatizálási parancsfájlt, amely egy szolgáltatásiszint-célkitűzésre hivatkozik, úgy kell módosítani, hogy megfeleljen a Gen2 megfelelőjének.  Lásd a részleteket [itt](upgrade-to-latest-generation.md#upgrade-in-a-supported-region-using-the-azure-portal).
 
 **K: Általában mennyi ideig tart egy önfrissítés?**
 
-- A: Frissíthet a helyén, vagy frissíthet egy visszaállítási pontról.  
-   - A helyben történő frissítés hatására az SQL-készlet egy pillanatra szünetelteti és folytatja.  A háttérfolyamat folytatódik, amíg az SQL-készlet online állapotban van.  
-   - Hosszabb időt vesz igénybe, ha egy visszaállítási ponton keresztül frissít, mert a frissítés a teljes visszaállítási folyamaton megy keresztül.
+- A: Frissíthet a helyén, vagy frissíthet egy visszaállítási pontról.
+
+  - A helyben történő frissítés hatására az SQL-készlet egy pillanatra szünetelteti és folytatja.  A háttérfolyamat folytatódik, amíg az SQL-készlet online állapotban van.  
+  - Hosszabb időt vesz igénybe, ha egy visszaállítási ponton keresztül frissít, mert a frissítés a teljes visszaállítási folyamaton megy keresztül.
 
 **K: Mennyi ideig tart az automatikus frissítés?**
 
@@ -100,12 +101,14 @@ További információt a [Frissítés a Gen2 rendszerre](upgrade-to-latest-gener
 
 **K: Mi a teendő, ha úgy tűnik, hogy a háttérfrissítési folyamat beragadt?**
 
- - A: Indítsa el az oszlopcentrikus táblák újraindexelését. Vegye figyelembe, hogy a tábla újraindexelése a művelet során offline lesz.
+- A: Indítsa el az oszlopcentrikus táblák újraindexelését. Vegye figyelembe, hogy a tábla újraindexelése a művelet során offline lesz.
 
 **K: Mi a teendő, ha a Gen2 nem rendelkezik a Gen1 szolgáltatásszintű célkitűzéssel?**
+
 - V: Ha A DW600 vagy DW1200 a Gen1, akkor azt tanácsoljuk, hogy használja DW500c vagy DW1000c volt, mivel Gen2 nyújt több memóriát, erőforrásokat, és nagyobb teljesítményt, mint a Gen1.
 
 **K: Letudom tiltani a geo-backup?Q: Can I Disable geo-backup?**
+
 - V: Nem. A geo-backup egy vállalati szolgáltatás, amely megőrzi az SQL-készlet rendelkezésre állását abban az esetben, ha egy régió elérhetetlenné válik. Ha további aggályai vannak, nyisson meg egy [támogatási kérelmet.](sql-data-warehouse-get-started-create-support-ticket.md)
 
 **K: Van különbség a T-SQL szintaxisban a Gen1 és a Gen2 között?**
@@ -124,7 +127,7 @@ További információt a [Frissítés a Gen2 rendszerre](upgrade-to-latest-gener
 
 - [Frissítési lépések](upgrade-to-latest-generation.md)
 - [Karbantartási időszakok](maintenance-scheduling.md)
-- [Erőforrás-állapotfigyelő](https://docs.microsoft.com/azure/service-health/resource-health-overview)
+- [Erőforrás-állapotfigyelő](../../service-health/resource-health-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 - [Ellenőrzés Az áttelepítés megkezdése előtt](upgrade-to-latest-generation.md#before-you-begin)
 - [Frissítés helyben és frissítés visszaállítási pontról](upgrade-to-latest-generation.md)
 - [Felhasználó által definiált visszaállítási pont létrehozása](sql-data-warehouse-restore-points.md)

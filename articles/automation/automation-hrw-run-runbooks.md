@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9b9196cde45686e42d1baf7faedf94bdb73acccc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 902734ddc7195d643c3aedb4054f57723d1a51c2
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79367058"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632139"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Runbookok futtatása hibrid runbook-feldolgozón
 
@@ -252,7 +252,7 @@ $SigningCert = ( Get-ChildItem -Path cert:\LocalMachine\My\<CertificateThumbprin
 Set-AuthenticodeSignature .\TestRunbook.ps1 -Certificate $SigningCert
 ```
 
-Ha egy runbook alá van írva, importálnia kell azt az Automation-fiókba, és közzé kell tennie az aláírási blokk. A runbookok importálásáról a [Runbookok importálása fájlból az Azure Automationbe című témakörben](manage-runbooks.md#import-a-runbook)olvashat.
+Ha egy runbook alá van írva, importálnia kell azt az Automation-fiókba, és közzé kell tennie az aláírási blokk. A runbookok importálásáról a [Runbookok importálása fájlból az Azure Automationbe című témakörben](manage-runbooks.md#importing-a-runbook)olvashat.
 
 ## <a name="working-with-signed-runbooks-on-a-linux-hybrid-runbook-worker"></a>Aláírt runbookok együttműködése Linux os hibrid runbook-feldolgozón
 

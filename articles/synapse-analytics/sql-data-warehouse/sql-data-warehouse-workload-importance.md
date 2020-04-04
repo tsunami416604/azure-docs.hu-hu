@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 84f432c45729091be1264bff85d1e32fac10f3ef
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 2c8617cffaa81da6423011a494b8dbc82c42d218
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583162"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632461"
 ---
 # <a name="azure-synapse-analytics-workload-importance"></a>Az Azure Synapse Analytics munkaterhelésének fontossága
 
@@ -64,6 +64,6 @@ Mivel a Q5 közepes, két egyidejűségi bővítőhelyet igényel. Q5 meg kell v
 
 - Az osztályozó konszern létrehozásáról további információt a [CREATE WORKLOAD CLASSIFIER (Transact-SQL) című témakörben talál.](/sql/t-sql/statements/create-workload-classifier-transact-sql)  
 - A számítási feladatok besorolásáról további információt a [Számítási feladatok besorolása című témakörben talál.](sql-data-warehouse-workload-classification.md)  
-- Tekintse meg a gyorsindítás [létrehozása számítási feladatok osztályozó,](quickstart-create-a-workload-classifier-tsql.md) hogyan hozhat létre egy számítási feladatok osztályozó. 
+- Tekintse meg a gyorsindítás [létrehozása számítási feladatok osztályozó,](quickstart-create-a-workload-classifier-tsql.md) hogyan hozhat létre egy számítási feladatok osztályozó.
 - Tekintse meg a [számítási feladatok fontosságának konfigurálása](sql-data-warehouse-how-to-configure-workload-importance.md) című útmutatócikkeket, valamint a [Munkaterhelés-kezelés kezelésének és figyelésének módját.](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)
 - A lekérdezések és a hozzárendelt fontosság megtekintéséhez tekintse meg a [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) című témakört.

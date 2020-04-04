@@ -11,12 +11,12 @@ ms.date: 03/24/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: synapse-analytics
-ms.openlocfilehash: b2eee4cdf822b6904b7a407aa2796770a2502135
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: cf6f25e8839ead5738eb7259cc4fccb674a4adea
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351455"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633193"
 ---
 # <a name="monitor-your-azure-synapse-analytics-sql-pool-workload-using-dmvs"></a>Az Azure Synapse Analytics SQL-készlet terhelésének figyelése dmv-k használatával
 
@@ -32,7 +32,7 @@ GRANT VIEW DATABASE STATE TO myuser;
 
 ## <a name="monitor-connections"></a>Kapcsolatok figyelése
 
-Az adattárházba való összes bejelentkezés a [sys.dm_pdw_exec_sessions](https://msdn.microsoft.com/library/mt203883.aspx)fájlba kerül.  Ez a dmv tartalmazza az utolsó 10.000 bejelentkezést.  A session_id az elsődleges kulcs, és minden új bejelentkezéshez egymás után van hozzárendelve.
+Az adattárházba való összes bejelentkezés a [sys.dm_pdw_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-sessions-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)fájlba kerül.  Ez a dmv tartalmazza az utolsó 10.000 bejelentkezést.  A session_id az elsődleges kulcs, és minden új bejelentkezéshez egymás után van hozzárendelve.
 
 ```sql
 -- Other Active Connections
@@ -41,7 +41,7 @@ SELECT * FROM sys.dm_pdw_exec_sessions where status <> 'Closed' and session_id <
 
 ## <a name="monitor-query-execution"></a>Lekérdezés végrehajtásának figyelése
 
-Az SQL készletben végrehajtott összes lekérdezést a rendszer a [sys.dm_pdw_exec_requests.](https://msdn.microsoft.com/library/mt203887.aspx)  Ez a dmv tartalmazza az utolsó 10 000 végrehajtott lekérdezéseket.  A request_id egyedileg azonosítja az egyes lekérdezéseket, és a DMV elsődleges kulcsa.  A request_id minden új lekérdezéshez egymás után van hozzárendelve, és a QID előtaggal van ellátva, amely a lekérdezésazonosítót jelenti.  A DMV lekérdezése egy adott session_id egy adott bejelentkezésösszes lekérdezését jeleníti meg.
+Az SQL készletben végrehajtott összes lekérdezést a rendszer a [sys.dm_pdw_exec_requests.](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  Ez a dmv tartalmazza az utolsó 10 000 végrehajtott lekérdezéseket.  A request_id egyedileg azonosítja az egyes lekérdezéseket, és a DMV elsődleges kulcsa.  A request_id minden új lekérdezéshez egymás után van hozzárendelve, és a QID előtaggal van ellátva, amely a lekérdezésazonosítót jelenti.  A DMV lekérdezése egy adott session_id egy adott bejelentkezésösszes lekérdezését jeleníti meg.
 
 > [!NOTE]
 > A tárolt eljárások több kérelemazonosítót használnak.  A kérelemazonosítók sorrendben vannak hozzárendelve.
@@ -52,24 +52,24 @@ Az alábbi lépéseket követve vizsgálja meg a lekérdezés végrehajtási ter
 
 ```sql
 -- Monitor active queries
-SELECT * 
-FROM sys.dm_pdw_exec_requests 
+SELECT *
+FROM sys.dm_pdw_exec_requests
 WHERE status not in ('Completed','Failed','Cancelled')
   AND session_id <> session_id()
 ORDER BY submit_time DESC;
 
 -- Find top 10 queries longest running queries
-SELECT TOP 10 * 
-FROM sys.dm_pdw_exec_requests 
+SELECT TOP 10 *
+FROM sys.dm_pdw_exec_requests
 ORDER BY total_elapsed_time DESC;
 
 ```
 
 Az előző lekérdezés eredményében vegye figyelembe a megvizsgálni kívánt lekérdezés **kérelemazonosítóját.**
 
-**A felfüggesztett** állapotú lekérdezések nagyszámú aktív futó lekérdezés miatt várólistára lehet állni. Ezek a lekérdezések a [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) a UserConcurrencyResourceType típussal várakozik. Az egyidejűségi korlátokról a [Memória- és egyidejűségi korlátok](../sql-data-warehouse/memory-concurrency-limits.md) vagy [a számítási feladatok kezeléséhez szükséges erőforrásosztályok](resource-classes-for-workload-management.md)című témakörben talál. A lekérdezések más okokból is várhatnak, például az objektumzárolások miatt.  Ha a lekérdezés egy erőforrásra vár, olvassa el a cikkben az [erőforrásokra várakozó lekérdezések vizsgálata](#monitor-waiting-queries) című témakört.
+**A felfüggesztett** állapotú lekérdezések nagyszámú aktív futó lekérdezés miatt várólistára lehet állni. Ezek a lekérdezések a [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) a UserConcurrencyResourceType típussal várakozik. Az egyidejűségi korlátokról a [Memória- és egyidejűségi korlátok](memory-concurrency-limits.md) vagy [a számítási feladatok kezeléséhez szükséges erőforrásosztályok](resource-classes-for-workload-management.md)című témakörben talál. A lekérdezések más okokból is várhatnak, például az objektumzárolások miatt.  Ha a lekérdezés egy erőforrásra vár, olvassa el a cikkben az [erőforrásokra várakozó lekérdezések vizsgálata](#monitor-waiting-queries) című témakört.
 
-A [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) tábla lekérdezésének megkeresésének egyszerűsítéséhez a [LABEL](https://msdn.microsoft.com/library/ms190322.aspx) segítségével rendeljen megjegyzést a lekérdezéshez, amely a sys.dm_pdw_exec_requests nézetben kereshető.
+A [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) tábla lekérdezésének megkeresésének egyszerűsítéséhez a [LABEL](/sql/t-sql/queries/option-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) segítségével rendeljen megjegyzést a lekérdezéshez, amely a sys.dm_pdw_exec_requests nézetben kereshető.
 
 ```sql
 -- Query with Label
@@ -87,7 +87,7 @@ WHERE   [label] = 'My Query';
 
 ### <a name="step-2-investigate-the-query-plan"></a>2. LÉPÉS: A lekérdezési terv vizsgálata
 
-A kérelemazonosító segítségével olvassa be a lekérdezés elosztott SQL (DSQL) tervét a [sys.dm_pdw_request_steps](https://msdn.microsoft.com/library/mt203913.aspx)fájlból.
+A kérelemazonosító segítségével olvassa be a lekérdezés elosztott SQL (DSQL) tervét a [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ```sql
 -- Find the distributed query plan steps for a specific query.
@@ -107,7 +107,7 @@ Egyetlen lépés további részleteinek vizsgálatához a *operation_type* a hos
 
 ### <a name="step-3-investigate-sql-on-the-distributed-databases"></a>3. lépés: SQL vizsgálata az elosztott adatbázisokon
 
-A kérelemazonosító és a lépésindex segítségével a [sys.dm_pdw_sql_requests](https://msdn.microsoft.com/library/mt203889.aspx)fájlból kérhet adatokat, amelyek az összes elosztott adatbázis lekérdezési lépésének végrehajtási adatait tartalmazzák.
+A kérelemazonosító és a lépésindex segítségével a [sys.dm_pdw_sql_requests](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)fájlból kérhet adatokat, amelyek az összes elosztott adatbázis lekérdezési lépésének végrehajtási adatait tartalmazzák.
 
 ```sql
 -- Find the distribution run times for a SQL step.
@@ -117,7 +117,7 @@ SELECT * FROM sys.dm_pdw_sql_requests
 WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
-A lekérdezési lépés futásakor a [DBCC PDW_SHOWEXECUTIONPLAN](https://msdn.microsoft.com/library/mt204017.aspx) segítségével lekérheti az SQL Server becsült tervét az SQL Server tervgyorsítótárából az adott disztribúción futó lépéshez.
+A lekérdezési lépés futásakor a [DBCC PDW_SHOWEXECUTIONPLAN](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) segítségével lekérheti az SQL Server becsült tervét az SQL Server tervgyorsítótárából az adott disztribúción futó lépéshez.
 
 ```sql
 -- Find the SQL Server execution plan for a query running on a specific SQL pool or control node.
@@ -127,7 +127,8 @@ DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 ```
 
 ### <a name="step-4-investigate-data-movement-on-the-distributed-databases"></a>4. LÉPÉS: Az elosztott adatbázisok adatmozgásának vizsgálata
-A kérelemazonosító és a lépésindex segítségével az egyes disztribúciókon futó adatmozgatási lépésekkel kapcsolatos információkat kérheti le [a sys.dm_pdw_dms_workers.](https://msdn.microsoft.com/library/mt203878.aspx)
+
+A kérelemazonosító és a lépésindex segítségével az egyes disztribúciókon futó adatmozgatási lépésekkel kapcsolatos információkat kérheti le [a sys.dm_pdw_dms_workers.](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ```sql
 -- Find information about all the workers completing a Data Movement Step.
@@ -140,7 +141,7 @@ WHERE request_id = 'QID####' AND step_index = 2;
 * Ellenőrizze a *total_elapsed_time* oszlopban, hogy egy adott eloszlás lényegesen tovább tart-e, mint mások az adatok mozgatása kor.
 * A hosszú ideig futó elosztáshoz ellenőrizze a *rows_processed* oszlopban, hogy az elosztásból áthelyezett sorok száma jelentősen nagyobb-e, mint mások. Ha igen, ez az eredmény az alapul szolgáló adatok ferdítésére utalhat.
 
-Ha a lekérdezés fut, a [DBCC PDW_SHOWEXECUTIONPLAN](https://msdn.microsoft.com/library/mt204017.aspx) segítségével lekérheti az SQL Server becsült tervét az SQL Server tervgyorsítótárából az adott disztribúción belül jelenleg futó SQL Step esetében.
+Ha a lekérdezés fut, a [DBCC PDW_SHOWEXECUTIONPLAN](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) segítségével lekérheti az SQL Server becsült tervét az SQL Server tervgyorsítótárából az adott disztribúción belül jelenleg futó SQL Step esetében.
 
 ```sql
 -- Find the SQL Server estimated plan for a query running on a specific SQL pool Compute or control node.
@@ -152,10 +153,11 @@ DBCC PDW_SHOWEXECUTIONPLAN(55, 238);
 <a name="waiting"></a>
 
 ## <a name="monitor-waiting-queries"></a>Várakozó lekérdezések figyelése
+
 Ha azt tapasztalja, hogy a lekérdezés nem halad előre, mert egy erőforrásra vár, itt van egy lekérdezés, amely a lekérdezés által várt összes erőforrást jeleníti meg.
 
 ```sql
--- Find queries 
+-- Find queries
 -- Replace request_id with value from Step 1.
 
 SELECT waits.session_id,
@@ -178,7 +180,7 @@ Ha a lekérdezés aktívan vár egy másik lekérdezés erőforrásaira, akkor a
 
 ## <a name="monitor-tempdb"></a>Tempdb figyelése
 
-A Tempdb a köztes eredmények tárolására szolgál a lekérdezés végrehajtása során. A tempdb adatbázis magas kihasználtsága lassú lekérdezési teljesítményhez vezethet. Minden DW100c konfigurálva, 399 GB tempdb helyet foglalnak (DW1000c volna 3,99 TB teljes tempdb hely).  Az alábbiakban tippeket a tempdb használat figyelése és a csökkenő tempdb használat a lekérdezések. 
+A Tempdb a köztes eredmények tárolására szolgál a lekérdezés végrehajtása során. A tempdb adatbázis magas kihasználtsága lassú lekérdezési teljesítményhez vezethet. Minden DW100c konfigurálva, 399 GB tempdb helyet foglalnak (DW1000c volna 3,99 TB teljes tempdb hely).  Az alábbiakban tippeket a tempdb használat figyelése és a csökkenő tempdb használat a lekérdezések.
 
 ### <a name="monitoring-tempdb-with-views"></a>Tempdb figyelése nézetekkel
 
@@ -210,11 +212,11 @@ FROM sys.dm_pdw_nodes_db_session_space_usage AS ssu
     INNER JOIN microsoft.vw_sql_requests AS sr ON ssu.session_id = sr.spid AND ssu.pdw_node_id = sr.pdw_node_id
 WHERE DB_NAME(ssu.database_id) = 'tempdb'
     AND es.session_id <> @@SPID
-    AND es.login_name <> 'sa' 
+    AND es.login_name <> 'sa'
 ORDER BY sr.request_id;
 ```
 
-Ha olyan lekérdezéssel rendelkezik, amely nagy mennyiségű memóriát használ fel, vagy a tempdb lefoglalásával kapcsolatos hibaüzenetet kapott, annak oka lehet egy nagyon nagy [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) vagy INSERT [SELECT](/sql/t-sql/statements/insert-transact-sql) utasítás, amely a végső adatmozgatási műveletben sikertelen. Ez általában shufflemove műveletként azonosítható az elosztott lekérdezési tervben közvetlenül a végső INSERT SELECT előtt.  A shufflemove műveletek figyeléséhez használja a [sys.dm_pdw_request_steps-t.](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) 
+Ha olyan lekérdezéssel rendelkezik, amely nagy mennyiségű memóriát használ fel, vagy a tempdb lefoglalásával kapcsolatos hibaüzenetet kapott, annak oka lehet egy nagyon nagy [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) vagy INSERT [SELECT](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) utasítás, amely a végső adatmozgatási műveletben sikertelen. Ez általában shufflemove műveletként azonosítható az elosztott lekérdezési tervben közvetlenül a végső INSERT SELECT előtt.  A shufflemove műveletek figyeléséhez használja a [sys.dm_pdw_request_steps-t.](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 A leggyakoribb megoldás a CTAS vagy INSERT SELECT utasítás több terhelési utasításra való megszakítása, így az adatmennyiség nem haladja meg az 1 TB/csomópont tempdb korlátot. A fürt nagyobb méretre is méretezhető, amely a tempdb méretet több csomópontra osztja, csökkentve a tempdb-t az egyes csomópontokon.
 
@@ -224,11 +226,12 @@ A CTAS és insert SELECT utasítások mellett a kevés memóriával rendelkező 
 
 A memória lehet a lassú teljesítmény és a memóriaproblémák kiváltó oka. Fontolja meg az adattárház méretezését, ha úgy találja, hogy az SQL Server memóriahasználata eléri a korlátait a lekérdezés végrehajtása során.
 
-A következő lekérdezés az SQL Server memóriáját és a csomópontonkénti memórianyomást adja vissza:    
+A következő lekérdezés az SQL Server memóriáját és a csomópontonkénti memórianyomást adja vissza:
+
 ```sql
 -- Memory consumption
 SELECT
-  pc1.cntr_value as Curr_Mem_KB, 
+  pc1.cntr_value as Curr_Mem_KB,
   pc1.cntr_value/1024.0 as Curr_Mem_MB,
   (pc1.cntr_value/1048576.0) as Curr_Mem_GB,
   pc2.cntr_value as Max_Mem_KB,
@@ -240,13 +243,15 @@ FROM
 -- pc1: current memory
 sys.dm_pdw_nodes_os_performance_counters AS pc1
 -- pc2: total memory allowed for this SQL instance
-JOIN sys.dm_pdw_nodes_os_performance_counters AS pc2 
+JOIN sys.dm_pdw_nodes_os_performance_counters AS pc2
 ON pc1.object_name = pc2.object_name AND pc1.pdw_node_id = pc2.pdw_node_id
 WHERE
 pc1.counter_name = 'Total Server Memory (KB)'
 AND pc2.counter_name = 'Target Server Memory (KB)'
 ```
+
 ## <a name="monitor-transaction-log-size"></a>Tranzakciónapló méretének figyelése
+
 A következő lekérdezés minden egyes felosztáson visszaadja a tranzakciónapló méretét. Ha a naplófájlok egyike eléri a 160 GB-ot, fontolja meg a példány bővítését vagy a tranzakció méretének korlátozását.
 
 ```sql
@@ -254,19 +259,20 @@ A következő lekérdezés minden egyes felosztáson visszaadja a tranzakciónap
 SELECT
   instance_name as distribution_db,
   cntr_value*1.0/1048576 as log_file_size_used_GB,
-  pdw_node_id 
-FROM sys.dm_pdw_nodes_os_performance_counters 
-WHERE 
-instance_name like 'Distribution_%' 
+  pdw_node_id
+FROM sys.dm_pdw_nodes_os_performance_counters
+WHERE
+instance_name like 'Distribution_%'
 AND counter_name = 'Log File(s) Used Size (KB)'
 ```
 
 ## <a name="monitor-transaction-log-rollback"></a>Tranzakciónapló-visszaállítás figyelése
 
 Ha a lekérdezések sikertelenek, vagy hosszú időt vesz igénybe a folytatáshoz, ellenőrizheti és figyelheti, hogy vannak-e visszagörgetési tranzakciók.
+
 ```sql
 -- Monitor rollback
-SELECT 
+SELECT
     SUM(CASE WHEN t.database_transaction_next_undo_lsn IS NOT NULL THEN 1 ELSE 0 END),
     t.pdw_node_id,
     nod.[type]
@@ -277,7 +283,7 @@ GROUP BY t.pdw_node_id, nod.[type]
 
 ## <a name="monitor-polybase-load"></a>A PolyBase terhelésének monitorozása
 
-A következő lekérdezés a terhelés előrehaladásának hozzávetőleges becslését tartalmazza. A lekérdezés csak a jelenleg folyamatban lévő fájlokat jeleníti meg. 
+A következő lekérdezés a terhelés előrehaladásának hozzávetőleges becslését tartalmazza. A lekérdezés csak a jelenleg folyamatban lévő fájlokat jeleníti meg.
 
 ```sql
 
@@ -286,7 +292,7 @@ SELECT
     r.command,
     s.request_id,
     r.status,
-    count(distinct input_name) as nbr_files, 
+    count(distinct input_name) as nbr_files,
     sum(s.bytes_processed)/1024/1024/1024 as gb_processed
 FROM
     sys.dm_pdw_exec_requests r

@@ -1,5 +1,5 @@
 ---
-title: Az Azure Synapse Analytics adattárházának fejlesztéséhez szükséges erőforrások
+title: Erőforrások a Synapse SQL-készlet fejlesztéséhez az Azure Synapse Analytics szolgáltatásban
 description: Fejlesztési koncepciók, tervezési döntések, ajánlások és kódolási technikák az SQL Data Warehouse számára.
 services: synapse-analytics
 author: XiaoyuMSFT
@@ -10,18 +10,18 @@ ms.subservice: ''
 ms.date: 08/29/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: aa0f5fd631dfa3e4deca4853c27a667fcf312fec
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 933a175213afd81c81eb237a2b2dd4c3e24e3315
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350280"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633161"
 ---
-# <a name="design-decisions-and-coding-techniques-for-a-data-warehouse-in-azure-synapse-analytics"></a>Tervezési döntések és kódolási technikák egy adattárházhoz az Azure Synapse Analytics szolgáltatásban 
- Ebben a cikkben további forrásokat talál, amelyek segítenek jobban megérteni az Azure Synapse-ban lévő adatraktár kulcsfontosságú tervezési döntéseit, javaslatait és kódolási technikáit.
+# <a name="design-decisions-and-coding-techniques-for-a-synapse-sql-pool-in-azure-synapse-analytics"></a>Tervezési döntések és kódolási technikák a Synapse SQL-készlethez az Azure Synapse Analytics szolgáltatásban 
+ Ebben a cikkben további forrásokat talál, amelyek segítenek jobban megérteni az Azure Synapse SQL-készletéhez szükséges legfontosabb tervezési döntéseket, javaslatokat és kódolási technikákat.
 
 ## <a name="key-design-decisions"></a>Legfontosabb tervezési döntések
-Az alábbi cikkek az Azure Synapse SQL Analytics-funkciójának használatával az elosztott adattárház fejlesztésére vonatkozó fogalmakat és tervezési döntéseket emelik ki:
+Az alábbi cikkek az Azure Synapse SQL-készletképességeinek használatával az elosztott adattárház fejlesztésére vonatkozó fogalmakat és tervezési döntéseket emelik ki:
 
 * [Kapcsolatok](sql-data-warehouse-connect-overview.md)
 * [Konkurencia](resource-classes-for-workload-management.md)
@@ -31,10 +31,10 @@ Az alábbi cikkek az Azure Synapse SQL Analytics-funkciójának használatával 
 * [táblaindexek](sql-data-warehouse-tables-index.md)
 * [táblapartíciók](sql-data-warehouse-tables-partition.md)
 * [CTAS](sql-data-warehouse-develop-ctas.md)
-* [statisztika](sql-data-warehouse-tables-statistics.md)
+* [Statisztikák](sql-data-warehouse-tables-statistics.md)
 
 ## <a name="development-recommendations-and-coding-techniques"></a>Fejlesztési ajánlások és kódolási technikák
-Az alábbi cikkek konkrét kódolási technikákat, tippeket és javaslatokat tartalmaznak az SQL Analytics adattárházának fejlesztéséhez:
+Az alábbi cikkek konkrét kódolási technikákat, tippeket és javaslatokat tartalmaznak az SQL-készlet fejlesztéséhez:
 
 * [tárolt eljárások](sql-data-warehouse-develop-stored-procedures.md)
 * [Címkék](sql-data-warehouse-develop-label.md)

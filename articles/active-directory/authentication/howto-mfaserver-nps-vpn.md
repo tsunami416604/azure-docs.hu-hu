@@ -4,29 +4,29 @@ description: Az Azure MFA Server részletes konfigurációs útmutatói a Cisco,
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdb24bcd79f1766a52f290fd6fe0e6e5bf17e7c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 01decb99a9eb24ae60250f83f1f961b4c1690bc0
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74847949"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652846"
 ---
 # <a name="advanced-scenarios-with-azure-mfa-server-and-third-party-vpn-solutions"></a>Speciális forgatókönyvek az Azure MFA Server és a külső VPN-megoldások segítségével
 
-Az Azure Multi-Factor Authentication Server (Azure MFA Server) segítségével zökkenőmentesen csatlakozhat a különböző külső VPN-megoldásokhoz. Ez a cikk a Cisco® ASA VPN-készülékre, a Citrix NetScaler SSL VPN-készülékre és a Juniper Networks Secure Access/Pulse Secure Connect Secure SSL VPN-készülékre összpontosít. Létrehoztunk konfigurációs útmutatókat e három közös készülék kezelésére. Az Azure MFA Server a legtöbb más, RADIUS-, LDAP-, IIS-hitelesítést vagy jogcímalapú hitelesítést használó rendszerrel is integrálható az AD FS szolgáltatásba. További részleteket az [Azure MFA Server konfigurációiban](howto-mfaserver-deploy.md#next-steps)talál.
+Az Azure Multi-Factor Authentication Server (Azure MFA Server) segítségével zökkenőmentesen csatlakozhat a különböző külső VPN-megoldásokhoz. Ez a cikk&reg; a Cisco ASA VPN-készülékre, a Citrix NetScaler SSL VPN-készülékre és a Juniper Networks Secure Access/Pulse Secure Connect Secure SSL VPN-készülékre összpontosít. Létrehoztunk konfigurációs útmutatókat e három közös készülék kezelésére. Az Azure MFA Server a legtöbb más, RADIUS-, LDAP-, IIS-hitelesítést vagy jogcímalapú hitelesítést használó rendszerrel is integrálható az AD FS szolgáltatásba. További részleteket az [Azure MFA Server konfigurációiban](howto-mfaserver-deploy.md#next-steps)talál.
 
 > [!IMPORTANT]
 > 2019. július 1-jéig a Microsoft a továbbiakban nem ajánlja fel az MFA Server alkalmazást az új telepítésekhez. Azoknak az új ügyfeleknek, akik többtényezős hitelesítést szeretnének megkövetelni a felhasználóiktól, felhőalapú Azure többtényezős hitelesítést kell használniuk. Azok a meglévő ügyfelek, akik július 1-je előtt aktiválták az MFA-kiszolgálót, a szokásos módon letölthetik a legújabb verziót, a jövőbeli frissítéseket, és a szokásos módon létrehozhatják az aktiválási hitelesítő adatokat.
 
 ## <a name="cisco-asa-vpn-appliance-and-azure-mfa-server"></a>Cisco ASA VPN-készülék és Azure MFA Server
-Az Azure MFA Server integrálható a Cisco® ASA VPN-készülékkel, hogy további biztonságot nyújtson a Cisco AnyConnect® VPN-bejelentkezések és a portálhozzáférés számára.  Használhatja az LDAP vagy a RADIUS protokollt.  Válassza ki az alábbi műveletek egyikét a részletes, részletes konfigurációs útmutatók letöltéséhez.
+Az Azure MFA Server&reg; integrálható a Cisco ASA VPN-készülékkel, hogy további biztonságot nyújtson a Cisco AnyConnect&reg; VPN-bejelentkezések és a portálhozzáférés számára.  Használhatja az LDAP vagy a RADIUS protokollt.  Válassza ki az alábbi műveletek egyikét a részletes, részletes konfigurációs útmutatók letöltéséhez.
 
 | Konfigurációs útmutató | Leírás |
 | --- | --- |

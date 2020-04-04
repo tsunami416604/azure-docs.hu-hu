@@ -8,12 +8,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 5c184e7f1dc828c3f9ff8d449d29ab3aaa4d1cf6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 830668a78929a5e6a7e131ade5c62b81e6d725c3
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77525821"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631366"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Referencia: Ubuntu (Linux) Data Science virtuális gép
 
@@ -239,9 +239,9 @@ Az [Azure](https://portal.azure.com) Portalaz előre telepített Firefox böngé
 
 ## <a name="azure-machine-learning"></a>Azure Machine Learning
 
-Az Azure Machine Learning egy teljes körűen felügyelt felhőszolgáltatás, amely lehetővé teszi a prediktív elemzési megoldások készítését, üzembe helyezését és megosztását. Az Azure Machine Learning Studio (klasszikus) kísérleteit és modelljeit is létrehozhatja. Az adatelemzési virtuális gép webböngészőjéből a [Microsoft Azure Machine Learning](https://studio.azureml.net)webhelyen keresztül érhető el.
+Az Azure Machine Learning egy teljes körűen felügyelt felhőszolgáltatás, amely lehetővé teszi a prediktív elemzési megoldások készítését, üzembe helyezését és megosztását. Az Azure Machine Learning stúdióban (előzetes verzió) hozhat létre kísérleteket és modelleket. Az adatelemzési virtuális gép webböngészőjéből a [Microsoft Azure Machine Learning](https://ml.azure.com)webhelyen keresztül érhető el.
 
-Miután bejelentkezik az Azure Machine Learning Studio (klasszikus), egy kísérletezési vászon segítségével logikai folyamatot hozhat létre a gépi tanulási algoritmusok. Az Azure Machine Learning üzemeltetett Jupyter-jegyzetfüzethez is hozzáférhet, és zökkenőmentesen dolgozhat az Azure Machine Learning Studio (klasszikus) kísérleteivel. 
+Miután bejelentkezett az Azure Machine Learning-stúdióba, egy kísérletezési vászon használatával logikai folyamatot hozhat létre a gépi tanulási algoritmusokhoz. Az Azure Machine Learning üzemeltetett Jupyter-jegyzetfüzethez is hozzáférhet, és zökkenőmentesen dolgozhat az Azure Machine Learning-stúdióban végzett kísérletekkel. 
 
 Működőképessé a gépi tanulási modellek, amelyek et épített a webszolgáltatás felületén csomagolva őket. A gépi tanulási modellek üzembe írása lehetővé teszi, hogy a bármilyen nyelven írt ügyfelek meghívja az adott modellek től származó előrejelzéseket. További információt a [Machine Learning dokumentációjában](https://azure.microsoft.com/documentation/services/machine-learning/)talál.
 

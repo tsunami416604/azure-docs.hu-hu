@@ -45,7 +45,7 @@
       href: concepts-architecture.md
     - name: Mik azok az alkalmazássablonok?
       href: concepts-app-templates.md
-    - name: Csatlakozás
+    - name: Eszközkapcsolatok
       href: concepts-get-connected.md
     - name: IoT Edge-eszközök csatlakoztatása
       href: concepts-iot-edge.md

@@ -780,6 +780,8 @@
           href: sql-database-managed-instance-threat-detection.md
         - name: Alkalmazások csatlakoztatása
           href: sql-database-managed-instance-connect-app.md
+        - name: Riasztások létrehozása
+          href: sql-database-managed-instance-alerts.md
     - name: Példák
       items:
         - name: Azure CLI

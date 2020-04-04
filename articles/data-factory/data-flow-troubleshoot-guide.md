@@ -7,13 +7,13 @@ author: kromerm
 manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 02/04/2020
-ms.openlocfilehash: e2e1ddd031041f49107545cd0b3d3de4eaebcd6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/02/2020
+ms.openlocfilehash: a5244086c185c111762496086f8044f12f52be14
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77472128"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632596"
 ---
 # <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Adatfolyamok – problémamegoldás az Azure Data Factoryban
 
@@ -55,6 +55,18 @@ Ez a cikk az Azure Data Factory adatfolyamainak gyakori hibaelhárítási módsz
 - **Üzenet**: Az oszlopnevet meg kell adni a lekérdezésben, állítson be aliast, ha SQL függvényt használ
 - **Okok**: Nincs megadva oszlopnév
 - **Javaslat**: Állítson be egy aliast, ha sql függvényt használ, például min()/max(), stb.
+
+### <a name="error-code-getcommand-outputasync-failed"></a>Hibakód: A GetCommand OutputAsync nem sikerült
+
+- **Üzenet**: Az adatfolyam hibakeresése és az adatok előnézete során: A GetCommand OutputAsync nem sikerült ...
+- **Okok**: Ez egy háttérszolgáltatás-hiba. Újra próbálkozhat a művelettel, és újraindíthatja a hibakeresési munkamenetet.
+- **Javaslat**: Ha az újrapróbálkozás és az újraindítás nem oldja meg a problémát, forduljon az ügyfélszolgálathoz.
+
+### <a name="error-code-hit-unexpected-exception-and-execution-failed"></a>Hibakód: A nem várt kivétel leütése és végrehajtása nem sikerült
+
+- **Üzenet**: Az adatfolyam-tevékenység végrehajtása során: Hit váratlan kivétel és a végrehajtás nem sikerült.
+- **Okok**: Ez egy háttérszolgáltatás-hiba. Újra próbálkozhat a művelettel, és újraindíthatja a hibakeresési munkamenetet.
+- **Javaslat**: Ha az újrapróbálkozás és az újraindítás nem oldja meg a problémát, forduljon az ügyfélszolgálathoz.
 
 ## <a name="general-troubleshooting-guidance"></a>Általános hibaelhárítási útmutató
 

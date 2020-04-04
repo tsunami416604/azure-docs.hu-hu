@@ -5,19 +5,19 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: 225ee7028b9610a4974f9bee05da667d78d3355e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/02/2020
+ms.openlocfilehash: 1d044ddaea0a2c7a1d489523cc9aa4515df0728a
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73903741"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632661"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Telepítse a Jupyter notebookot a számítógépre, és csatlakozzon az Apache Sparkhoz a HDInsight-on
 
-Ebben a cikkben megtudhatja, hogyan telepítheti a Jupyter-jegyzetfüzetet az egyéni PySpark (Pythonhoz) és az Apache Spark (Scala) kernelekkel a Spark magic segítségével, és csatlakoztassa a jegyzetfüzetet egy HDInsight-fürthöz. A Jupyter helyi számítógépre való telepítésének számos oka lehet, és lehetnek kihívások is. További erről, lásd a szakasz [Miért kell telepíteni Jupyter a számítógépre](#why-should-i-install-jupyter-on-my-computer) végén ezt a cikket.
+Ebben a cikkben megtudhatja, hogyan telepítheti a Jupyter-jegyzetfüzetet az egyéni PySpark (Python) és Apache Spark (Scala) kernelek a Spark magic. Ezután csatlakoztassa a jegyzetfüzetet egy HDInsight-fürthöz.
 
 A Jupyter telepítésével és az Apache Sparkhoz való csatlakozással a HDInsight-on négy kulcsfontosságú lépéssel jár.
 
@@ -26,17 +26,17 @@ A Jupyter telepítésével és az Apache Sparkhoz való csatlakozással a HDInsi
 * Telepítse a PySpark és Spark kerneleket a Spark varázslattal.
 * Konfigurálja a Spark magic-et a Spark-fürt HDInsight-on való eléréséhez.
 
-A HdInsight-fürtöt tartalmaza Jupyter-jegyzetfüzetekhez elérhető egyéni kernelekről és a Spark-varázslatról a [HDInsight-fürtökkel rendelkező Jupyter-jegyzetfüzetekhez elérhető kernelek című](apache-spark-jupyter-notebook-kernels.md)témakörben talál.
+Az egyéni kernelekről és a Spark magicről további információt a [BUPYter-jegyzetfüzetekhez elérhető, A HDInsight on Apache Spark Linux-fürtökkel rendelkező kernelek című](apache-spark-jupyter-notebook-kernels.md)témakörben talál.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Apache Spark-fürt megléte a HDInsightban. További útmutatásért lásd: [Apache Spark-fürt létrehozása az Azure HDInsightban](apache-spark-jupyter-spark-sql.md). Ez előfeltétele a Jupyter-jegyzetfüzet HDInsight-fürthöz való csatlakoztatásának a jegyzetfüzet telepítése után.
+* Apache Spark-fürt megléte a HDInsightban. További útmutatásért lásd: [Apache Spark-fürt létrehozása az Azure HDInsightban](apache-spark-jupyter-spark-sql.md). A helyi jegyzetfüzet csatlakozik a HDInsight-fürthöz.
 
 * A Jupyter-notebookok és a HDInsighton futó Spark használatának ismerete.
 
 ## <a name="install-jupyter-notebook-on-your-computer"></a>A Jupyter notebook telepítése a számítógépre
 
-A Jupyter-jegyzetfüzetek telepítése előtt telepítenie kell a Pythont. Az [Anaconda disztribúció](https://www.anaconda.com/download/) telepíti mind a Python, mind a Jupyter Notebook.
+Telepítse a Pythont a Jupyter-jegyzetfüzetek telepítése előtt. Az [Anaconda disztribúció](https://www.anaconda.com/download/) telepíti mind a Python, mind a Jupyter Notebook.
 
 Töltse le az [Anaconda telepítőt](https://www.anaconda.com/download/) a platformra, és futtassa a telepítést. A telepítővarázsló futtatása közben válassza az Anaconda hozzáadásának lehetőségét a PATH változóhoz.  Lásd még: [A Jupyter telepítése az Anaconda használatával](https://jupyter.readthedocs.io/en/latest/install.html).
 
@@ -63,7 +63,7 @@ Töltse le az [Anaconda telepítőt](https://www.anaconda.com/download/) a platf
     pip show sparkmagic
     ```
 
-    Ezután módosítsa a munkakönyvtárat a fenti paranccsal azonosított helyre.
+    Ezután módosítsa a munkakönyvtárat a fenti paranccsal azonosított **helyre.**
 
 1. Az új munkakönyvtárból adja meg az alábbi parancsok közül egyet a kívánt kernel(ek) telepítéséhez:
 
@@ -90,7 +90,7 @@ Ebben a szakaszban konfigurálja a Spark varázslat, amely korábban telepített
     python
     ```
 
-2. A Jupyter konfigurációs adatait általában a felhasználók kezdőkönyvtárában tárolják. Írja be a következő parancsot a kezdőkönyvtár azonosításához, és hozzon létre egy **.sparkmagic**nevű mappát.  A teljes elérési út kimenetre kerül.
+2. A Jupyter konfigurációs adatait általában a felhasználók kezdőkönyvtárában tárolják. Írja be a következő parancsot a kezdőkönyvtár azonosításához, és hozzon létre egy ** \.sparkmagic**nevű mappát.  A teljes elérési út kimenetre kerül.
 
     ```python
     import os
@@ -168,9 +168,9 @@ Ebben a szakaszban konfigurálja a Spark varázslat, amely korábban telepített
 
 ## <a name="why-should-i-install-jupyter-on-my-computer"></a>Miért érdemes telepíteni a Jupyter-t a számítógépre?
 
-Számos oka lehet annak, hogy miért érdemes telepíteni a Jupyter-t a számítógépre, majd csatlakoztatni egy Apache Spark-fürthöz a HDInsighton.
+Okok a Jupyter telepítésének a számítógépre, majd csatlakoztatása egy Apache Spark-fürthöz a HDInsight-on:
 
-* Annak ellenére, hogy a Jupyter-jegyzetfüzetek már elérhetők az Azure HDInsight Spark-fürtjén, a Jupyter telepítése a számítógépre lehetővé teszi a jegyzetfüzetek helyi létrehozását, az alkalmazás egy futó fürtre való tesztelését, majd a jegyzetfüzeteket a fürthöz. A jegyzetfüzetek fürtbe való feltöltéséhez töltse fel őket a futó Jupyter-jegyzetfüzet vagy a fürt használatával, vagy mentse őket a fürthöz társított tárfiók /HdiNotebooks mappájába. A jegyzetfüzetek fürtön való tárolásáról a [Hol tárolják a Jupyter-jegyzetfüzeteket?](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)
+* Itt a lehetőség a jegyzetfüzetek helyi létrehozására, az alkalmazás egy futó fürtre való tesztelésére, majd a jegyzetfüzetek fürtbe való feltöltésére. A jegyzetfüzetek fürtbe való feltöltéséhez feltöltheti őket a futó Jupyter-jegyzetfüzet vagy a `/HdiNotebooks` fürt használatával, vagy mentheti őket a fürthöz társított tárfiók mappájába. A jegyzetfüzetek fürtön való tárolásáról a [Hol tárolják a Jupyter-jegyzetfüzeteket?](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)
 * A helyileg elérhető jegyzetfüzetek segítségével az alkalmazás követelménye alapján különböző Spark-fürtökhöz csatlakozhat.
 * A GitHub segítségével egy forrásvezérlő rendszert valósíthat meg, és verzióvezérléssel rendelkezik a jegyzetfüzetekhez. Együttműködési környezetet is létrehozhat, ahol több felhasználó dolgozhat ugyanazzal a jegyzetfüzettel.
 * A jegyzetfüzetekkel helyileg is dolgozhat anélkül, hogy fürtfel lenne a kontráda. Csak egy fürtre van szüksége a jegyzetfüzetek teszteléséhez, nem a jegyzetfüzetek vagy a fejlesztői környezet manuális kezeléséhez.
@@ -182,5 +182,5 @@ Számos oka lehet annak, hogy miért érdemes telepíteni a Jupyter-t a számít
 ## <a name="next-steps"></a>További lépések
 
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
-* [Apache Spark bi-val: Interaktív adatelemzés a Spark használatával a HDInsightban az üzletiintelligencia-eszközökkel](apache-spark-use-bi-tools.md)
+* [Apache Spark bi-val: Apache Spark-adatok elemzése a Power BI használatával a HDInsightban](apache-spark-use-bi-tools.md)
 * [Apache Spark gépi tanulással: Használja a Sparkot a HDInsightban az épület hőmérsékletének elemzéséhez a fűtés- és légtechnikai adatok használatával](apache-spark-ipython-notebook-machine-learning.md)

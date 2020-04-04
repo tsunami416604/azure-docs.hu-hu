@@ -3,12 +3,12 @@ title: CIS Microsoft Azure Foundations Benchmark mintavezérlők
 description: A CIS Microsoft Azure Foundations Blueprint minta ajánlási leképezése az Azure Policy-hez.
 ms.date: 11/04/2019
 ms.topic: sample
-ms.openlocfilehash: 34d38f34dcd4233706f9b4578bc2dc2a644e4c2c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ea61ae4ea05b34c785485cbb5fd39c8a772565e3
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74707425"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656968"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>A CIS Microsoft Azure Foundations Benchmark minta ajánlásának leképezése
 
@@ -245,7 +245,7 @@ Ez a tervezet hozzárendeli az Azure Policy-definíciók, amelyek segítségéve
 
 ## <a name="411-ensure-enforce-ssl-connection-is-set-to-enabled-for-mysql-database-server"></a>4.11 Annak biztosítása, hogy az "SSL-kapcsolat kényszerítése" "ENABLED" értékre van állítva a MySQL Adatbázis-kiszolgáló számára
 
-Ez a tervezet hozzárendel egy Azure Policy-definíciót, amely segít biztosítani, hogy a MySQL adatbázis-kiszolgálók ssl-kapcsolatokat kényszerítsenek ki. [Azure Policy](../../../policy/overview.md)
+Ez a tervezet hozzárendel egy Azure Policy-definíciót, amely segít biztosítani, hogy a MySQL adatbázis-kiszolgálók tls/Ssl-kapcsolatokat kényszerítsenek ki. [Azure Policy](../../../policy/overview.md)
 
 - Az SSL-kapcsolat kényszerítése engedélyezve kell lennie a MySQL adatbázis-kiszolgálókon
 
@@ -257,7 +257,7 @@ Ez a tervezet hozzárendel egy [Azure-szabályzat-definíciót,](../../../policy
 
 ## <a name="413-ensure-enforce-ssl-connection-is-set-to-enabled-for-postgresql-database-server"></a>4.13 Annak biztosítása, hogy az "SSL-kapcsolat kényszerítése" "ENABLED" értékre van állítva a PostgreSQL Adatbázis-kiszolgálóhoz
 
-Ez a tervezet hozzárendel egy Azure Policy-definíciót, amely segít biztosítani, hogy a PostgreSQL adatbázis-kiszolgálók ssl-kapcsolatokat kényszerítsenek ki. [Azure Policy](../../../policy/overview.md)
+Ez a tervezet hozzárendel egy Azure Policy-definíciót, amely segít biztosítani, hogy a PostgreSQL adatbázis-kiszolgálók tls/Ssl-kapcsolatokat kényszerítsenek ki. [Azure Policy](../../../policy/overview.md)
 
 - Az SSL-kapcsolat kényszerítése engedélyezve kell lennie a PostgreSQL adatbázis-kiszolgálókon
 

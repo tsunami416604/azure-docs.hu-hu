@@ -4,18 +4,18 @@ description: Az Azure-erőforrások felügyelt identitásait és az Azure AD-hit
 services: active-directory
 author: MarkusVi
 ms.author: markvi
-ms.date: 03/13/2020
+ms.date: 04/03/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9e01f1f5abfc0f76926ce503fae058c196c6e64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c7a65df100cd58561ce12ac2ae01281eebd419a
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282103"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656051"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Felügyelt identitásokat támogató szolgáltatások az Azure-erőforrásokhoz
 
@@ -37,11 +37,11 @@ A következő Azure-szolgáltatások támogatják az Azure-erőforrások felügy
 
 Az alábbi lista az Azure virtuális gépek felügyelt identitásának konfigurálásához (ahol elérhető):
 
-- [Azure-portál](qs-configure-portal-windows-vm.md)
-- [Powershell](qs-configure-powershell-windows-vm.md)
+- [Azure Portal](qs-configure-portal-windows-vm.md)
+- [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Azure CLI](qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager-sablonok](qs-configure-template-windows-vm.md)
-- [Többi](qs-configure-rest-vm.md)
+- [REST](qs-configure-rest-vm.md)
 
 ### <a name="azure-virtual-machine-scale-sets"></a>Azure Virtual Machine Scale Sets
 
@@ -52,11 +52,11 @@ Az alábbi lista az Azure virtuális gépek felügyelt identitásának konfigur�
 
 Az alábbi listában konfigurálhatja az Azure virtuálisgép-méretezési készletek felügyelt identitását (ahol elérhető):
 
-- [Azure-portál](qs-configure-portal-windows-vm.md)
-- [Powershell](qs-configure-powershell-windows-vm.md)
+- [Azure Portal](qs-configure-portal-windows-vm.md)
+- [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Azure CLI](qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager-sablonok](qs-configure-template-windows-vm.md)
-- [Többi](qs-configure-rest-vm.md)
+- [REST](qs-configure-rest-vm.md)
 
 ### <a name="azure-app-service"></a>Azure App Service
 
@@ -67,7 +67,7 @@ Az alábbi listában konfigurálhatja az Azure virtuálisgép-méretezési kész
 
 Az alábbi listában konfigurálhatja az Azure App Service felügyelt identitását (ahol elérhető:
 
-- [Azure-portál](/azure/app-service/overview-managed-identity#using-the-azure-portal)
+- [Azure Portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)
 - [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
 - [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
 - [Azure Resource Manager-sablon](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
@@ -93,7 +93,7 @@ Felügyelt identitás típusa |Minden általánosan elérhető<br>Globális Azur
 
 Az alábbi listában konfigurálhatja az Azure Functions felügyelt identitását (ahol elérhető:
 
-- [Azure-portál](/azure/app-service/overview-managed-identity#using-the-azure-portal)
+- [Azure Portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)
 - [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
 - [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
 - [Azure Resource Manager-sablon](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
@@ -108,7 +108,7 @@ Felügyelt identitás típusa | Minden általánosan elérhető<br>Globális Azu
 
 Az alábbi listában konfigurálhatja az Azure Logic Apps felügyelt identitását (ahol elérhető régiókban):
 
-- [Azure-portál](/azure/logic-apps/create-managed-service-identity#enable-system-assigned-identity-in-azure-portal)
+- [Azure Portal](/azure/logic-apps/create-managed-service-identity#enable-system-assigned-identity-in-azure-portal)
 - [Azure Resource Manager-sablon](/azure/app-service/overview-managed-identity)
 
 ### <a name="azure-data-factory-v2"></a>Azure Data Factory V2
@@ -120,17 +120,17 @@ Felügyelt identitás típusa | Minden általánosan elérhető<br>Globális Azu
 
 Az alábbi listában konfigurálhatja az Azure Data Factory V2 felügyelt identitását (ahol elérhető:
 
-- [Azure-portál](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity)
-- [Powershell](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-powershell)
-- [Többi](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-rest-api)
+- [Azure Portal](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity)
+- [PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-powershell)
+- [REST](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-rest-api)
 - [SDK](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-sdk)
 
 ### <a name="azure-api-management"></a>Azure API Management
 
 Felügyelt identitás típusa | Minden általánosan elérhető<br>Globális Azure-régiók | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| A rendszer hozzárendelt | ![Elérhető][check] | ![Elérhető][check] | Nem érhető el | Nem érhető el |
-| Felhasználó hozzárendelt | Nem érhető el | Nem érhető el | Nem érhető el | Nem érhető el |
+| A rendszer hozzárendelt | ![Elérhető][check] | ![Elérhető][check] | Nem érhető el | ![Elérhető][check] |
+| Felhasználó hozzárendelt | Előzetes verzió | Előzetes verzió | Nem érhető el | Előzetes verzió |
 
 Az alábbi listában konfigurálhatja az Azure API Management felügyelt identitását (ahol elérhető:
 

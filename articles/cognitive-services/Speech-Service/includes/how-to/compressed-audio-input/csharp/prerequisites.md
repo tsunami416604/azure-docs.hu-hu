@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
 ms.author: dapine
-ms.openlocfilehash: 6909487a4e636c98576297a47db4749c904d6a37
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 07405ad0da9c9ba280810402a638395a7feb8554
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409656"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637296"
 ---
-Kezelése tömörített hang hajtja végre [GStreamer](https://gstreamer.freedesktop.org). Licencelési okokból a GStreamer bináris fájljai nincsenek lefordítva és nem kapcsolódnak a beszédfelismerési SDK-hoz. A fejlesztőknek számos függőséget és beépülő modult kell telepíteniük, [lásd: Telepítés Windows rendszeren](https://gstreamer.freedesktop.org/documentation/installing/on-windows.html?gi-language=c).
+Kezelése tömörített hang hajtja végre [GStreamer](https://gstreamer.freedesktop.org). Licencelési okokból a GStreamer bináris fájljai nincsenek lefordítva és nem kapcsolódnak a beszédfelismerési SDK-hoz. A fejlesztőknek számos függőséget és beépülő modult kell telepíteniük, [lásd: Telepítés Windows rendszeren](https://gstreamer.freedesktop.org/documentation/installing/on-windows.html?gi-language=c). A Gstreamer bináris fájloknak a rendszer elérési útján kell lenniük, hogy a beszédstak működés közben betudja tölteni a gstreamer bináris fájlokat. Ha a beszédstabk-sdk futásidőben képes megtalálni a libgstreamer-1.0-0.dll-t, az azt jelenti, hogy a gstreamer bináris fájlok a rendszer elérési útját képezik.
 

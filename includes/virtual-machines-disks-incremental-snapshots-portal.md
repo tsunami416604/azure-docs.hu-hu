@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 04/02/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8f2e2081ee31e2ce7b21677bd261ed7eda705334
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: de0cf260207747f4acb02a377819a13de8b8ba22
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79485955"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80628431"
 ---
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](virtual-machines-disks-incremental-snapshots-description.md)]
 
@@ -26,9 +26,8 @@ ms.locfileid: "79485955"
 
 ## <a name="portal"></a>Portál
 
-Növekményes pillanatképek létrehozásához és konfigurálásához a [https://aka.ms/incrementalsnapshots](https://aka.ms/incrementalsnapshots)globális Azure Portalon az alábbi hivatkozást kell használnia: . Növekményes pillanatkép létrehozása még nem érhető el a globális Azure Portalon.
 
-1. Jelentkezzen be az [Azure Portalon](https://aka.ms/incrementalsnapshots) a megadott hivatkozással, és keresse meg a pillanatképet a lemezre.
+1. Jelentkezzen be az [Azure Portalon,](https://portal.azure.com/) és keresse meg a pillanatképet a lemezre.
 1. A lemezen válassza a **Pillanatkép létrehozása lehetőséget.**
 
     :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/create-snapshot-button-incremental.png" alt-text="Screenshot. A lemez penge, a ** + Create snapshot ** kiemelve, mivel ez az, amit ki kell választani.":::

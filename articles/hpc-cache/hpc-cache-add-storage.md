@@ -4,18 +4,18 @@ description: Tárolási célok definiálása, hogy az Azure HPC-gyorsítótár a
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 12/30/2019
+ms.date: 04/03/2020
 ms.author: rohogue
-ms.openlocfilehash: a68bf06bad995f71bedf6a5bdedcb676737a8c61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3fbc4e683c2b0e72c3a084a59793dbf9eb4b658c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79271888"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657398"
 ---
 # <a name="add-storage-targets"></a>Céltárak hozzáadása
 
-*A tárolási célok* az Azure HPC-gyorsítótárazási példányon keresztül elérhető fájlok háttér-tárolói. NFS-tárolót (például egy helyszíni hardverrendszert) adhat hozzá, vagy adatokat tárolhat az Azure Blobban.
+*A tárolási célok* az Azure HPC-gyorsítótáron keresztül elérhető fájlok háttér-tárolói. NFS-tárolót (például egy helyszíni hardverrendszert) adhat hozzá, vagy adatokat tárolhat az Azure Blobban.
 
 Egy gyorsítótárhoz legfeljebb tíz különböző tárolási célt határozhat meg. A gyorsítótár egyetlen összesített névtérben mutatja be az összes tárolási célt.
 
@@ -35,9 +35,9 @@ Egy új Blob storage-tároló szüksége van egy üres Blob-tároló vagy egy t�
 
 Közvetlenül a hozzáadás előtt új tárolót hozhat létre erről a lapról.
 
-Azure Blob-tároló definiálásához adja meg ezt az információt.
-
 ![képernyőkép a tárolási cél hozzáadása lapról, amely egy új Azure Blob-tároló céladataival van feltöltve](media/hpc-cache-add-blob.png)
+
+Azure Blob-tároló definiálásához adja meg ezt az információt.
 
 * **Tárolási cél név** – Állítson be egy nevet, amely azonosítja ezt a tárolási célt az Azure HPC-gyorsítótárban.
 * **Céltípusa** - Válassza **a Blob**lehetőséget.
@@ -79,7 +79,7 @@ Az RBAC-szerepkörök hozzáadásának lépései:
 1. A **Kijelölés** mezőben keressen rá a "hpc" kifejezésre.  Ennek a karakterláncnak egy egyszerű szolgáltatásnak kell megegyeznie, amelynek neve "HPC cache erőforrás-szolgáltató". Kattintással jelölje ki a felhasználót.
 
    > [!NOTE]
-   > Ha a "hpc" kifejezésre való keresés nem működik, próbálja meg inkább a "storagecache" karakterláncot használni. Az előzetesverziókhoz csatlakozó felhasználóknak (a ga előtt) előfordulhat, hogy a régi nevet kell használniuk a szolgáltatásnévhez.
+   > Ha a "hpc" kifejezésre való keresés nem működik, próbálja meg inkább a "storagecache" karakterláncot használni. Az előzetesekben (ga előtt) részt vevő felhasználóknak előfordulhat, hogy a régi nevet kell használniuk az egyszerű szolgáltatáshoz.
 
 1. Kattintson a **Mentés** gombra az alján.
 
@@ -91,7 +91,10 @@ Az RBAC-szerepkörök hozzáadásának lépései:
 
 Egy NFS-tároló cél több mezőt, mint a Blob storage cél. Ezek a mezők határozzák meg, hogyan érheti el a tárolóexportálást, és hogyan lehet hatékonyan gyorsítótárazni az adatokat. Emellett egy NFS-tárolócél lehetővé teszi több névtérelérési út létrehozását, ha az NFS-állomás egynél több exportálással rendelkezik.
 
-![Képernyőkép: A tárterület céloldalának hozzáadása nfs-céllal](media/hpc-cache-add-nfs-target.png)
+![Képernyőkép: A tárterület céloldalának hozzáadása nfs-céllal](media/add-nfs-target.png)
+
+> [!NOTE]
+> NFS-tárolócél létrehozása előtt győződjön meg arról, hogy a tárolórendszer elérhető az Azure HPC-gyorsítótárból, és megfelel az engedélykövetelményeknek. A tárolási cél létrehozása sikertelen lesz, ha a gyorsítótár nem tud hozzáférni a tárolórendszerhez. Olvassa el [az NFS tárolási követelményeit,](hpc-cache-prereqs.md#nfs-storage-requirements) és a részletekért [hárítsa el a NAS-konfigurációt és az NFS-tárolási célproblémákat.](troubleshoot-nas.md)
 
 Adja meg ezt az információt egy NFS-támogatott tárolási célhoz:
 
@@ -126,7 +129,7 @@ Ha végzett, kattintson az **OK** gombra a tárolási cél hozzáadásához.
 ### <a name="choose-a-usage-model"></a>Használati modell kiválasztása
 <!-- referenced from GUI - update aka.ms link if you change this heading -->
 
-Amikor olyan tárolási célt hoz létre, amely egy NFS-tárolórendszerre mutat, ki kell választania az adott cél *használati modelljét.* Ez a modell határozza meg az adatok gyorsítótárazásának módját.
+Amikor olyan tárolási célt hoz létre, amely egy NFS-tárolórendszerre mutat, ki kell választania az adott cél használati modelljét. Ez a modell határozza meg az adatok gyorsítótárazásának módját.
 
 Három beállítás érhető el:
 
@@ -138,7 +141,7 @@ Három beállítás érhető el:
 
 * **Több mint 15%-os írási sebesség** – Ez a beállítás felgyorsítja az olvasási és írási teljesítményt. Ha ezt a beállítást használja, minden ügyfélnek az Azure HPC-gyorsítótáron keresztül kell hozzáférnie a fájlokhoz, és nem kell közvetlenül a háttértárolót hozzácsatlakoztatnia. A gyorsítótárazott fájlok legutóbbi módosításai nem a háttérrendszeren tárolódnak.
 
-  Ebben a használati modellben a gyorsítótárban lévő fájlok nincsenek összevetve a háttértárolóban lévő fájlokkal. A fájl gyorsítótárazott verziója aktuálisabbnak tekinthető. A gyorsítótárban lévő módosított fájl csak akkor kerül a háttértároló rendszerbe, ha már egy órája a gyorsítótárban van további módosítások nélkül.
+  Ebben a használati modellben a gyorsítótárban lévő fájlok nincsenek összevetve a háttértárolóban lévő fájlokkal. A fájl gyorsítótárazott verziója aktuálisabbnak tekinthető. A gyorsítótárban lévő módosított fájl a háttértároló rendszerbe kerül, miután egy órán keresztül a gyorsítótárban volt, további módosítások nélkül.
 
 * **Az ügyfelek az NFS-tárolóba írnak, megkerülve a gyorsítótárat** – Válassza ezt a lehetőséget, ha a munkafolyamatbármely ügyfele közvetlenül a tárolórendszerbe írja az adatokat anélkül, hogy először a gyorsítótárba írna. Az ügyfelek által kért fájlok gyorsítótárba kerülnek, de az ügyféltől származó fájlok módosításai azonnal visszakerülnek a háttértároló rendszerbe.
 

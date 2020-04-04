@@ -5,15 +5,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 03/27/2020
+ms.date: 04/03/2020
 author: timsander1
 ms.author: tisande
-ms.openlocfilehash: 7c75f0d6f74fe8cf1417e0dc40a5ad01615d7057
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f3f369928270c77557337bfdb1037cc5174c39f2
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371075"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637964"
 ---
 # <a name="indexing-using-azure-cosmos-dbs-api-for-mongodb"></a>Indexelés az Azure Cosmos DB MongoDB-hoz való API-jával
 
@@ -35,7 +35,7 @@ Indexeket bármely mezőben létrehozhat. Az egymezős index rendezési sorrendj
 
 `db.coll.createIndex({name:1})`
 
-Egy lekérdezés több egymezős indexet fog használni, ahol elérhető.
+Egy lekérdezés több egymezős indexet fog használni, ahol elérhető. Tárolónként legfeljebb 500 egymezős indexet hozhat létre.
 
 ### <a name="compound-indexes-36"></a>Összetett indexek (3.6.)
 

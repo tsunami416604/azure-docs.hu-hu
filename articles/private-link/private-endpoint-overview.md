@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: fd389c1e909e6875ead8410b5ca692b82c79e0de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6782d745bfced576fe06019b0d41af86c8c63ed4
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063074"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656275"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Mi az Azure Private Endpoint?
 
@@ -72,7 +72,9 @@ A magánkapcsolati erőforrás egy adott privát végpont célcélja. Az alábbi
 |**Azure Relay** | Microsoft.Relay/névterek | névtér |
 |**Azure Event Grid** | Microsoft.EventGrid/témakörök  | témakör |
 |**Azure Event Grid** | Microsoft.EventGrid/tartományok | domain |
-|**Azure WebApps** | Microsoft.Web/webhelyek    | Helyek |
+|**Azure WebApps** | Microsoft.Web/webhelyek    | Oldalon |
+|**Azure Machine Learning** | Microsoft.MachineLearningServices/munkaterületek  | munkaterület |
+  
  
 ## <a name="network-security-of-private-endpoints"></a>A magánvégpontok hálózati biztonsága 
 Ha az Azure-szolgáltatások hoz privát végpontokat használ, a forgalom egy adott magánkapcsolati erőforráshoz van biztosítva. A platform hozzáférés-vezérlést hajt végre, hogy ellenőrizze, hogy a hálózati kapcsolatok csak a megadott magánkapcsolati erőforrást érjék el. Az ugyanazon Azure-szolgáltatáson belüli további erőforrások eléréséhez további privát végpontokra van szükség. 
@@ -143,6 +145,7 @@ Az Azure-szolgáltatások esetében használja az ajánlott zónaneveket az alá
 |Azure Event Grid (Microsoft.EventGrid/topics)   | témakör | Téma. {region}.privatelink.eventgrid.azure.net|
 |Azure Event Grid (Microsoft.EventGrid/tartományok) | domain | Tartomány. {region}.privatelink.eventgrid.azure.net |
 |Azure WebApps(Microsoft.Web/sites) | Oldalon | privatelink.azurewebsites.net |
+|Azure Machine Learning(Microsoft.MachineLearningServices/munkaterületek)   | munkaterület | privatelink.api.azureml.ms |
  
 Az Azure létrehoz egy gyűjtőnév DNS-rekordot (CNAME) a nyilvános DNS-en, hogy a felbontást a javasolt tartománynevekre irányítsa át. A feloldást felülírhatja a privát végpontok privát IP-címével. 
  

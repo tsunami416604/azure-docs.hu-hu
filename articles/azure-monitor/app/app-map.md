@@ -4,12 +4,12 @@ description: Összetett alkalmazás-topológiák figyelése az alkalmazástérk�
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: dce2fdbe7e0c390309be38d2ebab4c73dbb4ed2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0823dd5d880c778f9b7a231ac14f1cbba1940927
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77666275"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657396"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Alkalmazás térkép: Triage elosztott alkalmazások
 
@@ -85,7 +85,7 @@ Az aktív riasztások és az alapul szolgáló szabályok megtekintéséhez vál
 
 Az Application Map a **felhőszerepkör névtulajdonságát** használja a térképen található összetevők azonosítására. Az Application Insights SDK automatikusan hozzáadja a felhőbeli szerepkör név tulajdonságát az összetevők által kibocsátott telemetriai adatokhoz. Az SDK például hozzáad egy webhely nevet vagy szolgáltatásszerepkör-nevet a felhőbeli szerepkör névtulajdonságához. Vannak azonban olyan esetek, amikor felül szeretné bírni az alapértelmezett értéket. A felhőbeli szerepkör nevének felülbírálása és az alkalmazástérképen megjelenő értékek módosítása:
 
-### <a name="netnet-core"></a>.NET/.NET Core
+# <a name="netnetcore"></a>[.NET/.NetCore](#tab/net)
 
 **Írjon egyéni TelemettryInitializer az alábbiak szerint.**
 
@@ -153,7 +153,26 @@ Az [ASP.NET core](asp-net-core.md#adding-telemetryinitializers) alkalmazások `T
 }
 ```
 
-### <a name="nodejs"></a>Node.js
+# <a name="java"></a>[Java](#tab/java)
+
+Az Application Insights Java SDK 2.5.0-s verziótól `<RoleName>` kezdve `ApplicationInsights.xml` megadhatja a felhőbeli szerepkör nevét a fájlhoz való hozzáadással, például.
+
+```XML
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+   <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
+   <RoleName>** Your role name **</RoleName>
+   ...
+</ApplicationInsights>
+```
+
+Ha a Spring Boot az Application Insights tavaszi rendszerindítási starter, az egyetlen szükséges változás az, hogy állítsa be az egyéni nevét az alkalmazás az application.properties fájlban.
+
+`spring.application.name=<name-of-app>`
+
+A Tavaszi rendszerindító automatikusan hozzárendeli a felhőszerepkör nevét a spring.application.name tulajdonsághoz megadott értékhez.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 ```javascript
 var appInsights = require("applicationinsights");
@@ -174,26 +193,7 @@ appInsights.defaultClient.addTelemetryProcessor(envelope => {
 });
 ```
 
-### <a name="java"></a>Java
-
-Az Application Insights Java SDK 2.5.0-s verziótól `<RoleName>` kezdve `ApplicationInsights.xml` megadhatja a felhőbeli szerepkör nevét a fájlhoz való hozzáadással, például.
-
-```XML
-<?xml version="1.0" encoding="utf-8"?>
-<ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
-   <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
-   <RoleName>** Your role name **</RoleName>
-   ...
-</ApplicationInsights>
-```
-
-Ha a Spring Boot az Application Insights tavaszi rendszerindítási starter, az egyetlen szükséges változás az, hogy állítsa be az egyéni nevét az alkalmazás az application.properties fájlban.
-
-`spring.application.name=<name-of-app>`
-
-A Tavaszi rendszerindító automatikusan hozzárendeli a felhőszerepkör nevét a spring.application.name tulajdonsághoz megadott értékhez.
-
-### <a name="clientbrowser-side-javascript"></a>Ügyfél-/böngészőoldali JavaScript
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 appInsights.queue.push(() => {
@@ -203,6 +203,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 });
 });
 ```
+---
 
 ### <a name="understanding-cloud-role-name-within-the-context-of-the-application-map"></a>A felhőbeli szerepkör nevének ismertetése az alkalmazásleképezés környezetében
 
@@ -254,7 +255,7 @@ Ha nem sikerül az Alkalmazástérkép várt módon működnie, próbálkozzon a
 
 Az Application Map egy alkalmazáscsomópontot hoz létre a kérelem telemetriában szereplő minden egyes egyedi felhőszerepkör-névhez, és egy függőségi csomópontot a függőségi telemetriai adatokban a típus, a cél és a felhőszerepkör nevének minden egyes egyedi kombinációjához. Ha több mint 10 000 csomópont van a telemetriai adatokban, az Application Map nem lesz képes lekérni az összes csomópontot és hivatkozást, így a térkép nem lesz teljes. Ebben az esetben figyelmeztető üzenet jelenik meg a térkép megtekintésekor.
 
-Ezenkívül az Alkalmazástérkép csak legfeljebb 1000 különálló, nem csoportosított csomópontot támogat egyszerre. Az Alkalmazástérkép csökkenti a vizuális összetettséget azáltal, hogy csoportosítja az azonos típusú és hívókkal rendelkező függőségeket, de ha a telemetria túl sok egyedi felhőszerepkör-nevet vagy túl sok függőségi típust tartalmaz, akkor a csoportosítás nem lesz elegendő, és a térkép nem lesz képes Render.
+Ezenkívül az Alkalmazástérkép csak legfeljebb 1000 különálló, nem csoportosított csomópontot támogat egyszerre. Az Alkalmazástérkép csökkenti a vizuális összetettséget azáltal, hogy csoportosítja az azonos típusú és hívókkal rendelkező függőségeket, de ha a telemetriatúl sok egyedi felhőszerepkör-nevet vagy túl sok függőségi típust tartalmaz, akkor a csoportosítás nem lesz elegendő, és a térkép nem lesz képes megjeleníteni.
 
 A probléma megoldásához módosítania kell a műszerezést a felhőbeli szerepkör nevének, a függőségtípusnak és a függőségi célmezőknek a megfelelő beállításához.
 

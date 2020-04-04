@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 25c047dc9b2ce08ca39e69c6f106e41c5d9bd0dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b94a97f1286e1273300014e4eef140be412436b
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79268417"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637182"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics-naplózás
 
@@ -25,8 +25,6 @@ A Storage Analytics naplózza a tárolási szolgáltatásoknak elküldött siker
 
 > [!NOTE]
 >  A Storage Analytics-naplózás jelenleg csak a Blob, a Queue és a Table szolgáltatás esetében érhető el. A prémium szintű tárfiókok azonban nem támogatottak.
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="requests-logged-in-logging"></a>Naplózásba naplózott kérelmek
 ### <a name="logging-authenticated-requests"></a>Hitelesített kérelmek naplózása

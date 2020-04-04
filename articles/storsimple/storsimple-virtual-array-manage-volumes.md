@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: a233a9deb58a7c1abc87a622a4f1f2581ee2e477
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2dbbe6bcd4957a108cc3eae4d41816b130cf8f07
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "62125797"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633871"
 ---
 # <a name="use-storsimple-device-manager-service-to-manage-volumes-on-the-storsimple-virtual-array"></a>Kötetek kezelése a StorSimple-eszközkezelő szolgáltatással a StorSimple Virtual Arrayben
 
@@ -44,7 +44,7 @@ Az egyes kötettípusok maximális kiosztott kapacitását az alábbi táblázat
 | A többszintű kötet minimális mérete                            | 500 GB        |
 | Többszintű kötet maximális mérete                            | 5 TB          |
 | A helyileg rögzített kötet legkisebb mérete                    | 50 GB         |
-| Helyileg rögzített kötet maximális mérete                    | 500 GB        |
+| Helyileg rögzített kötet maximális mérete                    | 200 GB        |
 
 ## <a name="the-volumes-blade"></a>A Kötetek panel
 A StorSimple szolgáltatás összefoglaló **panelkötetek** menüje megjeleníti a tárolókötetek listáját egy adott StorSimple tömb, és lehetővé teszi azok kezelését.

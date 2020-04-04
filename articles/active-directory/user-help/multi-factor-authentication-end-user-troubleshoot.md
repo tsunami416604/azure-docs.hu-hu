@@ -9,15 +9,15 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 04/02/2020
 ms.author: curtand
 ms.reviewer: kexia
-ms.openlocfilehash: c28b63749cfdbcd16b94cbd3ca7dd4023f46a351
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1703853f42b52dccc80fdfadaa09b67e18a19db8
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78897727"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632902"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>Gyakori problémák a kétfaktoros ellenőrzéssel és a munkahelyi vagy iskolai fiókkal
 
@@ -99,6 +99,8 @@ Az alkalmazásjelszavak lecserélik a normál jelszót a régebbi asztali alkalm
 ## <a name="i-cant-turn-two-factor-verification-off"></a>Nem tudom kikapcsolni a kétfaktoros ellenőrzést
 
 Ha kétfaktoros ellenőrzést használ a munkahelyi vagy iskolai fiókjához (például), az valószínűleg azt jelenti, hogy a szervezet úgy döntött, alain@contoso.comhogy ezt a hozzáadott biztonsági funkciót kell használnia. Mivel a szervezet úgy döntött, hogy használnia kell ezt a funkciót, nincs mód arra, hogy egyenként kikapcsolja. Ha azonban kétfaktoros ellenőrzést használ egy személyes fiókkal, például alain@outlook.coma lehetőséggel, be- és kikapcsolhatja a funkciót. A személyes fiókok kétfaktoros ellenőrzésének szabályozásáról a [Kétfaktoros ellenőrzés be- és kikapcsolása a Microsoft-fiókjához.](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)
+
+Ha nem tudja kikapcsolni a kétfaktoros ellenőrzést, annak oka a szervezet szintjén alkalmazott biztonsági alapértelmezések is lehetnek. A biztonsági alapértékekről a [Mik azok a biztonsági beállítások?](../fundamentals/concept-fundamentals-security-defaults.md)
 
 ## <a name="i-didnt-find-an-answer-to-my-problem"></a>Nem találtam választ a problémámra
 

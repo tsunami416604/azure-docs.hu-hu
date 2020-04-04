@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: d7ce77404359b32effcc7a5da3f9429e9fdf7005
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 5f9ad827fa947e645f7eb4850f90a73c61a45cd3
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618576"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637110"
 ---
 # <a name="azure-cognitive-services-support-and-feedback-options"></a>Az Azure Cognitive Services támogatási és visszajelzési lehetőségei
 
@@ -30,7 +30,7 @@ Csak most kezdi felfedezni az Azure Cognitive Services funkcióit? Lehet, hogy e
 
 Fedezze fel az [Azure támogatási lehetőségeinek körét, és válassza ki a](https://azure.microsoft.com/support/plans) legjobban illeszkedő csomagot, legyen szó akár a felhőutazást éppen most megkezdő fejlesztőről, akár egy üzleti szempontból kritikus fontosságú, stratégiai alkalmazásokat üzembe helyező nagy szervezetről. Az Azure-ügyfelek támogatási kérelmeket hozhatnak létre és kezelhetnek az Azure Portalon.
 
-* [Azure-portál](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [Azure-portál az Egyesült Államok kormánya számára](https://portal.azure.us)
 
 ### <a name="search"></a>Keresés
@@ -87,6 +87,7 @@ A Cognitive Services kiadási megjegyzések frissülnek, amint új kiadások ér
  - [Speech Services](speech-service/releasenotes.md)
  - [Beszédszolgáltatások SDK](speech-service/devices-sdk-release-notes.md)
  - [Szövegelemzés](text-analytics/whats-new.md)
+ - [Video Indexer](../media-services/video-indexer/release-notes.md)
 
 ### <a name="azure-blog"></a>Azure blog
 

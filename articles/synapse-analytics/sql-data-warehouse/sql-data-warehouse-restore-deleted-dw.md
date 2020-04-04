@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5f0432cafee07dbed071d24aa8c24ee9b2176967
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 251fdb83e848aaac3a5391320df23149ce1bce33
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350181"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633051"
 ---
 # <a name="restore-a-deleted-sql-pool-using-azure-synapse-analytics"></a>Törölt SQL-készlet visszaállítása az Azure Synapse Analytics használatával
 
@@ -39,16 +39,16 @@ Törölt SQL-készlet visszaállításához használja a [Restore-AzSqlDatabase]
 5. Az adott törölt adattárház beszereznie.
 6. A törölt adattárház visszaállítása
     1. A törölt SQL Data Warehouse visszaállításához adjon meg egy másik logikai kiszolgálót.  Ez a logikai kiszolgáló más erőforráscsoportban és régióban is lehet.
-    1. Ha egy másik előfizetésre szeretne visszaállítani, az [Áthelyezés](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources#use-the-portal) gombbal helyezze át a logikai kiszolgálót egy másik előfizetésbe.
-1. Ellenőrizze, hogy a visszaállított adattárház online állapotban van-e.
-1. A visszaállítás befejezése után konfigurálhatja a helyreállított adattárházat [az adatbázis helyreállítás utáni konfigurálásával.](../../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery)
+    1. Ha egy másik előfizetésre szeretne visszaállítani, az [Áthelyezés](../../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#use-the-portal) gombbal helyezze át a logikai kiszolgálót egy másik előfizetésbe.
+7. Ellenőrizze, hogy a visszaállított adattárház online állapotban van-e.
+8. A visszaállítás befejezése után konfigurálhatja a helyreállított adattárházat [az adatbázis helyreállítás utáni konfigurálásával.](../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)
 
 ```Powershell
 $SubscriptionName="<YourSubscriptionName>"
 $ResourceGroupName="<YourResourceGroupName>"
 $ServerName="<YourServerNameWithoutURLSuffixSeeNote>"  # Without database.windows.net
 #$TargetResourceGroupName="<YourTargetResourceGroupName>" # uncomment to restore to a different logical server.
-#$TargetServerName="<YourtargetServerNameWithoutURLSuffixSeeNote>" 
+#$TargetServerName="<YourtargetServerNameWithoutURLSuffixSeeNote>"
 $DatabaseName="<YourDatabaseName>"
 $NewDatabaseName="<YourDatabaseName>"
 
@@ -86,5 +86,6 @@ $RestoredDatabase.status
     ![Adatbázis nevének megadása](./media/sql-data-warehouse-restore-deleted-dw/restoring-deleted-21.png)
 
 ## <a name="next-steps"></a>Következő lépések
+
 - [Meglévő SQL-készlet visszaállítása](sql-data-warehouse-restore-active-paused-dw.md)
 - [Visszaállítás geo-backup SQL-készletből](sql-data-warehouse-restore-from-geo-backup.md)

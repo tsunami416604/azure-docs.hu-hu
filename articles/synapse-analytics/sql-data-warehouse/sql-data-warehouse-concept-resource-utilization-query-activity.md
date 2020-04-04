@@ -11,21 +11,20 @@ ms.date: 03/11/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 0b7accec9fdce1ad81a08aee17b37d655409948b
-ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
+ms.openlocfilehash: 61c823aee5d8a6755a3bd7971cd7cca952cbb911
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80607553"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633620"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Erőforrás-kihasználtság és lekérdezési tevékenység figyelése az Azure Synapse Analytics szolgáltatásban
 
-Az Azure Synapse Analytics gazdag figyelési élményt nyújt az Azure Portalon az adattárház-munkaterheléssel kapcsolatos információk felszínre hozásához. Az Azure Portal az ajánlott eszköz az adattárház figyelése, mivel konfigurálható megőrzési időszakok, riasztások, javaslatok és testreszabható diagramok és irányítópultok metrikák és naplók. A portál azt is lehetővé teszi, hogy integrálja más Azure figyelési szolgáltatások, például az Azure Monitor (naplók) a Log analytics, hogy holisztikus figyelési élményt nem csak az adattárház, hanem a teljes Azure Analytics platform integrált figyelési élményt. Ez a dokumentáció ismerteti, hogy milyen figyelési lehetőségek állnak rendelkezésre az elemzési platform optimalizálásához és kezeléséhez. 
+Az Azure Synapse Analytics gazdag figyelési élményt nyújt az Azure Portalon az adattárház-munkaterheléssel kapcsolatos információk felszínre hozásához. Az Azure Portal az ajánlott eszköz az adattárház figyelése, mivel konfigurálható megőrzési időszakok, riasztások, javaslatok és testreszabható diagramok és irányítópultok metrikák és naplók. A portál azt is lehetővé teszi, hogy integrálja más Azure figyelési szolgáltatások, például az Azure Monitor (naplók) a Log analytics, hogy holisztikus figyelési élményt nem csak az adattárház, hanem a teljes Azure Analytics platform integrált figyelési élményt. Ez a dokumentáció ismerteti, hogy milyen figyelési lehetőségek állnak rendelkezésre az elemzési platform optimalizálásához és kezeléséhez az SQL Analytics segítségével.
 
 ## <a name="resource-utilization"></a>Erőforrás-használat
 
-The following metrics are available in the Azure portal for Synapse SQL. Ezek a mérőszámok az [Azure Monitoron](../../azure-monitor/platform/data-collection.md#metrics?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)keresztül kerülnek felszínre.
-
+A következő metrikák érhetők el az Azure Portalon az SQL Analytics. Ezek a mérőszámok az [Azure Monitoron](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics)keresztül kerülnek felszínre.
 
 | Metrikus neve             | Leírás                                                  | Aggregáció típusa |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
@@ -55,16 +54,16 @@ A mérőszámok megtekintésekor és a riasztások beállításakor figyelembe v
 
 ## <a name="query-activity"></a>Lekérdezési tevékenység
 
-A Synapse SQL T-SQL-en keresztüli figyelése programozott élménye érdekében a szolgáltatás dinamikus felügyeleti nézetek (DMV-k) készletét biztosítja. Ezek a nézetek akkor hasznosak, ha aktívan hibaelhárításés és a teljesítmény szűk keresztmetszetek azonosítása a számítási feladatok.
+Az SQL Analytics T-SQL-en keresztüli figyelése programozott élménye érdekében a szolgáltatás dinamikus felügyeleti nézetek (DMV-k) készletét biztosítja. Ezek a nézetek akkor hasznosak, ha aktívan hibaelhárításés és a teljesítmény szűk keresztmetszetek azonosítása a számítási feladatok.
 
-A Synapse SQL-re vonatkozó DMV-k listájának megtekintéséhez tekintse meg ezt a [dokumentációt.](sql-data-warehouse-reference-tsql-system-views.md#sql-data-warehouse-dynamic-management-views-dmvs) 
+Az SQL Analytics által biztosított DMV-k listájának megtekintéséhez tekintse meg ezt a [dokumentációt.](sql-data-warehouse-reference-tsql-system-views.md#sql-data-warehouse-dynamic-management-views-dmvs)
 
 ## <a name="metrics-and-diagnostics-logging"></a>Metrikák és diagnosztikai naplózás
 
-A metrikák és a naplók egyaránt exportálhatók az Azure Monitorba, különösen az [Azure Monitor naplói](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) összetevőbe, és programozott módon érhetők el [a naplólekérdezéseken](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)keresztül. A synapse SQL naplókésése körülbelül 10–15 perc. A késést befolyásoló tényezőkről az alábbi dokumentációban olvashat bővebben.
+A metrikák és a naplók egyaránt exportálhatók az Azure Monitorba, különösen az [Azure Monitor naplói](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) összetevőbe, és programozott módon érhetők el [a naplólekérdezéseken](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)keresztül. Az SQL Analytics naplókése körülbelül 10–15 perc. A késést befolyásoló tényezőkről az alábbi dokumentációban olvashat bővebben.
 
 ## <a name="next-steps"></a>További lépések
 
 Az alábbi útmutatók ismertetik az adattárház figyelése és kezelése során előforduló gyakori forgatókönyveket és használati eseteket:
 
-- [Az adattárház-munkaterhelés figyelése DMV-kkel](/sql-data-warehouse/sql-data-warehouse-manage-monitor?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  
+- [Az adattárház-munkaterhelés figyelése DMV-kkel](sql-data-warehouse-manage-monitor.md)

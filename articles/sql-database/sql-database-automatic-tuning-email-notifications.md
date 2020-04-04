@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/03/2019
-ms.openlocfilehash: b48c37a6e607d121416ebae4d74e58f39670b79a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1dbcf953ad5f70c6ddf2a73eef2ea712f1e1278c
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73821929"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632086"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>E-mail értesítések automatikus hangoláshoz
 
@@ -69,7 +69,7 @@ A következő lépés egy Runbook létrehozása az Azure Automationben, amelyben
 Új Azure Automation-runbook létrehozásához kövesse az alábbi lépéseket:
 
 - Az előző lépésben létrehozott Azure Automation-fiók elérése
-- Miután az automation-fiók ablaktáblán, kattintson a "**Runbookok**" menüpont a bal oldalon, hogy hozzon létre egy új Azure Automation runbook a PowerShell-parancsfájlt. Az automatizálási runbookok létrehozásáról az [Új runbook létrehozása című](../automation/manage-runbooks.md#create-a-runbook)témakörben olvashat bővebben.
+- Miután az automation-fiók ablaktáblán, kattintson a "**Runbookok**" menüpont a bal oldalon, hogy hozzon létre egy új Azure Automation runbook a PowerShell-parancsfájlt. Az automatizálási runbookok létrehozásáról az [Új runbook létrehozása című](../automation/manage-runbooks.md#creating-a-runbook)témakörben olvashat bővebben.
 - Új runbook hozzáadásához kattintson a "**+Runbook hozzáadása**" menüre, majd kattintson a "**Gyors létrehozás – Új runbook létrehozása " parancsra.**
 - A Runbook pane, írja be a nevét a runbook (ebben a példában használt "**AutomaticTuningEmailAutomation**" használja), válassza ki a runbook típusát **PowerShellként,** és írja le a runbook leírására célját.
 - Kattintson a **Létrehozás** gombra az új runbook létrehozásának befejezéséhez
@@ -88,7 +88,7 @@ Több előfizetés esetén hozzáadhatja őket a parancsfájl fejlécében lév�
 ```powershell
 # PowerShell script to retrieve Azure SQL Database Automatic tuning recommendations.
 #
-# Provided “as-is” with no implied warranties or support.
+# Provided "as-is" with no implied warranties or support.
 # The script is released to the public domain.
 #
 # Replace <SUBSCRIPTION_ID_WITH_DATABASES> in the header with your Azure subscription ID.
@@ -225,7 +225,7 @@ A következő lépés három feladat hozzáadása (létrehozás, kimenet beküld
    - A művelet létrehozásának befejezése a **"Folyamat mentése"** gombra kattintva
 
 > [!TIP]
-> Ha automatikus e-maileket szeretne küldeni a különböző címzetteknek, hozzon létre külön folyamatokat. Ezekben a további folyamatokban módosítsa a címzett e-mail címét a "Címzett" mezőben, és az e-mail tárgysorát a "Tárgy" mezőben. Új runbookok létrehozása az Azure Automationben testre szabott PowerShell-parancsfájlokkal (például az Azure-előfizetés-azonosító módosításával) lehetővé teszi az automatizált forgatókönyvek további testreszabását, például külön címzettek automatikus hangolással történő e-mailezését külön előfizetések ajánlásait.
+> Ha automatikus e-maileket szeretne küldeni a különböző címzetteknek, hozzon létre külön folyamatokat. Ezekben a további folyamatokban módosítsa a címzett e-mail címét a "Címzett" mezőben, és az e-mail tárgysorát a "Tárgy" mezőben. Új runbookok létrehozása az Azure Automationben testreszabott PowerShell-parancsfájlokkal (például az Azure-előfizetés-azonosító módosításával) lehetővé teszi az automatikus forgatókönyvek további testreszabását, például külön címzettek e-mailben való küldése a külön-külön előfizetések automatikus hangolási javaslatairól.
 >
 
 A fenti az e-mail kézbesítési feladat munkafolyamatának konfigurálásához szükséges lépéseket zárja le. A három műveletből álló teljes folyamat az alábbi képen látható.

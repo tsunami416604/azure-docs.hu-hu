@@ -11,16 +11,17 @@ ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 336b5a65c7a23a060e422b69f8ad3216bee6ad19
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: f257f3751e7a411015ca188d704b676950845a74
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350987"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633835"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-with-azure-powershell"></a>Rövid útmutató: A számítás felfüggesztése és folytatása a Synapse SQL-készletében az Azure PowerShell segítségével
 
-Az Azure PowerShell segítségével szüneteltetheti és folytathatja a Synapse SQL-készlet (adattárház) számítási erőforrások. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot, mielőtt elkezdené.
+Az Azure PowerShell segítségével szüneteltetheti és folytathatja a Synapse SQL-készlet (adattárház) számítási erőforrások.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot, mielőtt elkezdené.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -30,19 +31,19 @@ Ez a rövid útmutató feltételezi, hogy már rendelkezik egy SQL-készlet, ame
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Jelentkezzen be Azure-előfizetésébe a [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) paranccsal, és kövesse a képernyőn megjelenő utasításokat.
+Jelentkezzen be Azure-előfizetésébe a [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) paranccsal, és kövesse a képernyőn megjelenő utasításokat.
 
 ```powershell
 Connect-AzAccount
 ```
 
-A használt előfizetés megtekintéséhez futtassa a [Get-AzSubscription futtassa.](/powershell/module/az.accounts/get-azsubscription)
+A használt előfizetés megtekintéséhez futtassa a [Get-AzSubscription futtassa.](/powershell/module/az.accounts/get-azsubscription?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 
 ```powershell
 Get-AzSubscription
 ```
 
-Ha az alapértelmezettnél eltérő előfizetést kell használnia, futtassa a [Set-AzContext programot.](/powershell/module/az.accounts/set-azcontext)
+Ha az alapértelmezettnél eltérő előfizetést kell használnia, futtassa a [Set-AzContext programot.](/powershell/module/az.accounts/set-azcontext?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 
 ```powershell
 Set-AzContext -SubscriptionName "MySubscription"
@@ -65,20 +66,19 @@ Az SQL-készlet helyadatainak megkereséséhez kövesse az alábbi lépéseket:
 
 ## <a name="pause-compute"></a>A számítás szüneteltetése
 
-A költségek csökkentése érdekében szüneteltetheti és folytathatja a számítási erőforrásokat igény szerint. Ha például nem használja az adatbázist éjszaka és hétvégén, szüneteltetheti azt ezekben az időszakokban, és a nap folyamán folytathatja. 
+A költségek csökkentése érdekében szüneteltetheti és folytathatja a számítási erőforrásokat igény szerint. Ha például nem használja az adatbázist éjszaka és hétvégén, szüneteltetheti azt ezekben az időszakokban, és a nap folyamán folytathatja.
 
 >[!NOTE]
 >Az adatbázis szüneteltetése alatt a számítási erőforrásokért nem számítunk fel díjat. Azonban továbbra is díjat számítunk fel a tárolásért.
 
-Adatbázis szüneteltetéséhez használja a [Suspend-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase) parancsmagát. A következő példa egy **sqlpoolservername**nevű kiszolgálón tárolt **mySampleDataWarehouse** nevű SQL-készletszünetét állítja elő. A kiszolgáló egy **myResourceGroup**nevű Azure-erőforráscsoportban található.
-
+Adatbázis szüneteltetéséhez használja a [Suspend-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) parancsmagát. A következő példa egy **sqlpoolservername**nevű kiszolgálón tárolt **mySampleDataWarehouse** nevű SQL-készletszünetét állítja elő. A kiszolgáló egy **myResourceGroup**nevű Azure-erőforráscsoportban található.
 
 ```Powershell
 Suspend-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
 –ServerName "nsqlpoolservername" –DatabaseName "mySampleDataWarehouse"
 ```
 
-A következő példa beolvassa az adatbázist a $database objektumba. Ezután leadja az objektumot [a Suspend-AzSqlDatabase elemre.](/powershell/module/az.sql/suspend-azsqldatabase) Az eredmények az objektum eredményébentárolódnakDatabase. A végső parancs az eredményeket mutatja.
+A következő példa beolvassa az adatbázist a $database objektumba. Ezután leadja az objektumot [a Suspend-AzSqlDatabase elemre.](/powershell/module/az.sql/suspend-azsqldatabase?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Az eredmények az objektum eredményébentárolódnakDatabase. A végső parancs az eredményeket mutatja.
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
@@ -89,7 +89,7 @@ $resultDatabase
 
 ## <a name="resume-compute"></a>Számítás folytatása
 
-Adatbázis indításához használja a [Resume-AzSqlDatabase](/powershell/module/az.sql/resume-azsqldatabase) parancsmagát. A következő példa egy **sqlpoolservername**nevű kiszolgálón található **mySampleDataWarehouse** nevű adatbázist indít el. A kiszolgáló egy **myResourceGroup**nevű Azure-erőforráscsoportban található.
+Adatbázis indításához használja a [Resume-AzSqlDatabase](/powershell/module/az.sql/resume-azsqldatabase?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) parancsmagát. A következő példa egy **sqlpoolservername**nevű kiszolgálón található **mySampleDataWarehouse** nevű adatbázist indít el. A kiszolgáló egy **myResourceGroup**nevű Azure-erőforráscsoportban található.
 
 ```Powershell
 Resume-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
@@ -107,7 +107,7 @@ $resultDatabase
 
 ## <a name="check-status-of-your-sql-pool-operation"></a>Az SQL-készlet művelet állapotának ellenőrzése
 
-Az SQL-készlet állapotának ellenőrzéséhez használja a [Get-AzSqlDatabaseActivity](https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseActivity#description) parancsmag.
+Az SQL-készlet állapotának ellenőrzéséhez használja a [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/Get-AzSqlDatabaseActivity#description?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) parancsmag.
 
 ```Powershell
 Get-AzSqlDatabaseActivity -ResourceGroupName "myResourceGroup" -ServerName "sqlpoolservername" -DatabaseName "mySampleDataWarehouse"
@@ -134,7 +134,6 @@ Kövesse az alábbi lépéseket a fölöslegessé vált erőforrások eltávolí
 
 5. Az erőforráscsoport törléséhez kattintson a **myResourceGroup** elemre, majd az **Erőforráscsoport törlése** parancsra.
 
-
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne megtudni az SQL-készletről, folytassa az [Adatok betöltése az SQL-készletbe](load-data-from-azure-blob-storage-using-polybase.md) cikkhez. A számítási képességek kezeléséről további információt a [Számítási áttekintés kezelése](sql-data-warehouse-manage-compute-overview.md) című cikkben talál. 
+Ha többet szeretne megtudni az SQL-készletről, folytassa az [Adatok betöltése az SQL-készletbe](load-data-from-azure-blob-storage-using-polybase.md) cikkhez. A számítási képességek kezeléséről további információt a [Számítási áttekintés kezelése](sql-data-warehouse-manage-compute-overview.md) című cikkben talál.

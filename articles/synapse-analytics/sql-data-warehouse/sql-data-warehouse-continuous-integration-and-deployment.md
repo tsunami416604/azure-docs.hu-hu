@@ -11,23 +11,22 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 39501cef3bb2f7e4a0e061968520f687cf97ecc5
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 20afa3f37bb85fd268962aea03107f0eaeb9bea2
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80584204"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633601"
 ---
 # <a name="continuous-integration-and-deployment-for-data-warehousing"></a>Folyamatos integráció és üzembe helyezés az adattárházhoz
 
-Ez az egyszerű oktatóanyag bemutatja, hogyan integrálhatja az SQL Server Data tools (SSDT) adatbázis-projektjét az Azure DevOps-szal, és hogyan használhatja ki az Azure Pipelines-t a folyamatos integráció és üzembe helyezés beállításához. Ez az oktatóanyag a második lépés a folyamatos integrációs és üzembe helyezési folyamat létrehozásában az adattárház. 
+Ez az egyszerű oktatóanyag bemutatja, hogyan integrálhatja az SQL Server Data tools (SSDT) adatbázis-projektjét az Azure DevOps-szal, és hogyan használhatja ki az Azure Pipelines-t a folyamatos integráció és üzembe helyezés beállításához. Ez az oktatóanyag a második lépés a folyamatos integrációs és üzembe helyezési folyamat létrehozásában az adattárház.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-- A [forrásvezérlés integrációs oktatóanyagának végigmenni](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-source-control-integration)
+- A [forrásvezérlés integrációs oktatóanyagának végigmenni](sql-data-warehouse-source-control-integration.md)
 
 - Az Azure DevOps beállítása és csatlakozás
-
 
 ## <a name="continuous-integration-with-visual-studio-build"></a>Folyamatos integráció a Visual Studio buildelésével
 
@@ -37,7 +36,7 @@ Ez az egyszerű oktatóanyag bemutatja, hogyan integrálhatja az SQL Server Data
 
 2. Válassza ki a forráskód-tárházat (Azure Repos Git), és válassza ki a .NET Asztali alkalmazássablont.
 
-      ![Csővezeték beállítása](./media/sql-data-warehouse-continuous-integration-and-deployment/2-pipeline-setup.png "Csővezeték beállítása") 
+      ![Csővezeték beállítása](./media/sql-data-warehouse-continuous-integration-and-deployment/2-pipeline-setup.png "Csővezeték beállítása")
 
 3. Szerkessze a YAML-fájlt az ügynök megfelelő készletének használatához. A YAML-fájlnak valahogy így kell kinéznie:
 
@@ -45,10 +44,9 @@ Ez az egyszerű oktatóanyag bemutatja, hogyan integrálhatja az SQL Server Data
 
 Ezen a ponton van egy egyszerű környezet, ahol minden beadás a forrásvezérlő tárház főága automatikusan elindítja a sikeres Visual Studio-build az adatbázis-projekt. Ellenőrizze, hogy az automatizálás a helyi adatbázis-projekt módosításával és a főág módosításával működik.Validate the automation is working end by making a change in your local database project and checking in that change to your master branch.
 
-
 ## <a name="continuous-deployment-with-the-azure-sql-data-warehouse-or-database-deployment-task"></a>Folyamatos üzembe helyezés az Azure SQL Data Warehouse (vagy Database) telepítési feladattal
 
-1. Adjon hozzá egy új feladatot az [Azure SQL Database telepítési feladatával,](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?view=azure-devops) és töltse ki a szükséges mezőket a céladattártárházhoz való csatlakozáshoz. A feladat futtatásakor az előző buildfolyamatból létrehozott DACPAC a céladattár-raktárba lesz telepítve. Használhatja az [Azure SQL Data Warehouse telepítési feladatot](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment)is. 
+1. Adjon hozzá egy új feladatot az [Azure SQL Database telepítési feladatával,](/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) és töltse ki a szükséges mezőket a céladattártárházhoz való csatlakozáshoz. A feladat futtatásakor az előző buildfolyamatból létrehozott DACPAC a céladattár-raktárba lesz telepítve. Használhatja az [Azure SQL Data Warehouse telepítési feladatot](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment)is.
 
       ![Telepítési feladat](./media/sql-data-warehouse-continuous-integration-and-deployment/4-deployment-task.png "Telepítési feladat")
 

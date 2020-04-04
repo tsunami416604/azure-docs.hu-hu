@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 8543894f3f518df6b9b0054973ca1683b82e38f1
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: df80668f5e4a31d6247e9e9806e3de0667fd9036
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548996"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656012"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>A keresési eredmények működése az Azure Cognitive Search szolgáltatásban
 
@@ -39,7 +39,7 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06
 > [!NOTE]
 > Ha egy eredménybe, például egy termékfotóba vagy emblémába szeretne képfájlokat felvenni, tárolja őket az Azure Cognitive Search-en kívül, de vegyen fel egy mezőt az indexbe, amely a kép URL-címére hivatkozik a keresési dokumentumban. Minta-indexek, amelyek támogatják a képeket az eredmények közé tartozik a **realestate-sample-us** demo, szerepelt ebben a [rövid útmutató,](search-create-app-portal.md)és a [New York-i Jobs demo app.](https://aka.ms/azjobsdemo)
 
-## <a name="results-returned"></a>Visszaadott eredmények
+## <a name="paging-results"></a>Lapozás eredményei
 
 Alapértelmezés szerint a keresőmotor az első 50 egyezésig visszatér, akeresési pontszám szerint, ha a lekérdezés teljes szöveges keresés, vagy tetszőleges sorrendben a pontos egyezéses lekérdezésekhez.
 
@@ -74,19 +74,19 @@ Figyelje meg, hogy a 2. Ennek az az oka, hogy az új 5 dokumentum nak nagyobb é
 
 ## <a name="ordering-results"></a>Az eredmények rendezése
 
-A teljes szöveges keresési lekérdezések esetében az eredmények automatikusan rangsorolva vannak a keresési pontszám alapján, amelyet a dokumentum kifejezésgyakorisága és közelsége alapján számítanak ki, és a magasabb pontszámok olyan dokumentumokhoz kerülnek, amelyek több vagy erősebb egyezést tartalmaznak egy keresési kifejezésen. A keresési pontszámok általános relevanciát közvetítenek az azonos eredményhalmazban lévő többi dokumentumhoz képest, és nem garantált, hogy konzisztensek az egyik lekérdezéstől a másikig.
+A teljes szöveges keresési lekérdezések esetében az eredmények automatikusan rangsorolva vannak a keresési pontszám alapján, amelyet a dokumentum kifejezésgyakorisága és közelsége alapján számítanak ki, és a magasabb pontszámok olyan dokumentumokhoz kerülnek, amelyek több vagy erősebb egyezést tartalmaznak egy keresési kifejezésen. 
 
-A lekérdezések kezelése közben előfordulhat, hogy kisebb eltérések et észlel a rendezett eredményekben. Számos magyarázat van arra, hogy ez miért fordulhat elő.
+A keresési pontszámok általános relevanciát közvetítenek, ami tükrözi az egyezés erősségét az azonos eredményhalmazban lévő többi dokumentumhoz képest. A pontszámok nem mindig konzisztensek az egyik lekérdezéstől a másikig, így a lekérdezésekkel végzett munka során kisebb eltéréseket észlelhet a keresési dokumentumok rendezési módjában. Számos magyarázat van arra, hogy ez miért fordulhat elő.
 
-| Állapot | Leírás |
+| Ok | Leírás |
 |-----------|-------------|
 | Adatvolatilitás | A tárgymutató tartalma a dokumentumok hozzáadásakor, módosításában és törlésében változik. A kifejezésgyakoriságok az indexfrissítések idővel való feldolgozásával változnak, ami hatással van az egyező dokumentumok keresési pontszámaira. |
-| Lekérdezés végrehajtási helye | A több replikát használó szolgáltatások esetében a lekérdezések párhuzamosan kerülnek kiadásra az egyes kópiákhoz. A keresési pontszám kiszámításához használt indexstatisztikák at replika alapon számítja ki a rendszer, az eredményeket egyesítve és a lekérdezési válaszban rendezve. A replikák többnyire egymás tükrei, de a statisztikák eltérhetnek az állapot kis különbségei miatt. Előfordulhat például, hogy az egyik kópia törölte a statisztikáikhoz hozzájáruló dokumentumokat, amelyeket más kópiákból egyesítettek. Általában a replikák statisztikánkénti különbségei észrevehetőbbek a kisebb indexekben. |
-| Az azonos keresési pontszámok közötti döntetlen megtörése | A rendezett eredmények eltérései akkor is előfordulhatnak, ha a keresési dokumentumok pontszáma azonos. Ebben az esetben, amikor újrafuttatja ugyanazt a lekérdezést, nincs garancia arra, hogy melyik dokumentum jelenik meg először. |
+| Több kópia | A több replikát használó szolgáltatások esetében a lekérdezések párhuzamosan kerülnek kiadásra az egyes kópiákhoz. A keresési pontszám kiszámításához használt indexstatisztikák at replika alapon számítja ki a rendszer, az eredményeket egyesítve és a lekérdezési válaszban rendezve. A replikák többnyire egymás tükrei, de a statisztikák eltérhetnek az állapot kis különbségei miatt. Előfordulhat például, hogy az egyik kópia törölte a statisztikáikhoz hozzájáruló dokumentumokat, amelyeket más kópiákból egyesítettek. A replikastatisztikák közötti különbségek általában jobban észrevehetők a kisebb indexekben. |
+| Azonos pontszámok | Ha több dokumentum pontszáma megegyezik, akkor bármelyik ük jelenhet meg először.  |
 
 ### <a name="consistent-ordering"></a>Konzisztens sorrend
 
-Mivel a rugalmas idő a keresési pontozás, érdemes lehet más lehetőségek et is megkell vizsgálnia, ha az eredményrendelések konzisztenciája alkalmazáskövetelmény. A legegyszerűbb módszer a mezőérték szerinti rendezés, például minősítés vagy dátum szerint. Olyan esetekben, amikor egy adott mező , például egy minősítés vagy dátum szerint szeretne rendezni, explicit módon definiálhat egy [ `$orderby` kifejezést,](query-odata-filter-orderby-syntax.md)amely bármely **rendezhető**mezőre alkalmazható.
+Tekintettel a rugalmas idő az eredmények sorrendje, érdemes lehet más lehetőségeket is, ha a konzisztencia egy alkalmazás követelmény. A legegyszerűbb módszer a mezőérték szerinti rendezés, például minősítés vagy dátum szerint. Olyan esetekben, amikor egy adott mező , például egy minősítés vagy dátum szerint szeretne rendezni, explicit módon definiálhat egy [ `$orderby` kifejezést,](query-odata-filter-orderby-syntax.md)amely bármely **rendezhető**mezőre alkalmazható.
 
 Egy másik lehetőség [egy egyéni pontozási profil](index-add-scoring-profiles.md)használata. A pontozási profilok segítségével jobban szabályozhatja a keresési eredményekben szereplő elemek rangsorolását, és növelheti az adott mezőkben található egyezéseket. A további pontozási logika segíthet felülírni a replikák közötti kisebb különbségeket, mivel az egyes dokumentumok keresési pontszámai távolabb vannak egymástól. Ehhez a megközelítéshez javasoljuk a [rangsorolási algoritmust.](index-ranking-similarity.md)
 

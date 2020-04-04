@@ -4,17 +4,18 @@ description: Ez a dokumentum célja, hogy segítsen a felhasználónak érvénye
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
+manager: dcscontentpm
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 05/29/2019
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: a88e339e82484c2ec1cd2276f6218fa718b990f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dcf86deda32069bf9711dbeb733dc9361e22a771
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75860486"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631772"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>VPN teljesítményének érvényesítése virtuális hálózaton
 
@@ -242,7 +243,7 @@ Említette a helyszíni tartományok alhálózatait, amelyeket az Azure-nak VPN-
 
 * **Házirendalapú átjáró:** A házirend-alapú VPN-ek titkosítják és irányítják a csomagokat az IPsec-alagutakon keresztül a helyszíni hálózat és az Azure virtuális hálózat közötti címelőtagok kombinációi alapján. A házirend (vagy forgalomválasztó) általában egy hozzáférési listaként van megadva a VPN-konfigurációban.
 
-* **UsePolicyTrafficSelector** kapcsolatok: ("UsePolicyBasedTrafficSelectors" $True a kapcsolat konfigurálja az Azure VPN-átjáró, hogy csatlakozzon a házirend-alapú VPN-tűzfal a helyszínen. Ha engedélyezi a PolicyBasedTrafficSelectors-t, meg kell győződnie arról, hogy a VPN-eszköz rendelkezik a helyszíni hálózat (helyi hálózati átjáró) előtagok összes kombinációjával definiált megfelelő forgalomválasztókkal az Azure virtuális hálózati előtagokhoz és az Azure virtuális hálózati előtagoktól, nem pedig bármely-bármely.
+* **UsePolicyTrafficSelector** kapcsolatok: ("UsePolicyBasedTrafficSelectors" $True a kapcsolat konfigurálja az Azure VPN-átjáró, hogy csatlakozzon a házirend-alapú VPN-tűzfal a helyszínen. Ha engedélyezi a PolicyBasedTrafficSelectors, meg kell győződnie arról, hogy a VPN-eszköz rendelkezik a megfelelő forgalom választók a helyszíni hálózati (helyi hálózati átjáró) előtagok összes kombinációját az Azure virtuális hálózati előtagok helyett minden.If you enable PolicyBasedTrafficSelectors, you need to ensure your VPN device is the matching traffic selectors defined with all combinations of your on-premises network (local network gateway) prefixesek to and from the Azure virtual network prefixes, instead of any-to-any.
 
 Nem megfelelő konfiguráció vezethet gyakori bontja az alagúton belül, csomag csepp, rossz átviteli és késés.
 
