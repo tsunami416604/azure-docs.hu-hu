@@ -1,6 +1,6 @@
 ---
-title: Tartomány- és SSL-tanúsítványok – problémamegoldás
-description: Megoldásokat találhat azokra a gyakori problémákra, amelyekkel egy tartomány vagy SSL-tanúsítvány konfigurálásakor találkozhat az Azure App Service-ben.
+title: Tartomány- és TLS-/SSL-tanúsítványok – problémamegoldás
+description: Megoldásokat találhat azokra a gyakori problémákra, amelyekkel egy tartomány vagy TLS/SSL-tanúsítvány konfigurálásakor találkozhat az Azure App Service-ben.
 author: genlin
 manager: dcscontentpm
 tags: top-support-issue
@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: e299821b54692327cbb7d497af0295e3b93658cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d61b95c7136a4cbce11789a58d27cc1a164ae374
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75966978"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668022"
 ---
-# <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Tartomány- és SSL-tanúsítványokkal kapcsolatos problémák elhárítása az Azure App Service szolgáltatásban
+# <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Tartomány- és TLS-/SSL-tanúsítványproblémák elhárítása az Azure App Service szolgáltatásban
 
 Ez a cikk azokat a gyakori problémákat sorolja fel, amelyekkel a webalkalmazások hoz az Azure App Service-ben konfigurálásakor találkozhat. Ismerteti továbbá a lehetséges okokat és megoldásokat ezekre a problémákra.
 
@@ -26,17 +26,17 @@ Ha további segítségre van szüksége a cikk bármely pontján, felveheti a ka
 
 ## <a name="certificate-problems"></a>Tanúsítványproblémák
 
-### <a name="you-cant-add-an-ssl-certificate-binding-to-an-app"></a>Nem adhat hozzá SSL-tanúsítványkötést egy alkalmazáshoz 
+### <a name="you-cant-add-a-tlsssl-certificate-binding-to-an-app"></a>Nem adhat hozzá TLS/SSL-tanúsítványkötést egy alkalmazáshoz 
 
 #### <a name="symptom"></a>Hibajelenség
 
-SSL-kötés hozzáadásakor a következő hibaüzenet jelenik meg:
+TLS-kötés hozzáadásakor a következő hibaüzenet jelenik meg:
 
 "Nem sikerült hozzáadni az SSL-kötést. A meglévő VIP-tanúsítvány nem állítható be, mert egy másik VIP már használja ezt a tanúsítványt."
 
 #### <a name="cause"></a>Ok
 
-Ez a probléma akkor fordulhat elő, ha több IP-alapú SSL-kötéssel rendelkezik ugyanahhoz az IP-címhez több alkalmazásban. Az A alkalmazás például egy régi tanúsítvánnyal rendelkező IP-alapú SSL-lel rendelkezik. A B alkalmazás IP-alapú SSL-lel rendelkezik, és ugyanahhoz az IP-címhez új tanúsítványt kell tanúsítania. Amikor frissíti az alkalmazás SSL-kötését az új tanúsítvánnyal, ez a hiba sikertelen lesz, mert ugyanazt az IP-címet használja egy másik alkalmazás. 
+Ez a probléma akkor fordulhat elő, ha több IP-alapú SSL-kötéssel rendelkezik ugyanahhoz az IP-címhez több alkalmazásban. Az A alkalmazás például egy régi tanúsítvánnyal rendelkező IP-alapú SSL-lel rendelkezik. A B alkalmazás IP-alapú SSL-lel rendelkezik, és ugyanahhoz az IP-címhez új tanúsítványt kell tanúsítania. Amikor frissíti az alkalmazás TLS-kötést az új tanúsítvánnyal, ez a hiba sikertelen lesz, mert ugyanazt az IP-címet használja egy másik alkalmazás. 
 
 #### <a name="solution"></a>Megoldás 
 
@@ -51,7 +51,7 @@ A probléma megoldásához használja az alábbi módszerek egyikét:
 
 Amikor megpróbál törölni egy tanúsítványt, a következő hibaüzenet jelenik meg:
 
-"Nem lehet törölni a tanúsítványt, mert jelenleg SSL-kötésben használatos. A tanúsítvány törlése előtt el kell távolítani az SSL-kötést."
+"Nem lehet törölni a tanúsítványt, mert jelenleg TLS/SSL-kötésben használatos. A tanúsítvány törlése előtt el kell távolítani a TLS-kötést."
 
 #### <a name="cause"></a>Ok
 
@@ -59,7 +59,7 @@ Ez a probléma akkor fordulhat elő, ha egy másik alkalmazás használja a tan�
 
 #### <a name="solution"></a>Megoldás
 
-Távolítsa el az adott tanúsítvány SSL-kötését az alkalmazásokból. Ezután próbálja meg törölni a tanúsítványt. Ha továbbra sem tudja törölni a tanúsítványt, törölje az internetböngésző gyorsítótárát, és nyissa meg újra az Azure Portalt egy új böngészőablakban. Ezután próbálja meg törölni a tanúsítványt.
+Távolítsa el a tanúsítvány TLS-kötését az alkalmazásokból. Ezután próbálja meg törölni a tanúsítványt. Ha továbbra sem tudja törölni a tanúsítványt, törölje az internetböngésző gyorsítótárát, és nyissa meg újra az Azure Portalt egy új böngészőablakban. Ezután próbálja meg törölni a tanúsítványt.
 
 ### <a name="you-cant-purchase-an-app-service-certificate"></a>Nem vásárolhat App Service-tanúsítványt 
 
@@ -69,7 +69,7 @@ Nem vásárolhat Azure [App Service-tanúsítványt](./configure-ssl-certificate
 #### <a name="cause-and-solution"></a>Ok és megoldás
 A probléma a következő okok valamelyike miatt fordulhat elő:
 
-- Az App Service-csomag ingyenes vagy megosztott. Ezek a tarifacsomagok nem támogatják az SSL-t. 
+- Az App Service-csomag ingyenes vagy megosztott. Ezek a tarifacsomagok nem támogatják a TLS-t. 
 
     **Megoldás:** Frissítse az App Service-csomagot az alkalmazás standardra.
 
@@ -165,7 +165,7 @@ Ha a tartományt kevesebb mint hét nappal ezelőtt törölték, a tartomány m�
 
 ## <a name="domain-problems"></a>Tartományi problémák
 
-### <a name="you-purchased-an-ssl-certificate-for-the-wrong-domain"></a>Nem a megfelelő tartományhoz vásárolt SSL-tanúsítványt
+### <a name="you-purchased-a-tlsssl-certificate-for-the-wrong-domain"></a>Nem a megfelelő tartományhoz vásárolt TLS/SSL tanúsítványt
 
 #### <a name="symptom"></a>Hibajelenség
 
@@ -306,7 +306,7 @@ Domain vásárlásakor nem kell öt napig fizetnie, amely idő alatt eldöntheti
 
 **Használhatom a tartományt egy másik Azure App Service-alkalmazásban az előfizetésemben?**
 
-Igen. Amikor az Azure Portalon az egyéni tartományok és az SSL-panel eléréséhez, láthatja a megvásárolt tartományokat. Beállíthatja, hogy az alkalmazás ezen tartományok bármelyikét használja.
+Igen. Amikor az Azure Portalon az egyéni tartományok és a TLS-panel eléréséhez, láthatja a megvásárolt tartományokat. Beállíthatja, hogy az alkalmazás ezen tartományok bármelyikét használja.
 
 **Átvihetek egy tartományt az egyik előfizetésből egy másik előfizetésbe?**
 

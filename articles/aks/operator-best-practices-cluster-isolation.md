@@ -1,15 +1,16 @@
 ---
-title: Operátori gyakorlati tanácsok – Fürtelkülönítés az Azure Kubernetes-szolgáltatásokban (AKS)
+title: Ajánlott fürtelkülönítési eljárások
+titleSuffix: Azure Kubernetes Service
 description: Ismerje meg a fürtüzemeltető ajánlott elkülönítési gyakorlati az Azure Kubernetes szolgáltatás (AKS)
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 228b856d5c5ffa2bfac7df12094667e02f797690
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 00643dc1699d1cbd47efd271738015ea05e895e2
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77594855"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668343"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások a fürtelkülönítéshez az Azure Kubernetes-szolgáltatásban (AKS)
 

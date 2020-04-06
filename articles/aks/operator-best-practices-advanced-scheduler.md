@@ -1,15 +1,16 @@
 ---
-title: Az operátorokkal kapcsolatos gyakorlati tanácsok – Speciális ütemező funkciók az Azure Kubernetes-szolgáltatásokban (AKS)
+title: Gyakorlati tanácsok az ütemező szolgáltatásaihoz
+titleSuffix: Azure Kubernetes Service
 description: Ismerje meg a fürtoperátor okainak gyakorlati tanácsait a speciális ütemező funkciók, például a betakarások és a tűrések, a csomópontválasztók és -affinitás, illetve a podok közötti affinitás és affinitás használatával kapcsolatban az Azure Kubernetes-szolgáltatásban (AKS)
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 546c1d6ae25a33c6df93469ccf8c230b4b1c474b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 47b2d78f7dc831c4314c4215f5e0a9e17f75f0dc
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79252895"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668361"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes-szolgáltatás (AKS) speciális ütemező funkcióinak gyakorlati tanácsok
 

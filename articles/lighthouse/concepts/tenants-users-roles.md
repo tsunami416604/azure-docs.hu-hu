@@ -1,14 +1,14 @@
 ---
 title: Bérlők, szerepkörök és felhasználók az Azure Világítótorony-forgatókönyvekben
 description: Ismerje meg az Azure Active Directory-bérlők, -felhasználók és szerepkörök fogalmait, valamint azt, hogy miként használhatók az Azure Lighthouse-forgatókönyvekben.
-ms.date: 03/24/2020
+ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7540e17fd80f9a1d8e996295000c126614b838d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4734f12c8b4b25bf75ecabc39d9e99d8ebe0951c
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246891"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668878"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Bérlők, szerepkörök és felhasználók az Azure Világítótorony-forgatókönyvekben
 
@@ -41,6 +41,7 @@ Az engedélyek létrehozásakor a következő gyakorlati tanácsokat javasoljuk:
 - Ügyeljen arra, hogy kövesse a minimális jogosultság elvét, hogy a felhasználók csak a feladat uk elvégzéséhez szükséges engedélyekkel rendelkezhessenek, így csökkentve a véletlen hibák esélyét. További információ: [Ajánlott biztonsági eljárások](../concepts/recommended-security-practices.md).
 - A [felügyelt szolgáltatások regisztrációs hozzárendelésének törlése szerepkörrel](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) rendelkező felhasználót is felvehet, így szükség esetén később [eltávolíthatja a delegáláshoz való hozzáférést.](../how-to/onboard-customer.md#remove-access-to-a-delegation) Ha ez a szerepkör nincs hozzárendelve, a delegált erőforrásokat csak az ügyfél bérlőjében lévő felhasználó távolíthatja el.
 - Győződjön meg arról, hogy minden olyan felhasználó, akinek meg kell [tekintenie az Ügyfelek lapot az Azure Portalon,](../how-to/view-manage-customers.md) rendelkezik az [Olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkör (vagy egy másik beépített szerepkör, amely magában foglalja a Reader-hozzáférést).
+- A kezelő bérlő ben lévő felhasználók nem férhetnek hozzá a delegált ügyfél-előfizetés számlázási adatainak megtekintéséhez, még akkor sem, ha olyan beépített szerepkörrel rendelkeznek, amely általában hozzáférést engedélyez. Ennek az az oka, hogy a számlázási adatokhoz való hozzáférés további lépéseket igényel, amelyek jelenleg csak az ugyanazon a bérlőn belüli felhasználók számára támogatottak.
 
 > [!IMPORTANT]
 > Az Azure AD-csoport engedélyeinek hozzáadásához a **csoporttípusnak** **biztonságnak,** nem pedig **Office 365-nek**kell lennie. Ez a beállítás a csoport létrehozásakor van bejelölve. További információ: [Hozzon létre egy alapszintű csoportot, és adjon hozzá tagokat az Azure Active Directory használatával.](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)

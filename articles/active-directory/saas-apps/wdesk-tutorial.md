@@ -12,14 +12,14 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 04/02/2020
 ms.author: jeedes
-ms.openlocfilehash: a4cfcf20fc7a6a3532f65c3e797da6c876844d2c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 349a9920adc0d9353ee8e8e821f54bc2ea2f2616
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76985531"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666994"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wdesk"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja a Wdeskkel
 
@@ -181,6 +181,10 @@ Ebben a szakaszban engedélyezheti Britta Simon számára, hogy egyetlen bejelen
 
     ![Egyszeri bejelentkezés konfigurálása](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig2.png)
 
+1. Az **SAML felhasználói azonosító beállításai csoportban**ellenőrizze, **hogy az SAML-felhasználóazonosító Wdesk-felhasználónév-azonosító.**
+
+    ![Egyszeri bejelentkezés konfigurálása](./media/wdesk-tutorial/wdesk-username.png)
+
 4. Az **Általános beállítások csoportban**jelölje be az **SAML egyszeri bejelentkezés engedélyezése jelölőnégyzetet:**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig3.png)
@@ -223,7 +227,7 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezhessenek a Wdeskbe, ki kell é
    
     ![Azure AD-tesztfelhasználó létrehozása](./media/wdesk-tutorial/createuser1.png)  
 
-5. A **Felhasználó** szövegmezőbe írja be a brittasimon@contoso.com felhasználó felhasználónevét, és kattintson a **Folytatás** gombra.
+5. A **Felhasználó** szövegmezőbe írja be a b.simon@contoso.com felhasználó felhasználónevét, és kattintson a **Folytatás** gombra.
 
     ![Azure AD-tesztfelhasználó létrehozása](./media/wdesk-tutorial/createuser3.png)
 
@@ -231,9 +235,9 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezhessenek a Wdeskbe, ki kell é
   
     ![Azure AD-tesztfelhasználó létrehozása](./media/wdesk-tutorial/createuser4.png)
  
-    a. Az **E-mail** mezőbe írja be a brittasimon@contoso.comfelhasználó e-mail címét, például .
+    a. Az **E-mail** mezőbe írja be a b.simon@contoso.comfelhasználó e-mail címét, például .
 
-    b. A **Keresztnév** mezőbe írja be a felhasználó keresztnevét, például **Britta.**
+    b. Az **Utónév** mezőbe írja be a felhasználó keresztnevét, például **B.**
 
     c. A **Vezetéknév** mezőbe írja be a felhasználó vezetéknevét, például **Simon**.
 

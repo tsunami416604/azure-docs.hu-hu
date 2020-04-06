@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 04/03/2020
 ms.author: b-juche
-ms.openlocfilehash: 59453dbb9617f5a2ddbdca08709747b11a688560
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: aebc669a90511e48ddd2a7876553948c04b97710
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547089"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667815"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Gyakori kérdések az Azure NetApp-fájlokról
 
@@ -145,9 +145,11 @@ Az Azure NetApp Files támogatja az Active Directory tartományi szolgáltatáso
 
 Az SMB-ügyfél által jelentett kötetmérete az Azure NetApp Files kötet maximális mérete. Az Azure NetApp Files kötet mérete az SMB-ügyfélen látható módon nem tükrözi a kötet kvótáját vagy méretét. Az Azure NetApp Files kötetméretét vagy kvótáját az Azure Portalon vagy az API-n keresztül szerezheti be.
 
-### <a name="does-azure-netapp-files-support-kerberos-encryption"></a>Támogatja az Azure NetApp-fájlok a Kerberos titkosítást?
+<!--
+### Does Azure NetApp Files support Kerberos encryption?
 
-Igen, alapértelmezés szerint az Azure NetApp Files támogatja az AES-128 és az AES-256 titkosítást a szolgáltatás és a megcélzott Active Directory tartományvezérlők közötti forgalomhoz. A követelményekért [lásd: SMB-kötet létrehozása az Azure NetApp-fájlokhoz.](azure-netapp-files-create-volumes-smb.md) 
+Yes, by default, Azure NetApp Files supports both AES-128 and AES-256 encryption for traffic between the service and the targeted Active Directory domain controllers. See [Create an SMB volume for Azure NetApp Files](azure-netapp-files-create-volumes-smb.md) for requirements. 
+-->
 
 <!--
 ### Does Azure NetApp Files support LDAP signing? 

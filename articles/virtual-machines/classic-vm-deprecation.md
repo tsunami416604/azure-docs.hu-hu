@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 764567bffd2a08ebb5beb17e3063998848b3f110
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e56aa5ec073aadc2a16d53c266d33255a34077cb
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127333"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668803"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>2023. március 1-ig áttelepítheti IaaS-erőforrásait az Azure Resource Managerbe 
 
@@ -45,6 +45,6 @@ Ez a megszüntetés **nem** érinti a következő Azure-szolgáltatásokat és f
 
 - További információkért tekintse meg az [Azure Resource Manager áttelepítésének klasszikusával kapcsolatos gyakori kérdéseivel kapcsolatos gyakori kérdéseket.](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq)
 
-- Technikai kérdésekés problémák esetén [forduljon az ügyfélszolgálathoz.](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
+- Technikai kérdések, problémák és előfizetésengedélyezési [kapcsolat felvételével forduljon az ügyfélszolgálathoz.](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 
 - Egyéb kérdések nem része a GYIK és a visszajelzés, megjegyzést alább.

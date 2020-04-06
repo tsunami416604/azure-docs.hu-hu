@@ -8,29 +8,32 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 3e0e0291ff855b4502224466e17696a4fe668c2a
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 7f001a0d443e4ec668aedaabb7505884163bf37e
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656003"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666788"
 ---
-# <a name="partial-term-search-in-azure-cognitive-search-queries-wildcard-regex-fuzzy-search-patterns"></a>Részleges kifejezésű keresés az Azure Cognitive Search lekérdezésekben (helyettesítő karakter, regex, intelligens keresés, minták)
+# <a name="partial-term-search-and-patterns-with-special-characters---azure-cognitive-search-wildcard-regex-patterns"></a>Részleges kifejezésű keresés és különleges karakterekkel rendelkező minták – Azure Cognitive Search (helyettesítő karakter, regex, minták)
 
-A *részleges kifejezésű keresés* olyan lekérdezésekre utal, amelyek kifejezéstöredékekből állnak, például egy karakterlánc első, utolsó vagy belső részeiből, vagy olyan töredékek kombinációjából álló mintából, amelyeket gyakran speciális karakterek választanak el egymástól, például kötőjelek vagy perjelek. A gyakori használati esetek közé tartozik a telefonszám, URL, személyek vagy termékkódok, illetve összetett szavak részeinek lekérdezése.
+A *részleges kifejezésű keresés* olyan lekérdezésekre utal, amelyek kifejezéstöredékekből állnak, például a karakterlánc első, utolsó vagy belső részeiből. A *minta* töredékek kombinációját eredményezheti, néha speciális karakterekkel, például kötőjelekkel vagy perjelekkel, amelyek a lekérdezés részét képezik. A gyakori használati esetek közé tartozik a telefonszám, URL, személyek vagy termékkódok, illetve összetett szavak részeinek lekérdezése.
 
-A részleges keresés problémás lehet, mivel maga az index általában nem tárolja a kifejezéseket olyan módon, amely elősegíti a részleges karakterlánc- és mintaegyeztetést. Az indexelés szövegelemzési fázisában a speciális karakterek elvesznek, az összetett és összetett karakterláncok felvannak osztva, így a mintalekérdezések sikertelenek lesznek, ha nem található egyezés. Például egy telefonszám `+1 (425) 703-6214`(tokenizált `"1"`, `"425"` `"703"`, `"6214"`, , ) nem `"3-62"` jelenik meg a lekérdezésben, mert az adott tartalom valójában nem létezik az indexben. 
+A részleges keresés akkor lehet problémás, ha az index nem rendelkezik a mintaegyeztetéshez szükséges formátumú kifejezésekkel. Az indexelés szövegelemzési fázisában az alapértelmezett szabványos analizátor használatával a speciális karakterek elvesznek, az összetett és összetett karakterláncok felvannak osztva, így a mintalekérdezések sikertelenek lesznek, ha nem található egyezés. Például egy telefonszám `+1 (425) 703-6214`(tokenizált `"1"`, `"425"` `"703"`, `"6214"`, , ) nem `"3-62"` jelenik meg a lekérdezésben, mert az adott tartalom valójában nem létezik az indexben. 
 
-A megoldás az, hogy tárolja ezeka karakterláncok ép verzióit az indexben, így támogathatja a részleges keresési forgatókönyvek. A megoldás alapja egy ép karakterlánc kiegészítő mezőjének létrehozása, valamint tartalommegőrző elemző használata.
+A megoldás egy olyan elemző meghívása, amely megőrzi a teljes karakterláncot, beleértve a szóközöket és szükség esetén speciális karaktereket, így támogathatja a részleges kifejezéseket és mintákat. A megoldás alapja egy ép karakterlánc kiegészítő mezőjének létrehozása, valamint tartalommegőrző elemző használata.
 
 ## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Mi a részleges keresés az Azure Cognitive Search-ben?
 
-Az Azure Cognitive Search részben a következő űrlapokon érhető el:
+Az Azure Cognitive Search alkalmazásban a részleges keresés és a minta a következő űrlapokon érhető el:
 
 + [Előtag keresés](query-simple-syntax.md#prefix-search), `search=cap*`például , egyezés a "Cap'n Jack's Waterfront Inn" vagy a "Gacc Capital". Használhatja az egyszerű lekérdezés szintaxiselőtag kereséshez.
-+ [Helyettesítő karakteres keresés](query-lucene-syntax.md#bkmk_wildcard) vagy [reguláris kifejezések,](query-lucene-syntax.md#bkmk_regex) amelyek egy beágyazott karakterlánc mintáját vagy részeit keresik, beleértve az utótagot is. Az "alfanumerikus" kifejezés rekedése például`search=/.*numeric.*/`helyettesítő karaktert ( ) használ az adott kifejezés utótag lekérdezésének egyezéséhez. A helyettesítő karakter és a reguláris kifejezések teljes Lucene szintaxist igényelnek.
 
-Ha a fenti lekérdezéstípusok bármelyike szükséges az ügyfélalkalmazásban, kövesse a cikkben leírt lépéseket annak érdekében, hogy a szükséges tartalom létezik az indexben.
++ [Helyettesítő karakteres keresés](query-lucene-syntax.md#bkmk_wildcard) vagy [reguláris kifejezések,](query-lucene-syntax.md#bkmk_regex) amelyek egy beágyazott karakterlánc mintáját vagy részeit keresik, beleértve az utótagot is. A helyettesítő karakter és a reguláris kifejezések teljes Lucene szintaxist igényelnek. 
+
+  Néhány példa a részleges kifejezéskeresésre: a következők: Utótag-lekérdezés esetén az "alfanumerikus" kifejezés sel kapcsolatban helyettesítő`search=/.*numeric.*/`keresési ( ) használatával kereshet egyezést. Karaktereket, például URL-töredéket tartalmazó részleges kifejezés esetén előfordulhat, hogy escape karaktereket kell hozzáadnia. A JSON-ban `/` az előremutató per `\`eltávozik egy hátrafelé irányuló perjellel. Így `search=/.*microsoft.com\/azure\/.*/` a "microsoft.com/azure/" URL-töredék szintaxisa.
+
+Mint megjegyezte, a fentiek mindegyike megköveteli, hogy az index olyan formátumban tartalmazkarakterláncokat, amelyek elősegítik a mintaegyeztetést, amelyet a standard analizátor nem biztosít. A cikkben ismertetett lépéseket követve biztosíthatja, hogy a forgatókönyvek támogatásához szükséges tartalom létezik.
 
 ## <a name="solving-partial-search-problems"></a>Részleges keresési problémák megoldása
 

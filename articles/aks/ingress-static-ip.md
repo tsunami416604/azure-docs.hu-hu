@@ -1,15 +1,16 @@
 ---
-title: Statikus IP-címmel rendelkező HTTP-be- és áthálózaton (AKS) hozzon létre egy HTTP-be- és be- és címvezérlőt
+title: Be- és be- és be- és be- és visszarepülésvezérlő használata statikus IP-címvel
+titleSuffix: Azure Kubernetes Service
 description: Ismerje meg, hogyan telepíthet és konfigurálhat egy statikus nyilvános IP-címmel rendelkező NGINX bejövő forgalom vezérlőt egy Azure Kubernetes-fürt (AKS) fürtben.
 services: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 3e79bbe76a751097acd5c9d3c42dbd4020b6866b
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: fe7f1070ce233c204d9658d4a75c5e1c7a189f12
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80617290"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668523"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Statikus nyilvános IP-címmel rendelkező bejövő forgalomvezérlő létrehozása az Azure Kubernetes-szolgáltatásban (AKS)
 

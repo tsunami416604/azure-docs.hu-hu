@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 12/09/2019
+ms.date: 04/04/2020
 ms.author: erhopf
-ms.openlocfilehash: 07ed276accfd15f7f4bfbe52bdd9bc82f8d7da8c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 6d125afd9903482bc987d80e0cef58a9e883b0f9
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78925159"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671323"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -23,7 +23,7 @@ Mielőtt elkezdene, győződjön meg arról, hogy:
 
 > [!div class="checklist"]
 > * [Azure-beszédfelismerési erőforrás létrehozása](../../../../get-started.md)
-> * [A fejlesztői környezet beállítása és üres projekt létrehozása](../../../../quickstarts/setup-platform.md?tabs=dotnetcore)
+> * [A fejlesztői környezet beállítása és üres projekt létrehozása](../../../../quickstarts/setup-platform.md?tabs=dotnetcore&pivots=programming-language-csharp)
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 

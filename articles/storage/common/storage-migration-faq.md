@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 1445d74e3050ffd6da7c45037df552f4bee9acf5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 39f1137638f9cd4926b712bdd18e681d90adcdc4
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77116667"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668551"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Gyakori kérdések az Azure Storage migrálásával kapcsolatban
 
@@ -269,7 +269,7 @@ Ahhoz, hogy mások is hozzáférhessenek a tárolóerőforrásokhoz:
 
 **Hogyan használhatok HTTPS-es egyéni tartományt a tárfiókommal? Például hogyan tudom a "https:\//mystorageaccountname.blob.core.windows.net/images/image.gif" szót\/"https: /www.contoso.com/images/image.gif" néven megjeleníteni?**
 
-SSL jelenleg nem támogatott az egyéni tartományoktárfiókok.
+TLS/SSL jelenleg nem támogatott az egyéni tartományoktárfiókok.
 De használhatja a nem HTTPS-es egyéni tartományokat. További információt a [Blob storage-végpont egyéni tartománynevének konfigurálása](../blobs/storage-custom-domain-name.md)című témakörben talál.
 
 ## <a name="access-to-storage"></a>A tároláshoz való hozzáférés

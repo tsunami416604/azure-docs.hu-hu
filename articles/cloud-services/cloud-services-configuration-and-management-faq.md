@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 40abd048b047bbece79b7c05d36a1fb189a4f28d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5821c72ae1be4759cf5aa76ff1f5af43337749c0
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77656925"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668585"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Az Azure Cloud Services konfigurációs és kezelési problémái: gyakori kérdések (gyakori kérdések)
 
@@ -30,14 +30,14 @@ Ez a cikk a Microsoft Azure Cloud Services konfigurációs és kezelési problé
 
 **Tanúsítványok**
 
-- [Miért nem teljes a Cloud Service SSL-tanúsítványtanúsítványlánca?](#why-is-the-certificate-chain-of-my-cloud-service-ssl-certificate-incomplete)
+- [Miért nem teljes a Felhőszolgáltatás TLS/SSL-tanúsítványának tanúsítványlánca?](#why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete)
 - [Mi a célja a "Windows Azure Tools titkosítási tanúsítvány a bővítményekhez"?](#what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions)
 - [Hogyan hozhatok létre tanúsítvány-aláíró kérelmet (CSR) anélkül, hogy "RDP-ing" lenne a példányban?](#how-can-i-generate-a-certificate-signing-request-csr-without-rdp-ing-in-to-the-instance)
 - [A felhőszolgáltatás-kezelési tanúsítványom lejár. Hogyan lehet megújítani?](#my-cloud-service-management-certificate-is-expiring-how-to-renew-it)
-- [Hogyan lehet automatizálni a fő SSL tanúsítvány(.pfx) és a köztes tanúsítvány(.p7b)?](#how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b)
+- [Hogyan lehet automatizálni a fő TLS/SSL tanúsítvány(.pfx) és a köztes tanúsítvány(.p7b)?](#how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b)
 - [Mi a célja a "Microsoft Azure Service Management for MachineKey" tanúsítványnak?](#what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate)
 
-**Figyelés és naplózás**
+**Monitorozás és naplózás**
 
 - [Melyek a közelgő Cloud Service-képességek az Azure Portalon, amelyek segíthetnek az alkalmazások kezelésében és figyelésében?](#what-are-the-upcoming-cloud-service-capabilities-in-the-azure-portal-which-can-help-manage-and-monitor-applications)
 - [Miért hagyja abba az IIS írását a naplókönyvtárba?](#why-does-iis-stop-writing-to-the-log-directory)
@@ -75,7 +75,7 @@ Ez a cikk a Microsoft Azure Cloud Services konfigurációs és kezelési problé
 
 ## <a name="certificates"></a>Tanúsítványok
 
-### <a name="why-is-the-certificate-chain-of-my-cloud-service-ssl-certificate-incomplete"></a>Miért nem teljes a Cloud Service SSL-tanúsítványtanúsítványlánca?
+### <a name="why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete"></a>Miért nem teljes a Felhőszolgáltatás TLS/SSL-tanúsítványának tanúsítványlánca?
     
 Azt javasoljuk, hogy az ügyfelek a levéltanúsítvány helyett a teljes tanúsítványláncot (levéltanúsítvány, köztes tanúsítvány és gyökértanúsítvány) telepítsék. Ha csak a levéltanúsítványt telepíti, a Windows támaszkodik a tanúsítványlánc létrehozásához a megbízható tanúsítványok listájának megjárásával. Ha a Windows a tanúsítvány érvényesítését megkísérlésekor időszakos hálózati vagy DNS-problémák merülnek fel az Azure-ban vagy a Windows Update szolgáltatásban, előfordulhat, hogy a tanúsítvány érvénytelennek minősül. A teljes tanúsítványlánc telepítésével ez a probléma elkerülhető. A blog a [Hogyan kell telepíteni egy láncolt SSL tanúsítvány](https://blogs.msdn.microsoft.com/azuredevsupport/2010/02/24/how-to-install-a-chained-ssl-certificate/) megmutatja, hogyan kell ezt csinálni.
 
@@ -103,7 +103,7 @@ A következő PowerShell-parancsok segítségével megújíthatja a felügyeleti
 
 A **Get-AzurePublishSettingsFile** új felügyeleti tanúsítványt hoz létre az **Azure Portalon** > az**Előfizetés-kezelési tanúsítványokban.** Az új tanúsítvány neve a "YourSubscriptionNam]-[CurrentDate]-credentials" néven jelenik meg.
 
-### <a name="how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b"></a>Hogyan lehet automatizálni a fő SSL tanúsítvány(.pfx) és a köztes tanúsítvány(.p7b)?
+### <a name="how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b"></a>Hogyan lehet automatizálni a fő TLS/SSL tanúsítvány(.pfx) és a köztes tanúsítvány(.p7b)?
 
 Ezt a feladatot automatizálhatja egy indítási parancsfájl (batch/cmd/PowerShell) használatával, és regisztrálhatja az indítóparancsfájlt a szolgáltatásdefiníciós fájlban. Adja hozzá az indítási parancsfájlt és a certificate(.p7b fájlt) is az indítóparancsfájl ugyanazon könyvtárának projektmappájába.
 
@@ -183,7 +183,7 @@ Statikus IP-cím beállításához létre kell hoznia egy fenntartott IP-címet.
 ### <a name="what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides"></a>Melyek azok a funkciók és képességek, amelyeket az Azure alapvető IPS/IDS és DDOS nyújt?
 Az Azure ips/IDS-t az adatközpont fizikai kiszolgálóiban a fenyegetések elleni védelemre. Emellett az ügyfelek külső gyártótól származó biztonsági megoldásokat is telepíthetnek, például webalkalmazás-tűzfalakat, hálózati tűzfalakat, kártevőirtókat, behatolásészlelést, megelőzési rendszereket (IDS/IPS) és egyebek. További információt az [Adatok és eszközök védelme és a globális biztonsági szabványoknak való megfelelés című témakörben talál.](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity)
 
-A Microsoft folyamatosan figyeli a kiszolgálókat, hálózatokat és alkalmazásokat a fenyegetések észlelése érdekében. Az Azure többrétű fenyegetéskezelési megközelítése behatolásészlelést, elosztott szolgáltatásmegtagadási (DDoS) támadásmegelőzést, behatolástesztelést, viselkedéselemzést, anomáliadetektálást és gépi tanulást használ a védelem folyamatos erősítése érdekében és csökkenti a kockázatokat. Az Azure-hoz való Microsoft Antimalware védi az Azure Cloud Services szolgáltatást és a virtuális gépeket. Lehetősége van külső biztonsági megoldások telepítésére is, például a webalkalmazások tűzfalai, a hálózati tűzfalak, a kártevőirtó, a behatolásészlelési és -megelőzési rendszerek (IDS/IPS) stb.
+A Microsoft folyamatosan figyeli a kiszolgálókat, hálózatokat és alkalmazásokat a fenyegetések észlelése érdekében. Az Azure többneves fenyegetéskezelési megközelítése behatolásészlelést, elosztott szolgáltatásmegtagadási (DDoS) támadásmegelőzést, behatolástesztelést, viselkedéselemzést, anomáliadetektálást és gépi tanulást használ a védelem folyamatos erősítése és a kockázatok csökkentése érdekében. Az Azure-hoz való Microsoft Antimalware védi az Azure Cloud Services szolgáltatást és a virtuális gépeket. Lehetősége van külső biztonsági megoldások telepítésére is, például a webalkalmazások tűzfalai, a hálózati tűzfalak, a kártevőirtó, a behatolásészlelési és -megelőzési rendszerek (IDS/IPS) stb.
 
 ### <a name="how-to-enable-http2-on-cloud-services-vm"></a>Http/2 engedélyezése a Cloud Services virtuális gépén?
 

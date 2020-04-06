@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 01/15/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: cde731f9d9e673446bc4d08117004b028db2a7f9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: fe80b7343f67b06981707081931e35142985688e
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77462462"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668785"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>MongoDB-hez készült Azure Cosmos DB API (3.6-os verzió): támogatott funkciók és szintaxis
 
@@ -44,7 +44,7 @@ Az Azure Cosmos DB MongoDB-hoz való API-ja a következő adatbázis-parancsokat
 |getPrevError | Nem  |
 |insert  |   Igen  |
 |parallelCollectionScan  | Igen   |
-|resetError (hiba) |   Nem  |
+|resetError (hiba) |    Nem  |
 |update  |   Igen  |
 |[Streamek módosítása](mongodb-change-streams.md)  |  Igen  |
 |GridFS |   Igen  |
@@ -88,7 +88,7 @@ Az Azure Cosmos DB MongoDB-hoz való API-ja a következő adatbázis-parancsokat
 
 |Parancs  |Támogatott |
 |---------|---------|
-|buildInfo       |   Igen      |
+|buildInfo         |   Igen      |
 |collStats    |  Igen       |
 |connPoolStats     |  Nem       |
 |connectionStatus     |  Nem       |
@@ -99,7 +99,7 @@ Az Azure Cosmos DB MongoDB-hoz való API-ja a következő adatbázis-parancsokat
 |magyarázza: executionStats     |     Nem    |
 |funkciók     |    Nem     |
 |hostInfo     |   Nem      |
-|listDatabases       |   Igen      |
+|listDatabases         |   Igen      |
 |listParancsok     |  Nem       |
 |Profiler     |  Nem       |
 |kiszolgáló állapota     |  Nem       |
@@ -123,31 +123,31 @@ Az Azure Cosmos DB MongoDB-hoz való API-ja a következő adatbázis-parancsokat
 
 |Parancs  |Támogatott |
 |---------|---------|
-|$collStats |Nem|
-|$project   |Igen|
-|$match |Igen|
-|$redact|   Igen|
-|$limit |Igen|
-|$skip  |Igen|
-|$unwind|   Igen|
-|$group |   Igen|
-|$sample|       Igen|
-|$sort  |Igen|
-|$geoNear|  Nem|
-|$lookup    |   Igen|
-|$out       |Igen|
-|$indexStats|       Nem|
-|$facet |Nem|
-|$bucket|   Nem|
-|$bucketAuto|   Nem|
-|$sortByCount|  Igen|
-|$addFields |Igen|
-|$replaceRoot|  Igen|
-|$count |Igen|
+|$collStats    |Nem|
+|$project    |Igen|
+|$match    |Igen|
+|$redact|    Igen|
+|$limit    |Igen|
+|$skip    |Igen|
+|$unwind|    Igen|
+|$group    |    Igen|
+|$sample|        Igen|
+|$sort    |Igen|
+|$geoNear|    Nem|
+|$lookup    |    Igen|
+|$out        |Igen|
+|$indexStats|        Nem|
+|$facet    |Nem|
+|$bucket|    Nem|
+|$bucketAuto|    Nem|
+|$sortByCount|    Igen|
+|$addFields    |Igen|
+|$replaceRoot|    Igen|
+|$count    |Igen|
 |$currentOp|    Nem|
-|$listLocalSessions |Nem|
-|$listSessions  |Nem|
-|$graphLookup   |Nem|
+|$listLocalSessions    |Nem|
+|$listSessions    |Nem|
+|$graphLookup    |Nem|
 
 ### <a name="boolean-expressions"></a>Logikai kifejezések
 
@@ -174,14 +174,14 @@ Az Azure Cosmos DB MongoDB-hoz való API-ja a következő adatbázis-parancsokat
 |Parancs  |Támogatott |
 |---------|---------|
 |$cmp     |  Igen       |
-|$eq|   Igen| 
-|$gt |  Igen| 
-|$gte|  Igen| 
+|$eq|    Igen| 
+|$gt |    Igen| 
+|$gte|    Igen| 
 |$lt    |Igen|
-|$lte|  Igen| 
-|$ne    |   Igen| 
-|$in    |   Igen| 
-|$nin   |   Igen| 
+|$lte|    Igen| 
+|$ne    |    Igen| 
+|$in    |    Igen| 
+|$nin    |    Igen| 
 
 ### <a name="arithmetic-expressions"></a>Aritmetikai kifejezések
 
@@ -230,66 +230,66 @@ Az Azure Cosmos DB MongoDB-hoz való API-ja a következő adatbázis-parancsokat
 
 |Parancs  |Támogatott |
 |---------|---------|
-|$arrayElemAt   |   Igen|
+|$arrayElemAt    |    Igen|
 |$arrayToObject|    Igen|
-|$concatArrays  |   Igen|
-|$filter    |   Igen|
-|$indexOfArray  |Igen|
-|$isArray   |   Igen|
-|$objectToArray |Igen|
-|$range |Igen|
-|$reverseArray  |   Igen|
-|$reduce|   Igen|
-|$size  |   Igen|
-|$slice |   Igen|
-|$zip   |   Igen|
-|$in    |   Igen|
+|$concatArrays    |    Igen|
+|$filter    |    Igen|
+|$indexOfArray    |Igen|
+|$isArray    |    Igen|
+|$objectToArray    |Igen|
+|$range    |Igen|
+|$reverseArray    |    Igen|
+|$reduce|    Igen|
+|$size    |    Igen|
+|$slice    |    Igen|
+|$zip    |    Igen|
+|$in    |    Igen|
 
 ### <a name="variable-operators"></a>Változó operátorok
 
 |Parancs  |Támogatott |
 |---------|---------|
-|$map   |Nem|
-|$let   |Igen|
+|$map    |Nem|
+|$let    |Igen|
 
 ### <a name="system-variables"></a>Rendszerváltozók
 
 |Parancs  |Támogatott |
 |---------|---------|
-|$$CURRENT| Igen|
-|$$DESCEND|     Igen|
-|$$KEEP     |Igen|
-|$$PRUNE    |   Igen|
-|$$REMOVE   |Igen|
-|$$ROOT     |Igen|
+|$$CURRENT|    Igen|
+|$$DESCEND|        Igen|
+|$$KEEP        |Igen|
+|$$PRUNE    |    Igen|
+|$$REMOVE    |Igen|
+|$$ROOT        |Igen|
 
 ### <a name="literal-operator"></a>Literális operátor
 
 |Parancs  |Támogatott |
 |---------|---------|
-|$literal   |Igen|
+|$literal    |Igen|
 
 ### <a name="date-expressions"></a>Dátumkifejezések
 
 |Parancs  |Támogatott |
 |---------|---------|
-|$dayOfYear |Igen    |
-|$dayOfMonth|   Igen |
-|$dayOfWeek |Igen    |
-|$year  |Igen    |
-|$month |Igen|   
-|$week  |Igen    |
-|$hour  |Igen    |
-|$minute|   Igen|    
+|$dayOfYear    |Igen    |
+|$dayOfMonth|    Igen    |
+|$dayOfWeek    |Igen    |
+|$year    |Igen    |
+|$month    |Igen|    
+|$week    |Igen    |
+|$hour    |Igen    |
+|$minute|    Igen|    
 |$second    |Igen    |
-|$millisecond|  Igen|    
-|$dateToString  |Igen    |
-|$isoDayOfWeek  |Igen    |
-|$isoWeek   |Igen    |
-|$dateFromParts|    Nem| 
-|$dateToParts   |Nem |
-|$dateFromString|   Nem|
-|$isoWeekYear   |Igen    |
+|$millisecond|    Igen|    
+|$dateToString    |Igen    |
+|$isoDayOfWeek    |Igen    |
+|$isoWeek    |Igen    |
+|$dateFromParts|    Nem|    
+|$dateToParts    |Nem    |
+|$dateFromString|    Nem|
+|$isoWeekYear    |Igen    |
 
 ### <a name="conditional-expressions"></a>Feltételes kifejezések
 
@@ -309,16 +309,16 @@ Az Azure Cosmos DB MongoDB-hoz való API-ja a következő adatbázis-parancsokat
 
 |Parancs  |Támogatott |
 |---------|---------|
-|$sum   |Igen    |
-|$avg   |Igen    |
+|$sum    |Igen    |
+|$avg    |Igen    |
 |$first|    Igen|
-|$last  |Igen    |
-|$max   |Igen    |
-|$min   |Igen    |
-|$push| Igen|
-|$addToSet| Igen|
-|$stdDevPop|    Nem  |
-|$stdDevSamp|   Nem|
+|$last    |Igen    |
+|$max    |Igen    |
+|$min    |Igen    |
+|$push|    Igen|
+|$addToSet|    Igen|
+|$stdDevPop|    Nem    |
+|$stdDevSamp|    Nem|
 
 ### <a name="merge-operator"></a>Egyesítési operátor
 
@@ -330,25 +330,25 @@ Az Azure Cosmos DB MongoDB-hoz való API-ja a következő adatbázis-parancsokat
 
 |Parancs  |Támogatott |
 |---------|---------|
-|Double |Igen    |
-|Sztring |Igen    |
-|Objektum |Igen    |
-|Tömb  |Igen    |
-|Bináris adatok    |Igen|   
-|ObjectId   |Igen    |
+|Double    |Igen    |
+|Sztring    |Igen    |
+|Objektum    |Igen    |
+|Tömb    |Igen    |
+|Bináris adatok    |Igen|    
+|ObjectId    |Igen    |
 |Logikai    |Igen    |
-|Dátum   |Igen    |
-|Null   |Igen    |
-|32 bites egész szám (int)   |Igen    |
-|Időbélyeg  |Igen    |
-|64 bites egész (hosszú)  |Igen    |
-|MinKey között |Igen    |
-|MaxKey (MaxKey) |Igen    |
-|Decimális 128 |Igen|   
-|Reguláris kifejezés |Igen|
-|JavaScript |Igen|
-|JavaScript (hatókörrel)|   Igen |
-|Meghatározatlan  |Igen    |
+|Dátum    |Igen    |
+|Null    |Igen    |
+|32 bites egész szám (int)    |Igen    |
+|Időbélyeg    |Igen    |
+|64 bites egész (hosszú)    |Igen    |
+|MinKey között    |Igen    |
+|MaxKey (MaxKey)    |Igen    |
+|Decimális 128    |Igen|    
+|Reguláris kifejezés    |Igen|
+|JavaScript    |Igen|
+|JavaScript (hatókörrel)|    Igen    |
+|Meghatározatlan    |Igen    |
 
 ## <a name="indexes-and-index-properties"></a>Indexek és indextulajdonságok
 
@@ -356,23 +356,23 @@ Az Azure Cosmos DB MongoDB-hoz való API-ja a következő adatbázis-parancsokat
 
 |Parancs  |Támogatott |
 |---------|---------|
-|Egymezős index |Igen    |
-|Összetett index |Igen    |
-|Többkulcsos index |Igen    |
-|Szöveg tárgymutatója |Nem|
-|2dsphere (2dsphere)   |Igen    |
-|2d index   |Nem |
-|Kivonatolt index   | Igen|
+|Egymezős index    |Igen    |
+|Összetett index    |Igen    |
+|Többkulcsos index    |Igen    |
+|Szöveg tárgymutatója    |Nem|
+|2dsphere (2dsphere)    |Igen    |
+|2d index    |Nem    |
+|Kivonatolt index    | Igen|
 
 ### <a name="index-properties"></a>Index tulajdonságai
 
 |Parancs  |Támogatott |
 |---------|---------|
-|Élettartam|   Igen |
-|Egyedi |Igen|
-|Részleges|   Nem|
-|A kis- és nagybetűk megkülönböztetése   |Nem|
-|Ritka |Nem |
+|Élettartam|    Igen    |
+|Egyedi    |Igen|
+|Részleges|    Nem|
+|A kis- és nagybetűk megkülönböztetése    |Nem|
+|Ritka    |Nem |
 |Háttér|    Igen |
 
 ## <a name="operators"></a>Operátorok
@@ -381,28 +381,28 @@ Az Azure Cosmos DB MongoDB-hoz való API-ja a következő adatbázis-parancsokat
 
 |Parancs  |Támogatott |
 |---------|---------|
-|$or    |   Igen|
-|$and   |   Igen|
-|$not   |   Igen|
-|$nor   |   Igen| 
+|$or    |    Igen|
+|$and    |    Igen|
+|$not    |    Igen|
+|$nor    |    Igen| 
 
 ### <a name="element-operators"></a>Elemoperátorok
 
 |Parancs  |Támogatott |
 |---------|---------|
-|$exists|   Igen|
-|$type  |   Igen|
+|$exists|    Igen|
+|$type    |    Igen|
 
 ### <a name="evaluation-query-operators"></a>Kiértékelési lekérdezés operátorai
 
 |Parancs  |Támogatott |
 |---------|---------|
-|$expr  |   Nem|
-|$jsonSchema    |   Nem|
-|$mod   |   Igen|
-|$regex |   Igen|
-|$text  | Nem (Nem támogatott. Használja inkább $regex.)| 
-|$where |Nem| 
+|$expr    |    Nem|
+|$jsonSchema    |    Nem|
+|$mod    |    Igen|
+|$regex |    Igen|
+|$text    | Nem (Nem támogatott. Használja inkább $regex.)| 
+|$where    |Nem| 
 
 A $regex lekérdezésekben a bal oldali rögzített kifejezések lehetővé teszik az indexkeresést. Azonban az „i” módosító (kis- és nagybetűk megkülönböztetése nélkül) és az „m” módosító (többsoros) használatakor a gyűjtemény az összes kifejezésben keres.
 
@@ -430,9 +430,9 @@ $comment |Igen|
 
 |Parancs  |Támogatott |
 |---------|---------|
-|$elemMatch |Igen|
-|$meta| Nem|
-|$slice | Igen|
+|$elemMatch    |Igen|
+|$meta|    Nem|
+|$slice    | Igen|
 
 ### <a name="update-operators"></a>Frissítési operátorok
 
@@ -440,28 +440,28 @@ $comment |Igen|
 
 |Parancs  |Támogatott |
 |---------|---------|
-|$inc   |   Igen|
-|$mul   |   Igen|
-|$rename    |   Igen|
-|$setOnInsert|  Igen|
-|$set   |Igen|
+|$inc    |    Igen|
+|$mul    |    Igen|
+|$rename    |    Igen|
+|$setOnInsert|    Igen|
+|$set    |Igen|
 |$unset| Igen|
-|$min   |Igen|
-|$max   |Igen|
-|$currentDate   | Igen|
+|$min    |Igen|
+|$max    |Igen|
+|$currentDate    | Igen|
 
 #### <a name="array-update-operators"></a>Tömbfrissítő operátorok
 
 |Parancs  |Támogatott |
 |---------|---------|
-|$  |Igen|
-|$[]|   Igen|
-|$[<identifier>]|   Igen|
-|$addToSet  |Igen|
-|$pop   |Igen|
-|$pullAll|  Igen|
-|$pull  |Igen|
-|$push  |Igen|
+|$    |Igen|
+|$[]|    Igen|
+|$[<identifier>]|    Igen|
+|$addToSet    |Igen|
+|$pop    |Igen|
+|$pullAll|    Igen|
+|$pull    |Igen|
+|$push    |Igen|
 |$pushAll| Igen|
 
 
@@ -469,20 +469,20 @@ $comment |Igen|
 
 |Parancs  |Támogatott |
 |---------|---------|
-|$each  |   Igen|
-|$slice |Igen|
-|$sort  |Igen|
-|$position  |Igen|
+|$each    |    Igen|
+|$slice    |Igen|
+|$sort    |Igen|
+|$position    |Igen|
 
 #### <a name="bitwise-update-operator"></a>Bitenként frissítő operátor
 
 |Parancs  |Támogatott |
 |---------|---------|
-| $bit  |   Igen|    
-|$bitsAllSet    |   Nem|
-|$bitsAnySet    |   Nem|
-|$bitsAllClear  |Nem|
-|$bitsAnyClear  |Nem|
+| $bit    |    Igen|    
+|$bitsAllSet    |    Nem|
+|$bitsAnySet    |    Nem|
+|$bitsAllClear    |Nem|
+|$bitsAnyClear    |Nem|
 
 ### <a name="geospatial-operators"></a>Térinformatikai operátorok
 
@@ -504,37 +504,37 @@ $polygon |  Igen |
 
 |Parancs  |Támogatott |
 |---------|---------|
-|kurzor.batchMéret() |   Igen|
-|kurzor.close() |Igen|
-|kurzor.isZárt()|     Igen|
+|kurzor.batchMéret()    |    Igen|
+|kurzor.close()    |Igen|
+|kurzor.isZárt()|        Igen|
 |kurzor.collation()|    Nem|
-|kurzor.megjegyzés()   |Igen|
-|kurzor.count() |Igen|
-|kurzor.explain()|  Nem|
-|kurzor.forEach()   |Igen|
-|kurzor.hasNext()   |Igen|
-|kurzor.hint()  |Igen|
-|kurzor.isKimerült()|  Igen|
-|kurzor.itcount()   |Igen|
-|kurzor.limit() |Igen|
-|kurzor.térkép()   |Igen|
-|kurzor.maxScan()   |Igen|
+|kurzor.megjegyzés()    |Igen|
+|kurzor.count()    |Igen|
+|kurzor.explain()|    Nem|
+|kurzor.forEach()    |Igen|
+|kurzor.hasNext()    |Igen|
+|kurzor.hint()    |Igen|
+|kurzor.isKimerült()|    Igen|
+|kurzor.itcount()    |Igen|
+|kurzor.limit()    |Igen|
+|kurzor.térkép()    |Igen|
+|kurzor.maxScan()    |Igen|
 |kurzor.maxTimeMS()|    Igen|
-|kurzor.max()   |Igen|
-|kurzor.min()   |Igen|
-|kurzor.next()| Igen|
-|kurzor.noCursorTimeout()   |Nem|
-|kurzor.objsLeftInBatch()   |Igen|
-|kurzor.pretty()|   Igen|
-|kurzor.readConcern()|  Igen|
-|kurzor.readPref()      |Igen|
-|kurzor.returnKey() |Nem|
-|kurzor.showRecordId()| Nem|
-|kurzor.méret()  |Nes|
-|kurzor.skip()  |Igen|
-|cursor.sort()  |   Igen|
-|kurzor.tailable()| Nem|
-|kurzor.toArray()   |Igen|
+|kurzor.max()    |Igen|
+|kurzor.min()    |Igen|
+|kurzor.next()|    Igen|
+|kurzor.noCursorTimeout()    |Nem|
+|kurzor.objsLeftInBatch()    |Igen|
+|kurzor.pretty()|    Igen|
+|kurzor.readConcern()|    Igen|
+|kurzor.readPref()        |Igen|
+|kurzor.returnKey()    |Nem|
+|kurzor.showRecordId()|    Nem|
+|kurzor.méret()    |Igen|
+|kurzor.skip()    |Igen|
+|cursor.sort()    |    Igen|
+|kurzor.tailable()|    Nem|
+|kurzor.toArray()    |Igen|
 
 ## <a name="sort-operations"></a>Rendezési műveletek
 
@@ -542,7 +542,7 @@ A művelet `findOneAndUpdate` használatakor a rendezési műveletek egyetlen me
 
 ## <a name="unique-indexes"></a>Egyedi indexek
 
-Az egyedi indexek biztosítják, hogy egy adott mező ne rendelkezzen duplikált értékekkel a gyűjtemény minden dokumentumában, hasonlóképpen ahhoz, ahogy az alapértelmezett „_id” kulcs is megőrzi az egyediséget. Egyéni indexeket hozhat létre a Cosmos DB-ben a createIndex paranccsal, beleértve az "egyedi" megkötést is.
+Az egyedi indexek biztosítják, hogy egy adott mező ne rendelkezzen ismétlődő értékekkel a gyűjtemény összes dokumentumában, hasonlóan ahhoz, ahogyan az egyediség megmarad az alapértelmezett "_id" kulcson. Egyéni indexeket hozhat létre a Cosmos DB-ben a createIndex paranccsal, beleértve az "egyedi" megkötést is.
 
 ## <a name="time-to-live-ttl"></a>Élettartam (TTL)
 

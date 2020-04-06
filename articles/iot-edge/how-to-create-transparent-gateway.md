@@ -4,16 +4,16 @@ description: Azure IoT Edge-eszköz használata átlátszó átjáróként, amel
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/30/2019
+ms.date: 04/03/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6069e0782f69d0dfb73d9be2998cbb11d59d7d22
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3b3aeff595671c5f924d01599b572b6b938ef09d
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79529169"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666667"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>IoT Edge-eszköz konfigurálása transzparens átjáróként való működéshez
 
@@ -42,7 +42,7 @@ Bármilyen tanúsítvány-infrastruktúrát létrehozhat, amely lehetővé teszi
 >[!NOTE]
 >A cikkben használt "legfelső szintű hitelesítésszolgáltató" kifejezés a PKI tanúsítványlánc legfelső hatósági nyilvános tanúsítványára utal, és nem feltétlenül egy konzorciális hitelesítésszolgáltató tanúsítványának főtanúsítványára. Sok esetben ez valójában egy köztes hitelesítésszolgáltató nyilvános tanúsítvány.
 
-Az átjáró bemutatja az IoT Edge-eszköz hitelesítésszolgáltatói tanúsítványát az alsóbb rétegbeli eszköznek a kapcsolat kezdeményezése során. Az alsóbb rétegbeli eszköz ellenőrzi, hogy az IoT Edge-eszköz hitelesítésszolgáltatói tanúsítványát a legfelső szintű hitelesítésszolgáltatói tanúsítvány írta-e alá. Ez a folyamat lehetővé teszi, hogy az alsóbb rétegbeli eszköz ellenőrizze, hogy az átjáró megbízható forrásból származik-e.
+Az IoT Edge biztonsági démon az IoT Edge-eszköz hitelesítésszolgáltatói tanúsítványát használja egy számítási feladat hitelesítésszolgáltatói tanúsítványának aláírásához, amely viszont aláírja az IoT Edge hub kiszolgálói tanúsítványát. Az átjáró a kapcsolat kezdeményezése során bemutatja a kiszolgálói tanúsítványát az alsóbb rétegbeli eszköznek. Az alsóbb rétegbeli eszköz ellenőrzi, hogy a kiszolgálótanúsítvány egy olyan tanúsítványlánc része-e, amely összegzi a legfelső szintű hitelesítésszolgáltatói tanúsítványt. Ez a folyamat lehetővé teszi, hogy az alsóbb rétegbeli eszköz ellenőrizze, hogy az átjáró megbízható forrásból származik-e. További [információ: Ismerje meg, hogyan használja az Azure IoT Edge a tanúsítványokat.](iot-edge-certs.md)
 
 A következő lépések végigvezetik a tanúsítványok létrehozásának és az átjáró megfelelő helyén történő telepítésének folyamatán. Bármelyik gép segítségével létrehozhatja a tanúsítványokat, majd másolja őket az IoT Edge-eszközre.
 

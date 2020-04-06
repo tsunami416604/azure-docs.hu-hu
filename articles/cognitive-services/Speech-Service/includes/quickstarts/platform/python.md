@@ -1,21 +1,15 @@
 ---
-title: 'Rövid útmutató: BeszédsDK python platformbeállításhoz – Beszédszolgáltatás'
-titleSuffix: Azure Cognitive Services
-description: Ezzel az útmutatóval beállíthatja a platform python a beszédfelismerési szolgáltatás SDK használatával.
-services: cognitive-services
-author: markamos
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/09/2019
-ms.author: erhopf
-ms.openlocfilehash: 458a6940ce214ef1931a2cc9ee95f2cb5ca16779
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/04/2020
+ms.author: dapine
+ms.openlocfilehash: 327000173b4c5c378f60c76eb1a24bd155901671
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78924754"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666918"
 ---
 Ez az útmutató bemutatja, hogyan telepítheti a [speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) python. Ha csak azt szeretné, hogy a csomag `pip install azure-cognitiveservices-speech`neve a kezdéshez a saját, fuss .
 
@@ -26,7 +20,7 @@ Ez az útmutató bemutatja, hogyan telepítheti a [speech SDK](~/articles/cognit
 - A Python Speech SDK-csomag a következő operációs rendszerekhez érhető el:
   - Windows: x64 és x86
   - Mac: macOS X 10.12-es vagy újabb verzió
-  - Linux: Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 8, CentOS 8 x64-en
+  - Linux: Ubuntu 16.04/18.04, Debian 9, RHEL 7/8, CentOS 7/8 az x64-en
 
 ## <a name="prerequisites"></a>Előfeltételek
 

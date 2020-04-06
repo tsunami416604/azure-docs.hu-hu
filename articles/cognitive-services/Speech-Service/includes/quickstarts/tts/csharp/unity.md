@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 9/19/2019
+ms.date: 04/04/2020
 ms.author: yinhew
-ms.openlocfilehash: 73a4477547c562a9960fe72b352e906676eadae5
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 3a40dd445384ac35749ff2b016c672fb3c40dfb0
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78925308"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671086"
 ---
 > [!NOTE]
 > A Unity támogatja a Windows Desktop (x86 és x64) vagy az univerzális Windows platformot (x86, x64, ARM/ARM64), az Android (x86, ARM32/64) és az iOS (x64 szimulátor, ARM32 és ARM64) rendszert.
@@ -26,7 +26,7 @@ Mielőtt elkezdene, győződjön meg arról, hogy:
 
 > [!div class="checklist"]
 > * [Azure-beszédfelismerési erőforrás létrehozása](../../../../get-started.md)
-> * [A fejlesztői környezet beállítása és üres projekt létrehozása](../../../../quickstarts/setup-platform.md?tabs=unity)
+> * [A fejlesztői környezet beállítása és üres projekt létrehozása](../../../../quickstarts/setup-platform.md?tabs=unity&pivots=programming-language-csharp)
 
 ## <a name="add-a-ui"></a>Felhasználói felület hozzáadása
 

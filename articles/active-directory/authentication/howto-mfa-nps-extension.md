@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c251569cfe6a2f27f86421ffe6a446ace52b435
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f884f4c0ea3a610f28a8fdbb34b081f0b0a64d08
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051151"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666953"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure Multi-Factor Authenticationnel
 
@@ -78,6 +78,7 @@ A nps-kiszolgálónak képesnek kell lennie a következő URL-címekkel kommunik
 
 - https:\//adnotifications.windowsazure.com
 - https:\//login.microsoftonline.com
+- https:\//credentials.azure.com
 
 Ezenkívül a következő URL-címekhez való kapcsolódás szükséges az adapter telepítésének befejezéséhez [a megadott PowerShell-parancsfájl használatával](#run-the-powershell-script)
 
@@ -125,7 +126,7 @@ A nps-bővítmény telepítésével két tényező befolyásolja, hogy mely hite
       > [!NOTE]
       > A n-ps bővítmény telepítésekor használja ezeket a tényezőket, hogy kiértékelheti, mely módszerek érhetők el a felhasználók számára. Ha a RADIUS-ügyfél támogatja a PAP-t, de az ügyfél felhasználói felülete nem rendelkezik ellenőrző kód bemeneti mezőivel, akkor a telefonhívás és a mobilalkalmazás-értesítés a két támogatott lehetőség.
       >
-      > Továbbá, ha a VPN-ügyfél felhasználói felülete támogatja a bemeneti mezőt, és konfigurálta a hálózati hozzáférési házirendet - a hitelesítés sikeres lehet, azonban a hálózati házirendben konfigurált RADIUS-attribútumok egyike sem lesz alkalmazva sem a hálózati hozzáférési eszközre, mint az RRAS-kiszolgáló, sem a VPN-ügyfél. Ennek eredményeképpen előfordulhat, hogy a VPN-ügyfél a kívántnál nagyobb vagy kevesebb hozzáféréssel rendelkezik.
+      > Továbbá, ha a VPN-ügyfél felhasználói felülete támogatja a bemeneti mezőt, és konfigurálta a hálózati hozzáférési házirendet - a hitelesítés sikeres lehet, azonban a hálózati házirendben konfigurált RADIUS-attribútumok egyike sem lesz alkalmazva sem a hálózati hozzáférési eszközre, sem az RRAS-kiszolgálóra, sem a VPN-ügyfélre. Ennek eredményeképpen előfordulhat, hogy a VPN-ügyfél a kívántnál nagyobb vagy kevesebb hozzáféréssel rendelkezik.
       >
 
 2. Az ügyfélalkalmazás (VPN, Netscaler-kiszolgáló vagy más) által kezelhető beviteli módok. Például a VPN-ügyfél rendelkezik valamilyen eszközzel, amely lehetővé teszi a felhasználó számára, hogy beírjon egy ellenőrző kódot egy szövegből vagy mobilalkalmazásból?

@@ -1,6 +1,6 @@
 ---
-title: Az Azure többtényezős hitelesítésének telepítése – Azure Active Directory
-description: A Microsoft Azure többtényezős hitelesítés telepítésének tervezése
+title: Az Azure többtényezős hitelesítésének üzembe helyezési szempontjai
+description: Ismerje meg a telepítési szempontokat és az Azure többtényezős hitelesítés sikeres megvalósításának stratégiáját
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,18 +11,25 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ae58482ced524958ffcdd6094ae57856d088eaf
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: a70c6ae3ebc7f5b39550508594bd4d4907e68a67
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80653958"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667343"
 ---
-# <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Felhőalapú Azure Multi-Factor Authentication-telepítés megtervezése
+# <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Azure többtényezős hitelesítési telepítésének megtervezése
 
 Az emberek egyre bonyolultabb esetekben csatlakoznak a szervezeti erőforrásokhoz. Az emberek a vállalati hálózaton és azon kívül is a szervezet tulajdonában lévő, személyes és nyilvános eszközökről csatlakoznak okostelefonokkal, táblagépekkel, számítógépekkel és laptopokkal, gyakran több platformon. Ebben a mindig összekapcsolt, többeszközös és többplatformos világban a felhasználói fiókok biztonsága minden eddiginél fontosabb. Az eszközök, hálózatok és platformok között használt jelszavak , függetlenül azok összetettségétől, már nem elegendőek a felhasználói fiók biztonságának biztosításához, különösen akkor, ha a felhasználók hajlamosak a jelszavak at használni a fiókok között. A kifinomult adathalászat és más közösségi tervezési támadások a felhasználónevek és jelszavak közzétételét és értékesítését eredményezhetik a sötét weben.
 
 [Az Azure többtényezős hitelesítés (MFA)](concept-mfa-howitworks.md) segít az adatokhoz és alkalmazásokhoz való hozzáférés biztosításában. Ez egy további biztonsági réteget biztosít a hitelesítés második formájával. A szervezetek [feltételes hozzáféréssel](../conditional-access/overview.md) biztosíthatják, hogy a megoldás megfeleljen az egyedi igényeiknek.
+
+Ez a telepítési útmutató bemutatja, hogyan tervezheti meg, majd tesztelheti az Azure többtényezős hitelesítés bevezetését.
+
+Az Azure többtényezős hitelesítésének gyors megtekintéséhez működés közben, majd a további üzembe helyezési szempontok megismeréséhez:
+
+> [!div class="nextstepaction"]
+> [Az Azure Multi-Factor Authentication engedélyezése](tutorial-enable-azure-mfa.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -173,7 +180,7 @@ Get-MsolUser -All | where {$_.StrongAuthenticationMethods.Count -eq 0} | Select-
 
 Ha a felhasználók engedélyezve voltak a felhasználónkénti engedélyezett és kényszerített Azure többtényezős hitelesítés használatával, a következő PowerShell segíthet a feltételes hozzáférésalapú Azure többtényezős hitelesítésre való átalakításban.
 
-Futtassa ezt a PowerShellt egy ISE-ablakban, vagy mentse . PS1 fájlt helyileg futtatni.
+Futtassa ezt a PowerShellt egy `.PS1` ISE-ablakban, vagy mentse fájlként a helyi futtatáshoz.
 
 ```PowerShell
 # Sets the MFA requirement state
@@ -317,7 +324,7 @@ Minden AD FS-kiszolgálón, a helyi számítógép My Store, lesz egy önaláír
 
 Ha a tanúsítványok érvényességi ideje a lejáratfelé közeledik, [hozzon létre és ellenőrizzen egy új MFA-tanúsítványt minden Egyes AD FS-kiszolgálón.](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers)
 
-Az alábbi útmutató ismerteti, hogyan kezelheti az Azure MFA-tanúsítványokat az AD FS-kiszolgálókon. Amikor konfigurálja az AD FS-t az Azure `New-AdfsAzureMfaTenantCertificate` MFA-val, a PowerShell-parancsmagon keresztül létrehozott tanúsítványok 2 évig érvényesek. A megújult tanúsítványok megújítása és telepítése a lejárat előtt az MFA-szolgáltatás ban bekövetkező üres fennakadások miatt.
+Az alábbi útmutató ismerteti, hogyan kezelheti az Azure MFA-tanúsítványokat az AD FS-kiszolgálókon. Amikor konfigurálja az AD FS-t az Azure `New-AdfsAzureMfaTenantCertificate` MFA-val, a PowerShell-parancsmagon keresztül létrehozott tanúsítványok két évig érvényesek. A megújult tanúsítványok megújítása és telepítése a lejárat előtt az MFA-szolgáltatás ban bekövetkező üres fennakadások miatt.
 
 ## <a name="implement-your-plan"></a>A terv megvalósítása
 
@@ -357,6 +364,7 @@ Megoldásokat találhat az Azure MFA-val kapcsolatos gyakori problémákra a Mic
 
 ## <a name="next-steps"></a>További lépések
 
-* [Mik a hitelesítési módszerek?](concept-authentication-methods.md)
-* [Konvergens regisztráció engedélyezése az Azure többtényezős hitelesítéséhez és az Azure AD önkiszolgáló jelszó-visszaállításhoz](concept-registration-mfa-sspr-converged.md)
-* Miért kéri a rendszer a felhasználót az MFA végrehajtására? Tekintse meg az [Azure AD bejelentkezések jelentés az Azure többtényezős hitelesítési dokumentumban a jelentések című szakaszban.](howto-mfa-reporting.md#azure-ad-sign-ins-report)
+Az Azure többtényezős hitelesítésének működés közbeni megtekintéséhez végezze el az alábbi oktatóanyagot:
+
+> [!div class="nextstepaction"]
+> [Az Azure Multi-Factor Authentication engedélyezése](tutorial-enable-azure-mfa.md)

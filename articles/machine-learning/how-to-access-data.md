@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: c5972b602d92b2e08fd70850dd1af5c1236e2b1d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 97aa446636ea3131246a06f69f74b5868abff608
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80234463"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668649"
 ---
 # <a name="connect-to-azure-storage-services"></a>Csatlakozás az Azure-tárolási szolgáltatásokhoz
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -48,7 +48,7 @@ A következők szükségesek:
 
 ## <a name="supported-data-storage-service-types"></a>Támogatott adattárolási szolgáltatástípusok
 
-Az adattárak jelenleg támogatják a kapcsolatadatok tárolását a következő mátrixban felsorolt tárolási szolgáltatásokhoz. Jelenleg az Azure Data-raktár nem támogatott. 
+Az adattárak jelenleg támogatják a kapcsolatadatok tárolását a következő mátrixban felsorolt tárolási szolgáltatásokhoz.
 
 | Tároló&nbsp;típusa | Hitelesítés&nbsp;típusa | [Azure&nbsp;&nbsp;Machine Learning stúdió](https://ml.azure.com/) | [Azure&nbsp;Machine&nbsp;Learning&nbsp; Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) |  [Azure&nbsp;Machine&nbsp;Learning CLI](reference-azure-machine-learning-cli.md) | [Azure&nbsp;Machine&nbsp;Learning&nbsp; Rest API](https://docs.microsoft.com/rest/api/azureml/)
 ---|---|---|---|---|---

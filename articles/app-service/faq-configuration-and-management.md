@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 300294f37c809b01fe8fba7e627d6bc5bdc9903a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9e7070e925d12df82adbc3683da5b10e48c5d4b0
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78942935"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668119"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfigurációs és felügyeleti gyakori kérdések az Azure-beli webalkalmazásokról
 
@@ -35,14 +35,14 @@ Az egyéni tartománynév Azure-webalkalmazással való használatával kapcsola
 Ha tudni szeretné, hogyan vásárolhat és állíthat be egyéni tartományt az App Service-webalkalmazáshoz, olvassa el [az Egyéni tartománynév vásárlása és konfigurálása az App Service szolgáltatásban című témakört.](manage-custom-dns-buy-domain.md)
 
 
-## <a name="how-do-i-upload-and-configure-an-existing-ssl-certificate-for-my-web-app"></a>Hogyan tölthetek fel és konfigurálhatok meglévő SSL-tanúsítványt a webalkalmazásomhoz?
+## <a name="how-do-i-upload-and-configure-an-existing-tlsssl-certificate-for-my-web-app"></a>Hogyan tölthetek fel és konfigurálhatok egy meglévő TLS/SSL-tanúsítványt a webalkalmazásomhoz?
 
-Ha tudni szeretné, hogyan tölthet fel és állíthat be egy meglévő egyéni SSL-tanúsítványt, olvassa [el az SSL-tanúsítvány hozzáadása az App Service-alkalmazáshoz](configure-ssl-certificate.md).
+Ha tudni szeretné, hogyan tölthet fel és állíthat be egy meglévő egyéni TLS/SSL-tanúsítványt, olvassa el [a TLS/SSL-tanúsítvány hozzáadása az App Service-alkalmazáshoz című témakört.](configure-ssl-certificate.md)
 
 
-## <a name="how-do-i-purchase-and-configure-a-new-ssl-certificate-in-azure-for-my-web-app"></a>Hogyan vásárolhatok és konfigurálhatok új SSL-tanúsítványt az Azure-ban a webalkalmazásomhoz?
+## <a name="how-do-i-purchase-and-configure-a-new-tlsssl-certificate-in-azure-for-my-web-app"></a>Hogyan vásárolhatok és konfigurálhatok új TLS-/SSL-tanúsítványt az Azure-ban a webalkalmazásomhoz?
 
-Ha meg szeretné tudni, hogyan vásárolhat ssl-tanúsítványt az App Service-webalkalmazáshoz, olvassa el [az SSL-tanúsítvány hozzáadása az App Service-alkalmazáshoz](configure-ssl-certificate.md).
+Ha tudni szeretné, hogyan vásárolhat tLS/SSL-tanúsítványt az App Service-webalkalmazáshoz, olvassa el [a TLS/SSL-tanúsítvány hozzáadása az App Service-alkalmazáshoz című témakört.](configure-ssl-certificate.md)
 
 
 ## <a name="how-do-i-move-application-insights-resources"></a>Hogyan helyezhetem át az Application Insights-erőforrásokat?
@@ -84,7 +84,7 @@ Ha tudni szeretné, hogyan kaphatja meg a kimenő IP-címet, ha a webhely egy Ap
 
 ## <a name="how-do-i-get-a-reserved-or-dedicated-inbound-ip-address-for-my-web-app"></a>Hogyan kaphatok egy fenntartott vagy dedikált bejövő IP-címet a webalkalmazásomhoz?
 
-Ha dedikált vagy fenntartott IP-címet szeretne beállítani az Azure-alkalmazás webhelyére irányuló bejövő hívásokhoz, telepítsen és konfiguráljon egy IP-alapú SSL-tanúsítványt.
+Ha dedikált vagy fenntartott IP-címet szeretne beállítani az Azure-alkalmazás webhelyére irányuló bejövő hívásokhoz, telepítsen és konfiguráljon egy IP-alapú TLS/SSL tanúsítványt.
 
 Vegye figyelembe, hogy a bejövő hívások dedikált vagy fenntartott IP-címének használatához az App Service-csomagnak alapszintű vagy magasabb szintű szolgáltatási csomagban kell lennie.
 

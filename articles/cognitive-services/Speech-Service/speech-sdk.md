@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: dapine
-ms.openlocfilehash: a2ff4a94c1b2941f645cd7032ef476d33dffdb00
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 440944033e4b6a8fb29cf9ace6ad784b91316526
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656505"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668772"
 ---
 # <a name="about-the-speech-sdk"></a>A Speech SDK ismertetése
 
@@ -69,21 +69,11 @@ A Speech SDK programozási nyelvek közül több is támogatja a kodek tömörí
 
 ## <a name="rest-api"></a>REST API
 
-Míg a beszédbeszéd SDK a beszédszolgáltatás számos szolgáltatásfunkcióját lefedi, bizonyos esetekben érdemes lehet a REST API-t használni. Például a végpontkezelés csak a REST API-n keresztül érhető el.
-
-> [!TIP]
-> Ha a REST API-ra támaszkodik, a Swagger-szerkesztő segítségével automatikusan létrehozhatja az ügyfélkódtárakat. Például egy Batch transzkripciós ügyfélkönyvtár létrehozásához.
-> 1. Másolja az alábbi példa URL-címet:
->     ```http
->     https://westus.cris.ai/docs/v2.0/swagger
->     ```
-> 1. Keresse meg a <a href="https://editor.swagger.io/" target="_blank">Swagger-szerkesztőt <span class="docon docon-navigate-external x-hidden-focus"></span> </a>
-> 1. Jelölje ki **a Fájlimportálás** > **URL-címét,** és illessze be az URL-címet
-> 1. Válassza **az Ügyfél létrehozása lehetőséget,** és válassza ki a kívánt programozási nyelvet
+Míg a beszédbeszéd SDK a beszédszolgáltatás számos szolgáltatásfunkcióját lefedi, bizonyos esetekben érdemes lehet a REST API-t használni.
 
 ### <a name="batch-transcription"></a>Kötegelt átírás
 
-[A kötegelt átírás](batch-transcription.md) nagy mennyiségű adat aszinkron beszéd-szöveg átírását teszi lehetővé. A kötegtranszkripció csak a REST API-ból lehetséges.
+[A kötegelt átírás](batch-transcription.md) nagy mennyiségű adat aszinkron beszéd-szöveg átírását teszi lehetővé. A kötegtranszkripció csak a REST API-ból lehetséges. A beszédhang szöveggé alakítása mellett a kötegelt beszéd-szöveg is lehetővé teszi a diarizációt és a hangulatelemzést.
 
 ## <a name="customization"></a>Testreszabás
 

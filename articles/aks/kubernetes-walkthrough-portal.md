@@ -1,16 +1,17 @@
 ---
-title: Rövid útmutató – Hozzon létre egy Azure Kubernetes-szolgáltatás (AKS) fürtöt a portálon
+title: AKS-fürt létrehozása a portálon
+titleSuffix: Azure Kubernetes Service
 description: Megtudhatja, hogyan hozhat létre gyorsan egy Kubernetes-fürtöt, helyezhet üzembe egy alkalmazást, és figyelheti a teljesítményt az Azure Kubernetes-szolgáltatásban (AKS) az Azure Portalon.
 services: container-service
 ms.topic: quickstart
 ms.date: 01/21/2020
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: f4885bea686267ce0397e9ca6f3e2c0ac8640971
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e91e5e2701b02ab4c705cd80117dfc7689c7d054
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240617"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668454"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Rövid útmutató: Egy Azure Kubernetes-szolgáltatás (AKS) fürt üzembe helyezése az Azure Portalhasználatával
 

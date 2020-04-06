@@ -2,14 +2,14 @@
 author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/20/2020
+ms.date: 04/04/2020
 ms.author: dapine
-ms.openlocfilehash: 983a3c38c19d60a2ad890255ab2120ea58776436
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 8abc014592b06092f48424c03ef3c36ee5014992
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80116904"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671203"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -18,7 +18,7 @@ ms.locfileid: "80116904"
 * A Python Speech SDK-csomag a következő operációs rendszerekhez érhető el:
     * Windows: x64 és x86.
     * Mac: macOS X 10.12-es vagy újabb verzió.
-    * Linux: Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 8, CentOS 8 x64-en.
+    * Linux: Ubuntu 16.04/18.04, Debian 9, RHEL 7/8, CentOS 7/8 az x64-en.
 * Linux on futtassa ezeket a parancsokat a szükséges csomagok telepítéséhez:
 
 # <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
@@ -43,7 +43,7 @@ sudo yum install alsa-lib openssl python3
 ```
 
 > [!NOTE]
-> Az RHEL/CentOS 8 rendszeren kövesse az [OpenSSL linuxos beállítására](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)vonatkozó utasításokat.
+> Az RHEL/CentOS 7/8 rendszeren kövesse az [OpenSSL for Linux beállítására](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)vonatkozó utasításokat.
 
 ---
 

@@ -4,16 +4,16 @@ description: Szimulált TPM használata Linuxos virtuális számítógépen az A
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/01/2019
+ms.date: 3/2/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6bb1282212ccff45f179b8750e3ed8aec27d129e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b62f551e2532e0205159358b3618695524ae85c8
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76511059"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666691"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>IoT Edge-eszköz létrehozása és kiépítése virtuális TPM-mel linuxos virtuális gépen
 
@@ -156,6 +156,9 @@ Miután futtatta az eszközkiépítési szolgáltatást, másolja az **ID Scope*
 A kiépítési adatok lekérése a virtuális gépről, és használja, hogy hozzon létre egy egyéni regisztráció eszközkiépítési szolgáltatás.
 
 Amikor létrehoz egy regisztrációt a DPS-ben, lehetősége van egy **kezdeti ikereszköz-állapot**deklarálni. Az ikereszközben beállíthatja az eszközök csoportosítását a megoldásban szükséges bármely mutató, például a régió, a környezet, a hely vagy az eszköz típusa szerint. Ezek a címkék az automatikus központi telepítések létrehozásához [használatosak.](how-to-deploy-monitor.md)
+
+> [!TIP]
+> Az Azure CLI-ben létrehozhat egy [regisztrációt](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) vagy egy [regisztrációs csoportot,](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group) és a **peremhálózati jelző** használatával megadhatja, hogy egy eszköz vagy eszközcsoport egy IoT Edge-eszköz.
 
 1. Az [Azure Portalon](https://portal.azure.com)keresse meg az IoT Hub-eszközkiépítési szolgáltatás példányát.
 

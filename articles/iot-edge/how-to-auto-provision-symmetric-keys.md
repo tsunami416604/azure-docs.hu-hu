@@ -5,16 +5,16 @@ author: kgremban
 manager: philmea
 ms.author: kgremban
 ms.reviewer: mrohera
-ms.date: 10/04/2019
+ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d9944308d00c9cfecbd38a6443efb49913148806
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 139a2cafe137d000b991cbad8b8567e005ffc728
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535918"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668676"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>IoT Edge-eszköz létrehozása és kiépítése szimmetrikus kulcsigazolás sal
 
@@ -71,6 +71,9 @@ Amikor létrehoz egy regisztrációt a DPS-ben, lehetősége van egy **kezdeti i
    1. Adja meg az **IoT Hub-eszközazonosítóját** az eszközhöz, ha szeretné. Az eszközazonosítók segítségével megcélozhat egy adott eszközt a modul telepítéséhez. Ha nem adja meg az eszközazonosítót, a regisztrációs azonosítót használja a készülék.
 
    1. **Válassza a True lehetőséget,** ha deklarálni szeretné, hogy a regisztráció egy IoT Edge-eszközhöz kapcsolódik. Egy csoport regisztráció, minden eszköznek IoT Edge-eszközöknek kell lennie, vagy egyikük sem lehet.
+
+   > [!TIP]
+   > Az Azure CLI-ben létrehozhat egy [regisztrációt](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) vagy egy [regisztrációs csoportot,](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group) és a **peremhálózati jelző** használatával megadhatja, hogy egy eszköz vagy eszközcsoport egy IoT Edge-eszköz.
 
    1. Fogadja el az alapértelmezett értéket az Eszközkiépítési szolgáltatás foglalási szabályzatából **arra vonatkozóan, hogy miként szeretné eszközöket hozzárendelni a hubokhoz,** vagy hogy milyen eltérő értéket szeretne választani a regisztrációhoz.
 

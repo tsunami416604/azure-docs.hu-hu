@@ -1,15 +1,16 @@
 ---
-title: Belső terheléselosztó létrehozása az Azure Kubernetes szolgáltatásban (AKS)
+title: Hozzon létre egy belső terheléselosztót
+titleSuffix: Azure Kubernetes Service
 description: Ismerje meg, hogyan hozhat létre és használhat belső terheléselosztót a szolgáltatások azure Kubernetes-szolgáltatás (AKS) használatával való elérhetővé.
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: ff102ebe50dd4d2169090718ced9e550701b1b09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4decd66a558b031f1aaaf9c64556dae545ed05d3
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259408"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668410"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Belső terheléselosztó használata az Azure Kubernetes szolgáltatással (AKS)
 

@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 1392f69bea09996e46ad4c112474f9067ff5a63d
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: ed7686bbef7dc1342528475226d11b8b8b8fb640
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656914"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668604"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Lucene lekérdezés szintaxisa az Azure Cognitive Search szolgáltatásban
 
@@ -104,7 +104,7 @@ A mezőcsoportosítás hasonló, de a csoportosítást egyetlen mezőre ható. P
 
 ### <a name="or-operator-or-or-"></a>VAGY `OR` operátor vagy`||`
 
-A VAGY operátor függőleges sáv vagy csőkarakter. Például: `wifi || luxury` olyan dokumentumokat keres, amelyek "wifi" vagy "luxus" vagy mindkettőt tartalmazzák. Mivel a VAGY az alapértelmezett kötőszóoperátor, azt `wifi luxury` is kihagyhatja, hogy az egyenértékű legyen a értékkel. `wifi || luxuery`
+A VAGY operátor függőleges sáv vagy csőkarakter. Például: `wifi || luxury` olyan dokumentumokat keres, amelyek "wifi" vagy "luxus" vagy mindkettőt tartalmazzák. Mivel a VAGY az alapértelmezett kötőszóoperátor, azt `wifi luxury` is kihagyhatja, hogy az egyenértékű legyen a értékkel. `wifi || luxury`
 
 ### <a name="and-operator-and--or-"></a>ÉS `AND`operátor, `&&` vagy`+`
 
@@ -162,6 +162,8 @@ A következő példa a különbségek szemléltetése. Tegyük fel, hogy van egy
  A reguláris kifejezéskeresés a [RegExp osztályban](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html)dokumentált perjelek "/" tartalma alapján egyezést talál.  
 
  Ha például a "motel" vagy "hotel" `/[mh]otel/`tartalmazó dokumentumokat szeretné megkeresni, adja meg a értéket. A reguláris kifejezéskeresések egyetlen szavakkal vannak egyezve.
+
+Egyes eszközök és nyelvek további escape karakterisztikát írnak elő. A JSON esetében az előremutató perjelet tartalmazó karakterláncok egy hátrafelé irányuló perjellel menekülnek meg: a "microsoft.com/azure/" lesz `search=/.*microsoft.com\/azure\/.*/` a reguláris kifejezés `search=/.* <string-placeholder>.*/` beállítása, és `microsoft.com\/azure\/` a megszökött perjellel rendelkező karakterlánc.
 
 ##  <a name="wildcard-search"></a><a name="bkmk_wildcard"></a>Helyettesítő karakteres keresés  
  Az általánosan elismert szintaxist több (*) vagy egy (?) karakteres helyettesítő karakteres kereséshez is használhatja. Megjegyzés: A Lucene lekérdezéselemző támogatja ezeknek a szimbólumoknak a használatát egyetlen kifejezéssel, nem pedig kifejezéssel.

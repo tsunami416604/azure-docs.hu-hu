@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: 3e7cd96b979fb97d7b50b84907881fe59d03e295
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 9a3f478604547819162ad13d39a9383263321857
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80658988"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671195"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -22,7 +22,7 @@ Mielőtt elkezdene járni:
 
 > [!div class="checklist"]
 > * [Azure-beszédfelismerési erőforrás létrehozása](../../../../get-started.md)
-> * [A fejlesztői környezet beállítása és üres projekt létrehozása](../../../../quickstarts/setup-platform.md?tabs=uwp)
+> * [A fejlesztői környezet beállítása és üres projekt létrehozása](../../../../quickstarts/setup-platform.md?tabs=uwp&pivots=programming-language-csharp)
 > * Győződjön meg arról, hogy rendelkezik a mikrofonhoz a hangrögzítéshez
 
 Ha ezt már megtetted, remek. Menjünk tovább.

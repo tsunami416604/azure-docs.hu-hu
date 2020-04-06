@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 38f9f85a7e961d426b66a24bb4a5c63f9f0301da
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 6f0a782309edc33a8a5ce661652922494ead2ec0
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80638066"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667310"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Az Azure FarmBeats áttekintése (előzetes verzió)
 
@@ -59,7 +59,7 @@ A rendszergazda több partnert is hozzáadhat adatszolgáltatóként az Azure Fa
 | ---- | -------- | -------- |
 | Érzékelő partner  |   Létrehozás, olvasás, frissítés <br/> <br/> Olvasás, frissítés | DeviceModel, Eszköz, SensorModel, Érzékelő <br/> <br/> Kiterjesztett típus |
 | Képi partner  |   Létrehozás, olvasás, frissítés <br/> <br/> Olvasás, frissítés <br/> <br/> Olvasás | Jelenet, Jelenetfájl <br/> <br/> Kiterjesztett típus <br/> <br/> Farm |
-| Képi partner  |   Létrehozás, olvasás, frissítés <br/> <br/> Olvasás, frissítés <br/> <br/> Olvasás | WeatherDataModel, WeatherDataLocation, Feladattípus <br/> <br/> Kiterjesztett típus <br/> <br/> Farm |
+| Időjárás partner* <br/> <br/>  (* Hamarosan) |   Létrehozás, olvasás, frissítés <br/> <br/> Olvasás, frissítés <br/> <br/> Olvasás | WeatherDataModel, WeatherDataLocation, Feladattípus <br/> <br/> Kiterjesztett típus <br/> <br/> Farm |
 
 ## <a name="resources"></a>További források
 

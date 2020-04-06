@@ -3,12 +3,12 @@ title: Biztonsági funkciók a felhőbeli számítási feladatok védelméhez
 description: Ismerje meg, hogyan használhatja a biztonsági funkciókat az Azure Backup ban a biztonsági mentések biztonságosabbá tétele érdekében.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 57c9fd76ae32aea49f480f2a88d8296538d8052d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd7c86e18114513a264a0f9252589533fb7ff2d3
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156072"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668741"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Az Azure Backup ot használó felhőalapú számítási feladatok védelmére szolgáló biztonsági funkciók
 
@@ -34,7 +34,7 @@ A virtuális gépek helyreállítható törlése megvédi a virtuális gépek bi
 
 ### <a name="supported-regions"></a>Támogatott régiók
 
-Soft delete jelenleg támogatott a Nyugat-Közép-USA, Kelet-Ázsia, Kanada Közép-, Kanada Kelet-, Franciaország Közép-, Franciaország Dél-, Korea Közép-, Korea Dél-, Uk South, UK West, Ausztrália Kelet-, Ausztrália Délkelet-, Észak-Európa, USA nyugati, USA nyugati régiója, USA középső, Dél- Kelet-Ázsia, USA északi középső régiója, USA déli középső régiója, Japán keleti, nyugat-japán, dél-, indiai közép-, indiai nyugati, USA keleti régiója 2, Svájc északi, nyugat- és valamennyi nemzeti régió.
+Soft törlés jelenleg támogatott a Nyugat-Közép-USA, Kelet-Ázsia, Kanada Közép-, Kanada Kelet-, Franciaország Közép-, Franciaország Déli, Korea Közép-, Korea Dél- és Egyesült Királyság Déli, Egyesült Királyság Nyugati, Ausztrália Kelet- , Ausztrália Délkelet, Észak-Európa, USA nyugati, USA nyugati régiója, Usa középső régiója, Délkelet-Ázsia, Észak-Közép-USA, Usa déli középső régiója, Japán-kelet, Japán-kelet, Japán Nyugati, India Déli, India Közép-, India Nyugat-, USA keleti régiója 2. , Svájc Észak-, Svájc Nyugati, Norvégia Nyugati, Norvégia Kelet és az összes nemzeti régió.
 
 ### <a name="soft-delete-for-vms-using-azure-portal"></a>Az Azure Portal használatával a virtuális gépek ideiglenes törlése
 
@@ -264,7 +264,7 @@ Az Azure virtuális gépek biztonsági mentésekor most már titkosíthatja az a
 
 ### <a name="backup-of-managed-disk-vms-encrypted-using-customer-managed-keys"></a>Ügyfél által kezelt kulcsokkal titkosított felügyelt lemezes virtuális gépek biztonsági mentése
 
-Az Azure Backup lehetővé teszi az Azure-beli virtuális gépek biztonsági mentését is, amelyek a kulcsot a kiszolgálóoldali titkosításhoz használják. A lemezek titkosításához használt kulcs az Azure Key Vault ban tárolódik, és az Ön által kezelt. Az ügyfél által kezelt kulcsokat használó kiszolgálóoldali titkosítás eltér az Azure lemeztitkosítástól, mivel az ADE a BitLocker (Windows) és a DM-Crypt (Linux) titkosítást használja, az SSE titkosítja az adatokat a tárolószolgáltatásban, lehetővé téve az operációs rendszer vagy a a virtuális gépekhez. További részletekért olvassa el [a felügyelt lemezek titkosítását az ügyfél által felügyelt kulcsokkal.](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys)
+Az Azure Backup lehetővé teszi az Azure-beli virtuális gépek biztonsági mentését is, amelyek a kulcsot a kiszolgálóoldali titkosításhoz használják. A lemezek titkosításához használt kulcs az Azure Key Vault ban tárolódik, és az Ön által kezelt. Az ügyfél által felügyelt kulcsokat használó kiszolgálóoldali titkosítás eltér az Azure lemeztitkosítástól, mivel az ADE a BitLocker (Windows) és a DM-Crypt (Linux) használatával történik a vendégen lévő titkosítás végrehajtásához, az SSE titkosítja az adatokat a tárolószolgáltatásban, lehetővé téve a virtuális gépek operációs rendszerének vagy lemezképeinek használatát. További részletekért olvassa el [a felügyelt lemezek titkosítását az ügyfél által felügyelt kulcsokkal.](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys)
 
 ### <a name="backup-of-vms-encrypted-using-ade"></a>Az ADE használatával titkosított virtuális gépek biztonsági mentése
 

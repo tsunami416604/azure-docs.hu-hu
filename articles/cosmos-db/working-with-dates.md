@@ -5,13 +5,13 @@ ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
-ms.date: 03/03/2020
-ms.openlocfilehash: 92fa35fbe8e5eef4dbdc8b6c47a9055affd449a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/03/2020
+ms.openlocfilehash: 174279e4bd241ee9b336fc1ce7e0af389d2297a3
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78273187"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667002"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Dátumok kal kukaca az Azure Cosmos DB-ben
 
@@ -21,7 +21,9 @@ Az alapvető típusok mellett számos alkalmazásnak szüksége van a DateTime t
 
 ## <a name="storing-datetimes"></a>DateTimes tárolása
 
-Az Azure Cosmos DB támogatja a JSON-típusokat, például - karakterlánc, szám, logikai, null, tömb, objektum. Közvetlenül nem támogatja a DateTime típust. Jelenleg az Azure Cosmos DB nem támogatja a dátumok honosítását. Tehát a DateTimes-ot karakterláncként kell tárolnia. Az Azure Cosmos DB DateTime karakterláncai ajánlott formátuma az `YYYY-MM-DDThh:mm:ss.sssZ` ISO 8601 UTC szabványt követi. Javasoljuk, hogy az Azure Cosmos DB összes dátumát UTC-ként tárolja. A dátumkarakterláncok formátumba konvertálása lexikografikus módon teszi lehetővé a dátumok rendezését. Ha nem UTC-dátumokat tárol, a logikát az ügyféloldalon kell kezelni. A helyi DateTime UTC-vé történő konvertálásához az eltolást a JSON-ban tulajdonságként kell ismernie/tárolnia, és az ügyfél az eltolás segítségével kiszámíthatja az UTC DateTime értéket.
+Az Azure Cosmos DB támogatja a JSON-típusokat, például - karakterlánc, szám, logikai, null, tömb, objektum. Közvetlenül nem támogatja a DateTime típust. Jelenleg az Azure Cosmos DB nem támogatja a dátumok honosítását. Tehát a DateTimes-ot karakterláncként kell tárolnia. Az Azure Cosmos DB DateTime karakterláncai ajánlott formátuma az `YYYY-MM-DDThh:mm:ss.fffffffZ` ISO 8601 UTC szabványt követi. Javasoljuk, hogy az Azure Cosmos DB összes dátumát UTC-ként tárolja. A dátumkarakterláncok formátumba konvertálása lexikografikus módon teszi lehetővé a dátumok rendezését. Ha nem UTC-dátumokat tárol, a logikát az ügyféloldalon kell kezelni. A helyi DateTime UTC-vé történő konvertálásához az eltolást a JSON-ban tulajdonságként kell ismernie/tárolnia, és az ügyfél az eltolás segítségével kiszámíthatja az UTC DateTime értéket.
+
+A DateTime karakterláncokkal szűrőként rendelkező tartománylekérdezések csak akkor támogatottak, ha a DateTime karakterláncok UTC-ben vannak, és azonos hosszúságúak. Az Azure Cosmos DB rendszerben a [GetCurrentDateTime](sql-query-getcurrentdatetime.md) rendszerfüggvény az aktuális UTC-dátumot és időt `YYYY-MM-DDThh:mm:ss.fffffffZ`adja vissza az ISO 8601 karakterlánc-értéknek a következő formátumban: .
 
 A legtöbb alkalmazás a DateTime alapértelmezett karakterlánc-ábrázolását a következő okok miatt használhatja:
 
@@ -47,7 +49,7 @@ A következő kódrészlet például `Order` két DateTime tulajdonságot `ShipD
         {
             Id = "09152014101",
             OrderDate = DateTime.UtcNow.AddDays(-30),
-            ShipDate = DateTime.UtcNow.AddDays(-14), 
+            ShipDate = DateTime.UtcNow.AddDays(-14),
             Total = 113.39
         });
 ```
@@ -76,7 +78,7 @@ Az SQL .NET SDK automatikusan támogatja az Azure Cosmos DB-ben a LINQ-n kereszt
 Lefordítva a következő SQL utasításra, és az Azure Cosmos DB-n hajtva végre:
 
 ```sql
-    SELECT * FROM root WHERE (root["ShipDate"] >= "2016-12-18T21:55:03.45569Z")
+    SELECT * FROM root WHERE (root["ShipDate"] >= "2014-09-30T23:14:25.7251173Z")
 ```
 
 Az Azure Cosmos DB SQL-lekérdezési nyelvéről és a LINQ-szolgáltatóról a [LINQ-ban található Querying Cosmos DB-ről olvashat bővebben.](sql-query-linq-to-sql.md)

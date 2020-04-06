@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e2e3c7763a13c8850554b079a426ed4172b74d28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb173bcbf7cd163dca16c211d45018e0fe056edd
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77599274"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666858"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Az Azure Active Directory tartományi szolgáltatások hitelesítésének engedélyezése az Azure-fájlokban
 
@@ -61,22 +61,22 @@ Mielőtt engedélyezne Az Azure AD DS-hitelesítés t SMB-n keresztül az Azure-
 
 Ezután tegye a következő műveleteket az Azure Files-erőforrásokhoz való hozzáférés engedélyezéséhez az Azure AD-hitelesítő adatokkal:
 
-- Engedélyezze az Azure AD DS-hitelesítést Az SMB-n keresztül a tárfiók hoz a tárfiók regisztrálásához a társított Azure AD DS-telepítés.
-- Hozzáférési engedélyek hozzárendelése egy megosztáshoz egy Azure AD-identitáshoz (felhasználóhoz, csoporthoz vagy egyszerű szolgáltatáshoz).
-- NTFS-engedélyek konfigurálása SMB-en keresztül könyvtárakhoz és fájlokhoz.
-- Azure-fájlmegosztás csatlakoztatása egy tartományhoz csatlakoztatott virtuális gépről.
+1. Engedélyezze az Azure AD DS-hitelesítést Az SMB-n keresztül a tárfiók hoz a tárfiók regisztrálásához a társított Azure AD DS-telepítés.
+2. Hozzáférési engedélyek hozzárendelése egy megosztáshoz egy Azure AD-identitáshoz (felhasználóhoz, csoporthoz vagy egyszerű szolgáltatáshoz).
+3. NTFS-engedélyek konfigurálása SMB-en keresztül könyvtárakhoz és fájlokhoz.
+4. Azure-fájlmegosztás csatlakoztatása egy tartományhoz csatlakoztatott virtuális gépről.
 
 Az alábbi ábra bemutatja a teljes körű munkafolyamat ot az Azure AD DS-hitelesítés engedélyezéséhez az Azure Files SMB-n keresztül.
 
 ![Az Azure AD-t az Azure Files munkafolyamathoz való smb-n keresztüli ábrája](media/storage-files-active-directory-enable/azure-active-directory-over-smb-workflow.png)
 
-## <a name="enable-azure-ad-ds-authentication-for-your-account"></a>Az Azure AD DS-hitelesítés engedélyezése a fiókjához
+## <a name="1-enable-azure-ad-ds-authentication-for-your-account"></a>1. Az Azure AD DS-hitelesítés engedélyezése a fiókjához
 
 Az Azure AD DS-hitelesítés engedélyezéséhez Az Azure Files SMB-n keresztül, az Azure Portalon, az Azure PowerShellen vagy az Azure CLI-n keresztül beállíthat egy tulajdonságot a tárfiókokon. A tulajdonság beállítása implicit módon "tartomány csatlakozik" a tárfiókot a társított Azure AD DS-telepítés. Az Azure AD DS-hitelesítés SMB-n keresztül ezután engedélyezve van a tárfiók összes új és meglévő fájlmegosztásához.
 
 Ne feledje, hogy csak akkor engedélyezheti az Azure AD DS-hitelesítést SMB-n keresztül, ha sikeresen telepítette az Azure AD DS-t az Azure AD-bérlőre. További információt az [előfeltételek](#prerequisites)ben talál.
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
 Az Azure AD DS-hitelesítés [smb-n](https://portal.azure.com)keresztüli engedélyezéséhez kövesse az alábbi lépéseket:
 
@@ -135,11 +135,11 @@ az storage account update -n <storage-account-name> -g <resource-group-name> --e
 
 [!INCLUDE [storage-files-aad-permissions-and-mounting](../../../includes/storage-files-aad-permissions-and-mounting.md)]
 
-Most már sikeresen engedélyezte az Azure AD DS-hitelesítést az SMB-n keresztül, és olyan egyéni szerepkört rendelt, amely hozzáférést biztosít egy Azure-fájlmegosztáshoz egy Azure AD-identitással. Ha további felhasználóknak szeretne hozzáférést adni a fájlmegosztáshoz, kövesse a [Hozzáférési engedélyek hozzárendelése](#assign-access-permissions-to-an-identity) az identitás használatához és az [NTFS-engedélyek konfigurálásához az SMB szakaszokon](#configure-ntfs-permissions-over-smb)című útmutatóutasításait.
+Most már sikeresen engedélyezte az Azure AD DS-hitelesítést az SMB-n keresztül, és olyan egyéni szerepkört rendelt, amely hozzáférést biztosít egy Azure-fájlmegosztáshoz egy Azure AD-identitással. Ha további felhasználóknak szeretne hozzáférést adni a fájlmegosztáshoz, kövesse a [Hozzáférési engedélyek hozzárendelése](#2-assign-access-permissions-to-an-identity) az identitás használatához és az [NTFS-engedélyek konfigurálásához az SMB szakaszokon](#3-configure-ntfs-permissions-over-smb)című útmutatóutasításait.
 
 ## <a name="next-steps"></a>További lépések
 
 Az Azure Files szolgáltatásról és az Azure AD SMB-n keresztüli használatáról az alábbi forrásokban talál további információt:
 
 - [Az Azure Files identitásalapú hitelesítési támogatásának áttekintése az SMB-hozzáféréshez](storage-files-active-directory-overview.md)
-- [Gyik](storage-files-faq.md)
+- [GYIK](storage-files-faq.md)

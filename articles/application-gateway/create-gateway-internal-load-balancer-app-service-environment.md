@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2018
 ms.author: genli
-ms.openlocfilehash: 9c3216af283ebd9d84a5469d4d50d18c19f67534
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4edeea749ba22bef173c15f3a0855679b784ce33
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71121954"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668564"
 ---
 # <a name="back-end-server-certificate-is-not-whitelisted-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>A háttérkiszolgálói tanúsítvány nem szerepel az alkalmazásátjáró engedélyezési listáján, amely egy alkalmazásszolgáltatás-környezettel rendelkező belső terheléselosztót használ
 
-Ez a cikk a következő problémát hárítja el: A tanúsítvány nem szerepel a listán, amikor belső terheléselosztó (ILB) használatával hoz létre egy alkalmazásátjárót egy app service-környezettel (ASE) együtt az Azure-beli végpontok közötti SSL használatakor.
+Ez a cikk a következő problémát hárítja el: A tanúsítvány nem szerepel a listán, amikor belső terheléselosztó (ILB) használatával hoz létre egy alkalmazásátjárót egy app service-környezettel (ASE) együtt az Azure-beli végpontok közötti TLS használatával.
 
 ## <a name="symptoms"></a>Probléma
 
@@ -68,7 +68,7 @@ Ha teljesen minősített tartománynevet (FQDN) használ az ILB eléréséhez, a
 
 - Törölje a törlést az **alkalmazásátjáró alkalmazásszolgáltatáshoz** beállításának jelölőnégyzetből arra az esetre, ha az ILB IP-címét használná.
 
-A terhelés csökkentése érdekében feltöltheti az ILB-tanúsítványt a HTTP-beállításokban, hogy a mintavételi útvonal működjön. (Ez a lépés csak az engedélyezési listára. Nem lesz ssl-kommunikációhoz használva.) Az ILB-tanúsítványt úgy szerezheti be, hogy az ILB-t az IP-címével együtt https-alapú böngészőből éri el, majd az SSL-tanúsítványt Base-64 kódolású CER formátumban exportálja, és feltölti a tanúsítványt a megfelelő HTTP-beállításokra.
+A terhelés csökkentése érdekében feltöltheti az ILB-tanúsítványt a HTTP-beállításokban, hogy a mintavételi útvonal működjön. (Ez a lépés csak az engedélyezési listára. Nem lesz használva a TLS kommunikációhoz.) Az ILB-tanúsítványt úgy töltheti le, hogy az ILB-t az IP-címével együtt https-alapú böngészőből éri el, majd a TLS/SSL tanúsítványt Base-64 kódolású CER formátumban exportálja, és feltölti a tanúsítványt a megfelelő HTTP-beállításokra.
 
 ## <a name="need-help-contact-support"></a>Segítségre van szüksége? Kapcsolatfelvétel a támogatási szolgáltatással
 

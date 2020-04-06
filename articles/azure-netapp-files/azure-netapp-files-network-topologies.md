@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 8e6a1c3472c6b20b27cf181edbeeb96ab71eb58d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12be766f36a0901079a5a26f20ea7dacc75268de
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73242479"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667871"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Az Azure NetApp Files hálózattervezési irányelvei
 
@@ -39,10 +39,11 @@ Az alábbi funkciók jelenleg nem támogatottak az Azure NetApp-fájlok esetébe
 * Felhasználó által definiált útvonalak (UDRs) címelőtaggal Azure NetApp-fájlok alhálózataként
 * Azure-szabályzatok (például egyéni elnevezési szabályzatok) az Azure NetApp Files felületen
 * Az Azure NetApp Files forgalom terheléselosztói
+* Az Azure NetApp-fájlok nem támogatottak az Azure Virtual WAN szolgáltatással
 
 Az Azure NetApp-fájlokra a következő hálózati korlátozások vonatkoznak:
 
-* Az Azure NetApp-fájlokkal (beleértve a társviszonyba adott virtuális hálózatokat is) használatban lévő virtuális hálózatokban használt IP-k száma nem haladhatja meg az 1000-et. Azon dolgozunk, hogy növeljük ezt a korlátot, hogy megfeleljen az ügyfélméret követelményeinek. Addig is, ha további IP-szolgáltatókra van szüksége, forduljon támogatási csapatunkhoz a használati példálatával és a szükséges korláttal.
+* Az Azure NetApp-fájlokkal (beleértve a társviszonyba adott virtuális hálózatokat is) használatban lévő virtuális hálózatokban használt IP-k száma nem haladhatja meg az 1000-et. Azon dolgozunk, hogy növeljük ezt a korlátot, hogy megfeleljen az ügyfélméret követelményeinek. 
 * Minden Egyes Azure virtuális hálózat (VNet) csak egy alhálózat delegálható az Azure NetApp-fájlok.
 
 
@@ -123,8 +124,8 @@ A fent bemutatott topológia, a helyszíni hálózat csatlakozik egy központi v
 * A helyszíni erőforrások virtuális gép 1 és virtuális gép 2 csatlakozhat a 2.
 * A központi virtuális hálózat 3 virtuális gépe a küllővirtuális hálózat 2.
 * VM 4 küllős vnet 1 és VM 5 küllős virtuális hálózat 2 csatlakozhat a kötet 1 a központi virtuális hálózat.
-
-A küllős VNet 1 vm 4-es gépe nem tud csatlakozni a 2.L. küllős virtuális hálózat 3. Emellett a vm 5 a küllős virtuális hálózat2 nem tud csatlakozni a 2. Ez azért van így, mert a küllővirtuális hálózatok nem társviszonyt, és _a tranzit-útválasztás nem támogatott a virtuális hálózat társviszony-létesítés._
+* A küllős VNet 1 vm 4-es gépe nem tud csatlakozni a 2.L. küllős virtuális hálózat 3. Emellett a vm 5 a küllős virtuális hálózat2 nem tud csatlakozni a 2. Ez azért van így, mert a küllővirtuális hálózatok nem társviszonyt, és _a tranzit-útválasztás nem támogatott a virtuális hálózat társviszony-létesítés._
+* A fenti architektúrában, ha van egy átjáró a küllővirtuális hálózatban is, az ANF-kötethez való kapcsolódás a hub átjárón keresztül való csatlakozásból elvész. A küllővirtuális hálózatban előnyben részesíti az átjárót, így csak az átjárón keresztül csatlakozó gépek csatlakozhatnak az ANF-kötethez.
 
 ## <a name="next-steps"></a>További lépések
 

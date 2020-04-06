@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 12/12/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: 23550c83e76631e44d5036e0a038f01b61a79f1b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f71c039aa6666cec1b871a158d84a6f5a2a107c
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79208235"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666816"
 ---
-## <a name="assign-access-permissions-to-an-identity"></a>Hozzáférési engedélyek hozzárendelése identitáshoz
+## <a name="2-assign-access-permissions-to-an-identity"></a>2. Hozzáférési engedélyek hozzárendelése identitáshoz
 
-Az Azure Files-erőforrások identitásalapú hitelesítéssel való eléréséhez egy identitásnak (egy felhasználónak, csoportnak vagy egyszerű szolgáltatásnak) rendelkeznie kell a megosztási szinten szükséges engedélyekkel. Ez a folyamat hasonló a Windows megosztási engedélyek megadásához, ahol megadhatja, hogy egy adott felhasználó milyen típusú hozzáféréssel rendelkezik egy fájlmegosztáshoz. Ebben a szakaszban található útmutató bemutatja, hogyan rendelhet olvasási, írási vagy törlési engedélyeket egy fájlmegosztáshoz egy identitáshoz.
+Az Azure Files-erőforrások identitásalapú hitelesítéssel való eléréséhez egy identitásnak (egy felhasználónak, csoportnak vagy egyszerű szolgáltatásnak) rendelkeznie kell a megosztási szinten szükséges engedélyekkel. Ez a folyamat hasonló a Windows megosztási engedélyek megadásához, ahol megadhatja, hogy egy adott felhasználó milyen típusú hozzáféréssel rendelkezik egy fájlmegosztáshoz. Az általános javaslat az, hogy használja a megosztási szintű engedély magas szintű hozzáférés-kezelés egy csapat vagy csoport, majd használja ntfs engedélyek részletes hozzáférés-vezérlés a címtár/fájl szintjén. Ebben a szakaszban található útmutató bemutatja, hogyan rendelhet olvasási, írási vagy törlési engedélyeket egy fájlmegosztáshoz egy identitáshoz. 
 
 Három Beépített Azure-szerepkört vezettünk be a felhasználók megosztásszintű engedélyeinek megadására:
 
@@ -33,7 +33,7 @@ Az Azure Portalon, a PowerShellben vagy az Azure CLI-ben a beépített szerepkö
 > [!NOTE]
 > Ne felejtse el szinkronizálni az AD hitelesítő adatait az Azure AD-vel, ha az AD-t hitelesítésre kívánja használni. Jelszó kivonat szinkronizálása az AD az Azure AD nem kötelező. Megosztási szintű engedélyt kap az Azure AD-identitás, amely szinkronizálva van az AD.Share level permission will be granted to the Azure AD identity that is synced from AD.
 
-#### <a name="azure-portal"></a>Azure portál
+#### <a name="azure-portal"></a>Azure Portal
 Ha RBAC-szerepkört szeretne hozzárendelni egy Azure AD-identitáshoz az [Azure Portal](https://portal.azure.com)használatával, kövesse az alábbi lépéseket:
 
 1. Az Azure Portalon nyissa meg a fájlmegosztást, vagy [hozzon létre egy fájlmegosztást.](../articles/storage/files/storage-how-to-create-file-share.md)
@@ -68,7 +68,7 @@ A következő mintaparancsfájl futtatása előtt ne felejtse el lecserélni a h
 az role assignment create --role "<role-name>" --assignee <user-principal-name> --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshares/<share-name>"
 ```
 
-## <a name="configure-ntfs-permissions-over-smb"></a>NTFS-engedélyek konfigurálása SMB-n keresztül 
+## <a name="3-configure-ntfs-permissions-over-smb"></a>3. NTFS-engedélyek konfigurálása SMB-n keresztül 
 Miután megosztott szintű engedélyeket rendelt az RBAC-hoz, megfelelő NTFS-engedélyeket kell hozzárendelnie a gyökér-, könyvtár- vagy fájlszinten. Gondoljon a megosztásszintű engedélyekre, mint a magas szintű forgalomirányítóra, amely meghatározza, hogy a felhasználó hozzáférhet-e a megosztáshoz. Mivel az NTFS-engedélyek részletesebb szinten működnek annak meghatározásához, hogy a felhasználó milyen műveleteket tehet a címtár vagy a fájl szintjén.
 
 Az Azure Files támogatja az NTFS alap- és speciális engedélyeiteljes készletét. Az Azure-fájlmegosztásban lévő könyvtárakra és fájlokra vonatkozó NTFS-engedélyek et a megosztás csatlakoztatásával, majd a Windows Fájlkezelő használatával, illetve a Windows [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) vagy [set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl) parancs futtatásával tekintheti meg és konfigurálhatja. 
@@ -113,9 +113,9 @@ A Windows Fájlkezelővel teljes körű engedélyt adhat a fájlmegosztás alatt
 8.  A Biztonság lapon jelölje ki az összes olyan engedélyt, amelyet az újonnan hozzáadott felhasználónak szeretne megadni.
 9.  Kattintson az **Alkalmaz gombra**
 
-## <a name="mount-a-file-share-from-a-domain-joined-vm"></a>Fájlmegosztás csatlakoztatása tartományhoz csatlakoztatott virtuális gépről
+## <a name="4-mount-a-file-share-from-a-domain-joined-vm"></a>4. Fájlmegosztás csatlakoztatása tartományhoz csatlakoztatott virtuális gépről
 
-A következő folyamat ellenőrzi, hogy a fájlmegosztási és hozzáférési engedélyek megfelelően vannak-e beállítva, és hogy egy tartományhoz csatlakozó virtuális gépről hozzáférhet-e az Azure-fájlmegosztáshoz:
+A következő folyamat ellenőrzi, hogy a fájlmegosztási és hozzáférési engedélyek megfelelően vannak-e beállítva, és hogy egy tartományhoz csatlakozó virtuális gépről hozzáférhet-e az Azure-fájlmegosztáshoz. Ne feledje, hogy a megosztási szintű RBAC szerepkör-hozzárendelés eltarthat egy ideig, hogy a hatályos. 
 
 Jelentkezzen be a virtuális gépaz Azure AD-identitás használatával, amelyhez engedélyeket adott, ahogy az alábbi képen látható. Ha engedélyezte az AD-hitelesítést az Azure Files számára, használja az AD hitelesítő adatokat. Az Azure AD DS-hitelesítéshez jelentkezzen be az Azure AD hitelesítő adataival.
 

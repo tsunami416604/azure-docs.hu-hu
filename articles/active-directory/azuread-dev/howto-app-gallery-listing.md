@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 969193b2c0843c4eb217d2bdb9f9ad9a40ccf9af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fbdae8b8506731f13ff08e877ea8eedb6d57fa78
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154967"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666936"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában
 
@@ -49,9 +49,9 @@ Ingyenes tesztfiókot kaphat az Összes prémium szintű Azure AD-funkcióval �
 
 ## <a name="submit-the-request-in-the-portal"></a>A kérelem elküldése a portálon
 
-Miután tesztelte, hogy az alkalmazásintegráció együttműködik-e az Azure AD-vel, küldje el hozzáférési kérelmét az [Application Network portálon.](https://microsoft.sharepoint.com/teams/apponboarding/Apps) Ha Office 365-fiókkal rendelkezik, ezzel jelentkezz be ebbe a portálba. Ha nem, jelentkezzen be Microsoft-fiókjával, például az Outlookkal vagy a Hotmaillel.
+Miután tesztelte, hogy az alkalmazásintegráció együttműködik-e az Azure AD-vel, küldje el az alkalmazáskérelmet a [Microsoft Application Network portálon.](https://microsoft.sharepoint.com/teams/apponboarding/Apps)
 
-Ha a bejelentkezés után a következő lap jelenik meg, forduljon az [Azure AD SSO-integrációs csapatához.](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) Adja meg a kérelem elküldéséhez használni kívánt e-mail fiókot. Az Azure AD csapata hozzáadja a fiókot a Microsoft Application Network portálon.
+Ha a bejelentkezés után a következő lap jelenik meg, forduljon az [Azure AD SSO-integrációs csapatához.](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) Adja meg a kérelem elküldéséhez használni kívánt e-mail fiókot. Az üzleti e-mail cím, [name@yourbusiness.com](mailto:name@yourbusiness.com) mint például az előnyben részesített. Az Azure AD csapata hozzáadja a fiókot a Microsoft Application Network portálon.
 
 ![Access-kérelem üzenet a SharePoint portálon](./media/howto-app-gallery-listing/errorimage.png)
 

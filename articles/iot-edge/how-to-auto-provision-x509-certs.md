@@ -9,12 +9,12 @@ ms.date: 03/06/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 48c8179af4a4b69924fb943ac98918b48d3a2008
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4d247f151240da8c3f0d38bbd22e43e230a1b95
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79537361"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668621"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>IoT Edge-eszköz létrehozása és kiépítése X.509-es tanúsítványokkal
 
@@ -72,6 +72,9 @@ Ha több IoT Edge-eszközt szeretne kiépíteni, kövesse a következő, [DPS-cs
 Amikor létrehoz egy regisztrációt a DPS-ben, lehetősége van egy **kezdeti ikereszköz-állapot**deklarálni. Az ikereszközben beállíthatja az eszközök csoportosítását a megoldásban szükséges bármely mutató, például a régió, a környezet, a hely vagy az eszköz típusa szerint. Ezek a címkék az automatikus központi telepítések létrehozásához [használatosak.](how-to-deploy-monitor.md)
 
 Az Eszközkiépítési szolgáltatásban történő regisztrációkról az [Eszközregisztrációk kezelése című témakörben](../iot-dps/how-to-manage-enrollments.md)talál további információt.
+
+   > [!TIP]
+   > Az Azure CLI-ben létrehozhat egy [regisztrációt](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) vagy egy [regisztrációs csoportot,](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group) és a **peremhálózati jelző** használatával megadhatja, hogy egy eszköz vagy eszközcsoport egy IoT Edge-eszköz.
 
 1. Az [Azure Portalon](https://portal.azure.com)keresse meg az IoT Hub-eszközkiépítési szolgáltatás példányát.
 

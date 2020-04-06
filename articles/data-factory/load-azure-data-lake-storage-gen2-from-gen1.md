@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
-ms.openlocfilehash: f782985d975dd137aa2da48d12757685b47e62b1
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 81f8577592f1d53627bc09a2f9ace8c060ad4660
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421264"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668851"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Adatok másolása az Azure Data Lake Storage Gen1-ről a Gen2 szolgáltatásba az Azure Data Factory segítségével
 
@@ -137,7 +137,7 @@ Ez a cikk bemutatja, hogyan használhatja a Data Factory adatmásolási eszközt
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
-Az Azure Data Lake Storage Gen1-ről az Azure Data Lake Storage Gen2-re való frissítés értékeléséről általában az [Azure Data Lake Storage Gen2 szolgáltatásról a Big Data Lake Storage Gen1 szolgáltatásról az Azure Data Lake Storage Gen2 szolgáltatásra való frissítése.](../storage/blobs/data-lake-storage-upgrade.md) A következő szakaszok gyakorlati tanácsok a Data Factory használatával a Data Lake Storage Gen1 a Data Lake Storage Gen2 adatfrissítéshez.
+Az Azure Data Lake Storage Gen1-ről az Azure Data Lake Storage Gen2-re való frissítés értékeléséről általában az [Azure Data Lake Storage Gen2 szolgáltatásról a Big Data Lake Storage Gen1 szolgáltatásról az Azure Data Lake Storage Gen2 szolgáltatásra való frissítése.](../storage/blobs/data-lake-storage-migrate-gen1-to-gen2.md) A következő szakaszok gyakorlati tanácsok a Data Factory használatával a Data Lake Storage Gen1 a Data Lake Storage Gen2 adatfrissítéshez.
 
 ### <a name="data-partition-for-historical-data-copy"></a>Adatpartíció az előzményadatok másolásához
 

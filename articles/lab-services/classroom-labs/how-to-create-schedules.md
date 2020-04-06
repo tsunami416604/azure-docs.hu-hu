@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 4e3cf302437c3e4954ac977ac3f4ff6b2021a760
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4887b4359451ca5ce85042b4de42d5376bf4a730
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72330527"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667768"
 ---
 # <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Tantermi laborok ütemezésének létrehozása és kezelése az Azure Lab Servicesben 
 Az ütemezések lehetővé teszik egy tantermi labor konfigurálását úgy, hogy a tesztkörnyezetben lévő virtuális gépek automatikusan elinduljanak és leállítsanak egy adott időpontban. Megadhatja az egyszeri vagy az ismétlődő ütemezést. Az alábbi eljárások lépéseket nyújtanak az osztálytermi labor ütemezésének létrehozásához és kezeléséhez: 
@@ -28,6 +28,12 @@ Az ütemezések lehetővé teszik egy tantermi labor konfigurálását úgy, hog
 
 ## <a name="set-a-schedule-for-the-lab"></a>A labor ütemezésének beállítása
 Hozzon létre egy ütemezett eseményt a laborszámára, hogy a tesztkörnyezetben lévő virtuális gépek automatikusan elindulnak/leállnak bizonyos időpontokban. A korábban megadott felhasználói kvóta az ütemezett időn kívüli, minden egyes felhasználóhoz rendelt további idő. 
+
+> [!NOTE]
+> Mielőtt elkezdenénk, az ütemezések hogyan befolyásolják a laborvirtuális gépeket: 
+>- A sablon virtuális gépe nem szerepel az ütemezésekben. 
+>- Csak a hozzárendelt virtuális gépek indulnak el. Ez azt jelenti, hogy ha egy számítógép nem igényelegy végfelhasználó (diák), a gép nem indul el az ütemezett órákban. 
+>- Az összes virtuális gép (függetlenül attól, hogy egy felhasználó által igényelt vagy sem) leáll a tesztkörnyezet alapján. 
 
 1. Váltson az **Ütemezések** lapra, és válassza az **ütemezett esemény hozzáadása lehetőséget** az eszköztáron. 
 

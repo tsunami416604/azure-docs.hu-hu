@@ -2,22 +2,22 @@
 author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.date: 01/27/2020
+ms.date: 04/04/2020
 ms.topic: include
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 724f52317ce2afda023ae0514a330da0032e8710
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 45ae268e51aba4ef28bbbb6cd9d055c48b65be5e
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78925818"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671530"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
 Mielőtt elkezdene járni:
 
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md" target="_blank">Telepítse a beszédfelismerési SDK-t a<span class="docon docon-navigate-external x-hidden-focus"></span>fejlesztői környezethez, és hozzon létre egy üres mintaprojektet.</a>
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?pivots=programming-language-python" target="_blank">Telepítse a beszédfelismerési SDK-t a<span class="docon docon-navigate-external x-hidden-focus"></span>fejlesztői környezethez, és hozzon létre egy üres mintaprojektet.</a>
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>LUIS-alkalmazás létrehozása a szándékfelismeréshez
 

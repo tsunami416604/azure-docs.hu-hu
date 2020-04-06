@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 04/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 839e13dffc7d15b8cd258dd4b7dda6776223d052
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 37ddf57057b736cd76a74276e5593a865e7df8cc
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051741"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666868"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>A felhasználói felület testreszabása az Azure Active Directory B2C-ben
 
@@ -91,7 +91,10 @@ A felhasználói felület testreszabásához a saját HTML- és CSS-fájlok hasz
 
 Ha saját HTML- és CSS-fájljait használja a felhasználói felület testreszabásához, a felhasználói felület tartalmát bármely nyilvánosan elérhető HTTPS-végponton, amely támogatja a CORS-t, üzemeltetheti. Például [Az Azure Blob storage](../storage/blobs/storage-blobs-introduction.md), webkiszolgálók, CDN-ek, AWS S3 vagy fájlmegosztó rendszerek.
 
-A lényeg az, hogy a tartalom egy nyilvánosan elérhető HTTPS-végponton található, amelyen a CORS engedélyezve van. Abszolút URL-címet kell használnia, amikor megadja azt a tartalomban.
+A lényeg az, hogy a tartalmat egy nyilvánosan elérhető HTTPS-végponton üzemelteti, amelyen [a CORS engedélyezve van.](https://enable-cors.org/server.html) Abszolút URL-címet kell használnia, amikor megadja azt a tartalomban.
+
+> [!NOTE]
+> A HTML-tartalom létrehozásáról, a tartalom Azure Blob storage-ba való feltöltéséről és a CORS konfigurálásáról a felhasználói felület testreszabásáról szóló cikk [Egyéni laptartalom-forgatókönyv](custom-policy-ui-customization.md#custom-page-content-walkthrough) című szakaszában olvashat.
 
 ## <a name="get-started-with-custom-html-and-css"></a>Ismerkedés az egyéni HTML- és CSS-sel
 

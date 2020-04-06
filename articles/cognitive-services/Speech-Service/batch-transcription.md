@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: ee7fbddade055c11f5870aa5a588a2fd02f10a23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb39f1ec83416ee8ab2a33b514971110db0c0b17
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131598"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668838"
 ---
 # <a name="what-is-batch-transcription"></a>Mi az a kötegátírás?
 
@@ -304,9 +304,6 @@ Az átírási szolgáltatás képes kezelni a nagy számú benyújtott átírás
 ## <a name="sample-code"></a>Mintakód
 
 A teljes minták az `samples/batch` alkönyvtáron belüli [GitHub-mintatárban](https://aka.ms/csspeech/samples) érhetők el.
-
-> [!NOTE]
-> A kötegtranszkripciós funkció a fent leírt REST API-n keresztül érhető el. Így a batch transzkripció szinte bármilyen programozási nyelvről vagy környezetből használható, amely támogatja a REST-et. Az alábbi példák és a GitHub-minták csupán reprezentatívak, és nem korlátozzák, hogy az API használható.The examples below and samples in GitHub are most representative and **not** connote limits on where the API can be used.
 
 Testre kell szabnia a mintakódot az előfizetési adatokkal, a szolgáltatási régióval, az átírandó hangfájlra mutató SAS URI-val és a modellazonosítókkal abban az esetben, ha egyéni akusztikai vagy nyelvi modellt szeretne használni.
 

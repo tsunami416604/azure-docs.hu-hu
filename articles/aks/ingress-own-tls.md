@@ -1,15 +1,16 @@
 ---
-title: Saját TLS-tanúsítványok használata az Azure Kubernetes-szolgáltatás (AKS) fürtjével való be- és visszaszállításhoz
+title: A TLS-tanúsítványok használata a be- és visszahangoláshoz
+titleSuffix: Azure Kubernetes Service
 description: Megtudhatja, hogyan telepíthet és konfigurálhat egy NGINX bejövő forgalom vezérlőt, amely saját tanúsítványokat használ egy Azure Kubernetes-fürtben (AKS) fürtben.
 services: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: e567f5384cdd1e40ea67284713a29a92ee87af7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ec6a398b52424c142b3d7ee82625c10c733456ab
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77595501"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668457"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>HTTPS bejövőforgalom-vezérlő létrehozása, és saját TLS-tanúsítványok használata az Azure Kubernetes Service-ben (AKS)
 

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f7d14da6c7436120e013c979b108f61b82640d13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cabfc84d2bc0c9d08a457e67c0182d7550f04ceb
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75647883"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668888"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Egy vagy több Mindig rendelkezésre állási csoportfigyelőjének konfigurálása – Erőforrás-kezelő
 Ez a témakör bemutatja, hogyan:
@@ -58,9 +58,13 @@ Ha korlátozza a hozzáférést egy Azure Network Security Group, győződjön m
 
 ## <a name="determine-the-load-balancer-sku-required"></a>Határozza meg a szükséges terheléselosztó termékváltozatát
 
-[Az Azure terheléselosztó](../../../load-balancer/load-balancer-overview.md) 2 termékkészletben érhető el: alapszintű & standard. A szabványos terheléselosztó használata ajánlott. Ha a virtuális gépek egy rendelkezésre állási csoportban vannak, az alapszintű terheléselosztó megengedett. A standard terheléselosztó megköveteli, hogy minden virtuálisgép IP-cím szabványos IP-címeket használjon.
+[Az Azure terheléselosztó](../../../load-balancer/load-balancer-overview.md) 2 termékkészletben érhető el: alapszintű & standard. A szabványos terheléselosztó használata ajánlott. Ha a virtuális gépek egy rendelkezésre állási csoportban vannak, az alapszintű terheléselosztó megengedett. Ha a virtuális gépek egy rendelkezésre állási zónában vannak, szabványos terheléselosztóra van szükség. A standard terheléselosztó megköveteli, hogy minden virtuálisgép IP-cím szabványos IP-címeket használjon.
 
 Az aktuális [Microsoft-sablon](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) egy rendelkezésre állási csoporthoz egy alapvető TERHELÉSelosztót használ alapvető IP-címekkel.
+
+   > [!NOTE]
+   > Konfigurálnia kell egy [szolgáltatásvégpontot,](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network) ha egy szabványos terheléselosztót és az Azure Storage-ot használ a felhőbeli tanúsító számára. 
+
 
 Ebben a cikkben szereplő példák szabványos terheléselosztót határoznak meg. A példákban a `-sku Standard`parancsfájl tartalmazza a .
 
@@ -226,6 +230,8 @@ Vegye figyelembe az alábbi irányelveket a rendelkezésre állási csoport figy
 * Egy belső terheléselosztó, csak a figyelő ugyanabból a virtuális hálózatból érhető el.
 
 * Ha korlátozza a hozzáférést egy Azure Network Security Group, győződjön meg arról, hogy az engedélyezési szabályok tartalmazzák a háttér-SQL Server virtuális gép IP-címek, és a terheléselosztó lebegő IP-címek az AG figyelő és a fürt alapvető IP-cím, ha alkalmazható.
+
+* Hozzon létre egy szolgáltatásvégpontot, ha egy szabványos terheléselosztót használ az Azure Storage-szal a felhőbeli tanúsító számára. További információ: [Hozzáférés megadása virtuális hálózatról.](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)
 
 ## <a name="for-more-information"></a>További tudnivalók
 További információ: [A Mindig rendelkezésre állási csoport konfigurálása az Azure virtuális gép manuálisan.](virtual-machines-windows-portal-sql-availability-group-tutorial.md)

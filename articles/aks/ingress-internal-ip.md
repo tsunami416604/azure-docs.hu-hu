@@ -1,15 +1,16 @@
 ---
-title: Bejövő forgalom irányító létrehozása belső hálózathoz az Azure Kubernetes szolgáltatásban (AKS)
+title: Belső hálózat be- és be- és visszaed-szabályozója
+titleSuffix: Azure Kubernetes Service
 description: Ismerje meg, hogyan telepíthet és konfigurálhat egy NGINX bejövő forgalom vezérlőt egy Azure Kubernetes-fürt (AKS) fürtbelső, magánhálózatához.
 services: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 8c3eeaf2f9a92f1be9c691091d8e33d09a60b22d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4a123a02ed26a5257d3b8e3ee69fb14d96cde550
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77595654"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668487"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>Bejövő forgalom vezérlő létrehozása egy belső virtuális hálózathoz az Azure Kubernetes szolgáltatásban (AKS)
 

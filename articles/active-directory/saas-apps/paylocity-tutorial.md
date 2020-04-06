@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/23/2019
+ms.date: 01/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f6684df42971b91975f6a7f5aeded9326cef3f5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d2324343a31c3f3930975eea47659d023b9bbb94
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72969804"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667566"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-paylocity"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja a Paylocity-val
 
@@ -45,6 +44,8 @@ A kezdéshez a következő elemekre van szükség:
 Ebben az oktatóanyagban konfigurálja és teszteli az Azure AD SSO-t egy tesztkörnyezetben.
 
 * A Paylocity támogatja az **SP-t és az IDP** által kezdeményezett SSO-t
+
+* A Paylocity konfigurálása után kényszerítheti a munkamenet-vezérlőket, amelyek valós időben védik a szervezet bizalmas adatainak kiszivárgását és beszivárgását. A munkamenet-vezérlők a feltételes hozzáféréstől származnak. [Megtudhatja, hogy miként kényszerítheti ki a munkamenet-vezérlést a Microsoft Cloud App Security alkalmazással.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-paylocity-from-the-gallery"></a>Paylocity hozzáadása a galériából
 
@@ -82,8 +83,6 @@ Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Por
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban a felhasználónak nem kell végrehajtania semmilyen lépést, mivel az alkalmazás már előre integrálva van az Azure-ral.
 
-    ![Paylocity-tartomány és URL-címek egyszeri bejelentkezési adatai](common/preintegrated.png)
-
 1. Kattintson **a További URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** által kezdeményezett módban kívánja konfigurálni:
 
     A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet:`https://access.paylocity.com/`
@@ -98,13 +97,24 @@ Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Por
 
     | Név |  Forrás attribútuma|
     | ---------------| --------------- |
-    | Partnerazonosító | <"Partner-azonosító"> |
-    | PaylocityUser | <"PaylocityUser"> |
-    | PaylocityEntity | <"PaylocityEntity"> |
+    | Partnerazonosító | `P8000010` |
+    | PaylocityUser | `user.mail`|
+    | PaylocityEntity | < `PaylocityEntity` > |
+
+    > [!NOTE]
+    > A PaylocityEntity a Paylocity Company azonosítója.
 
 1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az SAML aláíró tanúsítvány szakaszban keresse meg az **összevonási** **metaadatok XML-jét,** és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre való mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
+
+1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány csoportban** kattintson az **Ikon szerkesztése gombra.**
+
+    ![Az SAML aláíró tanúsítvány szerkesztése](./media/paylocity-tutorial/edit-samlassertion.png)
+
+1. Válassza **az Aláírási lehetőség lehetőséget** **aláírási SAML válaszként és állításként,** majd kattintson a **Mentés gombra.**
+
+    ![Az SAML aláíró tanúsítvány szerkesztése](./media/paylocity-tutorial/saml-assertion.png)
 
 1. A **Paylocity beállítása** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény alapján.
 
@@ -163,3 +173,7 @@ Amikor a Hozzáférési panelen a Paylocity csempére kattint, automatikusan be 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Próbálja ki a Paylocity-t az Azure AD-vel](https://aad.portal.azure.com/)
+
+* [Mi a munkamenet-vezérlés a Microsoft Cloud App Security alkalmazásban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+* [A Paylocity védelme fejlett láthatósággal és vezérléssel](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
