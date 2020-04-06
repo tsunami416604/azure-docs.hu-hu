@@ -149,6 +149,8 @@
           items:
             - name: Olvasási replikák
               href: concepts-read-replicas.md
+            - name: Logikai dekódolás
+              href: concepts-logical.md
     - name: Rugalmas skálázás (Citus)
       items:
         - name: Csomópontok
@@ -269,6 +271,8 @@
           items:
             - name: Azure Portal
               href: howto-data-encryption-portal.md
+            - name: Azure CLI
+              href: howto-data-encryption-cli.md
         - name: Kiszolgáló újraindítása
           items:
             - name: Azure Portal

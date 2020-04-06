@@ -13,7 +13,7 @@
           href: storage-blobs-introduction.md
     - name: Rövid útmutatók
       items:
-        - name: Blobok kezelése kód nélkül
+        - name: Blobok használata
           items:
             - name: Azure Portal
               href: storage-quickstart-blobs-portal.md
@@ -23,8 +23,6 @@
               href: storage-quickstart-blobs-powershell.md
             - name: parancssori felület
               href: storage-quickstart-blobs-cli.md
-        - name: Fejlesztés blobok használatával
-          items:
             - name: .NET
               items:
                 - name: .NET (v12 SDK)

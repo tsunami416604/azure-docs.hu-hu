@@ -15,7 +15,7 @@
     - name: Virtuális gépek figyelése
       items:
         - name: Azure-beli virtuális gépek
-          href: learn/quick-collect-azurevm.md
+          href: learn/quick-monitor-azure-vm.md
         - name: Linux rendszerű számítógép
           href: learn/quick-collect-linux-computer.md
         - name: Windows rendszerű számítógép
@@ -303,10 +303,6 @@
             - name: Telemetriai korreláció
               href: app/correlation.md
               displayname: 'correlation headers, w3c, distributed tracing, tracing'
-            - name: Helyi továbbító
-              href: app/opencensus-local-forwarder.md
-            - name: Indítás
-              href: app/opencensus-go.md
         - name: Élő metrikastream
           displayname: 'live, quickpulse, quick pulse, live metrics'
           href: app/live-stream.md
@@ -488,9 +484,17 @@
             - name: Áttekintés
               displayName: 'Platform logs, Resource logs, Activity log'
               href: platform/platform-logs-overview.md
-            - name: Tevékenységnapló megtekintése
-              displayName: Platform logs
-              href: platform/activity-log-view.md
+            - name: Tevékenységnapló
+              items:
+                - name: Megtekintés az Azure Portalon
+                  displayName: 'Platform logs, Activity log'
+                  href: platform/activity-log-view.md
+                - name: Összegyűjtés és elemzés
+                  displayName: 'Platform logs, Activity log'
+                  href: platform/activity-log-collect.md
+                - name: Exportálás (örökölt)
+                  displayname: Activity log
+                  href: platform/activity-log-export.md
             - name: Küldés célhelyekre
               items:
                 - name: Log Analytics-munkaterület
@@ -502,20 +506,6 @@
                 - name: Event Hubs
                   displayname: 'Resource logs, Activity log, Platform logs'
                   href: platform/resource-logs-stream-event-hubs.md
-            - name: Örökölt tevékenységnaplók gyűjteménye
-              items:
-                - name: Áttekintés
-                  displayName: Resource logs
-                  href: platform/diagnostic-settings-legacy.md
-                - name: Összegyűjtés és elemzés
-                  displayname: Activity log
-                  href: platform/activity-log-collect.md
-                - name: Gyűjtés több bérlőből
-                  displayname: Activity log
-                  href: platform/activity-log-collect-tenants.md
-                - name: Exportálás
-                  displayname: Activity log
-                  href: platform/activity-log-export.md
         - name: Diagnosztikai beállítások
           items:
             - name: Diagnosztikai beállítások létrehozása
@@ -531,6 +521,8 @@
           href: platform/stream-monitoring-data-event-hubs.md
     - name: Virtuális gépek és a vendég operációs rendszer monitorozása
       items:
+        - name: Azure-beli virtuális gépek monitorozása
+          href: insights/monitor-vm-azure.md
         - name: Ügynökök
           items:
             - name: Ügynökök áttekintése
@@ -636,12 +628,10 @@
           items:
             - name: Áttekintés
               href: insights/vminsights-overview.md
-            - name: Ismert problémák
-              href: insights/vminsights-known-issues.md
             - name: Általános rendelkezésre állás – gyakori kérdések
               href: insights/vminsights-ga-release-faq.md
             - name: GYIK
-              href: 'faq.md#azure-monitor-for-vms-preview'
+              href: 'faq.md#azure-monitor-for-vms'
             - name: Monitorozás engedélyezése
               items:
                 - name: Monitorozás engedélyezésének áttekintése
@@ -654,18 +644,16 @@
                   href: insights/vminsights-enable-at-scale-powershell.md
                 - name: Engedélyezés hibrid környezetben
                   href: insights/vminsights-enable-hybrid-cloud.md
-                - name: Integrálás az Operations Managerrel
-                  href: insights/service-map-scom.md
-            - name: Az állapot monitorozása
-              href: insights/vminsights-health.md
             - name: Függőségek feltérképezése
               href: insights/vminsights-maps.md
             - name: Teljesítmény figyelése
               href: insights/vminsights-performance.md
-            - name: Munkafüzetek használata
-              href: insights/vminsights-workbooks.md
             - name: Adatelemzés naplólekérdezésekkel
               href: insights/vminsights-log-search.md
+            - name: Adatok megjelenítése munkafüzetekben
+              href: insights/vminsights-workbooks.md
+            - name: Riasztási szabályok létrehozása
+              href: insights/vminsights-alerts.md
             - name: Dependency Agent frissítése
               href: insights/vminsights-dependency-agent-maintenance.md
             - name: Monitorozás letiltása
@@ -680,6 +668,8 @@
               href: insights/wire-data.md
             - name: Szolgáltatástérkép-megoldás
               href: insights/service-map.md
+            - name: Szolgáltatástérkép és Operations Manager
+              href: insights/service-map-scom.md
         - name: Számítógépcsoportok
           href: platform/computer-groups.md
     - name: Tárolók figyelése
@@ -708,6 +698,8 @@
               href: insights/container-insights-analyze.md
             - name: Az állapot monitorozása
               href: insights/container-insights-health.md
+            - name: GPU-teljesítmény monitorozása
+              href: insights/container-insights-gpu-monitoring.md
             - name: Élő adatok megtekintése
               items:
                 - name: Élő adatok (előzetes verzió) áttekintése
@@ -896,13 +888,11 @@
                   href: log-query/query-optimization.md
                 - name: Szövegadatok elemzése
                   href: log-query/parse-text.md
-        - name: Folyamat / Logic Apps
+        - name: Logic Apps
           items:
-            - name: Folyamat-összekötő naplókkal
-              href: platform/flow-tutorial.md
-            - name: Folyamat-összekötő alkalmazásokkal
-              href: app/automate-with-flow.md
-            - name: Logic Apps alkalmazásokkal
+            - name: Azure Monitor-naplók összekötője
+              href: platform/logicapp-flow-connector.md
+            - name: Application Insights-összekötő
               href: app/automate-with-logic-apps.md
         - name: REST API
           displayname: 'metrics, analyze'
@@ -975,6 +965,8 @@
           href: platform/grafana-plugin.md
     - name: Riasztások kezelése
       items:
+        - name: Riasztások hibaelhárítása
+          href: platform/alerts-troubleshoot.md
         - name: Alkalmazásriasztási szabályok
           items:
             - name: Rendelkezésre állás
@@ -999,7 +991,7 @@
               href: platform/alerts-log-query.md
             - name: Webhook-műveletek
               href: platform/alerts-log-webhook.md
-            - name: Hibaelhárítás
+            - name: Naplóriasztások hibaelhárítása
               href: platform/alert-log-troubleshoot.md
         - name: Tevékenységnapló-riasztási szabályok
           items:
@@ -1263,8 +1255,6 @@
           href: 'https://azure.microsoft.com/updates/?product=log-analytics'
         - name: SDK kibocsátási megjegyzései
           href: app/release-notes.md
-    - name: Windows Analytics
-      href: 'https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics'
     - name: Régiónkénti rendelkezésre állás
       href: 'https://azure.microsoft.com/regions/services/?products=monitor&regions=all'
     - name: Videók

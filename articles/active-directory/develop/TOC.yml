@@ -6,7 +6,7 @@
       href: v2-overview.md
     - name: A Microsoft identitásplatformjának fejlődése
       href: about-microsoft-identity-platform.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Bérlő beállítása
@@ -26,6 +26,8 @@
     - name: Egyoldalas alkalmazások
       displayName: SPA
       items:
+        - name: Angular
+          href: quickstart-v2-angular.md
         - name: JavaScript
           href: quickstart-v2-javascript.md
     - name: Webalkalmazások
@@ -64,11 +66,13 @@
           href: quickstart-v2-netcore-daemon.md
         - name: Python-konzol-démon
           href: quickstart-v2-python-daemon.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Egyoldalas alkalmazások
       displayName: SPA
       items:
+        - name: Angular
+          href: tutorial-v2-angular.md
         - name: JavaScript
           href: tutorial-v2-javascript-spa.md
     - name: Webalkalmazások
@@ -219,8 +223,12 @@
               href: scenario-mobile-app-configuration.md
             - name: Mobilplatform-specifikus konfiguráció
               items:
+                - name: Microsoft Enterprise egyszeri bejelentkezéses beépülő modul Apple-eszközökhöz
+                  href: apple-sso-plugin.md
                 - name: Megosztott eszköz mód Android-eszközökhöz
-                  href: shared-device-mode.md
+                  href: msal-android-shared-devices.md
+                - name: Megosztott eszköz mód iOS-eszközökhöz
+                  href: msal-ios-shared-devices.md
                 - name: Xamarin Android
                   href: msal-net-xamarin-android-considerations.md
                 - name: Rendszertallózó Androidon
@@ -308,6 +316,17 @@
           href: msal-handling-exceptions.md
         - name: Naplózás
           href: msal-logging.md
+        - name: Megosztott eszközök
+          items:
+            - name: Megosztott eszközök – áttekintés
+              href: msal-shared-devices.md
+              displayName: 'shared device mode, firstline worker, frontline worker'
+            - name: Megosztott eszköz mód iOS-eszközökhöz
+              href: msal-ios-shared-devices.md
+              displayName: 'firstline worker, frontline worker'
+            - name: Megosztott eszköz mód Android-eszközökhöz
+              href: msal-android-shared-devices.md
+              displayName: 'firstline worker, frontline worker'
         - name: Egyszeri bejelentkezés
           displayName: SSO
           items:
@@ -433,7 +452,7 @@
       items:
         - name: Áttekintés
           href: authentication-national-cloud.md
-        - name: Authentication
+        - name: Hitelesítés
           href: msal-national-cloud.md
     - name: A felhasználók automatikus átadása (SCIM)
       items:
@@ -443,7 +462,7 @@
           href: /azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups
 - name: Útmutatók
   items:
-    - name: Authentication
+    - name: Hitelesítés
       items:
         - name: Szerepkörjogcím konfigurálása
           href: active-directory-enterprise-app-role-management.md

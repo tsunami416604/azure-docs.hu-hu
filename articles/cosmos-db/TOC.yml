@@ -39,6 +39,8 @@
               href: sql-api-java-get-started.md
             - name: Async Java
               href: sql-api-async-java-get-started.md
+            - name: Async Java – teljes funkcionalitású mintaalkalmazás
+              href: create-sql-api-java-changefeed.md
             - name: Node.js
               href: sql-api-nodejs-get-started.md
         - name: Webalkalmazás készítése
@@ -636,10 +638,6 @@
           items:
             - name: Mi az a MongoDB API a Cosmos DB-ben?
               href: mongodb-introduction.md
-            - name: Vonalprotokoll-támogatás (3.2)
-              href: mongodb-feature-support.md
-            - name: Vonalprotokoll-támogatás (3.6)
-              href: mongodb-feature-support-36.md
         - name: Rövid útmutatók
           items:
             - name: .NET
@@ -683,6 +681,12 @@
               href: tutorial-query-mongodb.md
             - name: 4 – Adatok globális elosztása
               href: tutorial-global-distribution-mongodb.md
+        - name: Alapelvek
+          items:
+            - name: Vonalprotokoll-támogatás (3.6)
+              href: mongodb-feature-support-36.md
+            - name: Vonalprotokoll-támogatás (3.2)
+              href: mongodb-feature-support.md
         - name: Útmutatók
           items:
             - name: Útmutató a migrálást megelőző folyamatokhoz
@@ -1008,10 +1012,13 @@
           href: ../private-link/create-private-endpoint-cosmosdb-portal.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Eltérő eredetű erőforrások megosztásának (CORS) konfigurálása
           href: how-to-configure-cross-origin-resource-sharing.md
-        - name: Azure Cosmos-kulcsok védelme a Key Vaulttal
-          href: access-secrets-from-keyvault.md
+        - name: Kulcsok biztonságossá tétele felügyelt identitás használatával
+          href: managed-identity-based-authentication.md
+          displayName: 'msi, managed service identity, aad, azure active directory, identity'
         - name: Tanúsítványalapú hitelesítés az Azure AD-val
           href: certificate-based-authentication.md
+        - name: Kulcsok biztonságossá tétele a Key Vault használatával
+          href: access-secrets-from-keyvault.md
         - name: Felhasználói hozzáférés korlátozása az adatműveletekre
           href: how-to-restrict-user-data.md
         - name: Ügyfél által felügyelt kulcsok konfigurálása
@@ -1026,6 +1033,8 @@
           href: monitor-cosmos-db.md
         - name: Monitorozás diagnosztikai naplók használatával
           href: cosmosdb-monitor-resource-logs.md
+        - name: Vezérlősík-naplózás
+          href: audit-control-plane-logs.md
         - name: Azure Monitor a Cosmoshoz (előzetes verzió)
           href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Mérőszámok megtekintése Azure Cosmos DB-fiókból
@@ -1102,6 +1111,8 @@
           href: bulk-executor-overview.md
         - name: Tömeges végrehajtó – .NET-kódtár
           href: bulk-executor-dot-net.md
+        - name: Migrálás tömeges végrehajtóról .NET SDK-ra
+          href: how-to-migrate-from-bulk-executor-library.md
         - name: Tömeges végrehajtó – Java-kódtár
           href: bulk-executor-java.md
 - name: Referencia

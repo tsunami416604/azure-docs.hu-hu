@@ -4,7 +4,7 @@
   items:
     - name: Mi az Azure Logic Apps?
       href: logic-apps-overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Logikai alkalmazások létrehozása – Azure Portal
@@ -13,7 +13,7 @@
       href: quickstart-create-logic-apps-with-visual-studio.md
     - name: Logikai alkalmazások létrehozása – Visual Studio Code
       href: quickstart-create-logic-apps-visual-studio-code.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Ütemezésalapú munkafolyamatok létrehozása
       href: tutorial-build-schedule-recurring-logic-app-workflow.md
@@ -37,8 +37,10 @@
       href: logic-apps-serverless-overview.md
     - name: B2B-integráció és EDI-feldolgozás
       href: logic-apps-enterprise-integration-overview.md
-    - name: Hozzáférés Azure Virtual Networkökhöz
+    - name: Hozzáférés az Azure-beli virtuális hálózatokhoz
       href: connect-virtual-network-vnet-isolated-environment-overview.md
+    - name: Folyamatos üzletmenet és vészhelyreállítás
+      href: business-continuity-disaster-recovery-guidance.md
 - name: Útmutatók
   items:
     - name: Fejlesztés
@@ -85,7 +87,7 @@
           href: logic-apps-exception-handling.md
         - name: Nagyméretű üzenetek kezelése
           href: logic-apps-handle-large-messages.md
-        - name: Védelem
+        - name: Biztonságos
           items:
             - name: A biztonság javítása logikai alkalmazások esetében
               href: logic-apps-securing-a-logic-app.md
@@ -327,7 +329,7 @@
           href: logic-apps-create-azure-resource-manager-templates.md
         - name: Logikaialkalmazás-sablonok üzembe helyezése
           href: logic-apps-deploy-azure-resource-manager-templates.md
-    - name: Monitoring
+    - name: Figyelés
       items:
         - name: Logikai alkalmazások figyelése
           href: monitor-logic-apps.md

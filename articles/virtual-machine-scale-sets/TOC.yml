@@ -4,7 +4,7 @@
   items:
     - name: Mik a virtuálisgép-méretezési csoportok?
       href: overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Létrehozás az Azure Portalon
@@ -13,13 +13,15 @@
       href: quick-create-cli.md
     - name: Létrehozás az Azure PowerShell-lel
       href: quick-create-powershell.md
-    - name: Létrehozás sablon alapján
+    - name: Létrehozás ARM-sablon használatával
       items:
         - name: Linux méretezési csoport
+          displayName: 'ARM, resource manager'
           href: quick-create-template-linux.md
         - name: Windows méretezési csoport
+          displayName: 'ARM, resource manager'
           href: quick-create-template-windows.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: 1 – Méretezési csoport létrehozása/kezelése
       items:
@@ -174,7 +176,7 @@
           maintainContext: true
     - name: Méretezési csoport – gyakran ismételt kérdések
       href: virtual-machine-scale-sets-faq.md
-- name: 'Útmutató:'
+- name: Útmutató
   items:
     - name: Tervezés és kialakítás
       items:

@@ -23,6 +23,9 @@
           href: knowledge-store-create-portal.md
         - name: Lekérdezés a keresési ablakban
           href: search-explorer.md
+    - name: ARM-sablon
+      displayName: Resource Manager
+      href: search-get-started-arm.md
     - name: 'C#'
       href: search-get-started-dotnet.md
     - name: Java
@@ -77,14 +80,6 @@
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=python'
     - name: REST-minták
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=rest'
-- name: Képzés
-  items:
-    - name: Bevezetés (Microsoft Learn)
-      href: 'https://docs.microsoft.com/learn/modules/intro-to-azure-search/'
-    - name: Keresés hozzáadása alkalmazásokhoz (Pluralsight)
-      href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
-    - name: Fejlesztői képzés (Pluralsight)
-      href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
 - name: Alapelvek
   items:
     - name: Teljes szöveges keresés
@@ -233,7 +228,7 @@
           href: search-query-simple-examples.md
         - name: Teljes Lucene-szintaxis használata
           href: search-query-lucene-examples.md
-        - name: Különleges karakterek és részleges kifejezések
+        - name: Részleges kifejezések és különleges karakterek
           href: search-query-partial-matching.md
         - name: Lekérdezés a Power Appsből
           href: search-howto-powerapps.md
@@ -261,7 +256,7 @@
           href: search-example-adventureworks-multilevel-faceting.md
     - name: Results (Eredmények)
       items:
-        - name: Oldalhoz kapcsolódó szolgáltatások
+        - name: Munka az eredményül kapott adatokkal
           href: search-pagination-page-layout.md
         - name: Relevanciahangolás (relevanciaprofilok)
           href: index-add-scoring-profiles.md
@@ -460,6 +455,14 @@
           href: 'https://aka.ms/azjobsdemo'
         - name: Használati esetek keresése
           href: 'https://searchsamples.azurewebsites.net/'
+    - name: Képzés
+      items:
+        - name: Bevezetés (Microsoft Learn)
+          href: 'https://docs.microsoft.com/learn/modules/intro-to-azure-search/'
+        - name: Keresés hozzáadása alkalmazásokhoz (Pluralsight)
+          href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
+        - name: Fejlesztői képzés (Pluralsight)
+          href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
     - name: GYIK
       href: search-faq-frequently-asked-questions.md
     - name: Díjszabás

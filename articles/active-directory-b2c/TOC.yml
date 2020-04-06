@@ -74,6 +74,8 @@
           href: custom-policy-overview.md
     - name: Felhasználói fiókok
       href: user-overview.md
+    - name: Felhasználói profilattribútumok
+      href: user-profile-attributes.md
 - name: Útmutatók
   items:
     - name: Alkalmazásintegráció
@@ -231,18 +233,16 @@
               href: direct-signin.md
         - name: Saját üzleti logika hozzáadása
           items:
+            - name: A REST API integrálása
+              href: custom-policy-rest-api-intro.md
             - name: Felhasználó által megadott adatok érvényesítése
               href: custom-policy-rest-api-claims-validation.md
               displayName: 'rest claims validation, validate'
             - name: További jogcímek beszerzése
               href: custom-policy-rest-api-claims-exchange.md
               displayName: rest claims exchange
-            - name: Saját RESTful API hozzáadása
-              href: rest-api-claims-exchange-dotnet.md
-            - name: Biztonságos RESTful API-k egyszerű hitelesítéssel
-              href: secure-rest-api-dotnet-basic-auth.md
-            - name: Biztonságos RESTful API-k tanúsítványhitelesítéssel
-              href: secure-rest-api-dotnet-certificate-auth.md
+            - name: A REST API védelme
+              href: secure-rest-api.md
         - name: Egyéni attribútumok meghatározása
           href: custom-policy-custom-attributes.md
         - name: Hibaelhárítás
@@ -309,13 +309,15 @@
                   items:
                     - name: A technikai profilok ismertetése
                       href: technical-profiles-overview.md
+                    - name: A technikai profilok ellenőrzésének ismertetése
+                      href: validation-technical-profile.md
+                    - name: Application Insights
+                      href: application-insights-technical-profile.md
+                    - name: Azure Active Directory
+                      href: active-directory-technical-profile.md
                     - name: Azure Multi-Factor Authentication
                       href: multi-factor-auth-technical-profile.md
                       displayName: mfa
-                    - name: Igénylésfeloldók
-                      href: claim-resolver-overview.md
-                    - name: Azure Active Directory
-                      href: active-directory-technical-profile.md
                     - name: Jogcím-átalakítás
                       href: claims-transformation-technical-profile.md
                     - name: JWT-jogkivonatkiállító
@@ -329,6 +331,8 @@
                       displayName: otp
                     - name: OpenID Connect
                       href: openid-connect-technical-profile.md
+                    - name: Telefon gyári beállításai
+                      href: phone-factor-technical-profile.md
                     - name: REST
                       href: restful-technical-profile.md
                     - name: SAML
@@ -340,12 +344,12 @@
                     - name: SSO-munkamenet
                       href: custom-policy-reference-sso.md
                       displayName: single sign-on
-                    - name: Ellenőrzés
-                      href: validation-technical-profile.md
             - name: UserJourneys
               href: userjourneys.md
             - name: RelyingParty
               href: relyingparty.md
+            - name: Igénylésfeloldók
+              href: claim-resolver-overview.md
     - name: A b2clogin.com használata
       items:
         - name: b2clogin.com – áttekintés
@@ -389,28 +393,28 @@
           href: user-migration.md
 - name: Referencia
   items:
-    - name: Az Identity Experience Framework kibocsátási megjegyzései
-      href: custom-policy-developer-notes.md
+    - name: Számlázási modell
+      href: billing.md
     - name: Kódminták
       href: 'https://azure.microsoft.com/resources/samples/?service=active-directory-b2c'
-    - name: Oldalelrendezési verziók
-      href: page-layout.md
     - name: Cookie-definíciók
       href: cookie-definitions.md
       displayName: 'cookies, SameSite'
     - name: Hibakódok
       href: error-codes.md
+    - name: Bővítményalkalmazás
+      href: extensions-app.md
+    - name: IEF – kibocsátási megjegyzések
+      href: custom-policy-developer-notes.md
     - name: Microsoft Graph API-műveletek
       href: microsoft-graph-operations.md
+    - name: Oldalelrendezési verziók
+      href: page-layout.md
     - name: Régiónkénti elérhetőség és az adatok tárolási helye
       href: data-residency.md
-    - name: Számlázási modell
-      href: billing.md
     - name: Fenyegetések kezelése
       href: threat-management.md
       displayName: security
-    - name: Bővítményalkalmazás
-      href: extensions-app.md
     - name: Felhasználói folyamatok verziói
       href: user-flow-versions.md
 - name: További források

@@ -143,12 +143,18 @@
           href: how-to-auto-provision-x509-certs.md
         - name: Szimmetrikus kulcsú igazolás
           href: how-to-auto-provision-symmetric-keys.md
-    - name: Egyéni modulok fejlesztése és hibakeresése
+    - name: Egyéni modulok fejlesztése
       items:
-        - name: Visual Studio 2019
+        - name: Fejlesztés a Visual Studio 2019 használatával
           href: how-to-visual-studio-develop-module.md
-        - name: Visual Studio Code
+        - name: Fejlesztés a Visual Studio Code-dal
           href: how-to-vs-code-develop-module.md
+        - name: A createOptions modul konfigurálása
+          items:
+            - name: A createOptions megismerése és használata
+              href: how-to-use-create-options.md
+            - name: Hozzáférés biztosítása modulok számára egy eszköz helyi tárterületéhez
+              href: how-to-access-host-storage-from-module.md
     - name: Modulok üzembe helyezése
       items:
         - name: Egyedi eszközök üzembe helyezése
@@ -183,11 +189,9 @@
           href: deploy-modbus-gateway.md
     - name: Proxytámogatás konfigurálása
       href: how-to-configure-proxy-support.md
-    - name: Adatok tárolása a peremhálózaton
+    - name: Azure Blob Storage az IoT Edge-ben
       items:
-        - name: Hozzáférés biztosítása modulok számára egy eszköz helyi tárterületéhez
-          href: how-to-access-host-storage-from-module.md
-        - name: Azure Blob Storage az IoT Edge-ben
+        - name: A peremhálózati Blob Storage megismerése
           href: how-to-store-data-blob.md
         - name: Blob Storage-modulok üzembe helyezése
           href: how-to-deploy-blob.md

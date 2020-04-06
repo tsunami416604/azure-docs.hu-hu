@@ -103,6 +103,8 @@
       href: concepts-tpm-attestation.md
     - name: Szimmetrikus kulcsú igazolás
       href: concepts-symmetric-key-attestation.md
+    - name: Biztonsági eljárások eszközgyártók számára
+      href: concepts-device-oem-security-practices.md
 - name: Útmutatók
   items:
     - name: Az MXChip IoT fejlesztői készlet csatlakoztatása az IoT Hubhoz

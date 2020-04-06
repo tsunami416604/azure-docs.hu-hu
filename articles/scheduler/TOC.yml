@@ -1,10 +1,10 @@
-- name: A Scheduler dokumentációja
-  href: index.md
+- name: Az Azure Scheduler dokumentációja
+  href: index.yml
 - name: Áttekintés
   items:
     - name: Mi az Azure Scheduler?
       href: scheduler-intro.md
-- name: Első lépések
+- name: Bevezetés
   items:
     - name: Ütemezések létrehozása és felügyelete – Azure PowerShell
       href: scheduler-powershell-reference.md
@@ -30,7 +30,7 @@
           href: scheduler-advanced-complexity.md
         - name: Ütemezések létrehozása és felügyelete – Azure PowerShell
           href: scheduler-powershell-reference.md
-    - name: Védelem
+    - name: Biztonságos
       items:
         - name: Kimenő hívások hitelesítése
           href: scheduler-outbound-authentication.md

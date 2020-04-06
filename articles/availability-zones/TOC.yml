@@ -61,7 +61,7 @@
           items:
             - name: Rendelkezésre állási zónák és SQL Database
               href: '../sql-database/sql-database-high-availability.md#zone-redundant-configuration'
-        - name: Tárterület
+        - name: Storage
           items:
             - name: Zónaredundáns tárolás
               href: ../storage/common/storage-redundancy-zrs.md
@@ -85,6 +85,10 @@
           items:
             - name: Azure Active Directory Domain Services-példány létrehozása
               href: ../active-directory-domain-services/tutorial-create-instance.md
+    - name: A peremhálózati zónák dokumentációja
+      items:
+        - name: Mik azok a peremhálózati zónák?
+          href: ../networking/edge-zones-overview.md
 - name: Vészhelyreállítás
   items:
     - name: Az Azure Site Recovery használata

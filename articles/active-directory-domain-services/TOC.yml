@@ -93,6 +93,8 @@
           href: security-audit-events.md
         - name: Auditesemények elemzése Azure Monitor-munkafüzetekkel
           href: use-azure-monitor-workbooks.md
+        - name: Biztonságos távoli hozzáférés a virtuális gépekhez
+          href: secure-remote-vm-access.md
     - name: Virtuális gépek csatlakoztatása tartományhoz
       items:
         - name: Windows Server rendszerű virtuális gép sablonból
@@ -143,13 +145,9 @@
       href: faqs.md
     - name: Szolgáltatási hírek
       href: 'https://azure.microsoft.com/updates/?product=active-directory-ds'
-    - name: Kompatibilis külső szoftverek
-      href: compatible-software.md
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/active-directory-ds/'
     - name: Azure AD visszajelzési fórum
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-    - name: Kapcsolat
-      href: contact-us.md
     - name: Az Azure AD Domain Services használata az Azure CSP-előfizetésekben
       href: csp.md

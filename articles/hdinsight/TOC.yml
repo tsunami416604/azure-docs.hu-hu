@@ -697,6 +697,10 @@
       items:
         - name: Adatelemzés interaktív lekérdezéssel
           href: ./interactive-query/interactive-query-tutorial-analyze-flight-data.md
+    - name: Alapelvek
+      items:
+        - name: Ajánlott eljárások az átjárók használatához
+          href: ./interactive-query/gateway-best-practices.md
     - name: Útmutató
       items:
         - name: Fejlesztés
@@ -816,6 +820,8 @@
       items:
         - name: Az Apache Storm használata tárolóba való íráshoz
           href: ./storm/apache-storm-write-data-lake-store.md
+        - name: Apache Kafka és Apache Storm (Java)
+          href: ./hdinsight-apache-storm-with-kafka.md
     - name: Útmutató
       items:
         - name: Storm migrálása a Sparkba
@@ -836,10 +842,6 @@
                   href: ./storm/apache-storm-example-topology.md
             - name: Streamelési folyamatok
               items:
-                - name: Apache Kafka és Apache Storm (Java)
-                  href: ./hdinsight-apache-storm-with-kafka.md
-                - name: 'Event Hub, Storage és Data Lake Storage (Java)'
-                  href: 'https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/'
                 - name: 'Event Hub és Apache Storm (C# és Java)'
                   href: ./storm/apache-storm-develop-csharp-event-hub-topology.md
         - name: Kezelés

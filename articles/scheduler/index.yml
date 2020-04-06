@@ -1,0 +1,37 @@
+### YamlMime:Landing
+title: Az Azure Scheduler dokumentációja
+summary: Az Azure Scheduler kivezetése folyamatban van, a helyébe az Azure Logic Apps lép. Ha továbbra is használni szeretné a Schedulerben beállított feladatokat, minél előbb migrálja őket az Azure Logic Appsbe.
+metadata:
+  title: Az Azure Scheduler dokumentációja
+  description: Automatizált feladatokat, például alkalmazásműveleteket és rutinkarbantartási feladatokat hozhat létre, ütemezhet és futtathat a felhőben. Az Azure Scheduler kivezetése folyamatban van, a helyébe az Azure Logic Apps lép. Ha továbbra is használni szeretné a Schedulerben beállított feladatokat, minél előbb migrálja őket az Azure Logic Appsbe.
+  services: scheduler
+  ms.service: scheduler
+  ms.topic: landing-page
+  author: derek1ee
+  ms.author: estfan
+  ms.date: 03/30/2020
+  ms.openlocfilehash: 04be683d3bd3d874efb44685b0d40b8c2d5a9698
+  ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 03/31/2020
+  ms.locfileid: "80422978"
+landingContent:
+- title: Migrate (Áttelepítés)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az Azure Scheduler?
+      url: scheduler-intro.md
+    - text: Mi az Azure Logic Apps?
+      url: ../logic-apps/logic-apps-overview.md
+  - linkListType: get-started
+    links:
+    - text: Azure Scheduler-feladatok migrálása az Azure Logic Appsbe
+      url: migrate-from-scheduler-to-logic-apps.md
+  - linkListType: reference
+    links:
+    - text: REST API
+      url: https://docs.microsoft.com/rest/api/scheduler/
+    - text: PowerShell
+      url: scheduler-powershell-reference.md

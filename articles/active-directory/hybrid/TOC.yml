@@ -150,6 +150,8 @@
               href: plan-migrate-adfs-password-hash-sync.md
             - name: Migrálás összevont környezetből PTA-ba
               href: plan-migrate-adfs-pass-through-authentication.md
+            - name: Csoportok áthelyezése egyik erdőből a másikba
+              href: how-to-connect-migrate-groups.md
         - name: Hibrid identitáskezelés – kialakítási szempontok
           items:
             - name: Hibrid identitáskezelés – a kialakítási szempontok áttekintése

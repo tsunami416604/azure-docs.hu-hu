@@ -67,7 +67,13 @@
     - name: Adatok betöltése
       items:
         - name: Egykattintásos feldolgozás
-          href: ingest-data-one-click.md
+          items:
+            - name: Az egykattintásos feldolgozás áttekintése
+              href: ingest-data-one-click.md
+            - name: Egykattintásos feldolgozás új táblába
+              href: one-click-ingestion-new-table.md
+            - name: Egykattintásos feldolgozás meglévő táblába
+              href: one-click-ingestion-existing-table.md
         - name: Streamek feldolgozása
           href: ingest-data-streaming.md
         - name: A LightIngest használata
@@ -188,6 +194,8 @@
               href: customer-managed-keys-csharp.md
             - name: Azure Resource Manager-sablon
               href: customer-managed-keys-resource-manager.md
+        - name: Azure AD alkalmazás létrehozása
+          href: provision-azure-ad-app.md
     - name: Kezelés
       items:
         - name: Fürt
@@ -208,6 +216,8 @@
                   href: cluster-principal-python.md
                 - name: Azure Resource Manager-sablon
                   href: cluster-principal-resource-manager.md
+            - name: Fürtök nyelvi bővítményeinek kezelése
+              href: language-extensions.md
         - name: Adatbázis
           items:
             - name: Követő adatbázisok
@@ -240,6 +250,8 @@
           href: using-diagnostic-logs.md
         - name: Metrikák használata a fürtállapot monitorozásához
           href: using-metrics.md
+        - name: Erőforrás-állapot használata a fürtállapot monitorozásához
+          href: monitor-with-resource-health.md
     - name: Integráció más eszközökkel
       items:
         - name: Azure Data Factory
@@ -264,6 +276,8 @@
           href: connect-from-databricks.md
         - name: Adatok elemzése Jupyter notebookokban és Kqlmagicben
           href: kqlmagic.md
+        - name: Adatok elemzése az Azure Notebooksban
+          href: azure-notebooks.md
         - name: Azure Pipelines
           href: devops.md
     - name: Hibaelhárítás

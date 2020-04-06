@@ -29,6 +29,8 @@
       href: quick-onboard-azure-stack.md
 - name: Oktatóanyagok
   items:
+    - name: Tervezési és működtetési útmutató
+      href: security-center-planning-and-operations-guide.md
     - name: Az erőforrások védelme
       href: tutorial-protect-resources.md
     - name: Reagálás incidensekre
@@ -71,8 +73,8 @@
           href: security-center-incident.md
         - name: Felhőbeli intelligens riasztások korrelációi (incidensek)
           href: security-center-alerts-cloud-smart.md
-        - name: Biztonsági riasztások térképe és fenyegetések felderítése
-          href: security-center-threat-intel.md
+        - name: Fenyegetésekkel kapcsolatos jelentések
+          href: security-center-threat-report.md
         - name: Riasztások érvényesítése (EICAR-tesztfájl)
           href: security-center-alert-validation.md
 - name: Útmutatók
@@ -149,6 +151,8 @@
           href: security-center-sql-service-recommendations.md
         - name: Identitás és hozzáférés védelme
           href: security-center-identity-access.md
+        - name: Felhasználói adatok vizsgálatának kezelése
+          href: security-center-investigation-user-data.md
     - name: Felhővédelmi funkciók alkalmazása
       items:
         - name: Igény szerinti hozzáférés kezelése
@@ -159,24 +163,6 @@
           href: security-center-file-integrity-monitoring.md
         - name: Adaptív hálózat-megerősítés
           href: security-center-adaptive-network-hardening.md
-    - name: Archívum
-      items:
-        - name: Lemeztitkosítás alkalmazása
-          href: security-center-apply-disk-encryption.md
-        - name: Rendszerfrissítések alkalmazása
-          href: security-center-apply-system-updates.md
-        - name: Endpoint Protection telepítése
-          href: security-center-install-endpoint-protection.md
-        - name: Fenyegetésekkel kapcsolatos jelentések
-          href: security-center-threat-report.md
-        - name: Riasztás megbízhatósági pontszáma
-          href: security-center-confidence-score.md
-        - name: Vizsgálat
-          href: security-center-investigation.md
-        - name: Felhasználói adatok vizsgálatának kezelése
-          href: security-center-investigation-user-data.md
-        - name: Tervezés és műveletek
-          href: security-center-planning-and-operations-guide.md
 - name: Referencia
   items:
     - name: REST API-k
