@@ -1,19 +1,19 @@
 ---
-title: Váratlan költségek megelőzése és számlázás kezelése az Azure-ban
-description: Ismerje meg, hogyan kerülheti el a váratlan költségeket Azure-számláján. Használja az Azure-fiók költségkövetési és -kezelési funkcióit.
+title: Váratlan költségek megelőzése és elemzése az Azure Cost Management and Billing eszközzel
+description: Ismerje meg, hogyan kerülheti el a váratlan költségeket Azure-számláján, valamint hogyan használhatja az Azure-fiókja költségkövetési és felügyeleti funkcióit.
 author: bandersmsft
 ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 3/11/2020
+ms.date: 3/30/2020
 ms.author: banders
-ms.openlocfilehash: 0e0003b3adfdb6ebba49bd8d014fc0ba287ca3aa
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 79af6f78e8e9bf93c49deafe79f6a421cbb77d1a
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238142"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475265"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Hogyan kerülheti el a váratlan költségeket az Azure-számlázás és -költségkezelés használatával
 
@@ -112,11 +112,6 @@ A bal oldalon válassza a **Költség** lehetőséget. A**Költségek** lapon v�
 
 Tekintse át a [Javaslatok alapján történő költségoptimalizálás](../costs/tutorial-acm-opt-recommendations.md) oktatóanyagot a költségeket csökkentő Advisor-javaslatokról szóló irányított útmutatásért.
 
-## <a name="review-charges-against-your-latest-invoice"></a>Díjak összehasonlítása a legutóbbi számlával
-
-A számla a számlázási ciklus végén érhető el. [Letöltheti a számlákat és a használatot részletező fájlokat is](download-azure-invoice-daily-usage-date.md), valamint összehasonlíthatja őket, hogy megbizonyosodhasson a kiszámlázott összeg helyességéről. A napi használati adatok és a számla összehasonlítására vonatkozó további információkért lásd: [Microsoft Azure-számlájának értelmezése](../understand/review-individual-bill.md).
-
-Amennyiben az Azure-t Microsoft-ügyfélszerződéssel (MCA) használja, [összevetheti a számláit a tranzakciókkal](../understand/review-customer-agreement-bill.md#review-invoiced-transactions-in-the-azure-portal) a számlán szereplő díjak értelmezéséhez.
 
 ## <a name="integrate-with-billing-and-consumption-apis"></a>Integrálás számlázási és használati API-kkal
 
@@ -178,9 +173,65 @@ Egyes szolgáltatások esetében az SLA alkalmazása előfeltételektől is füg
 
 További információkért tekintse meg a [Szolgáltatói szerződések](https://azure.microsoft.com/support/legal/sla/) és az [Azure-szolgáltatások SLA-jának összegzése](https://azure.microsoft.com/support/legal/sla/summary/) dokumentációt.
 
-## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
+## <a name="analyze-unexpected-charges"></a>Váratlan költségek elemzése
 
-Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
+A szervezete számára készített felhőalapú erőforrás-infrastruktúra valószínűleg összetett. Számos Azure-erőforrástípus különböző típusú költségekkel járhat. Előfordulhat, hogy az Azure-erőforrásokat a szervezet különböző csoportjai birtokolják, amelyek különböző erőforrásokra vonatkozó eltérő számlázási modelltípusokkal rendelkeznek. A költségek jobb megértése érdekében kezdje az elemzést a következő szakaszokban lévő stratégiákkal.
+
+### <a name="review-your-invoice-and-identify-the-resource-that-is-responsible-for-the-charge"></a>Számla áttekintése és a költségért felelős erőforrás azonosítása
+
+Az Azure-szolgáltatások megvásárlásának módja segít meghatározni az Ön számára elérhető módszertant és eszközöket a költséggel társított erőforrás azonosítása során. Annak megállapításához, hogy melyik módszertan vonatkozik Önre, először [határozza meg az Azure-ajánlat típusát](../costs/understand-cost-mgt-data.md#determine-your-offer-type). Ezután azonosítsa az ügyfélkategóriát a [támogatott Azure-ajánlatok](../costs/understand-cost-mgt-data.md#supported-microsoft-azure-offers) listájában.
+
+A következő cikkek részletesen ismertetik, hogyan tekintheti át a számláját az ügyfél típusa alapján. Mindegyik cikkben útmutatást talál arról, hogyan tölthető le egy adott számlázási időszak használati és költségadatait tartalmazó CSV-fájl.
+
+- [Használatalapú számla áttekintési folyamata](../understand/review-individual-bill.md#compare-invoiced-charges-with-usage-file)
+- [Nagyvállalati szerződéses számla áttekintési folyamata](../understand/review-enterprise-agreement-bill.md)
+- [Microsoft-ügyfélszerződés áttekintési folyamata](../understand/review-customer-agreement-bill.md#analyze-your-azure-usage-charges)
+- [Microsoft-partnerszerződés áttekintési folyamata](../understand/review-partner-agreement-bill.md#analyze-your-azure-usage-charges)
+
+Az Azure-számla _mérőeszközök_ alapján összesíti a havi költségeket. A mérőeszközökkel az erőforrás kihasználtságát követjük nyomon időben, és ezekkel számítható ki a számla. Ha egyetlen Azure-erőforrást (például virtuális gépet) hoz létre, akkor egy vagy több mérőeszközpéldány jön létre az erőforráshoz.
+
+A használati adatokat tartalmazó CSV-fájlt az elemezni kívánt számlán található _MeterName_ alapján szűrheti a mérőeszközre vonatkozó összes sorelem megtekintéséhez. A sorelemhez tartozó _InstanceID_ a díjat okozó tényleges Azure-erőforrásnak felel meg.
+
+Ha azonosította a szóban forgó erőforrást, az Azure Cost Management költségelemzési eszközével tovább elemezheti az erőforrással kapcsolatos költségeket. A költségelemzéssel kapcsolatos további tudnivalókért lásd: [Költségelemzés indítása](../costs/quick-acm-cost-analysis.md).
+
+### <a name="identify-spikes-in-cost-over-time"></a>Kiugró költségek azonosítása időben
+
+Előfordulhat, hogy néha nem tudja, milyen költségek eredményezték a számlázott költségek változásait. A költségelemzéssel [láthatja a költségek napi és havi bontását](../costs/cost-analysis-common-uses.md#view-costs-per-day-or-by-month), így megértheti, hogy mi változott. A nézet létrehozása után csoportosíthatja a költségeket **szolgáltatás** vagy **erőforrás** alapján is a változások azonosításához. **Vonaldiagramra** is változtathatja a nézetet, hogy jobban láthassa az adatokat.
+
+![A költségelemzésben a költségeket időben megjelenítő példa](./media/getting-started/costs-over-time.png)
+
+### <a name="determine-resource-pricing-and-understand-its-billing-model"></a>Az erőforrás-díjszabás meghatározása és a számlázási modell megértése
+
+Egyetlen erőforrás több Azure-termék és -szolgáltatás díját is maga után vonhatja. [Azure-díjszabás termék alapján](https://azure.microsoft.com/pricing/#product-pricing) oldalon tudhat meg többet az egyes Azure-szolgáltatások díjszabásáról. Az Azure-ban létrehozott egyetlen virtuális gép használatának nyomon követéséhez például a következő mérőeszközök hozhatók létre. Előfordulhat, hogy mindegyiknek külön díjszabása van.
+
+- Üzemóra
+- IP-cím szolgáltatásórái
+- Bejövő adatforgalom
+- Kimenő adatforgalom
+- Standard felügyelt lemez
+- Standard felügyeltlemez-műveletek
+- Standard IO-lemez
+- Standard IO – blokkblob-olvasás
+- Standard IO – blokkblob-írás
+- Szabványos IO – blokkblob-törlés
+
+A virtuális gép létrehozásakor minden mérőeszköz elkezd használati adatokat szolgáltatni. Ezt a használatot és a mérőeszköz díjszabását az Azure-beli mérési rendszerben követjük nyomon. A számla összegének kiszámításához használt mérőeszközök a használati adatok CSV-fájljában láthatók.
+
+### <a name="find-the-people-responsible-for-the-resource-and-engage-them"></a>Az erőforrásért felelős személyek megkeresése
+
+Gyakran előfordul, hogy az adott erőforrásért felelős csapat tudatában van az adott erőforrással kapcsolatos változásoknak. A velük való kapcsolattartás hasznos lehet, mivel megállapíthatja, miért jelentkeznek díjak. Előfordulhat például, hogy a tulajdonos csapat nemrég hozta létre az erőforrást, frissítette a termékváltozatot (ami megváltoztatja az erőforrás díjszabását), vagy megnövelte az erőforrás terhelését a kód módosítása miatt. Az erőforrás tulajdonosának meghatározásához a következő részekben talál további technikákat.
+
+#### <a name="analyze-the-audit-logs-for-the-resource"></a>Az erőforrás auditnaplóinak elemzése
+
+Amennyiben jogosult az erőforrás megtekintésére, rendelkeznie kell hozzáféréssel az auditnaplókhoz. Tekintse át a naplókat annak érdekében, hogy megtalálja, melyik felhasználó felelős az erőforrás legfrissebb módosításaiért. További információt az [Azure-tevékenységnapló eseményeinek megtekintését és lekérését](../../azure-monitor/platform/activity-log-view.md) ismertető szakaszban talál.
+
+#### <a name="analyze-user-permissions-to-the-resources-parent-scope"></a>A felhasználói engedélyek elemzése az erőforrás fölérendelt hatókörében
+
+Az előfizetéshez vagy erőforráscsoporthoz írási hozzáféréssel rendelkező személyek általában birtokában vannak a létrehozott erőforrásokkal kapcsolatos információnak. El kell tudniuk magyarázni egy erőforrás célját, vagy tudniuk kell, hogy ki az, aki erre választ tud adni. Az előfizetési hatókör engedélyeivel rendelkező személyek azonosításához tekintse meg a [szerepkör-hozzárendelések megtekintését](../../role-based-access-control/check-access.md#view-role-assignments) ismertető szakaszt. Hasonló módszert alkalmazhat erőforráscsoportok esetében.
+
+### <a name="get-help-to-identify-charges"></a>Segítség kérése a díjak azonosításához
+
+Ha már használta az előző stratégiákat, és még mindig nem érti, miért léptek fel költségek, vagy ha további segítségre van szüksége a számlázási problémákkal kapcsolatban, kérjük, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>További lépések
 - A túlköltekezés elkerülése érdekében ismerkedjen meg a [költségkeretekkel](spending-limit.md).

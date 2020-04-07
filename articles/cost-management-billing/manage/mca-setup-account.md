@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 24f7a81b267e858d16ae0805f9c7ab384be3b2fc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 81b6b8a7024de9ff3361e24cb14190d479e50681
+ms.sourcegitcommit: 2a09565db8681cdb76607e7ed51eecf68f4ff8f0
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200642"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80258056"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Számlázási fiók beállítása Microsoft-ügyfélszerződéshez
 
@@ -115,7 +115,7 @@ A kapcsolattartók kapják meg az Azure Nagyvállalati Szerződésre vonatkozó 
 
 ### <a name="spending-quotas"></a>Költségkvóták
 
-A nagyvállalati szerződéses regisztrációban a részlegekhez beállított költségkvótákat a költségkeretek váltják fel az új számlázási fiókban. Minden egyes, a regisztrációban a részlegekhez beállított költségkvótához létrejön egy költségkeret. A költségkeretekről az [Azure-költségkeretek létrehozását és kezelését](../cloudyn/manage-budgets.md) ismertető szakasz nyújt további információt.
+A nagyvállalati szerződéses regisztrációban a részlegekhez beállított költségkvótákat a költségkeretek váltják fel az új számlázási fiókban. Minden egyes, a regisztrációban a részlegekhez beállított költségkvótához létrejön egy költségkeret. A költségkeretekről a következő szakasz nyújt további információt: [Oktatóanyag: Azure-költségvetések létrehozása és kezelése](../costs/tutorial-acm-create-budgets.md).
 
 ### <a name="cost-centers"></a>Költséghelyek
 
@@ -181,7 +181,7 @@ A beállítás befejezéséhez hozzá kell férnie az új számlázási fiókhoz
 
     - A Nagyvállalati Szerződés hierarchiának megfelelő számlázási hierarchia jön létre az új számlázási fiókban. További információért lásd: [A számlázási hierarchia változásainak megismerése](#understand-changes-to-your-billing-hierarchy).
     - A nagyvállalati szerződéses regisztráció rendszergazdái hozzáférést kapnak az új számlázási fiókhoz, így továbbra is kezelhetik a szervezet számlázását.
-    - Az Azure-előfizetései számlázása az új fiókon történik. **Az átváltás folyamata nem lesz hatással az Azure-szolgáltatásaira. Továbbra is problémamentesen fognak futni**.
+    - Az Azure-előfizetései számlázása az új fiókon történik. **A váltás folyamata nem lesz hatással az Azure-szolgáltatásaira. Továbbra is problémamentesen fognak futni**.
     - Ha rendelkezik Azure Reserved VM Instances-példányokkal, akkor az új számlázási fiókra kerülnek ugyanazzal a kedvezménnyel és időtartammal.
 
 4. Az **átváltás állapotát** jelző lapon figyelheti az átváltás állapotát.

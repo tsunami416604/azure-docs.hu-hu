@@ -5,14 +5,14 @@ author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 03/30/2020
 ms.author: banders
-ms.openlocfilehash: 6277a7e7dc5891a3bc67c298a31344284c92e31d
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 97bd03fb2aa8f5b486ef87a04f260fec43eb81bd
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80235630"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396702"
 ---
 # <a name="what-are-azure-reservations"></a>Mi az az Azure Reservations?
 
@@ -20,7 +20,7 @@ Az Azure Reservationsszel csökkentheti költségeit, ha több termékre is egy 
 
 A foglalásért fizethet előre vagy havonta. A foglalások előre vagy havonta fizetett összege megegyezik, és ha a havi fizetést választja, nem kell extra díjakat fizetnie. A havi fizetés csak az Azure Reservations esetében érhető el, harmadik féltől származó termékek esetében nem.
 
-Foglalásokat az [Azure Portalon](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) vásárolhat.
+Foglalásokat az Azure Portalon vásárolhat, a következő címen: [https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade).
 
 ## <a name="why-buy-a-reservation"></a>Miért érdemes foglalást vásárolnia?
 
@@ -34,6 +34,48 @@ A kedvezmények alkalmazásáról további információt [a fenntartott példán
 
 A foglalási hatókörök működésére vonatkozó további információkat a [foglalási hatókörökkel](prepare-buy-reservation.md#scope-reservations) foglalkozó témakör ismerteti.
 
+## <a name="determine-what-to-purchase"></a>Kiválaszthatja, hogy mit szeretne megvásárolni 
+
+Az Azure Databricksen kívül minden foglalási díj óraalapú. A foglalásokat az alapján érdemes megvásárolni, hogy általában milyen használat jellemzi a rendszerét. A használati adatok elemzésével vagy a foglalási javaslatokkal határozhatja meg, hogy milyen foglalást vásároljon. A javaslatok a következő helyeken érhetők el:
+
+- Azure Advisor (csak virtuális gépek)
+- Foglalásvásárlási folyamat az Azure Portalon
+- Cost Management Power BI-alkalmazás
+- API-k 
+
+További információkért lásd:  [A megvásárolni kívánt foglalás kiválasztása](determine-reservation-purchase.md) 
+
+## <a name="buying-a-reservation"></a>Foglalás vásárlása 
+
+Foglalásokat az Azure Portalon, API-kkal, a PowerShellben és a parancssori felületen vásárolhat. 
+
+Lépjen az Azure Portalra a vásárláshoz (https://ms.portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Docs) 
+
+További információkért lásd:  [Foglalás vásárlása](prepare-buy-reservation.md) 
+
+## <a name="how-is-a-reservation-billed"></a>Hogy történik a foglalás számlázása? 
+
+A foglalás számlázása az előfizetésnél rögzített fizetési móddal történik. Ha elérhető, a foglalás költsége a pénzügyi keret egyenlegéből lesz levonva. Ha a pénzügyi keret egyenlege nem fedezi a foglalás költségét, akkor a többletköltségek ki lesznek Önnek számlázva. Ha használatalapú díjas, egyéni csomagban rendelkezik előfizetéssel, akkor a rendszer az előre fizetendő vásárlással azonnal megterheli a fiókjához tartozó hitelkártyát. A havi kifizetések a számlán jelennek még, és a rendszer havonta terheli meg a hitelkártyáját. Számlás fizetés esetén a díjak a következő számlán jelennek meg. 
+
+## <a name="permissions-to-view-and-manage-reservations"></a>Engedélyek a foglalások megtekintésére és kezelésére 
+
+A foglalást vásárló felhasználó és a foglalás számlázásához használt előfizetés fiókadminisztrátora a Tulajdonos szerepkört kapja meg a foglalási rendelés és a foglalás tekintetében.
+
+Delegálhatja a foglalás kezelését, ha személyeket ad hozzá szerepkörökhöz a foglalási rendelésben vagy a foglalásban. Az Azure Portalon, illetve API-k és a PowerShell használatával rendelhet hozzá szerepköröket. 
+
+További információk  [a foglalást kezelő felhasználók hozzáadásáról vagy módosításáról](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation) 
+
+## <a name="get-reservation-details-and-utilization-after-purchase"></a>Foglalásrészletek és kihasználtság lekérése a vásárlás után
+
+Ha van engedélye a foglalás megtekintésére, az Azure Portalon tekintheti meg és használhatja. Az adatokat API-kkal is lekérheti. 
+
+A foglalások Azure Portalon való megtekintéséről további információért lásd:  [Foglalások megtekintése az Azure Portalon](view-reservations.md) 
+
+## <a name="manage-reservations-after-purchase"></a>Foglalások kezelése vásárlás után 
+
+Egy Azure-foglalás megvásárlása után frissítheti a hatókört, hogy a foglalást egy másik előfizetésre alkalmazza, módosítsa, hogy ki kezelheti a foglalást, kisebb részekre ossza a foglalást, vagy módosítsa a példányméret rugalmasságát. 
+
+További információk:  [Foglalások kezelése Azure-erőforrásokhoz](manage-reserved-vm-instance.md) 
 
 ## <a name="flexibility-with-azure-reservations"></a>Rugalmasság az Azure Reservations segítségével
 
@@ -54,7 +96,7 @@ További információkért lásd: [Az Azure Reservations önkiszolgáló csere- 
 - **Azure Database for MySQL** – A foglalás csak a számítási költségeket foglalja magában. A foglalás nem fedezi a MySQL-adatbáziskiszolgálóhoz kapcsolódó szoftverek, hálózatkezelés és tárolás költségeit.
 - **Azure Database for PostgreSQL** – A foglalás csak a számítási költségeket foglalja magában. A foglalás nem fedezi a PostgreSQL-adatbáziskiszolgálóhoz kapcsolódó szoftverek, hálózatkezelés és tárolás költségeit.
 - **Azure Database for MariaDB** – A foglalás csak a számítási költségeket foglalja magában. A foglalás nem fedezi a MariaDB-adatbáziskiszolgálóhoz kapcsolódó szoftverek, hálózatkezelés és tárolás költségeit.
-- **Azure Data Explorer** – A foglalás magában foglalja az árrés díját. A foglalás nem fedezi a fürtökhöz kapcsolódó számítási feladatok, hálózatkezelés és tárolás költségeit.
+- **Azure Data Explorer** – A foglalás magában foglalja az árrés díját. A foglalás nem vonatkozik a fürtökhöz kapcsolódó számítási feladatok, hálózatkezelés és tárolás költségeire.
 - **Azure Cache for Redis** – A foglalás csak a számítási költségeket foglalja magában. A foglalás nem fedezi a Redis Cache-példányokhoz kapcsolódó hálózatkezelés és tárolás költségeit.
 - **Azure Dedicated Host** – A dedikált gazdagép csak a számítási költségeket foglalja magában.
 - **Azure Disk Storage-foglalások** – A foglalás csak a P30-as vagy annál nagyobb méretű, prémium szintű SSD-k esetében érvényes. Az egyéb lemeztípusokat és a P30-asnál kisebb méretű lemezeket nem fedi le.

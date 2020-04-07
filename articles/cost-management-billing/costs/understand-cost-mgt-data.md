@@ -7,12 +7,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
-ms.openlocfilehash: 2af84ccf679d28251e34f4c76ced38b0cb653a58
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6e27f34572eef7d50c7b140c65cb78c6d0678fa8
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79203015"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477612"
 ---
 # <a name="understand-cost-management-data"></a>A Cost Management adatainak értelmezése
 
@@ -94,9 +94,9 @@ Az alábbi táblázatok azt mutatják, hogy a Cost Management mely adatokat tart
 
 _<sup>**5**</sup> Az Azure-szolgáltatás használata a foglaláson és a megegyezés szerinti árakon alapul._
 
-_<sup>**6**</sup> A Marketplace-vásárlások jelenleg nem érhetők el használatalapú fizetéses, MSDN- és Visual Studio-ajánlatokhoz._
+_<sup>**6**</sup> A Marketplace-vásárlások jelenleg nem érhetők el MSDN- és Visual Studio-ajánlatokhoz._
 
-_<sup>**7**</sup> A foglalásvásárlások jelenleg csak Nagyvállalati Szerződéses (EA-) fiókokhoz érhetők el._
+_<sup>**7**</sup> A foglalásvásárlások jelenleg csak nagyvállalati szerződéses (EA-) és Microsoft-ügyfélszerződéses fiókokhoz érhetők el._
 
 ## <a name="how-tags-are-used-in-cost-and-usage-data"></a>Címkék használata költség- és használati adatokban
 

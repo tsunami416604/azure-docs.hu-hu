@@ -18,6 +18,14 @@
       items:
         - name: Webalkalmazási tűzfal az Azure CDN-en
           href: ./cdn/cdn-overview.md
+- name: Rövid útmutatók
+  expanded: true
+  items:
+    - name: Application Gateway
+      items:
+        - name: WAF v2 – ARM sablon üzembe helyezése
+          displayName: Resource Manager
+          href: ./ag/quick-create-template.md
 - name: Oktatóanyagok
   items:
     - name: Application Gateway

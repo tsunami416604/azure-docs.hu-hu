@@ -21,8 +21,8 @@
           href: event-hubs-quickstart-cli.md
         - name: Azure PowerShell
           href: event-hubs-quickstart-powershell.md
-        - name: Azure Resource Manager-sablon
-          displayName: ARM
+        - name: ARM-sablon
+          displayName: Resource Manager
           href: event-hubs-resource-manager-namespace-event-hub.md
     - name: Események küldése és fogadása
       items:
@@ -115,13 +115,19 @@
                   href: authenticate-application.md
             - name: Hitelesítés közös hozzáférésű jogosultságkóddal
               href: authenticate-shared-access-signature.md
+        - name: Hálózati biztonság
+          href: network-security.md
         - name: Beépített biztonsági vezérlők
           href: event-hubs-security-controls.md
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
     - name: AMQP 1.0 protokoll – útmutató
       href: ../service-bus-messaging/service-bus-amqp-protocol-guide.md
       maintainContext: true
 - name: Útmutatók
   items:
+    - name: A Blob Storage használata ellenőrzőpont-tárolóként az Azure Stack Hubon
+      href: use-blob-storage-checkpoint-store-azure-stack-hub.md
     - name: Migrálás Azure Service Manager (klasszikus) API-król Resource Manager API-kra
       href: ../service-bus-messaging/deprecate-service-bus-management.md?toc=%2fazure%2fevent-hubs%2ftoc.json
     - name: Fejlesztés
@@ -156,17 +162,17 @@
           maintainContext: true
     - name: Integrálás az Apache Kafkával
       items:
-        - name: Kafka-kompatibilis eseményközpontok létrehozása
-          href: event-hubs-create-kafka-enabled.md
-        - name: Kafka-közvetítő tükrözése Apache Kafka-kompatibilis eseményközpontokba
+        - name: Kafka fejlesztői útmutató az Event Hubshoz
+          href: apache-kafka-developer-guide.md
+        - name: Kafka-közvetítő tükrözése egy eseményközpontba
           href: event-hubs-kafka-mirror-maker-tutorial.md
-        - name: Apache Spark csatlakoztatása Apache Kafka-kompatibilis eseményközpontokhoz
+        - name: Apache Spark csatlakoztatása egy eseményközponthoz
           href: event-hubs-kafka-spark-tutorial.md
-        - name: Apache Flink csatlakoztatása Apache Kafka-kompatibilis eseményközpontokhoz
+        - name: Apache Flink csatlakoztatása egy eseményközponthoz
           href: event-hubs-kafka-flink-tutorial.md
-        - name: Az Apache Kafka Connect integrálása Kafka-kompatibilis eseményközpontokkal (előzetes verzió)
+        - name: Az Apache Kafka Connect integrálása központokkal (előzetes verzió)
           href: event-hubs-kafka-connect-tutorial.md
-        - name: Akka Streams csatlakoztatása Apache Kafka-kompatibilis eseményközpontokhoz
+        - name: Az Akka Streams csatlakoztatása eseményközponthoz
           href: event-hubs-kafka-akka-streams-tutorial.md
     - name: Kezelés és monitorozás
       items:
@@ -182,13 +188,13 @@
           href: event-hubs-management-libraries.md
     - name: Biztonságos
       items:
-        - name: Tűzfalak használata
+        - name: IP-tűzfal konfigurálása
           href: event-hubs-ip-filtering.md
-        - name: Virtuális hálózati szolgáltatásvégpontok használata
+        - name: Virtuális hálózati szolgáltatásvégpontok konfigurálása
           href: event-hubs-service-endpoints.md
-        - name: Virtuális hálózati integráció és a tűzfalak engedélyezése Event Hubs-névtérben
-          href: event-hubs-tutorial-virtual-networks-firewalls.md
-        - name: Ügyfél által kezelt kulcsok konfigurálása inaktív adatok titkosításához
+        - name: Privát végpontok konfigurálása (előzetes verzió)
+          href: private-link-service.md
+        - name: Ügyfél által felügyelt kulcsok konfigurálása
           href: configure-customer-managed-key.md
     - name: Hibaelhárítás
       items:

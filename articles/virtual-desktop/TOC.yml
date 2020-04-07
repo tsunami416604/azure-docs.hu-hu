@@ -88,6 +88,10 @@
       href: app-attach.md
     - name: A Microsoft Teams használata
       href: teams-on-wvd.md
+    - name: Az Azure Multi-Factor Authentication beállítása
+      href: set-up-mfa.md
+    - name: Nyelvi csomagok telepítése
+      href: language-packs.md
 - name: Alapelvek
   items:
     - name: A Windows Virtual Desktop környezete

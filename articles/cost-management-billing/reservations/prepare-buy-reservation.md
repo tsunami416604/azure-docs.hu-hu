@@ -1,20 +1,20 @@
 ---
-title: Az Azure-foglalás megvásárlásának előkészítése
-description: Ismerje meg a fontosabb szempontokat, mielőtt Azure-foglalást vásárol.
+title: Azure-foglalás vásárlása
+description: Ismerje meg a fontosabb szempontokat, amelyek segíthetnek az Azure-foglalás vásárlásakor.
 author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 03/30/2020
 ms.author: banders
-ms.openlocfilehash: 1f5ca2d43356eab98cffe8414c00d97e5744739a
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 3a45a04786bb9976a42269191c8b24282905f96f
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80235655"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436969"
 ---
-# <a name="prepare-to-buy-a-reservation"></a>Foglalásvásárlás előkészítése
+# <a name="buy-a-reservation"></a>Foglalás vásárlása
 
 Az Azure Reservationsszel csökkentheti költségeit, ha több Azure-erőforrásra egy vagy három évre előre kötelezettséget vállal. Mielőtt elkötelezné magát a foglalásvásárlás mellett, tekintse át a következő szakaszokat, hogy felkészülhessen a vásárlásra.
 
@@ -50,6 +50,17 @@ A foglalás megvásárlása után bármikor frissítheti a hatókört. Ehhez lé
 
 ![A foglalási hatókör módosítását bemutató példa](./media/prepare-buy-reservation/rescope-reservation-resource-group.png)
 
+## <a name="discounted-subscription-and-offer-types"></a>Kedvezményes előfizetés- és ajánlattípusok
+
+A foglalási kedvezmények a következő jogosult előfizetésekre és ajánlattípusokra vonatkoznak.
+
+- Nagyvállalati szerződés (ajánlatszámok: MS-AZR-0017P vagy MS-AZR-0148P)
+- Microsoft-ügyfélszerződéses előfizetések.
+- Egyéni csomagok a használatalapú fizetés díjszabásával (ajánlatszámok: MS-AZR-0003P vagy MS-AZR-0023P).
+- CSP-előfizetések
+
+A más ajánlattípusokkal rendelkező előfizetésekben futó erőforrásokra nem érvényes a foglalási kedvezmény.
+
 ## <a name="purchase-reservations"></a>Foglalások vásárlása
 
 Foglalásokat az Azure Portalon, API-kkal, a PowerShellben és a parancssori felületen vásárolhat. Ha készen áll a foglalás vásárlására, olvassa el az alábbi, az Ön által használt szolgáltatásokra vonatkozó cikkeket:
@@ -66,6 +77,54 @@ Foglalásokat az Azure Portalon, API-kkal, a PowerShellben és a parancssori fel
 - [SQL Database](../../sql-database/sql-database-reserved-capacity.md)
 - [SQL Data Warehouse](prepay-sql-data-warehouse-charges.md)
 - [Virtuális gépek](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+
+## <a name="buy-reservations-with-monthly-payments"></a>Foglalások vásárlása havi kifizetésekkel
+
+Havi kifizetésekkel is fizethet a foglalásokért. Az előre fizetéses vásárlástól eltérően, amikor kifizeti a teljes összeget, a havi fizetéses lehetőség egyenlően osztja el a foglalás teljes költségét az időszak minden hónapjára. A foglalások előre vagy havonta fizetett összege megegyezik, és ha a havi fizetést választja, nem kell extra díjakat fizetnie.
+
+Ha foglalását Microsoft Ügyfélszerződés (Microsoft Customer Agreement, MCA) keretén belül vásárolta, a havonta fizetendő összeg a helyi pénznem aktuális hónapban érvényes átváltási árfolyamától függően változhat.
+
+A havi kifizetések az alábbiakhoz nem érhetőek el: Databricks, SUSE Linux-foglalások, Red Hat-csomagok és Azure Red Hat OpenShift-számítások.
+
+### <a name="view-payments-made"></a>A megtörtént kifizetések megtekintése
+
+A megtörtént kifizetéseket az API-k és a használati adatok használatával, valamint a költségelemzésben tekintheti meg. A havonta kifizetett foglalások esetében a gyakoriság értéke **ismétlődőként** jelenik meg a használati adatokban és a Reservation Charges API-ban. Az előre kifizetett foglalások esetében az érték **egyszeriként** jelenik meg.
+
+A költségelemzés az alapértelmezett nézetben jeleníti meg a havi vásárlásokat. A vásárlások megtekintéséhez alkalmazza a **vásárlás** szűrőt a **Költségtípus** elemre és az **ismétlődő** szűrőt a **Gyakoriság** elemre. Ha csak a foglalásokat szeretné megtekinteni, a **Foglalások** esetében alkalmazzon szűrőt.
+
+![Példa a foglalásvásárlási költségekre a költségelemzésben](./media/prepare-buy-reservation/cost-analysis.png)
+
+### <a name="exchange-and-refunds"></a>Csere és visszatérítés
+
+A többi foglaláshoz hasonlóan a havi számlázással vásárolt foglalások esetében is lehetőség van visszatérítésre és cserére. 
+
+Ha egy havi kifizetéses foglalást cserél le, akkor az új vásárlás teljes élettartamra vetített költségének nagyobbnak kell lennie, mint a lecserélni kívánt foglalás lemondott, fennmaradó kifizetései. Csere esetén nincsenek más korlátozások vagy díjak. Cserére akkor van lehetősége, ha egy előre kifizetett foglalás helyett vásárol egy havi számlázású, új foglalást. Az új foglalás élettartamra vetített értékének azonban nagyobbnak kell lennie, mint a lecserélni kívánt foglalás időarányos értéke.
+
+Ha lemond egy havonta fizetett foglalást, a lemondott későbbi kifizetések le lesznek vonva az 50 000 USD értékű visszatérítési korlátból.
+
+A cserével és a visszatérítéssel kapcsolatos további információkért lásd: [Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai](exchange-and-refund-azure-reservations.md).
+
+## <a name="reservation-notifications"></a>Foglalási értesítések
+
+Az Azure-előfizetésért történő fizetés módjától függően e-mailes foglalási értesítést küldünk a szervezet alábbi felhasználóinak. Számos különféle eseményről küldünk értesítést, ilyenek például: 
+
+- Vásárlás
+- Foglalás közelgő lejárata
+- Lejárat
+- Megújítás
+- Lemondás
+- Hatókör módosítása
+
+Nagyvállalati előfizetéssel rendelkező ügyfelek esetében:
+
+- Az értesítéseket csak az EA-értesítési kapcsolattartóknak küldjük el.
+- A foglaláshoz RBAC- (IAM-) engedéllyel hozzáadott felhasználók nem kapnak semmilyen e-mailes értesítést.
+
+Az egyéni előfizetéssel rendelkező ügyfelek esetében:
+
+- A vásárló kap egy vásárlási értesítést.
+- A vásárlás időpontjában az előfizetéshez tartozó számlázási fiók tulajdonosa kap egy vásárlási értesítést.
+- A fióktulajdonos kapja meg az összes többi értesítést.
 
 ## <a name="next-steps"></a>További lépések
 

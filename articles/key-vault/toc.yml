@@ -75,6 +75,8 @@
           href: overview-security.md
         - name: Biztonsági alapkonfiguráció
           href: security-baseline.md
+        - name: Beépített biztonság
+          href: key-vault-security-controls.md
         - name: Biztonsági világok
           href: key-vault-ovw-security-worlds.md
         - name: Kulcstartó védelme

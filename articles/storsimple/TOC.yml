@@ -87,7 +87,7 @@
           href: storsimple-ova-web-ui-admin.md
     - name: Kibocsátási megjegyzések
       items:
-        - name: 1.2-es frissítés
+        - name: 1.2-es frissítés – aktuális
           href: storsimple-virtual-array-update-12-release-notes.md
         - name: 1.1-es frissítés
           href: storsimple-virtual-array-update-11-release-notes.md
@@ -316,6 +316,8 @@
           items:
             - name: Előfizetések és tárfiókok
               href: storsimple-8000-migrate-classic-azure-portal.md
+            - name: 8000-es sorozatú eszközökről
+              href: storsimple-8000-migration-from-8000-options.md
             - name: Az 5000/7000 sorozat eszközeiről
               href: storsimple-8000-migration-options.md
               items:
@@ -327,13 +329,17 @@
               href: 'https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf'
         - name: Frissítés
           items:
-            - name: A 5-ös frissítés telepítése – aktuális
+            - name: Az 5.1-es frissítés telepítése – aktuális
+              href: storsimple-8000-install-update-51.md
+            - name: Az 5-ös frissítés telepítése
               href: storsimple-8000-install-update-5.md
             - name: A 4-es frissítés telepítése
               href: storsimple-8000-install-update-4.md
     - name: Kibocsátási megjegyzések
       items:
-        - name: 5-ös frissítés – aktuális
+        - name: 5.1-es frissítés – aktuális
+          href: storsimple-update51-release-notes.md
+        - name: 5-ös frissítés
           href: storsimple-update5-release-notes.md
         - name: 4-es frissítés
           href: storsimple-update4-release-notes.md

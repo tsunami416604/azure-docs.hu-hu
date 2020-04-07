@@ -456,8 +456,6 @@
           href: speech-sdk.md
         - name: Forgatókönyvek rendelkezésre állása
           href: scenario-availability.md
-        - name: Alkalmazáskészítés
-          href: ship-application.md
     - name: Első lépések
       items:
         - name: A Speech SDK beállítása
@@ -472,6 +470,9 @@
         - name: Linuxos OpenSSL konfigurálása
           displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
           href: how-to-configure-openssl-linux.md
+        - name: RHEL/CentOS 7 konfigurálása
+          href: how-to-configure-rhel-centos-7.md
+          displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentOS'
     - name: Példák
       items:
         - name: Speech SDK-minták (GitHub)
