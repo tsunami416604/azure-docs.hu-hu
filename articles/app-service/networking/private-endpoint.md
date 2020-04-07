@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c2717b1f29af39c6fdc4602b11acba131d959f03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d139cfa50afa94621066995314737fac70bbafe
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79534388"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756280"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Privát végpontok használata az Azure Web Apphoz (előzetes verzió)
 
@@ -25,7 +25,7 @@ Az Azure Web App privát végpontjával engedélyezheti, hogy a magánhálózatb
 
 A Web App privát végpontjának használata lehetővé teszi a következőket:
 
-- A webalkalmazás biztonságossá tétele a szolgáltatásvégpont konfigurálásával, a nyilvános expozíció megszüntetésével.
+- A webalkalmazás biztonságossá tétele a privát végpont konfigurálásával, a nyilvános expozíció kiküszöbölésével.
 - Biztonságosan csatlakozhat a Web Apphoz olyan helyszíni hálózatokról, amelyek VPN- vagy ExpressRoute-alapú privát társviszony-létesítéssel csatlakoznak a virtuális hálózathoz.
 
 Ha csak egy biztonságos kapcsolatra van szüksége a virtuális hálózat és a webalkalmazás között, a legegyszerűbb megoldás a Service Endpoint. Ha a webalkalmazást a helyszíni azure-átjárón, egy regionálistársviszony-létesítési virtuális hálózaton vagy egy globálisan társviszonyt, a privát végpont a megoldás.  

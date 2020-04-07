@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 0fb15a6d71278be9b380f793d39732e763d6447d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e7b7d04cd3d1ed9792f8ad3c7bc302e4a2c2180f
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286574"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745024"
 ---
 # <a name="iot-edge-module-offer-settings-tab"></a>IoT Edge modul ajánlatbeállításai lap
+
+>[!Important]
+>2020. március 30-tól megkezdjük az IoT Edge modulajánlatok kezelését a Partner Centerbe. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [IoT Edge-modulajánlat létrehozása](https://aka.ms/AzureCreateIoT) az áttelepített ajánlatok kezeléséhez kövesse az utasításokat.
 
 Megnyílik **az IoT Edge-modulok > új ajánlat** lap, amely az Ajánlat **beállításai** lapon jelenik meg. 
 

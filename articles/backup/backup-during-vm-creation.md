@@ -3,12 +3,12 @@ title: Biztonsági mentés engedélyezése Azure-beli virtuális gép létrehoz�
 description: Bemutatja, hogyan engedélyezheti a biztonsági mentést, amikor azure-beli virtuális gép létrehozása az Azure Backup használatával.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 0cfea6579791c4fd23c1b7acdfe722d57b5ec2fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7739109eb8bad88c9b723e67e13adc78c127499a
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247851"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672811"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Biztonsági mentés engedélyezése Azure-beli virtuális gép létrehozásakor
 
@@ -64,6 +64,8 @@ Megjegyzésre mutat:
 5. Az RG nevét szükség esetén módosíthatja a házirend módosításával. Ha a névminta megváltozik, új rp-k jönnek létre az új RG-ben. Azonban a régi r-k továbbra is a régi RG-ben maradnak, és nem kerülnek áthelyezésre, mivel az RP-gyűjtemény nem támogatja az erőforrás-áthelyezést. Végül a RPs kap szemetet gyűjtött, mint a pontok lejár.
 ![Név módosítása házirend módosításakor](./media/backup-during-vm-creation/modify-policy.png)
 6. Azt tanácsoljuk, hogy ne zárolja a biztonsági mentési szolgáltatás által használatra létrehozott erőforráscsoportot.
+
+Az Azure Backup erőforráscsoport PowerShell használatával a virtuális gépekhez való konfigurálásához olvassa el [az Azure Backup erőforráscsoport létrehozása a pillanatkép-megőrzés során című segédprogramot.](backup-azure-vms-automation.md#creating-azure-backup-resource-group-during-snapshot-retention)
 
 ## <a name="start-a-backup-after-creating-the-vm"></a>Biztonsági mentés indítása a virtuális gép létrehozása után
 

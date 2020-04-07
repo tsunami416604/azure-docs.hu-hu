@@ -1,0 +1,6 @@
+- name: Eszközök
+  href: tools/toc.yml
+- name: Hibaelhárítás
+  href: troubleshoot.md
+- name: Termékkel kapcsolatos visszajelzés küldése
+  href: 'https://feedback.azure.com/forums/928696-azure-remote-rendering'

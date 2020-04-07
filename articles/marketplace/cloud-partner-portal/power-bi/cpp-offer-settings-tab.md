@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: f3a8d740d391edc09a290d3dba4307af7eec00b1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 637217d718e6e91a3fa29bd38d8215d0a1324825
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286353"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745434"
 ---
 # <a name="power-bi-apps-offer-settings-tab"></a>A Power BI-alkalmazások ajánlatbeállításai lap
+
+>[!Important]
+>2020. március 30-tól megkezdjük a Power BI-alkalmazásajánlatok felügyeletének áthelyezését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Az áttelepített ajánlatok kezeléséhez kövesse a [Power BI-alkalmazások létrehozásának áttekintése](https://aka.ms/AzureCreatePBIServiceApp) című témakör utasításait.
 
 Amikor megnyitja a szolgáltatásalkalmazások **Új ajánlat** lapját, először megjelenik az **Ajánlat beállításai** lap. Ezen a lapon adja meg az ajánlat elsődleges azonosítóit és nevét. A csillag (*) egy kötelező mezőt jelöl.
 

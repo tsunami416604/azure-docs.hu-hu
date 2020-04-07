@@ -5,16 +5,16 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8e65ebbfa0971bf2156165b55ca18eee3cc74bc9
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 83108c056035b16d26343d82c721b275ebcad0c5
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239278"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754325"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Oktatóanyag: SQL BACPAC-fájlok importálása ARM sablonokkal
 
-Megtudhatja, hogy miként importálhat BACPAC-fájlt az Azure Resource Manager (ARM) sablonokkal, hogyan importálhat BACPAC-fájlt. A központi telepítési összetevők a központi telepítés végrehajtásához szükséges fájlok a fő sablonfájlokon kívül minden olyan fájl, amely szükséges. A BACPAC fájl egy műtárgy. 
+Megtudhatja, hogy miként importálhat BACPAC-fájlt az Azure Resource Manager (ARM) sablonokkal, hogyan importálhat BACPAC-fájlt. A központi telepítési összetevők a központi telepítés végrehajtásához szükséges fájlok a fő sablonfájlokon kívül minden olyan fájl, amely szükséges. A BACPAC fájl egy műtárgy.
 
 Ebben az oktatóanyagban hozzon létre egy sablont egy Azure SQL-kiszolgáló és egy SQL-adatbázis központi telepítéséhez és egy BACPAC-fájl importálásához. Az Azure virtuálisgép-bővítmények ARM-sablonok használatával történő központi telepítéséről [az Oktatóanyag: Virtuálisgép-bővítmények üzembe helyezése ARM-sablonokkal](./template-tutorial-deploy-vm-extensions.md)című témakörben olvashat.
 
@@ -255,7 +255,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban telepített egy SQL-kiszolgálót és egy SQL-adatbázist, és importált egy BACPAC-fájlt. A BACPAC-fájl egy Azure Storage-fiókban van tárolva. Bárki, aki rendelkezik az URL-címmel, hozzáférhet a fájlhoz. A BACPAC-fájl (műtermék) biztonságossá tétele című témakörben olvashat:
+Ebben az oktatóanyagban telepített egy SQL-kiszolgálót és egy SQL-adatbázist, és importált egy BACPAC-fájlt. A sablonok telepítésével kapcsolatos hibák elhárításáról az:
 
 > [!div class="nextstepaction"]
-> [A műtárgyak biztonságossá tétele](./template-tutorial-secure-artifacts.md)
+> [ARM-sablon-telepítések – problémamegoldás](./template-tutorial-troubleshoot.md)

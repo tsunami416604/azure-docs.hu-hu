@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 04/06/2020
 ms.author: victorh
-ms.openlocfilehash: 74e5a427d62d5249ffe6b0426b62a3577e43462f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e0638cbccd5e3bc282dbdd7d3b5918e29081a12b
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444484"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757163"
 ---
 # <a name="ip-groups-preview-in-azure-firewall"></a>IP-csoportok (előzetes verzió) az Azure tűzfalon
 
@@ -54,7 +54,7 @@ Az IP-csoport összes IP-címét, valamint a hozzá kapcsolódó szabályokat va
 
 1. Az IP-címek megtekintéséhez vagy szerkesztéséhez válassza az **IP-címek** lehetőséget a bal oldali ablaktábla **Beállítások** területén.
 2. Egy vagy több IP-cím hozzáadásához jelölje be az **IP-címek hozzáadása jelölőnégyzetet.** Ekkor megnyílik a **Feltöltés Húzás vagy tallózás lapja,** vagy manuálisan is megadhatja a címet.
-3.  Az IP-címek szerkesztéséhez vagy törléséhez jobbra lévő három pont (**...**) kiválasztása. Több IP-cím szerkesztéséhez vagy törléséhez jelölje be a jelölőnégyzeteket, és felül válassza a **Szerkesztés** vagy a **Törlés** lehetőséget.
+3.    Az IP-címek szerkesztéséhez vagy törléséhez jobbra lévő három pont (**...**) kiválasztása. Több IP-cím szerkesztéséhez vagy törléséhez jelölje be a jelölőnégyzeteket, és felül válassza a **Szerkesztés** vagy a **Törlés** lehetőséget.
 4. Végül, exportálhatja a fájlt a CSV fájlformátumban.
 
 > [!NOTE]
@@ -72,24 +72,47 @@ Az Azure Firewall DNST, alkalmazás vagy hálózati szabályok létrehozásakor 
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 
-Az IP-csoportok jelenleg a következő régiókban érhetők el:
+Az IP-csoportok minden nyilvános felhőrégióban elérhetők.
 
-- USA nyugati régiója
-- USA nyugati régiója, 2.
-- USA keleti régiója
-- USA 2. keleti régiója
-- USA középső régiója
-- USA északi középső régiója
-- USA nyugati középső régiója
-- USA déli középső régiója
-- Közép-Kanada
-- Észak-Európa
-- Nyugat-Európa
-- Közép-Franciaország
-- Az Egyesült Királyság déli régiója
-- Kelet-Ausztrália
-- Ausztrália középső régiója
-- Délkelet-Ausztrália
+## <a name="ip-address-limits"></a>IP-címkorlátok
+
+50 vagy kevesebb IP-csoport esetén tűzfalpéldányonként legfeljebb 5000 egyedi IP-cím lehet. 51–100 IP-csoport esetén tűzfalpéldányonként 500 egyedi IP-címet kaphat.
+
+### <a name="examples"></a>Példák
+
+#### <a name="example-1-supported"></a>1. példa: támogatott
+
+|IP-csoportok  |# IP-címek  |Jelölés  |Szabály  |
+|---------|---------|---------|---------|
+|IPGroup1 |4096     |10.0.0.0/20  |1. szabály|
+|IPGroup2     |3|196.0.0.0 - 196.0.0.2|1. szabály|
+|IPGroup3     |1|1.2.3.4|1. szabály|
+|     |**Összesen 4100**|         |         |
+|     |         |         |         |
+
+#### <a name="example-2-supported"></a>2. példa: támogatott
+
+|IP-csoportok  |# IP-címek  |Jelölés  |Szabály  |
+|---------|---------|---------|---------|
+|IPGroup1 |4096     |10.0.0.0/20  |1. szabály|
+|IPGroup2     |4096|11.0.0.0/20|1. szabály|
+|     |**Összesen 8192**|         |         |
+
+#### <a name="example-3-not-supported"></a>3. példa: nem támogatott
+
+|IP-csoportok  |# IP-címek  |Jelölés  |Szabály  |
+|---------|---------|---------|---------|
+|IPGroup1 |8192     |10.0.0.0/20, 11.0.0.0/20  |1. szabály|
+|     |**Összesen 8192**|||
+
+#### <a name="example-4-supported"></a>4. példa: támogatott
+
+|IP-csoportok  |# IP-címek  |Jelölés  |Szabály  |
+|---------|---------|---------|---------|
+|IPGroup1 |4096     |10.0.0.0/20  |1. szabály|
+|IPGroup2     |4096|11.0.0.0/20|2. szabály|
+|     |**Összesen 8192**|         |         |
+
 
 ## <a name="related-azure-powershell-cmdlets"></a>Kapcsolódó Azure PowerShell-parancsmagok
 

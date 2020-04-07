@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: cd0c74c8aa40b3e96716ef37aa27b08b5f6aece1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6acc1ffd197ddba4290ff7c0751b259d98a70927
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76547540"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754394"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Az Avere vFXT rendszer megtervezése
 
@@ -142,7 +142,7 @@ Az Avere vFXT azure-fürt höz található egy privát alhálózat, és a fürt 
 
 A hozzáférési lehetőségek a következők:
 
-* Jump host – Nyilvános IP-cím hozzárendelése egy külön virtuális géphez a magánhálózaton belül, és ezzel ssl-alagút létrehozásához a fürtcsomópontokhoz.
+* Jump host – Nyilvános IP-cím hozzárendelése egy külön virtuális gép hez a magánhálózaton belül, és ezzel tls-alagutat hozhat létre a fürtcsomópontokhoz.
 
   > [!TIP]
   > Ha nyilvános IP-címet állít be a fürtvezérlőn, használhatja ugrási állomásként. További információért olvassa el [a fürtvezérlőt ugróállomásként.](#cluster-controller-as-jump-host)

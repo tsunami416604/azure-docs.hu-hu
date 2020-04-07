@@ -11,12 +11,12 @@ author: memildin
 manager: rkarlin
 ms.reviewer: vanto
 ms.date: 03/31/2019
-ms.openlocfilehash: 1f0e6694e596dc60264dfe0789a2f80090e0da3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aed0bcb79dedf057c5943cea9f4b4399b2f630cb
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79269132"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677471"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Speciális adatbiztonság az Azure SQL Database-hez
 
@@ -26,8 +26,8 @@ A fejlett adatbiztonság egy egységes csomag a fejlett SQL biztonsági képess�
 
 A fejlett adatbiztonság (ADS) fejlett SQL biztonsági képességeket biztosít, beleértve az adatfelderítést & besorolást, a biztonsági résfelmérést és a komplex veszélyforrások elleni védelmet.
 
-- Az Azure SQL Database-be beépített [adatfelderítési & besorolás](sql-database-data-discovery-and-classification.md) az adatbázisokban lévő bizalmas adatok felderítéséhez, besorolásához, címkézéséhez & védelméhez beépített funkciókat biztosít. Használatával áttekinthető az adatbázis besorolási állapota, valamint követhető a bizalmas adatokhoz való hozzáférés az adatbázison belül és azon kívül.
-- [A biztonsági rés felmérése](sql-vulnerability-assessment.md) könnyen konfigurálható szolgáltatás, amely képes felderíteni, nyomon követni és segíteni az adatbázis esetleges biztonsági réseinek elhárításában. Áttekinthetővé teszi az adatbázisok biztonsági állapotát, és végrehajtható lépéseket kínál a biztonsági problémák megoldására, valamint az adatbázisok védelmének fejlesztésére.
+- [A Data Discovery & Classification](sql-database-data-discovery-and-classification.md) az Azure SQL Database beépített funkcióit biztosítja az adatbázisokban lévő bizalmas adatok felderítéséhez, besorolásához, címkézéséhez & jelentéséhez. Használatával áttekinthető az adatbázis besorolási állapota, valamint követhető a bizalmas adatokhoz való hozzáférés az adatbázison belül és azon kívül.
+- A [sebezhetőségi felmérés](sql-vulnerability-assessment.md) egy könnyen konfigurálható szolgáltatás, amely képes felderíteni és követni az adatbázisok lehetséges biztonsági réseit, és segít orvosolni azokat. Áttekinthetővé teszi az adatbázisok biztonsági állapotát, és végrehajtható lépéseket kínál a biztonsági problémák megoldására, valamint az adatbázisok védelmének fejlesztésére.
 - Az [Advanced Threat Protection](sql-database-threat-detection-overview.md) észleli az adatbázisai hozzáférésére és az adatbázisai biztonságának megsértésére tett szokatlan és potenciálisan kártevő szándékú kísérleteket. A szolgáltatás folyamatosan figyeli az adatbázisokat, és azonnal értesíti a felhasználót a gyanús tevékenységekről, a lehetséges biztonsági résekről, az SQL-injektálásos támadásokról, valamint a rendellenes adatbázis-hozzáférési mintákról. Az Advanced Threat Protection által adott riasztások tartalmazzák a gyanús tevékenység részleteit, és javaslatot tesznek a fenyegetés kivizsgálására és mérséklésére tett műveletekre.
 
 Engedélyezze az SQL ADS egyszeri engedélyezését az összes ilyen funkció engedélyezéséhez. Egyetlen kattintással engedélyezheti az ADS-t az SQL Database-kiszolgálón vagy a felügyelt példányon lévő összes adatbázishoz. Az ADS-beállítások engedélyezéséhez vagy kezeléséhez az [SQL biztonsági kezelői](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) szerepkörhöz, az SQL-adatbázis felügyeleti szerepköréhez vagy az SQL-kiszolgáló felügyeleti szerepköréhez kell tartoznia. 
@@ -62,7 +62,7 @@ Az ADS-beállítások megtekintéséhez és kezeléséhez keresse meg a **Speci�
 
 ## <a name="4-manage-ads-settings-for-a-sql-database"></a>4. SQL-adatbázis ADS-beállításainak kezelése
 
-Egy adott adatbázis ADS-beállításainak felülbírálásához jelölje be a **Speciális adatbiztonság engedélyezése az adatbázis szintjén** jelölőnégyzetet. Csak akkor használja ezt a beállítást, ha külön követelmény, hogy az egyes adatbázisokhoz külön speciális veszélyforrások elleni riasztást vagy sebezhetőségi értékelési eredményeket kapjon, a riasztási és a kapott eredmények helyett vagy mellett a adatbázis-kiszolgáló vagy felügyelt példány.
+Egy adott adatbázis ADS-beállításainak felülbírálásához jelölje be a **Speciális adatbiztonság engedélyezése az adatbázis szintjén** jelölőnégyzetet. Csak akkor használja ezt a beállítást, ha az adatbázis-kiszolgálón vagy felügyelt példányon található összes adatbázishoz kapott riasztások és eredmények helyett vagy mellett külön speciális veszélyforrások elleni védelemre vonatkozó riasztásokat vagy biztonsági résértékelési eredményeket kell kapnia az egyes adatbázisokhoz.
 
 A jelölőnégyzet bejelölését követően konfigurálhatja az adatbázis megfelelő beállításait.
  
@@ -75,6 +75,6 @@ Az adatbázis-kiszolgáló vagy a felügyelt példány speciális adatbiztonság
 ## <a name="next-steps"></a>További lépések 
 
 - További információ az [adatfelderítésről & besorolásról](sql-database-data-discovery-and-classification.md) 
-- További információ a [sebezhetőség felméréséről](sql-vulnerability-assessment.md) 
+- További információ a [biztonsági rés felméréséről](sql-vulnerability-assessment.md) 
 - További információ a [komplex veszélyforrások elleni védelemről](sql-database-threat-detection.md)
-- További információ az [Azure biztonsági központjáról](https://docs.microsoft.com/azure/security-center/security-center-intro)
+- További információ az [Azure Security Centerről](https://docs.microsoft.com/azure/security-center/security-center-intro)

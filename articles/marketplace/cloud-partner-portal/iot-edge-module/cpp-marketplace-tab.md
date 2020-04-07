@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 3ff65a637c1d3722e773ab27f051b3b5bc109a23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4290bad405ddab6d89cac5ef7bfd185247d41da1
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281731"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745111"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>IoT Edge modul piactér lapja
+
+>[!Important]
+>2020. március 30-tól megkezdjük az IoT Edge modulajánlatok kezelését a Partner Centerbe. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [IoT Edge-modulajánlat létrehozása](https://aka.ms/AzureCreateIoT) az áttelepített ajánlatok kezeléséhez kövesse az utasításokat.
 
 Az **Új ajánlat** lap **Piactér** lapja lehetővé teszi, hogy a leendő ügyfelek számára marketinget, értékesítést és jogi információkat és megállapodásokat biztosítson, és kezelje a piactérről generált érdeklődőket. Ez a hosszú forma négy részből áll: **Áttekintés**, **Marketing leletek**, **Ólommenedzsment**és **Jogi**.
 
@@ -86,7 +89,7 @@ Ez a szakasz a következő alszakaszokat ismerteti: **Emblémák**, **Képernyő
 |  ---------                |     ---------------                                                          |
 | *Logók*  | Az előző képernyőfelvételből megtudhatja, hogyan és hol fogja használni az emblémákat.  |
 | **Kicsi\***                 | 40x40 pixeles PNG formátum                                                     |
-| **Közepes\***                | 90x90 pixeles PNG formátum                                                     |
+| **Medium\***                | 90x90 pixeles PNG formátum                                                     |
 | **Nagy\***                 | 115x115 pixeles PNG formátum                                                  |
 | **Széles\***                  | 255x115 pixeles PNG formátum                                                   |
 | **Hős**                  | 815x290 pixelPNG formátumban.  Nem kötelező, azonban a feltöltés után a hős ikon nem törölhető. |

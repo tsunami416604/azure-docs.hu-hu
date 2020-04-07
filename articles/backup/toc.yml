@@ -32,8 +32,6 @@
       href: tutorial-sql-backup.md
     - name: SAP HANA-adatbázisok biztonsági mentése Azure-beli virtuális gépeken
       href: tutorial-backup-sap-hana-db.md
-    - name: Azure Files-fájlmegosztások biztonsági mentése
-      href: tutorial-backup-azure-files.md
     - name: A Windows Server biztonsági mentése
       href: tutorial-backup-windows-server-to-azure.md
     - name: Fájlok visszaállítása a Windows Serverbe

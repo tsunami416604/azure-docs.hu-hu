@@ -9,12 +9,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 9c1260bb1fab23ede2d1a96725c3086dc128fffc
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.openlocfilehash: 39747ac0a7133562bed526f44e30bf4a656127c0
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387648"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673611"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>Forgatókönyv a gyakori biztonsági követelmények kezelésére az Azure SQL-adatbázissal
 
@@ -451,7 +451,7 @@ A titkosítás segítségével biztosítható, hogy csak a kriptográfiai kulcso
 - Cellszintű titkosítás (CLE) használata. A részleteket lásd a cikkben: [Titkosíthatja az adatoszlopot.](https://docs.microsoft.com/sql/relational-databases/security/encryption/encrypt-a-column-of-data) 
 - Használja mindig titkosított, de tudatában kell lennie annak korlátozását. A korlátozások az alábbiakban találhatók.
 
-**Bevált módszerek**
+**Ajánlott eljárások**
 
 Cle használata esetén:
 
@@ -466,7 +466,7 @@ Cle használata esetén:
 
 Ne feledje, hogy a Mindig titkosított elsődleges célja a használatban lévő bizalmas adatok védelme az Azure SQL Database (felhőoperátorok, Adatrendszerű szolgáltatók) magas jogosultságú felhasználóitól – [lásd: Bizalmas adatok védelme a magas jogosultságú, jogosulatlan felhasználókkal szemben.](#protect-sensitive-data-in-use-from-high-privileged-unauthorized-users) Az alábbi kihívásokat kell figyelembe venni, amikor az Mindig titkosított használatával védi az adatokat az alkalmazás felhasználóitól:
 
-- Alapértelmezés szerint a Mindig titkosított microsoftos ügyfélillesztők az oszloptitkosítási kulcsok globális (alkalmazásonként egyet) gyorsítótárát tartják fenn. Amint egy ügyfél-illesztőprogram beszerez egy egyszerű szöveges oszloptitkosítási kulcsot, és kapcsolatba lép egy oszlopfőkulcsot tároló kulcstárolóval, a rendszer gyorsítótárba helyezi az egyszerű szöveges oszloptitkosítási kulcsot. Ez kihívást jelent a többfelhasználós alkalmazások felhasználóitól származó adatok elkülönítése. Ha az alkalmazás megszemélyesíti a végfelhasználókat, amikor egy kulcstárolóval (például az Azure Key Vaultdal) kommunikálnak, miután a felhasználó lekérdezése oszloptitkosítási kulccsal feltölti a gyorsítótárat, egy későbbi lekérdezés, amely ugyanazt a kulcsot igényli, de egy másik felhasználó gyorsítótárazott kulcs. Az illesztőprogram nem hívja meg a kulcstárolót, és nem ellenőrzi, hogy a második felhasználó rendelkezik-e engedéllyel az oszloptitkosítási kulcs eléréséhez. Ennek eredményeképpen a felhasználó akkor is láthatja a titkosított adatokat, ha a felhasználó nem fér hozzá a kulcsokhoz. A felhasználók többfelhasználós alkalmazásokon belüli elkülönítésének elérése érdekében letilthatja az oszloptitkosítási kulcs gyorsítótárazását. A gyorsítótárazás letiltása további teljesítménybeli költségeket eredményez, mivel az illesztőprogramnak minden adattitkosítási vagy visszafejtési művelethez kapcsolatba kell lépnie a kulcstárolóval.
+- Alapértelmezés szerint a Mindig titkosított microsoftos ügyfélillesztők az oszloptitkosítási kulcsok globális (alkalmazásonként egyet) gyorsítótárát tartják fenn. Amint egy ügyfél-illesztőprogram beszerez egy egyszerű szöveges oszloptitkosítási kulcsot, és kapcsolatba lép egy oszlopfőkulcsot tároló kulcstárolóval, a rendszer gyorsítótárba helyezi az egyszerű szöveges oszloptitkosítási kulcsot. Ez kihívást jelent a többfelhasználós alkalmazások felhasználóitól származó adatok elkülönítése. Ha az alkalmazás megszemélyesíti a végfelhasználókat, amikor egy kulcstárolóval (például az Azure Key Vaultdal) kommunikálnak, miután a felhasználó lekérdezése oszloptitkosítási kulccsal feltölti a gyorsítótárat, egy későbbi lekérdezés, amely ugyanazt a kulcsot igényli, de egy másik felhasználó által aktivált, a gyorsítótárazott kulcsot fogja használni. Az illesztőprogram nem hívja meg a kulcstárolót, és nem ellenőrzi, hogy a második felhasználó rendelkezik-e engedéllyel az oszloptitkosítási kulcs eléréséhez. Ennek eredményeképpen a felhasználó akkor is láthatja a titkosított adatokat, ha a felhasználó nem fér hozzá a kulcsokhoz. A felhasználók többfelhasználós alkalmazásokon belüli elkülönítésének elérése érdekében letilthatja az oszloptitkosítási kulcs gyorsítótárazását. A gyorsítótárazás letiltása további teljesítménybeli költségeket eredményez, mivel az illesztőprogramnak minden adattitkosítási vagy visszafejtési művelethez kapcsolatba kell lépnie a kulcstárolóval.
 
 ### <a name="protect-data-against-unauthorized-viewing-by-application-users-while-preserving-data-format"></a>Az adatok védelme az alkalmazásfelhasználók általi jogosulatlan megtekintésellen az adatformátum megőrzése mellett
 Egy másik módszer, amely megakadályozza, hogy a jogosulatlan felhasználók megtekinthessék az adatokat, az adatok elfedése vagy maszkolása az adattípusok és -formátumok megőrzése mellett annak érdekében, hogy a felhasználói alkalmazások továbbra is kezelni és megjeleníteni tudják az adatokat.
@@ -735,7 +735,7 @@ Figyelheti, hogy ki fér hozzá a bizalmas adatokhoz, és a lekérdezési napló
 **Hogyan kell végrehajtani:**
 
 - Az SQL Audit és az adatbesorolás használata együttesen. 
-  - Az [SQL-adatbázis naplózási](sql-database-auditing.md) naplójában nyomon követheti a hozzáférést kifejezetten a bizalmas adatokhoz. Megtekintheti az olyan információkat is, mint például az elért adatok, valamint azok érzékenységi címkéje. További információ: [A bizalmas adatokhoz való hozzáférés naplózása.](sql-database-data-discovery-and-classification.md#subheading-3) 
+  - Az [SQL-adatbázis naplózási](sql-database-auditing.md) naplójában nyomon követheti a hozzáférést kifejezetten a bizalmas adatokhoz. Megtekintheti az olyan információkat is, mint például az elért adatok, valamint azok érzékenységi címkéje. További információ: [Data Discovery & Classification](sql-database-data-discovery-and-classification.md) and [Auditing access to sensitive data](sql-database-data-discovery-and-classification.md#audit-sensitive-data). 
 
 **Bevált gyakorlatok:**
 

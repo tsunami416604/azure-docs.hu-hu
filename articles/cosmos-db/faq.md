@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 0c994caf094918b39204437b5194d81a64affc66
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 114c632d43dbb254222def2437fbffc22ec84688
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545662"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672462"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Gyakori kérdések az Azure Cosmos DB különböző API-jaival kapcsolatban
 
@@ -640,7 +640,7 @@ A fenti profil kimenete azt mutatja, hogy mennyi időt tölt a csúcspontobjektu
 
 ## <a name="cassandra-api"></a><a id="cassandra"></a>Cassandra API
 
-### <a name="what-is-the-protocol-version-supported-by-azure-cosmso-db-cassandra-api-is-there-a-plan-to-support-other-protocols"></a>Mi az Azure Cosmso DB Cassandra API által támogatott protokollverzió? Van terv más protokollok támogatására?
+### <a name="what-is-the-protocol-version-supported-by-azure-cosmos-db-cassandra-api-is-there-a-plan-to-support-other-protocols"></a>Mi az Azure Cosmos DB Cassandra API által támogatott protokollverzió? Van terv más protokollok támogatására?
 
 Az Apache Cassandra API for Azure Cosmos DB ma támogatja a CQL 4-es verzióját. Ha visszajelzést kap más protokollok támogatásáról, tudassa velünk a felhasználói [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) [hangvisszajelzést,](https://feedback.azure.com/forums/263030-azure-cosmos-db) vagy küldjön e-mailt a rendszernek.
 

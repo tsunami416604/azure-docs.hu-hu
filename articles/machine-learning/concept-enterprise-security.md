@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 359fd7fc787db5710deca75dd562215d25ed9148
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 4fbb3e83692ec058c03b22654e82d4093fe3541d
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437490"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756566"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Nagyvállalati biztonság az Azure Machine Learning számára
 
@@ -134,7 +134,15 @@ Engedélyezheti az Azure Private Linket a munkaterületéhez is. A Privát hivat
 ### <a name="encryption-at-rest"></a>Titkosítás inaktív állapotban
 
 > [!IMPORTANT]
-> Ha a munkaterület bizalmas adatokat tartalmaz, javasoljuk, hogy a munkaterület létrehozásakor a [hbi_workspace jelzőt.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) Ez szabályozza a Microsoft által diagnosztikai célokra gyűjtött adatok mennyiségét, és további titkosítást tesz lehetővé a Microsoft által felügyelt környezetekben.
+> Ha a munkaterület bizalmas adatokat tartalmaz, javasoljuk, hogy a munkaterület létrehozásakor a [hbi_workspace jelzőt.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) 
+
+A `hbi_workspace` jelző szabályozza a Microsoft által diagnosztikai célokra gyűjtött adatok mennyiségét, és további titkosítást tesz lehetővé a Microsoft által felügyelt környezetekben. Ezen kívül lehetővé teszi a következőket:
+
+* Elindítja a helyi munkalemez titkosítását az Amlcompute-fürtben, feltéve, hogy nem hozott létre korábbi fürtöket az adott előfizetésben. A számítási fürtök munkalemezének titkosításához támogatási jegyet kell emelnie 
+* Megtisztítja a helyi munkalemezt a futtatások között
+* Biztonságosan továbbítja a tárfiók, a tároló-beállításjegyzék és az SSH-fiók hitelesítő adatait a végrehajtási rétegből a számítási fürtökbe a key vault használatával
+* Engedélyezi az IP-szűrést annak biztosítására, hogy az alapul szolgáló kötegkészleteket az AzureMachineLearningService-en kívül más külső szolgáltatások nem tudják meghívni.
+
 
 Ha többet szeretne tudni arról, hogyan működik az inaktív titkosítás az Azure-ban, olvassa [el az Azure-adatok titkosítását.](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
 

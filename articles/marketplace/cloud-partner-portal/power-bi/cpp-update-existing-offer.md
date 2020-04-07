@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 04e10b9c5410d15d3509829af7502c9a93c7267d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02f2f8ce523e9316b749a9639112176a74da66d2
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281629"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745534"
 ---
 # <a name="update-a-power-bi-app-offer"></a>Power BI App-ajánlat frissítése
+
+>[!Important]
+>2020. március 30-tól megkezdjük a Power BI-alkalmazásajánlatok felügyeletének áthelyezését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Az áttelepített ajánlatok kezeléséhez kövesse a [Power BI-alkalmazások létrehozásának áttekintése](https://aka.ms/AzureCreatePBIServiceApp) című témakör utasításait.
 
 Ez a cikk bemutatja, hogyan frissítheti a Microsoft Power BI alkalmazásajánlatát a [Cloud Partner Portalon,](https://cloudpartner.azure.com/) majd hogyan teheti közzé újra az ajánlatot. Az ajánlat frissítésének néhány gyakori oka:
 

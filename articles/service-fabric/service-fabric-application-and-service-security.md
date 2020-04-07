@@ -3,12 +3,12 @@ title: További információ az Azure Service Fabric alkalmazásbiztonságáról
 description: A mikroszolgáltatások alkalmazásainak biztonságos futtatásának áttekintése a Service Fabricen. Megtudhatja, hogy miként futtathat szolgáltatásokat és indítási parancsfájlokat különböző biztonsági fiókok alatt, hogyan hitelesítheti és engedélyezheti a felhasználókat, kezelheti az alkalmazástitkokat, nem biztonságos a szolgáltatáskommunikáció, hogyan használhat API-átjárót, és hogyan biztosíthatja az inaktív alkalmazásadatokat.
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: 6c40bf66d1068310790d1440174eeb5b2a571154
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e9b4a1209838bdd5eee401b0defb01839b5cf684
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75452261"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756232"
 ---
 # <a name="service-fabric-application-and-service-security"></a>A Service Fabric alkalmazás- és szolgáltatásbiztonsága
 A mikroszolgáltatások architektúrája [számos előnnyel járhat.](service-fabric-overview-microservices.md) A mikroszolgáltatások biztonságának kezelése azonban kihívást jelent, és különbözik a hagyományos monolitikus alkalmazások biztonságának kezelésétől. 
@@ -33,7 +33,7 @@ A hitelesítés után a szolgáltatásoknak engedélyezniük kell a felhasznál�
 [ASP.NET Az alapengedélyezés](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/authorization-net-microservices-web-applications) a felhasználói szerepkörök vagy az egyéni házirend alapján végezhető el, amely magában foglalhatja a jogcímek vagy más heurisztika vizsgálatát.
 
 ## <a name="restrict-and-secure-access-using-an-api-gateway"></a>Hozzáférés korlátozása és biztonságossá tétele API-átjáró használatával
-A felhőalapú alkalmazásokhoz általában előtér-átjáró szükséges, amely egyetlen belépési pontként szolgálhat a felhasználók, eszközök és egyéb alkalmazások számára. Az [API-átjáró](/azure/architecture/microservices/gateway) az ügyfelek és a szolgáltatások között helyezkedik el, és az alkalmazás által nyújtott összes szolgáltatás belépési pontja. Fordított proxyként működik, és az ügyfelektől a szolgáltatásokhoz irányítja a kérelmeket. Emellett különböző, több területet érintő feladatokat is elvégezhet, például hitelesítést és engedélyezést, SSL-végződést és sebességkorlátozást. Ha nem telepít iszlamistát, az ügyfeleknek közvetlenül az előtér-szolgáltatásoknak kell kéréseket küldeniük.
+A felhőalapú alkalmazásokhoz általában előtér-átjáró szükséges, amely egyetlen belépési pontként szolgálhat a felhasználók, eszközök és egyéb alkalmazások számára. Az [API-átjáró](/azure/architecture/microservices/gateway) az ügyfelek és a szolgáltatások között helyezkedik el, és az alkalmazás által nyújtott összes szolgáltatás belépési pontja. Fordított proxyként működik, és az ügyfelektől a szolgáltatásokhoz irányítja a kérelmeket. Emellett különböző, több területet érintő feladatokat is elvégezhet, például hitelesítést és engedélyezést, TLS-végződtetést és sebességkorlátozást. Ha nem telepít iszlamistát, az ügyfeleknek közvetlenül az előtér-szolgáltatásoknak kell kéréseket küldeniük.
 
 A Service Fabric-ben az átjáró bármilyen állapotnélküli szolgáltatás lehet, például egy [ASP.NET Core alkalmazás,](service-fabric-reliable-services-communication-aspnetcore.md)vagy egy másik, forgalomforgalom-forgalomhoz tervezett szolgáltatás, például [a Traefik,](https://docs.traefik.io/) [az Event Hubs,](https://docs.microsoft.com/azure/event-hubs/)az [IoT Hub](https://docs.microsoft.com/azure/iot-hub/)vagy az Azure API [Management.](https://docs.microsoft.com/azure/api-management)
 

@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: ee3501e7feec77c842f3784f6c2820af05637e6b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 43bb34a80d8d62cfa2bde445b94fb97da25ccda3
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286387"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745478"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Power BI App-ajánlat létrehozása
+
+>[!Important]
+>2020. március 30-tól megkezdjük a Power BI-alkalmazásajánlatok felügyeletének áthelyezését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Az áttelepített ajánlatok kezeléséhez kövesse a [Power BI-alkalmazások létrehozásának áttekintése](https://aka.ms/AzureCreatePBIServiceApp) című témakör utasításait.
 
 Ez a cikk azokat a lépéseket sorolja fel, amelyeket az [AppSource](https://appsource.microsoft.com)új Power BI Alkalmazásajánlatának létrehozásához kell végrehajtani. Minden ajánlat saját entitásként jelenik meg az AppSource-ban. Amikor új ajánlatot hoz létre a [Cloud Partner Portalon,](https://cloudpartner.azure.com/)négy eszközcsoportot kell megadnia az ajánlathoz.
 

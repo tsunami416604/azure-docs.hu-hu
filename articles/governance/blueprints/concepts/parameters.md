@@ -3,12 +3,12 @@ title: Paraméterek használata dinamikus tervrajzok létrehozásához
 description: Ismerje meg a statikus és dinamikus paramétereket, és hogyan használhatja őket biztonságos és dinamikus tervrajzok létrehozásához.
 ms.date: 03/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: 68987b3e0f418721986003dc796f00ac1dd6dda1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 36735d71b746301819e5079aba1697b55fe5e183
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264712"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677585"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Dinamikus tervrajzok létrehozása paramétereken keresztül
 
@@ -20,7 +20,7 @@ Egy egyszerű példa az erőforráscsoport-összetevő. Erőforráscsoport létr
 > Nem probléma két különböző tervrajz, hogy egy erőforráscsoport azonos nevű.
 > Ha egy tervrajzban szereplő erőforráscsoport már létezik, a terv folytatja a kapcsolódó összetevők létrehozását az adott erőforráscsoportban. Ez ütközést okozhat, mivel két azonos nevű és erőforrástípussal rendelkező erőforrás nem létezhet egy előfizetésen belül.
 
-A probléma megoldása a paraméterek. Tervrajzok lehetővé teszi, hogy meghatározza az érték az egyes tulajdonság a műtermék hozzárendelése során egy előfizetés. A paraméter lehetővé teszi, hogy újra egy terv, amely létrehoz egy erőforráscsoportot és más erőforrásokat egyetlen előfizetésütközés nélkül egyetlen előfizetésen belül.
+A probléma megoldása a paraméterek. Az Azure Blueprints lehetővé teszi, hogy meghatározza az érték a műtermék minden egyes tulajdonsága az előfizetés hozzárendelése során. A paraméter lehetővé teszi, hogy újra egy terv, amely létrehoz egy erőforráscsoportot és más erőforrásokat egyetlen előfizetésütközés nélkül egyetlen előfizetésen belül.
 
 ## <a name="blueprint-parameters"></a>Tervparaméterek
 

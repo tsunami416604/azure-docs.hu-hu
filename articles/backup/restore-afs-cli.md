@@ -3,12 +3,12 @@ title: Az Azure-fájlmegosztások visszaállítása az Azure CLI-vel
 description: Megtudhatja, hogy az Azure CLI használatával hogyan állíthatja vissza a biztonsági másolatot az Azure-fájlmegosztásokat a Recovery Services-tárolóban
 ms.topic: conceptual
 ms.date: 01/16/2020
-ms.openlocfilehash: 63b2be2fe24c1274ed1581b7b849de578c978842
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 980044011e3417a2aff8447a939e02299923da38
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76931046"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757092"
 ---
 # <a name="restore-azure-file-shares-with-the-azure-cli"></a>Az Azure-fájlmegosztások visszaállítása az Azure CLI-vel
 
@@ -19,6 +19,9 @@ A cikk végén megtudhatja, hogyan hajthatja végre a következő műveleteket a
 * Tekintse meg a biztonsági másolatot, az Azure-fájlmegosztás visszaállítási pontjait.
 * Teljes Azure-fájlmegosztás visszaállítása.
 * Az egyes fájlok vagy mappák visszaállítása.
+
+>[!NOTE]
+> Az Azure Backup mostantól támogatja több fájl vagy mappa visszaállítását az eredeti vagy egy másik helyre az Azure CLI használatával. További információért olvassa el a [dokumentum több fájl vagy mappa visszaállítása eredeti vagy alternatív helyre](#restore-multiple-files-or-folders-to-original-or-alternate-location) című szakaszát.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -42,7 +45,7 @@ Az [az biztonsági mentés helyreállításipont-listájának](https://docs.micr
 A következő példa lekéri az *azurefiles* fájlmegosztás helyreállítási pontjainak listáját az *afsaccount* tárfiókban.
 
 ```azurecli-interactive
-az backup recoverypoint list --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --backup-management-type azurestorage --item-name “AzureFileShare;azurefiles” --workload-type azurefileshare --out table
+az backup recoverypoint list --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --backup-management-type azurestorage --item-name "AzureFileShare;azurefiles" --workload-type azurefileshare --out table
 ```
 
 Az előző parancsmast a tároló és az elem rövid nevével is futtathatja a következő két további paraméter megadásával:
@@ -82,7 +85,7 @@ Amikor visszaállít egy eredeti helyre, nem kell megadnia a célhoz kapcsolód�
 A következő példa az [az biztonsági mentés visszaállítása-azurefileshare](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefileshare) parancsmag használatával visszaállítási mód *beállítása az eredeti helyre* az *azurefiles* fájlmegosztás az eredeti helyen. A 932883129628959823 helyreállítási pontot használja, amelyet [az Azure-fájlmegosztás helyreállítási pontjaiban](#fetch-recovery-points-for-the-azure-file-share)kapott:
 
 ```azurecli-interactive
-az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932887541532871865   --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --restore-mode originallocation --resolve-conflict overwrite --out table
+az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932887541532871865   --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode originallocation --resolve-conflict overwrite --out table
 ```
 
 ```output
@@ -105,7 +108,7 @@ Ezzel a beállítással visszaállíthatja a fájlmegosztást egy másik helyre,
 A következő példa az [a biztonsági mentés visszaállítása-azurefileshare](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefileshare) visszaállítási módalternatívhelyként használja az *azurefiles* fájlmegosztás visszaállításához az *afsaccount* storage-fiókban az *azurefiles1"* fájlmegosztáshoz az *afaccount1* tárfiókban. *alternatelocation*
 
 ```azurecli-interactive
-az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932883129628959823 --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --out table
+az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932883129628959823 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --out table
 ```
 
 ```output
@@ -138,7 +141,7 @@ Használja az [az biztonsági mentés visszaállítása-azurefiles](https://docs
 A következő példa visszaállítja a *RestoreTest.txt* fájlt az eredeti helyén: az *azurefiles* fájlmegosztás.
 
 ```azurecli-interactive
-az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --restore-mode originallocation  --source-file-type file --source-file-path "Restore/RestoreTest.txt" --resolve-conflict overwrite  --out table
+az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode originallocation  --source-file-type file --source-file-path "Restore/RestoreTest.txt" --resolve-conflict overwrite  --out table
 ```
 
 ```output
@@ -160,7 +163,7 @@ Adott fájlok vagy mappák másik helyre való visszaállításához használja 
 A következő példa visszaállítja a *RestoreTest.txt* fájlt eredetileg az *azurefiles* fájlmegosztásegy másik helyre: a *restoredata* mappát az *afaccount1* tárfiókban tárolt *azurefiles1* fájlmegosztás.
 
 ```azurecli-interactive
-az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --source-file-type file --source-file-path "Restore/RestoreTest.txt" --out table
+az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --source-file-type file --source-file-path "Restore/RestoreTest.txt" --out table
 ```
 
 ```output
@@ -170,6 +173,28 @@ df4d9024-0dcb-4edc-bf8c-0a3d18a25319  azurefiles
 ```
 
 A **név** attribútum a kimenetben megegyezik a feladat nevét, amely a biztonsági mentési szolgáltatás által létrehozott a visszaállítási művelethez. A feladat állapotának nyomon követéséhez használja az [az biztonsági mentési feladat show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) parancsmag.
+
+## <a name="restore-multiple-files-or-folders-to-original-or-alternate-location"></a>Több fájl vagy mappa visszaállítása eredeti vagy alternatív helyre
+
+Több elem visszaállításához adja át a **forrásfájl elérési útjának** értékét a visszaállítani kívánt fájlok vagy mappák **szóközel választott** elérési útjaként.
+
+A következő példa visszaállítja a *Restore.txt* és az *AFS tesztelési Report.docx* fájlokat az eredeti helyükön.
+
+```azurecli-interactive
+az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932889937058317910 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode originallocation  --source-file-type file --source-file-path "Restore Test.txt" "AFS Testing Report.docx" --resolve-conflict overwrite  --out table
+```
+
+A kimenet az alábbihoz hasonló lesz:
+
+```output
+Name                                          ResourceGroup
+------------------------------------          ---------------
+649b0c14-4a94-4945-995a-19e2aace0305          azurefiles
+```
+
+A **név** attribútum a kimenetben megegyezik a feladat nevét, amely a biztonsági mentési szolgáltatás által létrehozott a visszaállítási művelethez. A feladat állapotának nyomon követéséhez használja az [az biztonsági mentési feladat show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) parancsmag.
+
+Ha több elemet szeretne visszaállítani egy másik helyre, használja a fenti parancsot a célhoz kapcsolódó paraméterek megadásával az [egyes fájlok vagy mappák visszaállítása egy másik helyre](#restore-individual-files-or-folders-to-an-alternate-location) szakaszban leírtak szerint.
 
 ## <a name="next-steps"></a>További lépések
 

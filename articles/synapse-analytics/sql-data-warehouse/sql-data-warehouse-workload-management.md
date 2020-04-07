@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: a6d46c2adf1d886f804a3a542a208558d7f935b9
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: dd867d4aa9a9ef5ed73e78a46826a8cd5239039b
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632391"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744235"
 ---
 # <a name="what-is-workload-management"></a>Mi a számítási feladatok kezelése?
 
@@ -44,7 +44,7 @@ Például a smallrc ad-hoc felhasználói szerepkör-tagságának megadása lehe
 
 Az Azure Synapse synapse-i SQL-készlet számítási feladatainak kezelése három magas szintű koncepcióból áll: [Számítási feladatok besorolása](sql-data-warehouse-workload-classification.md), [Számítási feladatok fontossága](sql-data-warehouse-workload-importance.md) és [munkaterhelés-elkülönítés.](sql-data-warehouse-workload-isolation.md)  Ezek a képességek lehetővé teszik, hogy jobban szabályozhatja, hogy a számítási feladatok hogyan használják a rendszererőforrásait.
 
-A számítási feladatok besorolása a kérelem hozzárendelésének és a fontossági szintek beállításának fogalma.  Történelmileg ez a feladat a [szerepkör-tagságon](resource-classes-for-workload-management.md#change-a-users-resource-class)keresztül történt sp_addrolemember használatával.  Ez most már a [CREATE WORKLOAD CLASSIFER](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql)segítségével végezhető el.  A besorolási képesség gazdagabb beállításokat biztosít, például a címkét, a munkamenetet és a kérelmek besorolásához szükséges időt.
+A számítási feladatok besorolása a kérelem hozzárendelésének és a fontossági szintek beállításának fogalma.  Történelmileg ez a feladat a [szerepkör-tagságon](resource-classes-for-workload-management.md#change-a-users-resource-class)keresztül történt sp_addrolemember használatával.  Ez most már a [CREATE WORKLOAD CLASSIFER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)segítségével végezhető el.  A besorolási képesség gazdagabb beállításokat biztosít, például a címkét, a munkamenetet és a kérelmek besorolásához szükséges időt.
 
 A számítási feladatok fontossága befolyásolja, hogy egy kérelem milyen sorrendben kap hozzáférést az erőforrásokhoz.  Foglalt rendszer esetén a nagyobb fontosságú kérelmek először hozzáférnek az erőforrásokhoz.  Fontosság is biztosítja a rendezett hozzáférést zárak.
 

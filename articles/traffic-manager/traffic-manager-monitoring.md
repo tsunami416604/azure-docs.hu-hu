@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: rohink
-ms.openlocfilehash: fcc9c5333b37c041342c2d20a53cf5d3908d1a26
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61aafbe8cb12e93d72f5efd01155f06fb3ec0c28
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76938562"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757258"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager-végpontmonitorozás
 
@@ -25,7 +25,7 @@ Az Azure Traffic Manager beépített végpontfigyelést és automatikus végpont
 
 A végpontfigyelés konfigurálásához a következő beállításokat kell megadnia a Traffic Manager-profilon:
 
-* **protokollt**. Válassza a HTTP, HTTPS vagy TCP protokollt, amelyet a Traffic Manager használ a végpont vizsgálatakor az állapotának ellenőrzéséhez. A HTTPS-figyelés nem ellenőrzi, hogy az SSL-tanúsítvány érvényes-e, csak azt ellenőrzi, hogy a tanúsítvány jelen van-e.
+* **protokollt**. Válassza a HTTP, HTTPS vagy TCP protokollt, amelyet a Traffic Manager használ a végpont vizsgálatakor az állapotának ellenőrzéséhez. A HTTPS-figyelés nem ellenőrzi, hogy a TLS/SSL tanúsítvány érvényes-e, csak azt ellenőrzi, hogy a tanúsítvány jelen van-e.
 * **Port .** Válassza ki a kérelemhez használt portot.
 * **Elérési út**. Ez a konfigurációs beállítás csak a HTTP és HTTPS protokollokra érvényes, amelyekhez meg kell adni az elérési út beállítását. Ha ezt a beállítást adja meg a TCP figyelési protokollhoz, az hibát eredményez. HTTP és HTTPS protokoll esetén adja meg a relatív elérési utat és annak a weblapnak vagy fájlnak a nevét, amelyhez a figyelés hozzáfér. A perjel (/) a relatív elérési út érvényes bejegyzése. Ez az érték azt jelenti, hogy a fájl a gyökérkönyvtárban van (alapértelmezett).
 * **Egyéni fejlécbeállítások** Ezzel a konfigurációs beállítással adott HTTP-fejléceket adhat hozzá a Traffic Manager által a profil alatti végpontok számára küldött állapotellenőrzésekhez. Az egyéni fejlécek profilszinten adhatók meg, hogy az adott profil összes végpontjára és / vagy csak az adott végpontra vonatkozó végpontokra alkalmazhatók legyenek. Az egyéni fejlécek használatával állapot-ellenőrzések végpontok egy több-bérlős környezetben megfelelően irányítható a cél egy állomás fejlécét. Ezt a beállítást egyedi fejlécek hozzáadásával is használhatja, amelyek a Traffic Manager által származó HTTP(S) kérések azonosítására használhatók, és eltérő módon dolgozza fel azokat. Legfeljebb nyolc fejléc:értékpárt adhat meg vesszővel seprated. Például a "header1:value1,header2:value2". 
@@ -108,7 +108,7 @@ A végpont nem kifogástalan, ha az alábbi események bármelyike bekövetkezik
 
 A sikertelen ellenőrzések hibaelhárításáról az [Azure Traffic Manager degradált állapotának hibaelhárítása című témakörben](traffic-manager-troubleshooting-degraded.md)talál további információt. 
 
-Az alábbi ábrán látható idővonal a Traffic Manager-végpont figyelési folyamatának részletes leírása, amely a következő beállításokkal rendelkezik: a figyelési protokoll HTTP, a szondázási időköz 30 másodperc, a tolerálható hibák száma 3, az időtúllépések értéke 10 a DNS TTL pedig 30 másodperc.
+Az idővonal az alábbi ábrán a Traffic Manager-végpont figyelési folyamatának részletes leírása, amely a következő beállításokkal rendelkezik: a figyelési protokoll HTTP, a szondázási időköz 30 másodperc, a tolerálható hibák száma 3, az időtúllépések értéke 10 másodperc, a DNS TTL pedig 30 másodperc.
 
 ![Traffic Manager-végpont feladatátvételi és feladat-visszavételi sorrendje](./media/traffic-manager-monitoring/timeline.png)
 

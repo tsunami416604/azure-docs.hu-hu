@@ -14,12 +14,12 @@ ms.date: 08/16/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a123a85d653415f7b067e0c144c90ed79f2d081
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: e3a17eb7fdde6840ce04fb0cbce13ec3f1a121e0
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80330995"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673701"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>Oktatóanyag: Egyetlen AD-erdőkörnyezet etetik a felhőbe
 
@@ -145,7 +145,7 @@ $ForestMode = "WinThreshold"
 $LogPath = "c:\windows\NTDS"
 $SysVolPath = "c:\windows\SYSVOL"
 $featureLogPath = "c:\poshlog\featurelog.txt" 
-$Password = "Pass1w0rd"
+$Password = ConvertTo-SecureString "Passw0rd" -AsPlainText -Force
 
 #Install AD DS, DNS and GPMC 
 start-job -Name addFeature -ScriptBlock { 
@@ -226,12 +226,12 @@ Most, hogy van egy bérlőnk és egy globális rendszergazdánk, hozzá kell adn
 1. Vissza az [Azure Portalon](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) győződjön meg róla, hogy zárja be a **Minden felhasználó** panel.
 2. A bal oldalon válassza az **Egyéni tartománynevek** elemet.
 3. Válassza **az Egyéni tartomány hozzáadása**lehetőséget.</br>
-![Összevonási](media/tutorial-federation/custom1.png)</br>
+![Összevonás](media/tutorial-federation/custom1.png)</br>
 4. Az **Egyéni tartománynevek mezőbe**írja be az egyéni tartomány nevét, majd kattintson a Tartomány **hozzáadása**gombra.
 5. Az egyéni tartománynév képernyőn TXT vagy MX információkat kap.  Ezt az információt hozzá kell adni a tartománya alá tartozó tartományregisztráló DNS-adataihoz.  Tehát meg kell menni a tartományregisztráló, adja meg a TXT vagy MX információkat a DNS-beállításokat a tartomány.  Ez lehetővé teszi az Azure számára a tartomány igazolását.  Ez akár 24 órát is igénybe vehet, amíg az Azure ellenőrzi azt.  További információt az [Egyéni tartomány hozzáadása dokumentációban](../../active-directory/fundamentals/add-custom-domain.md) talál.</br>
-![Összevonási](media/tutorial-federation/custom2.png)</br>
+![Összevonás](media/tutorial-federation/custom2.png)</br>
 6. Az ellenőrzés ellenőrzéséhez kattintson az Ellenőrzés gombra.</br>
-![Összevonási](media/tutorial-federation/custom3.png)</br>
+![Összevonás](media/tutorial-federation/custom3.png)</br>
 
 ## <a name="download-and-install-azure-ad-connect"></a>Az Azure AD Connect letöltése és telepítése
 Most itt az ideje, hogy töltse le és telepítse az Azure AD Connect.  Miután telepítettük, végigfutunk az expressz telepítésen.  Tegye a következőket:
@@ -242,7 +242,7 @@ Most itt az ideje, hogy töltse le és telepítse az Azure AD Connect.  Miután 
 4. A Gyorsbeállítások képernyőn kattintson a **Testreszabás gombra.**  
 5. A Szükséges összetevők telepítése képernyőn. Kattintson a **Telepítés gombra.**  
 6. A Felhasználói bejelentkezés képernyőn válassza az **Összevonás a AD FS-sel** lehetőséget, majd kattintson a **Tovább**gombra.
-![Összevonási](media/tutorial-federation/fed1.png)
+![Összevonás](media/tutorial-federation/fed1.png)
 
 1. A Csatlakozás az Azure AD-hez képernyőn adja meg a fent létrehozott globális rendszergazda felhasználónevét és jelszavát, majd kattintson a **Tovább**gombra.
 2. A Könyvtárak csatlakoztatása képernyőn kattintson a **Könyvtár hozzáadása**gombra.  Ezután válassza **az Új AD-fiók létrehozása lehetőséget,** írja be a contoso\Rendszergazda felhasználónevet és jelszót, majd kattintson az **OK**gombra.
@@ -257,10 +257,10 @@ Most itt az ideje, hogy töltse le és telepítse az Azure AD Connect.  Miután 
 11. Válassza **az Összevonási kiszolgálókon telepített tanúsítvány használata** lehetőséget, és kattintson a **Tallózás gombra.**
 12. Írja be a DC1 értéket a keresőmezőbe, és jelölje ki, ha megtalálta.  Kattintson az **OK** gombra.
 13. A **Tanúsítványfájl** legördülő menüben válassza **adfs.contoso.com** a fent létrehozott tanúsítványt.  Kattintson a **Tovább** gombra.
-![Összevonási](media/tutorial-federation/fed2.png)
+![Összevonás](media/tutorial-federation/fed2.png)
 
 1. Az AD FS-kiszolgáló képernyőjén kattintson a **Tallózás gombra,** és írja be a DC1 értéket a keresőmezőbe, és jelölje ki, ha megtalálta.  Kattintson az **OK** gombra.  Kattintson a **Tovább** gombra.
-![Összevonási](media/tutorial-federation/fed3.png)
+![Összevonás](media/tutorial-federation/fed3.png)
 
 1. A webalkalmazás proxykiszolgálói képernyőn kattintson a **Tovább**gombra.
 2. Az AD FS szolgáltatásfiók képernyőjén adja meg a contoso\Rendszergazda felhasználónevet és jelszót, majd kattintson a **Tovább gombra.**

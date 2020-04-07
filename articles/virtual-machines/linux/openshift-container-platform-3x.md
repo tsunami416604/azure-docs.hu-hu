@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/14/2019
+ms.date: 04/05/2020
 ms.author: haroldw
-ms.openlocfilehash: 615d9a3c5c359174ef15028e82044a85da0dd733
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7fd1c381ecd2b7dba4c77a025cb0332ace4147bf
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75561286"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673664"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>OpenShift Container Platform 3.11 üzembe helyezése az Azure-ban
 
@@ -303,7 +303,7 @@ A különböző kiadások különböző paraméterekkel rendelkezhetnek, ezért 
 | `masterClusterType` | Adja meg, hogy a fürt magán- vagy nyilvános főcsomópontokat használ-e. Ha a magánterület van kiválasztva, a fő csomópontok nem lesznek kitéve az internetnek nyilvános IP-cím révén. Ehelyett a`masterPrivateClusterIp` | Nyilvános <br> Privát | Nyilvános |
 | `masterPrivateClusterIp` | Ha a saját főcsomópontok vannak kiválasztva, akkor meg kell adni egy privát IP-címet a fő csomópontok belső terheléselosztójának használatához. Ennek a statikus IP-címnek a fő alhálózat CIDR-blokkján belül kell lennie, és még nem használatban kell lennie. Ha nyilvános főcsomópontok vannak kiválasztva, akkor ez az érték nem lesz használva, de meg kell adni. |  | 10.1.0.200 |
 | `routerClusterType` | Adja meg, hogy a fürt magán- vagy nyilvános infracsomópontokat használ-e. Ha privát ot választ, az infracsomópontok nem lesznek kitéve az internetnek nyilvános IP-n keresztül. Ehelyett a`routerPrivateClusterIp` | Nyilvános <br> Privát | Nyilvános |
-| `routerPrivateClusterIp` | Ha a privát infracsomópontok vannak kiválasztva, akkor meg kell adni egy privát IP-címet az infracsomópontok belső terheléselosztójának használatához. Ennek a statikus IP-címnek a fő alhálózat CIDR-blokkján belül kell lennie, és még nem használatban kell lennie. Ha nyilvános infracsomópontok vannak kiválasztva, akkor ez az érték nem lesz használva, de meg kell adni. |  | 10.2.0.200 |
+| `routerPrivateClusterIp` | Ha a privát infracsomópontok vannak kiválasztva, akkor meg kell adni egy privát IP-címet az infracsomópontok belső terheléselosztójának használatához. Ennek a statikus IP-címnek az infravörös alhálózat CIDR-blokkján belül kell lennie, és még nem használhatónak kell lennie. Ha nyilvános infracsomópontok vannak kiválasztva, akkor ez az érték nem lesz használva, de meg kell adni. |  | 10.2.0.200 |
 | `routingCertType` | Egyéni tanúsítvány használata a tartomány útválasztásához vagy az alapértelmezett önaláírt tanúsítványhoz – kövesse az Egyéni tanúsítványok szakasz **utasításait** | saját maga által aláírt <br> Egyéni | saját maga által aláírt |
 | `masterCertType` | Egyéni tanúsítvány használata a főtartományhoz vagy az alapértelmezett önaláírt tanúsítványhoz – kövesse az Egyéni tanúsítványok szakasz **utasításait** | saját maga által aláírt <br> Egyéni | saját maga által aláírt |
 

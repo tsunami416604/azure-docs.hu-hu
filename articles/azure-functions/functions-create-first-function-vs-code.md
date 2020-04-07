@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 01/10/2020
 ms.custom: mvc, devcenter
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 6f1c211a8110d95adb5e6802313c5b7deafe3864
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1e5c0a714a8b66d83c19acc53f6a680a9196a90
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80276461"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673426"
 ---
 # <a name="quickstart-create-an-azure-functions-project-using-visual-studio-code"></a>Rövid útmutató: Azure Functions-projekt létrehozása a Visual Studio-kód használatával
 
@@ -26,7 +26,7 @@ Mielőtt elkezdene, győződjön meg arról, hogy a következő követelmények 
 
 ::: zone pivot="programming-language-csharp,programming-language-powershell,programming-language-python"  
 + [Node.js](https://nodejs.org/), a Windows által megkövetelt npm. Csak [az aktív LTS- és karbantartási LTS-verziók. ](https://nodejs.org/about/releases/) Használja `npm --version` a parancsot, hogy ellenőrizze a verziót.
-    Nem szükséges a helyi fejlesztés MacOS és Linux.   
+    Nem szükséges a helyi fejlesztés hez macOS és Linux rendszeren.   
 ::: zone-end  
 ::: zone pivot="programming-language-javascript,programming-language-typescript"  
 + [Node.js](https://nodejs.org/), Aktív LTS- és karbantartási LTS-verziók (10.14.1 ajánlott). Használja `npm --version` a parancsot, hogy ellenőrizze a verziót.
@@ -39,6 +39,11 @@ Mielőtt elkezdene, győződjön meg arról, hogy a következő követelmények 
 
 + A [.NET Core SDK 2.2+](https://www.microsoft.com/net/download)  
 ::: zone-end  
+::: zone pivot="programming-language-java"  
++ A [Java Developer Kit,](https://aka.ms/azure-jdks)8-as verzió.
+
++ [Apache Maven](https://maven.apache.org), 3.0-s vagy újabb verzió.
+::: zone-end  
 + [Visual Studio-kód](https://code.visualstudio.com/) a [támogatott platformok egyikén.](https://code.visualstudio.com/docs/supporting/requirements#_platforms)  
 ::: zone pivot="programming-language-csharp"  
 + A Visual Studio-kód [C# kiterjesztése.](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)  
@@ -47,7 +52,10 @@ Mielőtt elkezdene, győződjön meg arról, hogy a következő követelmények 
 + A Visual Studio-kód [Python-bővítménye.](https://marketplace.visualstudio.com/items?itemName=ms-python.python)  
 ::: zone-end  
 ::: zone pivot="programming-language-powershell"
-+ A [Visual Studio-kód PowerShell-bővítménye](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell).  
++ A [Visual Studio-kód PowerShell-bővítménye](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell). 
+::: zone-end  
+::: zone pivot="programming-language-java"  
++ A [Java bővítménycsomag](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
 ::: zone-end  
 
 + A Visual Studio-kód [Azure Functions bővítménye.](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) 
@@ -85,21 +93,35 @@ Ebben a szakaszban a Visual Studio-kód használatával hozhat létre egy helyi 
     + **Válasszon ki egy Python-aliast virtuális környezet létrehozásához:** Válassza ki a Python-értelmező helyét. Ha a hely nem jelenik meg, írja be a python bináris elérési útját.  
     ::: zone-end
 
+    ::: zone pivot="programming-language-java"  
+    + **Válasszon nyelvet a függvényprojekthez:** Válassza a lehetőséget. `Java`
+
+    + **Csoportazonosító megadása**: `com.function`Válassza a lehetőséget.
+
+    + **Összetevő-azonosító megadása:** `myFunction`Válassza a lehetőséget.
+
+    + **Adja meg a verzió:** Válassza a `1.0-SNAPSHOT`lehetőséget.
+
+    + **Adja meg a csomag nevét:** Válassza a lehetőséget. `com.function`
+
+    + **Adjon meg egy alkalmazásnevet:** Válassza a lehetőséget. `myFunction-12345`
+    ::: zone-end  
+    ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
     + **Válasszon sablont a projekt első függvényéhez:** Válassza a lehetőséget. `HTTP trigger`
     
     + **Adjon meg egy függvénynevet:** Írja be a típust. `HttpExample`
-    
+    ::: zone-end  
     ::: zone pivot="programming-language-csharp"
     + **Adjon meg egy névteret:** Írja be a típust. `My.Functions` 
-    ::: zone-end
-
+    ::: zone-end  
+    ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
     + **Engedélyezési szint** `Anonymous`: Válassza a lehetőséget, amely lehetővé teszi, hogy bárki hívja a függvényvégpontot. Az engedélyezési szintről az [Engedélyezési kulcsok (Engedélyezési kulcsok) témakörben](functions-bindings-http-webhook-trigger.md#authorization-keys)olvashat.
-
+    ::: zone-end  
     + **Válassza ki, hogyan szeretné megnyitni a projektet:** Válassza a lehetőséget. `Add to workspace`
 
 1. Ezen információk használatával a Visual Studio-kód létrehoz egy Azure Functions projektet HTTP-eseményindítóval. A helyi projektfájlokat az Intézőben tekintheti meg. A létrehozott fájlokról a Létrehozott projektfájlok ról további információért olvassa el a [Létrehozott projektfájlok című témakört.](functions-develop-vs-code.md#generated-project-files) 
 
-::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-python"
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-python,programming-language-java"
 
 [!INCLUDE [functions-run-function-test-local-vs-code](../../includes/functions-run-function-test-local-vs-code.md)]
 
@@ -119,7 +141,7 @@ Miután meggyőződött arról, hogy a függvény megfelelően fut a helyi szám
 
 ## <a name="run-the-function-in-azure"></a>A funkció futtatása az Azure-ban
 
-1. Vissza az **Azure: Funkciók** terület az oldalsávon, bontsa ki az új függvényalkalmazás az előfizetés alatt. A **Functions (Windows)** vagy a Ctrl + click (MacOS) elemre kattintva a **Jobb**gombbal (Windows) elemre kattintva válassza a **Függvény URL-címének másolása parancsot.**
+1. Vissza az **Azure: Funkciók** terület az oldalsávon, bontsa ki az új függvényalkalmazás az előfizetés alatt. A **Functions (Windows)** vagy a Ctrl + billentyűkombinációt (macOS) kibontva válassza **a** **FüggvényURL másolása parancsot.**
 
     ![Az új HTTP-eseményindító függvény URL-címének másolása](./media/functions-create-first-function-vs-code/function-copy-endpoint-url.png)
 

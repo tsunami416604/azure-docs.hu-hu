@@ -6,12 +6,12 @@ ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: a305914c5c870543e16c515880955693c2634044
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: e49fafc2889b98d013d77471f8177fd85a307cc8
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239177"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754889"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Oktatóanyag: Integrálja az Azure Key Vaultot az ARM-sablon üzembe helyezésébe
 
@@ -198,7 +198,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban lekért egy titkot az Azure-key vaultból. Ezután a titkos kulcsot használta a sablon központi telepítésében. Ha meg szeretné tudni, hogyan hozhat létre csatolt sablonokat, tekintse meg a következőt:
+Ebben az oktatóanyagban lekért egy titkot az Azure-key vaultból. Ezután a titkos kulcsot használta a sablon központi telepítésében. A virtuálisgép-bővítmények üzembe helyezés utáni feladatok végrehajtásáról az:
 
 > [!div class="nextstepaction"]
-> [Hivatkozott sablonok létrehozása](./template-tutorial-create-linked-templates.md)
+> [Virtuális gépi bővítmények üzembe helyezése](./template-tutorial-deploy-vm-extensions.md)

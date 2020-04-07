@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan csatlakoztathatja az Azure Functionst egy Azure
 ms.date: 02/07/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 9181caf516d5c2003cfe99b125d2921732cbbb9d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f9d9573523083b6355f423b7b3db94b795d8657f
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79473387"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673323"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-command-line-tools"></a>Az Azure Functions csatlakoztatása az Azure Storage szolgáltatáshoz parancssori eszközökkel
 
@@ -19,84 +19,24 @@ Ebben a cikkben integrálja az Azure Storage-várólistát [az előző rövid ú
 
 Mielőtt elkezdené, ki kell töltenie a [rövid útmutató: Hozzon létre egy Azure Functions projektet a parancssorból](functions-create-first-azure-function-azure-cli.md). Ha már megtisztította az erőforrásokat a cikk végén, ismét hajtsa végre a lépéseket a függvényalkalmazás és a kapcsolódó erőforrások újbóli létrehozásához az Azure-ban.
 
-## <a name="retrieve-the-azure-storage-connection-string"></a>Az Azure Storage-kapcsolati karakterlánc lekérése
-
-Amikor az előző rövid útmutatóban létrehozott egy függvényalkalmazást az Azure-ban, egy Storage-fiókot is létrehozott. A fiók kapcsolati karakterlánca biztonságosan tárolódik az Azure-beli alkalmazásbeállításokban. Ha letölti a beállítást a *local.settings.json* fájlba, akkor a helyi futtatásakor használhatja ezt a kapcsolatírást ugyanazon a fiókban lévő Storage várólistára. 
-
-1. A projekt gyökeréből futtassa `<APP_NAME>` a következő parancsot, és cserélje le a függvényalkalmazás nevét az előző rövid útmutatóból. Ez a parancs felülírja a fájlban lévő értékeket.
-
-    ```
-    func azure functionapp fetch-app-settings <APP_NAME>
-    ```
-    
-1. Nyissa meg a *local.settings.json webhelyet,* és keresse meg a nevű `AzureWebJobsStorage`értéket, amely a Storage-fiók kapcsolati karakterlánca. A cikk `AzureWebJobsStorage` más szakaszaiban a nevet és a kapcsolati karakterláncot használhatja.
-
-> [!IMPORTANT]
-> Mivel *a local.settings.json* az Azure-ból letöltött titkokat tartalmaz, mindig zárja ki ezt a fájlt a forrásellenőrzésből. A helyi függvényprojekttel létrehozott *.gitignore* fájl alapértelmezés szerint kizárja a fájlt.
+[!INCLUDE [functions-cli-get-storage-connection](../../includes/functions-cli-get-storage-connection.md)]
 
 [!INCLUDE [functions-register-storage-binding-extension-csharp](../../includes/functions-register-storage-binding-extension-csharp.md)]
 
-## <a name="add-an-output-binding-definition-to-the-function"></a>Kimenetkötésdefiníció hozzáadása a függvényhez
-
-Bár egy függvény csak egy eseményindítóval rendelkezhet, több bemeneti és kimeneti kötést is használhat, amelyek lehetővé teszik, hogy más Azure-szolgáltatásokhoz és erőforrásokhoz egyéni integrációs kód írása nélkül csatlakozzon. 
-
-::: zone pivot="programming-language-python,programming-language-javascript,programming-language-powershell,programming-language-typescript"  
-Ezeket a kötéseket a függvénymappában lévő *function.json* fájlban deklarálja. Az előző rövid útmutatóból a *HttpExample* mappában lévő `bindings` *function.json* fájl két kötést tartalmaz a gyűjteményben:  
-::: zone-end
-
-::: zone pivot="programming-language-javascript,programming-language-typescript"  
-:::code language="json" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-JavaScript/function.json" range="2-18":::  
-::: zone-end
-
-::: zone pivot="programming-language-python"  
-:::code language="json" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json" range="2-18":::  
-::: zone-end
-
-::: zone pivot="programming-language-powershell"  
-:::code language="json" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-PowerShell/function.json" range="2-18":::
-::: zone-end  
-
-::: zone pivot="programming-language-python,programming-language-javascript, programming-language-powershell, programming-language-typescript"  
-Minden kötésnek van legalább egy típusa, egy iránya és egy neve. A fenti példában az első `httpTrigger` kötés típusa `in`az irányával . Az `in` irányhoz `name` adja meg egy bemeneti paraméter nevét, amelyet a rendszer az eseményindító meghívásakor a függvénynek küld.  
-::: zone-end
-
-::: zone pivot="programming-language-javascript,programming-language-typescript"  
-A gyűjtemény második kötése `res`a . Ez `http` a kötés egy`out`kimeneti kötés ( ), amely a HTTP-válasz írására szolgál. 
-
-Ha ebből a funkcióból szeretne írni `out` egy `queue` Azure Storage-várólistába, adjon hozzá egy típusú kötést a nevével, `msg`amint az az alábbi kódban látható:
-
-:::code language="json" source="~/functions-docs-javascript/functions-add-output-binding-storage-queue-cli/HttpExample/function.json" range="3-26":::
-::: zone-end  
-
-::: zone pivot="programming-language-python"  
-A gyűjtemény második kötése `http` az `out`irányával ellátott típusú, `name` `$return` amely esetben a speciális azt jelzi, hogy ez a kötés a függvény visszatérési értékét használja a bemeneti paraméter megadása helyett.
-
-Ha ebből a funkcióból szeretne írni `out` egy `queue` Azure Storage-várólistába, adjon hozzá egy típusú kötést a nevével, `msg`amint az az alábbi kódban látható:
-
-:::code language="json" source="~/functions-docs-python/functions-add-output-binding-storage-queue-cli/HttpExample/function.json" range="3-26":::
-::: zone-end  
-
-::: zone pivot="programming-language-powershell"  
-A gyűjtemény második kötése `res`a . Ez `http` a kötés egy`out`kimeneti kötés ( ), amely a HTTP-válasz írására szolgál. 
-
-Ha ebből a funkcióból szeretne írni `out` egy `queue` Azure Storage-várólistába, adjon hozzá egy típusú kötést a nevével, `msg`amint az az alábbi kódban látható:
-
-:::code language="json" source="~/functions-docs-powershell/functions-add-output-binding-storage-queue-cli/HttpExample/function.json" range="3-26":::
-::: zone-end  
-
-::: zone pivot="programming-language-python,programming-language-javascript,programming-language-powershell,programming-language-typescript"  
-Ebben az `msg` esetben a függvény kimeneti argumentumként jelenik meg. Egy `queue` típus esetében meg kell adnia a `queueName` várólistának a nevét is, és meg kell adnia `connection`az Azure Storage-kapcsolat *nevét* (a *local.settings.json-ból)* a alkalmazásban. 
-::: zone-end  
+[!INCLUDE [functions-add-output-binding-cli](../../includes/functions-add-output-binding-cli.md)]
 
 ::: zone pivot="programming-language-csharp"  
 [!INCLUDE [functions-add-storage-binding-csharp-library](../../includes/functions-add-storage-binding-csharp-library.md)]  
 ::: zone-end  
+::: zone pivot="programming-language-java" 
+[!INCLUDE [functions-add-output-binding-java-cli](../../includes/functions-add-output-binding-java-cli.md)]
+::: zone-end   
 
 A kötések részleteiről az [Azure Functions elindítja és kötéseket indítja el](functions-triggers-bindings.md) és ismerteti a sorok [kimeneti konfigurációját.](functions-bindings-storage-queue-output.md#configuration)
 
 ## <a name="add-code-to-use-the-output-binding"></a>Kód hozzáadása a kimeneti kötés használatához
 
-A *function.json*ban megadott várólista-kötéssel most frissítheti a függvényt, hogy megkapja a `msg` kimeneti paramétert, és üzeneteket írjon a várólistába.
+A várólista-kötés definiálva most frissítheti `msg` a függvényt, hogy megkapja a kimeneti paramétert, és üzeneteket írjon a várólistába.
 
 ::: zone pivot="programming-language-python"     
 [!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
@@ -118,6 +58,12 @@ A *function.json*ban megadott várólista-kötéssel most frissítheti a függv�
 [!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
 ::: zone-end 
 
+::: zone pivot="programming-language-java"
+[!INCLUDE [functions-add-output-binding-java-code](../../includes/functions-add-output-binding-java-code.md)]
+
+[!INCLUDE [functions-add-output-binding-java-test-cli](../../includes/functions-add-output-binding-java-test-cli.md)]
+::: zone-end
+
 Vegye figyelembe, hogy *nem* kell kódot írnia a hitelesítéshez, a várólista-referenciák beszerzéséhez vagy az adatok írásához. Mindezek az integrációs feladatok kényelmesen kezelik az Azure Functions futásidejű és a várólista kimeneti kötés.
 
 [!INCLUDE [functions-run-function-test-local-cli](../../includes/functions-run-function-test-local-cli.md)]
@@ -126,72 +72,30 @@ Vegye figyelembe, hogy *nem* kell kódot írnia a hitelesítéshez, a várólist
 
 ## <a name="view-the-message-in-the-azure-storage-queue"></a>Az üzenet megtekintése az Azure Storage várólistájában
 
-A várólista az [Azure Portalon](../storage/queues/storage-quickstart-queues-portal.md) vagy a [Microsoft Azure Storage Explorerben](https://storageexplorer.com/)tekinthető meg. A várólista az Azure CLI-ben is megtekinthető, a következő lépésekben leírtak szerint:
-
-1. Nyissa meg a függvényprojekt *local.setting.json* fájlját, és másolja a kapcsolati karakterlánc értékét. Terminál- vagy parancsablakban futtassa a következő `AZURE_STORAGE_CONNECTION_STRING`parancsot a program névre `<MY_CONNECTION_STRING>`szóló környezeti változó létrehozásához, és illessze be az adott kapcsolati karakterláncot a helyére. (Ez a környezeti változó azt jelenti, hogy nem kell megadnia a kapcsolati karakterláncot minden további parancshoz az `--connection-string` argumentum használatával.)
-
-    # <a name="bash"></a>[Bash](#tab/bash)
-    
-    ```bash
-    AZURE_STORAGE_CONNECTION_STRING="<MY_CONNECTION_STRING>"
-    ```
-    
-    # <a name="powershell"></a>[Powershell](#tab/powershell)
-    
-    ```powershell
-    $env:AZURE_STORAGE_CONNECTION_STRING = "<MY_CONNECTION_STRING>"
-    ```
-    
-    # <a name="azure-cli"></a>[Azure CLI](#tab/cmd)
-    
-    ```azurecli
-    set AZURE_STORAGE_CONNECTION_STRING="<MY_CONNECTION_STRING>"
-    ```
-    
-    ---
-    
-1. (Nem kötelező) A [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) parancs segítségével megtekintheti a storage várólistákat a fiókjában. A parancs kimenetének tartalmaznia `outqueue`kell egy várólistát, amely akkor jött létre, amikor a függvény az első üzenetét a várólistára írta.
-    
-    ```azurecli
-    az storage queue list --output tsv
-    ```
-
-1. A [`az storage message get`](/cli/azure/storage/message#az-storage-message-get) parancs segítségével olvassa el az üzenetet ebből a várólistából, amely a funkció korábbi tesztelésekén használt első név nek kell lennie. A parancs beolvassa és eltávolítja az első üzenetet a várólistából. 
-
-    # <a name="bash"></a>[Bash](#tab/bash)
-    
-    ```bash
-    echo `echo $(az storage message get --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
-    ```
-    
-    # <a name="powershell"></a>[Powershell](#tab/powershell)
-    
-    ```powershell
-    [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($(az storage message get --queue-name outqueue -o tsv --query '[].{Message:content}')))
-    ```
-    
-    # <a name="azure-cli"></a>[Azure CLI](#tab/cmd)
-    
-    ```azurecli
-    az storage message get --queue-name outqueue -o tsv --query [].{Message:content} > %TEMP%out.b64 && certutil -decode -f %TEMP%out.b64 %TEMP%out.txt > NUL && type %TEMP%out.txt && del %TEMP%out.b64 %TEMP%out.txt /q
-    ```
-
-    Ez a parancsfájl a certutil segítségével dekódolja a base64 kódolású üzenetgyűjteményt egy helyi ideiglenes fájlból. Ha nincs kimenet, próbálja meg `> NUL` eltávolítani a parancsfájlból a certutil kimenet letiltásához, ha hiba történik. 
-    
-    ---
-    
-    Mivel az üzenet törzse [base64 kódolású,](functions-bindings-storage-queue-trigger.md#encoding)az üzenetet dekódolni kell, mielőtt megjelenik. A végrehajtás `az storage message get`után az üzenet törlődik a várólistából. Ha csak egy üzenet `outqueue`volt a alkalmazásban, akkor a parancs második futtatásakor nem fog beolvasni egy üzenetet, és ehelyett hibaüzenetet kap.
+[!INCLUDE [functions-add-output-binding-view-queue-cli](../../includes/functions-add-output-binding-view-queue-cli.md)]
 
 ## <a name="redeploy-the-project-to-azure"></a>A projekt újratelepítése az Azure-ba
 
 Most, hogy helyileg ellenőrizte, hogy a függvény üzenetet írt az Azure Storage-várólistába, újratelepítheti a projektet az Azure-ban futó végpont frissítéséhez.
 
-1. A *LocalFunctionsProj* mappában [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) a paranccsal újratelepítheti a projektet, és lecserélheti`<APP_NAME>` az alkalmazás nevét.
+::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-csharp" 
+A *LocalFunctionsProj* mappában [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) a paranccsal újratelepítheti a projektet, és lecserélheti`<APP_NAME>` az alkalmazás nevét.
 
-    ```
-    func azure functionapp publish <APP_NAME>
-    ```
-    
+```
+func azure functionapp publish <APP_NAME>
+```
+::: zone-end  
+
+::: zone pivot="programming-language-java" 
+
+A helyi projekt mappában a következő Maven paranccsal tegye közzé újra a projektet:
+```
+mvn azure-functions:deploy
+```
+::: zone-end
+
+## <a name="verify-in-azure"></a>Ellenőrzés az Azure-ban
+
 1. Az előző rövid útmutatóhoz, használja a böngészőt vagy a CURL-t az újratelepített függvény teszteléséhez.
 
     # <a name="browser"></a>[Böngésző](#tab/browser)

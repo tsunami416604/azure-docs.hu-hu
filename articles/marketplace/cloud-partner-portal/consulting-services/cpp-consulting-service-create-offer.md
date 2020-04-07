@@ -5,16 +5,19 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: c2700339a7ac8342da0250227cff898c20e60118
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1298a6d277f072491d05945b272925a2aba52e02
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278552"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745655"
 ---
 # <a name="create-a-consulting-offer"></a>Tanácsadói ajánlat létrehozása
+
+>[!Important]
+>2020. március 30-tól megkezdjük a Tanácsadási szolgáltatási ajánlatok kezelését a Partner Centerbe. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Az áttelepített ajánlatok kezeléséhez kövesse a [Consulting service creation overview című](https://aka.ms/AzureCreateConsultingService) témakör utasításait.
 
 Ez a cikk ismerteti, hogyan hozhat létre és tehet közzé egy tanácsadási szolgáltatási ajánlatot.
 
@@ -34,5 +37,5 @@ Határozza meg a csomagolt tanácsadási szolgáltatást. Összpontosítson a r�
 
 A tanácsadási szolgáltatás ajánlattípusának **Új ajánlat** lapja lapok és űrlapmezők készletét tartalmazza, amelyeksegítségével új ajánlatot hozhat létre. A következő cikkek bemutatják, hogyan használhatja a lapot az új ajánlat ajánlatbeállításainak és kirakatrészleteinek meghatározására:
 
--   [Ajánlatbeállítások megadása](./cpp-consulting-service-define-offer-settings.md)
--   [Adja meg a kirakatadatait, valamint azt, hogy közzé szeretne-e tenni az Azure Piactéren vagy az AppSource-on](./cpp-consulting-service-storefront-details.md)
+-    [Ajánlatbeállítások megadása](./cpp-consulting-service-define-offer-settings.md)
+-    [Adja meg a kirakatadatait, valamint azt, hogy közzé szeretne-e tenni az Azure Piactéren vagy az AppSource-on](./cpp-consulting-service-storefront-details.md)

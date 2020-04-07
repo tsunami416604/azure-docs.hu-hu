@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 01a05755fc18a85a95e9c1bec1c470d37af656d1
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 62cf1f369cbde372e82e7c3ffe26473f09668bc7
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632233"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742539"
 ---
 # <a name="data-warehouse-units-dwus"></a>Adattárház-egységek (DWUs-ok)
 
@@ -24,9 +24,9 @@ Javaslatok az adattárház egységek (DW-k) ideális számának kiválasztásár
 
 ## <a name="what-are-data-warehouse-units"></a>Mik azok az adattárház-egységek?
 
-A [szinapszis SQL-készlet](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) a kiépített analitikus erőforrások gyűjteményét jelöli. Az analitikus erőforrások a PROCESSZOR, a memória és az IO kombinációjaként vannak definiálva. 
+A [szinapszis SQL-készlet](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) a kiépített analitikus erőforrások gyűjteményét jelöli. Az analitikus erőforrások a PROCESSZOR, a memória és az IO kombinációjaként vannak definiálva.
 
-Ez a három erőforrás adattárházegységeknek (DWUs) nevezett számítási méretegységekbe van csomagolva. A DWU a számítási erőforrások és teljesítmény absztrakt, normalizált mértéke. 
+Ez a három erőforrás adattárházegységeknek (DWUs) nevezett számítási méretegységekbe van csomagolva. A DWU a számítási erőforrások és teljesítmény absztrakt, normalizált mértéke.
 
 A szolgáltatási szint módosítása megváltoztatja a rendszer számára rendelkezésre álló DWUs-ok számát, ami viszont módosítja a rendszer teljesítményét és költségét.
 
@@ -72,7 +72,7 @@ A számítási feladatokhoz legjobb DWU megtalálásának lépései:
 2. Figyelje az alkalmazás teljesítményét, miközben teszteli az adatok betöltését a rendszerbe, megfigyelve a kiválasztott DWUs-ok számát a megfigyelt teljesítményhez képest.
 3. Határozza meg az időszakos csúcsidőszakokra vonatkozó további követelményeket. Előfordulhat, hogy a jelentős csúcsokat és vályúkat mutató munkaterheléseket gyakran kell méretezni.
 
-Az SQL-készlet egy horizontális felskálázási rendszer, amely hatalmas mennyiségű számítási és lekérdezési mennyiségű adatot tud kiépíteni. 
+Az SQL-készlet egy horizontális felskálázási rendszer, amely hatalmas mennyiségű számítási és lekérdezési mennyiségű adatot tud kiépíteni.
 
 A skálázás valódi képességeinek megtekintéséhez, különösen a nagyobb DW-k esetén, javasoljuk az adatkészlet méretezése méretezés közbeni méretezését annak érdekében, hogy elegendő adat elegendő adatáll-e a processzorok adagolásához. A skálavizsgálathoz legalább 1 TB-ot javasoljuk.
 
@@ -82,7 +82,7 @@ A skálázás valódi képességeinek megtekintéséhez, különösen a nagyobb 
 
 ## <a name="permissions"></a>Engedélyek
 
-Az adattárház egységek módosításához az [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql)című mezőben leírt engedélyekszükségesek.
+Az adattárház egységek módosításához az [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)című mezőben leírt engedélyekszükségesek.
 
 Az Azure-erőforrások, például az SQL DB Contributor és az SQL Server Contributor beépített szerepkörei módosíthatják a DWU-beállításokat.
 
@@ -134,7 +134,7 @@ A T-SQL segítségével megtekintheti az aktuális DWU-beállításokat, módos�
 A DWUs módosítása:
 
 1. Csatlakozzon a logikai SQL-adatbázis-kiszolgálóhoz társított főadatbázishoz.
-2. Használja az [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql) TSQL utasítást. A következő példa a szolgáltatásszint-célkitűzést DW1000c-re állítja a MySQLDW adatbázishoz.
+2. Használja az [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) TSQL utasítást. A következő példa a szolgáltatásszint-célkitűzést DW1000c-re állítja a MySQLDW adatbázishoz.
 
 ```Sql
 ALTER DATABASE MySQLDW

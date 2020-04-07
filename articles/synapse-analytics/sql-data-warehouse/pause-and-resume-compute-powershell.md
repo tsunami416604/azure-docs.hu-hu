@@ -11,12 +11,12 @@ ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: f257f3751e7a411015ca188d704b676950845a74
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: dc56fe8cffa72c61b3f29f8b0fb8108547395f9c
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633835"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742781"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-with-azure-powershell"></a>Rövid útmutató: A számítás felfüggesztése és folytatása a Synapse SQL-készletében az Azure PowerShell segítségével
 
@@ -31,19 +31,19 @@ Ez a rövid útmutató feltételezi, hogy már rendelkezik egy SQL-készlet, ame
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Jelentkezzen be Azure-előfizetésébe a [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) paranccsal, és kövesse a képernyőn megjelenő utasításokat.
+Jelentkezzen be Azure-előfizetésébe a [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) paranccsal, és kövesse a képernyőn megjelenő utasításokat.
 
 ```powershell
 Connect-AzAccount
 ```
 
-A használt előfizetés megtekintéséhez futtassa a [Get-AzSubscription futtassa.](/powershell/module/az.accounts/get-azsubscription?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+A használt előfizetés megtekintéséhez futtassa a [Get-AzSubscription futtassa.](/powershell/module/az.accounts/get-azsubscription?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 
 ```powershell
 Get-AzSubscription
 ```
 
-Ha az alapértelmezettnél eltérő előfizetést kell használnia, futtassa a [Set-AzContext programot.](/powershell/module/az.accounts/set-azcontext?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+Ha az alapértelmezettnél eltérő előfizetést kell használnia, futtassa a [Set-AzContext programot.](/powershell/module/az.accounts/set-azcontext?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 
 ```powershell
 Set-AzContext -SubscriptionName "MySubscription"
@@ -96,7 +96,7 @@ Resume-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
 –ServerName "sqlpoolservername" -DatabaseName "mySampleDataWarehouse"
 ```
 
-A következő példa beolvassa az adatbázist a $database objektumba. Ezután leadja az objektumot a [Resume-AzSqlDatabase könyvtárba,](/powershell/module/az.sql/resume-azsqldatabase) és az eredményeket $resultDatabase tárolja. A végső parancs az eredményeket mutatja.
+A következő példa beolvassa az adatbázist a $database objektumba. Ezután leadja az objektumot a [Resume-AzSqlDatabase könyvtárba,](/powershell/module/az.sql/resume-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) és az eredményeket $resultDatabase tárolja. A végső parancs az eredményeket mutatja.
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "myResourceGroup" `

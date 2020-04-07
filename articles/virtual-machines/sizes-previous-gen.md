@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: e5fe58891aa901509dc44d3b2465c794bd92b22d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f13ab3cd6ff765bc3b1bee8e8fad7e7273f6c7d
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476569"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673915"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>A virtuális gépek méretének előző generációi
 
@@ -66,6 +66,7 @@ Prémium szintű tárolási gyorsítótárazás: Támogatott
 MBps = 10^6 bájt/másodperc és GiB = 1024^3 bájt.
 
 <sup>1</sup> A Fs sorozatú virtuális gépek en lehetséges maximális lemezátviteli sebessége (IOPS vagy Mb/s) a csatlakoztatott lemez(ek) száma, mérete és csíkozása korlátozhatja.  További információt a Nagy teljesítményű [Windows](windows/premium-storage-performance.md) vagy Linux tervezése című [témakörben talál.](linux/premium-storage-performance.md)  
+
 
 ## <a name="nvv2-series"></a>NVv2 sorozat
 
@@ -339,6 +340,30 @@ Prémium szintű tárolási gyorsítótárazás: Nem támogatott
 | Standard_G5&nbsp;<sup>1.</sup> | 32 | 448 | 6144 | 96000/1500/750| 64/64x500 | 8/20000 |
 
 <sup>1</sup> Példány egyetlen ügyfélnek dedikált hardverhez van elkülönítve.
+<br>
+
+# <a name="nv-series"></a>NV sorozat
+**Újabb méretajánlás**: [NVv3 és](nvv3-series.md) [NVv4 sorozat](nvv4-series.md)
+
+Az NV sorozatú virtuális gépeket [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU-k és NVIDIA GRID technológia hajtja asztali gyorsított alkalmazásokhoz és virtuális asztalokhoz, ahol az ügyfelek képesek az adataik vagy szimulációik megjelenítésére. A felhasználók képesek elképzelni a nagy grafikai igényű munkafolyamataikat az NV-példányokon, hogy kiváló grafikus képességet kapjanak, és emellett egyetlen pontosságú számítási feladatokat, például kódolást és renderelést is futtathatnak. Az NV sorozatú virtuális gépeket Intel Xeon E5-2690 v3 (Haswell) PROCESSZOROK is működtetik.
+
+Az NV-példányokban minden GPU GRID licenccel rendelkezik. Ez a licenc rugalmasságot biztosít egy NV-példány egyetlen felhasználó virtuális munkaállomásaként való használatához, vagy 25 egyidejű felhasználó csatlakozhat a virtuális géphez egy virtuális alkalmazásforgatókönyvhöz.
+
+Prémium szintű tárhely: Nem támogatott
+
+Prémium szintű tárolási gyorsítótárazás: Nem támogatott
+
+Élő áttelepítés: Nem támogatott
+
+Memóriamegőrzési frissítések: Nem támogatott
+
+| Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU memória: GiB | Adatlemezek max. száma | Hálózati adapterek maximális száma | Virtuális munkaállomások | Virtuális alkalmazások |
+|---|---|---|---|---|---|---|---|---|---|
+| Standard_NV6  | 6  | 56  | 340  | 1 | 8  | 24 | 1 | 1 | 25  |
+| Standard_NV12 | 12 | 112 | 680  | 2 | 16 | 48 | 2 | 2 | 50  |
+| Standard_NV24 | 24 | 224 | 1440 | 4 | 32 | 64 | 4 | 4 | 100 |
+
+1 GPU = fél M60 kártya.
 <br>
 
 ## <a name="other-sizes"></a>Egyéb méretek

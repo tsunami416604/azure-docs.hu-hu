@@ -2,15 +2,15 @@
 title: Üzenetek hozzáadása az Azure Storage üzenetsorába a Functions szolgáltatás használatával
 description: Használja az Azure Functions szolgáltatást olyan kiszolgáló nélküli függvény létrehozására, amelynek meghívása HTTP-kérelemmel történik, és üzenetet hoz létre egy Azure Storage-üzenetsorban.
 ms.assetid: 0b609bc0-c264-4092-8e3e-0784dcc23b5d
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: 73f8d23dcd53b4cbbb3fbd902c789e868c2b021b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: a060cd35bbb42d2c31e98bed4855b2d27bfcbada
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75769183"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756644"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Üzenetek hozzáadása az Azure Storage üzenetsorába a Functions szolgáltatás használatával
 
@@ -84,7 +84,7 @@ Ebben a szakaszban egy olyan kódot fog hozzáadni, amely a kimeneti üzenetsorb
     outputQueueItem.Add("Name passed to the function: " + name);
     ```
 
-    # <a name="javascript"></a>[Javascript](#tab/nodejs)
+    # <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
     Olyan kódot adjon hozzá, amely a `context.bindings` objektumon alkalmazza a kimeneti kötést az üzenetsori üzenetek létrehozásához. Ezt a kódot a `context.done` utasítás elé írja be.
 

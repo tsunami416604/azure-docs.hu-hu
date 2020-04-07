@@ -1,14 +1,14 @@
 ---
 title: Bérlők közötti felügyeleti megoldások
 description: Az Azure delegált erőforrás-kezelés lehetővé teszi a bérlők közötti felügyeleti élményt.
-ms.date: 03/12/2020
+ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0e55923e688d1062adc5838a88e8d3202864282a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ac5d62fbf6b6ee418cd4b2f2b00dfc12e05f809
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218389"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754130"
 ---
 # <a name="cross-tenant-management-experiences"></a>Bérlők közötti felügyeleti megoldások
 
@@ -21,7 +21,7 @@ Szolgáltatóként az [Azure delegált erőforrás-kezelésével](../concepts/az
 
 Az Azure Active Directory (Azure AD) bérlő egy szervezet reprezentációja. Az Azure AD egy dedikált példánya, amelyet egy szervezet akkor kap, amikor kapcsolatot hoz létre a Microsofttal az Azure, a Microsoft 365 vagy más szolgáltatásokra való feliratkozás során. Minden Egyes Azure AD-bérlő elkülönül, és elkülönül a többi Azure AD-bérlőktől, és saját bérlőazonosítóval (GUID) rendelkezik. További információ: [Mi az Azure Active Directory?](../../active-directory/fundamentals/active-directory-whatis.md)
 
-Általában az Azure-erőforrások ügyfélszámára történő kezeléséhez a szolgáltatóknak az ügyfél bérlőjéhez társított fiók használatával kell bejelentkezniük az Azure Portalra, és az ügyfél bérlőjének rendszergazdájára van szükség a felhasználói fiókok létrehozásához és kezeléséhez. a szolgáltató számára.
+Általában annak érdekében, hogy az Azure-erőforrások kezelése egy ügyfél számára, a szolgáltatók kellene bejelentkezni az Azure Portalon egy fiókkal társított, hogy az ügyfél bérlője, amely megköveteli, hogy az ügyfél bérlője rendszergazda hozzon létre és kezelje a szolgáltató felhasználói fiókok.
 
 Az Azure delegált erőforrás-kezelése, a bevezetési folyamat meghatározza a felhasználók a szolgáltató bérlője, akik képesek lesznek elérni és kezelni előfizetések, erőforráscsoportok és erőforrások az ügyfél bérlője. Ezek a felhasználók ezután jelentkezzen be az Azure Portalsaját hitelesítő adataikkal. Az Azure Portalon belül kezelhetik az összes olyan ügyfélhez tartozó erőforrásokat, amelyekhez hozzáféréssel rendelkeznek. Ez az Azure Portalon található [Ügyfélei](../how-to/view-manage-customers.md) lapon, vagy közvetlenül az adott ügyfél előfizetésének környezetében, akár az Azure Portalon, akár API-kon keresztül végezhető el.
 
@@ -141,6 +141,7 @@ Kérjük, vegye figyelembe az alábbi aktuális korlátozásokat:
 - A szerepkör-hozzárendeléseknek szerepköralapú hozzáférés-vezérlési (RBAC) [beépített szerepköröket kell használniuk.](../../role-based-access-control/built-in-roles.md) Az összes beépített szerepkör jelenleg támogatott az Azure delegált erőforrás-kezelése, kivéve a tulajdonos vagy a [DataActions](../../role-based-access-control/role-definitions.md#dataactions) engedéllyel rendelkező beépített szerepkörök. A Felhasználói hozzáférés rendszergazdája szerepkör csak korlátozott ideig használható [a szerepkörök felügyelt identitásokhoz való hozzárendeléséhez.](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)  Egyéni szerepkörök és [a klasszikus előfizetés-rendszergazdai szerepkörök](../../role-based-access-control/classic-administrators.md) nem támogatottak.
 - Az Azure Databricks szolgáltatást használó előfizetések be- és alaplapi előfizetései azonban jelenleg nem indíthatnak Azure Databricks-munkaterületeket delegált előfizetésen.
 - Bár az Azure delegált erőforrás-kezelése, amely erőforrás-zárolással rendelkezik, az azure-beli delegált erőforrás-kezelés, ezek a zárolások nem akadályozza meg, hogy a kezelő bérlő felhasználói műveleteket hajtsanak végre. A rendszer által felügyelt erőforrásokat védő [hozzárendelések megtagadása,](../../role-based-access-control/deny-assignments.md) például az Azure által felügyelt alkalmazások vagy az Azure Blueprints (rendszer-hozzárendelt megtagadási hozzárendelések) által létrehozott hozzárendelések megakadályozhatják, hogy a felügyelt bérlő felhasználói az adott erőforrásokra reagálnak; jelenleg azonban az ügyfél-bérlő felhasználói nem hozhatnak létre saját megtagadási hozzárendeléseket (a felhasználó által hozzárendelt megtagadási hozzárendeléseket).
+- A kezelő bérlő ben lévő felhasználók nem férhetnek hozzá a delegált ügyfél-előfizetés számlázási adatainak megtekintéséhez, még akkor sem, ha olyan beépített szerepkörrel rendelkeznek, amely általában hozzáférést engedélyez. Ennek az az oka, hogy a számlázási adatokhoz való hozzáférés további lépéseket igényel, amelyek jelenleg csak az ugyanazon a bérlőn belüli felhasználók számára támogatottak.
 
 ## <a name="next-steps"></a>További lépések
 

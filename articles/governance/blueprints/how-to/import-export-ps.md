@@ -3,16 +3,16 @@ title: Tervrajzok importálása és exportálása a PowerShell használatával
 description: Ismerje meg, hogyan dolgozhat a tervezetdefiníciók kódként. Megoszthatja, megszerezheti és kezelheti őket az exportálási és importálási parancsokkal.
 ms.date: 09/03/2019
 ms.topic: how-to
-ms.openlocfilehash: fc7b9818072665d79deaf8a456868943e8428730
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 98bd21aad944346a17d8bdce7fb74c0eb8be2ed7
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873199"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677136"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>Tervezetdefiníciók importálása és exportálása a PowerShell használatával
 
-Az Azure Blueprints teljes körűen kezelhető az Azure Portalon keresztül. Ahogy a szervezetek előre a tervrajzok használatát, meg kell kezdeni gondolkodni tervezet definíciók felügyelt kódként. Ezt a fogalmat gyakran nevezik infrastruktúra kódnak (IaC). A tervezetdefiníciók kódként való kezelése további előnyöket kínál az Azure Portal által kínált lehetőségeken túl. Ezek az előnyök a következők:
+Az Azure Blueprints teljes körűen kezelhető az Azure Portalon keresztül. Ahogy a szervezetek előre az Azure Blueprints használata, el kell kezdeniük gondolkodni tervezetdefiníciók felügyelt kódként. Ezt a fogalmat gyakran nevezik infrastruktúra kódnak (IaC). A tervezetdefiníciók kódként való kezelése további előnyöket kínál az Azure Portal által kínált lehetőségeken túl. Ezek az előnyök a következők:
 
 - Tervdefiníciók megosztása
 - A tervezetdefiníciók biztonsági mentése

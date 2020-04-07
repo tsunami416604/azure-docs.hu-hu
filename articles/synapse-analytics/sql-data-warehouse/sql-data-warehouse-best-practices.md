@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 0a2a49546a31f6d767b5e89348dc6b703278d877
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 4462bf0fc2057922340eb01cb8c786dbc63ce290
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633628"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745350"
 ---
 # <a name="best-practices-for-synapse-sql-pool-in-azure-synapse-analytics-formerly-sql-dw"></a>A Synapse SQL-készlet ajánlott eljárásoka az Azure Synapse Analytics (korábbi sql DW) szolgáltatásában
 
@@ -36,7 +36,7 @@ Ha úgy találja, hogy túl sokáig tart az összes statisztika frissítése, é
 > [!TIP]
 > A legnagyobb hasznot úgy nyerheti meg, ha frissített statisztikákat tart az illesztésekben részt vevő oszlopokról, a WHERE záradékban használt oszlopokról és a GROUP BY-ben található oszlopokról.
 
-Lásd [még: Táblastatisztika kezelése](sql-data-warehouse-tables-statistics.md), [STATISZTIKA LÉTREHOZÁSA](https://msdn.microsoft.com/library/ms188038.aspx)és STATISZTIKA [FRISSÍTÉSE](https://msdn.microsoft.com/library/ms187348.aspx).
+Lásd [még: Táblastatisztika kezelése](sql-data-warehouse-tables-statistics.md), [STATISZTIKA LÉTREHOZÁSA](/sql/t-sql/statements/create-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)és STATISZTIKA [FRISSÍTÉSE](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="use-dmvs-to-monitor-and-optimize-your-queries"></a>A lekérdezések megfigyelése és optimalizálása DMV-kkel
 
@@ -44,7 +44,7 @@ Az SQL-készlet számos DMV-vel rendelkezik, amelyek a lekérdezések végrehajt
 
 Ha gyorsan szeretne lekérdezéseket kikeresni a DMV-kben, segíthet, ha a lekérdezéseknél használja a LABEL beállítást.
 
-Lásd [még: A munkaterhelés figyelése DMV-k,](sql-data-warehouse-manage-monitor.md) [CÍMKE,](sql-data-warehouse-develop-label.md) [OPTION](https://msdn.microsoft.com/library/ms190322.aspx), [sys.dm_exec_sessions,]( https://msdn.microsoft.com/library/ms176013.aspx) [sys.dm_pdw_exec_requests](https://msdn.microsoft.com/library/mt203887.aspx), [sys.dm_pdw_request_steps](https://msdn.microsoft.com/library/mt203913.aspx), [sys.dm_pdw_sql_requests](https://msdn.microsoft.com/library/mt203889.aspx), [sys.dm_pdw_dms_workers](https://msdn.microsoft.com/library/mt203878.aspx), [DBCC PDW_SHOWEXECUTIONPLAN](https://msdn.microsoft.com/library/mt204017.aspx)és [sys.dm_pdw_waits](https://msdn.microsoft.com/library/mt203893.aspx)használatával.
+Lásd [még: A munkaterhelés figyelése DMV-k,](sql-data-warehouse-manage-monitor.md) [CÍMKE,](sql-data-warehouse-develop-label.md) [OPTION](/sql/t-sql/queries/option-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [sys.dm_exec_sessions,](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [DBCC PDW_SHOWEXECUTIONPLAN](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)és [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)használatával.
 
 ## <a name="tune-query-performance-with-new-product-enhancements"></a>A lekérdezési teljesítmény finomhangolása új termékfejlesztésekkel
 
@@ -58,7 +58,7 @@ Egy egyszeri terhelés egy kis tábla egy INSERT utasítást, vagy akár egy id�
 
 Ha azonban egy nap során több ezer vagy több millió sort kell betöltenie, észreveheti, hogy az egyszeres INSERT utasítások nem feltétlenül bizonyulnak elegendőnek.  Ehelyett érdemes olyan folyamatokat kifejleszteni, amelyek egy fájlba írnak, amelyet egy időről időre aktiválódó másik folyamat rendszeresen betölt.
 
-Lásd még: [INSERT](https://msdn.microsoft.com/library/ms174335.aspx).
+Lásd még: [INSERT](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="use-polybase-to-load-and-export-data-quickly"></a>Az adatok gyors betöltése és exportálása a PolyBase segítségével
 
@@ -74,7 +74,7 @@ Az Azure Data Factory támogatja a PolyBase terheléseket is, és hasonló telje
 > [!NOTE]
 > A gzip szöveges fájlok használata kori átviteli terhelés maximalizálásához bontsa fel a fájlokat 60 vagy több fájlra, hogy maximalizálja a terhelés párhuzamosságát.  A gyorsabb teljes átviteli teljesítmény érdekében érdemes lehet egy időben betölteni az adatokat.
 
-Lásd még: [Adatok betöltése](design-elt-data-loading.md), [Útmutató a PolyBase használatához](guidance-for-loading-data.md), [AZ SQL-készletbetöltési minták és stratégiák](https://blogs.msdn.microsoft.com/sqlcat/20../../), Az adatok [betöltése az Azure Data Factoryval]( ../../data-factory/load-azure-sql-data-warehouse.md), az [Adatok áthelyezése az Azure Data Factoryval](../../data-factory/transform-data-using-machine-learning.md), ( éshttps://msdn.microsoft.com/library/dn935026.aspx)A tábla létrehozása [kijelölésként (CTAS)](sql-data-warehouse-develop-ctas.md)című témakört.
+Lásd még: [Adatok betöltése](design-elt-data-loading.md), [Útmutató a PolyBase használatához](guidance-for-loading-data.md), [SQL-készletbetöltési minták és stratégiák](https://blogs.msdn.microsoft.com/sqlcat/20../../), Adatok [betöltése az Azure Data Factory segítségével,]( ../../data-factory/load-azure-sql-data-warehouse.md) [Adatok áthelyezése az Azure Data Factory-val,](../../data-factory/transform-data-using-machine-learning.md) [HOZZON LÉTRE KÜLSŐ FÁJLFORMÁTUMOT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)és [Hozzon létre táblázatot kiválasztottként (CTAS)](sql-data-warehouse-develop-ctas.md).
 
 ## <a name="load-then-query-external-tables"></a>Betöltés, majd külső táblák lekérdezése
 
@@ -97,7 +97,7 @@ Ha például van egy rendelésazonosító alapján elosztott rendelési tábláj
 
 Az alábbi hivatkozásokban további részleteket talál arról, hogy a terjesztési oszlop kiválasztása hogyan javíthatja a teljesítményt, valamint hogyan határozhat meg egy elosztott táblát a CREATE TABLE utasítás WITH záradékában.
 
-Lásd [még: Tábla áttekintése](sql-data-warehouse-tables-overview.md), [Táblaeloszlás](sql-data-warehouse-tables-distribute.md), [Táblaeloszlás kiválasztása](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/), [TÁBLA LÉTREHOZÁSA](https://msdn.microsoft.com/library/mt203953.aspx), [TÁBLA LÉTREHOZÁSA, AHOGY választó szöveg.](https://msdn.microsoft.com/library/mt204041.aspx)
+Lásd [még: Tábla áttekintése](sql-data-warehouse-tables-overview.md), [Táblaeloszlás](sql-data-warehouse-tables-distribute.md), [Táblaeloszlás kiválasztása](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/), [TÁBLA LÉTREHOZÁSA](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [TÁBLA LÉTREHOZÁSA, AHOGY választó szöveg.](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ## <a name="do-not-over-partition"></a>Túl sok partíció használatának kerülése
 
@@ -115,11 +115,11 @@ Az INSERT, UPDATE és DELETE utasítások tranzakcióban futnak, és amikor megh
 
 Ha például van egy INSERT, amely várhatóan 1 órát vesz igénybe, ha lehetséges, bontsa fel az INSERT-et négy részre, amelyek mindegyike 15 perc alatt fog futni.  A visszaállítási kockázat csökkentése érdekében használja ki a speciális minimális naplózási eseteket, például a CTAS- t, a CSONKOLÁSt, a DROP TABLE-t vagy az INSERT-et üres táblákhoz.  
 
-A visszaállítások kiküszöbölésének másik módja a csak metaadatokat használó műveletek alkalmazása, például az adatkezelés partícióváltása.  Ha például egy DELETE utasítást futtatna egy olyan tábla összes sorának törléséhez, ahol a order_date 2001 októberében volt, havonta particionálhatja az adatokat, majd kiválthatja a partíciót egy másik táblából származó üres partíció adataival (lásd [AZ ALTER TABLE](https://msdn.microsoft.com/library/ms190273.aspx) példákat).  
+A visszaállítások kiküszöbölésének másik módja a csak metaadatokat használó műveletek alkalmazása, például az adatkezelés partícióváltása.  Ha például egy DELETE utasítást futtatna egy olyan tábla összes sorának törléséhez, ahol a order_date 2001 októberében volt, havonta particionálhatja az adatokat, majd kiválthatja a partíciót egy másik táblából származó üres partíció adataival (lásd [AZ ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) példákat).  
 
 Particionálatlan táblák esetén a DELETE helyett ctas-t érdemes használni a táblában tartani kívánt adatok írásához.  Ha a CTAS ugyanannyi időt vesz igénybe, sokkal biztonságosabb, mivel minimális tranzakciónaplózással rendelkezik, és szükség esetén gyorsan visszavonható.
 
-Lásd [még: A tranzakciók ismertetése](sql-data-warehouse-develop-transactions.md), [a tranzakciók optimalizálása](sql-data-warehouse-develop-best-practices-transactions.md), [a táblaparticionálás](sql-data-warehouse-tables-partition.md), [a TÁBLA csonkítása](https://msdn.microsoft.com/library/ms177570.aspx), [az ALTER TÁBLA](https://msdn.microsoft.com/library/ms190273.aspx)és a Create table as [select (CTAS) ismertetése.](sql-data-warehouse-develop-ctas.md)
+Lásd [még: A tranzakciók ismertetése](sql-data-warehouse-develop-transactions.md), [a tranzakciók optimalizálása](sql-data-warehouse-develop-best-practices-transactions.md), [a táblaparticionálás](sql-data-warehouse-tables-partition.md), [a TÁBLA csonkítása](/sql/t-sql/statements/truncate-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [az ALTER TÁBLA](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)és a Create table as [select (CTAS) ismertetése.](sql-data-warehouse-develop-ctas.md)
 
 ## <a name="reduce-query-result-sizes"></a>A lekérdezés eredményméretének csökkentése
 
@@ -131,7 +131,7 @@ A DDL meghatározásakor az adatokat támogató legkisebb adattípus használata
 
 Ha egy oszlop leghosszabb értéke 25 karakterből áll, akkor VARCHAR(25) típusként határozza meg az oszlopot.  Ne határozza meg az összes karakteroszlopot nagy alapértelmezett hosszúságértékkel.  NVARCHAR helyett VARCHAR típusként határozza meg az oszlopokat, amikor ez is elegendő.
 
-Lásd [még: Táblázat áttekintése](sql-data-warehouse-tables-overview.md), [Táblázat adattípusok](sql-data-warehouse-tables-data-types.md), [TÁBLA LÉTREHOZÁSA](https://msdn.microsoft.com/library/mt203953.aspx).
+Lásd [még: Táblázat áttekintése](sql-data-warehouse-tables-overview.md), [Táblázat adattípusok](sql-data-warehouse-tables-data-types.md), [TÁBLA LÉTREHOZÁSA](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="use-temporary-heap-tables-for-transient-data"></a>Ideiglenes halomtáblák használata átmeneti adatokhoz
 
@@ -141,7 +141,7 @@ Azzal is tovább gyorsíthatja a folyamatot, ha az adatokat állandó tároló h
 
 A halomtáblákat a CREATE TABLE utasítás WITH záradékával lehet meghatározni.  Ha ideiglenes táblát használ, ne felejtsen el rajta is statisztikákat létrehozni.
 
-Lásd [még: Ideiglenes táblák](sql-data-warehouse-tables-temporary.md), [TÁBLA LÉTREHOZÁSA](https://msdn.microsoft.com/library/mt203953.aspx), TÁBLA LÉTREHOZÁSA A KIJELÖLÉS [KÉNT](https://msdn.microsoft.com/library/mt204041.aspx).
+Lásd [még: Ideiglenes táblák](sql-data-warehouse-tables-temporary.md), [TÁBLA LÉTREHOZÁSA](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), TÁBLA LÉTREHOZÁSA A KIJELÖLÉS [KÉNT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="optimize-clustered-columnstore-tables"></a>Fürtözött oszlopcentrikus táblák optimalizálása
 
@@ -160,7 +160,7 @@ Ha a tábla nem rendelkezik 6 milliárd sorral, akkor csökkentse a partíciók 
 > [!TIP]
 > Oszlopcentrikus tábla lekérdezésekor a lekérdezések gyorsabban futnak, ha csak a szükséges oszlopokat választja ki.  
 
-Lásd még a [táblaindexekkel](sql-data-warehouse-tables-index.md), az [oszlopcentrikus indexek áttekintésével](https://msdn.microsoft.com/library/gg492088.aspx) és az [oszlopcentrikus indexek újjáépítésével](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality) foglalkozó témaköröket.
+Lásd még a [táblaindexekkel](sql-data-warehouse-tables-index.md), az [oszlopcentrikus indexek áttekintésével](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) és az [oszlopcentrikus indexek újjáépítésével](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality) foglalkozó témaköröket.
 
 ## <a name="use-larger-resource-class-to-improve-query-performance"></a>Nagyobb erőforrásosztály használata a lekérdezés teljesítményének javítása érdekében
 
@@ -174,7 +174,7 @@ Lásd [még: Erőforrásosztályok a munkaterhelés kezeléséhez.](resource-cla
 
 Ha azt veszi észre, hogy a felhasználói lekérdezések úgy tűnik, hogy hosszú késleltetésű, lehet, hogy a felhasználók futnak a nagyobb erőforrás-osztályok, és sok egyidejűségi tárolóhelyeket, ami más lekérdezések sorban állás.  Ha a `SELECT * FROM sys.dm_pdw_waits` parancs futtatásakor a rendszer sorokat ad vissza, láthatja, hogy a felhasználók lekérdezései sorban állnak.
 
-Lásd [még: Erőforrásosztályok a munkaterhelés kezeléséhez](resource-classes-for-workload-management.md), [sys.dm_pdw_waits](https://msdn.microsoft.com/library/mt203893.aspx).
+Lásd [még: Erőforrásosztályok a munkaterhelés kezeléséhez](resource-classes-for-workload-management.md), [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="other-resources"></a>Egyéb erőforrások
 

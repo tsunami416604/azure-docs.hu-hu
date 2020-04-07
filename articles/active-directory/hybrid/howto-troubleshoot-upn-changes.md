@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 695773da624bc8d4ccff09119d64fc43319ff488
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d11be1d971922095d4a1ace1c81c763134b4e58c
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246432"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743332"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>Az egyszerű felhasználónevek változásainak megtervezése és hibaelhárítása az Azure Active Directoryban
 
@@ -58,11 +58,11 @@ Bsimon@contoso.com aBritta.Simon@contoso.com
 
    * Britta.Simon@contoso.comaBritta.Simon@contosolabs.com <br>
      Vagy<br>
-    *   Britta.Simon@corp.contoso.comaBritta.Simon@labs.contoso.com 
+    * Britta.Simon@corp.contoso.comaBritta.Simon@labs.contoso.com 
 
 Módosítsa a felhasználó upn-ját minden alkalommal, amikor egy felhasználó elsődleges e-mail címe frissül. Az e-mail változásának okáttól függetlenül az upn-t mindig frissíteni kell, hogy megfeleljen.
 
-Az Active Directory és az Azure AD kezdeti szinkronizálása során győződjön meg arról, hogy a felhasználók e-mailjei megegyeznek az upn-okkal
+Az Active Directory és az Azure AD kezdeti szinkronizálása során győződjön meg arról, hogy a felhasználók e-mailjei megegyeznek az upn-ekkel.
 
 ### <a name="upns-in-active-directory"></a>UPN-ek az Active Directoryban
 
@@ -100,7 +100,7 @@ Ha a userPrincipalName attribútum értéke nem felel meg egy ellenőrzött tart
 
 ### <a name="roll-out-bulk-upn-changes"></a>Tömeges upn-módosítások bevezetése
 
-Kövesse a kísérleti adatok ajánlott eljárások[tömeges](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans) upn változások. Is volna egy baldachin visszagörgetés tervez részére visszatér upns ha ön talál kérdés amit ki nem tud lenni gyorsan megfejt. Miután a próbagép fut, elkezdheti a különböző szervezeti szerepkörökkel rendelkező felhasználók kis csoportjait, valamint az alkalmazások vagy eszközök adott készleteit.
+Kövesse a kísérleti adatok ajánlott eljárások [tömeges](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans) upn változások. Is volna egy baldachin visszagörgetés tervez részére visszatér upns ha ön talál kérdés amit ki nem tud lenni gyorsan megfejt. Miután a próbagép fut, elkezdheti a különböző szervezeti szerepkörökkel rendelkező felhasználók kis csoportjait, valamint az alkalmazások vagy eszközök adott készleteit.
 
 Megy keresztül ez az első részhalmaza a felhasználók kapsz egy jó ötlet, hogy mit kell várni a felhasználók részeként a változás. Adja meg ezt az információt a felhasználói kommunikációban.
 
@@ -108,7 +108,7 @@ Hozzon létre egy meghatározott eljárást az upn-ek módosítására az egyes 
 
 A következő szakaszok részletesen ismertetik a lehetséges ismert problémákat és kerülő megoldásokat, amikor az upn-ek módosulnak.
 
-## <a name="user-provisioning-known-issues-and-workarounds"></a>a felhasználók kiépítése ismert problémák és kerülő megoldások
+## <a name="apps-known-issues-and-workarounds"></a>Alkalmazások ismert problémái és kerülő megoldásai
 
 [A szoftverszolgáltatásként (SaaS)](https://azure.microsoft.com/overview/what-is-saas/) és a Line of Business (LoB) alkalmazások gyakran támaszkodnak az UPN-ekre a felhasználók megkereséséhez és a felhasználói profil adatainak tárolásához, beleértve a szerepköröket is. A [Just in Time kiépítése](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning) a felhasználói profil létrehozása, amikor a felhasználók először jelentkeznek be az alkalmazásba, az upn-változások hatással lehetnek a Just in Time kiépítése korra.
 
@@ -117,6 +117,7 @@ A felhasználó upn módosítása megszakíthatja az Azure AD-felhasználó és 
 
 **Workaround**<br>
 [Az Azure AD automatikus felhasználói kiépítés](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) lehetővé teszi, hogy automatikusan létrehozza, karbantartja és távolítsa el a felhasználói identitások a támogatott felhőalapú alkalmazásokban. Az alkalmazások automatikus felhasználói kiépítésének konfigurálása automatikusan frissíti az upn-eket az alkalmazásokon. Tesztelje az alkalmazásokat a fokozatos bevezetés részeként annak ellenőrzésére, hogy az okat nem érintik-e az upn-változások.
+Ha Ön fejlesztő, fontolja meg [az SCIM-támogatás hozzáadását az alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups) az Azure Active Directoryból történő automatikus felhasználói kiépítés engedélyezéséhez. 
 
 ## <a name="managed-devices-known-issues-and-workarounds"></a>A felügyelt eszközök ismert problémái és kerülő megoldásai
 
@@ -130,7 +131,7 @@ Az [Azure AD-be való kattintással](https://docs.microsoft.com/azure/active-dir
 A felhasználók egyszeri bejelentkezési problémákat tapasztalhatnak az Azure AD-től a hitelesítéshez függő alkalmazásokkal.
 
 **Workaround** <br>
-Hagyjon elegendő időt az upn-módosítás nak az Azure AD-vel való szinkronizálásához. Miután meggyőződött arról, hogy az új upn tükröződik az Azure AD Portalon, kérje meg a felhasználót, hogy válassza ki az "Egyéb felhasználó" csempét az új upn-nel való bejelentkezéshez. a [PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaduser?view=azureadps-2.0)segítségével is ellenőrizheti. Miután bejelentkezett az új upn-nal, a régi upn-ra mutató hivatkozások továbbra is megjelenhetnek a "Munkahelyi vagy iskolai hozzáférés" Windows-beállításban.
+Hagyjon elegendő időt az upn-módosítás nak az Azure AD-vel való szinkronizálásához. Miután meggyőződött arról, hogy az új upn tükröződik az Azure AD Portalon, kérje meg a felhasználót, hogy válassza ki az "Egyéb felhasználó" csempét az új upn-nel való bejelentkezéshez. A [PowerShellen](https://docs.microsoft.com/powershell/module/azuread/get-azureaduser?view=azureadps-2.0)keresztül is ellenőrizheti. Az új upn-nel való bejelentkezés után a régi upn-ra mutató hivatkozások továbbra is megjelenhetnek az "Access work or school" Windows beállításban.
 
 ![Ellenőrzött tartományok képernyőképe](./media/howto-troubleshoot-upn-changes/other-user.png)
 
@@ -142,7 +143,7 @@ Hagyjon elegendő időt az upn-módosítás nak az Azure AD-vel való szinkroniz
 
 A Windows 10 hibrid Azure AD-hez csatlakozó eszközök valószínűleg váratlan újraindításokat és hozzáférési problémákat tapasztalnak.
 
-Ha a felhasználók az új UPN-nek az Azure AD-vel való szinkronizálása előtt jelentkeznek be a Windows rendszerbe, vagy továbbra is egy meglévő Windows-munkamenetet használnak, egyszeri bejelentkezési problémákat tapasztalhatnak az Azure AD-t hitelesítésre használó alkalmazásokkal, ha feltételes hozzáférés van konfigurálva a hibrid összekapcsolt eszközök használatának kényszerítése az erőforrások eléréséhez. 
+Ha a felhasználók az új UPN-szinkronizálás előtt jelentkeznek be a Windows rendszerbe, vagy továbbra is egy meglévő Windows-munkamenetet használnak, előfordulhatnak egyszeri bejelentkezési problémák az Azure AD-t hitelesítésre használó alkalmazásokkal, ha a feltételes hozzáférés úgy van konfigurálva, hogy a hibrid egyesített eszközök erőforrásokhoz való hozzáféréséhez használja. 
 
 Ezenkívül a következő üzenet jelenik meg, amely egy perc elteltével újraindítást kényszerít ki. 
 
@@ -174,15 +175,13 @@ A [Microsoft Authenticator alkalmazás](https://docs.microsoft.com/azure/active-
 
 A Microsoft Authenticator alkalmazás sávon kívüli ellenőrzési lehetőséget kínál. Ahelyett, hogy a bejelentkezés során automatikus telefonhívást vagy SMS-t kezdeményezne a felhasználónak, a [többtényezős hitelesítés (MFA)](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks) értesítést küld a Microsoft Authenticator alkalmazásnak a felhasználó okostelefonján vagy táblagépén. A felhasználó egyszerűen a Jóváhagyás gombra koppint (vagy pinkódot vagy biometrikus értéket ad meg, és a "Hitelesítés" gombra koppint) az alkalmazásban a bejelentkezés befejezéséhez.
 
-Ha módosítja egy felhasználó felhasználói felületének felhasználóáltali felhasználókénti felhasználókészülékét, a mobileszközök a következő problémákat tapasztalhatják:
-
 **Ismert problémák** 
 
-A régi upn továbbra is megjelenik a felhasználói fiókban, és előfordulhat, hogy nem érkezik értesítés. [Az ellenőrző kódok](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-faq) továbbra is működnek.
+Ha módosítja egy felhasználó felhasználói felületét, a régi upn továbbra is megjelenik a felhasználói fiókban, és előfordulhat, hogy nem érkezik értesítés. [Az ellenőrző kódok](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-faq) továbbra is működnek.
 
 **Workaround**
 
-Ha értesítést kap, utasítsa a felhasználót, hogy utasítsa el az értesítést, nyissa meg a Hitelesítő alkalmazást, koppintson az "Értesítések ellenőrzése" lehetőségre, és hagyja jóvá az MFA-kérdést. Ezt követően a fiókban megjelenő upn frissül. Megjegyzés: előfordulhat, hogy a frissített upn új fiókként jelenik meg, ez más Hitelesítő funkcióknak köszönhető. További információ további ismert problémák ebben a cikkben.
+Ha értesítést kap, utasítsa a felhasználót, hogy utasítsa el az értesítést, nyissa meg a Hitelesítő alkalmazást, koppintson az "Értesítések ellenőrzése" lehetőségre, és hagyja jóvá az MFA-kérdést. Ezt követően a fiókban megjelenő upn frissül. Megjegyzés: előfordulhat, hogy a frissített upn új fiókként jelenik meg, ez más Hitelesítő funkcióknak köszönhető. További információkért olvassa el a cikkben található további ismert problémákat.
 
 ### <a name="brokered-authentication"></a>Közvetített hitelesítés
 

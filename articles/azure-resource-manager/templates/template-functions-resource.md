@@ -3,12 +3,12 @@ title: Sablonfüggvények - erőforrások
 description: Az Azure Resource Manager-sablonban az erőforrásokkal kapcsolatos értékek lekéréséhez használandó függvények ismertetése.
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 641602218aa19b790eb6e7feabdb7b46a520b590
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 23c0463649e748b35917c959a73536147e91f60b
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478271"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744997"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Erőforrás-függvények ARM-sablonokhoz
 
@@ -444,12 +444,12 @@ Egy erőforrás futásidejű állapotát képviselő objektumot ad vissza.
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | resourceName vagy resourceIdentifier |Igen |sztring |Egy erőforrás neve vagy egyedi azonosítója. Amikor az aktuális sablonban hivatkozik egy erőforrásra, csak az erőforrás nevét adja meg paraméterként. Ha egy korábban üzembe helyezett erőforrásra hivatkozik, vagy ha az erőforrás neve nem egyértelmű, adja meg az erőforrás-azonosítót. |
-| apiVersion |Nem |sztring |A megadott erőforrás API-verziója. Adja meg ezt a paramétert, ha az erőforrás nincs kiépítve ugyanabban a sablonban. Jellemzően, a formátum, **yyyy-mm-dd**. Az erőforrás érvényes API-verzióiról a [sablon hivatkozása oldalon](/azure/templates/)olvashat. |
+| apiVersion |Nem |sztring |A megadott erőforrás API-verziója. **Erre a paraméterre akkor van szükség, ha az erőforrás nincs kiépítve ugyanazon a sablonon belül.** Jellemzően, a formátum, **yyyy-mm-dd**. Az erőforrás érvényes API-verzióiról a [sablon hivatkozása oldalon](/azure/templates/)olvashat. |
 | "Teljes" |Nem |sztring |Érték, amely meghatározza, hogy a teljes erőforrásobjektumot adja-e vissza. Ha nem adja `'Full'`meg, csak az erőforrás tulajdonságobjektumát adja vissza. A teljes objektum olyan értékeket tartalmaz, mint az erőforrás-azonosító és a hely. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
-Minden erőforrástípus különböző tulajdonságokat ad vissza a referenciafüggvényhez. A függvény nem ad vissza egyetlen, előre definiált formátumot. A visszaadott érték attól függően is eltér, hogy megadta-e a teljes objektumot. Egy erőforrástípus tulajdonságainak megtekintéséhez adja vissza az objektumot a kimenetek szakaszban a példában látható módon.
+Minden erőforrástípus különböző tulajdonságokat ad vissza a referenciafüggvényhez. A függvény nem ad vissza egyetlen, előre definiált formátumot. A visszaadott érték az `'Full'` argumentum értékététől függően is eltérő. Egy erőforrástípus tulajdonságainak megtekintéséhez adja vissza az objektumot a kimenetek szakaszban a példában látható módon.
 
 ### <a name="remarks"></a>Megjegyzések
 
@@ -514,7 +514,7 @@ Ha ugyanabban a sablonban üzembe helyezett erőforrásra hivatkozik, adja meg a
 "value": "[reference(parameters('storageAccountName'))]"
 ```
 
-Ha olyan erőforrásra hivatkozik, amely nincs ugyanabban a sablonban telepítve, adja meg az erőforrás-azonosítót.
+Ha olyan erőforrásra hivatkozik, amely nincs ugyanabban a sablonban `apiVersion`telepítve, adja meg az erőforrás-azonosítót és a.
 
 ```json
 "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]"

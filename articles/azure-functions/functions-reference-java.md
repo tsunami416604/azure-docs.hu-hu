@@ -3,12 +3,12 @@ title: Java fejlesztői útmutató az Azure Functionshez
 description: Ismerje meg, hogyan fejleszthet funkciókat a Java segítségével.
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 4af2a860657f6066112146e1f88d81861d9430ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b1f39ff4fd48a3ed99b34391e9cc6efdad86a5d
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276750"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672999"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Az Azure Functions Java fejlesztői útmutatója
 
@@ -16,7 +16,7 @@ Az Azure Functions futásidejű támogatja a [Java SE 8 LTS (zulu8.31.0.2-jre8.0
 
 Más nyelvekhez, úgy, hogy egy függvényalkalmazásnak egy vagy több funkciója is lehet. A Java függvény `public` egy módszer, díszített `@FunctionName`a jegyzet . Ez a módszer határozza meg egy Java függvény bejegyzését, és egyedinek kell lennie egy adott csomagban. A Java nyelven írt egyik függvényalkalmazás nak több osztálya `@FunctionName`is lehet, több nyilvános metódussal a cikkhez jegyzetekkel.
 
-Ez a cikk feltételezi, hogy már elolvasta az [Azure Functions fejlesztői hivatkozását.](functions-reference.md) A Functions rövid útmutatót is el kell végeznie az első függvény létrehozásához a [Visual Studio Code](functions-create-first-function-vs-code.md) vagy a [Maven](functions-create-first-java-maven.md)használatával.
+Ez a cikk feltételezi, hogy már elolvasta az [Azure Functions fejlesztői hivatkozását.](functions-reference.md) A Functions rövid útmutatót is el kell végeznie az első függvény létrehozásához a [Visual Studio Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java) vagy a [Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)használatával.
 
 ## <a name="programming-model"></a>A programozási modell 
 
@@ -30,7 +30,7 @@ A Java-függvények létrehozásának megkönnyítése érdekében vannak Olyan 
 
 A következő fejlesztői környezetek rendelkeznek az Azure Functions eszközzel, amely lehetővé teszi java függvényprojektek létrehozását: 
 
-+ [Visual Studio kód](https://code.visualstudio.com/docs/java/java-azurefunctions)
++ [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions)
 + [Eclipse](functions-create-maven-eclipse.md)
 + [IntelliJ](functions-create-maven-intellij.md)
 
@@ -38,28 +38,31 @@ A fenti cikk hivatkozások megmutatják, hogyan lehet létrehozni az első funkc
 
 ### <a name="project-scaffolding"></a>Projekt állványzat
 
-Ha a terminálparancssor-fejlesztést részesíti előnyben, a Java-alapú függvényprojektek legegyszerűbb `Apache Maven` módja az archetípusok használata. Jelenleg két Függvény archetípus létezik a Maven-hez:
+Ha a terminálparancssor-fejlesztést részesíti előnyben, a Java-alapú függvényprojektek legegyszerűbb `Apache Maven` módja az archetípusok használata. Az Azure Functions Java Maven archetípusa a következő csoportazonosító alatt jelenik _meg:__artifactId_: [com.microsoft.azure:azure-functions-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/). 
 
-+ **Java Archetype**: a következő groupId és artifactId [com.microsoft.azure:azure-functions-archetype alatt](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/)közzétéve:
+A következő parancs új Java függvényprojektet hoz létre ezzel az archetípussal:
 
-    ```
-    mvn archetype:generate \
-        -DarchetypeGroupId=com.microsoft.azure \
-        -DarchetypeArtifactId=azure-functions-archetype 
-    ```
+```
+mvn archetype:generate \
+    -DarchetypeGroupId=com.microsoft.azure \
+    -DarchetypeArtifactId=azure-functions-archetype 
+```
 
-    Az archetípus használatának első lépéseiről a [Java rövid útmutatója](functions-create-first-java-maven.md)látható. 
+Az archetípus használatának első lépéseiről a [Java rövid útmutatója](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)látható. 
 
-+ **Kotlin Archetype (Preview)** a következő groupId és artifactId [com.microsoft.azure:azure-functions-kotlin-archetípus](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/)alatt:
+## <a name="create-kotlin-functions-preview"></a>Kotlin függvények létrehozása (előzetes verzió)
 
-    ```
-    mvn archetype:generate \
-        -DarchetypeGroupId=com.microsoft.azure \
-        -DarchetypeArtifactId=azure-functions-kotlin-archetype
-    ```
+Van egy Maven archetípus is, amely kotlin függvényeket generál. Ez a jelenleg előzetes verzióban látható archetípus a következő _csoportazonosító_:_artifactId_: [com.microsoft.azure:azure-functions-kotlin-archetípus](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/)alatt jelenik meg. 
 
-Ezeknek az archetípusoknak a forráskódja megtalálható az [Azure Maven Archetypes GitHub-tárházban.](https://github.com/microsoft/azure-maven-archetypes)
+A következő parancs új Java függvényprojektet hoz létre ezzel az archetípussal:
 
+```
+mvn archetype:generate \
+    -DarchetypeGroupId=com.microsoft.azure \
+    -DarchetypeArtifactId=azure-functions-kotlin-archetype
+```
+
+Az archetípus használatának megkezdéséhez olvassa el a [Kotlin rövid útmutatóját.](functions-create-first-kotlin-maven.md)
 
 ## <a name="folder-structure"></a>Mappastruktúra
 
@@ -156,7 +159,7 @@ A Függvények lehetővé teszi a Java-függvények futtatásához használt Jav
 
 A megadott alkalmazásbeállításban további argumentumokat adhat meg. `JAVA_OPTS` Az Azure Portalon vagy az Azure CLI-ben üzembe helyezett függvényalkalmazáshoz hozzáadhat alkalmazásbeállításokat.
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
 Az [Azure Portalon](https://portal.azure.com)az [Alkalmazás beállításai](functions-how-to-use-azure-function-app-settings.md#settings) `JAVA_OPTS` lapon adja hozzá a beállítást.
 

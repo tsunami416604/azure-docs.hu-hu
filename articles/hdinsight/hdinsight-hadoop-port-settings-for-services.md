@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.openlocfilehash: 67cafbb7934381cd4c2936d6e6dfe7fb19d70735
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/06/2020
+ms.openlocfilehash: fe2cb04f36026740dc54f4668d3c3188592bd8ae
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76314691"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754226"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>Az Apache Hadoop-szolgáltatások által használt portok a HDInsight-on
 
@@ -21,9 +21,9 @@ Ez a dokumentum az Apache Hadoop-szolgáltatások hdinsight-fürtökön futó po
 
 ## <a name="public-ports-vs-non-public-ports"></a>Nyilvános és nem nyilvános portok
 
-A Linux-alapú HDInsight-fürtök csak három portot fednek fel nyilvánosan az interneten; 22, 23 és 443. Ezek a portok a fürt biztonságos elérésére szolgálnak az SSH és a biztonságos HTTPS protokollon keresztül elérhető szolgáltatások használatával.
+A Linux-alapú HDInsight-fürtök csak három portot fednek fel nyilvánosan az interneten: 22, 23 és 443. Ezek a portok biztosítják a fürthozzáférést az SSH és a biztonságos HTTPS protokollon keresztül elérhető szolgáltatások használatával.
 
-Belsőleg HDInsight valósítja meg több Azure virtuális gépek (a csomópont a fürtön) fut egy Azure virtuális hálózaton. A virtuális hálózaton belül az interneten keresztül nem elérhető portokhoz férhet hozzá. Ha például az SSH használatával csatlakozik az egyik főcsomóponthoz, a fő csomópontról közvetlenül elérheti a fürtcsomópontokon futó szolgáltatásokat.
+A HDInsight-ot az Azure virtuális hálózaton futó számos Azure virtuális gép (fürtcsomópont) valósítja meg. A virtuális hálózaton belül az interneten keresztül nem elérhető portokhoz férhet hozzá. Ha SSH-n keresztül csatlakozik a fő csomóponthoz, közvetlenül elérheti a fürtcsomópontokon futó szolgáltatásokat.
 
 > [!IMPORTANT]  
 > Ha nem ad meg egy Azure virtuális hálózatot a HDInsight konfigurációs beállításaként, automatikusan létrejön egy. Azonban nem csatlakozhat más gépekhez (például más Azure virtuális gépekhez vagy az ügyfélfejlesztő géphez) ehhez a virtuális hálózathoz.
@@ -32,7 +32,7 @@ További gépek csatlakoztatásához a virtuális hálózathoz először létre 
 
 ## <a name="public-ports"></a>Nyilvános portok
 
-Egy HDInsight-fürt összes csomópontja egy Azure virtuális hálózatban található, és nem érhető el közvetlenül az internetről. A nyilvános átjáró internet-hozzáférést biztosít a következő portokhoz, amelyek az összes HDInsight-fürttípuson gyakoriak.
+A HDInsight-fürt összes csomópontja egy Azure virtuális hálózatban található. A csomópontok nem érhetők el közvetlenül az internetről. A nyilvános átjáró internet-hozzáférést biztosít a következő portokhoz, amelyek az összes HDInsight-fürttípuson gyakoriak.
 
 | Szolgáltatás | Port | Protocol (Protokoll) | Leírás |
 | --- | --- | --- | --- |
@@ -49,7 +49,7 @@ Az alábbi fürttípusokhoz érhetők el:
 
 | Szolgáltatás | Port | Protocol (Protokoll) | Fürt típusa | Leírás |
 | --- | --- | --- | --- | --- |
-| Stargate |443 |HTTPS |HBase |HBase REST API. Lásd: [Első lépések az Apache HBase használatával](hbase/apache-hbase-tutorial-get-started-linux.md) |
+| `Stargate` |443 |HTTPS |HBase |HBase REST API. Lásd: [Első lépések az Apache HBase használatával](hbase/apache-hbase-tutorial-get-started-linux.md) |
 | Livy |443 |HTTPS |Spark |Spark REST API. Lásd: [Apache Spark-feladatok küldése távolról az Apache Livy használatával](spark/apache-spark-livy-rest-interface.md) |
 | Spark Takarékosság szerver |443 |HTTPS |Spark |Spark Takarékosság kiszolgáló hive-lekérdezések küldésére használt. Lásd: [Beeline használata az Apache Hive-val a HDInsight-on](hadoop/apache-hadoop-use-hive-beeline.md) |
 | Storm |443 |HTTPS |Storm |Storm web felhasználói felület. Lásd: [Apache Storm-topológiák telepítése és kezelése a HDInsightban](storm/apache-storm-deploy-monitor-topology-linux.md) |
@@ -89,7 +89,7 @@ Példák:
 | --- | --- | --- | --- | --- |
 | NameNode webes felhasználói felület |Fő csomópontok |30070 |HTTPS |Webes felhasználói felület az állapot megtekintéséhez |
 | NameNode metaadat-szolgáltatás |főcsomópontok |8020 |Ipc |Fájlrendszer metaadatai |
-| DataNode között |Minden munkavégző csomópont |30075 |HTTPS |Webes felhasználói felület az állapot, a naplók stb. |
+| DataNode között |Minden munkavégző csomópont |30075 |HTTPS |Webes felhasználói felület az állapot, a naplók és így tovább megtekintéséhez. |
 | DataNode között |Minden munkavégző csomópont |30010 |&nbsp; |Adatátvitel |
 | DataNode között |Minden munkavégző csomópont |30020 |Ipc |Metaadat-műveletek |
 | Másodlagos névcsomópont |Fő csomópontok |50090 |HTTP |A NameNode metaadatainak ellenőrzőpontja |
@@ -100,7 +100,7 @@ Példák:
 | --- | --- | --- | --- | --- |
 | Erőforrás-kezelő webes felhasználói felülete |Fő csomópontok |8088 |HTTP |Az Erőforrás-kezelő webes felhasználói felülete |
 | Erőforrás-kezelő webes felhasználói felülete |Fő csomópontok |8090 |HTTPS |Az Erőforrás-kezelő webes felhasználói felülete |
-| Erőforrás-kezelő rendszergazdai felülete |főcsomópontok |8141 |Ipc |Az alkalmazások beküldése (Hive, Hive szerver, Pig, stb) |
+| Erőforrás-kezelő rendszergazdai felülete |főcsomópontok |8141 |Ipc |Az alkalmazások beküldése (Hive, Hive szerver, Pig, és így tovább.) |
 | Erőforrás-kezelő ütemezője |főcsomópontok |8030 |HTTP |Felügyeleti felület |
 | Erőforrás-kezelő alkalmazásfelülete |főcsomópontok |8050 |HTTP |Az alkalmazáskezelő felületének címe |
 | NodeManager |Minden munkavégző csomópont |30050 |&nbsp; |A tárolókezelő címe |

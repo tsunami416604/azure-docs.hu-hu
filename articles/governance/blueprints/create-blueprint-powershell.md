@@ -3,12 +3,12 @@ title: 'Rövid útmutató: Blueprint létrehozása a PowerShell használatával'
 description: Ebben a rövid útmutatóban az Azure Blueprints használatával hozza létre, határozza meg és telepítse az összetevőket a PowerShell használatával.
 ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: 8b418fa2b5244c42b8597bbbe7ed4773133d03a8
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 53fcf53bdcc3b5fcd1c6ec07a7d8ab45b39955b6
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75436635"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676594"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Rövid útmutató: Azure Blueprint definiálása és hozzárendelése a PowerShell segítségével
 
@@ -377,7 +377,7 @@ Miután egy tervrajz ot közzétett a PowerShell használatával, egy előfizet�
      A **felhasználó által hozzárendelt felügyelt identitás** lehet bármely előfizetés és erőforráscsoport a felhasználó hozzárendelte a tervezet engedélyekkel rendelkezik.
 
      > [!IMPORTANT]
-     > Tervrajzok nem kezeli a felhasználó által hozzárendelt felügyelt identitás. A felhasználók felelősek a megfelelő szerepkörök és engedélyek hozzárendelése, vagy a tervezet hozzárendelés sikertelen lesz.
+     > Az Azure Blueprints nem kezeli a felhasználó által hozzárendelt felügyelt identitást. A felhasználók felelősek a megfelelő szerepkörök és engedélyek hozzárendelése, vagy a tervezet hozzárendelés sikertelen lesz.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

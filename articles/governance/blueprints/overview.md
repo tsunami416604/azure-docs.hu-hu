@@ -3,12 +3,12 @@ title: Az Azure Blueprints áttekintése
 description: Ismerje meg, hogy az Azure Blueprints szolgáltatás hogyan teszi lehetővé összetevők létrehozását, definiálását és üzembe helyezését az Azure-környezetben.
 ms.date: 11/21/2019
 ms.topic: overview
-ms.openlocfilehash: 07d84d658d88e977cd73176861e5c5e080c02857
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4787f2d559daffcbf5d4057ac381f0f7e1ae0c57
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74321762"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677417"
 ---
 # <a name="what-is-azure-blueprints"></a>Mi az az Azure Blueprints?
 
@@ -22,17 +22,17 @@ A tervekkel deklaratív módon, összehangoltan helyezhetők üzembe különböz
 - Erőforráscsoportok
 
 Az Azure Blueprints szolgáltatást a globális terjesztésű [Azure Cosmos DB](../../cosmos-db/introduction.md) támogatja.
-A tervobjektumok több Azure-régióba vannak replikálva. A replikáció alacsony késést, magas rendelkezésre állást, valamint konzisztens hozzáférést biztosít a tervobjektumokhoz, függetlenül attól, hogy a Blueprints melyik régiókban helyezi üzembe az erőforrásokat.
+A tervobjektumok több Azure-régióba vannak replikálva. Ez a replikáció alacsony késést, magas rendelkezésre állást és konzisztens hozzáférést biztosít a tervezet objektumokhoz, függetlenül attól, hogy az Azure Blueprints melyik régióban helyezi üzembe az erőforrásokat.
 
 ## <a name="how-its-different-from-resource-manager-templates"></a>Miben különbözik ez a Resource Manager-sablonoktól?
 
 A szolgáltatás úgy van megtervezve, hogy segítsen a _környezet beállításában_. Ez a beállítás gyakran erőforráscsoportok, szabályzatok, szerepkör-hozzárendelések és Resource Manager-sablonok üzembe helyezését is magában foglalja. A tervek olyan csomagok, amelyekben ezen _tervelemek_ mindegyike megtalálható. A csomagok összeállíthatók, és az egyes verzióik kezelhetőek többek között egy CI/CD-folyamaton keresztül. Végül minden csomag egy előfizetéshez van rendelve egyetlen műveletben, amely felügyelhető és nyomon követhető.
 
-Szinte minden, ami a tervekben szerepel, üzembe helyezhető Resource Manager-sablonokkal is. Azonban a Resource Manager-sablonok olyan dokumentumok, amelyek nem léteznek natív módon az Azure-ban – minden sablon tárolása helyileg vagy a verziókövetési rendszerben történik. A sablonok felhasználhatók egy vagy több Azure-erőforrás üzembe helyezéséhez, azonban az erőforrások üzembe helyezése után a sablonnal való aktív kapcsolat elveszik.
+Szinte mindent, amit szeretne felvenni az Azure Blueprints üzembe helyezéshez lehet elérni egy Resource Manager sablon. Azonban a Resource Manager-sablonok olyan dokumentumok, amelyek nem léteznek natív módon az Azure-ban – minden sablon tárolása helyileg vagy a verziókövetési rendszerben történik. A sablonok felhasználhatók egy vagy több Azure-erőforrás üzembe helyezéséhez, azonban az erőforrások üzembe helyezése után a sablonnal való aktív kapcsolat elveszik.
 
-A Blueprints használatakor a tervdefiníciók (a _telepítendő_ összetevők) és a tervhozzárendelések (a _telepített_ összetevők) közötti kapcsolat megmarad. Ez a kapcsolat lehetővé teszi az üzembe helyezett összetevők hatékonyabb nyomon követését és naplózását. A Blueprints használatával ugyanazon terv által irányított több előfizetés egyidejűleg is frissíthető.
+Az Azure Blueprints, a blueprint-definíció (mit _kell_ telepíteni) és a blueprint-hozzárendelés (mi _volt_ üzembe helyezett) közötti kapcsolat megmarad. Ez a kapcsolat lehetővé teszi az üzembe helyezett összetevők hatékonyabb nyomon követését és naplózását. Az Azure Blueprints is frissíthet egyszerre több előfizetést, amelyek ugyanaz a terv rajzterv által szabályozott.
 
-Nem kell választani a Resource Manager-sablonok és a tervek között. Minden terv nulla vagy több Resource Manager-sablon _tervelemet_ tartalmazhat. Ez a támogatás azt jelenti, hogy a korábban kifejlesztett és kezelt, Resource Manager-sablonokat tartalmazó kódtár a Blueprintsben is újra felhasználható.
+Nem kell választani a Resource Manager-sablonok és a tervek között. Minden terv nulla vagy több Resource Manager-sablon _tervelemet_ tartalmazhat. Ez a támogatás azt jelenti, hogy az Erőforrás-kezelő-sablonok könyvtárának fejlesztésére és karbantartására irányuló korábbi erőfeszítések újrafelhasználhatók az Azure Blueprints-ben.
 
 ## <a name="how-its-different-from-azure-policy"></a>Miben különbözik ez az Azure Policytól?
 
@@ -46,7 +46,7 @@ A szabályzat szerepelhet a tervdefiníciószámos _összetevőjének_ egyikeké
 
 ## <a name="blueprint-definition"></a>Tervdefiníció
 
-A tervek _tervelemekből_ állnak. A tervek jelenleg a következő erőforrások használatát támogatják tervelemekként:
+A tervek _tervelemekből_ állnak. Az Azure Blueprints jelenleg a következő erőforrásokat támogatja műtermékként:
 
 |Erőforrás  | Hierarchialehetőségek| Leírás  |
 |---------|---------|---------|

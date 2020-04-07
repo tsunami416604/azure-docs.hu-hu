@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 37d1c181c18f69c040040da2be138eaad3a61693
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 5a80c6e3bd8cf647590ed757c042ef3301e27b4a
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396857"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743514"
 ---
 # <a name="secure-your-restful-services"></a>Biztosítsa restful szolgáltatásait 
 
@@ -272,7 +272,7 @@ A tulajdonosi jogkivonat-hitelesítés egyéni házirendben való támogatásáh
 1. Győződjön meg róla, hogy a fenti jogcímet bemeneti jogcímként adja hozzá:
 
     ```xml
-    <InputClaim ClaimTyeReferenceId="bearerToken"/>
+    <InputClaim ClaimTypeReferenceId="bearerToken"/>
     ```    
 
 A fenti kódrészletek hozzáadása után a technikai profilnak a következő XML-kódnak kell lennie:
@@ -292,7 +292,7 @@ A fenti kódrészletek hozzáadása után a technikai profilnak a következő XM
         <Item Key="AllowInsecureAuthInProduction">false</Item>
       </Metadata>
       <InputClaims>
-        <InputClaim ClaimTyeReferenceId="bearerToken"/>
+        <InputClaim ClaimTypeReferenceId="bearerToken"/>
       </InputClaims>
       ...
     </TechnicalProfile>

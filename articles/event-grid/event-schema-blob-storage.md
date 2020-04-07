@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 4a71f50a130bd9b22965d39fa942b47c70857a86
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71aa937536f35c9af44adb5822ce7a2bb8f3a9eb
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79265037"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756007"
 ---
 # <a name="azure-event-grid-event-schema-for-blob-storage"></a>Azure Event Grid eseménysémája a Blob storage-hoz
 
@@ -21,7 +21,7 @@ Ez a cikk a blob tárolási események tulajdonságait és sémáját tartalmazz
 A mintaparancsfájlok és oktatóanyagok listáját a [Tárolási eseményforrás ban](event-sources.md#storage)láthatja.
 
 >[!NOTE]
-> Csak **a storageV2 (általános célú v2)** és **a BlobStorage** támogatási eseményintegrációs tárfiókok. **A storage (genral purpose v1)** *nem* támogatja az Event Griddel való integrációt.
+> Csak **storageV2 típusú (általános célú v2)**, **BlockBlobStorage**és **BlobStorage** támogatási esemény integráció. **A storage (genral purpose v1)** *nem* támogatja az Event Griddel való integrációt.
 
 ## <a name="list-of-events-for-blob-rest-apis"></a>A Blob REST API-k eseményeinek listája
 
@@ -37,7 +37,7 @@ Ezek az események akkor aktiválódnak, amikor egy ügyfél létrehoz, lecseré
 
 ## <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Az Azure Data Lake Storage Gen 2 REST API-k eseményeinek listája
 
-Ezek az események akkor aktiválódnak, ha engedélyezi a hierarchikus névteret a tárfiókon, és az ügyfelek meghívják az Azure Data Lake Storage Gen2 REST API-kat.
+Ezek az események akkor aktiválódnak, ha engedélyezi a hierarchikus névteret a tárfiókon, és az ügyfelek meghívják az Azure Data Lake Storage Gen2 REST API-kat. Az Azure Data Lake Storage Gen2 bemutatása [az Azure Data Lake Storage Gen2 bemutatása című témakörben található.](../storage/blobs/data-lake-storage-introduction.md)
 
 |Esemény neve|Leírás|
 |----------|-----------|

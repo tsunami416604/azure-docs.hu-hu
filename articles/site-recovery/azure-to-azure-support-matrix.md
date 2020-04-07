@@ -4,12 +4,12 @@ description: Összefoglalja az Azure-beli virtuális gépek vész-helyreállít�
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: raynew
-ms.openlocfilehash: 0b4a654093e0842e66e1f8b0924edfa6c9c215e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f61f32ddc0a1cc6575907bc72522228b77552947
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80276648"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673810"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Az Azure virtuális gép vész-helyreállítási mátrixának támogatási mátrixa az Azure-régiók között
 
@@ -20,8 +20,8 @@ Ez a cikk összefoglalja az Azure-beli virtuális gépek egyik Azure-régióból
 
 **Környezet** |  **Támogatás**
 --- | ---
-**Azure-portál** | Támogatott.
-**Powershell** | Támogatott. [További információ](azure-to-azure-powershell.md)
+**Azure Portal** | Támogatott.
+**PowerShell** | Támogatott. [További információ](azure-to-azure-powershell.md)
 **REST API** | Támogatott.
 **parancssori felület** | Egyelőre nem támogatott
 
@@ -36,7 +36,7 @@ Ez a cikk összefoglalja az Azure-beli virtuális gépek egyik Azure-régióból
 **Virtuális gépek áttelepítése a támogatott földrajzi fürtökön belüli régiók között (előfizetéseken belül és azok között)** | Ugyanebben az Azure Active Directory-bérlőben támogatott.
 **Virtuális gépek áttelepítése ugyanabban a régióban** | Nem támogatott.
 
-## <a name="region-support"></a>Régió támogatása
+## <a name="region-support"></a>Régiós támogatás
 
 A virtuális gépek replikálhatók és helyreállíthatók ugyanazon földrajzi fürt bármely két régiója között. A földrajzi fürtök meghatározása az adatok késésének és szuverenitásának szem előtt tartása.
 
@@ -44,13 +44,13 @@ A virtuális gépek replikálhatók és helyreállíthatók ugyanazon földrajzi
 **Földrajzi halmaz** | **Azure-régiók**
 -- | --
 Amerika | Kanada keleti része, Kanada közép-, USA középső középső régiója, USA nyugati középső régiója, USA keleti régiója 2, USA nyugati régiója 2, USA középső része, USA északi középső régiója
-Európa | Egyesült Királyság nyugati, egyesült királyságbeli dél, észak-európai, nyugat-európai, francia központi, dél-, dél-afrikai, dél-afrikai észak, norvégiai kelet, norvégiai nyugat
-Ázsia | Dél-India, Közép-India, Nyugat-India, Délkelet-Ázsia, Kelet-Ázsia, Kelet-Japán, Nyugat-Japán, Korea Central, Korea South, Egyesült Arab Emírségek középső, Egyesült Arab Emírségek Észak-
+Európa | Egyesült Királyság nyugati, egyesült királyságbeli dél, észak-európai, nyugat-európai, dél-afrikai nyugat, észak-afrikai, norvégiai kelet, Norvégia Nyugat
+Ázsia | Dél-India, Közép-India, Nyugat-India, Délkelet-Ázsia, Kelet-Ázsia, Kelet-Japán, Nyugat-Japán, Korea Central, Korea South
 Ausztrália    | Ausztrália Kelet, Ausztrália Délkelet, Ausztrália Központi, Ausztrália Közép 2
 Azure Government    | US GOV Virginia, US GOV Iowa, US GOV Arizona, US GOV Texas, US DOD East, US DOD Central
 Németország    | Németország Közép, Németország északkelet
 Kína | Kína Kelet, Kína Észak,Kína Észak2, Kína Kelet2
-Korlátozott régiók az országon ként beálló vészhelyreállításhoz |Németország Észak fenntartva Németország West Central, Svájc Nyugat fenntartva Svájc Észak, Franciaország Dél fenntartva Franciaország Központi ügyfelek
+Korlátozott régiók az országon ként beálló vészhelyreállításhoz |Németország Észak fenntartva Németország nyugat-közép, Svájc Nyugat fenntartva Svájc Észak, Franciaország Dél fenntartva Franciaország Központi, Egyesült Arab Emírségek központi korlátozott Egyesült Arab Emírségek északi ügyfelek
 
 >[!NOTE]
 >

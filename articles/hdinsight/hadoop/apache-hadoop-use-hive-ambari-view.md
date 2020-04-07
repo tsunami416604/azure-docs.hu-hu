@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.openlocfilehash: 6c199a0dd75b89d9c9368e799c97a28b73758d06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/06/2020
+ms.openlocfilehash: 787d88d336abcf3b0ba9b14c3d3798850b665eca
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73097107"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745093"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Apache Ambari Hive-nézet használata Apache Hadooppal a HDInsightban
 
@@ -23,14 +23,13 @@ Ismerje meg, hogyan futtathatja a Hive-lekérdezéseket az Apache Ambari Hive Vi
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Hadoop-fürt a HDInsighton. Lásd: [Első lépések a HDInsight linuxos alkalmazásával.](./apache-hadoop-linux-tutorial-get-started.md)
-* Webböngésző
+Egy Hadoop-fürt a HDInsighton. Lásd: [Első lépések a HDInsight linuxos alkalmazásával.](./apache-hadoop-linux-tutorial-get-started.md)
 
 ## <a name="run-a-hive-query"></a>Hive-lekérdezések futtatása
 
-1. Az [Azure Portalon](https://portal.azure.com/)válassza ki a fürtöt.  Az utasításokat a [Fürtök listája és megjelenítése](../hdinsight-administer-use-portal-linux.md#showClusters) című témakörben találja. A fürt egy új portálpanelen nyílik meg.
+1. Az [Azure Portalon](https://portal.azure.com/)válassza ki a fürtöt.  Az utasításokat a [Fürtök listája és megjelenítése](../hdinsight-administer-use-portal-linux.md#showClusters) című témakörben találja. A fürt új portálnézetben nyílik meg.
 
-1. A **Fürtirányítópultok területen**válassza az **Ambari nézetek lehetőséget.** Amikor hitelesítésre van szüksége, használja a `admin`fürt bejelentkezési nevét (alapértelmezett) fióknevét és jelszavát, amelyet a fürt létrehozásakor adott meg. Másik lehetőségként `https://CLUSTERNAME.azurehdinsight.net/#/main/views` keresse meg `CLUSTERNAME` a böngészőben, ahol a fürt neve.
+1. A **Fürtirányítópultok területen**válassza az **Ambari nézetek lehetőséget.** Amikor hitelesítésre van szüksége, használja a `admin`fürt bejelentkezési nevét (alapértelmezett) fióknevét és jelszavát, amelyet a fürt létrehozásakor adott meg. A böngészőben `https://CLUSTERNAME.azurehdinsight.net/#/main/views` arra is `CLUSTERNAME` navigálhat, hogy hol van a fürt neve.
 
 1. A nézetek listájában válassza a __Hive nézet lehetőséget.__
 
@@ -59,18 +58,15 @@ Ismerje meg, hogyan futtathatja a Hive-lekérdezéseket az Apache Ambari Hive Vi
         GROUP BY t4;
     ```
 
-    Ezek az utasítások a következő műveleteket hajtják végre:
+    Ezek a kijelentések a következő műveleteket követik:
 
-   * `DROP TABLE`: Törli a táblát és az adatfájlt, ha a tábla már létezik.
-
-   * `CREATE EXTERNAL TABLE`: Új "külső" táblát hoz létre a Hive-ban.
-     A külső táblák csak a tábladefiníciót tárolják a Hive-ban. Az adatok az eredeti helyen maradnak.
-
-   * `ROW FORMAT`: Az adatok formázásának megjelenítése. Ebben az esetben az egyes naplók mezőit szóköz választja el egymástól.
-
-   * `STORED AS TEXTFILE LOCATION`: Megmutatja, hogy az adatok hol tárolódnak, és hogy szövegként tárolódnak.: Shows where the data is stored, and that it's stored as text.
-
-   * `SELECT`: Az összes olyan sor számát jelöli ki, ahol a t4 oszlop a [HIBA] értéket tartalmazza.
+    |Nyilatkozat | Leírás |
+    |---|---|
+    |TÁBLÁZAT LEDOBÁSA|Törli a táblát és az adatfájlt, ha a tábla már létezik.|
+    |KÜLSŐ TÁBLA LÉTREHOZÁSA|Új "külső" táblát hoz létre a Hive-ban. A külső táblák csak a tábladefiníciót tárolják a Hive-ban. Az adatok az eredeti helyen maradnak.|
+    |SOR FORMÁTUMA|Megmutatja, hogyan vannak formázva az adatok. Ebben az esetben az egyes naplók mezőit szóköz választja el egymástól.|
+    |TÁROLT SZÖVEGFÁJL HELYE|Megmutatja, hogy az adatok hol tárolódnak, és hogy szövegként tárolódnak.Shows where the data is stored, and that it's stored as text.|
+    |SELECT|Kijelöli az összes olyan sor számát, ahol a t4 oszlop a [HIBA] értéket tartalmazza.|
 
    > [!IMPORTANT]  
    > Hagyja az __Adatbázis__ beállítást __alapértelmezetten.__ A jelen dokumentumban szereplő példák a HDInsight alapértelmezett adatbázisát használják.
@@ -116,7 +112,7 @@ A __Táblák__ lapon a Hive-adatbázistábláival dolgozhat.
 
 A **Lekérdezés** lapon tetszés szerint mentheti a lekérdezéseket. A lekérdezés mentése után a __Mentett lekérdezések__ lapon újra felhasználhatja azt.
 
-![Az Apache Hive nézetben mentett lekérdezések lapja](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
+![Az Apache Hive nézetek mentett lekérdezések lapja](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
 
 > [!TIP]  
 > A mentett lekérdezések az alapértelmezett fürttárolóban tárolódnak. A mentett lekérdezéseket az `/user/<username>/hive/scripts`elérési út alatt találhatja meg. Ezek egyszerű szöveges `.hql` fájlként tárolódnak.
@@ -131,7 +127,7 @@ Deklarálja és mentse az UDF-ek készletét a Hive nézet tetején található 
 
 ![Az Apache Hive nézet UDF-lapja](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
 
-Miután hozzáadott egy UDF-et a Hive nézethez, egy **Udfs beszúrási** gomb jelenik meg a **Lekérdezésszerkesztő**alján. A bejegyzés bejelölésével megjelenik a Hive nézetben definiált UDF-ek legördülő listája. UdF kiválasztása hozzáadja a HiveQL-utasítások a lekérdezéshez, hogy az UDF.
+A **Lekérdezésszerkesztő**alján megjelenik egy **Udfs** beszúrási gomb. Ez a bejegyzés a Hive nézetben definiált UDF-ek legördülő listáját jeleníti meg. UdF kiválasztása hozzáadja a HiveQL-utasítások a lekérdezéshez, hogy az UDF.
 
 Ha például a következő tulajdonságokkal rendelkező UDF-et definiált:
 
@@ -155,13 +151,13 @@ Ezután használhatja az UDF-et a lekérdezésben. Például: `SELECT myawesomeu
 Az UDF-ek HIVe-vel hdinsight-on történő használatáról az alábbi cikkekben talál további információt:
 
 * [Python használata Apache Hive-val és Apache Pig-szel a HDInsightban](python-udf-hdinsight.md)
-* [Egyéni Apache Hive UDF hozzáadása a HDInsighthoz](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+* [Java UDF használata Apache Hive-val a HDInsightban](./apache-hadoop-hive-java-udf.md)
 
 ## <a name="hive-settings"></a>Hive-beállítások
 
 Módosíthatja a különböző Hive-beállításokat, például a Hive végrehajtási motorjának módosítása Tez-ről (az alapértelmezett) a MapReduce-re.
 
-## <a name="next-steps"></a><a id="nextsteps"></a>További lépések
+## <a name="next-steps"></a>További lépések
 
 Általános információk a HIVE a HDInsight:
 

@@ -11,12 +11,12 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8ecd0909176560e6b51bcb8449cb681558d96f90
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 5fae2bba0acc4ab462c91f7272694d032fc6ceaa
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80628652"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742666"
 ---
 # <a name="table-statistics-in-synapse-sql-pool"></a>Táblastatisztika a Synapse SQL-készletben
 
@@ -70,9 +70,9 @@ A statisztikák automatikus létrehozása szinkron módon történik, így kiss�
 A mérhető teljesítménycsökkenés elkerülése érdekében győződjön meg arról, hogy a statisztikák először a teljesítményteszt számítási feladatának végrehajtásával jöttek létre a rendszer profilalkotása előtt.
 
 > [!NOTE]
-> A statisztika létrehozása a [sys.dm_pdw_exec_requests-ba](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) kerül, más felhasználói környezetben.
+> A statisztika létrehozása a [sys.dm_pdw_exec_requests-ba](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) kerül, más felhasználói környezetben.
 
-Az automatikus statisztikák létrehozásakor a következők lesznek: _WA_Sys_<8 jegyű oszlopazonosító a Hex>_<8 számjegyű táblázatazonosítót a Hex>. Megtekintheti a [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=azure-sqldw-latest) parancs futtatásával már létrehozott statisztikákat:
+Az automatikus statisztikák létrehozásakor a következők lesznek: _WA_Sys_<8 jegyű oszlopazonosító a Hex>_<8 számjegyű táblázatazonosítót a Hex>. Megtekintheti a [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) parancs futtatásával már létrehozott statisztikákat:
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -142,7 +142,7 @@ Ezzel szemben előfordulhat, hogy egy ügyféltábla nemi oszlopára vonatkozó 
 
 Ha az SQL-készlet csak egy nemet tartalmaz, és egy új követelmény több nemet eredményez, akkor frissítenie kell a nemek oszlopának statisztikáit.
 
-További információt a Statisztika általános útmutatója című témakörben [talál.](/sql/relational-databases/statistics/statistics)
+További információt a Statisztika általános útmutatója című témakörben [talál.](/sql/relational-databases/statistics/statistics?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ## <a name="implementing-statistics-management"></a>A statisztikák kezelésének megvalósítása
 
@@ -158,7 +158,7 @@ A terhelési folyamat során a statisztikák frissítésére vonatkozóan a köv
 - Fontolja meg a statikus terjesztési oszlopok ritkább frissítését.
 - Ne feledje, hogy minden statisztikai objektum egymás után frissül. Az `UPDATE STATISTICS <TABLE_NAME>` egyszerű megvalósítás nem mindig ideális, különösen a sok statisztikai objektumot rendelkező széles asztaloknál.
 
-További információ: [Cardinality Estimation](/sql/relational-databases/performance/cardinality-estimation-sql-server).
+További információ: [Cardinality Estimation](/sql/relational-databases/performance/cardinality-estimation-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="examples-create-statistics"></a>Példák: Statisztikák létrehozása
 
@@ -227,7 +227,7 @@ A beállításokat kombinálhatja is. A következő példa egyéni mintamérette
 CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
-A teljes referencia a STATISZTIKA LÉTREHOZÁSA című [témakörben látható.](/sql/t-sql/statements/create-statistics-transact-sql)
+A teljes referencia a STATISZTIKA LÉTREHOZÁSA című [témakörben látható.](/sql/t-sql/statements/create-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ### <a name="create-multi-column-statistics"></a>Többoszlopos statisztika létrehozása
 
@@ -420,7 +420,7 @@ Az UPDATE STATISTICS utasítás könnyen használható. Ne feledje, hogy frissí
 
 Az `UPDATE STATISTICS` eljárás végrehajtásáról az [Ideiglenes táblázatok ban](sql-data-warehouse-tables-temporary.md)található. A végrehajtási módszer némileg `CREATE STATISTICS` eltér az előző eljárástól, de az eredmény ugyanaz.
 
-A teljes szintaxisról a [Statisztika frissítése című témakörben van.](/sql/t-sql/statements/update-statistics-transact-sql)
+A teljes szintaxisról a [Statisztika frissítése című témakörben van.](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ## <a name="statistics-metadata"></a>Statisztikai metaadatok
 
@@ -432,13 +432,13 @@ Ezek a rendszernézetek a statisztikákkal kapcsolatos információkat tartalmaz
 
 | Katalógus nézet | Leírás |
 |:--- |:--- |
-| [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql) |Minden oszlophoz egy sor tartozik. |
-| [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Az adatbázis minden objektumához egy sor tartozik. |
-| [sys.schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Az adatbázis minden sémájához egy sor tartozik. |
-| [sys.stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql) |Minden statisztikai objektumhoz egy sor tartozik. |
-| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql) |A statisztikai objektum minden oszlopához egy sor tartozik. Visszamutat a sys.columns-ra. |
-| [sys.tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql) |Minden táblához egy sor tartozik (külső táblákat is tartalmaz). |
-| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql) |Minden adattípushoz egy sor tartozik. |
+| [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Minden oszlophoz egy sor tartozik. |
+| [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Az adatbázis minden objektumához egy sor tartozik. |
+| [sys.schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Az adatbázis minden sémájához egy sor tartozik. |
+| [sys.stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Minden statisztikai objektumhoz egy sor tartozik. |
+| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |A statisztikai objektum minden oszlopához egy sor tartozik. Visszamutat a sys.columns-ra. |
+| [sys.tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Minden táblához egy sor tartozik (külső táblákat is tartalmaz). |
+| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Minden adattípushoz egy sor tartozik. |
 
 ### <a name="system-functions-for-statistics"></a>Rendszerfunkciók a statisztikához
 
@@ -446,8 +446,8 @@ Ezek a rendszerfunkciók a statisztikákkal való együttműködéshez hasznosak
 
 | Rendszerfüggvény | Leírás |
 |:--- |:--- |
-| [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql) |A statisztikai objektum utolsó frissítésének dátuma. |
-| [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql) |Összefoglaló szint és részletes információk az értékek eloszlásáról a statisztikai objektum szerint. |
+| [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |A statisztikai objektum utolsó frissítésének dátuma. |
+| [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Összefoglaló szint és részletes információk az értékek eloszlásáról a statisztikai objektum szerint. |
 
 ### <a name="combine-statistics-columns-and-functions-into-one-view"></a>Statisztikai oszlopok és függvények egyesítése egyetlen nézetben
 

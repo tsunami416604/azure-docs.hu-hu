@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9ea88da0a575647eecacbfd8a476202f814b821
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 2834fd3d4901b6394eabe000f9efc572c2efd497
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631812"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755079"
 ---
 # <a name="conditional-access-block-access"></a>Feltételes hozzáférés: Hozzáférés letiltása
 
@@ -33,7 +33,7 @@ A feltételes hozzáférési szabályzatok hatékony eszközök, javasoljuk, hog
 
 * **Vészelérési** vagy **törésüveg-fiókok** a bérlői fiók zárolásának megakadályozása érdekében. Abban a valószínűtlen esetben az összes rendszergazda ki van zárva a bérlőből, a vészelérési felügyeleti fiók segítségével jelentkezzen be a bérlőbe lépéseket a hozzáférés helyreállítása érdekében.
    * További információ a cikkben található, [a vészelérési fiókok kezelése az Azure AD-ben.](../users-groups-roles/directory-emergency-access.md)
-* **Szolgáltatásfiókok** és **egyszerű szolgáltatás,** például az Azure AD Connect szinkronizálási fiók. A szolgáltatásfiókok olyan nem interaktív fiókok, amelyek nem kötődnek egy adott felhasználóhoz. Ezeket általában az alkalmazásokhoz programozott hozzáférést lehetővé tevő háttérszolgáltatások használják, de a rendszerekbe való rendszergazdai célú bejelentkezésre is használják őket. Az ilyen szolgáltatásfiókokat ki kell zárni, mivel az MFA nem hajtható végre programozott módon.
+* **Szolgáltatásfiókok** és **egyszerű szolgáltatás,** például az Azure AD Connect szinkronizálási fiók. A szolgáltatásfiókok olyan nem interaktív fiókok, amelyek nem kötődnek egy adott felhasználóhoz. Ezeket általában az alkalmazásokhoz programozott hozzáférést lehetővé tevő háttérszolgáltatások használják, de a rendszerekbe való rendszergazdai célú bejelentkezésre is használják őket. Az ilyen szolgáltatásfiókokat ki kell zárni, mivel az MFA nem hajtható végre programozott módon. A szolgáltatásnévi szolgáltatások hívásait a feltételes hozzáférés nem blokkolja.
    * Ha a szervezet ezeket a fiókokat parancsfájlokban vagy kódokban használja, fontolja meg, hogy lecseréli őket [felügyelt identitásokra.](../managed-identities-azure-resources/overview.md) Ideiglenes megoldásként ezeket a konkrét fiókokat kizárhatja az alaptervi házirendből.
 
 ## <a name="create-a-conditional-access-policy"></a>Feltételes hozzáférési házirend létrehozása

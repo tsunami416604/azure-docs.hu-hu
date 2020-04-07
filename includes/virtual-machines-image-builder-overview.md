@@ -6,10 +6,10 @@ ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
 ms.openlocfilehash: 658910dc4291375c7b2ab22e88c599b970b885af
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/06/2020
 ms.locfileid: "80419121"
 ---
 A szabványosított virtuálisgép-lemezképek lehetővé teszik a szervezetek számára a felhőbe való áttelepítést, és biztosítják a központi telepítések konzisztenciáját. A képek általában előre meghatározott biztonsági és konfigurációs beállításokat, valamint szükséges szoftvereket tartalmaznak. A saját képkezelő folyamat beállítása időt, infrastruktúrát és telepítést igényel, de az Azure VM Image Builder, csak egy egyszerű konfigurációt a lemezkép, küldje el a szolgáltatásba, és a lemezkép jön létre, és elosztott.

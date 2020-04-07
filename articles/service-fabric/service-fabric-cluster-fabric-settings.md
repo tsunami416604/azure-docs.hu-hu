@@ -3,12 +3,12 @@ title: Az Azure Service Fabric fürtbeállításainak módosítása
 description: Ez a cikk ismerteti a háló beállításait és a háló frissítési szabályzatok, amelyek testre szabhatók.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 8ca40791e625f1ea5904c4e2516e3f211ba551cf
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 3eb558c7d0745ada43696fd4189a7ac663867849
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477892"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80753983"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric-fürt beállításainak testreszabása
 Ez a cikk ismerteti a különböző háló beállításait a Service Fabric-fürt, amely testre szabható. Az Azure-ban üzemeltetett fürtök esetében testreszabhatja a beállításokat az [Azure Portalon](https://portal.azure.com) keresztül vagy egy Azure Resource Manager-sablon használatával. További információ: [Az Azure-fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-azure.md)című témakörben talál. Önálló fürtök esetén a *fürtökConfig.json* fájl frissítésével és a fürt konfigurációs frissítésével testreszabhatja a beállításokat. További információt [az Önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md)című témakörben talál.
@@ -29,7 +29,7 @@ Az alábbi lista a Fabric-beállításokat, amelyek testre szabható, szakasz sz
 |BodyChunkMéret |Uint, alapértelmezett érték: 16384 |Dinamikus| Megadja a test olvasásához használt adattömb méretét bájtban. |
 |CrlCheckingFlag|uint, az alapértelmezett érték: 0x40000000 |Dinamikus| Jelzők az alkalmazás/szolgáltatás tanúsítványlánc érvényesítéséhez; pl. crl-ellenőrzés 0x10000000 CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT 0x80000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY A 0-ra állítás letiltja a visszavont tanúsítványok listájának ellenőrzését A támogatott értékek teljes listáját a CertGetCertificateChain dwFlagjei dokumentálják:https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx  |
 |AlapértelmezettHttpRequestTimeout |Idő másodpercben. alapértelmezett 120 |Dinamikus|Adja meg az időtartományt másodpercben.  Megadja az alapértelmezett kérelem időmeghosszabbítása a http-kérelmek feldolgozása a http app átjáró. |
-|ForwardClientCertificate (Továbbítügyfél-tanúsítvány)|az alapértelmezett érték HAMIS|Dinamikus|Ha hamis, a fordított proxy nem kér az ügyféltanúsítványt. Ha értéke igaz, a fordított proxy az SSL-kézfogás során kéri az ügyféltanúsítványt, és továbbítja a base64 kódolású PEM formátumú karakterláncot a szolgáltatásnak egy X-Client-Certificate nevű fejlécben. Ha ez igaz, és az ügyfél nem mutat be tanúsítványt, a fordított proxy egy üres fejlécet továbbít, és hagyja, hogy a szolgáltatás kezelje az esetet. Fordított proxy fog működni, mint egy átlátszó réteg. További információ: [Ügyféltanúsítvány-hitelesítés beállítása.](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy) |
+|ForwardClientCertificate (Továbbítügyfél-tanúsítvány)|az alapértelmezett érték HAMIS|Dinamikus|Ha hamis, a fordított proxy nem kér az ügyféltanúsítványt. Ha a beállítás igaz, fordított proxy kérni fogja az ügyfél tanúsítvány tls kézfogás és továbbítja a base64 kódolt PEM formátumú karakterláncot a szolgáltatás egy fejléc nevű X-Client-Certificate.The szolgáltatás nem felel meg a kérelem megfelelő állapotkódot a tanúsítvány adatok vizsgálata után. Ha ez igaz, és az ügyfél nem mutat be tanúsítványt, a fordított proxy egy üres fejlécet továbbít, és hagyja, hogy a szolgáltatás kezelje az esetet. Fordított proxy fog működni, mint egy átlátszó réteg. További információ: [Ügyféltanúsítvány-hitelesítés beállítása.](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy) |
 |GatewayAuthCredentialType típus |karakterlánc, az alapértelmezett érték "Nincs" |Statikus| A http-alkalmazásátjáró végpontja in használandó biztonsági hitelesítő adatok típusát jelzi: Az érvényes értékek: Nincs/X509. |
 |GatewayX509CertificateFindType |karakterlánc, az alapértelmezett érték a "FindByThumbprint" |Dinamikus| Azt jelzi, hogy miként kereshet tanúsítványt a GatewayX509CertificateStoreName Supported value: FindByThumbprint érték által megadott tárolóban; FindBySubjectName. |
 |GatewayX509CertificateFindValue | karakterlánc, az alapértelmezett a "" |Dinamikus| A http-alkalmazásátjáró-tanúsítvány megkereséséhez használt keresési szűrőérték. Ez a tanúsítvány a https-végponton van konfigurálva, és az alkalmazás identitásának ellenőrzésére is használható, ha a szolgáltatások szükséges. Először a FindValue értéket keresse meg; és ha ez nem létezik; A FindValueSecondary keresett. |

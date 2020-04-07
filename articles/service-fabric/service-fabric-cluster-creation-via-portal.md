@@ -3,17 +3,17 @@ title: Service Fabric-fürt létrehozása az Azure Portalon
 description: Ismerje meg, hogyan állíthat be egy biztonságos Service Fabric-fürtöt az Azure-ban az Azure Portalon és az Azure Key Vault használatával.
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: 0f384da75f09390e9b0988722b974e7e16d13e63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e2de920ce9517e156934a636559a6fd6f5a71eb5
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258797"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754110"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Service Fabric-fürt létrehozása az Azure-ban az Azure Portal használatával
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Azure-portál](service-fabric-cluster-creation-via-portal.md)
+> * [Azure Portal](service-fabric-cluster-creation-via-portal.md)
 > 
 > 
 
@@ -36,13 +36,13 @@ Ha ez az első alkalom, hogy létrehoz egy szolgáltatásháló-fürtöt, vagy e
 Ez a tanúsítvány a fürt biztonságossá tétele és a fürthöz való jogosulatlan hozzáférés megakadályozása érdekében szükséges. Több szempontból is biztosítja a fürtbiztonságot:
 
 * **Fürt hitelesítése:** A csomópont-csomópont kommunikáció hitelesítése a fürtösszevonáshoz. Csak azok a csomópontok csatlakozhatnak a fürthöz, amelyek ezzel a tanúsítvánnyal igazolni tudják identitásukat.
-* **Kiszolgáló hitelesítése:** Hitelesíti a fürtfelügyeleti végpontokat egy felügyeleti ügyfélszámára, így a felügyeleti ügyfél tudja, hogy a valódi fürthöz beszél. Ez a tanúsítvány ssl-t is biztosít a HTTPS-felügyeleti API-hoz és a Service Fabric Explorer HTTPS-en keresztül.
+* **Kiszolgáló hitelesítése:** Hitelesíti a fürtfelügyeleti végpontokat egy felügyeleti ügyfélszámára, így a felügyeleti ügyfél tudja, hogy a valódi fürthöz beszél. Ez a tanúsítvány tls-t is biztosít a HTTPS-felügyeleti API-hoz és a Service Fabric Explorer HTTPS-en keresztül.
 
 E célok elérése érdekében a bizonyítványnak a következő követelményeknek kell megfelelnie:
 
 * A tanúsítványnak titkos kulcsot kell tartalmaznia.
 * A tanúsítványt kulcscseréhez kell létrehozni, amely személyes adatcserefájlba (.pfx) exportálható.
-* A tanúsítvány **tulajdonosnevének meg kell egyeznie a** Service Fabric-fürt eléréséhez használt tartománnyal. Ez szükséges a fürt HTTPS-kezelési végpontjaihoz és a Service Fabric Explorer hez ssl biztosításához. A `.cloudapp.azure.com` tartomány hitelesítésszolgáltatójától nem szerezhet be SSL-tanúsítványt. Szerezzen be egy egyéni tartománynevet a fürthöz. Amikor tanúsítványt kér egy hitelesítésszolgáltatótól, a tanúsítvány tulajdonosnevének meg kell egyeznie a fürthöz használt egyéni tartománynévvel.
+* A tanúsítvány **tulajdonosnevének meg kell egyeznie a** Service Fabric-fürt eléréséhez használt tartománnyal. Ez szükséges a Fürt HTTPS-kezelési végpontjaihoz és a Service Fabric Explorer t biztosít. A `.cloudapp.azure.com` tartomány hitelesítésszolgáltatójától nem szerezhet be TLS/SSL-tanúsítványt. Szerezzen be egy egyéni tartománynevet a fürthöz. Amikor tanúsítványt kér egy hitelesítésszolgáltatótól, a tanúsítvány tulajdonosnevének meg kell egyeznie a fürthöz használt egyéni tartománynévvel.
 
 #### <a name="client-authentication-certificates"></a>Ügyfélhitelesítési tanúsítványok
 További ügyféltanúsítványok hitelesítik a rendszergazdákat a fürtkezelési feladatokhoz. A Service Fabric két hozzáférési szinttel rendelkezik: **rendszergazdai** és **írásvédett felhasználó.** Legalább egyetlen, a közigazgatási hozzáféréshez szükséges tanúsítványt kell használni. A további felhasználói szintű hozzáféréshez külön tanúsítványt kell biztosítani. A hozzáférési szerepkörökkel kapcsolatos további információkért tekintse meg [a Service Fabric-ügyfelek szerepköralapú hozzáférés-vezérlését.][service-fabric-cluster-security-roles]

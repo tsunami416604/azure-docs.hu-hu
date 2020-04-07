@@ -10,15 +10,13 @@
       href: geo-ai-dsvm-overview.md
     - name: Az adatelemzési virtuális géphez mellékelt eszközök
       href: tools-included.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Windows rendszerű adatelemzési virtuális gép létrehozása
       href: provision-vm.md
     - name: Ubuntu rendszerű adatelemzési virtuális gép létrehozása
       href: dsvm-ubuntu-intro.md
-    - name: CentOS rendszerű adatelemzési virtuális gép létrehozása
-      href: linux-dsvm-intro.md
     - name: Mesterséges intelligenciát használó geo-adatelemzési virtuális gép létrehozása
       href: provision-geo-ai-dsvm.md
 - name: Alapelvek
@@ -67,8 +65,6 @@
   items:
     - name: Ubuntu rendszerű adatelemzési virtuális gép
       href: reference-ubuntu-vm.md
-    - name: CentOS rendszerű adatelemzési virtuális gép
-      href: reference-centos-vm.md
     - name: Kibocsátási megjegyzések
       href: release-notes.md
     - name: Ismert problémák

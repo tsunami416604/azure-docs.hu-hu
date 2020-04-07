@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07ba38a5d7e8e8a89ba122efb1734c1f13a94d48
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 402eaecbf03fd52fbb5e871fdd196da2bc9a3e1f
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80332191"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743539"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Jelszó nélküli hitelesítési lehetőségek az Azure Active Directoryhoz
 
@@ -97,7 +97,7 @@ A következő eljárást akkor használja, ha a felhasználó FIDO2 biztonsági 
 8. Az Azure AD ellenőrzi az aláírt nonce a FIDO2 nyilvános kulcs használatával.
 9. Az Azure AD visszaadja a PRT-t a helyszíni erőforrásokhoz való hozzáférés engedélyezéséhez.
 
-Bár sok kulcs, amely FIDO2 által hitelesített FIDO Alliance, a Microsoft igényel néhány opcionális kiterjesztésea FIDO2 Client-to-Authenticator Protokoll (CTAP) specifikáció kell végrehajtani a gyártó, hogy biztosítsák a maximális biztonságot és a legjobb Tapasztalat.
+Bár sok kulcs, amely FIDO2 által hitelesített FIDO Alliance, a Microsoft igényel néhány opcionális kiterjesztések a FIDO2 Client-to-Authenticator Protokoll (CTAP) specifikáció kell végrehajtani a szállító számára, hogy biztosítsák a maximális biztonságot és a legjobb élményt.
 
 A biztonsági **kulcsnak** a FIDO2 CTAP protokoll következő szolgáltatásait és bővítményeit kell megvalósítania ahhoz, hogy a Microsoft kompatibilis legyen:
 

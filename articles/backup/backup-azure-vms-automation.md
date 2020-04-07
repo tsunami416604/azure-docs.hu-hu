@@ -3,12 +3,12 @@ title: Az Azure-beli virtuális gépek biztonsági és helyreállítási biztons
 description: A cikk ismerteti, hogyan lehet biztonsági másolatot készíteni és visszaállítani az Azure-beli virtuális gépeket az Azure Backup segítségével a PowerShell használatával
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 733a06a84aa170f1361ea74d126ec9752586fce2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d1074eea3d530b17904e2f49fba7c0d24e84e59
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247981"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743298"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Az Azure-beli virtuális gépek biztonsági és visszaállítása a PowerShell használatával
 
@@ -199,7 +199,7 @@ A biztonsági mentési védelmi házirend legalább egy adatmegőrzési háziren
 Alapértelmezés szerint a kezdési időpont az Ütemezési házirendobjektumban van definiálva. A következő példában módosíthatja a kezdési időpontot a kívánt kezdési időpontra. A kívánt kezdési időpontnak UTC-ben is meg kell lennie. Az alábbi példa feltételezi, hogy a kívánt kezdési időpont 01:00 UTC a napi biztonsági mentések.
 
 ```powershell
-$schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM" -VaultId $targetVault.ID
+$schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM" 
 $UtcTime = Get-Date -Date "2019-03-20 01:00:00Z"
 $UtcTime = $UtcTime.ToUniversalTime()
 $schpol.ScheduleRunTimes[0] = $UtcTime
@@ -211,7 +211,7 @@ $schpol.ScheduleRunTimes[0] = $UtcTime
 A következő példa tárolja az ütemezési szabályzatot és az adatmegőrzési házirendet változókban. A példa ezeket a változókat használja a paraméterek meghatározására a *NewPolicy*védelmi házirend létrehozásakor.
 
 ```powershell
-$retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM" -VaultId $targetVault.ID
+$retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM" 
 New-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -WorkloadType "AzureVM" -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultId $targetVault.ID
 ```
 
@@ -324,6 +324,20 @@ Set-AzRecoveryServicesBackupProtectionPolicy -policy $bkpPol -VaultId $targetVau
 ````
 
 Az alapértelmezett érték 2 lesz, a felhasználó beállíthatja az értéket 1 és legfeljebb 5-tel. Heti biztonsági mentési házirendek esetén az időszak 5-re van állítva, és nem módosítható.
+
+#### <a name="creating-azure-backup-resource-group-during-snapshot-retention"></a>Azure Backup erőforráscsoport létrehozása pillanatkép-megőrzés közben
+
+> [!NOTE]
+> Az Azure PS 3.7.0-s verziójától kezdve létrehozhatja és szerkesztheti az azonnali pillanatképek tárolására létrehozott erőforráscsoportot.
+
+Ha többet szeretne megtudni az erőforráscsoport-létrehozási szabályokról és más fontos részletekről, tekintse meg az [Azure Backup erőforráscsoport virtuális gépek dokumentációját.](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines)
+
+```powershell
+$bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -name "DefaultPolicyForVMs"
+$bkpPol.AzureBackupRGName="Contosto_"
+$bkpPol.AzureBackupRGNameSuffix="ForVMs"
+Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
+```
 
 ### <a name="trigger-a-backup"></a>Biztonsági mentés aktiválása
 

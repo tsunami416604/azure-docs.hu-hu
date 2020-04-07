@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 45276884d59ac8d1d876e2225ac02bb51c3f74fc
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 5ddbb58837fbda0f14a07186d5a3053055954454
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437724"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677454"
 ---
 # <a name="azure-firewall-faq"></a>Gyakori kérdések az Azure tűzfalról
 
@@ -212,4 +212,8 @@ Set-AzFirewall -AzureFirewall $fw
 
 ## <a name="why-can-a-tcp-ping-and-similar-tools-successfully-connect-to-a-target-fqdn-even-when-no-rule-on-azure-firewall-allows-that-traffic"></a>Miért tud egy TCP ping és hasonló eszközök sikeresen csatlakozni a cél fqdn akkor is, ha nincs szabály az Azure Firewall lehetővé teszi, hogy a forgalom?
 
-A TCP-ping valójában nem csatlakozik a cél teljes tartománynnna. Ez azért történik, mert az Azure Firewall transzparens proxy figyeli a 80/443-as porton a kimenő forgalom. A TCP ping kapcsolatot létesít a tűzfallal, amely ezután eldobja a csomagot, és naplózza a kapcsolatot. Ennek a viselkedésnek nincs biztonsági hatása. Azonban, hogy elkerüljék a zavart vagyunk vizsgálja lehetséges változások ezt a viselkedést. 
+A TCP-ping valójában nem csatlakozik a cél teljes tartománynnna. Ez azért történik, mert az Azure Firewall transzparens proxy figyeli a 80/443-as porton a kimenő forgalom. A TCP ping kapcsolatot létesít a tűzfallal, amely ezután eldobja a csomagot, és naplózza a kapcsolatot. Ennek a viselkedésnek nincs biztonsági hatása. Azonban, hogy elkerüljék a zavart vagyunk vizsgálja lehetséges változások ezt a viselkedést.
+
+## <a name="are-there-limits-for-the-number-of-ip-addresses-supported-by-ip-groups"></a>Korlátozva vannak az IP-csoportok által támogatott IP-címek számára vonatkozóan?
+
+Igen. További információ: [Azure-előfizetési és szolgáltatáskorlátok, kvóták és korlátozások](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)

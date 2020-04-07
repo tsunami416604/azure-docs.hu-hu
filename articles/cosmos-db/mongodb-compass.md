@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/20/2020
 author: LuisBosquez
 ms.author: lbosq
-ms.openlocfilehash: 5a3ec79b27231f781b5e4104922993de38c7fe4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c683ec0c4b3a536b0627a7c1c8abf28ee4f83663
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063648"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757032"
 ---
 # <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>A MongoDB Iránytű használatával csatlakozhat az Azure Cosmos DB MongoDB-hoz való API-jához
 
@@ -22,10 +22,13 @@ A Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgált
 
 ## <a name="pre-requisites"></a>Előfeltételek
 
-A Cosmos DB-fiókjához a Robo 3T használatával való csatlakozáshoz a következőket kell tennie:
+A Cosmos DB-fiókjához a MongoDB Compass használatával történő csatlakozáshoz a következőket kell tennie:
 
 * Az [Iránytű](https://www.mongodb.com/download-center/compass?jmp=hero) letöltése és telepítése
 * A Cosmos DB [kapcsolati karakterlánc](connect-mongodb-account.md) adatainak
+
+> [!NOTE]
+> Jelenleg az Azure Cosmos DB API-t a MongoDB Server 3.2-es verziójához támogatja a MongoDB Compass.
 
 ## <a name="connect-to-cosmos-dbs-api-for-mongodb"></a>Csatlakozás a Cosmos DB MongoDB-hoz elérhető API-jához
 

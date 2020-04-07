@@ -6,12 +6,12 @@ ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: a40ff50dcb0934cbf1ea5222675bd75948ac1d03
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9b0154889544e0054e309cc5f43851b73b4396b4
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239797"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754690"
 ---
 # <a name="tutorial-configure-the-clusters-network-settings"></a>Oktatóanyag: A fürt hálózati beállításainak konfigurálása
 
@@ -76,7 +76,7 @@ Az FXT Edge Filer fürt X.509 tanúsítványokat használ a következő függvé
 
 Ha tanúsítványokat kell feltöltenie a fürtbe, használja a > **Fürttanúsítványok** beállításai lapot. **Cluster** A részletek a fürtkonfigurációs útmutató [fürt> tanúsítványok](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_certificates.html) lapján találhatók.
 
-A fürtkezelési kommunikáció titkosításához a **Fürt** > **általános beállítási** beállításai lapon válassza ki, hogy melyik tanúsítványt használja a felügyeleti SSL-hez.
+A fürtkezelési kommunikáció titkosításához a **Fürt** > **általános beállítási** beállításai lapon válassza ki, hogy melyik tanúsítványt használja a felügyeleti TLS-hez.
 
 > [!Note] 
 > A felhőszolgáltatás hozzáférési kulcsait a **felhőbeli hitelesítő adatok konfigurációs** lapja tárolja. A [fenti Core filer](fxt-add-storage.md#add-a-core-filer) hozzáadása szakasz egy példát mutat be; a részleteket a Fürtkonfigurációs útmutató [felhőbeli hitelesítő adatai](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_credentials.html) című részében találja. 

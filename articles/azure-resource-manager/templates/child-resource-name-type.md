@@ -3,18 +3,18 @@ title: Gyermekerőforrások sablonokban
 description: Ez a témakör azt ismerteti, hogy miként állíthatja be a gyermekerőforrások nevét és típusát egy Azure Resource Manager-sablonban.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 6de2b476fe19a057a62e4a54963dd8fde0d11579
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3a69829e674925982c618807f49433a033d8c5f9
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77207893"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743837"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>Gyermekerőforrások nevének és típusának beállítása
 
 A gyermekerőforrások olyan erőforrások, amelyek csak egy másik erőforrás környezetében léteznek. Egy [virtuálisgép-bővítmény](/azure/templates/microsoft.compute/2019-03-01/virtualmachines/extensions) például nem létezhet [virtuális gép](/azure/templates/microsoft.compute/2019-03-01/virtualmachines)nélkül. A bővítmény erőforrás a virtuális gép gyermeke.
 
-Az Erőforrás-manger sablonban megadhatja a gyermekerőforrást a szülő erőforráson belül vagy a fölérendelt erőforráson kívül. A következő példa a szülő erőforrás erőforrás-tulajdonságában szereplő gyermekerőforrást mutatja be.
+Az Erőforrás-kezelő sablonban megadhatja a gyermekerőforrást a szülő erőforráson belül vagy a fölérendelt erőforráson kívül. A következő példa a szülő erőforrás erőforrás-tulajdonságában szereplő gyermekerőforrást mutatja be.
 
 ```json
 "resources": [

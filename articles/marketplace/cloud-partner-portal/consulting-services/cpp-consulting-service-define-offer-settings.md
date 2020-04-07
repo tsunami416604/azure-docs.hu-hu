@@ -5,16 +5,19 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: ac7ac2cc049c87b3f619f68a9a93a2268d961114
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7b2c9d136a32e54ce5b5db8f6ce9ba8cd63a4f3c
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278569"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745647"
 ---
 # <a name="offer-settings-tab"></a>Ajánlatbeállítási lap
+
+>[!Important]
+>2020. március 30-tól megkezdjük a Tanácsadási szolgáltatási ajánlatok kezelését a Partner Centerbe. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Az áttelepített ajánlatok kezeléséhez kövesse a [Consulting service creation overview című](https://aka.ms/AzureCreateConsultingService) témakör utasításait.
 
 Az **Új ajánlat** képernyőn az első lépés az ajánlat identitásának létrehozása. Az ajánlat identitása három részből áll: **Ajánlatazonosító,** **Kiadóazonosító**és **Név**. E részek mindegyikét a következő szakaszok ismertetik.
 

@@ -3,12 +3,12 @@ title: A VMware-szolgáltatás támogatási mátrixa/fizikai vészhelyreállít�
 description: Összefoglalja a VMware virtuális gépek és a fizikai kiszolgáló azure-ba történő vész-helyreállítási támogatásának támogatását az Azure Site Recovery használatával.
 ms.topic: conceptual
 ms.date: 2/24/2020
-ms.openlocfilehash: b4cf19f4f74ba24951efb806a9f2e3d88fcad7bc
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: fbd5d87b219cbb482569dc5e45adc9c81181670c
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478430"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672437"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Támogatási mátrix a VMware virtuális gépek és fizikai kiszolgálók Azure-ba való vészhelyreállításához
 
@@ -51,7 +51,7 @@ Operációs rendszer területi beállítása | Angol (en-us)
 [PowerCLI között](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | Nem szükséges a konfigurációs kiszolgáló [9.14-es](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) vagy újabb verziójához.
 Windows Server-szerepkörök | Az Active Directory tartományi szolgáltatások engedélyezésének lehetővé tétele; Internet Information Services (IIS) vagy Hyper-V.
 Csoportházirendek| - A parancssorhoz való hozzáférés megakadályozása. <br/> - Hozzáférés megakadályozása a rendszerleíró adatbázis szerkesztő eszközök. <br/> - Megbízhatósági logika a fájlmellékletekhez. <br/> - Kapcsolja be a Script Execution. <br/> - [További információ](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
-IIS | Győződjön meg róla, hogy:<br/><br/> - Nincs már létező alapértelmezett webhely <br/> - Engedélyezése [névtelen hitelesítés](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) <br/> - Engedélyezése [FastCGI](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10)) beállítás  <br/> - Nincs már létező weboldal / app hallgatása port 443<br/>
+IIS | Győződjön meg róla, hogy:<br/><br/> - Nincs már meglévő alapértelmezett webhelye <br/> - Engedélyezése [névtelen hitelesítés](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br/> - Engedélyezése [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) beállítás  <br/> - Nincs már létező weboldal / app hallgatása port 443<br/>
 Hálózati adapter típusa | VMXNET3 (VMware vm-ként telepítve)
 IP-cím típusa | Statikus
 Portok | 443 használt vezérlő csatorna vezénylési<br/>9443 adatátvitelhez
@@ -66,7 +66,8 @@ A Site Recovery támogatja a támogatott gépen futó munkaterhelés ek repliká
 **Összetevő** | **Részletek**
 --- | ---
 A gép beállításai | Az Azure-ra replikáló gépeknek meg kell felelniük [az Azure követelményeinek.](#azure-vm-requirements)
-Gépmunkaterhelés | A Site Recovery támogatja a támogatott gépen futó munkaterhelés ek replikációját. [További információ](site-recovery-workload.md).
+Gépmunkaterhelés | A Site Recovery támogatja a támogatott gépen futó munkaterhelés ek replikációját. [További információ](https://aka.ms/asr_workload).
+Gép neve | Győződjön meg arról, hogy a gép megjelenítendő neve nem tartozik az [Azure számára fenntartott erőforrásnevekbe](https://docs.microsoft.com/azure/azure-resource-manager/templates/error-reserved-resource-name)<br/><br/> A logikai kötetnevek nem érzékenyek a kis- és nagybetűkre. Győződjön meg arról, hogy az eszközön nincs két kötet azonos nevű. Pl.: A "voLUME1", "volume1" nevű kötetek nem védhetők az Azure Site Recovery használatával.
 Windows Server 2019 | A [34-es összegző](https://support.microsoft.com/help/4490016) frissítőcsomag (a Mobilitási szolgáltatás 9.22-es verziója) által támogatott.
 64 bites Windows Server 2016 | Server Core, Server with Desktop Experience esetén támogatott.
 Windows Server 2012 R2 / Windows Server 2012 | Támogatott.
@@ -118,16 +119,16 @@ Debian 8 | [9.29][9.29 UR] | 3.16.0-4-amd64 -hoz 3.16.0-10-amd64, 4.9.0-0.bpo.4-
 
 **Kiadás** | **Mobilitási szolgáltatás verziója** | **Kernel verziója** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP1,SP2,SP3,SP4) | [9.32][9.32 UR] | Minden [készlet SUSE 12 SP1, SP2, SP3,SP4 kernelek támogatottak.](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)</br></br> 4.4.138-4.7-azure -hoz 4.4.180-4.31-azúr,</br>4.12.14-6.3-azure-tól 4.12.14-6.34-azure  |
-SUSE Linux Enterprise Server 12 (SP1,SP2,SP3,SP4) | [9.31][9.31 UR] | Minden [készlet SUSE 12 SP1, SP2, SP3,SP4 kernelek támogatottak.](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)</br></br> 4.4.138-4.7-azure -hoz 4.4.180-4.31-azúr,</br>4.12.14-6.3-azure-tól 4.12.14-6.29-azure  |
-SUSE Linux Enterprise Server 12 (SP1,SP2,SP3,SP4) | [9.30][9.30 UR] | Minden [készlet SUSE 12 SP1, SP2, SP3,SP4 kernelek támogatottak.](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)</br></br> 4.4.138-4.7-azure -hoz 4.4.180-4.31-azúr,</br>4.12.14-6.3-azure-tól 4.12.14-6.26-azure  |
-SUSE Linux Enterprise Server 12 (SP1,SP2,SP3,SP4) | [9.29][9.29 UR] | Minden [készlet SUSE 12 SP1, SP2, SP3,SP4 kernelek támogatottak.](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12)</br></br> 4.4.138-4.7-azure -hoz 4.4.180-4.31-azúr,</br>4.12.14-6.3-azure-tól 4.12.14-6.23-azure  |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9.28][9.28 UR] | SP1 3.12.49-11-default érték 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.118-default</br></br> SP2 4.4.21-69-default to 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default to 4.4.121-92.117-default</br></br>SP3 4.4.73-5-default érték 4.4.180-94.100-alapértelmezett</br></br>SP3 4.4.138-4.7-azure -tól 4.4.180-4.31-azure</br></br>SP4 4.12.14-94.41-default to 4.12.14-95.29-default</br>SP4 4.12.14-6.3-azure-tól 4.12.14-6.23-azure-ig |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9.27][9.27 UR] | SP1 3.12.49-11-default érték 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.115-default</br></br> SP2 4.4.21-69-default to 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default to 4.4.121-92.114-default</br></br>SP3 4.4.73-5-default to 4.4.180-94.97-default</br></br>SP3 4.4.138-4.7-azure -tól 4.4.180-4.31-azure</br></br>SP4 4.12.14-94.41-default to 4.12.14-95.19-default</br>SP4 4.12.14-6.3-azure-tól 4.12.14-6.15-azure-ig |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9.26][9.26 UR] | SP1 3.12.49-11-default érték 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.110-default</br></br> SP2 4.4.21-69-default to 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default to 4.4.121-92.109-default</br></br>SP3 4.4.73-5-default érték 4.4.178-94.91-alapértelmezett</br></br>SP3 4.4.138-4.7-azure -tól 4.4.178-4.28-azure</br></br>SP4 4.12.14-94.41-default to 4.12.14-95.16-default</br>SP4 4.12.14-6.3-azure -tól 4.12.14-6.9-azúr |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9.25][9.25 UR] | SP1 3.12.49-11-default érték 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default to 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default to 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default to 4.4.121-92.104-default</br></br>SP3 4.4.73-5-default érték 4.4.176-94.88-alapértelmezett</br></br>SP3 4.4.138-4.7-azure -tól 4.4.176-4.25-azure</br></br>SP4 4.12.14-94.41-default to 4.12.14-95.13-default</br>SP4 4.12.14-6.3-azure -tól 4.12.14-6.9-azúr |
 
 ### <a name="suse-linux-enterprise-server-15-supported-kernel-versions"></a>A SUSE Linux Enterprise Server 15 támogatott kernelverziói
 
 **Kiadás** | **Mobilitási szolgáltatás verziója** | **Kernel verziója** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 15 és 15 SP1 | 9.32 | Minden [készlet SUSE 15 és 15 kernelek támogatottak.](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_15)</br></br> 4.12.14-5.5-azure-tól 4.12.14-8.22-azure |
+SUSE Linux Enterprise Server 15 és 15 SP1 | [9.32](https://support.microsoft.com/help/4550047/) | Minden [készlet SUSE 15 és 15 kernelek támogatottak.](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_15) </br></br> 4.12.14-5.5-azure-tól 4.12.14-8.22-azure
 
 ## <a name="linux-file-systemsguest-storage"></a>Linux fájlrendszerek/vendégtároló
 
@@ -139,7 +140,7 @@ Paravirtualizált tárolóeszközök | A paravirtualizált illesztőprogramok á
 Többvárólistás blokk I/O-eszközök | Nem támogatott.
 Fizikai szerverek a HP CCISS tárolóvezérlővel | Nem támogatott.
 Eszköz/csatlakoztatási pont elnevezési konvenciója | Az eszköz nevének vagy csatlakoztatási pontjának nevének egyedinek kell lennie.<br/> Győződjön meg arról, hogy nincs két eszköz/csatlakoztatási pont kis- és nagybetűket megkülönböztető neve. Például az eszközök elnevezése az azonos virtuális gép, mint *az eszköz1* és *az Eszköz1* nem támogatott.
-Könyvtárak | Ha a Mobility szolgáltatás 9.20-as verziónál korábbi verzióját futtatja (a [31. összegző frissítőcsomagban](https://support.microsoft.com/help/4478871/)jelenik meg), akkor a következő korlátozások érvényesek:<br/><br/> - Ezeknek a könyvtáraknak (ha külön partícióként/fájlrendszerként vannak beállítva) ugyanazon az operációsrendszer-lemezen kell lenniük a forráskiszolgálón: /(root), /boot, /usr, /usr/local, /var, /etc.</br> - A /boot könyvtárnak lemezpartíción kell lennie, nem LVM-kötetnek.<br/><br/> A 9.20-as verziótól kezdve ezek a korlátozások nem érvényesek.
+Könyvtárak | Ha a Mobility szolgáltatás 9.20-as verziónál korábbi verzióját futtatja (a [31. összegző frissítőcsomagban](https://support.microsoft.com/help/4478871/)jelenik meg), akkor a következő korlátozások érvényesek:<br/><br/> - Ezeknek a könyvtáraknak (ha külön partícióként/fájlrendszerként vannak beállítva) ugyanazon az operációsrendszer-lemezen kell lenniük a forráskiszolgálón: /(root), /boot, /usr, /usr/local, /var, /etc.</br> - A /boot könyvtárnak lemezpartíción kell lennie, nem LVM-kötetnek.<br/><br/> A 9.20-as verziótól kezdve ezek a korlátozások nem érvényesek. 
 Rendszerindító könyvtár | - A rendszerindító lemezek nem lehetnek GPT partícióformátumban. Ez egy Azure-architektúra korlátozás. A GPT-lemezek adatlemezként támogatottak.<br/><br/> A virtuális gép több rendszerindító lemeze nem támogatott<br/><br/> - A /boot egy LVM köteten több lemezen nem támogatott.<br/> - A rendszerindító lemez nélküli gép nem replikálható.
 Szabad helyigény| 2 GB a /root partíción <br/><br/> 250 MB a telepítési mappában
 XFSv5 | Az XFS fájlrendszerek XFSv5 funkciói, például a metaadat-ellenőrzőösszeg támogatottak (Mobilitási szolgáltatás 9.10-es verziójától).<br/> A xfs_info segédprogrammal ellenőrizze a partíció XFS szuperblokkját. Ha `ftype` 1-re van állítva, akkor az XFSv5 funkciók használatban vannak.
@@ -220,7 +221,7 @@ Vendég/kiszolgáló EFI/UEFI rendszerindítás | - Támogatott Windows Server 2
 |Offline vetés        |   Nem      |
 | Azure Data Box | Nem
 
-## <a name="azure-storage"></a>Azure Storage-tárterület
+## <a name="azure-storage"></a>Azure Storage tárterület
 
 **Összetevő** | **Támogatott**
 --- | ---
@@ -231,7 +232,7 @@ Hűvös tárolás | Nem
 Forró tárolás| Nem
 Blokkblobok | Nem
 Inaktív titkosítás (SSE)| Igen
-Inaktív titkosítás (CMK)| Igen (a Powershell Az 3.3.0 modulon keresztül)
+Inaktív titkosítás (CMK)| Igen (a PowerShell Az 3.3.0 modulon keresztül)
 Prémium szintű Storage | Igen
 Importálási/exportálási szolgáltatás | Nem
 Azure Storage tűzfalak virtuális hálózatokhoz | Igen.<br/> A céltároló/gyorsítótártári fiókon konfigurálva (replikációs adatok tárolására szolgál).

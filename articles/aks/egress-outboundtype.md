@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan definiálhat egyéni kimenő útvonalat az Azur
 services: container-service
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: 30b7b6bae92221b268d40977f5b299e9b0b267b0
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 3780680c485aebf1ffc654d31c577821a9b96fff
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637829"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676509"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route-preview"></a>Fürtforgalom testreszabása felhasználó által definiált útvonallal (előzetes verzió)
 
@@ -542,3 +542,6 @@ Az Azure szavazási alkalmazás egy képjelenik meg.
 Tekintse meg [az Azure hálózati UDR áttekintését.](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)
 
 Útvonaltábla [létrehozása, módosítása és törlése.](https://docs.microsoft.com/azure/virtual-network/manage-route-table)
+
+<!-- LINKS - internal -->
+[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials

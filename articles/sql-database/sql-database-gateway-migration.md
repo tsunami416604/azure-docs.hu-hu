@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: fe35dc4c22f3852934cde0d6f33084b56266d514
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9e3c33bb7493f07d9fbf19710f21d0114e7abec8
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73807689"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757055"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Az Azure SQL Database-forgalom áttelepítése újabb átjárókra
 
@@ -54,7 +54,7 @@ Nem lesz hatással, ha:
 
 Azt javasoljuk, hogy engedélyezze a kimenő forgalmat az IP-címekre az [összes Azure SQL Database átjáró IP-címek](sql-database-connectivity-architecture.md#azure-sql-database-gateway-ip-addresses) a régióban a TCP-port 1433, és a port tartomány 11000-11999. Ez a javaslat a helyszíni és a szolgáltatásvégpontokon keresztül csatlakozó ügyfelekre vonatkozik. A porttartományokról a [Kapcsolatházirend](sql-database-connectivity-architecture.md#connection-policy)című témakörben talál további információt.
 
-A 4.0-s verzió alatti Microsoft JDBC-illesztőprogramot használó alkalmazásokból származó kapcsolatok sikertelenek lehetnek a tanúsítványok érvényesítésében. A Microsoft JDBC kisebb verziói a tanúsítvány Tárgy mezőjében a köznapi névre (CN) támaszkodnak. A megoldás annak biztosítása, hogy a hostNameInCertificate tulajdonság beállítása *.database.windows.net. A hostNameInCertificate tulajdonság beállításáról a [Csatlakozás SSL-titkosítással](/sql/connect/jdbc/connecting-with-ssl-encryption)című témakörben talál további információt.
+A 4.0-s verzió alatti Microsoft JDBC-illesztőprogramot használó alkalmazásokból származó kapcsolatok sikertelenek lehetnek a tanúsítványok érvényesítésében. A Microsoft JDBC kisebb verziói a tanúsítvány Tárgy mezőjében a köznapi névre (CN) támaszkodnak. A megoldás annak biztosítása, hogy a hostNameInCertificate tulajdonság beállítása *.database.windows.net. A hostNameInCertificate tulajdonság beállításáról a [Csatlakozás titkosítással](/sql/connect/jdbc/connecting-with-ssl-encryption)című témakörben talál további információt.
 
 Ha a fenti megoldás nem működik, nyújtson be támogatási kérelmet az SQL Database-hez a következő URL-cím használatával:https://aka.ms/getazuresupport
 

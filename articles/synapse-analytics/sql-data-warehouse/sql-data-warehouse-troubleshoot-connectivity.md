@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 08fb0a6675d18370482abe9b1d7b9a0d9ee5c364
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 8aaca40961b1294336b236305ecdffcc92c5a4d9
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633005"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742574"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Kapcsolati problémák hibaelhárítása
 
@@ -79,14 +79,14 @@ Ellenőrizze, hogy a legújabb eszközöket használja-e a Synapse SQL-készleth
 
 Ellenőrizze, hogy a legújabb illesztőprogram-verziókat használja-e.Az illesztőprogramok régebbi verziójának használata váratlan viselkedést eredményezhet, mivel előfordulhat, hogy a régebbi illesztőprogramok nem támogatják az új funkciókat.
 
-- [ODBC](/sql/connect/odbc/download-odbc-driver-for-sql-server)
-- [JDBC](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)
-- [OLE DB](/sql/connect/oledb/download-oledb-driver-for-sql-server)
-- [PHP](/sql/connect/php/download-drivers-php-sql-server)
+- [ODBC](/sql/connect/odbc/download-odbc-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [JDBC](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [OLE DB](/sql/connect/oledb/download-oledb-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [PHP](/sql/connect/php/download-drivers-php-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ## <a name="check-your-connection-string"></a>A kapcsolati sztring ellenőrzése
 
-Ellenőrizze, hogy a kapcsolati sztring megfelelően van-e beállítva.  Az alábbiakban néhány mintát.  [Itt talál további információt a kapcsolati sztringekről](/sql-data-warehouse/sql-data-warehouse-connection-strings.md).
+Ellenőrizze, hogy a kapcsolati sztring megfelelően van-e beállítva.  Az alábbiakban néhány mintát.  [Itt talál további információt a kapcsolati sztringekről](sql-data-warehouse-connection-strings.md).
 
 ADO.NET kapcsolati sztring
 
@@ -122,4 +122,4 @@ Hibák 40914 és 40615, lásd a [hiba leírását és megoldását itt](../../sq
 
 ## <a name="still-having-connectivity-issues"></a>Továbbra is vannak kapcsolódási problémák?
 
-Hozzon létre egy [támogatási jegyet,](/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md) hogy a mérnöki csapat támogathassa Önt.
+Hozzon létre egy [támogatási jegyet,](sql-data-warehouse-get-started-create-support-ticket.md) hogy a mérnöki csapat támogathassa Önt.

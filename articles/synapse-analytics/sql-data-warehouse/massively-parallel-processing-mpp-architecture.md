@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: e321df3f27defdceab31fe3b425a4169928ba3f6
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 0d768581b8f1a177190da08986af8b60b4861432
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631948"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744219"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure Synapse Analytics (korábban SQL DW) architektúra
 
@@ -66,7 +66,7 @@ A Vezérlő csomópont az architektúra agya. Ez az az előtérbeli rendszer, am
 
 A számítási csomópontok biztosítják a számítási teljesítményt. A disztribúciók leképezése számítási csomópontokhoz feldolgozásra. Ahogy több számítási erőforrásért fizet, a disztribúciók a rendelkezésre álló számítási csomópontokhoz lesznek hozzárendelve. A számítási csomópontok száma 1 és 60 között van, és a Synapse SQL szolgáltatási szintje határozza meg.
 
-Minden számítási csomópont rendelkezik egy csomópontazonosítóval, amely a rendszernézetekben látható. A számítási csomópont azonosítóját úgy láthatja, hogy megkeresi a node_id oszlopot a rendszernézetekben, amelyek neve a sys.pdw_nodes...in sys.pdw_nodes. A rendszernézetek listáját az [MPP rendszernézetek ben láthatja.](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=aps-pdw-2016-au7)
+Minden számítási csomópont rendelkezik egy csomópontazonosítóval, amely a rendszernézetekben látható. A számítási csomópont azonosítóját úgy láthatja, hogy megkeresi a node_id oszlopot a rendszernézetekben, amelyek neve a sys.pdw_nodes...in sys.pdw_nodes. A rendszernézetek listáját az [MPP rendszernézetek ben láthatja.](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ### <a name="data-movement-service"></a>Adatáthelyezési szolgáltatás
 
@@ -121,6 +121,6 @@ Most, hogy már tud egy kicsit az Azure Synapse-ról, ismerje meg, hogyan hozhat
 - [Funkciókérések](https://feedback.azure.com/forums/307516-sql-data-warehouse)
 - [Videók](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 - [Támogatási jegy létrehozása](sql-data-warehouse-get-started-create-support-ticket.md)
-- [MSDN fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse)
+- [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse)
 - [Stack Overflow-fórum](https://stackoverflow.com/questions/tagged/azure-sqldw)
 - [Twitter](https://twitter.com/hashtag/SQLDW)

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: a0547243ddf114d5c9f7034f182a5e76d8c3e016
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 872eec62e7a629d76533aa6c9906cbdb64c32236
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75369422"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745553"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>Bevezetés a Stream Analytics ablakos funkcióiba
 
@@ -35,7 +35,7 @@ Az ugróablak típusú függvények egy adott időtartamot ugranak előre az id�
 ![A Stream Analytics ugrási ablaka](media/stream-analytics-window-functions/stream-analytics-window-functions-hopping-intro.png)
 
 ## <a name="sliding-window"></a>Csúszó ablak
-A csúszó ablakfunkciók a Bukdácsoló vagy az Ugró ablakoktól eltérően **csak** akkor hoznak létre kimenetet, ha esemény történik. Minden ablakhoz legalább egy esemény tartozik, amely folyamatosan halad előre egy € (epszilon) egységgel. Az ugróablakhoz hasonlóan egy esemény több csúszóablakhoz is tartozhat.
+A csúszó ablakfunkciók a Bukdácsoló vagy az Ugró ablakoktól eltérően **csak** akkor hoznak létre kimenetet, ha esemény történik. Minden ablaknak legalább egy eseménye lesz, és az ablak folyamatosan halad előre egy ε (epszilon) által. Az ugróablakhoz hasonlóan egy esemény több csúszóablakhoz is tartozhat.
 
 ![Stream Analytics csúszóablak](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
 

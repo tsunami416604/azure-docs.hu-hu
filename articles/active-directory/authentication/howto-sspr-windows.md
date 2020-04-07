@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a8675756aeef1140dbebd94023d7f7fb4c7af99
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: d4f08161daf1d9c1a4431d9e3fba3ca741d88b16
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80652262"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743344"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Útmutató: Jelszó-visszaállítás engedélyezése a Windows bejelentkezési képernyőjéről
 
@@ -43,7 +43,7 @@ Windows 7, 8, 8.1 és 10 rendszert futtató gépek esetén engedélyezheti a fel
 - Az alábbi három beállítás kombinációja azt eredményezheti, hogy ez a szolgáltatás nem működik.
     - Interaktív bejelentkezés: Nincs szükség CTRL+ALT+DEL = Letiltva
     - DisableLockScreenAppNotifications = 1 vagy Enabled
-    - IsContentDeliveryPolicyEnforced = 1 vagy True
+    - A Windows Termékváltozat nem Home vagy Professional kiadás
 
 ## <a name="windows-10-password-reset"></a>Windows 10 jelszó alaphelyzetbe állítása
 

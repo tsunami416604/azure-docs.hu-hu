@@ -3,17 +3,16 @@ title: A tervrajzok életciklusának megismerése
 description: Ismerje meg, hogy a tervdefiníció életciklusa és az egyes fázisok részletei, beleértve a tervrajzok-hozzárendelések frissítését és eltávolítását.
 ms.date: 07/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4dd5cb7d085744377cf12998f14c994fb1dcd2d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46da42ec97f16af91ef8e41362a085d466bbb887
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74404589"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677371"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Az Azure Blueprint életciklusának megismerése
 
-Az Azure-beli erőforrásokhoz hasonlóan az Azure Blueprints tervrajzai is rendelkeznek egy tipikus és természetes életciklussal. Ezek létrehozása, üzembe helyezése, és végül törlődik, ha már nincs szükség, vagy releváns.
-A tervrajzok támogatják a szabványos életciklus-műveleteket. Ezután épít rájuk, hogy további szintű állapot, amely támogatja a közös folyamatos integráció és a folyamatos üzembe helyezési folyamatok szervezetek számára, amelyek kezelik az infrastruktúra kódként – kulcsfontosságú eleme a DevOps.
+Az Azure-beli erőforrásokhoz hasonlóan az Azure Blueprints tervrajzai is rendelkeznek egy tipikus és természetes életciklussal. Ezek létrehozása, üzembe helyezése, és végül törlődik, ha már nincs szükség, vagy releváns. Az Azure Blueprints támogatja a szabványos életciklus-műveleteket. Ezután épít rájuk, hogy további szintű állapot, amely támogatja a közös folyamatos integráció és a folyamatos üzembe helyezési folyamatok szervezetek számára, amelyek kezelik az infrastruktúra kódként – kulcsfontosságú eleme a DevOps.
 
 A tervrajzok és a szakaszok teljes megértéséhez egy szabványos életciklust fedjük le:
 

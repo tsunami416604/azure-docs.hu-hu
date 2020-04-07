@@ -3,12 +3,12 @@ title: 'Rövid útmutató: Tervrajz létrehozása a REST API-val'
 description: Ebben a rövid útmutatóban az Azure Blueprints használatával hozza létre, határozza meg és telepítse az összetevőket a REST API használatával.
 ms.date: 02/26/2020
 ms.topic: quickstart
-ms.openlocfilehash: 3e7e7c67822eec939c7d7752f8771d3b486abc3c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 93c9aef9efd826b88da59cdb77dedfb10fb11262
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79241541"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676565"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Rövid útmutató: Azure Blueprint definiálása és hozzárendelése REST API-val
 
@@ -25,7 +25,7 @@ A tervek létrehozásának és hozzárendelésének elsajátítása lehetővé t
 
 Ha még nem ismeri a REST API-t, első lépésként tekintse át az [Azure REST API-referenciát](/rest/api/azure/) a REST API általános bemutatásáért, és fordítson különös figyelmet a kérések URI-azonosítójára és törzsére. Ebben a cikkben ezeknek a fogalmaknak a segítségével adunk útmutatást az Azure Blueprints-tervek használatához, és feltételezzük, hogy behatóan ismeri a fogalmakat. Az [ARMClient](https://github.com/projectkudu/ARMClient) és hasonló eszközökkel automatikusan kezelhető az engedélyezés, ezért a kezdők számára mindenképp javasoljuk ezek használatát.
 
-A Blueprints műszaki adataiért tekintse meg az [Azure Blueprints REST API-t ismertető szakaszt](/rest/api/blueprints/).
+Az Azure Blueprints specifikációk, lásd: [Azure Blueprints REST API.](/rest/api/blueprints/)
 
 ### <a name="rest-api-and-powershell"></a>A REST API és a PowerShell
 
@@ -406,7 +406,7 @@ Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie s
      A **felhasználó által hozzárendelt felügyelt identitás** lehet bármely előfizetés és erőforráscsoport a felhasználó hozzárendelte a tervezet engedélyekkel rendelkezik.
 
      > [!IMPORTANT]
-     > Tervrajzok nem kezeli a felhasználó által hozzárendelt felügyelt identitás. A felhasználók felelősek a megfelelő szerepkörök és engedélyek hozzárendelése, vagy a tervezet hozzárendelés sikertelen lesz.
+     > Az Azure Blueprints nem kezeli a felhasználó által hozzárendelt felügyelt identitást. A felhasználók felelősek a megfelelő szerepkörök és engedélyek hozzárendelése, vagy a tervezet hozzárendelés sikertelen lesz.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

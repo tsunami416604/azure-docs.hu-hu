@@ -2,18 +2,18 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/02/2020
+ms.date: 04/03/2020
 ms.author: dacoulte
-ms.openlocfilehash: 3b40f4740d4d7aedc6a4997662a4738293721817
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: ecca4208d8c3d471e3ff4d1fc951888dcf18255d
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80624111"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80758651"
 ---
 |Név |Leírás |Hatás(ok) |Verzió |GitHub |
 |---|---|---|---|---|
-|[Egyéni IPsec/IKE-házirendet kell alkalmazni az összes Azure virtuális hálózati átjárókapcsolatra](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F50b83b09-03da-41c1-b656-c293c914862b) |Ez a házirend biztosítja, hogy minden Azure virtuális hálózati átjárókapcsolat egyéni IP-biztonsági(Ipsec)/Internetes kulcscsere(IKE) házirendet használjon. Támogatott algoritmusok és kulcserősségek -https://aka.ms/AA62kb0 |Naplózás, letiltva |1.0.0 |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VPNGateways_CustomIpSecPolicies_Audit.json)
+|[Egyéni IPsec/IKE-házirendet kell alkalmazni az összes Azure virtuális hálózati átjárókapcsolatra](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F50b83b09-03da-41c1-b656-c293c914862b) |Ez a házirend biztosítja, hogy minden Azure virtuális hálózati átjárókapcsolat egyéni IP-biztonsági(Ipsec)/Internetes kulcscsere(IKE) házirendet használjon. Támogatott algoritmusok és kulcserősségek -[https://aka.ms/AA62kb0](https://aka.ms/AA62kb0) |Naplózás, letiltva |1.0.0 |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VPNGateways_CustomIpSecPolicies_Audit.json)
 |[Az App Service-nek virtuális hálózati szolgáltatás végpontját kell használnia](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2d21331d-a4c2-4def-a9ad-ee4e1e023beb) |Ez a házirend minden olyan Alkalmazás-szolgáltatást naplóz, amely nincs konfigurálva virtuális hálózati szolgáltatásvégpont használatára. |AuditIfNotExists, Letiltva |1.0.0 |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_AppService_AuditIfNotExists.json)
 |[Az Azure VPN-átjárók nem használhatnak "alapszintű" termékváltozatot](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe345b6c3-24bd-4c93-9bbb-7e5e49a17b78) |Ez a házirend biztosítja, hogy a VPN-átjárók ne használjanak "alapszintű" termékváltozatot. |Naplózás, letiltva |1.0.0 |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VPNGateways_BasicSKU_Audit.json)
 |[A tárolóbeállításnak virtuális hálózati szolgáltatás végpontját kell használnia](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4857be7-912a-4c75-87e6-e30292bcdf78) |Ez a házirend minden olyan tárolóbeállítás-jegyzéket naplóz, amely nincs konfigurálva virtuális hálózati szolgáltatásvégpont használatára. |Naplózás, letiltva |1.0.0-preview |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_ContainerRegistry_Audit.json)

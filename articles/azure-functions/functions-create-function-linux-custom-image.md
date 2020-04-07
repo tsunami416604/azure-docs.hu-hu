@@ -1,16 +1,16 @@
 ---
 title: Azure-függvények létrehozása Linuxon egyéni lemezkép használatával
 description: Megismerheti, hogyan hozhat létre egyéni Linux-rendszerképeken futó Azure Functions-függvényeket.
-ms.date: 01/15/2020
+ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 8c074c677c645dd03e3cf5288d82aa3e65720e8b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 44ca8f721967b90be283f867f8656344ec3f1906
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239629"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673414"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Függvény létrehozása Linuxon egyéni tároló használatával
 
@@ -31,236 +31,158 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Engedélyezze az SSH-kapcsolatokat a tárolóhoz.
 > * Várólista-tároló kimenetkötés hozzáadása. 
 
-Az oktatóanyag ot bármely Windows, Mac OS vagy Linux rendszert futtató számítógépen követheti. Az oktatóanyag befejezése néhány amerikai dollár költségét fogja kitölteni az Azure-fiókjában.
+Az oktatóanyag ot bármely Windows, macOS vagy Linux rendszert futtató számítógépen követheti. Az oktatóanyag befejezése néhány amerikai dollár költségét fogja kitölteni az Azure-fiókjában.
 
-## <a name="prerequisites"></a>Előfeltételek
+[!INCLUDE [functions-requirements-cli](../../includes/functions-requirements-cli.md)]
 
-- Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Az [Azure Functions Core Tools](./functions-run-local.md#v2) 2.7.1846-os vagy újabb verziója
-- Az [Azure CLI](/cli/azure/install-azure-cli) 2.0.77-es vagy újabb verziója
-- Az [Azure Functions 2.x futásidejű](functions-versions.md)
-- A következő nyelvi futásidejű összetevők:
-    ::: zone pivot="programming-language-csharp"
-    - [.NET Core 2.2.x vagy újabb](https://dotnet.microsoft.com/download)
-    ::: zone-end
-    ::: zone pivot="programming-language-javascript"
-    - [Node.js](https://nodejs.org/en/download/)
-    ::: zone-end
-    ::: zone pivot="programming-language-powershell"
-    - [Powershell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)
-    ::: zone-end
-    ::: zone pivot="programming-language-python"
-    - [Python 3.6 - 64 bites](https://www.python.org/downloads/release/python-3610/) vagy [Python 3.7 - 64 bites](https://www.python.org/downloads/release/python-376/)
-    ::: zone-end
-    ::: zone pivot="programming-language-typescript"
-    - [Node.js](https://nodejs.org/en/download/)
-    - [TypeScript](http://www.typescriptlang.org/#download-links)
-    ::: zone-end
-- [Docker között](https://docs.docker.com/install/)
-- [Docker-azonosító](https://hub.docker.com/signup)
+<!---Requirements specific to Docker --->
++ [Docker között](https://docs.docker.com/install/)  
 
-### <a name="prerequisite-check"></a>Előfeltétel-ellenőrzés
++ [Docker-azonosító](https://hub.docker.com/signup)
 
-1. Egy terminál- vagy parancsablakban futtassa `func --version` annak ellenőrzéséhez, hogy az Azure Functions Core Tools 2.7.1846-os vagy újabb verziójú-e.
-1. Futtassa `az --version` annak ellenőrzéséhez, hogy az Azure CLI-verzió 2.0.76-os vagy újabb.
-1. Futtassa `az login` a bejelentkezést az Azure-ba, és ellenőrizze az aktív előfizetést.
-1. Fuss, `docker login` hogy jelentkezzen be a Dockerbe. Ez a parancs sikertelen, ha a Docker nem fut, ebben az esetben indítsa el a docker-t, és próbálkozzon újra a paranccsal.
+[!INCLUDE [functions-cli-verify-prereqs](../../includes/functions-cli-verify-prereqs.md)]
+
++ Fuss, `docker login` hogy jelentkezzen be a Dockerbe. Ez a parancs sikertelen, ha a Docker nem fut, ebben az esetben indítsa el a docker-t, és próbálkozzon újra a paranccsal.
+
+[!INCLUDE [functions-cli-create-venv](../../includes/functions-cli-create-venv.md)]
 
 ## <a name="create-and-test-the-local-functions-project"></a>A helyi függvényprojekt létrehozása és tesztelése
 
-1. Terminál- vagy parancssorban hozzon létre egy mappát az oktatóanyag számára egy megfelelő helyen, majd navigáljon a mappába.
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
+Terminál- vagy parancssorban futtassa a következő parancsot a kiválasztott nyelvhez, és hozzon létre egy függvényalkalmazás-projektet a nevű `LocalFunctionsProject`mappában.  
+::: zone-end  
+::: zone pivot="programming-language-csharp"  
+```
+func init LocalFunctionsProject --worker-runtime dotnet --docker
+```
+::: zone-end  
+::: zone pivot="programming-language-javascript"  
+```
+func init LocalFunctionsProject --worker-runtime node --language javascript --docker
+```
+::: zone-end  
+::: zone pivot="programming-language-powershell"  
+```
+func init LocalFunctionsProject --worker-runtime powershell --docker
+```
+::: zone-end  
+::: zone pivot="programming-language-python"  
+```
+func init LocalFunctionsProject --worker-runtime python --docker
+```
+::: zone-end  
+::: zone pivot="programming-language-typescript"  
+```
+func init LocalFunctionsProject --worker-runtime node --language typescript --docker
+```
+::: zone-end
+::: zone pivot="programming-language-java"  
+Egy üres mappában futtassa a következő parancsot a Functions-projekt [Maven archetype](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html)-ból való létrehozásához.
 
-1. Kövesse a [virtuális környezet létrehozása és aktiválása](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#create-venv) című, az oktatóanyaghoz használható virtuális környezet létrehozásához található utasításokat.
+# <a name="bash"></a>[Bash](#tab/bash)
+```bash
+mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype -Ddocker
+```
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+```powershell
+mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-Ddocker"
+```
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+```cmd
+mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-Ddocker"
+```
+---
 
-1. Futtassa a következő parancsot a választott nyelvhez, `LocalFunctionsProject`és hozzon létre egy függvényalkalmazás-projektet egy nevű mappában. A `--docker` beállítás létrehoz `Dockerfile` egy a projekt, amely meghatározza a megfelelő egyéni tároló azure functions és a kiválasztott futásidejű használható.
+A Maven olyan értékeket kér, amelyek a projekt üzembe helyezéséhez szükségesek.   
+Amikor a rendszer kéri, adja meg a következő értékeket:
 
-    ::: zone pivot="programming-language-csharp"
-    ```
-    func init LocalFunctionsProject --worker-runtime dotnet --docker
-    ```
-    ::: zone-end
+| Kérdés | Érték | Leírás |
+| ------ | ----- | ----------- |
+| **csoportazonosító** | `com.fabrikam` | Olyan érték, amely egyedileg azonosítja a projektet az összes projektben, a Java [csomagelnevezési szabályainak](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) megfelelően. |
+| **artifactId** | `fabrikam-functions` | Az edény neve verziószám nélküli érték. |
+| **Változat** | `1.0-SNAPSHOT` | Válassza ki az alapértelmezett értéket. |
+| **Csomag** | `com.fabrikam.functions` | Olyan érték, amely a létrehozott függvénykód Java-csomagja. Használja az alapértelmezettet. |
 
-    ::: zone pivot="programming-language-javascript"
-    ```
-    func init LocalFunctionsProject --worker-runtime node --language javascript --docker
-    ```
-    ::: zone-end
+A `Y` megerősítéshez írja be vagy nyomja le az Enter billentyűt.
 
-    ::: zone pivot="programming-language-powershell"
-    ```
-    func init LocalFunctionsProject --worker-runtime powershell --docker
-    ```
-    ::: zone-end
+A Maven egy új mappában hozza létre a projektfájlokat, `fabrikam-functions`amelynek neve _artifactId_, amely ebben a példában a. 
+::: zone-end
+A `--docker` beállítás létrehoz `Dockerfile` egy a projekt, amely meghatározza a megfelelő egyéni tároló azure functions és a kiválasztott futásidejű használható.
 
-    ::: zone pivot="programming-language-python"
-    ```
-    func init LocalFunctionsProject --worker-runtime python --docker
-    ```
-    ::: zone-end
+Navigálás a projekt mappájába:
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
+```
+cd LocalFunctionsProject
+```
+::: zone-end  
+::: zone pivot="programming-language-java"  
+```
+cd fabrikam-functions
+```
+::: zone-end  
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python" 
+Adjon hozzá egy függvényt a projekthez `--name` a következő paranccsal, ahol `--template` az argumentum a függvény egyedi neve, és az argumentum megadja a függvény eseményindítóját. `func new`hozzon létre egy olyan almappát, amely megfelel a projekt választott nyelvének megfelelő kódfájlt tartalmazó függvénynévnek, valamint egy *function.json*nevű konfigurációs fájlt.
 
-    ::: zone pivot="programming-language-typescript"
-    ```
-    func init LocalFunctionsProject --worker-runtime node --language typescript --docker
-    ```
-    ::: zone-end
-    
-1. Navigálás a projekt mappájába:
+```
+func new --name HttpExample --template "HTTP trigger"
+```
+::: zone-end  
+A függvény helyi teszteléséhez indítsa el a helyi Azure Functions futásidejű állomást a projektmappa gyökerében: 
+::: zone pivot="programming-language-csharp"  
+```
+func start --build  
+```
+::: zone-end  
+::: zone pivot="programming-language-javascript,programming-language-powershell,programming-language-python"   
+```
+func start  
+```
+::: zone-end  
+::: zone pivot="programming-language-typescript"  
+```
+npm install
+npm start
+```
+::: zone-end  
+::: zone pivot="programming-language-java"  
+```
+mvn clean package  
+mvn azure-functions:run
+```
+::: zone-end
+Ha megjelenik `HttpExample` a végpont a kimenetben, keresse meg a t. [`http://localhost:7071/api/HttpExample?name=Functions`](http://localhost:7071/api/HttpExample?name=Functions) A böngészőnek meg kell jelennie egy `Functions`"hello" üzenetet, amely visszhangzik vissza , a `name` lekérdezési paraméterhez megadott érték.
 
-    ```
-    cd LocalFunctionsProject
-    ```
-    
-1. Adjon hozzá egy függvényt a projekthez `--name` a következő paranccsal, ahol `--template` az argumentum a függvény egyedi neve, és az argumentum megadja a függvény eseményindítóját. `func new`hozzon létre egy olyan almappát, amely megfelel a projekt választott nyelvének megfelelő kódfájlt tartalmazó függvénynévnek, valamint egy *function.json*nevű konfigurációs fájlt.
-
-    ```
-    func new --name HttpExample --template "HTTP trigger"
-    ```
-
-1. A függvény helyi teszteléséhez indítsa el a helyi Azure Functions futásidejű állomást a *LocalFunctionsProject* mappában:
-   
-    ::: zone pivot="programming-language-csharp"
-    ```
-    func start --build
-    ```
-    ::: zone-end
-
-    ::: zone pivot="programming-language-javascript"
-    ```
-    func start
-    ```
-    ::: zone-end
-
-    ::: zone pivot="programming-language-powershell"
-    ```
-    func start
-    ```
-    ::: zone-end
-
-    ::: zone pivot="programming-language-python"
-    ```
-    func start
-    ```
-    ::: zone-end    
-
-    ::: zone pivot="programming-language-typescript"
-    ```
-    npm install
-    ```
-
-    ```
-    npm start
-    ```
-    ::: zone-end
-
-1. Ha megjelenik `HttpExample` a végpont a kimenetben, keresse meg a t. `http://localhost:7071/api/HttpExample?name=Functions` A böngészőnek meg kell jelenítenie egy olyan üzenetet, mint a "Hello, Functions" (a választott programozási nyelvtől függően kissé változatos).
-
-1. A **Ctrl C billentyűvel**-**C** állítsa le az állomást.
+A **Ctrl C billentyűvel**-**C** állítsa le az állomást.
 
 ## <a name="build-the-container-image-and-test-locally"></a>A tárolórendszerkép létrehozása és helyi tesztelése
 
-1. (Nem kötelező) Vizsgálja meg a *Dockerfile" fájlt a *LocalFunctionsProj* mappában. A Dockerfile ismerteti a függvényalkalmazás Linuxon való futtatásához szükséges környezetet: 
+(Nem kötelező) Vizsgálja meg a *Dockerfile" fájlt a projektmappa gyökerében. A Dockerfile ismerteti a szükséges környezetet a függvényalkalmazás linuxos futtatásához.  Az Azure Functions támogatott alaplemezképeinek teljes listája megtalálható az [Azure Functions alaplemezképe oldalon.](https://hub.docker.com/_/microsoft-azure-functions-base)
+    
+A gyökérprojekt mappájában futtassa a [docker](https://docs.docker.com/engine/reference/commandline/build/) build `azurefunctionsimage`parancsot, `v1.0.0`és adjon meg egy nevet , és címkézze meg a . A `<DOCKER_ID>` helyére a Docker Hub-fiók azonosítóját írja. Ez a parancs létrehozza a tároló Docker-rendszerképét.
 
-    ::: zone pivot="programming-language-csharp"
-    ```Dockerfile
-    FROM microsoft/dotnet:2.2-sdk AS installer-env
+```
+docker build --tag <DOCKER_ID>/azurefunctionsimage:v1.0.0 .
+```
 
-    COPY . /src/dotnet-function-app
-    RUN cd /src/dotnet-function-app && \
-        mkdir -p /home/site/wwwroot && \
-        dotnet publish *.csproj --output /home/site/wwwroot
+Amikor a parancs befejeződik, futtathatja az új tárolót helyileg.
     
-    # To enable ssh & remote debugging on app service change the base image to the one below
-    # FROM mcr.microsoft.com/azure-functions/dotnet:2.0-appservice 
-    FROM mcr.microsoft.com/azure-functions/dotnet:2.0
-    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
-        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
-    
-    COPY --from=installer-env ["/home/site/wwwroot", "/home/site/wwwroot"]
-    ```
-    ::: zone-end
+A build teszteléséhez futtassa a lemezképet egy helyi tárolóban a [docker run](https://docs.docker.com/engine/reference/commandline/run/) paranccsal, cserélje le újra `<DOCKER_ID` a Docker-azonosítót, és adja hozzá a portok argumentumát: `-p 8080:80`
 
-    ::: zone pivot="programming-language-javascript"
-    ```Dockerfile
-    # To enable ssh & remote debugging on app service change the base image to the one below
-    # FROM mcr.microsoft.com/azure-functions/node:2.0-appservice
-    FROM mcr.microsoft.com/azure-functions/node:2.0
-    
-    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
-        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
-    
-    COPY . /home/site/wwwroot
-    
-    RUN cd /home/site/wwwroot && \
-    npm install    
-    ```
-    ::: zone-end
+```
+docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
+```
 
-    ::: zone pivot="programming-language-powershell"
-    ```Dockerfile
-    # To enable ssh & remote debugging on app service change the base image to the one below
-    # FROM mcr.microsoft.com/azure-functions/powershell:2.0-appservice
-    FROM mcr.microsoft.com/azure-functions/powershell:2.0
-    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
-        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
-    
-    COPY . /home/site/wwwroot    
-    ```
-    ::: zone-end
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
+Miután a kép egy helyi tárolóban `http://localhost:8080`fut, nyisson meg egy böngészőt a számára, amelynek meg kell jelenítenie az alábbi helyőrző képet. A rendszerkép jelenik meg ezen a ponton, mert a függvény fut a helyi tárolóban, ahogy az Azure-ban, ami `"authLevel": "function"` azt jelenti, hogy a *függvény.json* a tulajdonsággal meghatározott hozzáférési kulcs védi. A tároló még nem lett közzétéve egy függvényalkalmazásban az Azure-ban, így a kulcs még nem érhető el. Ha a helyi tárolóval szeretné tesztelni, állítsa le `"authLevel": "anonymous"`a docker-t, módosítsa az engedélyezési tulajdonságot , építse újra a lemezképet, és indítsa újra a dockert. Ezután `"authLevel": "function"` állítsa vissza a *function.json*. További információt az [engedélyezési kulcsok című témakörben talál.](functions-bindings-http-webhook-trigger.md#authorization-keys)
 
-    ::: zone pivot="programming-language-python"
-    ```Dockerfile
-    # To enable ssh & remote debugging on app service change the base image to the one below
-    # FROM mcr.microsoft.com/azure-functions/python:2.0-python3.7-appservice
-    FROM mcr.microsoft.com/azure-functions/python:2.0-python3.7
-    
-    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
-        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
-    
-    COPY requirements.txt /
-    RUN pip install -r /requirements.txt
-    
-    COPY . /home/site/wwwroot    
-    ```
-    ::: zone-end
+![Helyőrző lemezkép, amely jelzi, hogy a tároló helyileg fut](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
-    ::: zone pivot="programming-language-typescript"
-    ```Dockerfile
-    # To enable ssh & remote debugging on app service change the base image to the one below
-    # FROM mcr.microsoft.com/azure-functions/node:2.0-appservice
-    FROM mcr.microsoft.com/azure-functions/node:2.0
-    
-    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
-        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
-    
-    COPY . /home/site/wwwroot
-    
-    RUN cd /home/site/wwwroot && \
-    npm install    
-    ```
-    ::: zone-end
+::: zone-end
+::: zone pivot="programming-language-java"  
+Miután a rendszerkép egy helyi [`http://localhost:8080/api/HttpExample?name=Functions`](http://localhost:8080/api/HttpExample?name=Functions)tárolóban fut, keresse meg a tallózással, amelynek ugyanazt a "hello" üzenetet kell megjelenítenie, mint korábban. Mivel a Maven archetípus létrehoz egy HTTP-aktivált függvényt, amely névtelen engedélyezést használ, akkor is meghívhatja a függvényt, még akkor is, ha az a tárolóban fut. 
+::: zone-end  
 
-    > [!NOTE]
-    > Az Azure Functions támogatott alaplemezképeinek teljes listája megtalálható az [Azure Functions alaplemezképe oldalon.](https://hub.docker.com/_/microsoft-azure-functions-base)
-    
-1. A *LocalFunctionsProject* mappában futtassa a [docker](https://docs.docker.com/engine/reference/commandline/build/) build `azurefunctionsimage`parancsot, `v1.0.0`és adjon meg egy nevet, a és a címkét. A `<docker_id>` helyére a Docker Hub-fiók azonosítóját írja. Ez a parancs létrehozza a tároló Docker-rendszerképét.
-
-    ```
-    docker build --tag <docker_id>/azurefunctionsimage:v1.0.0 .
-    ```
-    
-    Amikor a parancs befejeződik, futtathatja az új tárolót helyileg.
-    
-1. A build teszteléséhez futtassa a lemezképet egy helyi tárolóban a [docker run](https://docs.docker.com/engine/reference/commandline/run/) paranccsal, cserélje le újra `<docker_id>` a Docker-azonosítót, és adja hozzá a portok argumentumát: `-p 8080:80`
-
-    ```
-    docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
-    ```
-    
-1. Miután a kép egy helyi tárolóban `http://localhost:8080`fut, nyisson meg egy böngészőt a számára, amelynek meg kell jelenítenie az alábbi helyőrző képet. A rendszerkép jelenik meg ezen a ponton, mert a függvény fut a helyi tárolóban, ahogy az Azure-ban, ami `"authLevel": "function"` azt jelenti, hogy a *függvény.json* a tulajdonsággal meghatározott hozzáférési kulcs védi. A tároló még nem lett közzétéve egy függvényalkalmazásban az Azure-ban, így a kulcs még nem érhető el. Ha helyileg szeretné tesztelni, állítsa le a `"authLevel": "anonymous"`docker-t, módosítsa az engedélyezési tulajdonságot , építse újra a lemezképet, és indítsa újra a dockert. Ezután `"authLevel": "function"` állítsa vissza a *function.json*. További információt az [engedélyezési kulcsok című témakörben talál.](functions-bindings-http-webhook-trigger.md#authorization-keys)
-
-    ![Helyőrző lemezkép, amely jelzi, hogy a tároló helyileg fut](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
-
-1. Miután ellenőrizte a függvényalkalmazást a tárolóban, állítsa le a docker-t **a Ctrl C-vel.**+**C**
+Miután ellenőrizte a függvényalkalmazást a tárolóban, állítsa le a docker-t **a Ctrl C-vel.**+**C**
 
 ## <a name="push-the-image-to-docker-hub"></a>A lemezkép leküldése a Docker Hubra
 
@@ -349,18 +271,18 @@ Az Azure-beli függvényalkalmazás kezeli a funkciók végrehajtását a tárhe
 
 1. A függvény most már használhatja ezt a kapcsolati karakterláncot a tárfiók eléréséhez.
 
-> [!TIP]
-> A bash, akkor egy shell változó, hogy rögzítse a kapcsolat string használata helyett a vágólapra. Először a következő paranccsal hozzon létre egy változót a kapcsolati karakterlánccal:
-> 
-> ```bash
-> storageConnectionString=$(az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv)
-> ```
-> 
-> Ezután olvassa el a második parancs ban található változót:
-> 
-> ```azurecli
-> az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=$storageConnectionString
-> ```
+    > [!TIP]
+    > A bash, akkor egy shell változó, hogy rögzítse a kapcsolat string használata helyett a vágólapra. Először a következő paranccsal hozzon létre egy változót a kapcsolati karakterlánccal:
+    > 
+    > ```bash
+    > storageConnectionString=$(az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv)
+    > ```
+    > 
+    > Ezután olvassa el a második parancs ban található változót:
+    > 
+    > ```azurecli
+    > az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=$storageConnectionString
+    > ```
 
 > [!NOTE]    
 > Ha közzéteszi az egyéni lemezképet egy privát tárolófiókban, használjon környezeti változókat a Dockerfile-ban a kapcsolati karakterlánchoz. További információt az [ENV utasításban](https://docs.docker.com/engine/reference/builder/#env)talál. A változókat is `DOCKER_REGISTRY_SERVER_USERNAME` `DOCKER_REGISTRY_SERVER_PASSWORD`be kell állítania, és . Az értékek használatához, majd újra kell építenie a lemezképet, leküldése a rendszerképet a beállításjegyzékbe, majd indítsa újra a függvényalkalmazást az Azure-ban.
@@ -499,7 +421,7 @@ Az SSH lehetővé teszi a tároló és az ügyfél közötti biztonságos kommun
 
 1. A böngészőben `https://<app_name>.scm.azurewebsites.net/`nyissa `<app_name>` meg a , az egyedi nevet. Ez az URL-cím a speciális eszközök (Kudu) végpont a függvényalkalmazás-tároló.
 
-1. Jelentkezzen be az Azure-fiókjába, majd válassza ki az **SSH-t** a tárolóval való kapcsolat létrehozásához. A csatlakozás eltarthat néhány percet, ha az Azure még mindig a tárolórendszerkép frissítése folyamatban van.
+1. Jelentkezzen be az Azure-fiókjába, majd válassza ki az **SSH-t** a tárolóval való kapcsolat létrehozásához. A csatlakozás eltarthat néhány pillanatig, ha az Azure még mindig frissíti a tárolórendszerképet.
 
 1. Miután létrejött egy kapcsolat a `top` tárolóval, futtassa a parancsot az éppen futó folyamatok megtekintéséhez. 
 
@@ -511,347 +433,47 @@ Az Azure Functions lehetővé teszi, hogy a függvényeket más Azure-szolgálta
 
 Ez a szakasz bemutatja, hogyan integrálhatja a függvényt egy Azure Storage-várólistával. A függvényhez hozzáadott kimeneti kötés http-kérelemből adatokat ír a várólistában lévő üzenetbe.
 
-## <a name="retrieve-the-azure-storage-connection-string"></a>Az Azure Storage-kapcsolati karakterlánc lekérése
+[!INCLUDE [functions-cli-get-storage-connection](../../includes/functions-cli-get-storage-connection.md)]
 
-Korábban létrehozott egy Azure Storage-fiókot a függvényalkalmazás általi használatra. A fiók kapcsolati karakterlánca biztonságosan tárolódik az Azure-beli alkalmazásbeállításokban. Ha letölti a beállítást a *local.settings.json* fájlba, akkor a helyi futtatásakor használhatja ezt a kapcsolatírást ugyanazon a fiókban lévő Storage várólistára. 
+[!INCLUDE [functions-register-storage-binding-extension-csharp](../../includes/functions-register-storage-binding-extension-csharp.md)]
 
-1. A projekt gyökeréből futtassa `<app_name>` a következő parancsot, és cserélje le a függvényalkalmazás nevét az előző rövid útmutatóból. Ez a parancs felülírja a fájlban lévő értékeket.
+[!INCLUDE [functions-add-output-binding-cli](../../includes/functions-add-output-binding-cli.md)]
 
-    ```
-    func azure functionapp fetch-app-settings <app_name>
-    ```
-    
-1. Nyissa meg a *local.settings.json webhelyet,* és keresse meg a nevű `AzureWebJobsStorage`értéket, amely a Storage-fiók kapcsolati karakterlánca. A cikk `AzureWebJobsStorage` más szakaszaiban a nevet és a kapcsolati karakterláncot használhatja.
-
-> [!IMPORTANT]
-> Mivel *a local.settings.json* az Azure-ból letöltött titkokat tartalmaz, mindig zárja ki ezt a fájlt a forrásellenőrzésből. A helyi függvényprojekttel létrehozott *.gitignore* fájl alapértelmezés szerint kizárja a fájlt.
-
-### <a name="add-an-output-binding-to-functionjson"></a>Kimeneti kötés hozzáadása a function.json függvényhez
-
-Az Azure Functions ben minden `direction`típusú `type`kötéshez `name` szükség van egy , és egy egyedi kell definiálni a *function.json* fájlban. A *function.json* már tartalmaz egy bemeneti kötést a "httpTrigger" típushoz, és egy kimeneti kötést a HTTP-válaszhoz. Ha egy tárolóvárólistához szeretne kötést hozzáadni, módosítsa a fájlt a következőképpen, amely kimeneti kötést ad hozzá `msg`a "várólista" típushoz, ahol a várólista bemeneti argumentumként jelenik meg a kódban. A várólista-kötéshez szükség van a használni `outqueue`kívánt várólista nevére, ebben az esetben `AzureWebJobStorage`a kapcsolati karakterláncot tartalmazó beállítások nevére , ebben az esetben .
-
-::: zone pivot="programming-language-csharp"
-
-C# osztálykönyvtár-projektben a kötések a függvénymetódus kötési attribútumaiként vannak definiálva. A *function.json* fájl ezután automatikusan generálódik ezen attribútumok alapján.
-
-1. A várólista-kötés esetén futtassa a következő [dotnet add package](/dotnet/core/tools/dotnet-add-package) parancsot a Storage bővítménycsomag projekthez való hozzáadásához.
-
-    ```
-    dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
-    ```
-
-1. Nyissa meg a *HttpTrigger.cs* `using` fájlt, és adja hozzá a következő utasítást:
-
-    ```cs
-    using Microsoft.Azure.WebJobs.Extensions.Storage;
-    ```
-    
-1. Adja hozzá a `Run` következő paramétert a metódusdefinícióhoz:
-    
-    ```csharp
-    [Queue("outqueue"), StorageAccount("AzureWebJobsStorage")] ICollector<string> msg
-    ```
-    
-    A `Run` metódus definíciójának most meg kell egyeznie a következő kóddal:
-    
-    ```csharp
-    [FunctionName("HttpTrigger")]
-    public static async Task<IActionResult> Run(
-        [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, 
-        [Queue("outqueue"), StorageAccount("AzureWebJobsStorage")] ICollector<string> msg, ILogger log)
-    ```
-
-A `msg` paraméter `ICollector<T>` egy olyan típus, amely a függvény befejezésekor egy kimeneti kötésbe írt üzenetek gyűjteményét jelöli. Ebben az esetben a kimenet egy `outqueue`tárolási várólista nevű. A Storage fiók kapcsolati karakterláncát `StorageAccountAttribute`a. Ez az attribútum azt a beállítást jelzi, amely a Storage-fiók kapcsolati karakterláncát tartalmazza, és az osztály, a metódus vagy a paraméter szintjén alkalmazható. Ebben az esetben kihagyhatja, `StorageAccountAttribute` mert már használja az alapértelmezett tárfiókot.
-
-::: zone-end
-
-::: zone pivot="programming-language-javascript"
-
-Frissítse *a function.json függvényt* a következőknek megfelelően a http-kötés utáni várólista-kötés hozzáadásával:
-
-```json
-{
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "res"
-    },
-    {
-      "type": "queue",
-      "direction": "out",
-      "name": "msg",
-      "queueName": "outqueue",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
-::: zone-end
-
-::: zone pivot="programming-language-powershell"
-
-Frissítse *a function.json függvényt* a következőknek megfelelően a http-kötés utáni várólista-kötés hozzáadásával:
-
-```json
-{
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "Request",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "Response"
-    },
-    {
-      "type": "queue",
-      "direction": "out",
-      "name": "msg",
-      "queueName": "outqueue",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
-::: zone-end
-
-::: zone pivot="programming-language-python"
-
-Frissítse *a function.json függvényt* a következőknek megfelelően a http-kötés utáni várólista-kötés hozzáadásával:
-
-```json
-{
-  "scriptFile": "__init__.py",
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "$return"
-    },
-    {
-      "type": "queue",
-      "direction": "out",
-      "name": "msg",
-      "queueName": "outqueue",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
-::: zone-end
-
-::: zone pivot="programming-language-typescript"
-
-Frissítse *a function.json függvényt* a következőknek megfelelően a http-kötés utáni várólista-kötés hozzáadásával:
-
-```json
-{
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "Request",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "Response"
-    },
-    {
-      "type": "queue",
-      "direction": "out",
-      "name": "msg",
-      "queueName": "outqueue",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
-::: zone-end
+::: zone pivot="programming-language-csharp"  
+[!INCLUDE [functions-add-storage-binding-csharp-library](../../includes/functions-add-storage-binding-csharp-library.md)]  
+::: zone-end  
+::: zone pivot="programming-language-java" 
+[!INCLUDE [functions-add-output-binding-java-cli](../../includes/functions-add-output-binding-java-cli.md)]
+::: zone-end  
 
 ## <a name="add-code-to-use-the-output-binding"></a>Kód hozzáadása a kimeneti kötés használatához
 
-A kötés definiálása után a kötés neve `msg`ebben az esetben argumentumként (vagy `context` javascriptben és TypeScriptben lévő objektumként) jelenik meg a függvénykódban. Ezután ezzel a változóval üzeneteket írhat a várólistába. A hitelesítéshez, a várólista-hivatkozás hoz vagy az adatok írásához bármilyen kódot meg kell írnia. Mindezek az integrációs feladatok kényelmesen kezelik az Azure Functions futásidejű és a várólista kimeneti kötés.
+A várólista-kötés definiálva most frissítheti `msg` a függvényt, hogy megkapja a kimeneti paramétert, és üzeneteket írjon a várólistába.
 
-::: zone pivot="programming-language-csharp"
-```csharp
-[FunctionName("HttpTrigger")]
-public static async Task<IActionResult> Run(
-    [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, 
-    [Queue("outqueue"), StorageAccount("AzureWebJobsStorage")] ICollector<string> msg, ILogger log)
-{
-    log.LogInformation("C# HTTP trigger function processed a request.");
+::: zone pivot="programming-language-python"     
+[!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
+::: zone-end  
 
-    string name = req.Query["name"];
+::: zone pivot="programming-language-javascript"  
+[!INCLUDE [functions-add-output-binding-js](../../includes/functions-add-output-binding-js.md)]
+::: zone-end  
 
-    string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-    dynamic data = JsonConvert.DeserializeObject(requestBody);
-    name = name ?? data?.name;
+::: zone pivot="programming-language-typescript"  
+[!INCLUDE [functions-add-output-binding-ts](../../includes/functions-add-output-binding-ts.md)]
+::: zone-end  
 
-    if (!string.IsNullOrEmpty(name))
-    {
-        // Add a message to the output collection.
-        msg.Add(string.Format("Name passed to the function: {0}", name));
-    }
-    
-    return name != null
-        ? (ActionResult)new OkObjectResult($"Hello, {name}")
-        : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
-}
-```
+::: zone pivot="programming-language-powershell"  
+[!INCLUDE [functions-add-output-binding-powershell](../../includes/functions-add-output-binding-powershell.md)]  
 ::: zone-end
 
-::: zone pivot="programming-language-javascript"
-```js
-module.exports = async function (context, req) {
-    context.log('JavaScript HTTP trigger function processed a request.');
+::: zone pivot="programming-language-csharp"  
+[!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
+::: zone-end 
 
-    if (req.query.name || (req.body && req.body.name)) {
-        // Add a message to the Storage queue.
-        context.bindings.msg = "Name passed to the function: " +
-            (req.query.name || req.body.name);
+::: zone pivot="programming-language-java"
+[!INCLUDE [functions-add-output-binding-java-code](../../includes/functions-add-output-binding-java-code.md)]
 
-        context.res = {
-            // status: 200, /* Defaults to 200 */
-            body: "Hello " + (req.query.name || req.body.name)
-        };
-    }
-    else {
-        context.res = {
-            status: 400,
-            body: "Please pass a name on the query string or in the request body"
-        };
-    }
-};
-```
-::: zone-end
-
-::: zone pivot="programming-language-powershell"
-```powershell
-using namespace System.Net
-
-# Input bindings are passed in via param block.
-param($Request, $TriggerMetadata)
-
-# Write to the Azure Functions log stream.
-Write-Host "PowerShell HTTP trigger function processed a request."
-
-# Interact with query parameters or the body of the request.
-$name = $Request.Query.Name
-if (-not $name) {
-    $name = $Request.Body.Name
-}
-
-if ($name) {
-    $outputMsg = "Name passed to the function: $name"
-    Push-OutputBinding -name msg -Value $outputMsg
-
-    $status = [HttpStatusCode]::OK
-    $body = "Hello $name"
-}
-else {
-    $status = [HttpStatusCode]::BadRequest
-    $body = "Please pass a name on the query string or in the request body."
-}
-
-# Associate values to output bindings by calling 'Push-OutputBinding'.
-Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
-    StatusCode = $status
-    Body = $body
-})
-```
-::: zone-end
-
-::: zone pivot="programming-language-python"
-```python
-import logging
-
-import azure.functions as func
-
-
-def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
-
-    name = req.params.get('name')
-    if not name:
-        try:
-            req_body = req.get_json()
-        except ValueError:
-            pass
-        else:
-            name = req_body.get('name')
-
-    if name:
-        msg.set(name)
-        return func.HttpResponse(f"Hello {name}!")
-    else:
-        return func.HttpResponse(
-            "Please pass a name on the query string or in the request body",
-            status_code=400
-        )
-```
-::: zone-end
-
-::: zone pivot="programming-language-typescript"
-```typescript
-import { AzureFunction, Context, HttpRequest } from "@azure/functions"
-
-const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
-    context.log('HTTP trigger function processed a request.');
-    const name = (req.query.name || (req.body && req.body.name));
-
-    if (name) {
-        // Add a message to the Storage queue.
-        context.bindings.msg = "Name passed to the function: " +
-            (req.query.name || req.body.name);
-        
-        context.res = {
-            // status: 200, /* Defaults to 200 */
-            body: "Hello " + (req.query.name || req.body.name)
-        };
-    }
-    else {
-        context.res = {
-            status: 400,
-            body: "Please pass a name on the query string or in the request body"
-        };
-    }
-};
-
-export default httpTrigger;
-```
+[!INCLUDE [functions-add-output-binding-java-test-cli](../../includes/functions-add-output-binding-java-test-cli.md)]
 ::: zone-end
 
 ### <a name="update-the-image-in-the-registry"></a>A lemezkép frissítése a rendszerleíró adatbázisban
@@ -874,71 +496,7 @@ export default httpTrigger;
 
 A böngészőben használja ugyanazt az URL-címet, mint korábban a függvény meghívásához. A böngészőnek ugyanazt a választ kell megjelenítenie, mint korábban, mert nem módosította a függvénykód nak ezt a részét. A hozzáadott kód azonban az URL-paraméter t `outqueue` használja a `name` tárolóvárólistába.
 
-A várólista az [Azure Portalon](../storage/queues/storage-quickstart-queues-portal.md) vagy a [Microsoft Azure Storage Explorerben](https://storageexplorer.com/)tekinthető meg. A várólista az Azure CLI-ben is megtekintheti az alábbi lépésekben leírtak szerint:
-
-1. Nyissa meg a függvényprojekt *local.setting.json* fájlját, és másolja a kapcsolati karakterlánc értékét. Terminál- vagy parancsablakban futtassa a következő `AZURE_STORAGE_CONNECTION_STRING`parancsot a program névre `<connection_string>`szóló környezeti változó létrehozásához, és illessze be az adott kapcsolati karakterláncot a helyére. (Ez a környezeti változó azt jelenti, hogy nem kell megadnia a kapcsolati karakterláncot minden további parancshoz az `--connection-string` argumentum használatával.)
-
-    # <a name="bash"></a>[Bash](#tab/bash)
-    
-    ```bash
-    AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
-    ```
-    
-    # <a name="powershell"></a>[Powershell](#tab/powershell)
-    
-    ```powershell
-    $env:AZURE_STORAGE_CONNECTION_STRING = "<connection_string>"
-    ```
-    
-    # <a name="cmd"></a>[Cmd](#tab/cmd)
-    
-    ```cmd
-    set AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
-    ```
-    
-    ---
-    
-1. (Nem kötelező) A [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) parancs segítségével megtekintheti a storage várólistákat a fiókjában. A parancs kimenetének tartalmaznia `outqueue`kell egy várólistát, amely akkor jött létre, amikor a függvény az első üzenetét a várólistára írta.
-    
-    # <a name="bash"></a>[Bash](#tab/bash)
-    
-    ```azurecli
-    az storage queue list --output tsv
-    ```
-    
-    # <a name="powershell"></a>[Powershell](#tab/powershell)
-    
-    ```azurecli
-    az storage queue list --output tsv
-    ```
-    
-    # <a name="cmd"></a>[Cmd](#tab/cmd)
-    
-    ```azurecli
-    az storage queue list --output tsv
-    ```
-    
-    ---
-
-1. A [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) parancs segítségével megtekintheti a várólistában lévő üzeneteket, amelyek a funkció korábbi tesztelésekén használt első névnek kell lenniük. A parancs lekéri az első üzenetet a várólistában [base64 kódolás](functions-bindings-storage-queue-trigger.md#encoding), így is meg kell dekódolni az üzenetet, hogy megtekinthesse a szöveget.
-
-    # <a name="bash"></a>[Bash](#tab/bash)
-    
-    ```bash
-    echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
-    ```
-    
-    # <a name="powershell"></a>[Powershell](#tab/powershell)
-    
-    ```powershell
-    [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}')))
-    ```
-    
-    # <a name="cmd"></a>[Cmd](#tab/cmd)
-    
-    Mivel meg kell dereference az üzenetgyűjtemény és dekódolni base64, futtassa a PowerShellt, és használja a PowerShell parancsot.
-
-    ---
+[!INCLUDE [functions-add-output-binding-view-queue-cli](../../includes/functions-add-output-binding-view-queue-cli.md)]
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

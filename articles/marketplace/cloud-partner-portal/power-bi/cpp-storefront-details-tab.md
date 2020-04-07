@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: b69ef8aa57393c5be8d23aaf4af1821697295235
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1bcf06056dd7fdaf22716409f53d86da7321b94d
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281680"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745593"
 ---
 # <a name="power-bi-app-storefront-details-tab"></a>A Power BI alkalmazás kirakatrészletei lapja
+
+>[!Important]
+>2020. március 30-tól megkezdjük a Power BI-alkalmazásajánlatok felügyeletének áthelyezését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Az áttelepített ajánlatok kezeléséhez kövesse a [Power BI-alkalmazások létrehozásának áttekintése](https://aka.ms/AzureCreatePBIServiceApp) című témakör utasításait.
 
 Az **Új ajánlat** lapon a **Kirakat részletei** lapon marketing,értékesítési és jogi információkat adhat meg a leendő ügyfeleknek. Ezen a lapon az Azure Marketplace által létrehozott érdeklődők felügyeletét is beállíthatja. Ez a hosszú űrlap hat részből áll: **Ajánlat részletei**, **Listázás részletei**, Marketing **összetevők**, **Jogi**, **Ügyfélszolgálat**és **Érdeklődőkezelés**.  A mezőfelirat végén lévő csillag (*) azt jelenti, hogy a mező szükséges.
 

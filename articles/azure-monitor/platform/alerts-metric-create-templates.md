@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 2/24/2020
 ms.subservice: alerts
-ms.openlocfilehash: fe1f1d2700619bfcac4512bb0e631262edf8401c
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 02424d7df24305d6642c364f12e3ed6e8674a01d
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398102"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677007"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Metrikariasztás létrehozása Resource Manager-sablonnal
 
@@ -563,7 +563,7 @@ az group deployment create \
 
 ## <a name="template-for-a-static-threshold-metric-alert-that-monitors-multiple-criteria"></a>Sablon egy statikus küszöbérték-metrikariasztáshoz, amely több feltételt figyel
 
-Újabb metrikariasztások támogatják a többdimenziós metrikák riasztását, valamint több feltétel támogatását. A következő sablon segítségével hozhat létre egy speciális metrikariasztási szabályt a méretmérő kretrikákon, és több feltételt adhat meg.
+Az újabb metrikariasztások támogatják a többdimenziós metrikák riasztását, valamint több feltétel definiálását (riasztási szabályonként legfeljebb 5 feltételt). A következő sablon segítségével hozhat létre egy speciális metrikariasztási szabályt a méretmérő kretrikákon, és több feltételt adhat meg.
 
 Kérjük, vegye figyelembe a következő korlátozásokat, ha dimenziókat használ egy több feltételt tartalmazó riasztási szabályban:
 - Dimenziónként csak egy értéket választhat ki az egyes feltételeken belül.

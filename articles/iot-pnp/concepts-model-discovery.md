@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 66da0321930ac38217a336380c9889963a433e67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 94e5e6fb826528aab1a358d44cb51bfcd6219032
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75531360"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673595"
 ---
 # <a name="implement-iot-plug-and-play-preview-model-discovery-in-an-iot-solution"></a>IoT Plug and Play előzetes verziómodell-felderítés megvalósítása IoT-megoldásban
 
@@ -46,7 +46,7 @@ A célirányosan létrehozott IoT-megoldás az IoT Plug and Play eszközképess�
 
 A megoldáshoz előre csatlakozó eszközök képességmodelljével és felületeivel fog rendelkezni. A megoldás előkészítéséhez kövesse az alábbi lépéseket:
 
-1. A kapcsolat JSON-fájljait az Azure-ban tárolja egy olyan helyen, ahol a megoldás eltudja olvasni őket.
+1. Tárolja a felület JSON fájlokat egy [modell tárházban,](./howto-manage-models.md) ahol a megoldás tudja olvasni őket.
 1. Írási logika az IoT-megoldásban a várt IoT Plug and Play képességmodellek és felület alapján.
 1. Iratkozzon fel a megoldás által használt IoT hubról érkező értesítésekre.
 

@@ -2,13 +2,13 @@
 title: Dokumentumformátum importálására vonatkozó irányelvek – QnA Maker
 description: Ismerje meg, hogyan használják az URL-ek típusait a QnA-készletek importálásához és létrehozásához.
 ms.topic: reference
-ms.date: 01/02/2020
-ms.openlocfilehash: 6a954f2fd607b70c6db256ab6dcc1dbcd7a5a473
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: 1e006520ce5c61f2da3f425af2332b0d41cc3881
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651838"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754909"
 ---
 # <a name="format-guidelines-for-imported-documents-and-urls"></a>Az importált dokumentumok és URL-címek formázási irányelvei
 
@@ -20,6 +20,8 @@ Fájl vagy URL importálása után a QnA Maker a tartalmat [markdown formátumba
 
 Ha a tartalmat közvetlenül a tudásbázisban adja hozzá vagy szerkeszti, **a markdown formázással** rich text tartalmat hozhat létre, vagy módosíthatja a válaszban már meglévő markdown formátumú tartalmat. A QnA Maker a markdown formátum nagy részét támogatja, hogy rich text funkciókat nyújtson a tartalomhoz. Előfordulhat azonban, hogy az ügyfélalkalmazás, például egy csevegőrobot nem támogatja ugyanazokat a markdown-formátumokat. Fontos, hogy tesztelje az ügyfélalkalmazás a válaszok megjelenítését.
 
+Tekintse meg a [tartalomtípusok és példák](./Concepts/content-types.md#file-and-url-data-types)teljes listáját.
+
 ## <a name="basic-document-formatting"></a>Egyszerű dokumentumformázás
 
 A QnA Maker vizuális nyomok alapján azonosítja a fájlokban található szakaszokat, alszakaszokat és kapcsolatokat:
@@ -28,12 +30,6 @@ A QnA Maker vizuális nyomok alapján azonosítja a fájlokban található szaka
 * Betűstílus
 * Számozás
 * Színek
-
-|Dokumentumpéldák|
-|--|
-||
-
-
 
 ## <a name="product-manuals"></a>Termékkézikönyvek
 
@@ -116,7 +112,8 @@ A tudásbázis importálása lecseréli a meglévő tudásbázis tartalmát. Az 
 * A címsor első karakterét nagybetűvel kell elévíteni.
 * Ne hagyjon kérdőjellel egy `?`címsort.
 
+**Mintadokumentumok**:<br>[Surface Pro (docx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)<br>[Contoso előnyei (docx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.docx)<br>[Contoso előnyei (pdf)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.pdf)
 
-|Dokumentumpéldák|
-|--|
-||
+## <a name="next-steps"></a>További lépések
+
+A [tartalomtípusok és példák](./Concepts/content-types.md#file-and-url-data-types) teljes listájának megtekintése

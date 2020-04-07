@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 67f863826a2e9eb1bffcb316754ad5c40a2f2bb1
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: e7aa0c402878c994aabe4e12d811a99e300d7e67
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583138"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743649"
 ---
 # <a name="azure-synapse-analytics-workload-classification"></a>Az Azure Synapse Analytics számítási feladatok besorolása
 
@@ -36,7 +36,7 @@ Nem minden utasítás van besorolva, mivel nem igényel erőforrásokat, vagy fo
 
 ## <a name="classification-process"></a>Osztályozási folyamat
 
-Besorolás a Synapse SQL-készlet az Azure Synapse érhető el ma azáltal, hogy a felhasználók hozzárendelése egy szerepkör, amely a megfelelő erőforrás-osztály hozzá rendelt [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)használatával. Ezzel a képességgel az erőforrásosztályba való bejelentkezésen túli kérelmek jellemzése korlátozott. Egy gazdagabb besorolási módszer már elérhető a [CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql) szintaxissal.  Ezzel a szintaxissal a Szinapszis SQL-készlet felhasználói fontosságot rendelhetnek hozzá, `workload_group` és hogy mennyi rendszererőforrás van hozzárendelve egy kérelemhez a paraméteren keresztül. 
+Besorolás a Synapse SQL-készlet az Azure Synapse érhető el ma azáltal, hogy a felhasználók hozzárendelése egy szerepkör, amely a megfelelő erőforrás-osztály hozzá rendelt [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)használatával. Ezzel a képességgel az erőforrásosztályba való bejelentkezésen túli kérelmek jellemzése korlátozott. Egy gazdagabb besorolási módszer már elérhető a [CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) szintaxissal.  Ezzel a szintaxissal a Szinapszis SQL-készlet felhasználói fontosságot rendelhetnek hozzá, `workload_group` és hogy mennyi rendszererőforrás van hozzárendelve egy kérelemhez a paraméteren keresztül.
 
 > [!NOTE]
 > A besorolás értékelése kérésenként történik. Egy munkamenetben több kérelem is eltérő en adható.
@@ -76,7 +76,7 @@ Vegyük példaként a következő esetet:
 - Az új besorolásszintaxis teszteléséhez a DBARole adatbázis-szerepkör (amelynek a DBAUser is tagja), rendelkezik egy osztályozóval, amely leképezi őket mediumrc-re és nagy jelentőséggel bír.
 - Amikor a DBAUser bejelentkezik és lekérdezést futtat, a lekérdezés a largerc-hoz lesz rendelve. Mivel a felhasználó elsőbbséget élvez a szerepkör-tagsággal szemben.
 
-A hibabesorolás hibaelhárításának egyszerűsítése érdekében javasoljuk, hogy távolítsa el az erőforrásosztály szerepkör-leképezéseit a számítási feladatok osztályozóinak létrehozásakor.  Az alábbi kód visszaadja a meglévő erőforrásosztály-szerepkör-tagságokat.  Futtassa [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql) a megfelelő erőforrásosztályból visszaadott minden egyes tagnévhez.
+A hibabesorolás hibaelhárításának egyszerűsítése érdekében javasoljuk, hogy távolítsa el az erőforrásosztály szerepkör-leképezéseit a számítási feladatok osztályozóinak létrehozásakor.  Az alábbi kód visszaadja a meglévő erőforrásosztály-szerepkör-tagságokat.  Futtassa [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) a megfelelő erőforrásosztályból visszaadott minden egyes tagnévhez.
 
 ```sql
 SELECT  r.name AS [Resource Class]
@@ -92,7 +92,7 @@ sp_droprolemember '[Resource Class]', membername
 
 ## <a name="next-steps"></a>További lépések
 
-- Az osztályozó konszern létrehozásáról további információt a [CREATE WORKLOAD CLASSIFIER (Transact-SQL) című témakörben talál.](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql)  
+- Az osztályozó konszern létrehozásáról további információt a [CREATE WORKLOAD CLASSIFIER (Transact-SQL) című témakörben talál.](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  
 - Tekintse meg a munkaterhelés-osztályozó létrehozásáról a [Számítási feladatok osztályozójának létrehozásáról a Számítási feladatok osztályozójának létrehozásáról](quickstart-create-a-workload-classifier-tsql.md)című rövid útmutatót.
 - Tekintse meg a [számítási feladatok fontosságának konfigurálása](sql-data-warehouse-how-to-configure-workload-importance.md) című útmutatócikkeket, valamint a [Munkaterhelés-kezelés kezelésének és figyelésének módját.](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)
-- A lekérdezések és a hozzárendelt fontosság megtekintéséhez tekintse meg a [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) című témakört.
+- A lekérdezések és a hozzárendelt fontosság megtekintéséhez tekintse meg a [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) című témakört.

@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd5b9e1f2640e68f7c819a49ad34d9c051c582c5
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: c11521ec074b63843b873c39102b68bf185d2821
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80667332"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676729"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Azure Active Directory önkiszolgáló jelszó-visszaállítási központi telepítésének megtervezése
 
@@ -343,7 +343,7 @@ A regisztrációés a jelszó visszaállítása naplói 30 napig állnak rendelk
 
 ## <a name="next-steps"></a>További lépések
 
-* Az SSPR üzembe helyezésének megkezdéséhez olvassa el [az Azure AD önkiszolgáló jelszó-visszaállításának engedélyezése című témakört.](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-sspr.md)
+* Az SSPR üzembe helyezésének megkezdéséhez olvassa el [az Azure AD önkiszolgáló jelszó-visszaállításának engedélyezése című témakört.](tutorial-enable-sspr.md)
 
 * [Fontolja meg az Azure AD jelszavas védelem bevezetését](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad)
 

@@ -12,12 +12,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-synapse
-ms.openlocfilehash: d0a246b111e4ab27a9e595952bb029fa62fe976d
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: fcd9607cd630f41c67c655c2e8016254600b52e2
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633671"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745390"
 ---
 # <a name="authenticate-to-azure-synapse-analytics"></a>Hitelesítés az Azure Synapse Analytics szolgáltatásban
 
@@ -76,7 +76,7 @@ Az Azure Active Directory-hitelesítés konfigurálásához kövesse az alábbi 
 5. Az Azure AD-identitásokhoz leképezett adatbázis-felhasználók létrehozása az adatbázisban
 6. Csatlakozás az SQL-készlethez az Azure AD-identitások használatával
 
-Jelenleg az Azure Active Directory-felhasználók nem jelennek meg az SSDT Object Explorerben. Kerülő megoldásként tekintse meg a felhasználókat a [sys.database_principals.](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql??toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#azure-ad-features-and-limitations)
+Jelenleg az Azure Active Directory-felhasználók nem jelennek meg az SSDT Object Explorerben. Kerülő megoldásként tekintse meg a felhasználókat a [sys.database_principals.](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#azure-ad-features-and-limitations)
 
 ### <a name="find-the-details"></a>A részletek megkeresése
 

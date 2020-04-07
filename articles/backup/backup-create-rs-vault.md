@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan hozhat létre helyreállítá
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 38f23ee458845b92c04af47307a2411b26c8ac81
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 439f102e8f13bff63ab388be8f10df07ab2dc7d2
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529378"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672847"
 ---
 # <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
@@ -88,31 +88,7 @@ Ehhez a folyamathoz a tárolási szinten szereplő díjszabási következmények
 >Előkészületek:
 >
 >- Tekintse át a [támogatási mátrix](backup-support-matrix.md#cross-region-restore) ot a támogatott felügyelt típusok és régiók listájáért.
->- A Régiók közötti visszaállítás (CRR) szolgáltatás jelenleg csak a következő régiókban érhető el: 
->    - USA nyugati középső régiója
->    - USA nyugati régiója
->    - USA nyugati régiója, 2.
->    - USA déli középső régiója
->    - USA keleti régiója
->    - USA 2. keleti régiója
->    - USA északi középső régiója
->    - Közép-Kanada
->    - Kelet-Kanada
->    - Kelet-Ausztrália
->    - Délkelet-Ausztrália
->    - Közép-India
->    - Dél-India
->    - Nyugat-India
->    - Kelet-Japán
->    - Nyugat-Japán
->    - Délkelet-Ázsia
->    - Az Egyesült Királyság déli régiója
->    - Az Egyesült Királyság nyugati régiója
->    - Nyugat-Európa
->    - Észak-Európa
->    - Közép-Franciaország
->    - Dél-Korea középső régiója
->    - Dél-Korea déli régiója
+>- A régiók közötti visszaállítás (CRR) funkció mostantól minden Azure nyilvános régióban előzetes verzió.
 >- A CRR egy tárolószintű opt-in funkció bármely GRS-tárolóhoz (alapértelmezés szerint ki van kapcsolva).
 >- Kérjük, használja a következő parancsot az előfizetés ének beirányításához ehhez a funkcióhoz:<br>
 >  `Register-AzProviderFeature -FeatureName CrossRegionRestore -ProviderNamespace Microsoft.RecoveryServices`

@@ -11,12 +11,12 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 28dbe66d27ac75bee2ceecd160ead3dea6538034
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 6e942130d9acf803665e52498ef6a4976cc9ade7
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633815"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743171"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Teljesítmény-finomhangolás tényleges táblán alapuló nézetekkel
 
@@ -32,7 +32,7 @@ A szabványos nézet minden alkalommal kiszámítja az adatokat, amikor a nézet
 
 A materializált nézet előre kiszámítja, tárolja, és az adatokat az SQL-készletben tartja, mint egy tábla.  Materializált nézet használatközben nincs szükség újraszámításra.  Ezért azok a lekérdezések, amelyek az adatok egészét vagy részhalmazát használják materializált nézetekben, gyorsabb teljesítményt érhetnek el.  Még jobb, lekérdezések használhatják a materializált nézet anélkül, hogy közvetlen hivatkozást, így nem kell módosítani az alkalmazás kódját.  
 
-A szabványos nézetre vonatkozó követelmények többsége továbbra is érvényes a materializált nézetre. A materializált nézet szintaxisával és egyéb követelményeivel kapcsolatos részletekért olvassa el [a MATERIALIZÁLT NÉZET LÉTREHOZÁSA A HOGY SELECT LEHETŐSÉGET.](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest)
+A szabványos nézetre vonatkozó követelmények többsége továbbra is érvényes a materializált nézetre. A materializált nézet szintaxisával és egyéb követelményeivel kapcsolatos részletekért olvassa el [a MATERIALIZÁLT NÉZET LÉTREHOZÁSA, AHOGY A SELECT CÍMŰ DOKUMENTUMCÍMŰ DOKUMENTUMAT.](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 | Összehasonlítás                     | Nézet                                         | Materialized View
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
@@ -58,8 +58,8 @@ Az SQL-készletben megvalósított materializált nézetek a következő tovább
 Más adattárház-szolgáltatókkal összehasonlítva az Azure SQL Data Warehouse-ban megvalósított materializált nézetek a következő további előnyöket is biztosítják:
 
 - Automatikus és szinkron adatfrissítés az alaptáblák adatváltozásaival. Nincs szükség felhasználói műveletre.
-- Széles körű összesítő függvénytámogatás. Lásd: [MATERIALIZÁLT NÉZET LÉTREHOZÁSA SELECT(Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest)néven.
-- A lekérdezés-specifikus materializált nézet javaslat támogatása.  Lásd: [EXPLAIN (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/explain-transact-sql?view=azure-sqldw-latest).
+- Széles körű összesítő függvénytámogatás. Lásd: [MATERIALIZÁLT NÉZET LÉTREHOZÁSA SELECT(Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)néven.
+- A lekérdezés-specifikus materializált nézet javaslat támogatása.  Lásd: [EXPLAIN (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="common-scenarios"></a>Gyakori forgatókönyvek  
 

@@ -4,12 +4,12 @@ description: Ismerje meg az Azure Service Fabric-fürt biztonsági forgatóköny
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: 92d2c4d03075eaafce039f94b4f03c0791985b40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5912f98f6a1c82250a66ec4d9fe39f2f69b1cc8f
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258680"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80753795"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>A Service Fabric fürtjének biztonsági forgatókönyvei
 
@@ -74,7 +74,7 @@ Az Azure-on futó fürtök esetében az Azure Active Directory (Azure AD) haszn�
 Az Azure-ban üzemeltetett nyilvános hálózatban telepített Service Fabric-fürtök esetében az ügyfél-csomópont kölcsönös hitelesítésre vonatkozó javaslat a következő:
 
 * Az Azure Active Directory használata az ügyfélidentitáshoz
-* A http-kommunikáció kiszolgálóidentitásának és SSL-titkosításának tanúsítványa
+* A http-kommunikáció kiszolgálóidentitásának és TLS-titkosításának tanúsítványa
 
 Az Azure-ban üzemeltetett nyilvános hálózatban telepített Service Fabric-fürtök esetében a csomópontok között történő biztonság ra vonatkozó javaslat az, hogy fürttanúsítványt használjon a csomópontok hitelesítéséhez.
 
@@ -103,13 +103,13 @@ Néhány fontos dolog, hogy fontolja meg:
 
 Ezek a tanúsítványok (egy elsődleges és opcionálisan másodlagos) szükségesek a fürt biztonságossá tétele és a fürthöz való jogosulatlan hozzáférés megakadályozása érdekében. Ezek a tanúsítványok biztosítják a fürt és a kiszolgáló hitelesítését.
 
-A fürthitelesítés hitelesíti a csomópont-csomópont kommunikációt a fürtösszevonáshoz. Csak azok a csomópontok csatlakozhatnak a fürthöz, amelyek ezzel a tanúsítvánnyal igazolni tudják identitásukat. A kiszolgálóhitelesítés hitelesíti a fürtkezelési végpontokat egy felügyeleti ügyfélszámára, így a felügyeleti ügyfél tudja, hogy a valódi fürthöz beszél, és nem egy "középen lévő emberhez". Ez a tanúsítvány egy SSL-t is biztosít a HTTPS-felügyeleti API-hoz és a Service Fabric Explorer HTTPS-en keresztüli kezeléséhez. Amikor egy ügyfél vagy csomópont hitelesít egy csomópontot, az egyik kezdeti ellenőrzés a Téma mezőben lévő **köznapi** név értéke. Ennek a közönséges névnek vagy a tanúsítványok egyik tulajdonosalternatív nevének (SAN) szerepelnie kell az engedélyezett köznapi nevek listáján.
+A fürthitelesítés hitelesíti a csomópont-csomópont kommunikációt a fürtösszevonáshoz. Csak azok a csomópontok csatlakozhatnak a fürthöz, amelyek ezzel a tanúsítvánnyal igazolni tudják identitásukat. A kiszolgálóhitelesítés hitelesíti a fürtkezelési végpontokat egy felügyeleti ügyfélszámára, így a felügyeleti ügyfél tudja, hogy a valódi fürthöz beszél, és nem egy "középen lévő emberhez". Ez a tanúsítvány tls-t is biztosít a HTTPS-felügyeleti API-hoz és a Service Fabric Explorer HTTPS-en keresztüli kezeléséhez. Amikor egy ügyfél vagy csomópont hitelesít egy csomópontot, az egyik kezdeti ellenőrzés a Téma mezőben lévő **köznapi** név értéke. Ennek a közönséges névnek vagy a tanúsítványok egyik tulajdonosalternatív nevének (SAN) szerepelnie kell az engedélyezett köznapi nevek listáján.
 
 A bizonyítványnak a következő követelményeknek kell megfelelnie:
 
 * A tanúsítványnak titkos kulcsot kell tartalmaznia. Ezek a tanúsítványok általában .pfx vagy .pem kiterjesztéssel rendelkeznek.  
 * A tanúsítványt kulcscseréhez kell létrehozni, amely személyes adatcserefájlba (.pfx) exportálható.
-* A **tanúsítvány tulajdonosnevének meg kell egyeznie a Service Fabric-fürt eléréséhez használt tartománnyal.** Ez az egyeztetés szükséges egy SSL a fürt HTTPS-kezelési végpont és a Service Fabric Explorer. A *.cloudapp.azure.com tartományhitelesítésszolgáltatójától nem szerezhet be SSL-tanúsítványt. Egyéni tartománynevet kell beszereznie a fürt számára. Amikor tanúsítványt igényel egy hitelesítésszolgáltatótól, a tanúsítvány tulajdonosnevének meg kell felelnie a fürthöz használt egyéni tartománynévnek.
+* A **tanúsítvány tulajdonosnevének meg kell egyeznie a Service Fabric-fürt eléréséhez használt tartománnyal.** Ez az egyeztetés szükséges a Fürt HTTPS-kezelési végpontjához és a Service Fabric Explorer hez egy TLS biztosításához. A *.cloudapp.azure.com tartomány hitelesítésszolgáltatójától nem szerezhet be TLS/SSL-tanúsítványt. Egyéni tartománynevet kell beszereznie a fürt számára. Amikor tanúsítványt igényel egy hitelesítésszolgáltatótól, a tanúsítvány tulajdonosnevének meg kell felelnie a fürthöz használt egyéni tartománynévnek.
 
 Néhány más dolog, hogy fontolja meg:
 

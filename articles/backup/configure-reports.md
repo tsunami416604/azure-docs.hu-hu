@@ -3,12 +3,12 @@ title: Azure Backup-jelentések konfigurálása
 description: Jelentések konfigurálása és megtekintése az Azure Backup számára a Log Analytics és az Azure-munkafüzetek használatával
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 651d1383f0f292895ed95c91bafd5206d4f04c2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 497d70c1bcc577faa467720b959eb828e785a26a
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78161201"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672667"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
 
@@ -21,7 +21,7 @@ Ma az Azure Backup olyan jelentéskészítési megoldást kínál, amely kihaszn
 * A biztonsági mentési jelentések támogatottak az Azure virtuális gépek, az SQL az Azure virtuális gépek, SAP HANA/ASE az Azure virtuális gépek, az Azure Backup Agent (MARS), az Azure Backup Server (MABS) és a System Center DPM.
 * A DPM-számítási feladatok esetében a biztonsági mentési jelentések a DPM 5.1.363.0-s és újabb verziói, valamint a 2.0.9127.0-s vagy újabb verziójú ügynöki verzió konszern számára támogatottak.
 * A MABS-számítási feladatok esetében a Biztonsági mentési jelentések a 13.0.415.0-s és újabb verziójú MABS-verzió, valamint a 2.0.9170.0-s vagy újabb verziójú ügynöki verzió esetén támogatottak.
-* A biztonsági mentési jelentések megtekinthetők az összes biztonsági mentési elem, tároló, előfizetés és régió között, feltéve, hogy az adatokat egy Log Analytics (LA) munkaterületre küldik, amelyhez a felhasználó hozzáfér. 
+* A biztonsági mentési jelentések megtekinthetők az összes biztonsági mentési elem, tároló, előfizetés és régió között, feltéve, hogy az adatokat egy Log Analytics (LA) munkaterületre küldik, amelyhez a felhasználó hozzáfér. Vegye figyelembe, hogy a jelentések megtekintéséhez egy készlet tárolók, csak akkor kell, hogy **az olvasó hozzáférést a LA-munkaterület,** amelyre a tárolók küldik az adatokat. **Nem kell** hozzáférnie az egyes tárolókhoz.
 * Ha Ön [Azure Lighthouse-felhasználó,](https://docs.microsoft.com/azure/lighthouse/) aki delegált hozzáféréssel rendelkezik az ügyfelek előfizetéseihez, ezeket a jelentéseket az Azure Lighthouse segítségével megtekintheti az összes bérlő jelentései megtekintéséhez.
 * A naplóbiztonsági feladatok adatai jelenleg nem jelennek meg a jelentésekben.
 

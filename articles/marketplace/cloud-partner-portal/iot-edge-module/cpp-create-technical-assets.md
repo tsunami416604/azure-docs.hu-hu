@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 304ea31f2a6f9820226a6ad0db8bfc803e6fdb94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd9cd9f3986ef1944d9f9119296af5512b352d1d
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80285214"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744322"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>Készítse elő az IoT Edge modul technikai eszközeit
+
+>[!Important]
+>2020. március 30-tól megkezdjük az IoT Edge modulajánlatok kezelését a Partner Centerbe. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [IoT Edge-modulajánlat létrehozása](https://aka.ms/AzureIoTTechAsset) az áttelepített ajánlatok kezeléséhez kövesse az utasításokat.
 
 Ez a cikk ismerteti azokat a követelményeket, amelyeket az IoT Edge-modul technikai eszközeinek meg kell felelniük az Azure Marketplace-en való közzététel előtt.
 

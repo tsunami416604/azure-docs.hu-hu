@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e5ad5f6f2f5be239af23ee4802cf09c388c93ae9
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: e170a789727fb0de36705895245cc638d30ee3d7
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632914"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745510"
 ---
 # <a name="best-practices-for-loading-data-using-synapse-sql-pool"></a>Gyakorlati tanácsok a Synapse SQL-készlet használatával történő adatbetöltéshez
 
@@ -104,7 +104,7 @@ Ha korlátozott a rendelkezésre álló memória mennyisége, előfordulhat, hog
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>Kötegméret növelése SqLBulkCopy API vagy bcp használata esetén
 
-A PolyBase alkalmazással történő betöltés biztosítja a legmagasabb átviteli terhelést az SQL-készlettel. Ha nem tudja használni a PolyBase betöltéséhez, és a [SqLBulkCopy API vagy](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx) bcp kell [használnia,](https://docs.microsoft.com/sql/tools/bcp-utility?view=sql-server-ver15)fontolja meg a kötegméret növelését a jobb átviteli igény érdekében.
+A PolyBase alkalmazással történő betöltés biztosítja a legmagasabb átviteli terhelést az SQL-készlettel. Ha nem tudja használni a PolyBase betöltéséhez, és a [SqLBulkCopy API vagy](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) bcp kell [használnia,](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)fontolja meg a kötegméret növelését a jobb átviteli igény érdekében.
 
 > [!TIP]
 > A 100 K és 1 M sorok közötti kötegméret az optimális kötegméret-kapacitás meghatározásához ajánlott alapterv.
@@ -120,7 +120,7 @@ Az adatrekord akkor minősül piszkosnak, ha megfelel az alábbi feltételek val
 
 A szabálytalan rekordok kijavításához győződjön meg arról, hogy a külső tábla- és fájlformátum-definíciók helyesek, és hogy a külső adatok megfelelnek ezeknek a definícióknak.
 
-Ha a külső adatrekordok egy részhalmaza piszkos, a [KÜLSŐ TÁBLA létrehozása (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=sql-server-ver15)című lap elutasítási beállításaival elutasíthatja ezeket a rekordokat.
+Ha a külső adatrekordok egy részhalmaza piszkos, a [KÜLSŐ TÁBLA létrehozása (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)című lap elutasítási beállításaival elutasíthatja ezeket a rekordokat.
 
 ## <a name="inserting-data-into-a-production-table"></a>Adatok beszúrása az éles táblába
 

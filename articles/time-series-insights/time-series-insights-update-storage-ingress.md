@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8987cbe6860422ff92119a9f3b13a0a365e6d1a4
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 95a579cacc339360295f5f25fa6415ab29cd68ff
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618326"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673904"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Adattárolás és be- és be- és be- és bevitel az Azure Time Series Insights előzetes verzióban
 
@@ -42,7 +42,7 @@ Az Azure Time Series Insights előzetes verzió a következő eseményforrásoka
 - [Azure IoT Hub](../iot-hub/about-iot-hub.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-about.md)
 
-Az Azure Time Series Insights előzetes verzió példányonként legfeljebb két eseményforrást támogat.
+Az Azure Time Series Insights előzetes verzió példányonként legfeljebb két eseményforrást támogat. Amikor egy eseményforrást csatlakoztat, az egész et a TSI-környezet a legrégebbi eseménytől kezdve a Sok beli vagy az Event Hub ban tárolt összes eseményt felolvassa. 
 
 > [!IMPORTANT] 
 > * Nagy kezdeti késést tapasztalhat, amikor eseményforrást csatol az előzetes verziójú környezethez. 
@@ -60,7 +60,7 @@ A támogatott adattípusok a következők:
 | **Bool** | Két állapot egyikével rendelkező `true` adattípus: vagy `false`. |
 | **Datetime** | Egy pillanatnyi időt jelöl, amelyet általában dátumként és napszakban fejeznek ki. [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) formátumban kifejezve. |
 | **double** | Dupla pontosságú, 64 bites [IEEE 754](https://ieeexplore.ieee.org/document/8766229) lebegőpontos. |
-| **sztring** | Unicode karakterekből álló szöveges értékek.          |
+| **Karakterlánc** | Unicode karakterekből álló szöveges értékek.          |
 
 #### <a name="objects-and-arrays"></a>Objektumok és tömbök
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 7e5f70d0323aa5c502491ab99db303fde31ade83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f0c4da7caf71670746e84d5cfaa457ebae57156
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79528625"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755043"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 és 8600 áttelepítés az Azure File Sync
 
@@ -146,7 +146,10 @@ Az adatok teljes mérete kisebb szűk keresztmetszet - ez a gép specifikációi
 > Győződjön meg arról, hogy a virtuális gép ugyanabban az Azure-régióban van telepítve, mint a StorSimple 8020 virtuális berendezés. Ha ennek az áttelepítésnek a részeként módosítania kell a felhőadatok régióját a mai régióból, ezt egy későbbi lépésben megteheti, amikor Azure-fájlmegosztásokat létesít.
 
 > [!IMPORTANT]
-> A teljesítmény optimalizálása érdekében telepítsen egy **nagyon gyors operációsrendszer-lemezt** a felhőbeli virtuális géphez. A szinkronizálási adatbázist az összes adatkötet operációsrendszer-lemezén tárolja. Győződjön meg arról is, hogy **nagy operációsrendszer-lemezt**hoz létre. A StorSimple köteteken lévő elemek (fájlok és mappák) számától függően előfordulhat, hogy az operációs rendszer lemezének **több száz GiB-helyre** van szüksége a szinkronizálási adatbázis befogadásához.
+> Gyakran előfordul, hogy egy helyszíni Windows Server a helyszíni StorSimple-készülék elülső állapotának. Egy ilyen konfigurációban engedélyezheti az "[Adatdeduplikáció](https://docs.microsoft.com/windows-server/storage/data-deduplication/install-enable)" szolgáltatást az adott Windows Server rendszeren. **Ha a StorSimple-adatokkal adatdeduplikációt használt, győződjön meg arról, hogy ezen az Azure-beli virtuális gépen is engedélyezi az adatdeduplikációt.** Ne keverje össze ezt a fájlszintű deduplikációt a StorSimples beépített blokkszintű deduplikációjával, amelyhez nincs szükség műveletre.
+
+> [!IMPORTANT]
+> A teljesítmény optimalizálása érdekében telepítsen egy **gyors operációsrendszer-lemezt** a felhőbeli virtuális géphez. A szinkronizálási adatbázist az összes adatkötet operációsrendszer-lemezén tárolja. Győződjön meg arról is, hogy **nagy operációsrendszer-lemezt**hoz létre. A StorSimple köteteken lévő elemek (fájlok és mappák) számától függően előfordulhat, hogy az operációs rendszer lemezének **több száz GiB-helyre** van szüksége a szinkronizálási adatbázis befogadásához.
 
 ### <a name="expose-the-storsimple-8020-volumes-to-the-azure-vm"></a>A StorSimple 8020 kötetek elérhetővé az Azure virtuális gép
 
@@ -424,7 +427,7 @@ Tekintse meg a robocopy naplófájl(ok) annak megtekintéséhez, hogy a fájlok 
 
 Valószínűleg létre kell hoznia az SMB-megosztásokat a Windows Serveren, amelykorábban korábban a StorSimple-adatokon volt. Ezt a lépést előre betöltheti, és korábban megteheti, hogy ne veszítse el az idejét itt, de biztosítania kell, hogy ezen a ponton megelőzően ne történjen a fájlok módosítása a Windows kiszolgálón.
 
-Ha DFS-N központi telepítéssel rendelkezik, a DFN-Namespaces-t az új kiszolgálómappa-helyekre irányíthatja. Ha nem rendelkezik DFS-N központi telepítéssel, és a 8100 8600-as készüléket helyileg, Windows Server rendszerrel előreléptette, akkor a kiszolgálót leveheti a tartományból, és tartományhoz csatlakozhat az új Windows Server rendszerhez az AFS szolgáltatással a tartományhoz, adja meg a kiszolgáló nevét, mint a régi kiszolgáló. , és ugyanazok a megosztási nevek, akkor az új kiszolgálóra való átvágás továbbra is átlátható marad a felhasználók, a csoportházirend ek vagy parancsfájlok számára.
+Ha DFS-N központi telepítéssel rendelkezik, a DFN-Namespaces-t az új kiszolgálómappa-helyekre irányíthatja. Ha nem rendelkezik DFS-N központi telepítéssel, és a 8100 8600-as készüléket helyileg egy Windows Server rel előadta, akkor a kiszolgálót leveheti a tartományból, és tartományhoz csatlakozhat az új Windows Server hez az AFS-sel a tartományhoz, ugyanazt a kiszolgálónevet adja meg, mint a régi kiszolgáló, és ugyanazt a megosztásnevet, akkor az új kiszolgálóra való átépítés átlátszó marad a felhasználók számára. , csoportházirend vagy parancsfájlok.
 
 ## <a name="phase-7-deprovision"></a>7. szakasz: Megszüntetés
 

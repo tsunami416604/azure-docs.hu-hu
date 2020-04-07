@@ -11,12 +11,12 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4c5964bc944cd50e05d548eb731450a4944e854d
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 2802c62acef0d78f8cfa7dd7f06bc34d8eecca4c
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631267"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742624"
 ---
 # <a name="design-tables-in-synapse-sql-pool"></a>Táblázatok tervezése a Synapse SQL-készletben
 
@@ -111,7 +111,7 @@ A táblakategória gyakran határozza meg, hogy melyik lehetőséget válassza a
 
 ## <a name="table-partitions"></a>Táblapartíciók
 
-A particionált tábla adattartományok szerint tárolja és hajtja végre a táblasorokműveleteit. Egy tábla például felosztható nappal, hónap vagy év szerint. A lekérdezési teljesítmény a partíciók eltávolításával javítható, ami a partíción belüli adatokra korlátozza a lekérdezésvizsgálatát. Az adatokat partícióváltással is karbantarthatja. Mivel az SQL Data Warehouse ban lévő adatok már el vannak osztva, túl sok partíció lassíthatja a lekérdezési teljesítményt. További információ: [Particionálási útmutató](sql-data-warehouse-tables-partition.md).  Ha a partíció nem üres táblapartíciókra vált, fontolja meg az [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) utasítás TRUNCATE_TARGET beállításának használatát, ha a meglévő adatokat csonkolni szeretné. Az alábbi kód átvált az átalakított napi adatokban a SalesFact-ben, felülírva a meglévő adatokat.
+A particionált tábla adattartományok szerint tárolja és hajtja végre a táblasorokműveleteit. Egy tábla például felosztható nappal, hónap vagy év szerint. A lekérdezési teljesítmény a partíciók eltávolításával javítható, ami a partíción belüli adatokra korlátozza a lekérdezésvizsgálatát. Az adatokat partícióváltással is karbantarthatja. Mivel az SQL Data Warehouse ban lévő adatok már el vannak osztva, túl sok partíció lassíthatja a lekérdezési teljesítményt. További információ: [Particionálási útmutató](sql-data-warehouse-tables-partition.md).  Ha a partíció nem üres táblapartíciókra vált, fontolja meg az [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) utasítás TRUNCATE_TARGET beállításának használatát, ha a meglévő adatokat csonkolni szeretné. Az alábbi kód átvált az átalakított napi adatokban a SalesFact-ben, felülírva a meglévő adatokat.
 
 ```sql
 ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION 256 WITH (TRUNCATE_TARGET = ON);  
@@ -126,7 +126,7 @@ A fürtözött oszlopcentrikus index általában a legjobb választás, de bizon
 > [!TIP]
 > A halommemória-tábla különösen hasznos lehet az átmeneti adatok, például egy végleges táblává alakított átmeneti tábla betöltéséhez.
 
-Az oszlopcentrikus funkciók listáját az [oszlopcentrikus indexek újdonságai című témakörben találja.](/sql/relational-databases/indexes/columnstore-indexes-what-s-new) Az oszlopcentrikus index teljesítményének javításáról a [sorcsoport minőségének maximalizálása oszlopcentrikus indexek esetén című témakörben található.](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)
+Az oszlopcentrikus funkciók listáját az [oszlopcentrikus indexek újdonságai című témakörben találja.](/sql/relational-databases/indexes/columnstore-indexes-what-s-new?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) Az oszlopcentrikus index teljesítményének javításáról a [sorcsoport minőségének maximalizálása oszlopcentrikus indexek esetén című témakörben található.](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)
 
 ## <a name="statistics"></a>Statisztika
 
@@ -146,10 +146,10 @@ A táblát új üres táblaként is létrehozhatja. Létrehozhat és feltölthet
 
 | T-SQL utasítás | Leírás |
 |:----------------|:------------|
-| [TÁBLA LÉTREHOZÁSA](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) | Üres táblát hoz létre az összes táblaoszlop és -beállítás definiálásával. |
-| [KÜLSŐ TÁBLA LÉTREHOZÁSA](/sql/t-sql/statements/create-external-table-transact-sql) | Külső táblát hoz létre. A tábla definíciója az SQL készletben van tárolva. A táblaadatok az Azure Blob storage vagy az Azure Data Lake Store tárolja. |
-| [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) | Feltölt egy új táblát egy select utasítás eredményeivel. A táblaoszlopok és adattípusok a select utasítás eredményein alapulnak. Adatok importálásához ez az utasítás külső táblából választhat. |
-| [KÜLSŐ TÁBLA LÉTREHOZÁSA KIJELÖLÉSKÉNT](/sql/t-sql/statements/create-external-table-as-select-transact-sql) | Új külső táblát hoz létre úgy, hogy egy select utasítás eredményeit külső helyre exportálja.  A hely vagy Az Azure Blob storage vagy az Azure Data Lake Store. |
+| [TÁBLA LÉTREHOZÁSA](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Üres táblát hoz létre az összes táblaoszlop és -beállítás definiálásával. |
+| [KÜLSŐ TÁBLA LÉTREHOZÁSA](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Külső táblát hoz létre. A tábla definíciója az SQL készletben van tárolva. A táblaadatok az Azure Blob storage vagy az Azure Data Lake Store tárolja. |
+| [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Feltölt egy új táblát egy select utasítás eredményeivel. A táblaoszlopok és adattípusok a select utasítás eredményein alapulnak. Adatok importálásához ez az utasítás külső táblából választhat. |
+| [KÜLSŐ TÁBLA LÉTREHOZÁSA KIJELÖLÉSKÉNT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Új külső táblát hoz létre úgy, hogy egy select utasítás eredményeit külső helyre exportálja.  A hely vagy Az Azure Blob storage vagy az Azure Data Lake Store. |
 
 ## <a name="aligning-source-data-with-the-sql-pool"></a>Forrásadatok igazítása az SQL-készlethez
 
@@ -174,7 +174,7 @@ Az SQL-készlet támogatja a más adatbázisok által kínált táblaszolgáltat
 
 ## <a name="table-size-queries"></a>Táblaméretű lekérdezések
 
-A 60 disztribúció ban egy táblázat által felhasznált terület és sorok azonosításának egyszerű módja a [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql)használata.
+A 60 disztribúció ban egy táblázat által felhasznált terület és sorok azonosításának egyszerű módja a [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)használata.
 
 ```sql
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');

@@ -11,12 +11,12 @@ ms.date: 02/19/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 87b33e91076f8f7f31740795f0ec05cea49a1e83
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: e99fd898956e11a4827d023691111a47e5a790c0
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631191"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744960"
 ---
 # <a name="data-loading-strategies-for-synapse-sql-pool"></a>A Szinapszis SQL-készlet adatbetöltési stratégiái
 
@@ -24,7 +24,7 @@ A hagyományos SMP SQL-készletek egy kivonási, átalakítási és betöltési 
 
 A Kinyerés, betöltés és átalakítás (ELT) folyamat használata kihasználja az MPP-t, és kiküszöböli az adatok betöltése előtti átalakításához szükséges erőforrásokat.
 
-Míg az SQL-készlet számos betöltési módszert támogat, beleértve a népszerű SQL Server-beállításokat, például a [bcp-t](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) és az [SqlBulkCopy API-t,](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)az adatok betöltésének leggyorsabb és leginkább skálázható módja a PolyBase külső tábláin és a [COPY utasításon](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (előzetes verzió).
+Míg az SQL-készlet számos betöltési módszert támogat, beleértve a népszerű SQL Server-beállításokat, például a [bcp-t](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) és az [SqlBulkCopy API-t,](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)az adatok betöltésének leggyorsabb és leginkább skálázható módja a PolyBase külső tábláin és a [COPY utasításon](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (előzetes verzió).
 
 A PolyBase és a COPY utasítás segítségével a T-SQL-nyelven keresztül hozzáférhet az Azure Blob storage-ban vagy az Azure Data Lake Store-ban tárolt külső adatokhoz. A betöltéskor a legnagyobb rugalmasság érdekében javasoljuk a COPY utasítás használatát.
 
@@ -58,7 +58,7 @@ Az adatok kitárolása a tárolási helytől függ.  A cél az, hogy az adatokat
 
 A PolyBase és a COPY utasítás segítségével utf-8 és UTF-16 kódolású szöveg- vagy CSV-fájlokból tölthet be adatokat. A tagolt szöveg vagy CSV fájlok mellett a Hadoop fájlformátumokból, például az ORC-ből és a Parkettából is betöltődik. A PolyBase és a COPY utasítás a Gzip és a Snappy tömörített fájlokból is képes adatokat betölteni.
 
-A kiterjesztett ASCII, a rögzített szélességű formátum és a beágyazott formátumok, például a WinZip vagy az XML nem támogatottak. Ha az SQL Server kiszolgálóról exportál, az [bcp parancssori eszközzel](/sql/tools/bcp-utility?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) exportálhatja az adatokat tagolt szövegfájlokba.
+A kiterjesztett ASCII, a rögzített szélességű formátum és a beágyazott formátumok, például a WinZip vagy az XML nem támogatottak. Ha az SQL Server kiszolgálóról exportál, az [bcp parancssori eszközzel](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) exportálhatja az adatokat tagolt szövegfájlokba.
 
 ## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2. Az adatok letárolása az Azure Blob storage-ba vagy az Azure Data Lake Store-ba
 
@@ -141,10 +141,10 @@ Az adatok PolyBase segítségével az alábbi betöltési lehetőségek bármely
 
 ### <a name="other-loading-options"></a>Egyéb berakodási lehetőségek
 
-A PolyBase és a COPY utasítás mellett használhatja a [bcp](https://docs.microsoft.com/sql/tools/bcp-utility?view=sql-server-ver15) vagy az [SqlBulkCopy API-t](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx)is. A bcp közvetlenül az adatbázisba töltődik be anélkül, hogy az Azure Blob-tárolón keresztül haladna, és csak kis terhelésekhez készült.
+A PolyBase és a COPY utasítás mellett használhatja a [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) vagy az [SqlBulkCopy API-t](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)is. A bcp közvetlenül az adatbázisba töltődik be anélkül, hogy az Azure Blob-tárolón keresztül haladna, és csak kis terhelésekhez készült.
 
 > [!NOTE]
-> Ne feledje, hogy ezeknek a beállításoknak a terhelési teljesítménye lassabb, mint a PolyBase és a COPY utasítás.
+> Ezeknek a beállításoknak a terhelési teljesítménye lassabb, mint a PolyBase és a COPY utasítás.
 
 ## <a name="5-transform-the-data"></a>5. Az adatok átalakítása
 

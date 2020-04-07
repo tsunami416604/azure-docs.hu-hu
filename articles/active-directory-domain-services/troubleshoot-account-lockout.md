@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 10/02/2019
+ms.date: 04/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 2e274aa353f6c3e485ae10a6a67ee2940eb88b08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7d2e22804c06f589c7990bf8f19319b897363a93
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246319"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743450"
 ---
 # <a name="troubleshoot-account-lockout-problems-with-an-azure-ad-domain-services-managed-domain"></a>Az Azure AD tartományi szolgáltatások által kezelt tartománnyal kapcsolatos fiókzárolási problémák elhárítása
 
@@ -33,11 +33,11 @@ Az alapértelmezett fiókzárolási küszöbértékek részletes jelszóháziren
 
 ### <a name="fine-grained-password-policy"></a>Részletes jelszóházirend
 
-A részletes jelszóházirendek (FGPP-k) lehetővé teszik, hogy a tartomány különböző felhasználóira speciális korlátozásokat alkalmazzon a jelszó- és fiókzárolási házirendekre vonatkozóan. Az FGPP csak az Azure AD DS-ben létrehozott felhasználókat érinti. Az Azure AD DS által felügyelt tartományba szinkronizált felhőfelhasználókat és tartományi felhasználókat az Azure AD-ből nem érintik a jelszóházirendek.
+A részletes jelszóházirendek (FGPP-k) lehetővé teszik, hogy a tartomány különböző felhasználóira speciális korlátozásokat alkalmazzon a jelszó- és fiókzárolási házirendekre vonatkozóan. Az FGPP csak az Azure AD DS felügyelt tartományának felhasználóira van hatással. Az Azure AD DS által felügyelt azure-beli felügyelt tartományba szinkronizált felhőfelhasználókat és tartományi felhasználókat csak az Azure AD DS-en belüli jelszóházirendek érintik. A fiókok az Azure AD vagy egy helyszíni könyvtár ban nincshatással.
 
 A szabályzatok az Azure AD DS felügyelt tartományban lévő csoporttársításon keresztül kerülnek elosztásra, és a módosítások a következő felhasználó bejelentkezéskor lesznek alkalmazva. A házirend módosítása nem oldja fel a már zárolt felhasználói fiókot.
 
-A részletes jelszóházirendekkel kapcsolatos további információkért olvassa el [a Jelszó- és fiókzárolási házirendek konfigurálása című témakört.][configure-fgpp]
+A részletes jelszóházirendekkel, valamint a közvetlenül az Azure AD DS-ben az Azure AD-ben létrehozott és az Azure AD-ben szinkronizált felhasználók közötti különbségekről a [Jelszó- és fiókzárolási szabályzatok konfigurálása című][configure-fgpp]témakörben talál további információt.
 
 ## <a name="common-account-lockout-reasons"></a>Gyakori fiókzárolási okok
 

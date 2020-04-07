@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: 4b6d954d06f09bef5240bddc4860ddbc83513d69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82efa70b30e829cfedd0b1fa7a21fd06949aa6d5
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79220852"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744143"
 ---
 # <a name="language-and-region-support-for-luis"></a>A LUIS nyelvi és területi támogatása
 
@@ -35,18 +35,25 @@ A LUIS a következő nyelveken ismeri meg a kimondott szövegeket:
 | Amerikai angol |`en-US` | ✔ | ✔  |✔|✔|
 | Arab (előnézet - modern szabványos arab) |`ar-AR`|-|-|-|-|
 | *[kínai](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
-| Holland |`nl-NL` |✔|  -   |-|✔|
+| Holland |`nl-NL` |✔|-|-|✔|
 | Francia (Franciaország) |`fr-FR` |✔| ✔ |✔ |✔|
-| Francia (Kanada) |`fr-CA` |-|   -   |-|✔|
+| Francia (Kanada) |`fr-CA` |-|-|-|✔|
 | Német |`de-DE` |✔| ✔ |✔ |✔|
-| Hindi | `hi-IN`|-|-|-|-|
+| gudzsaráti | `gu-IN`|-|-|-|-|
+| Hindi | `hi-IN`|-|✔|-|-|
 | Olasz |`it-IT` |✔| ✔ |✔|✔|
 | *[japán](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|Csak a kulcsmondat|
-| Koreai |`ko-KR` |✔|   -   |-|Csak a kulcsmondat|
+| Koreai |`ko-KR` |✔|-|-|Csak a kulcsmondat|
+| marathi | `mr-IN`|-|-|-|-|
 | Portugál (Brazília) |`pt-BR` |✔| ✔ |✔ |nem minden szubkultúra|
 | Spanyol (Spanyolország) |`es-ES` |✔| ✔ |✔|✔|
-| Spanyol (Mexikó)|`es-MX` |-|  -   |✔|✔|
-| Török | `tr-TR` |✔|-|-|Csak hangulat|
+| Spanyol (Mexikó)|`es-MX` |-|-|✔|✔|
+| tamil | `ta-IN`|-|-|-|-|
+| telugu | `te-IN`|-|-|-|-|
+| Török | `tr-TR` |✔|✔|-|Csak hangulat|
+
+
+
 
 A nyelvi támogatás az [előre összeállított entitások](luis-reference-prebuilt-entities.md) és [az előre összeállított tartományok](luis-reference-prebuilt-domains.md)esetében eltérő lehet.
 
@@ -77,22 +84,28 @@ A hibrid nyelvek két kultúrából, például az angolból és a kínaiból sz�
 ## <a name="tokenization"></a>Tokenizálás
 Gépi tanulás végrehajtásához a LUIS egy utterance (kifejezés) a kultúra alapú [jogkivonatokra bontja.](luis-glossary.md#token)
 
-|Nyelv|  minden szóköz vagy különleges karakter | karakterszint|összetett szavak|[tokenizált entitás visszaadva](luis-concept-data-extraction.md#tokenized-entity-returned)
-|--|:--:|:--:|:--:|:--:|
-|Arab|||||
-|Kínai||✔||✔|
-|Holland|||✔|✔|
-|Angol (en-us)|✔ ||||
-|Francia (fr-FR)|✔||||
-|Francia (fr-CA)|✔||||
-|Német|||✔|✔|
-| Hindi |✔|-|-|-|-|
-|Olasz|✔||||
-|Japán||||✔|
-|Koreai||✔||✔|
-|Portugál (Brazília)|✔||||
-|Spanyol (es-ES)|✔||||
-|Spanyol (es-MX)|✔||||
+|Nyelv|  minden szóköz vagy különleges karakter | karakterszint|összetett szavak
+|--|:--:|:--:|:--:|
+|Arab|✔|||
+|Kínai||✔||
+|Holland|✔||✔|
+|Angol (en-us)|✔ |||
+|Francia (fr-FR)|✔|||
+|Francia (fr-CA)|✔|||
+|Német|✔||✔|
+|gudzsaráti|✔|||
+|Hindi|✔|||
+|Olasz|✔|||
+|Japán|||✔
+|Koreai||✔||
+|marathi|✔|||
+|Portugál (Brazília)|✔|||
+|Spanyol (es-ES)|✔|||
+|Spanyol (es-MX)|✔|||
+|tamil|✔|||
+|telugu|✔|||
+|Török|✔|||
+
 
 ### <a name="custom-tokenizer-versions"></a>Egyéni tokenizer verziók
 
@@ -101,7 +114,10 @@ A következő kultúrák egyéni tokenizer verziókkal rendelkeznek:
 |Kulturális környezet|Verzió|Cél|
 |--|--|--|
 |Német<br>`de-de`|1.0.0|Tokenizes szavak felosztásával őket egy gépi tanulás-alapú tokenizer, amely megpróbálja lebontani a kompozit szavakat az egyes összetevők.<br>Ha a felhasználó `Ich fahre einen krankenwagen` utterance (kifejezés) ként `Ich fahre einen kranken wagen`adja meg, a rendszer a rendszerre fordul. Lehetővé teszi `kranken` a `wagen` jelölést, és függetlenül a különböző szervezetek.|
-|Német<br>`de-de`|1.0.2|A szavak tokenizes-e szóközökre osztva.<br> ha a felhasználó `Ich fahre einen krankenwagen` utterance (kifejezés) lép be, egyetlen jogkivonat marad. Így `krankenwagen` van megjelölve, mint egy entitás. |
+|Német<br>`de-de`|1.0.2|A szavak tokenizes-e szóközökre osztva.<br> Ha egy felhasználó `Ich fahre einen krankenwagen` utterance (kifejezés) lép be, egyetlen jogkivonat marad. Így `krankenwagen` van megjelölve, mint egy entitás. |
+|Holland<br>`de-de`|1.0.0|Tokenizes szavak felosztásával őket egy gépi tanulás-alapú tokenizer, amely megpróbálja lebontani a kompozit szavakat az egyes összetevők.<br>Ha a felhasználó `Ik ga naar de kleuterschool` utterance (kifejezés) ként `Ik ga naar de kleuter school`adja meg, a rendszer a rendszerre fordul. Lehetővé teszi `kleuter` a `school` jelölést, és függetlenül a különböző szervezetek.|
+|Holland<br>`de-de`|1.0.1|A szavak tokenizes-e szóközökre osztva.<br> Ha egy felhasználó `Ik ga naar de kleuterschool` utterance (kifejezés) lép be, egyetlen jogkivonat marad. Így `kleuterschool` van megjelölve, mint egy entitás. |
+
 
 ### <a name="migrating-between-tokenizer-versions"></a>Tokenizer verziók közötti áttelepítés
 <!--

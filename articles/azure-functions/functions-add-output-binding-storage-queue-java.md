@@ -6,12 +6,12 @@ ms.author: karler
 ms.date: 10/14/2019
 ms.topic: quickstart
 zone_pivot_groups: java-build-tools-set
-ms.openlocfilehash: 8ae69bfa7ed00e310205332e05c071158c5fc9a3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: d9815fd27a57acc8b418962e610d2ae1c106edde
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78272810"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673314"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>A Java-függvény csatlakoztatása az Azure Storage-hoz
 
@@ -37,77 +37,13 @@ Most már hozzáadhatja a Storage kimenetkötést a projekthez.
 
 ## <a name="add-an-output-binding"></a>Kimeneti kötés hozzáadása
 
-Java projektben a kötések a függvénymetódus kötési jegyzeteiként vannak definiálva. A *function.json* fájl ezután automatikusan generálódik ezen jegyzetek alapján.
-
-Tallózással keresse meg a függvénykód helyét _az src/main/java_alatt, nyissa meg `run` a *Function.java* projektfájlt, és adja hozzá a következő paramétert a metódus definíciójához:
-
-```java
-@QueueOutput(name = "msg", queueName = "outqueue", connection = "AzureWebJobsStorage") OutputBinding<String> msg
-```
-
-A `msg` paraméter [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) egy típus, amely a függvény befejezésekor a kimeneti kötéshez üzenetekként írt karakterláncok gyűjteményét jelöli. Ebben az esetben a kimenet egy `outqueue`tárolási várólista nevű. A storage-fiók kapcsolati karakterláncát `connection` a metódus állítja be. Ahelyett, hogy maga a kapcsolati karakterlánc, adja át az alkalmazás beállítást, amely tartalmazza a storage-fiók kapcsolati karakterlánc.
-
-A `run` metódus definíciójának most a következő példához hasonlóan kell kinéznie:  
-
-```java
-@FunctionName("HttpTrigger-Java")
-public HttpResponseMessage run(
-        @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.FUNCTION)  
-        HttpRequestMessage<Optional<String>> request, 
-        @QueueOutput(name = "msg", queueName = "outqueue", connection = "AzureWebJobsStorage") 
-        OutputBinding<String> msg, final ExecutionContext context) {
-    ...
-}
-```
+[!INCLUDE [functions-add-output-binding-java-cli](../../includes/functions-add-output-binding-java-cli.md)]
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Kimeneti kötést használó kód hozzáadása
 
-Most már használhatja `msg` az új paramétert a kimeneti kötéshez való íráshoz a függvénykódból. Adja hozzá a következő kódsort a sikeres `name` válasz `msg` előtt, hogy hozzáadja a kimeneti kötés értékét.
+[!INCLUDE [functions-add-output-binding-java-code](../../includes/functions-add-output-binding-java-code.md)]
 
-```java
-msg.setValue(name);
-```
-
-Kimeneti kötés használataesetén nem kell használnia az Azure Storage SDK-kódot a hitelesítéshez, a várólista-referencia beszerzéséhez vagy az adatok írásához. A Functions futásidejű és a várólista kimeneti kötése ezeket a feladatokat elvégezheti.
-
-A `run` módszernek most a következő példához hasonlóan kell kinéznie:
-
-```java
-@FunctionName("HttpTrigger-Java")
-public HttpResponseMessage run(
-        @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.FUNCTION) HttpRequestMessage<Optional<String>> request, 
-        @QueueOutput(name = "msg", queueName = "outqueue", connection = "AzureWebJobsStorage") 
-        OutputBinding<String> msg, final ExecutionContext context) {
-    context.getLogger().info("Java HTTP trigger processed a request.");
-
-    // Parse query parameter
-    String query = request.getQueryParameters().get("name");
-    String name = request.getBody().orElse(query);
-
-    if (name == null) {
-        return request.createResponseBuilder(HttpStatus.BAD_REQUEST).body("Please pass a name on the query string or in the request body").build();
-    } else {
-        // Write the name to the message queue. 
-        msg.setValue(name);
-
-        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
-    }
-}
-```
-
-## <a name="update-the-tests"></a>A tesztek frissítése
-
-Mivel az archetípus teszteket is létrehoz, frissítenie kell ezeket a teszteket, hogy kezelni tudja az új `msg` paramétert a `run` metódus aláírásában.  
-
-Tallózással keresse meg a tesztkód helyét _az src/test/java_alatt, nyissa meg `//Invoke` a *Function.java* projektfájlt, és cserélje le a kódsort a következő kódra.
-
-```java
-@SuppressWarnings("unchecked")
-final OutputBinding<String> msg = (OutputBinding<String>)mock(OutputBinding.class);
-
-// Invoke
-final HttpResponseMessage ret = new Function().run(req, msg, context);
-``` 
+[!INCLUDE [functions-add-output-binding-java-test-cli](../../includes/functions-add-output-binding-java-test-cli.md)]
 
 Most már készen áll, hogy helyileg próbálja ki az új kimenetkötést.
 
@@ -115,19 +51,17 @@ Most már készen áll, hogy helyileg próbálja ki az új kimenetkötést.
 
 A hogy korábban is, a következő paranccsal hozd létre a projektet, és helyileg indítsa el a Functions futásidejűt:
 
-::: zone pivot="java-build-tools-maven"  
+# <a name="maven"></a>[Maven](#tab/maven)
 ```bash
 mvn clean package 
 mvn azure-functions:run
 ```
-::: zone-end
-
-::: zone pivot="java-build-tools-gradle"  
+# <a name="gradle"></a>[Gradle](#tab/gradle) 
 ```bash
 gradle jar --info
 gradle azureFunctionsRun
 ```
-::: zone-end
+---
 
 > [!NOTE]  
 > Mivel engedélyezte a bővítménykötegeket a host.json ban, a [Storage kötésbővítményt](functions-bindings-storage-blob.md#add-to-your-functions-app) az indítás során letöltötte és telepítette, a többi Microsoft-kötési bővítménylel együtt.
@@ -150,17 +84,15 @@ Ezután az Azure CLI használatával megtekintheti az új várólistát, és ell
 
 A közzétett alkalmazás frissítéséhez futtassa újra a következő parancsot:  
 
-::: zone pivot="java-build-tools-maven"  
+# <a name="maven"></a>[Maven](#tab/maven)  
 ```bash
 mvn azure-functions:deploy
 ```
-::: zone-end
-
-::: zone pivot="java-build-tools-gradle"  
+# <a name="gradle"></a>[Gradle](#tab/gradle)  
 ```bash
 gradle azureFunctionsDeploy
 ```
-::: zone-end
+---
 
 Ismét használhatja a cURL-t az üzembe helyezett függvény teszteléséhez. A hogy korábban `AzureFunctions` is, adja át az értéket a POST-kérelem törzsében az URL-nek, ahogy ebben a példában is:
 

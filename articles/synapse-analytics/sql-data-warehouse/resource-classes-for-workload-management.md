@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 86cc081ef47eb2ac2e8e0a49bc79e8973f34baf1
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: c2ac05cb2a6b3bd185d5e3a84df4f3d9a01c5bef
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633691"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743269"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Számítási feladatok kezelése erőforrás-osztályokkal az Azure Synapse Analytics szolgáltatásban
 
@@ -162,13 +162,13 @@ WHERE  name LIKE '%rc%' AND type_desc = 'DATABASE_ROLE';
 
 Az erőforrásosztályok at úgy valósítják meg, hogy a felhasználókat adatbázis-szerepkörökhöz rendelik. Amikor egy felhasználó lekérdezést futtat, a lekérdezés a felhasználó erőforrásosztályával fut. Ha például egy felhasználó a staticrc10 adatbázis-szerepkör tagja, a lekérdezések kis mennyiségű memóriával futnak. Ha egy adatbázis-felhasználó az xlargerc vagy staticrc80 adatbázis-szerepkörök tagja, a lekérdezések nagy mennyiségű memóriával futnak.
 
-A felhasználó erőforrásosztályának növeléséhez használja [a sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) segítségével adja hozzá a felhasználót egy nagy erőforrásosztály adatbázis-szerepköréhez.  Az alábbi kód hozzáad egy felhasználót a nagyobb adatbázis szerepkörhöz.  Minden kérelem a rendszermemória 22%-át kapja meg.
+A felhasználó erőforrásosztályának növeléséhez használja [a sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) segítségével adja hozzá a felhasználót egy nagy erőforrásosztály adatbázis-szerepköréhez.  Az alábbi kód hozzáad egy felhasználót a nagyobb adatbázis szerepkörhöz.  Minden kérelem a rendszermemória 22%-át kapja meg.
 
 ```sql
 EXEC sp_addrolemember 'largerc', 'loaduser';
 ```
 
-Az erőforrásosztály csökkentéséhez használja [a sp_droprolemember.](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql)  Ha a "loaduser" nem tagja, vagy bármely más erőforrás-osztály, akkor az alapértelmezett smallrc erőforrásosztályba kerül, 3%-os memóriatámogatással.  
+Az erőforrásosztály csökkentéséhez használja [a sp_droprolemember.](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  Ha a "loaduser" nem tagja, vagy bármely más erőforrás-osztály, akkor az alapértelmezett smallrc erőforrásosztályba kerül, 3%-os memóriatámogatással.  
 
 ```sql
 EXEC sp_droprolemember 'largerc', 'loaduser';

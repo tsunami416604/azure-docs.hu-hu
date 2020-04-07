@@ -4,14 +4,14 @@ description: Ez a cikk áttekintést nyújt arról, hogyan használhatja az Azur
 services: automation
 ms.subservice: update-management
 ms.topic: tutorial
-ms.date: 03/04/2020
+ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: b5b03efafbed3439e5f8fdf98e2cd5b2d63a3d45
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 888dc99162551482afc715f1a793614d2c866384
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411042"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677036"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Az Azure-beli virtuális gépek frissítéseinek és javításainak kezelése
 
@@ -123,7 +123,7 @@ Az **Új frissítéstelepítés** képernyőn adja meg a következő informáci�
 
    A besorolási típusok leírását lásd: [Besorolások frissítése](automation-view-update-assessments.md#update-classifications).
 
-* **A belefoglaláshoz/kizáráshoz szükséges frissítések** – Megnyitja a Belefoglalás/kizárás lapot. A belefoglalandó vagy kizárandó frissítések külön lapokon jelennek meg.
+* **A belefoglaláshoz/kizáráshoz szükséges frissítések** – Megnyitja a Belefoglalás/kizárás lapot. A beveendő vagy kizárandó frissítések külön lapokon találhatók a tudásbáziscikk-azonosítószámok megadásával. Egy vagy több azonosítószám megadásakor el kell távolítania, vagy vissza kell vonnia az összes besorolás t a frissítés központi telepítésével. Ez biztosítja, hogy a frissítési azonosítók megadásakor a frissítési csomag ne tartalmazzon más frissítéseket.
 
 > [!NOTE]
 > Fontos tudni, hogy a kizárások felülbírálják a zárványokat. Ha például a kizárási `*`szabályt a , Update Management telepíti nem javítások vagy csomagok, mivel ezek mindegyike ki van zárva. A kizárt javítások továbbra is hiányzóként jelennek meg a gépből. Linux gépek esetén, ha olyan csomagot tartalmaz, amely egy kizárt függő csomagot tartalmaz, az Update Management nem telepíti a fő csomagot.

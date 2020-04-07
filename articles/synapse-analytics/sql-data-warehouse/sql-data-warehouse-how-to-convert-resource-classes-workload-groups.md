@@ -11,12 +11,12 @@ ms.date: 11/4/2019
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a249dfc4f04fbd7b6b73a0e9f37d53106bf82efd
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 8cee874106598c7d81b923d7dd32ba91902d9326
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633343"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745187"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>Erőforrásosztályok konvertálása munkaterhelés-csoportokká
 
@@ -53,7 +53,7 @@ CREATE WORKLOAD GROUP wgDataLoads WITH
 
 ## <a name="create-the-classifier"></a>Az osztályozó létrehozása
 
-Korábban a lekérdezések erőforrásosztályokhoz való hozzárendelése [sp_addrolemember.](resource-classes-for-workload-management.md#change-a-users-resource-class)  Ha ugyanazt a funkciót szeretné elérni, és le szeretné képezni a számítási feladatok csoportjainak hozzárendelését, használja a [MUNKATERHELÉS-osztályzat létrehozása](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql) szintaxist.  A sp_addrolemember használatával csak akkor lehet erőforrásokat leképezni egy kérelemhez bejelentkezés alapján.  Az osztályozó a bejelentkezésmellett további lehetőségeket is kínál, például:
+Korábban a lekérdezések erőforrásosztályokhoz való hozzárendelése [sp_addrolemember.](resource-classes-for-workload-management.md#change-a-users-resource-class)  Ha ugyanazt a funkciót szeretné elérni, és le szeretné képezni a számítási feladatok csoportjainak hozzárendelését, használja a [MUNKATERHELÉS-osztályzat létrehozása](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) szintaxist.  A sp_addrolemember használatával csak akkor lehet erőforrásokat leképezni egy kérelemhez bejelentkezés alapján.  Az osztályozó a bejelentkezésmellett további lehetőségeket is kínál, például:
     - label
     - munkamenet
     - idő Az alábbi példa olyan `AdfLogin` lekérdezéseket rendel hozzá a `factloads` bejelentkezésből, `wgDataLoads` amelyekhez az [OPTION LABEL](sql-data-warehouse-develop-label.md) is be van állítva a fent létrehozott munkaterhelési csoporthoz.

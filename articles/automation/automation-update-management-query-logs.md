@@ -3,14 +3,14 @@ title: Az Azure Update Management naplóinak lekérdezése
 description: Ez a cikk azt ismerteti, hogyan lehet lekérdezni a loganalytics-munkaterület frissítési felügyelet naplóit.
 services: automation
 ms.subservice: update-management
-ms.date: 03/31/2020
+ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 863016bbeda9b4aec3bf2b4e12830bd30098150f
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 81e12e775306cc8637dedd534f50e8a14bc09a26
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437844"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743865"
 ---
 # <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>Frissítési rekordok lekérdezése az Azure Figyelőnaplóiban az Update Management szolgáltatáshoz
 
@@ -112,7 +112,7 @@ Létrejön egy rekord, amely nek `UpdateRunProgress` típusa van, amely biztosí
 | CorrelationId | A frissítés runrunjának egyedi azonosítója. |
 | EndTime | A szinkronizálási folyamat lesiszélének időpontja. | 
 | Hibaeredmény | A frissítés telepítésének sikertelenétől generált Windows Update-hibakód. | 
-| InstallationStatus (Telepítési állapot) | Az ügyfélszámítógépen lévő frissítés lehetséges telepítési állapotai, *Folyamatban*, *Sikeres*, *Részben sikertelen*. |
+| InstallationStatus (Telepítési állapot) | Az ügyfélszámítógépen lévő frissítés lehetséges telepítési állapotai,<br> *NotStarted* - a feladat még nem aktiválódott.<br> *FailedToStart* - nem lehet elindítani a feladatot a gépen.<br> *Nem sikerült* - a feladat elindult, de kivétellel nem sikerült.<br> *InProgress* - folyamatban lévő feladat.<br> *MaintenanceWindowExceeded* – ha a végrehajtás még hátra van, de a karbantartási időszak intervalluma elérte.<br> *Sikeres -* a feladat sikerült.<br> *InstallFailed* - a frissítés telepítése nem sikerült.<br> *Nem foglalt*<br> *Kizárt* |
 | KBID | Tudásbáziscikk-azonosító a Windows-frissítéshez. | 
 | ManagementGroupName | Az Operations Manager felügyeleti csoport vagy a Log Analytics-munkaterület neve. |
 | OSType | A *Windows* *vagy*Linux operációs rendszer típusát adja meg. | 

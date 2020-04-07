@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: a32624c37cd8ca7fbef9e38ca61de9369791dd25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b0569907537f91f7e84b8156dffa0f313461f6e1
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162531"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677019"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Többszörös átviteli sebességű streamek létrehozása az Azure Media Services élő streamelési funkciójával
 
@@ -167,7 +167,7 @@ A csatorna biztosítja az élő kódolóban megadott bemeneti végpontot (betöl
 
 A betöltési URL-eket a csatorna létrehozása után kaphatja meg. Az URL-címek leeléréséhez a csatornának nem kell **futó** állapotban lennie. Ha készen áll az adatok csatornába való lenyomásának megkezdésére, annak **futó** állapotban kell lennie. Miután a csatorna megkezdi az adatok betöltését, megtekintheti az adatfolyam előnézeti URL-címén keresztüli előnézeti előnézeti előnézeti előnézeti előnézeti előnézetét.
 
-Lehetősége van a töredezett MP4 (Smooth Streaming) élő közvetítés SSL-kapcsolaton keresztül történő betöltésére. Az SSL-en keresztüli betöltéshez frissítse a betöltési URL-címet HTTPS-re. Jelenleg az AMS nem támogatja az SSL-t egyéni tartományokkal.  
+Lehetősége van a töredezett MP4 (Smooth Streaming) élő közvetítés TLS-kapcsolaton keresztül történő betöltésére. A TLS-en keresztül történő betöltéshez frissítse a betöltési URL-címet HTTPS-re. Jelenleg az AMS nem támogatja a TLS-t egyéni tartományokkal.  
 
 ### <a name="allowed-ip-addresses"></a>Engedélyezett IP-címek
 Megadhatja azokat az IP-címeket, amelyek közzétehetik a videót erre a csatornára. Az engedélyezett IP-címek egyetlen IP-címként is megadhatók (például '10.0.0.1), IP-címet és CIDR alhálózati maszkot (például "10.0.0.1/22"), vagy IP-címet és pontozott decimális alhálózati maszkot használó IP-tartomány (például "10.0.0.1(255.255.252.0)").
@@ -205,7 +205,7 @@ Megadhatja a hirdetésjelölők jeleinek forrását. Az alapértelmezett érték
 Egy opcionális zászló, amely arra utasítja az élő kódolót, hogy hagyja figyelmen kívül a CEA 708 feliratokat a bejövő videóba ágyazott adatokat. Ha a jelző értéke hamis (alapértelmezett), a kódoló észleli és újra beilleszti a CEA 708 adatokat a kimeneti videoadatfolyamokba.
 
 #### <a name="index"></a>Index
-Javasoljuk, hogy küldjön egy program átviteli patak (SPTS). Ha a bemeneti adatfolyam több programot tartalmaz, a csatorna élő kódolója elemzi a programtábla táblázatát (PMT) a bemenetben, és azonosítja azokat a bemeneti adatokat, amelyek adatfolyam-típusa MPEG-2 AAC ADTS vagy AC-3 System-A vagy AC-3 System-B vagy MPEG-2 Private PES vagy MPEG-1 Hang vagy MPEG-2 Audio, és rendezi őket a pmt-ben megadott sorrendben. A nulla-alapú index ezután az n-edik tétel felvételére szolgál ebben a megállapodásban.
+Javasoljuk, hogy küldjön egy program átviteli patak (SPTS). Ha a bemeneti adatfolyam több programot tartalmaz, a csatorna élő kódolója elemzi a programtábla táblázatát (PMT) a bemenetben, azonosítja azokat a bemeneteket, amelyek adatfolyam-típusa MPEG-2 AAC ADTS vagy AC-3 System-A vagy AC-3 System-B vagy MPEG-2 Private PES vagy MPEG-1 Audio vagy MPEG-2 Audio, és a PMT-ben meghatározott sorrendben rendezi azokat. A nulla-alapú index ezután az n-edik tétel felvételére szolgál ebben a megállapodásban.
 
 #### <a name="language"></a>Nyelv
 Az audioadatfolyam nyelvi azonosítója, amely megfelel az ISO 639-2 szabványnak, például AZ ENG. Ha nincs jelen, az alapértelmezett az UND (nem definiált).

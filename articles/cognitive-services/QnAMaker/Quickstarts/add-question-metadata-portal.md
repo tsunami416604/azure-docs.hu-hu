@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 25c0fe549dfc850a53b06f79f348a87cba3b70a1
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: f067bae55c38fc783c12bf9d0bc6fbcdf881e4e4
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77109935"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756683"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Rövid útmutató: Kérdések és válaszadás a QnA Maker portállal
 
@@ -27,7 +27,7 @@ A tudásbázis létrehozása után adja hozzá a kérdés-válasz (QnA) készlet
 |#1|`How large a knowledge base can I create?`<br><br>`What is the max size of a knowledge base?`<br><br>`How many GB of data can a knowledge base hold?` |`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`|`service=qna_maker`<br>`link_in_answer=true`|
 |#2|`How many knowledge bases can I have for my QnA Maker service?`<br><br>`I selected a Azure Cognitive Search tier that holds 15 knowledge bases, but I can only create 14 - what is going on?`<br><br>`What is the connection between the number of knowledge bases in my QnA Maker service and the Azure Cognitive Search service size?` |`Each knowledge base uses 1 index, and all the knowledge bases share a test index. You can have N-1 knowledge bases where N is the number of indexes your Azure Cognitive Search tier supports.`|`service=search`<br>`link_in_answer=false`|
 
-Miután metaadatokat adott hozzá egy QnA-készlethez, az ügyfélalkalmazás a következőket teheti:
+Miután metaadatokat adott hozzá egy QnA-párhoz, az ügyfélalkalmazás:
 
 * Olyan válaszok kérése, amelyek csak bizonyos metaadatoknak felelnek meg.
 * Az egyes válaszok metaadataitól függően megkapja az összes választ, de a feldolgozás után.
@@ -45,7 +45,7 @@ Miután metaadatokat adott hozzá egy QnA-készlethez, az ügyfélalkalmazás a 
 
 ## <a name="add-additional-alternatively-phrased-questions"></a>További, alternatív kifejezésű kérdések hozzáadása
 
-Az aktuális tudásbázis rendelkezik a QnA Maker hibaelhárítási QnA készletek. Ezek a készletek akkor jöttek létre, amikor az URL-t hozzáadták a tudásbázishoz a létrehozási folyamat során.
+Az aktuális tudásbázis rendelkezik a QnA Maker hibaelhárítási QnA pár. Ezek a készletek akkor jöttek létre, amikor az URL-t hozzáadták a tudásbázishoz a létrehozási folyamat során.
 
 Az URL-cím importálásakor csak egy kérdés jött létre egy válaszal. Ebben az eljárásban adjon hozzá további kérdéseket.
 
@@ -82,7 +82,7 @@ Metaadatok hozzáadása a kérdés-válasz készlet lehetővé teszi, hogy az ü
 
 1. Válassza **a Nézet beállításai lehetőséget,** majd a **Metaadatok megjelenítése**lehetőséget.
 
-1. Az imént hozzáadott QnA készlethez válassza a **Metaadat-címkék hozzáadása**lehetőséget, majd adja hozzá a nevét `service` és `search`értékét. Úgy néz ki, mint ez: `service:search`.
+1. Az imént hozzáadott QnA-páresetében válassza a **Metaadat-címkék hozzáadása**lehetőséget, majd adja hozzá a nevét `service` és `search`értékét. Úgy néz ki, mint ez: `service:search`.
 
 1. Adjon hozzá egy másik metaadat-címkét a `link_in_answer` nevével és értékével. `false` Úgy néz ki, mint ez: `link_in_answer:false`.
 

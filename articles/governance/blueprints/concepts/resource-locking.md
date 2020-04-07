@@ -3,12 +3,12 @@ title: Az erőforrások zárolásának ismertetése
 description: Ismerje meg az Azure Blueprints zárolási lehetőségeit az erőforrások védelme érdekében a tervezet hozzárendelésekén.
 ms.date: 03/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: 86897ae6665f7a339b51aaae5f1c00144d8b7309
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 9c4e2f4c6fd8f5fb574002217ca71d1e7d130ff7
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437737"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676754"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Az erőforrások zárolásának megismerése az Azure Blueprints-ben
 
@@ -20,20 +20,20 @@ A konzisztens környezetek létrehozása csak akkor igazán értékes, ha van eg
 ## <a name="locking-modes-and-states"></a>Zárolási módok és állapotok
 
 A zárolási mód a tervezethozzárendelésre vonatkozik, és három lehetőség közül választhat: **Ne zároljon,** **csak olvasható**vagy ne törölje a **programot.** A zárolási mód a műtermék üzembe helyezése során van konfigurálva egy tervrajz-hozzárendelés során. A tervezethozzárendelés frissítésével egy másik zárolási mód állítható be.
-A zárolási módok azonban nem módosíthatók a Tervrajzokon kívül.
+A zárolási módok azonban nem módosíthatók az Azure Blueprints-en kívül.
 
 A tervezethozzárendelésben összetevők által létrehozott erőforrások négy állapottal rendelkeznek: **Nincs zárolva,** **írásvédett**, **nem szerkeszthető / törölhető,** vagy nem **törölhető.** Minden műterméktípus lehet **nem zárolt** állapotban. Az alábbi táblázat az erőforrások állapotának meghatározására használható:
 
 |Mód|Műtermék erőforrástípusa|Állapot|Leírás|
 |-|-|-|-|
-|Ne zárd be|*|Nincs zárolva|Az erőforrásokat nem védik a tervrajzok. Ez az állapot **írásvédett** vagy ne **törölje** az erőforráscsoport-összetevőt egy tervezet-hozzárendelésen kívülről hozzáadott erőforrásokhoz is.|
+|Ne zárd be|*|Nincs zárolva|Az erőforrásokat az Azure Blueprints nem védi. Ez az állapot **írásvédett** vagy ne **törölje** az erőforráscsoport-összetevőt egy tervezet-hozzárendelésen kívülről hozzáadott erőforrásokhoz is.|
 |Csak olvasási engedély|Erőforráscsoport|Nem lehet edinni / törölni|Az erőforráscsoport írásvédett, és az erőforráscsoport címkéi nem módosíthatók. **A nem zárolt** erőforrások hozzáadhatók, áthelyezhetők, módosíthatók vagy törölhetők ebből az erőforráscsoportból.|
 |Csak olvasási engedély|Nem erőforráscsoport|Csak olvasási engedély|Az erőforrás semmilyen módon nem módosítható – nincs enek, és nem törölhetők.|
 |Nincs törlés|*|Nem lehet törölni|Az erőforrások módosíthatók, de nem törölhetők. **A nem zárolt** erőforrások hozzáadhatók, áthelyezhetők, módosíthatók vagy törölhetők ebből az erőforráscsoportból.|
 
 ## <a name="overriding-locking-states"></a>A zárolási állapotok felülbírálása
 
-Általában lehetséges, hogy az előfizetésben megfelelő [szerepköralapú hozzáférés-vezérléssel](../../../role-based-access-control/overview.md) (RBAC) rendelkező személy, például a "Tulajdonos" szerepkör, bármely erőforrás tanuskodhat, hogy módosítson vagy töröljön bármely erőforrást. Ez a hozzáférés nem a dedikálási tervrajzok zárolása egy üzembe helyezett hozzárendelés részeként nem történt meg. Ha a hozzárendelés az **Írásvédett vagy** a **Ne törlése** beállítással lett beállítva, még az előfizetés tulajdonosa sem tudja végrehajtani a letiltott műveletet a védett erőforráson.
+Általában lehetséges, hogy az előfizetésben megfelelő [szerepköralapú hozzáférés-vezérléssel](../../../role-based-access-control/overview.md) (RBAC) rendelkező személy, például a "Tulajdonos" szerepkör, bármely erőforrás tanuskodhat, hogy módosítson vagy töröljön bármely erőforrást. Ez a hozzáférés nem így van, ha az Azure Blueprints egy üzembe helyezett hozzárendelés részeként zárolást alkalmaz. Ha a hozzárendelés az **Írásvédett vagy** a **Ne törlése** beállítással lett beállítva, még az előfizetés tulajdonosa sem tudja végrehajtani a letiltott műveletet a védett erőforráson.
 
 Ez a biztonsági intézkedés védi a megadott tervterv konzisztenciáját és azt a környezetet, amelyet a véletlen vagy programozott törlésvagy módosítás létrehozásához terveztek.
 
@@ -97,11 +97,11 @@ Ha szükségessé válik egy hozzárendelés által védett erőforrás módosí
 - A tervrajz-hozzárendelés frissítése a **Nincs zárolás** zárolása üzemmódba
 - A tervhozzárendelés törlése
 
-A hozzárendelés eltávolításakor a tervrajzok által létrehozott zárolások törlődnek. Az erőforrás azonban hátramarad, és normál módon törölni kell.
+A hozzárendelés eltávolításakor az Azure Blueprints által létrehozott zárolások törlődnek. Az erőforrás azonban hátramarad, és normál módon törölni kell.
 
 ## <a name="how-blueprint-locks-work"></a>A tervrajzok zárolásának munkálatai
 
-Az RBAC [megtagadási hozzárendelések megtagadási](../../../role-based-access-control/deny-assignments.md) művelete a műtermék-erőforrásokra vonatkozik a tervtervezet hozzárendelése során, ha a hozzárendelés az **Írásvédett vagy** a **Ne törölje** beállítást választotta. A megtagadási művelet et a blueprint-hozzárendelés felügyelt identitása adja hozzá, és csak ugyanazzal a felügyelt identitással távolítható el a műtermék-erőforrásokból. Ez a biztonsági intézkedés kényszeríti a zárolási mechanizmust, és megakadályozza a tervrajzok zárolásának eltávolítását a tervrajzokon kívül.
+Az RBAC [megtagadási hozzárendelések megtagadási](../../../role-based-access-control/deny-assignments.md) művelete a műtermék-erőforrásokra vonatkozik a tervtervezet hozzárendelése során, ha a hozzárendelés az **Írásvédett vagy** a **Ne törölje** beállítást választotta. A megtagadási művelet et a blueprint-hozzárendelés felügyelt identitása adja hozzá, és csak ugyanazzal a felügyelt identitással távolítható el a műtermék-erőforrásokból. Ez a biztonsági intézkedés kényszeríti a zárolási mechanizmust, és megakadályozza a tervezet zárolásának eltávolítását az Azure Blueprints-en kívül.
 
 ![Blueprint megtagadása hozzárendelés erőforráscsoport](../media/resource-locking/blueprint-deny-assignment.png)
 

@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 6b44d9fd0bdd6e4b41013373472b5882a7ca1434
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73b1d93cc7f6325a5319b632aa7f827d9ee6303c
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286591"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745048"
 ---
 # <a name="iot-edge-module-offer-publishing-overview"></a>Az IoT Edge modul közzétételi áttekintést kínál
+
+>[!Important]
+>2020. március 30-tól megkezdjük az IoT Edge modulajánlatok kezelését a Partner Centerbe. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [IoT Edge-modulajánlat létrehozása](https://aka.ms/AzureCreateIoT) az áttelepített ajánlatok kezeléséhez kövesse az utasításokat.
 
 <table> <tr> <td>Ez a szakasz bemutatja, hogyan tehet közzé egy új Azure IoT Edge-modulajánlatot a Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Piactéren.</a> Az IoT Edge-modul egy Docker-kompatibilis tároló, amely ioT Edge-eszközön való futtatásra készült. Az Azure IoT Edge-modulok az IoT Edge által kezelt legkisebb számítási egység, és tartalmazhatnak Azure-szolgáltatásokat vagy egyéni megoldáskódot. </td> <td><img src="./media/iotedge-icon1.png"  alt="Azure IoT Edge module icon" /></td> </tr> </table>
 

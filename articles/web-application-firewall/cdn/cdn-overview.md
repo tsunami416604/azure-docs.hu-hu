@@ -7,19 +7,19 @@ ms.service: web-application-firewall
 ms.topic: overview
 ms.date: 03/18/2020
 ms.author: victorh
-ms.openlocfilehash: 559ce4d1500dc5f1b67a3b3dbdbeb5d8dda7e487
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 28cf8d9fd60cc6fc158812aa0a1dff3a4b0dced1
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79485852"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754296"
 ---
 # <a name="azure-web-application-firewall-on-azure-content-delivery-network"></a>Azure webalkalmazás-tűzfal az Azure tartalomkézbesítési hálózatán
 
-Az Azure Web Application Firewall (WAF) az Azure Content Delivery Network (CDN) központi védelmet nyújt a webes tartalom. A WAF megvédi a webes szolgáltatásokat a gyakori biztonsági rések és biztonsági rések ellen. A szolgáltatás magas rendelkezésre állású marad a felhasználók számára, és segít a megfelelőségi követelmények teljesítésében.
+Az Azure Web Application Firewall (WAF) az Azure Content Delivery Network (CDN) a Microsoft központi védelmet nyújt a webes tartalom. A WAF megvédi a webes szolgáltatásokat a gyakori biztonsági rések és biztonsági rések ellen. A szolgáltatás magas rendelkezésre állású marad a felhasználók számára, és segít a megfelelőségi követelmények teljesítésében.
 
 > [!IMPORTANT]
-> Waf az Azure CDN jelenleg nyilvános előzetes verzióban, és egy előzetes szolgáltatásiszint-szerződés biztosított. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.  A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Waf az Azure CDN-ben a Microsoft jelenleg nyilvános előzetes verzióban, és egy előzetes szolgáltatásiszint-szerződés biztosított. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.  A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A WAF az Azure CDN-en egy globális és központosított megoldás. Az Azure hálózati peremhálózati helyeken világszerte telepítve van. A WAF megakadályozza a támadási forrásokhoz közeli rosszindulatú támadásokat, mielőtt azok elérnék az eredetét. A teljesítmény feláldozása nélkül globális védelmet kap. 
 

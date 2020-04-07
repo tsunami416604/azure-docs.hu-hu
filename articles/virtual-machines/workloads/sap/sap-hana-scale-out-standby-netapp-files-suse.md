@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/10/2020
+ms.date: 04/06/2020
 ms.author: radeltch
-ms.openlocfilehash: c594ef3a62d45fb68002ec2b21fb89115f7a30af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b584341931299e408b596bd6a66d1da4580cfffe
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77565808"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754780"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>SAP HANA horizontális felskálázási rendszer üzembe helyezése készenléti csomókkal az Azure virtuális gépein az Azure NetApp-fájlok használatával a SUSE Linux Enterprise Server en 
 
@@ -83,7 +83,6 @@ Mielőtt elkezdené, olvassa el a következő SAP-jegyzeteket és dokumentumokat
 * [SUSE SAP HA gyakorlati útmutatók][suse-ha-guide]: Tartalmazza az összes szükséges információt a NetWeaver magas rendelkezésre állású és SAP HANA rendszerreplikáció helyszíni beállításához (általános alapkonfigurációként való használatra; sokkal részletesebb információkat nyújtanak)
 * [SUSE high availability Extension 12 SP3 kiadási megjegyzések][suse-ha-12sp3-relnotes]
 * [NetApp SAP-alkalmazások a Microsoft Azure-ban az Azure NetApp-fájlok használatával][anf-sap-applications-azure]
-* [SAP HANA a Hálózati fájlrendszerrel (NFS) rendelkező NetApp-rendszereken:](https://www.netapp.com/us/media/tr-4435.pdf)Konfigurációs útmutató, amely az SAP HANA beállításával kapcsolatos információkat tartalmazza a NetApp-alapú Azure NFS használatával
 
 
 ## <a name="overview"></a>Áttekintés
@@ -334,7 +333,7 @@ Konfigurálja és készítse elő az operációs rendszert az alábbi lépésekk
 
     A módosítások aktiválásához indítsa újra a virtuális gépet.  
 
-3. **[A]** Készítse elő az operációs rendszert az SAP HANA nFS-es netapp rendszereken való futtatására, ahogy azt a [NetApp AFF Systems NFS konfigurációs útmutatóval rendelkező SAP HANA szolgáltatása ismerteti.](https://www.netapp.com/us/media/tr-4435.pdf) Hozzon létre konfigurációs fájlt */etc/sysctl.d/netapp-hana.conf* a NetApp konfigurációs beállításaihoz.  
+3. **[A]** Készítse elő az operációs rendszert az SAP HANA nfs-alapú NetApp Systems rendszeren való futtatására, ahogy azt a [NetApp SAP-alkalmazások a Microsoft Azure-ban az Azure NetApp-fájlok használatával][anf-sap-applications-azure]ismertetik. Hozzon létre konfigurációs fájlt */etc/sysctl.d/netapp-hana.conf* a NetApp konfigurációs beállításaihoz.  
 
     <pre><code>
     vi /etc/sysctl.d/netapp-hana.conf
@@ -368,7 +367,7 @@ Konfigurálja és készítse elő az operációs rendszert az alábbi lépésekk
     vm.swappiness=10
     </code></pre>
 
-4. **[A]** Állítsa be a sunrpc beállításokat, ahogy azt az [SAP HANA a NetApp AFF Systems NFS konfigurációs útmutató .](https://www.netapp.com/us/media/tr-4435.pdf)  
+4. **[A]** Állítsa be a sunrpc beállításokat, ahogy azt a NetApp SAP alkalmazások a [Microsoft Azure-ban az Azure NetApp Files használatával][anf-sap-applications-azure].  
 
     <pre><code>
     vi /etc/modprobe.d/sunrpc.conf
@@ -637,7 +636,7 @@ Ebben a példában az SAP HANA üzembe helyezéséhez horizontális felskáláz�
    - `async_write_submit_active`**bekapcsolva**
    - `async_write_submit_blocks`**minden**
 
-   További információ: [SAP HANA on NetApp AFF Systems with NFS Configuration Guide](https://www.netapp.com/us/media/tr-4435.pdf). 
+   További információ: [NetApp SAP Applications on Microsoft Azure using Azure using Azure.][anf-sap-applications-azure] 
 
    Az SAP HANA 2.0 rendszerekkel kezdve `global.ini`a paramétereket a rendszerben állíthatja be. További információ: SAP Note [1999930](https://launchpad.support.sap.com/#/notes/1999930).  
    
@@ -855,5 +854,4 @@ Ebben a példában az SAP HANA üzembe helyezéséhez horizontális felskáláz�
 * [Az Azure virtuális gépek tervezése és megvalósítása az SAP-hoz][planning-guide]
 * [Az Azure virtuális gépek üzembe helyezése az SAP-hoz][deployment-guide]
 * [Az Azure virtual machines DBMS üzembe helyezése az SAP-hoz][dbms-guide]
-* Ha meg szeretné tudni, hogyan hozhat létre magas rendelkezésre állást, és tervezze meg az SAP HANA vészutáni helyreállítását az Azure-ban (nagy példányok), tekintse meg az [SAP HANA (nagy példányok) magas rendelkezésre állású és vész-helyreállítási az Azure-ban.](hana-overview-high-availability-disaster-recovery.md)
 * Ha meg szeretné tudni, hogyan hozhat létre magas rendelkezésre állást, és tervezze meg az SAP HANA vészutáni helyreállítását az Azure virtuális gépeken, olvassa el [az SAP HANA magas rendelkezésre állását az Azure virtuális gépeken (VM) című témakört.][sap-hana-ha]

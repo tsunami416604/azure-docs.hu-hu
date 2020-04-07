@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 04/02/2020
-ms.openlocfilehash: 074b547917b65a411d2b1d1b2f094156828eef78
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 03bfee258fe96d90c32b6a305b99856a11d9a087
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631382"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754986"
 ---
 # <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>Mi az Azure Data Science virtuális gép Linux és Windows?
 
@@ -26,7 +26,7 @@ A DSVM a következő oldalon érhető el:
 + **Windows Server 2019**
 + **Ubuntu 18.04 LTS**
 + Windows Server 2016
-+ Ubuntu 16.04 LTS és CentOS 7.4
++ Ubuntu 16.04 LTS
 
 > [!NOTE]
 > A deep learning minden virtuálisgép-eszköze be van hajtva az adatelemzési virtuális gépbe. 
@@ -68,9 +68,9 @@ A DSVM segítségével új adatelemzési [eszközöket](./tools-included.md)ért
 
 A DSVM-ben a betanítási modellek mélytanulási algoritmusokat használhatnak a grafikus feldolgozó egységeken (GPU-k) alapuló hardveren. Az Azure platform virtuális gépméretezési képességeinek kihasználásával a DSVM segít a GPU-alapú hardver ek használatával a felhőben az igényeinek megfelelően. A GPU-alapú virtuális gépre válthat nagy modellek betanításakor, vagy ha nagy sebességű számításokra van szüksége, miközben ugyanazt az operációsrendszert tartja. Bármelyik N sorozatú GPU-kompatibilis virtuálisgép-sus-t választhatd DSVM-mel. Kérjük, vegye figyelembe, hogy az ingyenes Azure-fiókok nem támogatják a GPU-kompatibilis virtuálisgép-skus-okat.
 
-A DSVM Windows Server 2016 kiadása előre telepítve van a mélytanulási keretrendszerek GPU-illesztőprogramjaival, keretrendszerekkel és GPU-verzióival. A Linux kiadásban a GPU-k mély tanulása mind a CentOS, mind az Ubuntu DSVM-eken engedélyezve van. 
+A DSVM Windows-kiadásai előre telepítve vannak a mélytanulási keretrendszerek GPU-illesztőprogramjaival, keretrendszerekkel és GPU-verzióival. A Linux kiadásban a GPU-k mély tanulása engedélyezve van az Ubuntu DSVMs-en. 
 
-A DSVM Ubuntu, CentOS vagy Windows 2016 kiadását is telepítheti egy olyan Azure-beli virtuális gépre, amely nem GPU-kon alapul. Ebben az esetben az összes deep learning keretrendszerek esnek vissza a CPU módban.
+A DSVM Ubuntu vagy Windows kiadásait is telepítheti egy olyan Azure virtuális gépre, amely nem GPU-kon alapul. Ebben az esetben az összes deep learning keretrendszerek esnek vissza a CPU módban.
 
 [További információ az elérhető mélytanulásról és a a mi keretrendszerekről.](dsvm-tools-deep-learning-frameworks.md)
 
@@ -89,5 +89,4 @@ További információ az alábbi cikkekkel:
 
 + Linux:
   + [LinuxOs DSVM (Ubuntu) beállítása](dsvm-ubuntu-intro.md)
-  + [Linuxos DSVM (CentOS) beállítása](linux-dsvm-intro.md)
   + [Adattudomány Linux DSVM-en](linux-dsvm-walkthrough.md)

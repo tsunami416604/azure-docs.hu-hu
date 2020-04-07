@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 251fdb83e848aaac3a5391320df23149ce1bce33
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: d2e2fdb181b553d330368b043b75159e211dd0d2
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633051"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745131"
 ---
 # <a name="restore-a-deleted-sql-pool-using-azure-synapse-analytics"></a>Törölt SQL-készlet visszaállítása az Azure Synapse Analytics használatával
 
@@ -30,9 +30,9 @@ Ebben a cikkben megtudhatja, hogy az Azure Portalon vagy a PowerShell használat
 
 ## <a name="restore-a-deleted-data-warehouse-through-powershell"></a>Törölt adattárház visszaállítása a PowerShellen keresztül
 
-Törölt SQL-készlet visszaállításához használja a [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) parancsmagát. Ha a megfelelő logikai kiszolgálót is törölték, az adattárház nem állítható vissza.
+Törölt SQL-készlet visszaállításához használja a [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) parancsmagát. Ha a megfelelő logikai kiszolgálót is törölték, az adattárház nem állítható vissza.
 
-1. Mielőtt elkezdené, telepítse [az Azure PowerShellt.](https://docs.microsoft.com/powershell/azure/overview)
+1. Mielőtt elkezdené, telepítse [az Azure PowerShellt.](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 2. Nyissa meg a PowerShellt.
 3. Csatlakozzon az Azure-fiókjához, és sorolja fel a fiókjához társított összes előfizetést.
 4. Válassza ki a visszaállítandó törölt adatraktárt tartalmazó előfizetést.

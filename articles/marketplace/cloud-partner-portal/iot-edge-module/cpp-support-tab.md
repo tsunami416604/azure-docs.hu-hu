@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 439de17ef9eb9c0c2c264884652236d47600b8ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 306f13cbc83c0c48ce1c90581762275a86dfcb90
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286506"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743969"
 ---
 # <a name="iot-edge-module-support-tab"></a>IoT Edge modul támogatása lap
+
+>[!Important]
+>2020. március 30-tól megkezdjük az IoT Edge modulajánlatok kezelését a Partner Centerbe. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [IoT Edge-modulajánlat létrehozása](https://aka.ms/AzureCreateIoT) az áttelepített ajánlatok kezeléséhez kövesse az utasításokat.
 
 Az **Új ajánlat** lap **Támogatás** lapján technikai és felhasználói támogatási erőforrásokat biztosíthat az ajánlathoz.  A támogatási űrlapon a következő beviteli területek találhatók: **Mérnöki kapcsolat**, **Ügyfélszolgálat**és **Támogatási URL-ek**. A mezőnévhez csatolt csillag (*) azt jelzi, hogy szükség van rá.
 

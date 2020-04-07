@@ -1,15 +1,15 @@
 ---
 title: Az Azure Blockchain szolgáltatás korlátai
 description: A szolgáltatás és a funkcionális korlátok áttekintése az Azure Blockchain szolgáltatásban
-ms.date: 03/30/2020
+ms.date: 04/02/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
-ms.openlocfilehash: c728e617ac37795988cd596c7cb0c5025aac4ccf
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 71e1bebf10fa0142870d03977182472da1ad031f
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529571"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676519"
 ---
 # <a name="limits-in-azure-blockchain-service"></a>Korlátok az Azure Blockchain szolgáltatásban
 
@@ -35,7 +35,6 @@ A tagság létrehozása után nem támogatott a tarifacsomag alap- és szabvány
 A főkönyvi adatokhoz és naplókhoz csomópontonként használható tárterület maximális mennyisége 1,8 terabájt.
 
 A főkönyvi és a naplótár méretének csökkentése nem támogatott.
-
 ## <a name="consortium-limits"></a>Konzorciumi korlátok
 
 * **A konzorcium- és tagneveknek egyedinek kell lenniük** az Azure Blockchain szolgáltatásban szereplő más konzorciumi és tagnevekből.
@@ -59,6 +58,12 @@ A főkönyvi és a naplótár méretének csökkentése nem támogatott.
 * **A konzorcium minden tagjának ugyanazt a főkönyvi verziót kell használnia.**
 
     Az Azure Blockchain Szolgáltatásban elérhető javításokról, frissítésekről és főkönyvi verziókról a [Javítás, a frissítések és](ledger-versions.md)a verziók című témakörben talál további információt.
+
+## <a name="performance"></a>Teljesítmény
+
+Ne használjon *eth.estimate* gas függvényt minden tranzakcióbeküldéséhez. Az *eth.estimate* függvény memóriaigényes. Ha többször hívja a függvényt, az jelentősen csökkenti a másodpercenkénti tranzakciókat.
+
+Ha lehetséges, használjon konzervatív gázértéket a tranzakciók benyújtásához, és minimalizálja az *eth.estimate*használatát .
 
 ## <a name="next-steps"></a>További lépések
 

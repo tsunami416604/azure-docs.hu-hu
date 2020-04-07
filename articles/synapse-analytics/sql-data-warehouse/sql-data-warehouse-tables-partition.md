@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 4e19c20036d74752b75a668d6a37c46ef1b008e6
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 368276f75128c80b8df326a26acf26c841e9f68a
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583184"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742690"
 ---
 # <a name="partitioning-tables-in-synapse-sql-pool"></a>Particionáló táblák a Synapse SQL-készletben
 
@@ -46,9 +46,9 @@ Partíciók létrehozásakor a **fürtözött oszlopcentrikus** táblák, fontos
 
 ## <a name="syntax-differences-from-sql-server"></a>Szintaktikai különbségek az SQL Server kiszolgálóval szemben
 
-A Szinapszis SQL-készlet bevezeti az SQL Servernél egyszerűbb partíciók definiálásának módját. A particionálási függvények és sémák nem használatosak a Szinapszis SQL-készletében, mivel az SQL Server ben vannak. Ehelyett mindössze annyit kell tennie, hogy azonosítja a particionált oszlopot és a határpontokat. Bár a particionálás szintaxisa némileg eltérhet az SQL Servertől, az alapfogalmak megegyeznek. Az SQL Server és a Synapse SQL-készlet táblaként egy partícióoszlopot támogat, amely tartományban lévő partíció. A particionálásról a [Particionált táblák és indexek témakörben olvashat bővebben.](/sql/relational-databases/partitions/partitioned-tables-and-indexes)
+A Szinapszis SQL-készlet bevezeti az SQL Servernél egyszerűbb partíciók definiálásának módját. A particionálási függvények és sémák nem használatosak a Szinapszis SQL-készletében, mivel az SQL Server ben vannak. Ehelyett mindössze annyit kell tennie, hogy azonosítja a particionált oszlopot és a határpontokat. Bár a particionálás szintaxisa némileg eltérhet az SQL Servertől, az alapfogalmak megegyeznek. Az SQL Server és a Synapse SQL-készlet táblaként egy partícióoszlopot támogat, amely tartományban lévő partíció. A particionálásról a [Particionált táblák és indexek témakörben olvashat bővebben.](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-A következő példa a [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) utasítást használja az OrderDateKey oszlop FactInternetSales táblájának particionálásához:
+A következő példa a [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) utasítást használja az OrderDateKey oszlop FactInternetSales táblájának particionálásához:
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales]
@@ -78,8 +78,8 @@ WITH
 
 SQL Server partíciódefiníciók áttelepítése a Synapse SQL-készletbe egyszerűen:
 
-- Szüntesse meg az SQL Server [partíciósémát](/sql/t-sql/statements/create-partition-scheme-transact-sql).
-- Adja hozzá a [partíciófüggvény-definíciót](/sql/t-sql/statements/create-partition-function-transact-sql) a CREATE TABLE függvényhez.
+- Szüntesse meg az SQL Server [partíciósémát](/sql/t-sql/statements/create-partition-scheme-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+- Adja hozzá a [partíciófüggvény-definíciót](/sql/t-sql/statements/create-partition-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) a CREATE TABLE függvényhez.
 
 Ha egy particionált táblát egy SQL Server-példányból telepít át, a következő SQL segíthet kitalálni az egyes partíciók sorainak számát. Ne feledje, hogy ha ugyanazt a particionálási granularitást használja a synapse SQL-készlet, a sorok száma partíciónként 60-kal csökken.  
 
@@ -119,7 +119,7 @@ GROUP BY    s.[name]
 
 ## <a name="partition-switching"></a>Partícióváltás
 
-A Synapse SQL-készlet támogatja a partíciók felosztását, egyesítését és váltását. Ezen függvények mindegyike az [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql) utasításhasználatával történik.
+A Synapse SQL-készlet támogatja a partíciók felosztását, egyesítését és váltását. Ezen függvények mindegyike az [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) utasításhasználatával történik.
 
 A partíciók két tábla közötti váltásához gondoskodnia kell arról, hogy a partíciók a saját határaikhoz igazodjanak, és hogy a tábladefiníciók egyeznek.To switch partitions between two tables, you must ensure that the partitions align on their their boundaries and that the table definitions match. Mivel az ellenőrzési megkötések nem érhetők el a tábla értéktartományának kényszerítéséhez, a forrástáblának ugyanazokat a partícióhatárokat kell tartalmaznia, mint a céltáblának. Ha a partíció határai nem azonosak, akkor a partíciókapcsoló sikertelen lesz, mivel a partíció metaadatai nem lesznek szinkronizálva.
 
@@ -344,4 +344,3 @@ Ezzel a megközelítéssel a kód a forrásvezérlőben statikus marad, és a pa
 ## <a name="next-steps"></a>További lépések
 
 A táblázatok fejlesztéséről a Táblázat áttekintése című témakörben [olvashat bővebben.](sql-data-warehouse-tables-overview.md)
-

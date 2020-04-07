@@ -4,12 +4,12 @@ description: Csatolt sablon központi telepítése
 ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 70a09315b0947f41e7602e630460cb3e674a7bf8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 177a994450b6ffe5489a8c95c3b484521fd9b77b
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80082243"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672919"
 ---
 # <a name="tutorial-deploy-a-linked-template"></a>Oktatóanyag: Csatolt sablon telepítése
 
@@ -91,7 +91,10 @@ Privát sablon központi telepítése egy tárfiókban, hozzon létre egy SAS-jo
 
 Ha még nem hozta létre az erőforráscsoportot, olvassa el az Erőforráscsoport létrehozása című [témakört.](./deployment-tutorial-local-template.md#create-resource-group)
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+> [!NOTE]
+> Az alábbi Azure CLI-kódban a -d dátumparaméter érvénytelen argumentum lenne a macOS rendszerben. Tehát a macOS felhasználók, hogy 2 óra legyen az aktuális időhöz a macOS terminálján, a -v+2H-t kell használnia.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 

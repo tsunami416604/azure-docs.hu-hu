@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 692834903899448707200b24a955301e29e14f90
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 56c53b9e2388cc0594076a5ef35b072216aec20d
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478455"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672738"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>A VMware VM/physical server vész-helyreállítási konfigurációs kiszolgálójának kezelése
 
@@ -93,6 +93,32 @@ Az Open Virtualization Format (OVF) sablon egyetlen hálózati adapterrel telep�
 - Hozzáadhat [egy további adaptert a virtuális géphez,](vmware-azure-deploy-configuration-server.md#add-an-additional-adapter)de hozzá kell adnia, mielőtt regisztrálna a konfigurációs kiszolgálót a tárolóban.
 - Adapter hozzáadása után a konfigurációs kiszolgáló a tárolóban, adja hozzá az adaptert a virtuális gép tulajdonságai. Ezután [újra regisztrálnia](#reregister-a-configuration-server-in-the-same-vault) kell a kiszolgálót a tárolóban.
 
+## <a name="how-to-renew-ssl-certificates"></a>Az SSL-tanúsítványok megújítása
+
+A konfigurációs kiszolgáló beépített webkiszolgálóval rendelkezik, amely a mobilitási ügynökök tevékenységeit összes védett gépen, beépített/kibővített folyamatkiszolgálókon és fő célkiszolgálókon vezényli. A webkiszolgáló SSL-tanúsítványt használ az ügyfelek hitelesítéséhez. A tanúsítvány három év után lejár, és bármikor megújítható.
+
+### <a name="check-expiry"></a>Lejárat ellenőrzése
+
+A lejárati dátum a **Konfigurációs kiszolgáló állapota**alatt jelenik meg. A konfigurációs kiszolgáló 2016 májusa előtti telepítéseesetén a tanúsítvány lejárata egy évre volt állítva. Ha lejárt a tanúsítványa, a következő jelenség következik be:
+
+- Ha a lejárati idő legkét hónap vagy annál kevesebb, a szolgáltatás megkezdi az értesítések küldését a portálon, és e-mailben (ha feliratkozott a Site Recovery értesítésekre).
+- Egy értesítési szalagcím jelenik meg a tároló erőforráslapján. További információért válassza ki a szalagcímet.
+- Ha megjelenik a **Frissítés most** gomb, az azt jelzi, hogy a környezet egyes összetevői nem lettek frissítve a 9.4.xxxx.x vagy újabb verzióra. Frissítse az összetevőket a tanúsítvány megújítása előtt. Régebbi verziókon nem újítható meg.
+
+### <a name="if-certificates-are-yet-to-expire"></a>Ha a tanúsítványok még nem jártak le
+
+1. A megújításhoz nyissa meg a **Site Recovery Infrastructure** > **Configuration Server kiszolgálót**a tárolóban. Válassza ki a szükséges konfigurációs kiszolgálót.
+2. Győződjön meg arról, hogy az összes összetevő kibővített folyamatkiszolgálói, fő célkiszolgálói és mobilitási ügynökei az összes védett gépen a legújabb verziókon vannak, és csatlakoztatott állapotban vannak.
+3. Most válassza **a Tanúsítványok megújítása**lehetőséget.
+4. Gondosan kövesse az ezen a lapon található utasításokat, és kattintson az ok gombra a tanúsítványok megújításához a kiválasztott konfigurációs kiszolgálón, és ez a hozzá juk tartozó összetevők.
+
+### <a name="if-certificates-have-already-expired"></a>Ha a tanúsítványok már lejártak
+
+1. A lejárat után a tanúsítványok **nem újíthatók meg az Azure Portalról.** A folytatás előtt győződjön meg arról, hogy az összes összetevő kibővített folyamatkiszolgálója, fő célkiszolgálója és mobilitási ügynöke ia legújabb verziókon vannak, és csatlakoztatott állapotban vannak.
+2. **Csak akkor kövesse ezt az eljárást, ha a tanúsítványok már lejártak.** Jelentkezzen be a konfigurációs kiszolgálóra, keresse meg a C meghajtót, > a Program Data > Site Recovery > otthoni > svsystems > bin és a "RenewCerts" végrehajtó eszköz rendszergazdaként való végrehajtása.
+3. Megjelenik egy PowerShell-végrehajtási ablak, és elindítja a tanúsítványok megújítását. A művelet akár 15 percet is igénybe vehet. Ne zárja be az ablakot a megújítás befejezéséig.
+
+:::image type="content" source="media/vmware-azure-manage-configuration-server/renew-certificates.png" alt-text="RenewCertificates (Tanúsítványok megújítása)":::
 
 ## <a name="reregister-a-configuration-server-in-the-same-vault"></a>Konfigurációs kiszolgáló újraregisztrálása ugyanabban a tárolóban
 
@@ -112,7 +138,7 @@ Szükség esetén újra regisztrálhatja újra a konfigurációs kiszolgálót u
    ```
 
     >[!NOTE]
-    >Annak érdekében, hogy **a legújabb tanúsítványokat a konfigurációs** kiszolgálóról a horizontális felskálázási folyamatkiszolgálóra szeretné lehallgatni, hajtsa végre a " *\<Installation Drive\Microsoft Azure Site Recovery\agent\cdpcli.exe>" --registermt parancsot*
+    >Annak érdekében, hogy **a legújabb tanúsítványokat a konfigurációs** kiszolgálóról a horizontális felskálázási folyamatkiszolgálóra szeretné lehallgatni, hajtsa végre a " *\<Installation Drive\Microsoft Azure Site Recovery\agent\cdpcli.exe>"-registermt*
 
 8. Végül indítsa újra az obengine-t a következő parancs végrehajtásával.
    ```
@@ -269,24 +295,6 @@ A konfigurációs kiszolgálót a PowerShell használatával is törölheti.
 2. A könyvtár bin mappára való módosításához hajtsa végre a **%ProgramData%\ASR\home\svsystems\bin parancscd-t**
 3. A jelszófájl létrehozásához hajtsa végre a **genpassphrase.exe -v > MobSvc.passphrase fájlt.**
 4. A jelszó a **%ProgramData%\ASR\home\svsystems\bin\MobSvc.passphrase mappában**található fájlban lesz tárolva.
-
-## <a name="renew-tlsssl-certificates"></a>TLS/SSL-tanúsítványok megújítása
-
-A konfigurációs kiszolgáló beépített webkiszolgálóval rendelkezik, amely a mobilitási szolgáltatás, a folyamatkiszolgálók és a hozzá csatlakoztatott fő célkiszolgálók tevékenységeit vezényli. A webkiszolgáló TLS/SSL-tanúsítványt használ az ügyfelek hitelesítéséhez. A tanúsítvány három év után lejár, és bármikor megújítható.
-
-### <a name="check-expiry"></a>Lejárat ellenőrzése
-
-A konfigurációs kiszolgáló 2016 májusa előtti telepítéseesetén a tanúsítvány lejárata egy évre volt állítva. Ha lejárt a tanúsítványa, a következő jelenség következik be:
-
-- Ha a lejárati idő legkét hónap vagy annál kevesebb, a szolgáltatás megkezdi az értesítések küldését a portálon, és e-mailben (ha feliratkozott a Site Recovery értesítésekre).
-- Egy értesítési szalagcím jelenik meg a tároló erőforráslapján. További információért válassza ki a szalagcímet.
-- Ha megjelenik a **Frissítés most** gomb, az azt jelzi, hogy a környezet egyes összetevői nem lettek frissítve a 9.4.xxxx.x vagy újabb verzióra. Frissítse az összetevőket a tanúsítvány megújítása előtt. Régebbi verziókon nem újítható meg.
-
-### <a name="renew-the-certificate"></a>A tanúsítvány megújítása
-
-1. A tárolóban nyissa meg a **Site Recovery Infrastructure** > **Configuration Server kiszolgálót.** Válassza ki a szükséges konfigurációs kiszolgálót.
-2. A lejárati dátum a **Konfigurációs kiszolgáló állapota**alatt jelenik meg.
-3. Válassza **a Tanúsítványok megújítása**lehetőséget.
 
 ## <a name="refresh-configuration-server"></a>Konfigurációs kiszolgáló frissítése
 

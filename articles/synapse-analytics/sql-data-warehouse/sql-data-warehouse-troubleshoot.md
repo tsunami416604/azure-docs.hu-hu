@@ -11,12 +11,12 @@ ms.date: 02/04/2019
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: b24706943cdf59fba89a8007c4914b628b9e34d5
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 973d2339db1e55f2cca45025f2d678e5126f4317
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632968"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743671"
 ---
 # <a name="troubleshooting-sql-analytics-in-azure-synapse"></a>Az SQL Analytics hibaelhárítása az Azure Synapse-ban
 
@@ -30,13 +30,13 @@ Ez a cikk a gyakori hibaelhárítási kérdéseket sorolja fel.
 | A „MyUserName” kiszolgálói tag a jelenlegi biztonsági környezetben nem tud hozzáférni a „master” adatbázishoz. Nem lehet megnyitni a felhasználói alapértelmezett adatbázist. A bejelentkezés sikertelen volt. A következő felhasználó bejelentkezése nem sikerült: „MyUserName”. (Microsoft SQL Server, Hiba: 916) | Ez a hiba akkor fordul elő, amikor egy Azure AD-felhasználó megpróbál csatlakozni a fő adatbázishoz, de nincs felhasználó a fő.  A probléma megoldásához adja meg azt az SQL-készletet, amelyhez a kapcsolat idején csatlakozni kíván, vagy adja hozzá a felhasználót a fő adatbázishoz.  További részletek a [Biztonság áttekintése](sql-data-warehouse-overview-manage-security.md) című cikkben találhatók. |
 | CTAIP hiba                                                  | Ez a hiba akkor fordulhat elő, ha az SQL-kiszolgáló főadatbázisában létrehozott bejelentkezést hoztak létre, de az SQL-adatbázisban nem.  Ha ez a hiba, tekintse meg a [Biztonság áttekintése](sql-data-warehouse-overview-manage-security.md) cikket.  Ez a cikk bemutatja, hogyan hozhat létre bejelentkezési és felhasználói főkiszolgálót, majd hogyan hozhat létre felhasználót az SQL-adatbázisban. |
 | Tűzfal blokkolja                                          | Az SQL-készleteket tűzfalak védik, így csak az ismert IP-címek férnek hozzá az adatbázishoz. A tűzfalak alapértelmezés szerint biztonságosak, ami azt jelenti, hogy a csatlakozás előtt explicit módon engedélyeznie kell az IP-címet vagy címtartományt.  A tűzfal hozzáférésre való beállításához kövesse a [Kiszolgáló tűzfal-hozzáférésének konfigurálása az ügyfél IP-címéhez](create-data-warehouse-portal.md) című, [a kiépítési utasításokban](create-data-warehouse-portal.md)leírt lépéseket. |
-| Nem lehet csatlakozni az eszközhöz vagy az illesztőprogramhoz                           | A Synapse SQL-készlet [az SSMS](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15), [az SSDT for Visual Studio](sql-data-warehouse-install-visual-studio.md)vagy az [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) használatát javasolja az adatok lekérdezéséhez. Az illesztőprogramokkal és az Azure Synapse-hoz való csatlakozásról az [Azure Synapse-illesztőprogramok](sql-data-warehouse-connection-strings.md) és [az Azure Synapse-cikkek csatlakoztatása](sql-data-warehouse-connect-overview.md) című témakörben talál további információt. |
+| Nem lehet csatlakozni az eszközhöz vagy az illesztőprogramhoz                           | A Synapse SQL-készlet [az SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [az SSDT for Visual Studio](sql-data-warehouse-install-visual-studio.md)vagy az [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) használatát javasolja az adatok lekérdezéséhez. Az illesztőprogramokkal és az Azure Synapse-hoz való csatlakozásról az [Azure Synapse-illesztőprogramok](sql-data-warehouse-connection-strings.md) és [az Azure Synapse-cikkek csatlakoztatása](sql-data-warehouse-connect-overview.md) című témakörben talál további információt. |
 
 ## <a name="tools"></a>Eszközök
 
 | Probléma                                                        | Megoldás:                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| A Visual Studio objektumkezelőből hiányoznak az Azure AD-felhasználók           | Ez egy ismert probléma.  Kerülő megoldásként tekintse meg a felhasználókat a [sys.database_principals.](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?view=sql-server-ver15)  Az [Azure Active](sql-data-warehouse-authentication.md) Directory Synapse-alapú hitelesítés című témakörben olvashat bővebben az Azure Active Directory Synapse SQL-készlettel való használatáról. |
+| A Visual Studio objektumkezelőből hiányoznak az Azure AD-felhasználók           | Ez egy ismert probléma.  Kerülő megoldásként tekintse meg a felhasználókat a [sys.database_principals.](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  Az [Azure Active](sql-data-warehouse-authentication.md) Directory Synapse-alapú hitelesítés című témakörben olvashat bővebben az Azure Active Directory Synapse SQL-készlettel való használatáról. |
 | A kézi parancsfájlok használata, a parancsfájlkészítő varázsló használata vagy az SSMS-en keresztüli csatlakozás lassú, nem válaszol, vagy hibákat okoz | Győződjön meg arról, hogy felhasználók lettek létrehozva a fő adatbázisban. A parancsfájlkezelési beállításokban győződjön meg arról is, hogy a motorkiadás "Microsoft Azure SQL Data Warehouse Edition" és "Microsoft Azure SQL Database" típusú. |
 | Parancsfájlok létrehozása sikertelen az SSMS-ben                               | A szinapszis SQL-készlet parancsfájljának létrehozása sikertelen, ha a "Parancsfájl létrehozása függő objektumokhoz" beállítás értéke "True" lesz. Kerülő megoldásként a felhasználóknak manuálisan kell megkerülniük **az Eszközök -> Beállítások ->SQL Server Object Explorer -> A parancsfájl létrehozása a függő beállításokhoz, és hamis** |
 
@@ -59,7 +59,7 @@ Ez a cikk a gyakori hibaelhárítási kérdéseket sorolja fel.
 | Msg 40847: Nem lehetett végrehajtani a műveletet, mert a kiszolgáló túllépte a 45000-es adatbázistranzakciós egység megengedett kvótáját. | Csökkentse a létrehozni kívánt adatbázis [DWU-ját,](what-is-a-data-warehouse-unit-dwu-cdwu.md) vagy [kérje kvótanövelést.](sql-data-warehouse-get-started-create-support-ticket.md) |
 | Az űrhasználat vizsgálata                              | A rendszer helykihasználásának megismeréséhez tekintse meg a [Táblázatméretek](sql-data-warehouse-tables-overview.md#table-size-queries) című témakört. |
 | Súgó a táblák kezeléséhez                                    | A táblázatok kezelésével kapcsolatos segítséget a [Táblázat áttekintése](sql-data-warehouse-tables-overview.md) című cikkben találja.  Ez a cikk részletesebb témakörökre mutató hivatkozásokat is tartalmaz , például [táblaadattípusokat](sql-data-warehouse-tables-data-types.md), [tábla terjesztése](sql-data-warehouse-tables-distribute.md), [tábla indexelése](sql-data-warehouse-tables-index.md), [tábla particionálása](sql-data-warehouse-tables-partition.md), [Táblastatisztikák és](sql-data-warehouse-tables-statistics.md) ideiglenes [táblák](sql-data-warehouse-tables-temporary.md)karbantartása . |
-| Az átlátszó adattitkosítás (TDE) folyamatjelzője nem frissül az Azure Portalon | A TDE állapotát a [powershell](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption)en keresztül tekintheti meg. |
+| Az átlátszó adattitkosítás (TDE) folyamatjelzője nem frissül az Azure Portalon | A TDE állapotát a [powershell](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)en keresztül tekintheti meg. |
 
 ## <a name="differences-from-sql-database"></a>Különbségek az SQL-adatbázistól
 
@@ -70,7 +70,7 @@ Ez a cikk a gyakori hibaelhárítási kérdéseket sorolja fel.
 | DELETE és UPDATE korlátozások         | Lásd: [UPDATE kerülő megoldások](sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-update-statements), DELETE [kerülő megoldások](sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-delete-statements) és a [CTAS használata a nem támogatott UPDATE és DELETE szintaxis kerülőmegoldása kerülő megoldásként.](sql-data-warehouse-develop-ctas.md) |
 | A MERGE utasítás nem támogatott      | Lásd: [MERGE kerülő megoldások](sql-data-warehouse-develop-ctas.md#replace-merge-statements).                  |
 | Tárolt eljárás korlátai          | A tárolt eljárások egyes korlátainak megértéséhez lásd: [Tárolt eljáráskorlátozások.](sql-data-warehouse-develop-stored-procedures.md#limitations) |
-| Az UDF-ek nem támogatják a SELECT utasításokat | Ez az UDF-ek jelenlegi korlátozása.  Az általunk támogatott szintaxis létrehozásáról lásd: [FÜGGVÉNY LÉTREHOZÁSA.](https://docs.microsoft.com/sql/t-sql/statements/create-function-sql-data-warehouse?view=aps-pdw-2016-au7) |
+| Az UDF-ek nem támogatják a SELECT utasításokat | Ez az UDF-ek jelenlegi korlátozása.  Az általunk támogatott szintaxis létrehozásáról lásd: [FÜGGVÉNY LÉTREHOZÁSA.](/sql/t-sql/statements/create-function-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |
 
 ## <a name="next-steps"></a>További lépések
 
@@ -80,6 +80,6 @@ Ha további segítségre van szüksége a probléma megoldásához, itt talál n
 * [Funkciókérések](https://feedback.azure.com/forums/307516-sql-data-warehouse)
 * [Videók](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 * [Támogatási jegy létrehozása](sql-data-warehouse-get-started-create-support-ticket.md)
-* [MSDN fórum](https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse)
+* [MSDN-fórum](https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse)
 * [Stack Overflow-fórum](https://stackoverflow.com/questions/tagged/azure-sqldw)
 * [Twitter](https://twitter.com/hashtag/SQLDW)
