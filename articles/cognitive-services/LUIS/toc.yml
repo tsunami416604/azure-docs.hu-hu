@@ -193,10 +193,10 @@
       href: luis-how-to-publish-app.md
     - name: Alkalmazás kezelése
       items:
-        - name: Tartalomkészítési és futtatókörnyezeti kulcsok
+        - name: Azure-erőforrások
           displayName: 'azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription, authoring, endpoint, prediction'
           href: luis-how-to-azure-subscription.md
-        - name: Migrálás a tartalomkészítési kulcsra
+        - name: Migrálás tartalomkészítési erőforrásra
           items:
             - name: Áttekintés
               href: luis-migration-authoring.md
