@@ -1,28 +1,28 @@
 ---
-title: Felügyelt szolgáltatási ajánlatok az Azure Marketplace-en
-description: A felügyelt szolgáltatások lehetővé teszik a szolgáltatók számára, hogy erőforrás-kezelési ajánlatokat értékesítsék az Azure Marketplace-en lévő ügyfelek számára.
-ms.date: 03/17/2020
+title: Felügyelt szolgáltatási ajánlatok az Azure Piactéren
+description: A felügyelt szolgáltatásajánlatok lehetővé teszik a szolgáltatók számára, hogy erőforrás-kezelési ajánlatokat értékesítsék az Azure Marketplace-en lévő ügyfelek számára.
+ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2d6e39f753736c0582e9d91870a99b66ae41255b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a0670bd74971132dcf243736bdf882a00154a942
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79500788"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672423"
 ---
-# <a name="managed-services-offers-in-azure-marketplace"></a>Felügyelt szolgáltatási ajánlatok az Azure Marketplace-en
+# <a name="managed-service-offers-in-azure-marketplace"></a>Felügyelt szolgáltatási ajánlatok az Azure Piactéren
 
-Ez a cikk az [Azure Marketplace](https://azuremarketplace.microsoft.com)új **felügyelt szolgáltatások** ajánlattípusát ismerteti. A felügyelt szolgáltatások lehetővé teszik, hogy erőforrás-kezelési szolgáltatásokat kínáljon az Azure delegált erőforrás-kezelésével rendelkező ügyfeleknek. Ezeket az ajánlatokat elérhetővé teheti az összes potenciális ügyfél, vagy csak egy vagy több konkrét ügyfél számára. Mivel az ügyfeleknek közvetlenül kell fizetnie a felügyelt szolgáltatásokkal kapcsolatos költségekért, a Microsoft nem számít fel díjat.
+Ez a cikk a **felügyelt szolgáltatás** ajánlattípusát ismerteti az [Azure Marketplace-en.](https://azuremarketplace.microsoft.com) A felügyelt szolgáltatásajánlatok lehetővé teszik, hogy erőforrás-kezelési szolgáltatásokat kínáljon az ügyfeleknek az [Azure delegált erőforrás-kezelése](azure-delegated-resource-management.md)segítségével. Ezeket az ajánlatokat elérhetővé teheti az összes potenciális ügyfél számára, vagy csak egy vagy több konkrét ügyfél számára. Mivel az ügyfeleknek közvetlenül kell fizetnie a felügyelt szolgáltatásokkal kapcsolatos költségekért, a Microsoft nem számít fel díjat.
 
-## <a name="understand-managed-services-offers"></a>A felügyelt szolgáltatások ajánlatai
+## <a name="understand-managed-service-offers"></a>A felügyelt szolgáltatási ajánlatok ismertetése
 
-A felügyelt szolgáltatások leegyszerűsítik az Azure delegált erőforrás-kezeléséhez való bevezetési ügyfelek folyamatát. Amikor egy ügyfél megvásárol egy ajánlatot az Azure Marketplace-en, megadhatja, hogy mely előfizetéseket és/vagy erőforráscsoportokat kell berakni. Vegye figyelembe, hogy az előfizetést először engedélyezni kell a bevezetéshez a **Microsoft.ManagedServices** erőforrás-szolgáltató manuális regisztrálásával.
+A felügyelt szolgáltatás egyszerűsíti az Azure delegált erőforrás-kezeléséhez való bevezetési ügyfelek folyamatát. Amikor egy ügyfél megvásárol egy ajánlatot az Azure Marketplace-en, megadhatja, hogy mely előfizetéseket és/vagy erőforráscsoportokat kell berakni.
 
-Ezt követően a szervezet felhasználói felügyeleti feladatokat hajthatnak végre ezekhez az erőforrásokhoz a szervezet bérlőjéből, az ajánlat [felhőpartneri portálon](https://cloudpartner.azure.com/)történő létrehozásakor megadott hozzáférésnek megfelelően. Ez egy olyan jegyzékfájlon keresztül történik, amely meghatározza az Azure AD-felhasználókat, -csoportokat és egyszerű szolgáltatáscsoportokat, amelyek hozzáférhetnek az ügyfél-erőforrásokhoz az Azure delegált erőforrás-kezelése, valamint a hozzáférési szintjüket meghatározó szerepkörök használatával. Ha engedélyeket rendel egy Azure AD-csoporthoz, nem pedig egyéni felhasználói vagy alkalmazásfiókok sorozatához, hozzáadhat vagy eltávolíthat egyéni felhasználókat, amikor a hozzáférési követelmények megváltoznak.
+Ezt követően a szervezet felhasználói a szervezet bérlőjéről dolgozhatnak ezeken az erőforrásokon, az ajánlat [felhőpartneri portálon](https://cloudpartner.azure.com/)történő létrehozásakor megadott hozzáférésnek megfelelően. Ez egy olyan jegyzékfájlon keresztül történik, amely meghatározza az Azure AD-felhasználókat, -csoportokat és egyszerű szolgáltatáscsoportokat, amelyek hozzáférhetnek az ügyfél-erőforrásokhoz az Azure delegált erőforrás-kezelése, valamint a hozzáférési szintjüket meghatározó szerepkörök használatával. Ha engedélyeket rendel egy Azure AD-csoporthoz, nem pedig egyéni felhasználói vagy alkalmazásfiókok sorozatához, hozzáadhat vagy eltávolíthat egyéni felhasználókat, amikor a hozzáférési követelmények megváltoznak.
 
 ## <a name="public-and-private-offers"></a>Nyilvános és privát ajánlatok
 
-Minden felügyelt szolgáltatás ajánlat egy vagy több csomag. A tervek lehetnek privátak vagy nyilvánosak. 
+Minden felügyelt szolgáltatás ajánlat egy vagy több csomag. A tervek lehetnek privátak vagy nyilvánosak.
 
 Ha az ajánlatot meghatározott ügyfelekre szeretné korlátozni, közzétehet egy privát csomagot. Ha így tesz, a csomag csak az Ön által megadott adott] előfizetési azonosítókhoz vásárolható meg. További információ: [Privát ajánlatok](../../marketplace/private-offers.md).
 
@@ -35,7 +35,7 @@ Ha szükséges, nyilvános és privát csomagokat is felvehet ugyanabba az aján
 
 ## <a name="publish-managed-service-offers"></a>Felügyelt szolgáltatási ajánlatok közzététele
 
-A felügyelt szolgáltatások ajánlatának közzétételéről a [Felügyelt szolgáltatások ajánlatának közzététele az Azure Marketplace-en (Felügyelt szolgáltatások) szolgáltatás közzététele.Learn](../how-to/publish-managed-services-offers.md)how to publish a managed services offer, See Publish a Managed Services offer to Azure Marketplace . Az Azure Marketplace-en a Cloud Partner Portal használatával történő közzétételről az Azure Marketplace és az [AppSource közzétételi útmutató,](../../marketplace/marketplace-publishers-guide.md) valamint az [Azure és az AppSource Piactér ajánlatai kezelése](../../marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers.md)című témakörben talál általános információkat.
+A felügyelt szolgáltatások ajánlatának közzétételéről a [Felügyelt szolgáltatások ajánlatának közzététele az Azure Marketplace-en (Felügyelt szolgáltatások) szolgáltatás közzététele.Learn](../how-to/publish-managed-services-offers.md)how to publish a managed services offer, See Publish a Managed Services offer to Azure Marketplace . Az Azure Marketplace-en a Cloud Partner Portal használatával történő közzétételről az Azure Marketplace és az [AppSource közzétételi útmutatócímű témakörben talál általános](../../marketplace/marketplace-publishers-guide.md)információkat.
 
 ## <a name="next-steps"></a>További lépések
 

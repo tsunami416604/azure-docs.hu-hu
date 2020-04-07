@@ -4,12 +4,12 @@ description: Ebben az oktatóanyagban megtudhatja, hogyan telepíthet egy Window
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 086379e788966b300f988e06ec42c94b880b8281
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2d170057a85a8e223fa9d1bc2bfc17e0c284afcd
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75551718"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756040"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Oktatóanyag: Windows rendszert futtató Service Fabric-fürt telepítése egy Azure virtuális hálózatba
 
@@ -156,7 +156,7 @@ Az [azuredeploy.parameters.json][parameters] paraméterfájl számos, a fürt é
 ## <a name="set-up-azure-active-directory-client-authentication"></a>Az Azure Active Directory-ügyfélhitelesítés beállítása
 Az Azure-ban üzemeltetett nyilvános hálózatban telepített Service Fabric-fürtök esetében az ügyfél-csomópont kölcsönös hitelesítésre vonatkozó javaslat a következő:
 * Használja az Azure Active Directoryt az ügyfélidentitáshoz.
-* A HTTP-kommunikáció kiszolgálóidentitásához és SSL-titkosításához használjon tanúsítványt.
+* A HTTP-kommunikáció kiszolgálóidentitásához és TLS-titkosításához használjon tanúsítványt.
 
 Az Azure Active Directory (Azure AD) beállítása a Service Fabric-fürt ügyfeleinek hitelesítéséhez [a fürt létrehozása](#createvaultandcert)előtt el kell végezni. Az Azure AD lehetővé teszi a szervezetek (más néven bérlők) az alkalmazások felhasználói hozzáférésének kezelése. 
 

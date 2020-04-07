@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/06/2020
 ms.author: jgao
-ms.openlocfilehash: 3ef1c3d3fe0fd1ecad95e027b06ce14fd70d4d3f
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: aa49b313f0fb10175dc6c0003f1a919f61731269
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437879"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743311"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Központi telepítési parancsfájlok használata sablonokban (előzetes verzió)
 
@@ -33,6 +33,8 @@ A központi telepítési parancsfájl előnyei:
 - A parancsfájlok végrehajtásához használt identitások megadásának engedélyezése. Jelenleg csak [az Azure-felhasználó által hozzárendelt felügyelt identitás](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) támogatott.
 - A parancssori argumentumok átadásának engedélyezése a parancsfájlba.
 - Megadhatja a parancsfájl kimenetek, és adja vissza őket a központi telepítéshez.
+
+A központi telepítési parancsfájl-erőforrás csak azokban a régiókban érhető el, ahol az Azure Container Instance érhető el.  Lásd: [Az Azure Container-példányok erőforrás-elérhetősége az Azure-régiókban.](../../container-instances/container-instances-region-availability.md)
 
 > [!IMPORTANT]
 > Két központi telepítési parancsfájl-erőforrás, egy tárfiók és egy tárolópéldány jön létre ugyanabban az erőforráscsoportban a parancsfájlok végrehajtásához és hibaelhárításához. Ezeket az erőforrásokat általában törli a parancsfájlszolgáltatás, amikor a központi telepítési parancsfájl végrehajtása terminálállapotba kerül. Az erőforrásokért az erőforrások törléséig számlázunk. További információ: [Karbantartás központi telepítési parancsfájl-erőforrások](#clean-up-deployment-script-resources).
@@ -189,6 +191,8 @@ A szövegközi parancsfájlok mellett külső parancsfájlokat is használhat. C
 Egy példa megtekintéséhez válassza [az itt](https://github.com/Azure/azure-docs-json-samples/blob/master/deployment-script/deploymentscript-helloworld-primaryscripturi.json)lehetőséget.
 
 A külső parancsfájloknak elérhetőnek kell lenniük.  Az Azure storage-fiókokban tárolt parancsfájlok védelméről az [Oktatóanyag: Biztonságos összetevők az Azure Resource Manager-sablontelepítésekben.](./template-tutorial-secure-artifacts.md)
+
+Ön felelős a központi telepítési parancsfájl által hivatkozott parancsfájlok integritásának biztosításáért, akár **PrimaryScriptUri,** akár **SupportingScriptUris.**  Csak olyan parancsfájlokra hivatkozzon, amelyekben megbízik.
 
 ## <a name="use-supporting-scripts"></a>Támogató parancsfájlok használata
 

@@ -1,14 +1,14 @@
 ---
 title: Függvényalkalmazás létrehozása Linuxon az Azure Portalról
 description: Ismerje meg, hogyan hozhatja létre az első Azure-függvényét kiszolgáló nélküli végrehajtáshoz az Azure Portalon.
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 02/28/2019
-ms.openlocfilehash: 1492188f72eb4a691ddceb78aa269601f192e467
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b2de36faf07ad661ff8817adc48b726f54990ceb
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76963835"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754117"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Függvényalkalmazás létrehozása Linuxon egy Azure App Service-csomagban
 
@@ -40,12 +40,12 @@ Rendelkeznie kell egy függvényalkalmazással a függvények Linux rendszerben 
     | **Előfizetés** | Az Ön előfizetése | Az előfizetés, amelyben létrehozta az új függvényalkalmazást. | 
     | **[Erőforráscsoport](../azure-resource-manager/management/overview.md)** |  myResourceGroup | Az új erőforráscsoport neve, amelyben létrehozza a függvényalkalmazást. |
     | **OS** | Linux | A függvényalkalmazás Linuxon fut. |
-    | **Közzététele** | Kód | A **runtime stack** alapértelmezett Linux-tárolója használatos. Mindössze annyit kell megadnia, hogy a függvényalkalmazás projektkódja. Egy másik lehetőség egy egyéni [Docker-lemezkép](functions-create-function-linux-custom-image.md)közzététele. |
+    | **Közzététel** | Kód | A **runtime stack** alapértelmezett Linux-tárolója használatos. Mindössze annyit kell megadnia, hogy a függvényalkalmazás projektkódja. Egy másik lehetőség egy egyéni [Docker-lemezkép](functions-create-function-linux-custom-image.md)közzététele. |
     | **[Tárhelyterv](functions-scale.md)** | App Service-csomag | Szolgáltatási csomag, amely meghatározza az erőforrások lefoglalását a függvényalkalmazáshoz. Amikor egy App Service-csomagban fut, szabályozhatja a [függvényalkalmazás méretezését.](functions-scale.md)  |
     | **App Service-csomag/hely** | Terv létrehozása | Válassza **az Új létrehozása és** az App **Service-csomag** nevének megadása lehetőséget. Válasszon **egy helyet** egy önhöz közeli [régióban](https://azure.microsoft.com/regions/) vagy más szolgáltatások közelében, amelyekhez a funkciók hozzáférhetnek. Válassza ki a kívánt **[tarifacsomagot.](https://azure.microsoft.com/pricing/details/app-service/linux/)** <br/>Nem futtathat linuxos és windowsos függvényalkalmazásokat ugyanabban az App Service-csomagban. |
     | **Futtatókörnyezet verme** | Elsődleges nyelv | Válasszon egy olyan futtatókörnyezetet, amely támogatja a kedvenc függvényprogramozási nyelvét. Válassza a **.NET** lehetőséget a C# és az F# függvényekhez. |
     | **[Storage](../storage/common/storage-account-create.md)** |  Globálisan egyedi név |  Hozzon létre egy tárfiókot a függvényalkalmazás számára. A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat. Meglévő fiókot is használhat, amennyiben az megfelel a [tárfiókokra vonatkozó követelményeknek](storage-considerations.md#storage-account-requirements). |
-    | **[Alkalmazáselemzési adatok](functions-monitoring.md)** | Engedélyezve | Az Application Insights alapértelmezés szerint le van tiltva. Azt javasoljuk, hogy engedélyezze az Application Insights-integrációt most, és válasszon egy üzemeltetési helyet az App Service-csomag helyéhez közel. Ha ezt később szeretné megtenni, olvassa el [az Azure-függvények figyelése című témakört.](functions-monitoring.md)  |
+    | **[Application Insights](functions-monitoring.md)** | Engedélyezve | Az Application Insights alapértelmezés szerint le van tiltva. Azt javasoljuk, hogy engedélyezze az Application Insights-integrációt most, és válasszon egy üzemeltetési helyet az App Service-csomag helyéhez közel. Ha ezt később szeretné megtenni, olvassa el [az Azure-függvények figyelése című témakört.](functions-monitoring.md)  |
 
 3. Kattintson a **Létrehozás** elemre a függvényalkalmazás kiépítéséhez és üzembe helyezéséhez.
 

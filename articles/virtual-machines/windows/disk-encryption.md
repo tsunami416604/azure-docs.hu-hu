@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: d8e6f4b58cf17a7502e2c0d67e4fa67af7cdb3f5
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 25b8df0d8565686737b33aac16d4bf698ce43280
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632947"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757210"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Az Azure által kezelt lemezek kiszolgálóoldali titkosítása
 
@@ -91,6 +91,9 @@ Egyelőre az ügyfél által felügyelt kulcsok a következő korlátozásokkal 
 
     A Key Vault-példány létrehozásakor engedélyeznie kell a helyreállítható törlést és a védelem kiürítését. A helyreállítható törlés biztosítja, hogy a Key Vault egy adott megőrzési időszakban törölt kulcsot tartalmaz (90 napos alapértelmezett). A kiürítési védelem biztosítja, hogy a törölt kulcs nem törölhető véglegesen, amíg a megőrzési időszak le nem áll. Ezek a beállítások megvédik önt a véletlen törlés miatti adatvesztéstől. Ezek a beállítások kötelezőek, ha a felügyelt lemezek titkosításához key vaultot használ.
 
+    > [!IMPORTANT]
+    > Ne teve esetben a régió, ha így tesz, problémák léphetnek fel, amikor további lemezek hozzárendelése az erőforráshoz az Azure Portalon.
+    
     ```powershell
     $ResourceGroupName="yourResourceGroupName"
     $LocationName="westcentralus"

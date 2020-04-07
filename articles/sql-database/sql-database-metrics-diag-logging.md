@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 880072c9865e38e181869506e35968767fa95e8a
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.date: 04/06/2020
+ms.openlocfilehash: 9c9f069ad38c65aa0bbfdcde9eef3fed32585d9e
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387903"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756419"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-diagnostic-telemetry"></a>Az Azure SQL Database diagnosztikai telemetriai adatfolyam-exportálásának konfigurálása
 
@@ -25,7 +25,7 @@ Ebben a cikkben megismerheti az Azure SQL Database teljesítménymetrikák és e
 Azt is megtudhatja, hogy a célok, amelyekhez streamelheti ezt a diagnosztikai telemetriai adatokat, és hogyan választhat ezek közül a lehetőségek közül. Az úti célok a következők:
 
 - [Log Analytics és SQL Analytics](#stream-into-sql-analytics)
-- [Eseményközpontok](#stream-into-event-hubs)
+- [Event Hubs](#stream-into-event-hubs)
 - [Azure Storage](#stream-into-azure-storage)
 
 ## <a name="diagnostic-telemetry-for-export-for-azure-sql-database"></a>Diagnosztikai telemetria az Azure SQL Database exportálásához
@@ -77,7 +77,7 @@ Ez a diagnosztikai telemetriai streamelt egyik ilyen célok segítségével felm
 
 A metrikák at és a diagnosztikai telemetriai naplózást az alábbi módszerek egyikével engedélyezheti és kezelheti:
 
-- Azure portál
+- Azure Portal
 - PowerShell
 - Azure CLI
 - Azure Monitor REST API
@@ -95,7 +95,7 @@ Az Azure Portal **diagnosztika beállításai** menüsegítségével engedélyez
 
 Válassza ki az alábbi lapok egyikét a részletes útmutatást a diagnosztikai telemetriai adatok streamelési exportálásának konfigurálásához az Azure Portalon, és parancsfájlok a PowerShell és az Azure CLI használatával.
 
-# <a name="azure-portal"></a>[Azure-portál](#tab/azure-portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
 ### <a name="elastic-pools"></a>Rugalmas készletek
 
@@ -225,7 +225,7 @@ Egy példányadatbázis diagnosztikai telemetriai adatainak streamelésének eng
 > [!TIP]
 > Ismételje meg ezeket a lépéseket minden egyes figyelni kívánt példányadatbázisesetében.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -438,13 +438,13 @@ Az alábbi táblázatokban az alapvető metrikák erőforrásonkénti részletei
 
 #### <a name="basic-metrics-for-elastic-pools"></a>Rugalmas készletek alapmetrikák
 
-|**Erőforrás**|**Mutatókat**|
+|**Erőforrás**|**Mérőszámok**|
 |---|---|
 |Rugalmas készlet|eDTU százalék, használt eDTU, eDTU-korlát, CPU-százalék, fizikai adatolvasási százalék, naplóírási százalék, munkamenetek százaléka, dolgozók százaléka, tárolás, tárolási százalék, tárolási korlát, XTP-tárolási százalék |
 
 #### <a name="basic-metrics-for-single-and-pooled-databases"></a>Az egy- és összevont adatbázisok alapvető metrikája
 
-|**Erőforrás**|**Mutatókat**|
+|**Erőforrás**|**Mérőszámok**|
 |---|---|
 |Egy- és összevont adatbázis|DTU százalék, használt DTU, DTU-korlát, PROCESSZOR százalék, fizikai adatolvasási százalék, naplóírási százalék, sikeres/sikertelen/tűzfal-kapcsolatok által blokkolt, munkamenetek százalékos aránya, dolgozók százaléka, tárolás, tárolási százalék, XTP-tárolási százalék és holtpont |
 
@@ -454,9 +454,15 @@ A speciális mutatókkal kapcsolatos részleteket az alábbi táblázattartalmaz
 
 |**Metrika**|**Metrikus megjelenítendő név**|**Leírás**|
 |---|---|---|
-|tempdb_data_size| Tempdb-adatfájl mérete kilobájt |Tempdb adatfájl mérete kilobájt. Adatraktárakra nem vonatkozik. Ez a metrika a virtuális mag 2 virtuálismaggal és magasabb magokkal, illetve 200 DTU-val és magasabb magokkal rendelkező adatbázisokhoz érhető el. Ez a metrika jelenleg nem érhető el a nagy kapacitású adatbázisok.|
-|tempdb_log_size| Tempdb naplófájl mérete Kilobájt |Tempdb naplófájl mérete kilobájt. Adatraktárakra nem vonatkozik. Ez a metrika a virtuális mag 2 virtuálismaggal és magasabb magokkal, illetve 200 DTU-val és magasabb magokkal rendelkező adatbázisokhoz érhető el. Ez a metrika jelenleg nem érhető el a nagy kapacitású adatbázisok.|
-|tempdb_log_used_percent| Használt Tempdb százaléknapló |Tempdb százaléknapló használatban. Adatraktárakra nem vonatkozik. Ez a metrika a virtuális mag 2 virtuálismaggal és magasabb magokkal, illetve 200 DTU-val és magasabb magokkal rendelkező adatbázisokhoz érhető el. Ez a metrika jelenleg nem érhető el a nagy kapacitású adatbázisok.|
+|sqlserver_process_core_percent<sup>1.</sup>|SQL Server folyamat alapszázaléka|Az SQL Server folyamat processzorhasználati százaléka az operációs rendszer szerint mérve.|
+|<sup>1.</sup> sqlserver_process_memory_percent |SQL Server folyamatmemória százaléka|Az SQL Server folyamat memóriahasználati százaléka az operációs rendszer szerint mérve.|
+|<sup>tempdb_data_size 2.</sup>| Tempdb-adatfájl mérete kilobájt |Tempdb adatfájl mérete kilobájt.|
+|<sup>tempdb_log_size 2.</sup>| Tempdb naplófájl mérete Kilobájt |Tempdb naplófájl mérete kilobájt.|
+|<sup>tempdb_log_used_percent 2.</sup>| Használt Tempdb százaléknapló |Tempdb százaléknapló használatban.|
+
+<sup>1</sup> Ez a metrika a virtuális mag 2 virtuálismaggal és magasabb magokkal, illetve 200 DTU-val és magasabb magokkal rendelkező adatbázisokhoz érhető el. 
+
+<sup>2</sup> Ez a metrika a virtuális mag 2 virtuálismaggal és magasabb magokkal, illetve 200 DTU-val és magasabb magokkal rendelkező adatbázisokhoz érhető el. Ez a metrika jelenleg nem érhető el a nagy kapacitású adatbázisok vagy adatraktárak.
 
 ### <a name="basic-logs"></a>Egyszerű naplók
 

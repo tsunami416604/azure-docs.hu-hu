@@ -7,12 +7,12 @@ ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: d293b76e004d693813a074cb8551a86cb3c0bec2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bcf6a0ccfc04890052f1a4bab19f97ee4e55f87a
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76772331"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756615"
 ---
 # <a name="ingest-json-formatted-sample-data-into-azure-data-explorer"></a>JSON-formázott mintaadatok betöltése az Azure Data Explorerbe
 
@@ -82,7 +82,7 @@ A Kusto lekérdezési nyelv használatával nyers JSON-formátumban szeretne ada
     .ingest into table RawEvents h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=json, jsonMappingReference=RawEventMapping)
     ```
 
-# <a name="c"></a>[C #](#tab/c-sharp)
+# <a name="c"></a>[C#](#tab/c-sharp)
 
 A C# függesztse fel az adatok nyers JSON formátumban történő betöltését.
 
@@ -232,7 +232,7 @@ Ebben a példában a JSON rekordok rekordok rekordok adatokat. Minden JSON tulaj
 
     A fájl "simple.json" van néhány vonal-elválasztott JSON rekordokat. A formátum `json`a , és a betöltési `FlatEventMapping` parancsban használt leképezés a létrehozott.
 
-# <a name="c"></a>[C #](#tab/c-sharp)
+# <a name="c"></a>[C#](#tab/c-sharp)
 
 1. Hozzon létre egy új táblát, amely a JSON bemeneti adatokhoz hasonló sémával van elsajátítva. Ezt a táblázatot az alábbi példákhoz és a betöltési parancsokhoz használjuk. 
 
@@ -337,7 +337,7 @@ Adatok betöltése `Events` a táblába.
 .ingest into table Events h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/multilined.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=FlatEventMapping)
 ```
 
-# <a name="c"></a>[C #](#tab/c-sharp)
+# <a name="c"></a>[C#](#tab/c-sharp)
 
 Adatok betöltése `Events` a táblába.
 
@@ -427,7 +427,7 @@ A tömbadattípusok értékek rendezett gyűjteményei. A JSON-tömb betöltés�
 1. Adatok betöltése `RawEvents` a táblába.
 
     ```Kusto
-    .ingest into table Events h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/array.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=RawEventMapping)
+    .ingest into table RawEvents h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/array.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=RawEventMapping)
     ```
 
 1. Tekintse át `Events` a táblázatban szereplő adatokat.
@@ -436,7 +436,7 @@ A tömbadattípusok értékek rendezett gyűjteményei. A JSON-tömb betöltés�
     Events
     ```
 
-# <a name="c"></a>[C #](#tab/c-sharp)
+# <a name="c"></a>[C#](#tab/c-sharp)
 
 1. Hozzon létre egy frissítési `records` függvényt, amely kibővíti a gyűjteménygyűjteményét, így a gyűjtemény minden egyes értéke külön sort kap az `mv-expand` operátor használatával. A táblát `RawEvents` forrástáblaként és `Events` céltáblaként fogjuk használni.   
 
@@ -584,7 +584,7 @@ Szótár strukturált JSON tartalmaz kulcs-érték párok. A Json-rekordok a be�
     .ingest into table Events h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/dictionary.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=KeyValueEventMapping)
     ```
 
-# <a name="c"></a>[C #](#tab/c-sharp)
+# <a name="c"></a>[C#](#tab/c-sharp)
 
 1. JSON-leképezés létrehozása.
 

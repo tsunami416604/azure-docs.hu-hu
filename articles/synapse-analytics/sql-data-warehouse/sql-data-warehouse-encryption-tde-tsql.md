@@ -11,26 +11,28 @@ ms.date: 04/30/2019
 ms.author: jrasnick
 ms.reviewer: rortloff
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 14058a91ee21bd792f9be1a64d554092c4f5aedd
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: ae751cc5b8e3ab67f3e65757724d0ebae1c45e02
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351510"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745250"
 ---
 # <a name="get-started-with-transparent-data-encryption-tde"></a>Az átlátszó adattitkosítás (TDE) első lépései
+
 > [!div class="op_single_selector"]
+>
 > * [Biztonság – áttekintés](sql-data-warehouse-overview-manage-security.md)
 > * [Hitelesítés](sql-data-warehouse-authentication.md)
 > * [Titkosítás (portál)](sql-data-warehouse-encryption-tde.md)
 > * [Titkosítás (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
-> 
-> 
 
 ## <a name="required-permissions"></a>Szükséges engedélyek
+
 Az átlátszó adattitkosítás (TDE) engedélyezéséhez rendszergazdának vagy a dbmanager szerepkör tagjának kell lennie.
 
 ## <a name="enabling-encryption"></a>Titkosítás engedélyezése
+
 A TDE engedélyezéséhez kövesse az alábbi lépéseket:
 
 1. Csatlakozás az adatbázist tároló kiszolgáló *főadatbázisához* rendszergazdai vagy a **főadatbázis dbmanager-szerepkörének** tagja ként történő bejelentkezéssel
@@ -41,6 +43,7 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 ```
 
 ## <a name="disabling-encryption"></a>Titkosítás letiltása
+
 A TDE letiltásához kövesse az alábbi lépéseket:
 
 1. Csatlakozás a *főadatbázishoz* rendszergazdai vagy a **főadatbázis dbmanager-szerepkörének** tagjaként történő csatlakozással
@@ -52,10 +55,9 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION OFF;
 
 > [!NOTE]
 > A szüneteltetett SQL-készletet a TDE-beállítások módosítása előtt újra kell indítani.
-> 
-> 
 
 ## <a name="verifying-encryption"></a>Titkosítás ellenőrzése
+
 A titkosítási állapot ellenőrzéséhez kövesse az alábbi lépéseket:
 
 1. Csatlakozás a *főkiszolgáló-* vagy példányadatbázishoz rendszergazdai vagy a **főadatbázis dbmanager-szerepkörének** tagja ként történő bejelentkezéssel
@@ -72,14 +74,6 @@ FROM
 Az eredmény ```1``` titkosított adatbázist ```0``` jelez, nem titkosított adatbázist jelöl.
 
 ## <a name="encryption-dmvs"></a>Titkosítási DMV-k
-* [sys.adatbázisok][sys.databases] 
-* [sys.dm_pdw_nodes_database_encryption_keys][sys.dm_pdw_nodes_database_encryption_keys]
 
-<!--Anchors-->
-[Transparent Data Encryption (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
-[sys.databases]: https://msdn.microsoft.com/library/ms178534.aspx  
-[sys.dm_pdw_nodes_database_encryption_keys]: https://msdn.microsoft.com/library/mt203922.aspx  
-
-<!--Image references-->
-
-<!--Link references-->
+* [sys.adatbázisok](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+* [sys.dm_pdw_nodes_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

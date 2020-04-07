@@ -4,12 +4,12 @@ description: Ez az oktatóanyag bemutatja, hogyan frissíthető egy Azure-ban t�
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 2fb08d7aba3e35fb6147b75bbcee35b46873b5f6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a21de9d76a010b01da95b050a521178d8808bbdf
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78252735"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756074"
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Service Fabric-fürt futtatókörnyezetének frissítése az Azure-ban
 
@@ -95,7 +95,7 @@ Set-AzServiceFabricUpgradeType -ResourceGroupName SFCLUSTERTUTORIALGROUP `
 
 A frissítés állapota a PowerShell használatával vagy az Azure Service Fabric parancssori felületen (sfctl) monitorozható.
 
-Először csatlakozzon az oktatóanyag első részében létrehozott, SSL-tanúsítvánnyal rendelkező fürthöz. Használja a `Connect-ServiceFabricCluster` parancsmagot vagy az `sfctl cluster upgrade-status` parancsot.
+Először csatlakozzon a fürthöz az oktatóanyag első részében létrehozott TLS/SSL-tanúsítvánnyal. Használja a `Connect-ServiceFabricCluster` parancsmagot vagy az `sfctl cluster upgrade-status` parancsot.
 
 ```powershell
 $endpoint = "<mycluster>.southcentralus.cloudapp.azure.com:19000"

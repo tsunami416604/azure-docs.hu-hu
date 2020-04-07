@@ -3,18 +3,18 @@ title: 'Oktatóanyag: Blueprint-minta az új környezetbe'
 description: Ebben az oktatóanyagban egy tervezetminta használatával hozzon létre egy tervezetdefiníciót, amely két erőforráscsoportot állít be, és mindegyikhez beállít egy szerepkör-hozzárendelést.
 ms.date: 03/25/2020
 ms.topic: tutorial
-ms.openlocfilehash: c4230282223b0a64f6254448fe069bf8f7ab9a15
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 79928822b41dfe0583afbeaf2f5f1a4a87dd3202
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80282018"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677095"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Oktatóanyag: Környezet létrehozása tervrajzmintából
 
 Minta tervrajzok példákat, hogy mit lehet tenni az Azure Blueprints használatával. Mindegyik egy adott szándékkal vagy céllal rendelkező minta, de nem hoz létre teljes környezetet önmagukban. Mindegyik kiindulópontként szolgál az Azure Blueprints különböző összetevők, tervek és paraméterek kombinációjával történő felfedezéséhez.
 
-A következő oktatóanyag az **Erőforráscsoportok RBAC-tervezetminta** segítségével mutatja be a Blueprints szolgáltatás különböző aspektusait. A következő lépések relevankadnak:
+A következő oktatóanyag az **Erőforráscsoportok RBAC-tervezetminta** használatával mutatja be az Azure Blueprints szolgáltatás különböző aspektusait. A következő lépések relevankadnak:
 
 > [!div class="checklist"]
 > - Új tervezetdefiníció létrehozása a mintából

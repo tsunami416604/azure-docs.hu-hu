@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 7292064a1df8aa9bfffcd9a19a03f7b332c0615e
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 1298d5fe1d7407e836f454c2130a913dde6f8eec
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632737"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755143"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Adattudomány linuxos adatelemzési virtuális géppel az Azure-ban
 
@@ -39,7 +39,7 @@ A Linux DSVM használata előtt a következő előfeltételekkel kell rendelkezn
 A [spambázis-adatkészlet](https://archive.ics.uci.edu/ml/datasets/spambase) viszonylag kis adathalmaz, amely 4601 példát tartalmaz. Az adatkészlet egy kényelmes méret a DSVM néhány kulcsfontosságú funkciójának bemutatásához, mert az erőforrás-szükségleteket szerényen tartja.
 
 > [!NOTE]
-> Ezt a forgatókönyvet egy D2 v2 méretű Linux DSVM (CentOS Edition) használatával hozták létre. A dsvm-t ilyen méretű használatával elvégezheti az ebben a forgatókönyvben bemutatott eljárásokvégrehajtásával.
+> Ezt a forgatókönyvet egy D2 v2 méretű Linux DSVM (Ubuntu 18.04 Edition) használatával hozták létre. A dsvm-t ilyen méretű használatával elvégezheti az ebben a forgatókönyvben bemutatott eljárásokvégrehajtásával.
 
 Ha több tárhelyre van szüksége, létrehozhat további lemezeket, és csatolhatja őket a DSVM-hez. A lemezek állandó Azure-tárolót használnak, így az adataik akkor is megőrződnek, ha a kiszolgáló átméretezés miatt újra kivan építve, vagy leáll. Lemez hozzáadásához és a DSVM-hez való csatlakoztatásához hajtsa végre a [Lemez hozzáadása linuxos virtuális géphez](../../virtual-machines/linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)című lépéseit. A lemez hozzáadásának lépései az Azure CLI-t használják, amely már telepítve van a DSVM-en. A lépéseket teljes egészében a DSVM-ből teheti meg. A tárhely növelésének másik lehetősége az [Azure Files használata.](../../storage/files/storage-how-to-use-files-linux.md)
 

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: rohink
-ms.openlocfilehash: b77248813463f51d4bd2c5186e421aec43ffaf52
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cccd4a6b0b52608a6a17b73688e18f27088df5b0
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76939221"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757205"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Terheléselosztási szolgáltatások használata az Azure-ban
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 
 A Microsoft Azure több szolgáltatást is kínál a hálózati forgalom elosztásának és a terheléselosztásnak a kezelésére. Ezeket a szolgáltatásokat külön-külön is használhatja, vagy az igényeinek megfelelően kombinálhatja a módszereiket az optimális megoldás létrehozásához.
 
@@ -38,7 +38,7 @@ Fogalmi szinten ezek a szolgáltatások külön szerepet játszanak a terhelése
   * Többértékű útválasztás, amely lehetővé teszi, hogy egyetlen DNS-válaszban egynél több alkalmazásvégpont IP-címét küldje el.
 
   Az ügyfél közvetlenül csatlakozik a Traffic Manager által visszaadott végponthoz. Az Azure Traffic Manager észleli, ha egy végpont nem kifogástalan, és majd átirányítja az ügyfelek egy másik kifogástalan állapotú példány. A szolgáltatásról az [Azure Traffic Manager dokumentációjában](traffic-manager-overview.md) olvashat bővebben.
-* **Az Application Gateway** szolgáltatásként biztosítja az alkalmazáskézbesítési vezérlőt (ADC), amely különböző Layer 7 terheléselosztási lehetőségeket kínál az alkalmazásszámára. Lehetővé teszi az ügyfelek számára, hogy optimalizálják a webfarm okait a CPU-igényes SSL-végződés alkalmazásátjáróra történő kiszervezésével. A Layer 7 egyéb útválasztási képességei közé tartozik a bejövő forgalom ciklikus multiplexelése, a cookie-alapú munkamenet-affinitás, az URL-útvonal-alapú útválasztás, valamint az egyetlen alkalmazásátjáró mögött több webhely üzemeltetésének lehetősége. Az Application Gateway konfigurálható internetfelé néző átjáróként, csak belső átjáróként vagy a kettő kombinációjaként. Az Application Gateway teljes mértékben felügyelt, méretezhető és magas rendelkezésre állású. Diagnosztikai és naplózási képességek széles skáláját biztosítja a jobb kezelhetőség érdekében.
+* **Az Application Gateway** szolgáltatásként biztosítja az alkalmazáskézbesítési vezérlőt (ADC), amely különböző Layer 7 terheléselosztási lehetőségeket kínál az alkalmazásszámára. Lehetővé teszi az ügyfelek számára, hogy optimalizálják a webfarm okait a CPU-igényes TLS-végződés nek az alkalmazásátjáróra történő kiszervezésével. A Layer 7 egyéb útválasztási képességei közé tartozik a bejövő forgalom ciklikus multiplexelése, a cookie-alapú munkamenet-affinitás, az URL-útvonal-alapú útválasztás, valamint az egyetlen alkalmazásátjáró mögött több webhely üzemeltetésének lehetősége. Az Application Gateway konfigurálható internetfelé néző átjáróként, csak belső átjáróként vagy a kettő kombinációjaként. Az Application Gateway teljes mértékben felügyelt, méretezhető és magas rendelkezésre állású. Diagnosztikai és naplózási képességek széles skáláját biztosítja a jobb kezelhetőség érdekében.
 * **A terheléselosztó** az Azure SDN-verem szerves része, amely nagy teljesítményű, alacsony késleltetésű Layer 4 terheléselosztási szolgáltatásokat biztosít az összes UDP- és TCP-protokollhoz. Kezeli a bejövő és kimenő kapcsolatokat. Segítségével nyilvános és belső elosztott terhelésű végpontok konfigurálhatók, valamint szabályok definiálhatók, amelyek a bejövő kapcsolatokat a háttérbeli készletben található célokra irányítják TCP- és HTTP-állapotellenőrzési lehetőségek használatával, a szolgáltatás rendelkezésre állásának felügyeletéhez.
 
 ## <a name="scenario"></a>Forgatókönyv
@@ -59,7 +59,7 @@ Az alábbi ábra a forgatókönyv architektúráját mutatja be:
 ![A terheléselosztási architektúra diagramja](./media/traffic-manager-load-balancing-azure/scenario-diagram.png)
 
 > [!NOTE]
-> Ez a példa csak egy a sok lehetséges konfigurációk az Azure által nyújtott terheléselosztási szolgáltatások. A Traffic Manager, az Application Gateway és a Load Balancer keverhető és a terheléselosztási igényeknek leginkább megfelelően illeszthető. Ha például az SSL-kiszervezés vagy a 7- es réteg feldolgozása nem szükséges, a terheléselosztó használható az Application Gateway helyett.
+> Ez a példa csak egy a sok lehetséges konfigurációk az Azure által nyújtott terheléselosztási szolgáltatások. A Traffic Manager, az Application Gateway és a Load Balancer keverhető és a terheléselosztási igényeknek leginkább megfelelően illeszthető. Ha például a TLS-kiszervezés vagy a 7.
 
 ## <a name="setting-up-the-load-balancing-stack"></a>A terheléselosztási verem beállítása
 

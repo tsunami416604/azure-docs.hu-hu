@@ -3,12 +3,12 @@ title: 'Rövid útmutató: Tudásbázis létrehozása, betanítása és közzét
 description: Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori kérdések és termékkézikönyvek alapján. Ez a cikk egy példát tartalmaz a QnA Maker tudásbázis létrehozására egy egyszerű GYIK weboldalról, a QnA Maker kérdéseinek megválaszolásához.
 ms.topic: conceptual
 ms.date: 02/08/2020
-ms.openlocfilehash: b1f80006e2dc72b5b623f4c29c093c734dc1efea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a3cd4a66ae3a7148b517050c3d1a8c6c8e7a712
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79220577"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756826"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Rövid útmutató: A QnA Maker tudásbázisának létrehozása, betanítása és közzététele
 
@@ -135,7 +135,7 @@ Amikor módosítja a tudásbázist, és újra közzéteszi, nem kell további m�
 
 ## <a name="what-did-you-accomplish"></a>Mit ért el?
 
-Létrehozott egy új tudásbázist, nyilvános URL-címet adott hozzá a tudásbázishoz, hozzáadta a saját QnA-készletét, betanította, tesztelte és közzétette a tudásbázist.
+Létrehozott egy új tudásbázist, nyilvános URL-címet adott hozzá a tudásbázishoz, hozzáadta a saját QnA-párját, betanította, tesztelte és közzétette a tudásbázist.
 
 A tudásbázis közzététele után létrehozott egy robotot, és tesztelte a robotot.
 

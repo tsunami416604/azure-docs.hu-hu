@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 90adb3b973b6952d10ef89e4b40d0fc68489e224
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8701fe6857e95334a5e1d24bfe70feb130d5512c
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80061110"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756028"
 ---
 # <a name="get-started-with-azcopy"></a>Bevezetés az AzCopy használatába
 
@@ -21,7 +21,7 @@ Az AzCopy egy parancssori segédprogram, amely segítségével blobok vagy fájl
 > [!NOTE]
 > AzAzCopy **V10** az AzCopy jelenleg támogatott verziója.
 >
-> Ha az AzCopy **v8.1-es verzióját**szeretné használni, olvassa el a cikk [AzCopy korábbi verziójának használata](#previous-version) című szakaszát.
+> Ha az AzCopy egy korábbi verzióját kell használnia, olvassa el a cikk [AzCopy előző verziójának használata](#previous-version) című szakaszát.
 
 <a id="download-and-install-azcopy" />
 
@@ -65,7 +65,7 @@ Használja ezt a táblázatot útmutatóként:
 
 | Tárolási típus | Jelenleg támogatott engedélyezési módszer |
 |--|--|
-|**Blob-tároló** | Azure AD & SAS |
+|**Blob Storage** | Azure AD & SAS |
 |**Blob storage (hierarchikus névtér)** | Azure AD & SAS |
 |**Fájltárolás** | Csak SAS |
 
@@ -308,11 +308,11 @@ A Storage Explorer a fiókkulcsot használja a műveletek végrehajtásához, í
 
 ## <a name="use-the-previous-version-of-azcopy"></a>Az AzCopy korábbi verziójának használata
 
-Ha az AzCopy korábbi verzióját (AzCopy v8.1) szeretné használni, tekintse meg az alábbi hivatkozások egyikét:
+Ha az AzCopy korábbi verzióját szeretné használni, tekintse meg az alábbi hivatkozások egyikét:
 
 - [AzCopy Windowson (8-as verzió)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy)
 
-- [AzCopy Linuxon (8-as verzió)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux)
+- [AzCopy Linuxon (v7)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux)
 
 ## <a name="configure-optimize-and-troubleshoot-azcopy"></a>Az AzCopy konfigurálása, optimalizálása és hibaelhárítása
 

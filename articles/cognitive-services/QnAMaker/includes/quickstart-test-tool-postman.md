@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 46947579ea72e2199af116442472eec330b38009
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: dd44d9cb01ff072d89afeb4efc4a59071c621315
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77112349"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80758181"
 ---
 Ez a Postman-alapú rövid útmutató végigvezeti önt arról, hogy választ kapjon a tudásbázisából.
 
@@ -49,7 +49,7 @@ Ezzel az eljárással konfigurálhatja a Postmant, majd minden további szakaszt
 
 ## <a name="use-metadata-to-filter-answer"></a>Válasz szűrése metaadatokkal
 
-Egy korábbi rövid útmutatóban a metaadatok két QnA-készlethez kerültek, hogy megkülönböztessék a két különböző kérdést. Adja hozzá a metaadatokat a lekérdezéshez, hogy a szűrőt csak a megfelelő QnA-készletre korlátozza.
+Egy korábbi rövid útmutatóban a metaadatok két QnA-párhoz kerültek, hogy különbséget tegyenek két különböző kérdés között. Adja hozzá a metaadatokat a lekérdezéshez, hogy a szűrőt csak a megfelelő QnA-párra korlátozza.
 
 1. A Postman alkalmazásban csak a JSON `strictFilters` lekérdezést módosítsa úgy, `service:qna_maker`hogy hozzáadja a tulajdonságot a nevével/értékpárjával. A test JSON kell:
 

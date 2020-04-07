@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 04/02/2020
+ms.date: 04/06/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43ae866959dd2112bacbb6b56e5683e7b3b851a0
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 17312e44714c8bdb20e22ad9aeb950e46eb71e3e
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631925"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755252"
 ---
 # <a name="conditional-access-users-and-groups"></a>Feltételes hozzáférés: Felhasználók és csoportok
 
@@ -35,9 +35,9 @@ A következő beállítások at lehet felvenni a feltételes hozzáférési ház
 - Minden felhasználó
    - Minden felhasználó, hogy létezik a könyvtárban, beleértve a B2B vendégek.
 - Felhasználók és csoportok kiválasztása
-   - Minden vendég- és külső felhasználó (előzetes verzió)
+   - Minden vendég és külső felhasználó
       - Ez a választás magában foglalja a B2B `user type` vendégek és `guest`a külső felhasználók, beleértve a felhasználó az attribútum beállítása. Ez a beállítás minden olyan külső felhasználóra is vonatkozik, aki egy másik szervezetből, például egy felhőszolgáltatótól (CSP) jelentkezett be. 
-   - Könyvtári szerepkörök (előzetes verzió)
+   - Címtárbeli szerepkörök
       - Lehetővé teszi a rendszergazdák számára, hogy válasszaki a hozzárendelés meghatározásához használt azure AD címtárszerepkörök. A szervezetek például szigorúbb házirendet hozhatnak létre a globális rendszergazdai szerepkörhöz rendelt felhasználókra vonatkozóan.
    - Felhasználók és csoportok
       - Lehetővé teszi a felhasználók meghatározott csoportjainak célzását. Például a szervezetek kiválaszthatják azt a csoportot, amely a HR-részleg összes tagját tartalmazza, ha egy HR-alkalmazást választanak ki felhőalkalmazásként. A csoport bármilyen típusú csoport lehet az Azure AD-ben, beleértve a dinamikus vagy hozzárendelt biztonsági és terjesztési csoportokat.
@@ -51,9 +51,9 @@ Ha a szervezetek egy felhasználót vagy csoportot is bevonnak és kizárnak, a 
 
 A következő lehetőségek kizárhatják a feltételes hozzáférési házirendek létrehozásakor.
 
-- Minden vendég- és külső felhasználó (előzetes verzió)
+- Minden vendég és külső felhasználó
    - Ez a választás magában foglalja a B2B `user type` vendégek és `guest`a külső felhasználók, beleértve a felhasználó az attribútum beállítása. Ez a beállítás minden olyan külső felhasználóra is vonatkozik, aki egy másik szervezetből, például egy felhőszolgáltatótól (CSP) jelentkezett be. 
-- Könyvtári szerepkörök (előzetes verzió)
+- Címtárbeli szerepkörök
    - Lehetővé teszi a rendszergazdák számára, hogy válasszaki a hozzárendelés meghatározásához használt azure AD címtárszerepkörök. A szervezetek például szigorúbb házirendet hozhatnak létre a globális rendszergazdai szerepkörhöz rendelt felhasználókra vonatkozóan.
 - Felhasználók és csoportok
    - Lehetővé teszi a felhasználók meghatározott csoportjainak célzását. Például a szervezetek kiválaszthatják azt a csoportot, amely a HR-részleg összes tagját tartalmazza, ha egy HR-alkalmazást választanak ki felhőalkalmazásként. A csoport bármilyen típusú csoport lehet az Azure AD-ben, beleértve a dinamikus vagy hozzárendelt biztonsági és terjesztési csoportokat.

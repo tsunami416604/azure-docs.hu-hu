@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: yelevin
-ms.openlocfilehash: ee2c917d02a442ebabc0e1b40bc245982af794f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 831baabcc26130d9b2c730afd85f2ed4b3842690
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588212"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756357"
 ---
 # <a name="connect-alerts-from-microsoft-defender-advanced-threat-protection"></a>A Microsoft Defender komplex veszélyforrások elleni védelemriasztásai 
 
 
 > [!IMPORTANT]
-> A Microsoft Defender komplex veszélyforrások elleni védelem naplóinak betöltése jelenleg nyilvános előzetes verzióban érhető el.
+> A Microsoft Defender komplex veszélyforrások elleni riasztásainak betöltése jelenleg nyilvános előzetes verzióban érhető el.
 > Ez a szolgáltatás szolgáltatásszint-szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott.
 > További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
  
 
-Egyetlen kattintással streamelheti a [Microsoft Defender komplex veszélyforrások elleni védelemből](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) származó riasztásokat az Azure Sentinelbe. Ez a kapcsolat lehetővé teszi, hogy a Microsoft Defender komplex veszélyforrások elleni védelemből érkező riasztásokat az Azure Sentinelbe továbbítsa. 
+A [Microsoft Defender komplex veszélyforrások elleni védelem](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) összekötő lehetővé teszi a Microsoft Defender komplex veszélyforrások elleni védelemből érkező riasztások streamelését az Azure Sentinelbe. Ez lehetővé teszi, hogy átfogóbban elemezze a biztonsági eseményeket a szervezeten belül, és forgatókönyveket hozzon létre az hatékony és azonnali válasz érdekében.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Érvényes licenc a Microsoft Defender komplex veszélyforrások elleni védelemhez, amely a [Licencelés idotartamának ellenőrzése és a Microsoft Defender komplex veszélyforrások elleni védelemhez való teljes beállítása](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/licensing)című témakörben leírtak szerint van engedélyezve. 
+- A Microsoft Defender komplex veszélyforrások elleni védelemhez érvényes licenccel kell rendelkeznie a [Microsoft Defender ATP telepítésének beállítása](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/licensing)című részben leírtak szerint. 
 - Az Azure Sentinel-bérlő rendszergazdájának vagy biztonsági rendszergazdájának kell lennie.
 
 

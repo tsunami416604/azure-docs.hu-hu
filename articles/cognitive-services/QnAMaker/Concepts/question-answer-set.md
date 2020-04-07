@@ -3,12 +3,12 @@ title: Tervezési tudásbázis - QnA Maker
 description: A QnA Maker tudásbázis a qna-párokhoz tartozó kérdés-válasz (QnA) készletekből és választható metaadatokból áll.
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: cb71de0f6a3e372d8c1c1fede67ba0c0354532ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d24434d1343f4174cfbfeb3a30c36737b213168
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76844318"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756789"
 ---
 # <a name="question-and-answer-set-concepts"></a>A kérdések és kérdések halmazának fogalmai
 
@@ -33,7 +33,7 @@ A **készlet választható** beállításai a következők:
 
 ## <a name="editorially-add-to-knowledge-base"></a>Szerkesztői módon hozzá tudásbázis
 
-Ha nem rendelkezik már meglévő tartalommal a tudásbázis feltöltéséhez, hozzáadhat QnA-készleteket szerkesztői módon a QnA Maker portálon. Itt megtudhatja, hogyan [here](../How-To/edit-knowledge-base.md)frissítheti tudásbázisát.
+Ha nem rendelkezik már meglévő tartalommal a tudásbázis feltöltéséhez, a QnA-párok szerkesztői módon is hozzáadhatnak a QnA Maker portálon. Itt megtudhatja, hogyan [here](../How-To/edit-knowledge-base.md)frissítheti tudásbázisát.
 
 ## <a name="editing-your-knowledge-base-locally"></a>A tudásbázis helyi szerkesztése
 

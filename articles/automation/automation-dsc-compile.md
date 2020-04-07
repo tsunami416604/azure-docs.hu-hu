@@ -3,14 +3,14 @@ title: Konfigurációk összeállítása az Azure Automation állapotkonfigurác
 description: Ez a cikk ismerteti, hogyan kell lefordítani a kívánt állapotkonfigurációs (DSC) konfigurációk az Azure Automation.
 services: automation
 ms.subservice: dsc
-ms.date: 09/10/2018
+ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 48593920bdfcf743fceaeaeec891c0d5c4f2e108
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b366777cce4dd4212a2e3ec0cdcd180e0d7164f4
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80057632"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757173"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>DSC-konfigurációk összeállítása az Azure Automation állapotkonfigurációjában
 
@@ -27,7 +27,7 @@ A kívánt állapotkonfigurációs (DSC) konfigurációkat az Azure Automation S
   - Csomópont- és nem csomópontadatok nagy méretekben történő méretezése
   - Jelentős teljesítményjavulás
 
-A fordításrészleteiről a [Kívánt állapotkonfigurációbővítmény az Azure Resource Manager-sablonokkal.](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template#details)
+Az Azure Resource Manager-sablonok at Azure Desired State Configuration (DSC) bővítmény használatával is leküldéses konfigurációk az Azure virtuális gépek. Az Azure DSC-bővítmény az Azure VM Agent keretrendszer használatával biztosítja, életbe lépteti és jelentést készít az Azure virtuális gépeken futó DSC-konfigurációkról. Az Azure Resource Manager-sablonok használatával történő összeállítás részleteiről a [Kívánt állapotkonfiguráció bővítmény az Azure Resource Manager-sablonokkal.](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template#details) 
 
 ## <a name="compiling-a-dsc-configuration-in-azure-state-configuration"></a>DSC-konfiguráció fordítása az Azure állapotkonfigurációjában
 

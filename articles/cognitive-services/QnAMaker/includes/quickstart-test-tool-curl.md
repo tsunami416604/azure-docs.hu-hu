@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: f3a1a33b2fe859839deec587191b3b3a319c0cf8
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 4bd483e40e3a85a2934e58abdf46d09b17a33ed4
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77495522"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80758524"
 ---
 Ez a cURL-alapú rövid útmutató végigvezeti önt a rról, hogy választ kapjon a tudásbázisából.
 
@@ -34,13 +34,13 @@ Ez a cURL-alapú rövid útmutató végigvezeti önt a rról, hogy választ kapj
 Használja az előző gyors tudásbázist, hogy metaadatokon alapuló választ keressen.
 
 1. A tudásbázis **Beállítások** lapján válassza a **CURL** lapot egy példa cURL parancs megtekintéséhez, amely a tudásbázisból választ generál.
-1. Másolja a parancsot szerkeszthető környezetbe (például szövegfájlba), hogy szerkeszthesse a parancsot. A kérdés értékét az alábbiak szerint szerkesztheti, `service:qna_maker` hogy a metaadatok a QnA-készletek szűrőjeként legyenek használva.
+1. Másolja a parancsot szerkeszthető környezetbe (például szövegfájlba), hogy szerkeszthesse a parancsot. A kérdés értékét az alábbiak szerint szerkesztheti, `service:qna_maker` hogy a metaadatok a QnA-párok szűrőjeként legyenek használva.
 
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
     ```
 
-    A kérdés csak egy `size`szó, amely a két QnA-készlet bármelyikét visszatudja adni. A `strictFilters` tömb azt mondja a `qna_maker` választ, hogy csökkentsék csak a válaszokat.
+    A kérdés csak egy `size`szó, amely a két QnA pár bármelyikét visszatudja adni. A `strictFilters` tömb azt mondja a `qna_maker` választ, hogy csökkentsék csak a válaszokat.
 
 1. A válasz csak a szűrőfeltételeknek megfelelő választ tartalmazza. Az olvashatóság érdekében a következő cURL-választ formázták:
 

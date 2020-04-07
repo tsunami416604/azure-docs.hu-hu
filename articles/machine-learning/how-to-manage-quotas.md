@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
 ms.date: 03/05/2020
-ms.openlocfilehash: 17a4652604c0faa804d24530869aac0848c972b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 530647c3d32b62f0cac250795ccce580b182fa92
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399141"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756603"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Azure-erőforrások kvótáinak kezelése és kérése
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,7 +41,7 @@ Az alábbiakban a kvótakorlátok különböző erőforrástípusok szerinti bon
 > [!IMPORTANT]
 > A korlátok változhatnak. A legújabb mindig megtalálható a szolgáltatásszintű kvóta [dokumentum](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits/) az egész Azure-ban.
 
-### <a name="virtual-machines"></a>Virtuális gépek
+### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
 Minden Egyes Azure-előfizetésesetén korlátozva van a szolgáltatások között vagy önálló virtuális gépek száma. Ez a korlát a régió szintjén, mind a teljes magok, mind a családonkénti alapon.
 
 A virtuálisgép-magok regionális teljes korláttal és méretsorozatonkénti regionális korláttal (Dv2, F stb.) rendelkeznek, mindkettő külön-külön van érvényben. Például tegyük fel, hogy egy előfizetés az USA keleti régiójára vonatkozó teljes magkorlátja 30, az A sorozatú magkorlátja 30, és a D sorozatú magkorlátja is 30. Ez az előfizetés üzembe helyezhet 30 A1 virtuális gépet, 30 D1 virtuális gépet, vagy a kettő valamilyen kombinációját, amely nem haladja meg az összesen 30 magot (pl. 10 A1 virtuális gép és 20 D1 virtuális gép).
@@ -60,7 +60,7 @@ Rendelkezésre álló források:
 
 + A régiónkénti fürtök alapértelmezett korlátja 200. Ezek meg vannak osztva egy betanítási fürt és egy számítási példány (amely kvótacélokra egyetlen csomópont-fürtnek számít). Lépjen kapcsolatba az Azure-támogatással, ha ennél a korláton túli emelést szeretne kérni.
 
-+ Vannak ** egyéb szigorú korlátok, amelyeket nem lehet túllépni, ha találatot.
++ Vannak más szigorú korlátok, amelyeket nem lehet túllépni, ha megütik őket.
 
 | **Erőforrás** | **Maximális határérték** |
 | --- | --- |

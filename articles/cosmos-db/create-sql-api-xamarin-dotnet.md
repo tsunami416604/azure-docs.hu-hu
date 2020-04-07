@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: 74d34705a6541b396fa2c2bf5028254f5f2e8d21
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 125cc2516fbd694bbe62545e85d4e14225fb2a6a
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77586767"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756429"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Rövid útmutató: Todo-alkalmazás létrehozása a Xamarinnal az Azure Cosmos DB SQL API-fiókhasználatával
 
@@ -30,7 +30,7 @@ Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-sz
 > [!NOTE]
 > A GitHubon [itt](https://github.com/xamarinhq/app-geocontacts) megtalálható egy teljes Canonical Xamarin-mintaalkalmazás mintakódja, amely több Azure-ajánlatot is bemutat (például a CosmosDB-t). Ez az alkalmazás földrajzilag elosztott kapcsolattartók megtekintését mutatja be, és lehetővé teszi e kapcsolattartók számára, hogy frissítsék a tartózkodási helyüket.
 
-Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure Cosmos DB SQL API-fiókot, dokumentum-adatbázist és tárolót az Azure Portal segítségével. Ezután megtudhatja, hogyan hozhat létre és hogyan helyezhet üzembe egy, az [SQL .NET API](sql-api-sdk-dotnet.md)-n és a [Xamarinon](https://docs.microsoft.com/xamarin/) alapuló teendőlista-kezelő webalkalmazást a [Xamarin.Forms](https://docs.microsoft.com/xamarin/) és az [MVVM-architektúraminta](https://docs.microsoft.com/xamarin/xamarin-forms/xaml/xaml-basics/data-bindings-to-mvvm) használatával.
+Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure Cosmos DB SQL API-fiókot, dokumentum-adatbázist és tárolót az Azure Portal segítségével. Ezután létrehoz és telepít egy [sql .NET API-ra](sql-api-sdk-dotnet.md) és [xamarinra](https://docs.microsoft.com/xamarin/) épülő mobilalkalmazást, amely a [Xamarin.Forms](https://docs.microsoft.com/xamarin/) és az [MVVM architekturális mintáját](https://docs.microsoft.com/xamarin/xamarin-forms/xaml/xaml-basics/data-bindings-to-mvvm)tartalmazza.
 
 ![iOS rendszeren futó teendőkezelő Xamarin-alkalmazás](./media/create-sql-api-xamarin-dotnet/ios-todo-screen.png)
 
@@ -91,15 +91,15 @@ Lépjen vissza az Azure Portalra az API-kulccsal kapcsolatos adatokért, majd m�
 
     ![Hozzáférési kulcs megtekintése és másolása az Azure Portal Kulcsok paneljén](./media/create-sql-api-xamarin-dotnet/keys.png)
 
-2. A Visual Studio 2019-ben vagy a Visual Studio for Mac-ben nyissa meg a APIKeys.cs fájlt az azure-documentdb-dotnet/samples/xamarin/ToDoItems/ToDoItems.Core/Helpers mappában.
+2. A Visual Studio 2019-ben vagy a Visual Studio for Mac-ben nyissa meg a APIKeys.cs fájlt az azure-cosmos-db-sql-xamarin-getting-started/src/ToDoItems.Core/Helpers mappában.
 
 3. Másolja az URI értékét a portálon (a másolási gomb használatával), és adja meg a `CosmosEndpointUrl` változó értékeként az APIKeys.cs fájlban.
 
-    `public static readonly string CosmosEndpointUrl = "{Azure Cosmos DB account URL}";`
+    `public static readonly string CosmosEndpointUrl = "";`
 
 4. Ezután másolja az ELSŐDLEGES KULCS értékét a portálról, és adja meg a `Cosmos Auth Key` értékeként az APIKeys.cs fájlban.
 
-    `public static readonly string CosmosAuthKey = "{Azure Cosmos DB secret}";`
+    `public static readonly string CosmosAuthKey = "";`
 
 [!INCLUDE [cosmos-db-auth-key-info](../../includes/cosmos-db-auth-key-info.md)]
 

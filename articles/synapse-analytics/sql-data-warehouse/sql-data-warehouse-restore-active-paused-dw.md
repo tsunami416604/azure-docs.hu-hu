@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e1d0c5cd850fa0dbacf104d3fcd72d83007df878
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 6fa8bd42eb067124ab6ea1db77e2f3d6fba79638
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632253"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745207"
 ---
 # <a name="restore-an-existing-sql-pool"></a>Meglévő SQL-készlet visszaállítása
 
@@ -28,12 +28,12 @@ Ebben a cikkben megtudhatja, hogyan állíthatja vissza a meglévő SQL-készlet
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-1. Győződjön meg arról, hogy [telepíti az Azure PowerShellt.](https://docs.microsoft.com/powershell/azure/overview)
+1. Győződjön meg arról, hogy [telepíti az Azure PowerShellt.](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 2. Van egy meglévő visszaállítási pontja, amelyből vissza szeretne állítani. Ha új visszaállítást szeretne létrehozni, tekintse meg [az oktatóanyagban, hogy hozzon létre egy új, felhasználó által definiált visszaállítási pontot](sql-data-warehouse-restore-points.md).
 
 ## <a name="restore-an-existing-sql-pool-through-powershell"></a>Meglévő SQL-készlet visszaállítása a PowerShellen keresztül
 
-Meglévő SQL-készlet visszaállítása visszaállítási pontból használja a [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) PowerShell-parancsmag.
+Meglévő SQL-készlet visszaállítása visszaállítási pontból használja a [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell-parancsmag.
 
 1. Nyissa meg a PowerShellt.
 
@@ -45,7 +45,7 @@ Meglévő SQL-készlet visszaállítása visszaállítási pontból használja a
 
 5. Válassza ki a kívánt visszaállítási pontot a RestorePointCreationDate használatával.
 
-6. Állítsa vissza az SQL-készletet a kívánt visszaállítási pontra a [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) PowerShell parancsmag használatával.
+6. Állítsa vissza az SQL-készletet a kívánt visszaállítási pontra a [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell parancsmag használatával.
         1. Ha az SQL-készletet egy másik logikai kiszolgálóra szeretné visszaállítani, adjon meg egy másik logikai kiszolgálónevet.  Ez a logikai kiszolgáló más erőforráscsoportban és régióban is lehet.
         2. Ha egy másik előfizetésre szeretne visszaállítani, az "Áthelyezés" gombbal helyezze át a logikai kiszolgálót egy másik előfizetésbe.
 

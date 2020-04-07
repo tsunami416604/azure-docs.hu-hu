@@ -2,19 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/02/2020
+ms.date: 04/03/2020
 ms.author: dacoulte
-ms.openlocfilehash: 0fb6bd68026684599d94270906f1792e084ec5f6
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: e65d24b30cecdbabefabc652c7c864205414d5a6
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80624444"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80758298"
 ---
 |Név |Leírás |Hatás(ok) |Verzió |GitHub |
 |---|---|---|---|---|
 |[Engedélyezett virtuálisgép-skus](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcccc23c7-8427-4f53-ad12-b6a63eb452b3) |Ezzel a szabályzattal megadhatók a virtuális gépek azon termékváltozatai, amelyeket a szervezet üzembe helyezhet. |Megtagadás |1.0.0 |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VMSkusAllowed_Deny.json)
-|[Virtuális gépek naplózása a vészhelyreállítás konfigurálása nélkül](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0015ea4d-51ff-4ce3-8d8c-f3f8f0179a56) |Naplózza azokat a virtuális gépeket, amelyek nem rendelkeznek vészhelyreállítás-konfigurálva. Ha többet szeretne megtudni https://aka.ms/asr-doca katasztrófa utáni helyreállításról, látogasson el a . |auditIfNotExists |1.0.0 |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/RecoveryServices_DisasterRecovery_Audit.json)
+|[Virtuális gépek naplózása a vészhelyreállítás konfigurálása nélkül](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0015ea4d-51ff-4ce3-8d8c-f3f8f0179a56) |Naplózza azokat a virtuális gépeket, amelyek nem rendelkeznek vészhelyreállítás-konfigurálva. Ha többet szeretne megtudni [https://aka.ms/asr-doc](https://aka.ms/asr-doc)a katasztrófa utáni helyreállításról, látogasson el a . |auditIfNotExists |1.0.0 |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/RecoveryServices_DisasterRecovery_Audit.json)
 |[Felügyelt lemezeket nem használó virtuális gépek naplózása](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F06a78e20-9358-41c9-923c-fb736d382a4d) |Ez a házirend a felügyelt lemezeket nem használó virtuális gépeket naplózza |Ellenőrzési |1.0.0 |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VMRequireManagedDisk_Audit.json)
 |[Alapértelmezett Microsoft IaaSAntimalware bővítmény telepítése Windows Server rendszerhez](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2835b622-407b-4114-9198-6f7064cbe0dc) |Ez a házirend egy Microsoft IaaSAntimalware bővítményt telepít alapértelmezett konfigurációval, ha a virtuális gép nincs konfigurálva a kártevőirtó bővítménysel. |deployIfNotExists |1.0.0 |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VMAntimalwareExtension_Deploy.json)
 |[A virtuálisgép-méretezési készletek diagnosztikai naplóit engedélyezni kell](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7c1b1214-f927-48bf-8882-84f0af6588b1) |Javasoljuk, hogy engedélyezze a naplókat, hogy a tevékenységnyomvonal újra létre lehessen hozni, ha egy incidens vagy egy biztonsági rés esetén vizsgálatokra van szükség. |AuditIfNotExists, Letiltva |1.0.0 |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/ServiceFabric_and_VMSS_AuditVMSSDiagnostics.json)

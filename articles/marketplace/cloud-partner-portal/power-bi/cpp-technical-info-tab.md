@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: ab84cc2f4910d1186e842758df7814ca5dd6464d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 92bc172fd9a47d3b140e60a4083d65a2f532769a
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281646"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745571"
 ---
 # <a name="power-bi-apps-technical-info-tab"></a>A Power BI-alkalmazások – technikai információk lap
+
+>[!Important]
+>2020. március 30-tól megkezdjük a Power BI-alkalmazásajánlatok felügyeletének áthelyezését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Az áttelepített ajánlatok kezeléséhez kövesse a [Power BI-alkalmazások létrehozásának áttekintése](https://aka.ms/AzureCreatePBIServiceApp) című témakör utasításait.
 
 Az **Új ajánlat** lapon a **Technikai adatok** lapon adja meg a Power BI telepítőcsomag URL-címét és az új ajánlat érvényesítéséhez szükséges egyéb információkat.  A kezdeti kiadásban minden Power BI-alkalmazás ingyenes, és letölthető az AppSource-ból. Emiatt ehhez az ajánlattípushoz nem határozhat meg raktározási egységeket (SK-k).
 

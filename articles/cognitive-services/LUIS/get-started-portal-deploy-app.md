@@ -1,21 +1,14 @@
 ---
 title: 'Rövid útmutató: Alkalmazás üzembe helyezése a LUIS-portállal'
-titleSuffix: Azure Cognitive Services
 description: Ez a rövid útmutató bemutatja, hogyan telepíthet egy alkalmazást előrejelzési végpont-erőforrás létrehozásával, az erőforrás hozzárendelésével, a képzéssel és az alkalmazás közzétételével.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 01/27/2020
-ms.author: diberry
-ms.openlocfilehash: 0ee2b33aa3388b3cb99aa42c338ded800c9679a4
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/06/2020
+ms.openlocfilehash: aaf86766c2357c5382b78cd4a35fd4b159e5c0f3
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79241779"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756300"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Rövid útmutató: Alkalmazás üzembe helyezése a LUIS-portálon
 
@@ -29,35 +22,13 @@ Ebben a rövid útmutatóban megtudhatja, hogy egy alkalmazás üzembe helyezés
 * Töltse ki az [előző portál gyorsindítását,](get-started-portal-build-app.md) illetve [töltse le és importálja az alkalmazást.](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json)
 * Ha olyan alkalmazásokkal rendelkezik, amelyek megelőzik az Azure-erőforrások hitelesítését, [migráljon egy Azure-erőforrásra.](luis-migration-authoring.md) Egyes portáloldalak máshogy néznek ki, ha az e-mail-hitelesítés érvényben van.
 
-## <a name="create-the-endpoint-resource"></a>Végponterőforrás létrehozása
+<a name="create-the-endpoint-resource"></a>
 
-Az előrejelzési végpont erőforrást az Azure Portalon hozza létre. Ezt az erőforrást csak végpont-előrejelzési lekérdezésekhez szabad használni. Ne használja ezt az erőforrást az alkalmazás módosításaihoz.
-
-1. Jelentkezzen be, és hozzon létre egy erőforrást az [Azure Portalon.](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
-
-1. Konfigurálja az előfizetést a következő beállításokkal:
-
-   |Beállítás|Érték|Cél|
-   |--|--|--|
-   |Név|`my-luis-resource`|Az Azure-erőforrás neve. Erre a névre akkor van szüksége, amikor hozzárendeli az erőforrást az alkalmazáshoz a LUIS-portálon.|
-   |Előfizetés|Az Ön előfizetése|Válassza ki a fiókjához társított előfizetések egyikét.|
-   |Erőforráscsoport|`my-resource-group`|Hozzon létre egy új erőforráscsoportot az összes kognitív szolgáltatási erőforráshoz. Ha végzett az erőforrásokkal, törölheti az erőforráscsoportot az előfizetés karbantartásához. |
-   |Szerzői hely|**USA nyugati régiója**|Az Azure-régió a szerzői.|
-   |Szerzői tarifacsomag|**F0**|A szerzői jog alapértelmezett tarifacsomagja.|
-   |Futásidejű hely|**USA nyugati régiója**|Az Azure-régió előrejelzési végpontlekérdezések.|
-   |Futásidejű tarifacsomag|**S0**|Ez az árképzési szint nagy forgalmú webhelyeket biztosít.|
-   | | | |
-
-
-   ![Az Azure API-választás](./media/luis-how-to-azure-subscription/create-resource-in-azure.png)
-
-1. Válassza a **Létrehozás** lehetőséget az Azure-erőforrás létrehozásához.
-
-   A következő szakaszban megtudhatja, hogyan kapcsolhatja össze ezt az új erőforrást egy LUIS-alkalmazással a LUIS-portálon.
+[!INCLUDE [Create LUIS resource](includes/create-luis-resource.md)]
 
 ## <a name="assign-the-resource-key-to-the-luis-app-in-the-luis-portal"></a>Az erőforráskulcs hozzárendelése a LUIS-alkalmazáshoz a LUIS-portálon
 
-Minden alkalommal, amikor új erőforrást hoz létre a LUIS számára, hozzá kell rendelnie az erőforrást a LUIS alkalmazáshoz. Miután hozzávan rendelve, nem kell újra megtennie ezt a lépést, hacsak nem hoz létre egy új erőforrást. Előfordulhat, hogy hozzon létre egy új erőforrást az alkalmazás régióinak bővítéséhez vagy az előrejelzési lekérdezések nagyobb számának támogatásához.
+Minden alkalommal, amikor új szerzői vagy lekérdezés-előrejelzési erőforrást hoz létre a LUIS számára, hozzá kell rendelnie az erőforrást a LUIS alkalmazáshoz. Miután hozzávan rendelve, nem kell újra megtennie ezt a lépést, hacsak nem hoz létre egy új erőforrást. Előfordulhat, hogy hozzon létre egy új erőforrást az alkalmazás régióinak bővítéséhez vagy az előrejelzési lekérdezések nagyobb számának támogatásához.
 
 1. Jelentkezzen be az [előzetes LUIS portálra,](https://preview.luis.ai) és válassza ki a **myEnglishApp** alkalmazást az alkalmazások listájából.
 

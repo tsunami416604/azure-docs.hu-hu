@@ -7,14 +7,14 @@ ms.service: virtual-machines-linux
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2019
+ms.date: 04/06/2020
 ms.author: banders
-ms.openlocfilehash: 3bb7a62433993f1af26b1ce8bcb4ed258c34623c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e05920e495dd4aa14be6c849590a37a2bafa33f
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75973131"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757229"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Előre fizetés Azure-szoftvercsomagokért
 
@@ -38,6 +38,7 @@ Az előfizetéses fizetési mód nak a foglalás előzetes költségeit számít
 4. Válassza ki a hatókört. A hatókör egy előfizetést vagy több előfizetést (megosztott hatókört) fedezhet.
     - Egyszeri előfizetés – A csomagkedvezmény az előfizetés megfelelő használatára vonatkozik.
     - Megosztott – A csomag kedvezmény a számlázási környezetben bármely előfizetésmegfelelő példányokra vonatkozik. A vállalati ügyfelek számára a számlázási környezet a regisztráció, és tartalmazza az összes előfizetést a regisztrációban. A felosztó-ki-ki-díjszabásügyfelek egyéni csomag, a számlázási környezet minden egyéni csomagok pay-as-you-go díjszabási előfizetések által létrehozott fiók adminisztrátora.
+    - Egyetlen erőforráscsoport – A foglalási engedményt csak a kijelölt erőforráscsoport egyező erőforrásaira alkalmazza.
 5. Válasszon ki egy terméket a virtuális gép méretének és a képtípusnak a kiválasztásához. Az engedmény csak a kiválasztott virtuális gép méretére vonatkozik.
 6. Válasszon egy éves vagy hároméves időszakot.
 7. Válasszon egy mennyiséget, amely a számlázási engedményt lekérdező előre fizetett virtuálisgép-példányok száma.

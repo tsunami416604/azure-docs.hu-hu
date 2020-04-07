@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 164b26560020054f4da8bd1aa0ba2a3ecff1875a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 112c2ba831ab27faaca755079e9d20e2aebfcf9f
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286625"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744398"
 ---
 # <a name="create-a-new-iot-edge-module-offer-with-the-cloud-partner-portal"></a>Hozzon létre egy új IoT Edge modulajánlatot a Cloud Partner Portal segítségével
+
+>[!Important]
+>2020. március 30-tól megkezdjük az IoT Edge modulajánlatok kezelését a Partner Centerbe. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [IoT Edge-modulajánlat létrehozása](https://aka.ms/AzureCreateIoT) az áttelepített ajánlatok kezeléséhez kövesse az utasításokat.
 
 Ez a cikk ismerteti, hogyan hozhat létre és tehet közzé egy IoT Edge-modul ajánlatbejegyzést az Azure Marketplace-en. Minden ajánlat saját entitásként jelenik meg az Azure Marketplace-en, és egy vagy több sk-hez van társítva.  Az IoT Edge-modulajánlat az eszközök és támogató szolgáltatások következő csoportjaiból áll:
 

@@ -3,12 +3,12 @@ title: Diagnosztikai beállítások használata a Recovery Services-tárolókhoz
 description: A régi és az új diagnosztikai események azure backup-hoz való használatát ismertető cikk
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: e3919d120e5f741af6cd30dd27e5a1dfa2b06cf2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d10bedf3818559971eff12624152d0e797f6c3cc
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136939"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672786"
 ---
 # <a name="using-diagnostics-settings-for-recovery-services-vaults"></a>Diagnosztikai beállítások használata Recovery Services-tárolókhoz
 
@@ -39,28 +39,60 @@ Az Azure Log Analytics-ütemtervhez igazodva az Azure Backup most már lehetőv�
 
 A trezor diagnosztikai adatainak la-be való elküldése:
 
-1.  Keresse meg a trezort, és kattintson a **Diagnosztikai beállítások gombra.** Kattintson **a + Diagnosztikai beállítás hozzáadása gombra.**
-2.  Adjon nevet a Diagnosztika beállításnak.
-3.  Jelölje be a **Küldés a Log Analytics szolgáltatásba** jelölőnégyzetet, és válasszon egy Log Analytics-munkaterületet.
-4.  Válassza **az Erőforrás-specifikus lehetőséget** a váltóban, és ellenőrizze a következő hat eseményt : **CoreAzureBackup**, **AddonAzureBackupAlerts**, **AddonAzureBackupedInstance**, **AddonAzureBackupJobs**, **AddonAzureBackupPolicy**és **AddonAzureBackupStorage**.
-5.  Kattintson a **Mentés gombra.**
+1.    Keresse meg a trezort, és kattintson a **Diagnosztikai beállítások gombra.** Kattintson **a + Diagnosztikai beállítás hozzáadása gombra.**
+2.    Adjon nevet a Diagnosztika beállításnak.
+3.    Jelölje be a **Küldés a Log Analytics szolgáltatásba** jelölőnégyzetet, és válasszon egy Log Analytics-munkaterületet.
+4.    Válassza **az Erőforrás-specifikus lehetőséget** a váltóban, és ellenőrizze a következő hat eseményt : **CoreAzureBackup**, **AddonAzureBackupAlerts**, **AddonAzureBackupedInstance**, **AddonAzureBackupJobs**, **AddonAzureBackupPolicy**és **AddonAzureBackupStorage**.
+5.    Kattintson a **Mentés gombra.**
 
 ![Erőforrás-specifikus mód](./media/backup-azure-diagnostics-events/resource-specific-blade.png)
 
 Amint az adatok beáramlanak az LA-munkaterületre, az egyes eseményekhez dedikált táblák jönnek létre a munkaterületen. Ezen táblák bármelyikét közvetlenül lekérdezheti, és szükség esetén egyesítheti vagy egyesítheti ezeket a táblákat.
 
 > [!IMPORTANT]
-> A fenti hat esemény, nevezetesen a CoreAzureBackup, az AddonAzureBackupAlerts, az AddonAzureBackupEdInstance, az AddonAzureBackupJobs, az AddonAzureBackupPolicy és az AddonAzureBackupStorage **csak** erőforrás-specifikus módban támogatott. **Kérjük, vegye figyelembe, hogy ha az Azure diagnosztikai módban megpróbál adatokat küldeni a hat eseményhez, nem fog nak adatok at a LA-munkaterületre.**
+> A fenti hat esemény, nevezetesen a CoreAzureBackup, az AddonAzureBackupAlerts, az AddonAzureBackupedInstance, az AddonAzureBackupJobs, az AddonAzureBackupPolicy és az AddonAzureBackupStorage **csak** erőforrás-specifikus módban támogatott a [biztonsági másolatkészítési jelentésekben.](https://docs.microsoft.com/azure/backup/configure-reports) **Kérjük, vegye figyelembe, hogy ha az Azure diagnosztikai módban megpróbál adatokat küldeni a hat eseményhez, a biztonsági mentési jelentésekben nem lesznek láthatók adatok.**
 
 ## <a name="legacy-event"></a>Örökölt esemény
 
 Hagyományosan a tároló összes biztonsági mentéssel kapcsolatos diagnosztikai adata egyetlen eseményben található, amelyet "AzureBackupReport" nevű esemény tartalmaz. A fent leírt hat esemény lényegében az AzureBackupReport ban található összes adat lebontása. 
 
-Jelenleg továbbra is támogatjuk az AzureBackupReport eseményt a visszamenőleges kompatibilitás érdekében, azokban az esetekben, amikor a felhasználók már rendelkeznek egyéni lekérdezésekkel ezen az eseményen, például egyéni naplóriasztások, egyéni vizualizációk stb. Azonban **azt javasoljuk, hogy az új eseményekre való mielőbb idot,** mivel ez sokkal könnyebbé teszi az adatok használatát a naplólekérdezésekben, jobb felderíthetőséget biztosít a sémák és azok szerkezete, javítja a teljesítményt mind a betöltési késés, mind a lekérdezési idő között. **Az Azure Diagnosztika mód használatának támogatása végül fokozatosan megszűnik, és így az új események kiválasztása segíthet elkerülni az összetett áttelepítéseket egy későbbi időpontban.**
+Jelenleg továbbra is támogatjuk az AzureBackupReport eseményt a visszamenőleges kompatibilitás érdekében, azokban az esetekben, amikor a felhasználók már rendelkeznek egyéni lekérdezésekkel ezen az eseményen, például egyéni naplóriasztások, egyéni vizualizációk stb. Azonban **azt javasoljuk, hogy az [új eseményekre](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#diagnostics-events-available-for-azure-backup-users) való mielőbb idot,** mivel ez sokkal könnyebbé teszi az adatok használatát a naplólekérdezésekben, jobb felderíthetőséget biztosít a sémák és azok szerkezete, javítja a teljesítményt mind a betöltési késés, mind a lekérdezési idő között. 
 
-Az Azure Backup beépített szabályzatával új diagnosztikai beállítást adhat hozzá a 6 új eseményhez a megadott hatókör összes tárolójával kapcsolatban: [A Vault diagnosztikai beállításainak konfigurálása nagy méretekben](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)
+**Az örökölt esemény az Azure Diagnosztika módban végül elavulttá válik, és így az új események kiválasztása segíthet elkerülni az összetett áttelepítéseket egy későbbi időpontban.** A Log Analytics szolgáltatást használó [jelentéskészítő megoldásunk](https://docs.microsoft.com/azure/backup/configure-reports) leállítja az örökölt eseményből származó adatok támogatását is.
 
-Dönthet úgy, hogy külön diagnosztikai beállításokat hoz létre az AzureBackupReport és a hat új esemény, amíg az összes egyéni lekérdezések az új táblák ból származó adatok használatára. Az alábbi képen egy olyan tároló látható, amelynek két diagnosztikai beállítása van. Az első **beállítás1 az** AzureBackupReport-esemény adatait küldi egy LA-munkaterületre AzureDiagnostics módban. A második beállítás, **a Setting2** a hat új Azure Backup-esemény adatait küldi el egy LA-munkaterületre erőforrás-specifikus módban.
+### <a name="steps-to-move-to-new-diagnostics-settings-to-log-analytics-workspace"></a>Az új diagnosztikai beállításokra való áttérés lépései (a Log Analytics munkaterületre)
+
+1. Azonosítsa, hogy mely tárolók küldenek adatokat a Log Analytics-munkaterület(ek)nek az örökölt esemény használatával, és az előfizetéseket, amelyekhez tartoznak. Az alábbi munkaterületek futtatásával azonosíthatja ezeket a tárolókat és előfizetéseket:
+
+    ````Kusto
+    let RangeStart = startofday(ago(3d));
+    let VaultUnderAzureDiagnostics = (){
+        AzureDiagnostics
+        | where TimeGenerated >= RangeStart | where Category == "AzureBackupReport" and OperationName == "Vault" and SchemaVersion_s == "V2"
+        | summarize arg_max(TimeGenerated, *) by ResourceId    
+        | project ResourceId, Category};
+    let VaultUnderResourceSpecific = (){
+        CoreAzureBackup
+        | where TimeGenerated >= RangeStart | where OperationName == "Vault" 
+        | summarize arg_max(TimeGenerated, *) by ResourceId
+        | project ResourceId, Category};
+        // Some Workspaces will not have AzureDiagnostics Table, hence you need to use isFuzzy
+    let CombinedVaultTable = (){
+        CombinedTable | union isfuzzy = true 
+        (VaultUnderAzureDiagnostics() ),
+        (VaultUnderResourceSpecific() )
+        | distinct ResourceId, Category};
+    CombinedVaultTable | where Category == "AzureBackupReport"
+    | join kind = leftanti ( 
+    CombinedVaultTable | where Category == "CoreAzureBackup"
+    ) on ResourceId
+    | parse ResourceId with * "SUBSCRIPTIONS/" SubscriptionId:string "/RESOURCEGROUPS" * "MICROSOFT.RECOVERYSERVICES/VAULTS/" VaultName:string
+    | project ResourceId, SubscriptionId, VaultName
+    ````
+
+2. Az Azure Backup [beépített Azure-szabályzatával](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics) új diagnosztikai beállítást adhat hozzá egy adott hatókör összes tárolójának. Ez a házirend új diagnosztikai beállítást ad hozzá azokhoz a tárolókhoz, amelyek nem rendelkeznek diagnosztikai beállítással (vagy) csak egy örökölt diagnosztikai beállítással rendelkeznek. Ez a szabályzat egyszerre egy teljes előfizetéshez vagy erőforráscsoporthoz rendelhető hozzá. Vegye figyelembe, hogy minden olyan előfizetéshez " tulajdonosi" hozzáférésre lesz szüksége, amelyhez a szabályzat hozzá van rendelve.
+
+Dönthet úgy, hogy külön diagnosztikai beállításokat azureBackupreport és a hat új események, amíg az összes egyéni lekérdezések az új táblák ból származó adatok használatára. Az alábbi képen egy olyan tároló látható, amelynek két diagnosztikai beállítása van. Az első **beállítás1 az** AzureBackupReport-esemény adatait küldi egy LA-munkaterületre AzureDiagnostics módban. A második beállítás, **a Setting2** a hat új Azure Backup-esemény adatait küldi el egy LA-munkaterületre erőforrás-specifikus módban.
 
 ![Két beállítás](./media/backup-azure-diagnostics-events/two-settings-example.png)
 

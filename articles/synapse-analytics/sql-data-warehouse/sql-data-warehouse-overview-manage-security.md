@@ -11,12 +11,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 44d7b4196e53bfcc89105236e446c74d50e7812a
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 0c30294f2ca139a602074a980810e7c6737c4e2d
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633119"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742988"
 ---
 # <a name="secure-a-database-in-azure-synapse"></a>Adatbázis biztonságossá tétele az Azure Synapse-ban
 
@@ -81,9 +81,9 @@ A kapcsolódáshoz használt kiszolgálói rendszergazdai fiók a db_owner szere
 
 A felhasználók az adatbázisban további annekteket tehetnek:
 
-* A részletes [engedélyek](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine?view=sql-server-ver15) segítségével szabályozhatja, hogy az adatbázis egyes oszlopain, tábláin, nézetein, sémájain, eljárásaiban és egyéb objektumain milyen műveleteket végezhet. A részletes engedélyekkel a legtöbb vezérlést és a szükséges minimális engedélyeket biztosíthatja.
-* A db_datareader és db_datawriter kívüli [adatbázis-szerepkörök](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15) hatékonyabb alkalmazásfelhasználói fiókok vagy kevésbé hatékony felügyeleti fiókok létrehozására használhatók. A beépített rögzített adatbázis-szerepkörök egyszerű módot biztosítanak az engedélyek megadására, de a szükségesnél több engedélyt adhatnak.
-* A [tárolt eljárások](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine?redirectedfrom=MSDN&view=sql-server-ver15) segítségével korlátozhatja az adatbázisban végezhető műveleteket.
+* A részletes [engedélyek](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) segítségével szabályozhatja, hogy az adatbázis egyes oszlopain, tábláin, nézetein, sémájain, eljárásaiban és egyéb objektumain milyen műveleteket végezhet. A részletes engedélyekkel a legtöbb vezérlést és a szükséges minimális engedélyeket biztosíthatja.
+* A db_datareader és db_datawriter kívüli [adatbázis-szerepkörök](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) hatékonyabb alkalmazásfelhasználói fiókok vagy kevésbé hatékony felügyeleti fiókok létrehozására használhatók. A beépített rögzített adatbázis-szerepkörök egyszerű módot biztosítanak az engedélyek megadására, de a szükségesnél több engedélyt adhatnak.
+* A [tárolt eljárások](/sql/relational-databases/stored-procedures/stored-procedures-database-engine?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) segítségével korlátozhatja az adatbázisban végezhető műveleteket.
 
 A következő példa olvasási hozzáférést biztosít egy felhasználó által definiált sémához.
 
@@ -92,13 +92,13 @@ A következő példa olvasási hozzáférést biztosít egy felhasználó által
 GRANT SELECT ON SCHEMA::Test to ApplicationUser
 ```
 
-Az adatbázisok és logikai kiszolgálók kezelése az Azure Portalon, vagy az Azure Resource Manager API-t a portál felhasználói fiók szerepkör-hozzárendelések által szabályozza. További információ: [Szerepköralapú hozzáférés-vezérlés az Azure Portalon.](https://azure.microsoft.com/documentation/articles/role-based-access-control-configure)
+Az adatbázisok és logikai kiszolgálók kezelése az Azure Portalon, vagy az Azure Resource Manager API-t a portál felhasználói fiók szerepkör-hozzárendelések által szabályozza. További információ: [Szerepköralapú hozzáférés-vezérlés az Azure Portalon.](../../role-based-access-control/role-assignments-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 
 ## <a name="encryption"></a>Titkosítás
 
 Az átlátszó adattitkosítás (TDE) az adatok titkosításával és visszafejtésével védelmet nyújt a rosszindulatú tevékenységek kel szemben. Az adatbázis titkosításakor a kapcsolódó biztonsági mentések és tranzakciós naplófájlok titkosítása az alkalmazások módosítása nélkül történik. A TDE egy teljes adatbázis tartalmát titkosítja egy szimmetrikus kulcs – az adatbázis-titkosítási kulcs – használatával.
 
-Az SQL Database rendszerben az adatbázis-titkosítási kulcsot beépített kiszolgálói tanúsítvány védi. A beépített kiszolgálói tanúsítvány minden SQL Database-kiszolgáló esetében egyedi. A Microsoft legalább 90 naponta automatikusan elforgatja ezeket a tanúsítványokat. A használt titkosítási algoritmus AES-256. A TDE általános leírását az [Átlátszó adattitkosítás](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-ver15).
+Az SQL Database rendszerben az adatbázis-titkosítási kulcsot beépített kiszolgálói tanúsítvány védi. A beépített kiszolgálói tanúsítvány minden SQL Database-kiszolgáló esetében egyedi. A Microsoft legalább 90 naponta automatikusan elforgatja ezeket a tanúsítványokat. A használt titkosítási algoritmus AES-256. A TDE általános leírását az [Átlátszó adattitkosítás](/sql/relational-databases/security/encryption/transparent-data-encryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 Az [Azure Portal vagy](sql-data-warehouse-encryption-tde.md) a [T-SQL](sql-data-warehouse-encryption-tde-tsql.md)használatával titkosíthatja az adatbázist.
 

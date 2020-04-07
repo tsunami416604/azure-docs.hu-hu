@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 89d437fe74d209e0dc04ffc590a1e32426b28732
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d52270e623a713d7188ac5ff907ebb82ada13283
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275866"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745608"
 ---
 # <a name="publish-a-power-bi-app-offer"></a>Power BI Alkalmazásajánlat közzététele
+
+>[!Important]
+>2020. március 30-tól megkezdjük a Power BI-alkalmazásajánlatok felügyeletének áthelyezését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Az áttelepített ajánlatok kezeléséhez kövesse a [Power BI-alkalmazások létrehozásának áttekintése](https://aka.ms/AzureCreatePBIServiceApp) című témakör utasításait.
 
 Az utolsó lépés, miután definiált egy ajánlatot a Cloud Partner Portalon, és létrehozta a kapcsolódó technikai eszközöket, az ajánlat közzététele. A folyamat elindításához az Új **ajánlat** ablak bal oldali ablaktáblájában válassza a **Közzététel**lehetőséget. További információ: [Publish Azure Marketplace and AppSource offers](../manage-offers/cpp-publish-offer.md).
 

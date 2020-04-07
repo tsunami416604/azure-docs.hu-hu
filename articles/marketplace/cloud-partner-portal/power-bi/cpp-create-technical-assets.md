@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: df0708ff964595181d00d8402f1162e0832c70eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0079c5a9409aafd4d6341ec9febb5115dc4023a1
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286370"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745401"
 ---
 # <a name="create-power-bi-app-offer-technical-assets"></a>Power BI App ajánlat technikai eszközök létrehozása
+
+>[!Important]
+>2020. március 30-tól megkezdjük a Power BI-alkalmazásajánlatok felügyeletének áthelyezését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Az áttelepített ajánlatok kezeléséhez kövesse a [Power BI-alkalmazások létrehozásának áttekintése](https://aka.ms/AzureCreatePBIServiceApp) című témakör utasításait.
 
 Az ajánlattípushoz elsődlegesen egy Power BI-alkalmazásra van szüksége. A Power BI-alkalmazások elsődleges adatkészletek, jelentések vagy irányítópultok, valamint választható csatlakoztatott szolgáltatások és beágyazott adatkészletek gyűjteménye. A korábban [tartalomcsomagként](https://docs.microsoft.com/power-bi/service-organizational-content-pack-introduction)ismert eszköztípusból fejlődött ki. Az ilyen típusú alkalmazások fejlesztéséről a Mik azok a [Power BI-sablonalkalmazások?](https://go.microsoft.com/fwlink/?linkid=2028636)
 

@@ -7,16 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: dsindona
-ms.openlocfilehash: 1720026b4beff941b02a60cd1c755a043d66bdb5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9b59181f7c1b24a7bc00ab579bbe67a70f499c92
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281493"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755375"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>Érdeklődőkezelés konfigurálása a Salesforce-hoz
 
-Ez a cikk bemutatja, hogyan kell beállítani a Salesforce rendszer feldolgozása értékesítési érdeklődőket a piactéri ajánlat.
+Ez a cikk bemutatja, hogyan állíthatja be a Salesforce rendszert a kereskedelmi piactér-ajánlatból származó értékesítési érdeklődők feldolgozására.
+
+> [!Note]
+> A Marketplace nem támogatja az előre kitöltött listákat, például az **Ország** mező értéklistáját. A folytatás előtt győződjön meg arról, hogy nincsenek listák beállítva. Azt is megteheti, hogy konfigurálegy [HTTPS-végpontot](./commercial-marketplace-lead-management-instructions-https.md) vagy egy [Azure-táblát](./commercial-marketplace-lead-management-instructions-azure-table.md) az érdeklődők fogadására.
 
 ## <a name="set-up-your-salesforce-system"></a>A Salesforce rendszer beállítása
 
@@ -26,14 +29,16 @@ Ez a cikk bemutatja, hogyan kell beállítani a Salesforce rendszer feldolgozás
     ![Salesforce beállítása](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-1.png)
 
     1. A Beállítás lapon navigáljon a bal oldali navigációs sávon a **Platform Tools->Szolgáltatásbeállítások->Marketing->Web-to-Lead oldalra.**
-    ![Salesforce Web-to-Lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-2.png)
+
+        ![Salesforce Web-to-Lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-2.png)
 
 3. Ha a Salesforce Classic élményt használja:
     1. Válassza a **Beállítás** lehetőséget a Salesforce kezdőlapjáról.
     ![Salesforce klasszikus beállítás](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-setup.png)
 
     1. A Beállítás lapon navigáljon a bal oldali navigációs sávon a **Build ->Customize->Leads->web-to-lead (Build->>->web-to-lead**) elemre.
-    ![Salesforce klasszikus web-to-lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-web-to-lead.png)
+
+        ![Salesforce klasszikus web-to-lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-web-to-lead.png)
 
 A többi utasítás ugyanaz, függetlenül attól, hogy melyik Salesforce-élményt használja.
 

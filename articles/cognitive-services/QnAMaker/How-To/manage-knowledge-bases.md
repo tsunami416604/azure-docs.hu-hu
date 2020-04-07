@@ -3,12 +3,12 @@ title: Tudásbázisok kezelése - QnA Maker
 description: A QnA Maker lehetővé teszi tudásbázisai kezelését a tudásbázis beállításaihoz és tartalmához való hozzáférés biztosításával.
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 57839125011016daed5f0b3d441a83e8db488198
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4eb07b30b10826c361f4f9b805b517e372fc5ea1
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80071143"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756801"
 ---
 # <a name="create-knowledge-base-and-manage-settings"></a>Tudásbázis létrehozása és beállítások kezelése
 
@@ -107,5 +107,5 @@ Ha megosztja tudásbázisát a közreműködőkkel,](együttműködés-tudás-ba
 
 További információ az erőforrások összes tudásbázisának [nyelvének kezeléséről.](language-knowledge-base.md)
 
-* QnA-készletek szerkesztése
+* QnA-párok szerkesztése
 * A QnA Maker által használt Azure-erőforrások kezelése

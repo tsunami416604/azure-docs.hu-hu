@@ -4,15 +4,15 @@ description: Az Azure Monitor segítségével az egyes erőforrástípusokhoz el
 author: rboucher
 services: azure-monitor
 ms.topic: reference
-ms.date: 03/17/2020
+ms.date: 04/06/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 79bae9712cea04425cc36414ec56fdddd4345eab
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 846e8da889e3913c4a8eaab7808495bbd8afad29
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586028"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754662"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Támogatott metrikák az Azure Monitorsegítségével
 
@@ -1999,11 +1999,11 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |dwu_used|Használt DWU|Darabszám|Maximum|Használt DWU. Csak adatraktárakra vonatkozik.|None|
 |cache_hit_percent|Gyorsítótár találati százaléka|Százalék|Maximum|Gyorsítótár találati százaléka. Csak adatraktárakra vonatkozik.|None|
 |cache_used_percent|Gyorsítótár által használt százalék|Százalék|Maximum|Gyorsítótár használt százaléka. Csak adatraktárakra vonatkozik.|None|
-|sqlserver_process_core_percent|SQL Server folyamat alapszázaléka|Százalék|Maximum|Az SQL Server folyamat processzorhasználati százaléka az operációs rendszer szerint mérve.|None|
-|sqlserver_process_memory_percent|SQL Server folyamatmemória százaléka|Százalék|Maximum|Az SQL Server folyamat memóriahasználati százaléka az operációs rendszer szerint mérve.|None|
-|tempdb_data_size|Tempdb-adatfájl mérete kilobájt|Darabszám|Maximum|Tempdb adatfájl mérete kilobájt. Adatraktárakra nem vonatkozik.|None|
-|tempdb_log_size|Tempdb naplófájl mérete Kilobájt|Darabszám|Maximum|Tempdb naplófájl mérete kilobájt. Adatraktárakra nem vonatkozik.|None|
-|tempdb_log_used_percent|Használt Tempdb százaléknapló|Százalék|Maximum|Tempdb százaléknapló használatban. Adatraktárakra nem vonatkozik.|None|
+|sqlserver_process_core_percent<sup>1.</sup> |SQL Server folyamat alapszázaléka|Százalék|Maximum|Az SQL Server folyamat processzorhasználati százaléka az operációs rendszer szerint mérve.|None|
+|<sup>1.</sup> sqlserver_process_memory_percent |SQL Server folyamatmemória százaléka|Százalék|Maximum|Az SQL Server folyamat memóriahasználati százaléka az operációs rendszer szerint mérve.|None|
+|<sup>tempdb_data_size 2.</sup> |Tempdb-adatfájl mérete kilobájt|Darabszám|Maximum|Tempdb adatfájl mérete kilobájt.|None|
+|<sup>tempdb_log_size 2.</sup> |Tempdb naplófájl mérete Kilobájt|Darabszám|Maximum|Tempdb naplófájl mérete kilobájt.|None|
+|<sup>tempdb_log_used_percent 2.</sup> |Használt Tempdb százaléknapló|Százalék|Maximum|Tempdb százaléknapló használatban.|None|
 |local_tempdb_usage_percent|Helyi tempdb százalék|Százalék|Átlag|Helyi tempdb százalék. Csak adatraktárakra vonatkozik.|None|
 |app_cpu_billed|Alkalmazás PROCESSZORa számlázva|Darabszám|Összesen|Az alkalmazás cpu-ja számlázva. Kiszolgáló nélküli adatbázisokra vonatkozik.|None|
 |app_cpu_percent|Alkalmazás processzorának százaléka|Százalék|Átlag|Alkalmazás processzorának százaléka. Kiszolgáló nélküli adatbázisokra vonatkozik.|None|
@@ -2028,6 +2028,9 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |snapshot_backup_size_bytes|Pillanatkép biztonsági mentési tárolómérete|Bájt|Maximum|Összesített pillanatkép biztonsági mentési tároló mérete. Nagykapacitású adatbázisokra vonatkozik.|None|
 |base_blob_size_bytes|Alapblob-tároló mérete|Bájt|Maximum|Alapblob-tároló mérete. Nagykapacitású adatbázisokra vonatkozik.|None|
 
+<sup>1</sup> Ez a metrika a virtuális mag 2 virtuálismaggal és magasabb magokkal, illetve 200 DTU-val és magasabb magokkal rendelkező adatbázisokhoz érhető el. 
+
+<sup>2</sup> Ez a metrika a virtuális mag 2 virtuálismaggal és magasabb magokkal, illetve 200 DTU-val és magasabb magokkal rendelkező adatbázisokhoz érhető el. Ez a metrika jelenleg nem érhető el a nagy kapacitású adatbázisok vagy adatraktárak.
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft.Sql/servers/elasticPools
 
@@ -2057,14 +2060,19 @@ Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakció
 |database_cpu_limit|CPU-korlát|Darabszám|Átlag|CPU-korlát|DatabaseResourceId azonosító|
 |cpu_used|HASZNÁLT PROCESSZOR|Darabszám|Átlag|CPU használt. Virtuálismag-alapú rugalmas készletek vonatkozik.|None|
 |database_cpu_used|HASZNÁLT PROCESSZOR|Darabszám|Átlag|HASZNÁLT PROCESSZOR|DatabaseResourceId azonosító|
-|sqlserver_process_core_percent|SQL Server folyamat alapszázaléka|Százalék|Maximum|Az SQL Server folyamat processzorhasználati százaléka az operációs rendszer szerint mérve. Rugalmas készletekre vonatkozik.|None|
-|sqlserver_process_memory_percent|SQL Server folyamatmemória százaléka|Százalék|Maximum|Az SQL Server folyamat memóriahasználati százaléka az operációs rendszer szerint mérve. Rugalmas készletekre vonatkozik.|None|
-|tempdb_data_size|Tempdb-adatfájl mérete kilobájt|Darabszám|Maximum|Tempdb-adatfájl mérete kilobájt|None|
-|tempdb_log_size|Tempdb naplófájl mérete Kilobájt|Darabszám|Maximum|Tempdb naplófájl mérete Kilobájt|None|
-|tempdb_log_used_percent|Használt Tempdb százaléknapló|Százalék|Maximum|Használt Tempdb százaléknapló|None|
+|sqlserver_process_core_percent<sup>1.</sup>|SQL Server folyamat alapszázaléka|Százalék|Maximum|Az SQL Server folyamat processzorhasználati százaléka az operációs rendszer szerint mérve. Rugalmas készletekre vonatkozik. |None|
+|<sup>1.</sup> sqlserver_process_memory_percent|SQL Server folyamatmemória százaléka|Százalék|Maximum|Az SQL Server folyamat memóriahasználati százaléka az operációs rendszer szerint mérve. Rugalmas készletekre vonatkozik. |None|
+|<sup>tempdb_data_size 2.</sup>|Tempdb-adatfájl mérete kilobájt|Darabszám|Maximum|Tempdb adatfájl mérete kilobájt.|None|
+|<sup>tempdb_log_size 2.</sup>|Tempdb naplófájl mérete Kilobájt|Darabszám|Maximum|Tempdb naplófájl mérete kilobájt. |None|
+|<sup>tempdb_log_used_percent 2.</sup>|Használt Tempdb százaléknapló|Százalék|Maximum|Tempdb százaléknapló használatban.|None|
 |allocated_data_storage|Lefoglalt adatterület|Bájt|Átlag|Lefoglalt adatterület|None|
 |database_allocated_data_storage|Lefoglalt adatterület|Bájt|Átlag|Lefoglalt adatterület|DatabaseResourceId azonosító|
 |allocated_data_storage_percent|Kiosztott adatterület százalék|Százalék|Maximum|Kiosztott adatterület százalék|None|
+
+<sup>1</sup> Ez a metrika a virtuális mag 2 virtuálismaggal és magasabb magokkal, illetve 200 DTU-val és magasabb magokkal rendelkező adatbázisokhoz érhető el. 
+
+<sup>2</sup> Ez a metrika a virtuális mag 2 virtuálismaggal és magasabb magokkal, illetve 200 DTU-val és magasabb magokkal rendelkező adatbázisokhoz érhető el. Ez a metrika jelenleg nem érhető el a nagy kapacitású adatbázisok.
+
 
 ## <a name="microsoftsqlservers"></a>Microsoft.Sql/kiszolgálók
 

@@ -3,21 +3,24 @@ title: Az Azure-fájlok visszaállítása a PowerShell segítségével
 description: Ebben a cikkben megtudhatja, hogyan állíthatja vissza az Azure Files az Azure Backup szolgáltatás és a PowerShell használatával.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 99aeaa6173bb5336e6e1719a9fc0df0c668374e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12bff49bc249b23542534d218b13b517411f461b
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77086828"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756196"
 ---
 # <a name="restore-azure-files-with-powershell"></a>Az Azure-fájlok visszaállítása a PowerShell segítségével
 
-Ez a cikk bemutatja, hogyan állíthatja vissza a teljes fájlmegosztást, vagy adott fájlokat az [Azure Backup](backup-overview.md) szolgáltatás által az Azure Powershell használatával létrehozott visszaállítási pontról.
+Ez a cikk bemutatja, hogyan állíthatja vissza a teljes fájlmegosztást, vagy adott fájlokat az Azure Backup szolgáltatás által az Azure [PowerShell](backup-overview.md) használatával létrehozott visszaállítási pontról.
 
 A megosztáson lévő teljes fájlmegosztást vagy adott fájlokat visszaállíthatja. Visszaállíthatja az eredeti vagy egy másik helyre.
 
 > [!WARNING]
-> Győződjön meg arról, hogy a PS-verzió az AFS biztonsági mentések esetében az "Az.RecoveryServices 2.6.0" minimális verziójára van frissítve. További [részletekért](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups) tekintse meg a módosítás követelményét felvázoló szakaszt.
+> Győződjön meg arról, hogy a PS-verzió az AFS biztonsági mentések esetében az "Az.RecoveryServices 2.6.0" minimális verziójára van frissítve. További információt a módosítás követelményét tagjelző [szakaszban](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups) talál.
+
+>[!NOTE]
+>Az Azure Backup mostantól támogatja több fájl vagy mappa visszaállítását az eredeti vagy alternatív helyre a PowerShell használatával. A dokumentum [ezen részében](#restore-multiple-files-or-folders-to-original-or-alternate-location) megtudhatja, hogyan.
 
 ## <a name="fetch-recovery-points"></a>Helyreállítási pontok beolvasása
 
@@ -102,17 +105,67 @@ Ez a parancs egy nyomon követendő azonosítóval rendelkező feladatot ad viss
 
 Amikor visszaállít egy eredeti helyre, nem kell megadnia a cél- és célhoz kapcsolódó paramétereket. Csak **ResolveConflict** adható meg.
 
-#### <a name="overwrite-an-azure-file-share"></a>Azure-fájlmegosztás felülírása
+### <a name="overwrite-an-azure-file-share"></a>Azure-fájlmegosztás felülírása
 
 ```powershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -ResolveConflict Overwrite
 ```
 
-#### <a name="overwrite-an-azure-file"></a>Azure-fájl felülírása
+### <a name="overwrite-an-azure-file"></a>Azure-fájl felülírása
 
 ```powershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -SourceFileType File -SourceFilePath "TestDir/TestDoc.docx" -ResolveConflict Overwrite
 ```
+
+## <a name="restore-multiple-files-or-folders-to-original-or-alternate-location"></a>Több fájl vagy mappa visszaállítása eredeti vagy alternatív helyre
+
+Használja a [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) parancsot úgy, hogy átadja az összes visszaállítani kívánt fájl vagy mappa elérési útját a **MultipleSourceFilePath** paraméter értékeként.
+
+### <a name="restore-multiple-files"></a>Több fájl visszaállítása
+
+A következő parancsfájlban megpróbáljuk visszaállítani a *FileSharePage.png* és a *MyTestFile.txt* fájlokat.
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "azurefiles" -Name "azurefilesvault"
+
+$Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureStorage -Status Registered -FriendlyName "afsaccount" -VaultId $vault.ID
+
+$BackupItem = Get-AzRecoveryServicesBackupItem -Container $Container -WorkloadType AzureFiles -VaultId $vault.ID -FriendlyName "azurefiles"
+
+$RP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $BackupItem -VaultId $vault.ID
+
+$files = ("FileSharePage.png", "MyTestFile.txt")
+
+Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -MultipleSourceFilePath $files -SourceFileType File -ResolveConflict Overwrite -VaultId $vault.ID -VaultLocation $vault.Location
+```
+
+### <a name="restore-multiple-directories"></a>Több könyvtár visszaállítása
+
+A következő parancsfájlban próbáljuk visszaállítani a *zrs1_restore* és *visszaállítása* könyvtárakat.
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "azurefiles" -Name "azurefilesvault"
+
+$Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureStorage -Status Registered -FriendlyName "afsaccount" -VaultId $vault.ID
+
+$BackupItem = Get-AzRecoveryServicesBackupItem -Container $Container -WorkloadType AzureFiles -VaultId $vault.ID -FriendlyName "azurefiles"
+
+$RP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $BackupItem -VaultId $vault.ID
+
+$files = ("Restore","zrs1_restore")
+
+Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -MultipleSourceFilePath $files -SourceFileType Directory -ResolveConflict Overwrite -VaultId $vault.ID -VaultLocation $vault.Location
+```
+
+A kimenet az alábbihoz hasonló lesz:
+
+```output
+WorkloadName         Operation         Status          StartTime                EndTime       JobID
+------------         ---------         ------          ---------                -------       -----
+azurefiles           Restore           InProgress      4/5/2020 8:01:24 AM                    cd36abc3-0242-44b1-9964-0a9102b74d57
+```
+
+Ha több fájlt vagy mappát szeretne másik helyre állítani, használja a fenti parancsfájlokat a célhelyhez kapcsolódó paraméterértékek megadásával, ahogy azt a [fenti, Egy Azure-fájl visszaállítása egy másik helyre](#restore-an-azure-file-to-an-alternate-location)című részben ismertetett.
 
 ## <a name="next-steps"></a>További lépések
 

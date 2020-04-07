@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: e16166c741b99c1af5b36f2c7ccd25b01f7544ba
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 3bc095d8949f177ccb6c4cc111ba4b272027904e
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77108990"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756696"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>Rövid útmutató: Tudásbázis tesztelése kötegelt kérdésekkel és várt válaszokkal
 
@@ -149,7 +149,7 @@ Az alábbi diagram segítségével megtudhatja, hogyan keresheti meg a választh
     |A Surface Pro 4 töltése|
     |Az akkumulátor töltöttségi szintjének ellenőrzése|
 
-    Két QnA-készlet metaadat-készlettel rendelkezik.
+    Két QnA-pár metaadat-készlete van.
 
     > [!TIP]
     > Az egyes csoportok metaadatait és QnA-azonosítóit exportálni a tudásbázist. Jelölje ki a **Beállítások** lapot, `.xls` majd az **Exportálás** fájlként lehetőséget. Keresse meg ezt a letöltött fájlt, és nyissa meg az Excel metaadatokat és -azonosítót.
@@ -169,7 +169,7 @@ A kötegelt tesztelésnek két fő forgatókönyve van:
 
 A következő eljárás feltételezi, hogy a forgatókönyv a csevegési naplók
 
-1. Hozzon létre egy új kötegtesztfájlt, amely nem kötelező adatokat tartalmaz, `batch-test-data-2.tsv`. Adja hozzá az eredeti kötegelt tesztbemeneti fájl 6 sorát, majd adja hozzá a metaadatokat, a felső és a QnA-készletazonosítót minden sorhoz.
+1. Hozzon létre egy új kötegtesztfájlt, amely nem kötelező adatokat tartalmaz, `batch-test-data-2.tsv`. Adja hozzá az eredeti kötegteszt bemeneti fájljának 6 sorát, majd adja hozzá a metaadatokat, a felső és a QnA-párazonosítót minden sorhoz.
 
     A csevegőnaplókból származó új szövegek tudásbázissal való ellenőrzésének automatikus szimulálásához állítsa az `topic:power`egyes oszlopok metaadatait ugyanarra az értékre: .
 

@@ -3,15 +3,15 @@ title: Funkció létrehozása az Azure diákoknak kezdővel
 description: Ismerje meg, hogyan hozhat létre Azure-függvényt egy Azure for Student Starter-előfizetésből
 Customer intent: As a student, I want to be able to create an HTTP triggered Function App within the Student Starter plan so that I can easily add APIs to any project.
 author: alexkarcher-msft
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 02/22/2019
 ms.author: alkarche
-ms.openlocfilehash: 189a0bc80ab2894b2888b496b3beb45249d859f6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c7dd88bf0ead558a0c4951baf38543566d805caa
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75921135"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756472"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Funkció létrehozása az Azure diákoknak kezdővel
 
@@ -50,7 +50,7 @@ Rendelkeznie kell egy függvényalkalmazással a függvények végrehajtásának
     | **[Erőforráscsoport](../azure-resource-manager/management/overview.md)** |  myResourceGroup | Az új erőforráscsoport neve, amelyben létrehozza a függvényalkalmazást. |
    | **[App Service-csomag/hely](./functions-scale.md)** | Új | Az üzemeltetési terv, amely szabályozza, hogy a függvényalkalmazás milyen régióban van telepítve, és az erőforrások sűrűsége. Az ugyanabban a csomagban telepített több függvényalkalmazás ugyanazt az egyetlen szabad példányt fogja megosztani. Ez a Student Starter terv korlátozása. A teljes tárhely lehetőségek [itt ismertetik.](./functions-scale.md)|
     | **Futtatókörnyezet verme** | Elsődleges nyelv | Válasszon egy olyan futtatókörnyezetet, amely támogatja a kedvenc függvényprogramozási nyelvét. Válassza a **.NET** lehetőséget a C# és az F# függvényekhez. |
-    |**[Alkalmazáselemzési adatok](./functions-monitoring.md)**| Engedélyezve | Az Application Insights a függvényalkalmazás naplóinak tárolására és elemzésére szolgál. Alapértelmezés szerint engedélyezve van, ha olyan helyet választ, amely támogatja az Application Insights.It is enabled by default if you choose a location that supports Application Insights. Az Application Insights bármely funkcióhoz engedélyezhető, ha manuálisan kiválaszt egy közeli régiót az Application Insights üzembe helyezéséhez. Az Application Insights nélkül csak az élő streamelési naplók at tekintheti meg.
+    |**[Application Insights](./functions-monitoring.md)**| Engedélyezve | Az Application Insights a függvényalkalmazás naplóinak tárolására és elemzésére szolgál. Alapértelmezés szerint engedélyezve van, ha olyan helyet választ, amely támogatja az Application Insights.It is enabled by default if you choose a location that supports Application Insights. Az Application Insights bármely funkcióhoz engedélyezhető, ha manuálisan kiválaszt egy közeli régiót az Application Insights üzembe helyezéséhez. Az Application Insights nélkül csak az élő streamelési naplók at tekintheti meg.
 
 3. Válassza ki a fenti **App Service-csomag/Hely** lehetőséget egy másik hely kiválasztásához
 

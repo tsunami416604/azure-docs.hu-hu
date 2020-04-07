@@ -6,30 +6,38 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/23/2019
+ms.date: 04/06/2020
 ms.author: dapine
-ms.openlocfilehash: a765ac27936da9da5a2f41464c17491e3561f44b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 88289686e5b091ef3ec309ee9b54ee0f895c8c22
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73465933"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754371"
 ---
-## <a name="create-a-luis-resource"></a>LUIS-erőforrás létrehozása
+<a name="create-luis-resources"></a>
 
-1. Bejelentkezés az [Azure-portálra](https://portal.azure.com)
-1. Kattintson [a **Nyelvismertetés létrehozása gombra.** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
+## <a name="create-luis-resources-in-azure-portal"></a>LUIS-erőforrások létrehozása az Azure Portalon
+
+1. [Ezen a hivatkozáson](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne) keresztül kezdheti el a LUIS-erőforrások létrehozását az Azure Portalon.
+
 1. Adja meg az összes szükséges beállítást:
 
-    |Beállítás|Érték|
+    |Név|Cél|
     |--|--|
-    |Név|Kívánt név (2-64 karakter)|
-    |Előfizetés|Válassza ki a megfelelő előfizetést|
-    |Hely|Válassza ki a közeli és elérhető helyeket|
-    |Tarifacsomag|`F0`- a minimális tarifaszint|
-    |Erőforráscsoport|Elérhető erőforráscsoport kiválasztása|
+    |Előfizetés neve| az erőforrásért kiszámlázott előfizetés.|
+    |Erőforráscsoport| A kiválasztott vagy létrehozott egyéni erőforráscsoport-név. Az erőforráscsoportok lehetővé teszik az Azure-erőforrások csoportosítását a hozzáférés hez és a kezeléshez.|
+    |Név| Egyéni név, amelyet a szerzői és előrejelzési végpontlekérdezések egyéni altartományaként használ.|
+    |Szerzői hely|A modellhez társított régió.|
+    |Szerzői tarifacsomag|A tarifacsomag határozza meg a maximális tranzakció másodpercenként és havonta.|
+    |Futásidejű hely|A közzétett előrejelzési végpont futásidejéhez társított régió.|
+    |Futásidejű tarifacsomag|A tarifacsomag határozza meg a maximális tranzakció másodpercenként és havonta.|
 
-1. Kattintson a **Létrehozás gombra,** és várja meg az erőforrás létrehozását. Létrehozása után keresse meg az erőforráslapot.
-1. Gyűjtse `endpoint` össze a konfigurált és egy API-kulcsot, lásd [a szükséges paraméterek összegyűjtése.](#gathering-required-parameters)
+    > [!div class="mx-imgBorder"]
+    > [![A nyelvtudáserőforrás létrehozása](../media/luis-how-to-azure-subscription/create-resource-in-azure-small.png)](../media/luis-how-to-azure-subscription/create-resource-in-azure-small.png#lightbox)
 
-[!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]
+1. Kattintson **a Véleményezés + létrehozás gombra,** és várja meg az erőforrás létrehozását.
+1. Miután mindkét erőforrás létrehozása, továbbra is az Azure Portalon, válassza ki az új szerzői erőforrást, majd **a rövid útmutatók** a szerzői **végpont URL-címének** és **kulcs** a programozási programozási.
+
+> [!TIP]
+> Az erőforrások használatához a LUIS portálon [rendelje hozzá az erőforrásokat.](../luis-how-to-azure-subscription.md#assign-an-authoring-resource-in-the-luis-portal-for-all-apps)

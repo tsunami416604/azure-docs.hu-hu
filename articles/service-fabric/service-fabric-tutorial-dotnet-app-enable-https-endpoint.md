@@ -4,12 +4,12 @@ description: Ez az oktatóanyag azt ismerteti, hogyan adhat hozzá HTTPS-végpon
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 077c2ab67efa51542baa3048eb678fa22b0bc2eb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0e8b79a88fc173674caa0ca65e394e21d58d5f2f
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238929"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756099"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Oktatóanyag: HTTPS-végpont hozzáadása ASP.NET Core Web API előtér-szolgáltatáshoz a Kestrel használatával
 
@@ -20,7 +20,7 @@ A sorozat harmadik részében az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * HTTPS-végpont meghatározása a szolgáltatásban
 > * A Kestrel konfigurálása HTTPS használatára
-> * Az SSL-tanúsítvány telepítése a távoli fürtcsomópontokon
+> * A TLS/SSL tanúsítvány telepítése a távoli fürtcsomópontokra
 > * Hálózatiszolgáltatás-hozzáférés hozzáadása a tanúsítvány titkos kulcsához
 > * A 443-as port megnyitása az Azure Load Balancerben
 > * Az alkalmazás üzembe helyezése egy távoli fürtön
@@ -396,7 +396,7 @@ Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 > [!div class="checklist"]
 > * HTTPS-végpont meghatározása a szolgáltatásban
 > * A Kestrel konfigurálása HTTPS használatára
-> * Az SSL-tanúsítvány telepítése a távoli fürtcsomópontokon
+> * A TLS/SSL tanúsítvány telepítése a távoli fürtcsomópontokra
 > * Hálózatiszolgáltatás-hozzáférés hozzáadása a tanúsítvány titkos kulcsához
 > * A 443-as port megnyitása az Azure Load Balancerben
 > * Az alkalmazás üzembe helyezése egy távoli fürtön

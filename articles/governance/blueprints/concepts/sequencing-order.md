@@ -3,12 +3,12 @@ title: A telepítési sorrend ismertetése
 description: Ismerje meg az alapértelmezett sorrendet, amelyben a tervezet összetevők üzembe helyezése során egy tervezet-hozzárendelés, és hogyan szabhatja testre a telepítési sorrendben.
 ms.date: 08/22/2019
 ms.topic: conceptual
-ms.openlocfilehash: 51026862c989f15acf6d3e21702cfcfc8b2b27b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 41b1b1ada5b7c6c919f227927001570332eeccbf
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74128822"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677563"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Ismerje meg a központi telepítési sorrendet az Azure Blueprints-ben
 
@@ -42,7 +42,7 @@ Az egyes **erőforráscsoportok** összetevőin belül a következő szekvencias
 
 ## <a name="customizing-the-sequencing-order"></a>A sorrend testreszabása
 
-Nagy tervezetdefiníciók írásakor szükség lehet az erőforrások adott sorrendben történő létrehozásához. A forgatókönyv leggyakoribb használati mintája az, amikor egy tervezetdefiníció több Azure Resource Manager-sablont tartalmaz. A tervrajzok ezt a mintát úgy kezelik, hogy lehetővé teszi a sorrend meghatározását.
+Nagy tervezetdefiníciók írásakor szükség lehet az erőforrások adott sorrendben történő létrehozásához. A forgatókönyv leggyakoribb használati mintája az, amikor egy tervezetdefiníció több Azure Resource Manager-sablont tartalmaz. Az Azure Blueprints kezeli ezt a mintát azáltal, hogy lehetővé teszi a szekvenálási sorrend ben kell meghatározni.
 
 A rendezés a JSON-ban egy `dependsOn` tulajdonság meghatározásával érhető el. A tervezet definíciója erőforráscsoportokhoz és műtermék-objektumokhoz támogatja ezt a tulajdonságot. `dependsOn`A műterméknevek karakterlánctömbje, amelyet az adott összetevőnek létre kell hoznia a létrehozása előtt.
 
