@@ -220,6 +220,8 @@
               href: app/api-custom-events-metrics.md
             - name: Az ASP.NET hibaelhárítása
               href: app/asp-net-troubleshoot-no-data.md
+            - name: Az Application Insights eltávolítása
+              href: app/remove-application-insights.md
         - name: Kód nélküli monitorozás
           items:
             - name: És Azure-beli virtuális gép és méretezési csoport

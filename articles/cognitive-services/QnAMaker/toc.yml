@@ -87,9 +87,9 @@
           displayName: 'metadata, pair'
         - name: Tesztelés
           href: How-To/test-knowledge-base.md
-    - name: QnA-készletek kezelése
+    - name: QnA-párok kezelése
       items:
-        - name: QnA-készlet szerkesztése
+        - name: QnA-pár szerkesztése
           href: How-To/edit-knowledge-base.md
         - name: Követő kérések hozzáadása
           href: How-To/multiturn-conversation.md
