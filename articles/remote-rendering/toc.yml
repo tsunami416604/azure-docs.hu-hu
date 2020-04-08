@@ -1,0 +1,20 @@
+- name: Az Azure Remote Rendering dokumentációja
+  href: index.yml
+- name: Áttekintés
+  expanded: true
+  href: overview/toc.yml
+- name: Rövid útmutatók
+  expanded: true
+  href: quickstarts/toc.yml
+- name: Oktatóanyagok
+  href: tutorials/toc.yml
+- name: Példák
+  href: samples/toc.yml
+- name: Alapelvek
+  href: concepts/toc.yml
+- name: Útmutatók
+  href: how-tos/toc.yml
+- name: Referencia
+  href: reference/toc.yml
+- name: További források
+  href: resources/toc.yml

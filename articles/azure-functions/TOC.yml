@@ -22,8 +22,6 @@
           href: functions-create-your-first-function-visual-studio.md
         - name: Parancssor
           href: functions-create-first-azure-function-azure-cli.md
-        - name: Maven/Gradle (Java)
-          href: functions-create-first-java-maven.md
     - name: Csatlakozás a tárolóhoz
       items:
         - name: Visual Studio Code
@@ -32,8 +30,6 @@
           href: functions-add-output-binding-storage-queue-vs.md
         - name: Parancssor
           href: functions-add-output-binding-storage-queue-cli.md
-        - name: Maven/Gradle (Java)
-          href: functions-add-output-binding-storage-queue-java.md
 - name: Oktatóanyagok
   items:
     - name: A Functions és a Logic Apps
@@ -175,10 +171,16 @@
                   href: create-visual-studio.md
                 - name: Visual Studio Code
                   href: create-visual-studio-code.md
+                - name: Java a Gradle használatával
+                  href: functions-create-first-java-gradle.md
                 - name: Java az Eclipse használatával
                   href: functions-create-maven-eclipse.md
                 - name: Java az IntelliJ IDEA használatával
                   href: functions-create-maven-intellij.md
+                - name: Kotlin a Maven használatával
+                  href: functions-create-first-kotlin-maven.md
+                - name: Kotlin az IntelliJ használatával
+                  href: functions-create-maven-kotlin-intellij.md
                 - name: Linux App Service-csomag
                   href: create-function-app-linux-app-service-plan.md
                 - name: Linux használatalapú csomag
@@ -205,6 +207,8 @@
               href: add-output-binding-storage-queue-vs-code.md
             - name: Storage – Visual Studio
               href: add-output-binding-storage-queue-vs.md
+            - name: Storage – Java/Gradle
+              href: functions-add-output-binding-storage-queue-java.md
         - name: Hibakeresés és tesztelés
           items:
             - name: Függvények tesztelése

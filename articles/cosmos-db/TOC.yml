@@ -597,6 +597,8 @@
           items:
             - name: Rugalmas méretezés
               href: manage-scale-cassandra.md
+            - name: Másodlagos indexek
+              href: cassandra-secondary-index.md
         - name: Útmutatók
           items:
             - name: Csatorna módosítása
@@ -788,7 +790,7 @@
               href: powershell-samples-gremlin.md
             - name: Kezelés az Azure CLI használatával
               href: cli-samples-gremlin.md
-    - name: Tábla API
+    - name: Table API
       items:
         - name: Áttekintés
           items:
@@ -1012,12 +1014,12 @@
           href: ../private-link/create-private-endpoint-cosmosdb-portal.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Eltérő eredetű erőforrások megosztásának (CORS) konfigurálása
           href: how-to-configure-cross-origin-resource-sharing.md
-        - name: Kulcsok biztonságossá tétele felügyelt identitás használatával
+        - name: Felügyelt identitások használata az adatok eléréséhez
           href: managed-identity-based-authentication.md
           displayName: 'msi, managed service identity, aad, azure active directory, identity'
-        - name: Tanúsítványalapú hitelesítés az Azure AD-val
+        - name: Tanúsítványok használata az adatok eléréséhez
           href: certificate-based-authentication.md
-        - name: Kulcsok biztonságossá tétele a Key Vault használatával
+        - name: Az Azure Key Vault használata az adatok eléréséhez
           href: access-secrets-from-keyvault.md
         - name: Felhasználói hozzáférés korlátozása az adatműveletekre
           href: how-to-restrict-user-data.md

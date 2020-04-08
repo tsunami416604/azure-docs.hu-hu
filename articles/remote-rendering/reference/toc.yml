@@ -1,0 +1,12 @@
+- name: Anyagleképzés a modellformátumokhoz
+  href: material-mapping.md
+- name: Régiók
+  href: regions.md
+- name: A hálózatra vonatkozó követelmények
+  href: network-requirements.md
+- name: Korlátok
+  href: limits.md
+- name: arrClient-adattár (GitHub)
+  href: 'https://dev.azure.com/arrClient/arrClient/_git/arrClient'
+- name: Azure Mixed Reality Resource Management REST API
+  href: 'https://docs.microsoft.com/rest/api/mixedreality/'

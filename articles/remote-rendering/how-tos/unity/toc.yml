@@ -1,0 +1,8 @@
+- name: A Unity Remote Rendering-csomagjának telepítése
+  href: install-remote-rendering-unity-package.md
+- name: A Remote Rendering beállítása a Unityben
+  href: unity-setup.md
+- name: A Unity játékobjektumainak és összetevőinek használata
+  href: objects-components.md
+- name: A holografikus távelérés és a távoli renderelés használata a Unityben
+  href: holographic-remoting.md

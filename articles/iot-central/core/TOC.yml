@@ -21,8 +21,10 @@
   items:
     - name: Csatlakozás
       items:
-        - name: Eszköz csatlakoztatása
-          href: tutorial-connect-device.md
+        - name: Eszköz csatlakoztatása (Node.js)
+          href: tutorial-connect-device-nodejs.md
+        - name: Eszköz csatlakoztatása (Python)
+          href: tutorial-connect-device-python.md
         - name: Plug and Play-eszköz (előzetes verzió) csatlakoztatása
           href: tutorial-connect-pnp-device.md
         - name: Átjáró-eszközsablon létrehozása
@@ -93,7 +95,7 @@
           href: howto-create-custom-rules.md
         - name: Egyéni elemzések létrehozása a Databricksszel
           href: howto-create-custom-analytics.md
-    - name: Adminisztráció
+    - name: Felügyelet
       items:
         - name: Az alkalmazás felügyelete
           items:

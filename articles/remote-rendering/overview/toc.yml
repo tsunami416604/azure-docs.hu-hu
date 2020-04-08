@@ -1,0 +1,6 @@
+- name: Az Azure Remote Rendering ismertetése
+  href: about.md
+- name: Rendszerkövetelmények
+  href: system-requirements.md
+- name: Szolgáltatások
+  href: features/toc.yml

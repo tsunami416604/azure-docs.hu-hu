@@ -1,0 +1,66 @@
+### YamlMime:Landing
+title: Az Azure Remote Rendering dokumentációja
+summary: Az Azure Remote Rendering (ARR) egy olyan szolgáltatás, amely lehetővé teszi rendkívül összetett 3D modellek valós idejű renderelését olyan eszközökön, mint például a HoloLens 2. Az ARR jelenleg nyilvános előzetes verzióban érhető el.
+metadata:
+  title: Az Azure Remote Rendering dokumentációja
+  description: Megtudhatja, hogyan használható az Azure Remote Rendering (ARR) szolgáltatás a rendkívül összetett 3D modellek távoli és valós idejű renderelésére, valamint az eredmény olyan eszközökön való megjelenítésére, mint például a HoloLens 2.
+  ms.service: azure-remote-rendering
+  ms.topic: landing-page
+  author: florianborn71
+  ms.author: flborn
+  ms.date: 03/26/2020
+  ms.openlocfilehash: a257b294c105ca153a57afe90db95a1bd1b753e8
+  ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 04/06/2020
+  ms.locfileid: "80678314"
+landingContent:
+- title: Az Azure Remote Rendering ismertetése
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az Azure Remote Rendering?
+      url: overview/about.md
+    - text: Rendszerkövetelmények
+      url: overview/system-requirements.md
+    - text: Azure Remote Rendering-fiók létrehozása
+      url: how-tos/create-an-account.md
+- title: Megismerkedhet az Azure Remote Rendering alapvető fogalmaival
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: A hitelesítés konfigurálása
+      url: how-tos/authentication.md
+    - text: Remote Rendering-munkamenetek
+      url: concepts/sessions.md
+    - text: Entitások
+      url: concepts/entities.md
+    - text: Összetevők
+      url: concepts/components.md
+    - text: Modellek
+      url: concepts/models.md
+    - text: Modellek konvertálása
+      url: how-tos/conversion/model-conversion.md
+- title: Az első modell konvertálása és renderelése
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Modell renderelése a Unityvel
+      url: quickstarts/render-model.md
+    - text: Unity-minta üzembe helyezése a HoloLensben
+      url: quickstarts/deploy-to-hololens.md
+    - text: Unity-minta üzembe helyezése az asztalon
+      url: quickstarts/deploy-to-desktop.md
+    - text: Modell konvertálása a renderelés előtt
+      url: quickstarts/convert-model.md
+- title: Megtudhatja, hogyan hozhatja létre saját alkalmazását a Unityben
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Unity-projekt létrehozása az alapoktól
+      url: tutorials/unity/project-setup.md
+    - text: Távoli entitások használata a Unityben
+      url: tutorials/unity/working-with-remote-entities.md
+    - text: A környezet és az anyagok módosítása
+      url: tutorials/unity/changing-environment-and-materials.md

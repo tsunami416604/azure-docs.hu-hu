@@ -5,7 +5,7 @@
     - name: Mi az az Azure Blueprints?
       displayName: 'templates, policy, definition, assignment, rbac'
       href: overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Terv létrehozása – Portal
@@ -17,7 +17,7 @@
     - name: Terv létrehozása – REST API
       displayName: 'publish, assign, track, unassign, delete'
       href: create-blueprint-rest-api.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Létrehozás tervmintából
       displayName: 'template, resource group, rbac, role assignment'
@@ -225,7 +225,7 @@
     - name: Műveleti sorrend a terv üzembe helyezéséhez
       displayName: customize
       href: ./concepts/sequencing-order.md
-    - name: Erőforrások zárolása a tervekben
+    - name: Erőforrások zárolása az Azure Blueprintsben
       displayName: 'mode, state, read only, edit, denyAssignments'
       href: ./concepts/resource-locking.md
 - name: Útmutatók

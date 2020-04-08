@@ -74,7 +74,7 @@
           href: template-tutorial-add-tags.md
         - name: 10 – Paraméterfájl használata
           href: template-tutorial-use-parameter-file.md
-    - name: Környezet
+    - name: Üzembe helyezés
       items:
         - name: 1 – Helyi sablon üzembe helyezése
           href: deployment-tutorial-local-template.md
@@ -83,7 +83,7 @@
         - name: 3 – Folyamat létrehozása
           displayName: Devop
           href: deployment-tutorial-pipeline.md
-    - name: Speciális
+    - name: Speciális sablonok
       items:
         - name: A sablonreferencia felhasználása
           href: template-tutorial-use-template-reference.md
@@ -101,23 +101,21 @@
         - name: A Key Vault integrálása
           displayName: secrets
           href: template-tutorial-use-key-vault.md
-        - name: Hivatkozott sablonok létrehozása
-          href: template-tutorial-create-linked-templates.md
         - name: Virtuálisgép-bővítmények üzembe helyezése
           displayName: virtual machine extensions
           href: template-tutorial-deploy-vm-extensions.md
         - name: SQL-bővítmények üzembe helyezése
           href: template-tutorial-deploy-sql-extensions-bacpac.md
-        - name: Biztonságos összetevők
-          href: template-tutorial-secure-artifacts.md
+        - name: Sablonalapú üzembe helyezés hibaelhárítása
+          href: template-tutorial-troubleshoot.md
+    - name: Telepítéskezelő
+      items:
         - name: Biztonságos üzembehelyezési gyakorlatok
           displayName: adm
           href: deployment-manager-tutorial.md
         - name: Állapot-ellenőrzés használata a Deployment Managerben
           displayName: adm
           href: deployment-manager-tutorial-health-check.md
-        - name: Sablonalapú üzembe helyezés hibaelhárítása
-          href: template-tutorial-troubleshoot.md
 - name: Példák
   items:
     - name: Azure gyorsindítási sablonok

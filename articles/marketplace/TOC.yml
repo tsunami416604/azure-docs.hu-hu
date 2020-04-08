@@ -34,7 +34,7 @@
               href: ./marketplace-managed-apps.md
             - name: SaaS-alkalmazások
               href: ./marketplace-saas-applications-technical-publishing-guide.md
-            - name: Tárolók
+            - name: Containers
               href: ./marketplace-containers.md
             - name: IoT Edge-modulok
               href: ./iot-edge-module.md
@@ -401,7 +401,7 @@
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-overview.md
         - name: Előfeltételek
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-prerequisites.md
-        - name: Megfontolások
+        - name: Megfontolandó szempontok
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-considerations.md
         - name: Egyidejűség-vezérlés
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-concurrency-control.md
@@ -453,6 +453,12 @@
               href: ./partner-center-portal/azure-apps-review-feedback.md
             - name: Előkészítési célú API
               href: ./partner-center-portal/azure-app-apis.md
+        - name: Tanácsadói szolgáltatások
+          items:
+            - name: Előfeltételek
+              href: ./partner-center-portal/consulting-service-prerequisites.md
+            - name: Tanácsadási szolgáltatásajánlat létrehozása
+              href: ./partner-center-portal/create-consulting-service-offer.md
         - name: Dynamics 365-ajánlatok
           items:
             - name: Dynamics 365 for Customer Engagement- és PowerApps-ajánlat létrehozása
@@ -461,6 +467,22 @@
               href: ./partner-center-portal/create-new-operations-offer.md
             - name: Microsoft Dynamics 365 Business Central-ajánlat létrehozása
               href: ./partner-center-portal/create-new-business-central-offer.md
+        - name: IoT Edge-modulajánlat
+          items:
+            - name: IoT Edge-modulok technikai eszközeinek előkészítése
+              href: ./partner-center-portal/create-iot-edge-module-asset.md
+            - name: IoT Edge-modulajánlat létrehozása
+              href: ./partner-center-portal/azure-iot-edge-module-creation.md
+        - name: Felügyelt szolgáltatásra vonatkozó ajánlatok
+          items:
+            - name: Felügyelt szolgáltatásra vonatkozó ajánlat létrehozása
+              href: ./partner-center-portal/create-new-managed-service-offer.md
+        - name: Power BI-alkalmazásajánlatok
+          items:
+            - name: Áttekintés közzététele
+              href: ./partner-center-portal/create-power-bi-app-overview.md
+            - name: Power BI-alkalmazásajánlat létrehozása
+              href: ./partner-center-portal/create-power-bi-app-offer.md
         - name: SaaS-ajánlatok
           items:
             - name: SaaS-ajánlatlétrehozási ellenőrzőlista
