@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 8a83c2f6ac7599ff37237834a85b7771cf4ee502
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc11c6932d625b119ad933f5d4d128b4355530c5
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79243873"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804435"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Az Azure ExpressRoute-alapú App Service-környezet hálózati konfigurációs adatai a PowerApps alkalmazáskörnyezetéhez
 
@@ -39,7 +39,7 @@ Az App Service-környezet megfelelő működéséhez a következő hálózati ka
 
 * Kimenő hálózati kapcsolat az Azure felügyeleti sík végpontjaihoz (mind az Azure klasszikus üzembe helyezési modelljéhez, mind az Azure Resource Manager végpontjaihoz). Ezekhez a végpontokhoz való kapcsolódás magában foglalja a management.core.windows.net és management.azure.com tartományok. 
 
-* Kimenő hálózati kapcsolat a ocsp.msocsp.com, mscrl.microsoft.com és crl.microsoft.com tartományokhoz. Az SSL-funkciók támogatásához ezekhez a tartományokhoz való kapcsolódás szükséges.
+* Kimenő hálózati kapcsolat a ocsp.msocsp.com, mscrl.microsoft.com és crl.microsoft.com tartományokhoz. A TLS-funkciók támogatásához ezekhez a tartományokhoz való kapcsolódás szükséges.
 
 * A virtuális hálózat DNS-konfigurációjának képesnek kell lennie a jelen cikkben említett összes végpont és tartomány feloldására. Ha a végpontok nem oldhatók fel, az App Service-környezet létrehozása sikertelen lesz. Minden meglévő App Service-környezet sérültként van megjelölve.
 

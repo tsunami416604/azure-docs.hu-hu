@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: 53f53976b20359afc45abe1b25ca60325b5d6a2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 63cf864a3f3b92728ad613ac45542bdbce2c9858
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75386170"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811339"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>Felhőszolgáltatás létrehozása és üzembe helyezése
 Az Azure Portal kétféleképpen hozhat létre és helyezhet üzembe felhőalapú szolgáltatást: *gyors létrehozás* és *egyéni létrehozás.*
@@ -42,7 +42,7 @@ A felhőalapú szolgáltatás üzembe helyezése előtt létre kell hoznia a fel
 
 A szolgáltatáscsomag exportálása előtt három felhőszolgáltatás-szolgáltatás speciális konfigurációt igényel:
 
-* Ha olyan felhőszolgáltatást szeretne telepíteni, amely Secure Sockets Layer (SSL) adattitkosítást használ, [konfigurálja az alkalmazást](cloud-services-configure-ssl-certificate-portal.md#modify) SSL-re.
+* Ha egy olyan felhőszolgáltatást szeretne telepíteni, amely a Transport Layer Security (TLS), korábbi nevén Secure Sockets Layer (SSL) néven ismert, adattitkosításra, [konfigurálja az alkalmazást a](cloud-services-configure-ssl-certificate-portal.md#modify) TLS-hez.
 * Ha a Távoli asztali kapcsolatokat szerepkörpéldányokra szeretné konfigurálni, [konfigurálja a szerepköröket a](cloud-services-role-enable-remote-desktop-new-portal.md) Távoli asztal hoz.
 * Ha részletes figyelést szeretne konfigurálni a felhőszolgáltatáshoz, engedélyezze az Azure Diagnostics szolgáltatást a felhőszolgáltatáshoz. *Minimális figyelés* (az alapértelmezett figyelési szint) a gazdaoperációs rendszerekből a szerepkörpéldányok (virtuális gépek) teljesítményszámlálóit használja. *Részletes figyelési* gyűjt további metrikák teljesítményadatok alapján a szerepkör példányok, hogy közelebbi elemzése során felmerülő problémák az alkalmazás feldolgozása során. Az Azure Diagnosztika engedélyezéséről a [Diagnosztika engedélyezése az Azure-ban](cloud-services-dotnet-diagnostics.md)című témakörben talál.
 
@@ -70,7 +70,7 @@ Ha webes szerepköröket vagy feldolgozói szerepköröket központi telepítés
 ## <a name="upload-a-certificate"></a>Tanúsítvány feltöltése
 Ha a központi telepítési csomag tanúsítványok használatára lett [konfigurálva,](cloud-services-configure-ssl-certificate-portal.md#modify)most feltöltheti a tanúsítványt.
 
-1. Válassza a **Tanúsítványok**lehetőséget, majd a **Tanúsítványok hozzáadása** ablaktáblán jelölje ki az SSL tanúsítvány .pfx fájlt, majd adja meg a tanúsítvány **jelszavát,**
+1. Válassza a **Tanúsítványok**lehetőséget, majd a **Tanúsítványok hozzáadása** ablaktáblán jelölje ki a TLS/SSL tanúsítvány .pfx fájlt, majd adja meg a tanúsítvány **jelszavát,**
 2. Kattintson **a Tanúsítvány csatolása**gombra, majd a **Tanúsítványok hozzáadása** ablaktáblán kattintson az **OK** gombra.
 3. Kattintson a **Felhőszolgáltatás** ablaktáblájának **Létrehozás** gombjára. Amikor a központi telepítés elérte a **Ready** állapotot, továbbléphet a következő lépésekkel.
 
@@ -90,7 +90,7 @@ Ha a központi telepítési csomag tanúsítványok használatára lett [konfigu
 * [A felhőszolgáltatás általános konfigurációja](cloud-services-how-to-configure-portal.md).
 * Egyéni [tartománynév konfigurálása](cloud-services-custom-domain-name-portal.md).
 * [A felhőszolgáltatás kezelése.](cloud-services-how-to-manage-portal.md)
-* [Ssl-tanúsítványok konfigurálása](cloud-services-configure-ssl-certificate-portal.md).
+* [TLS/SSL-tanúsítványok konfigurálása](cloud-services-configure-ssl-certificate-portal.md).
 
 
 

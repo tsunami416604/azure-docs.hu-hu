@@ -4,116 +4,146 @@ description: Kapcsolódási problémák elhárítása az Azure virtuális gép v
 author: sideeksh
 manager: rochakm
 ms.topic: how-to
-ms.date: 08/05/2019
-ms.openlocfilehash: b082e1aca094dcb335a7268e4c116376d756fd3b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: 49d2d3d3e8829198a57aaf2feb40e89f105667bd
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80292026"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804860"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Az Azure–Azure virtuális gép hálózati kapcsolatával kapcsolatos problémák elhárítása
 
-Ez a cikk ismerteti a hálózati kapcsolattal kapcsolatos gyakori problémákat, amikor replikálja és helyreállítja az Azure virtuális gépeket az egyik régióból a másikba. A hálózati követelményekről az [Azure virtuális gépek replikálásának kapcsolódási követelményeiben](azure-to-azure-about-networking.md)talál további információt.
+Ez a cikk ismerteti a hálózati kapcsolattal kapcsolatos gyakori problémákat, amikor replikálja és helyreállítja az Azure virtuális gépek (VM) egyik régióból a másikba. A hálózati követelményekről az [Azure virtuális gépek replikálásának kapcsolódási követelményeiben](azure-to-azure-about-networking.md)talál további információt.
 
 Ahhoz, hogy a Site Recovery replikációja működjön, a virtuális géptől adott URL-címekhez vagy IP-tartományokhoz kimenő kapcsolat szükséges. Ha a virtuális gép tűzfal mögött van, vagy hálózati biztonsági csoport (NSG) szabályokat használ a kimenő kapcsolatok szabályozására, előfordulhat, hogy az alábbi problémák egyikével szembesülhet.
 
-**Url** | **Részletek**  
---- | ---
-*.blob.core.windows.net | Szükséges, hogy az adatok at lehet írni a gyorsítótár-tárfiók a forrásrégióban a virtuális gépről. Ha ismeri a virtuális gépek összes gyorsítótár-tárfiókját, a *.blob.core.windows.net helyett engedélyezheti az adott tárfiók URL-címeit (például cache1.blob.core.windows.net és cache2.blob.core.windows.net).
-login.microsoftonline.com | A Site Recovery szolgáltatás URL-címének engedélyezéséhez és hitelesítéséhez szükséges.
-*.hypervrecoverymanager.windowsazure.com | Szükséges, hogy a Site Recovery szolgáltatás kommunikációja a virtuális gépről is megtörténhessen. A megfelelő "Site Recovery IP" protokollt akkor használhatja, ha a tűzfalproxy támogatja az IP-címeket.
-*.servicebus.windows.net | Szükséges, hogy a site recovery figyelési és diagnosztikai adatokat lehet írni a virtuális gépről. A megfelelő "Site Recovery Monitoring IP" protokollt akkor használhatja, ha a tűzfalproxy támogatja az IP-címeket.
+| **Url** | **Részletek** |
+| --- | --- |
+| `*.blob.core.windows.net` | Szükséges, hogy az adatok at lehet írni a gyorsítótár-tárfiók a forrásrégióban a virtuális gépről. Ha ismeri a virtuális gépek gyorsítótár-tárfiókok, használhatja az engedélyezési lista az adott tárfiók URL-címek. Például, `cache1.blob.core.windows.net` `cache2.blob.core.windows.net` és `*.blob.core.windows.net`ahelyett, hogy . |
+| `login.microsoftonline.com` | A Site Recovery szolgáltatás URL-címének engedélyezéséhez és hitelesítéséhez szükséges. |
+| `*.hypervrecoverymanager.windowsazure.com` | Szükséges, hogy a Site Recovery szolgáltatás kommunikációja a virtuális gépről is megtörténhessen. A megfelelő _site recovery IP-címet akkor használhatja,_ ha a tűzfalproxy támogatja az IP-címeket. |
+| `*.servicebus.windows.net` | Szükséges, hogy a site recovery figyelési és diagnosztikai adatokat lehet írni a virtuális gépről. A megfelelő _site recovery monitoring IP-címet használhatja,_ ha a tűzfalproxy támogatja az IP-címeket. |
 
 ## <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>Kimenő kapcsolat a hely-helyreállítási URL-címekhez vagy IP-tartományokhoz (hibakód: 151037 vagy 151072)
 
-## <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a><a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>1. probléma: Nem sikerült regisztrálni az Azure virtuális gépet a Site Recovery szolgáltatással (151195) </br>
-- **Lehetséges ok** </br>
-  - Dns-feloldási hiba miatt nem lehet kapcsolatot létesíteni a hely-helyreállítási végpontokkal.
-  - Ez gyakrabban fordul elő ismételt védelem esetén, amikor feladatátvételt végzett a virtuális gépen, de a DNS-kiszolgáló nem érhető el a vészhelyreállítási régióból.
+### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195"></a>1. probléma: Nem sikerült regisztrálni az Azure virtuális gépet a Site Recovery szolgáltatással (151195)
 
-- **Resolution** (Osztás)
-   - Ha egyéni DNS-t használ, győződjön meg arról, hogy a DNS-kiszolgáló elérhető a Vész-helyreállítási régióból. Annak ellenőrzéséhez, hogy van-e egyéni DNS-e, látogasson el a virtuális gép> vész-helyreállítási hálózat> DNS-kiszolgálók. Próbálja meg elérni a DNS-kiszolgálót a virtuális gépről. Ha nem érhető el, tegye elérhetővé a DNS-kiszolgáló feletti hiba, vagy a DR-hálózat és a DNS közötti helyvonal létrehozásával.
+#### <a name="possible-cause"></a>Lehetséges ok
 
-    ![com-hiba](./media/azure-to-azure-troubleshoot-errors/custom_dns.png)
+A dns-feloldási hiba miatt nem lehet kapcsolatot létesíteni a hely-helyreállítási végpontokkal. Ez a probléma gyakoribb az újravédelem során, ha a virtuális gép nem felelt meg, de a DNS-kiszolgáló nem érhető el a vész-helyreállítási (DR) régióban.
 
+#### <a name="resolution"></a>Megoldás:
 
-## <a name="issue-2-site-recovery-configuration-failed-151196"></a>2. probléma: A hely-helyreállítási konfiguráció nem sikerült (151196)
+Ha egyéni DNS-t használ, győződjön meg arról, hogy a DNS-kiszolgáló elérhető a vész-helyreállítási régióból.
+
+Annak ellenőrzése, hogy a virtuális gép egyéni DNS-beállítást használ-e:
+
+1. Nyissa **meg a virtuális gépeket,** és válassza ki a virtuális gépet.
+1. Nyissa meg a virtuális gépek **beállításait,** és válassza **a Hálózat lehetőséget.**
+1. A **Virtuális hálózat/alhálózat alkalmazásban**válassza ki a hivatkozást a virtuális hálózat erőforráslapjának megnyitásához.
+1. Nyissa meg a **Beállítások lapot,** és válassza a **DNS-kiszolgálók lehetőséget.**
+
+Próbálja meg elérni a DNS-kiszolgálót a virtuális gépről. Ha a DNS-kiszolgáló nem érhető el, tegye elérhetővé a DNS-kiszolgáló feletti hiba, vagy a DR-hálózat és a DNS közötti helyvonal létrehozásával.
+
+  :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/custom_dns.png" alt-text="com-hiba":::
+
+### <a name="issue-2-site-recovery-configuration-failed-151196"></a>2. probléma: A hely-helyreállítási konfiguráció nem sikerült (151196)
 
 > [!NOTE]
-> Ha a virtuális gépek a **standard** belső terheléselosztó mögött vannak, alapértelmezés szerint nem férnek hozzá az O365 IP-címekhez (azaz login.microsoftonline.com). Módosítsa **alapszintű** belső terheléselosztó típusra, vagy hozzon létre kimenő hozzáférést a [cikkben](https://aka.ms/lboutboundrulescli)említettek szerint.
+> Ha a virtuális gépek egy **szabványos** belső terheléselosztó mögött vannak, alapértelmezés szerint nem férnek hozzá `login.microsoftonline.com`az Office 365 IP-címhez, például . Módosítsa azt **alapszintű** belső terheléselosztó típusra, vagy hozzon létre kimenő hozzáférést a terheléselosztás és a kimenő szabályok konfigurálása a Standard Load Balancer ben az [Azure CLI használatával című cikkben](/azure/load-balancer/configure-load-balancer-outbound-cli)említettek szerint.
 
-- **Lehetséges ok** </br>
-  - Nem lehet kapcsolatot létesíteni az Office 365 hitelesítési és IP4-identitás-végpontjaival.
+#### <a name="possible-cause"></a>Lehetséges ok
 
-- **Resolution** (Osztás)
-  - Az Azure Site Recovery hozzáféréssel rendelkezik az Office 365 IP-kiszolgálóihoz a hitelesítéshez.
-    Ha az Azure Network biztonsági csoport (NSG) szabályok/tűzfal proxy a kimenő hálózati kapcsolat a virtuális gép, győződjön meg arról, hogy engedélyezi a kommunikációt O365 IPranges. Hozzon létre egy [Azure Active Directory (Azure AD) szolgáltatáscímke](../virtual-network/security-overview.md#service-tags) alapú NSG-szabályt, amely lehetővé teszi az Azure AD-nek megfelelő összes IP-cím hez való hozzáférést
-      - Ha a jövőben új címeket ad hozzá az Azure AD-hez, új NSG-szabályokat kell létrehoznia.
+Az Office 365 hitelesítési és IP4-identitás-végpontjaihoz nem lehet kapcsolatot létesíteni.
+
+#### <a name="resolution"></a>Megoldás:
+
+- Az Azure Site Recovery hitelesítéshez hozzáférést igényel az Office 365 IP-tartományaihoz.
+- Ha az Azure Network biztonsági csoport (NSG) szabályokat/tűzfalproxyt használja a virtuális gép kimenő hálózati kapcsolatának szabályozásához, győződjön meg arról, hogy engedélyezi az Office 365 IP-tartományaiközötti kommunikációt. Hozzon létre egy [Azure Active Directory (Azure AD) szolgáltatáscímke](/azure/virtual-network/security-overview#service-tags) alapú NSG-szabályt, amely lehetővé teszi a hozzáférést az Azure AD-nek megfelelő összes IP-címhez.
+- Ha a jövőben új címeket ad hozzá az Azure AD-hez, új NSG-szabályokat kell létrehoznia.
 
 ### <a name="example-nsg-configuration"></a>Példa NSG-konfigurációra
 
 Ez a példa bemutatja, hogyan konfigurálhatja az NSG-szabályok at a virtuális gép replikálására.
 
-- Ha NSG-szabályokat használ a kimenő kapcsolatok vezérléséhez, használja a "HTTPS kimenő kimenő" szabályok port:443 az összes szükséges IP-címtartományok.
-- A példa feltételezi, hogy a virtuális gép forráshelye "USA keleti régiója", a célhely pedig "USA középső régiója".
+- Ha NSG-szabályokat használ a kimenő kapcsolatok vezérléséhez, használja **a HTTPS kimenő** szabályok engedélyezése a 443-as porthoz az összes szükséges IP-címtartományhoz.
+- A példa feltételezi, hogy a virtuális gép forráshelye **USA keleti régiója,** a célhely pedig **USA középső**régiója.
 
-### <a name="nsg-rules---east-us"></a>NSG szabályok - USA keleti része
+#### <a name="nsg-rules---east-us"></a>NSG szabályok - USA keleti része
 
-1. Hozzon létre egy kimenő HTTPS (443) biztonsági szabályt a "Storage.EastUS" számára az NSG-n, ahogy az az alábbi képernyőképen látható.
+1. Hozzon létre egy HTTPS kimenő biztonsági szabályt az NSG-hez az alábbi képernyőképen látható módon. Ez a példa a **Cél szolgáltatáscímkét**használja: _Storage.EastUS_ és **Destination port tartományok**: _443_.
 
-      ![tároló címke](./media/azure-to-azure-about-networking/storage-tag.png)
+     :::image type="content" source="./media/azure-to-azure-about-networking/storage-tag.png" alt-text="tároló címke":::
 
-2. Hozzon létre egy kimenő HTTPS (443) biztonsági szabályt az "AzureActiveDirectory" számára az NSG-n, ahogy az az alábbi képernyőképen látható.
+1. Hozzon létre egy HTTPS kimenő biztonsági szabályt az NSG-hez az alábbi képernyőképen látható módon. Ez a példa a **Cél szolgáltatáscímkét**használja: _Az AzureActiveDirectory_ és **a Célport tartományok**: _443_.
 
-      ![aad-tag](./media/azure-to-azure-about-networking/aad-tag.png)
+     :::image type="content" source="./media/azure-to-azure-about-networking/aad-tag.png" alt-text="aad-tag":::
 
-3. Kimenő HTTPS (443) szabályok létrehozása a hely-helyreállítási IP-khez, amelyek megfelelnek a célhelynek:
+1. Https-port 443 kimenő szabályokat hozhat létre a hely-helyreállítási IP-khez, amelyek megfelelnek a célhelynek:
 
-   **Helyen** | **Hely-helyreállítási IP-cím** |  **Helyhelyreállítása figyelésének IP-címe**
-    --- | --- | ---
-   USA középső régiója | 40.69.144.231 | 52.165.34.144
+   | **Helyen** | **Hely-helyreállítási IP-cím** |  **Helyhelyreállítása figyelésének IP-címe** |
+   | --- | --- | --- |
+   | USA középső régiója | 40.69.144.231 | 52.165.34.144 |
 
-### <a name="nsg-rules---central-us"></a>NSG-szabályok - USA középső régiója
+#### <a name="nsg-rules---central-us"></a>NSG-szabályok - USA középső régiója
 
-Ezekre a szabályokra azért van szükség, hogy a replikáció engedélyezhető legyen a célrégióból a forrásrégióba a feladatátvétel után:
+Ebben a példában ezek az NSG-szabályok szükségesek, hogy a replikáció engedélyezhető legyen a célrégióból a forrásrégióba a feladatátvétel után:
 
-1. Hozzon létre egy kimenő HTTPS (443) biztonsági szabályt a "Storage.CentralUS" számára az NSG-n.
+1. HTTPS kimenő biztonsági szabály létrehozása a _Storage.CentralUS számára:_
 
-2. Hozzon létre egy kimenő HTTPS (443) biztonsági szabályt az "AzureActiveDirectory" számára az NSG-n.
+   - **Célszolgáltatás címkéje**: _Storage.CentralUS_
+   - **Célport-tartományok**: _443_
 
-3. Kimenő HTTPS (443) szabályok létrehozása a hely-helyreállítási IP-khez, amelyek megfelelnek a forráshelynek:
+1. Https kimenő biztonsági szabály létrehozása az _AzureActiveDirectory számára._
 
-   **Helyen** | **Hely-helyreállítási IP-cím** |  **Helyhelyreállítása figyelésének IP-címe**
-    --- | --- | ---
-   USA középső régiója | 13.82.88.226 | 104.45.147.24
-## <a name="issue-3-site-recovery-configuration-failed-151197"></a>3. probléma: A hely-helyreállítási konfiguráció nem sikerült (151197)
-- **Lehetséges ok** </br>
-  - Nem hozható létre kapcsolat az Azure Site Recovery szolgáltatás végpontjaihoz.
+   - **Célszolgáltatás-címke**: _AzureActiveDirectory_
+   - **Célport-tartományok**: _443_
 
-- **Resolution** (Osztás)
-  - Az Azure Site Recoverynek hozzá kell férnie a [Site Recovery IP-címtartományaihoz](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-using-service-tags), a régiónak megfelelően. Gondoskodjon arról, hogy a szükséges IP-címtartományok elérhetők legyenek a virtuális gépről.
+1. Https-port 443 kimenő szabályokat hozhat létre a hely-helyreállítási IP-khez, amelyek megfelelnek a forráshelynek:
 
+   |**Helyen** | **Hely-helyreállítási IP-cím** |  **Helyhelyreállítása figyelésének IP-címe** |
+   | --- | --- | --- |
+   | USA keleti régiója | 13.82.88.226 | 104.45.147.24 |
 
-## <a name="issue-4-a2a-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>4. probléma: Az A2A-replikáció nem sikerült, amikor a hálózati forgalom a helyszíni proxykiszolgálón keresztül ment (151072)
-- **Lehetséges ok** </br>
-  - Az egyéni proxybeállítások érvénytelenek, és az Azure Site Recovery Mobility Service ügynök nem észlelte automatikusan az IE proxybeállításait
+### <a name="issue-3-site-recovery-configuration-failed-151197"></a>3. probléma: A hely-helyreállítási konfiguráció nem sikerült (151197)
 
+#### <a name="possible-cause"></a>Lehetséges ok
 
-- **Resolution** (Osztás)
-  1. A Mobility Service agent észleli az IE proxybeállításait Windows rendszeren és /etc/environment Linuxon.
-  2. Ha csak az Azure Site Recovery Mobility Service proxyját szeretné beállítani, a proxy részleteit a ProxyInfo.conf webhelyen adja meg a következő helyen:</br>
-     - ``/usr/local/InMage/config/``***Linuxon***
-     - ``C:\ProgramData\Microsoft Azure Site Recovery\Config``***Windows*** rendszeren
-  3. A ProxyInfo.conf a proxybeállításokat a következő INI-formátumban tárolja.</br>
-                *[proxy]*</br>
-                *Cím =http://1.2.3.4*</br>
-                *Port=567*</br>
-  4. Az Azure Site Recovery Mobility Service ügynök csak nem ***hitelesített proxykat***támogat.
+A kapcsolat nem lehet létrehozni az Azure Site Recovery szolgáltatás végpontjaihoz.
+
+#### <a name="resolution"></a>Megoldás:
+
+Az Azure Site Recoverynek hozzá kell férnie a [Site Recovery IP-címtartományaihoz](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags), a régiónak megfelelően. Győződjön meg arról, hogy a szükséges IP-tartományok érhetők el a virtuális gépről.
+
+### <a name="issue-4-azure-to-azure-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>4. probléma: Az Azure-ból Azure-ba irányuló replikáció sikertelen volt, amikor a hálózati forgalom a helyszíni proxykiszolgálón keresztül ment (151072)
+
+#### <a name="possible-cause"></a>Lehetséges ok
+
+Az egyéni proxybeállítások érvénytelenek, és az Azure Site Recovery Mobility szolgáltatásügynök nem észlelte automatikusan az Internet Explorer (IE) proxybeállításait.
+
+#### <a name="resolution"></a>Megoldás:
+
+1. A Mobility service agent észleli a proxy `/etc/environment` beállításokat ie Windows és Linux rendszeren.
+1. Ha csak az Azure Site Recovery Mobility szolgáltatásproxyt szeretné beállítani, a proxy részleteit a _ProxyInfo.conf_ webhelyen adja meg a következő helyen:
+
+   - **Linux**:`/usr/local/InMage/config/`
+   - **Windows**:`C:\ProgramData\Microsoft Azure Site Recovery\Config`
+
+1. A _ProxyInfo.conf_ proxybeállításainak a következő INI formátumban kell _rendelkeznie:_
+
+   ```plaintext
+   [proxy]
+   Address=http://1.2.3.4
+   Port=567
+   ```
+
+1. Az Azure Site Recovery Mobility service agent csak **a nem hitelesített proxykat**támogatja.
 
 ### <a name="fix-the-problem"></a>A probléma javítása
+
 A [szükséges URL-címek](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) vagy a [szükséges IP-tartományok](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)engedélyezéséhez kövesse a [hálózati útmutató dokumentum lépéseit](site-recovery-azure-to-azure-networking-guidance.md).
 
-
 ## <a name="next-steps"></a>További lépések
+
 [Azure-alapú virtuális gépek replikálása](site-recovery-replicate-azure-to-azure.md)

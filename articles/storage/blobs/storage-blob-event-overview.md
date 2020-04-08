@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: cbrooks
-ms.openlocfilehash: e4dd6bab6198546dc5acab78ec59d92387328dbb
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: d9c666fd6fcf020908b6fc5bdd639261853ad9c6
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80755001"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811543"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reagálás Blob Storage-eseményekre
 
@@ -98,7 +98,7 @@ A Blob-tárolási eseményeket kezelő alkalmazásoknak néhány ajánlott gyako
 > * Hasonlóképpen ellenőrizze, hogy az eventType olyan, amelyet fel kell dolgoznia, és ne feltételezze, hogy az összes kapott esemény a várt típusú lesz.
 > * Mivel az üzenetek némi késéssel érkezhetnek, az etag mezők segítségével tisztában lehet azzal, hogy az objektumokkal kapcsolatos adatai még mindig naprakészek-e. Az etag mező használatáról a [Blob storage egyidejűsítése](https://docs.microsoft.com/azure/storage/common/storage-concurrency?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage)című témakörben olvashat. 
 > * Mivel az üzenetek nem sorrendben érkezhetnek, használja a szekvenszer mezőket az adott objektum eseményeinek sorrendjének megértéséhez. A szekvenszer mező egy karakterlánc-érték, amely egy adott blobnév események logikai sorozatát jelöli. A szabványos karakterlánc-összehasonlítás segítségével megismerheti az azonos blobnéven lévő két esemény relatív sorrendjét.
-> A tárolási események legalább egyszer garantálják az előfizetőknek történő kézbesítést, ami biztosítja az összes üzenet kimenetét. Az újrapróbálkozások vagy az előfizetések rendelkezésre állása miatt azonban időnként ismétlődő üzenetek is előfordulhatnak.
+> * A tárolási események legalább egyszer garantálják az előfizetőknek történő kézbesítést, ami biztosítja az összes üzenet kimenetét. Az újrapróbálkozások vagy az előfizetések rendelkezésre állása miatt azonban időnként ismétlődő üzenetek is előfordulhatnak. Ha többet szeretne tudni az üzenetek kézbesítéséről és az újrapróbálkozásról, olvassa el [az Eseményrács üzenetkézbesítési és újrapróbálkozási témakört.](../../event-grid/delivery-and-retry.md)
 > * A blobType mező segítségével annak megértéséhez, hogy milyen típusú műveletek engedélyezettek a blobon, és milyen ügyfélkódtár-típusokat kell használnia a blob eléréséhez. Az érvényes `BlockBlob` értékek `PageBlob`vagy vagy . 
 > * Használja az URL-mezőt a `CloudBlockBlob` és `CloudAppendBlob` a konstruktorok a blob eléréséhez.
 > * Figyelmen kívül hagyja azolyan mezőket, amelyeket nem ért. Ez a gyakorlat segít megőrizni a rugalmas új funkciók, amelyek a jövőben hozzáadott.

@@ -4,12 +4,12 @@ description: A QnA Maker szolgáltatással kapcsolatos leggyakoribb kérdések k
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: diberry
-ms.openlocfilehash: 310cfe0cc8c1f647c09b8e0efb435a1ab326ff62
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 7847e21dbcf07f669d6802fffdd1e43623a72340
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474956"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804350"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>A QnA Maker hibáinak elhárítása
 
@@ -142,7 +142,7 @@ Minden törlés állandó, beleértve a kérdés-válasz párokat, fájlokat, UR
 * Fájlok - nem támogatottak
 
 #### <a name="answer-text-in-markdown"></a>Szöveg megválaszolása markdownban
-Miután a QnA-készletek a tudásbázisban vannak, szerkesztheti a válasz markdown szövegét, hogy az tartalmazza a nyilvános URL-ekből elérhető médiahivatkozásokat.
+Miután a QnA-párok a tudásbázisban vannak, szerkesztheti a válasz markdown szövegét, hogy az tartalmazza a nyilvános URL-ekből elérhető médiahivatkozásokat.
 
 
 </details>

@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
-ms.openlocfilehash: a0b9d424c1995fba075c05ffe5058e297d764775
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8941c097fbb2d05c3a28be87d216b7a2679ebc68
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79531260"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804894"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Átalakítás elszíneződése az adatfolyam leképezésében
 
@@ -39,7 +39,9 @@ Az Azure Data Factory több mint [90 natív összekötőhöz](connector-overview
 
 ## <a name="sink-settings"></a>Fogadó beállításai
 
-Miután hozzáadta a fogadót, konfigurálja a **Fogadó** lapon keresztül. Itt választhatja ki vagy hozhatja létre azt az adatkészletet, amelybe a fogadó írja 
+Miután hozzáadta a fogadót, konfigurálja a **Fogadó** lapon keresztül. Itt választhatja ki vagy hozhatja létre azt az adatkészletet, amelybe a fogadó írja. Az alábbiakban egy videó elmagyarázza számos különböző Sink lehetőségek szöveges tagolt fájltípusok:
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tf7T]
 
 ![Fogadó beállításai](media/data-flow/sink-settings.png "Fogadó beállításai")
 

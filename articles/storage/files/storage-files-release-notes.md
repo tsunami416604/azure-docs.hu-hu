@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/16/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 5b247e8f4a611ace227f5adcef7e0e27de341c96
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 578d00d4bd65b3ffbfb6cdac439762344604e6b8
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79454635"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804877"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Az Azure File Sync ügynök kibocsátási megjegyzései
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. A Windows Server-telepítéseket az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -35,9 +35,7 @@ Az Azure File Sync ügynök alábbi verziói támogatottak:
 | 2019. júniusi frissítési összeg - [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 2019. június 13.June 13, 2019 | Támogatott - Agent verzió lejár április 21, 2020 |
 | 2019. májusi frissítési összeg - [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 2019. május 7.May 7, 2019 | Támogatott - Agent verzió lejár április 21, 2020 |
 | V6-os kiadás - [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 2019. április 21.April 21, 2019 | Támogatott - Agent verzió lejár április 21, 2020 |
-| 2019. áprilisi frissítési összeg - [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 2019. április 4.April 4, 2019 | Támogatott - Agent verzió lejár március 18, 2020 |
-| 2019. márciusi frissítés idin-frissítése - [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 2019. március 7., | Támogatott - Agent verzió lejár március 18, 2020 |
-| V5 kiadás - [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 2019. február 12.February 12, 2019 | Támogatott - Agent verzió lejár március 18, 2020 |
+| V5 kiadás | 5.0.2.0 - 5.2.0.0 | N/A | Nem támogatott - Az ügyintézőverziók 2020. |
 | V4 kiadás | 4.0.1.0 - 4.3.0.0 | N/A | Nem támogatott - Az ügynökverziók 2019. november 6-án jártak le |
 | V3 kiadás | 3.1.0.0 - 3.4.0.0 | N/A | Nem támogatott - Az ügyintézőverziók 2019. augusztus 19-én jártak le |
 | GA előtti ügynökök | 1.1.0.0 - 3.0.13.0 | N/A | Nem támogatott - Az ügynökverziók 2018. |

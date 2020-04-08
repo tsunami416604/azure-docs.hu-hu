@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 03/04/2020
+ms.date: 04/07/2020
 ms.author: victorh
-ms.openlocfilehash: 550d9f4f5396b2165260e39cd28222b083dd6756
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f021eed959ef88a1ef3671e1d0ace8080710c92a
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79279987"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810232"
 ---
 # <a name="azure-application-gateway-features"></a>Az Azure Application Gateway szolgáltatásai
 
@@ -160,6 +160,10 @@ Az alábbi táblázat az ssl-kiszervezést engedélyező alkalmazásátjáró v1
 
 > [!NOTE]
 > Ezek az értékek az alkalmazásátjáró hozzávetőleges átviteli sebességét jelzik. A tényleges átvitel számos környezeti tényezőtől függ, például az átlagos lapmérettől, a háttérpéldányok helyétől és a lapkiszolgálás feldolgozási időtartamától. A pontos teljesítményszámokhoz saját teszteket kell futtatnia. Ezek az értékek csupán útmutatóul szolgálnak a kapacitástervezéshez.
+
+## <a name="version-feature-comparison"></a>Verziófunkció összehasonlítása
+
+Az Application Gateway v1-v2 szolgáltatás összehasonlítása, lásd: [Automatikus skálázás és zónaredundáns Application Gateway v2](application-gateway-autoscaling-zone-redundant.md#feature-comparison-between-v1-sku-and-v2-sku)
 
 ## <a name="next-steps"></a>További lépések
 

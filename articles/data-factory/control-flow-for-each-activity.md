@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: b8f95f22553a3b4639b1aba6576ce844116ae20b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71528385563b29ce70edf396434be0174beac105
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73679877"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804843"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>ForEach tevékenység az Azure Data Factoryban
 A ForEach tevékenység ismétlődő vezérlési folyamatot határoz meg a folyamatban. Ez a tevékenység egy gyűjtemény megismétlésére, valamint egy megadott ciklustevékenység végrehajtására szolgál. E tevékenység ciklusos megvalósítása hasonló a Foreach ciklusos szerkezetéhez a programozási nyelvek esetében.
@@ -73,7 +73,7 @@ Tulajdonság | Leírás | Megengedett értékek | Kötelező
 név | Az egyes tevékenységek neve. | Sztring | Igen
 type | ForEach **(ForEach)** beállításra kell állítva | Sztring | Igen
 szekvenciális | Itt adható meg, hogy a hurkot egymás után vagy párhuzamosan kell-e végrehajtani.  Legfeljebb 20 ciklus ismétlések lehet végrehajtani egyszerre párhuzamosan). Ha például egy ForEach tevékenység iterálása egy másolási tevékenység 10 különböző forrás- és fogadó adatkészletek **isSequential** értéke Hamis, az összes példány végrehajtása egyszerre. Az alapértelmezett érték hamis. <br/><br/> Ha az "isSequential" értéke Hamis, győződjön meg arról, hogy megfelelő konfiguráció van több végrehajtható fájl futtatásához. Ellenkező esetben ezt a tulajdonságot óvatosan kell használni az írási ütközések elkerülése érdekében. További információ: [Párhuzamos végrehajtás](#parallel-execution) szakasz. | Logikai | Nem. Az alapértelmezett érték hamis.
-kötegszám | A párhuzamos végrehajtások számának szabályozásához használt kötegszám (ha az isSequential értéke false). | Egész szám (legfeljebb 50) | Nem. Az alapértelmezett érték 20.
+kötegszám | A párhuzamos végrehajtások számának szabályozásához használt kötegszám (ha az isSequential értéke false). Ez a felső egyidejűségi korlát, de az egyes tevékenységek nem mindig hajtják végre ezt a számot | Egész szám (legfeljebb 50) | Nem. Az alapértelmezett érték 20.
 Elemek | Egy olyan kifejezés, amely egy JSON-tömböt ad vissza, amely nek kell iterálni. | Kifejezés (amely JSON tömböt ad vissza) | Igen
 Tevékenységek | A végrehajtandó tevékenységek. | Tevékenységek listája | Igen
 

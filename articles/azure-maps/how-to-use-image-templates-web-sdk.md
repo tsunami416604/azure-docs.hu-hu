@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: f3b1141ea3c3c8e33b8a2ae12c22b6962a90d32b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ee8e8ee4ca64de0390b6fa34e36fb4d06348a8ac
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198224"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804809"
 ---
 # <a name="how-to-use-image-templates"></a>Rendszerképsablonok használata
 
@@ -58,7 +58,7 @@ A következő minta egy szimbólumréteget jelenít meg a `marker-flat` képsabl
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Szimbólumréteg beépített ikonsablonnal" src="//codepen.io/azuremaps/embed/VoQMPp/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Szimbólumréteg beépített ikonsablonnal" src="//codepen.io/azuremaps/embed/VoQMPp/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Tekintse meg a Tollszimbólum réteget az Azure<a href='https://codepen.io/azuremaps'>@azuremaps</a>Maps ( ) <a href='https://codepen.io/azuremaps/pen/VoQMPp/'>beépített ikonsablonjával</a> a <a href='https://codepen.io'>CodePen webhelyen.</a>
 </iframe>
 
@@ -70,7 +70,7 @@ A következő minta egy rózsaszín vonalat jelenít meg `car` a térképen, és
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Vonalréteg beépített ikonsablonnal" src="//codepen.io/azuremaps/embed/KOQvJe/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Vonalréteg beépített ikonsablonnal" src="//codepen.io/azuremaps/embed/KOQvJe/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Tekintse meg a <a href='https://codepen.io'>CodePen</a>beépített ikonsablonját<a href='https://codepen.io/azuremaps'>@azuremaps</a>az Azure Maps ( ) beépített <a href='https://codepen.io/azuremaps/pen/KOQvJe/'>ikonsablonjával.</a>
 </iframe>
 
@@ -85,7 +85,7 @@ A következő minta egy sokszögréteget jelenít meg a `dot` képsablon haszná
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Sokszög kitöltése beépített ikonsablonnal" src="//codepen.io/azuremaps/embed/WVMEmz/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Sokszög kitöltése beépített ikonsablonnal" src="//codepen.io/azuremaps/embed/WVMEmz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Tekintse meg a <a href='https://codepen.io/azuremaps/pen/WVMEmz/'>Tollkitöltés sokszöget az</a> Azure<a href='https://codepen.io/azuremaps'>@azuremaps</a>Maps ( ) beépített ikonsablonjával a <a href='https://codepen.io'>CodePen webhelyen.</a>
 </iframe>
 
@@ -100,7 +100,7 @@ A következő minta a `marker-arrow` sablont piros elsődleges színnel, rózsas
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="HTML-jelölő beépített ikonsablonnal" src="//codepen.io/azuremaps/embed/EqQvzq/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="HTML-jelölő beépített ikonsablonnal" src="//codepen.io/azuremaps/embed/EqQvzq/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Tekintse meg a Pen HTML Marker t beépített<a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io/azuremaps/pen/EqQvzq/'>ikonsablonnal</a> az Azure Maps ( ) által a <a href='https://codepen.io'>CodePen oldalon.</a>
 </iframe>
 
@@ -127,7 +127,7 @@ A következő példa bemutatja, hogyan kell egy SVG-sablont, és adja hozzá az 
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Egyéni ikonsablon hozzáadása az Atlas névtérhez" src="//codepen.io/azuremaps/embed/NQyvEX/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Egyéni ikonsablon hozzáadása az Atlas névtérhez" src="//codepen.io/azuremaps/embed/NQyvEX/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Lásd a Toll <a href='https://codepen.io/azuremaps/pen/NQyvEX/'>egyéni ikonsablon hozzáadása atlasz névtérhez</a> az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) segítségével a <a href='https://codepen.io'>CodePen webhelyen.</a>
 </iframe>
 

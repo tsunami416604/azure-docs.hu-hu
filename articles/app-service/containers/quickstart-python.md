@@ -2,16 +2,16 @@
 title: 'Rövid útmutató: Linux Python-alkalmazás létrehozása'
 description: Az Azure App Service Linux-alkalmazásai üzembe helyezésével az első Python-alkalmazás egy Linux-tárolóba az App Service-ben.
 ms.topic: quickstart
-ms.date: 10/22/2019
+ms.date: 04/03/2020
 ms.custom: seo-python-october2019, cli-validate
 experimental: true
 experiment_id: 01a9132f-eaab-4c
-ms.openlocfilehash: 9cc314edf35d6a327522ed49fcc0c7798c7dcf63
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 63daecca710e0e4d7b3326cea59c0c025c24f619
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80045663"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811155"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Rövid útmutató: Python-alkalmazás létrehozása linuxos Azure App Service-ben
 
@@ -24,7 +24,7 @@ Ha az alkalmazásokat egy IDE-n keresztül szeretné telepíteni, olvassa [el a 
 - Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 - <a href="https://www.python.org/downloads/" target="_blank">Python 3.7</a> (Python 3.6 is támogatott)
 - <a href="https://git-scm.com/downloads" target="_blank">Git</a>
-- <a href="https://docs.microsoft.com/cli/azure/install-azure-cli" target="_blank">Azure CLI</a>
+- <a href="https://docs.microsoft.com/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> 2.0.80 vagy újabb. Futtassa az `az --version` parancsot a verzió ellenőrzéséhez.
 
 ## <a name="download-the-sample"></a>A minta letöltése
 
@@ -56,7 +56,7 @@ export FLASK_APP=application.py
 flask run
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 py -3 -m venv env
@@ -98,39 +98,44 @@ az login
 
 A [`az webapp up`](/cli/azure/webapp#az-webapp-up) parancs létrehozza a webalkalmazást az App Service szolgáltatásban, és telepíti a kódot.
 
-A mintakódot tartalmazó *python-docs-hello-world* mappában `az webapp up` futtassa a következő parancsot. Cserélje `<app-name>` le egy globálisan egyedi alkalmazásnévre (*érvényes karakterek `a-z`, `0-9`és `-` *a ). Cserélje `<location-name>` le az Azure-régióra is, például **a centralusra,** **az eastasia-ra,** **a westeurope-ra,** **a koreasouth-ra,** **a brazilsouth-ra,** **a centralindia-ra**és így tovább. (A parancs futtatásával lekérheti az [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) Azure-fiókjához engedélyezett régiók listáját.)
+A mintakódot tartalmazó *python-docs-hello-world* mappában `az webapp up` futtassa a következő parancsot. Cserélje `<app-name>` le egy globálisan egyedi alkalmazásnévre (*érvényes karakterek `a-z`, `0-9`és `-` *a ).
 
 
 ```azurecli
-az webapp up --sku F1 -n <app-name> -l <location-name>
+az webapp up --sku F1 -n <app-name>
 ```
 
-Ez a parancs futtatása néhány percet is igénybe vehet. Futtatás közben a parancs a következő példához hasonló információkat jelenít meg:
+Az `--sku F1` argumentum létrehozza a webalkalmazást az ingyenes tarifaszinten. Ezt az argumentumot kihagyhatja, hogy prémium szintű réteget használjon helyette, amely óránkénti költséget von maga után.
 
-```output
-The behavior of this command has been altered by the following extension: webapp
+Tetszés szerint `-l <location-name>` megadhatja azt az argumentumot, `<location_name>` hogy hol található az Azure-régió, például **centralus,** **eastasia**, **westeurope**, **koreasouth**, **brazilsouth**, **centralindia**és így tovább. Az Azure-fiók engedélyezett régióinak listáját a [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) parancs futtatásával kérheti le.
+
+A `az webapp up` parancs teljes futtatása eltarthat néhány percig. Futás közben a következő példához hasonló `<app_name>` információkat jelenít meg, ahol a korábban megadott név lesz:
+
+<pre>
 Creating Resource group 'appsvc_rg_Linux_centralus' ...
 Resource group creation complete
 Creating App service plan 'appsvc_asp_Linux_centralus' ...
 App service plan creation complete
 Creating app '<app-name>' ....
-Webapp creation complete
-Creating zip with contents of dir /home/username/quickstart/python-docs-hello-world ...
-Preparing to deploy contents to app.
-All done.
+Configuring default logging for the app, if not already enabled
+Creating zip with contents of dir D:\Examples\python-docs-hello-world ...
+Getting scm site credentials for zip deployment
+Starting zip deployment. This operation can take a while to complete ...
+Deployment endpoint responded with status code 202
+You can launch the app at http://<app-name>.azurewebsites.net
 {
-  "app_url": "https:/<app-name>.azurewebsites.net",
-  "location": "Central US",
+  "URL": "http://<app-name>.net",
+  "appserviceplan": "appsvc_asp_Linux_centralus",
+  "location": "eastus",
   "name": "<app-name>",
   "os": "Linux",
-  "resourcegroup": "appsvc_rg_Linux_centralus ",
-  "serverfarm": "appsvc_asp_Linux_centralus",
-  "sku": "BASIC",
-  "src_path": "/home/username/quickstart/python-docs-hello-world ",
-  "version_detected": "-",
-  "version_to_create": "python|3.7"
+  "resourcegroup": "appsvc_rg_Linux_centralus",
+  "runtime_version": "python|3.7",
+  "runtime_version_detected": "-",
+  "sku": "FREE",
+  "src_path": "D:\\Examples\\python-docs-hello-world"
 }
-```
+</pre>
 
 [!INCLUDE [AZ Webapp Up Note](../../../includes/app-service-web-az-webapp-up-note.md)]
 
@@ -146,20 +151,23 @@ A Python-mintakód egy Linux-tárolót futtat az App Service-ben egy beépített
 
 ## <a name="redeploy-updates"></a>Frissítések újratelepítése
 
-A kedvenc kódszerkesztőben nyissa meg `return` *application.py,* és módosítsa az utolsó sorban lévő utasítást úgy, hogy megfeleljen a következő kódnak. Az `print` utasítás itt található a következő szakaszban végzett naplózási kimenet létrehozásához. 
+A kedvenc kódszerkesztőben nyissa meg `hello` *application.py,* és frissítse a funkciót az alábbiak szerint. Ez a `print` módosítás egy utasítást ad hozzá a következő szakaszban végzett naplózási kimenet létrehozásához. 
 
 ```python
-print("Handling request to home page.")
-return "Hello Azure!"
+def hello():
+    print("Handling request to home page.")
+    return "Hello Azure!"
 ```
 
 Mentse a módosításokat, és lépjen ki a szerkesztőből. 
 
-Telepítse újra az alkalmazást `az webapp up` a következő paranccsal, ugyanazt a parancsot `<app-name>` `<location-name>` használva, amelyet az alkalmazás első üzembe helyezéséhez használt, és a korábban használt neveket helyettesítve. 
+Telepítse újra az `az webapp up` alkalmazást a paranccsal:
 
 ```azurecli
-az webapp up --sku F1 -n <app-name> -l <location-name>
+az webapp up
 ```
+
+Ez a parancs az *.azure/config* fájlban gyorsítótárazott értékeket használ, beleértve az alkalmazás nevét, az erőforráscsoportot és az App Service-csomagot.
 
 A telepítés befejezése után váltson vissza `http://<app-name>.azurewebsites.net` a megnyitott böngészőablakra, és frissítse a lapot, amelynek meg kell jelenítenie a módosított üzenetet:
 
@@ -172,24 +180,18 @@ A telepítés befejezése után váltson vissza `http://<app-name>.azurewebsites
 
 Az alkalmazáson belülről és a tárolóból létrehozott konzolnaplók at érheti el. A naplók tartalmazzák az `print` utasítások használatával létrehozott kimeneteket.
 
-Először kapcsolja be a tárolónaplózást úgy, `<app-name>` hogy a következő parancsot futtatja egy terminálon, és lecseréli az alkalmazás nevét és `<resource-group-name>` a használt `az webapp up` parancs kimenetében látható erőforráscsoport nevét (például "appsvc_rg_Linux_centralus"):
+A naplók streameléséhez futtassa a következő parancsot:
 
 ```azurecli
-az webapp log config --name <app-name> --resource-group <resource-group-name> --docker-container-logging filesystem
-```
-
-A tárolónaplózás bekapcsolása után futtassa a következő parancsot a naplófolyam megjelenítéséhez:
-
-```azurecli
-az webapp log tail --name <app-name> --resource-group <resource-group-name>
+az webapp log tail
 ```
 
 Frissítse az alkalmazást a böngészőben konzolnaplók létrehozásához, amelyeknek a következő szöveghez hasonló sorokat kell tartalmazniuk. Ha nem látja azonnal a kimenetet, próbálkozzon újra 30 másodperc en belül.
 
-```output
-2019-10-23T12:40:03.815574424Z Handling request to home page.
-2019-10-23T12:40:03.815602424Z 172.16.0.1 - - [23/Oct/2019:12:40:03 +0000] "GET / HTTP/1.1" 200 12 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.63 Safari/537.36 Edg/78.0.276.19"
-```
+<pre>
+2020-04-03T22:54:04.236405938Z Handling request to home page.
+2020-04-03T22:54:04.236497641Z 172.16.0.1 - - [03/Apr/2020:22:54:04 +0000] "GET / HTTP/1.1" 200 12 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.83 Safari/537.36 Edg/81.0.416.41"
+</pre>
 
 A naplófájlokat a böngészőből `https://<app-name>.scm.azurewebsites.net/api/logs/docker`is megtekintheti a(.
 
@@ -213,7 +215,7 @@ Az App Service menü különböző oldalakat biztosít az alkalmazás konfigurá
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az előző lépésekben Azure-erőforrásokat hozott létre egy erőforráscsoportban. Az erőforráscsoport neve a tartózkodási helytől függően "appsvc_rg_Linux_CentralUS" . Ha az ingyenes F1 szinttől eltérő App Service Termékváltozatot használ, ezek az erőforrások folyamatos költségekkel járnak.
+Az előző lépésekben Azure-erőforrásokat hozott létre egy erőforráscsoportban. Az erőforráscsoport neve a tartózkodási helytől függően "appsvc_rg_Linux_CentralUS" . Ha az ingyenes F1 szinttől eltérő App Service Termékváltozatot használ, ezek az erőforrások folyamatos költségekkel járnak (lásd: [App Service-díjszabás).](https://azure.microsoft.com/pricing/details/app-service/linux/)
 
 Ha a jövőben nem várható, hogy szükség lesz ezekre az erőforrásokra, `<resource-group-name>` törölje az erőforráscsoportot a `az webapp up` következő parancs futtatásával, és cserélje le a parancs kimenetében látható erőforráscsoportra, például "appsvc_rg_Linux_centralus". A parancs egy percig is eltarthat.
 

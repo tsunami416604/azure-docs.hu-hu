@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: ce0a170a629f347e2687a2e9f63fb3438fe2bd2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 18469c94b66acab27b58243e8d15eb924843319b
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79280169"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811115"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>App Service-alkalmazás konfigurálása az Azure Portalon
 
@@ -35,7 +35,7 @@ Más nyelvi halmok, hasonlóképpen, az alkalmazás beállításait, mint a kör
 
 - [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
 - [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
-- [Php](containers/configure-language-php.md#access-environment-variables)
+- [PHP](containers/configure-language-php.md#access-environment-variables)
 - [Python](containers/how-to-configure-python.md#access-environment-variables)
 - [Java](containers/configure-language-java.md#data-sources)
 - [Ruby](containers/configure-language-ruby.md#access-environment-variables)
@@ -96,16 +96,17 @@ Más nyelvi halmok esetében jobb, ha [inkább az alkalmazásbeállításokat](#
 
 Futásidőben a kapcsolati karakterláncok környezeti változóként érhetők el, a következő kapcsolattípusokkal előtaggal:
 
-* SQL Server:`SQLCONNSTR_`
-* Mysql:`MYSQLCONNSTR_`
-* SQL adatbázis:`SQLAZURECONNSTR_`
+* SQLServer:`SQLCONNSTR_`  
+* Mysql:`MYSQLCONNSTR_` 
+* SQLAzure:`SQLAZURECONNSTR_` 
 * Egyéni:`CUSTOMCONNSTR_`
+* Postgresql:`POSTGRESQLCONNSTR_`  
 
 Például egy *ConnectionString1* nevű MySql kapcsolati karakterlánc környezeti `MYSQLCONNSTR_connectionString1`változóként érhető el. A nyelv-verem specifikus lépéseket lásd:
 
 - [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
 - [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
-- [Php](containers/configure-language-php.md#access-environment-variables)
+- [PHP](containers/configure-language-php.md#access-environment-variables)
 - [Python](containers/how-to-configure-python.md#access-environment-variables)
 - [Java](containers/configure-language-java.md#data-sources)
 - [Ruby](containers/configure-language-ruby.md#access-environment-variables)
@@ -173,7 +174,7 @@ Itt konfigurálhat néhány általános beállítást az alkalmazáshoz. Egyes b
     - **Felügyelt csővezeték verziója**: Az IIS [csővezeték-üzemmód]. Állítsa **klasszikusra,** ha olyan örökölt alkalmazással rendelkezik, amelyhez az IIS régebbi verziója szükséges.
     - **HTTP-verzió**: Állítsa **2.0-ra** a [HTTPS/2](https://wikipedia.org/wiki/HTTP/2) protokoll támogatásának engedélyezéséhez.
     > [!NOTE]
-    > A legtöbb modern böngésző csak a TLS protokollt támogatja, míg a nem titkosított forgalom továbbra is a HTTP/1.1 protokollt használja. Annak érdekében, hogy az ügyfélböngészők HTTP/2-vel kapcsolódjanak az alkalmazáshoz, [az Azure App Service-ben ssl-kötéssel biztosíthatja az egyéni DNS-nevet.](configure-ssl-bindings.md)
+    > A legtöbb modern böngésző csak a TLS protokollt támogatja, míg a nem titkosított forgalom továbbra is a HTTP/1.1 protokollt használja. Annak érdekében, hogy az ügyfélböngészők HTTP/2-vel kapcsolódjanak az alkalmazáshoz, biztosítsa az egyéni DNS-nevet. További információ: [Egyéni DNS-név biztonságossá tétele TLS/SSL-kötéssel az Azure App Service szolgáltatásban című témakörben.](configure-ssl-bindings.md)
     - **ARR affinitás:** Többpéldányos telepítés esetén győződjön meg arról, hogy az ügyfél a munkamenet élettartama alatt ugyanarra a példányra van irányítva. Ezt a beállítást **állapotmentes** alkalmazásokesetén kikapcsolva ként állíthatja be.
 - **Hibakeresés:** Távoli hibakeresés engedélyezése [ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug), [ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)vagy [Node.js](containers/configure-language-nodejs.md#debug-remotely) alkalmazásokhoz. Ez a beállítás 48 óra elteltével automatikusan kikapcsol.
 - **Bejövő ügyféltanúsítványok:** ügyféltanúsítványokat igényel a [kölcsönös hitelesítésben.](app-service-web-configure-tls-mutual-auth.md)
@@ -235,7 +236,7 @@ Linux-alkalmazásokról:
 
 - [ASP.NET Core](containers/configure-language-dotnetcore.md)
 - [Node.js](containers/configure-language-nodejs.md)
-- [Php](containers/configure-language-php.md)
+- [PHP](containers/configure-language-php.md)
 - [Python](containers/how-to-configure-python.md)
 - [Java](containers/configure-language-java.md)
 - [Ruby](containers/configure-language-ruby.md)
@@ -248,7 +249,7 @@ Lásd: [Egyéni Linux-tároló konfigurálása az Azure App Service-hez](contain
 
 - [Egyéni tartománynév konfigurálása az Azure App Service-ben]
 - [Átmeneti környezetek beállítása az Azure App Service-ben]
-- [Egyéni DNS-név védelme SSL-kötéssel az Azure App Service-ben](configure-ssl-bindings.md)
+- [Egyéni DNS-név biztonságossá tétele TLS/SSL-kötéssel az Azure App Service-ben](configure-ssl-bindings.md)
 - [Diagnosztikai naplók engedélyezése](troubleshoot-diagnostic-logs.md)
 - [Alkalmazás méretezése az Azure App Service-ben]
 - [Az Azure App Service alapvető tudnivalói]

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 11/19/2019
-ms.openlocfilehash: 550c315023c0ae907c369778c81b16e137004bec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: afb30a17d7a1450f169402c18f41ce249415e89d
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80067259"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804826"
 ---
 # <a name="sql-database-resource-limits-and-resource-governance"></a>SQL Database erőforráskorlátok és erőforrás-szabályozás
 
@@ -103,7 +103,7 @@ Az erőforrás-korlátok kényszerítése érdekében az Azure SQL Database az S
 
 Amellett, hogy az Erőforrás-szabályozót az SQL Server folyamaton belüli erőforrások szabályozására használja, az Azure SQL Database a Windows [feladatobjektumokat](https://docs.microsoft.com/windows/win32/procthread/job-objects) is használja a folyamatszintű erőforrás-szabályozáshoz, és a Windows [fájlkiszolgálói erőforrás-kezelőt (FSRM)](https://docs.microsoft.com/windows-server/storage/fsrm/fsrm-overview) a tárolási kvóta kezeléséhez.
 
-Az Azure SQL Database erőforrás-szabályozás hierarchikus jellegű. Fentről lefelé a korlátozások az operációs rendszer szintjén és a tárolókötet szintjén lépnek érvénybe az operációs rendszer erőforrás-irányítási mechanizmusai és az erőforrás-szabályozó, majd az erőforráskészlet szintjén az Erőforrás-szabályozó használatával, majd a munkaterhelési csoport szintjén a Erőforrás-kormányzó. Az aktuális adatbázisra vagy rugalmas készletre vonatkozó erőforrás-irányítási korlátok a [sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) nézetben kerülnek felszínre. 
+Az Azure SQL Database erőforrás-szabályozás hierarchikus jellegű. Fentről lefelé a korlátok az operációs rendszer szintjén és a tárolókötet szintjén az operációs rendszer erőforrás-irányítási mechanizmusai és az erőforrás-szabályozó, majd az erőforráskészlet szintjén az Erőforrás-kormányzó, majd a számítási feladatok csoport szintjén az Erőforrás-kormányzó használatával. Az aktuális adatbázisra vagy rugalmas készletre vonatkozó erőforrás-irányítási korlátok a [sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) nézetben kerülnek felszínre. 
 
 ### <a name="data-io-governance"></a>Az adatok im-szabályozása
 
@@ -134,7 +134,7 @@ Naplórekordok létrehozásakor minden művelet et kiértékel, és értékeli, 
 
 A futásidőben előírt tényleges naplógenerálási sebességeket a visszacsatolási mechanizmusok is befolyásolhatják, ideiglenesen csökkentve a megengedett naplósebességet, hogy a rendszer stabilizálódhasson. Naplófájlterület-kezelés, elkerülve a naplóterület-feltételek és a rendelkezésre állási csoport replikációs mechanizmusainak futtatását, ideiglenesen csökkentheti a rendszer általános korlátait.
 
-A log rate governor traffic forming a következő várakozási típusokon keresztül jelenik meg (a [sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) DMV-ben kitéve):
+A naplósebesség-szabályozó forgalom alakítása a következő várakozási típusokon keresztül jelenik meg (a [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) és [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) nézetekben kitéve):
 
 | Várakozás típusa | Megjegyzések |
 | :--- | :--- |
@@ -143,6 +143,7 @@ A log rate governor traffic forming a következő várakozási típusokon keresz
 | INSTANCE_LOG_RATE_GOVERNOR | Példányszint-korlátozás |  
 | HADR_THROTTLE_LOG_RATE_SEND_RECV_QUEUE_SIZE | Visszajelzésvezérlés, rendelkezésre állási csoport fizikai replikációja a prémium verzióban/üzleti legkritikusabb esetben nem tart lépést |  
 | HADR_THROTTLE_LOG_RATE_LOG_SIZE | Visszacsatolás-vezérlés, a rönkterület-állapot elkerülésének korlátozása |
+| HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO | Georeplikációs visszajelzésvezérlés, a naplósebesség korlátozása a magas adatkésés és a geomásodlagos adatok elérhetetlensítésének elkerülése érdekében|
 |||
 
 Ha olyan naplósebesség-korlátot tapasztal, amely akadályozza a kívánt méretezhetőséget, vegye figyelembe a következő lehetőségeket:

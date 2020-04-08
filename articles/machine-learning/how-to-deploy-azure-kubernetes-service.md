@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 01/16/2020
-ms.openlocfilehash: 792964f28ddb3fcb10932b8de9499a9c7027960f
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: aec1b7f7bf60be34d21d52ca652a776cf3275fe8
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475377"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811772"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Modell üzembe helyezése egy Azure Kubernetes-szolgáltatásfürtben
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -135,7 +135,7 @@ Ha beállítja a , `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`majd a 
 
 Az AKS-fürt Azure CLI vagy portál használatával történő létrehozásáról az alábbi cikkekben talál további információt:
 
-* [AKS-fürt (CLI) létrehozása](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
+* [AKS-fürt létrehozása (parancssori felület)](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
 * [AKS-fürt (portál) létrehozása](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
 
 Az alábbi példák bemutatják, hogyan csatolhat egy meglévő AKS-fürtöt a munkaterülethez:
@@ -233,10 +233,28 @@ A VS-kód használatával kapcsolatos további tudnivalókért tekintse meg [az 
 > A VS-kódon keresztül történő üzembe helyezéshez az AKS-fürtöt előre létre kell hozni, vagy csatolni kell a munkaterülethez.
 
 ## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>Modellek üzembe helyezése az AKS-re ellenőrzött bevezetéssel (előzetes verzió)
-Modellverziók elemzése és előléptetése ellenőrzött módon végpontok használatával. Egyetlen végpont mögött legfeljebb 6 verziót telepíthet, és konfigurálja a pontozási forgalom %-át az egyes telepített verziókra. Engedélyezheti, hogy az alkalmazáselemzések a végpontok és az üzembe helyezett verziók működési metrikáit tekintsék.
+
+Modellverziók elemzése és előléptetése ellenőrzött módon végpontok használatával. Egyetlen végpont mögött legfeljebb hat verziót telepíthet. A végpontok a következő képességeket biztosítják:
+
+* Adja meg az __egyes végpontok számára küldött pontozási forgalom százalékos arányát.__ Például a forgalom 20%-át a "teszt" végponthoz, 80%-át pedig a "termeléshez" irányítsa.
+
+    > [!NOTE]
+    > Ha nem veszi figyelembe a forgalom 100%-át, a fennmaradó százalék az __alapértelmezett__ végpontverzióhoz lesz irányítva. Ha például a "test" végpontverziót a forgalom 10%-ának lekéri, a "prod" pedig 30%-ra, akkor a fennmaradó 60% az alapértelmezett végpontverzióra kerül.
+    >
+    > A létrehozott első végpontverzió automatikusan alapértelmezettként van konfigurálva. Ezt úgy módosíthatja, hogy végpontverziót `is_default=True` hoz létre vagy frissít.
+     
+* A végpontverzió címkézése __kontroll__ vagy __kezelésként.__ Például az aktuális éles végpont verziója lehet a vezérlő, míg a potenciális új modellek kezelési verzióként vannak telepítve. A kezelési verziók teljesítményének értékelése után, ha az egyik felülmúlja a jelenlegi kontrollt, előléptethető az új termelésre/vezérlésre.
+
+    > [!NOTE]
+    > Csak __egy__ vezérlőd lehet. Több kezelést is igénybe vehet.
+
+Engedélyezheti, hogy az alkalmazáselemzések a végpontok és az üzembe helyezett verziók működési metrikáit tekintsék.
 
 ### <a name="create-an-endpoint"></a>Végpont létrehozása
-Miután készen áll a modellek üzembe helyezésére, hozzon létre egy pontozási végpontot, és telepítse az első verziót. Az alábbi lépés bemutatja, hogyan telepítheti és hozhatja létre a végpontot az SDK használatával. Az első központi telepítés lesz definiálva, mint az alapértelmezett verzió, ami azt jelenti, hogy a meghatározatlan forgalom percentilis az összes verzió megy az alapértelmezett verzióra.  
+Miután készen áll a modellek üzembe helyezésére, hozzon létre egy pontozási végpontot, és telepítse az első verziót. A következő példa bemutatja, hogyan telepítheti és hozható létre a végpont az SDK használatával. Az első központi telepítés lesz definiálva az alapértelmezett verzió, ami azt jelenti, hogy a meghatározatlan forgalom percentilis az összes verzió megy az alapértelmezett verzióra.  
+
+> [!TIP]
+> A következő példában a konfiguráció a kezdeti végpontverziót állítja be a forgalom 20%-ának kezelésére. Mivel ez az első végpont, ez is az alapértelmezett verzió. És mivel nincs más verzióaa kaszkadár a forgalom többi 80%, ez irányítják az alapértelmezett is. Amíg más verziók, amelyek a forgalom bizonyos százalékát telepítik, ez hatékonyan fogadja a forgalom 100%-át.
 
 ```python
 import azureml.core,
@@ -247,8 +265,8 @@ from azureml.core.compute import ComputeTarget
 compute = ComputeTarget(ws, 'myaks')
 namespace_name= endpointnamespace
 # define the endpoint and version name
-endpoint_name = "mynewendpoint",
-version_name= "versiona",
+endpoint_name = "mynewendpoint"
+version_name= "versiona"
 # create the deployment config and define the scoring traffic percentile for the first deployment
 endpoint_deployment_config = AksEndpoint.deploy_configuration(cpu_cores = 0.1, memory_gb = 0.2,
                                                               enable_app_insights = True,
@@ -258,11 +276,16 @@ endpoint_deployment_config = AksEndpoint.deploy_configuration(cpu_cores = 0.1, m
                                                               traffic_percentile = 20)
  # deploy the model and endpoint
  endpoint = Model.deploy(ws, endpoint_name, [model], inference_config, endpoint_deployment_config, compute)
+ # Wait for he process to complete
+ endpoint.wait_for_deployment(True)
  ```
 
 ### <a name="update-and-add-versions-to-an-endpoint"></a>Verziók frissítése és hozzáadása végponthoz
 
 Adjon hozzá egy másik verziót a végponthoz, és konfigurálja a pontozási forgalom percentilis megy a verzióra. Kétféle verzió létezik: egy kontroll és egy kezelési verzió. Nem lehet több kezelési verzió, hogy segítsen összehasonlítani egy kontroll verzió.
+
+> [!TIP]
+> A második verzió, amelyet a következő kódrészlet hozott létre, a forgalom 10%-át fogadja el. Az első verzió 20%-ra van konfigurálva, így a forgalomnak csak 30%-a van beállítva adott verziókhoz. A fennmaradó 70% az első végpontverzióra kerül, mert ez is az alapértelmezett verzió.
 
  ```python
 from azureml.core.webservice import AksEndpoint
@@ -275,9 +298,13 @@ endpoint.create_version(version_name = version_name_add,
                         tags = {'modelVersion':'b'},
                         description = "my second version",
                         traffic_percentile = 10)
+endpoint.wait_for_deployment(True)
 ```
 
-Frissítse a meglévő verziókat, vagy törölje őket egy végponton. Módosíthatja a verzió alapértelmezett típusát, vezérlőtípusát és a forgalom százalékos arányát.
+Frissítse a meglévő verziókat, vagy törölje őket egy végponton. Módosíthatja a verzió alapértelmezett típusát, vezérlőtípusát és a forgalom százalékos arányát. A következő példában a második verzió 40%-ra növeli a forgalmat, és most az alapértelmezett.
+
+> [!TIP]
+> A következő kódrészlet után a második verzió az alapértelmezett. Most 40%-ra van konfigurálva, míg az eredeti verzió még mindig 20%. Ez azt jelenti, hogy a forgalom 40%-át nem veszik figyelembe verziókonfigurációk szerint. A maradék forgalom a második verzióra lesz irányítva, mert most már alapértelmezett. Ez hatékonyan megkapja 80%-a forgalom.
 
  ```python
 from azureml.core.webservice import AksEndpoint
@@ -288,7 +315,8 @@ endpoint.update_version(version_name=endpoint.versions["versionb"].name,
                         traffic_percentile=40,
                         is_default=True,
                         is_control_version_type=True)
-
+# Wait for the process to complete before deleting
+endpoint.wait_for_deployment(true)
 # delete a version in an endpoint
 endpoint.delete_version(version_name="versionb")
 

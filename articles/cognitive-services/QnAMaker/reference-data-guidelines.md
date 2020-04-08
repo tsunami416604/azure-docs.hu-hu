@@ -1,14 +1,14 @@
 ---
 title: Adatok importálása és exportálása – QnA Maker
-description: Ismerje meg, hogyan használják az URL-ek típusait a QnA-készletek importálásához és létrehozásához.
+description: Ismerje meg, hogyan használják az URL-típusokat a QnA-párok importálásához és létrehozásához.
 ms.topic: reference
 ms.date: 01/02/2020
-ms.openlocfilehash: 6560a43a6fbcf9fbd2ce021d782f00f916442bfd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4a423ef9478cd39181c6440801f9fe954dc896c
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651849"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804243"
 ---
 # <a name="import-and-export-data-reference"></a>Adatok importálása és exportálása hivatkozás
 

@@ -1,19 +1,19 @@
 ---
-title: Ssl-tanúsítványok hozzáadása és kezelése
+title: TLS-/SSL-tanúsítványok hozzáadása és kezelése
 description: Hozzon létre egy ingyenes tanúsítványt, importáljon egy App Service-tanúsítványt, importáljon egy Key Vault-tanúsítványt, vagy vásároljon egy App Service-tanúsítványt az Azure App Service-ben.
 tags: buy-ssl-certificates
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 120caf459a7a8ca4e60d5e447a1e4130c0bce389
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4edf710e575bbb26fb0e247e59ff5c796f16226e
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239762"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810588"
 ---
-# <a name="add-an-ssl-certificate-in-azure-app-service"></a>SSL-tanúsítvány hozzáadása az Azure App Service-ben
+# <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>TLS-/SSL-tanúsítvány hozzáadása az Azure App Service-ben
 
 Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Ez a cikk bemutatja, hogyan hozhat létre, tölthet fel vagy importálhat privát tanúsítványt vagy nyilvános tanúsítványt az App Service szolgáltatásba. 
 
@@ -47,7 +47,7 @@ Az [ingyenes App Service-felügyelt tanúsítvány](#create-a-free-certificate-p
 * Legalább 2048 bit hosszúságú titkos kulcsot kell tartalmaznia.
 * Tartalmaznia kell a tanúsítványláncban lévő összes köztes tanúsítványt.
 
-Az SSL-kötések egyéni tartományának védelméhez a tanúsítványtovábbi követelményekkel rendelkezik:
+Egyéni tartomány TLS-kötésben való védelméhez a tanúsítvány további követelményekkel rendelkezik:
 
 * Kiterjesztett [kulcshasználatot](https://en.wikipedia.org/w/index.php?title=X.509&section=4#Extensions_informing_a_specific_usage_of_a_certificate) tartalmaz a kiszolgáló hitelesítéséhez (OID = 1.3.6.1.5.7.3.1)
 * A tanúsítványt megbízható hitelesítésszolgáltatónak kell aláírnia.
@@ -59,7 +59,7 @@ Az SSL-kötések egyéni tartományának védelméhez a tanúsítványtovábbi k
 
 ## <a name="create-a-free-certificate-preview"></a>Ingyenes tanúsítvány létrehozása (előzetes verzió)
 
-Az ingyenes App Service felügyelt tanúsítvány egy kulcsrakész megoldás az egyéni DNS-név védelmére az App Service-ben. Ez egy teljesen működőképes SSL-tanúsítvány, amelyet az App Service kezel és automatikusan megújít. Az ingyenes tanúsítvány a következő korlátozásokkal jár:
+Az ingyenes App Service felügyelt tanúsítvány egy kulcsrakész megoldás az egyéni DNS-név védelmére az App Service-ben. Ez egy teljesen működőképes TLS/SSL tanúsítvány, amelyet az App Service kezel és automatikusan megújít. Az ingyenes tanúsítvány a következő korlátozásokkal jár:
 
 - Nem támogatja a helyettesítő karakteres tanúsítványokat.
 - Nem támogatja a meztelen domaineket.
@@ -237,7 +237,7 @@ Hozzon létre egy _mergedcertificate.crt_ nevű fájlt az egyesített tanúsítv
 
 ### <a name="export-certificate-to-pfx"></a>Tanúsítvány exportálása PFX-fájlba
 
-Exportálja az egyesített SSL-tanúsítványt a tanúsítványkérés létrehozásához használt titkos kulccsal.
+Exportálja az egyesített TLS/SSL-tanúsítványt azzal a személyes kulccsal, amelyhez a tanúsítványkérelmet létrehozták.
 
 Ha OpenSSL használatával hozta létre a tanúsítványkérést, akkor létrehozott egy titkoskulcsfájlt. A tanúsítvány PFX-fájlba exportáláshoz futtassa az alábbi parancsot. Cserélje le a helyőrzők _ &lt;titkoskulcs-fájl>_ és _ &lt;az egyesített tanúsítványfájl->_ a személyes kulcs elérési útjaira és az egyesített tanúsítványfájlra.
 
@@ -245,7 +245,7 @@ Ha OpenSSL használatával hozta létre a tanúsítványkérést, akkor létreho
 openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-certificate-file>  
 ```
 
-Amikor a rendszer megkéri, adjon meg egy exportálási jelszót. Ezt a jelszót fogja használni, amikor később feltölti az SSL-tanúsítványt az App Service-be.
+Amikor a rendszer megkéri, adjon meg egy exportálási jelszót. Ezt a jelszót fogja használni, amikor később feltölti a TLS/SSL tanúsítványát az App Service szolgáltatásba.
 
 Ha az IIS vagy a _Certreq.exe_ használatával hozta létre a tanúsítványkérést, telepítse a tanúsítványt a helyi számítógépre, majd [exportálja a tanúsítványt PFX-fájlba](https://technet.microsoft.com/library/cc754329(v=ws.11).aspx).
 
@@ -363,16 +363,16 @@ Most törölheti az App Service-tanúsítványt. A bal oldali navigációs sávo
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
-[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
 
 ## <a name="more-resources"></a>További erőforrások
 
-* [Egyéni DNS-név biztonságossá tétele SSL-kötéssel](configure-ssl-bindings.md)
+* [Egyéni DNS-név biztonságossá tétele TLS/SSL-kötéssel az Azure App Service-ben](configure-ssl-bindings.md)
 * [HTTPS kényszerítése](configure-ssl-bindings.md#enforce-https)
 * [A TLS 1.1/1.2 kényszerítése](configure-ssl-bindings.md#enforce-tls-versions)
-* [SSL-tanúsítvány használata az alkalmazáskódban](configure-ssl-certificate-in-code.md)
+* [TLS-/SSL-tanúsítvány használata a kódban az Azure App Service-ben](configure-ssl-certificate-in-code.md)
 * [GYAKORI KÉRDÉSEK : App Service-tanúsítványok](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

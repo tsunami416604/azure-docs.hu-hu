@@ -7,12 +7,12 @@ ms.date: 3/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.reviewer: arduppal
-ms.openlocfilehash: 04b145622a1a4237b576a1bb512b5f749f9c3823
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: da163e902d06bd98ac47a24256cb809cb222173b
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80133335"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804622"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Az Azure Blob Storage az IoT Edge-ben modul üzembe helyezése az eszközön
 
@@ -32,7 +32,7 @@ Az Azure Portalon végigvezeti a központi telepítési jegyzékfájl létrehoz�
 
 1. Jelentkezzen be az [Azure Portalon,](https://portal.azure.com) és keresse meg az IoT-központot.
 1. Válassza az **IoT Edge** lehetőséget a menüből.
-1. Kattintson a céleszköz azonosítójára az eszközök listájából.
+1. Kattintson a céleszköz azonosítójára az eszközök listájából."
 1. Válassza **a Modulok beállítása**lehetőséget.
 
 ### <a name="configure-a-deployment-manifest"></a>Központi telepítési jegyzékfájl konfigurálása
@@ -88,16 +88,16 @@ A központi telepítési jegyzékfájl egy JSON-dokumentum, amely leírja, hogy 
 
    - Cserélje `<storage mount>` ki a tároló operációs rendszerének megfelelően. Adja meg egy [kötet](https://docs.docker.com/storage/volumes/) nevét vagy egy meglévő könyvtár abszolút elérési útját az IoT Edge-eszközön, ahol a blob modul tárolja az adatait. A tárolócsatlakoztatás leképezi az eszközön megadott helyet a modul egy meghatározott helyére.
 
-     - Linux-tárolók esetén a formátum * \<tárolási útvonal vagy kötet>:/blobroot*. Példa:
-         - [kötetcsatlakoztatás](https://docs.docker.com/storage/volumes/)használata: **my-volume:/blobroot**
-         - [bind-csatlakoztatás](https://docs.docker.com/storage/bind-mounts/)használata : **/srv/containerdata:/blobroot**. Győződjön meg arról, hogy kövesse a [címtár-hozzáférést a tároló felhasználójának](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux)
-     - Windows-tárolók esetén a formátum a * \<tárolási útvonal vagy a kötet>:C:/BlobRoot*. Példa:
-         - [kötetcsatlakoztatás](https://docs.docker.com/storage/volumes/)használata: **my-volume:C:/blobroot**.
-         - [bind csatlakoztatás](https://docs.docker.com/storage/bind-mounts/)használata : **C:/ContainerData:C:/BlobRoot**.
+     - Linux-tárolók esetén a formátum ** \<a tárolási útvonal vagy a kötet>:/blobroot**. Például:
+         - használja [a hangerő-tartót:](https://docs.docker.com/storage/volumes/)`my-volume:/blobroot`
+         - [bind-tartó](https://docs.docker.com/storage/bind-mounts/) `/srv/containerdata:/blobroot`használata: . Győződjön meg arról, hogy kövesse a [címtár-hozzáférést a tároló felhasználójának](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux)
+     - Windows-tárolók esetén a formátum ** \<a tárolási útvonal vagy a kötet>:C:/BlobRoot**. Például:
+         - [kötettartó](https://docs.docker.com/storage/volumes/)használata: `my-volume:C:/BlobRoot`.
+         - [bind-tartó](https://docs.docker.com/storage/bind-mounts/) `C:/ContainerData:C:/BlobRoot`használata: .
          - A helyi meghajtó használata helyett leképezheti az SMB-hálózati helyet, további információért olvassa el [az SMB-megosztás használata helyi tárolóként című témakört.](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)
 
      > [!IMPORTANT]
-     > Ne módosítsa a tárolócsatlakoztatás imperációs értékének második felét, amely a modul egy adott helyére mutat. A tárolócsatlakoztatásnak mindig **a :/blobroot** kapcsolóval kell végződnie a Linux-tárolók és **a :C:/BlobRoot** Windows-tárolókhoz.
+     > Ne módosítsa a tárolócsatlakoztatási érték második felét, amely a Blob Storage ioT Edge modul egy adott helyére mutat. A tárolócsatlakoztatásnak mindig **:/blobroot** tal kell végződnie linuxos tárolók és **:C:/BlobRoot** Windows-tárolókhoz.
 
 5. A **Modul ikerbeállítások** lapon másolja a következő JSON-t, és illessze be a mezőbe.
 
@@ -200,16 +200,16 @@ Az Azure IoT Edge sablonokat biztosít a Visual Studio Code-ban, hogy segítsen 
 
 1. Cserélje `<storage mount>` ki a tároló operációs rendszerének megfelelően. Adja meg a [kötet](https://docs.docker.com/storage/volumes/) nevét vagy az IoT Edge-eszközön lévő könyvtár abszolút elérési útját, ahol a blobmodul tárolja az adatait. A tárolócsatlakoztatás leképezi az eszközön megadott helyet a modul egy meghatározott helyére.  
 
-     - Linux-tárolók esetén a formátum * \<tárolási útvonal vagy kötet>:/blobroot*. Példa:
-         - [kötetcsatlakoztatás](https://docs.docker.com/storage/volumes/)használata: **my-volume:/blobroot**
-         - [bind-csatlakoztatás](https://docs.docker.com/storage/bind-mounts/)használata : **/srv/containerdata:/blobroot**. Győződjön meg arról, hogy kövesse a [címtár-hozzáférést a tároló felhasználójának](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux)
-     - Windows-tárolók esetén a formátum a * \<tárolási útvonal vagy a kötet>:C:/BlobRoot*. Példa:
-         - [kötetcsatlakoztatás](https://docs.docker.com/storage/volumes/)használata: **my-volume:C:/blobroot**.
-         - [bind csatlakoztatás](https://docs.docker.com/storage/bind-mounts/)használata : **C:/ContainerData:C:/BlobRoot**.
+     - Linux-tárolók esetén a formátum ** \<a tárolási útvonal vagy a kötet>:/blobroot**. Például:
+         - használja [a hangerő-tartót:](https://docs.docker.com/storage/volumes/)`my-volume:/blobroot`
+         - [bind-tartó](https://docs.docker.com/storage/bind-mounts/) `/srv/containerdata:/blobroot`használata: . Győződjön meg arról, hogy kövesse a [címtár-hozzáférést a tároló felhasználójának](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux)
+     - Windows-tárolók esetén a formátum ** \<a tárolási útvonal vagy a kötet>:C:/BlobRoot**. Példa:
+         - [kötettartó](https://docs.docker.com/storage/volumes/)használata: `my-volume:C:/BlobRoot`.
+         - [bind-tartó](https://docs.docker.com/storage/bind-mounts/) `C:/ContainerData:C:/BlobRoot`használata: .
          - A helyi meghajtó használata helyett leképezheti az SMB hálózati helyét, további információkért [lásd: Az SMB-megosztás használata helyi tárolóként](how-to-store-data-blob.md#using-smb-share-as-your-local-storage)
 
      > [!IMPORTANT]
-     > Ne módosítsa a tárolócsatlakoztatás imperációs értékének második felét, amely a modul egy adott helyére mutat. A tárolócsatlakoztatásnak mindig **a :/blobroot** kapcsolóval kell végződnie a Linux-tárolók és **a :C:/BlobRoot** Windows-tárolókhoz.
+     > Ne módosítsa a tárolócsatlakoztatási érték második felét, amely a Blob Storage ioT Edge modul egy adott helyére mutat. A tárolócsatlakoztatásnak mindig **:/blobroot** tal kell végződnie linuxos tárolók és **:C:/BlobRoot** Windows-tárolókhoz.
 
 1. Konfigurálja [a deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) és [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) eszközt a modulhoz a következő JSON hozzáadásával a *deployment.template.json* fájlhoz. Konfigurálja az egyes tulajdonságot a megfelelő értékkel, és mentse a fájlt. Ha az IoT Edge szimulátort használja, állítsa be az értékeket a kapcsolódó környezeti változókhoz ezekhez a tulajdonságokhoz, amelyek et az [eszközToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) és [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) magyarázatszakaszában talál.
 

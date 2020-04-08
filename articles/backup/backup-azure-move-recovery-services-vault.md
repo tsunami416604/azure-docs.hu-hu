@@ -4,12 +4,12 @@ description: Útmutató a helyreállítási szolgáltatások tárolójának áth
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.openlocfilehash: fed42c578da2e4f27f42e11d5ac67d698bbcd939
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3cfd442d49de2661d68de3c4e4b3575119504eb4
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77120724"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804418"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Helyreállítási szolgáltatások tárolójának áthelyezése az Azure-előfizetések és erőforráscsoportok között
 
@@ -17,7 +17,7 @@ Ez a cikk bemutatja, hogyan helyezheti át az Azure Backup hoz konfigurált hely
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
-Erőforrás move for Recovery Services boltozat támogatott Ausztrália Kelet- és Ausztrália Délkeleti, Kanada Közép-, Kanada Kelet-, Délkelet-Ázsia, Kelet-Ázsia, Usa középső régiója, USA északi középső régiója, USA keleti régiója, USA keleti régiója, USA délnyugati középső régiója, USA nyugati középső régiója, USA nyugati középső régiója, Közép-India, Dél-India, Japán Kelet- és Japán-, Közép-Korea, Dél-Korea, Észak-Európa, Nyugat-Európa, Dél-Afrika Észak-, Dél-Afrika Nyugat-, Egyesült Királyság Déli és Egyesült Királyság Nyugati ja.
+Erőforrás move for Recovery Services boltozat támogatott Ausztrália Kelet- és Ausztrália Délkeleti, Kanada Közép-, Kanada Kelet-, Délkelet-Ázsia, Kelet-Ázsia, Usa középső régiója, USA északi régiója, USA keleti régiója, USA délkeleti része, USA nyugati középső régiója, USA nyugati középső régiója, USA nyugati régiója, Közép-India, Dél-India, Japán Kelet-Japán, Nyugat-Korea, Dél-Korea, Észak-Európa, Nyugat-Európa, Dél-Afrika Észak-Afrika , Dél-Afrika Nyugat, Egyesült Királyság Déli, és az Egyesült Királyság Nyugati.
 
 ## <a name="unsupported-regions"></a>Nem támogatott régiók
 
@@ -27,7 +27,7 @@ Franciaország közép, Franciaország Dél, Németország északkeleti, Németo
 
 - A tároló erőforráscsoportok közötti áthelyezése során mind a forrás, mind a célerőforrás-csoportok zárolva vannak, megakadályozva az írási és törlési műveleteket. További információkért tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
 - Csak a rendszergazdai előfizetés rendelkezik a tároló áthelyezéséhez szükséges engedélyekkel.
-- A tároló előfizetések közötti áthelyezése, a cél-előfizetés nek ugyanabban a bérlőben kell lennie, mint a forrás-előfizetés, és az állapotát engedélyezni kell.
+- A tárolók előfizetések közötti áthelyezése, a cél-előfizetés nek ugyanabban a bérlőben kell lennie, mint a forrás-előfizetés, és az állapotát engedélyezni kell.
 - A célerőforrás-csoport írási műveleteinek végrehajtásához engedéllyel kell rendelkeznie.
 - A tároló áthelyezése csak az erőforráscsoportot módosítja. A Recovery Services-tároló ugyanazon a helyen található, és nem módosítható.
 - Régiónként és régiónként csak egy helyreállítási szolgáltatás-tárolót helyezhet át.
@@ -41,14 +41,14 @@ Franciaország közép, Franciaország Dél, Németország északkeleti, Németo
 - Ha áthelyez egy virtuális gép biztonsági mentési adatait tartalmazó tárolót, előfizetések között, át kell helyeznie a virtuális gépeket ugyanabba az előfizetésbe, és ugyanazt a cél virtuálisgép-erőforráscsoport nevét (ahogy a régi előfizetésben) kell használnia a biztonsági mentések folytatásához.
 
 > [!NOTE]
->
-> Az **Azure Site Recovery** használatával konfigurált helyreállítási szolgáltatások tárolói még nem tudnak áthelyezni. Ha konfigurált a virtuális gépek (Azure IaaS, Hyper-V, VMware) vagy a fizikai gépek vész-helyreállítási az **Azure Site Recovery**használatával, az áthelyezési művelet blokkolva lesz. A Site Recovery szolgáltatás erőforrás-áthelyezési szolgáltatása még nem érhető el.
+> Az Azure Backup helyreállítási szolgáltatások tárolóinak áthelyezése az Azure-régiókban nem támogatott.<br><br>
+> Ha konfigurált a virtuális gépek (Azure IaaS, Hyper-V, VMware) vagy a fizikai gépek vész-helyreállítási **Azure Site Recovery**használatával, az áthelyezési művelet blokkolva lesz. Ha az Azure Site Recovery tárolóit szeretné áthelyezni, tekintse át [ezt a cikket](https://docs.microsoft.com/azure/site-recovery/move-vaults-across-regions) a tárolók manuális áthelyezéséről.
 
 ## <a name="use-azure-portal-to-move-recovery-services-vault-to-different-resource-group"></a>Az Azure Portal használata a Recovery Services-tároló áthelyezése különböző erőforráscsoportokba
 
 Helyreállítási szolgáltatások tárolójának és a hozzá tartozó erőforrásoknak a másik erőforráscsoportba való áthelyezése
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Nyissa meg a **Helyreállítási szolgáltatások tárolóinak** listáját, és válassza ki az áthelyezni kívánt tárolót. Amikor a tároló irányítópultja megnyílik, az alábbi képen látható módon jelenik meg.
 
    ![Szolgáltatástároló helyreállítása](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -61,7 +61,7 @@ Helyreállítási szolgáltatások tárolójának és a hozzá tartozó erőforr
 
    ![Erőforráscsoport módosítása](./media/backup-azure-move-recovery-services/change-resource-group.png)
 
-4. Az **Erőforrások áthelyezése** panelen a kijelölt tárolóhoz ajánlott a választható kapcsolódó erőforrások áthelyezése a jelölőnégyzet bejelölésével, ahogy az az alábbi képen látható.
+4. Az **Erőforrások áthelyezése** panelen a kijelölt tárolóban ajánlott a választható kapcsolódó erőforrások áthelyezése a jelölőnégyzet bejelölésével, ahogy az az alábbi képen látható.
 
    ![Előfizetés áthelyezése](./media/backup-azure-move-recovery-services/move-resource.png)
 
@@ -77,7 +77,7 @@ Helyreállítási szolgáltatások tárolójának és a hozzá tartozó erőforr
 
 A Recovery Services-tárolót és a hozzá tartozó erőforrásokat áthelyezheti egy másik előfizetésbe
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Nyissa meg a Helyreállítási szolgáltatások tárolóinak listáját, és válassza ki az áthelyezni kívánt tárolót. Amikor a tároló irányítópultja megnyílik, az alábbi képen látható módon jelenik meg.
 
     ![Szolgáltatástároló helyreállítása](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
@@ -122,7 +122,7 @@ Az erőforrások másik előfizetésbe való `-DestinationSubscriptionId` áthel
 Move-AzureRmResource -DestinationSubscriptionId "<destinationSubscriptionID>" -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
 ```
 
-A fenti parancsmagok végrehajtása után meg kell erősítenie, hogy át kívánja helyezni a megadott erőforrásokat. Írja be az **Y** típust a megerősítéshez. Sikeres ellenőrzés után az erőforrás áthelyeződik.
+A fenti parancsmagok végrehajtása után a rendszer megkéri, hogy erősítse meg, hogy át kívánja helyezni a megadott erőforrásokat. Írja be az **Y** típust a megerősítéshez. Sikeres ellenőrzés után az erőforrás áthelyeződik.
 
 ## <a name="use-cli-to-move-recovery-services-vault"></a>A CLI használata a Helyreállítási szolgáltatások tárolójának áthelyezése
 

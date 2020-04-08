@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccf34b52e06e369fe4dd459ff9dfa2880596fb35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3d2117e913f292e92f37f31d2e123587c70a189
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481347"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803297"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>SAML egyszeri bejelentkezés helyszíni alkalmazásokhoz alkalmazásproxyval
 
@@ -74,14 +74,14 @@ Mielőtt egyszeri használatú alkalmazások at biztosíthatna, engedélyeznie k
 
 2. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon lépjen az **Egyszerű SAML konfigurációfejlécre,** és válassza ki a **Szerkesztés** ikont (egy ceruzát). Győződjön meg arról, hogy az alkalmazásproxyban konfigurált **külső URL-cím** az **Azonosító**, **a Válasz URL**és a **Kijelentkezés URL-címe** mezőkben van feltöltve. Ezek az URL-címek szükségesek az alkalmazásproxy megfelelő működéséhez. 
 
-3. A korábban konfigurált **Válasz URL-címet** úgy szerkeszti, hogy a tartomány elérhető legyen az alkalmazásproxy által. Ha például **a külső URL-cím** `https://contosotravel-f128.msappproxy.net` és `https://contosotravel.com/acs`az eredeti Válasz **URL-címe** volt, frissítenie kell az eredeti Válasz **URL-címet** `https://contosotravel-f128.msappproxy.net/acs`erre. 
+3. A korábban beállított **Válasz URL-címet** úgy szerkeszti, hogy a tartomány elérhető legyen az interneten alkalmazásproxyn keresztül. Ha például **a külső URL-cím** `https://contosotravel-f128.msappproxy.net` és `https://contosotravel.com/acs`az eredeti Válasz **URL-címe** volt, frissítenie kell az eredeti Válasz **URL-címet** `https://contosotravel-f128.msappproxy.net/acs`erre.
 
     ![Alapvető SAML konfigurációs adatok megadása](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
 
 
 4. Jelölje be a frissített **Válasz URL-cím** melletti jelölőnégyzetet, ha alapértelmezettként szeretné megjelölni.
 
-   * Ha a szükséges **válasz URL-cím** már szerepel a listában, jelölje meg ezt a **válasz URL-címet** alapértelmezettként, és törölje a korábban konfigurált **Válasz URL-címet**.
+   * Miután a szükséges **válasz URL-címet** jelölte meg alapértelmezettként, törölheti a korábban konfigurált **Válasz URL-címet** is, amely a belső URL-címet használta.
 
    * Sp által kezdeményezett folyamat esetén győződjön meg arról, hogy a háttéralkalmazás megadja a megfelelő **válasz URL-címet** vagy helyességi feltétel fogyasztói szolgáltatás URL-címét a hitelesítési jogkivonat fogadásához.
 

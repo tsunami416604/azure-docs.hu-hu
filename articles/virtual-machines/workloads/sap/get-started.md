@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/06/2020
+ms.date: 04/07/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: df7461443fc9e89209545e8a2dfb9ad0addf3f3e
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 86c5f572ba66845467a7e3f4412b8da8368fe772
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80757154"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811252"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP-számítási feladatok üzemeltetéséhez és futtatásához használja az Azure-t
 
@@ -110,6 +110,7 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásáról a követke
 
 
 ## <a name="change-log"></a>Módosítási napló
+- 04/07/2020: A [pacemaker beállítása az SLES-en az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) a felhő-netconfig-azure utasítások tisztázása érdekében
 - 04/06/2020: Az [SAP HANA horizontális felskálázásának változásai készenléti csomóponttal az Azure-beli virtuális gépeken az Azure NetApp-fájlokkal SLES-en](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse) és [az SAP HANA kibővített, készenléti csomópontban az Azure-beli virtuális gépeken az RHEL-alapú Azure NetApp-fájlokkal](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel) a NetApp [TR-4435-re](https://www.netapp.com/us/media/tr-4746.pdf) mutató hivatkozások eltávolításához (helyébe [A TR-4746](https://www.netapp.com/us/media/tr-4746.pdf)lép )
 - 03/31/2020: Az [SAP HANA magas rendelkezésre állásának módosítása az Azure-beli virtuális gépeken SLES-en](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability) és [az SAP HANA magas rendelkezésre állása az AZURE-beli virtuális gépeken az RHEL-en,](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel) hogy utasításokat adjon a csíkozott kötetek létrehozásakor a csíkozott kötetek megadásához
 - 03/27/2020: Az SAP NW magas rendelkezésre állásának változása [az SLES-en lévő SAP-alkalmazásokANF-alapú sles-alapú sap-alkalmazásokon,](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) hogy a fájlrendszer csatlakoztatási beállításai tegyezz a NetApp TR-4746-ra (távolítsa el a szinkronizálási csatlakoztatási beállítást)

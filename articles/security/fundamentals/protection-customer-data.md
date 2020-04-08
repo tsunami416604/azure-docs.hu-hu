@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 741cbc82f2ed3ffffb553b146d981b4e35a273f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 630304bec17dd34befab4e5bd9f1cfdfb6505645
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68726681"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811431"
 ---
 # <a name="azure-customer-data-protection"></a>Az Azure-beli ügyfelek adatainak védelme   
 A Microsoft műveletei és támogatási személyzete alapértelmezés szerint nem fér hozzá az ügyféladatokhoz. Az ügyféladatokhoz való hozzáférés megadásakor vezetői jóváhagyásra van szükség, majd a hozzáférést gondosan kezelik és naplózzák. A hozzáférés-vezérlési követelményeket a következő Azure biztonsági szabályzat határozza meg:
@@ -45,7 +45,7 @@ Az Azure erős adatbiztonságot nyújt az ügyfeleknek, mind alapértelmezés sz
 - Az ügyfél és a felhő.
 - Belsőleg az Azure-rendszerek és az adatközpontok között.
 
-**Titkosítás:** A tárolás és az átvitel során lévő adatok titkosítását az ügyfelek az adatok titkosságának és integritásának biztosításához ajánlott eljárásként helyezhetik üzembe. Az ügyfelek egyszerűen konfigurálhatják az Azure felhőszolgáltatásait, hogy SSL-t használjanak az internetről, sőt az Azure által üzemeltetett virtuális gépek közötti kommunikáció védelmére.
+**Titkosítás:** A tárolás és az átvitel során lévő adatok titkosítását az ügyfelek az adatok titkosságának és integritásának biztosításához ajánlott eljárásként helyezhetik üzembe. Az ügyfelek egyszerűen konfigurálhatják az Azure felhőszolgáltatásait, hogy a TLS használatával védjék az internetről, sőt az Azure által üzemeltetett virtuális gépek közötti kommunikációt is.
 
 **Adatredundancia: A**Microsoft segít az adatok védelmében, ha kibertámadás vagy fizikai sérülés történik egy adatközpontban. Az ügyfelek választhatnak:
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 51375c13d842bda2450a83e1bbc48b741adba39b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 987228c5cf0f5231006726718684528a777e92fd
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80057449"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804469"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Webalkalmazás-tűzfal (WAF) konfigurálása App Service Environment környezetben
 ## <a name="overview"></a>Áttekintés
@@ -71,7 +71,7 @@ A **Szolgáltatások** lapra kattintva konfigurálhatja a WAF-ot azokra a szolg�
 ![Felügyelet – Szolgáltatások hozzáadása][ManagementAddServices]
 
 > [!NOTE]
-> Attól függően, hogy az alkalmazások hogyan vannak konfigurálva, és milyen funkciókat használnak az App Service-környezetben, továbbítsa a 80-astól és 443-tól eltérő TCP-portok forgalmát, ha ip SSL-beállítással rendelkezik egy App Service-alkalmazáshoz. Az App Service Environment környezetekben használt hálózati portok listáját a [Bejövő forgalom szabályozása dokumentáció](app-service-app-service-environment-control-inbound-traffic.md) Hálózati portok szakaszában találja.
+> Attól függően, hogy az alkalmazások hogyan vannak konfigurálva, és milyen funkciókat használnak az App Service-környezetben, továbbítsa a 80-astól és 443-tól eltérő TCP-portok forgalmát, ha egy App Service-alkalmazáshoz IP TLS-beállítással rendelkezik. Az App Service Environment környezetekben használt hálózati portok listáját a [Bejövő forgalom szabályozása dokumentáció](app-service-app-service-environment-control-inbound-traffic.md) Hálózati portok szakaszában találja.
 > 
 > 
 

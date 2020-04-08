@@ -5,12 +5,12 @@ ms.devlang: php
 ms.topic: tutorial
 ms.date: 11/25/2019
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 693f132bed590af65cf79ebf4739ea5dcadbfc52
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 65e97453ba2ee85fb2ed7b512db87a269d2d7f77
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80045535"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811503"
 ---
 # <a name="build-a-php-and-mysql-app-in-azure-app-service-on-linux"></a>PHP és MySQL alkalmazás létrehozása linuxos Azure App Service-ben
 
@@ -254,9 +254,9 @@ Mentse a módosításokat.
 > A MySQL-kapcsolati adatok védelme érdekében ez a fájl már ki van zárva a Git-adattárból (lásd: _.gitignore_ az adattár gyökérkönyvtárában). Később megtudhatja, hogyan konfigurálhat környezeti változókat az App Service-ben az Azure Database for MySQL-ben található adatbázishoz való csatlakozáshoz. A környezeti változók esetében nincs szüksége a *.env* fájlra az App Service-ben.
 >
 
-### <a name="configure-ssl-certificate"></a>SSL-tanúsítvány konfigurálása
+### <a name="configure-tlsssl-certificate"></a>TLS/SSL-tanúsítvány konfigurálása
 
-Alapértelmezés szerint az Azure Database for MySQL kikényszeríti az SSL-kapcsolatokat az ügyfelektől. Az Azure-ban található MySQL-adatbázishoz való csatlakozáshoz használja a [_.pem_ tanúsítványt, amelyet az Azure Database for MySQL](../../mysql/howto-configure-ssl.md) biztosít.
+Alapértelmezés szerint az Azure Database for MySQL kényszeríti a TLS-kapcsolatokat az ügyfelektől. Az Azure-ban található MySQL-adatbázishoz való csatlakozáshoz használja a [_.pem_ tanúsítványt, amelyet az Azure Database for MySQL](../../mysql/howto-configure-ssl.md) biztosít.
 
 Nyissa meg a _config/database.php_ fájlt, majd adja hozzá az _sslmode_ és az _options_ paramétert a `connections.mysql` szakaszhoz az alábbi kódban látható módon.
 

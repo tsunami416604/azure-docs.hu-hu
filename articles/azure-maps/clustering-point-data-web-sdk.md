@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: e65681aefc047ba540d4ad0d91ef6e4d2af5f3ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce2891201331ee1efd861d2f13cec78c0551b6ba
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77190261"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804571"
 ---
 # <a name="clustering-point-data"></a>Fürtözési pont adatai
 
@@ -62,7 +62,7 @@ Ha meg szeretné jeleníteni a fürt méretét a buborék tetején, használjon 
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Egyszerű buborékréteg-fürtözés" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Egyszerű buborékréteg-fürtözés" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Tekintse meg a Pen <a href='https://codepen.io/azuremaps/pen/qvzRZY/'>Basic buborékréteg fürtözését</a> az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) segítségével a <a href='https://codepen.io'>CodePen webhelyen.</a>
 </iframe>
 
@@ -74,7 +74,7 @@ A fürtözés segítségével megjelenítheti az adatpontok sűrűségét, mikö
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Fürtözött szimbólumréteg" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Fürtözött szimbólumréteg" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Tekintse meg a Pen <a href='https://codepen.io/azuremaps/pen/Wmqpzz/'>Fürtözött szimbólum réteget</a> az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -84,7 +84,7 @@ A hőtérképek nagyszerű módja annak, hogy megjelenítse az adatok sűrűség
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Fürt súlyozott hőtérképe" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Fürt súlyozott hőtérképe" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Tekintse meg a <a href='https://codepen.io/azuremaps/pen/VRJrgO/'>Tollfürt súlyozott hőtérképét</a> az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) szerint a <a href='https://codepen.io'>CodePen webhelyen.</a>
 </iframe>
 
@@ -103,7 +103,7 @@ Ez a példa egy buborékréteget vesz igénybe, amely fürtpontokat jelenít meg
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Cluster getClusterExpansionZoom" src="//codepen.io/azuremaps/embed/moZWeV/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Cluster getClusterExpansionZoom" src="//codepen.io/azuremaps/embed/moZWeV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Tekintse meg a Pen <a href='https://codepen.io/azuremaps/pen/moZWeV/'>Cluster getClusterExpansionZoom</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) című témakört a <a href='https://codepen.io'>CodePen webhelyen.</a>
 </iframe>
 
@@ -113,7 +113,7 @@ A fürt által képviselt pontadatok egy területen vannak elosztva. Ebben a min
 
 <br/>
 
- <iframe height="500" style="width: 100%;" scrolling="no" title="Klaszter terület konvex hajótest" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+ <iframe height="500" style="width: 100%;" scrolling="no" title="Klaszter terület konvex hajótest" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Tekintse meg a <a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>Tollfürt terület konvex hajótest</a> az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -123,7 +123,7 @@ A fürtöket gyakran egy szimbólum mal jelölik, amely a fürtön belüli ponto
 
 A következő minta egy összesítő kifejezést használ. A kód kiszámítja a fürt egyes adatpontjainak entitástípus-tulajdonsága alapján a számlálót. Amikor a felhasználó egy fürtre kattint, egy előugró ablak jelenik meg a fürtről további információkkal.
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Fürtaggregátumok" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Fürtaggregátumok" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Tekintse meg a <a href='https://codepen.io/azuremaps/pen/jgYyRL/'>Tollfürt összesítéseit</a> az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) alapján a <a href='https://codepen.io'>CodePen webhelyen.</a>
 </iframe>
 

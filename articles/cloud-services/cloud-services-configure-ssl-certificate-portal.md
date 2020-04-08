@@ -1,6 +1,6 @@
 ---
-title: SSL konfigurálása felhőszolgáltatáshoz | Microsoft dokumentumok
-description: Megtudhatja, hogyan adhat meg HTTPS-végpontot egy webes szerepkörhöz, és hogyan tölthet fel SSL-tanúsítványt az alkalmazás védelméhez. Ezek a példák az Azure Portalt használják.
+title: TLS konfigurálása felhőszolgáltatáshoz | Microsoft dokumentumok
+description: Megtudhatja, hogyan adhat meg HTTPS-végpontot egy webes szerepkörhöz, és hogyan tölthet fel TLS/SSL-tanúsítványt az alkalmazás védelméhez. Ezek a példák az Azure Portalt használják.
 services: cloud-services
 documentationcenter: .net
 author: tgore03
@@ -8,16 +8,16 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: tagore
-ms.openlocfilehash: 6ddb7001f770a9d8aea38d1a4698e15c167aeaa4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d397279ac7e5949398d695db615d9a003ab7acd
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79273136"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811680"
 ---
-# <a name="configuring-ssl-for-an-application-in-azure"></a>Az SSL beállítása Azure-alkalmazásokhoz
+# <a name="configuring-tls-for-an-application-in-azure"></a>TLS konfigurálása egy alkalmazáshoz az Azure-ban
 
-A Secure Socket Layer (SSL) titkosítás az interneten keresztül küldött adatok védelmének leggyakrabban használt módszere. Ez a gyakori feladat azt ismerteti, hogyan adhat meg EGY HTTPS-végpontot egy webes szerepkörhöz, és hogyan tölthet fel SSL-tanúsítványt az alkalmazás védelméhez.
+A Transport Layer Security (TLS), korábbi nevén Secure Socket Layer (SSL) titkosítás a leggyakrabban használt módszer az interneten keresztül küldött adatok védelmére. Ez a gyakori feladat azt ismerteti, hogyan adhat meg HTTPS-végpontot egy webes szerepkörhöz, és hogyan tölthet fel TLS/SSL-tanúsítványt az alkalmazás védelméhez.
 
 > [!NOTE]
 > A feladatban szereplő eljárások az Azure Cloud Servicesre vonatkoznak; az App Services, lásd [ezt](../app-service/configure-ssl-bindings.md).
@@ -27,14 +27,14 @@ Ez a feladat éles telepítést használ. Az átmeneti központi telepítés has
 
 Olvassa el [ezt](cloud-services-how-to-create-deploy-portal.md) az első, ha még nem hozott létre egy felhőalapú szolgáltatás.
 
-## <a name="step-1-get-an-ssl-certificate"></a>1. lépés: SSL-tanúsítvány beszerezni
-Az SSL alkalmazáshoz való konfigurálásához először be kell szereznie egy hitelesítésszolgáltató által aláírt SSL-tanúsítványt, amely megbízható harmadik fél, aki erre a célra tanúsítványokat állít ki. Ha még nem rendelkezik ilyensel, be kell szereznie egyet egy SSL-tanúsítványokat értékesítő vállalattól.
+## <a name="step-1-get-a-tlsssl-certificate"></a>1. lépés: TLS/SSL tanúsítvány beszerezni
+Egy alkalmazás TLS-ének konfigurálásához először be kell szereznie egy TLS/SSL tanúsítványt, amelyet egy hitelesítésszolgáltató (CA) írt alá, egy megbízható harmadik fél, aki erre a célra tanúsítványokat állít ki. Ha még nem rendelkezik ilyensel, be kell szereznie egyet egy Olyan vállalattól, amely TLS/SSL tanúsítványokat értékesít.
 
-A tanúsítványnak meg kell felelnie az Alábbi követelményeknek az SSL-tanúsítványokra vonatkozóan az Azure-ban:
+A tanúsítványnak meg kell felelnie a TLS-/SSL-tanúsítványokra vonatkozó alábbi követelményeknek az Azure-ban:
 
 * A tanúsítványnak titkos kulcsot kell tartalmaznia.
 * A tanúsítványt kulcscseréhez kell létrehozni, amely személyes adatcserefájlba (.pfx) exportálható.
-* A tanúsítvány tulajdonosnevének meg kell egyeznie a felhőszolgáltatás eléréséhez használt tartománnyal. A cloudapp.net tartományhoz tartozó hitelesítésszolgáltatótól nem szerezhet be SSL-tanúsítványt. A szolgáltatás elérésekor egyéni tartománynevet kell beszereznie. Amikor tanúsítványt kér egy hitelesítésszolgáltatótól, a tanúsítvány tulajdonosnevének meg kell egyeznie az alkalmazás eléréséhez használt egyéni tartománynévvel. Ha például az egyéni tartománynév **contoso.com** a hitelesítésszolgáltatótól a ***.contoso.com** vagy a **www\.contoso.com**tanúsítványt kell kérnie.
+* A tanúsítvány tulajdonosnevének meg kell egyeznie a felhőszolgáltatás eléréséhez használt tartománnyal. A cloudapp.net tartományhitelesítésszolgáltatójától nem szerezhet be TLS/SSL-tanúsítványt. A szolgáltatás elérésekor egyéni tartománynevet kell beszereznie. Amikor tanúsítványt kér egy hitelesítésszolgáltatótól, a tanúsítvány tulajdonosnevének meg kell egyeznie az alkalmazás eléréséhez használt egyéni tartománynévvel. Ha például az egyéni tartománynév **contoso.com** a hitelesítésszolgáltatótól a ***.contoso.com** vagy a **www\.contoso.com**tanúsítványt kell kérnie.
 * A tanúsítványnak legalább 2048 bites titkosítást kell használnia.
 
 Tesztelési célokra önaláírt tanúsítványt [hozhat létre](cloud-services-certs-create.md) és használhat. Az önaláírt tanúsítványok hitelesítésre nem szolgálnak, és a cloudapp.net tartományt használhatják webhely URL-címként. A következő feladat például egy önaláírt tanúsítványt használ, amelyben a tanúsítványban használt köznapi név (CN) **sslexample.cloudapp.net.**
@@ -166,7 +166,7 @@ Most, hogy az üzembe helyezés az Azure-ban működik, https használatával cs
    ![Webhely előnézete](media/cloud-services-configure-ssl-certificate-portal/show-site.png)
 
    > [!TIP]
-   > Ha az SSL-t éles környezet helyett átmeneti központi telepítéshez szeretné használni, először meg kell határoznia az átmeneti központi telepítéshez használt URL-címet. A felhőszolgáltatás üzembe helyezése után az átmeneti környezet URL-címét a telepítési azonosító GUID **azonosítója** határozza meg ebben a formátumban:`https://deployment-id.cloudapp.net/`  
+   > Ha a TLS-t éles környezet helyett átmeneti központi telepítéshez szeretné használni, először meg kell határoznia az átmeneti központi telepítéshez használt URL-címet. A felhőszolgáltatás üzembe helyezése után az átmeneti környezet URL-címét a telepítési azonosító GUID **azonosítója** határozza meg ebben a formátumban:`https://deployment-id.cloudapp.net/`  
    >
    > Hozzon létre egy tanúsítványt, amelynek közös neve (CN) megegyezik a GUID-alapú URL-címmel (például **328187776e774ceda8fc57609d404462.cloudapp.net).** A portál használatával adja hozzá a tanúsítványt a szakaszos felhőszolgáltatáshoz. Ezután adja hozzá a tanúsítványadatait a CSDEF- és CSCFG-fájlokhoz, csomagolja újra az alkalmazást, és frissítse a szakaszos központi telepítést az új csomag használatához.
    >

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 8b396b782c1254b3229aeeb8e51b61cc744d6318
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 300f44daeeea5e8a774575dabcb00686906bb5de
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77190360"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804367"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>API-k védelme az OAuth 2.0 Azure Active Directoryval és API Managementtel történő használatával
 
@@ -137,7 +137,7 @@ Ebben a példában a fejlesztői konzol az ügyfélalkalmazás. Az alábbi lép�
 
 1. Ha **v1-es** végpontokat használ, adjon hozzá egy **nevű törzsparamétert.** Ennek a paraméternek az értékéhez használja a háttéralkalmazás **alkalmazásazonosítóját.** 
 
-1. V2-végpontok használata esetén használja a háttéralkalmazáshoz az **Alapértelmezett hatókör** mezőben létrehozott hatókört. **v2**
+1. V2-végpontok használata esetén használja a háttéralkalmazáshoz az **Alapértelmezett hatókör** mezőben létrehozott hatókört. **v2** Ügyeljen arra is, hogy a [`accessTokenAcceptedVersion`](/azure/active-directory/develop/reference-app-manifest#accesstokenacceptedversion-attribute) tulajdonság `2` értékét az [alkalmazásjegyzékben](/azure/active-directory/develop/reference-app-manifest)állítsa be.
 
 1. Ezután adja meg az ügyfél hitelesítő adatait. Ezek az ügyfélalkalmazás hitelesítő adatai.
 

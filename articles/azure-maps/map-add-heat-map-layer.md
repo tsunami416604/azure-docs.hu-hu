@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 4a853871ef5f66881235e5a6ffec0886b81f5a92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 19765bd28f365cc6f6d5b06646896613dd3e3e87
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77208539"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804554"
 ---
 # <a name="add-a-heat-map-layer"></a>Hőtérképréteg hozzáadása
 
@@ -98,11 +98,11 @@ Alapértelmezés szerint a hőtérkép-rétegben megjelenített adatpontok sugar
 
 Használjon `zoom` kifejezést az egyes nagyítási magasságok sugarának méretezéséhez úgy, hogy minden adatpont a térkép ugyanazon fizikai felületét fedje le. Ez a kifejezés teszi a hőtérkép réteg meg statikus és következetes. A térkép minden egyes nagyítási szintje kétszer annyi képponttal rendelkezik függőlegesen és vízszintesen, mint az előző nagyítási szint. 
 
-A sugár méretezése úgy, hogy minden nagyítási szinttel megduplázódjon, olyan hőtérképet hoz létre, amely minden nagyítási szinten egységesnek tűnik. A méretezés alkalmazásához `zoom` használja a `exponential interpolation` 2. Nagyítsa a térképet, hogy lássa, hogyan skálázódik a hőtérkép a nagyítási szinttel.
+A sugár méretezése úgy, hogy minden nagyítási szinttel megduplázódjon, olyan hőtérképet hoz létre, amely minden nagyítási szinten egységesnek tűnik. A méretezés alkalmazásához `zoom` használja a `exponential interpolation` 2. `2 * Math.pow(2, minZoom - maxZoom)` Nagyítsa a térképet, hogy lássa, hogyan skálázódik a hőtérkép a nagyítási szinttel.
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Konzisztens nagyítható hőtérkép" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Konzisztens nagyítható hőtérkép" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Tekintse meg az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) <a href='https://codepen.io/azuremaps/pen/OGyMZr/'>Konzisztens, nagyítható hőtérképét</a> a <a href='https://codepen.io'>CodePen webhelyen.</a>
 </iframe>
 

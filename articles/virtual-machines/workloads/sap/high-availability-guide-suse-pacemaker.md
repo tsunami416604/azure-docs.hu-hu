@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/17/2020
+ms.date: 04/07/2020
 ms.author: radeltch
-ms.openlocfilehash: 9d3d0ddbd1282827f17cd82228fcf0f3fba3a60f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 06ee1b6184e69ace68adcbfa36ad2384dc9fdd99
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471982"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811571"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Pacemaker beállítása az Azure-beli SUSE Linux Enterprise Server en
 
@@ -365,6 +365,9 @@ A következő elemek előtaggal vannak ellátva **az [A]** - az összes csomópo
    </code></pre>
 
 1. **[A]** Felhő-netconfig-azure konfigurálása a HA-fürthöz
+
+   >[!NOTE]
+   > Ellenőrizze a telepített változata csomag **cloud-netconfig-azure** futtatásával **zypper info cloud-netconfig-azure**. Ha a környezetben lévő verzió 1.3 vagy újabb, akkor már nem szükséges letiltja a hálózati interfészek kezelését a felhőhálózati bővítmény által. Ha a verzió 1.3-nál alacsonyabb, javasoljuk, hogy frissítse a csomagot **cloud-netconfig-azure** a legújabb elérhető verzióra.  
 
    Módosítsa a hálózati adapter konfigurációs fájlját az alábbiak szerint, hogy megakadályozza a felhőhálózati bővítmény eltávolítását a virtuális IP-címből (a Pacemakernek ellenőriznie kell a VIP-hozzárendelést). További információ: [SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633). 
 

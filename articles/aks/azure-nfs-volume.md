@@ -1,17 +1,18 @@
 ---
-title: NFS (Network File System) Ubuntu Server létrehozása az Azure Kubernetes szolgáltatás (AKS) podjai számára
+title: NFS Ubuntu Linux Server kötet létrehozása
+titleSuffix: Azure Kubernetes Service
 description: Megtudhatja, hogyan hozhat létre manuálisan egy NFS Ubuntu Linux Server-kötetet az Azure Kubernetes szolgáltatás (AKS) podjaihoz való használatra.
 services: container-service
 author: ozboms
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: obboms
-ms.openlocfilehash: e5676710bc47557318f3e2adcf36ec0ed13d47de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7db3f806df88e5b23012e97ba5c2f14ca65b2508
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77596623"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803466"
 ---
 # <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>NFS (Network File System) Linux Server-kötet manuális létrehozása és használata az Azure Kubernetes szolgáltatással (AKS)
 A tárolók közötti adatok megosztása gyakran a tárolóalapú szolgáltatások és alkalmazások szükséges összetevője. Általában különböző podok, amelyek hozzáférést igényelnek ugyanazokhoz az információkhoz egy külső állandó köteten.    

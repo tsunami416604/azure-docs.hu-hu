@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: ca1327a547e8550e47ff37e4ba100fcbd2b7a79f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a7077b5e94800d93833f259fefd0cd4c168ec867
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282460"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811437"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Ügyfél által felügyelt kulcsok használata az Azure Key Vaultban importálási/exportálási szolgáltatáshoz
 
@@ -103,7 +103,7 @@ Ha az ügyfél által kezelt kulccsal kapcsolatos hibákat észlel, az alábbi t
 | CmkErrorAccessRevoked | Alkalmazott egy ügyfél által kezelt kulcsot, de a kulcshozzáférés jelenleg visszavonásra kerül. További információt [a kulcshozzáférés engedélyezése című témakörben talál.](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy)                                                      | Igen, ellenőrizze, hogy: <ol><li>A key vault továbbra is rendelkezik az MSI a hozzáférési szabályzatban.</li><li>A hozzáférési házirend engedélyeket biztosít a Beszedés, Betakarás és Kicsomagolás lehetőséghez.</li><li>Ha a kulcstartó a tűzfal mögötti virtuális hálózatban van, ellenőrizze, hogy **engedélyezze-e** a Microsoft megbízható szolgáltatások engedélyezését.</li></ol>                                                                                            |
 | CmkError Disabled      | Alkalmazott egy ügyfél által kezelt kulcsot, de a kulcs le van tiltva. További információt [a kulcs engedélyezése című témakörben talál.](https://docs.microsoft.com/rest/api/keyvault/vaults/createorupdate)                                                                             | Igen, a kulcsverzió engedélyezésével     |
 | CmkErrorNemTalálható      | Alkalmazott egy ügyfél által kezelt kulcsot, de nem találja a kulcsot. <br>Ha a kulcs törlődik, és a megőrzési időszak után törlődik, nem tudja helyreállítani a kulcsot. Ha biztonsági másolatot tett a kulcsról, a probléma megoldásához visszaállíthatja a kulcsot. | Nem, a kulcs törölve lett, és a megőrzési időszak után is törlődött. <br>Igen, csak akkor, ha az ügyfél rendelkezik a kulccsal, és visszaállítja azt.  |
-| CmkErrorVaultNem található | Alkalmazott egy ügyfél által kezelt kulcsot, de nem találja a kulcshoz társított kulcstartót.<br>Ha törölte a key vault, nem tudja helyreállítani az ügyfél által kezelt kulcs.  Ha áttelepítette a key vault egy másik bérlő, [lásd: Kulcstartó bérlői azonosító módosítása előfizetés áthelyezése után.](https://docs.microsoft.com/azure/key-vault/key-vault-subscription-move-fix) |   Nem, ha az ügyfél törölte a key vault.<br> Igen, ha a kulcstartó bérlői áttelepítésen ment keresztül, tegye a következők egyikét: <ol><li>helyezze vissza a kulcstartót a régi bérlőhöz.</li><li>set Identity = None, majd vissza az Identity = SystemAssigned, ez törli, és újralétrehozza az identitást</li></ol><br>Megjegyzés: A bérlői áttelepítési eset korlátozott ismereteken alapul, a tényleges viselkedés tesztelésének és megerősítésének szükségessége később felülvizsgálható. |
+| CmkErrorVaultNem található | Alkalmazott egy ügyfél által kezelt kulcsot, de nem találja a kulcshoz társított kulcstartót.<br>Ha törölte a key vault, nem tudja helyreállítani az ügyfél által kezelt kulcs.  Ha áttelepítette a key vault egy másik bérlő, [lásd: Kulcstartó bérlői azonosító módosítása előfizetés áthelyezése után.](https://docs.microsoft.com/azure/key-vault/key-vault-subscription-move-fix) |   Nem, ha az ügyfél törölte a key vault.<br> Igen, ha a kulcstartó bérlői áttelepítésen ment keresztül, tegye a következők egyikét: <ol><li>helyezze vissza a kulcstartót a régi bérlőhöz.</li><li>set Identity = None, majd vissza az Identity = SystemAssigned, ez törli, és újralétrehozza az identitást</li></ol>|
 
 ## <a name="next-steps"></a>További lépések
 

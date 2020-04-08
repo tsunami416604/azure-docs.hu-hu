@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: terrylan
-ms.openlocfilehash: 45efaadf7d15fff290165fe831c45c0bc063db53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e50eb561bcbb924ea093722d6c61bbe51747b328
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73643803"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811268"
 ---
 # <a name="security-management-in-azure"></a>Biztonságkezelés az Azure-ban
 Az Azure-előfizetők több eszközről kezelhetik felhőkörnyezeteiket, például felügyeleti munkaállomásokról, fejlesztői PC-kről, és olyan jogosult végfelhasználói eszközökről is, amelyek feladatspecifikus engedélyekkel rendelkeznek. Egyes esetekben a felügyeleti feladatkörök ellátását olyan webalapú konzolok használatával végzik, mint például az [Azure Portal](https://azure.microsoft.com/features/azure-portal/). Más esetekben az Azure-hoz való közvetlen kapcsolat létesíthető virtuális magánhálózatokon (VPN), terminálszolgáltatásokon, ügyfél-alkalmazásprotokollokon, vagy (szoftveresen) az Azure Service Management API-n (SMAPI) keresztül. Továbbá az ügyfél-végpontok lehetnek vagy tartományhoz csatlakoztatottak, vagy pedig elkülönítettek és felügyelet nélküliek, mint például a táblagépek vagy az okostelefonok.
@@ -119,7 +119,7 @@ A távoli asztali átjáró egy házirendalapú RDP-proxyszolgáltatás, amely k
 A rendszergazdai munkaállomások felhőhasználatra való biztonságossá tétele általánosságban véve hasonlít bármilyen más, helyszíni munkaállomás esetében alkalmazott gyakorlathoz. Példa erre a minimalizált szerkezet és a korlátozó engedélyek. A felhőfelügyelet bizonyos egyedi aspektusai jobban hasonlítanak a távoli vagy izolált vállalatfelügyeletéihez. Ezek közé tartozik a hitelesítő adatok naplózása, a megnövelt biztonságú távelérés, valamint a fenyegetések észlelése és kezelése.
 
 ### <a name="authentication"></a>Hitelesítés
-Használhat Azure bejelentkezési korlátozásokat az olyan forrás IP-címek korlátozására, amelyek jogosultak a felügyeleti eszközökhöz hozzáférni és naplózás-hozzáférési kérést küldeni. Annak érdekében, hogy az Azure könnyebben azonosíthassa a felügyeleti ügyfeleket (munkaállomásokat és/vagy alkalmazásokat), mind a SMAPI-t (olyan ügyfelek által fejlesztett eszközök segítségével, mint a Windows PowerShell-parancsmagok), mind az Azure Portalt beállíthatja úgy, hogy az SSL-tanúsítványok mellett ügyféloldali felügyeleti tanúsítványokat is igényeljenek. Javasolt a többtényezős hitelesítés bevezetése a rendszergazdai hozzáférés esetében is.
+Használhat Azure bejelentkezési korlátozásokat az olyan forrás IP-címek korlátozására, amelyek jogosultak a felügyeleti eszközökhöz hozzáférni és naplózás-hozzáférési kérést küldeni. Annak érdekében, hogy az Azure azonosíthassa a felügyeleti ügyfeleket (munkaállomásokat és/vagy alkalmazásokat), konfigurálhatja az SMAPI-t (az ügyfél által fejlesztett eszközökön, például a Windows PowerShell-parancsmagokon keresztül) és az Azure Portalt is, hogy a TLS/SSL-tanúsítványok mellett ügyféloldali felügyeleti tanúsítványokat is telepíteni kell. Javasolt a többtényezős hitelesítés bevezetése a rendszergazdai hozzáférés esetében is.
 
 Egyes Azure-ra telepített alkalmazások vagy szolgáltatások saját hitelesítési mechanizmusokkal rendelkezhetnek mind a végfelhasználói, mind a rendszergazdai hozzáféréshez, míg mások az Azure AD előnyeit használják ki. Attól függően, hogy hitelesítő adatokat von össze Active Directory összevonási szolgáltatások (AD FS) segítségével, címtár-szinkronizálást használ, vagy csak a felhőben kezeli a felhasználói fiókokat, a [Microsoft Identity Manager](https://technet.microsoft.com/library/mt218776.aspx) használata segít az identitás-életciklusok erőforrások közötti kezelésében.
 
@@ -188,7 +188,7 @@ Ne feltételezze, hogy ha egy munkaállomás zárolva lett, más gyakori biztons
 
 | Nem ajánlott | Ajánlott |
 | --- | --- |
-| Ne küldjön e-mailben rendszergazdai hozzáféréshez használatos hitelesítő adatokat vagy más titkos adatokat (pl. SSL vagy felügyeleti tanúsítványokat). |Őrizze meg az adatok bizalmas mivoltát a fióknevek és jelszavak szóbeli közvetítésével (de ne tárolja őket hangpostán), végezze távolról az ügyfél-/kiszolgáló-tanúsítványok telepítését (titkosított munkameneten), védett hálózati megosztásról végezzen letöltéseket, illetve az adatokat személyesen, cserélhető adathordozókon tegye közzé. |
+| Ne írjon e-mail hitelesítő adatokat rendszergazdai hozzáféréshez vagy más titkos kulcsokhoz (például TLS/SSL vagy kezelési tanúsítványokhoz) |Őrizze meg az adatok bizalmas mivoltát a fióknevek és jelszavak szóbeli közvetítésével (de ne tárolja őket hangpostán), végezze távolról az ügyfél-/kiszolgáló-tanúsítványok telepítését (titkosított munkameneten), védett hálózati megosztásról végezzen letöltéseket, illetve az adatokat személyesen, cserélhető adathordozókon tegye közzé. |
 | - | Kezelje proaktívan a felügyeleti tanúsítvány-életciklusait. |
 | Ne tároljon titkosítatlan vagy nem kivonatolt fiókjelszavakat alkalmazástárolókban (mint például táblázatokban, SharePoint-webhelyeken vagy fájlmegosztásokon). |Hozzon létre biztonságfelügyeleti alapelveket és rendszer-megerősítési házirendeket, és alkalmazza őket a fejlesztői környezetében. |
 | - | Használjon [Enhanced Mitigation Experience Toolkit 5.5](https://technet.microsoft.com/security/jj653751) tanúsítványrögzítési szabályokat, hogy biztosítsa a megfelelő hozzáférést az Azure SSL-/TLS-helyekhez. |

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: cf9c79f608aa3ffd1137be41ff3348f62b890867
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8509af7829910bdda8bba3d63553e83626fe784
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198309"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804673"
 ---
 # <a name="drawing-tool-events"></a>Rajzeszköz-események
 
@@ -31,7 +31,7 @@ A következő kód bemutatja, hogyan működnek a Rajzeszközök modul eseménye
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Rajzeszközök eseményei" src="https://codepen.io/azuremaps/embed/dyPMRWo?height=500&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Rajzeszközök eseményei" src="https://codepen.io/azuremaps/embed/dyPMRWo?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Tekintse meg az Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>( ) <a href='https://codepen.io/azuremaps/pen/dyPMRWo'>Tollrajz eszközök eseményeit</a> a <a href='https://codepen.io'>CodePen webhelyen.</a>
 </iframe>
 
@@ -59,7 +59,7 @@ Ez a kód az alakzat területén belüli érdeklődési pontokat keresi, miután
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Rajzolás és keresés sokszögterületen" src="https://codepen.io/azuremaps/embed/eYmZGNv?height=500&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Rajzolás és keresés sokszögterületen" src="https://codepen.io/azuremaps/embed/eYmZGNv?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Tekintse meg a <a href='https://codepen.io/azuremaps/pen/eYmZGNv'>Tollrajzolást és a keresést a sokszögterületen</a> az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) segítségével a <a href='https://codepen.io'>CodePen webhelyen.</a>
 </iframe>
 
@@ -71,7 +71,7 @@ Az alábbi kód bemutatja, hogyan használhatók a rajzesemények egy mérőeszk
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Mérőeszköz" src="https://codepen.io/azuremaps/embed/RwNaZXe?height=500&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Mérőeszköz" src="https://codepen.io/azuremaps/embed/RwNaZXe?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Tekintse meg az Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>( ) <a href='https://codepen.io/azuremaps/pen/RwNaZXe'>Tollmérő eszközét</a> ( ) a <a href='https://codepen.io'>CodePen-en.</a>
 </iframe>
 

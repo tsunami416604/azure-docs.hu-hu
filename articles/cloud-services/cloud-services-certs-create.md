@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: 783343dd8877bdf18e783494960c3052c293cc7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 173f5c698ab44ea269995665bcbc33c726d4f03a
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79248137"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811463"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure Cloud Services – tanúsítványok áttekintése
 A tanúsítványokat az Azure-ban felhőszolgáltatásokhoz ([szolgáltatástanúsítványokhoz)](#what-are-service-certificates)és a felügyeleti API-val ([felügyeleti tanúsítványok)](#what-are-management-certificates)való hitelesítésre használják. Ez a témakör általános áttekintést nyújt mindkét tanúsítványtípusról, hogyan [hozhat létre](#create) és helyezhet i üzembe az Azure-ban.
@@ -55,7 +55,7 @@ Bármilyen rendelkezésre álló eszközzel létrehozhat önaláírt tanúsítv�
 * Kulcscsere (.pfx fájl) esetén készült.
 * A tulajdonos nevének meg kell egyeznie a felhőszolgáltatás eléréséhez használt tartománnyal.
 
-    > Nem szerezhet SSL-tanúsítványt a cloudapp.net (vagy bármely Azure-hoz kapcsolódó) tartományhoz; a tanúsítvány tulajdonosnevének meg kell egyeznie az alkalmazás eléréséhez használt egyéni tartománynévvel. Például **a contoso.net**nem **contoso.cloudapp.net**.
+    > Nem szerezhet TLS/SSL-tanúsítványt a cloudapp.net (vagy bármely Azure-hoz kapcsolódó) tartományhoz; a tanúsítvány tulajdonosnevének meg kell egyeznie az alkalmazás eléréséhez használt egyéni tartománynévvel. Például **a contoso.net**nem **contoso.cloudapp.net**.
 
 * Legalább 2048 bites titkosítás.
 * **Csak szolgáltatás:** Az ügyféloldali tanúsítványnak a *Személyes* tanúsítványtárolóban kell lennie.

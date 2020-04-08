@@ -1,18 +1,18 @@
 ---
 title: Importálásra támogatott URL-típusok - QnA Maker
-description: Ismerje meg, hogyan használják az URL-ek típusait a QnA-készletek importálásához és létrehozásához.
+description: Ismerje meg, hogyan használják az URL-típusokat a QnA-párok importálásához és létrehozásához.
 ms.topic: reference
 ms.date: 01/02/2020
-ms.openlocfilehash: cf2a02f55d7c95ff9b3f0231ea07a783d18b73cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c6c6c7ba19fe7be54733f45997134fddb56a6ba0
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651827"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804316"
 ---
 # <a name="urls-supported-for-importing-documents"></a>Dokumentumok importálásához támogatott URL-címek
 
-Ismerje meg, hogyan használják az URL-ek típusait a QnA-készletek importálásához és létrehozásához.
+Ismerje meg, hogyan használják az URL-típusokat a QnA-párok importálásához és létrehozásához.
 
 ## <a name="faq-urls"></a>GYIK URL-ek
 

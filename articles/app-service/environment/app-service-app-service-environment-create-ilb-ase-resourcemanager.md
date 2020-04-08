@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 1a0ec9465be3b714e90bfca6a15b60423d6065a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f05780610a2a6033b069721b143aca5e5efa6c35
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295579"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804520"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>ILB ASE létrehozása Azure Resource Manager-sablonokkal
 
@@ -28,8 +28,8 @@ Az App Service-környezetek nyilvános virtuális IP-cím helyett virtuális há
 Az ILB ASE létrehozásának automatizálása három lépésből áll:
 
 1. Először az alap ASE jön létre egy virtuális hálózat ban egy belső terheléselosztó címet használ, nem pedig egy nyilvános VIP.  Ennek a lépésnek a részeként egy gyökértartomány név van rendelve az ILB ASE-hez.
-2. Az ILB ASE létrehozása után a rendszer ssl-tanúsítványt tölt fel.  
-3. A feltöltött SSL-tanúsítvány "alapértelmezett" SSL-tanúsítványként kifejezetten az ILB ASE-hez van rendelve.  Ez az SSL-tanúsítvány az ILB ASE-n lévő alkalmazások SSL-forgalmára lesz használva, amikor az `https://someapp.mycustomrootcomain.com`alkalmazásokat az ASE-hez rendelt közös gyökértartomány (pl. ) használatával címezik.
+2. Az ILB ASE létrehozása után a rendszer feltölt egy TLS/SSL tanúsítványt.  
+3. A feltöltött TLS/SSL tanúsítvány "alapértelmezett" TLS/SSL tanúsítványként kifejezetten az ILB ASE-hez van rendelve.  Ezt a TLS/SSL tanúsítványt az ILB ASE-n lévő alkalmazásokra irányuló TLS-forgalomhoz fogják használni, amikor `https://someapp.mycustomrootcomain.com`az alkalmazásokat az ASE-hez rendelt közös gyökértartomány (pl. ) használatával címezik.
 
 ## <a name="creating-the-base-ilb-ase"></a>Az alap ILB ASE létrehozása
 Egy példa az Azure Resource Manager-sablonra és a hozzá [here][quickstartilbasecreate]tartozó paraméterek fájljára, itt érhetők el a GitHubon.
@@ -49,17 +49,17 @@ Miután az *azuredeploy.parameters.json* fájl ki lett töltve egy ILB ASE-hez, 
 
 Az Azure Resource Manager sablon elküldése után néhány órát vesz igénybe az ILB ASE létrehozása.  A létrehozás befejezése után az ILB ASE megjelenik a portál felhasználói felületén az alkalmazásszolgáltatás-környezetek listájában az üzembe helyezést kiváltó előfizetéshez.
 
-## <a name="uploading-and-configuring-the-default-ssl-certificate"></a>A „Default” (Alapértelmezett) SSL-tanúsítvány feltöltése és konfigurálása
-Az ILB ASE létrehozása után az ASE-hez ssl-tanúsítványt kell társítani az alkalmazásokhoz való SSL-kapcsolatok létrehozásához használt "alapértelmezett" SSL-tanúsítványként.  Ha az ASE alapértelmezett DNS-utótagja *internal-contoso.com,* a feltételezett Contoso Corporation példával folytatva, akkor a *https://some-random-app.internal-contoso.com* kapcsolathoz **.internal-contoso.com.* 
+## <a name="uploading-and-configuring-the-default-tlsssl-certificate"></a>Az "Alapértelmezett" TLS/SSL tanúsítvány feltöltése és konfigurálása
+Az ILB ASE létrehozása után az ASE-hez tkell társítani egy TLS/SSL tanúsítványt, mint az alkalmazásokhoz való TLS/SSL-kapcsolatok létrehozásához használt "alapértelmezett" TLS/SSL tanúsítványt.  Ha az ASE alapértelmezett DNS-utótagja *internal-contoso.com,* akkor a *https://some-random-app.internal-contoso.com* kapcsolathoz a **.internal-contoso.com*értékre érvényes TLS/SSL-tanúsítvány szükséges. 
 
-Az érvényes SSL-tanúsítványok beszerzésének számos módja van, beleértve a belső hitelesítésszolgáltatót, a külső kibocsátótól származó tanúsítvány megvásárlását és az önaláírt tanúsítvány használatát.  Az SSL-tanúsítvány forrásától függetlenül az alábbi tanúsítványattribútumokat megfelelően kell konfigurálni:
+Az érvényes TLS/SSL-tanúsítvány beszerzésének számos módja van, beleértve a belső hitelesítésszolgáltatót, a külső kibocsátótól származó tanúsítvány megvásárlását és az önaláírt tanúsítvány használatát.  A TLS/SSL tanúsítvány forrásától függetlenül a következő tanúsítványattribútumokat kell megfelelően konfigurálni:
 
 * *Tárgy*: Ezt az attribútumot **.your-root-domain-here.com*
-* *Tulajdonos alternatív neve:* Ennek az attribútumnak tartalmaznia kell a **.your-root-domain-here.com*és a **.scm.your-root-domain-here.com*.  A második bejegyzés oka az, hogy az egyes alkalmazásokhoz társított SSL-kapcsolat az egyes alkalmazásokhoz társított SSL-kapcsolat *a your-app-name.scm.your-root-domain-here.com*űrlap címével történik.
+* *Tulajdonos alternatív neve:* Ennek az attribútumnak tartalmaznia kell a **.your-root-domain-here.com*és a **.scm.your-root-domain-here.com*.  A második bejegyzés oka az, hogy az egyes alkalmazásokhoz társított SCM/Kudu webhelyhez tartozó TLS-kapcsolatok az űrlap *your-app-name.scm.your-root-domain-here.com*címével történnek.
 
-Az érvényes SSL-tanúsítvánnyal két további előkészítő lépésre van szükség.  Az SSL-tanúsítványt .pfx fájlként kell konvertálni/menteni.  Ne feledje, hogy a .pfx fájlnak tartalmaznia kell az összes köztes és főtanúsítványt, és jelszóval is biztosítani kell.
+Az érvényes TLS/SSL tanúsítvánnyal két további előkészítő lépésre van szükség.  A TLS/SSL tanúsítványt .pfx fájlként kell konvertálni/menteni.  Ne feledje, hogy a .pfx fájlnak tartalmaznia kell az összes köztes és főtanúsítványt, és jelszóval is biztosítani kell.
 
-Ezután a keletkező .pfx fájlt base64 karakterláncddddddákká kell konvertálni, mert az SSL-tanúsítvány feltöltése egy Azure Resource Manager-sablon használatával történik.  Mivel az Azure Resource Manager-sablonok szöveges fájlok, a .pfx fájlt base64 karakterláncddddddákká kell konvertálni, hogy a sablon paramétereként szerepelhessen.
+Ezután a keletkező .pfx fájlt base64 karakterláncddddddákká kell konvertálni, mert a TLS/SSL-tanúsítvány feltöltése egy Azure Resource Manager-sablon használatával történik.  Mivel az Azure Resource Manager-sablonok szöveges fájlok, a .pfx fájlt base64 karakterláncddddddákká kell konvertálni, hogy a sablon paramétereként szerepelhessen.
 
 Az alábbi Powershell-kódrészlet egy példát mutat be egy önaláírt tanúsítvány létrehozására, a tanúsítvány .pfx fájlként való exportálására, a .pfx fájl base64 kódolású karakterláncra történő konvertálására, majd a base64 kódolású karakterlánc külön fájlba mentésére.  A Powershell-kódot a base64 kódoláshoz a [Powershell Scripts Blogból][examplebase64encoding]adaptálták.
 
@@ -75,7 +75,7 @@ Az alábbi Powershell-kódrészlet egy példát mutat be egy önaláírt tanús�
     $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
     $fileContentEncoded | set-content ($fileName + ".b64")
 
-Miután az SSL-tanúsítvány sikeresen létrejött, és egy base64 kódolású karakterláncra konvertált, a példa Azure Resource Manager sablon a GitHubon [az alapértelmezett SSL-tanúsítvány konfigurálásához][configuringDefaultSSLCertificate] használható.
+Miután a TLS/SSL-tanúsítvány sikeresen létrejött, és egy base64 kódolású karakterlánctá konvertált, a githubon az [alapértelmezett TLS/SSL-tanúsítvány konfigurálására][configuringDefaultSSLCertificate] szolgáló példa Azure Resource Manager-sablon használható.
 
 Az *azuredeploy.parameters.json* fájl paraméterei az alábbiak:
 
@@ -84,7 +84,7 @@ Az *azuredeploy.parameters.json* fájl paraméterei az alábbiak:
 * *pfxBlobString*: A .pfx fájl based64 kódolású karakterlánc-ábrázolása.  A korábban bemutatott kódrészlet használatával másolja az "exportedcert.pfx.b64" karakterláncot, és illessze be a *pfxBlobString* attribútum értékeként.
 * *jelszó*: A .pfx fájl védelméhez használt jelszó.
 * *tanúsítványThumbprint*: A tanúsítvány ujjlenyomata.  Ha ezt az értéket a Powershellből (pl. *$certificate. Ujjlenyomat* a korábbi kódrészletből), használhatja az értéket a hogy-van.  Ha azonban az értéket a Windows tanúsítvány párbeszédpaneléről másolja, ne felejtse el kitépni a felesleges szóközöket.  A *tanúsítványThumbprint* kell kinéznie: AF3143EB61D43F6727842115BB7F17BBCECAECAE
-* *certificateName*: A tanúsítvány identitásához használt, saját maga által választott rövid karakterlánc-azonosító.  A név az SSL-tanúsítványt képviselő *Microsoft.Web/certificates* entitás egyedi Azure Resource Manager-azonosítójának részeként használatos.  A **névnek** a következő utótaggal kell végződnie: \_yourASENameHere_InternalLoadBalancingASE.  Ezt az utótagot a portál annak jelzésére használja, hogy a tanúsítványt az ILB-kompatibilis ASE védelmére használják.
+* *certificateName*: A tanúsítvány identitásához használt, saját maga által választott rövid karakterlánc-azonosító.  A név a TLS/SSL-tanúsítványt képviselő *Microsoft.Web/certificates* entitás egyedi Azure Resource Manager-azonosítójának részeként használatos.  A **névnek** a következő utótaggal kell végződnie: \_yourASENameHere_InternalLoadBalancingASE.  Ezt az utótagot a portál annak jelzésére használja, hogy a tanúsítványt az ILB-kompatibilis ASE védelmére használják.
 
 Az *azuredeploy.parameters.json* rövidített példája az alábbiakban látható:
 
@@ -113,7 +113,7 @@ Az *azuredeploy.parameters.json* rövidített példája az alábbiakban láthat�
          }
     }
 
-Miután az *azuredeploy.parameters.json* fájl kilett töltve, az alapértelmezett SSL-tanúsítvány konfigurálható a következő Powershell kódrészlet használatával.  Módosítsa a fájl PATH-ok, hogy megfeleljen, ahol az Azure Resource Manager sablonfájlok találhatók a gépen.  Ne felejtse el megadni a saját értékeit az Azure Resource Manager központi telepítési nevéhez és az erőforráscsoport nevéhez.
+Miután az *azuredeploy.parameters.json* fájl kilett töltve, az alapértelmezett TLS/SSL tanúsítvány a következő Powershell kódrészlet használatával konfigurálható.  Módosítsa a fájl PATH-ok, hogy megfeleljen, ahol az Azure Resource Manager sablonfájlok találhatók a gépen.  Ne felejtse el megadni a saját értékeit az Azure Resource Manager központi telepítési nevéhez és az erőforráscsoport nevéhez.
 
     $templatePath="PATH\azuredeploy.json"
     $parameterPath="PATH\azuredeploy.parameters.json"
@@ -122,9 +122,9 @@ Miután az *azuredeploy.parameters.json* fájl kilett töltve, az alapértelmeze
 
 Az Azure Resource Manager-sablon elküldése után az ASE előtér-alapú körülbelül negyven percet vesz igénybe a módosítás alkalmazása.  Ha például egy alapértelmezett méretű ASE két előtér-végződést használ, a sablon körülbelül egy óra és húsz perc alatt fejeződik be.  Asablon futtatása közben az ASE nem lesz képes méretezve.  
 
-A sablon befejezése után az ILB ASE-n lévő alkalmazások HTTPS-kapcsolaton keresztül érhetők el, és a kapcsolatok az alapértelmezett SSL-tanúsítvánnyal lesznek biztosítva.  Az alapértelmezett SSL-tanúsítvány akkor lesz használva, ha az ILB ASE-n lévő alkalmazásokat az alkalmazásnév és az alapértelmezett állomásnév kombinációjával kezelia.  Például *https://mycustomapp.internal-contoso.com* az alapértelmezett SSL tanúsítványt használja a **.internal-contoso.com*.
+A sablon befejezése után az ILB ASE-n lévő alkalmazások HTTPS-kapcsolaton keresztül érhetők el, és a kapcsolatok az alapértelmezett TLS/SSL tanúsítvánnyal lesznek biztosítva.  Az alapértelmezett TLS/SSL-tanúsítvány akkor lesz használva, ha az ILB ASE-n lévő alkalmazásokat az alkalmazásnév és az alapértelmezett állomásnév kombinációjával kezeli a rendszer.  Például *https://mycustomapp.internal-contoso.com* az alapértelmezett TLS/SSL tanúsítványt használná a **.internal-contoso.com*.
 
-A nyilvános több-bérlős szolgáltatáson futó alkalmazásokhoz hasonlóan azonban a fejlesztők egyéni állomásneveket is konfigurálhatnak az egyes alkalmazásokhoz, majd egyedi SNI SSL tanúsítványkötéseket konfigurálhatnak az egyes alkalmazásokhoz.  
+A nyilvános több-bérlős szolgáltatáson futó alkalmazásokhoz hasonlóan azonban a fejlesztők egyéni gazdagépneveket is konfigurálhatnak az egyes alkalmazásokhoz, majd egyedi SNI TLS/SSL tanúsítványkötéseket konfigurálhatnak az egyes alkalmazásokhoz.  
 
 ## <a name="getting-started"></a>Első lépések
 Az App Service-környezetek ismerkedése az [App Service-környezet bemutatása című témakörben](app-service-app-service-environment-intro.md)

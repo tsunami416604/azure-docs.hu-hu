@@ -1,15 +1,16 @@
 ---
-title: Statikus kötet létrehozása több podhoz az Azure Kubernetes-szolgáltatásban (AKS)
+title: Azure-fájlok megosztásának manuális létrehozása
+titleSuffix: Azure Kubernetes Service
 description: Megtudhatja, hogyan hozhat létre manuálisan kötetet az Azure Files szolgáltatással több egyidejű podtal való használatra az Azure Kubernetes-szolgáltatásban (AKS)
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 084ab5cd6736c9148bcab1faf048d3d9081855d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 412b7158ea366eefb1c3e9c1d2586d54c316aa6c
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77596402"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803449"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Kötet manuális létrehozása és használata az Azure Files megosztásával az Azure Kubernetes szolgáltatásban (AKS)
 
@@ -132,7 +133,7 @@ Volumes:
 
 ## <a name="mount-options"></a>Csatlakoztatási beállítások
 
-A *fileMode* és *dirMode* alapértelmezett értéke *0755* a Kubernetes 1.9.1-es és újabb verzióinál. Ha fürtöt használ a Kuberetes 1.8.5-ös vagy újabb verziójával, és statikusan hozza létre az állandó kötetobjektumet, a csatlakoztatási beállításokat meg kell adni a *PersistentVolume* objektumon. A következő példa *0777-et*állít be:
+A *fileMode* és *dirMode* alapértelmezett értéke *0755* a Kubernetes 1.9.1-es és újabb verzióinál. Ha egy fürt et használ a Kubernetes 1.8.5-ös vagy újabb verziójával, és statikusan hozza létre az állandó kötetobjektumet, a csatlakoztatási beállításokat meg kell adni az *PersistentVolume* objektumon. A következő példa *0777-et*állít be:
 
 ```yaml
 apiVersion: v1
@@ -160,7 +161,7 @@ spec:
 
 Ha az 1.8.0-1.8.4-es verzióból álló fürtöt használja, biztonsági környezet et lehet megadni úgy, hogy a *runAsUser* értéke *0.* A Pod biztonsági környezetről a [Biztonsági környezet konfigurálása][kubernetes-security-context]című témakörben talál további információt.
 
-A csatlakoztatási beállítások frissítéséhez hozzon létre egy *azurefile-mount-options-pv.yaml* fájlt *persistentvolume .* Példa:
+A csatlakoztatási beállítások frissítéséhez hozzon létre egy *azurefile-mount-options-pv.yaml* fájlt *persistentvolume .* Például:
 
 ```yaml
 apiVersion: v1
@@ -186,7 +187,7 @@ spec:
   - nobrl
 ```
 
-Hozzon létre egy *azurefile-mount-options-pvc.yaml* fájlt egy *PersistentVolumeClaim* használatával, amely a *PersistentVolume parancsot*használja. Példa:
+Hozzon létre egy *azurefile-mount-options-pvc.yaml* fájlt egy *PersistentVolumeClaim* használatával, amely a *PersistentVolume parancsot*használja. Például:
 
 ```yaml
 apiVersion: v1
@@ -218,7 +219,7 @@ NAME        STATUS   VOLUME      CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 azurefile   Bound    azurefile   5Gi        RWX            azurefile      5s
 ```
 
-Frissítse a tároló specifikációját a *PersistentVolumeClaim-re* való hivatkozáshoz, és frissítse a podot. Példa:
+Frissítse a tároló specifikációját a *PersistentVolumeClaim-re* való hivatkozáshoz, és frissítse a podot. Például:
 
 ```yaml
 ...

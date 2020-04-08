@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.openlocfilehash: 75890efebc42b74c56fb95ed1803152b516588b9
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 55c6d374c8a3c308323c0d003726492477e33ff8
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385214"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811238"
 ---
 # <a name="develop-a-secure-web-app"></a>Biztonságos webalkalmazások fejlesztése
 
@@ -95,7 +95,7 @@ Az Azure-ban számos módon telepíthet alkalmazásokat, többek között:
 - Azure Resource Manager-sablonok
 - PowerShell
 - Azure CLI
-- Azure portál
+- Azure Portal
 - Azure DevOps
 
 Ez az alkalmazás használt:
@@ -108,7 +108,7 @@ Ez az alkalmazás használt:
 
 ### <a name="network"></a>Network (Hálózat)
 
-A mintaalkalmazás végpontok közötti SSL-titkosítást használ a hálózatba beáramló és a hálózatból kiáramló, a tranzitadatokhoz. Az átjáró önaláírt tanúsítvánnyal van konfigurálva.
+A mintaalkalmazás végpontok közötti TLS/SSL titkosítást használ a hálózatba beáramló és a hálózatból kiáramló, a tranzitadatokhoz. Az átjáró önaláírt tanúsítvánnyal van konfigurálva.
 > [!IMPORTANT]
 > Ebben az bemutatóban önaláírt tanúsítvány t használ. Éles környezetben a tanúsítványokat ellenőrzött hitelesítésszolgáltatótól (CA) kell beszereznie.
 
@@ -363,7 +363,7 @@ END;
 $$ LANGUAGE PLPGSQL;
 ```
 
-Az SSL- és hitelesítésszolgáltató (CA) postgreSQL-ellenőrzésének beállításáról az [SSL-kapcsolat konfigurálása az Azure Database for PostgreSQL alkalmazásban](/azure/postgresql/concepts-ssl-connection-security)című témakörben talál további információt.
+A TLS és a Hitelesítésszolgáltató (CA) PostgreSQL-ellenőrzés ének beállításáról a [TLS-kapcsolat konfigurálása az Azure Database for PostgreSQL alkalmazásban](/azure/postgresql/concepts-ssl-connection-security)című témakörben talál további információt.
 
 A tárolóban egy főtanúsítvány is található. A tanúsítvány megszerzése érdekében tett lépések a következők:
 
@@ -375,7 +375,7 @@ A tárolóban egy főtanúsítvány is található. A tanúsítvány megszerzés
    openssl x509 -inform DER -in BaltimoreCyberTrustRoot.crt -text -out root.crt
    ```
 
-Tudjon meg többet arról, hogyan kell beállítani SSL biztonság PostgreSQL itt [konfigurálása SSL Connection Security](/azure/postgresql/concepts-ssl-connection-security).
+Tudjon meg többet arról, hogyan kell beállítani TLS biztonság PostgreSQL itt [konfigurálása TLS Connection Security](/azure/postgresql/concepts-ssl-connection-security).
 
 #### <a name="deploy-azure-web-apps-on-linux"></a>Azure Web Apps telepítése Linuxon
 

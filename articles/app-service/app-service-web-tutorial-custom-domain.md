@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 06/06/2019
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 2e62062fabfbb7c320bbeaf473979ccef96b0ba3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: adc9b60ce1c31076a91ec44b9656752b464e024d
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80047212"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811789"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Oktatóanyag: Meglévő egyéni DNS-név hozzárendelése az Azure App Service-hez
 
@@ -151,7 +151,7 @@ Eltarthat egy ideig, amíg az új egyéni tartomány megjelenik az alkalmazás *
 ![CNAME rekord hozzáadva](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
 > [!NOTE]
-> Az egyéni tartomány **nem biztonságos** címkéje azt jelenti, hogy még nincs SSL-tanúsítványhoz kötve, és a böngészőből az egyéni tartományba érkező HTTPS-kérelmek a böngészőtől függően hibaüzenetet vagy figyelmeztetést kapnak. SSL-kötés hozzáadásához olvassa [el Az egyéni DNS-név biztonságossá tétele SSL-kötéssel az Azure App Service szolgáltatásban című témakört.](configure-ssl-bindings.md)
+> Az egyéni tartomány **nem biztonságos** címkéje azt jelenti, hogy még nincs TLS/SSL-tanúsítványhoz kötve, és a böngészőből az egyéni tartományba érkező HTTPS-kérelmek a böngészőtől függően hibaüzenetet vagy figyelmeztetést kapnak. TLS-kötés hozzáadásához olvassa [el Az egyéni DNS-név biztonságossá tétele TLS/SSL-kötéssel az Azure App Service szolgáltatásban című témakört.](configure-ssl-bindings.md)
 
 Ha kihagyott egy lépést, vagy korábban valamit elgépelt, egy ellenőrzési hiba látható a lap alján.
 
@@ -235,7 +235,7 @@ Eltarthat egy ideig, amíg az új egyéni tartomány megjelenik az alkalmazás *
 ![A rekord hozzáadva](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
 > [!NOTE]
-> Az egyéni tartomány **nem biztonságos** címkéje azt jelenti, hogy még nincs SSL-tanúsítványhoz kötve, és a böngészőből az egyéni tartományba érkező HTTPS-kérelmek a böngészőtől függően hibaüzenetet vagy figyelmeztetést kapnak. SSL-kötés hozzáadásához olvassa [el Az egyéni DNS-név biztonságossá tétele SSL-kötéssel az Azure App Service szolgáltatásban című témakört.](configure-ssl-bindings.md)
+> Az egyéni tartomány **nem biztonságos** címkéje azt jelenti, hogy még nincs TLS/SSL-tanúsítványhoz kötve, és a böngészőből az egyéni tartományba érkező HTTPS-kérelmek a böngészőtől függően hibaüzenetet vagy figyelmeztetést kapnak. TLS-kötés hozzáadásához olvassa [el Az egyéni DNS-név biztonságossá tétele TLS/SSL-kötéssel az Azure App Service szolgáltatásban című témakört.](configure-ssl-bindings.md)
 
 Ha kihagyott egy lépést, vagy korábban valamit elgépelt, egy ellenőrzési hiba látható a lap alján.
 
@@ -290,7 +290,7 @@ Az **+** ikon ismét kiválasztva egy másik, a helyettesítő tartománynak meg
 ![CNAME rekord hozzáadva](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
 
 > [!NOTE]
-> Az egyéni tartomány hoz tartozó **Megjegyzés biztonságos** címkéje azt jelenti, hogy még nincs SSL-tanúsítványhoz kötve, és a böngészőből az egyéni tartományba érkező HTTPS-kérelmek a böngészőtől függően hibaüzenetet vagy figyelmeztetést kapnak. SSL-kötés hozzáadásához olvassa [el Az egyéni DNS-név biztonságossá tétele SSL-kötéssel az Azure App Service szolgáltatásban című témakört.](configure-ssl-bindings.md)
+> Az egyéni tartomány hoz tartozó **Megjegyzés biztonságos** címkéje azt jelenti, hogy még nincs TLS/SSL-tanúsítványhoz kötve, és a böngészőből az egyéni tartományba érkező HTTPS-kérelmek a böngészőtől függően hibaüzenetet vagy figyelmeztetést kapnak. TLS-kötés hozzáadásához olvassa [el Az egyéni DNS-név biztonságossá tétele TLS/SSL-kötéssel az Azure App Service szolgáltatásban című témakört.](configure-ssl-bindings.md)
 
 ## <a name="test-in-browser"></a>Tesztelés a böngészőben
 
@@ -366,7 +366,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Alapértelmezett URL-cím átirányítása egyéni könyvtárra
 > * A tartományleképezés automatizálása szkriptekkel
 
-Lépjen a következő oktatóanyaghoz, amelyből megtudhatja, hogyan köthet egyéni SSL-tanúsítványt webalkalmazásokhoz.
+A következő oktatóanyagra lépve megtudhatja, hogyan köthet egyéni TLS/SSL-tanúsítványt egy webalkalmazáshoz.
 
 > [!div class="nextstepaction"]
-> [Egyéni DNS-név védelme SSL-kötéssel az Azure App Service-ben](configure-ssl-bindings.md)
+> [Egyéni DNS-név biztonságossá tétele TLS/SSL-kötéssel az Azure App Service-ben](configure-ssl-bindings.md)

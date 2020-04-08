@@ -2,13 +2,13 @@
 title: 800 darabszámkorlát nélküli erőforrások
 description: Felsorolja az Azure-erőforrás-típusok, amelyek több mint 800 példányegy erőforráscsoportban.
 ms.topic: conceptual
-ms.date: 01/30/2020
-ms.openlocfilehash: 735cad0bfa936c41f603e42bdb9be77a1562cc1f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: 8644bec1a68acebff18cf83d17acb014784dc964
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76937938"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804775"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Erőforrás-csoportokonként legfeljebb 800 példányra korlátozódó erőforrások
 
@@ -26,7 +26,6 @@ Egyes erőforrástípusok esetén kapcsolatba kell lépnie az ügyfélszolgálat
 * Regisztrációk
 * regisztrációk/customerSubscriptions
 * regisztrációk/termékek
-* ellenőrző billentyűk
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
@@ -35,6 +34,9 @@ Egyes erőforrástípusok esetén kapcsolatba kell lépnie az ügyfélszolgálat
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
 * Lemezek
+* Galériák
+* galériák/képek
+* galériák/képek/verziók
 * images
 * pillanatképek
 * virtualMachines
@@ -67,6 +69,11 @@ Egyes erőforrástípusok esetén kapcsolatba kell lépnie az ügyfélszolgálat
 * kiszolgálócsoportok
 * Szerverek
 * kiszolgálókv2
+* singleServers (egyes kiszolgálók)
+
+## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
+
+* ütemezések – Alapértelmezés szerint legfeljebb 800 példányra korlátozódik. Ez a korlát növelhető a támogatási szolgálathoz való felvételsel.
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
 
@@ -90,7 +97,7 @@ Egyes erőforrástípusok esetén kapcsolatba kell lépnie az ügyfélszolgálat
 * softwareUpdateProfile
 * szoftverfrissítések
 
-## <a name="microsoftinsights"></a>Microsoft.Insights
+## <a name="microsoftinsights"></a>microsoft.insights
 
 * metrikus riasztások
 

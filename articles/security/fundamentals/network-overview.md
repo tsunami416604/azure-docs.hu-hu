@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 2293618b0685fe71ae553a95797fe8bfe1fe968c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 496ee1bc97f6b72e09a62ae3491af7ccc7328583
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75749935"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811105"
 ---
 # <a name="azure-network-security-overview"></a>Az Azure hálózati biztonságának áttekintése
 
@@ -160,7 +160,7 @@ Előfordulhat, hogy engedélyezni szeretné az egyes fejlesztőknek vagy művele
 
 A pont-hely VPN kapcsolat lehetővé teszi, hogy a felhasználó és a virtuális hálózat közötti privát és biztonságos kapcsolatot hozzon létre. A VPN-kapcsolat létrehozásakor a felhasználó RDP vagy SSH a VPN-kapcsolaton keresztül a virtuális hálózat bármely virtuális gépére beviheti. (Ez azt feltételezi, hogy a felhasználó hitelesítheti magát, és jogosult.) A pont-hely VPN támogatja:
 
-* Secure Socket Tunneling Protocol (SSTP), egy saját SSL-alapú VPN protokoll. Az SSL VPN-megoldás áthatolhat a tűzfalakon, mivel a legtöbb tűzfal megnyitja a 443-as TCP-portot, amelyet az SSL használ. Az SSTP csak Windows-eszközökön támogatott. Az Azure támogatja a Windows összes SSTP-vel (Windows 7 és újabb) verzióit.
+* Secure Socket Tunneling Protocol (SSTP), egy saját SSL-alapú VPN protokoll. Az SSL VPN-megoldás áthatolhat a tűzfalakon, mivel a legtöbb tűzfal megnyitja a 443-as TCP-portot, amelyet a TLS/SSL használ. Az SSTP csak Windows-eszközökön támogatott. Az Azure támogatja a Windows összes SSTP-vel (Windows 7 és újabb) verzióit.
 
 * IKEv2 VPN, egy szabványalapú IPsec VPN-megoldás. Az IKEv2 VPN segítségével Macről is lehetségessé válik a csatlakozás (OSX 10.11-es vagy újabb verziók használata esetén).
 
@@ -232,7 +232,7 @@ A webalapú szolgáltatásokat futtató szervezetek gyakran vágynak egy HTTP-al
 Az Azure Application Gateway HTTP-alapú terheléselosztást biztosít a webalapú szolgáltatásokhoz. Az Application Gateway támogatja:
 
 * Cookie-alapú munkamenet-affinitás. Ez a funkció biztosítja, hogy a terheléselosztó mögött ikiszolgálók egyikéhez létesített kapcsolatok érintetlenek maradnak az ügyfél és a kiszolgáló között. Ez biztosítja a tranzakciók stabilitását.
-* SSL tehermentesítés. Amikor egy ügyfél csatlakozik a terheléselosztóhoz, a munkamenet a HTTPS (SSL) protokoll használatával lesz titkosítva. A teljesítmény növelése érdekében azonban a HTTP (titkosítatlan) protokoll segítségével csatlakozhat a terheléselosztó és a terheléselosztó mögötti webkiszolgáló között. Ezt "SSL-kiszervezésnek" nevezzük, mivel a terheléselosztó mögött álló webkiszolgálók nem tapasztalják a titkosítással járó processzorterhelést. A webkiszolgálók ezért gyorsabban tudják kiszolgálni a kérelmeket.
+* TLS tehermentesítés. Amikor egy ügyfél csatlakozik a terheléselosztóhoz, a munkamenet a HTTPS (TLS) protokoll használatával lesz titkosítva. A teljesítmény növelése érdekében azonban a HTTP (titkosítatlan) protokoll segítségével csatlakozhat a terheléselosztó és a terheléselosztó mögötti webkiszolgáló között. Ezt nevezik "TLS-kiszervezésnek", mivel a terheléselosztó mögött imitátor mögött álló webkiszolgálók nem tapasztalják a titkosítással járó processzorterhelést. A webkiszolgálók ezért gyorsabban tudják kiszolgálni a kérelmeket.
 * URL-alapú tartalom-útválasztás. Ez a funkció lehetővé teszi, hogy a terheléselosztó döntsön arról, hogy hol továbbítsa a kapcsolatokat a cél URL-cím alapján. Ez sokkal nagyobb rugalmasságot biztosít, mint azok a megoldások, amelyek az IP-címek alapján hozzák meg a terheléselosztási döntéseket.
 
 További információ:
@@ -336,7 +336,7 @@ További információ:
 
 ## <a name="azure-front-door"></a>Azure Front Door
 
-Az Azure Bejárati ajtó szolgáltatás lehetővé teszi a webes forgalom globális útválasztásának meghatározását, kezelését és figyelését. Optimalizálja a forgalom útvonalát a legjobb teljesítmény és a magas rendelkezésre állás érdekében. Az Azure Front Doorral egyéni webalkalmazási tűzfalszabályok (WAF-szabályok) készítésével hozzáférés-vezérlést valósíthat meg, amellyel megvédheti a HTTP/HTTPS-számítási feladatait attól, hogy feltörjék őket az ügyféloldali IP-cím, országkód és HTTP-paraméterek alapján. Emellett a Bejárati ajtó lehetővé teszi a sebességkorlátozó szabályok létrehozását a rosszindulatú robotforgalom elleni küzdelemhez, magában foglalja az SSL-kiszervezést és a HTTP/HTTPS-kérelem, az alkalmazásréteg-feldolgozás.
+Az Azure Bejárati ajtó szolgáltatás lehetővé teszi a webes forgalom globális útválasztásának meghatározását, kezelését és figyelését. Optimalizálja a forgalom útvonalát a legjobb teljesítmény és a magas rendelkezésre állás érdekében. Az Azure Front Doorral egyéni webalkalmazási tűzfalszabályok (WAF-szabályok) készítésével hozzáférés-vezérlést valósíthat meg, amellyel megvédheti a HTTP/HTTPS-számítási feladatait attól, hogy feltörjék őket az ügyféloldali IP-cím, országkód és HTTP-paraméterek alapján. Emellett a Bejárati ajtó lehetővé teszi a sebességkorlátozó szabályok létrehozását a rosszindulatú robotforgalom elleni küzdelemhez, magában foglalja a TLS-kiszervezést és a HTTP/HTTPS-kérelem, az alkalmazásréteg-feldolgozást.
 
 Maga a Front Door platform alapszintű Azure DDoS Protectionnel rendelkezik. További védelemként engedélyezheti a virtuális hálózatain a Standard szintű Azure DDoS Protectiont, így automatikus finomhangolással és kárenyhítéssel megvédheti erőforrásait a hálózati rétegből érkező (TCP/UDP) támadásokkal szemben. Bejárati ajtó egy réteg 7 fordított proxy, ez csak lehetővé teszi a webes forgalom áthaladnak a back end szerverek és blokkolja más típusú forgalom alapértelmezés szerint.
 

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 29d837446960b7535b26284efdfab7a1c59ea968
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fece1155d2f707f11dda9f3896bd8a08deff1557
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80132498"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802383"
 ---
 # <a name="http-features"></a>HTTP-szolgáltatások
 
@@ -41,11 +41,11 @@ Tekintse meg a [HTTP API-k cikkteljes](durable-functions-http-api.md) leírásá
 
 A [vezénylési ügyfélkötés](durable-functions-bindings.md#orchestration-client) elérhetővé teszi az API-kat, amelyek kényelmes HTTP-válasz hasznos adatokat generálhatnak. Létrehozhat például egy adott vezénylési példány felügyeleti API-kra mutató hivatkozásokat tartalmazó választ. A következő példák egy HTTP-trigger függvényt mutatnak be, amely bemutatja, hogyan használhatja ezt az API-t egy új vezénylési példányhoz:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **index.js**
 
@@ -114,7 +114,7 @@ A Durable Functions 2.0-s verziójával kezdve a vezénylési műveletek natív 
 
 A következő példakód egy kimenő HTTP-kérelmet készítő orchestrator függvényt jelenít meg:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CheckSiteAvailable")]
@@ -134,7 +134,7 @@ public static async Task CheckSiteAvailable(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -172,7 +172,7 @@ A Durable Functions natív módon támogatja az Azure Active Directory (Azure AD
 
 A következő kód egy . A függvény hitelesített hívásokat kezdeményez a virtuális gépek újraindításához az Azure Resource Manager [REST API](https://docs.microsoft.com/rest/api/compute/virtualmachines)használatával.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("RestartVm")]
@@ -198,7 +198,7 @@ public static async Task RunOrchestrator(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -232,7 +232,7 @@ Futásidőben a konfigurált jogkivonat-forrás automatikusan egy OAuth 2.0-s ho
 * Jogkivonatokat soha nem tárolja a tartós vezénylési állapotban.
 * A tokenek beszerzésének kezeléséhez nem kell kódot írnia.
 
-Az [előre lefordított C# RestartVMs mintában](https://github.com/Azure/azure-functions-durable-extension/blob/v2/samples/v2/precompiled/RestartVMs.cs)találhat egy teljesebb példát.
+Az [előre lefordított C# RestartVMs mintában](https://github.com/Azure/azure-functions-durable-extension/blob/dev/samples/precompiled/RestartVMs.cs)találhat egy teljesebb példát.
 
 A felügyelt identitások nem korlátozódnak az Azure erőforrás-kezelésére. A felügyelt identitások segítségével hozzáférhet bármely API-hoz, amely elfogadja az Azure AD tulajdonosi jogkivonatokat, beleértve a Microsoft Azure-szolgáltatásait és a partnerek től származó webalkalmazásokat. A partner webalkalmazása akár egy másik függvényalkalmazás is lehet. Az Azure AD-hitelesítést támogató Microsoft Azure-szolgáltatások listáját az [Azure AD-hitelesítést támogató Azure-szolgáltatások](../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)című témakörben található.
 

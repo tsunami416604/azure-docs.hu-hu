@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 8503b12be628fe7d5651221c9d0379bee3e292bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c473be25907eb3a761fbccd598bb9b732e5be5b9
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76933467"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802348"
 ---
 # <a name="add-a-line-layer-to-the-map"></a>Vonalréteg hozzáadása a térképhez
 
@@ -55,7 +55,7 @@ Ez a minta bemutatja, hogyan lehet nyílikonokat hozzáadni a térkép egy vonal
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Nyíl megjelenítése a vonal mentén" src="//codepen.io/azuremaps/embed/drBJwX/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Nyíl megjelenítése a vonal mentén" src="//codepen.io/azuremaps/embed/drBJwX/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Tekintse meg a <a href='https://codepen.io/azuremaps/pen/drBJwX/'>Tollmegjelenítése nyilat</a> az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) vonala mentén a <a href='https://codepen.io'>CodePen webhelyen.</a>
 </iframe>
 
@@ -70,7 +70,7 @@ Egy vonalra egy körvonalszínt alkalmazhat. A vonalat színátmenettel is kitö
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Vonal körvonal színátmenettel" src="//codepen.io/azuremaps/embed/wZwWJZ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Vonal körvonal színátmenettel" src="//codepen.io/azuremaps/embed/wZwWJZ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Tekintse meg a <a href='https://codepen.io/azuremaps/pen/wZwWJZ/'>Tollvonal körvonalszínátmenetet</a> az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 

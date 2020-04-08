@@ -1,17 +1,18 @@
 ---
-title: Fejlesztői gyakorlati tanácsok – Erőforrás-kezelés az Azure Kubernetes-szolgáltatásokban (AKS)
+title: Erőforrás-kezelési gyakorlati tanácsok
+titleSuffix: Azure Kubernetes Service
 description: Ismerje meg az alkalmazásfejlesztőknek az erőforrás-kezeléssel kapcsolatos gyakorlati tanácsait az Azure Kubernetes-szolgáltatásban (AKS)
 services: container-service
 author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: 66676c90e73d1886c86d8afda8cbbecce239a005
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0052657c947f8a9ff9c9d6aef86ff16d9a22adae
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259525"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803483"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Gyakorlati tanácsok az alkalmazásfejlesztők számára az erőforrások kezeléséhez az Azure Kubernetes szolgáltatásban (AKS)
 

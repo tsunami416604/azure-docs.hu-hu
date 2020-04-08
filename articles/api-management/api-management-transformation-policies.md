@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 34a70a4698b69881a06cfb7a7017fa0c30647197
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 81b7fb687bb6ef88d1ed436923d0e5ff7561c22b
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80047686"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803245"
 ---
 # <a name="api-management-transformation-policies"></a>API Management-átalakítási szabályzatok
 Ez a témakör a következő API Management-házirendek hivatkozási alapként szolgál. A házirendek hozzáadásáról és konfigurálásáról az [API-kezelés házirendjei](https://go.microsoft.com/fwlink/?LinkID=398186)című témakörben talál további információt.
@@ -540,17 +540,12 @@ OriginalUrl.
 </set-query-parameter>
 ```
 
-### <a name="examples"></a>Példák
-
 #### <a name="example"></a>Példa
 
 ```xml
 
-<set-query-parameter>
-  <parameter name="api-key" exists-action="skip">
-    <value>12345678901</value>
-  </parameter>
-  <!-- for multiple parameters with the same name add additional value elements -->
+<set-query-parameter name="api-key" exists-action="skip">
+  <value>12345678901</value>
 </set-query-parameter>
 
 ```
@@ -596,7 +591,7 @@ OriginalUrl.
 
 - Kérelem URL-címe -`http://api.example.com/v2/US/hardware/storenumber&ordernumber?City&State`
 
-  Ez a házirend akkor használható, ha egy emberi és/vagy böngészőbarát URL-címet a webszolgáltatás által várt URL-formátumba kell átalakítani. Ezt a házirendet csak akkor kell alkalmazni, ha alternatív URL-formátumot tesz nek ki, például tiszta URL-eket, RESTful URL-eket, felhasználóbarát URL-eket vagy seo-barát URL-eket, amelyek tisztán strukturális URL-ek, amelyek nem tartalmaznak lekérdezési karakterláncot, és ehelyett csak az erőforrás elérési útját tartalmazzák ( a rendszer és a hatóság után). Ez gyakran történik esztétikai, használhatósági, vagy a kereső optimalizálás (SEO) célokra.
+  Ez a házirend akkor használható, ha egy emberi és/vagy böngészőbarát URL-címet a webszolgáltatás által várt URL-formátumba kell átalakítani. Ezt a házirendet csak akkor kell alkalmazni, ha alternatív URL-formátumot tesz nek ki, például tiszta URL-eket, RESTful URL-eket, felhasználóbarát URL-eket vagy seo-barát URL-eket, amelyek tisztán strukturális URL-ek, amelyek nem tartalmaznak lekérdezési karakterláncot, és ehelyett csak az erőforrás elérési útját tartalmazzák (a séma és a hatóság után). Ez gyakran történik esztétikai, használhatósági, vagy a kereső optimalizálás (SEO) célokra.
 
 > [!NOTE]
 >  Lekérdezési karakterlánc-paramétereket csak a házirend használatával adhat hozzá. Az újraíró URL-címhez nem adhat hozzá további sablonelérési paramétereket.

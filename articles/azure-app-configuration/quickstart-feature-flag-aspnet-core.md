@@ -6,12 +6,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 01/14/2020
 ms.author: lcozzens
-ms.openlocfilehash: d8582dfc796fe3e87b8bdc5be763dddfb5d0176b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b3579d12981e2b0add916a280bac7b4f9392d8ba
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80245412"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803143"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Rövid útmutató: Szolgáltatásjelzők hozzáadása egy ASP.NET Core alkalmazáshoz
 
@@ -126,13 +126,13 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
 
     Ezt a titkos kulcsot az alkalmazás konfigurációs API-jával érheti el. A kettőspont (:) A konfigurációs névvel működik az alkalmazáskonfigurációs API-val az összes támogatott platformon. Lásd: [Környezet szerint beállítás.](https://docs.microsoft.com/aspnet/core/fundamentals/configuration)
 
-1. Frissítse `CreateWebHostBuilder` a metódust az alkalmazáskonfiguráció használatához a `config.AddAzureAppConfiguration()` metódus hívásával.
-    
+1. A *Program.cs*frissítse `CreateWebHostBuilder` a metódust az `config.AddAzureAppConfiguration()` alkalmazáskonfiguráció használatához a metódus hívásával.
+
     > [!IMPORTANT]
     > `CreateHostBuilder`a `CreateWebHostBuilder` .NET Core 3.0-ban.  Válassza ki a megfelelő szintaxist a környezet alapján.
 
     #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
-    
+
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         WebHost.CreateDefaultBuilder(args)
@@ -148,7 +148,7 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
     ```
 
     #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
-    
+
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
         Host.CreateDefaultBuilder(args)
@@ -188,12 +188,12 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
         services.AddControllersWithViews();
         services.AddFeatureManagement();
     }
-    ```
+
     ---
 
-1. Frissítse `Configure` a módszert egy köztes szoftver hozzáadásához, hogy a szolgáltatásjelző értékei ismétlődő időközönként frissülhessenek, miközben a ASP.NET Core webalkalmazás továbbra is fogadja a kéréseket.
-    
-    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
+1. Update the `Configure` method to add a middleware to allow the feature flag values to be refreshed at a recurring interval while the ASP.NET Core web app continues to receive requests.
+
+    #### [.NET Core 2.x](#tab/core2x)
     ```csharp
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     {
@@ -351,7 +351,7 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
     A böngészőnek az alábbi képhez hasonló oldalt kell megjelenítenie.
     ![A gyorsindítási alkalmazás helyi indítása](./media/quickstarts/aspnet-core-feature-flag-local-before.png)
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) Válassza az **Összes erőforrás**lehetőséget, és válassza ki a rövid útmutatóban létrehozott Alkalmazáskonfigurációs tároló példányt.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza az **Összes erőforrás**lehetőséget, és válassza ki a rövid útmutatóban létrehozott Alkalmazáskonfigurációs tároló példányt.
 
 1. Válassza a **Szolgáltatáskezelő**lehetőséget, és módosítsa a **Béta** kulcs állapotát **Be**állapotra.
 

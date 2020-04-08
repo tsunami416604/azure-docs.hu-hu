@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6754393bdeabcd67dcf6514102e3c825a26fc3e9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 878960738830dbe2f94b977e98215a681c4a79d2
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239083"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802552"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Oktatóanyag: Az Azure Active Directoryhoz csatlakoztatott hibrid eszközök manuális konfigurálása
 
@@ -85,7 +85,7 @@ Az alábbi táblázatban áttekintheti a forgatókönyvéhez szükséges lépés
 | A szolgáltatáskapcsolódási pont konfigurálása | ![Jelölőnégyzet][1] | ![Jelölőnégyzet][1] | ![Jelölőnégyzet][1] |
 | Jogcímek kiadásának beállítása |     | ![Jelölőnégyzet][1] | ![Jelölőnégyzet][1] |
 | Nem Windows 10 operációs rendszerű eszközök engedélyezése |       |        | ![Jelölőnégyzet][1] |
-| Csatlakoztatott eszközök ellenőrzése | ![Jelölőnégyzet][1] | ![Jelölőnégyzet][1] | [Jelölőnégyzet][1] |
+| Csatlakoztatott eszközök ellenőrzése | ![Jelölőnégyzet][1] | ![Jelölőnégyzet][1] | ![Jelölőnégyzet][1] |
 
 ## <a name="configure-a-service-connection-point"></a>Szolgáltatáskapcsolódási pont konfigurálása
 

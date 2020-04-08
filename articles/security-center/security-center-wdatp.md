@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2019
+ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: 5136a00421aebaa72998b1dfcdf75feb935851c6
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: a502541a5a01ec3304338054239fc3b50f4d3c61
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435440"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810311"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Microsoft Defender komplex veszélyforrások elleni védelem az Azure Security Centerrel
 
@@ -36,7 +36,7 @@ A Microsoft Defender ATP használatakor a következőket kapja:
 
 Az Azure Security Centerben már elérhetők a következő képességek:
 
-- **Automatikus bevezetés:** A Microsoft Defender ATP-érzékelő automatikusan engedélyezve van az Azure Security Centerbe beszállt Windows-kiszolgálókon.
+- **Automatikus bevezetés:** A Microsoft Defender ATP-érzékelő automatikusan engedélyezve van az Azure Security Centerbe (a Windows Server 2019-et futtató kiszolgálók kivételével) beszállt Windows-kiszolgálókhoz.
 
 - **Egyetlen üvegtábla:** Az Azure Security Center konzol microsoft defender ATP-riasztásokat jelenít meg.
 
@@ -107,11 +107,11 @@ Jóindulatú Microsoft Defender ATP-tesztriasztás létrehozása:
 
    ![Parancssorablak a fenti paranccsal](media/security-center-wdatp/image4.jpeg)
 
-3. Ha a parancs sikeres, megjelenik egy új riasztás az Azure Security Center irányítópultján és a Microsoft Defender ATP portálon. A riasztás megjelenése eltarthat néhány percig.
+1. Ha a parancs sikeres, megjelenik egy új riasztás az Azure Security Center irányítópultján és a Microsoft Defender ATP portálon. A riasztás megjelenése eltarthat néhány percig.
 
-4. A biztonsági központban a riasztás áttekintéséhez nyissa meg a**Gyanús PowerShell-parancsvonal**biztonsági **riasztásokat.** > 
+1. A biztonsági központban a riasztás áttekintéséhez nyissa meg a**Gyanús PowerShell-parancsvonal**biztonsági **riasztásokat.** > 
 
-5. A vizsgálat ablakban válassza ki a hivatkozást a Microsoft Defender ATP portálra való ugráshoz.
+1. A vizsgálat ablakban válassza ki a hivatkozást a Microsoft Defender ATP portálra való ugráshoz.
 
 ## <a name="next-steps"></a>További lépések
 

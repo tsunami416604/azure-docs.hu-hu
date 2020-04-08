@@ -6,15 +6,79 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 03/05/2020
-ms.openlocfilehash: c29790035ec4e971957784e826a1e8bd8e0c9329
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: a2e6d2a459a6713aa9372496fc3a933c0a886ed9
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79500500"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802604"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Az Azure Monitor dokumentációjának újdonságai?
 Ez a cikk az Azure Monitor azokat a cikkeket sorolja fel, amelyek újak vagy jelentősen frissültek. Minden hónap első hetében frissül, hogy tartalmazza az előző hónap cikkfrissítéseit.
+
+## <a name="march-2020"></a>2020. március
+
+### <a name="general"></a>Általános kérdések
+- [Az Azure Monitor áttekintése](overview.md) – Hozzáadott Azure Monitor áttekintő videó.
+- [Az Azure Monitor ügyféláltal felügyelt kulcskonfigurációja](platform/customer-managed-keys.md) – Általános frissítések.
+- [Azure Monitor-adatok hivatkozás](/azure/azure-monitor/reference) – Új webhely.
+
+### <a name="alerts"></a>Riasztások
+
+- [Tevékenységnapló-riasztások létrehozása, megtekintése és kezelése az Azure Monitorban](platform/alerts-activity-log.md) – Az Erőforrás-kezelő sablon további magyarázata.
+- [Ismerje meg, hogyan működnek a metrikariasztások az Azure Monitorban.](platform/alerts-metric-overview.md) - Kormányzati támogatásért frissítve.
+- [Az Azure Monitor riasztásainak és értesítéseinek hibaelhárítása](platform/alerts-troubleshoot.md) – Új cikk
+
+### <a name="application-insights"></a>Application Insights
+- [Automatizálja az Azure Application Insights-ot a PowerShell segítségével](app/powershell.md) – ARMClient-példákat adott hozzá.
+- [Telemetriai adatok folyamatos exportálása az Application Insightsból](app/export-telemetry.md) – Az exportálási struktúra részleteivel rendelkező tábla hozzáadása.
+- [Snapshot Debugger engedélyezése a .NET-alkalmazásokhoz az Azure App Service-ben](app/snapshot-debugger-appservice.md) – Például hozzáadott erőforrás-kezelő sablon.
+- [Az Azure Application Insights használati és költségeinek kezelése](app/pricing.md) – Az adatkorlát-riasztással kapcsolatos információk hozzáadása.
+- [Python-alkalmazások figyelése az Azure Monitor (előzetes verzió)](app/opencensus-python.md) – Hozzáadott szabványos metrikák.
+- [JavaScript-alkalmazások forrástérkép-támogatása – Azure Monitor Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/source-map-support) – Új cikk.
+
+
+### <a name="containers"></a>Containers
+- [Az Azure Monitor –](faq.md) Az Azure Monitor frissítése tárolókhoz.
+- [GPU-figyelés konfigurálása az Azure Monitor tárolókkal](insights/container-insights-gpu-monitoring.md) – Új cikk
+
+### <a name="insights"></a>Insights
+- [Office 365 felügyeleti megoldás az Azure-ban](insights/solution-office-365.md) – Frissült az eprekation dátuma.
+
+### <a name="logs"></a>Naplók
+- [Naplólekérdezések optimalizálása az Azure Monitorban](log-query/query-optimization.md) – Hozzáadott CPU-feltétel XML- és JSON-elemzéshez.
+- [Az Azure Log Analytics-munkaterület törlése és helyreállítása](platform/delete-workspace.md) – Hozzáadott hibaelhárítás.
+- [Azure Monitor naplók azure logic apps és a Power Automate](platform/logicapp-flow-connector.md) – Frissítve az új Azure Monitor-összekötő.
+
+### <a name="metrics"></a>Mérőszámok
+- [Lemez metrikák epercia az Azure Portalon](https://docs.microsoft.com/azure/azure-monitor/platform/portal-disk-metrics-deprecation) – Új cikk.
+- [Oktatóanyag – Metrikadiagram létrehozása az Azure Monitorban](learn/tutorial-metrics-explorer.md) – Hozzáadott videó.
+
+### <a name="platform-logs"></a>Platformnaplók
+- [Az Azure-tevékenységnapló gyűjtése és elemzése az Azure Monitorban](platform/activity-log-collect.md) – Újraírás a tevékenységnapló diagnosztikai beállításokkal történő gyűjtésének és elemzésének jobb magyarázata érdekében.
+
+### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
+- [Az Azure virtuális gépei figyelése az Azure Monitor](insights/monitor-vm-azure.md) – Új cikk segítségével.
+- [Rövid útmutató: Az Azure virtuális gépek figyelése az Azure Monitorlal](learn/quick-monitor-azure-vm.md) – Frissítve az Azure Monitor virtuális gépekhez való hozzáadásához.
+- [Riasztások az Azure Monitor virtuális gépekhez](insights/vminsights-alerts.md) – Új cikk
+- [Az Azure Monitor engedélyezése virtuális gépekhez –](insights/vminsights-enable-overview.md) Frissített ügynök letöltési hivatkozások.
+
+
+Általános frissítések az Azure Monitor virtuális gépekhez szolgáltatásának általános elérhetőségéhez
+- [Mi az Azure Monitor virtuális gépekhez?](insights/vminsights-overview.md)
+- [Az Azure Monitor virtuális gépekhez (GA) gyakori kérdések](insights/vminsights-ga-release-faq.md) 
+- [Az Azure Monitor engedélyezése virtuális gépekhez az Azure Policy használatával](insights/vminsights-enable-at-scale-policy.md) 
+- [Teljesítménydiagram az Azure Monitor szolgáltatással a virtuális gépekhez](insights/vminsights-performance.md)
+- [Naplók lekérdezése az Azure Monitor szolgáltatásból virtuális gépekhez](insights/vminsights-log-search.md)
+- [Az alkalmazások függőségének megtekintése a virtuális gépekHez tartozó Azure Monitor szolgáltatással](insights/vminsights-maps.md) 
+
+
+### <a name="visualizations"></a>Vizualizációk
+- [Az Azure Monitor adatainak megjelenítése](visualizations.md) – Frissítve a View Designer tervezett eprecációjának megjegyzéséhez.
+
+
+
+
 
 ## <a name="february-2020"></a>2020. február
 

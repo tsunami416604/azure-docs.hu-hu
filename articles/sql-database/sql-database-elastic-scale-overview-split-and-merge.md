@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 8b0db4a1e55b53165e40e176834d66b62926e24b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c7eb1670ee911895bdba23921845b8795f4998af
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74421559"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811305"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Adatok mozgatása kiterjesztett felhőalapú adatbázisok között
 
@@ -62,7 +62,7 @@ A felosztásos egyesítési eszköz Azure-webszolgáltatásként fut. A rendszer
 
 - **Ügyfél által üzemeltetett szolgáltatások**
 
-  A felosztásos egyesítés ügyfél által üzemeltetett szolgáltatásként kerül kiszállításra. A szolgáltatást a Microsoft Azure-előfizetésében kell üzembe helyeznie és üzemeltetnie. A NuGet-ből letöltött csomag tartalmaz egy konfigurációs sablont, amely az adott központi telepítéssel kapcsolatos információkat tartalmazza. A részleteket a [felosztásos egyesítésoktató](sql-database-elastic-scale-configure-deploy-split-and-merge.md) iszatban találja. Mivel a szolgáltatás az Azure-előfizetésben fut, szabályozhatja és konfigurálhatja a szolgáltatás legtöbb biztonsági aspektusát. Az alapértelmezett sablon tartalmazza az SSL konfigurálásának, a tanúsítványalapú ügyfélhitelesítésnek, a tárolt hitelesítő adatok titkosításának, a DoS-védelemnek és az IP-korlátozásoknak a konfigurálásának lehetőségeit. A biztonsági szempontokról a következő [dokumentumfelosztott egyesítésbiztonsági konfigurációban](sql-database-elastic-scale-split-merge-security-configuration.md)talál további információt.
+  A felosztásos egyesítés ügyfél által üzemeltetett szolgáltatásként kerül kiszállításra. A szolgáltatást a Microsoft Azure-előfizetésében kell üzembe helyeznie és üzemeltetnie. A NuGet-ből letöltött csomag tartalmaz egy konfigurációs sablont, amely az adott központi telepítéssel kapcsolatos információkat tartalmazza. A részleteket a [felosztásos egyesítésoktató](sql-database-elastic-scale-configure-deploy-split-and-merge.md) iszatban találja. Mivel a szolgáltatás az Azure-előfizetésben fut, szabályozhatja és konfigurálhatja a szolgáltatás legtöbb biztonsági aspektusát. Az alapértelmezett sablon tartalmazza a TLS konfigurálásának lehetőségeit, a tanúsítványalapú ügyfélhitelesítést, a tárolt hitelesítő adatok titkosítását, a DoS-védelmet és az IP-korlátozásokat. A biztonsági szempontokról a következő [dokumentumfelosztott egyesítésbiztonsági konfigurációban](sql-database-elastic-scale-split-merge-security-configuration.md)talál további információt.
 
   Az alapértelmezett üzembe helyezett szolgáltatás egy feldolgozóval és egy webes szerepkörrel fut. Mindegyik az A1 virtuális gép méretét használja az Azure Cloud Servicesben. Bár ezeket a beállításokat nem módosíthatja a csomag üzembe helyezésekor, módosíthatja őket a futó felhőszolgáltatásban (az Azure Portalon keresztül) végzett sikeres üzembe helyezés után. Vegye figyelembe, hogy a feldolgozói szerepkört technikai okokból csak egy példányra szabad konfigurálni.
 
@@ -72,7 +72,7 @@ A felosztásos egyesítési eszköz Azure-webszolgáltatásként fut. A rendszer
 
 - **Egységes shardlet kapcsolatok**
 
-  Amikor a shardlets új kötegének adatáthelyezése elindul, a shardletet tároló shardle-hoz megadott adatfüggő útválasztási kapcsolatok megszakadnak, és a shard map API-kból a shardletek hez való későbbi csatlakozások blokkolva lesznek, amíg az adatmozgás következetlenségek elkerülése érdekében. Az ugyanazon a shardon lévő többi shardlet-hez való csatlakozás is meghal, de az újrapróbálkozáskor azonnal sikeres lesz. A köteg áthelyezése után a shardlets van megjelölve online újra a cél shard, és a forrásadatok törlődnek a forrás shard. A szolgáltatás végigmegy ezeken a lépéseken minden kötegnél, amíg az összes shardlets át nem lett helyezve. Ez több kapcsolatleölési művelethez vezet a teljes felosztási/egyesítési/áthelyezési művelet során.  
+  Amikor a shardlets új kötegének adatáthelyezése elindul, a shardletet tároló shardlet-shard-hoz megadott adatfüggő útválasztási kapcsolatok megszakadnak, és a shard map API-kból a shardlets-hez való későbbi csatlakozások blokkolva vannak, miközben az adatáthelyezés folyamatban van az inkonzisztenciák elkerülése érdekében. Az ugyanazon a shardon lévő többi shardlet-hez való csatlakozás is meghal, de az újrapróbálkozáskor azonnal sikeres lesz. A köteg áthelyezése után a shardlets van megjelölve online újra a cél shard, és a forrásadatok törlődnek a forrás shard. A szolgáltatás végigmegy ezeken a lépéseken minden kötegnél, amíg az összes shardlets át nem lett helyezve. Ez több kapcsolatleölési művelethez vezet a teljes felosztási/egyesítési/áthelyezési művelet során.  
 
 - **A shardlet elérhetőségének kezelése**
 

@@ -2,13 +2,13 @@
 title: Sablonfüggvények - erőforrások
 description: Az Azure Resource Manager-sablonban az erőforrásokkal kapcsolatos értékek lekéréséhez használandó függvények ismertetése.
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.openlocfilehash: 23c0463649e748b35917c959a73536147e91f60b
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.date: 04/06/2020
+ms.openlocfilehash: 90cee78c29c26c88d808cdef798e74a2184a5fcf
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80744997"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804758"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Erőforrás-függvények ARM-sablonokhoz
 
@@ -496,7 +496,9 @@ Akkor `'Full'` használja, ha olyan erőforrásértékekre van szüksége, amely
 
 ### <a name="valid-uses"></a>Érvényes felhasználások
 
-A referenciafüggvény csak az erőforrás-definíció és a sablon vagy központi telepítés kimeneti szakaszában használható. Ha [tulajdonságiterséggel](copy-properties.md)használja, használhatja a `input` hivatkozási függvényt, mert a kifejezés az erőforrás tulajdonsághoz van rendelve. Nem használhatja, `count` mert a számlálót meg kell határozni a hivatkozási függvény feloldása előtt.
+A referenciafüggvény csak az erőforrás-definíció és a sablon vagy központi telepítés kimeneti szakaszában használható. Ha [tulajdonságiterséggel](copy-properties.md)használja, használhatja a `input` hivatkozási függvényt, mert a kifejezés az erőforrás tulajdonsághoz van rendelve.
+
+A hivatkozási függvénnyel nem állíthatja `count` be a tulajdonság értékét egy másolási ciklusban. Más tulajdonságokat is beállíthat a ciklusban. A hivatkozás le van tiltva a count tulajdonsághoz, mert ezt a tulajdonságot meg kell határozni a referenciafüggvény feloldása előtt.
 
 A beágyazott [sablon](linked-templates.md#nested-template) kimeneteiben a hivatkozási függvény nem használható a beágyazott sablonban üzembe helyezett erőforrás visszaadására. Ehelyett használjon [csatolt sablont](linked-templates.md#linked-template).
 
@@ -530,7 +532,7 @@ Egy erőforrásra mutató teljesen minősített hivatkozás összeállításakor
 
 **{resource-provider-namespace}/{parent-resource-type}/{parent-resource-name}[/{child-resource-type}/{child-resource-name}]**
 
-Példa:
+Például:
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt`helyes, `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` nem helyes
 

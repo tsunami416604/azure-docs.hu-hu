@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 04/03/2020
+ms.date: 04/07/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: a8930af1366fef3d8c4491fca5e9403905648de1
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 951396afc95a215a6ff9f4885f83fcdf6efdeb72
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80638020"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810332"
 ---
 # <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
 
@@ -120,6 +120,7 @@ A nem TCP/UDP-protokollokra (például ICMP) vonatkozó hálózati szűrési sza
 |Az aktív FTP nem támogatott|Az aktív FTP le van tiltva az Azure Tűzfalon az FTP-port paranccsal történő FTP-visszafordulási támadások elleni védelem érdekében.|Használhatja passzív FTP helyett. A tűzfalon továbbra is kifejezetten meg kell nyitnia a 20-as és 21-es TCP-portokat.
 |Az SNAT-port kihasználtsági mutatója 0%-ot mutat|Az Azure Firewall SNAT-port kihasználtsági metrikája 0%-os használatot mutathat még SNAT-portok használata esetén is. Ebben az esetben a metrika használata a tűzfal állapotmetrika részeként helytelen eredményt ad.|Ezt a problémát kijavították, és a termelésre való bevezetés 2020 májusára irányul. Bizonyos esetekben a tűzfal újratelepítése megoldja a problémát, de nem konzisztens. Köztes megoldásként csak a tűzfal állapotával keresse meg az *állapot=degradálódott*, az *állapot=nem kifogástalan.* Port kimerültség jelenik meg *a leromlott*. *Nem kifogástalan* van fenntartva a későbbi használatra, ha a több metrikák hatással van a tűzfal állapotát.
 |A DNST nem támogatott a kényszerített bújtatás engedélyezve|A kényszerített bújtatásengedélyezéssel telepített tűzfalak az aszimmetrikus útválasztás miatt nem támogatják az internetről érkező bejövő hozzáférést.|Ez szándékosan az aszimmetrikus útválasztás miatt van. A bejövő kapcsolatok visszatérési útvonala a helyszíni tűzfalon keresztül történik, amely nem látta a létrehozott kapcsolatot.
+|Kimenő passzív FTP nem működik a tűzfalak több nyilvános IP-címet.|A passzív FTP különböző kapcsolatokat hoz létre a vezérlő- és adatcsatornákhoz. Ha egy több nyilvános IP-címmel rendelkező tűzfal kimenő adatokat küld, véletlenszerűen kiválasztja az egyik nyilvános IP-címét a forrás IP-címhez. Az FTP sikertelen lesz, ha az adat- és vezérlőcsatornák különböző forrás IP-címeket használnak.|Explicit SNAT-konfiguráció t tervez. Addig is érdemes egyetlen IP-címet használni ebben a helyzetben.|
 
 ## <a name="next-steps"></a>További lépések
 

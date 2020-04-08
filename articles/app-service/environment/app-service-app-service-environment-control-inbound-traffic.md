@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 01/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: aa43d44a691fa9151959e8817596bdfc9bba65f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 857b2b00aadced567bc8ac191cdd9908f7bea7a3
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74687387"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804401"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>Az App Service-környezet befelé irányuló forgalom szabályozása
 ## <a name="overview"></a>Áttekintés
 Az App Service-környezet létrehozható **az** Azure Resource Manager virtuális hálózatában **vagy** egy klasszikus üzembe helyezési modell [virtuális hálózatában.][virtualnetwork]  Új virtuális hálózat és új alhálózat definiálható az App Service-környezet létrehozásakor.  Másik lehetőségként egy App Service-környezet is létrehozható egy már meglévő virtuális hálózatban és egy már meglévő alhálózatban.  A 2016 júniusában végrehajtott módosítással az ASE-k olyan virtuális hálózatokba is telepíthetők, amelyek nyilvános címtartományokat vagy RFC1918 címtereket (azaz magáncímeket) használnak.  Az App Service-környezet létrehozásáról további információt az [App Service-környezet létrehozása című témakörben talál.][HowToCreateAnAppServiceEnvironment]
 
-Az App Service-környezetet mindig létre kell hozni egy alhálózaton belül, mert egy alhálózat olyan hálózati határt biztosít, amely a bejövő forgalom zárolására használható a felfelé irányuló eszközök és szolgáltatások mögött, így a HTTP- és HTTPS-forgalmat csak adott felső sávból fogadják el IP-címek.
+Az App Service-környezetet mindig létre kell hozni egy alhálózaton belül, mert egy alhálózat olyan hálózati határt biztosít, amely a bejövő forgalom zárolására használható a felfelé irányuló eszközök és szolgáltatások mögött, így a HTTP- és HTTPS-forgalmat csak meghatározott upstream IP-címekről fogadják el.
 
 Az alhálózatok bejövő és kimenő hálózati forgalmat [egy hálózati biztonsági csoport][NetworkSecurityGroups]szabályozza. A bejövő forgalom szabályozásához hálózati biztonsági szabályokat kell létrehozni egy hálózati biztonsági csoportban, majd a hálózati biztonsági csoportnak hozzá kell rendelnie az App Service-környezetet tartalmazó alhálózatot.
 
@@ -31,10 +31,10 @@ Mielőtt a bejövő hálózati forgalmat egy hálózati biztonsági csoporttal z
 
 Az alábbi lista az App Service-környezet által használt portokat tartalmazza. Eltérő rendelkezés hiányában minden port **TCP,** hacsak nincs egyértelműen feltüntetve:
 
-* 454: Az Azure-infrastruktúra által az App Service-környezetek SSL-en keresztül történő kezeléséhez és karbantartásához szükséges **port.**  Ne akadályozza a portra irányuló forgalmat.  Ez a port mindig az ASE nyilvános VIP-jéhez van kötve.
-* 455: Az Azure-infrastruktúra által az App Service-környezetek SSL-en keresztül történő kezeléséhez és karbantartásához szükséges **port.**  Ne akadályozza a portra irányuló forgalmat.  Ez a port mindig az ASE nyilvános VIP-jéhez van kötve.
+* 454: Az Azure-infrastruktúra által a TLS-en keresztül az App Service-környezetek kezeléséhez és karbantartásához szükséges **port.**  Ne akadályozza a portra irányuló forgalmat.  Ez a port mindig az ASE nyilvános VIP-jéhez van kötve.
+* 455: Az Azure-infrastruktúra által a TLS-en keresztül az App Service-környezetek kezeléséhez és karbantartásához szükséges **port.**  Ne akadályozza a portra irányuló forgalmat.  Ez a port mindig az ASE nyilvános VIP-jéhez van kötve.
 * 80: Alapértelmezett port az App Service-környezetben az App Service-csomagokban futó alkalmazások bejövő HTTP-forgalmához.  Az ILB-kompatibilis ASE-n ez a port az ASE ILB-címéhez van kötve.
-* 443: Alapértelmezett port az App Service-környezetben az App Service-csomagokban futó alkalmazások bejövő SSL-forgalmára.  Az ILB-kompatibilis ASE-n ez a port az ASE ILB-címéhez van kötve.
+* 443: Alapértelmezett port az App Service-környezetben az App Service-csomagokban futó alkalmazások bejövő TLS-forgalmára.  Az ILB-kompatibilis ASE-n ez a port az ASE ILB-címéhez van kötve.
 * 21: Ftp vezérlőcsatornája.  Ez a port biztonságosan blokkolható, ha az FTP nincs használatban.  Az ILB-kompatibilis ASE-n ez a port egy ASE ILB-címéhez köthető.
 * 990: FtpS vezérlőcsatornája.  Ez a port biztonságosan blokkolható, ha az FTPS nincs használatban.  Az ILB-kompatibilis ASE-n ez a port egy ASE ILB-címéhez köthető.
 * 10001-10020: FTP-adatcsatornák.  A vezérlőcsatornához is, ezek a portok is biztonságosan blokkolhatók, ha az FTP-t nem használják.  Az ILB-kompatibilis ASE-n ez a port az ASE ILB-címéhez köthető.
@@ -62,7 +62,7 @@ Az alábbiakban bemutatjuk a hálózati biztonsági csoport létrehozását:
 
 A hálózati biztonsági csoport létrehozása után egy vagy több hálózati biztonsági szabály kerül hozzáadásra.  Mivel a szabálykészlet idővel változhat, ajánlott a szabályprioritásokhoz használt számozási sémát kicserélni, hogy idővel könnyebben szúrjon be további szabályokat.
 
-Az alábbi példa egy olyan szabályt mutat be, amely kifejezetten hozzáférést biztosít az Azure-infrastruktúra által az App Service-környezet kezeléséhez és karbantartásához szükséges felügyeleti portokhoz.  Vegye figyelembe, hogy az összes felügyeleti forgalom SSL-en keresztül áramlik, és ügyféltanúsítványok biztosítják, így annak ellenére, hogy a portok meg vannak nyitva, azOkat az Azure felügyeleti infrastruktúrától eltérő entitás nem érhető el.
+Az alábbi példa egy olyan szabályt mutat be, amely kifejezetten hozzáférést biztosít az Azure-infrastruktúra által az App Service-környezet kezeléséhez és karbantartásához szükséges felügyeleti portokhoz.  Vegye figyelembe, hogy az összes felügyeleti forgalom a TLS-en keresztül áramlik, és ügyféltanúsítványok biztosítják, így annak ellenére, hogy a portok meg vannak nyitva, azOkat az Azure felügyeleti infrastruktúrától eltérő entitás nem érhető el.
 
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "ALLOW AzureMngmt" -Type Inbound -Priority 100 -Action Allow -SourceAddressPrefix 'INTERNET'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '454-455' -Protocol TCP
 

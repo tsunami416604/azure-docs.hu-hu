@@ -3,12 +3,12 @@ title: Alkalmazások üzembe helyezése az Azure Spring Cloudban a Jenkins és a
 description: Ismerje meg, hogyan használhatja az Azure CLI-t folyamatos integrációs és üzembe helyezési folyamatban a mikroszolgáltatások Azure Spring Cloud szolgáltatásba való üzembe helyezéséhez
 ms.topic: tutorial
 ms.date: 01/07/2020
-ms.openlocfilehash: 67ad97bb762ed302ef52c404d47c5755ea4b245b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bc48eecc9e73b95fd9112d645135409c24369e10
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75734977"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810221"
 ---
 # <a name="tutorial-deploy-apps-to-azure-spring-cloud-using-jenkins-and-the-azure-cli"></a>Oktatóanyag: Alkalmazások üzembe helyezése az Azure Spring Cloud szolgáltatásba a Jenkins és az Azure CLI használatával
 
@@ -28,7 +28,7 @@ Ez az oktatóanyag az alapvető Azure-szolgáltatások, az Azure Spring Cloud, [
 >[!Note]
 > Az Azure Spring Cloud jelenleg nyilvános előzetes verzióként érhető el. A nyilvános előzetes verziólehetővé teszi az ügyfelek számára, hogy a hivatalos kiadás előtt kísérletezzenek az új funkciókkal.  A nyilvános előzetes verziójú funkciók és szolgáltatások nem éles környezetben való használatra valók.  Az előzetes verziók során nyújtott támogatással kapcsolatos további információkért tekintse át [a gyakori kérdéseket,](https://azure.microsoft.com/support/faq/) vagy nyújtson be [támogatási kérelmet](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) további információkért.
 
-[!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+- **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
 * Egy GitHub-fiók. Ha nem rendelkezik GitHub-fiókkal, hozzon létre egy [ingyenes fiókot,](https://github.com/) mielőtt elkezdené.
 

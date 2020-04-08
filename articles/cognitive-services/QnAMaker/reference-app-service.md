@@ -3,14 +3,14 @@ title: Szolgáltatás konfigurációja - QnA Maker
 description: Ismerje meg, hogyan és hol kell konfigurálni az erőforrásokat.
 ms.topic: reference
 ms.date: 02/21/2020
-ms.openlocfilehash: 8ef6fecbfeb119d0c68ec5bc3bbc90ec449dbb7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3be32d1778604121c2acac88415cbfbc4bdbca3d
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651860"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804260"
 ---
-# <a name="service-configuration"></a>Szolgáltatás konfigurációja
+# <a name="service-configuration"></a>Szolgáltatáskonfiguráció
 
 A QnA Maker számos Azure-erőforrást (szolgáltatást) használ, beleértve a Cognitive Search, az App Service, az App Service-csomag és az Application Insights szolgáltatást.
 
@@ -27,8 +27,8 @@ Az egyéni beállításokat az Alkalmazás beállítások listájában állítha
 
 |Erőforrás|Beállítás|
 |--|--|
-|AzureSearchAdminKey|Kognitív keresés - qna készlet tárolására és Ranker #1|
-|AzureSearchName|Kognitív keresés - qna készlet tárolására és Ranker #1|
+|AzureSearchAdminKey|Kognitív keresés - használt QnA pár tárolás és Ranker #1|
+|AzureSearchName|Kognitív keresés - használt QnA pár tárolás és Ranker #1|
 |DefaultAnswer|Válasz szövege, ha nem található egyezés|
 |UserAppInsightsAppId|Csevegési napló és telemetria|
 |UserAppInsightsKulcs|Csevegési napló és telemetria|

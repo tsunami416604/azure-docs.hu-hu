@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a0de94cdce1d7f0e9da9d2844b300956ad6f6970
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 041fb8d881307b52fb170a11618f930debc522a4
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80330846"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803160"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>A Bejelentkezve (KMSI) szolgáltatás engedélyezése az Azure Active Directory B2C-ben
 
@@ -54,7 +54,7 @@ A KMSI engedélyezéséhez állítsa `DataUri` a tartalomdefiníciós elemet [az
 
 ## <a name="add-the-metadata-to-the-self-asserted-technical-profile"></a>A metaadatok hozzáadása az önérvényesítő technikai profilhoz
 
-Ha hozzá szeretné adni a KMSI jelölőnégyzetet a regisztrációs `setting.enableRememberMe` és bejelentkezési laphoz, állítsa a metaadatokat hamisra. Felülbírálja a SelfAsserted-LocalAccountSignin-Email technikai profilokat a bővítményfájlban.
+Ha hozzá szeretné adni a KMSI jelölőnégyzetet a regisztrációs `setting.enableRememberMe` és bejelentkezési laphoz, állítsa a metaadatokat igaz értékre. Felülbírálja a SelfAsserted-LocalAccountSignin-Email technikai profilokat a bővítményfájlban.
 
 1. Keresse meg a ClaimsProviders elemet. Ha az elem nem létezik, adja hozzá.
 1. Adja hozzá a következő jogcímszolgáltatót a ClaimsProviders elemhez:

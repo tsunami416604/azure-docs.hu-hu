@@ -3,12 +3,12 @@ title: Integrálható más alkalmazásokkal - QnA Maker
 description: A QnA Maker integrálódik az ügyfélalkalmazásokba, például a csevegőrobotokba, valamint más természetes nyelvi feldolgozási szolgáltatásokba, például a nyelvi megértésbe (LUIS).
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 38b275aa2b8cf5768a2bc95634a7ff4892893eda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1edbfb6badfb73ce08a99709da0f8bfb61b7dc3
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300519"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804187"
 ---
 # <a name="design-knowledge-base-for-client-applications"></a>Ügyfélalkalmazások tudásbázisának tervezése
 
@@ -24,7 +24,7 @@ Miután közzétette a tudásbázist, hozzon létre egy robotot a **Közzététe
 
 ## <a name="providing-multi-turn-conversations"></a>Többfordulatos beszélgetések biztosítása
 
-A robotkliens biztosítja a legjobb kiválasztott választ a tudásbázisból, és nyomon követési utasításokat adhat, ha a válasz egy többfordulatos QnA-készlet része. Ismerje [meg, hogyan](../how-to/multiturn-conversation.md) adhat hozzá többfordulatos beszélgetési kérdéseket és válaszkészleteket a tudásbázisához.
+A bot kliens biztosítja a legjobb kiválasztott választ a tudásbázisból, és nyomon követési utasításokat adhat, ha a válasz egy többfordulatos QnA-pár része. Ismerje [meg, hogyan](../how-to/multiturn-conversation.md) adhat hozzá többfordulatos beszélgetési kérdéseket és válaszkészleteket a tudásbázisához.
 
 ## <a name="natural-language-processing"></a>Természetes nyelvek feldolgozása
 

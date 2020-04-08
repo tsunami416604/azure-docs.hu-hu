@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: 2b8cf66afa1d8aa592d5755ebab70cd6ad2e75fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 733f4b74ca7643476586189b36f4e1d3e446968b
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79298053"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811173"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Az API Management integrálása belső virtuális hálózatba az Application Gateway alkalmazásátjáróval
 
@@ -64,7 +64,7 @@ Az első beállítási példában az api-k kezelése csak a virtuális hálózat
 * **Háttérkiszolgáló-készlet:** Ez az API Management szolgáltatás belső virtuális IP-címe.
 * **Háttérkiszolgáló-készlet beállításai:** Minden készlet rendelkezik olyan beállításokkal, mint a port, a protokoll és a cookie-alapú affinitás. Ezek a beállítások a készlet en belüli összes kiszolgálóra vonatkoznak.
 * **Előtér-port:** Ez az alkalmazásátjárón megnyitott nyilvános port. Az azt ütő forgalmat átirányítja az egyik háttérkiszolgálóra.
-* **Hallgató:** A figyelő rendelkezik egy előtér-porttal, egy protokollal (Http vagy Https, ezek az értékek a kis- és nagybetűket, és az SSL tanúsítvány neve (ssl-kiszervezés konfigurálása esetén).
+* **Hallgató:** A figyelő rendelkezik egy előtér-porttal, egy protokollal (Http vagy Https, ezek az értékek a kis- és nagybetűket, és a TLS/SSL tanúsítvány neve (a TLS kiszervezés konfigurálása esetén).
 * **Szabály:** A szabály egy figyelőt egy háttérkiszolgálókészlethez köt.
 * **Egyéni állapotvizsgálat:** Az Application Gateway alapértelmezés szerint IP-címalapú mintavételeket használ annak kiderítésére, hogy a BackendAddressPool mely kiszolgálói aktívak. Az API Management szolgáltatás csak a megfelelő állomásfejléccel rendelkező kérésekre válaszol, ezért az alapértelmezett mintavételek sikertelenek. Egy egyéni állapotminta kell definiálni, hogy az alkalmazásátjáró határozza meg, hogy a szolgáltatás él, és a kérelmek továbbítása.
 * **Egyéni tartományi tanúsítványok:** Az API Management internetről való eléréséhez létre kell hoznia az állomásnév CNAME-hozzárendelését az Application Gateway előtér-DNS-nevéhez. Ez biztosítja, hogy az API Managementnek továbbított Application Gateway-nek küldött állomásnév-fejléc és tanúsítvány egy APIM-et érvényesnek ismerhet. Ebben a példában két tanúsítványt fogunk használni - a háttér-és a fejlesztői portálhoz.  
@@ -271,7 +271,7 @@ $certPortal = New-AzApplicationGatewaySslCertificate -Name "cert02" -Certificate
 
 ### <a name="step-5"></a>5. lépés
 
-Hozza létre a HTTP-figyelők az application gateway. Rendelje hozzá hozzájuk az előtér-IP-konfigurációt, port- és ssl-tanúsítványokat.
+Hozza létre a HTTP-figyelők az application gateway. Rendelje hozzá az előtér-IP-konfigurációt, portot és TLS/SSL-tanúsítványokat.
 
 ```powershell
 $listener = New-AzApplicationGatewayHttpListener -Name "listener01" -Protocol "Https" -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp01 -SslCertificate $cert -HostName $gatewayHostname -RequireServerNameIndication true
@@ -280,7 +280,7 @@ $portalListener = New-AzApplicationGatewayHttpListener -Name "listener02" -Proto
 
 ### <a name="step-6"></a>6. lépés
 
-Hozzon létre egyéni mintavételeket `ContosoApi` az API Management szolgáltatás proxytartomány-végpontjára. Az `/status-0123456789abcdef` elérési út egy alapértelmezett állapotvégpont az összes API Management-szolgáltatásban. Állítsa `api.contoso.net` be egyéni mintavételi állomásnévként az SSL-tanúsítvánnyal való biztonságossá tétele érdekében.
+Hozzon létre egyéni mintavételeket `ContosoApi` az API Management szolgáltatás proxytartomány-végpontjára. Az `/status-0123456789abcdef` elérési út egy alapértelmezett állapotvégpont az összes API Management-szolgáltatásban. Egyéni `api.contoso.net` mintavételi állomásnévként állítsa be a TLS/SSL-tanúsítvánnyal való biztonságossá tétele érdekében.
 
 > [!NOTE]
 > A állomásnév `contosoapi.azure-api.net` az alapértelmezett proxy állomásnév `contosoapi` konfigurálva, ha egy névvel ellátott szolgáltatás jön létre a nyilvános Azure-ban.
@@ -293,7 +293,7 @@ $apimPortalProbe = New-AzApplicationGatewayProbeConfig -Name "apimportalprobe" -
 
 ### <a name="step-7"></a>7. lépés
 
-Töltse fel az SSL-kompatibilis háttérkészlet-erőforrásokon használandó tanúsítványt. Ez ugyanaz a tanúsítvány, amelyet a fenti 4.
+Töltse fel a TLS-kompatibilis háttérkészlet-erőforrásokon használandó tanúsítványt. Ez ugyanaz a tanúsítvány, amelyet a fenti 4.
 
 ```powershell
 $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name "whitelistcert1" -CertificateFile $gatewayCertCerPath

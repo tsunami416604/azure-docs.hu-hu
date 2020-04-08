@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: 0aa62a76727f6f913c277100d8c5b36ed1b00110
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2133524f57576c4646de9d4bf7f37b573a77e6d
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77618493"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80813703"
 ---
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
@@ -40,7 +40,7 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 Hozzon létre egy key vault segítségével az [az keyvault hozzon létre](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) az Azure CLI parancs, a [New-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault) Azure Powershell parancs, az [Azure Portal](https://portal.azure.com), vagy egy Resource [Manager sablon.](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)
 
 >[!WARNING]
-> Annak érdekében, hogy a titkosítási titkos kulcsok ne lépjék át a regionális határokat, az Azure Disk Encryption megköveteli, hogy a Key Vault és a virtuális gépek ugyanabban a régióban legyenek. Hozzon létre és használjon egy Key Vault, amely ugyanabban a régióban, mint a virtuális gépek titkosítani kell. 
+> Annak érdekében, hogy a titkosítási titkos kulcsok ne lépjék át a területi határokat, az Azure Disk Encryption megköveteli, hogy a Key Vault és a virtuális gépek ugyanabban a régióban és ugyanazon az előfizetésben legyenek. Hozzon létre és használjon egy Key Vault, amely ugyanabban a régióban, mint a virtuális gépek titkosítani kell. 
 
 Minden Key Vault kell egy egyedi nevet. Cserélje le <egyedi keyvault-neve> a kulcstartó nevét az alábbi példákban.
 
@@ -115,7 +115,7 @@ Használja [az keyvault frissítés](/cli/azure/keyvault#az-keyvault-update) a k
      Set-AzKeyVaultAccessPolicy -VaultName "<your-unique-keyvault-name>" -ResourceGroupName "MyResourceGroup" -EnabledForTemplateDeployment
      ```
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
 1. Válassza ki a kulcstartót, nyissa meg az **Access Policies**lehetőséget, és **kattintson ide a speciális hozzáférési házirendek megjelenítéséhez.**
 2. Jelölje be az **Azure Disk Encryption hozzáférés engedélyezése kötettitkosításhoz**feliratú jelölőnégyzetet.

@@ -3,12 +3,12 @@ title: Importálás adatforrásokból - QnA Maker
 description: A QnA Maker tudásbázis a qna-párokhoz tartozó kérdés-válasz (QnA) készletekből és választható metaadatokból áll.
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: e7772b2c76dfb92ced4d2c0d4b8dae97a59d1b83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f648e15be803159dadb3f8bd047b2f46885eec91
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79457821"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804282"
 ---
 # <a name="importing-from-data-sources"></a>Importálás adatforrásokból
 
@@ -56,7 +56,7 @@ A **displayOrder** numerikus, a **displayText** pedig olyan szöveg, amely nem t
 
 ## <a name="export-as-example"></a>Exportálás példaként
 
-Ha nem biztos benne, hogyan kell képviselni `.tsv` a QnA meg a fájlban:
+Ha nem biztos benne, hogyan képviselje a `.tsv` QnA-párt a fájlban:
 * Használja ezt a [letölthető példát a GitHubról](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Structured-multi-turn-format.xlsx?raw=true)
 * Vagy hozza létre a készletet a QnA Maker portálon, mentse, majd exportálja a tudásbázist egy példa, hogyan kell képviselni a készlet.
 

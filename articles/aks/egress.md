@@ -1,15 +1,16 @@
 ---
-title: Statikus IP-cím az Azure Kubernetes-szolgáltatás (AKS) kimenő forgalomához
+title: Statikus IP használata kimenő forgalomhoz
+titleSuffix: Azure Kubernetes Service
 description: Megtudhatja, hogyan hozhat létre és használhat statikus nyilvános IP-címet az Azure Kubernetes-szolgáltatás (AKS) fürtjeiben lévő kimenő forgalomhoz
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: 5850f8dfc08ed80dfe5e5e13f49808c3fd9338c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 08a9682434605fffde73c835e7a9e9d6971d7ff0
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77595756"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803382"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>Statikus nyilvános IP-cím használata az Azure Kubernetes-szolgáltatás (AKS) kimenő forgalomához
 

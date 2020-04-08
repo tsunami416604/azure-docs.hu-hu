@@ -1,15 +1,16 @@
 ---
-title: Fürterőforrások vezérlése Az RBAC és az Azure AD segítségével az Azure Kubernetes szolgáltatásban
+title: Az Azure AD és az RBAC használata fürtökhöz
+titleSuffix: Azure Kubernetes Service
 description: Megtudhatja, hogy miként korlátozhatja az Azure Active Directory csoporttagságot a fürterőforrásokhoz való hozzáférés korlátozására az Azure Kubernetes-szolgáltatás (AKS) szerepköralapú hozzáférés-vezérlésével (RBAC)
 services: container-service
 ms.topic: article
 ms.date: 04/16/2019
-ms.openlocfilehash: 456b6dcdd590b48e06c830db85b726d4bebb69e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad195085c049776bf0db418c57f2c72830f1adff
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77596521"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803569"
 ---
 # <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>Fürterőforrásokhoz való hozzáférés szabályozása szerepköralapú hozzáférés-vezérléssel és Azure Active Directory-identitásokkal az Azure Kubernetes szolgáltatásban
 

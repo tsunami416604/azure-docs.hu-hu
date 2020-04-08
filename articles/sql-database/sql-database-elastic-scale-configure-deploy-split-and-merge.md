@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 50dbca0b3a761b72134eaa6cfed57e231be4ef13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b6f61de23ab4b637cfb5b8ee365ddea9764bf515
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74421032"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810204"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Felosztásos egyesítési szolgáltatás üzembe helyezése az adatok szilánkos adatbázisok közötti áthelyezéséhez
 
@@ -150,7 +150,7 @@ Kérjük, vegye figyelembe, hogy az éles környezetben külön tanúsítványok
 
 ## <a name="troubleshoot-the-deployment"></a>A központi telepítés hibáinak elhárítása
 
-Ha a webes szerepkör nem kapcsolódik online állapotba, valószínűleg probléma van a biztonsági konfigurációval. Ellenőrizze, hogy az SSL a fent leírt módon van-e konfigurálva.
+Ha a webes szerepkör nem kapcsolódik online állapotba, valószínűleg probléma van a biztonsági konfigurációval. Ellenőrizze, hogy a TLS/SSL a fent leírt módon van-e konfigurálva.
 
 Ha a feldolgozói szerepkör nem érhető el online állapotban, de a webes szerepkör sikeres, akkor valószínűleg probléma kapcsolódik a korábban létrehozott állapot-adatbázishoz.
 
@@ -254,7 +254,7 @@ A parancsfájlok a következők:
     -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net'
    ```
 
-5. Hajtsa végre az *ExecuteSampleSplitMerge.ps1* parancsfájlt egy felosztott művelet végrehajtásához (az első szegmens adatainak felét a második szegmensbe helyezi), majd egy egyesítési műveletet (az adatok áthelyezése az első szegmensre). Ha ssl-t konfigurált, és letiltotta a http-végpontot, győződjön meg arról, hogy a https:// végpontot használja.
+5. Hajtsa végre az *ExecuteSampleSplitMerge.ps1* parancsfájlt egy felosztott művelet végrehajtásához (az első szegmens adatainak felét a második szegmensbe helyezi), majd egy egyesítési műveletet (az adatok áthelyezése az első szegmensre). Ha konfigurálta a TLS-t, és letiltotta a http-végpontot, győződjön meg arról, hogy a https:// végpontot használja.
 
    Minta parancssor:
 
@@ -333,7 +333,7 @@ A powershell-parancsfájlok mintafuttatásakor az alábbi üzenet jelenhet meg:
 
    `Invoke-WebRequest : The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.`
 
-Ez a hiba azt jelenti, hogy az SSL-tanúsítvány nincs megfelelően konfigurálva. Kérjük, kövesse a "Csatlakozás webböngészővel" című szakaszutasításait.
+Ez a hiba azt jelenti, hogy a TLS/SSL tanúsítvány nincs megfelelően konfigurálva. Kérjük, kövesse a "Csatlakozás webböngészővel" című szakaszutasításait.
 
 Ha nem tud beküldeni a kérelmeket, a következőt láthatja:
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2019
 ms.author: terrylan
-ms.openlocfilehash: 11bf7c0ae05c2e52d59efb32be47ce6bd96fac4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 599c4a31840b47294b43c4c4d1f0200b17f04540
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76937986"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810545"
 ---
 # <a name="develop-secure-app-for-an-azure-ad-app"></a>Biztonságos alkalmazás fejlesztése egy Azure AD-alkalmazáshoz
 ## <a name="overview"></a>Áttekintés
@@ -228,7 +228,7 @@ $cert = New-AzApplicationGatewaySSLCertificate -Name cert01 -CertificateFile "C:
 
 $listener = New-AzApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SSLCertificate $cert
 
-#Upload the certificate to be used on the SSL-enabled back-end pool resources
+#Upload the certificate to be used on the TLS/SSL-enabled back-end pool resources
 
 #$authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer
 
@@ -246,7 +246,7 @@ $rule = New-AzApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basi
 
 $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
 
-#Configure the SSL policy to be used on the application gateway
+#Configure the TLS/SSL policy to be used on the application gateway
 
 $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -PolicyType Custom
 
@@ -361,7 +361,7 @@ A következő technológiák lehetővé tetszetést biztosítanak a kártyabirto
 - Az Azure Active Directory a Microsoft több-bérlős felhőalapú címtár- és identitáskezelési szolgáltatása. A megoldás minden felhasználója az Azure Active Directoryban jön létre, beleértve az Azure WebApp-ot elérő felhasználókat is.
 - Az Azure szerepköralapú hozzáférés-vezérlés lehetővé teszi a rendszergazdák számára, hogy részletes hozzáférési engedélyeket határozzanak meg, hogy csak annyi hozzáférést adjanak a felhasználóknak, amennyia feladataik elvégzéséhez szükséges. Ahelyett, hogy minden felhasználó nak korlátlan engedélyt az Azure-erőforrások, a rendszergazdák engedélyezhetik csak bizonyos műveletek eléréséhez kártyatulajdonos iadatok eléréséhez. Az előfizetési hozzáférés az előfizetés rendszergazdájára korlátozódik.
 - Az Azure Active Directory kiemelt identitáskezelés lehetővé teszi az ügyfelek számára, hogy minimálisra csökkentsék a felhasználók száma, akik hozzáférnek bizonyos információkhoz, például a kártyatulajdonos adataihoz. A rendszergazdák az Azure Active Directory kiemelt identitáskezelés segítségével felderíthetik, korlátozhatják és figyelhetik a kiemelt identitásokat és az erőforrásokhoz való hozzáférésüket. Ez a funkció igény szerinti, igény szerinti rendszergazdai hozzáférés kényszerítésére is használható, ha szükséges.
-- Az Azure Active Directory Identity Protection észleli a szervezet identitásait érintő potenciális biztonsági réseket, konfigurálja az automatikus válaszokat a szervezet identitásaihoz kapcsolódó gyanús műveletekre, és kivizsgálja a gyanús eseményeket, hogy megtegyék a megfelelő lépéseket azok megoldására.
+- Az Azure Active Directory Identity Protection észleli a szervezet identitásait érintő potenciális biztonsági réseket, konfigurálja az automatikus válaszokat a szervezet identitásaihoz kapcsolódó gyanús műveletekre, és megvizsgálja a gyanús incidenseket, hogy megtegye a megfelelő lépéseket azok megoldásához.
 ### <a name="secrets-management"></a>Titkok kezelése
 A megoldás az Azure Key Vault a kulcsok és a titkos kulcsok kezelésére. Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsok és titkos kulcsok védelmében. A következő Azure Key Vault-funkciók segítenek az ügyfeleknek az ilyen adatok védelmében és elérésében
    - A speciális hozzáférési házirendek igény szerint vannak konfigurálva.
@@ -380,7 +380,7 @@ Az Azure Security Center segítségével az ügyfelek központilag alkalmazhatj�
    - Az Azure Security Center kiemelt biztonsági riasztásokat és incidenseket biztosít, így az ügyfelek egyszerűbben fedezhetik fel és oldják meg a lehetséges biztonsági problémákat. A fenyegetések felderítéséről szóló jelentés minden észlelt fenyegetés, hogy segítse az incidens-elhárítási csapatok a fenyegetések kivizsgálásában és elhárításában.
 ### <a name="azure-application-gateway"></a>Azure Application Gateway 
    Az architektúra csökkenti a biztonsági rések kockázatát egy webalkalmazás-tűzfallal rendelkező Azure Application Gateway használatával, és az OWASP szabálykészlet engedélyezve van. További képességek közé tartozik
-   - End-to-end-SSL.
+   - Végpontok között A TLS.
    - Tiltsa le a TLS 1.0-s és 1.1-es és 1.1-es és 1.1-es
    - TLSv1.2 engedélyezése.
    - Webalkalmazás tűzfala (megelőzési mód).

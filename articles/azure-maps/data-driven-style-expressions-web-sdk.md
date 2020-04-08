@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 3f15033095b02dd35c2d8d7bda60ca184df64c9a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6009a655adcc26ebef31588eff2332a05f3a001
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475019"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804724"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Adatalapú stíluskifejezések (webes SDK)
 
@@ -837,7 +837,7 @@ A `zoom` program a térkép aktuális nagyítási szintjének lekéréséhez `['
 
 **Példa**
 
-Alapértelmezés szerint a hőtérkép-rétegben megjelenített adatpontok sugara rögzített képpontsugarat mutat az összes nagyítási szinthez. A térkép nagyításakor az adatok összesítése és a hőtérkép-réteg máshogy néz ki. Egy `zoom` kifejezés segítségével skálázhatja az egyes nagyítási szintsugarat úgy, hogy minden adatpont a térkép ugyanazon fizikai felületét fedje le. Ez teszi a hőtérkép réteg meg statikus és következetes. A térkép minden egyes nagyítási szintje kétszer annyi képponttal rendelkezik függőlegesen és vízszintesen, mint az előző nagyítási szint. A sugár méretezése, úgy, hogy minden egyes nagyítási szinttel megduplázódik, olyan hőtérképet hoz létre, amely minden nagyítási szinten egységesnek tűnik. Ezt a `zoom` kifejezés sel elvégezheti egy `base 2 exponential interpolation` kifejezéssel az alábbiak szerint. 
+Alapértelmezés szerint a hőtérkép-rétegben megjelenített adatpontok sugara rögzített képpontsugarat mutat az összes nagyítási szinthez. A térkép nagyításakor az adatok összesítése és a hőtérkép-réteg máshogy néz ki. Egy `zoom` kifejezés segítségével skálázhatja az egyes nagyítási szintsugarat úgy, hogy minden adatpont a térkép ugyanazon fizikai felületét fedje le. Ez teszi a hőtérkép réteg meg statikus és következetes. A térkép minden egyes nagyítási szintje kétszer annyi képponttal rendelkezik függőlegesen és vízszintesen, mint az előző nagyítási szint. A sugár méretezése, úgy, hogy minden egyes nagyítási szinttel megduplázódik, olyan hőtérképet hoz létre, amely minden nagyítási szinten egységesnek tűnik. Ez a `zoom` kifejezés kifejezéssel egy `base 2 exponential interpolation` kifejezéssel valósítható meg, a minimális nagyítási szinthez beállított képpontsugárral és a maximális nagyítási szinthez szükséges méretezett sugárral, az alábbiak szerint kiszámítva. `2 * Math.pow(2, minZoom - maxZoom)`
 
 ```javascript 
 var layer = new atlas.layer.HeatMapLayer(datasource, null, {
@@ -849,8 +849,8 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
         //For zoom level 1 set the radius to 2 pixels.
         10, 2,
 
-        //Between zoom level 1 and 19, exponentially scale the radius from 2 pixels to 10,000 pixels.
-        19, 10000
+        //Between zoom level 1 and 19, exponentially scale the radius from 2 pixels to 2 * Math.pow(2, 19 - 1) pixels (524,288 pixels).
+        19, 2 * Math.pow(2, 19 - 1)
     ]
 };
 ```

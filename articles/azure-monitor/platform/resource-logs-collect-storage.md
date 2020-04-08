@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 843c179826b2064a1be24d3cee84b398987b4aed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 787640ef08ee91220f42065af155c372247f0136
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79274215"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804605"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>Az Azure-erőforrásnaplók archiválása tárfiókba
 Az Azure-beli [platformnaplók,](platform-logs-overview.md) beleértve az Azure-tevékenységnaplót és az erőforrásnaplókat, részletes diagnosztikai és naplózási információkat nyújtanak az Azure-erőforrásokhoz és az Azure platformhoz, amelytől függenek.  Ez a cikk ismerteti a platformnaplók gyűjtése egy Azure-tárfiók archiválási adatok megőrzéséhez.
@@ -20,6 +20,8 @@ Az Azure-beli [platformnaplók,](platform-logs-overview.md) beleértve az Azure-
 ## <a name="prerequisites"></a>Előfeltételek
 Létre kell [hoznia egy Azure storage-fiókot,](../../storage/common/storage-account-create.md) ha még nem rendelkezik ilyen. A tárfiók nem kell ugyanabban az előfizetésben, mint az erőforrás-küldő naplók, amíg a felhasználó, aki konfigurálja a beállítást a megfelelő RBAC-hozzáférés mindkét előfizetéshez.
 
+> [!IMPORTANT]
+> Ha az adatokat nem módosítható tárolóba szeretné küldeni, állítsa be a tárfiók nem módosítható házirendjét a [Blob storage szolgáltatás immutálhatósági szabályzatának beállítása és kezelése](../../storage/blobs/storage-blob-immutability-policies-manage.md)című részben leírtak szerint. A cikkben ismertetett összes lépést követnie kell, beleértve a védett hozzáfűző blobok írási műveletek engedélyezését is.
 
 > [!IMPORTANT]
 > Az Azure Data Lake Storage Gen2-fiókok jelenleg nem támogatottak a diagnosztikai beállítások célhelyeként, még akkor sem, ha az Azure Portalon érvényes lehetőségként szerepelhetnek.

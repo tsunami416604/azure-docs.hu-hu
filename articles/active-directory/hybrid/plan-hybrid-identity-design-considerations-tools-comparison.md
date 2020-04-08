@@ -11,94 +11,26 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2018
+ms.date: 04/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aed01ea11c1f53cb090d9c2e65ee23f521575649
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 052d99a819aee415d5e7ad6dc00b8c786af0f636
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60456917"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811104"
 ---
 # <a name="hybrid-identity-directory-integration-tools-comparison"></a>Hibrid identitás: a címtár-integrációs eszközök összehasonlítása
-Az évek során a címtár-integrációs eszközök bővültek és továbbfejlődtek.  Ez a dokumentum ezen eszközök egyesített nézetét is elérhetővé teszi, valamint az egyes eszközökben elérhető funkciók összehasonlíthatóságát biztosítja.
+Az évek során a címtár-integrációs eszközök bővültek és továbbfejlődtek.  
 
-<!-- The hardcoded link is a workaround for campaign ids not working in acom links-->
 
-> [!NOTE]
-> Az Azure AD Connect tartalmazza a korábban Dirsync és AAD Sync néven kiadott összetevőket és funkciókat. Ezek az eszközök már nem külön-külön kerülnek kiadásra, és az Azure AD Connect frissítései minden jövőbeli fejlesztést tartalmaznak, így mindig tudni fogja, hogy hol szerezheti be a legfrissebb funkciókat.
-> 
-> A DirSync és az Azure AD Sync elavultnak számít. További információt [itt](reference-connect-dirsync-deprecated.md) találhat.
-> 
-> 
+- [Fim](https://docs.microsoft.com/previous-versions/windows/desktop/forefront-2010/ff182370%28v%3dvs.100%29) és [MIM](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016) továbbra is támogatottak, és elsősorban a helyszíni rendszerek közötti szinkronizálás engedélyezése.   A [FIM Windows Azure AD-összekötő](https://docs.microsoft.com/previous-versions/mim/dn511001(v=ws.10)?redirectedfrom=MSDN) támogatja a FIM és a MIM, de nem ajánlott az új telepítések – az ügyfelek a helyszíni források, mint a Notes vagy az SAP HCM kell használnia mim feltöltéséhez Active Directory tartományi szolgáltatások (AD DS), majd használja az Azure AD Connect sync vagy az Azure AD Connect felhőkiépítés szinkronizálni a DD DS az Azure AD.
+- [Az Azure AD Connect szinkronizálása](how-to-connect-sync-whatis.md) magában foglalja a korábban a DirSync és az Azure AD Sync szolgáltatásban kiadott összetevőket és funkciókat az AD DS-erdők és az Azure AD közötti szinkronizáláshoz.  
+- [Az Azure AD Connect felhőalapú kiépítés](../cloud-provisioning/what-is-cloud-provisioning.md) egy új Microsoft-ügynök az AD DS-ből az Azure AD-be való szinkronizáláshoz, amely olyan forgatókönyvek esetén hasznos, mint például az egyesülés és az akvizíció, ahol a beszerzett vállalat AD-erdői el vannak különítve az anyavállalat AD-erdőitől.
 
-A következő magyarázatot használhatja mindegyik táblázathoz.
-
-● = Már elérhető  
-JK = Jövőbeli kiadás  
-NyE = Nyilvános előzetes verzió  
-
-## <a name="on-premises-to-cloud-synchronization"></a>Helyszínről felhőbe végzett szinkronizálás
-| Szolgáltatás | Azure Active Directory Connect | Azure Active Directory Synchronization Services (AAD Sync) – TÁMOGATÁSA MEGSZŰNT | Azure Active Directory Synchronization Tool (DirSync) – TÁMOGATÁSA MEGSZŰNT | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
-|:--- |:---:|:---:|:---:|:---:|:---:|
-| Csatlakozás egyetlen helyszíni AD-erdőhöz |● |● |● |● |● |
-| Csatlakozás több helyszíni AD-erdőhöz |● |● | |● |● |
-| Csatlakozás több helyszíni Exchange-szervezethez |● | | | | |
-| Csatlakozás egyetlen helyszíni LDAP-címtárhoz |●* | | |● |● | 
-| Csatlakozás több helyszíni LDAP-címtárakhoz |●*  | | |● |● | 
-| Csatlakozás helyszíni AD-hez és helyszíni LDAP-címtárakhoz |●* | | |● |● | 
-| Csatlakozás egyedi rendszerekhez (SQL, Oracle, MySQL stb.) |JK | | |● |● |
-| Ügyfél által meghatározott attribútumok szinkronizálása (címtárbővítmények) |● | | | | |
-| Csatlakozás helyszíni HR-hez (SAP, Oracle eBusiness, PeopleSoft) |JK | | |● |● |
-| Támogatja a FIM-szinkronizálási szabályokat és összekötőket a helyszíni rendszerekre történő üzembe helyezéshez. | | | |● |● |
-
- 
-&#42; Jelenleg erre két támogatott lehetőség van.  Ezek a következők: 
-
-   1. Használhatja az általános LDAP-összekötőt, és engedélyezheti az Azure AD Connecten kívül.  Ez egy bonyolult megoldás, és szükség van egy partnerre az előkészítéséhez, valamint egy Premier támogatási szerződésre a fenntartásához.  Ez a lehetőség egy vagy több LDAP-címtár kezelésére is képes. 
-
-   2. Kifejlesztheti a saját megoldását is az objektumok LDAP-ból az Active Directoryba való áthelyezésére.  Ezután szinkronizálnia kell az objektumokat az Azure AD Connecttel.  Az objektumok áthelyezésére a MIM vagy a FIM jelenthet megoldást. 
-
-## <a name="cloud-to-on-premises-synchronization"></a>Felhőről helyszínre végzett szinkronizálás
-| Szolgáltatás | Azure Active Directory Connect | Azure Active Directory Synchronization Services – TÁMOGATÁSA MEGSZŰNT  | Azure Active Directory Synchronization Tool (DirSync) – TÁMOGATÁSA MEGSZŰNT  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
-|:--- |:---:|:---:|:---:|:---:|:---:|
-| Eszközök visszaírása |● | |● | | |
-| Attribútum visszaírása (hibrid Exchange-környezethez) |● |● |● |● |● |
-| Csoportobjektumok visszaírása |● | | | | |
-| Jelszavak visszaírása (önkiszolgáló jelszó-visszaállításból (SSPR) és jelszómódosításból) |● |● | | | |
-
-## <a name="authentication-feature-support"></a>Hitelesítési funkciók támogatása
-| Szolgáltatás | Azure Active Directory Connect | Azure Active Directory Synchronization Services – TÁMOGATÁSA MEGSZŰNT  | Azure Active Directory Synchronization Tool (DirSync) – TÁMOGATÁSA MEGSZŰNT  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
-|:--- |:---:|:---:|:---:|:---:|:---:|
-| Jelszókivonat szinkronizálása egyetlen helyszíni AD-erdőhöz |●|●|● | | |
-| Jelszókivonat szinkronizálása több helyszíni AD-erdőhöz |●|● | | | |
-| Átmenő hitelesítés egyetlen helyszíni AD-erdőhöz |●| | | | |
-| Egyszeri bejelentkezés összevonással |● |● |● |● |● |
-| Közvetlen egyszeri bejelentkezés|● |||||
-| Jelszavak visszaírása (SSPR-ből és jelszómódosításból) |● |● | | | |
-
-## <a name="set-up-and-installation"></a>Beállítás és telepítés
-| Szolgáltatás | Azure Active Directory Connect | Azure Active Directory Synchronization Services – TÁMOGATÁSA MEGSZŰNT  | Azure Active Directory Synchronization Tool (DirSync) – TÁMOGATÁSA MEGSZŰNT  | Microsoft Identity Manager 2016 (MIM) |
-|:--- |:---:|:---:|:---:|:---:|
-| Támogatja a tartományvezérlőre történő telepítést |● |● |● | |
-| Támogatja az SQL Express használatát |● |● |● | |
-| Egyszerű frissítés DirSync-ről |● | | | |
-| Rendszergazdai felület honosítása Windows Server-nyelvekre |● |● |● | |
-| Végfelhasználói felület honosítása Windows Server-nyelvekre | | | |● |
-| A Windows Server 2008 és a Windows Server 2008 R2 támogatása |● Szinkronizáláshoz, nem összevonáshoz |● |● |● |
-| A Windows Server 2012 és a Windows Server 2012 R2 támogatása |● |● |● |● |
-
-## <a name="filtering-and-configuration"></a>Szűrés és konfigurálás
-| Szolgáltatás | Azure Active Directory Connect | Azure Active Directory Synchronization Services – TÁMOGATÁSA MEGSZŰNT  | Azure Active Directory Synchronization Tool (DirSync) – TÁMOGATÁSA MEGSZŰNT  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
-|:--- |:---:|:---:|:---:|:---:|:---:|
-| Szűrés a tartományokon és szervezeti egységeken |● |● |● |● |● |
-| Szűrés az objektumok attribútumértékein |● |● |● |● |● |
-| A minimális attribútumkészletek szinkronizálásának engedélyezése (MinSync) |● |● | | | |
-| Különböző szolgáltatássablonok alkalmazásának engedélyezése az attribútumfolyamokhoz |● |● | | | |
-| A folyamból az attribútumok eltávolításának engedélyezése az AD-ből az Azure AD-ba |● |● | | | |
-| Az attribútumfolyamok speciális testreszabásának engedélyezése |● |● | |● |● |
+Ha többet szeretne megtudni az Azure AD Connect-szinkronizálás és az Azure AD Connect felhőalapú kiépítés közötti különbségekről, olvassa el a [Mi az Azure AD Connect felhőkiépítés című cikkében?](../cloud-provisioning/what-is-cloud-provisioning.md)
 
 ## <a name="next-steps"></a>További lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

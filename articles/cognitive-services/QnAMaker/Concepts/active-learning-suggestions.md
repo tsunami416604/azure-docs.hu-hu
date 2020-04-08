@@ -3,12 +3,12 @@ title: Aktív tanulási javaslatok - QnA Maker
 description: Az aktív tanulási javaslatok lehetővé teszik a tudásbázis minőségének javítását azáltal, hogy a felhasználó által beküldött anyagokon alapuló alternatív kérdéseket javasolanak a kérdés-válasz párra.
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: af4f6b399bfd537b38ea741d03e59371ee81e588
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: edbe06b12fbb97473b28ccca968fd3e7d8366152
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80053142"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804216"
 ---
 # <a name="active-learning-suggestions"></a>Aktív tanulási javaslatok
 
@@ -27,7 +27,7 @@ Mindkét módszer biztosítja a ranker hasonló lekérdezések, amelyek fürtöz
 
 ## <a name="how-active-learning-works"></a>Hogyan működik az aktív tanulás?
 
-Az aktív tanulás a QnA Maker által visszaadott néhány legjobb válasz pontszáma alapján aktiválódik. Ha a lekérdezésnek megfelelő QnA-készletek közötti pontszámkülönbségek egy kis tartományon belül vannak, akkor a lekérdezés lehetséges javaslatnak minősül (alternatív kérdésként) a lehetséges QnA párok mindegyikére vonatkozóan. Miután elfogadta ddikta fel a javasolt kérdést egy adott QnA párhoz, a többi pár esetében elutasítjuk. Meg kell emlékezni, hogy mentse és a vonat, elfogadása után javaslatokat.
+Az aktív tanulás a QnA Maker által visszaadott néhány legjobb válasz pontszáma alapján aktiválódik. Ha a lekérdezésnek megfelelő QnA-párok közötti pontszámkülönbségek egy kis tartományon belül vannak, akkor a lekérdezés lehetséges javaslatnak minősül (alternatív kérdésként) a lehetséges QnA párok mindegyikére vonatkozóan. Miután elfogadta ddikta fel a javasolt kérdést egy adott QnA párhoz, a többi pár esetében elutasítjuk. Meg kell emlékezni, hogy mentse és a vonat, elfogadása után javaslatokat.
 
 Az aktív tanulás a lehető legjobb javaslatokat adja azokban az esetekben, amikor a végpontok ésszerű mennyiséget és különböző használati lekérdezéseket kapnak. Ha 5 vagy több hasonló lekérdezés van csoportosítva, 30 percenként a QnA Maker azt javasolja, hogy a felhasználó-alapú kérdéseket a tudásbázis tervezője fogadja el vagy utasítsa el. Az összes javaslat a hasonlóság alapján csoportosítva van csoportosítva, és az alternatív kérdésekre vonatkozó leggyakoribb javaslatok a végfelhasználók által leadott lekérdezések gyakorisága alapján jelennek meg.
 

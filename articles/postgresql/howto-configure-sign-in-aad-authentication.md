@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a9f12849525daeea69ece6e81077446f062e8889
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: f5588503825281f407ddbbc2c1c57cd94a9c7ee6
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384398"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804707"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Az Azure Active Directory használata a PostgreSQL-rel való hitelesítéshez
 
@@ -24,7 +24,9 @@ Ez a cikk bemutatja az Azure Active Directory-hozzáférés konfigurálásának 
 
 ## <a name="setting-the-azure-ad-admin-user"></a>Az Azure AD-rendszergazda imassa beállítása
 
-Csak egy Azure AD-rendszergazdai felhasználó hozhat létre/engedélyezhet felhasználókat az Azure AD-alapú hitelesítéshez. Az Azure AD-rendszergazdai felhasználók létrehozásához kövesse az alábbi lépéseket
+Csak az Azure AD-rendszergazdai felhasználók hozhatnak létre/engedélyezhetnek felhasználókat az Azure AD-alapú hitelesítéshez. Azt javasoljuk, hogy ne használja az Azure AD-rendszergazda rendszeres adatbázis-műveletek, mivel emelt szintű felhasználói engedélyekkel (pl. CREATEDB).
+
+Az Azure AD-rendszergazda beállításához (felhasználó vagy csoport használatával) kövesse az alábbi lépéseket
 
 1. Az Azure Portalon válassza ki az Azure Database for PostgreSQL, amely engedélyezni szeretné az Azure AD példányát.
 2. A Beállítások csoportban válassza az Active Directory rendszergazdája lehetőséget:
@@ -37,36 +39,6 @@ Csak egy Azure AD-rendszergazdai felhasználó hozhat létre/engedélyezhet felh
 > A rendszergazda beállításakor egy új felhasználó kerül az Azure Database for PostgreSQL kiszolgáló teljes rendszergazdai engedélyekkel. Az Azure AD-rendszergazdai felhasználó az Azure Database `azure_ad_admin`for PostgreSQL lesz a szerepkör.
 
 PostgreSQL-kiszolgálónként csak egy Azure AD-rendszergazda hozható létre, és egy másik kiválasztása felülírja a kiszolgálóhoz konfigurált meglévő Azure AD-rendszergazdát. Megadhat egy Azure AD-csoportot az egyes felhasználók helyett, hogy több rendszergazdais legyen. Vegye figyelembe, hogy ezután adminisztrációs célokra a csoport nevével jelentkezik be.
-
-## <a name="creating-azure-ad-users-in-azure-database-for-postgresql"></a>Azure AD-felhasználók létrehozása a PostgreSQL Azure Database szolgáltatásában
-
-Ha azure AD-felhasználót szeretne hozzáadni az Azure Database for PostgreSQL-adatbázishoz, a csatlakozás után hajtsa végre a következő lépéseket (lásd a további szakaszt a csatlakozásról):
-
-1. Először győződjön meg `<user>@yourtenant.onmicrosoft.com` arról, hogy az Azure AD-felhasználó egy érvényes felhasználó az Azure AD-bérlőben.
-2. Jelentkezzen be az Azure Database for PostgreSQL-példány, mint az Azure AD-rendszergazdai felhasználó.
-3. Hozzon `<user>@yourtenant.onmicrosoft.com` létre szerepkört a PostgreSQL Azure Database-ben.
-4. Legyen `<user>@yourtenant.onmicrosoft.com` tagja a szerepnek azure_ad_user. Ezt csak az Azure AD-felhasználóknak kell megadni.
-
-**Példa:**
-
-```sql
-CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
-```
-
-> [!NOTE]
-> A felhasználó hitelesítése az Azure AD-n keresztül nem ad a felhasználónak semmilyen engedélyt az Azure Database for PostgreSQL adatbázisobjektumainak eléréséhez. A felhasználónak manuálisan kell megadnia a szükséges engedélyeket.
-
-## <a name="creating-azure-ad-groups-in-azure-database-for-postgresql"></a>Azure AD-csoportok létrehozása a PostgreSQL Azure Database szolgáltatásában
-
-Ha engedélyezni szeretné az Azure AD-csoportot az adatbázishoz való hozzáféréshez, használja ugyanazt a mechanizmust, mint a felhasználók esetében, de adja meg a csoport nevét:
-
-**Példa:**
-
-```sql
-CREATE ROLE "Prod DB Readonly" WITH LOGIN IN ROLE azure_ad_user;
-```
-
-Bejelentkezéskor a csoport tagjai a személyes hozzáférési jogkivonataikat fogják használni, de a felhasználónévként megadott csoportnévvel jelentkeznek.
 
 ## <a name="connecting-to-azure-database-for-postgresql-using-azure-ad"></a>Csatlakozás a PostgreSQL Azure-adatbázisához az Azure AD használatával
 
@@ -167,6 +139,36 @@ psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgre
 ```
 
 Most már hitelesítve van a PostgreSQL-kiszolgálón az Azure AD-hitelesítés használatával.
+
+## <a name="creating-azure-ad-users-in-azure-database-for-postgresql"></a>Azure AD-felhasználók létrehozása a PostgreSQL Azure Database szolgáltatásában
+
+Ha azure AD-felhasználót szeretne hozzáadni az Azure Database for PostgreSQL-adatbázishoz, a csatlakozás után hajtsa végre a következő lépéseket (lásd a további szakaszt a csatlakozásról):
+
+1. Először győződjön meg `<user>@yourtenant.onmicrosoft.com` arról, hogy az Azure AD-felhasználó egy érvényes felhasználó az Azure AD-bérlőben.
+2. Jelentkezzen be az Azure Database for PostgreSQL-példány, mint az Azure AD-rendszergazdai felhasználó.
+3. Hozzon `<user>@yourtenant.onmicrosoft.com` létre szerepkört a PostgreSQL Azure Database-ben.
+4. Legyen `<user>@yourtenant.onmicrosoft.com` tagja a szerepnek azure_ad_user. Ezt csak az Azure AD-felhasználóknak kell megadni.
+
+**Példa:**
+
+```sql
+CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
+```
+
+> [!NOTE]
+> A felhasználó hitelesítése az Azure AD-n keresztül nem ad a felhasználónak semmilyen engedélyt az Azure Database for PostgreSQL adatbázisobjektumainak eléréséhez. A felhasználónak manuálisan kell megadnia a szükséges engedélyeket.
+
+## <a name="creating-azure-ad-groups-in-azure-database-for-postgresql"></a>Azure AD-csoportok létrehozása a PostgreSQL Azure Database szolgáltatásában
+
+Ha engedélyezni szeretné az Azure AD-csoportot az adatbázishoz való hozzáféréshez, használja ugyanazt a mechanizmust, mint a felhasználók esetében, de adja meg a csoport nevét:
+
+**Példa:**
+
+```sql
+CREATE ROLE "Prod DB Readonly" WITH LOGIN IN ROLE azure_ad_user;
+```
+
+Bejelentkezéskor a csoport tagjai a személyes hozzáférési jogkivonataikat fogják használni, de a felhasználónévként megadott csoportnévvel jelentkeznek.
 
 ## <a name="token-validation"></a>Token érvényesítése
 
