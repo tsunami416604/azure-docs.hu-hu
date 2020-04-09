@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 2a7f5d5eacb2d03e64ae95d34e1cf0bd37bbc7f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 07b071b0e8efc5d664dada133a214d778c6531d0
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259252"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984946"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Ajánlott eljárások az alkalmazások elszigeteléséhez a Service Bus leállásaival és katasztrófáival szemben
 
@@ -33,7 +33,7 @@ A Service Bus Premium támogatja a földrajzi vészhelyreállítást a névtér 
 
 ### <a name="availability-zones"></a>Rendelkezésre állási zónák
 
-A Service Bus Premium Termékváltozat támogatja [a rendelkezésre állási zónák,](../availability-zones/az-overview.md)amely hiba-elszigetelt helyek ugyanabban az Azure-régióban.
+A Service Bus Premium Termékváltozat támogatja [a rendelkezésre állási zónák,](../availability-zones/az-overview.md)amely hiba-elszigetelt helyek ugyanabban az Azure-régióban. A Service Bus az üzenettároló három példányát kezeli (1 elsődleges és 2 másodlagos). A Service Bus az adat- és felügyeleti műveletek hez mindhárom példányt szinkronban tartja. Ha az elsődleges példány sikertelen, az egyik másodlagos példány előléptethető elsődleges re érzékelt állásidő nélkül. Ha az alkalmazások átmeneti bontja a Service Bus, az újrapróbálkozási logika az SDK automatikusan újra csatlakozik a Service Bus. 
 
 > [!NOTE]
 > Az Azure Service Bus Premium rendelkezésre állási zónák támogatása csak olyan [Azure-régiókban](../availability-zones/az-overview.md#services-support-by-region) érhető el, ahol rendelkezésre állási zónák vannak jelen.

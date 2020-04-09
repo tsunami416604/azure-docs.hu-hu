@@ -1,15 +1,16 @@
 ---
-title: Virtuális csomópontok létrehozása az Azure CLI használatával az Azure Kubernetes-szolgáltatásokban (AKS)
+title: Virtuális csomópontok létrehozása az Azure CLI használatával
+titleSuffix: Azure Kubernetes Service
 description: Ismerje meg, hogyan használhatja az Azure CLI-t egy Azure Kubernetes Services (AKS) fürt létrehozásához, amely virtuális csomópontokat használ a podok futtatásához.
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 05e32b6b0017e945044bc7593d4d6dbc543a5b64
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: b6d44ceb9b447d670c4e51c951b547e90dfce38f
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80616466"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984674"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Hozzon létre és konfiguráljon egy Azure Kubernetes-szolgáltatás (AKS) fürtöt virtuális csomópontok használatára az Azure CLI használatával
 
@@ -66,7 +67,7 @@ A virtuális csomópontok funkciói nagymértékben függnek az ACI szolgáltat�
 * [Gazdanevek](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
 * [Érvek](../container-instances/container-instances-exec.md#restrictions) exec az ACI
 * [A DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) nem telepíti a podokat a virtuális csomópontra
-* [A Windows Server-csomópontok (jelenleg előzetes verzióban az AKS-ben)](windows-container-cli.md) nem támogatottak a virtuális csomópontok mellett. A virtuális csomópontok segítségével úgy ütemezheti a Windows Server-tárolókat, hogy az AKS-fürtben Windows Server-csomópontokra lenne szükség.
+* A virtuális csomópontok támogatják a Linux-podok ütemezését. Manuálisan telepítheti a nyílt forráskódú [Virtual Kubelet ACI-szolgáltatót](https://github.com/virtual-kubelet/azure-aci) a Windows Server-tárolók ACI-ra való ütemezéséhez. 
 
 ## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
 

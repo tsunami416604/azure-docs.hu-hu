@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 03/26/2020
+ms.date: 03/30/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1497b757d77d12cb5b963953224fa8929e987853
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 4af7dc5d55e451e4f6873df42e2b740fd1e5cd56
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385500"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891662"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-anyconnect"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja a Cisco AnyConnect-tel
 
@@ -96,6 +96,9 @@ Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Por
 1. A **Cisco AnyConnect beállítása** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
+
+> [!NOTE]
+> Ha szeretne a fedélzeten több TGTs a szerver, akkor meg kell hozzá több példánya a Cisco AnyConnect alkalmazás a galériában. Is választhat, hogy töltse fel a saját tanúsítványt az Azure AD-ben az összes ilyen alkalmazáspéldányok. Így azonos tanúsítvánnyal rendelkezhet az alkalmazásokhoz, de minden alkalmazáshoz különböző azonosító- és válaszURL-címet állíthat be.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
 

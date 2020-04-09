@@ -2,26 +2,21 @@
 title: Webes API-kat hívó asztali alkalmazások regisztrálása – Microsoft identity platform | Azure
 description: Megtudhatja, hogy miként hozhat létre webes API-kat meghívja (alkalmazásregisztráció)
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c55fc9eb94a88dba1ab9fc915fe84bc2dd7d4d40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 599603ba867e21694392e38e9692280f010e08eb
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76702181"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885157"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Webes API-kat meghívjaó asztali alkalmazás: Alkalmazásregisztráció
 
@@ -52,7 +47,7 @@ Az asztali alkalmazásokban használandó átirányítási URI-k a használni k�
 
 - Ha natív Objective-C vagy Swift alkalmazást hoz létre macOS-hez, regisztrálja az átirányítási URI-t az alkalmazás csomagazonosítója alapján a következő formátumban: msauth.<your.app.bundle.id>://auth. Cserélje le <your.app.bundle.id> az alkalmazás csomagazonosítójára.
 - Ha az alkalmazás csak integrált Windows-hitelesítést vagy felhasználónevet és jelszót használ, nem kell átirányítási URI-t regisztrálnia az alkalmazáshoz. Ezek a folyamatok egy oda-vissza a Microsoft identity platform v2.0 végpont. Az alkalmazás nem lesz visszahívva egy adott URI-n.
-- Az eszközkód-áramlás, az integrált Windows-hitelesítés, valamint a felhasználónév és a jelszó megkülönböztetéséhez olyan bizalmas ügyfélalkalmazás-folyamattól, amely nem rendelkezik átirányítási URI-k (a démonalkalmazásokban használt ügyfélhitelesítő adatfolyam) megkülönböztetésére is, ki kell fejeznie ezt a az ön alkalmazása nyilvános ügyfélalkalmazás. A konfiguráció eléréséhez nyissa meg az alkalmazás **hitelesítése** szakaszt. A **Speciális beállítások** alszakasz **Alapértelmezett ügyféltípus** bekezdésében válassza az **Igen** a **Kezelés alkalmazáshoz nyilvános ügyfélként**lehetőséget.
+- Az eszközkód-áramlás, az integrált Windows-hitelesítés, valamint a felhasználónév és a jelszó megkülönböztetéséhez egy olyan bizalmas ügyfélalkalmazás-folyamattól, amely nem rendelkezik átirányítási URI-k (a démonalkalmazásokban használt ügyfélhitelesítő adatfolyam) megkülönböztetéséhez, ki kell fejeznie, hogy az alkalmazás nyilvános ügyfélalkalmazás. A konfiguráció eléréséhez nyissa meg az alkalmazás **hitelesítése** szakaszt. A **Speciális beállítások** alszakasz **Alapértelmezett ügyféltípus** bekezdésében válassza az **Igen** a **Kezelés alkalmazáshoz nyilvános ügyfélként**lehetőséget.
 
   ![Nyilvános ügyfél engedélyezése](media/scenarios/default-client-type.png)
 

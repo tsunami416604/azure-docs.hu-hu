@@ -2,13 +2,13 @@
 title: Sablonok – Áttekintés
 description: Az Azure Resource Manager-sablonok használatával az erőforrások üzembe helyezéséhez nyújtott előnyök ismertetése.
 ms.topic: conceptual
-ms.date: 03/25/2020
-ms.openlocfilehash: 4570f5471ef6baf6f3f4a920be4d93c3f5a90438
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: 02602b4d12ae4333c88b352e4c13923d67f2c591
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80258124"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885735"
 ---
 # <a name="what-are-arm-templates"></a>Mik azok az ARM-sablonok?
 
@@ -30,11 +30,17 @@ Ha az ARM-sablonok és a másik infrastruktúra kódszolgáltatásként való ha
 
    ![A sablonok központi telepítésének összehasonlítása](./media/overview/template-processing.png)
 
-* **Beépített érvényesítés:** A sablon csak az ellenőrzés átadása után kerül üzembe helyezésre. Az Erőforrás-kezelő ellenőrzi a sablont a központi telepítés megkezdése előtt, hogy a központi telepítés sikeres lesz-e. A központi telepítés kevésbé valószínű, hogy félig kész állapotban leáll.
-
 * **Moduláris fájlok:** A sablonokat kisebb, újrafelhasználható összetevőkre bonthatja, és a telepítés kor összekapcsolhatja őket. Egy sablont egy másik sablonba is beágyazhat.
 
 * **Hozzon létre bármilyen Azure-erőforrást:** Azonnal használhatja az új Azure-szolgáltatásokat és -funkciókat a sablonokban. Amint egy erőforrás-szolgáltató új erőforrásokat vezet be, ezeket az erőforrásokat sablonokon keresztül telepítheti. Az új szolgáltatások használata előtt nem kell megvárnia az eszközök vagy modulok frissítésének megvárását.
+
+* **Bővíthetőség:** A [központi telepítési parancsfájlok,](deployment-script-template.md)powershell vagy bash parancsfájlok a sablonokat. A központi telepítési parancsfájlok kiterjesztik az erőforrások üzembe helyezés során történő beállításának lehetőségét. A parancsfájl szerepelhet a sablonban, vagy tárolható egy külső forrásban, és hivatkozhat a sablonban. A központi telepítési parancsfájlok lehetővé teszik a teljes környezet beállításának egyetlen ARM-sablonban történő elvégzését.
+
+* **Tesztelés**: Az ARM sabloneszközkészlettel (arm-ttk) tesztelve biztosíthatja, hogy a sablon megfelelaz ajánlott irányelveknek. Ez a tesztkészlet egy PowerShell-parancsfájl, amely et a [GitHubról](https://github.com/Azure/arm-ttk)töltheti le. Az eszközkészlet megkönnyíti a szakértelem fejlesztését a sablon nyelvének használatával.
+
+* **Módosítások előnézete**: A ["ha" művelettel](template-deploy-what-if.md) a sablon üzembe helyezése előtt megtekintheti a módosítások előnézetét. A "mi lenne, ha" segítségével láthatja, hogy mely erőforrások jönnek létre, frissíthetők vagy törlődnek, valamint az erőforrás-tulajdonságok, amelyek módosulnak. A "mi lenne, ha" művelet ellenőrzi a környezet aktuális állapotát, és szükségtelenné teszi az állapot kezelését.
+
+* **Beépített érvényesítés:** A sablon csak az ellenőrzés átadása után kerül üzembe helyezésre. Az Erőforrás-kezelő ellenőrzi a sablont a központi telepítés megkezdése előtt, hogy a központi telepítés sikeres lesz-e. A központi telepítés kevésbé valószínű, hogy félig kész állapotban leáll.
 
 * **Nyomon követett telepítések:** Az Azure Portalon megtekintheti a központi telepítési előzményeket, és információkat kaphat a sablon üzembe helyezéséről. Láthatja az üzembe helyezett sablont, a paraméterértékeket és a kimeneti értékeket. Más infrastruktúra kódszolgáltatásként nem követi nyomon a portálon keresztül.
 

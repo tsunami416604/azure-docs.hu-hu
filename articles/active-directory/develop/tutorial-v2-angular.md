@@ -3,25 +3,21 @@ title: Egyoldalas alkalmazásoktatóanyag – Azure
 titleSuffix: Microsoft identity platform
 description: Ismerje meg, hogyan hívhatnak meg az Angular SPA-alkalmazások egy hozzáférési jogkivonatot igénylő API-t a Microsoft identity platform végpontjáról
 services: active-directory
-documentationcenter: dev-center-name
 author: hahamil
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 81ade6f02b38a0a4d5ed04c8190b99216638c45d
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 63eda0c5d7b5ef4741e8244fbde290d13b54c5fb
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637850"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80880839"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application-spa"></a>Jelentkezzen be a felhasználókhoz, és hívja fel a Microsoft Graph API-t egy egyoldalas alkalmazásból (SPA)
 
@@ -277,14 +273,14 @@ this.authService.acquireTokenSilent(requestObj).then(function (tokenResponse) {
 
 Ahol `scopes` tartalmazza a szükséges hatóköröket az API hozzáférési jogkivonatában.
 
-Példa:
+Például:
 
 * `["user.read"]`Microsoft Graph-hoz
 * `["<Application ID URL>/scope"]`egyéni webes API-khoz `api://<Application ID>/access_as_user`(azaz)
 
 #### <a name="get-a-user-token-interactively"></a>Felhasználói jogkivonat interaktív lekérése
 
-Néha szükség van a felhasználónak, hogy a Microsoft identity platform végpont. Példa:
+Néha szükség van a felhasználónak, hogy a Microsoft identity platform végpont. Például:
 
 * Előfordulhat, hogy a felhasználóknak újra meg kell adniuk a hitelesítő adataikat, mert a jelszavuk lejárt.
 * Az alkalmazás további erőforrás-hatókörökhöz való hozzáférést kér, amelyekhez a felhasználónak hozzá kell járulnia.

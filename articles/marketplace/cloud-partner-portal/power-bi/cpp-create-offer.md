@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 43bb34a80d8d62cfa2bde445b94fb97da25ccda3
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: c396468bff0edef5cfceccd3d3c3394662111c10
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745478"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984844"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Power BI App-ajánlat létrehozása
 
 >[!Important]
->2020. március 30-tól megkezdjük a Power BI-alkalmazásajánlatok felügyeletének áthelyezését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Az áttelepített ajánlatok kezeléséhez kövesse a [Power BI-alkalmazások létrehozásának áttekintése](https://aka.ms/AzureCreatePBIServiceApp) című témakör utasításait.
+>2020. április 13-tól megkezdjük a Power BI-alkalmazásajánlatok felügyeletének áthelyezését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Az áttelepített ajánlatok kezeléséhez kövesse a [Power BI-alkalmazások létrehozásának áttekintése](https://aka.ms/AzureCreatePBIServiceApp) című témakör utasításait.
 
 Ez a cikk azokat a lépéseket sorolja fel, amelyeket az [AppSource](https://appsource.microsoft.com)új Power BI Alkalmazásajánlatának létrehozásához kell végrehajtani. Minden ajánlat saját entitásként jelenik meg az AppSource-ban. Amikor új ajánlatot hoz létre a [Cloud Partner Portalon,](https://cloudpartner.azure.com/)négy eszközcsoportot kell megadnia az ajánlathoz.
 
@@ -44,7 +44,7 @@ Miután bejelentkezett a Felhőpartneri portálra, válassza az **Új ajánlat l
 
 Az alábbi cikkek a Power BI-alkalmazásajánlat-típus **új ajánlatlapjának** lapjait ismertetik. Minden cikk ismerteti az új Power BI-alkalmazásajánlat eszközcsoportjait és támogató szolgáltatásait.
 
--  [Ajánlat beállításai lap](./cpp-offer-settings-tab.md)
+-  [Ajánlatbeállítási lap](./cpp-offer-settings-tab.md)
 -  [Technikai információs lap](./cpp-technical-info-tab.md)
 -  [Áruház részletei lap](./cpp-storefront-details-tab.md)
 -  [Névjegyek lap](./cpp-contacts-tab.md)

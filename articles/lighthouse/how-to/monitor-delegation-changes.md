@@ -3,12 +3,12 @@ title: Delegálási változások figyelése a kezelő bérlőben
 description: Ismerje meg, hogyan figyelheti a delegálási tevékenységet az ügyfél-bérlőktől a kezelő bérlőig.
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 82c41c392210e088c85af510b9698e0140f660e5
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 322580cc3d0246f7a34e28cdae94da57fda070b5
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421908"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985150"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Delegálási változások figyelése a kezelő bérlőben
 
@@ -73,7 +73,7 @@ Miután létrehozta az egyszerű szolgáltatásfiókot, és hozzárendelte a fig
 
 Miután létrehozott egy új egyszerű szolgáltatásfiókot a Monitoring Reader hozzáférés a kezelő bérlő gyökérhatóköréhez, használhatja a lekérdezésés és a jelentés a delegálási tevékenység a bérlőben. 
 
-[Ez az Azure PowerShell-parancsfájl](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/tools/monitor-delegation-changes) segítségével lekérdezheti az elmúlt 1 nap tevékenység és jelentések bármely hozzáadott vagy eltávolított delegálások (vagy kísérletek, amelyek nem voltak sikeresek). Lekérdezi a [bérlői tevékenységnapló](https://docs.microsoft.com/rest/api/monitor/TenantActivityLogs/List) adatait, majd a következő értékeket készíti a hozzáadott vagy eltávolított delegálások jelentéséhez:
+[Ez az Azure PowerShell-parancsfájl](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/monitor-delegation-changes) segítségével lekérdezheti az elmúlt 1 nap tevékenység és jelentések bármely hozzáadott vagy eltávolított delegálások (vagy kísérletek, amelyek nem voltak sikeresek). Lekérdezi a [bérlői tevékenységnapló](https://docs.microsoft.com/rest/api/monitor/TenantActivityLogs/List) adatait, majd a következő értékeket készíti a hozzáadott vagy eltávolított delegálások jelentéséhez:
 
 - **DedededResourceId**: A delegált előfizetés vagy erőforráscsoport azonosítója
 - **CustomerTenantId**: Az ügyfél bérlői azonosítója

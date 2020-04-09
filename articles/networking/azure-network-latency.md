@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 03/10/2020
 ms.author: kumud
-ms.openlocfilehash: 3469daa8b81b20d5d0052a23ce3236fc4fde75de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d9cae04499f046749e504bcab89b893fcc31a81c
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79082938"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886949"
 ---
 # <a name="azure-network-round-trip-latency-statistics"></a>Az Azure hálózati oda-vissza késési statisztikái
 
@@ -22,9 +22,9 @@ Az Azure folyamatosan figyeli a késés (sebesség) a fő területek a hálózat
 
 A késésmérések a ThousandEyes-ügynököktől kerülnek gyűjtésre, amelyek világszerte üzemeltetik az Azure felhőrégióiban, és folyamatosan küldik egymás között a hálózati mintavételeket 1 perces időközönként. A havi késési statisztikák az összegyűjtött minták havi átlagolásából származnak.
 
-## <a name="february-2020-round-trip-latency-figures"></a>Február 2020 oda-vissza látencia adatok
+## <a name="march-2020-round-trip-latency-figures"></a>Március 2020 oda-vissza látencia adatok
 
-Az Azure-régiók közötti havi átlagos oda-vissza áraaz elmúlt 29 nap (2020. február 29-én végződő) átlagos árad. A következő mérések powered by [ThousandEyes](https://thousandeyes.com).
+Az Azure-régiók közötti havi átlagos oda-vissza áraaz elmúlt 31 nap (2020. március 31-ig végződő) az alábbiakban látható. A következő mérések powered by [ThousandEyes](https://thousandeyes.com).
 
 [![Az Azure régiók közötti késési statisztikái](media/azure-network-latency/azure-network-latency.png)](media/azure-network-latency/azure-network-latency.png#lightbox)
 

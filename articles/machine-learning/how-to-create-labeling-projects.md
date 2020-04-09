@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 03/01/2020
-ms.openlocfilehash: d39cf8745c6f53cb11bb12561fd452325fe52ac6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f6723992ac3335e6abdd78f2008130dfe136f7df
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79296948"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80873888"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Adatcímkézési projekt létrehozása és címkék exportálása 
 
@@ -20,14 +20,14 @@ ms.locfileid: "79296948"
 
 A gépi tanulási projektekben a terjedelmes adatok címkézése gyakran fejfájást okoz. A számítógépes látás-összetevővel ( például képbesorolással vagy objektumészleléssel) rendelkező projektek általában több ezer kép címkéjét igénylik.
  
-[Az Azure Machine Learning](https://ml.azure.com/) központi helyet biztosít a címkézési projektek létrehozásához, kezeléséhez és figyeléséhez. Segítségével koordinálhat adatokat, címkéket és csapattagokat a címkézési feladatok hatékony kezeléséhez. A Machine Learning támogatja a lemezképek besorolását, akár többcímkét, akár többosztályos, és az objektumazonosítást kötött mezőkkel.
+[Az Azure Machine Learning](https://ml.azure.com/) központi helyet biztosít a címkézési projektek (nyilvános előzetes verzió) létrehozásához, kezeléséhez és figyeléséhez. Segítségével koordinálhat adatokat, címkéket és csapattagokat a címkézési feladatok hatékony kezeléséhez. A Machine Learning támogatja a lemezképek besorolását, akár többcímkét, akár többosztályos, és az objektumazonosítást kötött mezőkkel.
 
 A Machine Learning nyomon követi a folyamatot, és fenntartja a befejezetlen címkézési feladatok várólistáját. A címkézőknek nincs szükségük Azure-fiókra a részvételhez. Miután a Microsoft-fiókkal vagy az [Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)való hitelesítést követően annyi címkézést tehetnek, amennyit az idejük megenged.
 
 Indítsa el és állítsa le a projektet, vegyen fel és távolítson el címkézőket és csapatokat, és figyelje a címkézés folyamatát. A címkézett adatokcoco formátumban vagy Azure Machine Learning-adatkészletként exportálhatók.
 
 > [!Important]
-> Jelenleg csak a képbesorolási és objektumazonosítási címkézési projektek támogatottak. Emellett az adatlemezképeknek elérhetőnek kell lenniük egy Azure blob-adattárban. (Ha nem rendelkezik meglévő adattárban, képeket tölthet fel a projekt létrehozása során.) 
+> Jelenleg csak a képbesorolási és objektumazonosítási címkézési projektek támogatottak. Emellett az adatlemezképeknek elérhetőnek kell lenniük egy Azure blob-adattárban. (Ha nem rendelkezik meglévő adattárban, képeket tölthet fel a projekt létrehozása során.)
 
 Ebben a cikkben megtudhatja, hogyan:
 
@@ -41,6 +41,7 @@ Ebben a cikkben megtudhatja, hogyan:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
+
 * A címkét címkézni kívánt adatok, helyi fájlokban vagy az Azure blob storage-ban.
 * Az alkalmazni kívánt címkék készlete.
 * A címkézésre vonatkozó utasítások.
@@ -51,11 +52,12 @@ Ebben a cikkben megtudhatja, hogyan:
 
 A címkézési projektek et az Azure Machine Learning kezeli. A **Projektek címkézése** lapon kezelheti a projekteket és a személyeket. Egy projekthez egy vagy több csapat van rendelve, és egy csapathoz egy vagy több ember van hozzárendelve.
 
-Ha az adatok már az Azure Blob storage, elérhetővé kell tennie, mint egy adattár létrehozása előtt a címkézési projekt. További információt az [Adattárak létrehozása és regisztrálása című témakörben talál.](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#create-and-register-datastores)
+Ha az adatok már az Azure Blob storage, elérhetővé kell tennie, mint egy adattár létrehozása előtt a címkézési projekt. Az adattár használatának például [az Oktatóanyag: Az első képbesorolás-címkézési projekt létrehozása](tutorial-labeling.md)című témakörben található.
 
 Projekt létrehozásához válassza a **Projekt hozzáadása**lehetőséget. Adjon megfelelő nevet a projektnek, és válassza **a Címkézési tevékenységtípust.**
 
 ![A projektkészítő varázsló címkézése](./media/how-to-create-labeling-projects/labeling-creation-wizard.png)
+
 
 * Válassza **a Többosztályos képbesorolást** a projektekhez, ha csak *egy osztályt* szeretne alkalmazni egy osztálykészletből egy képre.
 * Válassza **a Képbesorolás többcímkét** a projektekhez, ha egy vagy *több* címkét szeretne alkalmazni egy osztálycsoportból egy képre. Például, egy fénykép -ból egy kutya erő lenni címkével ellátott -val mindkettő *kutya* és *nappali*.
@@ -168,9 +170,9 @@ A címkézési projekt inicializálása után a projekt bizonyos aspektusai nem 
 
 ## <a name="manage-teams-and-people"></a>Csapatok és személyek kezelése
 
-Alapértelmezés szerint minden létrehozott címkézési projekt egy új csapatot kap Önnel, mint taggal. De a csapatok is megoszthatók a projektek között. És a projekteknek több csapata is lehet. Csapat létrehozásához válassza a **Csapat hozzáadása lehetőséget** a **Csapatok** lapon.
+Alapértelmezés szerint minden létrehozott címkézési projekt egy új csapatot kap Önnel, mint taggal. De a csapatok is megoszthatók a projektek között. És a projekteknek több csapata is lehet. Csapat létrehozásához válassza a **Csapat hozzáadása lehetőséget** a **Csapatok** lapon. 
 
-Ön kezelheti az embereket a **Személyek** lapon. Személyek felvétele és eltávolítása e-mail cím szerint. Minden címkéző hitelesítést kell hitelesíteni a Microsoft-fiók vagy az Azure Active Directory, ha használja.  
+Ön kezelheti az embereket a **Címkézők** lapon. Személyek felvétele és eltávolítása e-mail cím szerint. Minden címkéző hitelesítést kell hitelesíteni a Microsoft-fiók vagy az Azure Active Directory, ha használja.  
 
 Miután hozzáadott egy személyt, hozzárendelheti az illetőt egy vagy több csapathoz: Lépjen a **Csapatok** lapra, jelölje ki a csapatot, majd válassza a **Személyek hozzárendelése** vagy **A személyek eltávolítása lehetőséget.**
 
@@ -216,5 +218,6 @@ A COCO-fájl az Azure Machine Learning-munkaterület alapértelmezett blobtárol
 
 ## <a name="next-steps"></a>További lépések
 
+* [Oktatóanyag: Hozza létre az első képbesorolás-címkézési projektet.](tutorial-labeling.md)
 * Képek címkézése [képbesoroláshoz vagy objektumészleléshez](how-to-label-images.md)
 * További információ az [Azure Machine Learning és a Machine Learning Studio (klasszikus)](compare-azure-ml-to-studio-classic.md)

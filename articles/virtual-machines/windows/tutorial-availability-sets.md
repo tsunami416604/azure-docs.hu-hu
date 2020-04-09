@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0f94f4d312cefec80a0f294e256ee1ad908b903c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 59bf06d2b279bad792bdc42a7c3b6acc2bc304b8
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74068138"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985711"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>Oktatóanyag: Magas rendelkezésre állású virtuális gépek létrehozása és üzembe helyezése az Azure PowerShell-lel
 
@@ -113,7 +113,7 @@ Ha megnézi a rendelkezésre állási készlet a portálon az **erőforráscsopo
 
 ## <a name="check-for-available-vm-sizes"></a>Elérhető virtuálisgép-méretek ellenőrzése 
 
-A rendelkezésre állási csoportot később további virtuális gépekkel bővítheti, azonban tudnia kell, milyen virtuálisgép-méretek érhetők el a hardveren. A [Get-AzVMSize segítségével](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) sorolja fel az összes rendelkezésre álló méreteket a hardverfürtben.
+Amikor virtuális gép egy rendelkezésre állási csoporton belül, tudnia kell, hogy milyen virtuális gép méretei érhetők el a hardveren. A [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) paranccsal lekéri a rendelkezésre állási csoportban üzembe helyezhető virtuális gépek összes rendelkezésre álló méretét.
 
 ```azurepowershell-interactive
 Get-AzVMSize `

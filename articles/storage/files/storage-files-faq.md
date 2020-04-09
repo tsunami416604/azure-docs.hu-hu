@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 093f4b11d10396199e9fac1e22fd82197f3a5e79
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c6062ec008a7a12c720cf28c2d79531e805ebba0
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79268183"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984435"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Az Azure Filesszal kapcsolatos gyakori kérdések (GYIK)
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztásokat kínál a felhőben, amelyek az iparági szabványnak megfelelő [SMB protokollon](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)keresztül érhetők el. Az Azure-fájlmegosztásokat egyidejűleg csatlakoztathatja a Windows, Linux és macOS felhőbeli vagy helyszíni központi telepítésein. Az Azure-fájlmegosztások windows Server-gépeken is gyorsítótárazhatók az Azure File Sync használatával az adatok felhasználási helyéhez közeli gyors hozzáférés érdekében.
@@ -45,7 +45,7 @@ Ez a cikk az Azure Files funkcióival és funkcióival kapcsolatos gyakori kérd
 
     Az Azure Files kifejezetten egy fájlrendszer. Az Azure Files rendelkezik az összes olyan fájlkivonattal, amelyet a helyszíni operációs rendszerekkel való évek óta ismer és szeret. Az Azure Blob storage-hoz hasonlóan az Azure Files is rest-felületet és REST-alapú ügyfélkódtárakat kínál. Az Azure Blob storage-tól eltérően az Azure Files SMB-hozzáférést biztosít az Azure-fájlmegosztásokhoz. Az SMB használatával közvetlenül windowsos, Linuxos vagy macOS-alapú Azure-fájlmegosztást csatlakoztathat, akár a helyszínen, akár a felhőbeli virtuális gépeken, anélkül, hogy bármilyen kódot írna, vagy speciális illesztőprogramokat csatolna a fájlrendszerhez. Az Azure-fájlmegosztások a helyszíni fájlkiszolgálókon is gyorsítótárazhatók az Azure File Sync használatával a gyors hozzáférés érdekében, közel az adatok felhasználásának helyéhez. 
    
-    Az Azure Files és az Azure Blob storage közötti különbségek részletesebb leírását az Azure Blob storage, az Azure Files vagy az [Azure Disks használatának eldöntése](../common/storage-decide-blobs-files-disks.md)című témakörben ismerteti. Ha többet szeretne megtudni az Azure Blob storage-ról, [olvassa el a Bevezetés a Blob-tárolóba című témakört.](../blobs/storage-blobs-introduction.md)
+    Az Azure Files és az Azure Blob storage közötti különbségek részletesebb leírását [az Azure Storage alapvető szolgáltatásainak bemutatása](../common/storage-introduction.md)című témakörben található. Ha többet szeretne megtudni az Azure Blob storage-ról, [olvassa el a Bevezetés a Blob-tárolóba című témakört.](../blobs/storage-blobs-introduction.md)
 
 * <a id="files-versus-disks"></a>**Miért használnék Azure-fájlmegosztást az Azure Disks helyett?**  
     A lemez az Azure Disks egyszerűen egy lemez. Ahhoz, hogy értéket kapjon az Azure Disks-ből, csatolnia kell egy lemezt egy azure-ban futó virtuális géphez. Az Azure Disks használható mindent, amit egy lemezt használna egy helyszíni kiszolgálón. Használhatja operációs rendszer lemezként, az operációs rendszer felcserélési területeként vagy egy alkalmazás dedikált tárolójaként. Az Azure Disks érdekes használata, hogy hozzon létre egy fájlkiszolgálót a felhőben, hogy ugyanazokon a helyeken, ahol lehet használni egy Azure-fájlmegosztást. A fájlkiszolgáló üzembe helyezése az Azure virtuális gépeken nagy teljesítményű módja annak, hogy az Azure-ban beszerezzen fájltárolást, ha olyan telepítési beállításokra van szüksége, amelyeket jelenleg nem támogat az Azure Files (például az NFS protokoll támogatása vagy a prémium szintű tárhely). 
@@ -54,7 +54,7 @@ Ez a cikk az Azure Files funkcióival és funkcióival kapcsolatos gyakori kérd
 
     Az Azure Files és az Azure virtuális gépeken üzemeltetett fájlkiszolgáló (az Azure Disks háttérrendszer-alapú tárolóként való használata mellett) legjobb megoldásának egyik módja az Azure File Sync telepítése egy felhőalapú virtuális gépen üzemeltetett fájlkiszolgálóra. Ha az Azure-fájlmegosztás ugyanabban a régióban van, mint a fájlkiszolgáló, engedélyezheti a felhőrétegezést, és beállíthatja a szabad terület százalékos százalékát a maximálisra (99%). Ez biztosítja az adatok minimális megkettőzését. A fájlkiszolgálókkal bármilyen alkalmazást használhat, például az NFS protokollt támogatást igénylő alkalmazásokat.
 
-    A nagy teljesítményű és magas rendelkezésre állású fájlkiszolgáló Azure-beli beállításának beállításáról az [IaaS virtuálisgép-kiszolgálófürtök központi telepítése a Microsoft Azure-ban](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure/)című témakörben talál további információt. Az Azure Files és az Azure Disks közötti különbségek részletesebb leírását az Azure Blob storage, az Azure Files vagy az [Azure Disks használatának eldöntése](../common/storage-decide-blobs-files-disks.md)című témakörben ismerteti. Ha többet szeretne megtudni az Azure Disks lemezekről, olvassa el az [Azure felügyelt lemezek – áttekintés című témakört.](../../virtual-machines/windows/managed-disks-overview.md)
+    A nagy teljesítményű és magas rendelkezésre állású fájlkiszolgáló Azure-beli beállításának beállításáról az [IaaS virtuálisgép-kiszolgálófürtök központi telepítése a Microsoft Azure-ban](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure/)című témakörben talál további információt. Az Azure Files és az Azure Disks közötti különbségek részletesebb leírását [az Azure Storage-szolgáltatások bemutatása](../common/storage-introduction.md)című témakörben található. Ha többet szeretne megtudni az Azure Disks lemezekről, olvassa el az [Azure felügyelt lemezek – áttekintés című témakört.](../../virtual-machines/windows/managed-disks-overview.md)
 
 * <a id="get-started"></a>
   **Hogyan kezdhetem el használni az Azure Files-t?**  
@@ -396,4 +396,4 @@ Ez a cikk az Azure Files funkcióival és funkcióival kapcsolatos gyakori kérd
 ## <a name="see-also"></a>Lásd még
 * [Azure-fájlok – problémamegoldás a Windows rendszerben](storage-troubleshoot-windows-file-connection-problems.md)
 * [Azure-fájlok – problémamegoldás Linux alatt](storage-troubleshoot-linux-file-connection-problems.md)
-* [Az Azure File Sync hibaelhárítása](storage-sync-files-troubleshoot.md)
+* [Azure-fájlok szinkronizálásának hibaelhárítása](storage-sync-files-troubleshoot.md)

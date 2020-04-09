@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: b9b66c379714c2f4fa2421876fda3bdb500ce6c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db9e86706ecd4e5b2526e1d801dda45ed6b345c6
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250399"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887248"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>Az Azure Cosmos DB figyelése
 Ha az Azure-erőforrásokra támaszkodó kritikus fontosságú alkalmazásokkal és üzleti folyamatokkal rendelkezik, figyelni szeretné ezeket az erőforrásokat azok rendelkezésre állása, teljesítménye és működése szempontjából. Ez a cikk ismerteti az Azure Cosmos-adatbázisok által létrehozott figyelési adatokat, és hogyan használhatja az Azure Monitor funkcióit az adatok elemzéséhez és riasztásához.
@@ -38,7 +38,7 @@ A következő szakaszok erre a cikkre épülnek az Azure Cosmos DB-ből gyűjtö
 
 ## <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>Az Azure Cosmos DB működési szint-metrikáinak megtekintése
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 1. Válassza a Bal oldali navigációs sáv **Monitor** elemét, majd a **Metrikák**lehetőséget.
 
@@ -63,10 +63,6 @@ A mutatókat és a diagramot egy adott **Gyűjteménynév**, **Adatbázisnév**,
 A mutatókat a **Felosztás alkalmazása** beállítással csoportosíthatja. Csoportosíthatja például a művelettípusonkénti kérelemegységeket, és az összes művelet grafikonját egyszerre tekintheti meg az alábbi képen látható módon:
 
 ![Felosztási szűrő hozzáadása](./media/monitor-cosmos-db/apply-metrics-splitting.png)
-
-Íme egy másik példa egy adott adatbázis, tároló vagy művelet kiszolgálóoldali késési metrikáinak megtekintésére:
-
-![Kiszolgálóoldali késési metrikák](./media/monitor-cosmos-db/serverside-latency-metric.png)
 
 ## <a name="monitoring-data-collected-from-azure-cosmos-db"></a>Az Azure Cosmos DB-től gyűjtött adatok figyelése
 

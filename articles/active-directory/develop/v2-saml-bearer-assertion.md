@@ -2,27 +2,22 @@
 title: Microsoft identity platform & SAML bemutatóra állítás folyamat | Azure
 description: Megtudhatja, hogy miként olvashat le adatokat a Microsoft Graph-ból anélkül, hogy a felhasználótól hitelesítő adatokat kérne az SAML-tulajdonosi helyességi folyamat használatával.
 services: active-directory
-documentationcenter: ''
 author: umeshbarapatre
 manager: CelesteDG
-editor: ''
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 16f30473ded5f1de5dc94c1cff9da96165b1a01c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1cd79b1f9e4cd3afadee250da0c184c0c5b8ac07
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76700209"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886177"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft identity platform és OAuth 2.0 SAML-bemutató jatmonthordozó kontinuetási folyamat
 Az OAuth 2.0 SAML-bemutató feltételfolyamat lehetővé teszi, hogy egy SamL-feltétel használatával OAuth hozzáférési jogkivonatot kérjen, ha egy ügyfélnek meglévő megbízhatósági kapcsolatot kell használnia. Az SAML-állításra alkalmazott aláírás biztosítja az engedélyezett alkalmazás hitelesítését. Az SAML-feltétel egy identitásszolgáltató által kiadott és a szolgáltató által felhasznált XML-biztonsági jogkivonat. A szolgáltató a tartalomra támaszkodik, hogy a védelem tárgyát biztonsági okokból azonosítsa.

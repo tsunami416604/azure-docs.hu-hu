@@ -7,16 +7,16 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 2e14b669aadeec4c6a7245be8940051ec604059b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 371b99c794feb4a64eb3e9af389020e25d14eedb
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79409558"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879428"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Képek címkézése feliratozási projektben
 
-Miután a projekt rendszergazdája [létrehozott egy címkézési projektet](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project) az Azure Machine Learningben, a címkézési eszközzel gyorsan előkészítheti az adatokat egy Machine Learning-projekthez. Ez a cikk a következőket ismerteti:
+Miután a projekt rendszergazdája [létrehozott egy címkézési projektet](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project) az Azure Machine Learningben, a címkézési eszköz (nyilvános előzetes verzió) segítségével gyorsan előkészítheti az adatokat egy Machine Learning-projekthez. Ez a cikk a következőket ismerteti:
 
 > [!div class="checklist"]
 > * A címkézési projektek elérése
@@ -45,7 +45,9 @@ Nyissa meg a Részletes utasítások megtekintése című **nézetet.** Ezek az 
 
 Minden képcímkézési tevékenységben a projekt rendszergazdája által megadott készletből választhat megfelelő címkét vagy címkéket. Az első kilenc címkét a billentyűzet számgombjai segítségével választhatja ki.  
 
-A képbesorolási feladatokban egyszerre több képet is megtekinthet. Az elrendezés kiválasztásához használja a képterület feletti ikonokat. Az összes megjelenített kép egyidejű kijelöléséhez használja az **Összes kijelölése**lehetőséget. Az egyes képek kijelöléséhez használja a kép jobb felső sarkában található kör alakú kijelölés gombot. A címke alkalmazásához legalább egy képet ki kell jelölnie. Ha több képet jelöl ki, a kiválasztott címke az összes kijelölt képre vonatkozik.
+A képbesorolási feladatokban egyszerre több képet is megtekinthet. Az elrendezés kiválasztásához használja a képterület feletti ikonokat. 
+
+Az összes megjelenített kép egyidejű kijelöléséhez használja az **Összes kijelölése**lehetőséget. Az egyes képek kijelöléséhez használja a kép jobb felső sarkában található kör alakú kijelölés gombot. A címke alkalmazásához legalább egy képet ki kell jelölnie. Ha több képet jelöl ki, a kiválasztott címke az összes kijelölt képre vonatkozik.
 
 Itt már kiválasztott egy 2-by-2 elrendezés, és hamarosan alkalmazni a tag "Emlős" a képeket a medve és orka. A cápa képét már "Porchal" címkével látták el, és az iguánát még nem jelölték meg.
 

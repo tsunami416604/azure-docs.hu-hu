@@ -9,19 +9,19 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 Customer intent: As a developer, I want to build a Java application with the Async Java SDK to access and manage Azure Cosmos DB resources so that customers can utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: 8704e399156b9cfc6b04ff47af49b956b597a539
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f81052f68d377603c7148ac2a39da626b426e352
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75444888"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985235"
 ---
 # <a name="tutorial-build-a-java-app-with-the-async-java-sdk-to-manage-data-stored-in-a-sql-api-account"></a>Oktatóanyag: Java-alkalmazás létrehozása az Async Java SDK-val az SQL API-fiókban tárolt adatok kezeléséhez
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
 > * [Java](sql-api-java-get-started.md)
-> * [Aszinkron Java](sql-api-async-java-get-started.md)
+> * [Async Java](sql-api-async-java-get-started.md)
 > * [Node.js](sql-api-nodejs-get-started.md)
 > 
 
@@ -44,9 +44,9 @@ Győződjön meg róla, hogy rendelkezik az alábbi erőforrásokkal:
 
 * [Git](https://git-scm.com/downloads).
 
-* [Java fejlesztői készlet (JDK) 8+](https://aka.ms/azure-jdks).
+* [Java fejlesztői készlet (JDK) 8+](/java/azure/jdk/?view=azure-java-stable).
 
-* [Maven](https://maven.apache.org/download.cgi).
+* [Maven, ez az.](https://maven.apache.org/download.cgi)
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB-fiók létrehozása
 

@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: ramkris
-ms.openlocfilehash: 4a7c307e8a4d4088fe4d2f7800398fda4704219c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2e38aeba198f875961024f8c25c7fb0123479f87
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73720834"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985269"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Oktatóanyag: Java webalkalmazás létrehozása az Azure Cosmos DB és az SQL API használatával
 
@@ -46,7 +46,7 @@ Az alkalmazásfejlesztési oktatóanyag elkezdéséhez az alábbiakkal kell rend
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* [Java fejlesztői készlet (JDK) 7+](https://aka.ms/azure-jdks).
+* [Java fejlesztői készlet (JDK) 7+](/java/azure/jdk/?view=azure-java-stable).
 * [Eclipse IDE for Java EE Developers.](https://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
 * [Engedélyezett Java-futtatókörnyezettel (pl. Tomcat vagy Jetty) rendelkező Azure-webhely.](../app-service/app-service-web-get-started-java.md)
 
@@ -62,7 +62,7 @@ Először hozzon létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik fiókka
 ## <a name="step-2-create-the-java-jsp-application"></a><a id="CreateJSP"></a>2. lépés: Új Java JSP-alkalmazás létrehozása
 JSP-alkalmazás létrehozása:
 
-1. Először is hozzon létre egy Java-projektet. Indítsa el az Eclipse-t, kattintson a **File** (Fájl), **New** (Új), majd a **Dynamic Web Projekt** (Dinamikus webes projekt) lehetőségre. Ha nem jelenik meg a **Dynamic Web Projekt** (Dinamikus webes projekt) lehetőség az elérhető projektek között, tegye a következőt: kattintson a **File** (Fájl), **New** (Új), **Project** (Projekt) lehetőségre, bontsa ki a **Web** elemet, majd kattintson a **Dynamic Web Projekt** (Dinamikus webes projekt) elemre, és végül a **Tovább** gombra.
+1. Először is, kezdjük el egy Java projekt létrehozásával. Indítsa el az Eclipse-t, kattintson a **File** (Fájl), **New** (Új), majd a **Dynamic Web Projekt** (Dinamikus webes projekt) lehetőségre. Ha a Dinamikus **webes projekt** nem szerepel elérhető projektként, tegye a következőket: kattintson a **Fájl**menü **Új**parancsára, kattintson a **Project**..., a **Web**kibontása, a Dinamikus **webes projekt**elemre, majd a **Tovább**gombra.
    
     ![JSP Java-alkalmazások fejlesztése](./media/sql-api-java-application/image10.png)
 2. Adja meg a projekt nevét a **Project name** (Projekt neve) mezőben, majd a **Target Runtime** (Tervezett futásidő) legördülő menüben válasszon ki egy értéket (pl. Apache Tomcat v7.0) (nem kötelező), és kattintson a **Finish** (Befejezés) gombra. A tervezett futásidő megadása lehetővé teszi, hogy helyileg, az Eclipse-ben is futtathassa projektjét.

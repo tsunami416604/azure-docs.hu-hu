@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/08/2019
+ms.date: 04/07/2020
 ms.author: willzhan
-ms.openlocfilehash: 64cd93acc78f4cb5b7ebc4266e7359aec662890c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 94edec8261d9916b7575fb247e1698273f244130
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295424"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887197"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Offline Widevine streaming Androidra a Media Services v3-as verzióval
 
@@ -153,65 +153,13 @@ A fenti nyílt forráskódú PWA alkalmazás szerzője a Node.js. Ha saját verz
     - A tanúsítványnak megbízható hitelesítésszolgáltatóval kell rendelkeznie, és az önaláírt fejlesztési tanúsítvány nem működik
     - A tanúsítványnak olyan CN-rel kell rendelkeznie, amely megfelel a webkiszolgáló vagy az átjáró DNS-nevének.
 
-## <a name="frequently-asked-questions"></a>Gyakori kérdések
+## <a name="faqs"></a>Gyakori kérdések
 
-### <a name="question"></a>Kérdés
-
-Hogyan szállíthatok állandó licenceket (offline módban) egyes ügyfelek/felhasználók és nem állandó licencek (offline-letiltva) mások számára? Meg kell kettőznem a tartalmat, és külön tartalomkulcsot kell használnom?
-
-### <a name="answer"></a>Válasz
-Mivel a Media Services v3 lehetővé teszi, hogy egy eszköz több StreamingLocators. Lehet, hogy
-
-1.    One ContentKeyPolicy with license_type = "persistent", ContentKeyPolicyRestriction az "állandó" jogcímekkel és a StreamingLocator;
-2.    Egy másik ContentKeyPolicy license_type="nonpersistent", ContentKeyPolicyRestriction a "nonpersistent" jogcímekkel, és a StreamingLocator.
-3.    A két StreamingLocators különböző ContentKey rendelkezik.
-
-Az egyéni STS üzleti logikájától függően a JWT-jogkivonat ban különböző jogcímek kerülnek kiadásra. A jogkivonattal csak a megfelelő licenc szerezhető be, és csak a megfelelő URL-cím játszható le.
-
-### <a name="question"></a>Kérdés
-
-A Widevine biztonsági szintek esetében a Google "Widevine DRM Architecture Overview" dokumentuma három különböző biztonsági szintet határoz meg. Azonban az [Azure Media Services dokumentációjában a Widevine licencsablonöt](widevine-license-template-overview.md)ismertetett öt különböző biztonsági szint van körvonalazva. Mi a kapcsolat vagy leképezés a két különböző biztonsági szintcsoport között?
-
-### <a name="answer"></a>Válasz
-
-A Google "Widevine DRM Architecture Review" dokumentuma a következő három biztonsági szintet határozza meg:
-
-1.  1. biztonsági szint: Minden tartalomfeldolgozás, kriptográfia és vezérlő a megbízható végrehajtási környezetben (TEE) történik. Egyes implementációs modellekben a biztonsági feldolgozás különböző chipekben végezhető.
-2.  2. biztonsági szint: Titkosítást hajt végre (de nem videofeldolgozást) a TEE-n belül: a visszafejtett pufferek visszakerülnek az alkalmazástartományba, és külön videohardveren vagy -szoftveren keresztül kerülnek feldolgozásra. szinten azonban a kriptográfiai információk feldolgozása még mindig csak a TEE-n belül történik.
-3.  A 3-as biztonsági szint nem rendelkezik TEE-vel az eszközön. Megfelelő intézkedéseket lehet tenni a gazdaoperációs rendszeren található kriptográfiai információk és visszafejtett tartalom védelmére. A Level 3 implementáció tartalmazhat hardveres kriptográfiai motort is, de ez csak növeli a teljesítményt, a biztonságot nem.
-
-Ugyanakkor a [Widevine licencsablon Azure Media Services dokumentációjában](widevine-license-template-overview.md)a content_key_specs security_level tulajdonsága a következő öt különböző értékkel rendelkezhet (a lejátszáshoz szükséges ügyfélrobusztussági követelmények):
-
-1.  Szoftveralapú fehér doboz osszes titkosítás szükséges.
-2.  Szoftver es és egy homályos dekóder szükséges.
-3.  A kulcsanyag- és titkosítási műveleteket egy hardveres pólón belül kell végrehajtani.
-4.  A tartalom titkosítását és dekódolását egy hardveres pólón belül kell elvégezni.
-5.  A titkosítást, a dekódolást és az adathordozók (tömörített és tömörítetlen) minden kezelését egy hardveres TEE-n belül kell kezelni.
-
-Mindkét biztonsági szintet a Google Widevine határozza meg. A különbség a használati szint: architektúra szint vagy API-szint. Az öt biztonsági szint a Widevine API-ban használatos. A content_key_specs objektum, amely security_level tartalmazza, deszerializált, és átadta a Widevine globális kézbesítési szolgáltatás az Azure Media Services Widevine licencszolgáltatás. Az alábbi táblázat a két biztonsági szint csoport közötti leképezést mutatja.
-
-| **A Widevine architektúrában meghatározott biztonsági szintek** |**A Widevine API-ban használt biztonsági szintek**|
-|---|---| 
-| **1. biztonsági szint:** Minden tartalomfeldolgozás, kriptográfia és vezérlés a megbízható végrehajtási környezetben (TEE) történik. Egyes implementációs modellekben a biztonsági feldolgozás különböző chipekben végezhető.|**security_level=5**: Az adathordozók titkosítását, dekódolását és minden kezelését (tömörített és tömörítetlen) egy hardverrel támogatott TEE-n belül kell kezelni.<br/><br/>**security_level=4**: A tartalom titkosítását és dekódolását egy hardveres PÓLÓ-alapú területen kell elvégezni.|
-**2. biztonsági szint:** Titkosítást végez (de nem videofeldolgozást) a TEE-n belül: a visszafejtett pufferek visszakerülnek az alkalmazástartományba, és külön videohardveren vagy -szoftveren keresztül kerülnek feldolgozásra. szinten azonban a kriptográfiai információk feldolgozása még mindig csak a TEE-n belül történik.| **security_level=3**: A kulcsanyag- és titkosítási műveleteket egy hardveres PÓLÓ-n belül kell végrehajtani. |
-| **3. biztonsági szint:** Nincs TEE a készüléken. Megfelelő intézkedéseket lehet tenni a gazdaoperációs rendszeren található kriptográfiai információk és visszafejtett tartalom védelmére. A Level 3 implementáció tartalmazhat hardveres kriptográfiai motort is, de ez csak növeli a teljesítményt, a biztonságot nem. | **security_level=2**: Szoftveres kriptográfia és egy elbúzított dekóder szükséges.<br/><br/>**security_level=1**: Szoftveralapú whitebox titkosítás szükséges.|
-
-### <a name="question"></a>Kérdés
-
-Miért tart ilyen sokáig a tartalom letöltése?
-
-### <a name="answer"></a>Válasz
-
-A letöltési sebesség kétféleképpen javítható:
-
-1.  Engedélyezze a CDN-t, hogy a végfelhasználók nagyobb valószínűséggel nyomják meg a CDN-t az origin/streaming végpont helyett a tartalom letöltéséhez. Ha a felhasználó eléri a streamelési végpontot, minden HLS-szegmens vagy DASH-töredék dinamikusan van csomagolva és titkosítva. Annak ellenére, hogy ez a késés ezredmásodpercben van minden szegmens/töredék esetében, ha egy órás videóval rendelkezik, a felhalmozott késés nagy lehet, ami hosszabb letöltést okozhat.
-2.  Adja meg a végfelhasználóknak azt a lehetőséget, hogy az összes tartalom helyett szelektíven töltsék le a videominőségű rétegeket és hangsávokat. Offline módban nincs értelme letölteni az összes minőségi réteget. Ezt kétféleképpen lehet elérni:
-    1.  Ügyfél által vezérelt: vagy a lejátszó alkalmazás automatikusan kiválasztja, vagy a felhasználó kiválasztja a videó minőségű réteget és a letöltandó hangsávokat;
-    2.  Szolgáltatás vezérelt: az Azure Media Services dinamikus jegyzékfájl-szolgáltatásával létrehozhat egy (globális) szűrőt, amely a HLS-lejátszási listát vagy a DASH MPD-t egyetlen videominőségi rétegre és a kiválasztott hangsávokra korlátozza. Ezután a végfelhasználóknak bemutatott letöltési URL-cím tartalmazza ezt a szűrőt.
+További információ: [Widevine GYIK](frequently-asked-questions.md#widevine-streaming-for-android).
 
 ## <a name="additional-notes"></a>További megjegyzések
 
-* A Widevine a Google Inc. által nyújtott szolgáltatás, amely a Google, Inc. szolgáltatási feltételei és adatvédelmi irányelvei szerint működik.
+A Widevine a Google Inc. által nyújtott szolgáltatás, amely a Google, Inc. szolgáltatási feltételei és adatvédelmi irányelvei szerint működik.
 
 ## <a name="summary"></a>Összefoglalás
 

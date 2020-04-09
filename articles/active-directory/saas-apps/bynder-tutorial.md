@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 456fc2a736b3213a14e5704f89a808c120c45b33
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1848610250e696807acef118384f43d2a51442ca
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73158672"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984486"
 ---
 # <a name="tutorial-integrate-bynder-with-azure-active-directory"></a>Oktatóanyag: Bynder integrálása az Azure Active Directoryval
 
@@ -84,13 +84,25 @@ Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Por
 
 1. Az **Egyszerű SAML-konfiguráció** szakaszban, ha az alkalmazást **IDP** által kezdeményezett módban szeretné konfigurálni, adja meg a következő mezők értékeit:
 
-    a. Az **Azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<company name>.getbynder.com`
+    a. Az **Azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:
+    
+    Alapértelmezett tartomány esetén:`https://<company name>.getbynder.com`
+    
+    Egyéni tartomány esetén:`https;//<subdomain>.<domain>.com`
 
-    b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:`https://<company name>.getbynder.com/sso/SAML/authenticate/`
+    b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:
+    
+     Alapértelmezett tartomány esetén:`https://<company name>.getbynder.com/sso/SAML/authenticate/`
+    
+    Egyéni tartomány esetén:`https://<subdomain>.<domain>.com/sso/SAML/authenticate/`
 
 1. Kattintson **a További URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** által kezdeményezett módban kívánja konfigurálni:
 
-    A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő minta használatával:`https://<company name>.getbynder.com/login/`
+    A **Bejelentkezési URL-cím** mezőbe írjon be egy URL-címet a következő minta használatával:
+    
+     Alapértelmezett tartomány esetén:`https://<company name>.getbynder.com/login/`
+    
+     Egyéni tartomány esetén:` https://<subdomain>.<domain>.com/login/`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Lépjen kapcsolatba [a Bynder ügyféltámogatási csapatával,](https://www.bynder.com/en/support/) hogy megkapja ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.

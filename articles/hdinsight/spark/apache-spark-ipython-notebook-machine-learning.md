@@ -5,21 +5,21 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 06/26/2019
-ms.openlocfilehash: 6e46d7403e251bccd69467cfcdaa1d5073b4e454
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: hdinsightactive,mvc
+ms.date: 04/07/2020
+ms.openlocfilehash: 963f5bd4dfdd9dda78a437bdb1111c9eec2795dc
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73494562"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878442"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>Oktatóanyag: Hozzon létre egy Apache Spark-gépi tanulási alkalmazást az Azure HDInsightban
 
-Ebben az oktatóanyagban megtudhatja, hogyan használhatja a [Jupyter-jegyzetfüzetet](https://jupyter.org/) egy [Apache Spark-alapú](https://spark.apache.org/) gépi tanulási alkalmazás létrehozásához az Azure HDInsight számára.
+Ebben az oktatóanyagban megtudhatja, hogyan használhatja a [Jupyter-jegyzetfüzetet](https://jupyter.org/) egy [Apache Spark-alapú](./apache-spark-overview.md) gépi tanulási alkalmazás létrehozásához az Azure HDInsight számára.
 
-Az [MLib](https://spark.apache.org/docs/latest/ml-guide.html) a Spark skálázható Machine Learning-kódtára, amely gyakori tanulási algoritmusokat és segédeszközöket tartalmaz, beleértve a besorolást, regressziót, fürtözést, együttműködési szűrést, dimenziócsökkentést, valamint mögöttes optimalizálási primitíveket.
+[Az MLlib](https://spark.apache.org/docs/latest/ml-guide.html) a Spark adaptálható gépi tanulási könyvtára, amely közös tanulási algoritmusokból és segédprogramokból áll. (Osztályozás, regresszió, fürtözés, együttműködésen alapuló szűrés és méretcsökkentés. Emellett a mögöttes optimalizálási primitívek is.)
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
@@ -33,13 +33,13 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="understand-the-data-set"></a>Az adatkészlet értelmezése
 
-Az alkalmazás a **minta HVAC.csv** adatokat, amely alapértelmezés szerint az összes fürtön elérhető. A fájl a `\HdiSamples\HdiSamples\SensorSampleData\hvac`helyen található. Az adatok néhány HVAC-rendszerrel felszerelt épület célhőmérsékletét és jelenlegi hőmérsékletét mutatják. A **System** (Rendszer) oszlop tartalmazza a rendszer-azonosítót, míg a **SystemAge** (Rendszer kora) oszlop azt mutatja, hogy az épületben hány éve működik a HVAC-rendszer. Az adatokból egy rendszer-azonosító és a rendszer kora alapján előrejelezhető, hogy egy épület melegebb vagy hidegebb lesz-e a célhőmérséklet alapján.
+Az alkalmazás a **minta HVAC.csv** adatokat, amely alapértelmezés szerint az összes fürtön elérhető. A fájl a `\HdiSamples\HdiSamples\SensorSampleData\hvac`helyen található. Az adatok néhány HVAC-rendszerrel felszerelt épület célhőmérsékletét és jelenlegi hőmérsékletét mutatják. A **System** (Rendszer) oszlop tartalmazza a rendszer-azonosítót, míg a **SystemAge** (Rendszer kora) oszlop azt mutatja, hogy az épületben hány éve működik a HVAC-rendszer. Meg lehet jósolni, hogy egy épület lesz melegebb vagy hidegebb alapján a cél hőmérséklet, adott rendszer azonosító, és a rendszer életkora.
 
 ![A Spark gépi tanulási példához használt adatok pillanatképe](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png "A Spark gépi tanulási példához használt adatok pillanatképe")
 
 ## <a name="develop-a-spark-machine-learning-application-using-spark-mllib"></a>Egy Spark Machine Learning-alkalmazás fejlesztése a Spark MLlib segítségével
 
-Ebben az alkalmazásban egy Spark [ML-folyamat](https://spark.apache.org/docs/2.2.0/ml-pipeline.html) által fogja elvégezni egy dokumentum besorolását. A gépi tanulási folyamatok egységes, magas szintű API-kat tartalmaznak. Ezek olyan adathalmazokra épülnek, amelyek segítenek a gépi tanulási folyamatok létrehozásában és finomhangolásában. A folyamat során a dokumentumokat szavakra osztja fel, a szavakat átalakítja egy numerikus vektorrá, majd végül a vektorok és címkék alapján létrehoz egy előrejelzési modellt. Az alkalmazást az alábbi lépések végrehajtásával hozhatja létre.
+Ez az alkalmazás egy Spark [ML-folyamatot](https://spark.apache.org/docs/2.2.0/ml-pipeline.html) használ a dokumentumbesoroláshoz. A rendszersarokra épülő magas szintű API-k egységes készletét biztosítják. A DataFrame-ek segítségével a felhasználók gyakorlati gépi tanulási folyamatokat hozhatnak létre és hangolnak be. A folyamat során a dokumentumokat szavakra osztja fel, a szavakat átalakítja egy numerikus vektorrá, majd végül a vektorok és címkék alapján létrehoz egy előrejelzési modellt. Az alkalmazás létrehozásához tegye a következő lépéseket.
 
 1. Hozzon létre egy Jupyter notebookot a PySpark-kernellel. Az utasításokért lásd: [Jupyter notebook létrehozása](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook).
 
@@ -143,9 +143,9 @@ Ebben az alkalmazásban egy Spark [ML-folyamat](https://spark.apache.org/docs/2.
 
     ![Kimeneti adatok pillanatképe a Spark gépi tanulási példa](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-output-data.png "Kimeneti adatok pillanatképe a Spark gépi tanulási példa")
 
-    Figyelje meg, hogy a tényleges hőmérséklet alacsonyabb, mint a célhőmérséklet, ami arra utal, hogy az épület hideg. Ezért a betanítási anyag kimenetének első sorában található **label** (címke) értéke **0.0**, ami azt jelenti, hogy az épület nem meleg.
+    Figyelje meg, hogy a tényleges hőmérséklet alacsonyabb, mint a célhőmérséklet, ami arra utal, hogy az épület hideg. Az első sorban a **címke** értéke **0,0**, ami azt jelenti, hogy az épület nem forró.
 
-1. Készítsen elő egy adathalmazt, amelyen lefuttatja a betanított modellt. Ehhez meg kell adnia a rendszer azonosítóját és korát (amit a tanítás kimenetében a **SystemInfo** tulajdonság jelöl), a modell pedig előrejelzi, hogy az adott azonosítójú és korú rendszerrel felszerelt épület melegebb (1.0) vagy hűvösebb (0.0) lesz-e.
+1. Készítsen elő egy adathalmazt, amelyen lefuttatja a betanított modellt. Ehhez adja át a rendszerazonosítót és a rendszer korát **(systemInfo-ként** jelölve a betanítási kimenetben). A modell azt jósolja, hogy az épület, hogy a rendszer azonosító és a rendszer életkora lesz melegebb (jelöli 1.0) vagy hűvösebb (jelöli 0.0).
 
     ```PySpark
     # SystemInfo here is a combination of system ID followed by system age
@@ -180,7 +180,7 @@ Ebben az alkalmazásban egy Spark [ML-folyamat](https://spark.apache.org/docs/2.
     Row(SystemInfo=u'7 22', prediction=0.0, probability=DenseVector([0.5015, 0.4985]))
     ```
 
-   Az előrejelzés első sorában az látható, hogy 20-as azonosítójú, 25 éves HVAC rendszer esetében az épület meleg (**előrejelzés = 1.0**). A DenseVector első értéke (0.49999) a 0.0 előrejelzésnek, a második értéke (0.5001) az 1.0 előrejelzésnek felel meg. A kimenetben – annak ellenére, hogy a második érték csak kicsivel nagyobb – a modell által mutatott előrejelzés: **prediction = 1.0**.
+   Figyelje meg az előrejelzés első sorát. A 20-as azonosítójú és 25 éves rendszeréletkorú fűtés- és légtechnikai rendszer esetében az épület forró (**előrejelzés=1.0**). A DenseVector első értéke (0.49999) a 0.0 előrejelzésnek, a második értéke (0.5001) az 1.0 előrejelzésnek felel meg. A kimenetben – annak ellenére, hogy a második érték csak kicsivel nagyobb – a modell által mutatott előrejelzés: **prediction = 1.0**.
 
 1. Állítsa le a notebookot az erőforrások felszabadításához. Ehhez a notebook **File** (Fájl) menüjében kattintson a **Close and Halt** (Bezárás és leállítás) elemre. Ez a művelet leállítja és bezárja a notebookot.
 
@@ -192,7 +192,7 @@ A HDInsight-alapú Apache Spark-fürtök Anaconda-kódtárakat tartalmaznak. Eze
 
 Ha nem fogja tovább használni ezt az alkalmazást, törölje a következő lépésekkel létrehozott fürtöt:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 1. A felső **keresőmezőbe** írja be a **HDInsight kifejezést.**
 
@@ -202,7 +202,7 @@ Ha nem fogja tovább használni ezt az alkalmazást, törölje a következő lé
 
 1. Válassza a **Törlés** elemet. Válassza az **Igen** lehetőséget.
 
-![Az Azure Portal hdinsight-fürt törlése](./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png "HDInsight-fürt törlése")
+![Az Azure Portal töröl egy HDInsight-fürtöt](./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png "HDInsight-fürt törlése")
 
 ## <a name="next-steps"></a>További lépések
 

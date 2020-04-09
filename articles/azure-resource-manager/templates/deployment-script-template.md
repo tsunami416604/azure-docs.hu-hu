@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: jgao
-ms.openlocfilehash: aa49b313f0fb10175dc6c0003f1a919f61731269
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: f84707adfa406011989c8f9bfdf1e8d9270698a6
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743311"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984793"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Központi telepítési parancsfájlok használata sablonokban (előzetes verzió)
 
@@ -182,7 +182,7 @@ A kimenet a következőképpen fog kinézni:
 
 ## <a name="use-external-scripts"></a>Külső parancsfájlok használata
 
-A szövegközi parancsfájlok mellett külső parancsfájlokat is használhat. Csak a **ps1** fájlkiterjesztéssel rendelkező elsődleges PowerShell-parancsfájlok támogatottak. Cli-parancsfájlok esetén az elsődleges parancsfájlok bármilyen kiterjesztéssel rendelkezhetnek (vagy kiterjesztés nélkül), feltéve, hogy a parancsfájlok érvényes bash parancsfájlok. A külső parancsfájlok `scriptContent` használatához `primaryScriptUri`cserélje le a programra. Példa:
+A szövegközi parancsfájlok mellett külső parancsfájlokat is használhat. Csak a **ps1** fájlkiterjesztéssel rendelkező elsődleges PowerShell-parancsfájlok támogatottak. Cli-parancsfájlok esetén az elsődleges parancsfájlok bármilyen kiterjesztéssel rendelkezhetnek (vagy kiterjesztés nélkül), feltéve, hogy a parancsfájlok érvényes bash parancsfájlok. A külső parancsfájlok `scriptContent` használatához `primaryScriptUri`cserélje le a programra. Például:
 
 ```json
 "primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
@@ -313,7 +313,7 @@ Ezeknek az erőforrásoknak az életciklusát a sablonban a következő tulajdon
 
 A központi telepítési parancsfájl végrehajtása idempotens művelet. Ha a deploymentScripts erőforrás-tulajdonságai közül egyik sem módosul (beleértve a szövegközi parancsfájlt is), a parancsfájl nem lesz végrehajtva a sablon újratelepítésekor. A központi telepítési parancsfájlszolgáltatás összehasonlítja a sablonban lévő erőforrásneveket az ugyanabban az erőforráscsoportban lévő meglévő erőforrásokkal. Két lehetőség van, ha ugyanazt a központi telepítési parancsfájlt többször szeretné végrehajtani:
 
-- Módosítsa a deploymentScripts erőforrás nevét. Például használja az [utcNow](./template-functions-string.md#utcnow) sablon függvényt erőforrásnévként vagy az erőforrás nevének részeként. Az erőforrásnév módosítása új deploymentScripts erőforrást hoz létre. Ez jó vezetése története script végrehajtás.
+- Módosítsa a deploymentScripts erőforrás nevét. Például használja az [utcNow](./template-functions-date.md#utcnow) sablon függvényt erőforrásnévként vagy az erőforrás nevének részeként. Az erőforrásnév módosítása új deploymentScripts erőforrást hoz létre. Ez jó vezetése története script végrehajtás.
 
     > [!NOTE]
     > Az utcNow függvény csak egy paraméter alapértelmezett értékében használható.

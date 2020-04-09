@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.openlocfilehash: 69627c961d9224a124fda09f40901f837d627281
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/07/2020
+ms.openlocfilehash: 4ede8833fdbdbd57654e6c02147f53e58a17b1de
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272642"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886993"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight-fürtök kapacitástervezése
 
@@ -41,13 +41,13 @@ Az alapértelmezett tárolónak, akár egy Azure Storage-fióknak, akár az Azur
 
 ### <a name="location-of-existing-data"></a>A meglévő adatok helye
 
-Ha már rendelkezik az adatokat tartalmazó tárfiókkal vagy Data Lake Storage-tárolóval, és ezt a tárolót szeretné használni a fürt alapértelmezett tárolójaként, akkor a fürtöt ugyanazon a helyen kell telepítenie.
+Ha egy meglévő tárfiókot vagy a Data Lake Storage-t szeretné használni a fürt alapértelmezett tárolójaként, akkor ugyanazon a helyen kell telepítenie a fürtöt.
 
 ### <a name="storage-size"></a>Tárhely mérete
 
-Miután telepített egy HDInsight-fürtöt, további Azure Storage-fiókokat csatolhat, vagy más Data Lake Storage-hoz férhet hozzá. Az összes tárfióknak ugyanazon a helyen kell lennie, mint a fürtnek. A Data Lake Storage lehet egy másik helyen, bár ez néhány adat olvasási/írási késést eredményezhet.
+Egy telepített fürtön további Azure Storage-fiókok csatolása vagy más Data Lake Storage eléréséhez. Az összes tárfióknak ugyanazon a helyen kell élnie, mint a fürtnek. A Data Lake Storage lehet egy másik helyen, bár a nagy távolságok vezethetnek be némi késést.
 
-Az Azure Storage rendelkezik bizonyos [kapacitáskorlátokkal,](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)míg a Data Lake Storage Gen1 gyakorlatilag korlátlan.
+Az Azure Storage rendelkezik bizonyos [kapacitáskorlátokkal,](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)míg a Data Lake Storage Gen1 szinte korlátlan.
 
 A fürt különböző tárfiókok kombinációjához férhet hozzá. Tipikus példák:
 
@@ -60,27 +60,27 @@ A jobb teljesítmény érdekében tárfiókonként csak egy tárolót használjo
 
 ## <a name="choose-a-cluster-type"></a>Fürttípus kiválasztása
 
-A fürttípus határozza meg a HDInsight-fürt által futtatott számítási feladatokat, például [az Apache Hadoop,](https://hadoop.apache.org/) [az Apache Storm,](https://storm.apache.org/) [az Apache Kafka](https://kafka.apache.org/)vagy az [Apache Spark.](https://spark.apache.org/) A rendelkezésre álló fürttípusok részletes leírását az Azure HDInsight – bevezetés című [témakörben tartalmazza.](hdinsight-overview.md#cluster-types-in-hdinsight) Minden fürttípus rendelkezik egy adott központi telepítési topológiával, amely a csomópontok méretére és számára vonatkozó követelményeket tartalmaz.
+A fürttípus határozza meg a HDInsight-fürt által futtatott számítási feladatokat. A típusok közé tartozik [az Apache Hadoop,](./hadoop/apache-hadoop-introduction.md) [az Apache Storm,](./storm/apache-storm-overview.md) [az Apache Kafka](./kafka/apache-kafka-introduction.md)vagy [az Apache Spark](./spark/apache-spark-overview.md). A rendelkezésre álló fürttípusok részletes leírását az Azure HDInsight – bevezetés című [témakörben tartalmazza.](hdinsight-overview.md#cluster-types-in-hdinsight) Minden fürttípus rendelkezik egy adott központi telepítési topológiával, amely a csomópontok méretére és számára vonatkozó követelményeket tartalmaz.
 
 ## <a name="choose-the-vm-size-and-type"></a>Válassza ki a virtuális gép méretét és típusát
 
 Minden fürttípus rendelkezik egy csomó csomóponttípusok, és minden csomópont típus speciális beállításokat a virtuális gép méretét és típusát.
 
-Az alkalmazás optimális fürtméretének meghatározásához teljesítménytesztelheti a fürtkapacitást, és növelheti a jelzett méretet. Használhat például szimulált munkaterhelést vagy *kanárilekérdezést.* Szimulált számítási feladat esetén a várt számítási feladatokkülönböző méretű fürtökön futnak, fokozatosan növelve a méretet, amíg el nem éri a kívánt teljesítményt. A kanári-lekérdezés rendszeres időközönként beszúrható a többi éles lekérdezés közé, hogy megmutassa, hogy a fürt rendelkezik-e elegendő erőforrással.
+Az alkalmazás optimális fürtméretének meghatározásához teljesítménytesztelheti a fürtkapacitást, és növelheti a jelzett méretet. Használhat például szimulált munkaterhelést vagy *kanárilekérdezést.* Futtassa a szimulált számítási feladatokat különböző méretű fürtökön. Fokozatosan növelje a méretet, amíg a kívánt teljesítményt el nem éri. A kanári-lekérdezés rendszeres időközönként beszúrható a többi éles lekérdezés közé, hogy megmutassa, hogy a fürt rendelkezik-e elegendő erőforrással.
 
 Arról, hogy miként választhatja ki a megfelelő virtuálisgép-családot a számítási feladatokhoz, [olvassa el a megfelelő virtuális gép méretének kiválasztása a fürthöz című témakört.](hdinsight-selecting-vm-size.md)
 
 ## <a name="choose-the-cluster-scale"></a>A fürtméret kiválasztása
 
-A fürt skáláját a virtuálisgép-csomópontok mennyisége határozza meg. Minden fürttípushoz vannak olyan csomóponttípusok, amelyek adott skálával rendelkeznek, és a csomóponttípusok támogatják a horizontális felskálázást. Egy fürthöz például pontosan három [Apache ZooKeeper-csomópontra](https://zookeeper.apache.org/) vagy két főcsomópontra lehet szükség. Az elosztott módon adatfeldolgozást végző feldolgozócsomópontok további munkavégző csomópontok hozzáadásával profitálhatnak a horizontális felskálázásból.
+A fürt skáláját a virtuálisgép-csomópontok mennyisége határozza meg. Minden fürttípushoz vannak olyan csomóponttípusok, amelyek adott skálával rendelkeznek, és a csomóponttípusok támogatják a horizontális felskálázást. Egy fürthöz például pontosan három [Apache ZooKeeper-csomópontra](https://zookeeper.apache.org/) vagy két főcsomópontra lehet szükség. Az elosztott módon adatfeldolgozást végző feldolgozócsomópontok további munkavégző csomópontok előnyeit élvezik.
 
-A fürt típusától függően a munkavégző csomópontok számának növelése további számítási kapacitást (például több magot) ad hozzá, de a teljes fürt számára szükséges memória mennyisége is hozzáadódik a feldolgozott adatok memórián belüli tárolásának támogatásához. A virtuális gép méretének és típusának kiválasztásához hasonlóan a megfelelő fürtskálát általában empirikusan éri el, szimulált munkaterhelések vagy kanári lekérdezések használatával.
+A fürt típusától függően a munkavégző csomópontok számának növelése további számítási kapacitást (például több magot) ad hozzá. További csomópontok növeli a teljes memória szükséges a teljes fürt támogatja a memóriában tárolt adatok feldolgozása. A virtuális gép méretének és típusának kiválasztásához hasonlóan a megfelelő fürtskálát általában empirikusan éri el. Szimulált munkaterhelések vagy kanári-lekérdezések használata.
 
-A fürt horizontális felskálázhatja a csúcsterhelési igények, majd a skálázás vissza, ha ezek az extra csomópontok már nincs szükség. Az [automatikus skálázás funkció](hdinsight-autoscale-clusters.md) lehetővé teszi, hogy automatikusan méretezze a fürt et előre meghatározott metrikák és időzítések alapján. A fürtök manuális méretezésével kapcsolatos további tudnivalókért olvassa el a [HDInsight-fürtök méretezése című témakört.](hdinsight-scaling-best-practices.md)
+A fürt skálázható, hogy megfeleljen a csúcsterhelési igényeknek. Ezután csökkentse azt, amikor az extra csomópontokra már nincs szükség. Az [automatikus skálázás funkció](hdinsight-autoscale-clusters.md) lehetővé teszi, hogy automatikusan méretezze a fürt et előre meghatározott metrikák és időzítések alapján. A fürtök manuális méretezésével kapcsolatos további tudnivalókért olvassa el a [HDInsight-fürtök méretezése című témakört.](hdinsight-scaling-best-practices.md)
 
 ### <a name="cluster-lifecycle"></a>Fürt életciklusa
 
-A fürt élettartama díjat számít fel. Ha csak meghatározott időpontokban van szüksége a fürt be- és futtatására, [igény szerinti fürtöket hozhat létre az Azure Data Factory használatával.](hdinsight-hadoop-create-linux-clusters-adf.md) A fürthöz kiépítő és törlő PowerShell-parancsfájlokat is létrehozhat, majd ütemezheti ezeket a parancsfájlokat az [Azure Automation](https://azure.microsoft.com/services/automation/)használatával.
+Egy fürt élettartama díjat számít fel. Ha csak meghatározott időpontokban van szüksége a fürtre, [hozzon létre igény szerinti fürtöket az Azure Data Factory használatával.](hdinsight-hadoop-create-linux-clusters-adf.md) A fürthöz kiépítő és törlő PowerShell-parancsfájlokat is létrehozhat, majd ütemezheti ezeket a parancsfájlokat az [Azure Automation](https://azure.microsoft.com/services/automation/)használatával.
 
 > [!NOTE]  
 > Fürt törlésekor az alapértelmezett Hive metatár is törlődik. A metatároló megőrzése a következő fürt újbóli létrehozása, használjon egy külső metaadat-tároló, például az Azure Database vagy [az Apache Oozie.](https://oozie.apache.org/)
@@ -88,23 +88,23 @@ A fürt élettartama díjat számít fel. Ha csak meghatározott időpontokban v
 
 ### <a name="isolate-cluster-job-errors"></a>Fürtfeladat-hibák elkülönítése
 
-Néha hibák fordulhatnak elő több leképezés párhuzamos végrehajtása miatt, és csökkenthetik a többcsomópontos fürt összetevőinek számát. A probléma elkülönítése érdekében próbálja meg az elosztott tesztelést úgy, hogy egyidejűleg több feladatot futtat egy munkavégző csomópont-fürtön, majd bontsa ki ezt a megközelítést, hogy több feladatot futtasson egyidejűleg egynél több csomópontot tartalmazó fürtökön. Egycsomópontos HDInsight-fürt létrehozásához az Azure-ban használja az *Egyéni (méret, beállítások, alkalmazások)* beállítást, és 1-es értéket használjon a **Fürtméret** szakaszban lévő *Feldolgozó-csomópontok száma* mezőben egy új fürt kiépítésekor.
+Néha hibák fordulhatnak elő több leképezés párhuzamos végrehajtása miatt, és csökkenthetik a többcsomópontos fürt összetevőinek számát. A probléma elkülönítése érdekében próbálkozzon az elosztott teszteléssel. Egyidejűleg több feladatot futtatjon egyetlen munkavégző csomópont-fürtön. Ezután bontsa ki ezt a megközelítést több feladat egyidejű futtatásához egynél több csomópontot tartalmazó fürtökön. Egycsomópontos HDInsight-fürt létrehozásához az Azure-ban használja a *`Custom(size, settings, apps)`* lehetőséget, és használja az 1 értéket a *Feldolgozó-csomópontok száma* a fürt **mérete** szakaszban egy új fürt kiépítése a portálon.
 
 ## <a name="quotas"></a>Kvóták
 
-A célfürt virtuális gépméretének, méretezésének és típusának meghatározása után ellenőrizze az előfizetés aktuális kvótakapacitás-korlátait. Ha eléri a kvótakorlátot, előfordulhat, hogy nem tud új fürtöket telepíteni, vagy a meglévő fürtöket további munkavégző csomópontok hozzáadásával bővíteni. Az egyetlen kvótakorlát a CPU-magok kvótája, amely az egyes előfizetések régió szintjén létezik. Előfordulhat például, hogy az előfizetés 30 alapvető korláttal rendelkezik az USA keleti régiójában. 
+A célfürt virtuális gépméretének, méretezésének és típusának meghatározása után ellenőrizze az előfizetés aktuális kvótakapacitás-korlátait. Ha eléri a kvótakorlátot, nem helyezhet üzembe új fürtöket. Vagy horizontális felskálázás a meglévő fürtök további munkavégző csomópontok hozzáadásával. Az egyetlen kvótakorlát a CPU-magok kvótája, amely az egyes előfizetések régió szintjén létezik. Előfordulhat például, hogy az előfizetés 30 alapvető korláttal rendelkezik az USA keleti régiójában.
 
 A rendelkezésre álló magok ellenőrzéséhez tegye a következő lépéseket:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
-2. Nyissa meg a HDInsight-fürt **Áttekintő** lapját. 
-3. Kattintson a bal oldali menü **Kvótakorlátok parancsára.**
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+2. Nyissa meg a HDInsight-fürt **Áttekintő** lapját.
+3. A bal oldali menüben válassza **a Kvótakorlátok lehetőséget.**
 
    Az oldal megjeleníti a használatban lévő magok számát, a rendelkezésre álló magok számát és az összes magot.
 
 Ha kvótanövelést kell kérnie, tegye a következő lépéseket:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. A lap bal alsó részén válassza a **Súgó + támogatás** lehetőséget.
 1. Válassza **az Új támogatási kérelem lehetőséget.**
 1. Az **Új támogatási kérelem** lap **Alapjai** lapján adja meg a következő beállításokat:
@@ -125,9 +125,9 @@ Ha kvótanövelést kell kérnie, tegye a következő lépéseket:
 
 A [kvótanöveléséhez forduljon az ügyfélszolgálathoz.](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)
 
-Vannak azonban bizonyos rögzített kvótakorlátok, például egy Azure-előfizetés legbőlegelhető 10 000 mag. Ezekről a korlátokról az [Azure-előfizetési és szolgáltatáskorlátok, kvóták és korlátozások.](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)
+Vannak rögzített kvótakorlátok. Egy Azure-előfizetés például legbőlegelhető 10 000 maggal. Ezekről a korlátokról az [Azure-előfizetési és szolgáltatáskorlátok, kvóták és korlátozások.](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Fürtök beállítása a HDInsightban az Apache Hadoop, a Spark, a Kafka és még sok más](hdinsight-hadoop-provision-linux-clusters.md)segítségével: Ismerje meg, hogyan állíthatja be és konfigurálhatja a fürtöket a HDInsightban az Apache Hadoop, a Spark, a Kafka, az Interaktív Hive, a HBase, az ML-szolgáltatások vagy a Storm segítségével.
+* [Fürtök beállítása a HDInsightban az Apache Hadoop, a Spark, a Kafka és egyebek segítségével:](hdinsight-hadoop-provision-linux-clusters.md)Ismerje meg, hogyan állíthatja be és konfigurálhatja a fürtöket a HDInsightban.
 * [Fürtteljesítmény figyelése:](hdinsight-key-scenarios-to-monitor.md)Ismerje meg a HDInsight-fürt olyan kulcsfontosságú forgatókönyveit, amelyek hatással lehetnek a fürt kapacitására.

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 50fb0c1c13ceba88b1894fa0f3165dd40b8e23cf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2376f039b93ca22d3d5a988818538419489d2456
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76278411"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985609"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Oktatóanyag: virtuálisgép-méretezési csoportok automatikus skálázása az Azure PowerShell-lel
 
@@ -209,7 +209,7 @@ Annak érdekében, hogy a **CPU Stress** eszköz tovább futhasson, mindkét tá
 
 
 ## <a name="monitor-the-active-autoscale-rules"></a>Aktív automatikus skálázási szabályok monitorozása
-A méretezési csoportban lévő virtuálisgép-példányok számának monitorozásához használja a **while** parancsot. 5 percet vesz igénybe, míg az automatikus skálázási szabályok megindítják a horizontális felskálázási folyamatot válaszként a **CPUStress* által az egyes virtuálisgép-példányokra alkalmazott processzorterhelésre:
+A méretezési csoportban lévő virtuálisgép-példányok számának monitorozásához használja a **while** parancsot. 5 percet vesz igénybe, amíg az automatikus skálázási skálázás idoben megkezdi a horizontális felskálázási folyamatot a **CPUStress** által az egyes virtuálisgép-példányokon generált CPU-terhelésre válaszul:
 
 ```azurepowershell-interactive
 while (1) {Get-AzureRmVmssVM `

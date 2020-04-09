@@ -17,12 +17,12 @@ ms.date: 05/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 077671ab4e964d7641aa3a0f0b435b39117eb6aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9b2a0d0b77b6db481b13785907a1359d2bbe3e9b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "65139395"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984504"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>Az ADSync szolgáltatásfiók jelszavának módosítása
 Ha módosítja az ADSync szolgáltatásfiók jelszavát, a szinkronizálási szolgáltatás nem fog tudni helyesen elindulni, amíg fel nem hagyott a titkosítási kulccsal, és újra nem inicializálta az ADSync szolgáltatásfiók jelszavát. 
@@ -84,7 +84,7 @@ Hagyja el a meglévő titkosítási kulcsot, hogy új titkosítási kulcs hozhat
 
 2. Új PowerShell-munkamenet indítása.
 
-3. Navigálás a mappába:`$env:Program Files\Microsoft Azure AD Sync\bin\`
+3. Navigálás a mappába:`'$env:ProgramFiles\Microsoft Azure AD Sync\bin\'`
 
 4. Futtassa a parancsot:`./miiskmu.exe /a`
 

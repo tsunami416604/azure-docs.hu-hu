@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
-ms.openlocfilehash: 40f7de4b4feb2b312705238abd30402edb635ea9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8fbd2065ceae1aadf1dc57c78adb21b7c2848297
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73720893"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985558"
 ---
 # <a name="tutorial-build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Oktatóanyag: Mobilalkalmazások létrehozása a Xamarin és az Azure Cosmos DB segítségével
 
@@ -37,7 +37,7 @@ Az Azure Cosmos DB az alábbi fő lehetőségeket nyújtja a mobilalkalmazás-fe
 * Gyors adatátvitel. Az Azure Cosmos DB mindössze néhány ezredmásodperc alatt végzi a dokumentumok írását és olvasását. A fejlesztők megadhatják a kívánt adatátviteli sebességet, amelyre vonatkozóan az Azure Cosmos DB 99,99%-os rendelkezésre állású SLA-t biztosít minden enyhén korlátozott konzisztenciájú egyrégiós és többrégiós fiókhoz, valamint 99,999%-os olvasási rendelkezésre állást minden többrégiós adatbázisfiókhoz.
 * Korlátlan skálázhatóság. Az Azure Cosmos-tárolók [az alkalmazás növekedésével növekszik.](partition-data.md) Kezdetben a kis adatmennyiségek és a másodpercenkénti néhány száz kérés lehet a jellemző. A gyűjtemények vagy adatbázisok olyan mértékig növekedhetnek, hogy több petabájtnyi adatot tartalmazhatnak, és hatalmas mennyiségű, akár másodpercenként több százmillió kérést szolgálhatnak ki.
 * Globálisan elosztott. A mobilalkalmazások felhasználói általában úton vannak, gyakran a világ legtávolabbi pontjai között. Az Azure Cosmos DB egy [globálisan elosztott adatbázis](distribute-data-globally.md). Kattintson a térképre, és tegye elérhetővé adatait a felhasználói számára.
-* Beépített részletes hitelesítés. Az Azure Cosmos DB-vel könnyedén, összetett egyéni engedélyezési kódok használata nélkül implementálhat olyan népszerű mintákat, mint a [felhasználónkénti adatok](https://aka.ms/documentdb-xamarin-todouser) vagy a többfelhasználós megosztott adatok.
+* Beépített részletes hitelesítés. Az Azure Cosmos DB-vel könnyedén, összetett egyéni engedélyezési kódok használata nélkül implementálhat olyan népszerű mintákat, mint a [felhasználónkénti adatok](https://github.com/kirillg/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems) vagy a többfelhasználós megosztott adatok.
 * Térinformatikai lekérdezések. Napjainkban számos mobilalkalmazás nyújt földrajzi helyhez kötött funkciókat. A [térinformatikai típusok](geospatial.md) kimagasló támogatásával az Azure Cosmos DB nagyban megkönnyíti az efféle élmények megteremtését.
 * Bináris mellékletek. Az alkalmazásadatok gyakran tartalmaznak bináris blobokat. A mellékletek natív támogatásának köszönhetően az Azure Cosmos DB könnyebben használható teljes körűen az alkalmazásadatokhoz.
 
@@ -83,7 +83,7 @@ Az alábbi lépésekkel módosítható a teendőlista alkalmazás egy többfelha
 
   4. Módosítsa az alkalmazást úgy, hogy az a Facebookon keresztül végezze az erőforrásjogkivonat-közvetítőbe való hitelesítést, és a bejelentkezett Facebook-felhasználók számára kérje le az erőforrás-jogkivonatokat. Ezt követően hozzáférhet a felhasználók adataihoz a UserItems gyűjteményben.  
 
-A minta teljes mintakódját megtalálja az [Erőforrásjogkivonat-közvetítő a GitHubon](https://aka.ms/documentdb-xamarin-todouser) oldalon. Az alábbi ábra illusztrálja a megoldást:
+A minta teljes mintakódját megtalálja az [Erőforrásjogkivonat-közvetítő a GitHubon](https://github.com/kirillg/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems) oldalon. Az alábbi ábra illusztrálja a megoldást:
 
 ![Az Azure Cosmos DB felhasználó- és engedélyközvetítője](media/mobile-apps-with-xamarin/documentdb-resource-token-broker.png)
 

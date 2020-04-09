@@ -2,13 +2,13 @@
 title: Sablonfüggvények - karakterlánc
 description: Ismerteti az Azure Resource Manager-sablonban a karakterláncokkal való munkát használandó függvényeket.
 ms.topic: conceptual
-ms.date: 07/31/2019
-ms.openlocfilehash: 070133c3db538e5df76644b62c25ced916adc4af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/08/2020
+ms.openlocfilehash: c0517375b273384f263e8ba421995d4afb6c193b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156276"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982414"
 ---
 # <a name="string-functions-for-arm-templates"></a>Karakterlánc-függvények ARM-sablonokhoz
 
@@ -36,7 +36,7 @@ Az Erőforrás-kezelő a következő függvényeket biztosítja az Azure Resourc
 * [Ugrál](#skip)
 * [felosztás](#split)
 * [kezdődik](#startswith)
-* [sztring](#string)
+* [Karakterlánc](#string)
 * [Substring](#substring)
 * [venni](#take)
 * [lassabbra](#tolower)
@@ -46,7 +46,6 @@ Az Erőforrás-kezelő a következő függvényeket biztosítja az Azure Resourc
 * [Uri](#uri)
 * [uriKomponens](#uricomponent)
 * [uriComponentToString](#uricomponenttostring)
-* [utcNow között](#utcnow)
 
 ## <a name="base64"></a>base64
 
@@ -1097,6 +1096,8 @@ Ezt a függvényt csak egy paraméter alapértelmezett értékéhez használhatj
 
 A newGuid függvény eltér a [guid](#guid) függvénytől, mert nem vesz igénybe paramétereket. Ha ugyanazzal a paraméterrel hívja meg a GUID-ot, akkor minden alkalommal ugyanazt az azonosítót adja vissza. Akkor használja a guid azonosítót, ha megbízhatóan létre kell hoznia ugyanazt a GUID azonosítót egy adott környezethez. Akkor használja a newGuid azonosítót, ha minden alkalommal más azonosítóra van szüksége, például erőforrásokat telepít egy tesztkörnyezetbe.
 
+Az újGuid függvény [a](/dotnet/api/system.guid) .
+
 Ha egy [korábbi sikeres telepítés újratelepítésének lehetőségével rendelkezik,](rollback-on-error.md)és a korábbi központi telepítés tartalmaz egy paramétert, amely newGuid-ot használ, a paraméter nem lesz újraértékelve. Ehelyett a korábbi központi telepítés paraméterértéke automatikusan újra fellesz használva a visszaállítási központi telepítésben.
 
 Tesztkörnyezetben előfordulhat, hogy többször is üzembe kell helyeznie az erőforrásokat, amelyek csak rövid ideig élnek. Ahelyett, hogy egyedi neveket hozna létre, a newGuid with [uniqueString](#uniquestring) használatával egyedi neveket hozhat létre.
@@ -1876,7 +1877,7 @@ A következő példa bemutatja, hogyan hozhat létre egyedi nevet egy tárfiókh
     ...
 ```
 
-Ha létre kell hoznia egy új egyedi nevet minden alkalommal, amikor egy sablont telepít, és nem kívánja frissíteni az erőforrást, használhatja az [utcNow](#utcnow) függvényt uniqueString. Ezt a módszert egy tesztkörnyezetben is használhatja. Például [lásd: utcNow](#utcnow).
+Ha létre kell hoznia egy új egyedi nevet minden alkalommal, amikor egy sablont telepít, és nem kívánja frissíteni az erőforrást, használhatja az [utcNow](template-functions-date.md#utcnow) függvényt uniqueString. Ezt a módszert egy tesztkörnyezetben is használhatja. Például [lásd: utcNow](template-functions-date.md#utcnow).
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -2093,115 +2094,6 @@ Az előző példa kimenete az alapértelmezett értékekkel a következő:
 | uriKimenet | Sztring | `http://contoso.com/resources/nested/azuredeploy.json` |
 | componentOutput | Sztring | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
 | toStringOutput | Sztring | `http://contoso.com/resources/nested/azuredeploy.json` |
-
-## <a name="utcnow"></a>utcNow között
-
-`utcNow(format)`
-
-Az aktuális (UTC) datetime értéket adja eredményül a megadott formátumban. Ha nincs formátum, akkor az ISO 8601 (yyyyMMddTHHmmssZ) formátumot használja. **Ez a függvény csak egy paraméter alapértelmezett értékében használható.**
-
-### <a name="parameters"></a>Paraméterek
-
-| Paraméter | Kötelező | Típus | Leírás |
-|:--- |:--- |:--- |:--- |
-| Formátum |Nem |sztring |Az URI kódolású érték karakterlánclá konvertálása. Használjon [szabványos formátumú karakterláncokat](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy [egyéni formátumú karakterláncokat.](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) |
-
-### <a name="remarks"></a>Megjegyzések
-
-Ezt a függvényt csak egy paraméter alapértelmezett értékéhez használhatja egy kifejezésen belül. Ha ezt a függvényt a sablon ban bárhol használja, az hibát ad vissza. A függvény nem engedélyezett a sablon más részein, mert minden egyes megadáskor más értéket ad vissza. Ugyanazt a sablont üzembe helyezése azonos paraméterekkel nem megbízhatóan ugyanazt az eredményt.
-
-Ha egy [korábbi sikeres központi telepítés újratelepítésének lehetőségével rendelkezik,](rollback-on-error.md)és a korábbi központi telepítés tartalmaz egy utcNow paramétert, a paraméter nem lesz újraértékelve. Ehelyett a korábbi központi telepítés paraméterértéke automatikusan újra fellesz használva a visszaállítási központi telepítésben.
-
-Legyen óvatos egy sablon, amely támaszkodik az utcNow függvény egy alapértelmezett érték. Ha újratelepíti, és nem ad meg értéket a paraméter, a függvény újraértékeli. Ha egy meglévő erőforrást szeretne frissíteni ahelyett, hogy újat hozna létre, adja át a paraméter értékét a korábbi központi telepítésből.
-
-### <a name="return-value"></a>Visszatérítési érték
-
-Az aktuális UTC datetime érték.
-
-### <a name="examples"></a>Példák
-
-A következő példasablon a datetime érték különböző formátumait jeleníti meg.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "utcValue": {
-            "type": "string",
-            "defaultValue": "[utcNow()]"
-        },
-        "utcShortValue": {
-            "type": "string",
-            "defaultValue": "[utcNow('d')]"
-        },
-        "utcCustomValue": {
-            "type": "string",
-            "defaultValue": "[utcNow('M d')]"
-        }
-    },
-    "resources": [
-    ],
-    "outputs": {
-        "utcOutput": {
-            "type": "string",
-            "value": "[parameters('utcValue')]"
-        },
-        "utcShortOutput": {
-            "type": "string",
-            "value": "[parameters('utcShortValue')]"
-        },
-        "utcCustomOutput": {
-            "type": "string",
-            "value": "[parameters('utcCustomValue')]"
-        }
-    }
-}
-```
-
-Az előző példa kimenete az egyes központi telepítésekhez változik, de hasonló lesz a következőkhöz:
-
-| Név | Típus | Érték |
-| ---- | ---- | ----- |
-| utcKimenet | sztring | 20190305T175318Z |
-| utcShortOutput | sztring | 03/05/2019 |
-| utcCustomOutput | sztring | 3 5 |
-
-A következő példa bemutatja, hogyan kell használni egy értéket a függvényből címke értékének beállításakor.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "utcShort": {
-            "type": "string",
-            "defaultValue": "[utcNow('d')]"
-        },
-        "rgName": {
-            "type": "string"
-        }
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Resources/resourceGroups",
-            "apiVersion": "2018-05-01",
-            "name": "[parameters('rgName')]",
-            "location": "westeurope",
-            "tags":{
-                "createdDate": "[parameters('utcShort')]"
-            },
-            "properties":{}
-        }
-    ],
-    "outputs": {
-        "utcShort": {
-            "type": "string",
-            "value": "[parameters('utcShort')]"
-        }
-    }
-}
-```
 
 ## <a name="next-steps"></a>További lépések
 * Az Azure Resource Manager-sablon szakaszainak leírását az [Azure Resource Manager-sablonok készítése című témakörben találja.](template-syntax.md)

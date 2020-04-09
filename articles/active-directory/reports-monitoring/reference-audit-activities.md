@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 843f12d14120a7becdc1e8b15bfcc65948602c44
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 86a0e0b3c64554e00a5ba7734af28dc136df643f
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74007754"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891509"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD naplózott tevékenységekre vonatkozó referencia
 
@@ -370,8 +370,8 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Alkalmazáskezelés|Használati feltételek szerkesztése|
 |Alkalmazáskezelés|Használati feltételek közzététele|
 |Alkalmazáskezelés|Használati feltételek közzétételének visszavonása|
-|Alkalmazáskezelés|Alkalmazás SSL-tanúsítványának hozzáadása|
-|Alkalmazáskezelés|SSL-kötés törlése|
+|Alkalmazáskezelés|Alkalmazás TLS/SSL-tanúsítvány hozzáadása|
+|Alkalmazáskezelés|TLS-kötés törlése|
 |Alkalmazáskezelés|Összekötő regisztrálása|
 |Alkalmazáskezelés|AdminPolicyDatas-RemoveResources|
 |Alkalmazáskezelés|AdminPolicyDatas-SetResources|

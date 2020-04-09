@@ -3,12 +3,12 @@ title: Javítható szabályzat telepítése
 description: Ismerje meg, hogyan lehet egy ügyfél az Azure delegált erőforrás-kezelés, amely lehetővé teszi, hogy az erőforrások elérése és kezelése a saját bérlőn keresztül.
 ms.date: 10/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: c06ed4ea597808aee18d4a848bcfea7152b9cf8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b625e9e3c96866cfbc655a55b770c9ac07a626bd
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270640"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985167"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>Delegált előfizetésen belül kiújítható házirend üzembe helyezése
 
@@ -40,7 +40,7 @@ Az alábbi példa egy **olyan rendszerbiztonsági tagazonosítót** mutat be, ak
 
 Miután létrehozta a felhasználót a fent leírt szükséges engedélyekkel, a felhasználó üzembe helyezheti a szervizelési feladatokat használó házirendeket az ügyfél-bérlőben.
 
-Tegyük fel például, hogy engedélyezni kívánta a diagnosztikát az Azure Key Vault-erőforrásokon az ügyfél-bérlőben, amint azt ez a [minta is szemlélteti.](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/policy-enforce-keyvault-monitoring) A megfelelő engedélyekkel rendelkező(fent leírt) a felügyeleti bérlő egyik felhasználója üzembe helyezne egy [Azure Resource Manager-sablont](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json) ennek a forgatókönyvnek a engedélyezéséhez.
+Tegyük fel például, hogy engedélyezni kívánta a diagnosztikát az Azure Key Vault-erőforrásokon az ügyfél-bérlőben, amint azt ez a [minta is szemlélteti.](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-enforce-keyvault-monitoring) A megfelelő engedélyekkel rendelkező(fent leírt) a felügyeleti bérlő egyik felhasználója üzembe helyezne egy [Azure Resource Manager-sablont](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json) ennek a forgatókönyvnek a engedélyezéséhez.
 
 Vegye figyelembe, hogy a házirend-hozzárendelés létrehozása egy delegált előfizetéssel való használatra jelenleg API-kon keresztül kell elvégezni, nem az Azure Portalon. Ha így tesz, az **apiVersion** kell állítani **2019-04-01-preview**, amely tartalmazza az új **delegáltManagedIdentityResourceId** tulajdonság. Ez a tulajdonság lehetővé teszi, hogy egy felügyelt identitást, amely az ügyfél-bérlő (egy előfizetés vagy erőforráscsoport, amely az Azure delegált erőforrás-kezelés.
 
@@ -62,7 +62,7 @@ A következő példa egy **delegáltManagedIdentityResourceId**szerepkör-hozzá
 ```
 
 > [!TIP]
-> [Hasonló minta](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/policy-add-or-replace-tag) áll rendelkezésre annak bemutatására, hogyan telepíthet egy olyan házirendet, amely címkét ad hozzá vagy távolít el (a módosítási effektushasználatával) egy delegált előfizetéshez.
+> [Hasonló minta](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-add-or-replace-tag) áll rendelkezésre annak bemutatására, hogyan telepíthet egy olyan házirendet, amely címkét ad hozzá vagy távolít el (a módosítási effektushasználatával) egy delegált előfizetéshez.
 
 ## <a name="next-steps"></a>További lépések
 

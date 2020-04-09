@@ -5,12 +5,12 @@ author: radicmilos
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: 3660ece7add8f279292340aae9ab445b682fe045
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: edcf2774873cc23a74a47cc1c9a12e2daa2ed419
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75452083"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984537"
 ---
 # <a name="introduction-to-auto-scaling"></a>Bevezetés az automatikus méretezésbe
 Automatikus skálázás egy további képesség a Service Fabric dinamikusan skálázhatja a szolgáltatások a terhelés, amely a szolgáltatások jelentési, vagy az erőforrások használata alapján. Az automatikus skálázás nagy rugalmasságot biztosít, és lehetővé teszi a szolgáltatás további példányainak vagy partícióinak igény szerinti kiépítését. A teljes automatikus skálázási folyamat automatikus és átlátható, és miután beállította a szabályzatokat egy szolgáltatáson nincs szükség manuális skálázási műveletekre a szolgáltatás szintjén. Az automatikus skálázás a szolgáltatás létrehozásakor vagy bármikor bekapcsolható a szolgáltatás frissítésével.
@@ -136,6 +136,9 @@ A példányok hozzáadásával vagy eltávolításával méretezést használó 
 
 ### <a name="using-application-manifest"></a>Alkalmazásjegyzék használata
 ``` xml
+<NamedPartition>
+    <Partition Name="0" />
+</NamedPartition>
 <ServiceScalingPolicies>
     <ScalingPolicy>
         <AverageServiceLoadScalingTrigger MetricName="servicefabric:/_MemoryInMB" LowerLoadThreshold="300" UpperLoadThreshold="500" ScaleIntervalInSeconds="600"/>

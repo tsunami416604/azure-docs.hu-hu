@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 12bde51222e1e648f97476d5dab039b4ad2adfe8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b3accb1bb8c79d1842c4effe3b99fe2a904fa832
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80067061"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878867"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Oktatóanyag: Lemezek létrehozása és használata virtuálisgép-méretezési csoportokhoz Azure CLI-vel
 A virtuálisgép-méretezési csoportok lemezeket használnak a virtuálisgép-példányok operációs rendszereinek, alkalmazásainak és adatainak tárolására. Méretezési csoportok létrehozásakor és kezelésekor fontos szempont, hogy a számítási feladatok jelentette várható terhelésnek megfelelő lemezméretet és konfigurációt válasszon ki. Ez az oktatóprogram bemutatja, hogyan hozhat létre és kezelhet virtuálisgép-lemezeket. Ezen oktatóanyag segítségével megtanulhatja a következőket:
@@ -51,18 +51,7 @@ Egy méretezési csoport létrehozásakor vagy skálázásakor a rendszer két l
 
 
 ## <a name="azure-data-disks"></a>Azure-adatlemezek
-További adatlemezek adhatók hozzá, amelyekre alkalmazásokat telepíthet és amelyeken adatokat tárolhat. Az adatlemezeket akkor érdemes használni, ha tartós és rugalmas adattárolásra van szükség. Az egyes adatlemezek kapacitása maximum 4 TB lehet. A virtuálisgép-példány mérete határozza meg, hány adatlemez csatolható. A virtuális gépek minden vCPU-jához két adatlemez csatolható.
-
-### <a name="max-data-disks-per-vm"></a>Adatlemezek max. száma virtuális gépenként
-| Típus | Gyakori méretek | Adatlemezek max. száma virtuális gépenként |
-|----|----|----|
-| [Általános célú](../virtual-machines/linux/sizes-general.md) | A, B és D sorozat | 64 |
-| [Számításra optimalizált](../virtual-machines/linux/sizes-compute.md) | F sorozat | 64 |
-| [Memóriaoptimalizált](../virtual-machines/linux/sizes-memory.md) | D, E, G és M sorozat | 64 |
-| [Tárolásra optimalizált](../virtual-machines/linux/sizes-storage.md) | L sorozat | 64 |
-| [GPU](../virtual-machines/linux/sizes-gpu.md) | N sorozat | 64 |
-| [Nagy teljesítmény](../virtual-machines/linux/sizes-hpc.md) | A és H sorozat | 64 |
-
+További adatlemezek adhatók hozzá, amelyekre alkalmazásokat telepíthet és amelyeken adatokat tárolhat. Az adatlemezeket akkor érdemes használni, ha tartós és rugalmas adattárolásra van szükség. Az egyes adatlemezek kapacitása maximum 4 TB lehet. A virtuálisgép-példány mérete határozza meg, hány adatlemez csatolható. Minden virtuális gép vCPU két adatlemezek csatlakoztathatók akár egy abszolút legfeljebb 64 lemez virtuális gépenként.
 
 ## <a name="vm-disk-types"></a>Virtuálisgép-lemezek típusai
 Az Azure két lemeztípust kínál.

@@ -3,12 +3,12 @@ title: Ügyfél előkészítése az Azure által delegált erőforrás-kezelésh
 description: Ismerje meg, hogyan lehet egy ügyfél az Azure delegált erőforrás-kezelés, amely lehetővé teszi, hogy az erőforrások elérése és kezelése a saját bérlőn keresztül.
 ms.date: 03/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6a5f4ce03f762b5903e8b3d6f10810819e02e422
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9eef2e73de7812fc65104131dfd319bf8dfb014e
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246874"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984589"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Ügyfél előkészítése az Azure által delegált erőforrás-kezeléshez
 
@@ -36,7 +36,7 @@ Az ügyfél bérlőjének fedélzetére való ellátásához aktív Azure-előfi
 
 Ha még nem rendelkezik ezekkel az azonosítóértékekkel, az alábbi módokon kérheti be őket. Győződjön meg róla, és használja ezeket a pontos értékeket a központi telepítésben.
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
 A bérlői azonosító látható, ha az Azure Portal jobb felső részén a fiók neve fölé viszi az egérmutatót, vagy a **Címtár váltása**lehetőséget választja. A bérlői azonosító kiválasztásához és másolásához keresse meg az "Azure Active Directory" kifejezést a portálon belül, majd válassza a **Tulajdonságok** lehetőséget, és másolja a **Címtárazonosító** mezőben látható értéket. Ha meg szeretné találni az előfizetés azonosítóját az ügyfél bérlőjében, keresse meg az "Előfizetések" kifejezést, majd válassza ki a megfelelő előfizetés-azonosítót.
 
@@ -126,17 +126,17 @@ A választott sablon attól függ, hogy egy teljes előfizetést, egy erőforrá
 
 |A fedélzetre ezt a  |Az Azure Resource Manager sablon használata  |És módosítsa ezt a paraméterfájlt |
 |---------|---------|---------|
-|Előfizetés   |[delegáltResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.json)  |[dedemresourcemanagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
-|Erőforráscsoport   |[rgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)  |[rgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)    |
-|Több erőforráscsoport egy előfizetésen belül   |[multipleRgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
-|Előfizetés (az Azure Marketplace-en közzétett ajánlat használata esetén)   |[piactérDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
+|Előfizetés   |[delegáltResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management/delegatedResourceManagement.json)  |[dedemresourcemanagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
+|Erőforráscsoport   |[rgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)  |[rgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)    |
+|Több erőforráscsoport egy előfizetésen belül   |[multipleRgDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
+|Előfizetés (az Azure Marketplace-en közzétett ajánlat használata esetén)   |[piactérDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
 > [!IMPORTANT]
 > Az itt leírt folyamat külön előfizetési szintű üzembe helyezést igényel minden egyes üzembe helyezett előfizetéshez, még akkor is, ha ugyanazon ügyfél-bérlőben van előfizetések bevezetése. Külön központi telepítések is szükségesek, ha több erőforráscsoportok at különböző előfizetések ugyanazon ügyfél-bérlőn belül. Azonban egy előfizetésen belül több erőforráscsoport bevezetése egyetlen előfizetésen belül is elvégezhető egy előfizetés-szintű telepítésben.
 >
 > Külön központi telepítések is szükség van több ajánlatok ugyanazon előfizetésre (vagy erőforráscsoportok egy előfizetésen belül) alkalmazva. Minden alkalmazott ajánlatnak más **mspOfferName-t kell használnia.**
 
-A következő példa egy módosított **delegáltErőforrás-kezelő.parameters.json** fájlt mutat be, amely az előfizetés ekként használható. Az erőforráscsoport paraméterfájljai (amelyek az [rg-delegált erőforrás-felügyeleti](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management) mappában találhatók) hasonlóak, de tartalmaznak egy **rgName** paramétert is a fedélzetre helyezendő erőforráscsoport(ok) azonosításához.
+A következő példa egy módosított **delegáltErőforrás-kezelő.parameters.json** fájlt mutat be, amely az előfizetés ekként használható. Az erőforráscsoport paraméterfájljai (amelyek az [rg-delegált erőforrás-felügyeleti](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/rg-delegated-resource-management) mappában találhatók) hasonlóak, de tartalmaznak egy **rgName** paramétert is a fedélzetre helyezendő erőforráscsoport(ok) azonosításához.
 
 ```json
 {
@@ -242,9 +242,9 @@ az deployment create --name <deploymentName> \
 
 ## <a name="confirm-successful-onboarding"></a>Sikeres bevezetés megerősítése
 
-Ha egy ügyfél-előfizetés sikeresen bevan szervezve az Azure delegált erőforrás-kezelésére, a szolgáltató bérlőjének felhasználói láthatják az előfizetést és annak erőforrásait (ha a fenti folyamat során hozzáférést kaptak hozzá, vagy egyénileg, vagy egy Azure AD-csoport tagjaként a megfelelő engedélyekkel). Ennek megerősítéséhez ellenőrizze, hogy az előfizetés az alábbi módokon jelenik-e meg.  
+Ha egy ügyfél-előfizetés sikeresen bevan szervezve az Azure delegált erőforrás-kezelésére, a szolgáltató bérlői felhasználók láthatják az előfizetést és annak erőforrásait (ha a fenti folyamaton keresztül hozzáférést kaptak hozzá, akár egyénileg, akár egy Azure AD-csoport megfelelő engedélyekkel rendelkező tagjaként). Ennek megerősítéséhez ellenőrizze, hogy az előfizetés az alábbi módokon jelenik-e meg.  
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
 A szolgáltató bérlőjében:
 
@@ -300,7 +300,7 @@ Az alábbi példa egy olyan hozzárendelést mutat be, amely megadja a **kezelt 
 
 Az ilyen engedéllyel rendelkező felhasználók az alábbi módokon távolíthatják el a delegálást.
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
 1. Nyissa meg a [Saját ügyfelek lapot](view-manage-customers.md).
 2. Válassza a **Delegálások lehetőséget**.

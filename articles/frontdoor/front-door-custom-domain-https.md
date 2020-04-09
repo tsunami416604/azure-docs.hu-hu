@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: fae4206e555c85fe0555ce1c4366cd57dd386f1e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: efe2c96c619aaf92efc5b4abf76b6b89c96ebd37
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79471829"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878034"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Oktatóanyag: HTTPS konfigurálása Front Door egyéni tartományon
 
@@ -37,7 +37,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > - HTTPS-protokoll engedélyezése az egyéni tartományon
 > - AFD által kezelt tanúsítvány használata 
-> - Saját tanúsítvány használata, amely egyéni SSL-tanúsítvány
+> - Saját tanúsítvány, azaz egyéni TLS/SSL-tanúsítvány használata
 > - A tartomány érvényesítése
 > - HTTPS-protokoll letiltása az egyéni tartományon
 
@@ -48,9 +48,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Mielőtt elvégezhetné a jelen oktatóanyag lépéseit, először létre kell hoznia egy legalább egy egyéni tartománnyal regisztrált Front Doort. További információkért lásd: [Útmutató: Egyéni tartomány hozzáadása a Front Doorhoz](front-door-custom-domain.md)
 
-## <a name="ssl-certificates"></a>SSL-tanúsítványok
+## <a name="tlsssl-certificates"></a>TLS/SSL tanúsítványok
 
-Ha HTTPS-protokollt szeretne engedélyezni egy egyéni Front Door-tartomány tartalmának biztonságos továbbításához, SSL-tanúsítványt kell használnia. Választhat, hogy az Azure Front Door által kezelt tanúsítványt használ, vagy saját tanúsítványt használ.
+Ahhoz, hogy a HTTPS protokoll biztonságosan kézbesítse a tartalmat egy bejárati ajtó egyéni tartományban, TLS/SSL tanúsítványt kell használnia. Választhat, hogy az Azure Front Door által kezelt tanúsítványt használ, vagy saját tanúsítványt használ.
 
 
 ### <a name="option-1-default-use-a-certificate-managed-by-front-door"></a>1. lehetőség (alapértelmezett): A Front Door által felügyelt tanúsítvány használata
@@ -72,7 +72,7 @@ Kövesse az alábbi lépéseket a HTTPS engedélyezéséhez egy egyéni tartomá
 
 ### <a name="option-2-use-your-own-certificate"></a>2. lehetőség: Saját tanúsítvány használata
 
-A saját tanúsítványát is használhatja a HTTPS szolgáltatás engedélyezéséhez. Ez a folyamat Azure Key Vault-integrációval történik, amely lehetővé teszi a tanúsítványok biztonságos tárolását. Az Azure Front Door ezt a biztonságos mechanizmust használja a tanúsítvány bemegszerzéséhez, és néhány további lépést igényel. SSL-tanúsítványt egy engedélyezett hitelesítésszolgáltatóval (CA) kell létrehoznia. Másként, nem engedélyezett CA használata igénybe vétele esetén a kérelme vissza lesz utasítva. Az engedélyezett hitelesítésszolgáltatók listáját az Engedélyezett hitelesítésszolgáltatók az [Azure Bejárati ajtaján az egyéni HTTPS engedélyezéséhez.](front-door-troubleshoot-allowed-ca.md)
+A saját tanúsítványát is használhatja a HTTPS szolgáltatás engedélyezéséhez. Ez a folyamat Azure Key Vault-integrációval történik, amely lehetővé teszi a tanúsítványok biztonságos tárolását. Az Azure Front Door ezt a biztonságos mechanizmust használja a tanúsítvány bemegszerzéséhez, és néhány további lépést igényel. A TLS/SSL-tanúsítvány létrehozásakor létre kell hoznia egy engedélyezett hitelesítésszolgáltatóval. Másként, nem engedélyezett CA használata igénybe vétele esetén a kérelme vissza lesz utasítva. Az engedélyezett hitelesítésszolgáltatók listáját az Engedélyezett hitelesítésszolgáltatók az [Azure Bejárati ajtaján az egyéni HTTPS engedélyezéséhez.](front-door-troubleshoot-allowed-ca.md)
 
 #### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Az Azure Key Vault-fiók és a tanúsítvány előkészítése
  
@@ -84,7 +84,7 @@ A saját tanúsítványát is használhatja a HTTPS szolgáltatás engedélyezé
 2. Azure Key Vault-tanúsítványok: Ha már rendelkezik tanúsítvánnyal, feltöltheti közvetlenül az Azure Key Vault-fiókjába, vagy létrehozhat egy új tanúsítványt közvetlenül az Azure Key Vaultban azokkal a hitelesítésszolgáltató (CA) partnerekkel, amelyekkel az Azure Key Vault integrálva van. Töltse fel a **certificate** tanúsítványt tanúsítványobjektumként, nem pedig **titkos könyvtárként.**
 
 > [!NOTE]
-> Saját SSL-tanúsítványa esetén a Bejárati ajtó nem támogatja az EK-titkosítási algoritmusokkal rendelkező tanúsítványokat.
+> A saját TLS/SSL tanúsítványesetén a Bejárati ajtó nem támogatja az EK-titkosítási algoritmusokkal rendelkező tanúsítványokat.
 
 #### <a name="register-azure-front-door"></a>Regisztráljon az Azure bejárati ajtaját
 
@@ -260,7 +260,7 @@ Az alábbi táblázat a műveleti folyamatot mutatja, amely a HTTPS letiltásako
 
 4. *A SAN tanúsítvány használata kevésbé biztonságos, mint egy dedikált tanúsítvány használata?*
     
-    A SAN-tanúsítvány ugyanolyan titkosítási és biztonsági előírásokat követ, mint a dedikált tanúsítvány. Az összes kiállított SSL-tanúsítvány az SHA-256-ot használja a kiszolgáló fokozott biztonsága érdekében.
+    A SAN-tanúsítvány ugyanolyan titkosítási és biztonsági előírásokat követ, mint a dedikált tanúsítvány. Minden kiadott TLS/SSL tanúsítvány SHA-256-ot használ a fokozott kiszolgálóbiztonság érdekében.
 
 5. *Szükségem van hitelesítésszolgáltató engedélyezési rekordra a DNS szolgáltatómnál?*
 

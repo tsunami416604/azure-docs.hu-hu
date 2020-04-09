@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
-ms.openlocfilehash: d4517314742f3ec8e9968d20745ffb697d96f324
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d3017d09e94040d16950598dad360fe32930c16b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77149932"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985439"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>Oktatóanyag: Aliasrekord konfigurálása egy nyilvános Azure IP-címre való hivatkozáshoz 
 
@@ -20,8 +20,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Hálózati infrastruktúra létrehozása.
-> * Webkiszolgálót futtató virtuális gép létrehozása.
-> * Aliasrekord létrehozása.
+> * Hozzon létre egy webszerver virtuális gép nyilvános IP.Create a web server virtual machine with a public IP.
+> * Hozzon létre egy aliasrekordot, amely a nyilvános IP-címre mutat.
 > * Az aliasrekord tesztelése.
 
 
@@ -48,7 +48,7 @@ Először hozzon létre egy virtuális hálózatot és egy alhálózatot a webki
 4. A **Beállítások** területen válassza a **VNet-Servers** virtuális hálózatot és az **SN-Web** alhálózatot. Nyilvános bejövő portok esetén válassza a **HTTP** > **HTTPS** > **RDP (3389)** lehetőséget, majd az **OK**gombot.
 5. Az **Összefoglalás** lapon válassza a **Létrehozás** lehetőséget.
 
-Ez az eljárás néhány percet vehet igénybe.
+Ez az eljárás néhány percet vehet igénybe. A virtuális gép lesz egy csatlakoztatott hálózati adapter, amely egy alapvető dinamikus nyilvános IP nevű Web-01-ip. A nyilvános IP-cím a virtuális gép újraindításakor megváltozik.
 
 ### <a name="install-iis"></a>Az IIS telepítése
 

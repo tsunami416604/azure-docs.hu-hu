@@ -4,12 +4,12 @@ description: Ismerkedés az Application Insights alkalmazással. Elemezze a hely
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.openlocfilehash: e398f23559729580ae4ad8b6507c2f09328052b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 873fc41585c387246d83008a8f97d6c4d9a32c3b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275619"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985065"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Webalkalmazások teljesítményének monitorozása
 
@@ -26,8 +26,7 @@ Ha még nem adott hozzá Application Insights-ot a projekthez (azaz ha nem rende
 * [ASP.NET-webalkalmazások](../../azure-monitor/app/asp-net.md)
   * [Kivételfigyelés hozzáadása](../../azure-monitor/app/asp-net-exceptions.md)
   * [Függőségfigyelés hozzáadása](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Java EE webalkalmazások](../../azure-monitor/app/java-get-started.md)
-  * [Függőségfigyelés hozzáadása](../../azure-monitor/app/java-agent.md)
+* [Java EE webalkalmazások](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
 
 ## <a name="exploring-performance-metrics"></a><a name="view"></a>Teljesítménymutatók feltárása
 Az [Azure Portalon](https://portal.azure.com)keresse meg az alkalmazáshoz beállított Application Insights-erőforrást. Az áttekintő panel az alapvető teljesítményadatokat jeleníti meg:

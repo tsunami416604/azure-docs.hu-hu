@@ -3,7 +3,6 @@ title: Az Active Directoryhoz csatlakoztatott szolgáltatás használata (Visual
 description: Azure Active Directory hozzáadása a Visual Studio Csatlakoztatott szolgáltatások hozzáadása párbeszédpanelen
 author: ghogen
 manager: jillfra
-ms.assetid: f599de6b-e369-436f-9cdc-48a0165684cb
 ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.custom: aaddev, vs-azure
@@ -11,12 +10,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.openlocfilehash: f139fc8cb59c40ea169e195312326773296b0592
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b3d068a8100cf78ccffac6d537fe71942239f383
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77159625"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886160"
 ---
 # <a name="add-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Azure Active Directory hozzáadása a Csatlakoztatott szolgáltatások használatával a Visual Studióban
 

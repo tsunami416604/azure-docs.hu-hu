@@ -2,26 +2,21 @@
 title: Több-bérlős démon létrehozása, amely a Microsoft identity platform végpontját használja
 description: Ebben az oktatóanyagban megtudhatja, hogyan hívhat ja meg az Azure Active Directory által védett ASP.NET webes API-t egy Windows-asztali (WPF) alkalmazásból. A WPF-ügyfél hitelesíti a felhasználót, hozzáférési jogkivonatot kér, és meghívja a webes API-t.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 635b12cc2ffc4d318eaaa74fffc17e4ce4d58c0b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a4d7030f7a58a6252c6e596fc2c248163694a1e8
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79129955"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80880873"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Oktatóanyag: Több-bérlős démon létrehozása, amely a Microsoft identity platform végpontját használja
 
@@ -216,7 +211,7 @@ Ez a projekt webalkalmazás- és web API-projektekkel rendelkezik. Az Azure-webh
 
 ### <a name="create-and-publish-dotnet-web-daemon-v2-to-an-azure-website"></a>Dotnet-web-daemon-v2 létrehozása és közzététele egy Azure-webhelyen
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza az **Erőforrás létrehozása** lehetőséget a bal felső sarokban.
 1. Válassza a **Web** > **Web App**lehetőséget, majd adjon nevet a webhelynek. Nevezze el például **dotnet-web-daemon-v2-contoso.azurewebsites.net**.
 1. Válassza ki az **Előfizetés**, **Erőforrás csoport**, valamint az App service csomag és a **hely adatait.** **Az operációs rendszer** **a Windows**, **a Közzététel** pedig **kód**.

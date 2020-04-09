@@ -1,15 +1,15 @@
 ---
-title: Függvényalkalmazás létrehozása az Azure Portalról
+title: Függvényalkalmazás létrehozása az Azure Portal használatával
 description: Hozzon létre egy új függvényalkalmazást az Azure-ban a portálról.
 ms.topic: how-to
 ms.date: 08/29/2019
 ms.custom: mvc
-ms.openlocfilehash: 6c17dc28d7eea4897759c1c832fdb1aba7f1e445
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 001b4e4f0ea7fbacd232b2a87abfe353f34919bd
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756533"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985014"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>Függvényalkalmazás létrehozása az Azure Portal használatával
 
@@ -36,7 +36,7 @@ Függvényalkalmazás létrehozásakor létre kell hoznia, vagy egy általános 
 >[!NOTE]
 >A használatalapú szolgáltatási csomag használatakor a rendszer az Azure File Storage a fő tárfiókjában tárolja a függvénykódot és a kötéskonfigurációs fájlokat. Ha törli ezt a fő tárfiókot, ez a tartalom is törlődik, és nem állítható helyre.
 
-További információ a tárfiókok típusairól: [Az Azure Storage szolgáltatásainak bemutatása](../storage/common/storage-introduction.md#azure-storage-services). 
+További információ a tárfiókok típusairól: [Az Azure Storage szolgáltatásainak bemutatása](../storage/common/storage-introduction.md#core-storage-services). 
 
 ## <a name="next-steps"></a>További lépések
 

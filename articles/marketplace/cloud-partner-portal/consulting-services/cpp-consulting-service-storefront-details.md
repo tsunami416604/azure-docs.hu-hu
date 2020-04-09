@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 22531c1080021c5e3724e5584b85bb58446fb1d3
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 65713eaf1651a6c02084751471504b5d022dfe14
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80744132"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985048"
 ---
 # <a name="storefront-details-tab"></a>Áruház részletei lap
 
 >[!Important]
->2020. március 30-tól megkezdjük a Tanácsadási szolgáltatási ajánlatok kezelését a Partner Centerbe. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Az áttelepített ajánlatok kezeléséhez kövesse a [Consulting service creation overview című](https://aka.ms/AzureCreateConsultingService) témakör utasításait.
+>2020. április 13-tól megkezdjük a Tanácsadási szolgáltatási ajánlatok kezelését a Partner Centerbe. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Az áttelepített ajánlatok kezeléséhez kövesse a [Consulting service creation overview című](https://aka.ms/AzureCreateConsultingService) témakör utasításait.
 
 Ez a cikk bemutatja, hogyan adhatja meg a kirakat adatait. A **Kirakat részletei** lap a következő szakaszokból áll:
 

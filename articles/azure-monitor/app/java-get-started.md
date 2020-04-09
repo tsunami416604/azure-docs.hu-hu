@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: efa498ba600a664beab4b9a49eae2b2c3f1c8397
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2355cb7ab995cab3060c7a94c9e7ea344bd9e92b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298314"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984640"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Rövid útmutató: Az Application Insights első lépései java webes projektben
 
@@ -25,7 +25,7 @@ Az Application Insights egy bővíthető elemzési szolgáltatás a webfejleszt�
 
 ## <a name="get-an-application-insights-instrumentation-key"></a>Application Insights-kialakítási kulcs beszerzése
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Hozzon létre egy Application Insights-erőforrást az Azure Portalon. Állítsa be a Java webalkalmazás alkalmazástípust.
 
 3. Keresse meg az új erőforrás kialakítási kulcsát. Ezt a kulcsot nemsokára a kódprojektbe kell illesztenie.
@@ -223,7 +223,7 @@ Más kivételekre vonatkozó adatok gyűjtéséhez [a kódba beillesztheti a tra
 
 Az Application Insights Java SDK mostantól támogatja a [W3C elosztott nyomkövetést.](https://w3c.github.io/trace-context/)
 
-A bejövő SDK konfigurációt a [korrelációról](correlation.md#telemetry-correlation-in-the-java-sdk)szóló cikkünk ismerteti.
+A bejövő SDK konfigurációt a [korrelációról](correlation.md)szóló cikkünk ismerteti.
 
 A kimenő SDK-konfiguráció az [AI-Agent.xml](java-agent.md) fájlban van definiálva.
 
@@ -258,7 +258,7 @@ További gyűjtendő teljesítményszámlálókat határozhat meg.
 * `displayName`– Az Application Insights portálon megjelenő név.
 * `objectName`– A JMX objektum neve.
 * `attribute`– A JMX objektum nevének lehívni kívánt attribútuma
-* `type`(választható) – A JMX objektum attribútumának típusa:
+* `type`(nem kötelező) - A JMX objektum attribútumának típusa:
   * Alapértelmezett: egyszerű típus, például int vagy long.
   * `composite`: a teljesítményszámláló-adatok az „Attribútum.Adat” formátumban szerepelnek
   * `tabular`: a teljesítményszámláló-adatok táblázatsor formájában szerepelnek

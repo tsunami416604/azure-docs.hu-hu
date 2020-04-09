@@ -1,19 +1,19 @@
 ---
-title: A sablonreferencia felhasználása
-description: Használja az Azure Resource Manager sablon hivatkozás sablon létrehozásához.
+title: Sablonhivatkozás használata
+description: Az Azure Resource Manager sablonhivatkozás használatával hozzon létre egy sablont.
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: b742982121a20a2b057eba4211584b0386dde411
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b713d508a5e28291778d3727c15e12972eea3a77
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80373427"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878497"
 ---
-# <a name="tutorial-utilize-the-arm-template-reference"></a>Oktatóanyag: Használja ki az ARM sablon hivatkozását
+# <a name="tutorial-utilize-the-resource-manager-template-reference"></a>Oktatóanyag: Az Erőforrás-kezelő sablonhivatkozásának használata
 
 Ismerje meg, hogyan található meg a sablonséma-információk, és az információk segítségével hozzon létre Az Azure Resource Manager (ARM) sablonokat.
 
@@ -65,9 +65,13 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
     * **resources**: adja meg az erőforráscsoportban üzembe helyezett vagy frissített erőforrástípusokat.
     * **outputs**: adja meg az üzembe helyezés után visszaadott értékeket.
 
-1. Bontsa ki a **resources** elemet. Itt `Microsoft.Storage/storageAccounts` nevű erőforrás van meghatározva.
+1. Bontsa ki a **resources** elemet. Itt `Microsoft.Storage/storageAccounts` nevű erőforrás van meghatározva. A termékváltozat neve paraméterértéket használ.  A paraméter neve **storageAccountType**.
 
     ![Resource Manager-sablon, tárfiók-definíció](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resource.png)
+
+1. Bontsa ki **a paramétereket** a **storageAccountType** definiálásának megtekintéséhez. A paraméter négy engedélyezett értékből rendelkezik. Meg fogja találni a többi engedélyezett értékeket, majd módosítja a paraméterdefiníciót.
+
+    ![Erőforrás-kezelő sablontárfiók-erőforrások skus](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resources-skus-old.png)
 
 ## <a name="find-the-template-reference"></a>A sablonreferencia megkeresése
 
@@ -84,7 +88,7 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
     ![Az Erőforrás-kezelő sablonhivatkozási tárfiók-típusok verziói](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts-types-versions.png)
 
-1. Válassza ki a **storageAccount** erőforrástípus legújabb verzióját.  A legújabb verzió **a 2019-06-01,** amikor ez a cikk meg van írva.
+1. Válassza ki a **storageAccount** erőforrástípus legújabb verzióját. A legújabb verzió **a 2019-06-01,** amikor ez a cikk meg van írva. Győződjön meg arról, hogy ez a verzió megegyezik a sablonban a tárfiók-erőforráshoz használt verzióval. Ha frissíti az API-verziót, ellenőrizze, hogy az erőforrás-definíció megegyezik-e a sablonhivatkozással.
 
 1. Ez a lap a storageAccount erőforrástípus részleteit sorolja fel.  Például felsorolja a **Sku** objektum megengedett értékeit. Több skus van, mint ami a korábban megnyitott rövid útmutató sablonban szerepel. Testreszabhatja a rövid útmutató sablont, hogy tartalmazza az összes rendelkezésre álló tárolási típust.
 
@@ -98,7 +102,21 @@ A Visual Studio-kódból adja hozzá a további tárfióktípusokat az alábbi k
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-A Visual Studio Code üzembehelyezési eljárásról szóló rövid útmutatójában tekintse meg [A sablon üzembe helyezése](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template) című szakaszt. A sablon telepítésekor adja meg a **storageAccountType** paramétert egy újonnan hozzáadott értékkel, például **Premium_ZRS**. A telepítés sikertelen lenne, ha az eredeti gyorsindítási sablont **használja,** mert Premium_ZRS nem engedélyezett érték.
+A Visual Studio Code üzembehelyezési eljárásról szóló rövid útmutatójában tekintse meg [A sablon üzembe helyezése](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template) című szakaszt. A sablon telepítésekor adja meg a **storageAccountType** paramétert egy újonnan hozzáadott értékkel, például **Premium_ZRS**. A telepítés sikertelen lenne, ha az eredeti gyorsindítási sablont **használja,** mert Premium_ZRS nem engedélyezett érték.  A paraméterérték átadásához adja hozzá a következő kapcsolót a központi telepítési parancshoz:
+
+# <a name="cli"></a>[parancssori felület](#tab/CLI)
+
+```azurecli
+--parameters storageAccountType='Premium_ZRS'
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell
+-storageAccountType "Premium_ZRS"
+```
+
+---
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

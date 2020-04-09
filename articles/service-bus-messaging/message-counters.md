@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 04/08/2020
 ms.author: aschhab
-ms.openlocfilehash: 3a4fca0b3b60fcb76bcdc4f5f2d53df816c5053b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8020b12ca892fbf7dec6fed6259526d958fb110f
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76756376"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891764"
 ---
 # <a name="message-counters"></a>Üzenetszámlálók
 
@@ -43,6 +43,11 @@ Az aktív üzenetek számának ismerete hasznos annak meghatározásához, hogy 
 -   [TransferMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transfermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferMessageCount): Egy másik várólistába vagy témakörbe átvinni függőben lévő üzenetek.
 
 Ha egy alkalmazás a várólista hossza alapján szeretné felmérni az erőforrásokat, azt mért ütemben kell megtennie. Az üzenetszámlálók beszerzése egy drága művelet az üzenetközvetítőn belül, és annak végrehajtása gyakran közvetlenül és hátrányosan befolyásolja az entitás teljesítményét.
+
+> [!NOTE]
+> A Service Bus-témakörbe küldött üzeneteket a rendszer továbbítja az adott témakör előfizetéseibe. Így az aktív üzenet száma a témakör maga 0, mivel ezek az üzenetek sikeresen továbbították az előfizetésbe. Az üzenetek száma az előfizetésben, és ellenőrizze, hogy az nagyobb, mint 0. Annak ellenére, hogy az előfizetésben üzeneteket lát, azok ténylegesen a témakör tulajdonában lévő tárolóban tárolódnak. 
+
+Ha megnézzük az előfizetések, akkor volna nem nulla üzenetszám (amely hozzá323 MB helyet az egész entitás).
 
 ## <a name="next-steps"></a>További lépések
 

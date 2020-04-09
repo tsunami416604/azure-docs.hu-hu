@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: de91f61385942db077bc98721eabe9f3f0b8624c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d44e53520481e4ada5c2f16f0c56a4a6a724ec1
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74083002"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892478"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>Feladatátvétel beállítása több Azure CDN-végpontközött az Azure Traffic Managerrel
 
@@ -62,13 +62,13 @@ A CDN- és Traffic Manager-profilok beállítása után kövesse az alábbi lép
 
     a. Az első CNAME bejegyzéshez rendelje hozzá az egyéni tartományt a cdnverify altartománnyal a CDN-végponthoz. Ez a bejegyzés egy szükséges lépés az egyéni tartomány regisztrálásához a Traffic Managerhez a 2.
 
-      Példa: 
+      Például: 
 
       `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101akamai.azureedge.net`  
 
     b. A második CNAME bejegyzéshez rendelje hozzá az egyéni tartományt a cdnverify altartomány nélkül a CDN-végponthoz. Ez a bejegyzés leképezi az egyéni tartományt a Traffic Manager számára. 
 
-      Példa: 
+      Például: 
       
       `cdndemo101.dustydogpetcare.online  CNAME  cdndemo101.trafficmanager.net`   
 
@@ -82,12 +82,12 @@ A CDN- és Traffic Manager-profilok beállítása után kövesse az alábbi lép
     Az Azure CDN a *cdnverify* altartományt használja a DNS-hozzárendelés érvényesítéséhez a regisztrációs folyamat befejezéséhez. További információt a [CNAME DNS-rekord létrehozása](cdn-map-content-to-custom-domain.md#create-a-cname-dns-record)című témakörben talál. Ez a lépés lehetővé teszi, hogy az Azure CDN ismerje fel az egyéni tartományt, hogy válaszolhassa meg a kéréseket.
     
     > [!NOTE]
-    > Az SSL engedélyezéséhez egy **Akamai-profilokból származó Azure CDN-en** közvetlenül meg kell neveznie az egyéni tartományt a végpontra. az SSL engedélyezéséhez készült cdnverify még nem támogatott. 
+    > Ahhoz, hogy engedélyezze a TLS egy **Akamai-profilok azure CDN-en,** közvetlenül meg kell neveznie az egyéni tartományt a végpontra. a TLS engedélyezéséhez készült cdnverify még nem támogatott. 
     >
 
 3.  Térjen vissza az egyéni tartomány tartományszolgáltatójának webhelyére, és frissítse az első létrehozott DNS-hozzárendelést, hogy az egyéni tartomány le képezve a második CDN-végpontra.
                              
-    Példa: 
+    Például: 
 
     `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101verizon.azureedge.net`  
 

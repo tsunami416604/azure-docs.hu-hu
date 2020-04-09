@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 1298a6d277f072491d05945b272925a2aba52e02
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: ed744cfbb49393980c2622b00233fca373b32019
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745655"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985133"
 ---
 # <a name="create-a-consulting-offer"></a>Tanácsadói ajánlat létrehozása
 
 >[!Important]
->2020. március 30-tól megkezdjük a Tanácsadási szolgáltatási ajánlatok kezelését a Partner Centerbe. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Az áttelepített ajánlatok kezeléséhez kövesse a [Consulting service creation overview című](https://aka.ms/AzureCreateConsultingService) témakör utasításait.
+>2020. április 13-tól megkezdjük a Tanácsadási szolgáltatási ajánlatok kezelését a Partner Centerbe. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Az áttelepített ajánlatok kezeléséhez kövesse a [Consulting service creation overview című](https://aka.ms/AzureCreateConsultingService) témakör utasításait.
 
 Ez a cikk ismerteti, hogyan hozhat létre és tehet közzé egy tanácsadási szolgáltatási ajánlatot.
 

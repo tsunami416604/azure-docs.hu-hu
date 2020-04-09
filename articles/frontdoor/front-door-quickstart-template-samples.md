@@ -8,14 +8,14 @@ ms.service: frontdoor
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/13/2018
+ms.date: 02/04/2020
 ms.author: sharadag
-ms.openlocfilehash: de3b13162e7828542331e7e7a34d0101f7feaf71
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 61ce63b15d2126a25b444e97acc8a3ea3964296b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79471653"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985813"
 ---
 # <a name="azure-resource-manager-deployment-model-templates-for-front-door"></a>Azure Resource Managerbeli üzembe helyezési modellek sablonjai a Front Doorhoz
 
@@ -25,7 +25,7 @@ Az alábbi táblázat az Azure Resource Manager telepítési modellsablonjaira m
 | ---| ---|
 | [Alapszintű Frontdoor létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-create-basic)| Egy alapszintű, egyetlen háttéralkalmazással rendelkező Frontdoor-konfigurációt hoz létre. |
 | [Több háttéralkalmazással és háttérkészlettel, valamint URL-alapú útválasztással rendelkező Frontdoor létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-create-multiple-backends)| Egy több háttéralkalmazással és URL-útvonal alapú háttérkészletekkel rendelkező terheléselosztót tartalmazó Frontdoort hoz létre. |
-| [HTTPS-t alkalmazó (Frontdoor által kezelt tanúsítvány) egyéni tartomány előkészítése](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-custom-domain)| Egy egyéni tartományt ad a Frontdoorhoz, és engedélyezi annak HTTPS-forgalmát egy Frontdoor által kezelt, DigiCerttel létrehozott tanúsítvánnyal. |
+| [Egyéni tartomány fedélzetre rakva a bejárati ajtóval](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-custom-domain)| Egyéni tartomány hozzáadása a bejárati ajtóhoz. |
 | [Bejárati ajtó létrehozása geoszűréssel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)| Hozzon létre egy bejárati ajtót, amely lehetővé teszi/blokkolja a forgalmat bizonyos országokból /régiókból. |
 | [A háttéralkalmazások állapotmintáinak vezérlése egy Frontdoorral](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-health-probes)| Frissíti a Frontdoort, hogy az úgy módosítsa az állapotminták beállításait, hogy frissítse a minták útvonalát, valamint a minták küldésének időközeit. |
 | [Aktív/készenlét háttéralkalmazás-konfigurációval rendelkező Frontdoor létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-priority-lb)| Létrehoz egy olyan Frontdoort, amely prioritásalapú útválasztást alkalmaz az aktív/készenléti alkalmazástopológiákhoz, azaz alapértelmezésként minden forgalmat az elsődleges (legnagyobb prioritással bíró) háttéralkalmazáshoz irányít, amíg az elérhetetlenné nem válik. |
