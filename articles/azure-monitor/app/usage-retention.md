@@ -1,17 +1,17 @@
 ---
-title: Felhasználómegőrzési elemzés webes alkalmazásokhoz az Azure Application Insights segítségével | Microsoft-dokumentumok
+title: Webalkalmazás-felhasználók megőrzésének elemzése az Azure Application Insights segítségével
 description: Hány felhasználó tér vissza az alkalmazáshoz?
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: 37ae97d5fbc62e507f726c452999a7f6e7c989c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e6d9be6bc6d7f90153e2fb58aa404e281568dbdd
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670967"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892410"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Felhasználómegőrzési elemzés webes alkalmazásokhoz az Application Insights segítségével
 
@@ -25,7 +25,7 @@ Ha még nem látja az adatokat az Alkalmazáselemzési portál adatmegőrzési e
 
 ![Megtartási eszköz](./media/usage-retention/retention.png)
 
-1. Az eszköztár lehetővé teszi a felhasználók számára, hogy új adatmegőrzési jelentéseket hozzanak létre, megnyissák a meglévő adatmegőrzési jelentéseket, mentsék az aktuális adatmegőrzési jelentést, vagy mentsenek, visszafordítsák a mentett jelentések módosításait, frissítsék a jelentés adatait, megosszák a jelentést e-mailben vagy közvetlen hivatkozással, és hozzáférjenek a dokumentációhoz Oldalala. 
+1. Az eszköztár lehetővé teszi a felhasználók számára, hogy új adatmegőrzési jelentéseket hozzanak létre, meglévő adatmegőrzési jelentéseket nyissanak meg, mentsenek az aktuális adatmegőrzési jelentést, mentsenek, visszaállíthatják a mentett jelentések módosításait, frissítsék a jelentés adatait, megosszák a jelentést e-mailben vagy közvetlen hivatkozással, és hozzáférjenek a dokumentációs laphoz. 
 2. Alapértelmezés szerint a megőrzés imitálta az összes felhasználót, aki bármit is tett, majd visszajött, és bármi mást tett egy idő alatt. Az események különböző kombinációját választhatja ki, hogy az adott felhasználói tevékenységekre összpontosítson.
 3. Adjon hozzá egy vagy több szűrőt a tulajdonságokhoz. Fókuszálhat például egy adott ország vagy régió felhasználóira. A szűrők beállítása után kattintson a **Frissítés** gombra. 
 4. A teljes megőrzési diagram a felhasználó megtartásának összegzését jeleníti meg a kiválasztott időszakban. 

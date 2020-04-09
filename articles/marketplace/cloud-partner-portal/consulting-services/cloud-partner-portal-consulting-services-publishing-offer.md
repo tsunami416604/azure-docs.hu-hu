@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: ceef030d2c0176313cbce8f6817a89c06f134d3d
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: dace05715828395aed3953b42bf7926df292bbdb
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745674"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981341"
 ---
 # <a name="azure-and-dynamics-365-consulting-service-offer"></a>Az Azure és a Dynamics 365 tanácsadási szolgáltatásajánlata
 
 >[!Important]
->2020. március 30-tól megkezdjük a Tanácsadási szolgáltatási ajánlatok kezelését a Partner Centerbe. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Az áttelepített ajánlatok kezeléséhez kövesse a [Consulting service creation overview című](https://aka.ms/AzureCreateConsultingService) témakör utasításait.
+>2020. április 13-tól megkezdjük a Tanácsadási szolgáltatási ajánlatok kezelését a Partner Centerbe. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Az áttelepített ajánlatok kezeléséhez kövesse a [Consulting service creation overview című](https://aka.ms/AzureCreateConsultingService) témakör utasításait.
 
 Ebből a cikkből megtudhatja, hogy miként tehet közzé tanácsadási szolgáltatási ajánlatot a Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Piactéren</a> vagy az <a href="https://appsource.microsoft.com">AppSource-on.</a> A Microsoft <a href="https://dynamics.microsoft.com">Dynamics 365,</a> <a href="https://powerbi.microsoft.com">a Power BI</a>és a Power <a href="https://powerapps.microsoft.com">Apps</a> alkalmazáson alapuló megoldások az AppSource webhelyen is megjelenhetnek. Más Microsoft <a href="https://azure.microsoft.com/services">Azure-szolgáltatásokon</a> alapuló egyéb ajánlatok is felsorolhatók az Azure Piactéren.
 

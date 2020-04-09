@@ -1,15 +1,16 @@
 ---
-title: Biztonságos podok hálózati szabályzatokkal az Azure Kubernetes szolgáltatásban (AKS)
+title: Pod-forgalom biztonságossá tétele hálózati házirenddel
+titleSuffix: Azure Kubernetes Service
 description: Ismerje meg, hogyan biztosíthat a podokba be- és kiáramló forgalmat a Kubernetes hálózati szabályzatainak használatával az Azure Kubernetes-szolgáltatásban (AKS)
 services: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: 37b6ebd1c8b147db0a9cead4678a0b2bb4ed234d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 01ba9e7353b6783d1b4fd1649291a64405fd9382
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473608"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886704"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Biztonságos forgalom a podok között az Azure Kubernetes-szolgáltatás (AKS) hálózati szabályzatai használatával
 
@@ -24,7 +25,7 @@ Az Azure CLI 2.0.61-es vagy újabb verziójára van szükség telepítve és kon
 > [!TIP]
 > Ha az előzetes verzióban használta a hálózati házirend-szolgáltatást, javasoljuk, hogy [hozzon létre egy új fürtöt.](#create-an-aks-cluster-and-enable-network-policy)
 > 
-> Ha továbbra is használni szeretné a meglévő tesztfürtöket, amelyek az előzetes verzió során hálózati házirendet használtak, frissítse a fürtöt egy új Kubernetes-verzióra a legújabb GA-kiadáshoz, majd telepítse a következő YAML-jegyzékfájlt az összeomló metrikakiszolgáló és a Kubernetes javításához Műszerfal. Ez a javítás csak a Calico hálózati házirendmotort használó fürtök esetében szükséges.
+> Ha továbbra is szeretné használni a meglévő tesztfürtöket, amelyek az előzetes verzió során hálózati házirendet használtak, frissítse a fürtöt egy új Kubernetes-verzióra a legújabb GA-kiadáshoz, majd telepítse a következő YAML-jegyzéket az összeomló metrikakiszolgáló és a Kubernetes-irányítópult javításához. Ez a javítás csak a Calico hálózati házirendmotort használó fürtök esetében szükséges.
 >
 > Biztonsági ajánlott eljárásként [tekintse át a YAML-jegyzékfájl tartalmát,][calico-aks-cleanup] hogy megértse, mi van telepítve az AKS-fürtben.
 >

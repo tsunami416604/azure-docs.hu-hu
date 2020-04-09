@@ -3,14 +3,14 @@ author: msmimart
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
-ms.date: 10/16/2019
+ms.date: 04/04/2020
 ms.author: mimart
-ms.openlocfilehash: 71a6654acd436c27bd2370646dede81778113860
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ee63c1c0913baf3700d77e6fba1582fe7027ead7
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78186141"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875677"
 ---
 #### <a name="applications"></a>[Alkalmazások](#tab/applications/)
 
@@ -28,8 +28,8 @@ ms.locfileid: "78186141"
 1. Válassza a **Saját API-k** lapot.
 1. Válassza ki azt az API-t, amelyhez a webalkalmazásnak hozzáférést kell biztosítani. Például *webapi1*.
 1. Az **Engedély csoportban**bontsa ki a **bemutatót,** majd jelölje ki a korábban definiált hatóköröket. *Például, demo.read* és *demo.write*.
-1. Válassza **az Engedélyek hozzáadása**lehetőséget. Az utasítás szerint várjon néhány percet, mielőtt továbblépne a következő lépésre.
+1. Válassza **az Engedélyek hozzáadása**lehetőséget.
 1. Válassza **a Rendszergazdai hozzájárulás megadása (a bérlő neve) lehetőséget.**
-1. Válassza ki a jelenleg bejelentkezett rendszergazdai fiókot, vagy jelentkezzen be egy fiókkal az Azure AD B2C-bérlőben, amely legalább a *felhőalkalmazás-rendszergazdai* szerepkörhöz van rendelve.
-1. Válassza ki az **Elfogadás** lehetőséget.
-1. Válassza a **Frissítés**lehetőséget, majd ellenőrizze, hogy a "Granted for ..." mindkét hatókör **Állapota** csoportban jelenik meg. Az engedélyek propagálása eltarthat néhány percig.
+1. Ha a rendszer kéri, hogy válasszon ki egy fiókot, válassza ki a jelenleg bejelentkezett rendszergazdai fiókot, vagy jelentkezzen be egy fiókkal az Azure AD B2C-bérlő, amely legalább a *felhőbeli alkalmazás rendszergazdai* szerepkör.
+1. Válassza az **Igen** lehetőséget.
+1. Válassza a **Frissítés**lehetőséget, majd ellenőrizze, hogy a "Granted for ..." mindkét hatókör **Állapota** csoportban jelenik meg.

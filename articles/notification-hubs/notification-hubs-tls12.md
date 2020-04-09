@@ -5,27 +5,25 @@ services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: ''
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/30/2020
+ms.date: 04/07/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/28/2020
-ms.openlocfilehash: 87309e20efd9d6f8bd1a659451e5a603e6b95bc8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4da96df50e961f4291029a37e883fdcf88c6c87f
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76908526"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885752"
 ---
 # <a name="transport-layer-security-tls"></a>Transport Layer Security (TLS)
 
-A magasabb szintű biztonság érdekében az értesítési központok 2020. Ezek a régebbi protokollok gyenge kriptográfia, és ki vannak téve a BEAST és uszkár támadások. Az 5-ös vagy újabb verziójú Android-verziót vagy iOS 5-ös vagy nagyobb verziót futtató eszközökre telepített alkalmazásokat ez a változás nem érinti, mivel ezek az operációs rendszerek támogatják a TLS 1.2-t, és az ügyfél és a kiszolgáló a rendszer legmagasabb, kölcsönösen támogatott verzióját egyezteti. protokollt a csatlakozáskor.
+A magasabb szintű biztonság érdekében az értesítési központok 2020. Ezek a régebbi protokollok gyenge kriptográfia, és ki vannak téve a BEAST és uszkár támadások. Az 5-ös vagy újabb verziójú Android-verziót vagy iOS 5-ös vagy újabb verziót futtató eszközökre telepített alkalmazásokat ez a változás nem érinti, mivel ezek az operációs rendszerek támogatják a TLS 1.2-t, és az ügyfél és a kiszolgáló a kapcsolatra a protokoll legmagasabb, kölcsönösen támogatott verzióját egyezteti.
 
 Azt javasoljuk, hogy tekintse át az összes, az Azure Notification Hubs-ot használó alkalmazást, hogy a tls 1.2-es részét támogató tls-t és TLS-veremeket használják.
 

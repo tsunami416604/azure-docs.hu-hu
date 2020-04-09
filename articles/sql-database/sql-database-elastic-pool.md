@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: 3c476393153f6bc1d18d5c163bcd69484583eb15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8139ed8f4f4799a963a051eed96dd87c4ac38aec
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256275"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981426"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Több Azure SQL-adatbázis kezelése és méretezése rugalmas készletek használatával
 
@@ -37,7 +37,7 @@ A rugalmas készletek úgy oldják meg ezt a problémát, hogy biztosítják, ho
 > [!IMPORTANT]
 > A rugalmas készletek adatbázisonkénti díja nem áll fenn. A rendszer minden óráért számláz, ahol a készlet a legmagasabb eDTU-n vagy virtuális magon található, függetlenül a használattól, illetve attól, hogy a készlet egy óránál rövidebb ideig volt aktív.
 
-Rugalmas készletek lehetővé teszik a fejlesztő számára, hogy erőforrásokat vásároljon egy készlet több adatbázis által megosztott, hogy az egyes adatbázisok előre nem látható használati időszakainak megfelelően. A készlet erőforrásait a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) vagy a [virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md)alapján konfigurálhatja. A készlet erőforrás-szükségletét az adatbázisok összesített kihasználtsága határozza meg. A készlet számára rendelkezésre álló erőforrások mennyiségét a fejlesztői költségvetés szabályozza. A fejlesztő egyszerűen adatbázisokat ad a készlethez, beállítja az adatbázisok minimális és maximális erőforrásait (a minimális és maximális DIT-eket, vagy a minimális vagy maximális virtuális magokat a választott erőforrás-típustól függően), majd a készlet erőforrásait a készletük alapján állítja be Költségvetés. A készletek segítségével a fejlesztő zökkenőmentesen és fokozatosan növelheti szolgáltatásának teljesítményét a korlátozott erőforrásokkal bíró startupok szintjéről az érett vállalkozások szintjére.
+Rugalmas készletek lehetővé teszik a fejlesztő számára, hogy erőforrásokat vásároljon egy készlet több adatbázis által megosztott, hogy az egyes adatbázisok előre nem látható használati időszakainak megfelelően. A készlet erőforrásait a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) vagy a [virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md)alapján konfigurálhatja. A készlet erőforrás-szükségletét az adatbázisok összesített kihasználtsága határozza meg. A készlet számára rendelkezésre álló erőforrások mennyiségét a fejlesztői költségvetés szabályozza. A fejlesztő egyszerűen adatbázisokat ad hozzá a készlethez, beállítja az adatbázisok minimális és maximális erőforrásait (a minimális és maximális DIT-ek, illetve a minimális vagy maximális virtuális magok a választott erőforrás-kiszervezési modell alapján), majd a készlet erőforrásait a költségvetés ük alapján állítja be. A készletek segítségével a fejlesztő zökkenőmentesen és fokozatosan növelheti szolgáltatásának teljesítményét a korlátozott erőforrásokkal bíró startupok szintjéről az érett vállalkozások szintjére.
 
 A készleten belül az önálló adatbázisok az automatikus méretezés rugalmasságával rendelkeznek. Nagy terhelés alatt egy adatbázis több erőforrást használhat az igények kielégítésére. A könnyű terhelésalatt található adatbázisok kevesebbet fogyasztanak, és a terhelés nélküli adatbázisok nem használnak erőforrásokat. Az erőforrásoknak az egyes adatbázisok helyett a teljes készlet számára hozzáférhetővé tétele jelentősen leegyszerűsíti a felügyeleti feladatokat. Plusz, van egy kiszámítható költségvetést a medence. További erőforrások adhatók hozzá egy meglévő készlethez adatbázis-leállás nélkül, azzal a különbséggel, hogy az adatbázisokat át kell helyezni az új eDTU-foglalás további számítási erőforrásainak biztosításához. Hasonlóképpen, ha már nincs szükség további erőforrásokra, akkor bármikor eltávolíthatók egy meglévő készletből. Ezenfelül a készlethez adatbázisok adhatók hozzá vagy vonhatók ki belőle. Ha egy adatbázis kiszámítható módon nem használja ki az erőforrásokat, helyezze át az adatbázist.
 
@@ -224,7 +224,6 @@ További információt az [SQL Database-riasztások létrehozása az Azure Porta
 
 - Az árképzési információkért [lásd: Rugalmas készlet árképzése.](https://azure.microsoft.com/pricing/details/sql-database/elastic)
 - Rugalmas készletek méretezése, lásd: [Rugalmas készletek méretezése](sql-database-elastic-pool-scale.md) és [egy rugalmas készlet méretezése - mintakód](scripts/sql-database-monitor-and-scale-pool-powershell.md)
-- Videó megtekintéséhez tekintse meg a [Microsoft Virtual Academy videótanfolyamot az Azure SQL Database rugalmas képességeiről](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)
 - A rugalmas készleteket használó SaaS-alkalmazások szerkezeti kialakításainak alaposabb megismeréséhez olvassa el a [Tervminták több-bérlős SaaS-alkalmazásokhoz Azure SQL Database esetén](sql-database-design-patterns-multi-tenancy-saas-applications.md) című részt.
 - A rugalmas készleteket használó SaaS-oktatóanyagról [a Bevezetés a Wingtip SaaS alkalmazás bemutatása című témakörben](sql-database-wtp-overview.md)található.
 - Ha többet szeretne tudni a sok adatbázissal rendelkező rugalmas készletekerőforrás-kezeléséről, olvassa el [az Erőforrás-kezelés sűrű rugalmas készletekben (Erőforráskezelés sűrű rugalmas készletekben) témakört.](sql-database-elastic-pool-resource-management.md)

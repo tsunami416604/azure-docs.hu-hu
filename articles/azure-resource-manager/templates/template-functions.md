@@ -2,13 +2,13 @@
 title: Sablonfüggvények
 description: Ismerteti az Azure Resource Manager-sablonban az értékek lekéréséhez, a karakterláncok és numerikus értékek használatához, valamint a központi telepítési adatok beolvasásához használandó függvényeket.
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: 1d2789e59c091b4e6c39be48b83fe610a592abe1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: fbd82f89ed9a97a3f376a9ed6eaa8ae3760759ff
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156259"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982378"
 ---
 # <a name="arm-template-functions"></a>ARM sablonfüggvények
 
@@ -77,6 +77,13 @@ Az Erőforrás-kezelő számos funkciót biztosít a sablonok összehasonlítás
 <a id="deployment" aria-hidden="true" />
 <a id="parameters" aria-hidden="true" />
 <a id="variables" aria-hidden="true" />
+
+## <a name="date-functions"></a>Dátumfüggvények
+
+Az Erőforrás-kezelő a következő funkciókat biztosítja a dátumok munkálataihoz.
+
+* [dateTimeAdd](template-functions-date.md#datetimeadd)
+* [utcNow között](template-functions-date.md#utcnow)
 
 ## <a name="deployment-value-functions"></a>Telepítési érték függvények
 
@@ -214,7 +221,7 @@ Az Erőforrás-kezelő a következő funkciókat biztosítja a karakterláncok k
 * [Ugrál](template-functions-string.md#skip)
 * [felosztás](template-functions-string.md#split)
 * [kezdődik](template-functions-string.md#startswith)
-* [sztring](template-functions-string.md#string)
+* [Karakterlánc](template-functions-string.md#string)
 * [Substring](template-functions-string.md#substring)
 * [venni](template-functions-string.md#take)
 * [lassabbra](template-functions-string.md#tolower)
@@ -224,7 +231,6 @@ Az Erőforrás-kezelő a következő funkciókat biztosítja a karakterláncok k
 * [Uri](template-functions-string.md#uri)
 * [uriKomponens](template-functions-string.md#uricomponent)
 * [uriComponentToString](template-functions-string.md#uricomponenttostring)
-* [utcNow között](template-functions-string.md#utcnow)
 
 ## <a name="next-steps"></a>További lépések
 

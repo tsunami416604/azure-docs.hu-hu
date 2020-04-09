@@ -3,16 +3,16 @@ title: Erőforrás-elnevezési korlátozások
 description: Az Azure-erőforrások elnevezésére vonatkozó szabályokat és korlátozásokat jeleníti meg.
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 580b7efd26d5729baf236b59452f63483c003e44
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: f6203f987654b33b32da72bfec030a9d0ab69df8
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366221"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981528"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Az Azure-erőforrásokra vonatkozó elnevezési szabályok és korlátozások
 
-Ez a cikk összegzi az Azure-erőforrások elnevezési szabályait és korlátozásait. Az erőforrások elnevezésével kapcsolatos javaslatokért olvassa [el a Kész: Ajánlott elnevezési és címkézési konvenciók című témakört.](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)
+Ez a cikk összegzi az Azure-erőforrások elnevezési szabályait és korlátozásait. Az erőforrások elnevezésével kapcsolatos javaslatokaz [Ajánlott elnevezési és címkézési konvenciók](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)című témakörben vannak.
 
 Az erőforrásnevek nem különböznek a kis- és nagybetűktől, kivéve, ha az érvényes karakterek oszlopban kifejezetten fel van jelölve.
 

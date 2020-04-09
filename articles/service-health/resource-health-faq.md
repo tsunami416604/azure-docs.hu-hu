@@ -3,12 +3,12 @@ title: Az Azure-erőforrások állapotáról – gyakori kérdések
 description: Az Azure-erőforrások állapotának áttekintése
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 5a15ded1c279e700fb71e5ea7aa866e5afc29f8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7459a29dca01dc186d75b4545f89068569975607
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75912783"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985031"
 ---
 # <a name="azure-resource-health-faq"></a>Az Azure-erőforrások állapotáról – gyakori kérdések
 Ismerje meg az Azure Resource Health szolgáltatással kapcsolatos gyakori kérdésekre adott válaszokat.
@@ -37,7 +37,7 @@ Az állapot ismeretlen, ha az Erőforrás állapota leállítja egy adott erőfo
 ## <a name="how-can-i-get-help-for-a-resource-that-is-unavailable"></a>Hogyan kaphatok segítséget egy nem elérhető erőforráshoz?
 Támogatási kérelmet küldhet a Resource Health panelről. Nincs szükség támogatási szerződésre a Microsofttal ahhoz, hogy megnyisson egy kérelmet, ha az erőforrás platformesemények miatt nem érhető el.
 
-## <a name="does-resource-health-differentiate-between-unavailability-cased-by-platform-problems-versus-something-i-did"></a>A Resource Health különbséget tesz a platformproblémák által okozott elérhetetlenség és az általam okozott probléma között?
+## <a name="does-resource-health-differentiate-between-unavailability-caused-by-platform-problems-versus-something-i-did"></a>Az erőforrás-állapot különbséget tesz a platformproblémák által okozott elérhetetlenség és az általam okozott problémák között?
 Igen, ha egy erőforrás nem érhető el, az Erőforrás állapota az alábbi kategóriák egyikén azonosítja a kiváltó okot: 
 -   Felhasználó által kezdeményezett művelet
 -   Tervezett esemény 

@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 0d768581b8f1a177190da08986af8b60b4861432
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: d204477818ce2733d9f6d1e3dcc7455018456bcb
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80744219"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884832"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure Synapse Analytics (korábban SQL DW) architektúra
 
@@ -79,8 +79,6 @@ A elosztás a tárolás és az elosztott adatokon futtatott párhuzamos lekérde
 A 60 kisebb lekérdezés mindegyike az egyik adatelosztáson fut. Minden számítási csomópont kezeli a 60 disztribúciók egy vagy több. Számítási csomópontonként egy terjesztési sql-készlet rendelkezik a maximális számítási erőforrásokkal. Egy SQL-készlet minimális számítási erőforrások rendelkezik az összes disztribúciók egy számítási csomóponton.  
 
 ## <a name="hash-distributed-tables"></a>Kivonat alapján elosztott táblák
-
-A kivonat alapján elosztott tábla nyújtja a legnagyobb lekérdezési teljesítményt az összekapcsolásoknál és aggregációknál nagy táblák esetén.
 
 A kivonat alapján elosztott tábla nyújtja a legnagyobb lekérdezési teljesítményt az összekapcsolásoknál és aggregációknál nagy táblák esetén.
 

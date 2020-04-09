@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: 49d2d3d3e8829198a57aaf2feb40e89f105667bd
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: d2cc4133e52e7cab812413d23948da6ac2660e77
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804860"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884868"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Az Azure–Azure virtuális gép hálózati kapcsolatával kapcsolatos problémák elhárítása
 
@@ -18,8 +18,8 @@ Ez a cikk ismerteti a hálózati kapcsolattal kapcsolatos gyakori problémákat,
 
 Ahhoz, hogy a Site Recovery replikációja működjön, a virtuális géptől adott URL-címekhez vagy IP-tartományokhoz kimenő kapcsolat szükséges. Ha a virtuális gép tűzfal mögött van, vagy hálózati biztonsági csoport (NSG) szabályokat használ a kimenő kapcsolatok szabályozására, előfordulhat, hogy az alábbi problémák egyikével szembesülhet.
 
-| **Url** | **Részletek** |
-| --- | --- |
+| URL-cím | Részletek |
+|---|---|
 | `*.blob.core.windows.net` | Szükséges, hogy az adatok at lehet írni a gyorsítótár-tárfiók a forrásrégióban a virtuális gépről. Ha ismeri a virtuális gépek gyorsítótár-tárfiókok, használhatja az engedélyezési lista az adott tárfiók URL-címek. Például, `cache1.blob.core.windows.net` `cache2.blob.core.windows.net` és `*.blob.core.windows.net`ahelyett, hogy . |
 | `login.microsoftonline.com` | A Site Recovery szolgáltatás URL-címének engedélyezéséhez és hitelesítéséhez szükséges. |
 | `*.hypervrecoverymanager.windowsazure.com` | Szükséges, hogy a Site Recovery szolgáltatás kommunikációja a virtuális gépről is megtörténhessen. A megfelelő _site recovery IP-címet akkor használhatja,_ ha a tűzfalproxy támogatja az IP-címeket. |
@@ -82,7 +82,7 @@ Ez a példa bemutatja, hogyan konfigurálhatja az NSG-szabályok at a virtuális
 
 1. Https-port 443 kimenő szabályokat hozhat létre a hely-helyreállítási IP-khez, amelyek megfelelnek a célhelynek:
 
-   | **Helyen** | **Hely-helyreállítási IP-cím** |  **Helyhelyreállítása figyelésének IP-címe** |
+   | Hely | Hely-helyreállítási IP-cím | Helyhelyreállítása figyelésének IP-címe |
    | --- | --- | --- |
    | USA középső régiója | 40.69.144.231 | 52.165.34.144 |
 
@@ -102,7 +102,7 @@ Ebben a példában ezek az NSG-szabályok szükségesek, hogy a replikáció eng
 
 1. Https-port 443 kimenő szabályokat hozhat létre a hely-helyreállítási IP-khez, amelyek megfelelnek a forráshelynek:
 
-   |**Helyen** | **Hely-helyreállítási IP-cím** |  **Helyhelyreállítása figyelésének IP-címe** |
+   | Hely | Hely-helyreállítási IP-cím | Helyhelyreállítása figyelésének IP-címe |
    | --- | --- | --- |
    | USA keleti régiója | 13.82.88.226 | 104.45.147.24 |
 
@@ -138,7 +138,8 @@ Az egyéni proxybeállítások érvénytelenek, és az Azure Site Recovery Mobil
    Port=567
    ```
 
-1. Az Azure Site Recovery Mobility service agent csak **a nem hitelesített proxykat**támogatja.
+> [!NOTE]
+> Az Azure Site Recovery Mobility service agent csak **a nem hitelesített proxykat**támogatja.
 
 ### <a name="fix-the-problem"></a>A probléma javítása
 
@@ -146,4 +147,4 @@ A [szükséges URL-címek](azure-to-azure-about-networking.md#outbound-connectiv
 
 ## <a name="next-steps"></a>További lépések
 
-[Azure-alapú virtuális gépek replikálása](site-recovery-replicate-azure-to-azure.md)
+[Azure-beli virtuális gépek replikálása egy másik Azure-régióba](azure-to-azure-how-to-enable-replication.md)

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 12/19/2019
-ms.openlocfilehash: 74d696c19ac2a2d0d367f5a018fde8cd3a0eedb2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 454138f8e0d92935126f446455810a444b0a053a
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535204"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984146"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Az Application Insights és a Log Analytics által használt IP-címek
 Az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) szolgáltatás számos IP-címet használ. Előfordulhat, hogy ismernie kell ezeket a címeket, ha a figyelt alkalmazás tűzfal mögött található.
@@ -55,6 +55,8 @@ Meg kell nyitnia néhány kimenő portot a kiszolgáló tűzfalán ahhoz, hogy a
 ## <a name="availability-tests"></a>Rendelkezésre állási tesztek
 Ez azoknak a címeknek a listája, amelyekről [a rendelkezésre állási webes tesztek](../../azure-monitor/app/monitor-web-app-availability.md) futnak. Ha webes teszteket szeretne futtatni az alkalmazásán, de a webkiszolgáló csak meghatározott ügyfelek kiszolgálására korlátozódik, akkor engedélyeznie kell a bejövő forgalmat a rendelkezésre állási tesztszervereinkről.
 
+### <a name="service-tag"></a>Szolgáltatáscímke
+
 Ha Azure network security groups használatával, egyszerűen adjon hozzá egy **bejövő portszabályt,** amely lehetővé teszi az Application Insights rendelkezésre állási tesztjeiből származó forgalmat, ha a **Service Tag-et** választja **forrásként** és **ApplicationInsightsAvailability-t** **forrásszolgáltatás-címkeként.**
 
 >[!div class="mx-imgBorder"]
@@ -64,6 +66,11 @@ Ha Azure network security groups használatával, egyszerűen adjon hozzá egy *
 >![Bejövő biztonsági szabály hozzáadása lap](./media/ip-addresses/add-inbound-security-rule2.png)
 
 Nyissa meg a 80-as (http) és a 443-as (https) portokat az ezekről a címekről érkező forgalomhoz (az IP-címek hely szerint vannak csoportosítva):
+
+### <a name="addresses-grouped-by-location"></a>Hely szerint csoportosított címek
+
+> [!NOTE]
+> Ezek a címek osztálynélküli tartományok közötti útválasztás (CIDR) jelöléssel vannak felsorolva. Ez azt jelenti, `51.144.56.112/28` hogy egy hasonló bejegyzés `51.144.56.112` 16 `51.144.56.127`IP-nek felel meg, amely a kezdő és végződő .
 
 ```
 Australia East

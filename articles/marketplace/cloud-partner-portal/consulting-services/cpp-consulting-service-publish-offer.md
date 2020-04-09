@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: b2de4114e8a1b48de2ad64b783d15f56fef4fc30
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 3a06bae941c75e43a0e4ea2b66cc420e7a2467c3
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743751"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985082"
 ---
 # <a name="publish-a-consulting-service-offer"></a>Tanácsadási szolgáltatási ajánlat közzététele
 
 >[!Important]
->2020. március 30-tól megkezdjük a Tanácsadási szolgáltatási ajánlatok kezelését a Partner Centerbe. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Az áttelepített ajánlatok kezeléséhez kövesse a [Consulting service creation overview című](https://aka.ms/AzureCreateConsultingService) témakör utasításait.
+>2020. április 13-tól megkezdjük a Tanácsadási szolgáltatási ajánlatok kezelését a Partner Centerbe. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Az áttelepített ajánlatok kezeléséhez kövesse a [Consulting service creation overview című](https://aka.ms/AzureCreateConsultingService) témakör utasításait.
 
 Miután befejezte **az Ajánlati beállítások,** **a Kirakatrészletei**és **a Névjegyek**lehetőséget, válassza **a Közzététel** lehetőséget, és adjon meg egy e-mail címet. Amikor a Microsoft készen áll az ajánlat közzétételére, e-mailt kap, amelyben megtekintheti azt, mielőtt az élesben megadatna. Bármikor visszatérhet a portálra, hogy ellenőrizze az ajánlat állapotát.
 

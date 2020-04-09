@@ -6,12 +6,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: c2f384370c3ceaf24164e4a27adc05b1a1e1ddf7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 83575aa7f9b63615f453e00bd06b00a5540b9a9e
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294965"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892257"
 ---
 # <a name="what-is-distributed-tracing"></a>Mi az elosztott nyomkövetés?
 
@@ -27,17 +27,17 @@ Az Azure Monitor egy [alkalmazástérkép-nézetet](https://docs.microsoft.com/a
 
 ## <a name="how-to-enable-distributed-tracing"></a>Az elosztott nyomkövetés engedélyezése
 
-Az alkalmazások ban lévő szolgáltatások között elosztott nyomkövetés engedélyezése olyan egyszerű, mint a megfelelő SDK vagy kódtár hozzáadása az egyes szolgáltatásokhoz, a szolgáltatás által megvalósított nyelv alapján.
+Az alkalmazások ban a szolgáltatások között elosztott nyomkövetés engedélyezése olyan egyszerű, mint a megfelelő ügynök, SDK vagy kódtár hozzáadása az egyes szolgáltatásokhoz, a szolgáltatás által megvalósított nyelv alapján.
 
-## <a name="enabling-via-application-insights-sdks"></a>Engedélyezés az Application Insights SDK-kon keresztül
+## <a name="enabling-via-application-insights-through-auto-instrumentation-or-sdks"></a>Engedélyezés az Application Insights on keresztül automatikus műszerezéssel vagy SDK-kkal
 
-Az Application Insights SDK-k .NET, .NET Core, Java, Node.js és JavaScript minden támogatja az elosztott nyomkövetés natívan. Az egyes Application Insights SDK-k telepítésére és konfigurálására vonatkozó utasítások az alábbiakban érhetők el:
+Az Application Insights-ügynökök és/vagy SDK-k a .NET, .NET Core, Java, Node.js és JavaScript minden támogatja az elosztott nyomkövetés natív módon. Az egyes Application Insights SDK-k telepítésére és konfigurálására vonatkozó utasítások az alábbiakban érhetők el:
 
 * [.NET](https://docs.microsoft.com/azure/application-insights/quick-monitor-portal)
 * [.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-dotnetcore-quick-start)
-* [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
+* [Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
 * [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
-* [Javascript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
+* [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
 * [Python](opencensus-python.md)
 
 A megfelelő Application Insights SDK telepítve és konfigurálva, nyomkövetési információkat automatikusan gyűjti a népszerű keretrendszerek, könyvtárak és technológiák SDK függőség automatikus gyűjtők. A támogatott technológiák teljes listája [a Függőség automatikus gyűjtési dokumentációjában](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)érhető el.

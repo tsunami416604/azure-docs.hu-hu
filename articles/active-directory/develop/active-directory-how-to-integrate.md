@@ -1,10 +1,9 @@
 ---
-title: Integrálás az Azure Active Directoryval | Microsoft dokumentumok
+title: Integrálás az Azure Active Directoryval
 description: Ismerje meg az alkalmazás Azure Active Directoryval való integrálásának előnyeit, és szerezzen be erőforrásokat olyan funkciókhoz, mint az egyszerűsített bejelentkezés, az identitáskezelés, a többtényezős hitelesítés és a hozzáférés-vezérlés.
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: d13bba54-96bd-4b81-bee9-c8025ffa1648
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
@@ -13,12 +12,12 @@ ms.date: 04/08/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: 5e4c6fb91b93b1035c68350a5f77a3c16db7323f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4eaca7350ac006a2fcf2eed8d3eb0cb8ef274841
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300112"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885701"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integráció az Azure Active Directoryval
 

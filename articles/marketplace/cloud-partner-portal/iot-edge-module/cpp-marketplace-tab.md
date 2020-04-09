@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 4290bad405ddab6d89cac5ef7bfd185247d41da1
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: df51a408cc47908a240ceb66bf510fe3df3ce87f
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745111"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983398"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>IoT Edge modul piactér lapja
 
 >[!Important]
->2020. március 30-tól megkezdjük az IoT Edge modulajánlatok kezelését a Partner Centerbe. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [IoT Edge-modulajánlat létrehozása](https://aka.ms/AzureCreateIoT) az áttelepített ajánlatok kezeléséhez kövesse az utasításokat.
+>2020. április 13-tól megkezdjük az IoT Edge modulajánlatok kezelését a Partner Centerbe. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [IoT Edge-modulajánlat létrehozása](https://aka.ms/AzureCreateIoT) az áttelepített ajánlatok kezeléséhez kövesse az utasításokat.
 
 Az **Új ajánlat** lap **Piactér** lapja lehetővé teszi, hogy a leendő ügyfelek számára marketinget, értékesítést és jogi információkat és megállapodásokat biztosítson, és kezelje a piactérről generált érdeklődőket. Ez a hosszú forma négy részből áll: **Áttekintés**, **Marketing leletek**, **Ólommenedzsment**és **Jogi**.
 
@@ -36,7 +36,7 @@ Az alábbi táblázat a mezők célját és tartalmát ismerteti. A kötelező m
 | **Összefoglaló\***               | Az ajánlat rövid összefoglalása. Legfeljebb 100 karakter hosszú. <!--ADD PICTURE IN ACTION-->|
 | **Hosszú összegzés\***          | Hosszabb összefoglaló az ajánlat (bár lehet ugyanaz, mint az **összefoglaló**).  Legfeljebb 256 karakter hosszú. <!--ADD PICTURE IN ACTION-->|
 | **Leírás\***           | Az ajánlat leírása.  A maximális hossza 3000 karakter, támogatja az egyszerű HTML-formázást.<br/> Alján tartalmaznia kell egy *minimális hardverkövetelmény-bekezdést.* például: <br/> <p><u>Minimális hardverkövetelmények:</u> Linux x64 és arm32 OS, 1 GB RAM, 500 Mb tárhely</p>
-| **Marketing azonosító\***  | Az ajánlathoz társítani rakandó egyedi URL-cím általában tartalmazza a szervezet és a megoldás nevét, legfeljebb 50 karakter hosszú.  Példa: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
+| **Marketing azonosító\***  | Az ajánlathoz társítani rakandó egyedi URL-cím általában tartalmazza a szervezet és a megoldás nevét, legfeljebb 50 karakter hosszú.  Például: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
 | **Előfizetés-azonosítók előzetes verzió** | Adjon hozzá egy-100 előfizetés-azonosítót az előzetesekhez. Ezek a fehérlistán szereplő előfizetések hozzáférhetnek az ajánlathoz, miután közzétették, mielőtt élesben lépne. |
 | **Hasznos linkek**          | Az ajánlatban szereplő üzleti és műszaki kategóriák többszörös kiválasztása a legjobban társítható.  Legfeljebb 10 megengedett. Győződjön meg arról, hogy legalább egy hivatkozást a dokumentációhoz, és egy linket a kompatibilis IoT Edge-eszközök az [Azure IoT eszközkatalógus.](https://catalog.azureiotsolutions.com/) |
 | **Javasolt kategóriák\*** | Vedd fel öt kategóriában. Ezek megjelennek a termék adatok oldalán. A tallózóoldalakon az összes IoT Edge-modul megjelenik az * \> IoT Edge-modul internetes* modulkategóriában.|

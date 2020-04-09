@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 06897fffda490cdfcbb2a9cf6f55c7945e8afda0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c68b83726371d346019d18d0b066173f93196e6d
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276126"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982055"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetriai korreláció az Application Insightsban
 
@@ -63,7 +63,7 @@ Az Application Insights áttér a [W3C trace-context-re,](https://w3c.github.io/
 
 Az Application Insights SDK legújabb verziója támogatja a Trace-Context protokollt, de előfordulhat, hogy engedélyeznie kell azt. (Az Application Insights SDK által támogatott korábbi korrelációs protokollal való visszamenőleges kompatibilitás megmarad.)
 
-A [korrelációs HTTP protokoll, más néven Request-Id](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md), elavult. Ez a protokoll két fejlécet határoz meg:
+A [korrelációs HTTP protokoll, más néven Request-Id](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md), elavult. Ez a protokoll két fejlécet határoz meg:
 
 - `Request-Id`: A hívás globálisan egyedi azonosítóját hordozza.
 - `Correlation-Context`: Az elosztott nyomkövetési tulajdonságok név-érték párok gyűjteményét hordozza.
@@ -202,13 +202,13 @@ Ez a `Microsoft.ApplicationInsights.JavaScript`funkció a . Alapértelmezés sze
 
 Az [OpenTracing adatmodell specifikációja](https://opentracing.io/) és az Application Insights adatmodellek a következőképpen vannak leképezve:
 
-| Application Insights                  | OpenTracing (OpenTracing)                                       |
-|------------------------------------   |-------------------------------------------------  |
-| `Request`, `PageView`                 | `Span`a`span.kind = server`                  |
-| `Dependency`                          | `Span`a`span.kind = client`                  |
-| `Id`a `Request` és a`Dependency`    | `SpanId`                                          |
-| `Operation_Id`                        | `TraceId`                                         |
-| `Operation_ParentId`                  | `Reference`típusú `ChildOf` (a szülő span)   |
+| Application Insights                   | OpenTracing (OpenTracing)                                        |
+|------------------------------------    |-------------------------------------------------    |
+| `Request`, `PageView`                  | `Span`a`span.kind = server`                    |
+| `Dependency`                           | `Span`a`span.kind = client`                    |
+| `Id`a `Request` és a`Dependency`     | `SpanId`                                            |
+| `Operation_Id`                         | `TraceId`                                           |
+| `Operation_ParentId`                   | `Reference`típusú `ChildOf` (a szülő span)     |
 
 További információ: [Application Insights telemetriai adatmodell.](../../azure-monitor/app/data-model.md)
 
@@ -320,19 +320,12 @@ Van egy új HTTP-modul, [a Microsoft.AspNet.TelemetryCorrelation](https://www.nu
 Az Application Insights SDK, kezdve a 2.4.0-béta1-es verzióval, használja, `DiagnosticSource` és `Activity` telemetriai adatok gyűjtése és társítja azt az aktuális tevékenységhez.
 
 <a name="java-correlation"></a>
-## <a name="telemetry-correlation-in-the-java-sdk"></a>Telemetriai korreláció a Java SDK-ban
+## <a name="telemetry-correlation-in-the-java"></a>Telemetriai korreláció a Java-ban
 
-[Application Insights SDK Java](../../azure-monitor/app/java-get-started.md) 2.0.0-s vagy újabb verziójú támogatja a telemetriai adatok automatikus korrelációja. Automatikusan feltölti `operation_id` az összes telemetriai adatok (például a nyomkövetések, kivételek és egyéni események) a kérelem hatókörén belül kiadott. A http-n keresztüli szolgáltatás-szolgáltatás hívásokkor is propagálja a korrelációs fejléceket (korábban leírtak szerint), ha a [Java SDK-ügynök](../../azure-monitor/app/java-agent.md) konfigurálva van.
+[Az Application Insights Java-ügynök,](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) valamint a [Java SDK](../../azure-monitor/app/java-get-started.md) 2.0.0-s vagy újabb verziója támogatja a telemetriai adatok automatikus korrelációját. Automatikusan feltölti `operation_id` az összes telemetriai adatok (például a nyomkövetések, kivételek és egyéni események) a kérelem hatókörén belül kiadott. A http-n keresztüli szolgáltatás-szolgáltatás hívásokkor is propagálja a korrelációs fejléceket (korábban leírtak szerint), ha a [Java SDK-ügynök](../../azure-monitor/app/java-agent.md) konfigurálva van.
 
 > [!NOTE]
-> A korrelációs funkció hoz csak az Apache HttpClient rendszeren keresztül kezdeményezett hívások támogatottak. A Spring RestTemplate és a Feign egyaránt használható az Apache HttpClient-el a motorháztető alatt.
-
-Jelenleg az üzenetkezelési technológiák (például a Kafka, a RabbitMQ és az Azure Service Bus) automatikus környezetpropagálása nem támogatott. Lehetőség van az ilyen forgatókönyvek manuális `trackDependency` `trackRequest` an és módszerek használatával történő kódolására. Ezekben a módszerekben a függőségi telemetria egy gyártó által várólistára helyezett üzenetet jelent. A kérelem egy fogyasztó által feldolgozott üzenetet jelöl. Ebben az esetben `operation_id` `operation_parentId` mindkettőt propagálni kell az üzenet tulajdonságaiközött.
-
-### <a name="telemetry-correlation-in-asynchronous-java-applications"></a>Telemetriai korreláció aszinkron Java-alkalmazásokban
-
-Ha meg szeretné tudni, hogyan kapcsolhatja össze a telemetriai adatokat egy aszinkron tavaszi rendszerindítási alkalmazásban, olvassa el az Elosztott nyomkövetés az aszinkron Java-alkalmazásokban .go relate how to correlate telemetry in an aszinkron spring boot application, see [Distributed Tracing in Asynchronous Java Applications](https://github.com/Microsoft/ApplicationInsights-Java/wiki/Distributed-Tracing-in-Asynchronous-Java-Applications). Ez a cikk útmutatást nyújt a tavaszi [ThreadPoolTaskExecutor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskExecutor.html) és [threadPoolTaskScheduler műszerezéséhez.](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskScheduler.html)
-
+> Az Application Insights Java-ügynök automatikusan gyűjti a JMS, a Kafka, a Netty/Webflux és más kérelmeket és függőségeket. Java SDK esetén csak az Apache HttpClient-en keresztül kezdeményezett hívások támogatottak a korrelációs funkcióhoz. Az automatikus környezetpropagálás az üzenetkezelési technológiák (például a Kafka, a RabbitMQ és az Azure Service Bus) között nem támogatott az SDK-ban. 
 
 <a name="java-role-name"></a>
 ## <a name="role-name"></a>Szerepkörnév

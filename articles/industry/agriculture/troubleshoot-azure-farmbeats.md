@@ -5,16 +5,19 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 2270ee7c850c528bd24fa2e58c2b1684acfc24d6
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 74522502f5405b56a3a604f20a695de83ef3c3a5
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585294"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886483"
 ---
 # <a name="troubleshoot"></a>Hibaelhárítás
 
 Ez a cikk megoldásokat kínál a gyakori Azure FarmBeats problémák. További segítségért forduljon [támogatási fórumunkhoz,](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats) vagy írjon nekünk a. farmbeatssupport@microsoft.com
+
+> [!NOTE]
+  > Ha áprilisban telepítette a FarmBeats szolgáltatást, és a feladatok üres hibaüzenettel hibásodnak meg, előfordulhat, hogy a telepítés nem kapott kötegkvótát, mivel az összes erőforrás vészhelyzeti, egészségügyi és egyéb kritikus szükségletekre irányul. Meg kell kérnie a virtuális gépek nek a Batch-fiókhoz való lefoglalását.
 
 ## <a name="install-issues"></a>Telepítési problémák
 
@@ -280,7 +283,7 @@ Ez a probléma akkor fordulhat elő, ha a Sentinel kiszolgálón karbantartási 
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-in-datahub"></a>Azure Data Factory-feladatnaplók vagy App Service-naplók gyűjtése a Datahubon
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A **Keresőmezőben** keresse meg a FarmBeats Datahub erőforráscsoportot.
 3. Az **Erőforráscsoport** irányítópulton keresse meg a *datahublogs\* * tárfiókot. Például, *datahublogsmvxmq*.  
 4. A **Név** oszlopban válassza ki a tárfiókot a **tárfiók** irányítópultjának megtekintéséhez.
@@ -292,7 +295,7 @@ Ez a probléma akkor fordulhat elő, ha a Sentinel kiszolgálón karbantartási 
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-for-accelerator"></a>Azure Data Factory feladatnaplók vagy App Service-naplók gyűjtése a gyorssegédhez
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A **Keresés mezőben** keresse meg a FarmBeats Accelerator erőforráscsoportot.
 3. Az **Erőforráscsoport** irányítópulton keresse meg a tártárfiókot. *\* * Például *storagedop4k\**.
 4. Válassza ki a tárfiókot a **Név** oszlopban a **tárfiók** irányítópultjának megtekintéséhez.

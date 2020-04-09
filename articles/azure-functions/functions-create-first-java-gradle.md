@@ -4,19 +4,20 @@ description: Hozzon létre és tegyen közzé egy HTTP-aktivált függvényt az 
 author: KarlErickson
 ms.author: karler
 ms.topic: how-to
-ms.date: 08/10/2018
-ms.openlocfilehash: 1a24569a89755a33a80b7f884b803bd36f38ca3f
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.date: 04/08/2020
+ms.openlocfilehash: 5e18e035bd237fd489b715986e58d7ede726348d
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80757123"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886602"
 ---
-# <a name="quickstart-use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Rövid útmutató: A Java és a Gradle használatával hozzon létre és tegyen közzé egy függvényt az Azure-ban
+# <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Függvény létrehozása és közzététele az Azure-ban a Java és a Gradle használatával
 
 Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé java függvényprojektet az Azure Functions számára a Gradle parancssori eszközzel. Ha elkészült, a függvénykód az Azure-ban fut egy [kiszolgáló nélküli üzemeltetési csomagban,](functions-scale.md#consumption-plan) és egy HTTP-kérelem váltja ki. 
 
-Java függvényprojektet a parancssorból is létrehozhat és tehet közzé a [Maven archetípusok](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)használatával.
+> [!NOTE]
+> Ha Gradle nem a preferált fejlesztési eszköz, nézd meg a hasonló útmutatók Java devlopers segítségével [Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java), [IntelliJ IDEA](/azure/java/intellij/azure-toolkit-for-intellij-quickstart-functions) és [VS Kód](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
