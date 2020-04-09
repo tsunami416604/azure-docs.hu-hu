@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: cshoe
-ms.openlocfilehash: dd74fd5c38e5a8800d2092afc1db1b412b126861
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54010269e5b61ebf28a29dd3165c4310f3472817
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77649908"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878204"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Folyamatos kézbesítés a GitHub-művelet használatával
 
@@ -69,13 +69,13 @@ A GitHub most már hitelesíthető a függvényalkalmazásban az Azure-ban.
 
 A környezet beállítása egy nyelvspecifikus közzétételi beállítási művelettel történik.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A következő példa a munkafolyamat nak `actions/setup-node` azt a részét mutatja be, amely a műveletet használja a környezet beállításához:
 
 ```yaml
     - name: 'Login via Azure CLI'
-      uses: Azure/actions/login@master
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Setup Node 10.x
@@ -90,7 +90,7 @@ A következő példa a munkafolyamat nak `actions/setup-python` azt a részét m
 
 ```yaml
     - name: 'Login via Azure CLI'
-      uses: Azure/actions/login@master
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Setup Python 3.6
@@ -99,13 +99,13 @@ A következő példa a munkafolyamat nak `actions/setup-python` azt a részét m
         python-version: 3.6
 ```
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 A következő példa a munkafolyamat nak `actions/setup-dotnet` azt a részét mutatja be, amely a műveletet használja a környezet beállításához:
 
 ```yaml
     - name: 'Login via Azure CLI'
-      uses: Azure/actions/login@master
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Setup Dotnet 2.2.300
@@ -120,7 +120,7 @@ A következő példa a munkafolyamat nak `actions/setup-java` azt a részét mut
 
 ```yaml
     - name: 'Login via Azure CLI'
-      uses: Azure/actions/login@master
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Setup Java 1.8.x
@@ -138,7 +138,7 @@ Ez az Azure Functions által támogatott nyelvtől és nyelvektől függ, ez a s
 
 A következő példa a munkafolyamat nak azt a részét mutatja be, amely a függvényalkalmazást építi, amely nyelvspecifikus:
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```yaml
     - name: 'Run npm'
@@ -167,7 +167,7 @@ A következő példa a munkafolyamat nak azt a részét mutatja be, amely a füg
         popd
 ```
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```yaml
     - name: 'Run dotnet build'

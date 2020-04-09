@@ -2,24 +2,21 @@
 title: Egyoldalas alkalmazás konfigurálása – Microsoft identitásplatform | Azure
 description: További információ egyoldalas alkalmazás létrehozásáról (az alkalmazás kódkonfigurációja)
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: c1799b25ec1adf44342d2305d3b2a29039c39cd4
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: f159105046231ba5fb4e458cdd70d930a411a920
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80419705"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80882335"
 ---
 # <a name="single-page-application-code-configuration"></a>Egyoldalas alkalmazás: Kód konfigurációja
 

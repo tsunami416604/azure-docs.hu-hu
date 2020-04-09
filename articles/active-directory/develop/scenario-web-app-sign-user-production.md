@@ -2,24 +2,21 @@
 title: A felhasználókat bejelentkező webalkalmazás áthelyezése éles környezetbe – Microsoft identity platform | Azure
 description: Megtudhatja, hogyan hozhat létre olyan webalkalmazást, amely bejelentkezik a felhasználókba (ugrás éles környezetbe)
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 6c486e59f32afd09a9934ae2298172ccb4ee2414
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c5fd444c55a20441325088912a07eb051219b84
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76768107"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80881468"
 ---
 # <a name="web-app-that-signs-in-users-move-to-production"></a>A felhasználókban bejelentkező webalkalmazás: Ugrás éles környezetbe
 

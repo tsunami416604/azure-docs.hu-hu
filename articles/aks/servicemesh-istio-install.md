@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 02/19/2020
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: f0fe4ab46bfe5c0c0c2ea67aa2e2694321628be5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d1d02cb42a86023e5c341daab678c39f22f75dda
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136363"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877694"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Az Istio telepítése és használata az Azure Kubernetes szolgáltatásban (AKS)
 
@@ -97,7 +97,10 @@ Az Istio [Helm][helm] telepítési megközelítése a jövőben elavult lesz. Az
 > Az Istio-t jelenleg linuxos csomópontokon való futtatásra kell ütemezni. Ha a fürtben Windows Server-csomópontok találhatók, biztosítania kell, hogy az Istio-podok csak Linux-csomópontokon fussanak. A [csomópontválasztók][kubernetes-node-selectors] segítségével biztosítjuk, hogy a podok a megfelelő csomópontokra legyenek ütemezve.
 
 > [!CAUTION]
-> Az [SDS (secret discovery service)][istio-feature-sds] és [az Istio CNI][istio-feature-cni] Istio funkciók jelenleg [alfa,][istio-feature-stages]így gondoltam kell adni, mielőtt ezeket. Emellett a [szolgáltatásfiók tokenkötet-kivetítése][kubernetes-feature-sa-projected-volume] Kubernetes szolgáltatás (az SDS követelménye) nincs engedélyezve a jelenlegi AKS-verziókban.
+> Az [SDS (secret discovery service)][istio-feature-sds] és [az Istio CNI][istio-feature-cni] Istio funkciók jelenleg [alfa,][istio-feature-stages]így gondoltam kell adni, mielőtt ezeket. 
+>
+> Vegye figyelembe, hogy a [szolgáltatásfiók tokenkötet-kivetítése][kubernetes-feature-sa-projected-volume] Kubernetes szolgáltatás (az SDS követelménye) **mostantól engedélyezve** van az Összes Kubernetes 1.13 és újabb verziók az AKS-en.
+
 Hozzon létre `istio.aks.yaml` egy megnevezett fájlt a következő tartalommal. Ez a fájl fogja tartani az [Istio vezérlő sík spec][istio-control-plane] részleteket konfigurálása Istio.
 
 ```yaml

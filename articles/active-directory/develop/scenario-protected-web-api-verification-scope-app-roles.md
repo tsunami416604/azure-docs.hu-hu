@@ -3,25 +3,21 @@ title: Hatókör- és alkalmazásszerepkörök védett webes API-jának ellenőr
 titleSuffix: Microsoft identity platform
 description: Ismerje meg, hogyan hozhat létre egy védett webes API-t, és konfigurálhatja az alkalmazás kódját.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 816a9620a3486b534f9293084b7c4f5b4f748033
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe029cdec5bca8885a78267c45bace51e7b3c141
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76768115"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80882369"
 ---
 # <a name="protected-web-api-verify-scopes-and-app-roles"></a>Védett webes API: Hatókörök és alkalmazásszerepkörök ellenőrzése
 

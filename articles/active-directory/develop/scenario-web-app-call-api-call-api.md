@@ -2,24 +2,21 @@
 title: Webes api felhívása webalkalmazásból – Microsoft identity platform | Azure
 description: Megtudhatja, hogy miként hozhat létre webes alkalmazásokat, amelyek webes API-kat hívnak meg (védett webes API-k hívása)
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 28b4be46dc686c6e1b55f1ab36e0607057ebdbbd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b6f7634d16eeaa631f6d9f3c13ce23181ce7b40b
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76758971"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80881808"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Webes API-kat meghívó webalkalmazás: Webes API hívása
 

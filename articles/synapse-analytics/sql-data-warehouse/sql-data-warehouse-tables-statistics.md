@@ -11,12 +11,12 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5fae2bba0acc4ab462c91f7272694d032fc6ceaa
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 6f2af87cf5cef1b5a80bc16d962fba579b4ff309
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742666"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985864"
 ---
 # <a name="table-statistics-in-synapse-sql-pool"></a>Táblastatisztika a Synapse SQL-készletben
 
@@ -146,11 +146,11 @@ További információt a Statisztika általános útmutatója című témakörbe
 
 ## <a name="implementing-statistics-management"></a>A statisztikák kezelésének megvalósítása
 
-Gyakran érdemes kiterjeszteni az adatbetöltési folyamatot annak érdekében, hogy a statisztikák frissüljenek a terhelés végén.
+Gyakran célszerű kiterjeszteni az adatbetöltési folyamatot annak érdekében, hogy a statisztikák frissüljenek a terhelés végén, hogy elkerüljék/minimalizálják a blokkolást vagy az erőforrások közötti versengést az egyidejű lekérdezések között.  
 
 Az adatterhelés az, amikor a táblák leggyakrabban módosítják méretüket és/vagy az értékek eloszlását. Az adatbetöltés logikus hely bizonyos felügyeleti folyamatok megvalósításához.
 
-A terhelési folyamat során a statisztikák frissítésére vonatkozóan a következő irányadó elvek állnak rendelkezésre:
+A statisztikák frissítéséhez a következő irányadó elvek állnak rendelkezésre:
 
 - Győződjön meg arról, hogy minden betöltött tábla legalább egy statisztikai objektumot frissített. Ez frissíti a tábla méretét (sorszám és oldalszám) információkat a statisztikai frissítés részeként.
 - Összpontosítson a JOIN, GROUP BY, ORDER BY és DISTINCT záradékokban részt vevő oszlopokra.
@@ -174,7 +174,7 @@ Ez a szintaxis az összes alapértelmezett beállítást használja. Alapértelm
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]);
 ```
 
-Példa:
+Például:
 
 ```sql
 CREATE STATISTICS col1_stats ON dbo.table1 (col1);
@@ -190,7 +190,7 @@ A teljes táblázat mintavételéhez használja ezt a szintaxist:
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]) WITH FULLSCAN;
 ```
 
-Példa:
+Például:
 
 ```sql
 CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH FULLSCAN;
@@ -391,7 +391,7 @@ Adott statisztikai objektum frissítéséhez használja az alábbi szintaxist:
 UPDATE STATISTICS [schema_name].[table_name]([stat_name]);
 ```
 
-Példa:
+Például:
 
 ```sql
 UPDATE STATISTICS [dbo].[table1] ([stats_col1]);
@@ -407,7 +407,7 @@ A táblázatban szereplő összes statisztikai objektum frissítésének egyszer
 UPDATE STATISTICS [schema_name].[table_name];
 ```
 
-Példa:
+Például:
 
 ```sql
 UPDATE STATISTICS dbo.table1;
@@ -510,7 +510,7 @@ Ez az egyszerű példa egy statisztikai objektum mindhárom részét mutatja:
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>)
 ```
 
-Példa:
+Például:
 
 ```sql
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
@@ -524,7 +524,7 @@ Ha csak bizonyos alkatrészeket szeretne megtekinteni, használja a `WITH` zára
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>) WITH stat_header, histogram, density_vector
 ```
 
-Példa:
+Például:
 
 ```sql
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector

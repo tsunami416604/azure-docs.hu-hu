@@ -2,26 +2,22 @@
 title: Azure AD-hitelesítés & engedélyezési hibakódok
 description: Ismerje meg az AADSTS hibakódokat, amelyek az Azure AD biztonsági jogkivonat-szolgáltatásból (STS) származnak.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: reference
-ms.date: 03/31/2020
+ms.date: 04/07/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 91d285e2a839a7d6266c5d58f52901a48a7a8c84
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 40a7406ea91c95daad2f180b9d0f4620cdbbf454
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473177"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875928"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD hitelesítési és engedélyezési hibakódok
 
@@ -133,6 +129,7 @@ Keresés a visszaadott hibakód numerikus részén.  Ha például az "AADSTS1600
 | AADSTS50180 | WindowsIntegratedAuthMissing - Integrált Windows-hitelesítésre van szükség. Engedélyezze a Seamless SSO-t a bérlőn. |
 | AADSTS50187 | DeviceInformationNotProvided - A szolgáltatás nem tudta végrehajtani az eszközhitelesítést. |
 | AADSTS50196 | LoopDetected - a rendszer ügyfélhurkot észlelt. Ellenőrizze az alkalmazás logikáját, és győződjön meg arról, hogy a jogkivonat-gyorsítótárazás megvalósult, és hogy a hibafeltételek megfelelően vannak-e kezelve.  Az alkalmazás túl sok ugyanazt a kérelmet túl rövid idő alatt, jelezve, hogy hibás állapotban van, vagy visszaélésszerűen kér jogkivonatokat. |
+| AADSTS50197 | Ütköző identitások – a felhasználó nem található. Próbáljon meg újra bejelentkezni. |
 | AADSTS50199 | CmsiInterrupt – Biztonsági okokból a kérelemhez felhasználói megerősítés szükséges.  Mivel ez egy "interaction_required" hiba, az ügyfélnek interaktív hitelesítést kell végeznie.  Ennek az az oka, hogy egy rendszer webnézetet használtak egy natív alkalmazás jogkivonatának kéréséhez – a felhasználót meg kell kérni, hogy kérdezze meg, hogy valójában ez-e az az alkalmazás, amelybe be akartak jelentkezni.|
 | AADSTS51000 | RequiredFeatureNotEnabled - A szolgáltatás le van tiltva. |
 | AADSTS51001 | DomainHintMustbePresent – A tartományemlékeztetőnek jelen kell lennie a helyszíni biztonsági azonosítóval vagy a helyszíni UPN-nel. |

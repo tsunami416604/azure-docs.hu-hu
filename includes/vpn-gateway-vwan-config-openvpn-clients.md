@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/17/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 921e22e637782ffd744af1a28e6bd43e7dd53c67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55fa01d100c60c6411774373428ff4bbd9a56822
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066118"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80986714"
 ---
 ## <a name="windows-clients"></a><a name="windows"></a>Windows-ügyfelek
 
@@ -130,7 +130,7 @@ ms.locfileid: "80066118"
 5. Bontsa ki a személyes kulcsot és az base64 ujjlenyomatot a .pfx-ből. Ezt többféleképpen megteheti. Az OpenSSL használata a számítógépen az egyik módja.
 
     ```
-    openssl.exe pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
+    openssl pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
     ```
    A *profileinfo.txt* fájl tartalmazza a személyes kulcsot és a hitelesítésszolgáltató ujjlenyomatát, valamint az ügyféltanúsítványt. Ügyeljen arra, hogy az ügyféltanúsítvány ujjlenyomatát használja.
 
@@ -161,7 +161,7 @@ ms.locfileid: "80066118"
 11. Ha a parancsssal szeretne csatlakozni, írja be a következő parancsot:
   
     ```
-    sudo openvpn –-config <name and path of your VPN profile file>&
+    sudo openvpn --config <name and path of your VPN profile file>&
     ```
 12. Ha a grafikus felhasználói felületen keresztül szeretne csatlakozni, nyissa meg a rendszerbeállításokat.
 13. Ide **+** kattintva új VPN-kapcsolatot adhat hozzá.

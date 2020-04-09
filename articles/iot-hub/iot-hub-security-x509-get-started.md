@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 968241eff1bcab449f9a4def7a394a508461ec95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a22808b1d7ab2b2451f50470e8da3770d07407a5
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79271173"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985660"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Az Azure IoT Hub X.509-es védelmének beállítása
 
@@ -38,6 +38,9 @@ A tanúsítványok bekéselésének az alábbi módokközül választhat:
 * Hozzon létre saját X.509-es tanúsítványait egy külső gyártótól származó eszközzel, például [az OpenSSL-rel.](https://www.openssl.org/) Ez a technika rendben van a vizsgálati és fejlesztési célokra. A teszthitelesítési tanúsítványok PowerShell vagy Bash használatával történő létrehozásáról a [hitelesítésszolgáltatói tanúsítványok](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) teszteléséről a minták és oktatóanyagok kezelése című témakörben található. Az oktatóanyag többi része a teszthitelesítési tanúsítványokat használja, amelyeket a [teszthitelesítési tanúsítványok kezelése a mintákhoz és az oktatóanyagokhoz tartozó teszthitelesítési tanúsítványok kezelése](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)című útmutató utasításai nak megfelelően hoz létre.
 
 * Hozzon létre egy [X.509 köztes hitelesítésszolgáltatói tanúsítványt,](iot-hub-x509ca-overview.md#sign-devices-into-the-certificate-chain-of-trust) amelyet egy meglévő legfelső szintű hitelesítésszolgáltatói tanúsítvány írt alá, és töltse fel a hubra. A köztes tanúsítvány feltöltése és ellenőrzése után az alábbiakban megadottak szerint használható az alább említett legfelső szintű hitelesítésszolgáltatói tanúsítvány helyén. Az olyan eszközök, mint az OpenSSL ([openssl req](https://www.openssl.org/docs/man1.1.0/man1/req.html) és [openssl ca](https://www.openssl.org/docs/man1.1.0/man1/ca.html)) köztes hitelesítésszolgáltatói tanúsítvány létrehozására és aláírására használhatók.
+
+> [!NOTE]
+> Ne töltse fel a külső gyökér, ha nem egyedi az Ön számára, mert ez lehetővé tenné, hogy a harmadik fél más ügyfelei is csatlakoztassák eszközeiket az IoT Hubhoz.
 
 ## <a name="register-x509-ca-certificates-to-your-iot-hub"></a>X.509 hitelesítésszolgáltatói tanúsítványok regisztrálása az IoT-központba
 

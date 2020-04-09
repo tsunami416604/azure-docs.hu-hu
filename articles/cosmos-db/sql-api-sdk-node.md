@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: 181f43e060e3b4b41babeee375365a97e1d224aa
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 03f79535b3a62fbb4d0309ae86a142bd842cc308
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411273"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982888"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK SQL API-hoz: Kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -21,7 +21,7 @@ ms.locfileid: "80411273"
 > * [.NET módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Aszinkron Java](sql-api-sdk-async-java.md)
+> * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
@@ -295,14 +295,14 @@ Nem mindig a leglátványosabb változások, de segítenek a csapatunk nak jobb 
 
 ### <a name=""></a><a name="1.14.0"/>1.14.0</a>
 * Támogatja a munkamenet-konzisztenciát.
-* Ez az SDK-verzió az Azure Cosmos DB Emulator legújabb verzióját igényli, amely letölthető a alkalmazásból. https://aka.ms/cosmosdb-emulator
+* Ehhez az SDK-verzióhoz az [Azure Cosmos DB Emulátor](https://aka.ms/cosmosdb-emulator)legújabb verziója szükséges.
 
 ### <a name=""></a><a name="1.13.0"/>1.13.0</a>
 * Megosztott egyezésű partíciós lekérdezések.
 * Támogatja az erőforrás-kapcsolatot a kezdő és a záró perjelekkel (és a megfelelő tesztekkel).
 
 ### <a name=""></a><a name="1.12.2"/>1.12.2</a>
-*   npm dokumentáció javítva.
+*    npm dokumentáció javítva.
 
 ### <a name=""></a><a name="1.12.1"/>1.12.1</a>
 * Javítva egy hiba az executeStoredProcedure-ban, ahol az érintett dokumentumok speciális Unicode karakterekkel (LS, PS) voltak.

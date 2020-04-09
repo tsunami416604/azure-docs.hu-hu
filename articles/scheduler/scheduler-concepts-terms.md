@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 0a744c2de320ddad2e7959cae7b62d7990879953
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 100be6a4376883a4f2a91b1efd172242c1d19e19
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898569"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878391"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Az Azure Scheduler alapfogalmai, terminológiája és entitásai
 
@@ -66,7 +66,7 @@ https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{reso
 
 Az Azure Scheduler több feladattípust támogat: 
 
-* HTTP-feladatok, így az SSL-t támogató HTTPS-feladatok is, amelyekre egy meglévő szolgáltatás vagy alkalmazás végpontjához lehet szükség
+* HTTP-feladatok, beleértve a TLS-t támogató HTTPS-feladatokat is, ha egy meglévő szolgáltatás vagy munkaterhelés végpontja
 * Storage-üzenetsorbeli feladatok a tárolási üzenetsorokat használó alkalmazásokhoz és szolgáltatásokhoz, például a tárolási üzenetsorokba történő üzenetküldés
 * Service Bus-üzenetsorok feladatai olyan alkalmazásokhoz és szolgáltatásokhoz, amelyek Service Bus-üzenetsorokat használnak
 * Service Bus-témafeladatok olyan alkalmazásokhoz és szolgáltatásokhoz, amelyek Service Bus-témafeladatokat használnak
@@ -308,7 +308,7 @@ Miután elindul egy feladat, a Scheduler megjeleníti annak állapotadatait a **
 * A meghiúsulások száma (ha volt ilyen)
 * A hibák száma (ha volt ilyen)
 
-Példa:
+Például:
 
 ```json
 "status": {

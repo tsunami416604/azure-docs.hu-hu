@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/27/2020
-ms.openlocfilehash: 194da036260a78b27748dfc7f755212ab4f30b1e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ae5d5f2d282c546f5172ca1c8cb0e420d3b6e96b
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78256031"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878051"
 ---
 # <a name="known-issuesmigration-limitations-with-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>A MongoDB-ról az Azure Cosmos DB MongoDB-ra vonatkozó API-jával kapcsolatos ismert problémák/áttelepítési korlátozások
 
@@ -45,7 +45,7 @@ A MongoDB-ról a Cosmos DB MongoDB-ra vonatkozó API-jára való áttéréssel k
 
 | Ok         | Megoldás: |
 | ------------- | ------------- |
-| A MongoDB nem támogatott verziójából próbál áttérni az Azure Cosmos DB-re. | A MongoDB új verzióinak megjelenésekor a rendszer teszteli őket az Azure Database Migration Service szolgáltatással való kompatibilitás biztosítása érdekében, és a szolgáltatás rendszeres időközönként frissül, hogy elfogadja a legújabb verzió(ka)t. Ha azonnali áttelepítésre van szükség, kerülő megoldásként exportálhatja az adatbázisokat/gyűjteményeket az Azure Storage-ba, és a forrást az eredményül kapott memóriaképhez. Hozza létre a SAS-t a blobtárolón a Storage Explorerben, majd használja az URL-címet a tároló SAS-adataival a forrásrészletkapcsolati karakterláncként.<br><br> |
+| A MongoDB nem támogatott verziójából próbál áttérni az Azure Cosmos DB-re. | A MongoDB új verzióinak megjelenésekor a rendszer teszteli őket az Azure Database Migration Service szolgáltatással való kompatibilitás biztosítása érdekében, és a szolgáltatás rendszeres időközönként frissül, hogy elfogadja a legújabb verzió(ka)t. Ha azonnali áttelepítésre van szükség, kerülő megoldásként exportálhatja az adatbázisokat/gyűjteményeket az Azure Storage-ba, és irányíthatja a forrást az eredményül kapott memóriaképre. Hozza létre a SAS-t a blobtárolón a Storage Explorerben, majd használja az URL-címet a tároló SAS-adataival a forrásrészletkapcsolati karakterláncként.<br><br> |
 
 ## <a name="next-steps"></a>További lépések
 

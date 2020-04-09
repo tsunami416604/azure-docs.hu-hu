@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 01e683e31905281d25fdcf976bc58397c052a6c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d9c1cff53d5d0f0385d3d61938c7fb6309efb7b1
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79243184"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985388"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>SQL Server virtuális gép regisztrálása az Azure-ban az SQL VM erőforrás-szolgáltatóval
 
@@ -42,7 +42,7 @@ Az SQL Server VM Azure Marketplace-lemezkép telepítése az Azure Portalon kere
    $vms | Where-Object {$_.sqlServerLicenseType -eq "AHUB"}
    ```
 
-   # <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+   # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
    ```powershell-interactive
    Get-AzSqlVM | Where-Object {$_.LicenseType -eq 'AHUB'}
@@ -91,7 +91,7 @@ Az SQL Server IaaS-ügynök aktuális módját a PowerShell használatával teki
 
 Az SQL Server virtuális gép regisztrálásához az SQL vm erőforrás-szolgáltató, először regisztrálnia kell az előfizetést az erőforrás-szolgáltatónál. Ez lehetővé teszi az SQL virtuálisgép-erőforrás-szolgáltató számára, hogy erőforrásokat hozzon létre az előfizetésen belül.  Ezt az Azure Portal, az Azure CLI vagy a PowerShell használatával teheti meg.
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
 1. Nyissa meg az Azure-portált, és nyissa meg a **Minden szolgáltatás című kaput.** 
 1. Nyissa meg az **Előfizetések** lehetőséget, és válassza ki az érdeklődési áget.  
@@ -113,7 +113,7 @@ Regisztrálja az SQL VM-erőforrás-szolgáltatót az Azure-előfizetésbe az Az
 az provider register --namespace Microsoft.SqlVirtualMachine 
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell-interactive
 # Register the SQL VM resource provider to your subscription
@@ -142,7 +142,7 @@ Regisztrálja az SQL Server virtuális gépet könnyű üzemmódban az Az CLI-ve
   ```
 
 
-# <a name="powershell"></a>[Powershell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Regisztrálja az SQL Server virtuális gépet könnyű üzemmódban a PowerShell használatával:  
 
@@ -178,9 +178,9 @@ Az SQL Server virtuális gép közvetlen regisztrálásához teljes módban (és
 
 A Windows Server 2008 rendszerre telepített SQL Server 2008 és 2008 R2 (_nem R2_) regisztrálható az SQL VM erőforrás-szolgáltatónál [NoAgent módban](#management-modes). Ez a beállítás biztosítja a megfelelőséget, és lehetővé teszi, hogy az SQL Server virtuális gép korlátozott funkcionalitással az Azure Portalon legyen figyelve.
 
-Adja `AHUB`meg `PAYG`a `DR` , vagy **sqlLicenseType** `SQL2008R2-WS2008` értéket, illetve az `SQL2008-WS2008` **sqlImageOffer**értéket. 
+Adja `AHUB`meg `PAYG`a `DR` , vagy **sqlLicenseType**értéket, illetve `SQL2008-WS2008` `SQL2008R2-WS2008`az **sqlImageOffer értéket.** 
 
-Az SQL Server 2008 vagy 2008 R2 példány Windows Server 2008 példányon történő regisztrálásához használja a következő Az CLI- vagy PowerShell-kódrészletet: 
+Az SQL Server 2008 vagy 2008 R2 regisztrálásához Windows Server 2008 példányra, használja a következő Az CLI- vagy PowerShell-kódrészletet: 
 
 
 # <a name="az-cli"></a>[AZ CLI](#tab/bash)
@@ -190,7 +190,7 @@ Regisztrálja az SQL Server 2008 virtuális gépet NoAgent módban az Az CLI-vel
   ```azurecli-interactive
    az sql vm create -n sqlvm -g myresourcegroup -l eastus |
    --license-type PAYG --sql-mgmt-type NoAgent 
-   --image-sku Enterprise --image-offer SQL2008-WS2008R2
+   --image-sku Enterprise --image-offer SQL2008-WS2008
  ```
  
  
@@ -199,10 +199,10 @@ Regisztrálja az SQL Server 2008 R2 virtuális gépet NoAgent módban az Az CLI-
   ```azurecli-interactive
    az sql vm create -n sqlvm -g myresourcegroup -l eastus |
    --license-type PAYG --sql-mgmt-type NoAgent 
-   --image-sku Enterprise --image-offer SQL2008R2-WS2008R2
+   --image-sku Enterprise --image-offer SQL2008R2-WS2008
  ```
 
-# <a name="powershell"></a>[Powershell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Regisztrálja az SQL Server 2008 virtuális gépet NoAgent módban a PowerShell használatával: 
 
@@ -243,9 +243,9 @@ Az SQL Server IaaS-ügynök aktuális módját a PowerShell használatával teki
 Az ügynökmód teljes re való frissítése: 
 
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Nyissa meg az [SQL virtuális gépek](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource) erőforrását. 
 1. Válassza ki az SQL Server virtuális gépet, és válassza **az Áttekintés**lehetőséget. 
 1. A NoAgent vagy könnyű IaaS-móddal rendelkező SQL Server virtuális gépek esetén válassza ki a **Csak licenctípus t és a kiadásfrissítéseit az SQL IaaS bővítményüzenettel.**
@@ -267,7 +267,7 @@ Futtassa az Az CLI kódrészletet:
   az sql vm update --name <vm_name> --resource-group <resource_group_name> --sql-mgmt-type full  
   ```
 
-# <a name="powershell"></a>[Powershell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Futtassa a következő PowerShell-kódrészletet:
 
@@ -284,9 +284,9 @@ Futtassa a következő PowerShell-kódrészletet:
 ## <a name="verify-registration-status"></a>Regisztráció állapotának ellenőrzése
 Ellenőrizheti, hogy az SQL Server virtuális gép már regisztrálva van-e az SQL virtuálisgép-erőforrás-szolgáltatóval az Azure Portalon, az Azure CLI-n vagy a PowerShellen keresztül. 
 
-### <a name="azure-portal"></a>Azure portál 
+### <a name="azure-portal"></a>Azure Portal 
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 1. Nyissa meg az [SQL Server virtuális gépeit](virtual-machines-windows-sql-manage-portal.md).
 1. Válassza ki az SQL Server virtuális gép a listából. Ha az SQL Server virtuális gép nem szerepel itt, valószínűleg nem regisztrált az SQL vm erőforrás-szolgáltató. 
 1. Az érték megtekintése az **Állapot**csoportban. Ha az **állapot** **sikeres,** akkor az SQL Server virtuális gép sikeresen regisztrálva lett az SQL vm erőforrás-szolgáltatóval. 
@@ -304,7 +304,7 @@ Ellenőrizze az SQL Server virtuális gép aktuális regisztrációs állapotát
   az sql vm show -n <vm_name> -g <resource_group>
  ```
 
-# <a name="powershell"></a>[Powershell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
   ```powershell-interactive
   Get-AzSqlVM -Name <vm_name> -ResourceGroupName <resource_group>
@@ -321,7 +321,7 @@ Az SQL Server virtuális gép regisztrációjának törléséhez az SQL VM-erőf
 
 Az SQL virtuális gép törlésére az SQL virtuális gép erőforrás-szolgáltatószükséges a felügyeleti mód teljes leminősítéséhez. 
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
 Ha törölni szeretné az SQL Server virtuális gép regisztrációját az erőforrás-szolgáltatóval az Azure Portal használatával, kövesse az alábbi lépéseket:
 
@@ -356,7 +356,7 @@ az sql vm delete
   --yes 
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Ha törölni szeretné az SQL Server virtuális gép regisztrációját az erőforrás-szolgáltatótól az Azure CLI-vel, használja a [New-AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm)parancsot. Ezzel eltávolítja az SQL Server *virtuálisgép-erőforrást,* de nem törli a virtuális gépet. 
 
 ```powershell-interactive

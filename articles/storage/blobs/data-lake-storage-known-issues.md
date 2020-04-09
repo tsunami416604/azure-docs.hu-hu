@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 03/20/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 4f8fae6580272ed53b8d440ba3e74c6a1ed1e61a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f69f17dc9d0cab2491a2c7f37b5bd082cc96b2d6
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80061510"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985422"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Ismert problémák az Azure Data Lake Storage Gen2 szolgáltatással kapcsolatban
 
 Ez a cikk az Azure Data Lake Storage Gen2 korlátait és ismert problémáit ismerteti.
 
-## <a name="supported-blob-storage-features"></a>A Blob-tároló támogatott szolgáltatásai
+## <a name="supported-blob-storage-features"></a>Támogatott Blob Storage-funkciók
 
 A Blob storage-szolgáltatások egyre növekvő száma működik hierarchikus névtérrel rendelkező fiókokkal. A teljes listát az [Azure Data Lake Storage Gen2 szolgáltatásában elérhető Blob Storage-funkciók című témakörben tartalmazza.](data-lake-storage-supported-blob-storage-features.md)
 
 ## <a name="supported-azure-service-integrations"></a>Támogatott Azure-szolgáltatásintegrációk
 
-A Data Lake Storage gen2 számos Azure-szolgáltatást támogat, amelyek segítségével adatokat adhat be, elemzéseket végezhet, és vizuális ábrázolásokat hozhat létre. A támogatott Azure-szolgáltatások listáját az [Azure Data Lake Storage Gen2 szolgáltatást támogató Azure-szolgáltatások című](data-lake-storage-supported-azure-services.md)témakörben található.
+Az Azure Data Lake Storage Gen2 számos Azure-szolgáltatást támogat, amelyek segítségével adatokat lehet beadni, elemzéseket végezhet, és vizuális ábrázolásokat hozhat létre. A támogatott Azure-szolgáltatások listáját az [Azure Data Lake Storage Gen2 szolgáltatást támogató Azure-szolgáltatások című](data-lake-storage-supported-azure-services.md)témakörben található.
 
 Tekintse meg [az Azure Data Lake Storage Gen2 szolgáltatást támogató Azure-szolgáltatásokat.](data-lake-storage-supported-azure-services.md)
 
@@ -41,7 +41,7 @@ A Blob API-k és a Data Lake Storage Gen2 API-k ugyanazon az adaton működhetne
 
 Ez a szakasz a blob API-k és a Data Lake Storage Gen2 API-k használatával kapcsolatos problémákat és korlátozásokat ismerteti ugyanazon adatok használatával.
 
-* Nem használhatja a Blob API-k és a Data Lake Storage API-kat egy fájl ugyanazon példányába történő íráshoz. Ha a Data Lake Storage Gen2 API-k használatával ír egy fájlba, akkor a fájl blokkjai nem lesznek láthatók a [blokklista-blobba](https://docs.microsoft.com/rest/api/storageservices/get-block-list) érkező hívások számára. Felülírhat egy fájlt a Data Lake Storage Gen2 API-k vagy a Blob API-k használatával. Ez nincs hatással a fájltulajdonságokra.
+* A Blob API-k és a Data Lake Storage API-k nem használhatók a fájl ugyanazon példányába történő íráshoz. Ha a Data Lake Storage Gen2 API-k használatával ír egy fájlba, akkor a fájl blokkjai nem lesznek láthatók a [blokklista-blobba](https://docs.microsoft.com/rest/api/storageservices/get-block-list) érkező hívások számára. Felülírhat egy fájlt a Data Lake Storage Gen2 API-k vagy a Blob API-k használatával. Ez nincs hatással a fájltulajdonságokra.
 
 * Ha a [Listablobok](https://docs.microsoft.com/rest/api/storageservices/list-blobs) műveletet határolójel megadása nélkül használja, az eredmények könyvtárakat és blobokat is tartalmaznak. Ha úgy dönt, hogy határolójelet használ,`/`csak perjel ( ). Ez az egyetlen támogatott határolójel.
 
@@ -112,11 +112,8 @@ A REST API-kat használó harmadik féltől származó alkalmazások továbbra i
 
 Ha egy tárolóhoz [névtelen olvasási hozzáférés](storage-manage-access-to-resources.md) biztosított, akkor az ACL-ok nincsenek hatással a tárolóra vagy a tárolóban lévő fájlokra.
 
-## <a name="windows-azure-storage-blob-wasb-driver"></a>Windows Azure Storage Blob (WASB) illesztőprogram
+## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-adls-gen2"></a>Windows Azure Storage Blob (WASB) illesztőprogram (nem támogatott az ADLS Gen2-vel)
 
-Jelenleg számos probléma merül fel a WASB-illesztőprogram, valamint a hierarchikus névtérrel rendelkező fiókok használatával kapcsolatban. Azt javasoljuk, hogy az [Azure Blob File System (ABFS)](data-lake-storage-abfs-driver.md) illesztőprogramot használja a számítási feladatokban. 
+Jelenleg a WASB-illesztőprogram – amelycsak a Blob API-val működik – problémákba ütközik néhány gyakori forgatókönyvben, azaz ha egy névtér-kompatibilis tárfiók ügyfele. Vegye figyelembe, hogy a többprotokollos hozzáférés (MPA) nem enyhíti ezeket a problémákat sem. 
 
-
-
-
-
+Egyelőre (és valószínűleg a belátható jövőben) nem támogatjuk azokat az ügyfeleket, akik a WASB-illesztőprogramot használják ügyfélként egy névtér-kompatibilis tárfiókhoz. Ehelyett azt javasoljuk, hogy az [Azure Blob File System (ABFS)](data-lake-storage-abfs-driver.md) illesztőprogramját használja a Hadoop-környezetben. Ha a Hadoop branch-3-nál korábbi verzióval próbál kitérni egy helyszíni Hadoop-környezetből, akkor nyisson meg egy Azure-támogatási jegyet, hogy kapcsolatba léphessünk Önnel a helyes úton az Ön és szervezete számára.

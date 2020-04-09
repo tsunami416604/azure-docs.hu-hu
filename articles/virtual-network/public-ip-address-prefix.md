@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 04/08/2020
 ms.author: anavin
-ms.openlocfilehash: 12fb7e03062600745cd8511d37b439ce44f2ef78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9604d5567e74ef470c3e798b6a3df9e48d6fde5d
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75640720"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985303"
 ---
 # <a name="public-ip-address-prefix"></a>Nyilvános IP-cím előtagja
 
@@ -56,7 +56,7 @@ Egy előtagból a következő erőforrásokat társíthatja egy statikus nyilvá
 ## <a name="constraints"></a>Korlátozások
 
 - Az előtag IP-címei nem adhatók meg. Az Azure lefoglalja az előtag IP-címeket a megadott méret alapján.
-- Legfeljebb 16 IP-címből vagy /28-as előtagból hozhat létre előtagot. További információ: [Azure-korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+- Alapértelmezés szerint legfeljebb 16 IP-címből vagy /28-as előtagból hozhat létre előtagot. Tekintse át [a hálózati korlátok növelése kérelmek](https://docs.microsoft.com/azure/azure-portal/supportability/networking-quota-requests) és az [Azure-korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) további információkért.
 - Az előtag létrehozása után nem módosíthatja a tartományt.
 - Csak a standard termékváltozattal létrehozott statikus nyilvános IP-címek rendelhetők hozzá az előtag tartományából. Ha többet szeretne megtudni a nyilvános IP-cím-skus-okról, olvassa el a [nyilvános IP-címet.](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)
 - A tartományból származó címek csak az Azure Resource Manager-erőforrásokhoz rendelhetők hozzá. A klasszikus központi telepítési modell erőforrásaihoz nem rendelhetők címek.

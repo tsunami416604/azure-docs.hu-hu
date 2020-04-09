@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
-ms.date: 11/06/2019
-ms.openlocfilehash: da45c0db027dffc89bd058b70331a4bd6d093b08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 0cefa78b6f52cc67df8817f68a9b793ab86b2a7f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336964"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878578"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Mik azok az Azure Machine Learning-folyamatok?
 
@@ -44,7 +44,7 @@ Az Azure-felhő számos más folyamatot biztosít, amelyek mindegyike más céll
 | -------- | --------------- | -------------- | ------------ | -------------- | --------- | 
 | Modell vezénylése (gépi tanulás) | Adatelemző | Azure Machine Learning-folyamatok | Kubeflow-csővezetékek | Adatok -> modell | Elosztás, gyorsítótárazás, kódelső, újrafelhasználás | 
 | Adatvezénylés (Adatelőkészítés) | Adatszakértő | [Azure Data Factory-folyamatok](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Apache légáramlás | Adatok -> adatok | Erősen gépelt mozgás. Adatközpontú tevékenységek. |
-| Kód & alkalmazás vezénylése (CI/CD) | Alkalmazásfejlesztő / Ops | [Azure DevOps-folyamatok](https://azure.microsoft.com/services/devops/pipelines/) | Jenkins | Kód + Model -> alkalmazás/szolgáltatás | A legtöbb nyitott és rugalmas tevékenységtámogatás, jóváhagyási sorok, fázisok a gating | 
+| Kód & alkalmazás vezénylése (CI/CD) | Alkalmazásfejlesztő / Ops | [Azure DevOps-folyamatok](https://azure.microsoft.com/services/devops/pipelines/) | Jenkins | Kód + Model -> alkalmazás/szolgáltatás | A legtöbb nyitott és rugalmas tevékenységtámogatás, jóváhagyási várólisták, fázisok a gating | 
 
 
 ## <a name="what-can-azure-ml-pipelines-do"></a>Mit tehetnek az Azure ML-folyamatok?
@@ -64,7 +64,7 @@ Az Azure Machine Learning segítségével különböző eszközkészleteket és 
 
 A [folyamatkísérletek metrikáit](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments) közvetlenül az Azure Portalon vagy a [munkaterület céloldalában (előzetes verzió)](https://ml.azure.com)követheti nyomon. A folyamat közzététele után konfigurálhat egy REST-végpontot, amely lehetővé teszi a folyamat bármely platformról vagy veremből történő újrafuttatását.
 
-Röviden, a gépi tanulási életciklus összes összetett feladata segítséget kaphat a folyamatokban. Más Azure-folyamattechnológiák saját erősségei, például [az Azure Data Factory folyamatok](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) az adatokkal való munka és az [Azure-folyamatok](https://azure.microsoft.com/services/devops/pipelines/) folyamatos integráció és üzembe helyezés érdekében. Ha azonban a gépi tanulásra összpontosít, az Azure Machine Learning-folyamatok valószínűleg a legjobb választás a munkafolyamat-igényeknek megfelelően. 
+Röviden, a gépi tanulási életciklus összes összetett feladata segítséget kaphat a folyamatokban. Más Azure-folyamattechnológiák saját erősségei. [Az Azure Data Factory folyamatai](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) kiválóan működnek az adatokkal, és az [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) a megfelelő eszköz a folyamatos integrációhoz és üzembe helyezéshez. Ha azonban a gépi tanulásra összpontosít, az Azure Machine Learning-folyamatok valószínűleg a legjobb választás a munkafolyamat-igényeknek megfelelően. 
 
 ## <a name="what-are-azure-ml-pipelines"></a>Mik azok az Azure ML-folyamatok?
 
@@ -126,7 +126,7 @@ Amikor vizuálisan tervez folyamatokat, a lépés bemenetei és kimenetei látha
 
 A folyamaton belüli lépések más lépésektől is függhetnek. Az Azure ML-folyamatszolgáltatás végzi a függőségek elemzését és vezénylését. Az eredményül kapott "végrehajtási grafikon" csomópontjai lépések feldolgozása. Minden lépés magában foglalhatja a hardver és a szoftver egy adott kombinációjának létrehozását vagy újrafelhasználását, a gyorsítótárazott eredmények újrafelhasználását és így tovább. A szolgáltatás vezénylése és a végrehajtási grafikon optimalizálása jelentősen felgyorsíthatja az ML-fázist, és csökkentheti a költségeket. 
 
-Mivel a lépések egymástól függetlenül futnak, a lépések között áramló bemeneti és kimeneti adatok tárolására irányuló objektumokat külsőleg kell definiálni. Ez a [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py), [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)és a kapcsolódó osztályok szerepköre. Ezek az adatobjektumok egy [datastore](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py) objektumhoz vannak társítva, amely beágyazi a tárolási konfigurációjukat. Az `PipelineStep` alaposztály mindig karakterlánccal, `name` `inputs`a . `outputs` Általában, ez is egy `arguments` listát, és gyakran `resource_inputs`lesz egy lista . Az alosztályok általában további argumentumokkal is `PythonScriptStep` rendelkeznek (például a parancsfájl nevének és elérési útjának futtatásához szükséges). 
+Mivel a lépések egymástól függetlenül futnak, a lépések között áramló bemeneti és kimeneti adatok tárolására irányuló objektumokat külsőleg kell definiálni. Ez a [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py)és a [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py), objektumok szerepköre. Ezek az adatobjektumok egy [datastore](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py) objektumhoz vannak társítva, amely beágyazi a tárolási konfigurációjukat. Az `PipelineStep` alaposztály mindig karakterlánccal, `name` `inputs`a . `outputs` Általában, ez is egy `arguments` listát, és gyakran `resource_inputs`lesz egy lista . Az alosztályok általában további argumentumokkal is `PythonScriptStep` rendelkeznek (például a parancsfájl nevének és elérési útjának futtatásához szükséges). 
 
 A végrehajtási grafikon aciklikus, de a folyamatok futtathatók ismétlődő ütemezés szerint, és futtathatók Python-parancsfájlok, amelyek állapotadatokat írhatnak a fájlrendszerbe, lehetővé téve összetett profilok létrehozását. Ha úgy tervezi meg a folyamatot, hogy bizonyos lépések párhuzamosan vagy aszinkron módon fussanak, az Azure Machine Learning transzparens módon kezeli a függőségi elemzést és a ventilátorok és a ventilátor-be- és a rajongói adatok koordinációját. Általában nem kell a végrehajtási grafikon részleteivel törődnie, de a [Pipeline.graph](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline.pipeline?view=azure-ml-py#attributes) attribútumon keresztül érhető el. 
 
@@ -141,19 +141,16 @@ blob_store = Datastore(ws, "workspaceblobstore")
 compute_target = ws.compute_targets["STANDARD_NC6"]
 experiment = Experiment(ws, 'MyExperiment') 
 
-input_data = DataReference(
-    datastore=Datastore(ws, blob_store),
-    data_reference_name="test_data",
-    path_on_datastore="20newsgroups/20news.pkl")
+input_data = Dataset.File.from_files(
+    DataPath(datastore, '20newsgroups/20news.pkl'))
 
-output_data = PipelineData(
-    "output_data",
-    datastore=blob_store,
-    output_name="output_data1")
+output_data = PipelineData("output_data", datastore=blob_store)
+
+input_named = input_data.as_named_input('input')
 
 steps = [ PythonScriptStep(
     script_name="train.py",
-    arguments=["--input", input_data, "--output", output_data],
+    arguments=["--input", input_named.as_download(), "--output", output_data],
     inputs=[input_data],
     outputs=[output_data],
     compute_target=compute_target,
@@ -168,7 +165,7 @@ pipeline_run.wait_for_completion()
 
 A kódrészlet gyakori Azure Machine Learning-objektumokkal kezdődik, a `Workspace`, a `Datastore`, a [ComputeTarget](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py)és egy `Experiment`. Ezután a kód létrehozza `input_data` a `output_data`tartandó objektumokat és a . A `steps` tömb egyetlen elemet `PythonScriptStep` tartalmaz, amely az adatobjektumokat `compute_target`fogja használni, és a . Ezután a kód példányosodik az `Pipeline` objektum maga, halad a munkaterületen, és lépéseket tömb. Az Azure `experiment.submit(pipeline)` ML-folyamat futásának hívása. A letiltása `wait_for_completion()` a folyamat befejezéséig. 
 
-Ha többet szeretne tudni a folyamat adatokhoz való csatlakoztatásáról, olvassa el az [Adatok elérése](how-to-access-data.md) és az [adatkészletek regisztrálása című cikkeket.](how-to-create-register-datasets.md) 
+Ha többet szeretne megtudni a folyamat az adatokhoz való csatlakozásáról, tekintse meg az Azure Machine Learning adathozzáférés című [cikkét,](concept-data.md) valamint az [adatok áthelyezése a gépi tanulási folyamat lépései (Python)](how-to-move-data-in-out-of-pipelines.md)között. 
 
 ## <a name="best-practices-when-using-pipelines"></a>Gyakorlati tanácsok a folyamatok használatakor
 
@@ -207,9 +204,9 @@ A folyamatok gépi tanulási munkafolyamatokhoz való használatának fő előny
 
 ### <a name="choosing-the-proper-pipelinestep-subclass"></a>A megfelelő PipelineStep alosztály kiválasztása
 
-Az `PythonScriptStep` az absztrakt `PipelineStep`legrugalmasabb alosztálya. Más alosztályok, például `EstimatorStep` alosztályok, és `DataTransferStep` kevesebb kóddal képesek bizonyos feladatokelvégzésére. Például egy `EstimatorStep` hozható létre egyszerűen halad egy nevet a `Estimator`lépés, egy , és egy számítási cél. Vagy felülbírálhatja a bemeneteket és kimeneteket, a csővezeték-paramétereket és az argumentumokat. További információ: [Modellek betanítása az Azure Machine Learning használatával becslés sel](how-to-train-ml-models.md)című témakörben talál. 
+Az `PythonScriptStep` az absztrakt `PipelineStep`legrugalmasabb alosztálya. Más alosztályok, például `EstimatorStep` alosztályok, és `DataTransferStep` kevesebb kóddal képesek bizonyos feladatokelvégzésére. Például egy `EstimatorStep` létrehozható csak átadásával a lépés, `Estimator`egy , és egy számítási cél. Vagy felülbírálhatja a bemeneteket és kimeneteket, a csővezeték-paramétereket és az argumentumokat. További információ: [Modellek betanítása az Azure Machine Learning használatával becslés sel](how-to-train-ml-models.md)című témakörben talál. 
 
-A `DataTransferStep` lehetővé teszi az adatok áthelyezését az adatforrások és a fogadók között. A manuálisan ehhez szükséges kód egyszerű, de ismétlődő. Ehelyett létrehozhat egy `DataTransferStep` nevet, egy adatforrásra és egy adatgyűjtőre, valamint egy számítási célt. A notebook [Azure Machine Learning Pipeline a DataTransferStep](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-data-transfer.ipynb) bemutatja ezt a rugalmasságot.
+A `DataTransferStep` lehetővé teszi az adatok áthelyezését az adatforrások és a fogadók között. Az átvitel manuális anno kódja egyszerű, de ismétlődő. Ehelyett létrehozhat egy `DataTransferStep` nevet, egy adatforrásra és egy adatgyűjtőre, valamint egy számítási célt. A notebook [Azure Machine Learning Pipeline a DataTransferStep](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-data-transfer.ipynb) bemutatja ezt a rugalmasságot.
 
 ## <a name="modules"></a>Modulok
 

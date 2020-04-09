@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: b587fa31f1aa42e8dbd5a9d2430c0117891f2091
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 49510b26e0b2a9c69dd65faf0f343e86d1a068db
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239790"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878901"
 ---
 # <a name="set-up-alerts-on-diagnostic-log-events-from-vpn-gateway"></a>Riasztások beállítása a VPN-átjáró diagnosztikai naplóeseményeire vonatkozóan
 
@@ -26,7 +26,7 @@ Az Azure-ban a következő naplók érhetők el:
 |TunnelDiagnosticLog (TunnelDiagnosticLog) | Bújtatási állapotváltozási eseményeket tartalmaz. A bújtatási kapcsolódási/kapcsolatbontási események nek van egy összefoglaló oka az állapotváltozásra, ha van ilyen |
 |RouteDiagnosticLog (Útvonaldiagnosztikai napló) | Az átjárón előforduló statikus útvonalak és BGP-események változásainak naplózása |
 |IKEDiagnosticLog | Az internetes kulcscsere vezérlőüzeneteinek és eseményeinek naplózása az átjárón |
-|P2SDiagnosticLog | Az átjárón lévő pont-hely vezérlőüzenetek és események naplózása |
+|P2SDiagnosticLog | Naplózza a pont-hely vezérlő üzeneteket és eseményeket az átjárón. A kapcsolatforrás adatai csak az IKEv2-kapcsolatokhoz vannak megadva |
 
 ## <a name="set-up-alerts-in-the-azure-portal"></a><a name="setup"></a>Riasztások beállítása az Azure Portalon
 

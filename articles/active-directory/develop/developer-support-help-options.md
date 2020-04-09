@@ -1,10 +1,9 @@
 ---
-title: Támogatási és súgólehetőségek az Azure AD alkalmazásfejlesztők számára | Microsoft dokumentumok
+title: Támogatási és súgólehetőségek az Azure AD-alkalmazások fejlesztőiszámára
 description: Ismerje meg, hogyan kaphat segítséget és támogatást a fejlesztéssel kapcsolatos kérdésekhez és problémákhoz a Microsoft identitásokkal (Azure Active Directoryval és Microsoft-fiókkal) integráló alkalmazások létrehozásakor
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
@@ -13,16 +12,16 @@ ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 89bf49fb44d8575b251a0b33698bc4ce8425cc2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ea1afd2ecac8974c0e865e235288da545a9f1244
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77160967"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885531"
 ---
 # <a name="support-and-help-options-for-developers"></a>Támogatási és súgó lehetőségek fejlesztőknek
 
-Ha csak most kezdi el integrálni az Azure Active Directoryt (Azure AD), a Microsoft identitásokat vagy a Microsoft Graph API-t, vagy amikor új funkciót valósít meg az alkalmazásában, vannak esetek, amikor segítséget kell kérnie a közösségtől, vagy támogatási lehetőségeket, amelyeket fejlesztőként rendelkezik. Ez a cikk segít megérteni ezeket a lehetőségeket, többek között:
+Ha csak most kezdi el integrálni az Azure Active Directoryt (Azure AD), a Microsoft identitásokat vagy a Microsoft Graph API-t, vagy amikor új funkciót valósít meg az alkalmazásában, vannak esetek, amikor segítséget kell kérnie a közösségtől, vagy meg kell értenie a fejlesztőként rendelkezésre álltámogatási lehetőségeket. Ez a cikk segít megérteni ezeket a lehetőségeket, többek között:
 
 > [!div class="checklist"]
 > * Hogyan kereshető meg, hogy a közösség nem válaszolt-e a kérdésére, vagy hogy létezik-e már meglévő dokumentáció a végrehajtani kívánt funkcióhoz.

@@ -3,12 +3,12 @@ title: Delegált erőforrások figyelése nagy méretekben
 description: Ismerje meg, hogyan használhatja hatékonyan az Azure Monitor naplók at skálázható módon az ügyfél-bérlők által felügyelt.
 ms.date: 02/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 217df3c55ab54b6569bae8cacb338764ecb7125d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9a600cec524c9f715ada9da09dea35f3baa98151
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77122895"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985201"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Delegált erőforrások figyelése nagy méretekben
 
@@ -28,7 +28,7 @@ A Log Analytics-munkaterületet az [Azure Portalon,](../../azure-monitor/learn/q
 
 Miután létrehozta a Log Analytics-munkaterületeket, üzembe helyezheti az [Azure-szabályzatot](../../governance/policy/index.yml) az ügyfélhierarchiákközött, hogy a diagnosztikai adatokat a rendszer minden bérlő megfelelő munkaterületére küldje. A pontos anamminda,hogy milyen erőforrástípusokat szeretne figyelni.
 
-A házirendek létrehozásáról az [Oktatóanyag: Szabályzatok létrehozása és kezelése a megfelelőség kényszerítése című](../../governance/policy/tutorials/create-and-manage.md)témakörben olvashat bővebben. Ez [a közösségi eszköz](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/tools/azure-diagnostics-policy-generator) egy parancsfájlt biztosít, amely segít a kiválasztott erőforrástípusok figyelésére vonatkozó házirendek létrehozásában.
+A házirendek létrehozásáról az [Oktatóanyag: Szabályzatok létrehozása és kezelése a megfelelőség kényszerítése című](../../governance/policy/tutorials/create-and-manage.md)témakörben olvashat bővebben. Ez [a közösségi eszköz](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/azure-diagnostics-policy-generator) egy parancsfájlt biztosít, amely segít a kiválasztott erőforrástípusok figyelésére vonatkozó házirendek létrehozásában.
 
 Miután megállapította, hogy mely szabályzatokat kell telepítenie, [a delegált előfizetések nagy méretekben telepítheti őket.](policy-at-scale.md)
 

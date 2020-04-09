@@ -5,32 +5,28 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/18/2019
-ms.openlocfilehash: 9498f2cf56f0bfe20d0806e5dc9872403dabb180
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/07/2020
+ms.openlocfilehash: 67d5481b82b7469c5ae55704768ce494dbc9dca5
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75979107"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879139"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Apache Hadoop-fürtök létrehozása a HDInsightban erőforrás-kezelősablonok használatával
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Ebben a cikkben az Azure Resource Manager-sablonok használatával számos módon hozhat létre Azure HDInsight-fürtöket. További információ: [Alkalmazás telepítése az Azure Resource Manager sablonnal](../azure-resource-manager/templates/deploy-powershell.md)című témakörben talál. Ha többet szeretne megtudni a fürtlétrehozási eszközökről és szolgáltatásokról, kattintson a lap tetején található fülválasztóra, vagy olvassa el a [Fürtlétrehozási módszerek című témakört.](hdinsight-hadoop-provision-linux-clusters.md#cluster-setup-methods)
+Ebben a cikkben az [Azure Resource Manager-sablonok](../azure-resource-manager/templates/deploy-powershell.md)használatával számos módon hozhat létre Azure HDInsight-fürtöket. Ha többet szeretne megtudni a fürtlétrehozási eszközökről és szolgáltatásokról, kattintson a lap tetején található fülválasztóra. Lásd még: [Fürtlétrehozási módszerek](hdinsight-hadoop-provision-linux-clusters.md#cluster-setup-methods).
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="prerequisites"></a>Előfeltételek
-
-* [Egy Azure-előfizetés](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* Azure PowerShell és/vagy Azure CLI.
-
-### <a name="resource-manager-templates"></a>Resource Manager-sablonok
+## <a name="resource-manager-templates"></a>Resource Manager-sablonok
 
 Az Erőforrás-kezelő sablonokkal egyszerűen hozhat létre a következő erőforrásokat az alkalmazáshoz egyetlen, összehangolt műveletben:
+
 * HDInsight-fürtök és azok függő erőforrásait (például az alapértelmezett tárfiókot).
 * Egyéb erőforrások (például az Apache [Sqoop](https://sqoop.apache.org/)használatához szükséges Azure SQL Database).
 

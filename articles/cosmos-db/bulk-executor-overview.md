@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 9d335bcf6daf0b38e7a68ca2d40894dd64c93e40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: af17f9c2ef7eea5eb531327d4df13d5885a49b7e
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75442157"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985592"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Az Azure Cosmos DB tömeges végrehajtói kódtárának áttekintése
  
@@ -51,4 +51,4 @@ A tömeges végrehajtó könyvtár gondoskodik arról, hogy maximálisan kihaszn
 * További információ: a [.NET](bulk-executor-dot-net.md) és Java tömeges végrehajtó könyvtárát használó mintaalkalmazások [kipróbálásával.](bulk-executor-java.md)  
 * Nézze meg a tömeges végrehajtó SDK információkat és kiadási megjegyzéseket [.NET](sql-api-sdk-bulk-executor-dot-net.md) és [Java](sql-api-sdk-bulk-executor-java.md).
 * A tömeges végrehajtó könyvtár integrálva van a Cosmos DB Spark-összekötő, további információkért tekintse meg [az Azure Cosmos DB Spark-összekötő](spark-connector.md) cikket.  
-* A tömeges végrehajtó könyvtár is integrálva van egy új verziója az [Azure Cosmos DB-összekötő](https://aka.ms/bulkexecutor-adf-v2) az Azure Data Factory adatok másolásához.
+* A tömeges végrehajtó könyvtár is integrálva van egy új verziója az [Azure Cosmos DB-összekötő](../data-factory/connector-azure-cosmos-db.md) az Azure Data Factory adatok másolásához.

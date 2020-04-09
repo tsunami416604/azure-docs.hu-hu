@@ -6,20 +6,22 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/26/2020
-ms.openlocfilehash: ce8df36d3417417a5f70a5385aa94d9c8c7ff0cc
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.date: 04/06/2020
+ms.openlocfilehash: f1354ce824bc4e57ab55846c714d4a0a73a46966
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674279"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80873820"
 ---
-# <a name="consulting-service-creation-overview"></a>Tanácsadási szolgáltatás létrehozása – áttekintés
+# <a name="create-a-consulting-service-offer"></a>Tanácsadási szolgáltatási ajánlat létrehozása
 
 > [!IMPORTANT]
 > Tanácsadói szolgáltatási ajánlatainak kezelését áthelyezzük a Cloud Partner Portal-ról a Partner Centerre. Az ajánlatok áttelepítéséig kövesse az Azure és a [Dynamics 365 tanácsadási szolgáltatásajánlatának](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) utasításait a Cloud Partner Portal számára az ajánlatok kezeléséhez.
 
-Ez a cikk azt ismerteti, hogy miként tehet közzé tanácsadási szolgáltatási ajánlatot az [Azure Marketplace-en](https://azuremarketplace.microsoft.com/) vagy az [AppSource-on.](https://appsource.microsoft.com/) A Microsoft [Dynamics 365](https://dynamics.microsoft.com/) és az AppSource Power Platform szolgáltatáson alapuló tanácsadási szolgáltatások listázása. A Microsoft Azure-on alapuló tanácsadási szolgáltatási ajánlatok at sorolja fel az Azure Marketplace-en.
+Ez a cikk azt ismerteti, hogy miként tehet közzé tanácsadási szolgáltatási ajánlatot az [Azure Marketplace-en](https://azuremarketplace.microsoft.com/) vagy az [AppSource-on.](https://appsource.microsoft.com/) A List Consulting szolgáltatásajánlatai a Microsoft [Dynamics 365](https://dynamics.microsoft.com/) és az AppSource Power Platform platformon alapulnak. A Microsoft Azure-on alapuló Tanácsadási szolgáltatásajánlatok listázása az Azure Marketplace-en.
+
+Ha az Azure Marketplace-en vagy az AppSource Consulting-szolgáltatásokban szeretne tanácsadási szolgáltatási ajánlatot létrehozni, először rendelkeznie kell [egy közzétevői fiókkal a Partnerközpontban,](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)és fiókját be kell vonni a kereskedelmi piactér programba. Az ajánlat létrehozása előtt tekintse át a [Tanácsadási szolgáltatás előfeltételeit.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/consulting-service-prerequisites)
 
 ## <a name="publishing-benefits"></a>Közzétételi előnyök
 
@@ -30,60 +32,9 @@ A kereskedelmi piacon való közzététel előnyei:
 - Szerezzen kiváló minőségű érdeklődőket ezekről a piacterekről.
 - A szolgáltatások népszerűsítése a Microsoft helyszíni és távértékesítési csapatai által
 
-## <a name="requirements"></a>Követelmények
+## <a name="create-a-new-offer"></a>Új ajánlat létrehozása
 
-### <a name="business-requirements"></a>Üzleti követelmények
-
-Azoknál az ajánlatoknál, ahol az Azure van kiválasztva elsődleges termékként, az ajánlatnak legalább az alábbi, teljes körűen szerzett kompetenciák egyikét fel kell sorolnia:
-
-- Alkalmazásfejlesztés
-- Alkalmazásintegráció
-- Alkalmazáséletciklus-kezelés
-- Felhőplatform
-- Adatelemzés
-- Adatközpont
-- Adatplatform
-- DevOps
-
-Az elsődleges termékként kiválasztott alábbi lehetőségek valamelyikével rendelkező ajánlatok esetében meg kell felelnie a felsorolt jogosultsági követelményeknek, vagy együtt kell értékesítenie az elsődleges termékre vonatkozó ajánlatot, amelyhez a szolgáltatásajánlat kapcsolódik.
-
-**Ügyfél-aktivitási alkalmazások**
-
-- **A következőre vonatkozik:** Dynamics 365 Sales, Dynamics 365 Marketing, Dynamics 365 Customer Service, Dynamics 365 Field Service, Dynamics 365 Emberi Erőforrások
-
-- **Feltételek**: Gold vagy Silver tanúsítvánnyal kell rendelkeznie a [Cloud Business Applications kompetenciában](https://partner.microsoft.com/membership/cloud-business-applications-competency) a Customer Engagement beállításhoz.
-
-**Pénzügyi és üzemeltetési alkalmazások**
-
-- **A következőkre vonatkozik:** Dynamics 365 Finance, Dynamics 365 Operations, Dynamics 365 Commerce, Dynamics 365 Emberi Erőforrások, Dynamics 365 Project Service Automation
-
-- **Feltételek**: Az Egyesített műveletek hez a [Cloud Business Applications kompetencia](https://partner.microsoft.com/membership/cloud-business-applications-competency) minősítése arany vagy ezüst minősítéssel kell rendelkeznie.
-
-**Dynamics 365 Customer Insights**
-
-- **Feltételek**: A [Dynamics 365 Customer Insights](https://dynamics.microsoft.com/ai/customer-insights/) legalább egy sikeres, termelésen belül imitálta, legalább öt mértékkel és öt szegmenssel.
-
-**Dynamics 365 Business Central**
-
-- **Feltételek**: Gold vagy Silver tanúsítvánnyal kell rendelkeznie a [Vállalati erőforrás-tervezés kompetenciában,](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) és legalább három ügyfelet kell kiszolgálnia, vagy közzé kell tennie egy Business Central alkalmazást a Microsoft AppSource alkalmazásban.
-
-**Power BI**
-
-- **Feltételek**: Szerepelnie kell a [Power BI-partnerkirakatban.](https://powerbi.microsoft.com/partner-showcase/)
-
-**Power Apps**
-
-- **Feltételek**: A [Power Apps partnerségi](https://aka.ms/PowerAppsPartner) programban jogosultnak kell lennie a speciális előnyökre.
-
-Az előfeltételek teljesítéséről a [Consulting szolgáltatás előfeltételei](consulting-service-prerequisites.md)című témakörben talál részleteket.
-
-### <a name="logistical-requirements"></a>Logisztikai követelmények
-
-Ha tanácsadási szolgáltatási ajánlatot szeretne létrehozni az Azure Marketplace-en vagy az AppSource-tanácsadási szolgáltatásokban, először rendelkeznie kell [egy közzétevőfiókkal a Partnerközpontban,](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)és fiókját be kell vonni a kereskedelmi piactér programba.
-
-## <a name="create-a-new-consulting-service-offer-in-partner-center"></a>Új tanácsadási szolgáltatási ajánlat létrehozása a Partnerközpontban
-
-A fent leírt követelmények teljesítése után kövesse az alábbi lépéseket egy tanácsadási szolgáltatási ajánlat létrehozásához.
+A fent leírt követelmények teljesítése után kövesse az alábbi lépéseket a tanácsadási szolgáltatási ajánlat létrehozásához.
 
 1. Jelentkezzen be a [Partnerközpontba](https://partner.microsoft.com), majd válassza a felső menü **Irányítópult** parancsát.
 2. A bal oldali navigációs sávon válassza a **Kereskedelmi piactér**lehetőséget, majd az **Áttekintés**lehetőséget.
@@ -139,7 +90,7 @@ Válassza **a Vázlat mentése lehetőséget,** mielőtt a következő szakaszho
 
 ### <a name="properties"></a>Tulajdonságok
 
-Ezen az oldalon beállíthatja azt az elsődleges terméket, amelyet a tanácsadó szolgáltatás a legjobban kínál, beállíthatja a tanácsadási szolgáltatás típusát, és kiválaszthatja a megfelelő termékeket.
+Ezen az oldalon beállíthatja azt az elsődleges terméket, amelyet a Consulting szolgáltatás a legjobban kínál, beállíthatja a Tanácsadás szolgáltatás típusát, és kiválaszthatja a megfelelő termékeket.
 
 1. Válasszon egy **elsődleges terméket** a legördülő listából.
 2. Válasszon **egy tanácsadó szolgáltatástípust** a legördülő listából:
@@ -153,7 +104,7 @@ Ezen az oldalon beállíthatja azt az elsődleges terméket, amelyet a tanácsad
 1. Ha az **Azure**elsődleges termékét választotta, legfeljebb három **megoldási területet**választhat ki. Ezek megkönnyítik az Azure Marketplace-en lévő ügyfelek számára az ajánlat megkeresését. Ha nem&#39;az Azure-t választotta, hagyja ki ezt a lépést.
 2. Ha az Azure-tól _eltérő_ elsődleges terméket választott, legfeljebb három **alkalmazható terméket**választhat ki. Ezek megkönnyítik az AppSource ügyfelei számára az ajánlat megtalálását. További információt a Microsoft AppSource Consulting Service Listing Guidelines (PDF) [című témakörben talál.](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409)
 3. Legfeljebb hat iparágat választhat **ki,** amelyekre az ajánlatvonatkozik. Ez megkönnyíti az ügyfelek számára, hogy megtalálják az ajánlatot.
-4. Legfeljebb három kompetenciát adhat hozzá, **amelyeket** a vállalata szerzett, hogy megjelenjen a tanácsadási szolgáltatási ajánlathirdetésén. Legalább egy kompetencia szükséges, kivéve az Azure Expert MSP&#39;s és az Azure Networking MSP&#39;s.
+4. Akár három **kompetenciát** is hozzáadhat, amelyeket a vállalata szerzett, hogy megjelenjen a Consulting szolgáltatásajánlat-hirdetésben. Legalább egy kompetencia szükséges, kivéve az Azure Expert MSP&#39;s és az Azure Networking MSP&#39;s.
 
 Válassza **a Vázlat mentése lehetőséget,** mielőtt a következő szakaszra lépne, az Ajánlat listaelem.
 
@@ -252,7 +203,7 @@ Itt olyan elemeket határozhat meg, mint az árképzés, a piac és a személyes
 3. **Árképzés:** Adja meg, hogy az ajánlat **ingyenes** vagy **fizetős** ajánlat-e.
 
     > [!NOTE]
-    > A tanácsadási szolgáltatás ajánlatai csak a hirdetésre szolgálnak. Minden tranzakció közvetlenül, a kereskedelmi piacon kívül történik.
+    > A tanácsadási szolgáltatások csak a hirdetésre szolgálnak. Minden tranzakció közvetlenül, a kereskedelmi piacon kívül történik.
 
 4. Fizetős ajánlat esetén adja meg az Árat és a **pénznemet,** valamint azt, hogy az ár **Rögzített** vagy **Becsült.** Ha a Becsült érték, a leírásban meg kell adnia, hogy milyen tényezők befolyásolják az árat.
 5. Válassza **a Vázlat mentése**lehetőséget.
@@ -261,7 +212,7 @@ Itt olyan elemeket határozhat meg, mint az árképzés, a piac és a személyes
 
 Miután elvégezte az ajánlat összes szükséges szakaszát, elküldheti az ajánlatot az ellenőrzésre és a közzétételre.
 
-1. Ha készen áll a tanácsadási szolgáltatásajánlat közzétételére, kattintson az **Áttekintés gombra, és tegye közzé.**
+1. Ha készen áll a Tanácsadási szolgáltatásajánlat közzétételére, kattintson a **Véleményezés gombra, és tegye közzé.**
 2. Tekintse át a részleteket a végső benyújtási oldalon.
 3. Ha szükséges, írjon egy megjegyzést a minősítő csapatnak, ha úgy gondolja, hogy az ajánlat bármely részletét magyarázatot igényel.
 4. Ha készen áll, válassza a **Küldés lehetőséget.**

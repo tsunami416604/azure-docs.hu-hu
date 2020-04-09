@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 04/07/2020
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fe3a63e119fed6825982b9de13bc78cb7da5415
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0aafb971ca1ce812a68045f7d0c0c2ab7f532133
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481398"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877388"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Meglévő helyszíni proxykiszolgálók használata
 
@@ -27,6 +27,7 @@ Kezdjük a fő telepítési forgatókönyvek vizsgálatával:
 
 * Konfigurálja az összekötőket a helyszíni kimenő proxyk megkerülésére.
 * Konfigurálja az összekötők egy kimenő proxy azure AD alkalmazásproxy eléréséhez.
+* Konfigurálja az összekötő és a háttéralkalmazás közötti proxy használatával.
 
 Az összekötők működéséről az [Azure AD alkalmazásproxy-összekötők ismertetése](application-proxy-connectors.md)című témakörben talál további információt.
 
@@ -137,6 +138,23 @@ Az összekötő kimenő TLS-alapú kapcsolatokat hoz létre a CONNECT metódus h
 #### <a name="tls-inspection"></a>TLS-ellenőrzés
 
 Ne használja a TLS-ellenőrzést az összekötő forgalmához, mert problémákat okoz az összekötő forgalmának. Az összekötő egy tanúsítványt használ az alkalmazásproxy-szolgáltatás hitelesítéséhez, és ez a tanúsítvány elveszhet a TLS-ellenőrzés során.
+
+## <a name="configure-using-a-proxy-between-the-connector-and-backend-application"></a>Konfigurálás proxy használatával az összekötő és a háttéralkalmazás között
+Egyes környezetekben speciális követelmény lehet egy továbbítási proxy használata a háttéralkalmazás sal kapcsolatos kommunikációhoz.
+Ennek engedélyezéséhez kövesse a következő lépéseket:
+
+### <a name="step-1-add-the-required-registry-value-to-the-server"></a>1. lépés: Adja hozzá a szükséges beállításazonosítót a kiszolgálóhoz
+1. Az alapértelmezett proxy használatával történő engedélyezéshez `UseDefaultProxyForBackendRequests = 1` adja hozzá a következő beállításazonosítót (Duplaszó) a "HKEY_LOCAL_MACHINE\Software\Microsoft\Microsoft AAD App Proxy Connector" mappában található Összekötő konfigurációs beállításkulcsához.
+
+### <a name="step-2-configure-the-proxy-server-manually-using-netsh-command"></a>2. lépés: A proxykiszolgáló manuális konfigurálása a netsh paranccsal
+1.  A csoportházirend engedélyezése: Proxybeállítások beállítása számítógépenként. Ez a következő helyen található: Számítógép konfigurációja\Házirendek\Felügyeleti sablonok\Windows-összetevők\Internet Explorer. Ezt kell beállítani, nem pedig a házirend beállítása felhasználónként.
+2.  Futtassa `gpupdate /force` a kiszolgálón, vagy indítsa újra a kiszolgálót, és győződjön meg arról, hogy a frissített csoportházirend-beállításokat használja.
+3.  Indítson el egy rendszergazdai jogokkal rendelkező rendszergazdai jogsit, és írja be a . `control inetcpl.cpl`
+4.  Adja meg a szükséges proxybeállításokat. 
+
+Ezek a beállítások teszik az összekötő ugyanazt a továbbítási proxyt használja az Azure-ral és a háttéralkalmazással való kommunikációhoz. Ha az összekötő és az Azure-kommunikáció nem igényel továbbítási proxyt vagy egy másik továbbítási proxyt, beállíthatja ezt az ApplicationProxyConnectorService.exe.config fájl módosításával a kimenő proxyk megkerülése vagy a kimenő proxykiszolgáló használata című szakaszokban leírtak szerint.
+
+Az összekötő frissítő szolgáltatás a gépproxyt is fogja használni. Ez a viselkedés az ApplicationProxyConnectorUpdaterService.exe.config fájl módosításával módosítható.
 
 ## <a name="troubleshoot-connector-proxy-problems-and-service-connectivity-issues"></a>Összekötőproxyval kapcsolatos problémák és szolgáltatáscsatlakozási problémák elhárítása
 

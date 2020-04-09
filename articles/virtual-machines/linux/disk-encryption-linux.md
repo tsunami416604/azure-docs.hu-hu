@@ -8,18 +8,19 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: cf6f53639cff23a9e709b44a1ddf1332df2164b7
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: d860b557c5c2d6b73fad53cdf84ee8b32182d1ee
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586047"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985456"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-forgatókönyvek Linux rendszerű virtuális gépekhez
 
-Az Azure Disk Encryption a Linux DM-Crypt szolgáltatását használja az Azure virtuális gépek operációs rendszerének és adatlemezeinek kötettitkosításához, és integrálva van az Azure Key Vault-tal, hogy segítsen a lemeztitkosítási kulcsok és titkos kulcsok vezérlésében és kezelésében. A szolgáltatás áttekintését az Azure Disk Encryption for Linux virtuális gépek című [témakörben találja.](disk-encryption-overview.md)
 
-Számos lemeztitkosítási forgatókönyv létezik, és a lépések a forgatókönyvtől függően változhatnak. A következő szakaszok részletesebben ismertetik a linuxos virtuális gépek forgatókönyveit.
+Az Azure Disk Encryption for Linux virtuális gépek (VM-ek) a Linux DM-Crypt szolgáltatását használja az operációs rendszer lemezének és adatlemezeinek teljes lemeztitkosításának biztosításához. Emellett biztosítja a rövid élettartamú erőforráslemez titkosítását az EncryptFormatAll szolgáltatás használatakor.
+
+Az Azure Disk Encryption integrálva van az [Azure Key Vaultszolgáltatással,](disk-encryption-key-vault.md) így szabályozhatja és kezelheti a lemeztitkosítási kulcsokat és titkos kulcsokat. A szolgáltatás áttekintését az [Azure Lemeztitkosítás Windows-gépekhez című témakörben találja.](disk-encryption-overview.md)
 
 Csak a [támogatott virtuális gépméretű és operációs rendszerű](disk-encryption-overview.md#supported-vms-and-operating-systems)virtuális gépekre alkalmazhat lemeztitkosítást. Az alábbi előfeltételeknek is meg kell felelnie:
 

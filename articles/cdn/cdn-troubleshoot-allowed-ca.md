@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 10/18/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 7b71611d43bc2d4de4c3e609462906c44fba0443
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 81d2209c4b76db685e5a8d2625c84469d5c3dc43
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77919974"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985847"
 ---
 # <a name="allowed-certificate-authorities-for-enabling-custom-https-on-azure-cdn"></a>Az egyéni HTTPS engedélyezése engedélyezett hitelesítésszolgáltatók az Azure CDN-en
 
-Meg kell felelnie a speciális tanúsítványkövetelményeknek, ha engedélyezi a HTTPS-szolgáltatást az Azure Content Delivery Network (CDN) egyéni [tartománysaját tanúsítványának használatával.](cdn-custom-ssl.md?tabs=option-2-enable-https-with-your-own-certificate#ssl-certificates) Az **Azure CDN Standard a Microsoft-profilhoz** az alábbi listában szereplő jóváhagyott hitelesítésszolgáltatók (CA) egyikének tanúsítványát igényli. Ha egy nem jóváhagyott hitelesítésszolgáltató tól származó tanúsítványt használ, vagy önaláírt tanúsítványt használ, a rendszer elutasítja a kérelmet. **A Verizon Azure CDN Standard és** **a Verizon-profilokból származó Azure CDN Premium** bármely érvényes tanúsítványt elfogad.
+Meg kell felelnie a speciális tanúsítványkövetelményeknek, ha engedélyezi a HTTPS-szolgáltatást az Azure Content Delivery Network (CDN) egyéni [tartománysaját tanúsítványának használatával.](cdn-custom-ssl.md?tabs=option-2-enable-https-with-your-own-certificate#tlsssl-certificates) Az **Azure CDN Standard a Microsoft-profilhoz** az alábbi listában szereplő jóváhagyott hitelesítésszolgáltatók (CA) egyikének tanúsítványát igényli. Ha egy nem jóváhagyott hitelesítésszolgáltató tól származó tanúsítványt használ, vagy önaláírt tanúsítványt használ, a rendszer elutasítja a kérelmet. **A Verizon Azure CDN Standard és** **a Verizon-profilokból származó Azure CDN Premium** bármely érvényes tanúsítványt elfogad.
 
 > [!NOTE]
 > A lehetőség, hogy a saját tanúsítványt, hogy az egyéni tartomány HTTPS-funkció *nem* érhető el az **Azure CDN Standard Akamai profilok.** 

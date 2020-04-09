@@ -9,23 +9,23 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 02/28/2020
+ms.date: 04/07/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63e561ff1b976b3de993414607b694e621b1d536
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: e097173712693754baab99912301c98ee336f64f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346947"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877915"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Adminisztrátori szerepkörök engedélyei az Azure Active Directoryban
 
 Az Azure Active Directory (Azure AD) használatával korlátozott rendszergazdákat jelölhet ki az identitáskezelési feladatok kevésbé kiemelt szerepkörökben történő kezeléséhez. A rendszergazdák olyan célokra rendelhetők hozzá, mint a felhasználók hozzáadása vagy módosítása, felügyeleti szerepkörök hozzárendelése, felhasználói jelszavak alaphelyzetbe állítása, felhasználói licencek kezelése és tartománynevek kezelése. Az alapértelmezett felhasználói engedélyek csak az Azure AD felhasználói beállításaiban módosíthatók.
 
-## <a name="limit-the-use-of-global-administrator"></a>A globális rendszergazda használatának korlátozása
+## <a name="limit-use-of-global-administrator"></a>A globális rendszergazda használatának korlátozása
 
 A globális rendszergazdai szerepkörhöz rendelt felhasználók elolvashatják és módosíthatják az Azure AD-szervezet minden felügyeleti beállítását. Alapértelmezés szerint az a személy, aki feliratkozik egy Azure-előfizetésre, az Azure AD-szervezet globális rendszergazdai szerepkörrel rendelkezik. Csak a globális rendszergazdák és a kiemelt szerepkörrel rendelkező rendszergazdák delegálhatnak rendszergazdai szerepköröket. A vállalkozásra jelentett kockázat csökkentése érdekében azt javasoljuk, hogy ezt a szerepkört rendelje hozzá a szervezet lehető legkevesebb emberéhez.
 
@@ -70,7 +70,8 @@ A szerepkörben lévő felhasználók akkor hozhatnak létre alkalmazásregisztr
 
 ### <a name="authentication-administrator"></a>[Hitelesítési rendszergazda](#authentication-administrator-permissions)
 
-A szerepkörben lévő felhasználók beállíthatják vagy alaphelyzetbe állíthatják a nem jelszó hitelesítő adatokat, frissíthetik a jelszavakat, újra regisztrálhatnak a meglévő nem jelszó hitelesítő adatokkal (például MFA vagy FIDO), és visszavonhatják a nem rendszergazda ként vagy csak a következő szerepkörrel rendelkező felhasználók mfa-jára **vonatkozó megjegyzés-többfa-t** az eszközön (amely a következő bejelentkezéskor többeszközre vonatkozó figyelmeztetést kér:
+A hitelesítési rendszergazdai szerepkör jelenleg nyilvános előzetes verzióban érhető el. Az ezzel a szerepkörrel rendelkező felhasználók beállíthatják vagy alaphelyzetbe állíthatják a nem jelszó hitelesítő adatokat, és frissíthetik az összes felhasználó jelszavait. A hitelesítési rendszergazdák megkövetelhetik a felhasználóktól, hogy újra regisztráljanak a meglévő nem jelszó hitelesítő adatokkal (például MFA vagy FIDO), és vonják vissza **a emlékszik mfa-t az eszközön,** amely a nem rendszergazda vagy csak a következő szerepkörhöz rendelt felhasználók következő bejelentkezésekor kéri az MFA-t:
+
 * Hitelesítési rendszergazda
 * Címtárolvasók
 * Vendég meghívó
@@ -78,7 +79,7 @@ A szerepkörben lévő felhasználók beállíthatják vagy alaphelyzetbe állí
 * Jelentések olvasó
 
 > [!IMPORTANT]
-> Ezzel a szerepkörrel rendelkező felhasználók módosíthatják a hitelesítő adatokat azok számára, akik hozzáférhetnek a bizalmas vagy személyes adatokhoz vagy a kritikus konfigurációhoz az Azure Active Directoryn belül és kívül. A felhasználó hitelesítő adatainak módosítása azt jelentheti, hogy fel lehet vállalni a felhasználó identitását és engedélyeit. Példa:
+> Ezzel a szerepkörrel rendelkező felhasználók módosíthatják a hitelesítő adatokat azok számára, akik hozzáférhetnek a bizalmas vagy személyes adatokhoz vagy a kritikus konfigurációhoz az Azure Active Directoryn belül és kívül. A felhasználó hitelesítő adatainak módosítása azt jelentheti, hogy fel lehet vállalni a felhasználó identitását és engedélyeit. Például:
 >
 >- Alkalmazásregisztráció és vállalati alkalmazástulajdonosok, akik kezelhetik a tulajdonukban lévő alkalmazások hitelesítő adatait. Ezek az alkalmazások előfordulhat, hogy az Azure AD és máshol nem biztosított hitelesítési rendszergazdák kiemelt engedélyekkel rendelkeznek. Ezen az útvonalon keresztül a hitelesítési rendszergazda felveheti az alkalmazás tulajdonosának identitását, majd tovább feltételezheti egy kiemelt jogosultságú alkalmazás identitását az alkalmazás hitelesítő adatainak frissítésével.
 >- Az Azure-előfizetés-tulajdonosok, akik hozzáférhetnek a bizalmas vagy személyes adatokhoz vagy a kritikus konfigurációhoz az Azure-ban.
@@ -113,7 +114,7 @@ A felhasználó létrehozhat és kezelhet házirendkulcsokat és titkos kulcsoka
 
 ### <a name="b2c-ief-policy-administrator"></a>[B2C IEF házirend-rendszergazda](#b2c-ief-policy-administrator-permissions)
 
-Ebben a szerepkörben lévő felhasználók hozhatnak létre, olvashatnak, frissíthetik és törölhetik az Azure AD B2C összes egyéni szabályzatát, és ezért teljes hozzáféréssel rendelkeznek a megfelelő Azure AD B2C-bérlő identitáskezelési keretrendszere felett. A házirendek szerkesztésével ez a felhasználó közvetlen összevonást hozhat létre külső identitásszolgáltatókkal, módosíthatja a címtársémát, módosíthatja az összes felhasználó által elérhető tartalmat (HTML, CSS, JavaScript), módosíthatja a hitelesítés befejezéséhez szükséges követelményeket, új felhasználókat hozhat létre, felhasználói adatokat külső rendszerekre, beleértve a teljes áttelepítést, és szerkeszti az összes felhasználói információt, beleértve a bizalmas mezőket, például a jelszavakat és a telefonszámokat. Ezzel szemben ez a szerepkör nem módosíthatja a titkosítási kulcsokat, és nem szerkesztheti a bérlőben az összevonáshoz használt titkos kulcsokat.
+Ebben a szerepkörben lévő felhasználók hozhatnak létre, olvashatnak, frissíthetik és törölhetik az Azure AD B2C összes egyéni szabályzatát, és ezért teljes hozzáféréssel rendelkeznek a megfelelő Azure AD B2C-bérlő identitáskezelési keretrendszere felett. A házirendek szerkesztésével a felhasználó közvetlen összevonást hozhat létre külső identitásszolgáltatókkal, módosíthatja a címtársémát, módosíthatja az összes felhasználó felé néző tartalmat (HTML, CSS, JavaScript), módosíthatja a hitelesítés befejezéséhez szükséges követelményeket, új felhasználókat hozhat létre, felhasználói adatokat küldhet külső rendszereknek, beleértve a teljes áttelepítést is, és szerkesztheti az összes felhasználói információt, beleértve a bizalmas mezőket, például a jelszavakat és a telefonszámokat. Ezzel szemben ez a szerepkör nem módosíthatja a titkosítási kulcsokat, és nem szerkesztheti a bérlőben az összevonáshoz használt titkos kulcsokat.
 
 > [!IMPORTANT]
 > A B2 IEF-házirend-rendszergazda egy rendkívül bizalmas szerepkör, amelyet nagyon korlátozott mértékben kell hozzárendelni az éles környezetben lévő bérlők számára.A felhasználók tevékenységeit szorosan naplózni kell, különösen az éles környezetben lévő bérlők számára.
@@ -139,7 +140,7 @@ Ebben a szerepkörben lévő felhasználók engedélyezhetik, letilthatják és 
 
 ### <a name="compliance-administrator"></a>[Megfelelőségi rendszergazda](#compliance-administrator-permissions)
 
-Az ezzel a szerepkörrel rendelkező felhasználók rendelkeznek a Megfelelőségi szolgáltatások kezeléséhez a Microsoft 365 megfelelőségi központban, a Microsoft 365 Felügyeleti központban, az Azure-ban és az Office 365 Biztonsági &-megfelelőségi központban. A hozzárendeltek támogatási jegyeket is létrehozhatnak az Azure-hoz és a Microsoft 365-höz. További információ az [Office 365 rendszergazdai szerepkörei című oldalon](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)található.
+Az ezzel a szerepkörrel rendelkező felhasználók rendelkeznek a Megfelelőségi szolgáltatások kezeléséhez a Microsoft 365 megfelelőségi központban, a Microsoft 365 Felügyeleti központban, az Azure-ban és az Office 365 Biztonsági &-megfelelőségi központban. A hozzárendeltek az Exchange Felügyeleti központ és a Teams & Skype Vállalati verzió felügyeleti központjainak összes szolgáltatását is kezelhetik, és támogatási jegyeket hozhatnak létre az Azure és a Microsoft 365 számára. További információ az [Office 365 rendszergazdai szerepkörei című oldalon](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)található.
 
 A | Meg tudja csinálni
 ----- | ----------
@@ -214,11 +215,11 @@ Az ilyen szerepkörrel rendelkező felhasználók globális engedélyekkel rende
 Ez a rendszergazda kezeli az Azure Active Directory-bérlők és a külső identitásszolgáltatók összevonását.Ezzel a szerepkörrel a felhasználók új identitásszolgáltatókat adhatnak hozzá, és konfigurálhatják az összes elérhető beállítást (pl. hitelesítési útvonal, szolgáltatásazonosító, hozzárendelt kulcstárolók).Ez a felhasználó engedélyezheti, hogy a bérlő megbízzon a külső identitásszolgáltatók hitelesítéseiben.Az eredményül kapott hatás a végfelhasználói élménytől a bérlő típusától függ:
 
 * Az Azure Active Directory-bérlők az alkalmazottak és a partnerek: Az összevonás hozzáadása (pl. a Gmail) azonnal hatással lesz az összes vendég meghívók még nem váltották be. Lásd: [A Google hozzáadása identitásszolgáltatóként a B2B vendégfelhasználók számára.](https://docs.microsoft.com/azure/active-directory/b2b/google-federation)
-* Az Azure Active Directory B2C-bérlők: Egy összevonás hozzáadása (például a Facebookkal vagy egy másik Azure AD-szervezettel) nem befolyásolja azonnal a végfelhasználói folyamatokat, amíg az identitásszolgáltatót nem adják hozzá lehetőségként egy felhasználói folyamatban (más néven beépített politika). Például [A Microsoft-fiók konfigurálása identitásszolgáltatóként](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app) című témakörben.A felhasználói folyamatok módosításához a "B2C felhasználói folyamat rendszergazdájának" korlátozott szerepköre szükséges.
+* Az Azure Active Directory B2C-bérlők: Egy összevonás hozzáadása (például a Facebook, vagy egy másik Azure AD-szervezet) nem befolyásolja azonnal a végfelhasználói folyamatok, amíg az identitásszolgáltató hozzáadása egy felhasználói folyamat (más néven egy beépített szabályzat). Például [A Microsoft-fiók konfigurálása identitásszolgáltatóként](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app) című témakörben.A felhasználói folyamatok módosításához a "B2C felhasználói folyamat rendszergazdájának" korlátozott szerepköre szükséges.
 
 ### <a name="global-administrator--company-administrator"></a>[Globális rendszergazda / vállalati rendszergazda](#company-administrator-permissions)
 
-Az ezzel a szerepkörrel rendelkező felhasználók hozzáférhetnek az Azure Active Directory összes felügyeleti szolgáltatásához, valamint az Azure Active Directory identitásait használó szolgáltatásokhoz, például a Microsoft 365 biztonsági központhoz, a Microsoft 365 megfelelőségi központhoz, az Exchange Online-hoz, a SharePoint Online-hoz és a Skype Vállalati online verzió. Az a személy, aki feliratkozik az Azure Active Directory-bérlő lesz a globális rendszergazda. A vállalatnál több globális rendszergazda is lehet. A globális rendszergazdák bármely felhasználó és az összes többi rendszergazda jelszavát is alaphelyzetbe állíthatják.
+Az ezzel a szerepkörrel rendelkező felhasználók hozzáférhetnek az Azure Active Directory összes felügyeleti szolgáltatásához, valamint az Azure Active Directory-identitásokat használó szolgáltatásokhoz, például a Microsoft 365 biztonsági központhoz, a Microsoft 365 megfelelőségi központhoz, az Exchange Online-hoz, a SharePoint Online-hoz és a Skype Vállalati online verzióhoz. Az a személy, aki feliratkozik az Azure Active Directory-bérlő lesz a globális rendszergazda. A vállalatnál több globális rendszergazda is lehet. A globális rendszergazdák bármely felhasználó és az összes többi rendszergazda jelszavát is alaphelyzetbe állíthatják.
 
 > [!NOTE]
 > A Microsoft Graph API-ban és az Azure AD PowerShellben ez a szerepkör "vállalati rendszergazdaként" van azonosítva. Az [Azure Portalon](https://portal.azure.com)"globális rendszergazda".
@@ -264,7 +265,7 @@ Ezzel a szerepkörrel rendelkező felhasználók módosíthatják a jelszavakat,
 * Jelentések olvasó
 
 > [!IMPORTANT]
-> Ezzel a szerepkörrel rendelkező felhasználók módosíthatják a jelszavakat azok számára, akik hozzáférhetnek a bizalmas vagy személyes adatokhoz vagy a kritikus konfigurációhoz az Azure Active Directoryn belül és kívül. A felhasználó jelszavának módosítása azt jelentheti, hogy fel lehet vállalni a felhasználó identitását és engedélyeit. Példa:
+> Ezzel a szerepkörrel rendelkező felhasználók módosíthatják a jelszavakat azok számára, akik hozzáférhetnek a bizalmas vagy személyes adatokhoz vagy a kritikus konfigurációhoz az Azure Active Directoryn belül és kívül. A felhasználó jelszavának módosítása azt jelentheti, hogy fel lehet vállalni a felhasználó identitását és engedélyeit. Például:
 >
 >- Alkalmazásregisztráció és vállalati alkalmazástulajdonosok, akik kezelhetik a tulajdonukban lévő alkalmazások hitelesítő adatait. Ezek az alkalmazások előfordulhat, hogy az Azure AD és máshol nem biztosított ügyfélszolgálati rendszergazdák kiemelt engedélyekkel rendelkeznek. Ezen az útvonalon keresztül a helpdesk-rendszergazda felveheti az alkalmazás tulajdonosának identitását, majd tovább feltételezheti egy kiemelt jogosultságú alkalmazás identitását az alkalmazás hitelesítő adatainak frissítésével.
 >- Az Azure-előfizetés-tulajdonosok, akik hozzáférhetnek a bizalmas vagy személyes adatokhoz vagy a kritikus konfigurációhoz az Azure-ban.
@@ -451,7 +452,7 @@ Az ezzel a szerepkörrel rendelkező felhasználók felhasználókat hozhatnak l
 |Csak olyan felhasználóknál, akik nem adminisztrátorok, vagy az alábbi korlátozott rendszergazdai szerepkörök bármelyikében:<ul><li>Címtárolvasók<li>Vendég meghívó<li>Ügyfélszolgálati rendszergazda<li>Üzenetközpont olvasója<li>Jelentések olvasó<li>Felhasználói rendszergazda|<p>Törlés és visszaállítás</p><p>Letiltás és engedélyezés</p><p>Tokenek frissítésének érvénytelenítése</p><p>Az összes felhasználói tulajdonság kezelése, beleértve az egyszerű felhasználónevet is</p><p>Új jelszó létrehozása</p><p>Frissítési (FIDO) eszközkulcsok</p>|
 
 > [!IMPORTANT]
-> Ezzel a szerepkörrel rendelkező felhasználók módosíthatják a jelszavakat azok számára, akik hozzáférhetnek a bizalmas vagy személyes adatokhoz vagy a kritikus konfigurációhoz az Azure Active Directoryn belül és kívül. A felhasználó jelszavának módosítása azt jelentheti, hogy fel lehet vállalni a felhasználó identitását és engedélyeit. Példa:
+> Ezzel a szerepkörrel rendelkező felhasználók módosíthatják a jelszavakat azok számára, akik hozzáférhetnek a bizalmas vagy személyes adatokhoz vagy a kritikus konfigurációhoz az Azure Active Directoryn belül és kívül. A felhasználó jelszavának módosítása azt jelentheti, hogy fel lehet vállalni a felhasználó identitását és engedélyeit. Például:
 >
 >- Alkalmazásregisztráció és vállalati alkalmazástulajdonosok, akik kezelhetik a tulajdonukban lévő alkalmazások hitelesítő adatait. Ezek az alkalmazások előfordulhat, hogy az Azure AD és máshol nem biztosított a felhasználói rendszergazdák jogosultsággal rendelkeznek. Ezen az útvonalon keresztül a felhasználói rendszergazda felveheti az alkalmazás tulajdonosának identitását, majd tovább feltételezheti egy kiemelt jogosultságú alkalmazás identitását az alkalmazás hitelesítő adatainak frissítésével.
 >- Az Azure-előfizetés-tulajdonosok, akik hozzáférhetnek a bizalmas vagy személyes adatokhoz vagy a kritikus konfigurációhoz az Azure-ban.
@@ -764,7 +765,10 @@ Az Azure AD-ben és az Office 365-ben olvashatja és kezelheti a megfelelőségi
 | microsoft.azure.supportTickets/allEntities/allTasks | Azure támogatási jegyek létrehozása és kezelése. |
 | microsoft.office365.webPortal/allEntities/alapszintű/olvasott | A microsoft.office365.webPortal webhelyen az összes erőforrás alapvető tulajdonságait olvassa el. |
 | microsoft.office365.complianceManager/allEntities/allTasks | Az Office 365 Megfelelőségi kezelőjének minden aspektusának kezelése |
+| microsoft.office365.exchange/allEntities/allTasks | Az Exchange Online minden aspektusát kezelheti. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Az Office 365 Szolgáltatásállapot ának olvasása és konfigurálása. |
+| microsoft.office365.sharepoint/allEntities/allTasks | A microsoft.office365.sharepoint webhelyen létrehozhatja és törölheti az összes erőforrást, valamint elolvashatja és frissítheti a szabványos tulajdonságokat. |
+| microsoft.office365.skypeForBusiness/allEntities/allTasks | A Skype Vállalati online verzió minden aspektusát kezelheti. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 támogatási jegyek létrehozása és kezelése. |
 
 ### <a name="compliance-data-administrator-permissions"></a>Megfelelőségi adatok rendszergazdájának engedélyei
@@ -784,7 +788,10 @@ Megfelelőségi tartalom létrehozása és kezelése.
 | microsoft.azure.supportTickets/allEntities/allTasks | Azure támogatási jegyek létrehozása és kezelése. |
 | microsoft.office365.webPortal/allEntities/alapszintű/olvasott | A microsoft.office365.webPortal webhelyen az összes erőforrás alapvető tulajdonságait olvassa el. |
 | microsoft.office365.complianceManager/allEntities/allTasks | Az Office 365 Megfelelőségi kezelőjének minden aspektusának kezelése |
+| microsoft.office365.exchange/allEntities/allTasks | Az Exchange Online minden aspektusát kezelheti. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Az Office 365 Szolgáltatásállapot ának olvasása és konfigurálása. |
+| microsoft.office365.sharepoint/allEntities/allTasks | A microsoft.office365.sharepoint webhelyen létrehozhatja és törölheti az összes erőforrást, valamint elolvashatja és frissítheti a szabványos tulajdonságokat. |
+| microsoft.office365.skypeForBusiness/allEntities/allTasks | A Skype Vállalati online verzió minden aspektusát kezelheti. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 támogatási jegyek létrehozása és kezelése. |
 
 ### <a name="conditional-access-administrator-permissions"></a>Feltételes hozzáférési rendszergazdai engedélyek
@@ -1755,8 +1762,31 @@ A következő szerepköröket nem szabad használni. Elavultak, és a jövőben 
 * Postaláda-rendszergazda
 * Munkahelyi eszközillesztés
 
+## <a name="roles-not-shown-in-the-portal"></a>A portálon nem látható szerepkörök
+
+Nem minden PowerShell vagy MS Graph API által visszaadott szerepkör látható az Azure Portalon. Az alábbi táblázat ezeket a különbségeket rendezi.
+
+API-név | Az Azure Portal neve | Megjegyzések
+-------- | ------------------- | -------------
+Vállalati rendszergazda | Globális rendszergazda | [Név megváltozott a jobb egyértelműség érdekében](directory-assign-admin-roles.md#role-template-ids)
+CRM szolgáltatás rendszergazdája | A Dynamics 365 rendszergazdája | [A jelenlegi termékmárkaismertet tükrözi](directory-assign-admin-roles.md#role-template-ids)
+Eszközillesztés | Elavult | [Elavult szerepkörök dokumentációja](directory-assign-admin-roles.md#deprecated-roles)
+Eszközkezelők | Elavult | [Elavult szerepkörök dokumentációja](directory-assign-admin-roles.md#deprecated-roles)
+Eszközfelhasználók | Elavult | [Elavult szerepkörök dokumentációja](directory-assign-admin-roles.md#deprecated-roles)
+Címtár-szinkronizálási fiókok | Nem jelenik meg, mert nem szabad használni | [Címtár-szinkronizálási fiókok dokumentációja](directory-assign-admin-roles.md#directory-synchronization-accounts)
+Könyvtár írók | Nem jelenik meg, mert nem szabad használni | [Címtárírók dokumentációja](directory-assign-admin-roles.md#directory-writers)
+Vendégfelhasználó | Nem jelenik meg, mert nem használható  | NA
+Lync-szolgáltatás rendszergazdája | Skype Vállalati verzió-rendszergazda | [A jelenlegi termékmárkaismertet tükrözi](directory-assign-admin-roles.md#role-template-ids)
+Partner szintű 1. | Nem jelenik meg, mert nem szabad használni | [Partner Tier1 támogatási dokumentáció](directory-assign-admin-roles.md#partner-tier1-support)
+Partner2 szintű támogatás | Nem jelenik meg, mert nem szabad használni | [Partner Tier2 támogatási dokumentáció](directory-assign-admin-roles.md#partner-tier2-support)
+Nyomtató-rendszergazda | Megoldás folyamatban | Megoldás folyamatban
+Nyomtató technikus | Megoldás folyamatban | Megoldás folyamatban
+Korlátozott vendégfelhasználó | Nem jelenik meg, mert nem használható | NA
+Felhasználó | Nem jelenik meg, mert nem használható | NA
+Munkahelyi eszközillesztés | Elavult | [Elavult szerepkörök dokumentációja](directory-assign-admin-roles.md#deprecated-roles)
+
 ## <a name="next-steps"></a>További lépések
 
-* Ha többet szeretne megtudni arról, hogyan rendelhet hozzá egy felhasználót egy Azure-előfizetés rendszergazdájaként, olvassa el [a Hozzáférés kezelése az RBAC használatával és az Azure Portal használatával című témakört.](../../role-based-access-control/role-assignments-portal.md)
-* Az erőforrások hozzáférésének Microsoft Azure-ban történő kezeléséről további információért lásd: [Az erőforrások hozzáférésének megismerése az Azure-ban](../../role-based-access-control/rbac-and-directory-admin-roles.md)
+* Ha többet szeretne megtudni arról, hogyan rendelhet hozzá egy felhasználót egy Azure-előfizetés rendszergazdájaként, olvassa el [a Hozzáférés kezelése Azure-szerepkörökkel (Azure RBAC) című témakört.](../../role-based-access-control/role-assignments-portal.md)
+* Ha többet szeretne megtudni arról, hogyan szabályozza az erőforrás-hozzáférést a Microsoft Azure-ban, [olvassa el A különböző szerepkörök ismertetése című témakört.](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * További információk az Azure Active Directory és az Azure-előfizetés kapcsolatáról: [Hogyan kapcsolódnak az Azure-előfizetések az Azure Active Directoryhoz?](../fundamentals/active-directory-how-subscriptions-associated-directory.md)

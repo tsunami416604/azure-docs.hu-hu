@@ -11,18 +11,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 415a89cbccd6b43d64ba1a553d44ac003df5806a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a3ae8065553b34a72528cb0f2681e327dc90097
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471625"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985184"
 ---
 # <a name="http2-support-in-azure-front-door"></a>HTTP/2 támogatás az Azure bejárati ajtajában
 
-Jelenleg a HTTP/2 támogatás minden bejárati ajtó konfigurációhoz aktív. Az ügyfelektől nincs szükség további lépésekre.
+Jelenleg a HTTP/2-támogatás aktív az összes Azure Bejárati ajtó konfigurációk. Az ügyfelektől nincs szükség további lépésekre.
 
 A HTTP/2 a HTTP/1.1 egyik fő módosítása. Gyorsabb webes teljesítményt, csökkentett válaszidőt és jobb felhasználói élményt biztosít, miközben megőrzi a jól ismert HTTP-módszereket, állapotkódokat és szemantikát. Bár a HTTP/2 http-vel és HTTPS-lel való együttműködésre szolgál, sok ügyfélwebböngésző csak a HTTP/2-t támogatja a Transport Layer Security (TLS) protokollal szemben.
+
+> [!NOTE]
+> A HTTP/2 protokoll támogatása csak az ügyfelek től a Bejárati ajtóig érkező kérelmek esetén érhető el. The communication from Front Door to back ends in the back-end pool happens over HTTP/1.1. 
 
 ### <a name="http2-benefits"></a>HTTP/2 előnyei
 

@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: c1e740fbfa4bf1e8a77a2d9d6060ab39dba7ae7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0938fbe94cb0d1e6dae3dcb84950a11f90dd9db8
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256210"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878153"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>Mik azok az SQL Database-példánykészletek (előzetes verzió)?
 
@@ -59,7 +59,7 @@ Az alábbi lista azokat a főfelhasználási eseteket tartalmazza, amelyekben a 
 
 ## <a name="architecture-of-instance-pools"></a>A példánygyűjtő medencék architektúrája
 
-A példánykészletek architektúrája hasonló a rendszeres felügyelt példányokhoz *(egyetlen példány).* Az [Azure virtuális hálózatokon (VNets)](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks) belüli telepítések támogatásához, valamint az elkülönítés és a biztonság biztosításához a példánykészletek virtuális fürtökre is [támaszkodnak.](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture) A virtuális fürtök az ügyfél virtuális hálózati alhálózatán belül telepített elkülönített virtuális gépek dedikált készletét képviselik.
+A példánykészletek architektúrája hasonló a rendszeres felügyelt példányokhoz *(egyetlen példány).* Az [Azure virtuális hálózatokon (VNets)](../virtual-network/virtual-network-for-azure-services.md) belüli telepítések támogatásához, valamint az elkülönítés és a biztonság biztosításához a példánykészletek virtuális fürtökre is [támaszkodnak.](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture) A virtuális fürtök az ügyfél virtuális hálózati alhálózatán belül telepített elkülönített virtuális gépek dedikált készletét képviselik.
 
 A fő különbség a két központi telepítési modell között az, hogy a példánykészletek lehetővé teszik több SQL Server-folyamat központi telepítését ugyanazon a virtuálisgép-csomóponton, amelyek a [Windows feladatobjektumok](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects)által szabályozott erőforrások, míg az egyes példányok mindig egyedül vannak egy virtuálisgép-csomóponton.
 

@@ -5,25 +5,27 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 07/31/2019
-ms.openlocfilehash: f5944accb185f1311c811cf65a8ea8348fd569db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: 065bbc62d65d7e91728b10cd9f95b2e73ea03abc
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77605606"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878731"
 ---
-# <a name="move-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>Logikai alkalmazás-erőforrások áthelyezése más Azure-előfizetésekbe, erőforráscsoportokba vagy régiókba
+# <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>Logikai alkalmazás-erőforrások áthelyezése más Azure-erőforráscsoportokba, régiókba vagy előfizetésekbe
 
-A logikai alkalmazás vagy a kapcsolódó erőforrások áttelepítése egy másik Azure-előfizetés, erőforráscsoport vagy régió, számos módon végezheti el ezeket a feladatokat, például az Azure Portalon, az Azure PowerShell, az Azure CLI és a REST API. Az erőforrások áthelyezése előtt tekintse át az alábbi szempontokat: 
+A logikai alkalmazás vagy a kapcsolódó erőforrások áttelepítése egy másik Azure-erőforráscsoport, régió vagy előfizetés, számos módon végezheti el ezeket a feladatokat, például az Azure Portalon, az Azure PowerShell, az Azure CLI és a REST API. Az erőforrások áthelyezése előtt tekintse át az alábbi szempontokat: 
 
 * Csak adott [logikai alkalmazás erőforrás-típusok](../azure-resource-manager/management/move-support-resources.md#microsoftlogic) at helyezhetát át az Azure-erőforráscsoportok vagy előfizetések között.
 
 * Az [limits](../logic-apps/logic-apps-limits-and-config.md) Azure-előfizetésben és az egyes Azure-régiókban rendelkezhet logikai alkalmazás-erőforrások számának korlátozásai. Ezek a korlátok befolyásolják, hogy áthelyezhet-e adott erőforrástípusokat, ha a régió változatlan marad az előfizetések vagy erőforráscsoportok között. Például minden Azure-előfizetésben csak egy ingyenes réteg-integrációs fiókkal rendelkezhet minden Egyes Azure-régióhoz.
 
+* Erőforrások áthelyezésekek, az Azure új erőforrás-azonosítókat hoz létre. Ezért győződjön meg arról, hogy az új azonosítók helyett, és frissítse a parancsfájlok vagy eszközök, amelyek az áthelyezett erőforrásokat.
+
 * Miután áttelepítette a logikai alkalmazásokat az előfizetések, erőforráscsoportok vagy régiók között, újra létre kell hoznia vagy újra engedélyeznie kell a nyílt hitelesítést (OAuth) igénylő kapcsolatokat.
 
-* Az erőforrások áthelyezésekekekekekekkor az Azure új erőforrás-azonosítókat hoz létre. Ezért győződjön meg arról, hogy az új azonosítók helyett, és frissítse a parancsfájlok vagy eszközök, amelyek az áthelyezett erőforrásokat.
+* Az [integrációs szolgáltatási környezet (ISE)](connect-virtual-network-vnet-isolated-environment-overview.md) csak egy másik erőforráscsoport, amely ugyanabban az Azure-régióban vagy az Azure-előfizetésben található. Az ISE nem helyezhető át egy másik Azure-régióban vagy Azure-előfizetésben létező erőforráscsoportba. Egy ilyen áthelyezés után frissítenie kell az ISE-re mutató összes hivatkozást a logikai alkalmazás munkafolyamataiban, az integrációs fiókokban, a kapcsolatokban és így tovább.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -53,7 +55,7 @@ To move a resource, such as a logic app or integration account, to another Azure
 
 ## <a name="move-resources-between-resource-groups"></a>Erőforrások áthelyezése erőforráscsoportok között
 
-To move a resource, such as a logic app or integration account, to another Azure resource group, you can use the Azure portal, Azure PowerShell, Azure CLI, or REST API. Ezek a lépések az Azure Portalra vonatkoznak, amelyet akkor használhat, ha az erőforrás régiója ugyanaz marad. További lépések és általános előkészítés: [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../azure-resource-manager/management/move-resource-group-and-subscription.md).
+Egy erőforrás, például egy logikai alkalmazás, integrációs fiók vagy [integrációs szolgáltatási környezet (ISE)](connect-virtual-network-vnet-isolated-environment-overview.md)áthelyezéséhez egy másik Azure-erőforráscsoportba, használhatja az Azure Portalon, az Azure PowerShell, az Azure CLI vagy a REST API.To move a resource, such as a logic app, integration account, or integration service environment (ISE) , to another Azure resource group, you can use the Azure Portal, Azure PowerShell, Azure CLI, vagy REST API. Ezek a lépések az Azure Portalra vonatkoznak, amelyet akkor használhat, ha az erőforrás régiója ugyanaz marad. További lépések és általános előkészítés: [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 Mielőtt ténylegesen áthelyezi az erőforrásokat a csoportok között, tesztelheti, hogy sikeresen áthelyezheti-e az erőforrást egy másik csoportba. További információt [az Áthelyezés ellenőrzése című](../azure-resource-manager/management/move-resource-group-and-subscription.md#validate-move)témakörben talál.
 

@@ -11,30 +11,30 @@ ms.service: virtual-machines
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/04/2019
+ms.date: 03/16/2020
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: e1249913300be532cc6514f1478bbc6f4183c001
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5d5ebda850163989e6ef1af94ec623d2d758f07
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300553"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878289"
 ---
-# <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>A Microsoft Azure-t és az Oracle Cloud Infrastructure-t integráló Oracle alkalmazásmegoldások (előzetes verzió)
+# <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>A Microsoft Azure-t és az Oracle Cloud Infrastructure-t integráló Oracle alkalmazásmegoldások
 
 A Microsoft és az Oracle partneri kapcsolatban részesül az alacsony késleltetésű, nagy áteresztőképességű felhőközi kapcsolat biztosításában, lehetővé téve, hogy mindkét felhő ből a legjobbat kihasználhassa. 
 
 Ezzel a felhőközi kapcsolattal particionálhat egy többrétegű alkalmazást az adatbázisréteg oracle cloud infrastructure (OCI), valamint az alkalmazás és más szintek futtatásához a Microsoft Azure-ban. A felhasználói élmény hasonló a teljes megoldásverem egyetlen felhőben való futtatásához. 
-
-> [!IMPORTANT]
-> Ez a felhőközi funkció jelenleg előzetes verzióban érhető el, és [korlátozások vonatkoznak.](#region-availability) Az Azure és az OCI közötti alacsony késésű kapcsolat létrehozásához az Azure-előfizetést először engedélyezni kell ehhez a funkcióhoz. A rövid felmérési űrlap kitöltésével be kell iratkoznia az előzetes [verzióra.](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu) Az előfizetés regisztrációja után egy e-mailt fog kapni. Nem tudja használni a funkciót, amíg nem kap egy visszaigazoló e-mailt. Az előzetes verzió engedélyezéséhez forduljon a Microsoft képviselőjéhez is. Az előzetes verzióhoz való hozzáférés a rendelkezésre állás függvénye, és a Microsoft saját belátása szerint korlátozza. A felmérés befejezése nem garantálja a hozzáférést. Ez az előzetes verzió szolgáltatásiszint-szerződés nélkül érhető el, és nem használható éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. A [részleteket](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) a Microsoft Azure előzetes verziók kiegészítő használati feltételei ben találja. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
 
 Ha teljes mértékben az Azure-infrastruktúrán szeretné telepíteni az Oracle-megoldásokat, olvassa el az [Oracle virtuálisgép-lemezképek és azok Microsoft Azure-beli telepítését.](oracle-vm-solutions.md)
 
 ## <a name="scenario-overview"></a>Forgatókönyv áttekintése
 
 A felhőközi kapcsolat megoldást kínál az Oracle iparágvezető alkalmazásai és saját egyéni alkalmazásai Azure virtuális gépeken való futtatására, miközben élvezi az OCI üzemeltetett adatbázis-szolgáltatásainak előnyeit. 
+
+> [!IMPORTANT]
+> Az Oracle tanúsítja, hogy ezek az alkalmazások 2020 májusig futnak az Azure/Oracle Cloud interconnect megoldás használatával.
 
 A felhőközi konfigurációban futtatható alkalmazások a következők:
 

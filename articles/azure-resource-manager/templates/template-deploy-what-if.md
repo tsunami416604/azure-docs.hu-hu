@@ -3,29 +3,68 @@ title: Sablon üzembe helyezésének (előzetes verzió)
 description: Az Azure Resource Manager-sablon üzembe helyezése előtt határozza meg, hogy milyen módosítások fognak történni az erőforrásokon.
 author: mumian
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 04/06/2020
 ms.author: jgao
-ms.openlocfilehash: bc42585204e5cc2c3ece5293a3934fd22fe8507b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9e0d0d572e08961b585a93e66e400b8c2e54bf7f
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156446"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886840"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>ARM-sablon üzembe helyezési művelete (előzetes verzió)
 
 Az Azure Resource Manager (ARM) sablon üzembe helyezése előtt érdemes megtekintenie a változásokat, amelyek bekövetkeznek. Az Azure Resource Manager biztosítja a "ha" műveletet, amely lehetővé teszi, hogy a sablon üzembe helyezésekor hogyan változnak az erőforrások. A "mi lenne, ha" művelet nem módosítja a meglévő erőforrásokat. Ehelyett előre jelzi a módosításokat, ha a megadott sablon telepítve van.
 
 > [!NOTE]
-> A "mi lenne, ha" művelet jelenleg előzetes verzióban érhető el. A használatához fel kell [iratkoznia az előnézetre.](https://aka.ms/armtemplatepreviews) Előzetes verzióként az eredmények néha azt mutatják, hogy egy erőforrás megváltozik, ha valójában nem történik változás. Azon dolgozunk, hogy csökkentsük ezeket a problémákat, de szükségünk van a segítségére. Kérjük, jelentse [https://aka.ms/whatifissues](https://aka.ms/whatifissues)ezeket a problémákat a.
+> A "mi lenne, ha" művelet jelenleg előzetes verzióban érhető el. Előzetes verzióként az eredmények néha azt mutatják, hogy egy erőforrás megváltozik, ha valójában nem történik változás. Azon dolgozunk, hogy csökkentsük ezeket a problémákat, de szükségünk van a segítségére. Kérjük, jelentse [https://aka.ms/whatifissues](https://aka.ms/whatifissues)ezeket a problémákat a.
 
 Használhatja a mi lenne, ha művelet et a PowerShell-parancsokkal vagy a REST API-műveletekkel.
+
+## <a name="install-powershell-module"></a>PowerShell-modul telepítése
+
+A PowerShellben a lehetőség-ha használatához telepítse az Az.Resources modul előzetes verzióját a PowerShell-gyűjteményből.
+
+### <a name="uninstall-alpha-version"></a>Alfa-verzió eltávolítása
+
+Ha korábban telepítette a lehetőség-lenne, ha modul alfa verzióját, távolítsa el azt a modult. Az alfa verzió csak azok számára volt elérhető, akik korai előzetes verzióra regisztráltak. Ha nem telepítette az előzetes verziót, kihagyhatja ezt a szakaszt.
+
+1. A PowerShell futtatása rendszergazdaként
+1. Ellenőrizze az Az.Resources modul telepített verzióit.
+
+   ```powershell
+   Get-InstalledModule -Name Az.Resources -AllVersions | select Name,Version
+   ```
+
+1. Ha van egy telepített verziója, amelynek verziószáma **2.x.x-alpha**formátumú, távolítsa el azt a verziót.
+
+   ```powershell
+   Uninstall-Module Az.Resources -RequiredVersion 2.0.1-alpha5 -AllowPrerelease
+   ```
+
+1. Törölje az előnézet telepítéséhez használt "mi lett, ha" tárház regisztrációjának regisztrációjának.
+
+   ```powershell
+   Unregister-PSRepository -Name WhatIfRepository
+   ```
+
+### <a name="install-preview-version"></a>Az előzetes verzió telepítése
+
+Az előnézeti modul telepítéséhez használja a következőket:
+
+```powershell
+Install-Module Az.Resources -RequiredVersion 1.12.1-preview -AllowPrerelease
+```
+
+Készen állsz, hogy használd a "mi lenne, ha"-t.
+
+## <a name="see-results"></a>Eredmények megtekintése
 
 A PowerShellben a kimenet színkódolt eredményeket tartalmaz, amelyek segítenek a különböző típusú módosítások megtekintésében.
 
 ![Az Erőforrás-kezelő sablon üzembe helyezésének mi lenne, ha a művelet fullresourcepayload és a változástípusok](./media/template-deploy-what-if/resource-manager-deployment-whatif-change-types.png)
 
-A szöveg ouptput a következő:
+A szöveg kimenete:
 
 ```powershell
 Resource and property changes are indicated with these symbols:
@@ -72,11 +111,8 @@ Vagy használhatja a `-Confirm` kapcsoló paramétert a módosítások előnéze
 
 Az előző parancsok egy olyan szövegösszegzést adnak vissza, amelyet manuálisan is megvizsgálhat. Ha olyan objektumot szeretne lekérni, amelyet programozott módon ellenőrizhet a módosítások után, használja a következőket:
 
-* `$results = Get-AzResourceGroupDeploymentWhatIf`erőforráscsoport-telepítésekhez
-* `$results = Get-AzSubscriptionDeploymentWhatIf`vagy `$results = Get-AzDeploymentWhatIf` előfizetési szintű telepítésekhez
-
-> [!NOTE]
-> A 2.0.1-alpha5 verzió kiadása előtt ön `New-AzDeploymentWhatIf` használta a parancsot. Ezt a parancsot a `Get-AzDeploymentWhatIf` `Get-AzResourceGroupDeploymentWhatIf`, `Get-AzSubscriptionDeploymentWhatIf` és a parancs váltotta fel. Ha korábban már használt verziót, frissítenie kell ezt a szintaxist. A `-ScopeType` paraméter el lett távolítva.
+* `$results = Get-AzResourceGroupDeploymentWhatIfResult`erőforráscsoport-telepítésekhez
+* `$results = Get-AzSubscriptionDeploymentWhatIfResult`vagy `$results = Get-AzDeploymentWhatIfResult` előfizetési szintű telepítésekhez
 
 ### <a name="azure-rest-api"></a>Azure REST API
 
@@ -170,7 +206,7 @@ New-AzResourceGroupDeployment `
 
 ### <a name="test-modification"></a>A vizsgálat módosítása
 
-A központi telepítés befejezése után készen áll a "mi lenne, ha" művelet tesztelésére. Ezúttal telepítsen egy [sablont, amely megváltoztatja a virtuális hálózatot](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-after.json). Hiányzik az egyik az eredeti címkéket, egy alhálózat ot eltávolítottak, és a címelőtag megváltozott.
+A központi telepítés befejezése után készen áll a "mi lenne, ha" művelet tesztelésére. Ezúttal telepítsen egy [sablont, amely megváltoztatja a virtuális hálózatot](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-after.json). Hiányzik az eredeti címkék, az alhálózat eltávolításra került, és a címelőtag megváltozott.
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -214,7 +250,7 @@ Resource changes: 1 to modify.
 
 Figyelje meg a kimenet tetején, hogy a színek a módosítások típusának jelzésére vannak definiálva.
 
-A kimenet alján azt mutatja, hogy a tulajdonos lett törölve. A címelőtag 10.0.0.0/16-ról 10.0.0.0/15-re változott. Az alhálózat névvel ellátott alhálózata törölve lett. Ne feledje, hogy ez a változás valójában nem lett telepítve. A sablon telepítésekor a módosítások előnézete jelenik meg.
+A kimenet alján azt mutatja, hogy a tulajdonos lett törölve. A címelőtag 10.0.0.0/16-ról 10.0.0.0/15-re változott. Az alhálózat névvel ellátott alhálózata törölve lett. Ne feledje, hogy ezek a módosítások valójában nem voltak telepítve. A sablon telepítésekor a módosítások előnézete jelenik meg.
 
 A töröltként felsorolt tulajdonságok némelyike valójában nem változik. A tulajdonságok helytelenül jelenthetők töröltként, ha nem szerepelnek a sablonban, de a telepítés során automatikusan alapértelmezett értékként vannak beállítva. Ez az eredmény tekinthető "zaj" a mi lenne, ha választ. A végleges üzembe helyezett erőforrás a tulajdonságokhoz beállított értékekkel fog rendelkezni. A "mi lenne, ha" művelet érésével, ezek a tulajdonságok kilesznek szűrve az eredményből.
 
@@ -223,7 +259,7 @@ A töröltként felsorolt tulajdonságok némelyike valójában nem változik. A
 Most programozottmódon értékeljük ki a "mi lenne, ha" eredményeket a parancs változóra állításával.
 
 ```azurepowershell
-$results = Get-AzResourceGroupDeploymentWhatIf `
+$results = Get-AzResourceGroupDeploymentWhatIfResult `
   -ResourceGroupName ExampleGroup `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-after.json"
 ```

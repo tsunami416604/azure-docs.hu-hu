@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/18/2020
+ms.date: 04/08/2020
 ms.author: juliako
-ms.openlocfilehash: e6f2ad2c5c30e3c75e8d3588e386ea14e8e3350b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a00f7c0ec76510cc521966acf98b7250e723697
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065949"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985898"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Élő események és élő kimenetek a Médiaszolgáltatásokban
 
@@ -112,8 +112,11 @@ Kreatív vagy nem kreatív URL-címeket is használhat.
 * Hiúság URL-címe
 
     A hiúsági módot a hardveres műsorszórási kódolókat használó nagy médiaműsorszolgáltatók előnyben részesítik, és nem akarják újrakonfigurálni kódolóikat az élő esemény indításakor. Prediktív betöltési URL-t szeretnének, amely nem változik az idő múlásával.
+    
+    > [!NOTE]
+    > Az Azure Portalon a hiúság URL-címe "*állandó bemeneti URL-cím*".
 
-    A mód megadásához `vanityUrl` `true` a létrehozás időpontjában `false`kell megadni (az alapértelmezett érték ). Azt is meg kell adnia`LiveEventInput.accessToken`a saját hozzáférési jogkivonat ( ) létrehozása kor. Adja meg a token értékét, hogy elkerülje a véletlenszerű jogkivonatot az URL-ben. A hozzáférési jogkivonatnak érvényes GUID karakterláncnak kell lennie (kötőjellel vagy anélkül). A mód beállítása után nem frissíthető.
+    Ha ezt a módot az `vanityUrl` `true` API-ban szeretné `false`megadni, állítsa be a létrehozás időpontjában (az alapértelmezett érték). Azt is meg kell adnia`LiveEventInput.accessToken`a saját hozzáférési jogkivonat ( ) létrehozása kor. Adja meg a token értékét, hogy elkerülje a véletlenszerű jogkivonatot az URL-ben. A hozzáférési jogkivonatnak érvényes GUID karakterláncnak kell lennie (kötőjellel vagy anélkül). A mód beállítása után nem frissíthető.
 
     A hozzáférési jogkivonatnak egyedinek kell lennie az adatközpontban. Ha az alkalmazásnak hiúsági URL-címet kell használnia, javasoljuk, hogy mindig hozzon létre egy új GUID-példányt a hozzáférési jogkivonathoz (a meglévő GUID újrafelhasználása helyett).
 

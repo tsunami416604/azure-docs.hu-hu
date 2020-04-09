@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: 70545020899b69508a4cedb0fd7cf5495c847104
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 079c246f87bb8294f3c7ad6dea3391f5c67ba0ad
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462445"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985252"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Kiszolgáló nélküli adatbázis-számítástechnika az Azure Cosmos DB és az Azure Functions használatával
 
@@ -110,7 +110,7 @@ Az összes ilyen használati esetekben, mivel a függvény leválasztott a sajá
 
 Az Azure Cosmos DB és az Azure Functions közötti natív integráció az Azure Portalon és a Visual Studio 2019-ben érhető el.
 
-* Az Azure Functions portálon létrehozhat egy eseményindítót. Rövid útmutató: [Hozzon létre egy Azure Functions-eseményindítót a Cosmos DB számára az Azure Portalon.](https://aka.ms/cosmosdbtriggerportalfunc)
+* Az Azure Functions portálon létrehozhat egy eseményindítót. Rövid útmutató: [Hozzon létre egy Azure Functions-eseményindítót a Cosmos DB számára az Azure Portalon.](../azure-functions/functions-create-cosmos-db-triggered-function.md)
 * Az Azure Cosmos DB portálon hozzáadhat egy Azure Functions-eseményindítót a Cosmos DB-hez egy meglévő Azure Function alkalmazáshoz ugyanabban az erőforráscsoportban.
 * A Visual Studio 2019-ben az Azure Functions Tools használatával hozhatja létre az [eseményindítót:](../azure-functions/functions-develop-vs.md)
 
@@ -146,6 +146,6 @@ Ha nem biztos abban, hogy a Flow, a Logic Apps, az Azure Functions vagy a WebJob
 
 Most csatlakoztassuk az Azure Cosmos DB-t és az Azure Functions-et a valóságnak: 
 
-* [Hozzon létre egy Azure Functions-eseményindítót a Cosmos DB számára az Azure Portalon](https://aka.ms/cosmosdbtriggerportalfunc)
-* [Azure Functions HTTP-trigger létrehozása Azure Cosmos DB bemeneti kötéssel](https://aka.ms/cosmosdbinputbind)
+* [Hozzon létre egy Azure Functions-eseményindítót a Cosmos DB számára az Azure Portalon](../azure-functions/functions-create-cosmos-db-triggered-function.md)
+* [Azure Functions HTTP-trigger létrehozása Azure Cosmos DB bemeneti kötéssel](../azure-functions/functions-bindings-cosmosdb.md?tabs=csharp)
 * [Az Azure Cosmos DB kötések és eseményindítók](../azure-functions/functions-bindings-cosmosdb-v2.md)

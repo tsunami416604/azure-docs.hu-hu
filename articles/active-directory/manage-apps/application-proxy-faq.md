@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: 31587777ba22dd8b4cebf81f0ff98979bb30fade
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: ec9eeb0c35d96ee777771260686178faa536e909
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80410718"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877303"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Az Active Directory (Azure AD) alkalmazásproxyja gyakori kérdések
 
@@ -48,10 +48,6 @@ Nem, ez a forgatókönyv nem támogatott. Az alapértelmezett beállítások a k
 ### <a name="my-back-end-application-is-hosted-on-multiple-web-servers-and-requires-user-session-persistence-stickiness-how-can-i-achieve-session-persistence"></a>Saját back-end alkalmazás házigazdája több webszerver, és megköveteli a felhasználói munkamenet megőrzése (stickiness). Hogyan érhetem el a munkamenet-perzisztenciát? 
 
 A javaslatokért olvassa el az [Alkalmazásproxy-összekötők és -alkalmazások magas rendelkezésre állású és terheléselosztási témakörét.](application-proxy-high-availability-load-balancing.md)
-
-### <a name="can-i-place-a-forward-proxy-device-between-the-connector-servers-and-the-back-end-application-server"></a>Elhelyezhetek továbbítási proxyeszközt az összekötő kiszolgáló(k) és a háttéralkalmazás-kiszolgáló között?
-
-Nem, ez a forgatókönyv nem támogatott. Csak az összekötő és a frissítési szolgáltatások konfigurálhatók egy továbbító proxy azure-ba irányuló forgalom használata. Lásd: [Meglévő helyszíni proxykiszolgálók](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-connectors-with-proxy-servers) használata
 
 ### <a name="is-tls-termination-tlshttps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>A TLS-végződtetés (TLS/HTTPS ellenőrzés vagy gyorsítás) az összekötő kiszolgálókról az Azure-ba irányuló forgalomban támogatott?
 

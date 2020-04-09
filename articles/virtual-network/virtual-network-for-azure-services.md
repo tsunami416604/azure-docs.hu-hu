@@ -13,23 +13,14 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: b721857f2fa76dcee144521fb34b34ce48b7bd95
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 70266a1280b90b4573073d633a918f701f9ee8c2
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80616902"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878272"
 ---
-# <a name="virtual-network-integration-for-azure-services"></a>Virtuális hálózat integrációja Azure-szolgáltatásokhoz
-
-Az Azure-szolgáltatások integrálása egy Azure virtuális hálózatba lehetővé teszi a szolgáltatás hoz való privát hozzáférést a virtuális gépekről vagy a virtuális hálózat számítási erőforrásairól.
-Az Azure-szolgáltatásokat a következő lehetőségekkel integrálhatja a virtuális hálózatba:
-- A szolgáltatás dedikált példányainak üzembe helyezése egy virtuális hálózatba. A szolgáltatások ezután privát módon érhetők el a virtuális hálózaton belül és a helyszíni hálózatokon.
-- Privát [kapcsolat](../private-link/private-link-overview.md) használata a szolgáltatás egy adott példányának privát eléréséhez a virtuális hálózatról és a helyszíni hálózatokból.
-
-A szolgáltatás nyilvános végpontok használatával is elérhető, ha egy virtuális hálózatot terjeszt a szolgáltatásvégpontokon keresztül a [szolgáltatásra.](virtual-network-service-endpoints-overview.md) A szolgáltatásvégpontok lehetővé teszik a szolgáltatáserőforrások virtuális hálózatra való védelmét.
- 
-## <a name="deploy-azure-services-into-virtual-networks"></a>Azure-szolgáltatások üzembe helyezése virtuális hálózatokban
+# <a name="deploy-dedicated-azure-services-into-virtual-networks"></a>Dedikált Azure-szolgáltatások üzembe helyezése virtuális hálózatokba
 
 Ha dedikált Azure-szolgáltatásokat telepít egy [virtuális hálózatban,](virtual-networks-overview.md)privát IP-címeken keresztül privát IP-címeken keresztül kommunikálhat a szolgáltatás erőforrásaival.
 
@@ -48,16 +39,17 @@ A virtuális hálózaton belüli szolgáltatások telepítése a következő leh
 
 ### <a name="services-that-can-be-deployed-into-a-virtual-network"></a>A virtuális hálózatokban üzembe helyezhető szolgáltatások
 
-|Kategória|Szolgáltatás| Dedikált¹ alhálózat
+|Kategória|Szolgáltatás| Dedikált<sup>1</sup>sup</sup>>1 alhálózat
 |-|-|-|
-| Compute | Virtuális gépek: [Linux](../virtual-machines/linux/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [Windows](../virtual-machines/windows/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[Virtuálisgép-méretezési csoportok](../virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Felhőszolgáltatás](https://msdn.microsoft.com/library/azure/jj156091): Csak virtuális hálózat (klasszikus)<br/> [Azure Batch](../batch/batch-api-basics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-network-vnet-and-firewall-configuration)| Nem <br/> Nem <br/> Nem <br/> No²
+| Compute | Virtuális gépek: [Linux](../virtual-machines/linux/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [Windows](../virtual-machines/windows/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[Virtuálisgép-méretezési készletek](../virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Felhőszolgáltatás](https://msdn.microsoft.com/library/azure/jj156091): Csak virtuális hálózat (klasszikus)<br/> [Azure Batch](../batch/batch-api-basics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-network-vnet-and-firewall-configuration)| Nem <br/> Nem <br/> Nem <br/> <sup>2.</sup>sup>2</sup>
 | Network (Hálózat) | [Alkalmazásátjáró - WAF](../application-gateway/application-gateway-ilb-arm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Firewall](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[Hálózati virtuális készülékek](/windows-server/networking/sdn/manage/use-network-virtual-appliances-on-a-vn) | Igen <br/> Igen <br/> Igen <br/> Nem
 |Adatok|[RedisCache](../azure-cache-for-redis/cache-how-to-premium-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Felügyelt Azure SQL Database-példány](../sql-database/sql-database-managed-instance-connectivity-architecture.md?toc=%2fazure%2fvirtual-network%2ftoc.json)| Igen <br/> Igen <br/> 
-|Elemzés | [Azure HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Databricks](../azure-databricks/what-is-azure-databricks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) |No² <br/> No² <br/> 
+|Elemzés | [Azure HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Databricks](../azure-databricks/what-is-azure-databricks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) |2<sup>2</sup>sup>2</su<sup>2</sup>> <br/> <sup>2. szám</sup> <br/> 
 | Identitás | [Azure Active Directory tartományi szolgáltatások](../active-directory-domain-services/active-directory-ds-getting-started-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json) |Nem <br/>
-| Containers | [Azure Kubernetes Service (AKS)](../aks/concepts-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Container Instance (ACI)](https://www.aka.ms/acivnet)<br/>[Azure Container Service Engine](https://github.com/Azure/acs-engine) az Azure virtuális hálózati CNI [beépülő modullal](https://github.com/Azure/acs-engine/tree/master/examples/vnet)<br/>[Azure Functions](../azure-functions/functions-networking-options.md#virtual-network-integration) |No²<br/> Igen <br/><br/> Nem <br/> Igen
+| Containers | [Azure Kubernetes Service (AKS)](../aks/concepts-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Container Instance (ACI)](https://www.aka.ms/acivnet)<br/>[Azure Container Service Engine](https://github.com/Azure/acs-engine) az Azure virtuális hálózati CNI [beépülő modullal](https://github.com/Azure/acs-engine/tree/master/examples/vnet)<br/>[Azure Functions](../azure-functions/functions-networking-options.md#virtual-network-integration) |<sup>2.</sup>sup>2</sup><br/> Igen <br/><br/> Nem <br/> Igen
 | Web | [API Management](../api-management/api-management-using-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Web Apps](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[App Service-környezet](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|Igen <br/> Igen <br/> Igen <br/> Igen
 | Szálló | [Azure Dedicated HSM](../dedicated-hsm/index.yml?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|Igen <br/> Igen <br/>
 | | |
 
-¹ A "dedikált" azt jelenti, hogy csak szolgáltatásspecifikus erőforrások telepíthetők ebben az alhálózaton, és nem kombinálhatók az ügyfél virtuális gépekkel/vMSS-ekkel. <br/> ² Ajánlott, ha ezeket a szolgáltatásokat egy dedikált alhálózatban, de nem kötelező követelmény a szolgáltatás által előírt.
+<sup>1</sup> A "dedikált" azt jelenti, hogy csak szolgáltatásspecifikus erőforrások telepíthetők ebben az alhálózaton, és nem kombinálhatók az ügyfél virtuális gépekkel/vMSS-ekkel. <br/> 
+<sup>2</sup> Ajánlott, ha ezeket a szolgáltatásokat egy dedikált alhálózatban, de nem kötelező követelmény a szolgáltatás által előírt.

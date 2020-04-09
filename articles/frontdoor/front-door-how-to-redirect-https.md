@@ -7,22 +7,22 @@ ms.service: frontdoor
 ms.topic: article
 ms.date: 5/21/2019
 ms.author: sharadag
-ms.openlocfilehash: b7385ef27cd17705f2c86b6f57d4780511b6935c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f1b8c033a3ec230d60c30f6168de8ce013a80ac6
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246857"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878000"
 ---
 # <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>HTTP-HTTPS-átirányítással rendelkező bejárati ajtó létrehozása az Azure Portal használatával
 
-Az Azure Portal segítségével hozzon létre egy [bejárati ajtót](front-door-overview.md) egy ssl-megszüntetési tanúsítvánnyal. Az útválasztási szabály a HTTP-forgalom HTTPS-re való átirányítására szolgál.
+Az Azure Portal segítségével hozzon létre egy [bejárati ajtót](front-door-overview.md) a TLS-megszüntetési tanúsítvánnyal. Az útválasztási szabály a HTTP-forgalom HTTPS-re való átirányítására szolgál.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
 > * Bejárati ajtó létrehozása meglévő Web App-erőforrással
-> * Egyéni tartomány hozzáadása SSL-tanúsítvánnyal 
+> * Egyéni tartomány hozzáadása TLS/SSL tanúsítvánnyal 
 > * HTTPS-átirányítás beállítása az egyéni tartományban
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
@@ -87,7 +87,7 @@ Miután hozzáadta a CNAME rekordot, a DNS-rekordok oldala a következő példá
 ### <a name="enable-https-on-your-custom-domain"></a>HTTPS engedélyezése az egyéni tartományban
 
 1. Kattintson a hozzáadott egyéni tartományra, és az **Egyéni tartomány HTTPS**szakaszában módosítsa az állapotot **Engedélyezve értékre.**
-2. A **Tanúsítványkezelési típus** t a _Bejárati ajtó_ ban hagyhatja kezelni az előtér-ajtó által karbantartott, felügyelt és automatikusan elforgatott ingyenes tanúsítványhoz. Azt is választhatja, hogy az Azure Key Vault ban tárolt saját egyéni SSL-tanúsítványt is használhat. Ez az oktatóanyag feltételezi, hogy a Bejárati ajtó által felügyelt tanúsítvány használata.
+2. A **Tanúsítványkezelési típus** t a _Bejárati ajtó_ ban hagyhatja kezelni az előtér-ajtó által karbantartott, felügyelt és automatikusan elforgatott ingyenes tanúsítványhoz. Az Azure Key Vaultban tárolt egyéni TLS/SSL-tanúsítványt is használhatja. Ez az oktatóanyag feltételezi, hogy a Bejárati ajtó által felügyelt tanúsítvány használata.
 ![HTTPS engedélyezése egyéni tartományhoz](./media/front-door-url-redirect/front-door-custom-domain-https.png)
 
 3. A kijelölés mentéséhez kattintson a **Frissítés** gombra, majd a **Mentés gombra.**

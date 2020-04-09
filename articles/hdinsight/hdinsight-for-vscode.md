@@ -1,24 +1,24 @@
 ---
 title: Az Azure HDInsight a Visual Studio-hoz kód
-description: Ismerje meg, hogyan használhatja a Spark & Hive-eszközöket (Azure HDInsight) a Visual Studio-kódhoz lekérdezések és parancsfájlok létrehozásához és elküldéséhez.
+description: Ismerje meg, hogyan használhatja a Spark & Hive-eszközöket (Azure HDInsight) a Visual Studio-kódhoz. Az eszközök segítségével lekérdezéseket és parancsfájlokat hozhat létre és küldhet be.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/11/2019
-ms.openlocfilehash: 9a81868d678b4c0277e904e879c73185a378bf70
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/07/2020
+ms.openlocfilehash: de433d85c2f04a7140fbcb918730218ac3a05e54
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75435689"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878629"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>A Spark & Hive-eszközök használata a Visual Studio-kódhoz
 
-Ismerje meg, hogyan hozhat létre és küldhet el Apache Hive-lekérdezéseket, interaktív Hive-lekérdezéseket és PySpark-parancsfájlokat az Apache Sparkhoz a Spark & A Kaptáreszközök a Visual Studio-kódhoz használatával. Először ismertetjük, hogyan telepítheti a Spark & Hive-eszközöket a Visual Studio-kódban, majd bemutatjuk, hogyan küldhet be feladatokat a Spark & a Hive-eszközökhöz.  
+Ismerje meg, hogyan használhatja az Apache Spark & Hive-eszközöket a Visual Studio-kódhoz. Az eszközök segítségével apache hive kötegelt feladatokat, interaktív Hive-lekérdezéseket és Az Apache Spark PySpark-parancsfájlokat hozhat létre és küldhet el. Először ismertetjük, hogyan telepítheti a Spark & Hive-eszközöket a Visual Studio-kódban. Ezután bemutatjuk, hogyan küldhet be feladatokat a Spark & Hive-eszközökbe.  
 
-A Spark & Hive-eszközök olyan platformokra telepíthetők, amelyeket a Visual Studio Code támogat, beleértve a Windows, Linux és macOS rendszereket. Vegye figyelembe a különböző platformok következő előfeltételeit.
+A Spark & Hive-eszközök a Visual Studio-kód által támogatott platformokra telepíthetők. Vegye figyelembe a különböző platformok következő előfeltételeit.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -50,7 +50,7 @@ Miután teljesítette az előfeltételeket, az alábbi lépésekkel telepítheti
 
 Munkahelyi mappa megnyitásához és fájl létrehozásához a Visual Studio-kódban kövesse az alábbi lépéseket:
 
-1. A menüsorból válassza a Mappa > **fájlmegnyitása...** **File**  >  **C:\HD\HD példa**, majd kattintson a **Mappa kijelölése** gombra. A mappa az **Intéző** nézetben jelenik meg a bal oldalon.
+1. A menüsorból keresse meg a Mappa > **fájlmegnyitása...** **File**  >  **C:\HD\HD példa**, majd kattintson a **Mappa kijelölése** gombra. A mappa az **Intéző** nézetben jelenik meg a bal oldalon.
 
 2. Explorer **Explorer** nézetben jelölje ki a **HDpélda** mappát, majd a munkamappa melletti **Új fájl** ikont:
 
@@ -70,7 +70,7 @@ Egy nemzeti felhőbeli felhasználó esetében kövesse az alábbi lépéseket a
 
 ## <a name="connect-to-an-azure-account"></a>Csatlakozás Azure-fiókhoz
 
-Ahhoz, hogy parancsfájlokat küldhessen be a fürtöknek a Visual Studio-kódból, csatlakoznia kell az Azure-fiókjához, vagy össze kell kapcsolnia egy fürtöt (Apache Ambari felhasználónév és jelszó hitelesítő adatok kal vagy tartományhoz kapcsolódó fiókkal). Az Azure-hoz való csatlakozáshoz kövesse az alábbi lépéseket:
+Ahhoz, hogy parancsfájlokat küldhessen be a fürtöknek a Visual Studio-kódból, csatlakoznia kell az Azure-fiókjához, vagy fürthöz kell kapcsolódnia. Használja az Apache Ambari felhasználónevét és jelszavát, illetve a tartományhoz csatlakozó fiókot. Az Azure-hoz való csatlakozáshoz kövesse az alábbi lépéseket:
 
 1. A menüsorban keresse meg a**Parancspaletta** **megtekintése...** > és írja be az **Azure: Bejelentkezés:**
 
@@ -260,7 +260,7 @@ Miután elküldte a Python-feladatot, a küldési naplók megjelennek a Visual S
 
 ## <a name="apache-livy-configuration"></a>Apache Livy konfiguráció
 
-[Az Apache Livy](https://livy.incubator.apache.org/) konfigurációja támogatott. Konfigurálhatja **a. VSCode\settings.json** fájlt a munkaterület mappájában. Jelenleg a Livy-konfiguráció csak a Python-parancsfájlt támogatja. További részletek: [Livy README](https://github.com/cloudera/livy/blob/master/README.rst ).
+[Az Apache Livy](https://livy.incubator.apache.org/) konfigurációja támogatott. Konfigurálhatja **a. VSCode\settings.json** fájlt a munkaterület mappájában. Jelenleg a Livy-konfiguráció csak a Python-parancsfájlt támogatja. További információ: [Livy README](https://github.com/cloudera/livy/blob/master/README.rst ).
 
 <a id="triggerlivyconf"></a>**A Livy-konfiguráció aktiválása**
 
@@ -269,7 +269,7 @@ módszer
 2. A **Keresési beállítások mezőbe** írja be a **HDInsight-feladatbeküldéset: Livy Conf**.  
 3. A megfelelő keresési eredményhez válassza a Szerkesztés lehetőséget a **settings.json mezőben.**
 
-2. módszer Küldjön be egy fájlt, és figyelje meg, hogy a .vscode mappa automatikusan hozzáadódik a munkahelyi mappához. A Livy-konfigurációt a **.vscode\settings.json**lehetőség kiválasztásával láthatja.
+2. módszer Fájl küldése, `.vscode` és a mappa automatikus hozzáadása a munkahelyi mappához. A Livy-konfigurációt a **.vscode\settings.json**lehetőség kiválasztásával láthatja.
 
 + A projekt beállításai:
 
@@ -283,7 +283,7 @@ módszer
     **POST /kötegek** Kérelem törzse
 
     | név | leírás | type |
-    | :- | :- | :- |
+    | --- | --- | --- |
     | file | A végrehajtandó alkalmazást tartalmazó fájl | Elérési út (kötelező) |
     | proxyUser | A feladat futtatásakor megszemélyesítő felhasználó | Sztring |
     | Osztálynév | Alkalmazás Java/Spark főosztály | Sztring |
@@ -304,8 +304,8 @@ módszer
     Választörzs A létrehozott Köteg objektum.
 
     | név | leírás | type |
-    | :- | :- | :- |
-    | id | Munkamenet-azonosító | Int |
+    | --- | ---| --- |
+    | ID (Azonosító) | Munkamenet-azonosító | Int |
     | appId | A munkamenet alkalmazásazonosítója | Sztring |
     | appInfo | Részletes alkalmazásinformációk | Key=val térképe |
     | Napló | Naplósorok | Karakterláncok listája |
@@ -340,8 +340,8 @@ A fürtökben lévő Hive-táblázat előnézetét közvetlenül az **Azure HDIn
 
 - ÜZENETEK panel
    1. Ha a táblázatban a sorok száma meghaladja a 100-at, a következő üzenet jelenik meg: "Az első 100 sor jelenik meg a Hive-táblában."
-   2. Ha a táblázatban a sorok száma 100-nál kisebb vagy egyenlő, a következőhöz hasonló üzenet jelenik meg: "60 sor jelenik meg a Hive-táblához.".
-   3. Ha nincs tartalom a táblázatban, a következő üzenet jelenik meg: "0 sor jelenik meg a Hive-táblához."
+   2. Ha a táblázatban a sorok száma 100-nál kisebb vagy egyenlő, a következő üzenet jelenik meg: "60 sor jelenik meg a Hive-táblához."
+   3. Ha nincs tartalom a táblázatban, a következő üzenet`0 rows are displayed for Hive table.`jelenik meg: " "
 
         >[!NOTE]
         >
@@ -364,7 +364,7 @@ A Spark & A Hive for Visual Studio Code a következő szolgáltatásokat is tám
 
 ## <a name="reader-only-role"></a>Csak olvasói szerepkör
 
-Azok a felhasználók, akik csak olvasószerepkört kapnak a fürthöz, már nem küldhetnek el feladatokat a HDInsight-fürtnek, és nem tekinthetik meg a Hive-adatbázist sem. Lépjen kapcsolatba a fürt rendszergazdájával, és frissítse a szerepkört a [**HDInsight-fürtoperátorra**](https://docs.microsoft.com/azure/hdinsight/hdinsight-migrate-granular-access-cluster-configurations#add-the-hdinsight-cluster-operator-role-assignment-to-a-user) az [Azure Portalon.](https://ms.portal.azure.com/) Ha érvényes Ambari hitelesítő adatokkal rendelkezik, manuálisan is összekapcsolhatja a fürtöt az alábbi útmutatás segítségével.
+Azok a felhasználók, akik csak olvasószerepkört kapnak a fürthöz, nem küldhetnek el feladatokat a HDInsight-fürtbe, és nem tekinthetik meg a Hive-adatbázist. Lépjen kapcsolatba a fürt rendszergazdájával, és frissítse a szerepkört a [**HDInsight-fürtoperátorra**](https://docs.microsoft.com/azure/hdinsight/hdinsight-migrate-granular-access-cluster-configurations#add-the-hdinsight-cluster-operator-role-assignment-to-a-user) az [Azure Portalon.](https://ms.portal.azure.com/) Ha érvényes Ambari hitelesítő adatokkal rendelkezik, manuálisan is összekapcsolhatja a fürtöt az alábbi útmutatás segítségével.
 
 ### <a name="browse-the-hdinsight-cluster"></a>Tallózás a HDInsight-fürtben  
 
@@ -393,11 +393,11 @@ Amikor feladatot küld egy HDInsight-fürtbe, a rendszer kéri, hogy kapcsolja �
 
 ### <a name="browse-a-data-lake-storage-gen2-account"></a>Böngésszen egy Data Lake Storage Gen2 fiókban
 
-Amikor kiválasztja az Azure HDInsight explorer t egy Data Lake Storage Gen2-fiók bővítéséhez, a rendszer kéri, hogy adja meg a storage-hozzáférési kulcsot, ha az Azure-fiókja nem fér hozzá a Gen2-tárhoz. A hozzáférési kulcs ellenőrzése után a Data Lake Storage Gen2 fiók automatikusan ki van bontva.
+Válassza ki az Azure HDInsight explorer t a Data Lake Storage Gen2 fiók bővítéséhez. A rendszer kéri, hogy adja meg a storage-hozzáférési kulcsot, ha az Azure-fiók nem fér hozzá a Gen2 storage. A hozzáférési kulcs ellenőrzése után a Data Lake Storage Gen2 fiók automatikusan ki van bontva.
 
 ### <a name="submit-jobs-to-an-hdinsight-cluster-with-data-lake-storage-gen2"></a>Feladatok küldése HDInsight-fürtbe a Data Lake Storage Gen2 szolgáltatással
 
-Amikor a Data Lake Storage Gen2 használatával küld el egy feladatot egy HDInsight-fürtnek, a rendszer kéri, hogy adja meg a storage-hozzáférési kulcsot, ha az Azure-fiókja nem rendelkezik írási hozzáféréssel a Gen2-tárhoz. A hozzáférési kulcs érvényesítése után a feladat sikeresen elküldésre kerül.
+Feladat küldése egy HDInsight-fürtbe a Data Lake Storage Gen2 használatával. A rendszer kéri, hogy adja meg a storage-hozzáférési kulcsot, ha az Azure-fiók nem rendelkezik írási hozzáféréssel a Gen2 storage.You're prompted to enter the storage access key if your Azure account has no write access to Gen2 storage. A hozzáférési kulcs érvényesítése után a feladat sikeresen elküldésre kerül.
 
 ![Spark & Hive-eszközök a Visual Studio kódhozzáférési kulcsához](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-accesskey.png)
 

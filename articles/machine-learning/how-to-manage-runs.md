@@ -11,12 +11,12 @@ author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 01/09/2020
-ms.openlocfilehash: 8c261a010a1e8f4d1be9b3883510eb38c37a15ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1b70aaef49cc2b993c873509dc935d71069efa2
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80296867"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985915"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>A Pythonban futó betanítási futtatások indítása, figyelése és megszakítása
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -264,16 +264,41 @@ Ha sok gyermekfuttatást szeretne [`create_children()`](https://docs.microsoft.c
 
 ### <a name="submit-child-runs"></a>Gyermekfuttatások beküldése
 
-A gyermekfuttatások szülőfuttatásból is elküldhetők. Ez lehetővé teszi a szülő- és gyermekfuttatások hierarchiáit, amelyek mindegyike különböző számítási célokon fut, és közös szülőfuttatási azonosítóval csatlakozik.
+A gyermekfuttatások szülőfuttatásból is elküldhetők. Ez lehetővé teszi a szülő- és gyermekfuttatások hierarchiáinak létrehozását. 
 
-A ["submit_child()"](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-config--tags-none----kwargs-) metódussal küldje el a gyermek futtatását egy szülőfuttatáson belülről. Ehhez a szülő futtatási parancsfájl, get a futtatási környezetben, és küldje el a gyermek fut a metódus használatával a ``submit_child`` környezeti példány.
+Előfordulhat, hogy szeretné, hogy a gyermek fut, hogy egy másik futtatási konfiguráció, mint a szülő fut. Előfordulhat például, hogy a szülő számára kevésbé hatékony, CPU-alapú konfigurációt használ, miközben GPU-alapú konfigurációkat használ a gyermekek számára. Egy másik közös vágy, hogy minden gyermek különböző érveket és adatokat ad át. A gyermekfuttatás testreszabásához `RunConfiguration` adja át az `ScriptRunConfig` objektumot a gyermek konstruktorának. Ez a példa kódpélda, amely `ScriptRunConfig` a szülőobjektum parancsfájljának része:
+
+- Elnevezett `RunConfiguration` számítási erőforrás beolvasásának létrehozása`"gpu-compute"`
+- A gyermekek `ScriptRunConfig` objektumainak átadandó különböző argumentumértékekre térle
+- Új gyermekfuttatást hoz létre és küld be az egyéni számítási erőforrás és argumentum használatával
+- Blokkok, amíg az összes gyermek fut teljes
 
 ```python
-## In parent run script
-parent_run = Run.get_context()
-child_run_config = ScriptRunConfig(source_directory='.', script='child_script.py')
-parent_run.submit_child(child_run_config)
+# parent.py
+# This script controls the launching of child scripts
+from azureml.core import Run, ScriptRunConfig, RunConfiguration
+
+run_config_for_aml_compute = RunConfiguration()
+run_config_for_aml_compute.target = "gpu-compute"
+run_config_for_aml_compute.environment.docker.enabled = True 
+
+run = Run.get_context()
+
+child_args = ['Apple', 'Banana', 'Orange']
+for arg in child_args: 
+    run.log('Status', f'Launching {arg}')
+    child_config = ScriptRunConfig(source_directory=".", script='child.py', arguments=['--fruit', arg], run_config = run_config_for_aml_compute)
+    # Starts the run asynchronously
+    run.submit_child(child_config)
+
+# Experiment will "complete" successfully at this point. 
+# Instead of returning immediately, block until child runs complete
+
+for child in run.get_children():
+    child.wait_for_completion()
 ```
+
+Ha sok azonos konfigurációval, argumentummal és bemenettel rendelkező [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#create-children-count-none--tag-key-none--tag-values-none-) gyermekfuttatást szeretne létrehozni, használja a módszert. Mivel minden létrehozás hálózati hívást eredményez, a futtatási köteg létrehozása hatékonyabb, mint egyenként létrehozni őket.
 
 Egy gyermekfuttatáson belül megtekintheti a szülőfuttatás azonosítója:
 

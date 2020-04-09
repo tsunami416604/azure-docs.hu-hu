@@ -11,21 +11,26 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/02/2019
+ms.date: 03/16/2020
 ms.author: rogirdh
-ms.openlocfilehash: 0e2e16ccc04ff6df80597d646a00c40551e4cfd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd0b8a50d25cd8d1a66a8eb98e54ec231aa2c62f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78302049"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878714"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Közvetlen kapcsolat beállítása az Azure és az Oracle Cloud Infrastructure között  
 
-Az [integrált többfelhős élmény](oracle-oci-overview.md) (előzetes verzió) létrehozásához a Microsoft és az Oracle közvetlen kapcsolatot kínál az Azure és az Oracle Cloud Infrastructure (OCI) között az [ExpressRoute](../../../expressroute/expressroute-introduction.md) és a [FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm)segítségével. Az ExpressRoute és a FastConnect összekapcsoláson keresztül az ügyfelek alacsony késleltetést, nagy átviteli sebességű, privát közvetlen kapcsolatot tapasztalhatnak a két felhő között.
+Az [integrált többfelhős élmény](oracle-oci-overview.md)létrehozásához a Microsoft és az Oracle közvetlen kapcsolatot kínál az Azure és az Oracle Cloud Infrastructure (OCI) között az [ExpressRoute](../../../expressroute/expressroute-introduction.md) és a [FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm)segítségével. Az ExpressRoute és a FastConnect összekapcsoláson keresztül az ügyfelek alacsony késleltetést, nagy átviteli sebességű, privát közvetlen kapcsolatot tapasztalhatnak a két felhő között.
 
 > [!IMPORTANT]
-> A Microsoft Azure és az OCI közötti kapcsolat az előzetes verzióban van. Az Azure és az OCI közötti alacsony késésű kapcsolat létrehozásához az Azure-előfizetést először engedélyezni kell ehhez a funkcióhoz. A rövid felmérési űrlap kitöltésével be kell iratkoznia az előzetes [verzióra.](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu) Az előfizetés regisztrációja után egy e-mailt fog kapni. Nem tudja használni a funkciót, amíg nem kap egy visszaigazoló e-mailt. Az előzetes verzió engedélyezéséhez forduljon a Microsoft képviselőjéhez is. Az előzetes verzióhoz való hozzáférés a rendelkezésre állás függvénye, és a Microsoft saját belátása szerint korlátozza. A felmérés befejezése nem garantálja a hozzáférést. Ez az előzetes verzió szolgáltatásiszint-szerződés nélkül érhető el, és nem használható éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. A [részleteket](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) a Microsoft Azure előzetes verziók kiegészítő használati feltételei ben találja. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
+> Az Oracle tanúsítja, hogy ezek az alkalmazások 2020 májusig futnak az Azure/Oracle Cloud interconnect megoldás használatával.
+> * E-Business lakosztály
+> * JD Edwards Vállalat
+> * Peoplesoft
+> * Oracle kiskereskedelmi alkalmazások
+> * Oracle Hyperion pénzügyi menedzsment
 
 Az alábbi képen az összekapcsolás magas szintű áttekintése látható:
 
@@ -36,8 +41,6 @@ Az alábbi képen az összekapcsolás magas szintű áttekintése látható:
 * Az Azure és az OCI közötti kapcsolat létrehozásához aktív Azure-előfizetéssel és aktív OCI-bérleti díjral kell rendelkeznie.
 
 * A kapcsolat csak akkor lehetséges, ha egy Azure ExpressRoute-társviszony-létesítési hely az OCI FastConnect közelében vagy ugyanazon a társviszony-létesítési helyen található. Lásd: [A régió elérhetősége](oracle-oci-overview.md#region-availability).
-
-* Ehhez az előzetes verzióhoz engedélyezni kell az Azure-előfizetést.
 
 ## <a name="configure-direct-connectivity-between-expressroute-and-fastconnect"></a>Közvetlen kapcsolat konfigurálása az ExpressRoute és a FastConnect között
 

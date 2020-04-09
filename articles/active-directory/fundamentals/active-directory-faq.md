@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eb0b5e37843413667e51112f52e6a69534e3425
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f4a961e601949689db89f8819f0a1fe1c5a7b3a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77063628"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875792"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Gyakori kérdések az Azure Active Directoryval kapcsolatban
 Az Azure Active Directory (Azure AD) egy átfogó szolgáltatott identitási (IDaaS) megoldás, amely az identitások, a hozzáférés-kezelés és a biztonság minden szempontját lefedi.
@@ -27,16 +27,17 @@ További információkért lásd: [Mi az az Azure Active Directory?](active-dire
 
 
 ## <a name="access-azure-and-azure-active-directory"></a>Az Azure és az Azure Active Directory elérése
-**K: Miért kapok „Nem találhatók előfizetések” üzenetet, amikor megpróbálom elérni az Azure AD-t az Azure Portalon?**
+**K: Miért kap "Nem található előfizetések" amikor megpróbálom elérni az Azure AD az Azure Portalon?**
 
-**V:** Az Azure Portal eléréséhez mindegyik felhasználónak engedélyekre van szüksége egy Azure-előfizetés keretében. Ha fizetős Office 365-előfizetéssel vagy Azure [https://aka.ms/accessAAD](https://aka.ms/accessAAD) AD-előfizetéssel rendelkezik, nyissa meg az egyszeri aktiválási lépést. Egyébként aktiválnia kell egy ingyenes [Azure-fiókot](https://azure.microsoft.com/pricing/free-trial/) vagy egy fizetős előfizetést.
+**V:** Az Azure Portal eléréséhez mindegyik felhasználónak engedélyekre van szüksége egy Azure-előfizetés keretében. Ha nem rendelkezik fizetős Office 365-előfizetéssel vagy Azure AD-előfizetéssel, aktiválnia kell egy ingyenes [Azure-fiókot](https://azure.microsoft.com/free/
+) vagy egy fizetős előfizetést.
 
 További információkért lásd:
 
 * [How Azure subscriptions are associated with Active Directory? (Hogyan kapcsolódnak az Azure-előfizetések az Azure Active Directory-hoz?)](active-directory-how-subscriptions-associated-directory.md)
 
 ---
-**K: Milyen kapcsolat áll fenn az Azure AD, az Office 365 és az Azure között?**
+**K: Milyen kapcsolat van az Azure AD, az Office 365 és az Azure között?**
 
 **V:** Az Azure AD általános identitás- és hozzáférési képességeket nyújt az összes webes szolgáltatáshoz. Akár az Office 365, a Microsoft Azure, az Intune vagy más rendszert használ, már használja az Azure AD-t a bejelentkezés és a hozzáférés-kezelés bekapcsolásához ezen szolgáltatások mindegyikéhez.
 
@@ -138,9 +139,9 @@ Azure AD-felhasználók esetében a rendszergazdák a következő módszerek val
 
 A fiókok zárolásához ennél kifinomultabb stratégiát alkalmazunk.  A zárolás a kérés IP-címe és a megadott jelszavak alapján történik. A zárolás időtartama annál hosszabb, minél inkább valószínűsíthető, hogy támadásról van szó.  
 
-**K: Egyes (gyakori) jelszavakat a rendszer „ezt a jelszót már túl sokszor használták” üzenettel dob vissza. Igaz ez az aktuális Active Directory-környezetben használt jelszavakra is?**
+**K: Bizonyos (gyakori) jelszavakat elutasítanak a "ezt a jelszót már sokszor használták", ez az aktuális active directoryban használt jelszavakra vonatkozik?**
 
-Ez a visszautasítás a világszerte gyakran használt jelszavakra, például a „Jelszó” (Password) és a „123456” karakterláncok különböző változataira vonatkozik.
+Ez olyan jelszavakra vonatkozik, amelyek globálisan gyakoriak, például a "Jelszó" és az "123456" bármely változatára.
 
 **K: Blokkolja a rendszer a kétes forrásokból (botnetek, TOR-végpontok) érkező bejelentkezési kéréseket a B2C-bérlőkön, vagy ehhez alap- vagy prémium szintű bérlőre van szükség?**
 
@@ -157,7 +158,7 @@ Az előre integrált alkalmazások teljes listájáért lásd: [Active Directory
 ---
 **K: Mit tegyek, ha a kívánt alkalmazás nem szerepel az Azure AD Marketplace-en?**
 
-**V:** Az Azure AD Premiumban bármely alkalmazást felveheti és konfigurálhatja. Az alkalmazás képességeitől és a beállításaitól függően konfigurálhat egyszeri bejelentkezést és automatikus üzembe helyezést.  
+**V:** Az Azure AD Premiumban bármely alkalmazást felveheti és konfigurálhatja. Az alkalmazás képességeitől és a beállításoktól függően konfigurálhatja az SSO-t és az automatikus kiépítést.  
 
 További információkért lásd:
 
@@ -188,7 +189,7 @@ További információkért lásd:
 * [Egyszeri bejelentkezés az Azure AD-ben](../manage-apps/what-is-single-sign-on.md)
 
 ---
-**K: Felvehetek helyszínen futtatott alkalmazásokat?**
+**K: Hozzáadhatok helyszíni alkalmazásokat?**
 
 **V:** Az Azure AD-alkalmazásproxy egyszerű és biztonságos hozzáférést nyújt az Ön által választott helyszíni webalkalmazásokhoz. Ezeket az alkalmazásokat ugyanúgy érheti el, ahogyan a szolgáltatott szoftverek (SaaS) alkalmazásokat az Azure AD-ben. Nincs szükség VPN-re vagy a hálózati infrastruktúra módosítására.  
 
@@ -199,7 +200,7 @@ További információért lásd: [Helyszíni alkalmazások biztonságos távoli 
 
 **A.** Az Azure AD feltételes hozzáféréssel minden alkalmazáshoz egyedi hozzáférési szabályzatot rendelhet hozzá. A házirendjében mindig megkövetelheti a többtényezős hitelesítést, vagy csak akkor, amikor a felhasználók nem csatlakoznak a helyi hálózathoz.  
 
-További információkért lásd: [Az Office 365 és az Azure Active Directoryhoz csatlakoztatott egyéb alkalmazások hozzáférésének biztonságossá tétele](../active-directory-conditional-access-azure-portal.md).
+További információkért lásd: [Az Office 365 és az Azure Active Directoryhoz csatlakoztatott egyéb alkalmazások hozzáférésének biztonságossá tétele](../conditional-access/overview.md).
 
 ---
 **K: Mi az automatikus felhasználói kiépítés az SaaS-alkalmazásokhoz?**
@@ -211,4 +212,4 @@ További információ: [A felhasználókiépítés és -megszüntetés automatiz
 ---
 **K: Állíthatok be biztonságos LDAP-kapcsolatot az Azure AD-vel?**
 
-**A.**  nem. Az Azure AD nem támogatja közvetlenül a Lightweight Directory Access Protocol (LDAP) protokollt vagy a Biztonságos LDAP protokollt. Azonban lehetőség van az Azure AD Tartományi szolgáltatások (Azure AD DS) példányának engedélyezésére az Azure AD-bérlőn, megfelelően konfigurált hálózati biztonsági csoportokkal az Azure Networkingen keresztül az LDAP-kapcsolat eléréséhez. További információ: https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.
+**A.**  nem. Az Azure AD nem támogatja közvetlenül a Lightweight Directory Access Protocol (LDAP) protokollt vagy a Biztonságos LDAP protokollt. Azonban lehetőség van az Azure AD Tartományi szolgáltatások (Azure AD DS) példányának engedélyezésére az Azure AD-bérlőn, megfelelően konfigurált hálózati biztonsági csoportokkal az Azure Networkingen keresztül az LDAP-kapcsolat eléréséhez. További információ: [Biztonságos LDAP konfigurálása Egy Azure Active Directory tartományi szolgáltatások felügyelt tartományához](../../active-directory-domain-services/tutorial-configure-ldaps.md)

@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/18/2020
+ms.date: 04/07/2020
 ms.author: juliako
-ms.openlocfilehash: 11123ee04dd02a60dff0b88e2e6e85fcd613a7d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a4f4bd6eaa07907dd672abe068b515b5127adac9
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80068009"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886823"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>A Media Services v3-as kérdése
 
@@ -166,6 +166,112 @@ További információt az [Áttelepítés a Media Services 3-as v3-as című té
 ### <a name="where-did-client-side-storage-encryption-go"></a>Hová került az ügyféloldali tárolótitkosítás?
 
 Most már ajánlott a kiszolgálóoldali tárolótitkosítás használata (amely alapértelmezés szerint be van kapcsolva). További információ: [Azure Storage Service Encryption for Data at In.](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
+
+## <a name="offline-streaming"></a>Offline adatfolyam
+
+### <a name="fairplay-streaming-for-ios"></a>FairPlay streaming iOS-hez
+
+A következő gyakori kérdések segítséget nyújtanak az offline FairPlay streamelési hibaelhárításhoz iOS rendszeren:
+
+#### <a name="why-does-only-audio-play-but-not-video-during-offline-mode"></a>Miért csak a hang játszható le, de a videó offline módban nem?
+
+Ez a viselkedés úgy tűnik, hogy a mintaalkalmazás kialakítása. Ha offline módban egy másik hangsáv is jelen van (ez a HLS esetében is előfordul), akkor az iOS 10 és az iOS 11 alapértelmezés szerint az alternatív hangsávra van. Az FPS offline mód dalának kompenzálása érdekében távolítsa el az alternatív hangsávot az adatfolyamból. Ehhez a Media Services, adja hozzá a dinamikus jegyzékfájl szűrő "audio-only=false." Más szóval a HLS URL-címe .ism/manifest(format=m3u8-aapl,audio-only=false) végződik. 
+
+#### <a name="why-does-it-still-play-audio-only-without-video-during-offline-mode-after-i-add-audio-onlyfalse"></a>Miért csak videó nélkül játssza le a hangot offline módban, miután hozzáadtam a csak hang=hamis hangot?
+
+A tartalomkézbesítési hálózat (CDN) gyorsítótárkulcs-kialakításától függően előfordulhat, hogy a tartalom gyorsítótárba kerül. A gyorsítótár kiürítése.
+
+#### <a name="is-fps-offline-mode-also-supported-on-ios-11-in-addition-to-ios-10"></a>Az FPS offline mód az iOS 11-en is támogatott az iOS 10 mellett?
+
+Igen. Az FPS offline mód támogatott az iOS 10 és az iOS 11 rendszerben.
+
+#### <a name="why-cant-i-find-the-document-offline-playback-with-fairplay-streaming-and-http-live-streaming-in-the-fps-server-sdk"></a>Miért nem találom az "Offline lejátszás FairPlay streameléssel és HTTP Live Streaming tel" dokumentumot az FPS Server SDK-ban?
+
+Az FPS Server SDK 4-es verziója óta ez a dokumentum beolvadt a "FairPlay Streaming Programming Guide"-ba.
+
+#### <a name="what-is-the-downloadedoffline-file-structure-on-ios-devices"></a>Mi a letöltött/offline fájlstruktúra az iOS-eszközökön?
+
+Az iOS-eszközön letöltött fájlstruktúra a következő képernyőképhez hasonlóan néz ki. A `_keys` mappa tárolja a letöltött FPS-licenceket, minden licencszolgáltatás-állomáshoz egy tárolófájltartozik. A `.movpkg` mappa hang- és videotartalmat tárol. Az első olyan mappa, amelynek neve kötőjellel végződik, majd numerikus, videotartalmat tartalmaz. A numerikus érték a videointerpretációk PeakBandwidth értéke. A második mappa, amelynek neve kötőjellel végződik, majd 0-val, hangtartalmat tartalmaz. A harmadik mappa neve "Adatok" tartalmazza a fő lejátszási listát az FPS tartalmat. Végül a boot.xml fájl teljes `.movpkg` körű leírást ad a mappa tartalmáról. 
+
+![Offline FairPlay iOS mintaalkalmazásfájl-struktúra](media/offline-fairplay-for-ios/offline-fairplay-file-structure.png)
+
+Mintaboot.xml fájl:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<HLSMoviePackage xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://apple.com/IMG/Schemas/HLSMoviePackage" xsi:schemaLocation="http://apple.com/IMG/Schemas/HLSMoviePackage /System/Library/Schemas/HLSMoviePackage.xsd">
+  <Version>1.0</Version>
+  <HLSMoviePackageType>PersistedStore</HLSMoviePackageType>
+  <Streams>
+    <Stream ID="1-4DTFY3A3VDRCNZ53YZ3RJ2NPG2AJHNBD-0" Path="1-4DTFY3A3VDRCNZ53YZ3RJ2NPG2AJHNBD-0" NetworkURL="https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/QualityLevels(127000)/Manifest(aac_eng_2_127,format=m3u8-aapl)">
+      <Complete>YES</Complete>
+    </Stream>
+    <Stream ID="0-HC6H5GWC5IU62P4VHE7NWNGO2SZGPKUJ-310656" Path="0-HC6H5GWC5IU62P4VHE7NWNGO2SZGPKUJ-310656" NetworkURL="https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/QualityLevels(161000)/Manifest(video,format=m3u8-aapl)">
+      <Complete>YES</Complete>
+    </Stream>
+  </Streams>
+  <MasterPlaylist>
+    <NetworkURL>https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/manifest(format=m3u8-aapl,audio-only=false)</NetworkURL>
+  </MasterPlaylist>
+  <DataItems Directory="Data">
+    <DataItem>
+      <ID>CB50F631-8227-477A-BCEC-365BBF12BCC0</ID>
+      <Category>Playlist</Category>
+      <Name>master.m3u8</Name>
+      <DataPath>Playlist-master.m3u8-CB50F631-8227-477A-BCEC-365BBF12BCC0.data</DataPath>
+      <Role>Master</Role>
+    </DataItem>
+  </DataItems>
+</HLSMoviePackage>
+```
+
+### <a name="widevine-streaming-for-android"></a>Widevine streaming Androidra
+
+#### <a name="how-can-i-deliver-persistent-licenses-offline-enabled-for-some-clientsusers-and-non-persistent-licenses-offline-disabled-for-others-do-i-have-to-duplicate-the-content-and-use-separate-content-key"></a>Hogyan szállíthatok állandó licenceket (offline módban) egyes ügyfelek/felhasználók és nem állandó licencek (offline-letiltva) mások számára? Meg kell kettőznem a tartalmat, és külön tartalomkulcsot kell használnom?
+
+Mivel a Media Services v3 lehetővé teszi, hogy egy eszköz több StreamingLocators. Lehet, hogy
+
+* One ContentKeyPolicy with license_type = "persistent", ContentKeyPolicyRestriction az "állandó" jogcímekkel és a StreamingLocator;
+* Egy másik ContentKeyPolicy license_type="nonpersistent", ContentKeyPolicyRestriction a "nonpersistent" jogcímekkel, és a StreamingLocator.
+* A két StreamingLocators különböző ContentKey rendelkezik.
+
+Az egyéni STS üzleti logikájától függően a JWT-jogkivonat ban különböző jogcímek kerülnek kiadásra. A jogkivonattal csak a megfelelő licenc szerezhető be, és csak a megfelelő URL-cím játszható le.
+
+#### <a name="what-is-the-mapping-between-the-widevine-and-media-services-drm-security-levels"></a>Mi a Widevine és a Media Services DRM biztonsági szintjei közötti leképezés?
+
+A Google "Widevine DRM Architecture Overview" című szolgáltatása három különböző biztonsági szintet határoz meg. Azonban az [Azure Media Services dokumentációjában a Widevine licencsablonöt](widevine-license-template-overview.md)ismertetett öt különböző biztonsági szint van körvonalazva. Ez a szakasz bemutatja, hogyan térképezik le a biztonsági szinteket.
+
+A Google "Widevine DRM Architecture Review" dokumentuma a következő három biztonsági szintet határozza meg:
+
+* 1. biztonsági szint: Minden tartalomfeldolgozás, kriptográfia és vezérlő a megbízható végrehajtási környezetben (TEE) történik. Egyes implementációs modellekben a biztonsági feldolgozás különböző chipekben végezhető.
+* 2. biztonsági szint: Titkosítást hajt végre (de nem videofeldolgozást) a TEE-n belül: a visszafejtett pufferek visszakerülnek az alkalmazástartományba, és külön videohardveren vagy -szoftveren keresztül kerülnek feldolgozásra. szinten azonban a kriptográfiai információk feldolgozása még mindig csak a TEE-n belül történik.
+* A 3-as biztonsági szint nem rendelkezik TEE-vel az eszközön. Megfelelő intézkedéseket lehet tenni a gazdaoperációs rendszeren található kriptográfiai információk és visszafejtett tartalom védelmére. A Level 3 implementáció tartalmazhat hardveres kriptográfiai motort is, de ez csak növeli a teljesítményt, a biztonságot nem.
+
+Ugyanakkor a [Widevine licencsablon Azure Media Services dokumentációjában](widevine-license-template-overview.md)a content_key_specs security_level tulajdonsága a következő öt különböző értékkel rendelkezhet (a lejátszáshoz szükséges ügyfélrobusztussági követelmények):
+
+* Szoftveralapú fehér doboz osszes titkosítás szükséges.
+* Szoftver es és egy homályos dekóder szükséges.
+* A kulcsanyag- és titkosítási műveleteket egy hardveres pólón belül kell végrehajtani.
+* A tartalom titkosítását és dekódolását egy hardveres pólón belül kell elvégezni.
+* A titkosítást, a dekódolást és az adathordozók (tömörített és tömörítetlen) minden kezelését egy hardveres TEE-n belül kell kezelni.
+
+Mindkét biztonsági szintet a Google Widevine határozza meg. A különbség a használati szint: architektúra szint vagy API-szint. Az öt biztonsági szint a Widevine API-ban használatos. A content_key_specs objektum, amely security_level tartalmazza, deszerializált, és átadta a Widevine globális kézbesítési szolgáltatás az Azure Media Services Widevine licencszolgáltatás. Az alábbi táblázat a két biztonsági szint csoport közötti leképezést mutatja.
+
+| **A Widevine architektúrában meghatározott biztonsági szintek** |**A Widevine API-ban használt biztonsági szintek**|
+|---|---| 
+| **1. biztonsági szint:** Minden tartalomfeldolgozás, kriptográfia és vezérlés a megbízható végrehajtási környezetben (TEE) történik. Egyes implementációs modellekben a biztonsági feldolgozás különböző chipekben végezhető.|**security_level=5**: Az adathordozók titkosítását, dekódolását és minden kezelését (tömörített és tömörítetlen) egy hardverrel támogatott TEE-n belül kell kezelni.<br/><br/>**security_level=4**: A tartalom titkosítását és dekódolását egy hardveres PÓLÓ-alapú területen kell elvégezni.|
+**2. biztonsági szint:** Titkosítást végez (de nem videofeldolgozást) a TEE-n belül: a visszafejtett pufferek visszakerülnek az alkalmazástartományba, és külön videohardveren vagy -szoftveren keresztül kerülnek feldolgozásra. szinten azonban a kriptográfiai információk feldolgozása még mindig csak a TEE-n belül történik.| **security_level=3**: A kulcsanyag- és titkosítási műveleteket egy hardveres PÓLÓ-n belül kell végrehajtani. |
+| **3. biztonsági szint:** Nincs TEE a készüléken. Megfelelő intézkedéseket lehet tenni a gazdaoperációs rendszeren található kriptográfiai információk és visszafejtett tartalom védelmére. A Level 3 implementáció tartalmazhat hardveres kriptográfiai motort is, de ez csak növeli a teljesítményt, a biztonságot nem. | **security_level=2**: Szoftveres kriptográfia és egy elbúzított dekóder szükséges.<br/><br/>**security_level=1**: Szoftveralapú fehérdobozos titkosítás szükséges.|
+
+#### <a name="why-does-content-download-take-so-long"></a>Miért tart ilyen sokáig a tartalom letöltése?
+
+A letöltési sebesség kétféleképpen javítható:
+
+* Engedélyezze a CDN-t, hogy a végfelhasználók nagyobb valószínűséggel nyomják meg a CDN-t az origin/streaming végpont helyett a tartalom letöltéséhez. Ha a felhasználó eléri a streamelési végpontot, minden HLS-szegmens vagy DASH-töredék dinamikusan van csomagolva és titkosítva. Annak ellenére, hogy ez a késés ezredmásodpercben van minden szegmens/töredék esetében, ha egy órás videóval rendelkezik, a felhalmozott késés nagy lehet, ami hosszabb letöltést okozhat.
+* Adja meg a végfelhasználóknak azt a lehetőséget, hogy az összes tartalom helyett szelektíven töltsék le a videominőségű rétegeket és hangsávokat. Offline módban nincs értelme letölteni az összes minőségi réteget. Ezt kétféleképpen lehet elérni:
+
+   * Ügyfél által vezérelt: vagy a lejátszó alkalmazás automatikusan kiválasztja, vagy a felhasználó kiválasztja a videó minőségű réteget és a letöltandó hangsávokat;
+   * Szolgáltatás vezérelt: az Azure Media Services dinamikus jegyzékfájl-szolgáltatásával létrehozhat egy (globális) szűrőt, amely a HLS-lejátszási listát vagy a DASH MPD-t egyetlen videominőségi rétegre és a kiválasztott hangsávokra korlátozza. Ezután a végfelhasználóknak bemutatott letöltési URL-cím tartalmazza ezt a szűrőt.
 
 ## <a name="next-steps"></a>További lépések
 

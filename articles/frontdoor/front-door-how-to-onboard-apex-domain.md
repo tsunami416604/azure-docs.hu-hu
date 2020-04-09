@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: article
 ms.date: 5/21/2019
 ms.author: sharadag
-ms.openlocfilehash: bb1042e15d4366923174996388eeb2fb99aef429
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b74338f22a82d76ef13126ee0862b841bd89a99
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74184616"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878884"
 ---
 # <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Gyökér- vagy csúcstartomány alaplapja a bejárati ajtón
 Az Azure Front Door CNAME rekordok használatával ellenőrzi a tartomány tulajdonjogát az egyéni tartományok bevezetéséhez. A Bejárati ajtó nem teszi elérhetővé az előtér-profilhoz társított előtér-IP-címet, így nem tudja leképezni a csúcstartományt egy IP-címre, ha az a szándék, hogy az Azure Front Door-ra vegye fel.
@@ -26,7 +26,7 @@ A csúcs- vagy gyökértartomány hozzárendelése a Bejárati ajtó profiljáho
 > [!NOTE]
 > Vannak más DNS-szolgáltatók is, amelyek támogatják a CNAME összeolvasztását vagy a DNS-üldözést, azonban az Azure Front Door azt javasolja, hogy az Azure DNS-t használják ügyfelei számára a tartományok üzemeltetéséhez.
 
-Az Azure Portal segítségével egy csúcstartományt a bejárati ajtaján, és https-t engedélyezhet rajta, társítva azt egy tanúsítványt az SSL-megszüntetéshez. Apex domainis nevezik root vagy meztelen domain.
+Az Azure Portal segítségével a bejárati ajtaján egy csúcstartományt hozhat létre, és https-t engedélyezhet rajta, ha a TLS-megszüntetési tanúsítványt társítja. Apex domainis nevezik root vagy meztelen domain.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -65,7 +65,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 2. A _"Saját tanúsítvány használata"_ lehetőséget válassza a **Tanúsítványkezelés típust.**
 
 > [!WARNING]
-> A Bejárati ajtó által felügyelt tanúsítványkezelési típus jelenleg nem támogatott a csúcs- vagy gyökértartományokban. Az egyetlen lehetőség, amely a HTTPS engedélyezése egy csúcs- vagy gyökértartomány ban bejárati ajtaját használja a saját egyéni SSL-tanúsítvány üzemelteti az Azure Key Vault.
+> A Bejárati ajtó által felügyelt tanúsítványkezelési típus jelenleg nem támogatott a csúcs- vagy gyökértartományokban. Az egyetlen lehetőség, amely a HTTPS engedélyezése egy csúcs- vagy gyökértartomány ban bejárati ajtaját a saját egyéni TLS/SSL tanúsítvány azure Key Vault üzemeltetett.
 
 3. Győződjön meg arról, hogy a következő lépés hez való továbblépés előtt győződjön meg arról, hogy rendelkezik a bejárati ajtó megfelelő engedélyekkel a felhasználói felületen jelzett kulcstároló eléréséhez.
 4. Válasszon egy **Key Vault-fiókot** az aktuális előfizetéséből, majd válassza ki a megfelelő **titkos** és **titkos verziót** a megfelelő tanúsítványhoz való hozzárendeléshez.

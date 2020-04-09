@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 09/12/2019
-ms.openlocfilehash: 9f115d51657993562642391a235de79420aa434a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ce88f9a61b8aa7c2588a6e077d694afa6fb8631
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73823377"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878850"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-database-managed-instance"></a>Virtuális hálózat létrehozása az Azure SQL Database felügyelt példányához
 
@@ -29,13 +29,13 @@ Az Azure SQL Database felügyelt példányát egy Azure [virtuális hálózaton]
 - Felügyelt példány csatlakoztatása csatolt kiszolgálóhoz vagy más helyszíni adattárhoz
 - Felügyelt példány csatlakoztatása Azure-erőforrásokhoz  
 
-> [!Note]
+> [!NOTE]
 > Az első példány telepítése előtt meg kell [határoznia a felügyelt példány alhálózatának méretét.](sql-database-managed-instance-determine-size-vnet-subnet.md) Az alhálózat nem méretezhető át, miután az erőforrásokat behelyezte.
 >
 > Ha meglévő virtuális hálózatot kíván használni, módosítania kell a hálózati konfigurációt a felügyelt példány nak megfelelően. További információt a [Felügyelt példány meglévő virtuális hálózatának módosítása című témakörben talál.](sql-database-managed-instance-configure-vnet-subnet.md)
 >
-> Felügyelt példány létrehozása után a felügyelt példány vagy virtuális hálózat áthelyezése egy másik erőforráscsoportba vagy előfizetésbe nem támogatott.
-
+> Felügyelt példány létrehozása után a felügyelt példány vagy virtuális hálózat áthelyezése egy másik erőforráscsoportba vagy előfizetésbe nem támogatott.  A felügyelt példány áthelyezése egy másik alhálózatba szintén nem támogatott.
+>
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 

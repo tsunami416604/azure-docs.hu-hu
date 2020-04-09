@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 8ebd8990a2fdd43b243f5dd6feb632d782fdeb0b
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 2e399c1a7b0f9bbc2aac375fe8af969a2b9e0e48
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632691"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877627"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>Apache Spark-feladatok futtatása Az AKS-en
 
@@ -293,7 +293,7 @@ Pi is roughly 3.152155760778804
 
 A fenti példában a Spark jar fájl feltöltve lett az Azure storage-ba. Egy másik lehetőség a jar fájl egyéni alapú Docker-lemezképekbe való csomagolása.
 
-Ehhez keresse meg `dockerfile` a `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/` címtárban található Spark-lemezképet. `ADD` Add am utasítást `jar` a `WORKDIR` Spark-feladat valahol a logárdák `ENTRYPOINT` között.
+Ehhez keresse meg `dockerfile` a `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/` címtárban található Spark-lemezképet. Adjon `ADD` hozzá egy utasítást a Spark-feladathoz `jar` valahol a `WORKDIR` `ENTRYPOINT` deklarációk között.
 
 Frissítse a jar elérési útját `SparkPi-assembly-0.1.0-SNAPSHOT.jar` a fájl helyére a fejlesztési rendszeren. Saját egyéni jar fájlt is használhat.
 

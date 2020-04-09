@@ -7,18 +7,18 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7e96f9484c103ebe75e21705b94cf35b9e16c54f
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: b51f7a8b62d7131b7bbfc77101e60fab22e1f148
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529341"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985796"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Azure Disk Encryption-forgatókönyvek Windows rendszerű virtuális gépekhez
 
-Az Azure Disk Encryption a BitLocker külső kulcsvédőt használja az Azure virtuális gépek operációs rendszerének és adatlemezeinek kötettitkosításához, és az Azure Key Vaultszolgáltatással integrálva van a lemeztitkosítási kulcsok és titkos kulcsok vezérléséhez és kezeléséhez. A szolgáltatás áttekintését az [Azure Lemeztitkosítás Windows-gépekhez című témakörben találja.](disk-encryption-overview.md)
+Az Azure Disk Encryption for Windows virtuális gépek (VM-ek) a Windows Bitlocker szolgáltatását használja a WindOS-lemez és az adatlemez teljes lemeztitkosításának biztosításához. Emellett biztosítja a rövid élettartamú erőforráslemez titkosítását, ha a VolumeType paraméter az Összes.
 
-Számos lemeztitkosítási forgatókönyv létezik, és a lépések a forgatókönyvtől függően változhatnak. A következő szakaszok részletesebben ismertetik a Windows virtuális gépek forgatókönyveit.
+Az Azure Disk Encryption integrálva van az [Azure Key Vaultszolgáltatással,](disk-encryption-key-vault.md) így szabályozhatja és kezelheti a lemeztitkosítási kulcsokat és titkos kulcsokat. A szolgáltatás áttekintését az [Azure Lemeztitkosítás Windows-gépekhez című témakörben találja.](disk-encryption-overview.md)
 
 Csak a [támogatott virtuális gépméretű és operációs rendszerű](disk-encryption-overview.md#supported-vms-and-operating-systems)virtuális gépekre alkalmazhat lemeztitkosítást. Az alábbi előfeltételeknek is meg kell felelnie:
 
@@ -39,9 +39,6 @@ Csak a [támogatott virtuális gépméretű és operációs rendszerű](disk-enc
 
 ## <a name="enable-encryption-on-an-existing-or-running-windows-vm"></a>Titkosítás engedélyezése meglévő vagy windowsos virtuális gépen
 Ebben az esetben engedélyezheti a titkosítást az Erőforrás-kezelő sablon, a PowerShell-parancsmagok vagy a CLI-parancsok használatával. Ha sémainformációkra van szüksége a virtuálisgép-bővítményhez, olvassa el az [Azure Disk Encryption for Windows extension](../extensions/azure-disk-enc-windows.md) cikket.
-
-## <a name="enable-encryption-on-existing-or-running-iaas-windows-vms"></a>Titkosítás engedélyezése meglévő vagy futó IaaS Windows virtuális gépeken
-A titkosítást sablon, PowerShell-parancsmag vagy CLI-parancs használatával engedélyezheti. Ha sémainformációkra van szüksége a virtuálisgép-bővítményhez, olvassa el az [Azure Disk Encryption for Windows extension](../extensions/azure-disk-enc-windows.md) cikket.
 
 ### <a name="enable-encryption-on-existing-or-running-vms-with-azure-powershell"></a>Titkosítás engedélyezése meglévő vagy futó virtuális gépeken az Azure PowerShell használatával 
 A [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) parancsmag használatával engedélyezze a titkosítást egy futó IaaS virtuális gépen az Azure-ban. 

@@ -3,12 +3,12 @@ title: Ismerje meg a virtuális gépek tartalmának naplózását
 description: Ismerje meg, hogy az Azure Policy hogyan használja a Vendég konfigurációs ügynököt a virtuális gépeken belüli beállítások naplózásához.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: cc2ba11f75da5f993b99c90e5d0cc1030003203e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 889e99e94b2c81a6654fcbe7851e93c40163a0c6
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257256"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985320"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure-szabályzat vendégkonfigurációjának megismerése
 
@@ -18,7 +18,7 @@ Az Azure-erőforrások naplózásán és [kijavításán](../how-to/remediate-re
 - Alkalmazás konfigurációja vagy jelenléte
 - Környezeti beállítások
 
-Az Azure Policy Vendégkonfiguráció jelenleg csak a gépen belüli beállításokat naplózza. Nem alkalmaz konfigurációkat.
+Jelenleg a legtöbb Azure-szabályzat vendégkonfigurációs szabályzata csak a számítógépen belüli naplózási beállításokat. Nem alkalmaznak konfigurációkat. A kivétel az [alábbiakban hivatkozott](#applying-configurations-using-guest-configuration)beépített házirend.
 
 ## <a name="extension-and-client"></a>Kiterjesztés és ügyfél
 
@@ -62,11 +62,12 @@ Az alábbi táblázat az egyes támogatott operációs rendszereken használt he
 |Operációs rendszer|Érvényesítési eszköz|Megjegyzések|
 |-|-|-|
 |Windows|[A Windows PowerShell kívánt állapotkonfigurációja](/powershell/scripting/dsc/overview/overview) v2| |
-|Linux|[Chef InSpec](https://www.chef.io/inspec/)| A Ruby és a Python a Vendég konfigurációbővítmény által van telepítve. |
+|Linux|[Chef InSpec](https://www.chef.io/inspec/)| Ha a Ruby és a Python nem a gépen, akkor a Vendég konfiguráció bővítmény telepíti őket. |
 
 ### <a name="validation-frequency"></a>Érvényesítési gyakoriság
 
-A Vendég konfigurációs ügyfél 5 percenként ellenőrzi az új tartalmat. A vendég-hozzárendelés fogadása után a beállításokat 15 perces időközönként ellenőrzi a rendszer. Az eredményeket a rendszer elküldi a vendégkonfigurációs erőforrás-szolgáltatónak, amint a naplózás befejeződik. Amikor egy [házirend-kiértékelési eseményindító](../how-to/get-compliance-data.md#evaluation-triggers) történik, a számítógép állapota a vendég konfigurációs erőforrás-szolgáltató. A frissítés hatására az Azure Policy kiértékeli az Azure Resource Manager tulajdonságait. Egy igény szerinti Azure-szabályzat kiértékelése lekéri a legújabb értéket a vendég konfigurációs erőforrás-szolgáltató. Azonban nem indítja el a konfiguráció új naplózását a gépen belül.
+A Vendég konfigurációs ügyfél 5 percenként ellenőrzi az új tartalmat. A vendég-hozzárendelés fogadása után a rendszer 15 perces időközönként újra ellenőrzi a konfiguráció beállításait.
+Az eredményeket a rendszer a folyamat befejezésekor küldi el a vendégkonfigurációerőforrás-szolgáltatónak. Amikor egy [házirend-kiértékelési eseményindító](../how-to/get-compliance-data.md#evaluation-triggers) történik, a számítógép állapota a vendég konfigurációs erőforrás-szolgáltató. A frissítés hatására az Azure Policy kiértékeli az Azure Resource Manager tulajdonságait. Egy igény szerinti Azure-szabályzat kiértékelése lekéri a legújabb értéket a vendég konfigurációs erőforrás-szolgáltató. Azonban nem indítja el a konfiguráció új naplózását a gépen belül.
 
 ## <a name="supported-client-types"></a>Támogatott ügyféltípusok
 
@@ -78,12 +79,9 @@ Az alábbi táblázat az Azure-lemezképek támogatott operációs rendszereinek
 |Credativ között|Debian|8, 9|
 |Microsoft|Windows Server|2012 Datacenter, 2012 R2 Datacenter, 2016 Datacenter, 2019 Datacenter|
 |Microsoft|Windows-ügyfél|Windows 10|
-|OpenLogic|CentOS|7.3, 7.4, 7.5|
-|Red Hat|Red Hat Enterprise Linux|7.4, 7.5, 7.6|
+|OpenLogic|CentOS|7.3, 7.4, 7.5, 7.6, 7.7|
+|Red Hat|Red Hat Enterprise Linux|7.4, 7.5, 7.6, 7.7|
 |Suse|SLES|12 SP3|
-
-> [!IMPORTANT]
-> A vendégkonfiguráció naplózhatja a támogatott operációs rendszert futtató csomópontokat. Ha egyéni lemezképet használó virtuális gépeket szeretne naplózni, meg kell kettőznie a **DeployIfNotExists** definíciót, és módosítania kell az **If** szakaszt a lemezkép tulajdonságainak felvételéhez.
 
 ### <a name="unsupported-client-types"></a>Nem támogatott ügyféltípusok
 
@@ -139,10 +137,6 @@ A vendégkonfigurációhoz elérhető naplózási házirendek közé tartozik a 
 ### <a name="multiple-assignments"></a>Több hozzárendelés
 
 Vendég konfigurációs házirendek jelenleg csak akkor támogatja, hogy ugyanazt a vendég-hozzárendelést egyszer egy gépen, akkor is, ha a házirend-hozzárendelés különböző paramétereket használ.
-
-## <a name="built-in-resource-modules"></a>Beépített erőforrásmodulok
-
-A Vendég konfigurációs bővítmény telepítésekor a "GuestConfiguration" PowerShell-modul a DSC-erőforrásmodulok legújabb verziója része. Ez a modul letölthető a PowerShell-galériából a "Kézi letöltés" linksegítségével a [GuestConfiguration](https://www.powershellgallery.com/packages/GuestConfiguration/)modullapról. A '.nupkg' fájlformátum átnevezhető ".zip" névre, hogy kibontsa és felültekintse.
 
 ## <a name="client-log-files"></a>Ügyfélnapló-fájlok
 

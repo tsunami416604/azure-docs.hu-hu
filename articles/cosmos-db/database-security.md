@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mjbrown
-ms.openlocfilehash: 345fc329df1c57cab7dd66c609bf3701fa3a6124
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: c92f045f2c8d4443d596697596363bda3d0df975
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619134"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985286"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Biztonság az Azure Cosmos DB-ben – Áttekintés
 
@@ -23,7 +23,7 @@ Az inaktív titkosítás már elérhető az Azure Cosmos DB-ben tárolt dokument
 
 ## <a name="how-do-i-secure-my-database"></a>Hogyan biztosíthatom az adatbázisomat?
 
-Az adatbiztonság megosztott felelősség Ön, az ügyfél és az adatbázis-szolgáltató között. A választott adatbázis-szolgáltatótól függően a felelősség mértéke eltérő lehet. Ha helyszíni megoldást választ, a végpontvédelemtől kezdve a hardver fizikai biztonságáig mindent meg kell adnia , ami nem könnyű feladat. Ha egy PaaS-felhő-adatbázis-szolgáltatót, például az Azure Cosmos DB-t választja, az aggodalomra okot adó terület jelentősen csökken. Az alábbi kép, amely a Microsoft [megosztott felelősségei a felhőalapú számítástechnikával](https://aka.ms/sharedresponsibility) kapcsolatos tanulmányából származik, bemutatja, hogyan csökken a felelőssége egy PaaS-szolgáltatóval, például az Azure Cosmos DB-vel.
+Az adatbiztonság megosztott felelősség Ön, az ügyfél és az adatbázis-szolgáltató között. A választott adatbázis-szolgáltatótól függően a felelősség mértéke eltérő lehet. Ha helyszíni megoldást választ, a végpontvédelemtől kezdve a hardver fizikai biztonságáig mindent meg kell adnia , ami nem könnyű feladat. Ha egy PaaS-felhő-adatbázis-szolgáltatót, például az Azure Cosmos DB-t választja, az aggodalomra okot adó terület jelentősen csökken. Az alábbi kép, amely a Microsoft [megosztott felelősségei a felhőalapú számítástechnikával](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91) kapcsolatos tanulmányából származik, bemutatja, hogyan csökken a felelőssége egy PaaS-szolgáltatóval, például az Azure Cosmos DB-vel.
 
 ![Az ügyfél- és adatbázis-szolgáltató felelőssége](./media/database-security/nosql-database-security-responsibilities.png)
 
@@ -70,7 +70,7 @@ Nézzük vissza az előző listát – hány ilyen biztonsági követelményeket
 |Törölt adatok visszaállítása|Az automatikus online biztonsági mentések segítségével helyreállíthatja azokat az adatokat, amelyeket véletlenül az esemény után akár ~ 30 nappal törölt. <br><br>További információ az [Automatikus online biztonsági mentés és visszaállítás az Azure Cosmos DB-vel](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)|
 |Érzékeny adatok védelme és elkülönítése|Az Összes adat a régiókban felsorolt Újdonságok? most már titkosítva van.<br><br>A személyes adatok és egyéb bizalmas adatok elkülöníthetők egy adott tárolóra és írásra és írásra, vagy az írásvédett hozzáférés csak meghatározott felhasználókra korlátozható.|
 |Támadások figyelése|A [naplózás és a tevékenységnaplók](logging.md)használatával figyelheti a fiókját a normál és rendellenes tevékenységekre. Megtekintheti, hogy milyen műveleteket hajtottak végre az erőforrásokon, ki kezdeményezte a műveletet, mikor történt a művelet, a művelet állapota, és még sok más, amint az a táblázatot követő képernyőképen látható.|
-|Reagálás a támadásokra|Miután kapcsolatba lépett az Azure-támogatással egy esetleges támadás bejelentéséhez, egy 5 lépéses incidens-reagálási folyamat elindul. Az 5 lépéses folyamat célja, hogy a probléma észlelése és a vizsgálat megkezdése után a lehető leggyorsabban helyreállítsa a normál szolgáltatásbiztonságot és műveleteket.<br><br>További információ a [Microsoft Azure biztonsági válasza a felhőben](https://aka.ms/securityresponsepaper)című részben.|
+|Reagálás a támadásokra|Miután kapcsolatba lépett az Azure-támogatással egy esetleges támadás bejelentéséhez, egy 5 lépéses incidens-reagálási folyamat elindul. Az 5 lépéses folyamat célja, hogy a probléma észlelése és a vizsgálat megkezdése után a lehető leggyorsabban helyreállítsa a normál szolgáltatásbiztonságot és műveleteket.<br><br>További információ a [Microsoft Azure biztonsági válasza a felhőben](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)című részben.|
 |Geo-kerítés|Az Azure Cosmos DB biztosítja a szuverén régiók (például Németország, Kína, USA-beli kormány) adatirányítását.|
 |Védett létesítmények|Az Azure Cosmos DB-ben tárolt adatok az Azure védett adatközpontjaiban található SSD-ken tárolódnak.<br><br>További információ a [Microsoft globális adatközpontjaiban](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)|
 |HTTPS/SSL/TLS titkosítás|Az Azure Cosmos DB összes kapcsolata támogatja a HTTPS protokollt. Az Azure Cosmos DB a TLS 1.2-t is támogatja.<br>Lehetőség van egy minimális TLS verziókiszolgálói oldal kényszerítésére. Ehhez vegye fel [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com)a kapcsolatot.|

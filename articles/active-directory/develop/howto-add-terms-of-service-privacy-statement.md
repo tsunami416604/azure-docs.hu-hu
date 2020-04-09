@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/22/2019
 ms.author: ryanwi
-ms.reviwer: lenalepa, sureshja
+ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 8fc85781f139b45e9e37f6e0f7cc36974041352d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40e7a05505bc501c1c622e627a6d97cc57db1cfa
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300009"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884239"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Útmutató: A szolgáltatási feltételek és az adatvédelmi nyilatkozat konfigurálása egy alkalmazáshoz
 
@@ -58,7 +58,7 @@ Ha a szolgáltatási feltételek és az adatvédelmi nyilatkozat készen áll, a
 ### <a name="using-the-azure-portal"></a><a name="azure-portal"></a>Az Azure Portal használata
 Kövesse az alábbi lépéseket az Azure Portalon.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Nyissa meg az **Alkalmazásregisztrációk szakaszt,** és válassza ki az alkalmazást.
 3. Nyissa meg a **Márkajelzés** ablaktáblát.
 4. Töltse ki a **Szolgáltatási feltételek URL-címét** és **az adatvédelmi nyilatkozat URL-mezőit.**

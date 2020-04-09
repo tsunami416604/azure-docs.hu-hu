@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: db886006ff5b9adf3de0932951f6cce4958e8ebd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 06225e284000d7f10f575be08cd683488abec339
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158129"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985490"
 ---
 # <a name="create-and-manage-multiple-dashboards"></a>Több irányítópult létrehozása és kezelése
 
-Az **irányítópult** az a lap, amely az alkalmazáshoz való első navigáláskor töltődik be. Az alkalmazás **egyik szerkesztője** határozza meg az összes felhasználó alapértelmezett alkalmazás-irányítópultját. Ezt az alapértelmezett irányítópultot lecserélheti a saját, személyre szabott alkalmazás-irányítópultjára. Több irányítópultja is lehet, amelyek különböző adatokat jelenítenek meg, és váltanak közöttük. 
+Az **irányítópult** az a lap, amely az alkalmazáshoz való első navigáláskor töltődik be. Az alkalmazás **egyik szerkesztője** határozza meg az összes felhasználó alapértelmezett alkalmazás-irányítópultját. Emellett létrehozhatja saját, személyre szabott alkalmazás-irányítópultját is. Több irányítópultja is lehet, amelyek különböző adatokat jelenítenek meg, és váltanak közöttük.
 
 Ha Ön az alkalmazás **rendszergazdája,** legfeljebb 10 alkalmazásszintű irányítópultot is létrehozhat, amelyeket megoszthat az alkalmazás többi felhasználójával. Csak **a rendszergazdák** hozhatnak létre, szerkeszthetik és törölhetik az alkalmazásszintű irányítópultokat. 
 

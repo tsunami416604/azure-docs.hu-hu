@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 9/23/2019
 ms.author: dsindona
-ms.openlocfilehash: 348633ffc91bc25a226b05743a18d2c87533a01d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2895944dea6417949488076186135680523e19db
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280643"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874959"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Az Azure-partnererőforrások ügyfelek általi használatának nyomon követése
 
@@ -232,7 +232,7 @@ foreach ($deployment in $deployments){
 
 ## <a name="report"></a>Jelentés
 
-A vevői használatra vonatkozó hozzárendelési jelentést a Partnerközpont elemzése irányítópulton találja. ([https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)). A jelentés megtekintéséhez a Partnerközpont hitelesítő adatait kell használnia a bejelentkezéshez. Ha bármilyen problémát tapasztal a jelentéssel vagy a bejelentkezéssel kapcsolatban, hozzon létre egy támogatási kérelmet a Támogatás kérése szakasz utasításait követve.
+A vevői használatra vonatkozó hozzárendelési jelentést a Partnerközpont[https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)irányítópultján ( találja meg). A jelentés megtekintéséhez a Partnerközpont hitelesítő adatait kell használnia a bejelentkezéshez. Ha bármilyen problémát tapasztal a jelentéssel vagy a bejelentkezéssel kapcsolatban, hozzon létre egy támogatási kérelmet a Támogatás kérése szakasz utasításait követve.
 
 A jelentés megtekintéséhez válassza a Kapcsolattípus legördülő listájában a Nyomon követett sablon lehetőséget.
 
@@ -267,7 +267,7 @@ Ha segítségre van szüksége a Marketplace-bevezetéshez és/vagy az ügyfelek
 1. Válaszd ki a problémád **kategóriáját:**
 
    - Használati társítási problémák esetén válassza az **Egyéb**lehetőséget.
-   - Az Azure Marketplace CPP-vel kapcsolatos hozzáférési problémák esetén válassza az **Access Problem (Hozzáférési probléma) lehetőséget.**
+   - Az Azure Piactérrel kapcsolatos hozzáférési problémák esetén válassza az **Access Problem (Hozzáférési probléma) lehetőséget.**
 
      ![A problémakategória kiválasztása](media/marketplace-publishers-guide/lu-article-incident.png)
 
@@ -315,7 +315,7 @@ Igen, az ügyfél vagy a megvalósítási partner testreszabhatja a sablont, és
 
 **Nyomon követhetem a nem microsoftos tárházból, például a GitHubról telepített sablonokat?**
 
-Igen, mindaddig, amíg a GUID jelen van a sablon telepítésekor, a használat nyomon követi. A partnereknek rendelkezniük kell egy profillal a CPP-ben az Azure Marketplace-en kívüli üzembe helyezéshez használt GUID-ok regisztrálásához.
+Igen, mindaddig, amíg a GUID jelen van a sablon telepítésekor, a használat nyomon követi. A partnereknek rendelkezniük kell egy profillal a kereskedelmi piactéren a Partnerközpontban való regisztrációban az Azure Marketplace-en kívüli üzembe helyezéshez használt GUID-ok regisztrálásához.
 
 **Az ügyfél is kap jelentést?**
 

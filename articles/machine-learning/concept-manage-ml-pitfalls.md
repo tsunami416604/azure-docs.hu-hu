@@ -1,5 +1,5 @@
 ---
-title: Kezelje a gyakori ML-modell buktatóit az automatizált gépi tanulással.
+title: A & kiegyensúlyozatlan adatok automatikus ml-rel való túlméretezésének elkerülése
 titleSuffix: Azure Machine Learning
 description: Azonosítsa és kezelje az ML-modellek gyakori buktatóit az Azure Machine Learning automatizált gépi tanulási megoldásaival.
 services: machine-learning
@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
-ms.date: 03/27/2020
-ms.openlocfilehash: e0bc1aa48dfb40ea146fa79fdfd57da841ca1404
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.date: 04/09/2020
+ms.openlocfilehash: 76f920ad6aae68defb567a7a6623d1ffd488af5f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385531"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874857"
 ---
-# <a name="manage-ml-pitfalls-with-automated-machine-learning"></a>Ml-es buktatók kezelése automatizált gépi tanulással
+# <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Az automatizált gépi tanulással megelőzheti az adatok túlszerelését és kiegyensúlyozatlanságát
 
 A túlillesztett és kiegyensúlyozatlan adatok gyakori buktatókat gépi tanulási modellek létrehozásakor. Alapértelmezés szerint az Azure Machine Learning automatizált gépi tanulás a diagramok és metrikák segítségével azonosítani ezeket a kockázatokat, és megvalósítja az ajánlott eljárásokat, hogy segítsen enyhíteni őket. 
 

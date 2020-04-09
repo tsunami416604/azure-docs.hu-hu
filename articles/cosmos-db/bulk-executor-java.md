@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: bf2a2385b3129ddf24ede7f6d851701186b0e33c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f5c6562c6def1fa588724b3bc5da502536b16aa9
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75445709"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985643"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Műveletek tömeges végrehajtása Azure Cosmos DB-adatokon a tömeges végrehajtási Java-kódtárral
 
@@ -28,7 +28,7 @@ Jelenleg a tömeges végrehajtó könyvtár csak az Azure Cosmos DB SQL API és 
 
 * Az [Azure Cosmos DB-t ingyenesen,](https://azure.microsoft.com/try/cosmosdb/) ingyenesen és kötelezettségvállalások nélkül is kipróbálhatja. Vagy használhatja az [Azure Cosmos DB-emulátort](https://docs.microsoft.com/azure/cosmos-db/local-emulator) a `https://localhost:8081` végponttal. Az elsődleges kulcs a [Kérelmek hitelesítése](local-emulator.md#authenticating-requests) című részben található.  
 
-* [Java Fejlesztő készlet (JDK) 1.7+](https://aka.ms/azure-jdks)  
+* [Java Fejlesztő készlet (JDK) 1.7+](/java/azure/jdk/?view=azure-java-stable)  
   - Ubuntu rendszeren futtassa az `apt-get install default-jdk` parancsot a JDK telepítéséhez.  
 
   - Ügyeljen arra, hogy a JAVA_HOME környezeti változó arra a mappára mutasson, ahová a JDK telepítve lett.
@@ -130,7 +130,7 @@ A klónozott tárház két "bulkimport" és "bulkupdate" mintát tartalmaz az "\
 6. A célfüggőségek létrehozása után a tömeges importőr alkalmazást a következő paranccsal hívhatja meg:  
 
    ```java
-   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint *<Fill in your Azure Cosmos DB’s endpoint>*  -masterKey *<Fill in your Azure Cosmos DB’s master key>* -databaseId bulkImportDb -collectionId bulkImportColl -operation import -shouldCreateCollection -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
+   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint *<Fill in your Azure Cosmos DB's endpoint>*  -masterKey *<Fill in your Azure Cosmos DB's master key>* -databaseId bulkImportDb -collectionId bulkImportColl -operation import -shouldCreateCollection -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
    ```
 
    A tömeges importőr létrehoz egy új adatbázist és egy gyűjteményt az App.config fájlban megadott adatbázisnévvel, gyűjteménynévvel és átviteli értékekkel. 
@@ -150,7 +150,7 @@ A bulkUpdateAsync API-val frissítheti a meglévő dokumentumokat. Ebben a péld
    updateOperations.add(descriptionUpdate);
 
    List<UpdateItem> updateItems = new ArrayList<>(cfg.getNumberOfDocumentsForEachCheckpoint());
-   IntStream.range(0, cfg.getNumberOfDocumentsForEachCheckpoint()).mapToObj(j -> {                      
+   IntStream.range(0, cfg.getNumberOfDocumentsForEachCheckpoint()).mapToObj(j -> {                        
     return new UpdateItem(Long.toString(prefix + j), Long.toString(prefix + j), updateOperations);
     }).collect(Collectors.toCollection(() -> updateItems));
    ```
@@ -182,7 +182,7 @@ A bulkUpdateAsync API-val frissítheti a meglévő dokumentumokat. Ebben a péld
    |int getNumberOfDocumentsUpdated()  |   A tömeges frissítési API-híváshoz sikeresen frissített dokumentumok teljes száma.      |
    |dupla getTotalRequestUnitsConsumed() |  A tömeges frissítési API-hívás által felhasznált teljes kérelemegységek (RU).       |
    |Időtartam getTotalTimeTaken()  |   A teljes idő által a tömeges frissítési API-hívás a végrehajtás befejezéséhez.      |
-   |A\<geterrors()>   |    Lekéri a hibák listáját, ha a tömeges frissítési API-híváshoz megadott kötegből néhány dokumentum beszúrása nem sikerült.      |
+   |A\<geterrors()>   |       Lekéri a hibák listáját, ha a tömeges frissítési API-híváshoz megadott kötegből néhány dokumentum beszúrása nem sikerült.      |
 
 3. Miután a tömeges frissítési alkalmazás készen áll, az "mvn clean package" paranccsal készítse el a parancssori eszközt a forrásból. Ez a parancs jar fájlt hoz létre a célmappában:  
 
@@ -193,7 +193,7 @@ A bulkUpdateAsync API-val frissítheti a meglévő dokumentumokat. Ebben a péld
 4. A célfüggőségek létrehozása után a tömeges frissítési alkalmazást a következő paranccsal hívhatja meg:
 
    ```
-   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint **<Fill in your Azure Cosmos DB’s endpoint>* -masterKey **<Fill in your Azure Cosmos DB’s master key>* -databaseId bulkUpdateDb -collectionId bulkUpdateColl -operation update -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
+   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint **<Fill in your Azure Cosmos DB's endpoint>* -masterKey **<Fill in your Azure Cosmos DB's master key>* -databaseId bulkUpdateDb -collectionId bulkUpdateColl -operation update -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
    ```
 
 ## <a name="performance-tips"></a>Teljesítménnyel kapcsolatos tippek 

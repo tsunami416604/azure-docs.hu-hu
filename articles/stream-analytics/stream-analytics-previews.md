@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/9/2020
-ms.openlocfilehash: 3e99263f6bf472c256e1747b8567249bbd62a445
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c265665be26dcc6868ea9a303b0c12c52dfe05b
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78969623"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878306"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Az Azure Stream Analytics előzetes verziófunkciói
 
@@ -47,9 +47,9 @@ A lekérdezések a helyi gépen lévő élő adatokkal tesztelheti, mielőtt elk
 Az Azure Stream Analytics-feladatok a Visual Studio-kódban is létrehozhatóak. Tekintse meg [a VS-kód első lépéseit bemutató](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code).
 
 
-### <a name="integration-with-azure-machine-learning"></a>Integráció az Azure Machine Learning szolgáltatással
+### <a name="real-time-high-performance-scoring-with-custom-ml-models-managed-by-azure-machine-learning"></a>Valós idejű, nagy teljesítményű pontozás az Azure Machine Learning által kezelt egyéni gépi tanulási modellekkel
 
-A Machine Learning (ML) függvényekkel skálázhatja a Stream Analytics-feladatokat. Ha többet szeretne megtudni arról, hogyan használhatja az ML-függvényeket a Stream Analytics-feladatban, látogasson el [a Stream Analytics-feladat méretezése az Azure Machine Learning-funkciókkal.](stream-analytics-scale-with-machine-learning-functions.md) Tekintse n ki a valós [forgatókönyvet a hangulatelemzés elvégzésével az Azure Stream Analytics és az Azure Machine Learning használatával.](stream-analytics-machine-learning-integration-tutorial.md)
+Az Azure Stream Analytics támogatja a nagy teljesítményű, valós idejű pontozást az Azure Machine Learning által felügyelt, előre betanított és az Azure Kubernetes-szolgáltatásban (AKS) vagy az Azure Container Instances (ACI) üzemeltetett, olyan munkafolyamat használatával, amely nem igényel kódot. [Feliratkozás](https://aka.ms/asapreview1) az előzetes verzióra
 
 
 ### <a name="live-data-testing-in-visual-studio"></a>Élő adatok tesztelése a Visual Studióban
@@ -64,10 +64,6 @@ A .NET általános felhasználó által definiált függvényekkel a .NET standa
 ## <a name="other-previews"></a>Egyéb előzetesek
 
 A következő funkciók is elérhetőelőzetes kérésre.
-
-### <a name="real-time-high-performance-scoring-with-custom-ml-models-managed-by-azure-machine-learning"></a>Valós idejű, nagy teljesítményű pontozás az Azure Machine Learning által kezelt egyéni gépi tanulási modellekkel
-
-Az Azure Stream Analytics támogatja a nagy teljesítményű, valós idejű pontozást az Azure Machine Learning által kezelt és az Azure Kubernetes-szolgáltatásban (AKS) vagy az Azure Container Instances (ACI) üzemeltetett, előre betanított, előre betanított machine learning-modellek kihasználásával, munkafolyamat használatával amely nem követeli meg, hogy írjon kódot. [Feliratkozás](https://aka.ms/asapreview1) az előzetes verzióra
 
 ### <a name="support-for-azure-stack"></a>Az Azure Stack támogatása
 Ez a funkció engedélyezve van az Azure IoT Edge futtatóföldön, kihasználja az egyéni Azure Stack-funkciók, például a natív támogatás a helyi bemenetek és kimenetek azure stack (például Event Hubs, IoT Hub, Blob Storage). Ez az új integráció lehetővé teszi, hogy hibrid architektúrákat hozzon létre, amelyek a létrehozásukhoz közeli adatokat elemezhetik, csökkentik a késést és maximalizálják az elemzéseket.

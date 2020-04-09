@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/15/2016
-ms.openlocfilehash: bcd14e618323aec1c7ce47fcebb25099fa96be81
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a8d79af9f45731971cb1be1f39fc193f9d0f0d9
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898513"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878969"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Kimenő hitelesítés az Azure Scheduler számára
 
@@ -47,8 +47,8 @@ Hitelesítés hozzáadásakor `ClientCertificate` a modell használatával, adja
 
 | Elem | Kötelező | Leírás |
 |---------|----------|-------------|
-| **hitelesítés** (szülőelem) | SSL-ügyféltanúsítvány használatára szolgáló hitelesítési objektum |
-| **Típus** | Igen | A hitelesítés típusa. SSL-ügyféltanúsítványok esetén az `ClientCertificate`érték . |
+| **hitelesítés** (szülőelem) | SSL/TLS-ügyféltanúsítvány használatára szolgáló hitelesítési objektum |
+| **Típus** | Igen | A hitelesítés típusa. SSL/TLS ügyféltanúsítványok esetén az `ClientCertificate`érték . |
 | **Pfx** | Igen | A PFX-fájl base64 kódolású tartalma |
 | **alaphelyzetbe állítása** | Igen | A PFX-fájl elérésének jelszava |
 ||| 
@@ -59,8 +59,8 @@ Amikor egy kérelmet hitelesítési adatokkal küld, a válasz ezeket a hiteles�
 
 | Elem | Leírás | 
 |---------|-------------| 
-| **hitelesítés** (szülőelem) | SSL-ügyféltanúsítvány használatára szolgáló hitelesítési objektum |
-| **Típus** | A hitelesítés típusa. SSL-ügyféltanúsítványok esetén az `ClientCertificate`érték . |
+| **hitelesítés** (szülőelem) | SSL/TLS-ügyféltanúsítvány használatára szolgáló hitelesítési objektum |
+| **Típus** | A hitelesítés típusa. SSL/TLS ügyféltanúsítványok esetén az `ClientCertificate`érték . |
 | **certificateThumbprint** |A tanúsítvány ujjlenyomata |
 | **certificateSubjectName (tanúsítványSubjectName)** |A tanúsítvány tulajdonosának megkülönböztető neve |
 | **certificateExpiration** | A tanúsítvány lejárati dátuma |

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: 5d6ba2bd52d8f4af4244e8ce1babeb7bc9d37fe4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 326b79e1aca6fa82b3275249401c755428a8b71d
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80235679"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878561"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Az IoT DevKit AZ3166 csatlakoztatása az Azure IoT Hubhoz
 
@@ -82,7 +82,13 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
     ```
 
    > [!NOTE]
-   > Ha egy hiba `device-identity`futtatása kor, telepítse az [Azure IOT extension for Azure CLI](https://github.com/Azure/azure-iot-cli-extension/blob/dev/README.md) további részletekért.
+   > Ha egy hiba `device-identity`futtatása kor, telepítse az [Azure IoT extension for Azure CLI.](https://github.com/Azure/azure-iot-cli-extension/blob/dev/README.md)
+   > Futtassa a következő parancsot, és adja hozzá a Microsoft Azure IoT-bővítményt az Azure CLI-hez a Cloud Shell-példányhoz. Az IoT-bővítmény hozzáadja az IoT Hub, az IoT Edge és az IoT-eszközlétesítési szolgáltatás (DPS) az Azure CLI-hez tartozó parancsokat.
+   > 
+   > ```azurecli-interactive
+   > az extension add --name azure-iot
+   >  ```
+   >
   
 1. Futtassa az alábbi parancsokat az Azure Cloud Shellben az imént regisztrált eszköz _eszközkapcsolati sztringjének_ lekéréséhez:
 

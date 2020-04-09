@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 605974e76c3ca878784129f7c9827a78d0642da6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 420aa52293da14a0dfe8fbdfe681440ee4309e6b
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471591"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878595"
 ---
 # <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Hogyan egyezteti a Bejárati ajtó az útválasztási szabályra vonatkozó kérelmeket?
 
-Létrehozása után a kapcsolatot, és ezzel egy SSL kézfogás, amikor egy kérés landol a bejárati ajtó környezetben az egyik első dolog, hogy a Bejárati ajtó nem határozza meg az összes konfigurációk, amelyek adott útválasztási szabály, hogy megfeleljen a kérelmet, majd figyelembe a meghatározott cselekvés. A következő dokumentum bemutatja, hogyan bejárati ajtó határozza meg, hogy melyik útvonal konfigurációt kell használni a HTTP-kérelmek feldolgozásakor.
+A kapcsolat létrehozása és a TLS-kézfogás elvégzése után, amikor egy kérés egy bejárati ajtajához tartozó környezetben landol, az egyik első dolog, amelyet a Bejárati ajtó végez, az összes konfigurációból meghatároz, amely adott útválasztási szabály megfelel a kérésnek, majd a meghatározott művelet et. A következő dokumentum bemutatja, hogyan bejárati ajtó határozza meg, hogy melyik útvonal konfigurációt kell használni a HTTP-kérelmek feldolgozásakor.
 
 ## <a name="structure-of-a-front-door-route-configuration"></a>A bejárati ajtó útvonalkonfigurációjának szerkezete
 A bejárati ajtó útválasztási szabálykonfigurációja két fő részből áll: egy "bal oldali" és egy "jobb oldali". A bejövő kérést az útvonal bal oldalához igazítjuk, míg a jobb oldal határozza meg, hogyan dolgozzuk fel a kérést.

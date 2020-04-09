@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: b65feeb99bb51419e19a8e4b537515be14c54ba8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d906a3dd072770a05b818fd3ca8de359b8427728
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334940"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80986692"
 ---
 Az alábbiakban az Azure Active Directory (Azure AD) szolgáltatás használati és egyéb szolgáltatási korlátai olvashatóak.
 
 | Kategória | Korlát |
 | --- | --- |
-| Könyvtárak | Egy felhasználó legfeljebb 500 Azure AD-címtárhoz tartozhat tagként vagy vendégként.<br/>Egy felhasználó legfeljebb 20 címtárat hozhat létre. |
+| Könyvtárak | Egy felhasználó legfeljebb 500 Azure AD-címtárhoz tartozhat tagként vagy vendégként.<br/>Egy felhasználó legfeljebb 200 könyvtárat hozhat létre. |
 | Tartományok | Legfeljebb 900 felügyelt tartománynév felvételére van lehetőség. Ha minden tartományt szeretne összevonni a helyszíni Active Directoryval, akkor címtáranként legfeljebb 450 felügyelt tartománynév adható hozzá. |
-|Források |<ul><li>Legfeljebb 50 000 Azure AD-erőforrás hozható létre egyetlen könyvtárban az Azure Active Directory ingyenes kiadásának felhasználói alapértelmezés szerint. Ha legalább egy ellenőrzött tartománnyal rendelkezik, a szervezet alapértelmezett Azure AD-szolgáltatáskvótája 300 000 Azure AD-erőforrásra bővül. Ez a szolgáltatáskorlát nem kapcsolódik az Azure AD díjszabási lapján található 500 000 erőforrásra vonatkozó tarifacsomag-korláthoz. Ha túl szeretne lépni az alapértelmezett kvótán, forduljon a Microsoft támogatási szolgálatához.</li><li>Egy nem rendszergazdai felhasználó legfeljebb 250 Azure AD-erőforrást hozhat létre. Mind az aktív, mind a visszaállítandó törölt erőforrások beleszámítanak ebbe a kvótába. Csak a törölt Azure AD-erőforrások, amelyek kevesebb, mint 30 nappal ezelőtt töröltek vannak visszaállíthatók. Törölt Azure AD-erőforrások, amelyek már nem érhetők el a visszaállításhoz, 30 napig egynegyed értékben számítanak vissza a kvóta beszámítására. Ha olyan fejlesztőkkel rendelkezik, akik rendszeres feladataik során valószínűleg ismételten túllépik ezt a kvótát, [létrehozhat és rendelhet hozzá egy egyéni szerepkört,](../articles/active-directory/users-groups-roles/roles-quickstart-app-registration-limits.md) amely engedélyekkel korlátlan számú alkalmazásregisztrációt hozhat létre.</li></ul> |
+|További források |<ul><li>Legfeljebb 50 000 Azure AD-erőforrás hozható létre egyetlen könyvtárban az Azure Active Directory ingyenes kiadásának felhasználói alapértelmezés szerint. Ha legalább egy ellenőrzött tartománnyal rendelkezik, a szervezet alapértelmezett Azure AD-szolgáltatáskvótája 300 000 Azure AD-erőforrásra bővül. Ez a szolgáltatáskorlát nem kapcsolódik az Azure AD díjszabási lapján található 500 000 erőforrásra vonatkozó tarifacsomag-korláthoz. Ha túl szeretne lépni az alapértelmezett kvótán, forduljon a Microsoft támogatási szolgálatához.</li><li>Egy nem rendszergazdai felhasználó legfeljebb 250 Azure AD-erőforrást hozhat létre. Mind az aktív, mind a visszaállítandó törölt erőforrások beleszámítanak ebbe a kvótába. Csak a törölt Azure AD-erőforrások, amelyek kevesebb, mint 30 nappal ezelőtt töröltek vannak visszaállíthatók. Törölt Azure AD-erőforrások, amelyek már nem érhetők el a visszaállításhoz, 30 napig egynegyed értékben számítanak vissza a kvóta beszámítására. Ha olyan fejlesztőkkel rendelkezik, akik rendszeres feladataik során valószínűleg ismételten túllépik ezt a kvótát, [létrehozhat és rendelhet hozzá egy egyéni szerepkört,](../articles/active-directory/users-groups-roles/roles-quickstart-app-registration-limits.md) amely engedélyekkel korlátlan számú alkalmazásregisztrációt hozhat létre.</li></ul> |
 | Sémabővítmények |<ul><li>A sztring típusú bővítmények legfeljebb 256 karakterből állhatnak. </li><li>A bináris típusú bővítmények legfeljebb 256 bájtosak lehetnek.</li><li>Csak 100 bővítményértékek, *minden* típus és *az összes* alkalmazás, lehet írni bármely Azure AD-erőforrás.</li><li>Csak a User, Group, TenantDetail, Device, Application és ServicePrincipal entitások bővíthetők String típusú vagy Binary típusú egyértékű attribútumokkal.</li><li>A sémabővítmények csak a Graph API 1.21-es előzetes verziójában érhetők el. Az alkalmazás számára írási hozzáférést kell biztosítani a bővítmények regisztrálásához.</li></ul> |
 | Alkalmazások |Egyetlen alkalmazásnak legfeljebb 100 felhasználó lehet a tulajdonosa. |
 |Alkalmazásjegyzék |Legfeljebb 1200 bejegyzés adható hozzá az alkalmazásjegyzékhez. |

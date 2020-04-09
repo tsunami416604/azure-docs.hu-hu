@@ -4,12 +4,12 @@ description: Az Azure Blockchain Szolgáltatás adathozzáférése és biztonsá
 ms.date: 11/22/2019
 ms.topic: conceptual
 ms.reviewer: janders
-ms.openlocfilehash: 06bf4e0fa4037b07505a4f816fc7af56c14576d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 989d9f2afad30517a85185878d694c0b6640e987
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75982229"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879598"
 ---
 # <a name="azure-blockchain-service-security"></a>Az Azure Blockchain szolgáltatás biztonsága
 
@@ -27,7 +27,7 @@ A felhasználói adatok az Azure storage-ban tárolódnak. A felhasználói adat
 
 ## <a name="authentication"></a>Hitelesítés
 
-A tranzakciók elküldhetők a blokklánc-csomópontoknak egy RPC-végponton keresztül. Az ügyfelek egy tranzakciós csomóponttal kommunikálnak egy fordított proxykiszolgáló használatával, amely kezeli a felhasználói hitelesítést és az adatokssl-on keresztüli titkosítását.
+A tranzakciók elküldhetők a blokklánc-csomópontoknak egy RPC-végponton keresztül. Az ügyfelek egy tranzakciós csomóponttal kommunikálnak egy fordított proxykiszolgáló használatával, amely kezeli a felhasználói hitelesítést és titkosítja az adatokat a TLS-en keresztül.
 
 ![Hitelesítési diagram](./media/data-security/authentication.png)
 

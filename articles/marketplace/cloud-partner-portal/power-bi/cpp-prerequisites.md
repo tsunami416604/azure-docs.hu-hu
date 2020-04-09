@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 5e8f63d63739f15d6d140b1eff510e6e006955b8
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: ac27a2c95789eac3e824e4ecb31138a6720868a6
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80744262"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981647"
 ---
 # <a name="power-bi-app-offer-prerequisites"></a>A Power BI-alkalmazásajánlatok előfeltételei
 
 >[!Important]
->2020. március 30-tól megkezdjük a Power BI-alkalmazásajánlatok felügyeletének áthelyezését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Az áttelepített ajánlatok kezeléséhez kövesse a [Power BI-alkalmazások létrehozásának áttekintése](https://aka.ms/AzurePBIAppCreationOverview) című témakör utasításait.
+>2020. április 13-tól megkezdjük a Power BI-alkalmazásajánlatok felügyeletének áthelyezését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Az áttelepített ajánlatok kezeléséhez kövesse a [Power BI-alkalmazások létrehozásának áttekintése](https://aka.ms/AzurePBIAppCreationOverview) című témakör utasításait.
 
 Ez a cikk azokat a műszaki és üzleti követelményeket tartalmazza, amelyeknek meg kell felelnie ahhoz, hogy közzétehesse a Power BI-alkalmazásajánlatát az AppSource-piactéren.  Ha még nem tette meg, tekintse át az [Office 365, a Dynamics 365, a PowerApps és a Power BI-ajánlatközzétételi útmutatóját.](../../appsource-offer-publishing-guide.md)
 

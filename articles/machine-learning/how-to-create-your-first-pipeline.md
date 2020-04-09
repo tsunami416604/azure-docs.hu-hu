@@ -11,14 +11,15 @@ ms.author: sanpil
 author: sanpil
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: fa0a5bfe921687ad964e9321e3874de37ccf9b98
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: d175a2cea685585da3767acdb0ab77a99c541d09
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80549300"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80873871"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Gépi tanulási folyamatok létrehozása és futtatása az Azure Machine Learning SDK-val
+
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Ebben a cikkben megtudhatja, hogyan hozhat létre, tehet közzé, futtathat és követhet nyomon egy [gépi tanulási folyamatot](concept-ml-pipelines.md) az [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)használatával.  Az **ML-folyamatok** segítségével hozzon létre egy munkafolyamatot, amely összefűzi a különböző gépi tanulási fázisokat, majd tegye közzé, hogy a folyamat az Azure Machine Learning-munkaterületen későbbi eléréséhez vagy másokkal való megosztáshoz.  A gépi tanulási folyamatok ideálisak a kötegelt pontozási forgatókönyvekhez, különböző számítási műveletekhez, a lépések újrafelhasználásához azok újrafuttatása helyett, valamint az ML-munkafolyamatok másokkal való megosztásához.
@@ -48,14 +49,13 @@ from azureml.core import Workspace, Datastore
 ws = Workspace.from_config()
 ```
 
-
 ## <a name="set-up-machine-learning-resources"></a>Gépi tanulási erőforrások beállítása
 
 A hibajelző folyamat futtatásához szükséges erőforrások létrehozása:
 
 * Állítsa be a folyamatlépésekben szükséges adatok eléréséhez használt adattár.
 
-* Konfiguráljon `DataReference` úgy egy objektumot, hogy olyan adatokra mutasson, amelyek egy adattárban élnek vagy azokban érhetők el.
+* Konfiguráljon `Dataset` úgy egy objektumot, hogy olyan állandó adatokra mutasson, amelyek egy adattárban élnek vagy azokban érhetők el. Objektum `PipelineData` konfigurálása a folyamatlépések között átadott ideiglenes adatokhoz. 
 
 * Állítsa be azokat a [számítási célokat,](concept-azure-machine-learning-architecture.md#compute-targets) amelyeken a folyamat lépései futni fognak.
 
@@ -90,17 +90,18 @@ A folyamat egy vagy több lépésből áll. A lépés egy számítási célon fu
 
 Ha többet szeretne tudni a folyamat adatokhoz való csatlakoztatásáról, olvassa el az [Adatok elérése](how-to-access-data.md) és az [adatkészletek regisztrálása című cikkeket.](how-to-create-register-datasets.md) 
 
-### <a name="configure-data-reference"></a>Adathivatkozás konfigurálása
+### <a name="configure-data-using-dataset-and-pipelinedata-objects"></a>Adatok konfigurálása objektumok használatával `Dataset` `PipelineData`
 
-Most létrehozott egy adatforrást, amely egy folyamatban egy lépés bemeneteként hivatkozhat. A folyamat adatforrását [datareference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference) objektum jelöli. Az `DataReference` objektum olyan adatokra mutat, amelyek egy adattárban élnek vagy érhetők el.
+Most létrehozott egy adatforrást, amely egy folyamatban egy lépés bemeneteként hivatkozhat. A folyamathoz való adathalmaz-objektum [Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.Dataset) az előnyben részesített módja. Az `Dataset` objektum olyan adatokra mutat, amelyek egy adattárban vagy egy webes URL-címen élnek, vagy azokból érhetők el. Az `Dataset` osztály absztrakt, így hozzon létre `FileDataset` egy példányt (egy vagy több `TabularDataset` fájlra hivatkozva), vagy egy olyan példányt, amelyet egy vagy több, tagolt adatoszlopokkal rendelkező fájl hoz létre.
+
+`Dataset`objektumok támogatják a verziószámozást, a különbözetet és az összesítő statisztikákat. `Dataset`s lustán értékelik (mint a Python generátorok), és ez hatékony, hogy részre bontási vagy szűrés. 
+
+Olyan `Dataset` módszereket hozhat létre, mint [a from_file](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) vagy a [from_delimited_files.](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-)
 
 ```python
-from azureml.data.data_reference import DataReference
+from azureml.core import Dataset
 
-blob_input_data = DataReference(
-    datastore=def_blob_store,
-    data_reference_name="test_data",
-    path_on_datastore="20newsgroups/20news.pkl")
+iris_tabular_dataset = Dataset.Tabular.from_delimited_files([(def_blob_store, 'train-dataset/tabular/iris.csv')])
 ```
 
 A köztes adatokat (vagy egy lépés kimenetét) egy [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) objektum képviseli. `output_data1`egy lépés kimeneteként készül, és egy vagy több jövőbeli lépés bemeneteként használható. `PipelineData`adatfüggőséget vezet be a lépések között, és implicit végrehajtási rendelést hoz létre a folyamatban. Ez az objektum később lesz használva a folyamatlépések létrehozásakor.
@@ -114,25 +115,11 @@ output_data1 = PipelineData(
     output_name="output_data1")
 ```
 
-### <a name="configure-data-using-datasets"></a>Adatok konfigurálása adatkészletek használatával
+További részletek és mintakód az adatkészletekkel és a folyamatadatokkal való munkához az [Adatok áthelyezése az ML-folyamat lépéseibe (Python)](how-to-move-data-in-out-of-pipelines.md)című részben található.
 
-Ha táblázatos adatokat tárol egy fájlban vagy fájlhalmazban, a [táblázatos adatkészlet](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) `DataReference`hatékony alternatívája a . `TabularDataset`objektumok támogatják a verziószámozást, a különbözetet és az összesítő statisztikákat. `TabularDataset`s lustán értékelik (mint a Python generátorok), és ez hatékony, hogy részre bontási vagy szűrés. Az `FileDataset` osztály hasonló lustán kiértékelt adatokat biztosít, amelyek egy vagy több fájlt jelölnek. 
+## <a name="set-up-a-compute-target"></a>Számítási cél beállítása
 
-Hozzon `TabularDataset` létre egy olyan módszereket, mint [a from_delimited_files](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-).
-
-```python
-from azureml.data import TabularDataset
-
-iris_tabular_dataset = Dataset.Tabular.from_delimited_files([(def_blob_store, 'train-dataset/tabular/iris.csv')])
-```
-
- A `FileDataset` [from_files](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-)használatával hoz létre.
-
- Az adatkészletek [munkálatairól az & regiszteradatkészletek hozzáadása](how-to-create-register-datasets.md) vagy [ez a mintajegyzetfüzet](https://aka.ms/train-datasets)ismerteti.
-
-## <a name="set-up-compute-target"></a>Számítási cél beállítása
-
-Az Azure Machine Learningben a __számítási__ kifejezés (vagy __számítási cél)__ azokra a gépekre vagy fürtökre utal, amelyek a gépi tanulási folyamat számítási lépéseit hajtják végre.   Tekintse meg [a számítási célok modell képzés](how-to-set-up-training-targets.md) teljes listáját számítási célok és hogyan lehet létrehozni, és csatolja őket a munkaterülethez.  A számítási cél létrehozásának és csatolásának folyamata ugyanaz, függetlenül attól, hogy modellt bead-e vagy folyamatlépést futtat. Miután létrehozta és csatlakoztatta a `ComputeTarget` számítási célt, használja a [folyamatlépésben lévő objektumot.](#steps)
+Az Azure Machine Learningben a __számítási__ (vagy __számítási cél)__ kifejezés azokra a gépekre vagy fürtökre utal, amelyek a gépi tanulási folyamat számítási lépéseit hajtják végre.   Tekintse meg [a számítási célok modell képzés](how-to-set-up-training-targets.md) teljes listáját számítási célok és hogyan lehet létrehozni, és csatolja őket a munkaterülethez.  A számítási cél létrehozásának és csatolásának folyamata ugyanaz, függetlenül attól, hogy modellt bead-e vagy folyamatlépést futtat. Miután létrehozta és csatlakoztatta a `ComputeTarget` számítási célt, használja a [folyamatlépésben lévő objektumot.](#steps)
 
 > [!IMPORTANT]
 > A számítási célokon végzett felügyeleti műveletek nem támogatottak a távoli feladatokon belülről. Mivel a gépi tanulási folyamatok távoli feladatként kerülnek elküldésre, ne használja a felügyeleti műveleteket a folyamaton belülről számított célokon.
@@ -287,13 +274,16 @@ Miután létrehozott és csatolt egy számítási célt a munkaterülethez, kés
 ```python
 from azureml.pipeline.steps import PythonScriptStep
 
+ds_input = my_dataset.as_named_input('input1')
+
 trainStep = PythonScriptStep(
     script_name="train.py",
-    arguments=["--input", blob_input_data, "--output", output_data1],
-    inputs=[blob_input_data],
+    arguments=["--input", ds_input.as_download(), "--output", output_data1],
+    inputs=[ds_input],
     outputs=[output_data1],
     compute_target=compute_target,
-    source_directory=project_folder
+    source_directory=project_folder,
+    allow_reuse=True
 )
 ```
 
@@ -339,8 +329,6 @@ pipeline1 = Pipeline(workspace=ws, steps=steps)
 
 ### <a name="use-a-dataset"></a>Adatkészlet használata 
 
-Ha `TabularDataset` a-t `FileDataset` vagy a folyamatot szeretné használni, a [as_named_input(name)](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#as-named-input-name-)hívásával [datasetConsumptionconfig](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_consumption_config.datasetconsumptionconfig?view=azure-ml-py) objektummá kell alakítania. Ezt az `DatasetConsumptionConfig` objektumot a `inputs` folyamatlépés egyiklépéseként adja át. 
-
 Az Azure Blob storage, az Azure Files, az Azure Data Lake Storage Gen1, az Azure Data Lake Storage Gen2, az Azure SQL Database és az Azure Database for PostgreSQL által létrehozott adatkészletek bármely folyamatlépés beviteleként használhatók. A [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py) vagy [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py)kimenetírásának kivételével a kimeneti adatok ([PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)) csak az Azure Blob és az Azure File share datastores-ba írhatók.
 
 ```python
@@ -363,7 +351,15 @@ iris_dataset = run_context.input_datasets['iris_data']
 dataframe = iris_dataset.to_pandas_dataframe()
 ```
 
-További információkért tekintse meg az [azure-pipeline-steps csomag](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py) és [a pipeline osztály](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) referencia.
+A `Run.get_context()` vonalat érdemes kiemelni. Ez a függvény `Run` az aktuális kísérleti futtatást képviselő t. A fenti mintában egy regisztrált adatkészlet lekéréséhez használjuk. Az `Run` objektum másik gyakori használata a kísérlet és a munkaterület beolvasása, amelyben a kísérlet található: 
+
+```python
+# Within a PythonScriptStep
+
+ws = Run.get_context().experiment.workspace
+```
+
+További részletekért, beleértve az adatok átadására és elérésére szolgáló alternatív módokat, olvassa el az [Adatok áthelyezése a rendszerindító folyamat lépéseibe (Python) című témakört.](how-to-move-data-in-out-of-pipelines.md)
 
 ## <a name="submit-the-pipeline"></a>A folyamat beküldése
 
@@ -387,7 +383,7 @@ Folyamat első futtatásakor az Azure Machine Learning:
 * Letölti a projekt pillanatképét a számítási célra a munkaterülethez társított Blob-tárterületről.
 * A folyamat minden lépésének megfelelő Docker-rendszerképet hoz létre.
 * Letölti a Docker-rendszerképet a számítási cél minden egyes lépéséhez a tároló beállításjegyzékből.
-* Az adattárolót akkor `DataReference` csatlakoztatja, ha egy objektum meg van adva egy lépésben. Ha a csatlakoztatás nem támogatott, az adatok at a számítási célba másolja.
+* Konfigurálja a `Dataset` `PipelineData` hozzáférést és az objektumokat. Hozzáférési `as_mount()` módként a FUSE virtuális hozzáférést biztosít. Ha a csatlakoztatás nem `as_download()`támogatott, vagy ha a felhasználó hozzáférési, az adatokat a rendszer a számítási célba másolja.
 * Futtatja a lépés a lépésdefinícióban megadott számítási cél. 
 * A lépés által megadott összetevőket hoz létre, például naplókat, stdout és stderr, metrikákat és kimeneteket. Ezeket az összetevőket ezután feltölti és tárolja a felhasználó alapértelmezett adattárában.
 
@@ -464,6 +460,7 @@ response = requests.post(published_pipeline1.endpoint,
 ```
 
 ## <a name="create-a-versioned-pipeline-endpoint"></a>Verziós folyamatvégpont létrehozása
+
 Létrehozhat egy folyamatvégpontot több közzétett folyamattal a háta mögött. Ez használható, mint egy közzétett folyamat, de ad egy rögzített REST-végpont, ahogy iterálni, és frissíti a rendszermegtalálható folyamatok.
 
 ```python
@@ -475,19 +472,24 @@ pipeline_endpoint = PipelineEndpoint.publish(workspace=ws, name="PipelineEndpoin
 ```
 
 ### <a name="submit-a-job-to-a-pipeline-endpoint"></a>Feladat elküldése folyamatvégpontba
+
 Elküldheti a feladatot a folyamatvégpont alapértelmezett verziójához:
+
 ```python
 pipeline_endpoint_by_name = PipelineEndpoint.get(workspace=ws, name="PipelineEndpointTest")
 run_id = pipeline_endpoint_by_name.submit("PipelineEndpointExperiment")
 print(run_id)
 ```
+
 Egy feladatot egy adott verzióra is beküldhet:
+
 ```python
 run_id = pipeline_endpoint_by_name.submit("PipelineEndpointExperiment", pipeline_version="0")
 print(run_id)
 ```
 
 Ugyanez a REST API használatával valósítható meg:
+
 ```python
 rest_endpoint = pipeline_endpoint_by_name.endpoint
 response = requests.post(rest_endpoint, 
@@ -512,19 +514,17 @@ A közzétett folyamatot a stúdióból is futtathatja:
 
 1. Válassza ki a folyamatvégpont korábbi futtatásainak eredményeit futtatni, felhasználni vagy áttekinteni egy adott folyamatot.
 
-
 ### <a name="disable-a-published-pipeline"></a>Közzétett folyamat letiltása
 
 Ha el szeretne rejteni egy folyamatot a közzétett folyamatok listájáról, tiltsa le azt a stúdióban vagy az SDK-ból:
 
-```
+```python
 # Get the pipeline by using its ID from Azure Machine Learning studio
 p = PublishedPipeline.get(ws, id="068f4885-7088-424b-8ce2-eeb9ba5381a6")
 p.disable()
 ```
 
 A segítségével újra `p.enable()`engedélyezheti. További információ: [PublishedPipeline osztály](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline?view=azure-ml-py) referencia.
-
 
 ## <a name="caching--reuse"></a>Gyorsítótárazás & újrafelhasználás  
 

@@ -4,12 +4,12 @@ description: Az Azure Blockchain szolgáltatás tranzakciós csomópontjainak ko
 ms.date: 11/20/2019
 ms.topic: article
 ms.reviewer: janders
-ms.openlocfilehash: 4a9a4f660dd171e65b600ec4cd66714ca476b091
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8fa18496d0c1aa59beb55569e731967d5ebea427
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79252258"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876929"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Az Azure Blockchain szolgáltatás tranzakciós csomópontjainak konfigurálása
 
@@ -17,7 +17,7 @@ A tranzakciócsomópontok segítségével blockchain-tranzakciókat küldhet az 
 
 Az alapértelmezett tranzakciócsomópont részleteinek megtekintése:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Keresse meg az Azure Blockchain szolgáltatás tagját. Válassza **a Tranzakciócsomópontok lehetőséget.**
 
     ![Alapértelmezett tranzakciócsomópont kiválasztása](./media/configure-transaction-nodes/nodes.png)
@@ -54,7 +54,7 @@ A tranzakciócsomópont végpontjának részleteinek megtekintése:
 
     ![Végpontok](./media/configure-transaction-nodes/endpoints.png)
 
-A tranzakciós csomópont végpontjai biztonságosak és hitelesítést igényelnek. Csatlakozhat egy tranzakcióvégponthoz az Azure AD-hitelesítés, a HTTPS-alapú egyszerű hitelesítés és a HTTPS-en vagy a Websocket SSL-en keresztüli hozzáférési kulcs használatával.
+A tranzakciós csomópont végpontjai biztonságosak és hitelesítést igényelnek. Csatlakozhat egy tranzakcióvégponthoz az Azure AD-hitelesítés, https-alapfokú hitelesítés, és egy hozzáférési kulcs https-en vagy Websocket TLS-en keresztül használatával.
 
 ### <a name="azure-active-directory-access-control"></a>Az Azure Active Directory hozzáférés-vezérlése
 

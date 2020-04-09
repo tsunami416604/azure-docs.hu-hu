@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 1cfee9749bf2eb30799efb05ac875843bcde6651
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0fe5d245d629c731a47ca5441afd2a3388a22de4
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80372622"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878017"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Gyakori kérdések az Azure bejárati ajtajához
 
@@ -34,7 +34,7 @@ Az Azure Front Door egy alkalmazáskézbesítési hálózat (ADN) szolgáltatás
 
 ### <a name="what-features-does-azure-front-door-support"></a>Milyen funkciókat támogat az Azure Front Door?
 
-Az Azure Front Door támogatja a dinamikus helygyorsítást (DSA), az SSL-kiszervezést és a végpontok közötti SSL-t, a webalkalmazás-tűzfalat, a cookie-alapú munkamenet-affinitást, az URL-elérési út-alapú útválasztást, az ingyenes tanúsítványokat és a többtartományos kezelést és másokat. A támogatott funkciók teljes listáját az [Azure Bejárati ajtajának áttekintése című témakörben találja.](front-door-overview.md)
+Az Azure Front Door támogatja a dinamikus helygyorsítást (DSA), a TLS/SSL kiszervezést és a végpontok közötti TLS-t, a webalkalmazás-tűzfalat, a cookie-alapú munkamenet-affinitást, az URL-útvonal-alapú útválasztást, az ingyenes tanúsítványokat és a többtartományos kezelést és másokat. A támogatott funkciók teljes listáját az [Azure Bejárati ajtajának áttekintése című témakörben találja.](front-door-overview.md)
 
 ### <a name="what-is-the-difference-between-azure-front-door-and-azure-application-gateway"></a>Mi a különbség az Azure Front Door és az Azure Application Gateway között?
 
@@ -46,7 +46,7 @@ A legfontosabb forgatókönyvek, hogy miért kell használni application gateway
 
 - Bejárati ajtó csak globális szinten hajthat végre elérési útalapú terheléselosztást, de ha a virtuális hálózaton (VNET) belül még jobban szeretné eltölteni a forgalmat, akkor az Application Gateway-t kell használnia.
 - Mivel a bejárati ajtó nem működik a virtuális gép/tároló szintjén, így nem tud kapcsolat kiürítése. Azonban az Application Gateway lehetővé teszi, hogy kapcsolat kiürítése. 
-- Az AFD mögötti application gateway segítségével 100%-os SSL-kiszervezésérhető el, és csak HTTP-kérelmeket irányíthat a virtuális hálózaton (VNET) belül.
+- Az AFD mögötti application gateway segítségével 100%-os TLS/SSL-kiszervezésérhető el, és csak HTTP-kérelmeket irányíthat a virtuális hálózaton (VNET) belül.
 - Bejárati ajtó és az Application Gateway egyaránt támogatja a munkamenet-affinitást. Míg a Bejárati ajtó egy felhasználói munkamenetből származó további forgalmat irányíthat egy adott régióban ugyanarra a fürtre vagy háttérrendszerre, az Application Gateway a forgalmat a fürtön belül ugyanarra a kiszolgálóra irányíthatja.  
 
 ### <a name="can-we-deploy-azure-load-balancer-behind-front-door"></a>Üzembe helyezhetjük az Azure Load Balancer-t a bejárati ajtó mögött?
@@ -118,7 +118,7 @@ További információ a [Bejárati ajtó által támogatott HTTP-fejlécekről.]
 
 Egy új bejárati ajtó létrehozása, vagy egy meglévő bejárati ajtó frissítései körülbelül 3-5 percet vesz igénybe a globális telepítéshez. Ez azt jelenti, hogy körülbelül 3-5 perc múlva a Bejárati ajtó konfigurációja világszerte az összes POP-unkban lesz telepítve.
 
-Megjegyzés – Az egyéni SSL-tanúsítványfrissítések globális üzembe helyezése körülbelül 30 percet vesz igénybe.
+Megjegyzés : Az egyéni TLS-/SSL-tanúsítványfrissítések globális üzembe helyezése körülbelül 30 percet vesz igénybe.
 
 Az útvonalak vagy háttérkészletek stb. A tanúsítványfrissítések szintén atomi atomi atomi atomi atomi atomfrissítések, és nem okoznak kimaradást, kivéve, ha az "AFD Managed" -ről a "Saját tanúsítvány használatára" váltanak, vagy fordítva.
 
@@ -139,7 +139,7 @@ Ismerje meg az Azure Front Door összes dokumentált [időtúl- és korlátját.
 
 Az Azure Front Door egy globálisan elosztott több-bérlős platform, amely hatalmas kapacitással rendelkezik, hogy kielégítse az alkalmazás méretezhetőségi igényeit. A Microsoft globális hálózatának pereméről érkező Front Door globális terheléselosztási képességet biztosít, amely lehetővé teszi, hogy a teljes alkalmazáson vagy akár az egyes mikroszolgáltatásokon keresztül is áttekintsék a régiókat vagy a különböző felhőket.
 
-## <a name="ssl-configuration"></a>SSL-konfiguráció
+## <a name="tls-configuration"></a>TLS-konfiguráció
 
 ### <a name="what-tls-versions-are-supported-by-azure-front-door"></a>Milyen TLS-verziókat támogat az Azure Front Door?
 
@@ -150,12 +150,12 @@ A Front Door támogatja a TLS 1.0, 1.1 és 1.2 verzióit. A TLS 1.3 még nem tá
 ### <a name="what-certificates-are-supported-on-azure-front-door"></a>Milyen tanúsítványok támogatottak az Azure Bejárati ajtajában?
 
 Ahhoz, hogy a HTTPS protokoll biztonságosan kézbesítse a tartalmat egy bejárati ajtó egyéni tartományban, választhat, hogy az Azure Front Door által kezelt tanúsítványt használ, vagy saját tanúsítványt használ.
-A Bejárati ajtó kezelt opció egy szabványos SSL tanúsítványt tartalmaz a Digicert-en keresztül, és a Front Door key vaultjában tárolja. Ha úgy dönt, hogy saját tanúsítványt használ, akkor egy támogatott hitelesítésszolgáltatótól származó tanúsítványt is bevihet, és lehet szabványos SSL, kiterjesztett érvényesítési tanúsítvány vagy akár helyettesítő tanúsítvány is. Az önaláírt tanúsítványok nem támogatottak. További információ [arról, hogyan engedélyezheti a HTTPS protokollt egyéni tartományban.](https://aka.ms/FrontDoorCustomDomainHTTPS)
+A Bejárati ajtó kezelt opció egy szabványos TLS/SSL tanúsítványt tartalmaz a Digicert-en keresztül, és a Front Door key vaultjában tárolja. Ha úgy dönt, hogy saját tanúsítványt használ, akkor egy támogatott hitelesítésszolgáltatótól származó tanúsítványt is bevihet, és lehet szabványos TLS, kiterjesztett érvényesítési tanúsítvány vagy akár helyettesítő tanúsítvány is. Az önaláírt tanúsítványok nem támogatottak. További információ [arról, hogyan engedélyezheti a HTTPS protokollt egyéni tartományban.](https://aka.ms/FrontDoorCustomDomainHTTPS)
 
 ### <a name="does-front-door-support-autorotation-of-certificates"></a>Támogatja a Bejárati ajtó a tanúsítványok automatikus rotációját?
 
 A Bejárati ajtó által felügyelt tanúsítvány beállítás esetén a tanúsítványokat a bejárati ajtó automatikusan elforgatja. Ha a Bejárati ajtó által kezelt tanúsítványt használja, és látja, hogy a tanúsítvány lejárati dátuma kevesebb, mint 60 nap múlva van, nyújtson be egy támogatási jegyet.
-</br>A saját egyéni SSL-tanúsítvány, autorotation nem támogatott. Hasonlóan ahhoz, ahogyan egy adott egyéni tartományhoz első alkalommal állították be, a Bejárati ajtót a Key Vault megfelelő tanúsítványverziójára kell mutatnia, és biztosítania kell, hogy a Bejárati ajtó egyszerű szolgáltatása továbbra is hozzáférhessen a Key Vaulthoz. Ez a frissített tanúsítvány-bevezetési művelet a Bejárati ajtó által atomi, és nem okoz semmilyen termelési hatást, feltéve, hogy a tulajdonos neve vagy SAN a tanúsítvány nem változik.
+</br>Saját egyéni TLS/SSL-tanúsítvány esetén az automatikus rotáció nem támogatott. Hasonlóan ahhoz, ahogyan egy adott egyéni tartományhoz első alkalommal állították be, a Bejárati ajtót a Key Vault megfelelő tanúsítványverziójára kell mutatnia, és biztosítania kell, hogy a Bejárati ajtó egyszerű szolgáltatása továbbra is hozzáférhessen a Key Vaulthoz. Ez a frissített tanúsítvány-bevezetési művelet a Bejárati ajtó által atomi, és nem okoz semmilyen termelési hatást, feltéve, hogy a tulajdonos neve vagy SAN a tanúsítvány nem változik.
 
 ### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door"></a>Melyek az Azure Front Door által támogatott jelenlegi titkosítási csomagok?
 
@@ -182,13 +182,13 @@ Az Azure Front Door által támogatott jelenlegi titkosítási csomagok a követ
 - TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
 - TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
 
-### <a name="can-i-configure-ssl-policy-to-control-ssl-protocol-versions"></a>Konfigurálhatom az SSL-házirendet az SSL protokoll verzióinak vezérlésére?
+### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>Konfigurálhatom a TLS-házirendet a TLS protokollverziók vezérlésére?
 
 Az Azure Front Door ban konfigurálhat egy minimális TLS-verziót az egyéni tartomány HTTPS-beállításaiban az Azure Portalon vagy az [Azure REST API-n](https://docs.microsoft.com/rest/api/frontdoorservice/frontdoor/frontdoors/createorupdate#minimumtlsversion)keresztül. Jelenleg 1.0 és 1.2 között választhat.
 
 ### <a name="can-i-configure-front-door-to-only-support-specific-cipher-suites"></a>Konfigurálhatom úgy a Bejárati ajtót, hogy csak bizonyos rejtjelcsomagokat támogasson?
 
-Nem, a Bejárati ajtó konfigurálása adott rejtjelező csomagokhoz nem támogatott. A hitelesítésszolgáltatótól (például Verisign, Entrust vagy Digicert) azonban beszerezheti saját egyéni SSL-tanúsítványát, és a létrehozáskor a tanúsítványon külön rejtjel-csomagokat is megjelölhet. 
+Nem, a Bejárati ajtó konfigurálása adott rejtjelező csomagokhoz nem támogatott. A hitelesítésszolgáltatótól (például Verisign, Entrust vagy Digicert) azonban beszerezheti saját egyéni TLS/SSL-tanúsítványát, és a létrehozáskor a tanúsítványon külön titkosítási programcsomagokat is megjelölhet. 
 
 ### <a name="does-front-door-support-ocsp-stapling"></a>Támogatja a Bejárati ajtó az OCSP tűzést?
 
@@ -196,20 +196,20 @@ Igen, az OCSP tűzést alapértelmezés szerint a Bejárati ajtó támogatja, é
 
 ### <a name="does-azure-front-door-also-support-re-encryption-of-traffic-to-the-backend"></a>Az Azure Front Door is támogatja a háttérrendszer forgalmának újratitkosítását?
 
-Igen, az Azure Front Door támogatja az SSL-kiszervezést, és a végpontok végéig ssl, amely újra titkosítja a forgalmat a háttérszolgáltatás. Valójában, mivel a háttérrendszerhez való csatlakozások nyilvános IP-címén keresztül történnek, ajánlott konfigurálni a bejárati ajtót, hogy https-t használjon továbbítási protokollként.
+Igen, az Azure Front Door támogatja a TLS/SSL kiszervezés, és a végpontok végéig TLS, amely újra titkosítja a forgalmat a háttérrendszerbe. Valójában, mivel a háttérrendszerhez való csatlakozások nyilvános IP-címén keresztül történnek, ajánlott konfigurálni a bejárati ajtót, hogy https-t használjon továbbítási protokollként.
 
 ### <a name="does-front-door-support-self-signed-certificates-on-the-backend-for-https-connection"></a>Támogatja a Bejárati ajtó az önaláírt tanúsítványokat a HTTPS-kapcsolat háttérrendszerén?
 
 Nem, az önaláírt tanúsítványok nem támogatottak a Bejárati ajtóban, és a korlátozás mindkettőre vonatkozik:
 
 1. **Háttérrendszerek:** Nem használhatja az önaláírt tanúsítványokat, ha a forgalmat HTTPS vagy HTTPS állapotmintaként továbbítja, vagy a gyorsítótárat az eredetitől kezdve az útválasztási szabályok hoz a gyorsítótár az engedélyezve van.
-2. **Előtér:** Nem használhat önaláírt tanúsítványokat, ha saját egyéni SSL-tanúsítványt használ a HTTPS engedélyezéséhez az egyéni tartományban.
+2. **Előtétrendszer:** Nem használhat önaláírt tanúsítványokat, ha saját egyéni TLS/SSL-tanúsítványt használ a HTTPS engedélyezéséhez az egyéni tartományban.
 
 ### <a name="why-is-https-traffic-to-my-backend-failing"></a>Miért a HTTPS-forgalom a háttér-háttér-tartalékom nem sikerül?
 
 A sikeres HTTPS-kapcsolatok a háttérrendszer, hogy az állapot-mintavételek vagy a kérelmek továbbítása, két oka lehet a HTTPS-forgalom sikertelen lehet:
 
-1. **A tanúsítvány tulajdonosának neve nem egyezik:** Https-kapcsolatok esetén a Bejárati ajtó azt várja, hogy a háttérrendszer egy érvényes hitelesítésszolgáltató tanúsítványát jelenítse meg, amelynek tulajdonosneve megegyezik a háttérrendszer állomásnevével. Ha például a háttérrendszer állomásneve `myapp-centralus.contosonews.net` van beállítva, és a tanúsítvány, amelyet a `myapp-centralus.contosonews.net` háttérrendszer az SSL-kézfogás során nem rendelkezik, sem `*myapp-centralus*.contosonews.net` a tulajdonos nevében, a bejárati ajtó elutasítja a kapcsolatot, és hibát okoz. 
+1. **A tanúsítvány tulajdonosának neve nem egyezik:** Https-kapcsolatok esetén a Bejárati ajtó azt várja, hogy a háttérrendszer egy érvényes hitelesítésszolgáltató tanúsítványát jelenítse meg, amelynek tulajdonosneve megegyezik a háttérrendszer állomásnevével. Ha például a háttérrendszer állomásneve `myapp-centralus.contosonews.net` van beállítva, és a tanúsítvány, amelyet a `myapp-centralus.contosonews.net` háttérrendszer a TLS-kézfogás során nem rendelkezik, sem `*myapp-centralus*.contosonews.net` a tulajdonos nevében, a bejárati ajtó elutasítja a kapcsolatot, és hibát okoz. 
     1. **Megoldás:** Bár megfelelőségi szempontból nem ajánlott, a hibát úgy oldhatja meg, ha letiltja a tanúsítvány tulajdonosának névellenőrzését az elülső ajtóhoz. Ez az Azure Portal beállításai és az API BackendPoolsSettings alatt található.
 2. **Háttérszolgáltatás-üzemeltetési tanúsítvány érvénytelen hitelesítésszolgáltatótól:** Csak [érvényes hitelesítésszolgáltatók tanúsítványai](/azure/frontdoor/front-door-troubleshoot-allowed-ca) használhatók a háttérben a Bejárati ajtóval. A belső hitelesítésszolgáltatótól vagy az önaláírt tanúsítványoktól származó tanúsítványok nem engedélyezettek.
 

@@ -6,17 +6,17 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 04/07/2020
 author: djpmsft
 ms.author: daperlov
 manager: jroth
 ms.reviewer: maghan
-ms.openlocfilehash: 88500ecbc56b34551a0cbd3ca94727ba4bbcda9f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e736cc95628bd0e15bdb7ffd425608278788c353
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930645"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879265"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Változótevékenység beállítása az Azure Data Factoryban
 
@@ -26,11 +26,73 @@ A Változó beállítása tevékenység segítségével állítsa be a Data Fact
 
 Tulajdonság | Leírás | Kötelező
 -------- | ----------- | --------
-név | A folyamatban lévő tevékenység neve | Igen
+név | A folyamatban lévő tevékenység neve | igen
 leírás | A tevékenység tevékenységét leíró szöveg | nem
-type | A tevékenység típusa SetVariable | igen
-érték | A megadott változó beállításához használt karakterlánc-konstans vagy kifejezésobjektum-érték | igen
+type | **SetVariable (SetVariable)** beállításnak kell lennie. | igen
+érték | A változóhoz rendelt karakterlánc-konstans vagy kifejezésobjektum-érték | igen
 változóNév | A tevékenység által beállítandó változó neve | igen
+
+## <a name="incrementing-a-variable"></a>Változó növekményének megforgatása
+
+Az Azure Data Factory változóit érintő gyakori forgatókönyv egy változót használ iterátorként egy-vagy foreach tevékenységen belül. Halmazváltozó-tevékenységben nem lehet hivatkozni a `value` mezőben beállított változóra. A korlátozás megkerüléséhez állítson be egy ideiglenes változót, majd hozzon létre egy második halmazváltozó-tevékenységet. A második halmazváltozó-tevékenység az iterátor értékét az ideiglenes változóra állítja be. 
+
+Az alábbiakban egy példa erre a mintára:
+
+![Növekmény változó](media/control-flow-set-variable-activity/increment-variable.png "Növekmény változó")
+
+``` json
+{
+    "name": "pipeline3",
+    "properties": {
+        "activities": [
+            {
+                "name": "Set I",
+                "type": "SetVariable",
+                "dependsOn": [
+                    {
+                        "activity": "Increment J",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "userProperties": [],
+                "typeProperties": {
+                    "variableName": "i",
+                    "value": {
+                        "value": "@variables('j')",
+                        "type": "Expression"
+                    }
+                }
+            },
+            {
+                "name": "Increment J",
+                "type": "SetVariable",
+                "dependsOn": [],
+                "userProperties": [],
+                "typeProperties": {
+                    "variableName": "j",
+                    "value": {
+                        "value": "@string(add(int(variables('i')), 1))",
+                        "type": "Expression"
+                    }
+                }
+            }
+        ],
+        "variables": {
+            "i": {
+                "type": "String",
+                "defaultValue": "0"
+            },
+            "j": {
+                "type": "String",
+                "defaultValue": "0"
+            }
+        },
+        "annotations": []
+    }
+}
+```
 
 
 ## <a name="next-steps"></a>További lépések

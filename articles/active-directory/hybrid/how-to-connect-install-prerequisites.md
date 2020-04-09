@@ -16,12 +16,12 @@ ms.date: 02/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79741557e6eea1b4252e5ab4d9976b124cea1169
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 6446b039d90e04c9fe7fca28b361f620183a0292
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346902"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875741"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Az Azure AD Connect előfeltételei
 Ez a témakör ismerteti az Azure AD Connect előfeltételeit és hardverkövetelményeit.
@@ -87,7 +87,7 @@ További tudnivalókért lásd:
 ### <a name="accounts"></a>Fiókok
 * Az Azure AD globális rendszergazdai fiókja az Azure AD-bérlőhöz, amelyhez integrálni szeretne. Ennek a fióknak **iskolai vagy szervezeti fióknak** kell lennie, és nem lehet **Microsoft-fiók.**
 * Ha [expressz beállításokat](reference-connect-accounts-permissions.md#express-settings-installation) használ, vagy a DirSync szolgáltatásból frissít, akkor rendelkeznie kell egy vállalati rendszergazdai fiókkal a helyszíni Active Directoryhoz.
-* Ha az egyéni beállítások telepítési útvonalát használja, akkor további lehetőségek közül választhat: [Fiókok az Active Directoryban](reference-connect-accounts-permissions.md#custom-installation-settings)
+* Ha az egyéni beállítások telepítési útvonalát használja, akkor több lehetősége van. További információt az [Egyéni telepítési beállítások című](reference-connect-accounts-permissions.md#custom-installation-settings)témakörben talál.
 
 ### <a name="connectivity"></a>Kapcsolatok
 * Az Azure AD Connect kiszolgálónak DNS-feloldásra van szüksége az intranethez és az internethez. A DNS-kiszolgálónak képesnek kell lennie a nevek feloldására mind a helyszíni Active Directory, mind az Azure AD-végpontok között.
@@ -173,7 +173,7 @@ When using Azure AD Connect to deploy Active Directory Federation Services or th
       * To validate remote PowerShell connectivity, in the Server Manager All Servers tab: right click WAP server and choose Windows PowerShell. A remote PowerShell session should open to ensure remote PowerShell sessions can be established.
 
 ### TLS/SSL Certificate Requirements
-* It’s strongly recommended to use the same TLS/SSL certificate across all nodes of your AD FS farm and all Web Application proxy servers.
+* It's strongly recommended to use the same TLS/SSL certificate across all nodes of your AD FS farm and all Web Application proxy servers.
 * The certificate must be an X509 certificate.
 * You can use a self-signed certificate on federation servers in a test lab environment. However, for a production environment, we recommend that you obtain the certificate from a public CA.
   * If using a certificate that is not publicly trusted, ensure that the certificate installed on each Web Application Proxy server is trusted on both the local server and on all federation servers

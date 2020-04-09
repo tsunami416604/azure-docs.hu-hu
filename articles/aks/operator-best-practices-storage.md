@@ -5,12 +5,12 @@ description: Ismerje meg a fürtfelelősök nek a tárolással, adattitkosítás
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 90abf2e36fd46c707904d87f00362091fe931743
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 843b775f7761af7cd40140c9bf34768d63eb5a50
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668103"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877898"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes-szolgáltatás (AKS) tárolásával és biztonsági másolatával kapcsolatos gyakorlati tanácsok
 
@@ -40,7 +40,7 @@ Az alábbi táblázat ismerteti a rendelkezésre álló tárolási típusokat é
 
 Az AKS-ben a kötetek számára biztosított két elsődleges tárolótípust az Azure Disks vagy az Azure Files támogatja. A biztonság növelése érdekében mindkét típusú tárhely az Azure Storage Service Encryption (SSE) alapértelmezés szerint, amely titkosítja az adatokat inaktív. A lemezek jelenleg nem titkosíthatók az AKS-csomópont szintjén az Azure Disk Encryption használatával.
 
-Az Azure Files jelenleg elérhető a standard teljesítményszint. Az Azure Disks standard és prémium szintű teljesítményszinteken érhető el:
+Az Azure Files és az Azure Disks standard és prémium szintű teljesítményszinteken is elérhetők:
 
 - *A prémium szintű* lemezeket nagy teljesítményű SSD-lemezek (SSD) támogatja. Prémium szintű lemezek ajánlott minden éles számítási feladatokhoz.
 - *A szabványos* lemezeket rendszeres forgó lemezek (HDD-k) szolgálják, és jó archiválási vagy ritkán használt adatokhoz.

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95f1877ae630919ba7da5a851b5f8291ade2d165
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 343671c1d9ee82950a9822648f9831588da7e9f8
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76897585"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876184"
 ---
 # <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>A szervezet adatvédelmi adatainak hozzáadása az Azure Active Directory használatával
 Ez a cikk bemutatja, hogyan adhat hozzá egy bérlői rendszergazda adatvédelmi adatokat a szervezet Azure Active Directory (Azure AD) bérlőjéhez az Azure Portalon keresztül.
@@ -32,15 +32,15 @@ A szervezet adatvédelmi adatait az Azure AD **Tulajdonságok** területén adja
 
 ### <a name="to-access-the-properties-area-and-add-your-privacy-information"></a>A Tulajdonságok terület elérése és az adatvédelmi adatok hozzáadása
 
-1.  Jelentkezzen be az Azure Portalon bérlői rendszergazdaként.
+1.    Jelentkezzen be az Azure Portalon bérlői rendszergazdaként.
 
-2.  A bal oldali navigációs sávon válassza az **Azure Active Directory**lehetőséget, majd a **Tulajdonságok**lehetőséget.
+2.    A bal oldali navigációs sávon válassza az **Azure Active Directory**lehetőséget, majd a **Tulajdonságok**lehetőséget.
 
     Megjelenik **a Tulajdonságok** terület.
 
     ![Az Azure AD tulajdonságai terület, kiemelve az adatvédelmi információs területet](media/active-directory-properties-area/properties-area.png)
 
-3.  Adja meg az alkalmazottak adatvédelmi adatait:
+3.    Adja meg az alkalmazottak adatvédelmi adatait:
 
     - **Technikai kapcsolat.** Írja be annak az e-mail címét, akivel a szervezeten belül technikai támogatásért kapcsolatba szeretne lépni.
     
@@ -53,8 +53,8 @@ A szervezet adatvédelmi adatait az Azure AD **Tulajdonságok** területén adja
 
         ![B2B Együttműködési ellenőrzési engedélyek mező üzenettel](media/active-directory-properties-area/active-directory-no-privacy-statement-or-contact.png)
 
-4.  Kattintson a **Mentés** gombra.
+4.    Kattintson a **Mentés** gombra.
 
 ## <a name="next-steps"></a>További lépések
-- [Az Azure Active Directory B2B együttműködési meghívók beváltása](https://aka.ms/b2bredemption)
+- [Az Azure Active Directory B2B együttműködési meghívók beváltása](../b2b/redemption-experience.md)
 - [Felhasználó profiladatainak hozzáadása vagy módosítása az Azure Active Directoryban](active-directory-users-profile-azure-portal.md)

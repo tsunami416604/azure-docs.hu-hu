@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: 7f13ab3cd6ff765bc3b1bee8e8fad7e7273f6c7d
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 6cf43df756e9bed0438169c9c01b868653d84b57
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673915"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985728"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>A virtuális gépek méretének előző generációi
 
@@ -342,7 +342,7 @@ Prémium szintű tárolási gyorsítótárazás: Nem támogatott
 <sup>1</sup> Példány egyetlen ügyfélnek dedikált hardverhez van elkülönítve.
 <br>
 
-# <a name="nv-series"></a>NV sorozat
+## <a name="nv-series"></a>NV sorozat
 **Újabb méretajánlás**: [NVv3 és](nvv3-series.md) [NVv4 sorozat](nvv4-series.md)
 
 Az NV sorozatú virtuális gépeket [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU-k és NVIDIA GRID technológia hajtja asztali gyorsított alkalmazásokhoz és virtuális asztalokhoz, ahol az ügyfelek képesek az adataik vagy szimulációik megjelenítésére. A felhasználók képesek elképzelni a nagy grafikai igényű munkafolyamataikat az NV-példányokon, hogy kiváló grafikus képességet kapjanak, és emellett egyetlen pontosságú számítási feladatokat, például kódolást és renderelést is futtathatnak. Az NV sorozatú virtuális gépeket Intel Xeon E5-2690 v3 (Haswell) PROCESSZOROK is működtetik.

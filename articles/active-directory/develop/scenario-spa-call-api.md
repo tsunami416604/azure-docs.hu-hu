@@ -2,24 +2,21 @@
 title: Egyoldalas alkalmazás létrehozása webes API-hívással – Microsoft identity platform | Azure
 description: Megtudhatja, hogyan hozhat létre egy egyoldalas alkalmazást, amely webes API-t hív meg
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/06/2019
 ms.author: ryanwi
 ms.custom: aaddev
-ms.openlocfilehash: ccece6c840033913ec6d96b446dcb98c4befb32f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b70b109f43e80fc3ec68f52aef2dba6823033bb
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77159998"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80882131"
 ---
 # <a name="single-page-application-call-a-web-api"></a>Egyoldalas alkalmazás: Webes API hívása
 
@@ -27,9 +24,9 @@ Azt javasoljuk, hogy `acquireTokenSilent` hívja meg a metódust egy hozzáfér�
 
 ## <a name="call-a-web-api"></a>Webes API-hívás
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Használja a beszerzett hozzáférési jogkivonatot tulajdonosként egy HTTP-kérelemben bármely webes API, például a Microsoft Graph API hívásához. Példa:
+Használja a beszerzett hozzáférési jogkivonatot tulajdonosként egy HTTP-kérelemben bármely webes API, például a Microsoft Graph API hívásához. Például:
 
 ```javascript
     var headers = new Headers();
