@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
 Customer intent: As a developer, I want to build a Java application to access and manage Azure Cosmos DB resources so that customers can store key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: b0103f7b827de77c522f78000c8d28683ac85f4b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 971f705099ffec22599af83323e5e15d604c4bca
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75441902"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983007"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>Oktatóanyag: Cassandra API-fiók létrehozása az Azure Cosmos DB-ben egy Java alkalmazás használatával kulcs-/értékadatok tárolására
 
@@ -34,14 +34,14 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) mielőtt elkezdené. 
 
-* Szerezd meg a legújabb verzióját [Java Development Kit (JDK)](https://aka.ms/azure-jdks). 
+* Szerezd meg a legújabb verzióját [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable). 
 
 * [Töltse le](https://maven.apache.org/download.cgi) és [telepítse](https://maven.apache.org/install.html) a [Maven](https://maven.apache.org/) bináris archívumot. 
   - Ubuntu rendszeren futtathatja az `apt-get install maven` parancsot a Maven telepítéséhez. 
 
 ## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása 
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/) 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). 
 
 2. Válassza **az Erőforrás-adatbázisok** > **létrehozása** > az**Azure Cosmos DB**lehetőséget. 
 

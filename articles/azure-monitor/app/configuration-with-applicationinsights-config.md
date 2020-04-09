@@ -4,12 +4,12 @@ description: Az adatgyűjtési modulok engedélyezése vagy letiltása, valamint
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.reviewer: olegan
-ms.openlocfilehash: b2c407036277b17c0f8c08f3261c932a6dc66624
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 460bd79e3a37c492301f7438112fef4487618fed
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276178"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982089"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Az Application Insights SDK konfigurálása az ApplicationInsights.config vagy .xml használatával
 Az Application Insights .NET SDK számos NuGet-csomagból áll. Az [alapcsomag](https://www.nuget.org/packages/Microsoft.ApplicationInsights) biztosítja az API-t az Application Insights telemetriai adatok küldéséhez. [További csomagok](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) telemetriai *modulokat* és *inicializálókat* biztosít az alkalmazásból és annak környezetéből származó telemetriai adatok automatikus nyomon követéséhez. A konfigurációs fájl módosításával engedélyezheti vagy letilthatja a telemetriai modulokat és inicializálókat, és paramétereket állíthat be néhányhoz.
@@ -165,65 +165,6 @@ Van is egy szabványos [mintavételi telemetriai processzor](../../azure-monitor
      </Add>
    </TelemetryProcessors>
 
-```
-
-
-
-## <a name="channel-parameters-java"></a>Csatorna paraméterei (Java)
-Ezek a paraméterek befolyásolják, hogy a Java SDK hogyan tárolja és ürítse ki az általa gyűjtött telemetriai adatokat.
-
-#### <a name="maxtelemetrybuffercapacity"></a>MaxTelemetryBufferCapacity
-Az SDK memórián belüli tárolójában tárolható telemetriai elemek száma. Ha ezt a számot eléri, a telemetriai puffer kiürítése, azaz a telemetriai elemeket küld az Application Insights-kiszolgáló.
-
-* Min. 1
-* Max: 1000
-* Alapértelmezett: 500
-
-```
-
-  <ApplicationInsights>
-      ...
-      <Channel>
-       <MaxTelemetryBufferCapacity>100</MaxTelemetryBufferCapacity>
-      </Channel>
-      ...
-  </ApplicationInsights>
-```
-
-#### <a name="flushintervalinseconds"></a>FlushIntervalinszekundumok
-Azt határozza meg, hogy a memórián belüli tárolóban tárolt adatokat milyen gyakran kell kiüríteni (az Application Insights nak kell elküldeni).
-
-* Min. 1
-* Max: 300
-* Alapértelmezett: 5
-
-```
-
-    <ApplicationInsights>
-      ...
-      <Channel>
-        <FlushIntervalInSeconds>100</FlushIntervalInSeconds>
-      </Channel>
-      ...
-    </ApplicationInsights>
-```
-
-#### <a name="maxtransmissionstoragecapacityinmb"></a>MaxTransmissionStoragecapacityInMB
-A helyi lemez állandó tárolójára kiosztott maximális méretet határozza meg MB-ban. Ez a tároló olyan telemetriai elemek megőrzéséhez használatos, amelyek nem továbbítódtak az Application Insights-végpontra. A tárolási méret teljesülése után az új telemetriai elemek elvesznek.
-
-* Min. 1
-* Max: 100
-* Alapértelmezett: 10
-
-```
-
-   <ApplicationInsights>
-      ...
-      <Channel>
-        <MaxTransmissionStorageCapacityInMB>50</MaxTransmissionStorageCapacityInMB>
-      </Channel>
-      ...
-   </ApplicationInsights>
 ```
 
 ## <a name="instrumentationkey"></a>InstrumentationKey (Műszerezési kulcs)

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/28/2020
+ms.date: 04/07/2020
 ms.author: alzam
-ms.openlocfilehash: 9250464e3d28bdac20840aa9f69cfac707f73b30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7bc28a03476e773325d14808e1c7ac99103b2d5d
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371486"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879445"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>VPN-ügyfél konfigurálása P2S OpenVPN protokollkapcsolatokhoz: Azure AD-hitelesítés
 
@@ -230,6 +230,16 @@ Módosíthatja a letöltött profil XML-fájlját, és ** \<hozzáadhatja a kiz�
 </clientconfig>
 </azvpnprofile>
 ```
+
+### <a name="can-i-import-the-profile-from-a-command-line-prompt"></a>Importálhatom a profilt parancssorból?
+
+A profilt parancssorból importálhatja úgy, hogy a letöltött **azurevpnconfig.xml** fájlt a **%userprofile%\AppData\Local\Packages\Microsoft.AzureVpn_8wekyb3d8bbwe\LocalState** mappába helyezi, és a következő parancsot futtatja:
+
+```
+azurevpn -i azurevpnconfig.xml 
+```
+az import használata a **-f** kapcsolót is
+
 
 ## <a name="next-steps"></a>További lépések
 

@@ -5,14 +5,14 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 064a7b8adaec6f47a153743b58f4e1caf50db723
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 38116efc9e87eca8e2514a0a84045a69b8d42326
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80681505"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887044"
 ---
-# <a name="use-the-model-conversion-rest-api"></a>A modellkonvertáló REST API használata
+# <a name="use-the-model-conversion-rest-api"></a>A modellátalakító REST API használata
 
 A [modellkonverziós](model-conversion.md) szolgáltatás egy [REST API-n](https://en.wikipedia.org/wiki/Representational_state_transfer)keresztül történik. Ez a cikk ismerteti a konverziós szolgáltatás API-részleteit.
 
@@ -47,7 +47,7 @@ Az Azure távoli leadási fióknak hozzá kell férnie a megadott tárfiókhoz a
 
 | Végpont | Módszer |
 |-----------|:-----------|
-| /v1/számlák/**számlaazonosító**/konverzió/létrehozás | POST |
+| /v1/számlák/**fiókazonosító**/konverziók/létrehozás | POST |
 
 A folyamatban lévő átalakítás json-dokumentumba csomagolt azonosítóját adja eredményül. A mező neve "conversionId".
 
@@ -77,7 +77,7 @@ Ha az ARR-fiók nincs összekapcsolva a tárfiókkal, ez a REST-felület lehető
 
 | Végpont | Módszer |
 |-----------|:-----------|
-| /v1/accounts/**accountID**/conversion/createWithSharedAccessSignature | POST |
+| /v1/accounts/**accountID**/conversions/createWithSharedAccessSignature | POST |
 
 A folyamatban lévő átalakítás json-dokumentumba csomagolt azonosítóját adja eredményül. A mező neve "conversionId".
 
@@ -128,5 +128,5 @@ Ha az állapot "Hiba", akkor egy további "hiba" mező lesz, amely egy "üzenet"
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure Blob Storage használata modellátalakításhoz](blob-storage.md)
+- [Modellek átalakítása az Azure Blob Storage használatával](blob-storage.md)
 - [Modell átalakítása](model-conversion.md)

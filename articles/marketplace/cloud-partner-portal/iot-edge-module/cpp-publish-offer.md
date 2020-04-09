@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 2220352f817b488b3992b88920428063edde006e
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 9d78ff53fb520dcfc80a812d53ae188e340722af
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745013"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983194"
 ---
 # <a name="publish-iot-edge-module-offer"></a>IoT Edge-modulajánlat közzététele
 
 >[!Important]
->2020. március 30-tól megkezdjük az IoT Edge modulajánlatok kezelését a Partner Centerbe. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [IoT Edge-modulajánlat létrehozása](https://aka.ms/AzureCreateIoT) az áttelepített ajánlatok kezeléséhez kövesse az utasításokat.
+>2020. április 13-tól megkezdjük az IoT Edge modulajánlatok kezelését a Partner Centerbe. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [IoT Edge-modulajánlat létrehozása](https://aka.ms/AzureCreateIoT) az áttelepített ajánlatok kezeléséhez kövesse az utasításokat.
 
  Miután létrehozott egy új ajánlatot az **Új ajánlat** lapon található információk megadásával, közzéteheti az ajánlatot. A **közzétételi** folyamat elindításához válassza a Közzététel lehetőséget.
 

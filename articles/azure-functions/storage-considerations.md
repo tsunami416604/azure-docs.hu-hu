@@ -3,12 +3,12 @@ title: Az Azure Functions tárolási szempontjai
 description: Ismerje meg az Azure Functions tárolási követelményeit és a tárolt adatok titkosítását.
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 3bacc93ad6c1851d9165e8efb7d27b427050e6f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 48ff2dedd997cccb76b13acdadc895504f656ea3
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276581"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984163"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Az Azure Functions tárolási szempontjai
 
@@ -29,7 +29,7 @@ Az Azure Functions egy Azure Storage-fiókot igényel, amikor létrehoz egy füg
 
 Függvényalkalmazás létrehozásakor létre kell hoznia, vagy egy általános célú Azure Storage-fiókot kell létrehoznia, amely támogatja a Blob, a Várólista és a Table storage-ot. Ennek az az oka, hogy a Függvények az Azure Storage-ra támaszkodik olyan műveletekhez, mint az eseményindítók kezelése és a naplózási függvény-végrehajtások. Egyes tárfiókok nem támogatják a várólistákat és táblákat. Ezek a fiókok közé tartozik a blob-csak tárfiókok, az Azure Premium Storage és az általános célú storage-fiókok ZRS replikációval. Ezek a nem támogatott fiókok kivannak szűrve a Storage Account panelből egy függvényalkalmazás létrehozásakor.
 
-További információ a tárfiókok típusairól: [Az Azure Storage szolgáltatásainak bemutatása](../storage/common/storage-introduction.md#azure-storage-services). 
+További információ a tárfiókok típusairól: [Az Azure Storage szolgáltatásainak bemutatása](../storage/common/storage-introduction.md#core-storage-services). 
 
 Bár egy meglévő tárfiókot a függvényalkalmazás, győződjön meg arról, hogy megfelel ezeknek a követelményeknek. A függvényalkalmazás létrehozása folyamat részeként létrehozott tárfiókok garantáltan megfelelnek ezeknek a tárfiók-követelményeknek.  
 

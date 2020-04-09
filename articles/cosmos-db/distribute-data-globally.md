@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 84cd201cd758293082a61a87528332c7d8c58811
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ef511c203caa11aad4dea1047c982158810c4038
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76264305"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982123"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Globális adatterjesztés az Azure Cosmos DB-vel – áttekintés
 
@@ -41,7 +41,7 @@ Az Azure Cosmos DB több-homing API-k használatával az alkalmazás tisztában 
 
 **A regionális leállások során tartsa fenn az üzletmenet folytonosságát.** Az Azure Cosmos DB támogatja az [automatikus feladatátvételt](how-to-manage-database-account.md#automatic-failover) egy regionális kimaradás során. Egy regionális kimaradás során az Azure Cosmos DB továbbra is fenntartja a késés, a rendelkezésre állás, a konzisztencia és az átviteli átviteli SlA-k. Annak érdekében, hogy a teljes alkalmazás magas rendelkezésre állású, cosmos DB kínál manuális feladatátvételi API-t szimulálni egy regionális kimaradás. Ezzel az API-val rendszeres üzletmenet-folytonossági gyakorlatokat végezhet.
 
-**Globálisan méretezhetők az olvasási és írási átviteli.** Engedélyezheti, hogy minden régió írható és rugalmasan méretezhető olvasási és írási műveletek a világ minden tájáról. Az alkalmazás által konfigurált átviteli egy Azure Cosmos-adatbázis vagy egy tároló garantáltan az Azure Cosmos-fiókhoz társított összes régióban lesz kézbesítve. A kiosztott átviteli átbocsátást [pénzügyileg támogatott SLA-k garantálják](https://aka.ms/acdbsla).
+**Globálisan méretezhetők az olvasási és írási átviteli.** Engedélyezheti, hogy minden régió írható és rugalmasan méretezhető olvasási és írási műveletek a világ minden tájáról. Az alkalmazás által konfigurált átviteli egy Azure Cosmos-adatbázis vagy egy tároló garantáltan az Azure Cosmos-fiókhoz társított összes régióban lesz kézbesítve. A kiosztott átviteli átbocsátást [pénzügyileg támogatott SLA-k garantálják](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/).
 
 **Számos jól definiált konzisztenciamodell közül választhat.** Az Azure Cosmos DB replikációs protokoll öt jól definiált, praktikus és intuitív konzisztenciamodellt kínál. Minden modell rendelkezik egy kompromisszumot a konzisztencia és a teljesítmény között. Ezekkel a konzisztenciamodellekkel könnyedén hozhat létre globálisan elosztott alkalmazásokat.
 

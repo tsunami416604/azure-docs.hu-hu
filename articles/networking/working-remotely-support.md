@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: rambala
-ms.openlocfilehash: bcdd938365e50da1f5ae0e830e86692f1b915123
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: e0e5806ec59cd2d75111db213d8511488d043eec
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618913"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982854"
 ---
 # <a name="working-remotely-using-azure-networking-services"></a>Az Azure hálózati szolgáltatásainak távoli használata
 
@@ -80,16 +80,16 @@ A más nyilvános felhőkben történő központi telepítések esetén a Micros
 
 Az alábbi cikkek ismertetik, hogy a különböző Azure hálózati funkciók hogyan használhatók a felhasználók távoli munkára való méretezésére:
 
-| **Cikk** | **Utolsó frissítés** |
+| **Cikk** | **Leírás** |
 | --- | --- |
-| [A felhasználók távolról történő munkavégzésének engedélyezése](../vpn-gateway/work-remotely-support.md) | 2020. március 23. |
-| [Küzd, hogy ellát a munka otthonról kell? Itt segíthet az Azure Virtual WAN](../virtual-wan/work-remotely-support.md) | 2020. március 23. |
-| [Nagy mennyiségű forgalom támogatása az Application Gatewayben](../application-gateway/high-traffic-support.md) | 2020. március 23. |
-| [A hálózati virtuális berendezés (NVA) szempontjai a távoli munkához](../vpn-gateway/nva-work-remotely-support.md)| 2020. március 23. |
-| [Áttérés openVPN protokollra vagy IKEv2-re az SSTP-ből](https://go.microsoft.com/fwlink/?linkid=2124112) | 2020. március 23. |
-| [Az Azure Bastion távoli használata](../bastion/work-remotely-support.md) | 2020. március 23. |
-| [Hibrid kapcsolat létrehozása az Azure ExpressRoute használatával a távoli felhasználók támogatása érdekében](../expressroute/work-remotely-support.md) | 2020. március 23. |
-| [Az Azure Firewall távoli munkahelyi támogatása](../firewall/remote-work-support.md)|2020. március 25.|
+| [A felhasználók távolról történő munkavégzésének engedélyezése](../vpn-gateway/work-remotely-support.md) | Tekintse át a rendelkezésre álló lehetőségeket a felhasználók távelérésének beállításához, vagy meglévő megoldásaik további kapacitással való kiegészítéséhez a szervezet számára.|
+| [Küzd, hogy ellát a munka otthonról kell? Itt segíthet az Azure Virtual WAN](../virtual-wan/work-remotely-support.md) | Használja az Azure Virtual WAN-t a szervezet távoli kapcsolódási igényeinek kielégítéséhez.|
+| [Nagy mennyiségű forgalom támogatása az Application Gatewayben](../application-gateway/high-traffic-support.md) | Az Application Gateway webalkalmazás-tűzfallal (WAF) skálázható és biztonságos módon kezelheti a webalkalmazások forgalmát. |
+| [A hálózati virtuális berendezés (NVA) szempontjai a távoli munkához](../vpn-gateway/nva-work-remotely-support.md)|Tekintse át az Azure-beli nva-k használatával kapcsolatos útmutatást a távelérési megoldások biztosításához. |
+| [Áttérés openVPN protokollra vagy IKEv2-re az SSTP-ből](https://go.microsoft.com/fwlink/?linkid=2124112) | Az OpenVPN protokollra vagy az IKEv2 protokollra való áttéréssel az SSTP 128 egyidejű kapcsolati korlátjának leküzdése.|
+| [Az Azure Bastion távoli használata](../bastion/work-remotely-support.md) | Biztonságos és zökkenőmentes RDP/SSH-kapcsolatot biztosíthat az Azure virtuális hálózaton belüli virtuális gépekhez, közvetlenül az Azure Portalon, nyilvános IP-cím használata nélkül. |
+| [Hibrid kapcsolat létrehozása az Azure ExpressRoute használatával a távoli felhasználók támogatása érdekében](../expressroute/work-remotely-support.md) | Az ExpressRoute használatával hibrid kapcsolattal engedélyezheti a szervezet felhasználóiszámára a távoli munkavégzést.|
+| [Az Azure Firewall távoli munkahelyi támogatása](../firewall/remote-work-support.md)|Az Azure tűzfal használatával megvédheti az Azure virtuális hálózati erőforrásait. |
 
 <!--Link References-->
 [VNet-peer]: https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview

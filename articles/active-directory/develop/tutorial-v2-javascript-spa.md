@@ -2,25 +2,21 @@
 title: JavaScript egyoldalas alkalmazásbemutató - Microsoft identity platform | Azure
 description: Hogyan hívhatnak meg javascript SPA-alkalmazások olyan API-t, amelyhez az Azure Active Directory 2.0-s verziójú végpontja hozzáférési jogkivonatokat igényel?
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6eb144e648e8f5fa1682c353f14686d6f82c7328
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 307490837b2963b3a1272eaafde63431de6645aa
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79530444"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984350"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Jelentkezzen be a felhasználókhoz, és hívja fel a Microsoft Graph API-t egy JavaScript egyoldalas alkalmazásból (SPA)
 
@@ -269,7 +265,7 @@ Most már van egy egyszerű szerver szolgálja a SPA. Az oktatóanyag végén ta
 
 Mielőtt továbblépne a hitelesítéssel, regisztrálja az alkalmazást az **Azure Active Directoryban.**
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. Ha a fiók hozzáférést biztosít egynél több bérlőhöz, válassza ki a jobb felső sarokban lévő fiókot, majd állítsa be a portálmunkamenetet a használni kívánt Azure AD-bérlőre.
 1. Nyissa meg a Microsoft identity platform ot a [fejlesztőknek Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lapon.
 1. Ha megjelenik az **Alkalmazás regisztrálása** oldal, adjon nevet az alkalmazásnak.
@@ -353,6 +349,18 @@ Hozzon létre egy új `authPopup.js`.js nevű fájlt, amely tartalmazza a hitele
 
    function signOut() {
      myMSALObj.logout();
+   }
+   
+   function callMSGraph(theUrl, accessToken, callback) {
+       var xmlHttp = new XMLHttpRequest();
+       xmlHttp.onreadystatechange = function () {
+           if (this.readyState == 4 && this.status == 200) {
+              callback(JSON.parse(this.responseText));
+           }
+       }
+       xmlHttp.open("GET", theUrl, true); // true for asynchronous
+       xmlHttp.setRequestHeader('Authorization', 'Bearer ' + accessToken);
+       xmlHttp.send();
    }
 
    function getTokenPopup(request) {

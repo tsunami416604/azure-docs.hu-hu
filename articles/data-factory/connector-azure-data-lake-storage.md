@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/24/2020
-ms.openlocfilehash: 3c7ff0061a57d1a1a7525ec03b4f77c117415ca5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/08/2020
+ms.openlocfilehash: 929b9548661fe48fe90a55f0cacef234c3078cda
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80155860"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887265"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Adatok másolása és átalakítása az Azure Data Lake Storage Gen2 szolgáltatásban az Azure Data Factory használatával
 
@@ -44,8 +44,6 @@ A másolási tevékenységhez ezzel az összekötővel a következőket teheti:
 >[!IMPORTANT]
 >Ha engedélyezi a **Megbízható Microsoft-szolgáltatások hozzáférését ehhez a tárfiókhoz** az Azure Storage tűzfalbeállításaiban, és az Azure-integrációs futásidejű használatával szeretne csatlakozni a Data Lake Storage Gen2 szolgáltatáshoz, felügyelt [identitás-hitelesítést](#managed-identity) kell használnia az ADLS Gen2 szolgáltatáshoz.
 
->[!TIP]
->Ha engedélyezi a hierarchikus névteret, jelenleg nincs együttműködés a Blob és a Data Lake Storage Gen2 API-k közötti műveletek között. Ha a "ErrorCode=FilesystemNotFound" hibaüzenetet a "A megadott fájlrendszer nem létezik" üzenettel jelenik meg, akkor azt a blob API-n keresztül a Data Lake Storage Gen2 API helyett a Blob API-n keresztül létrehozott megadott fogadófájlrendszer okozza. A probléma megoldásához adjon meg egy új fájlrendszert, amelynek neve nem létezik blobtároló neveként. Ezután a Data Factory automatikusan létrehozza ezt a fájlrendszert az adatmásolás során.
 
 ## <a name="get-started"></a>Bevezetés
 
@@ -314,7 +312,7 @@ A következő tulajdonságok a Data Lake `storeSettings` Storage Gen2 szolgálta
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | A típustulajdonságot `storeSettings` az **AzureBlobFSWriteSettings**beállításra kell állítani. | Igen      |
 | copyBehavior (Másként)             | Azt a másolási viselkedést határozza meg, amikor a forrás fájlalapú adattárból származó fájlok.<br/><br/>Az engedélyezett értékek a következők:<br/><b>- MegőrzéseHierarchy (alapértelmezett)</b>: Megőrzi a fájlhierarchiát a célmappában. A forrásfájl forrásmappához viszonyított elérési útja megegyezik a célfájl nak a célmappához viszonyított elérési útvonalával.<br/><b>- Ahierarcha összeolvasztása</b>: A forrásmappából származó összes fájl a célmappa első szintjén található. A célfájlok nak automatikusan generált neve van. <br/><b>- MergeFiles</b>: Egyesíti az összes fájlt a forrás mappát egy fájlt. Ha a fájlnév meg van adva, az egyesített fájlnév a megadott név. Ellenkező esetben ez egy automatikusan létrehozott fájlnév. | Nem       |
-| blockSizeInMB | Adja meg az ADLS Gen2-be történő adatíráshoz használt blokkméretet MB-ban. További információ [a blokkblobokról.](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) <br/>Az engedélyezett érték **4 és 100 MB között**van. <br/>Alapértelmezés szerint az ADF automatikusan meghatározza a blokkméretet a forrástár típusa és az adatok alapján. Az ADLS Gen2 nem bináris másolása esetén az alapértelmezett blokkméret 100 MB, hogy legbőszebb 4,95 TB-os adatokat szolgáljon fel. Előfordulhat, hogy nem optimális, ha az adatok nem nagy, különösen akkor, ha a saját üzemeltetésű integrációs futásidő gyenge hálózattal, ami a működési időtúl- vagy teljesítményprobléma. Explicit módon megadhatja a blokk mérete, míg biztosítja blockSizeInMB * 50000 elég nagy ahhoz, hogy tárolja az adatokat, különben másolási tevékenység futtatása sikertelen lesz. | Nem |
+| blockSizeInMB | Adja meg az ADLS Gen2-be történő adatíráshoz használt blokkméretet MB-ban. További információ [a blokkblobokról.](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) <br/>Az engedélyezett érték **4 és 100 MB között**van. <br/>Alapértelmezés szerint az ADF automatikusan meghatározza a blokk méretet a forrástár típusa és az adatok alapján. Az ADLS Gen2 nem bináris másolása esetén az alapértelmezett blokkméret 100 MB, hogy legbőszebb 4,95 TB-os adatokat szolgáljon fel. Előfordulhat, hogy nem optimális, ha az adatok nem nagy, különösen akkor, ha a saját üzemeltetésű integrációs futásidő gyenge hálózattal, ami a működési időtúl- vagy teljesítményprobléma. Explicit módon megadhatja a blokk mérete, míg biztosítja blockSizeInMB * 50000 elég nagy ahhoz, hogy tárolja az adatokat, különben másolási tevékenység futtatása sikertelen lesz. | Nem |
 | maxConcurrentConnections | Az adattárhoz egyidejűleg csatlakozó kapcsolatok száma. Csak akkor adja meg, ha korlátozni szeretné az egyidejű kapcsolatot az adattárhoz. | Nem       |
 
 **Példa:**

@@ -4,12 +4,12 @@ description: Így engedélyezheti a felügyelt identitások támogatását egy m
 ms.topic: article
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: cb6e4ab00afd80cba41881e46296f7046a905919
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 396978546b301884087c4ea51e242258d64a6b0b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76934950"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983806"
 ---
 # <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster-preview"></a>Felügyelt identitástámogatás konfigurálása meglévő Service Fabric-fürtben (előzetes verzió)
 
@@ -40,7 +40,7 @@ A felügyelt identitásjogkivonat-szolgáltatás meglévő fürtben való enged�
 ]
 ```
 
-Ahhoz, hogy a módosítások érvénybe lépjenek, a frissítési szabályzatot is módosítania kell, hogy a fürtön keresztül a frissítés előrehaladtával a Service Fabric futásidejű állapotának erőteljes újraindítását adja meg. Ez az újraindítás biztosítja, hogy az újonnan engedélyezett rendszerszolgáltatás elindul, és fut az egyes csomópontokon. Az alábbi kódrészletben `forceRestart` található az alapvető beállítás; a beállítások hátralévő részében használja a meglévő értékeket.  
+Ahhoz, hogy a módosítások érvénybe lépjenek, a frissítési szabályzatot is módosítania kell, hogy a fürtön keresztül a frissítés előrehaladtával a Service Fabric futásidejű állapotának erőteljes újraindítását adja meg. Ez az újraindítás biztosítja, hogy az újonnan engedélyezett rendszerszolgáltatás elindul, és fut az egyes csomópontokon. Az alábbi kódrészletben `forceRestart` található az újraindítás engedélyezéséhez szükséges alapvető beállítás. A fennmaradó paraméterekhez használja az alább leírt értékeket, vagy használja a fürterőforráshoz már megadott meglévő egyéni értékeket. A Fabric frissítési szabályzat ('upgradeDescription') egyéni beállításai az Azure Portalról tekinthetők meg a Service Fabric-erőforrás vagy a resources.azure.com "Fabric-frissítések" lehetőség kiválasztásával. A frissítési házirend ('upgradeDescription') alapértelmezett beállításai nem tekinthetők meg a PowerShellből vagy a resources.azure.com. További információt a [ClusterUpgradePolicy című témakörben](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet) talál.  
 
 ```json
 "upgradeDescription": {

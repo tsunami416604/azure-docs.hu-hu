@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 04/06/2020
-ms.openlocfilehash: 1f339d987d67047f5857679b440e93e6c3730059
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: cc9d129894cefaf2fab853d2099d754d68238e5f
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80810453"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887350"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Aktív georeplikáció létrehozása és használata
 
@@ -113,14 +113,11 @@ Annak érdekében, hogy az alkalmazás a feladatátvétel után azonnal hozzáf�
 
 ## <a name="configuring-secondary-database"></a>Másodlagos adatbázis konfigurálása
 
-Mind az elsődleges, mind a másodlagos adatbázisoknak azonos szolgáltatási szinttel kell rendelkezniük. Azt is erősen ajánlott, hogy a másodlagos adatbázis jön létre az elsődleges azonos számítási mérettel (DT-k vagy virtuális magok). Ha az elsődleges adatbázis nagy írási számítási feladatokat tapasztal, előfordulhat, hogy egy kisebb számítási méretű másodlagos nem tud lépést tartani vele. Ez a másodlagos újraésenylést, és a másodlagos potenciális elérhetetlenségét okozza. Egy másodlagos adatbázis, amely elmarad az elsődleges is fennáll a veszélye a nagy adatvesztés, ha egy kényszerű feladatátvétel szükséges. Ezek a kockázatok csökkentése érdekében az aktív georeplikáció szükség esetén szabályozza az elsődleges naplósebességét, hogy a másodlagos adatok felzárkózhassanak. 
+Mind az elsődleges, mind a másodlagos adatbázisoknak azonos szolgáltatási szinttel kell rendelkezniük. Azt is erősen ajánlott, hogy a másodlagos adatbázis jön létre az elsődleges azonos számítási mérettel (DT-k vagy virtuális magok). Ha az elsődleges adatbázis nagy írási számítási feladatokat tapasztal, előfordulhat, hogy egy kisebb számítási méretű másodlagos nem tud lépést tartani vele. Ez a másodlagos újraésenylést, és a másodlagos potenciális elérhetetlenségét okozza. Ezek a kockázatok csökkentése érdekében az aktív georeplikáció szükség esetén szabályozza az elsődleges tranzakciós naplósebességét, hogy a másodlagos adatok felzárkózhassanak. 
 
-A kiegyensúlyozatlan másodlagos konfiguráció másik következménye, hogy a feladatátvétel után az alkalmazás teljesítménye az új elsődleges elégtelen számítási kapacitása miatt szenvedhet. Ebben az esetben szükség lesz az adatbázis-szolgáltatás célkitűzésének a szükséges szintre való felskálázására, ami jelentős időt vehet igénybe és erőforrásokat is igénybe vehet, és a felskálázási folyamat végén [magas rendelkezésre állású](sql-database-high-availability.md) feladatátvételt igényel.
+A kiegyensúlyozatlan másodlagos konfiguráció egy másik következménye, hogy a feladatátvétel után az alkalmazás teljesítménye az új elsődleges elégtelen számítási kapacitása miatt szenvedhet. Ebben az esetben szükség lesz az adatbázis-szolgáltatás célkitűzésének a szükséges szintre való felskálázására, ami jelentős időt vehet igénybe és erőforrásokat is igénybe vehet, és a felskálázási folyamat végén [magas rendelkezésre állású](sql-database-high-availability.md) feladatátvételt igényel.
 
-> [!IMPORTANT]
-> A közzétett 5 mp RPO SLA csak akkor garantálható, ha a másodlagos adatbázis van konfigurálva az elsődleges azonos vagy nagyobb számítási mérettel. 
-
-Ha úgy dönt, hogy alacsonyabb számítási mérettel hozza létre a másodlagos, a log IO százalékos diagram az Azure Portalon jó módja annak, hogy megbecsülje a másodlagos, amely a replikációs terhelés fenntartásához szükséges minimális számítási méret. Ha például az elsődleges adatbázis P6 (1000 DTU), és a napló írási százaléka 50%, a másodlagos kell lennie legalább P4 (500 DTU). Az előzménynapló i/o-adatainak beolvasásához használja a [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) nézetet. A legutóbbi naplóírási adatok magasabb részletességű lekéréséhez, amely jobban tükrözi a naplósebesség rövid távú kiugrásait, használja [a sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) nézetet. 
+Ha úgy dönt, hogy alacsonyabb számítási mérettel hozza létre a másodlagos, a log IO százalékos diagram az Azure Portalon jó módja annak, hogy megbecsülje a másodlagos, amely a replikációs terhelés fenntartásához szükséges minimális számítási méret. Ha például az elsődleges adatbázis P6 (1000 DTU), és a napló írási százaléka 50%, a másodlagos kell lennie legalább P4 (500 DTU). Az előzménynapló i/o-adatainak beolvasásához használja a [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) nézetet. A legutóbbi naplóírási adatok magasabb részletességű lekéréséhez, amely jobban tükrözi a naplósebesség rövid távú kiugrásait, használja [a sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) nézetet.
 
 Tranzakciós naplósebesség szabályozása az elsődleges miatt alacsonyabb számítási méret egy másodlagos jelenti a HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO várakozási típus, látható a [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) és [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) adatbázisnézetekben. 
 

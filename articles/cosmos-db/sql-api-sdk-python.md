@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
-ms.openlocfilehash: 090446d286b38a0bfcbde4ed9e77235050b36417
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: b81a3921ec11d589dadbdebd698ab9ad67d7649c
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547701"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982905"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK SQL API-hoz: Kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -21,7 +21,7 @@ ms.locfileid: "80547701"
 > * [.NET módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Aszinkron Java](sql-api-sdk-async-java.md)
+> * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
@@ -71,7 +71,7 @@ ms.locfileid: "80547701"
 * Frissített dokumentáció az Azure Cosmos DB-re való hivatkozáshoz az Azure DocumentDB helyett.
 
 ### <a name="230"></a><a name="2.3.0"/>2.3.0
-* Ez az SDK-verzió az Azure Cosmos DB Emulator legújabb verzióját igényli, amely letölthető a alkalmazásból. https://aka.ms/cosmosdb-emulator
+* Ehhez az SDK-verzióhoz az [Azure Cosmos DB Emulátor](https://aka.ms/cosmosdb-emulator)legújabb verziója szükséges.
 
 ### <a name="221"></a><a name="2.2.1"/>2.2.1
 * Hibajavítás az összesített szótárhoz.

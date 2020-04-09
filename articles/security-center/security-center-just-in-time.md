@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 51985c5fa4b2296e43c0a062d0af84a1bb51e89c
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: cc4e267c6912b8938db1ba5497a27f9c0026bd79
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397762"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887333"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>Biztosítsa felügyeleti portjait a just-in-time hozzáféréssel
 
@@ -211,7 +211,7 @@ A powershellben a következőket futtassa a következők megvalósításához:
 
 1.    Rendeljen hozzá egy változót, amely tartalmazza a virtuális gép just-in-time virtuálisgép-hozzáférési szabályzatát:
 
-        $JitPolicy = (@{ id="/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME" ports=@{ number=22;        protocol="*";        allowedSourceAddressPrefix=@("*");        maxRequestAccessDuration="PT3H"}, @{ szám=3389;        protocol="*";        allowedSourceAddressPrefix=@("*");        maxRequestAccessDuration="PT3H"})})
+        $JitPolicy = (@{ id="/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME" ports=@{ number=22;        protocol="\*";        allowedSourceAddressPrefix=@("\*");        maxRequestAccessDuration="PT3H"}, @{ szám=3389;        protocol="\*";        allowedSourceAddressPrefix=@("\*");        maxRequestAccessDuration="PT3H"})})
 
 2.    Helyezze be a virtuális gép just-in-time virtuálisgép-hozzáférési szabályzatot egy tömbbe:
     

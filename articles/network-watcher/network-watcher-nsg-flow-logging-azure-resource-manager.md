@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/26/2020
 ms.author: damendo
-ms.openlocfilehash: 35d185a625a81a259c366a45999769ecf76c6a7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 104311904b99cadbbc8c0267a98f2709443608ea
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77538158"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891458"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>NSG-folyamatnaplók konfigurálása Azure Resource Manager-sablonból
 
 > [!div class="op_single_selector"]
-> - [Azure-portál](network-watcher-nsg-flow-logging-portal.md)
-> - [Powershell](network-watcher-nsg-flow-logging-powershell.md)
+> - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
+> - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
 > - [Azure Resource Manager](network-watcher-nsg-flow-logging-azure-resource-manager.md)
@@ -169,6 +169,8 @@ New-AzResourceGroupDeployment -Name EnableFlowLog -ResourceGroupName NetworkWatc
 
 Többféleképpen is ellenőrizheti, hogy a központi telepítés sikeres-e. A PowerShell-konzolnak "Sikeres" állapotban kell megjelenítenie a "ProvisioningState" (Kiépítésállapot) lehetőséget. Ezenkívül az [NSG flow naplók portálon](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) megerősítheti a módosításokat. Ha problémák merültek fel a központi telepítéssel kapcsolatban, tekintse meg az [Azure Resource Manager gyakori Azure-telepítési hibáinak elhárítása című témakört.](https://docs.microsoft.com/azure/azure-resource-manager/templates/common-deployment-errors)
 
+## <a name="deleting-your-resource"></a>Az erőforrás törlése
+Az Azure lehetővé teszi az erőforrások törlését a "Complete" telepítési módban keresztül. A Folyamatnaplók erőforrás törléséhez adjon meg egy központi telepítést teljes módban a törölni kívánt erőforrás nélkül. További információ a [teljes telepítési módról](https://docs.microsoft.com/azure/azure-resource-manager/templates/deployment-modes#complete-mode)
 
 ## <a name="next-steps"></a>További lépések
 

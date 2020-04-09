@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: 83164a615cacc067e5f1ea6a1dd6ce0f0fd9d540
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adba282a96f9d250569e090e186859c04e89ebda
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298849"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981545"
 ---
 # <a name="traffic-analytics"></a>Forgalmi elemzések
 
@@ -183,8 +183,8 @@ A képen látható módon adja meg a következő beállításokat:
 
 1. *Be* jelölés **az Állapothoz**
 2. Válassza *a 2-es verzió* lehetőséget a Flow **Logs verzióhoz.** A 2-es verzió folyamatmunkamenet-statisztikákat tartalmaz (bájt és csomagok)
-3. Válasszon ki egy meglévő tárfiókot a folyamatnaplók tárolásához. Ha az adatokat örökre tárolni szeretné, állítsa az értéket *0*értékre. A tárfiókért Azure Storage-díjat kell fizetnie. Győződjön meg arról, hogy a tároló nem rendelkezik a "Data Lake Storage Gen2 hierarchikus névtér engedélyezve" érték igaz.
-4. Állítsa be az **adatmegőrzést** az adatok tárolásához kívánt napok számára.
+3. Válasszon ki egy meglévő tárfiókot a folyamatnaplók tárolásához. Győződjön meg arról, hogy a tároló nem rendelkezik a "Data Lake Storage Gen2 hierarchikus névtér engedélyezve" érték igaz.
+4. Állítsa be az **adatmegőrzést** az adatok tárolásához kívánt napok számára. Ha az adatokat örökre tárolni szeretné, állítsa az értéket *0*értékre. A tárfiókért Azure Storage-díjat kell fizetnie. 
 5. *Válassza a Be* lehetőséget a **Forgalomelemzési állapot hoz.**
 6. Adja meg a feldolgozási időközt. A választás alapján a folyamatnaplókat a tárfiókból gyűjtjük, és a Traffic Analytics feldolgozza. Választhat feldolgozási időköz minden 1 óra vagy 10 perc alatt. 
 7. Jelöljön ki egy meglévő Log Analytics (OMS) munkaterületet, vagy új munkaterület **létrehozásához** válassza az Új munkaterület létrehozása lehetőséget. A Traffic Analytics a Log Analytics-munkaterületet az összesített és indexelt adatok tárolására használja, amelyeket aztán az elemzés létrehozásához használnak. Ha egy meglévő munkaterületet választ, annak a [támogatott régiók](#supported-regions-log-analytics-workspaces) egyikében kell léteznie, és az új lekérdezési nyelvre frissítve kell lennie. Ha nem kíván frissíteni egy meglévő munkaterületet, vagy nem rendelkezik munkaterülettel egy támogatott régióban, hozzon létre egy újat. A lekérdezési nyelvekről az [Azure Log Analytics új naplókeresésre való frissítés című](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)témakörben talál további információt.

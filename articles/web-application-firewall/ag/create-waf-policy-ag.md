@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 02/08/2020
 ms.author: victorh
-ms.openlocfilehash: 3e8cd2f1e594cd6a60296b2df135f275641df313
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3738da806ff36cdb7e8d561b88a457a5264eb76
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77086983"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886925"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Webalkalmazás-tűzfal házirendek létrehozása az Alkalmazásátjáróhoz
 
@@ -24,6 +24,8 @@ Ha az Application Gateway egy szabályzatot alkalmazott, és majd egy másik sza
 
    > [!NOTE]
    > A webhelyenkénti és az URI-WAF-házirendek nyilvános előzetes verzióban vannak. Ez azt jelenti, hogy erre a szolgáltatásra a Microsoft kiegészítő használati feltételei vonatkoznak. További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+   > [!NOTE]
+   > Miután egy tűzfalházirend et társított egy WAF-hez, mindig kell lennie egy házirendnek az adott WAF-hoz. Felülírhatja ezt a házirendet, de a waf-tól való deasasszocianting nem támogatott. 
 
 A Web Application Firewall összes új WAF-beállítása (egyéni szabályok, felügyelt rulset konfigurációk, kizárások stb.) a WAF-házirendben él. Ha már rendelkezik WAF-fel, ezek a beállítások továbbra is fennállhatnak a WAF konfigurációban. Az új WAF-házirendre való áttéréslépéseit a jelen cikk a [WAF-konfiguráció áttelepítése WAF-házirendbe](#migrate) című témakörben ismerteti. 
 

@@ -13,19 +13,17 @@ ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 961444e15ae1c45db1fc7423a6ac3cc96cc7b3fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89c4fa536994ecc8cecb50c907d43df2110be7df
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75768010"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982599"
 ---
 # <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>Alkalmazás- és erőforrás-hozzáférés kezelése Azure Active Directory-csoportokkal
 Az Azure Active Directory (Azure AD) segítségével csoportok használatával kezelheti a felhőalapú alkalmazásokhoz, a helyszíni alkalmazásokhoz és az erőforrásokhoz való hozzáférést. Az erőforrások az Azure AD-szervezet részét lehetnek, például az objektumok azure AD-n belüli szerepkörökön keresztüli vagy a szervezeten kívüli, például a Szoftver, szolgáltatás (SaaS) alkalmazások, az Azure-szolgáltatások, a SharePoint-webhelyek és a helyszíni erőforrások kezelésére vonatkozó engedélyeket.
 
 >[!NOTE]
->Az Azure Active Directory használatához Azure-fiókra lesz szükség. Ha nincs fiókja, [regisztrálhat egy ingyenes Azure-fiókot](https://azure.microsoft.com/free/).
->
 > Az Azure Portalon láthatja azon csoportokat, amelyek tagságát és csoportadatait nem kezelheti a portálon:
 >
 > - A helyszíni Active Directoryból szinkronizált csoportok csak a helyszíni Active Directoryban kezelhetők.

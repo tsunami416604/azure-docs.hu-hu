@@ -16,12 +16,12 @@ ms.date: 06/25/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5486a8d8bd4c295f49e0ab847daf45d0fcab47ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3f6b698922440c6e3e9b488cca93ca8d98d9c59
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300536"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983075"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Az Azure AD Connect szinkronizálási szolgáltatás jellemzői
 
@@ -89,12 +89,14 @@ Set-MsolDirSyncFeature -Feature EnableSoftMatchOnUpn -Enable $true
 
 ## <a name="synchronize-userprincipalname-updates"></a>UserPrincipalName frissítések szinkronizálása
 
-A UserPrincipalName attribútum frissítései a helyszíni szinkronizálási szolgáltatás használatával korábban le vannak tiltva, kivéve, ha mindkét feltétel teljesül:
+A userprincipalname attribútum frissítései a helyszíni szinkronizálási szolgáltatás használatával korábban le vannak tiltva, kivéve, ha mindkét feltétel teljesül:
 
 * A felhasználó felügyelt (nem összevont).
 * A felhasználóhoz nincs licenc rendelve.
 
-További információt a [Felhasználónevek az Office 365-ben, az Azure-ban vagy az Intune-ban nem egyeznek meg a helyszíni UPN-nek vagy a másodlagos bejelentkezési azonosítónak.](https://support.microsoft.com/kb/2523192)
+> [!NOTE]
+> 2019 márciusától az upn-módosítások szinkronizálása az összevont felhasználói fiókokhoz engedélyezett.
+> 
 
 A szolgáltatás engedélyezése lehetővé teszi, hogy a szinkronizálási motor frissítse a userPrincipalName, ha a helyszínen módosul, és használja a jelszó kivonatoló szinkronizálás vagy átadó hitelesítés.
 

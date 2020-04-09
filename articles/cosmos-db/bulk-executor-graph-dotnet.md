@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: cf51d418a008d332bfcea01a7a9dc1a265116e29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adf512fc521ef553f0bbd6ef6dd8ee19e398b37b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75442171"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982703"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>A graph tömeges végrehajtó .NET-kódtár használatával tömeges műveleteket hajthat végre az Azure Cosmos DB Gremlin API-ban
 
 Ez az oktatóanyag az Azure CosmosDB tömeges végrehajtó . Ez a folyamat a tömeges [végrehajtó könyvtár](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-overview) Graph osztályát használja a Vertex és edge objektumok programozott létrehozásához, hogy hálózati kérelemenként több objektumot szúrjon be. Ez a viselkedés a tömeges végrehajtó könyvtáron keresztül konfigurálható az adatbázis és a helyi memória erőforrások optimális kihasználásához.
 
-A Gremlin-lekérdezések adatbázisba küldésével ellentétben, ahol a parancs kiértékelése, majd végrehajtása egyenként történik, a tömeges végrehajtó könyvtár használatával ehelyett helyileg kell létrehozni és érvényesíteni az objektumokat. Az objektumok létrehozását követően a kódtár használatával a gráfobjektumokat szekvenciálisan küldheti az adatbázis-szolgáltatásba. Ezzel a módszerrel az adatfeldolgozási sebesség akár a százszorosára növelhető, ami ideális módszerré teszi a kezdeti adatmigrálásokhoz és az időszakos adatátviteli műveletekhez. További információ az [Azure Cosmos DB Graph tömeges végrehajtó mintaalkalmazásGitHub-oldalán.](https://aka.ms/graph-bulkexecutor-sample)
+A Gremlin-lekérdezések adatbázisba küldésével ellentétben, ahol a parancs kiértékelése, majd végrehajtása egyenként történik, a tömeges végrehajtó könyvtár használatával ehelyett helyileg kell létrehozni és érvényesíteni az objektumokat. Az objektumok létrehozását követően a kódtár használatával a gráfobjektumokat szekvenciálisan küldheti az adatbázis-szolgáltatásba. Ezzel a módszerrel az adatfeldolgozási sebesség akár a százszorosára növelhető, ami ideális módszerré teszi a kezdeti adatmigrálásokhoz és az időszakos adatátviteli műveletekhez. További információ az [Azure Cosmos DB Graph tömeges végrehajtó mintaalkalmazásGitHub-oldalán.](https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started)
 
 ## <a name="bulk-operations-with-graph-data"></a>Tömeges gráfadatműveletek
 
@@ -120,7 +120,7 @@ e.AddProperty("customProperty", "value");
 * Git. További információért tekintse meg a [Git letöltési oldalát](https://git-scm.com/downloads).
 
 ### <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
-Ebben az oktatóanyagban az [Azure Cosmos DB Graph tömeges végrehajtó minta](https://aka.ms/graph-bulkexecutor-sample) GitHubon üzemeltetett használatával az első lépések végrehajtásával hajtjuk végre. Ez az alkalmazás egy .NET-megoldást tartalmaz, amely véletlenszerűen állít elő csúcspont és él objektumokat, majd tömeges beszúrásokat hajt végre a megadott gráfadatbázis-fiókba. Az alkalmazás lekéréséhez futtassa az alábbi `git clone` parancsot:
+Ebben az oktatóanyagban az [Azure Cosmos DB Graph tömeges végrehajtó minta](https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started) GitHubon üzemeltetett használatával az első lépések végrehajtásával hajtjuk végre. Ez az alkalmazás egy .NET-megoldást tartalmaz, amely véletlenszerűen állít elő csúcspont és él objektumokat, majd tömeges beszúrásokat hajt végre a megadott gráfadatbázis-fiókba. Az alkalmazás lekéréséhez futtassa az alábbi `git clone` parancsot:
 
 ```bash
 git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started.git

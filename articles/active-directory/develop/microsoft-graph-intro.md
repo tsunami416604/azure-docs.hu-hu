@@ -1,5 +1,5 @@
 ---
-title: Microsoft Graph API | Microsoft dokumentumok
+title: Microsoft Graph API
 description: A Microsoft Graph API egy RESTful webes API, amely lehetővé teszi a Microsoft Cloud szolgáltatás erőforrásainak elérését.
 author: davidmu1
 services: active-directory
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
-ms.openlocfilehash: 6c1b4390282f6d54178365714b1e2e665b4cf061
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 67dbf696903e7a930d75762deb00ad58ed1a4f69
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136500"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886466"
 ---
 # <a name="microsoft-graph-api"></a>Microsoft Graph API
 

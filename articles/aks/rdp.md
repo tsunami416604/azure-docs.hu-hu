@@ -1,15 +1,16 @@
 ---
-title: RDP az Azure Kubernetes Szolgáltatás (AKS) fürtwindows Server csomópontjaiba
+title: RDP–AKS Windows Server-csomópontok
+titleSuffix: Azure Kubernetes Service
 description: Ismerje meg, hogyan hozhat létre RDP-kapcsolatot az Azure Kubernetes-szolgáltatás (AKS) fürt Windows Server-csomópontjaival hibaelhárítási és karbantartási feladatokhoz.
 services: container-service
 ms.topic: article
 ms.date: 06/04/2019
-ms.openlocfilehash: 897504aa9902d0feaf4245c719d3a4a3c6fd2241
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 140d59894b38c7f07f16b0ac3cf99316c201d120
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77594481"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886789"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>Csatlakozás rdp-vel az Azure Kubernetes Service (AKS) fürt Windows Server csomópontjaihoz karbantartás vagy hibaelhárítás érdekében
 

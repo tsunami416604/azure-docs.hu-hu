@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 11/28/2019
-ms.openlocfilehash: 69acfd4f2edab9be1b1dcfbb52eafbd00aec712f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/31/2020
+ms.openlocfilehash: dea7e8d5679c8c5a14d6a4253b8a4b36343e6ed8
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75934561"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887095"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>A Hue telepítése és használata HDInsight Hadoop-fürtökön
 
@@ -51,7 +51,7 @@ Használja az alábbi táblázatban található információkat a parancsfájl-m
 
 ## <a name="use-hue-with-hdinsight-clusters"></a>A Hue használata HDInsight-fürtökkel
 
-SSH tunneling az egyetlen módja annak, hogy a fürt önfuttatását követően a Hue eléréséhez. Az SSH-n keresztüli bújtatás lehetővé teszi, hogy a forgalom közvetlenül a Hue-t futtató fürt csomópontjára lépjen. Miután a fürt kiépített, a következő lépésekkel használja a Hue-t egy HDInsight-fürtön.
+Csak egy, a Hue-val rendelkező felhasználói fiók lehet a normál fürtökön. Többfelhasználós hozzáférés esetén engedélyezze a [vállalati biztonsági csomagot](./domain-joined/hdinsight-security-overview.md) a fürtön. SSH tunneling az egyetlen módja annak, hogy a fürt önfuttatását követően a Hue eléréséhez. Az SSH-n keresztüli bújtatás lehetővé teszi, hogy a forgalom közvetlenül a Hue-t futtató fürt csomópontjára lépjen. Miután a fürt kiépített, a következő lépésekkel használja a Hue-t egy HDInsight-fürtön.
 
 > [!NOTE]  
 > Javasoljuk, hogy a Firefox böngészőt használja az alábbi utasítások követéséhez.
@@ -115,7 +115,7 @@ SSH tunneling az egyetlen módja annak, hogy a fürt önfuttatását követően 
 
 1. A Hue nem érti az Apache Tez-feladatokat, ami a Hive jelenlegi alapértelmezett beállítása. Ha a MapReduce programot szeretné használni a Hive végrehajtási motorjaként, frissítse a parancsfájlt úgy, hogy a parancsfájlban a következő parancsot használja:
 
-        set hive.execution.engine=mr;
+         set hive.execution.engine=mr;
 
 1. Linux-fürtök, egy forgatókönyv, amelyben a szolgáltatások futnak az elsődleges csomópont, míg az erőforrás-kezelő lehet, hogy fut a másodlagos. Egy ilyen forgatókönyv hibákat okozhat (alább látható), ha a Hue használatával a fürtön futó feladatok részleteinek megtekintéséhez. A feladat részleteit azonban megtekintheti, ha a feladat befejeződött.
 

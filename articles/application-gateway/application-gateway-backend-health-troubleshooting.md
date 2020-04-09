@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: surmb
-ms.openlocfilehash: 71e1f8be2af5556d86996175e8a1ddbccc9c7de1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a16120194b1b8015466005f42336828c2b4ace6c
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72001671"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983840"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Háttérrendszer-állapotokkal kapcsolatos problémák elhárítása az Application Gateway alkalmazásban
 ==================================================
@@ -157,7 +157,7 @@ Azt is ellenőrizze, hogy az NSG/UDR/Firewall blokkolja-e a hozzáférést a há
 
     a.  Nyisson meg egy parancssort\> (Win+R - cmd), írja be `netstat`a t, és válassza az Enter lehetőséget.
 
-    b.  Ellenőrizze, hogy a kiszolgáló figyeli-e a konfigurált portot. Példa:
+    b.  Ellenőrizze, hogy a kiszolgáló figyeli-e a konfigurált portot. Például:
     ```
             Proto Local Address Foreign Address State PID
             TCP 0.0.0.0:80 0.0.0.0:0 LISTENING 4
@@ -170,7 +170,7 @@ Azt is ellenőrizze, hogy az NSG/UDR/Firewall blokkolja-e a hozzáférést a há
 
 **Üzenet:** A háttérrendszer\'HTTP-válaszának állapotkódja nem egyezik meg a mintavételi beállítással. Várt:{HTTPStatusCode0} beérkezett:{HTTPStatusCode1}.
 
-**Ok:** A TCP-kapcsolat létrehozása és az SSL-kézfogás befejezése után (ha az SSL engedélyezve van), az Application Gateway http GET-kérelemként elküldi a mintavételt a háttérkiszolgálónak. Ahogy korábban már korábban \<leírtuk, az alapértelmezett mintavétel a\>\<(protokoll: a(z) ://127.0.0.1 protokoll: port\>/, és a 200 és 399 közötti dühben a válaszállapot-kódokat kifogástalannak tekinti. Ha a kiszolgáló bármilyen más állapotkódot ad vissza, ezzel az üzenettel nem kifogástalanként lesz megjelölve.
+**Ok:** A TCP-kapcsolat létrehozása és a TLS-kézfogás befejezése után (ha a TLS engedélyezve van), az Application Gateway http GET-kérelemként elküldi a mintavételt a háttérkiszolgálónak. Ahogy korábban már korábban \<leírtuk, az alapértelmezett mintavétel a\>\<(protokoll: a(z) ://127.0.0.1 protokoll: port\>/, és a 200 és 399 közötti dühben a válaszállapot-kódokat kifogástalannak tekinti. Ha a kiszolgáló bármilyen más állapotkódot ad vissza, ezzel az üzenettel nem kifogástalanként lesz megjelölve.
 
 **Megoldás:** A háttérkiszolgáló válaszkódjától függően a következő lépéseket teheti meg. Néhány a közös állapot kódok itt felsorolt:
 
@@ -208,7 +208,7 @@ További információ az [Application Gateway mintavételezéséről.](https://d
 **Üzenet:** A háttérrendszer által használt kiszolgálói tanúsítványt nem írja alá egy jól ismert hitelesítésszolgáltató. Az alkalmazásátjáró háttérrendszerének engedélyezési listázása a háttérrendszer által használt kiszolgálói tanúsítvány főtanúsítványának feltöltésével.
 
 **Ok:** Az Alkalmazás-átjáró v2-vel rendelkező végpontok között az SSL-t ellenőrizni kell a háttérkiszolgáló tanúsítványának ellenőrzése érdekében ahhoz, hogy a kiszolgáló kifogástalan állapotúnak minősüljön.
-Az SSL-tanúsítványok megbízhatóságához a háttérkiszolgáló tanúsítványát az Application Gateway megbízható tárolójában található hitelesítésszolgáltatónak kell kiállítania. Ha a tanúsítványt nem megbízható hitelesítésszolgáltató bocsátotta ki (például önaláírt tanúsítvány t használták), a felhasználóknak fel kell tölteniük a kiállító tanúsítványát az Application Gateway alkalmazásba.
+Ahhoz, hogy egy TLS/SSL-tanúsítvány megbízható legyen, a háttérkiszolgáló tanúsítványát az Application Gateway megbízható tárolójában található hitelesítésszolgáltatónak kell kiállítania. Ha a tanúsítványt nem megbízható hitelesítésszolgáltató bocsátotta ki (például önaláírt tanúsítvány t használták), a felhasználóknak fel kell tölteniük a kiállító tanúsítványát az Application Gateway alkalmazásba.
 
 **Megoldás:** Az alábbi lépésekkel exportálhatja és feltöltheti a megbízható főtanúsítványt az Application Gateway alkalmazásba. (Ezek a lépések a Windows-ügyfelekre vannak.)
 
@@ -241,7 +241,7 @@ A megbízható főtanúsítványok alkalmazásátjáróban történő kibontás�
 **Üzenet:** A háttérrendszer által használt kiszolgálói tanúsítvány főtanúsítványa nem egyezik meg az alkalmazásátjáróhoz hozzáadott megbízható főtanúsítványsal. Győződjön meg arról, hogy a megfelelő főtanúsítványt adja hozzá a háttérlistához
 
 **Ok:** Az Alkalmazás-átjáró v2-vel rendelkező végpontok között az SSL-t ellenőrizni kell a háttérkiszolgáló tanúsítványának ellenőrzése érdekében ahhoz, hogy a kiszolgáló kifogástalan állapotúnak minősüljön.
-Az SSL-tanúsítványok megbízhatóságához a háttérkiszolgálói tanúsítványt az Application Gateway megbízható tárolójában található hitelesítésszolgáltatónak kell kiállítania. Ha a tanúsítványt nem megbízható hitelesítésszolgáltató bocsátotta ki (például önaláírt tanúsítványt használtak), a felhasználóknak fel kell tölteniük a kiállító tanúsítványát az Application Gateway alkalmazásba.
+Ahhoz, hogy egy TLS/SSL-tanúsítvány megbízható legyen, a háttérkiszolgálói tanúsítványt az Application Gateway megbízható tárolójában található hitelesítésszolgáltatónak kell kiállítania. Ha a tanúsítványt nem megbízható hitelesítésszolgáltató bocsátotta ki (például önaláírt tanúsítványt használtak), a felhasználóknak fel kell tölteniük a kiállító tanúsítványát az Application Gateway alkalmazásba.
 
 Az Application Gateway HTTP-beállításaiba feltöltött tanúsítványnak meg kell egyeznie a háttérkiszolgálói tanúsítvány főtanúsítványával.
 
@@ -253,7 +253,7 @@ A megbízható főtanúsítványok alkalmazásátjáróban történő kibontás�
 > [!NOTE]
 > Ez a hiba akkor is előfordulhat, ha a háttérkiszolgáló nem cseréli ki a tanúsítvány teljes láncát, beleértve a Root > Intermediate (ha van ilyen) > Leaf-et a TLS-kézfogás során. Az ellenőrzéshez bármely ügyfél OpenSSL parancsait használhatja, és az Alkalmazásátjáró mintavételben beállított beállításokkal csatlakozhat a háttérkiszolgálóhoz.
 
-Példa:
+Például:
 ```
 OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 ```
@@ -280,7 +280,7 @@ Ha a kimenet nem jeleníti meg a visszaküldött tanúsítvány teljes láncát,
 
 **Üzenet:** A háttértanúsítvány köznapi neve (CN) nem egyezik meg a mintavétel gazdagépfejlécével.
 
-**Ok:** Az Application Gateway ellenőrzi, hogy a háttérrendszer HTTP-beállításaiban megadott állomásnév megegyezik-e a háttérkiszolgáló SSL-tanúsítványa által bemutatott KN-névnévvel. Ez Standard_v2 és WAF_v2 termékváltozat viselkedése. A standard és waf termékváltozat kiszolgálónév-jelzése (SNI) a háttérkészlet címében teljes tartománynévként van beállítva.
+**Ok:** Az Application Gateway ellenőrzi, hogy a háttérrendszer HTTP-beállításaiban megadott állomásnév megegyezik-e a háttérkiszolgáló TLS/SSL-tanúsítványa által bemutatott KN-névnévvel. Ez Standard_v2 és WAF_v2 termékváltozat viselkedése. A standard és waf termékváltozat kiszolgálónév-jelzése (SNI) a háttérkészlet címében teljes tartománynévként van beállítva.
 
 A v2 termékváltozatban, ha van egy alapértelmezett mintavétel (nincs egyéni mintavétel konfigurálva és társítva), SNI lesz beállítva a HTTP-beállításokban említett állomásnév. Vagy ha a HTTP-beállításokban szerepel a "Host name from backend address" szó, ahol a háttércímkészlet érvényes teljes tartománynevet tartalmaz, akkor ez a beállítás lesz alkalmazva.
 
@@ -321,9 +321,9 @@ Linuxos OpenSSL esetén:
 
 **Üzenet:** A háttértanúsítvány érvénytelen. Az aktuális dátum \"nincs\" a \"tanúsítvány\" Érvényesség kezdete és érvényessége a dátumtartományon belül.
 
-**Ok:** Minden tanúsítvány hoz egy érvényességi tartományt, és a HTTPS-kapcsolat csak akkor lesz biztonságos, ha a kiszolgáló SSL-tanúsítványa érvényes. Az aktuális adatoknak az **érvényes from to** és **érvényes** tartományon belül kell lenniük. Ha nem, a tanúsítvány érvénytelennek minősül, és ez olyan biztonsági problémát okoz, amely nek amelyben az Application Gateway a háttérkiszolgálót nem kifogástalanállapotúként jelöli meg.
+**Ok:** Minden tanúsítvány hoz egy érvényességi tartományt, és a HTTPS-kapcsolat csak akkor lesz biztonságos, ha a kiszolgáló TLS/SSL tanúsítványa érvényes. Az aktuális adatoknak az **érvényes from to** és **érvényes** tartományon belül kell lenniük. Ha nem, a tanúsítvány érvénytelennek minősül, és ez olyan biztonsági problémát okoz, amely nek amelyben az Application Gateway a háttérkiszolgálót nem kifogástalanállapotúként jelöli meg.
 
-**Megoldás:** Ha az SSL-tanúsítvány lejárt, újítsa meg a tanúsítványt a szállítóval, és frissítse a kiszolgáló beállításait az új tanúsítvánnyal. Ha önaláírt tanúsítványról van szó, létre kell hoznia egy érvényes tanúsítványt, és fel kell töltenie a főtanúsítványt az Application Gateway HTTP-beállításaiba. Ehhez kövesse az alábbi lépéseket:
+**Megoldás:** Ha a TLS/SSL tanúsítvány lejárt, újítsa meg a tanúsítványt a szállítóval, és frissítse a kiszolgáló beállításait az új tanúsítvánnyal. Ha önaláírt tanúsítványról van szó, létre kell hoznia egy érvényes tanúsítványt, és fel kell töltenie a főtanúsítványt az Application Gateway HTTP-beállításaiba. Ehhez kövesse az alábbi lépéseket:
 
 1.  Nyissa meg az Application Gateway HTTP-beállításait a portálon.
 
@@ -333,7 +333,7 @@ Linuxos OpenSSL esetén:
 
 #### <a name="certificate-verification-failed"></a>A tanúsítvány ellenőrzése nem sikerült
 
-**Üzenet:** A háttértanúsítvány érvényessége nem ellenőrizhető. Az ok megkereséséhez ellenőrizze a {errorCode} hibakóddal társított üzenet SSL-diagnosztikájának megnyitását.
+**Üzenet:** A háttértanúsítvány érvényessége nem ellenőrizhető. Az ok kiderítéséhez ellenőrizze a(z) {errorCode} hibakóddal kapcsolatos üzenet OpenSSL-diagnosztikájának ellenőrzését.
 
 **Ok:** Ez a hiba akkor fordul elő, ha az Application Gateway nem tudja ellenőrizni a tanúsítvány érvényességét.
 

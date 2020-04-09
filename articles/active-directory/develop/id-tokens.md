@@ -1,5 +1,5 @@
 ---
-title: Microsoft identity platformazonosító tokenjának hivatkozása | Microsoft dokumentumok
+title: Microsoft identity platformazonosító tokenjére vonatkozó hivatkozás
 description: Ismerje meg, hogyan használhatja az Azure AD 1.0-s és a Microsoft Identity platform (2.0-s verzió) végpontok által kibocsátott id_tokens.
 services: active-directory
 author: rwike77
@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 1efd027edb85cabcfdc2a170771ef19182b5c9f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3ede70719c124caebc541df8578ab2720fc68cd5
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77160950"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885514"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft-identitásplatform-azonosító tokenjei
 

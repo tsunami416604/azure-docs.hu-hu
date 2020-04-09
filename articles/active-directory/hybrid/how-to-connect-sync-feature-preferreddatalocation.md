@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a71c5328c6fa85f85db4bd7e6103f6470b86d99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 723411191d0990583d039a0fc9651437480807b4
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80258328"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983262"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect szinkronizálása: Az Office 365-erőforrások előnyben részesített adathelyének konfigurálása
 Ez a témakör célja, hogy végigvezeti, hogyan konfigurálja az attribútumot az előnyben részesített adatok helyét az Azure Active Directory (Azure AD) Connect szinkronizálás. Ha valaki multi-geo funkciókat használ az Office 365-ben, ezzel az attribútummal kijelölheti a felhasználó Office 365-adatainak földrajzi helyét. (A *régió* és *a földrajzi* terület kifejezések szinonimaként használatosak.)
@@ -51,6 +51,7 @@ Az Office 365-ben a Multi-Geo számára elérhető geos a következő:
 | Japán | JPN |
 | Dél-Korea | KOR |
 | Dél-afrikai Köztársaság | ZAF között |
+| Svájc | Che |
 | Egyesült Arab Emírségek | VANNAK |
 | Egyesült Királyság | Gbr |
 | Egyesült Államok | Nam |

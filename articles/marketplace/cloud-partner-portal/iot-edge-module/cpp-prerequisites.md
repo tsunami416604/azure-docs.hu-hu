@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 93e0418004ea65f93ad436eec1ce523424a194ba
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 9a54b31725d14a3ff54bd2d945cd69f4b8769b87
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80744983"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983177"
 ---
 # <a name="iot-edge-module-publishing-prerequisites"></a>IoT Edge-modul közzétételi előfeltételei
 
 >[!Important]
->2020. március 30-tól megkezdjük az IoT Edge modulajánlatok kezelését a Partner Centerbe. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [IoT Edge-modulajánlat létrehozása](https://aka.ms/AzureCreateIoT) az áttelepített ajánlatok kezeléséhez kövesse az utasításokat.
+>2020. április 13-tól megkezdjük az IoT Edge modulajánlatok kezelését a Partner Centerbe. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [IoT Edge-modulajánlat létrehozása](https://aka.ms/AzureCreateIoT) az áttelepített ajánlatok kezeléséhez kövesse az utasításokat.
 
 Ez a cikk ismerteti az IoT Edge-modulajánlat közzétételének előfeltételeit.  Ha még nem tette meg, tekintse át az [IoT Edge-modulok közzétételi útmutatóját.](../..//iot-edge-module.md)
 

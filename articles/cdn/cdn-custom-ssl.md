@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/1/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: f1af388d1f8b9542d196a53cc6c143f9b48e6d5a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f27adb6098ac339ee188b3e84e1c225faa9f72a6
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238719"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892495"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Oktatóanyag: HTTPS konfigurálása Azure CDN egyéni tartományon
 
@@ -58,8 +58,8 @@ Emellett CDN-végpontjához társítania kell egy Azure CDN egyéni tartományt.
 
 ---
 
-## <a name="ssl-certificates"></a>SSL-tanúsítványok
-Ha HTTPS protokollt szeretne engedélyezni egy egyéni Azure CDN-tartomány tartalmának biztonságos továbbítása érdekében, SSL-tanúsítványt kell használnia. Az Azure CDN által kezelt vagy saját tanúsítványt használhat.
+## <a name="tlsssl-certificates"></a>TLS/SSL tanúsítványok
+Ahhoz, hogy a HTTPS protokoll biztonságosan kézbesítse a tartalmat egy Azure CDN egyéni tartományban, TLS/SSL tanúsítványt kell használnia. Az Azure CDN által kezelt vagy saját tanúsítványt használhat.
 
 
 # <a name="option-1-default-enable-https-with-a-cdn-managed-certificate"></a>[1. lehetőség (alapértelmezett): A HTTPS engedélyezése a CDN által kezelt tanúsítvánnyal](#tab/option-1-default-enable-https-with-a-cdn-managed-certificate)
@@ -99,7 +99,7 @@ Kövesse az alábbi lépéseket a HTTPS engedélyezéséhez egy egyéni tartomá
 > Ez a beállítás csak a **Microsoft Azure CDN és** a **Verizon-profilokazure-CDN-je** esetén érhető el. 
 >
  
-A saját tanúsítványát is használhatja a HTTPS szolgáltatás engedélyezéséhez. Ez a folyamat Azure Key Vault-integrációval történik, amely lehetővé teszi a tanúsítványok biztonságos tárolását. Az Azure CDN ezt a biztonságos mechanizmust használja a tanúsítvány beszerzéséhez, és néhány további lépést igényel. SSL-tanúsítványt egy engedélyezett hitelesítésszolgáltatóval (CA) kell létrehoznia. Másként, nem engedélyezett CA használata igénybe vétele esetén a kérelme vissza lesz utasítva. Az engedélyezett hitelesítésszolgáltatók listáját az Engedélyezett hitelesítésszolgáltatók az [Azure CDN-en az egyéni HTTPS engedélyezéséhez.](cdn-troubleshoot-allowed-ca.md) A **Verizon azure CDN-je**esetén a minden érvényes hitelesítésszerződés elfogadásra kerül. 
+A saját tanúsítványát is használhatja a HTTPS szolgáltatás engedélyezéséhez. Ez a folyamat Azure Key Vault-integrációval történik, amely lehetővé teszi a tanúsítványok biztonságos tárolását. Az Azure CDN ezt a biztonságos mechanizmust használja a tanúsítvány beszerzéséhez, és néhány további lépést igényel. A TLS/SSL-tanúsítvány létrehozásakor létre kell hoznia egy engedélyezett hitelesítésszolgáltatóval. Másként, nem engedélyezett CA használata igénybe vétele esetén a kérelme vissza lesz utasítva. Az engedélyezett hitelesítésszolgáltatók listáját az Engedélyezett hitelesítésszolgáltatók az [Azure CDN-en az egyéni HTTPS engedélyezéséhez.](cdn-troubleshoot-allowed-ca.md) A **Verizon azure CDN-je**esetén a minden érvényes hitelesítésszerződés elfogadásra kerül. 
 
 ### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Az Azure Key Vault-fiók és a tanúsítvány előkészítése
  
@@ -308,7 +308,7 @@ Az alábbi táblázat a műveleti folyamatot mutatja, amely a HTTPS letiltásako
 
 4. *A SAN tanúsítvány használata kevésbé biztonságos, mint egy dedikált tanúsítvány használata?*
     
-    A SAN-tanúsítvány ugyanolyan titkosítási és biztonsági előírásokat követ, mint a dedikált tanúsítvány. Az összes kiállított SSL-tanúsítvány az SHA-256-ot használja a kiszolgáló fokozott biztonsága érdekében.
+    A SAN-tanúsítvány ugyanolyan titkosítási és biztonsági előírásokat követ, mint a dedikált tanúsítvány. Minden kiadott TLS/SSL tanúsítvány SHA-256-ot használ a fokozott kiszolgálóbiztonság érdekében.
 
 5. *Szükségem van hitelesítésszolgáltató engedélyezési rekordra a DNS szolgáltatómnál?*
 
@@ -320,7 +320,7 @@ Az alábbi táblázat a műveleti folyamatot mutatja, amely a HTTPS letiltásako
 
 7. *Hogyan működnek a cert-megújítások a Saját tanúsítvány magával hozása segítségével?*
 
-    Annak érdekében, hogy egy újabb tanúsítvány telve legyen a PoP-infrastruktúrában, egyszerűen töltse fel az új tanúsítványt az Azure KeyVault-ba, majd az SSL-beállítások ban az Azure CDN-en válassza ki a legújabb tanúsítványverziót, és nyomja meg a mentésgombot. Az Azure CDN ezután propagálja az új frissített tanúsítványt. 
+    Annak érdekében, hogy egy újabb tanúsítvány telve legyen a PoP-infrastruktúrára, egyszerűen töltse fel az új tanúsítványt az Azure KeyVault-ba, majd az Azure CDN TLS-beállításaiban válassza ki a legújabb tanúsítványverziót, és nyomja meg a mentésgombot. Az Azure CDN ezután propagálja az új frissített tanúsítványt. 
 
 ## <a name="next-steps"></a>További lépések
 

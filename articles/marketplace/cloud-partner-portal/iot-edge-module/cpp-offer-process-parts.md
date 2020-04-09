@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 73b1d93cc7f6325a5319b632aa7f827d9ee6303c
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 20c76cec82944568c1b16694bef2838626b90b03
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745048"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983347"
 ---
 # <a name="iot-edge-module-offer-publishing-overview"></a>Az IoT Edge modul közzétételi áttekintést kínál
 
 >[!Important]
->2020. március 30-tól megkezdjük az IoT Edge modulajánlatok kezelését a Partner Centerbe. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [IoT Edge-modulajánlat létrehozása](https://aka.ms/AzureCreateIoT) az áttelepített ajánlatok kezeléséhez kövesse az utasításokat.
+>2020. április 13-tól megkezdjük az IoT Edge modulajánlatok kezelését a Partner Centerbe. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [IoT Edge-modulajánlat létrehozása](https://aka.ms/AzureCreateIoT) az áttelepített ajánlatok kezeléséhez kövesse az utasításokat.
 
 <table> <tr> <td>Ez a szakasz bemutatja, hogyan tehet közzé egy új Azure IoT Edge-modulajánlatot a Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Piactéren.</a> Az IoT Edge-modul egy Docker-kompatibilis tároló, amely ioT Edge-eszközön való futtatásra készült. Az Azure IoT Edge-modulok az IoT Edge által kezelt legkisebb számítási egység, és tartalmazhatnak Azure-szolgáltatásokat vagy egyéni megoldáskódot. </td> <td><img src="./media/iotedge-icon1.png"  alt="Azure IoT Edge module icon" /></td> </tr> </table>
 
@@ -38,7 +38,7 @@ Az IoT Edge-modulajánlat közzétételének magas szintű lépései a következ
 Az alábbi cikkek az IoT Edge-modulajánlat kulcsfontosságú részeit ismertetik.
 
 - [Előfeltételek](./cpp-prerequisites.md) <br>Ez a cikk felsorolja a technikai és üzleti követelményeket, mielőtt létrehozna vagy közzétehetne egy IoT Edge-modulajánlatot.
-- [IoT Edge modul technikai eszközeinek előkészítése](./cpp-create-technical-assets.md) <br>Ez a cikk ismerteti, hogyan készítse elő a technikai eszközöket egy IoT Edge-modul. Ezeknek az eszközöknek meg kell felelniük az összes szükséges technikai feltételnek, mielőtt az IoT Edge-modul közzétehető az Azure Marketplace-en.
+- [IoT Edge-modulok technikai eszközeinek előkészítése](./cpp-create-technical-assets.md) <br>Ez a cikk ismerteti, hogyan készítse elő a technikai eszközöket egy IoT Edge-modul. Ezeknek az eszközöknek meg kell felelniük az összes szükséges technikai feltételnek, mielőtt az IoT Edge-modul közzétehető az Azure Marketplace-en.
 - [IoT Edge-modulajánlat létrehozása](./cpp-create-offer.md) <br>Ez a cikk felsorolja az új IoT Edge-modul ajánlati bejegyzésének létrehozásához szükséges lépéseket a [Cloud Partner Portal](https://cloudpartner.azure.com)használatával.
 - [IoT Edge-modulajánlat közzététele](./cpp-publish-offer.md)<br> Ez a cikk ismerteti, hogyan küldheti el az ajánlatot az Azure Marketplace-en való közzétételre.
 

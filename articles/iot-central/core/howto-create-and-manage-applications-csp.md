@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 5d876d7db13ce73603f212ec11544cb2f680bf46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02481d5dcbaba15c9b17a27348207d9af64f3355
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158180"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982038"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Azure IoT Central alkalmazás létrehozása és kezelése a CSP-portálról
 
@@ -33,7 +33,7 @@ Az Azure IoT Central Application Manager lapon jelenik meg. Az Azure IoT Central
 
 ![Menedzser létrehozása kripta-k számára](media/howto-create-and-manage-applications-csp/image3.png)
 
-Azure IoT Central alkalmazás létrehozásához válassza a **Build parancsot** a bal oldali menüben. Válasszon egyet az iparági sablonok közül, vagy válassza az **Örökölt alkalmazás** lehetőséget egy teljesen új alkalmazás létrehozásához. Ezzel betölti az Alkalmazás-létrehozás lapot. Ki kell töltenie a lap összes mezőjét, majd a **Létrehozás gombot kell választania.** Az alábbi mezőkről további információt talál.
+Azure IoT Central alkalmazás létrehozásához válassza a **Build parancsot** a bal oldali menüben. Válasszon egyet az iparági sablonok közül, vagy válassza az **Egyéni alkalmazás** lehetőséget egy teljesen új alkalmazás létrehozásához. Ezzel betölti az Alkalmazás-létrehozás lapot. Ki kell töltenie a lap összes mezőjét, majd a **Létrehozás gombot kell választania.** Az alábbi mezőkről további információt talál.
 
 ![Alkalmazáslap létrehozása kriptip-ek számára](media/howto-create-and-manage-applications-csp/image4.png)
 

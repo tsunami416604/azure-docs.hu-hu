@@ -2,25 +2,21 @@
 title: Microsoft identity platform UWP első lépések | Azure
 description: Hogyan hívhatja meg az Univerzális Windows Platform-alkalmazások (UWP) a Microsoft identity platform végpontja által hozzáférési jogkivonatokat igénylő API-t?
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 68473ff5a3faddd36bd4299dfdc882f679acd068
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f6e7ee1b03dda30bea15a837b6daf6469e00e46d
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79129883"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886398"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Microsoft Graph API hívása univerzális Windows Platform alkalmazásból (XAML)
 
@@ -346,7 +342,7 @@ A következő új módszerrel *MainPage.xaml.cs:*
 
 Most regisztrálnia kell jelentkezését:
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza az **Azure Active Directory** > **alkalmazásregisztrációk lehetőséget.**
 1. Válassza **az Új regisztráció lehetőséget.** Adjon meg egy értelmes alkalmazásnevet, amely megjelenik az alkalmazás felhasználói számára, például *UWP-App-calling-MSGraph*.
 1. A **Támogatott fióktípusok csoportban**válassza a Fiókok lehetőséget **bármely szervezeti címtárban és személyes Microsoft-fiókban (pl. Skype, Xbox),** majd a folytatáshoz válassza a **Regisztráció** lehetőséget.

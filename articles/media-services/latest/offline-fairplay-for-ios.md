@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 70256046089a59df1de79b78124c5d60fde77080
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 41893c2460ecb2d17e3893f867bc460105d57bbd
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76705938"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887214"
 ---
 # <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>Offline FairPlay streaming iOS-hez a Media Services v3-as
 
@@ -203,45 +203,7 @@ Az FPS Server SDK 3-as vagy 4-es verziójával, ha a fő lejátszási lista alte
 
 ## <a name="faq"></a>GYIK
 
-A következő gyakori kérdések segítséget nyújtanak a hibaelhárításhoz:
-
-- **Miért csak a hang játszható le, de a videó offline módban nem?** Ez a viselkedés úgy tűnik, hogy a mintaalkalmazás kialakítása. Ha offline módban egy másik hangsáv is jelen van (ez a HLS esetében is előfordul), akkor az iOS 10 és az iOS 11 alapértelmezés szerint az alternatív hangsávra van. Az FPS offline mód dalának kompenzálása érdekében távolítsa el az alternatív hangsávot az adatfolyamból. Ehhez a Media Services, adja hozzá a dinamikus jegyzékfájl szűrő "audio-only=false." Más szóval a HLS URL-címe .ism/manifest(format=m3u8-aapl,audio-only=false) végződik. 
-- **Miért csak videó nélkül játssza le a hangot offline módban, miután hozzáadtam a csak hang=hamis hangot?** A tartalomkézbesítési hálózat (CDN) gyorsítótárkulcs-kialakításától függően előfordulhat, hogy a tartalom gyorsítótárba kerül. A gyorsítótár kiürítése.
-- **Az FPS offline mód az iOS 11-en is támogatott az iOS 10 mellett?** Igen. Az FPS offline mód támogatott az iOS 10 és az iOS 11 rendszerben.
-- **Miért nem találom az "Offline lejátszás FairPlay streameléssel és HTTP Live Streaming tel" dokumentumot az FPS Server SDK-ban?** Az FPS Server SDK 4-es verziója óta ez a dokumentum beolvadt a "FairPlay Streaming Programming Guide"-ba.
-- **Mi a letöltött/offline fájlstruktúra az iOS-eszközökön?** Az iOS-eszközön letöltött fájlstruktúra a következő képernyőképhez hasonlóan néz ki. A `_keys` mappa tárolja a letöltött FPS-licenceket, minden licencszolgáltatás-állomáshoz egy tárolófájltartozik. A `.movpkg` mappa hang- és videotartalmat tárol. Az első olyan mappa, amelynek neve kötőjellel végződik, majd numerikus, videotartalmat tartalmaz. A numerikus érték a videointerpretációk PeakBandwidth értéke. A második mappa, amelynek neve kötőjellel végződik, majd 0-val, hangtartalmat tartalmaz. A harmadik mappa neve "Adatok" tartalmazza a fő lejátszási listát az FPS tartalmat. Végül a boot.xml fájl teljes `.movpkg` körű leírást ad a mappa tartalmáról. 
-
-![Offline FairPlay iOS mintaalkalmazásfájl-struktúra](media/offline-fairplay-for-ios/offline-fairplay-file-structure.png)
-
-Mintaboot.xml fájl:
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<HLSMoviePackage xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://apple.com/IMG/Schemas/HLSMoviePackage" xsi:schemaLocation="http://apple.com/IMG/Schemas/HLSMoviePackage /System/Library/Schemas/HLSMoviePackage.xsd">
-  <Version>1.0</Version>
-  <HLSMoviePackageType>PersistedStore</HLSMoviePackageType>
-  <Streams>
-    <Stream ID="1-4DTFY3A3VDRCNZ53YZ3RJ2NPG2AJHNBD-0" Path="1-4DTFY3A3VDRCNZ53YZ3RJ2NPG2AJHNBD-0" NetworkURL="https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/QualityLevels(127000)/Manifest(aac_eng_2_127,format=m3u8-aapl)">
-      <Complete>YES</Complete>
-    </Stream>
-    <Stream ID="0-HC6H5GWC5IU62P4VHE7NWNGO2SZGPKUJ-310656" Path="0-HC6H5GWC5IU62P4VHE7NWNGO2SZGPKUJ-310656" NetworkURL="https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/QualityLevels(161000)/Manifest(video,format=m3u8-aapl)">
-      <Complete>YES</Complete>
-    </Stream>
-  </Streams>
-  <MasterPlaylist>
-    <NetworkURL>https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/manifest(format=m3u8-aapl,audio-only=false)</NetworkURL>
-  </MasterPlaylist>
-  <DataItems Directory="Data">
-    <DataItem>
-      <ID>CB50F631-8227-477A-BCEC-365BBF12BCC0</ID>
-      <Category>Playlist</Category>
-      <Name>master.m3u8</Name>
-      <DataPath>Playlist-master.m3u8-CB50F631-8227-477A-BCEC-365BBF12BCC0.data</DataPath>
-      <Role>Master</Role>
-    </DataItem>
-  </DataItems>
-</HLSMoviePackage>
-```
+Tekintse meg [a gyakori kérdéseket, amelyek segítséget nyújtanak a hibaelhárításhoz.](frequently-asked-questions.md#why-does-only-audio-play-but-not-video-during-offline-mode)
 
 ## <a name="next-steps"></a>További lépések
 

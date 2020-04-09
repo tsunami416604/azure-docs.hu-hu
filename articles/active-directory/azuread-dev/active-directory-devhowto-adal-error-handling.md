@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 02/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9fc45ead65a29f2e7567133b5af4667bdb7c79ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8973412b2d6575d524874ba05b34af7661655e19
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154984"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981069"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Az Azure Active Directory hitelesítési kódtárbeli (ADAL) ügyfelekkel kapcsolatos gyakorlati tanácsok kezelése
 
@@ -543,7 +543,7 @@ Adott ADAL-hibák feltárása érdekében az [azure-activedirectory-library-for-
 
 #### <a name="operating-system-errors"></a>Az operációs rendszer hibái
 
-iOS-hibák merülhetnek fel a bejelentkezés során, amikor a felhasználók webes nézeteket használnak, és a hitelesítés jellege. Ezt olyan állapotok okozhatják, mint az SSL-hibák, időkiírások vagy hálózati hibák:
+iOS-hibák merülhetnek fel a bejelentkezés során, amikor a felhasználók webes nézeteket használnak, és a hitelesítés jellege. Ezt olyan körülmények okozhatják, mint a TLS-hibák, időkiírások vagy hálózati hibák:
 
 - A jogosultságmegosztás esetében a bejelentkezések nem állandóak, és a gyorsítótár üresen jelenik meg. A problémamegoldásához adja hozzá a következő kódsort a kulcskarikához:`[[ADAuthenticationSettings sharedInstance] setSharedCacheKeychainGroup:nil];`
 - Az NsUrlDomain hibakészlete esetén a művelet az alkalmazás logikájának függően változik. Az [NSURLErrorDomain referenciadokumentációjában](https://developer.apple.com/documentation/foundation/nsurlerrordomain#declarations) található a kezelhető példányok.

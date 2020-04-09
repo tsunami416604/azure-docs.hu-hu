@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 55fa14f367dbf24e951fde8e9075a34499a510b1
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: f8f21405a79a6fcf70adef9815ba06a229d6954d
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547081"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886976"
 ---
 # <a name="outbound-connections-in-azure"></a>Kimenő kapcsolatok az Azure-ban
 
@@ -193,11 +193,11 @@ Az SNAT-portok kiosztása IP-átviteli protokoll-specifikus (a TCP és az UDP k�
 Ez a szakasz az SNAT-kimerültség csökkentésére szolgál, és amely az Azure-beli kimenő kapcsolatok esetén fordulhat elő.
 
 ### <a name="managing-snat-pat-port-exhaustion"></a><a name="snatexhaust"></a>Az SNAT (PAT) port kimerülésének kezelése
-A [PAT-hez](#pat) használt [ideiglenes portok](#preallocatedports) kimeríthető erőforrások, ahogy azt az [önálló virtuális gép nyilvános IP-cím és](#defaultsnat) nyilvános [IP-cím nélküli, kiegyensúlyozott terhelésű virtuális gép](#lb)írja le.
+A [PAT-hez](#pat) használt [ideiglenes portok](#preallocatedports) kimeríthető erőforrások, ahogy azt az [önálló virtuális gép nyilvános IP-cím és](#defaultsnat) nyilvános [IP-cím nélküli, kiegyensúlyozott terhelésű virtuális gép](#lb)írja le. Figyelemmel kísérheti a rövid élettartamú portok használatát, és összehasonlíthatja az aktuális allokációval az SNAT kilégzés kockázatának meghatározásához vagy az SNAT exhuastion megerősítéséhez [ezzel](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#how-do-i-check-my-snat-port-usage-and-allocation) az útmutatóval.
 
 Ha tudja, hogy számos kimenő TCP- vagy UDP-kapcsolatot kezdeményez ugyanarra a cél IP-címre és portra, és a sikertelen kimenő kapcsolatokat észleli, vagy a támogatás azt tanácsolja, hogy kimeríti az SNAT-portokat (a [PAT](#pat)által használt, előre lefoglalt [ideiglenes portokat),](#preallocatedports) számos általános kockázatcsökkentési lehetőséggel rendelkezik. Tekintse át ezeket a lehetőségeket, és döntse el, hogy mi érhető el, és mi a legjobb a forgatókönyvnek. Lehetséges, hogy egy vagy több segíthet kezelni ezt a forgatókönyvet.
 
-Ha nem érti a kimenő kapcsolat viselkedését, használhatja az IP-verem statisztikáit (netstat). Vagy hasznos lehet a kapcsolat viselkedésének megfigyelése csomagrögzítéssel. Ezeket a csomagrögzítéseket a példány vendég operációs rendszerében hajthatja végre, vagy használhatja [a Network Watcher-t a csomagrögzítéshez.](../network-watcher/network-watcher-packet-capture-manage-portal.md)
+Ha nem érti a kimenő kapcsolat viselkedését, használhatja az IP-verem statisztikáit (netstat). Vagy hasznos lehet a kapcsolat viselkedésének megfigyelése csomagrögzítéssel. Ezeket a csomagrögzítéseket a példány vendég operációs rendszerében hajthatja végre, vagy használhatja [a Network Watcher-t a csomagrögzítéshez.](../network-watcher/network-watcher-packet-capture-manage-portal.md) 
 
 #### <a name="modify-the-application-to-reuse-connections"></a><a name="connectionreuse"></a>Az alkalmazás módosítása a kapcsolatok újrafelhasználásához 
 Az SNAT-hoz használt ideiglenes portok iránti igény csökkenthető az alkalmazás kapcsolatainak újbóli felhasználásával. Ez különösen igaz az olyan protokollokra, mint a HTTP/1.1, ahol a kapcsolat újrafelhasználása az alapértelmezett. És más protokollok, amelyek http-t használnak átvitelként (például REST) előnyösek lehetnek. 

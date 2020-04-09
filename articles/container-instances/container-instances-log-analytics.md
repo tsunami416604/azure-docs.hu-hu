@@ -2,20 +2,22 @@
 title: Erőforrásnaplók gyűjtése & elemzése
 description: Megtudhatja, hogy miként küldhet erőforrásnaplókat és eseményadatokat az Azure Container-példányok tárolócsoportjaiból az Azure Monitor-naplókba
 ms.topic: article
-ms.date: 01/08/2020
+ms.date: 04/07/2020
 ms.author: danlep
-ms.openlocfilehash: 304e98fff386911b878877d2f03d489d0eef5dd7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd21a511641d5ea027c18bedb4dce47749110bcb
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75770543"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892393"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Tárolócsoport- és példánynaplózás az Azure Monitor-naplókkal
 
 A Log Analytics-munkaterületek központi helyet biztosítanak a naplóadatok tárolására és lekérdezésére nem csak az Azure-erőforrásokból, hanem a helyszíni erőforrásokból és más felhőkben lévő erőforrásokból is. Az Azure Container Instances beépített támogatást tartalmaz a naplók és eseményadatok Azure Monitor-naplókba küldéséhez.
 
-Ha tárolócsoport-naplót és eseményadatokat szeretne küldeni az Azure Monitor naplóiba, adjon meg egy meglévő Log Analytics-munkaterület-azonosítót és munkaterületi kulcsot egy tárolócsoport létrehozásakor. A következő szakaszok ismertetik, hogyan hozhat létre egy naplózást engedélyező tárolócsoportot, és hogyan lehet lekérdezni a naplókat.
+Ha tárolócsoport-naplót és eseményadatokat szeretne küldeni az Azure Monitor naplóiba, adjon meg egy meglévő Log Analytics-munkaterület-azonosítót és munkaterületi kulcsot egy tárolócsoport konfigurálásakor. 
+
+A következő szakaszok ismertetik, hogyan hozhat létre egy naplózást engedélyező tárolócsoportot, és hogyan lehet lekérdezni a naplókat. A naplózás engedélyezéséhez munkaterület-azonosítóval és munkaterületi kulccsal is frissítheti a [tárolócsoportot.](container-instances-update.md)
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 

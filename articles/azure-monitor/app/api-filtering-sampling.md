@@ -3,12 +3,12 @@ title: Szűrés és előfeldolgozás az Azure Application Insights SDK-ban | Mic
 description: Telemetriai processzorok és telemetriai inicializálók az SDK-hoz szűrni vagy hozzáadni tulajdonságokat az adatokhoz, mielőtt a telemetriai adatok az Application Insights-portálra.
 ms.topic: conceptual
 ms.date: 11/23/2016
-ms.openlocfilehash: 53b6ecc51961feba35d571eab3115c8e7ccf9964
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 8f2064f73821a017046cbb552a8dcf592ce13267
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366310"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983758"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Telemetriai adatok szűrése és előfeldolgozása az Application Insights SDK-ban
 
@@ -21,7 +21,7 @@ Az Application Insights SDK beépülő moduljait megírhatja és konfigurálhatj
 
 Előkészületek:
 
-* Telepítse az alkalmazáshoz megfelelő SDK-t: [ASP.NET](asp-net.md), [ASP.NET Core](asp-net-core.md), [Nem HTTP/Worker for .NET/.NET Core](worker-service.md), [Java](../../azure-monitor/app/java-get-started.md) vagy [JavaScript](javascript.md)
+* Telepítse az alkalmazáshoz megfelelő SDK-t: [ASP.NET](asp-net.md), [ASP.NET Core](asp-net-core.md), [Nem HTTP/Worker for .NET/.NET Core](worker-service.md)vagy [JavaScript](javascript.md)
 
 <a name="filtering"></a>
 
@@ -203,7 +203,7 @@ public void Process(ITelemetry item)
    ```JS
    var filteringFunction = (envelope) => {
      if (envelope.data.someField === 'tobefilteredout') {
-        return false;
+         return false;
      }
   
      return true;
@@ -227,7 +227,7 @@ Ha telemetriai inicializálót ad meg, akkor a neve akkor lesz, amikor a Track*(
 
 **A inicializáló meghatározása**
 
-*C #*
+*C#*
 
 ```csharp
 using System;
@@ -307,28 +307,8 @@ A core vagy [ASP.NET a](asp-net-core.md#adding-telemetryinitializers) [WorkerSer
     services.AddSingleton<ITelemetryInitializer, MyTelemetryInitializer>();
 }
 ```
-
-### <a name="java-telemetry-initializers"></a>Java telemetriai inicializálók
-
-[Java SDK dokumentáció](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.telemetryinitializer?view=azure-java-stable)
-
-```Java
-public interface TelemetryInitializer
-{ /** Initializes properties of the specified object. * @param telemetry The {@link com.microsoft.applicationinsights.telemetry.Telemetry} to initialize. */
-
-void initialize(Telemetry telemetry); }
-```
-
-Ezután regisztrálja az egyéni inicializálót az applicationinsights.xml fájlban.
-
-```xml
-<Add type="mypackage.MyConfigurableContextInitializer">
-    <Param name="some_config_property" value="some_value" />
-</Add>
-```
-
 ### <a name="javascript-telemetry-initializers"></a>JavaScript telemetriai inicializálók
-*Javascript*
+*JavaScript*
 
 Telemetriai inicializáló beszúrása közvetlenül a portálról kapott inicializálási kód után:
 
@@ -545,4 +525,4 @@ Mi a különbség a telemetriai processzorok és a telemetriai inicializálók k
 ## <a name="next-steps"></a><a name="next"></a>További lépések
 * [Események és naplók keresése](../../azure-monitor/app/diagnostic-search.md)
 * [Mintavételezés](../../azure-monitor/app/sampling.md)
-* [hibaelhárítással](../../azure-monitor/app/troubleshoot-faq.md)
+* [Hibaelhárítás](../../azure-monitor/app/troubleshoot-faq.md)

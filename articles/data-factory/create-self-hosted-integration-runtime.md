@@ -10,13 +10,13 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
-ms.date: 03/10/2020
-ms.openlocfilehash: 6302a7d6ffe7218d339121ec98a624f8e98356f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/13/2020
+ms.openlocfilehash: 3fe5a58046776d00ce68189cf724a995380869eb
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065590"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887298"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Helyi integrációs modul létrehozása és konfigurálása
 
@@ -62,11 +62,14 @@ Az alábbi lépésekkel hozzon létre egy saját üzemeltetésű infravörös az
 
    ![Integrációs modul létrehozása](media/create-self-hosted-integration-runtime/new-integration-runtime.png)
 
-1. Az **Integrációs futásidejű beállítási** ablakban válassza **az Adatmozgatási és -elosztási tevékenységek végrehajtása külső számításokhoz**lehetőséget, majd a **Continue (Folytatás)** lehetőséget.
+1. Az **Integrációs futásidejű beállítási** lapon válassza az **Azure, Self-Hosted**( Integrációs futásidejű beállítási lap) lehetőséget, majd a **Continue (Folytatás)** lehetőséget. 
+
+1. A következő lapon válassza a **Saját üzemeltetésű** infravörös szolgáltatás létrehozásához válassza a Saját üzemeltetésű infravörös kapcsolat választógombot, majd kattintson a **Folytatás gombra.**
+   ![Saját üzemeltetett infravörös kapcsolat létrehozása](media/create-self-hosted-integration-runtime/new-selfhosted-ir.png)
 
 1. Adja meg az infravörös kapcsolat nevét, és válassza a **Létrehozás gombot.**
 
-1. Az **1.** Vagy kövesse a **2.** A következő utasítások a kézi beállításon alapulnak:
+1. Az **Integrációs futásidejű beállítás** lapon válassza az **1.** Vagy kövesse a **2.** A következő utasítások a kézi beállításon alapulnak:
 
    ![Integrációs modul telepítése](media/create-self-hosted-integration-runtime/integration-runtime-setting-up.png)
 

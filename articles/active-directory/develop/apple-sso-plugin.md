@@ -1,5 +1,5 @@
 ---
-title: Microsoft Enterprise Egyszeri bejelentkezés Apple-eszközökhöz
+title: Microsoft Enterprise egyszeri bejelentkezéses beépülő modul Apple-eszközökhöz
 titleSuffix: Microsoft identity platform | Azure
 description: Ismerje meg a Microsoft Azure Active Directory egyszeri bejelentkezést iOS és macOS eszközökhöz.
 services: active-directory
@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 7233a0bba5cf30eab018bfa744a7322303300604
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: a6af1a78582ebf62aed82bad8fa06cac37f511ea
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80550317"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982582"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Microsoft Enterprise Egyszeri bejelentkezés Apple-eszközökhöz (előzetes verzió)
 
@@ -27,7 +27,7 @@ ms.locfileid: "80550317"
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információt a Microsoft Azure előzetes verziók kiegészítő használati feltételei című [témakörben talál.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
-Az *Apple-eszközök Höz készült Microsoft Enterprise Egyszeri bejelentkezés* egyszeri bejelentkezést (SSO) biztosít az Active Directory-fiókokhoz az Apple enterprise single [sign-on](https://developer.apple.com/documentation/authenticationservices) funkcióját támogató összes alkalmazásban. A Microsoft szorosan együttműködött az Apple-lel, hogy kifejlessze ezt a beépülő modult, hogy növelje az alkalmazás használhatóságát, miközben a lehető legjobb védelmet nyújtja az Apple és a Microsoft számára.
+Az *Apple-eszközökhöz készült Microsoft Enterprise Egyszeri bejelentkezés beépülő modul* egyszeri bejelentkezést (SSO) biztosít az Azure Active Directory (Azure AD) fiókokhoz az Apple [enterprise single sign-on](https://developer.apple.com/documentation/authenticationservices) funkcióját támogató összes alkalmazásban. A Microsoft szorosan együttműködött az Apple-lel, hogy kifejlessze ezt a beépülő modult, hogy növelje az alkalmazás használhatóságát, miközben a lehető legjobb védelmet nyújtja az Apple és a Microsoft számára.
 
 Ebben a nyilvános előzetes verzióban a vállalati egyszeri bejelentkezés csak iOS-eszközökön érhető el, és bizonyos Microsoft-alkalmazásokban van terjesztve.
 
@@ -37,7 +37,7 @@ Az Enterprise SSO beépülő modul első használata az új [megosztott eszköz 
 
 Az Apple-eszközök Microsoft Enterprise SSO beépülő modulja a következő előnyökkel jár:
 
-- Egyszeri bejelentkezést biztosít az Active Directory-fiókokhoz az Apple vállalati egyszeri bejelentkezési funkcióját támogató összes alkalmazás számára.
+- Egyszeri bejelentkezés t biztosít az Azure AD-fiókokhoz az Összes olyan alkalmazásban, amely támogatja az Apple vállalati egyszeri bejelentkezési funkcióját.
 - Automatikusan megjelenik a Microsoft Hitelesítőben, és bármely mobileszköz-felügyeleti (MDM) megoldás sal engedélyezhető.
 
 ## <a name="requirements"></a>Követelmények

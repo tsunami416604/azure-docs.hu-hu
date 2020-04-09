@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: sngun
-ms.openlocfilehash: 514982727509788918c159e07f8061962df32336
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e57029e53365fbf99054e2d926296ccca3360663
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77558928"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983602"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK SQL API-hoz: Kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -21,10 +21,10 @@ ms.locfileid: "77558928"
 > * [.NET módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Aszinkron Java](sql-api-sdk-async-java.md)
+> * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [Többi](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
 > * [Tömeges végrehajtó - .NET](sql-api-sdk-bulk-executor-dot-net.md)
@@ -36,10 +36,10 @@ Az SQL API Java SDK támogatja a szinkron műveleteket. Az aszinkron támogatás
 |---|---|
 |**SDK letöltése**|[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)|
 |**API-dokumentáció**|[Java API referenciadokumentációja](/java/api/com.microsoft.azure.documentdb)|
-|**Hozzájárulás az SDK-hoz**|[Github](https://github.com/Azure/azure-documentdb-java/)|
-|**Első lépések**|[Ismerkedés a Java SDK-val](sql-api-java-get-started.md)|
+|**Hozzájárulás az SDK-hoz**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
+|**Bevezetés**|[Ismerkedés a Java SDK-val](sql-api-java-get-started.md)|
 |**Webalkalmazás oktatóanyaga**|[Webalkalmazás-fejlesztés az Azure Cosmos DB-vel](sql-api-java-application.md)|
-|**Minimálisan támogatott futásidő**|[Java Fejlesztői készlet (JDK) 7+](https://aka.ms/azure-jdks)|
+|**Minimálisan támogatott futásidő**|[Java Fejlesztői készlet (JDK) 7+](/java/azure/jdk/?view=azure-java-stable)|
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
@@ -131,7 +131,7 @@ Az SQL API Java SDK támogatja a szinkron műveleteket. Az aszinkron támogatás
 
 ### <a name="1150"></a><a name="1.15.0"/>1.15.0
 * Továbbfejlesztett Json szerializálási teljesítmény.
-* Ez az SDK-verzió az Azure Cosmos DB Emulator legújabb verzióját igényli, amely letölthető a alkalmazásból. https://aka.ms/cosmosdb-emulator
+* Ehhez az SDK-verzióhoz az [Azure Cosmos DB Emulátor](https://aka.ms/cosmosdb-emulator)legújabb verziója szükséges.
 
 ### <a name="1140"></a><a name="1.14.0"/>1.14.0
 * Belső módosítások a Microsoft baráti könyvtáraiban.

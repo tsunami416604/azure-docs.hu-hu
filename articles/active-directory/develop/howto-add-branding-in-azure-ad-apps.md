@@ -5,7 +5,6 @@ description: Átfogó útmutató az Azure Active Directory fejlesztőknek kész�
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 72f4e464-1352-4a49-a18f-c37f58e7d5c4
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
@@ -14,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: 37d6cd03c07c10bfac5b25e3850c7d3af97bcec7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c5b63fb0b66c78b33fb073eca919ed55bd05107c
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76697489"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884426"
 ---
 # <a name="branding-guidelines-for-applications"></a>Védjegyzési útmutató az alkalmazásokhoz
 
@@ -68,7 +67,7 @@ Miután a rendszergazdák hozzájárultak az alkalmazáshoz, választhatnak, hog
 
 ![A Microsoft embléma és a "Hozzáadás a szervezetemhez" szöveget megjelenítő gomb](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
-Gombok használata helyett inkább magyarázó szövegek írását ajánljuk. Példa:
+Gombok használata helyett inkább magyarázó szövegek írását ajánljuk. Például:
 
 > *Ha már használja az Office 365-öt vagy a Microsoft más üzleti szolgáltatását,> hozzáférést biztosíthat <your_app_name a szervezet adataihoz. Ez lehetővé teszi a felhasználók számára, hogy hozzáférjenek <your_app_name> a meglévő munkahelyi fiókjaikkal.*
 

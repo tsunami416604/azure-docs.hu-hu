@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/05/2019
+ms.date: 04/07/2020
 ms.subservice: app-mgmt
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9ecd193282ed9b7333df44689530b4d057ad7f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f027fbce66a73306165a0ad35d1ba3faa7a5c0bc
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68693901"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983891"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD alkalmazásproxy: Verziókiadási előzmények
 Ez a cikk az Azure Active Directory (Azure AD) alkalmazásproxy kiadott verzióit és szolgáltatásait sorolja fel. Az Azure AD csapata rendszeresen frissíti az alkalmazásproxyt új funkciókkal és funkciókkal. Az alkalmazásproxy-összekötők automatikusan frissülnek, amikor új verzió jelenik meg. 
@@ -35,6 +35,22 @@ Erőforrás |  Részletek
 Az alkalmazásproxy engedélyezése | Az alkalmazásproxy engedélyezésének, valamint az összekötő telepítésének és regisztrálásának előfeltételeit ez az [oktatóanyag](application-proxy-add-on-premises-application.md)ismerteti.
 Az Azure AD alkalmazásproxy-összekötők megismerése | További információ az [összekötők kezeléséről](application-proxy-connectors.md) és arról, hogy az összekötők [hogyan frissíthetők.](application-proxy-connectors.md#automatic-updates)
 Azure AD alkalmazásproxy-összekötő letöltése |  [Töltse le a legújabb csatlakozót.](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download)
+
+## <a name="1515260"></a>1.5.1526.0
+
+### <a name="release-status"></a>Kiadás állapota
+
+Április 07, 2020: Letölthető
+
+### <a name="new-features-and-improvements"></a>Új funkciók és fejlesztések
+-   Az összekötők csak a TLS 1.2-t használják az összes kapcsolathoz. További részletekért lásd [az Összekötő előfeltételeit.](application-proxy-add-on-premises-application.md#before-you-begin)
+- Továbbfejlesztett jelzés az Összekötő és az Azure-szolgáltatások között. Ez magában foglalja az összekötő és az Azure-szolgáltatások közötti WCF-kommunikáció megbízható munkameneteinek támogatását, valamint a WebSocket-kommunikáció DNS-gyorsítótárazási fejlesztéseit.
+- Proxy konfigurálásának támogatása az összekötő és a háttéralkalmazás között. További információt a [Meglévő helyszíni proxykiszolgálók használata](application-proxy-configure-connectors-with-proxy-servers.md)című témakörben talál.
+
+### <a name="fixed-issues"></a>Hibák kijavítva:
+- Eltávolította a 8080-as portra való visszaesést az Összekötő és az Azure-szolgáltatások közötti kommunikációhoz.
+- Hibakeresési nyomkövetések hozzáadva a WebSocket-kommunikációhoz. 
+- A SameSite attribútum megőrzője megoldva, amikor háttéralkalmazás-cookie-kra van beállítva.
 
 ## <a name="156120"></a>1.5.612.0
 

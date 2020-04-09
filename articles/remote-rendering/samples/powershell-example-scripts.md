@@ -1,18 +1,18 @@
 ---
-title: Példa PowerShell-parancsfájlokra
+title: PowerShell-példaszkriptek
 description: Példák, amelyek bemutatják, hogyan kell használni az előtér-alapú PowerShell-parancsfájlokon keresztül
 author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
-ms.openlocfilehash: d7238c899301d76edde86d52c6db74468ffe18ad
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: c45d2fc34ccbab6d813f12563678d036f9f35753
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679477"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891492"
 ---
-# <a name="example-powershell-scripts"></a>Példa PowerShell-parancsfájlokra
+# <a name="example-powershell-scripts"></a>PowerShell-példaszkriptek
 
 Az Azure remote rendering a következő két REST API-t biztosítja:
 
@@ -35,9 +35,12 @@ A mintaparancsfájlok végrehajtásához az [Azure PowerShell](https://docs.micr
 
 1. [Azure Storage-fiók előkészítése](../how-tos/conversion/blob-storage.md#prepare-azure-storage-accounts)
 
-1. Jelentkezzen be az Azure távoli lehívási fiókját tartalmazó előfizetésbe:
+1. Jelentkezzen be az Azure távoli leképezési fiókját tartalmazó előfizetésbe:
     1. PowerShell megnyitása
-    1. Fuss:`Connect-AzAccount -Subscription "<your Azure subscription id>"`
+    1. Futtatás: `Connect-AzAccount` és kövesse a képernyőn megjelenő utasításokat.
+
+> [!NOTE]
+> Abban az esetben, ha a szervezet egynél több előfizetéssel rendelkezik, előfordulhat, hogy meg kell adnia az Előfizetési és bérlői argumentumokat. Részletek a [Connect-AzAccount dokumentációjában](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)találhatók.
 
 1. Töltse le a *Scripts* mappát az [Azure Remote Rendering GithHub tárházból.](https://github.com/Azure/azure-remote-rendering)
 

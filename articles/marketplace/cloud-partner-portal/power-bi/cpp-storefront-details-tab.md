@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 1bcf06056dd7fdaf22716409f53d86da7321b94d
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: f4fb5fba78cdea7996d006d34b2f07f3ac5e58fa
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745593"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981290"
 ---
 # <a name="power-bi-app-storefront-details-tab"></a>A Power BI alkalmazás kirakatrészletei lapja
 
 >[!Important]
->2020. március 30-tól megkezdjük a Power BI-alkalmazásajánlatok felügyeletének áthelyezését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Az áttelepített ajánlatok kezeléséhez kövesse a [Power BI-alkalmazások létrehozásának áttekintése](https://aka.ms/AzureCreatePBIServiceApp) című témakör utasításait.
+>2020. április 13-tól megkezdjük a Power BI-alkalmazásajánlatok felügyeletének áthelyezését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Az áttelepített ajánlatok kezeléséhez kövesse a [Power BI-alkalmazások létrehozásának áttekintése](https://aka.ms/AzureCreatePBIServiceApp) című témakör utasításait.
 
 Az **Új ajánlat** lapon a **Kirakat részletei** lapon marketing,értékesítési és jogi információkat adhat meg a leendő ügyfeleknek. Ezen a lapon az Azure Marketplace által létrehozott érdeklődők felügyeletét is beállíthatja. Ez a hosszú űrlap hat részből áll: **Ajánlat részletei**, **Listázás részletei**, Marketing **összetevők**, **Jogi**, **Ügyfélszolgálat**és **Érdeklődőkezelés**.  A mezőfelirat végén lévő csillag (*) azt jelenti, hogy a mező szükséges.
 
@@ -114,7 +114,7 @@ Az **Érdeklődőkezelés** szakaszban állítsa be a rendszert az AppSource ál
 |------------------------|--------------------------------------            |
 |  **Nincs**              | Nem kell nyomokat gyűjteni. Ez az alapértelmezett beállítás.  |
 | **Azure Blob (elavult)** | Adja meg [az Azure Blob storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) segítségével egy tároló nevét és egy kapcsolati karakterláncot.  Ez a választás elavult. Használja **inkább az Azure Table-t.**  |
-| **Azure-táblázat**        | Adja meg [az Azure Table storage](https://docs.microsoft.com/azure/cosmos-db/table-storage-overview) egy kapcsolati karakterlánc használatával.  |
+| **Azure-tábla**        | Adja meg [az Azure Table storage](https://docs.microsoft.com/azure/cosmos-db/table-storage-overview) egy kapcsolati karakterlánc használatával.  |
 | **Dynamics CRM Online** | Adja meg [a Dynamics 365-öt](https://dynamics.microsoft.com/) URL-cím és hitelesítési hitelesítő adatok használatával. |
 | **HTTPS-végpont**     | Adja meg a HTTPS-végpontot egy JSON-tartalom használatával.   |
 | **Marketo**            | Adjon meg egy [Marketo-példányt](https://www.marketo.com/) kiszolgálóazonosítóval, munchkin-azonosítóval és űrlapazonosítóval.   |

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/31/2019
+ms.date: 04/08/2020
 ms.author: terrylan
-ms.openlocfilehash: e50eb561bcbb924ea093722d6c61bbe51747b328
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: e1223560c5d7b19bf9da4c7c16a56c4741e582a0
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811268"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981307"
 ---
 # <a name="security-management-in-azure"></a>Biztonságkezelés az Azure-ban
 Az Azure-előfizetők több eszközről kezelhetik felhőkörnyezeteiket, például felügyeleti munkaállomásokról, fejlesztői PC-kről, és olyan jogosult végfelhasználói eszközökről is, amelyek feladatspecifikus engedélyekkel rendelkeznek. Egyes esetekben a felügyeleti feladatkörök ellátását olyan webalapú konzolok használatával végzik, mint például az [Azure Portal](https://azure.microsoft.com/features/azure-portal/). Más esetekben az Azure-hoz való közvetlen kapcsolat létesíthető virtuális magánhálózatokon (VPN), terminálszolgáltatásokon, ügyfél-alkalmazásprotokollokon, vagy (szoftveresen) az Azure Service Management API-n (SMAPI) keresztül. Továbbá az ügyfél-végpontok lehetnek vagy tartományhoz csatlakoztatottak, vagy pedig elkülönítettek és felügyelet nélküliek, mint például a táblagépek vagy az okostelefonok.
@@ -145,9 +145,6 @@ Háromféle elsődleges megerősített munkaállomás-konfigurációt ajánlunk.
 | - | A feladatok egyértelmű elkülönítése | - |
 | Vállalati PC mint virtuális gép |Alacsonyabb hardverköltségek | - |
 | - | Szerepkör és alkalmazások elkülönítése | - |
-| Windows To Go BitLocker meghajtótitkosítással |Kompatibilitás a legtöbb PC-vel |Eszközkövetés |
-| - | Költséghatékonyság és hordozhatóság | - |
-| - | Elkülönített felügyeleti környezet |- |
 
 Fontos, hogy a megerősített munkaállomás a gazda legyen, nem pedig a vendég, és semmi ne legyen a gazda operációs rendszer és a hardver között. A „tiszta forrás alapelv” (más néven „biztonságos eredet”) követése biztosítja, hogy a gazdagép a legjobban megerősített legyen. Egyéb esetben a megerősített munkaállomás (vendég) ki van téve a gazdarendszert érő támadásoknak.
 
@@ -170,15 +167,6 @@ Olyan esetekben, ahol az önálló megerősített munkaállomás megvalósítás
 Annak érdekében, hogy elkerülje az ugyanannak a munkaállomásnak rendszerfelügyeletre és más napi munkafeladatok ellátására való használatából eredő lehetséges biztonsági kockázatokat, telepíthet Windows Hyper-V virtuális gépet a megerősített munkaállomásra. Ez a virtuális gép használható vállalati PC-ként. A vállalati PC-környezet így elkülönül a gazdagéptől, ami csökkenti annak támadási felületét, és elszigeteli a felhasználó napi tevékenységeit (például a levelezést) a bizalmas felügyeleti feladatoktól.
 
 A vállalati PC virtuális gépe védett térben üzemel, és lehetővé teszi a felhasználói alkalmazások használatát. A gazdagép „tiszta forrás” marad, és kényszeríti a szigorú hálózati házirendek betartását a gyökér operációs rendszerben (például blokkolja a virtuális gépről történő RDP-hozzáférést).
-
-### <a name="windows-to-go"></a>Windows To Go
-Egy másik alternatíva az önálló megerősített munkaállomás helyett a [Windows To Go](https://technet.microsoft.com/library/hh831833.aspx)-meghajtó használata, amely támogatja az ügyféloldali USB-ről történő rendszerindítási képességet. A Windows To Go lehetővé teszi a felhasználók számára, hogy a kompatibilis PC-ket egy elkülönített rendszerképpel indítsák, titkosított USB flash meghajtóról. Ez több eszközt biztosít a távfelügyeleti végpontok ellenőrzésére, mivel a rendszerkép teljes mértékben felügyelhető egy vállalati informatikai csoport által, szigorú biztonsági házirendekkel, egy minimális operációsrendszer-verzióval és TPM-támogatással.
-
-Az alábbi ábrán a hordozható rendszerkép egy tartományhoz csatlakoztatott rendszer, amely előzetesen van konfigurálva, hogy csak az Azure-hoz csatlakozzon, többtényezős hitelesítést igényel, és blokkol minden nem felügyeleti forgalmat. Ha a felhasználó ugyanazt a PC-t általános jellegű vállalati rendszerképpel indítja, és megpróbál az Azure felügyeleti eszközökhöz hozzáférni az RD-átjárón keresztül, a munkamenet blokkolva lesz. A Windows To Go lesz a gyökérszintű operációs rendszer, és nem lesz szükség további rétegekre (gazda operációs rendszer, hipervizor, virtuális gép), amelyek ki lehetnek téve a külső támadásoknak.
-
-![](./media/management/hardened-workstation-using-windows-to-go-on-a-usb-flash-drive.png)
-
-Fontos megjegyezni, hogy az USB flash meghajtók könnyebben elveszhetnek, mint egy átlagos asztali PC. A teljes kötet BitLockerrel való titkosítása – erős jelszóval kombinálva – csökkenti annak az esélyét, hogy a rendszerképet rosszindulatú célokra lehessen felhasználni. Továbbá, ha az USB flash meghajtó elveszne, csökkenteni lehet a kitettséget a felügyeleti tanúsítvány visszavonásával és [egy új felügyeleti tanúsítvány kibocsátásával](https://technet.microsoft.com/library/hh831574.aspx), valamint gyors jelszó-visszaállítással. A felügyeleti naplók az Azure-ban találhatók, nem pedig az ügyfélen, tovább csökkentve az adatvesztés esélyét.
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 Vegye figyelembe a következő irányelveket is az alkalmazások és adatok Azure-ban való kezelése során.
@@ -215,7 +203,7 @@ A rendszergazdák által a megerősített munkaállomásokon végezhető feladat
 * Csoportházirend. Hozzon létre globális felügyeleti házirendet, amely minden tartománybeli, felügyeletre használt munkaállomásra vonatkozik (minden más hozzáférést pedig tiltson le), valamint az ezen munkaállomásokon hitelesített összes felhasználói fiókra is.
 * Megnövelt biztonságú kiépítés. Gondoskodjon a megerősített munkaállomások kiindulási rendszerképének védelméről, hogy jobban védekezhessen az illetéktelen módosítások ellen. Használjon titkosítást, elkülönítést és hasonló biztonsági intézkedéseket a rendszerképek, virtuális gépek és parancsfájlok tárolásánál, és korlátozza az ezekhez való hozzáférést (esetleg naplózható be- és kijelentkezési folyamat bevezetésével).
 * Javítások. Tartson fent egy egységes buildet (vagy készítsen különböző rendszerképeket fejlesztéshez, üzemeltetéshez és egyéb felügyeleti feladatokhoz), rutinszerűen vizsgálja át a rendszert a változtatások és kártevők megtalálása érdekében, tartsa naprakészen a buildet, és csak akkor kapcsolja be a gépeket, amikor szükség van rájuk.
-* Titkosítás. Győződjön meg róla, hogy a felügyeleti munkaállomásai rendelkeznek TPM-mel, a [titkosított fájlrendszer](https://technet.microsoft.com/library/cc700811.aspx)(EFS) és a BitLocker biztonságosabb üzembe helyezésének érdekében. Ha Windows To Go-t használ, csak titkosított USB-meghajtókat használjon a BitLockerrel együtt.
+* Titkosítás. Győződjön meg róla, hogy a felügyeleti munkaállomásai rendelkeznek TPM-mel, a [titkosított fájlrendszer](https://technet.microsoft.com/library/cc700811.aspx)(EFS) és a BitLocker biztonságosabb üzembe helyezésének érdekében.
 * Irányítás. Az AD DS csoportházirend-objektumok használatával ellenőrzés alatt tarthatja a rendszergazdák összes Windows-felületét, mint például a fájlmegosztást. Terjessze ki a naplózási és megfigyelési folyamatokat a felügyeleti munkaállomásokra. Kövessen nyomon minden rendszergazdai és fejlesztői hozzáférést és tevékenységet.
 
 ## <a name="summary"></a>Összefoglalás

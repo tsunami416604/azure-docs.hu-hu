@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 306f13cbc83c0c48ce1c90581762275a86dfcb90
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 45304e12bf959cb1f695384535360af283ee3f10
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743969"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981868"
 ---
 # <a name="iot-edge-module-support-tab"></a>IoT Edge modul támogatása lap
 
 >[!Important]
->2020. március 30-tól megkezdjük az IoT Edge modulajánlatok kezelését a Partner Centerbe. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [IoT Edge-modulajánlat létrehozása](https://aka.ms/AzureCreateIoT) az áttelepített ajánlatok kezeléséhez kövesse az utasításokat.
+>2020. április 13-tól megkezdjük az IoT Edge modulajánlatok kezelését a Partner Centerbe. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [IoT Edge-modulajánlat létrehozása](https://aka.ms/AzureCreateIoT) az áttelepített ajánlatok kezeléséhez kövesse az utasításokat.
 
 Az **Új ajánlat** lap **Támogatás** lapján technikai és felhasználói támogatási erőforrásokat biztosíthat az ajánlathoz.  A támogatási űrlapon a következő beviteli területek találhatók: **Mérnöki kapcsolat**, **Ügyfélszolgálat**és **Támogatási URL-ek**. A mezőnévhez csatolt csillag (*) azt jelzi, hogy szükség van rá.
 

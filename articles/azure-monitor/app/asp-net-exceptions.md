@@ -3,12 +3,12 @@ title: Hibák és kivételek diagnosztizálása az Azure Application Insights sz
 description: A ASP.NET alkalmazások kivételeit és a kérelemtelemetriai adatokat rögzít.
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: ccfcb354e27d36f40810b114a1729cf6addf8fb6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f24f09e7d2ef0a3e5f3a8f6546a9115118473ab
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294692"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892342"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Webalkalmazások kivételeinek diagnosztizálása az Application Insightsszal
 Az élő webalkalmazásban lévő kivételeket az [Application Insights](../../azure-monitor/app/app-insights-overview.md)jelenti. A sikertelen kérelmeket az ügyfélen és a kiszolgálón lévő kivételekkel és egyéb eseményekkel korrelálhatja, így gyorsan diagnosztizálhatja az okokat.
@@ -19,7 +19,7 @@ Az élő webalkalmazásban lévő kivételeket az [Application Insights](../../a
   * Az Azure VM és az Azure virtuálisgép-méretezési készletIIS-üzemeltetésű alkalmazások: Az [alkalmazásfigyelési bővítmény](../../azure-monitor/app/azure-vm-vmss-apps.md) hozzáadása
   * Az [Application Insights SDK](../../azure-monitor/app/asp-net.md) telepítése az alkalmazáskódba, vagy
   * IIS webkiszolgálók: [Alkalmazáselemzési ügynök futtatása](../../azure-monitor/app/monitor-performance-live-website-now.md); Vagy
-  * Java webalkalmazások: Telepítse a [Java-ügynököt](../../azure-monitor/app/java-agent.md)
+  * Java webalkalmazások: A [Java-ügynök](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) engedélyezése
 * Telepítse a [JavaScript-kódrészletet](../../azure-monitor/app/javascript.md) a weblapokra, hogy elkapja a böngészőkivételeket.
 * Egyes alkalmazáskeretekben vagy bizonyos beállításokkal további lépéseket kell tennie a további kivételek elfogásához:
   * [Webes űrlapok](#web-forms)
@@ -199,7 +199,7 @@ Ha azonban aktív átirányításokkal rendelkezik, adja hozzá a következő so
 ## <a name="mvc"></a>MVC
 Az Application Insights Web SDK 2.6-os verziójával (beta3 és újabb verzió) kezdve az Application Insights automatikusan gyűjti az MVC 5+ vezérlők metódusaiban okozott kezeletlen kivételeket. Ha korábban egyéni kezelőt adott hozzá az ilyen kivételek nyomon követéséhez (a következő példákban leírtak szerint), eltávolíthatja azt, hogy megakadályozza a kivételek kettős nyomon követését.
 
-Számos olyan eset van, amelyet a kivételszűrők nem tudnak kezelni. Példa:
+Számos olyan eset van, amelyet a kivételszűrők nem tudnak kezelni. Például:
 
 * A vezérlőkonstruktorokból kidobott kivételek.
 * Az üzenetkezelők ből kidobott kivételek.
@@ -291,7 +291,7 @@ Regisztrálja az AiHandleErrorAttribute attribútumot globális szűrőként Fil
 ## <a name="web-api"></a>Webes API
 Az Application Insights Web SDK 2.6-os (beta3 és újabb) verziójával kezdve az Application Insights automatikusan gyűjti a WebAPI 2+ vezérlőmetódusaiban okozott kezeletlen kivételeket. Ha korábban egyéni kezelőt adott hozzá az ilyen kivételek nyomon követéséhez (a következő példákban leírtak szerint), eltávolíthatja azt, hogy megakadályozza a kivételek kettős nyomon követését.
 
-Számos olyan eset van, amelyet a kivételszűrők nem tudnak kezelni. Példa:
+Számos olyan eset van, amelyet a kivételszűrők nem tudnak kezelni. Például:
 
 * A vezérlőkonstruktorokból kidobott kivételek.
 * Az üzenetkezelők ből kidobott kivételek.

@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: a989113c80cd8189cce9da959fe27509297f677a
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: c1d1daea71ea8b69ef24031c643caf8dcd0d1fb7
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745688"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983330"
 ---
 # <a name="iot-edge-module-skus-tab"></a>Az IoT Edge modul skus lapja
 
 >[!Important]
->2020. március 30-tól megkezdjük az IoT Edge modulajánlatok kezelését a Partner Centerbe. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [IoT Edge-modulajánlat létrehozása](https://aka.ms/AzureCreateIoT) az áttelepített ajánlatok kezeléséhez kövesse az utasításokat.
+>2020. április 13-tól megkezdjük az IoT Edge modulajánlatok kezelését a Partner Centerbe. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [IoT Edge-modulajánlat létrehozása](https://aka.ms/AzureCreateIoT) az áttelepített ajánlatok kezeléséhez kövesse az utasításokat.
 
 Az **Új ajánlat** lap **SK-ja** lehetővé teszi egy vagy több skus létrehozását, és társíthatja őket az új ajánlathoz.  Különböző sk-ek segítségével különbséget tehet a megoldás szolgáltatáskészletek, számlázási modellek vagy más jellemzők szerint.
 

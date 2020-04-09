@@ -1,17 +1,17 @@
 ---
-title: Felhasználói navigációs minták elemzése felhasználói folyamatok segítségével az Azure Application Insightsban | Microsoft-dokumentumok
+title: Az Azure Application Insights felhasználói folyamatai elemzik a navigációs folyamatokat
 description: Elemezze, hogy a felhasználók hogyan navigálnak a webalkalmazás lapjai és szolgáltatásai között.
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: a4a81a3e4c5759e444836162319abb97d83a4c74
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8622ede9e6f7fba2fde2e0b2e90eb31520a23d04
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671069"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892444"
 ---
 # <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>Felhasználói navigációs minták elemzése felhasználói folyamatok segítségével az Application Insightsban
 
