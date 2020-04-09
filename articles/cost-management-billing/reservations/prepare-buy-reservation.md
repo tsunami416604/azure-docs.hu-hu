@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/07/2020
 ms.author: banders
-ms.openlocfilehash: 3a45a04786bb9976a42269191c8b24282905f96f
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 1f44b0a0e2278bfcfbbf7cde1a3605fe334eaa3f
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80436969"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886517"
 ---
 # <a name="buy-a-reservation"></a>Foglalás vásárlása
 
@@ -43,8 +43,6 @@ A foglalási kedvezmények a használatra történő alkalmazása során az Azur
 1. Erőforráscsoport hatókörű foglalások
 2. Egyetlen hatókörrel rendelkező foglalások
 3. Megosztott hatókörrel rendelkező foglalások
-
-A foglalások hatókörének beállításától függően egy erőforráscsoport több foglalásból is kaphat foglalási kedvezményeket.
 
 A foglalás megvásárlása után bármikor frissítheti a hatókört. Ehhez lépjen a foglalásra, kattintson a **Konfigurálás** lehetőségre, és állítsa be újból a foglalás hatókörét. A foglalás hatókörének újbóli beállítása nem számít kereskedelmi tranzakciónak. A foglalási időszak nem módosul. A hatókör frissítésével kapcsolatos további információkért lásd [a foglalás megvásárlása utáni hatókörfrissítést](manage-reserved-vm-instance.md#change-the-reservation-scope) bemutató cikket.
 
