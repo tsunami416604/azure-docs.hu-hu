@@ -4,7 +4,6 @@ description: A Microsoft bejelentkezés megvalósítása ASP.NET Core Web App al
 services: active-directory
 author: jmprieur
 manager: CelesteDG
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
@@ -12,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e60d3f0221bce836f49e87a96c762e68cf8a60ad
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 2d604da58f4056fc718239b6bc019d61ddbee51b
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473681"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883831"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Rövid útmutató: Bejelentkezés hozzáadása a Microsofttal egy ASP.NET Core webalkalmazáshoz
 Ebben a rövid útmutatóban egy kódminta segítségével megtudhatja, hogy egy ASP.NET Core webalkalmazás hogyan tud bejelentkezni a személyes fiókokba (hotmail.com, outlook.com, mások) és munkahelyi és iskolai fiókokbármely Azure Active Directory (Azure AD) példányból. (Lásd: [Hogyan működik a minta](#how-the-sample-works) egy illusztrációhoz.)

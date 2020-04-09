@@ -3,19 +3,19 @@ title: Beszédtárolók telepítése – Beszédszolgáltatás
 titleSuffix: Azure Cognitive Services
 description: Beszédtárolók telepítése és futtatása. A beszéd-szöveg üzenet valós időben átírja a hangadatfolyamokat olyan szöveggé, amelyet az alkalmazások, eszközök vagy eszközök használhatnak vagy jeleníthetnek meg. A szövegfelolvasás a bemeneti szöveget emberszerű szintetizált beszédmé alakítja.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/10/2020
-ms.author: dapine
-ms.openlocfilehash: 2beee81bc365d00e59a62cacabacc5f5d6b62a42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 2caae4fecdf13a1833f23cf9423cf3ded67f6f72
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79474781"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879017"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Beszédfelismerési szolgáltatástárolók telepítése és futtatása (előzetes verzió)
 
@@ -73,7 +73,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 Az alábbi táblázat az egyes beszédtárolók erőforrásainak minimális és ajánlott lefoglalását ismerteti.
 
-# <a name="speech-to-text"></a>[Beszédfelismerés](#tab/stt)
+# <a name="speech-to-text"></a>[Diktálás](#tab/stt)
 
 | Tároló | Minimális | Ajánlott |
 |-----------|---------|-------------|
@@ -110,7 +110,7 @@ A mag és `--cpus` a `--memory` memória megfelel nek a `docker run` és a beál
 
 A beszédfelismerési tárolórendszerképek a következő tárolóbeállítás-beállításjegyzékben érhetők el.
 
-# <a name="speech-to-text"></a>[Beszédfelismerés](#tab/stt)
+# <a name="speech-to-text"></a>[Diktálás](#tab/stt)
 
 | Tároló | Adattár |
 |-----------|------------|
@@ -140,7 +140,7 @@ A beszédfelismerési tárolórendszerképek a következő tárolóbeállítás-
 
 ### <a name="docker-pull-for-the-speech-containers"></a>Docker-lekérésea a beszédtárolókhoz
 
-# <a name="speech-to-text"></a>[Beszédfelismerés](#tab/stt)
+# <a name="speech-to-text"></a>[Diktálás](#tab/stt)
 
 #### <a name="docker-pull-for-the-speech-to-text-container"></a>Docker-lekérésea a beszédfelismerési tárolóhoz
 
@@ -240,7 +240,7 @@ Miután a tároló a [gazdaszámítógépen](#the-host-computer)van, használja 
 
 Használja a [docker run](https://docs.docker.com/engine/reference/commandline/run/) parancsot a tároló futtatásához. Tekintse meg [a szükséges paraméterek összegyűjtését](#gathering-required-parameters) `{API_Key}` a be- és értékek `{Endpoint_URI}` begyűjtésének részleteiről. A `docker run` parancstovábbi [példái](speech-container-configuration.md#example-docker-run-commands) is elérhetők.
 
-# <a name="speech-to-text"></a>[Beszédfelismerés](#tab/stt)
+# <a name="speech-to-text"></a>[Diktálás](#tab/stt)
 
 A *beszédfelismerési tároló futtatásához* hajtsa végre a következő `docker run` parancsot.
 
@@ -428,7 +428,7 @@ Ezekről a beállításokról a [Tárolók konfigurálása](speech-container-con
 Ebben a cikkben megtanulta a beszédtárolók letöltésével, telepítésével és futtatásával kapcsolatos fogalmakat és munkafolyamatokat. Összegezve:
 
 * A Speech négy Linux-tárolót biztosít a Docker számára, amelyek különböző képességeket foglalnak magukban:
-  * *Beszédfelismerés*
+  * *Diktálás*
   * *Egyéni beszédfelismerési szöveg*
   * *Szövegfelolvasás*
   * *Egyéni szövegfelolvasás*

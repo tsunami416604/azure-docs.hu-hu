@@ -3,19 +3,19 @@ title: Tároló konfigurálása az Anomália-detektor API-hoz
 titleSuffix: Azure Cognitive Services
 description: Az Anomália-detektor API-tároló futásidejű környezet a `docker run` parancs argumentumok használatával van konfigurálva. Ez a tároló számos szükséges beállítással rendelkezik, valamint néhány választható beállítással.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.author: dapine
-ms.openlocfilehash: f7e04a16fa35d492b8e5e6c53a05220e8b96a38a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 569499002c5e047d7030575342790e9a074b9404
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73795852"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875180"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Anomáliadetektor-tárolók konfigurálása
 
@@ -33,7 +33,7 @@ Ez a tároló a következő konfigurációs beállításokkal rendelkezik:
 |Igen|[Eula](#eula-setting)| Azt jelzi, hogy elfogadta a tároló licencét.|
 |Nem|[Fluentd](#fluentd-settings)|Napló és szükség esetén metrikaadatok írása fluentd kiszolgálóra.|
 |Nem|[Http Proxy](#http-proxy-credentials-settings)|Http-proxy konfigurálása kimenő kérelmek hez.|
-|Nem|[Naplózási](#logging-settings)|ASP.NET Core naplózási támogatást nyújt a tárolóhoz. |
+|Nem|[Naplózás](#logging-settings)|ASP.NET Core naplózási támogatást nyújt a tárolóhoz. |
 |Nem|[Tartók](#mount-settings)|Adatok olvasása és írása a gazdaszámítógépről a tárolóra és a tárolóból vissza a gazdaszámítógépre.|
 
 > [!IMPORTANT]

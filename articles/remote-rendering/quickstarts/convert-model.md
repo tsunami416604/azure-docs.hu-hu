@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 084f32ec9c1574dfdaf29edc24a406444de9a91d
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: b1bf2c365229a418870250a78a733f9870fb5bb0
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679925"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892376"
 ---
 # <a name="quickstart-convert-a-model-for-rendering"></a>Rövid útmutató: Modell konvertálása rendereléshez
 
@@ -72,10 +72,10 @@ Töltse ki az űrlapot a következő módon:
 * Hozzon létre egy új erőforráscsoportot a legördülő lista alatti hivatkozásból, és nevezze el ezt a **ARR_Tutorial**
 * A **Storage-fiók nevéhez**itt adjon meg egy egyedi nevet. **Ennek a névnek globálisan egyedinek kell lennie,** ellenkező esetben egy üzenet jelenik meg, amely tájékoztatja, hogy a név készen áll. A program a rövid útmutató hatókörében **arrtutorialstorage-nak**nevezzük. Ennek megfelelően le kell cserélnie a nevére minden olyan esemény ebben a rövid útmutatóban.
 * Válasszon egy önhöz közeli **helyet.** Ideális esetben ugyanazt a helyet használja, mint a többi rövid útmutatóban a renderelés beállítására.
-* **"Standard"** teljesítményre állítva
-* "StorageV2 (általános célú v2)" típusú **fiókfajta**
-* "Read-access georedundáns tárolás (RA-GRS)" lesz a **replikációs** replikációs
-* **"Forró" hozzáférési szint**
+* **Normál teljesítményre** állítva
+* **Fiókfajta** storagev2 értékre állítva (általános célú v2)
+* **Olvasási** hozzáférésű georedundáns tárolásra (RA-GRS) beállított replikációs készlet
+* **A hozzáférési szint** be van állítva a gyakori elérésű
 
 A többi lap egyik tulajdonságát sem kell módosítani, így folytathatja a **"Véleményezés + létrehozás"** kifejezést, majd a telepítés befejezéséhez kövesse a lépéseket.
 
@@ -159,11 +159,14 @@ A modell konvertálása után a rendszer visszaírja a **blobOutputContainerName
 
 A **outputAssetFileName** konfigurációs beállítás határozza meg a konvertált eszköz nevét - a paraméter nem kötelező, és a kimeneti fájlnév egyébként a bemeneti fájl nevéből lesz levezethető. 
 
-Nyisson meg egy PowerShellt, győződjön meg arról, hogy telepítette az *Azure PowerShellt* az [előfeltételekben említettek szerint.](#prerequisites) Ezután jelentkezzen be az előfizetésébe:
+Nyisson meg egy PowerShellt, győződjön meg arról, hogy telepítette az *Azure PowerShellt* az [előfeltételekben említettek szerint.](#prerequisites) Ezután jelentkezzen be az előfizetésbe a következő paranccsal, és kövesse a képernyőn megjelenő utasításokat:
 
 ```PowerShell
-Connect-AzAccount -Subscription "<your Azure subscription id>"
+Connect-AzAccount
 ```
+
+> [!NOTE]
+> Abban az esetben, ha a szervezet egynél több előfizetéssel rendelkezik, előfordulhat, hogy meg kell adnia az Előfizetési és bérlői argumentumokat. Részletek a [Connect-AzAccount dokumentációjában](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)találhatók.
 
 Váltás a `azure-remote-rendering\Scripts` könyvtárra, és futtassa a konvertálási parancsfájlt:
 

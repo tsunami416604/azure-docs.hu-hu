@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 3b908406c8717d2fa8834bc4dff1bcd27ec4761f
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 967d391d4ac9a9704688dce9636d9a71b2002549
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79241422"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879360"
 ---
 # <a name="what-is-azure-virtual-network"></a>Mi az Azure Virtual Network?
 
@@ -76,6 +76,15 @@ Az Azure alapértelmezés szerint elosztja a forgalmat az alhálózatok, a csatl
 
 - **Útválasztási táblázatok:** Létrehozhat egyéni útválasztási táblázatokat, amelyek útvonalai szabályozzák, hogy melyik alhálózat esetében hova érkezzen a forgalom. További tudnivalókért tekintse meg az [útválasztási táblázatokat](virtual-networks-udr-overview.md#user-defined) ismertető cikket.
 - **Border Gateway Protocol (BGP-) útvonalak:** Ha a virtuális hálózatát VPN-átjáró vagy ExpressRoute-kapcsolat használatával csatlakoztatja a helyszíni hálózathoz, propagálhatja a helyszíni BGP-útvonalakat a virtuális hálózatára. Tudjon meg többet a BGP [Azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és [ExpressRoute](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#dynamic-route-exchange) szolgáltatással együtt való használatáról
+
+## <a name="virtual-network-integration-for-azure-services"></a>Virtuális hálózat integrációja Azure-szolgáltatásokhoz
+
+Az Azure-szolgáltatások integrálása egy Azure virtuális hálózatba lehetővé teszi a szolgáltatás hoz való privát hozzáférést a virtuális gépekről vagy a virtuális hálózat számítási erőforrásairól.
+Az Azure-szolgáltatásokat a következő lehetőségekkel integrálhatja a virtuális hálózatba:
+- A [szolgáltatás dedikált példányainak](virtual-network-for-azure-services.md) üzembe helyezése egy virtuális hálózatba. A szolgáltatások ezután privát módon érhetők el a virtuális hálózaton belül és a helyszíni hálózatokon.
+- Privát [kapcsolat](../private-link/private-link-overview.md) használata a szolgáltatás egy adott példányának privát eléréséhez a virtuális hálózatról és a helyszíni hálózatokból.
+- A szolgáltatás nyilvános végpontok használatával is elérhető, ha egy virtuális hálózatot terjeszt a szolgáltatásvégpontokon keresztül a [szolgáltatásra.](virtual-network-service-endpoints-overview.md) A szolgáltatásvégpontok lehetővé teszik a szolgáltatáserőforrások virtuális hálózatra való védelmét.
+ 
 
 ## <a name="azure-vnet-limits"></a>Az Azure virtuális hálózat korlátai
 

@@ -1,170 +1,194 @@
 ---
-title: Hozzon létre egy Azure Media Services élő közvetítést a portállal és a Wirecasttal
-description: További információ az Azure Media Service Live-közvetítés létrehozásáról
+title: Az Azure Media Services élő közvetítése
+description: Megtudhatja, hogyan hozhat létre élő közvetítést az Azure Media Services élő közvetítése a portál és a Wirecast használatával
 services: media-services
 ms.service: media-services
 ms.topic: quickstart
 ms.author: inhenkel
 author: IngridAtMicrosoft
 ms.date: 03/25/2020
-ms.openlocfilehash: e5bdd75ca61d53a64f003633d74e3d8f7992a98b
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 459f11844f873a911b3e5702e8c768b1cd22e504
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80336336"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984997"
 ---
-# <a name="create-a-azure-media-services-live-stream-with-the-portal-and-wirecast"></a>Hozzon létre egy Azure Media Services élő közvetítést a portállal és a Wirecasttal
+# <a name="create-an-azure-media-services-live-stream"></a>Az Azure Media Services élő közvetítése
 
-Ez az első lépések útmutató feltételezi, hogy rendelkezik egy Azure-előfizetéssel, és létrehozott egy Azure Media Services-fiókot.
+Ez a rövid útmutató segít létrehozni egy Azure Media Services élő közvetítés az Azure Portalon és a Telestream Wirecast használatával. Feltételezi, hogy Rendelkezik egy Azure-előfizetéssel, és létrehozott egy Media Services-fiókot.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot, mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené.
 
-## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
+## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Nyissa meg a webböngészőjét, és keresse fel a [Microsoft Azure Portalt](https://portal.azure.com/). Adja meg a hitelesítő adatait a Portalra való bejelentkezéshez. Az alapértelmezett nézet a szolgáltatási irányítópult.
+Nyissa meg a webböngészőt, és nyissa meg a [Microsoft Azure portált.](https://portal.azure.com/) Adja meg a hitelesítő adatait a Portalra való bejelentkezéshez. Az alapértelmezett nézet a szolgáltatási irányítópult.
 
-Ebben a rövid útmutatóban a következőket fedjük le:
+Ebben a rövid útmutatóban a következőket tjük ki:
 
-- Helyszíni kódoló létrehozása a Telestream Wirecast ingyenes próbaverziójával
-- Élő közvetítés beállítása
-- Élő közvetítés kimenetének beállítása
-- Alapértelmezett streamelési végpont futtatása
-- Az Azure Media Player használata az élő közvetítés és az igény szerinti kimenet megtekintéséhez
+- Helyszíni kódoló beállítása a Telestream Wirecast ingyenes próbaverziójával.
+- Élő közvetítés beállítása.
+- Élő közvetítés kimenetének beállítása.
+- Alapértelmezett streamelési végpont futtatása.
+- Az Azure Media Player használatával megtekintheti az élő közvetítést és az igény szerinti kimenetet.
 
 Az egyszerű ség érdekében az Azure Media Services kódolási készletét használjuk a Wirecastban, az átadó felhőkódolásban és az RTMP-ben.
 
-## <a name="setting-up-an-on-premises-encoder-with-wirecast"></a>Helyszíni kódoló beállítása wirecasttal
+## <a name="set-up-an-on-premises-encoder-by-using-wirecast"></a>Helyszíni kódoló beállítása a Wirecast használatával
 
-1. Töltse le és telepítse a Wirecast-ot az operációs rendszerhez ahttps://www.telestream.net
-1. Indítsa el az alkalmazást, és használja kedvenc e-mail címét a termék regisztrálásához.  Tartsa nyitva az alkalmazást.
-1. Kapni fog egy e-mailt, amelyben megkéri, hogy ellenőrizze e-mail címét, majd az alkalmazás elindítja az ingyenes próbaverziót.
-1. AJÁNLOTT: Nézze meg a videót bemutató a nyitó alkalmazás képernyőjén.
+1. Töltse le és telepítse a Wirecast-ot az operációs rendszeréhez a [Telestream weboldalán.](https://www.telestream.net)
+1. Indítsa el az alkalmazást, és használja kedvenc e-mail címét a termék regisztrálásához. Tartsa nyitva az alkalmazást.
+1. A kapott e-mailben ellenőrizze az e-mail címét. Ezután az alkalmazás elindítja az ingyenes próbaverziót.
+1. Ajánlott: Nézze meg a videót bemutató a nyitó alkalmazás képernyőjén.
 
-## <a name="setting-up-an-azure-media-services-live-stream"></a>Az Azure Media Services élő közvetítése
+## <a name="set-up-an-azure-media-services-live-stream"></a>Az Azure Media Services élő közvetítése
 
-1. Miután a portálon az Azure Media Services-fiókra navigált, válassza az **Élő közvetítés lehetőséget** a Media Services-listáról.<br/>
-![Válassza az Élő közvetítés hivatkozását](media/live-events-wirecast-quickstart/select-live-streaming.png)<br/>
-1. Új **élő** közvetítési esemény létrehozásához kattints az Élő esemény hozzáadása elemre.<br/>
-![Élő esemény hozzáadása ikon](media/live-events-wirecast-quickstart/add-live-event.png)<br/>
-1. Adja meg az új esemény nevét, például a *TestLiveEvent* eseményt az Élő esemény **neve** mezőben.<br/>
-![Élő esemény neve szövegmező](media/live-events-wirecast-quickstart/live-event-name.png)<br/>
+1. Nyissa meg az Azure Media Services-fiókot a portálon belül, majd válassza az **Élő közvetítés lehetőséget** a Media Services-listáról. **Media Services**
+
+   ![Élő közvetítési hivatkozás](media/live-events-wirecast-quickstart/select-live-streaming.png)
+1. Új élő közvetítési esemény létrehozásához válassza **az Élő esemény hozzáadása** lehetőséget.
+
+   ![Élő esemény hozzáadása ikon](media/live-events-wirecast-quickstart/add-live-event.png)
+1. Adja meg az új esemény nevét, például *a TestLiveEvent*eseményt az **Élő esemény neve** mezőben.
+
+   ![Élő esemény neve mező](media/live-events-wirecast-quickstart/live-event-name.png)
 1. Adja meg az esemény nem kötelező leírását a **Leírás** mezőben.
-1. Válassza az **Áthaladás – nincs felhőalapú kódolás választógomb.**<br/>
-![Felhőalapú kódolásválasztó gomb](media/live-events-wirecast-quickstart/cloud-encoding.png)
-1. Válassza az **RTMP** választógombot.
-1. Győződjön meg arról, hogy a **Nincs** választógomb van kiválasztva az Élő esemény indítása korhoz, hogy megakadályozza az élő esemény számlázását, mielőtt készen állna.  (A számlázás az élő esemény elindítását követően kezdődik.) ![Élő esemény rádiógombindítása](media/live-events-wirecast-quickstart/start-live-event-no.png)<br/>
-1. A beállítások áttekintéséhez kattintson a **Véleményezés + létrehozás** gombra.
-1. Az élő esemény létrehozásához kattintson a **Létrehozás** gombra. Ezután visszatér az élő esemény lista nézetébe.
-1. Kattintson az **imént létrehozott élő eseményre mutató linkre.** Figyelje meg, hogy az esemény leállt.
-1. Tartsa nyitva ezt a lapot a böngészőben.  Majd később visszatérünk rá.
+1. Válassza az **Áthaladás – nincs felhőkódolási** lehetőség.
 
-## <a name="setting-up-a-live-stream-with-wirecast-studio"></a>Élő közvetítés beállítása a Wirecast Studio segítségével
+   ![Felhőalapú kódolási beállítás](media/live-events-wirecast-quickstart/cloud-encoding.png)
+1. Válassza az **RTMP** lehetőséget.
+1. Győződjön meg arról, hogy a **Nincs** lehetőség van kiválasztva az **Élő esemény indítása**beállításhoz, hogy elkerülje az élő esemény számlázását, mielőtt készen állna. (A számlázás az élő esemény indításakor kezdődik.)
 
-1. Feltéve, hogy a Wirecast alkalmazás még mindig meg van nyitva, válassza a főmenü **Üres dokumentum létrehozása parancsát,** majd kattintson a **Folytatás parancsra.**
-![Wirecast kezdőképernyő](media/live-events-wirecast-quickstart/open-empty-document.png)
-1. Vigye az egérmutatót a Wirecast rétegek területének első rétege fölé.  Kattintson a megjelenő **Hozzáadás** ikonra, és jelölje ki az adatfolyamként bevitt videobemenetet.  Megnyílik a Mesterréteg 1 párbeszédablak.<br/>
-![Wirecast hozzáadás ikon](media/live-events-wirecast-quickstart/add-icon.png)
-1. Válassza a menü **Videorögzítés parancsát,** majd válassza ki a használni kívánt fényképezőgépet. Ha fényképezőgépet választ, a kamera nézete megjelenik az Előnézet területen.
-![Wirecast videó felvétel kiválasztása képernyő](media/live-events-wirecast-quickstart/video-shot-selection.png)
-1. Vigye az egérmutatót a Drótlevetítés rétegek területén a második réteg fölé. Kattintson a megjelenő **Hozzáadás** ikonra, és jelölje ki az adatfolyamként hangot.  Megnyílik a Master Layer 2 párbeszédablak.
+   ![Élő esemény indítása lehetőség](media/live-events-wirecast-quickstart/start-live-event-no.png)
+1. A beállítások áttekintéséhez válassza a **Véleményezés + létrehozás** gombot.
+1. Az élő esemény létrehozásához kattintson a **Létrehozás** gombra. Ezután visszatérsz az élő esemény hirdetésére.
+1. Válaszd ki az imént létrehozott élő eseményre mutató hivatkozást. Figyelje meg, hogy az esemény leállt.
+1. Tartsa nyitva ezt a lapot a böngészőben. Majd később visszatérünk rá.
+
+## <a name="set-up-a-live-stream-by-using-wirecast-studio"></a>Élő közvetítés beállítása a Wirecast Studio használatával
+
+1. A Wirecast alkalmazásban válassza a főmenü **Üres dokumentum létrehozása parancsát,** majd válassza a **Folytatás parancsot.**
+
+   ![Wirecast kezdőképernyő](media/live-events-wirecast-quickstart/open-empty-document.png)
+1. Vigye az egérmutatót a **Wirecast rétegek** területének első rétege fölé.  Válassza a megjelenő **Hozzáadás** ikont, és jelölje ki az adatfolyamként bevitt videobemenetet.
+
+   ![Wirecast hozzáadás ikon](media/live-events-wirecast-quickstart/add-icon.png)
+
+   Megnyílik **a Mesterréteg 1** párbeszédpanel.
+1. Válassza a menü **Videorögzítés parancsát,** majd jelölje ki a használni kívánt fényképezőgépet.
+
+   ![Előnézeti terület a videorögzítéshez](media/live-events-wirecast-quickstart/video-shot-selection.png)
+
+   A kamera nézete megjelenik az előnézeti területen.
+1. Vigye az egérmutatót a **Drótlevetítés rétegek** területén a második réteg fölé. Jelölje ki a megjelenő **Hozzáadás** ikont, és jelölje ki az adatfolyamként streamelni kívánt hangbemenetet. Megnyílik **a Mesterréteg 2** párbeszédpanel.
 1. Válassza a menü **Hangrögzítés parancsát,** majd válassza ki a használni kívánt hangbemenetet.
-![Wirecast audio felvétel kiválasztása képernyő](media/live-events-wirecast-quickstart/audio-shot-select.png)
-1. A főmenüben válassza a **Kimeneti beállítások lehetőséget.**  Megjelenik a Kimenet párbeszédpanel.
-1. Válassza ki az **Azure Media Services** a kimeneti legördülő menüből.  Az Azure Media Services kimeneti beállítása automatikusan feltölti a *kimeneti* beállítások nagy részét.<br/>
-![Wirecast kimeneti beállítások képernyő](media/live-events-wirecast-quickstart/azure-media-services.png)
-1. A következő szakaszban visszatér az Azure Media Services böngészőjében a *bemeneti URL-cím* másolásához a kimeneti beállítások megadásához.
 
-### <a name="copy-and-paste-the-input-url"></a>A bemeneti URL másolása és beillesztése
+   ![Bemenetek a hangrögzítéshez](media/live-events-wirecast-quickstart/audio-shot-select.png)
+1. A főmenüben válassza a **Kimeneti beállítások lehetőséget.** Megjelenik **a Kimeneti cél kiválasztása** párbeszédpanel.
+1. Válassza ki az **Azure Media Services** a **Cél** legördülő listából. Az Azure Media Services kimeneti beállítása automatikusan feltölti a *kimeneti* beállítások nagy részét.
 
-1. A portál Azure Media Services-oldalán kattintson az **Indítás** gombra az élő közvetítési esemény elindításához. (A számlázás most kezdődik.)<br/>
-![Start ikon](media/live-events-wirecast-quickstart/start.png)
-2. Kattintson a **Biztonságos/Nem biztonságos** kapcsolóra, ha nem **biztonságosra**szeretné állítani.  Ez a protokollt RTMPS helyett RTMP-re állítja.
-3. Másolja a **szövegbeviteli URL-címet** a vágólapra.
-![Bemeneti URL](media/live-events-wirecast-quickstart/input-url.png)
-4. Váltson át a Wirecast alkalmazásra, és illessze be a **bemeneti URL-címet** a Kimeneti beállítások **Cím** mezőjébe.<br/>
-![Wirecast bemeneti URL-címe](media/live-events-wirecast-quickstart/input-url-wirecast.png)
-5. Kattintson **az Rendben gombra.**
+   ![Wirecast kimeneti beállítások képernyő](media/live-events-wirecast-quickstart/azure-media-services.png)
 
-## <a name="setting-up-outputs"></a>Kimenetek beállítása
+
+A következő eljárásban a böngészőben visszatér az Azure Media Services szolgáltatáshoz, és a bemeneti URL-cím másolásához adja meg a kimeneti beállításokat:
+
+1. A portál Azure Media Services-oldalán válassza az **Indítás** lehetőséget az élő közvetítési esemény elindításához. (A számlázás most kezdődik.)
+
+   ![Start ikon](media/live-events-wirecast-quickstart/start.png)
+2. Állítsa a **Secure/Not Secure** kapcsolót **Nem biztonságosra.** Ez a lépés az RTMPS helyett RTMP protokollra állítja be a protokollt.
+3. A **Beviteli URL-cím mezőben** másolja az URL-címet a vágólapra.
+
+   ![Bemeneti URL](media/live-events-wirecast-quickstart/input-url.png)
+4. Váltson át a Wirecast alkalmazásra, és illessze be a **bemeneti URL-t** a kimeneti beállítások **Cím** mezőjébe.
+
+   ![Wirecast bemeneti URL-címe](media/live-events-wirecast-quickstart/input-url-wirecast.png)
+5. Válassza **az OK gombot.**
+
+## <a name="set-up-outputs"></a>Kimenetek beállítása
 
 Ez a rész beállítja a kimeneteket, és lehetővé teszi, hogy mentse a felvételt az élő közvetítés.  
 
 > [!NOTE]
-> A kimenet streameléséhez a streamelési végpontnak futnia kell.  Lásd: Az alapértelmezett streamelési végpont futtatása szakasz alább.
+> Ahhoz, hogy ezt a kimenetet streamelje, a streamelési végpontnak futnia kell. Tekintse meg a későbbi [Az alapértelmezett streamelési végpont szakasz futtatása.](#run-the-default-streaming-endpoint)
 
-1. Kattintson a **Kimenetek létrehozása** linkre a Kimenetek videómegjelenítő alatt.
+1. Válassza a **Kimenetek létrehozása hivatkozást** a **Kimenetek** videómegjelenítő alatt.
 1. Ha szeretné, szerkesztheti a kimenet nevét a **Név** mezőben valami felhasználóbarátabbra, hogy később könnyen megtalálhassa.
-![Kimeneti név mező](media/live-events-wirecast-quickstart/output-name.png)
-1. Egyelőre hagyd békén a többi mezőt.
-1. Kattintson a **Következő** adatfolyam-lokátor hozzáadása elemre.
-1. Módosítsa a lokátor nevét valami felhasználóbarátabbra, ha szeretné.
-![Lokátor névmezője](media/live-events-wirecast-quickstart/live-event-locator.png)
+   
+   ![Kimenet neve mező](media/live-events-wirecast-quickstart/output-name.png)
+1. Egyelőre hagyd békén a többi dobozt.
+1. Válassza a **Tovább lehetőséget** a streamelési lokátor hozzáadásához.
+1. Ha szeretné, módosítsa a lokátor nevét valami felhasználóbarátabbra.
+   
+   ![Lokátor neve mező](media/live-events-wirecast-quickstart/live-event-locator.png)
 1. Hagyja minden mást ezen a képernyőn egyedül most.
-1. Kattintson **a Létrehozás gombra.**
+1. Kattintson a **Létrehozás** gombra.
 
-## <a name="starting-the-broadcast"></a>Az adás indítása
+## <a name="start-the-broadcast"></a>Az adás indítása
 
-1. A Wirecast ban válassza **a Kimeneti > Start / Stop broadcasting > Start Azure Media Services : Azure Media Services** a főmenüből.  Miután az adatfolyamot elküldték az élő eseményre, a Wirecast élő ablaka megjelenik az élő esemény videólejátszójában az Azure Media Services élő eseményoldalán.
+1. A Wirecast, válassza **kimeneti** > **start / leállítási broadcasting** > Start Azure Media**Services: Azure Media Services** a főmenüből.
 
    ![Szórás menüelemeinek indítása](media/live-events-wirecast-quickstart/start-broadcast.png)
 
-1. Az előnézeti ablak ban található **Ugrás** gombra kattintva megkezdheti a Wirecast-rétegekhez kiválasztott video- és hanganyagok sugárzását.
+   Miután az adatfolyamot elküldték az élő eseményre, a Wirecast **Élő** ablaka megjelenik a videólejátszóban az Azure Media Services élő eseményoldalán.
+
+1. Az előnézeti ablak ban kattintson az **Ugrás** gombra a Wirecast-rétegekhez kiválasztott videó és hang sugárzásának megkezdéséhez.
 
    ![Wirecast Go gomb](media/live-events-wirecast-quickstart/go-button.png)
 
    > [!TIP]
-   > Ha hiba történt, próbálja meg újratölteni a lejátszót a lejátszó újratöltése linkre kattintva.
+   > Ha hiba történt, próbálja meg újratölteni a lejátszót a **lejátszó újratöltése** linkre kattintva.
 
-## <a name="running-the-default-streaming-endpoint"></a>Az alapértelmezett streamelési végpont futtatása
+## <a name="run-the-default-streaming-endpoint"></a>Az alapértelmezett streamelési végpont futtatása
 
-1. Győződjön meg arról, hogy a streamelési végpont fut, ha a Media Services-terméklistában a **Streamelési végpontokat** választja. A lejátszási végpontok oldalára kerül.<br/>
-![Végpont menüelem streamelése](media/live-events-wirecast-quickstart/streaming-endpoints.png)
-1. Ha az alapértelmezett streamelési végpont állapota le van állítva, kattintson az **alapértelmezett** streamelési végpontra. Ez az adott végpontlapjára vezet.
-1. Kattintson a **Start gombra.**  Ez elindítja a streamelési végpontot.<br/>
-![Végpont menüelem streamelése](media/live-events-wirecast-quickstart/start.png)
+1. Válassza a **Streamelési végpontok lehetőséget** a Media Services listában.
 
-## <a name="play-the-output-broadcast-with-azure-media-player"></a>A kimeneti közvetítés lejátszása az Azure Media Player rel
+   ![Végpontok streamelése menüelem](media/live-events-wirecast-quickstart/streaming-endpoints.png)
+1. Ha az alapértelmezett streamelési végpont állapota le van állítva, jelölje ki. Ez a lépés az adott végpont lapjára viszi.
+1. Válassza az **Indítás** elemet.
+   
+   ![Start gomb a streamelési végponthoz](media/live-events-wirecast-quickstart/start.png)
 
-1. Másolja a **streamelési URL-címet** a Kimeneti videólejátszó alá.
-1. Webböngészőben nyissa meg a bemutatót az Azure Media Playerhttps://ampdemo.azureedge.net/azuremediaplayer.html
-1. Illessze be a **streamelési URL-címet** az Azure Media Player URL-mezőjébe.
-1. Kattintson a **Lejátszó frissítése** gombra.
-1. Az **play** élő közvetítés megtekintéséhez kattints a videó lejátszásikonjára.
+## <a name="play-the-output-broadcast-by-using-azure-media-player"></a>A kimeneti közvetítés lejátszása az Azure Media Player használatával
 
-## <a name="stopping-the-broadcast"></a>Az adás leállítása
+1. Másolja a streamelési URL-címet a **Kimeneti** videolejátszó alá.
+1. Webböngészőben nyissa meg az [Azure Media Player bemutatóját.](https://ampdemo.azureedge.net/azuremediaplayer.html)
+1. Illessze be a streamelési URL-címet az Azure Media Player **URL-címmezőjébe.**
+1. Válassza a **Lejátszó frissítése** gombot.
+1. Az élő közvetítés megtekintéséhez válassza a Videó lejátszásikonját. **Play**
+
+## <a name="stop-the-broadcast"></a>Az adás leállítása
 
 Ha úgy gondolja, hogy elegendő tartalmat streamelt, állítsa le az adást.
 
-1. A Wirecast, kattintson a **broadcast** gombra.  Ez leállítja az adást a Wirecast-ból.
-1. A portálon kattintson a **Stop**gombra. Kap egy figyelmeztető üzenetet, hogy az élő közvetítés leáll, de a kimenet most antól igény szerinti eszközlesz.
-1. Kattintson a **Stop** gombra a figyelmeztető üzenetben. Az Azure Media Player is megjelenik egy hiba, mivel az élő közvetítés már nem érhető el.
+1. A Wirecast alkalmazásban válassza a **Közvetítés** gombot. Ez a lépés leállítja az adást a Wirecast-ból.
+1. A portálon válassza a **Stop (Leállítás)** lehetőséget. Ezután kap egy figyelmeztető üzenetet, hogy az élő közvetítés leáll, de a kimenet most lesz egy on-demand eszköz.
+1. A figyelmeztető üzenetben válassza a **Leállítás** lehetőséget. Az Azure Media Player most egy hibát jelenít meg, mert az élő közvetítés már nem érhető el.
 
-## <a name="play-the-on-demand-output-with-the-azure-media-player"></a>Az igény szerinti kimenet lejátszása az Azure Media Player rel
+## <a name="play-the-on-demand-output-by-using-azure-media-player"></a>Az igény szerinti kimenet lejátszása az Azure Media Player használatával
 
-A létrehozott kimenet most már elérhető az igény szerinti streameléshez, amíg a streamelési végpont fut.
+A létrehozott kimenet már elérhető az igény szerinti streameléshez, amíg a streamelési végpont fut.
 
-1. Nyissa meg a Media Services listát, és válassza **az Eszközök lehetőséget.**
-1. Keresse meg a korábban létrehozott eseménykimenetet, és kattintson **az eszközre mutató hivatkozásra.** Megnyílik az eszközkimeneti lap.
-1. Másolja a **streamelési URL-címet** az eszköz videolejátszója alá.
-1. Térjen vissza az Azure Media Player a böngészőben, és illessze be a **streamelési URL-címet** az Azure Media Player URL-mezőjébe.
-1. Kattintson **a Lejátszó frissítése gombra.**
-1. Kattintson **play** a videó lejátszásikonjára az igény szerinti eszköz megtekintéséhez.
+1. Nyissa meg a Media Services listáját, és válassza **az Eszközök**lehetőséget.
+1. Keresse meg a korábban létrehozott eseménykimenetet, és válassza ki az eszközre mutató hivatkozást. Megnyílik az eszközkimeneti lap.
+1. Másolja a streamelési URL-címet az eszköz videolejátszója alá.
+1. Térjen vissza az Azure Media Player hez a böngészőben, és illessze be a streamelési URL-címet az URL-címmezőbe.
+1. Válassza **a Player frissítése**lehetőséget.
+1. Az igény szerinti eszköz megtekintéséhez válassza a videó **Lejátszás** ikonját.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 > [!IMPORTANT]
-> Állítsa le a szertartást! Miután elvégezte a lépéseket ebben a rövid útmutatóban, győződjön meg róla, hogy leállítja az élő eseményt és a streamelési végpontot, vagy továbbra is fizetni fog a további futásidejére. Az élő esemény leállításához olvassa el az Adás leállítása című témakört a fenti 2.
+> Állítsa le a szertartást! Miután elvégezte a rövid útmutató lépéseit, győződjön meg róla, hogy leállítja az élő eseményt és a streamelési végpontot, vagy a továbbiakban számlázzuk ki a további futási időt. Az élő esemény leállításához olvassa el [a Broadcast](#stop-the-broadcast) eljárás leállítása 2.
 
-### <a name="stopping-the-streaming-endpoint"></a>A streamelési végpont leállítása
+A streamelési végpont leállítása:
 
 1. A Media Services listából válassza a **Streamelési végpontok**lehetőséget.
-2. Kattintson a korábban elindított **alapértelmezett** streamelési végpontra. Ezzel megnyitja a végpont oldalát.
-3. Kattintson a **Stop gombra.**  Ez leállítja a streamelési végpontot.
+2. Válassza ki a korábban elindított alapértelmezett streamelési végpontot. Ez a lépés megnyitja a végpont lapját.
+3. Válassza **a Leállítás**lehetőséget.
 
 > [!TIP]
-> Ha nem szeretné megtartani az eseményekből származó eszközöket, törölje őket, hogy megakadályozza a tárolás számlázását.
+> Ha nem szeretné megtartani az eseményből származó eszközöket, törölje őket, hogy ne kelljen fizetnie a tárolásért.
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
-> [Mi a következő cikk sorrendben](./live-events-outputs-concept.md)
+> [Élő események és élő kimenetek a Media Services szolgáltatásban](./live-events-outputs-concept.md)

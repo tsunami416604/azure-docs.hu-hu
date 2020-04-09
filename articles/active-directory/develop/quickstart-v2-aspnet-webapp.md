@@ -4,7 +4,6 @@ description: Megtudhatja, hogy miként valósíthatja meg a Microsoft bejelentke
 services: active-directory
 author: jmprieur
 manager: CelesteDG
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
@@ -12,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: cf4967a05585cd6e1db83d469d30128cc253e6b4
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 2946551233500a80c6fa7f02ad4c427f2d654b40
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473665"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883644"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Rövid útmutató: Microsoft-identitásplatform-bejelentkezés hozzáadása egy ASP.NET webalkalmazáshoz
 Ebben a rövid útmutatóban egy kódminta segítségével megtudhatja, hogy egy ASP.NET webalkalmazás hogyan jelentkezhet be személyes fiókokba (hotmail.com, outlook.com, mások) és munkahelyi és iskolai fiókok bármely Azure Active Directory (Azure AD) példányból.  (Lásd: [Hogyan működik a minta](#how-the-sample-works) egy illusztrációhoz.)

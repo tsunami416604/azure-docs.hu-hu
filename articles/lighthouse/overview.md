@@ -3,12 +3,12 @@ title: Mi az az Azure Lighthouse?
 description: Az Azure Lighthouse lehetővé teszi a szolgáltatók számára, hogy nagyobb automatizálással és hatékonysággal nyújtsanak felügyelt szolgáltatásokat ügyfeleiknek.
 ms.date: 11/11/2019
 ms.topic: overview
-ms.openlocfilehash: 0bec1f5b727ca3ecd604d2654358ca9a5507abe4
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1d4d33238f30c2a579c6a0da6a39238207db4f4a
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75646194"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982786"
 ---
 # <a name="what-is-azure-lighthouse"></a>Mi az az Azure Lighthouse?
 
@@ -32,7 +32,7 @@ Az Azure Világítótorony többféle módon is egyszerűsítheti az ügyfelek e
 
 - **Azure delegált erőforrás-kezelés:** Kezelje az ügyfelek Azure-erőforrások biztonságosan a saját bérlő, anélkül, hogy váltani környezetés a repülőgépek vezérlése. További információ: [Azure delegált erőforrás-kezelés.](concepts/azure-delegated-resource-management.md)
 - **Új Azure-portál-élmények**: A bérlők közötti adatok megtekintése az Azure Portal új **Ügyfeleik** [lapján.](https://portal.azure.com) A megfelelő **Szolgáltatók** panelen az ügyfelek megtekinthetik és kezelhetik a szolgáltató hozzáférését. További információt az [Ügyfelek megtekintése és kezelése,](./how-to/view-manage-customers.md) valamint a szolgáltatók megtekintése és kezelése című témakörben [talál.](how-to/view-manage-service-providers.md)
-- **Azure Resource Manager-sablonok:** Egyszerűbben hajthat el felügyeleti feladatokat, beleértve az Azure delegált erőforrás-kezeléséhez felelős ügyfeleket is. További információkért tekintse meg [a mintatárés](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates) [az Azure delegált erőforrás-kezelése vevőink fedélzeti.](how-to/onboard-customer.md)
+- **Azure Resource Manager-sablonok:** Egyszerűbben hajthat el felügyeleti feladatokat, beleértve az Azure delegált erőforrás-kezeléséhez felelős ügyfeleket is. További információkért tekintse meg [a mintatárés](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates) [az Azure delegált erőforrás-kezelése vevőink fedélzeti.](how-to/onboard-customer.md)
 - **Felügyelt szolgáltatások kínál az Azure Marketplace-en:** Kínáljon szolgáltatásokat az ügyfelek nek magán- vagy nyilvános ajánlatok, és azokat automatikusan bekell ruházni az Azure delegált erőforrás-kezelés, mint egy másik a bevezetés az Azure Resource Manager-sablonok használatával. További információ: [Felügyelt szolgáltatások ajánlatai az Azure Marketplace-en.](concepts/managed-services-offers.md)
 - **Azure által felügyelt alkalmazások:** Olyan csomagokat és alkalmazásokat szállít, amelyeket az ügyfelek egyszerűen telepíthetnek és használhatnak saját előfizetéseikben. Az alkalmazás üzembe helyezése egy erőforrás-csoportba, amely a bérlő, lehetővé téve a szolgáltatás kezelése részeként a teljes Azure Lighthouse-élmény. További információt az [Azure által felügyelt alkalmazások áttekintése című témakörben talál.](../azure-resource-manager/managed-applications/overview.md)
 

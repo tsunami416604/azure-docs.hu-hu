@@ -12,12 +12,12 @@ author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 03/12/2020
-ms.openlocfilehash: 5847ef3033d257faef4831785b8abd864d54e835
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c072161db7a477b7973571a18d4f686b1b9c6202
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79209605"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985677"
 ---
 # <a name="quickstart-use-the-azure-portals-query-editor-to-query-a-sql-database"></a>Rövid útmutató: Sql-adatbázis lekérdezéséhez használja az Azure Portal lekérdezésszerkesztőjét
 
@@ -175,7 +175,7 @@ A lekérdezésszerkesztővel végzett munka során néhány tudnivalót kell tud
 
 * A lekérdezésszerkesztő a 443-as és az 1443-as portot használja a kommunikációhoz. Győződjön meg arról, hogy engedélyezte a kimenő HTTPS-forgalmat ezeken a portokon. A kimenő IP-címet is hozzá kell adnia a kiszolgáló engedélyezett tűzfalszabályaihoz az adatbázisok és adattárházak eléréséhez.
 
-* A Lekérdezésszerkesztő a Privát hivatkozással úgy működik, hogy nem kell hozzáadnia az ügyfél ip-címét az SQL adatbázis tűzfalához
+* Ha privát kapcsolattal rendelkezik, a Lekérdezésszerkesztő anélkül működik, hogy hozzá kellene adnia az ügyfél ip-címét az SQL adatbázis tűzfalához
 
 * Az **F5** billentyű lenyomásával frissül a lekérdezésszerkesztő lap, és a megdolgozott lekérdezések elvesznek.
 

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 6ecf3bb5999296b2f5f8f5c25616fac8e0278cda
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4f45ac40e7df865bdb4722d086325096c377cd59
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80132525"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877542"
 ---
 # <a name="entity-functions"></a>Entitásfüggvények
 
@@ -55,7 +55,7 @@ Jelenleg a két különböző API-k meghatározása entitások a következők:
 
 **Osztályalapú szintaxis (csak.NET),** ahol az entitásokat és műveleteket osztályok és metódusok jelölik. Ez a szintaxis könnyebben olvasható kódot eredményez, és lehetővé teszi a műveletek típusbiztos módon való meghívását. Az osztályalapú szintaxis egy vékony réteg a függvényalapú szintaxis tetején, így mindkét változat szinonimaként használható ugyanabban az alkalmazásban.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ### <a name="example-function-based-syntax---c"></a>Példa: Függvényalapú szintaxis - C #
 
@@ -109,7 +109,7 @@ Ennek az entitásnak az állapota `Counter`egy típusú objektum, amely a száml
 
 Az osztályalapú szintaxisról és használatáról az [Entitásosztályok definiálása](durable-functions-dotnet-entities.md#defining-entity-classes)című témakörben talál további információt.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ### <a name="example-javascript-entity"></a>Példa: JavaScript entitás
 
@@ -171,7 +171,7 @@ Az alábbi példák bemutatják az entitások elérésének különböző módja
 
 Az entitások eléréséhez egy közönséges Azure-függvényből, amely et ügyfélfüggvénynek is neveznek, használja az [entitásügyfél-kötést.](durable-functions-bindings.md#entity-client) A következő példa egy várólista által aktivált függvényt mutat be, amely egy entitást jelez ezzel a kötéssel.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 > [!NOTE]
 > Az egyszerűség kedvéért az alábbi példák az entitások elérésének lazán beírt szintaxisát mutatják be. Általában azt javasoljuk, hogy [az entitásokat a felületeken keresztül érje el,](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces) mert több típusellenőrzést biztosít.
@@ -189,7 +189,7 @@ public static Task Run(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -209,7 +209,7 @@ A *jel* kifejezés azt jelenti, hogy az entitás API-meghívásegyirányú és a
 
 Az ügyfélfüggvények lekérdezhetik egy entitás állapotát is, ahogy az a következő példában látható:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("QueryCounter")]
@@ -223,7 +223,7 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -231,7 +231,7 @@ const df = require("durable-functions");
 module.exports = async function (context) {
     const client = df.getClient(context);
     const entityId = new df.EntityId("Counter", "myCounter");
-    const stateResponse = await context.df.readEntityState(entityId);
+    const stateResponse = await client.readEntityState(entityId);
     return stateResponse.entityState;
 };
 ```
@@ -244,7 +244,7 @@ Az entitásállapot-lekérdezések a tartós nyomon követési tárolóba kerül
 
 Az Orchestrator függvények a [vezénylési eseményindító kötésen](durable-functions-bindings.md#orchestration-trigger)lévő API-k használatával férhetnek hozzá az entitásokhoz. A következő példakód egy orchestrator függvény `Counter` hívása és jelzése egy entitás.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CounterOrchestration")]
@@ -263,7 +263,7 @@ public static async Task Run(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -291,7 +291,7 @@ Csak vezénylések képesek az entitások hívására és válasz fogadására, 
 Egy entitásfüggvény jeleket küldhet más entitásoknak, vagy akár magának is, miközben végrehajt egy műveletet.
 Például módosíthatjuk az `Counter` előző entitás példát, hogy küldjön egy "mérföldkő elérte" jelet néhány figyelésentitás, amikor a számláló eléri a 100 értéket.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
    case "add":
@@ -306,7 +306,7 @@ Például módosíthatjuk az `Counter` előző entitás példát, hogy küldjön
         break;
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
     case "add":
@@ -406,7 +406,7 @@ A szabályok bármilyen megsértése futásidejű hibát `LockingRulesViolationE
 
 ## <a name="comparison-with-virtual-actors"></a>Összehasonlítás a virtuális szereplőkkel
 
-Sok a tartós entitások funkciók ihlette az [aktor modell](https://en.wikipedia.org/wiki/Actor_model). Ha már ismeri a színészeket, előfordulhat, hogy felismeri a cikkben ismerte tett fogalmak nagy részét. Tartós szervezetek különösen hasonlóak a [virtuális szereplők](https://research.microsoft.com/projects/orleans/), vagy szemek, ahogy népszerűsítette az [Orleans projekt](http://dotnet.github.io/orleans/). Példa:
+Sok a tartós entitások funkciók ihlette az [aktor modell](https://en.wikipedia.org/wiki/Actor_model). Ha már ismeri a színészeket, előfordulhat, hogy felismeri a cikkben ismerte tett fogalmak nagy részét. Tartós szervezetek különösen hasonlóak a [virtuális szereplők](https://research.microsoft.com/projects/orleans/), vagy szemek, ahogy népszerűsítette az [Orleans projekt](http://dotnet.github.io/orleans/). Például:
 
 * A tartós entitások egy entitásazonosítón keresztül címezhetők.
 * A tartós entitásműveletek sorozatosan, egyenként, a versenykörülmények megelőzése érdekében hajthatók végre.

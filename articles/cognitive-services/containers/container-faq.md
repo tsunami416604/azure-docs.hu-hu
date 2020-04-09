@@ -3,18 +3,18 @@ title: A Cognitive Services tárolói gyakran feltett kérdésekre (GYIK)
 titleSuffix: Azure Cognitive Services
 description: Gyakran ismételt kérdések és válaszok.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 11/11/2019
-ms.author: dapine
-ms.openlocfilehash: 33b99d50db4384c7de818a7dd0bb8492c86bef97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 8aae650065e8de11ccdc55a8a056c379a219fcb4
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73961894"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876506"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Az Azure Cognitive Services tárolói gyakran feltett kérdésekre (GYIK)
 
@@ -26,7 +26,7 @@ ms.locfileid: "73961894"
 
 > [!div class="checklist"]
 > * [Anomaly Detector][ad-containers]
-> * [Számítógépes látás][cv-containers]
+> * [Számítógépes látástechnológia][cv-containers]
 > * [Arcfelismerés][fa-containers]
 > * [Form Recognizer][fr-containers]
 > * [Language Understanding (LUIS)][lu-containers]
@@ -108,7 +108,7 @@ Fedezze fel az alábbi címkéket az igényeinek megfelelő lehetséges kérdés
 **A.** Az ügyfelek a felhasználás alapján, hasonlóan a Cognitive Services-felhő. A tárolókat úgy kell konfigurálni, hogy mérési adatokat küldjenek az Azure-ba, és a tranzakciókat ennek megfelelően számlázzuk. A üzemeltetett és a helyszíni szolgáltatások ban használt erőforrások hozzáadódnak az egyetlen kvótához rétegzett díjszabással, mindkét használathoz képest számítva. További részletekért tekintse meg a megfelelő ajánlat díjszabási oldalát.
 
 * [Anomaly Detector][ad-containers-billing]
-* [Számítógépes látás][cv-containers-billing]
+* [Számítógépes látástechnológia][cv-containers-billing]
 * [Arcfelismerés][fa-containers-billing]
 * [Form Recognizer][fr-containers-billing]
 * [Language Understanding (LUIS)][lu-containers-billing]
@@ -135,7 +135,7 @@ Fedezze fel az alábbi címkéket az igényeinek megfelelő lehetséges kérdés
 **A.** A Cognitive Services-tárolók x64-alapú tárolók, amelyek bármely kompatibilis Linux-csomópontot, virtuális gép- és peremhálózati eszközt futtathatnak, amely támogatja az x64 Linux Docker-tárolókat. Mindegyiknek szüksége van CPU processzorokra. Az egyes tárolóajánlatok minimális és ajánlott konfigurációi az alábbiakban érhetők el:
 
 * [Anomaly Detector][ad-containers-recommendations]
-* [Számítógépes látás][cv-containers-recommendations]
+* [Számítógépes látástechnológia][cv-containers-recommendations]
 * [Arcfelismerés][fa-containers-recommendations]
 * [Form Recognizer][fr-containers-recommendations]
 * [Language Understanding (LUIS)][lu-containers-recommendations]

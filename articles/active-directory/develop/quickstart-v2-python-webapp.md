@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: a8ef0f172a8e9118eef2d2f8a11f3efbce665171
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 0affae56ef6998efe4bb370287ff3688f83f3878
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473521"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80873956"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Rövid útmutató: Bejelentkezés hozzáadása a Microsofttal egy Python-webalkalmazáshoz
 
@@ -41,8 +41,7 @@ A minta futtatásához a következőkre lesz szükség:
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1. lehetőség: Az alkalmazás regisztrálása és automatikus konfigurálása, majd a kódminta letöltése
 >
-> 1. Nyissa meg az [Azure Portal – Alkalmazásregisztrációk.](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)
-> 1. Válassza **az Új regisztráció lehetőséget.**
+> 1. Nyissa meg az [Azure Portal – Alkalmazásregisztrációk.](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/PythonQuickstartPage/sourceType/docs)
 > 1. Adja meg az alkalmazás nevét, majd kattintson a **Regisztráció** elemre.
 > 1. Kövesse az utasításokat az új alkalmazás letöltéséhez és automatikus konfigurálásához.
 >
@@ -59,8 +58,11 @@ A minta futtatásához a következőkre lesz szükség:
 > 1. Amikor megjelenik az **Alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
 >      - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `python-webapp`).
 >      - A **Támogatott fióktípusok csoportban**válassza a Fiókok lehetőséget **bármely szervezeti címtárban és személyes Microsoft-fiókban.**
->      - Az **Átirányítás URI** szakasz legördülő listájában jelölje ki a **webes** platformot, majd állítsa az értéket a értékre. `http://localhost:5000/getAToken`
->      - Kattintson a **Register** (Regisztrálás) elemre. Az alkalmazás **áttekintése** lapon jegyezze fel az **alkalmazás (ügyfél) azonosító** értékét későbbi használatra.
+>      - Kattintson a **Register** (Regisztrálás) elemre.
+>      - Az alkalmazás **áttekintése** lapon jegyezze fel az **alkalmazás (ügyfél) azonosító** értékét későbbi használatra.
+> 1. Válassza ki a **hitelesítést** a menüből, majd adja meg a következő adatokat:
+>    - Adja hozzá a **webes** platform konfigurációját. Hozzáadás `http://localhost:5000/getAToken` **átirányítási URI-kként**.
+>    - Kattintson a **Mentés** gombra.
 > 1. A bal oldali menüben válassza a **Tanúsítványok & titkoskulcsok at,** és kattintson az **Új ügyféltitok** elemre az **Ügyféltitkok** szakaszban:
 >
 >      - Írja be a kulcs leírását (a példányalkalmazás titkos kulcsa).
@@ -105,11 +107,11 @@ A minta futtatásához a következőkre lesz szükség:
 
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-the-application"></a>3. lépés: Az alkalmazás konfigurálása
-> 
+>
 > 1. Csomagolja ki a zip-fájlt egy helyi mappába a gyökérmappa közelében (például: **C:\Azure-Samples**)
 > 1. Ha integrált fejlesztői környezetet használ, nyissa meg a mintát a kedvenc IDE-ben (nem kötelező).
 > 1. Nyissa meg a **app_config.py** fájlt, amely a gyökérmappában található, és cserélje ki a következő kódrészletre:
-> 
+>
 > ```python
 > CLIENT_ID = "Enter_the_Application_Id_here"
 > CLIENT_SECRET = "Enter_the_Client_Secret_Here"

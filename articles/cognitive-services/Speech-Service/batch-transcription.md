@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: fb39f1ec83416ee8ab2a33b514971110db0c0b17
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 1f88df186526c2f9903337bb3331940be0989c3d
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668838"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892461"
 ---
 # <a name="what-is-batch-transcription"></a>Mi az a kötegátírás?
 
@@ -129,7 +129,7 @@ Az átírás konfigurálásához használja az alábbi választható tulajdonsá
       `AddSentiment`
    :::column-end:::
    :::column span="2":::
-      Itt adható meg, hogy a rendszer alkalmazza-e a véleményelemzést az utterance (kifejezés) kifejezésre. Az elfogadott `true` értékek `false` et kell engedélyezni, és (az alapértelmezett érték) letiltani azt.
+      Itt adható meg, hogy a rendszer alkalmazza-e a véleményelemzést az utterance (kifejezés) kifejezésre. Az elfogadott `true` értékek `false` et kell engedélyezni, és (az alapértelmezett érték) letiltani azt. További részletekért lásd a [Hangulatelemzés ben.](#sentiment-analysis)
 :::row-end:::
 :::row:::
    :::column span="1":::
@@ -218,12 +218,41 @@ A mono bemeneti hang hoz létre egy átíráseredmény-fájlt. A sztereó bemene
 
 Az eredmény a következő űrlapokat tartalmazza:
 
-| Űrlap        | Tartalom                                                                                                                                                  |
-|-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `Lexical`   | A tényleges szavakat felismerték.                                                                                                                             |
-| `ITN`       | A felismert szöveg inverz-szöveg-normalizált formája. Rövidítések ("doctor smith" a "dr smith"), telefonszámok, és egyéb átalakítások alkalmazzák. |
-| `MaskedITN` | A káromkodással ellátott ITN-űrlap alkalmazása.                                                                                                             |
-| `Display`   | A felismert szöveg megjelenítési formája. A hozzáadott írásjelek és a nagybetűs írásjelek is benne vannak.                                                             |
+:::row:::
+   :::column span="1":::
+      **Űrlap**
+   :::column-end:::
+   :::column span="2":::
+      **Tartalom**
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `Lexical`
+   :::column-end:::
+   :::column span="2":::
+      A tényleges szavakat felismerték.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `ITN`
+   :::column-end:::
+   :::column span="2":::
+      A felismert szöveg inverz-szöveg-normalizált formája. Rövidítések ("doctor smith" a "dr smith"), telefonszámok, és egyéb átalakítások alkalmazzák.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `MaskedITN`
+   :::column-end:::
+   :::column span="2":::
+      A káromkodással ellátott ITN-űrlap alkalmazása.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `Display`
+   :::column-end:::
+   :::column span="2":::
+      A felismert szöveg megjelenítési formája. A hozzáadott írásjelek és a nagybetűs írásjelek is benne vannak.
+:::row-end:::
 
 ## <a name="speaker-separation-diarization"></a>Hangszóró elválasztása (diarizáció)
 
@@ -260,6 +289,10 @@ A hangulatfunkció a hangban kifejezett érzést becsüli meg. A vélemény 0 é
 - Azonosítsa, hogy az ügyfelek mit szeretnek, és mit nem szeretnek egy termékben vagy szolgáltatásban
 
 A hangulat pontozott hangszegmensenként a lexikális űrlap alapján. Az adott hangszegmensen belüli teljes szöveg a hangulat kiszámítására szolgál. A teljes átírásra nem számít összesített véleményt. Jelenleg hangulatelemzés csak az angol nyelv.
+
+> [!NOTE]
+> Ehelyett a Microsoft Text Analytics API használatát javasoljuk. Ez felajánl több haladó jellegét meghatározza túl érzelem analízis szeret kulcs kifejezés kinyerés, önműködő nyelv nyomozás, és több. Információkat és mintákat a [Text Analytics dokumentációjában](https://azure.microsoft.com/services/cognitive-services/text-analytics/)talál.
+>
 
 A JSON kimeneti minta az alábbihoz hasonlóan néz ki:
 

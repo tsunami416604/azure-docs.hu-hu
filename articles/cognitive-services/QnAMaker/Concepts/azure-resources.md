@@ -3,12 +3,12 @@ title: Azure-erőforrások – QnA Maker
 description: A QnA Maker több Azure-forrást használ, amelyek mindegyike más célt szolgál. Ha tisztában van azzal, hogyan használják őket külön-külön, megtervezheti és kiválaszthatja a megfelelő tarifacsomagot, vagy megtudhatja, hogy mikor kell módosítania a tarifacsomagot. Ha tisztában van azzal, hogyan használják őket együttesen, megtalálhatja és kijavíthatja a problémákat, amikor azok előfordulnak.
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 1bd491ecbd878cb7bb05a7eaa5712c75653f2cba
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 581029d2372f7a2ef704dcf02f266b66440aa246
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804299"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80873905"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Azure-erőforrások a QnA Maker számára
 
@@ -49,6 +49,16 @@ Az alábbi táblázat néhány magas szintű útmutatást ad.
 | Kísérletezés        | Ingyenes Termékváltozat             | Ingyenes szint   | Ingyenes szint    | Legfeljebb 2 KB-k közzététele, 50 MB méret  |
 | Fejlesztői/tesztelési környezet   | Standard termékváltozat         | Megosztott      | Basic        | Legfeljebb 14 Gb-os közzététel, 2 GB méret    |
 | Termelési környezet | Standard termékváltozat         | Basic       | Standard     | Közzététel Legfeljebb 49 KB-ig, 25 GB-os méret |
+
+## <a name="recommended-settings"></a>Ajánlott beállítások
+
+|QPS cél | App Service | Azure Cognitive Search |
+| -------------------- | ----------- | ------------ |
+| 3             | S1, 1 példány   | S1, 1 példány    |
+| 50         | S3, 10 példány       | S1, 12 példány         |
+| 80         | S3, 10 példány      |  S3, 12 példány  |
+| 100         | P3V2, 10 példány  | S3, 12 példány, 3 partíció   |
+| 200 hogy 250         | P3V2, 20 példány | S3, 12 példány, 3 partíció    |
 
 ## <a name="when-to-change-a-pricing-tier"></a>Mikor kell módosítani egy tarifacsomagot?
 

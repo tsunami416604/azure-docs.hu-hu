@@ -1,25 +1,21 @@
 ---
 title: Integrációs és automatizálási platformlehetőségek az Azure-ban
-description: 'Hasonlítsa össze az integrációs feladatokra optimalizált Microsoft felhőszolgáltatásokat: Microsoft Flow, Logic Apps, Functions és WebJobs.'
+description: 'Hasonlítsa össze az integrációs feladatokra optimalizált Microsoft felhőszolgáltatásokat: Power Automate, Logic Apps, Functions és WebJobs.'
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: bd9f3bfe1578b632707382cfe422f19514e7ce48
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 40293056a73fd88e9ad6b3922aebfe0ba71f07dd
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79241317"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878136"
 ---
-> [!NOTE]
-> A Microsoft Flow új neve Power Automate. További információt [ebben a blogban](https://aka.ms/flow-now-pa) talál.
-> 
-> A rendszer az elkövetkező napokban frissíti a tartalmat a védjegyezési változásnak megfelelően.
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>Válassza ki a megfelelő integrációs és automatizálási szolgáltatásokat az Azure-ban
 
 Ez a cikk összehasonlítja az alábbi Microsoft-felhőszolgáltatásokat:
 
-* [Microsoft Flow](https://flow.microsoft.com/)
+* [Microsoft Power Automate](https://flow.microsoft.com/) (microsoft flow volt)
 * [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)
 * [Azure Functions](https://azure.microsoft.com/services/functions/)
 * [Azure App Service WebJobs](../app-service/webjobs-create.md)
@@ -28,23 +24,23 @@ Mindegyik szolgáltatás megoldhatja az integrációs problémákat és automati
 
 Ha általánosabb összehasonlítást szeretne végezni az Azure Functions és más Azure-számítási lehetőségek között, olvassa el [az Azure számítási szolgáltatás kiválasztásának feltételei](/azure/architecture/guide/technology-choices/compute-comparison) és az Azure számítási lehetőség kiválasztása [mikroszolgáltatásokhoz](/azure/architecture/microservices/design/compute-options)lehetőséget.
 
-## <a name="compare-microsoft-flow-and-azure-logic-apps"></a>A Microsoft Flow és az Azure Logic Apps összehasonlítása
+## <a name="compare-microsoft-power-automate-and-azure-logic-apps"></a>A Microsoft Power Automate és az Azure Logic Apps összehasonlítása
 
-A Microsoft Flow és a Logic Apps egyaránt *tervező-első* integrációs szolgáltatások, amelyek munkafolyamatokat hozhatnak létre. Mindkét szolgáltatás integrálható különféle SaaS- és vállalati alkalmazásokkal. 
+A Power Automate és a Logic Apps egyaránt *tervező-első* integrációs szolgáltatások, amelyek munkafolyamatokat hozhatnak létre. Mindkét szolgáltatás integrálható különféle SaaS- és vállalati alkalmazásokkal. 
 
-A Microsoft Flow a Logic Apps-re épül. Ugyanaz a munkafolyamat-tervező és ugyanazok az [összekötők.](../connectors/apis-list.md) 
+A Power Automate a Logic Apps alkalmazásra épül. Ugyanaz a munkafolyamat-tervező és ugyanazok az [összekötők.](../connectors/apis-list.md) 
 
-A Microsoft Flow minden irodai dolgozót képessé tesz egyszerű integrációk (például egy SharePoint-dokumentumtár jóváhagyási folyamata) végrehajtására anélkül, hogy fejlesztőkön vagy informatikai rendszereken keresztül haladna. A Logic Apps speciális integrációkat is engedélyezhet (például B2B-folyamatokat), ahol nagyvállalati szintű Azure DevOps-ra és biztonsági eljárásokra van szükség. Az üzleti munkafolyamatokra jellemző, hogy idővel egyre összetettebbé válnak. Ennek megfelelően először egy folyamattal kezdheti, majd szükség szerint átalakíthatja egy logikai alkalmazássá.
+A Power Automate segítségével minden irodai dolgozó egyszerű integrációt (például egy SharePoint-dokumentumtár jóváhagyási folyamatát) anélkül hajthat végre, hogy fejlesztőkön vagy informatikai rendszereken keresztül haladna. A Logic Apps speciális integrációkat is engedélyezhet (például B2B-folyamatokat), ahol nagyvállalati szintű Azure DevOps-ra és biztonsági eljárásokra van szükség. Az üzleti munkafolyamatokra jellemző, hogy idővel egyre összetettebbé válnak. Ennek megfelelően először egy folyamattal kezdheti, majd szükség szerint átalakíthatja egy logikai alkalmazássá.
 
-Az alábbi táblázat segítségével meghatározhatja, hogy a Microsoft Flow vagy a Logic Apps a legjobb-e egy adott integrációhoz:
+Az alábbi táblázat segítségével meghatározhatja, hogy a Power Automate vagy a Logic Apps a legjobb-e egy adott integrációhoz:
 
-|  | Microsoft Flow | Logic Apps |
+|  | Power Automate | Logic Apps |
 | --- | --- | --- |
 | **Felhasználók** |Irodai dolgozók, üzleti felhasználók, SharePoint-adminisztrátorok |Professzionális integrátorok és fejlesztők, informatikai szakemberek |
 | **Forgatókönyvek** |Önkiszolgáló |Speciális integrációk |
 | **Tervező eszköz** |Böngészőbeli és mobilalkalmazás, kizárólag felhasználói felület |Böngészőbeli, [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md), [Kódnézet](../logic-apps/logic-apps-author-definitions.md) elérhető |
 | **Alkalmazás életciklus-kezelése (ALM)** |Tervezés és tesztelés nem éles környezetben, előmozdítás a termeléshez, ha készen áll |Azure DevOps: forrásvezérlés, tesztelés, támogatás, automatizálás és kezelhetőség az [Azure Resource Managerben](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) |
-| **Rendszergazdai élmény** |A Microsoft Flow-környezetek és az adatveszteség-megelőzési (DLP) házirendek kezelése, nyomon követése licencelés: [Microsoft Flow Felügyeleti központ](https://admin.flow.microsoft.com) |Erőforráscsoportok, kapcsolatok, hozzáférés-kezelés és naplózás kezelése: [Azure Portal](https://portal.azure.com) |
+| **Rendszergazdai élmény** |Power Automate környezetek és adatveszteség-megelőzési (DLP) házirendek kezelése, nyomon követése licencelés: [Felügyeleti központ](https://admin.flow.microsoft.com) |Erőforráscsoportok, kapcsolatok, hozzáférés-kezelés és naplózás kezelése: [Azure Portal](https://portal.azure.com) |
 | **Biztonság** |Office 365 biztonsági és megfelelőségi naplózási naplói, DLP, [inaktív titkosítás](https://wikipedia.org/wiki/Data_at_rest#Encryption) bizalmas adatok esetén |Az Azure biztonsági garanciája: [Azure security](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity), Azure [Security Center](https://azure.microsoft.com/services/security-center/), [naplónaplók](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
 
 ## <a name="compare-azure-functions-and-azure-logic-apps"></a>Az Azure Functions és az Azure Logic Apps összehasonlítása
@@ -58,9 +54,9 @@ Ezeket a szolgáltatásokat használhatja vegyesen a vezénylések létrehozás�
 |  | Tartós függvények | Logic Apps |
 | --- | --- | --- |
 | **Fejlesztés** | Kódközpontú (imperatív) | Tervezőközpontú (deklaratív) |
-| **Kapcsolat** | [Számos beépített kötési típus](functions-triggers-bindings.md#supported-bindings), egyéni kötések létrehozása kód írásával | [Nagyszámú beépített összekötők](../connectors/apis-list.md), [Enterprise Integration Pack csomag B2B-forgatókönyvekhez](../logic-apps/logic-apps-enterprise-integration-overview.md), [egyéni összekötők létrehozása](../logic-apps/custom-connector-overview.md) |
+| **Kapcsolatok** | [Számos beépített kötési típus](functions-triggers-bindings.md#supported-bindings), egyéni kötések létrehozása kód írásával | [Nagyszámú beépített összekötők](../connectors/apis-list.md), [Enterprise Integration Pack csomag B2B-forgatókönyvekhez](../logic-apps/logic-apps-enterprise-integration-overview.md), [egyéni összekötők létrehozása](../logic-apps/custom-connector-overview.md) |
 | **Műveletek** | Minden tevékenység egy Azure-függvény; kód írásával hozhat létre tevékenységfüggvényeket |[Használatra kész műveletek széles választéka](../logic-apps/logic-apps-workflow-actions-triggers.md)|
-| **Megfigyelő** | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [Azure Monitor naplók](../logic-apps/logic-apps-monitor-your-logic-apps.md)|
+| **Figyelés** | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [Azure Monitor naplók](../logic-apps/logic-apps-monitor-your-logic-apps.md)|
 | **Felügyelet** | [REST API](durable/durable-functions-http-api.md), [Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [REST API](https://docs.microsoft.com/rest/api/logic/), [PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [Visual Studio](https://docs.microsoft.com/azure/logic-apps/manage-logic-apps-with-visual-studio) |
 | **Végrehajtási környezet** | Futtatható [helyileg](functions-runtime-overview.md) vagy a felhőben | Csak felhőben futtatható|
 
@@ -107,25 +103,25 @@ Minden egyéb olyan forgatókönyv esetén, ahol kódrészletek futtatásával k
 
 <a name="together"></a>
 
-## <a name="microsoft-flow-logic-apps-functions-and-webjobs-together"></a>Microsoft Flow, Logic Apps, Functions és WebJobs együttesen
+## <a name="power-automate-logic-apps-functions-and-webjobs-together"></a>Power Automate, Logic Apps, Functions és WebJobs együttesen
 
 Nem kell választani csak egy ilyen szolgáltatást. Integrálódnak egymással, valamint a külső szolgáltatásokkal.
 
 Egy folyamat meghívhat egy logikai alkalmazást. Egy logikai alkalmazás meghívhat egy függvényt, egy függvény pedig meghívhat egy logikai alkalmazást. Példa: [Az Azure Logic Apps szolgáltatással integrálható függvények létrehozása](functions-twitter-email.md).
 
-A Microsoft Flow, a Logic Apps és a Functions integrációja az idő múlásával tovább javul. Amit létrehoz az egyik szolgáltatásban, használhatja a többiben.
+A Power Automate, a Logic Apps és a Functions integrációja az idő múlásával tovább javul. Amit létrehoz az egyik szolgáltatásban, használhatja a többiben.
 
 Az integrációs szolgáltatásokról az alábbi hivatkozások használatával kaphat további információkat:
 
 * [Christopher Anderson: Leveraging Azure Functions & Azure App Service for integration scenarios](https://www.biztalk360.com/integrate-2016-resources/leveraging-azure-functions-azure-app-service-integration-scenarios/) (Az Azure Functions és az Azure App Service használata integrációs forgatókönyvekhez)
 * [Charles Lamanna: Integrations Made Simple](https://www.biztalk360.com/integrate-2016-resources/integrations-made-simple/) (Integráció egyszerűen)
 * [Logic Apps élő adás](https://aka.ms/logicappslive)
-* [Gyakori kérdések a Microsoft Flow-val kapcsolatban](/power-automate/frequently-asked-questions)
+* [A Power Automate gyakori kérdéseivel](/power-automate/frequently-asked-questions)
 
 ## <a name="next-steps"></a>További lépések
 
 Első lépésként hozza létre az első folyamatát, logikai alkalmazását vagy függvényalkalmazását. Válasszon az alábbi hivatkozások közül:
 
-* [A Microsoft Flow használatának első lépései](/power-automate/getting-started)
+* [Ismerkedés a Power Automate-szel](/power-automate/getting-started)
 * [Logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [Az első Azure-függvény létrehozása](functions-create-first-azure-function.md)

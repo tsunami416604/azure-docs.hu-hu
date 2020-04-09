@@ -3,25 +3,21 @@ title: Bejelentkezés hozzáadása a Microsoft identity platformhoz ASP.NET weba
 titleSuffix: Microsoft identity platform
 description: A Microsoft bejelentkezésének megvalósítása ASP.NET megoldáson egy hagyományos webböngésző-alapú alkalmazás és az OpenID Connect szabvány használatával
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e33f52d5c1f9c06a5acbae5c66b051ca82ef14c0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 017cc886b3d47a97a29f45979cb49215de31ae0a
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79126643"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80880975"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Bejelentkezés hozzáadása a Microsofthoz egy ASP.NET webalkalmazáshoz
 
@@ -461,7 +457,7 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 
 ### <a name="restrict-who-can-sign-in-to-your-application"></a>Annak korlátozása, hogy ki jelentkezhet be az alkalmazásba
 
-Alapértelmezés szerint az útmutató által létrehozott alkalmazás létrehozásakor az alkalmazás elfogadja a személyes fiókok (beleértve a outlook.com, live.com és másokat), valamint a munkahelyi és iskolai fiókok bejelentkezését bármely olyan vállalattól vagy szervezettől, amely integrálva van Microsoft-identitásplatform. Ez egy ajánlott beállítás SaaS-alkalmazásokhoz.
+Alapértelmezés szerint az útmutató által létrehozott alkalmazás létrehozásakor az alkalmazás elfogadja a személyes fiókok (beleértve a outlook.com, live.com és másokat), valamint a Microsoft identity platformmal integrált vállalatok vagy szervezetek munkahelyi és iskolai fiókjait. Ez egy ajánlott beállítás SaaS-alkalmazásokhoz.
 
 Az alkalmazás felhasználói bejelentkezési hozzáférésének korlátozásához több lehetőség is rendelkezésre áll.
 

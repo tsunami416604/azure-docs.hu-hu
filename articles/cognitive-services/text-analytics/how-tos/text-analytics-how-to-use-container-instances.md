@@ -3,19 +3,19 @@ title: Azure Container-példányok futtatása – Szövegelemzés
 titleSuffix: Azure Cognitive Services
 description: Telepítse a szövegelemzési tárolókat az Azure Container Instance-ba, és tesztelje azt egy webböngészőben.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.author: dapine
-ms.openlocfilehash: 7ae8fbd404c9c2b650e4eed30c219e8ffafe55f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: e4b61c6fe2f62745d0f5268221cbb5c84803eb10
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74383531"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876425"
 ---
 # <a name="deploy-a-text-analytics-container-to-azure-container-instances"></a>Text Analytics-tároló üzembe helyezése az Azure Container-példányokba
 

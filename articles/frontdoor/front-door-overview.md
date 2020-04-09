@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2019
 ms.author: sharadag
-ms.openlocfilehash: 0ee35f4f0b4bd8c46a0445e2905ae3b50d11f721
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b2ee41324cfaefa4d5aec3aa02b2d0d8c75da78f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79471648"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879122"
 ---
 # <a name="what-is-azure-front-door"></a>Mi az Azure Front Door?
 Az Azure Front Door lehetővé teszi, hogy meghatározza, kezelje és figyelje a globális útválasztást a webes forgalom hoz optimalizálása a legjobb teljesítmény és az azonnali globális feladatátvétel a magas rendelkezésre állás érdekében. A Bejárati ajtóval globális (több régiós) fogyasztói és vállalati alkalmazásait robusztus, nagy teljesítményű, személyre szabott modern alkalmazásokká, API-kká és tartalmakká alakíthatja, amelyek az Azure-ral globális közönséget érnek el.
@@ -51,12 +51,12 @@ Hasonlóképpen konfigurálhat két különböző tartományt, a `www.contoso.co
 ## <a name="session-affinity"></a>Munkamenet-affinitás
 A Cookie-alapú munkamenet-affinitás akkor hasznos, ha egy felhasználói munkamenetet egy adott alkalmazás-háttérrendszeren szeretne tartani. A Front Doorral kezelt cookie-k használatával egy felhasználói munkamenet minden újabb forgalma ugyanarra az alkalmazás-háttérrendszerre lesz irányítva feldolgozásra. Ez a funkció olyan esetekben lehet fontos, amelyekben egy felhasználói munkamenethez tartozó munkamenet-állapotot helyileg ment a rendszer az alkalmazás-háttérrendszeren.
 
-## <a name="secure-sockets-layer-ssl-termination"></a>Secure Sockets Layer- (SSL-) lezárás
-A Front Door támogatja a peremhálózaton az SSL-lezárást, így a felhasználók beállíthatnak SSL-csatlakozásokat a Front Door-környezetekhez, ahelyett, hogy hosszan tartó kapcsolatokat építenének ki az alkalmazás-háttérrendszerrel. Ezenkívül a Front Door egyaránt támogatja a HTTP- és a HTTPS-csatlakozásokat is a Front Door-környezetek és a háttérrendszerek között. Így végpontok közötti SSL-titkosítás is beállítható. Ha például a Front Doorhoz egy alkalmazás számítási feladataként egy perc alatt 5000 kérelem érkezik, akkor aktív szolgáltatások esetén a kapcsolatok meleg újrafelhasználásának köszönhetően körülbelül mindössze 500 csatlakozás fog kiépülni az alkalmazás-háttérrendszerrel, így a háttérrendszereken jelentős terheléscsökkentés érhető el.
+## <a name="tls-termination"></a>A TLS megszüntetése
+Bejárati ajtó támogatja a TLS-végződtetés szélén, azaz az egyes felhasználók beállíthatnak egy TLS-kapcsolatot a bejárati ajtajához környezetek létrehozása helyett a hosszú távú kapcsolatok az alkalmazás háttérrendszer rel. Ezenkívül a Front Door egyaránt támogatja a HTTP- és a HTTPS-csatlakozásokat is a Front Door-környezetek és a háttérrendszerek között. Így végpontok közötti TLS-titkosítást is beállíthat. Ha például a Front Doorhoz egy alkalmazás számítási feladataként egy perc alatt 5000 kérelem érkezik, akkor aktív szolgáltatások esetén a kapcsolatok meleg újrafelhasználásának köszönhetően körülbelül mindössze 500 csatlakozás fog kiépülni az alkalmazás-háttérrendszerrel, így a háttérrendszereken jelentős terheléscsökkentés érhető el.
 
 ## <a name="custom-domains-and-certificate-management"></a>Egyéni tartományok és tanúsítványok kezelése
 Amikor a Front Doort használja a tartalom továbbítására, és azt szeretné, hogy a saját tartományneve jelenjen meg a Front Door URL-címében, egyéni tartományt kell létrehoznia. A látható tartománynév hasznos lehet az ügyfelei számára, és a vállalati arculat szempontjából is.
-A Front Door a HTTPS-t is támogatja az egyéni tartománynevekben. Ezzel a funkcióval kiválaszthatja a forgalmához a Front Door által kezelt tanúsítványait, vagy feltöltheti a saját SSL-tanúsítványát.
+A Front Door a HTTPS-t is támogatja az egyéni tartománynevekben. Ezt a funkciót úgy használja, hogy a Front Door által felügyelt tanúsítványokat választja a forgalomhoz, vagy feltölti a saját egyéni TLS/SSL-tanúsítványát.
 
 ## <a name="application-layer-security"></a>Alkalmazásrétegbeli biztonság
 Az Azure Front Door lehetővé teszi, hogy egyéni webalkalmazás-tűzfal (WAF) szabályokat a hozzáférés-vezérlés, hogy megvédje a HTTP/HTTPS számítási feladatok az ügyfél IP-címek, országkód és http paraméterek alapján történő kihasználása. Ezenkívül a Front Doorral létrehozhat olyan sebességkorlátozó szabályokat is, amelyekkel a robotok rosszindulatú forgalma ellen is hatékonyan védekezhet. A webalkalmazás-tűzfalról a [Mi az Azure webalkalmazás-tűzfal?](../web-application-firewall/overview.md)

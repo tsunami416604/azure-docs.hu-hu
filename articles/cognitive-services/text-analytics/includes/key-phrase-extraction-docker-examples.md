@@ -3,18 +3,18 @@ title: Kulcskifejezés-kinyerési tároló docker-példák
 titleSuffix: Azure Cognitive Services
 description: Kulcskifejezés-kinyerési tároló docker-példák
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/21/2019
-ms.author: dapine
-ms.openlocfilehash: bc0375369db351038c7ac550cbe51415a0b3e069
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 1c079df3171d89da4ef40e5008aaeb08b6504e66
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "71148424"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878669"
 ---
 ### <a name="key-phrase-extraction-container-docker-examples"></a>Kulcskifejezés-kinyerési tároló docker-példák
 

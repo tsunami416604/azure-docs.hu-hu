@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: 11201d6560319dd34ec829f1fb34bd13d45011d7
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: d2e7e157156a4049a5db37b1d5c0e02773adbcc3
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435817"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879547"
 ---
 # <a name="what-is-azure-security-center"></a>Mi az Azure Security Center?
 
@@ -29,7 +29,7 @@ Az erőforrások biztonságának megőrzése a felhőszolgáltató, az Azure és
 
 Az Azure Security Center a három legsürgetőbb biztonsági kihívásra reagál:
 
--   **Gyorsan változó számítási feladatok** – Ez a felhő előnye és egyben hátránya is. A felhasználók egyfelől több lehetőséggel rendelkeznek. Másfelől azonban hogyan tud meggyőződni arról, hogy a felhasználók által létrehozott és használt, folyamatosan változó szolgáltatósok megfelelnek az Ön biztonsági elvárásainak, és követik az ajánlott biztonsági eljárásokat?
+-   **Gyorsan változó számítási feladatok** – Ez egyszerre a felhő erőssége és kihívása. A felhasználók egyfelől több lehetőséggel rendelkeznek. Másfelől azonban hogyan tud meggyőződni arról, hogy a felhasználók által létrehozott és használt, folyamatosan változó szolgáltatósok megfelelnek az Ön biztonsági elvárásainak, és követik az ajánlott biztonsági eljárásokat?
 
 -   **Egyre kifinomultabb támadások** – Bárhol is futtatja a számítási feladatokat, a támadások egyre kifinomultabbá válnak. Biztonságossá kell tennie a nyilvános felhőben található számítási feladatait, amelyek tulajdonképpen az interneten található feladatok, és az ajánlott biztonsági eljárások követése nélkül sebezhetővé teszik az Ön környezetét.
 
@@ -146,5 +146,7 @@ Kiterjedt naplógyűjtés – a Windows és linuxos naplók mind a biztonsági e
 ## <a name="next-steps"></a>További lépések
 
 - A Security Center használatához Microsoft Azure-előfizetéssel kell rendelkeznie. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes próbaverzióra](https://azure.microsoft.com/free/).
-- A Security Center ingyenes tarifacsomagja engedélyezve van az Azure-előfizetéssel. A fejlett biztonsági felügyeleti és fenyegetésvédelmi képességek előnyeinek kihasználásához frissítenie kell a szabványos tarifacsomagra. A standard szint 30 napig ingyenesen kipróbálható. További információt a [Security Center díjszabási lapján](https://azure.microsoft.com/pricing/details/security-center/)talál.
+
+- A Security Center ingyenes tarifacsomagja az összes jelenlegi Azure-előfizetésén engedélyezve van, miután első alkalommal meglátogatta az Azure Security Center irányítópultját az Azure Portalon, vagy ha programozott módon engedélyezve van API-n keresztül. A fejlett biztonsági felügyeleti és fenyegetésészlelési képességek előnyeinek kihasználásához frissítenie kell a szabványos tarifacsomagra. A standard szint 30 napig ingyenesen kipróbálható. További információkért tekintse meg a [Security Center díjszabási lapját](https://azure.microsoft.com/pricing/details/security-center/).
+
 - Ha készen áll a Security Center-szabvány engedélyezésére, a [rövid útmutató: Az Azure-előfizetés bedolgozása](security-center-get-started.md) a Security Center Standard szolgáltatásba végigvezeti a lépéseken.

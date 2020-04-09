@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 37f7366d6622356017e458fb8f893b0be0851335
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3b12aa860bee189f706bd98df63fc194a3a0cc71
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73825694"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874704"
 ---
 # <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Rövid útmutató: Adatbázis visszaállítása felügyelt példányra
 
@@ -46,7 +46,7 @@ Ez a rövid útmutató:
 
 Az SSMS-ben kövesse az alábbi lépéseket a Wide World Importers adatbázis ának a felügyelt példányra való visszaállításához. Az adatbázis biztonsági másolata egy előre konfigurált Azure Blob tárfiók tárolja.
 
-1. Nyissa meg az SMSS-t, és csatlakozzon a felügyelt példányhoz.
+1. Nyissa meg az SSMS-t, és csatlakozzon a felügyelt példányhoz.
 2. A bal oldali menüben kattintson a jobb gombbal a felügyelt példányra, és válassza az **Új lekérdezés** parancsot egy új lekérdezési ablak megnyitásához.
 3. Futtassa a következő SQL-parancsfájlt, amely egy előre konfigurált tárfiókot és SAS-kulcsot használ a felügyelt példány [hitelesítő adatainak létrehozásához.](https://docs.microsoft.com/sql/t-sql/statements/create-credential-transact-sql)
 

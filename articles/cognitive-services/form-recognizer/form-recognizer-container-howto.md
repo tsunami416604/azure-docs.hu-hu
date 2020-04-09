@@ -2,19 +2,19 @@
 title: A tároló telepítése és futtatása a Form Recognizer számára
 titleSuffix: Azure Cognitive Services
 description: Ez a cikk ismerteti, hogyan használhatja az Azure Cognitive Services űrlapfelismerő tároló űrlap- és táblaadatok elemzéséhez.
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 03/17/2020
-ms.author: dapine
-ms.openlocfilehash: c8ce4b913548429ff83e0b8aa3cb65455fc9b4c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 8cfa9114c5a5e57882cb84b604c1cf71be9acc52
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79474696"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878340"
 ---
 # <a name="install-and-run-form-recognizer-containers-preview"></a>Űrlapfelismerő tárolók telepítése és futtatása (előzetes verzió)
 

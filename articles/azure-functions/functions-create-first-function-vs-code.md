@@ -5,18 +5,25 @@ ms.topic: quickstart
 ms.date: 01/10/2020
 ms.custom: mvc, devcenter
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: c1e5c0a714a8b66d83c19acc53f6a680a9196a90
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 3e1cf95d3c6ac8918e9e7e5593d687ee2d398810
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673426"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886619"
 ---
 # <a name="quickstart-create-an-azure-functions-project-using-visual-studio-code"></a>Rövid útmutató: Azure Functions-projekt létrehozása a Visual Studio-kód használatával
 
 Ebben a cikkben a Visual Studio-kód használatával hozzon létre egy függvényt, amely válaszol a HTTP-kérésekre. Miután helyileg tesztelte a kódot, üzembe helyezi azt az Azure Functions kiszolgáló nélküli környezetében. A rövid útmutató végrehajtása néhány USD centvagy annál kevesebb költséget jelent az Azure-fiókjában. 
 
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python" 
 Van is egy [CLI-alapú változata](functions-create-first-azure-function-azure-cli.md) ezt a cikket.
+::: zone-end  
+
+::: zone pivot="programming-language-java"  
+> [!NOTE]
+> Ha vs kód nem a preferált fejlesztési eszköz, nézd meg a hasonló útmutatók Java devlopers segítségével [Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java), [Gradle](/azure/azure-functions/functions-create-first-java-gradle) és [IntelliJ IDEA](/azure/java/intellij/azure-toolkit-for-intellij-quickstart-functions).
+::: zone-end  
 
 ## <a name="configure-your-environment"></a>A környezet konfigurálása
 
@@ -25,11 +32,11 @@ Mielőtt elkezdene, győződjön meg arról, hogy a következő követelmények 
 + Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
 ::: zone pivot="programming-language-csharp,programming-language-powershell,programming-language-python"  
-+ [Node.js](https://nodejs.org/), a Windows által megkövetelt npm. Csak [az aktív LTS- és karbantartási LTS-verziók. ](https://nodejs.org/about/releases/) Használja `npm --version` a parancsot, hogy ellenőrizze a verziót.
++ [Node.js](https://nodejs.org/), a Windows által megkövetelt npm. Csak [az aktív LTS- és karbantartási LTS-verziók.](https://nodejs.org/about/releases/) Használja `node --version` a parancsot, hogy ellenőrizze a verziót.
     Nem szükséges a helyi fejlesztés hez macOS és Linux rendszeren.   
 ::: zone-end  
 ::: zone pivot="programming-language-javascript,programming-language-typescript"  
-+ [Node.js](https://nodejs.org/), Aktív LTS- és karbantartási LTS-verziók (10.14.1 ajánlott). Használja `npm --version` a parancsot, hogy ellenőrizze a verziót.
++ [Node.js](https://nodejs.org/), Aktív LTS- és karbantartási LTS-verziók (10.14.1 ajánlott). Használja `node --version` a parancsot, hogy ellenőrizze a verziót.
 ::: zone-end 
 ::: zone pivot="programming-language-python"
 + [Python 3.8](https://www.python.org/downloads/release/python-381/), [Python 3.7](https://www.python.org/downloads/release/python-375/), [Python 3.6](https://www.python.org/downloads/release/python-368/) az Azure Functions (x64) támogatja.

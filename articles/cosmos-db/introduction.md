@@ -6,18 +6,18 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: 2a09d5af013e804f33327855fb7b9f2104bc225c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6292c3c2d928581d0564fe457342ea7b1e17111c
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240393"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983024"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Üdvözli az Azure Cosmos DB
 
 A mai alkalmazásoknak rendkívül érzékenynek és mindig online kell lenniük. Az alacsony késés és a magas rendelkezésre állás elérése érdekében ezen alkalmazások példányait olyan adatközpontokban kell telepíteni, amelyek közel állnak a felhasználókhoz. Az alkalmazásoknak valós időben kell reagálniuk a csúcsidőben bekövetkező nagy használati változásokra, egyre növekvő mennyiségű adatot kell tárolniuk, és ezredmásodpercben elérhetővé kell tenniük ezeket az adatokat a felhasználók számára.
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Egyetlen kattintással a Cosmos DB lehetővé teszi, hogy rugalmasan és függetlenül skálázhatja az átviteli és tárolási átviteli kapacitást és tárhelyet tetszőleges számú Azure-régióban világszerte. Rugalmasan skálázhatja az átviteli és tárolási, és kihasználhatja a gyors, egyszámjegyű-ezredmásodperces adathozzáférés segítségével a kedvenc API,például: SQL, MongoDB, Cassandra, táblázatok, vagy Gremlin. A Cosmos DB átfogó [szolgáltatásiszint-szerződéseket](https://aka.ms/acdbsla) (SL-eket) biztosít az átviteli, késési, rendelkezésre állási és konzisztencia-garanciákhoz, amit más adatbázis-szolgáltatás nem kínál.
+Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Egyetlen kattintással a Cosmos DB lehetővé teszi, hogy rugalmasan és függetlenül skálázhatja az átviteli és tárolási átviteli kapacitást és tárhelyet tetszőleges számú Azure-régióban világszerte. Rugalmasan skálázhatja az átviteli és tárolási, és kihasználhatja a gyors, egyszámjegyű-ezredmásodperces adathozzáférés segítségével a kedvenc API,például: SQL, MongoDB, Cassandra, táblázatok, vagy Gremlin. A Cosmos DB átfogó [szolgáltatásiszint-szerződéseket](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/) (SL-eket) biztosít az átviteli, késési, rendelkezésre állási és konzisztencia-garanciákhoz, amit más adatbázis-szolgáltatás nem kínál.
 
 Az [Azure Cosmos DB ingyenesen kipróbálható](https://azure.microsoft.com/try/cosmosdb/) Azure-előfizetés nélkül, ingyenesen és kötelezettségvállalások nélkül, vagy használhatja az [Azure Cosmos DB ingyenes szintjét](optimize-dev-test.md#azure-cosmos-db-free-tier) az első 400 RU/s-os és 5 GB-os tárterülettel rendelkező fiók megszerzéséhez.
 
@@ -56,7 +56,7 @@ Az adatbázisséma és az indexek szinkronizálása az alkalmazás sémájával 
 
 ### <a name="battle-tested-database-service"></a>Csata tesztelt adatbázis szolgáltatás
 
-A Cosmos DB egy alapvető szolgáltatás az Azure-ban. A Cosmos DB-t közel egy évtizede használják a Microsoft számos terméke a kritikus fontosságú alkalmazások globális szinten történő fejlesztéséhez, beleértve a Skype-ot, az Xboxot, az Office 365-öt, az Azure-t és még sok mást. Napjainkban a Cosmos DB az Egyik leggyorsabban növekvő azure-szolgáltatás, amelyet számos külső ügyfél és kritikus fontosságú alkalmazás használ, amelyek rugalmas skálázást, kulcsrakész globális terjesztést, több főkiszolgálós replikációt igényelnek az alacsony késleltetés és a magas rendelkezésre állás érdekében. olvas és ír.
+A Cosmos DB egy alapvető szolgáltatás az Azure-ban. A Cosmos DB-t közel egy évtizede használják a Microsoft számos terméke a kritikus fontosságú alkalmazások globális szinten történő fejlesztéséhez, beleértve a Skype-ot, az Xboxot, az Office 365-öt, az Azure-t és még sok mást. A Cosmos DB ma az Azure egyik leggyorsabban növekvő szolgáltatása, amelyet számos külső ügyfél és kritikus fontosságú alkalmazás használ, amelyek rugalmas skálázást, kulcsrakész globális terjesztést, többfőes replikációt igényelnek az alacsony késleltetés és az olvasási és írási műveletek magas rendelkezésre állása érdekében.
 
 ### <a name="ubiquitous-regional-presence"></a>Mindenütt jelen lévő regionális jelenlét
 

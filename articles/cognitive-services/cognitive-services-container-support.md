@@ -3,19 +3,19 @@ title: Tárolótámogatás
 titleSuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan juthat a Docker-tárolók közelebb az adatokhoz.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 01/10/2020
-ms.author: dapine
-ms.openlocfilehash: d75962b98543991a065f6b165279215614175925
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 7a38ec47d416027e8ea3fa772ae01e4f6264197a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219411"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876825"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Tárolótámogatás az Azure Cognitive Servicesben
 
@@ -23,7 +23,7 @@ Az Azure Cognitive Services tárolótámogatása lehetővé teszi a fejlesztők 
 
 > [!div class="checklist"]
 > * [Anomaly Detector][ad-containers]
-> * [Számítógépes látás][cv-containers]
+> * [Számítógépes látástechnológia][cv-containers]
 > * [Arcfelismerés][fa-containers]
 > * [Form Recognizer][fr-containers]
 > * [Language Understanding (LUIS)][lu-containers]
@@ -52,11 +52,11 @@ Az Azure Cognitive Services-tárolók a következő Docker-tárolókat biztosít
 | Szolgáltatás | Támogatott tarifacsomag | Tároló | Leírás |
 |---------|----------|----------|-------------|
 |[Anomáliadetektor][ad-containers] |F0, Sz0|**Anomália-detektor** |Az Anomáliadetektor API lehetővé teszi az idősorozat-adatok rendellenességeinek figyelését és észlelését gépi tanulással.<br>[Hozzáférés kérése](https://aka.ms/adcontainer)|
-|[Számítógépes látás][cv-containers] |F0, S1|**Olvasás** |Kinyeri a nyomtatott szöveget különböző, különböző felületű és háttérrel rendelkező objektumok , például nyugták, poszterek és névjegykártyák képeiből. Az Olvasás tároló a *képeken lévő kézzel írt szöveget* is észleli, és PDF/TIFF/többoldalas támogatást biztosít.<br/><br/>**Fontos:** A Read tároló jelenleg csak angol nyelven működik.|
+|[Számítógépes látástechnológia][cv-containers] |F0, S1|**Olvasás** |Kinyeri a nyomtatott szöveget különböző, különböző felületű és háttérrel rendelkező objektumok , például nyugták, poszterek és névjegykártyák képeiből. Az Olvasás tároló a *képeken lévő kézzel írt szöveget* is észleli, és PDF/TIFF/többoldalas támogatást biztosít.<br/><br/>**Fontos:** A Read tároló jelenleg csak angol nyelven működik.|
 |[Arcfelismerés][fa-containers] |F0, Sz0|**Arcfelismerés** |Felismeri az emberi arcokat a képeken, és azonosítja az attribútumokat, beleértve az arctájéktárgyakat (például az orrokat és a szemeket), a nemet, az életkort és más, a gép által előre jelzett arcvonásokat. Az észlelés mellett az Arc ellenőrizheti, hogy ugyanazon a képen vagy különböző képekben lévő két arc azonos-e megbízhatósági pontszám használatával, vagy összehasonlíthatja az arcokat egy adatbázissal, hogy lássa, létezik-e már hasonló kinézetű vagy azonos arc. A hasonló arcokat csoportokba is rendezheti, megosztott vizuális tulajdonságok használatával.<br>[Hozzáférés kérése](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
 |[Űrlapfelismerő][fr-containers] |F0, Sz0|**Form Recognizer** |Az űrlapmegértés gépi tanulási technológiát alkalmaz a kulcs-érték párok és táblák azonosítására és kinyerésére az űrlapokból.<br>[Hozzáférés kérése](https://aka.ms/FormRecognizerContainerRequestAccess)|
 |[LUIS][lu-containers] |F0, Sz0|**LUIS** ([kép](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409))|Betölt egy betanított vagy közzétett language understanding modell, más néven egy LUIS-alkalmazás, egy docker-tárolóba, és hozzáférést biztosít a lekérdezés-előrejelzések a tároló API-végpontok. Lekérdezési naplók gyűjtése a tárolóból, és töltse fel ezeket vissza a [LUIS-portálra](https://www.luis.ai) az alkalmazás előrejelzési pontosságának javítása érdekében.|
-|[Speech Service API][sp-containers-stt] |F0, Sz0|**Beszédfelismerés** |Folyamatos, valós idejű beszédet szöveggé alakít.|
+|[Speech Service API][sp-containers-stt] |F0, Sz0|**Diktálás** |Folyamatos, valós idejű beszédet szöveggé alakít.|
 |[Speech Service API][sp-containers-cstt] |F0, Sz0|**Egyéni beszédfelismerési szöveg** |A folyamatos valós idejű beszéd szöveggé történő átírása egyéni modell használatával.|
 |[Speech Service API][sp-containers-tts] |F0, Sz0|**Szövegfelolvasás** |Az írott szöveget természetesnek hangzó beszéddé alakítja.|
 |[Speech Service API][sp-containers-ctts] |F0, Sz0|**Egyéni szövegfelolvasás** |A szöveget természetes hangzású beszédté alakítja egyéni modell használatával.|

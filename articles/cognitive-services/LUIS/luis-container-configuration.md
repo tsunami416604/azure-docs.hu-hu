@@ -3,20 +3,20 @@ title: Docker-tároló beállításai – LUIS
 titleSuffix: Azure Cognitive Services
 description: A LUIS-tároló futásidejű környezete a `docker run` parancsargumentumok használatával van konfigurálva. A LUIS számos szükséges beállítással rendelkezik, valamint néhány választható beállítással.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.author: dapine
-ms.openlocfilehash: a30fcd0ec7e53c78876596baf787639e81c638db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 48a9856c58a815eabcc0b105efcd548e66ddd552
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73795013"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874211"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Nyelvi megértési Docker-tárolók konfigurálása 
 
@@ -34,7 +34,7 @@ Ez a tároló a következő konfigurációs beállításokkal rendelkezik:
 |Igen|[Eula](#eula-setting)| Azt jelzi, hogy elfogadta a tároló licencét.|
 |Nem|[Fluentd](#fluentd-settings)|Napló és szükség esetén metrikaadatok írása fluentd kiszolgálóra.|
 |Nem|[Http Proxy](#http-proxy-credentials-settings)|Http-proxy konfigurálása kimenő kérelmek hez.|
-|Nem|[Naplózási](#logging-settings)|ASP.NET Core naplózási támogatást nyújt a tárolóhoz. |
+|Nem|[Naplózás](#logging-settings)|ASP.NET Core naplózási támogatást nyújt a tárolóhoz. |
 |Igen|[Tartók](#mount-settings)|Adatok olvasása és írása a gazdaszámítógépről a tárolóra és a tárolóból vissza a gazdaszámítógépre.|
 
 > [!IMPORTANT]

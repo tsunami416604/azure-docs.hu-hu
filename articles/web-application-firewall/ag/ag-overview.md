@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 1a210ff7da57147762dcf13e1dda7fee26dbe5f0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8d43851a6a546bd23881c4d0a72185ca03e63092
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74384116"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983619"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure webalkalmazás-tűzfal az Azure Application Gateway-en
 
@@ -40,7 +40,7 @@ Ez a szakasz a WAF alkalmazásátjárón nyújtott alapvető előnyeit ismerteti
 
 * Védje meg webes alkalmazásait a webes biztonsági résektől és támadásoktól a háttérkód módosítása nélkül.
 
-* Védj meg egyszerre több webes alkalmazást. Az Application Gateway egy példánya legfeljebb 40 webhelyet képes üzemeltetni, amelyeket webalkalmazás-tűzfal véd.
+* Védj meg egyszerre több webes alkalmazást. Az Application Gateway egy példánya legfeljebb 40 olyan webhelyet képes üzemeltetni, amelyeket egy webalkalmazás tűzfala véd.
 
 * Egyéni WAF-házirendek létrehozása ugyanazon WAF mögött imbolmiában lévő különböző webhelyekhez 
 

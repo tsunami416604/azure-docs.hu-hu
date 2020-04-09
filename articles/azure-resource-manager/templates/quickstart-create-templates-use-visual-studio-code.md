@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/04/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: c9447d356cff792d9a70e33cc2a5e35898d8982b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: a0c80f18e9cd09b765804aaddbd178b4b3e32a9d
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80131892"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984452"
 ---
 # <a name="quickstart-create-arm-templates-by-using-visual-studio-code"></a>Rövid útmutató: ARM-sablonok létrehozása a Visual Studio-kód használatával
 
@@ -98,7 +98,7 @@ A sablonok üzembe helyezésének számos módszere van. Az Azure Cloud rendszer
 
     ![Az Azure Portal Cloud Shell CLI szolgáltatása](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
 
-    # <a name="powershell"></a>[Powershell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ![Azure Portal Felhőbeli rendszerhéj PowerShell](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-powershell.png)
 
@@ -110,7 +110,7 @@ A sablonok üzembe helyezésének számos módszere van. Az Azure Cloud rendszer
 
     ![Fájl feltöltése az Azure Portal Cloud Shell szolgáltatásával](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file.png)
 
-    # <a name="powershell"></a>[Powershell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ![Fájl feltöltése az Azure Portal Cloud Shell szolgáltatásával](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file-powershell.png)
 
@@ -124,7 +124,7 @@ A sablonok üzembe helyezésének számos módszere van. Az Azure Cloud rendszer
 
     ![Azure Portal – Cloud Shell – Fájlok listázása](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file.png)
 
-    # <a name="powershell"></a>[Powershell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ![Azure Portal – Cloud Shell – Fájlok listázása](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file-powershell.png)
 
@@ -132,20 +132,23 @@ A sablonok üzembe helyezésének számos módszere van. Az Azure Cloud rendszer
 4. Futtassa az alábbi parancsokat a Cloud Shellben. Válassza ki a megfelelő lapot a PowerShell-kód vagy a parancssori felület kód megjelenítéséhez.
 
     # <a name="cli"></a>[parancssori felület](#tab/CLI)
+
     ```azurecli
-    echo "Enter the Resource Group name:" &&
-    read resourceGroupName &&
+    echo "Enter a project name that is used to generate resource group name:" &&
+    read projectName &&
     echo "Enter the location (i.e. centralus):" &&
     read location &&
+    resourceGroupName="${projectName}rg" &&
     az group create --name $resourceGroupName --location "$location" &&
     az deployment group create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json"
     ```
 
-    # <a name="powershell"></a>[Powershell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ```azurepowershell
-    $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+    $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
     $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+    $resourceGroupName = "${projectName}rg"
 
     New-AzResourceGroup -Name $resourceGroupName -Location "$location"
     New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "$HOME/azuredeploy.json"
@@ -161,7 +164,7 @@ A sablonok üzembe helyezésének számos módszere van. Az Azure Cloud rendszer
 
     ![Azure Portal – Cloud Shell – Sablon üzembe helyezése](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template.png)
 
-    # <a name="powershell"></a>[Powershell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ![Azure Portal – Cloud Shell – Sablon üzembe helyezése](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template-powershell.png)
 
@@ -172,6 +175,7 @@ A sablonok üzembe helyezésének számos módszere van. Az Azure Cloud rendszer
 5. Az alábbi parancssori felületi vagy PowerShell-parancs futtatásával megjelenítheti az újonnan létrehozott tárfiókot:
 
     # <a name="cli"></a>[parancssori felület](#tab/CLI)
+
     ```azurecli
     echo "Enter the Resource Group name:" &&
     read resourceGroupName &&
@@ -180,7 +184,7 @@ A sablonok üzembe helyezésének számos módszere van. Az Azure Cloud rendszer
     az storage account show --resource-group $resourceGroupName --name $storageAccountName
     ```
 
-    # <a name="powershell"></a>[Powershell](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"

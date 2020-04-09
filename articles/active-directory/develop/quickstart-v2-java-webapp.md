@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: 1d73f974e2452c225220bc6f610568a2cded9887
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 42b478b598fe3034f1a97fe41662a38bc265074d
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473627"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875979"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Rövid útmutató: Bejelentkezés hozzáadása a Microsofttal egy Java webalkalmazáshoz
 
@@ -36,9 +36,9 @@ A minta futtatásához a következőkre lesz szükség:
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1. lehetőség: Az alkalmazás regisztrálása és automatikus konfigurálása, majd a kódminta letöltése
 >
-> 1. Nyissa meg az [Azure Portal – Alkalmazásregisztrációk.](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)
+> 1. Nyissa meg az [Azure Portal – Az alkalmazásregisztrációk rövid útmutatóját.](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavaQuickstartPage/sourceType/docs)
 > 1. Adja meg az alkalmazás nevét, majd kattintson a **Regisztráció** elemre.
-> 1. Kövesse az utasításokat az új alkalmazás letöltéséhez és automatikus konfigurálásához.
+> 1. Kövesse a portál rövid útmutatójában található utasításokat az automatikusan konfigurált alkalmazáskód letöltéséhez.
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>2. lehetőség: Az alkalmazás és a kódminta regisztrálása és kézi konfigurálása
 >
@@ -49,14 +49,14 @@ A minta futtatásához a következőkre lesz szükség:
 > 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiókkal.
 > 1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
 >
-> 1. Keresse meg a Microsoft identity platform ot a fejlesztőknek [Alkalmazásregisztrációk](/azure/active-directory/develop/) lapon.
+> 1. Keresse meg a Microsoft identity platform ot a fejlesztőknek [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lapon.
 > 1. Válassza **az Új regisztráció lehetőséget.**
 > 1. Amikor megjelenik az **Alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
 >    - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `java-webapp`).
->    - Egyelőre hagyja üresen az **Átirányítás URI-t,** és válassza a **Regisztráció gombot.**
+>    - Kattintson a **Register** (Regisztrálás) elemre.
 > 1. Az **Áttekintés** lapon keresse meg az **alkalmazás (ügyfél) azonosítóját** és az alkalmazás **címtár (bérlői)** azonosítóértékeit. Másolja ezeket az értékeket későbbre.
 > 1. Válassza ki a **hitelesítést** a menüből, majd adja meg a következő adatokat:
->    - Az **Átirányítás URI-k ban**adja hozzá és `https://localhost:8080/msal4jsample/secure/aad` `https://localhost:8080/msal4jsample/graph/me`adja hozzá a.
+>    - Adja hozzá a **webes** platform konfigurációját.  Adja `https://localhost:8080/msal4jsample/secure/aad` hozzá `https://localhost:8080/msal4jsample/graph/me` ezeket, és **átirányítási URI-kként**..
 >    - Kattintson a **Mentés** gombra.
 > 1. Válassza ki a **tanúsítványok & titkos kulcsokat** a menüből, és az **Ügyfél titkos kulcsok** szakaszban kattintson az **Új ügyféltitok**elemre:
 >
@@ -84,7 +84,7 @@ A minta futtatásához a következőkre lesz szükség:
 
 > [!div class="sxs-lookup" renderon="portal"]
 > Töltse le a projektet, és bontsa ki a zip fájlt egy helyi mappába, amely közelebb van a gyökérmappához - például **C:\Azure-Samples**
-> 
+>
 > A https és a localhost használatához töltse ki a server.ssl.key tulajdonságokat. Önaláírt tanúsítvány létrehozásához használja a (JRE részét képező) kulcseszköz segédprogramot.
 >
 >  ```
@@ -97,7 +97,7 @@ A minta futtatásához a következőkre lesz szükség:
 >   server.ssl.key-alias=testCert
 >   ```
 >   Helyezze a létrehozott keystore fájlt az "erőforrások" mappába.
-   
+
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
 > [A kódminta letöltése](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
 
@@ -157,8 +157,56 @@ Ha a webalkalmazást IDE-ből futtatja, kattintson a futtatásra, majd keresse m
     - *Kijelentkezés:* Kijelentkezés: Kijelentkezteti az aktuális felhasználót az alkalmazásból, és átirányítja a kezdőlapra.
     - *Felhasználói adatok megjelenítése*: Jogkivonat beszerzése a Microsoft Graph számára, és meghívja a Microsoft Graph-ot a jogkivonatot tartalmazó kéréssel, amely a bejelentkezett felhasználó alapvető adatait adja vissza.
 
+##### <a name="running-from-tomcat"></a>Futás A Tomcat
 
-   
+Ha szeretné telepíteni a webes mintát Tomcat, meg kell, hogy egy pár változtatást a forráskódot.
+
+1. Ms-identity-java-webapp/pom.xml megnyitása
+    - A `<name>msal-web-sample</name>` Hozzáadás csoportban`<packaging>war</packaging>`
+    - Függőség hozzáadása:
+
+         ```xml
+         <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-tomcat</artifactId>
+          <scope>provided</scope>
+         </dependency>
+         ```
+
+2. Ms-identity-java-webapp/src/main/java/com.microsoft.azure.msalwebsample/MsalWebSampleApplication megnyitása
+
+    - Törölje az összes forráskódot, és cserélje le a következőkre:
+
+   ```Java
+    package com.microsoft.azure.msalwebsample;
+
+    import org.springframework.boot.SpringApplication;
+    import org.springframework.boot.autoconfigure.SpringBootApplication;
+    import org.springframework.boot.builder.SpringApplicationBuilder;
+    import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+
+    @SpringBootApplication
+    public class MsalWebSampleApplication extends SpringBootServletInitializer {
+
+     public static void main(String[] args) {
+      SpringApplication.run(MsalWebSampleApplication.class, args);
+     }
+
+     @Override
+     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+      return builder.sources(MsalWebSampleApplication.class);
+     }
+    }
+   ```
+
+3. Nyisson meg egy parancssort, lépjen a projekt gyökérmappájába, és futtassa`mvn package`
+    - Ez létrehoz `msal-web-sample-0.1.0.war` egy fájlt a /targets könyvtárban.
+    - A fájl átnevezése`ROOT.war`
+    - Telepítse ezt a háborús fájlt a Tomcat vagy bármely más J2EE tárolómegoldás használatával.
+        - A Tomcat-tárolóban való telepítéshez másolja a .war fájlt a Tomcat-telepítés alatti webapps mappába, majd indítsa el a Tomcat-kiszolgálót.
+
+Ez a háború automatikusan házigazdája . https://localhost:8080/
+
 > [!IMPORTANT]
 > Ez a rövid útmutató alkalmazás egy ügyféltitkos kulcsot használ, hogy bizalmas ügyfélként azonosítsa magát. Mivel az ügyféltitkos kulcsot egyszerű szövegként adja hozzá a projektfájlokhoz, biztonsági okokból ajánlott az alkalmazás éles alkalmazásként való felhasználása előtt az ügyféltitok helyett tanúsítványt használni. A tanúsítványok használatáról a [Tanúsítványhitelesítő adatok az alkalmazás hitelesítéséhez](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials)című témakörben talál további információt.
 
@@ -173,6 +221,8 @@ Az MSAL java (MSAL4J) a Felhasználók bejelentkezésére és a Microsoft identi
 
 Adja hozzá az MSAL4J-t az alkalmazáshoz a Maven vagy a Gradle használatával a függőségek kezeléséhez az alkalmazás pom.xml (Maven) vagy build.gradle (Gradle) fájljának következő módosításával.
 
+A pom.xml fájlban:
+
 ```XML
 <dependency>
     <groupId>com.microsoft.azure</groupId>
@@ -180,6 +230,8 @@ Adja hozzá az MSAL4J-t az alkalmazáshoz a Maven vagy a Gradle használatával 
     <version>1.0.0</version>
 </dependency>
 ```
+
+Build.gradle nyelven:
 
 ```$xslt
 compile group: 'com.microsoft.azure', name: 'msal4j', version: '1.0.0'
