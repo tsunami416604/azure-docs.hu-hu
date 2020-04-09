@@ -151,6 +151,12 @@
           href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
         - name: Szabályzatdefiníciók
           href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
+    - name: Javához készült Azure SDK
+      items:
+        - name: Hozzárendelések
+          href: /java/api/com.microsoft.azure.management.resources.policyassignment?view=azure-java-stable
+        - name: Szabályzatdefiníciók
+          href: /java/api/com.microsoft.azure.management.resources.PolicyDefinitions?view=azure-java-stable
     - name: Node-hoz készült Azure SDK
       items:
         - name: Szabályzat

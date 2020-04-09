@@ -233,6 +233,24 @@
         - name: Tárolókorlátozások
           href: luis-container-limitations.md
           displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
+    - name: Kapcsolódó szolgáltatások
+      items:
+        - name: Azure Bot Service
+          href: 'https://dev.botframework.com/'
+        - name: 'Robotépítő 4.x SDK C#'
+          href: 'https://github.com/Microsoft/botbuilder-dotnet'
+        - name: QnA Maker
+          href: 'https://qnamaker.ai/'
+        - name: Bing Speech API
+          href: 'https://azure.microsoft.com/services/cognitive-services/speech/'
+        - name: Bing Spell Check API
+          href: 'https://azure.microsoft.com/services/cognitive-services/spell-check/'
+        - name: Szövegelemzés
+          href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'
+        - name: Recognizers-Text
+          href: 'https://github.com/Microsoft/Recognizers-Text'
+        - name: Intelligens kioszk
+          href: 'https://github.com/Microsoft/Cognitive-Samples-IntelligentKiosk'
 - name: Referencia
   items:
     - name: Fejlesztői referencia
@@ -370,24 +388,6 @@
       href: reference-pattern-syntax.md
     - name: Hangulat
       href: luis-reference-prebuilt-sentiment.md
-- name: Kapcsolódó témakörök
-  items:
-    - name: Azure Bot Service
-      href: 'https://dev.botframework.com/'
-    - name: 'Robotépítő 4.x SDK C#'
-      href: 'https://github.com/Microsoft/botbuilder-dotnet'
-    - name: QnA Maker
-      href: 'https://qnamaker.ai/'
-    - name: Bing Speech API
-      href: 'https://azure.microsoft.com/services/cognitive-services/speech/'
-    - name: Bing Spell Check API
-      href: 'https://azure.microsoft.com/services/cognitive-services/spell-check/'
-    - name: Szövegelemzés
-      href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'
-    - name: Recognizers-Text
-      href: 'https://github.com/Microsoft/Recognizers-Text'
-    - name: Intelligens kioszk
-      href: 'https://github.com/Microsoft/Cognitive-Samples-IntelligentKiosk'
 - name: További források
   items:
     - name: Kódminták

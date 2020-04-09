@@ -39,6 +39,8 @@
       href: streaming-technologies.md
     - name: Feladatfejlesztési eszköz kiválasztása
       href: feature-comparison.md
+    - name: Helyi fejlesztés
+      href: develop-locally.md
     - name: Feladatok bemenettípusai
       items:
         - name: Bemenetek áttekintése
