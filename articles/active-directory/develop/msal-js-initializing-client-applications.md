@@ -13,12 +13,12 @@ ms.date: 04/12/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: a0a2c5fc971c3f1f3283d95c5617bdf1e88a6a58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fbd700c787a844fa7538ed198f76ed5c06af2c28
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77084043"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010154"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Ügyfélalkalmazások inicializálása az MSAL.js használatával
 Ez a cikk a Microsoft Authentication Library for JavaScript (MSAL.js) inicializálását ismerteti egy felhasználói ügynökalkalmazás példányával. A user-agent alkalmazás a nyilvános ügyfélalkalmazás egy olyan formája, amelyben az ügyfélkód végrehajtása egy felhasználói ügynökben, például egy webböngészőben történik. Ezek az ügyfelek nem tárolnak titkos kulcsokat, mivel a böngésző környezete nyíltan elérhető. Ha többet szeretne megtudni az ügyfélalkalmazás típusairól és az alkalmazás konfigurációs beállításairól, olvassa el az [áttekintést.](msal-client-applications.md)
@@ -35,7 +35,7 @@ Egy alkalmazás inicializálása előtt először regisztrálnia kell [azt az Az
 
 Az MSAL.js az alábbiak szerint használható egy egyszerű JavaScript/Typescript alkalmazásban. A MSAL hitelesítési környezet inicializálása egy konfigurációs objektummal történő példányosítással. `UserAgentApplication` A MSAL.js inicializálásához szükséges minimális konfiguráció az alkalmazás ügyfélazonosítója, amelyet az alkalmazásregisztrációs portálról kell beszereznie.
 
-Az átirányítási folyamatokkal`loginRedirect` (és `acquireTokenRedirect`) rendelkező hitelesítési módszerek esetében explicit módon `handleRedirectCallback()` kell regisztrálnia egy visszahívást a sikeres vagy a metóduson keresztüli hiba érdekében. Erre azért van szükség, mert az átirányítási folyamatok nem adnak vissza ígéreteket, mint az előugró felületű módszerek.
+Az Átirányítási folyamatokkal`loginRedirect` ( `acquireTokenRedirect`és ) az MSAL.js 1.2.x vagy korábbi fájlokkal rendelkező hitelesítési `handleRedirectCallback()` módszerek esetében explicit módon kell regisztrálnia egy visszahívást a sikeres vagy a módszeren keresztüli hiba érdekében. Erre azért van szükség, mert az átirányítási folyamatok nem adnak vissza ígéreteket, mint az előugró felületű módszerek. Ez lett választható MSAL.js változat 1.3.0.
 
 ```javascript
 // Configuration object constructed

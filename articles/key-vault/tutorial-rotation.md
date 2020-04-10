@@ -1,6 +1,6 @@
 ---
-title: Egyfelhasználós/jelszóelforgatási oktatóanyag
-description: Az oktatóanyag használata az egyfelhasználós/jelszó elforgatásának automatizálására
+title: Egyfelhasználós/egyjelszós elforgatási oktatóanyag
+description: Az oktatóanyagból megtudhatja, hogyan automatizálhatja az egyfelhasználós/egyjelszós hitelesítést használó erőforrások titkos kulcsának elforgatását.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,103 +10,101 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 890932f7c0e46a2c9c0b6e1cf1461e4d7d25b409
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 684bfccd698217acdafdaac8c33f1e5531cdb4bf
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239370"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998901"
 ---
-# <a name="automate-the-rotation-of-a-secret-for-resources-with-single-userpassword-authentication"></a>Az erőforrások titkos kulcsának elforgatásának automatizálása egyfelhasználós/jelszó-hitelesítéssel
+# <a name="automate-the-rotation-of-a-secret-for-resources-that-use-single-usersingle-password-authentication"></a>Az egyfelhasználós/egypasswordos hitelesítést használó erőforrások titkos kulcsának elforgatásának automatizálása
 
-Bár a legjobb módja annak, hogy hitelesítse az Azure-szolgáltatások használatával [felügyelt identitás,](managed-identity.md)vannak olyan forgatókönyvek, ahol ez nem lehetséges. Ezekben az esetekben a hozzáférési kulcsok vagy titkos kulcsok vannak használatban. A hozzáférési kulcsokat vagy titkos kulcsokat rendszeres időközönként el kell forgatni.
+Az Azure-szolgáltatások hitelesítésének legjobb módja egy [felügyelt identitás](managed-identity.md)használata, de vannak olyan esetek, amikor ez nem lehetséges. Ezekben az esetekben a hozzáférési kulcsok vagy titkos kulcsok használata. Rendszeresen forgassa el a hozzáférési kulcsokat vagy titkos kulcsokat.
 
-Ez az oktatóanyag bemutatja, hogyan automatizálhatja az adatbázisok és szolgáltatások titkos kulcsainak időszakos rotációját egyfelhasználós/jelszó-hitelesítéssel. Ez a forgatókönyv pontosabban elforgatja a key vaultban tárolt SQL-kiszolgálói jelszavakat az Event Grid értesítés által aktivált függvény használatával:
+Ez az oktatóanyag bemutatja, hogyan automatizálhatja az egyfelhasználós/egyjelszós hitelesítést használó adatbázisok és szolgáltatások titkos kulcsainak időszakos rotációját. Ez az oktatóanyag konkrétan az Azure Key Vaultban tárolt SQL Server-jelszavakat forgatja el az Azure Event Grid értesítésáltal aktivált függvény használatával:
 
-![Elforgatási diagram](./media/rotate1.png)
+![Rotációs megoldás diagramja](./media/rotate1.png)
 
 1. Harminc nappal egy titkos kulcs lejárati dátuma előtt a Key Vault közzéteszi a "majdnem lejárati" eseményt az Event Gridben.
-1. Event Grid ellenőrzi az esemény-előfizetések, és a http post használatával meghívja a Függvény alkalmazás végpont előfizetett erre az eseményre.
-1. A függvény alkalmazás megkapja a titkos információkat, létrehoz egy új véletlenszerű jelszót, és létrehoz egy új verziót a titkos kulcs egy új jelszót a Key Vaultban.
-1. Az alkalmazás új jelszóval frissíti az SQL-t.
+1. Event Grid ellenőrzi az esemény-előfizetések, és http post használatával hívja meg a függvény alkalmazás végpont előfizetett az eseményre.
+1. A függvényalkalmazás megkapja a titkos információkat, új véletlenszerű jelszót hoz létre, és létrehoz egy új verziót a titkos kulcshoz a Key Vault új jelszavával.
+1. A függvényalkalmazás frissíti az SQL Server t az új jelszóval.
 
 > [!NOTE]
-> Lehet, hogy a 3. Hiba esetén bármelyik lépésben Az Event Grid 2 órán keresztül újrapróbálkozik.
+> A 3. Ez idő alatt a key vault titkos kulcsa nem lesz képes hitelesíteni az SQL Server. A lépések bármelyikének meghibásodása esetén az Event Grid két órán keresztül újrapróbálkozik.
 
-## <a name="setup"></a>Telepítés
+## <a name="create-a-key-vault-and-sql-server-instance"></a>Kulcstartó és SQL Server-példány létrehozása
 
-## <a name="create-a-key-vault-and-sql-server"></a>Kulcstartó és SQL-kiszolgáló létrehozása
+Az első lépés egy kulcstartó és egy SQL Server-példány és adatbázis létrehozása, valamint az SQL Server rendszergazdai jelszavának a Key Vaultban való tárolása.
 
-Mielőtt elkezdenénk, létre kell hoznunk egy Key Vaultot, létre kell hoznunk egy SQL Server t és egy adatbázist, és tárolnunk kell az SQL Server rendszergazdai jelszavát a Key Vaultban.
+Ez az oktatóanyag egy meglévő Azure Resource Manager-sablont használ az összetevők létrehozásához. A kódot itt találja: [Basic Secret Rotation Template Sample](https://github.com/jlichwa/azure-keyvault-basicrotation-tutorial/tree/master/arm-templates).
 
-Ez az oktatóanyag egy előre létrehozott Azure Resource Manager-sablont használ az összetevők létrehozásához. A teljes kódot itt találja: [Basic Secret Rotation Template Sample](https://github.com/jlichwa/azure-keyvault-basicrotation-tutorial/tree/master/arm-templates).
-
-1. Kattintson az Azure-sablon telepítési hivatkozására:
+1. Válassza ki az Azure-sablon telepítési hivatkozását:
 <br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2Fazure-keyvault-basicrotation-tutorial%2Fmaster%2Farm-templates%2Finitial-setup%2Fazuredeploy.json" target="_blank"> <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/></a>
-1. Az "Erőforráscsoport" területen válassza az "Új létrehozása" lehetőséget, és adja meg az "simplerotation" nevet.
-1. Válassza a "Vásárlás" lehetőséget.
+1. Az **Erőforráscsoport**csoportban válassza **az Új létrehozása lehetőséget.** Nevezze el a csoport **simplerotation**.
+1. Válassza a **Beszerzés** lehetőséget.
 
-    ![Új erőforráscsoport létrehozása](./media/rotate2.png)
+    ![Erőforráscsoport létrehozása](./media/rotate2.png)
 
-A lépések végrehajtása után lesz egy key vault, egy SQL-kiszolgáló és egy SQL-adatbázis. Ezt egy Azure CLI-terminálon ellenőrizheti a következő futtatásával:
+Most antól lesz egy key vault, egy SQL Server-példány és egy SQL-adatbázis. Ezt a beállítást az Azure CLI-ben a következő parancs futtatásával ellenőrizheti:
 
 ```azurecli
 az resource list -o table
 ```
 
-Az eredmények fog kinézni valami ez:
+Az eredmény fog kinézni valami a következő kimenet:
 
 ```console
 Name                     ResourceGroup         Location    Type                               Status
 -----------------------  --------------------  ----------  ---------------------------------  --------
-simplerotation-kv             simplerotation             eastus      Microsoft.KeyVault/vaults
-simplerotation-sql            simplerotation             eastus      Microsoft.Sql/servers
-simplerotation-sql/master     simplerotation             eastus      Microsoft.Sql/servers/databases
+simplerotation-kv          simplerotation      eastus      Microsoft.KeyVault/vaults
+simplerotation-sql         simplerotation      eastus      Microsoft.Sql/servers
+simplerotation-sql/master  simplerotation      eastus      Microsoft.Sql/servers/databases
 ```
 
-## <a name="create-function-app"></a>Függvényalkalmazás létrehozása
+## <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
 
-Hozzon létre egy függvényalkalmazást rendszeráltal felügyelt identitással, valamint további szükséges összetevőkkel: 
+Ezután hozzon létre egy függvényalkalmazást egy rendszer által felügyelt identitással, a többi szükséges összetevő mellett.
 
-A Függvényalkalmazás az alábbi összetevőket és konfigurációt igényli:
-- App Service-csomag
-- Tárfiók
-- A Kulcstár ban lévő titkos kulcsok elérésére vonatkozó szabályzat a Függvényalkalmazás felügyelt identitásának használatával
+A függvényalkalmazás nak szüksége van a következő összetevőkre:
+- Egy Azure App Service-csomag
+- Egy tárfiók
+- Hozzáférési szabályzat a Kulcstároló titkos kulcsainak eléréséhez a függvényalkalmazás által felügyelt identitáson keresztül
 
-1. Kattintson az Azure-sablon telepítési hivatkozására:
+1. Válassza ki az Azure-sablon telepítési hivatkozását:
 <br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2Fazure-keyvault-basicrotation-tutorial%2Fmaster%2Farm-templates%2Ffunction-app%2Fazuredeploy.json" target="_blank"><img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/></a>
-1. Az "Erőforráscsoport" (Erőforráscsoport) területen válassza az "egyszerű rotáció" lehetőséget.
-1. Válassza a "Vásárlás" lehetőséget.
+1. Az **Erőforráscsoport** listában válassza a **simplerotation**lehetőséget.
+1. Válassza a **Beszerzés** lehetőséget.
 
-   ![Vásárlási képernyő](./media/rotate3.png)
+   ![Beszerzési lehetőséget válassza ki](./media/rotate3.png)
 
-A fenti lépések végrehajtása után lesz egy tárfiók, egy kiszolgálófarm és egy függvényalkalmazás.  Ezt egy Azure CLI-terminálon ellenőrizheti a következő futtatásával:
+Az előző lépések elvégzése után egy tárfiókkal, egy kiszolgálófarmpal és egy függvényalkalmazással fog rendelkezni. Ezt a beállítást az Azure CLI-ben a következő parancs futtatásával ellenőrizheti:
 
 ```azurecli
 az resource list -o table
 ```
 
-Az eredmények fog kinézni valami ez:
+Az eredmény a következő kimenethez hasonlóan fog kinézni:
 
 ```console
 Name                     ResourceGroup         Location    Type                               Status
 -----------------------  --------------------  ----------  ---------------------------------  --------
-simplerotation-kv             simplerotation             eastus      Microsoft.KeyVault/vaults
-simplerotation-sql            simplerotation             eastus      Microsoft.Sql/servers
-simplerotation-sql/master     simplerotation             eastus      Microsoft.Sql/servers/databases
-simplerotationstrg            simplerotation             eastus      Microsoft.Storage/storageAccounts
-simplerotation-plan           simplerotation             eastus      Microsoft.Web/serverFarms
-simplerotation-fn             simplerotation             eastus      Microsoft.Web/sites
+simplerotation-kv          simplerotation       eastus      Microsoft.KeyVault/vaults
+simplerotation-sql         simplerotation       eastus      Microsoft.Sql/servers
+simplerotation-sql/master  simplerotation       eastus      Microsoft.Sql/servers/databases
+simplerotationstrg         simplerotation       eastus      Microsoft.Storage/storageAccounts
+simplerotation-plan        simplerotation       eastus      Microsoft.Web/serverFarms
+simplerotation-fn          simplerotation       eastus      Microsoft.Web/sites
 ```
 
-A Függvényalkalmazás létrehozásáról és a Key Vault eléréséhez a Felügyelt identitás használatával című [témaköra: Függvényalkalmazás létrehozása az Azure Portalról](../azure-functions/functions-create-function-app-portal.md) és [Key Vault-hitelesítés biztosítása felügyelt identitással](managed-identity.md)
+A függvényalkalmazás létrehozásáról és a felügyelt identitás használatáról a Key Vault eléréséhez című témakörben [talál: Függvényalkalmazás létrehozása az Azure Portalról,](../azure-functions/functions-create-function-app-portal.md) és [key vault-hitelesítés biztosítása felügyelt identitással.](managed-identity.md)
 
-### <a name="rotation-function-and-deployment"></a>Rotációs funkció és üzembe helyezés
-A függvény eseményindítóként használja az eseményt, és egy titkos kulcstároló és SQL-adatbázis elforgatását hajtja végre.
+### <a name="rotation-function"></a>Elforgatás függvény
+A függvény egy eseményt használ egy titkos kulcs elforgatásának elindításához a Key Vault és az SQL-adatbázis frissítésével.
 
-#### <a name="function-event-trigger-handler"></a>Függvény eseményindító-kezelője
+#### <a name="function-trigger-event"></a>Függvény eseményindító eseménye
 
-A Függvény alatt beolvassa az eseményadatokat, és elforgatási logikát hajt végre
+Ez a függvény beolvassa az eseményadatokat, és futtatja a rotációs logikát:
 
 ```csharp
 public static class SimpleRotationEventHandler
@@ -128,7 +126,7 @@ public static class SimpleRotationEventHandler
 ```
 
 #### <a name="secret-rotation-logic"></a>Titkos rotációs logika
-Ez az elforgatási módszer beolvassa az adatbázis adatait a titkos adatközül, létrehozza a titkos adatikat, és frissíti az adatbázist egy új titkos adattal.
+Ez az elforgatási módszer beolvassa az adatbázis adatait a titkos adatból, létrehozza a titkos adatikat egy új verzióját, és frissíti az adatbázist az új titkos adatikkal:
 
 ```csharp
 public class SecretRotator
@@ -139,13 +137,13 @@ public class SecretRotator
 
     public static void RotateSecret(ILogger log, string secretName, string secretVersion, string keyVaultName)
     {
-           //Retrieve Current Secret
+           //Retrieve current secret
            var kvUri = "https://" + keyVaultName + ".vault.azure.net";
            var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
            KeyVaultSecret secret = client.GetSecret(secretName, secretVersion);
            log.LogInformation("Secret Info Retrieved");
         
-           //Retrieve Secret Info
+           //Retrieve secret info
            var userId = secret.Properties.Tags.ContainsKey(UserIdTagName) ?  
                         secret.Properties.Tags[UserIdTagName] : "";
            var datasource = secret.Properties.Tags.ContainsKey(DataSourceTagName) ? 
@@ -153,11 +151,11 @@ public class SecretRotator
            log.LogInformation($"Data Source Name: {datasource}");
            log.LogInformation($"User Id Name: {userId}");
         
-           //create new password
+           //Create new password
            var randomPassword = CreateRandomPassword();
            log.LogInformation("New Password Generated");
         
-           //Check db connection using existing secret
+           //Check DB connection using existing secret
            CheckServiceConnection(secret);
            log.LogInformation("Service Connection Validated");
                     
@@ -165,107 +163,109 @@ public class SecretRotator
            CreateNewSecretVersion(client, secret, randomPassword);
            log.LogInformation("New Secret Version Generated");
         
-           //Update db password
+           //Update DB password
            UpdateServicePassword(secret, randomPassword);
            log.LogInformation("Password Changed");
            log.LogInformation($"Secret Rotated Succesffuly");
     }
 }
 ```
-A teljes kódot itt találja:https://github.com/jlichwa/azure-keyvault-basicrotation-tutorial/tree/master/rotation-function
+A teljes kódot a [GitHubon](https://github.com/jlichwa/azure-keyvault-basicrotation-tutorial/tree/master/rotation-function)találja.
 
 #### <a name="function-deployment"></a>Függvény központi telepítése
 
-1. Letöltés funkció app zip fájl:https://github.com/jlichwa/azure-keyvault-basicrotation-tutorial/raw/master/simplerotationsample-fn.zip
+1. Töltse le a függvényalkalmazás zip fájlját a [GitHubról.](https://github.com/jlichwa/azure-keyvault-basicrotation-tutorial/raw/master/simplerotationsample-fn.zip)
 
-1. Töltsön fel egyszerűenrotációsminta-fn.zip fájlt az Azure Cloud Shellbe.
- 
-1. A CLI parancs alatt a zip file függvényalkalmazásba való telepítéséhez használja:
+1. Töltse fel a simplerotationsample-fn.zip fájlt az Azure Cloud Shellbe.
 
-```azurecli
-az functionapp deployment source config-zip -g simplerotation -n simplerotation-fn --src /home/{firstname e.g jack}/simplerotationsample-fn.zip
-```
-![Vásárlási képernyő](./media/rotate4.png)
+   ![A fájl feltöltése](./media/rotate4.png)
+1. Ezzel az Azure CLI paranccsal telepítheti a zip-fájlt a függvényalkalmazásba:
 
-A telepítés után két függvényt kell észlelni a simplerotation-fn alatt:
+   ```azurecli
+   az functionapp deployment source config-zip -g simplerotation -n simplerotation-fn --src /home/{firstname e.g jack}/simplerotationsample-fn.zip
+   ```
 
-![Azure Cloud Shell](./media/rotate5.png)
+A függvény üzembe helyezése után két függvénynek kell lennie a simplerotation-fn alatt:
 
-### <a name="add-event-subscription-for-secretnearexpiry-event"></a>Esemény-előfizetés hozzáadása a "SecretNearExpiry" eseményhez
+![Egyszerű elforgatás és egyszerű elforgatáshttpTeszt függvények](./media/rotate5.png)
 
-Másolja a függvényalkalmazást eventgrid_extension kulcsba.
+## <a name="add-an-event-subscription-for-the-secretnearexpiry-event"></a>Esemény-előfizetés hozzáadása a SecretNearExpiry eseményhez
 
-![Azure Cloud Shell](./media/rotate6.png)
+Másolja a függvényalkalmazás `eventgrid_extension` kulcsát:
 
-![Tesztelés és ellenőrzés](./media/rotate7.png)
+   ![A függvényalkalmazás beállításainak kiválasztása](./media/rotate6.png)
 
-A másolt eventgrid bővítménykulcs és az alábbi parancsban az előfizetés-azonosító használatával hozzon létre egy eseményrács-előfizetést a SecretNearExpiry eseményekhez.
+   ![eventgrid_extension kulcs](./media/rotate7.png)
+
+A következő `eventgrid_extension` parancsban a másolt kulcs és az előfizetés-azonosító `SecretNearExpiry` használatával hozzon létre eseményrács-előfizetést eseményekhez:
 
 ```azurecli
 az eventgrid event-subscription create --name simplerotation-eventsubscription --source-resource-id "/subscriptions/<subscription-id>/resourceGroups/simplerotation/providers/Microsoft.KeyVault/vaults/simplerotation-kv" --endpoint "https://simplerotation-fn.azurewebsites.net/runtime/webhooks/EventGrid?functionName=SimpleRotation&code=<extension-key>" --endpoint-type WebHook --included-event-types "Microsoft.KeyVault.SecretNearExpiry"
 ```
 
-### <a name="add-secret-to-key-vault"></a>Titkos kulcs hozzáadása a Key Vaulthoz
-Állítsa be a hozzáférési szabályzatot úgy, hogy "titokkezelési" engedélyt adjon a felhasználóknak.
+## <a name="add-the-secret-to-key-vault"></a>A titkos kulcs hozzáadása a Key Vaulthoz
+Állítsa be a hozzáférési szabályzatot úgy, hogy *a felhasználóknak titoktartási* engedélyeket adjon:
 
 ```azurecli
 az keyvault set-policy --upn <email-address-of-user> --name simplerotation-kv --secret-permissions set delete get list
 ```
 
-Most hozzon létre egy új titkos kulcsot az SQL adatbázis adatforrását és felhasználói azonosítóját tartalmazó címkékkel, a holnapi lejárati dátummal.
+Hozzon létre egy új titkos kulcsot az SQL adatbázis adatforrását és a felhasználói azonosítót tartalmazó címkékkel. A holnapra beállított lejárati dátumot is mellékelje.
 
 ```azurecli
 $tomorrowDate = (get-date).AddDays(+1).ToString("yyy-MM-ddThh:mm:ssZ")
 az keyvault secret set --name sqluser --vault-name simplerotation-kv --value "Simple123" --tags "UserID=azureuser" "DataSource=simplerotation-sql.database.windows.net" --expires $tomorrowDate
 ```
 
-Egy titkos titok rövid lejárati dátummal történő létrehozása azonnal közzéteszi a SecretNearExpiry eseményt, amely viszont elindítja a funkciót a titkos titok elforgatásához.
+Egy titkos titok rövid lejárati dátummal történő létrehozása azonnal közzétesz egy `SecretNearExpiry` eseményt, amely viszont elindítja a funkciót a titok elforgatásához.
 
-### <a name="test-and-verify"></a>Tesztelés és ellenőrzés
-Néhány perc múlva az sqluser titkos fájl automatikusan elfordul.
+## <a name="test-and-verify"></a>Tesztelés és ellenőrzés
+Néhány perc múlva a `sqluser` titok automatikusan elfordul.
 
-A titkos rotáció ellenőrzésének ellenőrzéséhez nyissa meg a Key Vault > Secrets
+Annak ellenőrzéséhez, hogy a titkos kulcs elfordult-e, nyissa meg a **Key Vault** > **Secrets**:
 
-![Tesztelés és ellenőrzés](./media/rotate8.png)
+![Ugrás a titkokra](./media/rotate8.png)
 
-Nyissa meg az "sqluser" titkos kulcsot, és tekintse meg az eredeti és elforgatott verziót
+Nyissa meg az **sqluser** titkos kulcsot, és tekintse meg az eredeti és az elforgatott verziókat:
 
-![Tesztelés és ellenőrzés](./media/rotate9.png)
+![Az sqluser titkos fájl megnyitása](./media/rotate9.png)
 
-## <a name="create-web-app"></a>Webalkalmazás létrehozása
+### <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
-Az SQL-hitelesítő adatok ellenőrzéséhez hozzon létre egy webalkalmazást. Ez a webalkalmazás lenyeri a titkos kulcsot a key vaultból, kinyeri az SQL-adatbázis adatait és hitelesítő adatait a titkos kulcsból, és teszteli a kapcsolatot az sql-hez.
+Az SQL-hitelesítő adatok ellenőrzéséhez hozzon létre egy webalkalmazást. Ez a webalkalmazás lenyeri a titkos kulcsot a Key Vaultból, kinyeri az SQL-adatbázis adatait és hitelesítő adatait a titkos kulcsból, és teszteli az SQL Serverrel való kapcsolatot.
 
-A webalkalmazás alábbi összetevőket és konfigurációt igényel:
-- Webalkalmazás rendszeráltal felügyelt identitással
-- A Kulcstár ban lévő titkos kulcsok elérésére vonatkozó házirend elérése a Web App felügyelt identitáshasználatával
+A webalkalmazásnak szüksége van ezekre az összetevőkre:
+- Rendszer által felügyelt identitással rendelkező webalkalmazás
+- Hozzáférési szabályzat a Kulcstároló ban a webalkalmazás által felügyelt identitáson keresztül idiktatitkok eléréséhez
 
-1. Kattintson az Azure-sablon telepítési hivatkozására:
+1. Válassza ki az Azure-sablon telepítési hivatkozását:
 <br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2Fazure-keyvault-basicrotation-tutorial%2Fmaster%2Farm-templates%2Fweb-app%2Fazuredeploy.json" target="_blank"> <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/></a>
-1. A **simplerotation** erőforráscsoport kijelölése
-1. Kattintson a Beszerzés gombra.
+1. Válassza ki a **simplerotation** erőforráscsoportot.
+1. Válassza a **Beszerzés** lehetőséget.
 
-### <a name="deploy-web-app"></a>Webalkalmazás üzembe helyezése
+### <a name="deploy-the-web-app"></a>A webalkalmazás telepítése
 
-A webalkalmazás forráskódja a https://github.com/jlichwa/azure-keyvault-basicrotation-tutorial/tree/master/test-webapp Webalkalmazás telepítéséhez a következő kbanasza:
+A webalkalmazás forráskódját a [GitHubon](https://github.com/jlichwa/azure-keyvault-basicrotation-tutorial/tree/master/test-webapp)találja.
 
-1. Töltse le a funkcióalkalmazás zip fájljáthttps://github.com/jlichwa/azure-keyvault-basicrotation-tutorial/raw/master/simplerotationsample-app.zip
-1. Töltse fel `simplerotationsample-app.zip` a fájlt az Azure Cloud Shellbe.
+A webalkalmazás üzembe helyezéséhez hajtsa végre az alábbi lépéseket:
+
+1. Töltse le a függvényalkalmazás zip fájlját a [GitHubról.](https://github.com/jlichwa/azure-keyvault-basicrotation-tutorial/raw/master/simplerotationsample-app.zip)
+1. Töltse fel a simplerotationsample-app.zip fájlt az Azure Cloud Shellbe.
 1. Ezzel az Azure CLI paranccsal telepítheti a zip-fájlt a függvényalkalmazásba:
 
    ```azurecli
    az webapp deployment source config-zip -g simplerotation -n simplerotation-app --src /home/{firstname e.g jack}/simplerotationsample-app.zip
    ```
 
-#### <a name="open-web-application"></a>Webes alkalmazás megnyitása
+### <a name="open-the-web-app"></a>A webalkalmazás megnyitása
 
-Nyissa meg az üzembe helyezett alkalmazást, és kattintson az "URL" gombra:
+Nyissa meg az üzembe helyezett alkalmazást, és válassza ki az URL-címet:
  
-![Tesztelés és ellenőrzés](./media/rotate10.png)
+![Az URL-cím kiválasztása](./media/rotate10.png)
 
-A létrehozott titkos értéket úgy kell megjeleníteni, hogy az adatbázis-csatlakoztatva igaz legyen.
+Meg kell jelennie a létrehozott titkos érték egy adatbázishoz csatlakoztatott értéke igaz.
 
-## <a name="learn-more"></a>További információ:
+## <a name="learn-more"></a>Részletek
 
 - Áttekintés: [Key Vault figyelése az Azure Event Griddel (előzetes verzió)](event-grid-overview.md)
 - Útmutató: [E-mailek fogadása, ha egy kulcstartó titkos titkára megváltozik](event-grid-logicapps.md)

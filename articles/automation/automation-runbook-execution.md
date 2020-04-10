@@ -5,24 +5,24 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: c8968eb72b29b004d94e25433da65d3262287147
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1907eb7cde482927ee8e6b0a2522158f05c1808f
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79367142"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010936"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Runbook-végrehajtás az Azure Automationben
 
 A Runbookok végrehajtása a bennük definiált logika alapján hajtható végre. Ha egy runbook megszakad, a runbook az elején újraindul. Ez a viselkedés megköveteli, hogy írjon runbookok, amelyek támogatják az újraindítást, ha átmeneti problémák fordulnak elő.
 
-Runbook indítása az Azure Automationben létrehoz egy feladatot. A feladat a runbook egyetlen végrehajtási példánya. Minden feladat rendelkezik az Azure-erőforrásokhoz való hozzáféréssel az Azure-előfizetéshez való csatlakozással. A feladat csak akkor rendelkezik az adatközpont erőforrásaihoz, ha ezek az erőforrások elérhetők a nyilvános felhőből.
+Runbook indítása az Azure Automationben létrehoz egy feladatot, amely a runbook egyetlen végrehajtási példányát hozza létre. Minden feladat rendelkezik az Azure-erőforrásokhoz való hozzáféréssel az Azure-előfizetéshez való csatlakozással. A feladat csak akkor rendelkezik az adatközpont erőforrásaihoz, ha ezek az erőforrások elérhetők a nyilvános felhőből.
 
 Az Azure Automation egy dolgozót rendel hozzá az egyes feladatok runbook-végrehajtás során történő futtatásához. Bár a dolgozókat számos Azure-fiók osztja meg, a különböző Automation-fiókokból származó feladatok elkülönülnek egymástól. Nincs szabályozhatja, hogy mely munkavégző szolgáltatások a munkakérelmet.
 
 Amikor az Azure Portalon a runbookok listáját tekinti meg, az egyes runbookokhoz elindított egyes feladatok állapotát jeleníti meg. Az Azure Automation legfeljebb 30 napig tárolja a feladatnaplókat. 
 
-Az alábbi ábra a [PowerShell-runbookok,](automation-runbook-types.md#powershell-runbooks)a [grafikus runbookok](automation-runbook-types.md#graphical-runbooks)és a [PowerShell-munkafolyamat runbookok](automation-runbook-types.md#powershell-workflow-runbooks)runbook-feladatainak életciklusát mutatja be.
+Az alábbi ábra a [PowerShell-runbookok,](automation-runbook-types.md#powershell-runbooks)a [grafikus runbookok](automation-runbook-types.md#graphical-runbooks)és a [PowerShell-munkafolyamat runbookok](automation-runbook-types.md#powershell-workflow-runbooks)runbook-feladatának életciklusát mutatja be.
 
 ![Feladatállapotok – PowerShell-munkafolyamat](./media/automation-runbook-execution/job-statuses.png)
 

@@ -5,12 +5,12 @@ author: markfussell
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: mfussell
-ms.openlocfilehash: 876980bd6a59bace9ab4e490358964d19fa52c7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 56df6e28940eb15597a3d6bccca3f85e5f690f89
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77586087"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991654"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>Az Azure Service Fabric alkalmazástervezési gyakorlati tanácsok
 
@@ -58,8 +58,8 @@ Takarítson meg költségeket és javítsa a rendelkezésre állást:
 ## <a name="how-to-work-with-reliable-services"></a>A megbízható szolgáltatások kal való munka
 A Service Fabric megbízható szolgáltatások lehetővé teszi, hogy könnyen hozzon létre állapotnélküli és állapotalapú szolgáltatások. További információt a [Megbízható szolgáltatások című témakörben talál.](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-introduction)
 - Mindig tartsa tiszteletben `RunAsync()` a [lemondási jogkivonatot](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-lifecycle#stateful-service-primary-swaps) az `ChangeRole()` állapotnélküli és állapotalapú szolgáltatások és az állapotalapú szolgáltatások metódusában. Ha nem, a Service Fabric nem tudja, ha a szolgáltatás bezárható. Ha például nem tartja tiszteletben a törlési jogkivonatot, sokkal hosszabb alkalmazásfrissítési idő fordulhat elő.
--   A [kommunikációfigyelők időben](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication) megnyitása és bezárása, és a lemondási jogkivonatok tiszteletben
--   Soha ne keverje a szinkronizálási kódot az aszinkron kóddal. Például ne használja `.GetAwaiter().GetResult()` az aszinkron hívásokban. Használja az aszinkront *végig a* hívási veremben.
+-    A [kommunikációfigyelők időben](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication) megnyitása és bezárása, és a lemondási jogkivonatok tiszteletben
+-    Soha ne keverje a szinkronizálási kódot az aszinkron kóddal. Például ne használja `.GetAwaiter().GetResult()` az aszinkron hívásokban. Használja az aszinkront *végig a* hívási veremben.
 
 ## <a name="how-to-work-with-reliable-actors"></a>Hogyan működjön együtt megbízható szereplők
 A Service Fabric reliable actors lehetővé teszi, hogy könnyen hozzon létre állapotalapú, virtuális szereplők. További információt a [Megbízható szereplők című témakörben talál.](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-introduction)
@@ -77,7 +77,7 @@ A Service Fabric reliable actors lehetővé teszi, hogy könnyen hozzon létre �
 Legyen alapos az [alkalmazásnaplózás](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-app) hozzáadása a szolgáltatáshívásokhoz. Ez segít diagnosztizálni forgatókönyvek, amelyben a szolgáltatások hívják egymást. Ha például "A" "B" hívásokat hív D-t, a hívás bárhol sikertelen lehet. Ha nincs elég naplózási, hibák nehéz diagnosztizálni. Ha a szolgáltatások túl sokat naplóznak a hívási kötetek miatt, győződjön meg róla, hogy legalább naplózza a hibákat és figyelmeztetéseket.
 
 ## <a name="iot-and-messaging-applications"></a>IoT- és üzenetküldő alkalmazások
-Amikor üzeneteket olvas az [Azure IoT Hubról](https://docs.microsoft.com/azure/iot-hub/) vagy [az Azure Event Hubs-ból,](https://docs.microsoft.com/azure/event-hubs/)használja a [ServiceFabricProcessor szolgáltatást.](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/ServiceFabricProcessor) ServiceFabricProcessor integrálja a Service Fabric megbízható szolgáltatások állapotának fenntartása az eseményközpont-partíciók olvasása, és leküldi az új üzeneteket a szolgáltatások a `IEventProcessor::ProcessEventsAsync()` metóduson keresztül.
+Amikor üzeneteket olvas az [Azure IoT Hubról](https://docs.microsoft.com/azure/iot-hub/) vagy [az Azure Event Hubs-ból,](https://docs.microsoft.com/azure/event-hubs/)használja a [ServiceFabricProcessor szolgáltatást.](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/ServiceFabricProcessor) ServiceFabricProcessor integrálja a Service Fabric megbízható szolgáltatások állapotának fenntartása az eseményközpont-partíciók olvasása, és leküldi az új üzeneteket a szolgáltatások a `IEventProcessor::ProcessEventsAsync()` metóduson keresztül.
 
 
 ## <a name="design-guidance-on-azure"></a>Tervezési útmutató az Azure-on

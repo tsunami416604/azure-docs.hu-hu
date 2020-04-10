@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: c7e17f7c4493560bd6118b8d4837fd795a6ab0c8
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 69e2a0fe63be65a2b5d51f7bd2e0885fcbfc5bbb
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422863"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991671"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Adatok másolása a Netezza-ból az Azure Data Factory használatával
 
@@ -63,8 +63,8 @@ Egy tipikus kapcsolati karakterlánc a `Server=<server>;Port=<port>;Database=<da
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| Biztonsági szint | Az illesztőprogram által az adattárhoz való csatlakozáshoz használt biztonsági szint (SSL/TLS). Példa: `SecurityLevel=preferredSecured`. A támogatott értékek a következők:<br/>- **Csak nem biztonságos** **(csak nem biztonságos):** Az illesztőprogram nem használ SSL-t.<br/>- **Előnyben részesített nem biztonságos (előnyben részesített Nem biztonságos) (alapértelmezett)**: Ha a kiszolgáló választási lehetőséget biztosít, az illesztőprogram nem használ SSL-t. <br/>- **Előnyben részesített biztonságos (preferredSecured)**: Ha a kiszolgáló választási lehetőséget biztosít, az illesztőprogram SSL-t használ. <br/>- **Csak biztonságos (csak biztonságos)**: Az illesztőprogram csak akkor csatlakozik, ha ssl-kapcsolat áll rendelkezésre. | Nem |
-| CaCertFájl | A kiszolgáló által használt SSL-tanúsítvány teljes elérési útja. Például: `CaCertFile=<cert path>;`| Igen, ha az SSL engedélyezve van |
+| Biztonsági szint | Az illesztőprogram által az adattárhoz való csatlakozáshoz használt biztonsági szint (SSL/TLS). Példa: `SecurityLevel=preferredSecured`. A támogatott értékek a következők:<br/>- **Csak nem biztonságos** **(csak nem biztonságos):** Az illesztőprogram nem használja a TLS-t.<br/>- **Előnyben részesített nem biztonságos (előnyben részesített Nem biztonságos) (alapértelmezett)**: Ha a kiszolgáló választási lehetőséget biztosít, az illesztőprogram nem használja a TLS-t. <br/>- **Előnyben részesített biztonságos (preferredSecured)**: Ha a kiszolgáló választási lehetőséget biztosít, az illesztőprogram a TLS-t használja. <br/>- **Csak biztonságos (csak biztonságos)**: Az illesztőprogram csak akkor csatlakozik, ha rendelkezésre áll TLS-kapcsolat. | Nem |
+| CaCertFájl | A kiszolgáló által használt TLS/SSL-tanúsítvány teljes elérési útja. Például: `CaCertFile=<cert path>;`| Igen, ha a TLS engedélyezve van |
 
 **Példa**
 

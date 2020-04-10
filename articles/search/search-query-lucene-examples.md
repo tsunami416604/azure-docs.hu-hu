@@ -9,12 +9,12 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 745be21c2a7a09a09fdbbfd57a305d09a4fac3ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c54f864b5bd562fdc0a84b2903198704032b360
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72793434"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998489"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>Használja a "teljes" Lucene keresési szintaxist (speciális lekérdezések az Azure Cognitive Search-ben)
 
@@ -86,7 +86,7 @@ Ez az első példa nem Lucene-specifikus, de az első alapvető lekérdezési ko
 
 Röviden, a lekérdezés csak a *business_title* mezőt célozza meg, és csak az üzleti címeket adja vissza. A **SearchFields** paraméter csak a business_title mezőre korlátozza a lekérdezésvégrehajtását, és **megadja,** hogy mely mezők szerepeljenek a válaszban.
 
-### <a name="partial-query-string"></a>Részleges lekérdezési karakterlánc
+### <a name="search-expression"></a>Keresési kifejezés
 
 ```http
 &search=*&searchFields=business_title&$select=business_title
@@ -119,7 +119,7 @@ Lehet, hogy észrevette a keresési pontszámot a válaszban. Az 1-es egységes 
 
 A Teljes lucene szintaxis támogatja az egyes keresési kifejezések hatókörének egy adott mezőre történő hatókörét. Ez a példa olyan üzleti címeket keres, amelyekben a senior kifejezés szerepel, de nem a junior.
 
-### <a name="partial-query-string"></a>Részleges lekérdezési karakterlánc
+### <a name="search-expression"></a>Keresési kifejezés
 
 ```http
 $select=business_title&search=business_title:(senior NOT junior)
@@ -156,7 +156,7 @@ A **fieldName:searchExpression** mezőben megadott mezőnek kereshető mezőnek 
 
 A Teljes Lucene szintaxis támogatja az intelligens keresést is, amelyek hasonló szerkezetű kifejezésekhez illeszkednek. Fuzzy kereséshez fűzze hozzá `~` a tilde szimbólumot egyetlen szó végén egy nem kötelező paraméterrel, 0 és 2 közötti értékkel, amely meghatározza a szerkesztési távolságot. Például, `blue~` `blue~1` vagy visszatér a kék, kék, és ragasztó.
 
-### <a name="partial-query-string"></a>Részleges lekérdezési karakterlánc
+### <a name="search-expression"></a>Keresési kifejezés
 
 ```http
 searchFields=business_title&$select=business_title&search=business_title:asosiate~
@@ -186,7 +186,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 ## <a name="example-4-proximity-search"></a>4. példa: Közelségi keresés
 A közelségi keresések segítségével olyan kifejezéseket kereshet, amelyek közel vannak egymáshoz a dokumentumban. Szúrjon be egy tilde "~" szimbólumot a kifejezés végére, amelyet a közelséghatárot létrehozó szavak száma követ. Például a "hotel repülőtér" ~ 5 megtalálja a feltételeket hotel és repülőtér belül 5 szót egymástól egy dokumentumban.
 
-### <a name="partial-query-string"></a>Részleges lekérdezési karakterlánc
+### <a name="search-expression"></a>Keresési kifejezés
 
 ```http
 searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~1
@@ -239,7 +239,7 @@ A tényezőszint beállításakor minél magasabb a kiemelési tényező, annál
 
 A reguláris kifejezéskeresés a [RegExp osztályban](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html)dokumentált perjelek "/" tartalma alapján egyezést talál.
 
-### <a name="partial-query-string"></a>Részleges lekérdezési karakterlánc
+### <a name="search-expression"></a>Keresési kifejezés
 
 ```http
 searchFields=business_title&$select=business_title&search=business_title:/(Sen|Jun)ior/
@@ -262,7 +262,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 ## <a name="example-7-wildcard-search"></a>7. példa: Helyettesítő karakteres keresés
 Az általánosan elismert szintaxist\*több ( ) vagy egy (?) karakteres helyettesítő karakteres kereséshez is használhatja. Megjegyzés: A Lucene lekérdezéselemző támogatja ezeknek a szimbólumoknak a használatát egyetlen kifejezéssel, nem pedig kifejezéssel.
 
-### <a name="partial-query-string"></a>Részleges lekérdezési karakterlánc
+### <a name="search-expression"></a>Keresési kifejezés
 
 ```http
 searchFields=business_title&$select=business_title&search=business_title:prog*

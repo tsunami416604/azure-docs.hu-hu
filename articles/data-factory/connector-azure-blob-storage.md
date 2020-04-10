@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/17/2020
-ms.openlocfilehash: 214b2868f9733dfc6790c492543fb86a832f18b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/09/2020
+ms.openlocfilehash: dd13a08b3c2f63baf509efbb730032edd4eba61a
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065510"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011548"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Adatok másolása és átalakítása az Azure Blob storage-ban az Azure Data Factory használatával
 
@@ -25,7 +25,8 @@ ms.locfileid: "80065510"
 
 Ez a cikk bemutatja, hogyan használhatja a másolási tevékenység et az Azure Data Factory adatok másolására és az Azure Blob storage-ba, és az Adatfolyam használatával alakítja át az adatokat az Azure Blob storage-ban. Az Azure Data Factory ról a [bevezető cikkben](introduction.md)olvashat.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+>[!TIP]
+>A Data Lake vagy az adattárház áttelepítési forgatókönyv, további információ [az Azure Data Factory segítségével áttelepíteni az adatokat a data lake vagy adattárház az Azure-ba.](data-migration-guidance-overview.md)
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
@@ -64,7 +65,7 @@ Az Azure Blob-összekötő a következő hitelesítési típusokat támogatja, t
 - [Felügyelt identitások az Azure-erőforrások hitelesítéséhez](#managed-identity)
 
 >[!NOTE]
->Ha a PolyBase használatával adatokat tölt be az SQL Data Warehouse-ba, ha a forrás- vagy átmeneti Blob-tároló virtuális hálózati végponttal van konfigurálva, a PolyBase által előírt felügyelt identitás-hitelesítést kell használnia, és saját üzemeltetésű integrációs futásidőt kell használnia a verzióval 3.18 vagy újabb. Tekintse meg a [felügyelt identitás-hitelesítésszakaszt](#managed-identity) további konfigurációs előfeltételekkel.
+>Ha a PolyBase használatával adatokat tölt be az SQL Data Warehouse-ba, ha a forrás- vagy átmeneti Blob-tároló virtuális hálózati végponttal van konfigurálva, a PolyBase által előírt felügyelt identitás-hitelesítést kell használnia, és saját üzemeltetésű integrációs futásidőt kell használnia a 3.18-as vagy újabb verzióval. Tekintse meg a [felügyelt identitás-hitelesítésszakaszt](#managed-identity) további konfigurációs előfeltételekkel.
 
 >[!NOTE]
 >A HDInsights és az Azure Machine Learning-tevékenységek csak az Azure Blob storage-fiók kulcsának hitelesítését támogatják.
@@ -136,11 +137,6 @@ A megosztott hozzáférésű aláírás delegált hozzáférést biztosít a tá
 > [!NOTE]
 >- A Data Factory mostantól támogatja a **szolgáltatás megosztott hozzáférési aláírásait** és **a fiók megosztott hozzáférési aláírásait is.** A megosztott hozzáférésű aláírásokról további információt az [Azure Storage-erőforrásokhoz való korlátozott hozzáférés megadása megosztott hozzáférésű aláírások (SAS) használatával](../storage/common/storage-sas-overview.md)című témakörben talál.
 >- A későbbi adatkészlet-konfigurációban a mappa elérési útja a tároló szintjétől kezdődő abszolút elérési út. A SAS URI-ban lévő elérési úthoz igazítva kell konfigurálnia.
-
-> [!TIP]
-> Ha egy szolgáltatás megosztott hozzáférési aláírását a tárfiókhoz, a következő PowerShell-parancsokat hajthatja végre. Cserélje le a helyőrzőket, és adja meg a szükséges engedélyt.
-> `$context = New-AzStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
-> `New-AzStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 
 A megosztott hozzáférésű aláírás-hitelesítés használatához a következő tulajdonságok támogatottak:
 

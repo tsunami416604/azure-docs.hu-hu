@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: c68b83726371d346019d18d0b066173f93196e6d
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 6ceace1ee93fab8c0a46ed4a67850fc87a5cdad2
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/09/2020
-ms.locfileid: "80982055"
+ms.locfileid: "80991228"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetriai korreláció az Application Insightsban
 
@@ -129,6 +129,11 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>A W3C elosztott nyomkövetési támogatásának engedélyezése Java-alkalmazásokhoz
 
+#### <a name="java-30-agent"></a>Java 3.0 ügynök
+
+  A Java 3.0 ügynök támogatja a W3C-t a dobozból, és nincs szükség további konfigurációra. 
+
+#### <a name="java-sdk"></a>Java SDK
 - **Bejövő konfiguráció**
 
   - Java EE-alkalmazások esetén adja `<TelemetryModules>` hozzá a következőket az ApplicationInsights.xml fájl címkéjéhez:
@@ -320,17 +325,32 @@ Van egy új HTTP-modul, [a Microsoft.AspNet.TelemetryCorrelation](https://www.nu
 Az Application Insights SDK, kezdve a 2.4.0-béta1-es verzióval, használja, `DiagnosticSource` és `Activity` telemetriai adatok gyűjtése és társítja azt az aktuális tevékenységhez.
 
 <a name="java-correlation"></a>
-## <a name="telemetry-correlation-in-the-java"></a>Telemetriai korreláció a Java-ban
+## <a name="telemetry-correlation-in-java"></a>Telemetriai korreláció Java-ban
 
-[Az Application Insights Java-ügynök,](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) valamint a [Java SDK](../../azure-monitor/app/java-get-started.md) 2.0.0-s vagy újabb verziója támogatja a telemetriai adatok automatikus korrelációját. Automatikusan feltölti `operation_id` az összes telemetriai adatok (például a nyomkövetések, kivételek és egyéni események) a kérelem hatókörén belül kiadott. A http-n keresztüli szolgáltatás-szolgáltatás hívásokkor is propagálja a korrelációs fejléceket (korábban leírtak szerint), ha a [Java SDK-ügynök](../../azure-monitor/app/java-agent.md) konfigurálva van.
+[Java-ügynök,](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) valamint a [Java SDK](../../azure-monitor/app/java-get-started.md) 2.0.0-s vagy újabb verziója támogatja a telemetriai adatok automatikus korrelációját. Automatikusan feltölti `operation_id` az összes telemetriai adatok (például a nyomkövetések, kivételek és egyéni események) a kérelem hatókörén belül kiadott. A http-n keresztüli szolgáltatás-szolgáltatás hívásokkor is propagálja a korrelációs fejléceket (korábban leírtak szerint), ha a [Java SDK-ügynök](../../azure-monitor/app/java-agent.md) konfigurálva van.
 
 > [!NOTE]
 > Az Application Insights Java-ügynök automatikusan gyűjti a JMS, a Kafka, a Netty/Webflux és más kérelmeket és függőségeket. Java SDK esetén csak az Apache HttpClient-en keresztül kezdeményezett hívások támogatottak a korrelációs funkcióhoz. Az automatikus környezetpropagálás az üzenetkezelési technológiák (például a Kafka, a RabbitMQ és az Azure Service Bus) között nem támogatott az SDK-ban. 
 
-<a name="java-role-name"></a>
-## <a name="role-name"></a>Szerepkörnév
+> [!NOTE]
+> Egyéni telemetriai adatok gyűjtéséhez kell az alkalmazás a Java 2.6 SDK. 
+
+### <a name="role-names"></a>Szerepkörnevek
 
 Előfordulhat, hogy testre szeretné szabni az összetevőnevek megjelenítésének módját az [alkalmazástérképen.](../../azure-monitor/app/app-map.md) Ehhez manuálisan is beállíthatja `cloud_RoleName` az alábbi műveletek egyikét:
+
+- Az Application Insights Java Agent 3.0 esetén állítsa be a felhőbeli szerepkör nevét a következőképpen:
+
+    ```json
+    {
+      "instrumentationSettings": {
+        "preview": {
+          "roleName": "my cloud role name"
+        }
+      }
+    }
+    ```
+    A felhőbeli szerepkör nevét a környezeti `APPLICATIONINSIGHTS_ROLE_NAME`változó használatával is beállíthatja.
 
 - Az Application Insights Java SDK 2.5.0-s `cloud_RoleName` és `<RoleName>` újabb verzióival megadhatja az ApplicationInsights.xml fájlhoz való hozzáadással:
 

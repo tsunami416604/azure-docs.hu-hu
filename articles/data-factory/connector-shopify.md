@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
-ms.openlocfilehash: ec9c8e29adaa03620cc60d189ff4a830e107e782
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9b6961e2e739286fa1f12ba69198b59f5aea106e
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74931054"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991722"
 ---
 # <a name="copy-data-from-shopify-using-azure-data-factory-preview"></a>Adatok másolása a Shopify-ból az Azure Data Factory használatával (előzetes verzió)
 
@@ -52,8 +52,8 @@ A Shopify kapcsolt szolgáltatása a következő tulajdonságokat támogatja:
 | gazda | A Shopify kiszolgáló végpontja. (azaz mystore.myshopify.com)  | Igen |
 | accessToken | Az API-hozzáférési jogkivonat, amely a Shopify adatainak eléréséhez használható. A token nem jár le, ha offline módban van. Jelölje meg ezt a mezőt SecureStringként a Data Factory biztonságos tárolásához, vagy [hivatkozzon az Azure Key Vaultban tárolt titkos fájlokra.](store-credentials-in-key-vault.md) | Igen |
 | useEncryptedEndpoints | Itt adható meg, hogy az adatforrás végpontjai HTTPS protokoll használatával titkosítva legyenek-e. Az alapértelmezett érték az igaz.  | Nem |
-| useHostVerification (useHostVerification) | Itt adható meg, hogy az SSL-kapcsolaton keresztüli csatlakozáskor a kiszolgáló tanúsítványában lévő állomásnév nek meg kell-e egyeznie a kiszolgáló állomásnevével. Az alapértelmezett érték az igaz.  | Nem |
-| usePeerVerification | Itt adható meg, hogy az SSL-kapcsolaton keresztül imitomának ellenőrzése esetén ellenőrizze-e a kiszolgáló identitását. Az alapértelmezett érték az igaz.  | Nem |
+| useHostVerification (useHostVerification) | Itt adható meg, hogy a kiszolgáló tanúsítványában lévő állomásnév nek meg kell-e egyeznie a kiszolgáló állomásnevével, amikor TLS-en keresztül csatlakozik. Az alapértelmezett érték az igaz.  | Nem |
+| usePeerVerification | Itt adható meg, hogy a kiszolgáló identitását ellenőrizze-e a TLS-en keresztüli csatlakozáskor. Az alapértelmezett érték az igaz.  | Nem |
 
 **Példa:**
 

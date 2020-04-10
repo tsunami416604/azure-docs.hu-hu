@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
-ms.openlocfilehash: 0bdd8d454b979250b57cf657d347309b99a86ede
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 31588f9657a883e9c4a5600d2d164125a5f68edf
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75892556"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991943"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Adatok másolása a MongoDB-ból az Azure Data Factory használatával
 
@@ -65,7 +65,7 @@ A MongoDB csatolt szolgáltatás a következő tulajdonságokat támogatja:
 | felhasználónév |Felhasználói fiók a MongoDB eléréséhez. |Igen (ha egyszerű hitelesítést használ). |
 | jelszó |A felhasználó jelszava. Jelölje meg ezt a mezőt SecureStringként a Data Factory biztonságos tárolásához, vagy [hivatkozzon az Azure Key Vaultban tárolt titkos fájlokra.](store-credentials-in-key-vault.md) |Igen (ha egyszerű hitelesítést használ). |
 | authForrás |A hitelesítő adatok hitelesítéséhez használni kívánt MongoDB-adatbázis neve. |Nem. Az alapfokú hitelesítéshez az alapértelmezett beállítás a rendszergazdai fiók és az databaseName tulajdonsággal megadott adatbázis használata. |
-| enableSsl | Itt adható meg, hogy a kiszolgálóval létesített kapcsolatok SSL-rel titkosítva legyenek-e. Az alapértelmezett érték a hamis.  | Nem |
+| enableSsl | Itt adható meg, hogy a kiszolgálóval létesített kapcsolatok titkosítva legyenek-e a TLS használatával. Az alapértelmezett érték a hamis.  | Nem |
 | allowSelfSignedServerCert | Itt adható meg, hogy engedélyezze-e az önaláírt tanúsítványokat a kiszolgálóról. Az alapértelmezett érték a hamis.  | Nem |
 | connectVia | Az adattárhoz való csatlakozáshoz használandó [integrációs futásidő.](concepts-integration-runtime.md) További információ az [Előfeltételek](#prerequisites) szakaszból. Ha nincs megadva, az alapértelmezett Azure-integrációs runtime-ot használja. |Nem |
 

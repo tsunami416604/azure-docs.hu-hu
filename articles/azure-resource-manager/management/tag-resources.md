@@ -3,18 +3,21 @@ title: Erőforrások, erőforráscsoportok és előfizetések címkézése logik
 description: Bemutatja, hogyan alkalmazhat címkéket az Azure-erőforrások számlázáshoz és kezeléshez való rendszerezéséhez.
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 76f9f61b3fe7002508bbd884f427efcfee698579
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 44759db59ef7e7556c8fbfca3bbc58ef84796198
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548495"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010800"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Címkék használata az Azure-erőforrások és a felügyeleti hierarchia rendszerezéséhez
 
 Címkéket alkalmazhat az Azure-erőforrásokra, az erőforráscsoportokra és az előfizetésekre, hogy logikailag rendszertanilag rendszerezze őket. Minden címke egy névből és egy értékpárból áll. Alkalmazhatja például a „Környezet” nevet és az „Éles” értéket az összes éles üzemben használt erőforrásra.
 
 A címkézési stratégia megvalósításával kapcsolatos javaslatokaz [Erőforrás-elnevezési és címkézési döntési útmutatóban](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)talál.
+
+> [!IMPORTANT]
+> A címkenevek ben nem lehet a kis- és nagybetűket. A címkeértékek ben a kis- és nagybetűk et is figyelembe kell.
 
 [!INCLUDE [Handle personal data](../../../includes/gdpr-intro-sentence.md)]
 

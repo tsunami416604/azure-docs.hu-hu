@@ -8,17 +8,17 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: de6e08534722deccb8be11248dd8af3ca2e66739
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 6baf5d77b70fa6e2717b492163826f27d80fbb88
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983212"
+ms.locfileid: "80991620"
 ---
 # <a name="create-a-new-managed-service-offer"></a>Új felügyelt szolgáltatásajánlat létrehozása
 
 > [!IMPORTANT]
-> Felügyelt szolgáltatási ajánlatainak kezelését áthelyezzük a Cloud Partner Portal-ról a Partner Centerre. Amíg az ajánlatok áttelepítése, kövesse a [Felügyelt szolgáltatásajánlat közzététele](../../lighthouse/how-to/publish-managed-services-offers.md) az Azure Piactéren az ajánlatok kezeléséhez.
+> Felügyelt szolgáltatási ajánlatainak kezelését áthelyezzük a Cloud Partner Portal-ról a Partner Centerre. Az ajánlatok áttelepítéséig kövesse a [Felügyelt szolgáltatás ajánlatának közzététele](../../lighthouse/how-to/publish-managed-services-offers.md) az Azure Piactéren című útmutatóutasításait, és kezelje ajánlatait a Cloud Partner Portal webhelyen.
 
 A Felügyelt szolgáltatás segítséget nyújt az [Azure Lighthouse-forgatókönyvek](../../lighthouse/overview.md) engedélyezéséhez. Ha egy ügyfél elfogadja a felügyelt szolgáltatás ajánlatát, akkor az [Azure delegált erőforrás-kezeléséhez](../../lighthouse/concepts/azure-delegated-resource-management.md)szükséges erőforrásokat is betudják vonni.
 

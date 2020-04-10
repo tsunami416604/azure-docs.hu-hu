@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: 8f5065a0f4a2a96a747a45f64e00e86f7990bfb8
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 3a16a8263c80852127ca61db3c666ebf0f7f1e4c
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437794"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011701"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>Adatok másolása és átalakítása az Azure SQL Database-ben az Azure Data Factory használatával
 
@@ -493,7 +493,7 @@ BEGIN
 END
 ```
 
-**2. lehetőség:** Azt is választhatja, hogy [a másolási tevékenységen belül meghívja a tárolt eljárást.](#invoke-a-stored-procedure-from-a-sql-sink) Ez a megközelítés a forrástábla minden egyes sorát futtatja ahelyett, hogy tömeges beszúrást használna alapértelmezett megközelítésként a másolási tevékenységben, amely nem megfelelő a nagy méretű upsert számára.
+**2. lehetőség:** Azt is választhatja, hogy [a másolási tevékenységen belül meghívja a tárolt eljárást.](#invoke-a-stored-procedure-from-a-sql-sink) Ez a megközelítés a forrástáblában `writeBatchSize` minden köteget futtat (a tulajdonság szerint) ahelyett, hogy a másolási tevékenység alapértelmezett beszúrásaként használna.
 
 ### <a name="overwrite-the-entire-table"></a>A teljes tábla felülírása
 
@@ -508,10 +508,7 @@ Az adatok írásának lépései egyéni logikával [hasonlóak a Upsert-adatok](
 
 ## <a name="invoke-a-stored-procedure-from-a-sql-sink"></a><a name="invoke-a-stored-procedure-from-a-sql-sink"></a>Tárolt eljárás meghívása SQL-fogadóból
 
-Amikor adatokat másol az Azure SQL Database-be, konfigurálhatja és meghívhat egy felhasználó által megadott tárolt eljárást további paraméterekkel. A tárolt eljárás szolgáltatás kihasználja a [tábla értékű paramétereket.](https://msdn.microsoft.com/library/bb675163.aspx)
-
-> [!TIP]
-> A tárolt eljárás meghívása az adatsort sorról sorra dolgozza fel, nem pedig tömeges művelet használatával, amelyet nem ajánlunk nagyméretű másoláshoz. További információ az [Azure SQL Database-be való adatbetöltéssel kapcsolatos gyakorlati tanácsokról.](#best-practice-for-loading-data-into-azure-sql-database)
+Amikor adatokat másol az Azure SQL Database-be, konfigurálhatja és meghívhat egy felhasználó által megadott tárolt eljárást, amely további paramétereket biztosít a forrástábla minden egyes kötegében. A tárolt eljárás szolgáltatás kihasználja a [tábla értékű paramétereket.](https://msdn.microsoft.com/library/bb675163.aspx)
 
 A tárolt eljárás akkor használható, ha a beépített másolási mechanizmusok nem szolgálják a célt. Ilyen például az, ha a forrásadatok végső beillesztése előtt további feldolgozást szeretne alkalmazni a céltáblába. Néhány további feldolgozási példa, ha egyesíteni szeretné az oszlopokat, további értékeket szeretne keresni, és több táblába szeretne beszúrni.
 

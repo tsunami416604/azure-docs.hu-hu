@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 017cc886b3d47a97a29f45979cb49215de31ae0a
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 94d3993c6a0c62a68ea77a888d3351c8fea1d935
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80880975"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990990"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Bejelentkezés hozzáadása a Microsofthoz egy ASP.NET webalkalmazáshoz
 
@@ -495,8 +495,3 @@ További információ a Microsoft Graph programot hívó webalkalmazások létre
 > [A Microsoft Graph ASP.NET oktatóanyag](https://docs.microsoft.com/graph/tutorials/aspnet)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
-
-Segítsen nekünk a Microsoft identitásplatformjának fejlesztésében. Mondja el, mit gondol egy kétkérdésű felmérés kitöltésével:
-
-> [!div class="nextstepaction"]
-> [Microsoft-identitásplatform-felmérés](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

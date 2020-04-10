@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
-ms.openlocfilehash: c65fbd9bbd83db9c7c8ec0e9041d08372243b72f
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: ee51be1d994c3b81765266e95c48d321a2f43b14
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887644"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80989442"
 ---
-# <a name="migrate-on-premises-ssis-jobs-to-azure-data-factory"></a>Helyszíni SSIS-feladatok áttelepítése az Azure Data Factoryba
+# <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>SQL Server Agent-feladatok áttelepítése Az ADF-be SSMS segítségével
 
 A [helyszíni SQL Server Integration Services (SSIS) számítási feladatok Nak az ADF-ben lévő SSIS-be történő áttelepítésekor](scenario-ssis-migration-overview.md)az SSIS-csomagok áttelepítése után az SQL Server Agent-feladatok kötegelt áttelepítését teheti meg az SQL Server Integration Services Package feladatlépéstípusú feladattípusával az Azure Data Factory (ADF) folyamatokba/tevékenységekbe/ütemezési aktiválásokba az SQL Server Management Studio (SSMS) **SSIS Feladatáttelepítés varázslóján**keresztül.
 

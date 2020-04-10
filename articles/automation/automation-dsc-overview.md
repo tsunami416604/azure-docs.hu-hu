@@ -1,5 +1,5 @@
 ---
-title: Azure Automation állapotkonfiguráció – áttekintés
+title: Állapotkonfiguráció áttekintése
 description: Az Azure Automation állapotkonfigurációjának (DSC), a feltételeinek és az ismert problémáknak a áttekintése
 keywords: powershell dsc, kívánt állapotkonfiguráció, powershell dsc azure
 services: automation
@@ -10,14 +10,14 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 46cf0d6a12ffbc836db7bd79c0f2738a94e23085
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02e540c9ac2654be97ff247749d1ed18573cfc24
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283191"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010256"
 ---
-# <a name="azure-automation-state-configuration-overview"></a>Azure Automation állapotkonfiguráció – áttekintés
+# <a name="state-configuration-overview"></a>Állapotkonfiguráció áttekintése
 
 Az Azure Automation State Configuration egy Azure-szolgáltatás, amely lehetővé teszi a PowerShell kívánt állapotkonfigurációs (DSC) [konfigurációinak írását,](/powershell/scripting/dsc/configurations/configurations)kezelését és fordítását. A szolgáltatás importálja [a DSC-erőforrásokat](/powershell/scripting/dsc/resources/resources)is, és a felhőben lévő célcsomópontokhoz rendeli hozzá a konfigurációkat.
 

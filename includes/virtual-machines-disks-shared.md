@@ -5,25 +5,25 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 02/18/2020
+ms.date: 04/08/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a14ae76e15c1adb59917e61fbcbdaa34a7efa2d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c3e5beaef7fcc9d407103834e2040957ff32984c
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77472016"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81008536"
 ---
-Az Azure megosztott lemezei (előzetes verzió) egy új funkció az Azure felügyelt lemezei, amely lehetővé teszi, hogy egy Azure felügyelt lemez több virtuális gépekhez (VM) egyszerre. Egy felügyelt lemez csatlakoztatása több virtuális géphez lehetővé teszi, hogy új üzembe helyezése vagy a meglévő fürtözött alkalmazások áttelepítése az Azure-ba.
+Az Azure megosztott lemezei (előzetes verzió) egy új funkció az Azure felügyelt lemezei számára, amelyek lehetővé teszik a felügyelt lemez egyidejű csatlakoztatását több virtuális géphez (VM). Egy felügyelt lemez csatlakoztatása több virtuális géphez lehetővé teszi, hogy új üzembe helyezése vagy a meglévő fürtözött alkalmazások áttelepítése az Azure-ba.
 
 ## <a name="how-it-works"></a>Működés
 
-A fürtben lévő virtuális gépek az [SCSI-állandó foglalások (SCSI](https://www.t10.org/members/w_spc3.htm) PR) használatával a fürtözött alkalmazás által kiválasztott foglalás alapján olvashatnak vagy írhatnak a csatlakoztatott lemezre. Az SCSI PR egy jól ismert iparági szabvány, amelyet a helyszíni tárolóhálózaton (SAN) futó alkalmazások használnak. Az SCSI PR engedélyezése felügyelt lemezen lehetővé teszi, hogy ezeket az alkalmazásokat az Azure-ba telepítse át.
+A fürtben lévő virtuális gépek az [SCSI-állandó foglalások (SCSI](https://www.t10.org/members/w_spc3.htm) PR) használatával a fürtözött alkalmazás által kiválasztott foglalás alapján olvashatnak vagy írhatnak a csatlakoztatott lemezre. Az SCSI PR egy iparági szabvány, amelyet a helyszíni tárolóhálózaton (SAN) futó alkalmazások használnak. Az SCSI PR engedélyezése felügyelt lemezen lehetővé teszi, hogy ezeket az alkalmazásokat az Azure-ba telepítse át.
 
-A megosztott lemezekkel rendelkező felügyelt lemezek olyan megosztott blokktárolót kínálnak, amelyet több virtuális gép is elérhet, ez logikai egységszámként (LU- k) jelenik meg. A logikai és azonosítók ezután egy célból (lemezről) jelennek meg a kezdeményezőnek (VM). Ezek a helyi tárolók úgy néznek ki, mint a közvetlenül csatlakoztatott tároló (DAS) vagy a virtuális gép helyi meghajtója.
+A megosztott lemezek megosztott blokktárolót kínálnak, amely több virtuális gépről érhető el, ezek logikai egységszámként (LUN) érhetők el. A logikai és azonosítók ezután egy célból (lemezről) jelennek meg a kezdeményezőnek (VM). Ezek a helyi tárolók úgy néznek ki, mint a közvetlenül csatlakoztatott tároló (DAS) vagy a virtuális gép helyi meghajtója.
 
-A megosztott lemezekkel rendelkező felügyelt lemezek natív módon nem kínálnak olyan teljesen felügyelt fájlrendszert, amely SMB/NFS használatával érhető el. Olyan fürtkezelőt kell használnia, például a Windows Server feladatátvevő fürtjét (WSFC) vagy a Pacemakert, amely kezeli a fürtcsomópont-kommunikációt és az írási zárolást.
+A megosztott felügyelt lemezek natív módon nem kínálnak teljes körűen felügyelt fájlrendszert, amely SMB/NFS-sel érhető el. Olyan fürtkezelőt kell használnia, például a Windows Server feladatátvevő fürtjét (WSFC) vagy a Pacemakert, amely kezeli a fürtcsomópont-kommunikációt és az írási zárolást.
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -76,3 +76,61 @@ Az áramlás a következő:
 1. A VM1 alkalmazáspéldány a lemezre íráshoz kizárólagos foglalást készít, miközben más virtuális gépekről nyitja meg az olvasásokat a lemezre.
 1. Ez a foglalás az Azure-lemezen van kényszerítve.
 1. A fürt összes csomópontja most már olvashat a lemezről. Csak egy csomópont írja vissza az eredményeket a lemezre a fürt összes csomópontja nevében.
+
+### <a name="ultra-disks-reservation-flow"></a>Ultra lemezek foglalási folyamata
+
+Az ultralemezek további fojtószelepet kínálnak, összesen két fojtószelepet. Ennek köszönhetően az ultralemezek foglalási folyamat a korábbi szakaszban leírtak szerint működhet, vagy szabályozhatja és terjesztheti a teljesítményt részletesebben.
+
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text=" ":::
+
+## <a name="ultra-disk-performance-throttles"></a>Ultra lemez teljesítményszabályozása
+
+Az ultralemezek rendelkeznek azzal az egyedülálló képességgel, hogy lehetővé tegyék a teljesítmény beállítását a módosítható attribútumok kiteszik, és lehetővé teszik azok módosítását. Alapértelmezés szerint csak két módosítható attribútum létezik, de a megosztott ultralemezek két további attribútummal rendelkeznek.
+
+
+|Attribútum  |Leírás  |
+|---------|---------|
+|DiskIOPS readwrite     |A megosztási lemezt írási hozzáféréssel rendelkező összes virtuális gépen engedélyezett IOPS-ok teljes száma.         |
+|DiskMBpsReadWrite írása     |A teljes átviteli sebesség (MB/s) engedélyezett az összes virtuális gép csatlakoztatása a megosztott lemez írási hozzáféréssel.         |
+|DiskIOPSReadOnly*     |A megosztott lemezt readonly-ként rögzítő összes virtuális gépen engedélyezett IOPS-ok teljes száma.         |
+|DiskMBpsReadOnly*     |A megosztott lemezt readonly-ként rögzítő összes virtuális gép számára engedélyezett teljes átviteli sebesség (MB/s).         |
+
+\*Csak megosztott ultralemezekre vonatkozik
+
+A következő képletek bemutatják, hogyan állíthatók be a teljesítményjellemzők, mivel a felhasználók módosíthatók:
+
+- DiskiOPSReadWrite/DiskIOPSReadOnly: 
+    - 300 IOPS/GiB IOPS-korlát, lemezenként legfeljebb 160 K IOPS-érték
+    - Legalább 100 IOPS
+    - DiskIOPSReadWrite + DiskIOPSReadOnly legalább 2 IOPS/GiB
+- DiskMBpsRead/ DiskMBpsReadOnly:
+    - Egyetlen lemez átviteli korlátja 256 KiB/s minden egyes kiosztott IOPS esetén, lemezenként legfeljebb 2000 Mb/s-ig
+    - A minimális garantált lemezátviteli sebesség 4KiB/s minden egyes kiosztott IOPS esetén, a teljes alapterv minimum 1 M/s
+
+### <a name="examples"></a>Példák
+
+Az alábbi példák néhány forgatókönyvet mutatnak be, amelyek bemutatják, hogy a szabályozás hogyan működhet a megosztott ultralemezekkel, különösen.
+
+#### <a name="two-nodes-cluster-using-cluster-shared-volumes"></a>Fürt megosztott köteteit használó két csomópont
+
+Az alábbi példa egy 2 csomópontos WSFC fürtözött megosztott köteteket használó. Ezzel a konfigurációval mindkét virtuális gép egyidejű írási hozzáféréssel rendelkezik a lemezhez, ami azt eredményezi, hogy a ReadWrite szabályozás a két virtuális gép között oszlik meg, és a csak a csak olvasható szabályozás nincs használatban.
+
+:::image type="complex" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="CSV két csomópont ultra példa":::
+
+:::image-end:::
+
+#### <a name="two-node-cluster-without-cluster-share-volumes"></a>Két csomópontfürt fürtmegosztási kötetek nélkül
+
+Az alábbi példa egy kétcsomópontos WSFC-t mutat be, amely nem fürtözött megosztott köteteket használ. Ezzel a konfigurációval csak egy virtuális gép rendelkezik írási hozzáféréssel a lemezhez. Ennek eredményeként a ReadWrite szabályozás kizárólag az elsődleges virtuális gép és a ReadOnly szabályozás csak a másodlagos által használt.
+
+:::image type="complex" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="CSV két csomópont nincs csv ultra lemez példa":::
+
+:::image-end:::
+
+#### <a name="four-node-linux-cluster"></a>Négy csomópont Linux-fürt
+
+Az alábbiakban egy 4 csomópontos Linux-fürt egyetlen íróval és három kibővített olvasókkal. Ezzel a konfigurációval csak egy virtuális gép rendelkezik írási hozzáféréssel a lemezhez. Ennek eredményeként a ReadWrite szabályozás kizárólag az elsődleges virtuális gép és a ReadOnly szabályozás a másodlagos virtuális gépek által felosztott.
+
+:::image type="complex" source="media/virtual-machines-disks-shared-disks/ultra-four-node-example.png" alt-text="Négy csomópont ultra-szabályozás példa":::
+
+:::image-end:::

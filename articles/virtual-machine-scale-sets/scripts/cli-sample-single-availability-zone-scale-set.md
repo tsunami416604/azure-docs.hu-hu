@@ -1,20 +1,20 @@
 ---
 title: Azure CLI-minták – Egyzónás méretezési készlet
 description: Ez a parancsfájl létrehoz egy Azure virtuálisgép-méretezési készlet futó Ubuntu egyetlen rendelkezésre állási zónában.
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 03/27/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 64fbd715a21e801c4adac02f301ea91d3205fbbd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: cd41f21c5390ca0d2c62c1989d46f3d4c0ec36f8
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76278731"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011004"
 ---
 # <a name="create-a-single-zone-virtual-machine-scale-set-with-the-azure-cli"></a>Hozzon létre egy egyzónás virtuálisgép-méretezési készletet az Azure CLI-vel
 Ez a szkript egy Ubuntu rendszert futtató virtuálisgép-méretezési csoportot hoz létre egyetlen rendelkezésre állási zónában. A szkript futtatása után a virtuális gépet RDP-kapcsolaton keresztül érheti el.

@@ -3,12 +3,12 @@ title: Ismerje meg a virtuális gépek tartalmának naplózását
 description: Ismerje meg, hogy az Azure Policy hogyan használja a Vendég konfigurációs ügynököt a virtuális gépeken belüli beállítások naplózásához.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 889e99e94b2c81a6654fcbe7851e93c40163a0c6
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 9e8486af2a9b7ab9e18b8c16f08e51759d1123d7
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985320"
+ms.locfileid: "80998846"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure-szabályzat vendégkonfigurációjának megismerése
 
@@ -91,6 +91,13 @@ A Windows Server Nano Server egyetlen verzióban sem támogatott.
 
 Az Azure vendégkonfigurációs erőforrás-szolgáltatójával való kommunikációhoz a gépeknek kimenő hozzáférésre van szükségük az Azure-adatközpontokhoz a **443-as**porton. Ha olyan magánvirtuális hálózatot használ az Azure-ban, amely nem engedélyezi a kimenő forgalmat, konfigurálja a kivételeket [a Hálózati biztonsági csoport](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) szabályaival.
 A "GuestAndHybridManagement" [szolgáltatáscímke](../../../virtual-network/service-tags-overview.md) a Vendég konfigurációs szolgáltatásra hivatkozik.
+
+## <a name="azure-managed-identity-requirements"></a>Az Azure felügyelt identitáskövetelményei
+
+A **deployifnotexists** házirendek, amelyek hozzáadják a bővítményt a virtuális gépekhez, szintén engedélyezik a rendszer hez rendelt felügyelt identitást, ha nem létezik.
+
+> [!WARNING]
+> Ne engedélyezze a felügyelt identitást a virtuális gépekhez hozzárendelt felhasználó számára olyan házirendek hatókörében, amelyek lehetővé teszik a rendszer hez rendelt felügyelt identitást. A felhasználó által hozzárendelt identitás lesz cserélni, és a gép nem válaszol.
 
 ## <a name="guest-configuration-definition-requirements"></a>Vendég konfigurációdefiníciójának követelményei
 

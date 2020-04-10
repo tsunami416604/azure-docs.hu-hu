@@ -12,12 +12,12 @@ ms.date: 04/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60dca30496aa17ad7add00ca4eca914cb58fddd7
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 5d2e3f8da4a05feedb8c1ab585fabcc74edbc71a
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655982"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998746"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect verziókiadásai
 Az Azure Active Directory (Azure AD) csapata rendszeresen frissíti az Azure AD Connectet új funkciókkal és funkciókkal. Nem minden kiegészítés alkalmazható minden közönségre.
@@ -48,6 +48,13 @@ Az Azure AD Connect nem minden kiadása lesz elérhető az automatikus frissít�
 >
 >Kérjük, olvassa el [ezt a cikket,](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version) hogy többet megtudni, hogyan frissítheti az Azure AD Connect a legújabb verzióra.
 
+## <a name="15200"></a>1.5.20.0
+
+### <a name="release-status"></a>Kiadás állapota
+04/09/2020: Letölthető
+
+### <a name="fixed-issues"></a>Hibák kijavítva:
+Ez a gyorsjavítás javítja az 1.5.18.0-s létrehozási szolgáltatással kapcsolatos problémát, ha engedélyezve van a Csoportszűrés funkció, és forráshorgonyként az mS-DS-ConsistencyGuid értéket használja.
 
 ## <a name="15180"></a>1.5.18.0
 

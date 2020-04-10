@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/22/2018
-ms.openlocfilehash: af003f1f0422c2351bcdf9b0c0010e38785c0344
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f1d8189068278b46e3ec3ea66875d79bb91e5e16
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530325"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010205"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>ASP.NET kimeneti gyorsítótárszolgáltatója a Redis azure-gyorsítótárához
 
@@ -54,9 +54,9 @@ Konfigurálja az attribútumokat a Microsoft Azure portalon a gyorsítótár-pan
 | Attribútum | Típus | Alapértelmezett | Leírás |
 | --------- | ---- | ------- | ----------- |
 | *Fogadó* | sztring | "localhost" | A Redis-kiszolgáló IP-címe vagy állomásneve |
-| *port* | pozitív egész szám | 6379 (nem SSL)<br/>6380 (SSL) | Redis szerverport |
+| *port* | pozitív egész szám | 6379 (nem TLS/SSL)<br/>6380 (TLS/SSL) | Redis szerverport |
 | *accessKey (accessKey)* | sztring | "" | Redis kiszolgáló jelszavát, ha a Redis-engedélyezés engedélyezve van. Az érték alapértelmezés szerint üres karakterlánc, ami azt jelenti, hogy a munkamenet-állapot szolgáltatója nem használ jelszót a Redis-kiszolgálóhoz való csatlakozáskor. **Ha a Redis-kiszolgáló egy nyilvánosan elérhető hálózat, például az Azure Redis cache, győződjön meg róla, hogy engedélyezi a Redis-engedélyezés a biztonság növelése érdekében, és biztonságos jelszót.** |
-| *Ssl* | logikai | **Hamis** | A Redis-kiszolgálóhoz való csatlakozás ssl-en keresztül. Ez az érték alapértelmezés szerint **hamis,** mert a Redis nem támogatja az SSL-t a dobozból. **Ha az SSL-t támogató Azure Redis-gyorsítótárat használja, a biztonság növelése érdekében állítsa be ezt igaz értékre.**<br/><br/>A nem SSL port az új gyorsítótárakhoz alapértelmezés szerint le van tiltva. Adja meg **a true** értéket ehhez a beállításhoz az SSL-port használatához. A nem SSL-port engedélyezéséről a [Gyorsítótár konfigurálása](cache-configure.md) témakör [Access Ports](cache-configure.md#access-ports) című szakaszában olvashat bővebben. |
+| *Ssl* | logikai | **Hamis** | A Redis-kiszolgálóhoz való csatlakozás tls-en keresztül. Ez az érték alapértelmezés szerint **hamis,** mert a Redis nem támogatja a TLS-t a dobozból. **Ha az SSL-t támogató Azure Redis-gyorsítótárat használja, a biztonság növelése érdekében állítsa be ezt igaz értékre.**<br/><br/>A nem TLS-port alapértelmezés szerint le van tiltva az új gyorsítótárak esetében. Adja meg **a true** értéket ehhez a beállításhoz a TLS-port használatához. A nem TLS-port engedélyezéséről a [Gyorsítótár konfigurálása](cache-configure.md) témakör [Access Ports](cache-configure.md#access-ports) című szakaszában olvashat bővebben. |
 | *databaseIdNumber* | pozitív egész szám | 0 | *Ez az attribútum csak a web.config vagy az AppSettings fájlon keresztül adható meg.*<br/><br/>Adja meg, hogy melyik Redis-adatbázist használja. |
 | *connectionTimeoutEzmillimásodpercben* | pozitív egész szám | Által biztosított StackExchange.Redis | A *ConnectTimeout* beállítására szolgál a StackExchange.Redis.ConnectionMultiplexer létrehozásakor. |
 | *operationTimeoutEzredmásodpercben* | pozitív egész szám | Által biztosított StackExchange.Redis | A *SyncTimeout* beállítására szolgál a StackExchange.Redis.ConnectionMultiplexer létrehozásakor. |

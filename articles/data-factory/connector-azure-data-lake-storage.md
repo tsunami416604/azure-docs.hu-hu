@@ -11,18 +11,21 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/08/2020
-ms.openlocfilehash: 929b9548661fe48fe90a55f0cacef234c3078cda
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: a061df302680488377c3006dcef57b818a101d67
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887265"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011531"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Adatok másolása és átalakítása az Azure Data Lake Storage Gen2 szolgáltatásban az Azure Data Factory használatával
 
 Az Azure Data Lake Storage Gen2 (ADLS Gen2) az Azure [Blob storageba](../storage/blobs/storage-blobs-introduction.md)beépített big data-elemzéshez szükséges képességek összeskészlete. Segítségével kapcsolatba léphet az adatokkal a fájlrendszer és az objektumtárolási paradigmák használatával.
 
 Ez a cikk bemutatja, hogyan használhatja a másolási tevékenység et az Azure Data Factory adatok másolásához és az Azure Data Lake Storage Gen2-be, és az Adatfolyam használatával alakítja át az adatokat az Azure Data Lake Storage Gen2-ben. Az Azure Data Factory ról a [bevezető cikkben](introduction.md)olvashat.
+
+>[!TIP]
+>A Data Lake vagy az adattárház áttelepítési forgatókönyv, további információ [az Azure Data Factory segítségével áttelepíteni az adatokat a data lake vagy adattárház az Azure-ba.](data-migration-guidance-overview.md)
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 

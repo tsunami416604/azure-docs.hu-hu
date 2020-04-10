@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 1f6404da163e075b63a99a1d8474cdba4e064b06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bdb2dc283287bf83410f1846aca11f233e93d01b
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930884"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990847"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>Adatok másolása a Xero-ból az Azure Data Factory használatával
 
@@ -55,8 +55,8 @@ A Xero csatolt szolgáltatás a következő tulajdonságokat támogatja:
 | consumerKey (kulcs) | A Xero alkalmazáshoz társított fogyasztói kulcs. Jelölje meg ezt a mezőt SecureStringként a Data Factory biztonságos tárolásához, vagy [hivatkozzon az Azure Key Vaultban tárolt titkos fájlokra.](store-credentials-in-key-vault.md) | Igen |
 | privát kulcs | A Xero privát alkalmazáshoz létrehozott .pem fájl személyes kulcsa, [lásd: Nyilvános/titkos kulcspár létrehozása](https://developer.xero.com/documentation/api-guides/create-publicprivate-key). Megjegyzés, hogy **létrehoz a privatekey.pem a numbits a 512** segítségével `openssl genrsa -out privatekey.pem 512`; Az 1024 nem támogatott. A .pem fájl összes szövegét tartalmazza, beleértve a Unix sorvégződéseket(\n), lásd az alábbi mintát.<br/><br/>Jelölje meg ezt a mezőt SecureStringként a Data Factory biztonságos tárolásához, vagy [hivatkozzon az Azure Key Vaultban tárolt titkos fájlokra.](store-credentials-in-key-vault.md) | Igen |
 | useEncryptedEndpoints | Itt adható meg, hogy az adatforrás végpontjai HTTPS protokoll használatával titkosítva legyenek-e. Az alapértelmezett érték az igaz.  | Nem |
-| useHostVerification (useHostVerification) | Itt adható meg, hogy az állomásnév szükséges-e a kiszolgáló tanúsítványában ahhoz, hogy megfeleljen a kiszolgáló állomásnevének, amikor SSL-kapcsolaton keresztül csatlakozik. Az alapértelmezett érték az igaz.  | Nem |
-| usePeerVerification | Itt adható meg, hogy az SSL-kapcsolaton keresztül imitomának ellenőrzése esetén ellenőrizze-e a kiszolgáló identitását. Az alapértelmezett érték az igaz.  | Nem |
+| useHostVerification (useHostVerification) | Itt adható meg, hogy a kiszolgáló tanúsítványában szükség van-e az állomásnévre ahhoz, hogy megfeleljen a kiszolgáló állomásnevének, amikor TLS-en keresztül csatlakozik. Az alapértelmezett érték az igaz.  | Nem |
+| usePeerVerification | Itt adható meg, hogy a kiszolgáló identitását ellenőrizze-e a TLS-en keresztüli csatlakozáskor. Az alapértelmezett érték az igaz.  | Nem |
 
 **Példa:**
 

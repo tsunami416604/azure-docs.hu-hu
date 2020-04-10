@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 04/09/2020
 ms.author: sstein
-ms.openlocfilehash: 9fa93af72c2869efd7b6d2f1e8b96b0e667f8b16
-ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
+ms.openlocfilehash: b677fd7fe2b14e1c42443478a887ddfa2481dfbf
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80607550"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011446"
 ---
 # <a name="sql-database-release-notes"></a>SQL Database kiadási megjegyzések
 
@@ -22,12 +22,11 @@ Ez a cikk az SQL Database jelenleg nyilvános előzetes verzióban elérhető sz
 
 ## <a name="features-in-public-preview"></a>Funkciók a nyilvános előzetes verzióban
 
-### <a name="single-database"></a>[Önálló adatbázis](#tab/single-database)
+### <a name="single-database"></a>[Egyetlen adatbázis](#tab/single-database)
 
 | Szolgáltatás | Részletek |
 | ---| --- |
 | Új Fsv2 sorozatú és M sorozatú hardvergenerációk| További információt a [Hardvergenerációk című témakörben](sql-database-service-tiers-vcore.md#hardware-generations)talál.|
-| [Az Azure privát hivatkozása](https://azure.microsoft.com/updates/private-link-now-available-in-preview/)| A Private Link leegyszerűsíti a hálózati architektúrát, és biztosítja az Azure-beli végpontok közötti kapcsolatot azáltal, hogy az Azure-hálózaton tartja az adatokat, így kiküszöböli az internetnek való kitettséget. A Private Link lehetővé teszi saját szolgáltatások létrehozását és megjelenítését az Azure-ban. |
 | Gyorsított adatbázis-helyreállítás egyetlen adatbázissal és rugalmas készletekkel | További információt a [Gyorsított adatbázis-helyreállítás című témakörben](sql-database-accelerated-database-recovery.md)talál.|
 |Közelítő darabszám eltérő|További információt a [Hozzávetőleges szám eltérő című témakörben talál.](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing)|
 |Batch mód a Rowstore-on (a 150-es kompatibilitási szint alatt)|További információt a [Batch Mode on Rowstore című témakörben talál.](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore)|

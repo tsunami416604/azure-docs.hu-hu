@@ -3,12 +3,12 @@ title: Az Azure Service Fabric-alkalmazások hibakeresése Linux alatt
 description: Ismerje meg, hogyan figyelheti és diagnosztizálhatja a Service Fabric-szolgáltatásokat egy helyi Linux-fejlesztőgépen.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: d8b5ec2f2190586f5eced5eee112b190a82504c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa8c4053a348c539c2e9e7a87d002d0fcf4a4d52
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75526294"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991330"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>Szolgáltatások figyelése és diagnosztizálása helyi Linux-gépfejlesztési környezetben
 
@@ -59,7 +59,7 @@ További információt a [GitHub kódpéldáiban](https://github.com/Azure-Sampl
 ## <a name="debugging-service-fabric-c-applications"></a>Szolgáltatásfabric C# alkalmazásának hibakeresésé
 
 
-Több keretrendszer áll rendelkezésre a CoreCLR-alkalmazások linuxos nyomon követéséhez. További információ: [GitHub: logging](http:/github.com/aspnet/logging).  Mivel az EventSource ismerős a C# fejlesztők számára,'ez a cikk az EventSource-ot használja a CoreCLR-minták Linuxon történő nyomon követéséhez.
+Több keretrendszer áll rendelkezésre a CoreCLR-alkalmazások linuxos nyomon követéséhez. További információt a [.NET Extensions for Logging című témakörben talál.](https://github.com/dotnet/extensions/tree/master/src/Logging)  Mivel az EventSource ismerős a C# fejlesztők számára,'ez a cikk az EventSource-ot használja a CoreCLR-minták Linuxon történő nyomon követéséhez.
 
 Az első lépés a System.Diagnostics.Tracing használata, hogy a naplókat memória- vagy kimeneti adatfolyamokba vagy konzolfájlokba írhassa.  Az EventSource használatával történő naplózáshoz adja hozzá a következő projektet a project.json hoz:
 

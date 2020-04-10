@@ -7,19 +7,25 @@ ms.topic: reference
 ms.date: 04/06/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 846e8da889e3913c4a8eaab7808495bbd8afad29
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 80e38893d764f35511793d8b31f596dcbf16dd42
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754662"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991892"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Támogatott metrikák az Azure Monitorsegítségével
 
 > [!NOTE]
 > Ez a lista nagyrészt automatikusan generált az Azure Monitor metrikák REST API-t. A listán a Githubon keresztül végzett módosítások figyelmeztetés nélkül átírhatók. Az állandó frissítések elkészítésével kapcsolatos részletekért forduljon a cikk szerzőjéhez.
 
-Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakcióra, beleértve a portálon való ábrázolásukat, a REST API-n keresztüli hozzáférésüket, vagy a PowerShell vagy a CLI használatával történő lekérdezésüket. Az alábbiakban az Azure Monitor metrika-folyamatával jelenleg elérhető összes metrika teljes listáját tartalmazza. Más metrikák is elérhetők lehetnek a portálon, vagy örökölt API-k használatával. Ez az alábbi lista csak az összevont Azure Monitor metrika-folyamat használatával elérhető metrikákat tartalmazza. A metrikák névtér szerint vannak rendezve. A szolgáltatások és a hozzájuk tartozó névterek listáját az [Azure-szolgáltatások erőforrás-szolgáltatói](../../azure-resource-manager/management/azure-services-resource-providers.md)című témakörben találja. A metrikák programozási célú lekérdezéséhez és eléréséhez használja a [2018-01-01 api-verziót.](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
+Az Azure Monitor számos lehetőséget kínál a metrikák kal való interakcióra, beleértve a portálon való ábrázolásukat, a REST API-n keresztüli hozzáférésüket, vagy a PowerShell vagy a CLI használatával történő lekérdezésüket. 
+
+Ez a cikk az Azure Monitor összesített metrika-folyamatában jelenleg elérhető összes platform (azaz automatikusan gyűjtött) metrikák teljes listája. A listát utoljára 2020. március 27-én aktualizálták. Előfordulhat, hogy az ezen időpont után módosított vagy hozzáadott mérőszámok nem jelennek meg. A metrikák listájának programozási célú lekérdezéséhez és eléréséhez használja a [2018-01-01 api-verziót](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
+
+Más metrikák is elérhetők lehetnek a portálon, vagy örökölt API-k használatával. Az Azure virtuális gépeken, a Szolgáltatásfabricben és a Felhőszolgáltatásokban futó vendég operációs rendszer (vendég operációs rendszer) metrikák **nem** szerepelnek itt. Ezeket az operációs rendszeren vagy annak részeként futó egy vagy több ügynökön keresztül kell gyűjteni. Az ügynök metrikáit elküldheti a platform metrikái adatbázisába az [egyéni metrikák](metrics-custom-overview.md) API használatával, amelyek jelenleg nyilvános előzetes verzióban vannak. Ezután feltérképezheti, riasztást adhat, és egyéb módon használhatja a vendég operációs rendszer metrikákat, például a platformmérőket. További információ: [Monitoring Agents Overview](agents-overview.md).    
+
+A metrikák névtér szerint vannak rendezve. A szolgáltatások és a hozzájuk tartozó névterek listáját az [Azure-szolgáltatások erőforrás-szolgáltatói](../../azure-resource-manager/management/azure-services-resource-providers.md)című témakörben találja. 
 
 > [!NOTE]
 > A többdimenziós metrikák diagnosztikai beállításokon keresztül történő küldése jelenleg nem támogatott. A dimenziókkal rendelkező metrikák egybesimított, egydimenziós metrikákként vannak exportálva, összesített dimenzióértékekkel.

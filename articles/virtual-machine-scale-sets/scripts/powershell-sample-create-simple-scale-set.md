@@ -1,19 +1,19 @@
 ---
 title: Azure PowerShell-minták – Hozzon létre egy alapvető virtuálisgép-méretezési csoportot
 description: Ez a parancsfájl létrehoz egy Azure virtuálisgép-méretezési készlet et Windows Server 2016 rendszerű, rdp-n keresztül érhető el.
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: sample
 ms.date: 03/27/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 123ba8ef931113b2c822fb1d02fa51e1d085c90e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 380b3d25bdcd5df5f095b2d87e832bf73422759e
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76276579"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011480"
 ---
 # <a name="create-a-basic-virtual-machine-scale-set-with-powershell"></a>Alapszintű virtuálisgép-méretezési csoport létrehozása a PowerShell-lel
 Ez a szkript létrehoz egy Windows Server 2016 rendszert futtató virtuálisgép-méretezési csoportot. A szkript futtatása után a virtuálisgép-példányokat RDP-kapcsolaton keresztül érheti el.

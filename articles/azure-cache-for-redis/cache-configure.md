@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: f10be8efcd2d8e838b4b5f62310eb405f6ed0158
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3f0de52782694e6cbc8fdb6b55d545191dbbb350
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278739"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010307"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Az Azure Cache beállítása a Redis-hez
 Ez a témakör ismerteti az Azure-gyorsítótár redis-példányok elérhető konfigurációk. Ez a témakör ismerteti az alapértelmezett Redis-kiszolgáló konfigurációaz Azure Cache redis példányok.
@@ -39,21 +39,21 @@ A következő beállításokat az **Erőforrás menü**segítségével tekinthet
     * [Elérési kulcs](#access-keys)
     * [Speciális beállítások](#advanced-settings)
     * [Azure-gyorsítótár a Redis tanácsadószámára](#azure-cache-for-redis-advisor)
-    * [Skála](#scale)
+    * [Méretezés](#scale)
     * [Fürt mérete](#cluster-size)
     * [Adatmegőrzés](#redis-data-persistence)
     * [Frissítések ütemezése](#schedule-updates)
     * [Georeplikáció](#geo-replication)
-    * [Virtuális hálózat](#virtual-network)
+    * [Virtual Network](#virtual-network)
     * [Tűzfal](#firewall)
     * [Tulajdonságok](#properties)
     * [Zárak](#locks)
     * [Automation-szkript](#automation-script)
-* Adminisztráció
+* Felügyelet
     * [Adatok importálása](#importexport)
     * [Adatok exportálása](#importexport)
     * [Újraindítás](#reboot)
-* [Megfigyelő](#monitoring)
+* [Figyelés](#monitoring)
     * [Redis metrikák](#redis-metrics)
     * [Riasztási szabályok](#alert-rules)
     * [Diagnosztika](#diagnostics)
@@ -91,12 +91,12 @@ A **Beállítások** szakasz lehetővé teszi a gyorsítótár következő beál
 * [Elérési kulcs](#access-keys)
 * [Speciális beállítások](#advanced-settings)
 * [Azure-gyorsítótár a Redis tanácsadószámára](#azure-cache-for-redis-advisor)
-* [Skála](#scale)
+* [Méretezés](#scale)
 * [Fürt mérete](#cluster-size)
 * [Adatmegőrzés](#redis-data-persistence)
 * [Frissítések ütemezése](#schedule-updates)
 * [Georeplikáció](#geo-replication)
-* [Virtuális hálózat](#virtual-network)
+* [Virtual Network](#virtual-network)
 * [Tűzfal](#firewall)
 * [Tulajdonságok](#properties)
 * [Zárak](#locks)
@@ -117,10 +117,10 @@ A speciális **beállítások** panelen a következő beállítások vannak konf
 * [Keyspace értesítések (speciális beállítások)](#keyspace-notifications-advanced-settings)
 
 #### <a name="access-ports"></a>Hozzáférési portok
-A nem SSL hozzáférés alapértelmezés szerint le van tiltva az új gyorsítótárakhoz. A nem SSL-port engedélyezéséhez kattintson a **Nem** gombra a **Csak SSL-en keresztüli hozzáférés engedélyezése** elemre a Speciális **beállítások** panelen, majd kattintson a **Mentés gombra.**
+Alapértelmezés szerint a nem TLS/SSL-hozzáférés le van tiltva az új gyorsítótárak esetében. A nem TLS-port engedélyezéséhez kattintson a **Nem** gombra a **Csak SSL-en keresztüli hozzáférés engedélyezése** elemre a Speciális **beállítások** panelen, majd kattintson a **Mentés gombra.**
 
 > [!NOTE]
-> Az Azure Cache for Redis SSL-hozzáférés jelenleg támogatja a TLS 1.0, 1.1 és 1.2-es verzióját, de az 1.0-s és 1.1-es verziók hamarosan megszűnnek.  További részletekért olvassa el [a TLS 1.0 és 1.1 eltávolításával kapcsolatos oldalunkat.](cache-remove-tls-10-11.md)
+> A Redis-hez való TLS-hozzáférés támogatja a TLS 1.0, 1.1 és 1.2-es verzióját, de az 1.0-s és 1.1-es verziók hamarosan megszűnnek.  További részletekért olvassa el [a TLS 1.0 és 1.1 eltávolításával kapcsolatos oldalunkat.](cache-remove-tls-10-11.md)
 
 ![Azure-gyorsítótár a Redis Access portokhoz](./media/cache-configure/redis-cache-access-ports.png)
 
@@ -288,7 +288,7 @@ Kattintson **az Automation-parancsfájl** ra a telepített erőforrások sablonj
 ## <a name="administration-settings"></a>Felügyeleti beállítások
 A **Felügyelet** szakasz beállításai lehetővé teszik a gyorsítótár következő felügyeleti feladatainak elvégzését.
 
-![Adminisztráció](./media/cache-configure/redis-cache-administration.png)
+![Felügyelet](./media/cache-configure/redis-cache-administration.png)
 
 * [Adatok importálása](#importexport)
 * [Adatok exportálása](#importexport)

@@ -2,13 +2,13 @@
 title: Fürtcsomópontok frissítése az Azure által felügyelt lemezek használatához
 description: Az alábbiakban bemutatja, hogyan frissítheti a meglévő Service Fabric-fürtöt az Azure által felügyelt lemezek használatához, a fürt kevés vagy semmilyen állásidő nélkül.
 ms.topic: how-to
-ms.date: 3/01/2020
-ms.openlocfilehash: 2bda5572eda5579bb31c3613b220885f27220d99
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.date: 4/07/2020
+ms.openlocfilehash: 5f4698718a35970e47de2a0ee6d053802c8ef919
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80758052"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991211"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Fürtcsomópontok frissítése az Azure által felügyelt lemezek használatához
 
@@ -27,11 +27,11 @@ Ez a cikk végigvezeti a példafürt elsődleges csomóponttípusának felügyel
 > [!CAUTION]
 > Ezzel az eljárással csak akkor tapasztalhat kimaradást, ha függőségevan a fürt DNS-étől (például a [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)elérésekor). Az [előtér-szolgáltatások architekturális ajánlott eljárása,](https://docs.microsoft.com/azure/architecture/microservices/design/gateway) hogy valamilyen [terheléselosztó](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview) van a csomóponttípusok előtt, hogy a csomópont-csere lehetővé tegye kimaradás nélkül.
 
-Az alábbiakban az Azure Resource Manager [sablonjait és parancsmagjait](https://github.com/erikadoyle/service-fabric-scripts-and-templates/tree/managed-disks/templates/nodetype-upgrade-no-outage) olvashatja, amelyeket a frissítési forgatókönyv befejezéséhez fogunk használni. A sablon módosításait az alábbi [elsődleges csomóponttípus frissített méretezési csoportjának telepítése](#deploy-an-upgraded-scale-set-for-the-primary-node-type) ismerteti.
+Az alábbiakban az Azure Resource Manager [sablonjait és parancsmagjait](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) olvashatja, amelyeket a frissítési forgatókönyv befejezéséhez fogunk használni. A sablon módosításait az alábbi [elsődleges csomóponttípus frissített méretezési csoportjának telepítése](#deploy-an-upgraded-scale-set-for-the-primary-node-type) ismerteti.
 
 ## <a name="set-up-the-test-cluster"></a>A tesztfürt beállítása
 
-Állítsuk be a kezdeti Service Fabric tesztfürt. Először [töltse le](https://github.com/erikadoyle/service-fabric-scripts-and-templates/tree/managed-disks/templates/nodetype-upgrade-no-outage) az Azure resource manager mintasablonokat, amelyeket a forgatókönyv végrehajtásához használunk.
+Állítsuk be a kezdeti Service Fabric tesztfürt. Először [töltse le](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) az Azure resource manager mintasablonokat, amelyeket a forgatókönyv végrehajtásához használunk.
 
 Ezután jelentkezzen be az Azure-fiókjába.
 
@@ -370,6 +370,6 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 
 Lásd még:
 
-* [Minta: Fürtcsomópontok frissítése az Azure által kezelt lemezek használatához](https://github.com/erikadoyle/service-fabric-scripts-and-templates/tree/managed-disks/templates/nodetype-upgrade-no-outage)
+* [Minta: Fürtcsomópontok frissítése az Azure által kezelt lemezek használatához](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage)
 
 * [Vertikális skálázási szempontok](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations)

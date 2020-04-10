@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 17404388b2b6c3fee1c6ab666f7233a66817f642
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe186e2ba8f3cafeb4d186066ba65ae036302f70
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74082872"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010511"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-key-vault-preview"></a>Azure Event Grid eseménysémája az Azure Key Vaulthoz (előzetes verzió)
 
@@ -25,13 +25,13 @@ Az Azure Key Vault-fiók a következő eseménytípusokat hozza létre:
 | Esemény teljes neve | Esemény megjelenítendő neve | Leírás |
 | ---------- | ----------- |---|
 | Microsoft.KeyVault.CertificateNewVersionCreated | Új tanúsítvány létrehozása | Új tanúsítvány vagy új tanúsítványverzió létrehozásakor aktiválódik. |
-| Microsoft.KeyVault.CertificateNearExpiry | Tanúsítvány a lejárat közelében | A tanúsítvány jelenlegi verziójának lejáratakor aktiválódik. (Az alapértelmezett érték 30 nappal a lejárati dátum előtt van.) |
+| Microsoft.KeyVault.CertificateNearExpiry | Tanúsítvány a lejárat közelében | A tanúsítvány jelenlegi verziójának lejáratakor aktiválódik. (Az esemény 30 nappal a lejárati dátum előtt következik be.) |
 | Microsoft.KeyVault.CertificateExpired | A tanúsítvány lejárt | A tanúsítvány lejártakor aktiválódik. |
 | Microsoft.KeyVault.KeyNewVersionCreated | A kulcs új verziója létrehozva | Új kulcs vagy új kulcsverzió létrehozásakor aktiválódik. |
-| Microsoft.KeyVault.KeyLey közelében | Kulcs lejárata közelében | Akkor aktiválódik, amikor egy kulcs aktuális verziója hamarosan lejár. (Az alapértelmezett érték 30 nappal a lejárati dátum előtt van.) |
+| Microsoft.KeyVault.KeyLey közelében | Kulcs lejárata közelében | Akkor aktiválódik, amikor egy kulcs aktuális verziója hamarosan lejár. (Az esemény 30 nappal a lejárati dátum előtt következik be.) |
 | Microsoft.KeyVault.KeyExpired | Lejárt kulcs | Egy kulcs lejártakor aktiválódik. |
 | Microsoft.KeyVault.SecretNewVersionCreated | Titkos új verzió létrehozva | Új titkos vagy új titkos verzió létrehozásakor aktiválódik. |
-| Microsoft.KeyVault.SecretLey közelében | Titkos lejárat közelében | Akkor aktiválódik, amikor egy titkos titok aktuális verziója hamarosan lejár. (Az alapértelmezett érték 30 nappal a lejárati dátum előtt van.) |
+| Microsoft.KeyVault.SecretLey közelében | Titkos lejárat közelében | Akkor aktiválódik, amikor egy titkos titok aktuális verziója hamarosan lejár. (Az esemény 30 nappal a lejárati dátum előtt következik be.) |
 | Microsoft.KeyVault.SecretExpired | Titkos lejárt | Egy titkos titok lejártakor aktiválódik. |
 
 ## <a name="event-examples"></a>Példák eseményre

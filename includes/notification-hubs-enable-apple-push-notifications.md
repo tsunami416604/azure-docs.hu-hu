@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/10/2020
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: bf2596f5a8e287799285f97f3d1be9f3fe10f644
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a9e8574ea2d7222871c7f065383e6c0c62057dd3
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77123141"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "81007831"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>A tanúsítványaláíró kérelemfájl létrehozása
 
@@ -74,11 +74,21 @@ Ha leküldéses értesítéseket szeretne küldeni egy iOS-alkalmazásnak, regis
 
 4. A **Tanúsítványok, azonosítók & profilok** lap **Azonosítók**csoportában keresse meg az imént létrehozott alkalmazásazonosító-sort, és jelölje ki annak sorát az **Alkalmazásazonosító konfigurációjának szerkesztése** képernyő megjelenítéséhez.
 
-5. Görgessen le a **leküldéses értesítések** jelölőnégyzethez, majd válassza a **Konfigurálás** lehetőséget a tanúsítvány létrehozásához.
+## <a name="creating-a-certificate-for-notification-hubs"></a>Tanúsítvány létrehozása az értesítési központokhoz
+Az értesítési központ **APNS-sel**való működéséhez tanúsítvány szükséges. Ez kétféleképpen történhet:
+
+1. Hozzon létre egy **.p12-t,** amely közvetlenül az Értesítési központba tölthető fel.  
+2. Hozzon létre egy **.p8-at,** amely a [tokenalapú hitelesítéshez](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-http2-token-authentification) használható (*az újabb megközelítés*).
+
+Az újabb megközelítés számos előnnyel jár (a tanúsítványok használatával összehasonlítva) az [APNS tokenalapú (HTTP/2) hitelesítésében](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-http2-token-authentification)dokumentált módon. Mindkét megközelítésre azonban mindkét megközelítésre vonatkozóan lépéseket tettek. 
+
+### <a name="option-1-creating-a-p12-push-certificate-that-can-be-uploaded-directly-to-notification-hub"></a>1. LEHETŐSÉG: .p12 leküldéses tanúsítvány létrehozása, amely közvetlenül az Értesítési központba tölthető fel
+
+1. Görgessen le a **leküldéses értesítések** jelölőnégyzethez, majd válassza a **Konfigurálás** lehetőséget a tanúsítvány létrehozásához.
 
     ![Alkalmazásazonosítói oldal szerkesztése](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-edit-appid.png)
 
-6. Megjelenik **az Apple Push Notification service SSL Certificates** ablaka. Válassza a **Tanúsítvány létrehozása** gombot a **Fejlesztési SSL-tanúsítvány** csoportban.
+2. Megjelenik **az Apple Push Notification service SSL Certificates** ablaka. Válassza a **Tanúsítvány létrehozása** gombot a **Fejlesztési SSL-tanúsítvány** csoportban.
 
     ![Tanúsítvány létrehozása az alkalmazásazonosító gomb](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-create-cert.png)
 
@@ -87,9 +97,9 @@ Ha leküldéses értesítéseket szeretne küldeni egy iOS-alkalmazásnak, regis
     > [!NOTE]
     > Ez az oktatóprogram fejlesztési tanúsítványt használ. Ugyanez a folyamat használatos a termelési tanúsítvány regisztrálásához is. Csak arra ügyeljen, hogy ugyanazt a tanúsítványtípust használja az értesítések küldéséhez.
 
-1. Válassza **a Fájl kiválasztása**lehetőséget, keresse meg azt a helyet, ahová az először történt csr fájlt mentette, majd dupla kattintással töltse be a tanúsítvány nevét. Ezután válassza a **Folytatás** elemet.
+3. Válassza **a Fájl kiválasztása**lehetőséget, keresse meg azt a helyet, ahová az először történt csr fájlt mentette, majd dupla kattintással töltse be a tanúsítvány nevét. Ezután válassza a **Folytatás** elemet.
 
-1. Miután a portál létrehozza a tanúsítványt, válassza a **Letöltés** gombot. Mentse a tanúsítványt, és jegyezze meg azt a helyet, ahhoz, ahhoz mentve.
+4. Miután a portál létrehozza a tanúsítványt, válassza a **Letöltés** gombot. Mentse a tanúsítványt, és jegyezze meg azt a helyet, ahhoz, ahhoz mentve.
 
     ![Előállított tanúsítványok letöltési oldala](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-download-cert.png)
 
@@ -100,14 +110,14 @@ Ha leküldéses értesítéseket szeretne küldeni egy iOS-alkalmazásnak, regis
     > [!NOTE]
     > Alapértelmezés szerint a letöltött fejlesztési tanúsítvány neve **aps_development.cer**.
 
-1. Kattintson duplán a letöltött **aps_development.cer** leküldéses tanúsítványra. Ez a művelet telepíti az új tanúsítványt a kulcsláncba, ahogy az alábbi képen látható:
+5. Kattintson duplán a letöltött **aps_development.cer** leküldéses tanúsítványra. Ez a művelet telepíti az új tanúsítványt a kulcsláncba, ahogy az alábbi képen látható:
 
     ![Új tanúsítvány a Kulcskarika-elérés tanúsítványlistájában](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-in-keychain.png)
 
     > [!NOTE]
     > Bár a tanúsítványban lévő név eltérő lehet, a név előtaggal lesz rögzítve az **Apple Development iOS leküldéses szolgáltatásaival.**
 
-1. A kulcslánc-hozzáférési oldalon kattintson a jobb egérgombbal az új leküldéses tanúsítványra, melyet a **Certificates** (Tanúsítványok) kategóriában létrehozott. Válassza **az Exportálás**lehetőséget, nevezze el a fájlt, jelölje ki a **.p12** formátumot, majd kattintson a **Mentés gombra.**
+6. A kulcslánc-hozzáférési oldalon kattintson a jobb egérgombbal az új leküldéses tanúsítványra, melyet a **Certificates** (Tanúsítványok) kategóriában létrehozott. Válassza **az Exportálás**lehetőséget, nevezze el a fájlt, jelölje ki a **.p12** formátumot, majd kattintson a **Mentés gombra.**
 
     ![Tanúsítványok exportálása p12 formátumban](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-export-cert-p12.png)
 
@@ -115,6 +125,45 @@ Ha leküldéses értesítéseket szeretne küldeni egy iOS-alkalmazásnak, regis
 
     > [!NOTE]
     > A .p12 fájlneve és helye eltérhet az oktatóanyagban láthatótól.
+
+### <a name="option-2-creating-a-p8-certificate-that-can-be-used-for-token-based-authentication"></a>2. LEHETŐSÉG: .p8 tanúsítvány létrehozása, amely tokenalapú hitelesítéshez használható
+
+1. Jegyezze fel a következő részleteket:
+
+    - **Alkalmazásazonosító előtag** (ez egy **csapatazonosító)**
+    - **Csomagazonosító**
+    
+2. A **Tanúsítványok, azonosítók & profilok**alkalmazásban kattintson a **Kulcsok**gombra.
+
+   > [!NOTE]
+   > Ha már van konfigurálva az **APNS-hez**konfigurált kulcs, akkor újra használhatja a .p8 tanúsítványt, amelyet közvetlenül a létrehozása után töltött le. Ha igen, figyelmen **3** kívül hagyhatja a **3-5.**
+
+3. Új **+** kulcs létrehozásához kattintson a gombra (vagy a **Billentyű létrehozása** gombra).
+4. Adja meg a megfelelő **kulcsnév** értéket, majd ellenőrizze az **Apple Leküldéses értesítések szolgáltatás (APN)** lehetőséget, majd kattintson a **Folytatás**gombra, majd a következő képernyőn a **Regisztráció** gombra.
+5. Kattintson a **Letöltés gombra,** majd helyezze át a **.p8** fájlt *(AuthKey_* előtaggal) egy biztonságos helyi könyvtárba, majd kattintson a **Kész**gombra.
+
+   > [!NOTE] 
+   > Ügyeljen arra, hogy a .p8 fájlt biztonságos helyen tartsa (és mentse a biztonsági mentést). A kulcs letöltése után nem tölthető le újra, mert a kiszolgáló példánya eltávolításra kerül.
+  
+6. A **Kulcsok**oldalon kattintson az imént létrehozott kulcsra (vagy egy meglévő kulcsra, ha azt választotta helyette).
+7. Jegyezze fel a **kulcsazonosító** értékét.
+8. Nyissa meg a .p8 tanúsítványt egy megfelelő alkalmazással, például a [**Visual Studio Code-ban,**](https://code.visualstudio.com) majd jegyezze fel a kulcsértéket. Ez az érték a **-----BEGIN PRIVATE KEY-----** és **-----END PRIVATE KEY----- között.**
+
+    ```
+    -----BEGIN PRIVATE KEY-----
+    <key_value>
+    -----END PRIVATE KEY-----
+    ```
+
+    > [!NOTE]
+    > Ez az értesítési **központ**konfigurálásához használt **tokenérték.** 
+
+A lépések végén a következő információkkal kell rendelkeznie az [értesítési központ konfigurálása az APN-adatokkal című](#configure-your-notification-hub-with-apns-information)részben:
+
+- **Csapatazonosító** (lásd az 1. lépést)
+- **Csomagazonosító** (lásd az 1. lépést)
+- **Kulcsazonosító** (lásd a 7. lépést)
+- **Token érték,** azaz a .p8 kulcs értéke (lásd a 8. lépést)
 
 ## <a name="create-a-provisioning-profile-for-the-app"></a>Üzembe helyezési profil létrehozása az alkalmazáshoz
 
@@ -153,13 +202,18 @@ Ha leküldéses értesítéseket szeretne küldeni egy iOS-alkalmazásnak, regis
 
 ## <a name="create-a-notification-hub"></a>Értesítési központ létrehozása
 
-Ebben a szakaszban létrehoz egy értesítési központot, és konfigurálja a hitelesítést az APN-ekkel a korábban létrehozott .p12 leküldéses tanúsítvány használatával. Ha már létrehozott értesítési központot szeretne használni, ugorjon az 5.
+Ebben a szakaszban létrehoz egy értesítési központot, és konfigurálja a hitelesítést az APN-ekkel a .p12 leküldéses tanúsítvány vagy a token alapú hitelesítés használatával. Ha már létrehozott értesítési központot szeretne használni, ugorjon az 5.
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](notification-hubs-portal-create-new-hub.md)]
 
 ## <a name="configure-your-notification-hub-with-apns-information"></a>Az értesítési központ konfigurálása APN-adatokkal
 
-1. Az **Értesítési szolgáltatások csoportban**válassza az **Apple (APNS) lehetőséget.**
+Az **Értesítési szolgáltatások csoportban**válassza az **Apple (APNS)** lehetőséget, majd kövesse a megfelelő lépéseket a korábban az [Értesítési központokhoz tanúsítvány létrehozása](#creating-a-certificate-for-notification-hubs) szakaszban kiválasztott módszer alapján.  
+
+> [!NOTE]
+> Csak akkor használja az Production for Application mode **(Éles** **alkalmazáshoz) módot,** ha leküldéses értesítéseket szeretne küldeni azoknak a felhasználóknak, akik az áruházból vásárolták az alkalmazást.
+
+### <a name="option-1-using-a-p12-push-certificate"></a>1. LEHETŐSÉG: .p12 leküldéses tanúsítvány használata
 
 1. Válassza a **Tanúsítvány** elemet.
 
@@ -169,10 +223,23 @@ Ebben a szakaszban létrehoz egy értesítési központot, és konfigurálja a h
 
 1. Ha szükséges, adja meg a helyes jelszót.
 
-1. Válassza a **Védőfal** módot. Az **Éles** beállítást kizárólag akkor használja, ha olyan felhasználóknak szeretne leküldéses értesítéseket küldeni, akik megvásárolták az alkalmazást az áruházból.
+1. Válassza a **Védőfal** módot.
 
     ![APNs-tanúsítvány konfigurálása az Azure Portalon](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-apple-config-cert.png)
 
 1. Kattintson a **Mentés** gombra.
+
+### <a name="option-2-using-token-based-authentication"></a>2. LEHETŐSÉG: Token alapú hitelesítés használata
+
+1. Válassza a **Token lehetőséget.**
+1. Adja meg a korábban beszerzett alábbi értékeket:
+
+    - **Kulcsazonosító**
+    - **Csomagazonosító**
+    - **Csapatazonosító**
+    - **Token** 
+
+1. **Homokozó** kiválasztása
+1. Kattintson a **Mentés** gombra. 
 
 Most konfigurálta az értesítési központot az APN-ekkel. Az alkalmazás regisztrálásához és leküldéses értesítések küldéséhez is rendelkezik kapcsolati karakterláncokkal.

@@ -1,18 +1,18 @@
 ---
 title: Tárolt eljárások, eseményindítók és UDF-ek munkája az Azure Cosmos DB-ban
 description: Ez a cikk bemutatja a fogalmakat, például a tárolt eljárások, eseményindítók és a felhasználó által definiált függvények az Azure Cosmos DB.
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.author: mjbrown
+ms.date: 04/09/2020
+ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 23a14e7590eca6f63c92acdf6336ffaef8b54381
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 13256377b8a8aaebf59196df57eef67d3b960cb8
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065896"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010545"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Tárolt eljárások, eseményindítók és felhasználó által definiált függvények
 
@@ -69,7 +69,7 @@ A tárolt eljárások és eseményindítók mindig egy Azure Cosmos-tároló els
 
 Minden Azure Cosmos DB-műveletnek a megadott időmeghagyási időtartamon belül kell befejeződnie. Ez a megkötés a JavaScript-függvényekre vonatkozik – a tárolt eljárásokra, az eseményindítókra és a felhasználó által definiált függvényekre. Ha egy művelet nem fejeződik be az adott határidőn belül, a tranzakció visszalesz állítva.
 
-Biztosíthatja, hogy a JavaScript-függvények a megadott határidőn belül befejeződjenek, vagy megvalósíthat egy folytatás-alapú modellt a kötegelt/újravégrehajtás folytatásához. A tárolt eljárások és a határidők kezelésére szolgáló eseményindítók fejlesztésének egyszerűsítése érdekében az Azure Cosmos tárolóban található összes függvény (például elemek létrehozása, olvasása, frissítése és törlése) egy logikai értéket ad vissza, amely azt jelzi, hogy a művelet Teljes. Ha ez az érték hamis, azt jelzi, hogy az eljárásnak le kell zárnia a végrehajtást, mert a parancsfájl több időt vagy kiépített átviteli értéket fogyaszt, mint a beállított érték. Az első el nem fogadott tárművelet előtt várólistára helyezett műveletek garantáltan befejeződnek, ha a tárolt eljárás időben befejeződik, és nem áll sorba több kérésre. Így a műveleteket egyenként kell várólistára tenni a JavaScript visszahívási konvenciójának használatával a parancsfájl vezérlési folyamatának kezeléséhez. Mivel a parancsfájlok végrehajtása kiszolgálóoldali környezetben történik, szigorúan szabályozzák őket. Parancsfájlok, amelyek ismételten megsértik a végrehajtási határokat lehet megjelölni inaktív, és nem hajtható végre, és újra kell létrehozni, hogy tartsák tiszteletben a végrehajtási határokat.
+Biztosíthatja, hogy a JavaScript-függvények a megadott határidőn belül befejeződjenek, vagy megvalósíthat egy folytatás-alapú modellt a kötegelt/újravégrehajtás folytatásához. A tárolt eljárások és a határidők kezelésére szolgáló eseményindítók fejlesztésének egyszerűsítése érdekében az Azure Cosmos tárolóban található összes függvény (például elemek létrehozása, olvasása, frissítése és törlése) egy logikai értéket ad vissza, amely azt jelzi, hogy a művelet befejeződik-e. Ha ez az érték hamis, azt jelzi, hogy az eljárásnak le kell zárnia a végrehajtást, mert a parancsfájl több időt vagy kiépített átviteli értéket fogyaszt, mint a beállított érték. Az első el nem fogadott tárművelet előtt várólistára helyezett műveletek garantáltan befejeződnek, ha a tárolt eljárás időben befejeződik, és nem áll sorba több kérésre. Így a műveleteket egyenként kell várólistára tenni a JavaScript visszahívási konvenciójának használatával a parancsfájl vezérlési folyamatának kezeléséhez. Mivel a parancsfájlok végrehajtása kiszolgálóoldali környezetben történik, szigorúan szabályozzák őket. Parancsfájlok, amelyek ismételten megsértik a végrehajtási határokat lehet megjelölni inaktív, és nem hajtható végre, és újra kell létrehozni, hogy tartsák tiszteletben a végrehajtási határokat.
 
 A JavaScript-függvények a [kiosztott átviteli kapacitás](request-units.md)hatálya alá is tartoznak. JavaScript-függvények potenciálisan a végén használ nagy számú kérelem egységek rövid időn belül, és lehet, hogy a sebesség korlátozott, ha a kiosztott átviteli kapacitás korlát elérése. Fontos megjegyezni, hogy a parancsfájlok az adatbázis-műveletek végrehajtása során az átviteli kapacitáson kívül további átviteli kapacitást használnak fel, bár ezek az adatbázis-műveletek valamivel olcsóbbak, mint az ügyféltől származó azonos műveletek végrehajtása.
 
@@ -90,7 +90,7 @@ Az elő-eseményindítókhoz hasonlóan az eseményindítók is társítva vanna
 
 ## <a name="user-defined-functions"></a><a id="udfs"></a>Felhasználó által meghatározott függvények
 
-A felhasználó által definiált függvények (UDF-ek) az SQL API lekérdezési nyelvének szintaxisának kiterjesztésére és az egyéni üzleti logika egyszerű megvalósítására szolgálnak. Csak lekérdezéseken belül hívhatók meg. Az UDF-ek nem férnek hozzá a környezeti objektumhoz, és csak a JavaScript-alapú számítási ként használhatók. Ezért udf-ek másodlagos replikákon futtathatók. Példák: [A felhasználó által definiált függvények írása](how-to-write-stored-procedures-triggers-udfs.md#udfs) című cikkben.
+[A felhasználó által definiált függvények](sql-query-udfs.md) (UDF-ek) az SQL API lekérdezési nyelvének szintaxisának kiterjesztésére és az egyéni üzleti logika egyszerű megvalósítására szolgálnak. Csak lekérdezéseken belül hívhatók meg. Az UDF-ek nem férnek hozzá a környezeti objektumhoz, és csak a JavaScript-alapú számítási ként használhatók. Ezért udf-ek másodlagos replikákon futtathatók. Példák: [A felhasználó által definiált függvények írása](how-to-write-stored-procedures-triggers-udfs.md#udfs) című cikkben.
 
 ## <a name="javascript-language-integrated-query-api"></a><a id="jsqueryapi"></a>JavaScript nyelvbe integrált lekérdezési API
 

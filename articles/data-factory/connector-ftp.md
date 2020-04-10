@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/02/2020
 ms.author: jingwang
-ms.openlocfilehash: b215531fdc1a1bb07b33c427623d5cd4f5f8219a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc81e66e609400c6558f00ee957ccaee715bd7fa
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252482"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991637"
 ---
 # <a name="copy-data-from-ftp-server-by-using-azure-data-factory"></a>Adatok másolása FTP-kiszolgálóról az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
@@ -62,7 +62,7 @@ Az FTP-kapcsolattal összekapcsolt szolgáltatás a következő tulajdonságokat
 | gazda | Adja meg az FTP-kiszolgáló nevét vagy IP-címét. | Igen |
 | port | Adja meg azt a portot, amelyen az FTP-kiszolgáló figyel.<br/>Az engedélyezett értékek a következők: egész szám, az alapértelmezett érték **21**. | Nem |
 | enableSsl | Adja meg, hogy az FTP-t SSL/TLS-csatornán keresztül szeretné-e használni.<br/>Az engedélyezett értékek a következők: **true** (default), **false**. | Nem |
-| enableServerCertificateValidation | Adja meg, hogy engedélyezi-e a kiszolgáló SSL-tanúsítványának érvényesítését, ha SSL/TLS csatornán keresztül használ FTP-csatornát.<br/>Az engedélyezett értékek a következők: **true** (default), **false**. | Nem |
+| enableServerCertificateValidation | Adja meg, hogy engedélyezi-e a kiszolgáló TLS/SSL tanúsítványának érvényesítését, ha SSL/TLS csatornán keresztül imkeresztül i.<br/>Az engedélyezett értékek a következők: **true** (default), **false**. | Nem |
 | authenticationType | Adja meg a hitelesítés típusát.<br/>Az engedélyezett értékek a következők: **Alap ,** **Névtelen** | Igen |
 | userName (Felhasználónév) | Adja meg azt a felhasználót, akinek hozzáférése van az FTP-kiszolgálóhoz. | Nem |
 | jelszó | Adja meg a felhasználó jelszavát (felhasználónév). Jelölje meg ezt a mezőt SecureStringként a Data Factory biztonságos tárolásához, vagy [hivatkozzon az Azure Key Vaultban tárolt titkos fájlokra.](store-credentials-in-key-vault.md) | Nem |

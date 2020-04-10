@@ -11,12 +11,12 @@ ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 128b4203d34b99df8363ef19783baa4a7b608aa5
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 654aeddbb305124ea00a883dbef9d8b5ad585a36
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631313"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990786"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-sql-analytics"></a>Tervezési útmutató a replikált táblák SQL Analytics szolgáltatásban való használatához
 
@@ -124,7 +124,7 @@ WHERE d.FiscalYear = 2004
 
 ## <a name="performance-considerations-for-modifying-replicated-tables"></a>A replikált táblák módosításával kapcsolatos teljesítményszempontok
 
-Az SQL Analytics a tábla fő verziójának karbantartásával valósítja meg a replikált táblát. A főverziót minden számítási csomóponton egy terjesztési adatbázisba másolja. Változás esetén az SQL Analytics először frissíti a főtáblát. Ezután újraépíti a táblákat az egyes számítási csomópontokon. A replikált tábla újraépítése magában foglalja a tábla másolása minden számítási csomópont, majd az indexek létrehozása.  Egy DW400 replikált táblája például 5 másolatot ad az adatokból.  Egy fő példány és egy teljes másolat minden számítási csomóponton.  Az összes adat terjesztési adatbázisokban tárolódik. Az SQL Analytics ezt a modellt használja a gyorsabb adatmódosítási utasítások és a rugalmas skálázási műveletek támogatásához.
+Az SQL Analytics a tábla fő verziójának karbantartásával valósítja meg a replikált táblát. A fő verziót az egyes számítási csomópontok első terjesztési adatbázisába másolja. Változás esetén az SQL Analytics először frissíti a fő verziót, majd újraépíti az egyes számítási csomópontok tábláit. A replikált tábla újraépítése magában foglalja a tábla másolása minden számítási csomópont, majd az indexek létrehozása.  Egy DW2000c replikált táblája például 5 példányt ad az adatokból.  Egy fő példány és egy teljes másolat minden számítási csomóponton.  Az összes adat terjesztési adatbázisokban tárolódik. Az SQL Analytics ezt a modellt használja a gyorsabb adatmódosítási utasítások és a rugalmas skálázási műveletek támogatásához.
 
 Újraépítésre van szükség a következő után:
 

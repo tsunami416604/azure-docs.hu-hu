@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 04/09/2020
 ms.author: jingwang
-ms.openlocfilehash: f2e70a7b900ad918cda05ce34204e2de1e6e67ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 47d26ad452b8494e591ee919076e5ade8bf19cd7
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75830190"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011395"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Tagolt szövegformátum az Azure Data Factoryban
 
@@ -30,14 +30,14 @@ Az adatkészletek definiálására rendelkezésre álló szakaszok és tulajdons
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | Az adatkészlet típustulajdonságát **TaglimitedText (Tagolt szöveg)** típusú tulajdonságra kell állítani. | Igen      |
 | location         | A fájl(ok) helybeállításai. Minden fájlalapú összekötő saját helytípussal és `location`támogatott tulajdonságokkal rendelkezik a csoportban.  | Igen      |
-| columnDelimiter  | A fájl oszlopainak szétválasztására használt karakter(ek). Jelenleg a többkarakteres határolóbeállítás csak az adatfolyam leképezéséhez támogatott, a másolási tevékenységhez nem. <br>Az alapértelmezett érték **a `,`vessző **, Ha az oszlophatároló üres karakterláncként van definiálva, ami azt jelenti, hogy nincs határolójel, a teljes sor egyetlen oszlopként lesz felmérve. | Nem       |
-| rowDelimiter     | A fájl sorainak szétválasztására használt egyetlen vagy "\r\n" karakter.<br>Az alapértelmezett érték a következő értékek bármelyike az **olvasáskor: ["\r\n", "\r", "\n"]** és **"\n" vagy "\r\n" íráskor** az adatfolyam és a Másolási tevékenység leképezésével. <br>Ha `rowDelimiter` nincs határolójel (üres karakterlánc), `columnDelimiter` akkor a kell állítani, mint nem határoló (üres karakterlánc) is, ami azt jelenti, hogy a teljes tartalmat egyetlen értékként kell kezelni. | Nem       |
+| columnDelimiter  | A fájl oszlopainak szétválasztására használt karakter(ek). <br>Az alapértelmezett érték **vessző `,` **. Ha az oszlophatároló üres karakterláncként van definiálva, ami azt jelenti, hogy nincs határolójel, a teljes sor egyetlen oszlopként lesz definiálva.<br>Jelenleg az oszlophatároló üres karakterláncként vagy többkarakterként csak az adatfolyam leképezéséhez támogatott, a másolási tevékenységhez nem.  | Nem       |
+| rowDelimiter     | A fájl sorainak szétválasztására használt egyetlen vagy "\r\n" karakter. <br>Az alapértelmezett érték a következő értékek bármelyike az **olvasáskor: ["\r\n", "\r", "\n"]** és **"\n" vagy "\r\n" íráskor** az adatfolyam és a Másolási tevékenység leképezésével. <br>Ha a sorhatároló nincs határolójel (üres karakterlánc), az oszlophatárolót nem határolójelként (üres karakterláncként) kell beállítani, ami azt jelenti, hogy a teljes tartalmat egyetlen értékként kell kezelni.<br>Jelenleg a sorhatároló üres karakterláncként csak az adatfolyam leképezéséhez támogatott, a másolási tevékenységhez nem. | Nem       |
 | quoteChar        | Az oszlopértékeket idéző egyetlen karakter, ha oszlophatárolót tartalmaz. <br>Az alapértelmezett érték **dupla idézőjelek** `"`. <br>Az adatfolyam `quoteChar` leképezéséhez nem lehet üres karakterlánc. <br>A Másolási `quoteChar` tevékenység esetében, ha üres karakterláncként van definiálva, az azt `escapeChar` jelenti, hogy nincs idézőkarakter, és az oszlopérték nem kerüli el a programot, és az oszlophatároló és önmaga elől való kikerülésre szolgál. | Nem       |
 | escapeChar       | Az idézett értéken belüli idézőjelek elől menekülő egyetlen karakter.<br>Az alapértelmezett érték a **fordított perjel `\` **. <br>Az adatfolyam `escapeChar` leképezéséhez nem lehet üres karakterlánc. <br/>A Másolás i `escapeChar` tevékenység esetében, ha `quoteChar` üres karakterláncként van definiálva, akkor a karakterláncot is üres karakterláncként kell beállítani, ebben az esetben győződjön meg arról, hogy az összes oszlopérték nem tartalmaz határolót. | Nem       |
 | firstRowAsHeader | Itt adható meg, hogy az első sort oszlopnevekkel ellátott fejlécsorként kezelje/adja-e meg.<br>Az engedélyezett értékek **igazak** és **hamisak** (alapértelmezett). | Nem       |
 | nullValue        | A null érték karakterlánc-ábrázolását adja meg. <br>Az alapértelmezett érték üres **karakterlánc**. | Nem       |
-| encodingName     | A tesztfájlok olvasásához/írásához használt kódolási típus. <br>Az engedélyezett értékek a következők: "UTF-8", "UTF-16", "UTF-16BE", "UTF-32", "UTF-32BE", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-KR", "GB2312", "GB18030", "JOHAB", "SHIFT-JIS", "CP875", "CP866", "IBM00858", "IBM037", "IBM273", "IBM437", "IBM437", "IBM437", "IBM437", "IBM437", "IBM430", "IBM400", IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "IBM861", "IBM863", "IBM864", "IBM865", "IBM869", "IBM870", "IBM01140", "IBM01141", "IBM01142", "IBM01143", "IBM01144", "IBM01145", "IBM01146", "IBM01148", IBM "01149" , "ISO-2022-JP", "ISO-2022-KR", "ISO-8859-1", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859-6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "ISO-8859-13", "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", " WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255", "WINDOWS-1256", "WINDOWS-1257", "WINDOWS-1258".<br>Megjegyzés: Az adatfolyam leképezése nem támogatja az UTF-7 kódolást. | Nem       |
-| tömörítési kodek | A szövegfájlok olvasására/írására használt tömörítési kodek. <br>Megengedett **értékek: bzip2**, **gzip,** **deflate,** **ZipDeflate**, **lendületes,** vagy **lz4**. a fájl mentésekor. <br>Megjegyzés: jelenleg a másolási tevékenység nem támogatja a "lendületes" & az "lz4"-et, és az adatfolyam leképezése nem támogatja a "ZipDeflate" (ZipDeflate) szöveget. <br>Megjegyzés: Ha másolási tevékenységet használ a ZipDeflate fájl(ok) kibontásához és a fájlalapú `<path specified in dataset>/<folder named as source zip file>/`fogadó adattárba való íráshoz, a fájlok kibontása a következő mappába kerül: . | Nem       |
+| encodingName     | A tesztfájlok olvasásához/írásához használt kódolási típus. <br>Allowed values are as follows: "UTF-8", "UTF-16", "UTF-16BE", "UTF-32", "UTF-32BE", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-KR", "GB2312", "GB18030", "JOHAB", "SHIFT-JIS", "CP875", "CP866", "IBM00858", "IBM037", "IBM273", "IBM437", "IBM500", "IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "IBM861", "IBM863", "IBM864", "IBM865", "IBM869", "IBM870", "IBM01140", "IBM01141", "IBM01142", "IBM01143", "IBM01144", "IBM01145", "IBM01146", "IBM01147", "IBM01148", "IBM01149", "ISO-2022-JP", "ISO-2022-KR", "ISO-8859-1", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859-6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "ISO-8859-13" , "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", "WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255", "WINDOWS-1256", "WINDOWS-1257", "WINDOWS-1258".<br>Megjegyzés: Az adatfolyam leképezése nem támogatja az UTF-7 kódolást. | Nem       |
+| tömörítési kodek | A szövegfájlok olvasására/írására használt tömörítési kodek. <br>Megengedett **értékek: bzip2**, **gzip,** **deflate,** **ZipDeflate**, **lendületes,** vagy **lz4**. Az alapértelmezett érték nincs tömörítve. <br>**Megjegyzés:** jelenleg a másolási tevékenység nem támogatja a "lendületes" & az "lz4"-et, és az adatfolyam leképezése nem támogatja a "ZipDeflate" -t. <br>**Megjegyzés:** Ha másolási tevékenységet használ a ZipDeflate fájl(ok) kibontásához és a fájlalapú `<path specified in dataset>/<folder named as source zip file>/`fogadó adattárba való íráshoz, a fájlok kibontása a következő mappába kerül: . | Nem       |
 | tömörítésI szint | A tömörítési arány. <br>Az engedélyezett értékek **az Optimális** vagy **a Leggyorsabb**.<br>- **Leggyorsabb:** A tömörítési műveletnek a lehető leggyorsabban el kell végeznie, még akkor is, ha az eredményül kapott fájl nincs optimálisan tömörítve.<br>- **Optimális**: A tömörítési műveletet optimálisan kell tömöríteni, még akkor is, ha a művelet hosszabb időt vesz igénybe. További információt a [Tömörítési szint témakörben](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) talál. | Nem       |
 
 Az alábbiakban egy példa látható az Azure Blob Storage tagolt szöveges adatkészletére:
@@ -60,6 +60,7 @@ Az alábbiakban egy példa látható az Azure Blob Storage tagolt szöveges adat
             },
             "columnDelimiter": ",",
             "quoteChar": "\"",
+            "escapeChar": "\"",
             "firstRowAsHeader": true,
             "compressionCodec": "gzip"
         }

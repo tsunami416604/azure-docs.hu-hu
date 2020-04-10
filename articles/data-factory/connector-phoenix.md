@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: d8f63984a5ad3717b470657aba02224794122cd5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6a2038663c1d18316bb3962b70516b6e544cb072
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930836"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991824"
 ---
 # <a name="copy-data-from-phoenix-using-azure-data-factory"></a>Adatok másolása a Phoenixből az Azure Data Factory használatával 
 
@@ -56,10 +56,10 @@ A phoenixi csatolt szolgáltatás a következő tulajdonságokat támogatja:
 | authenticationType | A Phoenix-kiszolgálóhoz való csatlakozáshoz használt hitelesítési mechanizmus. <br/>Engedélyezett értékek: **Névtelen**, **Felhasználónév és jelszó**, **WindowsAzureHDInsightService** | Igen |
 | felhasználónév | A Phoenix kiszolgálóhoz való csatlakozáshoz használt felhasználónév.  | Nem |
 | jelszó | A felhasználónévnek megfelelő jelszó. Jelölje meg ezt a mezőt SecureStringként a Data Factory biztonságos tárolásához, vagy [hivatkozzon az Azure Key Vaultban tárolt titkos fájlokra.](store-credentials-in-key-vault.md) | Nem |
-| enableSsl | Itt adható meg, hogy a kiszolgálóval létesített kapcsolatok SSL-rel titkosítva legyenek-e. Az alapértelmezett érték a hamis.  | Nem |
-| trustedCertPath | A megbízható hitelesítésszolgáltatói tanúsítványokat tartalmazó .pem fájl teljes elérési útja a kiszolgáló SSL-kapcsolaton keresztüli ellenőrzéséhez. Ez a tulajdonság csak akkor állítható be, ha ssl-t használ saját üzemeltetésű infravörös rendszeren. Az alapértelmezett érték az infravörös kapcsolattal telepített cacerts.pem fájl.  | Nem |
+| enableSsl | Itt adható meg, hogy a kiszolgálóval létesített kapcsolatok titkosítva legyenek-e a TLS használatával. Az alapértelmezett érték a hamis.  | Nem |
+| trustedCertPath | A megbízható hitelesítésszolgáltatói tanúsítványokat tartalmazó .pem fájl teljes elérési útja a kiszolgáló TLS-en való csatlakozáskor történő ellenőrzéséhez. Ez a tulajdonság csak akkor állítható be, ha a TLS-t saját üzemeltetésű infravörös rendszeren használja. Az alapértelmezett érték az infravörös kapcsolattal telepített cacerts.pem fájl.  | Nem |
 | useSystemTrustStore | Itt adható meg, hogy a rendszermegbízhatósági tárolóból vagy egy megadott PEM-fájlból származó hitelesítésszolgáltatói tanúsítványt használjon.Specifies whether to use a ca certificate from the system trust store or from a specified PEM file. Az alapértelmezett érték a hamis.  | Nem |
-| allowHostNameCNMismatch | Itt adható meg, hogy az SSL-kapcsolaton keresztül imitomárk hozad-e a kiszolgáló állomásnevének megfelelő hitelesítésszolgáltató által kiállított SSL-tanúsítványnevet. Az alapértelmezett érték a hamis.  | Nem |
+| allowHostNameCNMismatch | Itt adható meg, hogy a Hitelesítésszolgáltató által kibocsátott TLS/SSL-tanúsítvány név megegyezzen-e a kiszolgáló állomásnevével, amikor TLS-en keresztül csatlakozik. Az alapértelmezett érték a hamis.  | Nem |
 | allowSelfSignedServerCert | Itt adható meg, hogy engedélyezze-e az önaláírt tanúsítványokat a kiszolgálóról. Az alapértelmezett érték a hamis.  | Nem |
 | connectVia | Az adattárhoz való csatlakozáshoz használandó [integrációs futásidő.](concepts-integration-runtime.md) További információ az [Előfeltételek](#prerequisites) szakaszból. Ha nincs megadva, az alapértelmezett Azure-integrációs runtime-ot használja. |Nem |
 

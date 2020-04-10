@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 3e0dd6e0bb81aef340dc83288e6e5c0af0bf11c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ca913a4c197e04e20c962c4a4a7a1e479a3cdf92
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75867372"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990888"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Adatok másolása REST-végpontról az Azure Data Factory használatával
 
@@ -60,7 +60,7 @@ A REST-csatolt szolgáltatás a következő tulajdonságokat támogatja:
 |:--- |:--- |:--- |
 | type | A **típustulajdonságot** **RestService**tulajdonságra kell állítani. | Igen |
 | url | A REST-szolgáltatás alap URL-címe. | Igen |
-| enableServerCertificateValidation | A kiszolgálóoldali SSL-tanúsítvány ellenőrzése a végponthoz való csatlakozáskor. | Nem<br /> (az alapértelmezett **igaz)** |
+| enableServerCertificateValidation | A kiszolgálóoldali TLS/SSL-tanúsítvány ellenőrzése a végponthoz való csatlakozáskor. | Nem<br /> (az alapértelmezett **igaz)** |
 | authenticationType | A REST-szolgáltatáshoz való csatlakozáshoz használt hitelesítés típusa. Az engedélyezett értékek: **Névtelen**, **Alap**, **AadServicePrincipal** és **ManagedServiceIdentity**. További tulajdonságokról és példákról az alábbi megfelelő szakaszokban olvashat. | Igen |
 | connectVia | Az adattárhoz való csatlakozáshoz használt [integrációs futásidő.](concepts-integration-runtime.md) További információ az [Előfeltételek](#prerequisites) szakaszból. Ha nincs megadva, ez a tulajdonság az alapértelmezett Azure-integrációs futásidőt használja. |Nem |
 

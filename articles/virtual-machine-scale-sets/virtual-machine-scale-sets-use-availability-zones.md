@@ -1,20 +1,20 @@
 ---
 title: Rendelkezésre állási zónákat használó Azure-méretezési csoport létrehozása
 description: Megtudhatja, hogyan hozhat létre azure-beli virtuálisgép-méretezési csoportokat, amelyek rendelkezésre állási zónákat használnak a kimaradások elleni megnövekedett redundancia érdekében
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.author: cynthn
-ms.openlocfilehash: 11695eb889a10dc689b00399a37382a3b9772eae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: jushiman
+ms.openlocfilehash: c8795f46e47b2ab43898f6f436b9ee6026a22fa7
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76274414"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011565"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Rendelkezésre állási zónákat használó virtuálisgép-méretezési csoport létrehozása
 
@@ -39,7 +39,7 @@ Méretezési csoport telepítésekor is lehetősége van arra, hogy egyetlen [el
 
 ### <a name="zone-balancing"></a>Zóna kiegyensúlyozása
 
-Végül a több zónában üzembe helyezett méretezési csoportok esetében lehetősége van a "legjobb erőkifejtési zóna egyensúlya" vagy a "szigorú zónaegyensúly" kiválasztására is. A méretezési készlet akkor minősül "kiegyensúlyozottnak", ha minden\\zónában azonos számú virtuális gép vagy + - 1 virtuális gép van az összes többi zónában a méretezési készlethez. Példa:
+Végül a több zónában üzembe helyezett méretezési csoportok esetében lehetősége van a "legjobb erőkifejtési zóna egyensúlya" vagy a "szigorú zónaegyensúly" kiválasztására is. A méretezési készlet akkor minősül "kiegyensúlyozottnak", ha minden\\zónában azonos számú virtuális gép vagy + - 1 virtuális gép van az összes többi zónában a méretezési készlethez. Például:
 
 - Az 1., 3-as zónában lévő 2 virtuális gépből és a 3-as zónában lévő 3 virtuális gépekből álló méretezési készlet kiegyensúlyozottnak minősül. Csak egy zóna egy másik virtuális gép száma, és ez csak 1 kevesebb, mint a többi zónában. 
 - Az 1., a 2. Az 1-es zónában 2-vel kevesebb virtuális gép található, mint a 2.
@@ -58,7 +58,7 @@ Amikor egy méretezési csoportot hoz létre egy zónában, szabályozhatja, hog
 
 A rendelkezésre állási zónák használatához a méretezési csoport hozlétre kell egy [támogatott Azure-régióban.](../availability-zones/az-overview.md#services-support-by-region) Létrehozhat egy méretezési csoportot, amely a rendelkezésre állási zónákat használja az alábbi módszerek egyikével:
 
-- [Azure-portál](#use-the-azure-portal)
+- [Azure Portal](#use-the-azure-portal)
 - Azure CLI
 - [Azure PowerShell](#use-azure-powershell)
 - [Azure Resource Manager-sablonok](#use-azure-resource-manager-templates)

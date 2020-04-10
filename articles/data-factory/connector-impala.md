@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: f465fe4bb69bc5ae81db6c78df51bf5133de1b60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c7690390936a05dd472796eb6f50f582f652e35
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929307"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990843"
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory"></a>Adatok másolása az Impala szolgáltatásból az Azure Data Factory használatával
 
@@ -55,10 +55,10 @@ A következő tulajdonságok támogatottak az Impala csatolt szolgáltatás.
 | authenticationType | A használandó hitelesítési típus. <br/>Az engedélyezett **értékek: Névtelen**, **SASLUsername**és **UsernameAndPassword**. | Igen |
 | felhasználónév | Az Impala kiszolgáló eléréséhez használt felhasználónév. A SASLUsername használatakor az alapértelmezett érték névtelen.  | Nem |
 | jelszó | A felhasználónév és jelszó használatakor a felhasználónévnek megfelelő jelszó. Jelölje meg ezt a mezőt SecureStringként a Data Factory biztonságos tárolásához, vagy [hivatkozzon az Azure Key Vaultban tárolt titkos fájlokra.](store-credentials-in-key-vault.md) | Nem |
-| enableSsl | Itt adható meg, hogy a kiszolgálóval létesített kapcsolatok SSL-rel titkosítva legyenek-e. Az alapértelmezett érték: **hamis**.  | Nem |
-| trustedCertPath | Az SSL-en keresztüli csatlakozáskor a kiszolgáló ellenőrzésére használt megbízható hitelesítésszolgáltatói tanúsítványokat tartalmazó .pem fájl teljes elérési útja. Ez a tulajdonság csak akkor állítható be, ha ssl-t használ a saját üzemeltetésű integrációs futásidőben. Az alapértelmezett érték az integrációs futásidejűsel telepített cacerts.pem fájl.  | Nem |
+| enableSsl | Itt adható meg, hogy a kiszolgálóval létesített kapcsolatok titkosítva legyenek-e a TLS használatával. Az alapértelmezett érték: **hamis**.  | Nem |
+| trustedCertPath | A megbízható hitelesítésszolgáltatói tanúsítványokat tartalmazó .pem fájl teljes elérési útja, amely a kiszolgáló TLS-en keresztüli csatlakozáskor történő ellenőrzésére szolgál. Ez a tulajdonság csak akkor állítható be, ha a TLS-t önkiszolgáló integrációs futásidőben használja. Az alapértelmezett érték az integrációs futásidejűsel telepített cacerts.pem fájl.  | Nem |
 | useSystemTrustStore | Itt adható meg, hogy a rendszermegbízhatósági tárolóból vagy egy megadott PEM-fájlból származó hitelesítésszolgáltatói tanúsítványt használjon.Specifies whether to use a ca certificate from the system trust store or from a specified PEM file. Az alapértelmezett érték: **hamis**.  | Nem |
-| allowHostNameCNMismatch | Itt adható meg, hogy az SSL-kapcsolaton keresztül időképes csatlakozáskor meg kell-e követelni, hogy a hitelesítésszolgáltató által kiállított SSL-tanúsítvány neve megegyezzen a kiszolgáló állomásnevével. Az alapértelmezett érték: **hamis**.  | Nem |
+| allowHostNameCNMismatch | Itt adható meg, hogy a Hitelesítésszolgáltató által kibocsátott TLS/SSL-tanúsítvány név megegyezzen-e a kiszolgáló állomásnevével, amikor TLS-en keresztül csatlakozik. Az alapértelmezett érték: **hamis**.  | Nem |
 | allowSelfSignedServerCert | Itt adható meg, hogy engedélyezze-e az önaláírt tanúsítványokat a kiszolgálóról. Az alapértelmezett érték: **hamis**.  | Nem |
 | connectVia | Az adattárhoz való csatlakozáshoz használandó [integrációs futásidő.](concepts-integration-runtime.md) További információ az [Előfeltételek](#prerequisites) szakaszból. Ha nincs megadva, az alapértelmezett Azure-integrációs runtime-ot használja. |Nem |
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: df80668f5e4a31d6247e9e9806e3de0667fd9036
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 451e83fa6ab547536a4cfd85304930e749a8247f
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656012"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998399"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>A keresési eredmények működése az Azure Cognitive Search szolgáltatásban
 
@@ -94,7 +94,11 @@ Egy másik lehetőség [egy egyéni pontozási profil](index-add-scoring-profile
 
 A találatkiemelés az eredmény egyező kifejezésére alkalmazott szövegformázásra (például félkövér vagy sárga kiemelésre) utal, így könnyen kiszúrható az egyezés. A lekéréshez a [lekéréshez](https://docs.microsoft.com/rest/api/searchservice/search-documents)a lekéréshez a lekéréshez található a leemelési utasítások. A keresőmotor címkékbe foglalja az `highlightPreTag` `highlightPostTag`egyező kifejezést, és a kód kezeli a választ (például félkövér betűtípust alkalmaz).
 
-A formázás teljes kifejezéslekérdezésekre vonatkozik. A következő példában a leírás mezőben található "homokos", "homok", "strandok", "strand" kifejezések vannak megjelölve a kiemeléshez. A részleges kifejezésekkel kapcsolatos lekérdezések, például az intelligens keresés vagy a helyettesítő karakteres keresés, amelyek lekérdezésbővítést eredményeznek a motorban, nem használhatják a találatkiemelést.
+A formázás teljes kifejezéslekérdezésekre vonatkozik. A következő példában a leírás mezőben található "homokos", "homok", "strandok", "strand" kifejezések vannak megjelölve a kiemeléshez. Lekérdezések bővítése a motorban, mint például a fuzzy és a helyettesítő keresés, korlátozott mértékben támogatja a találat kiemelése.
+
+```http
+GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2019-05-06 
+```
 
 ```http
 POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06 

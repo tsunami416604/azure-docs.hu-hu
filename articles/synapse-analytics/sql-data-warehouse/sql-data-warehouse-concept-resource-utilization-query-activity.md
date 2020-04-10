@@ -7,16 +7,16 @@ manager: craigg-msft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 03/11/2020
+ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 85457b62c905cb30ca22264eff1b6c677473f9b9
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: ce2fe66888893d82debcc412bb16752914d8a190
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745300"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011106"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Erőforrás-kihasználtság és lekérdezési tevékenység figyelése az Azure Synapse Analytics szolgáltatásban
 
@@ -33,8 +33,8 @@ A következő metrikák érhetők el az Azure Portalon az SQL Analytics. Ezek a 
 | Memória százaléka       | Memóriakihasználtság (SQL Server) az adattárház összes csomópontjában | Átlagos, Min, Max   |
 | Aktív lekérdezések          | A rendszeren végrehajtó aktív lekérdezések száma             | Összeg              |
 | Várakozással elévülve lekérdezések          | A végrehajtás megkezdésére váró várakozó várólistán lévő lekérdezések száma          | Összeg              |
-| Sikeres kapcsolatok  | Az adatokkal való sikeres kapcsolatok száma                 | Összeg, Darabszám       |
-| Sikertelen kapcsolatok      | Az adattárházhoz létesített sikertelen kapcsolatok száma           | Összeg, Darabszám       |
+| Sikeres kapcsolatok  | Az adatbázissal létesített sikeres kapcsolatok (bejelentkezések) száma | Összeg, Darabszám       |
+| Sikertelen kapcsolatok      | Az adatbázishoz létesített sikertelen kapcsolatok (bejelentkezések) száma | Összeg, Darabszám       |
 | Tűzfal blokkolja     | Zárolt adattárházba való bejelentkezések száma     | Összeg, Darabszám       |
 | DWU-korlát               | Az adattárház szolgáltatási szintre vonatkozó célkitűzése                | Átlagos, Min, Max    |
 | DWU százalék          | Maximális cpu-százalék és adat I/o százalék között        | Átlagos, Min, Max    |
@@ -42,7 +42,7 @@ A következő metrikák érhetők el az Azure Portalon az SQL Analytics. Ezek a 
 | Gyorsítótár találati százaléka    | (cache hits / cache miss) * 100, ahol a gyorsítótár-találatok összege az összes oszlopcentrikus szegmensek találat a helyi SSD cache és cache hiányzik az oszlopcentrikus szegmensek hiányzik a helyi SSD cache összegezve az összes csomópont | Átlagos, Min, Max    |
 | Gyorsítótár által használt százalék   | (használt gyorsítótár / gyorsítótár kapacitása) * 100, ahol a gyorsítótár at a helyi SSD-gyorsítótár ban lévő összes bájt összege az összes csomóponton és a gyorsítótár kapacitásában a helyi SSD-gyorsítótár tárolókapacitásának összege az összes csomóponton | Átlagos, Min, Max    |
 | Helyi tempdb százalék | Helyi tempdb-használat az összes számítási csomóponton – az értékek ötpercenként kerülnek kibocsátásra | Átlagos, Min, Max    |
-| Adattároló mérete (GB) | Az adatbázisba betöltött adatok teljes mérete. Ide tartoznak a CCI-ben és a nem CCI-táblákban található adatok is, ahol a nem CCI-táblák méretét az adatbázis fájlméretének teljes mértékével mérik. | Összeg |
+| Adattároló mérete (GB) | Az adatbázis teljes mérete. Ez magában foglalja a használt, fenntartott és szabad területet. A lekérdezési és betöltési teljesítmény optimalizálása érdekében az adatbázis számára a szabad terület megmarad. | Összeg |
 | Vész-helyreállítási méret (GB) | A 24 óránként készített geobiztonsági mentés teljes mérete | Összeg |
 | Pillanatkép-tároló mérete (GB) | Az adatbázis-visszaállítási pontok biztosításához készített pillanatképek teljes mérete. Ez magában foglalja az automatizált és a felhasználó által definiált pillanatképek. | Összeg |
 

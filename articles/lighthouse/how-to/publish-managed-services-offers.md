@@ -1,19 +1,19 @@
 ---
-title: Felügyelt szolgáltatásajánlat közzététele az Azure Piactéren
+title: Felügyelt szolgáltatási ajánlat közzététele az Azure Piactéren
 description: Ismerje meg, hogyan tehet közzé egy felügyelt szolgáltatásajánlatot, amely az ügyfeleket az Azure delegált erőforrás-kezelésére hozza.
 ms.date: 04/08/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4791b1d2ae233b0cc7aad33dd5b15b6ea94b2018
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 247f711188fa10de19cece27f164fdfa71612d1b
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984554"
+ms.locfileid: "80991909"
 ---
-# <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Felügyelt szolgáltatásajánlat közzététele az Azure Piactéren
+# <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Felügyelt szolgáltatási ajánlat közzététele az Azure Piactéren
 
 > [!IMPORTANT]
-> 2020. április 14-től megkezdjük a Felügyelt szolgáltatási ajánlatok kezelését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Az áttelepített ajánlatok kezeléséhez kövesse az [Új felügyelt szolgáltatásajánlatok létrehozása című, az új felügyelt szolgáltatásajánlatok létrehozása](../../marketplace/partner-center-portal/create-new-managed-service-offer.md) című részben található utasításokat.
+> 2020. április 13-tól megkezdjük a Felügyelt szolgáltatási ajánlatok kezelését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Az áttelepített ajánlatok kezeléséhez kövesse az Új felügyelt szolgáltatás ajánlat létrehozása című, az [új felügyelt szolgáltatás ajánlatának](../../marketplace/partner-center-portal/create-new-managed-service-offer.md) létrehozása című útmutatóutasításait.
 
 Ebből a cikkből megtudhatja, hogyan tehet közzé nyilvános vagy privát felügyelt szolgáltatási ajánlatot az [Azure Piactéren](https://azuremarketplace.microsoft.com) a [Cloud Partner Portal](https://cloudpartner.azure.com/)használatával. Az ajánlatot megvásárló ügyfelek ezután előadhatják az [Azure delegált erőforrás-kezeléséhez](../concepts/azure-delegated-resource-management.md)szükséges előfizetéseket és erőforráscsoportokat.
 
@@ -28,7 +28,7 @@ A Microsoft Partner Network (MPN) azonosító [automatikusan társítva](../../b
 > [!NOTE]
 > Ha nem szeretne közzétenni egy ajánlatot az Azure Marketplace-en, manuálisan is bevezetheti az ügyfeleket az Azure Resource Manager-sablonok használatával. További információ: [Az Azure delegált erőforrás-kezelése ügyfél nek.](onboard-customer.md)
 
-A felügyelt szolgáltatások ajánlatának közzététele hasonló az Azure Marketplace-en bármilyen más típusú ajánlat közzétételéhez. Az általános közzétételi folyamatról az Azure Marketplace és az [AppSource közzétételi útmutatócímű témakörben olvashat.](../../marketplace/marketplace-publishers-guide.md) Tekintse át a [kereskedelmi piactér tanúsítási irányelveit](https://docs.microsoft.com/legal/marketplace/certification-policies)is, különösen a [Felügyelt szolgáltatások szakaszt.](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)
+Felügyelt szolgáltatás ajánlat közzététele hasonló a közzététel bármely más típusú ajánlatot az Azure Marketplace-en. Az általános közzétételi folyamatról az Azure Marketplace és az [AppSource közzétételi útmutatócímű témakörben olvashat.](../../marketplace/marketplace-publishers-guide.md) Tekintse át a [kereskedelmi piactér tanúsítási irányelveit](https://docs.microsoft.com/legal/marketplace/certification-policies)is, különösen a [Felügyelt szolgáltatások szakaszt.](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)
 
 Miután egy ügyfél hozzáadja az ajánlatot, delegálhat egy vagy több előfizetést vagy erőforráscsoportot, amelyeket ezután [az Azure delegált erőforrás-kezeléséhez vesznek fel.](#the-customer-onboarding-process)
 

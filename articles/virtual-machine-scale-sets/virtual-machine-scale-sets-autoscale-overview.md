@@ -1,21 +1,21 @@
 ---
 title: Az Azure-beli virtuálisgép-méretezési csoportokkal végzett automatikus skálázás áttekintése
 description: Ismerje meg, hogy milyen különböző módokon skálázhatja automatikusan az Azure virtuálisgép-méretezési készletet teljesítmény vagy rögzített ütemezés alapján
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.assetid: d29a3385-179e-4331-a315-daa7ea5701df
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eb96be187502afcccfd3fb2c88f709facfbc3b59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b3af40de107fd9273ec50425c58afc9772ea426
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278142"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010341"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Az Azure-beli virtuálisgép-méretezési csoportokkal végzett automatikus skálázás áttekintése
 Az Azure virtuálisgép-méretezési csoport automatikusan növelheti vagy csökkentheti az alkalmazást futtató virtuálisgép-példányok számát. Ez az automatizált és rugalmas viselkedés csökkenti a felügyeleti terhelést az alkalmazás teljesítményének figyeléséhez és optimalizálásához. Olyan szabályokat hozhat létre, amelyek meghatározzák a pozitív felhasználói élmény elfogadható teljesítményét. A megadott küszöbértékek elérésekor az automatikus skálázási szabályok lépéseket tesznek a méretezési készlet kapacitásának módosítására. Az eseményeket úgy is ütemezheti, hogy automatikusan növeljék vagy csökkentsék a méretezési készlet kapacitását rögzített időpontokban. Ez a cikk áttekintést nyújt arról, hogy mely teljesítménymutatók érhetők el, és milyen műveleteket hajthat végre az automatikus skálázás.
@@ -34,7 +34,7 @@ Automatikus skálázási szabályokat hozhat létre, amelyek beépített gazdag�
 
 A gazdagépalapú mérőszámokat használó automatikus méretezési szabályok a következő eszközökkel hozhatók létre:
 
-- [Azure-portál](virtual-machine-scale-sets-autoscale-portal.md)
+- [Azure Portal](virtual-machine-scale-sets-autoscale-portal.md)
 - [Azure PowerShell](tutorial-autoscale-powershell.md)
 - [Azure CLI](tutorial-autoscale-cli.md)
 - [Azure-sablon](tutorial-autoscale-template.md)

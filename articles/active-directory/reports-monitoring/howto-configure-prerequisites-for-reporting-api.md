@@ -17,12 +17,12 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12abfc0d345c937ae886f9bfacfb8ce30227cc45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7fd3580ca03fa49d428904c6da78fdf9cda202c7
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399306"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991262"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Az Azure Active Directory jelentéskészítési API elérésének előfeltételei
 
@@ -33,9 +33,10 @@ A jelentéskészítő API [az OAuth segítségével](https://docs.microsoft.com/
 A jelentéskészítési API-hoz való hozzáférés előkészítéséhez a következőket kell tenni:
 
 1. [Szerepkörök hozzárendelése](#assign-roles)
-2. [Alkalmazás regisztrálása](#register-an-application)
-3. [Engedélyek megadása](#grant-permissions)
-4. [Konfigurációs beállítások összegyűjtése](#gather-configuration-settings)
+2. [Licenckövetelmények](#license-requirements)
+3. [Egy alkalmazás regisztrálása](#register-an-application)
+4. [Engedélyek megadása](#grant-permissions)
+5. [Konfigurációs beállítások összegyűjtése](#gather-configuration-settings)
 
 ## <a name="assign-roles"></a>Szerepkörök hozzárendelése
 
@@ -46,6 +47,10 @@ Ahhoz, hogy az API-n keresztül hozzáférhessen a jelentési adatokhoz, az alá
 - Biztonsági rendszergazda
 
 - Globális rendszergazda
+
+## <a name="license-requirements"></a>Licenckövetelmények
+
+A bérlő bejelentkezési jelentésének eléréséhez egy Azure AD-bérlőnek rendelkeznie kell Azure AD Premium-licenccel. Az Azure AD Premium P1 (vagy újabb) licenc bármely Azure AD-bérlő bejelentkezési jelentésének eléréséhez szükséges. Másik lehetőségként, ha a címtár típusa Az Azure AD B2C, a bejelentkezési jelentések érhetők el az API-n keresztül további licenckövetelmény nélkül. 
 
 
 ## <a name="register-an-application"></a>Egy alkalmazás regisztrálása

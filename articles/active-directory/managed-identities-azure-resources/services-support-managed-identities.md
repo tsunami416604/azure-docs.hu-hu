@@ -4,18 +4,18 @@ description: Az Azure-erőforrások felügyelt identitásait és az Azure AD-hit
 services: active-directory
 author: MarkusVi
 ms.author: markvi
-ms.date: 04/03/2020
+ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c7a65df100cd58561ce12ac2ae01281eebd419a
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 45a248300cd61a0e57b9f35c8905d7c335069a27
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656051"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991279"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Felügyelt identitásokat támogató szolgáltatások az Azure-erőforrásokhoz
 
@@ -109,7 +109,7 @@ Felügyelt identitás típusa | Minden általánosan elérhető<br>Globális Azu
 Az alábbi listában konfigurálhatja az Azure Logic Apps felügyelt identitását (ahol elérhető régiókban):
 
 - [Azure Portal](/azure/logic-apps/create-managed-service-identity#enable-system-assigned-identity-in-azure-portal)
-- [Azure Resource Manager-sablon](/azure/app-service/overview-managed-identity)
+- [Azure Resource Manager-sablon](https://docs.microsoft.com/azure/logic-apps/logic-apps-azure-resource-manager-templates-overview)
 
 ### <a name="azure-data-factory-v2"></a>Azure Data Factory V2
 
@@ -270,6 +270,9 @@ Az Azure Resource Manager elérésének konfigurálásához az alábbi listában
 | Azure Government | `https://*.asazure.usgovcloudapi.net` | ![Elérhető][check] |
 | Azure Germany | `https://*.asazure.cloudapi.de` | ![Elérhető][check] |
 | Azure China 21Vianet | `https://*.asazure.chinacloudapi.cn` | ![Elérhető][check] |
+
+> [!Note]
+> A Microsoft Power BI [támogatja a felügyelt identitásokat](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity)is.
 
 
 [check]: media/services-support-managed-identities/check.png "Elérhető"

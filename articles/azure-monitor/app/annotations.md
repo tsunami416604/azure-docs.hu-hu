@@ -3,27 +3,23 @@ title: Az Application Insights jegyzeteinek kiadása | Microsoft dokumentumok
 description: Üzembe helyezési vagy buildjelölők hozzáadása a metrikák kezelői diagramokhoz az Application Insightsban.
 ms.topic: conceptual
 ms.date: 07/01/2019
-ms.openlocfilehash: e0e2a106b276110e13b3c68889e4d1d349ba73a4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ad773ca6a7102ac718d43dfbbf6a4f834e681a0
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77666513"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010719"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Az Application Insights metrikadiagramjainak jegyzetei
 
-A [Metrikakezelő diagramjainak](../../azure-monitor/app/metrics-explorer.md) jegyzetei azt mutatják, hogy hol telepített új buildet vagy más jelentős eseményeket. A jegyzetek megkönnyítik annak megtekintését, hogy a módosítások hatással voltak-e az alkalmazás teljesítményére. Ezek automatikusan létre az [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/tasks/) build rendszer. A PowerShellből való létrehozásukhoz jegyzeteket is létrehozhat, amelyek megjelölhetik a kívánt eseményeket.
-
-> [!NOTE]
-> Ez a cikk az elavult **klasszikus metrikák élményét**tükrözi. A jegyzetek jelenleg csak a klasszikus élményben és a **[munkafüzetekben](../../azure-monitor/app/usage-workbooks.md)** érhetők el. Ha többet szeretne megtudni az aktuális metrikák ról, olvassa el [az Azure Metrics Explorer speciális szolgáltatásai című témakört.](../../azure-monitor/platform/metrics-charts.md)
-
-![Példa a jegyzetekre](./media/annotations/0-example.png)
+A jegyzetek azt mutatják, hogy hol telepített egy új buildet vagy más jelentős eseményeket. A jegyzetek megkönnyítik annak megtekintését, hogy a módosítások hatással voltak-e az alkalmazás teljesítményére. Ezek automatikusan létre az [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/tasks/) build rendszer. A PowerShellből való létrehozásukhoz jegyzeteket is létrehozhat, amelyek megjelölhetik a kívánt eseményeket.
 
 ## <a name="release-annotations-with-azure-pipelines-build"></a>Az Azure Pipelines buildelésével jegyzetek et ad ki
 
 A kiadási jegyzetek az Azure DevOps felhőalapú Azure Pipelines szolgáltatásának egyik szolgáltatása.
 
 ### <a name="install-the-annotations-extension-one-time"></a>A Jegyzetek bővítmény telepítése (egyszer)
+
 Ahhoz, hogy kiadási jegyzeteket hozhat létre, telepítenie kell a Visual Studio Piactéren elérhető számos Azure DevOps-bővítmény egyikét.
 
 1. Jelentkezzen be az [Azure DevOps-projektbe.](https://azure.microsoft.com/services/devops/)
@@ -74,11 +70,26 @@ Hozzon létre egy külön API-kulcsot az Azure Pipelines kiadási sablonjaihoz.
 1. A sablon mentéséhez válassza a **Mentés** gombot a fő kiadási sablon ablakában.
 
 ## <a name="view-annotations"></a>A jegyzetek megtekintése
-Most antól a rendszer a kiadási sablon használatával telepít egy új kiadást, a rendszer egy olyan notnotant küld az Application Insightsnak, amelyet a rendszer a kiadási sablon használatával küld. A jegyzetek a **Mérőszámok kezelőjében**jelennek meg a diagramokon.
 
-A kiadás részleteinek megnyitásához jelöljön ki bármilyen jegyzetjelölőt (világosszürke nyíl), beleértve a kérelmezőt, a forrásvezérlő ágat, a kiadási folyamatot és a környezetet.
 
-![Jelöljön ki egy kioldó jegyzetjelölőt.](./media/annotations/8-release.png)
+   > [!NOTE]
+   > A kiadási jegyzetek jelenleg nem érhetők el az Application Insights Metrikák ablaktáblájában
+
+Most antól a rendszer a kiadási sablon használatával telepít egy új kiadást, a rendszer egy olyan notnotant küld az Application Insightsnak, amelyet a rendszer a kiadási sablon használatával küld. A jegyzetek a következő helyeken tekinthetők meg:
+
+A használati ablaktábla, ahol manuálisan is létrehozhat kibocsátási jegyzeteket:
+
+![Képernyőkép a sávdiagramról, amelyen a felhasználói látogatások száma egy óra alatt jelenik meg. A kiadási megjegyzések zöld pipaként jelennek meg a diagram felett, jelezve a kiadás időpontjának pillanatát](./media/annotations/usage-pane.png)
+
+Minden olyan naplóalapú munkafüzet-lekérdezésben, ahol a vizualizáció az x tengely mentén jeleníti meg az időt.
+
+![Képernyőkép a munkafüzetek ablaktábláról az idősorozat-naplóalapú lekérdezéssel, amelyen jegyzetek jelennek meg](./media/annotations/workbooks-annotations.png)
+
+A munkafüzetben lévő jegyzetek engedélyezéséhez válassza a **Speciális beállítások lehetőséget,** és válassza **a Jegyzetek megjelenítése**lehetőséget.
+
+![Képernyőkép a Speciális beállítások menüről, amelyen a szavak a beállítást jelzik, és a beállítás mellett egy pipa jelenik meg.](./media/annotations/workbook-show-annotations.png)
+
+Válassza ki bármelyik jegyzetjelölőt a kiadás részleteinek megnyitásához, beleértve a kérelmezőt, a forrásvezérlő ágat, a kiadási folyamatot és a környezetet.
 
 ## <a name="create-custom-annotations-from-powershell"></a>Egyéni jegyzetek létrehozása a PowerShellből
 A GitHub [CreateReleaseAnnotation](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) PowerShell-parancsfájljával az Azure DevOps használata nélkül hozhat létre jegyzeteket bármely folyamatból. 

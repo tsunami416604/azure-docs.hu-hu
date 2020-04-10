@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
-ms.openlocfilehash: c0eb043ce040f154050ef4c3675f165dad326e32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9fe6b494398337dd49bd8f0fe53b24666412a1b0
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929423"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991586"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Adatok másolása a Google BigQueryből az Azure Data Factory használatával
 
@@ -99,7 +99,7 @@ A google BigQuery csatolt szolgáltatás a következő tulajdonságokat támogat
 |:--- |:--- |:--- |
 | e-mail | A ServiceAuthentication szolgáltatásfiók e-mail azonosítója. Csak önkiszolgáló integrációs futásidejű en használható.  | Nem |
 | keyFilePath | A szolgáltatási fiók e-mail címének hitelesítésére használt .p12 kulcsfájl teljes elérési útja. | Nem |
-| trustedCertPath | Az SSL-en keresztüli csatlakozáskor a kiszolgáló ellenőrzésére használt megbízható hitelesítésszolgáltatói tanúsítványokat tartalmazó .pem fájl teljes elérési útja. Ez a tulajdonság csak akkor állítható be, ha ssl-t használ a saját üzemeltetésű integrációs futásidőben. Az alapértelmezett érték az integrációs futásidejűsel telepített cacerts.pem fájl.  | Nem |
+| trustedCertPath | A megbízható hitelesítésszolgáltatói tanúsítványokat tartalmazó .pem fájl teljes elérési útja, amely a kiszolgáló TLS-en keresztüli csatlakozáskor történő ellenőrzésére szolgál. Ez a tulajdonság csak akkor állítható be, ha a TLS-t önkiszolgáló integrációs futásidőben használja. Az alapértelmezett érték az integrációs futásidejűsel telepített cacerts.pem fájl.  | Nem |
 | useSystemTrustStore | Itt adható meg, hogy a rendszermegbízhatósági tárolóból vagy egy megadott .pem fájlból származó hitelesítésszolgáltatói tanúsítványt használjon.Specifies whether to use a ca certificate from the system trust store or from a specified .pem file. Az alapértelmezett érték: **hamis**.  | Nem |
 
 **Példa:**

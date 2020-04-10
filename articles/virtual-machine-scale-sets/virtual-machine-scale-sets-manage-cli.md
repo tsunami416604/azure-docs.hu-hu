@@ -1,18 +1,18 @@
 ---
 title: Virtuálisgép-méretezési készletek kezelése az Azure CLI-vel
 description: Általános Azure CLI-parancsok a virtuális gép méretezési készletei kezeléséhez, például egy példány indításához és leállításához, illetve a méretezési csoport kapacitásának módosításához.
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: cynthn
-ms.openlocfilehash: d8f40708cf5a9989146a72e2093de7bad47ffde9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: jushiman
+ms.openlocfilehash: ad07a237dd40d836705b332c6c10356720901481
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76275747"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011582"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Virtuálisgép-méretezési készlet kezelése az Azure CLI-vel
 A virtuálisgép-méretezési csoport életciklusa során egy vagy több felügyeleti feladat futtatására lehet szükség. Emellett előfordulhat, hogy különféle szkripteket is érdemes létrehozni az életciklus-feladatok automatizálására. Ez a cikk néhány gyakori Azure CLI-parancsokat részletez, amelyek lehetővé teszik a feladatok elvégzését.

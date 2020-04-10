@@ -1,6 +1,6 @@
 ---
 title: Microsoft identity platform videók | Azure
-description: A Microsoft identitásplatformról készült videók listája
+description: A modern hitelesítéssel és a Microsoft identitásplatformjával kapcsolatos videók listája
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -8,24 +8,73 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/29/2020
+ms.date: 04/08/2020
 ms.author: marsma
 ms.custom: aaddev
 ms.reviewer: celested
-ms.openlocfilehash: 22149ccfa258852b36da61ffbabde5e1856df9de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8c7ec6cf1d15e414a6db54d5bc2ad7e4994cd82
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77085195"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991296"
 ---
 # <a name="microsoft-identity-platform-videos"></a>A Microsoft Identitásplatformot bemutató videók
 
-További információ a Microsoft identity platformról és a Microsoft hitelesítési kódtárakról (MSAL). Általában 1-2 percesek.
+Ismerje meg a modern hitelesítés alapjait, a Microsoft identitásplatformot és a Microsoft hitelesítési könyvtárakat (MSAL).
+
+## <a name="authentication-fundamentals"></a>A hitelesítés alapjai
+
+Ha még csak most ért el olyan fogalmakat, mint az identitásszolgáltatók, a biztonsági jogkivonatok, a jogcímek és a közönség, ez a videósorozat jó kiindulópont lehet.
+___
+
+:::row:::
+    :::column:::
+        1 - Alapok: A modern hitelesítés fogalmai (04:33)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/fbSVgC8nGz4?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+     :::column:::
+        2 - Modern hitelesítés webes alkalmazásokhoz (06:02)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/tCNcG1lcCHY?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        3 - Web egyszeri bejelentkezés (04:13)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/51B-jSOBF8U?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+    :::column:::
+        4 - Összevont webes hitelesítés (06:19)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/CjarTgjKcX8?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        5 - Natív ügyfélalkalmazások - 1. rész (8:12)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/OGMDnuDrAcQ?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+    :::column:::
+        6 - Natív ügyfélalkalmazások - 2. rész (5:33)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/2RE6IhXfmHY?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+:::row-end:::
 
 ## <a name="microsoft-identity-platform-basics"></a>A Microsoft identitásplatformjának alapjai
 
-**Ismerje meg a Microsoft identitásplatformjának alapvető fogalmait**
+Ismerje meg a Microsoft identity platform összetevőit, a Microsoft authentication libraries (MSAL) összetevőit, valamint azt, hogy ezek az összetevők hogyan használják az Azure Active Directoryt. A One Dev Kérdés videók 1-2 perc hosszúságúak.
+___
 
 :::row:::
     :::column:::
@@ -112,7 +161,8 @@ További információ a Microsoft identity platformról és a Microsoft hiteles�
 
 ## <a name="migrate-from-v10-to-v20"></a>Áttelepítés az 1.0-s és a 2.0-s
 
-**További információ a Microsoft-identitásplatform legújabb verziójára való áttérésről**
+Információ a Microsoft-identitásplatform legújabb verziójára való áttérésről, beleértve az Active Directory hitelesítési könyvtárról (ADAL) az MSAL-ra való áttérést.
+___
 
 :::row:::
     :::column:::

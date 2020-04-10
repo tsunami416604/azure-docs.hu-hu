@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: 6c7c041565f6376e7f8b8b84f5076b30c1eec7bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2821ee637b2562b5287dd3d59cf943b3dcb7ef97
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278115"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010885"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>A virtuális hálózati támogatás beállítása prémium szintű Azure-gyorsítótárhoz a Redis számára
 A Redis-gyorsítótár különböző gyorsítótár-ajánlatokkal rendelkezik, amelyek rugalmasságot biztosítanak a gyorsítótár méretének és szolgáltatásainak kiválasztásában, beleértve a prémium szintű funkciókat, például a fürtözést, az adatmegőrzést és a virtuális hálózati támogatást. A virtuális hálózat egy magánhálózat a felhőben. Ha egy Azure-gyorsítótár redis-példány van konfigurálva egy virtuális hálózat, nem nyilvánosan címezhető, és csak a virtuális gépek és alkalmazások a virtuális hálózaton belül érhető el. Ez a cikk ismerteti, hogyan konfigurálhatja a virtuális hálózati támogatás egy prémium szintű Azure-gyorsítótár redis-példány.
@@ -118,7 +118,7 @@ Kilenc kimenő portra van szükség. Ezekben a tartományokban a kimenő kérelm
 
 #### <a name="geo-replication-peer-port-requirements"></a>Georeplikációs társportok követelményei
 
-Ha az Azure virtuális hálózatok gyorsítótárai között georeplikációt használ, vegye figyelembe, hogy az ajánlott konfiguráció az 15000-15999 portok blokkolásának feloldása a teljes alhálózat számára mindkét bejövő és kimenő irányban mindkét gyorsítótárba, hogy az összes replika-összetevő letiltása az alhálózatban közvetlenül kommunikálhatnak egymással, még egy jövőbeli geo-feladatátvétel esetén is.
+Ha az Azure virtuális hálózatok gyorsítótárai között georeplikációt használ, vegye figyelembe, hogy az ajánlott konfiguráció az 15000-15999-es portok blokkolásának feloldása a teljes alhálózat számára mindkét gyorsítótárba bejövő és kimenő irányban, hogy az alhálózat összes replika-összetevője közvetlenül kommunikáljon egymással egy jövőbeli geofeladat-átvétel esetén is.
 
 #### <a name="inbound-port-requirements"></a>Bejövő portokkal kapcsolatos követelmények
 
@@ -142,9 +142,9 @@ Nyolc bejövő porttartományra vonatkozó követelmény van. Az ezekben a tarto
 Vannak hálózati kapcsolati követelmények az Azure Cache for Redis, amely kezdetben nem teljesül a virtuális hálózatban. A Redis Azure Cache a következő elemeket igényel megfelelően, ha egy virtuális hálózaton belül használják.
 
 * Kimenő hálózati kapcsolat az Azure Storage-végpontokhoz világszerte. Ez magában foglalja a redis-példány azure-gyorsítótárával azonos régióban található végpontokat, valamint **a más** Azure-régiókban található tárolási végpontokat. Az Azure Storage-végpontok feloldása a következő DNS-tartományok ban: *table.core.windows.net*, *blob.core.windows.net*, *queue.core.windows.net*és *file.core.windows.net*. 
-* Kimenő hálózati kapcsolat a *ocsp.msocsp.com,* *mscrl.microsoft.com*és *crl.microsoft.com.* Ez a kapcsolat az SSL-funkciók támogatásához szükséges.
+* Kimenő hálózati kapcsolat a *ocsp.msocsp.com,* *mscrl.microsoft.com*és *crl.microsoft.com.* Ez a kapcsolat a TLS/SSL funkció támogatásához szükséges.
 * A virtuális hálózat DNS-konfigurációjának képesnek kell lennie a korábbi pontokban említett összes végpont és tartomány feloldására. Ezek a DNS-követelmények úgy teljesíthetők, hogy biztosítják, hogy a virtuális hálózathoz érvényes DNS-infrastruktúra legyen konfigurálva és karbantartva.
-* Kimenő hálózati kapcsolat a következő Azure Figyelési végpontokhoz, amelyek a következő DNS-tartományok alatt oldódnak fel: shoebox2-black.shoebox2.metrics.nsatc.net, north-prod2.prod2.metrics.nsatc.net, azglobal-black.azglobal.metrics.nsatc.net , shoebox2-red.shoebox2.metrics.nsatc.net, east-prod2.prod2.metrics.nsatc.net, azglobal-red.azglobal.metrics.nsatc.net.
+* Kimenő hálózati kapcsolat a következő Azure Monitoring-végpontok, amelyek a következő DNS-tartományok: shoebox2-black.shoebox2.metrics.nsatc.net, north-prod2.prod2.metrics.nsatc.net, azglobal-black.azglobal.metrics.nsatc.net, shoebox2-red.shoebox2.metrics.nsatc.net, east-prod2.prod2.metrics.nsatc.net, azglobal-red.azglobal.metrics.nsatc.net.
 
 ### <a name="how-can-i-verify-that-my-cache-is-working-in-a-vnet"></a>Hogyan tudom ellenőrizni, hogy működik-e a gyorsítótáram egy virtuális hálózaton?
 
@@ -157,7 +157,7 @@ Miután a portkövetelmények az előző szakaszban leírtak szerint vannak konf
 
 - [Indítsa újra](cache-administration.md#reboot) az összes gyorsítótár-csomópontot. Ha az összes szükséges gyorsítótár-függőség nem érhető el (a [bejövő portra és](cache-how-to-premium-vnet.md#inbound-port-requirements) a kimenő [portra vonatkozó követelményekben](cache-how-to-premium-vnet.md#outbound-port-requirements)dokumentált módon), a gyorsítótár nem fog sikeresen újraindulni.
 - Miután a gyorsítótár-csomópontok újraindultak (az Azure Portalon a gyorsítótár állapota szerint), a következő teszteket hajthatja végre:
-  - ping elpingelje a gyorsítótár végpontját (a 6380-as portot használva) egy olyan gépről, amely a gyorsítótáral azonos virtuális hálózaton belül van, [tcping](https://www.elifulkerson.com/projects/tcping.php)használatával. Példa:
+  - ping elpingelje a gyorsítótár végpontját (a 6380-as portot használva) egy olyan gépről, amely a gyorsítótáral azonos virtuális hálózaton belül van, [tcping](https://www.elifulkerson.com/projects/tcping.php)használatával. Például:
     
     `tcping.exe contosocache.redis.cache.windows.net 6380`
     
@@ -180,7 +180,7 @@ Ne használja az ALÁBBI kapcsolati karakterlánchoz hasonló IP-címet:
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False`
 
-Ha nem tudja feloldani a DNS-nevet, egyes `sslHost` ügyfélkódtárak olyan konfigurációs beállításokat tartalmaznak, mint a StackExchange.Redis ügyfél. Ez lehetővé teszi a tanúsítvány-ellenőrzéshez használt állomásnév felülbírálását. Példa:
+Ha nem tudja feloldani a DNS-nevet, egyes `sslHost` ügyfélkódtárak olyan konfigurációs beállításokat tartalmaznak, mint a StackExchange.Redis ügyfél. Ez lehetővé teszi a tanúsítvány-ellenőrzéshez használt állomásnév felülbírálását. Például:
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False;sslHost=[mycachename].redis.windows.net`
 
@@ -220,13 +220,13 @@ Ha lehetséges, ajánlott a következő konfigurációt használni:
 
 Ezek a lépések együttes hatása az, hogy az alhálózati szintű UDR elsőbbséget élvez az ExpressRoute kényszerített bújtatása, így biztosítva a kimenő internet-hozzáférést az Azure Cache for Redis.
 
-A Redis-példány Azure-gyorsítótárához egy helyszíni alkalmazásból az ExpressRoute használatával történő csatlakozás teljesítménybeli okok miatt nem tipikus használati forgatókönyv (a Redis-ügyfelek számára a legjobb teljesítményt nyújtó Azure-gyorsítótárnak ugyanabban a régióban kell lennie, mint az Azure-gyorsítótár a Redis-hez) .
+A Redis-példány Azure-gyorsítótárhoz való csatlakozás egy helyszíni alkalmazásból ExpressRoute használatával nem tipikus használati forgatókönyv a teljesítmény miatt (a redis-ügyfelek számára a legjobb teljesítmény érdekében az Azure-gyorsítótárnak ugyanabban a régióban kell lennie, mint az Azure Cache for Redis).
 
 >[!IMPORTANT] 
 >Az UDR-ben definiált útvonalaknak elég konkrétnak **kell** lenniük ahhoz, hogy elsőbbséget élvezzenek az ExpressRoute-konfiguráció által meghirdetett útvonalakkal szemben. A következő példa a széles 0.0.0.0/0 címtartományt használja, és mint ilyen, véletlenül felülbírálhatók az útvonalhirdetések konkrétabb címtartományokhasználatával.
 
 >[!WARNING]  
->A Redis Azure Cache for Redis nem támogatott olyan ExpressRoute-konfigurációkkal, amelyek **helytelenül keresztbe lépnek a nyilvános társviszony-létesítési útvonalról a privát társviszony-létesítési útvonalra vezető útvonalakon.** A nyilvános társviszony-létesítést konfigurált ExpressRoute-konfigurációk útvonalhirdetéseket kapnak a Microsofttól a Microsoft Azure IP-címtartományok nagy készletéhez. Ha ezek a címtartományok helytelenül kereszthirdetve vannak a privát társviszony-létesítési útvonalon, az eredmény az, hogy a Redis-példány alhálózatának Azure-gyorsítótárából származó összes kimenő hálózati csomag helytelenül kényszeríti a bújtatási bújtatási műveleteket az ügyfél helyszíni hálózatához. Infrastruktúra. Ez a hálózati folyamat megszakítja a Redis Azure-gyorsítótárát. A probléma megoldása az, hogy állítsa le a kereszthirdetési útvonalakat a nyilvános társviszony-létesítési útvonalról a privát társviszony-létesítési útvonalra.
+>A Redis Azure Cache for Redis nem támogatott olyan ExpressRoute-konfigurációkkal, amelyek **helytelenül keresztbe lépnek a nyilvános társviszony-létesítési útvonalról a privát társviszony-létesítési útvonalra vezető útvonalakon.** A nyilvános társviszony-létesítést konfigurált ExpressRoute-konfigurációk útvonalhirdetéseket kapnak a Microsofttól a Microsoft Azure IP-címtartományok nagy készletéhez. Ha ezek a címtartományok helytelenül kereszthirdetve vannak a privát társviszony-létesítési útvonalon, az eredmény az, hogy a Redis-példány alhálózatának Azure Cache-ből származó összes kimenő hálózati csomag helytelenül kényszeríti az ügyfél helyszíni hálózati infrastruktúráját. Ez a hálózati folyamat megszakítja a Redis Azure-gyorsítótárát. A probléma megoldása az, hogy állítsa le a kereszthirdetési útvonalakat a nyilvános társviszony-létesítési útvonalról a privát társviszony-létesítési útvonalra.
 
 
 A felhasználó által definiált útvonalakkal kapcsolatos háttér-információk ebben az [áttekintésben](../virtual-network/virtual-networks-udr-overview.md)találhatók.

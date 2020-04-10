@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 0d63f2c29bfdbdf320185647bd33ec30500ed874
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 8cb4af8faccb68c455928c0d3c5405ef2d3e70df
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742707"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011021"
 ---
 # <a name="indexing-tables-in-synapse-sql-pool"></a>Indexelési táblák a Synapse SQL-készletben
 
@@ -52,9 +52,9 @@ Vannak néhány forgatókönyv, ahol a fürtözött oszlopcentrikus nem lehet j�
 
 ## <a name="heap-tables"></a>Halommemória-táblák
 
-Ha ideiglenesen adatokat hoz le a Synapse SQL-készletben, előfordulhat, hogy egy halommemória-tábla használatával gyorsabbá teszi a teljes folyamatot. Ennek az az oka, hogy a halomba betöltődések gyorsabbak, mint a táblák indexelése, és bizonyos esetekben a következő olvasás a gyorsítótárból végezhető el.  Ha csak azért tölti be az adatokat, hogy több átalakítás futtatása előtt megrendezze az adatokat, a tábla halommemóriatáblába való betöltése sokkal gyorsabb, mint az adatok betöltése egy fürtözött oszlopcentrikus táblába. Ezenkívül az adatok [ideiglenes táblába](sql-data-warehouse-tables-temporary.md) való betöltése gyorsabban töltődik be, mint egy tábla állandó tárolóba töltése.  
+Ha ideiglenesen adatokat hoz le a Synapse SQL-készletben, előfordulhat, hogy egy halommemória-tábla használatával gyorsabbá teszi a teljes folyamatot. Ennek az az oka, hogy a halomba betöltődések gyorsabbak, mint a táblák indexelése, és bizonyos esetekben a következő olvasás a gyorsítótárból végezhető el.  Ha csak azért tölti be az adatokat, hogy több átalakítás futtatása előtt megrendezze az adatokat, a tábla halommemóriatáblába való betöltése sokkal gyorsabb, mint az adatok betöltése egy fürtözött oszlopcentrikus táblába. Ezenkívül az adatok [ideiglenes táblába](sql-data-warehouse-tables-temporary.md) való betöltése gyorsabban töltődik be, mint egy tábla állandó tárolóba töltése.  Az adatok betöltése után indexeket hozhat létre a táblában a gyorsabb lekérdezési teljesítmény érdekében.  
 
-Kis méretű, 60 millió nál kisebb sornál kisebb méretű memóriatáblák esetén gyakran van értelme halommemória-táblázatoknak.  Fürt oszlopcentrikus táblák kezdenek optimális tömörítést, ha több mint 60 millió sor.
+Fürt oszlopcentrikus táblák kezdenek optimális tömörítést, ha több mint 60 millió sor.  Kis méretű, 60 millió nál kisebb sorok esetén érdemes heap vagy fürtözött index használata a gyorsabb lekérdezési teljesítmény érdekében. 
 
 Halommemória-tábla létrehozásához egyszerűen adja meg a HEAP értéket a WITH záradékban:
 

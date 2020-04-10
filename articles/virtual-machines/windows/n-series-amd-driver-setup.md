@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 883dbc95ee77d03aee4c3231c6ab8c03f9f7f6e4
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.openlocfilehash: 02213feb507e9a032a50241fddf31714b9dfd7ee
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387835"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011069"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>AMD GPU-illesztőprogramok telepítése Windows rendszerű N sorozatú virtuális gépekre
 
@@ -40,7 +40,7 @@ Az alapvető specifikációkat, a tárolási kapacitást és a lemezadatokat a [
 
 2. Ha Ön NVv4 előzetes verziójú ügyfél, akkor állítsa le a virtuális gép, és várja meg, hogy átáll a Leállítva (Felszabadított) állapotba.
 
-3. Indítsa el a virtuális gép és töltse le a legújabb [AMD Cleanup Utility](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe). Távolítsa el a meglévő illesztőprogramot az "amdcleanuputility-x64.exe" futtatásával. Kérjük, ne használjon olyan exisitng tisztítási segédprogramot, amely az előző illesztőprogrammal volt telepítve.  
+3. Indítsa el a virtuális gép és töltse le a legújabb [AMD Cleanup Utility](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe). Távolítsa el a meglévő illesztőprogramot az "amdcleanuputility-x64.exe" futtatásával. Ne használjon olyan meglévő tisztítási segédprogramot, amely az előző illesztőprogrammal volt telepítve.  
 
 4. Töltse le és telepítse a legújabb illesztőprogramot.
 
@@ -52,6 +52,12 @@ Az eszközkezelőben ellenőrizheti az illesztőprogram telepítését. A követ
 <br />
 ![GPU-illesztőprogram tulajdonságai](./media/n-series-amd-driver-setup/device-manager.png)
 
-A dxdiag segítségével ellenőrizheti a GPU kijelzőtulajdonságait, beleértve a videoRAM-ot is. A következő példa a Radeon Instinct MI25-kártya 1/8-as partícióját mutatja be egy Azure NVv4 virtuális gépen.
+A dxdiag segítségével ellenőrizheti a GPU kijelzőtulajdonságait, beleértve a videoRAM-ot is. A következő példa a Radeon Instinct MI25-kártya 1/2-es partícióját mutatja be egy Azure NVv4 virtuális gépen.
 <br />
-![GPU-illesztőprogram tulajdonságai](./media/n-series-amd-driver-setup/dxdiag.png)
+![GPU-illesztőprogram tulajdonságai](./media/n-series-amd-driver-setup/dxdiag-output.png)
+
+Ha Windows 10 build 1903 vagy újabb rendszert futtat, akkor a dxdiag nem jelenik meg a "Megjelenítés" lapon. Kérjük, használja az "Összes információ mentése" opciót az alján, és a kimeneti fájl megmutatja az AMD MI25 GPU-val kapcsolatos információkat.
+
+![GPU-illesztőprogram tulajdonságai](./media/n-series-amd-driver-setup/dxdiag-details.png)
+
+

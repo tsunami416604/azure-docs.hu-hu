@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 25cef95e2d01012506148f03be45104e455e1fcd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8083efe833ec80290713fc14d9cb89acd8263fa2
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530274"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010902"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Az Azure Cache for Redis ASP.NET munkamenetállapot-szolgáltatója
 
@@ -82,10 +82,10 @@ A megjegyzéssel végzett szakasz az egyes attribútumok attribútumainak attrib
 Konfigurálja az attribútumokat a Microsoft Azure portalon a gyorsítótár-panelértékeivel, és szükség szerint konfigurálja a többi értéket. A gyorsítótár tulajdonságainak eléréséről az [Azure Cache beállítása a Redis-beállításokhoz című](cache-configure.md#configure-azure-cache-for-redis-settings)témakörben olvashat.
 
 * **host** – adja meg a gyorsítótár végpontját.
-* **port** – használja a nem SSL-portot vagy az SSL-portot, az ssl beállításaitól függően.
+* **port** – a TLS beállításaitól függően használja a nem TLS/SSL portot vagy a TLS/SSL portot.
 * **accessKey** – használja az elsődleges vagy másodlagos kulcsot a gyorsítótárhoz.
-* **ssl** – igaz, ha azt szeretnénk, hogy biztonságos cache / ügyfél kommunikáció ssl; egyébként hamis. Ügyeljen arra, hogy a megfelelő portot adja meg.
-  * A nem SSL port az új gyorsítótárakhoz alapértelmezés szerint le van tiltva. Adja meg a true értéket ehhez a beállításhoz az SSL-port használatához. A nem SSL-port engedélyezéséről a [Gyorsítótár konfigurálása](cache-configure.md) témakör [Access Ports](cache-configure.md#access-ports) című szakaszában olvashat bővebben.
+* **ssl** – igaz, ha a TLS-sel való gyorsítótárat/ügyfélkommunikációt szeretné biztosítani; egyébként hamis. Ügyeljen arra, hogy a megfelelő portot adja meg.
+  * A nem TLS-port alapértelmezés szerint le van tiltva az új gyorsítótárak esetében. Adja meg a true értéket ehhez a beállításhoz a TLS-port használatához. A nem TLS-port engedélyezéséről a [Gyorsítótár konfigurálása](cache-configure.md) témakör [Access Ports](cache-configure.md#access-ports) című szakaszában olvashat bővebben.
 * **throwOnError** – igaz, ha azt szeretné, hogy hiba esetén kivétel tetszhet, vagy hamis, ha azt szeretné, hogy a művelet némán sikertelen legyen. A hiba ellenőrzéséhez ellenőrizze a statikus Microsoft.Web.Redis.RedisSessionStateProvider.LastException tulajdonságot. Az alapértelmezett érték igaz.
 * **retryTimeoutEz milliszekundum** – A sikertelen műveleteket ez időszakalatt újra megkíséreli, ezredmásodpercben megadva. Az első újrapróbálkozás 20 ezredmásodperc után következik be, majd az újrapróbálkozások minden másodpercben megtörténnek, amíg az újrapróbálkozási idő szintEzidő lejár. Közvetlenül ezen időköz után a művelet et újra megkíséreli a rendszer egy utolsó alkalommal. Ha a művelet továbbra is sikertelen, a kivétel a throwOnError beállítástól függően visszakerül a hívóhoz. Az alapértelmezett érték 0, ami azt jelenti, hogy nincs újrapróbálkozás.
 * **databaseId** – Megadja, hogy melyik adatbázist használja a gyorsítótár kimeneti adataihoz. Ha nincs megadva, a rendszer a 0 alapértelmezett értéket használja.

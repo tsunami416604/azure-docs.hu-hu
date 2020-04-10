@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: 4b8cfed883ffef780de2e82e3f309e97bcb5515c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4301a55e3f5ea5b445ef1540ee59d1b5c28ca0ed
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278245"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010817"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Azure Cache for Redis-időtúllépések hibaelhárítása
 
@@ -82,7 +82,7 @@ A következő lépésekkel megvizsgálhatja a lehetséges kiváltó okokat.
    - Ellenőrizze, hogy a processzor tágana-e a kiszolgálón a PROCESSZOR [gyorsítótárteljesítmény-mérőszámának figyelésével.](cache-how-to-monitor.md#available-metrics-and-reporting-intervals) Kérelmek érkezik, miközben Redis a CPU kötött okozhat a kérelmek időout. A feltétel kezelése érdekében a terhelést egy prémium szintű gyorsítótárban több szegmens között is eloszthatja, vagy nagyobb méretűre vagy tarifacsomagra frissíthet. További információt a [kiszolgálóoldali sávszélesség korlátozása](cache-troubleshoot-server.md#server-side-bandwidth-limitation)című témakörben talál.
 1. Vannak-e olyan parancsok, amelyek feldolgozása hosszú időt vesz igénybe a kiszolgálón? A redis-serveren hosszú ideig futó parancsok időhosszabbításokat okozhatnak. A hosszú ideig futó parancsokról a [Hosszan futó parancsok](cache-troubleshoot-server.md#long-running-commands)című témakörben talál további információt. A Redis-cli ügyféllel vagy a [Redis console](cache-configure.md#redis-console)használatával csatlakozhat az Azure Cache for Redis példányhoz. Ezután futtassa a [SLOWLOG](https://redis.io/commands/slowlog) parancsot, és nézze meg, hogy vannak-e a vártnál lassabb kérelmek. A Redis Server és a StackExchange.Redis sok kis kérésre van optimalizálva, nem pedig kevesebb nagy kérésre. Ha az adatokat kisebb részekre osztja, az javíthatja a dolgokat.
 
-    A gyorsítótár SSL-végpontjához redis-cli és stunnel használatával történő csatlakozásról a [Announce ASP.NET Session State Provider for Redis Preview Release](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)című blogbejegyzésében talál további információt.
+    A gyorsítótár TLS/SSL-végpontjához redis-cli és stunnel használatával történő csatlakozásról a [Announceing ASP.NET Session State Provider for Redis Preview Release](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)című blogbejegyzésben talál további információt.
 1. A Redis-kiszolgáló nagy terhelése időtúlterhelést okozhat. A kiszolgáló terhelését a `Redis Server Load` [gyorsítótár teljesítménymutatójának](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)figyelésével figyelheti. A 100-as kiszolgálóterhelés (maximális érték) azt jelzi, hogy a redis kiszolgáló foglalt volt, tétlen idő nélkül, a kérelmek feldolgozása. Ha meg szeretné tudni, hogy bizonyos kérelmek az összes kiszolgálói funkciót igénybe veszik-e, futtassa a SlowLog parancsot az előző bekezdésben leírtak szerint. További információ: Magas CPU-használat / Kiszolgálóbetöltés.
 1. Volt-e más olyan esemény az ügyféloldalon, ami hálózati blip-et okozhatott volna? A gyakori események közé tartozik: az ügyfélpéldányok számának felfelé vagy lefelé méretezése, az ügyfél új verziójának üzembe helyezése vagy az automatikus skálázás engedélyezve. A tesztelés során azt találtuk, hogy az automatikus skálázás vagy a felskálázás vagy a fel- és leskálázás néhány másodpercre elveszhet a kimenő hálózati kapcsolat. StackExchange.Redis kód rugalmas az ilyen események és újracsatlakozik. Az újracsatlakozás során a várólistában lévő kérelmek időout-el.
 1. Volt-e egy nagy kérés megelőző több kis kéréseket a gyorsítótárba, hogy az időtúljelentkezés? A `qs` hibaüzenetben szereplő paraméter megmutatja, hogy hány kérelmet küldött az ügyfél a kiszolgálónak, de még nem dolgozta fel a választ. Ez az érték folyamatosan növekszik, mert a StackExchange.Redis egyetlen TCP-kapcsolatot használ, és egyszerre csak egy választ tud olvasni. Annak ellenére, hogy az első művelet időtúlodott, nem akadályozza meg, hogy több adatot küldjenek a kiszolgálóra vagy a kiszolgálóról. Más kérelmek blokkolva lesz, amíg a nagy kérés befejeződött, és időtúlokra vezethet. Az egyik megoldás az időmegosztások esélyének minimalizálása annak biztosításával, hogy a gyorsítótár elég nagy a számítási feladatokhoz, és a nagy értékeket kisebb adattömbökre osztja fel. Egy másik lehetséges megoldás `ConnectionMultiplexer` az, hogy egy objektumkészlet et `ConnectionMultiplexer` használ az ügyfélben, és válassza ki a legkevésbé betöltött új kérelem küldésekor. Több kapcsolatobjektum közötti betöltésnek meg kell akadályoznia, hogy egyetlen időtúllépés más kérelmek et is időtúllépésre késztetjen.

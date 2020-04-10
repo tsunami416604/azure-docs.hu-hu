@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: Válaszok az Azure Dev Spaces-sel kapcsolatos gyakori kérdésekre
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes szolgáltatás, tárolók, Helm, szolgáltatásháló, szolgáltatásháló útválasztás, kubectl, k8s '
-ms.openlocfilehash: e7b4620faa01aa9f6d46c34bafb1c623c338beb7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f3ac6ec3c3ddbe8ff508befba2eb4a8423e66f07
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240495"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998737"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Gyakori kérdések az Azure dev spaces-ről
 
@@ -81,6 +81,14 @@ Ha a Visual Studio segítségével készíti elő a projektet, lehetősége van 
 
 Jelenleg az Azure Dev Spaces nem támogatja [a pod felügyelt identitások][aks-pod-managed-id] aKS-fürtök en azure dev spaces engedélyezve van. Ha telepítve van a pod által felügyelt identitások, és szeretné eltávolítani, további részleteket az [eltávolítási megjegyzésekben][aks-pod-managed-id-uninstall]talál.
 
+## <a name="can-i-use-azure-dev-spaces-with-multiple-microservices-in-an-application"></a>Használhatom az Azure Dev Spaces-t több mikroszolgáltatással egy alkalmazásban?
+
+Igen, használhatja az Azure Dev Spaces egy alkalmazás több mikroszolgáltatások, de elő kell készítenie, és az egyes mikroszolgáltatások a gyökér. Az Azure Dev Spaces CLI, az Azure Dev Spaces VS Code bővítmény és a Visual Studio Azure Development számítási feladatok elvárják, hogy az *azds.yaml* fájl legyen a mikroszolgáltatás gyökere a futtatás és hibakeresés érdekében. Tekintse meg a [Bike Sharing mintaalkalmazás][bike-sharing] egy példa több mikroszolgáltatások egyetlen alkalmazásban.
+
+A Visual Studio-kódban lehetőség van [külön projektek megnyitására egyetlen munkaterületen,][vs-code-multi-root-workspaces] és az Azure Dev Spaces-en keresztül külön-külön hibakeresésük. Minden projektnek önállónak kell lennie, és elő kell készítenie az Azure Dev Spaces számára.
+
+A Visual Studio-ban konfigurálható a .NET Core megoldások az Azure Dev Spaces-en keresztüli hibakereséshez.
+
 [aks-auth-range]: ../aks/api-server-authorized-ip-ranges.md
 [aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled
 [aks-auth-range-ranges]: https://github.com/Azure/dev-spaces/tree/master/public-ips
@@ -89,6 +97,7 @@ Jelenleg az Azure Dev Spaces nem támogatja [a pod felügyelt identitások][aks-
 [aks-pod-managed-id]: ../aks/developer-best-practices-pod-security.md#use-pod-managed-identities
 [aks-pod-managed-id-uninstall]: https://github.com/Azure/aad-pod-identity#uninstall-notes
 [aks-restrict-egress-traffic]: ../aks/limit-egress-traffic.md
+[bike-sharing]: https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp
 [dev-spaces-prep]: how-dev-spaces-works-prep.md
 [dev-spaces-routing]: how-dev-spaces-works-routing.md#how-routing-works
 [ingress-nginx]: how-to/ingress-https-nginx.md#configure-a-custom-nginx-ingress-controller
@@ -97,4 +106,5 @@ Jelenleg az Azure Dev Spaces nem támogatja [a pod felügyelt identitások][aks-
 [ingress-https-traefik]: how-to/ingress-https-traefik.md#configure-the-traefik-ingress-controller-to-use-https
 [quickstart-cli]: quickstart-cli.md
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
+[vs-code-multi-root-workspaces]: https://code.visualstudio.com/docs/editor/multi-root-workspaces
 [windows-containers]: how-to/run-dev-spaces-windows-containers.md

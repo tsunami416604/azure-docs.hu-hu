@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 0d55bafc513ef7553952ee2096ea32db65d6205d
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 555da74da65f3b1897a276cf819a263334cfa053
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673767"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80999061"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Oktatóanyag: Hozzon létre egy szabályt, és állítson be értesítéseket az Azure IoT Central alkalmazásban
 
@@ -34,11 +34,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, töltse ki az [Azure IoT Central alkalmazás létrehozása](./quick-deploy-iot-central.md) és egy [szimulált eszköz hozzáadása az IoT Central alkalmazás](./quick-create-pnp-device.md) rövid útmutatóihoz az **MXChip IoT DevKit** eszközsablon létrehozásához.
+Mielőtt elkezdené, töltse ki az [Azure IoT Central alkalmazás létrehozása](./quick-deploy-iot-central.md) és egy [szimulált eszköz hozzáadása az IoT Central alkalmazás](./quick-create-simulated-device.md) rövid útmutatóihoz az **MXChip IoT DevKit** eszközsablon létrehozásához.
 
 ## <a name="create-a-rule"></a>Szabály létrehozása
 
-Telemetriai szabály létrehozásához az eszközsablonnak legalább egy telemetriai értéket tartalmaznia kell. Ez az oktatóanyag egy szimulált **MXChip IoT DevKit-eszközt** használ, amely hőmérséklet- és páratartalom-telemetriát küld. Hozzáadta ezt az eszközsablont, és létrehozott egy szimulált eszközt a [Szimulált eszköz hozzáadása az IoT Central alkalmazás](./quick-create-pnp-device.md) rövid útmutatójában. A szabály figyeli az eszköz által jelentett hőmérsékletet, és e-mailt küld, ha 70 fok fölé megy.
+Telemetriai szabály létrehozásához az eszközsablonnak legalább egy telemetriai értéket tartalmaznia kell. Ez az oktatóanyag egy szimulált **MXChip IoT DevKit-eszközt** használ, amely hőmérséklet- és páratartalom-telemetriát küld. Hozzáadta ezt az eszközsablont, és létrehozott egy szimulált eszközt a [Szimulált eszköz hozzáadása az IoT Central alkalmazás](./quick-create-simulated-device.md) rövid útmutatójában. A szabály figyeli az eszköz által jelentett hőmérsékletet, és e-mailt küld, ha 70 fok fölé megy.
 
 1. A bal oldali ablaktáblában válassza a **Szabályok**lehetőséget.
 

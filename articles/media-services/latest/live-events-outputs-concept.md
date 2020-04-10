@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/08/2020
 ms.author: juliako
-ms.openlocfilehash: 8a00f7c0ec76510cc521966acf98b7250e723697
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 8eca95f9fca47fca4d54bacbab35f3a0ffc3ba31
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985898"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010579"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Élő események és élő kimenetek a Médiaszolgáltatásokban
 
@@ -111,7 +111,7 @@ Kreatív vagy nem kreatív URL-címeket is használhat.
 
 * Hiúság URL-címe
 
-    A hiúsági módot a hardveres műsorszórási kódolókat használó nagy médiaműsorszolgáltatók előnyben részesítik, és nem akarják újrakonfigurálni kódolóikat az élő esemény indításakor. Prediktív betöltési URL-t szeretnének, amely nem változik az idő múlásával.
+    A hiúsági módot a hardveres műsorszórási kódolókat használó nagy médiaműsorszolgáltatók előnyben részesítik, és nem akarják újrakonfigurálni kódolóikat az élő esemény indításakor. Ezek a műsorszolgáltatók olyan prediktív betöltési URL-t szeretnének, amely nem változik az idő múlásával.
     
     > [!NOTE]
     > Az Azure Portalon a hiúság URL-címe "*állandó bemeneti URL-cím*".

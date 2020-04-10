@@ -5,19 +5,30 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 02/18/2020
+ms.date: 04/09/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 77fc6070010791bf96c944114929eba95842c9d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e53dda2c6cb293a9204f344d152daa1937aa38b
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77471692"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81008342"
 ---
-Előzetes verzióban a megosztott lemezekkel rendelkező felügyelt lemezekre a következő korlátozások vonatkoznak:
+Előzetes verzióban a megosztott lemezek engedélyezése csak a lemeztípusok egy részhalmaza számára érhető el. Jelenleg csak az ultra lemezek és a prémium szintű SSD-k engedélyezhetik a megosztott lemezeket. Minden olyan felügyelt lemezre, amelynek engedélyezve van a megosztott lemeze, a következő korlátozások vonatkoznak, lemeztípus szerint rendezve:
 
-- Jelenleg csak prémium SSD-k esetén érhető el.
+### <a name="ultra-disks"></a>Ultralemezek
+
+Az ultralemezek saját külön korlátozásokkal rendelkeznek, amelyek nem kapcsolódnak a megosztott lemezekhez. Az ultralemezek korlátairól az [Azure ultralemezek használata .for ultra disks.](../articles/virtual-machines/linux/disks-enable-ultra-ssd.md)
+
+Az ultralemezek megosztásakor a következő további korlátozások vannak:
+
+- Jelenleg csak az USA nyugati részén támogatott.
+- Jelenleg csak az Azure Resource Manager vagy SDK-támogatás.
+- Csak alaplemezek használhatók a Windows Server feladatátvevő fürt egyes verzióiban, további információt a [Feladatátvevő fürthardver-követelmények és a tárolási lehetőségek](https://docs.microsoft.com/windows-server/failover-clustering/clustering-requirements)című témakörben talál.
+
+### <a name="premium-ssds"></a>Prémium szintű SSD-k
+
 - Jelenleg csak az USA nyugati középső régiójában támogatott.
 - A lemezen osztozó összes virtuális gépet ugyanabban a [közelségi elhelyezési csoportban](../articles/virtual-machines/windows/proximity-placement-groups.md)kell telepíteni.
 - Csak adatlemezeken engedélyezhető, operációsrendszer-lemezeken nem.

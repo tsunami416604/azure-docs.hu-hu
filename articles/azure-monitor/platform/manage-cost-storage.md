@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/08/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 5b532908df4b8dd58177b7e128f4e55aa96458e6
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: d03b053f2aa5de4a6f7874dbf4e6ccb3a305a964
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409954"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992079"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Használat és költségek kezelése az Azure Figyelő naplókkal
 
@@ -88,6 +88,9 @@ A [tarifacsomagot az Azure Resource](https://docs.microsoft.com/azure/azure-moni
 Azok az előfizetések, akik **Free**2018. **Standalone (Per GB)** **Per Node (OMS)**  Az ingyenes tarifacsomag munkaterületeinek napi adatbetöltése 500 MB-ra korlátozódik (kivéve az Azure Security Center által gyűjtött biztonsági adattípusokat), és az adatmegőrzés 7 napra korlátozódik. Az ingyenes tarifacsomag csak értékelési célokat szolgál. Az önálló vagy csomópontonkénti tarifacsomagok munkaterületei 30 és 730 nap között rendelkeznek a felhasználó által konfigurálható megőrzési adatokkal.
 
 A csomópontonkénti tarifacsomag díjai figyelt virtuális gép (csomópont) egy óra granularitás. Minden figyelt csomópont esetében a munkaterület napi 500 MB-os, nem számlázott adatokat kap. Ez a felosztás a munkaterület szintjén összesítve történik. Az összesített napi adatlefoglalás felett bevitt adatok számlázása GB-onként adattúllépésként történik. Vegye figyelembe, hogy a számlán a szolgáltatás az **Insight és** az Analytics a Log Analytics-használat, ha a munkaterület a csomópontonkénti tarifacsomag. 
+
+> [!TIP]
+> Ha a munkaterület hozzáfér a **csomópontonkénti** tarifacsomaghoz, de kíváncsi, hogy az olcsóbb lenne-e egy használatalapú fizetési szintben, [az alábbi lekérdezéssel](#evaluating-the-legacy-per-node-pricing-tier) egyszerűen kaphat egy javaslatot. 
 
 A 2016 áprilisa előtt létrehozott munkaterületek is hozzáférhetnek az eredeti **standard** és **prémium** tarifacsomagokhoz, amelyek rögzített adatmegőrzési sorrendben 30, illetve 365 nap. Nem hozhatók létre új munkaterületek a **standard** vagy **prémium szintű** tarifacsomagokban, és ha egy munkaterületet áthelyeznek ezekből a rétegekből, akkor nem helyezhető vissza. 
 
@@ -434,6 +437,49 @@ Az eltérő Automatizálási csomópontok számának megtekintéséhez használj
        | extend lowComputer = tolower(Computer) | summarize by lowComputer, ComputerEnvironment
  ) on lowComputer
  | summarize count() by ComputerEnvironment | sort by ComputerEnvironment asc
+```
+
+## <a name="evaluating-the-legacy-per-node-pricing-tier"></a>Az örökölt csomópontonkénti tarifacsomag kiértékelése
+
+Gyakran nehéz eldönteni, hogy az örökölt **csomópontonkénti** tarifacsomaghoz hozzáféréssel rendelkező munkaterületek jobban járnak-e az adott rétegben, illetve az aktuális **használatra annyi-** vagy **kapacitásfoglalási** szinten.  Ez magában foglalja a csomópontonkénti díjszabási szint monitorozott csomópontonkénti rögzített költségének és az 500 MB/csomópont/nap szerinti adatallokációjának és a használatra szánt adatok nak a használatra szánt (GB-onkénti) szintű feldolgozási díj fizetésének költségeit. 
+
+Ennek az értékelésnek az megkönnyítése érdekében a következő lekérdezést lehet használni, hogy egy javaslat az optimális tarifacsomag alapján a munkaterület használati minták.  Ez a lekérdezés megvizsgálja a figyelt csomópontok és az adatok egy munkaterületre az elmúlt 7 napban, és minden nap kiértékeli, hogy melyik tarifacsomag lett volna optimális. A lekérdezés használatához meg kell adnia, hogy a munkaterület `workspaceHasSecurityCenter` az `true` `false`Azure Security Centert használja-e a vagy a beállítással, majd (opcionálisan) frissítenie kell a csomópontonkénti és GB-onkénti árakat, amelyeket a rendszerezés kap. 
+
+```kusto
+// Set these paramaters before running query
+let workspaceHasSecurityCenter = true;  // Specify if the workspace has Azure Security Center
+let PerNodePrice = 15.; // Enter your price per node / month 
+let PerGBPrice = 2.30; // Enter your price per GB 
+// ---------------------------------------
+let SecurityDataTypes=dynamic(["SecurityAlert", "SecurityBaseline", "SecurityBaselineSummary", "SecurityDetection", "SecurityEvent", "WindowsFirewall", "MaliciousIPCommunication", "LinuxAuditLog", "SysmonEvent", "ProtectionStatus", "WindowsEvent", "Update", "UpdateSummary"]);
+union withsource = tt * 
+| where TimeGenerated >= startofday(now(-7d)) and TimeGenerated < startofday(now())
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize nodesPerHour = dcount(computerName) by bin(TimeGenerated, 1h)  
+| summarize nodesPerDay = sum(nodesPerHour)/24.  by day=bin(TimeGenerated, 1d)  
+| join (
+    Usage 
+    | where TimeGenerated > ago(8d)
+    | where StartTime >= startofday(now(-7d)) and EndTime < startofday(now())
+    | where IsBillable == true
+    | extend NonSecurityData = iff(DataType !in (SecurityDataTypes), Quantity, 0.)
+    | extend SecurityData = iff(DataType in (SecurityDataTypes), Quantity, 0.)
+    | summarize DataGB=sum(Quantity)/1000., NonSecurityDataGB=sum(NonSecurityData)/1000., SecurityDataGB=sum(SecurityData)/1000. by day=bin(StartTime, 1d)  
+) on day
+| extend AvgGbPerNode =  NonSecurityDataGB / nodesPerDay
+| extend PerGBDailyCost = iff(workspaceHasSecurityCenter,
+             (NonSecurityDataGB + max_of(SecurityDataGB - 0.5*nodesPerDay, 0.)) * PerGBPrice,
+             DataGB * PerGBPrice)
+| extend OverageGB = iff(workspaceHasSecurityCenter, 
+             max_of(DataGB - 1.0*nodesPerDay, 0.), 
+             max_of(DataGB - 0.5*nodesPerDay, 0.))
+| extend PerNodeDailyCost = nodesPerDay * PerNodePrice / 31. + OverageGB * PerGBPrice
+| extend Recommendation = iff(PerNodeDailyCost < PerGBDailyCost, "Per Node tier", 
+             iff(NonSecurityDataGB > 85., "Capacity Reservation tier", "Pay-as-you-go (Per GB) tier"))
+| project day, nodesPerDay, NonSecurityDataGB, SecurityDataGB, OverageGB, AvgGbPerNode, PerGBDailyCost, PerNodeDailyCost, Recommendation | sort by day asc
+| project day, Recommendation // Comment this line to see details
+| sort by day asc
 ```
 
 ## <a name="create-an-alert-when-data-collection-is-high"></a>Riasztás létrehozása, ha az adatgyűjtés magas

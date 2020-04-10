@@ -3,13 +3,13 @@ title: Pod biztonsági szabályzatok használata az Azure Kubernetes-szolgáltat
 description: Ismerje meg, hogyan szabályozhatja a podos beléptetéseket a PodSecurityPolicy használatával az Azure Kubernetes-szolgáltatásban (AKS)
 services: container-service
 ms.topic: article
-ms.date: 04/17/2019
-ms.openlocfilehash: 74177136a7a61186ab1d273b57dbfce550a18ecf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/08/2020
+ms.openlocfilehash: 9e3a17e4775150247ef7924dffec68cc86a0bcac
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77914534"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998359"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Előzetes verzió – A fürt biztonságossá tétele pod biztonsági szabályzatok használatával az Azure Kubernetes-szolgáltatásban (AKS)
 
@@ -103,17 +103,17 @@ NAME         PRIV    CAPS   SELINUX    RUNASUSER          FSGROUP     SUPGROUP  
 privileged   true    *      RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *     configMap,emptyDir,projected,secret,downwardAPI,persistentVolumeClaim
 ```
 
-A *kiemelt* pod biztonsági házirend az AKS-fürt bármely hitelesített felhasználójára vonatkozik. Ezt a hozzárendelést clusterroles és ClusterRoleBindings szabályozza. Használja a [kubectl get clusterrolebindings parancsot,][kubectl-get] és keresse meg az *alapértelmezett:privilegizált:* kötés:
+A *kiemelt* pod biztonsági házirend az AKS-fürt bármely hitelesített felhasználójára vonatkozik. Ezt a hozzárendelést clusterroles és ClusterRoleBindings szabályozza. Használja a [kubectl get rolebindings parancsot,][kubectl-get] és keresse meg az *default:privileged:* binding a *kube-rendszer* névtérben:
 
 ```console
-kubectl get clusterrolebindings default:privileged -o yaml
+kubectl get rolebindings default:privileged -n kube-system -o yaml
 ```
 
 Ahogy az a következő tömörített kimenetben is látható, a *psp:restricted* ClusterRole bármely *system:authenticated* users-hez van rendelve. Ez a képesség a saját házirendek definiálása nélkül biztosítja a korlátozások alapvető szintjét.
 
 ```
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
+kind: RoleBinding
 metadata:
   [...]
   name: default:privileged
@@ -125,7 +125,7 @@ roleRef:
 subjects:
 - apiGroup: rbac.authorization.k8s.io
   kind: Group
-  name: system:authenticated
+  name: system:masters
 ```
 
 Fontos megérteni, hogy ezek az alapértelmezett szabályzatok hogyan lépnek kapcsolatba a felhasználói kérésekkel a podok ütemezéséhez, mielőtt elkezdené létrehozni a saját pod biztonsági szabályzatokat. A következő néhány szakaszban ütemezzen néhány podot, hogy ezek az alapértelmezett szabályzatok működés közben jelenjenek meg.
@@ -195,7 +195,7 @@ A pod nem ütemezhető, ahogy az a következő példa kimeneti:
 ```console
 $ kubectl-nonadminuser apply -f nginx-privileged.yaml
 
-Error from server (Forbidden): error when creating "nginx-privileged.yaml": pods "nginx-privileged" is forbidden: unable to validate against any pod security policy: [spec.containers[0].securityContext.privileged: Invalid value: true: Privileged containers are not allowed]
+Error from server (Forbidden): error when creating "nginx-privileged.yaml": pods "nginx-privileged" is forbidden: unable to validate against any pod security policy: []
 ```
 
 A pod nem éri el az ütemezési szakaszban, így nincsenek erőforrások törlése, mielőtt továbblépne.
@@ -223,44 +223,15 @@ Hozza létre a podot a [kubectl apply][kubectl-apply] paranccsal, és adja meg a
 kubectl-nonadminuser apply -f nginx-unprivileged.yaml
 ```
 
-A Kubernetes-ütemező elfogadja a pod-kérelmet. Ha azonban a pod állapotát a `kubectl get pods`használatával vizsgálja, hiba történt:
+A pod nem ütemezhető, ahogy az a következő példa kimeneti:
 
 ```console
-$ kubectl-nonadminuser get pods
+$ kubectl-nonadminuser apply -f nginx-unprivileged.yaml
 
-NAME                 READY   STATUS                       RESTARTS   AGE
-nginx-unprivileged   0/1     CreateContainerConfigError   0          26s
+Error from server (Forbidden): error when creating "nginx-unprivileged.yaml": pods "nginx-unprivileged" is forbidden: unable to validate against any pod security policy: []
 ```
 
-Használja a [kubectl írja pod][kubectl-describe] parancs a pod eseményeinek megtekintéséhez. A következő tömörített példa azt mutatja, hogy a tároló és a rendszerkép root engedélyeket igényel, még akkor is, ha nem kértük őket:
-
-```console
-$ kubectl-nonadminuser describe pod nginx-unprivileged
-
-Name:               nginx-unprivileged
-Namespace:          psp-aks
-Priority:           0
-PriorityClassName:  <none>
-Node:               aks-agentpool-34777077-0/10.240.0.4
-Start Time:         Thu, 28 Mar 2019 22:05:04 +0000
-[...]
-Events:
-  Type     Reason     Age                     From                               Message
-  ----     ------     ----                    ----                               -------
-  Normal   Scheduled  7m14s                   default-scheduler                  Successfully assigned psp-aks/nginx-unprivileged to aks-agentpool-34777077-0
-  Warning  Failed     5m2s (x12 over 7m13s)   kubelet, aks-agentpool-34777077-0  Error: container has runAsNonRoot and image will run as root
-  Normal   Pulled     2m10s (x25 over 7m13s)  kubelet, aks-agentpool-34777077-0  Container image "nginx:1.14.2" already present on machine
-```
-
-Annak ellenére, hogy nem kértünk semmilyen privilegizált hozzáférést, az NGINX tárolórendszerképének létre kell hoznia egy kötést a *80-as*porthoz. Az *1024-es* és az alatti portok kötéséhez a *gyökérfelhasználóra* van szükség. Amikor a pod megpróbálja elindítani, a *korlátozott* pod biztonsági házirend elutasítja ezt a kérést.
-
-Ez a példa azt mutatja, hogy az AKS által létrehozott alapértelmezett pod biztonsági házirendek vannak érvényben, és korlátozzák a felhasználó által végrehajtható műveleteket. Fontos, hogy megértse ezeknek az alapértelmezett házirendeknek a viselkedését, mivel előfordulhat, hogy nem várható el, hogy egy alapvető NGINX-pod ot meg kell tagadni.
-
-Mielőtt továbblépne a következő lépésre, törölje ezt a tesztpodot a [kubectl delete pod][kubectl-delete] paranccsal:
-
-```console
-kubectl-nonadminuser delete -f nginx-unprivileged.yaml
-```
+A pod nem éri el az ütemezési szakaszban, így nincsenek erőforrások törlése, mielőtt továbblépne.
 
 ## <a name="test-creation-of-a-pod-with-a-specific-user-context"></a>Pod létrehozásának tesztelése adott felhasználói környezettel
 
@@ -287,61 +258,15 @@ Hozza létre a podot a [kubectl apply][kubectl-apply] paranccsal, és adja meg a
 kubectl-nonadminuser apply -f nginx-unprivileged-nonroot.yaml
 ```
 
-A Kubernetes-ütemező elfogadja a pod-kérelmet. Ha azonban a pod állapotát a `kubectl get pods`használatával vizsgálja, akkor az előző példától eltérő hiba történt:
+A pod nem ütemezhető, ahogy az a következő példa kimeneti:
 
 ```console
-$ kubectl-nonadminuser get pods
+$ kubectl-nonadminuser apply -f nginx-unprivileged-nonroot.yaml
 
-NAME                         READY   STATUS              RESTARTS   AGE
-nginx-unprivileged-nonroot   0/1     CrashLoopBackOff    1          3s
+Error from server (Forbidden): error when creating "nginx-unprivileged-nonroot.yaml": pods "nginx-unprivileged-nonroot" is forbidden: unable to validate against any pod security policy: []
 ```
 
-Használja a [kubectl írja pod][kubectl-describe] parancs a pod eseményeinek megtekintéséhez. A következő tömörített példa a pod eseményeket mutatja:
-
-```console
-$ kubectl-nonadminuser describe pods nginx-unprivileged
-
-Name:               nginx-unprivileged
-Namespace:          psp-aks
-Priority:           0
-PriorityClassName:  <none>
-Node:               aks-agentpool-34777077-0/10.240.0.4
-Start Time:         Thu, 28 Mar 2019 22:05:04 +0000
-[...]
-Events:
-  Type     Reason     Age                   From                               Message
-  ----     ------     ----                  ----                               -------
-  Normal   Scheduled  2m14s                 default-scheduler                  Successfully assigned psp-aks/nginx-unprivileged-nonroot to aks-agentpool-34777077-0
-  Normal   Pulled     118s (x3 over 2m13s)  kubelet, aks-agentpool-34777077-0  Container image "nginx:1.14.2" already present on machine
-  Normal   Created    118s (x3 over 2m13s)  kubelet, aks-agentpool-34777077-0  Created container
-  Normal   Started    118s (x3 over 2m12s)  kubelet, aks-agentpool-34777077-0  Started container
-  Warning  BackOff    105s (x5 over 2m11s)  kubelet, aks-agentpool-34777077-0  Back-off restarting failed container
-```
-
-Az események azt jelzik, hogy a tároló jött létre, és elindult. Nincs semmi azonnal nyilvánvaló, hogy miért a pod van egy sikertelen állapotban. Nézzük meg a pod naplók segítségével [kubectl naplók][kubectl-logs] parancs:
-
-```console
-kubectl-nonadminuser logs nginx-unprivileged-nonroot --previous
-```
-
-A következő példa napló kimenetazt jelzi, hogy az NGINX-konfiguráción belül, van egy engedélyhiba, amikor a szolgáltatás megpróbálja elindítani. Ezt a hibát ismét a 80-as porthoz való kötés okozza. Bár a pod specifikációja egy rendszeres felhasználói fiókot határozott meg, ez a felhasználói fiók nem elegendő az OPERÁCIÓS rendszer szintjén az NGINX szolgáltatás indításához és a korlátozott porthoz való kötéshez.
-
-```console
-$ kubectl-nonadminuser logs nginx-unprivileged-nonroot --previous
-
-2019/03/28 22:38:29 [warn] 1#1: the "user" directive makes sense only if the master process runs with super-user privileges, ignored in /etc/nginx/nginx.conf:2
-nginx: [warn] the "user" directive makes sense only if the master process runs with super-user privileges, ignored in /etc/nginx/nginx.conf:2
-2019/03/28 22:38:29 [emerg] 1#1: mkdir() "/var/cache/nginx/client_temp" failed (13: Permission denied)
-nginx: [emerg] mkdir() "/var/cache/nginx/client_temp" failed (13: Permission denied)
-```
-
-Ismét fontos, hogy az alapértelmezett pod biztonsági házirendek viselkedését. Ez a hiba egy kicsit nehezebb volt lenyomozni, és újra, lehet, hogy nem számíthat egy alapvető NGINX pod kell tagadni.
-
-Mielőtt továbblépne a következő lépésre, törölje ezt a tesztpodot a [kubectl delete pod][kubectl-delete] paranccsal:
-
-```console
-kubectl-nonadminuser delete -f nginx-unprivileged-nonroot.yaml
-```
+A pod nem éri el az ütemezési szakaszban, így nincsenek erőforrások törlése, mielőtt továbblépne.
 
 ## <a name="create-a-custom-pod-security-policy"></a>Egyéni pod biztonsági házirend létrehozása
 
@@ -383,7 +308,7 @@ $ kubectl get psp
 
 NAME                  PRIV    CAPS   SELINUX    RUNASUSER          FSGROUP     SUPGROUP    READONLYROOTFS   VOLUMES
 privileged            true    *      RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *
-psp-deny-privileged   false          RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *          configMap,emptyDir,projected,secret,downwardAPI,persistentVolumeClaim
+psp-deny-privileged   false          RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *          
 ```
 
 ## <a name="allow-user-account-to-use-the-custom-pod-security-policy"></a>Az egyéni pod biztonsági házirendjének használata a felhasználói fiók számára

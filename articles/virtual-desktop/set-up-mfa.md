@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0b3c47e1bbe5efdc5ee303305e52a785a49d0c00
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: b470f9278bdca94d1fe98c64b11b070fb36cb075
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586872"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998471"
 ---
-# <a name="set-up-azure-multi-factor-authentication"></a>Az Azure többtényezős hitelesítésének beállítása
+# <a name="set-up-azure-multi-factor-authentication"></a>Az Azure Multi-Factor Authentication beállítása
 
 A Windows-ügyfél windowsos virtuális asztal kiváló lehetőség a Windows virtuális asztal integrálására a helyi számítógéppel. Ha azonban a Windows virtuális asztal fiókját a Windows-ügyfélprogramba állítja, bizonyos intézkedéseket kell tennie saját maga és a felhasználók biztonságának megőrzése érdekében.
 
@@ -32,7 +32,7 @@ A kezdéshez a következőkre lesz szüksége:
   - Azure Active Directory Prémium P1 vagy P2
   - Vállalati mobilitás + E3 vagy E5 biztonság
 - Egy Azure Active Directory-csoport a felhasználók rendelt csoporttagjai.
-- Engedélyezze az Azure MFA-t az összes felhasználó számára. Ennek módjáról a [Felhasználó kétlépéses ellenőrzésének megkövetelése](/active-directory/authentication/howto-mfa-userstates)című témakörben talál további információt.
+- Engedélyezze az Azure MFA-t az összes felhasználó számára. Ennek módjáról a [Felhasználó kétlépéses ellenőrzésének megkövetelése](../active-directory/authentication/howto-mfa-userstates.md#view-the-status-for-a-user)című témakörben talál további információt.
 
 >[!NOTE]
 >A következő beállítás a [Windows Virtual Desktop webes ügyfélprogramra](https://rdweb.wvd.microsoft.com/webclient/index.html)is vonatkozik.

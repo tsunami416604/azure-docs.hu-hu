@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 04/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 68e234b9db269c30dc9f24106ae1942c01304da7
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 534e5c913685eeac92022f6694ea31b24816da5d
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422504"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011650"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Adatok másolása az Oracle-től és az Oracle-nek az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
@@ -37,6 +37,7 @@ Az Oracle-adatbázisból adatokat másolhat bármely támogatott fogadóadattár
 Pontosabban, ez az Oracle csatlakozó támogatja:
 
 - Az Oracle adatbázis következő verziói:
+    - Oracle 19c R1 (19.1) és magasabb
     - Oracle 18c R1 (18.1) és magasabb
     - Oracle 12c R1 (12.1) és magasabb
     - Oracle 11g R1 (11.1) és magasabb
@@ -84,9 +85,9 @@ Az Oracle-kapcsolat titkosításának engedélyezéséhez két lehetőség köz�
 
 -   A **Triple-DES Encryption (3DES) és az Advanced Encryption Standard (AES)** használatához az Oracle kiszolgálóoldalán nyissa meg az Oracle Advanced Security (OAS) webhelyet, és konfigurálja a titkosítási beállításokat. További részletekért tekintse meg ezt az [Oracle dokumentációt.](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759) Az Oracle Application Development Framework (ADF) összekötő automatikusan egyezteti a titkosítási módszert, hogy az Oracle-rel való kapcsolat létrehozásakor az OAS-ban konfigurált titkosítási módszert használja.
 
--   Az **SSL**használata:
+-   A **TLS**használata:
 
-    1.  Az SSL-tanúsítvány adatainak beszerezése. Az SSL-tanúsítvány megkülönböztető kódolási szabályainak (DER) kódolású tanúsítványadatainak beszereznie, és menteni a kimenetet (----- A tanúsítvány kezdete ... Tanúsítvány befejezése -----) szövegfájlként.
+    1.  A TLS/SSL tanúsítvány adatainak beszereznie. A TLS/SSL tanúsítvány megkülönböztető kódolási szabályainak (DER) kódolású tanúsítványadatainak beszereznie, és menteni a kimenetet (----- A tanúsítvány kezdete ... Tanúsítvány befejezése -----) szövegfájlként.
 
         ```
         openssl x509 -inform DER -in [Full Path to the DER Certificate including the name of the DER Certificate] -text

@@ -7,17 +7,17 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/06/2020
 keywords: aro, openshift, az aro, piros kalap, cli
-ms.openlocfilehash: 423f09c135da51b8401c1933a4a271d0becd2c8f
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 9488ef593cf4ec8600dcb42ea4a2cefa4fcb1446
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349437"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998800"
 ---
 # <a name="create-access-and-manage-an-azure-red-hat-openshift-43-cluster"></a>Azure Red Hat OpenShift 4.3-as fürt létrehozása, elérése és kezelése
 
 > [!IMPORTANT]
-> Kérjük, vegye figyelembe, hogy az Azure Red Hat OpenShift 4.3 jelenleg csak privát előzetes verzióban érhető el az USA keleti részén. A privát előnézet elfogadása csak meghívással történik. Kérjük, regisztrálja az előfizetést, mielőtt megpróbálná engedélyezni ezt a funkciót: [Azure Red Hat OpenShift private preview registration](https://aka.ms/aro-preview-register)
+> Kérjük, vegye figyelembe, hogy az Azure Red Hat OpenShift 4.3 jelenleg csak privát előzetes verzióban érhető el az USA keleti részén és az USA keleti részén 2. A privát előnézet elfogadása csak meghívással történik. Kérjük, regisztrálja az előfizetést, mielőtt megpróbálná engedélyezni ezt a funkciót: [Azure Red Hat OpenShift private preview registration](https://aka.ms/aro-preview-register)
 
 > [!NOTE]
 > Az előzetes verzió funkciói önkiszolgálóak, és a rendelkezésre álló mértékben érhetők el, és nem tartoznak a szolgáltatásiszint-szerződés (SLA) és a korlátozott jótállás hatálya alól. Ezért a funkciók nem éles használatra szántak.
@@ -65,7 +65,7 @@ A `az aro` bővítmény lehetővé teszi az Azure Red Hat OpenShift fürtök lé
    az -v
    ...
    Extensions:
-   aro                                0.1.0
+   aro                                0.3.0
    ...
    ```
   
@@ -108,7 +108,7 @@ Két üres alhálózatot tartalmazó virtuális hálózat létrehozásához köv
 4. Két üres alhálózat hozzáadása a virtuális hálózathoz.
 
    ```console
-    for subnet in "$CLUSTER-master" "$CLUSTER-worker"; do
+   for subnet in "$CLUSTER-master" "$CLUSTER-worker"; do
      az network vnet subnet create \
        -g "$RESOURCEGROUP" \
        --vnet-name vnet \
@@ -141,6 +141,8 @@ az aro create \
   --vnet vnet \
   --master-subnet "$CLUSTER-master" \
   --worker-subnet "$CLUSTER-worker" \
+  --cluster-resource-group "aro-$CLUSTER" \
+  --domain "$CLUSTER" \
   --pull-secret "$PULL_SECRET"
 ```
 

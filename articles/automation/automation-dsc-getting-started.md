@@ -1,5 +1,5 @@
 ---
-title: Az Azure Automation állapotkonfigurációjának első lépései
+title: Ismerkedés az Azure Automation állapotkonfigurációjával
 description: Az Azure Automation állapotkonfigurációjának (DSC) leggyakoribb feladatainak magyarázata és példái
 services: automation
 ms.service: automation
@@ -9,14 +9,14 @@ ms.author: magoedte
 ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9fce9a769dd6d88c9926913d22716666284938c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2c33fbed6c547897847c79cc1260d2bdc9ec6b17
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74850958"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010324"
 ---
-# <a name="getting-started-with-azure-automation-state-configuration"></a>Az Azure Automation állapotkonfigurációjának első lépései
+# <a name="get-started-with-azure-automation-state-configuration"></a>Ismerkedés az Azure Automation állapotkonfigurációjával
 
 Ez a cikk bemutatja, hogyan lehet elvégezni a leggyakoribb feladatokat az Azure Automation állapotkonfiguráció, például a konfigurációk létrehozása, importálása és összeállítása, bevezetési gépek kezelésére, és a jelentések megtekintése. Az Azure Automation állapotkonfigurációjának áttekintését az [Azure Automation állapotkonfiguráció – áttekintés című témakörben találja.](automation-dsc-overview.md) A kívánt állapotkonfigurációs (DSC) dokumentációról a [Windows PowerShell kívánt állapotkonfiguráció – áttekintéscímű témakörében olvashat.](/powershell/scripting/dsc/overview/overview)
 
@@ -67,7 +67,7 @@ Ez a konfiguráció minden csomópontblokkban egy erőforrást, a [WindowsFeatur
 
 Ezután importálja a konfigurációt az Automation-fiókba.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A bal oldalon kattintson a **Minden erőforrás** elemre, majd az Automation-fiók nevére.
 1. Az **Automation-fiók** lapon válassza az **Állapotkonfiguráció (DSC)** lehetőséget a **Konfigurációkezelés csoportban.**
 1. Az **Állapotkonfiguráció (DSC)** lapon kattintson a **Konfigurációk** fülre, majd a **+ Hozzáadás gombra.**
@@ -81,7 +81,7 @@ Ezután importálja a konfigurációt az Automation-fiókba.
 
 Miután importált egy konfigurációt, megtekintheti azt az Azure Portalon.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A bal oldalon kattintson a **Minden erőforrás** elemre, majd az Automation-fiók nevére.
 1. Az **Automation-fiók** lapon válassza az **Állapotkonfiguráció (DSC)** lehetőséget a **Konfigurációkezelés csoportban.**
 1. Az **Állapotkonfiguráció (DSC)** lapon kattintson a **Konfigurációk** fülre, majd a **TestConfig gombra** (ez az előző eljárásban importált konfiguráció neve).
@@ -96,7 +96,7 @@ Miután importált egy konfigurációt, megtekintheti azt az Azure Portalon.
 A kívánt állapot csomópontra való alkalmazása előtt az adott állapotot meghatározó DSC-konfigurációt egy vagy több csomópontkonfigurációba (MOF-dokumentumba) kell lefordítani, és az Automation DSC lekéréses kiszolgálóra kell helyezni. A konfigurációk Azure Automation-állapotkonfigurációban való összeállításának részletesebb leírását a [Konfigurációk összeállítása az Azure Automation állapotkonfigurációjában című témakörben ismerteti.](automation-dsc-compile.md)
 A konfigurációk összeállításáról a [DSC-konfigurációk](/powershell/scripting/dsc/configurations/configurations)című témakörben talál további információt.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A bal oldalon kattintson a **Minden erőforrás** elemre, majd az Automation-fiók nevére.
 1. Az **Automation-fiók** lapon kattintson az **Állapotkonfiguráció (DSC)** elemre a **Konfigurációkezelés csoportban.**
 1. Az **Állapotkonfiguráció (DSC)** lapon kattintson a **Konfigurációk** fülre, majd a TestConfig (a korábban importált konfiguráció neve) **parancsra.**
@@ -111,7 +111,7 @@ A konfigurációk összeállításáról a [DSC-konfigurációk](/powershell/scr
 
 A fordítás megkezdése után megtekintheti azt a Konfiguráció **lap** **Fordítási feladatok** csempéjén. A **Fordítási feladatok** csempe jelenleg futó, befejezett és sikertelen feladatokat jelenít meg. Amikor megnyit egy fordítási feladat lapot, az információkat jelenít meg az adott feladatról, beleértve a felmerült hibákat vagy figyelmeztetéseket, a konfigurációban használt bemeneti paramétereket és a fordítási naplókat.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A bal oldalon kattintson a **Minden erőforrás** elemre, majd az Automation-fiók nevére.
 1. Az **Automation-fiók** lapon kattintson az **Állapotkonfiguráció (DSC)** elemre a **Konfigurációkezelés csoportban.**
 1. Az **Állapotkonfiguráció (DSC)** lapon kattintson a **Konfigurációk** fülre, majd a TestConfig (a korábban importált konfiguráció neve) **parancsra.**
@@ -125,7 +125,7 @@ A fordítás megkezdése után megtekintheti azt a Konfiguráció **lap** **Ford
 
 A fordítási feladat sikeres befejezése egy vagy több új csomópontkonfigurációt hoz létre. A csomópontkonfiguráció egy MOF-dokumentum, amely a lekéréses kiszolgálóra van telepítve, és készen áll egy vagy több csomópont lehúzására és alkalmazására. A csomópontkonfigurációk az Automation-fiók ban az **állapotkonfiguráció (DSC)** lapon tekintheti meg. A csomópontkonfiguráció nak *konfigurációs név*nevű neve van. *NodeName*.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A bal oldalon kattintson a **Minden erőforrás** elemre, majd az Automation-fiók nevére.
 1. Az **Automation-fiók** panelen kattintson az **Állapotkonfiguráció (DSC)** elemre a **Konfigurációkezelés csoportban.**
 1. Az **Állapotkonfiguráció (DSC)** lapon kattintson a **Lefordított konfigurációk** fülre.
@@ -138,7 +138,7 @@ Az Azure Automation State Configuration használatával kezelheti az Azure virtu
 
 ### <a name="to-onboard-an-azure-resource-manager-vm-for-management-by-azure-automation-state-configuration"></a>Azure Resource Manager virtuális gép alaplapja az Azure Automation állapotkonfigurációja által im-hez
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A bal oldalon kattintson a **Minden erőforrás** elemre, majd az Automation-fiók nevére.
 1. Az **Automation-fiók** panelen kattintson az **Állapotkonfiguráció (DSC)** elemre a **Konfigurációkezelés csoportban.**
 1. Az **Állapotkonfiguráció (DSC)** lapon, míg a **Csomópontok** lapon kattintson a **+ Hozzáadás gombra.**
@@ -164,7 +164,7 @@ Az Azure elindítja a virtuális gép bevezetési folyamatát. Ha elkészült, a
 
 Az **Állapotkonfiguráció (DSC)** lap **Csomópontok** lapján megtekintheti a felügyeletre beépített gépek listáját.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A bal oldalon kattintson a **Minden erőforrás** elemre, majd az Automation-fiók nevére.
 1. Az **Automation-fiók** panelen kattintson az **Állapotkonfiguráció (DSC)** elemre a **Konfigurációkezelés csoportban.**
 1. Az **Állapotkonfiguráció (DSC)** lapon kattintson a **Csomópontok** fülre.
@@ -173,7 +173,7 @@ Az **Állapotkonfiguráció (DSC)** lap **Csomópontok** lapján megtekintheti a
 
 Minden alkalommal, amikor az Azure Automation-állapot konfigurációja konzisztencia-ellenőrzést végez egy felügyelt csomóponton, a csomópont állapotjelentést küld a lekéréses kiszolgálónak. Ezeket a jelentéseket az adott csomópont oldalán tekintheti meg.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A bal oldalon kattintson a **Minden erőforrás** elemre, majd az Automation-fiók nevére.
 1. Az **Automation-fiók** panelen kattintson az **Állapotkonfiguráció (DSC)** elemre a **Konfigurációkezelés csoportban.**
 1. Az **Állapotkonfiguráció (DSC)** lapon kattintson a **Csomópontok** fülre. Itt láthatja a konfigurációs állapot áttekintését és az egyes csomópontok részleteit.
@@ -203,7 +203,7 @@ Az első jelentés elérhetővé vájata előtt eltarthat egy ideig, miután egy
 
 Hozzárendelhet egy csomópontot, hogy az eredetileg hozzárendeltkonfigurációtól eltérő csomópontkonfigurációt használjon.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A bal oldalon kattintson a **Minden erőforrás** elemre, majd az Automation-fiók nevére.
 1. Az **Automation-fiók** panelen kattintson az **Állapotkonfiguráció (DSC)** elemre a **Konfigurációkezelés csoportban.**
 1. Az **Állapotkonfiguráció (DSC)** lapon kattintson a **Csomópontok** fülre.
@@ -220,7 +220,7 @@ Hozzárendelhet egy csomópontot, hogy az eredetileg hozzárendeltkonfiguráció
 
 Ha már nem szeretné, hogy egy csomópontot az Azure Automation DSC kezeljen, törölje a regisztrációját.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A bal oldalon kattintson a **Minden erőforrás** elemre, majd az Automation-fiók nevére.
 1. Az **Automation-fiók** panelen kattintson az **Állapotkonfiguráció (DSC)** elemre a **Konfigurációkezelés csoportban.**
 1. Az **Állapotkonfiguráció (DSC)** lapon kattintson a **Csomópontok** fülre.

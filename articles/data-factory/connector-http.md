@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 1ca439d1a82e3cdbe2cc0274cf63653d39048057
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4a05d955be88f68b3c0db1f4a29b3f6e1155aa0d
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79532552"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992181"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Adatok másolása HTTP-végpontról az Azure Data Factory használatával
 
@@ -68,7 +68,7 @@ A HTTP-hez csatolt szolgáltatás a következő tulajdonságokat támogatja:
 |:--- |:--- |:--- |
 | type | A **típustulajdonságot** **HttpServer (HttpServer**) tulajdonságra kell állítani. | Igen |
 | url | A webkiszolgáló alap URL-címe. | Igen |
-| enableServerCertificateValidation | Adja meg, hogy engedélyezi-e a kiszolgáló SSL-tanúsítványának érvényesítését, amikor HTTP-végponthoz csatlakozik. Ha a HTTPS-kiszolgáló önaláírt tanúsítványt használ, állítsa ezt a tulajdonságot **false**értékűre. | Nem<br /> (az alapértelmezett **igaz)** |
+| enableServerCertificateValidation | Adja meg, hogy engedélyezi-e a kiszolgáló TLS/SSL-tanúsítványának érvényesítését, amikor HTTP-végponthoz csatlakozik. Ha a HTTPS-kiszolgáló önaláírt tanúsítványt használ, állítsa ezt a tulajdonságot **false**értékűre. | Nem<br /> (az alapértelmezett **igaz)** |
 | authenticationType | A hitelesítés típusát adja meg. Az engedélyezett értékek: **Névtelen**, **Alap,** **Kivonatoló**, **Windows**és **ClientCertificate**. <br><br> Tekintse meg a szakaszokat, amelyek követik ezt a táblázatot a további tulajdonságok és JSON-minták ezekhez a hitelesítési típusokhoz. | Igen |
 | connectVia | Az adattárhoz való csatlakozáshoz használt [integrációs futásidő.](concepts-integration-runtime.md) További információ az [Előfeltételek](#prerequisites) szakaszból. Ha nincs megadva, a rendszer az alapértelmezett Azure-integrációs futásidőt használja. |Nem |
 

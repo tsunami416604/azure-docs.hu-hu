@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: kanshiG
 ms.author: govindk
 ms.date: 04/07/2020
-ms.openlocfilehash: 38f5778e363a16117bab482a758666ec81352afd
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 62c10a2ada9ff7d3bf7090028dd9684192517d02
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887566"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991402"
 ---
 # <a name="how-to-monitor-the-server-side-latency-for-operations-in-an-azure-cosmos-db-container-or-account"></a>Az Azure Cosmos DB-tárolóban vagy -fiókban lévő műveletek kiszolgálóoldali késésének figyelése
 
@@ -35,11 +35,11 @@ Megkeresheti a diagnosztikai naplót a visszaadott adatok méretének megtekint�
 
 1. A **Metrikák** ablaktáblán > **Válassza ki az erőforrást,** > válassza ki a szükséges **előfizetést**és **erőforráscsoportot**. Az **erőforrás típusához**válassza az **Azure Cosmos DB-fiókok at,** válassza ki a meglévő Azure Cosmos-fiókok egyikét, és válassza az **Alkalmaz lehetőséget.**
    
-   ![A metrikák megtekintéséhez válasszon egy Cosmos DB-fiókot](./media/monitor-server-side-latency/select-cosmosdb-account.png)
+   ![A metrikák megtekintéséhez válasszon egy Cosmos DB-fiókot](./media/monitor-server-side-latency/select-cosmos-db-account.png)
 
 1. Ezután válassza ki a **kiszolgálóoldali késés** metrika az elérhető metrikák listájából. Ha részletesen szeretne tudni a listában elérhető összes metrikáról, tekintse meg a [Mutatók kategória szerint](monitor-cosmos-db-reference.md) cikket. Ebben a példában válasszuk **a kiszolgálóoldali késés** és **az átlag** az összesítési érték. Ezeken a részleteken kívül kiválaszthatja a mérőszámok **időtartományát** és **időrészletességét** is. Max, megtekintheti az elmúlt 30 nap metrikák.  A szűrő alkalmazása után a szűrő alapján megjelenik egy diagram. Megtekintheti a kiválasztott időszakban percenként felhasznált kérelemegységek átlagos számát.  
 
-   ![Válassza ki a kiszolgálóoldali késés metrikát az Azure Portalon](./media/monitor-server-side-latency/serverside-latency-metric.png)
+   ![Válassza ki a kiszolgálóoldali késés metrikát az Azure Portalon](./media/monitor-server-side-latency/server-side-latency-metric.png)
 
 ## <a name="filters-for-server-side-latency"></a>Szűrők a kiszolgálóoldali késéshez
 
@@ -49,7 +49,7 @@ A mérőszámok szűréséhez válassza a **Szűrő hozzáadása** lehetőséget
 
 A **kiszolgálóoldali késés** metrikák az egyes műveletek jelennek meg az alábbi képen látható módon:
 
-![Szűrők a kiszolgálóoldali késési metrikákhoz](./media/monitor-server-side-latency/serverside-latency-filters.png)
+![Szűrők a kiszolgálóoldali késési metrikákhoz](./media/monitor-server-side-latency/server-side-latency-filters.png)
 
 A mutatókat a **Felosztás alkalmazása** beállítással is csoportosíthatja.  
 

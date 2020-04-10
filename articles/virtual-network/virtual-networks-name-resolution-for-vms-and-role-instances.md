@@ -12,12 +12,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
-ms.openlocfilehash: 20a5c4befaa30383c54ac9536a3fd26dce3db4d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: fasttrack-edit
+ms.openlocfilehash: d7d0699718642a7eb9f85b2e8a86623092c34365
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80059985"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010562"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure virtuális hálózatokon található erőforrások névfeloldása
 
@@ -185,8 +186,7 @@ Ha a lekérdezések továbbítása az Azure-ba nem felel meg az igényeinek, meg
 * Védelemben kell részesülni az internetről való hozzáféréssel szemben a külső ügynökök által jelentett fenyegetések csökkentése érdekében.
 
 > [!NOTE]
-> A legjobb teljesítmény érdekében az Azure virtuális gépeit DNS-kiszolgálóként használja, le kell tiltani az IPv6-ot. Minden DNS-kiszolgáló virtuális gépéhez hozzá kell rendelni egy [nyilvános IP-címet.](virtual-network-public-ip-address.md) 
-> 
+> A legjobb teljesítmény érdekében az Azure virtuális gépeit DNS-kiszolgálóként használja, le kell tiltani az IPv6-ot.
 
 ### <a name="web-apps"></a>Webalkalmazások
 Tegyük fel, hogy névfeloldást kell végrehajtania a webalkalmazásból, amelyet egy virtuális hálózathoz kapcsolódó, virtuális hálózathoz kapcsolódó webalkalmazásból kell végrehajtania az ugyanazon virtuális hálózatban lévő virtuális gépekhez. A lekérdezéseket az Azure-ba továbbító DNS-továbbítóval (virtuális IP 168.63.129.16) végző egyéni DNS-kiszolgáló beállítása mellett hajtsa végre a következő lépéseket:

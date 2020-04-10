@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
-ms.date: 08/06/2019
-ms.openlocfilehash: 8139ed8f4f4799a963a051eed96dd87c4ac38aec
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.date: 04/09/2020
+ms.openlocfilehash: 3252ecb030234e4c5543c07dfb4fc702f850a73e
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981426"
+ms.locfileid: "80998993"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Több Azure SQL-adatbázis kezelése és méretezése rugalmas készletek használatával
 
@@ -110,9 +110,9 @@ A készlet legjobb mérete a készlet összes adatbázisához szükséges össze
 - A készletösszes adatbázisa által használt maximális erőforrások (maximális DIT-ek vagy maximális virtuális magok a választott erőforrás-kezelési modelltől függően).
 - A készletben szereplő összes adatbázis által használt maximális tárterület (bájtban).
 
-Az egyes erőforrásmodellekhez elérhető szolgáltatási szinteket a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) ben vagy a [virtuálismag-alapú vásárlási modellben](sql-database-service-tiers-vcore.md)lehet megtekinteni.
+Az egyes erőforrásmodellekhez elérhető szolgáltatási szintekés korlátozások a [DTU-alapú vásárlási modellben](sql-database-service-tiers-dtu.md) vagy a [virtuálismag-alapú vásárlási modellben](sql-database-service-tiers-vcore.md)érhető el.
 
-Ha nincs lehetősége eszközök használatára, az alábbi részletes útmutatóval megbecsülheti, hogy a készlet költséghatékonyabb-e az önálló adatbázisok használatánál:
+A következő lépések segítségével megállapíthatja, hogy egy készlet költséghatékonyabb-e, mint az egyes adatbázisok:
 
 1. Becsülje meg a készlethez szükséges eDVO-kat vagy virtuális magokat az alábbiak szerint:
 
@@ -126,6 +126,10 @@ Ha nincs lehetősége eszközök használatára, az alábbi részletes útmutat�
 3. A DTU-alapú vásárlási modell, hogy a nagyobb eDTU becslések lépés 1 és 2 lépés. A virtuálismag-alapú vásárlási modell, vegye ki a virtuális mag becslést az 1.
 4. Tekintse meg az [SQL Database díjszabási lapját,](https://azure.microsoft.com/pricing/details/sql-database/) és keresse meg a 3.
 5. Hasonlítsa össze az 5.
+
+> [!IMPORTANT]
+> Ha egy készletben lévő adatbázisok száma megközelíti a maximális támogatott értéket, ügyeljen arra, hogy [a sűrű rugalmas készletekerőforrás-kezelést](sql-database-elastic-pool-resource-management.md)vegye figyelembe.
+> 
 
 ## <a name="using-other-sql-database-features-with-elastic-pools"></a>Más SQL Database-szolgáltatások használata rugalmas készletekkel
 
@@ -218,7 +222,7 @@ További információt az [SQL Database-riasztások létrehozása az Azure Porta
 
 - [Daxko/CSI](https://customers.microsoft.com/story/726277-csi-daxko-partner-professional-service-azure)    
 
-   A Daxko/CSI rugalmas készleteket használ az Azure SQL Database használatával a fejlesztési ciklus felgyorsítása, valamint az ügyfélszolgálat és a teljesítmény javítása érdekében.   
+   A Daxko/CSI rugalmas készleteket használ az Azure SQL Database használatával a fejlesztési ciklus felgyorsítása, valamint az ügyfélszolgálat és a teljesítmény javítása érdekében.    
 
 ## <a name="next-steps"></a>További lépések
 

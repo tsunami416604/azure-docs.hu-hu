@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.openlocfilehash: a48e69f19db88c7823365964c2fe9c0629a078bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd2da798cae92a7e47bd879b69dd108618463402
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75412673"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010766"
 ---
 # <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>A Redis parancssori eszköz használata az Azure Cache for Redis alkalmazással
 
@@ -38,9 +38,9 @@ Ebben a szakaszban a kulcsokat az Azure Portalon.
 
 ## <a name="enable-access-for-redis-cliexe"></a>Hozzáférés engedélyezése a redis-cli.exe programhoz
 
-Az Azure Cache for Redis, csak az SSL-port (6380) alapértelmezés szerint engedélyezve van. A `redis-cli.exe` parancssori eszköz nem támogatja az SSL-t. Két konfigurációs lehetőség közül választhat:
+Az Azure Cache for Redis, csak a TLS-port (6380) alapértelmezés szerint engedélyezve van. A `redis-cli.exe` parancssori eszköz nem támogatja a TLS-t. Két konfigurációs lehetőség közül választhat:
 
-1. [A nem SSL-port engedélyezése (6379)](cache-configure.md#access-ports) - **Ez a konfiguráció nem ajánlott,** mert ebben a konfigurációban a hozzáférési kulcsok at TCP-n keresztül, titkosítva küldik. Ez a módosítás veszélyeztetheti a gyorsítótárhoz való hozzáférést. Az egyetlen forgatókönyv, ahol érdemes figyelembe venni ezt a konfigurációt, amikor csak egy teszt gyorsítótár eléréséhez.
+1. [A nem TLS-port engedélyezése (6379)](cache-configure.md#access-ports) - **Ez a konfiguráció nem ajánlott,** mert ebben a konfigurációban a hozzáférési kulcsok at TCP-n keresztül, titkosítva küldik. Ez a módosítás veszélyeztetheti a gyorsítótárhoz való hozzáférést. Az egyetlen forgatókönyv, ahol érdemes figyelembe venni ezt a konfigurációt, amikor csak egy teszt gyorsítótár eléréséhez.
 
 2. Töltse le és telepítse [stunnel](https://www.stunnel.org/downloads.html).
 
@@ -74,7 +74,7 @@ redis-cli.exe -p 6380 -a YourAccessKey
 
 ![stunnel redis-cli](media/cache-how-to-redis-cli-tool/cache-redis-cli-stunnel.png)
 
-Ha nem **biztonságos** Nem SSL-porttal rendelkező tesztgyorsítótárat `redis-cli.exe` használ, futtassa és adja át az *állomásnevét,* *a portot*és a *hozzáférési kulcsot* (elsődleges vagy másodlagos) a tesztgyorsítótárhoz való csatlakozáshoz.
+Ha nem **biztonságos** nem TLS-porttal használ tesztgyorsítótárat, `redis-cli.exe` futtassa és adja át az *állomásnevét,* *a portot*és a hozzáférési *kulcsot* (elsődleges vagy másodlagos) a tesztgyorsítótárhoz való csatlakozáshoz.
 
 ```
 redis-cli.exe -h yourcachename.redis.cache.windows.net -p 6379 -a YourAccessKey

@@ -1,19 +1,19 @@
 ---
 title: Virtuálisgép-méretezési csoportok automatikus skálázása az Azure Portalon
 description: Automatikus skálázási szabályok létrehozása a virtuálisgép-méretezési csoportokhoz az Azure Portalon
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.assetid: 88886cad-a2f0-46bc-8b58-32ac2189fc93
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: cynthn
-ms.openlocfilehash: ecd80f49f0161c8bbc6ab7309f2af89e2ded1fe9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: jushiman
+ms.openlocfilehash: 1915b144aec5a5447504c70d18dbf420d255a08e
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278184"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010290"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Virtuálisgép-méretezési csoport automatikus méretezése az Azure Portalon
 Méretezési csoport létrehozásakor meghatározza a futtatni kívánt virtuálisgép-példányok számát. Az alkalmazás igényeihez igazodva automatikusan növelheti vagy csökkentheti a virtuálisgép-példányok számát. Az automatikus méretezésnek köszönhetően lépést tarthat az ügyfeleik igényeivel és az alkalmazás teljes élettartama alatt reagálhat az alkalmazás teljesítményében bekövetkezett változásokra.
@@ -96,7 +96,7 @@ A virtuálisgép-példányok számát és állapotát a méretezési csoport abl
 
 
 ## <a name="autoscale-based-on-a-schedule"></a>Automatikus méretezés ütemezés alapján
-Az előző példák automatikusan skálázták a méretezési készlet, vagy ki az alapvető gazdagép metrikák, például a CPU-használat. Ütemezések alapján automatikus skálázási szabályokat is létrehozhat. Ezek az ütemezésalapú szabályok lehetővé teszik, hogy automatikusan kiskálázhatja a virtuálisgép-példányok számát az alkalmazásigény várható növekedése előtt, például az alapmunkaidőt, majd automatikusan skálázhatja a példányok számát egy olyan időpontban, amelyet kevésbé vár kereslet, mint például a hétvégén.
+Az előző példák automatikusan skálázták a méretezési készlet, vagy ki az alapvető gazdagép metrikák, például a CPU-használat. Ütemezések alapján automatikus skálázási szabályokat is létrehozhat. Ezek az ütemezésalapú szabályok lehetővé teszik, hogy automatikusan horizontális felskálázása a virtuálisgép-példányok száma előtt várható növekedése az alkalmazás igénye, például az alapvető munkaidő, és automatikusan skálázhatja a példányok száma egy időben, hogy a kereslet várható, például a hétvégén.
 
 1. Válassza a **méretezési** készlet ablakának bal oldalán található menü Méretezés parancsát. Az előző példákban létrehozott meglévő automatikus skálázási szabályok törléséhez válassza a kuka ikont.
 

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: ddf7999153e9d9722e627d148b116750fe3aaecf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ba292850c057284fff265c8a77386d21374942a
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278713"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010222"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis – Gyakori kérdések
 Ismerje meg a válaszokat az Azure Cache for Redis gyakori kérdéseire, mintáira és ajánlott eljárásokra.
@@ -54,7 +54,7 @@ Az alábbi gyakori kérdések az Azure Cache for Redis alapfogalmait és kérdé
 * [Mik azok a Redis adatbázisok?](#what-are-redis-databases)
 
 ## <a name="security-faqs"></a>Biztonsági gyakori kérdések
-* [Mikor engedélyezzem a nem SSL-portot a Redis-hez való csatlakozáshoz?](#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis)
+* [Mikor engedélyezzem a nem TLS/SSL portot a Redis-hez való csatlakozáshoz?](#when-should-i-enable-the-non-tlsssl-port-for-connecting-to-redis)
 
 ## <a name="production-faqs"></a>Gyártási gyIK
 * [Melyek a termelés sel kapcsolatos bevált gyakorlatai?](#what-are-some-production-best-practices)
@@ -112,7 +112,7 @@ A gyorsítótár-ajánlat kiválasztásával kapcsolatban az alábbiakban felkel
 <a name="cache-performance"></a>
 
 ### <a name="azure-cache-for-redis-performance"></a>Azure-gyorsítótár a Redis teljesítményéhez
-Az alábbi táblázat bemutatja a maximális sávszélesség-értékeket, amelyeket a standard és prémium szintű gyorsítótárak különböző méretű, Az Azure-gyorsítótár redis végponton használt `redis-benchmark.exe` szabványos és prémium szintű gyorsítótárak tesztelése során figyelt meg. Az SSL átviteli teljesítmény, redis-benchmark stunnel használatával csatlakozik az Azure Cache a Redis végpont.
+Az alábbi táblázat bemutatja a maximális sávszélesség-értékeket, amelyeket a standard és prémium szintű gyorsítótárak különböző méretű, Az Azure-gyorsítótár redis végponton használt `redis-benchmark.exe` szabványos és prémium szintű gyorsítótárak tesztelése során figyelt meg. A TLS-átviteli teljesítmény, redis-benchmark stunnel használatával csatlakozik az Azure Cache for Redis végpont.
 
 >[!NOTE] 
 >Ezek az értékek nem garantáltak, és ezekhez a számokhoz nincs SLA, de tipikusnak kell lenniük. Be kell töltenie a saját alkalmazás betöltése az alkalmazás megfelelő gyorsítótárméretének meghatározásához.
@@ -196,7 +196,7 @@ StackExchange.Redis számos lehetőség közül választhat. Ez a szakasz a gyak
   * Egyetlen ConnectionMultiplexer-példány használata az alkalmazáshoz. A LazyConnection segítségével egyetlen példányt hozhat létre, amelyet egy Connection tulajdonság ad vissza, [ahogy az a Csatlakozás a gyorsítótárhoz a ConnectionMultiplexer osztály használatával című részben](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)látható.
   * Állítsa `ConnectionMultiplexer.ClientName` be a tulajdonságot egy alkalmazáspéldány egyedi nevére diagnosztikai célokra.
   * Használjon `ConnectionMultiplexer` több példányt az egyéni számítási feladatokhoz.
-      * Ezt a modellt akkor követheti, ha az alkalmazás ban változó terhelés van. Példa:
+      * Ezt a modellt akkor követheti, ha az alkalmazás ban változó terhelés van. Például:
       * Lehet egy multiplexer kezelésére nagy kulcsokat.
       * Lehet egy multiplexer kezelésére kis kulcsokat.
       * A kapcsolatidő-túllépéshez különböző értékeket állíthat be, és újrapróbálkozhat a használatával rendelkező minden egyes ConnectionMultiplexer-hez.
@@ -244,7 +244,7 @@ A [Redis-parancsokban](https://redis.io/commands#) felsorolt parancsok bármelyi
 * `redis-cli -h <Azure Cache for Redis name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
-> A Redis parancssori eszközök nem működnek az SSL-porttal, `stunnel` de egy segédprogramot használhat, például biztonságosan csatlakoztathatja az eszközöket az SSL-porthoz a [Redis parancssori eszköz használata az Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool) cikkben található utasításokat követve.
+> A Redis parancssori eszközök nem működnek a TLS-porttal, `stunnel` de egy segédprogramot használhat, például biztonságosan csatlakoztathatja az eszközöket a TLS-porthoz a [Redis parancssori eszköz használata az Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool) cikkben található utasításokat követve.
 >
 >
 
@@ -281,15 +281,15 @@ A Redis-adatbázisok csak az adatok logikai elkülönítése ugyanazon a Redis-p
 
 <a name="cache-ssl"></a>
 
-### <a name="when-should-i-enable-the-non-ssl-port-for-connecting-to-redis"></a>Mikor engedélyezzem a nem SSL-portot a Redis-hez való csatlakozáshoz?
-Redis-kiszolgáló natív módon nem támogatja az SSL, de az Azure Cache for Redis nem. Ha csatlakozik az Azure Cache for Redis és az ügyfél támogatja az SSL, például StackExchange.Redis, majd ssl-t kell használnia.
+### <a name="when-should-i-enable-the-non-tlsssl-port-for-connecting-to-redis"></a>Mikor engedélyezzem a nem TLS/SSL portot a Redis-hez való csatlakozáshoz?
+Redis-kiszolgáló natív módon nem támogatja a TLS, de az Azure Cache for Redis nem. Ha csatlakozik az Azure Cache for Redis és az ügyfél támogatja a TLS, például StackExchange.Redis, majd a TLS-t kell használnia.
 
 >[!NOTE]
->A nem SSL-port alapértelmezés szerint le van tiltva az új Azure-gyorsítótár redis példányok. Ha az ügyfél nem támogatja az SSL-t, akkor engedélyeznie kell a nem SSL-portot a [Redis-gyorsítótár konfigurálása](cache-configure.md) az Azure Cache for Redis cikk [Access ports](cache-configure.md#access-ports) szakaszában található utasításokat követve.
+>A nem TLS-port alapértelmezés szerint le van tiltva az új Azure-gyorsítótár redis példányok. Ha az ügyfél nem támogatja a TLS-t, akkor engedélyeznie kell a nem TLS-portot a [Redis gyorsítótárának konfigurálása](cache-configure.md) című [access ports](cache-configure.md#access-ports) szakaszának utasításokat követve.
 >
 >
 
-Redis eszközök, `redis-cli` mint például nem működnek az SSL-port, de egy segédprogram, például `stunnel` biztonságosan csatlakoztathatja az eszközöket az SSL-port követve az utasításokat a [beiktatása ASP.NET munkamenet állapotszolgáltató redis preview release](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) blogbejegyzést.
+A Redis-eszközök, például `redis-cli` nem működnek a TLS-porttal, de egy segédprogramot használhat, például `stunnel` biztonságosan csatlakoztathatja az eszközöket a TLS-porthoz, ha követi a Redis Preview Release ASP.NET [munkamenetállapot-szolgáltató bejelentése](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) című blogbejegyzésutasításait.
 
 A Redis-eszközök letöltésével kapcsolatos tudnivalókat a [Hogyan futtathatom a Redis parancsok?](#cache-commands)
 
@@ -312,7 +312,7 @@ A Redis-eszközök letöltésével kapcsolatos tudnivalókat a [Hogyan futtathat
 * Fejlessze a rendszert úgy, hogy képes legyen kezelni a csatlakozási blips [miatt folt és feladatátvétel](https://gist.github.com/JonCole/317fe03805d5802e31cfa37e646e419d#file-azureredis-patchingexplained-md).
 
 #### <a name="performance-testing"></a>Teljesítménytesztelés
-* Kezdje `redis-benchmark.exe` azzal, hogy megérzi a lehetséges átviteli, mielőtt megírja a saját perf tesztek. Mivel `redis-benchmark` nem támogatja az SSL,a teszt futtatása előtt engedélyeznie kell [a nem SSL-port az Azure Portalon keresztül.](cache-configure.md#access-ports) Példák: [Hogyan tesztelhetem és tesztelhetem a gyorsítótár teljesítményét?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+* Kezdje `redis-benchmark.exe` azzal, hogy megérzi a lehetséges átviteli, mielőtt megírja a saját perf tesztek. Mivel `redis-benchmark` nem támogatja a TLS,a teszt futtatása előtt engedélyeznie kell [a nem TLS-port az Azure Portalon keresztül.](cache-configure.md#access-ports) Példák: [Hogyan tesztelhetem és tesztelhetem a gyorsítótár teljesítményét?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 * A teszteléshez használt ügyfél virtuális gépnek ugyanabban a régióban kell lennie, mint az Azure Cache for Redis-példánynak.
 * Javasoljuk, hogy a Dv2 VM sorozat az ügyfél, mivel azok jobb hardver, és meg kell adni a legjobb eredményt.
 * Győződjön meg arról, hogy a választott ügyfél virtuális gép legalább annyi számítási és sávszélesség-képességgel rendelkezik, mint a tesztelt gyorsítótár.
@@ -381,7 +381,7 @@ Ezen információk alapján javasoljuk, hogy az ügyfelek az IOCP és a WORKER s
 
 A beállítás konfigurálása:
 
-* Javasoljuk, hogy programozott módon módosítsa ezt a beállítást a [ThreadPool.SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) metódus használatával a alkalmazásban. `global.asax.cs` Példa:
+* Javasoljuk, hogy programozott módon módosítsa ezt a beállítást a [ThreadPool.SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) metódus használatával a alkalmazásban. `global.asax.cs` Például:
 
 ```cs
 private readonly int minThreads = 200;

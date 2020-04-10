@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: jingwang
-ms.openlocfilehash: 0bfae10d3b3b491c3662385055b23cc585a6e24d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dcd8e400b978b2139de7a9f53b87cf6ec04e7484
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77471159"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991994"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Adatok másolása a MySQL-ből az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki a használt Data Factory szolgáltatás verzióját:"]
@@ -65,7 +65,7 @@ Egy tipikus kapcsolati karakterlánc a `Server=<server>;Port=<port>;Database=<da
 
 | Tulajdonság | Leírás | Beállítások | Kötelező |
 |:--- |:--- |:--- |:--- |
-| SSLMode (SSLmode) | Ez a beállítás azt határozza meg, hogy az illesztőprogram SSL-titkosítást és -ellenőrzést használ-e a MySQL-hez való csatlakozáskor. Pl.`SSLMode=<0/1/2/3/4>`| DISABLED (0) / PREFERÁLT (1) **(Alapértelmezett)** / KÖTELEZŐ (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | Nem |
+| SSLMode (SSLmode) | Ez a beállítás azt határozza meg, hogy az illesztőprogram TLS titkosítást és -ellenőrzést használ-e a MySQL-hez való csatlakozáskor. Pl.`SSLMode=<0/1/2/3/4>`| DISABLED (0) / PREFERÁLT (1) **(Alapértelmezett)** / KÖTELEZŐ (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | Nem |
 | UseSystemTrustStore | Ez a beállítás határozza meg, hogy a hitelesítésszolgáltatói tanúsítványt a rendszermegbízhatósági tárolóból vagy egy megadott PEM-fájlból használja-e. Például `UseSystemTrustStore=<0/1>;`| Engedélyezve (1) / Letiltva (0) **(alapértelmezett)** | Nem |
 
 **Példa:**

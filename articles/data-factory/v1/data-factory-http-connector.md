@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e668f44bbc3d2e381edeb80c568a41355584a4ee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 36592151385a08d75b9b34e85bfa9d62342fc8cd
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79260422"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991569"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Adatok áthelyezése HTTP-forrásból az Azure Data Factory használatával
 
@@ -55,7 +55,7 @@ Az alábbi táblázat a HTTP-hez csatolt szolgáltatásra jellemző JSON-elemeke
 | type | A **típustulajdonságnak** **Http**-re kell állítania. | Igen |
 | url | A webkiszolgáló alap URL-címe. | Igen |
 | authenticationType | A hitelesítés típusát adja meg. Az engedélyezett értékek: **Névtelen**, **Alap,** **Kivonatoló**, **Windows**és **ClientCertificate**. <br><br> A cikk későbbi szakaszaiban további tulajdonságokat és JSON-mintákat tartalmaz ezekhez a hitelesítési típusokhoz. | Igen |
-| enableServerCertificateValidation | Itt adható meg, hogy engedélyezze-e a kiszolgáló SSL-tanúsítványának érvényesítését, ha a forrás HTTPS-webkiszolgáló. Ha a HTTPS-kiszolgáló önaláírt tanúsítványt használ, állítsa ezt **hamisra.** | Nem<br /> (az alapértelmezett **igaz)** |
+| enableServerCertificateValidation | Itt adható meg, hogy engedélyezze-e a kiszolgáló TLS/SSL-tanúsítványának érvényesítését, ha a forrás HTTPS-webkiszolgáló. Ha a HTTPS-kiszolgáló önaláírt tanúsítványt használ, állítsa ezt **hamisra.** | Nem<br /> (az alapértelmezett **igaz)** |
 | átjárónév | A helyszíni HTTP-forráshoz való csatlakozáshoz használt adatkezelési átjárópéldány neve. | Igen, ha adatokat másol egy helyszíni HTTP-forrásból |
 | titkosított hitelesítő adatok | A HTTP-végpont eléréséhez használt titkosított hitelesítő adat. Az érték automatikusan létrejön, amikor konfigurálja a hitelesítési adatokat a Másolás varázslóban, vagy a **Kattintásminta** párbeszédpanelen. | Nem<br /> (csak akkor érvényes, ha adatokat másol egy helyszíni HTTP-kiszolgálóról) |
 

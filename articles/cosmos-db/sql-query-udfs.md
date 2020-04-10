@@ -1,27 +1,38 @@
 ---
 title: Felhasználó által definiált függvények (UDF-ek) az Azure Cosmos DB-ben
 description: Ismerje meg a felhasználó által definiált függvények az Azure Cosmos DB.
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/31/2019
-ms.author: mjbrown
-ms.openlocfilehash: b67202da7293ef55cfe3390ca676f7944da80fba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/09/2020
+ms.author: tisande
+ms.openlocfilehash: 455f44fb365152b75a3811563b646c6243f686db
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69614332"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011123"
 ---
 # <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Felhasználó által definiált függvények (UDF-ek) az Azure Cosmos DB-ben
 
 Az SQL API támogatja a felhasználó által definiált függvényeket (UDF). A skaláris UDF-ek segítségével nulla vagy több argumentumot adhat át, és egyetlen argumentum eredményt adhat vissza. Az API ellenőrzi az egyes argumentumok, hogy a jogi JSON-értékek.  
 
-Az API kiterjeszti az SQL szintaxist az UDF-ek használatával az egyéni alkalmazáslogika támogatásához. Az UDF-eket regisztrálhatja az SQL API-val, és hivatkozhat rájuk az SQL-lekérdezésekben. Valójában az UDF-ek tökéletesen úgy vannak kialakítva, hogy lekérdezésekből hívjanak. Ennek következményeként az UDF-ek nem férnek hozzá a környezetobjektumhoz, mint más JavaScript-típusok, például a tárolt eljárások és eseményindítók. A lekérdezések írásvédettek, és elsődleges vagy másodlagos replikákon futtathatók. UdF-ek, eltérően más JavaScript-típusok, másodlagos replikák futtatására tervezték.
+## <a name="udf-use-cases"></a>UDF-használati esetek
 
-A következő példa regisztrálja az UDF egy elemtároló a Cosmos-adatbázisban. A példa létrehoz egy UDF-et, amelynek neve `REGEX_MATCH`. Két JSON-karakterlánc-értéket `input` fogad `pattern`el, és ellenőrzi, hogy az első megegyezik-e `string.match()` a másodikban megadott mintával a JavaScript függvény használatával.
+Az API kiterjeszti az SQL szintaxist az UDF-ek használatával az egyéni alkalmazáslogika támogatásához. Az UDF-eket regisztrálhatja az SQL API-val, és hivatkozhat rájuk az SQL-lekérdezésekben. A tárolt eljárásokkal és eseményindítókkal ellentétben az UDF-ek írásvédettek.
+
+UDF-ek használatával kiterjesztheti az Azure Cosmos DB lekérdezési nyelvét. UdFs egy nagyszerű módja annak, hogy kifejezzék összetett üzleti logika a lekérdezés kivetítése.
+
+Azonban azt javasoljuk, elkerülve UDFs, ha:
+
+- Az Azure Cosmos DB-ben már létezik egy egyenértékű [rendszerfüggvény.](sql-query-system-functions.md) A rendszerfüggvények mindig kevesebb RU-t használnak, mint az egyenértékű UDF.System functions will always use less RU's than the equivalent UDF.
+- Az UDF az egyetlen `WHERE` szűrő a lekérdezés záradékában. UdF nem használja az indexet, így az UDF kiértékelése dokumentumok betöltését igényli. Az indexet udf-fel kombinálva az indexet használó további `WHERE` szűrőpredikátumok kombinálásával a záradék ban csökken az UDF által feldolgozott dokumentumok száma.
+
+Ha egy lekérdezésben többször is ugyanazt az UDF-et kell használni, akkor az UDF-re kell hivatkozni egy [segédlekérdezésben,](sql-query-subquery.md#evaluate-once-and-reference-many-times)amely lehetővé teszi, hogy join kifejezéssel értékeljük ki egyszer az UDF-et, de többször is hivatkozhatunk rá.
 
 ## <a name="examples"></a>Példák
+
+A következő példa regisztrálja az UDF egy elemtároló a Cosmos-adatbázisban. A példa létrehoz egy UDF-et, amelynek neve `REGEX_MATCH`. Két JSON-karakterlánc-értéket `input` fogad `pattern`el, és ellenőrzi, hogy az első megegyezik-e `string.match()` a másodikban megadott mintával a JavaScript függvény használatával.
 
 ```javascript
        UserDefinedFunction regexMatchUdf = new UserDefinedFunction

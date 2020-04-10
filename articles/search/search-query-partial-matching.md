@@ -8,20 +8,20 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 7f001a0d443e4ec668aedaabb7505884163bf37e
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: faafc1e12f0703c38b4e602700b1e775bf13a061
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80666788"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998334"
 ---
-# <a name="partial-term-search-and-patterns-with-special-characters---azure-cognitive-search-wildcard-regex-patterns"></a>Részleges kifejezésű keresés és különleges karakterekkel rendelkező minták – Azure Cognitive Search (helyettesítő karakter, regex, minták)
+# <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Részleges kifejezésű keresés és különleges karakterekkel rendelkező minták (helyettesítő karakter, regex, minták)
 
 A *részleges kifejezésű keresés* olyan lekérdezésekre utal, amelyek kifejezéstöredékekből állnak, például a karakterlánc első, utolsó vagy belső részeiből. A *minta* töredékek kombinációját eredményezheti, néha speciális karakterekkel, például kötőjelekkel vagy perjelekkel, amelyek a lekérdezés részét képezik. A gyakori használati esetek közé tartozik a telefonszám, URL, személyek vagy termékkódok, illetve összetett szavak részeinek lekérdezése.
 
 A részleges keresés akkor lehet problémás, ha az index nem rendelkezik a mintaegyeztetéshez szükséges formátumú kifejezésekkel. Az indexelés szövegelemzési fázisában az alapértelmezett szabványos analizátor használatával a speciális karakterek elvesznek, az összetett és összetett karakterláncok felvannak osztva, így a mintalekérdezések sikertelenek lesznek, ha nem található egyezés. Például egy telefonszám `+1 (425) 703-6214`(tokenizált `"1"`, `"425"` `"703"`, `"6214"`, , ) nem `"3-62"` jelenik meg a lekérdezésben, mert az adott tartalom valójában nem létezik az indexben. 
 
-A megoldás egy olyan elemző meghívása, amely megőrzi a teljes karakterláncot, beleértve a szóközöket és szükség esetén speciális karaktereket, így támogathatja a részleges kifejezéseket és mintákat. A megoldás alapja egy ép karakterlánc kiegészítő mezőjének létrehozása, valamint tartalommegőrző elemző használata.
+A megoldás egy olyan elemző meghívása, amely megőrzi a teljes karakterláncot, beleértve a szóközöket és szükség esetén speciális karaktereket, hogy részleges kifejezéseket és mintákat egyezhessen. A megoldás alapja egy ép karakterlánc kiegészítő mezőjének létrehozása, valamint tartalommegőrző elemző használata.
 
 ## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Mi a részleges keresés az Azure Cognitive Search-ben?
 
@@ -64,7 +64,7 @@ Az elemzők mezőnként vannak hozzárendelve, ami azt jelenti, hogy mezőket ho
   "type": "Edm.String",
   "retrievable": true,
   "searchable": true,
-  "analyzer": "my_customanalyzer"
+  "analyzer": "my_custom_analyzer"
 },
 ```
 

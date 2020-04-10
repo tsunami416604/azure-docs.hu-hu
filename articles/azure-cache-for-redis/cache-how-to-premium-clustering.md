@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 06/13/2018
-ms.openlocfilehash: 761c464730096eba36bc7c04227745cf362e5cc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4a0e5b0c18264e1f7a98e81bcdfd56a7159235da
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278037"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010919"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>A Redis-fürtözés beállítása prémium szintű Azure-gyorsítótárhoz a Redis számára
 A Redis-gyorsítótár különböző gyorsítótár-ajánlatokkal rendelkezik, amelyek rugalmasságot biztosítanak a gyorsítótár méretének és szolgáltatásainak kiválasztásában, beleértve a prémium szintű funkciókat, például a fürtözést, az adatmegőrzést és a virtuális hálózati támogatást. Ez a cikk ismerteti, hogyan konfigurálhatja a fürtözést egy prémium szintű Azure-gyorsítótár redis-példányban.
@@ -125,7 +125,7 @@ A gyorsítótárhoz ugyanazokat a [végpontokat,](cache-configure.md#properties)
 ### <a name="can-i-directly-connect-to-the-individual-shards-of-my-cache"></a>Közvetlenül csatlakozhatok a gyorsítótár egyes szegmenseihez?
 A fürtözési protokoll megköveteli, hogy az ügyfél a megfelelő shard kapcsolatokat. Tehát az ügyfél nek ezt helyesen az Ön számára. Ezzel azt mondta, minden shard áll egy elsődleges/replika gyorsítótár pár, együttesen ismert gyorsítótár-példány. Ezekhez a gyorsítótárpéldányokhoz a redis-cli segédprogrammal csatlakozhat a GitHub Redis-tárházának [instabil](https://redis.io/download) ágában. Ez a verzió a kapcsolóval `-c` való indításkor megvalósítja az alapvető támogatást. További információ: [A fürt lejátszása](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) [https://redis.io](https://redis.io) a [Redis-fürt oktatóanyagában.](https://redis.io/topics/cluster-tutorial)
 
-Nem ssl esetén használja a következő parancsokat.
+Nem TLS esetén használja a következő parancsokat.
 
     Redis-cli.exe –h <<cachename>> -p 13000 (to connect to instance 0)
     Redis-cli.exe –h <<cachename>> -p 13001 (to connect to instance 1)
@@ -133,7 +133,7 @@ Nem ssl esetén használja a következő parancsokat.
     ...
     Redis-cli.exe –h <<cachename>> -p 1300N (to connect to instance N)
 
-Az SSL `1300N` esetében `1500N`cserélje ki a helyébe.
+A TLS `1300N` esetében `1500N`cserélje ki a helyébe.
 
 ### <a name="can-i-configure-clustering-for-a-previously-created-cache"></a>Konfigurálhatom a fürtözést egy korábban létrehozott gyorsítótárhoz?
 Igen. Először győződjön meg arról, hogy a gyorsítótár prémium, méretezés, ha nem. Ezután látnia kell a fürt konfigurációs beállításait, beleértve a fürt engedélyezésének lehetőségét is. A gyorsítótár létrehozása után vagy a fürtözés első alkalommal történő engedélyezése után módosíthatja a fürtméretet.

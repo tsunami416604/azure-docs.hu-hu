@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 11/14/2019
+ms.date: 04/08/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0d081a8cec088f4743bd0dc7d3cc37a9fade61d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dfb094bc9f84e7129a3e1c733a054c5f6cd96372
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80117043"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81008634"
 ---
 Az Azure ultra-lemezek nagy átviteli sebességű, nagy IOPS-t és konzisztens, alacsony késésű lemeztárolást kínálnak az Azure IaaS virtuális gépek (VM-ek) számára. Ez az új ajánlat a vonal csúcsteljesítményét biztosítja a meglévő lemezajánlatainkkal azonos rendelkezésre állási szinteken. Az ultralemezek egyik fő előnye, hogy dinamikusan módosíthatja az SSD teljesítményét a számítási feladatok mellett anélkül, hogy újra kellene indítani a virtuális gépeket. Az ultralemezek olyan adatigényes számítási feladatokhoz használhatók, mint az SAP HANA, a felső szintű adatbázisok és a tranzakcióigényes számítási feladatok.
 
@@ -23,9 +23,11 @@ Az Azure ultra-lemezek nagy átviteli sebességű, nagy IOPS-t és konzisztens, 
 
 ## <a name="determine-vm-size-and-region-availability"></a>A virtuális gép méretének és a régió elérhetőségének meghatározása
 
+### <a name="vms-using-availability-zones"></a>Rendelkezésre állási zónákat használó virtuális gépek
+
 Az ultralemezek kihasználásához meg kell határoznia, hogy melyik rendelkezésre állási zónában van. Nem minden régió támogatja az ultralemezek minden virtuális gépméretét. Annak megállapításához, hogy a régió, a zóna és a virtuális gép mérete támogatja-e az ultralemezeket, futtassa az alábbi parancsok egyikét, először cserélje le a **régiót**, a **vmSize**és **az előfizetési** értékeket:
 
-Cli:
+#### <a name="cli"></a>parancssori felület
 
 ```azurecli
 $subscription = "<yourSubID>"
@@ -37,7 +39,7 @@ $vmSize = "<yourVMSize>"
 az vm list-skus --resource-type virtualMachines  --location $region --query "[?name=='$vmSize'].locationInfo[0].zoneDetails[0].Name" --subscription $subscription
 ```
 
-PowerShell:
+#### <a name="powershell"></a>PowerShell
 
 ```powershell
 $region = "southeastasia"
@@ -58,9 +60,58 @@ A válasz hasonló lesz az alábbi űrlaphoz, ahol X a kiválasztott régióban 
 
 Most, hogy tudja, melyik zónába kell telepíteni, kövesse a jelen cikkben leírt telepítési lépéseket egy olyan virtuális gép üzembe helyezéséhez, amelyhez ultralemez van csatlakoztatva, vagy egy ultralemezt egy meglévő virtuális géphez csatolhat.
 
+### <a name="vms-with-no-redundancy-options"></a>Redundancianélküli virtuális gépek
+
+Az USA nyugati részén telepített ultralemezeket egyelőre redundancia-beállítások nélkül kell telepíteni. Előfordulhat azonban, hogy nem minden olyan lemezméret található ebben a régióban, amely támogatja az ultralemezeket. Annak meghatározásához, hogy az USA nyugati részén mely ek támogatják az ultralemezeket, használhatja az alábbi kódrészletek egyikét. Először cserélje `vmSize` le `subscription` a és az értékeket:
+
+```azurecli
+$subscription = "<yourSubID>"
+$region = "westus"
+# example value is Standard_E64s_v3
+$vmSize = "<yourVMSize>"
+
+az vm list-skus --resource-type virtualMachines  --location $region --query "[?name=='$vmSize'].capabilities" --subscription $subscription
+```
+
+```azurepowershell
+$region = "westus"
+$vmSize = "Standard_E64s_v3"
+(Get-AzComputeResourceSku | where {$_.Locations.Contains($region) -and ($_.Name -eq $vmSize) })[0].Capabilities
+```
+
+A válasz hasonló lesz a `UltraSSDAvailable   True` következő űrlaphoz, azt jelzi, hogy a virtuális gép mérete támogatja-e az ebben a régióban található ultralemezeket.
+
+```
+Name                                         Value
+----                                         -----
+MaxResourceVolumeMB                          884736
+OSVhdSizeMB                                  1047552
+vCPUs                                        64
+HyperVGenerations                            V1,V2
+MemoryGB                                     432
+MaxDataDiskCount                             32
+LowPriorityCapable                           True
+PremiumIO                                    True
+VMDeploymentTypes                            IaaS
+vCPUsAvailable                               64
+ACUs                                         160
+vCPUsPerCore                                 2
+CombinedTempDiskAndCachedIOPS                128000
+CombinedTempDiskAndCachedReadBytesPerSecond  1073741824
+CombinedTempDiskAndCachedWriteBytesPerSecond 1073741824
+CachedDiskBytes                              1717986918400
+UncachedDiskIOPS                             80000
+UncachedDiskBytesPerSecond                   1258291200
+EphemeralOSDiskSupported                     True
+AcceleratedNetworkingEnabled                 True
+RdmaEnabled                                  False
+MaxNetworkInterfaces                         8
+UltraSSDAvailable                            True
+```
+
 ## <a name="deploy-an-ultra-disk-using-azure-resource-manager"></a>Ultralemez telepítése az Azure Resource Manager használatával
 
-Először határozza meg a virtuális gép méretét az üzembe helyezve. A támogatott virtuális gép méreteinek listáját lásd: [GA hatókör és korlátozások](#ga-scope-and-limitations) szakaszban.
+Először határozza meg a virtuális gép méretét az üzembe helyezve. A támogatott virtuális gép méreteinek listáját a [GA hatóköre és korlátozásai](#ga-scope-and-limitations) című szakaszban.
 
 Ha több ultralemezzel rendelkező virtuális gép létrehozásához szeretne létrehozni egy virtuális gép, olvassa el a minta [Hozzon létre egy virtuális gép több ultra lemezt.](https://aka.ms/ultradiskArmTemplate)
 
@@ -151,6 +202,18 @@ Cserélje le vagy állítsa be a **$vmname,** **$rgname,** **$diskname**, **$loc
 az vm create --subscription $subscription -n $vmname -g $rgname --image Win2016Datacenter --ultra-ssd-enabled true --zone $zone --authentication-type password --admin-password $password --admin-username $user --size Standard_D4s_v3 --location $location
 ```
 
+### <a name="enable-ultra-disk-compatibility-on-an-existing-vm"></a>Ultralemez-kompatibilitás engedélyezése meglévő virtuális gépen
+
+Ha a virtuális gép megfelel a [GA hatóköre és korlátai, és](#ga-scope-and-limitations) a [fiók megfelelő zónában](#determine-vm-size-and-region-availability)van, majd engedélyezheti az ultralemez kompatibilitást a virtuális gépen.
+
+Az ultralemez-kompatibilitás engedélyezéséhez le kell állítania a virtuális gép. A virtuális gép leállítása után engedélyezheti a kompatibilitást, csatlakoztathat egy ultralemezt, majd újraindíthatja a virtuális gép:
+
+```azurecli
+az vm deallocate -n $vmName -g $rgName
+az vm update -n $vmName -g $rgName --ultra-ssd-enabled true
+az vm start -n $vmName -g $rgName
+```
+
 ### <a name="create-an-ultra-disk-using-cli"></a>Ultralemez létrehozása cli használatával
 
 Most, hogy rendelkezik egy virtuális gép, amely képes az ultra lemezek csatlakoztatására, létrehozhat és csatolhat egy ultra lemezt.
@@ -214,9 +277,22 @@ New-AzVm `
     -Name $vmName `
     -Location "eastus2" `
     -Image "Win2016Datacenter" `
-    -EnableUltraSSD `
+    -EnableUltraSSD $true `
     -size "Standard_D4s_v3" `
     -zone $zone
+```
+
+### <a name="enable-ultra-disk-compatibility-on-an-existing-vm"></a>Ultralemez-kompatibilitás engedélyezése meglévő virtuális gépen
+
+Ha a virtuális gép megfelel a [GA hatóköre és korlátai, és](#ga-scope-and-limitations) a [fiók megfelelő zónában](#determine-vm-size-and-region-availability)van, majd engedélyezheti az ultralemez kompatibilitást a virtuális gépen.
+
+Az ultralemez-kompatibilitás engedélyezéséhez le kell állítania a virtuális gép. A virtuális gép leállítása után engedélyezheti a kompatibilitást, csatlakoztathat egy ultralemezt, majd újraindíthatja a virtuális gép:
+
+```azurepowershell
+#stop the VM
+$vm1 = Get-AzureRMVM -name $vmName -ResourceGroupName $rgName
+Update-AzureRmVM -ResourceGroupName $rgName -VM $vm1 -UltraSSDEnabled 1
+#start the VM
 ```
 
 ### <a name="create-an-ultra-disk-using-powershell"></a>Ultralemez létrehozása a PowerShell használatával
@@ -265,7 +341,3 @@ Az ultralemezek egyedülálló képességgel rendelkeznek, amely lehetővé tesz
 $diskupdateconfig = New-AzDiskUpdateConfig -DiskMBpsReadWrite 2000
 Update-AzDisk -ResourceGroupName $resourceGroup -DiskName $diskName -DiskUpdate $diskupdateconfig
 ```
-
-## <a name="next-steps"></a>További lépések
-
-Ha szeretné kipróbálni az új lemeztípus [ta-](https://aka.ms/UltraDiskSignup)

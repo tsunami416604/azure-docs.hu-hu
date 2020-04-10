@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: ec9eeb0c35d96ee777771260686178faa536e909
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: d1929f937d86001a0f2a399b1ebd92e47bbd2c86
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80877303"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990905"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Az Active Directory (Azure AD) alkalmazásproxyja gyakori kérdések
 
@@ -52,6 +52,9 @@ A javaslatokért olvassa el az [Alkalmazásproxy-összekötők és -alkalmazáso
 ### <a name="is-tls-termination-tlshttps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>A TLS-végződtetés (TLS/HTTPS ellenőrzés vagy gyorsítás) az összekötő kiszolgálókról az Azure-ba irányuló forgalomban támogatott?
 
 Az alkalmazásproxy-összekötő tanúsítványalapú hitelesítést hajt végre az Azure-ban. A TLS-végződés (TLS/HTTPS ellenőrzés vagy gyorsítás) megszakítja ezt a hitelesítési módszert, és nem támogatott. Az összekötőről az Azure-ba irányuló forgalomnak meg kell kerülnie a TLS-végződtetést végző eszközöket.  
+
+### <a name="can-i-place-a-forward-proxy-device-between-the-connector-servers-and-the-back-end-application-server"></a>Elhelyezhetek továbbítási proxyeszközt az összekötő kiszolgáló(k) és a háttéralkalmazás-kiszolgáló között?
+Igen, ez a forgatókönyv az 1.5.1526.0-s összekötőverziótól kezdve támogatott. Lásd: [Meglévő helyszíni proxykiszolgálók használata](application-proxy-configure-connectors-with-proxy-servers.md).
 
 ### <a name="should-i-create-a-dedicated-account-to-register-the-connector-with-azure-ad-application-proxy"></a>Hozzak létre egy dedikált fiókot az összekötő regisztrálásához az Azure AD alkalmazásproxyval?
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 4129f1a89575c9a0e7cd6a0090168df659356c1b
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 38e319efb100d326d55f6f821e7c903306a7c7d0
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885106"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991007"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Webes API-kat meghívja: Kódkonfiguráció
 
@@ -214,7 +214,7 @@ class MsalAuthHelper {
 
 Az On-behalf-of (OBO) folyamat egy jogkivonat beszerzésére szolgál az alsóbb rétegbeli webes API-hoz. Ebben a folyamatban a webes API kap egy tulajdonosi jogkivonatot a felhasználó által delegált engedélyeket az ügyfélalkalmazásból, majd kicseréli ezt a jogkivonatot egy másik hozzáférési jogkivonatot az alsóbb rétegbeli webes API hívásához.
 
-A Python webes API-t kell használninéhány köztes az ügyféltől kapott tulajdonosi jogkivonat érvényesítéséhez. A webes API ezután beszerezheti a hozzáférési jogkivonatot [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) az alsóbb rétegbeli API-hoz az MSAL Python-kódtár használatával a metódus hívásával. A folyamatot az MSAL Python-nal bemutató minta még nem érhető el.
+A Python webes API-t kell használninéhány köztes az ügyféltől kapott tulajdonosi jogkivonat érvényesítéséhez. A webes API ezután beszerezheti a hozzáférési jogkivonatot [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) az alsóbb rétegbeli API-hoz az MSAL Python-kódtár használatával a metódus hívásával. Az API használatával például tekintse meg [a Microsoft-authentication-library-for-python tesztkódját a GitHubon.](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.2.0/tests/test_e2e.py#L429-L472) Lásd még az [53-as kiadás](https://github.com/AzureAD/microsoft-authentication-library-for-python/issues/53) vitafórumát ugyanebben a tárházban egy olyan megközelítéshez, amely megkerüli a középső szintű alkalmazás szükségességét.
 
 ---
 

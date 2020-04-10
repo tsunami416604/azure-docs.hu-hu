@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: a916645f153f73a98e7fc5d4046bdf557e8acf2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5ea0fd252d1792d4c40cc6d7869f4ba57edc1ad
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73823526"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011361"
 ---
 # <a name="split-merge-security-configuration"></a>Biztonsági konfiguráció felosztása
 
@@ -26,7 +26,7 @@ A Split/Merge szolgáltatás használatához helyesen kell konfigurálnia a bizt
 
 A tanúsítványok kétféleképpen vannak konfigurálva. 
 
-1. [Az SSL-tanúsítvány konfigurálása](#to-configure-the-ssl-certificate)
+1. [A TLS/SSL tanúsítvány konfigurálása](#to-configure-the-tlsssl-certificate)
 2. [Ügyféltanúsítványok konfigurálása](#to-configure-client-certificates) 
 
 ## <a name="to-obtain-certificates"></a>Tanúsítványok beszerzése
@@ -49,26 +49,26 @@ Ha ezek a beállítások nem érhetők el, **önaláírt tanúsítványokat**hoz
         %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
 * A WDK letöltése a [Windows 8.1-ről: Készletek és eszközök letöltése](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
-## <a name="to-configure-the-ssl-certificate"></a>Az SSL-tanúsítvány konfigurálása
+## <a name="to-configure-the-tlsssl-certificate"></a>A TLS/SSL tanúsítvány konfigurálása
 
-A kommunikáció titkosításához és a kiszolgáló hitelesítéséhez SSL-tanúsítvány szükséges. Válassza ki az alábbi három forgatókönyv közül a legalkalmazhatóbbat, és hajtsa végre az összes lépést:
+A kommunikáció titkosításához és a kiszolgáló hitelesítéséhez TLS/SSL-tanúsítvány szükséges. Válassza ki az alábbi három forgatókönyv közül a legalkalmazhatóbbat, és hajtsa végre az összes lépést:
 
 ### <a name="create-a-new-self-signed-certificate"></a>Új önaláírt tanúsítvány létrehozása
 
 1. [Önaláírt tanúsítvány létrehozása](#create-a-self-signed-certificate)
-2. [PFX-fájl létrehozása önaláírt SSL-tanúsítványhoz](#create-pfx-file-for-self-signed-ssl-certificate)
-3. [SSL-tanúsítvány feltöltése a felhőszolgáltatásba](#upload-ssl-certificate-to-cloud-service)
-4. [Ssl-tanúsítvány frissítése a szolgáltatás konfigurációs fájljában](#update-ssl-certificate-in-service-configuration-file)
-5. [Import SSL hitelesítésszolgáltató](#import-ssl-certification-authority)
+2. [PFX-fájl létrehozása önaláírt TLS/SSL tanúsítványhoz](#create-pfx-file-for-self-signed-tlsssl-certificate)
+3. [TLS/SSL-tanúsítvány feltöltése a felhőszolgáltatásba](#upload-tlsssl-certificate-to-cloud-service)
+4. [TLS/SSL-tanúsítvány frissítése a szolgáltatás konfigurációs fájljában](#update-tlsssl-certificate-in-service-configuration-file)
+5. [TLS/SSL hitelesítésszolgáltató importálása](#import-tlsssl-certification-authority)
 
 ### <a name="to-use-an-existing-certificate-from-the-certificate-store"></a>Meglévő tanúsítvány használata a tanúsítványtárolóból
-1. [Ssl-tanúsítvány exportálása a tanúsítványtárolóból](#export-ssl-certificate-from-certificate-store)
-2. [SSL-tanúsítvány feltöltése a felhőszolgáltatásba](#upload-ssl-certificate-to-cloud-service)
-3. [Ssl-tanúsítvány frissítése a szolgáltatás konfigurációs fájljában](#update-ssl-certificate-in-service-configuration-file)
+1. [TLS/SSL-tanúsítvány exportálása a tanúsítványtárolóból](#export-tlsssl-certificate-from-certificate-store)
+2. [TLS/SSL-tanúsítvány feltöltése a felhőszolgáltatásba](#upload-tlsssl-certificate-to-cloud-service)
+3. [TLS/SSL-tanúsítvány frissítése a szolgáltatás konfigurációs fájljában](#update-tlsssl-certificate-in-service-configuration-file)
 
 ### <a name="to-use-an-existing-certificate-in-a-pfx-file"></a>Meglévő tanúsítvány használata PFX-fájlban
-1. [SSL-tanúsítvány feltöltése a felhőszolgáltatásba](#upload-ssl-certificate-to-cloud-service)
-2. [Ssl-tanúsítvány frissítése a szolgáltatás konfigurációs fájljában](#update-ssl-certificate-in-service-configuration-file)
+1. [TLS/SSL-tanúsítvány feltöltése a felhőszolgáltatásba](#upload-tlsssl-certificate-to-cloud-service)
+2. [TLS/SSL-tanúsítvány frissítése a szolgáltatás konfigurációs fájljában](#update-tlsssl-certificate-in-service-configuration-file)
 
 ## <a name="to-configure-client-certificates"></a>Ügyféltanúsítványok konfigurálása
 A szolgáltatásra vonatkozó kérelmek hitelesítéséhez ügyféltanúsítványok szükségesek. Válassza ki az alábbi három forgatókönyv közül a legalkalmazhatóbbat, és hajtsa végre az összes lépést:
@@ -102,7 +102,7 @@ A metaadat-tárolóban tárolt hitelesítő adatok titkosításához tanúsítv�
 
 ### <a name="use-a-new-self-signed-certificate"></a>Új önaláírt tanúsítvány használata
 1. [Önaláírt tanúsítvány létrehozása](#create-a-self-signed-certificate)
-2. [PFX-fájl létrehozása önaláírt titkosítási tanúsítványhoz](#create-pfx-file-for-self-signed-ssl-certificate)
+2. [PFX-fájl létrehozása önaláírt titkosítási tanúsítványhoz](#create-pfx-file-for-self-signed-tlsssl-certificate)
 3. [Titkosítási tanúsítvány feltöltése a felhőszolgáltatásba](#upload-encryption-certificate-to-cloud-service)
 4. [Titkosítási tanúsítvány frissítése a szolgáltatás konfigurációs fájljában](#update-encryption-certificate-in-service-configuration-file)
 
@@ -186,7 +186,7 @@ Az IIS dinamikus IP-biztonságáról az IIS-ben található dokumentációban ol
 ## <a name="operations-for-configuring-service-certificates"></a>Szolgáltatási tanúsítványok konfigurálásának műveletei
 Ez a témakör csak tájékoztató jellegű. Kövesse a következő konfigurációs lépéseket:
 
-* Az SSL-tanúsítvány konfigurálása
+* A TLS/SSL tanúsítvány konfigurálása
 * Ügyféltanúsítványok konfigurálása
 
 ## <a name="create-a-self-signed-certificate"></a>Önaláírt tanúsítvány létrehozása
@@ -204,7 +204,7 @@ Testreszabás:
 * -n a szolgáltatás URL-címével. A helyettesítő karakterek ("CN=*.cloudapp.net") és az alternatív nevek ("CN=myservice1.cloudapp.net, CN=myservice2.cloudapp.net") támogatottak.
 * -e a tanúsítvány lejárati dátumával Hozzon létre egy erős jelszót, és adja meg, amikor a rendszer kéri.
 
-## <a name="create-pfx-file-for-self-signed-ssl-certificate"></a>PFX-fájl létrehozása önaláírt SSL-tanúsítványhoz
+## <a name="create-pfx-file-for-self-signed-tlsssl-certificate"></a>PFX-fájl létrehozása önaláírt TLS/SSL tanúsítványhoz
 Végre:
 
         pvk2pfx -pvk MySSL.pvk -spc MySSL.cer
@@ -214,24 +214,24 @@ Végre:
 * Igen, a személyes kulcs exportálása
 * Az összes bővített tulajdonság exportálása
 
-## <a name="export-ssl-certificate-from-certificate-store"></a>Ssl-tanúsítvány exportálása a tanúsítványtárolóból
+## <a name="export-tlsssl-certificate-from-certificate-store"></a>TLS/SSL-tanúsítvány exportálása a tanúsítványtárolóból
 * Tanúsítvány keresése
 * Kattintson a Műveletek -> Az összes tevékenység -> exportálása...
 * Exportálási tanúsítvány egy be. PFX fájl az alábbi lehetőségeket:
   * Igen, a személyes kulcs exportálása
   * Ha lehetséges, az összes tanúsítvány felvétele a tanúsítványláncba *Az összes kiterjesztett tulajdonság exportálása
 
-## <a name="upload-ssl-certificate-to-cloud-service"></a>SSL-tanúsítvány feltöltése a felhőszolgáltatásba
-Tanúsítvány feltöltése a meglévő vagy létrehozott. PFX-fájl az SSL kulcspárral:
+## <a name="upload-tlsssl-certificate-to-cloud-service"></a>TLS/SSL tanúsítvány feltöltése a felhőszolgáltatásba
+Tanúsítvány feltöltése a meglévő vagy létrehozott. PFX-fájl a TLS kulcspárral:
 
 * Adja meg a személyes kulcs adatait védő jelszót
 
-## <a name="update-ssl-certificate-in-service-configuration-file"></a>Ssl-tanúsítvány frissítése a szolgáltatás konfigurációs fájljában
+## <a name="update-tlsssl-certificate-in-service-configuration-file"></a>TLS/SSL-tanúsítvány frissítése a szolgáltatás konfigurációs fájljában
 Frissítse a szolgáltatáskonfigurációs fájlkövetkező beállításának ujjlenyomatértékét a felhőszolgáltatásba feltöltött tanúsítvány ujjlenyomatával:
 
     <Certificate name="SSL" thumbprint="" thumbprintAlgorithm="sha1" />
 
-## <a name="import-ssl-certification-authority"></a>Ssl-hitelesítésszolgáltató importálása
+## <a name="import-tlsssl-certification-authority"></a>TLS/SSL hitelesítésszolgáltató importálása
 Kövesse az alábbi lépéseket minden olyan fiókban/gépen, amely kommunikál a szolgáltatással:
 
 * Kattintson duplán a lehetőségre. CER-fájl a Windows Intézőben
@@ -248,7 +248,7 @@ A szolgáltatás konfigurációs fájljában módosítsa a hamis beállítási b
 <Setting name="SetupWebserverForClientCertificates" value="false" />
 ```
 
-Ezután másolja ugyanazt az ujjlenyomatot, mint az SSL-tanúsítvány a hitelesítésszolgáltatótanúsítvány-beállításban:
+Ezután másolja ugyanazt az ujjlenyomatot, mint a TLS/SSL tanúsítvány a hitelesítésszolgáltatótanúsítvány-beállításban:
 
 ```xml
 <Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
@@ -411,7 +411,7 @@ Frissítse a szolgáltatáskonfigurációs fájl következő beállításainak u
 ```
 
 ## <a name="common-certificate-operations"></a>Közös tanúsítványműveletek
-* Az SSL-tanúsítvány konfigurálása
+* A TLS/SSL tanúsítvány konfigurálása
 * Ügyféltanúsítványok konfigurálása
 
 ## <a name="find-certificate"></a>Tanúsítvány keresése
@@ -477,7 +477,7 @@ Az [Azure portalon](https://portal.azure.com/)
 7. Miután elkészült, másolja a tanúsítvány ujjlenyomatát a lista új bejegyzéséből.
 
 ## <a name="other-security-considerations"></a>Egyéb biztonsági szempontok
-A jelen dokumentumban ismertetett SSL-beállítások titkosítják a kommunikációt a szolgáltatás és az ügyfelek között a HTTPS-végpont használata kor. Ez azért fontos, mert az adatbázis-hozzáférés és a potenciálisan más bizalmas információk hitelesítő adatait tartalmazza a kommunikáció. Ne feledje azonban, hogy a szolgáltatás a Belső táblákban megmarad a belső táblákban a Microsoft Azure SQL-adatbázisban, amelyet a Microsoft Azure-előfizetésben megadott a metaadat-tároláshoz. Ez az adatbázis a szolgáltatáskonfigurációs fájlban () a következő beállítás részeként lett definiálva. CSCFG fájl): 
+A jelen dokumentumban ismertetett TLS-beállítások titkosítják a kommunikációt a szolgáltatás és az ügyfelek között a HTTPS-végpont használata kor. Ez azért fontos, mert az adatbázis-hozzáférés és a potenciálisan más bizalmas információk hitelesítő adatait tartalmazza a kommunikáció. Ne feledje azonban, hogy a szolgáltatás a Belső táblákban megmarad a belső táblákban a Microsoft Azure SQL-adatbázisban, amelyet a Microsoft Azure-előfizetésben megadott a metaadat-tároláshoz. Ez az adatbázis a szolgáltatáskonfigurációs fájlban () a következő beállítás részeként lett definiálva. CSCFG fájl): 
 
 ```xml
 <Setting name="ElasticScaleMetadata" value="Server=…" />

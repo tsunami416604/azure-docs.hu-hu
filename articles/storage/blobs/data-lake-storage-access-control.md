@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 192e46fd7f86b6053eaf658fa65e3c6cdfa3a4e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93c21656a768ae458572e0b4917412c8103b2f2d
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79528608"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992215"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlés a 2. generációs Azure Data Lake Storage-ben
 
@@ -54,7 +54,7 @@ A SAS-jogkivonatok a jogkivonat részeként tartalmazzák a megengedett engedél
 A rendszerbiztonsági tagokat a fájlok és könyvtárak hozzáférési szintjéhez társíthatja. Ezeket a társításokat *egy hozzáférés-vezérlési listában (ACL)* rögzítik. A tárfiók minden fájlja és könyvtára rendelkezik hozzáférés-vezérlési listával.
 
 > [!NOTE]
-> Az ACL-ok csak az azonos bérlő rendszerbiztonsági tagokra vonatkoznak. A vendégfelhasználót nem társíthatja hozzáférési szinthez.  
+> Az ACL-ok csak az azonos bérlő rendszerbiztonsági tagokra vonatkoznak. 
 
 Ha a tárfiók szintjén szerepkört rendelt egy rendszerbiztonsági taghoz, hozzáférés-vezérlési listák használatával rendszergazdai jogosultsággal biztosíthatja az adott rendszerbiztonsági tag számára az adott fájlokhoz és könyvtárakhoz való hozzáférést.
 

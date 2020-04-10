@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: rogarana
-ms.openlocfilehash: 081ee364b3ddee5d1d1be75613309a4ae427066f
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: ae575eebf700f5495ea20d2bd3732ca21ad32315
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80666834"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011419"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>Active Directory-hitelesítés engedélyezése SMB-n keresztül az Azure-fájlmegosztások számára
 
@@ -36,7 +36,9 @@ Ha engedélyezi az AD-t az Azure-fájlmegosztásokhoz SMB-n keresztül, az AD-ta
 Az Azure-fájlmegosztások eléréséhez használt AD-identitásokat szinkronizálni kell az Azure AD-vel a megosztási szintű fájlengedélyek kényszerítéséhez a szabványos [szerepköralapú hozzáférés-vezérlési (RBAC)](../../role-based-access-control/overview.md) modellen keresztül. A meglévő fájlkiszolgálókról átvitt fájlokon/könyvtárakon lévő [Windows-stílusú DAK-ok](https://docs.microsoft.com/previous-versions/technet-magazine/cc161041(v=msdn.10)?redirectedfrom=MSDN) megmaradnak és érvénybe lépnek. Ez a funkció zökkenőmentes integrációt biztosít a vállalati AD tartományinfrastruktúrával. Ahogy lecseréli a helyszíni fájlkiszolgálókat az Azure-fájlmegosztásokra, a meglévő felhasználók egyetlen bejelentkezési felülettel érhetik el az Azure-fájlmegosztásokat a jelenlegi ügyfeleikből, a használatban lévő hitelesítő adatok módosítása nélkül.  
 
 > [!NOTE]
-> Az Azure Files AD-hitelesítés általános használati esetekben történő beállításának elősegítése érdekében [két videót](https://docs.microsoft.com/azure/storage/files/storage-files-introduction#videos) tettünk közzé, amelyek lépésről lépésre útmutatást nyújtanak a helyszíni fájlkiszolgálók Azure Files-ra való cseréjéhez és az Azure Files profiltárolóként való használatához a Windows virtuális asztalhoz.
+> Az Azure Files AD-hitelesítés beállításának elősegítése érdekében [két videót](https://docs.microsoft.com/azure/storage/files/storage-files-introduction#videos) tettünk közzé, amelyek részletes útmutatást 
+> * Helyszíni fájlkiszolgálók cseréje Azure Files szolgáltatással (beleértve a fájlok privát hivatkozásának beállítását és az AD-hitelesítést)
+> * Az Azure Files használata a Windows virtuális asztal profiltárolójaként (beleértve az AD-hitelesítés és az FsLogix-konfiguráció beállítását is)
  
 ## <a name="prerequisites"></a>Előfeltételek 
 
@@ -111,8 +113,7 @@ A következő parancsfájl segítségével hajthatja végre a regisztrációt, �
 ### <a name="12-domain-join-your-storage-account"></a>1.2 Tartomány csatlakozás tárfiókjához
 Ne felejtse el lecserélni a helyőrző értékeket a saját az alábbi paramétereket, mielőtt végrehajtaná azt a PowerShellben.
 > [!IMPORTANT]
-> Azt javasoljuk, hogy adjon meg egy AD szervezeti egységet, amely nem kényszeríti a jelszó lejáratát. Ha olyan szervezeti egységet használ, amelyen a jelszó lejárata konfigurálva van, a jelszó maximális életkora előtt frissítenie kell a jelszót. Az AD-fiók jelszavának frissítése hitelesítési hibákat eredményez az Azure-fájlmegosztások elérésekor. A jelszó frissítésének módjáról az [AD-fiók jelszavának frissítése](#5-update-ad-account-password)című témakörben olvashat.
-
+> Az alábbi tartományillesztési parancsmag létrehoz egy AD-fiókot, amely az AD tárfiókját (fájlmegosztását) jelöli. Dönthet úgy, hogy számítógépfiókként vagy szolgáltatásbejelentkezési fiókként regisztrál. A számítógépfiókok esetében az AD-ben 30 napig beállított alapértelmezett jelszólejárati életkor van beállítva. Hasonlóképpen előfordulhat, hogy a szolgáltatás bejelentkezési fiókjában az AD-tartományban vagy szervezeti egységben beállított alapértelmezett jelszólejárati korvan beállítva. Javasoljuk, hogy ellenőrizze, hogy mi az AD-környezetben konfigurált jelszó lejárati életkora, és tervezze meg az [AD-fiók jelszavának frissítését](#5-update-ad-account-password) az alábbi AD-fiókban a jelszó maximális életkora előtt. Az AD-fiók jelszavának frissítése hitelesítési hibákat eredményez az Azure-fájlmegosztások elérésekor. Fontolóra [veheti, hogy új AD szervezeti egységet hoz létre az AD-ben,](https://docs.microsoft.com/powershell/module/addsadministration/new-adorganizationalunit?view=win10-ps) és ennek megfelelően letiltja a jelszó elévülési házirendet a [számítógépfiókokban](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)?redirectedfrom=MSDN) vagy a szolgáltatásbejelentkezési fiókokban. 
 
 ```PowerShell
 #Change the execution policy to unblock importing AzFilesHybrid.psm1 module
@@ -138,6 +139,11 @@ Join-AzStorageAccountForAuth `
         -Name "<storage-account-name-here>" `
         -DomainAccountType "ComputerAccount" `
         -OrganizationalUnitName "<ou-name-here>" or -OrganizationalUnitDistinguishedName "<ou-distinguishedname-here>"
+
+#If you don't provide the OU name as an input parameter, the AD identity that represents the storage account will be created under the root directory.
+
+#
+
 ```
 
 A következő leírás összefoglalja a `Join-AzStorageAccountForAuth` parancsmag végrehajtásakor végrehajtott összes műveletet. Ezeket a lépéseket manuálisan is végrehajthatja, ha nem szeretné használni a parancsot:

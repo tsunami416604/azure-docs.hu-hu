@@ -6,16 +6,16 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: yegu
-ms.openlocfilehash: e2b1ed693ea57e3414d465a57a5ba2b1203f67c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f71476d7d41ae45d2f1014ed1b257870622487e6
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79277985"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010834"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Azure Cache for Redis létrehozása és kezelése a klasszikus Azure CLI használatával
 > [!div class="op_single_selector"]
-> * [Powershell](cache-how-to-manage-redis-cache-powershell.md)
+> * [PowerShell](cache-how-to-manage-redis-cache-powershell.md)
 > * [Azure klasszikus parancssori felület](cache-manage-cli.md)
 >
 
@@ -43,7 +43,7 @@ A következő tulajdonságok at a Redis-példányok Azure Cache létrehozásakor
 | location |-l, --hely |Gyorsítótár létrehozásának helye. |
 | size |-z, --méret |Az Azure-gyorsítótár a Redis mérete. Érvényes értékek: [C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4] |
 | Sku |-x, --sku |Redis-termékváltozat. Az egyik nek: [Alap, Standard, Prémium] |
-| EnableNonSslPort |-e, --enable-non-ssl-port |A Redis Azure-gyorsítótár ának EnableNonSslPort tulajdonsága. Adja hozzá ezt a jelzőt, ha engedélyezni szeretné a nem SSL-portot a gyorsítótárhoz |
+| EnableNonSslPort |-e, --enable-non-ssl-port |A Redis Azure-gyorsítótár ának EnableNonSslPort tulajdonsága. Adja hozzá ezt a jelzőt, ha engedélyezni szeretné a nem TLS/SSL portot a gyorsítótárhoz |
 | Redis konfiguráció |-c, --redis-konfiguráció |Redis konfiguráció. Itt adhatja meg a konfigurációs kulcsok és értékek JSON-formátumú karakterláncát. Formátum:"{"":"","":"":"}" |
 | Redis konfiguráció |-f, --redis-configuration-file |Redis konfiguráció. Itt adhatja meg a konfigurációs kulcsokat és értékeket tartalmazó fájl elérési útját. A fájlbejegyzés formátuma: {"":"","":"":"}} |
 | Szilánkok száma |-r, --shard-count |A fürtözéssel rendelkező prémium szintű fürtgyorsítótárban létrehozandó szegmensek száma. |
@@ -108,7 +108,7 @@ A parancsról további információt `azure rediscache create -h` a parancs futt
     help:      -l, --location <location>                                Location to create cache.
     help:      -z, --size <size>                                        Size of the Azure Cache for Redis. Valid values: [C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4]
     help:      -x, --sku <sku>                                          Redis SKU. Should be one of : [Basic, Standard, Premium]
-    help:      -e, --enable-non-ssl-port                                EnableNonSslPort property of the Azure Cache for Redis. Add this flag if you want to enable the Non SSL Port for your cache
+    help:      -e, --enable-non-ssl-port                                EnableNonSslPort property of the Azure Cache for Redis. Add this flag if you want to enable the non-TLS/SSL Port for your cache
     help:      -c, --redis-configuration <redis-configuration>          Redis Configuration. Enter a JSON formatted string of configuration keys and values here. Format:"{"<key1>":"<value1>","<key2>":"<value2>"}"
     help:      -f, --redis-configuration-file <redisConfigurationFile>  Redis Configuration. Enter the path of a file containing configuration keys and values here. Format for the file entry: {"<key1>":"<value1>","<key2>":"<value2>"}
     help:      -r, --shard-count <shard-count>                          Number of Shards to create on a Premium Cluster Cache

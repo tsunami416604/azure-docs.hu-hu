@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 74d56d553c4049a98b4401c66b27ae33e31da5c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40a16d559a96c88a864ef809d40d798b99746230
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74927116"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992096"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Adatok másolása a Marketo-ból az Azure Data Factory használatával (előzetes verzió)
 
@@ -37,7 +37,7 @@ A Marketo-ból adatokat másolhat bármely támogatott fogadó adattárba. A má
 Az Azure Data Factory egy beépített illesztőprogramot biztosít a kapcsolat engedélyezéséhez, ezért nem kell manuálisan telepítenie egyetlen illesztőprogramot is ezzel az összekötővel.
 
 >[!NOTE]
->Ez a Marketo csatlakozó a Marketo REST API-ra épül. Ne feledje, hogy a Marketo [egyidejű kérelemkorláttal](https://developers.marketo.com/rest-api/) rendelkezik a szolgáltatási oldalon. Ha a REST API használatának megkísérlése közben a "Hiba: A 100" maximális sebességhatár a "20" másodpercben (606)" vagy a "Hiba rest API használata közben: A REST API egyidejű hozzáférési határa (615)" a szolgáltatáshoz intézett kérések számának csökkentése.
+>Ez a Marketo csatlakozó a Marketo REST API-ra épül. Ne feledje, hogy a Marketo [egyidejű kérelemkorláttal](https://developers.marketo.com/rest-api/) rendelkezik a szolgáltatási oldalon. Ha a "Hiba a REST API használata közben: A "100" maximális sebességkorlát a "20" mp (606)" vagy a "Hiba rest API használata közben: A REST API egyidejű hozzáférési határa (615)" hibaüzenetel jár, fontolja meg az egyidejű másolási tevékenység futtatásainak csökkentését a szolgáltatás kéréseinek számának csökkentése érdekében.
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -56,8 +56,8 @@ A Marketo kapcsolt szolgáltatás a következő tulajdonságokat támogatja:
 | ügyfél-azonosító | A Marketo szolgáltatás ügyfélazonosítója.  | Igen |
 | ügyféltitkos | A Marketo szolgáltatás ügyféltitka. Jelölje meg ezt a mezőt SecureStringként a Data Factory biztonságos tárolásához, vagy [hivatkozzon az Azure Key Vaultban tárolt titkos fájlokra.](store-credentials-in-key-vault.md) | Igen |
 | useEncryptedEndpoints | Itt adható meg, hogy az adatforrás végpontjai HTTPS protokoll használatával titkosítva legyenek-e. Az alapértelmezett érték az igaz.  | Nem |
-| useHostVerification (useHostVerification) | Itt adható meg, hogy az SSL-kapcsolaton keresztüli csatlakozáskor a kiszolgáló tanúsítványában lévő állomásnév nek meg kell-e egyeznie a kiszolgáló állomásnevével. Az alapértelmezett érték az igaz.  | Nem |
-| usePeerVerification | Itt adható meg, hogy az SSL-kapcsolaton keresztül imitomának ellenőrzése esetén ellenőrizze-e a kiszolgáló identitását. Az alapértelmezett érték az igaz.  | Nem |
+| useHostVerification (useHostVerification) | Itt adható meg, hogy a kiszolgáló tanúsítványában lévő állomásnév nek meg kell-e egyeznie a kiszolgáló állomásnevével, amikor TLS-en keresztül csatlakozik. Az alapértelmezett érték az igaz.  | Nem |
+| usePeerVerification | Itt adható meg, hogy a kiszolgáló identitását ellenőrizze-e a TLS-en keresztüli csatlakozáskor. Az alapértelmezett érték az igaz.  | Nem |
 
 **Példa:**
 

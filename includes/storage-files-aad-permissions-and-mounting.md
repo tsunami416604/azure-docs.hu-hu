@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 12/12/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: 8f71c039aa6666cec1b871a158d84a6f5a2a107c
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: c88f5a4dd4f2997ce01b1f6a3ae192c62f530e76
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80666816"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011420"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2. Hozzáférési engedélyek hozzárendelése identitáshoz
 
-Az Azure Files-erőforrások identitásalapú hitelesítéssel való eléréséhez egy identitásnak (egy felhasználónak, csoportnak vagy egyszerű szolgáltatásnak) rendelkeznie kell a megosztási szinten szükséges engedélyekkel. Ez a folyamat hasonló a Windows megosztási engedélyek megadásához, ahol megadhatja, hogy egy adott felhasználó milyen típusú hozzáféréssel rendelkezik egy fájlmegosztáshoz. Az általános javaslat az, hogy használja a megosztási szintű engedély magas szintű hozzáférés-kezelés egy csapat vagy csoport, majd használja ntfs engedélyek részletes hozzáférés-vezérlés a címtár/fájl szintjén. Ebben a szakaszban található útmutató bemutatja, hogyan rendelhet olvasási, írási vagy törlési engedélyeket egy fájlmegosztáshoz egy identitáshoz. 
+Az Azure Files-erőforrások identitásalapú hitelesítéssel való eléréséhez egy identitásnak (egy felhasználónak, csoportnak vagy egyszerű szolgáltatásnak) rendelkeznie kell a megosztási szinten szükséges engedélyekkel. Ez a folyamat hasonló a Windows megosztási engedélyek megadásához, ahol megadhatja, hogy egy adott felhasználó milyen típusú hozzáféréssel rendelkezik egy fájlmegosztáshoz. Ebben a szakaszban található útmutató bemutatja, hogyan rendelhet olvasási, írási vagy törlési engedélyeket egy fájlmegosztáshoz egy identitáshoz. 
 
 Három Beépített Azure-szerepkört vezettünk be a felhasználók megosztásszintű engedélyeinek megadására:
 
@@ -32,6 +32,8 @@ Az Azure Portalon, a PowerShellben vagy az Azure CLI-ben a beépített szerepkö
 
 > [!NOTE]
 > Ne felejtse el szinkronizálni az AD hitelesítő adatait az Azure AD-vel, ha az AD-t hitelesítésre kívánja használni. Jelszó kivonat szinkronizálása az AD az Azure AD nem kötelező. Megosztási szintű engedélyt kap az Azure AD-identitás, amely szinkronizálva van az AD.Share level permission will be granted to the Azure AD identity that is synced from AD.
+
+Az általános javaslat az, hogy használja a megosztási szintű engedély a magas szintű hozzáférés-kezelés egy AD csoport képviselő felhasználók és identitások egy csoportja, majd használja NTFS engedélyek részletes hozzáférés-vezérlés a címtár/fájl szinten. 
 
 #### <a name="azure-portal"></a>Azure Portal
 Ha RBAC-szerepkört szeretne hozzárendelni egy Azure AD-identitáshoz az [Azure Portal](https://portal.azure.com)használatával, kövesse az alábbi lépéseket:

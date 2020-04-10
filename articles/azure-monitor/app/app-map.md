@@ -4,12 +4,12 @@ description: Összetett alkalmazás-topológiák figyelése az alkalmazástérk�
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 0823dd5d880c778f9b7a231ac14f1cbba1940927
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 7c5c9173704535b1e34ffde5867bd512e3e02ed8
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657396"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80989527"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Alkalmazás térkép: Triage elosztott alkalmazások
 
@@ -155,7 +155,25 @@ Az [ASP.NET core](asp-net-core.md#adding-telemetryinitializers) alkalmazások `T
 
 # <a name="java"></a>[Java](#tab/java)
 
-Az Application Insights Java SDK 2.5.0-s verziótól `<RoleName>` kezdve `ApplicationInsights.xml` megadhatja a felhőbeli szerepkör nevét a fájlhoz való hozzáadással, például.
+**Java ügynök**
+
+A [Java agent 3.0](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) esetében a felhőbeli szerepkör neve a következőképpen van beállítva:
+
+```json
+{
+  "instrumentationSettings": {
+    "preview": {
+      "roleName": "my cloud role name"
+    }
+  }
+}
+```
+
+A felhőbeli szerepkör nevét a környezeti ```APPLICATIONINSIGHTS_ROLE_NAME```változó használatával is beállíthatja.
+
+**Java SDK**
+
+Ha az SDK-t használja, kezdve az Application Insights Java SDK 2.5.0-val, megadhatja a felhőszerepkör nevét a `<RoleName>` `ApplicationInsights.xml` fájlhoz való hozzáadással, például.
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>

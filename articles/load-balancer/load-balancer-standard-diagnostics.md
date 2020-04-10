@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 1d6fa75beabdc36750525310008add9594562228
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 951f24ad06014f6d95f10c91e1bad8e99bbbc736
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887112"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991773"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Metrikák, riasztások és az erőforrások állapotának diagnosztikái a standard Load Balancerben
 
@@ -86,6 +86,7 @@ A riasztások konfigurálása:
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>Gyakori diagnosztikai forgatókönyvek és ajánlott nézetek
 
 #### <a name="is-the-data-path-up-and-available-for-my-load-balancer-vip"></a>Az adatelérési út felfelé és elérhető a terheléselosztó VIP-em számára?
+<details><summary>Kibontás</summary>
 
 A VIP rendelkezésre állási metrika ismerteti az adatelérési út állapotát a régión belül a számítási gazdagép, ahol a virtuális gépek találhatók. A metrika tükrözi az Azure-infrastruktúra állapotát. A mérőszám segítségével:
 - A szolgáltatás külső elérhetőségének figyelése
@@ -113,9 +114,11 @@ A VIP elérhetősége a következő okok miatt sikertelen:
 Diagnosztikai célokra használhatja az [adatelérési út rendelkezésre állási metrikáját az állapotminta állapotával együtt.](#vipavailabilityandhealthprobes)
 
 A legtöbb eset összesítéseként használja az **Átlag** függvényt.
+</details>
 
 #### <a name="are-the-back-end-instances-for-my-vip-responding-to-probes"></a>A VIP-példányaim háttérpéldányai válaszolnak a szondákra?
-
+<details>
+  <summary>Kibontás</summary>
 Az állapotminta állapotmetrika ismerteti az alkalmazás üzembe helyezésének állapotát az Ön által konfigurált, amikor konfigurálja a terheléselosztó állapotminta. A terheléselosztó az állapotminta állapotát használja az új folyamatok küldésének helyének meghatározásához. Az állapotminta egy Azure-infrastruktúra-címről származik, és a virtuális gép vendég operációs rendszerében látható.
 
 A standard terheléselosztó-erőforrások állapotának lekérni:
@@ -127,9 +130,11 @@ Az állapotminta a következő okok miatt sikertelen:
 - A mintavételt a hálózati biztonsági csoport, a virtuális gép vendég operációsrendszer-tűzfala vagy az alkalmazásréteg-szűrők nem engedélyezik.
 
 A legtöbb eset összesítéseként használja az **Átlag** függvényt.
+</details>
 
 #### <a name="how-do-i-check-my-outbound-connection-statistics"></a>Hogyan ellenőrizhetem a kimenő kapcsolat statisztikáit? 
-
+<details>
+  <summary>Kibontás</summary>
 Az SNAT-kapcsolatok metrikája a kimenő [folyamatok](https://aka.ms/lboutbound)sikeres és sikertelen kapcsolatainak mennyiségét írja le.
 
 A nullánál nagyobb sikertelen kapcsolatok térfogata az SNAT-port kimerülését jelzi. További vizsgálatot kell vizsgálnia annak megállapítására, hogy mi okozhatja ezeket a hibákat. Az SNAT-port kimerülése a [kimenő áramlás](https://aka.ms/lboutbound)létrehozásának elmulasztásaként nyilvánul meg. Tekintse át a kimenő kapcsolatokról szóló cikket a munkahelyi forgatókönyvek és mechanizmusok megismeréséhez, valamint az SNAT-portok kimerülésének elkerüléséhez. 
@@ -141,10 +146,12 @@ SNAT-kapcsolati statisztikák beolvasása:
 ![SNAT-kapcsolat](./media/load-balancer-standard-diagnostics/LBMetrics-SNATConnection.png)
 
 *Ábra: Terheléselosztó SNAT-kapcsolatszáma*
+</details>
 
 
 #### <a name="how-do-i-check-my-snat-port-usage-and-allocation"></a>Hogyan ellenőrizhetem az SNAT-port használatát és kiosztását?
-
+<details>
+  <summary>Kibontás</summary>
 Az SNAT-használati metrika azt jelzi, hogy hány egyedi folyamatok között létrehozott egy internetes forrás és a háttérvirtuális gép vagy virtuális gép méretezési csoport, amely mögött a terheléselosztó, és nem rendelkezik nyilvános IP-címmel. Összehasonlításával ezt az SNAT-foglalási metrika, meghatározhatja, ha a szolgáltatás tapasztalható, vagy fennáll a veszélye az SNAT-kimerültség és az ebből eredő kimenő folyamathiba. 
 
 Ha a metrikák jelzik a [kimenő folyamathiba](https://aka.ms/lboutbound) kockázatát, hivatkozzon a cikkre, és tegyen lépéseket a szolgáltatás állapotának csökkentése érdekében.
@@ -166,9 +173,11 @@ Az SNAT-port használatának és kiosztásának megtekintése:
 ![SNAT-használat háttérpéldány szerint](./media/load-balancer-standard-diagnostics/snat-usage-split.png)
 
 *Ábra: TCP SNAT-port használat háttérpéldányonként*
+</details>
 
 #### <a name="how-do-i-check-inboundoutbound-connection-attempts-for-my-service"></a>Hogyan ellenőrizhetem a szolgáltatásom bejövő/kimenő csatlakozási kísérleteit?
-
+<details>
+  <summary>Kibontás</summary>
 A SYN csomagok metrikája az adott előtérhöz társított TCP SYN-csomagok mennyiségét írja le, amelyek egy adott előtérhöz társított vagy elküldött [(kimenő folyamatok](https://aka.ms/lboutbound)esetében) érkeztek vagy elküldték őket. Ezzel a metrikával megismerheti a TCP-kapcsolat imát a szolgáltatáshoz.
 
 A legtöbb esetben az **Összesítés** t használja összesítésként.
@@ -176,10 +185,12 @@ A legtöbb esetben az **Összesítés** t használja összesítésként.
 ![SYN kapcsolat](./media/load-balancer-standard-diagnostics/LBMetrics-SYNCount.png)
 
 *Ábra: Terheléselosztó SYN száma*
+</details>
 
 
 #### <a name="how-do-i-check-my-network-bandwidth-consumption"></a>Hogyan ellenőrizhetem a hálózati sávszélesség-felhasználást? 
-
+<details>
+  <summary>Kibontás</summary>
 A bájtok és a csomagszámlálók metrikája a szolgáltatás által előtér-alapon küldött vagy fogadott bájtok és csomagok mennyiségét írja le.
 
 A legtöbb esetben az **Összesítés** t használja összesítésként.
@@ -193,9 +204,11 @@ Bájtok vagy csomagok számának statisztikáinak beírása:
 ![Bájtszáma](./media/load-balancer-standard-diagnostics/LBMetrics-ByteCount.png)
 
 *Ábra: Terheléselosztó bájtszáma*
+</details>
 
 #### <a name="how-do-i-diagnose-my-load-balancer-deployment"></a><a name = "vipavailabilityandhealthprobes"></a>Hogyan diagnosztizálhatom a terheléselosztó üzembe helyezését?
-
+<details>
+  <summary>Kibontás</summary>
 A VIP rendelkezésre állási és állapotminta metrikák kombinációjával egyetlen diagramon azonosíthatja, hogy hol keresse meg a problémát, és oldja meg a problémát. Bizonyosságot szerezhet arról, hogy az Azure megfelelően működik, és ezt a tudást felhasználhatja annak meggyőző meghatározásához, hogy a konfiguráció vagy az alkalmazás a kiváltó ok.
 
 Az állapotminta-metrikák segítségével megismerheti, hogy az Azure hogyan tekinti meg a központi telepítés állapotát a megadott konfigurációnak megfelelően. Az egészségügyi szondák vizsgálata mindig nagyszerű első lépés a figyelésvagy az ok meghatározásában.
@@ -211,6 +224,7 @@ A diagram a következő információkat jeleníti meg:
 - Az állapotminta állapota (DIP elérhetősége), amelyet a lila nyomkövetés jelez, 0 százalékon áll a diagram elején. A bekarikázott terület zöld kiemeli, ahol az állapotminta állapota (DIP rendelkezésre állás) kifogástalan lett, és ekkor az ügyfél üzembe helyezését tudta elfogadni az új folyamatok.
 
 A diagram lehetővé teszi az ügyfelek számára, hogy saját maguk hárítsák el a központi telepítést anélkül, hogy ki kellene találniuk vagy támogatást kellene kérniük, hogy más problémák is előfordulnak-e. A szolgáltatás nem érhető el, mert az állapotminta konkvátúk hibás konfiguráció vagy sikertelen alkalmazás miatt sikertelenek voltak.
+</details>
 
 ## <a name="resource-health-status"></a><a name = "ResourceHealth"></a>Erőforrás állapota
 
