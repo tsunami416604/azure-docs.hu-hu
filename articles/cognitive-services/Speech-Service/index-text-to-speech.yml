@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: Szövegfelolvasó dokumentáció
+title: A Szövegfelolvasás dokumentációja
 summary: A beszédfelismerési szolgáltatás szövegfelolvasása lehetővé teszi, hogy alkalmazásai, eszközei vagy eszközei a szöveget emberszerű szintetizált beszédmé alakítsák.
 metadata:
   title: Text-to-speech dokumentáció - Oktatóanyagok, API referencia - Azure Cognitive Services | Microsoft dokumentumok
@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: 4aa2cb134bc47841da2964f4f83898875098e6c4
-  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+  ms.openlocfilehash: e9fb4f1b26dd8c5a958f8321f8c6fd0def605c93
+  ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/28/2020
-  ms.locfileid: "80052803"
+  ms.lasthandoff: 04/09/2020
+  ms.locfileid: "80991347"
 landingContent:
 - title: Szövegfelolvasás –
   linkLists:
@@ -24,13 +24,15 @@ landingContent:
     links:
     - text: Mi az a szövegfelolvasás?
       url: text-to-speech.md
+    - text: A beszédszintézis alapjai
+      url: text-to-speech-basics.md
   - linkListType: quickstart
     links:
     - text: Beszédszintézis hangszóróra
       url: quickstarts/text-to-speech.md
     - text: Beszédszintézis egy hangfájlba
       url: quickstarts/text-to-speech-audio-file.md
-    - text: Beszéd szintetizálása hosszú formátumú hanggal
+    - text: Beszédszintézis hosszú formátumú hangokkal
       url: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
 - title: Fejlesztés szövegfelolvasással
   linkLists:
@@ -54,9 +56,9 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: Szabványos hangtámogatás
+    - text: Standard hangszolgáltatási támogatás
       url: language-support.md#standard-voices
-    - text: Neurális hangtámogatás
+    - text: Neurális hangszolgáltatási támogatás
       url: language-support.md#neural-voices
     - text: SSML fonetikus készletek
       url: speech-ssml-phonetic-sets.md

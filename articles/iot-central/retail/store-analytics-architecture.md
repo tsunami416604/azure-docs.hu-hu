@@ -9,12 +9,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 6c2514bd078cc3feee4bd2802cf314079b824311
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f1f83fdd73816e6e30c5cac7d193719591bb8dc1
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77022120"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80999021"
 ---
 # <a name="in-store-analytics-architecture"></a>Üzleten belüli elemzési architektúra
 
@@ -48,10 +48,10 @@ Az Azure IoT Central alkalmazás betölt imitátai különböző típusú IoT-é
 Az Azure IoT Central személyre szabott élményt is biztosít az áruház-üzemeltető számára, amely lehetővé teszi számukra az infrastruktúra-eszközök távoli figyelését és kezelését.
 
 ## <a name="data-transform"></a>Adatátalakítás
-Az Azure IoT Central alkalmazás egy megoldáson belül konfigurálható nyers vagy összesített elemzések exportálására az Azure PaaS (Platform-as-a-Service) szolgáltatások készletébe, amelyek adatkezelést hajthatnak végre, és gazdagítják ezeket az elemzéseket, mielőtt egy üzleti Alkalmazás. 
+Az Azure IoT Central alkalmazás egy megoldáson belül konfigurálható nyers vagy összesített elemzések exportálására az Azure PaaS (Platform-as-a-Service) szolgáltatások készletébe, amelyek adatkezelést hajthatnak végre, és gazdagítják ezeket az elemzéseket, mielőtt egy üzleti alkalmazásban leállítanák őket. 
 
 ## <a name="business-application"></a>Üzleti alkalmazás
-Az IoT-adatok a kiskereskedelmi környezetben telepített különböző típusú üzleti alkalmazások működtetéséhez használhatók. A kiskereskedelmi üzlet vezetője vagy a személyzet tagja használhatja ezeket az alkalmazásokat, hogy vizualizálja az üzleti elemzéseket, és valós időben érdemi műveleteket. Ha meg szeretné tudni, hogyan hozhat létre valós idejű Power BI-irányítópultot kiskereskedelmi csapata számára, kövesse az [oktatóanyagot.](./tutorial-in-store-analytics-create-app-pnp.md)
+Az IoT-adatok a kiskereskedelmi környezetben telepített különböző típusú üzleti alkalmazások működtetéséhez használhatók. A kiskereskedelmi üzlet vezetője vagy a személyzet tagja használhatja ezeket az alkalmazásokat, hogy vizualizálja az üzleti elemzéseket, és valós időben érdemi műveleteket. Ha meg szeretné tudni, hogyan hozhat létre valós idejű Power BI-irányítópultot kiskereskedelmi csapata számára, kövesse az [oktatóanyagot.](./tutorial-in-store-analytics-create-app.md)
 
 ## <a name="next-steps"></a>További lépések
 * Ismerkedés az [in-store analytics checkout](https://aka.ms/checkouttemplate) és [az in-store analytics feltételfigyelés](https://aka.ms/conditiontemplate) alkalmazássablonokkal. 

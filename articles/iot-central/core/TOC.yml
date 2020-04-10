@@ -12,7 +12,7 @@
     - name: 1. Új alkalmazás létrehozása
       href: quick-deploy-iot-central.md
     - name: 2. Szimulált eszköz hozzáadása
-      href: quick-create-pnp-device.md
+      href: quick-create-simulated-device.md
     - name: 3. Szabályok és műveletek konfigurálása
       href: quick-configure-rules.md
     - name: 4. Eszközök monitorozása

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/31/2020
+ms.date: 04/09/2020
 ms.author: allensu
-ms.openlocfilehash: 405d9bc09462f2940567080ec86775baf066d70d
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 4095b0b48e86b0aafcc86d74ca1fa25bacddf0ec
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80584570"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011718"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Virtuális hálózatok tervezése NAT átjáró-erőforrásokkal
 
@@ -326,8 +326,8 @@ Azt akarjuk tudni, hogyan tudjuk javítani a szolgáltatást. Hiányzik egy kép
 * További információ a [NAT-átjáró erőforrásainak hibaelhárításáról.](troubleshoot-nat.md)
 * Oktatóanyag a NAT-átjáró érvényesítéséhez
   - [Azure CLI](tutorial-create-validate-nat-gateway-cli.md)
-  - [PowerShell](tutorial-create-validate-nat-gateway-cli.md)
-  - [Portál](tutorial-create-validate-nat-gateway-cli.md)
+  - [PowerShell](tutorial-create-validate-nat-gateway-powershell.md)
+  - [Portál](tutorial-create-validate-nat-gateway-portal.md)
 * Rövid útmutató a NAT-átjáró-erőforrások telepítéséhez
   - [Azure CLI](./quickstart-create-nat-gateway-cli.md)
   - [PowerShell](./quickstart-create-nat-gateway-powershell.md)

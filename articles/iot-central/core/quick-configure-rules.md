@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 4bbf571d6b73a6f43c1c3b1ce261da6963a74183
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 66c3bd8650d1194d5d753c1dc967ec8e870c8748
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77169482"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998968"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Rövid útmutató: Szabályok és műveletek konfigurálása az eszközhöz az Azure IoT Centralban
 
@@ -24,7 +24,7 @@ Ebben a rövid útmutatóban hozzon létre egy szabályt, amely e-mailt&deg; kü
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, el kell végeznie a két korábbi rövid útmutató [létrehozása egy Azure IoT Central-alkalmazás](./quick-deploy-iot-central.md) és [egy szimulált eszköz hozzáadása az IoT Central-alkalmazás](./quick-create-pnp-device.md) hozlétre az **MXChip IoT DevKit** eszközsablon dolgozni.
+Mielőtt elkezdené, el kell végeznie a két korábbi rövid útmutató [létrehozása egy Azure IoT Central-alkalmazás](./quick-deploy-iot-central.md) és [egy szimulált eszköz hozzáadása az IoT Central-alkalmazás](./quick-create-simulated-device.md) hozlétre az **MXChip IoT DevKit** eszközsablon dolgozni.
 
 ## <a name="create-a-telemetry-based-rule"></a>Telemetria-alapú szabály létrehozása
 

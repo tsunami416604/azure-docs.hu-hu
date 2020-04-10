@@ -1,20 +1,20 @@
 ---
 title: Rövid útmutató – Virtuálisgép-méretezési készlet létrehozása az Azure CLI-vel
 description: Az Azure CLI-vel való gyors virtuálisgép-méretezési készlet gyors létrehozásának elsajátításával ismerkedhet meg az üzembe helyezésekkel.
-author: cynthn
+author: ju-shim
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/2018
-ms.author: cynthn
-ms.openlocfilehash: 172a498b6b92a059c50cac4ad45fee322e12fdd0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.author: jushiman
+ms.openlocfilehash: 392af4d96efc9b60cedc8488dc1cebbfd68a92c5
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76278040"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011327"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-the-azure-cli"></a>Rövid útmutató – Virtuálisgép-méretezési csoport létrehozása az Azure CLI használatával
 A virtuálisgép-méretezési csoportok segítségével azonos, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti. A méretezési csoportban lévő virtuális gépek számát beállíthatja manuálisan, de automatikus méretezési szabályokat is megadhat az erőforrás-használat (például processzorhasználat, memóriaigény vagy hálózati forgalom) alapján. Egy Azure-terheléselosztó ezután elosztja a forgalmat a méretezési csoportban lévő virtuálisgép-példányok között. Ebben a rövid útmutatóban egy virtuálisgép-méretezési csoportot hozunk létre, és üzembe helyezünk egy mintaalkalmazást az Azure CLI használatával.

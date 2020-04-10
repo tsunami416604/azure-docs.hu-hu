@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 05/21/2018
 ms.author: yegu
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 07e2d6f174e5af4af9bdcac73dc74f5cf061ed41
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 88703581c507b79c1b10e0f8741c99e64d204a7e
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78300485"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010868"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>Rövid útmutató: Azure-gyorsítótár használata a Redis-hez a Node.js fájllal
 
@@ -41,7 +41,7 @@ set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 ## <a name="connect-to-the-cache"></a>Csatlakozás a gyorsítótárhoz
 
-A [node_redis](https://github.com/mranney/node_redis) legújabb buildjei támogatást nyújtanak az Azure Cache for Redis SSL használatával történő csatlakoztatásához. A következő példa bemutatja, hogyan csatlakozhat az Azure Cache for Redis az SSL-végpont 6380 használatával. 
+A [node_redis](https://github.com/mranney/node_redis) legújabb buildjei támogatják a Redis Azure-gyorsítótárhoz való csatlakozást a TLS használatával. A következő példa bemutatja, hogyan csatlakozhat az Azure Cache for Redis a TLS-végpont 6380 használatával. 
 
 ```js
 var redis = require("redis");
@@ -69,7 +69,7 @@ bluebird.promisifyAll(redis.Multi.prototype);
 
 async function testCache() {
 
-    // Connect to the Azure Cache for Redis over the SSL port using the key.
+    // Connect to the Azure Cache for Redis over the TLS port using the key.
     var cacheConnection = redis.createClient(6380, process.env.REDISCACHEHOSTNAME, 
         {auth_pass: process.env.REDISCACHEKEY, tls: {servername: process.env.REDISCACHEHOSTNAME}});
         

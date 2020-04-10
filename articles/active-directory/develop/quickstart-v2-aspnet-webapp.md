@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 2946551233500a80c6fa7f02ad4c427f2d654b40
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 7f927d230efba580cff163d31c6f572a10d0b4aa
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80883644"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991141"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Rövid útmutató: Microsoft-identitásplatform-bejelentkezés hozzáadása egy ASP.NET webalkalmazáshoz
 Ebben a rövid útmutatóban egy kódminta segítségével megtudhatja, hogy egy ASP.NET webalkalmazás hogyan jelentkezhet be személyes fiókokba (hotmail.com, outlook.com, mások) és munkahelyi és iskolai fiókok bármely Azure Active Directory (Azure AD) példányból.  (Lásd: [Hogyan működik a minta](#how-the-sample-works) egy illusztrációhoz.)
@@ -205,8 +205,3 @@ Próbálja ki az ASP.NET-hez készült oktatóanyagot, amelyben teljes körű, r
 > [Bejelentkezési útmutató](./tutorial-v2-asp-webapp.md)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
-
-Segítsen nekünk a Microsoft identitásplatformjának fejlesztésében. Mondja el, mit gondol egy rövid, kétkérdésű felmérés kitöltésével.
-
-> [!div class="nextstepaction"]
-> [Microsoft-identitásplatform-felmérés](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

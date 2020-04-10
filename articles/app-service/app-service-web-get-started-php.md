@@ -5,12 +5,12 @@ ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
 ms.date: 08/24/2018
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 2813d96fdd9fcd588b78cbfb58fe57bf58a4fe68
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e15d325f0cf13ae774a5dc471a1e2b447286a99c
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80047356"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81009253"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>PHP-webapp létrehozása az Azure-ban
 
@@ -72,12 +72,16 @@ A Cloud Shellben az [](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create)
 
 A következő példában cserélje ki az `<app_name>` nevet egy globálisan egyedi névre (érvényes karakterek: `a-z`, `0-9` és `-`). A futtatókörnyezet beállítása `PHP|7.0` lett. Az összes támogatott futásidő [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes)megtekintéséhez futtassa a futtassa a futtassa a futtassa a futtassa a futtass 
 
+
 ```azurecli-interactive
 # Bash
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "PHP|7.0" --deployment-local-git
 # PowerShell
 az --% webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "PHP|7.0" --deployment-local-git
 ```
+> [!NOTE]
+> A PowerShell 3.0-ban bevezetett stop-parsing szimbólum `(--%)`arra utasítja a PowerShellt, hogy ne értelmezze a bemenetet PowerShell-parancsként vagy kifejezésként. 
+>
 
 A webalkalmazás létrehozása után az Azure CLI az alábbi példához hasonló eredményeket jelenít meg:
 

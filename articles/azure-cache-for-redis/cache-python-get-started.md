@@ -10,12 +10,12 @@ ms.custom:
 - mvc
 - seo-python-october2019
 ms.date: 11/05/2019
-ms.openlocfilehash: 7b05f12ad3fd3a0f56605d708bbbf06df7e341ed
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6ce3dd1cbb694988af3555765342a1c4ca3850b5
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75433474"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010851"
 ---
 # <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>Rövid útmutató: Hozzon létre egy Python-alkalmazást, amely azure-gyorsítótárat használ a Redis-hez
 
@@ -54,7 +54,7 @@ b'bar'
 ```
 
 > [!IMPORTANT]
-> Az Azure Cache for Redis 3.0-s vagy újabb verzió esetén az SSL-tanúsítvány ellenőrzése érvénybe lép. ssl_ca_certs explicit módon kell beállítani, amikor csatlakozik az Azure Cache for Redis. A RedHat Linux esetében a ssl_ca_certs az */etc/pki/tls/certs/ca-bundle.crt* tanúsítványmodulban találhatók.
+> Az Azure Cache for Redis 3.0-s vagy újabb verzió esetén a TLS/SSL tanúsítvány ellenőrzése érvénybe lép. ssl_ca_certs explicit módon kell beállítani, amikor csatlakozik az Azure Cache for Redis. A RedHat Linux esetében a ssl_ca_certs az */etc/pki/tls/certs/ca-bundle.crt* tanúsítványmodulban találhatók.
 
 ## <a name="create-a-python-sample-app"></a>Python-mintaalkalmazás létrehozása
 

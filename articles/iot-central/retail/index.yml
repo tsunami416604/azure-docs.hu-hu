@@ -10,33 +10,33 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: 70d7924f1a7767db393faccf98d3a9250de049ec
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 14dbe360942f4645b08d161130216412c9c427f9
+  ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "77621409"
+  ms.lasthandoff: 04/09/2020
+  ms.locfileid: "80998781"
 landingContent:
 - title: Kiskereskedelmi megoldások létrehozása
   linkLists:
   - linkListType: get-started
     links:
     - text: Kiskereskedelmi Azure IoT Central-megoldások
-      url: overview-iot-central-retail-pnp.md
+      url: overview-iot-central-retail.md
   - linkListType: tutorial
     links:
     - text: 1 – Kiskereskedelmi alkalmazás létrehozása
-      url: tutorial-in-store-analytics-create-app-pnp.md
+      url: tutorial-in-store-analytics-create-app.md
     - text: 2 – Az operátori irányítópult testreszabása
-      url: tutorial-in-store-analytics-customize-dashboard-pnp.md
+      url: tutorial-in-store-analytics-customize-dashboard.md
     - text: 3 – Adatok exportálása és megállapítások megjelenítése
-      url: tutorial-in-store-analytics-export-data-visualize-insights-pnp.md
+      url: tutorial-in-store-analytics-export-data-visualize-insights.md
     - text: Intelligens készletkezelési alkalmazás létrehozása
-      url: tutorial-iot-central-smart-inventory-management-pnp.md
+      url: tutorial-iot-central-smart-inventory-management.md
     - text: Összekapcsolt logisztikai alkalmazás létrehozása
-      url: tutorial-iot-central-connected-logistics-pnp.md
+      url: tutorial-iot-central-connected-logistics.md
     - text: Digitális terjesztési központ kezelésére szolgáló alkalmazás létrehozása
-      url: tutorial-iot-central-digital-distribution-center-pnp.md
+      url: tutorial-iot-central-digital-distribution-center.md
   - linkListType: how-to-guide
     links:
     - text: Rigado Cascade 500 csatlakoztatása
@@ -87,7 +87,7 @@ landingContent:
       url: ../core/howto-create-custom-rules.md
     - text: Egyéni elemzések létrehozása
       url: ../core/howto-create-custom-analytics.md
-- title: Adminisztráció
+- title: Felügyelet
   linkLists:
   - linkListType: how-to-guide
     links:

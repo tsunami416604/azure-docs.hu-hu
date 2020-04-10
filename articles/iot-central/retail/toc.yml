@@ -3,45 +3,45 @@
 - name: Áttekintés
   items:
     - name: Kiskereskedelmi megoldások létrehozása az Azure IoT Centrallal
-      href: overview-iot-central-retail-pnp.md
-- name: oktatóanyagokat
+      href: overview-iot-central-retail.md
+- name: Oktatóanyagok
   items:
     - name: Üzlethelyiség-elemzés – pénztárrészleg
       items:
         - name: 1 – Kiskereskedelmi alkalmazás létrehozása
-          href: tutorial-in-store-analytics-create-app-pnp.md
+          href: tutorial-in-store-analytics-create-app.md
         - name: 2 – Az operátori irányítópult testreszabása
-          href: tutorial-in-store-analytics-customize-dashboard-pnp.md
+          href: tutorial-in-store-analytics-customize-dashboard.md
         - name: 3 – Adatok exportálása és megállapítások megjelenítése
-          href: tutorial-in-store-analytics-export-data-visualize-insights-pnp.md
+          href: tutorial-in-store-analytics-export-data-visualize-insights.md
     - name: Intelligens készletkezelés
       items:
         - name: Intelligens készletkezelési alkalmazás létrehozása
-          href: tutorial-iot-central-smart-inventory-management-pnp.md
+          href: tutorial-iot-central-smart-inventory-management.md
     - name: Összekapcsolt logisztika
       items:
         - name: Összekapcsolt logisztikai alkalmazás létrehozása
-          href: tutorial-iot-central-connected-logistics-pnp.md
+          href: tutorial-iot-central-connected-logistics.md
     - name: Digitális terjesztési központ
       items:
         - name: Digitális terjesztési központ kezelésére szolgáló alkalmazás létrehozása
-          href: tutorial-iot-central-digital-distribution-center-pnp.md
+          href: tutorial-iot-central-digital-distribution-center.md
     - name: Mikro-teljesítési központ
       items:
         - name: Mikro-teljesítési központ alkalmazásának létrehozása
-          href: tutorial-micro-fulfillment-center-pnp.md
+          href: tutorial-micro-fulfillment-center.md
 - name: Alapelvek
   items:
     - name: Az összekapcsolt logisztikai alkalmazás sablonjának architektúrája
-      href: architecture-connected-logistics-pnp.md
+      href: architecture-connected-logistics.md
     - name: A digitális terjesztési központ kezelésére szolgáló alkalmazás sablonjának architektúrája
-      href: architecture-digital-distribution-center-pnp.md
+      href: architecture-digital-distribution-center.md
     - name: Az intelligens készletkezelési alkalmazás sablonjának architektúrája
-      href: architecture-smart-inventory-management-pnp.md
+      href: architecture-smart-inventory-management.md
     - name: Az üzlethelyiség-elemzés architektúrája
       href: store-analytics-architecture.md
     - name: Mikro-teljesítési központ kezelésére szolgáló alkalmazás sablonjának architektúrája
-      href: architecture-micro-fulfillment-center-pnp.md
+      href: architecture-micro-fulfillment-center.md
     - name: Kapcsolatok
       href: ../core/concepts-get-connected.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
     - name: Mik azok az alkalmazássablonok?
@@ -80,7 +80,7 @@
           href: ../core/howto-create-custom-rules.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
         - name: Egyéni elemzések létrehozása a Databricksszel
           href: ../core/howto-create-custom-analytics.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
-    - name: Adminisztráció
+    - name: Felügyelet
       items:
         - name: Alkalmazásbeállítások módosítása
           href: ../core/howto-administer.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
@@ -118,7 +118,7 @@
       items:
         - name: IoT Hub
           href: /azure/iot-hub
-        - name: IoT Hub eszközkiépítési szolgáltatás
+        - name: IoT Hub Device Provisioning Service
           href: /azure/iot-dps
         - name: IoT-központ
           href: 'https://docs.microsoft.com/microsoft-iot-central/'
@@ -127,7 +127,7 @@
         - name: IoT-megoldásgyorsítók
           href: /azure/iot-accelerators
         - name: IoT Plug and Play
-          href: /azure/iot-pnp
+          href: /azure/iot
         - name: Azure Maps
           href: /azure/azure-maps
         - name: Time Series Insights

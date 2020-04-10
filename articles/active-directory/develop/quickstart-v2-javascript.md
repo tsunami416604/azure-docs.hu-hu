@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
-ms.openlocfilehash: 526922d73f2176825b8bba8982316f3c9c129963
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: ac134dce5ad739d1d81ef0c62a6bfb04468cafff
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473583"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991109"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Rövid útmutató: Bejelentkezés a felhasználókközött, és kap egy hozzáférési jogkivonatot a JavaScript SPA
 
@@ -268,7 +268,7 @@ myMSALObj.acquireTokenSilent(tokenRequest)
 
 #### <a name="get-a-user-token-interactively"></a>Felhasználói jogkivonat interaktív lekérése
 
-Vannak olyan helyzetek, amikor a felhasználókat a Microsoft identity platform végpontjával való interakcióra kell kényszerítenie. Példa:
+Vannak olyan helyzetek, amikor a felhasználókat a Microsoft identity platform végpontjával való interakcióra kell kényszerítenie. Például:
 * Előfordulhat, hogy a felhasználóknak újra meg kell adniuk a hitelesítő adataikat, mert a jelszavuk lejárt.
 * Az alkalmazás további erőforrás-hatókörökhöz való hozzáférést kér, amelyekhez a felhasználónak hozzá kell járulnia.
 * Kétfaktoros hitelesítés szükséges.
@@ -306,8 +306,3 @@ Az MSAL tártárjában dokumentációt, gyakori kérdéseket, problémákat és 
 
 > [!div class="nextstepaction"]
 > [MSAL.js GitHub tárcsa](https://github.com/AzureAD/microsoft-authentication-library-for-js)
-
-Segítsen nekünk a Microsoft identitásplatformjának fejlesztésében. Mondja el, mit gondol egy rövid, kétkérdésű felmérés kitöltésével.
-
-> [!div class="nextstepaction"]
-> [Microsoft-identitásplatform-felmérés](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)
