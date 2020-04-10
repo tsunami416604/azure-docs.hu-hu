@@ -113,6 +113,8 @@
       items:
         - name: Mi az a szövegfelolvasás?
           href: text-to-speech.md
+        - name: A szövegfelolvasás alapjai
+          href: text-to-speech-basics.md
     - name: Első lépések
       items:
         - name: Beszédszintézis hangszóróra
@@ -545,6 +547,8 @@
       href: sovereign-clouds.md
     - name: Díjszabás és korlátok
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
+    - name: Díjkalkulátor
+      href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
     - name: Megfelelőség
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Titkosítás

@@ -1,141 +1,149 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Storage-dokumentáció
+### YamlMime:Hub
+title: Az Azure Storage dokumentációja
+summary: Az Azure Storage objektumok, fájlok, lemezek, üzenetsorok és táblák tárolásáról gondoskodik. Hibrid tárolási megoldásokhoz, valamint az adatok átviteléhez, megosztásához és biztonsági mentéséhez is elérhetők benne szolgáltatások.
+brand: azure
 metadata:
-  title: Az Azure Storage dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
-  description: 'Az Azure Storage egy, a Microsoft által felügyelt felhőszolgáltatás, amely magas rendelkezésre állású, biztonságos, tartós, skálázható redundáns tárolást tesz lehetővé. Az Azure Storage az Azure Blobs, a 2. generációs Azure Data Lake Storage, az Azure Files, az Azure Queues és az Azure Tables szolgáltatásokból áll.'
-  services: storage
-  author: tamram
-  manager: twooley
+  title: Az Azure Storage dokumentációja
+  description: Az Azure Storage dokumentációjának központi oldala. A felhőbeli és hibrid tárolási megoldások, valamint az adatok átviteléhez, megosztásához és biztonsági mentéséhez elérhető szolgáltatások szolgáltatási dokumentációjára mutató hivatkozásokat tartalmaz.
   ms.service: storage
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.topic: landing-page
-  ms.date: 06/27/2018
-  ms.author: tamram
-abstract:
-  description: 'Az Azure Storage egy, a Microsoft által felügyelt felhőszolgáltatás, amely magas rendelkezésre állású, biztonságos, tartós, skálázható redundáns tárolást tesz lehetővé. Az Azure Storage az Azure Blobs (objektumok), a 2. generációs Azure Data Lake Storage, az Azure Files, az Azure Queues és az Azure Tables szolgáltatásokból áll. Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan használhatja alkalmazásaiban az Azure Storage-ot.'
-sections:
-  - title: 5 perces gyors útmutatók
+  ms.topic: hub-page
+  author: twooley
+  ms.author: twooley
+  ms.date: 04/07/2020
+  ms.openlocfilehash: 5f599c7cc608a5e6a6246ed82c8f7b48e427dd66
+  ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 04/09/2020
+  ms.locfileid: "80985337"
+highlightedContent:
+  items:
+  - title: Az alapvető tárolási szolgáltatások ismertetése
+    itemType: concept
+    url: /azure/storage/common/storage-introduction?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - title: Tudnivalók a tárfióktípusokról
+    itemType: concept
+    url: /azure/storage/common/storage-account-overview?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - title: Tárfiók létrehozása
+    itemType: how-to-guide
+    url: /azure/storage/common/storage-account-create?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - title: Tudnivalók az adatredundanciáról
+    itemType: concept
+    url: /azure/storage/common/storage-redundancy?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - title: Adatátvitel az Azure-ba
+    itemType: concept
+    url: /azure/storage/common/storage-choose-data-transfer-solution?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+additionalContent:
+  sections:
+  - title: Felhőtárhely-megoldások
     items:
-      - type: paragraph
-        text: A rövid útmutatókból megismerheti az Azure Storage használatát.
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: media/index/portal.svg
-              text: Portál
-          - image:
-              src: media/index/logo_powershell.svg
-              text: PowerShell
-          - image:
-              src: media/index/cli.svg
-              text: Azure CLI
-          - image:
-              src: media/index/logo_net.svg
-          - image:
-              src: media/index/logo_java.svg
-          - image:
-              src: media/index/logo_python.svg
-          - image:
-              src: media/index/logo_nodejs.svg
-        rows:
-          - title: Storage-fiók létrehozása
-            values:
-              - href: /azure/storage/common/storage-quickstart-create-account?tabs=portal
-              - href: /azure/storage/common/storage-quickstart-create-account?tabs=azure-powershell
-              - href: /azure/storage/common/storage-quickstart-create-account?tabs=azure-cli
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-          - title: Blobokkal kapcsolatos rövid útmutatók
-            values:
-              - href: /azure/storage/blobs/storage-quickstart-blobs-portal
-              - href: /azure/storage/blobs/storage-quickstart-blobs-powershell
-              - href: /azure/storage/blobs/storage-quickstart-blobs-cli
-              - href: /azure/storage/blobs/storage-quickstart-blobs-dotnet
-              - href: /azure/storage/blobs/storage-quickstart-blobs-java
-              - href: /azure/storage/blobs/storage-quickstart-blobs-python
-              - href: /azure/storage/blobs/storage-quickstart-blobs-nodejs
-          - title: 2. generációs Data Lake Storage
-            values:
-              - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account
-              - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account
-              - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-  - title: Részletes útmutatók
+    - title: Objektumtárolás az alkalmazásokhoz
+      links:
+      - url: /azure/storage/blobs/storage-blobs-introduction
+        text: Strukturálatlan adatok számára elérhető tárolási megoldások ismertetése (Blob Storage)
+      - url: /rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs
+        text: A blokk-, hozzáfűző és lapblobok ismertetése
+      - url: /azure/storage/blobs/
+        text: Több megjelenítése >
+    - title: Tárolási megoldások big data-elemzésekhez
+      links:
+      - url: /azure/storage/blobs/data-lake-storage-introduction
+        text: Tudnivalók a nagyvállalati adattavakhoz elérhető tárolási megoldásokról (Data Lake Storage)
+      - url: /azure/storage/blobs/data-lake-storage-data-scenarios
+        text: A big data feldolgozásához elérhető lehetőségek és eszközök ismertetése
+    - title: Felhőben üzemeltetett fájlmegosztások
+      links:
+      - url: /azure/storage/files/storage-files-introduction
+        text: A fő Azure Storage-platform által biztosított fájlmegosztások használata (Azure Files)
+      - url: /azure/azure-netapp-files/azure-netapp-files-introduction
+        text: A NetApp ONTAP által biztosított kötetek használata (Azure NetApp Files)
+    - title: Lemezes tárolás IaaS számítási feladatokhoz
+      links:
+      - url: /azure/virtual-machines/windows/managed-disks-overview
+        text: Tudnivalók az Azure-beli virtuális gépekhez elérhető blokkszintű tárolókötetekről
+      - url: /azure/virtual-machines/windows/disks-types
+        text: Az elérhető lemeztípusok ismertetése
+      - url: /azure/virtual-machines/windows/attach-managed-disk-portal
+        text: Új lemez hozzáadása egy virtuális géphez – Windows
+      - url: /azure/virtual-machines/linux/attach-disk-portal
+        text: Adatlemez csatolása egy virtuális géphez – Linux
+    - title: Tárolási megoldások aszinkron üzenetsor-kezeléshez
+      links:
+      - url: /azure/storage/queues/storage-queues-introduction
+        text: Tudnivalók az üzenetsorokhoz elérhető Azure Storage-megoldásról (Queue Storage)
+      - url: /azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted
+        text: Queue Storage- és Service Bus-üzenetsorok összehasonlítása
+      - url: /azure/storage/queues/
+        text: Több megjelenítése >
+    - title: Tárolási megoldások strukturált NoSQL-adatokhoz
+      links:
+      - url: /azure/storage/tables/table-storage-overview
+        text: Strukturált NoSQL-adatok felhőbeli tárolása (Table Storage és Cosmos DB)
+      - url: /azure/cosmos-db/table-support
+        text: A Table Storage és a Cosmos DB Table API összehasonlítása
+      - url: /azure/storage/tables/
+        text: Több megjelenítése >
+  - title: Hibrid tárolási megoldások
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Blobok
-            html: <p>Rendszerképadatok feltöltése és feldolgozása felhőben</p><ul><li><a href="/azure/storage/blobs/storage-upload-process-images">Felhőbeli rendszerkép-adatok feltöltése és lekérése</a></li><li><a href="/azure/event-grid/resize-images-on-storage-blob-upload-event?toc=%2fazure%2fstorage%2fblobs%2ftoc.json">Az Azure Functions aktiválása a blobok feldolgozásához</a></li><li><a href="/azure/storage/blobs/storage-secure-access-application">Az alkalmazásadatok védelme</a></li><li><a href="/azure/storage/blobs/storage-monitor-troubleshoot-storage-application">Tárterület figyelése és hibaelhárítása</a></li></ul><p>Magas rendelkezésre állású alkalmazás tervezése</p><ul><li><a href="/azure/storage/blobs/storage-create-geo-redundant-storage">Az alkalmazásadatok magas rendelkezésre állásúvá tétele</a></li><li><a href="/azure/storage/blobs/storage-simulate-failure-ragrs-account-app">Az elsődleges régióból származó adatok olvasási hibájának szimulálása</a></li></ul>
-          - title: 2. generációs Data Lake Storage
-            html: '<p><a href="/azure/storage/blobs/data-lake-storage-handle-data-using-databricks">Adatok kinyerése, átalakítása és betöltése az Azure Databricks használatával</a></p><p><a href="/azure/storage/blobs/data-lake-storage-use-databricks-spark">Hozzáférés a 2. generációs Azure Data Lake Storage adataihoz a Databricks és a Spark használatával</a></p><p><a href="/azure/storage/blobs/data-lake-storage-tutorial-extract-transform-load-hive">Adatok kinyerése, átalakítása és betöltése az Azure HDInsight-alapú Apache Hive használatával</a></p>'
-  - title: Példák
+    - title: Helyszíni fájlmegosztás kiterjesztése a felhőbe
+      links:
+      - url: /azure/storage/files/storage-sync-files-planning
+        text: Azure-fájlmegosztások szinkronizálása Windows-fájlkiszolgálóval (Azure File Sync)
+      - url: /azure/storage/files/storage-sync-files-deployment-guide
+        text: Az Azure File Sync üzembe helyezése
+      - url: /azure/storage/files/
+        text: Több megjelenítése >
+    - title: Online adatátvitel (a helyszíni rendszerből az Azure-ba)
+      links:
+      - url: /azure/databox-online/data-box-gateway-overview
+        text: Zökkenőmentes adatátvitel az Azure-ba (Data Box Gateway)
+      - url: /azure/databox-online/data-box-edge-overview
+        text: Adatok helyi feldolgozása az Azure-ba történő átvitel előtt (Azure Stack Edge)
+      - url: /azure/databox-online/
+        text: Több megjelenítése >
+    - title: Gyorsítótárazás nagy teljesítményű feldolgozási (HPC) számítási feladatokhoz
+      links:
+      - url: /azure/hpc-cache/hpc-cache-overview
+        text: Teljes körűen felügyelt fájl-gyorsítótárazási szolgáltatás használata (Azure HPC Cache)
+      - url: /azure/avere-vfxt/avere-vfxt-overview
+        text: Helyszíni NAS gyorsítótárazása az Azure-ban (Avere vFXT for Azure)
+      - url: /azure/fxt-edge-filer/fxt-overview
+        text: Helyszíni gyorsítótárazási berendezés üzembe helyezése (Azure FXT Edge Filer)
+  - title: Adatműveletek
     items:
-      - type: paragraph
-        text: Általános kezelési feladatokra szolgáló szkriptek keresése.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: '.NET &#58; <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=blob&sort=0&platform=dotnet">Blobok</a> | <a     href="https://azure.microsoft.com/resources/samples/?service=storage&term=file&sort=0&platform=dotnet">Fájlok</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=queue&sort=0&platform=dotnet">Üzenetsorok</a>'
-          - html: 'Java &#58; <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=blob&sort=0&platform=java">Blobok</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=file&sort=0&platform=java">Fájlok</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=queue&sort=0&platform=java">Üzenetsorok</a>'
-          - html: <a href="/azure/storage/blobs/storage-samples-blobs-powershell">Azure PowerShell</a>
-          - html: <a href="/azure/storage/blobs/storage-samples-blobs-cli">Azure CLI</a>
-  - title: Fejlessze a készségeit a Microsoft Learnnel
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Az Azure-beli adatok használata – bevezetés
-            href: /learn/modules/intro-to-data-in-azure/
-            image:
-              src: /learn/achievements/intro-to-data-in-azure.svg
-              href: //learn/modules/intro-to-data-in-azure/
-          - title: "\_Adattárolási megközelítés kiválasztása az Azure-ban"
-            href: /learn/modules/choose-storage-approach-in-azure/
-            image:
-              src: /learn/achievements/choose-storage-approach-in-azure.svg
-              href: /learn/modules/choose-storage-approach-in-azure/
-          - title: Azure-tárfiók létrehozása
-            href: /learn/modules/create-azure-storage-account/
-            image:
-              src: /learn/achievements/create-azure-storage-account.svg
-              href: /learn/modules/create-azure-storage-account/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-storage">További interaktív oktatóanyagok...</a>
-  - title: Ingyenes Pluralsight videós képzés
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Fejlesztés a .NET használatával az Azure-ban
-            href: 'https://app.pluralsight.com/library/courses/developing-dotnet-microsoft-azure-getting-started/table-of-contents'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://app.pluralsight.com/library/courses/developing-dotnet-microsoft-azure-getting-started/table-of-contents'
-          - title: Fejlesztés a Node.js használatával az Azure-ban
-            href: 'https://app.pluralsight.com/library/courses/developing-nodejs-microsoft-azure-getting-started/table-of-contents'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://app.pluralsight.com/library/courses/developing-nodejs-microsoft-azure-getting-started/table-of-contents'
-  - title: Referencia
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Parancssor
-            html: <p><a href="/powershell/storage">PowerShell</a></p><p><a href="/cli/azure/storage">Azure CLI</a></p>
-          - title: REST
-            html: '<p><a href="/rest/api/storageservices">Blobok, üzenetsorok, táblák és fájlok API</a></p><p><a href="/rest/api/storagerp">Storage erőforrás-szolgáltatói API</a></p><p><a href="/rest/api/storageimportexport">Import/Export szolgáltatás API-ja</a></p>'
+    - title: Offline tömeges átvitel az Azure-ba
+      links:
+      - url: /azure/databox/data-box-disk-overview
+        text: 40 TB-nál kevesebb adat átvitele (Data Box Disk)
+      - url: /azure/databox/data-box-overview
+        text: 40–500 TB adat átvitele (Data Box)
+      - url: /azure/databox/data-box-heavy-overview
+        text: 500 TB-nál több adat átvitele (Data Box Heavy)
+      - url: /azure/databox/
+        text: Több megjelenítése >
+    - title: Kis adatkészletek átvitele (online)
+      links:
+      - url: /azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        text: Az AzCopy parancssori eszköz használata
+      - url: /azure/storage/blobs/storage-quickstart-blobs-storage-explorer
+        text: Az Azure Storage Explorer GUI-alapú eszköz használata
+    - title: A költségek szabályozása
+      links:
+      - url: /azure/storage/blobs/storage-blob-storage-tiers
+        text: Blobadatok költséghatékony módon történő rétegzése (gyakori, ritka elérésű és archív)
+    - title: Az adatok megosztása
+      links:
+      - url: /azure/data-share/
+        text: Adatok megosztása ügyfelekkel és partnerekkel (Azure Data Share)
+      - url: /azure/data-share/supported-data-stores
+        text: Megosztáshoz támogatott adattárak
+      - url: /azure/data-share/
+        text: Több megjelenítése >
+    - title: Adatok biztonsági mentése
+      links:
+      - url: /azure/backup/quick-backup-vm-portal
+        text: Virtuális gépek biztonsági mentése (Azure Backup)
+      - url: /azure/backup/tutorial-backup-azure-files
+        text: Azure-fájlmegosztások biztonsági mentése (előzetes verzió)
+      - url: /azure/backup/
+        text: Több megjelenítése >

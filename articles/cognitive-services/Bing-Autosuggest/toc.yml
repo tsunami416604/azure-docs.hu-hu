@@ -26,10 +26,8 @@
           href: quickstarts/ruby.md
     - name: Ügyfélkódtár
       items:
-        - name: 'C#'
-          href: quickstarts/csharp-sdk.md
-        - name: Indítás
-          href: quickstarts/go-sdk.md
+        - name: Bing Autosuggest-ügyfélkódtárak
+          href: ./quickstarts/client-libraries.md
 - name: Oktatóanyagok
   items:
     - name: Egyoldalas webalkalmazás

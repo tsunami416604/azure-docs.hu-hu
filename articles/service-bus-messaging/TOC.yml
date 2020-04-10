@@ -213,6 +213,8 @@
     - name: Hibaelhárítás
       items:
         - name: Hibaelhárítási útmutató
+          href: service-bus-troubleshooting-guide.md
+        - name: Üzenetkezelési kivételek
           href: service-bus-messaging-exceptions.md
         - name: Resource Manager-kivételek
           href: service-bus-resource-manager-exceptions.md

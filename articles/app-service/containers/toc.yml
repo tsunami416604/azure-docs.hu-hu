@@ -8,7 +8,7 @@
       href: app-service-linux-intro.md
     - name: Az üzemeltetési lehetőségek összehasonlítása
       href: /azure/architecture/guide/technology-choices/compute-decision-tree
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: .NET Core-alkalmazás létrehozása
@@ -27,7 +27,7 @@
       href: quickstart-docker.md
     - name: Többtárolós alkalmazás létrehozása
       href: quickstart-multi-container.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Adatbázist használó alkalmazás
       items:
@@ -55,6 +55,8 @@
       href: ../../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Felhasználók hitelesítése
       href: tutorial-auth-aad.md
+    - name: E-mail/tweet küldése
+      href: ../tutorial-send-email.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Hibák elhárítása
       href: tutorial-troubleshoot-monitor.md
 - name: Példák
@@ -211,7 +213,7 @@
           href: /azure/architecture/reference-architectures/app-service-web-app/basic-web-app
         - name: Üzembehelyezési szkriptek
           href: 'https://azure.microsoft.com/documentation/scripts/'
-    - name: Hibakeresés
+    - name: Hibaelhárítás
       items:
         - name: Hibaelhárítás a Visual Studióval
           href: ../troubleshoot-dotnet-visual-studio.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json

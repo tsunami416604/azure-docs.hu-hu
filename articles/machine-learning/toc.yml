@@ -15,24 +15,27 @@
 - name: Oktatóanyagok
   expanded: true
   items:
-    - name: Studio és tervező
+    - name: Studio
       items:
-        - name: Tervező (húzás)
+        - name: Tervező (áthúzás)
           items:
-            - name: 'Tervező: 1. Regressziós modell betanítása'
+            - name: 1. Regressziós modell betanítása
               displayName: studio
               href: tutorial-designer-automobile-price-train-score.md
-            - name: 'Tervező: 2. A modell üzembe helyezése'
+            - name: 2. A modell üzembe helyezése
               displayName: studio
               href: tutorial-designer-automobile-price-deploy.md
         - name: Automatizált ML (UI)
           items:
-            - name: Automatizált gépi tanulási kísérlet létrehozása
+            - name: Automatizált gépi tanulási kísérletek létrehozása
               displayName: 'automl, automated, auto ml, portal, ui'
               href: tutorial-first-experiment-automated-ml.md
-            - name: Kereslet előrejelzése automatizált gépi tanulással (közösségi kerékpárhasználat adatai)
+            - name: Kereslet előrejelzése (közösségi kerékpárhasználat adatai)
               displayName: 'automl, automated, auto ml, portal, ui'
               href: tutorial-automated-ml-forecast.md
+        - name: Képadatok címkézése
+          displayName: 'tag, tagging, images'
+          href: tutorial-labeling.md
     - name: Python SDK
       items:
         - name: Az első ML-kísérlet létrehozása
@@ -78,14 +81,14 @@
     - name: Jupyter-notebookok
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
-    - name: Azure Open Datasets
-      href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
     - name: Tervezői adathalmazok
       href: sample-designer-datasets.md
+    - name: Fejlesztői mintafolyamatok
+      href: samples-designer.md
     - name: Teljes körű MLOps-példák
       href: 'https://github.com/microsoft/MLOps'
-    - name: Fejlesztői folyamatok
-      href: samples-designer.md
+    - name: Open Datasets (nyilvános)
+      href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
 - name: Alapelvek
   items:
     - name: Munkaterület
@@ -115,10 +118,10 @@
       href: /azure/machine-learning/algorithm-cheat-sheet
     - name: Algoritmusok kiválasztása
       href: /azure/machine-learning/how-to-select-algorithms
-    - name: Automatizált gépi tanulás
+    - name: Automatizált ML
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md
-    - name: Az ML kezelésének buktatói
+    - name: Túlillesztés és kiegyensúlyozatlan adatok
       displayName: 'automl, auto ml, risks'
       href: concept-manage-ml-pitfalls.md
     - name: Számítási példány
@@ -351,6 +354,8 @@
       items:
         - name: ML-folyamatok létrehozása (Python)
           href: how-to-create-your-first-pipeline.md
+        - name: Adatok áthelyezése gép tanulási folyamatok lépéseibe és azok között (Python)
+          href: how-to-move-data-in-out-of-pipelines.md
         - name: Folyamat ütemezése (Python)
           href: how-to-schedule-pipelines.md
         - name: Folyamat aktiválása

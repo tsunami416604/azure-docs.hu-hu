@@ -6,7 +6,7 @@
       href: overview-reports.md
     - name: Mi az Azure AD-monitorozás?
       href: overview-monitoring.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Bejelentkezési jelentés letöltése
@@ -17,7 +17,7 @@
       href: quickstart-configure-named-locations.md
     - name: Naplók átirányítása egy tárfiókba
       href: quickstart-azure-monitor-route-logs-to-storage-account.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Hozzáférés a Reporting API-hoz tanúsítványok használatával
       href: tutorial-access-api-with-certificates.md
@@ -50,6 +50,8 @@
   items:
     - name: Jelentések
       items:
+        - name: Inaktív felhasználói fiókok kezelése az Azure AD-ben
+          href: howto-manage-inactive-user-accounts.md
         - name: Tevékenységjelentések keresése
           href: howto-find-activity-reports.md
         - name: Felhasználói bejelentkezés hibáinak hibaelhárítása

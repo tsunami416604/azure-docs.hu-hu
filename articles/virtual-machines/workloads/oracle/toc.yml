@@ -4,13 +4,13 @@
       href: oracle-overview.md
     - name: Megoldások Azure-beli virtuális gépeken
       href: oracle-vm-solutions.md
-    - name: Megoldások az OCI-vel – előzetes verzió
+    - name: Megoldások az OCI-vel
       href: oracle-oci-overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
     - name: Oracle-adatbázis létrehozása
       href: oracle-database-quick-create.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Oracle ASM konfigurálása
       href: configure-oracle-asm.md
@@ -32,7 +32,7 @@
       href: oracle-disaster-recovery.md
 - name: Útmutatók
   items:
-    - name: Az Azure és az OCI összekapcsolása – Előzetes verzió
+    - name: Az Azure és az OCI összekapcsolása
       href: configure-azure-oci-networking.md
 - name: További források
   items:

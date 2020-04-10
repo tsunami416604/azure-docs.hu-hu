@@ -140,10 +140,14 @@
           href: cluster-autoscaler.md
         - name: Rendelkezésre állási zónák használata
           href: availability-zones.md
-        - name: Több csomópontkészlet használata
-          href: use-multiple-node-pools.md
-        - name: Spot-csomópontkészletek használata (előzetes verzió)
-          href: spot-node-pool.md
+        - name: Csomópontkészletek használata
+          items:
+            - name: Több csomópontkészlet használata
+              href: use-multiple-node-pools.md
+            - name: Spot-csomópontkészletek használata (előzetes verzió)
+              href: spot-node-pool.md
+            - name: Rendszer-csomópontkészletek használata
+              href: use-system-pools.md
         - name: Az AKS üzembe helyezése Terraform használatával
           href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
           maintainContext: true

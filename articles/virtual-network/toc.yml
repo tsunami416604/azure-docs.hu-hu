@@ -71,7 +71,11 @@
           href: ../expressroute/cross-network-connectivity.md?toc=%2fazure%2fvirtual-network%2ftoc.json
         - name: Társviszony-létesítés
           href: virtual-network-peering-overview.md
-        - name: Virtuális hálózat az Azure-szolgáltatásokhoz
+    - name: Integráció az Azure-szolgáltatásokhoz
+      items:
+        - name: Szolgáltatásvégpontok
+          href: virtual-network-service-endpoints-overview.md
+        - name: Dedikált szolgáltatás üzembe helyezése
           href: virtual-network-for-azure-services.md
     - name: IP-szolgáltatások
       items:
@@ -91,8 +95,6 @@
           href: application-security-groups.md
         - name: Szolgáltatáscímkék
           href: service-tags-overview.md
-        - name: Szolgáltatásvégpontok
-          href: virtual-network-service-endpoints-overview.md
         - name: Szolgáltatásvégpont-szabályzatok
           href: virtual-network-service-endpoint-policies-overview.md
         - name: Kubernetes hálózati házirendek

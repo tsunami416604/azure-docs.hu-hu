@@ -85,7 +85,7 @@
           href: deployment-tutorial-pipeline.md
     - name: Speciális sablonok
       items:
-        - name: A sablonreferencia felhasználása
+        - name: Sablonreferencia használata
           href: template-tutorial-use-template-reference.md
         - name: Több példány létrehozása
           displayName: 'iteration,copy'
@@ -291,6 +291,8 @@
           href: template-functions-array.md
         - name: Összehasonlító függvények
           href: template-functions-comparison.md
+        - name: Dátumfüggvények
+          href: template-functions-date.md
         - name: Üzembehelyezési függvények
           href: template-functions-deployment.md
         - name: Logikai függvények
