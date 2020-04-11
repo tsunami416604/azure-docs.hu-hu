@@ -145,8 +145,6 @@
               href: service-fabric-containers-overview.md
             - name: Docker Compose (előzetes verzió)
               href: service-fabric-docker-compose.md
-            - name: Erőforrások szabályozása
-              href: service-fabric-resource-governance.md
         - name: Reliable Services
           items:
             - name: A Reliable Services áttekintése
@@ -193,6 +191,8 @@
               href: service-fabric-reliable-actors-notes-on-actor-type-serialization.md
         - name: Vendég végrehajtható fájlok
           href: service-fabric-guest-executables-introduction.md
+        - name: Erőforrások szabályozása
+          href: service-fabric-resource-governance.md
     - name: Alkalmazások és szolgáltatások
       items:
         - name: Alkalmazásmodell
@@ -408,8 +408,6 @@
           items:
             - name: Docker Compose (előzetes verzió)
               href: service-fabric-docker-compose.md
-            - name: Tárolók és szolgáltatások erőforrás-szabályozása
-              href: service-fabric-resource-governance.md
             - name: Kötet- és naplózási illesztők
               href: service-fabric-containers-volume-logging-drivers.md
             - name: Tárolónaplók megtekintése
