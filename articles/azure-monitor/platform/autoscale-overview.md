@@ -1,15 +1,15 @@
 ---
-title: Automatikus skálázás áttekintése a virtuális gépekben, a felhőszolgáltatásokban és a webalkalmazásokban
+title: Automatikus skálázás a virtuális gépeken, a felhőszolgáltatásokban és a webalkalmazásokban
 description: Automatikus skálázás a Microsoft Azure-ban. A virtuális gépekre, a virtuálisgép-méretezési csoportokra, a felhőszolgáltatásokra és a webalkalmazásokra vonatkozik.
 ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: a60c03f1928b38c78a59edca4b5493307d7d19d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eeb8b301bf087efa164a7864cdce3a04952f45ed
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75364373"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114137"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Az automatikus skálázás áttekintése a Microsoft Azure Virtual Machines, a Cloud Services és a Web Apps szolgáltatásokban
 Ez a cikk ismerteti, mi a Microsoft Azure automatikus skálázás, annak előnyeit, és hogyan kell kezdeni annak használatát.  
@@ -91,8 +91,8 @@ Ezzel szemben a függőleges méretezés eltérő. Megtartja az azonos számú v
 ## <a name="methods-of-access"></a>A hozzáférés módszerei
 Az automatikus skálázást a
 
-* [Azure-portál](../../azure-monitor/platform/autoscale-get-started.md)
-* [Powershell](../../azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
+* [Azure Portal](../../azure-monitor/platform/autoscale-get-started.md)
+* [PowerShell](../../azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
 * [Platformfüggetlen parancssori felület (CLI)](../../azure-monitor/platform/cli-samples.md#autoscale)
 * [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931953.aspx)
 

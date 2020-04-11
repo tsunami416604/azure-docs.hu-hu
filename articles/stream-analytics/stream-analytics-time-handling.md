@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.openlocfilehash: 367b7c2e1ce1c8b3c0dbc02003218b76096b409d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55537fb923b26de4e02be35fdb817dee147584d7
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75354652"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115121"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Az azure Stream Analytics időkezelésének megismerése
 
@@ -96,7 +96,7 @@ Lehet, hogy észrevette egy másik koncepció takarás, hogy néz ki, mint az el
 
 Mivel az Azure Stream Analytics garantálja, hogy mindig teljes eredményeket hoz létre, csak a **feladat kezdési idejét** adhatja meg a feladat első kimeneti idejeként, nem pedig a bemeneti időként. A feladat kezdési ideje szükséges, hogy a teljes ablak feldolgozása, ne csak az ablak közepéről.
 
-A Stream Analytics ezután a lekérdezésspecifikációból származtatja a kezdési időt. Mivel azonban a bemeneti eseményközvetítő csak az érkezési idő szerint indexelt, a rendszernek le kell fordítania a kezdési esemény idejét az érkezési időre. A rendszer megkezdheti az események feldolgozását abemeneti eseményközvetítő ezen pontjáról. A korai érkezési ablak korlát, a fordítás egyszerű. A kezdési idő mínusz az 5 perces korai érkezési ablak. Ez a számítás azt is jelenti, hogy a rendszer elejt minden olyan eseményt, amelynek eseményideje 5 perccel nagyobb az érkezési időnél, mint az érkezési idő.
+A Stream Analytics ezután a lekérdezésspecifikációból származtatja a kezdési időt. Mivel azonban a bemeneti eseményközvetítő csak az érkezési idő szerint indexelt, a rendszernek le kell fordítania a kezdési esemény idejét az érkezési időre. A rendszer megkezdheti az események feldolgozását abemeneti eseményközvetítő ezen pontjáról. A korai érkezési ablak korlát, a fordítás egyszerű. Ez a kezdési időpont mínusz az 5 perces korai érkezési ablak. Ez a számítás azt is jelenti, hogy a rendszer minden olyan eseményt elejt, amely az érkezési időnél 5 perccel elier eseményidővel rendelkezik.
 
 Ez a koncepció annak biztosítására szolgál, hogy a feldolgozás megismételhető legyen, függetlenül attól, hogy honnan kezdi a kimenetet. Egy ilyen mechanizmus nélkül nem lenne lehetséges az ismételhetőség garantálása, ahogy azt sok más streaming rendszer állítja.
 

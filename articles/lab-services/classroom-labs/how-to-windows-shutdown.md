@@ -10,12 +10,12 @@ ms.service: lab-services
 ms.topic: article
 ms.date: 3/30/2020
 ms.author: spelluru
-ms.openlocfilehash: 39ff4f42457451dfa4aae90b281d6b163c56b4cd
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 7b839df5940ab26e5c1a99a1bda1fbd2545f8cc4
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80522237"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113122"
 ---
 # <a name="guide-to-controlling-windows-shutdown-behavior"></a>Útmutató a Windows leállítási viselkedésének szabályozásához
 
@@ -58,7 +58,7 @@ Az RDP-munkamenet tétlen időkorlátjának beállításához csatlakozhat a sab
 
 ```powershell
 # The MaxIdleTime is in milliseconds; by default, this script sets MaxIdleTime to 15 minutes.
-$maxIdleTime = 15 * 60 * 90
+$maxIdleTime = 15 * 60 * 1000
 
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" -Name "MaxIdleTime" -Value $maxIdleTime -Force
 ```
@@ -79,6 +79,9 @@ Vagy az alábbi manuális lépéseket is követheti a vm sablon használatával:
     ![Az idle-munkamenet korlátja](../media/how-to-windows-shutdown/edit-idle-time-limit.png)
 
 1. Végül, ha ezt a viselkedést kombinálni szeretné a **kapcsolat bontásakor történő automatikus leállítással,** kövesse az útmutató cikk lépéseit: [A virtuális gépek automatikus leállításának engedélyezése a kapcsolat bontásakor.](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect)
+
+> [!WARNING]
+> Miután konfigurálta ezt a beállítást a PowerShell használatával a beállításjegyzék-beállítás közvetlen vagy manuális módosításához a Csoportházirend-szerkesztő használatával, először újra kell indítania a virtuális gépet a beállítások érvénybe léptetéséhez.  Ha a beállítást a beállításjegyzék használatával konfigurálja, a Csoportházirend-szerkesztő nem mindig frissül, hogy tükrözze a beállításjegyzék-beállítás változásait; a beállításjegyzék-beállítás azonban továbbra is a várt módon lép érvénybe, és az RDP-munkamenet megszakad, ha a megadott ideig tétlen.
 
 ## <a name="remove-windows-shutdown-command-from-start-menu"></a>A Windows leállításparancs eltávolítása a Start menüből
 

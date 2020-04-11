@@ -3,12 +3,12 @@ title: Particionálási szolgáltatás fabric szolgáltatások
 description: A Service Fabric állapotalapú szolgáltatások particionálása ismerteti. A partíciók lehetővé teszik az adatok tárolását a helyi gépeken, így az adatok és a számítási adatok együtt méretezhetők.
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: 1f3ee2196bad8b8a0c992ed498d40b4cf5820f2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4edfaa74fe109c688cad733d16031e87fff1e46f
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258615"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115167"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>A Service Fabric Reliable Services particionálása
 Ez a cikk az Azure Service Fabric megbízható szolgáltatások particionálásának alapvető fogalmait ismerteti. A cikkben használt forráskód a [GitHubon](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)is elérhető.
@@ -25,7 +25,7 @@ Valóban kétféle állapotmentes szolgáltatási megoldások. Az első egy olya
 
 Mindkét esetben egy állapotmentes szolgáltatás particionálása egy nagyon ritka forgatókönyv - a méretezhetőség és a rendelkezésre állás általában további példányok hozzáadásával érhető el. Az egyetlen alkalom, amikor azt szeretné, hogy fontolja meg több partíciót állapotmentes szolgáltatáspéldányok, amikor speciális útválasztási kérelmek teljesítéséhez szükséges.
 
-Például olyan esetet, amikor egy adott tartományban lévő azonosítóval rendelkező felhasználókat csak egy adott szolgáltatáspéldány nak kell kiszolgálnia. Egy másik példa arra, hogy mikor lehet particionálni egy állapotmentes szolgáltatást, amikor egy valóban particionált háttérrendszer (pl. egy szilánkos SQL-adatbázis) rendelkezik, és szeretné szabályozni, hogy melyik szolgáltatáspéldánynak kell írnia az adatbázisba - vagy más előkészítési munkát kell végeznie a állapot nélküli szolgáltatás, amely ugyanazt a particionálási információt igényel, mint a háttérrendszer. Az ilyen típusú forgatókönyvek is megoldhatók különböző módon, és nem feltétlenül igényel szolgáltatás particionálás.
+Például olyan esetet, amikor egy adott tartományban lévő azonosítóval rendelkező felhasználókat csak egy adott szolgáltatáspéldány nak kell kiszolgálnia. Egy másik példa arra, hogy mikor particionálhat egy állapotmentes szolgáltatást, amikor egy valóban particionált háttérrendszer (pl. egy szilánkos SQL-adatbázis) rendelkezik, és szeretné szabályozni, hogy melyik szolgáltatáspéldánynak kell írnia az adatbázis-szegmensbe – vagy más előkészítési munkát kell végeznie az állapotmentes szolgáltatáson belül, amely ugyanazt a particionálási információt igényli, mint a háttérrendszerben. Az ilyen típusú forgatókönyvek is megoldhatók különböző módon, és nem feltétlenül igényel szolgáltatás particionálás.
 
 A forgatókönyv további célja az állapotalapú szolgáltatások.
 
@@ -348,9 +348,6 @@ Mivel szó szerint azt szeretnénk, hogy egy partíciót egy levelet, tudjuk has
     ![Böngésző képernyőképe](./media/service-fabric-concepts-partitioning/samplerunning.png)
 
 A minta teljes forráskódja elérhető a [GitHubon.](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)
-
-## <a name="reliable-services-and-actor-forking-subprocesses"></a>Megbízható szolgáltatások és az egybeeső elágazás alfolyamatai
-A Service Fabric nem támogatja a megbízható szolgáltatásokat, és ezt követően megbízható szereplők alfolyamatok elágazása. Egy példa arra, hogy miért nem támogatott [a CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) nem használható egy nem támogatott részfolyamat regisztrálására, és a törlési tokenek csak regisztrált folyamatokba kerülnek elküldésre; ami mindenféle problémát, például frissítési hibákat eredményez, amikor az alfolyamatok nem zárnak be, miután a szülőfolyamat törlési jogkivonatot kapott. 
 
 ## <a name="next-steps"></a>További lépések
 A Service Fabric fogalmairól az alábbi témakörökben talál további információt:

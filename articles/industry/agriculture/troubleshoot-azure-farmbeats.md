@@ -5,19 +5,19 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 74522502f5405b56a3a604f20a695de83ef3c3a5
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: a40c64910260a2d63a529d25e1089fb618fcec1b
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886483"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113494"
 ---
 # <a name="troubleshoot"></a>Hibaelhárítás
 
 Ez a cikk megoldásokat kínál a gyakori Azure FarmBeats problémák. További segítségért forduljon [támogatási fórumunkhoz,](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats) vagy írjon nekünk a. farmbeatssupport@microsoft.com
 
 > [!NOTE]
-  > Ha áprilisban telepítette a FarmBeats szolgáltatást, és a feladatok üres hibaüzenettel hibásodnak meg, előfordulhat, hogy a telepítés nem kapott kötegkvótát, mivel az összes erőforrás vészhelyzeti, egészségügyi és egyéb kritikus szükségletekre irányul. Meg kell kérnie a virtuális gépek nek a Batch-fiókhoz való lefoglalását.
+  > Ha áprilisban telepítette a FarmBeats szolgáltatást, és a feladatok üres hibaüzenettel hibásak, előfordulhat, hogy a telepítés nem kapott hozzá kötegkvótát a kritikus fontosságú egészségügyi és biztonsági szervezetek támogatásának rangsorolására. További [információitt.](https://azure.microsoft.com/blog/update-2-on-microsoft-cloud-services-continuity/) A feladatok sikeres futtatásához meg kell kérnie a virtuális gépek nek a Batch-fiókhoz való lefoglalását.
 
 ## <a name="install-issues"></a>Telepítési problémák
 
@@ -45,7 +45,9 @@ Vegye fel velünk a kapcsolatot a következő adatokkal:
 - A központi telepítési hiba naplófájljának csatolásához kövesse az alábbi lépéseket:
 
     1. Keresse meg az **erőforráscsoportot** az Azure Portalon.
+
     2. Válassza **a Központi telepítések** lehetőséget a bal oldali **Beállítások** csoportban.
+
     3. Minden olyan központi telepítésesetén, amely a **Sikertelen állapotú t,** válassza ki a részleteket, és töltse le a központi telepítés részleteit. Csatolja ezt a fájlt az e-mailhez.
 
 ## <a name="sensor-telemetry"></a>Érzékelő telemetriai adatai

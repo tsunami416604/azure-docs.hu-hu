@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/02/2020
-ms.openlocfilehash: faafc1e12f0703c38b4e602700b1e775bf13a061
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.date: 04/09/2020
+ms.openlocfilehash: db60a864ff29ff9eccdcfbdc0bd63587375d4bbd
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998334"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114969"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Részleges kifejezésű keresés és különleges karakterekkel rendelkező minták (helyettesítő karakter, regex, minták)
 
-A *részleges kifejezésű keresés* olyan lekérdezésekre utal, amelyek kifejezéstöredékekből állnak, például a karakterlánc első, utolsó vagy belső részeiből. A *minta* töredékek kombinációját eredményezheti, néha speciális karakterekkel, például kötőjelekkel vagy perjelekkel, amelyek a lekérdezés részét képezik. A gyakori használati esetek közé tartozik a telefonszám, URL, személyek vagy termékkódok, illetve összetett szavak részeinek lekérdezése.
+A *részleges kifejezésű keresés* olyan lekérdezésekre utal, amelyek részlettöredékekből állnak, ahol a teljes kifejezés helyett előfordulhat, hogy csak a kifejezés kezdete, közepe vagy vége (más néven előtag, infix vagy utótag lekérdezés). A *minta* töredékek kombinációját eredményezheti, gyakran speciális karakterekkel, például kötőjelekkel vagy perjelekkel, amelyek a lekérdezési karakterlánc részét képezik. A gyakori használati esetek közé tartozik a telefonszám, URL, személyek vagy termékkódok, illetve összetett szavak részeinek lekérdezése.
 
-A részleges keresés akkor lehet problémás, ha az index nem rendelkezik a mintaegyeztetéshez szükséges formátumú kifejezésekkel. Az indexelés szövegelemzési fázisában az alapértelmezett szabványos analizátor használatával a speciális karakterek elvesznek, az összetett és összetett karakterláncok felvannak osztva, így a mintalekérdezések sikertelenek lesznek, ha nem található egyezés. Például egy telefonszám `+1 (425) 703-6214`(tokenizált `"1"`, `"425"` `"703"`, `"6214"`, , ) nem `"3-62"` jelenik meg a lekérdezésben, mert az adott tartalom valójában nem létezik az indexben. 
+A részleges és a mintakeresés akkor lehet problémás, ha az index nem rendelkezik a várt formátumú kifejezésekkel. Az indexelés [lexikális elemzési fázisában](search-lucene-query-architecture.md#stage-2-lexical-analysis) (feltéve, hogy az alapértelmezett szabványos analizátor) a speciális karakterek elvesznek, az összetett és összetett karakterláncok feloszlanak, és a szóköz törlődik; amelyek mindegyike a mintalekérdezések sikertelensedéséhez vezethet, ha nem található egyezés. Például egy telefonszám `+1 (425) 703-6214` (tokenizált `"1"`, `"425"` `"703"`, `"6214"`, , ) nem `"3-62"` jelenik meg a lekérdezésben, mert az adott tartalom valójában nem létezik az indexben. 
 
 A megoldás egy olyan elemző meghívása, amely megőrzi a teljes karakterláncot, beleértve a szóközöket és szükség esetén speciális karaktereket, hogy részleges kifejezéseket és mintákat egyezhessen. A megoldás alapja egy ép karakterlánc kiegészítő mezőjének létrehozása, valamint tartalommegőrző elemző használata.
 
@@ -27,21 +27,21 @@ A megoldás egy olyan elemző meghívása, amely megőrzi a teljes karakterlánc
 
 Az Azure Cognitive Search alkalmazásban a részleges keresés és a minta a következő űrlapokon érhető el:
 
-+ [Előtag keresés](query-simple-syntax.md#prefix-search), `search=cap*`például , egyezés a "Cap'n Jack's Waterfront Inn" vagy a "Gacc Capital". Használhatja az egyszerű lekérdezés szintaxiselőtag kereséshez.
++ [Előtag keresés](query-simple-syntax.md#prefix-search), `search=cap*`például , egyezés a "Cap'n Jack's Waterfront Inn" vagy a "Gacc Capital". Használhatja az egyszerű lekérdezés szintaxisát vagy a teljes Lucene lekérdezés szintaxisát az előtag kereséshez.
 
-+ [Helyettesítő karakteres keresés](query-lucene-syntax.md#bkmk_wildcard) vagy [reguláris kifejezések,](query-lucene-syntax.md#bkmk_regex) amelyek egy beágyazott karakterlánc mintáját vagy részeit keresik, beleértve az utótagot is. A helyettesítő karakter és a reguláris kifejezések teljes Lucene szintaxist igényelnek. 
++ [Helyettesítő karakteres keresés](query-lucene-syntax.md#bkmk_wildcard) vagy [reguláris kifejezések,](query-lucene-syntax.md#bkmk_regex) amelyek egy beágyazott karakterlánc mintáját vagy részeit keresik. A helyettesítő karakter és a reguláris kifejezések teljes Lucene szintaxist igényelnek. Az utótagok és az indexlekérdezések reguláris kifejezésként vannak megfogalmazva.
 
-  Néhány példa a részleges kifejezéskeresésre: a következők: Utótag-lekérdezés esetén az "alfanumerikus" kifejezés sel kapcsolatban helyettesítő`search=/.*numeric.*/`keresési ( ) használatával kereshet egyezést. Karaktereket, például URL-töredéket tartalmazó részleges kifejezés esetén előfordulhat, hogy escape karaktereket kell hozzáadnia. A JSON-ban `/` az előremutató per `\`eltávozik egy hátrafelé irányuló perjellel. Így `search=/.*microsoft.com\/azure\/.*/` a "microsoft.com/azure/" URL-töredék szintaxisa.
+  Néhány példa a részleges kifejezéskeresésre: a következők: Utótag-lekérdezés esetén az "alfanumerikus" kifejezés sel kapcsolatban helyettesítő`search=/.*numeric.*/`keresési ( ) használatával kereshet egyezést. Belső karaktereket, például URL-töredékeket tartalmazó részleges kifejezés esetén előfordulhat, hogy escape karaktereket kell hozzáadnia. A JSON-ban `/` az előremutató per `\`eltávozik egy hátrafelé irányuló perjellel. Így `search=/.*microsoft.com\/azure\/.*/` a "microsoft.com/azure/" URL-töredék szintaxisa.
 
 Mint megjegyezte, a fentiek mindegyike megköveteli, hogy az index olyan formátumban tartalmazkarakterláncokat, amelyek elősegítik a mintaegyeztetést, amelyet a standard analizátor nem biztosít. A cikkben ismertetett lépéseket követve biztosíthatja, hogy a forgatókönyvek támogatásához szükséges tartalom létezik.
 
-## <a name="solving-partial-search-problems"></a>Részleges keresési problémák megoldása
+## <a name="solving-partialpattern-search-problems"></a>Részleges/mintakeresési problémák megoldása
 
-Ha mintákvagy speciális karakterek alapján kell keresnie, felülírhatja az alapértelmezett elemzőt egy egyszerűbb tokenizálási szabályok szerint működő egyéni analizátorral, megtartva az egész karakterláncot. Egy lépést hátra, a megközelítés így néz ki:
+Ha töredékeken vagy mintákon vagy speciális karaktereken kell keresnie, felülbírálhatja az alapértelmezett elemzőt egy egyszerűbb tokenizálási szabályok szerint működő egyéni analizátorral, megtartva az egész karakterláncot. Egy lépést hátra, a megközelítés így néz ki:
 
 + Mező definiálása a karakterlánc ép verziójának tárolásához (feltéve, hogy elemezni és nem elemzett szöveget szeretne)
-+ Válasszon előre definiált analizátort, vagy definiáljon egy egyéni elemzőt egy ép karakterlánc kimenetéhez
-+ Az analizátor hozzárendelése a mezőhöz
++ Válasszon előre definiált analizátort, vagy definiáljon egyéni analizátort egy nem elemzett ép karakterlánc kimenetéhez
++ Egyéni elemző hozzárendelése a mezőhöz
 + Az index létrehozása és tesztelése
 
 > [!TIP]
@@ -222,6 +222,10 @@ Az előző szakaszok magyarázták a logikát. Ez a szakasz végighalad az egyes
 + [Test Analyzer](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) vezették be [Válasszon egy elemző](#choose-an-analyzer). Tesztelje az index néhány karakterláncát különböző elemzők használatával, hogy megértse, hogyan tokenálodtak a kifejezések.
 
 + [A Keresési dokumentumok dokumentum a](https://docs.microsoft.com/rest/api/searchservice/search-documents) lekérdezési kérelmek létrehozásának módját ismerteti egyszerű [szintaxissal](query-simple-syntax.md) vagy [teljes Lucene szintaxissal](query-lucene-syntax.md) helyettesítő és reguláris kifejezésekhez.
+
+  Részleges lekérdezések esetén, például a "3-6214" lekérdezésével a "+1 (425) 703-6214" egyezésének megkereséséhez használhatja az egyszerű szintaxist: `search=3-6214&queryType=simple`.
+
+  Az infix- és utótag-lekérdezések, például a "numerikus" lekérdezése az "alfanumerikus" egyezés kereséséhez használja a teljes Lucene szintaxist és egy reguláris kifejezést:`search=/.*num.*/&queryType=full`
 
 ## <a name="tips-and-best-practices"></a>Tippek és ajánlott eljárások
 

@@ -3,12 +3,12 @@ title: Tárolók és szolgáltatások erőforrás-szabályozása
 description: Az Azure Service Fabric lehetővé teszi, hogy erőforráskorlátokat adjon meg a tárolókon belül vagy kívül futó szolgáltatásokhoz.
 ms.topic: conceptual
 ms.date: 8/9/2017
-ms.openlocfilehash: 85520876d7f0c89450b572d28dee6cb66ed2231d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11ca6e29829d911717a829b3e4dee0a190856a52
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75772380"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115148"
 ---
 # <a name="resource-governance"></a>Erőforrások szabályozása
 
@@ -31,7 +31,8 @@ A [fürterőforrás-kezelő](service-fabric-cluster-resource-manager-cluster-des
 * A fürt e két metrika szerint [töredezettségmentesíthető.](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
 * [A fürt leírásakor](service-fabric-cluster-resource-manager-cluster-description.md)pufferelt kapacitás állítható be erre a két mutatóra.
 
-[A dinamikus terhelésjelentés](service-fabric-cluster-resource-manager-metrics.md) nem támogatott ezekhez a metrikákhoz, és ezek a metrikák terhelések vannak definiálva a létrehozás időpontjában.
+> [!NOTE]
+> [A dinamikus terhelésjelentés](service-fabric-cluster-resource-manager-metrics.md) nem támogatott ezeknél a mutatóknál; ezekhez a metrikákhoz a terhelések a létrehozás időpontjában vannak meghatározva.
 
 ## <a name="resource-governance-mechanism"></a>Erőforrás-irányítási mechanizmus
 

@@ -1,22 +1,22 @@
 ---
-title: Új Dynamics 365 Business Central ajánlat létrehozása a kereskedelmi piacon
-description: Új Dynamics 365 Business Central ajánlat létrehozása az Azure Piactéren, az AppSource-ban vagy a Felhőszolgáltató (CSP) programon keresztül történő listázáshoz vagy értékesítéshez a Microsoft Partner Center Kereskedelmi piactér portálján keresztül.
+title: Új Dynamics 365 Business Central ajánlat létrehozása a Microsoft kereskedelmi piacterén
+description: Új Dynamics 365 Business Central ajánlat létrehozása az Azure Piactéren, a Microsoft AppSource-ban vagy a Felhőszolgáltató (CSP) programon keresztül a Microsoft Partner Center kereskedelmi piactéri portálján történő listázáshoz vagy értékesítéshez.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 908d0fb9d494ec048e6b254f91ec1faf56b47c90
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.date: 04/09/2020
+ms.openlocfilehash: 9bb1059087bdf8fc4eb852be7a995febc3336713
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529403"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115282"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Új Dynamics 365 Business Central ajánlat létrehozása
 
-Ez a témakör bemutatja, hogyan hozhat létre új Dynamics 365 Business Central ajánlatot. [A Microsoft Dynamics 365 Business Central](https://dynamics.microsoft.com/business-central) egy vállalati erőforrás-tervezési (ERP) rendszer, amely az üzleti folyamatok széles körét kezeli, beleértve a pénzügyeket, a műveleteket, az ellátási láncot, a CRM-et, valamint a projektmenedzsmentet és az elektronikus kereskedelmet. A prémium csomagok is támogatják a klasszikus üzembe helyezési modellt és a gyártást. A Dynamics 365 Business Central minden ajánlatának át kell esnie a tanúsítási folyamaton.
+Ebből a cikkből megtudhatja, hogyan hozhat létre új Dynamics 365 Business Central ajánlatot. [A Microsoft Dynamics 365 Business Central](https://dynamics.microsoft.com/business-central) egy vállalati erőforrás-tervezési (ERP) rendszer, amely az üzleti folyamatok széles körét kezeli, beleértve a pénzügyeket, a műveleteket, az ellátási láncot, a CRM-et, valamint a projektmenedzsmentet és az elektronikus kereskedelmet. A prémium csomagok is támogatják a klasszikus üzembe helyezési modellt és a gyártást. A Dynamics 365 Business Central minden ajánlatának át kell esnie a tanúsítási folyamaton.
 
 A Dynamics 365 Business Central ajánlatok létrehozásának megkezdéséhez győződjön meg arról, hogy először [hozzon létre partnerközpont-fiókot,](./create-account.md) és nyissa meg a [Kereskedelmi piactér irányítópultját,](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)és az **Áttekintés** lapot jelölje ki.
 
@@ -113,12 +113,10 @@ Adja meg saját jogi feltételeit az **Általános Szerződési Feltételek** me
 
 ## <a name="offer-listing"></a>Ajánlat lista
 
-Az Ajánlat listalap azokat a nyelveket jeleníti meg, amelyeken az ajánlat megjelenik. Jelenleg az **angol (Egyesült Államok)** az egyetlen elérhető lehetőség.
-
-Meg kell adnia a piactér adatait (ajánlat neve, leírása, képek stb.) az egyes nyelvekhez/piacokhoz. Válassza ki az információ megadásához szükséges nyelvet/piacnevet.
+Az Ajánlat listaoldalában adhatja meg az ajánlat részleteit (például nevet, leírást, képeket stb.).
 
 > [!NOTE]
-> Az ajánlat tartalma (például leírás, dokumentumok, képernyőképek, használati feltételek stb.) nem szükséges angol nyelven, amennyiben az ajánlat leírása a következő mondattal kezdődik: "Ez az alkalmazás csak [nem angol nyelven] érhető el." Az is elfogadható, hogy *egy hasznos link URL-t* kínál tartalmat más nyelven, mint amelyet az ajánlat lista tartalmát.
+> Az ajánlatlista adatait csak egy nyelven adhatod meg. Nem szükséges angol nyelven, mindaddig, amíg az ajánlat leírása a következő mondattal kezdődik: "Ez az alkalmazás csak [nem angol nyelven] érhető el." Az is elfogadható, hogy *egy súgólink URL-t* kínáljon a tartalom nak az Ajánlat listatartalmában használttól eltérő nyelven.
 
 ### <a name="name"></a>Név
 
@@ -169,23 +167,23 @@ Tetszés szerint legfeljebb három keresési kulcsszót adhat meg, hogy az ügyf
 
 Ha tudatni szeretné az ügyfelekkel, hogy az alkalmazás bizonyos termékekkel működik, itt legfeljebb három terméknevet adhat meg.
 
-### <a name="support-urls"></a>Támogatási URL-ek
+### <a name="helpprivacy-urls"></a>Súgó/adatvédelmi URL-címek
 
 Ebben a szakaszban hivatkozásokat adhat meg, amelyek segítségével az ügyfelek jobban megismerhetik az ajánlatot.
 
 #### <a name="help-link"></a>Súgó hivatkozás
 
-Adja meg azt az URL-címet, ahol az ügyfelek többet tudhatnak meg az ajánlatról.
+Adja meg azt az URL-címet, ahol az ügyfelek többet tudhatnak meg az ajánlatról. A **súgóhivatkozás** nem egyezhet meg a **támogatási URL-lel** (az alábbiakban ismertetjük).
 
-#### <a name="privacy-policy-url"></a>Adatvédelmi irányelvek URL-címe
+#### <a name="privacy-policy-link"></a>Adatvédelmi irányelv hivatkozás
 
 Adja meg a szervezet adatvédelmi irányelveinek URL-címét. Ön felelős annak biztosításáért, hogy alkalmazása megfeleljen az adatvédelmi törvényeknek és előírásoknak, valamint hogy érvényes adatvédelmi szabályzatot biztosítson.
 
-### <a name="contacts"></a>Kapcsolatok
+### <a name="contact-information"></a>Kapcsolattartási adatok
 
 Ebben a szakaszban meg kell adnia egy **támogatási partner** és egy mérnöki partner nevét, e-mail címét és **telefonszámát.** Ez az információ nem jelenik meg az ügyfelek számára, de elérhető lesz a Microsoft számára, és a kripta-partnerek rendelkezésére állhat.
 
-A **Támogatás kapcsolatrészben** meg kell adnia a **támogatási URL-címet** is, ahol a CSP-partnerek támogatást találhatnak az ajánlathoz.
+A **Támogatás kapcsolatrészben** meg kell adnia a **támogatási URL-címet** is, ahol a CSP-partnerek támogatást találhatnak az ajánlathoz. A támogatási URL nem egyezhet meg a **súgóhivatkozással.**
 
 ### <a name="supporting-documents"></a>Igazoló dokumentumok
 
@@ -193,15 +191,7 @@ Itt legalább egy (és legfeljebb három) kapcsolódó marketingdokumentumot, p�
 
 ### <a name="marketplace-images"></a>Marketplace-képek
 
-Ebben a szakaszban olyan emblémákat és képeket adhat meg, amelyeket az ajánlat ügyfélnek való megjelenítésekor fog használni. Minden képnek .png formátumúnak kell lennie.
-
-#### <a name="store-logos"></a>Áruházi emblémák
-
-Adja meg az ajánlat logóját két méretben: **Kicsi (48 x 48)** és **Nagy (216 x 216)**.
-
-#### <a name="hero"></a>Hős
-
-A hőskép nem kötelező. Ha ön beszerez egy, ez must mér 815 x betű 290 fénykép.
+Ebben a szakaszban olyan emblémákat és képeket adhat meg, amelyeket az ajánlat ügyfélnek való megjelenítésekor fog használni. Minden képnek .png formátumúnak kell lennie. Töltse fel az ajánlat logóját két méretben: **Kicsi (48 x 48)** és **Nagy (216 x 216)**.
 
 #### <a name="screenshots"></a>Képernyőképek
 
@@ -350,7 +340,11 @@ Ne feledje, hogy **mentse,** mielőtt a következő szakasz!
 
 ### <a name="test-drive-marketplace-listings"></a>A Tesztmeghajtó piactérlistái
 
-A **Tesztmeghajtó** lapon található **Marketplace-listabeállítás** azokat a nyelveket jeleníti meg, amelyeken a tesztmeghajtó elérhető. Jelenleg **az angol (Egyesült Államok)** az egyetlen elérhető hely. Válassza ki a nyelv nevét, amely a tesztvezetés élményét leíró adatokat adja meg.
+A **Tesztmeghajtó** lapon található **Marketplace-listabeállítás** az a hely, ahol megadhatja a tesztvezetés élményének részleteit.
+
+> [!NOTE]
+> A tesztvezetés adatait csak egy nyelven adhatod meg. Nem szükséges angol nyelven, mindaddig, amíg az ajánlat leírása a következő mondattal kezdődik: "Ez az alkalmazás csak [nem angol nyelven] érhető el." Az is elfogadható, ha *súgóhivatkozásurl-t* ad meg, hogy a tartalmat a tesztmeghajtó tartalmától eltérő nyelven kínálhassa.
+
 
 - **Leírás** (kötelező): Írja le a tesztvezetést, a bemutatást, a felhasználó által kísérletezendő célokat, a feltárandó funkciókat és minden olyan releváns információt, amely segít a felhasználónak eldönteni, hogy beszerezze-e az ajánlatot. Ebben a mezőben legfeljebb 3000 karakter nyi szöveg adható meg. 
 

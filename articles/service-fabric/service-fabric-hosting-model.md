@@ -5,12 +5,12 @@ author: harahma
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: harahma
-ms.openlocfilehash: 69c7edb08693937aad5a658e0b22b00cd2a81647
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82bc5068be651b05eb24efa3b05e46c1e7c1e24d
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79282392"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115035"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Azure Service Fabric üzemeltetési modell
 Ez a cikk áttekintést nyújt az Azure Service Fabric által biztosított alkalmazásüzemeltetési modellekről, és ismerteti a **megosztott folyamat** és az **exkluzív folyamat** modellek közötti különbségeket. Ismerteti, hogyan néz ki egy üzembe helyezett alkalmazás egy Service Fabric-csomóponton, és a szolgáltatás replikák (vagy példányok) és a service-host folyamat közötti kapcsolat.
@@ -168,6 +168,10 @@ A "MultiTypeServicePackage" aktiválása a **szolgáltatásfabric:/SpecialApp/Se
 
 
 Az előző példában azt gondolhatja, hogy ha a "MyCodePackageA" regisztrálja a "MyServiceTypeA" és a "MyServiceTypeB" egyaránt, és nincs "MyCodePackageB", akkor nincs redundáns *CodePackage* fut. Bár ez helyes, ez az alkalmazásmodell nem igazodik az Exclusive Process hosting modellhez. Ha a cél az, hogy minden replika a saját dedikált folyamat, nem kell regisztrálni a *két ServiceTypes* ugyanabból *CodePackage*. Ehelyett egyszerűen helyezze az egyes *ServiceType-ot* a saját *ServicePackage csomagba.*
+
+### <a name="reliable-services-and-actor-forking-subprocesses"></a>Megbízható szolgáltatások és az egybeeső elágazás alfolyamatai
+
+A Service Fabric nem támogatja a megbízható szolgáltatásokat, és ezt követően megbízható szereplők alfolyamatok elágazása. Egy példa arra, hogy miért nem támogatott [a CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) nem használható egy nem támogatott részfolyamat regisztrálására, és a törlési tokenek csak regisztrált folyamatokba kerülnek elküldésre; ami mindenféle problémát, például frissítési hibákat eredményez, amikor az alfolyamatok nem zárnak be, miután a szülőfolyamat törlési jogkivonatot kapott.
 
 ## <a name="next-steps"></a>További lépések
 [Csomagoljon be egy alkalmazást,][a4] és készítse elő az üzembe helyezésre.

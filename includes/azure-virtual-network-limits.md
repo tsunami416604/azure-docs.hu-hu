@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 95cb29e871cce2ba600ab654d48c685b90ed027e
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: ee4d629d80ff8265d58a1d05b8dca1652ddac6fb
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80573238"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81112858"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Hálózati korlátok – Azure Resource Manager
 A következő korlátok csak az **Azure Resource Manager** en keresztül régiónként és előfizetésenként kezelt hálózati erőforrásokra vonatkoznak. Ismerje meg, hogyan tekintheti meg [az aktuális erőforrás-használatot az előfizetési korlátok között.](../articles/networking/check-usage-against-limits.md)
@@ -74,7 +74,7 @@ Az alábbi korlátozások kizárólag olyan hálózati erőforrásokra érvénye
 | Háttérkészlet mérete                       | 1000 IP-konfiguráció, egyetlen virtuális hálózat |
 | Háttér-erőforrások <sup>terheléselosztónként 1<sup> | 150                   |
 | Magas rendelkezésre állású portok                 | 1 belső előtérenként       |
-| Kimenő szabályok terheléselosztónként        | 20                            |
+| Kimenő szabályok terheléselosztónként        | 600                           |
 | [TCP tétlen időmeghosszabbítása](https://docs.microsoft.com/azure/load-balancer/load-balancer-tcp-idle-timeout#tcp-idle-timeout) | 4 perc/30 perc          |
 
 <sup>1 1</sup> A korlát legfeljebb 150 erőforrás, az önálló virtuálisgép-erőforrások, a rendelkezésre állási készlet erőforrásaiés a virtuálisgép-méretezési erőforrások kombinációja.

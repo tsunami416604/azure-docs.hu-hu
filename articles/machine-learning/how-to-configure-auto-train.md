@@ -1,5 +1,5 @@
 ---
-title: Automatikus ml-kísérletek létrehozása
+title: Automatizált gépi tanulási kísérletek létrehozása
 titleSuffix: Azure Machine Learning
 description: Az automatikus gépi tanulás kiválaszt egy algoritmust, és létrehoz egy, üzembe helyezésre kész modellt. Ismerje meg az automatikus gépi tanulási kísérletek konfigurálásához használható lehetőségeket.
 author: cartacioS
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 03e1d4aa74d2f71ab2f32ac55f4ad3d46f672f5c
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 18de50473e3dd6ca8ddda9575a247e00530032e8
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618542"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115413"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált gépi tanulási kísérletek konfigurálása Pythonban
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,24 +43,27 @@ A kísérlet megkezdése előtt meg kell határoznia, hogy milyen típusú gépi
 
 Az automatizált gépi tanulás a következő algoritmusokat támogatja az automatizálási és hangolási folyamat során. Felhasználóként nincs szükség az algoritmus megadására.
 
+> [!NOTE]
+> Ha az automatikusml létrehozott modelleket [ONNX modellbe](concept-onnx.md)kívánja exportálni, csak a *-val jelzett algoritmusok konvertálhatók ONNX formátumra. További információ a [modellek ONNX-re való konvertálásáról.](concept-automated-ml.md#use-with-onnx) <br> <br> Azt is vegye figyelembe, hogy az ONNX jelenleg csak a besorolási és regressziós feladatokat támogatja. 
+
 Osztályozás | Regresszió | Idősoros előrejelzés
 |-- |-- |--
-[Logisztikai regresszió](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)| [Rugalmas háló](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)| [Rugalmas háló](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
-[Fény GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Fény GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Fény GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
-[Színátmenet kiemelése](https://scikit-learn.org/stable/modules/ensemble.html#classification)|[Színátmenet kiemelése](https://scikit-learn.org/stable/modules/ensemble.html#regression)|[Színátmenet kiemelése](https://scikit-learn.org/stable/modules/ensemble.html#regression)
-[Döntési fa](https://scikit-learn.org/stable/modules/tree.html#decision-trees)|[Döntési fa](https://scikit-learn.org/stable/modules/tree.html#regression)|[Döntési fa](https://scikit-learn.org/stable/modules/tree.html#regression)
-[K Legközelebbi Szomszédok](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K Legközelebbi Szomszédok](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K Legközelebbi Szomszédok](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
-[Lineáris SVC](https://scikit-learn.org/stable/modules/svm.html#classification)|[LARS-lasszó](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)|[LARS-lasszó](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
-[Támogatás vektor besorolás (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)|[Sztochastikus gradiens (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)|[Sztochastikus gradiens (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
-[Véletlenszerű erdő](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[Véletlenszerű erdő](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[Véletlenszerű erdő](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
-[Rendkívül randomizált fák](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Rendkívül randomizált fák](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Rendkívül randomizált fák](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
-[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)|[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)| [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
-[DNN osztályozó](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier)|[DNN regresszió](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN regresszió](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
-[DNN lineáris osztályozó](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[Lineáris regresszió](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)|[Lineáris regresszió](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
-[Naiv Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|[Gyors lineáris regresszió](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[Auto-ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
-[Sztochastikus gradiens (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|[Online gradiens eslesztő](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest)|[Próféta](https://facebook.github.io/prophet/docs/quick_start.html)
+[Logisztikai regresszió](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)* | [Rugalmas háló](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)* | [Rugalmas háló](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
+[Fény GBM](https://lightgbm.readthedocs.io/en/latest/index.html)* |[Fény GBM](https://lightgbm.readthedocs.io/en/latest/index.html)*|[Fény GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
+[Színátmenet kiemelése](https://scikit-learn.org/stable/modules/ensemble.html#classification)* |[Színátmenet kiemelése](https://scikit-learn.org/stable/modules/ensemble.html#regression)* |[Színátmenet kiemelése](https://scikit-learn.org/stable/modules/ensemble.html#regression)
+[Döntési fa](https://scikit-learn.org/stable/modules/tree.html#decision-trees)* |[Döntési fa](https://scikit-learn.org/stable/modules/tree.html#regression)* |[Döntési fa](https://scikit-learn.org/stable/modules/tree.html#regression)
+[K Legközelebbi Szomszédok](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K Legközelebbi Szomszédok](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K Legközelebbi Szomszédok](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
+[Lineáris SVC](https://scikit-learn.org/stable/modules/svm.html#classification)* |[LARS lasszó](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)* |[LARS-lasszó](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
+[Támogatás vektor besorolás (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)* |[Sztochastikus gradiens (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)* |[Sztochastikus gradiens (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
+[Véletlen erdő](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[Véletlen erdő](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[Véletlenszerű erdő](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
+[Rendkívül randomizált fák](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Rendkívül randomizált fák](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Rendkívül randomizált fák](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
+[Xgboost között](https://xgboost.readthedocs.io/en/latest/parameter.html)* |[Xgboost között](https://xgboost.readthedocs.io/en/latest/parameter.html)* | [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
+[DNN osztályozó](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier) |[DNN regresszió](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN regresszió](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
+[DNN lineáris osztályozó](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[Lineáris regresszió](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor) |[Lineáris regresszió](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
+[Naiv Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* |[Gyors lineáris regresszió](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[Auto-ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
+[Sztochastikus gradiens (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)* |[Online gradiens eslesztő](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest)|[Próféta](https://facebook.github.io/prophet/docs/quick_start.html)
 |[Átlagos perceptron osztályozó](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest)||ElőrejelzésTCN
-|[Lineáris SVM osztályozó](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)||
+|[Lineáris SVM osztályozó](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)* ||
 
 A `task` `AutoMLConfig` konstruktor ban lévő paraméter segítségével adja meg a kísérlet típusát.
 

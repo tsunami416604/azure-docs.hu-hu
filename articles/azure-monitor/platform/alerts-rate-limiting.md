@@ -1,17 +1,17 @@
 ---
-title: Az SMS- és e-mailek, az Azure App leküldéses értesítéseinek és a webhookok sebességkorlátozásának korlátozása
+title: Sms-ek, e-mailek, leküldéses értesítések sebességkorlátozása
 description: Ismerje meg, hogy az Azure hogyan korlátozza a lehetséges SMS-ek, e-mailek, Azure App leküldéses vagy webhook-értesítések számát egy műveletcsoportból.
 author: dkamstra
 ms.author: dukek
 ms.topic: conceptual
 ms.date: 3/12/2018
 ms.subservice: alerts
-ms.openlocfilehash: 066fcac24571c8e982784a3845a010525ff9088a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61e6cc22171815b15b865dd6ed5670bd9c446ead
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77665527"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114332"
 ---
 # <a name="rate-limiting-for-voice-sms-emails-azure-app-push-notifications-and-webhook-posts"></a>Hang-, SMS-, e-mailek, Azure-alkalmazásleküldéses értesítések és webhook-bejegyzések sebességkorlátozása
 A díjkorlátozás az értesítések felfüggesztése, amely akkor következik be, ha túl sok van elküldve egy adott telefonszámra, e-mail címre vagy eszközre. A sebességkorlátozás biztosítja, hogy a riasztások kezelhetők és végrehajthatók legyenek.

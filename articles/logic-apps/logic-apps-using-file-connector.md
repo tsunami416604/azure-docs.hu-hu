@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: 2a00405a2100c3e565ca4f8ea4149540a5199b43
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ab17137f162b893b54942d870b07a36f87d1b71d
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651406"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115075"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Csatlakozás helyszíni fájlrendszerekhez az Azure Logic Appsből
 
@@ -69,7 +69,7 @@ Ez a cikk bemutatja, hogyan csatlakozhat egy helyszíni fájlrendszerhez a péld
    | -------- | -------- | ----- | ----------- |
    | **Kapcsolat neve** | Igen | <*kapcsolat neve*> | A kapcsolathoz kívánt név |
    | **Gyökérmappa** | Igen | <*gyökér-mappa-név*> | A fájlrendszer gyökérmappája például ha telepítette a helyszíni adatátjárót, például egy helyi mappát azon a számítógépen, amelyen a helyszíni adatátjáró telepítve van, vagy egy hálózati megosztás mappáját, amelyhez a számítógép hozzáférhet. <p>Például:`\\PublicShare\\DropboxFiles` <p>A gyökérmappa a fő szülőmappa, amely az összes fájlhoz kapcsolódó művelet relatív elérési útjaihoz használatos. |
-   | **Hitelesítés típusa** | Nem | <*auth-típusú*> | A fájlrendszer által használt hitelesítés típusa, például a **Windows** |
+   | **Hitelesítés típusa** | Nem | <*auth-típusú*> | A fájlrendszer által használt hitelesítés típusa: **Windows** |
    | **Felhasználónév** | Igen | <*domain*>tartomány\\<*felhasználóneve*> | Annak a számítógépnek a felhasználóneve, amelyen a fájlrendszer található |
    | **Jelszó** | Igen | <*a jelszó*> | Annak a számítógépnek a jelszava, amelyen a fájlrendszer található |
    | **Átjáró** | Igen | <*telepített átjáró-név*> | A korábban telepített átjáró neve |

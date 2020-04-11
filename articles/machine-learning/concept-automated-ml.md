@@ -10,21 +10,18 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 02/28/2020
-ms.openlocfilehash: c8864e00be9f491d87478c253286070b9334a26e
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 095561f02fdeff6688b78d69cc1becc4ee0f8901
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80383191"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115216"
 ---
 # <a name="what-is-automated-machine-learning"></a>Mi az automatizált gépi tanulás?
 
 Az automatizált gépi tanulás, más néven automatizált gépi tanulási modell a gépi tanulási modell fejlesztés időigényes, iteratív feladatainak automatizálása. Lehetővé teszi az adatszakértők, elemzők és fejlesztők számára, hogy magas méretű, hatékonyságú és termelékenységű ML-modelleket építsenek, miközben fenntartják a modell minőséget. Az automatizált ML a [Microsoft Research részlegünk](https://arxiv.org/abs/1705.05355)áttörésén alapul.
 
 A hagyományos gépi tanulási modell fejlesztése erőforrás-igényes, jelentős tartománytudást és időt igényel több tucat modell előállításához és összehasonlításához. Az automatizált gépi tanulással felgyorsíthatja a gyártásra kész GÉPI modellek nagy könnyedségével és hatékonysággal történő leküzdéséhez szükséges időt.
-
- 
-
 
 ## <a name="when-to-use-automated-ml"></a>Mikor kell használni az automatikus ml-t?
 
@@ -139,9 +136,13 @@ A [Caruana együttes kiválasztási algoritmus](http://www.niculescu-mizil.org/p
 
 Tekintse meg [az](how-to-configure-auto-train.md#ensemble) automatikus gépi tanulás alapértelmezett együttesbeállításainak módosításához.
 
-## <a name="use-with-onnx-in-c-apps"></a>Használata az ONNX-szel a C# alkalmazásokban
+## <a name="use-with-onnx"></a>Használata onnx-szal
 
-Az Azure Machine Learning segítségével automatikus ML-t hozhat létre egy Python-modell, és az ONNX formátumba konvertálható. Az ONNX futásidejű támogatja a C#, így a c# alkalmazásokban automatikusan beépített modellt használhatja anélkül, hogy újra kellene kódolnia, vagy a REST-végpontok által bevezetett hálózati késéseket. Próbáljon meg egy példát erre a [folyamatra ebben a Jupyter notebookban.](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)
+Az Azure Machine Learning segítségével automatikus ML-t hozhat létre egy Python-modell, és az ONNX formátumba konvertálható. Miután a modellek ONNX formátumban vannak, különböző platformokon és eszközökön futtathatók. További információ az [ONNX-szel történő ML-modellek gyorsításáról.](concept-onnx.md)
+
+Tekintse meg, hogyan konvertálhat ONNX formátumra [ebben a Jupyter notebook példában.](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) Ismerje meg, hogy az [ONNX mely algoritmusokat támogatja.](how-to-configure-auto-train.md#select-your-experiment-type)
+
+Az ONNX futásidejű is támogatja a C#, így a c# alkalmazásokban automatikusan beépített modellt használhatja anélkül, hogy újrakódolnia kellene, vagy a REST-végpontok által bevezetett hálózati késéseket. További információ [az ONNX-modellek ONNX-futásidejű C# API-val való következtetéséről.](https://github.com/Microsoft/onnxruntime/blob/master/docs/CSharp_API.md) 
 
 ## <a name="automated-ml-in-azure-machine-learning"></a>Automatizált ML az Azure Machine Learningben
 
@@ -162,7 +163,7 @@ A következő beállítások lehetővé teszik az automatikus gépelési kísér
 | | Python SDK| Studio
 ----|:----:|:----:
 Adatok felosztása vonatra/érvényesítési készletekre| ✓|✓
-Támogatja a pénzmosási feladatokat: osztályozás, regresszió és előrejelzés| ✓| ✓
+Támogatja a pénzmosási feladatokat: besorolás, regresszió és előrejelzés| ✓| ✓
 Optimalizálás az elsődleges mutató alapján| ✓| ✓
 Támogatja az AML-számítást számítási célként | ✓|✓
 Előrejelzési horizont konfigurálása, célkésések & gördülő ablak|✓|✓

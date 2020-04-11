@@ -7,14 +7,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 03/12/2020
+ms.date: 04/09/2020
 ms.author: kgremban
-ms.openlocfilehash: 80ce962ac6977fcce2455c8e2ef29af448a44075
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61b382f1c286209a12d0be39a81e6817806d3251
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80133142"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113460"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Az Azure IoT Edge-futtatókörnyezet telepítése Windows rendszeren
 
@@ -78,9 +78,9 @@ Ez a példa a Windows-tárolók kézi telepítését mutatja be:
 
 1. Ha még nem tette meg, regisztráljon egy új IoT Edge-eszközt, és olvassa be az **eszköz kapcsolati karakterláncát.** Másolja a szakasz későbbi részében használni hozandó kapcsolati karakterláncot. Ezt a lépést a következő eszközökkel hajthatja végre:
 
-   * [Azure-portál](how-to-register-device.md#register-in-the-azure-portal)
+   * [Azure Portal](how-to-register-device.md#register-in-the-azure-portal)
    * [Azure CLI](how-to-register-device.md#register-with-the-azure-cli)
-   * [Visual Studio kód](how-to-register-device.md#register-with-visual-studio-code)
+   * [Visual Studio Code](how-to-register-device.md#register-with-visual-studio-code)
 
 2. Futtassa a PowerShellt rendszergazdaként.
 
@@ -139,33 +139,45 @@ A telepítési lehetőségekről további információt a cikk olvasásával vag
 
 ## <a name="offline-or-specific-version-installation"></a>Kapcsolat nélküli vagy adott verziótelepítés
 
-A telepítés során két fájl töltődik le:
+A telepítés során három fájl töltődik le:
 
-* Microsoft Azure IoT Edge fülke, amely az IoT Edge biztonsági démont (iotedged), a Moby tárolómotort és a Moby CLI-t tartalmazza.
-* Visual C++ újraterjeszthető csomag (VC futásidejű) MSI
+* Egy PowerShell-parancsfájl, amely a telepítési utasításokat tartalmazza
+* Microsoft Azure IoT Edge fülke, amely az IoT Edge biztonsági démont (iotedged), a Moby tárolómotort és a Moby CLI-t tartalmazza
+* Visual C++ újraterjeszthető csomag (VC runtime) telepítő
 
-Ha az eszköz offline állapotú lesz a telepítés során, vagy ha az IoT Edge egy adott verzióját szeretné telepíteni, letöltheti az egyik vagy mindkét fájlt idő előtt az eszközre. Amikor eljön a telepítés ideje, irányítsa a telepítési parancsfájlt a letöltött fájlokat tartalmazó könyvtárra. A telepítő először ellenőrzi a könyvtárat, majd csak azokat az összetevőket tölti le, amelyek nem találhatók meg. Ha az összes fájl elérhető kapcsolat nélkül, telepítheti internetkapcsolat nélkül.
+Ha az eszköz offline állapotú lesz a telepítés során, vagy ha az IoT Edge egy adott verzióját szeretné telepíteni, ezeket a fájlokat előre letöltheti az eszközre. Amikor eljön a telepítés ideje, irányítsa a telepítési parancsfájlt a letöltött fájlokat tartalmazó könyvtárra. A telepítő először ellenőrzi a könyvtárat, majd csak azokat az összetevőket tölti le, amelyek nem találhatók meg. Ha az összes fájl elérhető kapcsolat nélkül, telepítheti internetkapcsolat nélkül.
 
-A legújabb IoT Edge telepítőfájlokat a korábbi verziókkal együtt az [Azure IoT Edge-kiadások ban.](https://github.com/Azure/azure-iotedge/releases)
+A kapcsolat nélküli telepítési elérési út paraméter t is használhatja az IoT Edge frissítéséhez. További információ: [Az IoT Edge biztonsági démonának és futásidejének frissítése](how-to-update-iot-edge.md)című témakörben talál.
 
-A kapcsolat nélküli összetevőkkel `-OfflineInstallationPath` történő telepítéshez használja a paramétert a Deploy-IoTEdge parancs részeként, és adja meg a fájlkönyvtár abszolút elérési útját. Például:
+1. A legújabb IoT Edge telepítőfájlokat a korábbi verziókkal együtt az [Azure IoT Edge-kiadások ban.](https://github.com/Azure/azure-iotedge/releases)
 
-```powershell
-. {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-Deploy-IoTEdge -OfflineInstallationPath C:\Downloads\iotedgeoffline
-```
+2. Keresse meg a telepíteni kívánt verziót, és töltse le a következő fájlokat a kibocsátási megjegyzések **Eszközök** szakaszából az IoT-eszközre:
 
->[!NOTE]
->A `-OfflineInstallationPath` paraméter egy **Microsoft-Azure-IoTEdge.cab** nevű fájlt keres a megadott könyvtárban. Az IoT Edge 1.0.9-rc4-es verziójától kezdve két .cab fájl áll rendelkezésre, egy az AMD64 eszközökhöz és egy az ARM32-hez. Töltse le az eszköznek megfelelő fájlt, majd nevezze át a fájlt az architektúra-utótag eltávolításához.
+   * IoTEdgeSecurityDaemon.ps1
+   * Microsoft-Azure-IoTEdge-amd64.cab az 1.0.9-es vagy újabb kiadásokból, vagy a Microsoft-Azure-IoTEdge.cab az 1.0.8-as és újabb kiadásokból.
 
-A `Deploy-IoTEdge` parancs telepíti az IoT Edge-összetevőket, majd `Initialize-IoTEdge` folytatnia kell a parancsot az eszköz kiépítéséhez az IoT Hub-eszközazonosítójával és kapcsolatával. Futtassa közvetlenül a parancsot, és adjon meg egy kapcsolati karakterláncot az IoT Hubból, vagy használja az előző szakaszban található hivatkozások egyikét, és ismerje meg, hogyan építheti ki automatikusan az eszközöket az Eszközkiépítési szolgáltatással.
+   A Microsoft-Azure-IotEdge-arm32.cab is elérhető 1.0.9-től kezdve csak tesztelési célokra. Az IoT Edge jelenleg nem támogatott Windows ARM32-eszközökön.
 
-```powershell
-. {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-Initialize-IoTEdge
-```
+   Fontos, hogy a PowerShell-parancsfájlt ugyanabból a kiadásból használja, mint a .cab fájlt, mert a funkciók változnak, hogy támogassa a funkciókat az egyes kiadásokban.
 
-A kapcsolat nélküli telepítési elérési út paramétert is használhatja az Update-IoTEdge paranccsal.
+3. Ha a letöltött .cab fájlon architektúra-utótag található, nevezze át a fájlt csak **Microsoft-Azure-IoTEdge.cab fájlra.**
+
+4. Szükség esetén töltsön le egy telepítőt a Visual C++ újraterjeszthető programhoz. A PowerShell-parancsfájl például a következő verziót használja: [vc_redist.x64.exe](https://download.microsoft.com/download/0/6/4/064F84EA-D1DB-4EAA-9A5C-CC2F0FF6A638/vc_redist.x64.exe). Mentse a telepítőt ugyanabban a mappában az IoT-eszközön, mint az IoT Edge-fájlokat.
+
+5. Az offline összetevőkkel való telepítéshez a PowerShell-parancsfájl helyi példányát [forrásként](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) kell kezelni. Ezután használja `-OfflineInstallationPath` a paramétert `Deploy-IoTEdge` a parancs részeként, és adja meg a fájlkönyvtár abszolút elérési útját. Például:
+
+   ```powershell
+   . <path>\IoTEdgeSecurityDaemon.ps1
+   Deploy-IoTEdge -OfflineInstallationPath <path>
+   ```
+
+   A központi telepítési parancs a megadott helyi fájlkönyvtárban található összetevőket fogja használni. Ha a .cab fájl vagy a Visual C++ telepítő hiányzik, megpróbálja letölteni őket.
+
+6. Futtassa a parancsot az `Initialize-IoTEdge` eszköz kiépítéséhez egy identitással az IoT Hubban. Adjon meg egy eszközkapcsolati karakterláncot a manuális kiépítéshez, vagy válasszon az előző [automatikus üzembe létesítési](#option-2-install-and-automatically-provision) szakaszban ismertetett módszerek közül.
+
+   Ha az eszköz futás `Deploy-IoTEdge`után újraindult, a futtatás `Initialize-IoTEdge`előtt ismét forrásforrásként adja meg a PowerShell-parancsfájlt.
+
+Az offline telepítési lehetőséggel kapcsolatos további információkért ugorjon előre az [összes telepítési paramétermegismeréséhez.](#all-installation-parameters)
 
 ## <a name="verify-successful-installation"></a>Sikeres telepítés ellenőrzése
 

@@ -1,15 +1,15 @@
 ---
-title: Klasszikus riasztások áttekintése a Microsoft Azure-ban és az Azure Monitorban
+title: Klasszikus riasztások áttekintése az Azure Monitorban
 description: A klasszikus riasztások elavultak. Riasztások lehetővé teszik, hogy az Azure-erőforrás-metrikák, események vagy naplók figyelése, és értesítést kap, ha egy megadott feltétel teljesül.
 ms.topic: conceptual
 ms.date: 05/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 098efd3075c6b099bdfc925cb4f09163f83532a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e9c269db870f582c176783a4654b5de251e24412
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77668266"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114500"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Mik a Microsoft Azure klasszikus riasztásai?
 
@@ -28,20 +28,20 @@ A klasszikus riasztások csak a klasszikus riasztások felhasználói képernyő
  ![Riasztási lehetőségek az Azure Portalon](media/alerts-classic.overview/monitor-alert-screen2.png)
 
 Az új riasztások felhasználói élménye a következő előnyökkel jár a klasszikus riasztások felületén:
--   **Jobb értesítési rendszer** – Minden újabb riasztás műveletcsoportokat használ, amelyek nevesített értesítési csoportok és műveletek, amelyek több riasztásban is újra felhasználhatók. Klasszikus metrikariasztások és a régebbi Log Analytics-riasztások nem használnak műveletcsoportokat.
--   **Egységes szerzői élmény** – Az Azure Monitoron, a Log Analytics szolgáltatásban és az Application Insightsban található összes riasztás létrehozása metrikákhoz, naplókhoz és tevékenységnaplóhoz egy helyen van.
--   **A kirúgott Log Analytics-riasztások megtekintése az Azure Portalon** – most már az előfizetésében is láthatja a kirúgott Log Analytics-riasztásokat. Korábban ezek egy külön portálon voltak.
--   **A tüzelt riasztások és riasztási szabályok elkülönítése** – Riasztási szabályok (a riasztást kiváltó állapot definíciója) és a tüzelt riasztások (a riasztási szabály tüzelési példánya) differenciálódnak, így a működési és konfigurációs nézetek elkülönülnek.
--   **Jobb munkafolyamat** – Az új riasztások szerzői élménye végigvezeti a felhasználót a riasztási szabály konfigurálásának folyamatában, ami egyszerűbbé teszi a megfelelő dolgok felderítését a figyelmeztetéshez.
--   **Intelligens riasztások összevonása** és **riasztási állapot beállítása** – Az újabb riasztások közé tartozik az automatikus csoportosítási funkció, amely hasonló riasztásokat jelenít meg a felhasználói felület túlterhelésének csökkentése érdekében. 
+- **Jobb értesítési rendszer** – Minden újabb riasztás műveletcsoportokat használ, amelyek nevesített értesítési csoportok és műveletek, amelyek több riasztásban is újra felhasználhatók. Klasszikus metrikariasztások és a régebbi Log Analytics-riasztások nem használnak műveletcsoportokat.
+- **Egységes szerzői élmény** – Az Azure Monitoron, a Log Analytics szolgáltatásban és az Application Insightsban található összes riasztás létrehozása metrikákhoz, naplókhoz és tevékenységnaplóhoz egy helyen van.
+- **A kirúgott Log Analytics-riasztások megtekintése az Azure Portalon** – most már az előfizetésében is láthatja a kirúgott Log Analytics-riasztásokat. Korábban ezek egy külön portálon voltak.
+- **A tüzelt riasztások és riasztási szabályok elkülönítése** – Riasztási szabályok (a riasztást kiváltó állapot definíciója) és a tüzelt riasztások (a riasztási szabály tüzelési példánya) differenciálódnak, így a működési és konfigurációs nézetek elkülönülnek.
+- **Jobb munkafolyamat** – Az új riasztások szerzői élménye végigvezeti a felhasználót a riasztási szabály konfigurálásának folyamatában, ami egyszerűbbé teszi a megfelelő dolgok felderítését a figyelmeztetéshez.
+- **Intelligens riasztások összevonása** és **riasztási állapot beállítása** – Az újabb riasztások közé tartozik az automatikus csoportosítási funkció, amely hasonló riasztásokat jelenít meg a felhasználói felület túlterhelésének csökkentése érdekében. 
 
 Az újabb metrikariasztások a következő előnyökkel járnak a klasszikus metrikariasztásokhoz:
--   **Továbbfejlesztett késés:** Az újabb metrikariasztások egy percenként olyan gyakran futhatnak, mint minden percben. A régebbi metrikariasztások mindig 5 perces gyakorisággal futnak. Az újabb riasztások száma a probléma előfordulásától az értesítésig vagy a műveletig (3–5 perc) egyre kisebb. A régebbi riasztások a típustól függően 5 és 15 perc között vannak.  A naplóriasztások általában 10–15 perces késleltetéssel rendelkeznek a naplók betöltéséhez szükséges idő miatt, de az újabb feldolgozási módszerek csökkentik ezt az időt. 
--   **Többdimenziós metrikák támogatása:** Riasztást adhat a dimenziós metrikákról, amelyek lehetővé teszik a metrika érdekes szegmensének figyelését.
--   **A metrikafeltételek további szabályozása:** Gazdagabb riasztási szabályokat határozhat meg. Az újabb riasztások támogatják a metrikák maximális, minimális, átlagos és összes értékének figyelését.
--   **Több metrika kombinált figyelése:** Több metrikát (jelenleg legfeljebb két metrikát) figyelhet egyetlen szabállyal. Riasztás akkor aktiválódik, ha mindkét metrika megsérti a megadott időszak vonatkozó küszöbértékeket.
--   **Jobb értesítési rendszer**: Minden újabb riasztás [műveletcsoportokat](../../azure-monitor/platform/action-groups.md)használ, amelyek nevesített értesítési csoportok és műveletek, amelyek több riasztásban is felhasználhatók.  Klasszikus metrikariasztások és a régebbi Log Analytics-riasztások nem használnak műveletcsoportokat. 
--   **Metrikák a naplók (nyilvános** előzetes verzió): A Log Analytics bekerülő adatok naplózása mostmár kinyerhető és átalakítható az Azure Monitor metrikák, majd riasztást, mint más metrikák. Lásd: [Riasztások (klasszikus)](alerts-classic.overview.md) a klasszikus riasztásokra jellemző terminológiát. 
+- **Továbbfejlesztett késés:** Az újabb metrikariasztások egy percenként olyan gyakran futhatnak, mint minden percben. A régebbi metrikariasztások mindig 5 perces gyakorisággal futnak. Az újabb riasztások száma a probléma előfordulásától az értesítésig vagy a műveletig (3–5 perc) egyre kisebb. A régebbi riasztások a típustól függően 5 és 15 perc között vannak.  A naplóriasztások általában 10–15 perces késleltetéssel rendelkeznek a naplók betöltéséhez szükséges idő miatt, de az újabb feldolgozási módszerek csökkentik ezt az időt. 
+- **Többdimenziós metrikák támogatása:** Riasztást adhat a dimenziós metrikákról, amelyek lehetővé teszik a metrika érdekes szegmensének figyelését.
+- **A metrikafeltételek további szabályozása:** Gazdagabb riasztási szabályokat határozhat meg. Az újabb riasztások támogatják a metrikák maximális, minimális, átlagos és összes értékének figyelését.
+- **Több metrika kombinált figyelése:** Több metrikát (jelenleg legfeljebb két metrikát) figyelhet egyetlen szabállyal. Riasztás akkor aktiválódik, ha mindkét metrika megsérti a megadott időszak vonatkozó küszöbértékeket.
+- **Jobb értesítési rendszer**: Minden újabb riasztás [műveletcsoportokat](../../azure-monitor/platform/action-groups.md)használ, amelyek nevesített értesítési csoportok és műveletek, amelyek több riasztásban is felhasználhatók.  Klasszikus metrikariasztások és a régebbi Log Analytics-riasztások nem használnak műveletcsoportokat. 
+- **Metrikák a naplók (nyilvános** előzetes verzió): A Log Analytics bekerülő adatok naplózása mostmár kinyerhető és átalakítható az Azure Monitor metrikák, majd riasztást, mint más metrikák. Lásd: [Riasztások (klasszikus)](alerts-classic.overview.md) a klasszikus riasztásokra jellemző terminológiát. 
 
 
 ## <a name="classic-alerts-on-azure-monitor-data"></a>Klasszikus riasztások az Azure Monitor adatairól

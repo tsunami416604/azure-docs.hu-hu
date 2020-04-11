@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 8608aaab7bb8b6d10e67f27678c17f20a6c243da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7ce7ef15f0bf13182e4799fb640e83136d0d4695
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370850"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115026"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services – Rendszergazdai útmutató
 Az egyetem felhőalapú erőforrásait kezelő informatikai rendszergazdák általában felelősek az iskola laborfiókjának beállításáért. A tesztkörnyezet-fiók beállítása után a rendszergazdák vagy az oktatók a tesztkörnyezet-fiókban található tantermi laborokat hoznak létre. Ez a cikk magas szintű áttekintést nyújt az azure-erőforrásokról és a létrehozásukhoz.
@@ -156,6 +156,9 @@ Az osztálytermi labor helye a következő tényezőktől függ:
        
     Ha **nincs** virtuális hálózat társviszony-létesített és [a tesztkörnyezet alkotói számára lehetővé teszik, hogy válassza ki a labor helyét,](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location)a helyek, amelyeket a tesztkörnyezet létrehozója a rendelkezésre álló kapacitás alapján.
 
+> [!NOTE]
+> Annak érdekében, hogy egy régió ban elegendő virtuális gép kapacitása legyen, fontos, hogy először kérje a kapacitást a laborfiókon keresztül vagy a labor létrehozásakor.
+
 Általános szabály, hogy egy erőforrás régióját a felhasználókhoz legközelebb eső régióra állítsa be. Az tantermi laborok esetében ez azt jelenti, hogy létre kell hoznunk a diákokhoz legközelebb eső tantermi labort. Az online tanfolyamok, ahol a diákok találhatók a világ minden tájáról, meg kell használni a legjobb ítéletet, hogy hozzon létre egy osztályteremben labor, amely központi elhelyezkedésű. Vagy ossza fel az osztályt több tantermi laborra a diákok régiója alapján.
 
 ### <a name="shared-image-gallery"></a>Megosztott képgaléria
@@ -169,7 +172,7 @@ Amikor a rendszergazdák vagy a laborkészítők létrehoznak egy tantermi labor
 | ---- | ----- | ------ | ------------- |
 | Kicsi| <ul><li>2 mag</li><li>3,5 GB RAM</li> | [Standard_A2_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Ez a méret a legalkalmasabb a parancssori, webböngésző, alacsony forgalmú webszerverek, kis és közepes adatbázisok megnyitásához. |
 | Közepes | <ul><li>4 mag</li><li>7 GB RAM</li> | [Standard_A4_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Ez a méret a legalkalmasabb relációs adatbázisokhoz, memórián belüli gyorsítótárazáshoz és elemzésekhez. |
-| Közepes (beágyazott virtualizáció) | <ul><li>4 mag</li><li>16 GB RAM</li></ul> | [Standard_DC4s_v2](https://docs.microsoft.com/azure/virtual-machines/dcv2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Ez a méret a legalkalmasabb relációs adatbázisokhoz, memórián belüli gyorsítótárazáshoz és elemzésekhez.  Ez a méret támogatja a beágyazott virtualizációt is. |
+| Közepes (beágyazott virtualizáció) | <ul><li>4 mag</li><li>16 GB RAM</li></ul> | [Standard_D4s_v3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#dsv3-series) | Ez a méret a legalkalmasabb relációs adatbázisokhoz, memórián belüli gyorsítótárazáshoz és elemzésekhez.  Ez a méret támogatja a beágyazott virtualizációt is. |
 | Nagy | <ul><li>8 mag</li><li>32 GB RAM</li></ul>  | [Standard_DC8_v2](https://docs.microsoft.com/azure/virtual-machines/dcv2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Ez a méret a legalkalmasabb olyan alkalmazásokhoz, amelyeknek gyorsabb processzorokra, jobb helyi lemezteljesítményre, nagy adatbázisokra, nagy memória-gyorsítótárakra van szükségük.  Ez a méret támogatja a beágyazott virtualizációt is. |
 | Kis GPU (képi megjelenítés) | <ul><li>6 mag</li><li>56 GB RAM</li>  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | Ez a méret a legalkalmasabb távoli vizualizációra, streamelésre, játékra, kódolásra olyan keretrendszerek használatával, mint az OpenGL és a DirectX. |
 | Kis GPU (számítás) | <ul><li>6 mag</li><li>56 GB RAM</li></ul>  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Ez a méret a legalkalmasabb számítógép-igényes alkalmazásokhoz, mint a mesterséges intelligencia és a deep learning. |

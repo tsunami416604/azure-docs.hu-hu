@@ -1,5 +1,5 @@
 ---
-title: A dinamikus csoporttagság szabályai - Azure AD | Microsoft dokumentumok
+title: A dinamikusan lakott csoportok tagságának szabályai - Azure AD | Microsoft dokumentumok
 description: A csoportok automatikus feltöltéséhez és a szabályhivatkozáshoz létrejön tagsági szabályok.
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da983f87977de922ec547c3ade2972dfb4d69363
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6f8237ac13744e56baa8551f8cced12b2785a48
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79253077"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114741"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Dinamikus tagsági szabályok csoportokhoz az Azure Active Directoryban
 
@@ -326,7 +326,7 @@ user.objectId -ne null
 Ha azt szeretné, hogy a csoport kizárja a vendégfelhasználókat, és csak a bérlő tagjait foglalja magában, a következő szintaxist használhatja:
 
 ```
-(user.objectId -ne null) -and (user.userType -eq “Member”)
+(user.objectId -ne null) -and (user.userType -eq "Member")
 ```
 
 ### <a name="create-an-all-devices-rule"></a>"Minden eszköz" szabály létrehozása

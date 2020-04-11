@@ -5,16 +5,16 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/07/2020
+ms.date: 04/08/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4a7c27beeb7208efcf6687e49193c8d3b68f5300
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce69593c1df0039d64f89e79124af1150409eff7
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77186516"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113304"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Az IoT Edge biztonsági démon és futtatókörnyezet frissítése
 
@@ -56,7 +56,7 @@ Windows-eszközökön a PowerShell-parancsfájl segítségével frissítse a biz
 
 Az Update-IoTEdge parancs futtatása eltávolítja és frissíti a biztonsági démont az eszközről, valamint a két futásidejű tárolórendszerképet. A config.yaml fájl az eszközön, valamint a Moby tárolómotorból származó adatok (windowsos tárolók használata esetén) tárolják. A konfigurációs adatok megtartása azt jelenti, hogy a frissítési folyamat során nem kell újra megadnia az eszköz kapcsolati karakterláncának vagy eszközkiépítési szolgáltatásának adatait.
 
-Ha a biztonsági démon egy adott verziójára szeretne frissíteni, keresse meg az [IoT Edge-kiadásokból](https://github.com/Azure/azure-iotedge/releases)a megcélozni kívánt verziót. Ebben a verzióban töltse le a **Microsoft-Azure-IoTEdge.cab** fájlt. Ezután a `-OfflineInstallationPath` paraméter segítségével mutasson a helyi fájl helyére. Példa:
+Ha a biztonsági démon egy adott verziójára szeretne frissíteni, keresse meg az [IoT Edge-kiadásokból](https://github.com/Azure/azure-iotedge/releases)a megcélozni kívánt verziót. Ebben a verzióban töltse le a **Microsoft-Azure-IoTEdge.cab** fájlt. Ezután a `-OfflineInstallationPath` paraméter segítségével mutasson a helyi fájl helyére. Például:
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux> -OfflineInstallationPath <absolute path to directory>
@@ -120,6 +120,35 @@ Ha a központi telepítésben meghatározott címkéket használ (például mcr.
 
 1. Válassza **a Véleményezés + létrehozás**lehetőséget, tekintse át a központi telepítést, és válassza a **Létrehozás lehetőséget.**
 
+## <a name="update-offline-or-to-a-specific-version"></a>Frissítés kapcsolat nélküli módban vagy egy adott verzióra
+
+Ha egy eszközt kapcsolat nélküli módban szeretne frissíteni, vagy az IoT Edge egy adott verziójára `-OfflineInstallationPath` szeretne frissíteni a legújabb verzió helyett, megteheti a paraméterrel.
+
+Az IoT Edge-eszközök két összetevőjének frissítése:
+
+* Egy PowerShell-parancsfájl, amely a telepítési utasításokat tartalmazza
+* Microsoft Azure IoT Edge fülke, amely az IoT Edge biztonsági démont (iotedged), a Moby tárolómotort és a Moby CLI-t tartalmazza
+
+1. A legújabb IoT Edge telepítőfájlokat a korábbi verziókkal együtt az [Azure IoT Edge-kiadások ban.](https://github.com/Azure/azure-iotedge/releases)
+
+2. Keresse meg a telepíteni kívánt verziót, és töltse le a következő fájlokat a kibocsátási megjegyzések **Eszközök** szakaszából az IoT-eszközre:
+
+   * IoTEdgeSecurityDaemon.ps1
+   * Microsoft-Azure-IoTEdge-amd64.cab az 1.0.9-es vagy újabb kiadásokból, vagy a Microsoft-Azure-IoTEdge.cab az 1.0.8-as és újabb kiadásokból.
+
+   A Microsoft-Azure-IotEdge-arm32.cab is elérhető 1.0.9-től kezdve csak tesztelési célokra. Az IoT Edge jelenleg nem támogatott Windows ARM32-eszközökön.
+
+   Fontos, hogy a PowerShell-parancsfájlt ugyanabból a kiadásból használja, mint a .cab fájlt, mert a funkciók változnak, hogy támogassa a funkciókat az egyes kiadásokban.
+
+3. Ha a letöltött .cab fájlon architektúra-utótag található, nevezze át a fájlt csak **Microsoft-Azure-IoTEdge.cab fájlra.**
+
+4. A frissítés offline összetevők, [dot forrás](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) a helyi példányát a PowerShell-parancsfájl. Ezután használja `-OfflineInstallationPath` a paramétert `Update-IoTEdge` a parancs részeként, és adja meg a fájlkönyvtár abszolút elérési útját. Például:
+
+   ```powershell
+   . <path>\IoTEdgeSecurityDaemon.ps1
+   Update-IoTEdge -OfflineInstallationPath <path>
+   ```
+
 ## <a name="update-to-a-release-candidate-version"></a>Frissítés a kiadásra jelölt verzióra
 
 Az Azure IoT Edge rendszeresen kiadja az IoT Edge-szolgáltatás új verzióit. Minden stabil kiadás előtt van egy vagy több kiadás jelölt (RC) verzió. RC verziók tartalmazzák az összes tervezett funkciók a kiadás, de még mindig megy keresztül tesztelés és érvényesítés. Ha korábban szeretne tesztelni egy új funkciót, telepíthet egy RC-verziót, és visszajelzést adhat a GitHubon keresztül.
@@ -128,14 +157,7 @@ Release candidate verziók követik az azonos számozási konvenciókiadások, d
 
 Az IoT Edge-ügynök és a hub modulok RC-verziók, amelyek ugyanazzal a konvencióval vannak címkézve. Például **mcr.microsoft.com/azureiotedge-hub:1.0.7-rc2**.
 
-Az előzetes verziók, release candidate verziók nem szerepelnek a legújabb verzió, hogy a rendszeres telepítők cél. Ehelyett manuálisan kell megcéloznia a tesztelni kívánt RC-verzió eszközeit. Az RC-verzió telepítése vagy frissítése több, mint az IoT Edge bármely más verziójának célzása, kivéve a Windows-eszközök egy különbségét. 
-
-Egy kiadási jelölt, a PowerShell-parancsfájl, amely lehetővé teszi az IoT Edge biztonsági démon telepítése és kezelése a Windows-eszközön eltérő funkciókkal rendelkezhet, mint a legújabb általánosan elérhető verzió. Az RC IoT Edge .cab fájljának letöltése mellett töltse le az **IotEdgeSecurityDaemon.ps1** parancsfájlt is. A [dot sourcing](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) használatával futtassa a letöltött parancsfájlt az aktuális forrásban. Példa: 
-
-```powershell
-. <path>\IoTEdgeSecurityDaemon.ps1
-Update-IoTEdge -OfflineInstallationPath <path>
-```
+Az előzetes verziók, release candidate verziók nem szerepelnek a legújabb verzió, hogy a rendszeres telepítők cél. Ehelyett manuálisan kell megcéloznia a tesztelni kívánt RC-verzió eszközeit. Az rc-verziótelepítése vagy frissítése többe több, mint az IoT Edge bármely más speciális verziójának célzása.
 
 Ebben a cikkben található szakaszok ból megtudhatja, hogyan frissítheti az IoT Edge-eszközt a biztonsági démon vagy a futásidejű modulok egy adott verziójára.
 

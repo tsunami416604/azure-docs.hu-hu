@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 03/31/2020
+ms.date: 04/10/2020
 ms.author: victorh
-ms.openlocfilehash: 5ddbb58837fbda0f14a07186d5a3053055954454
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: af66da115e228efe39e4cd5dda3c494b71428676
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677454"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113560"
 ---
 # <a name="azure-firewall-faq"></a>Gyakori kérdések az Azure tűzfalról
 
@@ -88,7 +88,7 @@ Lásd: [Azure firewall díjszabása](https://azure.microsoft.com/pricing/details
 
 Használhatja az Azure PowerShell *deallocate* és *lefoglalási* módszerek.
 
-Példa:
+Például:
 
 ```azurepowershell
 # Stop an existing firewall
@@ -172,17 +172,11 @@ Nem. Az Azure Firewall nem kell egy alhálózat nagyobb, mint /26.
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>Hogyan növelhetem a tűzfal átviteli átmenő számát?
 
-Az Azure Firewall kezdeti átviteli kapacitása 2,5–3 Gb/s, és 30 Gb/s-ra skálázódik. A processzorhasználat és az átviteli hatás alapján horizontálisfelskálázás. Lépjen kapcsolatba az ügyfélszolgálattal a tűzfal átviteli kapacitásának növeléséhez.
+Az Azure Firewall kezdeti átviteli kapacitása 2,5–3 Gb/s, és 30 Gb/s-ra skálázódik. Automatikusan skálázódik a PROCESSZOR-használat és az átviteli hatás alapján.
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Mennyi ideig tart az Azure Firewall horizontális felskálázása?
 
-Öt-hét percet vesz igénybe az Azure Firewall horizontális felskálázása. Lépjen kapcsolatba az ügyfélszolgálattal a tűzfal kezdeti átviteli kapacitásának növeléséhez, ha gyorsabb automatikus skálázást igénylő adatlöketeket igényel.
-
-A tűzfal automatikus skálázásának tesztelésekénél a következő szempontokat kell figyelembe venni:
-
-- Az egy TCP-folyamat teljesítménye 1,4 Gb/s. Így egy teljesítménytesztnek több TCP-folyamatot kell létrehoznia.
-- A teljesítményeszközöknek folyamatosan új kapcsolatokat kell létesíteniük ahhoz, hogy csatlakozhassanak a kibővített háttér-tűzfal példányaihoz. Ha a teszt kapcsolatot hoz létre egyszer az elején, majd ezek csak a kezdeti háttérpéldányokhoz kapcsolódnak. Annak ellenére, hogy a tűzfal felskálázódik, nem fog látni nagyobb teljesítményt, mert a kapcsolatok a kezdeti példányokhoz vannak társítva.
-
+Az Azure Firewall fokozatosan méretezhető, ha az átlagos átviteli vagy cpu-fogyasztás 60%. A kiskálázás 5-7 percet vesz igénybe. A teljesítménytesztelés során győződjön meg arról, hogy legalább 10–15 percig teszteli a tesztet, és új kapcsolatokat kezdeményezaz újonnan létrehozott tűzfalcsomópontok előnyeinek kihasználásához.
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Lehetővé teszi az Azure tűzfal alapértelmezés szerint engedélyezi az Active Directory elérését?
 
@@ -212,7 +206,7 @@ Set-AzFirewall -AzureFirewall $fw
 
 ## <a name="why-can-a-tcp-ping-and-similar-tools-successfully-connect-to-a-target-fqdn-even-when-no-rule-on-azure-firewall-allows-that-traffic"></a>Miért tud egy TCP ping és hasonló eszközök sikeresen csatlakozni a cél fqdn akkor is, ha nincs szabály az Azure Firewall lehetővé teszi, hogy a forgalom?
 
-A TCP-ping valójában nem csatlakozik a cél teljes tartománynnna. Ez azért történik, mert az Azure Firewall transzparens proxy figyeli a 80/443-as porton a kimenő forgalom. A TCP ping kapcsolatot létesít a tűzfallal, amely ezután eldobja a csomagot, és naplózza a kapcsolatot. Ennek a viselkedésnek nincs biztonsági hatása. Azonban, hogy elkerüljék a zavart vagyunk vizsgálja lehetséges változások ezt a viselkedést.
+A TCP-ping valójában nem csatlakozik a cél teljes tartománynnn.A TCP ping isn't connecting to the target FQDN. Ez azért történik, mert az Azure Firewall transzparens proxy figyeli a 80/443-as porton a kimenő forgalom. A TCP ping kapcsolatot létesít a tűzfallal, amely ezután eldobja a csomagot, és naplózza a kapcsolatot. Ennek a viselkedésnek nincs biztonsági hatása. Azonban, hogy elkerüljék a zavart vagyunk vizsgálja lehetséges változások ezt a viselkedést.
 
 ## <a name="are-there-limits-for-the-number-of-ip-addresses-supported-by-ip-groups"></a>Korlátozva vannak az IP-csoportok által támogatott IP-címek számára vonatkozóan?
 

@@ -1,17 +1,17 @@
 ---
-title: Klasszikus metrikariasztás létrehozása az Azure-ban egy Resource Manager-sablonnal
+title: Erőforrás-kezelő sablon – metrikariasztás létrehozása
 description: Megtudhatja, hogyan hozhat létre egy Erőforrás-kezelő sablont egy klasszikus metrikariasztás létrehozásához, amely e-mailben vagy webhook-on keresztül kap értesítéseket.
 author: rboucher
 ms.author: robb
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: 4f840d3771c2520e239d8ff3416722429f9502f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a868167f80aaa735e4fbeab32fd1d308dd6da1f
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79037227"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114430"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Klasszikus metrikariasztás létrehozása Resource Manager-sablonnal
 > [!WARNING]

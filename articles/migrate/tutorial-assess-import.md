@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 23fa1a2a0b035d04334c51c02411de6de70f2cad
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2a30222902fd8797908202562a04018209842af2
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79453646"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115055"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>Kiszolgálók felmérése importált adatok használatával
 
@@ -126,22 +126,8 @@ Az alábbi táblázat összefoglalja a kitöltandó fájlmezőket:
 **Hálózat az átviteli-csatornában** | Nem | A kiszolgáló által fogadott adatok MÁSODPERCENKÉNT IMb-ban.
 **Hálózati kimenő átviteli** | Nem | A kiszolgáló által továbbított adatok MÁSODPERCENKÉNT IMb-ban.
 **Belső vezérlőprogram típusa** | Nem | Kiszolgáló belső vezérlőprogramja. Az értékek lehetnek "BIOS" vagy "UEFI".
-**Kiszolgáló típusa** | Nem | Az értékek lehetnek "Fizikai" vagy "Virtuális".
-**Hipervizor** | Nem | Hipervizor, amelyen a gép fut. <br/> Az értékek lehetnek "VMware", "Hyper-V", "Xen", "AWS", "GCP" vagy "Egyéb".
-**Hypervisor verziószáma** | Nem | Hipervizor verzió.
-**Virtuális gép azonosítója** | Nem | Virtuálisgép-azonosító. Ez a VMware vCenter virtuális gép **instanceUid** értéke, vagy a **Hyper-V VM ID** a Hyper-V.
-**Virtuálisgép-kezelő azonosítója** | Nem | Ez a VMWare vCenter **InstanceUUid** értéke. Nincs rá szükség a Hyper-V-re.
 **MAC-cím**| Nem | Kiszolgáló MAC-címe.
-**BIOS-azonosító** | Nem | Kiszolgáló BIOS-azonosítója.
-**Egyéni kiszolgálóazonosító** | Nem | Helyi, egyedi kiszolgálóazonosító a helyszínen. <br/> Hasznos az importált kiszolgáló helyi azonosítóval történő nyomon követéséhez.
-**1. alkalmazás neve** | Nem | A kiszolgálón futó számítási feladat neve.<br/>További alkalmazások részleteit a [sablonban lévő oszlopok hozzáadásával](#add-multiple-applications) adhathatja meg. Legfeljebb öt alkalmazást adhat hozzá.
-**1. alkalmazás típusa** | Nem | A kiszolgálón futó számítási feladatok típusa
-**1. alkalmazás verziója** | Nem | A kiszolgálón futó munkaterhelés verziója.
-**1. kérelem licenclejárata** | Nem | A terhelés licencének lejárta (ha van ilyen).
-**Üzleti egység** | Nem | Az a részleg, amelyhez a kiszolgáló tartozik.
-**Vállalkozás tulajdonosa** | Nem | A részleg tulajdonosa.
-**Vállalati alkalmazás neve** | Nem | Annak az alkalmazásnak a neve, amelyhez az alkalmazás tartozik.
-**Helyen** | Nem | Adatközpont, amelyben a kiszolgáló található.
+
 
 ### <a name="add-operating-systems"></a>Operációs rendszerek hozzáadása
 
@@ -159,19 +145,6 @@ Ha például egy második lemez összes mezőjét meg szeretné adni, adja hozz�
 - 2. lemez olvasási átviteli-átmenő
 - 2. lemez írási átviteli áteresztőmódja
 
-### <a name="add-multiple-applications"></a>Több alkalmazás hozzáadása
-
-A sablon egyetlen alkalmazás mezőit tartalmazza. Legfeljebb öt alkalmazáshoz adhat hozzá hasonló oszlopokat.  
-
-Ha például egy második alkalmazás összes mezőjét meg szeretné adni, adja hozzá az alábbi oszlopokat:
-
-- 2. alkalmazás neve
-- 2. alkalmazás típusa
-- 2. alkalmazás verziója
-- 2. kérelem licenc lejárata
-
-> [!NOTE]
-> Az alkalmazásinformációk hasznosak a helyszíni környezet áttelepítési kiértékeléséhez. Az Azure Migrate Server Assessment azonban jelenleg nem végez alkalmazásszintű felmérést, és nem veszi figyelembe az alkalmazásokat az értékelés létrehozásakor.
 
 ## <a name="import-the-server-information"></a>A kiszolgálóadatainak importálása
 

@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 03/13/2020
-ms.openlocfilehash: 4d845514965a8d60c636902660ce838926cbf3c9
-ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
+ms.openlocfilehash: ca4bf1b0043a2c73851eab48ff8b9b6b7a987b72
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80607617"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115295"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Biztonságos Azure ML-kísérletezés és következtetési feladatok az Azure virtuális hálózaton belül
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,6 +43,11 @@ Ez a cikk részletes információkat is tartalmaz a *speciális biztonsági beá
 + A számítási erőforrásokkal használható, már meglévő virtuális hálózat és alhálózat.
 
 ## <a name="use-a-storage-account-for-your-workspace"></a>Tárfiók használata a munkaterülethez
+
+> [!WARNING]
+> Ha az Azure Machine Learning-tervezőt használó adatszakértőkkel rendelkezik, hibaüzenetet kapnak, amikor egy virtuális hálózaton belüli tárfiókból származó adatokat jelenítmeg. A következő szöveg a kapott hiba:
+>
+> __Hiba: Nem lehet profilozni ezt az adatkészletet. Ennek az lehet az oka, hogy az adatok egy virtuális hálózat mögött vannak tárolva, vagy az adatok nem támogatják a profilt.__
 
 Ha egy virtuális hálózat munkaterületéhez Azure storage-fiókot szeretne használni, kövesse az alábbi lépéseket:
 
@@ -510,7 +515,7 @@ A hálózati szabályok konfigurálásáról az [Azure Firewall telepítése és
 
 1. Az Azure Container-beállításjegyzék nevének megkereséséhez használja az alábbi módszerek egyikét:
 
-    __Azure-portál__
+    __Azure Portal__
 
     A munkaterület áttekintő szakaszában a __beállításjegyzék-érték__ az Azure Container Registry-re hivatkozik.
 

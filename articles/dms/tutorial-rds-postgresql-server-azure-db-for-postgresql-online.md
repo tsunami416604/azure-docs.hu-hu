@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 02/17/2020
-ms.openlocfilehash: 12aa11aa5064b3a0a2ff18f88161f44f37208aec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/11/2020
+ms.openlocfilehash: be6f0cd734d31f43557b49f8e9314e925b383899
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240697"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113949"
 ---
 # <a name="tutorial-migrate-rds-postgresql-to-azure-db-for-postgresql-online-using-dms"></a>Oktatóanyag: Az RDS PostgreSQL áttelepítése az Azure DB-be a PostgreSQL-hez online a DMS használatával
 
@@ -49,7 +49,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 * Töltse le és telepítse a PostgreSQL 9.5, 9.6 vagy 10 [közösségi kiadását.](https://www.postgresql.org/download/) A forrás PostgreSQL Server verziónak 9.5.11, 9.6.7, 10 vagy újabb lehet. További információt a [Támogatott PostgreSQL adatbázis-verziók](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions)című cikkben talál.
 
-    Ezenkívül az RDS PostgreSQL-verziónak meg kell egyeznie az Azure Database for PostgreSQL verziójával. Az RDS PostgreSQL 9.5.11.5 például csak a PostgreSQL 9.5.11 Azure Database adatbázisába tud áttérni, a 9.6.7-es verzióra nem.
+   Azt is vegye figyelembe, hogy a cél Azure-adatbázis PostgreSQL-verzió egyenlőnek kell lennie, vagy később, mint az RDS PostgreSQL verzió. Az RDS PostgreSQL 9.6 például csak a PostgreSQL 9.6-os, 10-es vagy 11-es Azure Database adatbázisába tud áttérni, de a PostgreSQL 9.5-höz készült Azure Database adatbázisba nem.
 
 * Hozzon létre egy példányt az [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal) vagy [az Azure Database for PostgreSQL - Hyperscale (Citus)](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal)számára. A cikk ezen [részében](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal#connect-to-the-postgresql-server-using-pgadmin) részletesen tájékot megtudhatja, hogyan csatlakozhat a PostgreSQL Kiszolgálóhoz a pgAdmin használatával.
 * Hozzon létre egy Microsoft Azure virtuális hálózatot az Azure adatbázis-áttelepítési szolgáltatáshoz az Azure Resource Manager telepítési modelljével, amely az [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy a [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)használatával biztosít helyek közötti kapcsolatot a helyszíni forráskiszolgálókhoz. A virtuális hálózat létrehozásáról további információt a [Virtuális hálózati dokumentációban](https://docs.microsoft.com/azure/virtual-network/)és különösen a részletes en című rövid útmutatóban talál.
@@ -100,7 +100,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
     psql -h hostname -U db_username -d db_name < your_schema.sql
     ```
 
-    Példa:
+    Például:
 
     ```
     psql -h mypgserver-20170401.postgres.database.azure.com  -U postgres -d dvdrental < dvdrentalSchema.sql

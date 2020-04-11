@@ -3,12 +3,12 @@ title: Ismerje meg a virtuális gépek tartalmának naplózását
 description: Ismerje meg, hogy az Azure Policy hogyan használja a Vendég konfigurációs ügynököt a virtuális gépeken belüli beállítások naplózásához.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9e8486af2a9b7ab9e18b8c16f08e51759d1123d7
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 4a2989badc099a199bf21f7e020ca8e6256ddaf0
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998846"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113432"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure-szabályzat vendégkonfigurációjának megismerése
 
@@ -26,32 +26,11 @@ A beállítások naplózásához egy gépen belül, a [virtuális gép bővítm�
 
 ### <a name="limits-set-on-the-extension"></a>A kiterjesztésre beállított korlátok
 
-A bővítmény a számítógépen belül futó alkalmazások ütközésének korlátozása érdekében a vendégkonfiguráció nem haladhatja meg a PROCESSZOR-kihasználtság 5%-át. Ez a korlátozás a beépített és az egyéni definíciókra egyaránt létezik.
+Annak érdekében, hogy a bővítmény a számítógépen belül futó alkalmazásokat ne befolyásolja, a vendégkonfiguráció nem haladhatja meg a PROCESSZOR 5%-át. Ez a korlátozás a beépített és az egyéni definíciókra egyaránt létezik.
 
 ## <a name="register-guest-configuration-resource-provider"></a>Vendégkonfigurációs erőforrás-szolgáltató regisztrálása
 
-A Vendégkonfiguráció használata előtt regisztrálnia kell az erőforrás-szolgáltatót. Regisztrálhat a portálon keresztül vagy a PowerShellen keresztül. Az erőforrás-szolgáltató automatikusan regisztrálva lesz, ha a vendégkonfigurációs házirend hozzárendelése a portálon keresztül történik.
-
-### <a name="registration---portal"></a>Regisztráció - Portál
-
-Ha regisztrálni szeretné az erőforrás-szolgáltatót a Vendégkonfigurációhoz az Azure Portalon keresztül, kövesse az alábbi lépéseket:
-
-1. Indítsa el az Azure Portalt, és kattintson az **Összes szolgáltatás elemre.** Keressen rá, és válassza **az Előfizetések**lehetőséget.
-
-1. Keresse meg és kattintson arra az előfizetésre, amelyhez engedélyezni szeretné a Vendég konfigurációt.
-
-1. Az **Előfizetés** lap bal oldali menüjében kattintson az **Erőforrás-szolgáltatók**gombra.
-
-1. Szűrje a microsoft.GuestConfiguration mezőt, vagy görgessen addig, amíg meg nem találja a **Microsoft.GuestConfiguration**programot, majd kattintson a **Regisztráció** gombra ugyanabban a sorban.
-
-### <a name="registration---powershell"></a>Regisztráció - PowerShell
-
-Ha regisztrálni szeretné a Vendégkonfiguráció erőforrás-szolgáltatóját a PowerShellen keresztül, futtassa a következő parancsot:
-
-```azurepowershell-interactive
-# Login first with Connect-AzAccount if not using Cloud Shell
-Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
-```
+A Vendégkonfiguráció használata előtt regisztrálnia kell az erőforrás-szolgáltatót. A [portálon](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal), az [Azure PowerShellen](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)vagy az [Azure CLI-n](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli)keresztül regisztrálhat. Az erőforrás-szolgáltató automatikusan regisztrálva lesz, ha a vendégkonfigurációs házirend hozzárendelése a portálon keresztül történik.
 
 ## <a name="validation-tools"></a>Érvényesítési eszközök
 
@@ -89,7 +68,7 @@ A Windows Server Nano Server egyetlen verzióban sem támogatott.
 
 ## <a name="guest-configuration-extension-network-requirements"></a>Vendégkonfiguráció-bővítmény hálózati követelményei
 
-Az Azure vendégkonfigurációs erőforrás-szolgáltatójával való kommunikációhoz a gépeknek kimenő hozzáférésre van szükségük az Azure-adatközpontokhoz a **443-as**porton. Ha olyan magánvirtuális hálózatot használ az Azure-ban, amely nem engedélyezi a kimenő forgalmat, konfigurálja a kivételeket [a Hálózati biztonsági csoport](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) szabályaival.
+Az Azure vendégkonfigurációs erőforrás-szolgáltatójával való kommunikációhoz a gépeknek kimenő hozzáférésre van szükségük az Azure-adatközpontokhoz a **443-as**porton. Ha egy azure-beli hálózat nem engedélyezi a kimenő forgalmat, konfigurálja a kivételeket [a Hálózati biztonsági csoport](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) szabályaival.
 A "GuestAndHybridManagement" [szolgáltatáscímke](../../../virtual-network/service-tags-overview.md) a Vendég konfigurációs szolgáltatásra hivatkozik.
 
 ## <a name="azure-managed-identity-requirements"></a>Az Azure felügyelt identitáskövetelményei
@@ -101,7 +80,7 @@ A **deployifnotexists** házirendek, amelyek hozzáadják a bővítményt a virt
 
 ## <a name="guest-configuration-definition-requirements"></a>Vendég konfigurációdefiníciójának követelményei
 
-A Vendégkonfiguráció által futtatott minden egyes naplózáshoz két házirend-definíció, egy **DeployIfNotExists** és egy **AuditIfNotExists** definíció szükséges. A **DeployIfNotExists** definíció a vendégkonfigurációs ügynökkel és más összetevőkkel való előkészítésére szolgál az [ellenőrzőeszközök támogatásához.](#validation-tools)
+A Vendégkonfiguráció által futtatott minden egyes naplózáshoz két házirend-definíció, egy **DeployIfNotExists** és egy **AuditIfNotExists** definíció szükséges. 
 
 A **DeployIfNotExists** házirend-definíció ellenőrzi és kijavítja a következő elemeket:
 
@@ -112,24 +91,24 @@ A **DeployIfNotExists** házirend-definíció ellenőrzi és kijavítja a követ
 
 Ha a **DeployIfNotExists** hozzárendelés nem megfelelő, [egy szervizelési feladat](../how-to/remediate-resources.md#create-a-remediation-task) használható.
 
-Ha a DeployIfNotExists hozzárendelés megfelelő, az AuditIfNotExists házirend-hozzárendelés a helyi ellenőrzési eszközök segítségével határozza meg, hogy a konfigurációs hozzárendelés megfelelő vagy nem megfelelő.Once the **DeployIfNotExists** assignment is Compliant, the **AuditIfNotExists** policy assignment uses the local validation tools to determine if the configuration assignment is Compliant or Not compliant. Az ellenőrző eszköz biztosítja az eredményeket a Vendég konfigurációs ügyfél. Az ügyfél továbbítja az eredményeket a vendég bővítménynek, amely elérhetővé teszi őket a Vendég konfigurációs erőforrás-szolgáltatón keresztül.
+Ha a DeployIfNotExists hozzárendelés megfelelő, az AuditIfNotExists házirend-hozzárendelés megállapítja, hogy a vendég-hozzárendelés megfelelő vagy nem megfelelő.Once the **DeployIfNotExists** assignment is Compliant, the **AuditIfNotExists** policy assignment determines if the guest assignment is Compliant or Not compliant. Az ellenőrző eszköz biztosítja az eredményeket a Vendég konfigurációs ügyfél. Az ügyfél továbbítja az eredményeket a vendég bővítménynek, amely elérhetővé teszi őket a Vendég konfigurációs erőforrás-szolgáltatón keresztül.
 
 Az Azure Policy a vendégkonfigurációs erőforrás-szolgáltatók **complianceStatus** tulajdonságát használja a megfelelőségi csomópontmegfelelőség **jelentéséhez.** További információt a [Megfelelőségi adatok beszerzése](../how-to/get-compliance-data.md)című témakörben talál.
 
 > [!NOTE]
 > A **DeployIfNotExists** házirend szükséges az **AuditIfNotExists** házirend eredmények visszaadásához. A **DeployIfNotExists nélkül**az **AuditIfNotExists** házirend állapotként "0/0" erőforrásokat jelenít meg.
 
-A Vendégkonfiguráció összes beépített házirendje szerepel egy olyan kezdeményezésben, amely csoportosítja a hozzárendelésekben használt definíciókat. A beépített kezdeményezés _ \[neve\]Preview: Audit Jelszó biztonsági beállítások linuxos és Windows-gépeken belül_ 18 házirendeket tartalmaz. Hat **DeployIfNotExists** és **AuditIfNotExists** pár van Windows-hoz és három pár Linuxra. A [házirend-definíciós](definition-structure.md#policy-rule) logika ellenőrzi, hogy csak a cél operációs rendszer kiértékelése.
+A Vendégkonfiguráció összes beépített házirendje szerepel egy olyan kezdeményezésben, amely csoportosítja a hozzárendelésekben használt definíciókat. Az _ \[Előzetes\]verzió_ : Naplózási jelszó biztonság a Linux és a Windows gépeken belül 18 házirendet tartalmaz. Hat **DeployIfNotExists** és **AuditIfNotExists** pár van Windows-hoz és három pár Linuxra. A [házirend-definíciós](definition-structure.md#policy-rule) logika ellenőrzi, hogy csak a cél operációs rendszer kiértékelése.
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Az operációs rendszer beállításainak naplózása az iparági alapértékek et követve
 
-Az Azure Policy egyik kezdeményezése lehetővé teszi az operációs rendszer beállításainak naplózását a virtuális gépeken a Microsoft "alapkonfigurációja" után. A definíció, _ \[előzetes verzió:\]Az Azure biztonsági alapkonfiguráció-beállításainak meg nem felelő Windows-virtuális gépek naplózása_ az Active Directory csoportházirend beállításai alapján tartalmazza a naplózási szabályok teljes készletét.
+Az Azure Policy egyik kezdeményezése lehetővé teszi az operációs rendszer beállításainak naplózását egy "alapkonfiguráció" után. A definíció, _ \[előzetes verzió:\]Az Azure biztonsági alapkonfiguráció-beállításainak meg nem felelő Windows-virtuális gépek naplózása_ az Active Directory csoportházirendje indikáta alapján tartalmaz szabályokat.
 
-A legtöbb beállítás paraméterként érhető el. Ez a funkció lehetővé teszi a naplózásra kerülő adatok testreszabását, hogy a szabályzat igazodjon a szervezeti követelményekhez, vagy hogy a szabályzatot harmadik féltől származó információkhoz, például az iparági szabályozási szabványokhoz rendelje.
+A legtöbb beállítás paraméterként érhető el. A paraméterek lehetővé teszik a naplózástestreszabását. Igazítsa a szabályzatot az Ön igényeihez, vagy rendelje hozzá a szabályzatot harmadik felek adataihoz, például az iparági szabályozási szabványokhoz.
 
-Egyes paraméterek támogatják az egész értéktartományt. Például a Maximális jelszó kor paraméter beállítható egy tartomány operátor, hogy rugalmasságot biztosít a gép tulajdonosok. Naplózhatja, hogy a felhasználók jelszavának módosítására kötelező tényleges csoportházirend-beállítás legfeljebb 70 nap, de nem lehet kevesebb, mint egy nap. Amint azt az info-buborék a paraméter, hogy ez az üzleti politika a tényleges naplózási érték, állítsa az értéket "1,70".
+Egyes paraméterek támogatják az egész értéktartományt. A Jelszó maximális korbeállítása például naplózhatja a tényleges csoportházirend-beállítást. Az "1,70" tartomány megerősíti, hogy a felhasználóknak legalább 70 naponta, de legalább egy napon belül módosítaniuk kell jelszavukat.
 
-Ha a szabályzatot egy Azure Resource Manager központi telepítési sablon használatával rendeli hozzá, paraméterfájl használatával kezelheti ezeket a beállításokat a forrásvezérlőből. Egy eszköz, például a Git segítségével kezelheti a naplózási házirendek módosításait, és minden egyes beadási dokumentumhoz megjegyzéseket fűzhet arra vonatkozóan, hogy miért kell egy hozzárendelésnek kivételt lennie a várt érték alól.
+Ha a szabályzatot egy Azure Resource Manager központi telepítési sablon használatával rendeli hozzá, használjon paraméterfájlt a kivételek kezeléséhez. A fájlok at egy verzió-ellenőrzési rendszerbe, például a Git-be. A fájlmódosításokkal kapcsolatos megjegyzések bizonyítják, hogy egy hozzárendelés miért kivétel a várt érték alól.
 
 #### <a name="applying-configurations-using-guest-configuration"></a>Konfigurációk alkalmazása vendégkonfigurációval
 
@@ -162,7 +141,7 @@ Ha ez nem sikerül, az ügyfélnaplók gyűjtése segíthet a problémák diagno
 
 #### <a name="windows"></a>Windows
 
-Az Azure VM Run Command funkció használatával a Windows-gépek naplófájljaiból származó adatok rögzítéséhez a következő példa PowerShell-parancsfájl hasznos lehet. További információt a [PowerShell-parancsfájlok futtatása a Windows virtuális gépen a Run Para paranccsal című témakörben talál.](../../../virtual-machines/windows/run-command.md)
+Adatok rögzítése a naplófájlokból [az Azure VM Run Command használatával,](../../../virtual-machines/windows/run-command.md)a következő példa PowerShell-parancsfájl hasznos lehet.
 
 ```powershell
 $linesToIncludeBeforeMatch = 0
@@ -173,7 +152,7 @@ Select-String -Path $logPath -pattern 'DSCEngine','DSCManagedEngine' -CaseSensit
 
 #### <a name="linux"></a>Linux
 
-Az Azure VM Run Command képesség használatával adatokat rögzíthet a linuxos gépek naplófájljaiból, a következő példa Bash parancsfájl hasznos lehet. További információ: [Shell szkriptek futtatása a Linux virtuális gépben a Run Para paranccsal című témakörben.](../../../virtual-machines/linux/run-command.md)
+Adatok rögzítése a naplófájlokból [az Azure VM Run Command használatával,](../../../virtual-machines/linux/run-command.md)a következő példa Bash parancsfájl hasznos lehet.
 
 ```Bash
 linesToIncludeBeforeMatch=0
@@ -184,7 +163,7 @@ egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCM
 
 ## <a name="guest-configuration-samples"></a>Vendég konfigurációs minták
 
-A Házirend vendégkonfigurációjának beépített kezdeményezéseinek forrása a következő helyeken érhető el:
+Vendégkonfiguráció beépített házirend minták érhetők el a következő helyeken:
 
 - [Beépített házirend-definíciók – Vendég konfigurációja](../samples/built-in-policies.md#guest-configuration)
 - [Beépített kezdeményezések – Vendégkonfiguráció](../samples/built-in-initiatives.md#guest-configuration)
@@ -192,6 +171,7 @@ A Házirend vendégkonfigurációjának beépített kezdeményezéseinek forrás
 
 ## <a name="next-steps"></a>További lépések
 
+- További információ az egyes beállítások részleteinek megtekintéséről a [Vendég konfiguráció megfelelőségi nézetéből](../how-to/determine-non-compliance.md#compliance-details-for-guest-configuration)
 - Tekintse át a példákat az [Azure Policy-mintákban.](../samples/index.md)
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](definition-structure.md) szakaszt.
 - A [Szabályzatok hatásainak ismertetése](effects.md).

@@ -7,20 +7,17 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 8c76333d5a2be8a2c589dbe54389b023fef34854
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 111e6e2f80c3460f363c496b7b32befdca16250d
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252525"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115108"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Privát csatlakozás tárfiókokhoz az Azure privát végpontok használatával
 Az Azure Private Endpoint az Azure-beli privát kapcsolat alapvető építőköve. Lehetővé teszi, hogy az Azure-erőforrások, például a virtuális gépek (VM-ek) privát módon kommunikáljanak a Private Link-erőforrásokkal.
 
 Ebben a rövid útmutatóban megtudhatja, hogyan hozhat létre virtuális gépet egy Azure virtuális hálózaton, egy tárfiókot egy privát végponthasználatával az Azure Portalon. Ezután biztonságosan elérheti a tárfiókot a virtuális gépről.
-
-> [!NOTE]
-> A privát végpont(ok) nem engedélyezettek az azonos alhálózat szolgáltatásvégpontjaival együtt!
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 

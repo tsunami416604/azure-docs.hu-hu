@@ -7,16 +7,16 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 56e86aa75b153b5cb005c96fca45373d30ffa8b4
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: c7a2fea94e0dc1ff868eff26399877cab66e6f66
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437096"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115340"
 ---
 # <a name="dav4-and-dasv4-series"></a>Dav4 és Dasv4 sorozat
 
-A Dav4 sorozat ú Dasv4-es sorozat új méretű, az AMD 2,35 GHz-es EPYC<sup>TM</sup> 7452 processzorát felhasználva többszálas konfigurációban, akár 256 MB L3 gyorsítótárral, amely 8 GB-ot szentel az L3 gyorsítótárból minden 8 magnak, növelve az ügyféllehetőségeket az általános célú munkaterhelések futtatásához. A Dav4 és Dasv4 sorozat ugyanolyan memória- és lemezkonfigurációval rendelkezik, mint a D & Dsv3 sorozat.
+A Dav4 sorozat ú Dasv4-es sorozat új méreteket tartalmaz, amelyek az AMD 2,35 GHz-es EPYC<sup>TM</sup> 7452 processzorát használják többszálas konfigurációban, akár 256 MB L3 gyorsítótárral, amely 8 mb-ot szentel az L3 gyorsítótárból minden 8 magnak, növelve az ügyfél lehetőségeket az általános célú munkaterhelések futtatásához. A Dav4 és Dasv4 sorozat ugyanolyan memória- és lemezkonfigurációval rendelkezik, mint a D & Dsv3 sorozat.
 
 ## <a name="dav4-series"></a>Dav4-sorozat
 

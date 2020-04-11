@@ -14,12 +14,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: 4b36f456f70eb79cff1f615c7c136b8fe4b1b3d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 22826c32dc2aee0e580ec0b2a05c7eb8f08b7570
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78226714"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115309"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>Általános célú virtuális gépméretek
 
@@ -32,7 +32,7 @@ ms.locfileid: "78226714"
 
 - [B-sorozat burstable](sizes-b-series-burstable.md) A virtuális gépek ideálisak olyan számítási feladatokhoz, amelyek nem igényelnek folyamatosan a PROCESSZOR teljes teljesítményét, például webkiszolgálókat, kis adatbázisokat, valamint fejlesztési és tesztelési környezeteket. Ezek a számítási feladatok általában burstable teljesítménykövetelményekkel rendelkeznek. A B-sorozat lehetővé teszi, hogy ezek az ügyfelek egy virtuális gép méretét egy ártudatos alapteljesítmény, amely lehetővé teszi a virtuális gép példány a kreditek összeállításához, ha a virtuális gép kihasználva kevesebb, mint az alapteljesítmény. Ha a virtuális gép kreditet halmozott fel, a virtuális gép a virtuális gép alapkonfigurációja fölé robbanhat a PROCESSZOR 100%-ának használatával, ha az alkalmazás nagyobb CPU-teljesítményt igényel.
 
-- [Dav4 és Dasv4-sorozat](dav4-dasv4-series.md) új méretű felhasználásával AMD 2.35Ghz EPYC<sup>TM</sup> 7452 processzor egy többszálas konfiguráció akár 256 MB L3 cache szenteli 8 GB, hogy az L3 cache minden 8 magot növekvő ügyfél lehetőségek futtatásához általános célú munkaterhelések. A Dav4 és Dasv4 sorozat ugyanolyan memória- és lemezkonfigurációval rendelkezik, mint a D & Dsv3 sorozat.
+- [Dav4 és Dasv4-sorozat](dav4-dasv4-series.md) új méretű felhasználásával AMD 2.35Ghz EPYC<sup>TM</sup> 7452 processzor egy többszálas konfiguráció akár 256 MB L3 cache szenteli 8 MB, hogy az L3 cache minden 8 magot növekvő ügyfél lehetőségek futtatásához általános célú munkaterhelések. A Dav4 és Dasv4 sorozat ugyanolyan memória- és lemezkonfigurációval rendelkezik, mint a D & Dsv3 sorozat.
 
 - A [DCv2 sorozat](dcv2-series.md) segít megvédeni az adatok és kódok titkosságát és integritását, miközben azokat a nyilvános felhőben dolgozzák fel. Ezeket a gépeket az Intel XEON E-2288G processzor legújabb generációja támogatja SGX technológiával. Az Intel Turbo Boost technológiával ezek a gépek akár 5,0 GHz-re is felmehetnek. A DCv2 sorozatpéldányok lehetővé teszik az ügyfelek számára, hogy biztonságos enklávé alapú alkalmazásokat építsenek a kódjuk és az adataik védelme érdekében, miközben használatban vannak.
 

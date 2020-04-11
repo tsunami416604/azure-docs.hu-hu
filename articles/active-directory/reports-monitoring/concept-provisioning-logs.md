@@ -17,12 +17,12 @@ ms.date: 11/04/2019
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6e0c697f9ab9796feade9b4d5c2a64794f3980b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 30cc8be6ad9ebffcad58c5b2412ae15ff3f26fa5
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73612803"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113320"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Jelentések kiépítése az Azure Active Directory portálon (előzetes verzió)
 
@@ -90,38 +90,19 @@ A részletesebb információk megtekintéséhez jelöljön ki egy elemet a lista
 
 ## <a name="filter-provisioning-activities"></a>Kiépítési tevékenységek szűrése
 
-Ha a jelentett adatokat az Ön számára megfelelő szintre szeretné szűkíteni, szűrheti a létesítési adatokat az alábbi alapértelmezett mezők használatával. Vegye figyelembe, hogy a szűrők ben lévő értékek dinamikusan vannak feltöltve a bérlő alapján. Ha például nincs enek létrehozási esemény a bérlőben, nem lesz szűrési lehetőség a létrehozáshoz.
+Szűrheti a létesítési adatokat. Egyes szűrőértékek dinamikusan vannak feltöltve a bérlő alapján. Ha például nincs enek létrehozási esemény a bérlőben, nem lesz szűrési lehetőség a létrehozáshoz.
+Az alapértelmezett nézetben a következő szűrőket választhatja ki:
 
 - Identitás
-- Műveletek
-- Forrásrendszer
-- Célrendszer
-- status
 - Dátum
+- status
+- Műveletek
 
 
-![Szűrő](./media/concept-provisioning-logs/filter.png "Szűrés")
+![Szűrő](./media/concept-provisioning-logs/default-filter.png "Szűrés")
 
 Az **identitásszűrő** lehetővé teszi a fontos név vagy identitás megadását. Ez az identitás lehet felhasználó, csoport, szerepkör vagy más objektum. Az objektum neve vagy azonosítója alapján kereshet. Az azonosító forgatókönyvtől függően változik. Például amikor egy objektumot létesít az Azure AD-től a SalesForce-hoz, a forrásazonosító a felhasználó objektumazonosítója az Azure AD-ben, míg a targetid a salesforce-i felhasználó azonosítója. A Workday szolgáltatásból az Active Directoryba történő kiépítés során a forrásazonosító a Workday dolgozói alkalmazottazonosítója. Vegye figyelembe, hogy a felhasználó neve nem mindig jelen iktatható meg az Identitás oszlopban. Mindig lesz egy azonosító. 
 
-A **Forrásrendszer** szűrő lehetővé teszi, hogy adja meg, ahol az identitás egyre kiépített. Például egy objektum kiépítése az Azure AD servicenow, a forrásrendszer az Azure AD. 
-
-A **célrendszer** szűrő lehetővé teszi, hogy adja meg, ahol az identitás egyre kiépített. Például egy objektum kiépítése az Azure AD servicenow, a célrendszer ServiceNow. 
-
-Az **Állapot** szűrő lehetővé teszi a következők kiválasztását:
-
-- Összes
-- Sikeres
-- Hiba
-- Kimarad
-
-A **Művelet** szűrő lehetővé teszi a következők szűrését:
-
-- Létrehozás 
-- Frissítés
-- Törlés
-- Letiltás
-- Egyéb
 
 A **Dátum** szűrővel időkeretet lehet meghatározni a visszaadott adatokhoz.  
 Lehetséges értékek:
@@ -135,7 +116,35 @@ Lehetséges értékek:
 Egyéni időkeret kiválasztásakor beállíthatja a kezdési és a záró dátumot.
 
 
-Az alapértelmezett mezőkön kívül a következő mezőket is felveheti a szűrőbe:
+Az **Állapot** szűrő lehetővé teszi a következők kiválasztását:
+
+- Összes
+- Sikeres
+- Hiba
+- Kimarad
+
+
+
+A **Művelet** szűrő lehetővé teszi a következők szűrését:
+
+- Létrehozás 
+- Frissítés
+- Törlés
+- Letiltás
+- Egyéb
+
+Az alapértelmezett nézet szűrőihez a következő szűrőket is beállíthatja:
+
+- Feladat azonosítója
+- Ciklus azonosítója
+- Módosítási azonosító
+- Forrásazonosító
+- Célazonosító
+- Alkalmazás
+
+
+![Mező kivétele](./media/concept-provisioning-logs/add-filter.png "Mező kivétele")
+
 
 - **Feladatazonosító** – egy egyedi feladatazonosító van társítva minden olyan alkalmazáshoz, amelyhez engedélyezte a kiépítést.   
 
@@ -144,8 +153,13 @@ Az alapértelmezett mezőkön kívül a következő mezőket is felveheti a szű
 - **Módosításazonosító** – a létesítési esemény egyedi azonosítója. Megoszthatja ezt az azonosítót a kiépítési esemény kivizsgálási támogatásához.   
 
 
+- **Forrásrendszer** – Lehetővé teszi, hogy megadja, honnan történik az identitás. Például egy objektum kiépítése az Azure AD servicenow, a forrásrendszer az Azure AD. 
 
-  
+- **Célrendszer** – Lehetővé teszi, hogy megadja, hogy az identitás hol van kiépítve. Például egy objektum kiépítése az Azure AD servicenow, a célrendszer ServiceNow. 
+
+- **Alkalmazás** – Lehetővé teszi, hogy csak egy adott karakterláncot tartalmazó megjelenítendő névvel rendelkező alkalmazások rekordjait jelenítse meg.
+
+ 
 
 ## <a name="provisioning-details"></a>Kiépítés részletei 
 

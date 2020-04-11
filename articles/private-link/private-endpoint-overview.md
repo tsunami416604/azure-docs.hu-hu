@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: b8f55b0693b7ffdf10516cfb19b67ccc5a94dc5a
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: d10b6c52310da3d799a7fe78c83284960318f82e
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742908"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115245"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Mi az Azure Private Endpoint?
 
@@ -55,7 +55,7 @@ A magánkapcsolati erőforrás egy adott privát végpont célcélja. Az alábbi
 |**Private Link Szolgáltatás** (Saját szolgáltatás)   |  Microsoft.Network/privateLinkServices       | üres |
 |**Azure SQL Database** | Microsoft.Sql/kiszolgálók    |  Sql Server (sqlServer)        |
 |**Azure Synapse Analytics** | Microsoft.Sql/kiszolgálók    |  Sql Server (sqlServer)        | 
-|**Azure Storage**  | Microsoft.Storage/storageAccounts    |  Blob (blob, blob_secondary)<BR> Táblázat (táblázat, table_secondary)<BR> Várólista (várólista, queue_secondary)<BR> Fájl (fájl, file_secondary)<BR> Web (web, web_secondary)        |
+|**Azure-tárhely**  | Microsoft.Storage/storageAccounts    |  Blob (blob, blob_secondary)<BR> Táblázat (táblázat, table_secondary)<BR> Várólista (várólista, queue_secondary)<BR> Fájl (fájl, file_secondary)<BR> Web (web, web_secondary)        |
 |**2. generációs Azure Data Lake Storage**  | Microsoft.Storage/storageAccounts    |  Blob (blob, blob_secondary)<BR> Data Lake fájlrendszer Gen2 (dfs, dfs_secondary)       |
 |**Azure Cosmos DB** | Microsoft.AzureCosmosDB/databaseAccounts | Sql, MongoDB, Cassandra, Gremlin, Asztal|
 |**Azure Database for PostgreSQL -Single server (Egyetlen kiszolgáló) azure-adatbázis** | Microsoft.DBforPostgreSQL/szerverek   | postgresqlServer |
@@ -113,7 +113,7 @@ Az alábbi beállításokkal konfigurálhatja a DNS-beállításokat a saját v�
 > [!IMPORTANT]
 > Nem ajánlott felülbírálni egy olyan zónát, amely aktívan használatban van a nyilvános végpontok feloldásához. Az erőforrásokkal létesített kapcsolatok nem oldhatók fel megfelelően a DNS-továbbítás nélkül a nyilvános DNS-re. A problémák elkerülése érdekében hozzon létre egy másik tartománynevet, vagy kövesse az egyes szolgáltatások javasolt nevét. 
  
-Az Azure-szolgáltatások esetében használja az ajánlott zónaneveket az alábbi táblázatban leírtak szerint:
+Az Azure-szolgáltatások esetében használja a zónaneveket az alábbi táblázatban leírtak szerint:
 
 |Magánkapcsolat erőforrástípusa   |Alerőforrás  |Zóna neve  |
 |---------|---------|---------|

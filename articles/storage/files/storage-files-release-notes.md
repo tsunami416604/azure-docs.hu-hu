@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/16/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 765decb8c65254d63ef5267cbc496d2320f58f6e
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: c6455930f88d02e11cb0c45d29594ae40eaad9e3
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991926"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113288"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Az Azure File Sync ügynök kibocsátási megjegyzései
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. A Windows Server-telepítéseket az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -25,7 +25,7 @@ Az Azure File Sync ügynök alábbi verziói támogatottak:
 
 | Mérföldkő | Az ügynök verziószáma | Kiadási dátum | status |
 |----|----------------------|--------------|------------------|
-| V10 kiadás - [KB4522359](https://support.microsoft.com/en-us/help/4522409/azure-file-sync-agent-v10-release-march-2020)| 10.0.0.0 | 2020. április 9. | Támogatott |
+| V10 kiadás - [KB4522359](https://support.microsoft.com/en-us/help/4522409/azure-file-sync-agent-v10-release-march-2020)| 10.0.0.0 | 2020. április 9. | Repülés közben |
 | 2019. decemberi frissítési összeg - [KB4522360](https://support.microsoft.com/help/4522360)| 9.1.0.0 | 2019. december 12.December 12.December 12, 2019 | Támogatott |
 | V9-es kiadás - [KB4522359](https://support.microsoft.com/help/4522359)| 9.0.0.0 | 2019. december 2., 2019 | Támogatott |
 | V8-as kiadás - [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | 2019. október 8.October 8, 2019 | Támogatott |
@@ -68,7 +68,6 @@ A következő kiadási megjegyzések az Azure File Sync ügynök 10.0.0.0-s verz
  
 - Egyéb teljesítmény- és megbízhatósági fejlesztések
     - Az Azure-fájlmegosztás változásészlelése sikertelen lehet, ha a virtuális hálózat (VNET) és a tűzfalszabályok konfigurálva vannak a tárfiókban.
-    - Már nincs 2 KB-os biztonsági leírókorlát a tulajdonosi hozzáférés-vezérlési listák (DAK-k) szinkronizálásához.  
     - A visszahívással kapcsolatos csökkentett memóriafelhasználás. 
     - Jobb teljesítmény az [Invoke-AzStorageSyncChangeDetection](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) parancsmag használatakor.
     - Egyéb egyéb megbízhatósági fejlesztések. 

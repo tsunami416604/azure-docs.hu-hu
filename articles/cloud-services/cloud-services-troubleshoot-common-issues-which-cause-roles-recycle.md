@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 554508b1bf784e306cd12a4a601f908e06320933
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a644e211cc933ca686f0bd6a13b0d2ba8ae20162
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71154982"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114111"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>Gyakori hibák, melyek a szerepkörök újrahasznosítását okozzák
 Ez a cikk a telepítési problémák néhány gyakori okait ismerteti, és hibaelhárítási tippeket tartalmaz a problémák megoldásához. Azt jelzi, hogy probléma van egy alkalmazással, amikor a szerepkörpéldány nem indul el, vagy az inicializálási, foglalt sági és leállítási állapotok között ciklusok között ciklusok.
@@ -58,7 +58,7 @@ Annak érdekében, hogy a `DiagnosticsConnectionString` beállítás megfelelő 
   Ha az azure-t a Microsoft Visual Studio-hoz való azure Tools használatával fejleszti, a tulajdonságlapok segítségével állíthatja be ezt az értéket.
 
 ## <a name="exported-certificate-does-not-include-private-key"></a>Az exportált tanúsítvány nem tartalmazza a személyes kulcsot
-Ha egy webes szerepkört SSL alatt szeretne futtatni, gondoskodnia kell arról, hogy az exportált felügyeleti tanúsítvány tartalmazza a személyes kulcsot. Ha a *Windows tanúsítványkezelővel* exportálja a tanúsítványt, mindenképpen válassza az **Igen** lehetőséget **a személyes kulcs exportálása** beállításhoz. A tanúsítványt PFX formátumban kell exportálni, amely az egyetlen jelenleg támogatott formátum.
+A TLS alatt egy webes szerepkör futtatásához gondoskodnia kell arról, hogy az exportált felügyeleti tanúsítvány tartalmazza a személyes kulcsot. Ha a *Windows tanúsítványkezelővel* exportálja a tanúsítványt, mindenképpen válassza az **Igen** lehetőséget **a személyes kulcs exportálása** beállításhoz. A tanúsítványt PFX formátumban kell exportálni, amely az egyetlen jelenleg támogatott formátum.
 
 ## <a name="next-steps"></a>További lépések
 További [hibaelhárítási cikkek](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) a felhőszolgáltatásokhoz.

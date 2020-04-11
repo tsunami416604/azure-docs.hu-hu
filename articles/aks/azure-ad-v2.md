@@ -5,12 +5,12 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 03/24/2020
-ms.openlocfilehash: 27abdfe28e2594c98778b51532fbd22f95bfa3ac
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: b121830192a2b88185bbbbc9a92934e51b32a61c
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984708"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114646"
 ---
 # <a name="integrate-azure-ad-in-azure-kubernetes-service-preview"></a>Az Azure AD integrálása az Azure Kubernetes szolgáltatásban (előzetes verzió)
 
@@ -98,12 +98,12 @@ A fenti parancs három csomópontos AKS-fürtöt hoz létre, de a fürtet létre
 Miután létrehozott egy csoportot, és felvette magát (és másokat) tagként, frissítheti a fürtöt az Azure AD csoporttal a következő paranccsal
 
 ```azurecli-interactive
-az aks update -g MyResourceGroup -n MyManagedCluster [--aad-admin-group-object-ids <id1,id2>] [--aad-tenant-id <id>]
+az aks update -g MyResourceGroup -n MyManagedCluster [--aad-admin-group-object-ids <id>] [--aad-tenant-id <id>]
 ```
 Másik lehetőségként, ha először hoz létre egy csoportot, és tagokat ad hozzá, engedélyezheti az Azure AD csoportot a létrehozási időben a következő paranccsal,
 
 ```azurecli-interactive
-az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-group-object-ids <id1,id2>] [--aad-tenant-id <id>]
+az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-group-object-ids <id>] [--aad-tenant-id <id>]
 ```
 
 Egy Azure AD v2-fürt sikeres létrehozása a következő szakaszt rendelkezik a választörzsben

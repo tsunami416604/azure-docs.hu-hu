@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: a4ab59ab5b988b54333c419ced7fa852da531eaa
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 8ef791759a33d08aaff068b0dd2634e5f21bb1b6
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984333"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114993"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>Azure lemeztitkosítás Windows rendszerű virtuális gépekhez – gyakori kérdések
 
@@ -64,7 +64,7 @@ Az Azure Disk Encryption végpontok közötti titkosítást biztosít az operác
 
 - Ha a követelmények közé tartozik a fenti és végpontok közötti titkosítás titkosítása, használja az Azure Disk Encryption. 
 - Ha a követelmények közé tartozik csak az adatok titkosítása az ügyfél által kezelt kulccsal, akkor használja [a kiszolgálóoldali titkosítást az ügyfél által felügyelt kulcsokkal.](disk-encryption.md) Az Azure Disk Encryption és storage kiszolgálóoldali titkosítással nem titkosíthat lemezt ügyfél által kezelt kulcsokkal.
-_ Ha nem [támogatott Windows-esetekben](disk-encryption-windows.md#unsupported-scenarios)hívott forgatókönyvet használ, fontolja meg [a kiszolgálóoldali titkosítást az ügyfél által felügyelt kulcsokkal](disk-encryption.md). 
+- Ha nem [támogatott Windows-esetekben](disk-encryption-windows.md#unsupported-scenarios)hívott forgatókönyvet használ, fontolja meg a [kiszolgálóoldali titkosítást az ügyfél által kezelt kulcsokkal.](disk-encryption.md) 
 - Ha a szervezet szabályzata lehetővé teszi az inaktív tartalom titkosítását egy Azure által felügyelt kulccsal, akkor nincs szükség műveletre – a tartalom alapértelmezés szerint titkosítva van. Felügyelt lemezek esetén a tárolón belüli tartalom alapértelmezés szerint platformáltal kezelt kulccsal van titkosítva kiszolgálóoldali titkosítással. A kulcsot az Azure Storage szolgáltatás kezeli. 
 
 ## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>Hogyan forgathatom el a titkos kulcsokat vagy a titkosítási kulcsokat?

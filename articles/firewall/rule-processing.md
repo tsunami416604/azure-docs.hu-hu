@@ -5,28 +5,30 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 03/10/2020
+ms.date: 04/10/2020
 ms.author: victorh
-ms.openlocfilehash: d3f8e52b4582c9467ae3ec61ee984771b801fe4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93677b3e473ab825665fed5590ac345a8cfcc300
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264777"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113435"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Az Azure Firewall szabályfeldolgozási logikája
-NAT-szabályokat, hálózati szabályokat és alkalmazásokat konfigurálhat az Azure Firewall ben. A szabályok feldolgozása a szabálytípusnak megfelelően. 
+NAT-szabályokat, hálózati szabályokat és alkalmazásokat konfigurálhat az Azure Firewall ben. A szabálygyűjtemények feldolgozása a szabálytípus szerint történik prioritási sorrendben, az alacsonyabb számok száma 100 és 65 000 között nagyobb. A szabálygyűjtemény neve csak betűket, számokat, aláhúzásokat, pontokat vagy kötőjeleket tartalmazhat. Betűvel vagy számmal kell kezdődnie, és betűvel, számmal vagy aláhúzásjellel kell végződnie. A név maximális hossza 80 karakter.
+
+A legjobb, ha a szabálygyűjtemény prioritási számait kezdetben 100 lépésekben (100, 200, 300 stb.) helyben szeretné ellátni, így szükség esetén további szabálygyűjteményeket adhat hozzá.
 
 > [!NOTE]
 > Ha engedélyezi a fenyegetésfelderítésen alapuló szűrést, ezek a szabályok a legmagasabb prioritásúak, és mindig először kerülnek feldolgozásra. A fenyegetés-intelligencia szűrés megtagadhatja a forgalmat, mielőtt bármely konfigurált szabályok feldolgozása. További információ: [Azure Firewall fenyegetésintelligencia-alapú szűrés.](threat-intel.md)
 
-## <a name="outbound"></a>Kimenő
+## <a name="outbound-connectivity"></a>Kimenő kapcsolat
 
 ### <a name="network-rules-and-applications-rules"></a>Hálózati szabályok és alkalmazások szabályai
 
 Ha hálózati és alkalmazásszabályokat konfigurál, a hálózati szabályok prioritási sorrendben kerülnek alkalmazásra az alkalmazásszabályok előtt. A szabályok megszűnnek. Ha tehát egyezést talál egy hálózati szabályban, a rendszer nem dolgoz fel más szabályokat.  Ha nincs hálózati szabály egyezés, és ha a protokoll HTTP, HTTPS vagy MSSQL, akkor a csomagot az alkalmazásszabályok prioritási sorrendben értékelik ki. Ha a rendszer továbbra sem talál egyezést, a csomag kiértékelése az [infrastruktúraszabály-gyűjteményalapján](infrastructure-fqdns.md)történik. És ha továbbra sincs egyezés, a tűzfal a csomagot alapértelmezés szerint elutasítja.
 
-## <a name="inbound"></a>Bejövő
+## <a name="inbound-connectivity"></a>Bejövő kapcsolat
 
 ### <a name="nat-rules"></a>NAT-szabályok
 

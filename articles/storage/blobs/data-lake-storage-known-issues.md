@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/20/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: f69f17dc9d0cab2491a2c7f37b5bd082cc96b2d6
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 204b5dd4661b34aae8b76d65505a65e20f293f0f
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985422"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115331"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Ismert problémák az Azure Data Lake Storage Gen2 szolgáltatással kapcsolatban
 
@@ -112,8 +112,8 @@ A REST API-kat használó harmadik féltől származó alkalmazások továbbra i
 
 Ha egy tárolóhoz [névtelen olvasási hozzáférés](storage-manage-access-to-resources.md) biztosított, akkor az ACL-ok nincsenek hatással a tárolóra vagy a tárolóban lévő fájlokra.
 
-## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-adls-gen2"></a>Windows Azure Storage Blob (WASB) illesztőprogram (nem támogatott az ADLS Gen2-vel)
+## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-data-lake-storage-gen2"></a>Windows Azure Storage Blob (WASB) illesztőprogram (nem támogatott a Data Lake Storage Gen2 szolgáltatással)
 
-Jelenleg a WASB-illesztőprogram – amelycsak a Blob API-val működik – problémákba ütközik néhány gyakori forgatókönyvben, azaz ha egy névtér-kompatibilis tárfiók ügyfele. Vegye figyelembe, hogy a többprotokollos hozzáférés (MPA) nem enyhíti ezeket a problémákat sem. 
+Jelenleg a WASB-illesztőprogram, amelyet csak a Blob API-val való együttműködésre terveztek, néhány gyakori forgatókönyvben problémákba ütközik. Pontosabban, ha egy hierarchikus névtér-kompatibilis tárfiók ügyfele. A Data Lake Storage többprotokollos hozzáférése nem enyhíti ezeket a problémákat. 
 
-Egyelőre (és valószínűleg a belátható jövőben) nem támogatjuk azokat az ügyfeleket, akik a WASB-illesztőprogramot használják ügyfélként egy névtér-kompatibilis tárfiókhoz. Ehelyett azt javasoljuk, hogy az [Azure Blob File System (ABFS)](data-lake-storage-abfs-driver.md) illesztőprogramját használja a Hadoop-környezetben. Ha a Hadoop branch-3-nál korábbi verzióval próbál kitérni egy helyszíni Hadoop-környezetből, akkor nyisson meg egy Azure-támogatási jegyet, hogy kapcsolatba léphessünk Önnel a helyes úton az Ön és szervezete számára.
+Egyelőre (és valószínűleg a belátható jövőben) nem támogatjuk azokat az ügyfeleket, akik a WASB-illesztőprogramot használják ügyfélként egy hierarchikus névtér-kompatibilis tárfiókhoz. Ehelyett azt javasoljuk, hogy az [Azure Blob File System (ABFS)](data-lake-storage-abfs-driver.md) illesztőprogramját használja a Hadoop-környezetben. Ha a Hadoop branch-3-nál korábbi verzióval próbál kitérni egy helyszíni Hadoop-környezetből, akkor nyisson meg egy Azure-támogatási jegyet, hogy kapcsolatba léphessünk Önnel a helyes úton az Ön és szervezete számára.

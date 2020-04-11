@@ -4,17 +4,17 @@ description: Az Azure Storage úgy védi az adatokat, hogy automatikusan titkos�
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/12/2020
+ms.date: 04/10/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f8f6f40f8ce8297b3cbfe6b3afcbf10df4db6572
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f112a4523bc5af9ecae57e93dfb90795d3fe9c50
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409830"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113281"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Az Azure Storage titkosítása az inaktív adatokhoz
 
@@ -34,7 +34,7 @@ Az Azure Storage titkosításalapjául szolgáló kriptográfiai modulokról a [
 
 ## <a name="about-encryption-key-management"></a>Titkosítási kulcs kezelése –
 
-Alapértelmezés szerint a tárfiókban lévő adatok microsoftáltal kezelt kulccsal vannak titkosítva. Az adatok titkosításához a Microsoft által felügyelt kulcsokra támaszkodhat, vagy saját kulcsokkal kezelheti a titkosítást. Ha úgy dönt, hogy a titkosítást saját kulcsokkal kezeli, két lehetősége van:
+Az új tárfiókban lévő adatok microsoftáltal kezelt kulcsokkal vannak titkosítva. Az adatok titkosításához a Microsoft által felügyelt kulcsokra támaszkodhat, vagy saját kulcsokkal kezelheti a titkosítást. Ha úgy dönt, hogy a titkosítást saját kulcsokkal kezeli, két lehetősége van:
 
 - Megadhat egy *ügyfél által felügyelt kulcsot* az Azure Key Vault használatával a Blob storage-ban és az Azure Files-ban lévő adatok titkosításához és visszafejtéséhez. <sup>1,2</sup> Az ügyfelek által felügyelt kulcsokról az [Azure Storage-titkosítás kezeléséhez az Ügyfél által felügyelt kulcsok használata az Azure Key Vault használatával című](encryption-customer-managed-keys.md)témakörben talál további információt.
 - Megadhatja *az ügyfél által megadott kulcsot* a Blob storage-műveletekhez. A Blob storage-tároló ellen olvasási vagy írási kérelmet bekérő ügyfél titkosítási kulcsot tartalmazhat a blobadatok titkosításának és visszafejtésének részletes szabályozására vonatkozó kérelemhez. Az ügyfél által biztosított kulcsokról további információt a [Titkosítási kulcs kérésekor a Blob storage (előzetes verzió) című témakörben talál.](encryption-customer-provided-keys.md)
@@ -47,8 +47,7 @@ Az alábbi táblázat összehasonlítja az Azure Storage-titkosítás kulcskezel
 |    Támogatott Azure Storage-szolgáltatások    |    Összes                                                |    Blob storage, Azure Files<sup>1,2</sup>                                                                                                               |    Blob Storage                                                                  |
 |    Kulcstárolás                         |    Microsoft kulcstároló    |    Azure Key Vault                                                                                                                              |    Az Azure Key Vault vagy bármely más kulcstároló                                                                 |
 |    A legfontosabb rotációs felelősség         |    Microsoft                                          |    Ügyfél                                                                                                                                     |    Ügyfél                                                                      |
-|    Kulcs használat                           |    Microsoft                                          |    Azure portal, Storage Resource Provider REST API, Azure Storage felügyeleti kódtárak, PowerShell, CLI        |    Azure Storage REST API (Blob Storage), Azure Storage-ügyféltárak    |
-|    Kulcshozzáférés                          |    Csak Microsoft                                     |    Microsoft, Ügyfél                                                                                                                    |    Csak vevő                                                                 |
+|    Kulcsvezérlés                          |    Microsoft                                     |    Ügyfél                                                                                                                    |    Ügyfél                                                                 |
 
 <sup>1</sup> Az ügyfél által felügyelt kulcsok várólistával történő használatát támogató fiók létrehozásáról a [Várólisták ügyféláltal kezelt kulcsait támogató fiók létrehozása című](account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)témakörben talál további információt.<br />
 <sup>2</sup> Az ügyfél által felügyelt kulcsok táblatárolóval való használatát támogató fiók létrehozásáról a [Táblák ügyféláltal kezelt kulcsait támogató fiók létrehozása című](account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)témakörben talál további információt.

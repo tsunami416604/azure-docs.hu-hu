@@ -9,12 +9,12 @@ ms.date: 01/21/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 77ad8579f31ce900a67e2ba3ddc53a5b034b6d42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7120ba2cf71c9af5373b830d04d0b67952922887
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79454669"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113503"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Az Azure Storage tűzfalainak és virtuális hálózatainak konfigurálása
 
@@ -60,7 +60,7 @@ Alapértelmezés szerint a tárfiókok bármely hálózatban lévő ügyféltől
 
 A tárfiókok alapértelmezett hálózati hozzáférési szabályait az Azure Portalon, a PowerShellen vagy a CLIv2-n keresztül kezelheti.
 
-#### <a name="azure-portal"></a>Azure portál
+#### <a name="azure-portal"></a>Azure Portal
 
 1. Lépjen a megvédeni kívánt tárfiókra.
 
@@ -144,7 +144,7 @@ A tárfiók és a virtuális hálózatok hozzáférési lehet a különböző el
 
 A tárfiókok virtuális hálózati szabályai az Azure Portalon, a PowerShellen vagy a CLIv2-n keresztül kezelhetők.
 
-#### <a name="azure-portal"></a>Azure portál
+#### <a name="azure-portal"></a>Azure Portal
 
 1. Lépjen a megvédeni kívánt tárfiókra.
 
@@ -252,7 +252,7 @@ Az IP-hálózati szabályok csak **nyilvános internetes** IP-címek esetén eng
    > Az IP-hálózati szabályok nincsenek hatással az ugyanabból az Azure-régióból származó kérelmekre, mint a tárfiók. [A virtuális hálózati szabályok segítségével](#grant-access-from-a-virtual-network) engedélyezheti az azonos régiós kérelmeket.
 
   > [!NOTE]
-  > A tárfiókkal azonos régióban telepített szolgáltatások privát Azure-IP-címeket használnak a kommunikációhoz. Így nem korlátozhatja a hozzáférést az adott Azure-szolgáltatások nyilvános bejövő IP-címtartomány alapján.
+  > A tárfiókkal azonos régióban telepített szolgáltatások privát Azure-IP-címeket használnak a kommunikációhoz. Így nem korlátozhatja a hozzáférést az adott Azure-szolgáltatások nyilvános kimenő IP-címtartomány alapján.
 
 A tárolótűzfal-szabályok konfigurálása csak Az IPV4-címek támogatott.
 
@@ -268,7 +268,7 @@ Ha az [ExpressRoute-ot](/azure/expressroute/expressroute-introduction) a helyis�
 
 A tárfiókok IP-hálózati szabályai az Azure Portalon, a PowerShellen vagy a CLIv2-n keresztül kezelhetők.
 
-#### <a name="azure-portal"></a>Azure portál
+#### <a name="azure-portal"></a>Azure Portal
 
 1. Lépjen a megvédeni kívánt tárfiókra.
 
@@ -407,7 +407,7 @@ Bizonyos esetekben a diagnosztikai naplók és metrikák olvasásához való hoz
 
 A hálózati szabály kivételeket az Azure Portalon, a PowerShellen vagy az Azure CLI v2-n keresztül kezelheti.
 
-#### <a name="azure-portal"></a>Azure portál
+#### <a name="azure-portal"></a>Azure Portal
 
 1. Lépjen a megvédeni kívánt tárfiókra.
 

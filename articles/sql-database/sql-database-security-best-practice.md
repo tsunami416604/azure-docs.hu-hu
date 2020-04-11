@@ -9,12 +9,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 39747ac0a7133562bed526f44e30bf4a656127c0
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 7b3a223ca504bff380afad54afda73880717814f
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673611"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115387"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>Forgatókönyv a gyakori biztonsági követelmények kezelésére az Azure SQL-adatbázissal
 
@@ -89,14 +89,14 @@ A központi identitáskezelés a következő előnyökkel jár:
 
 - Hozzon létre egy Azure AD-bérlőt, és [hozzon létre felhasználókat](../active-directory/fundamentals/add-users-azure-active-directory.md) az emberi felhasználók képviseletére, és hozzon létre [szolgáltatásnéveket](../active-directory/develop/app-objects-and-service-principals.md) az alkalmazások, szolgáltatások és automatizálási eszközök képviseletére. A szolgáltatásnévi tagok egyenértékűek a Windows és Linux szolgáltatásfiókokkal. 
 
-- Az erőforrásokhoz való hozzáférési jogok hozzárendelése az Azure AD-tagokhoz csoporthozzárendeléssel: Azure AD-csoportok létrehozása, csoportokhoz való hozzáférés biztosítása, és egyéni tagok hozzáadása a csoportokhoz. Az adatbázisban hozzon létre egy bent lévő adatbázis-felhasználókat, amelyek leképezik az Azure AD-csoportokat. Ha az adatbázison belül szeretne engedélyeket rendelni, a felhasználókat a megfelelő engedélyekkel rendelkező adatbázis-szerepkörökbe helyezze.
+- Az erőforrásokhoz való hozzáférési jogok hozzárendelése az Azure AD-tagokhoz csoporthozzárendeléssel: Azure AD-csoportok létrehozása, csoportokhoz való hozzáférés biztosítása, és egyéni tagok hozzáadása a csoportokhoz. Az adatbázisban hozzon létre egy bent lévő adatbázis-felhasználókat, amelyek leképezik az Azure AD-csoportokat. Engedélyek hozzárendeléséhez az adatbázison belül, helyezze az Azure AD-csoportokhoz társított felhasználók adatbázis-szerepkörök a megfelelő engedélyekkel.
   - Tekintse meg az [Azure Active Directory-hitelesítés konfigurálása és kezelése SQL-sel](sql-database-aad-authentication-configure.md) című cikkeket, valamint [az Azure AD használata az SQL-hitelesítéshez című cikket.](sql-database-aad-authentication.md)
   > [!NOTE]
   > Egy felügyelt példányban is létrehozhat olyan bejelentkezéseket, amelyek leképezhetik az Azure AD-tagok a fő adatbázisban. Lásd: [CREATE LOGIN (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current).
 
 - Az Azure AD-csoportok használata leegyszerűsíti az engedélykezelést, és mind a csoport tulajdonosa, és az erőforrás tulajdonosa adhat hozzá/eltávolíthat tagokat a csoportból. 
 
-- Hozzon létre egy külön csoportot az Azure AD-rendszergazda sql DB-kiszolgálókhoz.
+- Hozzon létre egy külön csoportot az Azure AD-rendszergazdák számára minden SQL DB-kiszolgálóhoz.
 
   - Tekintse meg az [Azure Active Directory-rendszergazda kiépítése az Azure SQL Database-kiszolgálóhoz című cikket.](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)
 
@@ -108,7 +108,7 @@ A központi identitáskezelés a következő előnyökkel jár:
 > [!NOTE]
 > - Az Azure AD-hitelesítés az Azure SQL-naplózási naplókban kerül rögzítésre, de az Azure AD bejelentkezési naplóiban nem.
 > - Az Azure-ban megadott RBAC-engedélyek nem vonatkoznak az Azure SQL DB-engedélyeire. Ezeket az engedélyeket manuálisan kell létrehozni/leképezni az SQL DB-ban a meglévő SQL-engedélyek használatával.
-> - Az ügyféloldali Azure AD-hitelesítés internet-hozzáférésre vagy felhasználó által definiált útvonal (UDR) egy virtuális hálózathoz való hozzáférést igényel.
+> - Az ügyféloldalon az Azure AD-hitelesítéshez internet-hozzáférésre vagy felhasználó által definiált útvonalra (UDR) van szükség egy virtuális hálózathoz.
 > - Az Azure AD-hozzáférési jogkivonat az ügyféloldalon gyorsítótárazva van, és élettartama a jogkivonat konfigurációjától függ. Tekintse meg a [cikket, konfigurálható jogkivonat élettartama az Azure Active Directoryban](../active-directory/develop/active-directory-configurable-token-lifetimes.md)
 > - Az Azure AD-hitelesítéssel kapcsolatos problémák elhárításával kapcsolatos útmutatásért tekintse meg a következő blogot:<https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
 
@@ -213,7 +213,7 @@ AZ SQL-hitelesítés a felhasználó hitelesítésére utal, amikor felhasznál�
 
 ## <a name="access-management"></a>Hozzáférés-kezelés
 
-A hozzáférés-kezelés az azure SQL Database-hez való hozzáférés és jogosultságok vezérlésének és kezelésének folyamata.
+A hozzáférés-kezelés (más néven engedélyezés) az Azure SQL Database-hez való hozzáférés és jogosultságok vezérlésének és kezelésének folyamata.
 
 ### <a name="implement-principle-of-least-privilege"></a>A legkisebb jogosultság elvének végrehajtása
 
@@ -225,7 +225,7 @@ A minimális jogosultság elve kimondja, hogy a felhasználók nem rendelkeznek 
 
 Csak a szükséges [engedélyeket](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) rendelje hozzá a szükséges feladatok elvégzéséhez:
 
-- SQL adatsíkban: 
+- SQL adatbázisokban: 
     - Részletes engedélyek és felhasználó által definiált adatbázis-szerepkörök (vagy kiszolgálói szerepkörök használata a hibajelzőben): 
         1. A szükséges szerepkörök létrehozása
             - [SZEREPKÖR LÉTREHOZÁSA](https://docs.microsoft.com/sql/t-sql/statements/create-role-transact-sql)
@@ -294,7 +294,7 @@ A feladatok elkülönítése, más néven a feladatok elkülönítése azt a kö
   - Kiszolgálói szerepkörök létrehozása kiszolgálószintű feladatokhoz (új bejelentkezések, adatbázisok létrehozása) felügyelt példányban. 
   - Adatbázis-szerepkörök létrehozása adatbázisszintű feladatokhoz.
 
-- Bizonyos bizalmas feladatok esetén fontolja meg a tanúsítvány által aláírt speciális tárolt eljárások létrehozását a feladatok felhasználók nevében történő végrehajtásához. 
+- Bizonyos bizalmas feladatok esetén fontolja meg a tanúsítvány által aláírt speciális tárolt eljárások létrehozását a feladatok felhasználók nevében történő végrehajtásához. A digitálisan aláírt tárolt eljárások egyik fontos előnye, hogy ha az eljárás megváltozik, az eljárás korábbi verziójához megadott engedélyek azonnal törlődnek.
   - Példa: [Oktatóanyag: Tárolt eljárások aláírása tanúsítvánnyal](https://docs.microsoft.com/sql/relational-databases/tutorial-signing-stored-procedures-with-a-certificate) 
 
 - Átlátható adattitkosítás (TDE) megvalósítása az ügyfél által felügyelt kulcsokkal az Azure Key Vaultban, hogy lehetővé tegye a feladatok elkülönítését az adatok tulajdonosa és a biztonság tulajdonosa között. 
@@ -303,7 +303,7 @@ A feladatok elkülönítése, más néven a feladatok elkülönítése azt a kö
 - Annak érdekében, hogy a DBA ne láthassa a rendkívül érzékenynek ítélt és a DBA-feladatokat továbbra is ellátható adatokat, használhatja a Mindig titkosított szerepkör-elkülönítést. 
   - Lásd a cikkeket, [A mindig titkosított kulcskezelés áttekintése](https://docs.microsoft.com/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted), [a szerepkör-elkülönítéssel történő kulcskiépítés](https://docs.microsoft.com/sql/relational-databases/security/encryption/configure-always-encrypted-keys-using-powershell#KeyProvisionWithRoles)és az [oszlopmesterkulcs elforgatása szerepkör-elkülönítéssel.](https://docs.microsoft.com/sql/relational-databases/security/encryption/rotate-always-encrypted-keys-using-powershell#column-master-key-rotation-with-role-separation) 
 
-- Azokban az esetekben, amikor ez nem valósítható meg, legalábbis nem anélkül, hogy jelentős költségek és erőfeszítések, amelyek a rendszer közel használhatatlanná, kompromisszumok lehet tenni, és enyhíteni segítségével kompenzáló ellenőrzések, mint például: 
+- Azokban az esetekben, amikor a Mindig titkosított használata nem valósítható meg, vagy legalábbis nem anélkül, hogy jelentős költségek és erőfeszítések lennének, amelyek a rendszert szinte használhatatlanná tehetik, kompromisszumok tehetők és mérsékelhetők kompenzációs vezérlők használatával, mint például: 
   - Emberi beavatkozás a folyamatokba. 
   - Ellenőrzési nyomvonalak – a naplózásról további információt a kritikus biztonsági események naplózása című [témakörben talál.](#audit-critical-security-events)
 
@@ -315,17 +315,17 @@ A feladatok elkülönítése, más néven a feladatok elkülönítése azt a kö
 
 - Akkor használjon beépített szerepköröket, ha az engedélyek pontosan megfelelnek a szükséges engedélyeknek – ha több beépített szerepkör összes engedélyének egyesítése 100%-os egyezést eredményez, egyszerre több szerepkört is hozzárendelhet. 
 
-- Egyéni szerepkörök létrehozása és használata, ha a beépített szerepkörök túl sok engedélyt vagy nem megfelelő engedélyeket adnak. 
+- Felhasználó által definiált szerepkörök létrehozása és használata, ha a beépített szerepkörök túl sok engedélyt vagy elégtelen engedélyeket adnak. 
 
 - Szerepkör-hozzárendelések is elvégezhető ideiglenesen, más néven dinamikus elkülönítése feladatok (DSD), vagy az SQL Agent Feladat lépéseit a T-SQL vagy az Azure PIM RBAC-szerepkörök használata. 
 
-- Győződjön meg arról, hogy a Rendszerbiztosítási Rendszer nem fér hozzá a titkosítási kulcsokhoz vagy kulcstárolókhoz, és a kulcsokhoz hozzáféréssel rendelkező biztonsági rendszergazdák nem férhetnek hozzá az adatbázishoz. 
+- Győződjön meg arról, hogy a Rendszerbiztosítási Rendszer nem fér hozzá a titkosítási kulcsokhoz vagy a kulcstárolókhoz, és hogy a kulcsokhoz hozzáféréssel rendelkező biztonsági rendszergazdák nem férnek hozzá az adatbázishoz. [Az Extensible Key Management (EKM)](https://docs.microsoft.com/sql/relational-databases/security/encryption/extensible-key-management-ekm) használata megkönnyítheti a szétválasztás elérését. [Az Azure Key Vault](https://azure.microsoft.com/services/key-vault/) ekm implementálja. 
 
 - Mindig győződjön meg arról, hogy a biztonsági műveletek naplózási nyomvonala. 
 
 - A beépített RBAC-szerepkörök definícióját lekérheti a használt engedélyek megtekintéséhez, és hozzon létre egy egyéni szerepkört a PowerShell-en keresztül i részletek és kumulációk alapján.
 
-- Mivel a db_owner adatbázis-szerepkör bármely tagja módosíthatja a biztonsági beállításokat, például az Átlátszó adattitkosítást (TDE), vagy módosíthatja az SLO-t, ezt a tagságot óvatosan kell megadni. Sok olyan feladat van azonban, amely db_owner jogosultságot igényel. Feladat, például az adatbázis-beállítások módosítása, például az adatbázis beállításainak módosítása. Az auditálás minden megoldásban kulcsszerepet játszik.
+- Mivel a db_owner adatbázis-szerepkör bármely tagja módosíthatja a biztonsági beállításokat, például az átlátszó adattitkosítást (TDE), vagy módosíthatja az SLO-t, ezt a tagságot óvatosan kell megadni. Sok olyan feladat van azonban, amely db_owner jogosultságot igényel. Feladat, például az adatbázis-beállítások módosítása, például az adatbázis beállításainak módosítása. Az auditálás minden megoldásban kulcsszerepet játszik.
 
 - A db_owner engedélyeit nem lehet korlátozni, ezért a rendszergazdai fiókok nem tekinthetik meg a felhasználói adatokat. Ha egy adatbázisban rendkívül érzékeny adatok vannak, a Mindig titkosított beállítás sal biztonságosan megakadályozhatja, hogy db_owners vagy bármely más DBA megtekintse azokat.
 
@@ -436,11 +436,11 @@ A szabályzatok, amelyek meghatározzák, hogy mely adatok bizalmasak, és hogy 
 
 - Akkor használjon determinisztikus titkosítást, ha az adatokkal kapcsolatos számításokat (egyenlőséget) támogatni kell. Ellenkező esetben használjon véletlenszerű titkosítást. Kerülje a determinisztikus titkosítás trópia vagy nyilvánosan ismert terjesztési adatkészletek használata determinisztikus titkosítást. 
 
-- Ha aggódik amiatt, hogy harmadik fél az Ön beleegyezése nélkül legálisan fér hozzá az adataihoz, győződjön meg arról, hogy minden olyan alkalmazás és eszköz, amely egyszerű szöveges formátumban fér hozzá a kulcsokhoz és az adatokhoz, a Microsoft Azure Cloud on kívül fusson. A kulcsokhoz való hozzáférés nélkül a harmadik fél nem fogja visszafejteni az adatokat, hacsak nem kerülik meg a titkosítást.
+- Ha aggódik amiatt, hogy harmadik felek az Ön beleegyezése nélkül jogszerűen férnek hozzá az adataihoz, győződjön meg arról, hogy minden olyan alkalmazás és eszköz, amely egyszerű szöveges formátumban fér hozzá a kulcsokhoz és az adatokhoz, a Microsoft Azure Cloud on kívül fusson. A kulcsokhoz való hozzáférés nélkül a harmadik fél nem fogja visszafejteni az adatokat, hacsak nem kerülik meg a titkosítást.
 
 - Mindig titkosított nem könnyen támogatja az ideiglenes hozzáférést a kulcsokhoz (és a védett adatokhoz). Ha például meg kell osztania a kulcsokat egy DBA-val, hogy a DBA bizonyos tisztítási műveleteket végezhet a bizalmas és titkosított adatokon. A megbízhatóság egyetlen módja az adatokhoz való hozzáférés visszavonásának a DBA-ból az lesz, hogy elforgatja mind az oszloptitkosítási kulcsokat, mind az adatokat védő oszlopfőkulcsokat, ami költséges művelet. 
 
-- A titkosított oszlopokban lévő egyszerű szöveges értékek eléréséhez a felhasználónak hozzáféréssel kell rendelkeznie az oszlopokat védő CMK-hez, amely a CMK-t tároló kulcstárolóban van konfigurálva. A felhasználónak rendelkeznie kell a **VIEW ANY COLUMN MASTER KEY DEFINITION(OSZLOPMASTER KEY DEFINITION) és** bármely **oszloptitkosítási kulcsdefiníciós** adatbázis engedélyeinek megtekintése is.
+- A titkosított oszlopokban lévő egyszerű szöveges értékek eléréséhez a felhasználónak hozzá kell férnie az oszlopokat védő Oszlopfőkulcshoz (CMK), amely a CMK-t tároló kulcstárolóban van konfigurálva. A felhasználónak rendelkeznie kell a **VIEW ANY COLUMN MASTER KEY DEFINITION(OSZLOPMASTER KEY DEFINITION) és** bármely **oszloptitkosítási kulcsdefiníciós** adatbázis engedélyeinek megtekintése is.
 
 ### <a name="control-access-of-application-users-to-sensitive-data-through-encryption"></a>Az alkalmazás felhasználók bizalmas adatokhoz való hozzáférésének szabályozása titkosítással
 

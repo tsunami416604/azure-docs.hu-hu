@@ -1,27 +1,27 @@
 ---
-title: Javaslatok hozzáadása és automatikus kiegészítés a keresőmezőben
+title: Automatikus kiegészítés és javaslatok hozzáadása a keresőmezőben
 titleSuffix: Azure Cognitive Search
-description: Engedélyezze a typeahead lekérdezési műveleteket az Azure Cognitive Search szolgáltatásban azáltal, hogy javaslatokat készít, és olyan kéréseket hoz létre, amelyek kitöltik a keresőmezőt befejezett kifejezésekkel vagy kifejezésekkel.
+description: Engedélyezze a felhasználóként történő lekérdezési műveleteket az Azure Cognitive Search szolgáltatásban azáltal, hogy javaslatokat tesz, és olyan kéréseket készít, amelyek automatikusan kiegészítik a keresőmezőt kész kifejezésekkel vagy kifejezésekkel. A javasolt egyezéseket is visszaadhat.
 manager: nitinme
-author: mrcarter8
-ms.author: mcarter
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
-ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 64c4e65ca7b69c7d61c706b48591ac19be3bfcf5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.topic: conceptual
+ms.date: 04/10/2020
+ms.openlocfilehash: d6c1819366fede0b1e81e43bc92ed56af93b39fd
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72792525"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114963"
 ---
 # <a name="add-suggestions-or-autocomplete-to-your-azure-cognitive-search-application"></a>Javaslatok vagy automatikus kiegészítés hozzáadása az Azure Cognitive Search alkalmazáshoz
 
 Ebből a cikkből megtudhatja, hogy miként [használhatja](https://docs.microsoft.com/rest/api/searchservice/suggestions) a javaslatokat és [az automatikus kiegészítést](https://docs.microsoft.com/rest/api/searchservice/autocomplete) egy hatékony keresőmező létrehozásához, amely támogatja a beírási viselkedést.
 
-+ *A javaslatok* a beírás során létrehozott javasolt eredmények, ahol minden javaslat egyetlen eredmény az indexből, amely megegyezik az eddig beírt eredményekkel. 
++ *A javaslatok* gépelés közben keresési eredményeket hoznak létre, ahol minden javaslat egyetlen találat vagy keresési dokumentum az indexből, amely megegyezik az eddig beírt adatokkal. 
 
-+ *Automatikus kiegészítés* "befejezi" azt a szót vagy kifejezést, amelyet a felhasználó éppen beír. Az eredmények visszaadása helyett egy lekérdezést hajt végre, amelyet ezután végrehajthat az eredmények visszaadására. A javaslatokhoz ugyanúgy, mint a lekérdezésben befejezett szó vagy kifejezés, az indexben lévő egyezésen alapul. A szolgáltatás nem kínál lekérdezéseket, amelyek nulla eredményt adnak vissza az indexben.
++ *Az automatikus kiegészítés* a szavak vagy kifejezések "befejezésével" hozza létre a lekérdezéseket. Az eredmények visszaadása helyett egy lekérdezést hajt végre, amelyet ezután végrehajthat az eredmények visszaadására. A javaslatokhoz ugyanúgy, mint a lekérdezésben befejezett szó vagy kifejezés, az indexben lévő egyezésen alapul. A szolgáltatás nem kínál lekérdezéseket, amelyek nulla eredményt adnak vissza az indexben.
 
 A **dotnethowtoautocomplete** mintakódot letöltheti és futtathatja a szolgáltatások kiértékeléséhez. A mintakód egy előre összeállított indexet céloz meg, amely [et NYCJobs bemutató adatokkal töltötték](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)ki. A NYCJobs index tartalmaz egy [javaslatajánló konstrukciót,](index-add-suggesters.md)amely a javaslatok vagy az automatikus kiegészítés használatának követelménye. Használhatja az előkészített index üzemeltetett egy sandbox szolgáltatás, vagy [töltse fel a saját index](#configure-app) használatával egy adatbetöltő a NYCJobs mintamegoldás. 
 

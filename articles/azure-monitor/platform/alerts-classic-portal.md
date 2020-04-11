@@ -1,16 +1,16 @@
 ---
-title: Klasszikus metrikariasztások létrehozása, megtekintése és kezelése az Azure Monitor használatával
+title: Klasszikus metrikariasztások létrehozása és kezelése az Azure Monitor használatával
 description: Ismerje meg, hogyan hozhat létre, tekinthet meg és kezelhet klasszikus metrikariasztási szabályokat az Azure Portal, a CLI vagy a Powershell használatával.
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.openlocfilehash: b770b9bd34c8267889db536ec81332de32cb8776
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e635c243a887690fb1f7a5dcd017c1130d74a747
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77668315"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114584"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Klasszikus metrikariasztások létrehozása, megtekintése és kezelése az Azure Monitor használatával
 

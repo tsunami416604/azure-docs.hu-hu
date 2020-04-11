@@ -1,17 +1,17 @@
 ---
-title: Készüljön fel az Azure Monitor klasszikus riasztások áttelepítése a logikai alkalmazások és runbookok frissítésével
+title: Logikai alkalmazások & runbookok frissítése a riasztások áttelepítéséhez
 description: Ismerje meg, hogyan módosíthatja a webhookokat, a logikai alkalmazásokat és a runbookokat az önkéntes áttelepítéselőkészítéséhez.
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 9219e105acb98424939030af76b526d475585619
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f31fcc07bed0287c2f86ca4fe52bf02a2a1d2a71
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77665592"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114410"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Logikai alkalmazások és runbookok előkészítése a klasszikus riasztási szabályok migrálására
 
