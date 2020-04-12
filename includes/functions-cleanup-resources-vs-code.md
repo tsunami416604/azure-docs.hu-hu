@@ -4,16 +4,16 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/12/2020
 ms.author: glenga
-ms.openlocfilehash: fcfc86a3aca4aae042ce3589988aa91d821dce98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d95055e79356b9e0fe9c4c0e64f5935619204b3
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76842215"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81112896"
 ---
 1. A Visual Studio Code alkalmazásban nyomja le az F1 billentyűt a parancspaletta megnyitásához. A parancspalettán keresse `Azure Functions: Open in portal`meg és válassza a lehetőséget.
 
-1. Válassza ki a függvényalkalmazást, és nyomja le az Enter billentyűt. A függvényalkalmazás lapja megnyílik az [Azure Portalon.](https://portal.azure.com)
+1. Válassza ki a függvényalkalmazást, és nyomja le az Enter billentyűt. A függvényalkalmazás lapja megnyílik az Azure Portalon.
 
 1. Az **Áttekintés** lapon jelölje ki az **Elnevezett**hivatkozást az Erőforrás csoportban.
 

@@ -4,16 +4,20 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/12/2020
 ms.author: glenga
-ms.openlocfilehash: 256510f855256e648ae9203f46eb9f66c9ffaed6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8665b4cec3357baee5d6c1b77b5719645575419
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77029202"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81112869"
 ---
 ## <a name="publish-the-project-to-azure"></a>A projekt közzététele az Azure-ban
 
 Ebben a szakaszban hozzon létre egy függvényalkalmazást és a kapcsolódó erőforrásokat az Azure-előfizetésében, majd telepítse a kódot. 
+
+> [!IMPORTANT]
+> Meglévő függvényalkalmazásba való közzététel felülírja az adott alkalmazás tartalmát az Azure-ban. 
+
 
 1. Válassza az Azure ikont a tevékenységsávon, majd az **Azure: Functions** területen válassza a Telepítés a **függvényalkalmazáshoz...** gombot.
 
@@ -23,11 +27,8 @@ Ebben a szakaszban hozzon létre egy függvényalkalmazást és a kapcsolódó e
 
     + **Válassza ki az előfizetést:** Válassza ki a használni kívánt előfizetést. Ez nem jelenik meg, ha csak egy előfizetéssel rendelkezik.
 
-    + **Válassza ki a Függvényalkalmazást az Azure-ban:** Válassza (nem `+ Create new Function App` `Advanced`). Ez a cikk nem támogatja a [speciális közzétételi folyamatot.](../articles/azure-functions/functions-develop-vs-code.md#enable-publishing-with-advanced-create-options) 
-    
-    >[!IMPORTANT]
-    > Meglévő függvényalkalmazásba való közzététel felülírja az adott alkalmazás tartalmát az Azure-ban. 
-    
+    + **Válassza ki a Függvényalkalmazást az Azure-ban:** Válassza a lehetőséget. `+ Create new Function App` (Ne válassza azt `Advanced` a lehetőséget, amely nem szerepel ebben a cikkben.)
+      
     + **Adjon meg egy globálisan egyedi nevet a függvényalkalmazásnak**: Írjon be egy URL-elérési úton érvényes nevet. A beírt név érvényesítve van, hogy megbizonyosodjon arról, hogy az Azure Functions egyedi. 
     
     ::: zone pivot="programming-language-python"
@@ -40,13 +41,13 @@ Ebben a szakaszban hozzon létre egy függvényalkalmazást és a kapcsolódó e
 
     + **Válasszon helyet az új erőforrásokhoz:** A jobb teljesítmény érdekében válasszon egy közeli [régiót.](https://azure.microsoft.com/regions/) 
     
-1.  Ha elkészült, a következő Azure-erőforrások jönnek létre az előfizetésben:
-
-    + **[Erőforráscsoport:](../articles/azure-resource-manager/management/overview.md)** Tartalmazza az összes létrehozott Azure-erőforrások. A név a függvényalkalmazás nevén alapul.
-    + **[Tárfiók:](../articles//storage/common/storage-introduction.md#types-of-storage-accounts)** A standard tárfiók jön létre egy egyedi nevet, amely a függvény alkalmazás neve alapján jön létre.
-    + **[Üzemeltetési terv:](../articles/azure-functions/functions-scale.md)** Az USA nyugati régiójában egy felhasználási terv jön létre a kiszolgáló nélküli függvényalkalmazás üzemeltetéséhez.
-    + **Függvényalkalmazás:** A projekt telepítve van, és ebben az új függvényalkalmazásban fut.
-    + **Application Insights:** Egy példány, amely csatlakozik a függvényalkalmazáshoz, a függvény neve alapján jön létre.
+1.  Ha elkészült, a következő Azure-erőforrások jönnek létre az előfizetésben, a függvényalkalmazás neve alapján alapuló nevek használatával:
+    
+    + Erőforráscsoport, amely a kapcsolódó erőforrások logikai tárolója.
+    + Egy szabványos Azure Storage-fiók, amely fenntartja a projektek állapot- és egyéb adatait.
+    + Egy felhasználási terv, amely meghatározza a kiszolgáló nélküli függvényalkalmazás alapjául szolgáló állomást. 
+    + Egy függvényalkalmazás, amely biztosítja a függvénykód végrehajtásának környezetét. A függvényalkalmazás lehetővé teszi a függvények logikai egységként történő csoportosítását az erőforrások egyszerűbb kezelése, üzembe helyezése és megosztása érdekében ugyanazon a tárhelycsomagon belül.
+    + A függvényalkalmazáshoz csatlakoztatott Application Insights-példány, amely a kiszolgáló nélküli függvény használatát követi nyomon.
 
     A függvényalkalmazás létrehozása és a telepítőcsomag alkalmazása után megjelenik egy értesítés. 
     

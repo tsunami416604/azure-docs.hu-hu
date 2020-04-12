@@ -2,21 +2,21 @@
 title: Szinapszis SQL-készlet létrehozása és lekérdezése (Azure Portal)
 description: Synapse SQL-készlet létrehozása és lekérdezése az Azure Portal használatával
 services: synapse-analytics
-author: XiaoyuMSFT
+author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: ''
 ms.date: 05/28/2019
-ms.author: xiaoyul
+ms.author: Kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 685d6970b0e88032fe503bf97a139c0b8c0f8a73
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 9605d20fa6a1480b24d7b64963aa9579ed3b5a11
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631351"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115182"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>Rövid útmutató: Szinapszid SQL-készlet létrehozása és lekérdezése az Azure Portal használatával
 
@@ -33,7 +33,7 @@ Gyorsan létrehozhat és lekérdezheti a Synapse SQL-készletet (adatraktárt) a
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="create-a-sql-pool"></a>SQL-készlet létrehozása
 
@@ -114,7 +114,7 @@ Ezzel az IP-címmel most már csatlakozhat az SQL-kiszolgálóhoz és annak SQL-
 
 Kérje le az SQL-kiszolgáló teljes kiszolgálónevét az Azure Portalon. Később ezt a teljes nevet fogja majd használni a kiszolgálóhoz való kapcsolódás során.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 2. Válassza ki az **Azure Synapse Analytics** a bal oldali menüben, és válassza ki az **Azure Synapse Analytics** oldalon.
 
