@@ -114,12 +114,6 @@
               href: index-add-language-analyzers.md
             - name: Egyéni elemző hozzáadása
               href: index-add-custom-analyzers.md
-        - name: Előretekintő
-          items:
-            - name: Javaslattevő létrehozása
-              href: index-add-suggesters.md
-            - name: Javaslatok vagy automatikus kiegészítés hozzáadása
-              href: search-autocomplete-tutorial.md
         - name: Szinonimák
           items:
             - name: Szinonimák hozzáadása
@@ -230,6 +224,14 @@
           href: search-query-lucene-examples.md
         - name: Részleges kifejezések és különleges karakterek
           href: search-query-partial-matching.md
+        - name: Intelligens keresés
+          href: search-query-fuzzy.md
+        - name: Automatikus kiegészítés „keresés gépelés közben”
+          items:
+            - name: Javaslattevő létrehozása
+              href: index-add-suggesters.md
+            - name: Javaslatok vagy automatikus kiegészítés hozzáadása
+              href: search-autocomplete-tutorial.md
         - name: Lekérdezés a Power Appsből
           href: search-howto-powerapps.md
         - name: Szintaxisreferencia

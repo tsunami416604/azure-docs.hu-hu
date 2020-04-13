@@ -61,14 +61,18 @@
           href: stream-analytics-sql-output-perf.md
         - name: Blob egyéni elérési útjára vonatkozó minták
           href: stream-analytics-custom-path-patterns-blob-storage-output.md
-    - name: Felhasználó által meghatározott függvények
+    - name: Lekérdezések kibővítése függvényekkel
       items:
-        - name: Machine Learning UDF
-          href: machine-learning-udf.md
-        - name: 'C# UDF'
-          href: stream-analytics-edge-csharp-udf-methods.md
+        - name: Függvények áttekintése
+          href: functions-overview.md
         - name: JavaScript UDF
           href: stream-analytics-javascript-user-defined-functions.md
+        - name: JavaScript UDA
+          href: stream-analytics-javascript-user-defined-aggregates.md
+        - name: 'C# UDF'
+          href: stream-analytics-edge-csharp-udf-methods.md
+        - name: Machine Learning UDF
+          href: machine-learning-udf.md
     - name: Stream Analytics-feladat optimalizálása
       items:
         - name: A streamelési egységek ismertetése és módosítása
@@ -140,8 +144,6 @@
           href: stream-analytics-edge.md
         - name: Fizetőkapu érzékelőadatainak elemzése
           href: stream-analytics-build-an-iot-solution-using-stream-analytics.md
-        - name: JavaScript UDA futtatása
-          href: stream-analytics-javascript-user-defined-aggregates.md
         - name: Nagy gyakoriságú kereskedelem
           href: stream-analytics-high-frequency-trading.md
         - name: IoT-streamadatok feldolgozása

@@ -85,9 +85,9 @@
     - name: Adatbázis-biztonság
       items:
         - name: Áttekintés
-          href: database-security-overview.md
+          href: ../../sql-database/sql-database-security-overview.md
         - name: Ajánlott eljárások
-          href: database-best-practices.md
+          href: ../../sql-database/sql-database-security-best-practice.md
         - name: Biztonsági ellenőrzőlista
           href: database-security-checklist.md
     - name: Biztonsági útmutató a tároláshoz
@@ -115,6 +115,8 @@
       href: log-audit.md
     - name: Biztonságkezelés és megfigyelés
       href: management-monitoring-overview.md
+    - name: Hatékonyabb távfelügyelet
+      href: management.md
     - name: Működési biztonság
       items:
         - name: Áttekintés

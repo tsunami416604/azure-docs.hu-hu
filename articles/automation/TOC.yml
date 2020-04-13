@@ -278,10 +278,7 @@
         - name: Kiszolgálók célállapotba történő konfigurálása és eltéréskezelés az állapotkonfigurációval
           href: tutorial-configure-servers-desired-state.md
           displayName: 'DSC, compliance'
-        - name: Gépek előkészítése kezelésre
-          href: automation-dsc-onboarding.md
-          displayName: 'DSC, state configuration'
-        - name: Célállapot-konfigurálók fordítása
+        - name: DSC-konfigurációk fordítása
           href: automation-dsc-compile.md
           displayName: 'state configuration, composite resources, configurationData'
         - name: Nem megfelelő DSC-kiszolgálók szervizelése
@@ -289,7 +286,7 @@
           displayName: 'state configuration, DSC, remediate'
         - name: DSC-konfigurációk létrehozása összetett erőforrások használatával
           href: compose-configurationwithcompositeresources.md
-        - name: Folyamatos üzembe helyezés a Chocolatey használatával
+        - name: Folyamatos üzembe helyezés biztosítása a Chocolatey használatával
           href: automation-dsc-cd-chocolatey.md
           displayName: 'dsc, state configuration'
         - name: Állapotkonfiguráció jelentési adatainak továbbítása az Azure Monitor-naplói felé
@@ -297,12 +294,12 @@
           displayName: DSC
     - name: Hibaelhárítás
       items:
-        - name: Előkészítés
+        - name: Előkészítés hibaelhárítása
           href: troubleshoot/onboarding.md
           displayName: troubleshoot
         - name: Állapotkonfiguráció (DSC) hibaelhárítása
           href: troubleshoot/desired-state-configuration.md
-          displayName: 'Desired State Configuration, troubleshoot'
+          displayName: 'state configuration, DSC, troubleshoot'
     - name: Referencia
       items:
         - name: Közösségi megoldások

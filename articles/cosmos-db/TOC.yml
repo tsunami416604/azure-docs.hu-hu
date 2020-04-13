@@ -1037,6 +1037,8 @@
           href: monitor-cosmos-db.md
         - name: Kiszolgálóoldali késés monitorozása
           href: monitor-server-side-latency.md
+        - name: Kérelemegység-használat monitorozása
+          href: monitor-request-unit-usage.md
         - name: Monitorozás diagnosztikai naplók használatával
           href: cosmosdb-monitor-resource-logs.md
         - name: Vezérlősík-naplózás

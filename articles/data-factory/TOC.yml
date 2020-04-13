@@ -8,7 +8,7 @@
       href: introduction.md
     - name: Az aktuális verzió összehasonlítása az 1.-vel
       href: compare-versions.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Adat-előállító létrehozása – felhasználói felület (UI)
@@ -27,7 +27,7 @@
       href: quickstart-create-data-factory-resource-manager-template.md
     - name: Adatfolyam létrehozása
       href: data-flow-create.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Adatok másolása és betöltése
       items:
@@ -150,7 +150,7 @@
       href: concepts-pipelines-activities.md
     - name: Társított szolgáltatások
       href: concepts-linked-services.md
-    - name: Adatkészletek
+    - name: Adathalmazok
       href: concepts-datasets-linked-services.md
     - name: Folyamat futtatása és eseményindítók
       href: concepts-pipeline-execution-triggers.md
@@ -607,6 +607,8 @@
           href: configure-bcdr-azure-ssis-integration-runtime.md
         - name: SSISDB-naplók törlése rugalmas adatbázis-feladatokkal
           href: how-to-clean-up-ssisdb-logs-with-elastic-jobs.md
+        - name: SSIS-feladatok migrálása az SSMS-sel
+          href: how-to-migrate-ssis-job-ssms.md
     - name: Eseményindítók létrehozása
       items:
         - name: Eseményalapú trigger létrehozása

@@ -4,7 +4,7 @@
   items:
     - name: 'Azure AD-felhasználók, -csoportok, -licenckezelés és -szerepkörök'
       href: directory-overview-user-model.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
     - name: Felhasználók hozzáadása az Azure AD-hez
       href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
@@ -16,7 +16,7 @@
       href: groups-quickstart-expiration.md
     - name: Csoportelnevezési szabályzat beállítása
       href: groups-quickstart-naming-policy.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Dinamikusan feltöltött csoport létrehozása
       href: groups-dynamic-tutorial.md
@@ -124,6 +124,8 @@
               href: groups-create-rule.md
             - name: Dinamikus csoport szabályszintaxisa
               href: groups-dynamic-membership.md
+            - name: Tagsági szabály érvényesítése
+              href: groups-dynamic-rule-validation.md
             - name: Csoporttagság típusának módosítása
               href: groups-change-type.md
     - name: Licencek hozzárendelése

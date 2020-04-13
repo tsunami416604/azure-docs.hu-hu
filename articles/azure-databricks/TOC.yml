@@ -1007,6 +1007,40 @@
         - name: Biztonsági áttekintés
           href: /azure/databricks/security/index
           maintainContext: true
+        - name: Hozzáférés-vezérlés
+          items:
+            - name: A hozzáférés-vezérlés áttekintése
+              href: /azure/databricks/security/access-control/index
+              maintainContext: true
+            - name: Munkaterület hozzáférés-vezérlése
+              href: /azure/databricks/security/access-control/workspace-acl
+              maintainContext: true
+            - name: Fürt hozzáférés-vezérlése
+              href: /azure/databricks/security/access-control/cluster-acl
+              maintainContext: true
+            - name: Készlet hozzáférés-vezérlése
+              href: /azure/databricks/security/access-control/pool-acl
+              maintainContext: true
+            - name: Feladatok hozzáférés-vezérlése
+              href: /azure/databricks/security/access-control/job-acl
+              maintainContext: true
+            - name: Táblázat hozzáférés-vezérlése
+              items:
+                - name: A táblázat hozzáférés-vezérlésének áttekintése
+                  href: /azure/databricks/security/access-control/table-acls/index
+                  maintainContext: true
+                - name: Táblázat hozzáférés-vezérlésének engedélyezése egy fürtön
+                  href: /azure/databricks/security/access-control/table-acls/table-acl
+                  maintainContext: true
+                - name: Adatobjektum jogosultságai
+                  href: /azure/databricks/security/access-control/table-acls/object-privileges
+                  maintainContext: true
+            - name: Titkoskulcs-hozzáférés vezérlése
+              href: /azure/databricks/security/access-control/secret-acl
+              maintainContext: true
+        - name: Hitelesítés az Azure Data Lake Storage-ban az Azure Active Directory hitelesítő adataival
+          href: /azure/databricks/security/credential-passthrough/adls-passthrough
+          maintainContext: true
         - name: Titkos kulcsok
           items:
             - name: Az adatok védelme titkos kulcsokkal
@@ -1018,9 +1052,6 @@
             - name: Titkos kulcsok
               href: /azure/databricks/security/secrets/secrets
               maintainContext: true
-            - name: Titkoskulcs-hozzáférés vezérlése
-              href: /azure/databricks/security/secrets/secret-acl
-              maintainContext: true
             - name: Titkos kulcsok kitakarása
               href: /azure/databricks/security/secrets/redaction
               maintainContext: true
@@ -1028,12 +1059,12 @@
               href: /azure/databricks/security/secrets/example-secret-workflow
               maintainContext: true
         - name: A fürt feldolgozó csomópontjai közötti forgalom titkosítása
-          href: /azure/databricks/security/encrypt-otw
+          href: /azure/databricks/security/encryption/encrypt-otw
         - name: Felhasználó által kezelt kulcsok engedélyezése notebookokhoz
-          href: /azure/databricks/security/customer-managed-key-notebook
+          href: /azure/databricks/security/keys/customer-managed-key-notebook
         - name: Felhasználó által kezelt kulcsok engedélyezése DBFS-hez
-          href: /azure/databricks/security/customer-managed-keys-dbfs
-    - name: Adminisztráció
+          href: /azure/databricks/security/keys/customer-managed-keys-dbfs
+    - name: Felügyelet
       items:
         - name: Az adminisztráció áttekintése
           href: /azure/databricks/administration-guide/index
@@ -1080,28 +1111,20 @@
             - name: A hozzáférés-vezérlés áttekintése
               href: /azure/databricks/administration-guide/access-control/index
               maintainContext: true
-            - name: Fürt hozzáférés-vezérlése
+            - name: Munkaterület hozzáférés-vezérlésének engedélyezése
+              href: /azure/databricks/administration-guide/access-control/workspace-acl
+              maintainContext: true
+            - name: Fürt hozzáférés-vezérlésének engedélyezése
               href: /azure/databricks/administration-guide/access-control/cluster-acl
               maintainContext: true
-            - name: Készlet hozzáférés-vezérlése
+            - name: Készlet hozzáférés-vezérlésének engedélyezése
               href: /azure/databricks/administration-guide/access-control/pool-acl
               maintainContext: true
-            - name: Feladatok hozzáférés-vezérlése
+            - name: Feladatok hozzáférés-vezérlésének engedélyezése
               href: /azure/databricks/administration-guide/access-control/jobs-acl
               maintainContext: true
-            - name: Táblázat hozzáférés-vezérlése
-              items:
-                - name: A táblázat hozzáférés-vezérlésének áttekintése
-                  href: /azure/databricks/administration-guide/access-control/table-acls/index
-                  maintainContext: true
-                - name: Táblázat hozzáférés-vezérlésének engedélyezése
-                  href: /azure/databricks/administration-guide/access-control/table-acls/table-acl
-                  maintainContext: true
-                - name: Jogosultságok beállítása adatobjektumon
-                  href: /azure/databricks/administration-guide/access-control/table-acls/object-privileges
-                  maintainContext: true
-            - name: Munkaterület hozzáférés-vezérlése
-              href: /azure/databricks/administration-guide/access-control/workspace-acl
+            - name: Táblázat hozzáférés-vezérlésének engedélyezése
+              href: /azure/databricks/administration-guide/access-control/table-acl
               maintainContext: true
             - name: Jogkivonat-alapú hitelesítés engedélyezése
               href: /azure/databricks/administration-guide/access-control/tokens
@@ -1162,7 +1185,7 @@
         - name: Gyakori kérdések
           href: /azure/azure-databricks/frequently-asked-questions-databricks
           maintainContext: true
-        - name: Adminisztráció
+        - name: Felügyelet
           items:
             - name: Ki törölt munkaterületet az Azure-ban?
               href: /azure/databricks/kb/administration/who-deleted-workspace
@@ -1688,6 +1711,9 @@
           items:
             - name: A platform kibocsátási megjegyzései
               href: /azure/databricks/release-notes/product/index
+              maintainContext: true
+            - name: 2020. április
+              href: /azure/databricks/release-notes/product/2020/april
               maintainContext: true
             - name: 2020. március
               href: /azure/databricks/release-notes/product/2020/march
