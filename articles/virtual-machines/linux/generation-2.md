@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: b68179caed4df5efd3696d7d6a3739a1e07a3c80
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0767d6c003be8f4e0b28c8d8ce1d48b8f578dd86
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79267299"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273528"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>2.000.000 virtuális gép támogatása az Azure-ban
 
@@ -53,7 +53,7 @@ A 2.generációs virtuális gépek a következő Marketplace-lemezképeket támo
 * SUSE Linux Enterprise Server 12 SP4
 * Ubuntu Server 16.04, 18.04, 19.04, 19.10 
 * RHEL 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 7,0
-* Cent OS 8.0, 7.7, 7.6, 7.5, 7.4
+* Cent OS 8.1, 8.0, 7.7, 7.6, 7.5, 7.4
 * Oracle Linux 7.7, 7.7-CI
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>A helyszíni és az Azure 2-es generációs virtuális gépeivel szemben
@@ -96,7 +96,7 @@ Az Azure jelenleg nem támogatja a helyszíni Hyper-V által a 2-es generációs
 
 Az Azure Portalon vagy az Azure CLI-ben létrehozhat 2.
 
-#### <a name="azure-portal"></a>Azure portál
+#### <a name="azure-portal"></a>Azure Portal
 
 Az alábbiakban a lépéseket, hogy hozzon létre egy generációs 2 (Gen2) virtuális gép az Azure Portalon.
 

@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: a6f977c0cdca670b40ccdc01db64a493962e3dda
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 820332b0692c0c863ed23912fe9913c419769155
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239888"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273001"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Oktatóanyag: Első lépések a Python SDK-val végzett első ML-kísérlet létrehozásához
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -86,7 +86,7 @@ A következő kísérletbeállítási és -futtatási lépéseket az Azure Machi
     
 1. Válassza ki a **tutorial-1st-experiment-sdk-train.ipynb** fájlt az **oktató/create-first-ml-kísérlet** mappában.
 
-1. A felső sávon válassza ki a jegyzetfüzet futtatásához használni kívánt számítási példányt. Ezek a virtuális gépek előre konfigurálva vannak [mindennel, amire szüksége van az Azure Machine Learning futtatásához.](concept-compute-instance.md#contents) Kiválaszthatja a munkaterület bármely felhasználója által létrehozott virtuális gép. 
+1. A felső sávon válassza ki a jegyzetfüzet futtatásához használni kívánt számítási példányt. Ezek a virtuális gépek előre konfigurálva vannak [mindennel, amire szüksége van az Azure Machine Learning futtatásához.](concept-compute-instance.md#contents) 
 
 1. Ha nem található virtuális gép, válassza a **+ Add lehetőséget** a számítási példány virtuális gépének létrehozásához. 
 

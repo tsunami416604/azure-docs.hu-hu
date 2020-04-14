@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan állíthatja be az Azure Private Linket egy Azu
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 04/13/2020
 ms.author: thweiss
-ms.openlocfilehash: 9a6a1560e169c51256c198868dc7293a020189f4
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 4b49d2aa61587d0156755bdd5c47b3eeb90090a5
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421425"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270689"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Azure Private Link konfigurálása Azure Cosmos-fiókhoz
 
@@ -401,7 +401,7 @@ $deploymentOutput = New-AzResourceGroupDeployment -Name "PrivateCosmosDbEndpoint
 $deploymentOutput
 ```
 
-A PowerShell-parancsfájlban `GroupId` a változó csak egy értéket tartalmazhat. Ez az érték a fiók API-típusa. Az engedélyezett `Sql`értékek `MongoDB` `Cassandra`a `Gremlin`következők: , , , , és `Table`. Egyes Azure Cosmos-fióktípusok több API-n keresztül érhetők el. Példa:
+A PowerShell-parancsfájlban `GroupId` a változó csak egy értéket tartalmazhat. Ez az érték a fiók API-típusa. Az engedélyezett `Sql`értékek `MongoDB` `Cassandra`a `Gremlin`következők: , , , , és `Table`. Egyes Azure Cosmos-fióktípusok több API-n keresztül érhetők el. Például:
 
 * A Gremlin API-fiók gremlin és SQL API-fiókokból is elérhető.
 * A Table API-fiók tábla- és SQL API-fiókokból is elérhető.
@@ -624,6 +624,10 @@ A következő helyzetek és eredmények akkor lehetségesek, ha a Privát kapcso
 * Ha konfigurálja a nyilvános forgalmat vagy egy szolgáltatásvégpontot, és privát végpontokat hoz létre, akkor a megfelelő típusú tűzfalszabály különböző típusú bejövő forgalmat engedélyez.
 
 * Ha nem konfigurál semmilyen nyilvános forgalmat vagy szolgáltatásvégpontot, és privát végpontokat hoz létre, majd az Azure Cosmos-fiók csak a privát végpontokon keresztül érhető el. Ha nem konfigurálja a nyilvános forgalmat vagy a szolgáltatás végpontját, miután az összes jóváhagyott magánvégpontot elutasították vagy törölték, a fiók a teljes hálózat számára megnyílik.
+
+## <a name="blocking-public-network-access-during-account-creation"></a>Nyilvános hálózati hozzáférés letiltása a fiók létrehozása során
+
+Az előző szakaszban leírtak szerint, és ha nincs beállítva konkrét tűzfalszabályok, egy privát végpont hozzáadása az Azure Cosmos-fiók csak magánvégpontokon keresztül érhető el. Ez azt jelenti, hogy az Azure Cosmos-fiók a nyilvános forgalomból érhető el a létrehozása után, és mielőtt egy privát végpont hozzáadása. Annak érdekében, hogy a nyilvános hálózati hozzáférés már a magánhálózati `publicNetworkAccess` végpontok létrehozása előtt is le legyen tiltva, beállíthatja a jelzőt a fiók létrehozása `Disabled` során. Tekintse meg [ezt az Azure Resource Manager sablont](https://azure.microsoft.com/resources/templates/101-cosmosdb-private-endpoint/) egy példa, amely bemutatja, hogyan használja ezt a jelzőt.
 
 ## <a name="update-a-private-endpoint-when-you-add-or-remove-a-region"></a>Saját végpont frissítése régió hozzáadásakor vagy eltávolításakor
 

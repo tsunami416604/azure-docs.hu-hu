@@ -3,7 +3,7 @@ title: A Microsoft Azure integrálása az Oracle Cloud Infrastructure szolgálta
 description: Ismerje meg azokat a megoldásokat, amelyek a Microsoft Azure-on futó Oracle-alkalmazásokat integrálják az Oracle Cloud Infrastructure (OCI) adatbázisaival.
 services: virtual-machines-linux
 documentationcenter: ''
-author: romitgirdhar
+author: mimckitt
 manager: gwallace
 tags: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/16/2020
-ms.author: rogirdh
+ms.author: mimckitt
 ms.custom: ''
-ms.openlocfilehash: b5d5ebda850163989e6ef1af94ec623d2d758f07
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 178fb805f4bfc0762ce7e4a320752e5afa00cef5
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878289"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271862"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>A Microsoft Azure-t és az Oracle Cloud Infrastructure-t integráló Oracle alkalmazásmegoldások
 
@@ -55,6 +55,7 @@ A felhőközi kapcsolat a következő régiókra korlátozódik:
 * Azure UK South (uksouth) & OCI London (UK South)
 * Az Azure Canada Central (canadacentral) & OCI Toronto (Délkelet-Kanada)
 * Azure Nyugat-Európa (nyugat-európa) & OCI Amsterdam (Hollandia északnyugat)
+* Az Azure Japan East (japaneast) & OCI Tokyo (Kelet-Japán)
 
 ## <a name="networking"></a>Hálózat
 

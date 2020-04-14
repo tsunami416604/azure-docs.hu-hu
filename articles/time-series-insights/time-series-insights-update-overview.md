@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.workload: big-data
 ms.topic: overview
-ms.date: 02/04/2020
+ms.date: 04/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1e4f72300752c93659db4edd4610464dbebf2503
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 73244a635bbf14efcf33f1b978db14e9e2589581
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77014419"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271063"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>Mi az Azure Time Series Insights előzetes verziója?
 
@@ -49,22 +49,22 @@ Az alábbi képen egy tipikus IoT-adatfolyam látható.
 
 Az IoT-környezet számos iparági szegmenst ölel fel, beleértve a gyártást, az autóipart, az energiát, a közműveket, az intelligens épületeket és a tanácsadást. Az ipari IoT-piac széles skálája között még mindig fejlődnek a felhőalapú natív megoldások, amelyek átfogó, nagy méretű IoT-adatokat célzó elemzéseket nyújtanak. 
 
-Az Azure Time Series Insights úgy elégíti ki ezt a piaci igényt, hogy kulcsrakész, végpontok között iot-elemzési megoldást kínál gazdag szemantikai modellezéssel az idősorozat-adatok, az eszközalapú elemzések és a kategóriájában legjobb felhasználói élmény környezet-modellezéséhez a felderítéshez, trend, anomáliadetektálás és operatív intelligencia. 
+Az Azure Time Series Insights úgy elégíti ki ezt a piaci igényt, hogy kulcsrakész, végpontok között ioT-elemzési megoldást biztosít az idősorozat-adatok, az eszközalapú elemzések és a kategóriájában legjobb felhasználói élmény környezet-modellezéséhez a felderítéshez, a felkapott, anomáliaészleléshez és operatív intelligenciához. 
 
 Az interaktív adatfeltárási képességeinkkel kombinált, gazdag működési elemzési platform segítségével a Time Series Insights segítségével több értéket nyerhet ki az IoT-eszközökből gyűjtött adatokból. Az előnézeti ajánlat támogatja: 
 
 * Többrétegű tárolási megoldás meleg és hideg elemzési támogatással, amely lehetővé teszi az ügyfelek számára, hogy az adatokat meleg és hideg között irányítsák az interaktív elemzések és a több évtizedes múltbeli adatok felett. 
 
-    *   Rendkívül interaktív, meleg elemzési megoldás a gyakori és nagy számú lekérdezés rövidebb időtartamú adatok végrehajtására 
-    *   Skálázható, teljesítmény- és költségoptimalizált idősorozat-adattó az Azure Storage alapján, amely lehetővé teszi az ügyfelek számára, hogy másodpercek alatt trendeljék az évek óta eltelt idősorozat-adatokat. 
+    *    Rendkívül interaktív, meleg elemzési megoldás a gyakori és nagy számú lekérdezés rövidebb időtartamú adatok végrehajtására 
+    *    Skálázható, teljesítmény- és költségoptimalizált idősorozat-adattó az Azure Storage alapján, amely lehetővé teszi az ügyfelek számára, hogy másodpercek alatt trendeljék az évek óta eltelt idősorozat-adatokat. 
 
 * Szemantikai modell támogatása, amely leírja a tartomány és a metaadatok társított származtatott és nyers jeleket az eszközök és eszközök.
 
-* Rugalmas elemzési platform a korábbi idősorozat-adatok tárolására az ügyfél tulajdonában lévő Azure Storage-fiókban, így lehetővé teszi az ügyfelek számára, hogy az IoT-adatok tulajdonjogát. Az adatok nyílt forráskódú Apache Parketta formátumban tárolódnak, amely lehetővé teszi a kapcsolatot és az interop-ot a különböző adatforgatókönyvekben, beleértve a prediktív elemzést, a gépi tanulást és más egyéni számításokat, amelyek et ismerős technológiákkal, például a Sparkkal végeznek, Databricks és Jupyter.
+* Rugalmas elemzési platform a korábbi idősorozat-adatok tárolására az ügyfél tulajdonában lévő Azure Storage-fiókban, így lehetővé teszi az ügyfelek számára, hogy az IoT-adatok tulajdonjogát. Az adatok nyílt forráskódú Apache Parketta formátumban tárolódnak, amely lehetővé teszi a kapcsolatot és a kapcsolatot a különböző adatforgatókönyvekben, beleértve a prediktív elemzést, a gépi tanulást és más egyéni számításokat, amelyek et a jól ismert technológiákkal, például a Spark, a Databricks és a Jupyter használatával végeznek.
 
-* Gazdag analitika továbbfejlesztett lekérdezési API-kkal és felhasználói felülettel, amely egyesíti az eszközalapú adatelemzéseket a gazdag, ad hoc adatelemzéssel az interpolációs, skaláris és összesítő függvények, a kategorikus változók, a scatter-parcellák és az időeltolódás támogatása segítségével sorozatjeleket a mélyreható elemzéshez.
+* Gazdag analitika továbbfejlesztett lekérdezési API-kkal és felhasználói felülettel, amely egyesíti az eszközalapú adatelemzéseket a gazdag, ad hoc adatelemzéssel az interpolációs, skaláris és összesítő függvények, a kategorikus változók, a scatter-telkek és az időeltolódási idősorozat-jelek támogatásával a részletes elemzéshez.
 
-*   Nagyvállalati szintű platform, amely támogatja nagyvállalati IoT-ügyfeleink méretezési, teljesítmény-, biztonsági és megbízhatósági igényeit.
+*    Nagyvállalati szintű platform, amely támogatja nagyvállalati IoT-ügyfeleink méretezési, teljesítmény-, biztonsági és megbízhatósági igényeit.
 
 * Bővíthetőség és integrációs támogatás a végpontok közötti elemzéshez. A Time Series Insights bővíthető elemzési platformot biztosít a különböző adatforgatókönyvekhez. A Time Series Insights Power BI-összekötő lehetővé teszi az ügyfelek számára, hogy a Time Series Insights-ban leadott lekérdezéseket közvetlenül a Power BI-ba vigyék, hogy egyetlen ablaktáblában egységes képet kapjanak üzletiintelligencia- és idősorozat-elemzésükről.
 

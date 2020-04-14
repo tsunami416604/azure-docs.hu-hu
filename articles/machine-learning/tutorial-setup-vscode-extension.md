@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 02/24/2020
-ms.openlocfilehash: 583071ee22e4fb9cffc741520b1583790002a5bf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/13/2020
+ms.openlocfilehash: 731ab18346ac9f100862174312c2c9950026f1eb
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77604871"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272914"
 ---
 # <a name="set-up-azure-machine-learning-visual-studio-code-extension"></a>Az Azure Machine Learning Visual Studio-kódbővítmény beállítása
 
@@ -70,36 +70,36 @@ Most, hogy bejelentkezett az Azure-ba a fiók hitelesítő adataival, az ebben a
 1. Amikor a parancspaletta kitágul, kövesse az utasításokat.
 
     1. Válassza ki az Azure-előfizetését.
-    1. Válassza **az Új Azure ML-munkaterület létrehozása lehetőséget.**
-    1. Válassza ki a **TensorFlow egycsomópontos képzési** feladat típusát.
-    1. Írja `train.py` be a betanításhoz a parancsfájlt. Ez az a fájl, amely egy gépi tanulási modell kódját tartalmazza, amely a kézzel írt számjegyek képeit kategorizálja.
-    1. Adja meg a következő csomagokat a futtatandó követelményekként.
-
-        ```text
-        pip: azureml-defaults; conda: python=3.6.2, tensorflow=1.15.0
-        ```
+    1. A környezetek listájában válassza a **Conda-függőségek fájl lehetőséget.**
+    1. Az **Enter** billentyű lenyomásával tallózhat a Conda-függőségfájlban. Ez a fájl a parancsfájl futtatásához szükséges függőségeket tartalmazza. Ebben az esetben a függőségi `env.yml` fájl `mnist-vscode-docs-sample` a könyvtárban lévő fájl.
+    1. Az **Enter** billentyű lenyomása a betanítási parancsfájl ban való böngészéshez. Ez az a fájl, amely egy gépi tanulási modell kódját tartalmazza, amely a kézzel írt számjegyek képeit kategorizálja. Ebben az esetben a modell betanításához szükséges `mnist-vscode-docs-sample` parancsfájl a `train.py` könyvtárban lévő fájl.
 
 1. Ezen a ponton az alábbihoz hasonló konfigurációs fájl jelenik meg a szövegszerkesztőben. A konfiguráció tartalmazza a betanítási feladat futtatásához szükséges információkat, például a modell betanításához szükséges kódot és az előző lépésben megadott Python-függőségeket tartalmazó fájlt.
 
     ```json
     {
-        "workspace": "WS01311608",
-        "resourceGroup": "WS01311608-rg1",
+        "workspace": "WS04131142",
+        "resourceGroup": "WS04131142-rg1",
         "location": "South Central US",
-        "experiment": "WS01311608-exp1",
+        "experiment": "WS04131142-exp1",
         "compute": {
-            "name": "WS01311608-com1",
+            "name": "WS04131142-com1",
             "vmSize": "Standard_D1_v2, Cores: 1; RAM: 3.5GB;"
         },
         "runConfiguration": {
-            "filename": "WS01311608-com1-rc1",
-            "condaDependencies": [
-                "python=3.6.2",
-                "tensorflow=1.15.0"
-            ],
-            "pipDependencies": [
-                "azureml-defaults"
-            ]
+            "filename": "WS04131142-com1-rc1",
+            "environment": {
+                "name": "WS04131142-env1",
+                "conda_dependencies": [
+                    "python=3.6.2",
+                    "tensorflow=1.15.0",
+                    "pip"
+                ],
+                "pip_dependencies": [
+                    "azureml-defaults"
+                ],
+                "environment_variables": {}
+            }
         }
     }
     ```

@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 04/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 972bb2a804057037deedb448674abafcc175b21f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 85910ee5467ecc9f4fe3c1a8bc13110b6f218e5c
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76314810"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272712"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Tervezze meg az Azure Time Series Insights GA-környezetét
 
@@ -79,9 +79,7 @@ Módosíthatja a megőrzési és a két mód közötti váltást a környezet ko
 
 ### <a name="environment-planning"></a>Környezettervezés
 
-A második terület, amely a Time Series Insights-környezet tervezésére összpontosít, a be- és telepítési kapacitás. A be- ésnagykapacitás a percenkénti allokáció származéka.
-
-A szabályozás szempontjából a 32 KB-os csomagméretű bejövő adatcsomag 32 eseményként lesz kezelve, egyenként 1 KB méretben. A megengedett maximális eseményméret 32 KB. A 32 KB-nál nagyobb adatcsomagok csonkulnak.
+A második terület, amely a Time Series Insights-környezet tervezésére összpontosít, a be- és telepítési kapacitás. A napi bejövő tároló és eseménykapacitás percenként, 1 KB-os blokkokban mérhető. A csomag maximálisan megengedett mérete 32 KB. A 32 KB-nál nagyobb adatcsomagok csonkulnak.
 
 Az S1 vagy S2 Termékváltozat kapacitása egyetlen környezetben 10 egységre növelhető. S1 környezetből nem lehet áttérni egy S2 környezetbe. S2 környezetből nem lehet áttérni egy S1-be.
 

@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
-ms.openlocfilehash: 433f8fa36f17f7cb145261273586a684658acda5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f22d5b2140e42f5f4b8ef5787d22b4be399c7e8
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79280468"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272525"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Alkalmazások diagnosztikanaplózásának engedélyezése az Azure App Service-ben
 ## <a name="overview"></a>Áttekintés
@@ -105,9 +105,9 @@ Mindkét típusú naplók az App Service fájlrendszer tárolja. Legfeljebb 50 h
 
 ## <a name="add-log-messages-in-code"></a>Naplóüzenetek hozzáadása a kódhoz
 
-Az alkalmazáskódban a szokásos naplózási lehetőségek segítségével naplóüzeneteket küldhet az alkalmazásnaplókba. Példa:
+Az alkalmazáskódban a szokásos naplózási lehetőségek segítségével naplóüzeneteket küldhet az alkalmazásnaplókba. Például:
 
-- ASP.NET alkalmazások a [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace) osztály segítségével naplózhatják az információkat az alkalmazás diagnosztikai naplójába. Példa:
+- ASP.NET alkalmazások a [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace) osztály segítségével naplózhatják az információkat az alkalmazás diagnosztikai naplójába. Például:
 
     ```csharp
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
@@ -135,12 +135,12 @@ A [Cloud Shellben](../cloud-shell/overview.md)élő naplók streameléséhez has
 az webapp log tail --name appname --resource-group myResourceGroup
 ```
 
-Adott események, például hibák szűréséhez használja a **--Filter** paramétert. Példa:
+Adott események, például hibák szűréséhez használja a **--Filter** paramétert. Például:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --filter Error
 ```
-Adott naplótípusok, például a HTTP szűréséhez használja a **--Path** paramétert. Példa:
+Adott naplótípusok, például a HTTP szűréséhez használja a **--Path** paramétert. Például:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --path http
@@ -188,7 +188,7 @@ Az alábbi táblázat a támogatott naplótípusokat és leírásokat tartalmazz
 | AppServiceHTTPLogs | Igen | Igen | Webkiszolgáló-naplók |
 | AppServiceEnvironmentPlatformLogs | Igen | Igen | App Service-környezet: méretezés, konfigurációs módosítások és állapotnaplók|
 | AppServiceAuditLogs | Igen | Igen | Bejelentkezési tevékenység FTP-n és Kudu-n keresztül |
-| AppServiceFileAuditLogs | Tba | Igen | Fájlváltozások FTP-n és Kudu-n keresztül |
+| AppServiceFileAuditLogs | Igen | TBD | Fájlváltozások FTP-n és Kudu-n keresztül |
 | AppServiceAppLogs | Tba | Java SE & Tomcat | Alkalmazásnaplók |
 
 ## <a name="next-steps"></a><a name="nextsteps"></a>Következő lépések

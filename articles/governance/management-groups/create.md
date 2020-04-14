@@ -3,12 +3,12 @@ title: Felügyeleti csoportok létrehozása az erőforrások rendszerezéséhez 
 description: Ismerje meg, hogyan hozhat létre Azure felügyeleti csoportokat több erőforrás kezeléséhez a portál, az Azure PowerShell és az Azure CLI használatával.
 ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: d9bb2e82404c0188094298f40da3346ee132eec3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a06679432d795b5b7854af8dc66b468841978e9c
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75436534"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273188"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Felügyeleti csoportok létrehozása az erőforrások rendszerezéséhez és kezeléséhez
 
@@ -20,7 +20,7 @@ A címtárban létrehozott első felügyeleti csoport létrehozása akár 15 per
 
 A bérlő bármely Azure AD-felhasználója létrehozhat egy felügyeleti csoportot a felügyeleti csoport írási engedélye nélkül, amely az adott felhasználóhoz van rendelve.  Ez az új felügyeleti csoport a gyökérfelügyeleti csoport gyermeke lesz, és a létrehozó "Tulajdonos" szerepkör-hozzárendelést kap. A felügyeleticsoport-szolgáltatás lehetővé teszi ezt a képességet, így a szerepkör-hozzárendelések nem szükségesek a gyökér szinten. Egyetlen felhasználó sem férhet hozzá a gyökérfelügyeleti csoporthoz létrehozáskor.  Annak elkerülése érdekében, hogy az Azure AD globális rendszergazdáinak megkeresése felügyeleti csoportok használatának megkezdéséhez, lehetővé tesszük a kezdeti felügyeleti csoportok létrehozását a gyökérszinten.      
 
-A felügyeleti csoport a portál, a PowerShell vagy az Azure CLI használatával hozhatja létre. Jelenleg nem használhatja az Erőforrás-kezelő sablonjait felügyeleti csoportok létrehozásához.
+A felügyeleti csoportot a portál, a [Resource Manager-sablon](../../azure-resource-manager/templates/deploy-to-tenant.md#create-management-group), a PowerShell vagy az Azure CLI használatával hozhatja létre.
 
 ### <a name="create-in-portal"></a>Létrehozás a portálon
 

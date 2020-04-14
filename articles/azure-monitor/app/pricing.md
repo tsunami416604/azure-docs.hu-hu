@@ -6,12 +6,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: b782477fd29b34eda70813fc2aff29157f02acb3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9ecd0ffd76650efff3a4c9f877522cba6f28d080
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275944"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271114"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Használat és költségek kezelése az Application Insights szolgáltatásban
 
@@ -28,6 +28,8 @@ Az Azure [Application Insights][start] díjszabása egy használatra szánt **fi
 
 [A többlépéses webes tesztek](../../azure-monitor/app/availability-multistep.md) további díjat vonnak maga után. A többlépéses webes tesztek olyan webes tesztek, amelyek műveletek sorozatát hajtják végre. Egyetlen oldal *pingtesztjeiért* nem számítunk fel külön díjat. A pingtesztekből és a többlépéses tesztekből származó telemetriai adatok at az alkalmazás más telemetriai adataival megegyezik.
 
+Az Application Insights beállítás [egyéni metrikadimenziók riasztási engedélyezése](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) is okozhat további költségeket, mert ez további előzetes összesítési metrikák létrehozását eredményezheti. [További információ] az Application Insights naplóalapú és előre összesített metrikáiról, valamint az Azure Monitor egyéni metrikák [díjszabásáról.](https://azure.microsoft.com/pricing/details/monitor/)
+
 ## <a name="estimating-the-costs-to-manage-your-application"></a>Az alkalmazás kezelésével járandó költségek becslése
 
 Ha még nem használja az Application Insights, használhatja az [Azure Monitor díjszabási kalkulátor](https://azure.microsoft.com/pricing/calculator/?service=monitor) az Application Insights használatának költségének becsléséhez. Kezdje azzal, hogy beírja az "Azure Monitor" kifejezést a keresőmezőbe, és az eredményül kapott Azure Monitor csempére kattint. Görgessen le a lapon az Azure Monitor, és válassza az Application Insights a típus legördülő menüben.  Itt adhatja meg, hogy várhatóan hány GB-nyi adatot gyűjt hetente, így a kérdés az, hogy az Application Insights mennyi adatot gyűjt az alkalmazás figyelése során.
@@ -42,7 +44,7 @@ Az adaptív mintavételezést nem támogató SDK-k esetében használhat [betöl
 
 ### <a name="learn-from-what-similar-customers-collect"></a>Tanuljon ahasonló ügyfelek által gyűjtött adatokból
 
-Ha engedélyezi az "Adatmennyiség becslése az alkalmazástevékenység alapján" funkciót, az Azure Monitoring díjszabási kalkulátorában engedélyezheti az "Adatmennyiség becslése az alkalmazástevékenység alapján" funkciót, akkor az alkalmazással kapcsolatban (havonta kérelmeket és havonta oldalmegtekintéseket biztosít, ha ügyféloldali telemetriai adatokat gyűjt), majd a számológép megmondja a hasonló alkalmazások által gyűjtött adatok medián és 90. Ezek az alkalmazások az Application Insights-konfiguráció tartományát ölelik fel (például néhány alapértelmezett [mintavételezéssel](../../azure-monitor/app/sampling.md)rendelkezik, néhánynak nincs mintavételezése stb.), így továbbra is rendelkezik a vezérlővel, hogy csökkentse a betöltési adatok mennyiségét messze a medián szint alatt mintavételezéssel. De ez egy kiindulási pont, hogy megértsük, milyen más, hasonló ügyfelek látnak.
+Az Azure Monitoring díjszabásk kalkulátor az Application Insights, ha engedélyezi a "Becsült adatmennyiség az alkalmazás tevékenysége alapján" funkciót, az alkalmazással kapcsolatos bemeneteket (havonta és oldalmegtekintések havonta, abban az esetben, ha ügyféloldali telemetriai adatokat gyűjt), majd a számológép megmondja, hogy a hasonló alkalmazások által gyűjtött adatok medián és 90. percentilis mennyisége. Ezek az alkalmazások az Application Insights-konfiguráció tartományát ölelik fel (például néhány alapértelmezett [mintavételezéssel](../../azure-monitor/app/sampling.md)rendelkezik, néhánynak nincs mintavételezése stb.), így továbbra is rendelkezik a vezérlővel, hogy csökkentse a betöltési adatok mennyiségét messze a medián szint alatt mintavételezéssel. De ez egy kiindulási pont, hogy megértsük, milyen más, hasonló ügyfelek látnak.
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>A használati és becslési költségek megismerése
 
@@ -176,7 +178,7 @@ Ha módosítani szeretné [a napi korlátot az Azure Resource Manager en kereszt
 
 ### <a name="create-alerts-for-the-daily-cap"></a>Riasztások létrehozása a napi korláthoz
 
-Az Application Insights napi kupakja létrehoz egy eseményt az Azure-tevékenység kog, amikor a bevitt adatkötetek eléri a figyelmeztetési szintet, vagy a napi felső határ szinten.  Ezek [a tevékenységnapló-események alapján riasztást](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log#create-with-the-azure-portal)hozhat létre. Ezeknek az eseményeknek a jelnevei a következők:
+Az Application Insights napi kupakja létrehoz egy eseményt az Azure-tevékenységnaplóban, amikor a bevitt adatkötetek elérik a figyelmeztetési szintet vagy a napi felső korlátot.  Ezek [a tevékenységnapló-események alapján riasztást](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log#create-with-the-azure-portal)hozhat létre. Ezeknek az eseményeknek a jelnevei a következők:
 
 * Az Application Insights összetevő napi korlátfigyelmeztetési küszöbértéke elérte
 
@@ -216,7 +218,7 @@ Az adatmegőrzés módosításához az Application Insights-erőforrásból lép
 
 ![A napi telemetriai kötetkorlát beállítása](./media/pricing/pricing-005.png)
 
-A megőrzési is [beállítható programozott módon a PowerShell](powershell.md#set-the-data-retention) a `retentionInDays` paraméter használatával. Emellett ha az adatmegőrzés30 napra állítja be, a paraméter használatával `immediatePurgeDataOn30Days` azonnal kiürítheti a régebbi adatokat, ami hasznos lehet a megfelelőségi forgatókönyvek esetén. Ez a tisztítási funkció csak az Azure Resource Manager en keresztül érhető el, és rendkívül óvatosan kell használni. Az adatkötet-korlát napi visszaállítási ideje konfigurálható az `dailyQuotaResetTime` Azure Resource Manager használatával a paraméter beállításához.
+A megőrzési is [beállítható programozott módon a PowerShell](powershell.md#set-the-data-retention) a `retentionInDays` paraméter használatával. A megőrzés csökkentése kor van egy több napos türelmi időszak a legrégebbi adatok eltávolítása előtt. Ha az adatmegőrzést 30 napra állítja be, a paraméter `immediatePurgeDataOn30Days` használatával azonnal kiürítheti a régebbi adatokat, ami hasznos lehet a megfelelőségi forgatókönyvek esetén. Ez a tisztítási funkció csak az Azure Resource Manager en keresztül érhető el, és rendkívül óvatosan kell használni. Az adatkötet-korlát napi visszaállítási ideje konfigurálható az `dailyQuotaResetTime` Azure Resource Manager használatával a paraméter beállításához.
 
 ## <a name="data-transfer-charges-using-application-insights"></a>Adatátviteli díjak az Application Insights használatával
 
@@ -228,7 +230,7 @@ Adatok küldése az Application Insights előfordulhat, hogy az adatok sávszél
 
 ## <a name="disable-daily-cap-e-mails"></a>Napi korlátú e-mailek letiltása
 
-A napi kötetkorlát e-mailjeinek letiltásához az Application Insights-erőforrás **Konfigurálás** szakaszában a **Használati és becsült költségek** ablaktáblában válassza a Napi **korlát**lehetőséget. A felső korlát elérésekor, valamint a beállítható figyelmeztetési szint elérésekor az e-mail küldésére is vannak beállítások. Ha szeretné letiltani az összes napi korlátozás imát kötetkapcsolatos e-maileket törölje mindkét négyzetet.
+A napi kötetkorlát e-mailjeinek letiltásához az Application Insights-erőforrás **Konfigurálás** szakaszában a **Használati és becsült költségek** ablaktáblában válassza a Napi **korlát**lehetőséget. A felső korlát elérésekor, valamint a beállítható figyelmeztetési szint elérésekor az e-mail küldésére is vannak beállítások. Ha le szeretné tiltani az összes napi korlátozási hangerővel kapcsolatos e-mailt, törölje mindkét négyzetet.
 
 ## <a name="legacy-enterprise-per-node-pricing-tier"></a>Örökölt vállalati (csomópontonkénti) tarifacsomag
 

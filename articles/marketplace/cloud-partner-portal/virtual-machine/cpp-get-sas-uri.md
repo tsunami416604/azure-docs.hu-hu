@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: dsindona
-ms.openlocfilehash: 6fe15fb18d8865911363a4696e44dd7fe1d90c09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2fdbc2a11bd963057b465a629757f2be51ae4061
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277803"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273851"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>Megosztott hozzáférésű aláírás URI-jának beszereznie a virtuális gép lemezképéhez
+
+> [!IMPORTANT]
+> 2020. április 13-tól megkezdjük az Azure virtuálisgép-ajánlatok kezelését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse a [Megosztott hozzáférésű aláírás URI begetése a virtuális gép lemezképének](https://aka.ms/GetSASURI) az áttelepített ajánlatok kezeléséhez kövesse az utasításokat.
 
 A közzétételi folyamat során meg kell adnia egy egységes erőforrás-azonosítót (URI) a termékkódhoz társított minden egyes virtuális merevlemezhez (VHD). A Microsoftnak a minősítési folyamat során hozzá kell férnie ezekhez a virtuális gépekhez. Ez a cikk bemutatja, hogyan hozhat létre egy közös hozzáférésű aláírás (SAS) URI-t az egyes virtuális merevlemezekhez. Ezt az URI-t a Felhőpartner-portál **SK** lapján adja meg.
 

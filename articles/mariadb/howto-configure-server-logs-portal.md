@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 89bdd209315445519c35f3ef2c2f1ad2555106ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/13/2020
+ms.openlocfilehash: 1e67637d36eaba55e4c6baaf6f775fc7b79fcd14
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79531396"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270595"
 ---
 # <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>Lassú lekérdezési naplók konfigurálása és elérése az Azure Portalról
 
@@ -23,7 +23,7 @@ A cikkben ismertetett lépésekhez az [Azure Database for MariaDB server szüks�
 ## <a name="configure-logging"></a>Naplózás konfigurálása
 Konfigurálja a lassú lekérdezési naplóhoz való hozzáférést. 
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 2. Válassza ki az Azure-adatbázis Tiamikiszolgálóhoz.
 
@@ -32,11 +32,15 @@ Konfigurálja a lassú lekérdezési naplóhoz való hozzáférést.
 
 4. A kiszolgáló paramétereinek megtekintéséhez **kattintson ide a naplók engedélyezéséhez és a naplóparaméterek konfigurálásához.**
 
-5. Módosítsa a módosítani kívánt paramétereket, például **kapcsolja be slow_query_log** BE **beállításra.** Az ezen a munkameneten végrehajtott összes módosítás lila színnel van kiemelve. 
+5. Kapcsolja **be slow_query_log** **.**
 
-   A paraméterek módosítása után válassza a **Mentés gombot.** Vagy elvetheti a módosításokat.
+6. Adja meg, hogy hol szeretné kiadni a naplókat **log_output**használatával. Ha naplókat szeretne küldeni a helyi tárolóba és az Azure Monitor diagnosztikai naplóiba, válassza a **Fájl**lehetőséget. 
 
-   ![Képernyőkép a Kiszolgálóparaméter-beállításokról](./media/howto-configure-server-logs-portal/3-save-discard.png)
+7. Módosítsa a szükséges egyéb paramétereket. 
+
+8. Kattintson a **Mentés** gombra. 
+
+   :::image type="content" source="./media/howto-configure-server-logs-portal/3-save-discard.png" alt-text="Képernyőkép a lassú lekérdezési napló paramétereiről és mentéséről.":::
 
 A **Kiszolgálóparaméterek** lapon a lap bezárásával visszatérhet a naplók listájához.
 

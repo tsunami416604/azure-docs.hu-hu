@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: dsindona
-ms.openlocfilehash: bc1cf7a839307e65bd91eb29531663141e521472
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9d06809df2774224b61fd3fb643ab628dd2890f6
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278041"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273987"
 ---
 # <a name="create-virtual-machine-offer"></a>Virtuálisgép-ajánlat létrehozása
+
+> [!IMPORTANT]
+> 2020. április 13-tól megkezdjük az Azure virtuálisgép-ajánlatok kezelését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [Azure virtuális gép ajánlatlétrehozása](https://aka.ms/CreateAzureVMoffer) című, az áttelepített ajánlatok kezelésével című útmutatóutasításait.
 
 Ez a szakasz felsorolja az okat a lépéseket, amelyek az Azure Piactér új virtuálisgép-ajánlatkérés létrehozásához szükségesek.  Minden ajánlat saját entitásként jelenik meg az Azure Marketplace-en, és egy vagy több sk-hez van társítva.  A virtuális gép ajánlata a következő eszközcsoportokból és támogató szolgáltatásokból áll: 
 
@@ -46,7 +49,7 @@ Miután bejelentkezett a [Cloud Partner Portal-ba,](https://cloudpartner.azure.c
 
 Az ebben a szakaszban található további témakörök az **Új ajánlat** lap lapjait tükrözik (virtuális gépajánlat-típus esetén).  Minden cikk ismerteti, hogyan használhatja a társított lapon az eszközcsoportok és támogató szolgáltatások az új virtuális gép ajánlat.
 
-- [Ajánlat beállításai lap](./cpp-offer-settings-tab.md)
+- [Ajánlatbeállítási lap](./cpp-offer-settings-tab.md)
 - [Termékváltozatok lap](./cpp-skus-tab.md)
 - [Tesztverzió lap](./cpp-test-drive-tab.md)
 - [Marketplace lap](./cpp-marketplace-tab.md)

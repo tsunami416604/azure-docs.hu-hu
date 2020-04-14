@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: dsindona
-ms.openlocfilehash: e8143f33aacbc68653d19ffb72e88af447f8cc40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2734bc0868584f9d02147abb953458bbcdec205e
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288852"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273103"
 ---
 # <a name="virtual-machine-support-tab"></a>A virtuális gépek támogatása lap
+
+> [!IMPORTANT]
+> 2020. április 13-tól megkezdjük az Azure virtuálisgép-ajánlatok kezelését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [Azure virtuális gép ajánlatlétrehozása](https://aka.ms/CreateAzureVMoffer) című, az áttelepített ajánlatok kezelésével című útmutatóutasításait.
 
 Az **Új ajánlat** lap **Támogatás** lapja lehetővé teszi, hogy technikai és felhasználói támogatási erőforrásokat biztosítson az ajánlathoz.  Három területre van osztva: **Mérnöki**, **Ügyfélszolgálati**és **Támogatási URL-ek**.
 

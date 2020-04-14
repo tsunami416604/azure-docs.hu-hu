@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 3b73c329c3db54ba78db15ced8e919af4d4a45d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0d6d69b82e80ff9bc33e49302cf59766b9c2e8d4
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79249736"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270825"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Windowsos, Azure-beli virtuális gépeken futó SQL Serverrel kapcsolatos gyakori kérdések
 
@@ -53,9 +53,17 @@ Ez a cikk az [SQL Server Azure-beli Windows virtuális gépeken](https://azure.m
 
    Igen, a PowerShell használatával. Az SQL Server virtuális gépek PowerShell használatával történő központi telepítéséről az SQL Server virtuális gépek kiépítése az [Azure PowerShell használatával című témakörben talál](virtual-machines-windows-ps-sql-create.md)további információt.
 
-1. **Létrehozhatok egy általános Azure SQL Server Piactér-lemezképet az SQL Server virtuális gépemről, és felhasználhatom a virtuális gépek üzembe helyezésére?**
+1. **Hogyan általánosíthatom az SQL Servert az Azure virtuális gépén, és hogyan helyezhetem üzembe vele az új virtuális gépeket?**
 
-   Igen, de ezután regisztrálnia kell [minden SQL Server virtuális gépet az SQL Server virtuálisgép erőforrás-szolgáltatójával](virtual-machines-windows-sql-register-with-resource-provider.md) az SQL Server virtuális gép kezeléséhez a portálon, valamint olyan funkciókat kell használnia, mint az automatikus javítás és az automatikus biztonsági mentések. Az erőforrás-szolgáltatónál történő regisztrációsorán meg kell adnia az egyes SQL Server virtuális gépek licenctípusát is. 
+   Telepíthet egy Windows Server virtuális gép (anélkül, hogy sql Server telepítve van), és az [SQL sysprep](/sql/database-engine/install-windows/install-sql-server-using-sysprep?view=sql-server-ver15) folyamat általánosítani SQL Server az Azure VM (Windows) az SQL Server telepítési adathordozón. A [szoftverbiztosítást biztosító](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot%3aprimaryr3) ügyfelek a [mennyiségi licencelési központtól](https://www.microsoft.com/Licensing/servicecenter/default.aspx)szerezhetik be telepítési adathordozójukat. A szoftvergaranciával nem rendelkező ügyfelek használhatják a kívánt kiadást tartalmazó Marketplace SQL Server virtuálisgép-lemezkép telepítőadathordozóját.
+
+   Másik lehetőségként használja az EGYIK SQL Server-lemezképek azure-piactér általánossá SQL Server az Azure VM-en. A saját lemezkép létrehozása előtt törölnie kell a következő beállításkulcsot a forráslemezképből. Ennek elmulasztása az SQL Server telepítőrendszerező mappájának és/vagy az SQL IaaS-bővítmény hibás állapotban lévő felduzzasztását eredményezheti.
+
+   Rendszerleíró kulcs elérési útja:  
+   `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Setup\SysPrepExternal\Specialize`
+
+   > [!NOTE]
+   > Azt javasoljuk, hogy az összes SQL Server Azure virtuális gép, beleértve az egyéni általánosított lemezképekről telepített, regisztrálni kell [egy SQL virtuális gép igényű szolgáltató,](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-register-with-resource-provider?tabs=azure-cli%2Cbash) hogy megfeleljen a megfelelőségi követelményeknek, és használja a választható funkciók, például az automatikus javítás és az automatikus biztonsági mentések. Azt is lehetővé teszi, hogy [adja meg a licenc típusát](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-ahb?tabs=azure-portal) az egyes SQL Server virtuális gépek.
 
 1. **Használhatom a saját virtuális merevlemezemet az SQL Server virtuális gép telepítéséhez?**
 
@@ -117,13 +125,13 @@ Ez a cikk az [SQL Server Azure-beli Windows virtuális gépeken](https://azure.m
    A passzív SQL Server-példány nem szolgál ki SQL Server-adatokat az ügyfeleknek, és nem futtat aktív SQL Server-munkaterheléseket. Csak az elsődleges kiszolgálóval való szinkronizálásra és a passzív adatbázis meleg készenléti állapotban tartására szolgál. Ha adatokat szolgál ki, például jelentéseket az aktív SQL Server-munkaterheléseket futtató ügyfeleknek, vagy a termékfeltételekben meghatározottaktól eltérő munkát végez, akkor fizetős SQL Server-példánynak kell lennie. A másodlagos példányon a következő tevékenység engedélyezett: adatbázis-konzisztencia-ellenőrzések vagy CheckDB, teljes biztonsági mentések, tranzakciónapló-biztonsági mentések és erőforrás-használati adatok figyelése. Az elsődleges és a megfelelő vész-helyreállítási példányt is futtathatja egyidejűleg a vész-helyreállítási tesztelés rövid időszakaiban 90 naponta.
    
 
-1. **Milyen forgatókönyvek használhatják a Distaster Recovery (DR) előnyeit?**
+1. **Milyen forgatókönyvek kihasználhatják a vész-helyreállítási (DR) előny?**
 
    A [licencelési útmutató](https://aka.ms/sql2019licenseguide) olyan forgatókönyveket tartalmaz, amelyekben a vész-helyreállítási előnyök et lehet használni. További információért olvassa el a termékhasználati feltételeket, és további információért forduljon licencelési kapcsolattartóihoz vagy fiókkezelőjéhez.
 
 1. **Mely előfizetések támogatják a vész-helyreállítási (DR) előnyt?**
 
-   A Frissítési Garancia egyenértékű előfizetési jogokat fix juttatásként kínáló átfogó programok támogatják a DR-kedvezményt. Ez magában foglalja. de nem korlátozódik a nyílt értékre (OV), az Open Value Subscription (OVS), a Nagyvállalati szerződésre (EA), a nagyvállalati előfizetési szerződésre (EAS) és a kiszolgálói és felhőalapú regisztrációra (SCE). További információért olvassa el a [termékfeltételeket,](https://www.microsoft.com/licensing/product-licensing/products) és további információért forduljon licencelési kapcsolattartóihoz vagy acocunt menedzseréhez. 
+   A Frissítési Garancia egyenértékű előfizetési jogokat fix juttatásként kínáló átfogó programok támogatják a DR-kedvezményt. Ez magában foglalja. de nem korlátozódik a nyílt értékre (OV), az Open Value Subscription (OVS), a Nagyvállalati szerződésre (EA), a nagyvállalati előfizetési szerződésre (EAS) és a kiszolgálói és felhőalapú regisztrációra (SCE). További információért olvassa el a [termékfeltételeket,](https://www.microsoft.com/licensing/product-licensing/products) és forduljon a licencelési kapcsolattartókhoz vagy a fiókkezelőhöz. 
 
    
  ## <a name="resource-provider"></a>Erőforrás-szolgáltató
@@ -152,7 +160,7 @@ Ez a cikk az [SQL Server Azure-beli Windows virtuális gépeken](https://azure.m
    
 
 
-## <a name="administration"></a>Adminisztráció
+## <a name="administration"></a>Felügyelet
 
 1. **Telepíthetem az SQL Server második példányát ugyanarra a virtuális gépre? Módosíthatom az alapértelmezett példány telepített szolgáltatásait?**
 
@@ -219,7 +227,7 @@ Ez a cikk az [SQL Server Azure-beli Windows virtuális gépeken](https://azure.m
    
     Igen. A helyi DTC az SQL Server 2016 SP2 és nagyobb rendszerhez támogatott. Az alkalmazásokat azonban tesztelni kell a Mindig a rendelkezésre állási csoportok alkalmazásakor, mivel a feladatátvétel során a repülés közbeni tranzakciók sikertelenek lesznek, és újra meg kell próbálni őket. A fürtözött DTC a Windows Server 2019-től kezdve érhető el. 
 
-## <a name="resources"></a>Források
+## <a name="resources"></a>További források
 
 **Windows virtuális gépek**:
 

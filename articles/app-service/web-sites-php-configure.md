@@ -5,29 +5,31 @@ author: msangapu-msft
 ms.assetid: 95c4072b-8570-496b-9c48-ee21a223fb60
 ms.devlang: php
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 04/13/2020
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c73fb55e485d0c92d27eac2ac197a81337b9d5e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 208f4f7b4c2d8562d5237a40f52e4774ea5c5606
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77016799"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272474"
 ---
 # <a name="configure-php-in-azure-app-service"></a>A PHP konfigurálása az Azure App Service szolgáltatásban
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 
-Ez az útmutató bemutatja, hogyan konfigurálhatja a beépített PHP-futásidőt a webalkalmazásokhoz, a mobil háttérrendszerekhez és az API-alkalmazásokhoz az [Azure App Service-ben,](https://go.microsoft.com/fwlink/?LinkId=529714)egyéni PHP-futásidejűt biztosíthat, és bővítményeket engedélyez. Az App Service használatához regisztráljon az [ingyenes próbaverzióra.] Ahhoz, hogy a legtöbbet hozd ki ebből az útmutatóból, először hozzon létre egy PHP alkalmazást az App Service szolgáltatásban.
+Ez az útmutató bemutatja, hogyan konfigurálhatja a beépített PHP-futásidőt a webalkalmazásokhoz és API-alkalmazásokhoz az [Azure App Service-ben,](https://go.microsoft.com/fwlink/?LinkId=529714)egyéni PHP-futásidejűt biztosíthat, és bővítményeket engedélyez. Az App Service használatához regisztráljon az [ingyenes próbaverzióra.] Ahhoz, hogy a legtöbbet hozd ki ebből az útmutatóból, először hozzon létre egy PHP alkalmazást az App Service szolgáltatásban.
 
 ## <a name="how-to-change-the-built-in-php-version"></a>Hogyan: A beépített PHP verzió módosítása
 
-Alapértelmezés szerint a PHP 5.6 telepítve van, és azonnal elérhető az App Service-alkalmazások létrehozásakor. A legjobb módja annak, hogy a rendelkezésre álló kiadás felülvizsgálata, az alapértelmezett konfiguráció, és az engedélyezett kiterjesztések, hogy telepíteni egy script, amely meghívja a [phpinfo()] függvény.
+Amikor létrehoz egy webalkalmazást, kiválaszthatja a PHP konfigurálandó verzióját. A jelenleg támogatott verziók naprakész információiért lásd [a PHP on App Service](https://github.com/Azure/app-service-linux-docs/blob/master/Runtime_Support/php_support.md) szolgáltatásban található naprakész információkat.
 
-A PHP 7.0 és PHP 7.2 verziók is elérhetők, de alapértelmezés szerint nincsenek engedélyezve. A PHP verzió frissítéséhez kövesse az alábbi módszerek egyikét:
+Az alkalmazás meglévő futásidejű verziójának ellenőrzéséhez telepíthet egy parancsfájlt, amely meghívja a [phpinfo()] függvényt.
 
-### <a name="azure-portal"></a>Azure portál
+A PHP verzió frissítéséhez kövesse az alábbi módszerek egyikét:
+
+### <a name="azure-portal"></a>Azure Portal
 
 1. Tallózzon az alkalmazás ban az [Azure Portalon,](https://portal.azure.com) és görgessen a **Konfiguráció lapra.**
 
@@ -49,7 +51,7 @@ Az Azure parancssori felületének használatához telepítenie kell [az Azure C
 
 2. Állítsa be az alkalmazás PHP verzióját.
 
-        az webapp config set --php-version {5.6 | 7.0 | 7.1 | 7.2} --name {app-name} --resource-group {resource-group-name}
+        az webapp config set --php-version {5.6 | 7.2 | 7.3} --name {app-name} --resource-group {resource-group-name}
 
 3. A PHP verzió most be van állítva. Ezeket a beállításokat a következőkben erősítheti meg:
 
@@ -79,7 +81,7 @@ A `.user.ini` fájl használatának alternatívájaként a [parancsfájlok ini_s
 
 1. Alkalmazásbeállítás hozzáadása az alkalmazáshoz `PHP_INI_SCAN_DIR` a kulccsal és az értékkel`d:\home\site\ini`
 1. Hozzon `settings.ini` létre egy fájlt&lt;a Kudu konzollal (http:// .scm.azurewebsite.net)&gt;a `d:\home\site\ini` könyvtárban.
-1. Adja hozzá a `settings.ini` konfigurációs beállításokat a fájlhoz `php.ini` a fájlban használt szintaxissal. Ha például a beállítást `curl.cainfo` egy `*.crt` fájlra szeretné mutatni, és a "wincache.maxfilesize" `settings.ini` beállítást 512K-ra szeretné állítani, a fájl a következő szöveget tartalmazza:
+1. Adja hozzá a `settings.ini` konfigurációs beállításokat a fájlhoz `php.ini` a fájlban használt szintaxissal. Ha például a beállítást `curl.cainfo` egy `*.crt` fájlra szeretné mutatni, és a "wincache.maxfilesize" `settings.ini` beállítást 512 K-ra szeretné állítani, a fájl a következő szöveget tartalmazza:
 
         ; Example Settings
         curl.cainfo="%ProgramFiles(x86)%\Git\bin\curl-ca-bundle.crt"

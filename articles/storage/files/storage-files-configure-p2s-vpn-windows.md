@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5f12b77f5baa1a3b06a093aac7267c65a038881e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 95386af4522adca1d65e04b01c2a349a80e9ab8a
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80061017"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273477"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>Pont-hely (P2S) VPN konfigurálása Windows rendszeren az Azure Files használatával
 A Point-to-Site (P2S) VPN-kapcsolat segítségével az Azure-fájlmegosztások csatlakoztatása SMB-en keresztül az Azure-on kívülről, a 445-ös port megnyitása nélkül. A pont-hely VPN-kapcsolat az Azure és az egyes ügyfelek közötti VPN-kapcsolat. P2S VPN-kapcsolat használatához az Azure Files, a P2S VPN-kapcsolat kell konfigurálni minden ügyfél, amely csatlakozni kíván. Ha sok ügyfél, amelynek csatlakoznia kell az Azure-fájlmegosztások a helyszíni hálózatról, használhatja a helyek közötti (S2S) VPN-kapcsolat helyett egy point-to-site kapcsolat minden ügyfél számára. További információ: A helyek közötti [VPN konfigurálása az Azure Files szolgáltatáshoz című témakörben olvashat.](storage-files-configure-s2s-vpn.md)
@@ -31,7 +31,7 @@ A cikk részletezi a windowsos (Windows-ügyfél- és Windows-kiszolgálóalapú
 ## <a name="deploy-a-virtual-network"></a>Virtuális hálózat telepítése
 Az Azure-fájlmegosztás és más Azure-erőforrások elérése a helyszíni egy point-to-site VPN, létre kell hoznia egy virtuális hálózat, vagy virtuális hálózat. A P2S VPN-kapcsolat automatikusan létrehoz egy hidat a helyszíni Windows-gép és az Azure virtuális hálózat között.
 
-A következő PowerShell három alhálózattal hoz létre egy Azure virtuális hálózatot: egyet a tárfiók szolgáltatásvégpontjához, egyet a tárfiók privát végpontjához, amely a helyszíni tárfiók eléréséhez szükséges létrehozása nélkül egyéni útválasztás a nyilvános IP a tárfiók, amely változhat, és egy a virtuális hálózati átjáró, amely a VPN-szolgáltatás. 
+A következő PowerShell létrehoz egy Azure virtuális hálózatot három alhálózattal: egyet a tárfiók szolgáltatásvégpontjához, egyet a tárfiók privát végpontjához, amely a helyszíni tárfiók eléréséhez szükséges anélkül, hogy egyéni útválasztást hozna létre a nyilvános IP-címhez, amely változhat, és egyet a vpn-szolgáltatást nyújtó virtuális hálózati átjáróhoz. 
 
 Ne felejtse `<resource-group>`el `<desired-vnet-name>` kicserélni `<region>`a , és a környezetének megfelelő értékeket.
 
@@ -79,7 +79,7 @@ $gatewaySubnet = $virtualNetwork.Subnets | `
 ```
 
 ## <a name="create-root-certificate-for-vpn-authentication"></a>Főtanúsítvány létrehozása a VPN-hitelesítéshez
-Ahhoz, hogy a helyszíni Windows-gépekRŐL származó VPN-kapcsolatok hitelesíthetők legyenek a virtuális hálózat eléréséhez, két tanúsítványt kell létrehoznia: egy főtanúsítványt, amelyet a virtuális gép átjárója kap, és egy ügyféltanúsítványt, amely kell aláírni a főtanúsítvánnyal. A következő PowerShell létrehozza a főtanúsítványt; az ügyféltanúsítvány az Azure virtuális hálózati átjáró létrehozása után jön létre az átjáróból származó információkkal. 
+Ahhoz, hogy a helyszíni Windows-gépekRŐL származó VPN-kapcsolatok hitelesíthetők legyenek a virtuális hálózat eléréséhez, két tanúsítványt kell létrehoznia: egy legfelső szintű tanúsítványt, amelyet a virtuális gép átjárója kap meg, és egy ügyféltanúsítványt, amelyet a főtanúsítvánnyal alá kell írni. A következő PowerShell létrehozza a főtanúsítványt; az ügyféltanúsítvány az Azure virtuális hálózati átjáró létrehozása után jön létre az átjáróból származó információkkal. 
 
 ```PowerShell
 $rootcertname = "CN=P2SRootCert"
@@ -138,7 +138,7 @@ $vpnName = "<desired-vpn-name-here>"
 $publicIpAddressName = "$vpnName-PublicIP"
 
 $publicIPAddress = New-AzPublicIpAddress `
-    -ResourceGroupName $resourceGroupName ` 
+    -ResourceGroupName $resourceGroupName `
     -Name $publicIpAddressName `
     -Location $region `
     -Sku Basic `
@@ -242,7 +242,7 @@ foreach ($session in $sessions) {
         -ArgumentList `
             $mypwd, `
             $vpnTemp, `
-            $virtualNetworkName
+            $virtualNetworkName `
         -ScriptBlock { 
             $mypwd = $args[0] 
             $vpnTemp = $args[1]
@@ -267,7 +267,7 @@ foreach ($session in $sessions) {
 
             Add-VpnConnection `
                 -Name $virtualNetworkName `
-                -ServerAddress $vpnProfile.VpnServer ` 
+                -ServerAddress $vpnProfile.VpnServer `
                 -TunnelType Ikev2 `
                 -EncryptionLevel Required `
                 -AuthenticationMethod MachineCertificate `

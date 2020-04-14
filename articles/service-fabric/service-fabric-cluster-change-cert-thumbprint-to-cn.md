@@ -3,12 +3,12 @@ title: Fürt frissítése a tanúsítvány köznapi nevének használatához
 description: Megtudhatja, hogyan válthat a Service Fabric-fürtök tanúsítvány ujjlenyomatok használatával a tanúsítvány köznapi neve.
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 66c49ccb7b7633d0eff392b676bb381118eb64a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1926b0501766eb0a5fe086ceada0c9bf45e3dcf6
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75610199"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272627"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Fürt módosítása tanúsítvány-ujjlenyomatról köznapi névre
 Két tanúsítvány nem rendelkezhet ugyanazzal az ujjlenyomattal, ami megnehezíti a fürttanúsítvány-váltást vagy -kezelést. Több tanúsítványnak azonban lehet ugyanaz a közös neve vagy tárgya.  Az üzembe helyezett fürt tanúsítványujjlenyomatok használatáról a tanúsítvány közös neveinek használatára való váltása sokkal egyszerűbbé teszi a tanúsítványkezelést. Ez a cikk ismerteti, hogyan frissítheti a futó Service Fabric-fürt a tanúsítvány köznapi nevét a tanúsítvány ujjlenyomata helyett.
@@ -20,12 +20,12 @@ Két tanúsítvány nem rendelkezhet ugyanazzal az ujjlenyomattal, ami megnehez�
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="get-a-certificate"></a>Tanúsítvány beszereznie
-Először szerezzen be egy tanúsítványt egy [hitelesítésszolgáltatótól](https://wikipedia.org/wiki/Certificate_authority).  A tanúsítvány köznapi nevének a fürt állomásnevének kell lennie.  Például "myclustername.southcentralus.cloudapp.azure.com".  
+Először szerezzen be egy tanúsítványt egy [hitelesítésszolgáltatótól](https://wikipedia.org/wiki/Certificate_authority).  A tanúsítvány köznapi neve a saját egyéni tartományára tartozik, és tartományregisztrálótól kell vásárolnia. Például "azureservicefabricbestpractices.com"; azok, akik nem a Microsoft alkalmazottai nem tudnak tanúsítványokat létesíteni az MS-tartományokhoz, így nem használhatja az LB vagy a Traffic Manager DNS-neveit a tanúsítvány közös neveként, és ki kell építenie egy [Azure DNS-zónát,](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns) ha az egyéni tartomány feloldható az Azure-ban. Ha azt szeretné, hogy a portál a fürt egyéni tartományaliasát tükrözze, akkor a saját egyéni tartományát is deklarálni szeretné a fürt "managementEndpoint"-jaként.
 
 Tesztelési célokra egy hitelesítésszolgáltató által aláírt tanúsítványt kaphat egy ingyenes vagy nyílt hitelesítésszolgáltatótól.
 
 > [!NOTE]
-> Önaláírt tanúsítványok, beleértve a létrehozott, amikor egy Service Fabric-fürt az Azure Portalon, nem támogatottak.
+> Önaláírt tanúsítványok, beleértve a létrehozott, amikor egy Service Fabric-fürt az Azure Portalon, nem támogatottak. 
 
 ## <a name="upload-the-certificate-and-install-it-in-the-scale-set"></a>Töltse fel a tanúsítványt, és telepítse a méretezési készlet
 Az Azure-ban egy Service Fabric-fürt egy virtuálisgép-méretezési csoporton van telepítve.  Töltse fel a tanúsítványt egy key vaultba, majd telepítse azt a virtuálisgép-méretezési csoportra, amelyen a fürt fut.

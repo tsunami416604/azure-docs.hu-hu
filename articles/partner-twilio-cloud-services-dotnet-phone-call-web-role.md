@@ -3,7 +3,7 @@ title: Hogyan lehet egy telefonhívást Twilio (.NET) | Microsoft dokumentumok
 description: Ismerje meg, hogyan kezdeményezhetsz telefonhívást, és hogyan küldhet SMS-üzenetet az Azure-beli Twilio API-szolgáltatással. A .NET nyelven írt kódminták.
 services: ''
 documentationcenter: .net
-author: georgewallace
+author: mimckitt
 editor: ''
 ms.assetid: 789185ad-69dc-4e9e-a936-42e0a25315c8
 ms.service: cloud-services
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/04/2016
-ms.author: gwallace
-ms.openlocfilehash: 27b4f3cdd8f622a97cfc0853f79bb77d76673dcf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: df1f5e1c21c28fa8c1fcdef6b2278fb92014a3b1
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69636140"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272559"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>Telefonhívás lehívása a Twilio használatával webes szerepkörben az Azure-ban
 Ez az útmutató bemutatja, hogyan használhatja a Twilio hívást az Azure-ban üzemeltetett weboldalról. Az eredményül kapott alkalmazás felszólítja a felhasználót, hogy kezdeményezze a hívást a megadott számmal és üzenettel, ahogy az a következő képernyőképen látható.
@@ -150,7 +150,7 @@ A hívás történik, és a Twilio-végpont, API-verzió, és a hívás állapot
 További információ a TwiML-ről a található. [https://www.twilio.com/docs/api/twiml][twiml] További információ &lt;&gt; a Say és más Twilio [https://www.twilio.com/docs/api/twiml/say][twilio_say]igékről a.
 
 ## <a name="next-steps"></a><a id="nextsteps"></a>További lépések
-Ez a kód a Twilio használatával az Azure-beli ASP.NET webes szerepkörben való alapvető funkciók megjelenítéséhez lett biztosítva. Mielőtt éles környezetben üzembe helyezne az Azure-ba, érdemes lehet további hibakezelést vagy egyéb funkciókat hozzáadnia. Példa:
+Ez a kód a Twilio használatával az Azure-beli ASP.NET webes szerepkörben való alapvető funkciók megjelenítéséhez lett biztosítva. Mielőtt éles környezetben üzembe helyezne az Azure-ba, érdemes lehet további hibakezelést vagy egyéb funkciókat hozzáadnia. Például:
 
 * Webes űrlap használata helyett használhatja az Azure Blob storage-ot vagy egy Azure SQL Database-példányt a telefonszámok tárolására és a hívás szövegének tárolására. A Blobok Azure-ban való használatáról [az Azure Blob storage szolgáltatás használata a .NET-ben][howto_blob_storage_dotnet]című témakörben talál további információt. Az SQL Database használatáról az [Azure SQL Database használata .NET alkalmazásokban][howto_sql_azure_dotnet]című témakörben talál további információt.
 * A Twilio-fiók azonosítójának és a hitelesítési jogkivonatnak a központi telepítés konfigurációs beállításaiból való lekéréséhez használhatja, `RoleEnvironment.getConfigurationSettings` ahelyett, hogy az űrlap értékeit kódolna. Az osztályról `RoleEnvironment` további információt a [Microsoft.WindowsAzure.ServiceRuntime Névtér című][azure_runtime_ref_dotnet]témakörben talál.

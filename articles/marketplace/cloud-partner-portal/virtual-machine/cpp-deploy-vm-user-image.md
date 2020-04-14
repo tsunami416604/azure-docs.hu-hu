@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 957bc187b0123338947f62333c913cf82a6c66a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79754b4ce7c3dfe2a5c549f4a39ef3160be423d8
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277956"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273885"
 ---
 # <a name="deploy-an-azure-vm-from-a-user-vhd"></a>Azure-beli virtuális gép üzembe helyezése felhasználói virtuális merevlemezről
+
+> [!IMPORTANT]
+> 2020. április 13-tól megkezdjük az Azure virtuálisgép-ajánlatok kezelését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [Azure VM-lemezkép-minősítés](https://aks.ms/CertifyVMimage) utasításait az áttelepített ajánlatok kezeléséhez.
 
 Ez a cikk bemutatja, hogyan telepíthet egy általános virtuális merevlemez-lemezképet egy új Azure virtuálisgép-erőforrás létrehozásához a mellékelt Azure Resource Manager-sablon és az Azure PowerShell-parancsfájl használatával.
 

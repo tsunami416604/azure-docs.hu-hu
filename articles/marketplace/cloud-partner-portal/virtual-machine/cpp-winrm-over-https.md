@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: dsindona
-ms.openlocfilehash: 7c799c4a56ee5fc2074e4d644bdbcbc6d2b1ca5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b2a4bb107309894a7180e0a4585cdba6f04d1bee
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288750"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273035"
 ---
 # <a name="windows-remote-management-over-https"></a>Rendszerfelügyeleti webszolgáltatások HTTPS protokollon
+
+> [!IMPORTANT]
+> 2020. április 13-tól megkezdjük az Azure virtuálisgép-ajánlatok kezelését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [Azure virtuális gép ajánlatlétrehozása](https://aka.ms/CreateAzureVMoffer) című, az áttelepített ajánlatok kezelésével című útmutatóutasításait.
 
 Ez a szakasz bemutatja, hogyan konfigurálhat egy Azure-üzemeltetett, Windows-alapú virtuális gép, hogy a PowerShell segítségével távolról kezelhető és telepíthető legyen.  A PowerShell távoli kapcsolatszolgáltatás engedélyezéséhez a cél virtuális gépnek meg kell adnia egy Windows remote Management (WinRM) HTTPS-végpontot.  A PowerShell távoli kapcsolatáttekintésről a [Távoli parancsok futtatása](https://docs.microsoft.com/powershell/scripting/learn/remoting/running-remote-commands)című témakörben talál.  A WinRM szolgáltatásról további információt a [Windows távkezelés című témakörben talál.](https://docs.microsoft.com/windows/desktop/WinRM/portal)
 

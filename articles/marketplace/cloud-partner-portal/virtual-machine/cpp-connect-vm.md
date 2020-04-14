@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: dsindona
-ms.openlocfilehash: 2b7eb6d321a64835254b684c8faeedc53645dffe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f2652a98aa081b62ba80951212ef3a3de513593
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278058"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272661"
 ---
 # <a name="connect-to-your-azure-based-virtual-machine"></a>Csatlakozás azure-alapú virtuális géphez
+
+> [!IMPORTANT]
+> 2020. április 13-tól megkezdjük az Azure virtuálisgép-ajánlatok partnerközpontba való áthelyezését. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [Azure Virtuálisgép technikai eszközeinek létrehozása](https://aka.ms/AzureVMTechAsset) az áttelepített ajánlatok kezeléséhez című, az Utasításokat.
 
 Ez a cikk bemutatja, hogyan csatlakozhat az Azure-ban létrehozott virtuális gépekhez, és hogyan jelentkezhet be.  Miután sikeresen csatlakozott, úgy dolgozhat a virtuális géptel, mintha helyileg jelentkezett volna be a gazdakiszolgálóra. 
 

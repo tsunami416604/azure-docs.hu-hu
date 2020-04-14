@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: 4eef8a3a83456a9f2066311b9339b26b83afa009
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 42f8f51545f643e1ed9e1a23c9445f6e216fdabe
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633804"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273409"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Teljesítmény-finomhangolás eredményhalmaz gyorsítótárazásával
 
@@ -71,10 +71,10 @@ A gyorsítótárazott eredményhalmazt újra felhasználja a rendszer egy lekér
 - Pontos egyezés van az új lekérdezés és az eredményhalmaz gyorsítótárát létrehozó előző lekérdezés között.
 - Nincs adat- vagy sémaváltozás azokban a táblákban, amelyekből a gyorsítótárazott eredményhalmaz létrejött.
 
-Futtassa ezt a parancsot annak ellenőrzéséhez, hogy a lekérdezés végrehajtása eredménygyorsítótár-találattal vagy -tévesztéssel történt-e. A result_set_cache oszlop 1-et ad vissza a gyorsítótár letöréséhez, 0-t a gyorsítótár-tévesztéshez, és negatív értékeket, amelyek miatt az eredménykészlet-gyorsítótárazás nem volt használva. Ellenőrizze [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) a részleteket.
+Futtassa ezt a parancsot annak ellenőrzéséhez, hogy a lekérdezés végrehajtása eredménygyorsítótár-találattal vagy -tévesztéssel történt-e. A result_cache_hit oszlop 1-et ad vissza a gyorsítótár letöréséhez, 0-t a gyorsítótár-tévesztéshez, és negatív értékeket, amelyek miatt az eredménykészlet-gyorsítótárazás nem volt használva. Ellenőrizze [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) a részleteket.
 
 ```sql
-SELECT request_id, command, result_set_cache FROM sys.dm_pdw_exec_requests
+SELECT request_id, command, result_cache_hit FROM sys.dm_pdw_exec_requests
 WHERE request_id = <'Your_Query_Request_ID'>
 ```
 

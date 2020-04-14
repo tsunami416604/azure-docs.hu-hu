@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/07/2020
+ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86c5f572ba66845467a7e3f4412b8da8368fe772
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 0866db6b549bc940d2e73bccfc77b8fad19abd51
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811252"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273222"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP-számítási feladatok üzemeltetéséhez és futtatásához használja az Azure-t
 
@@ -110,6 +110,7 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásáról a követke
 
 
 ## <a name="change-log"></a>Módosítási napló
+- 04/13/2020: Az SAP ASE kiadási számok helyes javítása az [SAP ASE Azure virtuális gépek DBMS üzembe helyezésében az SAP-munkaterheléshez](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sapase)
 - 04/07/2020: A [pacemaker beállítása az SLES-en az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) a felhő-netconfig-azure utasítások tisztázása érdekében
 - 04/06/2020: Az [SAP HANA horizontális felskálázásának változásai készenléti csomóponttal az Azure-beli virtuális gépeken az Azure NetApp-fájlokkal SLES-en](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse) és [az SAP HANA kibővített, készenléti csomópontban az Azure-beli virtuális gépeken az RHEL-alapú Azure NetApp-fájlokkal](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel) a NetApp [TR-4435-re](https://www.netapp.com/us/media/tr-4746.pdf) mutató hivatkozások eltávolításához (helyébe [A TR-4746](https://www.netapp.com/us/media/tr-4746.pdf)lép )
 - 03/31/2020: Az [SAP HANA magas rendelkezésre állásának módosítása az Azure-beli virtuális gépeken SLES-en](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability) és [az SAP HANA magas rendelkezésre állása az AZURE-beli virtuális gépeken az RHEL-en,](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel) hogy utasításokat adjon a csíkozott kötetek létrehozásakor a csíkozott kötetek megadásához
@@ -173,11 +174,6 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásáról a követke
 - 10/11/2019: Az Ultra lemeztárolási konfigurációk módosításai és az ANF bevezetése az [SAP HANA Azure virtuálisgép-tároló konfigurációiban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
 - 10/01/2019: Az Azure [közelségi elhelyezési csoportjainak grafikáinak módosítása az SAP-alkalmazásokkal való optimális hálózati késés](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) érdekében a tisztább
 - 10/01/2019: Módosítsa az [SAP HANA infrastruktúra-konfigurációk és az Azure-beli műveletek](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations) helyes utasítások körül magas rendelkezésre állású NFS-megosztás /hana/shared. 
-- 09/28/2019: A [Red Hat Enterprise Linux Pacemaker beállítása az Azure-ban az](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) SBD tisztázása érdekében nem támogatott az RHEL-fürtökön  
-- 09/17/2019: Változás a NetWeaver tervezési és telepítési útmutatójában az SAP virtuálisgép-bővítményével kapcsolatban a kifejezések egyesítéséhez  
-- 2019.08.22.: Változások a [Pacemaker beállítása a SUSE Linux Enterprise Server azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) az URL-ek frissítéséhez az egyéni szerepkör létrehozásához  
-- 2019.08.16.: Változások a Red Hat Enterprise Linux Pacemaker beállítása az [Azure-ban,](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) hogy emlékeztesse az ügyfeleket az egyéni szerepkörben végrehajtott műveletek frissítésére, ha az Azure kerítésügynök új verziójára frissítenek  
-- 2019.08.15.: Az [SAP HANA Azure virtuálisgép-tárolási konfigurációk](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) változásai, hogy tükrözzék az Ultra lemez (korábban Ultra SSD) általános elérhetőségét
-- 2019.01.08.08.: A [Pacemaker beállítása a SUSE Linux Enterprise Server azure-ban beállításában](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) a kifejezetten az SLES 15 változásainak integrálása érdekében 
+
 
 

@@ -2,19 +2,19 @@
 title: Méretezési csoport sablonjának konvertálása felügyelt lemez használatához
 description: Alakítson ki egy Azure Resource Manager virtuálisgép-méretezési csoportsablont felügyelt lemezméretezési készletsablonná.
 keywords: virtuálisgép-méretezési csoportok
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: bc8c377a-8c3f-45b8-8b2d-acc2d6d0b1e8
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 5/18/2017
-ms.author: manayar
-ms.openlocfilehash: 4ab5c48c6673a2353c70fe808d09aa15675e0424
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 79fafa8344312294f6df107b88c9b7c571af1969
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278128"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270655"
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>Méretezési csoport sablonjának konvertálása felügyelt lemezméretezési készletsablonná
 
@@ -119,7 +119,7 @@ A méretezési csoport konfigurációjában nincs explicit tulajdonság a felüg
 
 ## <a name="data-disks"></a>Adatlemezek
 
-A fenti módosításokkal a méretezési csoport felügyelt lemezeket használ az operációs rendszer lemezéhez, de mi a helyzet az adatlemezekkel? Adatlemezek hozzáadásához adja hozzá a "dataDisks" tulajdonságot a "storageProfile" alatt az "osDisk" szinttel azonos szinten. A tulajdonság értéke egy JSON objektumlista, amelynek tulajdonságai "lun" (amelynek egyedinek kell lennie adatlemezenként a virtuális gépen), "createOption" ("üres" jelenleg az egyetlen támogatott lehetőség), és a "diskSizeGB" (a lemez mérete gigabájtban; nagyobbnak kell lennie, mint a lemez mérete gigabájtban; nagyobbnak kell lennie, mint 0 és kevesebb, mint 1024), mint a következő példában:
+A fenti módosításokkal a méretezési csoport felügyelt lemezeket használ az operációs rendszer lemezéhez, de mi a helyzet az adatlemezekkel? Adatlemezek hozzáadásához adja hozzá a "dataDisks" tulajdonságot a "storageProfile" alatt az "osDisk" szinttel azonos szinten. A tulajdonság értéke az objektumok JSON-listája, amelyek mindegyike "lun" tulajdonságokkal rendelkezik (amelyeknek egyedinek kell lenniük adatlemezenként a virtuális gépen), a "createOption" ("üres" jelenleg az egyetlen támogatott beállítás), és a "diskSizeGB" (a lemez mérete gigabájtban; nagyobbnak kell lennie, mint 0 és kevesebb, mint 1024), mint a következő példában:
 
 ```
 "dataDisks": [

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: 48fd85e27feb3d0c7f7f722dbbd502be55684385
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f7c6829d858e36b55f079f8ee03e431f67995e66
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76771597"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272576"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET Standard API: Megjegyzések letöltése és kiadása
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "76771597"
 |---|---|
 |**SDK letöltés**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)|
 |**Minta**|[Cosmos DB table API .NET minta](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started)|
-|**Quickstart**|[Quickstart](create-table-dotnet.md)|
+|**Első lépések**|[Első lépések](create-table-dotnet.md)|
 |**Bemutató**|[Bemutató](tutorial-develop-table-dotnet.md)|
 |**Jelenlegi támogatott keretrendszer**|[Microsoft .NET Standard 2.0](https://www.nuget.org/packages/NETStandard.Library)|
 |**Jelentés kiadása**|[Jelentés kiadása](https://github.com/Azure/azure-cosmos-table-dotnet/issues)|
@@ -41,6 +41,9 @@ ms.locfileid: "76771597"
 
 ## <a name="release-notes-for-100-series"></a>Kibocsátási megjegyzések az 1.0.0 sorozathoz
 Az 1.0.0 sorozat a [Microsoft.Azure.DocumentDB.Core függése.](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)
+
+### <a name="107"></a><a name="1.0.7"/>1.0.7
+* Teljesítményjavulás az SDK alapértelmezett nyomkövetési szintjének SourceLevels.Off értékre állításával, amely az app.config fájlon keresztül kapcsolható be
 
 ### <a name="105"></a><a name="1.0.5"/>1.0.5
 * Új konfiguráció bevezetése a TableClientConfiguration csoportban a Rest Executor használatával kommunikálhat a Cosmos DB Table API-val

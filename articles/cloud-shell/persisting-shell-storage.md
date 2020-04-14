@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: d4d59642f638e7b1221c35a4bb281923571d5066
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 37005a722d4a1962b4f6e1ddb8bb1c7a1229d28a
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297589"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273290"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Fájlok megőrzése az Azure Cloud Shellben
 A Cloud Shell az Azure File storage-ot használja a fájlok munkamenetek közötti megőrzéséhez. A cloud shell első indításkor kéri, hogy társítson egy új vagy meglévő fájlmegosztást a fájlok munkamenetek közötti megőrzéséhez.
@@ -50,7 +50,7 @@ A speciális beállítás használatával meglévő erőforrásokat társíthat.
 Amikor megjelenik a tárolási beállítási üzenet, válassza a **Speciális beállítások megjelenítése** lehetőséget a további beállítások megtekintéséhez. A helyileg redundáns tárolás (LRS), a georedundáns tárolás (GRS) és a zónaredundáns tárolási (ZRS) fiókok feltöltött tárolási beállítások szűrője. 
 
 > [!NOTE]
-> Grs- vagy ZRS-tárfiókok használata ajánlott a biztonsági fájlmegosztás további rugalmassága érdekében. A redundancia típusa a céloktól és az árpreferenciáktól függ. [További információ az Azure Storage-fiókok replikációs beállításairól.](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
+> Grs- vagy ZRS-tárfiókok használata ajánlott a biztonsági fájlmegosztás további rugalmassága érdekében. A redundancia típusa a céloktól és az árpreferenciáktól függ. [További információ az Azure Storage-fiókok replikációs beállításairól.](../storage/common/storage-redundancy.md)
 
 ![Az Erőforráscsoport beállítása](media/persisting-shell-storage/advanced-storage.png)
 
@@ -169,5 +169,5 @@ Megjegyzés: Ha meg kell határoznia egy függvényt egy fájlban, és meg kell 
 
 ## <a name="next-steps"></a>További lépések
 [Felhőbeli rendszerhéj – rövid útmutató](quickstart.md) <br>
-[További információ a Microsoft Azure Files tárhelyről](https://docs.microsoft.com/azure/storage/storage-introduction) <br>
+[További információ a Microsoft Azure Files tárhelyről](../storage/files/storage-files-introduction.md) <br>
 [További információ a tárolási címkékről](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>

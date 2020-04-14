@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: dsindona
-ms.openlocfilehash: 567dc83e36020ef9af328f52dae89ef37b6e4908
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 156a405d93aeac27f27fe617e1a5485044309846
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277721"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273817"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>Virtuálisgép Piactér lap
+
+> [!IMPORTANT]
+> 2020. április 13-tól megkezdjük az Azure virtuálisgép-ajánlatok kezelését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [Azure virtuális gép ajánlatlétrehozása](https://aka.ms/CreateAzureVMoffer) című, az áttelepített ajánlatok kezelésével című útmutatóutasításait.
 
 Az **Új ajánlat** lap **Piactér** lapja lehetővé teszi, hogy a leendő ügyfelek számára marketinget, értékesítést és jogi információkat és megállapodásokat biztosítson, és kezelje a piactérről generált érdeklődőket. Ez a hosszú forma négy részből áll: **Áttekintés**, **Marketing leletek**, **Ólommenedzsment**és **Jogi**.
 
@@ -33,7 +36,7 @@ Az alábbi táblázat a mezők célját és tartalmát ismerteti. A kötelező m
 | **Hosszú összegzés\***          | A megoldás célja vagy funkciója.  Legfeljebb 256 karakter hosszú. |
 | **Leírás\***           | A megoldás leírása.  A maximális hossza 3000 karakter, támogatja az egyszerű HTML-formázást. |
 | **Microsoft CSP viszonteladói csatorna\*** | A felhőszolgáltatók (CSP) partnercsatorna-opt-in már elérhető.  Az ajánlat microsoftos CSP-partnercsatornákon keresztül történő marketingről további információt a [felhőszolgáltatók](../../cloud-solution-providers.md) ban talál. |
-| **Marketing azonosító\***  | Az ajánlathoz társítani rakandó egyedi URL-cím általában tartalmazza a szervezet és a megoldás nevét, legfeljebb 50 karakter hosszú.  Példa: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
+| **Marketing azonosító\***  | Az ajánlathoz társítani rakandó egyedi URL-cím általában tartalmazza a szervezet és a megoldás nevét, legfeljebb 50 karakter hosszú.  Például: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
 | **Előfizetés-azonosítók előzetes verzió\*** | Adjon hozzá egy-100 előfizetés-azonosítót az előzetesekhez. Ezek a fehérlistán szereplő előfizetések hozzáférhetnek az ajánlathoz, miután közzétették, mielőtt élesben lépne. |
 | **Hasznos linkek**          | Url-címeket adhat a dokumentációkhoz, a kibocsátási megjegyzésekhez, a gyakori kérdésekhez és így tovább. |
 | **Javasolt kategóriák\*** | Legfeljebb két (2) kategóriát választhat ki, beleértve az elsődleges és a másodlagos kategóriát (nem kötelező). Minden elsődleges és/vagy másodlagos kategóriához legfeljebb két (2) alkategóriát választhat ki. Ha nincs kiválasztva alkategória, akkor az ajánlat csak a kiválasztott kategóriában lesz felderíthető. |
@@ -52,7 +55,7 @@ Az alábbi táblázat a mezők célját és tartalmát ismerteti. A kötelező m
 |  ---------                |     ---------------                                                          |
 | *Logók*  |  |
 | **Kicsi\***                 | 40x40 pixeles .ico bitkép                                                      |
-| **Közepes\***                | 90x90 pixeles .ico bitkép                                                      |
+| **Medium\***                | 90x90 pixeles .ico bitkép                                                      |
 | **Nagy\***                 | 115x115 pixeles .ico bitkép                                                   |
 | **Széles\***                  | 255x115 pixeles .ico bitkép                                                    |
 | **Hős**                  | 815x290 bitkép.  Nem kötelező, azonban a feltöltés után a hős ikon nem törölhető. |

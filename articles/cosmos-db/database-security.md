@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mjbrown
-ms.openlocfilehash: c92f045f2c8d4443d596697596363bda3d0df975
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 8a0ef4c5abcd4c4137a878adf6a7fff9e80c2764
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985286"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273511"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Biztonság az Azure Cosmos DB-ben – Áttekintés
 
@@ -66,8 +66,8 @@ Nézzük vissza az előző listát – hány ilyen biztonsági követelményeket
 |Globális replikáció|Az Azure Cosmos DB kulcsrakész globális terjesztést kínál, amely lehetővé teszi, hogy egyetlen kattintással replikálja az adatokat az Azure bármelyik világméretű adatközpontjára. A globális replikáció lehetővé teszi, hogy globálisan skálázjon, és alacsony késleltetésű hozzáférést biztosítson az adatokhoz világszerte.<br><br>A biztonság összefüggésében a globális replikáció biztosítja az adatvédelmet a regionális hibák ellen.<br><br>További információ: [Globális adatterjesztés](distribute-data-globally.md).|
 |Régiónkénti feladatátvétel|Ha az adatokat több adatközpontban replikálta, az Azure Cosmos DB automatikusan átgördül a műveleteken, ha egy regionális adatközpont offline állapotba kerül. Létrehozhat egy rangsorolt feladatátvételi régiók listáját azadatok replikálásának régiójával. <br><br>További információ az [Azure Cosmos DB regionális feladatátvételeiről.](high-availability.md)|
 |Helyi replikáció|Az Azure Cosmos DB még egyetlen adatközponton belül is automatikusan replikálja az adatokat a magas rendelkezésre állás érdekében, így választhat a [konzisztenciaszintek közül.](consistency-levels.md) Ez a replikáció garantálja a 99,99%-os [rendelkezésre állási SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db) az összes egyrégiós fiókok és az összes több régiós fiókok nyugodt konzisztencia és 99,999%-os olvasási rendelkezésre állás az összes többrégiós adatbázis-fiókok.|
-|Automatizált online biztonsági mentések|Az Azure Cosmos-adatbázisok rendszeresen biztonsági mentése és tárolása georedundáns tárolóban történik. <br><br>További információ az [Automatikus online biztonsági mentés és visszaállítás az Azure Cosmos DB-vel.](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)|
-|Törölt adatok visszaállítása|Az automatikus online biztonsági mentések segítségével helyreállíthatja azokat az adatokat, amelyeket véletlenül az esemény után akár ~ 30 nappal törölt. <br><br>További információ az [Automatikus online biztonsági mentés és visszaállítás az Azure Cosmos DB-vel](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)|
+|Automatizált online biztonsági mentések|Az Azure Cosmos-adatbázisok rendszeresen biztonsági mentése és tárolása georedundáns tárolóban történik. <br><br>További információ az [Automatikus online biztonsági mentés és visszaállítás az Azure Cosmos DB-vel.](online-backup-and-restore.md)|
+|Törölt adatok visszaállítása|Az automatikus online biztonsági mentések segítségével helyreállíthatja azokat az adatokat, amelyeket véletlenül az esemény után akár ~ 30 nappal törölt. <br><br>További információ az [Automatikus online biztonsági mentés és visszaállítás az Azure Cosmos DB-vel](online-backup-and-restore.md)|
 |Érzékeny adatok védelme és elkülönítése|Az Összes adat a régiókban felsorolt Újdonságok? most már titkosítva van.<br><br>A személyes adatok és egyéb bizalmas adatok elkülöníthetők egy adott tárolóra és írásra és írásra, vagy az írásvédett hozzáférés csak meghatározott felhasználókra korlátozható.|
 |Támadások figyelése|A [naplózás és a tevékenységnaplók](logging.md)használatával figyelheti a fiókját a normál és rendellenes tevékenységekre. Megtekintheti, hogy milyen műveleteket hajtottak végre az erőforrásokon, ki kezdeményezte a műveletet, mikor történt a művelet, a művelet állapota, és még sok más, amint az a táblázatot követő képernyőképen látható.|
 |Reagálás a támadásokra|Miután kapcsolatba lépett az Azure-támogatással egy esetleges támadás bejelentéséhez, egy 5 lépéses incidens-reagálási folyamat elindul. Az 5 lépéses folyamat célja, hogy a probléma észlelése és a vizsgálat megkezdése után a lehető leggyorsabban helyreállítsa a normál szolgáltatásbiztonságot és műveleteket.<br><br>További információ a [Microsoft Azure biztonsági válasza a felhőben](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)című részben.|

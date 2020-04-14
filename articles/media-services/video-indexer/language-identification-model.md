@@ -8,18 +8,22 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/12/2019
+ms.date: 04/12/2020
 ms.author: ellbe
-ms.openlocfilehash: 7a2e03b8dacbf6c3ff20e02c804804b671e86d97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ba1521581316d559eb4e67bafba0061c31cc666b
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76513881"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272950"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>A beszélt nyelv automatikus azonosítása a nyelvazonosító modellel
 
-A Video Indexer támogatja az automatikus nyelvazonosítást (LID), amely a beszélt nyelvű tartalom automatikus azonosításának és a médiafájl domináns azonosított nyelven történő átírásának folyamata. Jelenleg a LID támogatja az angol, a spanyol, a francia, a német, az olasz, a kínai (egyszerűsített), a japán, az orosz és a portugál (brazil) nyelvet. 
+A Video Indexer támogatja az automatikus nyelvazonosítást (LID), amely a beszélt nyelvű tartalom automatikus azonosításának és a médiafájl domináns azonosított nyelven történő átírásának folyamata. 
+
+Jelenleg a LID támogatja: angol, spanyol, francia, német, olasz, mandarin chines, japán, orosz és portugál (brazil). 
+
+Mindenképpen tekintse át az alábbi [Irányelvek és korlátozások](#guidelines-and-limitations) című szakaszt.
 
 ## <a name="choosing-auto-language-identification-on-indexing"></a>Automatikus nyelvazonosító kiválasztása indexeléskor
 
@@ -49,7 +53,10 @@ Modell domináns nyelv érhető el az insights `sourceLanguage` JSON attribútum
 
 ## <a name="guidelines-and-limitations"></a>Irányelvek és korlátozások
 
-* A támogatott nyelvek közé tartozik az angol, a spanyol, a francia, a német, az olasz, a kínai (egyszerűsített), a japán, az orosz és a brazil portugál.
+* Az automatikus nyelvazonosító (LID) a következő nyelveket támogatja: 
+
+    Angol, spanyol, francia, német, olasz, mandarin kínai, japán, orosz és portugál (brazil).
+* Annak ellenére, hogy a Video Indexer támogatja az arab (modern szabvány és levantein), hindi és koreai nyelvet, ezeket a nyelveket a LID nem támogatja.
 * Ha a hang a fenti támogatott listátaktól eltérő nyelveket tartalmaz, az eredmény nem várt.
 * Ha a Video Indexer nem tudja azonosítani`>0.6`a nyelvet elég nagy megbízhatósággal ( ), a tartalék nyelv az angol.
 * A vegyes nyelvű hanggal rendelkező fájlok jelenleg nem támogatottak. Ha a hang vegyes nyelveket tartalmaz, az eredmény váratlan. 

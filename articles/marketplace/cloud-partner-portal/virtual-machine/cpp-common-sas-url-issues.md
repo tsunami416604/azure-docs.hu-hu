@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/27/2018
 ms.author: dsindona
-ms.openlocfilehash: 47702959474a352a8e13710ec850f789dee4d517
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c575389538230218e1e6e4f172ebcfbee8ee51dc
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278161"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273460"
 ---
 # <a name="common-sas-url-issues-and-fixes"></a>Gyakori SAS-URL-problémák és -javítások
+
+> [!IMPORTANT]
+> 2020. április 13-tól megkezdjük az Azure virtuálisgép-ajánlatok kezelését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse a [Közös SAS URL-problémák és javítások](https://aka.ms/AzureSAS_URL_FAQ) az áttelepített ajánlatok kezelésére vonatkozó utasításokat.
 
 Az alábbi táblázat a megosztott hozzáférésű aláírások (amelyek a megoldáshoz feltöltött virtuális gépek azonosítására és megosztására) való munka során felmerülő gyakori problémákat, valamint a javasolt megoldásokat sorolja fel.
 

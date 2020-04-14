@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: dsindona
-ms.openlocfilehash: 57f56a341cfc3db6a5f0664503809e6ab6cf3d3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a62af1d8d751d36150c236280077cde8f6547385
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278024"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273970"
 ---
 # <a name="create-technical-assets-for-a-virtual-machine-offer"></a>Technikai eszközök létrehozása virtuálisgép-ajánlathoz
+
+> [!IMPORTANT]
+> 2020. április 13-tól megkezdjük az Azure virtuálisgép-ajánlatok partnerközpontba való áthelyezését. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [Azure Virtuálisgép technikai eszközeinek létrehozása](https://aka.ms/AzureVMTechAsset) az áttelepített ajánlatok kezeléséhez című, az Utasításokat.
 
 Ez a szakasz bemutatja az Azure Piactér virtuális gép (VM) technikai eszközeinek létrehozását és konfigurálását.  A virtuális gép két összetevőt tartalmaz: a megoldás virtuális merevlemez (VHD) és a választható kapcsolódó adatlemezek.  
 
@@ -35,26 +38,26 @@ Konfigurálnia kell a virtuális gép operációs rendszert, a virtuális gép m
 ## <a name="fundamental-technical-knowledge"></a>Alapvető műszaki ismeretek
 
 Ezeknek az eszközöknek a tervezése, létrehozása és tesztelése időt vesz igénybe, és mind az Azure platform, mind az ajánlat létrehozásához használt technológiák műszaki ismerete szükséges. A megoldástartománymellett a mérnöki csapatnak ismernie kell a következő Microsoft-technológiákat: 
--   Az [Azure-szolgáltatások](https://azure.microsoft.com/services/) alapvető ismerete 
--   [Azure-alkalmazások tervezése és megtervezése](https://azure.microsoft.com/solutions/architecture/)
--   Az [Azure virtuális gépek](https://azure.microsoft.com/services/virtual-machines/), az Azure [Storage](https://azure.microsoft.com/services/?filter=storage) és az [Azure Networking munkaismerete](https://azure.microsoft.com/services/?filter=networking)
--   Az [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) munkaismerete
--   A [JSON](https://www.json.org/) munkaismerete
+-    Az [Azure-szolgáltatások](https://azure.microsoft.com/services/) alapvető ismerete 
+-    [Azure-alkalmazások tervezése és megtervezése](https://azure.microsoft.com/solutions/architecture/)
+-    Az [Azure virtuális gépek](https://azure.microsoft.com/services/virtual-machines/), az Azure [Storage](https://azure.microsoft.com/services/?filter=storage) és az [Azure Networking munkaismerete](https://azure.microsoft.com/services/?filter=networking)
+-    Az [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) munkaismerete
+-    A [JSON](https://www.json.org/) munkaismerete
 
 
 ## <a name="suggested-tools"></a>Javasolt eszközök 
 
 Válassza ki az alábbi parancsfájlok futtatásához tervezett környezetek egyikét vagy mindkettőt a virtuális gépek és a virtuális gépek kezeléséhez:
--   [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
--   [Azure CLI](https://docs.microsoft.com/cli/azure)
+-    [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
+-    [Azure CLI](https://docs.microsoft.com/cli/azure)
 
 Ezenkívül azt javasoljuk, hogy adja hozzá a következő eszközöket a fejlesztői környezethez: 
 
--   [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
--   [Visual Studio kód](https://code.visualstudio.com/)
-    *   Bővítmény: [Azure Resource Manager eszközök](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-    *   Kiterjesztés: [Szépít](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-    *   Kiterjesztés: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
+-    [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+-    [Visual Studio Code](https://code.visualstudio.com/)
+    *    Bővítmény: [Azure Resource Manager eszközök](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+    *    Kiterjesztés: [Szépít](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
+    *    Kiterjesztés: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
 Javasoljuk továbbá, hogy tekintse át a rendelkezésre álló eszközöket az [Azure Developer Tools](https://azure.microsoft.com/tools/) lapon, és ha a Visual Studio t használja, a Visual Studio [Piacteret.](https://marketplace.visualstudio.com/)
 

@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: 0882eaa8b54966c7a804cf78a3928771b238e056
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 243fea8fae071368a91bf482190442f15c372fc1
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885004"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271301"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Az Azure-ból Azure-ba irányuló virtuális gép replikációs hibáinak elhárítása
 
-Ez a cikk ismerteti, hogyan hárítsa el az Azure Site Recovery gyakori hibáit az Azure virtuális gépek (VM-ek) egyik régióból a másikba történő replikációja és helyreállítása során. A támogatott konfigurációkról további információt az [Azure virtuális gépek replikálásának támogatási mátrixában talál.](azure-to-azure-support-matrix.md)
+Ez a cikk ismerteti, hogyan hárítsa el az Azure Site Recovery gyakori hibáit az Azure virtuális gépek (VM) egyik régióból a másikba történő replikációja és helyreállítása során. A támogatott konfigurációkról további információt az [Azure virtuális gépek replikálásának támogatási mátrixában talál.](azure-to-azure-support-matrix.md)
 
 ## <a name="azure-resource-quota-issues-error-code-150097"></a>Az Azure-erőforrások kvótájával kapcsolatos problémák (hibakód: 150097)
 
@@ -169,11 +169,11 @@ Mivel a SUSE Linux szimbolikus hivatkozásokat vagy symlinkseket használ a tan�
    -rw-r--r-- 1 root root 1774 Jan  8 09:52 b204d74a.0
    ```
 
-## <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>Kimenő kapcsolat a hely-helyreállítási URL-címekhez vagy IP-tartományokhoz (hibakód: 151037 vagy 151072)
+## <a name="outbound-urls-or-ip-ranges-error-code-151037-or-151072"></a>Kimenő URL-címek vagy IP-tartományok (hibakód: 151037 vagy 151072)
 
 Ahhoz, hogy a Site Recovery replikációja működjön, a virtuális géptől adott URL-címekhez kimenő kapcsolat szükséges. Ha a virtuális gép tűzfal mögött van, vagy hálózati biztonsági csoport (NSG) szabályokat használ a kimenő kapcsolatok szabályozására, előfordulhat, hogy az alábbi problémák egyikével szembesülhet. Bár továbbra is támogatjuk az URL-címeken keresztüli kimenő hozzáférést, az IP-tartományok engedélyezési listájának használata már nem támogatott.
 
-### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195"></a>1. probléma: Nem sikerült regisztrálni az Azure virtuális gépet a Site Recovery szolgáltatással (151195)
+### <a name="issue-1-failed-to-register-azure-vm-with-site-recovery-151195"></a>1. probléma: Nem sikerült regisztrálni az Azure virtuális gépet a site recovery szolgáltatással (151195)
 
 #### <a name="possible-causes"></a>Lehetséges okok
 
@@ -216,7 +216,7 @@ A kapcsolat nem lehet létrehozni az Azure Site Recovery szolgáltatás végpont
 
 Ha az Azure Network Security Group (NSG) szabályok/tűzfal proxy segítségével szabályozza a kimenő hálózati kapcsolatot a virtuális gépen, győződjön meg arról, hogy szolgáltatáscímkéket használ. Már nem támogatjuk az IP-címek engedélyezési listájának használatát az Azure Site Recovery NSG-ken keresztül.
 
-### <a name="issue-4-azure-to-azure-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>4. probléma: Az Azure-nak az Azure-nak replikációja nem sikerült, amikor a hálózati forgalom a helyszíni proxykiszolgálón keresztül megy (151072)
+### <a name="issue-4-replication-fails-when-network-traffic-uses-on-premises-proxy-server-151072"></a>4. probléma: A replikáció sikertelen lesz, ha a hálózati forgalom helyszíni proxykiszolgálót használ (151072)
 
 #### <a name="possible-cause"></a>Lehetséges ok
 
@@ -245,7 +245,7 @@ Az egyéni proxybeállítások érvénytelenek, és a Mobilszolgáltató ügynö
 
 A [szükséges URL-címek](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) vagy a [szükséges IP-címek](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)megadásához kövesse a [Hálózatról az Azure-ban az Azure replikációra](azure-to-azure-about-networking.md)című útmutatót.
 
-## <a name="disk-not-found-in-the-machine-error-code-150039"></a>A lemez nem található a készülékben (hibakód: 150039)
+## <a name="disk-not-found-in-vm-error-code-150039"></a>A virtuális gépben nem található lemez (hibakód: 150039)
 
 A virtuális géphez csatlakoztatott új lemezt inicializálni kell. Ha a lemez nem található, a következő üzenet jelenik meg:
 
@@ -267,7 +267,7 @@ Győződjön meg arról, hogy az adatlemezek inicializálódnak, majd próbálko
 
 Ha a probléma továbbra is fennáll, forduljon az ügyfélszolgálathoz.
 
-## <a name="one-or-more-disks-are-available-for-protection-error-code-153039"></a>Egy vagy több lemez áll rendelkezésre védelemre (hibakód: 153039)
+## <a name="multiple-disks-available-for-protection-error-code-153039"></a>Több lemez áll rendelkezésre a védelem (hibakód: 153039)
 
 ### <a name="possible-causes"></a>Lehetséges okok
 
@@ -292,7 +292,7 @@ Ha ismét kifogástalanállapotot szeretne a virtuális gép replikációs álla
 
    :::image type="content" source="./media/azure-to-azure-troubleshoot-errors/dismiss-warning.png" alt-text="Az új lemezre vonatkozó figyelmeztetés elvetése.":::
 
-## <a name="remove-the-virtual-machine-from-the-vault-completed-with-information-error-code-150225"></a>A virtuális gép eltávolítása a tárolóból, amely információkkal van kiegészítve (hibakód: 150225)
+## <a name="vm-removed-from-vault-completed-with-information-error-code-150225"></a>A tárolóból eltávolított virtuális gép információval kiegészítve (hibakód: 150225)
 
 Amikor a Site Recovery védi a virtuális gépet, kapcsolatokat hoz létre a forrás virtuális gépen. A védelem eltávolításakor vagy a replikáció letiltásakor a Site Recovery a törlési feladat részeként eltávolítja ezeket a hivatkozásokat. Ha a virtuális gép rendelkezik erőforrás-zárolással, a törlési feladat befejeződik az adatokkal. Az információ azt mondja, hogy a virtuális gép el lett távolítva a Recovery Services tárolójából, de az elavult kapcsolatok egy része nem tisztítható meg a forrásgépen.
 
@@ -317,7 +317,7 @@ Figyelmen kívül hagyhatja ezt a figyelmeztetést, ha soha nem kívánja megvé
 1. Futtassa a _Cleanup-stale-asr-config-Azure-VM.ps1 parancsfájlt._ Adja meg az **előfizetési azonosítót**, **a virtuálisgép-erőforráscsoportot**és a **virtuális gép nevét** paraméterekként.
 1. Ha a rendszer kéri az Azure-hitelesítő adatok megadását, adja meg őket. Ezután ellenőrizze, hogy a parancsfájl hiba nélkül fut-e.
 
-## <a name="replication-cant-be-enabled-because-of-stale-resource-links-on-the-vm-error-code-150226"></a>A replikáció nem engedélyezhető a virtuális gép elavult erőforrás-kapcsolatai miatt (hibakód: 150226)
+## <a name="replication-not-enabled-on-vm-with-stale-resources-error-code-150226"></a>A replikáció nincs engedélyezve az elavult erőforrásokkal rendelkező virtuális számítógépen (hibakód: 150226)
 
 ### <a name="possible-causes"></a>Lehetséges okok
 
@@ -342,9 +342,9 @@ Egy elavult konfiguráció előfordulhat egy Azure-beli virtuális gép, ha enge
 1. Futtassa a _Cleanup-stale-asr-config-Azure-VM.ps1 parancsfájlt._ Adja meg az **előfizetési azonosítót**, **a virtuálisgép-erőforráscsoportot**és a **virtuális gép nevét** paraméterekként.
 1. Ha a rendszer kéri az Azure-hitelesítő adatok megadását, adja meg őket. Ezután ellenőrizze, hogy a parancsfájl hiba nélkül fut-e.
 
-## <a name="unable-to-see-the-azure-vm-or-resource-group-for-the-selection-in-the-enable-replication-job"></a>Nem lehet látni az Azure virtuális gép vagy erőforráscsoport a kiválasztás a replikációs feladat engedélyezése
+## <a name="cant-select-vm-or-resource-group-in-enable-replication-job"></a>A virtuális gép vagy az erőforráscsoport nem jelölhető ki a replikációs feladat engedélyezéséhez
 
-### <a name="issue-1-the-resource-group-and-source-virtual-machine-are-in-different-locations"></a>1. probléma: Az erőforráscsoport és a forrásvirtuális gép különböző helyeken található
+### <a name="issue-1-the-resource-group-and-source-vm-are-in-different-locations"></a>1. probléma: Az erőforráscsoport és a forrásvirtuális gép különböző helyeken található
 
 A Site Recovery jelenleg megköveteli, hogy a forrásrégió erőforráscsoportja és a virtuális gépek ugyanazon a helyen legyenek. Ha nem, akkor nem fogja tudni megtalálni a virtuális gépet vagy erőforráscsoportot, amikor védelmet próbál alkalmazni.
 
@@ -375,7 +375,7 @@ Előfordulhat, hogy nem jelenik meg a virtuális gép, amely engedélyezni kív�
 1. Futtassa a _Cleanup-stale-asr-config-Azure-VM.ps1 parancsfájlt._ Adja meg az **előfizetési azonosítót**, **a virtuálisgép-erőforráscsoportot**és a **virtuális gép nevét** paraméterekként.
 1. Ha a rendszer kéri az Azure-hitelesítő adatok megadását, adja meg őket. Ezután ellenőrizze, hogy a parancsfájl hiba nélkül fut-e.
 
-## <a name="unable-to-select-a-virtual-machine-for-protection"></a>Nem lehet kijelölni egy virtuális gépet a védelemhez
+## <a name="unable-to-select-a-vm-for-protection"></a>Nem lehet kiválasztani a virtuális gép védelmi
 
 ### <a name="possible-cause"></a>Lehetséges ok
 
@@ -385,7 +385,7 @@ A virtuális gép egy bővítményt telepített sikertelen vagy nem válaszoló 
 
 Nyissa meg a **Virtuálisgépek** > **beállítási** > **bővítményeit,** és ellenőrizze, hogy vannak-e sikertelen állapotú bővítmények. Távolítsa el a sikertelen bővítményeket, majd próbálkozzon újra a virtuális gép védelmével.
 
-## <a name="the-vms-provisioning-state-isnt-valid-error-code-150019"></a>A virtuális gép létesítési állapota érvénytelen (hibakód: 150019)
+## <a name="vm-provisioning-state-isnt-valid-error-code-150019"></a>A virtuális gép létesítési állapota érvénytelen (150019-es hibakód)
 
 A virtuális gép replikációjának engedélyezéséhez a létesítési állapotnak **sikeresnek**kell lennie. A kiépítési állapot ellenőrzéséhez kövesse az alábbi lépéseket:
 
@@ -400,15 +400,15 @@ A virtuális gép replikációjának engedélyezéséhez a létesítési állapo
 - Ha a **provisioningState** **sikertelen,** forduljon az ügyfélszolgálathoz a hibaelhárításhoz szükséges részletekkel.
 - Ha a **provisioningState** **frissítése,** egy másik bővítmény telepítése lehet. Ellenőrizze, hogy vannak-e folyamatban lévő műveletek a virtuális gépen, várja meg, amíg befejeződnek, majd próbálja meg újra a sikertelen Site Recovery feladatot a replikáció engedélyezéséhez.
 
-## <a name="unable-to-select-target-vm-network-selection-tab-is-unavailable"></a>Nem lehet kiválasztani a cél virtuális gépét (a hálózat kijelölése lap nem érhető el)
+## <a name="unable-to-select-target-vm"></a>Nem lehet kiválasztani a cél virtuális gépét
 
-### <a name="issue-1-your-vm-is-attached-to-a-network-thats-already-mapped-to-a-target-network"></a>1. probléma: A virtuális gép olyan hálózathoz van csatlakoztatva, amely már le van képezve egy célhálózatra
+### <a name="issue-1-vm-is-attached-to-a-network-thats-already-mapped-to-a-target-network"></a>1. probléma: A virtuális gép olyan hálózathoz van csatlakoztatva, amely már le van képezve egy célhálózatra
 
 Ha a forrás virtuális gép egy virtuális hálózat része, és egy másik virtuális gép ugyanabból a virtuális hálózatból már le van képezve a célerőforrás-csoportban lévő hálózattal, a hálózatkijelöléslegördülő lista alapértelmezés szerint nem érhető el (halványan jelenik meg).
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png" alt-text="A hálózati kijelölési lista nem érhető el.":::
 
-### <a name="issue-2-you-previously-protected-the-vm-by-using-site-recovery-and-then-you-disabled-the-replication"></a>2. probléma: Korábban a Site Recovery használatával védte a virtuális gép, majd letiltotta a replikációt
+### <a name="issue-2-you-previously-protected-the-vm-and-then-you-disabled-the-replication"></a>2. probléma: Korábban megvédte a virtuális gép, majd letiltotta a replikációt
 
 A virtuális gép replikációjának letiltása nem törli a hálózati hozzárendelést. A leképezést törölni kell a Recovery Services tárolóból, ahol a virtuális gép védett volt. Nyissa meg a **Helyreállítási szolgáltatások tárolója** > **helyhelyreállítási infrastruktúra** > **hálózati leképezése webhelyre való ugrását.**
 
@@ -420,9 +420,9 @@ A vész-helyreállítási telepítés során konfigurált célhálózat a kezdet
 
 A hálózati leképezés módosítása hatással van az összes olyan védett virtuális gépre, amely ugyanazt a hálózati hozzárendelést használja.
 
-## <a name="com-or-volume-shadow-copy-service-error-error-code-151025"></a>COM+ vagy Kötet árnyékmásolata szolgáltatás hiba (hibakód: 151025)
+## <a name="com-or-vss-error-code-151025"></a>COM+ vagy VSS (hibakód: 151025)
 
-A hiba bekövetkeztekor a következő üzenet jelenik meg:
+A COM+ vagy a Volume Shadow Copy Service (VSS) hiba esetén a következő üzenet jelenik meg:
 
 ```Output
 Site Recovery extension failed to install.
@@ -458,7 +458,7 @@ A lemez kisebb, mint a támogatott 1024 MB-os méret.
 
 Győződjön meg arról, hogy a lemez mérete a támogatott mérettartományon belül van, majd próbálkozzon újra a művelettel.
 
-## <a name="protection-wasnt-enabled-because-the-grub-configuration-includes-the-device-name-instead-of-the-uuid-error-code-151126"></a>A védelem nem volt engedélyezve, mert a GRUB-konfiguráció az UUID helyett az eszköz nevét tartalmazza (hibakód: 151126)
+## <a name="protection-not-enabled-when-grub-uses-device-name-error-code-151126"></a>A védelem nem engedélyezett, ha a GRUB eszköznevet használ (hibakód: 151126)
 
 ### <a name="possible-causes"></a>Lehetséges okok
 
@@ -493,7 +493,7 @@ Cserélje le az egyes eszközök nevét a megfelelő UUID azonosítóra:
 
 1. Próbálkozzon újra a védelemmel.
 
-## <a name="enable-protection-failed-because-the-device-mentioned-in-the-grub-configuration-doesnt-exist-error-code-151124"></a>A védelem engedélyezése nem sikerült, mert a GRUB-konfigurációban említett eszköz nem létezik (hibakód: 151124)
+## <a name="protection-failed-because-grub-device-doesnt-exist-error-code-151124"></a>A védelem nem sikerült, mert a GRUB eszköz nem létezik (hibakód: 151124)
 
 ### <a name="possible-cause"></a>Lehetséges ok
 
@@ -517,7 +517,7 @@ A GRUB-nak minden példában két LVM `root` `swap` eszközt kell `rootvg`észle
 
 Ha az LVM-eszköz nem létezik, hozza létre, vagy távolítsa el a megfelelő paramétereket a GRUB konfigurációs fájlokból. Ezután próbálja meg újra engedélyezni a védelmet.
 
-## <a name="a-site-recovery-mobility-service-update-finished-with-warnings-error-code-151083"></a>A Site Recovery Mobility szolgáltatás frissítése figyelmeztetésekkel fejeződött be (hibakód: 151083)
+## <a name="mobility-service-update-finished-with-warnings-error-code-151083"></a>A mobilitási szolgáltatás frissítése figyelmeztetésekkel fejeződött be (hibakód: 151083)
 
 A Site Recovery Mobility szolgáltatás számos összetevőből áll, amelyek közül az egyiket szűrő-illesztőprogramnak nevezik. A szűrőillesztő csak a rendszer újraindítása során töltődik be a rendszermemóriába. Amikor egy mobilitási szolgáltatás frissítése szűrőillesztő-módosításokat tartalmaz, a számítógép frissül, de továbbra is megjelenik egy figyelmeztetés, hogy egyes javítások újraindítást igényelnek. A figyelmeztetés azért jelenik meg, mert a szűrőillesztő javításai csak az új szűrőillesztő betöltésekor lépnek érvénybe, ami csak újraindítás közben történik.
 
@@ -526,7 +526,9 @@ A Site Recovery Mobility szolgáltatás számos összetevőből áll, amelyek k�
 >
 > A szűrő-illesztőprogramon kívül a Mobilitási szolgáltatás frissítésében található egyéb fejlesztések és javítások előnyei újraindítás nélkül lépnek érvénybe.
 
-## <a name="protection-couldnt-be-enabled-because-the-replica-managed-disk-already-exists-without-expected-tags-in-the-target-resource-group-error-code-150161"></a>A védelem nem engedélyezhető, mert a replikánderes felügyelt lemez már létezik a várt címkék nélkül a célerőforráscsoportban (hibakód: 150161)
+## <a name="protection-not-enabled-if-replica-managed-disk-exists"></a>A védelem nem engedélyezett, ha a replikán i menedzselt lemez létezik
+
+Ez a hiba akkor fordul elő, ha a kópia felügyelt lemeze már létezik a várt címkék nélkül a célerőforrás-csoportban.
 
 ### <a name="possible-cause"></a>Lehetséges ok
 

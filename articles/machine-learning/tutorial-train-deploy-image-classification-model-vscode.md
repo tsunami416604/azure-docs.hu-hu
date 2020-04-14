@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 02/24/2020
-ms.openlocfilehash: ba9cd2e7dc0248aa351cb7bc4519689763f1adda
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/13/2020
+ms.openlocfilehash: f793f8c4cb84f821c098cc5ce98e693d272e725f
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239881"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272793"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension"></a>A TensorFlow-modell betanítása és üzembe helyezése az Azure Machine Learning Visual Studio kódbővítmény használatával
 
@@ -99,71 +99,33 @@ Számítási cél létrehozása:
 1. Válassza ki a virtuális gép méretét. Válassza ki **Standard_F2s_v2** a beállítások listájából. A virtuális gép mérete hatással van a modellek betanításához szükséges időre. A virtuális gépek méretéről további információt az [Azure-beli Linux-virtuális gépek méretei című témakörben talál.](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)
 1. Nevezze el a számítási "TeamWkspc-com" nevet, és nyomja le az **Enter** billentyűt a számítás létrehozásához.
 
-Néhány perc múlva az új számítási cél megjelenik a munkaterület *számítási* csomópontján.
-
-## <a name="create-a-run-configuration"></a>Futtatási konfiguráció létrehozása
-
-Amikor beküld egy betanítási futtatást egy számítási célnak, akkor a betanítási feladat futtatásához szükséges konfigurációt is elküldi. Például a parancsfájlt, amely tartalmazza a betanítási kódot, és a Python-függőségek futtatásához szükséges.
-
-Futtatási konfiguráció létrehozása:
-
-1. A Visual Studio-kód tevékenységsávján válassza az **Azure** ikont. Megjelenik az Azure Machine Learning nézet. 
-1. Bővítse ki az előfizetési csomópontot. 
-1. Bontsa ki a **TeamWorkspace** csomópontot. 
-1. A munkaterületi csomópont alatt kattintson a jobb gombbal a **TeamWkspc-com** számítási csomópontjára, és válassza **a Futtatási konfiguráció létrehozása parancsot.**
-
-    > [!div class="mx-imgBorder"]
-    > ![Futtatási konfiguráció létrehozása](./media/tutorial-train-deploy-image-classification-model-vscode/create-run-configuration.png)
-
-1. Nevezze el a futtatási konfigurációt "MNIST-rc" néven, és nyomja le az **Enter billentyűt** a futtatási konfiguráció létrehozásához.
-1. Ezután válassza **a TensorFlow egycsomópontos képzés** a képzési feladat típusa.
-1. Az **Enter** billentyű lenyomásához tallózzon a parancsfájlban a számítási számítógépen való futtatáshoz. Ebben az esetben a modell betanításához szükséges `vscode-tools-for-ai/mnist-vscode-docs-sample` parancsfájl a `train.py` könyvtárban lévő fájl.
-1. Írja be a következőket a beviteli mezőbe a szükséges csomagok megadásához.
-    
-    ```text
-    pip: azureml-defaults; conda: python=3.6.2, tensorflow=1.15.0
-    ```
-    
-    A VS `MNIST-rc.runconfig` Code-ban megjelenik egy hívott fájl, amelynek tartalma hasonló az alábbihoz:
+    A VS Code fájltartalma az alábbihoz hasonló tartalommal jelenik meg:
 
     ```json
     {
-        "script": "train.py",
-        "framework": "Python",
-        "communicator": "None",
-        "target": "TeamWkspc-com",
-        "environment": {
-            "python": {
-                "userManagedDependencies": false,
-                "condaDependencies": {
-                    "dependencies": [
-                        "python=3.6.2",
-                        "tensorflow=1.15.0",
-                        {
-                            "pip": [
-                                "azureml-defaults"
-                            ]
-                        }
-                    ]
-                }
-            },
-            "docker": {
-                "baseImage": "mcr.microsoft.com/azureml/base:0.2.4",
-                "enabled": true,
-                "baseImageRegistry": {
-                    "address": null,
-                    "username": null,
-                    "password": null
-                }
+        "location": "westus2",
+        "tags": {},
+        "properties": {
+            "computeType": "AmlCompute",
+            "description": "",
+            "properties": {
+                "vmSize": "Standard_F2s_v2",
+                "vmPriority": "dedicated",
+                "scaleSettings": {
+                    "maxNodeCount": 4,
+                    "minNodeCount": 0,
+                    "nodeIdleTimeBeforeScaleDown": 120
+                },
+                "userAccountCredentials": {
+                    "adminUserName": "",
+                    "adminUserPassword": "",
+                    "adminUserSshPublicKey": ""
+                },
+                "subnetName": "",
+                "vnetName": "",
+                "vnetResourceGroupName": "",
+                "remoteLoginPortPublicAccess": ""
             }
-        },
-        "nodeCount": 1,
-        "history": {
-            "outputCollection": true,
-            "snapshotProject": false,
-            "directoriesToWatch": [
-                "logs"
-            ]
         }
     }
     ```
@@ -175,7 +137,152 @@ Futtatási konfiguráció létrehozása:
     Azure ML: Save and Continue
     ```
 
-A `MNIST-rc` futtatási konfiguráció a *TeamWkspc-com* számítási csomópont alatt kerül hozzáadásra.
+Néhány perc múlva az új számítási cél megjelenik a munkaterület *számítási* csomópontján.
+
+## <a name="create-a-run-configuration"></a>Futtatási konfiguráció létrehozása
+
+Amikor beküld egy betanítási futtatást egy számítási célnak, akkor a betanítási feladat futtatásához szükséges konfigurációt is elküldi. Például a parancsfájlt, amely tartalmazza a betanítási kódot, és a Python-függőségek futtatásához szükséges.
+
+Futtatási konfiguráció létrehozása:
+
+1. A Visual Studio-kód tevékenységsávján válassza az **Azure** ikont. Megjelenik az Azure Machine Learning nézet. 
+1. Bővítse ki az előfizetési csomópontot. 
+1. Bontsa ki a **TeamWorkspace > számítási** csomópontot. 
+1. A számítási csomópont alatt kattintson a jobb gombbal a **TeamWkspc-com** számítási csomópontjára, és válassza **a Futtatási konfiguráció létrehozása parancsot.**
+
+    > [!div class="mx-imgBorder"]
+    > ![Futtatási konfiguráció létrehozása](./media/tutorial-train-deploy-image-classification-model-vscode/create-run-configuration.png)
+
+1. Nevezze el a futtatási konfigurációt "MNIST-rc" néven, és nyomja le az **Enter billentyűt** a futtatási konfiguráció létrehozásához.
+1. Ezután válassza **az Új Azure ML-környezet létrehozása**lehetőséget. A környezetek határozzák meg a parancsfájlok futtatásához szükséges függőségeket.
+1. Nevezze el a környezetet "MNIST-env" néven, és nyomja **le az Enter billentyűt.**
+1. Válassza **a Conda függőségek fájlját** a listából.
+1. Az **Enter** billentyű lenyomásával tallózhat a Conda-függőségfájlban. Ebben az esetben a függőségi `env.yml` fájl `vscode-tools-for-ai/mnist-vscode-docs-sample` a könyvtárban lévő fájl.
+
+    A VS Code fájltartalma az alábbihoz hasonló tartalommal jelenik meg:
+
+    ```json
+    {
+        "name": "MNIST-env",
+        "version": "1",
+        "python": {
+            "interpreterPath": "python",
+            "userManagedDependencies": false,
+            "condaDependencies": {
+                "name": "vs-code-azure-ml-tutorial",
+                "channels": [
+                    "defaults"
+                ],
+                "dependencies": [
+                    "python=3.6.2",
+                    "tensorflow=1.15.0",
+                    "pip",
+                    {
+                        "pip": [
+                            "azureml-defaults"
+                        ]
+                    }
+                ]
+            },
+            "baseCondaEnvironment": null
+        },
+        "environmentVariables": {},
+        "docker": {
+            "baseImage": "mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04",
+            "baseDockerfile": null,
+            "baseImageRegistry": {
+                "address": null,
+                "username": null,
+                "password": null
+            },
+            "enabled": false,
+            "arguments": []
+        },
+        "spark": {
+            "repositories": [],
+            "packages": [],
+            "precachePackages": true
+        },
+        "inferencingStackVersion": null
+    }
+    ```
+
+1. Miután elégedett a konfigurációval, mentse el a parancspaletta megnyitásával és a következő parancs beírásával:
+
+    ```text
+    Azure ML: Save and Continue
+    ```
+
+1. Az **Enter** billentyű lenyomásához tallózzon a parancsfájlban a számítási számítógépen való futtatáshoz. Ebben az esetben a modell betanításához szükséges `vscode-tools-for-ai/mnist-vscode-docs-sample` parancsfájl a `train.py` könyvtárban lévő fájl.
+
+    A VS `MNIST-rc.runconfig` Code-ban megjelenik egy hívott fájl, amelynek tartalma hasonló az alábbihoz:
+
+    ```json
+    {
+        "script": "train.py",
+        "framework": "Python",
+        "communicator": "None",
+        "target": "TeamWkspc-com",
+        "environment": {
+            "name": "MNIST-env",
+            "version": "1",
+            "python": {
+                "interpreterPath": "python",
+                "userManagedDependencies": false,
+                "condaDependencies": {
+                    "name": "vs-code-azure-ml-tutorial",
+                    "channels": [
+                        "defaults"
+                    ],
+                    "dependencies": [
+                        "python=3.6.2",
+                        "tensorflow=1.15.0",
+                        "pip",
+                        {
+                            "pip": [
+                                "azureml-defaults"
+                            ]
+                        }
+                    ]
+                },
+                "baseCondaEnvironment": null
+            },
+            "environmentVariables": {},
+            "docker": {
+                "baseImage": "mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04",
+                "baseDockerfile": null,
+                "baseImageRegistry": {
+                    "address": null,
+                    "username": null,
+                    "password": null
+                },
+                "enabled": false,
+                "arguments": []
+            },
+            "spark": {
+                "repositories": [],
+                "packages": [],
+                "precachePackages": true
+            },
+            "inferencingStackVersion": null
+        },
+        "history": {
+            "outputCollection": true,
+            "snapshotProject": false,
+            "directoriesToWatch": [
+                "logs"
+            ]
+        }
+    }
+    ```
+
+1. Miután elégedett a konfigurációval, mentse el a parancspaletta megnyitásával és a következő parancs beírásával:
+
+    ```text
+    Azure ML: Save and Continue
+    ```
+
+A `MNIST-rc` futtatási konfiguráció a *TeamWkspc-com* számítási csomópont `MNIST-env` alatt, a környezeti konfiguráció pedig a *Környezetek* csomópont ban kerül hozzáadásra.
 
 ## <a name="train-the-model"></a>A modell betanítása
 
@@ -264,7 +371,7 @@ Webszolgáltatás telepítése ACI-ként:
 1. Kattintson a jobb gombbal az **MNIST-TensorFlow-modellre,** és válassza **a Szolgáltatás telepítése a regisztrált modellből parancsot.**
 
     > [!div class="mx-imgBorder"]
-    > ![A modell üzembe helyezése](./media/tutorial-train-deploy-image-classification-model-vscode/register-model.png)
+    > ![A modell üzembe helyezése](./media/tutorial-train-deploy-image-classification-model-vscode/deploy-model.png)
 
 1. Válassza az **Azure Container Instances lehetőséget.**
 1. Nevezze el a szolgáltatást "mnist-tensorflow-svc" néven, és nyomja **le az Enter billentyűt.**
@@ -300,6 +407,7 @@ Webszolgáltatás telepítése ACI-ként:
         ]
     }
     ```
+
 1. Miután elégedett a konfigurációval, mentse el a parancspaletta megnyitásával és a következő parancs beírásával:
 
     ```text

@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: dsindona
-ms.openlocfilehash: fb568400cb60f108303909353bfa703e98ab6157
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: af42476f9d04f7f2bfc275c731b02aa5a9b8ecf6
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286421"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273154"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Önteszt-ügyfél létrehozása az Azure virtuálisgép-lemezkép előzetes érvényesítéséhez
+
+> [!IMPORTANT]
+> 2020. április 13-tól megkezdjük az Azure virtuálisgép-ajánlatok kezelését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [Azure VM-lemezkép-minősítés](https://aks.ms/CertifyVMimage) utasításait az áttelepített ajánlatok kezeléséhez.
 
 Használja ezt a cikket útmutatóként egy ügyfélszolgáltatás létrehozásához, amely felhasználja az önteszt API-t. Az önteszt API-val előzetesen érvényesíthet egy virtuális gépet (VM) annak érdekében, hogy az megfeleljen az Azure Marketplace legújabb közzétételi követelményeinek. Ez az ügyfélszolgáltatás lehetővé teszi a virtuális gép tesztelését a Microsoft-minősítési ajánlat elküldése előtt.
 
@@ -219,7 +222,7 @@ A következő képernyőfelvétel en látható a JSON-találat a curl hívásbó
 
 A következő lépésekkel válassza ki az Azure AD-bérlőt, ahol létre szeretné hozni az alkalmazást.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com/)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. A felső menüsorban válassza ki a fiókját, és a Címtár listában válassza ki azt az Active Directory-bérlőt, ahol regisztrálni szeretné az alkalmazást. Vagy válassza ki a **Könyvtár + Előfizetés** ikont a Globális előfizetésszűrő megtekintéséhez. A következő képernyőfelvétel en látható egy példa erre a szűrőre.
 
    ![Az előfizetésszűrő kiválasztása](./media/stclient-subscription-filter.png)

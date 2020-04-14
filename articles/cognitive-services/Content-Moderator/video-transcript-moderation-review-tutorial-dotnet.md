@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 2fbd4270221cb23a4f99a0f8155bb1de76472f31
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 09569be88daa6295834e58da6b51656d0438bed4
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74976978"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270927"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Oktatóanyag: Video- és átiratmoderálás
 
@@ -82,7 +82,7 @@ A `Main()` a következő parancssori argumentumokat kezeli:
 Ha nincs parancssori argumentum, a `Main()` meghívja a `GetUserInputs()` parancsot. Ez a metódus arra kéri a felhasználót, hogy adja meg egy videofájl elérési útvonalát, valamint szabja meg, hogy készüljön-e szöveges átirat.
 
 > [!NOTE]
-> A konzolalkalmazás az [Azure Media Indexer API-t](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) használja a feltöltött videó hangsávjából származó átiratok létrehozásához. Az eredmények WebVTT formátumban vannak megadva. További információt erről a formátumról a [webes videók szövegsávos formátumáról](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) szóló cikkben találhat.
+> A konzolalkalmazás az [Azure Media Indexer API-t](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) használja a feltöltött videó hangsávjából származó átiratok létrehozásához. Az eredmények WebVTT formátumban vannak megadva. További információt erről a formátumról a [webes videók szövegsávos formátumáról](https://developer.mozilla.org/docs/Web/API/WebVTT_API) szóló cikkben találhat.
 
 ### <a name="initialize-and-processvideo-methods"></a>Inicializálás és ProcessVideo-módszerek
 
@@ -223,7 +223,7 @@ A videomoderálási feladat eredménye (lásd: [videomoderálás gyors útmutat�
 A `GenerateVTT` jelölő használatakor hangátirat is készül.
 
 > [!NOTE]
-> A konzolalkalmazás az [Azure Media Indexer API-t](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) használja a feltöltött videó hangsávjából származó átiratok létrehozásához. Az eredmények WebVTT formátumban vannak megadva. További információt erről a formátumról a [webes videók szövegsávos formátumáról](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) szóló cikkben találhat.
+> A konzolalkalmazás az [Azure Media Indexer API-t](https://docs.microsoft.com/azure/media-services/media-services-process-content-with-indexer2) használja a feltöltött videó hangsávjából származó átiratok létrehozásához. Az eredmények WebVTT formátumban vannak megadva. További információt erről a formátumról a [webes videók szövegsávos formátumáról](https://developer.mozilla.org/docs/Web/API/WebVTT_API) szóló cikkben találhat.
 
 ## <a name="create-a-human-review"></a>Emberi vélemény létrehozása
 

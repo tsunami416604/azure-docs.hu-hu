@@ -7,20 +7,23 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: dc106ecf40367172f28c0f339bbcce8bddb50a34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 09e82b9905104df9b1902b0f64f6cfdf812aabb8
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278075"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81274021"
 ---
 # <a name="create-certificates-for-azure-key-vault"></a>Tanúsítványok létrehozása az Azure Key Vaulthoz
 
+> [!IMPORTANT]
+> 2020. április 13-tól megkezdjük az Azure virtuálisgép-ajánlatok kezelését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [Azure VM-lemezkép-minősítés](https://aks.ms/CertifyVMimage) utasításait az áttelepített ajánlatok kezeléséhez.
+
 Ez a cikk bemutatja, hogyan lehet kiépíteni az önaláírt tanúsítványok létrehozásához szükséges Windows Remote Management (WinRM) kapcsolat egy Azure által üzemeltetett virtuális gép (VM). Ez a folyamat három lépésből áll:
 
-1.  Hozza létre a biztonsági tanúsítványt. 
-2.  Hozza létre az Azure Key Vault a tanúsítvány tárolásához. 
-3.  Tárolja a tanúsítványokat a kulcstartóban. 
+1.    Hozza létre a biztonsági tanúsítványt. 
+2.    Hozza létre az Azure Key Vault a tanúsítvány tárolásához. 
+3.    Tárolja a tanúsítványokat a kulcstartóban. 
 
 Ehhez a munkához használhat egy új vagy egy meglévő Azure-erőforráscsoportot.  Az előbbi megközelítést a következő magyarázat használja.
 

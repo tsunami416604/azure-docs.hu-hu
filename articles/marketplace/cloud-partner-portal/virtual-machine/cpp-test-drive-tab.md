@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: dsindona
-ms.openlocfilehash: d4fc8762e25825b21637b16b751d57a0dcbf369e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 22538047adc17a40438359e11bff7fd20e43bcc6
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288801"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273086"
 ---
 # <a name="virtual-machine-test-drive-tab"></a>Virtuálisgép tesztmeghajtó lapja
+
+> [!IMPORTANT]
+> 2020. április 13-tól megkezdjük az Azure virtuálisgép-ajánlatok kezelését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [Azure virtuális gép ajánlatlétrehozása](https://aka.ms/CreateAzureVMoffer) című, az áttelepített ajánlatok kezelésével című útmutatóutasításait.
 
 Az **Új ajánlat** lap **Tesztmeghajtó** lapja lehetővé teszi, hogy a leendő ügyfelek számára gyakorlati, saját irányítású bemutatót biztosítson a termék legfontosabb funkcióiról és előnyeiről, amelyeket egy szabványosított forgatókönyv mutat be.  A Test Drive a Test Drive-ot a Test Drive-ot támogató ajánlattípusok opcionális szolgáltatása.  A Test Drive-hoz a támogató eszközök megfelelő megvalósításához van szükség.  További információt az Azure Marketplace Test Drive című [cikkben talál.](https://azure.microsoft.com/blog/azure-marketplace-test-drive/)  <!--TD: Replace with migrated version of Test Drive article! -->
 

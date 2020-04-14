@@ -6,12 +6,12 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 65abc9c7153aaf2973d5927400e27467066098f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 30487eebed361e5b010df023a9b1a44f96590b14
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275840"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271080"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Naplóalapú és előre összesített metrikák az Application Insightsban
 
@@ -21,23 +21,23 @@ Ez a cikk ismerteti a különbséget a "hagyományos" Application Insights-metri
 
 Egészen a közelmúltig az alkalmazás figyelése telemetriai adatok modell Az Application Insights kizárólag egy kis számú előre meghatározott típusú események, például a kérelmek, kivételek, függőségi hívások, oldalnézetek stb. A fejlesztők használhatják az SDK-t, hogy manuálisan kibocsáthassák ezeket az eseményeket (az SDK-t explicit módon meghívó kód írásával), vagy támaszkodhatnak az automatikus instrumentációból származó események automatikus gyűjteményére. Mindkét esetben az Application Insights-háttérrendszer az összes összegyűjtött eseményt naplókként tárolja, és az Azure Insights-panelek az Azure Portalon analitikai és diagnosztikai eszközként működnek a naplók eseményalapú adatainak megjelenítéséhez.
 
-Naplók használatával az események teljes készletének megőrzéséhez hozhat nagy analitikai és diagnosztikai értéket. Például lekaphatja egy adott URL-címre érkező kérelmek pontos számát a hívásokat kezdeményező különböző felhasználók számával. Vagy részletes diagnosztikai nyomkövetéseket is lekaphat, beleértve a kivételeket és a függőségi hívásokat bármely felhasználói munkamenethez. Az ilyen típusú információk jelentősen javíthatják az alkalmazás állapotának és használatának láthatóságát, lehetővé téve az alkalmazással kapcsolatos problémák diagnosztizálásához szükséges idő csökkentését. 
+Naplók használatával az események teljes készletének megőrzéséhez hozhat nagy analitikai és diagnosztikai értéket. Például lekaphatja egy adott URL-címre érkező kérelmek pontos számát a hívásokat kezdeményező különböző felhasználók számával. Vagy részletes diagnosztikai nyomkövetéseket is lekaphat, beleértve a kivételeket és a függőségi hívásokat bármely felhasználói munkamenethez. Az ilyen típusú információk jelentősen javíthatják az alkalmazás állapotának és használatának láthatóságát, lehetővé téve az alkalmazással kapcsolatos problémák diagnosztizálásához szükséges idő csökkentését.
 
-Ugyanakkor az események teljes készletének gyűjtése nem praktikus (vagy akár lehetetlen) a sok telemetriai adatokat generáló alkalmazások számára. Olyan helyzetekben, amikor az események mennyisége túl magas, az Application Insights több telemetriai kötet-csökkentési technikákat valósít meg, például [mintavételezési](https://docs.microsoft.com/azure/application-insights/app-insights-sampling) és [szűrési,](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling) amelyek csökkentik az összegyűjtött és a tárolt események számát. Sajnos a tárolt események számának csökkentése is csökkenti a metrikák pontosságát, amelyek a színfalak mögött, lekérdezési idejű összesítéseket kell végrehajtania a naplókban tárolt események.
+Ugyanakkor az események teljes készletének gyűjtése nem praktikus (vagy akár lehetetlen) az alkalmazások, amelyek nagy mennyiségű telemetriai adatokat generál. Olyan helyzetekben, amikor az események mennyisége túl magas, az Application Insights több telemetriai kötet-csökkentési technikákat valósít meg, például [mintavételezési](https://docs.microsoft.com/azure/application-insights/app-insights-sampling) és [szűrési,](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling) amelyek csökkentik az összegyűjtött és a tárolt események számát. Sajnos a tárolt események számának csökkentése is csökkenti a metrikák pontosságát, amelyek a színfalak mögött, lekérdezési idejű összesítéseket kell végrehajtania a naplókban tárolt események.
 
 > [!NOTE]
 > Az Application Insights ban a metrikák, amelyek a naplókban tárolt események és mérések lekérdezés-idő összesítésén alapulnak, log-alapú metrikáknak nevezzük. Ezek a metrikák általában sok dimenziót az esemény tulajdonságait, ami miatt kiváló az elemzéshez, de ezek a metrikák pontosságát negatívan befolyásolja a mintavétel és a szűrés.
 
 ## <a name="pre-aggregated-metrics"></a>Előre összesített mutatók
 
-A naplóalapú metrikák mellett 2018 őszén az Application Insights-csapat nyilvános előzetes verziót adott le az idősorozatokra optimalizált speciális tárházban tárolt mérőszámokról. Az új metrikák már nem tartják meg az egyes események sok tulajdonsággal. Ehelyett előre összesített idősorozatként tárolódnak, és csak kulcsfontosságú dimenziókkal. Ez teszi az új metrikák kiváló lekérdezési időben: az adatok beolvasása történik sokkal gyorsabb, és kevesebb számítási teljesítményt igényel. Ez lehetővé teszi az új forgatókönyveket, például [a közel valós idejű riasztást a metrikák dimenzióiról,](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts)a rugalmasabb irányítópultokról és egyebekről. [dashboards](https://docs.microsoft.com/azure/azure-monitor/app/overview-dashboard)
+A naplóalapú metrikák mellett 2018 végén az Application Insights-csapat nyilvános előzetes verziót adott le az idősorozatokra optimalizált speciális tárházban tárolt mérőszámokról. Az új metrikák már nem tartják meg az egyes események sok tulajdonsággal. Ehelyett előre összesített idősorozatként tárolódnak, és csak kulcsfontosságú dimenziókkal. Ez teszi az új metrikák kiváló lekérdezési időben: az adatok beolvasása történik sokkal gyorsabb, és kevesebb számítási teljesítményt igényel. Ez lehetővé teszi az új forgatókönyveket, például [a közel valós idejű riasztást a metrikák dimenzióiról,](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts)a rugalmasabb irányítópultokról és egyebekről. [dashboards](https://docs.microsoft.com/azure/azure-monitor/app/overview-dashboard)
 
 > [!IMPORTANT]
 > Mindkettő, a naplóalapú és az előre összesített metrikák egymás mellett léteznek az Application Insightsban. A kettő megkülönböztetéséhez az Application Insights ux-ben az előre összesített metrikák neve most "Standard metrikák (előzetes verzió)", míg a hagyományos metrikák az események átnevezték "Log-alapú metrikák".
 
 Az újabb SDK-k ([Application Insights 2.7](https://www.nuget.org/packages/Microsoft.ApplicationInsights/2.7.2) SDK vagy újabb a .NET) pre-aggregate metrikák a gyűjtés során, mielőtt telemetriai kötet csökkentési technikák beindulnak. Ez azt jelenti, hogy az új metrikák pontosságát nem befolyásolja a mintavétel és a szűrés a legújabb Application Insights SDK-k használatakor.
 
-Az SDK-k, amelyek nem valósítják meg az előzetes összesítés (azaz az Application Insights SDK-k régebbi verziói vagy a böngésző instrumentation) az Application Insights-háttértovábbra is feltölti az új metrikák az alkalmazás által kapott események összesítésével Insights eseménygyűjtemény-végpont. Ez azt jelenti, hogy bár nem élvezheti a vezetéken keresztül továbbított adatok csökkentett mennyiségét, továbbra is használhatja az előre összesített mutatókat, és jobb teljesítményt és támogatást tapasztalhat a közel valós idejű dimenziós riasztásokhoz olyan SDK-kkal, amelyek nem a gyűjtés során az előzetes összesített mutatókat.
+Az SDK-k, amelyek nem valósítják meg az előzetes összesítés (azaz az Application Insights SDK-k régebbi verziói vagy a böngésző instrumentation) az Application Insights-háttértovábbra is feltölti az új metrikák az Application Insights eseménygyűjtemény végpontja által kapott események összesítésével. Ez azt jelenti, hogy bár nem élvezheti a vezetéken keresztül továbbított adatok csökkentett mennyiségét, továbbra is használhatja az előre összesített mérőszámokat, és jobb teljesítményt és támogatást tapasztalhat a közel valós idejű dimenziós riasztáshoz olyan SDK-kkal, amelyek nem összesítették a mutatókat a gyűjtés során.
 
 Érdemes megemlíteni, hogy a gyűjtemény végpont előzetes en-aggregálási mintavételezés előtt, ami azt jelenti, hogy [a betöltési mintavételi](https://docs.microsoft.com/azure/application-insights/app-insights-sampling) soha nem befolyásolja az előre összesített metrikák pontosságát, függetlenül attól, hogy az alkalmazás sal használt SDK-verzió.  
 
@@ -55,13 +55,19 @@ A trackMetric vagy [GetMetric](https://docs.microsoft.com/azure/application-insi
 
 ## <a name="why-is-collection-of-custom-metrics-dimensions-turned-off-by-default"></a>Miért van alapértelmezés szerint az egyéni metrikák dimenzióinak gyűjteménye?
 
-Az egyéni metrikák dimenzióinak gyűjteménye alapértelmezés szerint ki van kapcsolva, mert a jövőben a dimenziókkal rendelkező egyéni metrikák tárolása az Application Insightstól elkülönítve kerül számlázásra, míg a nem dimenziós egyéni metrikák tárolása ingyenes marad (a kvótáig) . A közelgő árazási modell változásairól hivatalos [árképzési oldalunkon](https://azure.microsoft.com/pricing/details/monitor/)olvashat.
+Az egyéni metrikák dimenzióinak gyűjteménye alapértelmezés szerint ki van kapcsolva, mert a jövőben a dimenziókkal rendelkező egyéni metrikák tárolása az Application Insightstól elkülönítve kerül számlázásra, míg a nem dimenziós egyéni metrikák tárolása ingyenes marad (a kvótáig). A közelgő árazási modell változásairól hivatalos [árképzési oldalunkon](https://azure.microsoft.com/pricing/details/monitor/)olvashat.
 
 ## <a name="creating-charts-and-exploring-log-based-and-standard-pre-aggregated-metrics"></a>Diagramok létrehozása, valamint naplóalapú és szabványos előre összesített mutatók feltárása
 
 Az [Azure Monitor Metrics Explorer](../platform/metrics-getting-started.md) segítségével előre összesített és naplóalapú metrikákból ábrázolhatók a diagramok, valamint irányítópultok diagramokkal való létrehozása. A kívánt Application Insights-erőforrás kiválasztása után a névtérválasztóval válthat a szabványos (előzetes verzió) és a naplóalapú metrikák között, vagy válasszon egy egyéni metrikanévteret:
 
 ![Metrika névtér](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
+
+## <a name="pricing-models-for-application-insights-metrics"></a>Az Application Insights-mérőszámok díjszabási modelljei
+
+Metrikák betöltése az Application Insights, akár log-alapú, akár előre összesített, a bevitt adatok mérete alapján a költségeket, az [itt](https://docs.microsoft.com/azure/azure-monitor/app/pricing#pricing-model)leírtak szerint. Az egyéni metrikák, beleértve annak összes dimenzióját, mindig az Application Insights log-store tárolja; Emellett az egyéni metrikák előre összesített verziója (dimenziók nélkül) alapértelmezés szerint továbbítódik a metrikák tárolójának.
+
+A [Riasztás engedélyezése egyéni metrikadimenziókon](#custom-metrics-dimensions-and-pre-aggregation) lehetőség kiválasztásával az előre összesített metrikák összes dimenzióját tárolhatja a metrikatárban, **így további** költségek keletkezhetnek az [egyéni metrikák díjszabása](https://azure.microsoft.com/pricing/details/monitor/)alapján.
 
 ## <a name="next-steps"></a>További lépések
 

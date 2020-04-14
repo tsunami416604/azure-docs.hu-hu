@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: dsindona
-ms.openlocfilehash: 673fe1f31f6a8602225e7cde3bf1eb4c3b28b8a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b80325594eedb87293c31de3236bb4690eb89e05
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278144"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273018"
 ---
 # <a name="configure-winrm-after-virtual-machine-creation"></a>A Rendszerfelügyeleti webszolgáltatások konfigurálása a virtuális gép létrehozása után
+
+> [!IMPORTANT]
+> 2020. április 13-tól megkezdjük az Azure virtuálisgép-ajánlatok kezelését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [Azure virtuális gép ajánlatlétrehozása](https://aka.ms/CreateAzureVMoffer) című, az áttelepített ajánlatok kezelésével című útmutatóutasításait.
 
 Ez a cikk bemutatja, hogyan konfigurálhat egy meglévő Azure által üzemeltetett virtuális gépet (VM) a WinRM HTTPS-en keresztüli engedélyezéséhez.  Ez a konfiguráció csak windows-alapú virtuális gépekre vonatkozik, és a következő kétlépéses folyamatot igényli:
 
@@ -26,8 +29,8 @@ Ez a cikk bemutatja, hogyan konfigurálhat egy meglévő Azure által üzemeltet
 
 A Https-alapú WinRM protokoll az 5986-os portot használja, amely alapértelmezés szerint nincs engedélyezve az Azure Marketplace-en kínált előre konfigurált Windows virtuális gépeken. A protokoll engedélyezéséhez az alábbi lépésekkel adjon hozzá egy új szabályt a hálózati biztonsági csoporthoz (NSG) az [Azure Portalon.](https://portal.azure.com)  Az NSG-kről további információt a [Biztonsági csoportok című témakörben talál.](https://docs.microsoft.com/azure/virtual-network/security-overview)
 
-1.  Keresse meg a **virtuális gépek >**   < *virtuális* gépek>   ** név> Beállítások/Hálózat panelt.**
-2.  Kattintson az NSG nevére (ebben a példában **a testvm11002-re)** a tulajdonságainak megjelenítéséhez:
+1. Keresse meg a **virtuális gépek >**   < *virtuális* gépek>   ** név> Beállítások/Hálózat panelt.**
+2. Kattintson az NSG nevére (ebben a példában **a testvm11002-re)** a tulajdonságainak megjelenítéséhez:
 
     ![Hálózati biztonsági csoport tulajdonságai](./media/nsg-properties.png)
  

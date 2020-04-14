@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 2db8c05d086c7b4e8537a1c17b1ca84eedb19857
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 506412c23288d58c2f59b91a300265ddd79428bf
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277871"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273919"
 ---
-# <a name="virtual-hard-disk-deployment-template"></a>Virtuális merevlemez telepítési sablonja 
+# <a name="virtual-hard-disk-deployment-template"></a>Virtuális merevlemez telepítési sablonja
+
+> [!IMPORTANT]
+> 2020. április 13-tól megkezdjük az Azure virtuálisgép-ajánlatok kezelését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [Azure VM-lemezkép-minősítés](https://aks.ms/CertifyVMimage) utasításait az áttelepített ajánlatok kezeléséhez.
 
 A következő Azure Resource Manager-sablon egy új Azure virtuálisgép-példányt (VM) határoz meg, amelyet helyi virtuális merevlemezről (VHD) hozott létre.  Ez a sablon a cikkben egy [Azure virtuális gép telepítése egy felhasználói virtuális merevlemezről.](./cpp-deploy-vm-user-image.md) 
 

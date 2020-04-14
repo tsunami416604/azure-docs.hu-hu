@@ -12,19 +12,19 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/21/2020
+ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 007e8d87c670376ad334c1c4e58fd93995930b78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 25d911869c95baba6ac9db3b893292e702e9c0e9
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77616238"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273205"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ASE Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz
 
-Ebben a dokumentumban több különböző területet is figyelembe kell venni az SAP ASE azure IaaS-ben való üzembe helyezésekor. A dokumentum előfeltételeként el kell olvasnia a [dokumentumot Az Azure virtual machines DBMS üzembe helyezésével kapcsolatos szempontok sap-számítási feladatokhoz](dbms_guide_general.md) és az [Azure dokumentációsap-munkaterhelésében](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)található egyéb útmutatókhoz. Ez a dokumentum a Linuxés Windows operációs rendszereken futó SAP ASE-t ismerteti. Az Azure minimálisan támogatott kiadása az SAP ASE 16.0 Patch Level 2.  Javasoljuk, hogy telepítse az SAP legújabb verzióját és a legújabb javítási szintet.  Legalább SAP ASE 16.3 Patch Level 7 ajánlott.  Az SAP legújabb verziója megtalálható a [Célzott ASE 16.0 kiadási ütemezésés CR lista információk](https://wiki.scn.sap.com/wiki/display/SYBASE/Targeted+ASE+16.0+Release+Schedule+and+CR+list+Information).
+Ebben a dokumentumban több különböző területet is figyelembe kell venni az SAP ASE azure IaaS-ben való üzembe helyezésekor. A dokumentum előfeltételeként el kell olvasnia a [dokumentumot Az Azure virtual machines DBMS üzembe helyezésével kapcsolatos szempontok sap-számítási feladatokhoz](dbms_guide_general.md) és az [Azure dokumentációsap-munkaterhelésében](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)található egyéb útmutatókhoz. Ez a dokumentum a Linuxés Windows operációs rendszereken futó SAP ASE-t ismerteti. Az Azure minimálisan támogatott kiadása az SAP ASE 16.0.02 (Release 16 Support Pack 2). Javasoljuk, hogy telepítse az SAP legújabb verzióját és a legújabb javítási szintet.  Legalább AZ SAP ASE 16.0.03.07 (Release 16 Support Pack 3 Patch Level 7) használata ajánlott.  Az SAP legújabb verziója megtalálható a [Célzott ASE 16.0 kiadási ütemezésés CR lista információk](https://wiki.scn.sap.com/wiki/display/SYBASE/Targeted+ASE+16.0+Release+Schedule+and+CR+list+Information).
 
 Az SAP-alkalmazások vagy a telepítési adathordozó helyével kapcsolatos kiadási támogatásról az SAP termékelérhetőségi mátrixa mellett az alábbi helyeken talál további információt:
 
@@ -84,7 +84,7 @@ Egy 50 GB – 250 GB közötti adatbázisméretű SAP ASE DB-kiszolgáló konfig
 | --- | --- | --- | --- |
 | Virtuális gép típusa | E4s_v3 (4 vCPU/32 GB RAM) | E4s_v3 (4 vCPU/32 GB RAM) | --- |
 | Gyorsított hálózatkezelés | Bekapcsolás | Bekapcsolás | ---|
-| SAP ASE verzió | 16,3 PL 7 vagy újabb | 16,3 PL 7 vagy újabb | --- |
+| SAP ASE verzió | 16.0.03.07 vagy magasabb | 16.0.03.07 vagy magasabb | --- |
 | Adateszközök száma | 4 | 4 | ---|
 | Naplóeszközök száma | 1 | 1 | --- |
 | Az ideiglenes eszközök száma | 1 | 1 | további SAP BW munkaterhelés |
@@ -105,7 +105,7 @@ Egy 250 GB – 750 GB közötti adatbázisméretű közepes SAP ASE DB-kiszolgá
 | --- | --- | --- | --- |
 | Virtuális gép típusa | E16s_v3 (16 vCPU/128 GB RAM) | E16s_v3 (16 vCPU/128 GB RAM) | --- |
 | Gyorsított hálózatkezelés | Bekapcsolás | Bekapcsolás | ---|
-| SAP ASE verzió | 16,3 PL 7 vagy újabb | 16,3 PL 7 vagy újabb | --- |
+| SAP ASE verzió | 16.0.03.07 vagy magasabb | 16.0.03.07 vagy magasabb | --- |
 | Adateszközök száma | 8 | 8 | ---|
 | Naplóeszközök száma | 1 | 1 | --- |
 | Az ideiglenes eszközök száma | 1 | 1 | további SAP BW munkaterhelés |
@@ -125,7 +125,7 @@ Egy 750 GB – 2000 GB közötti adatbázisméretű sap ASE DB-kiszolgáló konf
 | --- | --- | --- | --- |
 | Virtuális gép típusa | E64s_v3 (64 vCPU/432 GB RAM) | E64s_v3 (64 vCPU/432 GB RAM) | --- |
 | Gyorsított hálózatkezelés | Bekapcsolás | Bekapcsolás | ---|
-| SAP ASE verzió | 16,3 PL 7 vagy újabb | 16,3 PL 7 vagy újabb | --- |
+| SAP ASE verzió | 16.0.03.07 vagy magasabb | 16.0.03.07 vagy magasabb | --- |
 | Adateszközök száma | 16 | 16 | ---|
 | Naplóeszközök száma | 1 | 1 | --- |
 | Az ideiglenes eszközök száma | 1 | 1 | további SAP BW munkaterhelés |
@@ -146,7 +146,7 @@ Egy 2 TB+ méretű sap ASE DB-kiszolgáló konfigurációjának, például egy n
 | --- | --- | --- | --- |
 | Virtuális gép típusa | M-sorozat (1,0-4,0 TB RAM)  | M-sorozat (1,0-4,0 TB RAM) | --- |
 | Gyorsított hálózatkezelés | Bekapcsolás | Bekapcsolás | ---|
-| SAP ASE verzió | 16,3 PL 7 vagy újabb | 16,3 PL 7 vagy újabb | --- |
+| SAP ASE verzió | 16.0.03.07 vagy magasabb | 16.0.03.07 vagy magasabb | --- |
 | Adateszközök száma | 32 | 32 | ---|
 | Naplóeszközök száma | 1 | 1 | --- |
 | Az ideiglenes eszközök száma | 1 | 1 | további SAP BW munkaterhelés |
@@ -203,7 +203,7 @@ Az SAP szoftverkiépítési kezelője (SWPM) lehetőséget ad az adatbázis titk
 
 ## <a name="sap-ase-on-azure-deployment-checklist"></a>SAP ASE az Azure központi telepítésének ellenőrzőlistáján
  
-- Sap ASE 16.3 PL7 vagy újabb telepítése
+- Sap ASE 16.0.03.07 vagy újabb telepítése
 - Frissítés a FaultManager és az SAPHostAgent legújabb verziójára és javításaira
 - Telepítés a legújabb minősített operációs rendszeren, például a Windows 2019, a Suse 15.1 vagy a Redhat 7.6 vagy újabb verzión
 - SAP-tanúsítvánnyal rendelkező virtuális gépek használata – nagy memóriával rendelkező Azure VM skusok, például Es_v3 vagy x-nagy rendszerek hez M sorozatú VM ska-k ajánlottak
@@ -277,7 +277,7 @@ További információ a DBA Cockpit for SAP ASE megtalálható a következő SAP
 
 
 ## <a name="useful-links-notes--whitepapers-for-sap-ase"></a>Hasznos linkek, megjegyzések & az SAP ASE-hez
-A [Sybase ASE 16.3 PL7 Dokumentáció](https://help.sap.com/viewer/product/SAP_ASE/16.0.3.7/en-US) kiindulópontja különböző dokumentumokra mutató hivatkozásokat tartalmaz, amelyek dokumentumai:
+Az SAP [ASE 16.0.03.07 Dokumentáció](https://help.sap.com/viewer/product/SAP_ASE/16.0.3.7/en-US) kezdőoldala különböző dokumentumokra mutató hivatkozásokat ad, amelyek dokumentumai:
 
 - SAP ASE Learning Journey - Adminisztráció & monitoring
 - SAP ASE Learning Journey - Telepítés & frissítés
@@ -303,11 +303,11 @@ Egyéb hasznos SAP támogatási megjegyzések a következők:
 Egyéb információkat a 
 
 - [SAP-alkalmazások az SAP Adaptive Server Enterprise szolgáltatásban](https://community.sap.com/topics/applications-on-ase)
-- [Sybase információs központ](http://infocenter.sybase.com/help/index.jsp) 
+- [SAP ASE információs központ](http://infocenter.sybase.com/help/index.jsp) 
+- [AZ SAP ASE mindig bekapcsolva a harmadik DR-csomópont beállításával](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199)
 
 A havi hírlevél az [SAP támogatási megjegyzésén](https://launchpad.support.sap.com/#/notes/2381575) keresztül jelenik meg #2381575 
 
-[A Sybase ASE mindig bekapcsolva a harmadik DR-csomópont beállításával](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199) 
 
 ## <a name="next-steps"></a>További lépések
 Tekintse meg a [cikkSAP számítási feladatok az Azure-ban: tervezési és üzembe helyezési ellenőrzőlista](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)

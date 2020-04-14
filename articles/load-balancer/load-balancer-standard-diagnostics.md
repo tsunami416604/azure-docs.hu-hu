@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 951f24ad06014f6d95f10c91e1bad8e99bbbc736
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 9003d35ce2eea18aa912a866802b026bb923aa08
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991773"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272695"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Metrikák, riasztások és az erőforrások állapotának diagnosztikái a standard Load Balancerben
 
@@ -37,8 +37,8 @@ A standard terheléselosztó különböző konfigurációi a következő mutató
 
 | Metrika | Erőforrás típusa | Leírás | Ajánlott összesítés |
 | --- | --- | --- | --- |
-| Az adatok elérési útja (VIP elérhetőség)| Nyilvános és belső terheléselosztó | Standard load Balancer folyamatosan gyakorolja az adatelérési utat egy régión belül a terheléselosztó előtér, egészen az SDN verem, amely támogatja a virtuális gép. Mindaddig, amíg a kifogástalan állapotú példányok maradnak, a mérés az alkalmazás terheléselosztásos forgalmat követi. Az ügyfelek által használt adatelérési út is érvényesítve van. A mérés nem látható az alkalmazás számára, és nem zavarja a többi műveletet.| Átlag |
-| Állapotminta állapota(DIP elérhetősége) | Nyilvános és belső terheléselosztó | A standard terheléselosztó egy elosztott állapot-ellenőrző szolgáltatást használ, amely a konfigurációs beállításoknak megfelelően figyeli az alkalmazásvégpont állapotát. Ez a metrika egy összesített vagy végpontonkénti szűrt nézetet biztosít a terheléselosztó készlet minden példányvégpontjából. Láthatja, hogy a terheléselosztó hogyan tekinti meg az alkalmazás állapotát, amint azt az állapotminta konfigurációja jelzi. |  Átlag |
+| Az adatok elérési útja | Nyilvános és belső terheléselosztó | Standard load Balancer folyamatosan gyakorolja az adatelérési utat egy régión belül a terheléselosztó előtér, egészen az SDN verem, amely támogatja a virtuális gép. Mindaddig, amíg a kifogástalan állapotú példányok maradnak, a mérés az alkalmazás terheléselosztásos forgalmat követi. Az ügyfelek által használt adatelérési út is érvényesítve van. A mérés nem látható az alkalmazás számára, és nem zavarja a többi műveletet.| Átlag |
+| Állapotminta állapota | Nyilvános és belső terheléselosztó | A standard terheléselosztó egy elosztott állapot-ellenőrző szolgáltatást használ, amely a konfigurációs beállításoknak megfelelően figyeli az alkalmazásvégpont állapotát. Ez a metrika egy összesített vagy végpontonkénti szűrt nézetet biztosít a terheléselosztó készlet minden példányvégpontjából. Láthatja, hogy a terheléselosztó hogyan tekinti meg az alkalmazás állapotát, amint azt az állapotminta konfigurációja jelzi. |  Átlag |
 | SYN (szinkronizálási) csomagok | Nyilvános és belső terheléselosztó | A standard terheléselosztó nem szünteti meg a TCP-kapcsolatokat, és nem lép kapcsolatba a TCP- vagy UDP-csomagáramlásokkal. A folyamatok és a kézfogások mindig a forrás és a virtuálisgép-példány között. A TCP protokollforgatókönyvek jobb hibaelhárítása érdekében syn csomagszámlálókhasználatával megtudhatja, hogy hány TCP-csatlakozási kísérlet történt. A metrika a fogadott TCP SYN csomagok számát jelenti.| Átlag |
 | SNAT-kapcsolatok | Nyilvános terheléselosztó |A standard terheléselosztó a nyilvános IP-cím előtér-végződésű kimenő folyamatainak számát jelenti. A forráshálózati címfordítás (SNAT) portjai kimeríthető erőforrások. Ez a metrika jelezheti, hogy az alkalmazás mennyire támaszkodik az SNAT-ra a kimenő származtatott folyamatok esetében. A sikeres és sikertelen kimenő SNAT-folyamatok számlálói a jelentések szerint vannak jelentve, és a kimenő folyamatok állapotának elhárítására és megértésére használhatók.| Átlag |
 | Lefoglalt SNAT-portok | Nyilvános terheléselosztó | A standard terheléselosztó a háttérpéldányonként lefoglalt SNAT-portok számát jelenti | Átlagos. |
@@ -85,13 +85,13 @@ A riasztások konfigurálása:
 
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>Gyakori diagnosztikai forgatókönyvek és ajánlott nézetek
 
-#### <a name="is-the-data-path-up-and-available-for-my-load-balancer-vip"></a>Az adatelérési út felfelé és elérhető a terheléselosztó VIP-em számára?
+#### <a name="is-the-data-path-up-and-available-for-my-load-balancer-frontend"></a>Az adatelérési út felfelé és elérhető a terheléselosztó előtétrendszeréhez?
 <details><summary>Kibontás</summary>
 
-A VIP rendelkezésre állási metrika ismerteti az adatelérési út állapotát a régión belül a számítási gazdagép, ahol a virtuális gépek találhatók. A metrika tükrözi az Azure-infrastruktúra állapotát. A mérőszám segítségével:
+Az adatelérési út rendelkezésre állási metrikája ismerteti az adatelérési út állapotát a régión belül a számítási gazdagép, ahol a virtuális gépek találhatók. A metrika tükrözi az Azure-infrastruktúra állapotát. A mérőszám segítségével:
 - A szolgáltatás külső elérhetőségének figyelése
 - Mélyebbre ásson, és ismerje meg, hogy a platform, amelyen a szolgáltatás telepítve van kifogástalan, vagy hogy a vendég operációs rendszer vagy az alkalmazáspéldány kifogástalan állapotú.Dig deeper and understand whether the platform, amelyen a szolgáltatás telepítve van kifogástalan, vagy hogy a vendég operációs rendszer vagy az alkalmazáspéldány kifogástalan.
-- Elkülöníteni, hogy egy esemény kapcsolódik-e a szolgáltatáshoz vagy az alapul szolgáló adatsíkhoz. Ne tévessze össze ezt a metrikát az állapotminta állapotával ("DIP elérhetőség").
+- Elkülöníteni, hogy egy esemény kapcsolódik-e a szolgáltatáshoz vagy az alapul szolgáló adatsíkhoz. Ne tévesszük össze ezt a metrikát az állapotminta állapotával ("Háttérpéldány rendelkezésre állása").
 
 A szabványos terheléselosztó-erőforrások adatelérési útvonalának lekérni:
 1. Győződjön meg arról, hogy a megfelelő terheléselosztó erőforrás van kiválasztva. 
@@ -107,7 +107,7 @@ A metrikát egy aktív, sávon kénti mérés hozza létre. A régión belüli s
 
 A központi telepítés előtérének és szabályának megfelelő csomag rendszeres időközönként jön létre. Áthalad a régióa forrástól a gazdagép, ahol a virtuális gép a háttér-készletben található. A terheléselosztó infrastruktúra ugyanazokat a terheléselosztási és fordítási műveleteket hajtja végre, mint az összes többi forgalom esetében. Ez a minta sávon van a terheléselosztási végponton. Miután a mintavétel megérkezik a számítási gazdagép, ahol egy kifogástalan állapotú virtuális gép a háttér-készletben található, a számítási gazdagép választ hoz létre a szondázási szolgáltatás. A virtuális gép nem látja ezt a forgalmat.
 
-A VIP elérhetősége a következő okok miatt sikertelen:
+A datapath rendelkezésre állása a következő okok miatt sikertelen:
 - A központi telepítés nem rendelkezik a háttér-készletben maradt kifogástalan állapotú virtuális gépek. 
 - Infrastruktúra-kimaradás történt.
 
@@ -116,7 +116,7 @@ Diagnosztikai célokra használhatja az [adatelérési út rendelkezésre állá
 A legtöbb eset összesítéseként használja az **Átlag** függvényt.
 </details>
 
-#### <a name="are-the-back-end-instances-for-my-vip-responding-to-probes"></a>A VIP-példányaim háttérpéldányai válaszolnak a szondákra?
+#### <a name="are-the-backend-instances-for-my-load-balancer-responding-to-probes"></a>A háttérpéldányok a terheléselosztó válaszol a mintavételek?
 <details>
   <summary>Kibontás</summary>
 Az állapotminta állapotmetrika ismerteti az alkalmazás üzembe helyezésének állapotát az Ön által konfigurált, amikor konfigurálja a terheléselosztó állapotminta. A terheléselosztó az állapotminta állapotát használja az új folyamatok küldésének helyének meghatározásához. Az állapotminta egy Azure-infrastruktúra-címről származik, és a virtuális gép vendég operációs rendszerében látható.
@@ -209,19 +209,19 @@ Bájtok vagy csomagok számának statisztikáinak beírása:
 #### <a name="how-do-i-diagnose-my-load-balancer-deployment"></a><a name = "vipavailabilityandhealthprobes"></a>Hogyan diagnosztizálhatom a terheléselosztó üzembe helyezését?
 <details>
   <summary>Kibontás</summary>
-A VIP rendelkezésre állási és állapotminta metrikák kombinációjával egyetlen diagramon azonosíthatja, hogy hol keresse meg a problémát, és oldja meg a problémát. Bizonyosságot szerezhet arról, hogy az Azure megfelelően működik, és ezt a tudást felhasználhatja annak meggyőző meghatározásához, hogy a konfiguráció vagy az alkalmazás a kiváltó ok.
+Az adatelérési út rendelkezésre állása és az állapotminta állapotmérői nek egyetlen diagramon való kombinációjával azonosíthatja, hogy hol keresse meg a problémát, és megoldhatja a problémát. Bizonyosságot szerezhet arról, hogy az Azure megfelelően működik, és ezt a tudást felhasználhatja annak meggyőző meghatározásához, hogy a konfiguráció vagy az alkalmazás a kiváltó ok.
 
 Az állapotminta-metrikák segítségével megismerheti, hogy az Azure hogyan tekinti meg a központi telepítés állapotát a megadott konfigurációnak megfelelően. Az egészségügyi szondák vizsgálata mindig nagyszerű első lépés a figyelésvagy az ok meghatározásában.
 
-Egy lépéssel továbbléphet, és a VIP rendelkezésre állási metrikáival betekintést nyerhet abba, hogy az Azure hogyan tekinti meg az adott üzembe helyezésért felelős mögöttes adatsík állapotát. Ha mindkét mutatót kombinálja, elkülönítheti, hogy hol lehet a hiba, amint azt a példa is szemlélteti:
+Egy lépéssel továbbléphet, és az Adatelérési út rendelkezésre állási metrikája segítségével betekintést nyerhet abba, hogy az Azure hogyan tekinti meg az adott üzembe helyezésért felelős mögöttes adatsík állapotát. Ha mindkét mutatót kombinálja, elkülönítheti, hogy hol lehet a hiba, amint azt a példa is szemlélteti:
 
 ![Az adatelérési út rendelkezésre állásának és állapotvizsgálatának állapotmutatóinak egyesítése](./media/load-balancer-standard-diagnostics/lbmetrics-dipnvipavailability-2bnew.png)
 
 *Ábra: Az adatelérési út rendelkezésre állásának és állapotvizsgálatának állapotmutatóinak egyesítése*
 
 A diagram a következő információkat jeleníti meg:
-- A virtuális gépeket üzemeltető infrastruktúra nem érhető el, és a diagram elején 0 százalék volt. Később az infrastruktúra kifogástalan állapotú volt, és a virtuális gépek elérhetők voltak, és egynél több virtuális gép került a háttérrendszerbe. Ezt az információt az adatelérési út rendelkezésre állásának (VIP elérhetősége) kék nyomkövetése jelzi, amely később 100 százalékvolt. 
-- Az állapotminta állapota (DIP elérhetősége), amelyet a lila nyomkövetés jelez, 0 százalékon áll a diagram elején. A bekarikázott terület zöld kiemeli, ahol az állapotminta állapota (DIP rendelkezésre állás) kifogástalan lett, és ekkor az ügyfél üzembe helyezését tudta elfogadni az új folyamatok.
+- A virtuális gépeket üzemeltető infrastruktúra nem érhető el, és a diagram elején 0 százalék volt. Később az infrastruktúra kifogástalan állapotú volt, és a virtuális gépek elérhetők voltak, és egynél több virtuális gép került a háttérrendszerbe. Ezt az információt az adatelérési út rendelkezésre állásának kék nyomkövetése jelzi, amely később 100 százalékvolt. 
+- Az állapotminta állapota, amelyet a lila nyom jelöl, 0 százalékon áll a diagram elején. A bekarikázott terület zöld kiemeli, ahol az állapotvizsgálat állapota kifogástalan lett, és ekkor az ügyfél üzembe helyezését tudta elfogadni az új folyamatok.
 
 A diagram lehetővé teszi az ügyfelek számára, hogy saját maguk hárítsák el a központi telepítést anélkül, hogy ki kellene találniuk vagy támogatást kellene kérniük, hogy más problémák is előfordulnak-e. A szolgáltatás nem érhető el, mert az állapotminta konkvátúk hibás konfiguráció vagy sikertelen alkalmazás miatt sikertelenek voltak.
 </details>

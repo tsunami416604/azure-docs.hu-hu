@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/02/2020
 ms.author: curtand
 ms.reviewer: kexia
-ms.openlocfilehash: 1703853f42b52dccc80fdfadaa09b67e18a19db8
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 3df79fb1e103ddfaafeb348641e675cd250f5858
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632902"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271692"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>Gyakori problémák a kétfaktoros ellenőrzéssel és a munkahelyi vagy iskolai fiókkal
 
@@ -65,6 +65,7 @@ Ellenőrizze, hogy van-e eszközjel és internetkapcsolat | Győződjön meg arr
 Kapcsolja ki a Ne zavarjanak funkciót | Győződjön meg arról, hogy nem kapcsolta be a **Ne zavarjanak** funkciót a mobileszközén. Ha ez a funkció be van kapcsolva, az értesítések nem figyelmeztethetnek a mobileszközén. A funkció kikapcsolására vonatkozó tudnivalókat a mobileszköz kézikönyvében találja.
 Telefonszámok blokkolásának feloldása | Az Egyesült Államokban a Microsoft hanghívásai a következő számokból származnak: +1 (866) 539 4191, +1 (855) 330 8653 és +1 (877) 668 6536.
 Az akkumulátorral kapcsolatos beállítások ellenőrzése | Ez egy kicsit furcsának tűnik a felszínen, de ha beállította az akkumulátor optimalizálását, hogy megakadályozza a kevésbé használt alkalmazások aktív vájkát a háttérben, az értesítési rendszert valószínűleg érintette. A probléma megoldásához kapcsolja ki a hitelesítési alkalmazás és az üzenetküldő alkalmazás akkumulátorának optimalizálását, majd próbáljon meg újra bejelentkezni a fiókjába.
+Külső gyártótól származó biztonsági alkalmazások letiltása | Ha olyan alkalmazással rendelkezik, amely védi a szöveges üzeneteket vagy a telefonhívásokat az ismeretlen hívók minimalizálása érdekében, megakadályozhatja az ellenőrző kód fogadását. Próbáljon meg letiltani egy külső gyártótól származó biztonsági alkalmazást a telefonján, majd kérjen egy másik ellenőrző kódot.
 
 ## <a name="im-not-getting-prompted-for-my-second-verification-information"></a>Nem kéria rendszer a második ellenőrzési adatokat
 

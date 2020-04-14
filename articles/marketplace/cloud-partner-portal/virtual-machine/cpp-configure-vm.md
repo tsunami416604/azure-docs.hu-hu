@@ -7,17 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: dsindona
-ms.openlocfilehash: b0ed430098203c5c1a0d00eb7bf17da1be0000cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f20beced7d977668d12c06375ceb8a2554c6d335
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278092"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273426"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>Konfigurálja az Azure által üzemeltetett virtuális gép
 
-Ez a cikk bemutatja, hogyan méretezheti, frissítheti és általánosíthatja az Azure-ban üzemeltetett virtuális gépeket (VM).This article explain how to size, update, and generalize a virtual machine (VM) hosted on Azure.  Ezek a lépések szükségesek a virtuális gép az Azure Marketplace-ről való üzembe helyezéséhez.
+> [!IMPORTANT]
+> 2020. április 13-tól megkezdjük az Azure virtuálisgép-ajánlatok partnerközpontba való áthelyezését. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [Azure Virtuálisgép technikai eszközeinek létrehozása](https://aka.ms/AzureVMTechAsset) az áttelepített ajánlatok kezeléséhez című, az Utasításokat.
 
+Ez a cikk bemutatja, hogyan méretezheti, frissítheti és általánosíthatja az Azure-ban üzemeltetett virtuális gépeket (VM).This article explain how to size, update, and generalize a virtual machine (VM) hosted on Azure.  Ezek a lépések szükségesek a virtuális gép az Azure Marketplace-ről való üzembe helyezéséhez.
 
 ## <a name="sizing-the-vhds"></a>A VHD-k méretezése
 

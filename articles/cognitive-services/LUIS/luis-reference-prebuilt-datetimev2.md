@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 01/07/2020
+ms.date: 04/13/2020
 ms.author: diberry
-ms.openlocfilehash: 30132983f37323e798efd330f5cc8f15c0a9d2b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33f8b787119e1c5d6d1a1bb28c94d9791a1c048e
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78270737"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272610"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>DateTimeV2 előre összeállított entitás egy LUIS-alkalmazáshoz
 
@@ -145,7 +145,7 @@ A tömb `values` minden eleme a következő mezőkkel rendelkezhet:
 
 |Tulajdonság neve|Tulajdonság leírása|
 |--|--|
-|Timex|time, date, or date range expressed in TIMEX format that follows the [ISO 8601 standard](https://en.wikipedia.org/wiki/ISO_8601) and the TIMEX3 attributes for annotation using the TimeML language. Ezt a jegyzetet a [TIMEX irányelvei ismertetik.](http://www.timeml.org/tempeval2/tempeval2-trial/guidelines/timex3guidelines-072009.pdf)|
+|Timex|time, date, or date range expressed in TIMEX format that follows the [ISO 8601 standard](https://en.wikipedia.org/wiki/ISO_8601) and the TIMEX3 attributes for annotation using the TimeML language.|
 |Mod|az érték (például `before`a ) `after`használatának leírására használt kifejezés .|
 |type|Az altípus, amely a következő elemek `datetime` `date`egyike `time` `daterange`lehet: , , , `timerange`, `datetimerange`, , `duration`, , . `set`|
 |érték|**Választható.** Datetime objektum a Format yyyy-MM-dd (dátum), ÓÓ:mm:ss (idő) yyyy-MM-dd Óó:mm:ss (datetime). Ha `type` `duration`van, akkor a másodpercek száma (időtartam) <br/> Csak akkor `type` `datetime` `date`használható, `time`ha vagy , vagy "időtartam.|

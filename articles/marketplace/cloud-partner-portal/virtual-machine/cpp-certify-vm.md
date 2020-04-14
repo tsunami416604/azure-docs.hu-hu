@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: dsindona
-ms.openlocfilehash: 0225069179e0d7d94a983c5161976a5c1933fac5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce1e001b9cafff83a3f9bf546d6903cc4a4f450f
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278195"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273494"
 ---
 # <a name="certify-your-vm-image"></a>A virtuális gép lemezképének hitelesítése
+
+> [!IMPORTANT]
+> 2020. április 13-tól megkezdjük az Azure virtuálisgép-ajánlatok kezelését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [Azure VM-lemezkép-minősítés](https://aks.ms/CertifyVMimage) utasításait az áttelepített ajánlatok kezeléséhez.
 
 Miután létrehozta és üzembe helyezte a virtuális gépet (VM), tesztelnie kell, és be kell küldenie a virtuális gép lemezképét az Azure Marketplace-tanúsítványhoz. Ez a cikk ismerteti, hogy hol szerezheti be az *Azure Certified minősítési teszteszközét,* hogyan használhatja ezt az eszközt a virtuális gép lemezképének hitelesítéséhez, és hogyan töltheti fel az ellenőrzési eredményeket az Azure-tárolóba, ahol a virtuális gépek tartózkodnak. 
 
