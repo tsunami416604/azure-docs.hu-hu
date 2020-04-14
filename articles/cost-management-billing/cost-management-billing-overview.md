@@ -8,12 +8,12 @@ ms.date: 01/24/2020
 ms.topic: overview
 ms.service: cost-management-billing
 ms.custom: ''
-ms.openlocfilehash: 3314d00651fc5e0473d84710803671f2ad45f005
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2f96208ff3f9664d82bfc1d9ddf9bc5b9aec37c3
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79474526"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879088"
 ---
 # <a name="what-is-azure-cost-management-and-billing"></a>Mi az az Azure Cost Management and Billing?
 
@@ -67,7 +67,7 @@ A hatókör egy csomópont a számlázási fiókban. Ennek használatával lehet
 ## <a name="understand-azure-cost-management"></a>Az Azure Cost Management ismertetése
 A költségkezelés az a folyamat, amely során hatékonyan megtervezi és szabályozza az üzleti költségeket. A költségkezelési feladatokat általában pénzügyi, felügyeleti és az alkalmazásokat kezelő csapatok végzik. Az Azure Cost Management + Billing segítségével a szervezetek költségtudatosan tervezhetnek. Továbbá támogatást nyújt a költségek hatékony elemzéséhez, és a felhőköltségek optimalizálásának kezdő lépéseihez. Ha több információra van szüksége arról, hogy szervezetileg hogyan közelíthető meg a költségkezelés, tekintse meg a következő cikket: [Az Azure Cost Management ajánlott eljárásai](./costs/cost-mgt-best-practices.md).
 
-Az [Azure Cost Management áttekintését ismertető videó](https://www.youtube.com/watch?v=el4yN5cHsJ0) megtekintésével gyors képet alkothat arról, hogyan segíthet az Azure Cost Management az Azure-ban felmerülő költségek csökkentésében.
+Az [Azure Cost Management áttekintését ismertető videó](https://www.youtube.com/watch?v=el4yN5cHsJ0) megtekintésével gyors képet alkothat arról, hogyan segíthet az Azure Cost Management az Azure-ban felmerülő költségek csökkentésében. További videók megtekintéséhez látogasson el a [Cost Management YouTube-csatornájára](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/el4yN5cHsJ0]
 
@@ -93,7 +93,7 @@ Ha külső rendszereket használ a költségadatokhoz való hozzáféréshez vag
 
 A [Cloudyn](./cloudyn/overview.md) egy Cost Managementhez kapcsolódó Azure-szolgáltatás, amelyet 2020 végével kivezetünk a használatból. A meglévő Cloudyn-funkciók, ahol ez megoldható, közvetlenül az Azure Portallal lesznek integrálva. Új ügyfeleket már nem regisztrálunk, a támogatás azonban továbbra is elérhető lesz, amíg a kivezetés teljesen le nem zárul.
  
-Az [Azure Cost Management és a Cloudyn videója](https://www.youtube.com/watch?v=15DzKPMBRxM) további információkat tartalmaz arra vonatkozóan, hogy az üzleti igényeknek megfelelően mikor érdemes az Azure Cost Management vagy a Cloudyn mellett dönteni.
+Az [Azure Cost Management és a Cloudyn videója](https://www.youtube.com/watch?v=15DzKPMBRxM) további információkat tartalmaz arra vonatkozóan, hogy az üzleti igényeknek megfelelően mikor érdemes az Azure Cost Management vagy a Cloudyn mellett dönteni. További videók megtekintéséhez látogasson el a [Cost Management YouTube-csatornájára](https://www.youtube.com/c/AzureCostManagement).
  
 >[!VIDEO https://www.youtube.com/embed/15DzKPMBRxM]
 

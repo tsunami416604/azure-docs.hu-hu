@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: de558ddad37e1621c633d26fff51d1506c237577
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 030ae5dcac85a88309b317be1edfab11d0da051a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80155919"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878459"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Oktatóanyag: Javaslatok alapján történő költségoptimalizálás
 
 Az Azure Cost Management az Azure Advisor segítségével tesz költségoptimalizálási javaslatokat. Az Azure Advisor a tétlen és kihasználatlan erőforrások azonosításával segítséget nyújt a hatékonyság optimalizálásában és javításában. Ez az oktatóanyag bemutat egy példát, ahol azonosíthatja az alacsony kihasználtságú Azure-erőforrásokat, majd intézkedéseket tehet a költségek csökkentésére.
 
-Ha többet szeretne megtudni arról, hogyan optimalizálhatja a költségeit az Advisorral, tekintse meg a videót, amely [a felhővel kapcsolatos befektetések Azure Cost Managementben történő optimalizálásával](https://www.youtube.com/watch?v=cSNPoAb-TNc) foglalkozik.
+Ha többet szeretne megtudni arról, hogyan optimalizálhatja a költségeit az Advisorral, tekintse meg a videót, amely [a felhővel kapcsolatos befektetések Azure Cost Managementben történő optimalizálásával](https://www.youtube.com/watch?v=cSNPoAb-TNc) foglalkozik. További videók megtekintéséhez látogasson el a [Cost Management YouTube-csatornájára](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/cSNPoAb-TNc]
 

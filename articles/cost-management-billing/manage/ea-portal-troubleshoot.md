@@ -3,16 +3,16 @@ title: A nagyvállalati szerződéses Azure Portal elérésével kapcsolatos hib
 description: Ez a cikk bemutat néhány gyakori problémát, amelyek az Azure Nagyvállalati Szerződéssel kapcsolatban léphetnek fel az Azure EA Portalon.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/03/2020
+ms.date: 04/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 3bf1c10e28ef9e3e4008968c9dbaef576bccdb5f
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: ee8363a76db93f0c2bd4734151e3d250de5402fc
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411551"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586203"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>A nagyvállalati szerződéses Azure Portal elérésével kapcsolatos hibák elhárítása
 
@@ -108,11 +108,11 @@ Ne feledje, hogy ha a regisztrációhoz más EA-rendszergazdák is tartoznak, ve
 
 ### <a name="my-enrollment-is-showing-in-pending-status-how-do-i-activate-my-enrollment"></a>A regisztráció állapota függőben van. Hogyan aktiválhatom a regisztrációt?
 
-Ha az elsődleges EA-rendszergazda még nem lépett be a regisztrációba, akkor az „Függőben” állapotú lesz. Ha Ön az EA-rendszergazda, jelentkezzen be az Azure EA Portalra. Előfordulhat, hogy a regisztrációs számokat megjelenítő kezdőlapon nem találja a függőben levő regisztrációt. Törölje az EA Portal jobb felső sarkában található „aktív” jelölőnégyzetet. Ezután megjelenik a függőben levő regisztráció. Kattintson a regisztrációra az adatok eléréséhez, majd a regisztráció Kezelés lapjának elérése után az állapot „Függőben” értékről „Aktív” értékre módosul.
+Ha az elsődleges EA-rendszergazda még nem lépett be a regisztrációba, akkor az „Függőben” állapotú lesz. Ha Ön az EA-rendszergazda, jelentkezzen be az Azure EA Portalra. Előfordulhat, hogy a regisztrációs számokat megjelenítő kezdőlapon nem találja a függőben levő regisztrációt. Törölje az EA Portal jobb felső sarkában található „aktív” jelölőnégyzet jelölését. Ezután megjelenik a függőben lévő regisztráció. Kattintson a regisztrációra az adatok eléréséhez, majd a regisztráció Kezelés lapjának elérése után az állapot „Függőben” értékről „Aktív” értékre módosul.
 
 ### <a name="why-is-my-account-stuck-in-pending-status"></a>Miért maradt a fiók „Függőben” állapotban?
 
-Amikor először hozzáadják az új fióktulajdonosokat (AO) a regisztrációhoz, mindig „Függőben” állapot jelenik meg náluk. Az aktiválási üdvözlő e-mail fogadása után az AO bejelentkezhet a fiókja aktiválásához. A bejelentkezéssel a fiók állapota „Függőben” értékről „Aktív” értékre módosul.
+Amikor az új fióktulajdonosokat (AO) először hozzáadják a regisztrációhoz, mindig „Függő” állapot jelenik meg náluk. Az aktiválási üdvözlő e-mail fogadása után az AO bejelentkezhet a fiókja aktiválásához. A bejelentkezéssel a fiók állapota „Függő” értékről „Aktív” értékre módosul.
 
 ### <a name="i-received-an-error-when-signing-in-to-azure-ea-portal"></a>Hibaüzenet jelent meg az Azure EA Portalra való bejelentkezéskor
 
@@ -161,7 +161,7 @@ Ha elfelejtette a munkahelyi jelszavát, forduljon a vállalat rendszergazdájá
 
 ### <a name="i-have-a-valid-work-or-school-account-but-i-cant-add-it-to-the-ea-portal"></a>Érvényes munkahelyi vagy iskolai fiókkal rendelkezem, de nem tudom hozzáadni az EA Portalon
 
-Ha más bérlőhöz tartozó munkahelyi vagy iskolai fiókkal rendelkezik, módosítsa az engedélyezési szintet a regisztráció részletei oldalon „Munkahelyi vagy iskolai fiókok több bérlőn” értékre. Ezután hozzá fogja tudni adni a fiókot.
+Ha más bérlőhöz tartozó munkahelyi vagy iskolai fiókkal rendelkezik, módosítsa az engedélyezési szintet a regisztráció részleteit tartalmazó oldalon „Munkahelyi vagy iskolai fiókok több bérlőn” értékre. Ezután hozzá fogja tudni adni a fiókot.
 
 ## <a name="next-steps"></a>További lépések
 

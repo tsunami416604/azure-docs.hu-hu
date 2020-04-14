@@ -5,14 +5,14 @@ author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 04/01/2020
 ms.author: banders
-ms.openlocfilehash: 6692bb8f323e42edfe546e15620442881f99032d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 01a7b81794342871ae8eadc090e61bbac0876c03
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78272181"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586155"
 ---
 # <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>Nagyvállalati szerződéses feladatok elvégzése a Microsoft-ügyfélszerződés számlázási fiókjában
 
@@ -37,7 +37,7 @@ Az alábbi módosítások azon nagyvállalati szerződéses vállalati rendszerg
 - A rendszer létrehoz egy számlázási profilt a regisztrációjához. A számlázási profillal a nagyvállalati szerződéses regisztrációhoz hasonlóan kezelheti a szervezet számlázását. A számlázási profilokkal kapcsolatos további információkért lásd [a számlázási profilok ismertetését](../understand/mca-overview.md#billing-profiles).
 - A rendszer létrehoz egy számlázási szakaszt a nagyvállalati szerződéses regisztráció egyes részlegei számára. A részlegeket a számlázási szakaszokkal kezelheti. Új számlázási szakaszok létrehozásával további részlegeket állíthat be. A számlázási szakaszokkal kapcsolatos további információkért lásd [a számlázási szakaszok ismertetését](../understand/mca-overview.md#invoice-sections).
 - Az Azure-előfizetés létrehozói szerepkörének számlázási szakaszokban történő használatával a nagyvállalati szerződéses regisztrációban létrehozott fiókokhoz hasonlóan engedélyt adhat másoknak Azure-előfizetések létrehozására.
-- A nagyvállalati szerződéses Azure Portal helyett az [Azure Portallal](https://portal.azure.com) kezelheti a szervezet számlázását.
+- Az Azure EA Portal helyett az [Azure Portallal](https://portal.azure.com) kezelheti a szervezet számlázását.
 
 Az új számlázási fiókban az alábbi szerepkörökkel rendelkezik:
 
@@ -93,7 +93,7 @@ Az alábbi módosítások érvényesek a Nagyvállalati Szerződés azon részle
 
 - A rendszer létrehoz egy számlázási szakaszt a nagyvállalati szerződéses regisztráció egyes részlegei számára. A részleg(ek)et a számlázási szakasz(ok) segítségével kezelheti. A számlázási szakaszokkal kapcsolatos további információkért lásd [a számlázási szakaszok ismertetését](../understand/mca-overview.md#invoice-sections).
 - Az Azure-előfizetés létrehozói szerepkörének számlázási szakaszokban történő használatával a nagyvállalati szerződéses regisztrációban létrehozott fiókokhoz hasonlóan engedélyt adhat másoknak Azure-előfizetések létrehozására.
-- A nagyvállalati szerződéses Azure Portal helyett az Azure Portallal kezelheti a szervezet számlázását.
+- Az Azure EA Portal helyett az Azure Portallal kezelheti a szervezet számlázását.
 
 Az új számlázási fiókban az alábbi szerepkörökkel rendelkezik:
 
@@ -143,7 +143,7 @@ Az előfizetések költségeit az [Előfizetések lapon](https://portal.azure.co
 
 Ha segítségre van szüksége, [vegye fel a kapcsolatot az ügyfélszolgálattal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A Microsoft-ügyfélszerződéshez tartozó számlázási fiók ismertetése](../understand/mca-overview.md)
 - [A számla értelmezése](../understand/review-individual-bill.md)

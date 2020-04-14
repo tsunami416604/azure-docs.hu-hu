@@ -3,16 +3,16 @@ title: Azure nagyvállalati szerződések és a módosításaik
 description: Ez a cikk azt ismerteti, hogy milyen hatással vannak az Azure nagyvállalati szerződések és a módosításaik az Azure EA Portal használatára.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/04/2020
+ms.date: 04/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 5198bd240f0c4e23910504fd039d64a73ddb41c9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0b007e98f37246d17679761fd601ed76fd9fb875
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78301420"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586231"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure nagyvállalati szerződések és a módosításaik
 
@@ -105,7 +105,7 @@ Kérjük, tekintse át a kereskedelmi információkat – pénzügyi egyenleggel
 
 **Második lépés: Áttekintés és ellenőrzés**
 
-Ellenőrizze az árrést tartalmazó árat a _Használati adatok összegzése_ lapon az ügyfélnézetben szereplő kötelezettségvállalási időszakra vonatkozóan. A Microsoft díjszabása továbbra is elérhető lesz a partnernézetben. A nézetek között a jobb felső sarokban található személyek váltókapcsolóval válthat.
+Ellenőrizze az árrést tartalmazó árat a _Használati adatok összegzése_ lapon az ügyfélnézetben szereplő kötelezettségvállalási időszakra vonatkozóan. A Microsoft díjszabása továbbra is elérhető lesz a partnernézetben. A nézetek között a jobb felső sarokban található „személyek” váltókapcsolóval válthat.
 
 1. Tekintse át az árakat az árlistán.
 1. A közzététel előtt elvégezheti a módosításokat, ha kiválasztja a **Szerkesztés** lehetőséget a _Használati adatok összegzése > Ügyfélnézet_ lapján.  
@@ -164,17 +164,17 @@ Az Előzetesen vásárolt Azure Compute-csomag (CPP – korábbi nevén Azure Co
 
 Ha egy CPP SKU-t rendelt, az egy adott adatközpontban található, adott típusú gépre vonatkozik. Mivel ez a szolgáltatás jelenleg is rendelkezésre áll, nem biztosítunk listát az ügyfél által megvásárolt összes CPP-vásárlásról, így nincsenek listázva a várt kreditek. Ha azonban a vásárlás helyszínéül szolgáló adatközpontban konfigurálja a megvásárolt gépek típusait, a havi foglalást az EA Portal használati adatokat összegző jelentésében fogja látni.
 
-Az előre megvásárolt összeg megjelenik jóváírásként a Belefoglalt egységek oszlopban, és a használati díjat csak a Belefoglalt egységek felhasználása után számítja fel a rendszer. A felhasználás után a további használat díja a normál nagyvállalati szerződéssel rendelkező ügyfelek díjszabását követi.
+Az előre megvásárolt összeg megjelenik jóváírásként a „Belefoglalt egységek” oszlopban, és a használati díjat csak a „Belefoglalt egységek” felhasználása után számítja fel a rendszer. A felhasználás után a további használat díja a normál nagyvállalati szerződéssel rendelkező ügyfelek díjszabását követi.
 
 A kreditek megvásárlásának módja a havonta az osztályba tartozó gépek számán alapul. Ha például az USA 2. keleti régiójában évente 70 A2-es virtuális gépet vásárol, az EA Portalon valószínűleg nem ugyanúgy jelennek meg, mint vásárláskor.
 
-A havi gépek a számítás szerint gépek havonta 744 órát futnak. Ez órákra átváltva 70-szer 744, vagyis 52 080 órát jelent havonta az A2-es virtuális gépek esetén. Mivel az EA Portal Használati adatok összegzésében az A2-es virtuális gépek 100 órás növekményekkel jelennek meg, havonta 520,8 (52 080/100) Belefoglalt egységnyi kreditet, valamint a hónapban addig felhasznált egységeket látná. A használati díjaknak nullának kell lenniük, amíg a havi felhasznált egységek száma meg nem haladja a havi belefoglalt egységeket.
+A havi gépek a számítás szerint gépek havonta 744 órát futnak. Ez órákra átváltva 70-szer 744, vagyis 52 080 órát jelent havonta az A2-es virtuális gépek esetén. Mivel az EA Portal Használati adatok összegzésében az A2-es virtuális gépek 100 órás növekményekkel jelennek meg, havonta 520,8 (52 080/100) „Belefoglalt egységnyi” kreditet, valamint a hónapban addig felhasznált egységeket látná. A használati díjaknak nullának kell lenniük, amíg a havi felhasznált egységek száma meg nem haladja a havi belefoglalt egységeket.
 
 A különböző típusú gépek különböző mértékegységeket használnak, így például a D3-as és a D4-es virtuális gépek 10 órás mértékegységet használnak a használati adatok összegzési jelentésében, tehát 70 db megvásárlása havonta 5208 belefoglalt egységként (52 080/10) jelenne meg.
 
 Általánosságban elmondható, hogy az alábbi képlet megadja a megvásárolt virtuális gépek számát a használt mértékegységük alapján:
 
-<center><b> (Belefoglalt mennyiség * Mértékegység” / 744 </b></center>
+<center><b> („Szolgáltatási keret” * „Mértékegység”) / 744 </b></center>
 
 ## <a name="plan-skus"></a>Csomag termékváltozatai
 
@@ -190,7 +190,7 @@ A vállalati rendszergazdák a következő lépések végrehajtásával rendelhe
 1. Kattintson a bal oldali navigációs területen lévő **Jelentések** elemre.
 1. Kattintson az **Árlista** fülre.
 1. Kattintson a jobb felső sarokban lévő Letöltés ikonra.
-1. Keresse meg a megfelelő csomag termékváltozatainak cikkszámait a Szolgáltatási keret oszlop szűrőjével, és válassza a 0-nál nagyobb értékeket.
+1. Keresse meg a megfelelő csomag termékváltozatainak cikkszámait a „Szolgáltatási keret” oszlop szűrőjével, és válassza a „0”-nál nagyobb értékeket.
 
 ### <a name="provision-the-plan-skus"></a>A csomag termékváltozatainak kiépítése
 
@@ -219,7 +219,7 @@ A vállalati rendszergazdák hozzáadhatnak új fióktulajdonosokat, hozzárende
 1. Adjon meg egy nevet a fiók jelentéskor történő azonosításához.
 1. Kattintson a **Hozzáadás** parancsra.
 1. További fiók hozzáadásához válassza a **+ Fiók hozzáadása** lehetőséget, vagy térjen vissza a kezdőlapra a **Rendszergazda** gomb kiválasztásával.  
-1. Ha a Fiók lap megtekintésére kattint, az újonnan hozzáadott fiók Függő állapotban fog megjelenni. Akkor vált Aktív állapotra vált, amikor a fióktulajdonos először bejelentkezik az EA Portalra.
+1. Ha a Fiók lap megtekintésére kattint, az újonnan hozzáadott fiók Függő állapotban fog megjelenni. „Aktív” állapotra vált, amikor a fióktulajdonos először bejelentkezik az EA Portalra.
 
 ### <a name="existingnew-account-owners-to-create-new-subscriptions"></a>Új előfizetések létrehozása meglévő/új fióktulajdonosként
 
@@ -235,7 +235,7 @@ Amikor első alkalommal ad előfizetést a fiókjához, el kell fogadnia a MOSA-
 
 **Második lépés: Előfizetés nevének frissítése**
 
-Minden új előfizetés az alapértelmezett Microsoft Azure Enterprise előfizetésnévvel jön létre. Fontos, hogy frissítse az előfizetés nevét, hogy megkülönböztesse a vállalati regisztráción belüli többi előfizetéstől, és gondoskodjon arról, hogy a vállalati szintű jelentéseken felismerhető legyen.
+Minden új előfizetés az alapértelmezett „Microsoft Azure Enterprise” előfizetésnévvel jön létre. Fontos, hogy frissítse az előfizetés nevét, hogy megkülönböztesse a vállalati regisztráción belüli többi előfizetéstől, és gondoskodjon arról, hogy a vállalati szintű jelentéseken felismerhető legyen.
 
 Kattintson az **Előfizetések** elemre, a létrehozott előfizetésre, majd az **Előfizetés adatainak szerkesztése** elemre.
 
@@ -248,13 +248,13 @@ Csak a fióktulajdonosok tekinthetik meg és kezelhetik az előfizetéseket.
 
 **Függő állapotú fióktulajdonos**
 
-Amikor az új fióktulajdonosokat (AO) hozzáadják a regisztrációhoz, mindig Függő állapot jelenik meg náluk. Az aktiválási üdvözlő e-mail fogadása után az AO bejelentkezhet és aktiválhatja a fiókját. Az aktiválással a fiók állapota Függő értékről Aktív értékre módosul.
+Amikor az új fióktulajdonosokat (AO) először hozzáadják a regisztrációhoz, mindig „Függő” állapot jelenik meg náluk. Az aktiválási üdvözlő e-mail fogadása után az AO bejelentkezhet és aktiválhatja a fiókját. Az aktiválással a fiók állapota „Függő” értékről „Aktív” értékre módosul.
 
 **A csomag termékváltozatainak megvásárlása után felszámított használati díjak**
 
 Ez a forgatókönyv akkor fordul elő, ha az ügyfél nem megfelelő regisztrációs szám alatt telepített szolgáltatásokat, vagy nem megfelelő szolgáltatásokat választott.
 
-Annak ellenőrzéséhez, hogy a megfelelő regisztráció alatt végzi-e az üzembe helyezést, megtekintheti a belefoglalt egységekre vonatkozó adatokat az árlistán. Jelentkezzen be vállalati rendszergazdaként, kattintson a bal oldali navigációs sávon lévő **Jelentések** elemre, és válassza az **Árlista** fület. Kattintson a Letöltés ikonra a jobb felső sarokban, keresse meg a megfelelő csomag termékváltozatainak cikkszámait a Szolgáltatási keret oszlop szűrőjével, és válassza a 0-nál nagyobb értékeket.
+Annak ellenőrzéséhez, hogy a megfelelő regisztráció alatt végzi-e az üzembe helyezést, megtekintheti a belefoglalt egységekre vonatkozó adatokat az árlistán. Jelentkezzen be vállalati rendszergazdaként, kattintson a bal oldali navigációs sávon lévő **Jelentések** elemre, és válassza az **Árlista** fület. Kattintson a Letöltés ikonra a jobb felső sarokban, keresse meg a megfelelő csomag termékváltozatainak cikkszámait a „Szolgáltatási keret” oszlop szűrőjével, és válassza a „0”-nál nagyobb értékeket.
 
 Győződjön meg arról, hogy az OMS-csomagja látható az árlista belefoglalt egységek területén. Ha az OMS-csomaghoz nem tartoznak belefoglalt egységek az Ön regisztrációjában, akkor lehetséges, hogy az OMS-csomag egy másik regisztrációban található. Forduljon az Azure Enterprise Portal ügyfélszolgálatához itt: [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport).
 

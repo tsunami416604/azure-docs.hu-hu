@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 04/01/2020
 ms.author: banders
-ms.openlocfilehash: f31d8638e8672feafc1ab822acecb78ec0a48b11
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 28fff2a24f703e0cff967bdde29a7b1238e197ee
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202773"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586154"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Az Azure Nagyvállalati Szerződés rendszergazdai szerepkörei az Azure-ban
 
@@ -46,18 +46,18 @@ A következő szakaszok az egyes szerepkörök korlátait és képességeit muta
 
 ## <a name="organization-structure-and-permissions-by-role"></a>Szervezeti felépítés és engedélyek szerepkörönként
 
-|Feladatok| Vállalati rendszergazda|Vállalati rendszergazda (csak olvasási)|Részlegszintű rendszergazda|Részlegszintű rendszergazda (csak olvasási)|Fióktulajdonos|
-|---|---|---|---|---|---|
-|Vállalati rendszergazdák megtekintése|✔|✔|✘|✘|✘|
-|Vállalati rendszergazdák hozzáadása vagy eltávolítása|✔|✘|✘|✘|✘|
-|Értesítési kapcsolattartók megtekintése<sup>4</sup> |✔|✔|✘|✘|✘|
-|Értesítési kapcsolattartók hozzáadása vagy eltávolítása<sup>4</sup> |✔|✘|✘|✘|✘|
-|Részlegek létrehozására és kezelésére |✔|✘|✘|✘|✘|
-|Részlegszintű rendszergazdák megtekintése|✔|✔|✔|✔|✘|
-|Részlegszintű rendszergazdák hozzáadása vagy eltávolítása|✔|✘|✔|✘|✘|
-|A regisztrációhoz tartozó fiókok megtekintése |✔|✔|✔<sup>5</sup>|✔<sup>5</sup>|✘|
-|Fiókok hozzáadása a regisztrációhoz és a fióktulajdonos módosítása|✔|✘|✔<sup>5</sup>|✘|✘|
-|Előfizetések és előfizetési engedélyek létrehozása és kezelése|✘|✘|✘|✘|✔|
+|Feladatok| Vállalati rendszergazda|Vállalati rendszergazda (csak olvasási)|Részlegszintű rendszergazda|Részlegszintű rendszergazda (csak olvasási)|Fióktulajdonos| Partner|
+|---|---|---|---|---|---|---|
+|Vállalati rendszergazdák megtekintése|✔|✔|✘|✘|✘|✔|
+|Vállalati rendszergazdák hozzáadása vagy eltávolítása|✔|✘|✘|✘|✘|✘|
+|Értesítési kapcsolattartók megtekintése<sup>4</sup> |✔|✔|✘|✘|✘|✔|
+|Értesítési kapcsolattartók hozzáadása vagy eltávolítása<sup>4</sup> |✔|✘|✘|✘|✘|✘|
+|Részlegek létrehozására és kezelésére |✔|✘|✘|✘|✘|✘|
+|Részlegszintű rendszergazdák megtekintése|✔|✔|✔|✔|✘|✔|
+|Részlegszintű rendszergazdák hozzáadása vagy eltávolítása|✔|✘|✔|✘|✘|✘|
+|A regisztrációhoz tartozó fiókok megtekintése |✔|✔|✔<sup>5</sup>|✔<sup>5</sup>|✘|✔|
+|Fiókok hozzáadása a regisztrációhoz és a fióktulajdonos módosítása|✔|✘|✔<sup>5</sup>|✘|✘|✘|
+|Előfizetések és előfizetési engedélyek létrehozása és kezelése|✘|✘|✘|✘|✔|✘|
 
 - <sup>4</sup>Az értesítési kapcsolattartók kapják meg az Azure Nagyvállalati Szerződésre vonatkozó tájékoztató e-maileket.
 - <sup>5</sup>A feladat a részlegen belüli fiókokra korlátozódik.
@@ -65,14 +65,14 @@ A következő szakaszok az egyes szerepkörök korlátait és képességeit muta
 
 ## <a name="usage-and-costs-access-by-role"></a>Szerepkörök szerint hozzáférés a használati adatokhoz és a költségekhez
 
-|Feladatok| Vállalati rendszergazda|Vállalati rendszergazda (csak olvasási)|Részlegszintű rendszergazda|Részlegszintű rendszergazda (csak olvasási) |Fióktulajdonos|
-|---|---|---|---|---|---|
-|Kreditegyenleg megtekintése, beleértve a pénzügyi keretet|✔|✔|✘|✘|✘|
-|Részleg költségkvótáinak megtekintése|✔|✔|✘|✘|✘|
-|Részleg költségkvótáinak beállítása|✔|✘|✘|✘|✘|
-|Szervezet EA-árlistájának megtekintése|✔|✔|✘|✘|✘|
-|Használati adatok és költségek megtekintése|✔|✔|✔<sup>6</sup>|✔<sup>6</sup>|✔<sup>7</sup>|
-|Erőforrások kezelése az Azure Portalon|✘|✘|✘|✘|✔|
+|Feladatok| Vállalati rendszergazda|Vállalati rendszergazda (csak olvasási)|Részlegszintű rendszergazda|Részlegszintű rendszergazda (csak olvasási) |Fióktulajdonos| Partner|
+|---|---|---|---|---|---|---|
+|Kreditegyenleg megtekintése, beleértve a pénzügyi keretet|✔|✔|✘|✘|✘|✔|
+|Részleg költségkvótáinak megtekintése|✔|✔|✘|✘|✘|✔|
+|Részleg költségkvótáinak beállítása|✔|✘|✘|✘|✘|✘|
+|Szervezet EA-árlistájának megtekintése|✔|✔|✘|✘|✘|✔|
+|Használati adatok és költségek megtekintése|✔|✔|✔<sup>6</sup>|✔<sup>6</sup>|✔<sup>7</sup>|✔|
+|Erőforrások kezelése az Azure Portalon|✘|✘|✘|✘|✔|✘|
 
 - <sup>6</sup>A vállalati rendszergazdának engedélyeznie kell a **díjtételek megtekintését a részlegszintű rendszergazda számára** az Enterprise Portalon. A részlegszintű rendszergazda ezután megtekintheti a részleg költségeire vonatkozó adatokat.
 - <sup>7</sup>A vállalati rendszergazdának engedélyeznie kell a **díjtételek megtekintését a fióktulajdonos számára** az Enterprise Portalon. A fióktulajdonos ezután megtekintheti a fiók költségeire vonatkozó adatokat.

@@ -5,77 +5,53 @@ author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/31/2020
 ms.author: banders
-ms.openlocfilehash: 5c9d9074e4b8d0d9e36417daee4d58c1d9b28b64
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0635c21ee30a40344281f31c8f9aedf9d74a1284
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199245"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633848"
 ---
-# <a name="view-azure-reservations-in-the-azure-portal"></a>Az Azure Reservations megtekintése az Azure Portalon
+# <a name="view-azure-reservations"></a>Azure-foglalások megtekintése
 
-Az előfizetés típusától és a meglévő engedélyektől függően több módon is megtekinthetők az Azure számára történt foglalások.
+A megvásárolt foglalásokat az Azure Portalon tekintheti meg és kezelheti.   
 
-## <a name="view-purchased-reservations"></a>Vásárolt foglalások megtekintése
+## <a name="permissions-to-view-a-reservation"></a>Engedélyek foglalások megtekintésére
 
-Alapértelmezés szerint a vásárolt foglalásokat a vásárló és a fiókadminisztrátor tudja megtekinteni. A vásárló és a fiókadminisztrátor automatikusan megkapja a Tulajdonos szerepkört a foglalási rendelés és a foglalás tekintetében. Amennyiben mások számára is engedélyezni kívánja a megtekintést, a **Tulajdonos** vagy az **Olvasó** szerepkör tagjaként kell hozzáadnia őket a foglalási rendeléshez vagy a foglaláshoz.
+Egy foglalás megtekintéséhez vagy kezeléséhez olvasói vagy tulajdonosi engedéllyel kell rendelkeznie hozzá. Amikor foglalást vásárol, Ön és a fiókadminisztrátor automatikusan megkapja a Tulajdonos szerepkört a foglalási rendelés és a foglalás tekintetében. Amennyiben mások számára is engedélyezni kívánja a megtekintést, a **Tulajdonos** vagy az **Olvasó** szerepkör tagjaként kell hozzáadnia őket a foglalási rendeléshez vagy a foglaláshoz. Ha a foglalás számlázásához megadott előfizetéshez ad valakit, nem adja hozzá automatikusan a foglaláshoz. 
 
 További információk [a foglalást kezelő felhasználók hozzáadásáról vagy módosításáról](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
 
-Foglalás megtekintése Tulajdonosként vagy Olvasóként:
+## <a name="view-reservation-and-utilization-in-azure-portal"></a>Foglalás és kihasználtság megtekintése az Azure Portalon
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
-2. Keressen a **Foglalások** kifejezésre.
-    ![Képernyőkép az Azure Portal keresőmezőjéről](./media/view-reservations/portal-reservation-search.png)  
-3. A listán szerepel az összes olyan foglalás, amelyhez Tulajdonos vagy Olvasó szerepkörben hozzáfér. Mindegyik foglalás mellett a kihasználtság legutóbb ismert százalékos értéke látható.  
-    ![Példa egy foglaláslistára](./media/view-reservations/view-reservations.png)
-4. A foglalás kijelölésekor megjelenik az elmúlt öt nap kihasználtsági trendje.  
-    ![Példa a foglalás kihasználtsági trendjének megjelenítésére](./media/view-reservations/reservation-utilization.png)
-5. A [foglalás kihasználtsága](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) ezenkívül a Reserved Instance használati API, illetve a [Microsoft Azure Consumption Insights Power BI tartalomcsomag](/power-bi/service-connect-to-azure-consumption-insights) használatával is megállapítható.
+Foglalás megtekintése Tulajdonosként vagy Olvasóként
 
-Ha módosítania kell a foglalás hatókörét, fel kell osztania a foglalást, vagy módosítania kell, hogy ki kezelheti a foglalást, tekintse meg [az Azure Reservations kezelését](manage-reserved-vm-instance.md) ismertető témakört.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Lépjen a [Foglalások](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) területre.
+3. A listán szerepel az összes olyan foglalás, amelyhez Tulajdonos vagy Olvasó szerepkörben hozzáfér. Mindegyik foglalás mellett a kihasználtság legutóbb ismert százalékos értéke látható.
+4. Kattintson a kihasználtság százalékára a kihasználtság előzményeinek és részleteinek megtekintéséhez. Az alábbi videóban talál részleteket.
+   > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4sYwk] 
 
-## <a name="view-reservation-transactions-for-enterprise-enrollments"></a>A nagyvállalati regisztrációk foglalási tranzakcióinak megtekintése
+## <a name="get-reservations-and-utilization-using-apis-powershell-cli"></a>Foglalások és kihasználtság lekérése API-k, a PowerShell vagy a parancssori felület használatával
 
- Ha partneralapú nagyvállalati regisztrációval rendelkezik, a foglalásokat az EA Portal **Jelentések** lapján tekintheti meg. Az egyéb nagyvállalati regisztrációk esetében a foglalásokat az EA Portalon és az Azure Portalon tekintheti meg. A foglalási tranzakciók megtekintéséhez EA-rendszergazdának kell lennie.
+Az összes foglalás listájának lekérése a következő erőforrásokkal
+- [API: Foglalásrendelések listája](/rest/api/reserved-vm-instances/reservationorder/list)
+- [PowerShell: Foglalásrendelések listája](/powershell/module/azurerm.reservations/get-azurermreservationorder)
+- [Parancssori felület: Foglalásrendelések listája](/cli/azure/reservations/reservation-order#az-reservations-reservation-order-list)
 
-Foglalási tranzakciók megtekintése az Azure Portalon:
+A [foglalás kihasználtsága](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) ezenkívül a Reserved Instance használati API használatával is megállapítható. 
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
-1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
+## <a name="see-reservations-and-utilization-in-power-bi"></a>Foglalások és kihasználtság megtekintése a Power BI-ban
 
-    ![Képernyőkép az Azure Portal keresőmezőjéről](./media/view-reservations/portal-cm-billing-search.png)
+Két lehetőség érhető el a Power BI-felhasználók számára
+- Tartalomcsomag: A foglalásvásárlások és a kihasználtsági adatok a [Consumption Insights Power BI-tartalomcsomagban](/power-bi/desktop-connect-azure-cost-management) érhetők el. Ezzel a tartalomcsomaggal hozhatja létre a kívánt jelentéseket. 
+- Cost Management alkalmazás: A [Cost Management alkalmazást](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp) további testreszabásra kész, előre létrehozott jelentésekhez használhatja.
 
-1. Válassza a **Foglalási tranzakciók** lehetőséget.
-1. Az eredmények szűréséhez válassza az **Időtartomány**, a **Típus** vagy a **Leírás** lehetőséget.
-1. Kattintson az **Alkalmaz** gombra.
+## <a name="next-steps"></a>További lépések
 
-    ![A foglalási tranzakciók eredményeit megjelenítő képernyőkép](./media/view-reservations/portal-billing-reservation-transaction-results.png)
-
-Ha az adatokat egy API használatával kérné le, tekintse meg [a fenntartott példány tranzakciós díjainak vállalati ügyfelek esetén történő lekérését](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges) ismertető cikket.
-
-## <a name="next-steps"></a>Következő lépések
-
-Az Azure Reservationsszel kapcsolatos további információért tekintse meg a következő cikkeket:
-
-- [Mik azok a foglalások az Azure-ban?](save-compute-costs-reservations.md)
-- [Foglalások kezelése az Azure-ban](manage-reserved-vm-instance.md)
-
-Szolgáltatáscsomag vásárlása:
-
-- [Előre fizetés fenntartott Cosmos DB-kapacitásért](../../cosmos-db/cosmos-db-reserved-capacity.md)
-- [Előre fizetés fenntartott Azure SQL Database-kapacitással rendelkező SQL Database számítási erőforrásokért](../../sql-database/sql-database-reserved-capacity.md)
-- [Előre fizetés Azure-beli fenntartott virtuálisgép-példányokkal rendelkező virtuális gépekért](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
-
-Szoftvercsomag vásárlása:
-
-- [Előre fizetés Azure Reservations-beli Red Hat-szoftvercsomagokért](../../virtual-machines/linux/prepay-rhel-software-charges.md)
-- [Előre fizetés Azure Reservations-beli SUSE-szoftvercsomagokért](../../virtual-machines/linux/prepay-suse-software-charges.md)
-
-A kihasználtság ismertetése:
-
+- [Az Azure Reservations kezelése](manage-reserved-vm-instance.md).
 - [A foglalási kihasználtság ismertetése használatalapú fizetéses előfizetésnél](understand-reserved-instance-usage.md)
 - [A foglalási kihasználtság ismertetése vállalati regisztrációnál](understand-reserved-instance-usage-ea.md)
 - [A foglalási kihasználtság ismertetése CSP-előfizetésnél](https://docs.microsoft.com/partner-center/azure-reservations)

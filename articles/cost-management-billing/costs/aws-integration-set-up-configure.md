@@ -3,22 +3,26 @@ title: Az AWS és az Azure Cost Management integrációjának beállítása
 description: Ez a cikk végigvezeti az AWS költség- és használati jelentésnek az Azure Cost Managementbe való integrálásának beállításán és konfigurálásán.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 04/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: matrive
-ms.openlocfilehash: c0f6f18abf7c05cf5ae6dcaa31a57974ecfca806
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d3b1efabbf5f05c05ef939ee8713829fbd49f483
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79203083"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878986"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Az AWS költség- és használati jelentés integrálásának beállítása és konfigurálása
 
 Az Amazon Web Services (AWS) költség- és használati jelentésének (CUR) integrálásával az AWS-kiadások az Azure Cost Managementben figyelhetővé és szabályozhatóvá válnak. Az integráció lehetővé teszi, hogy az Azure Portalon egyetlen helyről egyszerre lehessen monitorozni és szabályozni az Azure-ral és az AWS-szel kapcsolatos kiadásokat. Ez a cikk bemutatja, hogyan lehet az integrációt beállítani és konfigurálni ahhoz, hogy az Azure Cost Management-funkciókkal elemezhetők és áttekinthetők legyenek a költségvetések.
 
 A Cost Management úgy dolgozza fel az AWS költség- és használati jelentését, amely egy S3-tárolóban található, hogy az Ön AWS-hozzáférési hitelesítő adatait használja a jelentésdefinícióik lekéréséhez és a jelentések GZIP CSV-fájljainak letöltéséhez.
+
+Ha többet szeretne megtudni az AWS jelentésintegrációjának beállításáról, tekintse meg [az AWS-összekötők Cost Managementben történő beállításával](https://www.youtube.com/watch?v=Jg5KC1cx5cA) foglalkozó videót. További videók megtekintéséhez látogasson el a [Cost Management YouTube-csatornájára](https://www.youtube.com/c/AzureCostManagement).
+
+>[!VIDEO https://www.youtube.com/embed/Jg5KC1cx5cA]
 
 ## <a name="create-a-cost-and-usage-report-in-aws"></a>Költség- és használati jelentés létrehozása az AWS-ben
 

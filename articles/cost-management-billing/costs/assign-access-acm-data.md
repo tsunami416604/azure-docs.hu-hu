@@ -3,17 +3,17 @@ title: Az Azure Cost Management adataihoz való hozzáférés hozzárendelése
 description: Ez a cikk azt mutatja be, hogyan rendelhet hozzá az Azure Cost Management adataira vonatkozó engedélyeket a különböző hozzáférési hatókörök esetén.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/19/2020
+ms.date: 04/07/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: secdec18
-ms.openlocfilehash: 56090798defd9209c3587aa701c88db6958d1b97
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0b3ede4dcc4df8bf10ce24b3d74dc5af0424de5a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80065829"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879105"
 ---
 # <a name="assign-access-to-cost-management-data"></a>A Cost Management adataihoz való hozzáférés hozzárendelése
 
@@ -21,9 +21,9 @@ Az Azure nagyvállalati szerződéssel rendelkező felhasználók esetén az Azu
 
 A felhasználó által kiválasztott hatókör az adatkonszolidációt és a költségadatokhoz való hozzáférés szabályozását határozza meg a költségkezelés során. A hatókörök használatakor a felhasználók nem választhatnak ki egyszerre több hatókört. Ehelyett egy magasabb szintű hatókör választhatnak ki, amely alá több, alacsonyabb szintű gyermekhatókör is tartozik, és szűrő alkalmazásával kereshetik meg a kívánt adatokat. Az adatkonszolidációval azért fontos megismerkedni, mert nem mindenki rendelkezhet hozzáféréssel egy szülőhatókörhöz, amely több gyermekhatókört is magába foglal.
 
-A [How to assign access with Azure Cost Management](https://www.youtube.com/watch?v=J997ckmwTa8) (Hozzáférés hozzárendelése az Azure Cost Managementtel) című videóból megtudhatja, hogyan rendelhet hozzá hozzáférést az Azure szerepköralapú hozzáférés-vezérlésével a költségek és díjak megtekintéséhez.
+A [hozzáférés Cost Managementben történő vezérléséről](https://www.youtube.com/watch?v=_uQzQ9puPyM) szóló videóból megtudhatja, hogyan oszthat ki hozzáférést az Azure szerepköralapú hozzáférés-vezérlésével a költségek és díjak megtekintéséhez. További videók megtekintéséhez látogasson el a [Cost Management YouTube-csatornájára](https://www.youtube.com/c/AzureCostManagement).
 
->[!VIDEO https://www.youtube.com/embed/J997ckmwTa8]
+>[!VIDEO https://www.youtube.com/embed/_uQzQ9puPyM]
 
 ## <a name="cost-management-scopes"></a>Cost Management-hatókörök
 

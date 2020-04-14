@@ -3,17 +3,17 @@ title: A felhővel kapcsolatos befektetés optimalizálása az Azure Cost Manage
 description: Ez a cikk segítséget nyújt a felhővel kapcsolatos befektetések leghatékonyabb kihasználásához, a költségek csökkentéséhez és annak kiértékeléséhez, mire költ pénzt.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/24/2020
+ms.date: 04/07/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 4941c1be8fd20dfa88e3ac36bfa30af77a2b1be1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8df98514545a2670ea18a2b4b131a097244d7b46
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80157211"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874585"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>A felhővel kapcsolatos befektetés optimalizálása az Azure Cost Management használatával
 
@@ -36,6 +36,10 @@ Az alábbi három fő csoportnak összehangoltan kell működnie a szervezeten b
 ### <a name="key-principles"></a>Alapelvek
 
 Az alább ismertetett alapelvek segítségével a siker útjára állíthatja szervezetét a felhőköltség-kezelés terén.
+
+További információkért tekintse meg [a Cost Management sikeres beállításával](https://www.youtube.com/watch?v=dVuwITdSAZ4) foglalkozó videót. További videók megtekintéséhez látogasson el a [Cost Management YouTube-csatornájára](https://www.youtube.com/c/AzureCostManagement).
+
+>[!VIDEO https://www.youtube.com/embed/dVuwITdSAZ4]
 
 #### <a name="planning"></a>Tervezés
 
@@ -125,7 +129,7 @@ Kövesse figyelemmel, hogyan változnak a szervezet költségei az idő múlás�
 
 Rendszerezze költségtudatosan az erőforrásokat. Az előfizetések és erőforráscsoportok létrehozásakor gondoljon a kapcsolódó költségekért felelős csapatokra. Ügyeljen rá, hogy a jelentéskészítés során érvényesüljenek a szervezet szempontjai. Az előfizetések és az erőforráscsoportok kiválóan használható gyűjtők a költségek szervezeten belüli rendszerezéséhez és elosztásához. A címkék jó módszert kínálnak a költségek elosztására. A címkéket szűrőként is lehet használni. A címkéket csoportosításra is használhatja az adatok elemzésekor és a költségek vizsgálatakor. A Nagyvállalati Szerződéssel rendelkező ügyfelek részlegeket is létrehozhatnak, és előfizetéseket rendelhetnek azokhoz. Az Azure-beli költségalapú szervezés segít abban, hogy a szervezet megfelelő személyei folyamatosan elszámoltathatók maradjanak a csapataik költéseiért.
 
-Ha meg szeretné tudni, milyen eszközök állnak a rendelkezésére, ha ki szeretné kényszeríteni a méretezhető erőforrás-címkézést a cégén vagy szervezetén belül, tekintse meg a [címkeszabályzatok Azure Cost Managementtel történő áttekintésével](https://www.youtube.com/watch?v=nHQYcYGKuyw) foglalkozó videót.
+Ha meg szeretné tudni, milyen eszközök állnak a rendelkezésére, ha ki szeretné kényszeríteni a méretezhető erőforrás-címkézést a cégén vagy szervezetén belül, tekintse meg a [címkeszabályzatok Azure Cost Managementtel történő áttekintésével](https://www.youtube.com/watch?v=nHQYcYGKuyw) foglalkozó videót. További videók megtekintéséhez látogasson el a [Cost Management YouTube-csatornájára](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/nHQYcYGKuyw]
 

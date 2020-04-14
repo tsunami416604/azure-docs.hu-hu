@@ -3,17 +3,17 @@ title: Rövid útmutató – Az Azure-költségek feltérképezése költségele
 description: Ez a rövid útmutató bemutatja, hogyan vizsgálhatja meg és elemezheti vállalata Azure-költségeit a Költségelemzés szolgáltatás használatával.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/24/2020
+ms.date: 04/07/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 53e1ef2f5e4faecd3ab2dee1350f3e9087df8e9d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e63e3ef999db7053609fb098cd2b7583143a2937
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80155953"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874500"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Gyorsútmutató: Költségek feltérképezése és elemzése költségelemzés használatával
 
@@ -45,7 +45,7 @@ A költségek a költségelemzésben való áttekintéséhez nyissa meg a hatók
 
 A választott hatókör az adatkonszolidációt és a költségadatokhoz való hozzáférés szabályozását határozza meg a költségkezelés során. A hatókörök használata során nem lehet egyszerre több hatókört is kiválasztani. Ehelyett egy magasabb szintű hatókört választ ki, amely alá több alacsonyabb szintű hatókör is tartozik, és szűrő alkalmazásával keresi meg a kívánt beágyazott hatóköröket. Ezt a megközelítést azért fontos megérteni, mert nem biztos, hogy minden személy rendelkezik hozzáféréssel egyetlen szülőhatókörhöz, amely több beágyazott hatókört is magába foglal.
 
-Ha többet szeretne megtudni a költségelemzésről, tekintse meg [a Cost Management Azure Portalon történő használatával](https://www.youtube.com/watch?v=mfxysF-kTFA) foglalkozó videót.
+Ha többet szeretne megtudni a költségelemzésről, tekintse meg [a Cost Management Azure Portalon történő használatával](https://www.youtube.com/watch?v=mfxysF-kTFA) foglalkozó videót. További videók megtekintéséhez látogasson el a [Cost Management YouTube-csatornájára](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/mfxysF-kTFA]
 
@@ -145,6 +145,10 @@ Bármelyik nézet esetében megtekintheti a teljes adathalmazt. Az alkalmazott b
 
 ## <a name="understanding-grouping-and-filtering-options"></a>Csoportosítási és szűrési lehetőségek ismertetése
 
+A költségelemzés számos csoportosítási és szűrési lehetőséget kínál. A csoportosítási és szűrési beállításokkal kapcsolatos videó megtekintéséhez tekintse meg a [Cost Management dimenziók és címkék szerinti jelentéskészítésével](https://www.youtube.com/watch?v=2Vx7V17zbmk) foglalkozó videót. További videók megtekintéséhez látogasson el a [Cost Management YouTube-csatornájára](https://www.youtube.com/c/AzureCostManagement).
+
+>[!VIDEO https://www.youtube.com/embed/2Vx7V17zbmk]
+
 Az alábbi táblázat felsorolja a leggyakoribb csoportosítási és szűrési lehetőségek némelyikét, valamint ismerteti, hogy mikor érdemes alkalmazni őket.
 
 | Tulajdonság | A következő esetekben használja | Megjegyzések |
@@ -178,7 +182,7 @@ A kifejezésekkel kapcsolatos további információ: [Az Azure használati adata
 
 A személyre szabott nézeteket a költségelemzés az Azure Portal irányítópultján való rögzítésével vagy a költségelemzésre mutató hivatkozás másolásával mentheti és oszthatja meg másokkal.
 
-Ha többet szeretne megtudni arról, miként oszthatja meg a cégen vagy szervezeten belül a költségekkel kapcsolatos információkat a portál segítségével, tekintse meg a [nézetek Azure Cost Managementben történő megosztásával és mentésével](https://www.youtube.com/watch?v=kQkXXj-SmvQ) foglalkozó videót.
+Ha többet szeretne megtudni arról, miként oszthatja meg a cégen vagy szervezeten belül a költségekkel kapcsolatos információkat a portál segítségével, tekintse meg a [nézetek Azure Cost Managementben történő megosztásával és mentésével](https://www.youtube.com/watch?v=kQkXXj-SmvQ) foglalkozó videót. További videók megtekintéséhez látogasson el a [Cost Management YouTube-csatornájára](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/kQkXXj-SmvQ]
 

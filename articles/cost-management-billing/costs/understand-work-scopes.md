@@ -3,17 +3,17 @@ title: Az Azure Cost Management hatóköreinek ismertetése és használata
 description: Ez a cikk segít megérteni az Azure-ban elérhető számlázási és erőforrás-kezelési hatóköröket, valamint azt, hogyan kell használni a hatóköröket a Cost Managementben és az API-kban.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 04/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: bbed4209d26fe32f95b93b2c7411e1ab74f03ede
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ebae9d1c66a721926ca07b21059ec57b05b99a0f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80131361"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877932"
 ---
 # <a name="understand-and-work-with-scopes"></a>A hatókörök ismertetése és használata
 
@@ -26,6 +26,10 @@ A _hatókör_ az Azure-erőforrás-hierarchia egyik csomópontja, amelynek keret
 - Felhőszolgáltatások, mint például költséggel és szabályzattal kapcsolatos irányítás
 
 A hatókörökben lehet kezelni a számlázási adatokat, rendelkezhet a kifizetésekre vonatkozó konkrét szerepkörökkel, megtekinthetők a számlák, és általános fiókkezelési feladatok végezhetők el. A számlázási és fiókszerepköröket az erőforrás-kezelésre használtaktól elkülönítve kezelik, amelyek az [Azure RBAC-t](../../role-based-access-control/overview.md) használják. Annak érdekében, hogy egyértelműen meg lehessen különböztetni a különálló hatókörök mögötti szándékot, beleértve a hozzáférés-vezérlésre kiterjedő eltéréseket is, ezeket _számlázási hatóköröknek_, illetve _RBAC-hatóköröknek_ nevezzük.
+
+A hatókörökkel kapcsolatos további információkért tekintse meg [a hierarchiák Cost Managementben történő beállításával](https://www.youtube.com/watch?v=n3TLRaYJ1NY) kapcsolatos videót. További videók megtekintéséhez látogasson el a [Cost Management YouTube-csatornájára](https://www.youtube.com/c/AzureCostManagement).
+
+>[!VIDEO https://www.youtube.com/embed/n3TLRaYJ1NY]
 
 ## <a name="how-cost-management-uses-scopes"></a>Hogyan használja a Cost Management a hatóköröket?
 
@@ -71,7 +75,7 @@ A Cost Management-közreműködő az ajánlott, minimális jogosultsághoz tarto
 
 A Nagyvállalati Szerződés (EA) számlázási fiókjai (más néven a regisztrációk) a következő hatókörökkel rendelkeznek:
 
-- [**Számlázási fiók**](../manage/view-all-accounts.md) – Egy EA-regisztrációt jelöl. Ebben a hatókörben történik a számlakiállítás. A nem használatalapú beszerzések – mint például a Marketplace és a foglalások – csak ebben a hatókörben érhetők el. Nem szerepelnek a részlegekben vagy a regisztrációs fiókokban.
+- [**Számlázási fiók**](../manage/view-all-accounts.md) – Egy EA-regisztrációt jelöl. Ebben a hatókörben történik a számlakiállítás. A nem használatalapú beszerzések – mint például a Marketplace és a foglalások – csak ebben a hatókörben érhetők el. Nem szerepelnek a részlegekben vagy a regisztrációs fiókokban. A foglaláshasználat és az összes többi használat az egyedi erőforrásokra vonatkozik. A használat összesítve jelenik meg a számlázási fiókban lévő előfizetések esetében. A foglalási költségek erőforrások szerinti lebontásban történő megtekintéséhez váltson az **Amortizált költség** nézetre a költségelemzésben.
 
     Erőforrástípus: `Microsoft.Billing/billingAccounts (accountType = Enrollment)`
 - **Részleg** – A regisztrációs fiókok opcionális csoportja.

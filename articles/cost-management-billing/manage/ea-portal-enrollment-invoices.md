@@ -3,16 +3,16 @@ title: Azure nagyvállalati regisztrációs számlák
 description: Ez a cikk az Azure Nagyvállalati számlák kezelését ismerteti.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/03/2020
+ms.date: 04/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 9fbc2ffcf1158f436c060817f8f25152f839c3e0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d8d189d2ee67e3f98fec5d7d4cd295879e8689c9
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79037257"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743894"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure nagyvállalati regisztrációs számlák
 
@@ -494,6 +494,12 @@ A következő szolgáltatásokat külön számlázzuk:
 - Visual Studio Enterprise (éves)
 - Visual Studio Professional (havi)
 - Visual Studio Professional (éves)
+
+## <a name="what-to-expect-after-change-of-channel-partner"></a>Mire számíthat, miután értékesítési partnert váltott?
+
+Ha az értékesítési partner váltása (COCP) a hónap közepén történik, az ügyfél kap egy számlát a korábbi partnerhez kapcsolódó használatról, valamint egy másikat az új partnerhez kapcsolódó használatról.
+
+A számlák kiküldése a számlázási időszak vége utáni hónapban történik. Ha a számlázás havonta történik, a szeptemberi használathoz kapcsolódó számlát októberben küldjük el mindkét partnerre vonatkozóan. Ha a számlázási ciklus negyedéves vagy éves, az ügyfél kap egy számlát a korábbi partnerhez kapcsolódó használati időszakról, valamint egyet az új partnerhez kapcsolódó fennmaradó időszakról a számlázási gyakoriságtól függően.
 
 ## <a name="azure-marketplace-for-ea-customers"></a>Azure Marketplace EA-ügyfelek számára
 
