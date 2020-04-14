@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: ff5f7a80e2dcedb1795bae14ee9140c2842303a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 373fc2829e599d0989b59c6386757c8f5f3e1d66
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76984570"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81251724"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Hitelesítés és engedélyezés az Azure Time Series Insights API-hoz
 
@@ -104,7 +104,7 @@ Ez a szakasz a Time Series Insights GA és az előzetes verzió API-k lekérdez�
 
 ### <a name="authentication"></a>Hitelesítés
 
-A [Time Series Insights REST API-k](https://docs.microsoft.com/rest/api/time-series-insights/)hitelesített lekérdezéseinek végrehajtásához egy érvényes OAuth 2.0-s tulajdonosi jogkivonatot kell átadni az Engedélyezési [fejlécben](/rest/api/apimanagement/2019-01-01/authorizationserver/createorupdate) egy ön által választott REST-ügyfél (Postman, JavaScript, C#) használatával. 
+A [Time Series Insights REST API-k](https://docs.microsoft.com/rest/api/time-series-insights/)hitelesített lekérdezéseinek végrehajtásához egy érvényes OAuth 2.0-s tulajdonosi jogkivonatot kell átadni az Engedélyezési [fejlécben](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate) egy ön által választott REST-ügyfél (Postman, JavaScript, C#) használatával. 
 
 > [!TIP]
 > Olvassa el a üzemeltetett Azure Time Series Insights [ügyfél SDK-mintavizualizációt,](https://tsiclientsample.azurewebsites.net/) amelyből megtudhatja, hogyan hitelesítheti magát a Time Series Insights API-kkal programozott módon a [JavaScript-ügyfél SDK-val,](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) valamint diagramokkal és grafikonokkal.

@@ -1,53 +1,95 @@
 ---
-title: Az Azure-partnerek és az ügyfelek használati hozzárendelése | Azure Piactér
-description: Az Azure Marketplace-megoldások ügyfélhasználatának nyomon követésének áttekintése
+title: Kereskedelmi piactérpartneri és ügyfélhasználati hozzárendelés
+description: Áttekintést kaphat az Azure Marketplace-megoldások ügyfélhasználatának nyomon követéséről.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 9/23/2019
+ms.date: 04/13/2020
 ms.author: dsindona
-ms.openlocfilehash: 2895944dea6417949488076186135680523e19db
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 5fec72ce5f86c1bee9ec0e978e458f5be454c8e3
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80874959"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256586"
 ---
-# <a name="azure-partner-customer-usage-attribution"></a>Az Azure-partnererőforrások ügyfelek általi használatának nyomon követése
+# <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Kereskedelmi piactérpartneri és ügyfélhasználati hozzárendelés
 
-Az Azure szoftverpartnereként a megoldások Azure-összetevőket igényelnek, vagy közvetlenül az Azure-infrastruktúrára kell őket telepíteni. Azok az ügyfelek, akik egy partnermegoldást telepítenek, és saját Azure-erőforrásokat biztosítanak, nehezen érhetik el a központi telepítés állapotát, és optika-ot kaphatnak az Azure növekedésére gyakorolt hatásról. Ha magasabb szintű láthatóságot ad hozzá, a Microsoft értékesítési csapataihoz igazodik, és kreditet szerez a Microsoft partnerprogramjaiszámára.
+Az ügyfélhasználat-hozzárendelés egy olyan módszer, amely az Azure-előfizetésekben futó, a megoldás futtatásához üzembe helyezett, partnerként üzembe helyezett Azure-erőforrásokat társítja. Ezek a társítások kialakítása a microsoftos belső rendszerekben nagyobb láthatóságot biztosít a szoftvert futtató Azure-lábnyomszámára. Ha elfogadja ezt a nyomon követési funkciót, a Microsoft értékesítési csapataival való összehangolása és a Microsoft partnerprogramjainak jóváírása.
 
-A Microsoft most egy olyan módszert kínál, amely ekkel segít a partnereknek jobban nyomon követni az Azure-beli szoftvereik Azure-beli üzembe helyezésének azure-használatát. Az új módszer az Azure Resource Manager használatával vezényli az Azure-szolgáltatások üzembe helyezését.
+A társítást az Azure Marketplace-en, a rövid útmutató tárházán, a privát GitHub-adattárakon és az 1:1-es ügyfél-elköteleződéseken keresztül alakíthatja ki, amelyek tartós IP-címet hoznak létre (például egy alkalmazás fejlesztését).
 
-Microsoft-partnerként társíthatja az Azure-használatot bármely Azure-erőforrással, amelyet az ügyfél nevében biztosít. A társítás az Azure Marketplace-en, a rövid útmutató tárházon, a privát GitHub-adattárakon és az egy-egy ügyféllel kapcsolatos elköteleződésen keresztül alakítható ki. Az ügyfélhasználat-hozzárendelés három telepítési lehetőséget támogat:
+Az ügyfélhasználat-hozzárendelés három telepítési lehetőséget támogat:
 
 - Azure Resource Manager-sablonok: A partnerek erőforrás-kezelői sablonok használatával telepíthetik az Azure-szolgáltatásokat a partner szoftverének futtatásához. A partnerek létrehozhatnak egy Resource Manager-sablont az Azure-megoldásuk infrastruktúrájának és konfigurációjának meghatározásához. Az Erőforrás-kezelő sablon lehetővé teszi, hogy Ön és ügyfelei a megoldás teljes életciklusa során üzembe helyezhetők. Biztos lehet benne, hogy az erőforrások konzisztens állapotban vannak telepítve.
 - Azure Resource Manager API-k: A partnerek közvetlenül hívhatják meg az Erőforrás-kezelő API-kat egy Resource Manager-sablon üzembe helyezéséhez, vagy létrehozhatják az API-hívásokat az Azure-szolgáltatások közvetlen kiépítéséhez.
-- Terraform: A partnerek használhatják a felhővezényt, például a Terraformot egy Resource Manager-sablon üzembe helyezéséhez vagy az Azure-szolgáltatások közvetlen üzembe helyezéséhez.
+- Terraform: A partnerek a Terraform segítségével telepíthetnek egy Resource Manager-sablont, vagy közvetlenül üzembe helyezhetik az Azure-szolgáltatásokat.
 
-Az ügyfélhasználat-hozzárendelés új telepítéshez használható, és nem támogatja a már üzembe helyezett meglévő erőforrások címkézését.
-
-Az Azure-alkalmazáshoz szükség van [Azure Application](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer)az ügyfélhasználati hozzárendelésre: az Azure Marketplace-en közzétett megoldássablon-ajánlat.
-
+>[!IMPORTANT]
+>- Az ügyfélhasználat-hozzárendelés nem célja a rendszerintegrátorok, felügyelt szolgáltatók vagy az Azure-on futó szoftverek üzembe helyezésére és kezelésére szolgáló eszközök munkájának nyomon követése.
+>
+>- Az ügyfélhasználat-hozzárendelés új központi telepítésekhez van, és nem támogatja a már üzembe helyezett meglévő erőforrások címkézését.
+>
+>- Az Azure Marketplace-en közzétett [Azure-alkalmazásajánlatokhoz](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer) ügyfélhasználati hozzárendelés szükséges.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
+## <a name="create-guids"></a>GUID azonosítók létrehozása
+
+A GUID egy egyedi hivatkozási azonosító, amely 32 hexadecimális számjegyből áll. A nyomon követéshez guid azonosítók létrehozásához guid generátort kell használnia. Az Azure Storage csapata létrehozott egy [GUID-generátor űrlapot,](https://aka.ms/StoragePartners) amely e-mailben küldi el a megfelelő formátumú GUID-ot, és újra felhasználható a különböző követőrendszerekben.
+
+> [!NOTE]
+> Erősen ajánlott, hogy az [Azure Storage GUID generator űrlap](https://aka.ms/StoragePartners) használatával hozza létre a GUID. További információkért tekintse meg [a GYIK-et.](#faq)
+
+Javasoljuk, hogy minden egyes termékhez hozzon létre egyedi GUID azonosítót minden egyes ajánlathoz és terjesztési csatornához. Ha nem szeretné, hogy a jelentésfelosztás a termék több terjesztési csatornájánként egyetlen GUID-ot használjon.
+
+Ha egy sablon használatával telepít egy terméket, és az elérhető az Azure Marketplace-en és a GitHubon is, létrehozhat és regisztrálhat két különböző GUIDS-t:
+
+- "A" termék az Azure Piactéren
+- "A" termék a GitHubon
+
+A jelentéskészítést a Microsoft Partner Hálózati azonosító és a GUID végzi.
+
+A használatot részletesebb szinten is nyomon követheti további GUID-ok regisztrálásával és a csomagok közötti GUID-ok módosításával, ahol a tervek az ajánlat változatai.
+
+## <a name="register-guids"></a>GUID-ok regisztrálása
+
+A GUID azonosítókat regisztrálni kell a Partnerközpontban, hogy lehetővé váljon az ügyfelek használatának hozzárendelése.
+
+Miután hozzáadott egy GUID azonosítót a sablonhoz vagy a felhasználói ügynökhöz, és regisztrálja a GUID-ot a Partnerközpontban, a rendszer nyomon követi a jövőbeli központi telepítéseket.
+
+1. Jelentkezzen be a [Partnerközpontba](https://partner.microsoft.com/dashboard).
+
+1. Iratkozzon fel, mint a [kereskedelmi piactér kiadója](https://aka.ms/JoinMarketplace).
+
+   * A partnereknek [profillal kell rendelkezniük a Partnerközpontban.](https://docs.microsoft.com/azure/marketplace/become-publisher) Javasoljuk, hogy sorolja fel az ajánlatot az Azure Marketplace-en vagy az AppSource-ban.
+   * A partnerek több GUID-ot is regisztrálhatnak.
+   * A partnerek regisztrálhatnak GUID-okat a nem piactéri megoldássablonokhoz és ajánlatokhoz.
+
+1. A jobb felső sarokban jelölje ki a beállítások fogaskerék ikonját, majd a **Fejlesztői beállítások lehetőséget**.
+
+1. A **Fiókbeállítások lapon**válassza **a Követés GUID hozzáadása lehetőséget.**
+
+1. A **GUID** mezőbe írja be a követési GUID azonosítót. Csak a GUID azonosítót adja meg **a pid-** előtag nélkül. A **Leírás** mezőbe írja be az ajánlat nevét vagy leírását.
+
+1. Ha egynél több GUID azonosítót szeretne regisztrálni, válassza ismét **a Követés GUID hozzáadása** lehetőséget. További mezők jelennek meg az oldalon.
+
+1. Kattintson a **Mentés** gombra.
+
 ## <a name="use-resource-manager-templates"></a>Resource Manager-sablonok használata
-Számos partnermegoldás van telepítve az ügyfél előfizetésén az Erőforrás-kezelő sablonok használatával. Ha rendelkezik egy Erőforrás-kezelő sablonnal, amely elérhető az Azure Marketplace-en, a GitHubon vagy rövid útmutatóként, a sablon módosításának folyamata az ügyfélhasználat-hozzárendelés engedélyezéséhez azonnal továbbításra kell, hogy kerüljön.
+Számos partnermegoldás van telepítve az Azure Resource Manager-sablonokkal. Ha rendelkezik egy Erőforrás-kezelő sablonnal, amely elérhető az Azure Marketplace-en, a GitHubon vagy rövid útmutatóként, a sablon módosításának folyamata az ügyfelek használatának hozzárendelésének engedélyezéséhez egyenesen előre halad.
 
-A megoldássablonok létrehozásával és közzétételével kapcsolatos további információkért lásd:
+> [!NOTE]
+> A megoldássablonok létrehozásával és közzétételével kapcsolatos további információkért lásd:
+> * [Hozza létre és telepítse az első Erőforrás-kezelő sablont.](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)
+>* [Az Azure-alkalmazásajánlat](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer).
+>* Videó: [Megoldássablonok és felügyelt alkalmazások létrehozása az Azure Piactérhez](https://channel9.msdn.com/Events/Build/2018/BRK3603).
 
-* [Hozza létre és telepítse az első Erőforrás-kezelő sablont.](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)
-* [Az Azure-alkalmazásajánlat](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer).
-* Videó: [Megoldássablonok és felügyelt alkalmazások létrehozása az Azure Piactérhez](https://channel9.msdn.com/Events/Build/2018/BRK3603).
-
-
-## <a name="add-a-guid-to-your-template"></a>GUID hozzáadása a sablonhoz
 
 Globálisan egyedi azonosító (GUID) hozzáadásához egyetlen módosítást kell végrehajtania a fő sablonfájlon:
 
-1. [Hozzon létre egy GUID-t](#create-guids) a javasolt módszerrel, és [regisztrálja a GUID azonosítót.](#register-guids-and-offers)
+1. [Hozzon létre egy GUID-t](#create-guids) a javasolt módszerrel, és [regisztrálja a GUID azonosítót.](#register-guids)
 
 1. Nyissa meg az Erőforráskezelő sablont.
 
@@ -96,7 +138,7 @@ Az ügyfélhasználati hozzárendelés engedélyezéséhez az API-hívások terv
 
 ![Példa GUID formátumra](media/marketplace-publishers-guide/tracking-sample-guid-for-lu-2.PNG)
 
-> [!Note]
+> [!NOTE]
 > A karakterlánc formátuma fontos. Ha a **pid-előtag** nem szerepel, nem lehet lekérdezni az adatokat. A különböző SDK-k eltérő módon követik nyomon. A módszer megvalósításához tekintse át a támogatott És nyomon követési megközelítést a preferált Azure SDK.To implement this method, review the support and tracking approach for your preferred Azure SDK.
 
 #### <a name="example-the-python-sdk"></a>Példa: A Python SDK
@@ -105,7 +147,7 @@ Python esetén használja a **config** attribútumot. Az attribútum csak userag
 
 ![Attribútum hozzáadása felhasználói ügynökhöz](media/marketplace-publishers-guide/python-for-lu.PNG)
 
-> [!Note]
+> [!NOTE]
 > Adja hozzá az attribútumot az egyes ügyfelekhez. Nincs globális statikus konfiguráció. Előfordulhat, hogy egy ügyfélgyárat jelöl meg, hogy megbizonyosodjon arról, hogy minden ügyfél nyomon követi. További információ: ez az [ügyfélgyári minta a GitHubon.](https://github.com/Azure/azure-cli/blob/7402fb2c20be2cdbcaa7bdb2eeb72b7461fbcc30/src/azure-cli-core/azure/cli/core/commands/client_factory.py#L70-L79)
 
 #### <a name="tag-a-deployment-by-using-the-azure-powershell"></a>Központi telepítés címkézése az Azure PowerShell használatával
@@ -143,50 +185,6 @@ Azoknak a partnereknek, akik a Terraform-on keresztül szeretnék telepíteni a 
 
 * GUID létrehozása (a GUID-ot minden egyes ajánlathoz vagy termékváltozathoz hozzá kell adni)
 * Frissítse az Azure-szolgáltatóértékét, hogy a *partner_id* értékét a GUID azonosítóra állítsa be (NE rögzítse előre a GUID-ot "pid-"-nel, csak állítsa be a tényleges GUID-ra)
-
-## <a name="create-guids"></a>GUID azonosítók létrehozása
-
-A GUID egy egyedi hivatkozási szám, amely 32 hexadecimális számjegyből áll. A nyomon követéshez guid azonosítók létrehozásához guid generátort kell használnia. Az Azure Storage csapata létrehozott egy [GUID-generátor űrlapot,](https://aka.ms/StoragePartners) amely e-mailben küldi el a megfelelő formátumú GUID-ot, és újra felhasználható a különböző követőrendszerekben.
-
-> [!Note]
-> Erősen ajánlott, hogy az [Azure Storage GUID generator űrlap](https://aka.ms/StoragePartners) használatával hozza létre a GUID. További információkért tekintse meg [a GYIK-et.](#faq)
-
-Javasoljuk, hogy minden egyes termékhez hozzon létre egyedi GUID azonosítót minden egyes ajánlathoz és terjesztési csatornához. Ha nem szeretné, hogy a jelentésfelosztás a termék több terjesztési csatornájánként egyetlen GUID-ot használjon.
-
-Ha egy sablon használatával telepít egy terméket, és az elérhető az Azure Marketplace-en és a GitHubon is, létrehozhat és regisztrálhat 2 különböző GUIDS-t:
-
-*   "A" termék az Azure Piactéren
-*   "A" termék a GitHubon
-
-A jelentéskészítést a partnerérték (Microsoft Partner-azonosító) és a GUID-ok végzik.
-
-A GUID-ok részletesebb szinten is nyomon követhetőek, például a termékváltozatok, ahol a termékváltozatok egy ajánlat változatai.
-
-## <a name="register-guids-and-offers"></a>GUID-ok és ajánlatok regisztrálása
-
-A GUID azonosítókregisztrálva kell lenniük az ügyfelek használatának engedélyezéséhez.
-
-A sablon GUID azonosítóinak minden regisztrációja a Partnerközpontban történik.
-
-Miután hozzáadja a GUID azonosítót a sablonhoz vagy a felhasználói ügynökhöz, és regisztrálja a GUID-ot a Partnerközpontban, a rendszer nyomon követi az összes központi telepítést.
-
-1. Iratkozzon fel, mint a [kereskedelmi piactér kiadója](https://aka.ms/JoinMarketplace).
-
-   * A partnereknek [profillal kell rendelkezniük a Partnerközpontban.](https://docs.microsoft.com/azure/marketplace/become-publisher) Javasoljuk, hogy sorolja fel az ajánlatot az Azure Marketplace-en vagy az AppSource-ban.
-   * A partnerek több GUID-ot is regisztrálhatnak.
-   * A partnerek regisztrálhatnak egy GUID-ot a nem Marketplace-alapú megoldássablonokhoz és -ajánlatokhoz.
-
-1. Jelentkezzen be a [Partnerközpontba](https://partner.microsoft.com/dashboard).
-
-1. A jobb felső sarokban jelölje ki a beállítások fogaskerék ikonját, majd a **Fejlesztői beállítások lehetőséget**.
-
-1. A **Fiókbeállítások lapon**válassza **a Követés GUID hozzáadása lehetőséget.**
-
-1. A **GUID** mezőbe írja be a követési GUID azonosítót. Csak a GUID azonosítót adja meg **a pid-** előtag nélkül. A **Leírás** mezőbe írja be az ajánlat nevét vagy leírását.
-
-1. Ha egynél több GUID azonosítót szeretne regisztrálni, válassza ismét **a Követés GUID hozzáadása** lehetőséget. További mezők jelennek meg az oldalon.
-
-1. Kattintson a **Mentés** gombra.
 
 
 ## <a name="verify-the-guid-deployment"></a>A GUID központi telepítésének ellenőrzése
@@ -277,7 +275,7 @@ Ha segítségre van szüksége a Marketplace-bevezetéshez és/vagy az ügyfelek
 
 1. A következő lapon adja meg a szükséges értékeket.
 
-   > [!Important]
+   > [!IMPORTANT]
    > Az **Incidens címmezőbe** írja be az **ISV-használat követést.** Írja le részletesen a problémát.
 
    ![Az incidens címéhez adja meg az ISV-használat követést](media/marketplace-publishers-guide/guid-dev-center-help-hd%201.png)
@@ -315,11 +313,11 @@ Igen, az ügyfél vagy a megvalósítási partner testreszabhatja a sablont, és
 
 **Nyomon követhetem a nem microsoftos tárházból, például a GitHubról telepített sablonokat?**
 
-Igen, mindaddig, amíg a GUID jelen van a sablon telepítésekor, a használat nyomon követi. A partnereknek rendelkezniük kell egy profillal a kereskedelmi piactéren a Partnerközpontban való regisztrációban az Azure Marketplace-en kívüli üzembe helyezéshez használt GUID-ok regisztrálásához.
+Igen, mindaddig, amíg a GUID jelen van a sablon telepítésekor, a használat nyomon követi. A partnereknek továbbra is regisztrálniuk kell guid azonosítóikat.
 
 **Az ügyfél is kap jelentést?**
 
-Az ügyfelek nyomon követhetik az egyes erőforrások vagy az ügyfél által definiált erőforráscsoportok használatát az Azure Portalon belül.
+Az ügyfelek nyomon követhetik az egyes erőforrások vagy az ügyfél által definiált erőforráscsoportok használatát az Azure Portalon belül. Az ügyfelek nem látják a használatot guid-ként.
 
 **Hasonló-e ez a módszer a digitális adatkapcsolati partnerhez (DPOR)?**
 

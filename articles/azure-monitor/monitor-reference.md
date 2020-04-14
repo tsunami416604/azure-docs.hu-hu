@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: 0ef7e5d869ab2d7e085cbf861bfc32e57b1fad4b
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: e0e98b87cf3612bf01f90f806ea64ef06d08c60a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80408491"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255328"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Mit figyel az Azure Monitor?
 Ez a cikk ismerteti a különböző alkalmazások és szolgáltatások, amelyek az Azure Monitor által figyelt. 
@@ -31,7 +31,7 @@ Az insights személyre szabott figyelési élményt nyújt az egyes alkalmazáso
 | [Azure-figyelő hálózatokhoz (előzetes verzió)](insights/network-insights-overview.md) | Átfogó képet nyújt az összes hálózati erőforrás állapotáról és mutatóiról. A speciális keresési funkció segítségével azonosíthatja az erőforrás-függőségeket, lehetővé téve az olyan forgatókönyveket, mint például a webhelyet üzemeltető erőforrások azonosítása, egyszerűen a webhely nevének keresésével. |
 [Azure-figyelő erőforráscsoportokhoz (előzetes verzió)](insights/resource-group-insights.md) |  Osztályzhatja és diagnosztizálhatja az egyes erőforrások által tapasztalt problémákat, miközben az erőforráscsoport egészének állapotát és teljesítményét illetően kontextust kínál. |
 | [Azure-figyelő tárhelyhez (előzetes verzió)](insights/storage-insights-overview.md) | Az Azure Storage-fiókok átfogó figyelését biztosítja az Azure Storage-szolgáltatások teljesítményének, kapacitásának és rendelkezésre állásának egységes nézetével. |
-| [Azure-figyelő virtuális gépekhez (előzetes verzió)](insights/container-insights-overview.md) | Figyeli az Azure virtuális gépek (VM) és a virtuális gép méretezési csoportok nagy méretekben. A szolgáltatás elemzi a Windows és Linux rendszerű virtuális gépek teljesítményét és állapotát, valamint figyeli folyamataikat és a más erőforrásokkal és külső folyamatokkal kapcsolatos függőségeiket. |
+| [Virtuális gépek Azure-figyelője](insights/container-insights-overview.md) | Figyeli az Azure virtuális gépek (VM) és a virtuális gép méretezési csoportok nagy méretekben. A szolgáltatás elemzi a Windows és Linux rendszerű virtuális gépek teljesítményét és állapotát, valamint figyeli folyamataikat és a más erőforrásokkal és külső folyamatokkal kapcsolatos függőségeiket. |
 
 ### <a name="core-solutions"></a>Alapvető megoldások
 
@@ -174,7 +174,7 @@ Az alábbi táblázatban található szolgáltatások és megoldások az adatoka
 
 | Termék/szolgáltatás | Leírás |
 |:---|:---|
-| [Azure-automatizálás](/azure/automation/) | Kezelje az operációs rendszer frissítéseit, és kövesse nyomon a változásokat Windows és Linux rendszerű számítógépeken. Lásd: [Változáskövetés](../automation/change-tracking.md) és [frissítéskezelés](../automation/automation-update-management.md). |
+| [Azure Automation](/azure/automation/) | Kezelje az operációs rendszer frissítéseit, és kövesse nyomon a változásokat Windows és Linux rendszerű számítógépeken. Lásd: [Változáskövetés](../automation/change-tracking.md) és [frissítéskezelés](../automation/automation-update-management.md). |
 | [Azure-információvédelem](https://docs.microsoft.com/azure/information-protection/) | A dokumentumok és e-mailek besorolása és opcionális védelme. Lásd: [Központi jelentés készítés az Azure Information Protection.](https://docs.microsoft.com/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports) |
 | [Azure Security Center](/azure/security-center/) | Gyűjtse össze és elemezze a biztonsági eseményeket, és végezzen fenyegetéselemzést. [Lásd: Adatgyűjtés az Azure Security Centerben](/azure/security-center/security-center-enable-data-collection) |
 | [Azure Sentinel](/azure/sentinel/) | Különböző forrásokhoz csatlakozik, például az Office 365-höz és az Amazon Web Services Cloud Trailhez. Lásd: [Adatforrások csatlakoztatása](/azure/sentinel/connect-data-sources). |
@@ -201,7 +201,7 @@ Más megoldások is rendelkezésre állnak a különböző alkalmazások és szo
 | [Tevékenységnapló-elemzés](platform/activity-log-view.md#azure-portal) | Tevékenységnapló-bejegyzések megtekintése. |
 | [DNS-elemzés (előzetes verzió)](insights/dns-analytics.md) | Gyűjti, elemzi és korrelálja a Windows DNS-elemzési és naplózási naplókat és egyéb kapcsolódó adatokat a DNS-kiszolgálókról. |
 | [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | Gyűjtse össze, tekintse meg és elemezze a Cloud Foundry rendszer állapotát és teljesítménymutatóit több telepítéssorán. |
-| [Tárolók](insights/containers.md) | Tekintse meg és kezelje a Docker- és Windows-tárolóállomásokat. |
+| [Containers](insights/containers.md) | Tekintse meg és kezelje a Docker- és Windows-tárolóállomásokat. |
 | [Igény szerinti értékelések](https://docs.microsoft.com/services-hub/health/getting_started_with_on_demand_assessments) | Mérje fel és optimalizálja a helyszíni, hibrid és felhőalapú Microsoft-technológiai környezetek rendelkezésre állását, biztonságát és teljesítményét. |
 | [SQL állapot-ellenőrzés](insights/sql-assessment.md) | Mérje fel az SQL Server-környezetek kockázatát és állapotát.  |
 | [Átviteli adatok](insights/wire-data.md) | A Log Analytics-ügynökkel windowsos és Linuxhoz csatlakoztatott számítógépekről gyűjtött összevont hálózati és teljesítményadatok. |

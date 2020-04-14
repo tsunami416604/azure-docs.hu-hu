@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/17/2020
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: 64eb19e43223c1953a7244f8fd29c48d085f1e96
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 2fa2e40ba2a7fe84b6df57bfb711d01332b8f523
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80116857"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81274729"
 ---
 <a name="HOLTop"></a>
 
@@ -44,7 +44,7 @@ A Visual Studio IDE használatával hozzon létre egy új .NET Core konzolalkalm
 
 #### <a name="version-30-preview"></a>[3.0-s verziójú előzetes](#tab/version-3)
 
-Telepítse az ügyfélkönyvtárat úgy, hogy a jobb gombbal a **megoldásra** kattint a Solution Explorer ben, és válassza a **NuGet-csomagok kezelése parancsot.** A megnyíló csomagkezelőben válassza a **Tallózás**lehetőséget, jelölje **be az Előzetes kiadás felvétele**jelölőnégyzetet, és keresse meg a mezőt. `Azure.AI.TextAnalytics` Válassza `1.0.0-preview.3`a verziót, majd **a Telepítés lehetőséget.** A [Csomagkezelő konzolt](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)is használhatja.
+Telepítse az ügyfélkönyvtárat úgy, hogy a jobb gombbal a **megoldásra** kattint a Solution Explorer ben, és válassza a **NuGet-csomagok kezelése parancsot.** A megnyíló csomagkezelőben válassza a **Tallózás**lehetőséget, jelölje **be az Előzetes kiadás felvétele**jelölőnégyzetet, és keresse meg a mezőt. `Azure.AI.TextAnalytics` Válassza `1.0.0-preview.4`a verziót, majd **a Telepítés lehetőséget.** A [Csomagkezelő konzolt](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)is használhatja.
 
 > [!TIP]
 > Egyszerre szeretné megtekinteni a teljes rövid útmutató kódfájlt? Ebben a rövid útmutatóban a kódpéldákat tartalmazó [gitHubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/TextAnalytics/program.cs)található. 
@@ -63,6 +63,7 @@ Telepítse az ügyfélkönyvtárat úgy, hogy a jobb gombbal a **megoldásra** k
 Nyissa meg a *program.cs* `using` fájlt, és adja hozzá a következő irányelveket:
 
 ```csharp
+using Azure;
 using System;
 using System.Globalization;
 using Azure.AI.TextAnalytics;
@@ -73,7 +74,7 @@ Az alkalmazás osztályában `Program` hozzon létre változókat az erőforrás
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
 ```csharp
-private static readonly TextAnalyticsApiKeyCredential credentials = new TextAnalyticsApiKeyCredential("<replace-with-your-text-analytics-key-here>");
+private static readonly AzureKeyCredential credentials = new AzureKeyCredential("<replace-with-your-text-analytics-key-here>");
 private static readonly Uri endpoint = new Uri("<replace-with-your-text-analytics-endpoint-here>");
 ```
 
@@ -87,7 +88,6 @@ static void Main(string[] args)
     SentimentAnalysisExample(client);
     LanguageDetectionExample(client);
     EntityRecognitionExample(client);
-    EntityPIIExample(client);
     EntityLinkingExample(client);
     KeyPhraseExtractionExample(client);
 
@@ -121,14 +121,13 @@ Cserélje le az `Main` alkalmazás metódusát. Később meg fogja határozni az
 
 A Text Analytics-ügyfél egy `TextAnalyticsClient` olyan objektum, amely hitelesíti magát az Azure-ban a kulcs használatával, és funkciókat biztosít a szöveg egyetlen karakterláncként vagy kötegként történő fogadásához. Az API-ba szinkron módon vagy aszinkron módon is küldhet szöveget. A válaszobjektum minden elküldött dokumentum elemzési adatait tartalmazza. 
 
-Ha verziót `3.0-preview`használ, egy választható `TextAnalyticsClientOptions` példány segítségével inicializálhatja az ügyfelet különböző alapértelmezett beállításokkal (például alapértelmezett nyelv vagy országemlékeztető). Azure Active Directory-jogkivonat használatával is hitelesítheti. 
+Ha a szolgáltatás `3.0-preview` verzióját használja, egy választható `TextAnalyticsClientOptions` példány segítségével inicializálhatja az ügyfelet különböző alapértelmezett beállításokkal (például alapértelmezett nyelv vagy országemlékeztető). Azure Active Directory-jogkivonat használatával is hitelesítheti. 
 
 ## <a name="code-examples"></a>Kódpéldák
 
 * [Hangulatelemzés](#sentiment-analysis)
 * [Nyelvfelismerés](#language-detection)
-* [Elnevezett entitás felismerése](#named-entity-recognition-ner)
-* [Személyes adatok észlelése](#detect-personal-information)
+* [Megnevezett entitások felismerése](#named-entity-recognition-ner)
 * [Entitáscsatolás](#entity-linking)
 * [Kulcskifejezés kinyerése](#key-phrase-extraction)
 
@@ -264,7 +263,6 @@ Language: English
 
 > [!NOTE]
 > Új verzió: `3.0-preview`
-> * Az entitásfelismerés mostantól magában foglalja a személyes adatok szöveges módon történő észlelését.
 > * A gazdálkodó egység csatolása mostantól elkülönül a gazdálkodó egység kiismerésétől.
 
 
@@ -293,33 +291,6 @@ Named Entities:
         Text: last week,        Category: DateTime,     Sub-Category: DateRange
                 Length: 9,      Score: 0.80
 ```
-
-## <a name="detect-personal-information"></a>Személyes adatok észlelése
-
-Hozzon létre `EntityPIIExample()` egy új függvényt, amely a `RecognizePiiEntities()` korábban létrehozott ügyfelet veszi, meghívja annak függvényét, és végighalad az eredményeken. Az előző függvényhez `Response<IReadOnlyCollection<CategorizedEntity>>` hasonlóan a visszaadott objektum az észlelt entitások listáját fogja tartalmazni. Ha volt egy hiba, akkor `RequestFailedException`dobja a .
-
-```csharp
-static void EntityPIIExample(TextAnalyticsClient client)
-{
-    string inputText = "Insurance policy for SSN on file 123-12-1234 is here by approved.";
-    var response = client.RecognizePiiEntities(inputText);
-    Console.WriteLine("Personally Identifiable Information Entities:");
-    foreach (var entity in response.Value)
-    {
-        Console.WriteLine($"\tText: {entity.Text},\tCategory: {entity.Category},\tSub-Category: {entity.SubCategory}");
-        Console.WriteLine($"\t\tLength: {entity.GraphemeLength},\tScore: {entity.ConfidenceScore:F2}\n");
-    }
-}
-```
-
-### <a name="output"></a>Kimenet
-
-```console
-Personally Identifiable Information Entities:
-        Text: 123-12-1234,      Category: U.S. Social Security Number (SSN),    Sub-Category:
-                Length: 11,     Score: 0.85
-```
-
 
 ## <a name="entity-linking"></a>Entitáscsatolás
 

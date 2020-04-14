@@ -14,19 +14,19 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: a71dbd1b38ff58ccf1eb7a4d50daad5b24922e2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e42917237f3b114881655d88a017c2c4366612b3
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022749"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254563"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Batch-megoldások ugrással történő indítása visual studio-projektsablonokkal
 
 A **Feladatkezelő** és **a Feladatfeldolgozó Visual Studio batch-sablonjai** olyan kódot biztosítanak, amely segít a nagy számítási feladatok megvalósításában és futtatásában a Batch-en a legkevesebb erőfeszítéssel. Ez a dokumentum ismerteti ezeket a sablonokat, és útmutatást ad azok használatához.
 
 > [!IMPORTANT]
-> Ez a cikk csak az e két sablonra vonatkozó információkat ismerteti, és feltételezi, hogy ismeri a Batch szolgáltatást és a hozzá kapcsolódó legfontosabb fogalmakat: készletek, számítási csomópontok, feladatok és feladatok, feladatkezelői feladatok, környezeti változók és egyéb releváns Információ. További információt az Azure Batch és a [Batch szolgáltatás áttekintése](batch-api-basics.md)a fejlesztők számára című [témakörben](batch-technical-overview.md) talál.
+> Ez a cikk csak a két sablonra vonatkozó információkat ismerteti, és feltételezi, hogy ismeri a Batch szolgáltatást és a hozzá kapcsolódó legfontosabb fogalmakat: készletek, számítási csomópontok, feladatok és feladatok, feladatkezelői feladatok, környezeti változók és egyéb vonatkozó információk. További információt az Azure Batch és a [Batch szolgáltatás áttekintése](batch-api-basics.md)a fejlesztők számára című [témakörben](batch-technical-overview.md) talál.
 > 
 > 
 
@@ -215,7 +215,7 @@ job.JobManagerTask.EnvironmentSettings = new [] {
 ```
 **Tárolási hitelesítő adatok**
 
-Az ügyfélnek általában nem kell megadnia a kapcsolódó tárfiók hitelesítő adatait a feladatkezelő feladathoz, mert (a) a legtöbb feladatkezelőnek nem kell kifejezetten hozzáférnie a csatolt tárfiókhoz, és (b) a csatolt tárfiókot gyakran minden feladathoz biztosítják a feladat hoz létre közös környezetet. Ha nem adja meg a csatolt tárfiókot a közös környezeti beállításokon keresztül, és a feladatkezelőnek hozzáférésre van szüksége a csatolt tárolóhoz, akkor a csatolt tárolási hitelesítő adatokat az alábbiak szerint kell megadnia:
+Az ügyfélnek általában nem kell megadnia a kapcsolódó tárfiók hitelesítő adatait a feladatkezelő feladathoz, mert (a) a legtöbb feladatkezelőnek nem kell explicit módon hozzáférnie a csatolt tárfiókhoz, és (b) a csatolt tárfiók gyakran minden feladathoz elegendő, a feladat közös környezetbeállításaként. Ha nem adja meg a csatolt tárfiókot a közös környezeti beállításokon keresztül, és a feladatkezelőnek hozzáférésre van szüksége a csatolt tárolóhoz, akkor a csatolt tárolási hitelesítő adatokat az alábbiak szerint kell megadnia:
 
 ```csharp
 job.JobManagerTask.EnvironmentSettings = new [] {
@@ -361,7 +361,7 @@ A Run() implementációja hozzáfér a következőkhöz:
 
 **A feladat hibája**
 
-Hiba esetén kivétel esetén kiléphet a Run() metódusból, de ez a feladat kilépési kódjának vezérlésében hagyja a legfelső szintű kivételkezelőt. Ha a kilépési kódot úgy kell szabályoznia, hogy meg tudja különböztetni a különböző típusú hibákat, például diagnosztikai célokra, vagy mert egyes hibamódoknak meg kell szakítaniuk a feladatot, míg másoknak nem, akkor egy nem nulla kilépési kódot. Ez lesz a feladat kilépési kódja.
+Hiba esetén kivétel esetén kiléphet a Run() metódusból, de ez a feladat kilépési kódjának vezérlésében hagyja a legfelső szintű kivételkezelőt. Ha a kilépési kódot úgy kell szabályoznia, hogy meg tudja különböztetni a különböző típusú hibákat, például diagnosztikai célokra, vagy mert egyes hibamódoknak meg kell szakítaniuk a feladatot, míg másoknak nem, akkor egy nem nulla kilépési kód visszaküldésével lépjen ki a Run() metódusból. Ez lesz a feladat kilépési kódja.
 
 ### <a name="exit-codes-and-exceptions-in-the-task-processor-template"></a>Kilépési kódok és kivételek a Feladatfeldolgozó sablonban
 A kilépési kódok és kivételek lehetővé teszik a program futtatásának kimenetelét, és segítenek azonosítani a program végrehajtásával kapcsolatos problémákat. A Feladatfeldolgozó sablon megvalósítja az ebben a szakaszban ismertetett kilépési kódokat és kivételeket.
@@ -444,7 +444,7 @@ A batch-megoldások fejlesztésének másik hasznos eszköze az [Azure Batch Fil
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
 [process_exitcode]: https://msdn.microsoft.com/library/system.diagnostics.process.exitcode.aspx
 [vs_gallery]: https://visualstudiogallery.msdn.microsoft.com/
-[vs_gallery_templates]: https://go.microsoft.com/fwlink/?linkid=820714
+[vs_gallery_templates]: https://github.com/Azure/batch-extension-templates
 [vs_find_use_ext]: https://msdn.microsoft.com/library/dd293638.aspx
 
 [diagram01]: ./media/batch-visual-studio-templates/diagram01.png

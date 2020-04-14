@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 195f4b5057c0e2d644ab44cc4c32e97c8662d36d
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 4219bb471b92e7ddae72c50403f635498c90080d
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422796"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81251690"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>Speciális veszélyforrások elleni védelem konfigurálása az Azure Storage-hoz
 
@@ -23,10 +23,16 @@ Az Azure Storage speciális veszélyforrások elleni védelme egy további bizto
 
 A biztonsági riasztások akkor aktiválódnak, ha tevékenységi rendellenességek lépnek fel. Ezek a biztonsági riasztások integrálva vannak [az Azure Security Centerrel,](https://azure.microsoft.com/services/security-center/)és e-mailben is elküldésre kerülnek az előfizetés-rendszergazdáknak, a gyanús tevékenységek részleteivel és a fenyegetések kivizsgálásával és elhárításával kapcsolatos javaslatokkal.
 
-> [!NOTE]
-> Az Azure Storage speciális veszélyforrások elleni védelme jelenleg csak a Blob storage számára érhető el. Ez a szolgáltatás az Egyesült Államok kormányzati felhőiben érhető el, de más szuverén vagy Azure kormányzati felhőrégiókban nem. A díjszabással kapcsolatos részletekért, beleértve az ingyenes 30 napos próbaverziót, tekintse meg az [Azure Security Center díjszabási lapját.](https://azure.microsoft.com/pricing/details/security-center/)
+A szolgáltatás beolvassa az olvasási, írási és törlési kérelmek diagnosztikai naplóit a Blob Storage-ba a fenyegetésészleléshez. A speciális veszélyforrások elleni védelemriasztási riasztások vizsgálatához megtekintheti a kapcsolódó tárolási tevékenységeket a Storage Analytics-naplózás használatával. További információ: **A naplózás konfigurálása** [az Azure Portalon tárfiók figyelése című témakörben.](storage-monitor-storage-account.md#configure-logging)
 
-Az Azure Storage speciális veszélyforrások elleni védelme lenyeli az olvasási, írási és törlési kérelmek diagnosztikai naplóit a Blob storage-ba a fenyegetésészleléshez. A speciális veszélyforrások elleni védelemriasztási riasztások vizsgálatához megtekintheti a kapcsolódó tárolási tevékenységeket a Storage Analytics-naplózás használatával. További információ: **A naplózás konfigurálása** [az Azure Portalon tárfiók figyelése című témakörben.](storage-monitor-storage-account.md#configure-logging)
+## <a name="availability"></a>Rendelkezésre állás
+
+Az Azure Storage speciális veszélyforrások elleni védelme jelenleg csak a [Blob Storage számára](https://azure.microsoft.com/services/storage/blobs/)érhető el. 
+
+Ez a szolgáltatás minden nyilvános felhőben és az Egyesült Államok kormányzati felhőiben érhető el, de más szuverén vagy Azure kormányzati felhőrégióban nem.
+
+A díjszabással kapcsolatos részletekért, beleértve az ingyenes 30 napos próbaverziót, tekintse meg az [Azure Security Center díjszabási lapját.](https://azure.microsoft.com/pricing/details/security-center/)
+
 
 ## <a name="set-up-advanced-threat-protection"></a>Speciális veszélyforrások elleni védelem beállítása
 

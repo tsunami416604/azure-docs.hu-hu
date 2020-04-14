@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: b9184808b71cce03882022fd37967fe421e64062
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: f948d813ddb4d493b455a4922818e38ac3fd6eaa
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548991"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259170"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Az API Management-szolgáltatáskonfiguráció mentése és konfigurálása a Git használatával
 
@@ -56,7 +56,7 @@ A Git konfigurációs beállításainak megtekintéséhez és beállításához 
 >
 >
 
-A Git-hozzáférés REST API-val történő engedélyezéséről és letiltásáról a [Git-hozzáférés engedélyezése vagy letiltása a REST API használatával című témakörben](/rest/api/apimanagement/2019-01-01/tenantaccess?EnableGit)talál.
+A Git-hozzáférés REST API-val történő engedélyezéséről és letiltásáról a [Git-hozzáférés engedélyezése vagy letiltása a REST API használatával című témakörben](/rest/api/apimanagement/2019-12-01/tenantaccess?EnableGit)talál.
 
 ## <a name="to-save-the-service-configuration-to-the-git-repository"></a>A szolgáltatáskonfiguráció mentése a Git-tárházba
 
@@ -68,7 +68,7 @@ Néhány pillanat múlva a konfiguráció menti, és a tárház konfigurációs 
 
 Miután a konfiguráció tárat mentette a tárházba, klónozható.
 
-A művelet REST API használatával történő végrehajtásáról a [Konfigurációs pillanatkép véglegesítése a REST API használatával című témakörben](/rest/api/apimanagement/2019-01-01/tenantaccess?CommitSnapshot)olvashat.
+A művelet REST API használatával történő végrehajtásáról a [Konfigurációs pillanatkép véglegesítése a REST API használatával című témakörben](/rest/api/apimanagement/2019-12-01/tenantaccess?CommitSnapshot)olvashat.
 
 ## <a name="to-clone-the-repository-to-your-local-machine"></a>A tárház klónozása a helyi számítógépre
 
@@ -142,7 +142,7 @@ git push
 
 Miután a helyi módosítások véglegesítése és a kiszolgálótárba való leküldése után telepítheti őket az API Management szolgáltatáspéldányra.
 
-A művelet REST API használatával történő végrehajtásáról a [Git-módosítások telepítése a KONFIGURÁCIÓs adatbázisba a REST API használatával című témakörben](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/tenantconfiguration)talál tájékoztatást.
+A művelet REST API használatával történő végrehajtásáról a [Git-módosítások telepítése a KONFIGURÁCIÓs adatbázisba a REST API használatával című témakörben](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/tenantconfiguration)talál tájékoztatást.
 
 ## <a name="file-and-folder-structure-reference-of-local-git-repository"></a>A helyi Git-tárház fájl- és mappastruktúra-hivatkozása
 
@@ -172,9 +172,9 @@ Ezek a fájlok a helyi fájlrendszeren hozhatók létre, törölhetők, szerkesz
 > [!NOTE]
 > A következő entitások nem szerepelnek a Git-tárházban, és nem konfigurálhatók a Git használatával.
 >
-> * [Felhasználók](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/user)
-> * [Előfizetések](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/subscription)
-> * [Elnevezett értékek](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/property)
+> * [Felhasználók](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/user)
+> * [Előfizetések](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/subscription)
+> * [Elnevezett értékek](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/property)
 > * A stílusoktól eltérő fejlesztői portálentitások
 >
 
@@ -222,14 +222,14 @@ A végső `$ref-policy`beállítás , a szolgáltatáspéldány globális házir
 ### <a name="apis-folder"></a>apis mappa
 A `apis` mappa a szolgáltatáspéldány minden API-jához tartalmaz egy mappát, amely a következő elemeket tartalmazza.
 
-* `apis\<api name>\configuration.json`- ez az API konfigurációja, és információkat tartalmaz a háttérszolgáltatás URL-címéről és a műveletekről. Ez ugyanazokat az információkat, amelyeket vissza adna, ha `export=true` `application/json` egy adott [API bekapása](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apis/get) formátumban.
+* `apis\<api name>\configuration.json`- ez az API konfigurációja, és információkat tartalmaz a háttérszolgáltatás URL-címéről és a műveletekről. Ez ugyanazokat az információkat, amelyeket vissza adna, ha `export=true` `application/json` egy adott [API bekapása](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/apis/get) formátumban.
 * `apis\<api name>\api.description.html`- ez az API leírása, és `description` megfelel az [API entitás](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.entityproperty)tulajdonságának.
 * `apis\<api name>\operations\`- ez `<operation name>.description.html` a mappa olyan fájlokat tartalmaz, amelyek leképezik az API műveleteit. Minden fájl egyetlen művelet leírását tartalmazza az API-ban, amely leképezi a `description` [műveletentitás](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties) tulajdonságát a REST API-ban.
 
 ### <a name="groups-folder"></a>csoportok mappa
 A `groups` mappa a szolgáltatáspéldányban definiált minden egyes csoporthoz tartalmaz egy mappát.
 
-* `groups\<group name>\configuration.json`- ez a csoport konfigurációja. Ez ugyanaz az információ, amelyet a rendszer visszaadna, ha [egy adott csoport bekapása](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/group/get) műveletet hívna meg.
+* `groups\<group name>\configuration.json`- ez a csoport konfigurációja. Ez ugyanaz az információ, amelyet a rendszer visszaadna, ha [egy adott csoport bekapása](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/group/get) műveletet hívna meg.
 * `groups\<group name>\description.html`- ez a csoport leírása, és `description` megfelel a [csoportentitás](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity)tulajdonának.
 
 ### <a name="policies-folder"></a>házirendek mappa
@@ -249,7 +249,7 @@ A `portalStyles` mappa konfigurációs és stíluslapokat tartalmaz a szolgálta
 ### <a name="products-folder"></a>termékek mappa
 A `products` mappa a szolgáltatáspéldányban definiált minden egyes termékhez tartalmaz egy mappát.
 
-* `products\<product name>\configuration.json`- ez a termék konfigurációja. Ez ugyanaz az információ, amelyet a rendszer visszaadna, ha [egy adott termék behívása](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/product/get) lenne.
+* `products\<product name>\configuration.json`- ez a termék konfigurációja. Ez ugyanaz az információ, amelyet a rendszer visszaadna, ha [egy adott termék behívása](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/product/get) lenne.
 * `products\<product name>\product.description.html`- ez a termék leírása, és `description` megfelel a [REST API-ban](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity) szereplő termékentitás tulajdonságának.
 
 ### <a name="templates"></a>sablonok

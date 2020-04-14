@@ -1,27 +1,27 @@
 ---
-title: Ügyfél-irányítópult a Kereskedelmi piactér elemzésében a Partnerközpontban
-description: Ismerje meg, hogyan érheti el az ügyfelekkel kapcsolatos információkat, beleértve a növekedési trendeket is, a Kereskedelmi piactér elemzési irányítópultjának használatával.
+title: Ügyfél-irányítópult a kereskedelmi piactéri elemzésekben a Partnerközpontban
+description: Ismerje meg, hogyan érheti el az ügyfelekkel kapcsolatos információkat, beleértve a növekedési trendeket is, az ügyfél irányítópultjának használatával a kereskedelmi piactér-elemzésekben.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 7fe56a81bc82f9d49cf9f81b30986882b6d13cfe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a8379ed883311d219bb6eeb56bd4424dfb470bc9
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286115"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81251639"
 ---
-# <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Ügyfél-irányítópult a Kereskedelmi Piactér elemzésében
+# <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Ügyfél-irányítópult a kereskedelmi piactér elemzésében
 
 Ez a cikk a Partnerközpont **Ügyfél irányítópultjáról** nyújt tájékoztatást. Ez az irányítópult az ügyfelekkel kapcsolatos információkat jeleníti meg, beleértve a növekedési trendeket is, grafikus és letölthető formátumban.
 
 Az **Ügyfél irányítópult**eléréséhez nyissa meg az **[Elemzés irányítópultot](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** a Kereskedelmi piactér csoportban.
 
 >[!NOTE]
-> Az elemzési terminológia részletes meghatározását a [Kereskedelmi piactér elemzésével kapcsolatos gyakori kérdések és terminológiák](./faq-terminology.md)című témakörben található.
+> Az elemzési terminológia részletes meghatározását a [Kereskedelmi piactér elemzésével kapcsolatos gyakori kérdések és terminológia](./faq-terminology.md)című témakörben található.
 
 ## <a name="customer-dashboard"></a>Ügyfél irányítópult
 
@@ -108,10 +108,10 @@ A **Vevők lapszűrők** alkalmazása a Vevők oldal szintjén lesz alkalmazva. 
 
 ## <a name="next-steps"></a>További lépések
 
-- A Partnerközpont kereskedelmi piactéren elérhető elemzési jelentéseinek áttekintését [a Partnerközpont Kereskedelmi piactér Analytics szolgáltatása című témakörben találja.](./analytics.md)
-- Az ajánlat marketplace-tevékenységét összegző összesített adatok grafikonjait, trendjeit és értékeit lásd: [Összefoglaló irányítópult a Kereskedelmi piactér elemzésében.](./summary-dashboard.md)
-- A megrendelésekgrafikus és letölthető formátumban című témakörben talál további információt a [Rendelések irányítópultja a Kereskedelmi piactér elemzésében.](./orders-dashboard.md)
-- A virtuális gép (VM) kínál használati és forgalmi díjas számlázási metrikák, lásd: [Használati irányítópult a Kereskedelmi Piactér analytics.](./usage-dashboard.md)
-- Az elmúlt 30 nap letöltési kérelmeinek listáját a [Letöltések irányítópultja a Kereskedelmi piactér elemzésében című témakörben található.](./downloads-dashboard.md)
-- Az Azure Marketplace-en és az AppSource-on az ajánlatokra vonatkozó ügyfél-visszajelzések összevont nézetét a [Kereskedelmi piactér elemzése minősítések és vélemények irányítópultja című témakörben tekintheti meg.](./ratings-reviews.md)
-- A Kereskedelmi piactér elemzésével kapcsolatos gyakori kérdésekről és az adatkifejezések átfogó szótáráról a [Kereskedelmi piactér elemzésével kapcsolatos gyakori kérdések és terminológiák](./faq-terminology.md)című témakörben található.
+- A Partnerközpont kereskedelmi piacterén elérhető elemzési jelentések áttekintését [a Partnerközpont Kereskedelmi piacterületén található Analytics for the commercial marketplace című témakörben találja.](./analytics.md)
+- Az ajánlat marketplace-tevékenységét összegző összesített adatok grafikonjait, trendjeit és értékeit lásd: [Összefoglaló irányítópult a kereskedelmi piactér-elemzésben.](./summary-dashboard.md)
+- A megrendelésekgrafikus és letölthető formátumban című témakörben talál további információt [a Rendelések irányítópultja a kereskedelmi piactér elemzésében.](./orders-dashboard.md)
+- A virtuális gép (VM) kínál használati és forgalmi díjas számlázási metrikák, lásd: [Használati irányítópult a kereskedelmi piactér analytics.](./usage-dashboard.md)
+- Az elmúlt 30 nap letöltési kérelmeinek listáját a [Letöltések irányítópultja a kereskedelmi piactér-elemzésben című témakörben tartalmazza.](./downloads-dashboard.md)
+- Az Azure Marketplace-en és az AppSource-on az ajánlatokra vonatkozó ügyfél-visszajelzések összevont nézetét a [Minősítések és véleményezések irányítópultja című témakörben tekintheti meg a kereskedelmi piactér-elemzésekben.](./ratings-reviews.md)
+- A kereskedelmi piactér elemzésével kapcsolatos gyakori kérdésekről és az adatkifejezések átfogó szótáráról a [Kereskedelmi piactér elemzésével kapcsolatos gyakori kérdések és terminológiák](./faq-terminology.md)című témakörben található.

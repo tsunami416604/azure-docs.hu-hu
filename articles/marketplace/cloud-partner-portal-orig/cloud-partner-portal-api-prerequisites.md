@@ -5,17 +5,20 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 2a1022c6d041bf645b43dfed391a489de30b2fce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df94cba1f77ae3ea8cf595e7c651af7a69108bb6
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288563"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255974"
 ---
 <a name="api-prerequisites"></a>API-előfeltételek
 ================
+
+> [!NOTE]
+> A Cloud Partner Portal API-k integrálva vannak a Partnerközponttal, és az ajánlatok partnerközpontba való áttelepítése után is működni fognak. Az integráció kis változtatásokat vezet be. Tekintse át a [Cloud Partner Portal API-hivatkozásban](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) felsorolt módosításokat, és győződjön meg arról, hogy a kód továbbra is működik a Partnerközpontba való áttelepítés után.
 
 Két szükséges programozott eszközök, amelyek a Cloud Partner Portal API-k használatához szükséges: egy egyszerű szolgáltatás és egy Azure Active Directory (Azure AD) hozzáférési jogkivonat.
 
@@ -41,7 +44,7 @@ Az egyszerű szolgáltatás hozzáadásához kövesse az alábbi lépéseket:
 3. A **Típus** legördülő menüben válassza az **Egyszerű szolgáltatás lehetőséget,** és adja meg a következő adatokat:
 
 -   A szolgáltatásnév **rövid neve,** `spAccount`például .
--   Az **alkalmazás azonosítója**. Az azonosító megkereséséhez nyissa meg az [Azure Portalon,](https://portal.azure.com)kattintson az **Azure Active Directory**elemre, válassza az **Alkalmazásregisztrációk**lehetőséget, és kattintson az alkalmazásra.
+-   Az **alkalmazás azonosítója**. Az azonosító megkereséséhez nyissa meg az [Azure Portalt,](https://portal.azure.com)kattintson az **Azure Active Directory**elemre, válassza az **Alkalmazásregisztrációk**lehetőséget, és kattintson az alkalmazásra.
 -   A **bérlői azonosító**, más néven a **címtár-azonosító,** az Azure AD-bérlő. Ez az azonosító az Azure Active Directory lapján található az [Azure Portal on](https://portal.azure.com)Tulajdonságok **csoportban.**
 -   Az **egyszerű szolgáltatásobjektum objektumazonosítója.** Ezt az azonosítót az Azure Portalon szerezheti be. Nyissa meg az **Azure Active Directoryt,** válassza **az Alkalmazásregisztrációk**lehetőséget, kattintson az alkalmazásra, és kattintson az alkalmazás nevére a **Helyi címtárban a Felügyelt alkalmazás csoportban.** Ezután lépjen a **Tulajdonságok** lapra az objektumazonosító megkereséséhez. Győződjön meg arról, hogy nem az alkalmazáson található kezdeti objektumazonosítót, hanem az objektumazonosítót a felügyelt alkalmazásban ragadja meg.
 -   A fiókhoz társított **szerepkör,** amelyet az RBAC-hoz fog használni.

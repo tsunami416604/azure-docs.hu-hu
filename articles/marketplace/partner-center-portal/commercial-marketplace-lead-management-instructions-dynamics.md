@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 8af6b3a451d20bcc9cab3fa4adb9643f82b85e49
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b3e35b6d19905e3c5262dfea3e52511510c9ffe
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288818"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81252782"
 ---
 # <a name="configure-lead-management-for-dynamics-365-for-customer-engagement"></a>Érdeklődőkezelés konfigurálása a Dynamics 365 for Customer Engagement alkalmazáshoz
 
@@ -180,6 +180,7 @@ Ha készen áll az ajánlat érdeklődőkezelési adatainak konfigurálására a
     ![Kapcsolat részletei - érdeklődő célállomása](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-lead-destination.png)
 
 4. Adja meg a **Dynamics 365 példány URL-címét,** például `https://contoso.crm4.dynamics.com`.
+
 5. Válassza ki a **hitelesítési**módszert , az Azure Active Directoryt vagy az Office 365-öt. 
 6. Ha az Azure Active Directoryt választotta, adja meg `23456052-aaaa-bbbb-8662-1234df56788f`az **alkalmazás (ügyfél) azonosítóját** (például: ), a **címtárazonosítót** (például: `12345678-8af1-4asf-1234-12234d01db47`) és **az ügyféltitkos kulcsot** (például: `1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=`).
 
@@ -188,6 +189,13 @@ Ha készen áll az ajánlat érdeklődőkezelési adatainak konfigurálására a
 7. Ha az Office 365-öt választotta, `contoso@contoso.onmicrosoft.com`adja meg a `P@ssw0rd` **Felhasználónevet** (például: ) és a Jelszót (például: ).
 
     ![Kapcsolat részletei - Felhasználónév](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-authentication.png)
+
+8. **Kapcsolatfelvételi e-mail** – E-maileket adhat meg a vállalatnál lévő személyeknek, akiknek e-mailes értesítéseket kell kapniuk, ha új érdeklődő érkezik. Több e-mailt is megadhat, ha pontosvesszővel választja el őket.
+9. Válassza **az OK gombot.**
+
+Ha meg szeretne győződni arról, hogy sikeresen csatlakozott egy érdeklődő célállomásához, kattintson az érvényesítés gombra. Ha sikeres, akkor lesz egy teszt vezető az érdeklődő cél.
+
+![Érdeklődőkezelés - kapcsolat részletei tárfiók](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-connection-details.png)
 
 >[!Note]
 >Be kell fejeznie az ajánlat többi részének konfigurálását, és közzé kell tennie, mielőtt érdeklődőket kapna az ajánlathoz.

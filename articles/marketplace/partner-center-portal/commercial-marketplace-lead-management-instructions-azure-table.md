@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: f511a60b533d6d1e0b1ae8847d0ee0fb6be3500c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a36c411b9ababc42adb51d82a316df4252c01e24
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288835"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81252016"
 ---
 # <a name="configure-lead-management-using-an-azure-table"></a>Érdeklődőkezelés konfigurálása Azure-táblázat használatával
 
@@ -66,12 +66,12 @@ Ebben a példában útmutatóként hozzon létre egy egyszerű folyamatot, amely
 
    ![Saját folyamatok **+ ütemezett - üres **](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-scheduled-from-blank.png)
 
-5.  A *Build a scheduled flow* ablak alatt *Ismételje meg minden* válassza ki az "1" intervallum és az "óra" a gyakoriság. Is, hogy az áramlás egy nevet, ha úgy tetszik. Kattintson a **Létrehozás** gombra.
+5.    A *Build a scheduled flow* ablak alatt *Ismételje meg minden* válassza ki az "1" intervallum és az "óra" a gyakoriság. Is, hogy az áramlás egy nevet, ha úgy tetszik. Kattintson a **Létrehozás** gombra.
 
-    >[!Note]
-    >Bár ez a példa egy 1 órás intervallumot használ, kiválaszthatja az üzleti igényeinek leginkább megfelelő intervallumot és gyakoriságot.
+>[!Note]
+>Bár ez a példa egy 1 órás intervallumot használ, kiválaszthatja az üzleti igényeinek leginkább megfelelő intervallumot és gyakoriságot.
 
-    ![Ütemezett folyamat létrehozása.](./media/commercial-marketplace-lead-management-instructions-azure-table/build-scheduled-flow.png)
+![Ütemezett folyamat létrehozása.](./media/commercial-marketplace-lead-management-instructions-azure-table/build-scheduled-flow.png)
 
 6. Válassza az **+ Új lépés** gombot.
 7. A *Műveletablak kiválasztása mezőben* keressen rá a "Túllépések ideje" kifejezésre, és válassza a **Műveletek korábbi idő bekerülése** lehetőséget.
@@ -92,23 +92,17 @@ A következő lépésekben csatlakozik az Azure-táblához, és beállítja a fe
 
 9. Az Elmúlt idő bekerülése lépés után válassza a **+ Új lépést**, majd a *Művelet* kiválasztása ablakban keressen rá az "Entitások betöltése" kifejezésre.
 10. A **Műveletek csoportban**válassza **az Entitások begete (Azure Table Storage)** lehetőséget.
-11. Az **Azure Table Storage** ablakban adja meg a következő mezők adatait, és válassza a **Létrehozás lehetőséget:**
+11.    Az **Azure Table Storage** ablakban adja meg a következő mezők adatait, és válassza a **Létrehozás lehetőséget:**
+* *Kapcsolat neve* – adjon meg egy értelmes nevet a folyamat és az Azure-tábla között létrehozott kapcsolathoz.
+* *Tárfiók neve* – adja meg az Azure-tábla tárfiókjának nevét. Ezt a tárfiók **hozzáférési kulcsok** lapján találja.
+* *Megosztott tárolási kulcs* – adja meg az Azure-tábla áruházi fiókjának kulcsértékét. Ezt a tárfiók **hozzáférési kulcsok** lapján találja.
+    ![Azure Table-tároló.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-storage.png)
 
-    * *Kapcsolat neve* – adjon meg egy értelmes nevet a folyamat és az Azure-tábla között létrehozott kapcsolathoz.
-    * *Tárfiók neve* – adja meg az Azure-tábla tárfiókjának nevét. Ezt a tárfiók **hozzáférési kulcsok** lapján találja.
-    * *Megosztott tárolási kulcs* – adja meg az Azure-tábla áruházi fiókjának kulcsértékét. Ezt a tárfiók **hozzáférési kulcsok** lapján találja.
+A Létrehozás gombra kattintás után megjelenik egy *Entitások bekeresése* ablaka. Itt válassza **a Speciális beállítások megjelenítése** lehetőséget, és adjon meg információkat a következő mezőkhöz:
+* *Táblázat* – Válassza ki az Azure Table Storage nevét (az Azure-tábla konfigurálására vonatkozó utasítások 6. lépéséből). A következő képernyőfelvételen megjelenik a kérdés, ha a "marketplaceleads" tábla van kiválasztva ehhez a példához.
+    ![Az Azure Table entitásokat kap.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 
-        ![Azure Table-tároló.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-storage.png)
-
-    A Létrehozás gombra kattintás után megjelenik egy *Entitások bekeresése* ablaka. Itt válassza **a Speciális beállítások megjelenítése** lehetőséget, és adjon meg információkat a következő mezőkhöz:
-
-       * *Táblázat* – Válassza ki az Azure Table Storage nevét (az Azure-tábla konfigurálására vonatkozó utasítások 6. lépéséből). A következő képernyőfelvételen megjelenik a kérdés, ha a "marketplaceleads" tábla van kiválasztva ehhez a példához.
-
-            ![Az Azure Table entitásokat kap.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
-
-        * *Lekérdezés szűrése* – Jelölje ki ezt a mezőt, és illessze be a függvényt a mezőbe:`Timestamp gt datetime'@{body('Get_past_time')}'`
-
-            ![Az Azure Table lekérdezi az entitásokat – A lekérdezés szűrése.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities-filter-query.png)
+* *Lekérdezés szűrése* – Jelölje ki ezt a `Timestamp gt datetime'@{body('Get_past_time')}'` ![mezőt, és illessze be ezt a függvényt a mezőbe: Az Azure Table entitásokat kap – Lekérdezés szűrése.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities-filter-query.png)
 
 12. Most, hogy befejezte a kapcsolatot az Azure-táblával, válassza az **Új lépés** lehetőséget az Azure-tábla új érdeklődők iránti vizsgálatához. 
 
@@ -178,7 +172,10 @@ Ha készen áll az ajánlat érdeklődőkezelési adatainak konfigurálására a
 1. Nyissa meg az **ajánlat beállítási** oldalát.
 2. Válassza a **Csatlakozás** lehetőséget az Érdeklődőkezelés szakaszban.
 3. A Kapcsolat részletei előugró ablakban válassza az **Azure Table** az **érdeklődő cél,** és illessze be a kapcsolati karakterlánc az Azure storage-fiók létrehozott a következő korábbi lépéseket a **Storage-fiók kapcsolati karakterlánc** a mezőbe.
-4. Kattintson a **Mentés** gombra. 
+4. **Kapcsolatfelvételi e-mail** – E-maileket adhat meg a vállalatnál lévő személyeknek, akiknek e-mailes értesítéseket kell kapniuk, ha új érdeklődő érkezik. Több e-mailt is megadhat, ha pontosvesszővel választja el őket.
+5. Válassza az **Ok gombot.**
+
+Ha meg szeretne győződni arról, hogy sikeresen csatlakozott egy érdeklődő célállomásához, kattintson az érvényesítés gombra. Ha sikeres, akkor lesz egy teszt vezető az érdeklődő cél.
 
 >[!Note]
 >Be kell fejeznie az ajánlat többi részének konfigurálását, és közzé kell tennie, mielőtt érdeklődőket kapna az ajánlathoz.

@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 1298d5fe1d7407e836f454c2130a913dde6f8eec
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 38088503fee016651a8c1c9a1f57ad4bbe102456
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80755143"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257147"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Adattudomány linuxos adatelemzési virtuális géppel az Azure-ban
 
@@ -29,7 +29,7 @@ Ebben a forgatókönyvben elemezzük a [spambázis-adatkészletet.](https://arch
 A Linux DSVM használata előtt a következő előfeltételekkel kell rendelkeznie:
 
 * **Azure-előfizetés**. Azure-előfizetés beszerezése még [ma az ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/)című témakörben.
-* [**Linux Data Science virtuális gép**](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu). A virtuális gép kiépítéséről a [Linux data science virtuális gép kiépítése](linux-dsvm-intro.md)című témakörben talál.
+* [**Linux Data Science virtuális gép**](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). A virtuális gép kiépítéséről a [Linux data science virtuális gép kiépítése](linux-dsvm-intro.md)című témakörben talál.
 * [**X2Go**](https://wiki.x2go.org/doku.php) telepítve a számítógépre egy nyitott XFCE session. További információt [az X2Go ügyfél telepítése és konfigurálása](linux-dsvm-intro.md#x2go)című témakörben talál.
 * A simább görgetésélmény érdekében a DSVM Firefox böngészőjében `gfx.xrender.enabled` válthat `about:config`a jelzőközött. [További információ](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Szintén fontolja `mousewheel.enable_pixel_scrolling` `False`meg a beállítását a beállítására is. [További információ](https://support.mozilla.org/questions/981140).
 * **Azure Machine Learning-fiók**. Ha még nem rendelkezik ilyen, regisztráljon egy új fiókot az [Azure Machine Learning kezdőlapján.](https://azure.microsoft.com/free/services/machine-learning//)

@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: dsindona
-ms.openlocfilehash: 2014a775edd4e24f5d302d863d0b69d83009b8a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 99d2bc95c1dd837bfc3bcabcead28777b7e6f746
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277990"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273936"
 ---
 # <a name="create-an-azure-compatible-vhd"></a>Azure-kompatibilis virtuális merevlemez létrehozása
+
+> [!IMPORTANT]
+> 2020. április 13-tól megkezdjük az Azure virtuálisgép-ajánlatok partnerközpontba való áthelyezését. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [Azure Virtuálisgép technikai eszközeinek létrehozása](https://aka.ms/AzureVMTechAsset) az áttelepített ajánlatok kezeléséhez című, az Utasításokat.
 
 Ez a cikk ismerteti a virtuális merevlemez (VHD) létrehozásához szükséges lépéseket egy virtuális gép (VM) ajánlat az Azure Marketplace-en.  Emellett gyakorlati tanácsokat is tartalmaz különböző szempontokra vonatkozóan, például a Távoli asztali protokoll (RDP) használatával, a virtuális gép méretének kiválasztásával, a legújabb Windows-frissítések telepítésével és a Virtuális merevlemez-lemezkép általánosításával.  A következő szakaszok elsősorban a windows-alapú virtuális gépekre összpontosítanak; A Linux-alapú Virtuális hálózatok létrehozásáról további információt az [Azure által jóváhagyott Linux-disztribúciókcímű](../../../virtual-machines/linux/endorsed-distros.md)témakörben talál. 
 
@@ -26,9 +29,9 @@ Ez a cikk ismerteti a virtuális merevlemez (VHD) létrehozásához szükséges 
 A virtuális gép lemezképének operációs rendszer virtuális merevlemezének egy Azure által jóváhagyott alaplemezképen kell alapulnia, amely Windows Server vagy SQL Server rendszert tartalmaz.
 Először hozzon létre egy virtuális gép az alábbi képek egyike, a Microsoft Azure portalon található:
 
--   Windows Server ([2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016), [2012 R2 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2012 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2008 R2 SP1](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview))
--   [SQL Server 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (nagyvállalati, normál, webes)
--   [SQL Server 2012 SP2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (nagyvállalati, normál, webes)
+-    Windows Server ([2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016), [2012 R2 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2012 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2008 R2 SP1](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview))
+-    [SQL Server 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (nagyvállalati, normál, webes)
+-    [SQL Server 2012 SP2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (nagyvállalati, normál, webes)
 
 > [!TIP]
 > Ha a jelenlegi Azure Portalon vagy a PowerShellen használja, a 2014.

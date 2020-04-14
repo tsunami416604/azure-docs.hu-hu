@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 03/13/2020
-ms.openlocfilehash: ca4bf1b0043a2c73851eab48ff8b9b6b7a987b72
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: ea65956a73874b717ecab25d83ed25b59f2ada55
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115295"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257249"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Biztonságos Azure ML-kísérletezés és következtetési feladatok az Azure virtuális hálózaton belül
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -546,7 +546,7 @@ A hálózati szabályok konfigurálásáról az [Azure Firewall telepítése és
     > [!IMPORTANT]
     > A tárfióknak, a számítási fürtnek és az Azure Container Registrynek a virtuális hálózat ugyanazon alhálózatában kell lennie.
     
-    További információt a [update()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#update-friendly-name-none--description-none--tags-none--image-build-compute-none-) metódus hivatkozási pontjában talál.
+    További információt a [update()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#update-friendly-name-none--description-none--tags-none--image-build-compute-none--enable-data-actions-none-) metódus hivatkozási pontjában talál.
 
 1. Ha az Azure Machine Learning-munkaterülethez privát hivatkozást használ, és a munkaterületéhez az Azure Container Registry-t egy virtuális hálózatba helyezi, a következő Azure Resource Manager-sablont is alkalmaznia kell. Ez a sablon lehetővé teszi, hogy a munkaterület kommunikáljon az ACR-rel a privát kapcsolaton keresztül.
 

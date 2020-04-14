@@ -5,17 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/14/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 4fc77407ae1c5854d3fe977da5a81f4226bf5305
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93b2ca700a987b86aedfdae55d58540c8ffe84ed
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280473"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255872"
 ---
-<a name="retrieve-operations"></a>Műveletek lekérése
-===================
+# <a name="retrieve-operations"></a>Műveletek lekérése
+
+> [!NOTE]
+> A Cloud Partner Portal API-k integrálva vannak a Partnerközponttal, és az ajánlatok partnerközpontba való áttelepítése után is működni fognak. Az integráció kis változtatásokat vezet be. Tekintse át a [Cloud Partner Portal API-hivatkozásban](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) felsorolt módosításokat, és győződjön meg arról, hogy a kód továbbra is működik a Partnerközpontba való áttelepítés után.
 
 Lekéri az összes műveletet az ajánlatban, vagy egy adott művelet et a megadott operationId lekéri. Az ügyfél lekérdezési paramétereket használhat a futó műveletek szűréséhez.
 
@@ -28,21 +30,18 @@ Lekéri az összes műveletet az ajánlatban, vagy egy adott művelet et a megad
 ```
 
 
-<a name="uri-parameters"></a>URI-paraméterek
---------------
+## <a name="uri-parameters"></a>URI-paraméterek
 
 |  **Név**          |      **Leírás**                                                                                           | **Adattípus** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
 |  publisherId       |  Közzétevő azonosítója, például`Contoso`                                                                   |  Sztring       |
 |  offerId           |  Ajánlat azonosítója                                                                                              |  Sztring       |
 |  operationId       |  GUID, amely egyedileg azonosítja a műveletet az ajánlatban. A operationId lehet beolvasni ezzel az API-val, és a válasz HTTP-fejlécében is megjelenik bármely hosszú ideig futó művelet, például a [közzétételi ajánlat](./cloud-partner-portal-api-publish-offer.md) API-t.  |   Guid   |
-|  filteredStatus    | Nem kötelező lekérdezési paraméter, amely `running`az API által visszaadott gyűjtemény állapot (például ) szerinti szűréshez használható.  |   Sztring |
-|  api-verzió       | Az API legújabb verziója                                                                                           |    Dátum      |
+|  api-verzió       | Az API legújabb verziója |    Dátum      |
 |  |  |  |
 
+## <a name="header"></a>Fejléc
 
-<a name="header"></a>Fejléc
-------
 
 |  **Név**          |  **Érték**           |
 |  ---------------   | -------------------- |
@@ -51,8 +50,7 @@ Lekéri az összes műveletet az ajánlatban, vagy egy adott művelet et a megad
 |  |  |
 
 
-<a name="body-example"></a>Példa törzsre
-------------
+## <a name="body-example"></a>Példa törzsre
 
 ### <a name="response"></a>Válasz
 
@@ -167,25 +165,35 @@ Lekéri az összes műveletet az ajánlatban, vagy egy adott művelet et a megad
                     ],
                 "previewLinks": [],
                 "liveLinks": [],
-                "notificationEmails": "jondoe@contoso.com"
-            } 
+            }
         }
     ]
 ```
-
 
 ### <a name="response-body-properties"></a>Választörzs tulajdonságai
 
 |  **Név**                    |  **Leírás**                                                                                  |
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
 |  id                          | A műveletet egyedileg azonosító GUID                                                       |
-|  benyújtástípusa              | Azonosítja az ajánlathoz jelentett művelet típusát, például`Publish/GGoLive`      |
+|  benyújtástípusa              | Azonosítja az ajánlathoz jelentett művelet típusát, például`Publish/GoLive`      |
 |  createdDateTime             | A művelet létrehozásának utc-dátuma                                                       |
 |  lastActionDateTime          | UTC dátumidő, amikor az utolsó frissítés történt a művelet                                       |
 |  status                      | A művelet állapota `not started` \| `running` \| `failed` \| `completed`vagy . Egyszerre csak egy `running` művelet nek lehet állapota. |
 |  error                       | Sikertelen műveletekre vonatkozó hibaüzenet                                                               |
 |  |  |
 
+### <a name="response-step-properties"></a>Válaszlépés tulajdonságai
+
+|  **Név**                    |  **Leírás**                                                                                  |
+|  --------------------        |  ------------------------------------------------------------------------------------------------ |
+| becsültTimeFrame | A művelet becsült időtartama |
+| id | A lépésfolyamat egyedi azonosítója |
+| leírás | A lépés leírása |
+| lépésneve | A lépés rövid neve |
+| status | A lépés állapota vagy `notStarted` \| `running` \| `failed` \|`completed` |
+| üzenet | A lépés során észlelt értesítések és figyelmeztetések. Karakterláncok tömbje |
+| progressSzázalék | 0 és 100 között a lépés előrehaladását jelző egész szám |
+| | |
 
 ### <a name="response-status-codes"></a>Válasz állapotkódjai
 

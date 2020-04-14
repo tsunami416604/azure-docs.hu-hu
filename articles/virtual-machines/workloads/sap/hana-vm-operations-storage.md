@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4b469c098db4f8d90147b491bcb54bd55d326b03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c4e8b544ea3daeb23b22f3864beb21ba9d3f342f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79080308"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255617"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure-beli virtuális gépek tárkonfigurációi
 
@@ -72,7 +72,7 @@ A RAID alatt több Azure Virtuális gép együttesen történő összegyűjtés�
 Is tartsa szem előtt a teljes virtuálisgép I/O átviteli közben, amikor méretezése vagy a virtuális gép meghatározása. A virtuális gép teljes tárolási átviteli igényét a [Memória optimalizált virtuálisgép-méretek](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)című cikk dokumentálja.
 
 ## <a name="linux-io-scheduler-mode"></a>Linux I/O ütemező mód
-A Linux számos különböző I/O ütemezési móddal rendelkezik. A Linux-szállítókon és az SAP-on keresztüli közös ajánlás az I/O-ütemező mód újrakonfigurálása a lemezkötetekhez a **cfq** módból a **noop-ba** (nem többvárólistás) vagy **a** (többvárólistás) módba. A részletekre az [SAP Note #1984787](https://launchpad.support.sap.com/#/notes/1984787)hivatkozik. 
+A Linux számos különböző I/O ütemezési móddal rendelkezik. A Linux-szállítókon és az SAP-on keresztüli közös ajánlás az I/O-ütemező mód újrakonfigurálása az **mq-határidővagy** **kyber** módlemezes kötetek számára a **noop** (nem többvárólistás) vagy **a** (többvárólistás) mód ba. A részletekre az [SAP Note #1984787](https://launchpad.support.sap.com/#/notes/1984787)hivatkozik. 
 
 
 ## <a name="solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines"></a>Megoldások prémium szintű storage-tal és Azure Write Accelerator-al az Azure M sorozatú virtuális gépekhez

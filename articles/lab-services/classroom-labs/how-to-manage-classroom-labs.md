@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/20/2020
+ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: cc937589b2fc4f394b44cf6890a352d770751d15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46c53c99c12ade986ab913bf013b652a931a4d22
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79502033"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257742"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Tantermi laborok kezelése az Azure Lab Servicesben 
 Ez a cikk ismerteti, hogyan hozhat létre és törölhet egy tantermi labor. Azt is bemutatja, hogyan tekintheti meg az összes tantermi laborok egy laborfiókban. 
@@ -37,6 +37,8 @@ A **Tesztkörnyezet-létrehozó** szerepkörrel kell rendelkeznie a tesztkörnye
     1. Adjon egy **nevet** a tesztkörnyezetnek. 
     2. Válassza ki az osztályhoz szükséges **virtuális gépek méretét.** Az elérhető méretek listáját lásd a [Virtuálisgép méretek](#vm-sizes) szakaszban. 
     3. Válassza ki az osztályteremben található laborhoz használni kívánt **virtuálisgép-lemezképet.** Ha kiválaszt egy Linux-lemezképet, megjelenik egy lehetőség a távoli asztali kapcsolat engedélyezésére. További információt a [Távoli asztali kapcsolat engedélyezése Linuxra](how-to-enable-remote-desktop-linux.md)című témakörben talál.
+
+        Ha a tesztkörnyezet-fiók tulajdonosi hitelesítő adataival jelentkezett be, megjelenik egy lehetőség, amely további képeket engedélyez a tesztkörnyezetszámára. További információ: [Képek engedélyezése a labor létrehozásakor](specify-marketplace-images.md#enable-images-at-the-time-of-lab-creation).
     4. Tekintse át az oldalon megjelenő **órateljes árat.** 
     6. Kattintson a **Mentés** gombra.
 

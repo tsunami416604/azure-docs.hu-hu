@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: c64d87b2430cc1d733a67bbc1e803590a37b1714
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9d25e2e32f09cc681d85d5adffe53f1237d7200c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78190772"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255498"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Oktatóanyag: Gépi tanulási modellek alkalmazása az Azure Functionsben a Python és a TensorFlow használatával
 
@@ -79,7 +79,7 @@ Ha a Python nem telepítette a venv csomagot a Linux disztribúcióra, futtassa 
 sudo apt-get install python3-venv
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 cd start
@@ -153,8 +153,10 @@ Az Azure Functions egy függvényprojekt egy tároló egy vagy több egyedi füg
 
 Ha módosítani `classify` szeretné a függvényt egy lemezkép tartalmának besorolásához, egy előre elkészített TensorFlow-modellt kell használnia, amely be van tanítva az Azure Custom Vision Service szolgáltatással, és exportált. A korábban klónozott minta *erőforrásmappájában* található modell a ttól függően osztályozza a képet, hogy kutya vagy macska van-e benne. Ezután hozzáad néhány segítő kódot és függőséget a projekthez.
 
+Ha saját modellt szeretne készíteni a Custom Vision Service ingyenes szintjével, kövesse a [mintaprojekt tárházában](https://github.com/Azure-Samples/functions-python-tensorflow-tutorial/blob/master/train-custom-vision-model.md)található utasításokat.
+
 > [!TIP]
-> Ha saját modellt szeretne készíteni a Custom Vision Service ingyenes szintjével, kövesse a [mintaprojekt tárházában](https://github.com/Azure-Samples/functions-python-tensorflow-tutorial/blob/master/train-custom-vision-model.md)található utasításokat.
+> Ha a TensorFlow-modellt a függvényalkalmazástól függetlenül szeretné üzemeltetni, ehelyett csatlakoztathatja a modellt tartalmazó fájlmegosztást a Linux függvényalkalmazáshoz. További információ: [Fájlmegosztás csatlakoztatása Python függvényalkalmazásba az Azure CLI használatával.](./scripts/functions-cli-mount-files-storage-linux.md)
 
 1. A *kezdőmappában* futtassa a következő parancsot a modellfájlok *classify* mappába másolásához. Ügyeljen arra, `\*` hogy a parancs tartalmazza. 
 
@@ -164,7 +166,7 @@ Ha módosítani `classify` szeretné a függvényt egy lemezkép tartalmának be
     cp ../resources/model/* classify
     ```
     
-    # <a name="powershell"></a>[Powershell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     copy ..\resources\model\* classify
@@ -188,7 +190,7 @@ Ha módosítani `classify` szeretné a függvényt egy lemezkép tartalmának be
     cp ../resources/predict.py classify
     ```
     
-    # <a name="powershell"></a>[Powershell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     copy ..\resources\predict.py classify
@@ -272,7 +274,7 @@ A függvényvégpont egy másik webalkalmazásból történő meghívásának te
     python -m http.server
     ```
     
-    # <a name="powershell"></a>[Powershell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
     ```powershell
     py -m http.server
@@ -315,3 +317,4 @@ Lásd még:
 
 - [Telepítse a függvényt az Azure-ba a Visual Studio Code használatával.](https://code.visualstudio.com/docs/python/tutorial-azure-functions)
 - [Az Azure Functions Python fejlesztői útmutatója](./functions-reference-python.md)
+- [Fájlmegosztás csatlakoztatása Python-függvényalkalmazásba az Azure CLI használatával](./scripts/functions-cli-mount-files-storage-linux.md)

@@ -5,16 +5,16 @@ services: azure-portal
 keywords: ''
 author: mgblythe
 ms.author: mblythe
-ms.date: 01/29/2020
+ms.date: 04/10/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: c5bba7296a05cfbb72698a991ece1ef298689bd1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 399c64c88e78079432fcf7c09dafd199da83358b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76900662"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255048"
 ---
 # <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>Safelist az Azure Portal URL-címeit a tűzfalon vagy a proxykiszolgálón
 
@@ -80,13 +80,3 @@ Az Azure Portal biztonságos listájához tartozó URL-végpontok az Azure-felh�
 > Az ezekre a végpontokra irányuló forgalom szabványos TCP-portokat használ http (80) és HTTPS (443) esetén.
 >
 >
-## <a name="next-steps"></a>További lépések
-
-Biztonságos listára kell tennie az IP-címeket? Töltse le a Microsoft Azure adatközpontOK IP-tartományainak listáját a felhőhöz:
-
-* [Világszerte](https://www.microsoft.com/download/details.aspx?id=56519)
-* [Az Egyesült Államok kormánya](https://www.microsoft.com/download/details.aspx?id=57063)
-* [Németország](https://www.microsoft.com/download/details.aspx?id=57064)
-* [Kína](https://www.microsoft.com/download/details.aspx?id=57062)
-
-Más Microsoft-szolgáltatások további URL-címeket és IP-címeket használnak a kapcsolathoz. A Hálózati kapcsolat Optimalizálása a Microsoft 365-szolgáltatásokhoz a [Hálózat beállítása az Office 365-höz .For](/office365/enterprise/set-up-network-for-office-365)Optimize network connectivity for Microsoft 365 services, see Set Up your network for Office 365 .

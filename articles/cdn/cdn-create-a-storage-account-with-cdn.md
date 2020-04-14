@@ -3,7 +3,7 @@ title: Rövid útmutató – Azure-tárfiók integrálása az Azure CDN-nel
 description: Az útmutató azt ismerteti, hogyan kézbesíthet nagy sávszélességű tartalmakat az Azure Content Delivery Network (CDN) segítségével az Azure Storage-ben lévő blobok gyorsítótárazása révén.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: cbc2ff98-916d-4339-8959-622823c5b772
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 05/24/2018
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: ffcbeb311a91791432bb285b59f5486393ffe4f7
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 35de327b4a6602bb5191157e3b3c4e56c9c091b5
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75386986"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254087"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Rövid útmutató: Azure Storage-fiók integrálása az Azure CDN-nel
 Ebben a rövid útmutatóban engedélyezni fogja az [Azure Content Delivery Network (CDN)](cdn-overview.md) számára az Azure Storage-ből származó tartalmak gyorsítótárazását. Az Azure CDN egy globális megoldást kínál a fejlesztők számára a tartalmak nagy sávszélességű kézbesítéséhez. Képes arra, hogy fizikai csomópontokon gyorsítótárazza a blobokat és a számítási példányok statikus tartalmát az Amerikai Egyesült Államok, Európa, Ázsia, Ausztrália és Dél-Amerika területén.
@@ -30,7 +30,7 @@ Ebben a rövid útmutatóban engedélyezni fogja az [Azure Content Delivery Netw
 ## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjával.
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 Az alábbi módon hozhat létre Azure-előfizetéshez tartozó új tárfiókot. A tárfiókok hozzáférést biztosítanak az Azure Storage szolgáltatásaihoz, és ők képviselik az Azure Storage szolgáltatási összetevőihez – Azure Blob, Queue és Table Storage – való hozzáférés legmagasabb szintű névterét. További információkért lásd: [A Microsoft Azure Storage bemutatása](../storage/common/storage-introduction.md).
 
 Tárfiók létrehozásához a társított előfizetés szolgáltatás-rendszergazdájának vagy társadminisztrátorának kell lennie.
@@ -71,7 +71,7 @@ Többféle módon is létrehozhat tárfiókot, többek között az Azure Portal 
     | **Üzemi modell** | Használja az alapértelmezett értéket. |
     | **Számla fajta** | Használja az alapértelmezett értéket. |
     | **Helyen**    | Válassza az **USA középső régiója** értéket a legördülő listából. |
-    | **Replikációs** | Használja az alapértelmezett értéket. |
+    | **Replikáció** | Használja az alapértelmezett értéket. |
     | **Teljesítmény** | Használja az alapértelmezett értéket. |
     | **Biztonságos átvitelre van szükség** | Használja az alapértelmezett értéket. |
     | **Előfizetés** | Válasszon egy Azure-előfizetést a legördülő listából. |

@@ -1,18 +1,18 @@
 ---
 title: Bővítmény-szekvenálás használata az Azure virtuálisgép-méretezési készleteivel
 description: Megtudhatja, hogyan szekvencia bővítmény kiépítése, ha több bővítmény üzembe helyezése a virtuális gép méretezési csoportok.
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.author: manayar
-ms.openlocfilehash: cde3fb8b56d8509a45bde00dde55e3c69d015b8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 737040699dd62d722b9a9ad4d8915ccb270c2d06
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278052"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273749"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>Szekvenciabővítmény kiépítése a virtuálisgép-méretezési készletekben
 Az Azure virtuálisgép-bővítmények olyan képességeket biztosítanak, mint a telepítés utáni konfiguráció és felügyelet, a figyelés, a biztonság és egyebek. Éles környezetek általában a virtuális gép példányaihoz konfigurált több bővítmény kombinációját használják a kívánt eredmények elérése érdekében.

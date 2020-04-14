@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2020
+ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: ad56041f853d030e3a286610fe4872bffecaee12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a64dee6da521764a38fc60bee06545f6a561c297
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444666"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257698"
 ---
 # <a name="specify-marketplace-images-available-to-lab-creators"></a>A laborkészítők számára elérhető Marketplace-képek megadása
 A tesztkörnyezetfiók tulajdonosaként megadhatja azokat a Marketplace-beli rendszerképeket, amelyek használatával a tesztkörnyezet-létrehozók tesztkörnyezeteket hozhatnak létre a tesztkörnyezetfiókban. 
@@ -50,6 +50,19 @@ Ha egyszerre több képet szeretne letiltani, jelölje be a jelölőnégyzeteket
 A letiltott kép engedélyezéséhez válassza **a ... (Ellipszis)** az utolsó oszlopban, és válassza **a Kép engedélyezése**lehetőséget. Másik lehetőségként jelölje be a jelölőnégyzetet a kép neve előtt, és válassza a **Kijelölt képek engedélyezése lehetőséget** az eszköztáron. 
 
 Ha egyszerre több képet szeretne letiltani, jelölje be a jelölőnégyzeteket a képnevek előtt, és jelölje be a **Kijelölt képek engedélyezése** jelölőnégyzetet az eszköztáron. 
+
+## <a name="enable-images-at-the-time-of-lab-creation"></a>Képek engedélyezése a laborlétrehozásakor
+A labor létrehozásakor további képeket is engedélyezhet: 
+
+1. Jelentkezzen be az [Azure Lab Services webhelyére](https://labs.azure.com) a **laborfiók tulajdonosi** hitelesítő adataival
+2. Válassza ki az alapértelmezett virtuálisgép-lemezképet vagy a lefelé mutató nyilat. 
+3. Válassza **a További képbeállítások engedélyezése lehetőséget.** 
+
+    ![További képbeállítások engedélyezése](../media/specify-marketplace-images/enable-more-images-menu.png)
+4. A kiválasztott képek engedélyezéséhez kövesse az előző szakasz utasításait. 
+5. Előfordulhat, hogy be kell zárnia az **Új tesztkörnyezet** ablakot, és újra meg kell nyitnia az előző lépésben kiválasztott képek megtekintéséhez. 
+
+
 
 ## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket:

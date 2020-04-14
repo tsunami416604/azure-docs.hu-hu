@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: ce576d9825819770486197a6c39425adf6ac3208
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 05b166b2ec46900d9e3972025efb581d9619ec6a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275900"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81252626"
 ---
 # <a name="customer-leads-from-your-marketplace-offer"></a>Érdeklődők a Marketplace-ajánlatban
 
@@ -133,7 +133,7 @@ Az Azure Blob érdeklődői cél már nem támogatott, így hiányzik az ajánla
 
 ### <a name="i-received-an-email-from-marketplace-why-cant-i-find-the-lead-in-my-crm"></a>Kaptam egy e-mailt a Marketplace-en, miért nem találom a vezető a CRM?
 
-Lehetséges, hogy a végfelhasználó e-mail tartománya .edu-ból származik. Adatvédelmi okokból nem adunk át személyazonosításra alkalmas adatokat .edu tartományból. Küldjön be egy támogatási jegyet a aka.ms/marketplacepublishersupport.
+Lehetséges, hogy a végfelhasználó e-mail tartománya .edu-ból származik. Adatvédelmi okokból nem adunk át privát azonosításra alkalmas adatokat .edu tartományból. Küldjön be egy támogatási jegyet a aka.ms/marketplacepublishersupport.
 
 ### <a name="i-have-configured-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>Az Azure Table-t állítottam be érdeklődőcélként, hogyan tekinthetem meg az érdeklődőket?
 
@@ -149,13 +149,17 @@ Ellenőrizze, hogy a "web-vezető" űrlap egy választólistán alapuló kötele
 
 ### <a name="there-was-an-issue-with-my-lead-destination-and-i-missed-some-leads-can-i-have-them-sent-to-me-in-an-email"></a>Volt egy kis gond a vezető úti célommal, és lemaradtam néhány nyomról. Elküldhetem őket e-mailben?
 
-A személyazonosításra alkalmas adatokra (privát azonosítható adatokra) vonatkozó irányelvek miatt nem oszthatunk meg érdeklődőkeresési adatokat nem biztonságos e-mailben.
+A privát, azonosítható adatokra vonatkozó irányelvek miatt nem oszthatjuk meg az érdeklődői adatokat nem biztonságos e-mailben.
 
 ### <a name="i-have-configured-azure-table-as-my-lead-destination-how-much-will-it-cost"></a>Az Azure Table-t állítottam be vezető célállomásként, mennyibe fog kerülni?
 
 Az érdeklődőgen adatok alacsonyak (<1 GB szinte minden megjelenítő esetében). A költség a kapott érdeklődők számától függ, ha egy hónap alatt 1000 érdeklődő érkezik, az körülbelül 50 centbe kerül. A tárolási díjszabásról a [tárolási díjszabás című](https://azure.microsoft.com/pricing/details/storage/)témakörben talál további információt.
 
 Ha a kérdésedre továbbra sem válaszolsz, lépj kapcsolatba az ügyfélszolgálattal aka.ms/marketplacepublishersupport keresztül, majd válaszd az **"ajánlat létrehozása"** → **az ajánlatod** → **"érdeklődőkezelési konfiguráció" lehetőséget.** 
+
+### <a name="i-am-receiving-email-notifications-when-new-customer-leads-are-received-how-can-i-configure-who-to-receive-these-emails"></a>E-mailes értesítéseket kapok, amikor új ügyfélérdeklődők érkeznek. Hogyan állíthatom be, hogy ki kapja ezeket az e-maileket?
+
+Érje el ajánlatát a Partnerközpontban, és keresse meg az **Ajánlat beállítási** lapját -> **Érdeklődőkezelés** -> **szerkesztése**. Frissítse az e-mail címeket a **Kapcsolattartó e-mail mezőben.**
 
 ## <a name="next-steps"></a>További lépések
 

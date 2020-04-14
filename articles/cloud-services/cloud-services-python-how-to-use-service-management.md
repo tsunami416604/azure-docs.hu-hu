@@ -3,8 +3,8 @@ title: A Service Management API (Python) használata – szolgáltatáskalauz ha
 description: Ismerje meg, hogyan végezhet programozott módon a Python gyakori szolgáltatáskezelési feladatait.
 services: cloud-services
 documentationcenter: python
-author: lmazuel
-manager: wpickett
+author: tanmaygore
+manager: vashan
 editor: ''
 ms.assetid: 61538ec0-1536-4a7e-ae89-95967fe35d73
 ms.service: cloud-services
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
-ms.author: lmazuel
-ms.openlocfilehash: ae44ce77ce480cc1bc56ead5547e003d7d4bb39c
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.author: tagore
+ms.openlocfilehash: 135dd92f7af4397f2053ea0bdc15d98dfad93914
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547587"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253356"
 ---
 # <a name="use-service-management-from-python"></a>Szolgáltatáskezelés használata a Pythonból
 Ez az útmutató bemutatja, hogyan programozott módon hajthatja végre a Python gyakori szolgáltatáskezelési feladatait. Az [Azure SDK python-ban](https://github.com/Azure/azure-sdk-for-python) található **ServiceManagementService** osztály programozott hozzáférést biztosít az [Azure Portalon][management-portal]elérhető szolgáltatáskezelési funkciók nagy részéhez. Ezzel a funkcióval felhőszolgáltatásokat, központi telepítéseket, adatkezelési szolgáltatásokat és virtuális gépeket hozhat létre, frissíthet és törölhet. Ez a funkció hasznos lehet olyan alkalmazások készítéséhez, amelyek programozott hozzáférést igényelnek a szolgáltatáskezeléshez.

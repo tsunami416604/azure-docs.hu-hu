@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8cb6cf49e302122849dc2402bcff008e72e15608
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 870f7b0ab0f1d7b247435cdbb74e21801b3b052a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472358"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257181"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Mik azok a mezőprogramozható kaputömbök (FPGA), és hogyan kell telepíteni
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -51,7 +51,7 @@ A Microsoft Azure a világ legnagyobb felhőberuházása az FPGA-kba. Az FPGA-ko
 Az Azure-beli FPGA-k a következőket támogatják:
 
 + Képbesorolási és -felismerési forgatókönyvek
-+ A TensorFlow telepítése
++ TensorFlow-telepítés (Tensorflow 1.x szükséges)
 + Intel FPGA hardver
 
 Ezek a DNN modellek jelenleg elérhetők:
@@ -115,9 +115,8 @@ Egy modellt webszolgáltatásként helyezhet üzembe az Azure Machine Learning h
 - A Python SDK hardveresen gyorsított modellekhez:
 
     ```bash
-    pip install --upgrade azureml-accel-models
+    pip install --upgrade azureml-accel-models[cpu]
     ```
-
 
 ## <a name="1-create-and-containerize-models"></a>1. Modellek létrehozása és konténerezése
 

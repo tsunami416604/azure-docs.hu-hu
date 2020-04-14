@@ -2,17 +2,17 @@
 title: Azure CDN a Verizon Premium szabályok motor funkciók | Microsoft dokumentumok
 description: Az Azure CDN referenciadokumentációja a Verizon Premium szabályok motorfunkcióiból.
 services: cdn
-author: mdgattuso
+author: asudbring
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: magattus
-ms.openlocfilehash: 9177ac544c83305ae95ad681d3dc9f84ac64ea36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 373e7838327d11b1b54278ee0c16c6e6ae554b0b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247578"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253492"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Az Azure CDN a Verizon Premium szabályai motorfunkcióktól
 
@@ -846,7 +846,7 @@ Normális esetben, ha egy eszköz maximális életkora lejár, a POP újraérvé
 
 Ha a POP nem tud kapcsolatot létesíteni az eredeti kiszolgálóval az újraérvényesítés megkísérlése közben, akkor ez a belső max-elavult szolgáltatás szabályozza, hogy a POP továbbra is kiszolgálhassa-e a már elavult eszközt, és ha igen, mennyi ideig.
 
-Vegye figyelembe, hogy ez az időintervallum akkor kezdődik, amikor az eszköz maximális életkora lejár, nem akkor, amikor a sikertelen újraérvényesítés történik. Ezért az a maximális időszak, amely alatt egy eszköz sikeres újraérvényesítés nélkül is kiszolgálható, a max-age plusz a max-os állott kombinációja által meghatározott idő. Ha például egy eszköz gyorsítótárba kerül 9:00-kor, 30 perces maximális életkorral és 15 perces max-állat, akkor a 9:44-nél sikertelen újraérvényesítési kísérlet azt eredményezné, hogy a végfelhasználó megkapja az elavult gyorsítótárazott eszközt, míg egy sikertelen újraérvényesítési kísérlet 9:46-nál a végfelhasználó 504-es átjáróidő-elt.
+Vegye figyelembe, hogy ez az időintervallum akkor kezdődik, amikor az eszköz maximális életkora lejár, nem akkor, amikor a sikertelen újraérvényesítés történik. Ezért az a maximális időszak, amely alatt egy eszköz sikeres újraérvényesítés nélkül is kiszolgálható, a max-age plusz a max-os állott kombinációja által meghatározott idő. Ha például egy eszköz gyorsítótárazása 9:00-kor, 30 perces maximális életkorral és 15 perces max-állatúval történt, akkor a 9:44-nél végrehajtott sikertelen újraérvényesítési kísérlet azt eredményezné, hogy a végfelhasználó megkapja az elavult gyorsítótárazott eszközt, míg a 9:46-os sikertelen újraérvényesítési kísérlet azt eredményezné, hogy a végfelhasználó 504-es átjáró-időoutot kap.
 
 A szolgáltatáshoz konfigurált értékeket az `Cache-Control: must-revalidate` `Cache-Control: proxy-revalidate` eredeti kiszolgáló felváltotta vagy fejlécek felváltotta. Ha ezek közül a fejlécek bármelyike érkezik az eredeti kiszolgálóról, amikor egy eszköz először gyorsítótárazott, majd a POP nem szolgál egy elavult gyorsítótárazott eszközt. Ebben az esetben, ha a POP nem tudja újraérvényesíteni az origót, amikor az eszköz maximális korhatár-intervalluma lejárt, a POP 504 átjáróidőtúladási hibát ad vissza.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 825d26307f2b462d51b143b88127e229508f2f25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9ab578b4b688c02c9150dfb23fce53fbb82df405
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264595"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273171"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>A Red Hat Enterprise Linux saját előfizetéssel rendelkezik Gold Images-t hoz létre az Azure-ban
 
@@ -120,7 +120,7 @@ A következő utasítások végigvezeti a kezdeti üzembe helyezési folyamat eg
 1. SSH-t a virtuális gépbe, és ellenőrizze, hogy rendelkezik-e egy jogosulatlan rendszerképpel. Ehhez a lépéshez `sudo yum repolist`futtassa a futtassa a futtassa a futtassa a futtassa Az RHEL 8 `sudo dnf repolist`esetén használja a használatát. A kimenet arra kéri, hogy az Előfizetés-Manager használatával regisztrálja a virtuális gépet a Red Hat.
 
 >[!NOTE]
->Az RHEL `dnf` 8-on, és `yum` felcserélhetők. További információt az [RHEL 8 felügyeleti útmutatóban talál.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/installing-software-with-yum_configuring-basic-system-settings)
+>Az RHEL `dnf` 8-on, és `yum` felcserélhetők. További információt az [RHEL 8 felügyeleti útmutatóban talál.](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/packaging_and_distributing_software/index)
 
 ## <a name="use-the-red-hat-gold-images-from-powershell"></a>A PowerShell Red Hat Gold Images-képeinek használata
 
@@ -214,6 +214,7 @@ Az Azure disk encryption alkalmazásának lépései: [Azure Disk Encryption forg
 
 ## <a name="next-steps"></a>További lépések
 
+- A Red Hat Cloud Access szolgáltatásról további részleteket a [Red Hat nyilvános felhődokumentációjában talál.](https://access.redhat.com/public-cloud)
 - A Cloud Access részletes útmutatóit és programrészleteit a [Red Hat Cloud Access dokumentációjában](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index)találja.
 - Ha többet szeretne megtudni a Red Hat frissítési infrastruktúráról, olvassa el az [Azure Red Hat frissítési infrastruktúráját.](./redhat-rhui.md)
 - Ha többet szeretne megtudni az Azure-beli Red Hat-képekről, tekintse meg a [dokumentációs oldalt.](./redhat-images.md)

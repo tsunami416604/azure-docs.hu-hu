@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 61b5017609d99f2f0074c67d3838cf351ea38bea
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 322ff2be4b90a945305915432a8191db9f4efee2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79365423"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81252557"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Oktatóanyag: Szolgáltatástagok és szerepkör-hozzárendelések létrehozása a PowerShell használatával
 
@@ -77,7 +77,7 @@ Itt van a három hitelesítő adatokat kell leírni, és a parancsmagok meg kell
     $svcPrincipal.AppId
     ```
 
-## <a name="create-a-role-assignment-in-windows-virtual-desktop-preview"></a>Szerepkör-hozzárendelés létrehozása a Windows virtuális asztal előzetes verziójában
+## <a name="create-a-role-assignment-in-windows-virtual-desktop"></a>Szerepkör-hozzárendelés létrehozása a Windows virtuális asztalon
 
 Ezután létre kell hoznia egy szerepkör-hozzárendelést, hogy az egyszerű szolgáltatás bejelentkezhessen a Windows virtuális asztalra. Ügyeljen arra, hogy olyan fiókkal jelentkezzen be, amely rendelkezik szerepkör-hozzárendelések létrehozásához szükséges engedélyekkel.
 

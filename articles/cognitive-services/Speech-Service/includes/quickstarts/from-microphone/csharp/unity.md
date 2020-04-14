@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: 6b3c8c62382d548d8a1bc7d5f611cdfbe2fd72fb
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 951ae2c48bcdd92f640a37ddbb6430ca62a3b816
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80671023"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81275229"
 ---
 > [!NOTE]
 > A Speech SDK for Unity támogatja a Windows Desktop (x86 és x64) vagy az Univerzális Windows platformot (x86, x64, ARM/ARM64), az Android (x86, ARM32/64) és az iOS (x64 szimulátor, ARM32 és ARM64)
@@ -133,4 +133,5 @@ További információkért tekintse meg [a mintatárunkat.](https://aka.ms/csspe
 
 ## <a name="next-steps"></a>További lépések
 
-[!INCLUDE [footer](../footer.md)]
+[!INCLUDE [Speech recognition basics](../../speech-to-text-next-steps.md)]
+

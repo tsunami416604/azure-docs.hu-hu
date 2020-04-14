@@ -3,8 +3,8 @@ title: Azure Network Watcher Agent virtuálisgép-bővítmény Linuxhoz
 description: Telepítse a Network Watcher Agent linuxos virtuális gépen egy virtuális gép bővítmény használatával.
 services: virtual-machines-linux
 documentationcenter: ''
-author: gurudennis
-manager: amku
+author: mimckitt
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 5c81e94c-e127-4dd2-ae83-a236c4512345
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
-ms.author: dennisg
-ms.openlocfilehash: 712ec177996cd54d7bd6d184fea306009b58b083
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 476241ad3d4077f2da0c513e3c989218701232ba
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79531022"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255753"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>A Network Watcher ügynök Linux rendszerhez készült virtuális gépi bővítménye
 

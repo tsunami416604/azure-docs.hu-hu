@@ -7,15 +7,15 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: overview
-ms.date: 05/08/2019
+ms.date: 04/10/2020
 ms.author: mamccrea
 ms.custom: mvc
-ms.openlocfilehash: 53f1b9a2fde20cacccd0730213695f26c1200fa7
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 902486f7e19f2dfd7cc64e27589e192c57ef64e8
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80132541"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255515"
 ---
 # <a name="what-is-azure-databricks"></a>Mi az az Azure Databricks?
 
@@ -85,6 +85,11 @@ Az Azure Databricks vállalati szintű Azure-biztonságot kínál, beleértve az
 * Az integráció az Azure Active Directoryval lehetővé teszi, hogy teljes Azure-alapú megoldásokat futtasson az Azure Databricks használatával.
 * Az Azure Databricks szerepköralapú hozzáférésével részletes felhasználói engedélyeket állíthat be jegyzetfüzetekhez, fürtökhöz, feladatokhoz és adatokhoz.
 * Vállalati szintű SLA-k. 
+
+> [!IMPORTANT]
+>
+> Az Azure Databricks egy Microsoft Azure-beli külső szolgáltatás, amely a globális Azure nyilvános felhőalapú infrastruktúrán van telepítve. A szolgáltatás összetevői közötti minden kommunikáció, beleértve a vezérlősík nyilvános IP-szolgáltatói és az ügyféladatsík között, a Microsoft Azure hálózati gerinchálózatán belül marad. Lásd még: [Microsoft globális hálózat](https://docs.microsoft.com/azure/networking/microsoft-global-network).
+
 
 ## <a name="integration-with-azure-services"></a>Integráció az Azure-szolgáltatásokkal
 

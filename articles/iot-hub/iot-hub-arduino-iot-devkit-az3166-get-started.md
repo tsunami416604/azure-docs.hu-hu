@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: 326b79e1aca6fa82b3275249401c755428a8b71d
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 631a20c7bf73aa2af363fdc0019ef24cccc58f9e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878561"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258592"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Az IoT DevKit AZ3166 csatlakoztatása az Azure IoT Hubhoz
 
@@ -327,6 +327,17 @@ A mintaalkalmazás sikeresen fut, ha a következő eredmények jelennek meg:
 * Az MXChip IoT DevKit LED-je villog.
 
 ![Soros monitor kimenete](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/result-serial-output.png)
+
+> [!NOTE]
+> Előfordulhat, hogy a tesztelés során olyan hiba lép fel, amelyben a LED nem villog, az Azure Portal nem jeleníti meg az eszközről érkező adatokat, de az eszköz OLED-képernyője **futó...**. A probléma megoldásához az Azure Portalon nyissa meg az eszközt az IoT hubban, és küldjön egy üzenetet az eszközre. Ha a vs-kód soros figyelőjében a következő választ látja, lehetséges, hogy az eszközről érkező közvetlen kommunikáció blokkolva van az útválasztó szintjén. Ellenőrizze a csatlakozó eszközökhöz konfigurált tűzfal- és útválasztó-szabályokat. Győződjön meg arról is, hogy az 1833-as kimenő port nyitva van.
+> 
+> HIBA: mqtt_client.c (ln 454): Hiba: hiba a végponthoz való csatlakozás megnyitásakor  
+> INFORMÁCIÓ: >>>Kapcsolat állapota: leválasztva  
+> HIBA: tlsio_mbedtls.c (ln 604): Az alapul szolgáló IO-nyílt nem sikerült  
+> HIBA: mqtt_client.c (ln 1042): Hiba: io_open nem sikerült  
+> HIBA: iothubtransport_mqtt_common.c (ln 2283): hiba a atcsliothub.azure-devices.net címhez való kapcsolódás.  
+> INFO: >>>Újracsatlakozás.  
+> INFORMÁCIÓ: IoThub verzió: 1.3.6  
 
 ### <a name="view-the-telemetry-received-by-azure-iot-hub"></a>Az Azure IoT Hub által fogadott telemetriai adatok megtekintése
 

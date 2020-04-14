@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2020
+ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: a2d0b9bdfba1b96ad42e45d54faf106b2361e29d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7cdc9f9a4503c786065b6d514f61fe17eae4ce5e
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76264787"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270910"
 ---
 # <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Az automatikus leállítás konfigurálása az Azure DevTest Labs ben a labor- és számítási virtuális gépekhez
 
@@ -28,7 +28,7 @@ Ez a cikk bemutatja, hogyan konfigurálhatja a laborvirtuális gépek automatiku
 ## <a name="configure-autoshutdown-for-lab-vms-devtest-labs"></a>Labor virtuális gépek automatikus leállításának konfigurálása (DevTest Labs)
 Az Azure DevTest Labs lehetővé teszi a költségek szabályozását és a laborokban lévő hulladék minimalizálását az egyes laborok szabályzatai (beállításai) kezelésével. Ez a cikk bemutatja, hogyan konfigurálhatja az automatikus leállítási házirendet egy tesztkörnyezet-fiókhoz, és konfigurálhatja az automatikus leállítás i beállításait egy tesztkörnyezethez a tesztkörnyezet-fiókban. Az egyes tesztkörnyezet-szabályzatok beállításának megtekintéséhez olvassa [el a Laborszabályzatok definiálása az Azure DevTest Labs ben című témakört.](devtest-lab-set-lab-policy.md)  
 
-### <a name="set-auto-shut-down-policy-for-a-lab"></a>Automatikus leállítási házirend beállítása egy tesztkörnyezethez
+### <a name="set-auto-shutdown-policy-for-a-lab"></a>Automatikus leállítási házirend beállítása egy tesztkörnyezethez
 A labor tulajdonosaként konfigurálhatja a leállítási ütemezést a tesztkörnyezetben lévő összes virtuális géphez. Ezzel költségeket takaríthat meg a nem használt (tétlen) gépek futtatásával szemben. Központilag kényszerítheti ki az összes tesztkörnyezetes virtuális gép leállítási házirendjét, de a tesztkörnyezet felhasználóinak is mentheti az egyes gépek ütemezésének beállításával kapcsolatos erőfeszítéseket. Ez a funkció lehetővé teszi, hogy állítsa be a szabályzatot a labor ütemezése kezdve nem nyújt vezérlésteljes vezérlés, a tesztkörnyezet felhasználói. A tesztkörnyezet tulajdonosaként az alábbi lépésekkel konfigurálhatja ezt a házirendet:
 
 1. A tesztkörnyezet kezdőlapján válassza a **Konfiguráció és házirendek**lehetőséget.
@@ -42,7 +42,7 @@ Az automatikus leállítási házirend segít minimalizálni a laborhulladékot 
 
 A tesztkörnyezet házirendjeinek megtekintéséhez (és módosításához kövesse az alábbi lépéseket):
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza a **Minden szolgáltatás**lehetőséget, majd a listából válassza a **DevTest Labs** elemet.
 3. A laborok listájából válassza ki a kívánt labort.   
 4. Válassza a **Konfiguráció és házirendek**lehetőséget.
@@ -191,13 +191,34 @@ Első lépésként hozzon létre egy logikai alkalmazást az Azure-előfizetés�
 
 ## <a name="configure-autoshutdown-for-compute-vms"></a>Automatikus leállítás konfigurálása számítási virtuális gépekhez
 
-1. A **Virtuális gép** lapon válassza a bal oldali menü **Automatikus leállítás** parancsát. 
+1. A **Virtuális gép** lapon válassza az **Automatikus leállítás** lehetőséget a **műveletek** szakasz bal oldali menüjében. 
 2. Az **Automatikus leállítás** lapon válassza a **Be** lehetőséget a házirend engedélyezéséhez, a **Ki** lehetőséget pedig a házirend letiltásához.
 3. Ha engedélyezi ezt a házirendet, adja meg azt az **időt** (és **időzónát),** amelyen a virtuális gép le kell állítani.
 4. Adja meg az **Igen** vagy a **Nem** értéket ahhoz a beállításhoz, hogy a megadott automatikus leállítási idő előtt 30 perccel küldjön értesítést. Ha az **Igen**lehetőséget választja, adjon meg egy webhook URL-végpontot vagy e-mail címet, amely megadja, hogy hol szeretné közzétenni vagy elküldeni az értesítést. A felhasználó értesítést kap, és lehetőséget kap a leállítás késleltetésére. További információt az [Értesítések](#notifications) szakaszban talál. 
 9. Kattintson a **Mentés** gombra.
 
     ![Automatikus leállítás konfigurálása számítási virtuális géphez](./media/devtest-lab-auto-shutdown/comnpute-auto-shutdown.png)
+
+### <a name="view-activity-logs-for-auto-shutdown-updates"></a>Az automatikus leállítási frissítések tevékenységnaplóinak megtekintése
+Az automatikus leállítási beállítás frissítésekén láthatja a virtuális gép tevékenységnaplójában naplózott tevékenységet. 
+
+1. Az [Azure Portalon](https://portal.azure.com)keresse meg a virtuális gép kezdőlapját.
+2. Válassza a bal oldali menü **Tevékenységnapló parancsát.** 
+3. **Erőforrás eltávolítása: mycomputevm** a szűrőkből.
+3. Ellenőrizze, hogy megjelenik-e az **Ütemezések hozzáadása vagy módosítása** művelet a tevékenységnaplóban. Ha nem látja, várjon egy ideig, és frissítse a tevékenységnaplót.
+
+    ![Tevékenységnapló-bejegyzés](./media/devtest-lab-auto-shutdown/activity-log-entry.png)
+4. Az **Ütemezések hozzáadása vagy módosítása** lehetőséget választva az alábbi információkat szeretné látni az **Összegzés** lapon:
+
+    - Művelet neve (Ütemezések hozzáadása vagy módosítása)
+    - Az automatikus leállítás beállítás frissítésének dátuma és időpontja.
+    - A beállítást frissített felhasználó e-mail címe. 
+
+        ![Tevékenységnapló bejegyzésének összegzése](./media/devtest-lab-auto-shutdown/activity-log-entry-summary.png)
+5. Váltson át az **Ütemezések hozzáadása vagy módosítása** lap **Módosítási előzmények** fülére, és megjelenik a beállítás módosítási előzményei. A következő példában a leállítási idő 2020. április 10-én 15:18:47-kor 15:18:47-kor változott. És a beállítás le volt tiltva 15:25:09 EST-nél. 
+
+    ![Tevékenységnapló – módosítási előzmények](./media/devtest-lab-auto-shutdown/activity-log-entry-change-history.png)
+6. A művelettel kapcsolatos további részletek megtekintéséhez váltson az **Ütemezések hozzáadása vagy módosítása** lap **JSON** fülére.
 
 ## <a name="next-steps"></a>További lépések
 Az összes szabályzat beállításáról az [Azure DevTest Labs laborszabályzatának definiálása.](devtest-lab-set-lab-policy.md)

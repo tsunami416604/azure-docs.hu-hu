@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: include
 ms.date: 04/08/2019
 ms.custom: include file
-ms.openlocfilehash: bfce10b0c9c55012c3ba2fb25121b28157f203b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c6ce482a4f6464008f4be0ecd94455f0239ede2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78672099"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81274831"
 ---
 1. Az [Azure Portalon](https://portal.azure.com/) hozzon létre egy Azure Cosmos DB-fiókot. Keresse meg és válassza az **Azure Cosmos DB** lehetőséget.
 
@@ -32,9 +32,8 @@ ms.locfileid: "78672099"
     |Hely|A felhasználókhoz legközelebb eső régió|Válassza ki az Azure Cosmos DB-fiókot üzemeltetéséhez használni kívánt földrajzi helyet. Használja a felhasználókhoz legközelebb eső helyet, hogy a leggyorsabb hozzáférést biztosítsa számukra az adatokhoz.|
     |Fiók típusa|Termelés vagy nem gyártás|Válassza **a Termelés** lehetőséget, ha a fiókot éles számítási feladathoz fogja használni. Válassza a **Nem éles lehetőséget,** ha a fiókot nem éles, például fejlesztéshez, teszteléshez, minőségbiztosítási vagy átmeneti állapothoz fogja használni. Ez egy Azure-erőforrás-címke beállítás, amely beállítja a portál élményt, de nem befolyásolja az alapul szolgáló Azure Cosmos DB-fiók. Ezt az értéket bármikor módosíthatja.|
 
-
-> [!NOTE]
-> Azure-előfizetésenként legfeljebb egy ingyenes Azure Cosmos DB-fiókkal rendelkezhet, és a fiók létrehozásakor engedélyeznie kell. Ha nem látja az ingyenes szint kedvezményének alkalmazását, ez azt jelenti, hogy az előfizetésegy másik fiókja már engedélyezve van az ingyenes szinttel.
+    > [!NOTE]
+    > Azure-előfizetésenként legfeljebb egy ingyenes Azure Cosmos DB-fiókkal rendelkezhet, és a fiók létrehozásakor engedélyeznie kell. Ha nem látja az ingyenes szint kedvezményének alkalmazását, ez azt jelenti, hogy az előfizetésegy másik fiókja már engedélyezve van az ingyenes szinttel.
    
    ![Az Azure Cosmos DB új fiók lapja](./media/cosmos-db-create-dbaccount/azure-cosmos-db-create-new-account-detail.png)
 
