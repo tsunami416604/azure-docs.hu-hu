@@ -3,7 +3,7 @@ title: Figyelési & diagnosztika hozzáadása azure-beli virtuális géphez
 description: Azure Resource Manager-sablon használatával hozzon létre egy új Windows virtuális gépet az Azure diagnosztikai bővítményével.
 services: virtual-machines-windows
 documentationcenter: ''
-author: sbtron
+author: mimckitt
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 05/31/2017
-ms.author: saurabh
+ms.author: mimckitt
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2490c3de60e0deac6a1a4ddc5abc95cb46e240b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d100f054da5f82bc4dea51e054a28cca07f5de7b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74073842"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258830"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Figyelés és diagnosztika használata Windows virtuális gép- és Azure Resource Manager-sablonokkal
 Az Azure Diagnostics Extension a figyelési és diagnosztikai képességek egy Windows-alapú Azure virtuális gép. Ezeket a képességeket a virtuális gépen engedélyezheti, ha a bővítményt az Azure Resource Manager-sablon részeként tartalmazza. [Az Azure Resource Manager-sablonok virtuálisgép-bővítményekkel](../windows/template-description.md#extensions) való szerkesztése című témakörben további információt talál a rról, hogy a virtuálisgép-sablon részeként további információkat tartalmaz-e a bővítmények használatával kapcsolatban. Ez a cikk ismerteti, hogyan adhat hozzá az Azure Diagnostics bővítményt egy Windows virtuálisgép-sablonhoz.  
@@ -62,7 +62,7 @@ Egyszerű erőforrás-kezelő alapú virtuális gép esetén *resources* adja ho
 ]
 ```
 
-Egy másik gyakori konvenció a bővítmény konfigurációjának hozzáadása a sablon gyökérerőforrás-csomópontján, ahelyett, hogy a virtuális gép erőforrás-csomópontja alatt definiálná. Ezzel a megközelítéssel explicit módon meg kell adnia egy hierarchikus kapcsolatot a bővítmény és a virtuális gép között a *név* és a *típus* értékekkel. Példa: 
+Egy másik gyakori konvenció a bővítmény konfigurációjának hozzáadása a sablon gyökérerőforrás-csomópontján, ahelyett, hogy a virtuális gép erőforrás-csomópontja alatt definiálná. Ezzel a megközelítéssel explicit módon meg kell adnia egy hierarchikus kapcsolatot a bővítmény és a virtuális gép között a *név* és a *típus* értékekkel. Például: 
 
 ```json
 "name": "[concat(variables('vmName'),'Microsoft.Insights.VMDiagnosticsSettings')]",
@@ -84,7 +84,7 @@ A *beállításelem* a bővítmény konfigurációs tulajdonságait tartalmazza,
 A *protectedSettings* (más néven privát konfiguráció) tulajdonságai beállíthatók, de a beállítás után nem olvashatók vissza. A *protectedSettings* csak írási jellege miatt hasznos lehet a titkos kulcsok, például a diagnosztikai adatok at megírása a tárfiók kulcsának tárolásához.    
 
 ## <a name="specifying-diagnostics-storage-account-as-parameters"></a>Diagnosztikai tárfiók paraméterként történő megadása
-A fenti json-kódrészlet diagnosztikai bővítmény két paramétert feltételez *a existingdiagnosticsStorageAccountName* és *a existingdiagnosticsStorageResourceGroup* paraméterrel a diagnosztikai adatokat tároló diagnosztikai tárfiók meghatározásához. A diagnosztikai tárfiók paraméterként való megadása megkönnyíti a diagnosztikai tárfiók különböző környezetekben történő módosítását, például egy másik diagnosztikai tárfiókot szeretne használni a teszteléshez, és egy másikat a éles környezetben.  
+A fenti json-kódrészlet diagnosztikai bővítmény két paramétert feltételez *a existingdiagnosticsStorageAccountName* és *a existingdiagnosticsStorageResourceGroup* paraméterrel a diagnosztikai adatokat tároló diagnosztikai tárfiók meghatározásához. A diagnosztikai tárfiók paraméterként való megadása megkönnyíti a diagnosztikai tárfiók különböző környezetekben történő módosítását, például egy másik diagnosztikai tárfiókot szeretne használni a teszteléshez, és egy másikat az éles környezetben.  
 
 ```json
 "existingdiagnosticsStorageAccountName": {
@@ -101,7 +101,7 @@ A fenti json-kódrészlet diagnosztikai bővítmény két paramétert feltétele
 }
 ```
 
-Ajánlott egy diagnosztikai tárfiókot megadni egy másik erőforráscsoportban, mint a virtuális gép erőforráscsoportja. Egy erőforráscsoport saját élettartamú központi egységnek tekinthető, a virtuális gépek üzembe helyezhetők és újratelepíthetők, mivel új konfigurációk frissítései vannak hozzá, de előfordulhat, hogy továbbra is szeretné tárolni a diagnosztikai adatokat ugyanabban a tárfiókban a virtuális gép központi telepítéseit. A tárfiók egy másik erőforrásban lehetővé teszi, hogy a tárfiók adatokat fogadjon a különböző virtuálisgép-központi telepítések megkönnyíti a problémák elhárítása a különböző verziókban.
+Ajánlott egy diagnosztikai tárfiókot megadni egy másik erőforráscsoportban, mint a virtuális gép erőforráscsoportja. Egy erőforráscsoport lehet tekinteni, hogy egy központi telepítési egység saját élettartama, a virtuális gép lehet telepíteni, és újratelepíteni, mint az új konfigurációk frissítések et, de érdemes lehet továbbra is tárolja a diagnosztikai adatok at ugyanabban a tárfiókban az okat a virtuális gép i központi telepítések között. A tárfiók egy másik erőforrásban lehetővé teszi, hogy a tárfiók adatokat fogadjon a különböző virtuálisgép-központi telepítések megkönnyíti a problémák elhárítása a különböző verziókban.
 
 > [!NOTE]
 > Ha a Visual Studio-ból hoz létre egy Windows virtuálisgép-sablont, előfordulhat, hogy az alapértelmezett tárfiók ugyanazt a tárfiókot használja, ahol a virtuális gép virtuális merevlemeze fel töltődik. Ez a virtuális gép kezdeti beállításának egyszerűsítése. A sablon újratényezőzése egy másik tárfiók használatával, amely paraméterként átadható. 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: apimpm
-ms.openlocfilehash: cec1d3e07800dd3093ca79a87cafcf5fceafbf2f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c393ba081b480408373ed6867624ac6278c1674e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77209188"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260955"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Azure-függvényalkalmazás importálása API-ként az Azure API Management használatával
 
@@ -118,7 +118,7 @@ Az Azure-függvényalkalmazás importáláskor automatikusan létrehozza a köve
 * Host kulcs a függvényalkalmazáson belül az apim-{*az Azure API Management szolgáltatáspéldány neve*},
 * Elnevezett érték az Azure API Management-példányon belül a {*az Azure Function App-példány neve*}-kulcs, amely tartalmazza a létrehozott állomáskulcsot.
 
-2019. április 4-e után létrehozott API-k esetében az állomáskulcs http-kérelmekben kerül átadásra az API Management től a függvényalkalmazásnak egy fejlécben. A régebbi API-k [lekérdezési paraméterként](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization)adják át az állomáskulcsot. Ez a `PATCH Backend` viselkedés a függvényalkalmazáshoz társított *háttérentitás* [REST API-hívásán](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract) keresztül módosítható.
+2019. április 4-e után létrehozott API-k esetében az állomáskulcs http-kérelmekben kerül átadásra az API Management től a függvényalkalmazásnak egy fejlécben. A régebbi API-k [lekérdezési paraméterként](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization)adják át az állomáskulcsot. Ez a `PATCH Backend` viselkedés a függvényalkalmazáshoz társított *háttérentitás* [REST API-hívásán](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend/update#backendcredentialscontract) keresztül módosítható.
 
 > [!WARNING]
 > Az új Azure-függvényalkalmazás gazdagépkulcsának vagy az Azure API Management névvel ellátott értékének eltávolítása vagy megváltoztatása megszakítja a szolgáltatások közti kommunikációt. Az értékek nem szinkronizálódnak automatikusan.

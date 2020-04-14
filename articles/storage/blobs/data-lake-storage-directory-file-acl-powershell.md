@@ -6,15 +6,15 @@ author: normesta
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.topic: conceptual
-ms.date: 04/02/2020
+ms.date: 04/10/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 9b0e0b39b7ac7d7834c9cdcbd79ba45b024c823a
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: b59c68e3f2edc0fbe5eee3c3861a3e5116d4fac6
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80992011"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262383"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Könyvtárak, fájlok és AC-k kezelése a PowerShell használatával az Azure Data Lake Storage Gen2 szolgáltatásban (előzetes verzió)
 
@@ -270,15 +270,14 @@ A paraméter `-Force` segítségével kérdés nélkül távolíthatja el a fáj
 
 ## <a name="manage-access-permissions"></a>Hozzáférési engedélyek kezelése
 
-A fájlrendszerek, könyvtárak és fájlok hozzáférési engedélyeit beszerezheti, beállíthatja és frissítheti.
+A fájlrendszerek, könyvtárak és fájlok hozzáférési engedélyeit beszerezheti, beállíthatja és frissítheti. Ezeket az engedélyeket a hozzáférés-vezérlési listák (ACL-k) rögzítik.
 
 > [!NOTE]
 > Ha az Azure Active Directory (Azure AD) parancsok engedélyezéséhez használja, győződjön meg arról, hogy a rendszerbiztonsági tag hozzá van rendelve a [Storage Blob Data Owner szerepkörhöz.](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) Ha többet szeretne tudni az ACL-engedélyek alkalmazásáról és módosításuk hatásairól, olvassa el [a Hozzáférés-vezérlés az Azure Data Lake Storage Gen2 alkalmazásban című témakört.](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)
 
-### <a name="get-permissions"></a>Engedélyek beszereznie
+### <a name="get-an-acl"></a>ACL beszereznie
 
 Egy könyvtár vagy fájl ACL-jének beszereznie a `Get-AzDataLakeGen2Item`parancsmag használatával.
-
 
 Ez a példa leveszi egy **fájlrendszer** ACL-ét, majd kinyomtatja az ACL-t a konzolra.
 
@@ -311,7 +310,7 @@ Az alábbi képen látható a kimenet egy könyvtár ACL-jének beszerzése utá
 
 Ebben a példában a tulajdonában lévő felhasználó olvasási, írási és végrehajtási engedélyekkel rendelkezik. A tulajdonában lévő csoport csak olvasási és végrehajtási engedélyekkel rendelkezik. A hozzáférés-vezérlési listákról további információt az [Azure Data Lake Storage Gen2 hozzáférés-vezérlése című témakörben](data-lake-storage-access-control.md)talál.
 
-### <a name="set-or-update-permissions"></a>Engedélyek beállítása vagy frissítése
+### <a name="set-an-acl"></a>ACL beállítása
 
 A `set-AzDataLakeGen2ItemAclObject` parancsmag segítségével hozzon létre egy ACL a tulajdonában lévő felhasználó, a tulajdonában lévő csoport, vagy más felhasználók számára. Ezután használja `Update-AzDataLakeGen2Item` a parancsmamot az ACL véglegesítéséhez.
 
@@ -359,7 +358,7 @@ Az alábbi képen a kimenet látható a fájl ACL-jének beállítása után.
 Ebben a példában a tulajdonában lévő felhasználó és a tulajdonában lévő csoport csak olvasási és írási engedéllyel rendelkezik. Minden más felhasználó rendelkezik írási és végrehajtási engedéllyel. A hozzáférés-vezérlési listákról további információt az [Azure Data Lake Storage Gen2 hozzáférés-vezérlése című témakörben](data-lake-storage-access-control.md)talál.
 
 
-### <a name="set-permissions-on-all-items-in-a-file-system"></a>Engedélyek beállítása a fájlrendszer összes elemére vonatkozóan
+### <a name="set-acls-on-all-items-in-a-file-system"></a>A fájlrendszer összes elemére vonatkozó AC-ek beállítása
 
 A `Get-AzDataLakeGen2Item` és a `-Recurse` paraméter és `Update-AzDataLakeGen2Item` a parancsmag segítségével rekurzívmódon állíthatja be a fájlrendszerben lévő összes könyvtár és fájl ACL-ét. 
 
@@ -370,6 +369,41 @@ $acl = set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- 
 $acl = set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission -wx -InputObject $acl
 Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Recurse | Update-AzDataLakeGen2Item -Acl $acl
 ```
+### <a name="add-or-update-an-acl-entry"></a>ACL-bejegyzés hozzáadása vagy frissítése
+
+Először is, szerezd meg az ACL-t. Ezután a `set-AzDataLakeGen2ItemAclObject` parancsmag segítségével adjon hozzá vagy frissítsen egy ACL-bejegyzést. A `Update-AzDataLakeGen2Item` parancsmag használatával véglegesítse az ACL-t.
+
+Ez a példa létrehozza vagy frissíti az ACL-t egy **felhasználó könyvtárában.**
+
+```powershell
+$filesystemName = "my-file-system"
+$dirname = "my-directory/"
+$acl = (Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname).ACL
+$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityID xxxxxxxx-xxxx-xxxxxxxxxxx -Permission r-x -InputObject $acl 
+Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl
+```
+
+### <a name="remove-an-acl-entry"></a>ACL-bejegyzés eltávolítása
+
+Ez a példa eltávolít egy bejegyzést egy meglévő ACL-ből.
+
+```powershell
+$id = "xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+
+# Create the new ACL object.
+[Collections.Generic.List[System.Object]]$aclnew =$acl
+
+foreach ($a in $aclnew)
+{
+    if ($a.AccessControlType -eq "User"-and $a.DefaultScope -eq $false -and $a.EntityId -eq $id)
+    {
+        $aclnew.Remove($a);
+        break;
+    }
+}
+Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $aclnew
+```
+
 <a id="gen1-gen2-map" />
 
 ## <a name="gen1-to-gen2-mapping"></a>Gen1 –Gen2 leképezés

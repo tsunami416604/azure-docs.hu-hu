@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: Beszédfordítási dokumentáció
+title: A Beszédfordítás dokumentációja
 summary: A beszédfelismerési szolgáltatásból származó beszédfordítás lehetővé teszi a hangfolyamok valós idejű, többnyelvű beszéd-felolvasását és szöveggé történő írásba olvasását
 metadata:
   title: Beszédfordítási dokumentáció – Oktatóanyagok, API-referencia - Azure Cognitive Services | Microsoft dokumentumok
@@ -9,14 +9,14 @@ metadata:
   manager: nitinme
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 03/10/2020
+  ms.date: 04/13/2020
   ms.author: dapine
-  ms.openlocfilehash: 75f620d5210f5ba0dc61ac1c5be2f30aa23dea9c
-  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+  ms.openlocfilehash: 346965e4bd8384be93716894a52960b20539d1c3
+  ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/28/2020
-  ms.locfileid: "79415325"
+  ms.lasthandoff: 04/13/2020
+  ms.locfileid: "81259042"
 landingContent:
 - title: Beszédfordítás –
   linkLists:
@@ -24,6 +24,8 @@ landingContent:
     links:
     - text: Mi az a beszédfordítás?
       url: speech-translation.md
+    - text: A beszédfordítás alapjai
+      url: speech-translation-basics.md
   - linkListType: quickstart
     links:
     - text: Diktálás fordítása

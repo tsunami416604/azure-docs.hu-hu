@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 9a1a0b37b0fae52677ad989d85e947e0148ac0a5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8734f748da07b36497ce143646e614ef82056d37
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80153216"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254597"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Oktatóanyag: Párhuzamos számításifeladat-futtatás az Azure Batchben a .NET API használatával
 
@@ -71,7 +71,7 @@ git clone https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial.git
 
 Váltson a Visual Studio `BatchDotNetFfmpegTutorial.sln` nevű megoldásfájlját tartalmazó könyvtárra.
 
-Nyissa meg a megoldásfájlt a Visual Studióban, és frissítse a `Program.cs` hitelesítő adatait a fiókokhoz beszerzett értékekkel. Példa:
+Nyissa meg a megoldásfájlt a Visual Studióban, és frissítse a `Program.cs` hitelesítő adatait a fiókokhoz beszerzett értékekkel. Például:
 
 ```csharp
 // Batch account credentials
@@ -198,9 +198,10 @@ A következő lépésben a minta létrehozza a számítási csomópontok készle
 
 A csomópontok száma és a virtuális gépek mérete meghatározott állandókkal van megadva. A Batch támogatja a dedikált csomópontokat és [az alacsony prioritású csomópontokat,](batch-low-pri-vms.md)és a készletekben vagy mindkét ben használhatja. A dedikált csomópontok a készlet számára vannak fenntartva. Az alacsony prioritású csomópontok kedvezményes áron érhetők el az Azure többlet VM-kapacitásából. Ha az Azure nem rendelkezik elegendő kapacitással, az alacsony prioritású csomópontok elérhetetlenné válnak. A minta alapértelmezés szerint egy csupán 5 alacsony prioritású, *Standard_A1_v2* méretű csomópontot tartalmazó készletet hoz létre.
 
->- Nem, nem, nem, nem, nem, Győződjön meg arról, hogy ellenőrizze a csomópont kvóták. A [csoportonkénti szolgáltatási kvóták at és a](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbatch%2Fbatch-quota-limit%23increase-a-quota&data=02%7C01%7CLaura.Brenner%40microsoft.com%7C9843bf742920414ca3e508d7cb83e288%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637201639605899246&sdata=uKY00XhSMjDkFIPGHYmDN4TOtL4UQhFus42ncst95pg%3D&reserved=0) kvótakérelmek létrehozására vonatkozó utasításokat lásd."
+>[!Note]
+>Győződjön meg arról, hogy ellenőrizze a csomópont kvóták. A [csoportonkénti szolgáltatási kvóták at és a](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbatch%2Fbatch-quota-limit%23increase-a-quota&data=02%7C01%7CLaura.Brenner%40microsoft.com%7C9843bf742920414ca3e508d7cb83e288%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637201639605899246&sdata=uKY00XhSMjDkFIPGHYmDN4TOtL4UQhFus42ncst95pg%3D&reserved=0) kvótakérelmek létrehozására vonatkozó utasításokat lásd."
 
-Az ffmpeg alkalmazás a számítási csomópontokon egy [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference) a készletkonfigurációhoz történő hozzáadásával lesz telepítve. Az [alkalmazás aktiválásának](https://docs.microsoft.com/cli/azure/batch/application/package?view=azure-cli-latest#az-batch-application-package-activate)biztosítása .
+Az ffmpeg alkalmazás a számítási csomópontokon egy [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference) a készletkonfigurációhoz történő hozzáadásával lesz telepítve.
 
 A [CommitAsync](/dotnet/api/microsoft.azure.batch.cloudpool.commitasync) metódus elküldi a készletet a Batch szolgáltatásnak.
 

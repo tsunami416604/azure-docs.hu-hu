@@ -1,16 +1,16 @@
 ---
 title: 'Rövid útmutató: A cURL & REST használatával kezelheti a tudásbázist - QnA Maker'
 description: Ez a rövid útmutató bemutatja, hogyan hozhat létre, tehet közzé és kérdezheti le a tudásbázist a REST API-k használatával.
-ms.date: 02/27/2020
+ms.date: 04/13/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: quickstart
-ms.openlocfilehash: 00ec52fe20fb0e6a976f3e7142386e835713c98c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: facc45ab8f916181f7eeceb65c5102a60ae7d7e9
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78851208"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261703"
 ---
 # <a name="quickstart-use-curl-and-rest-to-manage-knowledge-base"></a>Rövid útmutató: A cURL és a REST használata a tudásbázis kezeléséhez
 
@@ -21,9 +21,9 @@ Ez a rövid útmutató végigvezeti a tudásbázis létrehozásán, közzététe
 ## <a name="prerequisites"></a>Előfeltételek
 
 * A [cURL](https://curl.haxx.se/)aktuális verziója . A rövid útmutatókban számos parancssori kapcsoló t használ, amelyek a [cURL dokumentációjában](https://curl.haxx.se/docs/manpage.html)találhatók.
-* Rendelkeznie kell egy [QnA Maker erőforrással.](../How-To/set-up-qnamaker-service-azure.md) A kulcs és az erőforrás nevének beolvasásához válassza az erőforrás **gyorsútmutatóját** az Azure Portalon. Az erőforrás neve a végpont URL-címének első része:
+* A kulcs és az erőforrás nevének használatához [QnA Maker erőforrással](../How-To/set-up-qnamaker-service-azure.md)kell rendelkeznie. Az erőforrás **nevét** az erőforrás létrehozása során adta meg, majd a kulcsot létrehozták. Az erőforrás neve a végpont altartományaként használatos. A kulcs és az erőforrás nevének beolvasásához válassza az erőforrás **gyorsútmutatóját** az Azure Portalon. Az erőforrás neve a végpont URL-címének első altartománya:
 
-    `https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0`
+    `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0`
 
 > [!CAUTION]
 > A következő BASH `\` példák a sor folytatási karakterét használják. Ha a konzol vagy a terminál más sorfolytatási karaktert használ, ezt a karaktert használja.

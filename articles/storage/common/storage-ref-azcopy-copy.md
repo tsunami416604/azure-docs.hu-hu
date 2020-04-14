@@ -4,16 +4,16 @@ description: Ez a cikk az azcopy copy parancs ra vonatkozó információkat tart
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 431372b930269c3dfa6bdc6e8b2fe4d291a8162e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0325a71fb069f3d96f05d106afac1639fc38fe42
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78933786"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253339"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -169,6 +169,8 @@ Gyűjtők egy részhalmazának másolása helyettesítő szimbólummal (*) a gy�
 
 ## <a name="options"></a>Beállítások
 
+**--biztonsági mentés**                               Aktiválja a Windows SeBackupPrivilege a feltöltések, vagy SeRestorePrivilege letöltések, hogy az AzCopy, hogy olvassa el az összes fájlt, függetlenül attól, hogy a fájlrendszer engedélyeit, és állítsa vissza az összes engedélyt. Az AzCopy-t futtató fióknak már rendelkeznie kell ezekkel az engedélyekkel (például rendszergazdai jogokkal rendelkezik, vagy a "Biztonságimásolat-felelősök" csoport tagja). Ez a jelző csak olyan jogosultságokat aktivál, amelyekkel a fiók már rendelkezik.
+
 **--blob-típusú** karakterlánc Határozza meg a blob típusát a cél. Ez blobok feltöltésére és fiókok közötti másolásra szolgál (alapértelmezett "Detect"). Az érvényes értékek a következők: "Detect", "BlockBlob", "PageBlob" és "AppendBlob". A fiókok közötti másoláskor az "Észlelés" érték hatására az AzCopy a forrásblob típusát használja a célblob típusának meghatározásához. Fájl feltöltésekor a "Detect" határozza meg, hogy a fájl vhd vagy VHDX fájl-e a fájlkiterjesztés alapján. Ha a fájl ether egy VHD vagy VHDX fájl, az AzCopy a fájlt lapblobként kezeli. (alapértelmezett "Észlelés")
 
 **--block-blob-tier** string Feltöltésblokk blobok közvetlenül a [hozzáférési szint](../blobs/storage-blob-storage-tiers.md) az Ön által kiválasztott. (alapértelmezett "Nincs"). Az érvényes értékek a következők: "Nincs", "Forró", "Hűvös" és "Archívum". Ha "Nincs" vagy nincs réteg kerül átadásra, a blob örökli a tárfiók rétegét.
@@ -222,6 +224,12 @@ Gyűjtők egy részhalmazának másolása helyettesítő szimbólummal (*) a gy�
 **--page-blob-tier** string Oldalblob feltöltése az Azure Storage-ba ezzel a blobréteghasználatával. (alapértelmezett "Nincs")
 
 **--megőrzés-utolsó-módosított-idő**          Csak akkor érhető el, ha a cél fájlrendszer.
+
+**--preserve-smb-permissions** string False alapértelmezés szerint. Megőrzi az SMB ACL-eket a tudatos erőforrások (Windows és Azure Files) között. A letöltések, akkor is kell `--backup` használni a zászlót, hogy visszaállítsa az engedélyeket, ahol az új tulajdonos nem lesz a felhasználó, amely futtatja AzCopy. Ez a jelző fájlokra és mappákra is vonatkozik, kivéve, `include-pattern`ha csak fájlszűrő van megadva (pl. ).
+
+**--preserve-smb-info** karakterlánc alapértelmezés szerint Hamis. Megőrzi az SMB-tulajdonságadatokat (utolsó írási idő, létrehozási idő, attribútumbitek) az SMB-t támogató erőforrások (Windows és Azure Files) között. Csak az Azure Files által támogatott attribútumbitek kerülnek átvitelre; a többi figyelmen kívül marad. Ez a jelző a fájlokra és mappákra is vonatkozik, kivéve, ha csak fájlszűrő van megadva (pl. include-pattern). A mappákra átvitt adatok megegyeznek a fájlokadataival, kivéve a legutóbbi írási időt, amely soha nem marad meg a mappákhoz.
+
+**--megőrzés-tulajdonos**                       Csak akkor van hatása az adatok letöltésekénél, és csak akkor, ha a `--preserve-smb-permissions` programot használja. Ha igaz (az alapértelmezett), a fájl tulajdonosa és csoportja megmarad a letöltésekben. Ha ez a jelző `--preserve-smb-permissions` hamis, továbbra is megőrzi az ACL-okat, de a tulajdonos és a csoport az AzCopy programot futtató felhasználón alapul.
 
 **--put-md5**                             Hozzon létre egy MD5-kivonatot minden fájlból, és mentse a kivonatot a célblob vagy -fájl Content-MD5 tulajdonságaként. (Alapértelmezés szerint a kivonat NEM jön létre.) Csak feltöltéskor érhető el.
 

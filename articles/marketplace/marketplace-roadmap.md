@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/02/2019
-ms.openlocfilehash: c9c69bb475c943003f78a69df1142653c3d5249e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c6a3ac701442fb30e471bcc2c8f317e3988980f7
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288376"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261975"
 ---
 # <a name="microsoft-commercial-marketplace-roadmap"></a>A Microsoft kereskedelmi piactéri ütemterve
 
@@ -29,7 +29,7 @@ Amint egy képesség éles, a rendszer eltávolítja az ütemtervből. A piacté
 
 * [Piactér + CSP Update Blog](https://aka.ms/marketplacemarchupdateblog)
 * [Ajánlatok közzététele a KP-csatornában (ISV)](https://aka.ms/publishtocsp)
-* [Marketplace-ajánlatok viszonteladása](hhttps://aka.ms/marketplaceincsp)
+* [Marketplace-ajánlatok viszonteladása](https://aka.ms/marketplaceincsp)
 * [Standard szerződés](https://aka.ms/standardcontract)
 * [SaaS teljesítésapi](https://aka.ms/saasapiv2)
 * [Marketplace Geos és valuták](https://aka.ms/marketplacegeos)

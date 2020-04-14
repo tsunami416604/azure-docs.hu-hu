@@ -1,5 +1,5 @@
 ---
-title: Microsoft Kereskedelmi piactér – gyakori kérdések
+title: Gyakori kérdések a Microsoft kereskedelmi piacterén
 description: Válaszok az Azure Piactérre és a Microsoft AppSource-ra kapcsolatos gyakori kérdésekre
 author: qianw211
 ms.service: marketplace
@@ -7,20 +7,20 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/4/2019
 ms.author: dsindona
-ms.openlocfilehash: ae5c691375d52bc7da7a877f5b2e0c2ca52cc87e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6a142ce3c082f6f9a53287885ba347fc78f77718
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288461"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262026"
 ---
-# <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft Kereskedelmi piactér – gyakori kérdések
+# <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft kereskedelmi piactér – gyakori kérdések
 
-Válaszok az Azure Piactérés a Microsoft AppSource szolgáltatással kapcsolatos gyakori kérdésekre.
+Válaszok a kereskedelmi piaccal kapcsolatos gyakori kérdésekre.
 
 ## <a name="faq-for-customers"></a>Gyakran feltett kérdések az ügyfelek számára
 
-### <a name="what-you-need-to-know-about-azure-marketplace-and-microsoft-appsource"></a>Tudnivalók az Azure Piactérről és a Microsoft AppSource-ról
+### <a name="what-you-need-to-know-about-the-commercial-marketplace"></a>Mit kell tudni a kereskedelmi piacon
 
 **Mi az Azure Marketplace?**
 
@@ -168,11 +168,11 @@ Igen, nagyvállalati szerződés (EA) ügyfelek, a regisztrációs rendszergazda
 
 **Milyen fizetési módok támogatottak a kereskedelmi piactérvásárlásaihoz?**
 
-Az ügyfelek az Azure Marketplace-en és a Microsoft AppSource-on vásárolhatnak ajánlatokat hitelkártyával. Ha meglévő Azure-előfizetéssel rendelkezik, az Azure Marketplace-en történő vásárlások a fiókban beállított fizetési módot fogják használni, és ugyanazon a számlán jelennek meg, mint egy külön sor. Egyes ajánlatok az Azure pénzügyi kötelezettségvállalását használják fel, de a legtöbb kereskedelmi piactéri vásárlás nem vonja le a nagyvállalati szerződésre vonatkozó kötelezettségvállalásokat, bár az Azure infrastruktúra-felhasználása igen.
+Az ügyfelek hitelkártyával vásárolhatnak ajánlatokat a kereskedelmi piactérről. Ha meglévő Azure-előfizetéssel rendelkezik, az Azure Marketplace-en történő vásárlások a fiókban beállított fizetési módot fogják használni, és ugyanazon a számlán jelennek meg, mint egy külön sor. Egyes ajánlatok az Azure pénzügyi kötelezettségvállalását használják fel, de a legtöbb kereskedelmi piactéri vásárlás nem vonja le a nagyvállalati szerződésre vonatkozó kötelezettségvállalásokat, bár az Azure infrastruktúra-felhasználása igen.
 
 **Alkalmazhatok Azure-előfizetési krediteket vagy pénzbeli kötelezettségvállalási összegeket a fiókomban az Azure Marketplace-ajánlatokra?**
 
-Az Azure Marketplace-ajánlatok azure-előfizetési krediteket vagy pénzügyi kötelezettségvállalási alapokat használhatnak. A programban részt vevő termékek teljes listájáért tekintse meg az [Azure-beli pénzügyi keretet](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/). Ezek az ajánlatok nem tartalmazzák a BYOL vagy a BYOS beállításokat. Az Azure Marketplace-ajánlatok nem használhatják az Azure-előfizetési krediteket vagy a pénzügyi kötelezettségvállalást: például az ingyenes egyhónapos próba-jóváírást, a havi MSDN-krediteket, az Azure-promóciókból származó krediteket, a pénzügyi kötelezettségvállalási egyenlegeket és a Azure.
+Az Azure Marketplace-ajánlatok azure-előfizetési krediteket vagy pénzügyi kötelezettségvállalási alapokat használhatnak. A programban részt vevő termékek teljes listájáért tekintse meg az [Azure-beli pénzügyi keretet](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/). Ezek az ajánlatok nem tartalmazzák a BYOL vagy a BYOS beállításokat. Az Azure Marketplace-ajánlatok nem használhatják az Azure-előfizetési krediteket vagy a pénzügyi kötelezettségvállalást: például az ingyenes egyhónapos próba-jóváírást, a havi MSDN-krediteket, az Azure-promóciókból származó krediteket, a pénzügyi kötelezettségvállalási egyenlegeket és az Azure-ból biztosított egyéb ingyenes krediteket.
 
 **Mennyiségi licenckedvezmények vonatkoznak az Azure Marketplace-en vásárolt tartalmakra?**
 
@@ -258,12 +258,12 @@ Igen, lehetséges, hogy egy ügyfél egyszerre két csomagkal is elsajátuljon u
 
 **A visszatérítési és a tervmódosítási irányelvek kirakatonként eltérőek?**
 
-Nem, az üzleti szabályzatok konzisztensek az Azure Marketplace-en és a Microsoft AppSource-on. Ha a Felhőalapú megoldásbiztosítása programban részt vevő partner továbbértékesíti, a partner más szabályzatot kényszeríthet ki ügyfelei számára.
+Nem, az üzleti irányelvek konzisztensek a kereskedelmi piacon. Ha a Felhőalapú megoldásbiztosítása programban részt vevő partner továbbértékesíti, a partner más szabályzatot kényszeríthet ki ügyfelei számára.
 
 
 ## <a name="faq-for-publishers"></a>Gyakran feltett kérdések a közzétevők számára
 
-### <a name="what-you-need-to-know-about-azure-marketplace-and-microsoft-appsource"></a>Tudnivalók az Azure Piactérről és a Microsoft AppSource-ról
+### <a name="what-you-need-to-know-about-the-commercial-marketplace"></a>Mit kell tudni a kereskedelmi piacon
 
 **Mi az Azure Marketplace?**
 
@@ -347,7 +347,7 @@ Az ajánlat befejezése és az érdeklődő célállomásának beállítása ut�
 
 **Milyen országokban/régiókban érhető el a kiadók számára az Azure Marketplace?**
 
-A következő országokban/régiókban működő kiadók jelenleg értékesíthetnek az Azure Marketplace-en: Afganisztán, Albánia, Algéria, Angola, Antigua és Barbuda, Argentína, Örményország, Ausztrália, Ausztria, Azerbajdzsán, Bahrein, Banglades, Fehéroroszország, Belgium, Benin, Bolívia, Bosznia és Hercegovina, Botswana, Brazília, Bulgária, Burkina Faso, Burundi, Kambodzsa, Kamerun, Kanada, Közép-afrikai Köztársaság, Csád, Chile, Kolumbia, Cooros, Kongó, Costa Rica, Cote D'Elefántcsontpart, Horvátország, Ciprus, Cseh Köztársaság, Köztársaság, Dánia, Dominika, Dominikai Köztársaság, Ecuador, Egyiptom, El Salvador, Eritrea, Észtország, Etiópia, Fidzsi-szigetek, Finnország, Franciaország, Grúzia, Németország, Ghána, Görögország, Guatemala, Guinea, Haiti, Honduras, Hong Kong KKT, Magyarország, Izland, India, Indonézia, Irak, Írország, Izrael, Olaszország, Jamaica, Japán, Jordánia, Kazahsztán, Kenya, Korea (Dél), Kuvait, Laosz, Lettország, Libanon, Libéria, Liechtenstein, Litvánia, Luxemburg, Madagaszkár, Malajzia, Mali, Málta, Mauritius, Mexikó, Monaco, Monim, Marokkó, Mozambik, Nepál, Hollandia, Új-Zéland, Nicaragua, Niger, Nigéria, Norvégia, Omán, Pakisztán, Panama, Paraguay, Peru, Fülöp-szigetek, Lengyelország, Portugália, Katar, Románia, Oroszország, Ruanda, Szaúd-Arábia, Szenegál, Szerbia, Sierra Leone, Szingapúr, Szlovákia, Szlovénia, Szomália, Dél-Afrika, Spanyolország, Srí Lanka, Svédország, Svájc, Tádzsikisztán, Tanzánia, Thaiföld, Kelet-Timor, Togo, Tonga, Trinidad és Tobago, Tunézia, Törökország, Türkmenisztán, Uganda, Ukrajna, Egyesült Arab Emírségek, Egyesült Királyság, Egyesült Királyság, Egyesült Királyság, Egyesült Királyság, Egyesült Királyság, Egyesült Királyság Uruguay, Üzbegisztán, Venezuela, Vietnam, Zambia és Zimbabwe.
+A következő országokban/régiókban működő kiadók jelenleg értékesíthetnek az Azure Piactéren: Afganisztán, Albánia, Algéria, Angola, Antigua és Barbuda, Argentína, Örményország, Ausztrália, Ausztria, Azerbajdzsán, Bahrein, Banglades, Fehéroroszország, Belgium, Benin, Bolívia, Bosznia és Hercegovina, Botswana, Brazília, Bulgária, Burkina Faso, Burundi, Kambodzsa, Kamerun, Kanada, Közép-afrikai Köztársaság, Csád, Chile, Kolumbia, Cooros, Kongó, Kongó (KDK), Costa Rica, Elefántcsontpart, Horvátország, Ciprus, Cseh Köztársaság, Dánia, Dominika, Dominikai Köztársaság, Ecuador, Egyiptom, Salvador, Eritrea, Észtország, Etiópia, Fidzsi-szigetek, Finnország, Franciaország, Grúzia, Németország, Ghána, Görögország, Guatemala, Guinea, Haiti, Honduras, Hongkong KKT, Magyarország, Izland, India, Indonézia, Irak, Írország, Izrael, Olaszország, Jamaica, Japán, Jordánia, Kazahsztán, Kenya, Korea (Dél), Kuvait, Laosz, Lettország, Libanon, Libéria, Liechtenstein, Litvánia, Luxemburg, Madagaszkár, Malawi, Malajzia, Mali, Málta, Mauritius, Mexikó, Monaco, Mongólia, Mongólia , Marokkó, Mozambik, Nepál, Hollandia, Új-Zéland, Nicaragua, Niger, Nigéria, Norvégia, Omán, Pakisztán, Panama, Paraguay, Peru, Fülöp-szigetek, Lengyelország, Portugália, Katar, Románia, Oroszország, Ruanda, Szaúd-Arábia, Szenegál, Szerbia, Sierra Leone, Szingapúr, Szlovákia, Szlovénia, Szomália, Dél-Afrika, Spanyolország, Srí Lanka, Svédország, Svájc, Tádzsikisztán, Tanzánia, Thaiföld, Kelet-Timor, Togo, Tonga, Trinidad és Tobago, Tunézia, Törökország, Türkmenisztán, Uganda, Ukrajna, Egyesült Arab Emírségek, Egyesült Királyság, Egyesült Államok, Uruguay, Üzbegisztán, Venezuela, Vietnam, Zambia és Zimbabwe.
 
 **Hogyan törölhetek egy hirdetést az Azure Piactérről?**
 
@@ -372,8 +372,8 @@ További információt az [Ajánlat törlése](./cloud-partner-portal/manage-off
 
 *O365 alkalmazások:*
 
-1.  Jelentkezzen be <https://sellerdashboard.microsoft.com> a fejlesztői fiókjával.
-1.  Vonja vissza a bővítményt.
+1.    Jelentkezzen be <https://sellerdashboard.microsoft.com> a fejlesztői fiókjával.
+1.    Vonja vissza a bővítményt.
 
     > [!NOTE]
     > Az alkalmazások 90 nap elteltével eltűnnek egy meglévő adatlapról.
@@ -422,7 +422,7 @@ Az Azure Marketplace-en vásárolt számlázási és előfizetési problémákes
 
 **Kihez fordulhatok kiadói vagy vezetői kérdésekkel kapcsolatban?**
 
-Látogasson el az [Azure Marketplace Publisher guide-ba,](marketplace-publishers-guide.md) ahol naprakész erőforrást és dokumentációt talál a gyakran ismételt kérdésekről. Ezenkívül a Partnerközpontban is bejelentkezhet egy jegyet [a Microsoft támogatási szolgálatával.](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953)
+Látogasson el a [kereskedelmi piactér kiadói útmutató](marketplace-publishers-guide.md) a up-to-date erőforrás és dokumentáció a gyakran ismételt kérdésekre. Ezenkívül a Partnerközpontban is bejelentkezhet egy jegyet [a Microsoft támogatási szolgálatával.](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953)
 
 ### <a name="azure-marketplace-for-publishers"></a>Azure Piactér kiadóknak
 
@@ -473,7 +473,7 @@ Igen, a támogatási jegyen keresztül történő kérésre a Microsoft feldolgo
 
 ## <a name="next-steps"></a>További lépések
 
-Keresse fel az Azure Piactér és az [AppSource Publisher útmutatóoldalát.](/azure/marketplace/marketplace-publishers-guide)
+Látogasson el a [kereskedelmi piactér kiadói útmutató](/azure/marketplace/marketplace-publishers-guide) oldalára.
 
 
-[Azure-portál]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

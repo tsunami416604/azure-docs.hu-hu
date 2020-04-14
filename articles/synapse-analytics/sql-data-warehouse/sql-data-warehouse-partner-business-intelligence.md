@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0994e1af8ca6deccbe6224625a5320fb195a10a1
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 1a026cc241eb372e15f2600e52ec53a46efb1024
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586508"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256008"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Az Azure Synapse Analytics üzleti intelligencia partnerei
 
@@ -37,7 +37,7 @@ A teljes adattárház-megoldás létrehozása az Azure Synapse Synapse-on belül
 | ![Qlik](./media/sql-data-warehouse-partner-business-intelligence/qlik_logo.png) |**Qlik Sense Enterprise**<br>Az adatvizualizációs alkalmazással olyan betekintési adatok felderítését érheti el, amelyet bárki használhat. A Qlik Sense segítségével a szervezet minden tagja könnyedén hozhat létre rugalmas, interaktív vizualizációkat, és érdemi döntéseket hozhat. |[Termék oldal](https://www.qlik.com/us/products/qlik-sense/enterprise)<br> [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/qliktech-international-ab/qlikview/) |
 | ![SiSense](./media/sql-data-warehouse-partner-business-intelligence/sisense_logo.png) |**SiSense**<br>SiSense egy teljes verem Business Intelligence szoftver, hogy jön-val eszközök, hogy az üzleti szükséges elemezni és vizualizálni az adatokat: a nagy teljesítményű analitikai adatbázis, a képesség, hogy csatlakozzon több forrásból, egyszerű adatkinyerés (ETL), és a web-alapú adatok visualization. A SiSense BI és az Analytics segítségével még ma elkezdheti elemezni és megjelenítenie a nagy adatkészleteket. |[Termék oldal](https://www.sisense.com/product/)<br> |
 | ![Tableau](./media/sql-data-warehouse-partner-business-intelligence/tableau_sparkle_logo.png) |**Tableau**<br>A Tableau önkiszolgáló elemzései segítenek bárkinek az adataik megtekintésében és megértésében, a sík fájloktól az adatbázisokig. A Tableau natív, optimalizált összekötővel rendelkezik a Synapse SQL-készlethez, amely támogatja az élő adatokat és a memórián belüli elemzést. |[Termék oldal](https://www.tableau.com/)<br> [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/tableau/tableau-server/)<br>|
-| ![Targit között](./media/sql-data-warehouse-partner-business-intelligence/targit_logo.png) |**Targit (döntés suite)**<br>A Targit Decision Suite bi- és elemzési platformot biztosít, amely valós idejű irányítópultokat, önkiszolgáló elemzéseket, felhasználóbarát jelentéseket, lenyűgöző mobilfunkciókat és egyszerű adatfelderítési technológiát kínál egyetlen, egységes megoldásban. A Targit bátorságot ad a cégeknek a cselekvéshez. |[Termék oldal](https://www.targit.com/en/software/deployment/targitonazure)<br> [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/targit/targit-decision-suite/)<br> |
+| ![Targit között](./media/sql-data-warehouse-partner-business-intelligence/targit_logo.png) |**Targit (döntés suite)**<br>A Targit Decision Suite bi- és elemzési platformot biztosít, amely valós idejű irányítópultokat, önkiszolgáló elemzéseket, felhasználóbarát jelentéseket, lenyűgöző mobilfunkciókat és egyszerű adatfelderítési technológiát kínál egyetlen, egységes megoldásban. A Targit bátorságot ad a cégeknek a cselekvéshez. |[Termék oldal](https://www.targit.com/targit-decision-suite/analytics)<br> [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/targit/targit-decision-suite/)<br> |
 | ![Sárgaúszójú](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_logo.png) |**Sárgaúszójú**<br>A Yellowfin a BARC ad hoc jelentéskészítési és irányítópultjainak legjobb minősítésű Cloud BI-forgalmazója; A BI felmérés. Csatlakozzon a Synapse SQL-készlethez, majd hozzon létre és osszon meg gyönyörű jelentéseket és irányítópultokat a díjnyertes együttműködési BI- és helymeghatározási funkciókkal. |[Termék oldal](https://www.yellowfinbi.com/)<br> [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/yellowfin/yellowfin-for-azure-byol/) |
 
 <!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->

@@ -17,12 +17,12 @@ ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 595c87d2b8182c9044baeb2662e34871d9e52c52
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 0822bdd886a9a29f2cdb6843d3dc4404d7360f32
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991245"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261023"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Az Azure AD-tevékenységnaplók az Azure Monitorban
 
@@ -98,12 +98,13 @@ A rendszer az eseményeket körülbelül ötperces intervallumokba kötegeli, ma
 
 Például egy több mint 100 000 felhasználót számláló bérlőn általában körülbelül 18 esemény történik másodpercenként, ez ötpercenként 5400 eseményt jelent. Mivel az auditnaplók eseményenként nagyjából 2 KB méretűek, ez összesen 10,8 MB adatot jelent. Így az adott ötperces időablakban a rendszer 43 üzenetet küld az eseményközpontra. 
 
-Az alábbi táblázat egy alapszintű eseményközpont becsült havi költségét tartalmazza az eseményadatok mennyiségének függvényében az USA nyugati régiójában. Az [Event Hubs-díjkalkulátor](https://azure.microsoft.com/pricing/details/event-hubs/) használatával ennél pontosabb becslést is készíthet az alkalmazása várható adatmennyiségéről.
+Az alábbi táblázat az USA nyugati részén lévő alapvető eseményközpont havi becsült költségeit tartalmazza, abérlőnként idáig változó eseményadatok mennyiségétől függően, például a felhasználói bejelentkezési viselkedés stb. Az alkalmazáshoz előre látható adatmennyiség pontos becslésének kiszámításához használja az [Event Hubs díjszabáskalkulátorát.](https://azure.microsoft.com/pricing/details/event-hubs/)
 
 | Naplókategória | Felhasználók száma | Események száma másodpercenként | Események száma ötperces időközönként | Adatmennyiség az egyes időablakokban | Üzenetek száma időközönként | Üzenetek száma havonta | Havi költség (becsült) |
 |--------------|-----------------|-------------------------|----------------------------------------|---------------------|---------------------------------|------------------------------|----------------------------|
 | Naplózás | 100 000 | 18 | 5400 | 10,8 MB | 43 | 371 520 | 10,83 dollár |
 | Naplózás | 1,000 | 0,1 | 52 | 104 KB | 1 | 8640 | 10,80 dollár |
+| Bejelentkezések | 100 000 | 18000 | 5,400,000 | 10,8 GB | 42188 | 364,504,320 | 23,9 $ |  
 | Bejelentkezések | 1,000 | 178 | 53 400 | 106,8&nbsp;MB | 418 | 3 611 520 | 11,06 dollár |  
 
 ### <a name="azure-monitor-logs-cost-considerations"></a>Az Azure Monitor naplózza a költséggel kapcsolatos szempontokat

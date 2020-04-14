@@ -1,7 +1,7 @@
 ---
-title: Hibakeresés és hibaelhárítás a gépi tanulási folyamatokban
+title: Hibakeresés & hibaelhárítás a pénzmosási folyamatok hibáinak elhárításához
 titleSuffix: Azure Machine Learning
-description: Hibakeresés és gépi tanulási folyamatok hibaelhárítása az Azure Machine Learning SDK pythonhoz. Ismerje meg a folyamatok fejlesztésének gyakori buktatóit, és tippeket, amelyek segítenek a parancsfájlok hibakeresésében a távoli végrehajtás előtt és alatt. Ismerje meg, hogyan használhatja a Visual Studio-kódot a gépi tanulási folyamatok interaktív hibakereséséhez.
+description: Hibakeresés az Azure Machine Learning-folyamatok pythonban. Ismerje meg a folyamatok fejlesztésének gyakori buktatóit, és tippeket, amelyek segítenek a parancsfájlok hibakeresésében a távoli végrehajtás előtt és alatt. Ismerje meg, hogyan használhatja a Visual Studio-kódot a gépi tanulási folyamatok interaktív hibakereséséhez.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 03/18/2020
-ms.openlocfilehash: b68efbb64e9634ade001373e8cd9d61355bf786f
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.openlocfilehash: 9c2e00ed14a45c6df7cf72845db2ecd069381ca5
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80388984"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257215"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Hibakeresés és hibaelhárítás a gépi tanulási folyamatokban
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +31,7 @@ A következő szakaszok áttekintést nyújtanak a folyamatok létrehozásakor g
 
 ### <a name="testing-scripts-locally"></a>Parancsfájlok helyi tesztelése
 
-A folyamat egyik leggyakoribb hibája, hogy egy csatolt parancsfájl (adattisztító parancsfájl, pontozási parancsfájl stb.) nem a megfelelően fut, vagy olyan futásidejű hibákat tartalmaz a távoli számítási környezetben, amelyeket nehéz hibahibahibakeresésa a munkaterületen az Azure Machine-ben Tanuló stúdió. 
+A folyamat egyik leggyakoribb hibája, hogy egy csatolt parancsfájl (adattisztító parancsfájl, pontozási parancsfájl stb.) nem a kívánt módon fut, vagy olyan futásidejű hibákat tartalmaz a távoli számítási környezetben, amelyeket nehéz hibahibahibaaz Azure Machine Learning-stúdióban a munkaterületen. 
 
 Maguk a folyamatok nem futtathatók helyileg, de a parancsfájlok futtatása a helyi gépen lehetővé teszi a gyorsabb hibakeresést, mert nem kell megvárnia a számítási és környezeti létrehozási folyamatot. Ehhez némi fejlesztési munkára van szükség:
 
@@ -50,7 +50,7 @@ Ha már futtatható a parancsfájl beállítása a helyi környezetben, sokkal e
 
 ### <a name="debugging-scripts-from-remote-context"></a>Parancsfájlok hibakeresési funkciója távoli környezetből
 
-A parancsfájlok helyi tesztelése nagyszerű módja a főbb kódtöredékek és az összetett logika hibakeresésének a folyamat létrehozása előtt, de egy bizonyos ponton valószínűleg hibakeresést kell futtatnia a parancsfájlok között a tényleges folyamat futtatása során, különösen akkor, ha a viselkedés diagnosztizálása a csővezeték lépései közötti interakció során. Javasoljuk, `print()` hogy a lépésparancsfájlokban liberális annektált annektált módon használhassa a parancsfájlokat, hogy a távoli végrehajtás során láthassa az objektum állapotát és a várt értékeket, hasonlóan ahhoz, ahogyan a JavaScript-kódot debugolja.
+A parancsfájlok helyi tesztelése nagyszerű módja a főkódtöredékek és az összetett logika hibakeresésének a folyamat létrehozása előtt, de egy bizonyos ponton valószínűleg szükség lesz a parancsfájlok hibakeresésére a tényleges folyamat futtatása során, különösen akkor, ha a folyamatlépések közötti interakció során fellépő viselkedés diagnosztizálása során történik. Javasoljuk, `print()` hogy a lépésparancsfájlokban liberális annektált annektált módon használhassa a parancsfájlokat, hogy a távoli végrehajtás során láthassa az objektum állapotát és a várt értékeket, hasonlóan ahhoz, ahogyan a JavaScript-kódot debugolja.
 
 A naplófájl a következőket `70_driver_log.txt` tartalmazza: 
 
@@ -88,7 +88,7 @@ Az alábbi táblázat a csővezeték-fejlesztés során felmerülő gyakori prob
 
 Az alábbi táblázat a folyamatok különböző hibakeresési lehetőségeiről tartalmaz tájékoztatást. Ez nem egy teljes lista, mivel más lehetőségek is léteznek, csak az Azure Machine Learning, Python és OpenCensus is itt látható.
 
-| Erőforrástár                    | Típus   | Példa                                                          | Cél                                  | Források                                                                                                                                                                                                                                                                                                                    |
+| Erőforrástár                    | Típus   | Példa                                                          | Cél                                  | További források                                                                                                                                                                                                                                                                                                                    |
 |----------------------------|--------|------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Azure Machine Learning SDK | Metrika | `run.log(name, val)`                                             | Az Azure Machine Learning Portal felhasználói felülete             | [A kísérletek nyomon követése](how-to-track-experiments.md#available-metrics-to-track)<br>[azureml.core.Run osztály](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=experimental)                                                                                                                                                 |
 | Python nyomtatás/naplózás    | Napló    | `print(val)`<br>`logging.info(message)`                          | Illesztőprogram-naplók, Azure Machine Learning-tervező | [A kísérletek nyomon követése](how-to-track-experiments.md#available-metrics-to-track)<br><br>[Python naplózás](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |

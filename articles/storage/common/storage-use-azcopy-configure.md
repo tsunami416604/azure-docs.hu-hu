@@ -4,16 +4,16 @@ description: Konfigurálja, optimalizálja és elhárítsa az AzCopy-t.
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/28/2020
+ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: d2cb40d7510e46539db46bdb61ec2d64c0fd1ec7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 87a335f44a31436de735395adbee9035493cbbd2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77526495"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263420"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Az AzCopy konfigurálása, optimalizálása és hibaelhárítása
 
@@ -53,9 +53,6 @@ Ez a szakasz az alábbi optimalizálási feladatok elvégzését segíti elő:
 ### <a name="run-benchmark-tests"></a>Teljesítményteszt-tesztek futtatása
 
 Teljesítmény-teljesítménytesztet futtathat adott blobtárolókon az általános teljesítménystatisztikák és az identitásteljesítmény-szűk keresztmetszetek megtekintéséhez. 
-
-> [!NOTE]
-> A jelenlegi kiadásban ez a funkció csak a Blob Storage-tárolók érhető el.
 
 A következő paranccsal teljesítménytesztet futtat.
 

@@ -1,18 +1,18 @@
 ---
-title: Fiókáttelepítés a felhőalapú partnerportálról a Partnerközpontba – Kereskedelmi piactér az Azure-hoz
-description: A fiók áttelepítése a CPP-ről a Partnerközpontba. - Kereskedelmi piactér az Azure-hoz
+title: Fiókáttelepítés a Felhőpartner-portálról a Partnerközpontba – az Azure kereskedelmi piactere
+description: A fiók áttelepítése a CPP-ről a Partnerközpontba. - kereskedelmi piac az Azure számára
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: 4aa336183d25a524246a2036fb95e0a7657b84f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e17a76d5a017400287644ad2da46caa5b6636654
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80279810"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262298"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Fiók migrálása a Cloud Partner Portalról a Partnerközpontba
 
@@ -79,4 +79,4 @@ Ha segítségre van szüksége a piactéri ajánlatok közzétételéhez, hitele
 
 ## <a name="next-steps"></a>További lépések
 
-- [Kereskedelmi piactér-fiók kezelése a Partnerközpontban](./manage-account.md)
+- [Kereskedelmi piactéri fiók kezelése a Partnerközpontban](./manage-account.md)

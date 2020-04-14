@@ -3,7 +3,7 @@ title: Az Azure CDN gyorsítótárazási viselkedésének szabályozása lekérd
 description: Az Azure CDN-lekérdezési karakterlánc-gyorsítótárazás szabályozza, hogyan fájlok gyorsítótárazott, ha egy webes kérelem tartalmaz egy lekérdezési karakterláncot. Ez a cikk a Microsoft-termék Azure CDN Premium szolgáltatásában található lekérdezési karakterlánc-gyorsítótárazást ismerteti.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: 99db4a85-4f5f-431f-ac3a-69e05518c997
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/11/2018
-ms.author: magattus
-ms.openlocfilehash: 365c52840d281c0f48d17aacc358e4cce513e3b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 94949a31db5321929a3440281cebd01712c79bb8
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74083095"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260139"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---premium-tier"></a>Az Azure CDN gyorsítótárazási viselkedésének szabályozása lekérdezési karakterláncokkal – prémium szint
 > [!div class="op_single_selector"]

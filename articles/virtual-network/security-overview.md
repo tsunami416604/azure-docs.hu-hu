@@ -13,21 +13,20 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 8f3497f113981ae563023750ad8979c88c640f5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 968cc9ed9d938bb04d1243102855c134147ddf3b
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80123340"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81269873"
 ---
 # <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
 <a name="network-security-groups"></a>
 
-Az Azure-beli virtuális hálózatokban az Azure-erőforrások bejövő és kimenő hálózati forgalmát hálózati biztonsági csoportokkal szűrheti. A hálózati biztonsági csoportok olyan biztonsági szabályokat tartalmaznak, amelyek engedélyezik vagy letiltják a különböző típusú Azure-erőforrások bejövő vagy kimenő hálózati forgalmát. A virtuális hálózatokban üzembe helyezhető és hálózati biztonsági csoportokkal használható Azure-erőforrásokkal kapcsolatos információkért tekintse meg az [Azure-szolgáltatások virtuális hálózati integrációját](virtual-network-for-azure-services.md) ismertető cikket. Az egyes szabályokhoz meghatározhatja a forrást és a célt, valamint a használni kívánt portot és protokollt.
+Az Azure hálózati biztonsági csoport segítségével szűrheti a hálózati forgalmat az Azure-erőforrásokés az Azure virtuális hálózat. A hálózati biztonsági csoportok olyan [biztonsági szabályokat](#security-rules) tartalmaznak, amelyek engedélyezik vagy letiltják a különböző típusú Azure-erőforrások bejövő vagy kimenő hálózati forgalmát. Az egyes szabályokhoz meghatározhatja a forrást és a célt, valamint a használni kívánt portot és protokollt.
+Ez a cikk a hálózati biztonsági csoportszabály tulajdonságait, az [alkalmazott alapértelmezett biztonsági szabályokat](#default-security-rules) és a [kiterjesztett biztonsági szabály](#augmented-security-rules)létrehozásához módosítható szabálytulajdonságokat ismerteti.
 
-A cikk a hálózati biztonsági csoportokkal kapcsolatos fogalmakat ismerteti, hogy segítséget nyújtson a hatékony használatban. Ha korábban még nem hozott létre hálózati biztonsági csoportot, ebben a rövid [oktatóanyagban](tutorial-filter-network-traffic.md) némi gyakorlatra tehet szert. Ha már ismeri a hálózati biztonsági csoportok működését, és kezelni szeretné őket, tekintse meg a [hálózati biztonsági csoportok kezelését](manage-network-security-group.md) bemutató témakört. Ha kommunikációs problémákat tapasztal, és hibaelhárítást végezne a hálózati biztonsági csoportokon, tekintse meg [a virtuális gépek hálózatiforgalom-szűrési problémáinak diagnosztizálását](diagnose-network-traffic-filter-problem.md) ismertető rövid útmutatót. A [hálózati biztonsági csoportok folyamatnaplóinak](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) engedélyezésével elemezheti azon erőforrások bejövő és kimenő hálózati forgalmát, amelyekhez hálózati biztonsági csoport van társítva.
-
-## <a name="security-rules"></a>Biztonsági szabályok
+## <a name="security-rules"></a><a name="security-rules"></a>Biztonsági szabályok
 
 A hálózati biztonsági csoportok nulla vagy tetszőleges számú szabályt tartalmazhatnak, az Azure-előfizetések [korlátain](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) belül. Az egyes szabályok az alábbi tulajdonságokat határozzák meg:
 
@@ -46,7 +45,7 @@ Előfordulhat, hogy a meglévő kapcsolatok nem szakadnak meg az adatfolyamot en
 
 Az egy hálózati biztonsági csoporton belül létrehozható biztonsági szabályok száma korlátozott. További részletek: [Az Azure korlátai](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
-### <a name="default-security-rules"></a>Alapértelmezett biztonsági szabályok
+### <a name="default-security-rules"></a><a name="default-security-rules"></a>Alapértelmezett biztonsági szabályok
 
 Az Azure a következő alapértelmezett szabályokat hozza létre a létrehozott hálózati biztonsági csoportokban:
 
@@ -94,7 +93,7 @@ A **Forrás** és a **Cél** oszlopban a *VirtualNetwork*, *AzureLoadBalancer* �
  
 Az alapértelmezett szabályok nem távolíthatók el, azonban magasabb prioritású szabályok létrehozásával felülírhatók.
 
-### <a name="augmented-security-rules"></a>Kibővített biztonsági szabályok
+### <a name="augmented-security-rules"></a><a name="augmented-security-rules"></a>Kiterjesztett biztonsági szabályok
 
 A kibővített biztonsági szabályok megkönnyítik a virtuális hálózatok biztonsági definícióinak megadását, így nagyobb és összetettebb hálózati biztonsági szabályok alakíthatók ki kevesebb szabállyal. Több portot, több konkrét IP-címet és -tartományt foglalhat egyetlen, könnyen érthető biztonsági szabályba. Kibővített szabályokat a szabályok forrás, cél és port mezőiben is használhat. A biztonsági szabálydefiníció karbantartásának egyszerűsítése érdekében kombinálja a bővített biztonsági szabályokat [a szolgáltatáscímkékkel](service-tags-overview.md) vagy [az alkalmazásbiztonsági csoportokkal.](#application-security-groups) A szabályokban megadható címek, tartományok és portok száma korlátozott. További részletek: [Az Azure korlátai](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
@@ -170,4 +169,8 @@ A hálózati adapterekhez rendelt összesített szabályokat könnyen megismerhe
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg [a hálózati biztonsági csoportok létrehozását](tutorial-filter-network-traffic.md).
+* Ha meg szeretné tudni, hogy mely Azure-erőforrások telepíthetők virtuális hálózatba, és milyen hálózati biztonsági csoportok társíthatók hozzájuk, olvassa el [az Azure-szolgáltatások virtuális hálózati integrációja](virtual-network-for-azure-services.md)
+* Ha korábban még nem hozott létre hálózati biztonsági csoportot, ebben a rövid [oktatóanyagban](tutorial-filter-network-traffic.md) némi gyakorlatra tehet szert. 
+* Ha már ismeri a hálózati biztonsági csoportok működését, és kezelni szeretné őket, tekintse meg a [hálózati biztonsági csoportok kezelését](manage-network-security-group.md) bemutató témakört. 
+* Ha kommunikációs problémákat tapasztal, és hibaelhárítást végezne a hálózati biztonsági csoportokon, tekintse meg [a virtuális gépek hálózatiforgalom-szűrési problémáinak diagnosztizálását](diagnose-network-traffic-filter-problem.md) ismertető rövid útmutatót. 
+* Megtudhatja, hogy miként engedélyezheti a [hálózati biztonsági csoport folyamatnaplóinak](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a társított hálózati biztonsági csoporttal tartozó erőforrásokba irányuló és onnan érkező hálózati forgalom elemzését.

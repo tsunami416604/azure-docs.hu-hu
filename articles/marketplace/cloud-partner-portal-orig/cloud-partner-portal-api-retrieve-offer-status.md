@@ -5,24 +5,25 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 2f5211716145d6c05bbfb0132c4a6ba2f9cceabe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9cf6ca27101a08ff58f32dcd31413256762490a2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280507"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255913"
 ---
-<a name="retrieve-offer-status"></a>Ajánlat állapotának lekérése 
-=====================
+# <a name="retrieve-offer-status"></a>Ajánlat állapotának lekérése
+
+> [!NOTE]
+> A Cloud Partner Portal API-k integrálva vannak a Partnerközponttal, és az ajánlatok partnerközpontba való áttelepítése után is működni fognak. Az integráció kis változtatásokat vezet be. Tekintse át a [Cloud Partner Portal API-hivatkozásban](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) felsorolt módosításokat, és győződjön meg arról, hogy a kód továbbra is működik a Partnerközpontba való áttelepítés után.
 
 Az ajánlat aktuális állapotának lekérése.
 
   `GET  https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/status?api-version=2017-10-31`
 
-<a name="uri-parameters"></a>URI-paraméterek
---------------
+## <a name="uri-parameters"></a>URI-paraméterek
 
 |  **Név**       |   **Leírás**                            |  **Adattípus** |
 |  -------------  |  ------------------------------------------  |  ------------  |
@@ -32,8 +33,8 @@ Az ajánlat aktuális állapotának lekérése.
 |  |  |
 
 
-<a name="header"></a>Fejléc
-------
+## <a name="header"></a>Fejléc
+
 
 |  Név           |  Érték               |
 |  -------------  | -------------------  |
@@ -41,9 +42,8 @@ Az ajánlat aktuális állapotának lekérése.
 |  Engedélyezés  | `Bearer YOUR_TOKEN`  |
 |  |  |
 
+## <a name="body-example"></a>Példa törzsre
 
-<a name="body-example"></a>Példa törzsre
-------------
 
 ### <a name="response"></a>Válasz
 
@@ -115,8 +115,7 @@ Az ajánlat aktuális állapotának lekérése.
       ],
       "previewLinks": [],
       liveLinks": [],
-      "notificationEmails": "jdoe@contoso.com"
-  } 
+  }
 ```
 
 
@@ -136,9 +135,8 @@ Az ajánlat aktuális állapotának lekérése.
 |  processPercentage    | A lépés százalékos készültsége                                                              |
 |  previewLinks         | *Jelenleg nincs megvalósítva*                                                                    |
 |  élő linkek            | *Jelenleg nincs megvalósítva*                                                                    |
-|  értesítésEmailek   | Vesszővel tagolt e-mail címek listája, amelyeket értesíteni kell a művelet előrehaladásáról        |
+|  értesítésEmailek   | A Partnerközpontba áttelepített ajánlatok elavultak. Az áttelepített ajánlatokra vonatkozó értesítési e-maileket a Fiókbeállítások Ban található Eladó elérhetőségi adatai alatt megadott e-mail-címre küldjük.<br><br>Nem áttelepített ajánlatok esetén a művelet előrehaladásáról értesítendő e-mail címek vesszővel elválasztott listája        |
 |  |  |
-
 
 ### <a name="response-status-codes"></a>Válasz állapotkódjai
 
@@ -148,7 +146,6 @@ Az ajánlat aktuális állapotának lekérése.
 |  400     | `Bad/Malformed request`- A hibaválasz törzse további információkat tartalmazhat.                 |
 |  404     | `Not found`- A megadott entitás nem létezik.                                                |
 |  |  |
-
 
 ### <a name="offer-status"></a>Ajánlat állapota
 
@@ -162,7 +159,6 @@ Az ajánlat aktuális állapotának lekérése.
 |  Megszakítva                    | Az ajánlat beküldését törölték.                           |
 |  Sikertelen                      | Az ajánlat beküldése nem sikerült.                                 |
 |  |  |
-
 
 ### <a name="step-status"></a>Lépés állapota
 

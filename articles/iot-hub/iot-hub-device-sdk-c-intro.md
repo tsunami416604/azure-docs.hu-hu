@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: robinsh
-ms.openlocfilehash: dd12f974b9b02d919752dcb932c9ce1709d7315b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71193523a83987de2440d8c70c133c29dde4fe91
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70813789"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257878"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Azure IoT-eszköz SDK C-hez
 
@@ -21,7 +21,7 @@ Az **Azure IoT-eszköz SDK** egy könyvtárkészlet célja, hogy egyszerűsítse
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-Az Azure IoT-eszköz SDK C-hez ansi C (C99) a hordozhatóság maximalizálása érdekében. Ez a funkció teszi a könyvtárak kiválóan alkalmas működni több platformon és eszközön, különösen, ha minimálisra lemez és memória lábnyom prioritást élvez.
+Az Azure IoT-eszköz SDK C-hez ansi C (C99) a hordozhatóság maximalizálása érdekében. Ez a funkció teszi a könyvtárak kiválóan alkalmas arra, hogy működik több platformon és eszközön, különösen, ha minimálisra lemez és memória lábnyom prioritást élvez.
 
 Vannak széles platformok, amelyeken az SDK tesztelték (lásd az [Azure Certified for IoT eszköz katalógus](https://catalog.azureiotsolutions.com/) a részletekért). Bár ez a cikk a Windows platformon futó mintakód forgatókönyveit tartalmazza, a cikkben leírt kód megegyezik a támogatott platformok teljes tartományában.
 
@@ -43,7 +43,7 @@ A könyvtárak legújabb verziója a tárház **főágában** található:
 
 * A **szerializáló** mappa súgófüggvényeket és mintákat tartalmaz, amelyek bemutatják, hogyan szerializálhatja az adatokat, mielőtt az ügyfélkódtár használatával elküldené az Azure IoT Hubba. A szerializáló használata nem kötelező, és kényelmi jellegként biztosított. A **szerializáló** tár használatához meg kell adnia egy modellt, amely meghatározza az IoT Hubnak küldő adatokat és az attól várhatóan fogadott üzeneteket. A modell definiálása után az SDK egy API-felületet biztosít, amely lehetővé teszi, hogy könnyedén dolgozzon az eszközről a felhőbe és a felhőből az eszközre irányuló üzenetekhez anélkül, hogy aggódnia kellene a szerializálás részletei miatt. A tár más nyílt forráskódú táraktól függ, amelyek olyan protokollok használatával valósítják meg az átvitelt, mint az MQTT és az AMQP.
 
-* Az **IoTHubClient könyvtár** más nyílt forráskódú könyvtáraktól függ:
+* Az **IoTHubClient-kódtár** más nyílt forráskódú kódtáraktól függ:
 
   * Az [Azure C megosztott segédprogram-könyvtár,](https://github.com/Azure/azure-c-shared-utility) amely közös funkciókat biztosít az alapvető feladatokhoz (például a karakterláncok, a listakezelés és az IO) számos Azure-hoz kapcsolódó C SDK-k.
 
@@ -71,9 +71,9 @@ A mintaalkalmazás kódjának beszerzéséhez töltse le az SDK egy példányát
 
 Most, hogy rendelkezik a minta forráskódjával, a következő teendő az eszköz hitelesítő adatainak beszerezése. Ahhoz, hogy egy eszköz képes legyen hozzáférni egy IoT hubhoz, először hozzá kell adnia az eszközt az IoT Hub identitásbeállítási beállításjegyzékéhez. Amikor hozzáadja az eszközt, egy eszközhitelesítő adatokat kap, amelyekaz IOt hubhoz való csatlakozáshoz szükséges eszközhöz szükséges. A következő szakaszban tárgyalt mintaalkalmazások ezeket a hitelesítő adatokat **eszközkapcsolati karakterlánc**formájában várják.
 
-Számos nyílt forráskódú eszköz áll az IoT hub kezeléséhez.
+Számos nyílt forráskódú eszköz segít az IoT hub kezeléséhez.
 
-* Egy [Eszközkezelő](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)nevű Windows-alkalmazás .
+* Egy Azure [IoT Explorer](https://github.com/Azure/azure-iot-explorer)nevű Windows-alkalmazás.
 
 * Az [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)nevű platformfüggetlen Visual Studio-kódbővítmény.
 
@@ -245,7 +245,7 @@ Az utolsó paraméter egy void mutató, amit akarsz. A mintában egy egész szá
 
 Amikor az eszköz üzenetet kap, a regisztrált visszahívási függvény meghívása lesz. Ez a visszahívási függvény a következőket olvassa be:
 
-* Az üzenetazonosító és a korrelációs azonosító az üzenetből.
+* Az üzenet azonosítója és korrelációs azonosítója az üzenetből.
 * Az üzenet tartalma.
 * Az üzenet bármely egyéni tulajdonsága.
 

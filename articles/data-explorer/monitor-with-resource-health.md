@@ -7,12 +7,12 @@ ms.reviewer: prvavill
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 9b8b1b40e972d7719ef2cf495ed12cb4ed3478fd
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: ee42f45d8c96e908061142b5a8e6b2e5cee21993
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80479369"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262060"
 ---
 # <a name="monitor-azure-data-explorer-using-resource-health-preview"></a>Az Azure Data Explorer figyelése az Erőforrás-állapot használatával (előzetes verzió)
 
@@ -44,7 +44,7 @@ Az erőforrás állapota a következő állapotok egyikével jelenik meg, elérh
 
 ### <a name="unavailable"></a>Nem érhető el
 
-A Nem **érhető el** állapot azt jelzi, hogy az Azure Data Explorer erőforrással kapcsolatban folyamatos probléma van, amely miatt nem érhető el a lekérdezések és a betöltés. Előfordulhat például, hogy az Azure Data Explorer-erőforrás csomópontjai váratlanul újraindultak. Ha az Azure Data Explorer-erőforrás hosszabb ideig ebben az állapotban marad, forduljon az [ügyfélszolgálathoz.]()
+A Nem **érhető el** állapot azt jelzi, hogy az Azure Data Explorer erőforrással kapcsolatban folyamatos probléma van, amely miatt nem érhető el a lekérdezések és a betöltés. Előfordulhat például, hogy az Azure Data Explorer-erőforrás csomópontjai váratlanul újraindultak. Ha az Azure Data Explorer-erőforrás hosszabb ideig ebben az állapotban marad, forduljon az ügyfélszolgálathoz.
 
 ![Nem érhető el](media/monitor-with-resource-health/unavailable.png)
 

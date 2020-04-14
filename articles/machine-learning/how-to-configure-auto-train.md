@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 18de50473e3dd6ca8ddda9575a247e00530032e8
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 11f52df683b7a85a8ad5163bbede33d786897452
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115413"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257266"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált gépi tanulási kísérletek konfigurálása Pythonban
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -197,7 +197,7 @@ Ismerje meg ezeknek a metrikáknak a konkrét definícióit [az Automatikus gép
 
 Minden automatizált gépi tanulási kísérletben az adatok [automatikusan méretezve és normalizálva](concept-automated-ml.md#preprocess) lesznek, hogy *segítsenek bizonyos* algoritmusoknak, amelyek érzékenyek a különböző skálákon lévő funkciókra.  Azonban további featurization is engedélyezhet, például a hiányzó értékek imputálása, kódolása és átalakítása. [További információ arról, hogy mi a csomag.](how-to-use-automated-ml-for-ml-models.md#featurization)
 
-A kísérletek konfigurálásakor engedélyezheti a `featurization`speciális beállítást. Az alábbi táblázat az [ `AutoMLConfig` osztályban](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)elfogadott megjelenítési beállításokat mutatja be.
+A kísérletek konfigurálásakor engedélyezheti a `featurization`speciális beállítást. Az alábbi táblázat az [AutoMLConfig osztályban](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)elfogadott megjelenítési beállításokat mutatja be.
 
 |Jellemző konfiguráció | Leírás |
 | ------------- | ------------- |

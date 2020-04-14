@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 26c309eeebd7226c6777ec41ae674587da796dd4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 52feeb67681bacb64cd20601e00f00109a4b810f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78199665"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257912"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>A Key Vault helyreállítható törlés funkciójának használata PowerShell-lel
 
@@ -202,6 +202,34 @@ A kulcsokhoz hasonlóan a titkos kulcsokat is saját parancsokkal kezelik:
   Remove-AzKeyVaultSecret -VaultName ContosoVault -InRemovedState -name SQLPassword
   ```
 
+#### <a name="certificates"></a>Tanúsítványok
+
+A tanúsítványokat az alábbi parancsokkal kezelheti:
+
+- SQLPassword nevű tanúsítvány törlése: 
+  ```powershell
+  Remove-AzKeyVaultCertificate -VaultName ContosoVault -Name 'MyCert'
+  ```
+
+- A kulcstartóban lévő összes törölt tanúsítvány listázása: 
+  ```powershell
+  Get-AzKeyVaultCertificate -VaultName ContosoVault -InRemovedState
+  ```
+
+- Tanúsítvány helyreállítása törölt állapotban: 
+  ```powershell
+  Undo-AzKeyVaultCertificateRemoval -VaultName ContosoVault -Name 'MyCert'
+  ```
+
+- Tanúsítvány törlése törölt állapotban: 
+
+  > [!IMPORTANT]
+  > A tanúsítvány törlése véglegesen törli azt, és nem lesz helyreállítható!
+
+  ```powershell
+  Remove-AzKeyVaultcertificate -VaultName ContosoVault -Name 'MyCert' -InRemovedState 
+  ```
+  
 ## <a name="purging-a-soft-delete-protected-key-vault"></a>A védett kulcstartó helyreállító törlése
 
 > [!IMPORTANT]

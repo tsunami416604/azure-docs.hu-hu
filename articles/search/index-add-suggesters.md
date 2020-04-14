@@ -8,49 +8,58 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: a6c4051a5b3d557f9ac2927a62492425e7636c0d
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: d40d4cfe1b86448f1e8df307013905d69f203dcd
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81113474"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261057"
 ---
-# <a name="create-a-suggester-to-enable-autocomplete-and-suggestions-in-azure-cognitive-search"></a>Javaslattevő létrehozása az automatikus kiegészítés és javaslatok engedélyezéséhez az Azure Cognitive Search szolgáltatásban
+# <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Javaslattevő létrehozása az automatikus kiegészítés és a javasolt eredmények lekérdezésben való engedélyezéséhez
 
-Az Azure Cognitive Search,"keresés-as-you-type" vagy typeahead funkció alapja egy **javaslatajánló** konstrukció, amely hozzáad egy [keresési index.](search-what-is-an-index.md) A javaslatajánló két, a beírt szövegként idotartamú változatot támogat: *az automatikus kiegészítést,* amely kiegészíti a beírt kifejezést vagy kifejezést, valamint *olyan javaslatokat,* amelyek az egyező dokumentumok rövid listáját adják vissza.  
+Az Azure Cognitive Search,"keresés-as-you-type" engedélyezve van egy **javaslatajánló** konstrukció hozzá egy [keresési index.](search-what-is-an-index.md) A javaslatajánló két felhasználói élményt támogat: *az automatikus kiegészítést*, amely kiegészíti a kifejezést vagy kifejezést, és *javaslatokat,* amelyek az egyező dokumentumok rövid listáját adják vissza.  
 
-A következő képernyőkép, az [Első alkalmazás létrehozása c# mintában,](tutorial-csharp-type-ahead-and-suggestions.md) mindkét élményt szemlélteti. Az automatikus kiegészítés előre jelzi, hogy a felhasználó mit írhat be, és a "tw" szót a leendő keresési kifejezésként az "in" szöveggel fejezi be. A javaslatok a tényleges keresési eredmények, amelyek mindegyike egy megfelelő dokumentumot jelöl. Javaslatok esetén a dokumentum bármely olyan részét felis teheti, amely a legjobban leírja az eredményt. Ebben a példában a javaslatokat a szálloda név mezője képviseli.
+A következő képernyőkép [az Első alkalmazás létrehozása C# nyelven](tutorial-csharp-type-ahead-and-suggestions.md) című részéből mindkettőt szemlélteti. Az automatikus kiegészítés egy lehetséges kifejezést vár, a "tw" "in" kifejezéssel fejezve be. A javaslatok a mini keresési eredmények, ahol egy mező, például a szálloda neve, az indexből származó megfelelő szállodai keresési dokumentumot jelöl. Javaslatok esetén bármilyen mezőt megadhat, amely leíró információkat tartalmaz.
 
 ![Az automatikus kiegészítés és a javasolt lekérdezések vizuális összehasonlítása](./media/index-add-suggesters/hotel-app-suggestions-autocomplete.png "Az automatikus kiegészítés és a javasolt lekérdezések vizuális összehasonlítása")
 
-Ezek a viselkedések az Azure Cognitive Search, egy index és lekérdezési összetevő. 
+Ezeket a funkciókat külön-külön vagy együttesen is használhatja. Ezek a viselkedések az Azure Cognitive Search, egy index és lekérdezési összetevő. 
 
 + Az indexben adjon hozzá egy javaslatajánlóegy index. Használhatja a portált, a [REST API-t](https://docs.microsoft.com/rest/api/searchservice/create-index)vagy a [.NET SDK-t.](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet) A cikk többi része egy javaslatajánló létrehozására összpontosít.
 
 + A lekérdezési kérelemben hívja meg az [alább felsorolt API-k](#how-to-use-a-suggester)egyikét.
 
-A keresés beírása mezőnként engedélyezve van. Mindkét typeahead viselkedést megvalósíthatja ugyanabban a keresési megoldásban, ha a képernyőképen jelzetthez hasonló élményt szeretne. Mindkét kérelem az adott index *dokumentumok* gyűjteményét célozza meg, és a válaszok at a felhasználó legalább három karakterbeviteli karakterláncának megadása után adja vissza a rendszer.
+A "you-as-you-type" támogatás mezőnként engedélyezve van a karakterláncmezőkhöz. Mindkét typeahead viselkedést megvalósíthatja ugyanabban a keresési megoldásban, ha a képernyőképen jelzetthez hasonló élményt szeretne. Mindkét kérelem az adott index *dokumentumok* gyűjteményét célozza meg, és a válaszok at a felhasználó legalább három karakterbeviteli karakterláncának megadása után adja vissza a rendszer.
 
 ## <a name="what-is-a-suggester"></a>Mi az a szuggesztáló?
 
 A javaslatajánló olyan adatstruktúra, amely támogatja a beírási viselkedést azáltal, hogy a részleges lekérdezések egyeztetéséhez előtagokat tárol. A tokenizált kifejezésekhez hasonlóan az előtagok fordított indexekben tárolódnak, egyet-egyet a javaslatajánló mezők gyűjteményében megadott mezőkhöz.
 
-Előtagok létrehozásakor a javaslatajánló saját elemzési lánccal rendelkezik, hasonlóan a teljes szöveges kereséshez használthoz. A teljes szöveges keresés elemzésével ellentétben azonban a javaslatajánló csak előre definiált elemzőket (szabványos Lucene, [nyelvi elemzők](index-add-language-analyzers.md)vagy más elemzők az [előre definiált analizátorlistában](index-add-custom-analyzers.md#predefined-analyzers-reference)) használhat. [Egyéni elemzők](index-add-custom-analyzers.md) és konfigurációk kifejezetten tilos elkerülni a véletlenszerű konfigurációk, amelyek rossz eredményeket eredményez.
+Előtagok létrehozásakor a javaslatajánló saját elemzési lánccal rendelkezik, hasonlóan a teljes szöveges kereséshez használthoz. A teljes szöveges keresés elemzésével ellentétben azonban a javaslatajánló csak olyan mezőkön működhet, amelyek a szabványos Lucene analizátort (alapértelmezett) vagy [egy nyelvi analizátort](index-add-language-analyzers.md)használják. Az [egyéni analizátorokat](index-add-custom-analyzers.md) vagy [előre definiált elemzőket](index-add-custom-analyzers.md#predefined-analyzers-reference) használó mezők (a normál Lucene kivételével) kifejezetten nem engedélyezettek a rossz eredmények megelőzése érdekében.
 
 > [!NOTE]
 > Ha meg kell kerülnie az analizátor-megkötést, használjon két külön mezőt ugyanahhoz a tartalomhoz. Ez lehetővé teszi, hogy az egyik mezőben legyen egy javaslatajánló, míg a másik egyéni analizátor konfigurációval állítható be.
 
-## <a name="create-a-suggester"></a>Javaslattevő létrehozása
+## <a name="define-a-suggester"></a>Javaslatajánló definiálása
 
-Bár a javaslattevő nek több tulajdonsága van, elsősorban olyan mezők gyűjteménye, amelyekhez typeahead élményt engedélyez. Előfordulhat például, hogy egy utazási alkalmazás engedélyezni szeretné a typeahead keresést az úti célokon, városokon és látnivalókon. Így mindhárom mező a mezők gyűjteményébe kerülne.
+Bár a javaslattevő nek több tulajdonsága van, elsősorban olyan mezők gyűjteménye, amelyekhez lehetővé teszi a beírási keresési élményt. Előfordulhat például, hogy egy utazási alkalmazás engedélyezni szeretné az automatikus kiegészítést az úti célokon, városokon és látnivalókon. Így mindhárom mező a mezők gyűjteményébe kerülne.
 
-Javaslatajánló létrehozásához vegyen fel egyet egy indexsémához. Egy indexben egy javaslatajánló lehet (pontosabban a javaslatajánlógyűjteményegyik).
+Javaslatajánló létrehozásához vegyen fel egyet egy indexsémához. Egy indexben egy javaslatajánló lehet (pontosabban a javaslatajánlógyűjteményegyik). A javaslatajánló a mezők listáját veszi fel. 
+
++ Javaslatok esetén válassza ki azokat a mezőket, amelyek a legjobban egyetlen eredményt képviselnek. A dokumentumok között megkülönböztető nevek, címek vagy más egyedi mezők működnek a legjobban. Ha a mezők hasonló vagy azonos értékekből állnak, a javaslatok azonos eredményekből állnak, és a felhasználó nem fogja tudni, hogy melyikre kattintson.
+
++ Győződjön meg arról, `sourceFields` hogy a javaslatvivőlista minden`"analyzer": null`mezője az alapértelmezett szabványos Lucene analizátort ( ) vagy egy [nyelvi analizátort](index-add-language-analyzers.md) (például `"analyzer": "en.Microsoft"`) használja. 
+
+  Az analizátor kiválasztása határozza meg a mezők tokenized és ezt követően előre rögzített. Például egy kötőjellel ellátott karakterlánc, mint a "környezet-érzékeny", egy nyelvi analizátor használatával a következő jogkivonat-kombinációk: "context", "sensitive", "context-sensitive". Ha a szokásos Lucene analizátort használtad volna, az elválasztott karakterlánc nem létezne.
+
+> [!TIP]
+> Fontolja meg a [Szöveg elemzése API-t](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) a kifejezések tokenizedés későbbi előtaghoz való betekintéséhez. Miután létrehoz egy indexet, kipróbálhatja a különböző elemzők egy karakterláncot, hogy megtekinthesse a jogkivonatokat bocsát ki.
 
 ### <a name="when-to-create-a-suggester"></a>Mikor kell létrehozni egy ajánló
 
 A javaslatajánló létrehozásának legjobb ideje, ha magát a meződefiníciót is létrehozza.
 
-Ha megpróbál létrehozni egy javaslatajánló a már meglévő mezők, az API lehetővé teszi azt. A Typeahead szöveg az indexelés során jön létre, amikor két vagy több karakterkombináció részleges kifejezései a teljes kifejezések mellett tokenizálva vannak. Mivel a meglévő mezők már tokenizáltak, újra kell építenie az indexet, ha hozzá szeretné adni őket egy javaslatajánlóhoz. Az újraindexelésről az [Azure Cognitive Search indexének újraépítése](search-howto-reindex.md)című témakörben olvashat bővebben.
+Ha megpróbál létrehozni egy javaslatajánló a már meglévő mezők, az API lehetővé teszi azt. Az előtagok indexelés közben jönnek létre, amikor a részleges kifejezések két vagy több karakterkombinációban a teljes kifejezések mellett tokenizálva vannak. Mivel a meglévő mezők már tokenizáltak, újra kell építenie az indexet, ha hozzá szeretné adni őket egy javaslatajánlóhoz. További információ: [Az Azure Cognitive Search-index újraépítése.](search-howto-reindex.md)
 
 ### <a name="create-using-the-rest-api"></a>Létrehozás a REST API használatával
 
@@ -58,15 +67,30 @@ A REST API-ban adjon hozzá javaslatjavasolókat [az Index létrehozása](https:
 
   ```json
   {
-    "name": "hotels",
+    "name": "hotels-sample-index",
     "fields": [
       . . .
+          {
+              "name": "HotelName",
+              "type": "Edm.String",
+              "facetable": false,
+              "filterable": false,
+              "key": false,
+              "retrievable": true,
+              "searchable": true,
+              "sortable": false,
+              "analyzer": "en.microsoft",
+              "indexAnalyzer": null,
+              "searchAnalyzer": null,
+              "synonymMaps": [],
+              "fields": []
+          },
     ],
     "suggesters": [
       {
         "name": "sg",
         "searchMode": "analyzingInfixMatching",
-        "sourceFields": ["hotelName", "category"]
+        "sourceFields": ["HotelName"]
       }
     ],
     "scoringProfiles": [
@@ -84,12 +108,12 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 {
     var definition = new Index()
     {
-        Name = "hotels",
+        Name = "hotels-sample-index",
         Fields = FieldBuilder.BuildForType<Hotel>(),
         Suggesters = new List<Suggester>() {new Suggester()
             {
                 Name = "sg",
-                SourceFields = new string[] { "HotelId", "Category" }
+                SourceFields = new string[] { "HotelName", "Category" }
             }}
     };
 
@@ -104,13 +128,13 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 |--------------|-----------------|
 |`name`        |A javaslatajánló neve.|
 |`searchMode`  |A jelölt kifejezések keresésére használt stratégia. Jelenleg csak a `analyzingInfixMatching`támogatott mód az , amely a mondatok elején vagy közepén rugalmasan egyezteti a kifejezéseket.|
-|`sourceFields`|Egy vagy több mező listája, amelyek a javaslatok tartalmának forrása. A mezőknek `Edm.String` típusúnak kell lenniük, és. `Collection(Edm.String)` Ha egy elemző van megadva a mezőben, akkor [a listából](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) elnevezett analizátornak kell lennie (nem egyéni elemzőnek).<p/>Ajánlott eljárásként csak azokat a mezőket adja meg, amelyek a várt és megfelelő válaszra alkalmasak, legyen szó egy keresősávban vagy egy legördülő listáról.<p/>A szálloda neve jó jelölt, mert precizitású. A részletes mezők, például a leírások és a megjegyzések túl sűrűek. Hasonlóképpen az ismétlődő mezők, például a kategóriák és a címkék kevésbé hatékonyak. A példákban egyébként is felvesszük a "kategória" kifejezést annak bizonyítására, hogy több mezőt is felvehet. |
+|`sourceFields`|Egy vagy több mező listája, amelyek a javaslatok tartalmának forrása. A mezőknek `Edm.String` típusúnak kell lenniük, és. `Collection(Edm.String)` Ha egy elemző van megadva a mezőben, akkor [a listából](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) elnevezett analizátornak kell lennie (nem egyéni elemzőnek).<p/> Ajánlott eljárásként csak azokat a mezőket adja meg, amelyek a várt és megfelelő válaszra alkalmasak, legyen szó egy keresősávban vagy egy legördülő listáról.<p/>A szálloda neve jó jelölt, mert precizitású. A részletes mezők, például a leírások és a megjegyzések túl sűrűek. Hasonlóképpen az ismétlődő mezők, például a kategóriák és a címkék kevésbé hatékonyak. A példákban egyébként is felvesszük a "kategória" kifejezést annak bizonyítására, hogy több mezőt is felvehet. |
 
 <a name="how-to-use-a-suggester"></a>
 
-## <a name="use-a-suggester-in-a-query"></a>Javaslatajánló használata lekérdezésben
+## <a name="use-a-suggester"></a>Javaslatajánló használata
 
-A javaslatajánló létrehozása után hívja meg a megfelelő API-t a lekérdezési logikában a szolgáltatás meghívásához. 
+A javaslatajánló a lekérdezésben használatos. A javaslatajánló létrehozása után hívja meg a megfelelő API-t a lekérdezési logikában a szolgáltatás meghívásához. 
 
 + [Javaslatok REST API](https://docs.microsoft.com/rest/api/searchservice/suggestions) 
 + [Rest automatikus kiegészítésapi](https://docs.microsoft.com/rest/api/searchservice/autocomplete) 
@@ -131,7 +155,6 @@ Ha egy javaslatajánló nincs definiálva az indexben, az automatikus kiegészí
 + [Az első alkalmazás létrehozása C#](tutorial-csharp-type-ahead-and-suggestions.md) mintában bemutatja a javaslatajánló felépítését, a javasolt lekérdezéseket, az automatikus kiegészítést és a felületes navigációt. Ez a kódminta fut egy sandbox Azure Cognitive Search szolgáltatás, és egy előre betöltött Hotel index, így mindössze annyit kell tennie, hogy nyomja meg az F5 az alkalmazás futtatásához. Nincs szükség előfizetésre vagy bejelentkezésre.
 
 + [A DotNetHowToAutocomplete](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete) egy régebbi minta, amely C# és Java kódot is tartalmaz. Azt is bemutatja a javaslatépítő konstrukció, javasolt lekérdezések, automatikus kiegészítés, és a csiszolt navigáció. Ez a kódminta a üzemeltetett [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) mintaadatokat használja. 
-
 
 ## <a name="next-steps"></a>További lépések
 

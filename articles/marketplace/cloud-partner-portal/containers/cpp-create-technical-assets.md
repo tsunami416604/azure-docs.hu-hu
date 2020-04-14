@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: dsindona
-ms.openlocfilehash: 71b3ec4bf505c333e5eca170e1f5e808ab51f41a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1116bd03cf0ef734b74b387ff8f3cff74b29b215
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280065"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270315"
 ---
 # <a name="prepare-your-container-technical-assets"></a>Tárolók technikai eszközeinek előkészítése
+
+> [!IMPORTANT]
+> 2020. április 13-tól megkezdjük az Azure Container-ajánlatok kezelését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [Azure Container technikai eszközeinek előkészítése](https://aka.ms/CreateContainerTechAssets) az áttelepített ajánlatok kezeléséhez című, az Azure Container műszaki eszközeinek előkészítése című útmutatóutasításait.
 
 Ez a cikk ismerteti az Azure Marketplace-en egy tárolóajánlat konfigurálásának lépéseit és követelményeit.
 
@@ -28,26 +31,26 @@ Ezeknek az eszközöknek a tervezése, létrehozása és tesztelése időt vesz 
  
 A megoldástartománymellett a mérnöki csapatnak ismernie kell a következő Microsoft-technológiákat:
 
--   Az [Azure-szolgáltatások](https://azure.microsoft.com/services/) alapvető ismerete 
--   [Azure-alkalmazások tervezése és megtervezése](https://azure.microsoft.com/solutions/architecture/)
--   Az [Azure virtuális gépek](https://azure.microsoft.com/services/virtual-machines/), az Azure [Storage](https://azure.microsoft.com/services/?filter=storage) és az [Azure Networking munkaismerete](https://azure.microsoft.com/services/?filter=networking)
--   Az [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) munkaismerete
--   A [JSON](https://www.json.org/) munkaismerete
+-    Az [Azure-szolgáltatások](https://azure.microsoft.com/services/) alapvető ismerete 
+-    [Azure-alkalmazások tervezése és megtervezése](https://azure.microsoft.com/solutions/architecture/)
+-    Az [Azure virtuális gépek](https://azure.microsoft.com/services/virtual-machines/), az Azure [Storage](https://azure.microsoft.com/services/?filter=storage) és az [Azure Networking munkaismerete](https://azure.microsoft.com/services/?filter=networking)
+-    Az [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) munkaismerete
+-    A [JSON](https://www.json.org/) munkaismerete
 
 ## <a name="suggested-tools"></a>Javasolt eszközök
 
 A tárolórendszerkép kezeléséhez válasszon az alábbi parancsfájlok egyikének vagy mindkettőnek:
 
--   [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
--   [Azure CLI](https://docs.microsoft.com/cli/azure)
+-    [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
+-    [Azure CLI](https://docs.microsoft.com/cli/azure)
 
 Ezenkívül azt javasoljuk, hogy adja hozzá a következő eszközöket a fejlesztői környezethez:
 
--   [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
--   [Visual Studio kód](https://code.visualstudio.com/)
-    *   Bővítmény: [Azure Resource Manager eszközök](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
-    *   Kiterjesztés: [Szépít](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-    *   Kiterjesztés: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
+-    [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+-    [Visual Studio Code](https://code.visualstudio.com/)
+    *    Bővítmény: [Azure Resource Manager eszközök](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+    *    Kiterjesztés: [Szépít](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
+    *    Kiterjesztés: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
 Javasoljuk továbbá, hogy tekintse át a rendelkezésre álló eszközöket az [Azure Developer Tools](https://azure.microsoft.com/tools/) lapon, és ha a Visual Studio t használja, a Visual Studio [Piacteret.](https://marketplace.visualstudio.com/)
 

@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: quickstart
-ms.date: 01/22/2018
+ms.date: 04/10/2020
 ms.author: jingwang
-ms.openlocfilehash: 7f527d3c57f086e7941505a9ca4396885c746762
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 682c35e1510834d8958b2ed6765d6fe530432ebd
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75440085"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262145"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Rövid útmutató: Hozzon létre egy Azure-adat-előállító t a PowerShell használatával
 
@@ -111,6 +111,10 @@ Vegye figyelembe a következő szempontokat:
 ## <a name="create-a-linked-service"></a>Társított szolgáltatás létrehozása
 
 Társított szolgáltatásokat hozhat létre egy adat-előállítóban az adattárak és a számítási szolgáltatások adat-előállítóhoz történő társításához. Ebben a rövid útmutatóban létrehoz egy Azure Storage-beli társított szolgáltatást, amely forrás- és fogadóadattárként is használható. A társított szolgáltatás azon kapcsolatadatokkal rendelkezik, amelyeket a Data Factory szolgáltatás használ futtatáskor a hozzá való kapcsolódáshoz.
+
+>[!TIP]
+>Ebben a rövid útmutatóban *a Fiókkulcsot használhatja* az adattár hitelesítési típusaként, de más támogatott hitelesítési módszereket is választhat: *SAS URI*,*egyszerű szolgáltatás* és *felügyelt identitás,* ha szükséges. A részleteket a [cikk](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#linked-service-properties) megfelelő szakaszaiban találja.
+>Az adattárak titkos kulcsainak biztonságos tárolásához is ajánlott egy Azure Key Vault használata. A részletes illusztrációkat ebben a [cikkben](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) olvashatja.
 
 1. Hozzon létre egy **AzureStorageLinkedService.json** nevű JSON-fájlt a **C:\ADFv2QuickStartPSH** mappában az alábbi tartalommal (ha még nem létezne, hozza létre az ADFv2QuickStartPSH nevű mappát).
 

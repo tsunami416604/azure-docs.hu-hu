@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: dsindona
-ms.openlocfilehash: c35f721131b997dcfdb0f23a91a39329168b757c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bb875a5c4ab1b898b64fe22140414e5d5b7830b8
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277344"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273783"
 ---
 # <a name="publish-a-virtual-machine-offer"></a>Virtuálisgép-ajánlat közzététele
+
+> [!IMPORTANT]
+> 2020. április 13-tól megkezdjük az Azure virtuálisgép-ajánlatok kezelését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [Azure virtuális gép ajánlatlétrehozása](https://aka.ms/CreateAzureVMoffer) című, az áttelepített ajánlatok kezelésével című útmutatóutasításait.
 
  Az utolsó lépés, miután definiálta az ajánlatot a portálon, és létrehozta a kapcsolódó technikai eszközöket, az ajánlat közzététele. Az alábbi ábra a közzétételi folyamat főbb lépéseit ábrázolja a "go live" számára:
 

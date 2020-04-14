@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 76ab92285cace284c187109ca48c6634777ebbc0
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: ea4bfadd55935712a292355dc25fb778b1523c75
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398321"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261898"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Az Azure Event Hubs funkciói és terminológiája
 
@@ -45,7 +45,7 @@ Minden olyan entitás, amely adatokat küld egy eseményközpontnak, eseményter
 
 Egy eseményt közzétehet az AMQP 1.0, a Kafka 1.0 (és újabb) vagy a HTTPS protokollon keresztül. Az Event Hubs [ügyfélkönyvtárakat és osztályokat](event-hubs-dotnet-framework-api-overview.md) biztosít az események eseményközpontba való közzétételéhez . Egyéb futtatókörnyezetek és platformok esetén használhatja bármelyik AMQP 1.0-ügyfelet, ilyen például az [Apache Qpid](https://qpid.apache.org/). Az eseményeket közzéteheti egyenként vagy kötegelve is. Egyetlen kiadvány (eseményadat-példány) legfeljebb 1 MB, függetlenül attól, hogy egyetlen eseményről vagy kötegről van-e szó. Az ennél a küszöbértéknél nagyobb események közzététele hibát eredményez. Az ajánlott eljárás, hogy a közzétevők ne tudjanak a partíciókról az eseményközpontban, és csupán egy *partíciókulcsot* (ismertetése a következő szakaszban), vagy az azonosságukat kelljen megadniuk a SAS-token használatával.
 
-Az AMQP vagy HTTPS használata a használati forgatókönyvtől függ. Az AMQP használatához ki kell alakítani egy állandó kétirányú szoftvercsatornát az TLS vagy SSL/TLS mellett. Az AMQP használata a munkamenet inicializálásakor nagyobb hálózati költséggel jár, a HTTPS azonban minden egyes kérés esetében további SSL-többletterhelést igényel. Gyakori közzététel esetén az AMQP nagyobb teljesítményt biztosít.
+Az AMQP vagy HTTPS használata a használati forgatókönyvtől függ. Az AMQP használatához ki kell alakítani egy állandó kétirányú szoftvercsatornát az TLS vagy SSL/TLS mellett. Az AMQP magasabb hálózati költségekkel rendelkezik a munkamenet inicializálásakor, azonban a HTTPS minden kérelemhez további TLS-többletterhelést igényel. Gyakori közzététel esetén az AMQP nagyobb teljesítményt biztosít.
 
 ![Event Hubs](./media/event-hubs-features/partition_keys.png)
 

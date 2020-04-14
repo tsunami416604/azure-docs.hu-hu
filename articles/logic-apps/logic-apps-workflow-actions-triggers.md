@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 01/19/2020
-ms.openlocfilehash: 18e9c9d330ffb8cc4e284fc649cff0840ec2c82c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e14cc00d1bd716b3e4880e585b05447d2e55e2b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270367"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257436"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Séma-útmutató az Azure Logic Apps eseményindító- és művelettípusaihoz
 
@@ -2407,11 +2407,17 @@ Módosíthatja az eseményindítók és műveletek `operationOptions` alapértel
 
 Alapértelmezés szerint a logikai alkalmazás munkafolyamat-példányai egyszerre futnak (egyidejűleg vagy párhuzamosan). Ez a viselkedés azt jelenti, hogy minden eseményindító példány elindul, mielőtt a korábban aktív munkafolyamat-példány futása befejeződik. Az egyidejűleg futó példányok száma azonban [alapértelmezett korláttal](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)rendelkezik. Ha az egyidejűleg futó munkafolyamat-példányok száma eléri ezt a korlátot, minden más új példánynak várnia kell a futtatásra. Ez a korlát segít szabályozhatja, hogy a háttérrendszer-rendszerek száma hány kérelmet fogad.
 
-Az alapértelmezett korlát módosításához használhatja a kódnézet-szerkesztőt vagy a Logic Apps Designert, `runtimeConfiguration.concurrency.runs` mivel az egyidejűségi beállítás módosítása a tervezőn keresztül hozzáadja vagy frissíti a tulajdonságot az alapul szolgáló eseményindító-definícióban, és fordítva. Ez a tulajdonság szabályozza a párhuzamosan futtatható munkafolyamat-példányok maximális számát. Az alábbiakban néhány szempontot ismer ünk be, ha engedélyezni szeretné az egyidejűség-vezérlést:
+Amikor bekapcsolja az eseményindító egyidejűség-vezérlését, az eseményindítópéldányok párhuzamosan futnak az [alapértelmezett korlátig.](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) Az alapértelmezett egyidejűségi korlát módosításához használhatja a kódnézet-szerkesztőt vagy a Logic Apps Designert, mivel az egyidejűségi beállítás módosítása a tervezőn keresztül hozzáadja vagy frissíti a `runtimeConfiguration.concurrency.runs` tulajdonságot az alapul szolgáló eseményindító-definícióban, és fordítva. Ez a tulajdonság szabályozza a párhuzamosan futtatható új munkafolyamat-példányok maximális számát.
+
+Az alábbiakban néhány szempontot olvashat arra vonatkozóan, hogy mikor szeretné engedélyezni az egyidejűséget az eseményindítón:
 
 * Ha az egyidejűség engedélyezve van, a [SplitOn korlát](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) jelentősen csökken a [tömbök kötegelése](#split-on-debatch)esetén. Ha az elemek száma meghaladja ezt a korlátot, a SplitOn funkció le van tiltva.
 
-* Amíg az egyidejűség engedélyezve van, egy hosszú ideig futó logikai alkalmazáspéldány új logikai alkalmazáspéldányok várakozási állapotba léphet. Ez az állapot megakadályozza, hogy az Azure Logic Apps új példányokat hozzon létre, és akkor is megtörténik, ha az egyidejű futtatások száma kisebb, mint az egyidejű futtatások megadott maximális száma.
+* Az egyidejűség-szabályozás engedélyezése után nem tilthatja le az egyidejűség-ellenőrzést.
+
+* Ha az egyidejűség engedélyezve van, a [SplitOn korlát](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) jelentősen csökken a [tömbök kötegelése](#split-on-debatch)esetén. Ha az elemek száma meghaladja ezt a korlátot, a SplitOn funkció le van tiltva.
+
+* Ha az egyidejűség engedélyezve van, egy hosszú ideig futó logikai alkalmazáspéldány új logikai alkalmazáspéldányok várakozási állapotba léphet. Ez az állapot megakadályozza, hogy az Azure Logic Apps új példányokat hozzon létre, és akkor is megtörténik, ha az egyidejű futtatások száma kisebb, mint az egyidejű futtatások megadott maximális száma.
 
   * Az állapot megszakításához szakítsa meg a még *futó*legkorábbi példányokat.
 

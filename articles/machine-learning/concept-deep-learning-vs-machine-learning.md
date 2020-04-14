@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 03/05/2020
-ms.openlocfilehash: bcacf4ff66e114f65ac75f0aadd1564875f15f62
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a83f47942e986e882d99528be3f03f616c2a7e04
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501367"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257052"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>Mély tanulás vs. gépi tanulás
 
@@ -118,6 +118,6 @@ Az alábbi cikkek bemutatják, hogyan használhatja a deep learning technológi�
 
 - [Képek osztályozása Pytorch modell használatával](https://docs.microsoft.com/azure/machine-learning/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
 
-- [Kézzel írt számjegyek osztályozása Chainer modell használatával](https://docs.microsoft.com/azure/machine-learning/how-to-train-chainer?WT.mc_id=docs-article-lazzeri)
+- [Kézzel írt számjegyek osztályozása Chainer modell használatával](https://docs.microsoft.com/azure/machine-learning/how-to-train-ml-models)
 
 Is, használja a [Machine Learning algoritmus Cheat Sheet](../synapse-analytics/sql-data-warehouse/cheat-sheet.md) kiválasztásához algoritmusok a modellhez.

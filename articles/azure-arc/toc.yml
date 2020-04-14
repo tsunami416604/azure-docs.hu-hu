@@ -1,21 +1,23 @@
 - name: Az Azure Arc dokumentációja
   href: index.yml
 - name: Áttekintés
-  expanded: true
   items:
     - name: Mi az az Azure Arc for Servers?
       href: ./servers/overview.md
-- name: Csatlakozás az Azure Archoz
-  expanded: true
+- name: Útmutatók
   items:
-    - name: Gépek csatlakoztatása az Azure Archoz az Azure Portalról
-      href: ./servers/onboard-portal.md
-    - name: Nagy mennyiségű gép csatlakoztatása szolgáltatásnév használatával
-      href: ./servers/onboard-service-principal.md
-    - name: Gépek csatlakoztatása az Azure Archoz a PowerShell DSC használatával
-      href: ./servers/onboard-dsc.md
-- name: Ügynök kezelése
-  href: ./servers/manage-agent.md
+    - name: Csatlakozás az Azure Archoz
+      items:
+        - name: Gépek csatlakoztatása az Azure Archoz az Azure Portalról
+          href: ./servers/onboard-portal.md
+        - name: Nagy mennyiségű gép csatlakoztatása szolgáltatásnév használatával
+          href: ./servers/onboard-service-principal.md
+        - name: Gépek csatlakoztatása az Azure Archoz a PowerShell DSC használatával
+          href: ./servers/onboard-dsc.md
+    - name: Kezelés
+      items:
+        - name: Ügynök kezelése
+          href: ./servers/manage-agent.md
 - name: Referencia
   items:
     - name: Azure-beli csatlakoztatottgép-ügynök parancssori felülete

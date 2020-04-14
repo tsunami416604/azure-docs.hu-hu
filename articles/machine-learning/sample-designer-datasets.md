@@ -1,7 +1,7 @@
 ---
-title: Mintaadatkészletek használata az Azure Machine Learning tervezőjében
+title: Mintaadatok tervezőnek
 titleSuffix: Azure Machine Learning
-description: Tudjon meg többet az Azure Machine Learning-tervezőben található mintaadatkészletekről.
+description: További információ az Azure Machine Learning tervezője által elérhető mintaadatkészletekről.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.date: 03/03/2020
-ms.openlocfilehash: 943e23aa9d83df33bbe636ce7aee62e6e5a2950e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b19c1ed5aa556a2cfb633ac6fbc0cf9f95d0337f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79037301"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256977"
 ---
-# <a name="use-the-sample-datasets-in-azure-machine-learning-designer-preview"></a>A mintaadatkészletek használata az Azure Machine Learning designerben (előzetes verzió)
+# <a name="sample-datasets-in-azure-machine-learning-designer-preview"></a>Mintaadatkészletek az Azure Machine Learning-tervezőben (előzetes verzió)
 
 Amikor új folyamatot hoz létre az Azure Machine Learning tervezőjében (előzetes verzió), alapértelmezés szerint számos mintaadatkészlet szerepel. Ezeket a mintaadatkészleteket a tervező kezdőlapján lévő mintafolyamatok használják. 
 
@@ -37,7 +37,7 @@ A mintaadatkészletek az-**Adatkészletminták** kategóriában érhetők el. **
 |Német hitelkártya UCI adatkészlet|Az UCI Statlog (német hitelkártya) adatkészlet ([Statlog+German+Credit+Data](https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data))) a german.data fájl használatával.<br/>Az adatkészlet az attribútumok készletével leírva alacsony vagy magas hitelkockázatként sorolja be a személyeket. Minden példa egy személyt jelöl. 20 funkció létezik, mind numerikus, mind kategorikus, és egy bináris címke (a hitelkockázati érték). A magas hitelkockázati tételek címkével rendelkeznek = 2, az alacsony hitelkockázati tételek címkével rendelkeznek = 1. Az alacsony kockázatú példák magasként való téves besorolásának költsége 1, míg a magas kockázatú példák alacsonyként való téves besorolásának költsége 5.|
 |IMDB filmcímek|Az adatkészlet információkat tartalmaz a Twitter-tweetekben értékelt filmekről: IMDB filmazonosító, filmnév, műfaj és gyártási év. Az adatkészletben 17 K-s filmek találhatók. Az adatkészlet et az "S. Dooms, T. De Pessemier és L. Martens. MovieTweetings: a Movie Rating dataset gyűjtött Twitter. Workshop on Crowdsourcing and Human Computation for Recommender Systems (CrowdRec at RecSys 2013) workshop on Crowdsourcing and Human Computation for Recommender Systems (CrowdRec at RecSys 2013."|
 |Film értékelések|Az adatkészlet a Movie Tweetings adatkészlet kibővített verziója. Az adatkészlet 170K minősítést tartalmaz a filmekhez, amelyeket jól strukturált tweetekből nyernek ki a Twitteren. Minden példány egy tweetet jelöl, és egy tuple: felhasználói azonosító, IMDB filmazonosító, értékelés, időbélyeg, a tweet kedvencek száma és a tweet retweetjeinek száma. Az adatkészletet Az A. Said, S. Dooms, B. Loni és D. Tikk bocsátotta rendelkezésre az Recommender Systems Challenge 2014 számára.|
-|Időjárási adatkészlet|A NOAA óránkénti szárazföldi időjárási megfigyelései ([201304 és 201310](https://az754797.vo.msecnd.net/data/WeatherDataset.csv)között egyesített adatok ).<br/>Az időjárási adatok a repülőtéri meteorológiai állomásokról származó, 2013 április-októberi időszakra vonatkozó megfigyeléseket fedik le. A tervezőnek történő feltöltés előtt az adatkészlet feldolgozása a következőképpen történt:    <br/> - A meteorológiai állomás azonosítóit a megfelelő repülőtéri azonosítókhoz    <br/> - A 70 legforgalmasabb repülőtérhez nem kapcsolódó meteorológiai állomásokat kiszűrték    <br/> - A Dátum oszlop külön Év, Hónap és Nap oszlopokra van felosztva    <br/> - A következő oszlopokat választották ki: AirportID, Year, Month, Day, Time, TimeZone, SkyCondition, Visibility, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DewPointCelsius, RelativeHumidity, WindSpeed, WindDirection, ValueForWindCharacter, StationPressure, PressureTendency, PressureChange, SeaLevelPressure, RecordType, HourlyPrecip, Altimeter|
+|Időjárási adatkészlet|A NOAA óránkénti szárazföldi időjárási megfigyelései ([201304 és 201310](https://az754797.vo.msecnd.net/data/WeatherDataset.csv)között egyesített adatok ).<br/>Az időjárási adatok a repülőtéri meteorológiai állomásokról származó, 2013 április-októberi időszakra vonatkozó megfigyeléseket fedik le. A tervezőnek történő feltöltés előtt az adatkészlet feldolgozása a következőképpen történt:    <br/> - A meteorológiai állomás azonosítóit a megfelelő repülőtéri azonosítókhoz    <br/> - A 70 legforgalmasabb repülőtérhez nem kapcsolódó meteorológiai állomásokat kiszűrték    <br/> - A Dátum oszlop külön Év, Hónap és Nap oszlopokra van felosztva    <br/> - A következő oszlopokat választották ki: AirportID, Év, Hónap, Nap, Idő, TimeZone, SkyCondition, Láthatóság, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DewPointFus, RelativeHumidity, WindSpeed, WindDirection, ValueForWindCharacter, StationPressure, PressureTendency, PressureChange, SeaLevelPressure, RecordType, HourlyPrePreCelsius, Alciptimeter|
 |Wikipedia SP 500 adatkészlet|Az adatok ahttps://www.wikipedia.org/) Wikipédiából származnak (az egyes S&P 500 vállalatok cikkei alapján, XML-adatként tárolva.    <br/>A tervezőnek történő feltöltés előtt az adatkészlet feldolgozása a következőképpen történt:    <br/> - Kivonat szöveges tartalom minden egyes vállalat    <br/> - Wiki formázás eltávolítása    <br/> - Nem alfanumerikus karakterek eltávolítása    <br/> - Konvertálja az összes szöveget kisbetűs    <br/> - Ismert vállalati kategóriákkal bővült    <br/>Ne feledje, hogy egyes vállalatok esetében nem található cikk, így a rekordok száma kevesebb, mint 500.|
 
 ## <a name="next-steps"></a>További lépések

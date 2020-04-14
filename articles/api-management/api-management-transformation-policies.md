@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 81b7fb687bb6ef88d1ed436923d0e5ff7561c22b
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 27bb6abb7ae8eae46bc4dea3708270ecb4b731a6
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80803245"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260904"
 ---
 # <a name="api-management-transformation-policies"></a>API Management-átalakítási szabályzatok
 Ez a témakör a következő API Management-házirendek hivatkozási alapként szolgál. A házirendek hozzáadásáról és konfigurálásáról az [API-kezelés házirendjei](https://go.microsoft.com/fwlink/?LinkID=398186)című témakörben talál további információt.
@@ -214,7 +214,7 @@ vagy
 ```
 
 > [!NOTE]
-> Háttérentitások felügyeleti [API-n](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend) és [PowerShellen](https://www.powershellgallery.com/packages?q=apimanagement)keresztül kezelhetők.
+> Háttérentitások felügyeleti [API-n](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend) és [PowerShellen](https://www.powershellgallery.com/packages?q=apimanagement)keresztül kezelhetők.
 
 ### <a name="example"></a>Példa
 
@@ -269,7 +269,7 @@ Ebben a példában a házirend a kérelmet egy szolgáltatásháló háttérrend
 |Név|Leírás|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
 |alap-url|Új háttérszolgáltatás alapURL-címe.|Az `base-url` egyik, vagy `backend-id` jelen kell lennie.|N/A|
-|háttér-azonosító|A háttérprogram azonosítója az útvonalhoz. (Háttérentitások [api-n](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend) és [PowerShellen](https://www.powershellgallery.com/packages?q=apimanagement)keresztül kezelhetők.)|Az `base-url` egyik, vagy `backend-id` jelen kell lennie.|N/A|
+|háttér-azonosító|A háttérprogram azonosítója az útvonalhoz. (Háttérentitások [api-n](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend) és [PowerShellen](https://www.powershellgallery.com/packages?q=apimanagement)keresztül kezelhetők.)|Az `base-url` egyik, vagy `backend-id` jelen kell lennie.|N/A|
 |sf-partíció-kulcs|Csak akkor alkalmazható, ha a háttérszolgáltatás egy Service Fabric-szolgáltatás, és "háttér-id" használatával van megadva. Egy adott partíció feloldására szolgál a névfeloldási szolgáltatásból.|Nem|N/A|
 |sf-replika-típus|Csak akkor alkalmazható, ha a háttérszolgáltatás egy Service Fabric-szolgáltatás, és "háttér-id" használatával van megadva. Szabályozza, hogy a kérelem kell-e a partíció elsődleges vagy másodlagos replikáját. |Nem|N/A|
 |sf-resolve-állapot|Csak akkor alkalmazható, ha a háttérszolgáltatás egy Service Fabric szolgáltatás. Állapot azonosító ha a hívás a Service Fabric-háttérrendszer új megoldással kell ismételni.|Nem|N/A|

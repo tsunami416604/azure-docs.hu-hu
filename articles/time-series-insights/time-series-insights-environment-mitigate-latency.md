@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 245a0b18187ff1c1b226e94b03374f2c071e51c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2812b535c7aef7987db7106bfa6b07e15a1b61c7
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76314827"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263386"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>A sávszélesség-szabályozás figyelése és csökkentése a késés csökkentése érdekében az Azure Time Series Insightsban
 
@@ -30,7 +30,7 @@ A legvalószínűbb, hogy a következők esetén tapasztal késleltetést és sz
 - Adjon hozzá egy eseményforrást, amely olyan régi adatokat tartalmaz, amelyek meghaladhatják a kiosztott be- és adatátviteli arányt (a Time Series Insights-nak fel kell zárkóznia).
 - Adjon hozzá további eseményforrásokat egy környezethez, ami további események csúcsát eredményez (ami meghaladhatja a környezet kapacitását).
 - Nagy mennyiségű történelmi esemény leküldése egy eseményforrásra, ami késést eredményez (a Time Series Insights-nak fel kell zárkóznia).
-- A referenciaadatok telemetriai adatokkal való összeillesztése, ami nagyobb eseményméretet eredményez. A szabályozás szempontjából a 32 KB-os csomagméretű beérkező adatcsomagot a rendszer 32 eseményként kezeli, amelyek mindegyike 1 KB-os méretben történik. A megengedett esemény maximális mérete 32 KB; a 32 KB-nál nagyobb adatcsomagok csonkulnak.
+- A referenciaadatok telemetriai adatokkal való összeillesztése, ami nagyobb eseményméretet eredményez. A csomag maximálisan megengedett mérete 32 KB; a 32 KB-nál nagyobb adatcsomagok csonkulnak.
 
 ## <a name="video"></a>Videó
 

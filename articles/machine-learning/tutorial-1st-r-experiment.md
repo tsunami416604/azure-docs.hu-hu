@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: 72488ba339399c526e882ffd11c41410a0b011ea
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5b1c6561519bc25c2b7ac77f0a25eff89413a07a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80159088"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256484"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model"></a>Oktatóanyag: Gépi tanulási modell létrehozásához használja az R-t
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -98,7 +98,24 @@ Az oktatóanyagban a fejlesztési munka beállítása a következő műveleteket
 * Távoli számítási cél létrehozása a betanításhoz
 
 ### <a name="install-required-packages"></a>Szükséges csomagok telepítése
-Ez az oktatóanyag feltételezi, hogy már telepítve van az Azure ML SDK. Folytassa az **azuremlsdk** csomag importálásával.
+
+ * Telepítse a legújabb verziót cran.
+
+    ```R
+    # install the latest version from CRAN
+    install.packages("azuremlsdk")
+    azuremlsdk::install_azureml(envname = 'r-reticulate')
+    ```
+    
+* Vagy telepítse a fejlesztői verziót a GitHubról.
+
+    ```R
+    # or install the development version from GitHub
+    remotes::install_github('https://github.com/Azure/azureml-sdk-for-r')
+    azuremlsdk::install_azureml(envname = 'r-reticulate')
+    ```
+
+Most folytassa, és importálja az **azuremlsdk** csomagot.
 
 ```R
 library(azuremlsdk)

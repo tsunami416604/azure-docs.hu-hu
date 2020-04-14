@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre, tesztelhet és helyezhet üzembe
 ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 303edac9221b2a58986129388e33c84c3817d96e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ce6f176a52a742a3216a5b761b34254027a1c5b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369374"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255073"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Oktatóanyag: Az Azure Resource Manager-sablonok folyamatos integrációja az Azure-folyamatokkal
 
@@ -44,7 +44,7 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
 ## <a name="prepare-a-github-repository"></a>GitHub-adattár előkészítése
 
-A GitHub a projekt forráskódjának tárolására szolgál, beleértve az Erőforrás-kezelő sablonokat is. Más támogatott adattárak, lásd: [az Azure DevOps által támogatott adattárak.](/azure/devops/pipelines/repos/?view=azure-devops#supported-repository-types)
+A GitHub a projekt forráskódjának tárolására szolgál, beleértve az Erőforrás-kezelő sablonokat is. Más támogatott adattárak, lásd: [az Azure DevOps által támogatott adattárak.](/azure/devops/pipelines/repos/?view=azure-devops)
 
 ### <a name="create-a-github-repository"></a>GitHub-tárház létrehozása
 
@@ -202,7 +202,7 @@ Sablon üzembe helyezésének lépésével rendelkező folyamat létrehozása:
 
 ## <a name="verify-the-deployment"></a>A telepítés ellenőrzése
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Nyissa meg az erőforráscsoportot. A név az, amit a folyamat YAML-fájljában megadott.  Egy létrehozott tárfiókot fog látni.  A tárfiók neve **a tárolóval**kezdődik.
 1. Válassza ki a tárfiók nevét a megnyitásához.
 1. Válassza **a Tulajdonságok lehetőséget.** Figyelje meg, hogy a **replikáció** **helyileg redundáns tárolás (LRS).**

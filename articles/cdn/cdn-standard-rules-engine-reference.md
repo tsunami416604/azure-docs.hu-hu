@@ -2,19 +2,19 @@
 title: Általános szabályok motorreferencia az Azure CDN - CDN | Microsoft dokumentumok
 description: Az Azure Content Delivery Network (Azure CDN) szabványos szabályok motorjában az egyezési feltételekés műveletek referenciadokumentációja.
 services: cdn
-author: mdgattuso
+author: asudbring
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
-ms.author: magattus
-ms.openlocfilehash: aa401150ee7a0f02e809ad702b8247e18081c8a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 6d4fa4451c3db3d6f2a506eabd5676d18b0219f4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74171562"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259901"
 ---
-# <a name="standard-rules-engine-reference-for-azure-cdn"></a>Az Azure CDN általános szabályokkal való viszonyítási alap
+# <a name="standard-rules-engine-reference-for-azure-cdn"></a>A Standard szabálymotor referenciája az Azure CDN-hez
 
 Az Azure Content Delivery Network (Azure CDN) [standard szabályok motorjában](cdn-standard-rules-engine.md) egy szabály egy vagy több egyezési feltételből és egy műveletből áll. Ez a cikk részletes leírást ad az egyezési feltételekről és az Azure CDN standard szabálymotorjában elérhető funkciókról.
 

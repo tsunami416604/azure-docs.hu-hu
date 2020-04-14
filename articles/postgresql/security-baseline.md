@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f83cee2fb1435252f34d1a64f531b5befef66ffb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4034759dc4f20649c15236b057e348966d72409e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289692"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261160"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql-single-server"></a>Azure-biztonsági alapkonfiguráció a PostgreSQL single server azure-adatbázisához
 
@@ -134,7 +134,7 @@ A PostgreSQL-hez készült Azure Database szolgáltatáscímke-használatának i
 
 Az Azure-szabályzat konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure Policy-minták hálózatépítéshez:https://docs.microsoft.com/azure/governance/policy/samples/#network
+Azure Policy-minták hálózatépítéshez:https://docs.microsoft.com/azure/governance/policy/samples/
 
 Azure Blueprint létrehozása:https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
@@ -908,7 +908,7 @@ A Kulcstartó hitelesítése felügyelt identitással:https://docs.microsoft.com
 
 **Útmutató:** Az Azure Database for PostgreSQL server támogatja az Azure Active Directory-hitelesítést (előzetes verzióban) az adatbázisok eléréséhez.  A PostgreSQL-kiszolgálóhoz készült Azure Database létrehozásakor hitelesítő adatokat adhat meg egy rendszergazdai felhasználónak. Ezzel a rendszergazdával további adatbázis-felhasználókat hozhat létre.  
 
-Az Azure Database for PostgreSQL-kiszolgálóhoz való hozzáféréshez használt Azure-alapú virtuális gépek vagy webalkalmazások esetében az Azure Database for PostgreSQL-kiszolgálóhoz való hozzáféréshez használt Felügyelt szolgáltatásidentitás és az Azure Key Vault használatával tárolja és lekérheti az Azure Database hitelesítő adatait PostgreSQL szerver. Győződjön meg arról, hogy a Key Vault ideiglenes törlése engedélyezve van.
+Az Azure Database for PostgreSQL-kiszolgálóhoz való hozzáféréshez használt Azure-alapú virtuális gépek vagy az Azure App Service szolgáltatáson futó webalkalmazások esetében az Azure Key Vault szolgáltatással együtt a Felügyelt szolgáltatás identitását használja az Azure Database for PostgreSQL-kiszolgáló hitelesítő adatainak tárolására és lekéréséhez. Győződjön meg arról, hogy a Key Vault ideiglenes törlése engedélyezve van.
 
 Felügyelt identitások használatával automatikusan felügyelt identitást biztosítaz Azure-szolgáltatásoknak az Azure Active Directoryban (AD). Felügyelt identitások lehetővé teszi, hogy hitelesítse az Azure AD-hitelesítést támogató szolgáltatások, beleértve a Key Vault, hitelesítő adatok nélkül a kódot.
 

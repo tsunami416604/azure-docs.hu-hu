@@ -1,5 +1,5 @@
 ---
-title: Az Azure Piactér és az AppSource támogatása | Azure
+title: A kereskedelmi piac támogatása | Azure
 description: Támogatási információk és hivatkozások az Azure Piactérhez és az AppSource-hoz
 author: dsindona
 ms.service: marketplace
@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 3/19/2020
 ms.author: dsindona
-ms.openlocfilehash: 6cb08e11910bc0afdd4b2f454582612395cbd50f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b2dba23bdf07233a9945086fba2274602cb2dcf1
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284925"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81252234"
 ---
 # <a name="support-for-the-marketplace"></a>A Piactér támogatása  
 Az alábbiakban a Piactér támogatási lehetőségeinek listája látható.  
@@ -47,7 +47,7 @@ Nyisson meg egy jegyet a Microsoft [piactér kiadói támogatásával](https://a
 
 ## <a name="next-steps"></a>További lépések
 
-* Keresse fel az Azure Piactér és az [AppSource Publisher Guide lapot.](https://docs.microsoft.com/azure/marketplace/)
-* További információ [a Kereskedelmi piactér program támogatásáról a Partnerközpontban.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)
+* Látogasson el a [kereskedelmi piactér kiadói útmutató oldalára.](https://docs.microsoft.com/azure/marketplace/)
+* További információ [a partnerközpontban található kereskedelmi piactér-program támogatásáról.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)
 
 ---

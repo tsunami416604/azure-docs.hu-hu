@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: c6062ec008a7a12c720cf28c2d79531e805ebba0
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 9398820c88120400d97fbaf8cb0da100c2bdbf81
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984435"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261754"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Az Azure Filesszal kapcsolatos gyakori kérdések (GYIK)
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztásokat kínál a felhőben, amelyek az iparági szabványnak megfelelő [SMB protokollon](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)keresztül érhetők el. Az Azure-fájlmegosztásokat egyidejűleg csatlakoztathatja a Windows, Linux és macOS felhőbeli vagy helyszíni központi telepítésein. Az Azure-fájlmegosztások windows Server-gépeken is gyorsítótárazhatók az Azure File Sync használatával az adatok felhasználási helyéhez közeli gyors hozzáférés érdekében.
@@ -217,7 +217,7 @@ Ez a cikk az Azure Files funkcióival és funkcióival kapcsolatos gyakori kérd
 * <a id="ad-aad-smb-files"></a>
 **Hogyan ellenőrizhetem, hogy engedélyeztem-e az AD-hitelesítést a tárfiókomon és az AD tartományadatain?**
 
-    Az [itt](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#enable-ad-authentication-for-your-account) megadott utasításokból megtudhatja, hogy az Azure Files AD-hitelesítés engedélyezve van-e a tárfiókban, és lekérheti-e az AD-tartomány adatait.
+    Az [itt](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#1-enable-ad-authentication-for-your-account) megadott utasításokból megtudhatja, hogy az Azure Files AD-hitelesítés engedélyezve van-e a tárfiókban, és lekérheti-e az AD-tartomány adatait.
     
 * <a id="encryption-at-rest"></a>
 **Hogyan győződhetek meg arról, hogy az Azure-fájlmegosztás titkosítva van in-t?**  

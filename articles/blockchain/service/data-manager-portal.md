@@ -4,12 +4,12 @@ description: Az Azure Portalon keresztül létrehozhatja és kezelheti a Blockch
 ms.date: 03/30/2020
 ms.topic: article
 ms.reviewer: ravastra
-ms.openlocfilehash: beacef0660a253c90afb507618e8a1742f0c9d2d
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 08f5a4a807087afce13dd4a6e96c0e9dd0a36103
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529601"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260598"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>A Blockchain Data Manager konfigurálása az Azure Portallal
 
@@ -28,11 +28,11 @@ A Blockchain Data Manager-példány konfigurálásához:
 
 ## <a name="create-instance"></a>Példány létrehozása
 
-A Blockchain Data Manager-példány csatlakozik és figyel egy Azure Blockchain Service tranzakciós csomópontot. Csak a tranzakciócsomóponthoz hozzáféréssel rendelkező felhasználók hozhatnak létre kapcsolatot. Egy példány rögzíti az összes nyers blokk és nyers tranzakciós adatokat a tranzakciócsomópont.
+A Blockchain Data Manager-példány csatlakozik és figyel egy Azure Blockchain Service tranzakciós csomópontot. Csak a tranzakciócsomóponthoz hozzáféréssel rendelkező felhasználók hozhatnak létre kapcsolatot. Egy példány rögzíti az összes nyers blokk és nyers tranzakciós adatokat a tranzakciócsomópont. Blockchain Data Manager közzéteszi **a RawBlockAndTransactionMsg** üzenetet, amely egy szuperhalmaza visszaad web3.eth [getBlock](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#getblock) és [getTransaction](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#gettransaction) lekérdezések.
 
 A kimenő kapcsolat blockchain adatokat küld az Azure Event Grid. Egyetlen kimenő kapcsolatot konfigurál, amikor létrehozza a példányt. A Blockchain Data Manager több Eseményrács-témakör kimenő kapcsolatot támogat bármely adott Blockchain Data Manager-példányhoz. Blockchain adatokat küldhet egyetlen célhelyre, vagy küldhet blokklánc-adatokat több célhelyre. Másik cél hozzáadásához csak adjon hozzá további kimenő kapcsolatokat a példányhoz.
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Nyissa meg az Azure Blockchain Service-tagot, amelyhez csatlakozni szeretne a Blockchain Data Managerhez. Válassza a **Blockchain Data Manager**lehetőséget.
 1. Válassza a **Hozzáadás** lehetőséget.
 

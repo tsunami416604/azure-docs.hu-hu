@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 03/12/2020
-ms.openlocfilehash: 418be090e7ff78ec0089c115c9884ffeffdda871
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4359c5581d14f4a918a49cf2b91ac58561ea93d3
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79284017"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257453"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Információ az Azure Logic Apps korlátozásaival és konfigurálásával kapcsolatban
 
@@ -84,7 +84,7 @@ Az egyetlen logikai alkalmazás futtatásának korlátai:
 
 | Név | Korlát | Megjegyzések |
 | ---- | ----- | ----- |
-| Egyidejűség aktiválása | - Korlátlan, ha az egyidejűség-vezérlés ki van kapcsolva <p><p>- A 25 az alapértelmezett korlát, ha az egyidejűség-vezérlő be van kapcsolva, ami nem lehet visszavonni a vezérlő bekapcsolása után. Az alapértelmezett értéket 1 és 50 közötti értékre módosíthatja. | Ez a korlát az egyszerre vagy párhuzamosan futtatható logikai alkalmazáspéldányok legnagyobb számát írja le. <p><p>**Megjegyzés:** Ha az egyidejűség be van kapcsolva, a SplitOn korlát 100 elemre csökken a [tömbök lerakásához.](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) <p><p>Ha az alapértelmezett korlátot 1 és 50 közötti értékre szeretné módosítani, olvassa el az [Eseményindító-egyidejűségi korlát módosítása](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) vagy [a Példányok sorrendben imiódása című témakört.](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger) |
+| Egyidejűség aktiválása | - Korlátlan, ha az egyidejűség-vezérlés ki van kapcsolva <p><p>- 25 az alapértelmezett korlát, ha az egyidejűség-vezérlés be van kapcsolva, amelyet az egyidejűség engedélyezése után nem lehet visszavonni. Az alapértelmezett értéket 1 és 50 közötti értékre módosíthatja. | Ez a korlát az egyszerre vagy párhuzamosan futtatható logikai alkalmazáspéldányok legnagyobb számát írja le. <p><p>**Megjegyzés:** Ha az egyidejűség be van kapcsolva, a SplitOn korlát 100 elemre csökken a [tömbök lerakásához.](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) <p><p>Ha az alapértelmezett korlátot 1 és 50 közötti értékre szeretné módosítani, olvassa el az [Eseményindító-egyidejűségi korlát módosítása](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) vagy [a Példányok sorrendben imiódása című témakört.](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger) |
 | Maximális várakozási futtatások | - Egyidejűség nélkül a várakozási futtatások minimális száma 1, míg a maximális szám 50. <p><p>- Egyidejűség esetén a várakozási futtatások minimális száma 10 plusz az egyidejű futtatások száma (trigger egyidejűség). A maximális szám legfeljebb 100-ig módosítható. | Ez a korlát azt a legtöbb logikai alkalmazáspéldányt ismerteti, amelyek várakozással várhatnak, ha a logikai alkalmazás már futtatja a maximális egyidejű példányokat. <p><p>Az alapértelmezett korlát módosításáról a [Várakozási futtatások módosítása korlát című témakörben](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)olvashat. |
 | Minden tömbelem | 100 000 | Ez a korlát azt írja le, hogy a "minden egyes" ciklushoz a legtöbb tömbelem feldolgozható.This limit describes the most number of array items that a "for each" loop can process. <p><p>Nagyobb tömbök szűréséhez használhatja a [lekérdezési műveletet.](logic-apps-perform-data-operations.md#filter-array-action) |
 | Foreach egyidejűség | 20 az alapértelmezett korlát, ha az egyidejűség-vezérlés ki van kapcsolva. Az alapértelmezett értéket 1 és 50 közötti értékre módosíthatja. | Ez a korlát a legnagyobb számú "minden" ciklus iterációk, amelyek futtathatók egy időben, vagy párhuzamosan. <p><p>Ha az alapértelmezett korlátot 1 és 50 közötti értékre szeretné módosítani, olvassa el a ["minden egyes" egyidejűségi korlát módosítása](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) vagy [a "minden" hurkok futtatása egymás után című témakört.](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each) |
@@ -166,6 +166,8 @@ Egyes összekötőműveletek aszinkron hívásokat kezdeményeznek, vagy figyelh
 | Kifejezések kiértékelési korlátja | 131 072 karakter | A `@concat()` `@base64()`, `@string()` a kifejezések nem lehetnek hosszabbak ennél a korlátnál. |
 | Kérelem URL-karakterkorlátja | 16 384 karakter |
 |||
+
+<a name="retry-policy-limits"></a>
 
 #### <a name="retry-policy"></a>Újrapróbálkozási szabályzat
 

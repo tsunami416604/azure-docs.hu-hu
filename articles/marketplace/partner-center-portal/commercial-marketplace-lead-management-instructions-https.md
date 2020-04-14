@@ -5,20 +5,23 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 6a0131cf94759fc529a52ea33d5392a60c5ef30c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33359883df86091120295b93618a13476e428d2f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281595"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262613"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>Érdeklődőkezelés konfigurálása HTTPS-végpont használatával
 
-Ha az ügyfélkapcsolat-kezelési (CRM) rendszer nem kifejezetten támogatja a Partner Center az Azure Marketplace-en és AppSource-érdeklődők fogadására, használhatja a HTTPS-végpont ot az MS Flow-ban ezeknek az érdeklődőknek a kezeléséhez. HTTPS-végpont esetén ezek az érdeklődők elküldhetők e-mail értesítésként, vagy az MS Flow által támogatott ÜGYFÉLkapcsolat-kezelési (CRM) rendszerbe is írhatók. A cikkben található utasítások végigvezetik az alapvető folyamaton, hogy új folyamatot hozzon létre a Microsoft Flow használatával, amely létrehozza a HTTP POST URL-címét, amelyet meg fog adni az Érdeklődőkezelés > **a HTTPS-végpont URL-címmezőjének** közzétételi portálján. Is, az utasításokat, hogyan lehet tesztelni a flow segítségével egy eszköz nevű [Postman,](https://www.getpostman.com/downloads/) amely megtalálható az interneten.
+>[!Note]
+>Az útmutatóban használt Power Automate csatlakozóhoz fizetős előfizetésszükséges a Power Automate szolgáltatáshoz. Kérjük, vegye figyelembe ezt, mielőtt követné a jelen dokumentumban található utasításokat.
 
-## <a name="create-a-flow-using-microsoft-flow"></a>Folyamat létrehozása a Microsoft Flow használatával
+Ha az ügyfélkapcsolat-kezelési (CRM) rendszer nem kifejezetten támogatja a Partner Center az Azure Marketplace-en és AppSource-érdeklődők fogadására, használhatja a Power Automate HTTPS-végpontját az érdeklődők kezeléséhez. HTTPS-végpont esetén ezek az érdeklődők elküldhetők e-mail értesítésként, vagy a Power Automate által támogatott ÜGYFÉLkapcsolat-kezelési (CRM) rendszerbe is. Ebben a cikkben található utasítások végigvezetik az alapvető folyamaton, hogy új folyamatot hozzon létre a Power Automate használatával, amely létrehozza a HTTP POST URL-címét, amelyet az Érdeklődőkezelés > **A HTTPS-végpont URL-mezőjében** fog megadni. Is, az utasításokat, hogyan lehet tesztelni a flow segítségével egy eszköz nevű [Postman,](https://www.getpostman.com/downloads/) amely megtalálható az interneten.
+
+## <a name="create-a-flow-using-power-automate"></a>Folyamat létrehozása a Power Automate segítségével
 
 1. Nyissa meg a [Flow](https://flow.microsoft.com/) weblapot. Válassza **a Bejelentkezés**lehetőséget, vagy ha még nem rendelkezik fiókkal, válassza a Szabad **regisztráció** lehetőséget szabad folyamatfiók létrehozásához.
 
@@ -168,7 +171,7 @@ A [Postman](https://app.getpostman.com/app/download/win64)nevű eszközzel teszt
 
    ![A folyamat tesztelése](./media/commercial-marketplace-lead-management-instructions-https/test-my-flow.png)
 
-4. Illessze be a HTTP POST URL-címét az MS Flow-ban létrehozott folyamatból, ahol az *Enter kérés URL-címe*jelenik meg.
+4. Illessze be a HTTP POST URL-címét a Power Automate rendszerben létrehozott folyamatból, ahol az *Enter kérés URL-címe*jelenik meg.
 
    ![A HTTP POST URL-CÍM beillesztése](./media/commercial-marketplace-lead-management-instructions-https/paste-http-post-url.png)
 
@@ -202,7 +205,10 @@ Ha készen áll az ajánlat érdeklődőkezelési adatainak konfigurálására a
 1. Nyissa meg az **ajánlat beállítási** oldalát.
 2. Válassza a **Csatlakozás** lehetőséget az Érdeklődőkezelés szakaszban.
 3. A Kapcsolat részletei előugró ablakban válassza a **HTTPS-végpont** lehetőséget az **érdeklődő célpontjához,** és illessze be a HTTP POST URL-címbe a létrehozott folyamatból a **HTTPS-végpont URL-mezőjébe** lépésekkel létrehozott folyamatból.
-4. Kattintson a **Mentés** gombra. 
+4. **Kapcsolatfelvételi e-mail** – E-maileket adhat meg a vállalatnál lévő személyeknek, akiknek e-mailes értesítéseket kell kapniuk, ha új érdeklődő érkezik. Több e-mailt is megadhat, ha pontosvesszővel választja el őket.
+5. Válassza **az OK gombot.**
+
+Ha meg szeretne győződni arról, hogy sikeresen csatlakozott egy érdeklődő célállomásához, kattintson az érvényesítés gombra. Ha sikeres, akkor lesz egy teszt vezető az érdeklődő cél.
 
 >[!Note] 
 >Be kell fejeznie az ajánlat többi részének konfigurálását, és közzé kell tennie, mielőtt érdeklődőket kapna az ajánlathoz.
@@ -213,5 +219,5 @@ Ha készen áll az ajánlat érdeklődőkezelési adatainak konfigurálására a
 
 ![Kapcsolat adatai](./media/commercial-marketplace-lead-management-instructions-https/connection-details.png)
 
-![Kapcsolat adatai](./media/commercial-marketplace-lead-management-instructions-https/connection-details-1.png)
+![Kapcsolat adatai](./media/commercial-marketplace-lead-management-instructions-https/https-connection-details.png)
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 7ce7ef15f0bf13182e4799fb640e83136d0d4695
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 55e319ba8aecb9205c00dda4a400e37f7c010649
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115026"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257776"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services – Rendszergazdai útmutató
 Az egyetem felhőalapú erőforrásait kezelő informatikai rendszergazdák általában felelősek az iskola laborfiókjának beállításáért. A tesztkörnyezet-fiók beállítása után a rendszergazdák vagy az oktatók a tesztkörnyezet-fiókban található tantermi laborokat hoznak létre. Ez a cikk magas szintű áttekintést nyújt az azure-erőforrásokról és a létrehozásukhoz.
@@ -59,7 +59,7 @@ Az alábbi lista azokat a forgatókönyveket emeli ki, amelyekben egynél több 
     
     Laborfiók beállításakor olyan szabályzatokat állít be, amelyek a laborfiók alatt az *összes* tantermi laborra vonatkoznak, például:
     - Az Azure virtuális hálózat megosztott erőforrásokkal, amelyek az osztályteremben labor ban férhet hozzá. Például előfordulhat, hogy egy sor tantermi laborok, amelyek hozzáférést igényelnek egy megosztott adatkészlet egy virtuális hálózaton belül.
-    - A virtuális gép (VM) lemezképek, amelyek az osztályteremben laborok virtuális gépek létrehozásához használható. Például előfordulhat, hogy egy tantermi laborok, amelyek hozzáférést igényelnek a [Data Science VM linuxos](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) piactér-rendszerképhez. 
+    - A virtuális gép (VM) lemezképek, amelyek az osztályteremben laborok virtuális gépek létrehozásához használható. Például előfordulhat, hogy egy tantermi laborok, amelyek hozzáférést igényelnek a [Data Science VM linuxos](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) piactér-rendszerképhez. 
     
     Ha olyan tantermi laborokkal rendelkezik, amelyek egymástól egyedi házirend-követelményeket támasztanak, hasznos lehet külön laborfiókokat létrehozni ezeknek az osztálytermi laboroknak a külön-külön történő kezeléséhez.
 

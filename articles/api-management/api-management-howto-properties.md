@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 7c25455e28e57ff40664a69718a2e406b52b7632
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4362d0875ac2c20fc6963d404f86898a12387dad
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75834295"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260921"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Elnevezett értékek használata az Azure API-kezelési szabályzatokban
 
@@ -59,7 +59,7 @@ Az elnevezett értékek literális karakterláncokat és [házirend-kifejezések
 
 Az elnevezett érték létrehozása után kattintással szerkesztheti azt. Ha módosítja az elnevezett érték nevét, az értéket megnevező házirendek automatikusan frissülnek az új név használatára.
 
-Az elnevezett érték REST API használatával történő szerkesztéséről a [Megnevezett érték szerkesztése a REST API használatával című témakörben](/rest/api/apimanagement/2019-01-01/property?patch)talál.
+Az elnevezett érték REST API használatával történő szerkesztéséről a [Megnevezett érték szerkesztése a REST API használatával című témakörben](/rest/api/apimanagement/2019-12-01/property?patch)talál.
 
 ## <a name="to-delete-a-named-value"></a>Elnevezett érték törlése
 
@@ -68,7 +68,7 @@ Névvel ellátott érték törléséhez kattintson a törölni kívánt névvel 
 > [!IMPORTANT]
 > Ha a megnevezett értékre bármely házirend hivatkozik, addig nem tudja sikeresen törölni, amíg el nem távolítja az elnevezett értéket az azt használó összes házirendből.
 
-Az elnevezett érték REST API használatával történő törléséről a [Névvel ellátott érték törlése a REST API használatával című témakörben](/rest/api/apimanagement/2019-01-01/property/delete)talál további információt.
+Az elnevezett érték REST API használatával történő törléséről a [Névvel ellátott érték törlése a REST API használatával című témakörben](/rest/api/apimanagement/2019-12-01/property/delete)talál további információt.
 
 ## <a name="to-search-and-filter-named-values"></a>Elnevezett értékek keresése és szűrése
 

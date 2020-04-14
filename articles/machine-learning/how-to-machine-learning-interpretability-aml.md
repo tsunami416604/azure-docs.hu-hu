@@ -1,5 +1,5 @@
 ---
-title: Modell értelmezhetősége helyi és távoli futtatásokhoz
+title: Gépi tanulási modellek és előrejelzések magyarázata
 titleSuffix: Azure Machine Learning
 description: Ismerje meg, hogyan kaphat magyarázatot arról, hogy a gépi tanulási modell hogyan határozza meg a szolgáltatás fontosságát, és előrejelzéseket készít az Azure Machine Learning SDK használatakor.
 services: machine-learning
@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
-ms.date: 04/02/2020
-ms.openlocfilehash: 1ff42149ccb629a0a7094e6dfede422d4dd7f61f
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.date: 04/12/2020
+ms.openlocfilehash: c1282ed16c9e3b92e7d5ec3f9969bee6fc3d917f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632030"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257201"
 ---
-# <a name="model-interpretability-for-local-and-remote-runs"></a>Modell értelmezhetősége helyi és távoli futtatásokhoz
+# <a name="explain-machine-learning-models-and-predictions"></a>Gépi tanulási modellek és előrejelzések magyarázata
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -30,7 +30,6 @@ Ebben az útmutatóútmutatóban megtanulhatja az Azure Machine Learning Python 
 
 * Magyarázza el a teljes modell és az azure-beli egyéni előrejelzések viselkedését.
 
- 
 * A modell magyarázataival vizualizációs irányítópulthasználatával kommunikálhat a modell magyarázataival.
 
 * A pontozási magyarázó üzembe helyezése a modell mellett a magyarázatok megfigyeléséhez a következtetés során.

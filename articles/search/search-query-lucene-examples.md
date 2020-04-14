@@ -9,21 +9,21 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3c54f864b5bd562fdc0a84b2903198704032b360
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: bc691299f38d562aee5c08a89e10372331663f8e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998489"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262808"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>Használja a "teljes" Lucene keresési szintaxist (speciális lekérdezések az Azure Cognitive Search-ben)
 
 Amikor lekérdezéseket hoz létre az Azure Cognitive Search számára, lecserélheti az alapértelmezett [egyszerű lekérdezéselemzőt](query-simple-syntax.md) a szélesebb körű [Lucene-lekérdezés-elemzőre az Azure Cognitive Search-ben,](query-lucene-syntax.md) hogy speciális és speciális lekérdezésdefiníciókat fogalmazzon meg. 
 
-A Lucene-elemző támogatja az összetett lekérdezési konstrukciókat, például a mezőhatókörrel végzett lekérdezéseket, az intelligens és előtaghelyettesítő keresést, a közelségi keresést, a kifejezéskiemelést és a reguláris kifejezéskeresést. A további teljesítmény további feldolgozási követelményekkel jár, így valamivel hosszabb végrehajtási időre számíthat. Ebben a cikkben a teljes szintaxis használata esetén elérhető lekérdezési műveleteket bemutató példákat is átléphet.
+A Lucene-elemző összetett lekérdezési konstrukciókat támogat, például a mezőhatókörrel végzett lekérdezéseket, az intelligens keresést, az infix és utótag helyettesítő karakteres keresését, a közelségi keresést, a kifejezéskiemelést és a reguláris kifejezéskeresést. A további teljesítmény további feldolgozási követelményekkel jár, így valamivel hosszabb végrehajtási időre számíthat. Ebben a cikkben a teljes szintaxis használata esetén elérhető lekérdezési műveleteket bemutató példákat is átléphet.
 
 > [!Note]
-> A teljes Lucene-lekérdezés szintaxisán keresztül engedélyezett speciális lekérdezéskonstrukciók közül sok nem [szöveg-elemzésalatt](search-lucene-query-architecture.md#stage-2-lexical-analysis)áll, ami meglepő lehet, ha a származtatásra vagy lemmatizálásra számít. A lexikális elemzés csak teljes feltételekkel (kifejezéslekérdezéssel vagy kifejezéslekérdezéssel) történik. A hiányos kifejezésekkel rendelkező lekérdezéstípusok (előtag lekérdezés, helyettesítő lekérdezés, regex-lekérdezés, intelligens lekérdezés) közvetlenül a lekérdezési fához kerülnek, megkerülve az elemzési szakaszt. A nem teljes lekérdezési kifejezéseken végrehajtott egyetlen átalakítás a csökkentés. 
+> A teljes Lucene-lekérdezés szintaxisán keresztül engedélyezett speciális lekérdezéskonstrukciók közül sok nem [szöveg-elemzésalatt](search-lucene-query-architecture.md#stage-2-lexical-analysis)áll, ami meglepő lehet, ha a származtatásra vagy lemmatizálásra számít. A lexikális elemzés csak teljes feltételekkel (kifejezéslekérdezéssel vagy kifejezéslekérdezéssel) történik. A hiányos kifejezésekkel rendelkező lekérdezéstípusok (előtag lekérdezés, helyettesítő lekérdezés, regex-lekérdezés, intelligens lekérdezés) közvetlenül a lekérdezési fához kerülnek, megkerülve az elemzési szakaszt. A részleges lekérdezési kifejezéseken végrehajtott egyetlen átalakítás a leengedés. 
 >
 
 ## <a name="formulate-requests-in-postman"></a>A kérelmek megfogalmazása a Postmanben

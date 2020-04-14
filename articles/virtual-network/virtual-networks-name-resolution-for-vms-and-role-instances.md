@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d7d0699718642a7eb9f85b2e8a86623092c34365
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 9ea63192732184ff7a13ff1465a5b393a282f9d2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010562"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262196"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure virtuális hálózatokon található erőforrások névfeloldása
 
@@ -88,6 +88,7 @@ A reverse DNS minden ARM alapú virtuális hálózatban támogatott. Fordított 
 * Az űrlap \[vmname\].internal.cloudapp.net teljes tartományneveinek címhívása .internal.cloudapp.net a virtuális géphez rendelt IP-címre oldódik fel.
 * Ha a virtuális hálózat regisztrációs virtuális hálózatként egy [Azure DNS-magánzónához](../dns/private-dns-overview.md) kapcsolódik, a fordított DNS-lekérdezések két rekordot adnak vissza. Egy rekord lesz az \[űrlap\]vmname . [priatednszonename] és más lenne \[a forma\]vmname .internal.cloudapp.net
 * A névfeloldási DNS-keresése hatóköre egy adott virtuális hálózatra van, még akkor is, ha más virtuális hálózatokra van társviszonyban. A társviszonyban álló virtuális hálózatokban található virtuális gépek IP-címeinek fordított DNS-lekérdezései (PTR-lekérdezések) NXDOMAIN-t adnak vissza.
+* Ha azt szeretné, hogy kapcsolja ki a reverse DNS-függvény egy virtuális hálózatban megteheti, hogy hozzon létre egy névkeresési zóna azure [DNS-es privát zónák](../dns/private-dns-overview.md) használatával, és kapcsolja össze ezt a zónát a virtuális hálózathoz. Ha például a virtuális hálózat IP-címterülete 10.20.0.0/16, akkor létrehozhat egy üres magán DNS-zónát 20.10.in-addr.arpa, és összekapcsolhatja a virtuális hálózattal. Miközben a zónát a virtuális hálózathoz kapcsolja, tiltsa le az automatikus regisztrációt a kapcsolaton. Ez a zóna felülírja a virtuális hálózat alapértelmezett névkeresési zónáit, és mivel ez a zóna üres, a fordított DNS-lekérdezésekhez NXDOMAIN lesz. Tekintse meg [a rövid útmutatót](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal) arról, hogyan hozhat létre privát DNS-zónát, és hogyan kapcsolhat hozzá egy virtuális hálózathoz.
 
 > [!NOTE]
 > Ha azt szeretné, hogy a névfeloldási DNS-keresése kontúrja a virtuális hálózaton, létrehozhat egy névkeresési zónát (in-addr.arpa) [az Azure DNS-zónákat,](../dns/private-dns-overview.md) és több virtuális hálózathoz kapcsolhatja. A virtuális gépek fordított DNS-rekordjait azonban manuálisan kell kezelnie.

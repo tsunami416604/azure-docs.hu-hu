@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: 6ed5c509cf310b743e4ef52f411dfa34e5db09c1
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 5134a262397676aa9b59de9b0c6de61c26d21523
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411612"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262910"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Videoindexelő widgetek beágyazása az alkalmazásokba
 
@@ -186,7 +186,7 @@ Ha az Azure Media Player-en kívül más videolejátszót használ, manuálisan 
         </video>    
 
 2. Ágyazza be a Kognitív elemzési vezérlőt.
-3. Implementálja a lejátszóval való kommunikációt az „üzenet” eseményre való figyeléssel. Példa:
+3. Implementálja a lejátszóval való kommunikációt az „üzenet” eseményre való figyeléssel. Például:
 
         <script>
     
@@ -247,7 +247,7 @@ Fontos tudni, hogy ez a beállítás csak olyan esetekben releváns, ha azt szer
 
 A Video Indexer-lejátszó beágyazásakor megadhatja a lejátszó méretét az iframe méretének meghatározásával.
 
-Példa:
+Például:
 
 `<iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />`
 
@@ -265,7 +265,7 @@ Alapértelmezés szerint a lejátszó elkezdi lejátszani a videót. úgy is dö
 
 ## <a name="code-samples"></a>Kódminták
 
-Tekintse meg a [kódminták](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Widgets) tártárát, amely a Video Indexer API és a Widgets mintáit tartalmazza:
+Tekintse meg a [kódminták](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Embedding%20widgets) tártárát, amely a Video Indexer API és a Widgets mintáit tartalmazza:
 
 | Fájl/mappa                       | Leírás                                |
 |-----------------------------------|--------------------------------------------|

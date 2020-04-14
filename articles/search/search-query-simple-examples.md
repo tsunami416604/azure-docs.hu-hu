@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 42ace2444c7d8e790c7575a7c1a7b3b1219d090a
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 3a801af7b97954510139a009a6d1344b281cf056
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656418"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261805"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>Egyszerű lekérdezés létrehozása az Azure Cognitive Search szolgáltatásban
 
 Az Azure Cognitive [Search, az egyszerű lekérdezés szintaxisa](query-simple-syntax.md) meghívja az alapértelmezett lekérdezéselemző teljes szöveges keresési lekérdezések egy indexen. Ez az elemző gyors, és kezeli a gyakori forgatókönyveket, beleértve a teljes szöveges keresést, a szűrt és a kifejezésre végzett keresést, valamint a földrajzi keresést. 
 
-Ebben a cikkben példákat használunk az egyszerű szintaxis szemléltetésére.
+Ebben a cikkben példákat használunk az egyszerű szintaxis szemléltetésére, a `search=` Keresési [dokumentumok](https://docs.microsoft.com/rest/api/searchservice/search-documents) művelet paraméterének feltöltésére.
 
 Egy másik lekérdezés szintaxisa [a Full Lucene,](query-lucene-syntax.md)amely összetettebb lekérdezési struktúrákat támogat, például az intelligens és helyettesítő karakteres keresést, ami további időt vehet igénybe. További információt és a teljes szintaxist bemutató példákat [a Teljes Lucene szintaxis használata](search-query-lucene-examples.md)című témakörben talál.
 

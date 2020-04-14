@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/17/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: f779781eee81bf85f6420e5bae6b0feb62680b8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f1d23f11cf73680a8861c9f1ac6cbd40ad497a4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064173"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257334"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Az Azure Machine Learning működése: Architektúra és fogalmak
 
@@ -62,7 +62,7 @@ Használja ezeket az eszközöket az Azure Machine Learninghez:
             * [Konfiguráció futtatása](#run-configurations)
             * [Pillanatkép](#snapshots)
             * [Git-követés](#github-tracking-and-integration)
-            * [Naplózási](#logging)
+            * [Naplózás](#logging)
     * [Gépi tanulási folyamatok](#ml-pipelines)
     * [Modellek](#models)
         * [Környezetek](#environments)
@@ -187,7 +187,7 @@ További információkért tekintse át a következő cikkeket:
 * [Az ML modellek betanítása becsléssel](how-to-train-ml-models.md).
 * [Az Azure Machine Learning segítségével nagy méretekben tanítsa be a Pytorch mélytanulási modelljeit.](how-to-train-pytorch.md)
 * [Az Azure Machine Learning segítségével nagy méretekben taníthatja be és regisztrálhatja a TensorFlow-modelleket.](how-to-train-tensorflow.md)
-* [Az Azure Machine Learning segítségével nagy méretekben taníthatja be és regisztrálhatja a Chainer-modelleket.](how-to-train-chainer.md)
+* [Az Azure Machine Learning segítségével nagy méretekben taníthatja be és regisztrálhatja a Chainer-modelleket.](how-to-train-ml-models.md)
 
 ### <a name="endpoints"></a>Végpontok
 

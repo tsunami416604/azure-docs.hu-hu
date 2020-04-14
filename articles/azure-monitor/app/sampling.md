@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: fc9db23f7733f97ca207e834d4543fbdb1b9db5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e888e0606b7a9bcd9a7a94c28455d705c5f1bec
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275827"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255481"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights-mintavétel
 
@@ -22,7 +22,7 @@ Amikor a metrikák száma jelenik meg a portálon, azok újranormalizálódik, h
 
 * A mintavételnek három különböző típusa van: adaptív mintavétel, rögzített sebességű mintavétel és lenyelési mintavétel.
 * Az adaptív mintavételezés alapértelmezés szerint engedélyezve van az Application Insights ASP.NET és ASP.NET Core Software Development Kit (SDK) legújabb verzióiban. Azt is használják az [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview).
-* Rögzített díjú mintavételi érhető el a legújabb verzióiban az Application Insights SDK-k ASP.NET, ASP.NET Core, Java és Python.
+* Rögzített díjú mintavételi érhető el a legújabb verzióiban az Application Insights SDK-k ASP.NET, ASP.NET Core, Java (mind az ügynök és az SDK) és a Python.
 * Betöltési mintavételi működik az Application Insights szolgáltatás végpontján. Csak akkor alkalmazandó, ha nincs más mintavétel. Ha az SDK mintát vesz a telemetriai adatokat, a betöltési mintavételi le van tiltva.
 * Webalkalmazások esetén, ha egyéni eseményeket naplóz, és biztosítania kell, hogy az események egy `OperationId` készlete megmaradjon vagy elvetve legyen, az eseményeknek azonos értékkel kell rendelkezniük.
 * Ha Analytics-lekérdezéseket ír, figyelembe kell [vennie a mintavételezést.](../../azure-monitor/log-query/aggregations.md) Különösen a rekordok egyszerű számolása helyett `summarize sum(itemCount)`a .
@@ -306,7 +306,29 @@ A Metrika-kezelőben a díjakat, például a kérelmek és a kivételek számát
 
 ### <a name="configuring-fixed-rate-sampling-for-java-applications"></a>Rögzített sebességű mintavételezés konfigurálása Java-alkalmazásokhoz
 
-Alapértelmezés szerint nincs mintavételezés engedélyezve a Java SDK.In default no sampling is enabled in the Java SDK. Jelenleg csak a rögzített mintavételi arányt támogatja. Az adaptív mintavételezés nem támogatott a Java SDK-ban.
+Alapértelmezés szerint nincs mintavételi engedélyezve a Java-ügynök és az SDK. Jelenleg csak a rögzített mintavételi arányt támogatja. Az adaptív mintavételezés java nem támogatott.
+
+#### <a name="configuring-java-agent"></a>Java-ügynök konfigurálása
+
+1. [Alkalmazásinsights-agent-3.0.0-PREVIEW.2.jar letöltése](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.2/applicationinsights-agent-3.0.0-PREVIEW.2.jar)
+
+1. A mintavételezés engedélyezéséhez `ApplicationInsights.json` adja hozzá a következőket a fájlhoz:
+
+```json
+{
+  "instrumentationSettings": {
+    "preview": {
+      "sampling": {
+        "fixedRate": {
+          "percentage": 10 //this is just an example that shows you how to enable only only 10% of transaction 
+        }
+      }
+    }
+  }
+}
+```
+
+#### <a name="configuring-java-sdk"></a>A Java SDK konfigurálása
 
 1. Töltse le és konfigurálja webalkalmazását a legújabb [Application Insights Java SDK-val.](../../azure-monitor/app/java-get-started.md)
 
@@ -534,7 +556,7 @@ A közelítés pontossága nagymértékben függ a beállított mintavételi sz�
 
 * Betöltési mintavételautomatikusan előfordulhat egy bizonyos kötet feletti telemetriai adatok, ha az SDK nem végez mintavételezést. Ez a konfiguráció például akkor működik, ha a ASP.NET SDK vagy a Java SDK régebbi verzióját használja.
 * Ha az aktuális ASP.NET vagy ASP.NET Core SDK-k (üzemelteti az Azure-ban vagy a saját kiszolgálóján), alapértelmezés szerint adaptív mintavételezést kap, de átválthat a rögzített sebességű, a fent leírtak szerint. Fix sebességű mintavételezés esetén a böngésző SDK automatikusan szinkronizálja a minta kapcsolódó események. 
-* Ha az aktuális Java SDK-t használja, beállíthatja `ApplicationInsights.xml` a rögzített sebességű mintavételezés t. A mintavételezés alapértelmezés szerint ki van kapcsolva. Rögzített sebességű mintavételezés esetén a böngésző SDK és a kiszolgáló automatikusan szinkronizálja a kapcsolódó események mintavételével.
+* Ha az aktuális Java-ügynököt használja, `ApplicationInsights.json` konfigurálhatja (Java SDK esetén konfigurálhatja) `ApplicationInsights.xml`a rögzített sebességű mintavételezés bekapcsolását. A mintavételezés alapértelmezés szerint ki van kapcsolva. Rögzített sebességű mintavételezés esetén a böngésző SDK és a kiszolgáló automatikusan szinkronizálja a kapcsolódó események mintavételével.
 
 *Vannak bizonyos ritka események, amelyeket mindig látni akarok. Hogyan juthatok át a mintavételi modulon?*
 

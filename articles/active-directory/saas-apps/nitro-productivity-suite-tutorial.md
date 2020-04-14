@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/02/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 249710aa34ff99e7c4755e7df7228d3006f15e31
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 05aed032eeb3a3cd925a718516ba9c8ffb87f65e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668971"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261099"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nitro-productivity-suite"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja a Nitro Productivity Suite csomaggal
 
@@ -37,7 +37,7 @@ Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integráci
 A kezdéshez a következő elemekre van szükség:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, ingyenes [fiókot](https://azure.microsoft.com/free/)kaphat.
-* Nitro Productivity Suite egyszeri bejelentkezés (SSO) engedélyezve előfizetés.
+* Nitro Productivity Suite [Enterprise előfizetés.](https://www.gonitro.com/pricing)
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -78,40 +78,56 @@ Kövesse az alábbi lépéseket az Azure AD SSO engedélyezéséhez az Azure Por
 
 1. Az [Azure Portalon](https://portal.azure.com/)a **Nitro Productivity Suite** alkalmazásintegrációs lapon keresse meg a **Kezelés szakaszt,** és válassza ki **az egyszeri bejelentkezést.**
 1. Az **Egyetlen bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. A **Beállítások beállítása SAML-lel** lapon kattintson az **egyszerű SAML-konfiguráció** szerkesztési/tollikonjára a beállítások szerkesztéséhez.
+1. Az **SAML aláíró tanúsítvány szakaszban:**
+
+    a. Keresse meg **a tanúsítványt (Base64),** és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre való mentéséhez.
+
+    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
+    
+1. A **Nitro Productivity Suite beállítása** szakaszon:
+
+    a. Kattintson a **bejelentkezési URL-cím** melletti másolásikonra
+    
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
+    
+1. A [Nitro Admin portálon](https://admin.gonitro.com/)a **Vállalati beállítások** lapon keresse meg az **Egyszeri bejelentkezés szakaszt,** és kattintson az **SAML Egyszeri bejelentkezés beállítása** gombra.
+
+    a. Illessze be a **bejelentkezési URL-címet** a fenti lépésből a **Bejelentkezési URL-cím** mezőbe.
+    
+    a. Töltse fel a **tanúsítványt (Base64)** az **X509 aláíró tanúsítvány** mező korábbi lépéséből.
+    
+    a. Kattintson a **Submit** (Küldés) gombra
+    
+    a. Kattintson **az Egyszeri bejelentkezés engedélyezése gombra**
+
+
+1. Visszatérés az [Azure Portalra](https://portal.azure.com/), az **Egy bejelentkezés beállítása SAML-lel** lapon kattintson az **egyszerű SAML-konfiguráció** szerkesztése/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Egyszerű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
 1. Az **Egyszerű SAML-konfiguráció** szakaszban, ha az alkalmazást **IDP** által kezdeményezett módban szeretné konfigurálni, adja meg a következő mezők értékeit:
 
-    a. Az **Azonosító** mezőbe írjon be egy URL-címet a következő minta használatával:`urn:auth0:gonitro-prod:<ENVIRONMENT>`
+    a. Az **Azonosító** szövegmezőben másolja és illessze be az **SAML entitásazonosító** mezőt a [Nitro Admin portálról.](https://admin.gonitro.com/) Meg kell a következő mintát:`urn:auth0:gonitro-prod:<ENVIRONMENT>`
 
-    b. A **Válasz URL-cím** mezőjébe írjon be egy URL-címet a következő minta használatával:`https://gonitro-prod.eu.auth0.com/login/callback?connection=<ENVIRONMENT>`
+    b. A **Válasz URL szövegmezőjében** másolja és illessze be az **ACS URL-mezőjét** a [Nitro Admin portálról.](https://admin.gonitro.com/) Meg kell a következő mintát:`https://gonitro-prod.eu.auth0.com/login/callback?connection=<ENVIRONMENT>`
 
 1. Kattintson **a További URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** által kezdeményezett módban kívánja konfigurálni:
 
     A **Bejelentkezési URL-cím** mezőbe írja be az URL-címet:`https://sso.gonitro.com/login`
 
-    > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címével. Lépjen kapcsolatba [a Nitro Productivity Suite ügyféltámogatási csapatával,](https://www.gonitro.com/support) hogy megkapja ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfigurációs** szakaszában látható mintákat is hivatkozhat.
+1. Kattintson a Mentés gombra.
 
 1. A Nitro Productivity Suite alkalmazás egy adott formátumban várja az SAML-állításokat, amely megköveteli, hogy egyéni attribútumleképezéseket adjon hozzá az SAML token attribútumok konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
     ![image](common/default-attributes.png)
 
-1. A fentiekmellett a Nitro Productivity Suite alkalmazás azt várja, hogy néhány további attribútumot kell visszaadni az SAML válaszban, amelyek az alábbiakban láthatók. Ezek az attribútumok is előre ki vannak töltve, de áttekintheti őket a követelmények nek megfelelően.
+1. Emellett a Nitro Productivity Suite alkalmazás azt várja, hogy még néhány attribútumot vissza kell adni az SAML válaszban, ahogy az az alábbi táblázatban látható. Ezek az attribútumok előre ki vannak töltve, de áttekintheti őket a követelmények szerint.
     
     | Név  |  Forrás attribútuma|
-    | ---------------| --------------- | --------- |
+    | ---------------| --------------- |
     | alkalmazottszáma |  user.objectid |
 
-1. Az **Egyszeri bejelentkezés beállítása SAML-lel** lapon az **SAML aláíró tanúsítvány** szakaszában keresse meg a **Tanúsítvány (Base64)** lehetőséget, és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre való mentéséhez.
 
-    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
-
-1. A **Nitro Productivity Suite beállítása** szakaszban másolja a megfelelő URL-cím(eke)t a követelmény alapján.
-
-    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztfelhasználó létrehozása
 
 Ebben a szakaszban egy tesztfelhasználót hoz létre az Azure Portalon B.Simon néven.

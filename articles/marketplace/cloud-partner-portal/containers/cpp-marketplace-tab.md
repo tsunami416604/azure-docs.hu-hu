@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: dsindona
-ms.openlocfilehash: e272a95c5eb7d00b7c2169acb820ec8e4e8d9614
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb879a9578a550e972ed7874a42cf389271abf47
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280048"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270298"
 ---
 # <a name="container-marketplace-tab"></a>Tárolópiactér lap
+
+> [!IMPORTANT]
+> 2020. április 13-tól megkezdjük az Azure Container-ajánlatok kezelését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [Azure Container-ajánlat létrehozása](https://aka.ms/CreateContainerOffer) című, az áttelepített ajánlatok kezeléséhez című útmutatóutasításait.
 
 Az **Új ajánlat** lap **Piactér** lapja lehetővé teszi, hogy a leendő ügyfelek számára marketinget, értékesítést és jogi információkat és megállapodásokat biztosítson, és kezelje a piactérről generált érdeklődőket. Adja hozzá marketingspecifikus tartalmát az **Áttekintés** szakaszhoz.
 

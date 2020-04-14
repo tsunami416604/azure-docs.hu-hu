@@ -5,12 +5,12 @@ author: mumian
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f88f141257e8e614f62c7441c313002b5735116d
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 8f51c65489efeed1fa18e70bd75e7370a9e59903
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239194"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260637"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>Oktatóanyag: Feltétel használata ARM-sablonokban
 
@@ -55,23 +55,25 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 Az Azure QuickStart Templates az ARM-sablonok tárháza. Teljesen új sablon létrehozása helyett kereshet egy mintasablont, és testre szabhatja azt. A jelen oktatóanyagban használt sablon [egyszerű, windowsos virtuális gép üzembe helyezése](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) néven található meg.
 
 1. A Visual Studio-kódból válassza a **Fájlmegnyitása**>**fájl**lehetőséget.
-2. A **File name** (Fájlnév) mezőbe illessze be a következő URL-címet:
+1. A **File name** (Fájlnév) mezőbe illessze be a következő URL-címet:
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 
-3. Az **Open** (Megnyitás) kiválasztásával nyissa meg a fájlt.
-4. A sablon öt erőforrást határoz meg:
+1. Az **Open** (Megnyitás) kiválasztásával nyissa meg a fájlt.
+1. A sablon hat erőforrást határoz meg:
 
-   * `Microsoft.Storage/storageAccounts`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
-   * `Microsoft.Network/publicIPAddresses`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
-   * `Microsoft.Network/virtualNetworks`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
-   * `Microsoft.Network/networkInterfaces`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
-   * `Microsoft.Compute/virtualMachines`. Tekintse meg a [sablonreferenciát](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+   * [**Microsoft.Storage/storageAccounts .**](/azure/templates/Microsoft.Storage/storageAccounts)
+   * [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses).
+   * [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups).
+   * [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks).
+   * [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces).
+   * [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines).
 
-     Érdemes megismerkedni a sablon alapvető működésével, mielőtt megkezdi annak testreszabását.
-5. Válassza a **Fájlmentés**>**másként** lehetőséget, ha a fájl egy példányát az **azuredeploy.json**nevű számítógépre szeretné menteni.
+    A sablon testreszabása előtt érdemes áttekinteni a sablonhivatkozást.
+
+1. Válassza a **Fájlmentés**>**másként** lehetőséget, ha a fájl egy példányát az **azuredeploy.json**nevű számítógépre szeretné menteni.
 
 ## <a name="modify-the-template"></a>A sablon módosítása
 
@@ -83,12 +85,12 @@ A meglévő sablont két helyen kell módosítania:
 A következő eljárással hajthatja végre a módosításokat:
 
 1. Nyissa meg az **azuredeploy.json** fájlt a Visual Studio Code-ban.
-2. Cserélje le a három **variable('storageAccountName')** **paraméterre('storageAccountName')** a teljes sablonban.
-3. Távolítsa el az alábbi változódefiníciót:
+1. Cserélje le a három **variable('storageAccountName')** **paraméterre('storageAccountName')** a teljes sablonban.
+1. Távolítsa el az alábbi változódefiníciót:
 
     ![Az Erőforrás-kezelő sablon feltételdiagramja](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
 
-4. Adja hozzá a sablonhoz az alábbi két paramétert:
+1. Adja hozzá a következő két paramétert a paraméterek szakasz elejéhez:
 
     ```json
     "storageAccountName": {
@@ -103,11 +105,13 @@ A következő eljárással hajthatja végre a módosításokat:
     },
     ```
 
+    A sablon Visual Studio-kódban való formázásához nyomja le az **[ALT]+[SHIFT]+F** billentyűkombinációt.
+
     A frissített paraméterdefiníció a következőképpen néz ki:
 
     ![Feltétel használata a Resource Managerben](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-parameters.png)
 
-5. Adja hozzá a következő kódsort a tárfiók-definíció elejéhez.
+1. Adja hozzá a következő kódsort a tárfiók-definíció elejéhez.
 
     ```json
     "condition": "[equals(parameters('newOrExisting'),'new')]",
@@ -118,7 +122,7 @@ A következő eljárással hajthatja végre a módosításokat:
     A frissített tárfiók-definíció a következőképpen néz ki:
 
     ![Feltétel használata a Resource Managerben](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
-6. Frissítse a virtuálisgép-erőforrás-definíció **storageUri** tulajdonságát a következő értékkel:
+1. Frissítse a virtuálisgép-erőforrás-definíció **storageUri** tulajdonságát a következő értékkel:
 
     ```json
     "storageUri": "[concat('https://', parameters('storageAccountName'), '.blob.core.windows.net')]"
@@ -126,20 +130,25 @@ A következő eljárással hajthatja végre a módosításokat:
 
     Ez a módosítás szükséges, ha egy eltérő erőforráscsoport alá tartozó másik tárfiókot használ.
 
-7. Mentse a módosításokat.
+1. Mentse a módosításokat.
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-Kövesse a [sablon telepítése a sablon](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template) megnyitásához a felhőshell, és töltse fel a módosított sablont, majd futtassa a következő PowerShell-parancsfájlt a sablon üzembe helyezéséhez.
+Kövesse a [sablon telepítése a sablon](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template) megnyitásához a Cloud Shell és töltse fel a módosított sablont, majd futtassa a következő PowerShell-parancsfájlt a sablon üzembe helyezéséhez.
+
+> [!IMPORTANT]
+> A tárfiók nevének egyedinek kell lennie az egész Azure rendszerben. A névnek csak kisbetűs vagy számok lehetnek. Nem lehet hosszabb 24 karakternél. A tárfiók neve a projekt neve az "áruház" hozzáfűzve. Győződjön meg arról, hogy a projekt neve és a létrehozott tárfiók neve megfelel a tárfiók nevének követelményeinek.
 
 ```azurepowershell
-$resourceGroupName = Read-Host -Prompt "Enter the resource group name"
-$storageAccountName = Read-Host -Prompt "Enter the storage account name"
+$projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name and resource names"
 $newOrExisting = Read-Host -Prompt "Create new or use existing (Enter new or existing)"
 $location = Read-Host -Prompt "Enter the Azure location (i.e. centralus)"
 $vmAdmin = Read-Host -Prompt "Enter the admin username"
 $vmPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
 $dnsLabelPrefix = Read-Host -Prompt "Enter the DNS Label prefix"
+
+$resourceGroupName = "${projectName}rg"
+$storageAccountName = "${projectName}store"
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment `
@@ -150,6 +159,8 @@ New-AzResourceGroupDeployment `
     -storageAccountName $storageAccountName `
     -newOrExisting $newOrExisting `
     -TemplateFile "$HOME/azuredeploy.json"
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 > [!NOTE]
@@ -159,11 +170,15 @@ Próbáljon meg egy másik üzembe helyezést a **newOrExisting** "meglévő" be
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével. Az erőforráscsoport törléséhez válassza a **Próbálja ki** a felhőrendszerhéj megnyitásához lehetőséget. A PowerShell-parancsfájl beillesztéséhez kattintson a jobb gombbal a rendszerhéj ablaktáblájára, és válassza a **Beillesztés parancsot.**
+Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével. Az erőforráscsoport törléséhez válassza a **Próbálja ki** a Cloud Shell megnyitásához lehetőséget. A PowerShell-parancsfájl beillesztéséhez kattintson a jobb gombbal a rendszerhéj ablaktáblájára, és válassza a **Beillesztés parancsot.**
 
 ```azurepowershell-interactive
-$resourceGroupName = Read-Host -Prompt "Enter the same resource group name you used in the last procedure"
+$projectName = Read-Host -Prompt "Enter the same project name you used in the last procedure"
+$resourceGroupName = "${projectName}rg"
+
 Remove-AzResourceGroup -Name $resourceGroupName
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 ## <a name="next-steps"></a>További lépések

@@ -9,38 +9,38 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.custom: include file
-ms.openlocfilehash: f097479b67a7b48eca4a2710db3bd7eed6ddc982
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11469d992e0f5669cd3fc1e3864627dd0b8ae23d
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77013665"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263343"
 ---
 A következő összegzi a kulcskorlátokat az általános elérhetőségben.
 
 ### <a name="sku-ingress-rates-and-capacities"></a>A Termékváltozat be- és kapacitásai
 
-Az S1 és S2 termékváltozatok díjai és kapacitásai rugalmasságot biztosítanak egy új Time Series Insights-környezet konfigurálásakor.
+Az S1 és S2 termékváltozatok díjai és kapacitásai rugalmasságot biztosítanak egy új Time Series Insights-környezet konfigurálásakor. A termékváltozat-kapacitás a napi be- és bájtok száma alapján jelzi a napi be- és bájtsebességet, amelyik előbb következik be. Vegye figyelembe, hogy a be- ésézés *percenként*imperget, és a **szabályozás** a token gyűjtő algoritmus használatával történik. A be- és be- és átakat 1 KB-os blokkokban mérik. Például egy 0,8 KB-os tényleges esemény egy eseményként, egy 2,6 KB-os esemény pedig három eseménynek számít.
 
 | S1 termékváltozat kapacitása | Be- és visszakamatemelési arány | Maximális tárolókapacitás
 | --- | --- | --- |
-| 1 | 1 GB (1 millió esemény) | 30 GB (30 millió esemény) havonta |
-| 10 | 10 GB (10 millió esemény) | 300 GB (300 millió esemény) havonta |
+| 1 | 1 GB (1 millió esemény) naponta | 30 GB (30 millió esemény) havonta |
+| 10 | 10 GB (10 millió esemény) naponta | 300 GB (300 millió esemény) havonta |
 
 | S2 termékváltozat kapacitása | Be- és visszakamatemelési arány | Maximális tárolókapacitás
 | --- | --- | --- |
-| 1 | 10 GB (10 millió esemény) | 300 GB (300 millió esemény) havonta |
-| 10 | 100 GB (100 millió esemény) | 3 TB (3 milliárd esemény) havonta |
+| 1 | 10 GB (10 millió esemény) naponta | 300 GB (300 millió esemény) havonta |
+| 10 | 100 GB (100 millió esemény) naponta | 3 TB (3 milliárd esemény) havonta |
 
 > [!NOTE]
 > A kapacitások lineárisan skáláznak, így a 2 kapacitású S1 termékváltozat támogatja a napi 2 GB (2 millió) eseményt és a 60 GB-os (60 millió esemény) havonta.
 
 S2 Termékváltozat-környezetek támogatása lényegesen több esemény havonta, és lényegesen nagyobb be- és kapacitással rendelkeznek.
 
-| SKU  | Események száma havonta  | Esemény mérete havonta  | Események száma percenként | Esemény mérete percenként  |
+| SKU  | Események száma havonta  | Események száma percenként | Esemény mérete percenként  |
 |---------|---------|---------|---------|---------|
-| S1     |   30 millió     |  30 GB     |  720    |  720 KB   |
- |S2     |   300 millió    |   300 GB   | 7,200   | 7200 KB  |
+| S1     |   30 millió   |  720    |  720 KB   |
+ |S2     |   300 millió   | 7,200   | 7200 KB  |
 
 ### <a name="property-limits"></a>Ingatlankorlátok
 

@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: 9345138e948d84e0ea3c804dbd7a4b3c21daca2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d21c7ed93ac2ce2ab61282707d57fbf43e0b71a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77668145"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261074"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Metrikariasztások dinamikus küszöbértékekkel az Azure Monitorban
 
@@ -61,7 +61,7 @@ Kiválaszthatja a riasztást, hogy az alábbi három feltétel valamelyikén akt
 
 ## <a name="what-do-the-advanced-settings-in-dynamic-thresholds-mean"></a>Mit jelentenek a dinamikus küszöbértékek speciális beállításai?
 
-**Sikertelen időszakok** – A dinamikus küszöbértékek lehetővé teszik a "Számmegsértések a riasztás aktiválásához" beállítást, egy bizonyos időablakon belül szükséges eltérések minimális számát a rendszer riasztásának kiemeléséhez (az alapértelmezett időablak négy eltérés 20 perc alatt). A felhasználó konfigurálhatja a hibás időszakokat, és kiválaszthatja, hogy mire kell figyelmeztetni a hibás időszakok és az időablak módosításával. Ez a képesség csökkenti az átmeneti tüskék által keltett riasztási zajt. Példa:
+**Sikertelen időszakok** – A dinamikus küszöbértékek lehetővé teszik a "Számmegsértések a riasztás aktiválásához" beállítást, egy bizonyos időablakon belül szükséges eltérések minimális számát a rendszer riasztásának kiemeléséhez (az alapértelmezett időablak négy eltérés 20 perc alatt). A felhasználó konfigurálhatja a hibás időszakokat, és kiválaszthatja, hogy mire kell figyelmeztetni a hibás időszakok és az időablak módosításával. Ez a képesség csökkenti az átmeneti tüskék által keltett riasztási zajt. Például:
 
 Ha riasztást szeretne kiváltani, ha a probléma 20 percig folyamatos, egy adott időszak 5 perces csoportjában 4 egymást követő alkalommal, használja a következő beállításokat:
 
@@ -93,7 +93,8 @@ Amikor először hoznak létre riasztási szabályt, a diagramon megjelenő küs
 
 ## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>Mennyi adat szükséges a riasztás aktiválásához?
 
-Ha új erőforrással rendelkezik, vagy hiányoznak a metrikaadatok, a dinamikus küszöbértékek nem indítanak riasztást három nap előtt, vagy 30 metrikaadat-minta áll rendelkezésre a pontos küszöbértékek biztosítása érdekében.
+Ha új erőforrással rendelkezik, vagy hiányoznak a metrikaadatok, a dinamikus küszöbértékek nem váltanak ki riasztásokat három nap előtt, és legalább 30 metrikaadat-minta áll rendelkezésre a pontos küszöbértékek biztosítása érdekében.
+A meglévő erőforrások elegendő metrikaadatokkal, dinamikus küszöbértékek azonnal riasztást.
 
 ## <a name="dynamic-thresholds-best-practices"></a>A dinamikus küszöbértékek – gyakorlati tanácsok
 

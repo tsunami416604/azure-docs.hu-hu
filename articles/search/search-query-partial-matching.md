@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: db60a864ff29ff9eccdcfbdc0bd63587375d4bbd
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 5a05f2973ac17460250fb3e80eb7bc0da9849940
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81114969"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262876"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Részleges kifejezésű keresés és különleges karakterekkel rendelkező minták (helyettesítő karakter, regex, minták)
 
@@ -22,6 +22,9 @@ A *részleges kifejezésű keresés* olyan lekérdezésekre utal, amelyek részl
 A részleges és a mintakeresés akkor lehet problémás, ha az index nem rendelkezik a várt formátumú kifejezésekkel. Az indexelés [lexikális elemzési fázisában](search-lucene-query-architecture.md#stage-2-lexical-analysis) (feltéve, hogy az alapértelmezett szabványos analizátor) a speciális karakterek elvesznek, az összetett és összetett karakterláncok feloszlanak, és a szóköz törlődik; amelyek mindegyike a mintalekérdezések sikertelensedéséhez vezethet, ha nem található egyezés. Például egy telefonszám `+1 (425) 703-6214` (tokenizált `"1"`, `"425"` `"703"`, `"6214"`, , ) nem `"3-62"` jelenik meg a lekérdezésben, mert az adott tartalom valójában nem létezik az indexben. 
 
 A megoldás egy olyan elemző meghívása, amely megőrzi a teljes karakterláncot, beleértve a szóközöket és szükség esetén speciális karaktereket, hogy részleges kifejezéseket és mintákat egyezhessen. A megoldás alapja egy ép karakterlánc kiegészítő mezőjének létrehozása, valamint tartalommegőrző elemző használata.
+
+> [!TIP]
+> Ismeri a postás és rest API-kat? [Töltse le a lekérdezési példák gyűjteménye](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/full-syntax-examples) lekérdezése részleges kifejezések és speciális karakterek ebben a cikkben leírt.
 
 ## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Mi a részleges keresés az Azure Cognitive Search-ben?
 
@@ -74,6 +77,7 @@ Amikor olyan elemzőt választ, amely teljes időtartamú jogkivonatokat hoz lé
 
 | Elemző | Viselkedésmódok |
 |----------|-----------|
+| [nyelvi elemzők](index-add-language-analyzers.md) | Megőrzi a kötőjeleket összetett szavakban vagy karakterláncokban, magánhangzómutációkban és igeformákban. Ha a lekérdezési minták kötőjeleket is tartalmaznak, elegendő lehet egy nyelvi elemző használata. |
 | [Kulcsszó](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) | A teljes mező tartalma egyetlen kifejezésként tokenálódik. |
 | [Szóköz](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html) | Csak a fehér tereken válik el. A kötőjeleket vagy más karaktereket tartalmazó kifejezéseket a csomag egyetlen jogkivonatként kezeli. |
 | [egyéni elemző](index-add-custom-analyzers.md) | (ajánlott) Egyéni analizátor létrehozása lehetővé teszi, hogy adja meg a tokenizer és a token szűrő. Az előző analizátorokat a hogy-is kell használni. Az egyéni analizátor lehetővé teszi, hogy válassza ki, mely tokenizers és token szűrők használata. <br><br>Az ajánlott kombináció a [kisméretű tokenszűrővel](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html)rendelkező [tokenizer kulcsszó.](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html) Önmagában az előre definiált [kulcsszóelemző](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) nem kisbetűs kisbetűs szöveget, ami a lekérdezések sikertelensítéséhez vezethet. Az egyéni analizátor egy mechanizmust biztosít a kisbetűs jogkivonat-szűrő hozzáadásához. |
@@ -151,7 +155,9 @@ Akár analizátorokat értékel, akár egy adott konfigurációval halad előre,
 
 ### <a name="use-built-in-analyzers"></a>Beépített analizátorok használata
 
-A beépített vagy előre definiált elemzők név szerint `analyzer` megadhatók egy meződefiníció tulajdonságán, és nincs szükség további konfigurációra az indexben. A következő példa bemutatja, `whitespace` hogyan kell beállítani az analizátor egy mezőben. Az elérhető beépített elemzőkről az [Előre definiált elemzők listájában](https://docs.microsoft.com/azure/search/index-add-custom-analyzers#predefined-analyzers-reference)talál további információt. 
+A beépített vagy előre definiált elemzők név szerint `analyzer` megadhatók egy meződefiníció tulajdonságán, és nincs szükség további konfigurációra az indexben. A következő példa bemutatja, `whitespace` hogyan kell beállítani az analizátor egy mezőben. 
+
+További forgatókönyveket és további információarról más beépített elemzők, lásd: [Előre definiált elemzők lista](https://docs.microsoft.com/azure/search/index-add-custom-analyzers#predefined-analyzers-reference). 
 
 ```json
     {

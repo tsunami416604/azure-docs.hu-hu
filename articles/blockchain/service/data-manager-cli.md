@@ -4,12 +4,12 @@ description: Blockchain Data Manager azure blockchain szolgáltatás létrehozá
 ms.date: 03/30/2020
 ms.topic: article
 ms.reviewer: ravastra
-ms.openlocfilehash: 5ceca96f760ab62ca7f3df9ad26139b9b4a3e5be
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: e490803fabeed7d6234bd6984acbfb9f5270e0c0
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529592"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254410"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>A Blockchain Data Manager konfigurálása az Azure CLI-vel
 
@@ -48,7 +48,7 @@ az group create --name myRG --location eastus
 
 ## <a name="create-instance"></a>Példány létrehozása
 
-A Blockchain Data Manager-példány egy Azure Blockchain Service tranzakciós csomópontot figyel. Egy példány rögzíti az összes nyers blokk és nyers tranzakciós adatokat a tranzakciócsomópont.
+A Blockchain Data Manager-példány egy Azure Blockchain Service tranzakciós csomópontot figyel. Egy példány rögzíti az összes nyers blokk és nyers tranzakciós adatokat a tranzakciócsomópont. Blockchain Data Manager közzéteszi **a RawBlockAndTransactionMsg** üzenetet, amely egy szuperhalmaza visszaad web3.eth [getBlock](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#getblock) és [getTransaction](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#gettransaction) lekérdezések.
 
 ``` azurecli
 az resource create \

@@ -8,57 +8,63 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: d6c1819366fede0b1e81e43bc92ed56af93b39fd
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 8b64a583c11e794c30e1de12eb66941874a25462
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81114963"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262220"
 ---
 # <a name="add-suggestions-or-autocomplete-to-your-azure-cognitive-search-application"></a>Javaslatok vagy automatikus kiegészítés hozzáadása az Azure Cognitive Search alkalmazáshoz
 
-Ebből a cikkből megtudhatja, hogy miként [használhatja](https://docs.microsoft.com/rest/api/searchservice/suggestions) a javaslatokat és [az automatikus kiegészítést](https://docs.microsoft.com/rest/api/searchservice/autocomplete) egy hatékony keresőmező létrehozásához, amely támogatja a beírási viselkedést.
+Ez a példa egy keresőmezőt mutat be, amely támogatja a beírási viselkedést. Két funkció létezik, amelyeket együtt vagy külön-külön használhat:
 
 + *A javaslatok* gépelés közben keresési eredményeket hoznak létre, ahol minden javaslat egyetlen találat vagy keresési dokumentum az indexből, amely megegyezik az eddig beírt adatokkal. 
 
 + *Az automatikus kiegészítés* a szavak vagy kifejezések "befejezésével" hozza létre a lekérdezéseket. Az eredmények visszaadása helyett egy lekérdezést hajt végre, amelyet ezután végrehajthat az eredmények visszaadására. A javaslatokhoz ugyanúgy, mint a lekérdezésben befejezett szó vagy kifejezés, az indexben lévő egyezésen alapul. A szolgáltatás nem kínál lekérdezéseket, amelyek nulla eredményt adnak vissza az indexben.
 
-A **dotnethowtoautocomplete** mintakódot letöltheti és futtathatja a szolgáltatások kiértékeléséhez. A mintakód egy előre összeállított indexet céloz meg, amely [et NYCJobs bemutató adatokkal töltötték](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)ki. A NYCJobs index tartalmaz egy [javaslatajánló konstrukciót,](index-add-suggesters.md)amely a javaslatok vagy az automatikus kiegészítés használatának követelménye. Használhatja az előkészített index üzemeltetett egy sandbox szolgáltatás, vagy [töltse fel a saját index](#configure-app) használatával egy adatbetöltő a NYCJobs mintamegoldás. 
+Mintakód bemutatja mind a javaslatokat, mind az automatikus kiegészítést c# és JavaScript nyelvi verziókban. 
 
-A **DotNetHowToAutocomplete** minta bemutatja mind a javaslatokat, mind az automatikus kiegészítést a C# és a JavaScript nyelvi verziókban. A C# fejlesztők az [Azure Cognitive Search .NET SDK-t](https://aka.ms/search-sdk)használó ASP.NET MVC-alapú alkalmazáson keresztül léphetnek át. Az automatikus kiegészítés és a javasolt lekérdezéshívások végrehajtásának logikája a HomeController.cs fájlban található. A JavaScript-fejlesztők az IndexJavaScript.cshtml fájlban találnak egyenértékű lekérdezési logikát, amely az [Azure Cognitive Search REST API-hoz](https://docs.microsoft.com/rest/api/searchservice/)intézett közvetlen hívásokat is tartalmazza. 
+A C# fejlesztők az [Azure Cognitive Search .NET SDK-t](https://aka.ms/search-sdk)használó ASP.NET MVC-alapú alkalmazáson keresztül léphetnek át. Az automatikus kiegészítés és a javasolt lekérdezéshívások végrehajtásának logikája a HomeController.cs fájlban található. 
+
+A JavaScript-fejlesztők az IndexJavaScript.cshtml fájlban találnak egyenértékű lekérdezési logikát, amely az [Azure Cognitive Search REST API-hoz](https://docs.microsoft.com/rest/api/searchservice/)intézett közvetlen hívásokat is tartalmazza. 
 
 Mindkét nyelvi verzió esetében az előtér-felhasználói élmény a [jQuery UI](https://jqueryui.com/autocomplete/) és [az XDSoft](https://xdsoft.net/jqplugins/autocomplete/) könyvtárakon alapul. Ezeket a könyvtárakat arra használjuk, hogy a javaslatokat és az automatikus kiegészítést támogató keresőmezőt hozzuk létre. A keresőmezőben gyűjtött bemenetek javaslatokkal és automatikus kiegészítési műveletekkel vannak párosítva, például a HomeController.cs vagy az IndexJavaScript.cshtml fájlban meghatározottakkal.
 
-Ez a gyakorlat végigvezeti a következő feladatokon:
-
-> [!div class="checklist"]
-> * Keresőmező megvalósítása JavaScript ben, és kérelmek kiadása javasolt egyezésekre vagy automatikus anamnézisre vonatkozó anamnézisben
-> * A C#-ban adja meg a javaslatokat és az automatikus kiegészítési műveleteket HomeController.cs
-> * JavaScript ben hívja meg a REST API-kat közvetlenül, hogy ugyanazt a funkciót
-
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure Cognitive Search szolgáltatás nem kötelező ebben a gyakorlatban, mert a megoldás egy élő sandbox szolgáltatást használ egy előkészített NYCJobs bemutató index. Ha ezt a példát a saját keresési szolgáltatásán szeretné futtatni, az utasításokat a [NYC-feladatok indexkonfigurálása című](#configure-app) témakörben találja.
++ [Visual Studio](https://visualstudio.microsoft.com/downloads/)
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/), bármilyen kiadásban. A mintakódot és az utasításokat az ingyenes közösségi kiadáson tesztelték.
+Az Azure Cognitive Search szolgáltatás nem kötelező ebben a gyakorlatban, mert a megoldás egy üzemeltetett szolgáltatás és NYCJobs bemutató index. Ha ezt az indexet saját keresési szolgáltatására szeretné létrehozni, olvassa el az utasításokat [nyc-feladatok indexlétrehozása](#configure-app) című témakörben. Ellenkező esetben használhatja a meglévő szolgáltatás és index egy JavaScript-ügyfélalkalmazás.
 
-* Töltse le a [DotNetHowToAutoComplete mintát.](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete)
+<!-- The sample is comprehensive, covering suggestions, autocomplete, faceted navigation, and client-side caching. Review the readme and comments for a full description of what the sample offers. -->
 
-A minta átfogó, amely javaslatokat, automatikus kiegészítés, köralapú navigáció és ügyféloldali gyorsítótárazás. Tekintse át a felolvasott és a megjegyzéseket a minta ajánlatainak teljes leírásáért.
+## <a name="download-files"></a>Fájlok letöltése
+
+Mintakód mind a C# és a JavaScript fejlesztők megtalálható a [DotNetHowToAutoComplete mappában](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete) az **Azure-Minták/search-dotnet-getting-started** GitHub tárház.
+
+A minta egy meglévő bemutató keresési szolgáltatást és egy előre összeállított indexet céloz meg, amely et [NYCJobs bemutató adatokkal](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)töltötték ki. A NYCJobs index tartalmaz egy [javaslatajánló konstrukciót,](index-add-suggesters.md)amely a javaslatok vagy az automatikus kiegészítés használatának követelménye.
 
 ## <a name="run-the-sample"></a>Minta futtatása
 
-1. Nyissa **meg az Automatikus kiegészítéstutorial.sln alkalmazást** a Visual Studióban. A megoldás egy ASP.NET MVC-projektet tartalmaz, amely kapcsolatban áll a NYC Jobs bemutató indexével.
+1. Nyissa **meg az Automatikus kiegészítéstutorial.sln alkalmazást** a Visual Studióban. A megoldás egy ASP.NET MVC-projektet tartalmaz, amely kapcsolatban áll egy meglévő keresési szolgáltatással és indexszel.
 
-2. A projekt futtatásához és az oldal kiválasztott böngészőbe való betöltéséhez nyomja le az F5 billentyűt.
+1. Frissítse a NuGet csomagokat:
+
+   1. A Megoldáskezelőben kattintson a jobb gombbal a **DotNetHowToAutoComplete** elemre, és válassza **a NuGet-csomagok kezelése parancsot.**  
+   1. Válassza a **Frissítések** lapot, jelölje ki az összes csomagot, és kattintson a **Frissítés gombra.** Fogadjon el bármilyen licencszerződést. Az összes csomag frissítéséhez egynél több átlépésre lehet szükség.
+
+1. Nyomja le az F5 billentyűt a projekt futtatásához, és töltse be a lapot egy böngészőbe.
 
 A képernyő felső részén látni fogja a C# vagy JavaScript kiválasztásának lehetőségét. A C# beállítás a böngészőből hívja be a HomeControllert, és az Azure Cognitive Search .NET SDK használatával olvassa be az eredményeket. 
 
 A JavaScript-beállítás közvetlenül a böngészőből hívja meg az Azure Cognitive Search REST API-t. Ez a beállítás általában észrevehetően jobb teljesítményt nyújt, mivel kiveszi a vezérlőt a folyamatból. Kiválaszthatja az igényeinek és a nyelvi beállításainak megfelelő lehetőséget. Számos automatikus kiegészítési példa van az oldalon, amelyek mindegyikhez útmutatást tartalmaznak. Mindegyik példa javasolt mintaszöveggel rendelkezik, amelyet kipróbálhat.  
 
+![Minta indítólap](media/search-autocomplete-tutorial/startup-page.png "Minta indítólap a localhost-ban")
+
 Próbáljon meg beírni néhány betűt a keresőmezőkbe, és figyelje meg, mi történik.
 
-## <a name="search-box"></a>Keresőmező
+## <a name="query-inputs"></a>Lekérdezési bemenetek
 
 Mind a C# és a JavaScript verziók, a keresőmező megvalósítása pontosan ugyanaz. 
 
@@ -229,7 +235,7 @@ A többi példa az oldalon kövesse ugyanazt a mintát, hogy adjunk találat kie
 
 ## <a name="javascript-example"></a>Példa JavaScript-re
 
-Az automatikus kiegészítés Javascript-implementációja és a javaslatok meghívja a REST API-t, az URI-t használva az index és a művelet meghatározásához. 
+Az automatikus kiegészítés JavaScript-implementációja és a javaslatok megkérik a REST API-t, az URI-t használva az index és a művelet megadásához. 
 
 A JavaScript implementációjának áttekintéséhez nyissa meg az **IndexJavaScript.cshtml fájlt.** Figyelje meg, hogy a jQuery ui automatikus kiegészítés függvény is a keresőmezőbe, gyűjtése keresési kifejezés bemenetek és aszinkron hívások at Azure Cognitive Search a javasolt egyezések vagy befejezett kifejezések lekérése. 
 
@@ -287,7 +293,7 @@ A 148-as vonalon található egy `autocompleteUri`parancsfájl, amely meghívja 
 
 <a name="configure-app"></a>
 
-## <a name="configure-nycjobs-to-run-on-your-service"></a>NYCJobs konfigurálása a szolgáltatás futtatásához
+## <a name="create-an-nycjobs-index"></a>NYCJobs-index létrehozása
 
 Eddig a házigazdája NYCJobs demo indexet használta. Ha azt szeretné, hogy teljes mértékben látható legyen az összes kód, beleértve az indexet is, kövesse az alábbi utasításokat az index létrehozásához és betöltéséhez a saját keresési szolgáltatásában.
 
@@ -318,4 +324,3 @@ Következő lépésként próbálja meg integrálni a javaslatokat és az automa
 > [Rest API-javaslatok](https://docs.microsoft.com/rest/api/searchservice/autocomplete)
 > [rest API-mezők](https://docs.microsoft.com/rest/api/searchservice/suggestions)
 > [indexattribútumának automatikus kiegészítése az Index REST API-n](https://docs.microsoft.com/rest/api/searchservice/create-index)
-

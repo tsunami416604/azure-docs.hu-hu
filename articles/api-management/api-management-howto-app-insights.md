@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 12aeea8393a00d7d2662c826f847265bdbdc0119
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 48a83fad3395f6ecf06fb1f1ba95aa1b06a53431
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75442716"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259136"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Az Azure API Management integrációja az Azure Application Insightsszal
 
@@ -51,7 +51,7 @@ Az Azure Application Insights használata előtt először létre kell hoznia a 
     ![Az App Insights naplózója](media/api-management-howto-app-insights/apim-app-insights-logger-2.png)  
 
 > [!NOTE]
-> A jelenet mögött egy [logger](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger/createorupdate) entitás jön létre az API Management-példányban, amely az Application Insights-példány Instrumentation kulcsa.
+> A jelenet mögött egy [logger](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger/createorupdate) entitás jön létre az API Management-példányban, amely az Application Insights-példány Instrumentation kulcsa.
 
 ## <a name="enable-application-insights-logging-for-your-api"></a>Az Application Insights-naplózás engedélyezése az API-hoz
 
@@ -70,7 +70,7 @@ Az Azure Application Insights használata előtt először létre kell hoznia a 
 > A **testmező első bájtjában** az alapértelmezett **0** érték felülbírálása jelentősen csökkentheti az API-k teljesítményét.
 
 > [!NOTE]
-> A jelenet mögött egy "applicationinsights" nevű [diagnosztikai](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/diagnostic/createorupdate) entitás jön létre az API szintjén.
+> A jelenet mögött egy "applicationinsights" nevű [diagnosztikai](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/diagnostic/createorupdate) entitás jön létre az API szintjén.
 
 | Beállítás neve                        | Érték típusa                        | Leírás                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

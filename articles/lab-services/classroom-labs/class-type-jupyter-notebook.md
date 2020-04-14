@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: 371c2186d44469a22b138255fb513761a9be4437
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 222f5647248d27c3bdfabd0feaeb66dd9f543652
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478220"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257725"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Állítson be egy labort az adatelemzés tanítására a Python és a Jupyter notebookok segítségével
 
@@ -37,7 +37,7 @@ Engedélyezze az alábbi táblázatban leírt beállításokat a tesztkörnyezet
 | Piactér képe | Engedélyezze az [adatelemzési virtuális gép – Windows 2019-lemezkép](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) a laborfiókon belüli használatra. |
 
 >[!TIP]
->Ez a cikk a Windows Server operációs rendszert használó sablongépek konfigurálására összpontosít.  Az is lehetséges, hogy hozzon létre egy adatelemzési osztály Python és Jupyter notebookok segítségével [Data Science Virtual Machine for Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) rendszeraz Azure Marketplace-en.
+>Ez a cikk a Windows Server operációs rendszert használó sablongépek konfigurálására összpontosít.  Az is lehetséges, hogy hozzon létre egy adatelemzési osztály Python és Jupyter notebookok segítségével [Data Science Virtual Machine for Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) rendszeraz Azure Marketplace-en.
 
 ### <a name="lab-settings"></a>Labor beállításai
 

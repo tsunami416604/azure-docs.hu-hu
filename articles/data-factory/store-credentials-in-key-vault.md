@@ -8,14 +8,14 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 04/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 1418205843fefc76db4e73832736b308d0cc79a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6720a018cdc3fff95192b0956b3d1040be263ab2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76122610"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261864"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Hitelesítő adatok tárolása az Azure Key Vaultban
 
@@ -32,7 +32,7 @@ Ez a funkció az adat-előállító felügyelt identitásra támaszkodik. Ismerj
 Az Azure Key Vaultban tárolt hitelesítő adatokra való hivatkozáshoz a következőket kell tenni:
 
 1. **Az adat-előállító felügyelt identitás lekéréséhez** másolja a "Felügyelt identitásobjektum-azonosító" értékét a gyárral együtt. Ha ADF szerzői felhasználói felületet használ, a felügyelt identitásobjektum-azonosító megjelenik az Azure Key Vault hozadékablakában; az Azure Portalról is lekérheti, olvassa el az [adat-előállító felügyelt identitás lekérése című hivatkozást.](data-factory-service-identity.md#retrieve-managed-identity)
-2. **Adja meg a felügyelt identitás-hozzáférést az Azure Key Vaulthoz.** A key vaultban -> Access-szabályzatok -> Új -> a felügyelt identitás hozzáadása a felügyelt identitás, hogy **engedélyt kapjon** a titkos engedélyek legördülő. Ez lehetővé teszi, hogy ez a kijelölt gyár hozzáférést titkos kulcstartóban.
+2. **Adja meg a felügyelt identitás-hozzáférést az Azure Key Vaulthoz.** A key vaultban –> Access-> Access Policy -> Access Policy, keressen erre a felügyelt identitásra, hogy **engedélyt kapjon** titkos engedélyek legördülő legördülő menüben. Ez lehetővé teszi, hogy ez a kijelölt gyár hozzáférést titkos kulcstartóban.
 3. **Hozzon létre egy összekapcsolt szolgáltatást, amely az Azure Key Vault.** Tekintse meg az [Azure Key Vault csatolt szolgáltatás.](#azure-key-vault-linked-service)
 4. **Hozzon létre adattárhoz csatolt szolgáltatást, amelyen belül hivatkozik a megfelelő titkos kulcs a key vaultban tárolt.** Tekintse meg a [key vaultban tárolt hivatkozási titkos kulcsot.](#reference-secret-stored-in-key-vault)
 
@@ -47,13 +47,13 @@ Az Azure Key Vaulthoz csatolt szolgáltatás a következő tulajdonságokat tám
 
 **A szerzői felhasználói felület használata:**
 
-Kattintson **a Kapcsolatok** -> **csatolt szolgáltatások** -> **+Új** -> keresés az "Azure Key Vault" kifejezésre:
+Válassza **a Kapcsolatok** -> kapcsolt szolgáltatások**új****lehetőséget.** ->  Az Új csatolt szolgáltatásban keresse meg és válassza az "Azure Key Vault" lehetőséget:
 
-![Keresés AKV](media/store-credentials-in-key-vault/search-akv.png)
+![Keresés az Azure Key Vaultban](media/store-credentials-in-key-vault/search-akv.png)
 
 Válassza ki a kiosztott Azure Key Vault, ahol a hitelesítő adatok tárolása. A **Kapcsolat tesztelésével** ellenőrizheti, hogy az AKV-kapcsolat érvényes-e. 
 
-![AKV konfigurálása](media/store-credentials-in-key-vault/configure-akv.png)
+![Az Azure Key Vault konfigurálása](media/store-credentials-in-key-vault/configure-akv.png)
 
 **JSON példa:**
 
@@ -87,7 +87,7 @@ Válassza ki az **Azure Key Vault** titkos mezők létrehozása közben a kapcso
 >[!TIP]
 >A kapcsolati karakterláncot használó összekötők esetében az SQL Server, a Blob storage stb., választhat, hogy csak a titkos mezőt tárolja, például a jelszót az AKV-ban, vagy a teljes kapcsolati karakterláncot a KV-ben tárolja. Mindkét lehetőség megtalálható a felhasználói felületen.
 
-![AKV titkos kulcsot konfigurálása](media/store-credentials-in-key-vault/configure-akv-secret.png)
+![Az Azure Key Vault titkos kulcsának konfigurálása](media/store-credentials-in-key-vault/configure-akv-secret.png)
 
 **JSON példa: (lásd a "jelszó" részt)**
 

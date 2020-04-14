@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 362b35af191c1caebeb30149ce060a5366182ec4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cffefb294aaeeb4d66358ceae72c98becd04cc58
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289419"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261958"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mysql"></a>Azure biztonsági alapkonfiguráció a MySQL Azure-adatbázisához
 
@@ -134,7 +134,7 @@ A Szolgáltatáscímke használatának ismertetése a MySQL-hez készült Azure 
 
 Az Azure-szabályzat konfigurálása és kezelése:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure Policy-minták hálózatépítéshez:https://docs.microsoft.com/azure/governance/policy/samples/#network
+Azure Policy-minták hálózatépítéshez:https://docs.microsoft.com/azure/governance/policy/samples/
 
 Azure Blueprint létrehozása:https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
@@ -904,7 +904,7 @@ A Kulcstartó hitelesítése felügyelt identitással:https://docs.microsoft.com
 
 **Útmutató:** Az Azure Database for MySQL-példány támogatja az Azure Active Directory-hitelesítést (előzetes verzióban) az adatbázisok eléréséhez.  Az Azure Database for MySQL-példány létrehozása során hitelesítő adatokat biztosít egy rendszergazdai felhasználó számára. Ezzel a rendszergazdával további adatbázis-felhasználókat hozhat létre.  
 
-Az Azure-alapú Virtuális gépek vagy az Azure App Service-en futó webalkalmazások esetében, amelyek az Azure Database for MySQL-példányok elérésére szolgálnak, a Managed Service Identity és az Azure Key Vault használatával tárolja és lekéri a MySQL-hez készült Azure Database hitelesítő adatait, és kéri be a hitelesítő adatokat Példány. Győződjön meg arról, hogy a Key Vault ideiglenes törlése engedélyezve van.
+Az Azure-beli virtuális gépek vagy az Azure App Service-en futó webalkalmazások esetében, amelyek az Azure Database for MySQL-példányok elérésére szolgálnak, az Azure Key Vaultszolgáltatással együtt használja a Felügyelt szolgáltatás identitását az Azure Database for MySQL-példány hitelesítő adatainak tárolásához és lekéréséhez. Győződjön meg arról, hogy a Key Vault ideiglenes törlése engedélyezve van.
 
 Felügyelt identitások használatával automatikusan felügyelt identitást biztosítaz Azure-szolgáltatásoknak az Azure Active Directoryban (AD). Felügyelt identitások lehetővé teszi, hogy hitelesítse az Azure AD-hitelesítést támogató szolgáltatások, beleértve a Key Vault, hitelesítő adatok nélkül a kódot.
 

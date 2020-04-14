@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/22/2019
-ms.openlocfilehash: 1e559309b8e8d9768ca2f79dabfb01ec6086a961
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.date: 04/10/2019
+ms.openlocfilehash: b8d7f995997b828c2323b3e6934b97354c2f8c8b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348717"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255243"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>A naplóadatokhoz és a munkaterületekhez való hozzáférés kezelése az Azure Monitorban
 
@@ -27,7 +27,7 @@ Ez a cikk bemutatja, hogyan kezelheti a naplókhoz való hozzáférést, és hog
 
 Megtekintheti a munkaterületen konfigurált [hozzáférés-vezérlési módot](design-logs-deployment.md) az Azure Portalon vagy az Azure PowerShellsegítségével.  Ezt a beállítást az alábbi támogatott módszerek egyikével módosíthatja:
 
-* Azure portál
+* Azure Portal
 
 * Azure PowerShell
 
@@ -91,7 +91,7 @@ Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 }
 ```
 
-### <a name="using-a-resource-manager-template"></a>Erőforrás-kezelő sablon használata
+### <a name="using-a-resource-manager-template"></a>Resource Manager-sablon használata
 
 A hozzáférési mód konfigurálásához egy Azure Resource Manager-sablonban állítsa be az **enableLogAccessUsingOnlyResourcePermissions** szolgáltatás jelzőjét a munkaterületen az alábbi értékek egyikére.
 
@@ -273,7 +273,7 @@ Ha csak a _SecurityBaseline_ táblához való hozzáféréssel szeretne létreho
 
  Az egyéni naplók adatforrásokból, például egyéni naplókból és HTTP-adatgyűjtő API-ból jönnek létre. A napló típusának azonosításának legegyszerűbb módja a [naplóséma Egyéni naplók csoportjában](../log-query/get-started-portal.md#understand-the-schema)felsorolt táblák ellenőrzése.
 
- Jelenleg nem adhat hozzáférést az egyes egyéni naplókhoz, de az összes egyéni naplóhoz hozzáférést adhat. Ha az összes egyéni naplóhoz hozzáféréssel rendelkező szerepkört szeretne létrehozni, hozzon létre egyéni szerepkört a következő műveletekkel:
+ Nem adhat hozzáférést az egyes egyéni naplókhoz, de az összes egyéni naplóhoz hozzáférést adhat. Ha az összes egyéni naplóhoz hozzáféréssel rendelkező szerepkört szeretne létrehozni, hozzon létre egyéni szerepkört a következő műveletekkel:
 
 ```
 "Actions":  [
@@ -282,6 +282,9 @@ Ha csak a _SecurityBaseline_ táblához való hozzáféréssel szeretne létreho
     "Microsoft.OperationalInsights/workspaces/query/Tables.Custom/read"
 ],
 ```
+Az egyéni naplókhoz való hozzáférés kezelésének másik módszere, ha hozzárendeli őket egy Azure-erőforráshoz, és az erőforrás-környezet paradigma használatával kezeli a hozzáférést. A módszer használatához meg kell adnia az erőforrás-azonosítót az [x-ms-AzureResourceId](data-collector-api.md#request-headers) fejlécben, amikor az adatok at a [HTTP Data Collector API-n](data-collector-api.md)keresztül történik a Log Analytics szolgáltatásba. Az erőforrás-azonosítónak érvényesnek kell lennie, és hozzáférési szabályokat kell alkalmaznirá. A naplók feldolgozása után azok számára, akik olvasási hozzáféréssel rendelkeznek az erőforráshoz, az itt leírtak szerint.
+
+Előfordulhat, hogy az egyéni naplók olyan forrásokból származnak, amelyek nem kapcsolódnak közvetlenül egy adott erőforráshoz. Ebben az esetben hozzon létre egy erőforráscsoportot a naplókhoz való hozzáférés kezeléséhez. Az erőforráscsoportnak nincs költsége, de érvényes erőforrás-azonosítót ad az egyéni naplókhoz való hozzáférés szabályozásához. Ha például egy adott tűzfal egyéni naplókat küld, hozzon létre egy "MyFireWallLogs" nevű erőforráscsoportot, és győződjön meg arról, hogy az API-kérelmek tartalmazzák a "MyFireWallLogs" erőforrásazonosítót. A tűzfal naplórekordjai ezután csak azok számára érhetők el, akik hozzáférést kaptak a MyFireWallLogs vagy a teljes munkaterületi hozzáféréssel rendelkező felhasználókszámára.          
 
 ### <a name="considerations"></a>Megfontolandó szempontok
 

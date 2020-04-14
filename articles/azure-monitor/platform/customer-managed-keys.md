@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 04/08/2020
-ms.openlocfilehash: 5b99e2f31d82630e2adc138c11485201a617af81
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.date: 04/12/2020
+ms.openlocfilehash: dbd217c7135172c52a5ec7459930977960c452aa
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80892325"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260861"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Az Azure Monitor ügyféláltal felügyelt kulcskonfigurációja 
 
@@ -95,8 +95,7 @@ Az eljárás jelenleg nem támogatott a felhasználói felületen, és a létes�
 Például:
 
 ```rst
-GET
-https://management.azure.com/subscriptions/<subscriptionId>/resourcegroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>?api-version=2015-11-01-preview
+GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview
 Authorization: Bearer eyJ0eXAiO....
 ```
 
@@ -106,8 +105,8 @@ A jogkivonatot az alábbi módszerek egyikével szerezheti be:
 
 1. Használja [az alkalmazásregisztrációk](https://docs.microsoft.com/graph/auth/auth-concepts#access-tokens) módszert.
 2. Az Azure Portalon
-    1. Navigálás az Azure Portalra a "fejlesztői eszköz (F12) segítségével
-    1. Keresse meg az engedélyezési karakterláncot a "Fejlécek kérése" alatt a "batch?api-version" példányok egyikében. Úgy néz ki, mint: \<\>"engedély: bemutatóra token ". 
+    1. Navigálás az Azure Portalra a "fejlesztői eszköz" (F12)
+    1. Keresse meg az engedélyezési karakterláncot a "Fejlécek kérése" alatt a "batch?api-version" példányok egyikében. Úgy néz ki, mint: "engedély: hordozója eyJ0eXAiO ....". 
     1. Másolja és adja hozzá az API-híváshoz az alábbi példák szerint.
 3. Nyissa meg az Azure REST dokumentációs webhelyét. Nyomja meg a "Próbálja ki" gombot bármely API-n, és másolja a tulajdonosi jogkivonatot.
 
@@ -115,29 +114,52 @@ A jogkivonatot az alábbi módszerek egyikével szerezheti be:
 
 Ebben a konfigurációs eljárásban néhány művelet aszinkron módon fut, mert nem hajtható végre gyorsan. Az aszinkron műveletre adott válasz kezdetben egy 200-as HTTP-állapotkódot (OK) és fejlécet ad vissza *az Azure-AsyncOperation* tulajdonsággal, ha elfogadják:
 ```json
-"Azure-AsyncOperation": "https://management.azure.com/subscriptions/ subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2015-11-01-preview"
+"Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-03-01-preview"
 ```
 
 Az aszinkron művelet állapotát úgy ellenőrizheti, hogy get-kérelmet küld az *Azure-AsyncOperation* fejlécértékének:
 ```rst
-GET "https://management.azure.com/subscriptions/ subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2015-11-01-preview
+GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2020-03-01-preview
 Authorization: Bearer <token>
 ```
 
-A művelet válaszának törzse információt tartalmaz a műveletről, és a *Status* tulajdonság jelzi annak állapotát. Az aszinkron műveletek ebben a konfigurációs eljárásban és azok állapotai a következők:
+A válasz a művelettel és annak *állapotával*kapcsolatos információkat tartalmaz. Ez lehet az alábbiak egyike:
 
-***Fürterőforrás* létrehozása**
-* ProvisioningAccount - Az ADX-fürt kiépítése 
-* Sikeres - Az ADX-fürt kiépítése befejeződött
+A művelet folyamatban van
+```json
+{
+    "id": "Azure-AsyncOperation URL value from the GET operation",
+    "name": "operation-id", 
+    "status" : "InProgress", 
+    "startTime": "2017-01-06T20:56:36.002812+00:00",
+}
+```
 
-**Engedélyek megadása a Key Vaultszámára**
-* Frissítés - A kulcsazonosító részleteinek frissítése folyamatban van
-* Sikeres - Frissítés befejeződött
+A művelet befejeződött
+```json
+{
+    "id": "Azure-AsyncOperation URL value from the GET operation",
+    "name": "operation-id", 
+    "status" : "Succeeded", 
+    "startTime": "2017-01-06T20:56:36.002812+00:00",
+    "endTime": "2017-01-06T20:56:56.002812+00:00",
+}
+```
 
-**A Log Analytics-munkaterületek társítása**
-* Összekapcsolás - A munkaterület-társítás a fürthöz folyamatban van
-* Sikeres - Társítás befejezve
-
+A művelet nem sikerült
+```json
+{
+    "id": "Azure-AsyncOperation URL value from the GET operation",
+    "name": "operation-id", 
+    "status" : "Failed", 
+    "startTime": "2017-01-06T20:56:36.002812+00:00",
+    "endTime": "2017-01-06T20:56:56.002812+00:00",
+    "error" : { 
+        "code": "error-code",  
+        "message": "error-message" 
+    }
+}
+```
 
 ### <a name="subscription-whitelisting"></a>Előfizetés engedélyezési listája
 
@@ -149,6 +171,8 @@ A CMK-képesség egy korai hozzáférési funkció. Azok az előfizetések, *ame
 ### <a name="storing-encryption-key-kek"></a>Titkosítási kulcs tárolása (KEK)
 
 Hozzon létre vagy használjon egy Azure Key Vault, amely már létre kell hoznia, vagy az adatok titkosításához használt kulcs importálása. Az Azure Key Vault kell konfigurálni, mint helyreállítható, hogy megvédje a kulcsot, és az adatokhoz való hozzáférés az Azure Monitorban. Ezt a konfigurációt a Key Vault tulajdonságai alatt ellenőrizheti, a *helyreállítható törlés* és *a kiürítési védelem* is engedélyezve kell lennie.
+
+![A védelem helyreállítható és kiürítése](media/customer-managed-keys/soft-purge-protection.png)
 
 Ezek a beállítások a CLI-n és a PowerShellen keresztül érhetők el:
 - [Helyreállítható törlés](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
@@ -189,11 +213,10 @@ Az identitás a *létrehozás* időpontjában van hozzárendelve a fürterőforr
 
 **Válasz**
 
-200 OK és fejléc, ha elfogadják.
->[!Important]
-> A szolgáltatás korai hozzáférési időszakában az ADX-fürt manuálisan van kiépítve. Bár az alulunderya ADX-fürt kiépítése egy ideig tart, kétféleképpen ellenőrizheti a kiépítési állapotot:
-> 1. Másolja az *Azure-AsyncOperation URL-értékét* a válaszból, és használja azt az [aszinkron műveletekben](#asynchronous-operations-and-status-check) a művelet állapotának ellenőrzéséhez
-> 2. GET-kérelmet küldjön a *fürterőforrásra,* és tekintse meg a *provisioningState* értéket. A *kiépítés során a kiépítés,* és *sikeres,* ha befejeződött.
+200 OK és fejléc.
+A szolgáltatás korai hozzáférési időszakában az ADX-fürt manuálisan van kiépítve. Bár az alulunderya ADX-fürt kiépítése egy ideig tart, kétféleképpen ellenőrizheti a kiépítési állapotot:
+1. Másolja az Azure-AsyncOperation URL-értékét a válaszból, és kövesse az [aszinkron műveletek állapotának ellenőrzését.](#asynchronous-operations-and-status-check)
+2. GET-kérelmet küldjön a *fürterőforrásra,* és tekintse meg a *provisioningState* értéket. A *kiépítés során a kiépítés,* és *sikeres,* ha befejeződött.
 
 ### <a name="azure-monitor-data-store-adx-cluster-provisioning"></a>Az Azure Monitor adattárának (ADX-fürt) kiépítése
 
@@ -205,7 +228,7 @@ Authorization: Bearer <token>
 ```
 
 > [!IMPORTANT]
-> Másolja és mentse a választ, mivel szüksége lesz a részleteket a későbbi lépésekben
+> Másolja és mentse a választ, mivel szüksége lesz a részletekre a következő lépésekben.
 
 **Válasz**
 
@@ -260,11 +283,11 @@ Frissítse a *fürterőforrás* KeyVaultProperties a kulcsazonosító adatait.
 
 Ez az Erőforrás-kezelő kérés aszinkron művelet.
 
->[!Warning]
+> [!Warning]
 > Meg kell adnia egy teljes *törzset* a fürterőforrás-frissítésben, amely tartalmazza *az identitást,* *a termékku-t*, *a KeyVaultProperties tulajdonságot* és *a helyet.* Ha hiányoznak a *KeyVaultProperties* adatai, a kulcsazonosító t eltávolítja a *fürterőforrásból,* és a kulcs [visszavonását](#cmk-kek-revocation)okozza.
 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -290,11 +313,10 @@ A "KeyVaultProperties" a Key Vault kulcsazonosítójának adatait tartalmazza.
 
 **Válasz**
 
-200 OK és fejléc, ha elfogadják.
->[!Important]
-> A kulcsazonosító propagálása néhány percet vesz igénybe. A kiépítési állapotot kétféleképpen ellenőrizheti:
-> 1. Másolja az *Azure-AsyncOperation URL-értékét* a válaszból, és használja azt az [aszinkron műveletekben](#asynchronous-operations-and-status-check) a művelet állapotának ellenőrzéséhez
-> 2. GET-kérelem küldése *Cluster* a fürterőforrásra, és tekintse meg a *KeyVaultProperties tulajdonságait.* A legutóbb frissített kulcsazonosító adatait a válaszban kell megadni.
+200 OK és fejléc.
+A kulcsazonosító propagálása néhány percet vesz igénybe. A kiépítési állapotot kétféleképpen ellenőrizheti:
+1. Másolja az Azure-AsyncOperation URL-értékét a válaszból, és kövesse az [aszinkron műveletek állapotának ellenőrzését.](#asynchronous-operations-and-status-check)
+2. GET-kérelem küldése *Cluster* a fürterőforrásra, és tekintse meg a *KeyVaultProperties tulajdonságait.* A legutóbb frissített kulcsazonosító adatait a válaszban kell megadni.
 
 A fürterőforrásgetkérő *Cluster* kérésre adott válasznak így kell kinéznie, ha a kulcsazonosító frissítése befejeződött:
 
@@ -330,8 +352,6 @@ A fürterőforrásgetkérő *Cluster* kérésre adott válasznak így kell kiné
 ### <a name="workspace-association-to-cluster-resource"></a>Munkaterület-társítás *fürterőforráshoz*
 Az Application Insights CMK-konfiguráció, kövesse a függelék tartalmát ebben a lépésben.
 
-Ez az Erőforrás-kezelő kérés aszinkron művelet.
-
 A művelet végrehajtásához mind a munkaterülethez, mind a *fürterőforráshoz* "írási" engedélyekkel kell rendelkeznie, amelyek a következő műveleteket tartalmazzák:
 
 - A munkaterületen: Microsoft.OperationalInsights/workspaces/write
@@ -345,7 +365,7 @@ A művelet végrehajtásához mind a munkaterülethez, mind a *fürterőforrásh
 Ez az Erőforrás-kezelő kérés aszinkron művelet.
 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2019-08-01-preview 
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-03-01-preview 
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -358,15 +378,13 @@ Content-type: application/json
 
 **Válasz**
 
-200 OK és fejléc, ha elfogadják.
->[!Important]
-> Akár 90 percig is képes. A munkaterületekre bevitt adatokat a rendszer csak a sikeres munkaterületek társítása után titkosítva tárolja a felügyelt kulccsal.
-> A munkaterület-társítás állapotának ellenőrzéséhez másolja az *Azure-AsyncOperation URL-értékét* a válaszból, és használja azt az [aszinkron műveletekben](# asynchronous-operations-and-status-check) a művelet állapotának ellenőrzéséhez.
-
-A munkaterülethez társított *fürterőforrást* úgy ellenőrizheti, hogy get-kérést küld [a munkaterületeknek – a](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) válasz lekérése és megfigyelése. A *fürterőforrás-azonosító* a *Cluster* fürterőforrás-azonosítón jelzi.
+200 OK és fejléc.
+A beadott adatok tárolása a felügyelt kulccsal a társítási művelet után titkosítva történik, ami akár 90 percet is igénybe vehet. A munkaterület-társítás állapotát kétféleképpen ellenőrizheti:
+1. Másolja az Azure-AsyncOperation URL-értékét a válaszból, és kövesse az [aszinkron műveletek állapotának ellenőrzését.](#asynchronous-operations-and-status-check)
+2. [Munkaterületek](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) küldése – Kérés kérése és a válasz megfigyelése, a társított munkaterület fürterőforrás-azonosítóval fog rendelkezni a "szolgáltatások" alatt.
 
 ```rest
-GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview
+GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview
 ```
 
 **Válasz**
@@ -455,7 +473,7 @@ Az összes adat elérhető a kulcsrotációs művelet után, beleértve a rotác
 - Erőforráscsoport összes *fürterőforrásának* beszereznie:
 
   ```rst
-  GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2019-08-01-preview
+  GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
   Authorization: Bearer <token>
   ```
     
@@ -492,7 +510,7 @@ Az összes adat elérhető a kulcsrotációs művelet után, beleértve a rotác
 - Az összes *fürterőforrás* beszereznie egy előfizetéshez:
 
   ```rst
-  GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2019-08-01-preview
+  GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
   Authorization: Bearer <token>
   ```
     
@@ -503,8 +521,7 @@ Az összes adat elérhető a kulcsrotációs művelet után, beleértve a rotác
 - Törölje a *fürterőforrást* – a rendszer helyreállító törlési műveletet hajt végre, amely lehetővé teszi a fürterőforrás, az adatok és a kapcsolódó munkaterületek 14 napon belüli helyreállítását, függetlenül attól, hogy a törlés véletlen vagy szándékos volt-e. A *fürterőforrás* neve továbbra is fenntartva marad a helyreállítható törlési időszakban, és nem hozhat létre új fürtöt ezzel a névvel. A helyreállítható törlési időszak után a *fürterőforrás* és -adatok nem állíthatók helyre. A társított munkaterületek nincsenek *Cluster* társítva a fürterőforrásból, és az új adatok at a megosztott tárolóba tárolják, és a Microsoft kulccsal titkosítják.
 
   ```rst
-  DELETE
-  https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+  DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
   Authorization: Bearer <token>
   ```
 
@@ -540,8 +557,10 @@ Ez az erőforrás köztes identitáskapcsolatként használatos a Key Vault és 
 
 **Létrehozás**
 
+Ez az Erőforrás-kezelő kérés aszinkron művelet.
+
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -562,10 +581,10 @@ Content-type: application/json
 
 **Válasz**
 
-202 Elfogadva. Ez egy szabványos Erőforrás-kezelő válasz aszinkron műveletekhez.
-
->[!Important]
-> Az aluli ADX-fürt kiépítése néhány percet vesz igénybe. Ellenőrizheti a létesítési állapot, amikor a GET REST API-hívás végrehajtása a *fürt* erőforrás, és a *provisioningState* érték vizsgálata. A *kiépítés során a kiépítés* és a "Sikeres" kiépítés közben.
+200 OK és fejléc.
+A szolgáltatás korai hozzáférési időszakában az ADX-fürt manuálisan van kiépítve. Bár az alulunderya ADX-fürt kiépítése egy ideig tart, kétféleképpen ellenőrizheti a kiépítési állapotot:
+1. Másolja az Azure-AsyncOperation URL-értékét a válaszból, és kövesse az [aszinkron műveletek állapotának ellenőrzését.](#asynchronous-operations-and-status-check)
+2. GET-kérelmet küldjön a *fürterőforrásra,* és tekintse meg a *provisioningState* értéket. A *kiépítés során a kiépítés,* és *sikeres,* ha befejeződött.
 
 ### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>Összetevő társítása *fürterőforráshoz* összetevők használatával [– API létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate)
 
@@ -579,7 +598,7 @@ A művelet végrehajtásához mind az összetevőre, mind a *fürterőforrásra*
 > Annak ellenőrzéséhez, hogy az ADX-fürt ki van-e építve, hajtsa végre a *FÜRTerőforrás* GET REST API-t, és ellenőrizze, hogy a *provisioningState* érték *sikeres-e.*
 
 ```rst
-GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
 Authorization: Bearer <token>
 ```
 
@@ -614,7 +633,7 @@ Authorization: Bearer <token>
 ```
 
 > [!IMPORTANT]
-> Másolja és tartsa meg az "elv-id" értéket, mivel szüksége lesz rá a következő lépésekben.
+> Másolja és tartsa meg a választ, mivel szüksége lesz rá a következő lépésekben.
 
 **Összetevő társítása**
 

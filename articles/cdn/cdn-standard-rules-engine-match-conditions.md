@@ -2,17 +2,17 @@
 title: Feltételek egyeztetése az Azure CDN szabványos szabálymotorjában | Microsoft dokumentumok
 description: Az Azure Content Delivery Network (Azure CDN) szabványos szabályok motorjában az egyezési feltételekre vonatkozó referenciadokumentáció.
 services: cdn
-author: mdgattuso
+author: asudbring
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
-ms.author: magattus
-ms.openlocfilehash: 425266e2a7ca42bb17ca598ddfc2f2b86591f32e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: b8050b973027ac91ede0ba98f4d1c76831da9828
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74900181"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259926"
 ---
 # <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>Feltételek egyeztetése az Azure CDN szabványos szabálymotorjában
 
@@ -110,7 +110,7 @@ Nem IP-egyezés | IP-cím (szóközre bontva)
 - Több IP-cím és IP-címblokk megadásához használjon egyetlen szóközt az értékek között:
   - **IPv4 példa:** *1.2.3.4 10.20.30.40* megfelel minden olyan kérésnek, amely vagy az 1.2.3.4 vagy a 10.20.30.40 címről érkezik.
   - **IPv6 példa:** *1:2:3:4:5:6:7:8 10:20:30:40:50:50:70:80* megfelel minden olyan kérésnek, amely az 1:2:3:4:5:5:6:7:8 vagy a 10:20:30:40:50:60:70:80 címről érkezik.
-- Az IP-címblokk szintaxisa az alap IP-cím, amelyet egy perjel és az előtag mérete követ. Példa:
+- Az IP-címblokk szintaxisa az alap IP-cím, amelyet egy perjel és az előtag mérete követ. Például:
   - **IPv4 példa:** *Az 5.5.5.64/26* minden olyan kérésnek megfelel, amely az 5.5.5.64 és 5.5.5.127 közötti címekről érkezik.
   - **IPv6 példa:** *1:2:3:/48* megfelel minden olyan kérésnek, amely az 1:2:3:0:0:0:0:0:0:0 és 1:2:3:ffff:ffff:ffff:ffff:ffff:ffff:ffff.0:0:0:0:0:0;
 

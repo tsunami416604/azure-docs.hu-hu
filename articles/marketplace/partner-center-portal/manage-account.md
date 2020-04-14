@@ -1,22 +1,22 @@
 ---
-title: Kereskedelmi piactér-fiók kezelése a Partnerközpontban
-description: Megtudhatja, hogyan kezelhet kereskedelmi piactér-fiókot a Partnerközpontban.
+title: Kereskedelmi piactéri fiók kezelése a Partnerközpontban
+description: Megtudhatja, hogyan kezelhet kereskedelmi piactéri fiókot a Partnerközpontban.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 6d3952c38703d8102a45c4117e3c59e3fa464957
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 50ea56a8c743636f9fdd9105e5b07a868e71d3d0
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275815"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262927"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>A kereskedelmi piactéri fiók kezelése a Partnerközpontban
 
-Miután [létrehozott egy Partnerközpont-fiókot,](./create-account.md)kezelheti fiókját és ajánlatait a [Kereskedelmi piactér irányítópultjával.](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)
+Miután [létrehozott egy Partnerközpont-fiókot,](./create-account.md)kezelheti fiókját és ajánlatait a [kereskedelmi piactér irányítópultjával.](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)
 
 Ebben a cikkben bemutatjuk, hogyan kezelheti partnerközpont-fiókját, többek között a következőket:
 
@@ -40,7 +40,7 @@ Ha még nem tette meg, Önnek (vagy a szervezet rendszergazdájának) a követke
 
 ### <a name="open-developer-settings"></a>Fejlesztői beállítások megnyitása
 
-A fiókbeállítások a [Kereskedelmi piactér irányítópultjának](https://partner.microsoft.com/dashboard/commercial-marketplace) jobb felső sarkában találhatók a Partnerközpontban. Válassza a fogaskerék ikont (az irányítópult jobb felső sarkában), majd válassza a **Fejlesztői beállítások lehetőséget**.
+A fiókbeállítások a [kereskedelmi piactér irányítópultjának](https://partner.microsoft.com/dashboard/commercial-marketplace) jobb felső sarkában találhatók a Partnerközpontban. Válassza a fogaskerék ikont (az irányítópult jobb felső sarkában), majd válassza a **Fejlesztői beállítások lehetőséget**.
 
 ![Fiókbeállítások menü a Partnerközpontban](./media/dashboard-developer-settings.png)
 
@@ -126,8 +126,8 @@ Javasoljuk, hogy minden egyes termékhez hozzon létre egyedi GUID azonosítót 
 
 Ha egy sablon használatával telepít egy terméket, és az elérhető az Azure Marketplace-en és a GitHubon is, létrehozhat és regisztrálhat 2 különböző GUIDS-t:
 
-*   "A" termék az Azure Piactéren
-*   "A" termék a GitHubon
+*    "A" termék az Azure Piactéren
+*    "A" termék a GitHubon
 
 A jelentéskészítést a partnerérték (Microsoft Partner-azonosító) és a GUID-ok végzik. A GUID-ok részletesebb szinten is nyomon követhetőek, az ajánlaton belüli egyes tervekhez igazodva.
 
@@ -308,7 +308,7 @@ A Partnerközpont más területein, például az Azure Active Directory (AD), a 
 
 ## <a name="manage-tenants"></a>Bérlők kezelése
 
-Az Azure Active Directory (AD) bérlője, más néven a "munkahelyi fiók" a dokumentációban, az Azure Portalon beállított szervezet egy ábrázolása, és segít a Microsoft felhőszolgáltatásainak egy adott példányának kezelésében a belső és a külső felhasználók számára. Ha a szervezet előfizetett egy Microsoft felhőszolgáltatásra, például az Azure-ra, a Microsoft Intune-ra vagy az Office 365-re, létrejött egy Azure AD-bérlő.
+Az Azure Active Directory (AD) bérlő, más néven a "munkahelyi fiók" a dokumentációban, az Azure Portalon beállított szervezet egy ábrázolása, és segít a Microsoft felhőszolgáltatásainak egy adott példányának kezelésében a belső és külső felhasználók számára. Ha a szervezet előfizetett egy Microsoft felhőszolgáltatásra, például az Azure-ra, a Microsoft Intune-ra vagy az Office 365-re, létrejött egy Azure AD-bérlő.
 
 Több bérlőt is beállíthat a Partnerközponttal való használatra. A Partnerközpont-fiókkezelőszerepkörrel rendelkező felhasználók nak lehetőségük lesz Azure AD-bérlők hozzáadására és eltávolítására a fiókból. **Manager**  
 

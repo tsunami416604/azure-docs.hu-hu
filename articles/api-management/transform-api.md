@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 5dec08bd4bc0a63a419d2bdc63383348a69b02db
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9a9c6897937b73786367accc33e985a268907226
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70067468"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258745"
 ---
 # <a name="transform-and-protect-your-api"></a>Az API-k átalakítása és védelme
 
@@ -112,9 +112,9 @@ Az eredeti válasz megtekintése:
 2.  Válassza az **Összes művelet lehetőséget.**
 3.  A képernyő felső részén válassza a **Tervezés** lapot.
 4.  A **Kimenő feldolgozás** szakaszban kattintson a **</>** ikonra.
-5.  Helyezze a kurzort a ** &lt;kimenő elembelsejébe.&gt; **
+5.  Helyezze a kurzort a ** &lt;kimenő elembelsejébe,&gt; ** és kattintson a Jobb felső sarokban a Házirend **beszúrása** gombra.
 6.  A jobb oldali ablak **Átalakítási szabályzatok** területén kattintson a **+ Sztring keresése és cseréje a szövegtörzsben** elemre.
-7.  A **find-and-replace** kódban (az **\<outbound\>** elemben) cserélje le az URL-címet az APIM-átjáróéra. Példa:
+7.  A **find-and-replace** kódban (az **\<outbound\>** elemben) cserélje le az URL-címet az APIM-átjáróéra. Például:
 
         <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
 

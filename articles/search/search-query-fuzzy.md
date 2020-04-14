@@ -1,5 +1,5 @@
 ---
-title: Fuzzy keresés
+title: Intelligens keresés
 titleSuffix: Azure Cognitive Search
 description: Valósítson meg egy "érted" keresési élményt egy elgépelt kifejezés vagy elírás automatikus javításához.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 95f6befa7e97984ad64a3ffb2a9b91d343945cbb
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 32ad34bcfb42bf8fc45ba7fdb7fba5e797ee6106
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "81000660"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262434"
 ---
 # <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>Fuzzy keresés az elírások és elírások kijavítására
 
@@ -71,7 +71,7 @@ Az Azure Cognitive Search a kifejezés és a távolság (legfeljebb 2) mellett n
 > [!NOTE]
 > A lekérdezés feldolgozása során az intelligens lekérdezések nem mennek át [lexikális elemzésnek.](search-lucene-query-architecture.md#stage-2-lexical-analysis) A lekérdezésbemenet közvetlenül hozzáadódik a lekérdezési fához, és kibontva hozzon létre egy kifejezésgrafikont. Az egyetlen végrehajtott átalakítás az alacsonyabb burkolat.
 
-## <a name="how-to-test-fuzzy-search"></a>Fuzzy search tesztelése
+## <a name="testing-fuzzy-search"></a>Fuzzy keresés tesztelése
 
 Az egyszerű teszteléshez javasoljuk, hogy [a Kereséskezelő](search-explorer.md) vagy a [Postman](search-get-started-postman.md) egy lekérdezési kifejezésen keresztül idítsa. Mindkét eszköz interaktív, ami azt jelenti, hogy gyorsan végigléphet egy kifejezés több változatán, és kiértékelheti a visszaadott válaszokat.
 

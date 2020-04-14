@@ -3,7 +3,7 @@ title: Windows-virtuális gépek ütemezett eseményei az Azure-ban
 description: Ütemezett események az Azure metaadat-szolgáltatás a Windows virtuális gépeken.
 services: virtual-machines-windows, virtual-machines-linux, cloud-services
 documentationcenter: ''
-author: ericrad
+author: mimckitt
 manager: gwallace
 editor: ''
 tags: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
-ms.author: ericrad
-ms.openlocfilehash: 2b3aa5d50822863e3aa46fcf9970e0b3e67a6f69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: c1e9ef8de65912c4f33e17ee2bb2175c76e7ea07
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78944465"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258680"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure metaadatszolgáltatás: Ütemezett események Windows virtuális gépekhez
 
@@ -121,7 +121,7 @@ A DocumentInannináció egy ETag, és egyszerű módja annak vizsgálatának, ho
 | Napszállta | Az esemény globálisan egyedi azonosítója. <br><br> Példa: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
 | EventType (Eseménytípus) | Az esemény hatására. <br><br> Értékek: <br><ul><li> `Freeze`: A virtuális gép néhány másodpercre szüneteltetésre van ütemezve. A processzor és a hálózati kapcsolat felfüggeszthető, de nincs hatással a memóriára vagy a megnyitott fájlokra. <li>`Reboot`: A virtuális gép újraindításra van ütemezve (a nem állandó memória elvész). <li>`Redeploy`: A virtuális gép a tervek szerint egy másik csomópontra kerül (a rövid élettartamú lemezek elvesznek). <li>`Preempt`: A virtuális hely törlése folyamatban van (az ideiglenes lemezek elvesznek). <li> `Terminate`: A virtuális gép törlését tervezik. |
 | ResourceType | Az esemény által érintett erőforrás típusa. <br><br> Értékek: <ul><li>`VirtualMachine`|
-| Források| Az esemény által érintett erőforrások listája. Ez garantáltan legfeljebb egy [frissítési tartományból](manage-availability.md)származó gépeket tartalmaz, de nem feltétlenül tartalmazza az UD összes gépét. <br><br> Példa: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
+| További források| Az esemény által érintett erőforrások listája. Ez garantáltan legfeljebb egy [frissítési tartományból](manage-availability.md)származó gépeket tartalmaz, de nem feltétlenül tartalmazza az UD összes gépét. <br><br> Példa: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | Esemény állapota | Az esemény állapota. <br><br> Értékek: <ul><li>`Scheduled`: Ez az esemény a `NotBefore` tulajdonságban megadott idő után kezdődik.<li>`Started`: Az esemény elkezdődött.</ul> Soha `Completed` nem vagy hasonló státuszt nem adnak meg; az esemény a továbbiakban nem kerül visszaadásra, amikor az esemény befejeződik.
 | Nem előtte| Az az idő, amely után ez az esemény elkezdődhet. <br><br> Példa: <br><ul><li> Hét, 19 Szept 2016 18:29:47 GMT  |
 

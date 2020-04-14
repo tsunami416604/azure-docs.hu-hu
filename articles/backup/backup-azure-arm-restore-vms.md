@@ -4,12 +4,12 @@ description: Azure-beli virtuális gép visszaállítása helyreállítási pont
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 3c3c8a7bd47ae03a013ddfadffabaa16fd04412b
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: b9cdb187aa3b8750bead8e81ad6d0ee50dcb3d6c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677545"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254920"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Az Azure VM-adatok visszaállítása az Azure Portalon
 
@@ -28,8 +28,6 @@ Az Azure Backup számos lehetőséget kínál a virtuális gép visszaállítás
 
 > [!NOTE]
 > Az Azure-beli virtuális gépeken adott fájlokat és mappákat is helyreállíthatja. [További információ](backup-azure-restore-files-from-vm.md).
->
-> Ha az Azure Biztonsági mentés azure-beli virtuális gépekhez készült [legújabb verzióját](backup-instant-restore-capability.md) (azonnali visszaállítás) futtatja, a pillanatképek legfeljebb hét napig maradnak meg, és a biztonsági mentési adatok a tárolóba való küldése előtt visszaállíthatja a virtuális gépet. Ha azt szeretné, hogy egy virtuális gép egy biztonsági másolat az elmúlt hét nap, gyorsabb visszaállítása a pillanatképből, és nem a tárolóból.
 
 ## <a name="storage-accounts"></a>Tárfiókok
 

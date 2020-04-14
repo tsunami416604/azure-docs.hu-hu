@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: dsindona
-ms.openlocfilehash: d2a18d0fee4352cd88e4c64ab99a7dfc1b08ed75
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 25d678ad7b8c2b786239b294de873bc1d98fa5cb
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280082"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270332"
 ---
 # <a name="create-a-new-container-offer-with-the-cloud-partner-portal"></a>Hozzon létre egy új tárolóajánlatot a Cloud Partner Portal segítségével
+
+> [!IMPORTANT]
+> 2020. április 13-tól megkezdjük az Azure Container-ajánlatok kezelését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [Azure Container-ajánlat létrehozása](https://aka.ms/CreateContainerOffer) című, az áttelepített ajánlatok kezeléséhez című útmutatóutasításait.
 
 Ez a cikk ismerteti, hogyan hozhat létre és tehet közzé egy tároló ajánlat bejegyzést az Azure Marketplace-en. Minden ajánlat saját entitásként jelenik meg az Azure Marketplace-en, és egy vagy több sk-hez van társítva.  A tárolóajánlat az eszközök és támogató szolgáltatások következő csoportjaiból áll:
 
@@ -35,7 +38,7 @@ Jelentkezzen be a [Cloud Partner Portal ba](https://cloudpartner.azure.com/), é
 
 A tárolóajánlat típusának **Új ajánlat** lapja lapok és űrlapmezők készletét biztosítja, amelyek segítségével új ajánlatot hozhat létre. Az alábbi cikkek ismerteti, hogyan használhatja a lapon az új tárolóajánlat eszközcsoportjainak és támogató szolgáltatásainak meghatározásához.
 
-- [Ajánlat beállításai lap](./cpp-offer-settings-tab.md)
+- [Ajánlatbeállítási lap](./cpp-offer-settings-tab.md)
 - [Termékváltozatok lap](./cpp-skus-tab.md)
 - [Marketplace lap](./cpp-marketplace-tab.md)
 - [Támogatási lap](./cpp-support-tab.md)

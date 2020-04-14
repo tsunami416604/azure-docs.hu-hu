@@ -2,7 +2,7 @@
 title: Oracle-adatbázisok referenciaarchitektúrái az Azure-ban | Microsoft dokumentumok
 description: Hivatkozik az Oracle Database Enterprise Edition adatbázisok Microsoft Azure virtuális gépeken való futtatására szolgáló architektúrákra.
 services: virtual-machines-linux
-author: romitgirdhar
+author: mimckitt
 manager: gwallace
 tags: ''
 ms.service: virtual-machines
@@ -10,14 +10,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2019
-ms.author: rogirdh
+ms.author: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 235482f5d44877e5c4e47aed4d7eaf2baea5c3fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1dc677ded1e13a64c082d49140fa0de69c0ed9d4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75560334"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263267"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Referenciaarchitektúrák az Oracle Database Enterprise Edition azure-beli kiadásához
 
@@ -177,7 +177,7 @@ Az alábbi ábra az Oracle Sharding referenciaarchitektúrája az Oracle Data Gu
 
 ![Oracle Database Sharding a rendelkezésre állási zónák használata a Data Guard Broker - FSFO](./media/oracle-reference-architecture/oracledb_dg_sh_az.png)
 
-Bár a rendszer által felügyelt szilánkok konfigurálása és kezelése a legkönnyebben konfigurálható és kezelhető, a felhasználó által definiált szilánkok vagy összetett szilánkok jól illeszkednek olyan esetekben, amikor az adatok és az alkalmazások földrajzilag elosztott, vagy olyan esetekben, ahol a replikáció felett kell szabályoznia minden egyes szilánk. 
+Míg a rendszer által felügyelt szilánkok a legkönnyebben konfigurálható és kezelhető, a felhasználó által definiált szilánkok vagy összetett szilánkok jól illeszkedik a forgatókönyvek, ahol az adatok és az alkalmazás földrajzilag elosztott, vagy olyan esetekben, ahol az egyes szegmensek replikációjának szabályozása szükséges. 
 
 Az előző architektúrában az összetett horizontális skálázás az adatok földrajzi terjesztésére és horizontálisan horizontálisan horizontálisan az alkalmazásszintek horizontális rakoncátora. Összetett szilánkok a rendszer által kezelt és a felhasználó által meghatározott szilánkok kombinációja, és így mindkét módszer előnyeit biztosítja. Az előző forgatókönyvben az adatok először szilánkos több régió által elválasztott shardspaces között. Ezután az adatok at tovább particionálva konzisztens kivonat a shardspace több szegmensek között. Minden shardspace több shardgroups tartalmaz. Minden shardgroup rendelkezik több szegmensek és egy "egység" a replikáció, ebben az esetben. Minden shardgroup tartalmazza az összes adatot a shardspace. Az A1 és b1 shardcsoportok elsődleges szilánkcsoportok, míg az A2 és B2 shardcsoportok készenléti állapotok. Dönthet úgy, hogy az egyes szegmensek a replikáció egysége, nem pedig egy shardgroup.
 

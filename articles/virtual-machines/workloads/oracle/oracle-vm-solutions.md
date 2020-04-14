@@ -3,7 +3,7 @@ title: Oracle-megoldások Az Azure virtuális gépeken | Microsoft dokumentumok
 description: Ismerje meg az Oracle virtuálisgép-lemezképek támogatott konfigurációit és korlátait a Microsoft Azure-ban.
 services: virtual-machines-linux
 documentationcenter: ''
-author: romitgirdhar
+author: mimckitt
 manager: gwallace
 tags: azure-resource-management
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/23/2019
-ms.author: rogirdh
-ms.custom: seodec18
-ms.openlocfilehash: 3abc09f8c82442e3b24a9edf6ef4fb42f19dfde8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 0a2374a4c3526b77a25f9fa8faa94c9cb0d4c4ea
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74806949"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263233"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Oracle virtuálisgép-lemezképek és azok üzembe helyezése a Microsoft Azure-ban
 
@@ -128,13 +128,13 @@ Az Oracle Support note [Doc ID 2178595.1](https://support.oracle.com/epmos/faces
 
 A cikkekkel kapcsolatos információkat a **KB 860340.1** cikkében <https://support.oracle.com>talál.
 
-* **Dinamikus fürtözési és terheléselosztási korlátozások.** Tegyük fel, hogy egy dinamikus fürtöt szeretne használni az Oracle WebLogic Server ben, és egyetlen nyilvános terheléselosztásos végponton keresztül szeretné elérhetővé tenni az Azure-ban. Ez mindaddig elvégezhető, amíg rögzített portszámot használ minden egyes felügyelt kiszolgálóhoz (nem dinamikusan rendelve egy tartományból), és nem indít el több felügyelt kiszolgálót, mint amennyit a rendszergazda követ. Ez azt, hogy virtuális gépenként egynél több felügyelt kiszolgáló van). Ha a konfiguráció azt eredményezi, hogy több Oracle WebLogic kiszolgáló indul el, mint ahány virtuális gép van (azaz ha több Oracle WebLogic Server példány ugyanaz ta- Oracle WebLogic-kiszolgálók, amelyek egy adott portszámhoz kötődnek. A többi a virtuális gépen meghibásodik.
+* **Dinamikus fürtözési és terheléselosztási korlátozások.** Tegyük fel, hogy egy dinamikus fürtöt szeretne használni az Oracle WebLogic Server ben, és egyetlen nyilvános terheléselosztásos végponton keresztül szeretné elérhetővé tenni az Azure-ban. Ez mindaddig elvégezhető, amíg rögzített portszámot használ minden egyes felügyelt kiszolgálóhoz (nem dinamikusan rendelve egy tartományból), és nem indít el több felügyelt kiszolgálót, mint amennyit a rendszergazda követ. Ez azt, hogy virtuális gépenként egynél több felügyelt kiszolgáló van). Ha a konfiguráció azt eredményezi, hogy több Oracle WebLogic kiszolgáló indul el, mint ahány virtuális gép van (azaz ha több Oracle WebLogic Server példány ugyanaz a virtuális gép), akkor az Oracle WebLogic kiszolgálók egynél több példánya nem köthető egy adott portszámhoz. A többi a virtuális gépen meghibásodik.
 
-   Ha úgy konfigurálja a felügyeleti kiszolgálót, hogy automatikusan egyedi portszámokat rendeljen a felügyelt kiszolgálókhoz, akkor a terheléselosztás nem lehetséges, mert az Azure nem támogatja az egyetlen nyilvános portról több magánportra történő leképezést, ahogy ehhez szükség lenne. Konfigurációs.
-* **Az Oracle WebLogic Server több példánya egy virtuális gépen.** A központi telepítés követelményeitől függően érdemes lehet az Oracle WebLogic Server több példányát futtatni ugyanazon a virtuális gépen, ha a virtuális gép elég nagy. Egy közepes méretű virtuális gépen például, amely két magot tartalmaz, választhatja az Oracle WebLogic Server két példányának futtatását. Továbbra is javasoljuk azonban, hogy ne vezessen be egyetlen meghibásodási pontot az architektúrába, ami akkor lenne így, ha csak egy olyan virtuális gépet használna, amely az Oracle WebLogic Server több példányát futtatja. Legalább két virtuális gép használata jobb megközelítés lehet, és minden virtuális gép futtathatja az Oracle WebLogic Server több példányát. Az Oracle WebLogic Server minden példánya továbbra is ugyanannak a fürtnek a része lehet. Az Azure azonban jelenleg nem használható az ilyen Oracle WebLogic Server-telepítések által ugyanazon a virtuális gépen belül elérhetővé tett végpontok terheléselosztására, mivel az Azure terheléselosztója megköveteli, hogy a terheléselosztással terhelt kiszolgálókat egyedi kiszolgálók között lehessen elosztani. virtuális gépek.
+   Ha úgy konfigurálja a felügyeleti kiszolgálót, hogy automatikusan egyedi portszámokat rendeljen a felügyelt kiszolgálókhoz, akkor a terheléselosztás nem lehetséges, mert az Azure nem támogatja az egyetlen nyilvános portról több magánportra történő leképezést, ahogy az ehhez a konfigurációhoz szükséges lenne.
+* **Az Oracle WebLogic Server több példánya egy virtuális gépen.** A központi telepítés követelményeitől függően érdemes lehet az Oracle WebLogic Server több példányát futtatni ugyanazon a virtuális gépen, ha a virtuális gép elég nagy. Egy közepes méretű virtuális gépen például, amely két magot tartalmaz, választhatja az Oracle WebLogic Server két példányának futtatását. Továbbra is javasoljuk azonban, hogy ne vezessen be egyetlen meghibásodási pontot az architektúrába, ami akkor lenne így, ha csak egy olyan virtuális gépet használna, amely az Oracle WebLogic Server több példányát futtatja. Legalább két virtuális gép használata jobb megközelítés lehet, és minden virtuális gép futtathatja az Oracle WebLogic Server több példányát. Az Oracle WebLogic Server minden példánya továbbra is ugyanannak a fürtnek a része lehet. Azonban jelenleg nem lehet használni az Azure-t az ilyen Oracle WebLogic Server-telepítések által ugyanazon a virtuális gépen belül elérhetővé tett végpontok terheléselosztására, mivel az Azure terheléselosztó megköveteli, hogy a terheléselosztással terhelt kiszolgálókat egyedi virtuális gépek között kell elosztani.
 
 ## <a name="oracle-jdk-virtual-machine-images"></a>Oracle JDK virtuális gép képek
-* **JDK 6 és 7 legújabb frissítéseket.** Bár javasoljuk a Java legújabb, támogatott (jelenleg Java 8) verzióját, az Azure a JDK 6 és 7 lemezképeket is elérhetővé teszi. Ez olyan örökölt alkalmazásokhoz készült, amelyek még nem állnak készen a JDK 8-ra való frissítésre. Bár előfordulhat, hogy a korábbi JDK-képek frissítései már nem érhetők el a nagyközönség számára, tekintettel a Microsoft és az Oracle közötti partnerségre, az Azure által biztosított JDK 6 és 7 lemezképek célja, hogy egy újabb, nem nyilvános frissítést tartalmazzanak, amelyet az Oracle általában az Oracle által támogatott ügyfeleknek csak egy kiválasztott csoportja. A JDK-képek új verziói idővel elérhetővé lesznek a JDK 6 és 7 frissített kiadásaival.
+* **JDK 6 és 7 legújabb frissítéseket.** Bár javasoljuk a Java legújabb, támogatott (jelenleg Java 8) verzióját, az Azure a JDK 6 és 7 lemezképeket is elérhetővé teszi. Ez olyan örökölt alkalmazásokhoz készült, amelyek még nem állnak készen a JDK 8-ra való frissítésre. Bár előfordulhat, hogy a korábbi JDK-lemezképek frissítései már nem érhetők el a nagyközönség számára, tekintettel a Microsoft és az Oracle közötti partnerségre, az Azure által biztosított JDK 6 és 7 lemezképek célja egy újabb, nem nyilvános frissítés, amelyet az Oracle általában csak az Oracle által támogatott ügyfelek egy kiválasztott csoportjának kínál. A JDK-képek új verziói idővel elérhetővé lesznek a JDK 6 és 7 frissített kiadásaival.
 
    A JDK 6-os és 7-es lemezképeken elérhető JDK-k, valamint az ezekből származó virtuális gépek és lemezképek csak az Azure-ban használhatók.
 * **64 bites JDK.** Az Oracle WebLogic Server virtuálisgép-lemezképei és az Azure által biztosított Oracle JDK virtuálisgép-lemezképek a Windows Server és a JDK 64 bites verzióit tartalmazzák.

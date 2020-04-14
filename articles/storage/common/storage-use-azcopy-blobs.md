@@ -4,20 +4,23 @@ description: Ez a cikk az AzCopy példaparancsok gyűjteményét tartalmazza, am
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: fbdb447905ae43fe92693dfe45c1add710f76355
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73685f124f93bb541f33b3b70727d90ce22b3cdd
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78933582"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263437"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Adatok átvitele az AzCopy és blob tárhellyel
 
 Az AzCopy egy parancssori segédprogram, amely segítségével adatokat másolhat, onnan vagy a tárfiókok között. Ez a cikk a Blob storage szolgáltatással dolgozó példaparancsokat tartalmazza.
+
+> [!TIP]
+> Az ebben a cikkben szereplő példák az elérési út argumentumait egyszeres idézőjelekkel (') mellékelik. A Windows parancshéj (cmd.exe) kivételével minden parancshéjban használjon egyszeres idézőjeleket. Ha Windows parancshéjat (cmd.exe) használ, az elérési út argumentumait idézőjelek ("") helyett idézőjelek (') közé kell mellékelni.
 
 ## <a name="get-started"></a>Bevezetés
 
@@ -31,9 +34,6 @@ Tekintse meg az AzCopy letöltéséhez az [AzCopy](storage-use-azcopy-v10.md) le
 > Például: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`.
 
 ## <a name="create-a-container"></a>Tároló létrehozása
-
-> [!TIP]
-> Az ebben a szakaszban szereplő példák az elérési út argumentumait egyszeres idézőjelekkel ('') mellékelik. A Windows parancshéj (cmd.exe) kivételével minden parancshéjban használjon egyszeres idézőjeleket. Ha Windows parancshéjat (cmd.exe) használ, az elérési út argumentumait idézőjelek ("") helyett idézőjelek (') közé kell mellékelni.
 
 Az [azcopy make](storage-ref-azcopy-make.md) parancs segítségével tárolót hozhat létre. Az ebben a szakaszban `mycontainer`szereplő példák egy tárolónevű tárolót hoznak létre.
 
@@ -57,10 +57,16 @@ Ez a szakasz a következő példákat tartalmazza:
 > * Könyvtár tartalmának feltöltése 
 > * Adott fájlok feltöltése
 
-A részletes referencia-dokumentumokról az [azcopy copy című dokumentumban](storage-ref-azcopy-copy.md)lehet.
-
 > [!TIP]
-> Az ebben a szakaszban szereplő példák az elérési út argumentumait egyszeres idézőjelekkel ('') mellékelik. A Windows parancshéj (cmd.exe) kivételével minden parancshéjban használjon egyszeres idézőjeleket. Ha Windows parancshéjat (cmd.exe) használ, az elérési út argumentumait idézőjelek ("") helyett idézőjelek (') közé kell mellékelni.
+> A feltöltési műveletet opcionális jelzőkkel módosíthatja. Íme néhány példa.
+>
+> |Forgatókönyv|Jelző|
+> |---|---|
+> |Fájlok feltöltése blobok hozzáfűzése ként vagy lapblobként.|**--blob-típusú**=\[BlockBlob\|\|PageBlob AppendBlob\]|
+> |Töltsön fel egy adott hozzáférési szintre (például az archív szintre).|**--block-blob-tier**=\[\|Nincs\|\|Hot Cool Archívum\]|
+> |A fájlok automatikus kibontása.|**--decompress**=\[gzip\|leereszt\]|
+> 
+> A teljes listát a [Beállítások menüben láthatja.](storage-ref-azcopy-copy.md#options)
 
 ### <a name="upload-a-file"></a>Fájl feltöltése
 
@@ -71,10 +77,6 @@ A részletes referencia-dokumentumokról az [azcopy copy című dokumentumban](s
 | **Példa** (hierarchikus névtér) | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt'` |
 
 A fájlt helyettesítő szimbólummal (*) is feltöltheti a fájl elérési útján a fájl elérési útján vagy nevében. Például: `'C:\myDirectory\*.txt'`vagy `C:\my*\*.txt`.
-
-> [!NOTE]
-> Az AzCopy alapértelmezés szerint blokkblobként tölti fel az adatokat. Ha fájlokat szeretne hozzáfűző blobként vagy `--blob-type=[BlockBlob|PageBlob|AppendBlob]`lapblobként feltölteni, használja a jelzőt.
-> AzAzCopy alapértelmezés szerint feltölti az adatokat a fiók hozzáférési szintjének örökléséhez. Ha fájlokat szeretne feltölteni egy adott `--block-blob-tier=[Hot|Cool|Archive]` [hozzáférési szintre,](../blobs/storage-blob-storage-tiers.md)használja a jelzőt.
 
 ### <a name="upload-a-directory"></a>Könyvtár feltöltése
 
@@ -152,13 +154,19 @@ Ez a szakasz a következő példákat tartalmazza:
 > * Könyvtár tartalmának letöltése
 > * Adott fájlok letöltése
 
+> [!TIP]
+> A letöltési műveletet opcionális jelzőkkel módosíthatja. Íme néhány példa.
+>
+> |Forgatókönyv|Jelző|
+> |---|---|
+> |A fájlok automatikus kibontása.|**--decompress**=\[gzip\|leereszt\]|
+> |Adja meg, hogy milyen részletesen kell megadnia a másolással kapcsolatos naplóbejegyzéseket.|**--log-level**=\[\|FIGYELMEZTETÉS\|\|HIBA INFORMÁCIÓ NINCS\]|
+> |Adja meg, hogy felülírhatja-e az ütköző fájlokat és blobokat a célhelyen.|**--a**=\[true\|\|false ifSourceNewer\|parancssor imitomára történő felülírása\]|
+> 
+> A teljes listát a [Beállítások menüben láthatja.](storage-ref-azcopy-copy.md#options)
+
 > [!NOTE]
 > Ha `Content-md5` egy blob tulajdonságértéke kivonatot tartalmaz, az AzCopy kiszámítja a letöltött adatok MD5-kivonatát, és ellenőrzi, `Content-md5` hogy a blob tulajdonságában tárolt MD5-kivonat megegyezik-e a számított kivonattal. Ha ezek az értékek nem egyeznek, a letöltés sikertelen `--check-md5=NoCheck` `--check-md5=LogOnly` lesz, hacsak nem bírálja felül ezt a viselkedést a hozzáfűzéssel vagy a másolási paranccsal.
-
-A részletes referencia-dokumentumokról az [azcopy copy című dokumentumban](storage-ref-azcopy-copy.md)lehet.
-
-> [!TIP]
-> Az ebben a szakaszban szereplő példák az elérési út argumentumait egyszeres idézőjelekkel ('') mellékelik. A Windows parancshéj (cmd.exe) kivételével minden parancshéjban használjon egyszeres idézőjeleket. Ha Windows parancshéjat (cmd.exe) használ, az elérési út argumentumait idézőjelek ("") helyett idézőjelek (') közé kell mellékelni.
 
 ### <a name="download-a-file"></a>Fájl letöltése
 
@@ -245,12 +253,18 @@ Ez a szakasz a következő példákat tartalmazza:
 > * Tároló másolása másik tárfiókba
 > * Az összes tároló, könyvtár és fájl másolása egy másik tárfiókba
 
-A részletes referencia-dokumentumokról az [azcopy copy című dokumentumban](storage-ref-azcopy-copy.md)lehet.
+Ezek a példák hierarchikus névtérrel rendelkező fiókokkal is működnek. [A Data Lake Storage többprotokollos hozzáférése](../blobs/data-lake-storage-multi-protocol-access.md) lehetővé`blob.core.windows.net`teszi, hogy ugyanazokat az URL-szintaxist ( ) használja ezeken a fiókokon.
 
 > [!TIP]
-> Az ebben a szakaszban szereplő példák az elérési út argumentumait egyszeres idézőjelekkel ('') mellékelik. A Windows parancshéj (cmd.exe) kivételével minden parancshéjban használjon egyszeres idézőjeleket. Ha Windows parancshéjat (cmd.exe) használ, az elérési út argumentumait idézőjelek ("") helyett idézőjelek (') közé kell mellékelni.
-
- Ezek a példák hierarchikus névtérrel rendelkező fiókokkal is működnek. [A Data Lake Storage többprotokollos hozzáférése](../blobs/data-lake-storage-multi-protocol-access.md) lehetővé`blob.core.windows.net`teszi, hogy ugyanazokat az URL-szintaxist ( ) használja ezeken a fiókokon. 
+> A másolási műveletet opcionális jelzőkkel módosíthatja. Íme néhány példa.
+>
+> |Forgatókönyv|Jelző|
+> |---|---|
+> |Fájlok másolása blobok hozzáfűzése ként vagy lapblobként.|**--blob-típusú**=\[BlockBlob\|\|PageBlob AppendBlob\]|
+> |Másolás egy adott hozzáférési szintre (például az archív szintre).|**--block-blob-tier**=\[\|Nincs\|\|Hot Cool Archívum\]|
+> |A fájlok automatikus kibontása.|**--decompress**=\[gzip\|leereszt\]|
+> 
+> A teljes listát a [Beállítások menüben láthatja.](storage-ref-azcopy-copy.md#options)
 
 ### <a name="copy-a-blob-to-another-storage-account"></a>Blob másolása másik tárfiókba
 
@@ -306,10 +320,16 @@ Ha a `--delete-destination` jelzőt `true` AzCopy -re állítja, akkor kérdés 
 > [!NOTE]
 > A véletlen törlés elkerülése érdekében a `--delete-destination=prompt|true` jelző használata előtt engedélyezze a [törlési](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) funkciót.
 
-A részletes referencia-dokumentumokról az [azcopy sync című témakörben lehet.](storage-ref-azcopy-sync.md)
-
 > [!TIP]
-> Az ebben a szakaszban szereplő példák az elérési út argumentumait egyszeres idézőjelekkel ('') mellékelik. A Windows parancshéj (cmd.exe) kivételével minden parancshéjban használjon egyszeres idézőjeleket. Ha Windows parancshéjat (cmd.exe) használ, az elérési út argumentumait idézőjelek ("") helyett idézőjelek (') közé kell mellékelni.
+> A szinkronizálási műveletet választható jelzők használatával módosíthatja. Íme néhány példa.
+>
+> |Forgatókönyv|Jelző|
+> |---|---|
+> |Adja meg, hogy a szigorúan MD5-kihálat hogyan kell érvényesíteni a letöltés során.|**--check-md5**=\[NoCheck\|\|LogOnly\|FailIfDifferent FailIfDifferentOrMissing\]|
+> |A fájlok kizárása minta alapján.|**--kizárás-útvonal**|
+> |Adja meg, hogy milyen részletesen szeretné a szinkronizálással kapcsolatos naplóbejegyzéseket.|**--log-level**=\[\|FIGYELMEZTETÉS\|\|HIBA INFORMÁCIÓ NINCS\]|
+> 
+> A teljes listát a [Beállítások menüben láthatja.](storage-ref-azcopy-sync.md#options)
 
 ### <a name="update-a-container-with-changes-to-a-local-file-system"></a>Tároló frissítése helyi fájlrendszer módosításaival
 

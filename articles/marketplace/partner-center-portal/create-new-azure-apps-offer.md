@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 0ff1bbd976273a7d0cbfb22effebdf45c84d2f41
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 260193b3c71e29a32e0589f50864ffcca2e9a67c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277239"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262264"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure-alkalmazásajánlat létrehozása
 
@@ -103,7 +103,7 @@ Tekintse át a rendelkezésre álló eszközöket az [Azure Developer Tools](htt
 
 ## <a name="create-an-azure-application-offer"></a>Azure-alkalmazásajánlat létrehozása
 
-Az Azure-alkalmazásajánlat létrehozása előtt először létre kell [hoznia egy Partnerközpont-fiókot,](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) és meg kell nyitnia a [Kereskedelmi piactér irányítópultját,](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)és az **Áttekintés** lapon kell megnyitnod.
+Az Azure-alkalmazásajánlat létrehozása előtt létre kell [hoznia egy Partnerközpont-fiókot,](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) és meg kell nyitnia a [kereskedelmi piactér irányítópultját,](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)és az **Áttekintés** lapon kell megnyitnod.
 
 >[!Note]
 >Az ajánlat közzététele után a Partnerközpontban tett ajánlat szerkesztése csak az újbóli közzétételt követően frissül a rendszerben és a kirakatban.  Kérjük, győződjön meg arról, hogy a módosítások után benyújtja a közzétételi ajánlatot.

@@ -9,12 +9,12 @@ ms.author: magoedte
 keywords: Azure automation, DSC, powershell, kívánt állapotkonfiguráció, frissítéskezelés, változáskövetés, leltár, runbookok, python, grafikus, hibrid
 ms.date: 03/24/2020
 ms.topic: overview
-ms.openlocfilehash: 5ffe845178fffc252e95794bfb58801c9bff16a7
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: a441b80e4d7dd9604aa2ca69da320e462859a486
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411232"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261219"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Mi az Azure Arc kiszolgálókhoz (előzetes verzió)
 
@@ -54,7 +54,7 @@ A Windows és linux os operációs rendszer következő verziói hivatalosan tá
 - CentOS Linux 7
 - SUSE Linux Enterprise Server (SLES) 15
 - Red Hat Enterprise Linux (RHEL) 7
-- Amazon Linux 7
+- Amazon Linux 2
 
 >[!NOTE]
 >A Windows csatlakoztatott számítógép-ügynök e előzetes verziója csak az angol nyelv használatára konfigurált Windows Server rendszert támogatja.

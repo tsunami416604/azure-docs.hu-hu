@@ -1,5 +1,5 @@
 ---
-title: Modell értelmezhetősége az automatizált gépi tanulásban
+title: Az automatizált gépi tanulás ban való használhatóság
 titleSuffix: Azure Machine Learning
 description: Ismerje meg, hogyan kaphat magyarázatot arról, hogy az automatikus ml-modell hogyan határozza meg a szolgáltatás fontosságát, és előrejelzéseket készít az Azure Machine Learning SDK használatakor.
 services: machine-learning
@@ -8,20 +8,19 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
-ms.reviewer: trbye
 ms.date: 03/11/2020
-ms.openlocfilehash: e2465a2df3fab736c8f118911da14ef23c8aec86
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: ecf7cde1a7f804ef1c43b21ac5c1d2a488660590
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437283"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257164"
 ---
-# <a name="model-interpretability-in-automated-machine-learning"></a>Modell értelmezhetősége az automatizált gépi tanulásban
+# <a name="interpretability-model-explanations-in-automated-machine-learning"></a>Értelmezhetőség: modellmagyarázatok az automatizált gépi tanulásban
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ebben a cikkben megtudhatja, hogyan engedélyezheti az automatikus gépi tanulás (ML) értelmezhetőségi funkcióit az Azure Machine Learningben. Az automatikus ml segít megérteni a mesterséges funkciók fontosságát. 
+Ebben a cikkben megtudhatja, hogyan kaphat magyarázatot az automatikus gépi tanulás (ML) az Azure Machine Learningben. Az automatikus ml segít megérteni a mesterséges funkciók fontosságát. 
 
 Az összes SDK-verzió alapértelmezés szerint `model_explainability=True` az 1.0.85 után. Az SDK 1.0.85-ös és korábbi `model_explainability=True` verzióiban a felhasználóknak be kell állítaniuk az objektumban a `AutoMLConfig` modell értelmezhetőségének használatához. 
 

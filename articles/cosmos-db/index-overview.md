@@ -4,14 +4,14 @@ description: Ismerje meg, hogyan működik az indexelés az Azure Cosmos DB-ben,
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 04/13/2020
 ms.author: thweiss
-ms.openlocfilehash: 65186262095560d7ae54d32b218d1c01f1fb921d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 684799ee12715c789910accf80aa5b4afec763d4
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873624"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273239"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexelés az Azure Cosmos DB-ben – Áttekintés
 
@@ -82,7 +82,7 @@ Az Azure Cosmos DB jelenleg háromféle indexet támogat.
 
    Egyenlőségi egyezés tömbelemen
    ```sql
-    SELECT * FROM c WHERE ARRAY_CONTAINS(c.tags, "tag1”)
+    SELECT * FROM c WHERE ARRAY_CONTAINS(c.tags, "tag1")
     ```
 
 - Tartománylekérdezések:
@@ -164,7 +164,7 @@ A térbeli indexek helyesen formázott [GeoJSON](geospatial.md) objektumokon has
  SELECT * FROM container c WHERE c.property1 = 'value' AND c.property2 > 'value'
 ```
 
-Mindaddig, amíg egy szűrő predikátum használja az index típusú, a lekérdezési motor értékeli, hogy az első vizsgálat előtt a többit. Ha például sql-lekérdezésünk van, például`SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
+Mindaddig, amíg egy szűrő predikátum használja az egyik index fajta, a lekérdezési motor kiértékeli, hogy az első vizsgálat előtt a többit. Ha például sql-lekérdezésünk van, például`SELECT * FROM c WHERE c.firstName = "Andrew" and CONTAINS(c.lastName, "Liu")`
 
 * A fenti lekérdezés először szűri azokat a bejegyzéseket, ahol a keresztnév = "András" az index használatával. Ezután az összes firstName = "András" bejegyzést átadja egy későbbi folyamaton, hogy kiértékelje a tartalmazza a szűrőpredikátumot.
 

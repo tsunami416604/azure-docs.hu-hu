@@ -5,12 +5,12 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 description: Az Azure Kubernetes-szolgáltatásokban az Azure Dev Spaces futtatásához vonatkozó hálózati követelmények ismertetése
 keywords: Azure dev spaces, fejlesztői terek, Docker, Kubernetes, Azure, AKS, Azure Kubernetes szolgáltatás, tárolók, CNI, kubenet, SDN, hálózat
-ms.openlocfilehash: 82d046aa36fe9caf6337aa7f58ca0db525062283
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e344576caf276ae7cb5fe00395c84810a4e7d32
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240573"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262043"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>Hálózatkezelés konfigurálása az Azure dev spaces-hez különböző hálózati topológiákban
 
@@ -20,9 +20,9 @@ Az Azure Dev Spaces az Azure Kubernetes-szolgáltatás (AKS) fürtjein fut az al
 
 ## <a name="virtual-network-or-subnet-configurations"></a>Virtuális hálózat vagy alhálózati konfigurációk
 
-Előfordulhat, hogy az AKS-fürt más virtuális hálózati vagy alhálózati konfigurációval rendelkezik az AKS-fürt be- vagy kimenő forgalomának korlátozására. Előfordulhat például, hogy a fürt tűzfal mögött van, például az Azure Tűzfal mögött, vagy használhat hálózati biztonsági csoportokat vagy egyéni szerepköröket a hálózati forgalom korlátozására.
+Előfordulhat, hogy az AKS-fürt más virtuális hálózati vagy alhálózati konfigurációval rendelkezik az AKS-fürt be- vagy kimenő forgalomának korlátozására. Előfordulhat például, hogy a fürt tűzfal mögött van, például az Azure Tűzfal mögött, vagy használhat hálózati biztonsági csoportokat vagy egyéni szerepköröket a hálózati forgalom korlátozására. A [GitHub Azure Dev Spaces mintatárában][sample-repo]találhat egy példa hálózati konfigurációt.
 
-Az Azure dev spaces bizonyos követelményekkel rendelkezik a *be- és kimenő forgalom,* valamint *a csak a be- ésátállítási* forgalom. Ha az Azure Dev Spaces szolgáltatást olyan virtuális hálózati vagy alhálózati konfigurációval rendelkező AKS-fürtön használja, amely korlátozza az AKS-fürt forgalmát, csak a következő bejövő forgalomra kell, és be kell lépnie és ki kell lépnie a forgalmi követelményekhez ahhoz, hogy az Azure Dev Spaces Működéséhez.
+Az Azure dev spaces bizonyos követelményekkel rendelkezik a *be- és kimenő forgalom,* valamint *a csak a be- ésátállítási* forgalom. Ha az Azure Dev Spaces egy AKS-fürt egy virtuális hálózati vagy alhálózati konfiguráció, amely korlátozza a forgalmat az AKS-fürt, csak követnie kell a következő bejövő forgalom csak és a bejövő és kimenő forgalmi követelmények az Azure Dev Spaces megfelelő működéséhez.
 
 ### <a name="ingress-and-egress-network-traffic-requirements"></a>Be- és ki- és ki- és ki- és ki- és ki- és kilépési hálózati forgalmi követelmények
 
@@ -73,7 +73,7 @@ Az Azure Dev Spaces rendelkezik azzal a lehetőséggel, hogy az AKS-en futó szo
 * A *privát* végpont egy privát IP-címmel rendelkező be- és be- és áttérési vezérlőt telepít. Magánhálózati IP-cím esetén a fürt terheléselosztója csak a fürt virtuális hálózatán belül érhető el. A terheléselosztó privát IP-címe regisztrálva van a fürt DNS-én, így a fürt virtuális hálózatán belüli szolgáltatások URL-cím használatával érhetők el. Ezt az URL-címet a segítségével `azds list-uris`tekintheti meg.
 * Ha *nincs* beállítást állít be a végpontbeállításhoz, a rendszer nem telepíti a be- és éi vezérlőt. A be- ésnagykezelési vezérlő telepítése nélkül az [Azure Dev Spaces útválasztási képességei][dev-spaces-routing] nem fognak működni. Opcionálisan megvalósíthatja saját bejövő kapcsolatvezérlő-megoldását [a traefik][traefik-ingress] vagy [az NGINX][nginx-ingress]használatával, amely lehetővé teszi az útválasztási képességek újbóli működését.
 
-A végpont beállításkonfigurálásához használja *az -e* vagy *--végpontot* az Azure Dev Spaces fürtön való engedélyezésekor. Példa:
+A végpont beállításkonfigurálásához használja *az -e* vagy *--végpontot* az Azure Dev Spaces fürtön való engedélyezésekor. Például:
 
 > [!NOTE]
 > A végpont beállítás megköveteli, hogy az Azure CLI 2.2.0-s vagy újabb verzióját használja. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
@@ -109,4 +109,5 @@ Ismerje meg, hogy az Azure Dev Spaces hogyan segít összetettebb alkalmazások 
 [endpoint-options]: #using-different-endpoint-options
 [traefik-ingress]: how-to/ingress-https-traefik.md
 [nginx-ingress]: how-to/ingress-https-nginx.md
+[sample-repo]: https://github.com/Azure/dev-spaces/tree/master/advanced%20networking
 [team-quickstart]: quickstart-team-development.md

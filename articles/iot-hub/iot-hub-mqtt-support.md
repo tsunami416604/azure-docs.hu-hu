@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 2b200692610302bb135982e5419dcda36d5cfe60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9ccfaa57b8e8fdea325bed908ffe8815b09d0d15
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79271160"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257793"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikáció az IoT hubbal az MQTT protokoll használatával
 
@@ -118,7 +118,7 @@ Ha egy eszköz nem tudja használni az eszköz SDK-k, továbbra is csatlakozhat 
 
   A SAS-jogkivonatok létrehozásáról az [IoT Hub biztonsági jogkivonatok használata](iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)című eszközszakaszban talál további információt.
 
-  A tesztelés során a [platformfüggetlen Azure IoT-eszközök a Visual Studio-kódhoz](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) vagy az [Eszközkezelő](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) eszköz segítségével gyorsan létrehozhat egy SAS-jogkivonatot, amelyet átmásolhat és beilleszthet a saját kódjába:
+  Tesztelés közben a platformfüggetlen Azure [IoT-eszközöket a Visual Studio-kódhoz](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) vagy a CLI-bővítmény parancsot, az [az iot hub generate-sas-tokenet](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token) is használhatja egy SAS-jogkivonat gyors létrehozásához, amelyet a saját kódjába másolhat és illeszthet be:
 
 ### <a name="for-azure-iot-tools"></a>Azure IoT-eszközökhöz
 
@@ -129,16 +129,6 @@ Ha egy eszköz nem tudja használni az eszköz SDK-k, továbbra is csatlakozhat 
 3. Állítsa be **a lejárati időt,** és nyomja meg az "Enter" gombot.
   
 4. A SAS-token létrejön, és a vágólapra másolva lesz.
-
-### <a name="for-device-explorer"></a>Eszközkezelőhöz
-
-1. Nyissa meg az **Eszközkezelő** **Kezelés** lapját.
-
-2. Kattintson **a SAS-jogkivonat (jobb** felső sarokban) lehetőségre.
-
-3. A **SASToken Form alkalmazásban**válassza ki az eszközt a **DeviceID** legördülő menüben. Állítsa be a **TTL**.
-
-4. Kattintson **a Létrehozás** gombra a token létrehozásához.
 
    A létrehozott SAS-jogkivonat a következő struktúrával rendelkezik:
 
@@ -286,7 +276,7 @@ client.connect(iot_hub_name+".azure-devices.net", port=8883)
 
 ## <a name="sending-device-to-cloud-messages"></a>Eszközről felhőbe irányuló üzenetek küldése
 
-A sikeres kapcsolat létrehozása után az eszköz üzeneteket `devices/{device_id}/messages/events/` `devices/{device_id}/messages/events/{property_bag}` küldhet az IoT Hubnak **a témakörneve**használatával vagy néven. Az `{property_bag}` elem lehetővé teszi, hogy az eszköz további tulajdonságokkal rendelkező üzeneteket küldjön url-kódolású formátumban. Példa:
+A sikeres kapcsolat létrehozása után az eszköz üzeneteket `devices/{device_id}/messages/events/` `devices/{device_id}/messages/events/{property_bag}` küldhet az IoT Hubnak **a témakörneve**használatával vagy néven. Az `{property_bag}` elem lehetővé teszi, hogy az eszköz további tulajdonságokkal rendelkező üzeneteket küldjön url-kódolású formátumban. Például:
 
 ```text
 RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-encoded(<PropertyName2>)=RFC 2396-encoded(<PropertyValue2>)…
@@ -359,7 +349,7 @@ A következő sorozat azt ismerteti, hogy egy eszköz hogyan frissíti a jelente
 
 3. A szolgáltatás ezután válaszüzenetet küld, amely a témakörben `$iothub/twin/res/{status}/?$rid={request id}`jelentett tulajdonságok gyűjteményének új ETag értékét tartalmazza. Ez a válaszüzenet ugyanazt a **kérésazonosítót** használja, mint a kérés.
 
-A kérésüzenet törzse egy JSON-dokumentumot tartalmaz, amely a jelentett tulajdonságok új értékeit tartalmazza. A JSON-dokumentum minden tagja frissíti vagy hozzáadja a megfelelő tagot az ikereszköz dokumentumához. A tag `null`beállítása , törli a tagot a tartalmazó objektumból. Példa:
+A kérésüzenet törzse egy JSON-dokumentumot tartalmaz, amely a jelentett tulajdonságok új értékeit tartalmazza. A JSON-dokumentum minden tagja frissíti vagy hozzáadja a megfelelő tagot az ikereszköz dokumentumához. A tag `null`beállítása , törli a tagot a tartalmazó objektumból. Például:
 
 ```json
 {
@@ -397,7 +387,7 @@ További információ: [Device twins developer's guide](iot-hub-devguide-device-
 
 ## <a name="receiving-desired-properties-update-notifications"></a>A kívánt tulajdonságok frissítési értesítéseinek fogadása
 
-Amikor egy eszköz csatlakoztatva van, az `$iothub/twin/PATCH/properties/desired/?$version={new version}`IoT Hub értesítéseket küld a témakörnek, amely tartalmazza a megoldás háttérrendszer által végrehajtott frissítés tartalmát. Példa:
+Amikor egy eszköz csatlakoztatva van, az `$iothub/twin/PATCH/properties/desired/?$version={new version}`IoT Hub értesítéseket küld a témakörnek, amely tartalmazza a megoldás háttérrendszer által végrehajtott frissítés tartalmát. Például:
 
 ```json
 {

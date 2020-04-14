@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan hozhat létre az Azure Kubernetes Services (AKS
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 696821e12e963292107cad5b22f00a9816a94b25
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 7b9127c016fff78a8867dcecbe3260becdf02c65
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80616412"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259119"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Hozzon létre és konfiguráljon egy Azure Kubernetes-szolgáltatás (AKS) fürtöt virtuális csomópontok használatára az Azure Portalon
 
@@ -66,7 +66,7 @@ A virtuális csomópontok funkciói nagymértékben függnek az ACI szolgáltat�
 * [Gazdanevek](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
 * [Érvek](../container-instances/container-instances-exec.md#restrictions) exec az ACI
 * [A DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) nem telepíti a podokat a virtuális csomópontra
-* [A Windows Server-csomópontok (jelenleg előzetes verzióban az AKS-ben)](windows-container-cli.md) nem támogatottak a virtuális csomópontok mellett. A virtuális csomópontok segítségével úgy ütemezheti a Windows Server-tárolókat, hogy az AKS-fürtben Windows Server-csomópontokra lenne szükség.
+* A virtuális csomópontok támogatják a Linux-podok ütemezését. Manuálisan telepítheti a nyílt forráskódú [Virtual Kubelet ACI-szolgáltatót](https://github.com/virtual-kubelet/azure-aci) a Windows Server-tárolók ACI-ra való ütemezéséhez. 
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 

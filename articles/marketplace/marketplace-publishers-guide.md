@@ -1,20 +1,20 @@
 ---
-title: Azure Marketplace és AppSource – útmutató közzétevőknek
-description: Az Azure Marketplace és a Microsoft AppSource áttekintése az alkalmazás- és szolgáltatásközzétevők számára.
+title: Kereskedelmi piactér közzétételi útmutatója
+description: Az alkalmazás- és szolgáltatásmegjelenítők kereskedelmi piacterének áttekintése.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 06/05/2018
+ms.date: 04/12/2020
 ms.author: dsindona
-ms.openlocfilehash: 368cb4fdce23e695c074b4893dcdc314c974dd54
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c41a24ecb3e12618ac8cfcdfb756a33114f0f8a2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288393"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261992"
 ---
-# <a name="azure-marketplace-and-appsource-publishing-guide"></a>Azure Marketplace és AppSource – útmutató közzétevőknek
+# <a name="commercial-marketplace-publishing-guide"></a>Kereskedelmi piactér közzétételi útmutatója
 
 A Marketplace közzétételi útmutatója segít az új és meglévő kiadóknak megtanulni, hogyan használhatják a kirakatokat az [Azure Marketplace-en](https://azuremarketplace.microsoft.com) és a [Microsoft AppSource-ban,](https://appsource.microsoft.com) hogy az alkalmazások és szolgáltatások listázásával a Microsofttal együttműködve növeljék üzleti tevékenységüket.
 
@@ -62,7 +62,7 @@ A Marketplace-en található új hirdetések számos ingyenes juttatásra jogosu
 
 *   Közös értékesítés: Kezdje el vagy gyorsítsa fel az utazást a Microsofttal a Marketplace-en keresztül. A Microsoft-csapatokkal közös értékesítést segítő programok és támogatás elérése.
 
-Miután [elküldte a megoldást](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) a Piactérre, a bevezetési csapatunk kapcsolatba lép Önvel, hogy támogassa a közzétételi élményt.  További [információ: Partnerközpont-fiók létrehozása.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)
+Miután [elküldte a megoldást](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) a Piactérre, a bevezetési csapatunk kapcsolatba lép Önvel, hogy támogassa a közzétételi élményt.  További [információ: Partnerközpont-fiók létrehozása.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)
 
 Tudjon meg többet a [kereskedelmi piac előnyeit](https://docs.microsoft.com//azure/marketplace/gtm-your-marketplace-benefits).
 

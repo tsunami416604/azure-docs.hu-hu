@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: 5f9ad827fa947e645f7eb4850f90a73c61a45cd3
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 00e966dbee6c1993256a94d734bcc6261aea00af
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637110"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258428"
 ---
 # <a name="azure-cognitive-services-support-and-feedback-options"></a>Az Azure Cognitive Services támogatási és visszajelzési lehetőségei
 
@@ -59,10 +59,7 @@ Hol `{search keywords}` van a keresési kontextus. Fontolja meg az alábbi ható
 
 Ha nem talál választ a Veremtúlcsordulás keresőmezőjével kapcsolatos problémájára, küldjön be egy új kérdést. Stack túlcsordulás az előnyben részesített csatorna a fejlesztéssel kapcsolatos kérdésekre. Ez az a hely, ahol a Veremtúlcsordulás közösség és a Microsoft csapattagjai közvetlenül részt vesznek a problémák megoldásában.
 
- A kérdés megfogalmazásakor használja az alábbi címkék egyikét:
-
- - [Microsoft Kognitív](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
- - [Azure Cognitive Services](https://stackoverflow.com/questions/tagged/azure-cognitive-services)
+Felad egy kérdés [itt](https://go.microsoft.com/fwlink/?linkid=2126464). Használja a kérdéséhez megfelelő címkét, így biztosan látni fogjuk a kérdést.
 
 > [!TIP]
 > A Stack Overflow következő bejegyzései tippeket tartalmaznak a kérdések kialakításához és a forráskód hozzáadásához. Ezen irányelvek betartása segíthet növelni annak az esélyét, hogy a közösség tagjai gyorsan értékeljék és válaszoljanak a kérdésedre:

@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: f7177a95bdd585ff2822c9ac8c94a85d12f9259b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cfe450972acda3affbea6cbe3d262bc4b1956dc9
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69900366"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262859"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>Nagy méretű adathalmazok átvitele közepes vagy nagy hálózati sávszélességen
  
@@ -73,7 +73,7 @@ Kapcsolat nélküli adatátvitel esetén az alábbi táblázat segítségével i
 |    Titkosítás                       |    AES 128 bites                  |    AES 256 bites                                   |    AES 256 bites                           |    AES 128 bites                         |
 |    Hardver                         |     A Microsoft által biztosított          |    A Microsoft által biztosított                            |    A Microsoft által biztosított                    |    A megadott vevő                   |
 |    Hálózati illesztő                |    USB 3.1/SATA                 |    RJ 45, SFP+                                   |    RJ45, QSFP+                           |    SATA II/SATA III                    |
-|    Partnerintegráció              |    Néhány                         |    [Magas](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                          |    [Magas](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                  |    Néhány                                |
+|    Partnerintegráció              |    Néhány                         |    [Magas](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureExpressPod)                                          |    [Magas](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureExpressPod)                                  |    Néhány                                |
 |    Shipping                         |    Microsoft által kezelt            |    Microsoft által kezelt                             |    Microsoft által kezelt                     |    Vevő által kezelt                    |
 | Adatok áthelyezésekkor való használata         |Kereskedelmi határon belül|Kereskedelmi határon belül|Kereskedelmi határon belül|Földrajzi határokon átnyúlóan, pl. az USA és az EU között|
 |    Díjszabás                          |    [Díjszabás](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [Díjszabás](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [Díjszabás](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [Díjszabás](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |

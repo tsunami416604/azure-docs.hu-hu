@@ -4,14 +4,14 @@ description: Ismerje meg az Azure Cosmos DB GROUP BY záradékát.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 04/10/2020
 ms.author: tisande
-ms.openlocfilehash: e41e81457421bfe27e3c0313fc06e39e6df4cdce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a3cbbafc066747b62f79934f2cd12301aa1ba17
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73819107"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261601"
 ---
 # <a name="group-by-clause-in-azure-cosmos-db"></a>GROUP BY záradék az Azure Cosmos DB-ben
 
@@ -52,6 +52,12 @@ A GROUP BY záradék egy vagy több megadott tulajdonság értéke szerint osztj
 - Aliasing tulajdonságok vagy aliasing rendszerfüggvények (aliasing továbbra is engedélyezett a SELECT záradékban)
 - Segédlekérdezések
 - Összesítési rendszerfüggvények (ezek csak a SELECT záradékban engedélyezettek)
+
+Az összesítő rendszerfüggvénnyel és `GROUP BY` segédlekérdezéssel rendelkező lekérdezések nem támogatottak. A következő lekérdezés például nem támogatott:
+
+```sql
+SELECT COUNT(UniqueLastNames) FROM (SELECT AVG(f.age) FROM f GROUP BY f.lastName) AS UniqueLastNames
+```
 
 ## <a name="examples"></a>Példák
 
@@ -173,6 +179,6 @@ Az eredmény a következő:
 
 ## <a name="next-steps"></a>További lépések
 
-- [Kezdetekhez](sql-query-getting-started.md)
+- [Első lépések](sql-query-getting-started.md)
 - [SELECT záradék](sql-query-select.md)
 - [Összesítő függvények](sql-query-aggregates.md)

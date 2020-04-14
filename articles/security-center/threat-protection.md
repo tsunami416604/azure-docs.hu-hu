@@ -1,5 +1,5 @@
 ---
-title: Veszélyforrások elleni védelem az Azure Security Centerben
+title: Fenyegetésvédelem az Azure Security Centerben
 description: Ez a témakör az Azure Security Center fenyegetésvédelmi funkciói által védett erőforrásokat ismerteti.
 services: security-center
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 395f4b5481fcf2028d6bfe736e58c3174a0c80b2
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: fdf22e4d981549b876a14aed2b0a1d7e0c76e40e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435348"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263454"
 ---
-# <a name="threat-protection-in-azure-security-center"></a>Veszélyforrások elleni védelem az Azure Security Centerben
+# <a name="threat-protection-in-azure-security-center"></a>Fenyegetésvédelem az Azure Security Centerben
 
 Ha a Security Center fenyegetést észlel a környezet bármely területén, riasztást hoz létre. Ezek a riasztások ismertetik az érintett erőforrások részleteit, javasolt javítási lépéseket, és bizonyos esetekben egy lehetőséget, hogy egy logikai alkalmazás válaszként.
 
@@ -159,19 +159,20 @@ További információkért lásd:
 
 
 
-
 ## <a name="threat-protection-for-azure-storage"></a>Fenyegetésvédelem az Azure Storage-hoz<a name="azure-storage"></a>
 
-> [!NOTE]
-> Ez a szolgáltatás az Egyesült Államok kormányzati felhőiben érhető el, de más szuverén vagy Azure kormányzati felhőrégiókban nem.
+A komplex veszélyforrások elleni védelem a storage-hoz szokatlan és potenciálisan káros kísérleteket észlel a tárfiókok elérésére vagy kihasználására. Ez a védelmi réteg lehetővé teszi a fenyegetések kezelését anélkül, hogy biztonsági szakértőnek kellene lennie, és segít a biztonsági figyelőrendszerek kezelésében.
 
-Komplex veszélyforrások elleni védelem a storage (jelenleg csak a Blob storage) észleli a szokatlan és potenciálisan káros kísérletek elérésére vagy a tárfiókok kihasználására. Ez a védelmi réteg lehetővé teszi a fenyegetések kezelését anélkül, hogy biztonsági szakértőnek kellene lennie, és segít a biztonsági figyelőrendszerek kezelésében.
+Az Azure Storage speciális veszélyforrások elleni védelme jelenleg csak a [Blob Storage számára](https://azure.microsoft.com/services/storage/blobs/)érhető el. 
+
+Ez a szolgáltatás minden nyilvános felhőben és az Egyesült Államok kormányzati felhőiben érhető el, de más szuverén vagy Azure kormányzati felhőrégióban nem.
+
+A díjszabással kapcsolatos részletekért, beleértve az ingyenes 30 napos próbaverziót, tekintse meg az [Azure Security Center díjszabási lapját.](https://azure.microsoft.com/pricing/details/security-center/)
 
 További információkért lásd:
 
 * [A komplex veszélyforrások elleni védelem engedélyezése az Azure Storage-hoz](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
 * [Az Azure Storage veszélyforrások elleni riasztásainak listája](alerts-reference.md#alerts-azurestorage)
-
 
 > [!TIP]
 > Az Azure Storage-riasztások szimulálása a [blogbejegyzésben](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131)található utasításokat követve szimulálhatja.

@@ -1,17 +1,17 @@
 ---
-title: Az Azure Application Insights rendelkezésre állási tesztjeinek hibáival kapcsolatos hibák | Microsoft dokumentumok
+title: Az Azure Application Insights rendelkezésre állási tesztjeinek hibaelhárítása
 description: Webes tesztek az Azure Application Insights ban– problémamegoldás. Riasztásokat kaphat, ha egy webhely elérhetetlenné válik vagy lassan válaszol.
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: f135aa6c0a4a55f8a42fd858572cc811e25b27c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 94b00a36445b0f4284caba218f6416db726611eb
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671103"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255447"
 ---
 # <a name="troubleshooting"></a>Hibaelhárítás
 

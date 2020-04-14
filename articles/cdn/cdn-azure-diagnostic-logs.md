@@ -3,7 +3,7 @@ title: Azure diagnosztikai naplók | Microsoft dokumentumok
 description: Az ügyfél engedélyezheti a naplóelemzést az Azure CDN számára.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
-ms.author: magattus
-ms.openlocfilehash: 86696ed6715b4e43a9d02232c013eb64feb61f67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 35d028a38e6ac19f270abcc8708a532b3749eb39
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67594205"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254801"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure diagnosztikai naplók
 
@@ -51,7 +51,7 @@ A diagnosztikai naplókról további információt a Diagnosztikai naplók cím�
 
 Kövesse az alábbi lépéseket, engedélyezze a naplózást a CDN alapvető elemzésével:
 
-Jelentkezzen be az [Azure Portalra.](https://portal.azure.com) Ha még nem engedélyezte a CDN-t a munkafolyamathoz, [hozzon létre egy Azure CDN-profilt és végpontot](cdn-create-new-endpoint.md) a folytatás előtt.
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha még nem engedélyezte a CDN-t a munkafolyamathoz, [hozzon létre egy Azure CDN-profilt és végpontot](cdn-create-new-endpoint.md) a folytatás előtt.
 
 1. Az Azure Portalon keresse meg a **CDN-profilt.**
 
@@ -445,7 +445,7 @@ Példa tulajdonságai:
 
 * [Azure diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [Alapvető elemzések az Azure CDN kiegészítő portálján keresztül](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
-* [Az Azure Monitor naplói](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
+* [Azure Monitor-naplók](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
 * [Azure Log Analytics REST API](https://docs.microsoft.com/rest/api/loganalytics)
 
 

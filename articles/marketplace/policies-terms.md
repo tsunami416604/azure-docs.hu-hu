@@ -5,14 +5,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/27/2020
+ms.date: 04/10/2020
 ms.author: dsindona
-ms.openlocfilehash: a370b7b21d25f117e44d613d060dd8cdd060c062
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2fdf40dde287a65548f1db04d34ed3cf67d0374
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336265"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262162"
 ---
 # <a name="commercial-marketplace-policies-and-terms"></a>Kereskedelmi piacpolitika és -feltételek
 
@@ -21,9 +21,9 @@ ms.locfileid: "80336265"
 
 Köszönjük érdeklődését kiadói ajánlatok a kereskedelmi piacon. Elkötelezettek vagyunk a mellett, hogy önnel együttműködve gazdag felhőalapú megoldásokat és üzleti ajánlatokat építsünk, amelyek világszerte örömet okoznak az ügyfeleknek, és segítenek vállalkozása felépítésében.
 
-A piacon tett ajánlatoknak meg kell felelniük irányelveinknek és feltételeinknek. Ezeket az irányelveket és feltételeket időről időre frissítjük, hogy biztosítsuk a jó ügyfélélményt, és lehetőséget biztosítsunk a partnereknek a sikerre. Ha visszajelzést kap szabályzatainkról vagy feltételeinkről, kérjük, tudassa velünk az Azure Piactér és az [AppSource fórumon](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)található megjegyzésekkel.
+A piacon tett ajánlatoknak meg kell felelniük irányelveinknek és feltételeinknek. Ezeket az irányelveket és feltételeket időről időre frissítjük, hogy biztosítsuk a jó ügyfélélményt, és lehetőséget biztosítsunk a partnereknek a sikerre. Ha visszajelzést kap szabályzatainkról vagy feltételeinkről, kérjük, tudassa velünk az Azure Marketplace és a [Microsoft AppSource fórumon](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)található megjegyzésekkel.
 
-## <a name="policies-and-terms"></a>Politikák és feltételek
+## <a name="policies-and-terms"></a>Szabályzatok és feltételek
 
 * [Kereskedelmi piactér tanúsítási szabályzatai](https://docs.microsoft.com/legal/marketplace/certification-policies)
 
@@ -35,6 +35,6 @@ A piacon tett ajánlatoknak meg kell felelniük irányelveinknek és feltételei
 
 ## <a name="next-steps"></a>További lépések
 
-Látogasson el az [Azure Marketplace és az AppSource közzétételi útmutató](./marketplace-publishers-guide.md) lapjára.
+Látogasson el a [kereskedelmi piactér közzétételi útmutató](./marketplace-publishers-guide.md) oldalára.
 
 ---

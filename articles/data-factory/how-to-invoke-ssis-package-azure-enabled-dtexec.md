@@ -6,17 +6,17 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/21/2019
+ms.date: 04/12/2020
 author: swinarko
 ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
-ms.openlocfilehash: a5540eea91937319a6ac947b50698ccaa8b25847
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 006d4fa9ed09170a423e796e893b817e079e861b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74931706"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261931"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>SQL Server Integration Services-csomagok futtatása az Azure-kompatibilis dtexec segédprogrammal
 Ez a cikk az Azure-kompatibilis dtexec (AzureDTExec) parancssori segédprogramot ismerteti. Az SQL Server Integration Services (SSIS) csomagok futtatására szolgál az Azure-Data Factory Ban az Azure-SSIS-integrációs futásidőben (IR).
@@ -46,19 +46,19 @@ Az **AzureDTExecConfig** ablakban adja meg a konfigurációs beállításokat az
 - **ApplicationId:** Adja meg az Azure AD alkalmazás egyedi azonosítóját, amelyet az adat-előállító ban folyamatok létrehozásához megfelelő engedélyekkel hoz létre. További információ: [Create an Azure AD app and service principal via Azure Portal](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 - **AuthenticationKey**: Adja meg az Azure AD-alkalmazás hitelesítési kulcsát.
 - **TenantId:** Adja meg az Azure AD-bérlő egyedi azonosítóját, amely alatt az Azure AD-alkalmazás jön létre.
-- **SubscriptionId**: Adja meg az Azure-előfizetés egyedi azonosítóját, amely alatt az adatgyár at létrehozták.
-- **ResourceGroup**: Adja meg annak az Azure-erőforráscsoportnak a nevét, amelyben az adatgyár at létrehozták.
 - **DataFactory:** Adja meg az adatgyár nevét, amelyben egyedi folyamatok végrehajtása SSIS csomag tevékenység azok ban jönlétre az AzureDTExec meghívásakor megadott beállítások értékei alapján.
 - **IRName**: Adja meg az Azure-SSIS ir nevét az adat-előszobában, amelyen az Univerzális elnevezési konvenció (UNC) elérési útján megadott csomagok az AzureDTExec meghívásakor futnak.
-- **PackageAccessDomain**: Adja meg a tartományi hitelesítő adatokat a csomagok eléréséhez az AzureDTExec meghívásakor megadott UNC elérési útjukon.
-- **PackageAccessUserName**: Adja meg a felhasználónév hitelesítő adatait a csomagok eléréséhez az AzureDTExec meghívásakor megadott UNC elérési útjukon.
-- **PackageAccessPassword:** Adja meg a jelszó hitelesítő adatokat a csomagok eléréséhez az UNC elérési útján, amely az AzureDTExec meghívásakor megadott.
-- **LogPath**: Adja meg a naplómappa UNC elérési útját, amelybe az Azure-SSIS ir-en lévő csomagvégrehajtás-végrehajtások naplófájljai nak írása történik.
-- **LogLevel**: Adja meg a kiválasztott naplózási hatókört előre definiált **null,** **Alapszintű**, **részletes**vagy **teljesítmény** beállításokat a csomag végrehajtások az Azure-SSIS IR.
-- **LogAccessDomain**: Adja meg a tartomány hitelesítő adatait a naplómappa UNC elérési útján való eléréséhez a naplófájlok írásakor, amelyre akkor van szükség, ha a **LogPath** meg van adva, és a **LogLevel** nem **null**.
-- **LogAccessUserName**: Adja meg a felhasználónév hitelesítő adatát, hogy a naplómappát unc elérési útján férje ni naplófájlok írásakor, ami szükséges, ha **a LogPath** meg van adva, és **a LogLevel** nem **null**.
-- **LogAccessPassword**: Adja meg a jelszó hitelesítő adatát a naplómappa UNC elérési útján való eléréséhez a naplófájlok írásakor, amelyre akkor van szükség, ha a **LogPath** meg van adva, és a **LogLevel** nem **null**.
 - **PipelineNameHashStrLen**: Adja meg az AzureDTExec meghívásakor megadott beállítások értékeiből létrehozandó kivonatos karakterláncok hosszát. A karakterláncok a Data Factory-folyamatok egyedi neveinek létrehozásához használatosak, amelyek a csomagokat az Azure-SSIS IR-en futtatják. Általában 32 karakter hosszúsága elegendő.
+- **ResourceGroup**: Adja meg annak az Azure-erőforráscsoportnak a nevét, amelyben az adatgyár at létrehozták.
+- **SubscriptionId**: Adja meg az Azure-előfizetés egyedi azonosítóját, amely alatt az adatgyár at létrehozták.
+- **LogAccessDomain**: Adja meg a tartomány hitelesítő adatait a naplómappa UNC elérési útján való eléréséhez a naplófájlok írásakor, amelyre akkor van szükség, ha a **LogPath** meg van adva, és a **LogLevel** nem **null**.
+- **LogAccessPassword**: Adja meg a jelszó hitelesítő adatát a naplómappa UNC elérési útján való eléréséhez a naplófájlok írásakor, amelyre akkor van szükség, ha a **LogPath** meg van adva, és a **LogLevel** nem **null**.
+- **LogAccessUserName**: Adja meg a felhasználónév hitelesítő adatát, hogy a naplómappát unc elérési útján férje ni naplófájlok írásakor, ami szükséges, ha **a LogPath** meg van adva, és **a LogLevel** nem **null**.
+- **LogLevel**: Adja meg a kiválasztott naplózási hatókört előre definiált **null,** **Alapszintű**, **részletes**vagy **teljesítmény** beállításokat a csomag végrehajtások az Azure-SSIS IR.
+- **LogPath**: Adja meg a naplómappa UNC elérési útját, amelybe az Azure-SSIS ir-en lévő csomagvégrehajtás-végrehajtások naplófájljai nak írása történik.
+- **PackageAccessDomain**: Adja meg a tartományi hitelesítő adatokat a csomagok eléréséhez az AzureDTExec meghívásakor megadott UNC elérési útjukon.
+- **PackageAccessPassword:** Adja meg a jelszó hitelesítő adatokat a csomagok eléréséhez az UNC elérési útján, amely az AzureDTExec meghívásakor megadott.
+- **PackageAccessUserName**: Adja meg a felhasználónév hitelesítő adatait a csomagok eléréséhez az AzureDTExec meghívásakor megadott UNC elérési útjukon.
 
 A csomagok és a naplófájlok fájlrendszerekben vagy a helyszíni fájlmegosztásokban való tárolásához csatlakozzon az Azure-SSIS ir-hez egy, a helyszíni hálózathoz csatlakoztatott virtuális hálózathoz, hogy letudja olvasni a csomagokat, és megírhassa a naplófájlokat. További információ: [Csatlakozás az Azure-SSIS infravörös hálózathoz virtuális hálózathoz című témakörben.](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)
 
@@ -92,7 +92,7 @@ Az AzureDTExec meghívása hasonló lehetőségeket kínál, mint a dtexec megh�
 
 ## <a name="next-steps"></a>További lépések
 
-Miután az AzureDTExec meghívása után létrejönnek és futtatnak a Bennük lévő SSIS-csomag végrehajtásával rendelkező egyedi folyamatok, azok figyelhetők a Data Factory portálon. További információ: [SSIS-csomagok futtatása adatgyári tevékenységként.](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
+Miután az AzureDTExec meghívásakor egyedi folyamatok jönnek létre és futnak a Végrehajtás SSIS-csomag tevékenységgel, azok figyelhetők a Data Factory portálon. A Data Factory eseményindítókat is hozzárendelheti, ha a Data Factory használatával szeretné vezénylni/ütemezni őket. További információ: [SSIS-csomagok futtatása adatgyári tevékenységként.](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
 
 > [!WARNING]
 > A létrehozott folyamat várhatóan csak az AzureDTExec által használt. Tulajdonságai vagy paraméterei a jövőben változhatnak, ezért ne módosítsa vagy használja fel őket más célokra. A módosítások megszakíthatják az AzureDTExec-et. Ha ez történik, törölje a folyamatot. Az AzureDTExec a következő meghíváskor új folyamatot hoz létre.

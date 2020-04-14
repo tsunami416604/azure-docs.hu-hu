@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: dsindona
-ms.openlocfilehash: adbe3d4c498c8f4e4968ca903f78c34aedca9a4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c5cf218632c720fd042cc5f5d4ed95d5096b5b5
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80279997"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270196"
 ---
 # <a name="container-skus-tab"></a>Tárolósulékok lap
+
+> [!IMPORTANT]
+> 2020. április 13-tól megkezdjük az Azure Container-ajánlatok kezelését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [Azure Container-ajánlat létrehozása](https://aka.ms/CreateContainerOffer) című, az áttelepített ajánlatok kezeléséhez című útmutatóutasításait.
 
 Az **Új ajánlat** lap **SK-ja** lehetővé teszi egy vagy több skus létrehozását, és társíthatja őket az új ajánlathoz.  Különböző sk-ek segítségével különbséget tehet a megoldás szolgáltatáskészletek, számlázási modellek vagy más jellemzők szerint.
 

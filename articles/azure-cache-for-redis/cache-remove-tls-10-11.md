@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 0d28469820f63f63089d9b91d57ccd7fe75c8b95
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 809fbe85a9783777d5dbef86357bd5a386bd6f81
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348655"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261239"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>A TLS 1.0 és 1.1 eltávolítása az Azure Cache for Redis használatával
 
@@ -51,7 +51,7 @@ A legtöbb alkalmazás Redis ügyfélkódtárakat használ a gyorsítótárakkal
 A Redis .NET ügyfelek alapértelmezés szerint a legkorábbi TLS-verziót használják a .NET Framework 4.5.2-es vagy korábbi verzióján, és a .NET Framework 4.6-os vagy újabb verzióján a legújabb TLS-verziót használják. Ha a .NET Framework régebbi verzióját használja, manuálisan engedélyezheti a TLS 1.2-t:
 
 * **StackExchange.Redis:** Állítsa `ssl=true` `sslprotocols=tls12` be, és a kapcsolat ihúr.
-* **ServiceStack.Redis:** Kövesse a [ServiceStack.Redis utasításait](https://github.com/ServiceStack/ServiceStack.Redis/pull/247).
+* **ServiceStack.Redis:** Kövesse a [ServiceStack.Redis](https://github.com/ServiceStack/ServiceStack.Redis#servicestackredis-ssl-support) utasításokat, és legalább a ServiceStack.Redis 5.6-os szükséges.
 
 ### <a name="net-core"></a>.NET Core
 

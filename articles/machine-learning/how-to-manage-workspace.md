@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: f38b0895b0d6eddcf63c082d3df205f4d9de9d50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b4b64bcca57e1dc98cdba10626597532ae1461c
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297067"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81269728"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure Machine Learning-munkaterületek létrehozása és kezelése az Azure Portalon
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -24,7 +24,7 @@ Ebben a cikkben azure [**Machine Learning-munkaterületeket**](concept-workspace
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
 
-Egy munkaterület létrehozásához szüksége van egy Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt elkezdené. Próbálja ki még ma [az Azure Machine Learning ingyenes vagy fizetős verzióját.](https://aka.ms/AMLFree)
+Egy munkaterület létrehozásához szüksége van egy Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy ingyenes fiókot. Próbálja ki még ma [az Azure Machine Learning ingyenes vagy fizetős verzióját.](https://aka.ms/AMLFree)
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure-előfizetés hitelesítő adatainak használatával. 
 
@@ -90,6 +90,8 @@ A munkaterületet Basic kiadásról Enterprise kiadásra frissítheti, hogy kiha
 
 ## <a name="find-a-workspace"></a><a name="view"></a>Munkaterület keresése
 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+
 1. A felső keresőmezőbe írja be a **Machine Learning (Gépi tanulás)** kifejezést.  
 
 1. Válassza a **Gépi tanulás lehetőséget.**
@@ -102,9 +104,9 @@ A munkaterületet Basic kiadásról Enterprise kiadásra frissítheti, hogy kiha
 
 ## <a name="delete-a-workspace"></a>Munkaterület törlése
 
-Használja a törölni kívánt munkaterület tetején található Törlés gombot.
+Az [Azure Portalon](https://portal.azure.com/)válassza **a Törlés** lehetőséget a törölni kívánt munkaterület tetején.
 
-  ![Törlés gomb](./media/how-to-manage-workspace/delete-workspace.png)
+:::image type="content" source="./media/how-to-manage-workspace/delete-workspace.png" alt-text="Munkaterület törlése":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

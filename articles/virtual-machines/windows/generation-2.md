@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: ed7d62ef5c1c4837b3eb6d02f301085178fe5e0b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 99abb6cb493cca3aa4e2ac0c42744e1fbaf84f12
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79528217"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272984"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>2.000.000 virtuális gép támogatása az Azure-ban
 
@@ -35,7 +35,9 @@ Az 1. generációs virtuális gépeket az Azure összes virtuálisgép-mérete t
 * [B-sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
 * [DC sorozat](../dcv2-series.md)
 * [DSv2 és](../dv2-dsv2-series.md) [Dsv3 sorozatú](../dv3-dsv3-series.md)
+* [Dasv4-sorozat](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series)
 * [Esv3-sorozat](../ev3-esv3-series.md)
+* [Easv4-sorozat](https://docs.microsoft.com/azure/virtual-machines/eav4-easv4-series)
 * [Fsv2 sorozat](../fsv2-series.md)
 * [GS-sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#gs-series)
 * [HB-sorozat](../hb-series.md)
@@ -59,7 +61,7 @@ A 2.generációs virtuális gépek a következő Marketplace-lemezképeket támo
 * SUSE Linux Enterprise Server 12 SP4
 * Ubuntu Server 16.04, 18.04, 19.04, 19.10 
 * RHEL 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 7,0
-* Cent OS 8.0, 7.7, 7.6, 7.5, 7.4
+* Cent OS 8.1, 8.0, 7.7, 7.6, 7.5, 7.4
 * Oracle Linux 7.7, 7.7-CI
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>A helyszíni és az Azure 2-es generációs virtuális gépeivel szemben
@@ -102,7 +104,7 @@ Az Azure jelenleg nem támogatja a helyszíni Hyper-V által a 2-es generációs
 
 Az Azure Portalon vagy az Azure CLI-ben létrehozhat 2.
 
-#### <a name="azure-portal"></a>Azure portál
+#### <a name="azure-portal"></a>Azure Portal
 
 Az alábbiakban a lépéseket, hogy hozzon létre egy generációs 2 (Gen2) virtuális gép az Azure Portalon.
 

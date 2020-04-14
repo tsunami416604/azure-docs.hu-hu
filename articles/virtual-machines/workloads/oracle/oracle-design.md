@@ -3,7 +3,7 @@ title: Oracle-adatbázis tervezése és megvalósítása az Azure-ban | Microsof
 description: Oracle-adatbázis tervezése és megvalósítása azure-környezetben.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: romitgirdhar
+author: mimckitt
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogirdh
-ms.openlocfilehash: c2c2d1a9affe13d485bfeef52c781ed259b53bc8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 41e1720dfeaa98a9d0bc2227c58083ce769b06e0
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70100114"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263403"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Oracle-adatbázis tervezése és megvalósítása az Azure-ban
 
@@ -52,8 +52,8 @@ Az alábbi táblázat néhány különbséget sorol fel a helyszíni megvalósí
 > | **Tervezett karbantartás** |Javítások/frissítések|[Rendelkezésre állási készletek](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (az Azure által kezelt javítások/frissítések) |
 > | **Erőforrás** |Dedikált  |Más ügyfelekkel megosztva|
 > | **Régiók** |Adatközpontok |[Régiópárok](https://docs.microsoft.com/azure/virtual-machines/windows/regions#region-pairs)|
-> | **Tárterület** |SAN/fizikai lemezek |[Azure által felügyelt tárhely](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
-> | **Skála** |Függőleges skála |Horizontális skálázhatóság|
+> | **Storage** |SAN/fizikai lemezek |[Azure által felügyelt tárhely](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
+> | **Méretezés** |Függőleges skála |Horizontális skálázhatóság|
 
 
 ### <a name="requirements"></a>Követelmények

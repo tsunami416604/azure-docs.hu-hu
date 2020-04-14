@@ -8,12 +8,12 @@ ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: seodec18
 ms.date: 02/12/2020
-ms.openlocfilehash: 89d2c16e3f54d3170b4f0d23590294be13dd8caa
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 67ee882acab22d977f08124591289e9cfc7cded1
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632751"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261822"
 ---
 # <a name="quickstart-data-streaming-with-event-hubs-using-the-kafka-protocol"></a>Rövid útmutató: Adatfolyam-továbbítás az Event Hubs használatával a Kafka protokoll használatával
 Ez a rövid útmutató bemutatja, hogyan streamelhet az Event Hubs-ba a protokollügyfelek módosítása vagy a saját fürtök futtatása nélkül. Megtudhatja, hogyan használhatja a gyártók és a fogyasztók beszélni Event Hubs csak egy konfigurációs változás az alkalmazásokban. Az Azure Event Hubs az [Apache Kafka 1.0-s verzióját](https://kafka.apache.org/10/documentation.html) támogatja.
@@ -46,7 +46,7 @@ Szabványos **szintű** Event Hubs névtér létrehozásakor a névtér Kafka v�
 
 3. Az alábbiakban látható módon módosítsa az előállító konfigurációs adatait az `src/main/resources/producer.config` fájlban:
 
-    **Ssl:**
+    **TLS/SSL:**
 
     ```xml
     bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093
@@ -76,7 +76,7 @@ Szabványos **szintű** Event Hubs névtér létrehozásakor a névtér Kafka v�
 
 6. Az alábbiakban látható módon módosítsa a fogyasztó konfigurációs adatait az `src/main/resources/consumer.config` fájlban:
    
-    **Ssl:**
+    **TLS/SSL:**
 
     ```xml
     bootstrap.servers=NAMESPACENAME.servicebus.windows.net:9093

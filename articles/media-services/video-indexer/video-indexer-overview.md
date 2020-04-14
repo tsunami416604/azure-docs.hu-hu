@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 02/02/2020
+ms.date: 04/12/2020
 ms.author: juliako
-ms.openlocfilehash: efd8386f464bfdf2ac27d3be07e6572dc27952e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9bea9e375e00d6fc0f6c33aa1bcc766773db2059
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78163590"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81269941"
 ---
 # <a name="what-is-video-indexer"></a>Mi az a Video Indexer?
 
@@ -70,9 +70,9 @@ Az alábbi lista azokat az elemzési adatokat mutatja be, amelyeket a videóinde
 
 ### <a name="audio-insights"></a>Hangbetekintések
 
-* **Automatikus nyelvmeghatározás**: Automatikusan meghatározza a domináns beszélt nyelvet. A támogatott nyelvek közé tartozik az angol, a spanyol, a francia, a német, az olasz, a kínai (egyszerűsített), a japán, az orosz és a brazil portugál. Ha a nyelv nem azonosítható magabiztosan, a Video Indexer feltételezi, hogy a beszélt nyelv az angol. További információ: [Language identification model](language-identification-model.md).
+* **Hangátírás**: A beszédet 12 nyelven alakítja át szöveggé, és engedélyezi a bővítményeket. A támogatott nyelvek közé tartozik az angol, a spanyol, a francia, a német, az olasz, a mandarin chines, a japán, az arab, az orosz, a brazil portugál, a hindi és a koreai.
+* **Automatikus nyelvmeghatározás**: Automatikusan meghatározza a domináns beszélt nyelvet. A támogatott nyelvek közé tartozik az angol, a spanyol, a francia, a német, az olasz, a mandarin chines, a japán, az orosz és a brazil portugál. Ha a nyelv nem azonosítható magabiztosan, a Video Indexer feltételezi, hogy a beszélt nyelv az angol. További információ: [Language identification model](language-identification-model.md).
 * **Többnyelvű beszédfelismerés és átírás** (előnézet): Automatikusan azonosítja a beszélt nyelvet a hangkülönböző szegmenseiben. Elküldi a médiafájl minden egyes szegmensét átírandó, majd egyesíti az átírást egy egységes átiratra. További információt a [Többnyelvű tartalom automatikus azonosítása és átírása](multi-language-identification-transcription.md)című témakörben talál.
-* **Hangátírás**: A beszédet 12 nyelven alakítja át szöveggé, és engedélyezi a bővítményeket. A támogatott nyelvek közé tartozik az angol, a spanyol, a francia, a német, az olasz, a kínai (egyszerűsített), a japán, az arab, az orosz, a brazil portugál, a hindi és a koreai.
 * **Hangfeliratok**: Hangfeliratokat hoz létre három formátumban: VTT, TTML, SRT.
 * **Kétcsatornás feldolgozás:** Az automatikus automatikus észleli a külön átiratot, és egyetlen ütemtervbe olvad.
 * **Zajcsökkentés**: Törli a telefonos hang- vagy zajos felvételeket (Skype-szűrők alapján).

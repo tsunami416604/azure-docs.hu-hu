@@ -3,12 +3,12 @@ title: Fájlok és mappák biztonsági mentése – gyakori kérdések
 description: Kijavítottuk a fájlok és mappák Azure Backup segítségével való biztonsági mentésével kapcsolatos gyakori kérdéseket.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 55819ce7ec5196812d935a21c096c132144d78af
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 6e9f265672ff15e40444a46a3e440e73a0051a5b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421311"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254750"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Gyakori kérdések a fájlok és mappák biztonsági mentésével kapcsolatban
 
@@ -22,7 +22,7 @@ A Windows Server-gépek, a System Center DPM és a Microsoft Azure Backup kiszol
 
 ### <a name="how-long-are-vault-credentials-valid"></a>Mennyi ideig érvényesek a tároló hitelesítő adatai?
 
-A tároló hitelesítő adatai 48 óra után lejárnak. Ha a hitelesítő adatok fájl lejár, töltse le újra a fájlt az Azure Portalon.
+A tároló hitelesítő adatai 10 nap után lejárnak. Ha a hitelesítő adatok fájl lejár, töltse le újra a fájlt az Azure Portalon.
 
 ### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>Milyen meghajtókról tudok biztonsági másolatot csinálni a fájlokról és mappákról?
 
@@ -185,7 +185,6 @@ Ha az eredeti gépnek ugyanaz a jelmondata (amelyet a regisztráció során mega
 | --- | --- | --- |
 | Elveszett |Elérhető |A MARS-ügynököt egy másik gépre is telepítheti és regisztrálhatja ugyanazzal a jelszóval, amelyet az eredeti gép regisztrációja során megadott. Válassza **a Helyreállítási lehetőség** > lehetőséget: A visszaállítás végrehajtásához válassza a**másik helyet.** További információkért tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine).
 | Elveszett |Elveszett |Nem lehet helyreállítani az adatokat, vagy az adatok nem állnak rendelkezésre |
-
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Mi történik, ha megszakítok egy folyamatban lévő visszaállítási feladatot?
 

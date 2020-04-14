@@ -3,7 +3,7 @@ title: A teljesítmény javítása az Azure CDN fájljainak tömörítésével |
 description: Ismerje meg, hogyan javíthatja a fájlátviteli sebességet, és növelheti az oldalbetöltési teljesítményt a fájlok tömörítésével az Azure CDN-ben.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: af1cddff-78d8-476b-a9d0-8c2164e4de5d
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2018
-ms.author: magattus
-ms.openlocfilehash: 9f185f58e1d33a3985777cb22bc7578f9f2c4541
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 7124dd40d4510674014afe012a8f40dcb5bb6153
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593804"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253764"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>A teljesítmény javítása a fájlok tömörítésével az Azure CDN-ben
 A fájltömörítés egy egyszerű és hatékony módszer a fájlátviteli sebesség növelésére és az oldalbetöltési teljesítmény növelésére azáltal, hogy csökkenti a fájl méretét, mielőtt a kiszolgálóról elküldené. A fájltömörítés csökkentheti a sávszélesség költségeit, és gyorsabb felhasználói élményt biztosít.
@@ -139,7 +139,7 @@ Ezek a profilok csak a gzip tömörítési kódolást támogatják. Amikor egy p
 Az alábbi táblázatok az Azure CDN-tömörítési viselkedését ismertetik minden forgatókönyvnél:
 
 ### <a name="compression-is-disabled-or-file-is-ineligible-for-compression"></a>A tömörítés le van tiltva, vagy a fájl nem jogosult tömörítésre
-| Ügyfél által kért formátum (elfogadás-kódolásfejlécen keresztül) | Gyorsítótárazott fájlformátum | A CDN-válasz az ügyfélnek | &nbsp; &nbsp; Megjegyzések&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+| Ügyfél által kért formátum (elfogadás-kódolásfejlécen keresztül) | Gyorsítótárazott fájlformátum | A CDN-válasz az ügyfélnek | &nbsp; &nbsp; Megjegyzések&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 | --- | --- | --- | --- |
 | Tömörített |Tömörített |Tömörített | |
 | Tömörített |Tömörítetlen |Tömörítetlen | |

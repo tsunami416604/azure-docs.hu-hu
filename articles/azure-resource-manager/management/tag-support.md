@@ -3,12 +3,12 @@ title: Az erőforrások címkézési támogatása
 description: Megmutatja, hogy mely Azure-erőforrástípusok támogatják a címkéket. Az összes Azure-szolgáltatás részleteit tartalmazza.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: b8b1c0b738bb8b94ee53433141f1ae3dbbb3f942
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: c971d3af102faf99f97aac261882797460d71f37
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80982327"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255026"
 ---
 # <a name="tag-support-for-azure-resources"></a>Az Azure-erőforrások címkézési támogatása
 Ez a cikk azt ismerteti, hogy egy erőforrástípus támogatja-e a [címkéket.](tag-resources.md) A Támogatja a **címkéket** feliratú oszlop azt jelzi, hogy az erőforrástípus rendelkezik-e tulajdonsággal a címkéhez. A **Költségjelentésben címke** feliratú oszlop jelzi, hogy az adott erőforrástípus átadja-e a címkét a költségjelentésnek. A költségeket címkék szerint tekintheti meg a [Költségkezelési költségelemzésben,](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options) az [Azure számlázási számláján és a napi használati adatokban.](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)
@@ -96,6 +96,7 @@ Ugrás erőforrásszolgáltatói névtérre:
 > - [Microsoft.HybridData](#microsofthybriddata)
 > - [Microsoft.Hydra](#microsofthydra)
 > - [Microsoft.ImportExport](#microsoftimportexport)
+> - [Microsoft.Insights](#microsoftinsights)
 > - [Microsoft.Intune](#microsoftintune)
 > - [Microsoft.IoTCentral](#microsoftiotcentral)
 > - [Microsoft.IoTSpaces](#microsoftiotspaces)
@@ -1201,6 +1202,33 @@ Ugrás erőforrásszolgáltatói névtérre:
 > | ------------- | ----------- | ----------- |
 > | Munkahelyek | Igen | Igen |
 
+## <a name="microsoftinsights"></a>Microsoft.Insights
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Támogatja a címkéket | Címke a költségjelentésben |
+> | ------------- | ----------- | ----------- |
+> | actionGroups (műveletcsoportok) | Igen | Igen |
+> | activityLogAlerts | Igen | Igen |
+> | riasztási szabályok | Igen | Igen |
+> | automatikus méretezhető beállítások | Igen | Igen |
+> | Összetevők | Igen | Igen |
+> | összetevők / linkedStorageAccounts | Nem | Nem |
+> | összetevők / ProactiveDetectionConfigs | Nem | Nem |
+> | diagnosztikai beállítások | Nem | Nem |
+> | guestDiagnosticSettings | Igen | Igen |
+> | guestDiagnosticSettingsAssociation | Igen | Igen |
+> | logprofiles (logprofiles) | Igen | Igen |
+> | metricAlerts (mérőszám) riasztások | Igen | Igen |
+> | privateLinkScopes | Igen | Igen |
+> | privateLinkScopes / privateEndpointConnections | Nem | Nem |
+> | privateLinkScopes / hatókörerőforrások | Nem | Nem |
+> | queryPacks (lekérdezéscsomagok) | Igen | Igen |
+> | queryPacks / lekérdezések | Nem | Nem |
+> | scheduledQueryRules | Igen | Igen |
+> | webtesztek | Igen | Igen |
+> | munkafüzetek | Igen | Igen |
+> | munkafüzetsablonok | Igen | Igen |
+
 ## <a name="microsoftintune"></a>Microsoft.Intune
 
 > [!div class="mx-tableFixed"]
@@ -1454,7 +1482,7 @@ Ugrás erőforrásszolgáltatói névtérre:
 > | alkalmazásSecurityGroups | Igen | Igen |
 > | azureFirewallFqdnTags | Nem | Nem |
 > | azureTűzfalak | Igen | Nem |
-> | bástyaHázigazdák | Igen | Igen |
+> | bástyaHázigazdák | Igen | Nem |
 > | bgpServiceKözösségek | Nem | Nem |
 > | Kapcsolatok | Igen | Igen |
 > | ddosCustomPolicies | Igen | Igen |
@@ -1484,14 +1512,14 @@ Ugrás erőforrásszolgáltatói névtérre:
 > | frontdoorWebApplicationFirewallPolicies | Igen, de korlátozott (lásd [az alábbi megjegyzést)](#frontdoor) | Igen |
 > | getDnsResourceReference | Nem | Nem |
 > | internalNotify | Nem | Nem |
-> | terheléselosztók | Igen | Nem |
+> | terheléselosztók | Igen | Igen |
 > | localNetworkGateways | Igen | Igen |
 > | natGateways | Igen | Igen |
 > | hálózatiIntentPolicies | Igen | Igen |
 > | hálózati interfészek | Igen | Igen |
 > | hálózati profilok | Igen | Igen |
 > | networkSecurityGroups (hálózatibiztonsági csoportok) | Igen | Igen |
-> | networkWatchers | Igen | Nem |
+> | networkWatchers | Igen | Igen |
 > | networkWatchers / connectionMonitors | Igen | Nem |
 > | networkWatchers / flowLogs | Nem | Nem |
 > | networkWatchers / objektívek | Igen | Nem |
@@ -1524,8 +1552,8 @@ Ugrás erőforrásszolgáltatói névtérre:
 > | virtualNetworkGateways | Igen | Igen |
 > | virtualNetworks | Igen | Igen |
 > | virtualNetworkTaps | Igen | Igen |
-> | virtualWans | Igen | Igen |
-> | vpnGateways | Igen | Nem |
+> | virtualWans | Igen | Nem |
+> | vpnGateways | Igen | Igen |
 > | vpnOldalak | Igen | Igen |
 > | webApplicationFirewallPolicies | Igen | Igen |
 
@@ -1821,7 +1849,7 @@ Ugrás erőforrásszolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Támogatja a címkéket | Címke a költségjelentésben |
 > | ------------- | ----------- | ----------- |
-> | Névterek | Igen | Nem |
+> | Névterek | Igen | Igen |
 > | névterek / engedélyezési szabályok | Nem | Nem |
 > | névterek / disasterrecoveryconfigs | Nem | Nem |
 > | névterek / eventgridfilters | Nem | Nem |

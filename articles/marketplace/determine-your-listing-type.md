@@ -1,6 +1,6 @@
 ---
-title: A közzétételi lehetőség meghatározása a Microsoft AppSource és az Azure Marketplace-en
-description: Ez a cikk ismerteti a jogosultsági feltételek és közzétételi követelmények partnerek próbálják megérteni, hogyan tehet közzé alkalmazásokat a Microsoft AppSource és az Azure Marketplace-en.
+title: A közzétételi lehetőség meghatározása a kereskedelmi piacon
+description: Ez a cikk ismerteti a jogosultsági feltételeket és a közzétételi követelményeket, amelyeket a partnerek próbálnak megérteni, hogyan tehetnek közzé alkalmazásokat a kereskedelmi piacon.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: dsindona
 ms.service: marketplace
@@ -8,18 +8,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: dsindona
-ms.openlocfilehash: 4c41fcbb8766feb68db7d60d591e914a6ba0aea2
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 84d5c351f3997fe5430ea1ce517c2dca13203c03
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349539"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261686"
 ---
 # <a name="determine-your-publishing-option"></a>A közzétételi beállítások meghatározása
 
 Az ajánlathoz kiválasztott közzétételi lehetőség közvetlenül kapcsolódik mind a jogosultsági követelményekhez, mind a kereskedelmi piac piacra vonatkozó GTM-előnyökhöz. Ennél is fontosabb, hogy a közzétételi lehetőség és az ajánlattípus kiválasztása határozza meg, hogy a felhasználók hogyan lépnek kapcsolatba a kereskedelmi piactér-ajánlattal.
 
-Az ajánlat konfigurálásához meg kell értenie a következő kulcsfontosságú kereskedelmi piactér-fogalmakat: a közzétételi lehetőségeket, az ajánlattípusokat és a konfigurációt, valamint a cselekvésre való felhívásokat, amelyek szabályozzák, hogy az ajánlat hogyan és hol jelenjen meg a kereskedelmi piacon Storefronts.
+Az ajánlat konfigurálásához meg kell értenie a következő legfontosabb kereskedelmi piactér-fogalmakat: a közzétételi lehetőségeket, az ajánlattípusokat és a konfigurációt, valamint a cselekvésre való felhívásokat, amelyek szabályozzák, hogy az ajánlat hogyan és hol jelenjen meg a kereskedelmi piactér kirakataiban.
 
 ![A Microsoft kereskedelmi piactéri kirakatai és közzétételi lehetőségei](./media/marketplace-publishers-guide/storefronts_options_table.png)
 

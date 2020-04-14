@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 9de75b5537b3e267116882e7f151d893de575071
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 672f145b638fa6b85f7139f2edb4fc41bb2855d9
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70072467"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260972"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Felhasználói fiókok kezelése az Azure API Managementben
 
-Az API Management ben a fejlesztők az API Management használatával elérhető vétek felhasználói. Ez az útmutató bemutatja, hogyan hozhat létre és hívhat meg fejlesztőket az API-k és a számukra az API Management-példány segítségével elérhetővé teszelérhető API-k és termékek használatára. A felhasználói fiókok programozott kezeléséről az [API Management REST](/rest/api/apimanagement/) referenciadokumentumában található Felhasználói [entitás](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/user) dokumentációjában olvashat.
+Az API Management ben a fejlesztők az API Management használatával elérhető vétek felhasználói. Ez az útmutató bemutatja, hogyan hozhat létre és hívhat meg fejlesztőket az API-k és a számukra az API Management-példány segítségével elérhetővé teszelérhető API-k és termékek használatára. A felhasználói fiókok programozott kezeléséről az [API Management REST](/rest/api/apimanagement/) referenciadokumentumában található Felhasználói [entitás](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/user) dokumentációjában olvashat.
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 

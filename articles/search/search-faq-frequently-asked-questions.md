@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: fee74cb6ec5acd5fa0f171eab9769a833f04ad66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/10/2020
+ms.openlocfilehash: d7ba62c795e23e41a1947def77300ffe5d2cc010
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72792913"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262451"
 ---
 # <a name="azure-cognitive-search---frequently-asked-questions-faq"></a>Azure Cognitive Search – gyakori kérdések (GYAKORI KÉRDÉSEK)
 
@@ -24,16 +24,6 @@ ms.locfileid: "72792913"
 ### <a name="how-is-azure-cognitive-search-different-from-full-text-search-in-my-dbms"></a>Miben különbözik az Azure Cognitive Search a teljes szöveges kereséstől a DBMS-ben?
 
 Az Azure Cognitive Search támogatja a több adatforrást, [a nyelvi elemzést számos nyelven,](https://docs.microsoft.com/rest/api/searchservice/language-support)az érdekes és szokatlan [adatbevitelegyéni elemzését,](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)a [pontozási profilokon](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)keresztüli keresési rangsor-vezérlőket, valamint a felhasználói élmény funkcióit, például a typeaheadt, a leütéskiemelését és a jellemzőalapú navigációt. Más szolgáltatásokat is tartalmaz, például a szinonimákat és a gazdag lekérdezésszintaxist, de ezek általában nem differenciáló funkciók.
-
-### <a name="what-is-the-difference-between-azure-cognitive-search-and-elasticsearch"></a>Mi a különbség az Azure Cognitive Search és az ElasticSearch között?
-
-A keresési technológiák összehasonlításakor az ügyfelek gyakran kérnek konkrétumokat arra vonatkozóan, hogy az Azure Cognitive Search hogyan viszonyul az ElasticSearch-hez. Azok az ügyfelek, akik az Azure Cognitive Search over Elasticsearch-et választják a keresési alkalmazásprojektjeikhez, általában azért teszik ezt, mert megkönnyítettük a kulcsfontosságú feladatot, vagy szükségük van a más Microsoft-technológiákkal való beépített integrációra:
-
-+ Az Azure Cognitive Search egy teljes körűen felügyelt felhőszolgáltatás 99,9%-os szolgáltatásiszint-szerződésekkel (SLA) rendelkezik, ha elegendő redundanciával van kiépítve (2 replikák olvasási hozzáféréshez, három replikák az olvasási és írási műveletekhez).
-+ A Microsoft [természetes nyelvi processzorai](https://docs.microsoft.com/rest/api/searchservice/language-support) élvonalbeli nyelvi elemzést kínálnak.  
-+ [Az Azure Cognitive Search indexelők](search-indexer-overview.md) számos Azure-adatforrást tudnak feltérképezni a kezdeti és a növekményes indexeléshez.
-+ Ha gyors választ kell adnia a lekérdezési vagy indexelési kötetek ingadozásaira, használhatja a [csúszkavezérlőket](search-manage.md#scale-up-or-down) az Azure Portalon, vagy futtathat egy [PowerShell-parancsfájlt,](search-manage-powershell.md)közvetlenül megkerülve a szegmenskezelést.  
-+ [Pontozási és tuning funkciók](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) biztosítják az eszközöket befolyásoló keresési rang pontszámok túl, amit a keresőmotor egyedül tud nyújtani.
 
 ### <a name="can-i-pause-azure-cognitive-search-service-and-stop-billing"></a>Szüneteltethetem az Azure Cognitive Search szolgáltatást, és leállíthatom a számlázást?
 

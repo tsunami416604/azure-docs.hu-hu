@@ -4,16 +4,19 @@ description: Ismerje meg, hogyan hozhat létre és kezelhet rendszercsomópont-k
 services: container-service
 ms.topic: article
 ms.date: 04/06/2020
-ms.openlocfilehash: ef5400f19f68fd2da45776d220e17777f58e46e6
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: b567d9e618877463e1e659f368d35fbb787a4ef2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80986316"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259068"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Rendszercsomópont-készletek kezelése az Azure Kubernetes-szolgáltatásban (AKS)
 
-Az Azure Kubernetes-szolgáltatásban (AKS) az azonos konfigurációs csomópontok *csomópontkészletekbe*vannak csoportosítva. A csomópontkészletek tartalmazzák az alkalmazásokat futtató mögöttes virtuális gépeket. A rendszercsomópont-készletek és a felhasználói csomópontkészletek két különböző csomópontkészlet-mód az AKS-fürtökhöz. A rendszercsomópont-készletek olyan alapvető rendszerszolgáltatásokat üzemeltetnek, mint például a CoreDNS. A felhasználói csomópontkészletek, ahol az alkalmazás-specifikus podok. Minden AKS-fürtnek legalább egy legalább egy csomónkkal rendelkező rendszercsomópont-készletet kell tartalmaznia. Ha az AKS-fürthöz egyetlen rendszercsomópont-készletet futtat, azt javasoljuk, hogy legalább három csomópontot használjon a csomópontkészlethez. 
+Az Azure Kubernetes-szolgáltatásban (AKS) az azonos konfigurációs csomópontok *csomópontkészletekbe*vannak csoportosítva. A csomópontkészletek tartalmazzák az alkalmazásokat futtató mögöttes virtuális gépeket. A rendszercsomópont-készletek és a felhasználói csomópontkészletek két különböző csomópontkészlet-mód az AKS-fürtökhöz. A rendszercsomópont-készletek elsődleges célja a kritikus rendszerpodok, például a CoreDNS és az alagútfront üzemeltetése. A felhasználói csomópontkészletek elsődleges célja az alkalmazáspodok üzemeltetése. Az alkalmazáspodok azonban ütemezhetők a rendszercsomópont-készleteken, ha csak egy készletet szeretne az AKS-fürtben. Minden AKS-fürtnek legalább egy legalább egy csomónkkal rendelkező rendszercsomópont-készletet kell tartalmaznia. 
+
+> [!Important]
+> Ha az AKS-fürthöz egyetlen rendszercsomópont-készletet futtat éles környezetben, azt javasoljuk, hogy legalább három csomópontot használjon a csomópontkészlethez.
 
 ## <a name="before-you-begin"></a>Előkészületek
 

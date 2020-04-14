@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 05/01/2019
-ms.openlocfilehash: b0154401a9233a6ea85a8e8c06ee14fcc918b2b6
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 02b64d77a4fb1af25e1022de3ac8e4775f916d9e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657077"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261771"
 ---
 # <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>TLS-titkosítás és -hitelesítés beállítása az Apache Kafkához az Azure HDInsightban
 
@@ -22,8 +22,9 @@ Ez a cikk bemutatja, hogyan állíthatja be a Transport Layer Security (TLS) tit
 > [!Important]
 > A Kafka alkalmazásokhoz két ügyfél használható: egy Java-ügyfél és egy konzolügyfél. Csak a `ProducerConsumer.java` Java kliens használhatja a TLS-t mind a gyártás, mind a felhasználás során. A konzolgyártó `console-producer.sh` ügyfele nem működik a TLS-sel.
 
-> [!Note] 
+> [!Note]
 > A HDInsight Kafka konzolgyártó 1.1-es verzióval nem támogatja az SSL-t.
+
 ## <a name="apache-kafka-broker-setup"></a>Apache Kafka bróker beállítása
 
 A Kafka TLS-bróker beállítása négy HDInsight-fürtvirtuális gépet fog használni a következő módon:
@@ -136,7 +137,7 @@ A konfigurációs módosítás végrehajtásához hajtsa végre az alábbi lép�
 
     ![Kafka ssl konfigurációs tulajdonságainak szerkesztése ambariban](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
 
-1. Új konfigurációs tulajdonságok hozzáadása a kiszolgáló.properties fájlhoz.
+1. A HDI 3.6-os verziójához nyissa meg az Ambari felhasználói felületet, és adja hozzá a következő konfigurációkat az **Advanced kafka-env** és a **kafka-env template** tulajdonság csoportban.
 
     ```bash
     # Configure Kafka to advertise IP addresses instead of FQDN
@@ -151,7 +152,7 @@ A konfigurációs módosítás végrehajtásához hajtsa végre az alábbi lép�
     echo "ssl.truststore.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-1. Nyissa meg az Ambari konfigurációs felhasználói felületet, és ellenőrizze, hogy az új tulajdonságok megjelennek-e az **Advanced kafka-env** és a **kafka-env template** tulajdonság alatt.
+1. Itt van a képernyőkép, amely az Ambari konfigurációs felhasználói felületet mutatja ezekkel a módosításokkal.
 
     HDI 3.6-os verzió esetén:
 
@@ -159,10 +160,9 @@ A konfigurációs módosítás végrehajtásához hajtsa végre az alábbi lép�
 
     HDI 4.0-s verzió esetén:
 
-     ![Kafka-env sablontulajdonság szerkesztése az Ambari 4-ben](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env-four.png)   
+     ![Kafka-env sablontulajdonság szerkesztése az Ambari 4-ben](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env-four.png)
 
 1. Indítsa újra az összes Kafka brókerek.
-1. Indítsa el az admin ügyfél gyártói és fogyasztói lehetőségeket annak ellenőrzésére, hogy mind a gyártók, mind a fogyasztók dolgoznak-e a 9093-as porton.
 
 ## <a name="client-setup-without-authentication"></a>Ügyfél beállítása (hitelesítés nélkül)
 
@@ -208,13 +208,15 @@ Ezeket a lépéseket az alábbi kódrészletek részletezik.
     keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
     ```
 
-1. Hozza létre `client-ssl-auth.properties`a fájlt . Meg kell a következő sorokat:
+1. Hozza létre `client-ssl-auth.properties` a fájlt az ügyfélszámítógépen (hn1) . Meg kell a következő sorokat:
 
     ```config
     security.protocol=SSL
     ssl.truststore.location=/home/sshuser/ssl/kafka.client.truststore.jks
     ssl.truststore.password=MyClientPassword123
     ```
+
+1. Indítsa el az admin ügyfél gyártói és fogyasztói lehetőségeket annak ellenőrzésére, hogy mind a gyártók, mind a fogyasztók dolgoznak-e a 9093-as porton. Kérjük, [Verification](apache-kafka-ssl-encryption-authentication.md#verification) olvassa el az ellenőrzés című alábbi szakaszt a beállítás konzolgyártó/-fogyasztó általi ellenőrzéséhez szükséges lépésekről.
 
 ## <a name="client-setup-with-authentication"></a>Ügyfél beállítása (hitelesítéssel)
 
@@ -278,17 +280,24 @@ Az egyes lépcsők részleteit az alábbiakban találja.
     scp ca-cert sshuser@HeadNode1_Name:~/ssl/ca-cert
     ```
 
-1. Ügyféltároló létrehozása aláírt tanúsítványlal, és importálhatja a hitelesítési tanúsítványt a kulcstárolóba és a megbízhatósági tárolóba:
+    1. Jelentkezzen be az ügyfélgépre (készenléti főcsomópont), és keresse meg az ssl könyvtárat.
 
     ```bash
-    keytool -keystore kafka.client.keystore.jks -import -file client-cert-signed -storepass MyClientPassword123 -keypass MyClientPassword123 -noprompt
-    
-    keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass MyClientPassword123 -keypass MyClientPassword123 -noprompt
-    
-    keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass MyClientPassword123 -keypass MyClientPassword123 -noprompt
+    ssh sshuser@HeadNode1_Name
+    cd ssl
     ```
 
-1. Hozzon `client-ssl-auth.properties`létre egy fájlt . Meg kell a következő sorokat:
+1. Ügyféltároló létrehozása aláírt tanúsítványlal, és importálása a kulcstárolóba és a megbízhatósági tárolóba az ügyfélgépen (hn1):
+
+    ```bash
+    keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
+    
+    keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
+    
+    keytool -keystore kafka.client.keystore.jks -import -file client-cert-signed -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
+    ```
+
+1. Hozzon `client-ssl-auth.properties` létre egy fájlt az ügyfélszámítógépen (hn1) . Meg kell a következő sorokat:
 
     ```bash
     security.protocol=SSL
@@ -300,6 +309,8 @@ Az egyes lépcsők részleteit az alábbiakban találja.
     ```
 
 ## <a name="verification"></a>Ellenőrzés
+
+Futtassa ezeket a lépéseket az ügyfélszámítógépen.
 
 > [!Note]
 > Ha a HDInsight 4.0 és a Kafka 2.1 telepítve van, a konzol gyártójával/fogyasztóival ellenőrizheti a beállítást. Ha nem, futtassa a Kafka gyártót a 9092-es porton, és küldjön üzeneteket a témának, majd használja a Kafka fogyasztót a 9093-as porton, amely a TLS-t használja.

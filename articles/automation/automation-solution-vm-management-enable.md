@@ -5,19 +5,19 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4f4b0805e2a9247aff881a9e34b0bd1cd4c6ca27
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 7b619d3c9b4b334e637d6a1c456256cb33ad5134
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80550408"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261380"
 ---
 # <a name="enable-azure-startstop-vms-solution"></a>Az Azure Start/Stop virtuális gépek megoldásának engedélyezése
 
 Hajtsa végre az alábbi lépéseket a virtuális gépek kezdési/leállítási/-leállításához munkaidőn kívüli megoldás ban egy új vagy meglévő Automation-fiókhoz és a csatolt Log Analytics-munkaterülethez. A bevezetési folyamat befejezése után konfigurálja a változókat a megoldás testreszabásához.
 
 >[!NOTE]
->A megoldás klasszikus virtuális gépekkel való használatához klasszikus RunAs-fiókra van szükség, amely alapértelmezés szerint nem jön létre. A klasszikus RunAs-fiókok létrehozásáról a Klasszikus futtatási fiókok című témakörben talál [útmutatást.](automation-create-standalone-account.md#classic-run-as-accounts)
+>A megoldás klasszikus virtuális gépekkel való használatához klasszikus futtatási fiókra van szükség, amely alapértelmezés szerint nem jön létre. A klasszikus futtatási mint fiók létrehozásáról a [Klasszikus futtatás létrehozása mint fiók](automation-create-standalone-account.md#create-a-classic-run-as-account)című témakörben talál.
 >
 
 ## <a name="enable-solution"></a>Megoldás engedélyezése

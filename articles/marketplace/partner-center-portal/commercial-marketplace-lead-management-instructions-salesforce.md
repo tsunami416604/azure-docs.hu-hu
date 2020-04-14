@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 9b59181f7c1b24a7bc00ab579bbe67a70f499c92
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 087cdafe8b819e4929e1608ed7e00be2c1169414
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80755375"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263037"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>Érdeklődőkezelés konfigurálása a Salesforce-hoz
 
@@ -64,11 +64,15 @@ Ha készen áll az ajánlat érdeklődőkezelési adatainak konfigurálására a
 
 1. A Kapcsolat részletei előugró ablakban válassza a Salesforce for `oid` the Lead Destination (Érdeklődő **célhoz)** **lehetőséget,** és illessze be a létrehozott web-to-lead űrlapba a **Szervezet azonosító** mezőjének korábbi lépéseit követve.
 
-1. Kattintson a **Mentés** gombra. 
+1. **Kapcsolatfelvételi e-mail** – E-maileket adhat meg a vállalatnál lévő személyeknek, akiknek e-mailes értesítéseket kell kapniuk, ha új érdeklődő érkezik. Több e-mailt is megadhat, ha pontosvesszővel választja el őket.
 
-    >[!Note]
-    >Be kell fejeznie az ajánlat többi részének konfigurálását, és közzé kell tennie, mielőtt érdeklődőket kapna az ajánlathoz.
+1. Válassza az **Ok gombot.**
 
-    ![Kapcsolat részletei - Érdeklődő célhelyének kiválasztása](./media/commercial-marketplace-lead-management-instructions-salesforce/choose-lead-destination.png)
+Ha meg szeretne győződni arról, hogy sikeresen csatlakozott egy érdeklődő célállomásához, kattintson az érvényesítés gombra. Ha sikeres, akkor lesz egy teszt vezető az érdeklődő cél.
 
-    ![Kapcsolat részletei - Érdeklődő célhelyének kiválasztása](./media/commercial-marketplace-lead-management-instructions-salesforce/connection-details.png)
+>[!Note]
+>Be kell fejeznie az ajánlat többi részének konfigurálását, és közzé kell tennie, mielőtt érdeklődőket kapna az ajánlathoz.
+
+![Kapcsolat részletei - Érdeklődő célhelyének kiválasztása](./media/commercial-marketplace-lead-management-instructions-salesforce/choose-lead-destination.png)
+
+![Kapcsolat részletei - Érdeklődő célhelyének kiválasztása](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-connection-details.png)

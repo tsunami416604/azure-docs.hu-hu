@@ -2,17 +2,17 @@
 title: Azure CDN a Verizon Premium szabályok motor feltételeknek valómérkőzés | Microsoft dokumentumok
 description: Az Azure Content Delivery Network dokumentációja a Verizon Premium szabályok motorja feltételeknek megfelelő.
 services: cdn
-author: mdgattuso
+author: asudbring
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: magattus
-ms.openlocfilehash: 1660dca34b2f128ef5889145fcdeed0d2523b9bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: e2361590118668f2cdf22c4a29534b16790b90e4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593204"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253441"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-match-conditions"></a>Az Azure CDN a Verizon Premium szabályaitól megfelel a feltételeknek
 
@@ -165,10 +165,10 @@ A **Nem**/**egyezik** beállítás határozza meg azokat a feltételeket, amelye
 Legfontosabb információk:
 
 - Cidr jelölés használata.
-- Adjon meg több IP-címet és/vagy IP-címblokkot úgy, hogy mindegyiket egyetlen szóközvel hakorlátozza. Példa:
+- Adjon meg több IP-címet és/vagy IP-címblokkot úgy, hogy mindegyiket egyetlen szóközvel hakorlátozza. Például:
   - **IPv4 példa:** 1.2.3.4 10.20.30.40 megfelel minden olyan kérésnek, amely vagy az 1.2.3.4 vagy a 10.20.30.40 címről érkezik.
   - **IPv6 példa:** 1:2:3:4:5:6:7:8 10:20:30:40:50:50:70:80 megfelel minden olyan kérésnek, amely az 1:2:3:4:5:5:6:7:8 vagy a 10:20:30:40:50:60:70:80 címről érkezik.
-- Az IP-címblokk szintaxisa az alap IP-cím, amelyet egy perjel és az előtag mérete követ. Példa:
+- Az IP-címblokk szintaxisa az alap IP-cím, amelyet egy perjel és az előtag mérete követ. Például:
   - **IPv4 példa:** Az 5.5.5.64/26 minden olyan kérésnek megfelel, amely az 5.5.5.64 és 5.5.5.127 közötti címekről érkezik.
   - **IPv6 példa:** 1:2:3:/48 megfelel minden olyan kérésnek, amely az 1:2:3:0:0:0:0:0:0:0 és 1:2:3:ffff:ffff:ffff:ffff:ffff:ffff:ffff.0:0:0:0:0:0;
 - A gyorsítótár-beállítások nyomon követésének módja miatt ez az egyezési feltétel nem kompatibilis a következő szolgáltatásokkal:
@@ -993,7 +993,7 @@ Legfontosabb információk:
 
 - Dupla escape speciális reguláris kifejezés \^karakterek (például $.+), hogy a reguláris kifejezés ben fordított perjel szerepeljen.
 
-   Példa:
+   Például:
 
    Érték | Értelmezve 
    ------|---------------

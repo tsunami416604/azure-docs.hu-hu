@@ -1,23 +1,23 @@
 ---
-title: C# oktatóanyag az automatikus kiegészítésről és javaslatokról
+title: Automatikus kiegészítés és javaslatok
 titleSuffix: Azure Cognitive Search
-description: Ez az oktatóanyag bemutatja az automatikus kiegészítést és a javaslatokat, hogy a legördülő listát használó felhasználóktól gyűjtsék a keresési kifejezés bevitelét. Egy meglévő szállodaprojektre épül.
+description: Ez az oktatóanyag bemutatja az automatikus kiegészítést és a javaslatokat, hogy a legördülő listát használó felhasználók keresési kifejezésbevitelét gyűjtse össze. Egy meglévő szállodaprojektre épül.
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/10/2020
-ms.openlocfilehash: 8f244d64fe33a1529cf66314515bbe16e05ccffb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 03/12/2020
+ms.openlocfilehash: 4391b565b684b74258b9c71da88600d4628b5c6f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77121536"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259765"
 ---
-# <a name="c-tutorial-add-autocompletion-and-suggestions---azure-cognitive-search"></a>C# oktatóanyag: Automatikus kiegészítés és javaslatok hozzáadása – Azure Cognitive Search
+# <a name="c-tutorial-add-autocomplete-and-suggestions---azure-cognitive-search"></a>C# oktatóanyag: Automatikus kiegészítés és javaslatok hozzáadása – Azure Cognitive Search
 
-Ismerje meg, hogyan valósítható meg az automatikus kiegészítés (gépelés és javaslatok), amikor a felhasználó elkezd beírni a keresőmezőbe. Ebben az oktatóanyagban külön-külön jelenítjük meg a típus-ahead eredményeket és a javaslati eredményeket, majd megmutatjuk az egyesítésük módját, hogy gazdagabb felhasználói élményt hozzanak létre. Előfordulhat, hogy a felhasználónak csak két vagy három kulcsot kell beírnia az összes elérhető eredmény megkereséséhez. Ez az oktatóanyag a C# oktatóanyagban létrehozott lapozási projektre [épül: Keresési eredmények tördelése – Azure Cognitive Search](tutorial-csharp-paging.md) oktatóanyag.
+Megtudhatja, hogy miként valósíthatja meg az automatikus kiegészítést (typeahead lekérdezések és javasolt dokumentumok), amikor a felhasználó elkezd beírni egy keresőmezőbe. Ebben az oktatóanyagban az automatikusan befejezett lekérdezéseket és javaslatokeredményeit külön-külön jelenítjük meg, majd megmutatjuk az egyesítésük módját, hogy gazdagabb felhasználói élményt hozzanak létre. Előfordulhat, hogy a felhasználónak csak két vagy három karaktert kell beírnia az összes rendelkezésre álló eredmény megkereséséhez.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
@@ -28,9 +28,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
+Ez az oktatóanyag egy sorozat része, és a C# oktatóanyagban létrehozott lapozási projektre [épül: Keresési eredmények tördelése - Azure Cognitive Search](tutorial-csharp-paging.md).
 
-A [C# oktatóanyag: Keresési eredmények tördelése - Azure Cognitive Search](tutorial-csharp-paging.md) projekt, és fut. Ez a projekt lehet a saját verziója, amelyet az előző oktatóanyagban végzett el, vagy telepítheti a GitHubról: [Az első alkalmazás létrehozása](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+Másik lehetőségként letöltheti és futtathatja a megoldást ehhez az oktatóanyaghoz: [3-add-typeahead](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/3-add-typeahead).
 
 ## <a name="add-suggestions"></a>Javaslatok hozzáadása
 

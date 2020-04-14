@@ -4,16 +4,16 @@ description: Megtudhatja, hogyan hozhat létre és kezelhet több csomópontkés
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: 26fd541552ee203216af5a08d948644d82061191
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: f948c115b86abc532a121c68fa7a148ff15caae9
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984912"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259085"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Fürt több csomópontkészletének létrehozása és kezelése az Azure Kubernetes szolgáltatásban (AKS)
 
-Az Azure Kubernetes-szolgáltatásban (AKS) az azonos konfigurációs csomópontok *csomópontkészletekbe*vannak csoportosítva. Ezek a csomópontkészletek tartalmazzák az alkalmazásokat futtató mögöttes virtuális gépeket. A csomópontok kezdeti száma és méretük (SKU) az AKS-fürt létrehozásakor van definiálva, amely *alapértelmezett csomópontkészletet*hoz létre. A különböző számítási vagy tárolási igényekkel bíró alkalmazások támogatásához további csomópontkészleteket hozhat létre. Használja például ezeket a további csomópontkészleteket gpu-k biztosításához a nagy számítási igényű alkalmazásokhoz, vagy a nagy teljesítményű SSD-tárolóhoz való hozzáféréshez.
+Az Azure Kubernetes-szolgáltatásban (AKS) az azonos konfigurációs csomópontok *csomópontkészletekbe*vannak csoportosítva. Ezek a csomópontkészletek tartalmazzák az alkalmazásokat futtató mögöttes virtuális gépeket. A csomópontok kezdeti száma és méretük (SKU) definiálva van, amikor létrehoz egy AKS-fürtöt, amely létrehoz egy [rendszercsomópont-készletet.][use-system-pool] A különböző számítási vagy tárolási igényekkel bíró alkalmazások támogatásához további *felhasználói csomópontkészleteket*hozhat létre. A rendszercsomópont-készletek elsődleges célja a kritikus rendszerpodok, például a CoreDNS és az alagútfront üzemeltetése. A felhasználói csomópontkészletek elsődleges célja az alkalmazáspodok üzemeltetése. Az alkalmazáspodok azonban ütemezhetők a rendszercsomópont-készleteken, ha csak egy készletet szeretne az AKS-fürtben. A felhasználói csomópontkészletek, ahol az alkalmazás-specifikus podok. Használja például ezeket a további felhasználói csomópontkészleteket gpu-k biztosításához a nagy számítási igényű alkalmazásokhoz, vagy a nagy teljesítményű SSD-tárolóhoz való hozzáférést.
 
 > [!NOTE]
 > Ez a szolgáltatás lehetővé teszi, hogy több csomópontkészlet létrehozása és kezelése jobban szabályozhatja. Ennek eredményeképpen külön parancsok szükségesek a létrehozáshoz/frissítéshez/törléshez. Korábban fürtműveletek `az aks create` `az aks update` a felügyeltfürt API-n keresztül vagy használták, és ez volt az egyetlen lehetőség a vezérlősík és egyetlen csomópontkészlet módosítására. Ez a szolgáltatás az ügynökkészlet-készletek számára külön műveletkészletet tesz `az aks nodepool` elérhetővé az agentPool API-n keresztül, és a parancskészlet használatát igényli az egyes csomópontkészleteken végrehajtott műveletek végrehajtásához.
@@ -29,7 +29,8 @@ Az Azure CLI 2.2.0-s vagy újabb verzióját telepíteni és konfigurálni kell.
 A következő korlátozások vonatkoznak a több csomópontkészletet támogató AKS-fürtök létrehozásakor és kezelésében:
 
 * Lásd: [Kvóták, virtuálisgép-méretkorlátozások és a régió elérhetősége az Azure Kubernetes szolgáltatásban (AKS).][quotas-skus-regions]
-* A rendszercsomópont-készlet alapértelmezés szerint nem törölhető az első csomópontkészlet.
+* Törölheti a rendszercsomópont-készleteket, feltéve, hogy egy másik rendszercsomópont-készlet telje el az AKS-fürtben.
+* A rendszerkészleteknek legalább egy csomópontot kell tartalmazniuk, és a felhasználói csomópontkészletek nulla vagy több csomópontot tartalmazhatnak.
 * Az AKS-fürtnek a standard termékváltozat terheléselosztót kell használnia több csomópontkészlet használatához, a szolgáltatás nem támogatott az alapszintű termékváltozat terheléselosztóival.
 * Az AKS-fürtnek virtuálisgép-méretezési készleteket kell használnia a csomópontokhoz.
 * A csomópontkészlet neve csak kisalfanumerikus karaktereket tartalmazhat, és kisbetűvel kell kezdődnie. Linux-csomópontkészletek esetén a hossznak 1 és 12 karakter között kell lennie, a Windows-csomópontkészletek esetében a hossznak 1 és 6 karakter között kell lennie.
@@ -37,6 +38,9 @@ A következő korlátozások vonatkoznak a több csomópontkészletet támogató
 * Ha fürtlétrehozási időben több csomópontkészletet hoz létre, a csomópontkészletek által használt összes Kubernetes-verziónak meg kell egyeznie a vezérlősíkhoz beállított verzióval. Ez frissíthető a fürt csomópontonkénti készletműveletek használatával történő kiépítése után.
 
 ## <a name="create-an-aks-cluster"></a>AKS-fürt létrehozása
+
+> [!Important]
+> Ha az AKS-fürthöz egyetlen rendszercsomópont-készletet futtat éles környezetben, azt javasoljuk, hogy legalább három csomópontot használjon a csomópontkészlethez.
 
 Első lépésekhez hozzon létre egy AKS-fürtöt egyetlen csomópontkészlettel. A következő példa az [az csoport létrehozása][az-group-create] parancsot használja egy *myResourceGroup* nevű erőforráscsoport létrehozásához az *eastus* régióban. Ezután létrejön egy *myAKSCluster* nevű AKS-fürt az [az aks create][az-aks-create] paranccsal. A *--kubernetes-verzió* *1.15.7* segítségével mutatja be, hogyan frissítheti a csomópontkészlet egy következő lépésben. A támogatott [Kubernetes-verziót megadhatja.][supported-versions]
 
@@ -753,6 +757,8 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>További lépések
 
+További információ a [rendszercsomópont-készletekről.][use-system-pool]
+
 Ebben a cikkben megtanulta, hogyan hozhat létre és kezelhet több csomópontkészletet egy AKS-fürtben. A podok csomópontkészletek közötti vezérléséről az [AKS speciális ütemező szolgáltatásainak gyakorlati tanácsai című témakörben][operator-best-practices-advanced-scheduler]talál további információt.
 
 A Windows Server tárolócsomópont-készletek létrehozásáról és használatáról a [Windows Server-tároló létrehozása az AKS-ben][aks-windows]című témakörben található.
@@ -788,3 +794,4 @@ A Windows Server tárolócsomópont-készletek létrehozásáról és használat
 [tag-limitation]: ../azure-resource-manager/resource-group-using-tags.md
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
 [vm-sizes]: ../virtual-machines/linux/sizes.md
+[use-system-pool]: use-system-pools.md

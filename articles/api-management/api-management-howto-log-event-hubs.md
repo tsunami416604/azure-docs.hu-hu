@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 2f07f6a27e78ee4df8c64a09918758d02c28c6d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2f67079938ddcf4a65e01ef50ab7e5cdf7078b73
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76898794"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260938"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Események naplózása az Azure Event Hubs szolgáltatásba az Azure API Management szolgáltatásban
 Az Azure Event Hubs egy kiválóan méretezhető adatbefogadási szolgáltatás, amely másodpercenként több millió esemény fogadására képes, így a csatlakoztatott eszközök és alkalmazások által létrehozott nagy mennyiségű adatot egyszerűen feldolgozhatja és elemezheti. Az Event Hubs egy eseményfolyamat "bejárati kapujaként" működik, és ha az adatokat egy eseményközpontba gyűjtik, bármely valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter használatával átalakítható és tárolható. Az Event Hubs elválasztja az eseménystreamek létrehozását azok felhasználásától, így az események felhasználói a saját ütemezésüknek megfelelően férhetnek hozzá az eseményekhez.
@@ -30,9 +30,9 @@ Ez a cikk az [Azure API-kezelés integrálása az Event Hubs videóval](https://
 Az eseményközpont létrehozásáról és az események nek az Eseményközpontba és az Eseményközpontból történő fogadásához szükséges kapcsolati karakterláncok leválasztásával kapcsolatos részletes tudnivalókért olvassa el [az Event Hubs névtér és az eseményközpont létrehozása az Azure Portalhasználatával című](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)témakört.
 
 ## <a name="create-an-api-management-logger"></a>API Management naplózó létrehozása
-Most, hogy rendelkezik egy Event Hub, a következő lépés az, hogy konfigurálja a [Logger](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger) az API Management szolgáltatásban, hogy naplózhassa az eseményeket az Event Hub.
+Most, hogy rendelkezik egy Event Hub, a következő lépés az, hogy konfigurálja a [Logger](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger) az API Management szolgáltatásban, hogy naplózhassa az eseményeket az Event Hub.
 
-Az API Management naplózók az [API Management REST API](https://aka.ms/apimapi)használatával vannak konfigurálva. Részletes kérési példákat [a Naplózók létrehozásáról](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger/createorupdate)című témakörben talál.
+Az API Management naplózók az [API Management REST API](https://aka.ms/apimapi)használatával vannak konfigurálva. Részletes kérési példákat [a Naplózók létrehozásáról](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger/createorupdate)című témakörben talál.
 
 ## <a name="configure-log-to-eventhubs-policies"></a>Log-to-eventhubs házirendek konfigurálása
 
@@ -65,7 +65,7 @@ A frissített házirend-konfiguráció mentéséhez kattintson a **Mentés** gom
   * [Üzenetek fogadása az EventProcessorHost szolgáltatással](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
   * [Event Hubs programozási útmutató](../event-hubs/event-hubs-programming-guide.md)
 * További információ az API-kezelés és az Eseményközpontok integrációjáról
-  * [Naplózó entitás hivatkozása](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger)
+  * [Naplózó entitás hivatkozása](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger)
   * [log-to-eventhub házirend-hivatkozás](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#log-to-eventhub)
   * [Api-k figyelése az Azure API-kezelés, az Event Hubs és a Moesif segítségével](api-management-log-to-eventhub-sample.md)  
 * További információ az [Azure Application Insights-szal való integrációról](api-management-howto-app-insights.md)

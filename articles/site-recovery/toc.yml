@@ -241,7 +241,7 @@
               href: vmware-azure-set-up-replication.md
             - name: A mobilitási szolgáltatás telepítése
               items:
-                - name: Mobilitási szolgáltatások áttekintése és telepítése
+                - name: Tudnivalók a mobilitási szolgáltatás telepítéséről
                   href: vmware-physical-mobility-service-overview.md
                 - name: Előkészületek a leküldéses telepítéshez
                   href: vmware-azure-install-mobility-service.md

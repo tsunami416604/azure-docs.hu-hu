@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/29/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e7d6b23aa3f35c99cf03f855152b2b231a60a965
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b117861a528b6983876d28d5b343ea88c2bcadc0
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75921626"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260683"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Oktatóanyag: Az Azure Resource Manager-sablonok folyamatos integrációja az Azure-folyamatokkal
 
@@ -46,7 +46,7 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
 
 ## <a name="prepare-a-github-repository"></a>GitHub-adattár előkészítése
 
-A GitHub a projekt forráskódjának tárolására szolgál, beleértve az Erőforrás-kezelő sablonokat is. Más támogatott adattárak, lásd: [az Azure DevOps által támogatott adattárak.](/azure/devops/pipelines/repos/?view=azure-devops#supported-repository-types)
+A GitHub a projekt forráskódjának tárolására szolgál, beleértve az Erőforrás-kezelő sablonokat is. Más támogatott adattárak, lásd: [az Azure DevOps által támogatott adattárak.](/azure/devops/pipelines/repos/?view=azure-devops)
 
 ### <a name="create-a-github-repository"></a>GitHub-tárház létrehozása
 
@@ -212,7 +212,7 @@ Sablon üzembe helyezésének lépésével rendelkező folyamat létrehozása:
 
 ## <a name="verify-the-deployment"></a>A telepítés ellenőrzése
 
-1. Jelentkezzen be az [Azure Portalra.](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Nyissa meg az erőforráscsoportot. A név az, amit a folyamat YAML-fájljában megadott.  Egy létrehozott tárfiókot fog látni.  A tárfiók neve **a tárolóval**kezdődik.
 1. Válassza ki a tárfiók nevét a megnyitásához.
 1. Válassza **a Tulajdonságok lehetőséget.** Figyelje meg, hogy a **replikáció** **helyileg redundáns tárolás (LRS).**

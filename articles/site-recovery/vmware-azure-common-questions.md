@@ -3,12 +3,12 @@ title: Gyakori kérdések a VMware vész-helyreállítási azure Site Recovery
 description: Válaszok at kaphat a helyszíni VMware virtuális gépek Azure-ba történő vész-helyreállítási gyakori kérdéseire az Azure Site Recovery használatával.
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: ae16138ae44262f53a8f9948d6287f0acf621244
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d551cef7037c0b6d7286cbb4b70d8f7a8f7f5cae
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240024"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259510"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Gyakori kérdések VMware-ből az Azure-ba történő replikációról
 
@@ -96,7 +96,7 @@ A telepítők a konfigurációs kiszolgáló %ProgramData%\ASR\home\svsystems\pu
 Minden replikánskívánt virtuális gépre telepítse a szolgáltatást a következő módszerek egyikével:
 
 - [Push telepítés](vmware-physical-mobility-service-overview.md#push-installation)
-- [Kézi telepítés](vmware-physical-mobility-service-overview.md#install-mobility-agent-through-ui) a felhasználói felületről vagy a PowerShellből
+- [Kézi telepítés](vmware-physical-mobility-service-overview.md#install-the-mobility-service-using-ui) a felhasználói felületről vagy a PowerShellből
 - Központi telepítés egy központi telepítési eszköz, például a [Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md) használatával
 
 ## <a name="managed-disks"></a>Felügyelt lemezek

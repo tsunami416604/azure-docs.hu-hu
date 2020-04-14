@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: dsindona
-ms.openlocfilehash: db2300ae827677f8902e420b136acec3da694c8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0453117ee2984e0b8ebee60145353584a02a359a
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280014"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270128"
 ---
 # <a name="container-publishing-prerequisites"></a>Tárolók közzétételének előfeltételei
+
+> [!IMPORTANT]
+> 2020. április 13-tól megkezdjük az Azure Container-ajánlatok kezelését a Partnerközpontba. Az áttelepítés után a Partnerközpontban hozza létre és kezelheti ajánlatait. Kövesse az [Azure Container-ajánlat létrehozása](https://aka.ms/CreateContainerOffer) című, az áttelepített ajánlatok kezeléséhez című útmutatóutasításait.
 
 Ez a cikk ismerteti a tárolóajánlat az Azure Marketplace-en való közzétételének előfeltételeit.  Ha még nem tette meg, tekintse át a [Tárolók ajánlatközzétételi útmutatóját.](../../marketplace-containers.md)
 

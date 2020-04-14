@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: d44391624e29d2bdd182bb07452e0e8def2d1407
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c4d0f753e23e42b1064fec3f56957dfe97c30ca4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67656699"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261193"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Oktatóanyag: Az Azure Active Directory integrációja az ITRP-vel
 
@@ -113,7 +113,7 @@ Az Azure AD egyszeri bejelentkezésének konfigurálásához az ITRP-vel az alá
        `https://<tenant-name>.itrp.com`
 
     > [!NOTE]
-    > Ezek az értékek helyőrzők. A tényleges bejelentkezési URL-címet és azonosítót kell használnia. Az értékek leése érdekében lépjen kapcsolatba az [ITRP támogatási csapatával.](https://www.itrp.com/support) Az Azure Portal **alapszintű SAML-konfiguráció** párbeszédpanelén látható mintákra is hivatkozhat.
+    > Ezek az értékek helyőrzők. A tényleges bejelentkezési URL-címet és azonosítót kell használnia. Az értékek leése érdekében lépjen kapcsolatba az [ITRP támogatási csapatával.](https://www.4me.com/support/) Az Azure Portal **alapszintű SAML-konfiguráció** párbeszédpanelén látható mintákra is hivatkozhat.
 
 5. Az **SAML aláíró tanúsítvány csoportban** kattintson a **Szerkesztés** ikonra az **SAML aláíró tanúsítvány** párbeszédpanel megnyitásához:
 

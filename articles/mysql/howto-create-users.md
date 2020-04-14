@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 4/2/2020
-ms.openlocfilehash: 99b614de87c666d1cb1fb8a34eaafadf6fa82849
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: f8c020da72e9cdf8777a3eefac266e97e4a312bd
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632551"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263471"
 ---
 # <a name="create-users-in-azure-database-for-mysql-server"></a>Felhasználók létrehozása az Azure Database for MySQL-kiszolgálón
 
@@ -92,4 +92,4 @@ Az Azure Database for MySQL-kiszolgáló létrehozása után az első kiszolgál
 
 Nyissa meg a tűzfalat az új felhasználók gépeinek IP-címeihez, hogy azok csatlakozni tudjanak: [Azure Database for MySQL tűzfalszabályok létrehozása és kezelése az Azure Portalon](howto-manage-firewall-using-portal.md) vagy az [Azure CLI](howto-manage-firewall-using-cli.md)használatával.
 
-A felhasználói fiókok kezelésével kapcsolatos további információkért olvassa el a Felhasználói [fiókok kezeléséhez](https://dev.mysql.com/doc/refman/5.7/en/user-account-management.html), a [GRANT szintaxishoz](https://dev.mysql.com/doc/refman/5.7/en/grant.html)és [a Jogosultságokhoz](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html)tartozó MySQL termékdokumentációját.
+A felhasználói fiókok kezelésével kapcsolatos további információkért olvassa el a Felhasználói [fiókok kezeléséhez](https://dev.mysql.com/doc/refman/5.7/en/access-control.html), a [GRANT szintaxishoz](https://dev.mysql.com/doc/refman/5.7/en/grant.html)és [a Jogosultságokhoz](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html)tartozó MySQL termékdokumentációját.

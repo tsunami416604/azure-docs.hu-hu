@@ -3,7 +3,7 @@ title: Webes tartalmak lejáratának kezelése az Azure CDN-ben | Microsoft doku
 description: Megtudhatja, hogyan kezelheti az Azure Web Apps/Cloud Services, ASP.NET vagy az IIS-tartalmak lejáratát az Azure CDN-ben.
 services: cdn
 documentationcenter: .NET
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: bef53fcc-bb13-4002-9324-9edee9da8288
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2018
-ms.author: magattus
-ms.openlocfilehash: a701c332659181081184906a73826b7137d8c49c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 4598e6cee6ffbaaeb2a99727842fcd17fe0046c7
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593718"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260564"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>A webes tartalmak elévülésének kezelése Azure CDN-ben
 > [!div class="op_single_selector"]
 > * [Azure webes tartalom](cdn-manage-expiration-of-cloud-service-content.md)
-> * [Azure Blob-tárhely](cdn-manage-expiration-of-blob-content.md)
+> * [Azure Blob Storage](cdn-manage-expiration-of-blob-content.md)
 > 
 
 A nyilvánosan elérhető eredetű webkiszolgálókról származó fájlok az Azure Content Delivery Network (CDN) szolgáltatásban gyorsítótárazhatók, amíg el nem telik az élő (TTL) idő. A TTL-t `Cache-Control` az eredeti kiszolgáló HTTP-válaszának fejléce határozza meg. Ez a cikk bemutatja, hogyan állíthatja be `Cache-Control` a microsoft azure app service, az Azure Cloud Services, a ASP.NET-alkalmazások és az Internet Information Services (IIS) webhelyek webalkalmazások szolgáltatásának fejléceit, amelyek mindegyike hasonlóan van konfigurálva. A fejlécet `Cache-Control` konfigurációs fájlok használatával vagy programozott módon állíthatja be. 

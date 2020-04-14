@@ -5,24 +5,26 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 6d4c1f52f0f3b1e05ec06f5a66a36323f346d4eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f9e55ff2c581f9392a125f6dc3ec8d903e9876a4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280541"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256433"
 ---
-# <a name="cancel-operation"></a>Művelet megszakítása 
+# <a name="cancel-operation"></a>Művelet megszakítása
+
+> [!NOTE]
+> A Cloud Partner Portal API-k integrálva vannak a Partnerközponttal, és az ajánlatok partnerközpontba való áttelepítése után is működni fognak. Az integráció kis változtatásokat vezet be. Tekintse át a [Cloud Partner Portal API-hivatkozásban](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) felsorolt módosításokat, és győződjön meg arról, hogy a kód továbbra is működik a Partnerközpontba való áttelepítés után.
 
 Ez az API megszakítja az ajánlatjelenleg folyamatban lévő műveletet. A [Beolvasási műveletek API-t,](./cloud-partner-portal-api-retrieve-operations.md) hogy egy `operationId` átad az API-t. A megszakítás általában szinkron művelet, azonban néhány összetett esetben új műveletre lehet szükség egy meglévő megszakításához. Ebben az esetben a HTTP-válasz törzs tartalmazza a művelet helyét, amelyet a lekérdezési állapothoz kell használni.
 
-A kérelemmel megadhat egy vesszővel tagolt e-mail címlistát, és az API értesíti ezeket a címeket a művelet előrehaladásáról.
-
   `POST https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/cancel?api-version=2017-10-31`
 
-<a name="uri-parameters"></a>URI-paraméterek
+## <a name="uri-parameters"></a>URI-paraméterek
+
 --------------
 
 |  **Név**    |      **Leírás**                                  |    **Adattípus**  |
@@ -32,8 +34,7 @@ A kérelemmel megadhat egy vesszővel tagolt e-mail címlistát, és az API ért
 | api-verzió  |  Az API jelenlegi verziója                               |    Dátum           |
 |  |  |  |
 
-
-<a name="header"></a>Fejléc
+## <a name="header"></a>Fejléc
 ------
 
 |  **Név**              |  **Érték**         |
@@ -42,8 +43,7 @@ A kérelemmel megadhat egy vesszővel tagolt e-mail címlistát, és az API ért
 |  Engedélyezés         |  Hordozója A TOKEN |
 |  |  |
 
-
-<a name="body-example"></a>Példa törzsre
+## <a name="body-example"></a>Példa törzsre
 ------------
 
 ### <a name="request"></a>Kérés
@@ -63,19 +63,22 @@ A kérelemmel megadhat egy vesszővel tagolt e-mail címlistát, és az API ért
 |  értesítési e-mailek     | Vesszővel elválasztott e-mail azonosítók listáját kell értesíteni a folyamatban lévő közzétételi művelet. |
 |  |  |
 
-
 ### <a name="response"></a>Válasz
 
-  `Operation-Location: https://cloudpartner.azure.com/api/publishers/contoso/offers/contoso-virtualmachineoffer/operations/56615b67-2185-49fe-80d2-c4ddf77bb2e8`
+#### <a name="migrated-offers"></a>Áttelepített ajánlatok
 
+`Location: /api/publishers/contoso/offers/contoso-offer/operations/56615b67-2185-49fe-80d2-c4ddf77bb2e8?api-version=2017-10-31`
+
+#### <a name="non-migrated-offers"></a>Nem áttelepített ajánlatok
+
+`Location: /api/operations/contoso$contoso-offer$2$preview?api-version=2017-10-31`
 
 ### <a name="response-header"></a>Válaszfejléc
 
 |  **Név**             |    **Érték**                       |
 |  ---------            |    ----------                      |
-| Művelet-hely    | URL-cím, amely lekérdezhető a művelet aktuális állapotának meghatározásához. |
+| Hely    | A művelet állapotának beolvasásához vezető relatív elérési út. |
 |  |  |
-
 
 ### <a name="response-status-codes"></a>Válasz állapotkódjai
 

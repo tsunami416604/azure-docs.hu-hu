@@ -1,22 +1,22 @@
 ---
-title: Földrajzi elérhetőség és pénznemtámogatás | Azure
-description: Földrajzi elérhetőség az Azure Piactéren és az AppSource-ban
+title: Földrajzi elérhetőség és valutatámogatás | Azure
+description: Földrajzi elérhetőség a kereskedelmi piacon
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.author: dsindona
-ms.openlocfilehash: 79965180d897b91afc1fb1a27e777e385108d2c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82c3ed79bbcc566a91f9f249ec2df747bbc01cac
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288427"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262009"
 ---
 # <a name="geographic-availability-and-currency-support"></a>Földrajzi elérhetőség és pénznemtámogatás
 
-Az Azure Marketplace- és AppSource-ajánlatok az ügyfél számlázási címe által meghatározott 141 földrajzi területen vásárolhatók meg, és a tranzakciók 17 pénznemben hajthatók végre. Az alábbi táblázat felsorolja az egyes támogatott földrajzi helyeket, az [ISO 3166 kétjegyű alfa-kódját](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)és a hozzárendelt pénznemet.
+A kereskedelmi piactéri ajánlatok 141 földrajzi területen vásárolhatók meg az ügyfél számlázási címe szerint, és a tranzakciók 17 pénznemben hajthatók végre. Az alábbi táblázat felsorolja az egyes támogatott földrajzi helyeket, az [ISO 3166 kétjegyű alfa-kódját](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)és a hozzárendelt pénznemet.
 
 |   Ország/régió neve               |   ISO-2   |   Currency (Pénznem)   |
 |-------------------------------------|-----------|--------------|

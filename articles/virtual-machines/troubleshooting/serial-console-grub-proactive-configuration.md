@@ -3,8 +3,8 @@ title: Az Azure Serial Console proaktív GRUB-konfigurációja| Microsoft dokume
 description: Konfigurálja a GRUB-ot a különböző disztribúciók között, amely lehetővé teszi az egyfelhasználós és helyreállítási módelérését az Azure virtuális gépeken.
 services: virtual-machines-linux
 documentationcenter: ''
-author: vilibert
-manager: spogge
+author: mimckitt
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/10/2019
-ms.author: vilibert
-ms.openlocfilehash: a154ab4742f0d0d7acae0376bcf894bc2b62b4cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 573bd0797e63fc512e59b0e0882c718e4569111c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74186928"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262893"
 ---
 # <a name="proactively-ensuring-you-have-access-to-grub-and-sysrq-could-save-you-lots-of-down-time"></a>A GRUB és a sysrq elérésének proaktív biztosítása sok időt takaríthat meg
 
@@ -98,7 +98,7 @@ Ebben a cikkben áttekintjük a különböző Linux disztribúciákat és dokume
 A sysrq kulcs alapértelmezés szerint engedélyezve van néhány újabb Linux disztribúción, míg másokon előfordulhat, hogy csak bizonyos SysRq függvények esetében fogad el értékeket.
 A régebbi distros, lehet, hogy teljesen le van tiltva.
 
-A SysRq funkció akkor hasznos, ha egy összeomlott vagy lefagyott virtuális gépet indít közvetlenül az Azure Serial Console-ból, ami szintén hasznos lehet a GRUB menü elérésében, vagy ha egy virtuális gépet újraindít egy másik portálablakból, vagy az ssh munkamenet elejtheti az aktuális konzolkapcsolatot így lejáró GRUB időkitöltések, amelyek a GRUB menü megjelenítésére szolgálnak.
+A SysRq funkció akkor hasznos, ha egy összeomlott vagy lefagyott virtuális gépet indít közvetlenül az Azure Serial Console-ból, ami szintén hasznos a GRUB menü eléréséhez, és a virtuális gép újraindítása egy másik portálablakból vagy ssh munkamenetből eldobhatja az aktuális konzolkapcsolatot, így lejáró GRUB időtúltöltések, amelyekhez a GRUB menü megjelenítéséhez szolgál.
 A virtuális gépet úgy kell konfigurálni, hogy elfogadja a kernel paraméter 1-es értékét, amely lehetővé teszi a sysrq vagy a 128 összes funkcióját, ami lehetővé teszi az újraindítást/a kikapcsolást
 
 

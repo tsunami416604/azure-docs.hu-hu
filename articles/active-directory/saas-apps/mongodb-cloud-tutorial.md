@@ -15,18 +15,18 @@ ms.topic: tutorial
 ms.date: 04/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7792ab2dc9fe7386accab96b0fb00aa93e6e4196
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: d3d33634a8e6c3f7fd311ab70ab04f2839672191
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668978"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261136"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mongodb-cloud"></a>Oktatóanyag: Az Azure Active Directory egyszeri bejelentkezési (SSO) integrációja a MongoDB-felhővel
 
 Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja a MongoDB-felhőt az Azure Active Directoryval (Azure AD). Ha integrálja a MongoDB-felhőt az Azure AD-vel, a következőket teheti:
 
-* Szabályozhatja az Azure AD-ben, aki hozzáfér a MongoDB-felhőhöz.
+* Szabályozhatja az Azure AD-t, aki hozzáfér a MongoDB Cloud, a MongoDB Atlas, a MongoDB közösség, az egyetem és a támogatás.
 * Lehetővé teszi a felhasználók számára, hogy automatikusan bejelentkezve mongoDB Cloud az Azure AD-fiókok.
 * Kezelje fiókjait egyetlen központi helyen – az Azure Portalon.
 
@@ -146,11 +146,11 @@ Ebben a szakaszban engedélyezi b.Simon azure egyszeri bejelentkezés t a MongoD
 
 ## <a name="configure-mongodb-cloud-sso"></a>A MongoDB felhőalapú sso konfigurálása
 
-A **MongoDB Cloud** oldalon történő egyszeri bejelentkezés konfigurálásához el kell küldenie a letöltött **összevonási metaadat-XML-t** és a megfelelő másolt URL-címeket az Azure Portalról a [MongoDB Cloud támogatási csapatának.](https://support.mongodb.com/) Úgy állították be ezt a beállítást, hogy az SAML SSO-kapcsolat mindkét oldalon megfelelően legyen beállítva.
+Az egyszeri bejelentkezés konfigurálásához a **MongoDB felhőoldalán,** szüksége lesz a megfelelő URL-címeket másolni az Azure Portalon, és konfigurálnia kell a Federation alkalmazás a MongoDB Cloud Organization. Kövesse a [MongoDB Cloud Docs utasításait.](https://docs.atlas.mongodb.com/security/federated-authentication/index.html) Ha bármilyen problémát tapasztal, segítségért forduljon a [MongoDB Felhőtámogatási csapatához.](https://support.mongodb.com/)
 
 ### <a name="create-mongodb-cloud-test-user"></a>MongoDB Cloud tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a MongoDB-felhőben. A MongoDB Cloud támogatja a just-in-time felhasználói kiépítést, amely alapértelmezés szerint engedélyezve van. Ebben a szakaszban nincs műveletelem. Ha a felhasználó még nem létezik a MongoDB-felhőben, a hitelesítés után egy új jön létre.
+Ebben a szakaszban egy B.Simon nevű felhasználó jön létre a MongoDB-felhőben. A MongoDB Cloud támogatja a just-in-time felhasználói kiépítést, amely alapértelmezés szerint engedélyezve van. Ebben a szakaszban nincs műveletelem. Ha a felhasználó még nem létezik a MongoDB-felhőben, a hitelesítés után egy új jön létre.
 
 ## <a name="test-sso"></a>SSO tesztelése 
 
@@ -165,6 +165,8 @@ Ha a Hozzáférési panelen a MongoDB Felhő csempére kattint, automatikusan be
 - [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Regisztráció a MongoDB Atlas szolgáltatásra az Azure-ban](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/mongodb.mongodb_atlas_azure_08082019?tab=Overview)
 
 - [Próbálja ki a MongoDB Cloud szolgáltatást az Azure AD-vel](https://aad.portal.azure.com/)
 
