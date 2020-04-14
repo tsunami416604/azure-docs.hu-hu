@@ -214,6 +214,8 @@
       items:
         - name: Mi az a beszédfordítás?
           href: speech-translation.md
+        - name: A beszédfordítás alapjai
+          href: speech-translation-basics.md
     - name: Első lépések
       items:
         - name: Diktálás fordítása
