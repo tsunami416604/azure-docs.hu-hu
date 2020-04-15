@@ -1,14 +1,14 @@
 ---
 title: ISO 27001 Megosztott szolgáltatások tervminta – Áttekintés
 description: Az ISO 27001 Megosztott szolgáltatások tervmintájának áttekintése és architektúrája. Ennek a tervmintának a segítségével az ügyfelek felmérhetik az ISO 27001 adott vezérlőit.
-ms.date: 01/13/2020
+ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 0b6a250ebac2744adca813219225388841f1776f
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 9b0b49582023ee5c68fea0f21b70290a102a038a
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "75922540"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381575"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>Az ISO 27001 Azure Blueprints Megosztott szolgáltatások tervmintájának áttekintése
 
@@ -21,7 +21,7 @@ Az [ISO 27001 App Service Environment/SQL Database-számításifeladat](../iso27
 Az ISO 27001 Megosztott szolgáltatások tervminta alapszintű infrastruktúrát helyez üzembe az Azure-ban, amelynek segítségével a szervezetek több, virtuális adatközponti (VDC) megközelítésen alapuló számítási feladatot üzemeltethetnek.
 A VDC referenciaarchitektúrák, automatizáló eszközök és bevonási modellek bevált együttese, amelyet a Microsoft legnagyobb vállalati ügyfelei használnak. A Megosztott szolgáltatások tervminta az alább látható, teljesen natív Azure VDC-környezeten alapul.
 
-![Az ISO 27001 Megosztott szolgáltatások tervminta kialakítása](../../media/sample-iso27001-shared/iso27001-shared-services-blueprint-sample-design.png)
+:::image type="content" source="../../media/sample-iso27001-shared/iso27001-shared-services-blueprint-sample-design.png" alt-text="Az ISO 27001 Megosztott szolgáltatások tervminta kialakítása" border="false":::
 
 Ez a környezet több Azure-szolgáltatásból épül fel, és ISO 27001 szabványokon alapuló, biztonságos, teljes körűen monitorozott, vállalati használatra kész megosztottszolgáltatás-infrastruktúrát biztosít. A környezet összetevői:
 
@@ -44,7 +44,7 @@ A fentiek mindegyike teljesíti az [Azure Architecture Center referenciaarchitek
 
 További információért tekintse meg a [virtuális adatközpont dokumentációját](/azure/architecture/vdc/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezzel megismerte az ISO 27001 Megosztott szolgáltatások tervmintájának áttekintését és architektúráját.
 Következő lépésként tekintse meg az alábbi cikkeket, amelyek a vezérlőelem-leképezést és a minta üzembe helyezését ismertetik:

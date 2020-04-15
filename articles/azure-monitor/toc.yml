@@ -1075,6 +1075,8 @@
               href: platform/itsmc-connections.md
             - name: Service Manager-webalkalmazás létrehozása
               href: platform/itsmc-service-manager-script.md
+            - name: A ServiceNow ITSM-szinkronizálási problémáinak javítása
+              href: platform/itsmc-resync-servicenow.md
     - name: Automatizálás
       items:
         - name: Automatikus méretezés

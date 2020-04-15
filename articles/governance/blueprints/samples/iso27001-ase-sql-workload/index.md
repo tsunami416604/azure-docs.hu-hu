@@ -3,12 +3,12 @@ title: Az ISO 27001 ASE/SQL-számításifeladat tervmintája – Áttekintés
 description: Az ISO 27001 App Service Environment/SQL Database-számításifeladat tervmintájának áttekintése és architektúrája.
 ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: d77029b93b1e77bdba85c5dd5608cbdc5d6543a5
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 9957ab1bef5b65fc90b5a357bd56d6f0013ea690
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "75920775"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381750"
 ---
 # <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Az ISO 27001 App Service Environment/SQL Database-számításifeladat tervmintájának áttekintése
 
@@ -24,7 +24,7 @@ Két ISO 27001 tervminta áll rendelkezésre: ez a minta és az [ISO 27001 Megos
 
 Az ISO 27001 App Service Environment/SQL Database-számításifeladat tervmintája szolgáltatásalapú webes környezetként helyezi üzembe a platformot. Ez a környezet több, ISO 27001 szabványoknak megfelelő webalkalmazás, webes API és SQL Database-példány üzemeltetésére alkalmas. Ez a tervminta az [ISO 27001 Megosztott szolgáltatások](../iso27001-shared/index.md) tervmintával van függőségi viszonyban.
 
-![Az ISO 27001 ASE/SQL-számításifeladat tervmintájának kialakítása](../../media/sample-iso27001-ase-sql-workload/iso27001-ase-sql-workload-blueprint-sample-design.png)
+:::image type="content" source="../../media/sample-iso27001-ase-sql-workload/iso27001-ase-sql-workload-blueprint-sample-design.png" alt-text="Az ISO 27001 ASE/SQL-számításifeladat tervmintájának kialakítása" border="false":::
 
 Ez a környezet több Azure-szolgáltatásból épül fel, és ISO 27001 szabványokon alapuló, biztonságos, teljes körűen monitorozott, vállalati használatra kész számításifeladat-infrastruktúrát biztosít. A környezet összetevői:
 
@@ -35,7 +35,7 @@ Ez a környezet több Azure-szolgáltatásból épül fel, és ISO 27001 szabvá
   - Az [Azure Key Vault](../../../../key-vault/key-vault-overview.md) VNet-szolgáltatásvégpontot használó példánya, amely a számítási feladat környezetében futó alkalmazások titkos kulcsainak tárolására szolgál
   - Az [Azure SQL Database](../../../../sql-database/sql-database-technical-overview.md) VNet-szolgáltatásvégpontot használó kiszolgálópéldánya, amely a számítási feladat környezetében futó alkalmazásokhoz használt adatbázisok üzemeltetésére szolgál
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezzel megismerte az ISO 27001 App Service Environment/SQL Database-számításifeladat tervmintájának áttekintését és architektúráját. Következő lépésként tekintse meg az alábbi cikkeket, amelyek a vezérlőelem-leképezést és a minta üzembe helyezését ismertetik:
 

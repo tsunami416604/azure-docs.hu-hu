@@ -1,14 +1,14 @@
 ---
 title: A felhőbevezetési keretrendszer alaprendszerének tervmintája – Áttekintés
 description: Az Azure Foundationhöz készült felhőbevezetési keretrendszer tervmintájának áttekintése és architektúrája.
-ms.date: 08/20/2019
+ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 79b47127b81caf148054f4223e5fa7ad9fbf86fe
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: a5616667ae909b63f406e399a23bdf568089bf52
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "75562561"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383579"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Az Azure-hoz készült Microsoft Cloud bevezetési keretrendszerhez tartozó tervminta áttekintése
 
@@ -18,7 +18,7 @@ Az Azure-hoz készült Microsoft Cloud bevezetési keretrendszer (CAF) alaprends
 
 A felhőbevezetési keretrendszer alaprendszeréhez tartozó tervminta olyan ajánlott infrastruktúra-erőforrásokat helyez üzembe az Azure-ban, amelyek segítségével a szervezetek bevezethetik a felhőtulajdon kezeléséhez szükséges alaprendszer-vezérlőket. Ez a minta olyan erőforrásokat, szabályzatokat és sablonokat helyez üzembe és kényszerít ki, amelyek lehetővé teszik a szervezetek számára, hogy magabiztosan vegyék használatba az Azure-t.
 
-![A felhőbevezetési keretrendszer alaprendszerének ábrája bemutatja, hogy a rendszer miket telepít a felhőbevezetési keretrendszer alaprendszer létrehozásával kapcsolatos útmutatása részeként az Azure megismerése érdekében](../../media/caf-blueprints/caf-foundation-architecture.png)
+:::image type="content" source="../../media/caf-blueprints/caf-foundation-architecture.png" alt-text="A felhőbevezetési keretrendszer alaprendszerének ábrája bemutatja, hogy a rendszer miket telepít a felhőbevezetési keretrendszer alaprendszer létrehozásával kapcsolatos útmutatása részeként az Azure megismerése érdekében" border="false":::
 
 Ez az implementálás több Azure-szolgáltatást foglal magába a biztonságos, teljes körűen felügyelt, vállalati használatra kész alaprendszer biztosítása érdekében. A környezet összetevői:
 
@@ -45,7 +45,7 @@ A fentiek mindegyike teljesíti az [Azure Architecture Center referenciaarchitek
 
 További információ: [Az Azure-hoz készült Microsoft Cloud bevezetési keretrendszere – Kész](/azure/cloud-adoption-framework/ready/)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezzel megismerte a felhőbevezetési keretrendszer alaprendszeréhez tartozó tervminta áttekintését és architektúráját.
 

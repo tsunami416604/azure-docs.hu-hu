@@ -50,6 +50,8 @@
           href: create-host-pools-user-profile.md
         - name: Az Azure NetApp Files használata
           href: create-fslogix-profile-container.md
+        - name: Az Azure Files és az Azure AD DS használata
+          href: create-profile-container-adds.md
     - name: Gazdagépkészlet beállításainak konfigurálása
       items:
         - name: RDP-tulajdonságok

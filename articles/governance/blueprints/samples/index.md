@@ -3,12 +3,12 @@ title: Tervminták indexe
 description: A környezetek, szabályzatok és felhőbevezetési keretrendszerek alapjainak Azure Blueprintsszel történő üzembe helyezésére szolgáló megfelelőségi és standard minták indexe.
 ms.date: 02/26/2020
 ms.topic: sample
-ms.openlocfilehash: 703c383f41cd833fb47ca489682258158f9fe179
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 745b16f8aff8fe003ec65449cdf3dc0d629ba6ff
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "78196824"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383532"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints-minták
 
@@ -38,7 +38,7 @@ A következő táblázat az Azure Blueprints szolgáltatáshoz használható min
 
 ## <a name="samples-strategy"></a>Mintastratégia
 
-![Tervminta-stratégia](../media/blueprint-samples-strategy.png)
+:::image type="content" source="../media/blueprint-samples-strategy.png" alt-text="Tervminta-stratégia" border="false":::
 
 A felhőbevezetési keretrendszer alaprendszere és a felhőbevezetési keretrendszer célzónájának terve azt feltételezi, hogy az ügyfél egy meglévő üres előfizetést készít elő a helyszíni objektumok vagy számítási feladatok Azure-ba történő migrálására.
 (Az A és B régió az ábrán.)  
@@ -47,7 +47,7 @@ Lehetőség van a tervminták iterálására és az ügyfél által alkalmazott 
 
 Léteznek tervminták azon ügyfélforgatókönyvek kezelésére, amelyekben a megfelelőségi követelmények magasak, és az architekturális összetettség is jelentős (az ábra E régiója). Az ábra F régióját az ügyfelek és a partnerek tervminták használatával és azok egyedi igényekre történő testreszabásával fogják kezelni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tudnivalók a [tervek életciklusáról](../concepts/lifecycle.md).
 - A [statikus és dinamikus paraméterek](../concepts/parameters.md) használatának elsajátítása.

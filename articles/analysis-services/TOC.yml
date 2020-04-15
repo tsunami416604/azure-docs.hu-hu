@@ -4,15 +4,18 @@
   items:
     - name: Mi az Azure Analysis Services?
       href: analysis-services-overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
     - name: Kiszolgáló létrehozása – Portal
       href: analysis-services-create-server.md
     - name: Kiszolgáló létrehozása – PowerShell
       href: analysis-services-create-powershell.md
+    - name: Kiszolgáló létrehozása – ARM-sablon
+      displayName: Resource Manager
+      href: analysis-services-create-template.md
     - name: Kiszolgáló tűzfalának konfigurálása – Portal
       href: analysis-services-qs-firewall.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: 1 – Mintamodell hozzáadása a portálról
       href: analysis-services-create-sample-model.md

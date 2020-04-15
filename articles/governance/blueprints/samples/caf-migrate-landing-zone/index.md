@@ -1,14 +1,14 @@
 ---
 title: A felhőbevezetési keretrendszer migrálási célzónára vonatkozó tervének mintája – Áttekintés
 description: Az Azure Migrate-hez készült felhőbevezetési keretrendszer migrálási célzónára vonatkozó tervmintájának áttekintése és architektúrája.
-ms.date: 08/20/2019
+ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 08171a39c83ea6822243d7239882a19b053f213e
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: d0328a590d86677e098504a7498a696697fc38c8
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "74545495"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383552"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>Az Azure-beli migráláshoz készült Microsoft Cloud bevezetési keretrendszer migrálási célzónára vonatkozó tervmintájának áttekintése
 
@@ -20,7 +20,7 @@ A [felhőbevezetési keretrendszer alaprendszerének](../caf-foundation/index.md
 
 A felhőbevezetési keretrendszer migrálási célzónára vonatkozó tervmintája alapszintű infrastruktúra-erőforrásokat helyez üzembe az Azure-ban, amelyek segítségével a szervezetek felkészíthetik az előfizetésüket a virtuális gépek migrálására. A tervminta emellett a felhőtulajdon kezeléséhez szükséges szabályozási vezérlők bevezetésében is segít. Ez a minta olyan erőforrásokat, szabályzatokat és sablonokat helyez üzembe és kényszerít ki, amelyek lehetővé teszik a szervezetek számára, hogy magabiztosan vegyék használatba az Azure-t.
 
-![A felhőbevezetési keretrendszer migrálási célzónájának ábrája bemutatja, hogy a rendszer miket telepít a felhőbevezetési keretrendszer a kezdeti célzónával kapcsolatos útmutatása részeként ](../../media/caf-blueprints/caf-migration-landing-zone-architecture.png)
+:::image type="content" source="../../media/caf-blueprints/caf-migration-landing-zone-architecture.png" alt-text="A felhőbevezetési keretrendszer migrálási célzónájának ábrája bemutatja, hogy a rendszer miket telepít a felhőbevezetési keretrendszer a kezdeti célzónával kapcsolatos útmutatása részeként" border="false":::
 
 Ez a környezet több Azure-szolgáltatásból épül fel, és biztonságos, teljes körűen monitorozott, vállalati használatra kész szabályozást biztosít. A környezet összetevői:
 
@@ -38,7 +38,7 @@ A fentiek mindegyike teljesíti az [Azure Architecture Center referenciaarchitek
 
 További információ: [Az Azure-hoz készült Microsoft Cloud bevezetési keretrendszere – Migrálás](/azure/architecture/cloud-adoption/migrate/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezzel megismerte a felhőbevezetési keretrendszer migrálási célzónára vonatkozó tervmintájának áttekintését és architektúráját.
 

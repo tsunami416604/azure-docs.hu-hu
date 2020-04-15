@@ -20,6 +20,9 @@
     - name: Üzembe helyezés IP-csoportokkal
       displayName: Resource Manager
       href: quick-create-ipgroup-template.md
+    - name: Üzembe helyezés több címmel
+      displayName: Resource Manager
+      href: quick-create-multiple-ip-template.md
 - name: Példák
   items:
     - name: Azure PowerShell

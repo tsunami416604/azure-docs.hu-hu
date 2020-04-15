@@ -1,11 +1,11 @@
-- name: Az Azure Marketplace és az AppSource dokumentációja
+- name: A kereskedelmi piactér dokumentációja
   href: index.yml
   items:
-    - name: Az Azure Marketplace és az AppSource ütemterve
+    - name: A kereskedelmi piactér fejlesztési terve
       href: ./marketplace-roadmap.md
-    - name: Azure Marketplace – szabályzatok és feltételek
+    - name: A kereskedelmi piactér szabályzatai és feltételei
       href: ./policies-terms.md
-    - name: Azure Marketplace és AppSource – áttekintés és előnyök
+    - name: A kereskedelmi piactér áttekintése és előnyei
       href: ./marketplace-publishers-guide.md
       items:
         - name: 'Két áruház, közös Marketplace'
@@ -15,7 +15,7 @@
           items:
             - name: Érdeklődők kezelése
               href: ./lead-management-for-cloud-marketplace.md
-            - name: Tranzakciók az Azure Marketplace-en
+            - name: Tranzakciók a kereskedelmi piactéren
               href: ./marketplace-commercial-transaction-capabilities-and-considerations.md
             - name: Személyes ajánlatok
               href: ./private-offers.md
@@ -66,7 +66,7 @@
               href: ./preferred-solutions.md
             - name: Integrált megoldások
               href: ./integrated-solutions.md
-        - name: Azure Marketplace- és AppSource-támogatás
+        - name: A kereskedelmi piactér támogatása
           href: ./support-azure-marketplace.md
           items:
             - name: Marketplace – gyakori kérdések
@@ -78,6 +78,8 @@
   items:
     - name: Migrálás a Cloud Partner Portalról a Partnerközpontba
       href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-to-partner-center.md
+    - name: Migrálás – gyakori kérdések
+      href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-faq.md
     - name: A portál bemutatása
       href: ./cloud-partner-portal/portal-tour/cpp-portal-tour.md
       items:
@@ -427,12 +429,10 @@
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: Támogatás igénylése
       href: ./cloud-partner-portal-orig/cloud-partner-portal-support-for-cloud-partner-portal.md
-- name: Kereskedelmi Marketplace-portál a Partnerközpontban
+- name: A kereskedelmi piactér a Partnerközpontban
   items:
-    - name: Áttekintés
-      items:
-        - name: Mi az a Kereskedelmi Marketplace?
-          href: ./partner-center-portal/commercial-marketplace-overview.md
+    - name: A kereskedelmi piactér áttekintése
+      href: ./partner-center-portal/commercial-marketplace-overview.md
     - name: Fiókkezelés
       items:
         - name: Új Partnerközpontfiók létrehozása
@@ -453,6 +453,30 @@
               href: ./partner-center-portal/azure-apps-review-feedback.md
             - name: Előkészítési célú API
               href: ./partner-center-portal/azure-app-apis.md
+        - name: Azure-tárolóra vonatkozó ajánlat
+          items:
+            - name: Technikai eszközök előkészítése
+              href: ./partner-center-portal/create-azure-container-technical-assets.md
+            - name: Azure-tárolóra vonatkozó ajánlat létrehozása
+              href: ./partner-center-portal/create-azure-container-offer.md
+        - name: Virtuálisgép-ajánlat
+          items:
+            - name: Azure-beli virtuális géppel kapcsolatos ajánlat létrehozása
+              href: ./partner-center-portal/azure-vm-create-offer.md
+            - name: Azure-beli virtuális gép technikai eszközének létrehozása
+              items:
+                - name: Azure-beli virtuális gép technikai eszközének létrehozása
+                  href: ./partner-center-portal/create-azure-vm-technical-asset.md
+                - name: Azure-beli virtuális gép technikai eszközei – gyakori kérdések
+                  href: ./partner-center-portal/common-issues-during-vhd-creation.md
+                - name: Azure-beli virtuális gép rendszerképének tanúsítása
+                  href: ./partner-center-portal/azure-vm-image-certification.md
+                - name: SAS URI
+                  items:
+                    - name: SAS URI beszerzése
+                      href: ./partner-center-portal/get-sas-uri.md
+                    - name: SAS URI – gyakori kérdések
+                      href: ./partner-center-portal/common-sas-uri-issues.md
         - name: Tanácsadói szolgáltatások
           items:
             - name: Előfeltételek
@@ -539,7 +563,7 @@
       href: ./partner-center-portal/support.md
     - name: Partnerközpont – elemzések
       items:
-        - name: Elemzés a kereskedelmi piactér esetében
+        - name: A kereskedelmi piactérre vonatkozó elemzések
           href: ./partner-center-portal/analytics.md
         - name: Összegzés irányítópult
           href: ./partner-center-portal/summary-dashboard.md

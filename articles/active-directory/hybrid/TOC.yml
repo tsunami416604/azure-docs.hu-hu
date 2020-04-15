@@ -336,6 +336,8 @@
       href: reference-connect-faq.md
     - name: Azure AD Connect Health FAQ (Azure AD Connect Health – gyakori kérdések)
       href: reference-connect-health-faq.md
+    - name: Az Azure Government hibrididentitás-kezelési szempontjai
+      href: reference-connect-government-cloud.md
     - name: Az Azure AD Connect felhasználói adatvédelme
       href: reference-connect-user-privacy.md
     - name: Az Azure AD Connect Health felhasználói adatvédelme

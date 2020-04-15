@@ -4,7 +4,7 @@
   items:
     - name: Mi a hitelesítés?
       href: overview-authentication.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   expanded: true
   items:
     - name: Új jelszó önkiszolgáló kérésének engedélyezése
@@ -38,21 +38,17 @@
           href: concept-sspr-licensing.md
         - name: Helyszíni integráció
           href: concept-sspr-writeback.md
-    - name: Többtényezős hitelesítés
+    - name: Multi-Factor Authentication
       items:
         - name: Az MFA működése
           href: concept-mfa-howitworks.md
-        - name: Licence biztosítása a felhasználók számára
-          href: concept-mfa-licensing.md
-        - name: Hitelesítési szolgáltató kezelése
-          href: concept-mfa-authprovider.md
-        - name: Biztonsági útmutató
-          href: multi-factor-authentication-security-best-practices.md
         - name: Adattárolási hely
           href: concept-mfa-data-residency.md
+        - name: Licencek
+          href: concept-mfa-licensing.md
         - name: MFA az Office 365-höz
           href: 'https://docs.microsoft.com/office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide'
-        - name: MFA – GYIK
+        - name: GYIK
           href: multi-factor-authentication-faq.md
     - name: Azure AD jelszóvédelem
       items:
@@ -72,16 +68,18 @@
           href: howto-sspr-authenticationdata.md
         - name: SSPR Windows rendszerű ügyfelekhez
           href: howto-sspr-windows.md
-    - name: Felhőalapú MFA
+    - name: Azure Multi-Factor Authentication
       items:
         - name: Üzembehelyezési útmutató
           href: howto-mfa-getstarted.md
-        - name: Felhasználónkénti MFA
-          href: howto-mfa-userstates.md
-        - name: Felhasználói és eszközbeállítások
-          href: howto-mfa-userdevicesettings.md
         - name: Beállítások konfigurálása
           href: howto-mfa-mfasettings.md
+        - name: Felhasználók konfigurálása
+          href: howto-mfa-userdevicesettings.md
+        - name: Felhasználói MFA engedélyezése
+          href: howto-mfa-userstates.md
+        - name: Hitelesítésszolgáltatók konfigurálása
+          href: concept-mfa-authprovider.md
         - name: Címtárösszevonás
           items:
             - name: Windows Server 2016 AD FS-adapter
@@ -140,6 +138,8 @@
           href: howto-authentication-passwordless-phone.md
         - name: Vállalati Windows Hello
           href: 'https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification'
+    - name: SMS-alapú hitelesítés (előzetes verzió)
+      href: howto-authentication-sms-signin.md
     - name: Tanúsítványalapú hitelesítés
       items:
         - name: Bevezetés a tanúsítványalapú hitelesítésbe

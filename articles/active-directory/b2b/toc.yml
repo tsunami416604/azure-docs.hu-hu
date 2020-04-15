@@ -7,13 +7,13 @@
           href: what-is-b2b.md
         - name: A B2B és a B2C összehasonlítása
           href: compare-with-b2c.md
-    - name: Gyors útmutatók
+    - name: Rövid útmutatók
       items:
         - name: Vendégfelhasználók hozzáadása a portálon
           href: b2b-quickstart-add-guest-users-portal.md
         - name: Vendégfelhasználók hozzáadása PowerShell-lel
           href: b2b-quickstart-invite-powershell.md
-    - name: oktatóanyagokat
+    - name: Oktatóanyagok
       items:
         - name: Tömeges meghívás a PowerShellen keresztül
           href: bulk-invite-powershell.md
@@ -63,6 +63,8 @@
               href: add-users-administrator.md
             - name: B2B felhasználók információkkal dolgozó szakemberek általi hozzáadása
               href: add-users-information-worker.md
+            - name: Belső felhasználók meghívása a B2B-be
+              href: invite-internal-users.md
             - name: Google-összevonás
               href: google-federation.md
             - name: Hitelesítés egyszeri PIN-kóddal
